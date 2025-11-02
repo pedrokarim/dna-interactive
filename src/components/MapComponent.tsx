@@ -13,17 +13,21 @@ import { CRS, Icon, LatLngTuple } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import Loading from "@/components/Loading";
 
-// Cache global pour les icônes générées
+// Cache global pour les icônes générées (avec état trouvé/non trouvé)
 const iconCache = new Map<string, Promise<Icon>>();
 
 // Fonction pour créer une icône personnalisée avec cercle
 const createCustomIcon = (
   iconUrl: string,
-  size: [number, number] = [32, 32]
+  size: [number, number] = [32, 32],
+  isFound: boolean = false
 ) => {
+  // Clé du cache inclut l'URL et l'état
+  const cacheKey = `${iconUrl}-${isFound}`;
+
   // Vérifier le cache d'abord
-  if (iconCache.has(iconUrl)) {
-    return iconCache.get(iconUrl)!;
+  if (iconCache.has(cacheKey)) {
+    return iconCache.get(cacheKey)!;
   }
 
   // Créer la promesse et la mettre en cache
@@ -35,9 +39,16 @@ const createCustomIcon = (
     canvas.height = size[1];
 
     if (ctx) {
-      // Cercle de fond blanc avec bordure
-      ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
-      ctx.strokeStyle = "rgba(0, 0, 0, 0.8)";
+      // Cercle de fond avec couleur selon l'état du marqueur
+      if (isFound) {
+        // Marqueur trouvé : fond rouge/orange plus transparent
+        ctx.fillStyle = "rgba(220, 38, 38, 0.7)"; // red-600
+        ctx.strokeStyle = "rgba(239, 68, 68, 0.8)"; // red-500
+      } else {
+        // Marqueur actif : fond indigo/bleu vif pour contraste
+        ctx.fillStyle = "rgba(67, 56, 202, 0.9)"; // indigo-700
+        ctx.strokeStyle = "rgba(99, 102, 241, 1)"; // indigo-500
+      }
       ctx.lineWidth = 2;
 
       // Cercle principal
@@ -46,8 +57,8 @@ const createCustomIcon = (
       ctx.fill();
       ctx.stroke();
 
-      // Cercle intérieur plus sombre pour créer un effet 3D
-      ctx.strokeStyle = "rgba(0, 0, 0, 0.3)";
+      // Cercle intérieur plus clair pour créer un effet 3D
+      ctx.strokeStyle = "rgba(148, 163, 184, 0.4)";
       ctx.lineWidth = 1;
       ctx.beginPath();
       ctx.arc(size[0] / 2, size[1] / 2, size[0] / 2 - 4, 0, 2 * Math.PI);
@@ -109,7 +120,7 @@ const createCustomIcon = (
   });
 
   // Mettre en cache et retourner
-  iconCache.set(iconUrl, iconPromise);
+  iconCache.set(cacheKey, iconPromise);
   return iconPromise;
 };
 
@@ -147,6 +158,8 @@ interface MapComponentProps {
   markedMarkers?: Set<string>;
   onToggleMarker?: (markerKey: string) => void;
   hideFoundMarkers?: boolean;
+  isSidebarOpen?: boolean;
+  sidebarWidth?: number;
 }
 
 function MapController({
@@ -166,12 +179,56 @@ function MapController({
   return null;
 }
 
+function ImageOverlayWrapper({
+  url,
+  bounds,
+}: {
+  url: string;
+  bounds: [[number, number], [number, number]];
+}) {
+  const map = useMap();
+  const [isReady, setIsReady] = useState(false);
+
+  useEffect(() => {
+    if (map) {
+      // Attendre que le conteneur DOM de la carte soit prêt
+      const checkReady = () => {
+        try {
+          const container = map.getContainer();
+          // Vérifier que le conteneur existe et a été initialisé par Leaflet
+          if (container && container.querySelector(".leaflet-pane")) {
+            setIsReady(true);
+          } else {
+            // Réessayer au prochain cycle
+            setTimeout(checkReady, 10);
+          }
+        } catch (error) {
+          // Si erreur, réessayer
+          setTimeout(checkReady, 10);
+        }
+      };
+
+      // Attendre un cycle pour que la carte soit montée
+      const timer = setTimeout(checkReady, 0);
+      return () => clearTimeout(timer);
+    }
+  }, [map]);
+
+  if (!isReady) {
+    return null;
+  }
+
+  return <ImageOverlay url={url} bounds={bounds} />;
+}
+
 export default function MapComponent({
   selectedMap,
   visibleCategories = {},
   markedMarkers = new Set(),
   onToggleMarker,
   hideFoundMarkers = false,
+  isSidebarOpen = true,
+  sidebarWidth = 320,
 }: MapComponentProps) {
   const [isClient, setIsClient] = useState(false);
   const [markers, setMarkers] = useState<React.JSX.Element[]>([]);
@@ -213,7 +270,8 @@ export default function MapComponent({
                     instance.position.x,
                   ];
 
-                  const markerKey = `${category.id}-${marker.id}-${instance.id}`;
+                  // Utiliser category.type au lieu de category.id, et inclure selectedMap.id pour éviter les collisions
+                  const markerKey = `${selectedMap.id}-${category.type}-${marker.id}-${instance.id}`;
                   const isMarked = markedMarkers.has(markerKey);
 
                   // Ne pas afficher les marqueurs trouvés si l'option est activée
@@ -238,66 +296,82 @@ export default function MapComponent({
         }
       }
 
-      // Étape 2: Collecter les URLs d'icônes uniques
-      const uniqueIconUrls = [
-        ...new Set(markerData.map((data) => data.iconUrl)),
-      ];
+      // Étape 2: Collecter les URLs d'icônes uniques avec leurs états
+      const iconStatesMap = new Map<string, Set<boolean>>();
+      markerData.forEach((data) => {
+        if (!iconStatesMap.has(data.iconUrl)) {
+          iconStatesMap.set(data.iconUrl, new Set());
+        }
+        iconStatesMap.get(data.iconUrl)!.add(data.isMarked);
+      });
 
-      // Étape 3: Charger toutes les icônes en parallèle
-      const iconPromises = uniqueIconUrls.map((url) => createCustomIcon(url));
+      // Étape 3: Charger toutes les icônes nécessaires en parallèle (trouvé et non trouvé)
+      const iconPromises: Promise<Icon>[] = [];
+      const iconKeys: string[] = [];
+      iconStatesMap.forEach((states, url) => {
+        states.forEach((isFound) => {
+          const key = `${url}-${isFound}`;
+          iconKeys.push(key);
+          iconPromises.push(createCustomIcon(url, [32, 32], isFound));
+        });
+      });
       const loadedIcons = await Promise.all(iconPromises);
 
-      // Étape 4: Créer un mapping URL -> Icon
+      // Étape 4: Créer un mapping clé -> Icon
       const iconMap = new Map<string, Icon>();
-      uniqueIconUrls.forEach((url, index) => {
-        iconMap.set(url, loadedIcons[index]);
+      iconKeys.forEach((key, index) => {
+        iconMap.set(key, loadedIcons[index]);
       });
 
       // Étape 5: Créer les marqueurs avec les icônes déjà chargées
       const newMarkers: React.JSX.Element[] = [];
 
       for (const data of markerData) {
-        const customIcon = iconMap.get(data.iconUrl)!;
+        // Récupérer l'icône avec l'état approprié
+        const iconKey = `${data.iconUrl}-${data.isMarked}`;
+        const customIcon = iconMap.get(iconKey)!;
 
         newMarkers.push(
           <Marker
             key={data.key}
             position={data.position}
             icon={customIcon}
-            opacity={data.isMarked ? 0.5 : 1}
+            opacity={data.isMarked ? 0.6 : 1}
           >
             <Popup>
-              <div className="bg-white rounded-lg shadow-lg p-4 min-w-[280px] border border-gray-200">
-                <div className="flex items-center space-x-3 mb-3">
-                  <img
-                    src={data.category.icon}
-                    alt={data.category.name}
-                    className="w-8 h-8 rounded border border-gray-300"
-                    onError={(e) => {
-                      e.currentTarget.style.display = "none";
-                    }}
-                  />
-                  <h3 className="font-bold text-gray-800 text-lg">
+              <div className="bg-slate-950/95 backdrop-blur-md rounded-lg p-4 min-w-[320px] border border-indigo-500/40 shadow-[0_8px_24px_rgba(0,0,0,0.6)]">
+                <div className="flex items-center space-x-3 mb-4">
+                  <div className="w-12 h-12 rounded-lg border border-indigo-500/40 shadow-sm bg-slate-700/60 flex items-center justify-center">
+                    <img
+                      src={data.category.icon}
+                      alt={data.category.name}
+                      className="max-w-full max-h-full object-contain"
+                      onError={(e) => {
+                        e.currentTarget.style.display = "none";
+                      }}
+                    />
+                  </div>
+                  <h3 className="font-bold text-white text-lg">
                     {data.category.name}
                   </h3>
                 </div>
-                <div className="flex items-center space-x-2 mb-2">
-                  <img
-                    src={data.marker.icon}
-                    alt={data.marker.name}
-                    className="w-6 h-6 rounded border border-gray-300"
-                    onError={(e) => {
-                      e.currentTarget.style.display = "none";
-                    }}
-                  />
-                  <p className="font-semibold text-gray-700">
-                    {data.marker.name}
-                  </p>
+                <div className="flex items-center space-x-3 mb-3 bg-slate-800/50 rounded-lg p-2 border border-indigo-500/20">
+                  <div className="w-10 h-10 rounded-lg border border-indigo-500/40 shadow-sm bg-slate-700/60 flex items-center justify-center">
+                    <img
+                      src={data.marker.icon}
+                      alt={data.marker.name}
+                      className="max-w-full max-h-full object-contain"
+                      onError={(e) => {
+                        e.currentTarget.style.display = "none";
+                      }}
+                    />
+                  </div>
+                  <p className="font-semibold text-white">{data.marker.name}</p>
                 </div>
-                <div className="text-sm text-gray-600 mb-3">
+                <div className="text-sm text-gray-300 mb-4 bg-slate-800/30 rounded-md p-2 border border-indigo-500/20">
                   <p>
-                    <strong>Position:</strong> ({data.instance.position.x},{" "}
-                    {data.instance.position.y})
+                    <strong className="text-indigo-400">Position:</strong> (
+                    {data.instance.position.x}, {data.instance.position.y})
                   </p>
                 </div>
                 <div className="flex gap-2">
@@ -305,8 +379,8 @@ export default function MapComponent({
                     onClick={() => onToggleMarker?.(data.key)}
                     className={`px-4 py-2 text-white text-sm font-medium rounded-md transition-colors flex-1 ${
                       data.isMarked
-                        ? "bg-red-500 hover:bg-red-600"
-                        : "bg-blue-500 hover:bg-blue-600"
+                        ? "bg-red-600/80 hover:bg-red-600 border border-red-500/50"
+                        : "bg-indigo-600/80 hover:bg-indigo-600 border border-indigo-500/50"
                     }`}
                   >
                     {data.isMarked
@@ -314,14 +388,6 @@ export default function MapComponent({
                       : "Marquer comme vu"}
                   </button>
                 </div>
-                {data.isMarked && (
-                  <div className="mt-2 flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                    <p className="text-sm text-green-600 font-medium">
-                      ✓ Marqué comme vu
-                    </p>
-                  </div>
-                )}
               </div>
             </Popup>
           </Marker>
@@ -355,9 +421,9 @@ export default function MapComponent({
   ];
 
   return (
-    <div className="w-full h-screen border-2 border-gray-600 rounded-lg overflow-hidden relative">
+    <div className="w-full h-screen overflow-hidden relative">
       {loading && (
-        <div className="absolute top-5 left-16 z-[1000]">
+        <div className="absolute top-5 left-20 z-[90]">
           <Loading
             mode="withMessage"
             message="Chargement des marqueurs..."
@@ -382,7 +448,7 @@ export default function MapComponent({
         maxZoom={4}
       >
         <MapController bounds={bounds} />
-        <ImageOverlay url={selectedMap.image} bounds={bounds} />
+        <ImageOverlayWrapper url={selectedMap.image} bounds={bounds} />
         <ZoomControl position="bottomright" />
         {markers}
       </MapContainer>
