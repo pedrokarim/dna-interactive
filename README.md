@@ -4,11 +4,15 @@
 
 **Carte interactive et ressources communautaires pour Duet Night Abyss**
 
-[![Next.js](https://img.shields.io/badge/Next.js-15.0.0-black)](https://nextjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0.0-blue)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.0.0-38B2AC)](https://tailwindcss.com/)
-[![Bun](https://img.shields.io/badge/Bun-1.2.0-FBF0DF)](https://bun.sh/)
-[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+[![Next.js](https://img.shields.io/badge/Next.js-15.5.0-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.0.0-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
+
+[![Bun](https://img.shields.io/badge/Bun-1.0-orange?style=for-the-badge&logo=bun)](https://bun.sh/)
+
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge&logo=license)](LICENSE)
 
 ## 🌟 À propos du projet
 

@@ -69,6 +69,7 @@ export const ASSETS_PATHS = {
 export const NAVIGATION = {
   home: "/",
   map: "/map",
+  codes: "/codes",
   about: "/about",
   support: "/support",
   contact: "/contact",
@@ -77,6 +78,7 @@ export const NAVIGATION = {
 // Liens de navigation principaux
 export const NAV_LINKS = [
   { href: NAVIGATION.map, label: "Carte Interactive" },
+  { href: NAVIGATION.codes, label: "Codes de Rédemption" },
   { href: NAVIGATION.about, label: "À propos" },
   { href: NAVIGATION.support, label: "Support" },
   { href: NAVIGATION.contact, label: "Contact" },
@@ -85,6 +87,7 @@ export const NAV_LINKS = [
 // Liens du footer
 export const FOOTER_LINKS = [
   { href: NAVIGATION.map, label: "Carte Interactive" },
+  { href: NAVIGATION.codes, label: "Codes de Rédemption" },
   { href: NAVIGATION.about, label: "À propos" },
   { href: NAVIGATION.support, label: "Support" },
   { href: NAVIGATION.contact, label: "Contact" },

@@ -22,45 +22,7 @@ import {
   LEGAL_INFO,
   GAME_INFO,
 } from "@/lib/constants";
-import type { Metadata } from "next";
 
-// Métadonnées SEO pour la page carte
-export const metadata: Metadata = {
-  title: "Carte Interactive",
-  description: `Explorez la carte interactive complète de ${GAME_INFO.name}. Découvrez tous les secrets, collectibles et points d'intérêt avec notre outil de suivi avancé.`,
-  keywords: [
-    ...SITE_CONFIG.keywords,
-    "carte interactive",
-    "map",
-    "exploration",
-    "marqueurs",
-    "tracking",
-    "collectibles",
-    "secrets",
-    "points d'intérêt",
-  ],
-  alternates: {
-    canonical: "https://dna-interactive.ascencia.re/map",
-  },
-  openGraph: {
-    title: `Carte Interactive - ${SITE_CONFIG.name}`,
-    description: `Explorez la carte interactive complète de ${GAME_INFO.name}.`,
-    url: "https://dna-interactive.ascencia.re/map",
-    images: [
-      {
-        url: "/assets/worldview/worldview-2.webp",
-        width: 1200,
-        height: 630,
-        alt: `Carte Interactive - ${SITE_CONFIG.name}`,
-      },
-    ],
-  },
-  twitter: {
-    title: `Carte Interactive - ${SITE_CONFIG.name}`,
-    description: `Explorez la carte interactive complète de ${GAME_INFO.name}.`,
-    images: ["/assets/worldview/worldview-2.webp"],
-  },
-};
 
 // Import dynamique pour éviter les erreurs SSR avec Leaflet
 const MapComponent = dynamic(() => import("@/components/MapComponent"), {

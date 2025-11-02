@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import type { Metadata } from "next";
 import { Map, ChevronDown } from "lucide-react";
 import {
   SITE_CONFIG,
@@ -14,40 +13,6 @@ import {
   CREATOR_INFO,
   LEGAL_INFO,
 } from "@/lib/constants";
-
-export const metadata: Metadata = {
-  title: "Accueil",
-  description: `Découvrez ${GAME_INFO.name} avec notre carte interactive complète. Explorez, marquez vos découvertes et maîtrisez chaque recoin de cet univers fascinant.`,
-  keywords: [
-    ...SITE_CONFIG.keywords,
-    "accueil",
-    "homepage",
-    "découvrir",
-    "explorer",
-    GAME_INFO.name,
-  ],
-  alternates: {
-    canonical: "https://dna-interactive.ascencia.re",
-  },
-  openGraph: {
-    title: `Accueil - ${SITE_CONFIG.name}`,
-    description: `Découvrez ${GAME_INFO.name} avec notre carte interactive complète.`,
-    url: "https://dna-interactive.ascencia.re",
-    images: [
-      {
-        url: "/assets/worldview/worldview-1.webp",
-        width: 1200,
-        height: 630,
-        alt: `Page d'accueil - ${SITE_CONFIG.name}`,
-      },
-    ],
-  },
-  twitter: {
-    title: `Accueil - ${SITE_CONFIG.name}`,
-    description: `Découvrez ${GAME_INFO.name} avec notre carte interactive complète.`,
-    images: ["/assets/worldview/worldview-1.webp"],
-  },
-};
 
 export default function Home() {
   const [currentImage, setCurrentImage] = useState(0);

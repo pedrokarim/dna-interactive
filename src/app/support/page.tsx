@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import type { Metadata } from "next";
 import { SITE_CONFIG, ASSETS_PATHS, NAVIGATION, CONTACT_INFO, CREATOR_INFO, LEGAL_INFO, SUPPORT_INFO, FAQ_ITEMS, SUPPORT_QUICK_LINKS } from "@/lib/constants";

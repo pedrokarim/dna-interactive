@@ -81,7 +81,6 @@ export const metadata: Metadata = {
   verification: {
     google: "google-site-verification-code",
     yandex: "yandex-verification-code",
-    bing: "bing-site-verification-code",
   },
   alternates: {
     canonical: "https://dna-interactive.ascencia.re",

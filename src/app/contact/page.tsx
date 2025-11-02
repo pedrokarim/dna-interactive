@@ -2,44 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import type { Metadata } from "next";
 import { SITE_CONFIG, ASSETS_PATHS, NAVIGATION, CONTACT_INFO, CREATOR_INFO, LEGAL_INFO } from "@/lib/constants";
-
-// Métadonnées SEO pour la page contact
-export const metadata: Metadata = {
-  title: "Contact",
-  description: `Contactez l'équipe de ${SITE_CONFIG.name}. Questions, suggestions ou support technique pour la carte interactive de ${SITE_CONFIG.name}.`,
-  keywords: [
-    ...SITE_CONFIG.keywords,
-    "contact",
-    "support",
-    "aide",
-    "questions",
-    "feedback",
-    "suggestions",
-  ],
-  alternates: {
-    canonical: "https://dna-interactive.ascencia.re/contact",
-  },
-  openGraph: {
-    title: `Contact - ${SITE_CONFIG.name}`,
-    description: `Contactez l'équipe de ${SITE_CONFIG.name} pour vos questions et suggestions.`,
-    url: "https://dna-interactive.ascencia.re/contact",
-    images: [
-      {
-        url: "/assets/worldview/worldview-3.webp",
-        width: 1200,
-        height: 630,
-        alt: `Contact - ${SITE_CONFIG.name}`,
-      },
-    ],
-  },
-  twitter: {
-    title: `Contact - ${SITE_CONFIG.name}`,
-    description: `Contactez l'équipe de ${SITE_CONFIG.name} pour vos questions et suggestions.`,
-    images: ["/assets/worldview/worldview-3.webp"],
-  },
-};
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
