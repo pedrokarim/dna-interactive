@@ -79,7 +79,7 @@ export const metadata: Metadata = {
     creator: "@dna_interactive",
   },
   verification: {
-    google: "google-site-verification-code",
+    google: "i_GLyVEAubN9keZoMX6Kk8-T8XyldPJ8zXc1atDYv-k",
     yandex: "yandex-verification-code",
   },
   alternates: {
