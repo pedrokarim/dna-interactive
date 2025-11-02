@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Allow access to all important pages
+Allow: /
+Allow: /map
+Allow: /about
+Allow: /support
+Allow: /contact
+
+# Block access to admin or sensitive areas (if any in the future)
+# Disallow: /admin
+# Disallow: /api/private
+
+# Crawl delay to be respectful
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://dna-interactive.ascencia.re/sitemap.xml
