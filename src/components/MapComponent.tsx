@@ -7,46 +7,57 @@ import {
   Marker,
   Popup,
   useMap,
+  ZoomControl,
 } from "react-leaflet";
 import { CRS, Icon, LatLngTuple } from "leaflet";
 import "leaflet/dist/leaflet.css";
+import Loading from "@/components/Loading";
+
+// Cache global pour les icônes générées
+const iconCache = new Map<string, Promise<Icon>>();
 
 // Fonction pour créer une icône personnalisée avec cercle
 const createCustomIcon = (
   iconUrl: string,
   size: [number, number] = [32, 32]
 ) => {
-  // Créer un canvas pour dessiner l'icône avec un cercle de fond
-  const canvas = document.createElement("canvas");
-  const ctx = canvas.getContext("2d");
-  canvas.width = size[0];
-  canvas.height = size[1];
-
-  if (ctx) {
-    // Cercle de fond blanc avec bordure
-    ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
-    ctx.strokeStyle = "rgba(0, 0, 0, 0.8)";
-    ctx.lineWidth = 2;
-
-    // Cercle principal
-    ctx.beginPath();
-    ctx.arc(size[0] / 2, size[1] / 2, size[0] / 2 - 2, 0, 2 * Math.PI);
-    ctx.fill();
-    ctx.stroke();
-
-    // Cercle intérieur plus sombre pour créer un effet 3D
-    ctx.strokeStyle = "rgba(0, 0, 0, 0.3)";
-    ctx.lineWidth = 1;
-    ctx.beginPath();
-    ctx.arc(size[0] / 2, size[1] / 2, size[0] / 2 - 4, 0, 2 * Math.PI);
-    ctx.stroke();
+  // Vérifier le cache d'abord
+  if (iconCache.has(iconUrl)) {
+    return iconCache.get(iconUrl)!;
   }
 
-  // Charger l'image de l'icône
-  const img = new Image();
-  img.crossOrigin = "anonymous";
+  // Créer la promesse et la mettre en cache
+  const iconPromise = new Promise<Icon>((resolve) => {
+    // Créer un canvas pour dessiner l'icône avec un cercle de fond
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width = size[0];
+    canvas.height = size[1];
 
-  return new Promise<Icon>((resolve) => {
+    if (ctx) {
+      // Cercle de fond blanc avec bordure
+      ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
+      ctx.strokeStyle = "rgba(0, 0, 0, 0.8)";
+      ctx.lineWidth = 2;
+
+      // Cercle principal
+      ctx.beginPath();
+      ctx.arc(size[0] / 2, size[1] / 2, size[0] / 2 - 2, 0, 2 * Math.PI);
+      ctx.fill();
+      ctx.stroke();
+
+      // Cercle intérieur plus sombre pour créer un effet 3D
+      ctx.strokeStyle = "rgba(0, 0, 0, 0.3)";
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.arc(size[0] / 2, size[1] / 2, size[0] / 2 - 4, 0, 2 * Math.PI);
+      ctx.stroke();
+    }
+
+    // Charger l'image de l'icône
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+
     img.onload = () => {
       if (ctx) {
         // Dessiner l'icône au centre du cercle
@@ -96,6 +107,10 @@ const createCustomIcon = (
 
     img.src = iconUrl || "/marker-default.png";
   });
+
+  // Mettre en cache et retourner
+  iconCache.set(iconUrl, iconPromise);
+  return iconPromise;
 };
 
 // Types
@@ -171,7 +186,17 @@ export default function MapComponent({
 
     const loadMarkers = async () => {
       setLoading(true);
-      const newMarkers: React.JSX.Element[] = [];
+
+      // Étape 1: Collecter tous les marqueurs visibles et leurs icônes nécessaires
+      const markerData: Array<{
+        position: LatLngTuple;
+        key: string;
+        iconUrl: string;
+        isMarked: boolean;
+        category: any;
+        marker: any;
+        instance: any;
+      }> = [];
 
       if (selectedMap.legend) {
         for (const category of selectedMap.legend) {
@@ -196,81 +221,111 @@ export default function MapComponent({
                     continue;
                   }
 
-                  // Créer l'icône de manière asynchrone
-                  const customIcon = await createCustomIcon(marker.icon);
-
-                  newMarkers.push(
-                    <Marker
-                      key={markerKey}
-                      position={position}
-                      icon={customIcon}
-                      opacity={isMarked ? 0.5 : 1}
-                    >
-                      <Popup>
-                        <div className="bg-white rounded-lg shadow-lg p-4 min-w-[280px] border border-gray-200">
-                          <div className="flex items-center space-x-3 mb-3">
-                            <img
-                              src={category.icon}
-                              alt={category.name}
-                              className="w-8 h-8 rounded border border-gray-300"
-                              onError={(e) => {
-                                e.currentTarget.style.display = "none";
-                              }}
-                            />
-                            <h3 className="font-bold text-gray-800 text-lg">
-                              {category.name}
-                            </h3>
-                          </div>
-                          <div className="flex items-center space-x-2 mb-2">
-                            <img
-                              src={marker.icon}
-                              alt={marker.name}
-                              className="w-6 h-6 rounded border border-gray-300"
-                              onError={(e) => {
-                                e.currentTarget.style.display = "none";
-                              }}
-                            />
-                            <p className="font-semibold text-gray-700">
-                              {marker.name}
-                            </p>
-                          </div>
-                          <div className="text-sm text-gray-600 mb-3">
-                            <p>
-                              <strong>Position:</strong> ({instance.position.x},{" "}
-                              {instance.position.y})
-                            </p>
-                          </div>
-                          <div className="flex gap-2">
-                            <button
-                              onClick={() => onToggleMarker?.(markerKey)}
-                              className={`px-4 py-2 text-white text-sm font-medium rounded-md transition-colors flex-1 ${
-                                isMarked
-                                  ? "bg-red-500 hover:bg-red-600"
-                                  : "bg-blue-500 hover:bg-blue-600"
-                              }`}
-                            >
-                              {isMarked
-                                ? "Marquer comme non-vu"
-                                : "Marquer comme vu"}
-                            </button>
-                          </div>
-                          {isMarked && (
-                            <div className="mt-2 flex items-center space-x-2">
-                              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                              <p className="text-sm text-green-600 font-medium">
-                                ✓ Marqué comme vu
-                              </p>
-                            </div>
-                          )}
-                        </div>
-                      </Popup>
-                    </Marker>
-                  );
+                  // Collecter les données du marqueur
+                  markerData.push({
+                    position,
+                    key: markerKey,
+                    iconUrl: marker.icon,
+                    isMarked,
+                    category,
+                    marker,
+                    instance,
+                  });
                 }
               }
             }
           }
         }
+      }
+
+      // Étape 2: Collecter les URLs d'icônes uniques
+      const uniqueIconUrls = [
+        ...new Set(markerData.map((data) => data.iconUrl)),
+      ];
+
+      // Étape 3: Charger toutes les icônes en parallèle
+      const iconPromises = uniqueIconUrls.map((url) => createCustomIcon(url));
+      const loadedIcons = await Promise.all(iconPromises);
+
+      // Étape 4: Créer un mapping URL -> Icon
+      const iconMap = new Map<string, Icon>();
+      uniqueIconUrls.forEach((url, index) => {
+        iconMap.set(url, loadedIcons[index]);
+      });
+
+      // Étape 5: Créer les marqueurs avec les icônes déjà chargées
+      const newMarkers: React.JSX.Element[] = [];
+
+      for (const data of markerData) {
+        const customIcon = iconMap.get(data.iconUrl)!;
+
+        newMarkers.push(
+          <Marker
+            key={data.key}
+            position={data.position}
+            icon={customIcon}
+            opacity={data.isMarked ? 0.5 : 1}
+          >
+            <Popup>
+              <div className="bg-white rounded-lg shadow-lg p-4 min-w-[280px] border border-gray-200">
+                <div className="flex items-center space-x-3 mb-3">
+                  <img
+                    src={data.category.icon}
+                    alt={data.category.name}
+                    className="w-8 h-8 rounded border border-gray-300"
+                    onError={(e) => {
+                      e.currentTarget.style.display = "none";
+                    }}
+                  />
+                  <h3 className="font-bold text-gray-800 text-lg">
+                    {data.category.name}
+                  </h3>
+                </div>
+                <div className="flex items-center space-x-2 mb-2">
+                  <img
+                    src={data.marker.icon}
+                    alt={data.marker.name}
+                    className="w-6 h-6 rounded border border-gray-300"
+                    onError={(e) => {
+                      e.currentTarget.style.display = "none";
+                    }}
+                  />
+                  <p className="font-semibold text-gray-700">
+                    {data.marker.name}
+                  </p>
+                </div>
+                <div className="text-sm text-gray-600 mb-3">
+                  <p>
+                    <strong>Position:</strong> ({data.instance.position.x},{" "}
+                    {data.instance.position.y})
+                  </p>
+                </div>
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => onToggleMarker?.(data.key)}
+                    className={`px-4 py-2 text-white text-sm font-medium rounded-md transition-colors flex-1 ${
+                      data.isMarked
+                        ? "bg-red-500 hover:bg-red-600"
+                        : "bg-blue-500 hover:bg-blue-600"
+                    }`}
+                  >
+                    {data.isMarked
+                      ? "Marquer comme non-vu"
+                      : "Marquer comme vu"}
+                  </button>
+                </div>
+                {data.isMarked && (
+                  <div className="mt-2 flex items-center space-x-2">
+                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                    <p className="text-sm text-green-600 font-medium">
+                      ✓ Marqué comme vu
+                    </p>
+                  </div>
+                )}
+              </div>
+            </Popup>
+          </Marker>
+        );
       }
 
       setMarkers(newMarkers);
@@ -288,11 +343,8 @@ export default function MapComponent({
 
   if (!isClient || !selectedMap) {
     return (
-      <div className="w-full h-[70vh] bg-gray-900 flex items-center justify-center text-white">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
-          <p>Chargement de la carte...</p>
-        </div>
+      <div className="w-full h-screen bg-gray-900">
+        <Loading mode="box" message="Chargement de la carte..." size={48} />
       </div>
     );
   }
@@ -303,10 +355,15 @@ export default function MapComponent({
   ];
 
   return (
-    <div className="w-full h-full border-2 border-gray-600 rounded-lg overflow-hidden relative">
+    <div className="w-full h-screen border-2 border-gray-600 rounded-lg overflow-hidden relative">
       {loading && (
-        <div className="absolute top-4 left-4 z-50 bg-black/70 text-white px-3 py-2 rounded-md">
-          Chargement des marqueurs...
+        <div className="absolute top-5 left-16 z-[1000]">
+          <Loading
+            mode="withMessage"
+            message="Chargement des marqueurs..."
+            size={20}
+            className="text-white"
+          />
         </div>
       )}
       <MapContainer
@@ -315,17 +372,18 @@ export default function MapComponent({
           selectedMap.imageSize.height / 2,
           selectedMap.imageSize.width / 2,
         ]}
-        zoom={0}
+        zoom={-2.5}
         maxBounds={bounds}
         maxBoundsViscosity={1.5}
         className="w-full h-full"
-        zoomControl={true}
+        zoomControl={false}
         scrollWheelZoom={true}
-        minZoom={-2}
+        minZoom={-2.5}
         maxZoom={4}
       >
         <MapController bounds={bounds} />
         <ImageOverlay url={selectedMap.image} bounds={bounds} />
+        <ZoomControl position="bottomright" />
         {markers}
       </MapContainer>
     </div>

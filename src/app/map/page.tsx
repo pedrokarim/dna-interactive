@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useAtom } from "jotai";
 import dynamic from "next/dynamic";
 import mapData from "@/data/mapData.json";
+import Loading from "@/components/Loading";
 import {
   selectedMapIdAtom,
   visibleCategoriesAtom,
@@ -28,11 +29,8 @@ import {
 const MapComponent = dynamic(() => import("@/components/MapComponent"), {
   ssr: false,
   loading: () => (
-    <div className="w-full h-full bg-gray-900 flex items-center justify-center text-white">
-      <div className="text-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
-        <p>Chargement de la carte...</p>
-      </div>
+    <div className="w-full h-full bg-gray-900">
+      <Loading mode="box" message="Chargement de la carte..." size={48} />
     </div>
   ),
 });
@@ -114,10 +112,10 @@ export default function MapPage() {
   }, [selectedMap, setVisibleCategories]); // Retiré visibleCategories des dépendances pour éviter les boucles
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-purple-950 via-slate-900 to-indigo-950 text-white flex">
+    <div className="h-screen bg-linear-to-br from-purple-950 via-slate-900 to-indigo-950 text-white flex overflow-hidden">
       {/* Colonne latérale gauche - Menu */}
       <aside
-        className={`bg-slate-950/90 backdrop-blur-sm border-r border-indigo-500/20 flex flex-col min-h-screen transition-all duration-300 ${
+        className={`bg-slate-950/90 backdrop-blur-sm border-r border-indigo-500/20 flex flex-col h-screen transition-all duration-300 ${
           isMenuCollapsed ? "w-16" : "w-80"
         }`}
       >
@@ -322,7 +320,7 @@ export default function MapPage() {
         </button>
 
         {/* Zone de la carte */}
-        <div className="w-full h-full min-h-screen">
+        <div className="w-full h-full">
           <MapComponent
             selectedMap={selectedMap}
             visibleCategories={visibleCategories}
@@ -332,18 +330,8 @@ export default function MapPage() {
           />
         </div>
 
-        {/* Contrôles de zoom */}
-        <div className="absolute bottom-4 right-4 z-50 flex flex-col space-y-2">
-          <button className="bg-slate-800/80 backdrop-blur-sm hover:bg-slate-700/80 rounded-md p-2 transition-colors border border-indigo-500/20">
-            <span className="text-white font-bold">+</span>
-          </button>
-          <button className="bg-slate-800/80 backdrop-blur-sm hover:bg-slate-700/80 rounded-md p-2 transition-colors border border-indigo-500/20">
-            <span className="text-white font-bold">−</span>
-          </button>
-        </div>
-
         {/* Barre de statut */}
-        <div className="absolute bottom-4 left-4 bg-slate-900/80 backdrop-blur-sm border border-indigo-500/30 rounded-lg p-3 z-50">
+        <div className="absolute bottom-6 left-4 bg-slate-900/80 backdrop-blur-sm border border-indigo-500/30 rounded-lg p-3 z-50">
           <div className="flex items-center space-x-4 text-sm">
             <div className="flex items-center space-x-2">
               <div className="w-2 h-2 bg-indigo-400 rounded-full"></div>
