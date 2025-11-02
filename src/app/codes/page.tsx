@@ -16,9 +16,7 @@ export default function CodesPage() {
               />
               <div>
                 <h1 className="text-2xl font-bold text-white flex items-center gap-2">
-                  <span className="text-indigo-400">✦</span>
                   {SITE_CONFIG.name}
-                  <span className="text-indigo-400">✦</span>
                 </h1>
                 <p className="text-xs text-gray-400">{SITE_CONFIG.tagline}</p>
               </div>
