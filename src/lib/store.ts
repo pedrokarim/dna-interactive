@@ -119,6 +119,14 @@ export const visibleCategoriesAtom = atomWithStorage<Record<string, boolean>>(
   "visible-categories",
   {}
 );
+export const expandedCategoriesAtom = atomWithStorage<Record<string, boolean>>(
+  "expanded-categories",
+  {}
+);
+export const sidebarWidthAtom = atomWithStorage<number>(
+  "sidebar-width",
+  320
+);
 
 // Atome de stockage pour les codes utilisés
 const usedCodesStorageAtom = atomWithStorage<string[]>("used-codes", []);

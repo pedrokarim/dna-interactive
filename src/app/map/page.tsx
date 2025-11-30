@@ -12,6 +12,8 @@ import ImportModal from "@/components/ImportModal";
 import {
   selectedMapIdAtom,
   visibleCategoriesAtom,
+  expandedCategoriesAtom,
+  sidebarWidthAtom,
   markedMarkersAtom,
   toggleMarkerMarkedAtom,
   toggleCategoryVisibilityAtom,
@@ -43,49 +45,296 @@ export default function MapPage() {
   const [visibleCategories, setVisibleCategories] = useAtom(
     visibleCategoriesAtom
   );
+  const [expandedCategories, setExpandedCategories] = useAtom(
+    expandedCategoriesAtom
+  );
+  const [sidebarWidth, setSidebarWidth] = useAtom(sidebarWidthAtom);
   const [markedMarkers, setMarkedMarkers] = useAtom(markedMarkersAtom);
   const [, toggleMarkerMarked] = useAtom(toggleMarkerMarkedAtom);
   const [, toggleCategoryVisibility] = useAtom(toggleCategoryVisibilityAtom);
+
+  // Fonction pour reset la taille de la sidebar
+  const resetSidebarWidth = () => {
+    setSidebarWidth(320); // Taille par défaut
+  };
+
+  // Fonctions pour gérer la sélection/désélection de groupes
+  const selectAllInGroup = (group: (typeof groupedCategories)[0]) => {
+    const updates: Record<string, boolean> = {};
+    group.items.forEach((item) => {
+      updates[item.name.toLowerCase().trim()] = true;
+    });
+    setVisibleCategories((prev) => ({ ...prev, ...updates }));
+  };
+
+  const deselectAllInGroup = (group: (typeof groupedCategories)[0]) => {
+    const updates: Record<string, boolean> = {};
+    group.items.forEach((item) => {
+      updates[item.name.toLowerCase().trim()] = false;
+    });
+    setVisibleCategories((prev) => ({ ...prev, ...updates }));
+  };
+
+  const isGroupFullySelected = (group: (typeof groupedCategories)[0]) => {
+    return group.items.every(
+      (item) => visibleCategories[item.name.toLowerCase().trim()] !== false
+    );
+  };
+
+  const isGroupFullyDeselected = (group: (typeof groupedCategories)[0]) => {
+    return group.items.every(
+      (item) => visibleCategories[item.name.toLowerCase().trim()] === false
+    );
+  };
   const [hideFoundMarkers, setHideFoundMarkers] = useState(false);
   const [isMenuCollapsed, setIsMenuCollapsed] = useState(false);
   const [currentBgImage, setCurrentBgImage] = useState(0);
   const [searchQuery, setSearchQuery] = useState("");
   const [isActionMenuOpen, setIsActionMenuOpen] = useState(false);
+  const [isResizing, setIsResizing] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [startWidth, setStartWidth] = useState(0);
   const [, resetAllMarkers] = useAtom(resetAllMarkersAtom);
   const [showResetConfirm, setShowResetConfirm] = useState(false);
   const [showExportModal, setShowExportModal] = useState(false);
   const [showImportModal, setShowImportModal] = useState(false);
 
-  // Fonction pour obtenir toutes les catégories uniques avec leurs icônes
-  const getUniqueCategories = () => {
-    const categoriesMap = new Map();
+  // Gestionnaires pour le redimensionnement de la sidebar
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (isMenuCollapsed) return;
+    setIsResizing(true);
+    setStartX(e.clientX);
+    setStartWidth(sidebarWidth);
+    document.body.style.cursor = "ew-resize";
+    document.body.style.userSelect = "none";
+  };
 
+  const handleMouseMove = (e: MouseEvent) => {
+    if (!isResizing) return;
+
+    const deltaX = e.clientX - startX;
+    const newWidth = Math.max(
+      200,
+      Math.min(window.innerWidth / 2, startWidth + deltaX)
+    );
+    setSidebarWidth(newWidth);
+  };
+
+  const handleMouseUp = () => {
+    if (!isResizing) return;
+    setIsResizing(false);
+    document.body.style.cursor = "";
+    document.body.style.userSelect = "";
+  };
+
+  // Effets pour les événements de souris globaux
+  useEffect(() => {
+    if (isResizing) {
+      document.addEventListener("mousemove", handleMouseMove);
+      document.addEventListener("mouseup", handleMouseUp);
+    } else {
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseup", handleMouseUp);
+    }
+
+    return () => {
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseup", handleMouseUp);
+    };
+  }, [isResizing, startX, startWidth]);
+
+  // Fonction pour regrouper les sous-catégories dans des catégories principales
+  const getGroupedCategories = () => {
+    const allSubCategories: Array<{
+      id: string;
+      name: string;
+      icon: string;
+      parentType: string;
+      parentLabel: string;
+      parentIcon: string;
+      mapId: string;
+    }> = [];
+
+    // Utiliser un Map pour éviter les doublons par nom
+    const uniqueSubCategories = new Map<string, (typeof allSubCategories)[0]>();
+
+    // Collecter toutes les sous-catégories en évitant les doublons
     mapData.forEach((map) => {
       if (map.legend) {
         map.legend.forEach((category) => {
-          if (!categoriesMap.has(category.type)) {
-            categoriesMap.set(category.type, {
-              id: category.type,
-              name: category.label,
-              icon: category.icon,
+          if (category.markers) {
+            category.markers.forEach((subCategory) => {
+              const uniqueId = `${map.id}-${category.type}-${subCategory.id}`;
+              const nameKey = subCategory.name.toLowerCase().trim();
+
+              // Si cette sous-catégorie n'existe pas encore, l'ajouter
+              if (!uniqueSubCategories.has(nameKey)) {
+                uniqueSubCategories.set(nameKey, {
+                  id: uniqueId, // Garder l'ID original pour la logique existante
+                  name: subCategory.name,
+                  icon: subCategory.icon,
+                  parentType: category.type,
+                  parentLabel: category.label,
+                  parentIcon: category.icon,
+                  mapId: map.id,
+                });
+              }
             });
           }
         });
       }
     });
 
-    return Array.from(categoriesMap.values());
+    // Convertir le Map en Array
+    allSubCategories.push(...uniqueSubCategories.values());
+
+    // Définir les groupes logiques avec des icônes appropriées
+    const categoryGroups = {
+      collectibles: {
+        name: "Collectibles",
+        icon: "https://herobox-img.yingxiong.com/map/1749672600072455391.png", // Icône collectibles originale
+        items: [] as typeof allSubCategories,
+      },
+      chests: {
+        name: "Coffres",
+        icon: "https://herobox-img.yingxiong.com/map/1749672743841364457.png", // Icône coffre originale
+        items: [] as typeof allSubCategories,
+      },
+      books: {
+        name: "Livres & Documents",
+        icon: "https://herobox-img.yingxiong.com/map/1749555921415533794.png", // Icône livre temporaire
+        items: [] as typeof allSubCategories,
+      },
+      locations: {
+        name: "Lieux & PNJ",
+        icon: "https://herobox-img.yingxiong.com/map/1749555783038694078.png", // Icône lieu temporaire
+        items: [] as typeof allSubCategories,
+      },
+      challenges: {
+        name: "Événements & Défis",
+        icon: "https://herobox-img.yingxiong.com/map/1749556012460864902.png", // Icône défi temporaire
+        items: [] as typeof allSubCategories,
+      },
+      others: {
+        name: "Autres",
+        icon: "https://herobox-img.yingxiong.com/map/1749672734516496170.png", // Icône autres
+        items: [] as typeof allSubCategories,
+      },
+    };
+
+    // Regrouper les éléments dans les bonnes catégories
+    allSubCategories.forEach((item) => {
+      const name = item.name.toLowerCase();
+
+      // Collectibles
+      if (
+        name.includes("spring") ||
+        name.includes("shell") ||
+        name.includes("mushroom") ||
+        name.includes("flower") ||
+        name.includes("butterfly") ||
+        name.includes("egg") ||
+        name.includes("sap") ||
+        name.includes("grass") ||
+        name.includes("stone") ||
+        name.includes("lily") ||
+        name.includes("snowcap") ||
+        name.includes("cracks")
+      ) {
+        categoryGroups.collectibles.items.push(item);
+      }
+      // Coffres
+      else if (name.includes("chest") || name.includes("coffre")) {
+        categoryGroups.chests.items.push(item);
+      }
+      // Livres et documents
+      else if (
+        name.includes("diary") ||
+        name.includes("part ") ||
+        name.includes("letter") ||
+        name.includes("book") ||
+        name.includes("file") ||
+        name.includes("hymn") ||
+        name.includes("excerpt") ||
+        name.includes("newspaper") ||
+        name.includes("note") ||
+        name.includes("bill") ||
+        name.includes("label") ||
+        name.includes("medal") ||
+        name.includes("log ") ||
+        name.includes("candle") ||
+        name.includes("alliance") ||
+        name.includes("drink") ||
+        name.includes("branches") ||
+        name.includes("command") ||
+        name.includes("farewell") ||
+        name.includes("success") ||
+        name.includes("poverty")
+      ) {
+        categoryGroups.books.items.push(item);
+      }
+      // Lieux et PNJ
+      else if (
+        name.includes("npc") ||
+        name.includes("shop") ||
+        name.includes("house") ||
+        name.includes("hospital") ||
+        name.includes("temple") ||
+        name.includes("barrel")
+      ) {
+        categoryGroups.locations.items.push(item);
+      }
+      // Événements et défis
+      else if (
+        name.includes("challenge") ||
+        name.includes("event") ||
+        name.includes("shooting") ||
+        name.includes("parkour") ||
+        name.includes("equipment") ||
+        name.includes("protect") ||
+        name.includes("explorer") ||
+        name.includes("检定")
+      ) {
+        categoryGroups.challenges.items.push(item);
+      }
+      // Autres (points de téléportation, démons, pêche, etc.)
+      else {
+        categoryGroups.others.items.push(item);
+      }
+    });
+
+    // Retourner seulement les groupes qui ont des éléments
+    return Object.entries(categoryGroups)
+      .filter(([_, group]) => group.items.length > 0)
+      .map(([key, group]) => ({
+        id: key,
+        name: group.name,
+        icon: group.icon,
+        items: group.items,
+      }));
   };
 
-  const allCategories = getUniqueCategories();
+  const groupedCategories = getGroupedCategories();
 
-  // Filtrer les catégories selon la recherche
-  const filteredCategories = allCategories.filter((category) => {
+  // Filtrer les groupes selon la recherche
+  const filteredGroups = groupedCategories.filter((group) => {
     if (!searchQuery.trim()) return true;
-    return category.name
-      .toLowerCase()
-      .includes(searchQuery.toLowerCase().trim());
+    // Vérifier si le nom du groupe correspond
+    if (group.name.toLowerCase().includes(searchQuery.toLowerCase().trim()))
+      return true;
+    // Vérifier si un élément du groupe correspond
+    return group.items.some((item) =>
+      item.name.toLowerCase().includes(searchQuery.toLowerCase().trim())
+    );
   });
+
+  // Fonction pour basculer l'état d'un accordéon
+  const toggleCategoryExpansion = (categoryId: string) => {
+    setExpandedCategories((prev) => ({
+      ...prev,
+      [categoryId]: !prev[categoryId],
+    }));
+  };
 
   // Fonction pour exporter les marqueurs
   const handleExportMarkers = (format: "json" | "csv") => {
@@ -194,9 +443,14 @@ export default function MapPage() {
       const newVisibility: Record<string, boolean> = {};
 
       // On garde seulement les catégories de toutes les cartes vues récemment
-      // Pour cette carte, on met toutes les catégories à true par défaut
+      // Pour cette carte, on met toutes les sous-catégories à true par défaut
       selectedMap.legend.forEach((category: any) => {
-        newVisibility[category.type] = true;
+        if (category.markers) {
+          category.markers.forEach((subCategory: any) => {
+            const subCategoryId = `${selectedMap.id}-${category.type}-${subCategory.id}`;
+            newVisibility[subCategoryId] = true;
+          });
+        }
       });
 
       // On garde aussi les catégories des autres cartes si elles existent déjà
@@ -221,7 +475,7 @@ export default function MapPage() {
           onToggleMarker={toggleMarkerMarked}
           hideFoundMarkers={hideFoundMarkers}
           isSidebarOpen={!isMenuCollapsed}
-          sidebarWidth={isMenuCollapsed ? 64 : 320}
+          sidebarWidth={isMenuCollapsed ? 64 : sidebarWidth}
         />
       </div>
 
@@ -230,8 +484,11 @@ export default function MapPage() {
         className={`absolute left-4 top-4 bottom-4 bg-slate-950/95 backdrop-blur-md flex flex-col z-[100] transition-all duration-300 ${
           isMenuCollapsed
             ? "w-0 overflow-hidden opacity-0 pointer-events-none border-0 shadow-none"
-            : "w-80 rounded-3xl opacity-100 border border-indigo-500/30 shadow-[0_20px_60px_rgba(0,0,0,0.8),0_0_0_1px_rgba(99,102,241,0.2),inset_0_1px_0_rgba(255,255,255,0.05)]"
+            : "rounded-3xl opacity-100 border border-indigo-500/30 shadow-[0_20px_60px_rgba(0,0,0,0.8),0_0_0_1px_rgba(99,102,241,0.2),inset_0_1px_0_rgba(255,255,255,0.05)]"
         }`}
+        style={{
+          width: isMenuCollapsed ? 0 : sidebarWidth,
+        }}
       >
         {/* Titre et sélection de région */}
         <div
@@ -328,7 +585,7 @@ export default function MapPage() {
 
         {/* Section Catégories - Grid */}
         {!isMenuCollapsed && (
-          <div className="relative p-6 border-b border-indigo-500/20 flex-1 overflow-y-auto">
+          <div className="relative p-2 border-b border-indigo-500/20 flex-1 overflow-y-auto custom-scrollbar">
             {/* Arrière-plan avec effet Ken Burns */}
             <div className="absolute inset-0 overflow-hidden">
               {ASSETS_PATHS.worldview.map((imagePath, index) => (
@@ -351,68 +608,189 @@ export default function MapPage() {
               <div className="absolute inset-0 bg-slate-950/20 backdrop-blur-[0.5px] z-10" />
             </div>
 
-            {/* Contenu des catégories en grid */}
+            {/* Contenu des catégories avec accordéons */}
             <div className="relative z-20">
               <h3 className="text-lg font-semibold text-white mb-4">
                 Catégories
               </h3>
-              <div className="grid grid-cols-4 gap-2">
-                {filteredCategories.map((category) => (
-                  <button
-                    key={category.id}
-                    onClick={() => toggleCategoryVisibility(category.id)}
-                    title={category.name}
-                    className={`group relative flex flex-col items-center p-2.5 rounded-lg transition-all duration-300 border min-w-0 ${
-                      visibleCategories[category.id] !== false
-                        ? "bg-indigo-600/30 border-indigo-400/60 shadow-lg shadow-indigo-500/20 backdrop-blur-sm"
-                        : "bg-slate-800/60 hover:bg-slate-700/70 border-indigo-500/30 hover:border-indigo-400/50 backdrop-blur-sm opacity-50"
-                    }`}
-                  >
-                    <div className="w-14 h-14 rounded-md overflow-hidden border border-indigo-500/40 shadow-sm mb-1.5 flex items-center justify-center bg-slate-600/50">
-                      <img
-                        src={category.icon}
-                        alt={category.name}
-                        className="max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-110"
-                        onError={(e) => {
-                          e.currentTarget.style.display = "none";
-                        }}
-                      />
-                    </div>
-                    <span className="text-xs text-white text-center truncate w-full font-medium mb-1 leading-tight">
-                      {category.name}
-                    </span>
-                    {visibleCategories[category.id] !== false && (
-                      <div className="text-xs font-semibold text-indigo-400">
-                        {selectedMap?.legend
-                          ?.find((cat) => cat.type === category.id)
-                          ?.markers?.reduce(
-                            (total, marker) =>
-                              total + (marker.markers?.length || 0),
-                            0
-                          ) || 0}
-                      </div>
-                    )}
-                    {/* Tooltip personnalisé */}
-                    <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-slate-950/95 backdrop-blur-md text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-200 whitespace-nowrap z-50 border border-indigo-500/40 shadow-[0_8px_24px_rgba(0,0,0,0.6)]">
-                      <div className="flex items-center gap-2">
-                        <div className="w-5 h-5 rounded border border-indigo-500/30 bg-slate-700/60 flex items-center justify-center">
-                          <img
-                            src={category.icon}
-                            alt={category.name}
-                            className="max-w-full max-h-full object-contain"
-                            onError={(e) => {
-                              e.currentTarget.style.display = "none";
-                            }}
-                          />
+              <div className="space-y-2">
+                {filteredGroups.map((group) => {
+                  const isExpanded = expandedCategories[group.id] || false;
+                  const visibleItems = group.items.filter(
+                    (item) =>
+                      visibleCategories[item.name.toLowerCase().trim()] !==
+                      false
+                  );
+                  const totalMarkers = group.items.reduce((total, item) => {
+                    const [mapId, categoryType, subCategoryIdStr] =
+                      item.id.split("-");
+                    const subCategoryId = parseInt(subCategoryIdStr);
+                    if (selectedMap?.id === mapId) {
+                      for (const cat of selectedMap.legend || []) {
+                        if (cat.type === categoryType) {
+                          const subCat = cat.markers?.find(
+                            (m) => m.id === subCategoryId
+                          );
+                          return total + (subCat?.markers?.length || 0);
+                        }
+                      }
+                    }
+                    return total;
+                  }, 0);
+
+                  return (
+                    <div
+                      key={group.id}
+                      className="bg-slate-800/30 rounded-lg border border-indigo-500/20 overflow-hidden"
+                    >
+                      {/* En-tête de la catégorie */}
+                      <button
+                        onClick={() => toggleCategoryExpansion(group.id)}
+                        className="w-full flex items-center justify-between p-3 hover:bg-slate-700/30 transition-colors"
+                      >
+                        <div className="flex items-center gap-3">
+                          <div className="w-8 h-8 rounded border border-indigo-500/30 bg-slate-700/60 flex items-center justify-center">
+                            <img
+                              src={group.icon}
+                              alt={group.name}
+                              className="max-w-full max-h-full object-contain"
+                              onError={(e) => {
+                                e.currentTarget.style.display = "none";
+                              }}
+                            />
+                          </div>
+                          <div className="text-left">
+                            <span className="text-sm font-medium text-white">
+                              {group.name}
+                            </span>
+                            <div className="text-xs text-gray-400">
+                              {group.items.length} types • {totalMarkers}{" "}
+                              marqueurs
+                            </div>
+                          </div>
                         </div>
-                        <span className="font-medium">{category.name}</span>
-                      </div>
-                      <div className="absolute top-full left-1/2 transform -translate-x-1/2 -mt-1">
-                        <div className="w-2 h-2 bg-slate-950 border-r border-b border-indigo-500/40 transform rotate-45"></div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs text-indigo-400 font-semibold">
+                            {visibleItems.length}/{group.items.length}
+                          </span>
+                          {/* Boutons Tout sélectionner/Désélectionner */}
+                          <div className="flex gap-1">
+                            {!isGroupFullySelected(group) && (
+                              <button
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  selectAllInGroup(group);
+                                }}
+                                className="text-xs px-2 py-1 bg-indigo-600/80 hover:bg-indigo-600 rounded text-white transition-colors"
+                                title="Tout sélectionner"
+                              >
+                                ✓
+                              </button>
+                            )}
+                            {!isGroupFullyDeselected(group) && (
+                              <button
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  deselectAllInGroup(group);
+                                }}
+                                className="text-xs px-2 py-1 bg-red-600/80 hover:bg-red-600 rounded text-white transition-colors"
+                                title="Tout désélectionner"
+                              >
+                                ✗
+                              </button>
+                            )}
+                          </div>
+                          <svg
+                            className={`w-4 h-4 text-indigo-400 transition-transform duration-200 ${
+                              isExpanded ? "rotate-180" : ""
+                            }`}
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M19 9l-7 7-7-7"
+                            />
+                          </svg>
+                        </div>
+                      </button>
+
+                      {/* Contenu de l'accordéon */}
+                      <div
+                        className={`overflow-hidden transition-all duration-300 ${
+                          isExpanded
+                            ? "max-h-[800px] opacity-100"
+                            : "max-h-0 opacity-0"
+                        }`}
+                      >
+                        <div className="p-3 pt-0">
+                          <div className="grid grid-cols-3 gap-2 max-h-80 overflow-y-auto custom-scrollbar">
+                            {group.items.map((item) => {
+                              const [mapId, categoryType, subCategoryIdStr] =
+                                item.id.split("-");
+                              const subCategoryId = parseInt(subCategoryIdStr);
+                              let markerCount = 0;
+
+                              if (selectedMap?.id === mapId) {
+                                for (const cat of selectedMap.legend || []) {
+                                  if (cat.type === categoryType) {
+                                    const subCat = cat.markers?.find(
+                                      (m) => m.id === subCategoryId
+                                    );
+                                    markerCount = subCat?.markers?.length || 0;
+                                    break;
+                                  }
+                                }
+                              }
+
+                              return (
+                                <button
+                                  key={item.id}
+                                  onClick={() =>
+                                    toggleCategoryVisibility(
+                                      item.name.toLowerCase().trim()
+                                    )
+                                  }
+                                  title={item.name}
+                                  className={`group relative flex flex-col items-center p-2 rounded-md transition-all duration-300 border min-w-0 ${
+                                    visibleCategories[
+                                      item.name.toLowerCase().trim()
+                                    ] !== false
+                                      ? "bg-indigo-600/20 border-indigo-400/50 shadow-sm"
+                                      : "bg-slate-700/40 hover:bg-slate-600/50 border-indigo-500/20 hover:border-indigo-400/30 opacity-50"
+                                  }`}
+                                >
+                                  <div className="w-10 h-10 rounded overflow-hidden border border-indigo-500/30 shadow-sm mb-1 flex items-center justify-center bg-slate-600/50">
+                                    <img
+                                      src={item.icon}
+                                      alt={item.name}
+                                      className="max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-110"
+                                      onError={(e) => {
+                                        e.currentTarget.style.display = "none";
+                                      }}
+                                    />
+                                  </div>
+                                  <span className="text-xs text-white text-center truncate w-full font-medium mb-0.5 leading-tight">
+                                    {item.name}
+                                  </span>
+                                  {visibleCategories[item.id] !== false &&
+                                    markerCount > 0 && (
+                                      <div className="text-xs font-semibold text-indigo-400">
+                                        {markerCount}
+                                      </div>
+                                    )}
+                                </button>
+                              );
+                            })}
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </button>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -465,12 +843,23 @@ export default function MapPage() {
         )}
       </aside>
 
+      {/* Handle de redimensionnement */}
+      {!isMenuCollapsed && (
+        <div
+          className="absolute top-10 bottom-10 z-[105] w-1 bg-indigo-500/20 hover:bg-indigo-500/40 cursor-ew-resize transition-colors duration-200 rounded-full"
+          style={{ left: 16 + sidebarWidth }}
+          onMouseDown={handleMouseDown}
+          title="Redimensionner la sidebar"
+        />
+      )}
+
       {/* Bouton toggle sidebar - Toujours visible, positionné différemment selon l'état */}
       <button
         onClick={() => setIsMenuCollapsed(!isMenuCollapsed)}
-        className={`absolute z-[110] bg-slate-800/90 backdrop-blur-sm hover:bg-slate-700/90 rounded-lg p-2.5 transition-all duration-300 border border-indigo-500/30 shadow-lg top-1/2 -translate-y-1/2 ${
-          isMenuCollapsed ? "left-4" : "left-[340px]"
-        }`}
+        className="absolute z-[110] bg-slate-800/90 backdrop-blur-sm hover:bg-slate-700/90 rounded-lg p-2.5 transition-all duration-300 border border-indigo-500/30 shadow-lg top-1/2 -translate-y-1/2"
+        style={{
+          left: isMenuCollapsed ? 16 : 20 + sidebarWidth,
+        }}
       >
         <svg
           className="w-5 h-5 text-white"
@@ -596,6 +985,34 @@ export default function MapPage() {
                       Réinitialiser tous les marqueurs
                     </span>
                   </button>
+
+                  <div className="h-px bg-indigo-500/20 my-1"></div>
+
+                  {/* Reset sidebar */}
+                  <button
+                    onClick={() => {
+                      resetSidebarWidth();
+                      setIsActionMenuOpen(false);
+                    }}
+                    className="w-full px-4 py-2.5 text-left text-sm text-white hover:bg-slate-800/70 transition-colors flex items-center gap-3"
+                  >
+                    <svg
+                      className="w-4 h-4 text-blue-400"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 1v4m0 0h-4m4 0l-5-5"
+                      />
+                    </svg>
+                    <span className="text-blue-400">
+                      Réinitialiser la taille du panneau
+                    </span>
+                  </button>
                 </div>
               </div>
             </>
@@ -633,7 +1050,10 @@ export default function MapPage() {
 
       {/* Barre de statut en bas à gauche - Positionnée à droite de la sidebar */}
       {!isMenuCollapsed && (
-        <div className="absolute bottom-6 left-[348px] bg-slate-900/80 backdrop-blur-sm border border-indigo-500/30 rounded-lg p-3 z-[90] shadow-lg">
+        <div
+          className="absolute bottom-6 bg-slate-900/80 backdrop-blur-sm border border-indigo-500/30 rounded-lg p-3 z-[90] shadow-lg"
+          style={{ left: 20 + sidebarWidth }}
+        >
           <div className="flex items-center space-x-4 text-sm">
             <div className="flex items-center space-x-2">
               <div className="w-2 h-2 bg-indigo-400 rounded-full"></div>

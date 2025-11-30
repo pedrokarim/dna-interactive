@@ -4,7 +4,12 @@ import "./globals.css";
 import "../../public/leaflet.css";
 import { Providers } from "@/components/Providers";
 import StructuredData from "@/components/StructuredData";
-import { SITE_CONFIG, CONTACT_INFO, CREATOR_INFO, GAME_INFO } from "@/lib/constants";
+import {
+  SITE_CONFIG,
+  CONTACT_INFO,
+  CREATOR_INFO,
+  GAME_INFO,
+} from "@/lib/constants";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -19,19 +24,27 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://dna-interactive.ascencia.re"),
   title: {
-    default: `${SITE_CONFIG.name} - ${SITE_CONFIG.tagline}`,
-    template: `%s | ${SITE_CONFIG.name}`,
+    default: `DNA Interactive - Carte Interactive Duet Night Abyss | Map Gaming`,
+    template: `%s | DNA Interactive - Carte Interactive Duet Night Abyss`,
   },
-  description: GAME_INFO.mapDescription,
+  description: `Carte interactive ultime pour Duet Night Abyss. Explorez le monde du jeu avec DNA Interactive : trouvez tous les secrets, coffres et collectibles. Outil indispensable pour les joueurs de DNA.`,
   keywords: [
+    "DNA",
+    "DNA Interactive",
     "Duet Night Abyss",
     "carte interactive",
-    "gaming",
+    "gaming map",
+    "map interactive",
+    "jeu vidéo",
     "exploration",
     "marqueurs",
     "collectibles",
+    "coffres",
+    "secrets cachés",
     "carte du jeu",
-    "DNA Interactive",
+    "guide gaming",
+    "Duet Night Abyss map",
+    "DNA map",
     SITE_CONFIG.name,
   ],
   authors: [{ name: CREATOR_INFO.fullName }],
@@ -59,22 +72,24 @@ export const metadata: Metadata = {
     type: "website",
     locale: "fr_FR",
     url: "https://dna-interactive.ascencia.re",
-    siteName: SITE_CONFIG.name,
-    title: `${SITE_CONFIG.name} - ${SITE_CONFIG.tagline}`,
-    description: GAME_INFO.mapDescription,
+    siteName: "DNA Interactive",
+    title: "DNA Interactive - Carte Interactive Duet Night Abyss | Map Gaming",
+    description:
+      "Carte interactive ultime pour Duet Night Abyss. Explorez le monde du jeu avec DNA Interactive : trouvez tous les secrets, coffres et collectibles.",
     images: [
       {
         url: "/assets/worldview/worldview-1.webp",
         width: 1200,
         height: 630,
-        alt: `${SITE_CONFIG.name} - ${GAME_INFO.name}`,
+        alt: "DNA Interactive - Carte Interactive Duet Night Abyss",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE_CONFIG.name} - ${SITE_CONFIG.tagline}`,
-    description: GAME_INFO.mapDescription,
+    title: "DNA Interactive - Carte Interactive Duet Night Abyss",
+    description:
+      "Carte interactive ultime pour Duet Night Abyss. Trouvez tous les secrets et collectibles avec DNA Interactive.",
     images: ["/assets/worldview/worldview-1.webp"],
     creator: "@dna_interactive",
   },
@@ -96,7 +111,6 @@ export const metadata: Metadata = {
   other: {
     "theme-color": "#6366f1",
     "msapplication-TileColor": "#6366f1",
-    "msapplication-config": "/browserconfig.xml",
     "application-name": SITE_CONFIG.name,
   },
 };
@@ -107,13 +121,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="fr">
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}
       >
-        <Providers>
-          {children}
-        </Providers>
+        <Providers>{children}</Providers>
         <StructuredData type="organization" />
       </body>
     </html>

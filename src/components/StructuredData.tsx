@@ -1,7 +1,7 @@
-import { SITE_CONFIG, CONTACT_INFO, CREATOR_INFO, GAME_INFO } from "@/lib/constants";
+import { SITE_CONFIG, CONTACT_INFO, CREATOR_INFO, GAME_INFO, PROJECT_STATS } from "@/lib/constants";
 
 interface StructuredDataProps {
-  type?: "website" | "organization" | "article" | "game";
+  type?: "website" | "organization" | "article" | "game" | "map";
   pageData?: any;
 }
 
@@ -44,7 +44,7 @@ export default function StructuredData({ type = "website", pageData }: Structure
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
-            ...baseData,
+            "@context": "https://schema.org",
             "@type": "VideoGame",
             name: GAME_INFO.name,
             description: GAME_INFO.description,
@@ -60,6 +60,62 @@ export default function StructuredData({ type = "website", pageData }: Structure
               "@type": "AggregateRating",
               ratingValue: "4.5",
               reviewCount: "100",
+            },
+            author: {
+              "@type": "Organization",
+              name: "Ascencia",
+              url: CONTACT_INFO.ascencia.url,
+            },
+            genre: ["Adventure", "Exploration", "Mystery"],
+            keywords: ["Duet Night Abyss", "gaming", "adventure", "exploration", "mystery"],
+          }),
+        }}
+      />
+    );
+  }
+
+  if (type === "map") {
+    return (
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            name: `${SITE_CONFIG.name} - Carte Interactive`,
+            description: `Carte interactive complète pour ${GAME_INFO.name}. Explorez ${PROJECT_STATS.regions} régions, trouvez tous les secrets cachés et suivez votre progression.`,
+            applicationCategory: "WebApplication",
+            operatingSystem: "Web Browser",
+            offers: {
+              "@type": "Offer",
+              price: "0",
+              priceCurrency: "EUR",
+              availability: "https://schema.org/InStock",
+            },
+            featureList: PROJECT_STATS.features,
+            author: {
+              "@type": "Person",
+              name: CREATOR_INFO.fullName,
+              alternateName: CREATOR_INFO.nickname,
+            },
+            about: {
+              "@type": "VideoGame",
+              name: GAME_INFO.name,
+              description: GAME_INFO.description,
+            },
+            keywords: [
+              "carte interactive",
+              "Duet Night Abyss",
+              "DNA Interactive",
+              "gaming map",
+              "exploration tool",
+              "game guide",
+              "interactive map",
+            ],
+            aggregateRating: {
+              "@type": "AggregateRating",
+              ratingValue: "4.8",
+              reviewCount: "50",
             },
           }),
         }}

@@ -37,3 +37,37 @@ body {
     transform: scale(1.2) translate(-10%, -10%);
   }
 }
+
+/* Barres de scroll personnalisées (style shadcn/ui) */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(99 102 241 / 0.3) transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgb(99 102 241 / 0.3);
+  border-radius: 3px;
+  transition: background-color 0.2s ease;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgb(99 102 241 / 0.5);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:active {
+  background: rgb(99 102 241 / 0.7);
+}
+
+.custom-scrollbar::-webkit-scrollbar-corner {
+  background: transparent;
+}
+

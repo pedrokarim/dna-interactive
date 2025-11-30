@@ -257,12 +257,14 @@ export default function MapComponent({
 
       if (selectedMap.legend) {
         for (const category of selectedMap.legend) {
-          // Vérifier si la catégorie est visible (par défaut true)
-          const isCategoryVisible = visibleCategories[category.type] !== false;
-
-          if (isCategoryVisible && category.markers) {
+          if (category.markers) {
             for (const marker of category.markers) {
-              if (marker.markers) {
+              // Vérifier si cette sous-catégorie spécifique est visible
+              // Utiliser le nom de la sous-catégorie comme clé (comme dans la page map)
+              const subCategoryKey = marker.name.toLowerCase().trim();
+              const isSubCategoryVisible = visibleCategories[subCategoryKey] !== false;
+
+              if (isSubCategoryVisible && marker.markers) {
                 for (const instance of marker.markers) {
                   // Convertir les coordonnées (Y inversé car Leaflet a Y=0 en haut)
                   const position: LatLngTuple = [
