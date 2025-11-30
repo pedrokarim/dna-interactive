@@ -10,7 +10,7 @@ import ConfirmDialog from "@/components/ConfirmDialog";
 import ExportModal from "@/components/ExportModal";
 import ImportModal from "@/components/ImportModal";
 import {
-  selectedMapIdAtom,
+  selectedMapIdWithPersistenceAtom,
   visibleCategoriesAtom,
   expandedCategoriesAtom,
   sidebarWidthAtom,
@@ -41,7 +41,7 @@ const MapComponent = dynamic(() => import("@/components/MapComponent"), {
 });
 
 export default function MapPage() {
-  const [selectedMapId, setSelectedMapId] = useAtom(selectedMapIdAtom);
+  const [selectedMapId, setSelectedMapId] = useAtom(selectedMapIdWithPersistenceAtom);
   const [visibleCategories, setVisibleCategories] = useAtom(
     visibleCategoriesAtom
   );
@@ -98,6 +98,7 @@ export default function MapPage() {
   const [showResetConfirm, setShowResetConfirm] = useState(false);
   const [showExportModal, setShowExportModal] = useState(false);
   const [showImportModal, setShowImportModal] = useState(false);
+  const [hasInitializedMap, setHasInitializedMap] = useState(false);
 
   // Gestionnaires pour le redimensionnement de la sidebar
   const handleMouseDown = (e: React.MouseEvent) => {
@@ -430,12 +431,34 @@ export default function MapPage() {
   // Trouver la carte sélectionnée
   const selectedMap = mapData.find((map) => map.id === selectedMapId) || null;
 
-  // Sélectionner la première carte par défaut
+
+  // Charger la carte persistée au montage du composant
   useEffect(() => {
-    if (mapData.length > 0 && !selectedMapId) {
+    if (typeof window !== 'undefined' && mapData.length > 0 && !hasInitializedMap) {
+      setHasInitializedMap(true);
+
+      // Récupérer la valeur persistée directement depuis localStorage
+      const persistedMapId = localStorage.getItem('selected-map');
+      console.log('🔍 Chargement initial - Valeur localStorage:', persistedMapId);
+
+      if (persistedMapId) {
+        // Vérifier que cette carte existe dans les données actuelles
+        const persistedMap = mapData.find((map) => map.id === persistedMapId);
+        if (persistedMap) {
+          console.log('🔍 Chargement carte persistée:', persistedMapId);
+          setSelectedMapId(persistedMapId);
+          return;
+        } else {
+          console.log('🔍 Carte persistée non trouvée, suppression');
+          localStorage.removeItem('selected-map');
+        }
+      }
+
+      // Si pas de carte persistée valide, utiliser la première carte
+      console.log('🔍 Utilisation première carte:', mapData[0].id);
       setSelectedMapId(mapData[0].id);
     }
-  }, [mapData, selectedMapId, setSelectedMapId]);
+  }, [mapData, hasInitializedMap, setSelectedMapId]);
 
   // Initialiser la visibilité des catégories quand la carte change
   useEffect(() => {
@@ -544,8 +567,12 @@ export default function MapPage() {
                     Région
                   </label>
                   <select
-                    value={selectedMapId || ""}
-                    onChange={(e) => setSelectedMapId(e.target.value)}
+                    value={selectedMap?.id || ""}
+                    onChange={(e) => {
+                      const newMapId = e.target.value;
+                      console.log('🔄 Changement de région vers:', newMapId);
+                      setSelectedMapId(newMapId);
+                    }}
                     className="w-full bg-slate-800/50 backdrop-blur-sm border border-indigo-500/30 rounded-md px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400"
                   >
                     {mapData.map((map) => (

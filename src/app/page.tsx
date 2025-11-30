@@ -44,8 +44,8 @@ export default function Home() {
       setIsButtonAnimated(true);
       setTimeout(() => setIsButtonAnimated(false), 6000); // Animation dure 6 secondes
 
-      // Programmer la prochaine animation entre 10 et 20 secondes
-      const nextDelay = Math.random() * 10000 + 10000; // 10-20 secondes
+      // Programmer la prochaine animation entre 30 et 35 secondes
+      const nextDelay = Math.random() * 5000 + 30000; // 30-35 secondes
       setTimeout(triggerAnimation, nextDelay);
     };
 

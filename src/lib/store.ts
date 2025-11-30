@@ -110,9 +110,23 @@ export const GAME_CODES: GameCode[] = [
 ];
 
 // Atoms avec persistance
-export const selectedMapIdAtom = atomWithStorage<string | null>(
-  "selected-map",
-  null
+// Atome pour la carte sélectionnée (sans persistance automatique pour éviter les conflits)
+export const selectedMapIdAtom = atom<string | null>(null);
+
+// Atome dérivé pour gérer la persistance manuellement
+export const selectedMapIdWithPersistenceAtom = atom(
+  (get) => get(selectedMapIdAtom),
+  (get, set, newValue: string | null) => {
+    set(selectedMapIdAtom, newValue);
+    // Sauvegarder manuellement dans localStorage
+    if (typeof window !== 'undefined') {
+      if (newValue) {
+        localStorage.setItem('selected-map', newValue);
+      } else {
+        localStorage.removeItem('selected-map');
+      }
+    }
+  }
 );
 export const isMenuOpenAtom = atomWithStorage<boolean>("menu-open", false);
 export const visibleCategoriesAtom = atomWithStorage<Record<string, boolean>>(
