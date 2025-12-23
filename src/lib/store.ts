@@ -40,10 +40,42 @@ export interface GameCode {
   code: string;
   rewards: string[];
   isNew?: boolean;
+  expired?: boolean;
+  expiresAt?: string;
 }
 
-// Liste des codes disponibles
+// Liste des codes disponibles (triés: nouveaux en premier, puis actifs, puis expirés)
+// Source: https://game8.co/games/Duet-Night-Abyss/archives/557781
 export const GAME_CODES: GameCode[] = [
+  // Nouveaux codes actifs (décembre 2025) - TOUJOURS EN HAUT
+  {
+    id: "dnagift",
+    code: "DNAGIFT",
+    rewards: ["100 Carmine Globule", "20,000 Coins", "5 Combat Melody I"],
+    isNew: true,
+  },
+  {
+    id: "dnabyssgift",
+    code: "DNABYSSGIFT",
+    rewards: ["20 Phoxene", "20,000 Coins", "10 Combat Melody I"],
+    isNew: true,
+  },
+  {
+    id: "dnallaunch",
+    code: "DNALAUNCH",
+    rewards: ["30,000 Coins", "10 Weapon Manual I", "10 Combat Melody I"],
+    isNew: true,
+  },
+  {
+    id: "epicgamesdna",
+    code: "EPICGAMESDNA",
+    rewards: [
+      "10,000 Coins",
+      "5 Combat Melody I",
+      "1 Basic Weapon Component: Grip",
+    ],
+    isNew: true,
+  },
   {
     id: "denaabiniiji",
     code: "DENAABINIJI",
@@ -55,57 +87,63 @@ export const GAME_CODES: GameCode[] = [
     isNew: true,
   },
   {
-    id: "epicgamesdna",
-    code: "EPICGAMESDNA",
-    rewards: [
-      "10,000 Coins",
-      "5 Combat Melody I",
-      "1 Basic Weapon Component: Grip",
-    ],
+    id: "dnaglobal",
+    code: "DNAGLOBAL",
+    rewards: ["20 Phoxene", "20,000 Coins", "10 Combat Melody I"],
+    isNew: true,
   },
   {
     id: "dnalive",
     code: "DNALIVE",
     rewards: [
       "10,000 Coins",
-      "2 Commission Manual: Volume I",
+      "2 Combat Manual: Volume I",
       "1 Basic Weapon Component: Blade",
     ],
+    isNew: true,
+  },
+
+  // Codes du livestream "The Wind Awakening" (expirent le 24 décembre 2025 à 23:59 UTC+8)
+  {
+    id: "huaxuawaits",
+    code: "HUAXUAWAITS",
+    rewards: ["100 Phoxene", "3 Combat Melody III", "100 Carmine Globule"],
+    isNew: true,
+    expiresAt: "24 décembre 2025",
   },
   {
-    id: "dnaglobal",
-    code: "DNAGLOBAL",
-    rewards: ["20 Phoxene", "20,000 Coins", "10 Combat Melody I"],
+    id: "thewindawakening",
+    code: "THEWINDAWAKENING",
+    rewards: ["100 Phoxene", "3 Weapon Manual III", "100 Carmine Globule"],
+    isNew: true,
+    expiresAt: "24 décembre 2025",
   },
   {
-    id: "dnabyssgift",
-    code: "DNABYSSGIFT",
-    rewards: ["20 Phoxene", "20,000 Coins", "10 Combat Melody I"],
+    id: "dna20251223",
+    code: "DNA20251223",
+    rewards: ["100 Phoxene", "30,000 Coins", "100 Carmine Globule"],
+    isNew: true,
+    expiresAt: "24 décembre 2025",
   },
-  {
-    id: "dnagift",
-    code: "DNAGIFT",
-    rewards: ["100 Carmine Globule", "20,000 Coins", "5 Combat Melody I"],
-  },
+
+  // Codes expirés (selon Game8.co)
   {
     id: "dnarelease",
     code: "DNARELEASE",
     rewards: ["100 Phoxene", "3 Combat Melody III", "100 Carmine Globule"],
+    expired: true,
   },
   {
     id: "dnafreeplay",
     code: "DNAFREEPLAY",
     rewards: ["100 Phoxene", "3 Weapon Manual III", "100 Carmine Globule"],
+    expired: true,
   },
   {
     id: "dna1028",
     code: "DNA1028",
     rewards: ["100 Phoxene", "30,000 Coins", "100 Carmine Globule"],
-  },
-  {
-    id: "dnallaunch",
-    code: "DNALAUNCH",
-    rewards: ["30,000 Coins", "10 Weapon Manual I", "10 Combat Melody I"],
+    expired: true,
   },
 ];
 
@@ -119,11 +157,11 @@ export const selectedMapIdWithPersistenceAtom = atom(
   (get, set, newValue: string | null) => {
     set(selectedMapIdAtom, newValue);
     // Sauvegarder manuellement dans localStorage
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       if (newValue) {
-        localStorage.setItem('selected-map', newValue);
+        localStorage.setItem("selected-map", newValue);
       } else {
-        localStorage.removeItem('selected-map');
+        localStorage.removeItem("selected-map");
       }
     }
   }
@@ -137,10 +175,7 @@ export const expandedCategoriesAtom = atomWithStorage<Record<string, boolean>>(
   "expanded-categories",
   {}
 );
-export const sidebarWidthAtom = atomWithStorage<number>(
-  "sidebar-width",
-  320
-);
+export const sidebarWidthAtom = atomWithStorage<number>("sidebar-width", 320);
 
 // Atome de stockage pour les codes utilisés
 const usedCodesStorageAtom = atomWithStorage<string[]>("used-codes", []);

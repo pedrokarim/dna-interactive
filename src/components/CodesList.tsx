@@ -1,7 +1,7 @@
 "use client";
 
 import { useAtom } from "jotai";
-import { Check, Copy, Gift, RotateCcw } from "lucide-react";
+import { Check, Copy, Gift, RotateCcw, Clock, AlertTriangle } from "lucide-react";
 import {
   GAME_CODES,
   usedCodesAtom,
@@ -36,6 +36,10 @@ export default function CodesList() {
     }
   };
 
+  // Séparer les codes actifs et expirés
+  const activeCodes = GAME_CODES.filter(code => !code.expired);
+  const expiredCodes = GAME_CODES.filter(code => code.expired);
+
   return (
     <div className="max-w-4xl mx-auto p-6">
       <div className="mb-8">
@@ -58,7 +62,8 @@ export default function CodesList() {
 
       <div className="flex justify-between items-center mb-6">
         <div className="text-sm text-gray-400">
-          {usedCodes.size} / {GAME_CODES.length} codes utilisés
+          {usedCodes.size} / {activeCodes.length} codes actifs utilisés
+          {expiredCodes.length > 0 && ` • ${expiredCodes.length} codes expirés`}
         </div>
         {usedCodes.size > 0 && (
           <button
@@ -71,8 +76,9 @@ export default function CodesList() {
         )}
       </div>
 
+      {/* Codes actifs */}
       <div className="space-y-4">
-        {GAME_CODES.map((gameCode) => {
+        {activeCodes.map((gameCode) => {
           const isUsed = usedCodes.has(gameCode.id);
           const isCopied = copiedCode === gameCode.code;
 
@@ -107,6 +113,12 @@ export default function CodesList() {
                     {gameCode.isNew && (
                       <span className="px-2 py-1 bg-green-600 text-white text-xs rounded-full font-medium">
                         NOUVEAU
+                      </span>
+                    )}
+                    {gameCode.expiresAt && (
+                      <span className="flex items-center gap-1 px-2 py-1 bg-orange-600/20 border border-orange-500/30 text-orange-300 text-xs rounded-full font-medium">
+                        <Clock className="w-3 h-3" />
+                        Expire {gameCode.expiresAt}
                       </span>
                     )}
                   </div>
@@ -177,6 +189,75 @@ export default function CodesList() {
           );
         })}
       </div>
+
+      {/* Codes expirés */}
+      {expiredCodes.length > 0 && (
+        <div className="mt-12">
+          <div className="flex items-center gap-3 mb-6">
+            <AlertTriangle className="w-6 h-6 text-orange-500" />
+            <h2 className="text-2xl font-bold text-white">Codes expirés</h2>
+          </div>
+          <div className="space-y-4 opacity-75">
+            {expiredCodes.map((gameCode) => {
+              const isCopied = copiedCode === gameCode.code;
+
+              return (
+                <div
+                  key={gameCode.id}
+                  className="relative p-6 rounded-xl border bg-linear-to-r from-red-950/20 to-orange-950/20 border-red-500/20"
+                >
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-3 mb-2">
+                        <code className="text-lg font-mono px-3 py-1 rounded border bg-red-950 border-red-500 text-red-300 line-through">
+                          {gameCode.code}
+                        </code>
+                        <span className="px-2 py-1 bg-red-600/20 border border-red-500/30 text-red-400 text-xs rounded-full font-medium">
+                          EXPIRÉ
+                        </span>
+                      </div>
+
+                      <div className="flex flex-wrap gap-2 mb-3">
+                        {gameCode.rewards.map((reward, index) => (
+                          <span
+                            key={index}
+                            className="px-2 py-1 text-sm rounded border bg-red-950/50 border-red-500/30 text-red-300/70"
+                          >
+                            {reward}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-2 ml-4">
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          copyToClipboard(gameCode.code);
+                        }}
+                        className="p-2 rounded-lg transition-colors bg-red-600 hover:bg-red-500 text-white"
+                        title="Copier le code (expiré)"
+                      >
+                        {isCopied ? (
+                          <Check className="w-4 h-4" />
+                        ) : (
+                          <Copy className="w-4 h-4" />
+                        )}
+                      </button>
+                    </div>
+                  </div>
+
+                  {isCopied && (
+                    <div className="absolute top-2 right-2 bg-green-600 text-white text-xs px-2 py-1 rounded">
+                      Copié !
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
 
       <div className="mt-12 p-6 bg-slate-800/50 border border-indigo-500/20 rounded-xl">
         <h3 className="text-xl font-semibold text-white mb-4">
