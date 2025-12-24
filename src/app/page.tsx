@@ -626,6 +626,27 @@ export default function Home() {
                 {LEGAL_INFO.ascenciaCredit}
               </a>
             </p>
+            <p className="mt-3 text-xs text-gray-500 italic max-w-2xl mx-auto">
+              <span className="font-semibold text-gray-400">Disclaimer:</span>{" "}
+              Cette carte intègre des données de localisation de base et des
+              matériaux de référence provenant de contributions de la
+              communauté CN. Ce site ne monétise à aucun cas. C'est un outil
+              gratuit disponible aux joueurs pour faciliter leur exploration.{" "}
+              <span className="block mt-1">
+                This map incorporates base location data and reference materials
+                sourced from CN community contributions. This site does not
+                monetize in any way. It is a free tool available to players to
+                facilitate their exploration.
+              </span>
+            </p>
+            <p className="mt-3">
+              <Link
+                href="/changelog"
+                className="text-indigo-400 hover:text-indigo-300 transition-colors"
+              >
+                📋 Voir le changelog
+              </Link>
+            </p>
           </div>
         </div>
       </footer>

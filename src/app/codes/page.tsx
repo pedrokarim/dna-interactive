@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { SITE_CONFIG } from "@/lib/constants";
 import CodesList from "@/components/CodesList";
 
@@ -131,6 +132,14 @@ export default function CodesPage() {
               >
                 Ascencia
               </a>
+            </p>
+            <p className="mt-3">
+              <Link
+                href="/changelog"
+                className="text-indigo-400 hover:text-indigo-300 transition-colors"
+              >
+                📋 Voir le changelog
+              </Link>
             </p>
           </div>
         </div>

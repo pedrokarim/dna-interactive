@@ -11,6 +11,7 @@ const markedMarkersStorageAtom = atomWithStorage<string[]>(
 export interface MarkerInstance {
   id: number;
   position: { x: number; y: number };
+  image?: string; // Image descriptive du marqueur (screenshot, guide visuel)
 }
 
 export interface Marker {

@@ -12,6 +12,7 @@ import {
 import { CRS, Icon, LatLngTuple } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import Loading from "@/components/Loading";
+import ImageZoomModal from "@/components/ImageZoomModal";
 
 // Cache global pour les icônes générées (avec état trouvé/non trouvé)
 const iconCache = new Map<string, Promise<Icon>>();
@@ -233,6 +234,7 @@ export default function MapComponent({
   const [isClient, setIsClient] = useState(false);
   const [markers, setMarkers] = useState<React.JSX.Element[]>([]);
   const [loading, setLoading] = useState(true);
+  const [zoomedImage, setZoomedImage] = useState<string | null>(null);
 
   useEffect(() => {
     setIsClient(true);
@@ -376,6 +378,22 @@ export default function MapComponent({
                     {data.instance.position.x}, {data.instance.position.y})
                   </p>
                 </div>
+                {data.instance.image && (
+                  <div className="mb-4 rounded-lg overflow-hidden border border-indigo-500/30 bg-slate-800/50">
+                    <img
+                      src={data.instance.image}
+                      alt={`${data.marker.name} - Guide visuel`}
+                      className="w-full h-auto object-contain max-h-64 cursor-zoom-in hover:opacity-90 transition-opacity"
+                      onClick={() => setZoomedImage(data.instance.image!)}
+                      onError={(e) => {
+                        e.currentTarget.style.display = "none";
+                      }}
+                    />
+                    <p className="text-xs text-gray-400 text-center mt-1 px-2">
+                      Cliquez pour agrandir
+                    </p>
+                  </div>
+                )}
                 <div className="flex gap-2">
                   <button
                     onClick={() => onToggleMarker?.(data.key)}
@@ -454,6 +472,12 @@ export default function MapComponent({
         <ZoomControl position="bottomright" />
         {markers}
       </MapContainer>
+
+      {/* Modal d'image zoomée */}
+      <ImageZoomModal
+        imageUrl={zoomedImage}
+        onClose={() => setZoomedImage(null)}
+      />
     </div>
   );
 }

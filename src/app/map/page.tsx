@@ -9,6 +9,7 @@ import Loading from "@/components/Loading";
 import ConfirmDialog from "@/components/ConfirmDialog";
 import ExportModal from "@/components/ExportModal";
 import ImportModal from "@/components/ImportModal";
+import MapInfoModal from "@/components/MapInfoModal";
 import {
   selectedMapIdWithPersistenceAtom,
   visibleCategoriesAtom,
@@ -98,6 +99,7 @@ export default function MapPage() {
   const [showResetConfirm, setShowResetConfirm] = useState(false);
   const [showExportModal, setShowExportModal] = useState(false);
   const [showImportModal, setShowImportModal] = useState(false);
+  const [showMapInfoModal, setShowMapInfoModal] = useState(false);
   const [hasInitializedMap, setHasInitializedMap] = useState(false);
 
   // Gestionnaires pour le redimensionnement de la sidebar
@@ -853,6 +855,12 @@ export default function MapPage() {
               </Link>
               <div className="flex space-x-3">
                 <Link
+                  href="/changelog"
+                  className="hover:text-indigo-400 transition-colors"
+                >
+                  Changelog
+                </Link>
+                <Link
                   href="/about"
                   className="hover:text-indigo-400 transition-colors"
                 >
@@ -987,6 +995,32 @@ export default function MapPage() {
 
                   <div className="h-px bg-indigo-500/20 my-1"></div>
 
+                  {/* Informations sur la map */}
+                  <button
+                    onClick={() => {
+                      setShowMapInfoModal(true);
+                      setIsActionMenuOpen(false);
+                    }}
+                    className="w-full px-4 py-2.5 text-left text-sm text-white hover:bg-slate-800/70 transition-colors flex items-center gap-3"
+                  >
+                    <svg
+                      className="w-4 h-4 text-blue-400"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    <span>Informations sur la map</span>
+                  </button>
+
+                  <div className="h-px bg-indigo-500/20 my-1"></div>
+
                   {/* Réinitialiser */}
                   <button
                     onClick={() => {
@@ -1073,6 +1107,13 @@ export default function MapPage() {
         isOpen={showImportModal}
         onClose={() => setShowImportModal(false)}
         onImport={handleImportMarkers}
+      />
+
+      {/* Modal d'informations sur la map */}
+      <MapInfoModal
+        isOpen={showMapInfoModal}
+        onClose={() => setShowMapInfoModal(false)}
+        selectedMapId={selectedMapId}
       />
 
       {/* Barre de statut en bas à gauche - Positionnée à droite de la sidebar */}

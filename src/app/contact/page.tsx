@@ -284,6 +284,14 @@ export default function ContactPage() {
                 {LEGAL_INFO.ascenciaCredit}
               </a>
             </p>
+            <p className="mt-3">
+              <Link
+                href="/changelog"
+                className="text-indigo-400 hover:text-indigo-300 transition-colors"
+              >
+                📋 Voir le changelog
+              </Link>
+            </p>
           </div>
         </div>
       </footer>
