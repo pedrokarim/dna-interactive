@@ -26,6 +26,22 @@ interface ChangelogEntry {
 const changelogData: ChangelogEntry[] = [
   {
     date: "2025-12-24",
+    version: "1.1.1",
+    type: "enhancement",
+    title: "Amélioration des Maps et Transparence",
+    description:
+      "Ajout des images pour toutes les anciennes maps et nouvelle modal d'informations",
+    items: [
+      "📸 Ajout de 878 images descriptives pour toutes les anciennes maps",
+      "📊 Nouvelle modal d'informations sur les maps avec statistiques détaillées",
+      "ℹ️ Affichage de la version, date de mise à jour et statistiques globales",
+      "📋 Disclaimer ajouté sur la page d'accueil et dans la modal",
+      "🔧 Amélioration du script de mise à jour pour détecter les nouvelles images",
+      "✨ Interface améliorée avec informations sur chaque map individuelle",
+    ],
+  },
+  {
+    date: "2025-12-24",
     version: "1.1.0",
     type: "feature",
     title: "Version 1.1 - Nouvelle Map Huaxu",
