@@ -50,6 +50,12 @@ export interface GameCode {
 export const GAME_CODES: GameCode[] = [
   // Nouveaux codes actifs (décembre 2025) - TOUJOURS EN HAUT
   {
+    id: "icxfap",
+    code: "ICXFAP",
+    rewards: ["Récompenses à confirmer"], // Luno's Gift - Eternal Merriment | Winter's Invitation
+    isNew: true,
+  },
+  {
     id: "dnagift",
     code: "DNAGIFT",
     rewards: ["100 Carmine Globule", "20,000 Coins", "5 Combat Melody I"],
