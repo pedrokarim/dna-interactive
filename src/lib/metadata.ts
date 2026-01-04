@@ -8,6 +8,21 @@ export function getHomeMetadata(): Metadata {
   return {
     title: "Accueil",
     description: `Carte interactive ultime pour ${GAME_INFO.name}. Explorez le monde du jeu avec ${SITE_CONFIG.name} : trouvez tous les secrets, coffres et collectibles. Outil indispensable pour les joueurs de DNA.`,
+    keywords: [
+      GAME_INFO.name,
+      ...SITE_CONFIG.keywords,
+      "carte interactive",
+      "gaming map",
+      "map interactive",
+      "exploration",
+      "marqueurs",
+      "collectibles",
+      "coffres",
+      "secrets cachés",
+      "carte du jeu",
+      "guide gaming",
+      SITE_CONFIG.name,
+    ],
     alternates: {
       canonical: baseUrl,
     },
@@ -38,6 +53,7 @@ export function getMapMetadata(): Metadata {
     title: "Carte Interactive - DNA Interactive",
     description: `Carte interactive complète de ${GAME_INFO.name}. Explorez les 6 régions du jeu, trouvez tous les secrets, coffres et points d'intérêt. Outil indispensable pour les joueurs de Duet Night Abyss.`,
     keywords: [
+      GAME_INFO.name,
       "carte interactive",
       "Duet Night Abyss",
       "DNA Interactive",
@@ -83,6 +99,7 @@ export function getAboutMetadata(): Metadata {
     title: "À propos",
     description: `Découvrez l'histoire et l'équipe derrière ${SITE_CONFIG.name}. Projet communautaire créé par des passionnés pour aider les joueurs de ${GAME_INFO.name}.`,
     keywords: [
+      GAME_INFO.name,
       ...SITE_CONFIG.keywords,
       "à propos",
       "about",
@@ -123,6 +140,7 @@ export function getSupportMetadata(): Metadata {
     title: "Support & Aide",
     description: `Centre d'aide et support pour ${SITE_CONFIG.name}. FAQ, guides d'utilisation, contact Discord et support technique pour la carte interactive.`,
     keywords: [
+      GAME_INFO.name,
       ...SITE_CONFIG.keywords,
       "support",
       "aide",
@@ -156,4 +174,3 @@ export function getSupportMetadata(): Metadata {
     },
   };
 }
-
