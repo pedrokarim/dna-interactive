@@ -1,44 +1,10 @@
-import Link from "next/link";
 import type { Metadata } from "next";
+import Link from "next/link";
 import { SITE_CONFIG, ASSETS_PATHS, NAVIGATION, CONTACT_INFO, CREATOR_INFO, LEGAL_INFO, SUPPORT_INFO, FAQ_ITEMS, SUPPORT_QUICK_LINKS } from "@/lib/constants";
+import { getSupportMetadata } from "@/lib/metadata";
 
 // Métadonnées SEO pour la page support
-export const metadata: Metadata = {
-  title: "Support & Aide",
-  description: `Centre d'aide et support pour ${SITE_CONFIG.name}. FAQ, guides d'utilisation, contact Discord et support technique pour la carte interactive.`,
-  keywords: [
-    ...SITE_CONFIG.keywords,
-    "support",
-    "aide",
-    "FAQ",
-    "questions fréquentes",
-    "guide",
-    "tutoriel",
-    "discord",
-    "communauté",
-  ],
-  alternates: {
-    canonical: "https://dna-interactive.ascencia.re/support",
-  },
-  openGraph: {
-    title: `Support & Aide - ${SITE_CONFIG.name}`,
-    description: `Centre d'aide complet pour ${SITE_CONFIG.name}. FAQ, guides et support communautaire.`,
-    url: "https://dna-interactive.ascencia.re/support",
-    images: [
-      {
-        url: "/assets/worldview/worldview-4.webp",
-        width: 1200,
-        height: 630,
-        alt: `Support & Aide - ${SITE_CONFIG.name}`,
-      },
-    ],
-  },
-  twitter: {
-    title: `Support & Aide - ${SITE_CONFIG.name}`,
-    description: `Centre d'aide complet pour ${SITE_CONFIG.name}. FAQ, guides et support communautaire.`,
-    images: ["/assets/worldview/worldview-4.webp"],
-  },
-};
+export const metadata: Metadata = getSupportMetadata();
 
 export default function SupportPage() {
   return (

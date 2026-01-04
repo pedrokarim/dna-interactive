@@ -1,5 +1,5 @@
-import Link from "next/link";
 import type { Metadata } from "next";
+import Link from "next/link";
 import {
   SITE_CONFIG,
   ASSETS_PATHS,
@@ -11,44 +11,10 @@ import {
   TEAM_INFO,
   PROJECT_STATS,
 } from "@/lib/constants";
+import { getAboutMetadata } from "@/lib/metadata";
 
 // Métadonnées SEO pour la page about
-export const metadata: Metadata = {
-  title: "À propos",
-  description: `Découvrez l'histoire et l'équipe derrière ${SITE_CONFIG.name}. Projet communautaire créé par des passionnés pour aider les joueurs de ${GAME_INFO.name}.`,
-  keywords: [
-    ...SITE_CONFIG.keywords,
-    "à propos",
-    "about",
-    "équipe",
-    "team",
-    "histoire",
-    "communauté",
-    "projet",
-    CREATOR_INFO.fullName,
-  ],
-  alternates: {
-    canonical: "https://dna-interactive.ascencia.re/about",
-  },
-  openGraph: {
-    title: `À propos - ${SITE_CONFIG.name}`,
-    description: `Découvrez l'histoire et l'équipe derrière ${SITE_CONFIG.name}.`,
-    url: "https://dna-interactive.ascencia.re/about",
-    images: [
-      {
-        url: "/assets/worldview/worldview-5.webp",
-        width: 1200,
-        height: 630,
-        alt: `À propos - ${SITE_CONFIG.name}`,
-      },
-    ],
-  },
-  twitter: {
-    title: `À propos - ${SITE_CONFIG.name}`,
-    description: `Découvrez l'histoire et l'équipe derrière ${SITE_CONFIG.name}.`,
-    images: ["/assets/worldview/worldview-5.webp"],
-  },
-};
+export const metadata: Metadata = getAboutMetadata();
 
 export default function AboutPage() {
   return (
