@@ -10,6 +10,7 @@ import {
   Code,
   CheckCircle,
   AlertTriangle,
+  Mail,
 } from "lucide-react";
 import Link from "next/link";
 import { SITE_CONFIG } from "@/lib/constants";
@@ -17,13 +18,33 @@ import { SITE_CONFIG } from "@/lib/constants";
 interface ChangelogEntry {
   date: string;
   version: string;
-  type: "feature" | "update" | "fix" | "enhancement";
+  type: "feature" | "update" | "fix" | "enhancement" | "security";
   title: string;
   description: string;
   items: string[];
 }
 
 const changelogData: ChangelogEntry[] = [
+  {
+    date: "2026-01-05",
+    version: "1.2.0",
+    type: "security",
+    title: "Formulaire de Contact Sécurisé avec reCAPTCHA & Zod",
+    description:
+      "Implémentation complète et sécurisée du formulaire de contact avec protection anti-spam avancée",
+    items: [
+      "📧 API endpoint complet pour traitement sécurisé des formulaires",
+      "🔒 Intégration reCAPTCHA v3 (score ≥0.7) pour protection anti-bot",
+      "🛡️ Validation Zod v4.3.5 avec sanitisation automatique et type-safety",
+      "📮 Configuration SMTP LWS sécurisée avec emails HTML professionnels",
+      "⏱️ Protection DoS : timeout 30s + limite 10KB + rate limiting",
+      "🔐 Headers de sécurité complets (XSS, framing, content-type)",
+      "✨ UX améliorée : états de chargement, messages d'erreur contextuels",
+      "🧹 Sanitisation stricte : regex noms, validation email RFC-compliant",
+      "🎯 Enum validation sujets + protection contre injections",
+      "📊 Logging détaillé pour monitoring et audit de sécurité",
+    ],
+  },
   {
     date: "2025-12-24",
     version: "1.1.1",
@@ -105,6 +126,13 @@ const typeConfig = {
     borderColor: "border-green-500/30",
     bgColor: "bg-green-500/10",
     label: "Nouvelle Fonctionnalité",
+  },
+  security: {
+    icon: Mail,
+    color: "from-red-500 to-pink-500",
+    borderColor: "border-red-500/30",
+    bgColor: "bg-red-500/10",
+    label: "Sécurité",
   },
   update: {
     icon: Code,
