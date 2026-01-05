@@ -37,17 +37,22 @@ type ContactFormData = z.infer<typeof contactFormSchema>;
 
 // Configuration du transporteur SMTP pour LWS
 const transporter = nodemailer.createTransport({
-  host: "mail.ascencia.re",
-  port: 587, // Port 587 pour STARTTLS
-  secure: false, // false pour STARTTLS
+  host: process.env.SMTP_HOST, // Serveur SMTP configurable
+  port: 465, // Port SSL/TLS
+  secure: true, // SSL/TLS activé
   auth: {
-    user: process.env.SMTP_USER || "contact@ascencia.re",
-    pass: process.env.SMTP_PASS || "",
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS,
   },
   tls: {
-    ciphers: "SSLv3",
     rejectUnauthorized: false, // Pour éviter les problèmes de certificat
   },
+  // Options de debug et timeout
+  debug: true,
+  logger: true,
+  connectionTimeout: 60000, // 60 secondes
+  greetingTimeout: 30000, // 30 secondes
+  socketTimeout: 60000, // 60 secondes
 });
 
 async function verifyRecaptcha(token: string): Promise<boolean> {
