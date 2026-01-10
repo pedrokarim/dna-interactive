@@ -26,6 +26,23 @@ interface ChangelogEntry {
 
 const changelogData: ChangelogEntry[] = [
   {
+    date: "2026-01-10",
+    version: "1.2.1",
+    type: "feature",
+    title: "Nouveaux Marqueurs & Optimisation SEO",
+    description:
+      "Ajout de nouveaux marqueurs manquants, notamment les Taixu Runes, et migration complète vers l'hébergement local des ressources",
+    items: [
+      "🆕 Ajout de nouveaux marqueurs manquants dans toutes les maps",
+      "✨ Ajout des marqueurs Taixu Runes qui étaient absents",
+      "🗺️ Téléchargement et hébergement local de toutes les images de cartes",
+      "🎨 Téléchargement et hébergement local de toutes les icônes",
+      "🔧 Correction automatique de toutes les URLs externes vers des chemins locaux",
+      "✅ 111 URLs corrigées automatiquement dans les maps existantes",
+      "💾 Toutes les ressources sont maintenant hébergées localement dans /assets/",
+    ],
+  },
+  {
     date: "2026-01-05",
     version: "1.2.0",
     type: "security",

@@ -489,8 +489,45 @@ export default function MapPage() {
     }
   }, [selectedMap, setVisibleCategories]); // Retiré visibleCategories des dépendances pour éviter les boucles
 
+  // Masquer le badge reCAPTCHA sur la page de la carte
+  useEffect(() => {
+    const hideRecaptchaBadge = () => {
+      const badge = document.querySelector('.grecaptcha-badge') as HTMLElement;
+      if (badge) {
+        badge.style.visibility = 'hidden';
+        badge.style.opacity = '0';
+        badge.style.display = 'none';
+      }
+    };
+
+    // Masquer immédiatement
+    hideRecaptchaBadge();
+
+    // Observer les changements du DOM au cas où le badge serait ajouté plus tard
+    const observer = new MutationObserver(hideRecaptchaBadge);
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+
+    // Vérifier périodiquement (au cas où)
+    const interval = setInterval(hideRecaptchaBadge, 1000);
+
+    return () => {
+      observer.disconnect();
+      clearInterval(interval);
+      // Restaurer le badge quand on quitte la page (optionnel)
+      const badge = document.querySelector('.grecaptcha-badge') as HTMLElement;
+      if (badge) {
+        badge.style.visibility = '';
+        badge.style.opacity = '';
+        badge.style.display = '';
+      }
+    };
+  }, []);
+
   return (
-    <div className="h-screen w-screen relative overflow-hidden">
+    <div className="h-screen w-screen relative overflow-hidden map-page">
       {/* Zone de la carte - Plein écran */}
       <div className="absolute inset-0 w-full h-full z-0">
         <MapComponent

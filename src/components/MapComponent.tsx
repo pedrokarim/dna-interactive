@@ -264,7 +264,8 @@ export default function MapComponent({
               // Vérifier si cette sous-catégorie spécifique est visible
               // Utiliser le nom de la sous-catégorie comme clé (comme dans la page map)
               const subCategoryKey = marker.name.toLowerCase().trim();
-              const isSubCategoryVisible = visibleCategories[subCategoryKey] !== false;
+              const isSubCategoryVisible =
+                visibleCategories[subCategoryKey] !== false;
 
               if (isSubCategoryVisible && marker.markers) {
                 for (const instance of marker.markers) {
@@ -443,7 +444,7 @@ export default function MapComponent({
   return (
     <div className="w-full h-screen overflow-hidden relative">
       {loading && (
-        <div className="absolute top-5 left-20 z-[90]">
+        <div className="absolute bottom-3 right-20 z-[90]">
           <Loading
             mode="withMessage"
             message="Chargement des marqueurs..."

@@ -71,3 +71,10 @@ body {
   background: transparent;
 }
 
+/* Masquer le badge reCAPTCHA sur la page de la carte */
+body:has(.map-page) .grecaptcha-badge {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  display: none !important;
+}
+
