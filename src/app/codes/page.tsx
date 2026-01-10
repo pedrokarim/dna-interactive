@@ -11,7 +11,7 @@ export default function CodesPage() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <img
-                src="/assets/ui/duet-logo-white.png"
+                src="/assets/images/logo_optimized.png"
                 alt={`${SITE_CONFIG.name} Logo`}
                 className="h-10 w-auto"
               />

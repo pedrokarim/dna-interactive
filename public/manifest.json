@@ -11,13 +11,13 @@
   "lang": "fr",
   "icons": [
     {
-      "src": "/assets/ui/duet-logo-white.png",
+      "src": "/assets/images/logo_optimized.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/assets/ui/duet-logo-white.png",
+      "src": "/assets/images/logo_optimized.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"

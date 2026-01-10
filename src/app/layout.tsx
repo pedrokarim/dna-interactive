@@ -105,8 +105,8 @@ export const metadata: Metadata = {
   },
   manifest: "/manifest.json",
   icons: {
-    icon: "/assets/ui/duet-logo-white.png",
-    apple: "/assets/ui/duet-logo-white.png",
+    icon: "/assets/images/logo_optimized.png",
+    apple: "/assets/images/logo_optimized.png",
   },
   other: {
     "theme-color": "#6366f1",

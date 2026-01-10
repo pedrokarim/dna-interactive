@@ -1,6 +1,6 @@
 # 🗺️ DNA Interactive - Duet Night Abyss Map
 
-![DNA Interactive](public/assets/ui/duet-logo-white.png)
+![DNA Interactive](public/assets/images/logo_optimized.png)
 
 **Carte interactive et ressources communautaires pour Duet Night Abyss**
 

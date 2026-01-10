@@ -54,7 +54,7 @@ export const GAME_INFO = {
 
 // Chemins des assets
 export const ASSETS_PATHS = {
-  logo: "/assets/ui/duet-logo-white.png",
+  logo: "/assets/images/logo_optimized.png",
   worldview: [
     "/assets/worldview/worldview-1.webp",
     "/assets/worldview/worldview-2.webp",

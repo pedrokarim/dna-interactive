@@ -22,7 +22,7 @@ export default function StructuredData({ type = "website", pageData }: Structure
       name: SITE_CONFIG.name,
       logo: {
         "@type": "ImageObject",
-        url: "https://dna-interactive.ascencia.re/assets/ui/duet-logo-white.png",
+        url: "https://dna-interactive.ascencia.re/assets/images/logo_optimized.png",
       },
       contactPoint: {
         "@type": "ContactPoint",
@@ -133,7 +133,7 @@ export default function StructuredData({ type = "website", pageData }: Structure
             "@type": "Organization",
             name: SITE_CONFIG.name,
             url: "https://dna-interactive.ascencia.re",
-            logo: "https://dna-interactive.ascencia.re/assets/ui/duet-logo-white.png",
+            logo: "https://dna-interactive.ascencia.re/assets/images/logo_optimized.png",
             contactPoint: {
               "@type": "ContactPoint",
               contactType: "customer service",
