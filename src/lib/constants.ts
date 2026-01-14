@@ -62,6 +62,11 @@ export const ASSETS_PATHS = {
     "/assets/worldview/worldview-4.webp",
     "/assets/worldview/worldview-5.webp",
     "/assets/worldview/worldview-6.webp",
+    "/assets/worldview/worldview-7.webp",
+    "/assets/worldview/worldview-8.webp",
+    "/assets/worldview/worldview-9.webp",
+    "/assets/worldview/worldview-10.webp",
+    "/assets/worldview/worldview-11.webp",
   ],
 } as const;
 
