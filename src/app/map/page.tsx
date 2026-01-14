@@ -10,6 +10,7 @@ import ConfirmDialog from "@/components/ConfirmDialog";
 import ExportModal from "@/components/ExportModal";
 import ImportModal from "@/components/ImportModal";
 import MapInfoModal from "@/components/MapInfoModal";
+import ChangelogModal from "@/components/ChangelogModal";
 import {
   selectedMapIdWithPersistenceAtom,
   visibleCategoriesAtom,
@@ -100,6 +101,7 @@ export default function MapPage() {
   const [showExportModal, setShowExportModal] = useState(false);
   const [showImportModal, setShowImportModal] = useState(false);
   const [showMapInfoModal, setShowMapInfoModal] = useState(false);
+  const [showChangelogModal, setShowChangelogModal] = useState(false);
   const [hasInitializedMap, setHasInitializedMap] = useState(false);
 
   // Gestionnaires pour le redimensionnement de la sidebar
@@ -1032,6 +1034,32 @@ export default function MapPage() {
 
                   <div className="h-px bg-indigo-500/20 my-1"></div>
 
+                  {/* Changelog */}
+                  <button
+                    onClick={() => {
+                      setShowChangelogModal(true);
+                      setIsActionMenuOpen(false);
+                    }}
+                    className="w-full px-4 py-2.5 text-left text-sm text-white hover:bg-slate-800/70 transition-colors flex items-center gap-3"
+                  >
+                    <svg
+                      className="w-4 h-4 text-purple-400"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
+                      />
+                    </svg>
+                    <span>Changelog</span>
+                  </button>
+
+                  <div className="h-px bg-indigo-500/20 my-1"></div>
+
                   {/* Informations sur la map */}
                   <button
                     onClick={() => {
@@ -1151,6 +1179,12 @@ export default function MapPage() {
         isOpen={showMapInfoModal}
         onClose={() => setShowMapInfoModal(false)}
         selectedMapId={selectedMapId}
+      />
+
+      {/* Modal Changelog */}
+      <ChangelogModal
+        isOpen={showChangelogModal}
+        onClose={() => setShowChangelogModal(false)}
       />
 
       {/* Barre de statut en bas à gauche - Positionnée à droite de la sidebar */}
