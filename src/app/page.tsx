@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
 import { Map, Gift, Info, HelpCircle, Mail } from "lucide-react";
 import {
@@ -12,13 +12,18 @@ import {
   CREATOR_INFO,
   LEGAL_INFO,
 } from "@/lib/constants";
-import { getHomeMetadata } from "@/lib/metadata";
+import { generatePageMetadata, pageMetadata } from "@/lib/metadata";
 import UpdateBanner from "@/components/UpdateBanner";
 import HeroSection from "@/components/HeroSection";
 import CommunityCards from "@/components/CommunityCards";
 
-// Métadonnées SEO pour la page d'accueil
-export const metadata: Metadata = getHomeMetadata();
+export async function generateMetadata(
+  {}: {},
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  return generatePageMetadata(pageMetadata.home, parent);
+}
+
 
 // Mapping des icônes pour la navigation
 const navIcons = {

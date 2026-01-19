@@ -1,23 +1,17 @@
 import type { Metadata, ResolvingMetadata } from "next";
-import StructuredData from "@/components/StructuredData";
 import { generatePageMetadata, pageMetadata } from "@/lib/metadata";
 
 export async function generateMetadata(
   {}: {},
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  return generatePageMetadata(pageMetadata.map, parent);
+  return generatePageMetadata(pageMetadata.contact, parent);
 }
 
-export default function MapLayout({
+export default function ContactLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <>
-      <StructuredData type="map" />
-      {children}
-    </>
-  );
+  return <>{children}</>;
 }

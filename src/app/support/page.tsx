@@ -1,10 +1,14 @@
-import type { Metadata } from "next";
+import type { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
 import { SITE_CONFIG, ASSETS_PATHS, NAVIGATION, CONTACT_INFO, CREATOR_INFO, LEGAL_INFO, SUPPORT_INFO, FAQ_ITEMS, SUPPORT_QUICK_LINKS } from "@/lib/constants";
-import { getSupportMetadata } from "@/lib/metadata";
+import { generatePageMetadata, pageMetadata } from "@/lib/metadata";
 
-// Métadonnées SEO pour la page support
-export const metadata: Metadata = getSupportMetadata();
+export async function generateMetadata(
+  {}: {},
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  return generatePageMetadata(pageMetadata.support, parent);
+}
 
 export default function SupportPage() {
   return (

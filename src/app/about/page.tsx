@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
 import {
   SITE_CONFIG,
@@ -11,10 +11,14 @@ import {
   TEAM_INFO,
   PROJECT_STATS,
 } from "@/lib/constants";
-import { getAboutMetadata } from "@/lib/metadata";
+import { generatePageMetadata, pageMetadata } from "@/lib/metadata";
 
-// Métadonnées SEO pour la page about
-export const metadata: Metadata = getAboutMetadata();
+export async function generateMetadata(
+  {}: {},
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  return generatePageMetadata(pageMetadata.about, parent);
+}
 
 export default function AboutPage() {
   return (

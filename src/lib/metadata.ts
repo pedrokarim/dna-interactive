@@ -1,13 +1,110 @@
-import type { Metadata } from "next";
+import type { Metadata, ResolvingMetadata } from "next";
 import { SITE_CONFIG, GAME_INFO, CREATOR_INFO } from "@/lib/constants";
 
-const baseUrl = "https://dna-interactive.ascencia.re";
+export interface PageMetadataOptions {
+  title?: string;
+  description?: string;
+  keywords?: string[];
+  image?: string;
+  url?: string;
+  type?: "website" | "article";
+}
 
-// Fonction helper pour créer les metadata de la page d'accueil
-export function getHomeMetadata(): Metadata {
+/**
+ * Génère des métadonnées cohérentes pour toutes les pages utilisant generateMetadata
+ */
+export async function generatePageMetadata(
+  options: PageMetadataOptions,
+  parent?: ResolvingMetadata
+): Promise<Metadata> {
+  const {
+    title,
+    description,
+    keywords = [],
+    image = "/assets/worldview/worldview-1.webp",
+    url = "https://dna-interactive.ascencia.re",
+    type = "website",
+  } = options;
+
+  // Hériter des métadonnées parentes si elles existent
+  const parentMetadata = parent ? await parent : null;
+  const previousImages = parentMetadata?.openGraph?.images || [];
+
+  const finalTitle = title || `${SITE_CONFIG.name} - Carte Interactive Duet Night Abyss`;
+  const finalDescription = description || `Carte interactive ultime pour Duet Night Abyss. Explorez le monde du jeu avec ${SITE_CONFIG.name}.`;
+
   return {
-    title: "Accueil",
-    description: `Carte interactive ultime pour ${GAME_INFO.name}. Explorez le monde du jeu avec ${SITE_CONFIG.name} : trouvez tous les secrets, coffres et collectibles. Outil indispensable pour les joueurs de DNA.`,
+    title: finalTitle,
+    description: finalDescription,
+    keywords: keywords.length > 0 ? keywords : [
+      GAME_INFO.name,
+      "DNA",
+      "DNA Interactive",
+      "Duet Night Abyss",
+      "carte interactive",
+      "gaming map",
+      "map interactive",
+      "jeu vidéo",
+      "exploration",
+      "marqueurs",
+      "collectibles",
+      "coffres",
+      "secrets cachés",
+      "carte du jeu",
+      "guide gaming",
+      SITE_CONFIG.name,
+    ],
+    authors: [{ name: CREATOR_INFO.fullName }],
+    creator: CREATOR_INFO.fullName,
+    publisher: SITE_CONFIG.name,
+    openGraph: {
+      type,
+      locale: "fr_FR",
+      url,
+      siteName: SITE_CONFIG.name,
+      title: finalTitle,
+      description: finalDescription,
+      images: [
+        {
+          url: image,
+          width: 1200,
+          height: 630,
+          alt: finalTitle,
+        },
+        ...previousImages,
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: finalTitle,
+      description: finalDescription,
+      images: [image],
+      creator: "@dna_interactive",
+    },
+    alternates: {
+      canonical: url,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
+  };
+}
+
+/**
+ * Configurations prédéfinies pour les métadonnées des pages principales
+ */
+export const pageMetadata = {
+  home: {
+    title: `${SITE_CONFIG.name} - Carte Interactive Duet Night Abyss | Map Gaming`,
+    description: `Carte interactive ultime pour Duet Night Abyss. Explorez le monde du jeu avec ${SITE_CONFIG.name} : trouvez tous les secrets, coffres et collectibles. Outil indispensable pour les joueurs de DNA.`,
     keywords: [
       GAME_INFO.name,
       ...SITE_CONFIG.keywords,
@@ -22,36 +119,16 @@ export function getHomeMetadata(): Metadata {
       "carte du jeu",
       "guide gaming",
       SITE_CONFIG.name,
+      "Duet Night Abyss map",
+      "DNA map",
+      "outil gaming",
+      "joueurs DNA",
     ],
-    alternates: {
-      canonical: baseUrl,
-    },
-    openGraph: {
-      title: `${SITE_CONFIG.name} - Carte Interactive ${GAME_INFO.name}`,
-      description: `Carte interactive ultime pour ${GAME_INFO.name}. Explorez le monde du jeu avec ${SITE_CONFIG.name} : trouvez tous les secrets, coffres et collectibles.`,
-      url: baseUrl,
-      images: [
-        {
-          url: "/assets/worldview/worldview-1.webp",
-          width: 1200,
-          height: 630,
-          alt: `${SITE_CONFIG.name} - Carte Interactive ${GAME_INFO.name}`,
-        },
-      ],
-    },
-    twitter: {
-      title: `${SITE_CONFIG.name} - Carte Interactive ${GAME_INFO.name}`,
-      description: `Carte interactive ultime pour ${GAME_INFO.name}. Trouvez tous les secrets et collectibles avec ${SITE_CONFIG.name}.`,
-      images: ["/assets/worldview/worldview-1.webp"],
-    },
-  };
-}
-
-// Fonction helper pour créer les metadata de la page map
-export function getMapMetadata(): Metadata {
-  return {
-    title: "Carte Interactive - DNA Interactive",
-    description: `Carte interactive complète de ${GAME_INFO.name}. Explorez les 6 régions du jeu, trouvez tous les secrets, coffres et points d'intérêt. Outil indispensable pour les joueurs de Duet Night Abyss.`,
+    image: "/assets/worldview/worldview-1.webp",
+  },
+  map: {
+    title: `Carte Interactive - ${SITE_CONFIG.name}`,
+    description: `Carte interactive complète de Duet Night Abyss. Explorez les 6 régions du jeu, trouvez tous les secrets, coffres et points d'intérêt. Outil indispensable pour les joueurs de Duet Night Abyss.`,
     keywords: [
       GAME_INFO.name,
       "carte interactive",
@@ -68,35 +145,38 @@ export function getMapMetadata(): Metadata {
       "interactive map",
       "DNA",
       SITE_CONFIG.name,
+      "régions du jeu",
+      "secrets cachés",
+      "guide complet",
+      "marqueurs détaillés",
     ],
-    alternates: {
-      canonical: `${baseUrl}/map`,
-    },
-    openGraph: {
-      title: `Carte Interactive - ${SITE_CONFIG.name}`,
-      description: `Carte interactive complète de ${GAME_INFO.name}. Explorez les 6 régions du jeu et trouvez tous les secrets cachés.`,
-      url: `${baseUrl}/map`,
-      images: [
-        {
-          url: "/assets/worldview/worldview-2.webp",
-          width: 1200,
-          height: 630,
-          alt: `Carte Interactive - ${SITE_CONFIG.name}`,
-        },
-      ],
-    },
-    twitter: {
-      title: `Carte Interactive - ${SITE_CONFIG.name}`,
-      description: `Carte interactive complète de ${GAME_INFO.name}. Explorez les 6 régions du jeu et trouvez tous les secrets cachés.`,
-      images: ["/assets/worldview/worldview-2.webp"],
-    },
-  };
-}
-
-// Fonction helper pour créer les metadata de la page about
-export function getAboutMetadata(): Metadata {
-  return {
-    title: "À propos",
+    image: "/assets/worldview/worldview-2.webp",
+    url: "https://dna-interactive.ascencia.re/map",
+  },
+  codes: {
+    title: `Codes de Rédemption Duet Night Abyss | ${SITE_CONFIG.name}`,
+    description: "Découvrez tous les codes de rédemption actifs pour Duet Night Abyss. Codes promotionnels, récompenses gratuites et bonus exclusifs. Mise à jour régulière des nouveaux codes.",
+    keywords: [
+      "codes de rédemption",
+      "codes promo",
+      "Duet Night Abyss",
+      "DNA codes",
+      "récompenses gratuites",
+      "bonus jeu",
+      "codes actifs",
+      "rédeem codes",
+      "Duet Night Abyss codes",
+      "DNA Interactive codes",
+      "promotion",
+      "bonus exclusifs",
+      "mise à jour codes",
+      "récompenses jeu",
+    ],
+    image: "/assets/worldview/worldview-3.webp",
+    url: "https://dna-interactive.ascencia.re/codes",
+  },
+  about: {
+    title: `À propos - ${SITE_CONFIG.name}`,
     description: `Découvrez l'histoire et l'équipe derrière ${SITE_CONFIG.name}. Projet communautaire créé par des passionnés pour aider les joueurs de ${GAME_INFO.name}.`,
     keywords: [
       GAME_INFO.name,
@@ -109,35 +189,36 @@ export function getAboutMetadata(): Metadata {
       "communauté",
       "projet",
       CREATOR_INFO.fullName,
+      "passionnés",
+      "joueurs",
+      "créateur",
+      "mission",
     ],
-    alternates: {
-      canonical: `${baseUrl}/about`,
-    },
-    openGraph: {
-      title: `À propos - ${SITE_CONFIG.name}`,
-      description: `Découvrez l'histoire et l'équipe derrière ${SITE_CONFIG.name}.`,
-      url: `${baseUrl}/about`,
-      images: [
-        {
-          url: "/assets/worldview/worldview-5.webp",
-          width: 1200,
-          height: 630,
-          alt: `À propos - ${SITE_CONFIG.name}`,
-        },
-      ],
-    },
-    twitter: {
-      title: `À propos - ${SITE_CONFIG.name}`,
-      description: `Découvrez l'histoire et l'équipe derrière ${SITE_CONFIG.name}.`,
-      images: ["/assets/worldview/worldview-5.webp"],
-    },
-  };
-}
-
-// Fonction helper pour créer les metadata de la page support
-export function getSupportMetadata(): Metadata {
-  return {
-    title: "Support & Aide",
+    image: "/assets/worldview/worldview-5.webp",
+    url: "https://dna-interactive.ascencia.re/about",
+  },
+  contact: {
+    title: `Contact - ${SITE_CONFIG.name}`,
+    description: `Contactez l'équipe de ${SITE_CONFIG.name} pour vos questions sur la carte interactive Duet Night Abyss.`,
+    keywords: [
+      GAME_INFO.name,
+      ...SITE_CONFIG.keywords,
+      "contact",
+      "support",
+      "aide",
+      "équipe",
+      "questions",
+      "feedback",
+      "communication",
+      "reach out",
+      CREATOR_INFO.fullName,
+      "contact équipe",
+    ],
+    image: "/assets/worldview/worldview-6.webp",
+    url: "https://dna-interactive.ascencia.re/contact",
+  },
+  support: {
+    title: `Support & Aide - ${SITE_CONFIG.name}`,
     description: `Centre d'aide et support pour ${SITE_CONFIG.name}. FAQ, guides d'utilisation, contact Discord et support technique pour la carte interactive.`,
     keywords: [
       GAME_INFO.name,
@@ -150,27 +231,33 @@ export function getSupportMetadata(): Metadata {
       "tutoriel",
       "discord",
       "communauté",
+      "technique",
+      "assistance",
+      "help",
+      "support technique",
     ],
-    alternates: {
-      canonical: `${baseUrl}/support`,
-    },
-    openGraph: {
-      title: `Support & Aide - ${SITE_CONFIG.name}`,
-      description: `Centre d'aide complet pour ${SITE_CONFIG.name}. FAQ, guides et support communautaire.`,
-      url: `${baseUrl}/support`,
-      images: [
-        {
-          url: "/assets/worldview/worldview-4.webp",
-          width: 1200,
-          height: 630,
-          alt: `Support & Aide - ${SITE_CONFIG.name}`,
-        },
-      ],
-    },
-    twitter: {
-      title: `Support & Aide - ${SITE_CONFIG.name}`,
-      description: `Centre d'aide complet pour ${SITE_CONFIG.name}. FAQ, guides et support communautaire.`,
-      images: ["/assets/worldview/worldview-4.webp"],
-    },
-  };
-}
+    image: "/assets/worldview/worldview-4.webp",
+    url: "https://dna-interactive.ascencia.re/support",
+  },
+  changelog: {
+    title: `Changelog - ${SITE_CONFIG.name}`,
+    description: `Découvrez toutes les mises à jour et améliorations apportées à ${SITE_CONFIG.name}, la carte interactive Duet Night Abyss.`,
+    keywords: [
+      GAME_INFO.name,
+      ...SITE_CONFIG.keywords,
+      "changelog",
+      "mises à jour",
+      "nouveautés",
+      "historique",
+      "versions",
+      "updates",
+      "améliorations",
+      "nouvelles fonctionnalités",
+      "corrections",
+      "bug fixes",
+      SITE_CONFIG.name,
+    ],
+    image: "/assets/worldview/worldview-7.webp",
+    url: "https://dna-interactive.ascencia.re/changelog",
+  },
+};

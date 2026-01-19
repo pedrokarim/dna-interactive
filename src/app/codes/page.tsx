@@ -1,6 +1,15 @@
 import Link from "next/link";
 import { SITE_CONFIG } from "@/lib/constants";
 import CodesList from "@/components/CodesList";
+import type { Metadata, ResolvingMetadata } from "next";
+import { generatePageMetadata, pageMetadata } from "@/lib/metadata";
+
+export async function generateMetadata(
+  {}: {},
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  return generatePageMetadata(pageMetadata.codes, parent);
+}
 
 export default function CodesPage() {
   return (
