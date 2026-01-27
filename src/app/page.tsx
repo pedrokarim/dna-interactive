@@ -48,9 +48,9 @@ export default function Home() {
                 className="h-10 w-auto"
               />
               <div>
-                <h1 className="text-2xl font-bold text-white flex items-center gap-2">
+                <div className="text-2xl font-bold text-white flex items-center gap-2">
                   {SITE_CONFIG.name}
-                </h1>
+                </div>
                 <p className="text-xs text-gray-400">{SITE_CONFIG.tagline}</p>
               </div>
             </div>

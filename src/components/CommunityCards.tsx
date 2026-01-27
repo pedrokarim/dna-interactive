@@ -22,7 +22,7 @@ export default function CommunityCards() {
           >
             <img
               src="/assets/images/ffee63d2-5cba-4a8f-910f-7b67f97ccc96-profile_image-70x70.png"
-              alt="Velkaine - Streamer DNA"
+              alt="Velkaine - Streamer et créateur de contenu pour Duet Night Abyss"
               className="w-16 h-16 rounded-full border-2 border-purple-500/50 group-hover:border-purple-400 transition-colors"
             />
             <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">

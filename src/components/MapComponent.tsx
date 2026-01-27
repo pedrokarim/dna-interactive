@@ -349,7 +349,7 @@ export default function MapComponent({
                   <div className="w-12 h-12 rounded-lg border border-indigo-500/40 shadow-sm bg-slate-700/60 flex items-center justify-center">
                     <img
                       src={data.category.icon}
-                      alt={data.category.name}
+                      alt={`Icône ${data.category.name} - Catégorie de marqueurs sur la carte interactive Duet Night Abyss`}
                       className="max-w-full max-h-full object-contain"
                       onError={(e) => {
                         e.currentTarget.style.display = "none";
@@ -364,7 +364,7 @@ export default function MapComponent({
                   <div className="w-10 h-10 rounded-lg border border-indigo-500/40 shadow-sm bg-slate-700/60 flex items-center justify-center">
                     <img
                       src={data.marker.icon}
-                      alt={data.marker.name}
+                      alt={`Icône ${data.marker.name} - Marqueur sur la carte interactive Duet Night Abyss`}
                       className="max-w-full max-h-full object-contain"
                       onError={(e) => {
                         e.currentTarget.style.display = "none";
@@ -383,7 +383,7 @@ export default function MapComponent({
                   <div className="mb-4 rounded-lg overflow-hidden border border-indigo-500/30 bg-slate-800/50">
                     <img
                       src={data.instance.image}
-                      alt={`${data.marker.name} - Guide visuel`}
+                      alt={`Guide visuel ${data.marker.name} - Localisation sur la carte interactive Duet Night Abyss`}
                       className="w-full h-auto object-contain max-h-64 cursor-zoom-in hover:opacity-90 transition-opacity"
                       onClick={() => setZoomedImage(data.instance.image!)}
                       onError={(e) => {
