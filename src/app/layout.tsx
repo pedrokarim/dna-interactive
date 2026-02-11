@@ -103,7 +103,7 @@ export async function generateMetadata(
     },
     verification: {
       google: "i_GLyVEAubN9keZoMX6Kk8-T8XyldPJ8zXc1atDYv-k",
-      yandex: "yandex-verification-code",
+      // yandex: "yandex-verification-code", // Retiré car placeholder
     },
     alternates: {
       canonical: "https://dna-interactive.ascencia.re",

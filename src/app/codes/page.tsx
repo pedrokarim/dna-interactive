@@ -25,47 +25,47 @@ export default function CodesPage() {
                 className="h-10 w-auto"
               />
               <div>
-                <h1 className="text-2xl font-bold text-white flex items-center gap-2">
+                <div className="text-2xl font-bold text-white flex items-center gap-2">
                   {SITE_CONFIG.name}
-                </h1>
+                </div>
                 <p className="text-xs text-gray-400">{SITE_CONFIG.tagline}</p>
               </div>
             </div>
 
             <nav className="hidden md:flex items-center space-x-8">
-              <a
+              <Link
                 href="/"
                 className="text-gray-300 hover:text-indigo-400 transition-colors"
               >
                 Accueil
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/map"
                 className="text-gray-300 hover:text-indigo-400 transition-colors"
               >
                 Carte Interactive
-              </a>
-              <a href="/codes" className="text-indigo-400 font-medium">
+              </Link>
+              <Link href="/codes" className="text-indigo-400 font-medium">
                 Codes de Rédemption
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/about"
                 className="text-gray-300 hover:text-indigo-400 transition-colors"
               >
                 À propos
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/support"
                 className="text-gray-300 hover:text-indigo-400 transition-colors"
               >
                 Support
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/contact"
                 className="text-gray-300 hover:text-indigo-400 transition-colors"
               >
                 Contact
-              </a>
+              </Link>
             </nav>
           </div>
         </div>
@@ -92,36 +92,36 @@ export default function CodesPage() {
             </div>
 
             <div className="flex items-center space-x-6 text-sm text-gray-400">
-              <a href="/" className="hover:text-indigo-400 transition-colors">
+              <Link href="/" className="hover:text-indigo-400 transition-colors">
                 Accueil
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/map"
                 className="hover:text-indigo-400 transition-colors"
               >
                 Carte Interactive
-              </a>
-              <a href="/codes" className="text-indigo-400">
+              </Link>
+              <Link href="/codes" className="text-indigo-400">
                 Codes de Rédemption
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/about"
                 className="hover:text-indigo-400 transition-colors"
               >
                 À propos
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/support"
                 className="hover:text-indigo-400 transition-colors"
               >
                 Support
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/contact"
                 className="hover:text-indigo-400 transition-colors"
               >
                 Contact
-              </a>
+              </Link>
             </div>
           </div>
 

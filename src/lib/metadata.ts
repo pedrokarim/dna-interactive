@@ -199,7 +199,7 @@ export const pageMetadata = {
   },
   contact: {
     title: `Contact - ${SITE_CONFIG.name}`,
-    description: `Contactez l'équipe de ${SITE_CONFIG.name} pour vos questions sur la carte interactive Duet Night Abyss.`,
+    description: `Contactez l'équipe de ${SITE_CONFIG.name} pour vos questions, suggestions ou signalements concernant la carte interactive Duet Night Abyss. Réponse rapide garantie.`,
     keywords: [
       GAME_INFO.name,
       ...SITE_CONFIG.keywords,
@@ -241,7 +241,7 @@ export const pageMetadata = {
   },
   changelog: {
     title: `Changelog - ${SITE_CONFIG.name}`,
-    description: `Découvrez toutes les mises à jour et améliorations apportées à ${SITE_CONFIG.name}, la carte interactive Duet Night Abyss.`,
+    description: `Découvrez toutes les mises à jour et améliorations apportées à ${SITE_CONFIG.name}, la carte interactive Duet Night Abyss. Historique complet des versions et nouveautés.`,
     keywords: [
       GAME_INFO.name,
       ...SITE_CONFIG.keywords,

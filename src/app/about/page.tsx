@@ -34,9 +34,9 @@ export default function AboutPage() {
                 className="h-10 w-auto"
               />
               <div>
-                <h1 className="text-2xl font-bold text-white flex items-center gap-2">
+                <div className="text-2xl font-bold text-white flex items-center gap-2">
                   {SITE_CONFIG.name}
-                </h1>
+                </div>
                 <p className="text-xs text-gray-400">{SITE_CONFIG.tagline}</p>
               </div>
             </Link>
@@ -76,9 +76,9 @@ export default function AboutPage() {
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-white mb-4">
+              <h1 className="text-4xl font-bold text-white mb-4">
                 À propos de {SITE_CONFIG.name}
-              </h2>
+              </h1>
               <p className="text-xl text-gray-400">
                 Notre mission : faciliter l'exploration de {GAME_INFO.name}
               </p>

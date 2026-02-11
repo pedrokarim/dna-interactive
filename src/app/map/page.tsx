@@ -571,9 +571,9 @@ export default function MapPage() {
                     className="h-8 w-auto"
                   />
                   <div>
-                    <h1 className="text-xl font-bold text-white flex items-center gap-2">
+                    <div className="text-xl font-bold text-white flex items-center gap-2">
                       {SITE_CONFIG.name}
-                    </h1>
+                    </div>
                     <p className="text-xs text-gray-400">Carte Interactive</p>
                   </div>
                 </div>
@@ -660,7 +660,7 @@ export default function MapPage() {
                 <img
                   key={imagePath}
                   src={imagePath}
-                  alt=""
+                  alt={`Carte interactive de la région ${selectedMap?.name || 'Duet Night Abyss'} montrant tous les marqueurs, coffres et points d'intérêt pour ${SITE_CONFIG.name}`}
                   className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
                     index === currentBgImage ? "opacity-100" : "opacity-0"
                   }`}
@@ -720,7 +720,7 @@ export default function MapPage() {
                           <div className="w-8 h-8 rounded border border-indigo-500/30 bg-slate-700/60 flex items-center justify-center">
                             <img
                               src={group.icon}
-                              alt={group.name}
+                              alt={`Icône ${group.name} - Catégorie de marqueurs pour la carte interactive Duet Night Abyss`}
                               className="max-w-full max-h-full object-contain"
                               onError={(e) => {
                                 e.currentTarget.style.display = "none";
@@ -834,7 +834,7 @@ export default function MapPage() {
                                   <div className="w-10 h-10 rounded overflow-hidden border border-indigo-500/30 shadow-sm mb-1 flex items-center justify-center bg-slate-600/50">
                                     <img
                                       src={item.icon}
-                                      alt={item.name}
+                                      alt={`Icône ${item.name} - Marqueur pour la carte interactive Duet Night Abyss`}
                                       className="max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-110"
                                       onError={(e) => {
                                         e.currentTarget.style.display = "none";

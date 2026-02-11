@@ -186,7 +186,7 @@ export default function ImageZoomModal({
         <img
           ref={imageRef}
           src={imageUrl}
-          alt="Marqueur - Guide visuel"
+          alt="Guide visuel détaillé du marqueur sur la carte interactive Duet Night Abyss"
           className="max-w-full max-h-[90vh] object-contain select-none"
           style={{
             transform: `scale(${zoom}) rotate(${rotation}deg) translate(${
