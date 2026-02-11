@@ -31,8 +31,8 @@ export async function generateMetadata(
   return {
     metadataBase: new URL("https://dna-interactive.ascencia.re"),
     title: {
-      default: `DNA Interactive - Carte Interactive Duet Night Abyss | Map Gaming`,
-      template: `%s | DNA Interactive - Carte Interactive Duet Night Abyss`,
+      default: `DNA Interactive - Carte Interactive Duet Night Abyss`,
+      template: `%s | DNA Interactive`,
     },
     description: `Carte interactive ultime pour Duet Night Abyss. Explorez le monde du jeu avec DNA Interactive : trouvez tous les secrets, coffres et collectibles. Outil indispensable pour les joueurs de DNA.`,
     keywords: [

@@ -1,11 +1,20 @@
-import { SITE_CONFIG, CONTACT_INFO, CREATOR_INFO, GAME_INFO, PROJECT_STATS } from "@/lib/constants";
+import {
+  SITE_CONFIG,
+  CONTACT_INFO,
+  CREATOR_INFO,
+  GAME_INFO,
+  PROJECT_STATS,
+} from "@/lib/constants";
 
 interface StructuredDataProps {
   type?: "website" | "organization" | "article" | "game" | "map";
   pageData?: any;
 }
 
-export default function StructuredData({ type = "website", pageData }: StructuredDataProps) {
+export default function StructuredData({
+  type = "website",
+  pageData,
+}: StructuredDataProps) {
   const baseData = {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -14,7 +23,8 @@ export default function StructuredData({ type = "website", pageData }: Structure
     url: "https://dna-interactive.ascencia.re",
     potentialAction: {
       "@type": "SearchAction",
-      target: "https://dna-interactive.ascencia.re/map?search={search_term_string}",
+      target:
+        "https://dna-interactive.ascencia.re/map?search={search_term_string}",
       "query-input": "required name=search_term_string",
     },
     publisher: {
@@ -56,18 +66,19 @@ export default function StructuredData({ type = "website", pageData }: Structure
               priceCurrency: "EUR",
               availability: "https://schema.org/InStock",
             },
-            aggregateRating: {
-              "@type": "AggregateRating",
-              ratingValue: "4.5",
-              reviewCount: "100",
-            },
             author: {
               "@type": "Organization",
               name: "Ascencia",
               url: CONTACT_INFO.ascencia.url,
             },
             genre: ["Adventure", "Exploration", "Mystery"],
-            keywords: ["Duet Night Abyss", "gaming", "adventure", "exploration", "mystery"],
+            keywords: [
+              "Duet Night Abyss",
+              "gaming",
+              "adventure",
+              "exploration",
+              "mystery",
+            ],
           }),
         }}
       />
@@ -112,11 +123,6 @@ export default function StructuredData({ type = "website", pageData }: Structure
               "game guide",
               "interactive map",
             ],
-            aggregateRating: {
-              "@type": "AggregateRating",
-              ratingValue: "4.8",
-              reviewCount: "50",
-            },
           }),
         }}
       />
@@ -140,10 +146,7 @@ export default function StructuredData({ type = "website", pageData }: Structure
               email: CONTACT_INFO.email,
               url: CONTACT_INFO.discord.url,
             },
-            sameAs: [
-              CONTACT_INFO.discord.url,
-              CONTACT_INFO.ascencia.url,
-            ],
+            sameAs: [CONTACT_INFO.discord.url, CONTACT_INFO.ascencia.url],
           }),
         }}
       />
