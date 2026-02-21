@@ -55,6 +55,12 @@ export default function AboutPage() {
                 Carte Interactive
               </Link>
               <Link
+                href={NAVIGATION.items}
+                className="text-gray-300 hover:text-indigo-400 transition-colors"
+              >
+                Items
+              </Link>
+              <Link
                 href={NAVIGATION.support}
                 className="text-gray-300 hover:text-indigo-400 transition-colors"
               >
@@ -505,6 +511,12 @@ export default function AboutPage() {
                 className="hover:text-indigo-400 transition-colors"
               >
                 Carte Interactive
+              </Link>
+              <Link
+                href={NAVIGATION.items}
+                className="hover:text-indigo-400 transition-colors"
+              >
+                Items
               </Link>
               <Link
                 href={NAVIGATION.support}

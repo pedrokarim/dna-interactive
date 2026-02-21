@@ -1,51 +1,82 @@
 import { MetadataRoute } from "next";
-import { SITE_CONFIG, NAVIGATION } from "@/lib/constants";
+import { NAVIGATION } from "@/lib/constants";
+import { getItemCatalog, getItemsByCategoryId } from "@/lib/items/catalog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://dna-interactive.ascencia.re";
+  const now = new Date();
 
-  return [
+  const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "daily",
       priority: 1,
     },
     {
       url: `${baseUrl}${NAVIGATION.map}`,
-      lastModified: new Date(),
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}${NAVIGATION.items}`,
+      lastModified: now,
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
       url: `${baseUrl}/codes`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "weekly",
       priority: 0.8,
     },
     {
       url: `${baseUrl}${NAVIGATION.about}`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
       url: `${baseUrl}${NAVIGATION.support}`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.6,
     },
     {
       url: `${baseUrl}${NAVIGATION.contact}`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
       url: `${baseUrl}/changelog`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.4,
     },
   ];
+
+  const catalog = getItemCatalog();
+  const itemRoutes: MetadataRoute.Sitemap = [];
+
+  for (const category of catalog.categories) {
+    itemRoutes.push({
+      url: `${baseUrl}${NAVIGATION.items}/${category.slug}`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    });
+
+    for (const item of getItemsByCategoryId(category.id)) {
+      itemRoutes.push({
+        url: `${baseUrl}${NAVIGATION.items}/${category.slug}/${item.id}`,
+        lastModified: now,
+        changeFrequency: "monthly",
+        priority: 0.6,
+      });
+    }
+  }
+
+  return [...staticRoutes, ...itemRoutes];
 }

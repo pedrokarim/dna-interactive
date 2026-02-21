@@ -1,0 +1,31 @@
+{
+  "generatedAt": "2026-02-21T23:49:00.380Z",
+  "categories": [
+    {
+      "id": "mods",
+      "slug": "mods",
+      "title": "MOD / Demon Wedge",
+      "technicalName": "MOD",
+      "displayName": "Demon Wedge",
+      "description": "Liste des MOD (Demon Wedges) avec noms multilingues, descriptions et informations d'archives.",
+      "itemCount": 714,
+      "availableLanguages": [
+        "DE",
+        "EN",
+        "ES",
+        "FR",
+        "JP",
+        "KR",
+        "TC"
+      ],
+      "defaultGridLanguages": [
+        "FR",
+        "EN"
+      ],
+      "defaultDetailLanguage": "FR",
+      "datasetFile": "mods.items.json",
+      "iconDirectory": "/assets/items/mods",
+      "sampleIconPath": "/assets/items/mods/T_Mod_Phoenix01.png"
+    }
+  ]
+}

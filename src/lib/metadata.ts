@@ -153,6 +153,24 @@ export const pageMetadata = {
     image: "/assets/worldview/worldview-2.webp",
     url: "https://dna-interactive.ascencia.re/map",
   },
+  items: {
+    title: `Items & Demon Wedges - ${SITE_CONFIG.name}`,
+    description:
+      "Base de donnees des items Duet Night Abyss: MOD / Demon Wedge, noms multilingues, descriptions, filtres et fiches detaillees.",
+    keywords: [
+      GAME_INFO.name,
+      "items",
+      "demon wedge",
+      "mods",
+      "multilingue",
+      "base de donnees",
+      "filtres",
+      "guide",
+      SITE_CONFIG.name,
+    ],
+    image: "/assets/worldview/worldview-8.webp",
+    url: "https://dna-interactive.ascencia.re/items",
+  },
   codes: {
     title: `Codes de Rédemption Duet Night Abyss | ${SITE_CONFIG.name}`,
     description: "Découvrez tous les codes de rédemption actifs pour Duet Night Abyss. Codes promotionnels, récompenses gratuites et bonus exclusifs. Mise à jour régulière des nouveaux codes.",

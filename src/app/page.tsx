@@ -1,6 +1,6 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
-import { Map, Gift, Info, HelpCircle, Mail } from "lucide-react";
+import { Map, Gift, Info, HelpCircle, Mail, Boxes } from "lucide-react";
 import {
   SITE_CONFIG,
   ASSETS_PATHS,
@@ -28,6 +28,7 @@ export async function generateMetadata(
 // Mapping des icônes pour la navigation
 const navIcons = {
   [NAVIGATION.map]: Map,
+  [NAVIGATION.items]: Boxes,
   [NAVIGATION.codes]: Gift,
   [NAVIGATION.about]: Info,
   [NAVIGATION.support]: HelpCircle,

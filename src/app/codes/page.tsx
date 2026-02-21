@@ -45,6 +45,12 @@ export default function CodesPage() {
               >
                 Carte Interactive
               </Link>
+              <Link
+                href="/items"
+                className="text-gray-300 hover:text-indigo-400 transition-colors"
+              >
+                Items
+              </Link>
               <Link href="/codes" className="text-indigo-400 font-medium">
                 Codes de Rédemption
               </Link>
@@ -100,6 +106,12 @@ export default function CodesPage() {
                 className="hover:text-indigo-400 transition-colors"
               >
                 Carte Interactive
+              </Link>
+              <Link
+                href="/items"
+                className="hover:text-indigo-400 transition-colors"
+              >
+                Items
               </Link>
               <Link href="/codes" className="text-indigo-400">
                 Codes de Rédemption

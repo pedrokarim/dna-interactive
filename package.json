@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "extract:mods:site": "bun run research_data/extract-mods-localization.ts --verbose"
   },
   "dependencies": {
     "@types/leaflet": "^1.9.21",

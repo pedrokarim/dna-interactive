@@ -900,6 +900,12 @@ export default function MapPage() {
                   Changelog
                 </Link>
                 <Link
+                  href="/items"
+                  className="hover:text-indigo-400 transition-colors"
+                >
+                  Items
+                </Link>
+                <Link
                   href="/about"
                   className="hover:text-indigo-400 transition-colors"
                 >

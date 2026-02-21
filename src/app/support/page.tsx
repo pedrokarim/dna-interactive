@@ -45,6 +45,12 @@ export default function SupportPage() {
                 Carte Interactive
               </Link>
               <Link
+                href={NAVIGATION.items}
+                className="text-gray-300 hover:text-indigo-400 transition-colors"
+              >
+                Items
+              </Link>
+              <Link
                 href={NAVIGATION.about}
                 className="text-gray-300 hover:text-indigo-400 transition-colors"
               >
@@ -192,6 +198,9 @@ export default function SupportPage() {
               </Link>
               <Link href={NAVIGATION.map} className="hover:text-indigo-400 transition-colors">
                 Carte Interactive
+              </Link>
+              <Link href={NAVIGATION.items} className="hover:text-indigo-400 transition-colors">
+                Items
               </Link>
               <Link href={NAVIGATION.about} className="hover:text-indigo-400 transition-colors">
                 À propos
