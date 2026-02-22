@@ -1,6 +1,7 @@
 import catalogJson from "@/data/items/catalog.json";
 import modsItemsJson from "@/data/items/mods.items.json";
 import resourcesItemsJson from "@/data/items/resources.items.json";
+import weaponsItemsJson from "@/data/items/weapons.items.json";
 import type {
   ItemCatalog,
   ItemCategory,
@@ -21,6 +22,7 @@ const LANGUAGE_LABELS: Record<string, string> = {
 const catalog = catalogJson as ItemCatalog;
 const rawModsItems = modsItemsJson as unknown as ItemRecord[];
 const rawResourcesItems = resourcesItemsJson as unknown as ItemRecord[];
+const rawWeaponsItems = weaponsItemsJson as unknown as ItemRecord[];
 
 function sanitizeItemFields(fields: ItemRecord["fields"]): ItemRecord["fields"] {
   const sanitized: ItemRecord["fields"] = {};
@@ -69,6 +71,7 @@ function sanitizeItemRecord(item: ItemRecord): ItemRecord {
 const DATASETS_BY_CATEGORY_ID: Record<string, ItemRecord[]> = {
   mods: rawModsItems.map(sanitizeItemRecord),
   resources: rawResourcesItems.map(sanitizeItemRecord),
+  weapons: rawWeaponsItems.map(sanitizeItemRecord),
 };
 
 export function getLanguageLabel(code: string): string {

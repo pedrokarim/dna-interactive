@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-22T15:10:03.712Z",
+  "generatedAt": "2026-02-22T22:04:00.000Z",
   "categories": [
     {
       "id": "mods",
@@ -52,6 +52,32 @@
       "datasetFile": "resources.items.json",
       "iconDirectory": "/assets/items/resources",
       "sampleIconPath": "/assets/items/resources/T_Coin_Main_Lv1.png"
+    },
+    {
+      "id": "weapons",
+      "slug": "weapons",
+      "title": "Armes / Arm",
+      "technicalName": "WEAPON",
+      "displayName": "Armes",
+      "description": "Liste des armes avec noms multilingues, type melee/range, sous-type et icones.",
+      "itemCount": 54,
+      "availableLanguages": [
+        "DE",
+        "EN",
+        "ES",
+        "FR",
+        "JP",
+        "KR",
+        "TC"
+      ],
+      "defaultGridLanguages": [
+        "FR",
+        "EN"
+      ],
+      "defaultDetailLanguage": "FR",
+      "datasetFile": "weapons.items.json",
+      "iconDirectory": "/assets/items/weapons",
+      "sampleIconPath": "/assets/items/weapons/T_Head_Sword_Zhuiyi.png"
     }
   ]
 }

@@ -1,6 +1,7 @@
 import { MetadataRoute } from "next";
 import { NAVIGATION } from "@/lib/constants";
 import { getItemCatalog, getItemsByCategoryId } from "@/lib/items/catalog";
+import { getDraftRecipes } from "@/lib/items/drafts";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://dna-interactive.ascencia.re";
@@ -30,6 +31,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "weekly",
       priority: 0.7,
+    },
+    {
+      url: `${baseUrl}${NAVIGATION.items}/drafts`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.8,
     },
     {
       url: `${baseUrl}/codes`,
@@ -90,5 +97,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
-  return [...staticRoutes, ...itemRoutes];
+  const draftRoutes: MetadataRoute.Sitemap = [];
+  for (const recipe of getDraftRecipes()) {
+    draftRoutes.push({
+      url: `${baseUrl}${NAVIGATION.items}/drafts/${recipe.draftId}`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    });
+  }
+
+  return [...staticRoutes, ...itemRoutes, ...draftRoutes];
 }
