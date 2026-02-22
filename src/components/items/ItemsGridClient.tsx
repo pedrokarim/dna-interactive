@@ -98,6 +98,69 @@ function sameStringArray(a: string[] | undefined, b: string[]): boolean {
   return true;
 }
 
+function buildPaginationItems(currentPage: number, totalPages: number): Array<number | "..."> {
+  if (totalPages <= 7) {
+    return Array.from({ length: totalPages }, (_, index) => index + 1);
+  }
+
+  const items: Array<number | "..."> = [1];
+  let left = Math.max(2, currentPage - 1);
+  let right = Math.min(totalPages - 1, currentPage + 1);
+
+  if (currentPage <= 3) {
+    left = 2;
+    right = 4;
+  } else if (currentPage >= totalPages - 2) {
+    left = totalPages - 3;
+    right = totalPages - 1;
+  }
+
+  if (left > 2) {
+    items.push("...");
+  }
+
+  for (let page = left; page <= right; page += 1) {
+    items.push(page);
+  }
+
+  if (right < totalPages - 1) {
+    items.push("...");
+  }
+
+  items.push(totalPages);
+  return items;
+}
+
+function formatElementKeyFallback(key: string): string {
+  return key
+    .replace(/^UI_Attr_/, "")
+    .replace(/_Name$/, "")
+    .replaceAll("_", " ");
+}
+
+function resolveElementalAffinity(
+  item: ItemRecord,
+  translatedTypeCompatibilityNames: string[],
+): { key: string; label: string; iconSrc: string | null } | null {
+  const index = item.typeCompatibility.textKeys.findIndex((key) => key.startsWith("UI_Attr_"));
+  if (index === -1) {
+    return null;
+  }
+
+  const key = item.typeCompatibility.textKeys[index];
+  const icon = item.typeCompatibility.tags.find((tag) => tag.key === key)?.icon;
+  const translatedLabel = translatedTypeCompatibilityNames[index];
+
+  return {
+    key,
+    label:
+      typeof translatedLabel === "string" && translatedLabel.trim().length > 0
+        ? translatedLabel
+        : formatElementKeyFallback(key),
+    iconSrc: icon?.publicPath ?? icon?.placeholderPath ?? null,
+  };
+}
+
 export default function ItemsGridClient({
   category,
   items,
@@ -355,6 +418,10 @@ export default function ItemsGridClient({
 
   const totalPages = Math.max(1, Math.ceil(filteredItems.length / pageSize));
   const safeCurrentPage = Math.min(currentPage, totalPages);
+  const paginationItems = useMemo(
+    () => buildPaginationItems(safeCurrentPage, totalPages),
+    [safeCurrentPage, totalPages],
+  );
   const pageStart = (safeCurrentPage - 1) * pageSize;
   const pageEnd = pageStart + pageSize;
   const paginatedItems = filteredItems.slice(pageStart, pageEnd);
@@ -689,33 +756,13 @@ export default function ItemsGridClient({
             Affichage {filteredItems.length === 0 ? 0 : pageStart + 1}-
             {Math.min(pageEnd, filteredItems.length)} sur {filteredItems.length}
           </p>
-          <div className="flex items-center gap-2">
-            <span className="text-xs uppercase tracking-[0.18em] text-slate-400">
-              Par page
-            </span>
-            <select
-              value={pageSize}
-              onChange={(event) => {
-                updateQueryFilters({
-                  size: Number(event.target.value),
-                  page: 1,
-                });
-              }}
-              className="rounded-md border border-slate-700 bg-slate-900 px-2 py-1 text-sm text-slate-100"
-            >
-              <option value={12}>12</option>
-              <option value={24}>24</option>
-              <option value={48}>48</option>
-              <option value={96}>96</option>
-            </select>
-            <button
-              type="button"
-              onClick={resetFilters}
-              className="rounded-md border border-slate-700 px-3 py-1 text-xs text-slate-300 transition-colors hover:border-indigo-400/40 hover:text-white"
-            >
-              Reinitialiser filtres
-            </button>
-          </div>
+          <button
+            type="button"
+            onClick={resetFilters}
+            className="rounded-md border border-slate-700 px-3 py-1 text-xs text-slate-300 transition-colors hover:border-indigo-400/40 hover:text-white"
+          >
+            Reinitialiser filtres
+          </button>
         </div>
       </section>
 
@@ -740,6 +787,7 @@ export default function ItemsGridClient({
               selectedLanguages[0],
               category.availableLanguages,
             );
+            const elementalAffinity = resolveElementalAffinity(item, lead.typeCompatibilityNames);
             const iconSrc = item.icon.publicPath ?? item.icon.placeholderPath ?? "/marker-default.svg";
             const favoriteKey = toFavoriteKey(category.id, item.id);
             const isFavorite = favoriteItems.has(favoriteKey);
@@ -782,8 +830,20 @@ export default function ItemsGridClient({
                     <p className="text-xs uppercase tracking-[0.22em] text-indigo-400/80">
                       {category.technicalName} #{item.modId}
                     </p>
-                    <h3 className="truncate text-lg font-semibold text-white transition-colors group-hover:text-indigo-100">
-                      {lead.modName ?? `${category.displayName} ${item.modId}`}
+                    <h3 className="text-lg font-semibold text-white transition-colors group-hover:text-indigo-100">
+                      <span className="inline-flex min-w-0 items-center gap-2">
+                        {elementalAffinity?.iconSrc ? (
+                          <img
+                            src={elementalAffinity.iconSrc}
+                            alt=""
+                            aria-hidden="true"
+                            className="h-5 w-5 shrink-0 object-contain"
+                          />
+                        ) : null}
+                        <span className="truncate">
+                          {lead.modName ?? `${category.displayName} ${item.modId}`}
+                        </span>
+                      </span>
                     </h3>
                     <p className="truncate text-xs text-slate-400">
                       {lead.functionLabel ?? (isModsCategory ? "Demon Wedge" : category.displayName)}
@@ -837,6 +897,18 @@ export default function ItemsGridClient({
                   <span className="rounded-full border border-slate-600/80 px-2 py-0.5 text-slate-300">
                     ID {item.modId}
                   </span>
+                  {elementalAffinity ? (
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-cyan-500/35 bg-cyan-500/10 px-2 py-0.5 text-cyan-100">
+                      {elementalAffinity.iconSrc ? (
+                        <img
+                          src={elementalAffinity.iconSrc}
+                          alt={elementalAffinity.label}
+                          className="h-3.5 w-3.5 object-contain"
+                        />
+                      ) : null}
+                      {elementalAffinity.label}
+                    </span>
+                  ) : null}
                   {typeof item.stats.rarity === "number" && (
                   <span className="rounded-full border border-slate-600/80 px-2 py-0.5 text-slate-300">
                     Rarete {item.stats.rarity}
@@ -865,32 +937,105 @@ export default function ItemsGridClient({
       )}
 
       {filteredItems.length > 0 && (
-        <div className="flex flex-wrap items-center justify-center gap-2 rounded-xl border border-slate-700/70 bg-slate-900/50 p-3">
-          <button
-            type="button"
-            onClick={() => {
-              const nextPage = Math.max(1, safeCurrentPage - 1);
-              updateQueryFilters({ page: nextPage });
-            }}
-            disabled={safeCurrentPage === 1}
-            className="rounded-lg border border-slate-700 px-3 py-1.5 text-sm text-slate-200 transition-colors hover:border-indigo-400/40 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
-          >
-            Precedent
-          </button>
-          <span className="px-2 text-sm text-slate-300">
-            Page {safeCurrentPage} / {totalPages}
-          </span>
-          <button
-            type="button"
-            onClick={() => {
-              const nextPage = Math.min(totalPages, safeCurrentPage + 1);
-              updateQueryFilters({ page: nextPage });
-            }}
-            disabled={safeCurrentPage === totalPages}
-            className="rounded-lg border border-slate-700 px-3 py-1.5 text-sm text-slate-200 transition-colors hover:border-indigo-400/40 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
-          >
-            Suivant
-          </button>
+        <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-700/70 bg-slate-900/50 p-3">
+          <p className="text-sm text-slate-300">
+            Affichage {filteredItems.length === 0 ? 0 : pageStart + 1}-
+            {Math.min(pageEnd, filteredItems.length)} sur {filteredItems.length}
+          </p>
+
+          <div className="flex flex-wrap items-center justify-end gap-3">
+            <div className="flex items-center gap-1">
+              <button
+                type="button"
+                onClick={() => updateQueryFilters({ page: 1 })}
+                disabled={safeCurrentPage === 1}
+                className="rounded-md border border-slate-700 px-2 py-1 text-xs text-slate-200 transition-colors hover:border-indigo-400/40 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
+                aria-label="Premiere page"
+              >
+                {"<<"}
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  const nextPage = Math.max(1, safeCurrentPage - 1);
+                  updateQueryFilters({ page: nextPage });
+                }}
+                disabled={safeCurrentPage === 1}
+                className="rounded-md border border-slate-700 px-2 py-1 text-xs text-slate-200 transition-colors hover:border-indigo-400/40 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
+                aria-label="Page precedente"
+              >
+                {"<"}
+              </button>
+
+              {paginationItems.map((page, index) =>
+                page === "..." ? (
+                  <span
+                    key={`ellipsis-${index}`}
+                    className="px-1 text-xs text-slate-500"
+                    aria-hidden="true"
+                  >
+                    ...
+                  </span>
+                ) : (
+                  <button
+                    key={`page-${page}`}
+                    type="button"
+                    onClick={() => updateQueryFilters({ page })}
+                    className={`rounded-md border px-2 py-1 text-xs transition-colors ${
+                      page === safeCurrentPage
+                        ? "border-indigo-400/70 bg-indigo-500/25 text-indigo-100"
+                        : "border-slate-700 text-slate-200 hover:border-indigo-400/40 hover:text-white"
+                    }`}
+                    aria-label={`Aller a la page ${page}`}
+                    aria-current={page === safeCurrentPage ? "page" : undefined}
+                  >
+                    {page}
+                  </button>
+                ),
+              )}
+
+              <button
+                type="button"
+                onClick={() => {
+                  const nextPage = Math.min(totalPages, safeCurrentPage + 1);
+                  updateQueryFilters({ page: nextPage });
+                }}
+                disabled={safeCurrentPage === totalPages}
+                className="rounded-md border border-slate-700 px-2 py-1 text-xs text-slate-200 transition-colors hover:border-indigo-400/40 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
+                aria-label="Page suivante"
+              >
+                {">"}
+              </button>
+              <button
+                type="button"
+                onClick={() => updateQueryFilters({ page: totalPages })}
+                disabled={safeCurrentPage === totalPages}
+                className="rounded-md border border-slate-700 px-2 py-1 text-xs text-slate-200 transition-colors hover:border-indigo-400/40 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
+                aria-label="Derniere page"
+              >
+                {">>"}
+              </button>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <span className="text-xs uppercase tracking-[0.18em] text-slate-400">Par page</span>
+              <select
+                value={pageSize}
+                onChange={(event) => {
+                  updateQueryFilters({
+                    size: Number(event.target.value),
+                    page: 1,
+                  });
+                }}
+                className="rounded-md border border-slate-700 bg-slate-900 px-2 py-1 text-xs text-slate-100"
+              >
+                <option value={12}>12</option>
+                <option value={24}>24</option>
+                <option value={48}>48</option>
+                <option value={96}>96</option>
+              </select>
+            </div>
+          </div>
         </div>
       )}
 

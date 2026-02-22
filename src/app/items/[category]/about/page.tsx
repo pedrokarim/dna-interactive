@@ -7,10 +7,13 @@ import {
   BookOpenText,
   Calculator,
   Database,
+  ImageIcon,
   Languages,
   Layers,
   SlidersHorizontal,
   Sparkles,
+  Target,
+  Zap,
   Wrench,
 } from "lucide-react";
 import { getItemCatalog, getItemCategoryBySlug } from "@/lib/items/catalog";
@@ -28,6 +31,54 @@ function GuideBadge({ icon, label }: { icon: React.ReactNode; label: string }) {
     </span>
   );
 }
+
+function GuideIconCard({
+  src,
+  label,
+  sublabel,
+}: {
+  src: string;
+  label: string;
+  sublabel?: string;
+}) {
+  return (
+    <div className="rounded-xl border border-slate-700/70 bg-slate-950/65 p-3">
+      <div className="flex h-14 w-14 items-center justify-center rounded-lg border border-indigo-500/20 bg-slate-900/70 p-2">
+        <img src={src} alt={label} className="max-h-full max-w-full object-contain" />
+      </div>
+      <p className="mt-2 text-sm font-medium text-slate-100">{label}</p>
+      {sublabel ? <p className="text-xs text-slate-400">{sublabel}</p> : null}
+    </div>
+  );
+}
+
+const DEMON_WEDGE_EXAMPLES = [
+  { src: "/assets/items/mods/T_Mod_Phoenix01.png", label: "Phoenix" },
+  { src: "/assets/items/mods/T_Mod_Ifrit01.png", label: "Ifrit" },
+  { src: "/assets/items/mods/T_Mod_Fenrir01.png", label: "Fenrir" },
+  { src: "/assets/items/mods/T_Mod_Sphinx01.png", label: "Sphinx" },
+  { src: "/assets/items/mods/T_Mod_Bahamut01.png", label: "Bahamut" },
+  { src: "/assets/items/mods/T_Mod_Yatagarasu01.png", label: "Yatagarasu" },
+  { src: "/assets/items/mods/T_Mod_Hastur01.png", label: "Hastur" },
+  { src: "/assets/items/mods/T_Mod_Lilith01.png", label: "Lilith" },
+];
+
+const AFFINITY_EXAMPLES = [
+  { src: "/assets/items/mods/T_Armory_Dark.png", label: "Dark" },
+  { src: "/assets/items/mods/T_Armory_Fire.png", label: "Fire" },
+  { src: "/assets/items/mods/T_Armory_Water.png", label: "Water" },
+  { src: "/assets/items/mods/T_Armory_Thunder.png", label: "Thunder" },
+  { src: "/assets/items/mods/T_Armory_Wind.png", label: "Wind" },
+  { src: "/assets/items/mods/T_Armory_Light.png", label: "Light" },
+];
+
+const TYPE_COMPAT_EXAMPLES = [
+  { src: "/assets/items/mods/T_Armory_RoleType_01.png", label: "Personnage" },
+  { src: "/assets/items/mods/T_Armory_RoleType_02.png", label: "Melee" },
+  { src: "/assets/items/mods/T_Armory_RoleType_03.png", label: "Distance" },
+  { src: "/assets/items/mods/T_Armory_RoleType_04.png", label: "Melee Ultra" },
+  { src: "/assets/items/mods/T_Armory_RoleType_05.png", label: "Distance Ultra" },
+];
 
 function ModsAboutContent({ categorySlug }: { categorySlug: string }) {
   return (
@@ -60,6 +111,52 @@ function ModsAboutContent({ categorySlug }: { categorySlug: string }) {
       </section>
 
       <section className="grid gap-5 lg:grid-cols-3">
+        <article className="rounded-2xl border border-slate-700/70 bg-slate-900/55 p-6 lg:col-span-2">
+          <h2 className="flex items-center gap-2 text-xl font-semibold text-white">
+            <ImageIcon className="h-5 w-5 text-fuchsia-300" />
+            Vitrine visuelle Demon Wedge
+          </h2>
+          <p className="mt-3 text-sm text-slate-300">
+            Exemples d&apos;icones MOD utilises dans la grille et la page detail. L&apos;objectif est de reconnaitre
+            rapidement un Demon Wedge au premier coup d&apos;oeil.
+          </p>
+          <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+            {DEMON_WEDGE_EXAMPLES.map((entry) => (
+              <GuideIconCard key={entry.src} src={entry.src} label={entry.label} sublabel="Exemple d&apos;icone MOD" />
+            ))}
+          </div>
+        </article>
+
+        <article className="rounded-2xl border border-slate-700/70 bg-slate-900/55 p-6">
+          <h2 className="text-lg font-semibold text-white">Lire une fiche en 3 repères</h2>
+          <div className="mt-4 space-y-3 text-sm text-slate-300">
+            <div className="rounded-lg border border-slate-700/70 bg-slate-950/60 p-3">
+              <p className="font-medium text-slate-100">1) Icône principale</p>
+              <p className="mt-1 text-xs text-slate-400">Permet d&apos;identifier le MOD dans la grille.</p>
+            </div>
+            <div className="rounded-lg border border-slate-700/70 bg-slate-950/60 p-3">
+              <p className="font-medium text-slate-100">2) Affinite / polarite</p>
+              <p className="mt-1 text-xs text-slate-400">
+                Le symbole a cote du nom indique le type d&apos;affinite du MOD.
+              </p>
+            </div>
+            <div className="rounded-lg border border-slate-700/70 bg-slate-950/60 p-3">
+              <p className="font-medium text-slate-100">3) Niveau actif</p>
+              <p className="mt-1 text-xs text-slate-400">
+                Le slider du detail fait varier les valeurs dynamiques #1, #2, #3.
+              </p>
+            </div>
+          </div>
+          <div className="mt-4 grid grid-cols-4 gap-2">
+            <img src="/assets/items/mods/T_Armory_Polarity01.png" alt="Polarity 1" className="h-9 w-9 rounded-md border border-slate-700/70 bg-slate-950/70 p-1 object-contain" />
+            <img src="/assets/items/mods/T_Armory_Polarity02.png" alt="Polarity 2" className="h-9 w-9 rounded-md border border-slate-700/70 bg-slate-950/70 p-1 object-contain" />
+            <img src="/assets/items/mods/T_Armory_Polarity03.png" alt="Polarity 3" className="h-9 w-9 rounded-md border border-slate-700/70 bg-slate-950/70 p-1 object-contain" />
+            <img src="/assets/items/mods/T_Armory_Polarity04.png" alt="Polarity 4" className="h-9 w-9 rounded-md border border-slate-700/70 bg-slate-950/70 p-1 object-contain" />
+          </div>
+        </article>
+      </section>
+
+      <section className="grid gap-5 lg:grid-cols-3">
         <article className="rounded-2xl border border-slate-700/70 bg-slate-900/55 p-5 lg:col-span-2">
           <h2 className="flex items-center gap-2 text-xl font-semibold text-white">
             <BadgeInfo className="h-5 w-5 text-cyan-300" />
@@ -82,26 +179,61 @@ function ModsAboutContent({ categorySlug }: { categorySlug: string }) {
         </article>
 
         <article className="rounded-2xl border border-slate-700/70 bg-slate-900/55 p-5">
-          <h2 className="text-lg font-semibold text-white">Affinite et icones</h2>
+          <h2 className="text-lg font-semibold text-white">Affinites, polarites et compatibilites</h2>
           <p className="mt-3 text-sm text-slate-300">
-            Le champ <code>Polarity</code> definit le type d&apos;affinite. Ces icones servent de repere visuel rapide.
+            La fiche detail combine plusieurs reperes visuels: symbole de polarite, affinite elementaire et tags de
+            compatibilite du type de personnage/arme.
           </p>
-          <div className="mt-4 grid grid-cols-2 gap-2">
-            <div className="flex items-center gap-2 rounded-lg border border-slate-700/70 bg-slate-950/60 p-2 text-xs text-slate-200">
-              <img src="/assets/items/mods/T_Armory_Polarity01.png" alt="Polarity 1" className="h-6 w-6 object-contain" />
-              Polarity 1
+
+          <div className="mt-4">
+            <p className="mb-2 text-xs uppercase tracking-[0.22em] text-slate-400">Polarite</p>
+            <div className="grid grid-cols-2 gap-2">
+              <div className="flex items-center gap-2 rounded-lg border border-slate-700/70 bg-slate-950/60 p-2 text-xs text-slate-200">
+                <img src="/assets/items/mods/T_Armory_Polarity01.png" alt="Polarity 1" className="h-6 w-6 object-contain" />
+                Polarity 1
+              </div>
+              <div className="flex items-center gap-2 rounded-lg border border-slate-700/70 bg-slate-950/60 p-2 text-xs text-slate-200">
+                <img src="/assets/items/mods/T_Armory_Polarity02.png" alt="Polarity 2" className="h-6 w-6 object-contain" />
+                Polarity 2
+              </div>
+              <div className="flex items-center gap-2 rounded-lg border border-slate-700/70 bg-slate-950/60 p-2 text-xs text-slate-200">
+                <img src="/assets/items/mods/T_Armory_Polarity03.png" alt="Polarity 3" className="h-6 w-6 object-contain" />
+                Polarity 3
+              </div>
+              <div className="flex items-center gap-2 rounded-lg border border-slate-700/70 bg-slate-950/60 p-2 text-xs text-slate-200">
+                <img src="/assets/items/mods/T_Armory_Polarity04.png" alt="Polarity 4" className="h-6 w-6 object-contain" />
+                Polarity 4
+              </div>
             </div>
-            <div className="flex items-center gap-2 rounded-lg border border-slate-700/70 bg-slate-950/60 p-2 text-xs text-slate-200">
-              <img src="/assets/items/mods/T_Armory_Polarity02.png" alt="Polarity 2" className="h-6 w-6 object-contain" />
-              Polarity 2
+          </div>
+
+          <div className="mt-4">
+            <p className="mb-2 text-xs uppercase tracking-[0.22em] text-slate-400">Affinites elementaires</p>
+            <div className="grid grid-cols-3 gap-2">
+              {AFFINITY_EXAMPLES.map((entry) => (
+                <div
+                  key={entry.src}
+                  className="flex items-center gap-2 rounded-lg border border-slate-700/70 bg-slate-950/60 p-2 text-xs text-slate-200"
+                >
+                  <img src={entry.src} alt={entry.label} className="h-5 w-5 object-contain" />
+                  {entry.label}
+                </div>
+              ))}
             </div>
-            <div className="flex items-center gap-2 rounded-lg border border-slate-700/70 bg-slate-950/60 p-2 text-xs text-slate-200">
-              <img src="/assets/items/mods/T_Armory_Polarity03.png" alt="Polarity 3" className="h-6 w-6 object-contain" />
-              Polarity 3
-            </div>
-            <div className="flex items-center gap-2 rounded-lg border border-slate-700/70 bg-slate-950/60 p-2 text-xs text-slate-200">
-              <img src="/assets/items/mods/T_Armory_Polarity04.png" alt="Polarity 4" className="h-6 w-6 object-contain" />
-              Polarity 4
+          </div>
+
+          <div className="mt-4">
+            <p className="mb-2 text-xs uppercase tracking-[0.22em] text-slate-400">Type compatible</p>
+            <div className="grid grid-cols-2 gap-2">
+              {TYPE_COMPAT_EXAMPLES.map((entry) => (
+                <div
+                  key={entry.src}
+                  className="flex items-center gap-2 rounded-lg border border-slate-700/70 bg-slate-950/60 p-2 text-xs text-slate-200"
+                >
+                  <img src={entry.src} alt={entry.label} className="h-5 w-5 object-contain" />
+                  {entry.label}
+                </div>
+              ))}
             </div>
           </div>
         </article>
@@ -178,6 +310,57 @@ function ModsAboutContent({ categorySlug }: { categorySlug: string }) {
             </li>
           </ul>
         </article>
+      </section>
+
+      <section className="rounded-2xl border border-indigo-500/25 bg-linear-to-r from-indigo-500/10 via-slate-900/40 to-fuchsia-500/10 p-6">
+        <h2 className="flex items-center gap-2 text-xl font-semibold text-white">
+          <Zap className="h-5 w-5 text-indigo-300" />
+          Lecture rapide d&apos;un MOD dans le site
+        </h2>
+        <p className="mt-3 text-sm text-slate-200">
+          Le parcours visuel est toujours le meme: identifier l&apos;icone, verifier l&apos;affinite, puis ajuster le
+          niveau pour voir les effets dynamiques.
+        </p>
+        <div className="mt-5 grid gap-3 md:grid-cols-3">
+          <div className="rounded-xl border border-slate-700/70 bg-slate-950/60 p-4">
+            <p className="text-xs uppercase tracking-[0.22em] text-slate-400">Etape 1</p>
+            <p className="mt-1 text-sm font-medium text-slate-100">Identifier le Demon Wedge</p>
+            <div className="mt-3 flex items-center gap-3">
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg border border-slate-700/70 bg-slate-900/70 p-2">
+                <img src="/assets/items/mods/T_Mod_Phoenix01.png" alt="Exemple MOD Phoenix" className="max-h-full max-w-full object-contain" />
+              </div>
+              <div className="text-xs text-slate-400">
+                Nom + icone
+                <br />
+                directement sur la grille
+              </div>
+            </div>
+          </div>
+
+          <div className="rounded-xl border border-slate-700/70 bg-slate-950/60 p-4">
+            <p className="text-xs uppercase tracking-[0.22em] text-slate-400">Etape 2</p>
+            <p className="mt-1 text-sm font-medium text-slate-100">Verifier affinite et type</p>
+            <div className="mt-3 flex items-center gap-2">
+              <img src="/assets/items/mods/T_Armory_Fire.png" alt="Affinite Fire" className="h-7 w-7 rounded-md border border-slate-700/70 bg-slate-900/70 p-1 object-contain" />
+              <img src="/assets/items/mods/T_Armory_Polarity02.png" alt="Polarity 2" className="h-7 w-7 rounded-md border border-slate-700/70 bg-slate-900/70 p-1 object-contain" />
+              <img src="/assets/items/mods/T_Armory_RoleType_03.png" alt="Compatibilite Distance" className="h-7 w-7 rounded-md border border-slate-700/70 bg-slate-900/70 p-1 object-contain" />
+            </div>
+          </div>
+
+          <div className="rounded-xl border border-slate-700/70 bg-slate-950/60 p-4">
+            <p className="text-xs uppercase tracking-[0.22em] text-slate-400">Etape 3</p>
+            <p className="mt-1 text-sm font-medium text-slate-100">Ajuster le niveau</p>
+            <div className="mt-3 rounded-lg border border-indigo-500/30 bg-indigo-500/10 px-3 py-2 text-xs text-indigo-100">
+              #1 / #2 / #3 se mettent a jour
+              <br />
+              selon le slider de niveau
+            </div>
+            <div className="mt-2 flex items-center gap-2 text-xs text-slate-400">
+              <Target className="h-3.5 w-3.5 text-indigo-300" />
+              Niveau 0 = valeur de base non montee
+            </div>
+          </div>
+        </div>
       </section>
 
       <section className="rounded-2xl border border-cyan-500/25 bg-linear-to-r from-cyan-500/10 to-indigo-500/10 p-6">

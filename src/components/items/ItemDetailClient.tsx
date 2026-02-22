@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo } from "react";
+import { useMemo, type ReactNode } from "react";
 import { ArrowLeft, Database, Heart, Languages, SlidersHorizontal, Tag } from "lucide-react";
 import { useAtom } from "jotai";
 import { parseAsInteger, parseAsStringLiteral, useQueryState } from "nuqs";
@@ -97,6 +97,80 @@ function formatResolvedAttributeValue(attribute: ItemResolvedAttribute): string 
   return chunks.length > 0 ? chunks.join(" | ") : "N/A";
 }
 
+function renderTextWithDynamicMentions(
+  text: string,
+  level: number,
+  valuesByIndex: Record<string, number>,
+): ReactNode[] {
+  const tokenRegex = /#(\d+)/g;
+  const parts: ReactNode[] = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = tokenRegex.exec(text)) !== null) {
+    const fullToken = match[0];
+    const index = match[1];
+    const start = match.index;
+
+    if (start > lastIndex) {
+      parts.push(text.slice(lastIndex, start));
+    }
+
+    const resolved = valuesByIndex[index];
+    const inlineValue = resolved !== undefined ? formatDynamicNumber(resolved) : fullToken;
+    parts.push(
+      <span key={`mention-${start}-${fullToken}`} className="group relative inline-flex align-middle">
+        <span className="mx-0.5 rounded-md border border-indigo-400/35 bg-indigo-500/20 px-1.5 py-0.5 font-medium text-indigo-100">
+          {inlineValue}
+        </span>
+        <span className="pointer-events-none absolute left-1/2 top-full z-20 mt-1 hidden -translate-x-1/2 whitespace-nowrap rounded-md border border-slate-700/90 bg-slate-950/95 px-2 py-1 text-[11px] text-slate-100 shadow-[0_8px_20px_rgba(2,6,23,0.45)] group-hover:block">
+          {resolved !== undefined
+            ? `#${index} | Niveau ${level}: ${formatDynamicNumber(resolved)}`
+            : `#${index} | Niveau ${level}: valeur indisponible`}
+        </span>
+      </span>,
+    );
+
+    lastIndex = start + fullToken.length;
+  }
+
+  if (lastIndex < text.length) {
+    parts.push(text.slice(lastIndex));
+  }
+
+  return parts;
+}
+
+function formatElementKeyFallback(key: string): string {
+  return key
+    .replace(/^UI_Attr_/, "")
+    .replace(/_Name$/, "")
+    .replaceAll("_", " ");
+}
+
+function resolveElementalAffinity(
+  item: ItemRecord,
+  translatedTypeCompatibilityNames: string[],
+): { key: string; label: string; iconSrc: string | null } | null {
+  const index = item.typeCompatibility.textKeys.findIndex((key) => key.startsWith("UI_Attr_"));
+  if (index === -1) {
+    return null;
+  }
+
+  const key = item.typeCompatibility.textKeys[index];
+  const icon = item.typeCompatibility.tags.find((tag) => tag.key === key)?.icon;
+  const translatedLabel = translatedTypeCompatibilityNames[index];
+
+  return {
+    key,
+    label:
+      typeof translatedLabel === "string" && translatedLabel.trim().length > 0
+        ? translatedLabel
+        : formatElementKeyFallback(key),
+    iconSrc: icon?.publicPath ?? icon?.placeholderPath ?? null,
+  };
+}
+
 export default function ItemDetailClient({ category, item }: ItemDetailClientProps) {
   const [favoriteItems] = useAtom(itemsFavoritesAtom);
   const [, toggleItemFavorite] = useAtom(toggleItemFavoriteAtom);
@@ -148,6 +222,13 @@ export default function ItemDetailClient({ category, item }: ItemDetailClientPro
   const dynamicValueEntries = Object.entries(selectedLevelValues).sort(
     ([a], [b]) => Number(a) - Number(b),
   );
+  const dynamicValuesByIndex = useMemo(() => {
+    const out: Record<string, number> = {};
+    for (const [index, value] of dynamicValueEntries) {
+      out[index] = value;
+    }
+    return out;
+  }, [dynamicValueEntries]);
   const sliderMinLevel = levelOptions[0] ?? 0;
   const sliderMaxLevel = levelOptions[levelOptions.length - 1] ?? sliderMinLevel;
   const hasScalingData =
@@ -174,6 +255,10 @@ export default function ItemDetailClient({ category, item }: ItemDetailClientPro
         item.affinity.char ||
         typeof item.stats.polarity === "number",
     );
+  const elementalAffinity = resolveElementalAffinity(item, translation.typeCompatibilityNames);
+  const passiveDescriptionHasDynamicTokens =
+    typeof translation.passiveEffectsDescription === "string" &&
+    /#\d+/.test(translation.passiveEffectsDescription);
   const favoriteKey = `${category.id}:${item.id}`;
   const isFavorite = favoriteItems.has(favoriteKey);
 
@@ -235,7 +320,17 @@ export default function ItemDetailClient({ category, item }: ItemDetailClientPro
               {category.technicalName} #{item.modId}
             </p>
             <h1 className="text-3xl font-semibold text-white">
-              {translation.modName ?? `${category.displayName} ${item.modId}`}
+              <span className="inline-flex items-center gap-2">
+                {elementalAffinity?.iconSrc ? (
+                  <img
+                    src={elementalAffinity.iconSrc}
+                    alt=""
+                    aria-hidden="true"
+                    className="h-7 w-7 shrink-0 object-contain"
+                  />
+                ) : null}
+                <span>{translation.modName ?? `${category.displayName} ${item.modId}`}</span>
+              </span>
             </h1>
             <p className="text-sm text-slate-300">
               {translation.demonWedgeName
@@ -267,6 +362,18 @@ export default function ItemDetailClient({ category, item }: ItemDetailClientPro
                 </span>
                 </span>
               ) : null}
+              {elementalAffinity ? (
+                <span className="inline-flex items-center gap-2 rounded-full border border-cyan-500/35 bg-cyan-500/10 px-3 py-1 text-cyan-100">
+                  {elementalAffinity.iconSrc ? (
+                    <img
+                      src={elementalAffinity.iconSrc}
+                      alt={elementalAffinity.label}
+                      className="h-4 w-4 object-contain"
+                    />
+                  ) : null}
+                  {elementalAffinity.label}
+                </span>
+              ) : null}
               {typeof item.stats.maxLevel === "number" && (
                 <span className="rounded-full border border-slate-600/80 px-3 py-1 text-slate-300">
                   Max Level {item.stats.maxLevel}
@@ -292,14 +399,14 @@ export default function ItemDetailClient({ category, item }: ItemDetailClientPro
         </div>
 
         {hasScalingData ? (
-          <div className="mt-6 rounded-xl border border-slate-700/70 bg-slate-950/60 p-4">
-            <div className="flex flex-wrap items-center justify-between gap-3">
-              <p className="flex items-center gap-2 text-sm font-medium text-slate-100">
-                <SlidersHorizontal className="h-4 w-4 text-indigo-400/80" />
+          <div className="mt-4 max-w-xl rounded-lg border border-slate-700/70 bg-slate-950/55 px-3 py-2.5">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <p className="flex items-center gap-1.5 text-xs font-medium text-slate-100">
+                <SlidersHorizontal className="h-3.5 w-3.5 text-indigo-400/80" />
                 Niveau de progression
               </p>
-              <p className="text-sm text-slate-300">
-                {selectedLevel} / {sliderMaxLevel}
+              <p className="text-xs text-slate-300">
+                Lv {selectedLevel} / {sliderMaxLevel}
               </p>
             </div>
             <input
@@ -313,13 +420,13 @@ export default function ItemDetailClient({ category, item }: ItemDetailClientPro
                 const nextLevel = nearestAllowedLevel(requested, levelOptions);
                 void setSelectedLevelRaw(nextLevel);
               }}
-              className="mt-3 w-full accent-indigo-400"
+              className="mt-2 w-full accent-indigo-400"
               aria-label={`Niveau du ${category.technicalName}`}
             />
-            <div className="mt-2 flex flex-wrap gap-2 text-xs text-slate-400">
-              <span>Niveau par defaut: {item.scaling.defaultLevel}</span>
-              <span>Max: {item.scaling.maxLevel}</span>
-              <span>Valeurs dynamiques: {dynamicValueEntries.length}</span>
+            <div className="mt-1 flex flex-wrap gap-x-3 gap-y-1 text-[11px] text-slate-400">
+              <span>Defaut {item.scaling.defaultLevel}</span>
+              <span>Max {item.scaling.maxLevel}</span>
+              <span>Dyn {dynamicValueEntries.length}</span>
             </div>
           </div>
         ) : null}
@@ -329,7 +436,13 @@ export default function ItemDetailClient({ category, item }: ItemDetailClientPro
         <div className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5 lg:col-span-2">
           <h2 className="text-lg font-semibold text-white">Description</h2>
           <p className="mt-3 whitespace-pre-wrap text-sm leading-relaxed text-slate-300">
-            {translation.description ?? "No description available in the selected language."}
+            {translation.description
+              ? renderTextWithDynamicMentions(
+                  translation.description,
+                  selectedLevel,
+                  dynamicValuesByIndex,
+                )
+              : "No description available in the selected language."}
           </p>
           {isModsCategory ? (
             <div className="mt-5 border-t border-slate-700/70 pt-4">
@@ -337,26 +450,66 @@ export default function ItemDetailClient({ category, item }: ItemDetailClientPro
                 Description effet passif (niveau {selectedLevel})
               </h3>
               <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed text-slate-300">
-                {translation.passiveEffectsDescription ??
-                  "No passive effects description available in the selected language."}
+                {translation.passiveEffectsDescription
+                  ? renderTextWithDynamicMentions(
+                      translation.passiveEffectsDescription,
+                      selectedLevel,
+                      dynamicValuesByIndex,
+                    )
+                  : "No passive effects description available in the selected language."}
               </p>
-              <p className="mt-2 text-xs text-slate-500">
-                Variables #n ci-dessous resolues via SkillGrow au niveau selectionne.
-              </p>
-              <div className="mt-3 flex flex-wrap gap-2">
-                {dynamicValueEntries.length > 0 ? (
-                  dynamicValueEntries.map(([index, value]) => (
-                    <span
-                      key={`dynamic-${index}`}
-                      className="rounded-full border border-indigo-500/35 bg-indigo-500/10 px-2.5 py-1 text-xs text-indigo-100"
+              {passiveDescriptionHasDynamicTokens ? (
+                <p className="mt-2 text-xs text-slate-500">
+                  Survole les valeurs en surbrillance pour voir le token source <code>#n</code>.
+                </p>
+              ) : null}
+              <details className="mt-3 rounded-lg border border-slate-700/70 bg-slate-950/55 p-3">
+                <summary className="cursor-pointer select-none text-xs uppercase tracking-[0.18em] text-slate-300">
+                  Variables dynamiques (niveau {selectedLevel})
+                </summary>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {dynamicValueEntries.length > 0 ? (
+                    dynamicValueEntries.map(([index, value]) => (
+                      <span
+                        key={`dynamic-${index}`}
+                        className="rounded-full border border-indigo-500/35 bg-indigo-500/10 px-2.5 py-1 text-xs text-indigo-100"
+                      >
+                        #{index} = {formatDynamicNumber(value)}
+                      </span>
+                    ))
+                  ) : (
+                    <span className="text-xs text-slate-500">Aucune variable dynamique pour ce niveau.</span>
+                  )}
+                </div>
+              </details>
+            </div>
+          ) : null}
+
+          {isModsCategory ? (
+            <div className="mt-5 border-t border-slate-700/70 pt-4">
+              <h3 className="text-sm font-medium uppercase tracking-[0.18em] text-slate-400">
+                Attributs resolus (niveau {selectedLevel})
+              </h3>
+              {selectedLevelAttributesVisible.length === 0 ? (
+                <p className="mt-2 text-sm text-slate-500">Aucun attribut scalable detecte.</p>
+              ) : (
+                <div className="mt-3 space-y-2">
+                  {selectedLevelAttributesVisible.map((attribute, index) => (
+                    <div
+                      key={`resolved-attr-${attribute.attrName ?? "unknown"}-${index}`}
+                      className="rounded-lg border border-slate-700/60 bg-slate-950/60 px-3 py-2"
                     >
-                      #{index} = {formatDynamicNumber(value)}
-                    </span>
-                  ))
-                ) : (
-                  <span className="text-xs text-slate-500">Aucune variable dynamique pour ce niveau.</span>
-                )}
-              </div>
+                      <p className="text-sm font-medium text-slate-100">{attribute.attrName ?? "Attr"}</p>
+                      {attribute.allowModMultiplier && (
+                        <p className="text-xs text-slate-500">
+                          Multiplicateur: {attribute.allowModMultiplier}
+                        </p>
+                      )}
+                      <p className="mt-1 text-sm text-indigo-100">{formatResolvedAttributeValue(attribute)}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           ) : null}
         </div>
@@ -387,6 +540,21 @@ export default function ItemDetailClient({ category, item }: ItemDetailClientPro
                     {item.affinity.char ? ` (${item.affinity.char})` : ""}
                   </dd>
                 </div>
+                {elementalAffinity ? (
+                  <div>
+                    <dt className="text-slate-400">Affinite elementaire</dt>
+                    <dd className="inline-flex items-center gap-2 text-slate-100">
+                      {elementalAffinity.iconSrc ? (
+                        <img
+                          src={elementalAffinity.iconSrc}
+                          alt={elementalAffinity.label}
+                          className="h-4 w-4 object-contain"
+                        />
+                      ) : null}
+                      {elementalAffinity.label}
+                    </dd>
+                  </div>
+                ) : null}
                 <div>
                   <dt className="text-slate-400">PassiveEffects</dt>
                   <dd className="text-slate-100">{passiveEffectsRaw}</dd>
@@ -403,33 +571,6 @@ export default function ItemDetailClient({ category, item }: ItemDetailClientPro
             ) : null}
           </dl>
 
-          {hasScalingData ? (
-            <div className="mt-5 border-t border-slate-700/70 pt-4">
-            <h3 className="text-sm font-medium uppercase tracking-[0.18em] text-slate-400">
-              Attributs resolus (niveau {selectedLevel})
-            </h3>
-            {selectedLevelAttributesVisible.length === 0 ? (
-              <p className="mt-2 text-sm text-slate-500">Aucun attribut scalable detecte.</p>
-            ) : (
-              <div className="mt-3 space-y-2">
-                {selectedLevelAttributesVisible.map((attribute, index) => (
-                  <div
-                    key={`resolved-attr-${attribute.attrName ?? "unknown"}-${index}`}
-                    className="rounded-lg border border-slate-700/60 bg-slate-950/50 px-3 py-2"
-                  >
-                    <p className="text-sm font-medium text-slate-100">{attribute.attrName ?? "Attr"}</p>
-                    {attribute.allowModMultiplier && (
-                      <p className="text-xs text-slate-500">
-                        Multiplicateur: {attribute.allowModMultiplier}
-                      </p>
-                    )}
-                    <p className="mt-1 text-sm text-indigo-100">{formatResolvedAttributeValue(attribute)}</p>
-                  </div>
-                ))}
-              </div>
-            )}
-            </div>
-          ) : null}
         </div>
       </section>
 
