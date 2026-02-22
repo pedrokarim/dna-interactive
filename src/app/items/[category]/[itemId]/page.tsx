@@ -1,6 +1,8 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import ItemDetailClient from "@/components/items/ItemDetailClient";
+import ItemsSuspenseFallback from "@/components/items/ItemsSuspenseFallback";
 import {
   getItemByCategoryAndId,
   getItemCatalog,
@@ -99,5 +101,16 @@ export default async function ItemDetailPage({ params }: ItemDetailPageProps) {
     notFound();
   }
 
-  return <ItemDetailClient category={category} item={item} />;
+  return (
+    <Suspense
+      fallback={
+        <ItemsSuspenseFallback
+          title="Chargement du detail item"
+          description="Preparation des traductions, statistiques et valeurs dynamiques."
+        />
+      }
+    >
+      <ItemDetailClient category={category} item={item} />
+    </Suspense>
+  );
 }

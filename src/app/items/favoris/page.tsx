@@ -1,6 +1,8 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import ItemsGridClient from "@/components/items/ItemsGridClient";
+import ItemsSuspenseFallback from "@/components/items/ItemsSuspenseFallback";
 import { getItemsByCategorySlug } from "@/lib/items/catalog";
 import { generatePageMetadata } from "@/lib/metadata";
 
@@ -27,6 +29,15 @@ export default function ItemsFavoritesPage() {
   }
 
   return (
-    <ItemsGridClient category={payload.category} items={payload.items} favoritesOnly />
+    <Suspense
+      fallback={
+        <ItemsSuspenseFallback
+          title="Chargement des favoris"
+          description="Recuperation de la selection locale et application des preferences."
+        />
+      }
+    >
+      <ItemsGridClient category={payload.category} items={payload.items} favoritesOnly />
+    </Suspense>
   );
 }

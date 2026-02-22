@@ -1,6 +1,8 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import ItemsGridClient from "@/components/items/ItemsGridClient";
+import ItemsSuspenseFallback from "@/components/items/ItemsSuspenseFallback";
 import { getItemCatalog, getItemsByCategorySlug } from "@/lib/items/catalog";
 import { generatePageMetadata } from "@/lib/metadata";
 
@@ -59,5 +61,16 @@ export default async function ItemCategoryPage({ params }: ItemCategoryPageProps
     notFound();
   }
 
-  return <ItemsGridClient category={payload.category} items={payload.items} />;
+  return (
+    <Suspense
+      fallback={
+        <ItemsSuspenseFallback
+          title="Chargement des items"
+          description="Initialisation des filtres, tri et pagination de la categorie."
+        />
+      }
+    >
+      <ItemsGridClient category={payload.category} items={payload.items} />
+    </Suspense>
+  );
 }

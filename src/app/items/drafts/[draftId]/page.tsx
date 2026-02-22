@@ -1,6 +1,8 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import DraftDetailClient from "@/components/items/DraftDetailClient";
+import ItemsSuspenseFallback from "@/components/items/ItemsSuspenseFallback";
 import {
   getDraftAvailableLanguages,
   getDraftRecipeById,
@@ -73,6 +75,16 @@ export default async function DraftDetailPage({ params }: DraftDetailPageProps) 
 
   const availableLanguages = getDraftAvailableLanguages();
 
-  return <DraftDetailClient recipe={recipe} availableLanguages={availableLanguages} />;
+  return (
+    <Suspense
+      fallback={
+        <ItemsSuspenseFallback
+          title="Chargement du draft"
+          description="Mise en place des ingredients, du produit final et des traductions."
+        />
+      }
+    >
+      <DraftDetailClient recipe={recipe} availableLanguages={availableLanguages} />
+    </Suspense>
+  );
 }
-

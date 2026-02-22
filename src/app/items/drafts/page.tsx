@@ -1,5 +1,7 @@
 import type { Metadata, ResolvingMetadata } from "next";
+import { Suspense } from "react";
 import DraftsGridClient from "@/components/items/DraftsGridClient";
+import ItemsSuspenseFallback from "@/components/items/ItemsSuspenseFallback";
 import { getDraftAvailableLanguages, getDraftRecipeSummaries } from "@/lib/items/drafts";
 import { generatePageMetadata } from "@/lib/metadata";
 
@@ -32,11 +34,19 @@ export default function DraftsPage() {
   const availableLanguages = getDraftAvailableLanguages(recipes);
 
   return (
-    <DraftsGridClient
-      recipes={recipes}
-      availableLanguages={availableLanguages}
-      defaultLanguages={["FR", "EN"]}
-    />
+    <Suspense
+      fallback={
+        <ItemsSuspenseFallback
+          title="Chargement des drafts"
+          description="Construction de la grille des recettes et des options de filtrage."
+        />
+      }
+    >
+      <DraftsGridClient
+        recipes={recipes}
+        availableLanguages={availableLanguages}
+        defaultLanguages={["FR", "EN"]}
+      />
+    </Suspense>
   );
 }
-
