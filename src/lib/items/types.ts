@@ -5,6 +5,8 @@ export interface ItemLocalizedContent {
   description: string | null;
   demonWedgeName: string | null;
   functionLabel: string | null;
+  passiveEffectsDescription: string | null;
+  affinityName: string | null;
   archiveName: string | null;
 }
 
@@ -22,16 +24,48 @@ export interface ItemTextKeys {
   descriptionKey: string | null;
   demonWedgeKey: string | null;
   functionKey: string | null;
+  passiveEffectsDescKey: string | null;
+  affinityNameKey: string | null;
   archiveNameKey: string | null;
 }
 
 export interface ItemIcon {
   gamePath: string | null;
-  sourceAsset: string | null;
   publicPath: string | null;
   placeholderPath: string | null;
   candidates: string[];
   allMatches: string[];
+}
+
+export interface ItemResolvedAttribute {
+  attrName: string | null;
+  allowModMultiplier: string | null;
+  rate: number | null;
+  value: number | null;
+  rawRate: string | number | null;
+  rawValue: string | number | null;
+}
+
+export interface ItemScaling {
+  defaultLevel: number;
+  maxLevel: number;
+  availableLevels: number[];
+  valuesByLevel: Record<string, Record<string, number>>;
+  attributesByLevel: Record<string, ItemResolvedAttribute[]>;
+}
+
+export interface ItemAffinity {
+  id: number | null;
+  nameKey: string | null;
+  char: string | null;
+  icon: ItemIcon;
+}
+
+export interface ItemTolerance {
+  baseCost: number | null;
+  costChange: number | null;
+  maxLevel: number;
+  valuesByLevel: Record<string, number | null>;
 }
 
 export interface ItemRecord {
@@ -41,7 +75,10 @@ export interface ItemRecord {
   archiveId: number | null;
   stats: ItemStats;
   textKeys: ItemTextKeys;
+  affinity: ItemAffinity;
+  tolerance: ItemTolerance;
   icon: ItemIcon;
+  scaling: ItemScaling;
   translations: Record<string, ItemLocalizedContent>;
   fields: Record<string, ItemRawField>;
 }

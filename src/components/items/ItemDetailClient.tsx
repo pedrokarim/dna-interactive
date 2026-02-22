@@ -2,15 +2,15 @@
 
 import Link from "next/link";
 import { useMemo } from "react";
-import { ArrowLeft, Database, Heart, Languages, Tag } from "lucide-react";
+import { ArrowLeft, Database, Heart, Languages, SlidersHorizontal, Tag } from "lucide-react";
 import { useAtom } from "jotai";
-import { parseAsStringLiteral, useQueryState } from "nuqs";
+import { parseAsInteger, parseAsStringLiteral, useQueryState } from "nuqs";
 import {
   getItemTranslation,
   getLanguageLabel,
   normalizeLanguageCodes,
 } from "@/lib/items/catalog";
-import type { ItemCategory, ItemRawField, ItemRecord } from "@/lib/items/types";
+import type { ItemCategory, ItemRawField, ItemRecord, ItemResolvedAttribute } from "@/lib/items/types";
 import { itemsFavoritesAtom, toggleItemFavoriteAtom } from "@/lib/store";
 
 type ItemDetailClientProps = {
@@ -26,6 +26,75 @@ function formatRawFieldValue(value: ItemRawField): string {
     return "null";
   }
   return `${value}`;
+}
+
+function formatDynamicNumber(value: number): string {
+  if (!Number.isFinite(value)) {
+    return `${value}`;
+  }
+  const absolute = Math.abs(value);
+  if (absolute >= 1000) {
+    return Intl.NumberFormat("fr-FR", { maximumFractionDigits: 2 }).format(value);
+  }
+  if (Number.isInteger(value)) {
+    return `${value}`;
+  }
+  const digits = absolute >= 1 ? 2 : 4;
+  return value.toFixed(digits).replace(/\.?0+$/, "");
+}
+
+function formatRateValue(rate: number): string {
+  return `${formatDynamicNumber(rate * 100)}%`;
+}
+
+function normalizeScalingLevels(item: ItemRecord): number[] {
+  const fromScaling = item.scaling.availableLevels
+    .filter((value) => Number.isInteger(value) && value >= 0)
+    .sort((a, b) => a - b);
+  if (fromScaling.length > 0) {
+    return fromScaling;
+  }
+
+  const maxFromStats = typeof item.stats.maxLevel === "number" ? item.stats.maxLevel : 0;
+  return Array.from({ length: Math.max(0, maxFromStats) + 1 }, (_, index) => index);
+}
+
+function nearestAllowedLevel(value: number, allowed: number[]): number {
+  if (allowed.length === 0) {
+    return 0;
+  }
+  if (allowed.includes(value)) {
+    return value;
+  }
+
+  let nearest = allowed[0];
+  let distance = Math.abs(allowed[0] - value);
+  for (let i = 1; i < allowed.length; i += 1) {
+    const candidate = allowed[i];
+    const candidateDistance = Math.abs(candidate - value);
+    if (candidateDistance < distance) {
+      nearest = candidate;
+      distance = candidateDistance;
+    }
+  }
+  return nearest;
+}
+
+function formatResolvedAttributeValue(attribute: ItemResolvedAttribute): string {
+  const chunks: string[] = [];
+  if (typeof attribute.rate === "number") {
+    chunks.push(`+${formatRateValue(attribute.rate)}`);
+  } else if (typeof attribute.rawRate === "string" || typeof attribute.rawRate === "number") {
+    chunks.push(`${attribute.rawRate}`);
+  }
+
+  if (typeof attribute.value === "number") {
+    chunks.push(`+${formatDynamicNumber(attribute.value)}`);
+  } else if (typeof attribute.rawValue === "string" || typeof attribute.rawValue === "number") {
+    chunks.push(`${attribute.rawValue}`);
+  }
+
+  return chunks.length > 0 ? chunks.join(" | ") : "N/A";
 }
 
 export default function ItemDetailClient({ category, item }: ItemDetailClientProps) {
@@ -50,9 +119,47 @@ export default function ItemDetailClient({ category, item }: ItemDetailClientPro
     () => getItemTranslation(item, selectedLanguage, category.availableLanguages),
     [item, selectedLanguage, category.availableLanguages],
   );
+  const levelOptions = useMemo(() => normalizeScalingLevels(item), [item]);
+  const defaultLevel =
+    levelOptions.includes(item.scaling.defaultLevel) ? item.scaling.defaultLevel : levelOptions[0] ?? 0;
+  const levelParser = useMemo(
+    () =>
+      parseAsInteger
+        .withDefault(defaultLevel)
+        .withOptions({ clearOnDefault: false }),
+    [defaultLevel],
+  );
+  const [selectedLevelRaw, setSelectedLevelRaw] = useQueryState("lvl", levelParser);
+  const selectedLevel = nearestAllowedLevel(
+    typeof selectedLevelRaw === "number" ? selectedLevelRaw : defaultLevel,
+    levelOptions,
+  );
+  const selectedLevelValues = item.scaling.valuesByLevel[String(selectedLevel)] ?? {};
+  const selectedLevelAttributes = item.scaling.attributesByLevel[String(selectedLevel)] ?? [];
+  const selectedLevelAttributesVisible = selectedLevelAttributes.filter(
+    (attribute) =>
+      attribute.attrName !== null ||
+      attribute.rate !== null ||
+      attribute.value !== null ||
+      attribute.rawRate !== null ||
+      attribute.rawValue !== null,
+  );
+  const dynamicValueEntries = Object.entries(selectedLevelValues).sort(
+    ([a], [b]) => Number(a) - Number(b),
+  );
+  const sliderMinLevel = levelOptions[0] ?? 0;
+  const sliderMaxLevel = levelOptions[levelOptions.length - 1] ?? sliderMinLevel;
 
   const iconSrc = item.icon.publicPath ?? item.icon.placeholderPath ?? "/marker-default.svg";
-  const fieldEntries = Object.entries(item.fields).sort(([a], [b]) => a.localeCompare(b));
+  const affinityIconSrc = item.affinity.icon.publicPath ?? item.affinity.icon.placeholderPath;
+  const selectedTolerance =
+    item.tolerance.valuesByLevel[String(selectedLevel)] ??
+    item.tolerance.baseCost;
+  const fieldEntries = Object.entries(item.fields)
+    .filter(([field]) => field.toLowerCase() !== "descvalues")
+    .sort(([a], [b]) => a.localeCompare(b));
+  const passiveEffectsRaw =
+    item.fields.PassiveEffects === undefined ? "N/A" : formatRawFieldValue(item.fields.PassiveEffects);
   const favoriteKey = `${category.id}:${item.id}`;
   const isFavorite = favoriteItems.has(favoriteKey);
 
@@ -121,16 +228,63 @@ export default function ItemDetailClient({ category, item }: ItemDetailClientPro
               <span className="rounded-full border border-slate-600/80 px-3 py-1 text-slate-300">
                 Rarity {item.stats.rarity ?? "?"}
               </span>
-              <span className="rounded-full border border-slate-600/80 px-3 py-1 text-slate-300">
-                Polarity {item.stats.polarity ?? "?"}
+              <span className="inline-flex items-center gap-2 rounded-full border border-slate-600/80 px-3 py-1 text-slate-300">
+                {affinityIconSrc ? (
+                  <img
+                    src={affinityIconSrc}
+                    alt={translation.affinityName ?? `Affinity ${item.affinity.id ?? "?"}`}
+                    className="h-4 w-4 object-contain"
+                  />
+                ) : null}
+                <span>
+                  {translation.affinityName ?? `Polarity ${item.stats.polarity ?? "?"}`}
+                  {item.affinity.char ? ` (${item.affinity.char})` : ""}
+                </span>
               </span>
               <span className="rounded-full border border-slate-600/80 px-3 py-1 text-slate-300">
                 Max Level {item.stats.maxLevel ?? "?"}
               </span>
+              <span className="rounded-full border border-indigo-500/40 bg-indigo-500/10 px-3 py-1 text-indigo-100">
+                Niveau actif {selectedLevel}
+              </span>
               <span className="rounded-full border border-slate-600/80 px-3 py-1 text-slate-300">
                 Cost {item.stats.cost ?? "?"}
               </span>
+              <span className="rounded-full border border-slate-600/80 px-3 py-1 text-slate-300">
+                Tolerance {selectedTolerance ?? "?"}
+              </span>
             </div>
+          </div>
+        </div>
+
+        <div className="mt-6 rounded-xl border border-slate-700/70 bg-slate-950/60 p-4">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <p className="flex items-center gap-2 text-sm font-medium text-slate-100">
+              <SlidersHorizontal className="h-4 w-4 text-indigo-400/80" />
+              Niveau de progression
+            </p>
+            <p className="text-sm text-slate-300">
+              {selectedLevel} / {sliderMaxLevel}
+            </p>
+          </div>
+          <input
+            type="range"
+            min={sliderMinLevel}
+            max={sliderMaxLevel}
+            step={1}
+            value={selectedLevel}
+            onChange={(event) => {
+              const requested = Number(event.target.value);
+              const nextLevel = nearestAllowedLevel(requested, levelOptions);
+              void setSelectedLevelRaw(nextLevel);
+            }}
+            className="mt-3 w-full accent-indigo-400"
+            aria-label="Niveau du MOD"
+          />
+          <div className="mt-2 flex flex-wrap gap-2 text-xs text-slate-400">
+            <span>Niveau par defaut: {item.scaling.defaultLevel}</span>
+            <span>Max: {item.scaling.maxLevel}</span>
+            <span>Valeurs dynamiques: {dynamicValueEntries.length}</span>
           </div>
         </div>
       </section>
@@ -141,6 +295,32 @@ export default function ItemDetailClient({ category, item }: ItemDetailClientPro
           <p className="mt-3 whitespace-pre-wrap text-sm leading-relaxed text-slate-300">
             {translation.description ?? "No description available in the selected language."}
           </p>
+          <div className="mt-5 border-t border-slate-700/70 pt-4">
+            <h3 className="text-sm font-medium uppercase tracking-[0.18em] text-slate-400">
+              Description effet passif (niveau {selectedLevel})
+            </h3>
+            <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed text-slate-300">
+              {translation.passiveEffectsDescription ??
+                "No passive effects description available in the selected language."}
+            </p>
+            <p className="mt-2 text-xs text-slate-500">
+              Variables #n ci-dessous resolues via SkillGrow au niveau selectionne.
+            </p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {dynamicValueEntries.length > 0 ? (
+                dynamicValueEntries.map(([index, value]) => (
+                  <span
+                    key={`dynamic-${index}`}
+                    className="rounded-full border border-indigo-500/35 bg-indigo-500/10 px-2.5 py-1 text-xs text-indigo-100"
+                  >
+                    #{index} = {formatDynamicNumber(value)}
+                  </span>
+                ))
+              ) : (
+                <span className="text-xs text-slate-500">Aucune variable dynamique pour ce niveau.</span>
+              )}
+            </div>
+          </div>
         </div>
 
         <div className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
@@ -155,10 +335,51 @@ export default function ItemDetailClient({ category, item }: ItemDetailClientPro
               <dd className="text-slate-100">{translation.archiveName ?? "N/A"}</dd>
             </div>
             <div>
+              <dt className="text-slate-400">Affinite</dt>
+              <dd className="text-slate-100">
+                {translation.affinityName ?? "N/A"}
+                {item.affinity.char ? ` (${item.affinity.char})` : ""}
+              </dd>
+            </div>
+            <div>
+              <dt className="text-slate-400">PassiveEffects</dt>
+              <dd className="text-slate-100">{passiveEffectsRaw}</dd>
+            </div>
+            <div>
               <dt className="text-slate-400">Archive id</dt>
               <dd className="text-slate-100">{item.archiveId ?? "N/A"}</dd>
             </div>
+            <div>
+              <dt className="text-slate-400">Tolerance (niveau {selectedLevel})</dt>
+              <dd className="text-slate-100">{selectedTolerance ?? "N/A"}</dd>
+            </div>
           </dl>
+
+          <div className="mt-5 border-t border-slate-700/70 pt-4">
+            <h3 className="text-sm font-medium uppercase tracking-[0.18em] text-slate-400">
+              Attributs resolus (niveau {selectedLevel})
+            </h3>
+            {selectedLevelAttributesVisible.length === 0 ? (
+              <p className="mt-2 text-sm text-slate-500">Aucun attribut scalable detecte.</p>
+            ) : (
+              <div className="mt-3 space-y-2">
+                {selectedLevelAttributesVisible.map((attribute, index) => (
+                  <div
+                    key={`resolved-attr-${attribute.attrName ?? "unknown"}-${index}`}
+                    className="rounded-lg border border-slate-700/60 bg-slate-950/50 px-3 py-2"
+                  >
+                    <p className="text-sm font-medium text-slate-100">{attribute.attrName ?? "Attr"}</p>
+                    {attribute.allowModMultiplier && (
+                      <p className="text-xs text-slate-500">
+                        Multiplicateur: {attribute.allowModMultiplier}
+                      </p>
+                    )}
+                    <p className="mt-1 text-sm text-indigo-100">{formatResolvedAttributeValue(attribute)}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </section>
 
@@ -186,6 +407,14 @@ export default function ItemDetailClient({ category, item }: ItemDetailClientPro
               <dd className="text-slate-100">{item.textKeys.functionKey ?? "N/A"}</dd>
             </div>
             <div>
+              <dt className="text-slate-400">passiveEffectsDescKey</dt>
+              <dd className="text-slate-100">{item.textKeys.passiveEffectsDescKey ?? "N/A"}</dd>
+            </div>
+            <div>
+              <dt className="text-slate-400">affinityNameKey</dt>
+              <dd className="text-slate-100">{item.textKeys.affinityNameKey ?? "N/A"}</dd>
+            </div>
+            <div>
               <dt className="text-slate-400">archiveNameKey</dt>
               <dd className="text-slate-100">{item.textKeys.archiveNameKey ?? "N/A"}</dd>
             </div>
@@ -207,12 +436,18 @@ export default function ItemDetailClient({ category, item }: ItemDetailClientPro
               <dd className="break-all text-slate-100">{item.icon.gamePath ?? "N/A"}</dd>
             </div>
             <div>
-              <dt className="text-slate-400">source asset</dt>
-              <dd className="break-all text-slate-100">{item.icon.sourceAsset ?? "N/A"}</dd>
-            </div>
-            <div>
               <dt className="text-slate-400">public icon path</dt>
               <dd className="break-all text-slate-100">{item.icon.publicPath ?? "N/A"}</dd>
+            </div>
+            <div>
+              <dt className="text-slate-400">affinity icon path</dt>
+              <dd className="break-all text-slate-100">{item.affinity.icon.publicPath ?? "N/A"}</dd>
+            </div>
+            <div>
+              <dt className="text-slate-400">tolerance base / step</dt>
+              <dd className="text-slate-100">
+                {item.tolerance.baseCost ?? "N/A"} / {item.tolerance.costChange ?? "N/A"}
+              </dd>
             </div>
           </dl>
         </div>

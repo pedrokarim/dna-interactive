@@ -18,9 +18,40 @@ const LANGUAGE_LABELS: Record<string, string> = {
 };
 
 const catalog = catalogJson as ItemCatalog;
+const rawModsItems = modsItemsJson as unknown as ItemRecord[];
+
+function sanitizeItemFields(fields: ItemRecord["fields"]): ItemRecord["fields"] {
+  const sanitized: ItemRecord["fields"] = {};
+  for (const [fieldKey, fieldValue] of Object.entries(fields)) {
+    if (fieldKey.toLowerCase() === "descvalues") {
+      continue;
+    }
+    sanitized[fieldKey] = fieldValue;
+  }
+  return sanitized;
+}
+
+function sanitizeItemRecord(item: ItemRecord): ItemRecord {
+  const safeIcon = { ...item.icon } as ItemRecord["icon"] & { sourceAsset?: string | null };
+  delete safeIcon.sourceAsset;
+  const safeAffinityIcon = {
+    ...item.affinity.icon,
+  } as ItemRecord["affinity"]["icon"] & { sourceAsset?: string | null };
+  delete safeAffinityIcon.sourceAsset;
+
+  return {
+    ...item,
+    icon: safeIcon,
+    affinity: {
+      ...item.affinity,
+      icon: safeAffinityIcon,
+    },
+    fields: sanitizeItemFields(item.fields),
+  };
+}
 
 const DATASETS_BY_CATEGORY_ID: Record<string, ItemRecord[]> = {
-  mods: modsItemsJson as ItemRecord[],
+  mods: rawModsItems.map(sanitizeItemRecord),
 };
 
 export function getLanguageLabel(code: string): string {
@@ -127,6 +158,8 @@ export function getItemTranslation(
       description: null,
       demonWedgeName: null,
       functionLabel: null,
+      passiveEffectsDescription: null,
+      affinityName: null,
       archiveName: null,
     }
   );

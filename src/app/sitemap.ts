@@ -73,6 +73,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.8,
     });
+    itemRoutes.push({
+      url: `${baseUrl}${NAVIGATION.items}/${category.slug}/about`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.75,
+    });
 
     for (const item of getItemsByCategoryId(category.id)) {
       itemRoutes.push({

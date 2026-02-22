@@ -1,9 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ChevronRight, Heart, Languages, Search, SlidersHorizontal, X, ZoomIn } from "lucide-react";
 import { useAtom } from "jotai";
+import {
+  parseAsArrayOf,
+  parseAsInteger,
+  parseAsString,
+  parseAsStringLiteral,
+  useQueryStates,
+} from "nuqs";
 import {
   getItemTranslation,
   getLanguageLabel,
@@ -18,6 +25,9 @@ import {
 
 type ArchiveFilter = "all" | "withArchive" | "withoutArchive";
 type SortMode = "id" | "rarityAsc" | "rarityDesc";
+const ARCHIVE_FILTER_VALUES = ["all", "withArchive", "withoutArchive"] as const;
+const SORT_MODE_VALUES = ["id", "rarityAsc", "rarityDesc"] as const;
+const PAGE_SIZE_VALUES = [12, 24, 48, 96] as const;
 
 type ItemsGridClientProps = {
   category: ItemCategory;
@@ -53,6 +63,9 @@ function translationSearchText(item: ItemRecord, availableLanguages: string[]): 
     if (translation.functionLabel) {
       values.push(translation.functionLabel);
     }
+    if (translation.passiveEffectsDescription) {
+      values.push(translation.passiveEffectsDescription);
+    }
     if (translation.archiveName) {
       values.push(translation.archiveName);
     }
@@ -67,6 +80,22 @@ function numberOr(value: number | null, fallback: number): number {
 
 function toFavoriteKey(categoryId: string, itemId: string): string {
   return `${categoryId}:${itemId}`;
+}
+
+function isAllowedPageSize(value: number): value is (typeof PAGE_SIZE_VALUES)[number] {
+  return PAGE_SIZE_VALUES.includes(value as (typeof PAGE_SIZE_VALUES)[number]);
+}
+
+function sameStringArray(a: string[] | undefined, b: string[]): boolean {
+  if (!a || a.length !== b.length) {
+    return false;
+  }
+  for (let i = 0; i < a.length; i += 1) {
+    if (a[i] !== b[i]) {
+      return false;
+    }
+  }
+  return true;
 }
 
 export default function ItemsGridClient({
@@ -85,52 +114,88 @@ export default function ItemsGridClient({
   );
   const persisted = persistedItemsFilters[category.id];
 
-  const [search, setSearch] = useState<string>(persisted?.search ?? "");
-  const [selectedLanguages, setSelectedLanguages] = useState<string[]>(() =>
-    normalizeLanguageCodes(
-      persisted?.selectedLanguages ?? defaultLanguages,
-      category.availableLanguages,
-      defaultLanguages,
-    ),
+  const [queryFilters, setQueryFilters] = useQueryStates({
+    q: parseAsString,
+    langs: parseAsArrayOf(parseAsString),
+    rarity: parseAsString,
+    polarity: parseAsString,
+    archive: parseAsStringLiteral(ARCHIVE_FILTER_VALUES),
+    sort: parseAsStringLiteral(SORT_MODE_VALUES),
+    size: parseAsInteger,
+    page: parseAsInteger,
+  });
+  const hasUrlFilters =
+    queryFilters.q !== null ||
+    queryFilters.langs !== null ||
+    queryFilters.rarity !== null ||
+    queryFilters.polarity !== null ||
+    queryFilters.archive !== null ||
+    queryFilters.sort !== null ||
+    queryFilters.size !== null ||
+    queryFilters.page !== null;
+
+  const search = queryFilters.q ?? (hasUrlFilters ? "" : persisted?.search ?? "");
+  const selectedLanguages = normalizeLanguageCodes(
+    queryFilters.langs ??
+      (hasUrlFilters ? defaultLanguages : persisted?.selectedLanguages ?? defaultLanguages),
+    category.availableLanguages,
+    defaultLanguages,
   );
-  const [rarityFilter, setRarityFilter] = useState<string>(persisted?.rarityFilter ?? "all");
-  const [polarityFilter, setPolarityFilter] = useState<string>(persisted?.polarityFilter ?? "all");
-  const [archiveFilter, setArchiveFilter] = useState<ArchiveFilter>(
-    isArchiveFilter(persisted?.archiveFilter ?? "") ? persisted.archiveFilter : "all",
-  );
-  const [sortMode, setSortMode] = useState<SortMode>(
-    isSortMode(persisted?.sortMode ?? "") ? persisted.sortMode : "id",
-  );
-  const [pageSize, setPageSize] = useState<number>(
-    [12, 24, 48, 96].includes(persisted?.pageSize ?? -1) ? (persisted?.pageSize ?? 24) : 24,
-  );
-  const [currentPage, setCurrentPage] = useState<number>(
-    Number.isFinite(persisted?.currentPage) && (persisted?.currentPage ?? 0) > 0
-      ? (persisted?.currentPage ?? 1)
-      : 1,
-  );
+  const rarityFilter = queryFilters.rarity ?? (hasUrlFilters ? "all" : persisted?.rarityFilter ?? "all");
+  const polarityFilter =
+    queryFilters.polarity ?? (hasUrlFilters ? "all" : persisted?.polarityFilter ?? "all");
+
+  const rawArchiveFilter =
+    queryFilters.archive ?? (hasUrlFilters ? "all" : persisted?.archiveFilter ?? "all");
+  const archiveFilter: ArchiveFilter = isArchiveFilter(rawArchiveFilter) ? rawArchiveFilter : "all";
+
+  const rawSortMode = queryFilters.sort ?? (hasUrlFilters ? "id" : persisted?.sortMode ?? "id");
+  const sortMode: SortMode = isSortMode(rawSortMode) ? rawSortMode : "id";
+
+  const rawPageSize = queryFilters.size ?? (hasUrlFilters ? 24 : persisted?.pageSize ?? 24);
+  const pageSize = isAllowedPageSize(rawPageSize) ? rawPageSize : 24;
+
+  const rawCurrentPage = queryFilters.page ?? (hasUrlFilters ? 1 : persisted?.currentPage ?? 1);
+  const currentPage = Number.isFinite(rawCurrentPage) && rawCurrentPage > 0 ? rawCurrentPage : 1;
+
   const [previewIcon, setPreviewIcon] = useState<{
     src: string;
     alt: string;
     modId: number;
   } | null>(null);
 
-  const saveFilters = (overrides: Partial<(typeof persistedItemsFilters)[string]>): void => {
+  const updateQueryFilters = (overrides: {
+    q?: string;
+    langs?: string[];
+    rarity?: string;
+    polarity?: string;
+    archive?: ArchiveFilter;
+    sort?: SortMode;
+    size?: number;
+    page?: number;
+  }): void => {
     const next = {
-      search,
-      selectedLanguages,
-      rarityFilter,
-      polarityFilter,
-      archiveFilter,
-      sortMode,
-      pageSize,
-      currentPage,
+      q: search,
+      langs: selectedLanguages,
+      rarity: rarityFilter,
+      polarity: polarityFilter,
+      archive: archiveFilter,
+      sort: sortMode,
+      size: pageSize,
+      page: currentPage,
       ...overrides,
     };
-    setPersistedItemsFilters((prev) => ({
-      ...prev,
-      [category.id]: next,
-    }));
+
+    void setQueryFilters({
+      q: next.q,
+      langs: next.langs,
+      rarity: next.rarity,
+      polarity: next.polarity,
+      archive: next.archive,
+      sort: next.sort,
+      size: next.size,
+      page: next.page,
+    });
   };
 
   const rarityOptions = useMemo(() => {
@@ -238,54 +303,93 @@ export default function ItemsGridClient({
   const pageEnd = pageStart + pageSize;
   const paginatedItems = filteredItems.slice(pageStart, pageEnd);
 
+  useEffect(() => {
+    if (!hasUrlFilters && !persisted) {
+      return;
+    }
+
+    const next = {
+      search,
+      selectedLanguages,
+      rarityFilter,
+      polarityFilter,
+      archiveFilter,
+      sortMode,
+      pageSize,
+      currentPage: safeCurrentPage,
+    };
+
+    setPersistedItemsFilters((prev) => {
+      const previous = prev[category.id];
+      const isSame =
+        previous?.search === next.search &&
+        previous?.rarityFilter === next.rarityFilter &&
+        previous?.polarityFilter === next.polarityFilter &&
+        previous?.archiveFilter === next.archiveFilter &&
+        previous?.sortMode === next.sortMode &&
+        previous?.pageSize === next.pageSize &&
+        previous?.currentPage === next.currentPage &&
+        sameStringArray(previous?.selectedLanguages, next.selectedLanguages);
+
+      if (isSame) {
+        return prev;
+      }
+
+      return {
+        ...prev,
+        [category.id]: next,
+      };
+    });
+  }, [
+    search,
+    selectedLanguages,
+    rarityFilter,
+    polarityFilter,
+    archiveFilter,
+    sortMode,
+    pageSize,
+    safeCurrentPage,
+    hasUrlFilters,
+    persisted,
+    category.id,
+    setPersistedItemsFilters,
+  ]);
+
+  useEffect(() => {
+    if (currentPage > totalPages) {
+      void setQueryFilters({ page: totalPages });
+    }
+  }, [currentPage, totalPages, setQueryFilters]);
+
   const addLanguage = (code: string) => {
     if (!code) {
       return;
     }
-    setSelectedLanguages((prev) => {
-      const next = prev.includes(code)
-        ? prev
-        : normalizeLanguageCodes([...prev, code], category.availableLanguages, prev);
-      saveFilters({ selectedLanguages: next, currentPage: 1 });
-      return next;
-    });
-    setCurrentPage(1);
+    const next = selectedLanguages.includes(code)
+      ? selectedLanguages
+      : normalizeLanguageCodes([...selectedLanguages, code], category.availableLanguages, selectedLanguages);
+    updateQueryFilters({ langs: next, page: 1 });
   };
 
   const removeLanguage = (code: string) => {
-    setSelectedLanguages((prev) => {
-      if (prev.length <= 1) {
-        return prev;
-      }
-      const next = prev.filter((lang) => lang !== code);
-      saveFilters({ selectedLanguages: next, currentPage: 1 });
-      return next;
-    });
-    setCurrentPage(1);
+    if (selectedLanguages.length <= 1) {
+      return;
+    }
+    const next = selectedLanguages.filter((lang) => lang !== code);
+    updateQueryFilters({ langs: next, page: 1 });
   };
 
   const resetFilters = () => {
-    setSearch("");
-    setSelectedLanguages(defaultLanguages);
-    setRarityFilter("all");
-    setPolarityFilter("all");
-    setArchiveFilter("all");
-    setSortMode("id");
-    setPageSize(24);
-    setCurrentPage(1);
-    setPersistedItemsFilters((prev) => ({
-      ...prev,
-      [category.id]: {
-        search: "",
-        selectedLanguages: defaultLanguages,
-        rarityFilter: "all",
-        polarityFilter: "all",
-        archiveFilter: "all",
-        sortMode: "id",
-        pageSize: 24,
-        currentPage: 1,
-      },
-    }));
+    updateQueryFilters({
+      q: "",
+      langs: defaultLanguages,
+      rarity: "all",
+      polarity: "all",
+      archive: "all",
+      sort: "id",
+      size: 24,
+      page: 1,
+    });
   };
 
   return (
@@ -339,9 +443,7 @@ export default function ItemsGridClient({
               value={search}
               onChange={(event) => {
                 const value = event.target.value;
-                setSearch(value);
-                setCurrentPage(1);
-                saveFilters({ search: value, currentPage: 1 });
+                updateQueryFilters({ q: value, page: 1 });
               }}
               className="w-full bg-transparent text-sm text-slate-100 outline-none placeholder:text-slate-500"
               placeholder="Rechercher par id, nom MOD, Demon Wedge..."
@@ -397,9 +499,7 @@ export default function ItemsGridClient({
             <select
               value={rarityFilter}
               onChange={(event) => {
-                setRarityFilter(event.target.value);
-                setCurrentPage(1);
-                saveFilters({ rarityFilter: event.target.value, currentPage: 1 });
+                updateQueryFilters({ rarity: event.target.value, page: 1 });
               }}
               className="w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-sm text-slate-100"
             >
@@ -420,9 +520,7 @@ export default function ItemsGridClient({
             <select
               value={polarityFilter}
               onChange={(event) => {
-                setPolarityFilter(event.target.value);
-                setCurrentPage(1);
-                saveFilters({ polarityFilter: event.target.value, currentPage: 1 });
+                updateQueryFilters({ polarity: event.target.value, page: 1 });
               }}
               className="w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-sm text-slate-100"
             >
@@ -440,11 +538,9 @@ export default function ItemsGridClient({
             <select
               value={archiveFilter}
               onChange={(event) => {
-                setArchiveFilter(event.target.value as ArchiveFilter);
-                setCurrentPage(1);
-                saveFilters({
-                  archiveFilter: event.target.value as ArchiveFilter,
-                  currentPage: 1,
+                updateQueryFilters({
+                  archive: event.target.value as ArchiveFilter,
+                  page: 1,
                 });
               }}
               className="w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-sm text-slate-100"
@@ -460,11 +556,9 @@ export default function ItemsGridClient({
             <select
               value={sortMode}
               onChange={(event) => {
-                setSortMode(event.target.value as SortMode);
-                setCurrentPage(1);
-                saveFilters({
-                  sortMode: event.target.value as SortMode,
-                  currentPage: 1,
+                updateQueryFilters({
+                  sort: event.target.value as SortMode,
+                  page: 1,
                 });
               }}
               className="w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-sm text-slate-100"
@@ -488,11 +582,9 @@ export default function ItemsGridClient({
             <select
               value={pageSize}
               onChange={(event) => {
-                setPageSize(Number(event.target.value));
-                setCurrentPage(1);
-                saveFilters({
-                  pageSize: Number(event.target.value),
-                  currentPage: 1,
+                updateQueryFilters({
+                  size: Number(event.target.value),
+                  page: 1,
                 });
               }}
               className="rounded-md border border-slate-700 bg-slate-900 px-2 py-1 text-sm text-slate-100"
@@ -652,8 +744,7 @@ export default function ItemsGridClient({
             type="button"
             onClick={() => {
               const nextPage = Math.max(1, safeCurrentPage - 1);
-              setCurrentPage(nextPage);
-              saveFilters({ currentPage: nextPage });
+              updateQueryFilters({ page: nextPage });
             }}
             disabled={safeCurrentPage === 1}
             className="rounded-lg border border-slate-700 px-3 py-1.5 text-sm text-slate-200 transition-colors hover:border-indigo-400/40 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
@@ -667,8 +758,7 @@ export default function ItemsGridClient({
             type="button"
             onClick={() => {
               const nextPage = Math.min(totalPages, safeCurrentPage + 1);
-              setCurrentPage(nextPage);
-              saveFilters({ currentPage: nextPage });
+              updateQueryFilters({ page: nextPage });
             }}
             disabled={safeCurrentPage === totalPages}
             className="rounded-lg border border-slate-700 px-3 py-1.5 text-sm text-slate-200 transition-colors hover:border-indigo-400/40 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
