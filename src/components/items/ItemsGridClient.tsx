@@ -106,6 +106,7 @@ export default function ItemsGridClient({
   const [persistedItemsFilters, setPersistedItemsFilters] = useAtom(itemsFiltersStorageAtom);
   const [favoriteItems] = useAtom(itemsFavoritesAtom);
   const [, toggleItemFavorite] = useAtom(toggleItemFavoriteAtom);
+  const isModsCategory = category.id === "mods";
 
   const defaultLanguages = normalizeLanguageCodes(
     category.defaultGridLanguages,
@@ -446,9 +447,13 @@ export default function ItemsGridClient({
                 updateQueryFilters({ q: value, page: 1 });
               }}
               className="w-full bg-transparent text-sm text-slate-100 outline-none placeholder:text-slate-500"
-              placeholder="Rechercher par id, nom MOD, Demon Wedge..."
-            />
-          </label>
+               placeholder={
+                 isModsCategory
+                   ? "Rechercher par id, nom MOD, Demon Wedge..."
+                   : "Rechercher par id, nom, description..."
+               }
+             />
+           </label>
 
           <div className="rounded-xl border border-slate-700/70 bg-slate-950/60 p-3">
             <div className="mb-2 flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-slate-400">
@@ -642,7 +647,7 @@ export default function ItemsGridClient({
                       <div className="h-full w-full overflow-hidden rounded-lg">
                         <img
                           src={iconSrc}
-                          alt={`MOD ${item.modId}`}
+                          alt={`${category.technicalName} ${item.modId}`}
                           className="max-h-full max-w-full object-contain transition-transform duration-200 hover:scale-110"
                         />
                       </div>
@@ -653,12 +658,12 @@ export default function ItemsGridClient({
                           event.stopPropagation();
                           setPreviewIcon({
                             src: iconSrc,
-                            alt: lead.modName ?? `Mod ${item.modId}`,
+                            alt: lead.modName ?? `${category.displayName} ${item.modId}`,
                             modId: item.modId,
                           });
                         }}
                         className="absolute -bottom-3 -right-3 z-10 rounded-full border border-slate-700 bg-slate-900/95 p-1 text-slate-200 shadow-sm transition-colors hover:border-indigo-400/60 hover:bg-indigo-500/80 hover:text-white"
-                        aria-label={`Agrandir l'icone du MOD ${item.modId}`}
+                        aria-label={`Agrandir l'icone de ${category.technicalName} ${item.modId}`}
                       >
                         <ZoomIn className="h-3 w-3" />
                       </button>
@@ -666,13 +671,13 @@ export default function ItemsGridClient({
                   </div>
                   <div className="min-w-0 flex-1">
                     <p className="text-xs uppercase tracking-[0.22em] text-indigo-400/80">
-                      MOD #{item.modId}
+                      {category.technicalName} #{item.modId}
                     </p>
                     <h3 className="truncate text-lg font-semibold text-white transition-colors group-hover:text-indigo-100">
-                      {lead.modName ?? `Mod ${item.modId}`}
+                      {lead.modName ?? `${category.displayName} ${item.modId}`}
                     </h3>
                     <p className="truncate text-xs text-slate-400">
-                      {lead.functionLabel ?? "Demon Wedge"}
+                      {lead.functionLabel ?? (isModsCategory ? "Demon Wedge" : category.displayName)}
                     </p>
                   </div>
                   <button
@@ -710,8 +715,9 @@ export default function ItemsGridClient({
                         </p>
                         <p className="truncate text-xs text-slate-400">
                           {translation?.demonWedgeName
-                            ? `Demon Wedge ${translation.demonWedgeName}`
-                            : "Nom Demon Wedge indisponible"}
+                            ? `${category.displayName} ${translation.demonWedgeName}`
+                            : translation?.functionLabel ??
+                              (isModsCategory ? "Nom Demon Wedge indisponible" : "Libelle indisponible")}
                         </p>
                       </div>
                     );
@@ -720,17 +726,28 @@ export default function ItemsGridClient({
 
                 <div className="mt-4 flex flex-wrap gap-2 text-xs">
                   <span className="rounded-full border border-slate-600/80 px-2 py-0.5 text-slate-300">
-                    Rarete {item.stats.rarity ?? "?"}
+                    ID {item.modId}
                   </span>
+                  {typeof item.stats.rarity === "number" && (
                   <span className="rounded-full border border-slate-600/80 px-2 py-0.5 text-slate-300">
-                    Polarite {item.stats.polarity ?? "?"}
+                    Rarete {item.stats.rarity}
                   </span>
+                  )}
+                  {typeof item.stats.polarity === "number" && (
                   <span className="rounded-full border border-slate-600/80 px-2 py-0.5 text-slate-300">
-                    Max Lv {item.stats.maxLevel ?? "?"}
+                    Polarite {item.stats.polarity}
                   </span>
+                  )}
+                  {typeof item.stats.maxLevel === "number" && (
                   <span className="rounded-full border border-slate-600/80 px-2 py-0.5 text-slate-300">
-                    Cout {item.stats.cost ?? "?"}
+                    Max Lv {item.stats.maxLevel}
                   </span>
+                  )}
+                  {typeof item.stats.cost === "number" && (
+                  <span className="rounded-full border border-slate-600/80 px-2 py-0.5 text-slate-300">
+                    Cout {item.stats.cost}
+                  </span>
+                  )}
                 </div>
               </Link>
             );
@@ -774,7 +791,7 @@ export default function ItemsGridClient({
           onClick={() => setPreviewIcon(null)}
           role="dialog"
           aria-modal="true"
-          aria-label={`Apercu de l'icone MOD ${previewIcon.modId}`}
+          aria-label={`Apercu de l'icone ${category.technicalName} ${previewIcon.modId}`}
         >
           <div
             className="w-full max-w-sm rounded-2xl border border-indigo-500/30 bg-slate-900/95 p-4 shadow-[0_25px_60px_rgba(2,6,23,0.65)]"

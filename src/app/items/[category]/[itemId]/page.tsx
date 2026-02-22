@@ -75,8 +75,9 @@ export async function generateMetadata(
       url: `https://dna-interactive.ascencia.re/items/${category.slug}/${item.id}`,
       keywords: [
         "Duet Night Abyss",
-        "Demon Wedge",
-        "MOD",
+        "item database",
+        category.displayName,
+        category.technicalName,
         modName,
         `${category.technicalName} ${item.modId}`,
       ],

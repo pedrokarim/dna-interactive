@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-22T13:09:48.010Z",
+  "generatedAt": "2026-02-22T15:10:03.712Z",
   "categories": [
     {
       "id": "mods",
@@ -26,6 +26,32 @@
       "datasetFile": "mods.items.json",
       "iconDirectory": "/assets/items/mods",
       "sampleIconPath": "/assets/items/mods/T_Mod_Phoenix01.png"
+    },
+    {
+      "id": "resources",
+      "slug": "resources",
+      "title": "Ressources / Items",
+      "technicalName": "RESOURCE",
+      "displayName": "Items",
+      "description": "Liste des ressources avec noms multilingues, descriptions et icones extraites du jeu.",
+      "itemCount": 610,
+      "availableLanguages": [
+        "DE",
+        "EN",
+        "ES",
+        "FR",
+        "JP",
+        "KR",
+        "TC"
+      ],
+      "defaultGridLanguages": [
+        "FR",
+        "EN"
+      ],
+      "defaultDetailLanguage": "FR",
+      "datasetFile": "resources.items.json",
+      "iconDirectory": "/assets/items/resources",
+      "sampleIconPath": "/assets/items/resources/T_Coin_Main_Lv1.png"
     }
   ]
 }
