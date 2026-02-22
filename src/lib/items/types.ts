@@ -8,6 +8,7 @@ export interface ItemLocalizedContent {
   passiveEffectsDescription: string | null;
   affinityName: string | null;
   archiveName: string | null;
+  typeCompatibilityNames: string[];
 }
 
 export interface ItemStats {
@@ -68,6 +69,17 @@ export interface ItemTolerance {
   valuesByLevel: Record<string, number | null>;
 }
 
+export interface ItemTypeCompatibilityTag {
+  key: string;
+  icon: ItemIcon;
+}
+
+export interface ItemTypeCompatibility {
+  applicationType: number | null;
+  textKeys: string[];
+  tags: ItemTypeCompatibilityTag[];
+}
+
 export interface ItemRecord {
   id: string;
   categoryId: string;
@@ -76,6 +88,7 @@ export interface ItemRecord {
   stats: ItemStats;
   textKeys: ItemTextKeys;
   affinity: ItemAffinity;
+  typeCompatibility: ItemTypeCompatibility;
   tolerance: ItemTolerance;
   icon: ItemIcon;
   scaling: ItemScaling;

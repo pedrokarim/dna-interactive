@@ -38,6 +38,16 @@ function sanitizeItemRecord(item: ItemRecord): ItemRecord {
     ...item.affinity.icon,
   } as ItemRecord["affinity"]["icon"] & { sourceAsset?: string | null };
   delete safeAffinityIcon.sourceAsset;
+  const safeTypeCompatibilityTags = item.typeCompatibility.tags.map((tag) => {
+    const safeTagIcon = {
+      ...tag.icon,
+    } as ItemRecord["typeCompatibility"]["tags"][number]["icon"] & { sourceAsset?: string | null };
+    delete safeTagIcon.sourceAsset;
+    return {
+      ...tag,
+      icon: safeTagIcon,
+    };
+  });
 
   return {
     ...item,
@@ -45,6 +55,10 @@ function sanitizeItemRecord(item: ItemRecord): ItemRecord {
     affinity: {
       ...item.affinity,
       icon: safeAffinityIcon,
+    },
+    typeCompatibility: {
+      ...item.typeCompatibility,
+      tags: safeTypeCompatibilityTags,
     },
     fields: sanitizeItemFields(item.fields),
   };
@@ -161,6 +175,7 @@ export function getItemTranslation(
       passiveEffectsDescription: null,
       affinityName: null,
       archiveName: null,
+      typeCompatibilityNames: [],
     }
   );
 }

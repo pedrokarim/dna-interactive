@@ -1,0 +1,348 @@
+{
+  "labelsByLanguage": {
+    "DE": {
+      "packNameCharTrack": "Truhe „Figuren-Spurwechsel“",
+      "packNameWeaponTrack": "Truhe „Waffen-Spurwechsel“",
+      "trackAdjustment": "Spuranpassung",
+      "toleranceTrack": "Toleranz/Spur"
+    },
+    "EN": {
+      "packNameCharTrack": "Character Track-Shift Chest",
+      "packNameWeaponTrack": "Weapon Track-Shift Chest",
+      "trackAdjustment": "Track Adjustment",
+      "toleranceTrack": "Tolerance/Track"
+    },
+    "ES": {
+      "packNameCharTrack": "Cofre de cambio de afinidad de personaje",
+      "packNameWeaponTrack": "Cofre de cambio de afinidad de arma",
+      "trackAdjustment": "Modificación de afinidad",
+      "toleranceTrack": "Tolerancia/Afinidad"
+    },
+    "FR": {
+      "packNameCharTrack": "Coffret de transfert d’affinité – Personnage",
+      "packNameWeaponTrack": "Coffret de transfert d’affinité – Arme",
+      "trackAdjustment": "Modification d’affinité",
+      "toleranceTrack": "Tolérance / Affinité"
+    },
+    "JP": {
+      "packNameCharTrack": "キャラクター移転ボックス",
+      "packNameWeaponTrack": "武器移転ボックス",
+      "trackAdjustment": "ルーン変更",
+      "toleranceTrack": "コスト/ルーン"
+    },
+    "KR": {
+      "packNameCharTrack": "캐릭터 페이즈 시프트 선물함",
+      "packNameWeaponTrack": "무기 페이즈 시프트 선물함",
+      "trackAdjustment": "성향 조정",
+      "toleranceTrack": "내성/성향"
+    },
+    "TC": {
+      "packNameCharTrack": "角色移轉禮箱",
+      "packNameWeaponTrack": "武器移轉禮箱",
+      "trackAdjustment": "趨向調整",
+      "toleranceTrack": "耐受值/趨向"
+    }
+  },
+  "resources": [
+    {
+      "resourceId": 201,
+      "resourceType": "Polarization",
+      "textKeys": {
+        "nameKey": "RESOURCE_NAME_201",
+        "descriptionKey": "RESOURCE_DESC_201",
+        "flavorKey": "RESOURCE_TEXT_201"
+      },
+      "icon": {
+        "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resource_PolarityStyle.T_Resource_PolarityStyle",
+        "publicPath": "/assets/items/mods/T_Resource_PolarityStyle.png",
+        "placeholderPath": null,
+        "candidates": [
+          "T_Resource_PolarityStyle",
+          "Resource_PolarityStyle"
+        ],
+        "allMatches": [
+          "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resource_PolarityStyle.png"
+        ]
+      },
+      "translations": {
+        "DE": {
+          "name": "Spurwechselmodul",
+          "description": "Aus dem Hyperboreischen Imperium: ein Präzisionsgerät, das einem Werkzeugkasten ähnelt. Sobald die Zahnräder anlaufen, wird der darin platzierte Dämonenkeil so angepasst, dass er besser zum Zustand seines Trägers passt. Da es direkt am Anwender ansetzt, arbeitet dieses Modell besonders präzise, und kann nach der Anwendung die Fähigkeiten des Nutzers weiter steigern.",
+          "flavor": "„Die Kunst, seine Hilfsmittel zum richtigen Zeitpunkt einzusetzen, ist keine Frage von Faulheit. Sie ist tatsächlich eine wichtige Taktik, um Kämpfe effizient zu beenden. Die eingesparte Zeit kann man natürlich nutzen, um den erschöpften Körper und den müden Geist bei einem wohlverdienten Schlaf zu entspannen ...“\n \n – Randy, Hyperboreischer Offizier"
+        },
+        "EN": {
+          "name": "Track-Shift Module",
+          "description": "Produced from the Hyperborean Empire, a precision instrument very similar to a toolbox. When its gears start to move, the Demon Wedge placed inside will be modified to better suit the user's state. Because it acts directly on the user, this style has higher precision, and after use, it can further enhance the user's abilities.",
+          "flavor": "\"Mastering the art of using tools on the right occasions isn't laziness. In fact, it's a vital tactic for wrapping up battles efficiently. As for the time saved, it's naturally meant for relaxing one's weary body and mind with a well-deserved sleep...\"\n\n— Randy, Hyperborean Officer"
+        },
+        "ES": {
+          "name": "Módulo de cambio de afinidad",
+          "description": "Se trata de un instrumento de precisión procedente del Imperio Hyperboreano que recuerda mucho a una caja de herramientas. Cuando sus engranajes comienzan a girar, la Cuña Demoníaca colocada en su interior se modifica para adaptarse al usuario. Al actuar directamente sobre el portador, alcanza un mayor nivel de precisión y potencia aún más las capacidades del usuario.",
+          "flavor": "“Aprender a utilizar las herramientas en las ocasiones adecuadas no es pereza. De hecho, es una táctica vital para concluir los combates con eficiencia. En cuanto al tiempo que se ahorra, debe destinarse a relajar el cuerpo y la mente ya agotados con un sueño bien merecido…”\n\n— Randy, Oficial de Hyperborea"
+        },
+        "FR": {
+          "name": "Module de transfert d’affinité",
+          "description": "Dispositif de précision conçu dans l’Empire Hyperboréen, ressemblant à une boîte à outils. Lorsqu’il s’active, il ajuste un Sceau démoniaque pour mieux correspondre à son porteur. Agissant directement sur lui, il permet d’optimiser ses capacités.",
+          "flavor": "« Savoir employer les bons outils au bon moment n’a rien d’une paresse. C’est même une compétence essentielle pour conclure un combat efficacement. Quant au temps ainsi gagné... il est évidemment destiné à reposer ce corps fatigué et à s’accorder une bonne sieste. »\n\n— Randy, officier hyperboréen"
+        },
+        "JP": {
+          "name": "移転モジュール",
+          "description": "ヒュペリア帝国製の精密機械。見た目はツールボックスのようだが、その内部には魔の楔が仕込まれており、歯車が稼働することで、使用者に最適な状態へと調整される。使用者に直接作用するため、非常に高い精密性を誇り、使用者の能力がさらに向上する。",
+          "flavor": "「適切なタイミングで道具を使うのは、決して手抜きではありません。むしろ、戦いを効率よく終わらせうために欠かせない要素です。その結果、節約できた時間を有効活用すれば、疲れた体を休めたり、睡眠を満喫できるわけでして……」\n\n――ヒュペリア帝国軍将校 ランディー"
+        },
+        "KR": {
+          "name": "페이즈 시프트 모듈",
+          "description": "휘페르보레아 제국의 정밀 기기로 공구상자와 닮았다. 톱니바퀴가 돌아가기 시작하면 악마의 쐐기가 사용자에게 적합한 상태로 바뀐다. 이런 모델은 사용자에게 직접적으로 작용하기에 더 높은 정밀도를 보유하고 있으며, 사용 시 사용자의 능력을 한 단계 더 상승시킨다.",
+          "flavor": "\"상황에 맞게 도구를 활용하는 건 게으른 게 아니다. 엄밀히 말하면 효율적으로 전투를 끝내는 데 꼭 필요한 덕목이라고 할 수 있지. 그리고 남은 시간은... 당연히 지친 몸의 피로를 풀고 실컷 자야지...\"\n\n—— 휘페르보레아 제국 장교 랜디"
+        },
+        "TC": {
+          "name": "移轉模組",
+          "description": "出自海伯利亞帝國，一種與工具箱十分相像的精密儀器，當它的齒輪開始運轉，放置在裡面的魔之楔將被修改成為更適應使用者的狀態，由於直接作用於使用者本身，這種款式擁有更高的精密度，使用後可進一步提升使用者的能力。",
+          "flavor": "「學會在合適的場合運用道具可不算偷懶，嚴格來說甚至是高效結束戰鬥的必修課，至於節省下的時間，那當然是拿來放鬆疲憊的身心，盡情地睡上一覺……」\n\n——海伯利亞軍官 蘭迪"
+        }
+      },
+      "fields": {
+        "AccessKey": "T.RT_3",
+        "DetailDes": "RESOURCE_DESC_201",
+        "FunctionDes": "RESOURCE_FUNCTION_CHARPOL",
+        "Icon": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resource_PolarityStyle.T_Resource_PolarityStyle",
+        "IpDes": "RESOURCE_TEXT_201",
+        "ItemArchiveType": 1,
+        "MaterialClassify": 3,
+        "Rarity": 5,
+        "ResourceId": 201,
+        "ResourceName": "RESOURCE_NAME_201",
+        "ResourceSType": "Polarization",
+        "ResourceValue": -1,
+        "Sound": "SOUND_ITEM_METAL",
+        "Type": "Rare",
+        "UseEffectType": "Polarization"
+      }
+    },
+    {
+      "resourceId": 202,
+      "resourceType": "WeaponPolarization",
+      "textKeys": {
+        "nameKey": "RESOURCE_NAME_202",
+        "descriptionKey": "RESOURCE_DESC_202",
+        "flavorKey": "RESOURCE_TEXT_202"
+      },
+      "icon": {
+        "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resource_PolarityAura.T_Resource_PolarityAura",
+        "publicPath": "/assets/items/mods/T_Resource_PolarityAura.png",
+        "placeholderPath": null,
+        "candidates": [
+          "T_Resource_PolarityAura",
+          "Resource_PolarityAura"
+        ],
+        "allMatches": [
+          "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resource_PolarityAura.png"
+        ]
+      },
+      "translations": {
+        "DE": {
+          "name": "Waffen-Spurwechselmodul",
+          "description": "Aus dem Hyperboreischen Imperium: ein Präzisionsgerät, das einem Werkzeugkasten ähnelt. Sobald die Zahnräder anlaufen, wird der darin platzierte Dämonenkeil so angepasst, dass er besser zum Zustand seines Trägers passt. Dieses Modell ist besonders gut darin, verschiedenste Standardwaffen auszulesen, und kann nach der Anwendung die Leistungsfähigkeit der Waffe weiter erhöhen.",
+          "flavor": "„Jede Waffe hat natürlich ihren eigenen Charakter! Wenn sie verärgert ist, bringt mich das im Kampf aus dem Konzept ... Es ist nur natürlich, dass man so empfindet, denn die Waffe ist der beste Kamerad und Partner! Habe ich recht, Samael?“\n \n – Lisbell, Kandidatin für „Geduld“ der „Sieben Tugenden von Elysium“"
+        },
+        "EN": {
+          "name": "Weapon Track-Shift Module",
+          "description": "Produced from the Hyperborean Empire, a precision instrument very similar to a toolbox. When its gears start to move, the Demon Wedge placed inside will be modified to better suit the user's state. This style has good detection capabilities for various types of weapons, and its use can further increase the weapon's abilities.",
+          "flavor": "\"Of course, weapons have their own temperaments! If she's upset, it throws me off in combat... It's only natural to feel this way, as we are the closest comrades and partners! Am I right, Samael?\"\n\n— Lisbell, candidate for \"Patience\" of the Seven Virtues of Elysium"
+        },
+        "ES": {
+          "name": "Módulo de cambio de afinidad de arma",
+          "description": "Se trata de un instrumento de precisión procedente del Imperio Hyperboreano que recuerda mucho a una caja de herramientas. Cuando sus engranajes comienzan a girar, la Cuña Demoníaca colocada en su interior se modifica para adaptarse al usuario. Posee una excelente capacidad de detectar todo tipo de armas estándar y potenciar su rendimiento.",
+          "flavor": "“¡Las armas tienen, por supuesto, su propio temperamento! Si no están de buen humor, yo tampoco me siento tranquila al pelear… es natural preocuparse. ¡Somos compañeras y socias inseparables! Samael, ¿verdad que tengo razón?”\n\n— Lisbell, candidata a Paciencia de Las Siete Virtudes de Elysium"
+        },
+        "FR": {
+          "name": "Module de transfert d’affinité d’arme",
+          "description": "Appareil de précision conçu dans l’Empire Hyperboréen, ressemblant à une boîte à outils. Lorsque ses engrenages s’activent, le Sceau démoniaque qu’il contient est ajusté pour mieux s’adapter à l’utilisateur. Doté d’excellentes capacités d’analyse pour tous types d’armes, il permet d’en améliorer davantage les performances.",
+          "flavor": "« Bien sûr que les armes ont leur caractère ! Si elle boude, je ne peux pas me battre l’esprit tranquille... C’est naturel de s’en soucier : nous sommes les plus proches partenaires, les plus fidèles compagnons ! N’est-ce pas, Samaël ? »\n\n— Lisbell, candidate de la Résilience parmi les Sept Vertus d’Élysium"
+        },
+        "JP": {
+          "name": "武器移転モジュール",
+          "description": "ヒュペリア帝国製の精密機械。見た目はツールボックスのようだが、その内部には魔の楔が仕込まれており、歯車が稼働することで、使用者に最適な状態へと調整される。さまざまなタイプの武器に対する探知能力に優れ、武器の能力をさらに向上できる。",
+          "flavor": "「武器にだって当然、性分ってものがあるのよ！この子のご機嫌がナナメっちゃった時はあたしも戦うの不安になるし……心配するのは当たり前でしょ、私たち一番仲良しな友達でパートナーなんだから！だよね！サマエル！」\n\n――エリュシオンセブンヴァーチェス「ペイシェンス」候補 リズベル"
+        },
+        "KR": {
+          "name": "무기 페이즈 시프트 모듈",
+          "description": "휘페르보레아 제국의 정밀 기기로 공구상자와 닮았다. 톱니바퀴가 돌아가기 시작하면 악마의 쐐기가 사용자에게 적합한 상태로 바뀐다. 이런 모델은 각종 제식 무기에 대한 좋은 탐지 능력을 지녀서 사용 시 무기의 능력을 한 단계 더 상승시킨다.",
+          "flavor": "\"당연히 무기에도 자기만의 성질이 있지! 혹시라도 무기의 기분이 좋지 않으면 나도 싸울 때 불안함이 느껴지는걸... 걱정되는 건 당연한 거야. 우리는 가장 가까운 동료이자 파트너니까! 그치, 사마엘!\" \n\n—— 엘리시안 세븐 버튜스 중 '인내' 후보 리사벨"
+        },
+        "TC": {
+          "name": "武器移轉模組",
+          "description": "出自海伯利亞帝國，一種與工具箱十分相像的精密儀器，當它的齒輪開始運轉，放置在裡面的魔之楔將被修改成為更適應使用者的狀態，這種款式對各種制式的武器都有良好的探知能力，使用後可進一步提升武器的能力。",
+          "flavor": "「武器當然有自己的脾氣！假如她不高興，我打起架來也會感到不安……擔心是理所當然的，我們可是最最親密的同伴和搭檔！薩麥爾，我說得對吧！」\n\n——艾利西安七美德之「堅忍」候補 莉茲貝爾"
+        }
+      },
+      "fields": {
+        "AccessKey": "T.RT_3",
+        "DetailDes": "RESOURCE_DESC_202",
+        "FunctionDes": "RESOURCE_FUNCTION_WEAPONPOL",
+        "Icon": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resource_PolarityAura.T_Resource_PolarityAura",
+        "IpDes": "RESOURCE_TEXT_202",
+        "ItemArchiveType": 1,
+        "MaterialClassify": 3,
+        "Rarity": 5,
+        "ResourceId": 202,
+        "ResourceName": "RESOURCE_NAME_202",
+        "ResourceSType": "WeaponPolarization",
+        "ResourceValue": -1,
+        "Sound": "SOUND_ITEM_METAL",
+        "Type": "Rare",
+        "UseEffectType": "Polarization"
+      }
+    },
+    {
+      "resourceId": 30001,
+      "resourceType": "Material",
+      "textKeys": {
+        "nameKey": "RESOURCE_NAME_30001",
+        "descriptionKey": "RESOURCE_DESC_30001",
+        "flavorKey": "RESOURCE_TEXT_30001"
+      },
+      "icon": {
+        "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resource_PolarityPart01.T_Resource_PolarityPart01",
+        "publicPath": "/assets/items/mods/T_Resource_PolarityPart01.png",
+        "placeholderPath": null,
+        "candidates": [
+          "T_Resource_PolarityPart01",
+          "Resource_PolarityPart01"
+        ],
+        "allMatches": [
+          "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resource_PolarityPart01.png"
+        ]
+      },
+      "translations": {
+        "DE": {
+          "name": "Essenzgelatin",
+          "description": "Gelartiges Material zur Herstellung von Spurwechselmodulen. Reine Zusammensetzung, wasserlöslich und bei Hitze inaktiv, daher nur unter strengen Bedingungen lagerbar. Trotzdem ist sein Nutzen groß genug, um es mitzuführen.",
+          "flavor": "„Reinheit ist ein zweischneidiges Schwert: Eine einzelne Komponente verstärkt zwar die Wirksamkeit, beschleunigt aber auch den Verfall. Meine Aufgabe beschränkt sich darauf, den Anteil der Verunreinigungen so anzupassen, dass ein Gleichgewicht zwischen Stärke und Ewigkeit entsteht.“ „Tatsächlich findet dieses Prinzip nicht nur Anwendung in der Alchemie, sondern auch in jeder Art von Gruppe.“\n \n – Ecodna, Leiterin der Abteilung für biologische Anwendungen bei der Spathatoi, in „Zerlegen und Vereinen: Biologie der Filthoiden“"
+        },
+        "EN": {
+          "name": "Essence Gelatin",
+          "description": "Gelatinous substance for crafting Track-Shift Modules. With a pure, water-soluble composition that deactivates at high temperatures, it demands exacting storage conditions. Its utility makes it worth carrying though.",
+          "flavor": "\"Purity cuts both ways: a single component enhances its potency but also accelerates its expiration. My task is simply to adjust the impurity ratio, seeking a balance between strength and eternity. In fact, this principle applies not only to alchemy but also to any groups.\"\n\n— Ecodna, Chief of Biological Applications at The Spathatoi, in \"Disassembly and Reassembly: Biology of Filthoids\""
+        },
+        "ES": {
+          "name": "Esencia vital",
+          "description": "Material de consistencia gelatinosa utilizado para fabricar Módulos de cambio de afinidad. Su composición no contiene impurezas, se disuelve fácilmente en agua y se desactiva a altas temperaturas, por lo que requiere almacenarse en condiciones estrictas. A pesar de ello, tiene muchas funcionalidades útiles, por lo que vale la pena llevarlo consigo.",
+          "flavor": "“La pureza siempre ha sido una espada de doble filo. La simplicidad potencia el efecto, pero reduce su duración. Mi trabajo consiste únicamente en regular las impurezas, en busca del equilibrio entre poder y durabilidad. De hecho, este principio no rige solo la alquimia, sino cualquier colectivo.”\n\n— Ecodna, jefa de Biología Aplicada de La Academia Spathatoi, Descomposición y recomposición: Biología Filthoid"
+        },
+        "FR": {
+          "name": "Essence vitale",
+          "description": "Une substance gélatineuse utilisée pour fabriquer des Modules de transfert d’affinité. Sa composition pure et soluble dans l’eau se dégrade à haute température, exigeant des conditions de conservation strictes. Sa polyvalence justifie qu’on l’emporte partout.",
+          "flavor": "« La pureté est une lame à double tranchant : un seul composant en accroît la puissance, mais en abrège aussi la durée. Mon travail consiste simplement à ajuster le ratio des impuretés, à trouver l’équilibre entre force et pérennité. En réalité, cette loi ne s’applique pas seulement à l’alchimie, mais aussi à tout groupe humain. »\n\n— Ecodna, chef du département d’applications biologiques des Spathatoi, Désassemblage et recomposition : biologie des Souillés"
+        },
+        "JP": {
+          "name": "生命エキス",
+          "description": "「移転モジュール」の製造に用いられる材料。ゲル状で純度が高く、水に溶けやすいが、高温で活性を失うため、保存がむずかしい。それでも、持ち運ぶ価値は十分にある。",
+          "flavor": "「純粋さは、常に諸刃の剣である。単一成分の効果を高めることは、その持続性を犠牲にすることがある。私たちが行うべきことは、不純物の割合を調整し、効果と持続性の最適なバランスを見つけることだ。この法則は、錬金術だけにとどまらず、あらゆる集団や組織にも当てはまる」\n\n――サーベル錬金院生物応用学首席 エキドナ著 『穢獣の解体と再構成』"
+        },
+        "KR": {
+          "name": "생체 추출물",
+          "description": "페이즈 시프트 모듈 제작에 사용되는 재료. 젤리 형태를 띠며, 순도가 높고, 물에 잘 녹는다. 고온에서는 사용할 수 없어 보관이 비교적 까다롭다. 그럼에도 고유의 기능 때문에 몸에 지니고 다닐 가치가 있다.",
+          "flavor": "\"순도는 항상 양날의 검과 같다. 한 가지 성분의 효능을 강화시키면 지속 시간이 줄어들기 때문에 불순물의 비율을 조절하여 효능과 지속 시간 사이의 균형을 찾는 것이 내가 할 일이다. 사실상 이러한 법칙은 연금술뿐 아니라 모든 단체에 적용된다.\" \n\n—— 소드 연금원 생물응용학 수석 에키드나, 〈분해와 재조합: 필토이드 생물학〉"
+        },
+        "TC": {
+          "name": "生物萃取物",
+          "description": "用於製作移轉模組的材料，呈膠狀。成分純粹，易溶於水，高溫失活，因此需要較為苛刻的保存條件。儘管如此，它的功能依舊有讓人隨身攜帶的價值。",
+          "flavor": "「純粹向來是把雙刃劍，單一的成分增強它的效力，也剝奪它的存續時間，我要做的無非是調節雜質的配比，尋找強力與永續的平衡點。事實上，這樣的法則不僅適用於煉金術，也同樣適用於任何一個群體。」\n\n——佩劍煉金院生物應用學首席 厄科德娜，《拆分與重組：穢獸生物學》"
+        }
+      },
+      "fields": {
+        "AccessKey": "T.RT_51",
+        "DetailDes": "RESOURCE_DESC_30001",
+        "FunctionDes": "RESOURCE_FUNCTION_30001",
+        "Icon": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resource_PolarityPart01.T_Resource_PolarityPart01",
+        "IpDes": "RESOURCE_TEXT_30001",
+        "ItemArchiveType": 1,
+        "MaterialClassify": 3,
+        "Rarity": 5,
+        "ResourceId": 30001,
+        "ResourceName": "RESOURCE_NAME_30001",
+        "ResourceSType": "Material",
+        "ResourceToCoinType": 101,
+        "ResourceValue": -1,
+        "Sound": "SOUND_ITEM_LIQUID",
+        "Type": "Rare"
+      }
+    },
+    {
+      "resourceId": 30002,
+      "resourceType": "Material",
+      "textKeys": {
+        "nameKey": "RESOURCE_NAME_30002",
+        "descriptionKey": "RESOURCE_DESC_30002",
+        "flavorKey": "RESOURCE_TEXT_30002"
+      },
+      "icon": {
+        "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resource_PolarityPart02.T_Resource_PolarityPart02",
+        "publicPath": "/assets/items/mods/T_Resource_PolarityPart02.png",
+        "placeholderPath": null,
+        "candidates": [
+          "T_Resource_PolarityPart02",
+          "Resource_PolarityPart02"
+        ],
+        "allMatches": [
+          "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resource_PolarityPart02.png"
+        ]
+      },
+      "translations": {
+        "DE": {
+          "name": "Präzisionsmagnet",
+          "description": "Material zur Herstellung von Waffen-Spurwechselmodulen. Speziell behandelte Magnetsteine reagieren auf unterschiedliche Metallbauteile mit Vibrationen in verschiedenen Frequenzen. Erfahrene Nutzer spüren so selbst kleinste Unregelmäßigkeiten in einer Waffe auf.",
+          "flavor": "„Wie faszinierend!“ „Diese winzigen Dinger mögen dir im Moment unspektakulär erscheinen, aber sobald die Zündschnur brennt, werden sie auf spektakuläre Weise zum Leben erweckt!“\n \n – Oliver, Bombenexperte"
+        },
+        "EN": {
+          "name": "Precision Magnet",
+          "description": "Material for crafting Weapon Track-Shift Modules. These specially treated magnets respond to diverse metal components at unique frequencies, allowing seasoned users to discern the most subtle irregularities in weaponry through their vibrations.",
+          "flavor": "\"How fascinating! These little parts might seem dull to you at the moment, but once the fuse is lit, they will roar in the most spectacular way!\"\n\n— Oliver, Bomb Expert"
+        },
+        "ES": {
+          "name": "Imán de precisión",
+          "description": "Material utilizado para fabricar Módulos de cambio de afinidad de armas. Consiste de una magnetita sometida a un tratamiento especial, capaz de generar reacciones vibratorias de distintas frecuencias según los distintos componentes metálicos. Los usuarios experimentados pueden utilizar dichas vibraciones para detectar hasta las anomalías más sutiles en un arma.",
+          "flavor": "“¡Qué divertido! Aunque ahora parezcan simples y aburridas, en cuanto se prenda la mecha, estas pequeñas piezas soltarán una explosión increíble.”\n\n— Oliver, experto en bombas"
+        },
+        "FR": {
+          "name": "Aimant de précision",
+          "description": "Matériau utilisé dans la fabrication de Modules de transfert d’affinité d’arme. Ces aimants, spécialement traités, réagissent aux différents composants métalliques par des vibrations uniques, permettant aux experts de détecter la moindre anomalie dans l’arme.",
+          "flavor": "« Comme c’est fascinant ! Ces petits composants te semblent peut-être ternes et sans intérêt pour l’instant... mais une fois la mèche allumée, ils rugiront d’un vacarme spectaculaire ! »\n\n— Oliver, Expert en Explosifs"
+        },
+        "JP": {
+          "name": "精巧な磁石",
+          "description": "「武器移転モジュール」の製造に用いられる材料。特別に加工された磁石で、金属部品によって異なる振動を引き起こす。熟練者はその振動から、武器の微妙な異常を発見できる。",
+          "flavor": "「こいつは愉快だ！いまんとこ単純で退屈に聞こえる音だがな……導火線に着火さえすりゃ、こんな小さなパーツなのに最高の轟音が出んだよ！」\n\n――爆弾専門家 オリバー"
+        },
+        "KR": {
+          "name": "잘 만들어진 자석",
+          "description": "무기 페이즈 시프트 모듈 제작에 사용되는 재료. 특수 가공을 거친 자석은 금속 부품에 따라 다른 주파수의 진동 반응을 보인다. 숙련자는 이것의 진동을 활용해 무기의 사소한 이상까지 찾아낸다.",
+          "flavor": "\"정말 재미 있는걸! 지금은 단조롭고 지루한 소리를 내는 것 같지만, 일단 도화선에 불을 붙이면 이 작은 부품들이 엄청난 굉음을 낼 거야!\"\n\n—— 폭탄 전문가 올리버"
+        },
+        "TC": {
+          "name": "精工磁石",
+          "description": "用於製作武器移轉模組的材料。經過特殊加工的磁石，會對不同的金屬元件產生不同頻率的震動反應。老練者可以通過它的震動找出武器中最細微的異常。",
+          "flavor": "「多有趣！別看它們現在的聲音又單一又無聊，一旦點燃引線，這些小零件就會發出最棒的轟鳴！」\n\n——炸彈專家 奧利弗"
+        }
+      },
+      "fields": {
+        "AccessKey": "T.RT_51",
+        "DetailDes": "RESOURCE_DESC_30002",
+        "FunctionDes": "RESOURCE_FUNCTION_30002",
+        "Icon": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resource_PolarityPart02.T_Resource_PolarityPart02",
+        "IpDes": "RESOURCE_TEXT_30002",
+        "ItemArchiveType": 1,
+        "MaterialClassify": 3,
+        "Rarity": 5,
+        "ResourceId": 30002,
+        "ResourceName": "RESOURCE_NAME_30002",
+        "ResourceSType": "Material",
+        "ResourceToCoinType": 101,
+        "ResourceValue": -1,
+        "Sound": "SOUND_ITEM_JEWELRY",
+        "Type": "Rare"
+      }
+    }
+  ]
+}
