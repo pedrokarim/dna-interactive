@@ -184,6 +184,60 @@ export const expandedCategoriesAtom = atomWithStorage<Record<string, boolean>>(
 );
 export const sidebarWidthAtom = atomWithStorage<number>("sidebar-width", 320);
 
+// Persistance des filtres de la section Items (par catégorie)
+export type PersistedItemsFilters = Record<
+  string,
+  {
+    search: string;
+    selectedLanguages: string[];
+    rarityFilter: string;
+    polarityFilter: string;
+    archiveFilter: string;
+    sortMode: string;
+    pageSize: number;
+    currentPage: number;
+  }
+>;
+
+export const itemsFiltersStorageAtom = atomWithStorage<PersistedItemsFilters>(
+  "items-filters",
+  {}
+);
+
+// Atome de stockage pour les favoris d'items
+const itemsFavoritesStorageAtom = atomWithStorage<string[]>("items-favorites", []);
+
+// Atome dérivé pour convertir entre Set et Array (favoris d'items)
+export const itemsFavoritesAtom = atom(
+  (get) => {
+    const stored = get(itemsFavoritesStorageAtom);
+    return new Set(Array.isArray(stored) ? stored : []);
+  },
+  (_get, set, newValue: Set<string>) => {
+    set(itemsFavoritesStorageAtom, Array.from(newValue));
+  }
+);
+
+export const toggleItemFavoriteAtom = atom(
+  null,
+  (get, set, itemKey: string) => {
+    const currentFavorites = get(itemsFavoritesAtom);
+    const nextFavorites = new Set(currentFavorites);
+
+    if (nextFavorites.has(itemKey)) {
+      nextFavorites.delete(itemKey);
+    } else {
+      nextFavorites.add(itemKey);
+    }
+
+    set(itemsFavoritesAtom, nextFavorites);
+  }
+);
+
+export const resetAllItemsFavoritesAtom = atom(null, (_get, set) => {
+  set(itemsFavoritesAtom, new Set());
+});
+
 // Atome de stockage pour les codes utilisés
 const usedCodesStorageAtom = atomWithStorage<string[]>("used-codes", []);
 

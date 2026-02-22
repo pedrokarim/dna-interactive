@@ -24,8 +24,8 @@ export default function ItemsLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="min-h-screen bg-linear-to-br from-slate-950 via-slate-900 to-amber-950 text-white">
-      <header className="relative z-50 border-b border-amber-300/20 bg-slate-950/80 backdrop-blur-sm">
+    <div className="min-h-screen bg-linear-to-br from-slate-950 via-slate-900 to-indigo-950 text-white">
+      <header className="relative z-50 border-b border-indigo-500/20 bg-slate-950/80 backdrop-blur-sm">
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between gap-6">
             <Link href={NAVIGATION.home} className="flex items-center gap-3">
@@ -47,8 +47,8 @@ export default function ItemsLayout({
                   href={link.href}
                   className={`text-sm transition-colors ${
                     link.href === NAVIGATION.items
-                      ? "font-medium text-amber-200"
-                      : "text-slate-300 hover:text-amber-200"
+                      ? "font-medium text-indigo-400"
+                      : "text-slate-300 hover:text-indigo-400"
                   }`}
                 >
                   {link.label}
@@ -61,7 +61,7 @@ export default function ItemsLayout({
 
       <main className="container mx-auto px-6 py-10">{children}</main>
 
-      <footer className="border-t border-amber-300/20 bg-slate-950 py-12">
+      <footer className="border-t border-indigo-500/20 bg-slate-950 py-12">
         <div className="container mx-auto px-6">
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <div className="flex items-center gap-3">
@@ -79,8 +79,8 @@ export default function ItemsLayout({
                   href={link.href}
                   className={`transition-colors ${
                     link.href === NAVIGATION.items
-                      ? "text-amber-200"
-                      : "hover:text-amber-200"
+                      ? "text-indigo-400"
+                      : "hover:text-indigo-400"
                   }`}
                 >
                   {link.label}
@@ -89,7 +89,7 @@ export default function ItemsLayout({
             </div>
           </div>
 
-          <div className="mt-8 border-t border-amber-300/10 pt-8 text-center text-sm text-slate-500">
+          <div className="mt-8 border-t border-indigo-500/10 pt-8 text-center text-sm text-slate-500">
             <p>{LEGAL_INFO.copyright}</p>
             <p className="mt-2">
               {LEGAL_INFO.disclaimer}
@@ -97,7 +97,7 @@ export default function ItemsLayout({
                 href={CONTACT_INFO.ascencia.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="ml-1 text-amber-300 hover:text-amber-200"
+                className="ml-1 text-indigo-400 hover:text-indigo-300"
               >
                 {LEGAL_INFO.ascenciaCredit}
               </a>
