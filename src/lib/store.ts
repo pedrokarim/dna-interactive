@@ -193,6 +193,8 @@ export type PersistedItemsFilters = Record<
     rarityFilter: string;
     polarityFilter: string;
     archiveFilter: string;
+    itemTypeFilter: string;
+    itemSubTypeFilter: string;
     sortMode: string;
     pageSize: number;
     currentPage: number;

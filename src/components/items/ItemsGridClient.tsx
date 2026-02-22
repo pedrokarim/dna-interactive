@@ -120,6 +120,8 @@ export default function ItemsGridClient({
     langs: parseAsArrayOf(parseAsString),
     rarity: parseAsString,
     polarity: parseAsString,
+    itype: parseAsString,
+    isub: parseAsString,
     archive: parseAsStringLiteral(ARCHIVE_FILTER_VALUES),
     sort: parseAsStringLiteral(SORT_MODE_VALUES),
     size: parseAsInteger,
@@ -130,6 +132,8 @@ export default function ItemsGridClient({
     queryFilters.langs !== null ||
     queryFilters.rarity !== null ||
     queryFilters.polarity !== null ||
+    queryFilters.itype !== null ||
+    queryFilters.isub !== null ||
     queryFilters.archive !== null ||
     queryFilters.sort !== null ||
     queryFilters.size !== null ||
@@ -145,6 +149,10 @@ export default function ItemsGridClient({
   const rarityFilter = queryFilters.rarity ?? (hasUrlFilters ? "all" : persisted?.rarityFilter ?? "all");
   const polarityFilter =
     queryFilters.polarity ?? (hasUrlFilters ? "all" : persisted?.polarityFilter ?? "all");
+  const itemTypeFilter =
+    queryFilters.itype ?? (hasUrlFilters ? "all" : persisted?.itemTypeFilter ?? "all");
+  const itemSubTypeFilter =
+    queryFilters.isub ?? (hasUrlFilters ? "all" : persisted?.itemSubTypeFilter ?? "all");
 
   const rawArchiveFilter =
     queryFilters.archive ?? (hasUrlFilters ? "all" : persisted?.archiveFilter ?? "all");
@@ -170,6 +178,8 @@ export default function ItemsGridClient({
     langs?: string[];
     rarity?: string;
     polarity?: string;
+    itype?: string;
+    isub?: string;
     archive?: ArchiveFilter;
     sort?: SortMode;
     size?: number;
@@ -180,6 +190,8 @@ export default function ItemsGridClient({
       langs: selectedLanguages,
       rarity: rarityFilter,
       polarity: polarityFilter,
+      itype: itemTypeFilter,
+      isub: itemSubTypeFilter,
       archive: archiveFilter,
       sort: sortMode,
       size: pageSize,
@@ -192,6 +204,8 @@ export default function ItemsGridClient({
       langs: next.langs,
       rarity: next.rarity,
       polarity: next.polarity,
+      itype: next.itype,
+      isub: next.isub,
       archive: next.archive,
       sort: next.sort,
       size: next.size,
@@ -218,6 +232,30 @@ export default function ItemsGridClient({
     }
     return Array.from(values).sort((a, b) => a - b);
   }, [items]);
+
+  const itemTypeOptions = useMemo(() => {
+    const values = new Set<string>();
+    for (const item of items) {
+      const value = item.fields.Type;
+      if (typeof value === "string" && value.trim().length > 0) {
+        values.add(value.trim());
+      }
+    }
+    return Array.from(values).sort((a, b) => a.localeCompare(b));
+  }, [items]);
+
+  const itemSubTypeOptions = useMemo(() => {
+    const values = new Set<string>();
+    for (const item of items) {
+      const value = item.fields.ResourceSType;
+      if (typeof value === "string" && value.trim().length > 0) {
+        values.add(value.trim());
+      }
+    }
+    return Array.from(values).sort((a, b) => a.localeCompare(b));
+  }, [items]);
+
+  const hasArchiveData = useMemo(() => items.some((item) => item.archiveId !== null), [items]);
 
   const categoryFavoriteCount = useMemo(() => {
     return items.filter((item) => favoriteItems.has(toFavoriteKey(category.id, item.id))).length;
@@ -254,6 +292,21 @@ export default function ItemsGridClient({
           return false;
         }
 
+        if (
+          itemTypeFilter !== "all" &&
+          `${typeof item.fields.Type === "string" ? item.fields.Type : ""}` !== itemTypeFilter
+        ) {
+          return false;
+        }
+
+        if (
+          itemSubTypeFilter !== "all" &&
+          `${typeof item.fields.ResourceSType === "string" ? item.fields.ResourceSType : ""}` !==
+            itemSubTypeFilter
+        ) {
+          return false;
+        }
+
         if (archiveFilter === "withArchive" && item.archiveId === null) {
           return false;
         }
@@ -286,6 +339,8 @@ export default function ItemsGridClient({
     search,
     rarityFilter,
     polarityFilter,
+    itemTypeFilter,
+    itemSubTypeFilter,
     archiveFilter,
     sortMode,
     searchable,
@@ -314,6 +369,8 @@ export default function ItemsGridClient({
       selectedLanguages,
       rarityFilter,
       polarityFilter,
+      itemTypeFilter,
+      itemSubTypeFilter,
       archiveFilter,
       sortMode,
       pageSize,
@@ -326,6 +383,8 @@ export default function ItemsGridClient({
         previous?.search === next.search &&
         previous?.rarityFilter === next.rarityFilter &&
         previous?.polarityFilter === next.polarityFilter &&
+        previous?.itemTypeFilter === next.itemTypeFilter &&
+        previous?.itemSubTypeFilter === next.itemSubTypeFilter &&
         previous?.archiveFilter === next.archiveFilter &&
         previous?.sortMode === next.sortMode &&
         previous?.pageSize === next.pageSize &&
@@ -346,6 +405,8 @@ export default function ItemsGridClient({
     selectedLanguages,
     rarityFilter,
     polarityFilter,
+    itemTypeFilter,
+    itemSubTypeFilter,
     archiveFilter,
     sortMode,
     pageSize,
@@ -386,6 +447,8 @@ export default function ItemsGridClient({
       langs: defaultLanguages,
       rarity: "all",
       polarity: "all",
+      itype: "all",
+      isub: "all",
       archive: "all",
       sort: "id",
       size: 24,
@@ -495,66 +558,112 @@ export default function ItemsGridClient({
           </div>
         </div>
 
-        <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2">
-            <div className="mb-1 flex items-center gap-2 text-xs text-slate-400">
-              <SlidersHorizontal className="h-3.5 w-3.5 text-indigo-400/80" />
-              Rarete
+        <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+          {rarityOptions.length > 0 && (
+            <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2">
+              <div className="mb-1 flex items-center gap-2 text-xs text-slate-400">
+                <SlidersHorizontal className="h-3.5 w-3.5 text-indigo-400/80" />
+                Rarete
+              </div>
+              <select
+                value={rarityFilter}
+                onChange={(event) => {
+                  updateQueryFilters({ rarity: event.target.value, page: 1 });
+                }}
+                className="w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-sm text-slate-100"
+              >
+                <option value="all">Toutes</option>
+                {rarityOptions.map((value) => (
+                  <option key={value} value={value}>
+                    {value}
+                  </option>
+                ))}
+              </select>
             </div>
-            <select
-              value={rarityFilter}
-              onChange={(event) => {
-                updateQueryFilters({ rarity: event.target.value, page: 1 });
-              }}
-              className="w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-sm text-slate-100"
-            >
-              <option value="all">Toutes</option>
-              {rarityOptions.map((value) => (
-                <option key={value} value={value}>
-                  {value}
-                </option>
-              ))}
-            </select>
-          </div>
+          )}
 
-          <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2">
-            <div className="mb-1 flex items-center gap-2 text-xs text-slate-400">
-              <SlidersHorizontal className="h-3.5 w-3.5 text-indigo-400/80" />
-              Polarite
+          {polarityOptions.length > 0 && (
+            <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2">
+              <div className="mb-1 flex items-center gap-2 text-xs text-slate-400">
+                <SlidersHorizontal className="h-3.5 w-3.5 text-indigo-400/80" />
+                Polarite
+              </div>
+              <select
+                value={polarityFilter}
+                onChange={(event) => {
+                  updateQueryFilters({ polarity: event.target.value, page: 1 });
+                }}
+                className="w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-sm text-slate-100"
+              >
+                <option value="all">Toutes</option>
+                {polarityOptions.map((value) => (
+                  <option key={value} value={value}>
+                    {value}
+                  </option>
+                ))}
+              </select>
             </div>
-            <select
-              value={polarityFilter}
-              onChange={(event) => {
-                updateQueryFilters({ polarity: event.target.value, page: 1 });
-              }}
-              className="w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-sm text-slate-100"
-            >
-              <option value="all">Toutes</option>
-              {polarityOptions.map((value) => (
-                <option key={value} value={value}>
-                  {value}
-                </option>
-              ))}
-            </select>
-          </div>
+          )}
 
-          <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2">
-            <div className="mb-1 text-xs text-slate-400">Archive</div>
-            <select
-              value={archiveFilter}
-              onChange={(event) => {
-                updateQueryFilters({
-                  archive: event.target.value as ArchiveFilter,
-                  page: 1,
-                });
-              }}
-              className="w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-sm text-slate-100"
-            >
-              <option value="all">Toutes</option>
-              <option value="withArchive">Avec archive</option>
-              <option value="withoutArchive">Sans archive</option>
-            </select>
-          </div>
+          {hasArchiveData && (
+            <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2">
+              <div className="mb-1 text-xs text-slate-400">Archive</div>
+              <select
+                value={archiveFilter}
+                onChange={(event) => {
+                  updateQueryFilters({
+                    archive: event.target.value as ArchiveFilter,
+                    page: 1,
+                  });
+                }}
+                className="w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-sm text-slate-100"
+              >
+                <option value="all">Toutes</option>
+                <option value="withArchive">Avec archive</option>
+                <option value="withoutArchive">Sans archive</option>
+              </select>
+            </div>
+          )}
+
+          {itemTypeOptions.length > 0 && (
+            <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2">
+              <div className="mb-1 text-xs text-slate-400">Type</div>
+              <select
+                value={itemTypeFilter}
+                onChange={(event) => {
+                  updateQueryFilters({ itype: event.target.value, page: 1 });
+                }}
+                className="w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-sm text-slate-100"
+              >
+                <option value="all">Tous</option>
+                {itemTypeOptions.map((value) => (
+                  <option key={value} value={value}>
+                    {value}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+
+          {itemSubTypeOptions.length > 0 && (
+            <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2">
+              <div className="mb-1 text-xs text-slate-400">Sous-type</div>
+              <select
+                value={itemSubTypeFilter}
+                onChange={(event) => {
+                  updateQueryFilters({ isub: event.target.value, page: 1 });
+                }}
+                className="w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-sm text-slate-100"
+              >
+                <option value="all">Tous</option>
+                {itemSubTypeOptions.map((value) => (
+                  <option key={value} value={value}>
+                    {value}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
 
           <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2">
             <div className="mb-1 text-xs text-slate-400">Tri</div>
