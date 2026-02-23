@@ -256,6 +256,48 @@ export default function ItemDetailClient({ category, item }: ItemDetailClientPro
         typeof item.stats.polarity === "number",
     );
   const elementalAffinity = resolveElementalAffinity(item, translation.typeCompatibilityNames);
+  const textKeyNameLabel =
+    category.id === "mods"
+      ? "modNameKey"
+      : category.id === "weapons"
+        ? "weaponNameKey"
+        : category.id === "resources" || category.id === "fishing"
+          ? "resourceNameKey"
+          : "nameKey";
+  const textKeyRows: Array<{ label: string; value: string | null }> = [
+    {
+      label: textKeyNameLabel,
+      value: item.textKeys.modNameKey,
+    },
+    {
+      label: "descriptionKey",
+      value: item.textKeys.descriptionKey,
+    },
+    {
+      label: "functionKey",
+      value: item.textKeys.functionKey,
+    },
+  ];
+  if (isModsCategory) {
+    textKeyRows.push(
+      {
+        label: "demonWedgeKey",
+        value: item.textKeys.demonWedgeKey,
+      },
+      {
+        label: "passiveEffectsDescKey",
+        value: item.textKeys.passiveEffectsDescKey,
+      },
+      {
+        label: "affinityNameKey",
+        value: item.textKeys.affinityNameKey,
+      },
+      {
+        label: "archiveNameKey",
+        value: item.textKeys.archiveNameKey,
+      },
+    );
+  }
   const passiveDescriptionHasDynamicTokens =
     typeof translation.passiveEffectsDescription === "string" &&
     /#\d+/.test(translation.passiveEffectsDescription);
@@ -581,34 +623,12 @@ export default function ItemDetailClient({ category, item }: ItemDetailClientPro
             Text keys
           </h2>
           <dl className="mt-4 space-y-3 text-sm">
-            <div>
-              <dt className="text-slate-400">modNameKey</dt>
-              <dd className="text-slate-100">{item.textKeys.modNameKey ?? "N/A"}</dd>
-            </div>
-            <div>
-              <dt className="text-slate-400">descriptionKey</dt>
-              <dd className="text-slate-100">{item.textKeys.descriptionKey ?? "N/A"}</dd>
-            </div>
-            <div>
-              <dt className="text-slate-400">demonWedgeKey</dt>
-              <dd className="text-slate-100">{item.textKeys.demonWedgeKey ?? "N/A"}</dd>
-            </div>
-            <div>
-              <dt className="text-slate-400">functionKey</dt>
-              <dd className="text-slate-100">{item.textKeys.functionKey ?? "N/A"}</dd>
-            </div>
-            <div>
-              <dt className="text-slate-400">passiveEffectsDescKey</dt>
-              <dd className="text-slate-100">{item.textKeys.passiveEffectsDescKey ?? "N/A"}</dd>
-            </div>
-            <div>
-              <dt className="text-slate-400">affinityNameKey</dt>
-              <dd className="text-slate-100">{item.textKeys.affinityNameKey ?? "N/A"}</dd>
-            </div>
-            <div>
-              <dt className="text-slate-400">archiveNameKey</dt>
-              <dd className="text-slate-100">{item.textKeys.archiveNameKey ?? "N/A"}</dd>
-            </div>
+            {textKeyRows.map((row) => (
+              <div key={row.label}>
+                <dt className="text-slate-400">{row.label}</dt>
+                <dd className="text-slate-100">{row.value ?? "N/A"}</dd>
+              </div>
+            ))}
           </dl>
         </div>
 
