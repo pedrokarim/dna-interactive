@@ -175,6 +175,26 @@ export const pageMetadata = {
     image: "/assets/worldview/worldview-8.webp",
     url: "https://dna-interactive.ascencia.re/items",
   },
+  characters: {
+    title: `Personnages - ${SITE_CONFIG.name}`,
+    description:
+      "Base de donnees des personnages jouables de Duet Night Abyss : elements, armes, factions, portraits et traductions multilingues.",
+    keywords: [
+      GAME_INFO.name,
+      "characters",
+      "personnages",
+      "elements",
+      "weapon types",
+      "armes",
+      "factions",
+      "introns",
+      "portraits",
+      "multilingue",
+      SITE_CONFIG.name,
+    ],
+    image: "/assets/worldview/worldview-9.webp",
+    url: "https://dna-interactive.ascencia.re/characters",
+  },
   codes: {
     title: `Codes de Rédemption Duet Night Abyss | ${SITE_CONFIG.name}`,
     description: "Découvrez tous les codes de rédemption actifs pour Duet Night Abyss. Codes promotionnels, récompenses gratuites et bonus exclusifs. Mise à jour régulière des nouveaux codes.",

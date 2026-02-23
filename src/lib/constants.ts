@@ -75,6 +75,7 @@ export const NAVIGATION = {
   home: "/",
   map: "/map",
   items: "/items",
+  characters: "/characters",
   codes: "/codes",
   about: "/about",
   support: "/support",
@@ -85,6 +86,7 @@ export const NAVIGATION = {
 export const NAV_LINKS = [
   { href: NAVIGATION.map, label: "Carte Interactive" },
   { href: NAVIGATION.items, label: "Items" },
+  { href: NAVIGATION.characters, label: "Personnages" },
   { href: NAVIGATION.codes, label: "Codes de Rédemption" },
   { href: NAVIGATION.about, label: "À propos" },
   { href: NAVIGATION.support, label: "Support" },
@@ -95,6 +97,7 @@ export const NAV_LINKS = [
 export const FOOTER_LINKS = [
   { href: NAVIGATION.map, label: "Carte Interactive" },
   { href: NAVIGATION.items, label: "Items" },
+  { href: NAVIGATION.characters, label: "Personnages" },
   { href: NAVIGATION.codes, label: "Codes de Rédemption" },
   { href: NAVIGATION.about, label: "À propos" },
   { href: NAVIGATION.support, label: "Support" },

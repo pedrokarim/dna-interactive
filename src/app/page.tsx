@@ -1,6 +1,6 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
-import { Map, Gift, Info, HelpCircle, Mail, Boxes, ArrowRight } from "lucide-react";
+import { Map, Gift, Info, HelpCircle, Mail, Boxes, Users, ArrowRight } from "lucide-react";
 import {
   SITE_CONFIG,
   ASSETS_PATHS,
@@ -28,6 +28,7 @@ export async function generateMetadata(
 const navIcons = {
   [NAVIGATION.map]: Map,
   [NAVIGATION.items]: Boxes,
+  [NAVIGATION.characters]: Users,
   [NAVIGATION.codes]: Gift,
   [NAVIGATION.about]: Info,
   [NAVIGATION.support]: HelpCircle,
@@ -176,6 +177,49 @@ export default function Home() {
                   </Link>
                   <p className="text-sm text-slate-300/90">
                     Demon Wedge • Armes • Ressources • Drafts
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      {/* Characters Spotlight Section */}
+      <section className="py-20 bg-slate-900/45">
+        <div className="container mx-auto px-6">
+          <div className="mx-auto max-w-6xl">
+            <article className="group relative overflow-hidden rounded-3xl border border-violet-400/35 bg-slate-950/70 shadow-[0_32px_80px_rgba(15,23,42,0.55)]">
+              <img
+                src="/assets/worldview/worldview-9.webp"
+                alt="Apercu visuel de la section Personnages"
+                className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-linear-to-r from-slate-950/95 via-slate-950/78 to-slate-950/35" />
+              <div className="absolute inset-0 bg-linear-to-t from-violet-950/70 via-transparent to-black/20" />
+
+              <div className="relative z-10 px-8 py-10 sm:px-12 sm:py-14">
+                <span className="inline-flex items-center rounded-full border border-violet-300/35 bg-violet-500/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-violet-100">
+                  Nouveau
+                </span>
+                <h2 className="mt-4 max-w-3xl text-3xl font-bold text-white sm:text-4xl">
+                  Les personnages sont disponibles
+                </h2>
+                <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-200">
+                  Decouvrez tous les personnages jouables de Duet Night Abyss : elements,
+                  armes, factions, portraits et traductions en 7 langues.
+                </p>
+                <div className="mt-7 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
+                  <Link
+                    href="/characters"
+                    className="inline-flex items-center gap-2 rounded-xl border border-violet-200/40 bg-violet-500/20 px-5 py-3 text-sm font-semibold text-white transition-all duration-200 hover:border-violet-100/70 hover:bg-violet-500/30"
+                  >
+                    <Users className="h-4 w-4" />
+                    Explorer les personnages
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                  <p className="text-sm text-slate-300/90">
+                    6 Elements • 13 Armes • 5 Factions • 7 Langues
                   </p>
                 </div>
               </div>

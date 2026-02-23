@@ -1,0 +1,81 @@
+{
+  "generatedAt": "2026-02-23T21:38:48.841Z",
+  "characterCount": 28,
+  "availableLanguages": [
+    "DE",
+    "EN",
+    "ES",
+    "FR",
+    "JP",
+    "KR",
+    "TC"
+  ],
+  "defaultGridLanguages": [
+    "FR",
+    "EN"
+  ],
+  "defaultDetailLanguage": "FR",
+  "elements": [
+    {
+      "key": "Dark",
+      "label": "Umbro"
+    },
+    {
+      "key": "Fire",
+      "label": "Pyro"
+    },
+    {
+      "key": "Light",
+      "label": "Lumino"
+    },
+    {
+      "key": "Thunder",
+      "label": "Electro"
+    },
+    {
+      "key": "Water",
+      "label": "Hydro"
+    },
+    {
+      "key": "Wind",
+      "label": "Anemo"
+    }
+  ],
+  "weaponTypes": [
+    "Almighty",
+    "Bow",
+    "Cannon",
+    "Claymore",
+    "Crossbow",
+    "Dualblade",
+    "Katana",
+    "Machinegun",
+    "Pistol",
+    "Polearm",
+    "Shotgun",
+    "Sword",
+    "Swordwhip"
+  ],
+  "camps": [
+    {
+      "key": "Diguo",
+      "nameKey": "Camp_Name_Diguo"
+    },
+    {
+      "key": "Dongguo",
+      "nameKey": "Camp_Name_Dongguo"
+    },
+    {
+      "key": "Haiguo",
+      "nameKey": "Camp_Name_Haiguo"
+    },
+    {
+      "key": "Jiaohui",
+      "nameKey": "Camp_Name_Jiaohui"
+    },
+    {
+      "key": "Yehang",
+      "nameKey": "Camp_Name_Yehang"
+    }
+  ]
+}

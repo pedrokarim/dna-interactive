@@ -1,5 +1,6 @@
 import { MetadataRoute } from "next";
 import { NAVIGATION } from "@/lib/constants";
+import { getAllCharacters } from "@/lib/characters/catalog";
 import { getItemCatalog, getItemsByCategoryId } from "@/lib/items/catalog";
 import { getDraftRecipes } from "@/lib/items/drafts";
 
@@ -107,5 +108,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   }
 
-  return [...staticRoutes, ...itemRoutes, ...draftRoutes];
+  const characterRoutes: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}${NAVIGATION.characters}`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+  ];
+  for (const character of getAllCharacters()) {
+    characterRoutes.push({
+      url: `${baseUrl}${NAVIGATION.characters}/${character.id}`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    });
+  }
+
+  return [...staticRoutes, ...itemRoutes, ...draftRoutes, ...characterRoutes];
 }

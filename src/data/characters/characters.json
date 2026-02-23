@@ -1,0 +1,5255 @@
+[
+  {
+    "id": "char-lise",
+    "charId": 4101,
+    "internalName": "Lise",
+    "element": {
+      "key": "Thunder",
+      "label": "Electro"
+    },
+    "weaponTags": [
+      "Katana",
+      "Machinegun"
+    ],
+    "camp": {
+      "key": "Diguo",
+      "nameKey": "Camp_Name_Diguo",
+      "iconGamePath": "/Game/UI/Texture/Dynamic/Image/Camp/T_Gacha_CampIcon_Diguo.T_Gacha_CampIcon_Diguo"
+    },
+    "rarity": 5,
+    "maxLevel": 80,
+    "colorVar": "Blue",
+    "gender": true,
+    "sortPriority": 4001,
+    "charPieceId": 1004101,
+    "unlockRequiredPiece": 30,
+    "intronLevels": [
+      {
+        "cardLevel": 0,
+        "resourceId": 1004101,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 1,
+        "resourceId": 1004101,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 2,
+        "resourceId": 1004101,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 3,
+        "resourceId": 1004101,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 4,
+        "resourceId": 1004101,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 5,
+        "resourceId": 1004101,
+        "resourceNum": 30
+      }
+    ],
+    "baseStats": {
+      "atk": 22,
+      "atkGrowCurve": "ATKS",
+      "def": 276,
+      "defGrowCurve": "DEFS",
+      "maxHp": 94,
+      "maxHpGrowCurve": "MaxHpS",
+      "maxES": 94,
+      "maxESGrowCurve": "MaxESS",
+      "maxSp": 150
+    },
+    "addonAttrs": [
+      {
+        "attrId": 410101,
+        "attrName": "ATK",
+        "rate": 0.2,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_08.png",
+        "nameKey": "ADDONATTR_410101_NAME"
+      },
+      {
+        "attrId": 410102,
+        "attrName": "ATK",
+        "rate": 0.3,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_08.png",
+        "nameKey": "ADDONATTR_410102_NAME"
+      },
+      {
+        "attrId": 410103,
+        "attrName": "SkillRange",
+        "rate": 0.12,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_10.png",
+        "nameKey": "ADDONATTR_410103_NAME"
+      },
+      {
+        "attrId": 410104,
+        "attrName": "SkillRange",
+        "rate": 0.18,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_10.png",
+        "nameKey": "ADDONATTR_410104_NAME"
+      }
+    ],
+    "positioning": [
+      "DPS",
+      "SkillDPS"
+    ],
+    "recommendAttr": [],
+    "ascensionLevels": [
+      20,
+      30,
+      40,
+      50,
+      60,
+      70
+    ],
+    "textKeys": {
+      "nameKey": "UI_CHAR_NAME_4101",
+      "subtitleKey": "UI_CHAR_SUBTITLE_4101",
+      "birthdayKey": "UI_CHAR_BIRTH_4101",
+      "forceKey": "UI_CHAR_FORCE_4101",
+      "campNameKey": "Camp_Name_Diguo"
+    },
+    "portraits": {
+      "gacha": {
+        "publicPath": "/assets/characters/gacha/T_Gacha_AvatarLise.png"
+      },
+      "head": {
+        "publicPath": "/assets/characters/head/T_Head_Lise.png"
+      },
+      "icon": {
+        "publicPath": "/assets/characters/icon/T_Icon_Lise.png"
+      },
+      "bust": {
+        "publicPath": "/assets/characters/bust/T_Bust_Lise.png"
+      },
+      "phantom": {
+        "publicPath": "/assets/characters/phantom/T_Phantom_Lise.png"
+      },
+      "charpiece": {
+        "publicPath": "/assets/characters/charpiece/T_CharPiece_Lise.png"
+      }
+    },
+    "translations": {
+      "DE": {
+        "name": "Rhythm",
+        "subtitle": "Zum Leuchtturm",
+        "birthday": "Hyperboreisches Imperium",
+        "force": "Die 6. Legion",
+        "campName": "Hyperboreisches Imperium"
+      },
+      "EN": {
+        "name": "Rhythm",
+        "subtitle": "Beaconlight Seeker",
+        "birthday": "Hyperborean Empire",
+        "force": "The 6th Legion",
+        "campName": "The Hyperborean Empire"
+      },
+      "ES": {
+        "name": "Rhythm",
+        "subtitle": "Buscador de Faro",
+        "birthday": "Imperio Hyperboreano",
+        "force": "La 6.ª Legión",
+        "campName": "Imperio Hyperboreano"
+      },
+      "FR": {
+        "name": "Rhythm",
+        "subtitle": "Appel du Phare",
+        "birthday": "Empire Hyperboréen",
+        "force": "VIᵉ Légion",
+        "campName": "Empire Hyperboréen"
+      },
+      "JP": {
+        "name": "リズム",
+        "subtitle": "灯台の元へ",
+        "birthday": "ヒュペリア帝国",
+        "force": "第六軍団",
+        "campName": "ヒュペリア帝国"
+      },
+      "KR": {
+        "name": "리듬",
+        "subtitle": "등대를 향해",
+        "birthday": "휘페르보레아 제국",
+        "force": "제6군단",
+        "campName": "휘페르보레아 제국"
+      },
+      "TC": {
+        "name": "黎瑟",
+        "subtitle": "到燈塔去",
+        "birthday": "海伯利亞帝國",
+        "force": "第六軍團",
+        "campName": "海伯利亞帝國"
+      }
+    }
+  },
+  {
+    "id": "char-landi",
+    "charId": 4202,
+    "internalName": "Landi",
+    "element": {
+      "key": "Thunder",
+      "label": "Electro"
+    },
+    "weaponTags": [
+      "Sword",
+      "Pistol"
+    ],
+    "camp": {
+      "key": "Diguo",
+      "nameKey": "Camp_Name_Diguo",
+      "iconGamePath": "/Game/UI/Texture/Dynamic/Image/Camp/T_Gacha_CampIcon_Diguo.T_Gacha_CampIcon_Diguo"
+    },
+    "rarity": 5,
+    "maxLevel": 80,
+    "colorVar": "Blue",
+    "gender": false,
+    "sortPriority": 4001,
+    "charPieceId": 1004202,
+    "unlockRequiredPiece": 30,
+    "intronLevels": [
+      {
+        "cardLevel": 0,
+        "resourceId": 1004202,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 1,
+        "resourceId": 1004202,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 2,
+        "resourceId": 1004202,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 3,
+        "resourceId": 1004202,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 4,
+        "resourceId": 1004202,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 5,
+        "resourceId": 1004202,
+        "resourceNum": 30
+      }
+    ],
+    "baseStats": {
+      "atk": 14,
+      "atkGrowCurve": "ATKS",
+      "def": 510,
+      "defGrowCurve": "DEFS",
+      "maxHp": 105,
+      "maxHpGrowCurve": "MaxHpS",
+      "maxES": 105,
+      "maxESGrowCurve": "MaxESS",
+      "maxSp": 120
+    },
+    "addonAttrs": [
+      {
+        "attrId": 420201,
+        "attrName": "DEF",
+        "rate": 0.2,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_07.png",
+        "nameKey": "DEF"
+      },
+      {
+        "attrId": 420202,
+        "attrName": "DEF",
+        "rate": 0.3,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_07.png",
+        "nameKey": "DEF"
+      },
+      {
+        "attrId": 420203,
+        "attrName": "SkillSustain",
+        "rate": 0.06,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_11.png",
+        "nameKey": "ADDONATTR_420203_NAME"
+      },
+      {
+        "attrId": 420204,
+        "attrName": "SkillSustain",
+        "rate": 0.09,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_11.png",
+        "nameKey": "ADDONATTR_420204_NAME"
+      }
+    ],
+    "positioning": [
+      "Support",
+      "DEF",
+      "ES"
+    ],
+    "recommendAttr": [
+      "DEF",
+      "SkillIntensity",
+      "SkillEfficiency",
+      "SkillSustain",
+      "SkillRange"
+    ],
+    "ascensionLevels": [
+      20,
+      30,
+      40,
+      50,
+      60,
+      70
+    ],
+    "textKeys": {
+      "nameKey": "UI_CHAR_NAME_4202",
+      "subtitleKey": "UI_CHAR_SUBTITLE_4202",
+      "birthdayKey": "UI_CHAR_BIRTH_4202",
+      "forceKey": "UI_CHAR_FORCE_4202",
+      "campNameKey": "Camp_Name_Diguo"
+    },
+    "portraits": {
+      "gacha": {
+        "publicPath": "/assets/characters/gacha/T_Gacha_AvatarLandi.png"
+      },
+      "head": {
+        "publicPath": "/assets/characters/head/T_Head_Landi.png"
+      },
+      "icon": {
+        "publicPath": "/assets/characters/icon/T_Icon_Landi.png"
+      },
+      "bust": {
+        "publicPath": "/assets/characters/bust/T_Bust_Landi.png"
+      },
+      "phantom": {
+        "publicPath": "/assets/characters/phantom/T_Phantom_Landi.png"
+      },
+      "charpiece": {
+        "publicPath": "/assets/characters/charpiece/T_CharPiece_Landi.png"
+      }
+    },
+    "translations": {
+      "DE": {
+        "name": "Randy",
+        "subtitle": "Lässiger Faulenzer",
+        "birthday": "Hyperboreisches Imperium",
+        "force": "Die 13. Legion",
+        "campName": "Hyperboreisches Imperium"
+      },
+      "EN": {
+        "name": "Randy",
+        "subtitle": "Savvy Slacker",
+        "birthday": "Hyperborean Empire",
+        "force": "The 13th Legion",
+        "campName": "The Hyperborean Empire"
+      },
+      "ES": {
+        "name": "Randy",
+        "subtitle": "Holgazán Astuto",
+        "birthday": "Imperio Hyperboreano",
+        "force": "La 13.ª Legión",
+        "campName": "Imperio Hyperboreano"
+      },
+      "FR": {
+        "name": "Randy",
+        "subtitle": "Paresseux Stratège",
+        "birthday": "Empire Hyperboréen",
+        "force": "XIIIᵉ Légion",
+        "campName": "Empire Hyperboréen"
+      },
+      "JP": {
+        "name": "ランディー",
+        "subtitle": "サボり魔",
+        "birthday": "ヒュペリア帝国",
+        "force": "帝国軍第十三軍団",
+        "campName": "ヒュペリア帝国"
+      },
+      "KR": {
+        "name": "랜디",
+        "subtitle": "게으른 '바보'",
+        "birthday": "휘페르보레아 제국",
+        "force": "제13군단",
+        "campName": "휘페르보레아 제국"
+      },
+      "TC": {
+        "name": "蘭迪",
+        "subtitle": "散漫愚者",
+        "birthday": "海伯利亞帝國",
+        "force": "第十三軍團",
+        "campName": "海伯利亞帝國"
+      }
+    }
+  },
+  {
+    "id": "char-aote",
+    "charId": 5102,
+    "internalName": "Aote",
+    "element": {
+      "key": "Wind",
+      "label": "Anemo"
+    },
+    "weaponTags": [
+      "Dualblade",
+      "Crossbow"
+    ],
+    "camp": {
+      "key": "Yehang",
+      "nameKey": "Camp_Name_Yehang",
+      "iconGamePath": "/Game/UI/Texture/Dynamic/Image/Camp/T_Gacha_CampIcon_Yehang.T_Gacha_CampIcon_Yehang"
+    },
+    "rarity": 5,
+    "maxLevel": 80,
+    "colorVar": "Brown",
+    "gender": false,
+    "sortPriority": 4002,
+    "charPieceId": 1005102,
+    "unlockRequiredPiece": 30,
+    "intronLevels": [
+      {
+        "cardLevel": 0,
+        "resourceId": 1005102,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 1,
+        "resourceId": 1005102,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 2,
+        "resourceId": 1005102,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 3,
+        "resourceId": 1005102,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 4,
+        "resourceId": 1005102,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 5,
+        "resourceId": 1005102,
+        "resourceNum": 30
+      }
+    ],
+    "baseStats": {
+      "atk": 20,
+      "atkGrowCurve": "ATKA",
+      "def": 285,
+      "defGrowCurve": "DEFA",
+      "maxHp": 85,
+      "maxHpGrowCurve": "MaxHpA",
+      "maxES": 195,
+      "maxESGrowCurve": "MaxESA",
+      "maxSp": 120
+    },
+    "addonAttrs": [
+      {
+        "attrId": 510201,
+        "attrName": "ATK",
+        "rate": 0.2,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_08.png",
+        "nameKey": "ADDONATTR_510201_NAME"
+      },
+      {
+        "attrId": 510202,
+        "attrName": "ATK",
+        "rate": 0.3,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_08.png",
+        "nameKey": "ADDONATTR_510202_NAME"
+      },
+      {
+        "attrId": 510203,
+        "attrName": "SkillSustain",
+        "rate": 0.06,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_11.png",
+        "nameKey": "ADDONATTR_510203_NAME"
+      },
+      {
+        "attrId": 510204,
+        "attrName": "SkillSustain",
+        "rate": 0.09,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_11.png",
+        "nameKey": "ADDONATTR_510204_NAME"
+      }
+    ],
+    "positioning": [
+      "DPS",
+      "WeaponDPS"
+    ],
+    "recommendAttr": [
+      "ATK_Wind",
+      "SkillIntensity",
+      "SkillEfficiency",
+      "SkillSustain",
+      "EnmityValue"
+    ],
+    "ascensionLevels": [
+      20,
+      30,
+      40,
+      50,
+      60,
+      70
+    ],
+    "textKeys": {
+      "nameKey": "UI_CHAR_NAME_5102",
+      "subtitleKey": "UI_CHAR_SUBTITLE_5102",
+      "birthdayKey": "UI_CHAR_BIRTH_5102",
+      "forceKey": "UI_CHAR_FORCE_5102",
+      "campNameKey": "Camp_Name_Yehang"
+    },
+    "portraits": {
+      "gacha": {
+        "publicPath": "/assets/characters/gacha/T_Gacha_AvatarAote.png"
+      },
+      "head": {
+        "publicPath": "/assets/characters/head/T_Head_Aote.png"
+      },
+      "icon": {
+        "publicPath": "/assets/characters/icon/T_Icon_Aote.png"
+      },
+      "bust": {
+        "publicPath": "/assets/characters/bust/T_Bust_Aote.png"
+      },
+      "phantom": {
+        "publicPath": "/assets/characters/phantom/T_Phantom_Aote.png"
+      },
+      "charpiece": {
+        "publicPath": "/assets/characters/charpiece/T_CharPiece_Aote.png"
+      }
+    },
+    "translations": {
+      "DE": {
+        "name": "Outsider",
+        "subtitle": "Der Fremde",
+        "birthday": "Hyperboreisches Imperium",
+        "force": "Die Nachtfahrer",
+        "campName": "Die Nachtfahrer"
+      },
+      "EN": {
+        "name": "Outsider",
+        "subtitle": "The Stranger",
+        "birthday": "Hyperborean Empire",
+        "force": "The Noctoyagers",
+        "campName": "The Noctoyagers"
+      },
+      "ES": {
+        "name": "Outsider",
+        "subtitle": "El Forastero",
+        "birthday": "Imperio Hyperboreano",
+        "force": "Los Noctoviajeros",
+        "campName": "Los Noctoviajeros"
+      },
+      "FR": {
+        "name": "L’Étranger",
+        "subtitle": "Le Traqueur",
+        "birthday": "Empire Hyperboréen",
+        "force": "Vagabonds de la Nuit",
+        "campName": "Les Vagabonds de la Nuit"
+      },
+      "JP": {
+        "name": "アウトサイダー",
+        "subtitle": "異邦人",
+        "birthday": "ヒュペリア帝国",
+        "force": "ノクトボイジャー小隊",
+        "campName": "ノクトボイジャー小隊"
+      },
+      "KR": {
+        "name": "아웃사이더",
+        "subtitle": "이방인",
+        "birthday": "휘페르보레아 제국",
+        "force": "팀 '녹토 보이저'",
+        "campName": "팀 '녹토 보이저'"
+      },
+      "TC": {
+        "name": "奧特賽德",
+        "subtitle": "異鄉人",
+        "birthday": "海伯利亞帝國",
+        "force": "夜航者小隊",
+        "campName": "夜航者小隊"
+      }
+    }
+  },
+  {
+    "id": "char-dafu",
+    "charId": 5401,
+    "internalName": "Dafu",
+    "element": {
+      "key": "Wind",
+      "label": "Anemo"
+    },
+    "weaponTags": [
+      "Swordwhip",
+      "Machinegun"
+    ],
+    "camp": {
+      "key": "Diguo",
+      "nameKey": "Camp_Name_Diguo",
+      "iconGamePath": "/Game/UI/Texture/Dynamic/Image/Camp/T_Gacha_CampIcon_Diguo.T_Gacha_CampIcon_Diguo"
+    },
+    "rarity": 5,
+    "maxLevel": 80,
+    "colorVar": "Green",
+    "gender": true,
+    "sortPriority": 4002,
+    "charPieceId": 1005401,
+    "unlockRequiredPiece": 30,
+    "intronLevels": [
+      {
+        "cardLevel": 0,
+        "resourceId": 1005401,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 1,
+        "resourceId": 1005401,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 2,
+        "resourceId": 1005401,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 3,
+        "resourceId": 1005401,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 4,
+        "resourceId": 1005401,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 5,
+        "resourceId": 1005401,
+        "resourceNum": 30
+      }
+    ],
+    "baseStats": {
+      "atk": 19,
+      "atkGrowCurve": "ATKA",
+      "def": 285,
+      "defGrowCurve": "DEFA",
+      "maxHp": 100,
+      "maxHpGrowCurve": "MaxHpA",
+      "maxES": 100,
+      "maxESGrowCurve": "MaxESA",
+      "maxSp": 160
+    },
+    "addonAttrs": [
+      {
+        "attrId": 540101,
+        "attrName": "ATK",
+        "rate": 0.2,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_08.png",
+        "nameKey": "ADDONATTR_540101_NAME"
+      },
+      {
+        "attrId": 540102,
+        "attrName": "ATK",
+        "rate": 0.3,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_08.png",
+        "nameKey": "ADDONATTR_540102_NAME"
+      },
+      {
+        "attrId": 540103,
+        "attrName": "SkillRange",
+        "rate": 0.12,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_10.png",
+        "nameKey": "ADDONATTR_540103_NAME"
+      },
+      {
+        "attrId": 540104,
+        "attrName": "SkillRange",
+        "rate": 0.18,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_10.png",
+        "nameKey": "ADDONATTR_540104_NAME"
+      }
+    ],
+    "positioning": [
+      "Support",
+      "Control",
+      "Heal"
+    ],
+    "recommendAttr": [],
+    "ascensionLevels": [
+      20,
+      30,
+      40,
+      50,
+      60,
+      70
+    ],
+    "textKeys": {
+      "nameKey": "UI_CHAR_NAME_5401",
+      "subtitleKey": "UI_CHAR_SUBTITLE_5401",
+      "birthdayKey": "UI_CHAR_BIRTH_5401",
+      "forceKey": "UI_CHAR_FORCE_5401",
+      "campNameKey": "Camp_Name_Diguo"
+    },
+    "portraits": {
+      "gacha": {
+        "publicPath": "/assets/characters/gacha/T_Gacha_AvatarDafu.png"
+      },
+      "head": {
+        "publicPath": "/assets/characters/head/T_Head_Dafu.png"
+      },
+      "icon": {
+        "publicPath": "/assets/characters/icon/T_Icon_Dafu.png"
+      },
+      "bust": {
+        "publicPath": "/assets/characters/bust/T_Bust_Dafu.png"
+      },
+      "phantom": {
+        "publicPath": "/assets/characters/phantom/T_Phantom_Dafu.png"
+      },
+      "charpiece": {
+        "publicPath": "/assets/characters/charpiece/T_CharPiece_Dafu.png"
+      }
+    },
+    "translations": {
+      "DE": {
+        "name": "Daphne",
+        "subtitle": "Gnade im Regen",
+        "birthday": "Hyperboreisches Imperium",
+        "force": "Die 13. Legion",
+        "campName": "Hyperboreisches Imperium"
+      },
+      "EN": {
+        "name": "Daphne",
+        "subtitle": "Grace in Pluvia",
+        "birthday": "Hyperborean Empire",
+        "force": "The 13th Legion",
+        "campName": "The Hyperborean Empire"
+      },
+      "ES": {
+        "name": "Daphne",
+        "subtitle": "Gracia en la Lluvia",
+        "birthday": "Imperio Hiperbóreo",
+        "force": "La 13.ª Legión",
+        "campName": "Imperio Hyperboreano"
+      },
+      "FR": {
+        "name": "Daphne",
+        "subtitle": "Grâce de la Pluie",
+        "birthday": "Empire Hyperboréen",
+        "force": "XIIIᵉ Légion",
+        "campName": "Empire Hyperboréen"
+      },
+      "JP": {
+        "name": "ダフネ",
+        "subtitle": "雨行く者",
+        "birthday": "ヒュペリア帝国",
+        "force": "帝国軍第十三軍団",
+        "campName": "ヒュペリア帝国"
+      },
+      "KR": {
+        "name": "다프네",
+        "subtitle": "빗속의 사람",
+        "birthday": "휘페르보레아 제국",
+        "force": "제13군단",
+        "campName": "휘페르보레아 제국"
+      },
+      "TC": {
+        "name": "達芙涅",
+        "subtitle": "雨中人",
+        "birthday": "海伯利亞帝國",
+        "force": "第十三軍團",
+        "campName": "海伯利亞帝國"
+      }
+    }
+  },
+  {
+    "id": "char-yeer",
+    "charId": 3103,
+    "internalName": "Yeer",
+    "element": {
+      "key": "Fire",
+      "label": "Pyro"
+    },
+    "weaponTags": [
+      "Sword",
+      "Shotgun"
+    ],
+    "camp": {
+      "key": "None",
+      "nameKey": "Camp_Name_None",
+      "iconGamePath": "/Game/UI/Texture/Dynamic/Image/Camp/T_Gacha_CampIcon_NoCamp.T_Gacha_CampIcon_NoCamp"
+    },
+    "rarity": 5,
+    "maxLevel": 80,
+    "colorVar": "Brown",
+    "gender": false,
+    "sortPriority": 4003,
+    "charPieceId": 1003103,
+    "unlockRequiredPiece": 30,
+    "intronLevels": [
+      {
+        "cardLevel": 0,
+        "resourceId": 1003103,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 1,
+        "resourceId": 1003103,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 2,
+        "resourceId": 1003103,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 3,
+        "resourceId": 1003103,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 4,
+        "resourceId": 1003103,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 5,
+        "resourceId": 1003103,
+        "resourceNum": 30
+      }
+    ],
+    "baseStats": {
+      "atk": 21,
+      "atkGrowCurve": "ATKS",
+      "def": 288,
+      "defGrowCurve": "DEFS",
+      "maxHp": 96,
+      "maxHpGrowCurve": "MaxHpS",
+      "maxES": 96,
+      "maxESGrowCurve": "MaxESS",
+      "maxSp": 180
+    },
+    "addonAttrs": [
+      {
+        "attrId": 310301,
+        "attrName": "ATK",
+        "rate": 0.2,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_08.png",
+        "nameKey": "ADDONATTR_310301_NAME"
+      },
+      {
+        "attrId": 310302,
+        "attrName": "ATK",
+        "rate": 0.3,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_08.png",
+        "nameKey": "ADDONATTR_310302_NAME"
+      },
+      {
+        "attrId": 310303,
+        "attrName": "SkillIntensity",
+        "rate": 0.08,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_12.png",
+        "nameKey": "ADDONATTR_310303_NAME"
+      },
+      {
+        "attrId": 310304,
+        "attrName": "SkillIntensity",
+        "rate": 0.12,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_12.png",
+        "nameKey": "ADDONATTR_310304_NAME"
+      }
+    ],
+    "positioning": [
+      "DPS",
+      "SkillDPS"
+    ],
+    "recommendAttr": [],
+    "ascensionLevels": [
+      20,
+      30,
+      40,
+      50,
+      60,
+      70
+    ],
+    "textKeys": {
+      "nameKey": "UI_CHAR_NAME_3103",
+      "subtitleKey": "UI_CHAR_SUBTITLE_3103",
+      "birthdayKey": "UI_CHAR_BIRTH_3103",
+      "forceKey": "UI_CHAR_FORCE_3103",
+      "campNameKey": "Camp_Name_None"
+    },
+    "portraits": {
+      "gacha": {
+        "publicPath": "/assets/characters/gacha/T_Gacha_AvatarYeer.png"
+      },
+      "head": {
+        "publicPath": "/assets/characters/head/T_Head_Yeer.png"
+      },
+      "icon": {
+        "publicPath": "/assets/characters/icon/T_Icon_Yeer.png"
+      },
+      "bust": {
+        "publicPath": "/assets/characters/bust/T_Bust_Yeer.png"
+      },
+      "phantom": {
+        "publicPath": "/assets/characters/phantom/T_Phantom_Yeer.png"
+      },
+      "charpiece": {
+        "publicPath": "/assets/characters/charpiece/T_CharPiece_Yeer.png"
+      }
+    },
+    "translations": {
+      "DE": {
+        "name": "Yale und Oliver",
+        "subtitle": "Knall × Boom",
+        "birthday": "Hyperboreisches Imperium",
+        "force": "Unabhängig",
+        "campName": "Keine Zugehörigkeit"
+      },
+      "EN": {
+        "name": "Yale and Oliver",
+        "subtitle": "Krackle × Kaboom",
+        "birthday": "Hyperborean Empire",
+        "force": "Unaffiliated",
+        "campName": "No Affiliation"
+      },
+      "ES": {
+        "name": "Yale y Oliver",
+        "subtitle": "Krackle × Kaboom",
+        "birthday": "Imperio Hyperboreano",
+        "force": "No afiliado",
+        "campName": "Sin afiliación"
+      },
+      "FR": {
+        "name": "Yale et Oliver",
+        "subtitle": "Boum & Bang",
+        "birthday": "Empire Hyperboréen",
+        "force": "Aucune affiliation",
+        "campName": "Aucune affiliation"
+      },
+      "JP": {
+        "name": "イェールとオリバー",
+        "subtitle": "サプライズ×ドッキリ",
+        "birthday": "ヒュペリア帝国",
+        "force": "なし",
+        "campName": "無所属"
+      },
+      "KR": {
+        "name": "예일과 올리버",
+        "subtitle": "서프라이즈 × 깜짝",
+        "birthday": "휘페르보레아 제국",
+        "force": "없음",
+        "campName": "무소속"
+      },
+      "TC": {
+        "name": "耶爾與奧利弗",
+        "subtitle": "驚喜×驚嚇",
+        "birthday": "海伯利亞帝國",
+        "force": "無",
+        "campName": "無陣營"
+      }
+    }
+  },
+  {
+    "id": "char-haier",
+    "charId": 3201,
+    "internalName": "Haier",
+    "element": {
+      "key": "Fire",
+      "label": "Pyro"
+    },
+    "weaponTags": [
+      "Claymore",
+      "Cannon"
+    ],
+    "camp": {
+      "key": "Diguo",
+      "nameKey": "Camp_Name_Diguo",
+      "iconGamePath": "/Game/UI/Texture/Dynamic/Image/Camp/T_Gacha_CampIcon_Diguo.T_Gacha_CampIcon_Diguo"
+    },
+    "rarity": 5,
+    "maxLevel": 80,
+    "colorVar": "Red",
+    "gender": true,
+    "sortPriority": 4004,
+    "charPieceId": 1003201,
+    "unlockRequiredPiece": 30,
+    "intronLevels": [
+      {
+        "cardLevel": 0,
+        "resourceId": 1003201,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 1,
+        "resourceId": 1003201,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 2,
+        "resourceId": 1003201,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 3,
+        "resourceId": 1003201,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 4,
+        "resourceId": 1003201,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 5,
+        "resourceId": 1003201,
+        "resourceNum": 30
+      }
+    ],
+    "baseStats": {
+      "atk": 15,
+      "atkGrowCurve": "ATKA",
+      "def": 345,
+      "defGrowCurve": "DEFA",
+      "maxHp": 183,
+      "maxHpGrowCurve": "MaxHpA",
+      "maxES": 0,
+      "maxESGrowCurve": "MaxESA",
+      "maxSp": 120
+    },
+    "addonAttrs": [
+      {
+        "attrId": 320101,
+        "attrName": "MaxHp",
+        "rate": 0.2,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_14.png",
+        "nameKey": "ADDONATTR_320101_NAME"
+      },
+      {
+        "attrId": 320102,
+        "attrName": "MaxHp",
+        "rate": 0.3,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_14.png",
+        "nameKey": "ADDONATTR_320102_NAME"
+      },
+      {
+        "attrId": 320103,
+        "attrName": "SkillSustain",
+        "rate": 0.06,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_11.png",
+        "nameKey": "ADDONATTR_320103_NAME"
+      },
+      {
+        "attrId": 320104,
+        "attrName": "SkillSustain",
+        "rate": 0.09,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_11.png",
+        "nameKey": "ADDONATTR_320104_NAME"
+      }
+    ],
+    "positioning": [
+      "DPS",
+      "HP",
+      "SkillDPS"
+    ],
+    "recommendAttr": [],
+    "ascensionLevels": [
+      20,
+      30,
+      40,
+      50,
+      60,
+      70
+    ],
+    "textKeys": {
+      "nameKey": "UI_CHAR_NAME_3201",
+      "subtitleKey": "UI_CHAR_SUBTITLE_3201",
+      "birthdayKey": "UI_CHAR_BIRTH_3201",
+      "forceKey": "UI_CHAR_FORCE_3201",
+      "campNameKey": "Camp_Name_Diguo"
+    },
+    "portraits": {
+      "gacha": {
+        "publicPath": "/assets/characters/gacha/T_Gacha_AvatarHaier.png"
+      },
+      "head": {
+        "publicPath": "/assets/characters/head/T_Head_Haier.png"
+      },
+      "icon": {
+        "publicPath": "/assets/characters/icon/T_Icon_Haier.png"
+      },
+      "bust": {
+        "publicPath": "/assets/characters/bust/T_Bust_Haier.png"
+      },
+      "phantom": {
+        "publicPath": "/assets/characters/phantom/T_Phantom_Haier.png"
+      },
+      "charpiece": {
+        "publicPath": "/assets/characters/charpiece/T_CharPiece_Haier.png"
+      }
+    },
+    "translations": {
+      "DE": {
+        "name": "Hellfire",
+        "subtitle": "Inferno-Kerker",
+        "birthday": "Hyperboreisches Imperium",
+        "force": "Königliches Militärgefängnis",
+        "campName": "Hyperboreisches Imperium"
+      },
+      "EN": {
+        "name": "Hellfire",
+        "subtitle": "Inferno Penitentiary",
+        "birthday": "Hyperborean Empire",
+        "force": "Imperial Military Prison",
+        "campName": "The Hyperborean Empire"
+      },
+      "ES": {
+        "name": "Hellfire",
+        "subtitle": "Penitenciaría Infernal",
+        "birthday": "Imperio Hyperboreano",
+        "force": "Prisión Militar Real",
+        "campName": "Imperio Hyperboreano"
+      },
+      "FR": {
+        "name": "Vulcera",
+        "subtitle": "Juge des Cendres",
+        "birthday": "Empire Hyperboréen",
+        "force": "Prison Militaire Royale",
+        "campName": "Empire Hyperboréen"
+      },
+      "JP": {
+        "name": "ヘルファイア",
+        "subtitle": "煉火の牢獄",
+        "birthday": "ヒュペリア帝国",
+        "force": "皇立軍事監獄",
+        "campName": "ヒュペリア帝国"
+      },
+      "KR": {
+        "name": "헬파이어",
+        "subtitle": "지옥불의 감옥",
+        "birthday": "휘페르보레아 제국",
+        "force": "황실 군교도소",
+        "campName": "휘페르보레아 제국"
+      },
+      "TC": {
+        "name": "海爾法",
+        "subtitle": "煉火囚籠",
+        "birthday": "海伯利亞帝國",
+        "force": "皇家軍事監獄",
+        "campName": "海伯利亞帝國"
+      }
+    }
+  },
+  {
+    "id": "char-maer",
+    "charId": 3301,
+    "internalName": "Maer",
+    "element": {
+      "key": "Fire",
+      "label": "Pyro"
+    },
+    "weaponTags": [
+      "Polearm",
+      "Shotgun"
+    ],
+    "camp": {
+      "key": "None",
+      "nameKey": "Camp_Name_None",
+      "iconGamePath": "/Game/UI/Texture/Dynamic/Image/Camp/T_Gacha_CampIcon_NoCamp.T_Gacha_CampIcon_NoCamp"
+    },
+    "rarity": 5,
+    "maxLevel": 80,
+    "colorVar": "Pink",
+    "gender": true,
+    "sortPriority": 4005,
+    "charPieceId": 1003301,
+    "unlockRequiredPiece": 30,
+    "intronLevels": [
+      {
+        "cardLevel": 0,
+        "resourceId": 1003301,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 1,
+        "resourceId": 1003301,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 2,
+        "resourceId": 1003301,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 3,
+        "resourceId": 1003301,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 4,
+        "resourceId": 1003301,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 5,
+        "resourceId": 1003301,
+        "resourceNum": 30
+      }
+    ],
+    "baseStats": {
+      "atk": 21,
+      "atkGrowCurve": "ATKA",
+      "def": 264,
+      "defGrowCurve": "DEFS",
+      "maxHp": 83,
+      "maxHpGrowCurve": "MaxHpS",
+      "maxES": 83,
+      "maxESGrowCurve": "MaxESS",
+      "maxSp": 160
+    },
+    "addonAttrs": [
+      {
+        "attrId": 330101,
+        "attrName": "ATK",
+        "rate": 0.2,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_08.png",
+        "nameKey": "ADDONATTR_330101_NAME"
+      },
+      {
+        "attrId": 330102,
+        "attrName": "ATK",
+        "rate": 0.3,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_08.png",
+        "nameKey": "ADDONATTR_330102_NAME"
+      },
+      {
+        "attrId": 330103,
+        "attrName": "SkillRange",
+        "rate": 0.12,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_10.png",
+        "nameKey": "ADDONATTR_330103_NAME"
+      },
+      {
+        "attrId": 330104,
+        "attrName": "SkillRange",
+        "rate": 0.18,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_10.png",
+        "nameKey": "ADDONATTR_330104_NAME"
+      }
+    ],
+    "positioning": [
+      "DPS",
+      "Control",
+      "SkillDPS"
+    ],
+    "recommendAttr": [],
+    "ascensionLevels": [
+      20,
+      30,
+      40,
+      50,
+      60,
+      70
+    ],
+    "textKeys": {
+      "nameKey": "UI_CHAR_NAME_3301",
+      "subtitleKey": "UI_CHAR_SUBTITLE_3301",
+      "birthdayKey": "UI_CHAR_BIRTH_3301",
+      "forceKey": "UI_CHAR_FORCE_3301",
+      "campNameKey": "Camp_Name_None"
+    },
+    "portraits": {
+      "gacha": {
+        "publicPath": "/assets/characters/gacha/T_Gacha_AvatarMaer.png"
+      },
+      "head": {
+        "publicPath": "/assets/characters/head/T_Head_Maer.png"
+      },
+      "icon": {
+        "publicPath": "/assets/characters/icon/T_Icon_Maer.png"
+      },
+      "bust": {
+        "publicPath": "/assets/characters/bust/T_Bust_Maer.png"
+      },
+      "phantom": {
+        "publicPath": "/assets/characters/phantom/T_Phantom_Maer.png"
+      },
+      "charpiece": {
+        "publicPath": "/assets/characters/charpiece/T_CharPiece_Maer.png"
+      }
+    },
+    "translations": {
+      "DE": {
+        "name": "Margie",
+        "subtitle": "Stadtstreiferin",
+        "birthday": "Hyperboreisches Imperium",
+        "force": "Unabhängig",
+        "campName": "Keine Zugehörigkeit"
+      },
+      "EN": {
+        "name": "Margie",
+        "subtitle": "Cityscape Roamer",
+        "birthday": "Hyperborean Empire",
+        "force": "Unaffiliated",
+        "campName": "No Affiliation"
+      },
+      "ES": {
+        "name": "Margie",
+        "subtitle": "Vagabunda del Paisaje Urbano",
+        "birthday": "Imperio Hyperboreano",
+        "force": "No afiliado",
+        "campName": "Sin afiliación"
+      },
+      "FR": {
+        "name": "Margie",
+        "subtitle": "Exploratrice Citadine",
+        "birthday": "Empire Hyperboréen",
+        "force": "Aucune affiliation",
+        "campName": "Aucune affiliation"
+      },
+      "JP": {
+        "name": "マギー",
+        "subtitle": "街の探索者",
+        "birthday": "ヒュペリア帝国",
+        "force": "なし",
+        "campName": "無所属"
+      },
+      "KR": {
+        "name": "마르제",
+        "subtitle": "도시의 떠돌이",
+        "birthday": "휘페르보레아 제국",
+        "force": "없음",
+        "campName": "무소속"
+      },
+      "TC": {
+        "name": "瑪爾潔",
+        "subtitle": "城市漫遊者",
+        "birthday": "海伯利亞帝國",
+        "force": "無",
+        "campName": "無陣營"
+      }
+    }
+  },
+  {
+    "id": "char-heitao",
+    "charId": 1101,
+    "internalName": "Heitao",
+    "element": {
+      "key": "Dark",
+      "label": "Umbro"
+    },
+    "weaponTags": [
+      "Sword",
+      "Crossbow"
+    ],
+    "camp": {
+      "key": "Yehang",
+      "nameKey": "Camp_Name_Yehang",
+      "iconGamePath": "/Game/UI/Texture/Dynamic/Image/Camp/T_Gacha_CampIcon_Yehang.T_Gacha_CampIcon_Yehang"
+    },
+    "rarity": 5,
+    "maxLevel": 80,
+    "colorVar": "Blue",
+    "gender": true,
+    "sortPriority": 4006,
+    "charPieceId": 1001101,
+    "unlockRequiredPiece": 30,
+    "intronLevels": [
+      {
+        "cardLevel": 0,
+        "resourceId": 1001101,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 1,
+        "resourceId": 1001101,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 2,
+        "resourceId": 1001101,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 3,
+        "resourceId": 1001101,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 4,
+        "resourceId": 1001101,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 5,
+        "resourceId": 1001101,
+        "resourceNum": 30
+      }
+    ],
+    "baseStats": {
+      "atk": 20,
+      "atkGrowCurve": "ATKA",
+      "def": 300,
+      "defGrowCurve": "DEFA",
+      "maxHp": 100,
+      "maxHpGrowCurve": "MaxHpA",
+      "maxES": 100,
+      "maxESGrowCurve": "MaxESA",
+      "maxSp": 150
+    },
+    "addonAttrs": [
+      {
+        "attrId": 110101,
+        "attrName": "ATK",
+        "rate": 0.2,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_08.png",
+        "nameKey": "ADDONATTR_110101_NAME"
+      },
+      {
+        "attrId": 110102,
+        "attrName": "ATK",
+        "rate": 0.3,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_08.png",
+        "nameKey": "ADDONATTR_110102_NAME"
+      },
+      {
+        "attrId": 110103,
+        "attrName": "SkillEfficiency",
+        "rate": 0.05,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_13.png",
+        "nameKey": "ADDONATTR_110103_NAME"
+      },
+      {
+        "attrId": 110104,
+        "attrName": "SkillEfficiency",
+        "rate": 0.075,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_13.png",
+        "nameKey": "ADDONATTR_110104_NAME"
+      }
+    ],
+    "positioning": [
+      "DPS",
+      "Uweapon",
+      "WeaponDPS"
+    ],
+    "recommendAttr": [
+      "ATK_Dark",
+      "SkillIntensity",
+      "SkillEfficiency",
+      "SkillSustain",
+      "SkillRange"
+    ],
+    "ascensionLevels": [
+      20,
+      30,
+      40,
+      50,
+      60,
+      70
+    ],
+    "textKeys": {
+      "nameKey": "UI_CHAR_NAME_1101",
+      "subtitleKey": "UI_CHAR_SUBTITLE_1101",
+      "birthdayKey": "UI_CHAR_BIRTH_1101",
+      "forceKey": "UI_CHAR_FORCE_1101",
+      "campNameKey": "Camp_Name_Yehang"
+    },
+    "portraits": {
+      "gacha": {
+        "publicPath": "/assets/characters/gacha/T_Gacha_AvatarHeitao.png"
+      },
+      "head": {
+        "publicPath": "/assets/characters/head/T_Head_Heitao.png"
+      },
+      "icon": {
+        "publicPath": "/assets/characters/icon/T_Icon_Heitao.png"
+      },
+      "bust": {
+        "publicPath": "/assets/characters/bust/T_Bust_Heitao.png"
+      },
+      "phantom": {
+        "publicPath": "/assets/characters/phantom/T_Phantom_Heitao.png"
+      },
+      "charpiece": {
+        "publicPath": "/assets/characters/charpiece/T_CharPiece_Heitao.png"
+      }
+    },
+    "translations": {
+      "DE": {
+        "name": "Berenica",
+        "subtitle": "Unvermeidliche Zukunft",
+        "birthday": "Hyperboreisches Imperium",
+        "force": "Unabhängig",
+        "campName": "Die Nachtfahrer"
+      },
+      "EN": {
+        "name": "Berenica",
+        "subtitle": "The Expectant Future",
+        "birthday": "Hyperborean Empire",
+        "force": "Unaffiliated",
+        "campName": "The Noctoyagers"
+      },
+      "ES": {
+        "name": "Berenica",
+        "subtitle": "El Futuro Expectante",
+        "birthday": "Imperio Hyperborean",
+        "force": "No afiliado",
+        "campName": "Los Noctoviajeros"
+      },
+      "FR": {
+        "name": "Berenica",
+        "subtitle": "Espoir Inébranlable",
+        "birthday": "Empire Hyperboréen",
+        "force": "Aucune affiliation",
+        "campName": "Les Vagabonds de la Nuit"
+      },
+      "JP": {
+        "name": "ベレニカ",
+        "subtitle": "確かな未来",
+        "birthday": "ヒュペリア帝国",
+        "force": "なし",
+        "campName": "ノクトボイジャー小隊"
+      },
+      "KR": {
+        "name": "베레니카",
+        "subtitle": "확실한 미래",
+        "birthday": "휘페르보레아 제국",
+        "force": "없음",
+        "campName": "팀 '녹토 보이저'"
+      },
+      "TC": {
+        "name": "貝蕾妮卡",
+        "subtitle": "確定的明天",
+        "birthday": "海伯利亞",
+        "force": "無",
+        "campName": "夜航者小隊"
+      }
+    }
+  },
+  {
+    "id": "char-tuosi",
+    "charId": 1103,
+    "internalName": "Tuosi",
+    "element": {
+      "key": "Dark",
+      "label": "Umbro"
+    },
+    "weaponTags": [
+      "Claymore",
+      "Shotgun"
+    ],
+    "camp": {
+      "key": "None",
+      "nameKey": "Camp_Name_None",
+      "iconGamePath": "/Game/UI/Texture/Dynamic/Image/Camp/T_Gacha_CampIcon_NoCamp.T_Gacha_CampIcon_NoCamp"
+    },
+    "rarity": 5,
+    "maxLevel": 80,
+    "colorVar": "Purple",
+    "gender": false,
+    "sortPriority": 4006,
+    "charPieceId": 1001103,
+    "unlockRequiredPiece": 30,
+    "intronLevels": [
+      {
+        "cardLevel": 0,
+        "resourceId": 1001103,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 1,
+        "resourceId": 1001103,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 2,
+        "resourceId": 1001103,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 3,
+        "resourceId": 1001103,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 4,
+        "resourceId": 1001103,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 5,
+        "resourceId": 1001103,
+        "resourceNum": 30
+      }
+    ],
+    "baseStats": {
+      "atk": 21,
+      "atkGrowCurve": "ATKS",
+      "def": 330,
+      "defGrowCurve": "DEFS",
+      "maxHp": 130,
+      "maxHpGrowCurve": "MaxHpS",
+      "maxES": 130,
+      "maxESGrowCurve": "MaxESS",
+      "maxSp": 180
+    },
+    "addonAttrs": [
+      {
+        "attrId": 110301,
+        "attrName": "ATK",
+        "rate": 0.2,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_08.png",
+        "nameKey": "ADDONATTR_110301_NAME"
+      },
+      {
+        "attrId": 110302,
+        "attrName": "ATK",
+        "rate": 0.3,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_08.png",
+        "nameKey": "ADDONATTR_110302_NAME"
+      },
+      {
+        "attrId": 110303,
+        "attrName": "SkillEfficiency",
+        "rate": 0.05,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_13.png",
+        "nameKey": "ADDONATTR_110303_NAME"
+      },
+      {
+        "attrId": 110304,
+        "attrName": "SkillEfficiency",
+        "rate": 0.075,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_13.png",
+        "nameKey": "ADDONATTR_110304_NAME"
+      }
+    ],
+    "positioning": [
+      "DPS",
+      "SkillDPS"
+    ],
+    "recommendAttr": [
+      "ATK_Dark",
+      "MaxSp",
+      "SkillIntensity",
+      "SkillEfficiency",
+      "SkillRange"
+    ],
+    "ascensionLevels": [
+      20,
+      30,
+      40,
+      50,
+      60,
+      70
+    ],
+    "textKeys": {
+      "nameKey": "UI_CHAR_NAME_1103",
+      "subtitleKey": "UI_CHAR_SUBTITLE_1103",
+      "birthdayKey": "UI_CHAR_BIRTH_1103",
+      "forceKey": "UI_CHAR_FORCE_1103",
+      "campNameKey": "Camp_Name_None"
+    },
+    "portraits": {
+      "gacha": {
+        "publicPath": "/assets/characters/gacha/T_Gacha_AvatarTuosi.png"
+      },
+      "head": {
+        "publicPath": "/assets/characters/head/T_Head_Tuosi.png"
+      },
+      "icon": {
+        "publicPath": "/assets/characters/icon/T_Icon_Tuosi.png"
+      },
+      "bust": {
+        "publicPath": "/assets/characters/bust/T_Bust_Tuosi.png"
+      },
+      "phantom": {
+        "publicPath": "/assets/characters/phantom/T_Phantom_Tuosi.png"
+      },
+      "charpiece": {
+        "publicPath": "/assets/characters/charpiece/T_CharPiece_Tuosi.png"
+      }
+    },
+    "translations": {
+      "DE": {
+        "name": "Phantasio",
+        "subtitle": "Anonymer Sänger",
+        "birthday": "Hyperboreisches Imperium",
+        "force": "Unabhängig",
+        "campName": "Keine Zugehörigkeit"
+      },
+      "EN": {
+        "name": "Phantasio",
+        "subtitle": "Unsung Songster",
+        "birthday": "Hyperborean Empire",
+        "force": "Unaffiliated",
+        "campName": "No Affiliation"
+      },
+      "ES": {
+        "name": "Phantasio",
+        "subtitle": "Cantor Anónimo",
+        "birthday": "Imperio Hyperboreano",
+        "force": "No afiliado",
+        "campName": "Sin afiliación"
+      },
+      "FR": {
+        "name": "Phantasio",
+        "subtitle": "La Voix Oubliée",
+        "birthday": "Empire Hyperboréen",
+        "force": "Aucune affiliation",
+        "campName": "Aucune affiliation"
+      },
+      "JP": {
+        "name": "ファンタジオ",
+        "subtitle": "名も無き儚子",
+        "birthday": "ヒュペリア帝国",
+        "force": "なし",
+        "campName": "無所属"
+      },
+      "KR": {
+        "name": "환상",
+        "subtitle": "이름 없는 노래꾼",
+        "birthday": "휘페르보레아 제국",
+        "force": "없음",
+        "campName": "무소속"
+      },
+      "TC": {
+        "name": "幻景",
+        "subtitle": "無名歌者",
+        "birthday": "海伯利亞帝國",
+        "force": "無",
+        "campName": "無陣營"
+      }
+    }
+  },
+  {
+    "id": "char-kami",
+    "charId": 3202,
+    "internalName": "Kami",
+    "element": {
+      "key": "Fire",
+      "label": "Pyro"
+    },
+    "weaponTags": [
+      "Swordwhip",
+      "Machinegun"
+    ],
+    "camp": {
+      "key": "Diguo",
+      "nameKey": "Camp_Name_Diguo",
+      "iconGamePath": "/Game/UI/Texture/Dynamic/Image/Camp/T_Gacha_CampIcon_Diguo.T_Gacha_CampIcon_Diguo"
+    },
+    "rarity": 5,
+    "maxLevel": 80,
+    "colorVar": null,
+    "gender": null,
+    "sortPriority": 4006,
+    "charPieceId": 1003202,
+    "unlockRequiredPiece": 30,
+    "intronLevels": [
+      {
+        "cardLevel": 0,
+        "resourceId": 1003202,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 1,
+        "resourceId": 1003202,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 2,
+        "resourceId": 1003202,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 3,
+        "resourceId": 1003202,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 4,
+        "resourceId": 1003202,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 5,
+        "resourceId": 1003202,
+        "resourceNum": 30
+      }
+    ],
+    "baseStats": {
+      "atk": 13,
+      "atkGrowCurve": "ATKS",
+      "def": 345,
+      "defGrowCurve": "DEFS",
+      "maxHp": 185,
+      "maxHpGrowCurve": "MaxHpS",
+      "maxES": 120,
+      "maxESGrowCurve": "MaxESS",
+      "maxSp": 200
+    },
+    "addonAttrs": [],
+    "positioning": [
+      "DPS",
+      "SkillDPS",
+      "Support"
+    ],
+    "recommendAttr": [],
+    "ascensionLevels": [
+      20,
+      30,
+      40,
+      50,
+      60,
+      70
+    ],
+    "textKeys": {
+      "nameKey": "UI_CHAR_NAME_3202",
+      "subtitleKey": "UI_CHAR_SUBTITLE_3202",
+      "birthdayKey": null,
+      "forceKey": null,
+      "campNameKey": "Camp_Name_Diguo"
+    },
+    "portraits": {
+      "gacha": {
+        "publicPath": null
+      },
+      "head": {
+        "publicPath": "/assets/characters/head/T_Head_Kami.png"
+      },
+      "icon": {
+        "publicPath": null
+      },
+      "bust": {
+        "publicPath": "/assets/characters/bust/T_Bust_Kami.png"
+      },
+      "phantom": {
+        "publicPath": "/assets/characters/phantom/T_Phantom_Kami.png"
+      },
+      "charpiece": {
+        "publicPath": "/assets/characters/charpiece/T_CharPiece_Kami.png"
+      }
+    },
+    "translations": {
+      "DE": {
+        "name": "Camilla",
+        "subtitle": null,
+        "birthday": null,
+        "force": null,
+        "campName": "Hyperboreisches Imperium"
+      },
+      "EN": {
+        "name": "Camilla",
+        "subtitle": null,
+        "birthday": null,
+        "force": null,
+        "campName": "The Hyperborean Empire"
+      },
+      "ES": {
+        "name": "Camilla",
+        "subtitle": null,
+        "birthday": null,
+        "force": null,
+        "campName": "Imperio Hyperboreano"
+      },
+      "FR": {
+        "name": "Camilla",
+        "subtitle": null,
+        "birthday": null,
+        "force": null,
+        "campName": "Empire Hyperboréen"
+      },
+      "JP": {
+        "name": "カミラ",
+        "subtitle": null,
+        "birthday": null,
+        "force": null,
+        "campName": "ヒュペリア帝国"
+      },
+      "KR": {
+        "name": "카밀라",
+        "subtitle": null,
+        "birthday": null,
+        "force": null,
+        "campName": "휘페르보레아 제국"
+      },
+      "TC": {
+        "name": "卡蜜拉",
+        "subtitle": null,
+        "birthday": null,
+        "force": null,
+        "campName": "海伯利亞帝國"
+      }
+    }
+  },
+  {
+    "id": "char-zhangyu",
+    "charId": 2301,
+    "internalName": "Zhangyu",
+    "element": {
+      "key": "Water",
+      "label": "Hydro"
+    },
+    "weaponTags": [
+      "Sword",
+      "Bow"
+    ],
+    "camp": {
+      "key": "Haiguo",
+      "nameKey": "Camp_Name_Haiguo",
+      "iconGamePath": "/Game/UI/Texture/Dynamic/Image/Camp/T_Gacha_CampIcon_Haiguo.T_Gacha_CampIcon_Haiguo"
+    },
+    "rarity": 5,
+    "maxLevel": 80,
+    "colorVar": "Red",
+    "gender": true,
+    "sortPriority": 4007,
+    "charPieceId": 1002301,
+    "unlockRequiredPiece": 30,
+    "intronLevels": [
+      {
+        "cardLevel": 0,
+        "resourceId": 1002301,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 1,
+        "resourceId": 1002301,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 2,
+        "resourceId": 1002301,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 3,
+        "resourceId": 1002301,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 4,
+        "resourceId": 1002301,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 5,
+        "resourceId": 1002301,
+        "resourceNum": 30
+      }
+    ],
+    "baseStats": {
+      "atk": 17,
+      "atkGrowCurve": "ATKS",
+      "def": 300,
+      "defGrowCurve": "DEFS",
+      "maxHp": 115,
+      "maxHpGrowCurve": "MaxHpS",
+      "maxES": 115,
+      "maxESGrowCurve": "MaxESS",
+      "maxSp": 150
+    },
+    "addonAttrs": [
+      {
+        "attrId": 230101,
+        "attrName": "ATK",
+        "rate": 0.2,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_08.png",
+        "nameKey": "ADDONATTR_230101_NAME"
+      },
+      {
+        "attrId": 230102,
+        "attrName": "ATK",
+        "rate": 0.3,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_08.png",
+        "nameKey": "ADDONATTR_230102_NAME"
+      },
+      {
+        "attrId": 230103,
+        "attrName": "SkillSustain",
+        "rate": 0.06,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_11.png",
+        "nameKey": "ADDONATTR_230103_NAME"
+      },
+      {
+        "attrId": 230104,
+        "attrName": "SkillSustain",
+        "rate": 0.09,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_11.png",
+        "nameKey": "ADDONATTR_230104_NAME"
+      }
+    ],
+    "positioning": [
+      "Support",
+      "Minion",
+      "Control"
+    ],
+    "recommendAttr": [
+      "MaxSp",
+      "SkillEfficiency",
+      "SkillSustain"
+    ],
+    "ascensionLevels": [
+      20,
+      30,
+      40,
+      50,
+      60,
+      70
+    ],
+    "textKeys": {
+      "nameKey": "UI_CHAR_NAME_2301",
+      "subtitleKey": "UI_CHAR_SUBTITLE_2301",
+      "birthdayKey": "UI_CHAR_BIRTH_2301",
+      "forceKey": "UI_CHAR_FORCE_2301",
+      "campNameKey": "Camp_Name_Haiguo"
+    },
+    "portraits": {
+      "gacha": {
+        "publicPath": "/assets/characters/gacha/T_Gacha_AvatarZhangyu.png"
+      },
+      "head": {
+        "publicPath": "/assets/characters/head/T_Head_Zhangyu.png"
+      },
+      "icon": {
+        "publicPath": "/assets/characters/icon/T_Icon_Zhangyu.png"
+      },
+      "bust": {
+        "publicPath": "/assets/characters/bust/T_Bust_Zhangyu.png"
+      },
+      "phantom": {
+        "publicPath": "/assets/characters/phantom/T_Phantom_Zhangyu.png"
+      },
+      "charpiece": {
+        "publicPath": "/assets/characters/charpiece/T_CharPiece_Zhangyu.png"
+      }
+    },
+    "translations": {
+      "DE": {
+        "name": "Tabethe",
+        "subtitle": "Flüssige Streiche",
+        "birthday": "Republik Luca",
+        "force": "Unabhängig",
+        "campName": "Republik Luca"
+      },
+      "EN": {
+        "name": "Tabethe",
+        "subtitle": "Aqueous Trickery",
+        "birthday": "Republic of Luca",
+        "force": "Unaffiliated",
+        "campName": "Republic of Luca"
+      },
+      "ES": {
+        "name": "Tabethe",
+        "subtitle": "Trucos Acuosos",
+        "birthday": "República de Luca",
+        "force": "No afiliado",
+        "campName": "República de Luca"
+      },
+      "FR": {
+        "name": "Tabethe",
+        "subtitle": "Trublion Abyssal",
+        "birthday": "République de Luca",
+        "force": "Aucune affiliation",
+        "campName": "République de Luca"
+      },
+      "JP": {
+        "name": "タビテ",
+        "subtitle": "変幻自在の悪戯っ子",
+        "birthday": "ルッカ共和国",
+        "force": "なし",
+        "campName": "ルッカ共和国"
+      },
+      "KR": {
+        "name": "타비사",
+        "subtitle": "꼬물꼬물 장난꾸러기",
+        "birthday": "루카 공화국",
+        "force": "없음",
+        "campName": "루카 공화국"
+      },
+      "TC": {
+        "name": "塔比瑟",
+        "subtitle": "流動惡作劇",
+        "birthday": "盧卡",
+        "force": "無",
+        "campName": "盧卡共和國"
+      }
+    }
+  },
+  {
+    "id": "char-zhiliu",
+    "charId": 4102,
+    "internalName": "Zhiliu",
+    "element": {
+      "key": "Thunder",
+      "label": "Electro"
+    },
+    "weaponTags": [
+      "Claymore",
+      "Crossbow"
+    ],
+    "camp": {
+      "key": "Dongguo",
+      "nameKey": "Camp_Name_Dongguo",
+      "iconGamePath": "/Game/UI/Texture/Dynamic/Image/Camp/T_Gacha_CampIcon_Dongguo.T_Gacha_CampIcon_Dongguo"
+    },
+    "rarity": 5,
+    "maxLevel": 80,
+    "colorVar": "Yellow",
+    "gender": true,
+    "sortPriority": 5001,
+    "charPieceId": 1004102,
+    "unlockRequiredPiece": 30,
+    "intronLevels": [
+      {
+        "cardLevel": 0,
+        "resourceId": 1004102,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 1,
+        "resourceId": 1004102,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 2,
+        "resourceId": 1004102,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 3,
+        "resourceId": 1004102,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 4,
+        "resourceId": 1004102,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 5,
+        "resourceId": 1004102,
+        "resourceNum": 30
+      }
+    ],
+    "baseStats": {
+      "atk": 24,
+      "atkGrowCurve": "ATKA",
+      "def": 252,
+      "defGrowCurve": "DEFA",
+      "maxHp": 80,
+      "maxHpGrowCurve": "MaxHpA",
+      "maxES": 140,
+      "maxESGrowCurve": "MaxESA",
+      "maxSp": 240
+    },
+    "addonAttrs": [
+      {
+        "attrId": 410201,
+        "attrName": "StrongValue",
+        "value": 0.06,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_02.png",
+        "nameKey": "StrongValue"
+      },
+      {
+        "attrId": 410202,
+        "attrName": "StrongValue",
+        "value": 0.09,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_02.png",
+        "nameKey": "StrongValue"
+      },
+      {
+        "attrId": 410203,
+        "attrName": "SkillIntensity",
+        "rate": 0.08,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_12.png",
+        "nameKey": "ADDONATTR_410203_NAME"
+      },
+      {
+        "attrId": 410204,
+        "attrName": "SkillIntensity",
+        "rate": 0.12,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_12.png",
+        "nameKey": "ADDONATTR_410204_NAME"
+      }
+    ],
+    "positioning": [
+      "DPS",
+      "SkillDPS"
+    ],
+    "recommendAttr": [],
+    "ascensionLevels": [
+      20,
+      30,
+      40,
+      50,
+      60,
+      70
+    ],
+    "textKeys": {
+      "nameKey": "UI_CHAR_NAME_4102",
+      "subtitleKey": "UI_CHAR_SUBTITLE_4102",
+      "birthdayKey": "UI_CHAR_BIRTH_4102",
+      "forceKey": "UI_CHAR_FORCE_4102",
+      "campNameKey": "Camp_Name_Dongguo"
+    },
+    "portraits": {
+      "gacha": {
+        "publicPath": "/assets/characters/gacha/T_Gacha_AvatarZhiliu.png"
+      },
+      "head": {
+        "publicPath": "/assets/characters/head/T_Head_Zhiliu.png"
+      },
+      "icon": {
+        "publicPath": "/assets/characters/icon/T_Icon_Zhiliu.png"
+      },
+      "bust": {
+        "publicPath": "/assets/characters/bust/T_Bust_Zhiliu.png"
+      },
+      "phantom": {
+        "publicPath": "/assets/characters/phantom/T_Phantom_Zhiliu.png"
+      },
+      "charpiece": {
+        "publicPath": "/assets/characters/charpiece/T_CharPiece_Zhiliu.png"
+      }
+    },
+    "translations": {
+      "DE": {
+        "name": "Zhiliu",
+        "subtitle": "Zusammenfluss von Kairos",
+        "birthday": "Huaxu",
+        "force": "EverSpring",
+        "campName": "Huaxu"
+      },
+      "EN": {
+        "name": "Zhiliu",
+        "subtitle": "Confluence of Kairos",
+        "birthday": "Huaxu",
+        "force": "EverSpring",
+        "campName": "Huaxu"
+      },
+      "ES": {
+        "name": "Zhiliu",
+        "subtitle": "Confluencia de Kairos",
+        "birthday": "Huaxu",
+        "force": "Primavera Eterna",
+        "campName": "Huaxu"
+      },
+      "FR": {
+        "name": "Zhiliu",
+        "subtitle": "Augure des Eaux Calmes",
+        "birthday": "Huaxu",
+        "force": "Éternel Printemps",
+        "campName": "Huaxu"
+      },
+      "JP": {
+        "name": "シリュウ",
+        "subtitle": "春江を渡るに利ろし",
+        "birthday": "華胥",
+        "force": "百年春",
+        "campName": "華胥"
+      },
+      "KR": {
+        "name": "지류",
+        "subtitle": "강을 건너는 인도자",
+        "birthday": "화서",
+        "force": "백년춘",
+        "campName": "화서"
+      },
+      "TC": {
+        "name": "止流",
+        "subtitle": "利涉春江",
+        "birthday": "華胥",
+        "force": "百年春",
+        "campName": "華胥"
+      }
+    }
+  },
+  {
+    "id": "char-xibi",
+    "charId": 4301,
+    "internalName": "Xibi",
+    "element": {
+      "key": "Thunder",
+      "label": "Electro"
+    },
+    "weaponTags": [
+      "Swordwhip",
+      "Pistol"
+    ],
+    "camp": {
+      "key": "Diguo",
+      "nameKey": "Camp_Name_Diguo",
+      "iconGamePath": "/Game/UI/Texture/Dynamic/Image/Camp/T_Gacha_CampIcon_Diguo.T_Gacha_CampIcon_Diguo"
+    },
+    "rarity": 5,
+    "maxLevel": 80,
+    "colorVar": "Purple",
+    "gender": true,
+    "sortPriority": 5001,
+    "charPieceId": 1004301,
+    "unlockRequiredPiece": 30,
+    "intronLevels": [
+      {
+        "cardLevel": 0,
+        "resourceId": 1004301,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 1,
+        "resourceId": 1004301,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 2,
+        "resourceId": 1004301,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 3,
+        "resourceId": 1004301,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 4,
+        "resourceId": 1004301,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 5,
+        "resourceId": 1004301,
+        "resourceNum": 30
+      }
+    ],
+    "baseStats": {
+      "atk": 13,
+      "atkGrowCurve": "ATKS",
+      "def": 345,
+      "defGrowCurve": "DEFS",
+      "maxHp": 185,
+      "maxHpGrowCurve": "MaxHpS",
+      "maxES": 120,
+      "maxESGrowCurve": "MaxESS",
+      "maxSp": 200
+    },
+    "addonAttrs": [
+      {
+        "attrId": 430101,
+        "attrName": "MaxHp",
+        "rate": 0.2,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_14.png",
+        "nameKey": "ADDONATTR_430101_NAME"
+      },
+      {
+        "attrId": 430102,
+        "attrName": "MaxHp",
+        "rate": 0.3,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_14.png",
+        "nameKey": "ADDONATTR_430102_NAME"
+      },
+      {
+        "attrId": 430103,
+        "attrName": "SkillIntensity",
+        "rate": 0.08,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_12.png",
+        "nameKey": "ADDONATTR_430103_NAME"
+      },
+      {
+        "attrId": 430104,
+        "attrName": "SkillIntensity",
+        "rate": 0.12,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_12.png",
+        "nameKey": "ADDONATTR_430104_NAME"
+      }
+    ],
+    "positioning": [
+      "DPS",
+      "HP",
+      "SkillDPS"
+    ],
+    "recommendAttr": [],
+    "ascensionLevels": [
+      20,
+      30,
+      40,
+      50,
+      60,
+      70
+    ],
+    "textKeys": {
+      "nameKey": "UI_CHAR_NAME_4301",
+      "subtitleKey": "UI_CHAR_SUBTITLE_4301",
+      "birthdayKey": "UI_CHAR_BIRTH_4301",
+      "forceKey": "UI_CHAR_FORCE_4301",
+      "campNameKey": "Camp_Name_Diguo"
+    },
+    "portraits": {
+      "gacha": {
+        "publicPath": "/assets/characters/gacha/T_Gacha_AvatarXibi.png"
+      },
+      "head": {
+        "publicPath": "/assets/characters/head/T_Head_Xibi.png"
+      },
+      "icon": {
+        "publicPath": "/assets/characters/icon/T_Icon_Xibi.png"
+      },
+      "bust": {
+        "publicPath": "/assets/characters/bust/T_Bust_Xibi.png"
+      },
+      "phantom": {
+        "publicPath": "/assets/characters/phantom/T_Phantom_Xibi.png"
+      },
+      "charpiece": {
+        "publicPath": "/assets/characters/charpiece/T_CharPiece_Xibi.png"
+      }
+    },
+    "translations": {
+      "DE": {
+        "name": "Sibylle",
+        "subtitle": "Die Dohle",
+        "birthday": "Hyperboreisches Imperium",
+        "force": "Die 13. Legion",
+        "campName": "Hyperboreisches Imperium"
+      },
+      "EN": {
+        "name": "Sibylle",
+        "subtitle": "The Jackdaw",
+        "birthday": "Hyperborean Empire",
+        "force": "The 13th Legion",
+        "campName": "The Hyperborean Empire"
+      },
+      "ES": {
+        "name": "Sibylle",
+        "subtitle": "La Grajilla",
+        "birthday": "Imperio Hyperboreano",
+        "force": "La 13.ª Legión",
+        "campName": "Imperio Hyperboreano"
+      },
+      "FR": {
+        "name": "Sibylle",
+        "subtitle": "La Corneille",
+        "birthday": "Empire Hyperboréen",
+        "force": "XIIIᵉ Légion",
+        "campName": "Empire Hyperboréen"
+      },
+      "JP": {
+        "name": "シビル",
+        "subtitle": "カラス",
+        "birthday": "ヒュペリア帝国",
+        "force": "帝国軍第十三軍団",
+        "campName": "ヒュペリア帝国"
+      },
+      "KR": {
+        "name": "시빌라",
+        "subtitle": "갈까마귀",
+        "birthday": "휘페르보레아 제국",
+        "force": "제13군단",
+        "campName": "휘페르보레아 제국"
+      },
+      "TC": {
+        "name": "西比爾",
+        "subtitle": "寒鴉",
+        "birthday": "海伯利亞帝國",
+        "force": "第十三軍團",
+        "campName": "海伯利亞帝國"
+      }
+    }
+  },
+  {
+    "id": "char-yuming",
+    "charId": 4201,
+    "internalName": "Yuming",
+    "element": {
+      "key": "Thunder",
+      "label": "Electro"
+    },
+    "weaponTags": [
+      "Polearm",
+      "Machinegun"
+    ],
+    "camp": {
+      "key": "Dongguo",
+      "nameKey": "Camp_Name_Dongguo",
+      "iconGamePath": "/Game/UI/Texture/Dynamic/Image/Camp/T_Gacha_CampIcon_Dongguo.T_Gacha_CampIcon_Dongguo"
+    },
+    "rarity": 5,
+    "maxLevel": 80,
+    "colorVar": "Blue",
+    "gender": false,
+    "sortPriority": 5002,
+    "charPieceId": 1004201,
+    "unlockRequiredPiece": 30,
+    "intronLevels": [
+      {
+        "cardLevel": 0,
+        "resourceId": 1004201,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 1,
+        "resourceId": 1004201,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 2,
+        "resourceId": 1004201,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 3,
+        "resourceId": 1004201,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 4,
+        "resourceId": 1004201,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 5,
+        "resourceId": 1004201,
+        "resourceNum": 30
+      }
+    ],
+    "baseStats": {
+      "atk": 22,
+      "atkGrowCurve": "ATKS",
+      "def": 300,
+      "defGrowCurve": "DEFS",
+      "maxHp": 150,
+      "maxHpGrowCurve": "MaxHpS",
+      "maxES": 50,
+      "maxESGrowCurve": "MaxESS",
+      "maxSp": 200
+    },
+    "addonAttrs": [
+      {
+        "attrId": 420101,
+        "attrName": "ATK",
+        "rate": 0.2,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_08.png",
+        "nameKey": "ADDONATTR_420101_NAME"
+      },
+      {
+        "attrId": 420102,
+        "attrName": "ATK",
+        "rate": 0.3,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_08.png",
+        "nameKey": "ADDONATTR_420102_NAME"
+      },
+      {
+        "attrId": 420103,
+        "attrName": "SkillIntensity",
+        "rate": 0.08,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_03.png",
+        "nameKey": "ADDONATTR_420103_NAME"
+      },
+      {
+        "attrId": 420104,
+        "attrName": "SkillIntensity",
+        "rate": 0.12,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_03.png",
+        "nameKey": "ADDONATTR_420104_NAME"
+      }
+    ],
+    "positioning": [
+      "DPS",
+      "SkillDPS",
+      "WeaponDPS"
+    ],
+    "recommendAttr": [],
+    "ascensionLevels": [
+      20,
+      30,
+      40,
+      50,
+      60,
+      70
+    ],
+    "textKeys": {
+      "nameKey": "UI_CHAR_NAME_4201",
+      "subtitleKey": "UI_CHAR_SUBTITLE_4201",
+      "birthdayKey": "UI_CHAR_BIRTH_4201",
+      "forceKey": "UI_CHAR_FORCE_4201",
+      "campNameKey": "Camp_Name_Dongguo"
+    },
+    "portraits": {
+      "gacha": {
+        "publicPath": "/assets/characters/gacha/T_Gacha_AvatarYuming.png"
+      },
+      "head": {
+        "publicPath": "/assets/characters/head/T_Head_Yuming.png"
+      },
+      "icon": {
+        "publicPath": "/assets/characters/icon/T_Icon_Yuming.png"
+      },
+      "bust": {
+        "publicPath": "/assets/characters/bust/T_Bust_Yuming.png"
+      },
+      "phantom": {
+        "publicPath": "/assets/characters/phantom/T_Phantom_Yuming.png"
+      },
+      "charpiece": {
+        "publicPath": "/assets/characters/charpiece/T_CharPiece_Yuming.png"
+      }
+    },
+    "translations": {
+      "DE": {
+        "name": "Yuming",
+        "subtitle": "Sündenloser Gefangener",
+        "birthday": "Huaxu",
+        "force": "Magistrat von Yingtian",
+        "campName": "Huaxu"
+      },
+      "EN": {
+        "name": "Yuming",
+        "subtitle": "Sinless Cagedman",
+        "birthday": "Huaxu",
+        "force": "Magistrates of Yingtian",
+        "campName": "Huaxu"
+      },
+      "ES": {
+        "name": "Yuming",
+        "subtitle": "Prisionero Inocente",
+        "birthday": "Huaxu",
+        "force": "Magistrado de Yingtian",
+        "campName": "Huaxu"
+      },
+      "FR": {
+        "name": "Yuming",
+        "subtitle": "L’Éclair Entravé",
+        "birthday": "Huaxu",
+        "force": "Magistrat de Yingtian",
+        "campName": "Huaxu"
+      },
+      "JP": {
+        "name": "ユーミン",
+        "subtitle": "罪なき囚人",
+        "birthday": "華胥",
+        "force": "応天尉",
+        "campName": "華胥"
+      },
+      "KR": {
+        "name": "욱명",
+        "subtitle": "죄 없는 죄수",
+        "birthday": "화서",
+        "force": "응천위",
+        "campName": "화서"
+      },
+      "TC": {
+        "name": "煜明",
+        "subtitle": "無罪囚徒",
+        "birthday": "華胥",
+        "force": "應天尉",
+        "campName": "華胥"
+      }
+    }
+  },
+  {
+    "id": "char-linen",
+    "charId": 3101,
+    "internalName": "Linen",
+    "element": {
+      "key": "Fire",
+      "label": "Pyro"
+    },
+    "weaponTags": [
+      "Claymore",
+      "Crossbow"
+    ],
+    "camp": {
+      "key": "Diguo",
+      "nameKey": "Camp_Name_Diguo",
+      "iconGamePath": "/Game/UI/Texture/Dynamic/Image/Camp/T_Gacha_CampIcon_Diguo.T_Gacha_CampIcon_Diguo"
+    },
+    "rarity": 5,
+    "maxLevel": 80,
+    "colorVar": "Red",
+    "gender": true,
+    "sortPriority": 5003,
+    "charPieceId": 1003101,
+    "unlockRequiredPiece": 30,
+    "intronLevels": [
+      {
+        "cardLevel": 0,
+        "resourceId": 1003101,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 1,
+        "resourceId": 1003101,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 2,
+        "resourceId": 1003101,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 3,
+        "resourceId": 1003101,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 4,
+        "resourceId": 1003101,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 5,
+        "resourceId": 1003101,
+        "resourceNum": 30
+      }
+    ],
+    "baseStats": {
+      "atk": 23,
+      "atkGrowCurve": "ATKA",
+      "def": 240,
+      "defGrowCurve": "DEFA",
+      "maxHp": 105,
+      "maxHpGrowCurve": "MaxHpA",
+      "maxES": 105,
+      "maxESGrowCurve": "MaxESA",
+      "maxSp": 150
+    },
+    "addonAttrs": [
+      {
+        "attrId": 310101,
+        "attrName": "ATK",
+        "rate": 0.2,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_08.png",
+        "nameKey": "ADDONATTR_310101_NAME"
+      },
+      {
+        "attrId": 310102,
+        "attrName": "ATK",
+        "rate": 0.3,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_08.png",
+        "nameKey": "ADDONATTR_310102_NAME"
+      },
+      {
+        "attrId": 310103,
+        "attrName": "SkillSustain",
+        "rate": 0.06,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_11.png",
+        "nameKey": "ADDONATTR_310103_NAME"
+      },
+      {
+        "attrId": 310104,
+        "attrName": "SkillSustain",
+        "rate": 0.09,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_11.png",
+        "nameKey": "ADDONATTR_310104_NAME"
+      }
+    ],
+    "positioning": [
+      "DPS",
+      "Uweapon",
+      "WeaponDPS"
+    ],
+    "recommendAttr": [
+      "ATK_Fire",
+      "SkillIntensity",
+      "SkillEfficiency",
+      "SkillSustain"
+    ],
+    "ascensionLevels": [
+      20,
+      30,
+      40,
+      50,
+      60,
+      70
+    ],
+    "textKeys": {
+      "nameKey": "UI_CHAR_NAME_3101",
+      "subtitleKey": "UI_CHAR_SUBTITLE_3101",
+      "birthdayKey": "UI_CHAR_BIRTH_3101",
+      "forceKey": "UI_CHAR_FORCE_3101",
+      "campNameKey": "Camp_Name_Diguo"
+    },
+    "portraits": {
+      "gacha": {
+        "publicPath": "/assets/characters/gacha/T_Gacha_AvatarLinen.png"
+      },
+      "head": {
+        "publicPath": "/assets/characters/head/T_Head_Linen.png"
+      },
+      "icon": {
+        "publicPath": "/assets/characters/icon/T_Icon_Linen.png"
+      },
+      "bust": {
+        "publicPath": "/assets/characters/bust/T_Bust_Linen.png"
+      },
+      "phantom": {
+        "publicPath": "/assets/characters/phantom/T_Phantom_Linen.png"
+      },
+      "charpiece": {
+        "publicPath": "/assets/characters/charpiece/T_CharPiece_Linen.png"
+      }
+    },
+    "translations": {
+      "DE": {
+        "name": "Lynn",
+        "subtitle": "Ruheloser Belagerung",
+        "birthday": "Hyperboreisches Imperium",
+        "force": "Die 13. Legion",
+        "campName": "Hyperboreisches Imperium"
+      },
+      "EN": {
+        "name": "Lynn",
+        "subtitle": "Restless Siege",
+        "birthday": "Hyperborean Empire",
+        "force": "The 13th Legion",
+        "campName": "The Hyperborean Empire"
+      },
+      "ES": {
+        "name": "Lynn",
+        "subtitle": "Asedio Inquieto",
+        "birthday": "Imperio Hyperboreano",
+        "force": "La 13.ª Legión",
+        "campName": "Imperio Hyperboreano"
+      },
+      "FR": {
+        "name": "Lynn",
+        "subtitle": "Gâchette Ardente",
+        "birthday": "Empire Hyperboréen",
+        "force": "XIIIᵉ Légion",
+        "campName": "Empire Hyperboréen"
+      },
+      "JP": {
+        "name": "リーン",
+        "subtitle": "封じ込められた衝動",
+        "birthday": "ヒュペリア帝国",
+        "force": "帝国軍第十三軍団",
+        "campName": "ヒュペリア帝国"
+      },
+      "KR": {
+        "name": "린",
+        "subtitle": "봉쇄된 폭동",
+        "birthday": "휘페르보레아 제국",
+        "force": "제13군단",
+        "campName": "휘페르보레아 제국"
+      },
+      "TC": {
+        "name": "琳恩",
+        "subtitle": "封鎖的躁動",
+        "birthday": "海伯利亞帝國",
+        "force": "第十三軍團",
+        "campName": "海伯利亞帝國"
+      }
+    }
+  },
+  {
+    "id": "char-shuimu",
+    "charId": 2101,
+    "internalName": "Shuimu",
+    "element": {
+      "key": "Water",
+      "label": "Hydro"
+    },
+    "weaponTags": [
+      "Polearm",
+      "Cannon"
+    ],
+    "camp": {
+      "key": "Haiguo",
+      "nameKey": "Camp_Name_Haiguo",
+      "iconGamePath": "/Game/UI/Texture/Dynamic/Image/Camp/T_Gacha_CampIcon_Haiguo.T_Gacha_CampIcon_Haiguo"
+    },
+    "rarity": 5,
+    "maxLevel": 80,
+    "colorVar": "Blue",
+    "gender": true,
+    "sortPriority": 5004,
+    "charPieceId": 1002101,
+    "unlockRequiredPiece": 30,
+    "intronLevels": [
+      {
+        "cardLevel": 0,
+        "resourceId": 1002101,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 1,
+        "resourceId": 1002101,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 2,
+        "resourceId": 1002101,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 3,
+        "resourceId": 1002101,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 4,
+        "resourceId": 1002101,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 5,
+        "resourceId": 1002101,
+        "resourceNum": 30
+      }
+    ],
+    "baseStats": {
+      "atk": 25,
+      "atkGrowCurve": "ATKS",
+      "def": 252,
+      "defGrowCurve": "DEFS",
+      "maxHp": 100,
+      "maxHpGrowCurve": "MaxHpS",
+      "maxES": 100,
+      "maxESGrowCurve": "MaxESS",
+      "maxSp": 150
+    },
+    "addonAttrs": [
+      {
+        "attrId": 210101,
+        "attrName": "ATK",
+        "rate": 0.2,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_08.png",
+        "nameKey": "ADDONATTR_210101_NAME"
+      },
+      {
+        "attrId": 210102,
+        "attrName": "ATK",
+        "rate": 0.3,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_08.png",
+        "nameKey": "ADDONATTR_210102_NAME"
+      },
+      {
+        "attrId": 210103,
+        "attrName": "SkillRange",
+        "rate": 0.12,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_10.png",
+        "nameKey": "ADDONATTR_210103_NAME"
+      },
+      {
+        "attrId": 210104,
+        "attrName": "SkillRange",
+        "rate": 0.18,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_10.png",
+        "nameKey": "ADDONATTR_210104_NAME"
+      }
+    ],
+    "positioning": [
+      "DPS",
+      "Minion",
+      "SkillDPS"
+    ],
+    "recommendAttr": [],
+    "ascensionLevels": [
+      20,
+      30,
+      40,
+      50,
+      60,
+      70
+    ],
+    "textKeys": {
+      "nameKey": "UI_CHAR_NAME_2101",
+      "subtitleKey": "UI_CHAR_SUBTITLE_2101",
+      "birthdayKey": "UI_CHAR_BIRTH_2101",
+      "forceKey": "UI_CHAR_FORCE_2101",
+      "campNameKey": "Camp_Name_Haiguo"
+    },
+    "portraits": {
+      "gacha": {
+        "publicPath": "/assets/characters/gacha/T_Gacha_AvatarShuimu.png"
+      },
+      "head": {
+        "publicPath": "/assets/characters/head/T_Head_Shuimu.png"
+      },
+      "icon": {
+        "publicPath": "/assets/characters/icon/T_Icon_Shuimu.png"
+      },
+      "bust": {
+        "publicPath": "/assets/characters/bust/T_Bust_Shuimu.png"
+      },
+      "phantom": {
+        "publicPath": "/assets/characters/phantom/T_Phantom_Shuimu.png"
+      },
+      "charpiece": {
+        "publicPath": "/assets/characters/charpiece/T_CharPiece_Shuimu.png"
+      }
+    },
+    "translations": {
+      "DE": {
+        "name": "Rebecca",
+        "subtitle": "Aurelia-Affinität",
+        "birthday": "Republik Luca",
+        "force": "Unabhängig",
+        "campName": "Republik Luca"
+      },
+      "EN": {
+        "name": "Rebecca",
+        "subtitle": "Aurelia Affinity",
+        "birthday": "Republic of Luca",
+        "force": "Unaffiliated",
+        "campName": "Republic of Luca"
+      },
+      "ES": {
+        "name": "Rebecca",
+        "subtitle": "Afinidad Aurelia",
+        "birthday": "República de Luca",
+        "force": "No afiliado",
+        "campName": "República de Luca"
+      },
+      "FR": {
+        "name": "Rebecca",
+        "subtitle": "Méduse Sentimentale",
+        "birthday": "République de Luca",
+        "force": "Aucune affiliation",
+        "campName": "République de Luca"
+      },
+      "JP": {
+        "name": "レベッカ",
+        "subtitle": "純愛のトゲ",
+        "birthday": "ルッカ共和国",
+        "force": "なし",
+        "campName": "ルッカ共和国"
+      },
+      "KR": {
+        "name": "레베카",
+        "subtitle": "순수한 사랑의 독침",
+        "birthday": "루카 공화국",
+        "force": "없음",
+        "campName": "루카 공화국"
+      },
+      "TC": {
+        "name": "麗蓓卡",
+        "subtitle": "純愛蜇刺",
+        "birthday": "盧卡",
+        "force": "無",
+        "campName": "盧卡共和國"
+      }
+    }
+  },
+  {
+    "id": "char-eve",
+    "charId": 2102,
+    "internalName": "Eve",
+    "element": {
+      "key": "Water",
+      "label": "Hydro"
+    },
+    "weaponTags": [
+      "Polearm",
+      "Cannon"
+    ],
+    "camp": {
+      "key": "Haiguo",
+      "nameKey": "Camp_Name_Haiguo",
+      "iconGamePath": "/Game/UI/Texture/Dynamic/Image/Camp/T_Gacha_CampIcon_Haiguo.T_Gacha_CampIcon_Haiguo"
+    },
+    "rarity": 5,
+    "maxLevel": 80,
+    "colorVar": "Blue",
+    "gender": null,
+    "sortPriority": 5005,
+    "charPieceId": 1002102,
+    "unlockRequiredPiece": 30,
+    "intronLevels": [],
+    "baseStats": {
+      "atk": 25,
+      "atkGrowCurve": "ATKS",
+      "def": 252,
+      "defGrowCurve": "DEFS",
+      "maxHp": 100,
+      "maxHpGrowCurve": "MaxHpS",
+      "maxES": 100,
+      "maxESGrowCurve": "MaxESS",
+      "maxSp": 200
+    },
+    "addonAttrs": [],
+    "positioning": [
+      "DPS",
+      "Minion",
+      "SkillDPS"
+    ],
+    "recommendAttr": [],
+    "ascensionLevels": [
+      20,
+      30,
+      40,
+      50,
+      60,
+      70
+    ],
+    "textKeys": {
+      "nameKey": "UI_CHAR_NAME_2102",
+      "subtitleKey": "UI_CHAR_SUBTITLE_2102",
+      "birthdayKey": null,
+      "forceKey": null,
+      "campNameKey": "Camp_Name_Haiguo"
+    },
+    "portraits": {
+      "gacha": {
+        "publicPath": null
+      },
+      "head": {
+        "publicPath": null
+      },
+      "icon": {
+        "publicPath": null
+      },
+      "bust": {
+        "publicPath": null
+      },
+      "phantom": {
+        "publicPath": null
+      },
+      "charpiece": {
+        "publicPath": null
+      }
+    },
+    "translations": {
+      "DE": {
+        "name": "Yvaine",
+        "subtitle": null,
+        "birthday": null,
+        "force": null,
+        "campName": "Republik Luca"
+      },
+      "EN": {
+        "name": "Yvaine",
+        "subtitle": null,
+        "birthday": null,
+        "force": null,
+        "campName": "Republic of Luca"
+      },
+      "ES": {
+        "name": "Yvaine",
+        "subtitle": null,
+        "birthday": null,
+        "force": null,
+        "campName": "República de Luca"
+      },
+      "FR": {
+        "name": "Yvaine",
+        "subtitle": null,
+        "birthday": null,
+        "force": null,
+        "campName": "République de Luca"
+      },
+      "JP": {
+        "name": "イブ",
+        "subtitle": null,
+        "birthday": null,
+        "force": null,
+        "campName": "ルッカ共和国"
+      },
+      "KR": {
+        "name": "이브",
+        "subtitle": null,
+        "birthday": null,
+        "force": null,
+        "campName": "루카 공화국"
+      },
+      "TC": {
+        "name": "伊薇",
+        "subtitle": null,
+        "birthday": null,
+        "force": null,
+        "campName": "盧卡共和國"
+      }
+    }
+  },
+  {
+    "id": "char-xier",
+    "charId": 3102,
+    "internalName": "Xier",
+    "element": {
+      "key": "Fire",
+      "label": "Pyro"
+    },
+    "weaponTags": [
+      "Dualblade",
+      "Cannon"
+    ],
+    "camp": {
+      "key": "Diguo",
+      "nameKey": "Camp_Name_Diguo",
+      "iconGamePath": "/Game/UI/Texture/Dynamic/Image/Camp/T_Gacha_CampIcon_Diguo.T_Gacha_CampIcon_Diguo"
+    },
+    "rarity": 5,
+    "maxLevel": 80,
+    "colorVar": "Red",
+    "gender": true,
+    "sortPriority": 5005,
+    "charPieceId": 1003102,
+    "unlockRequiredPiece": 30,
+    "intronLevels": [
+      {
+        "cardLevel": 0,
+        "resourceId": 1003102,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 1,
+        "resourceId": 1003102,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 2,
+        "resourceId": 1003102,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 3,
+        "resourceId": 1003102,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 4,
+        "resourceId": 1003102,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 5,
+        "resourceId": 1003102,
+        "resourceNum": 30
+      }
+    ],
+    "baseStats": {
+      "atk": 27,
+      "atkGrowCurve": "ATKA",
+      "def": 265,
+      "defGrowCurve": "DEFA",
+      "maxHp": 90,
+      "maxHpGrowCurve": "MaxHpA",
+      "maxES": 90,
+      "maxESGrowCurve": "MaxESA",
+      "maxSp": 200
+    },
+    "addonAttrs": [
+      {
+        "attrId": 310201,
+        "attrName": "ATK",
+        "rate": 0.2,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_08.png",
+        "nameKey": "ADDONATTR_310201_NAME"
+      },
+      {
+        "attrId": 310202,
+        "attrName": "ATK",
+        "rate": 0.3,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_08.png",
+        "nameKey": "ADDONATTR_310202_NAME"
+      },
+      {
+        "attrId": 310203,
+        "attrName": "MultiShootModifierRate",
+        "value": 0.15,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_06.png",
+        "nameKey": "MultiShootModifierRate"
+      },
+      {
+        "attrId": 310204,
+        "attrName": "MultiShootModifierRate",
+        "value": 0.225,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_06.png",
+        "nameKey": "MultiShootModifierRate"
+      }
+    ],
+    "positioning": [
+      "DPS",
+      "SkillDPS",
+      "WeaponDPS"
+    ],
+    "recommendAttr": [
+      "ATK_Fire",
+      "SkillIntensity",
+      "SkillEfficiency",
+      "SkillSustain",
+      "SkillRange"
+    ],
+    "ascensionLevels": [
+      20,
+      30,
+      40,
+      50,
+      60,
+      70
+    ],
+    "textKeys": {
+      "nameKey": "UI_CHAR_NAME_3102",
+      "subtitleKey": "UI_CHAR_SUBTITLE_3102",
+      "birthdayKey": "UI_CHAR_BIRTH_3102",
+      "forceKey": "UI_CHAR_FORCE_3102",
+      "campNameKey": "Camp_Name_Diguo"
+    },
+    "portraits": {
+      "gacha": {
+        "publicPath": "/assets/characters/gacha/T_Gacha_AvatarXier.png"
+      },
+      "head": {
+        "publicPath": "/assets/characters/head/T_Head_Xier.png"
+      },
+      "icon": {
+        "publicPath": "/assets/characters/icon/T_Icon_Xier.png"
+      },
+      "bust": {
+        "publicPath": "/assets/characters/bust/T_Bust_Xier.png"
+      },
+      "phantom": {
+        "publicPath": "/assets/characters/phantom/T_Phantom_Xier.png"
+      },
+      "charpiece": {
+        "publicPath": "/assets/characters/charpiece/T_CharPiece_Xier.png"
+      }
+    },
+    "translations": {
+      "DE": {
+        "name": "Hilda",
+        "subtitle": "Schützende Eleganz",
+        "birthday": "Hyperboreisches Imperium",
+        "force": "Unabhängig",
+        "campName": "Hyperboreisches Imperium"
+      },
+      "EN": {
+        "name": "Hilda",
+        "subtitle": "Protective Elegance",
+        "birthday": "Hyperborean Empire",
+        "force": "Unaffiliated",
+        "campName": "The Hyperborean Empire"
+      },
+      "ES": {
+        "name": "Hilda",
+        "subtitle": "Elegancia Protectora",
+        "birthday": "Imperio Hyperboreano",
+        "force": "No afiliado",
+        "campName": "Imperio Hyperboreano"
+      },
+      "FR": {
+        "name": "Hilda",
+        "subtitle": "Grâce Protectrice",
+        "birthday": "Empire Hyperboréen",
+        "force": "Aucune affiliation",
+        "campName": "Empire Hyperboréen"
+      },
+      "JP": {
+        "name": "ヒルダ",
+        "subtitle": "優雅なるメイド",
+        "birthday": "ヒュペリア帝国",
+        "force": "なし",
+        "campName": "ヒュペリア帝国"
+      },
+      "KR": {
+        "name": "힐다",
+        "subtitle": "고상한 몸놀림",
+        "birthday": "휘페르보레아 제국",
+        "force": "없음",
+        "campName": "휘페르보레아 제국"
+      },
+      "TC": {
+        "name": "希爾妲",
+        "subtitle": "幽雅隨行",
+        "birthday": "海伯利亞帝國",
+        "force": "無",
+        "campName": "海伯利亞帝國"
+      }
+    }
+  },
+  {
+    "id": "char-songlu",
+    "charId": 5101,
+    "internalName": "Songlu",
+    "element": {
+      "key": "Wind",
+      "label": "Anemo"
+    },
+    "weaponTags": [
+      "Polearm",
+      "Bow"
+    ],
+    "camp": {
+      "key": "Jiaohui",
+      "nameKey": "Camp_Name_Jiaohui",
+      "iconGamePath": "/Game/UI/Texture/Dynamic/Image/Camp/T_Gacha_CampIcon_Jiaohui.T_Gacha_CampIcon_Jiaohui"
+    },
+    "rarity": 5,
+    "maxLevel": 80,
+    "colorVar": "Pink",
+    "gender": true,
+    "sortPriority": 5006,
+    "charPieceId": 1005101,
+    "unlockRequiredPiece": 30,
+    "intronLevels": [
+      {
+        "cardLevel": 0,
+        "resourceId": 1005101,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 1,
+        "resourceId": 1005101,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 2,
+        "resourceId": 1005101,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 3,
+        "resourceId": 1005101,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 4,
+        "resourceId": 1005101,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 5,
+        "resourceId": 1005101,
+        "resourceNum": 30
+      }
+    ],
+    "baseStats": {
+      "atk": 12,
+      "atkGrowCurve": "ATKS",
+      "def": 310,
+      "defGrowCurve": "DEFS",
+      "maxHp": 185,
+      "maxHpGrowCurve": "MaxHpS",
+      "maxES": 150,
+      "maxESGrowCurve": "MaxESS",
+      "maxSp": 120
+    },
+    "addonAttrs": [
+      {
+        "attrId": 510101,
+        "attrName": "MaxHp",
+        "rate": 0.2,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_14.png",
+        "nameKey": "ADDONATTR_510101_NAME"
+      },
+      {
+        "attrId": 510102,
+        "attrName": "MaxHp",
+        "rate": 0.3,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_14.png",
+        "nameKey": "ADDONATTR_510102_NAME"
+      },
+      {
+        "attrId": 510103,
+        "attrName": "SkillSustain",
+        "rate": 0.06,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_11.png",
+        "nameKey": "ADDONATTR_510103_NAME"
+      },
+      {
+        "attrId": 510104,
+        "attrName": "SkillSustain",
+        "rate": 0.09,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_11.png",
+        "nameKey": "ADDONATTR_510104_NAME"
+      }
+    ],
+    "positioning": [
+      "Support",
+      "HP",
+      "Heal"
+    ],
+    "recommendAttr": [
+      "MaxHp",
+      "MaxSp",
+      "SkillEfficiency",
+      "SkillSustain"
+    ],
+    "ascensionLevels": [
+      20,
+      30,
+      40,
+      50,
+      60,
+      70
+    ],
+    "textKeys": {
+      "nameKey": "UI_CHAR_NAME_5101",
+      "subtitleKey": "UI_CHAR_SUBTITLE_5101",
+      "birthdayKey": "UI_CHAR_BIRTH_5101",
+      "forceKey": "UI_CHAR_FORCE_5101",
+      "campNameKey": "Camp_Name_Jiaohui"
+    },
+    "portraits": {
+      "gacha": {
+        "publicPath": "/assets/characters/gacha/T_Gacha_AvatarSonglu.png"
+      },
+      "head": {
+        "publicPath": "/assets/characters/head/T_Head_Songlu.png"
+      },
+      "icon": {
+        "publicPath": "/assets/characters/icon/T_Icon_Songlu.png"
+      },
+      "bust": {
+        "publicPath": "/assets/characters/bust/T_Bust_Songlu.png"
+      },
+      "phantom": {
+        "publicPath": "/assets/characters/phantom/T_Phantom_Songlu.png"
+      },
+      "charpiece": {
+        "publicPath": "/assets/characters/charpiece/T_CharPiece_Songlu.png"
+      }
+    },
+    "translations": {
+      "DE": {
+        "name": "Truffle und Filbert",
+        "subtitle": "Hopp Hopp, Kommissarin!",
+        "birthday": "Die Elysische Kirche",
+        "force": "Die Elysische Kirche",
+        "campName": "Die Elysische Kirche"
+      },
+      "EN": {
+        "name": "Truffle and Filbert",
+        "subtitle": "Chop-Chop, Commissaries!",
+        "birthday": "The Elysian Church",
+        "force": "The Elysian Church",
+        "campName": "The Elysian Church"
+      },
+      "ES": {
+        "name": "Truffle y Filbert",
+        "subtitle": "¡A por todas, Comisarias!",
+        "birthday": "Iglesia Elysiana",
+        "force": "Iglesia Elysiana",
+        "campName": "Iglesia Elysiana"
+      },
+      "FR": {
+        "name": "Truffle et Filbert",
+        "subtitle": "Dépêchez-vous, les rations !",
+        "birthday": "Église Élyséenne",
+        "force": "Église Élyséenne",
+        "campName": "Église Élyséenne"
+      },
+      "JP": {
+        "name": "トリュフ&ヘーゼルナッツ",
+        "subtitle": "ごはん係は大忙し",
+        "birthday": "エリュシオン礼賛会",
+        "force": "エリュシオン礼賛会",
+        "campName": "エリュシオン礼賛会"
+      },
+      "KR": {
+        "name": "트러플과 헤이즐넛",
+        "subtitle": "바쁘다 바빠 식량 보급관",
+        "birthday": "엘리시안 교회",
+        "force": "엘리시안 교회",
+        "campName": "엘리시안 교회"
+      },
+      "TC": {
+        "name": "松露與榛子",
+        "subtitle": "忙忙糧秣官",
+        "birthday": "艾利西安傳頌會",
+        "force": "艾利西安傳頌會",
+        "campName": "艾利西安傳頌會"
+      }
+    }
+  },
+  {
+    "id": "char-baiheng",
+    "charId": 2401,
+    "internalName": "Baiheng",
+    "element": {
+      "key": "Water",
+      "label": "Hydro"
+    },
+    "weaponTags": [
+      "Swordwhip",
+      "Bow"
+    ],
+    "camp": {
+      "key": "Dongguo",
+      "nameKey": "Camp_Name_Dongguo",
+      "iconGamePath": "/Game/UI/Texture/Dynamic/Image/Camp/T_Gacha_CampIcon_Dongguo.T_Gacha_CampIcon_Dongguo"
+    },
+    "rarity": 5,
+    "maxLevel": 80,
+    "colorVar": "Blue",
+    "gender": true,
+    "sortPriority": 5007,
+    "charPieceId": 1002401,
+    "unlockRequiredPiece": 30,
+    "intronLevels": [
+      {
+        "cardLevel": 0,
+        "resourceId": 1002401,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 1,
+        "resourceId": 1002401,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 2,
+        "resourceId": 1002401,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 3,
+        "resourceId": 1002401,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 4,
+        "resourceId": 1002401,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 5,
+        "resourceId": 1002401,
+        "resourceNum": 30
+      }
+    ],
+    "baseStats": {
+      "atk": 23,
+      "atkGrowCurve": "ATKS",
+      "def": 315,
+      "defGrowCurve": "DEFS",
+      "maxHp": 105,
+      "maxHpGrowCurve": "MaxHpS",
+      "maxES": 105,
+      "maxESGrowCurve": "MaxESS",
+      "maxSp": 150
+    },
+    "addonAttrs": [
+      {
+        "attrId": 240101,
+        "attrName": "SkillSustain",
+        "rate": 0.06,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_11.png",
+        "nameKey": "ADDONATTR_240101_NAME"
+      },
+      {
+        "attrId": 240102,
+        "attrName": "SkillSustain",
+        "rate": 0.09,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_11.png",
+        "nameKey": "ADDONATTR_240102_NAME"
+      },
+      {
+        "attrId": 240103,
+        "attrName": "SkillIntensity",
+        "rate": 0.08,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_12.png",
+        "nameKey": "ADDONATTR_240103_NAME"
+      },
+      {
+        "attrId": 240104,
+        "attrName": "SkillIntensity",
+        "rate": 0.12,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_12.png",
+        "nameKey": "ADDONATTR_240104_NAME"
+      }
+    ],
+    "positioning": [
+      "Support",
+      "SPRecover",
+      "Heal"
+    ],
+    "recommendAttr": [
+      "MaxSp",
+      "SkillIntensity",
+      "SkillEfficiency",
+      "SkillSustain",
+      "SkillRange"
+    ],
+    "ascensionLevels": [
+      20,
+      30,
+      40,
+      50,
+      60,
+      70
+    ],
+    "textKeys": {
+      "nameKey": "UI_CHAR_NAME_2401",
+      "subtitleKey": "UI_CHAR_SUBTITLE_2401",
+      "birthdayKey": "UI_CHAR_BIRTH_2401",
+      "forceKey": "UI_CHAR_FORCE_2401",
+      "campNameKey": "Camp_Name_Dongguo"
+    },
+    "portraits": {
+      "gacha": {
+        "publicPath": "/assets/characters/gacha/T_Gacha_AvatarBaiheng.png"
+      },
+      "head": {
+        "publicPath": "/assets/characters/head/T_Head_Baiheng.png"
+      },
+      "icon": {
+        "publicPath": "/assets/characters/icon/T_Icon_Baiheng.png"
+      },
+      "bust": {
+        "publicPath": "/assets/characters/bust/T_Bust_Baiheng.png"
+      },
+      "phantom": {
+        "publicPath": "/assets/characters/phantom/T_Phantom_Baiheng.png"
+      },
+      "charpiece": {
+        "publicPath": "/assets/characters/charpiece/T_CharPiece_Baiheng.png"
+      }
+    },
+    "translations": {
+      "DE": {
+        "name": "Fushu",
+        "subtitle": "Aprikosensilhouette",
+        "birthday": "Huaxu",
+        "force": "Halle der Vergänglichkeit",
+        "campName": "Huaxu"
+      },
+      "EN": {
+        "name": "Fushu",
+        "subtitle": "Silhouette Beneath Apricots",
+        "birthday": "Huaxu",
+        "force": "Hall of Ephemerality",
+        "campName": "Huaxu"
+      },
+      "ES": {
+        "name": "Fushu",
+        "subtitle": "Silueta bajo Albaricoques",
+        "birthday": "Huaxu",
+        "force": "Pabellón de lo Efímero",
+        "campName": "Huaxu"
+      },
+      "FR": {
+        "name": "Fushu",
+        "subtitle": "Silhouette sous l’Abricotier",
+        "birthday": "Huaxu",
+        "force": "Pavillon de l’Éphémère",
+        "campName": "Huaxu"
+      },
+      "JP": {
+        "name": "フーシュ",
+        "subtitle": "杏林の木漏れ日",
+        "birthday": "華胥",
+        "force": "枯栄閣（コエイカク）",
+        "campName": "華胥"
+      },
+      "KR": {
+        "name": "부소",
+        "subtitle": "살구나무 숲의 그림자",
+        "birthday": "화서",
+        "force": "고영각",
+        "campName": "화서"
+      },
+      "TC": {
+        "name": "扶疏",
+        "subtitle": "杏林疏影",
+        "birthday": "華胥",
+        "force": "枯榮閣",
+        "campName": "華胥"
+      }
+    }
+  },
+  {
+    "id": "char-saiqi",
+    "charId": 5301,
+    "internalName": "Saiqi",
+    "element": {
+      "key": "Wind",
+      "label": "Anemo"
+    },
+    "weaponTags": [
+      "Polearm",
+      "Machinegun"
+    ],
+    "camp": {
+      "key": "None",
+      "nameKey": "Camp_Name_None",
+      "iconGamePath": "/Game/UI/Texture/Dynamic/Image/Camp/T_Gacha_CampIcon_NoCamp.T_Gacha_CampIcon_NoCamp"
+    },
+    "rarity": 5,
+    "maxLevel": 80,
+    "colorVar": "Green",
+    "gender": true,
+    "sortPriority": 5008,
+    "charPieceId": 1005301,
+    "unlockRequiredPiece": 30,
+    "intronLevels": [
+      {
+        "cardLevel": 0,
+        "resourceId": 1005301,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 1,
+        "resourceId": 1005301,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 2,
+        "resourceId": 1005301,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 3,
+        "resourceId": 1005301,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 4,
+        "resourceId": 1005301,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 5,
+        "resourceId": 1005301,
+        "resourceNum": 30
+      }
+    ],
+    "baseStats": {
+      "atk": 28,
+      "atkGrowCurve": "ATKS",
+      "def": 252,
+      "defGrowCurve": "DEFS",
+      "maxHp": 70,
+      "maxHpGrowCurve": "MaxHpS",
+      "maxES": 140,
+      "maxESGrowCurve": "MaxESS",
+      "maxSp": 150
+    },
+    "addonAttrs": [
+      {
+        "attrId": 530101,
+        "attrName": "EnmityValue",
+        "value": 0.02,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_05.png",
+        "nameKey": "EnmityValue"
+      },
+      {
+        "attrId": 530102,
+        "attrName": "EnmityValue",
+        "value": 0.03,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_05.png",
+        "nameKey": "EnmityValue"
+      },
+      {
+        "attrId": 530103,
+        "attrName": "SkillIntensity",
+        "rate": 0.08,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_12.png",
+        "nameKey": "ADDONATTR_530103_NAME"
+      },
+      {
+        "attrId": 530104,
+        "attrName": "SkillIntensity",
+        "rate": 0.12,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_12.png",
+        "nameKey": "ADDONATTR_530104_NAME"
+      }
+    ],
+    "positioning": [
+      "DPS",
+      "Uweapon",
+      "WeaponDPS",
+      "SkillDPS"
+    ],
+    "recommendAttr": [
+      "ATK_Wind",
+      "SkillIntensity",
+      "SkillEfficiency",
+      "SkillRange",
+      "EnmityValue"
+    ],
+    "ascensionLevels": [
+      20,
+      30,
+      40,
+      50,
+      60,
+      70
+    ],
+    "textKeys": {
+      "nameKey": "UI_CHAR_NAME_5301",
+      "subtitleKey": "UI_CHAR_SUBTITLE_5301",
+      "birthdayKey": "UI_CHAR_BIRTH_5301",
+      "forceKey": "UI_CHAR_FORCE_5301",
+      "campNameKey": "Camp_Name_None"
+    },
+    "portraits": {
+      "gacha": {
+        "publicPath": "/assets/characters/gacha/T_Gacha_AvatarSaiqi.png"
+      },
+      "head": {
+        "publicPath": "/assets/characters/head/T_Head_Saiqi.png"
+      },
+      "icon": {
+        "publicPath": "/assets/characters/icon/T_Icon_Saiqi.png"
+      },
+      "bust": {
+        "publicPath": "/assets/characters/bust/T_Bust_Saiqi.png"
+      },
+      "phantom": {
+        "publicPath": "/assets/characters/phantom/T_Phantom_Saiqi.png"
+      },
+      "charpiece": {
+        "publicPath": "/assets/characters/charpiece/T_CharPiece_Saiqi.png"
+      }
+    },
+    "translations": {
+      "DE": {
+        "name": "Psyche",
+        "subtitle": "Tagtraum des Kokons",
+        "birthday": "Hyperboreisches Imperium",
+        "force": "Unabhängig",
+        "campName": "Keine Zugehörigkeit"
+      },
+      "EN": {
+        "name": "Psyche",
+        "subtitle": "Chrysalis' Daydream",
+        "birthday": "Hyperborean Empire",
+        "force": "Unaffiliated",
+        "campName": "No Affiliation"
+      },
+      "ES": {
+        "name": "Psyche",
+        "subtitle": "Ensueño de la Crisálida",
+        "birthday": "Imperio Hyperboreano",
+        "force": "No afiliado",
+        "campName": "Sin afiliación"
+      },
+      "FR": {
+        "name": "Psyche",
+        "subtitle": "Papillon Onirique",
+        "birthday": "Empire Hyperboréen",
+        "force": "Aucune affiliation",
+        "campName": "Aucune affiliation"
+      },
+      "JP": {
+        "name": "サイキ",
+        "subtitle": "繭の白昼夢",
+        "birthday": "ヒュペリア帝国",
+        "force": "なし",
+        "campName": "無所属"
+      },
+      "KR": {
+        "name": "프시케",
+        "subtitle": "고치의 백일몽",
+        "birthday": "휘페르보레아 제국",
+        "force": "없음",
+        "campName": "무소속"
+      },
+      "TC": {
+        "name": "賽琪",
+        "subtitle": "繭的白晝夢",
+        "birthday": "海伯利亞帝國",
+        "force": "無",
+        "campName": "無陣營"
+      }
+    }
+  },
+  {
+    "id": "char-feina",
+    "charId": 1801,
+    "internalName": "Feina",
+    "element": {
+      "key": "Light",
+      "label": "Lumino"
+    },
+    "weaponTags": [
+      "Sword",
+      "Machinegun"
+    ],
+    "camp": {
+      "key": "None",
+      "nameKey": "Camp_Name_None",
+      "iconGamePath": "/Game/UI/Texture/Dynamic/Image/Camp/T_Gacha_CampIcon_NoCamp.T_Gacha_CampIcon_NoCamp"
+    },
+    "rarity": 5,
+    "maxLevel": 80,
+    "colorVar": "Blue",
+    "gender": true,
+    "sortPriority": 5009,
+    "charPieceId": 1001801,
+    "unlockRequiredPiece": 30,
+    "intronLevels": [
+      {
+        "cardLevel": 0,
+        "resourceId": 1001801,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 1,
+        "resourceId": 1001801,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 2,
+        "resourceId": 1001801,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 3,
+        "resourceId": 1001801,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 4,
+        "resourceId": 1001801,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 5,
+        "resourceId": 1001801,
+        "resourceNum": 30
+      }
+    ],
+    "baseStats": {
+      "atk": 22,
+      "atkGrowCurve": "ATKS",
+      "def": 315,
+      "defGrowCurve": "DEFS",
+      "maxHp": 105,
+      "maxHpGrowCurve": "MaxHpS",
+      "maxES": 105,
+      "maxESGrowCurve": "MaxESS",
+      "maxSp": 160
+    },
+    "addonAttrs": [
+      {
+        "attrId": 180101,
+        "attrName": "SkillRange",
+        "rate": 0.12,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_10.png",
+        "nameKey": "ADDONATTR_180101_NAME"
+      },
+      {
+        "attrId": 180102,
+        "attrName": "SkillRange",
+        "rate": 0.18,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_10.png",
+        "nameKey": "ADDONATTR_180102_NAME"
+      },
+      {
+        "attrId": 180103,
+        "attrName": "SkillSustain",
+        "rate": 0.06,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_11.png",
+        "nameKey": "ADDONATTR_180103_NAME"
+      },
+      {
+        "attrId": 180104,
+        "attrName": "SkillSustain",
+        "rate": 0.09,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_11.png",
+        "nameKey": "ADDONATTR_180104_NAME"
+      }
+    ],
+    "positioning": [
+      "Support"
+    ],
+    "recommendAttr": [],
+    "ascensionLevels": [
+      20,
+      30,
+      40,
+      50,
+      60,
+      70
+    ],
+    "textKeys": {
+      "nameKey": "UI_CHAR_NAME_1801",
+      "subtitleKey": "UI_CHAR_SUBTITLE_1801",
+      "birthdayKey": "UI_CHAR_BIRTH_1801",
+      "forceKey": "UI_CHAR_FORCE_1801",
+      "campNameKey": "Camp_Name_None"
+    },
+    "portraits": {
+      "gacha": {
+        "publicPath": "/assets/characters/gacha/T_Gacha_AvatarFeina.png"
+      },
+      "head": {
+        "publicPath": "/assets/characters/head/T_Head_Feina.png"
+      },
+      "icon": {
+        "publicPath": "/assets/characters/icon/T_Icon_Feina.png"
+      },
+      "bust": {
+        "publicPath": "/assets/characters/bust/T_Bust_Feina.png"
+      },
+      "phantom": {
+        "publicPath": "/assets/characters/phantom/T_Phantom_Feina.png"
+      },
+      "charpiece": {
+        "publicPath": "/assets/characters/charpiece/T_CharPiece_Feina.png"
+      }
+    },
+    "translations": {
+      "DE": {
+        "name": "Fina",
+        "subtitle": "Legende der Nachtigall",
+        "birthday": "Hyperboreisches Imperium",
+        "force": "Unabhängig",
+        "campName": "Keine Zugehörigkeit"
+      },
+      "EN": {
+        "name": "Fina",
+        "subtitle": "Millitale of Nightingale",
+        "birthday": "Hyperborean Empire",
+        "force": "Unaffiliated",
+        "campName": "No Affiliation"
+      },
+      "ES": {
+        "name": "Fina",
+        "subtitle": "Canto del Ruiseñor",
+        "birthday": "Imperio Hyperboreano",
+        "force": "No afiliado",
+        "campName": "Sin afiliación"
+      },
+      "FR": {
+        "name": "Fina",
+        "subtitle": "Mille Contes du Rossignol",
+        "birthday": "Empire Hyperboréen",
+        "force": "Aucune affiliation",
+        "campName": "Aucune affiliation"
+      },
+      "JP": {
+        "name": "フィーナ",
+        "subtitle": "ナイチンゲールの物語",
+        "birthday": "ヒュペリア帝国",
+        "force": "なし",
+        "campName": "無所属"
+      },
+      "KR": {
+        "name": "피나",
+        "subtitle": "나이팅게일의 이야기",
+        "birthday": "휘페르보레아 제국",
+        "force": "없음",
+        "campName": "무소속"
+      },
+      "TC": {
+        "name": "菲娜",
+        "subtitle": "夜鶯千夜譚",
+        "birthday": "海伯利亞帝國",
+        "force": "無",
+        "campName": "無陣營"
+      }
+    }
+  },
+  {
+    "id": "char-baonu",
+    "charId": 1501,
+    "internalName": "Baonu",
+    "element": {
+      "key": "Light",
+      "label": "Lumino"
+    },
+    "weaponTags": [
+      "Claymore",
+      "Shotgun"
+    ],
+    "camp": {
+      "key": "Jiaohui",
+      "nameKey": "Camp_Name_Jiaohui",
+      "iconGamePath": "/Game/UI/Texture/Dynamic/Image/Camp/T_Gacha_CampIcon_Jiaohui.T_Gacha_CampIcon_Jiaohui"
+    },
+    "rarity": 5,
+    "maxLevel": 80,
+    "colorVar": "Pink",
+    "gender": true,
+    "sortPriority": 5010,
+    "charPieceId": 1001501,
+    "unlockRequiredPiece": 30,
+    "intronLevels": [
+      {
+        "cardLevel": 0,
+        "resourceId": 1001501,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 1,
+        "resourceId": 1001501,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 2,
+        "resourceId": 1001501,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 3,
+        "resourceId": 1001501,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 4,
+        "resourceId": 1001501,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 5,
+        "resourceId": 1001501,
+        "resourceNum": 30
+      }
+    ],
+    "baseStats": {
+      "atk": 24,
+      "atkGrowCurve": "ATKS",
+      "def": 240,
+      "defGrowCurve": "DEFS",
+      "maxHp": 90,
+      "maxHpGrowCurve": "MaxHpS",
+      "maxES": 90,
+      "maxESGrowCurve": "MaxESS",
+      "maxSp": 150
+    },
+    "addonAttrs": [
+      {
+        "attrId": 150101,
+        "attrName": "ATK",
+        "rate": 0.2,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_08.png",
+        "nameKey": "ADDONATTR_150101_NAME"
+      },
+      {
+        "attrId": 150102,
+        "attrName": "ATK",
+        "rate": 0.3,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_08.png",
+        "nameKey": "ADDONATTR_150102_NAME"
+      },
+      {
+        "attrId": 150103,
+        "attrName": "SkillSustain",
+        "rate": 0.06,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_11.png",
+        "nameKey": "ADDONATTR_150103_NAME"
+      },
+      {
+        "attrId": 150104,
+        "attrName": "SkillSustain",
+        "rate": 0.09,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_11.png",
+        "nameKey": "ADDONATTR_150104_NAME"
+      }
+    ],
+    "positioning": [
+      "DPS",
+      "Uweapon",
+      "WeaponDPS"
+    ],
+    "recommendAttr": [
+      "ATK_Light",
+      "SkillIntensity",
+      "SkillEfficiency",
+      "SkillSustain"
+    ],
+    "ascensionLevels": [
+      20,
+      30,
+      40,
+      50,
+      60,
+      70
+    ],
+    "textKeys": {
+      "nameKey": "UI_CHAR_NAME_1501",
+      "subtitleKey": "UI_CHAR_SUBTITLE_1501",
+      "birthdayKey": "UI_CHAR_BIRTH_1501",
+      "forceKey": "UI_CHAR_FORCE_1501",
+      "campNameKey": "Camp_Name_Jiaohui"
+    },
+    "portraits": {
+      "gacha": {
+        "publicPath": "/assets/characters/gacha/T_Gacha_AvatarBaonu.png"
+      },
+      "head": {
+        "publicPath": "/assets/characters/head/T_Head_Baonu.png"
+      },
+      "icon": {
+        "publicPath": "/assets/characters/icon/T_Icon_Baonu.png"
+      },
+      "bust": {
+        "publicPath": "/assets/characters/bust/T_Bust_Baonu.png"
+      },
+      "phantom": {
+        "publicPath": "/assets/characters/phantom/T_Phantom_Baonu.png"
+      },
+      "charpiece": {
+        "publicPath": "/assets/characters/charpiece/T_CharPiece_Baonu.png"
+      }
+    },
+    "translations": {
+      "DE": {
+        "name": "Lisbell",
+        "subtitle": "Geduld · Launenhaftigkeit",
+        "birthday": "Die Elysische Kirche",
+        "force": "Die Elysische Kirche",
+        "campName": "Die Elysische Kirche"
+      },
+      "EN": {
+        "name": "Lisbell",
+        "subtitle": "Patience·Petulance",
+        "birthday": "The Elysian Church",
+        "force": "The Elysian Church",
+        "campName": "The Elysian Church"
+      },
+      "ES": {
+        "name": "Lisbell",
+        "subtitle": "Paciencia · Petulancia",
+        "birthday": "Iglesia Elysiana",
+        "force": "Iglesia Elysiana",
+        "campName": "Iglesia Elysiana"
+      },
+      "FR": {
+        "name": "Lisbell",
+        "subtitle": "Résilience · Courroux",
+        "birthday": "Église Élyséenne",
+        "force": "Église Élyséenne",
+        "campName": "Église Élyséenne"
+      },
+      "JP": {
+        "name": "リズベル",
+        "subtitle": "ペイシェンス&リズベル",
+        "birthday": "エリュシオン礼賛会",
+        "force": "エリュシオン礼賛会",
+        "campName": "エリュシオン礼賛会"
+      },
+      "KR": {
+        "name": "리사벨",
+        "subtitle": "인내와 분노",
+        "birthday": "엘리시안 교회",
+        "force": "엘리시안 교회",
+        "campName": "엘리시안 교회"
+      },
+      "TC": {
+        "name": "莉茲貝爾",
+        "subtitle": "堅忍 · 暴怒",
+        "birthday": "艾利西安傳頌會",
+        "force": "艾利西安傳頌會",
+        "campName": "艾利西安傳頌會"
+      }
+    }
+  },
+  {
+    "id": "char-nifu",
+    "charId": 1502,
+    "internalName": "Nifu",
+    "element": {
+      "key": "Light",
+      "label": "Lumino"
+    },
+    "weaponTags": [
+      "Katana",
+      "Pistol"
+    ],
+    "camp": {
+      "key": "None",
+      "nameKey": "Camp_Name_None",
+      "iconGamePath": "/Game/UI/Texture/Dynamic/Image/Camp/T_Gacha_CampIcon_NoCamp.T_Gacha_CampIcon_NoCamp"
+    },
+    "rarity": 5,
+    "maxLevel": 80,
+    "colorVar": "Cyan",
+    "gender": true,
+    "sortPriority": 5011,
+    "charPieceId": 1001502,
+    "unlockRequiredPiece": 30,
+    "intronLevels": [
+      {
+        "cardLevel": 0,
+        "resourceId": 1001502,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 1,
+        "resourceId": 1001502,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 2,
+        "resourceId": 1001502,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 3,
+        "resourceId": 1001502,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 4,
+        "resourceId": 1001502,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 5,
+        "resourceId": 1001502,
+        "resourceNum": 30
+      }
+    ],
+    "baseStats": {
+      "atk": 21,
+      "atkGrowCurve": "ATKS",
+      "def": 255,
+      "defGrowCurve": "DEFS",
+      "maxHp": 105,
+      "maxHpGrowCurve": "MaxHpS",
+      "maxES": 105,
+      "maxESGrowCurve": "MaxESS",
+      "maxSp": 180
+    },
+    "addonAttrs": [
+      {
+        "attrId": 150201,
+        "attrName": "ATK",
+        "rate": 0.2,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_08.png",
+        "nameKey": "ADDONATTR_150201_NAME"
+      },
+      {
+        "attrId": 150202,
+        "attrName": "ATK",
+        "rate": 0.3,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_08.png",
+        "nameKey": "ADDONATTR_150202_NAME"
+      },
+      {
+        "attrId": 150203,
+        "attrName": "SkillRange",
+        "rate": 0.12,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_10.png",
+        "nameKey": "ADDONATTR_150203_NAME"
+      },
+      {
+        "attrId": 150204,
+        "attrName": "SkillRange",
+        "rate": 0.18,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_10.png",
+        "nameKey": "ADDONATTR_150204_NAME"
+      }
+    ],
+    "positioning": [
+      "DPS",
+      "SkillDPS"
+    ],
+    "recommendAttr": [],
+    "ascensionLevels": [
+      20,
+      30,
+      40,
+      50,
+      60,
+      70
+    ],
+    "textKeys": {
+      "nameKey": "UI_CHAR_NAME_1502",
+      "subtitleKey": "UI_CHAR_SUBTITLE_1502",
+      "birthdayKey": "UI_CHAR_BIRTH_1502",
+      "forceKey": "UI_CHAR_FORCE_1502",
+      "campNameKey": "Camp_Name_None"
+    },
+    "portraits": {
+      "gacha": {
+        "publicPath": "/assets/characters/gacha/T_Gacha_AvatarNifu.png"
+      },
+      "head": {
+        "publicPath": "/assets/characters/head/T_Head_Nifu.png"
+      },
+      "icon": {
+        "publicPath": "/assets/characters/icon/T_Icon_Nifu.png"
+      },
+      "bust": {
+        "publicPath": "/assets/characters/bust/T_Bust_Nifu.png"
+      },
+      "phantom": {
+        "publicPath": "/assets/characters/phantom/T_Phantom_Nifu.png"
+      },
+      "charpiece": {
+        "publicPath": "/assets/characters/charpiece/T_CharPiece_Nifu.png"
+      }
+    },
+    "translations": {
+      "DE": {
+        "name": "Frau Nifle",
+        "subtitle": "Fährfrau des Nebelmeers",
+        "birthday": "Die Elysische Kirche",
+        "force": "Unabhängig",
+        "campName": "Keine Zugehörigkeit"
+      },
+      "EN": {
+        "name": "Lady Nifle",
+        "subtitle": "Ferrywoman of the Misty Sea",
+        "birthday": "The Elysian Church",
+        "force": "Unaffiliated",
+        "campName": "No Affiliation"
+      },
+      "ES": {
+        "name": "Dama Nifle",
+        "subtitle": "La Barquera del Mar Nebuloso",
+        "birthday": "Iglesia Elysiana",
+        "force": "No afiliado",
+        "campName": "Sin afiliación"
+      },
+      "FR": {
+        "name": "Dame Nifle",
+        "subtitle": "Passeuse de la Mer du Silence",
+        "birthday": "Église Élyséenne",
+        "force": "Aucune affiliation",
+        "campName": "Aucune affiliation"
+      },
+      "JP": {
+        "name": "ニフル夫人",
+        "subtitle": "ニヴルヘイムの導き手",
+        "birthday": "エリュシオン礼賛会",
+        "force": "なし",
+        "campName": "無所属"
+      },
+      "KR": {
+        "name": "나이플 부인",
+        "subtitle": "안개의 바다의 인도자",
+        "birthday": "엘리시안 교회",
+        "force": "없음",
+        "campName": "무소속"
+      },
+      "TC": {
+        "name": "妮弗爾夫人",
+        "subtitle": "霧海引渡人",
+        "birthday": "艾利西安傳頌會",
+        "force": "無",
+        "campName": "無陣營"
+      }
+    }
+  },
+  {
+    "id": "char-kezhou",
+    "charId": 1503,
+    "internalName": "Kezhou",
+    "element": {
+      "key": "Light",
+      "label": "Lumino"
+    },
+    "weaponTags": [
+      "Almighty"
+    ],
+    "camp": {
+      "key": "Dongguo",
+      "nameKey": "Camp_Name_Dongguo",
+      "iconGamePath": "/Game/UI/Texture/Dynamic/Image/Camp/T_Gacha_CampIcon_Dongguo.T_Gacha_CampIcon_Dongguo"
+    },
+    "rarity": 5,
+    "maxLevel": 80,
+    "colorVar": "Blue",
+    "gender": false,
+    "sortPriority": 5012,
+    "charPieceId": 1001503,
+    "unlockRequiredPiece": 30,
+    "intronLevels": [
+      {
+        "cardLevel": 0,
+        "resourceId": 1001503,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 1,
+        "resourceId": 1001503,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 2,
+        "resourceId": 1001503,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 3,
+        "resourceId": 1001503,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 4,
+        "resourceId": 1001503,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 5,
+        "resourceId": 1001503,
+        "resourceNum": 30
+      }
+    ],
+    "baseStats": {
+      "atk": 25,
+      "atkGrowCurve": "ATKS",
+      "def": 315,
+      "defGrowCurve": "DEFS",
+      "maxHp": 135,
+      "maxHpGrowCurve": "MaxHpS",
+      "maxES": 135,
+      "maxESGrowCurve": "MaxESS",
+      "maxSp": 180
+    },
+    "addonAttrs": [
+      {
+        "attrId": 150301,
+        "attrName": "ATK",
+        "rate": 0.2,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_08.png",
+        "nameKey": "ADDONATTR_150301_NAME"
+      },
+      {
+        "attrId": 150302,
+        "attrName": "ATK",
+        "rate": 0.3,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_08.png",
+        "nameKey": "ADDONATTR_150302_NAME"
+      },
+      {
+        "attrId": 150303,
+        "attrName": "WeaponCRIModifierRate",
+        "value": 0.2,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_03.png",
+        "nameKey": "WeaponCRIModifierRate"
+      },
+      {
+        "attrId": 150304,
+        "attrName": "WeaponCRIModifierRate",
+        "value": 0.3,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_03.png",
+        "nameKey": "WeaponCRIModifierRate"
+      }
+    ],
+    "positioning": [
+      "DPS",
+      "WeaponDPS"
+    ],
+    "recommendAttr": [
+      "ATK_Light",
+      "SkillEfficiency",
+      "SkillSustain"
+    ],
+    "ascensionLevels": [
+      20,
+      30,
+      40,
+      50,
+      60,
+      70
+    ],
+    "textKeys": {
+      "nameKey": "UI_CHAR_NAME_1503",
+      "subtitleKey": "UI_CHAR_SUBTITLE_1503",
+      "birthdayKey": "UI_CHAR_BIRTH_1503",
+      "forceKey": "UI_CHAR_FORCE_1503",
+      "campNameKey": "Camp_Name_Dongguo"
+    },
+    "portraits": {
+      "gacha": {
+        "publicPath": "/assets/characters/gacha/T_Gacha_AvatarKezhou.png"
+      },
+      "head": {
+        "publicPath": "/assets/characters/head/T_Head_Kezhou.png"
+      },
+      "icon": {
+        "publicPath": "/assets/characters/icon/T_Icon_Kezhou.png"
+      },
+      "bust": {
+        "publicPath": "/assets/characters/bust/T_Bust_Kezhou.png"
+      },
+      "phantom": {
+        "publicPath": "/assets/characters/phantom/T_Phantom_Kezhou.png"
+      },
+      "charpiece": {
+        "publicPath": "/assets/characters/charpiece/T_CharPiece_Kezhou.png"
+      }
+    },
+    "translations": {
+      "DE": {
+        "name": "Kezhou",
+        "subtitle": "Schwertdrift",
+        "birthday": "Huaxu",
+        "force": "Außenberge – Wanderer",
+        "campName": "Huaxu"
+      },
+      "EN": {
+        "name": "Kezhou",
+        "subtitle": "Drift of the Sword",
+        "birthday": "Huaxu",
+        "force": "Outer Peaks – Drifter",
+        "campName": "Huaxu"
+      },
+      "ES": {
+        "name": "Kezhou",
+        "subtitle": "Deriva de la Espada",
+        "birthday": "Huaxu",
+        "force": "Picos Exteriores - Errante",
+        "campName": "Huaxu"
+      },
+      "FR": {
+        "name": "Kezhou",
+        "subtitle": "Lame Vagabonde",
+        "birthday": "Huaxu",
+        "force": "Les Pics Extérieurs – Vagabond",
+        "campName": "Huaxu"
+      },
+      "JP": {
+        "name": "カシュウ",
+        "subtitle": "放浪の剣士",
+        "birthday": "華胥",
+        "force": "山外山・流れ者",
+        "campName": "華胥"
+      },
+      "KR": {
+        "name": "각주",
+        "subtitle": "방랑 검객",
+        "birthday": "화서",
+        "force": "산외산·나그네",
+        "campName": "화서"
+      },
+      "TC": {
+        "name": "刻舟",
+        "subtitle": "仗劍遊",
+        "birthday": "華胥",
+        "force": "山外山·飄零人",
+        "campName": "華胥"
+      }
+    }
+  },
+  {
+    "id": "char-suyi",
+    "charId": 1504,
+    "internalName": "Suyi",
+    "element": {
+      "key": "Light",
+      "label": "Lumino"
+    },
+    "weaponTags": [
+      "Polearm",
+      "Shotgun"
+    ],
+    "camp": {
+      "key": "Dongguo",
+      "nameKey": "Camp_Name_Dongguo",
+      "iconGamePath": "/Game/UI/Texture/Dynamic/Image/Camp/T_Gacha_CampIcon_Dongguo.T_Gacha_CampIcon_Dongguo"
+    },
+    "rarity": 5,
+    "maxLevel": 80,
+    "colorVar": "Green",
+    "gender": null,
+    "sortPriority": 5013,
+    "charPieceId": 1001504,
+    "unlockRequiredPiece": 30,
+    "intronLevels": [
+      {
+        "cardLevel": 0,
+        "resourceId": 1001504,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 1,
+        "resourceId": 1001504,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 2,
+        "resourceId": 1001504,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 3,
+        "resourceId": 1001504,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 4,
+        "resourceId": 1001504,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 5,
+        "resourceId": 1001504,
+        "resourceNum": 30
+      }
+    ],
+    "baseStats": {
+      "atk": 28,
+      "atkGrowCurve": "ATKS",
+      "def": 252,
+      "defGrowCurve": "DEFS",
+      "maxHp": 70,
+      "maxHpGrowCurve": "MaxHpS",
+      "maxES": 140,
+      "maxESGrowCurve": "MaxESS",
+      "maxSp": 150
+    },
+    "addonAttrs": [],
+    "positioning": [
+      "DPS",
+      "SkillDPS"
+    ],
+    "recommendAttr": [],
+    "ascensionLevels": [
+      20,
+      30,
+      40,
+      50,
+      60,
+      70
+    ],
+    "textKeys": {
+      "nameKey": "UI_CHAR_NAME_1504",
+      "subtitleKey": "UI_CHAR_SUBTITLE_1504",
+      "birthdayKey": null,
+      "forceKey": null,
+      "campNameKey": "Camp_Name_Dongguo"
+    },
+    "portraits": {
+      "gacha": {
+        "publicPath": null
+      },
+      "head": {
+        "publicPath": null
+      },
+      "icon": {
+        "publicPath": null
+      },
+      "bust": {
+        "publicPath": null
+      },
+      "phantom": {
+        "publicPath": null
+      },
+      "charpiece": {
+        "publicPath": null
+      }
+    },
+    "translations": {
+      "DE": {
+        "name": "Su Yi",
+        "subtitle": "Junger Drachen",
+        "birthday": null,
+        "force": null,
+        "campName": "Huaxu"
+      },
+      "EN": {
+        "name": "Su Yi",
+        "subtitle": "Fledgling Kite",
+        "birthday": null,
+        "force": null,
+        "campName": "Huaxu"
+      },
+      "ES": {
+        "name": "Su Yi",
+        "subtitle": "Joven Milano",
+        "birthday": null,
+        "force": null,
+        "campName": "Huaxu"
+      },
+      "FR": {
+        "name": "Su Yi",
+        "subtitle": "Jeune Milan",
+        "birthday": null,
+        "force": null,
+        "campName": "Huaxu"
+      },
+      "JP": {
+        "name": "スーイー",
+        "subtitle": "鳶の雛",
+        "birthday": null,
+        "force": null,
+        "campName": "華胥"
+      },
+      "KR": {
+        "name": "소을",
+        "subtitle": "솔개",
+        "birthday": null,
+        "force": null,
+        "campName": "화서"
+      },
+      "TC": {
+        "name": "蘇乙",
+        "subtitle": "鳶雛",
+        "birthday": null,
+        "force": null,
+        "campName": "華胥"
+      }
+    }
+  },
+  {
+    "id": "char-nvzhu",
+    "charId": 1601,
+    "internalName": "Nvzhu",
+    "element": {
+      "key": "Light",
+      "label": "Lumino"
+    },
+    "weaponTags": [
+      "Sword",
+      "Machinegun"
+    ],
+    "camp": {
+      "key": "None",
+      "nameKey": "Camp_Name_None",
+      "iconGamePath": "/Game/UI/Texture/Dynamic/Image/Camp/T_Gacha_CampIcon_NoCamp.T_Gacha_CampIcon_NoCamp"
+    },
+    "rarity": 5,
+    "maxLevel": 80,
+    "colorVar": null,
+    "gender": null,
+    "sortPriority": 5014,
+    "charPieceId": 1001601,
+    "unlockRequiredPiece": 30,
+    "intronLevels": [
+      {
+        "cardLevel": 0,
+        "resourceId": 1001601,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 1,
+        "resourceId": 1001601,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 2,
+        "resourceId": 1001601,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 3,
+        "resourceId": 1001601,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 4,
+        "resourceId": 1001601,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 5,
+        "resourceId": 1001601,
+        "resourceNum": 30
+      }
+    ],
+    "baseStats": {
+      "atk": 22,
+      "atkGrowCurve": "ATKA",
+      "def": 300,
+      "defGrowCurve": "DEFA",
+      "maxHp": 120,
+      "maxHpGrowCurve": "MaxHpA",
+      "maxES": 120,
+      "maxESGrowCurve": "MaxESA",
+      "maxSp": 100
+    },
+    "addonAttrs": [
+      {
+        "attrId": 160101,
+        "attrName": "SkillSustain",
+        "rate": 0.06,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_11.png",
+        "nameKey": "ADDONATTR_160101_NAME"
+      },
+      {
+        "attrId": 160102,
+        "attrName": "SkillSustain",
+        "rate": 0.09,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_11.png",
+        "nameKey": "ADDONATTR_160102_NAME"
+      },
+      {
+        "attrId": 160103,
+        "attrName": "SkillRange",
+        "rate": 0.12,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_10.png",
+        "nameKey": "ADDONATTR_160103_NAME"
+      },
+      {
+        "attrId": 160104,
+        "attrName": "SkillRange",
+        "rate": 0.18,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_10.png",
+        "nameKey": "ADDONATTR_160104_NAME"
+      }
+    ],
+    "positioning": [
+      "Support"
+    ],
+    "recommendAttr": [],
+    "ascensionLevels": [
+      20,
+      30,
+      40,
+      50,
+      60,
+      70
+    ],
+    "textKeys": {
+      "nameKey": "UI_CHAR_NAME_1601",
+      "subtitleKey": "UI_CHAR_SUBTITLE_1601",
+      "birthdayKey": null,
+      "forceKey": null,
+      "campNameKey": "Camp_Name_None"
+    },
+    "portraits": {
+      "gacha": {
+        "publicPath": "/assets/characters/gacha/T_Gacha_AvatarNvzhu.png"
+      },
+      "head": {
+        "publicPath": "/assets/characters/head/T_Head_Nvzhu.png"
+      },
+      "icon": {
+        "publicPath": "/assets/characters/icon/T_Icon_Nvzhu.png"
+      },
+      "bust": {
+        "publicPath": null
+      },
+      "phantom": {
+        "publicPath": "/assets/characters/phantom/T_Phantom_Nvzhu.png"
+      },
+      "charpiece": {
+        "publicPath": null
+      }
+    },
+    "translations": {
+      "DE": {
+        "name": "Protagonistin",
+        "subtitle": "Vita / Mors",
+        "birthday": null,
+        "force": null,
+        "campName": "Keine Zugehörigkeit"
+      },
+      "EN": {
+        "name": "Female Protagonist",
+        "subtitle": "Vita / Mors",
+        "birthday": null,
+        "force": null,
+        "campName": "No Affiliation"
+      },
+      "ES": {
+        "name": "Protagonista Femenina",
+        "subtitle": "Vita / Mors",
+        "birthday": null,
+        "force": null,
+        "campName": "Sin afiliación"
+      },
+      "FR": {
+        "name": "Protagoniste Feminine",
+        "subtitle": "Vita / Mors",
+        "birthday": null,
+        "force": null,
+        "campName": "Aucune affiliation"
+      },
+      "JP": {
+        "name": "女性主人公",
+        "subtitle": "Vita / Mors",
+        "birthday": null,
+        "force": null,
+        "campName": "無所属"
+      },
+      "KR": {
+        "name": "여성 주인공",
+        "subtitle": "Vita / Mors",
+        "birthday": null,
+        "force": null,
+        "campName": "무소속"
+      },
+      "TC": {
+        "name": "女主角",
+        "subtitle": "Vita / Mors",
+        "birthday": null,
+        "force": null,
+        "campName": "無陣營"
+      }
+    }
+  },
+  {
+    "id": "char-nanzhu",
+    "charId": 160101,
+    "internalName": "Nanzhu",
+    "element": {
+      "key": "Light",
+      "label": "Lumino"
+    },
+    "weaponTags": [
+      "Sword",
+      "Machinegun"
+    ],
+    "camp": {
+      "key": "None",
+      "nameKey": "Camp_Name_None",
+      "iconGamePath": "/Game/UI/Texture/Dynamic/Image/Camp/T_Gacha_CampIcon_NoCamp.T_Gacha_CampIcon_NoCamp"
+    },
+    "rarity": 5,
+    "maxLevel": 80,
+    "colorVar": null,
+    "gender": null,
+    "sortPriority": 5015,
+    "charPieceId": 1001601,
+    "unlockRequiredPiece": 30,
+    "intronLevels": [
+      {
+        "cardLevel": 0,
+        "resourceId": 1001601,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 1,
+        "resourceId": 1001601,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 2,
+        "resourceId": 1001601,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 3,
+        "resourceId": 1001601,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 4,
+        "resourceId": 1001601,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 5,
+        "resourceId": 1001601,
+        "resourceNum": 30
+      }
+    ],
+    "baseStats": {
+      "atk": 22,
+      "atkGrowCurve": "ATKA",
+      "def": 300,
+      "defGrowCurve": "DEFA",
+      "maxHp": 120,
+      "maxHpGrowCurve": "MaxHpA",
+      "maxES": 120,
+      "maxESGrowCurve": "MaxESA",
+      "maxSp": 100
+    },
+    "addonAttrs": [
+      {
+        "attrId": 160101,
+        "attrName": "SkillSustain",
+        "rate": 0.06,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_11.png",
+        "nameKey": "ADDONATTR_160101_NAME"
+      },
+      {
+        "attrId": 160102,
+        "attrName": "SkillSustain",
+        "rate": 0.09,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_11.png",
+        "nameKey": "ADDONATTR_160102_NAME"
+      },
+      {
+        "attrId": 160103,
+        "attrName": "SkillRange",
+        "rate": 0.12,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_10.png",
+        "nameKey": "ADDONATTR_160103_NAME"
+      },
+      {
+        "attrId": 160104,
+        "attrName": "SkillRange",
+        "rate": 0.18,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_10.png",
+        "nameKey": "ADDONATTR_160104_NAME"
+      }
+    ],
+    "positioning": [
+      "Support"
+    ],
+    "recommendAttr": [],
+    "ascensionLevels": [
+      20,
+      30,
+      40,
+      50,
+      60,
+      70
+    ],
+    "textKeys": {
+      "nameKey": "UI_CHAR_NAME_160101",
+      "subtitleKey": "UI_CHAR_SUBTITLE_160101",
+      "birthdayKey": null,
+      "forceKey": null,
+      "campNameKey": "Camp_Name_None"
+    },
+    "portraits": {
+      "gacha": {
+        "publicPath": "/assets/characters/gacha/T_Gacha_AvatarNanzhu.png"
+      },
+      "head": {
+        "publicPath": "/assets/characters/head/T_Head_Nanzhu.png"
+      },
+      "icon": {
+        "publicPath": "/assets/characters/icon/T_Icon_Nanzhu.png"
+      },
+      "bust": {
+        "publicPath": null
+      },
+      "phantom": {
+        "publicPath": "/assets/characters/phantom/T_Phantom_Nanzhu.png"
+      },
+      "charpiece": {
+        "publicPath": null
+      }
+    },
+    "translations": {
+      "DE": {
+        "name": "Protagonist",
+        "subtitle": "Vita / Mors",
+        "birthday": null,
+        "force": null,
+        "campName": "Keine Zugehörigkeit"
+      },
+      "EN": {
+        "name": "Male Protagonist",
+        "subtitle": "Vita / Mors",
+        "birthday": null,
+        "force": null,
+        "campName": "No Affiliation"
+      },
+      "ES": {
+        "name": "Protagonista Masculino",
+        "subtitle": "Vita / Mors",
+        "birthday": null,
+        "force": null,
+        "campName": "Sin afiliación"
+      },
+      "FR": {
+        "name": "Protagoniste Masculin",
+        "subtitle": "Vita / Mors",
+        "birthday": null,
+        "force": null,
+        "campName": "Aucune affiliation"
+      },
+      "JP": {
+        "name": "男性主人公",
+        "subtitle": "Vita / Mors",
+        "birthday": null,
+        "force": null,
+        "campName": "無所属"
+      },
+      "KR": {
+        "name": "남성 주인공",
+        "subtitle": "Vita / Mors",
+        "birthday": null,
+        "force": null,
+        "campName": "무소속"
+      },
+      "TC": {
+        "name": "男主角",
+        "subtitle": "Vita / Mors",
+        "birthday": null,
+        "force": null,
+        "campName": "無陣營"
+      }
+    }
+  }
+]

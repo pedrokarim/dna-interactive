@@ -266,6 +266,62 @@ export const resetAllItemsFavoritesAtom = atom(null, (_get, set) => {
   set(itemsFavoritesAtom, new Set());
 });
 
+// Persistance des filtres de la section Characters
+export type PersistedCharactersFilters = {
+  search: string;
+  elementFilter: string;
+  weaponFilter: string;
+  campFilter: string;
+  selectedLanguages: string[];
+  sortMode: string;
+  pageSize: number;
+  currentPage: number;
+};
+
+export const charactersFiltersStorageAtom =
+  atomWithStorage<PersistedCharactersFilters>("characters-filters", {
+    search: "",
+    elementFilter: "all",
+    weaponFilter: "all",
+    campFilter: "all",
+    selectedLanguages: [],
+    sortMode: "default",
+    pageSize: 24,
+    currentPage: 1,
+  });
+
+// Atome de stockage pour les favoris de personnages
+const charactersFavoritesStorageAtom = atomWithStorage<string[]>(
+  "characters-favorites",
+  [],
+);
+
+export const charactersFavoritesAtom = atom(
+  (get) => {
+    const stored = get(charactersFavoritesStorageAtom);
+    return new Set(Array.isArray(stored) ? stored : []);
+  },
+  (_get, set, newValue: Set<string>) => {
+    set(charactersFavoritesStorageAtom, Array.from(newValue));
+  },
+);
+
+export const toggleCharacterFavoriteAtom = atom(
+  null,
+  (get, set, characterKey: string) => {
+    const currentFavorites = get(charactersFavoritesAtom);
+    const nextFavorites = new Set(currentFavorites);
+
+    if (nextFavorites.has(characterKey)) {
+      nextFavorites.delete(characterKey);
+    } else {
+      nextFavorites.add(characterKey);
+    }
+
+    set(charactersFavoritesAtom, nextFavorites);
+  },
+);
+
 // Atome de stockage pour les codes utilisés
 const usedCodesStorageAtom = atomWithStorage<string[]>("used-codes", []);
 
