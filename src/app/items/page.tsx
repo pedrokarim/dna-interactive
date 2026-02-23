@@ -7,6 +7,7 @@ export default function ItemsCategoriesPage() {
   const catalog = getItemCatalog();
   const draftRecipes = getDraftRecipeSummaries();
   const draftLanguages = getDraftAvailableLanguages(draftRecipes);
+  const categoryNames = catalog.categories.map((category) => category.displayName).join(", ");
 
   return (
     <div className="space-y-8">
@@ -19,7 +20,7 @@ export default function ItemsCategoriesPage() {
         </h1>
         <p className="mt-3 max-w-2xl text-slate-300">
           Cette section est concue pour evoluer avec de nouvelles familles
-          d&apos;items. Categories actuelles: Demon Wedge, ressources et armes.
+          d&apos;items. Categories actuelles: {categoryNames}.
         </p>
       </section>
 

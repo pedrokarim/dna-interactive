@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "extract:mods:site": "bun run research_data/extract-mods-localization.ts --verbose",
-    "extract:items:site": "bun run research_data/extract-items-localization.ts"
+    "extract:items:site": "bun run research_data/extract-items-localization.ts",
+    "extract:fishing:site": "bun run research_data/extract-fishing-items.ts"
   },
   "dependencies": {
     "@types/leaflet": "^1.9.21",

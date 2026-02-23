@@ -1,4 +1,5 @@
 import catalogJson from "@/data/items/catalog.json";
+import fishingItemsJson from "@/data/items/fishing.items.json";
 import modsItemsJson from "@/data/items/mods.items.json";
 import resourcesItemsJson from "@/data/items/resources.items.json";
 import weaponsItemsJson from "@/data/items/weapons.items.json";
@@ -20,6 +21,7 @@ const LANGUAGE_LABELS: Record<string, string> = {
 };
 
 const catalog = catalogJson as ItemCatalog;
+const rawFishingItems = fishingItemsJson as unknown as ItemRecord[];
 const rawModsItems = modsItemsJson as unknown as ItemRecord[];
 const rawResourcesItems = resourcesItemsJson as unknown as ItemRecord[];
 const rawWeaponsItems = weaponsItemsJson as unknown as ItemRecord[];
@@ -69,6 +71,7 @@ function sanitizeItemRecord(item: ItemRecord): ItemRecord {
 }
 
 const DATASETS_BY_CATEGORY_ID: Record<string, ItemRecord[]> = {
+  fishing: rawFishingItems.map(sanitizeItemRecord),
   mods: rawModsItems.map(sanitizeItemRecord),
   resources: rawResourcesItems.map(sanitizeItemRecord),
   weapons: rawWeaponsItems.map(sanitizeItemRecord),

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-22T22:04:00.000Z",
+  "generatedAt": "2026-02-23T17:34:25.054Z",
   "categories": [
     {
       "id": "mods",
@@ -52,6 +52,32 @@
       "datasetFile": "resources.items.json",
       "iconDirectory": "/assets/items/resources",
       "sampleIconPath": "/assets/items/resources/T_Coin_Main_Lv1.png"
+    },
+    {
+      "id": "fishing",
+      "slug": "fishing",
+      "title": "Peche / Fishing",
+      "technicalName": "FISHING",
+      "displayName": "Peche",
+      "description": "Poissons, cannes, leurres et monnaie lies a la peche.",
+      "itemCount": 111,
+      "availableLanguages": [
+        "DE",
+        "EN",
+        "ES",
+        "FR",
+        "JP",
+        "KR",
+        "TC"
+      ],
+      "defaultGridLanguages": [
+        "FR",
+        "EN"
+      ],
+      "defaultDetailLanguage": "FR",
+      "datasetFile": "fishing.items.json",
+      "iconDirectory": "/assets/items/fishing",
+      "sampleIconPath": "/assets/items/fishing/T_Coin_Other_Fishing.png"
     },
     {
       "id": "weapons",
