@@ -1,6 +1,6 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
-import { Map, Gift, Info, HelpCircle, Mail, Boxes } from "lucide-react";
+import { Map, Gift, Info, HelpCircle, Mail, Boxes, ArrowRight } from "lucide-react";
 import {
   SITE_CONFIG,
   ASSETS_PATHS,
@@ -9,7 +9,6 @@ import {
   FOOTER_LINKS,
   GAME_INFO,
   CONTACT_INFO,
-  CREATOR_INFO,
   LEGAL_INFO,
 } from "@/lib/constants";
 import { generatePageMetadata, pageMetadata } from "@/lib/metadata";
@@ -18,7 +17,7 @@ import HeroSection from "@/components/HeroSection";
 import CommunityCards from "@/components/CommunityCards";
 
 export async function generateMetadata(
-  {}: {},
+  _props: Record<string, never>,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   return generatePageMetadata(pageMetadata.home, parent);
@@ -75,7 +74,7 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Update Banner v1.1 - Composant client */}
+      {/* Update Banners - composant client avec persistance */}
       <UpdateBanner />
 
       {/* Hero Section - Composant client */}
@@ -111,6 +110,76 @@ export default function Home() {
 
             {/* Composant client pour les cartes avec animations */}
             <CommunityCards />
+          </div>
+        </div>
+      </section>
+
+      {/* Items Spotlight Section */}
+      <section className="py-20 bg-slate-900/35">
+        <div className="container mx-auto px-6">
+          <div className="mx-auto max-w-6xl">
+            <article className="group relative overflow-hidden rounded-3xl border border-indigo-400/35 bg-slate-950/70 shadow-[0_32px_80px_rgba(15,23,42,0.55)]">
+              <img
+                src="/assets/worldview/worldview-8.webp"
+                alt="Apercu visuel de la section Items"
+                className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-linear-to-r from-slate-950/95 via-slate-950/78 to-slate-950/35" />
+              <div className="absolute inset-0 bg-linear-to-t from-indigo-950/70 via-transparent to-black/20" />
+
+              <div className="pointer-events-none absolute inset-0 hidden md:block">
+                <div className="absolute left-[56%] top-[18%] h-14 w-14 -rotate-12 rounded-xl border border-cyan-400/35 bg-slate-950/70 p-2 shadow-[0_8px_24px_rgba(34,211,238,0.22)]">
+                  <img src="/assets/items/mods/T_Mod_Phoenix01.png" alt="" className="h-full w-full object-contain" />
+                </div>
+                <div className="absolute left-[63%] top-[42%] h-14 w-14 rotate-9 rounded-xl border border-indigo-400/35 bg-slate-950/70 p-2 shadow-[0_8px_24px_rgba(99,102,241,0.22)]">
+                  <img src="/assets/items/mods/T_Mod_Typhon01_Blue.png" alt="" className="h-full w-full object-contain" />
+                </div>
+                <div className="absolute left-[73%] top-[22%] h-12 w-12 -rotate-6 rounded-lg border border-rose-400/30 bg-slate-950/70 p-2">
+                  <img src="/assets/items/drafts/T_Draft_Mod_Griffin01_Red.png" alt="" className="h-full w-full object-contain" />
+                </div>
+                <div className="absolute left-[79%] top-[48%] h-12 w-12 rotate-12 rounded-lg border border-amber-300/30 bg-slate-950/70 p-2">
+                  <img src="/assets/items/drafts/T_Draft_Mod_Typhon01_Orange.png" alt="" className="h-full w-full object-contain" />
+                </div>
+                <div className="absolute left-[69%] top-[64%] h-11 w-11 -rotate-3 rounded-lg border border-violet-400/30 bg-slate-950/70 p-2">
+                  <img src="/assets/items/weapon-types/T_Armory_WeaponType_Katana.png" alt="" className="h-full w-full object-contain" />
+                </div>
+                <div className="absolute left-[83%] top-[70%] h-12 w-12 rotate-6 rounded-lg border border-sky-300/30 bg-slate-950/70 p-2">
+                  <img src="/assets/items/weapons/T_Head_Katana_Yuli.png" alt="" className="h-full w-full object-contain" />
+                </div>
+                <div className="absolute left-[61%] top-[70%] h-10 w-10 -rotate-12 rounded-md border border-orange-300/30 bg-slate-950/70 p-1.5">
+                  <img src="/assets/items/mods/T_Armory_Fire.png" alt="" className="h-full w-full object-contain" />
+                </div>
+                <div className="absolute left-[76%] top-[10%] h-10 w-10 rotate-12 rounded-md border border-cyan-300/30 bg-slate-950/70 p-1.5">
+                  <img src="/assets/items/mods/T_Armory_Water.png" alt="" className="h-full w-full object-contain" />
+                </div>
+              </div>
+
+              <div className="relative z-10 px-8 py-10 sm:px-12 sm:py-14">
+                <span className="inline-flex items-center rounded-full border border-indigo-300/35 bg-indigo-500/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-indigo-100">
+                  Nouveau
+                </span>
+                <h2 className="mt-4 max-w-3xl text-3xl font-bold text-white sm:text-4xl">
+                  La bibliothèque Items est en ligne
+                </h2>
+                <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-200">
+                  Accedez rapidement aux Demon Wedges, armes, ressources et plans
+                  de fabrication avec des fiches detaillees, filtres et recherche
+                  multilingue.
+                </p>
+                <div className="mt-7 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
+                  <Link
+                    href="/items"
+                    className="inline-flex items-center gap-2 rounded-xl border border-indigo-200/40 bg-indigo-500/20 px-5 py-3 text-sm font-semibold text-white transition-all duration-200 hover:border-indigo-100/70 hover:bg-indigo-500/30"
+                  >
+                    Explorer les items
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                  <p className="text-sm text-slate-300/90">
+                    Demon Wedge • Armes • Ressources • Drafts
+                  </p>
+                </div>
+              </div>
+            </article>
           </div>
         </div>
       </section>
@@ -182,7 +251,7 @@ export default function Home() {
                   Filtres Avancés
                 </h3>
                 <p className="text-gray-300">
-                  Filtres avancés par catégorie d'éléments.
+                  Filtres avancés par catégorie d&apos;éléments.
                 </p>
               </div>
 
@@ -218,7 +287,7 @@ export default function Home() {
                   Bibliotheque Items
                 </h3>
                 <p className="text-gray-300">
-                  Base MOD / Demon Wedge avec recherche, filtres, pagination
+                  Base Demon Wedge avec recherche, filtres, pagination
                   et comparaison multilingue.
                 </p>
               </div>
@@ -313,7 +382,7 @@ export default function Home() {
               <span className="font-semibold text-gray-400">Disclaimer:</span>{" "}
               Cette carte intègre des données de localisation de base et des
               matériaux de référence provenant de contributions de la communauté
-              CN. Ce site ne monétise à aucun cas. C'est un outil gratuit
+              CN. Ce site ne monétise à aucun cas. C&apos;est un outil gratuit
               disponible aux joueurs pour faciliter leur exploration.{" "}
               <span className="block mt-1">
                 This map incorporates base location data and reference materials

@@ -577,13 +577,13 @@ export default function ItemsGridClient({
                 updateQueryFilters({ q: value, page: 1 });
               }}
               className="w-full bg-transparent text-sm text-slate-100 outline-none placeholder:text-slate-500"
-               placeholder={
-                 isModsCategory
-                   ? "Rechercher par id, nom MOD, Demon Wedge..."
-                   : "Rechercher par id, nom, description..."
-               }
-             />
-           </label>
+              placeholder={
+                isModsCategory
+                  ? "Rechercher par id, nom Demon Wedge..."
+                  : "Rechercher par id, nom, description..."
+              }
+            />
+          </label>
 
           <div className="rounded-xl border border-slate-700/70 bg-slate-950/60 p-3">
             <div className="mb-2 flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-slate-400">

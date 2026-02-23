@@ -4,10 +4,10 @@
     {
       "id": "mods",
       "slug": "mods",
-      "title": "MOD / Demon Wedge",
+      "title": "Demon Wedge",
       "technicalName": "MOD",
       "displayName": "Demon Wedge",
-      "description": "Liste des MOD (Demon Wedges) avec noms multilingues, descriptions et informations d'archives.",
+      "description": "Liste des Demon Wedges avec noms multilingues, descriptions et informations d'archives.",
       "itemCount": 714,
       "availableLanguages": [
         "DE",
@@ -56,7 +56,7 @@
     {
       "id": "weapons",
       "slug": "weapons",
-      "title": "Armes / Arm",
+      "title": "Armes / Weapons",
       "technicalName": "WEAPON",
       "displayName": "Armes",
       "description": "Liste des armes avec noms multilingues, type melee/range, sous-type et icones.",

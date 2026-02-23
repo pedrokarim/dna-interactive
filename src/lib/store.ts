@@ -206,6 +206,32 @@ export const itemsFiltersStorageAtom = atomWithStorage<PersistedItemsFilters>(
   {}
 );
 
+// Persistance des bandeaux d'annonce de la page d'accueil
+export type PersistedHomeAnnouncements = Record<string, boolean>;
+
+export const dismissedHomeAnnouncementsAtom =
+  atomWithStorage<PersistedHomeAnnouncements>("home-dismissed-announcements", {});
+
+export const dismissHomeAnnouncementAtom = atom(
+  null,
+  (get, set, announcementId: string) => {
+    const normalizedAnnouncementId = announcementId.trim();
+    if (!normalizedAnnouncementId) {
+      return;
+    }
+
+    const currentDismissedAnnouncements = get(dismissedHomeAnnouncementsAtom);
+    if (currentDismissedAnnouncements[normalizedAnnouncementId]) {
+      return;
+    }
+
+    set(dismissedHomeAnnouncementsAtom, {
+      ...currentDismissedAnnouncements,
+      [normalizedAnnouncementId]: true,
+    });
+  }
+);
+
 // Atome de stockage pour les favoris d'items
 const itemsFavoritesStorageAtom = atomWithStorage<string[]>("items-favorites", []);
 

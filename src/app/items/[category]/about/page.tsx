@@ -92,14 +92,15 @@ function ModsAboutContent({ categorySlug }: { categorySlug: string }) {
             <ArrowLeft className="h-4 w-4" />
             Retour a la liste
           </Link>
-          <GuideBadge icon={<BookOpenText className="h-3.5 w-3.5 text-cyan-300" />} label="Guide DEMON WEDGE / MOD" />
+          <GuideBadge icon={<BookOpenText className="h-3.5 w-3.5 text-cyan-300" />} label="Guide Demon Wedge" />
         </div>
 
         <h1 className="mt-5 text-4xl font-semibold text-white">Comment fonctionnent les Demon Wedges</h1>
         <p className="mt-3 max-w-3xl text-slate-300">
-          Dans le jeu, les Demon Wedges sont nommes <span className="text-cyan-200">MOD</span> dans les
-          donnees. Cette page explique les champs importants utilises sur le site: niveau, affinite, tolerance,
-          effets dynamiques et correspondance des assets.
+          Dans le jeu, les Demon Wedges peuvent aussi apparaitre sous le nom technique{" "}
+          <span className="text-cyan-200">MOD</span> dans certaines donnees. Cette page explique les champs
+          importants utilises sur le site: niveau, affinite, tolerance, effets dynamiques et correspondance des
+          assets.
         </p>
 
         <div className="mt-5 flex flex-wrap gap-2">
@@ -117,12 +118,12 @@ function ModsAboutContent({ categorySlug }: { categorySlug: string }) {
             Vitrine visuelle Demon Wedge
           </h2>
           <p className="mt-3 text-sm text-slate-300">
-            Exemples d&apos;icones MOD utilises dans la grille et la page detail. L&apos;objectif est de reconnaitre
+            Exemples d&apos;icones Demon Wedge utilises dans la grille et la page detail. L&apos;objectif est de reconnaitre
             rapidement un Demon Wedge au premier coup d&apos;oeil.
           </p>
           <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
             {DEMON_WEDGE_EXAMPLES.map((entry) => (
-              <GuideIconCard key={entry.src} src={entry.src} label={entry.label} sublabel="Exemple d&apos;icone MOD" />
+              <GuideIconCard key={entry.src} src={entry.src} label={entry.label} sublabel="Exemple d&apos;icone Demon Wedge" />
             ))}
           </div>
         </article>
@@ -132,12 +133,12 @@ function ModsAboutContent({ categorySlug }: { categorySlug: string }) {
           <div className="mt-4 space-y-3 text-sm text-slate-300">
             <div className="rounded-lg border border-slate-700/70 bg-slate-950/60 p-3">
               <p className="font-medium text-slate-100">1) Icône principale</p>
-              <p className="mt-1 text-xs text-slate-400">Permet d&apos;identifier le MOD dans la grille.</p>
+              <p className="mt-1 text-xs text-slate-400">Permet d&apos;identifier le Demon Wedge dans la grille.</p>
             </div>
             <div className="rounded-lg border border-slate-700/70 bg-slate-950/60 p-3">
               <p className="font-medium text-slate-100">2) Affinite / polarite</p>
               <p className="mt-1 text-xs text-slate-400">
-                Le symbole a cote du nom indique le type d&apos;affinite du MOD.
+                Le symbole a cote du nom indique le type d&apos;affinite du Demon Wedge.
               </p>
             </div>
             <div className="rounded-lg border border-slate-700/70 bg-slate-950/60 p-3">
@@ -160,14 +161,15 @@ function ModsAboutContent({ categorySlug }: { categorySlug: string }) {
         <article className="rounded-2xl border border-slate-700/70 bg-slate-900/55 p-5 lg:col-span-2">
           <h2 className="flex items-center gap-2 text-xl font-semibold text-white">
             <BadgeInfo className="h-5 w-5 text-cyan-300" />
-            1) Structure d&apos;un MOD
+            1) Structure d&apos;un Demon Wedge
           </h2>
           <ul className="mt-4 space-y-3 text-sm text-slate-300">
             <li>
-              Chaque MOD possede un nom, une description, une rarete, une affinite et un niveau max.
+              Chaque Demon Wedge possede un nom, une description, une rarete, une affinite et un niveau max.
             </li>
             <li>
-              Le nom affiche dans le jeu est <code>Demon Wedge</code>, mais le nom technique est <code>MOD</code>.
+              Le nom affiche dans le jeu est <code>Demon Wedge</code>. <code>MOD</code> reste surtout un terme
+              technique utilise dans certaines donnees internes.
             </li>
             <li>
               Les textes (nom, description, effets passifs) changent selon la langue selectionnee.
@@ -246,8 +248,8 @@ function ModsAboutContent({ categorySlug }: { categorySlug: string }) {
             2) Niveaux et valeurs dynamiques
           </h2>
           <p className="mt-3 text-sm leading-relaxed text-slate-300">
-            Les valeurs <code>#1</code>, <code>#2</code>, etc. changent selon le niveau du MOD. Le slider dans la
-            page detail applique ces valeurs depuis la table de croissance et affiche l&apos;effet au niveau choisi.
+            Les valeurs <code>#1</code>, <code>#2</code>, etc. changent selon le niveau du Demon Wedge. Le slider dans
+            la page detail applique ces valeurs depuis la table de croissance et affiche l&apos;effet au niveau choisi.
           </p>
           <div className="mt-4 rounded-xl border border-indigo-500/25 bg-indigo-500/10 p-4 text-sm text-indigo-100">
             Niveau par defaut = <code>0</code> (piece non montee)<br />
@@ -294,7 +296,7 @@ function ModsAboutContent({ categorySlug }: { categorySlug: string }) {
           </h2>
           <ul className="mt-3 space-y-2 text-sm text-slate-300">
             <li>
-              Informations generales du MOD (nom, rarete, fonction, description)
+              Informations generales du Demon Wedge (nom, rarete, fonction, description)
             </li>
             <li>
               Evolution par niveau via le slider
@@ -315,7 +317,7 @@ function ModsAboutContent({ categorySlug }: { categorySlug: string }) {
       <section className="rounded-2xl border border-indigo-500/25 bg-linear-to-r from-indigo-500/10 via-slate-900/40 to-fuchsia-500/10 p-6">
         <h2 className="flex items-center gap-2 text-xl font-semibold text-white">
           <Zap className="h-5 w-5 text-indigo-300" />
-          Lecture rapide d&apos;un MOD dans le site
+          Lecture rapide d&apos;un Demon Wedge dans le site
         </h2>
         <p className="mt-3 text-sm text-slate-200">
           Le parcours visuel est toujours le meme: identifier l&apos;icone, verifier l&apos;affinite, puis ajuster le
@@ -327,7 +329,7 @@ function ModsAboutContent({ categorySlug }: { categorySlug: string }) {
             <p className="mt-1 text-sm font-medium text-slate-100">Identifier le Demon Wedge</p>
             <div className="mt-3 flex items-center gap-3">
               <div className="flex h-12 w-12 items-center justify-center rounded-lg border border-slate-700/70 bg-slate-900/70 p-2">
-                <img src="/assets/items/mods/T_Mod_Phoenix01.png" alt="Exemple MOD Phoenix" className="max-h-full max-w-full object-contain" />
+                <img src="/assets/items/mods/T_Mod_Phoenix01.png" alt="Exemple Demon Wedge Phoenix" className="max-h-full max-w-full object-contain" />
               </div>
               <div className="text-xs text-slate-400">
                 Nom + icone
@@ -377,7 +379,7 @@ function ModsAboutContent({ categorySlug }: { categorySlug: string }) {
             href={`/items/${categorySlug}`}
             className="inline-flex items-center gap-2 rounded-lg border border-cyan-400/35 bg-cyan-500/10 px-4 py-2 text-sm font-medium text-cyan-100 transition-colors hover:bg-cyan-500/20"
           >
-            Ouvrir la grille MOD
+            Ouvrir la grille Demon Wedge
           </Link>
           <Link
             href="/items/favoris"

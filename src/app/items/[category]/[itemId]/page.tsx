@@ -66,7 +66,7 @@ export async function generateMetadata(
     category.defaultDetailLanguage,
     category.availableLanguages,
   );
-  const modName = localized.modName ?? `MOD ${item.modId}`;
+  const modName = localized.modName ?? `Demon Wedge #${item.modId}`;
 
   return generatePageMetadata(
     {

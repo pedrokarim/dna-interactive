@@ -156,7 +156,7 @@ export const pageMetadata = {
   items: {
     title: `Items & Demon Wedges - ${SITE_CONFIG.name}`,
     description:
-      "Base de donnees des items Duet Night Abyss: MOD / Demon Wedge, armes, ressources et plans de forge avec filtres et fiches detaillees.",
+      "Base de donnees des items Duet Night Abyss: Demon Wedges, armes, ressources et plans de forge avec filtres et fiches detaillees.",
     keywords: [
       GAME_INFO.name,
       "items",

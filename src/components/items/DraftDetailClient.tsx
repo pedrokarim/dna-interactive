@@ -51,7 +51,7 @@ function metadataNumber(item: DraftItemReference, key: string): number | null {
 
 function sourceCategoryLabel(sourceCategory: DraftItemReference["sourceCategory"]): string {
   if (sourceCategory === "mods") {
-    return "MOD";
+    return "Demon Wedge";
   }
   if (sourceCategory === "resources") {
     return "Ressource";

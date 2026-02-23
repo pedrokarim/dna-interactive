@@ -9,6 +9,24 @@ export interface ChangelogEntry {
 
 export const changelogData: ChangelogEntry[] = [
   {
+    date: "2026-02-22",
+    version: "1.3.0",
+    type: "feature",
+    title: "Items: Plans de forge (Drafts) et Armes",
+    description:
+      "Ajout d'une section complète pour explorer les plans de forge, leurs recettes et les armes associées, avec une navigation plus claire entre catégories.",
+    items: [
+      "🧩 Nouvelle catégorie Drafts avec grille filtrable, recherche et pagination",
+      "🌳 Nouvelle page détail Draft avec visualisation de recette (produit + ingrédients)",
+      "🛠️ Extraction et intégration des données de recettes et des données armes",
+      "🖼️ Ajout des assets d'icônes (plans, armes, types d'armes, accessoires) côté site",
+      "🔗 Liens entre Drafts et fiches armes pour faciliter la navigation",
+      "✏️ Correction du libellé de catégorie: Armes / Arm -> Armes / Weapons",
+      "📣 Bandeaux de la page d'accueil (map + items) avec fermeture persistante",
+      "🎯 Nouvelle carte call-to-action sur l'accueil pour accéder à la page Items",
+    ],
+  },
+  {
     date: "2026-01-10",
     version: "1.2.1",
     type: "feature",

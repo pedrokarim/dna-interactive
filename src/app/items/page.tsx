@@ -19,7 +19,7 @@ export default function ItemsCategoriesPage() {
         </h1>
         <p className="mt-3 max-w-2xl text-slate-300">
           Cette section est concue pour evoluer avec de nouvelles familles
-          d&apos;items. Categories actuelles: MOD / Demon Wedge, ressources et armes.
+          d&apos;items. Categories actuelles: Demon Wedge, ressources et armes.
         </p>
       </section>
 
@@ -33,7 +33,7 @@ export default function ItemsCategoriesPage() {
               <div className="flex items-start justify-between gap-3">
                 <div className="space-y-2">
                   <p className="text-xs uppercase tracking-[0.22em] text-indigo-400/80">
-                    {category.technicalName}
+                    {category.id === "mods" ? "DEMON WEDGE" : category.technicalName}
                   </p>
                   <h2 className="text-2xl font-semibold text-white">{category.title}</h2>
                   <p className="text-sm text-slate-300">{category.description}</p>
