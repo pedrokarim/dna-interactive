@@ -10,7 +10,8 @@
     "extract:mods:site": "bun run research_data/extract-mods-localization.ts --verbose",
     "extract:items:site": "bun run research_data/extract-items-localization.ts",
     "extract:fishing:site": "bun run research_data/extract-fishing-items.ts",
-    "extract:characters:site": "bun run research_data/extract-characters.ts"
+    "extract:characters:site": "bun run research_data/extract-characters.ts",
+    "extract:genimons:site": "bun run research_data/extract-genimons.ts"
   },
   "dependencies": {
     "@types/leaflet": "^1.9.21",

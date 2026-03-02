@@ -171,10 +171,43 @@ function resolveElementalAffinity(
   };
 }
 
+type ParsedBattlePetAttribute = {
+  attrName: string;
+  rate: string | null;
+  value: string | null;
+};
+
+function parseBattlePetAttributes(value: ItemRawField | undefined): ParsedBattlePetAttribute[] {
+  if (typeof value !== "string") {
+    return [];
+  }
+
+  const normalized = value.replaceAll("\r", "");
+  const objectRegex = /\{[^{}]*AttrName\s*=\s*"([^"]+)"[^{}]*\}/gm;
+  const attributes: ParsedBattlePetAttribute[] = [];
+  let match: RegExpExecArray | null;
+
+  while ((match = objectRegex.exec(normalized)) !== null) {
+    const chunk = match[0];
+    const attrName = match[1];
+    const rateMatch = chunk.match(/\bRate\s*=\s*(?:"([^"]+)"|(-?\d+(?:\.\d+)?))/);
+    const valueMatch = chunk.match(/\bValue\s*=\s*(?:"([^"]+)"|(-?\d+(?:\.\d+)?))/);
+
+    attributes.push({
+      attrName,
+      rate: rateMatch?.[1] ?? rateMatch?.[2] ?? null,
+      value: valueMatch?.[1] ?? valueMatch?.[2] ?? null,
+    });
+  }
+
+  return attributes;
+}
+
 export default function ItemDetailClient({ category, item }: ItemDetailClientProps) {
   const [favoriteItems] = useAtom(itemsFavoritesAtom);
   const [, toggleItemFavorite] = useAtom(toggleItemFavoriteAtom);
   const isModsCategory = category.id === "mods";
+  const isGenimonsCategory = category.id === "genimons";
   const preferredLanguage = normalizeLanguageCodes(
     [category.defaultDetailLanguage],
     category.availableLanguages,
@@ -246,8 +279,40 @@ export default function ItemDetailClient({ category, item }: ItemDetailClientPro
     .sort(([a], [b]) => a.localeCompare(b));
   const passiveEffectsRaw =
     item.fields.PassiveEffects === undefined ? "N/A" : formatRawFieldValue(item.fields.PassiveEffects);
+  const battlePetId = typeof item.fields.BattlePetId === "number" ? item.fields.BattlePetId : null;
+  const supportSkillId =
+    typeof item.fields.BattlePet_SupportSkillId === "number" ? item.fields.BattlePet_SupportSkillId : null;
+  const battlePetType =
+    typeof item.fields.BattlePet_PetType === "string" ? item.fields.BattlePet_PetType : null;
   const resourceSType =
     typeof item.fields.ResourceSType === "string" ? item.fields.ResourceSType : null;
+  const genimonBreakLevels =
+    Array.isArray(item.fields.PetBreakLevels)
+      ? item.fields.PetBreakLevels.filter((value): value is number => typeof value === "number")
+      : [];
+  const genimonBreakEntryNums =
+    Array.isArray(item.fields.PetBreakEntryNums)
+      ? item.fields.PetBreakEntryNums.filter((value): value is number => typeof value === "number")
+      : [];
+  const genimonCollectRewardExp =
+    typeof item.fields.PetCollectRewardExp === "number" ? item.fields.PetCollectRewardExp : null;
+  const genimonMaxLevelExp =
+    typeof item.fields.PetLevelMaxExpAtMaxLevel === "number"
+      ? item.fields.PetLevelMaxExpAtMaxLevel
+      : null;
+  const genimonTotalExpAtMax =
+    typeof item.fields.PetTotalExpAtMaxLevel === "number" ? item.fields.PetTotalExpAtMaxLevel : null;
+  const resolvedAddModMultiplier =
+    typeof item.fields.BattlePet_ResolvedAddModMultiplier === "string"
+      ? item.fields.BattlePet_ResolvedAddModMultiplier
+      : null;
+  const genimonAttributes = useMemo(
+    () =>
+      parseBattlePetAttributes(
+        item.fields.BattlePet_ResolvedAddAttrs ?? item.fields.BattlePet_AddAttrs,
+      ),
+    [item.fields.BattlePet_ResolvedAddAttrs, item.fields.BattlePet_AddAttrs],
+  );
   const hasAffinityData =
     Boolean(
       affinityIconSrc ||
@@ -259,6 +324,8 @@ export default function ItemDetailClient({ category, item }: ItemDetailClientPro
   const textKeyNameLabel =
     category.id === "mods"
       ? "modNameKey"
+      : category.id === "genimons"
+        ? "genimonNameKey"
       : category.id === "weapons"
         ? "weaponNameKey"
         : category.id === "resources" || category.id === "fishing"
@@ -278,15 +345,17 @@ export default function ItemDetailClient({ category, item }: ItemDetailClientPro
       value: item.textKeys.functionKey,
     },
   ];
+  if (isModsCategory || isGenimonsCategory) {
+    textKeyRows.push({
+      label: "passiveEffectsDescKey",
+      value: item.textKeys.passiveEffectsDescKey,
+    });
+  }
   if (isModsCategory) {
     textKeyRows.push(
       {
         label: "demonWedgeKey",
         value: item.textKeys.demonWedgeKey,
-      },
-      {
-        label: "passiveEffectsDescKey",
-        value: item.textKeys.passiveEffectsDescKey,
       },
       {
         label: "affinityNameKey",
@@ -298,6 +367,7 @@ export default function ItemDetailClient({ category, item }: ItemDetailClientPro
       },
     );
   }
+  const showPassiveDescription = isModsCategory || isGenimonsCategory;
   const passiveDescriptionHasDynamicTokens =
     typeof translation.passiveEffectsDescription === "string" &&
     /#\d+/.test(translation.passiveEffectsDescription);
@@ -486,10 +556,12 @@ export default function ItemDetailClient({ category, item }: ItemDetailClientPro
                 )
               : "No description available in the selected language."}
           </p>
-          {isModsCategory ? (
+          {showPassiveDescription ? (
             <div className="mt-5 border-t border-slate-700/70 pt-4">
               <h3 className="text-sm font-medium uppercase tracking-[0.18em] text-slate-400">
-                Description effet passif (niveau {selectedLevel})
+                {isModsCategory
+                  ? `Description effet passif (niveau ${selectedLevel})`
+                  : "Description trait passif"}
               </h3>
               <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed text-slate-300">
                 {translation.passiveEffectsDescription
@@ -507,7 +579,9 @@ export default function ItemDetailClient({ category, item }: ItemDetailClientPro
               ) : null}
               <details className="mt-3 rounded-lg border border-slate-700/70 bg-slate-950/55 p-3">
                 <summary className="cursor-pointer select-none text-xs uppercase tracking-[0.18em] text-slate-300">
-                  Variables dynamiques (niveau {selectedLevel})
+                  {isModsCategory
+                    ? `Variables dynamiques (niveau ${selectedLevel})`
+                    : "Variables dynamiques"}
                 </summary>
                 <div className="mt-3 flex flex-wrap gap-2">
                   {dynamicValueEntries.length > 0 ? (
@@ -550,6 +624,46 @@ export default function ItemDetailClient({ category, item }: ItemDetailClientPro
                       <p className="mt-1 text-sm text-indigo-100">{formatResolvedAttributeValue(attribute)}</p>
                     </div>
                   ))}
+                </div>
+              )}
+            </div>
+          ) : null}
+
+          {isGenimonsCategory ? (
+            <div className="mt-5 border-t border-slate-700/70 pt-4">
+              <h3 className="text-sm font-medium uppercase tracking-[0.18em] text-slate-400">
+                Attributs du trait passif
+              </h3>
+              {genimonAttributes.length === 0 ? (
+                <p className="mt-2 text-sm text-slate-500">Aucun attribut resolu detecte.</p>
+              ) : (
+                <div className="mt-3 space-y-2">
+                  {genimonAttributes.map((attribute, index) => {
+                    const pieces: string[] = [];
+                    if (attribute.rate) {
+                      pieces.push(`Rate: ${attribute.rate}`);
+                    }
+                    if (attribute.value) {
+                      pieces.push(`Value: ${attribute.value}`);
+                    }
+                    return (
+                      <div
+                        key={`genimon-attr-${attribute.attrName}-${index}`}
+                        className="rounded-lg border border-slate-700/60 bg-slate-950/60 px-3 py-2"
+                      >
+                        <p className="text-sm font-medium text-slate-100">{attribute.attrName}</p>
+                        <p className="mt-1 text-sm text-indigo-100">
+                          {pieces.length > 0
+                            ? renderTextWithDynamicMentions(
+                                pieces.join(" | "),
+                                selectedLevel,
+                                dynamicValuesByIndex,
+                              )
+                            : "N/A"}
+                        </p>
+                      </div>
+                    );
+                  })}
                 </div>
               )}
             </div>
@@ -608,6 +722,60 @@ export default function ItemDetailClient({ category, item }: ItemDetailClientPro
                 <div>
                   <dt className="text-slate-400">Tolerance (niveau {selectedLevel})</dt>
                   <dd className="text-slate-100">{selectedTolerance ?? "N/A"}</dd>
+                </div>
+              </>
+            ) : null}
+            {isGenimonsCategory ? (
+              <>
+                <div>
+                  <dt className="text-slate-400">Battle Pet ID</dt>
+                  <dd className="text-slate-100">{battlePetId ?? "N/A"}</dd>
+                </div>
+                <div>
+                  <dt className="text-slate-400">Support Skill ID</dt>
+                  <dd className="text-slate-100">{supportSkillId ?? "N/A"}</dd>
+                </div>
+                <div>
+                  <dt className="text-slate-400">Battle Pet Type</dt>
+                  <dd className="text-slate-100">{battlePetType ?? "N/A"}</dd>
+                </div>
+                <div>
+                  <dt className="text-slate-400">Trait key</dt>
+                  <dd className="text-slate-100">{item.textKeys.passiveEffectsDescKey ?? "N/A"}</dd>
+                </div>
+                <div>
+                  <dt className="text-slate-400">PassiveEffects (raw)</dt>
+                  <dd className="text-slate-100">{passiveEffectsRaw}</dd>
+                </div>
+                <div>
+                  <dt className="text-slate-400">Paliers ascension</dt>
+                  <dd className="text-slate-100">
+                    {genimonBreakLevels.length > 0 ? genimonBreakLevels.join(" / ") : "N/A"}
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-slate-400">Etapes ascension</dt>
+                  <dd className="text-slate-100">
+                    {genimonBreakEntryNums.length > 0 ? genimonBreakEntryNums.join(", ") : "N/A"}
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-slate-400">EXP collecte (rupture)</dt>
+                  <dd className="text-slate-100">{genimonCollectRewardExp ?? "N/A"}</dd>
+                </div>
+                <div>
+                  <dt className="text-slate-400">EXP max du niveau max</dt>
+                  <dd className="text-slate-100">{genimonMaxLevelExp ?? "N/A"}</dd>
+                </div>
+                <div>
+                  <dt className="text-slate-400">EXP totale vers niveau max</dt>
+                  <dd className="text-slate-100">{genimonTotalExpAtMax ?? "N/A"}</dd>
+                </div>
+                <div>
+                  <dt className="text-slate-400">AddModMultiplier (resolu)</dt>
+                  <dd className="whitespace-pre-wrap text-slate-100">
+                    {resolvedAddModMultiplier ?? "N/A"}
+                  </dd>
                 </div>
               </>
             ) : null}

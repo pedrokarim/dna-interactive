@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-23T17:34:25.054Z",
+  "generatedAt": "2026-03-02T12:52:40.973Z",
   "categories": [
     {
       "id": "mods",
@@ -26,6 +26,32 @@
       "datasetFile": "mods.items.json",
       "iconDirectory": "/assets/items/mods",
       "sampleIconPath": "/assets/items/mods/T_Mod_Phoenix01.png"
+    },
+    {
+      "id": "genimons",
+      "slug": "genimons",
+      "title": "Genimons",
+      "technicalName": "GENIMON",
+      "displayName": "Genimons",
+      "description": "Compagnons Genimons avec variantes, descriptions multilingues et effets passifs.",
+      "itemCount": 75,
+      "availableLanguages": [
+        "DE",
+        "EN",
+        "ES",
+        "FR",
+        "JP",
+        "KR",
+        "TC"
+      ],
+      "defaultGridLanguages": [
+        "FR",
+        "EN"
+      ],
+      "defaultDetailLanguage": "FR",
+      "datasetFile": "genimons.items.json",
+      "iconDirectory": "/assets/items/genimons",
+      "sampleIconPath": "/assets/items/genimons/T_Head_Pet_Wuyou01.png"
     },
     {
       "id": "resources",
