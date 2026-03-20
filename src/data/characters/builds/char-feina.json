@@ -1,0 +1,177 @@
+[
+  {
+    "characterId": "char-feina",
+    "buildName": {
+      "FR": "Support Lumino",
+      "EN": "Lumino Support"
+    },
+    "weapons": {
+      "melee": [
+        {
+          "itemId": "weapons-10103",
+          "rank": "best",
+          "note": {
+            "FR": "Arme signature. 66% de chance de restaurer 3 Lucidite sur un CRIT, maintient l'uptime permanent des buffs.",
+            "EN": "Signature weapon. 66% chance to restore 3 Sanity on CRIT, sustains permanent buff uptime."
+          }
+        },
+        {
+          "itemId": "weapons-10503",
+          "rank": "alternative",
+          "note": {
+            "FR": "Duree de competence +36%. Prolonge les buffs de Fina.",
+            "EN": "Skill Duration +36%. Extends Fina's team buffs."
+          }
+        },
+        {
+          "itemId": "weapons-10303",
+          "rank": "alternative",
+          "note": {
+            "FR": "Duree de competence +36%. Alternative equivalente.",
+            "EN": "Skill Duration +36%. Equivalent alternative."
+          }
+        }
+      ],
+      "ranged": [
+        {
+          "itemId": "weapons-20509",
+          "rank": "best",
+          "note": {
+            "FR": "Accorde aux allies +18% ATQ pendant 15s (jusqu'a 10 stacks). Enorme buff d'equipe.",
+            "EN": "Grants allies +18% ATK for 15s (up to 10 stacks). Massive team buff."
+          }
+        },
+        {
+          "itemId": "weapons-20602",
+          "rank": "alternative",
+          "note": {
+            "FR": "Duree de competence +30%, buffs aleatoires sur CRIT.",
+            "EN": "Skill Duration +30%, random buffs on CRIT."
+          }
+        }
+      ]
+    },
+    "demonWedges": {
+      "slots": [
+        {
+          "position": 1,
+          "itemId": "mods-51961"
+        },
+        {
+          "position": 2,
+          "itemId": "mods-51336"
+        },
+        {
+          "position": 3,
+          "itemId": "mods-51301"
+        },
+        {
+          "position": 4,
+          "itemId": "mods-51464"
+        },
+        {
+          "position": 5,
+          "itemId": "mods-51763"
+        },
+        {
+          "position": 6,
+          "itemId": "mods-51763"
+        },
+        {
+          "position": 7,
+          "itemId": "mods-51763"
+        },
+        {
+          "position": 8,
+          "itemId": "mods-51763"
+        }
+      ],
+      "affinity": {
+        "FR": "Secours",
+        "EN": "Rescue"
+      },
+      "note": {
+        "FR": "4x Blaze Eternity pour maximiser la duree de competence. Prismatic Neon pour le buff Lumino.",
+        "EN": "4x Blaze Eternity to maximize skill duration. Prismatic Neon for Lumino buff."
+      }
+    },
+    "statsPriority": [
+      "SkillSustain",
+      "ATK",
+      "SkillDmg",
+      "SkillRange",
+      "SkillEfficiency"
+    ],
+    "team": [
+      {
+        "characterId": "char-linen",
+        "role": "DPS",
+        "note": {
+          "FR": "DPS principal. Specialiste Degats d'arme qui profite pleinement des buffs de Fina.",
+          "EN": "Main DPS. Weapon DMG specialist who fully benefits from Fina's buffs."
+        }
+      },
+      {
+        "characterId": "char-baiheng",
+        "role": "Support",
+        "note": {
+          "FR": "Soins et recuperation de Lucidite. Compense l'absence de buffs defensifs.",
+          "EN": "Healing and Sanity recovery. Compensates for lack of defensive buffs."
+        }
+      }
+    ],
+    "genimon": [
+      {
+        "itemId": "genimon-4231",
+        "rank": "best"
+      },
+      {
+        "itemId": "genimon-4031",
+        "rank": "alternative"
+      },
+      {
+        "itemId": "genimon-4131",
+        "rank": "alternative"
+      }
+    ],
+    "skillPriority": [
+      {
+        "skillName": {
+          "FR": "Que le the commence !",
+          "EN": "Let the Tea Party Begin!"
+        },
+        "priority": 5,
+        "note": {
+          "FR": "Ultime principal. Cree un champ elementaire qui accorde des bonus de degats aux allies.",
+          "EN": "Main ultimate. Creates an elemental field granting damage bonuses to allies."
+        }
+      },
+      {
+        "skillName": {
+          "FR": "Les mechants sorciers detestent le soleil !",
+          "EN": "Bad Sorcerers Hate Sunlight!"
+        },
+        "priority": 5,
+        "note": {
+          "FR": "Passif de stacks. Augmente les Degats Lumino (30 stacks, 45 a Intron 2).",
+          "EN": "Stack passive. Increases Lumino Damage (30 stacks, 45 at Intron 2)."
+        }
+      },
+      {
+        "skillName": {
+          "FR": "Par un doux apres-midi",
+          "EN": "On a Warm Afternoon"
+        },
+        "priority": 3,
+        "note": {
+          "FR": "AoE Lumino. Utile mais moins critique.",
+          "EN": "AoE Lumino damage. Useful but less critical."
+        }
+      }
+    ],
+    "notes": {
+      "FR": "Fina est un support Lumino axe sur les buffs de Degats d'arme. Maintenez le champ Tea Party actif pour les buffs elementaires. Fonctionne mieux avec des DPS Degats d'arme (Lynn, Psyche, Lisbell, Outsider, Berenica) — evitez les specialistes Degats de competence. N'apporte aucun buff defensif. A Intron 6, devient viable en DPS principal.",
+      "EN": "Fina is a Lumino support focused on Weapon DMG buffs. Maintain active Tea Party field for team elemental damage buffs. Synergizes best with Weapon DMG DPS (Lynn, Psyche, Lisbell, Outsider, Berenica) — avoid Skill DMG specialists. No defensive buffs. At Intron 6, becomes viable as primary DPS."
+    }
+  }
+]

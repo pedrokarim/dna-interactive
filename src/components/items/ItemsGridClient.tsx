@@ -43,6 +43,13 @@ function isSortMode(value: string): value is SortMode {
   return value === "id" || value === "rarityAsc" || value === "rarityDesc";
 }
 
+function normalizeForSearch(text: string): string {
+  return text
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
+}
+
 function translationSearchText(item: ItemRecord, availableLanguages: string[]): string {
   const values: string[] = [`${item.modId}`];
   if (item.archiveId !== null) {
@@ -71,7 +78,7 @@ function translationSearchText(item: ItemRecord, availableLanguages: string[]): 
     }
   }
 
-  return values.join(" ").toLowerCase();
+  return normalizeForSearch(values.join(" "));
 }
 
 function numberOr(value: number | null, fallback: number): number {
@@ -334,7 +341,8 @@ export default function ItemsGridClient({
   );
 
   const filteredItems = useMemo(() => {
-    const normalizedSearch = search.trim().toLowerCase();
+    const normalizedSearch = normalizeForSearch(search.trim());
+    const searchTokens = normalizedSearch.split(/\s+/).filter(Boolean);
 
     const filtered = searchable
       .filter(({ item, searchText }) => {
@@ -343,7 +351,7 @@ export default function ItemsGridClient({
           return false;
         }
 
-        if (normalizedSearch.length > 0 && !searchText.includes(normalizedSearch)) {
+        if (searchTokens.length > 0 && !searchTokens.every((token) => searchText.includes(token))) {
           return false;
         }
 
@@ -841,7 +849,9 @@ export default function ItemsGridClient({
                           />
                         ) : null}
                         <span className="truncate">
-                          {lead.modName ?? `${category.displayName} ${item.modId}`}
+                          {lead.modName
+                            ? lead.demonWedgeName ? `${lead.modName} ${lead.demonWedgeName}` : lead.modName
+                            : `${category.displayName} ${item.modId}`}
                         </span>
                       </span>
                     </h3>
@@ -880,13 +890,9 @@ export default function ItemsGridClient({
                           {getLanguageLabel(langCode)}
                         </p>
                         <p className="truncate text-sm font-medium text-slate-100">
-                          {translation?.modName ?? "N/A"}
-                        </p>
-                        <p className="truncate text-xs text-slate-400">
-                          {translation?.demonWedgeName
-                            ? `${category.displayName} ${translation.demonWedgeName}`
-                            : translation?.functionLabel ??
-                              (isModsCategory ? "Nom Demon Wedge indisponible" : "Libelle indisponible")}
+                          {translation?.modName
+                            ? translation?.demonWedgeName ? `${translation.modName} ${translation.demonWedgeName}` : translation.modName
+                            : "N/A"}
                         </p>
                       </div>
                     );

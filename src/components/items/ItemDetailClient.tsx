@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, type ReactNode } from "react";
-import { ArrowLeft, Database, Heart, Languages, SlidersHorizontal, Tag } from "lucide-react";
+import { useMemo, useState, type ReactNode } from "react";
+import { ArrowLeft, ChevronDown, Database, Heart, Languages, SlidersHorizontal, Tag } from "lucide-react";
 import { useAtom } from "jotai";
 import { parseAsInteger, parseAsStringLiteral, useQueryState } from "nuqs";
 import {
@@ -11,11 +11,14 @@ import {
   normalizeLanguageCodes,
 } from "@/lib/items/catalog";
 import type { ItemCategory, ItemRawField, ItemRecord, ItemResolvedAttribute } from "@/lib/items/types";
+import type { RelatedDraftRecipe } from "@/lib/items/drafts";
+import { resolveDraftTextByLanguage } from "@/lib/items/drafts";
 import { itemsFavoritesAtom, toggleItemFavoriteAtom } from "@/lib/store";
 
 type ItemDetailClientProps = {
   category: ItemCategory;
   item: ItemRecord;
+  relatedDrafts?: RelatedDraftRecipe[];
 };
 
 function formatRawFieldValue(value: ItemRawField): string {
@@ -26,6 +29,45 @@ function formatRawFieldValue(value: ItemRawField): string {
     return "null";
   }
   return `${value}`;
+}
+
+function RawFieldsSection({ fieldEntries }: { fieldEntries: [string, ItemRawField][] }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <section className="rounded-xl border border-slate-700/70 bg-slate-900/55">
+      <button
+        type="button"
+        onClick={() => setOpen((prev) => !prev)}
+        className="flex w-full items-center justify-between p-5 text-left"
+      >
+        <h2 className="text-lg font-semibold text-white">Raw fields</h2>
+        <ChevronDown
+          className={`h-5 w-5 text-slate-400 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+        />
+      </button>
+      {open && (
+        <div className="overflow-x-auto border-t border-slate-700/70 px-5 pb-5">
+          <table className="min-w-full divide-y divide-slate-700 text-left text-sm">
+            <thead>
+              <tr className="text-slate-400">
+                <th className="py-2 pr-4 font-medium">Field</th>
+                <th className="py-2 font-medium">Value</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-800">
+              {fieldEntries.map(([field, value]) => (
+                <tr key={field}>
+                  <td className="whitespace-nowrap py-2 pr-4 text-slate-300">{field}</td>
+                  <td className="py-2 text-slate-100">{formatRawFieldValue(value)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </section>
+  );
 }
 
 function formatDynamicNumber(value: number): string {
@@ -203,7 +245,7 @@ function parseBattlePetAttributes(value: ItemRawField | undefined): ParsedBattle
   return attributes;
 }
 
-export default function ItemDetailClient({ category, item }: ItemDetailClientProps) {
+export default function ItemDetailClient({ category, item, relatedDrafts = [] }: ItemDetailClientProps) {
   const [favoriteItems] = useAtom(itemsFavoritesAtom);
   const [, toggleItemFavorite] = useAtom(toggleItemFavoriteAtom);
   const isModsCategory = category.id === "mods";
@@ -836,27 +878,41 @@ export default function ItemDetailClient({ category, item }: ItemDetailClientPro
         </div>
       </section>
 
-      <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
-        <h2 className="text-lg font-semibold text-white">Raw fields</h2>
-        <div className="mt-4 overflow-x-auto">
-          <table className="min-w-full divide-y divide-slate-700 text-left text-sm">
-            <thead>
-              <tr className="text-slate-400">
-                <th className="py-2 pr-4 font-medium">Field</th>
-                <th className="py-2 font-medium">Value</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-800">
-              {fieldEntries.map(([field, value]) => (
-                <tr key={field}>
-                  <td className="whitespace-nowrap py-2 pr-4 text-slate-300">{field}</td>
-                  <td className="py-2 text-slate-100">{formatRawFieldValue(value)}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
+      {relatedDrafts.length > 0 && (
+        <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
+          <h2 className="text-lg font-semibold text-white">Plans associes</h2>
+          <div className="mt-4 space-y-3">
+            {relatedDrafts.map((draft) => {
+              const draftName =
+                resolveDraftTextByLanguage(draft.productName, selectedLanguage, category.availableLanguages) ??
+                `Plan #${draft.draftId}`;
+              const iconSrc = draft.productIcon.publicPath ?? draft.productIcon.placeholderPath;
+              return (
+                <Link
+                  key={`${draft.draftId}-${draft.relation}`}
+                  href={draft.href}
+                  className="flex items-center gap-3 rounded-lg border border-slate-700/60 bg-slate-950/55 px-4 py-3 transition-colors hover:border-indigo-400/40 hover:bg-slate-900/75"
+                >
+                  {iconSrc && (
+                    <img src={iconSrc} alt="" className="h-8 w-8 shrink-0 object-contain" />
+                  )}
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate text-sm font-medium text-slate-100">{draftName}</p>
+                    <p className="text-xs text-slate-400">
+                      Plan #{draft.draftId}
+                      {" — "}
+                      {draft.relation === "product" ? "Fabrique cet item" : "Utilise cet item comme ingredient"}
+                    </p>
+                  </div>
+                  <ChevronDown className="h-4 w-4 -rotate-90 text-slate-400" />
+                </Link>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
+      <RawFieldsSection fieldEntries={fieldEntries} />
     </div>
   );
 }

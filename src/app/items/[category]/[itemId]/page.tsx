@@ -10,6 +10,7 @@ import {
   getItemTranslation,
   getItemsByCategoryId,
 } from "@/lib/items/catalog";
+import { getDraftRecipesForItem } from "@/lib/items/drafts";
 import { generatePageMetadata } from "@/lib/metadata";
 
 type ItemDetailPageProps = {
@@ -110,7 +111,11 @@ export default async function ItemDetailPage({ params }: ItemDetailPageProps) {
         />
       }
     >
-      <ItemDetailClient category={category} item={item} />
+      <ItemDetailClient
+        category={category}
+        item={item}
+        relatedDrafts={getDraftRecipesForItem(category.id, item.modId)}
+      />
     </Suspense>
   );
 }

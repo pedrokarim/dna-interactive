@@ -10,6 +10,7 @@ import {
   getCharacterTranslation,
   getLevelUpCurves,
 } from "@/lib/characters/catalog";
+import { getCharacterBuilds } from "@/lib/characters/builds";
 import { generatePageMetadata } from "@/lib/metadata";
 
 type CharacterDetailPageProps = {
@@ -97,6 +98,7 @@ export default async function CharacterDetailPage({
         catalog={catalog}
         character={character}
         levelUpCurves={levelUpCurves}
+        builds={getCharacterBuilds(character.id)}
       />
     </Suspense>
   );

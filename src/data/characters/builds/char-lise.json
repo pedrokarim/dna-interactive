@@ -1,0 +1,176 @@
+[
+  {
+    "characterId": "char-lise",
+    "buildName": {
+      "FR": "DPS Competence",
+      "EN": "Skill DPS"
+    },
+    "weapons": {
+      "melee": [
+        {
+          "itemId": "weapons-10203",
+          "rank": "best",
+          "note": {
+            "FR": "Intensite de competence +40%. Bonus supplementaire sur attaque plongeante Electro (+10% par stack, 5 max).",
+            "EN": "Skill Intensity +40%. Additional bonus on Electro plunging attacks (+10% per stack, 5 max)."
+          }
+        },
+        {
+          "itemId": "weapons-10206",
+          "rank": "alternative",
+          "note": {
+            "FR": "Degats de competence +48%. Option solide et accessible.",
+            "EN": "Skill Damage +48%. Solid and accessible option."
+          }
+        },
+        {
+          "itemId": "weapons-10304",
+          "rank": "alternative",
+          "note": {
+            "FR": "Morale +30%, Intensite +50% apres ultime. Mieux sur Zhiliu mais viable.",
+            "EN": "Morale +30%, Intensity +50% after ultimate. Better on Zhiliu but viable."
+          }
+        }
+      ],
+      "ranged": [
+        {
+          "itemId": "weapons-20201",
+          "rank": "best",
+          "note": {
+            "FR": "Meilleure arme a distance pour Rhythm. Degats de competence +48%.",
+            "EN": "Best ranged weapon for Rhythm. Skill Damage +48%."
+          }
+        },
+        {
+          "itemId": "weapons-20102",
+          "rank": "alternative",
+          "note": {
+            "FR": "ATQ personnage +120%. Option alternative si Excresduo indisponible.",
+            "EN": "Character ATK +120%. Alternative if Excresduo is unavailable."
+          }
+        }
+      ]
+    },
+    "demonWedges": {
+      "slots": [
+        {
+          "position": 1,
+          "itemId": "mods-51941"
+        },
+        {
+          "position": 2,
+          "itemId": "mods-51441"
+        },
+        {
+          "position": 3,
+          "itemId": "mods-51324"
+        },
+        {
+          "position": 4,
+          "itemId": "mods-56142"
+        },
+        {
+          "position": 5,
+          "itemId": "mods-51742"
+        },
+        {
+          "position": 6,
+          "itemId": "mods-51742"
+        },
+        {
+          "position": 7,
+          "itemId": "mods-51743"
+        },
+        {
+          "position": 8,
+          "itemId": "mods-51743"
+        }
+      ],
+      "affinity": {
+        "FR": "Pouvoir de Quetzalcoatl",
+        "EN": "Feathered Serpent's Volition"
+      },
+      "note": {
+        "FR": "Focus Degats de competence + Intensite + Morale. Tolerance 152/100.",
+        "EN": "Focus Skill Damage + Intensity + Morale. Tolerance 152/100."
+      }
+    },
+    "statsPriority": [
+      "SkillDmg",
+      "SkillIntensity",
+      "Morale",
+      "ATK"
+    ],
+    "team": [
+      {
+        "characterId": "char-yuming",
+        "role": "Sub-DPS",
+        "note": {
+          "FR": "Buff Morale et degats. Debuff les ennemis pour prendre plus de degats Electro.",
+          "EN": "Morale and damage buffs. Debuffs enemies to take increased Electro damage."
+        }
+      },
+      {
+        "characterId": "char-baiheng",
+        "role": "Support",
+        "note": {
+          "FR": "Donne de l'Intensite de competence, soins et recuperation de Lucidite.",
+          "EN": "Grants Skill Intensity, healing and Sanity recovery."
+        }
+      }
+    ],
+    "genimon": [
+      {
+        "itemId": "genimon-4241",
+        "rank": "best"
+      },
+      {
+        "itemId": "genimon-4121",
+        "rank": "alternative"
+      },
+      {
+        "itemId": "genimon-4141",
+        "rank": "alternative"
+      }
+    ],
+    "skillPriority": [
+      {
+        "skillName": {
+          "FR": "Vortex Electrique",
+          "EN": "Electro Vortex"
+        },
+        "priority": 5,
+        "note": {
+          "FR": "Source principale de degats. A monter en priorite absolue.",
+          "EN": "Main damage source. Prioritize maxing this skill."
+        }
+      },
+      {
+        "skillName": {
+          "FR": "Preservation Tactique",
+          "EN": "Tactical Preservation"
+        },
+        "priority": 5,
+        "note": {
+          "FR": "Ameliore la conversion Lucidite → Energie Electrique.",
+          "EN": "Increases Sanity-to-Electric Energy conversion efficiency."
+        }
+      },
+      {
+        "skillName": {
+          "FR": "Charge Voltaique",
+          "EN": "Volt Rush"
+        },
+        "priority": 4,
+        "note": {
+          "FR": "Augmente les degats. Important pour un DPS, mais secondaire.",
+          "EN": "Increases damage output. Important for DPS, but secondary."
+        }
+      }
+    ],
+    "notes": {
+      "FR": "Rhythm convertit la Lucidite en Energie Electrique pour ses competences. Utilisez Volt Rush pour la mobilite (annulable en sautant). Electro Vortex declenche l'etat Surge Electrique, appliquant des charges positives et negatives aux ennemis. Quand deux charges differentes fusionnent, elles provoquent une explosion AoE. Brille contre les groupes d'ennemis, surtout a Intron 2 (charges transferees) et Intron 6 (2 ennemis/sec au lieu de 1).",
+      "EN": "Rhythm converts Sanity into Electric Energy for abilities. Use Volt Rush for mobility (cancel by jumping). Electro Vortex triggers Electro Surge state, applying alternating Positive and Negative Charges. When different charges merge, they trigger AoE explosions. Excels against grouped enemies, especially at Intron 2 (charges transfer between enemies) and Intron 6 (2 enemies/sec instead of 1)."
+    }
+  }
+]

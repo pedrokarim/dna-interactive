@@ -1,0 +1,169 @@
+[
+  {
+    "characterId": "char-zhiliu",
+    "buildName": {
+      "FR": "DPS Competence",
+      "EN": "Skill DPS"
+    },
+    "weapons": {
+      "melee": [
+        {
+          "itemId": "weapons-10304",
+          "rank": "best",
+          "note": {
+            "FR": "Arme signature. Morale +30%, Intensite de competence +50% pendant 12s apres utilisation de l'ultime.",
+            "EN": "Signature weapon. Morale +30%, Skill Intensity +50% for 12s after using Ultimate."
+          }
+        },
+        {
+          "itemId": "weapons-10203",
+          "rank": "alternative",
+          "note": {
+            "FR": "Intensite de competence +40%. Bonus additionnel sur attaque plongeante Electro.",
+            "EN": "Skill Intensity +40%. Additional bonus on Electro plunging attacks."
+          }
+        },
+        {
+          "itemId": "weapons-10206",
+          "rank": "alternative",
+          "note": {
+            "FR": "Option budget. Degats de competence +48%, mais pas de bonus Morale.",
+            "EN": "Budget option. Skill Damage +48%, but no Morale bonus."
+          }
+        }
+      ],
+      "ranged": [
+        {
+          "itemId": "weapons-20205",
+          "rank": "best",
+          "note": {
+            "FR": "Meilleure option distance, aucune autre arme ne s'en approche. Degats de competence +48%.",
+            "EN": "Best ranged option, no other weapon comes close. Skill Damage +48%."
+          }
+        }
+      ]
+    },
+    "demonWedges": {
+      "slots": [
+        {
+          "position": 1,
+          "itemId": "mods-51941"
+        },
+        {
+          "position": 2,
+          "itemId": "mods-51441"
+        },
+        {
+          "position": 3,
+          "itemId": "mods-51324"
+        },
+        {
+          "position": 4,
+          "itemId": "mods-56142"
+        },
+        {
+          "position": 5,
+          "itemId": "mods-51742"
+        },
+        {
+          "position": 6,
+          "itemId": "mods-51742"
+        },
+        {
+          "position": 7,
+          "itemId": "mods-51742"
+        },
+        {
+          "position": 8,
+          "itemId": "mods-51743"
+        }
+      ],
+      "affinity": {
+        "FR": "Pouvoir de Quetzalcoatl",
+        "EN": "Feathered Serpent's Power"
+      },
+      "note": {
+        "FR": "Focus Intensite de competence + Morale. La Tolerance augmente avec l'affinite au niv. +5.",
+        "EN": "Focus Skill Intensity + Morale. Tolerance increases with affinity at core +5."
+      }
+    },
+    "statsPriority": [
+      "SkillIntensity",
+      "Morale",
+      "SkillRange",
+      "SkillEfficiency",
+      "ATK"
+    ],
+    "team": [
+      {
+        "characterId": "char-yuming",
+        "role": "Sub-DPS",
+        "note": {
+          "FR": "Buff Morale et degats. Debuff les ennemis pour prendre plus de degats Electro.",
+          "EN": "Morale and damage buffs. Debuffs enemies to take increased Electro damage."
+        }
+      },
+      {
+        "characterId": "char-baiheng",
+        "role": "Support",
+        "note": {
+          "FR": "Donne de l'Intensite de competence, soins et recuperation de Lucidite.",
+          "EN": "Grants Skill Intensity, healing and Sanity recovery."
+        }
+      }
+    ],
+    "genimon": [
+      {
+        "itemId": "genimon-4241",
+        "rank": "best"
+      },
+      {
+        "itemId": "genimon-4121",
+        "rank": "alternative"
+      },
+      {
+        "itemId": "genimon-4141",
+        "rank": "alternative"
+      }
+    ],
+    "skillPriority": [
+      {
+        "skillName": {
+          "FR": "Divination Ciel-Terre",
+          "EN": "Heaven-Earth Divination"
+        },
+        "priority": 5,
+        "note": {
+          "FR": "Skill principal — essentiellement 3 ultimes en un. A monter en priorite absolue.",
+          "EN": "Main skill — essentially 3 ultimates in one. Level this up whenever possible."
+        }
+      },
+      {
+        "skillName": {
+          "FR": "Tonnerre de l'Oracle",
+          "EN": "Thunder's Oracle Peal"
+        },
+        "priority": 4,
+        "note": {
+          "FR": "Peut empecher la consommation des Talismans, ce qui economise de la Lucidite.",
+          "EN": "Can prevent Talisman consumption, saving Sanity."
+        }
+      },
+      {
+        "skillName": {
+          "FR": "Revelation Celeste",
+          "EN": "Celestial Revelation"
+        },
+        "priority": 3,
+        "note": {
+          "FR": "Sert surtout d'outil de preparation pour l'ultime. Amelioration secondaire.",
+          "EN": "Used mainly as a tool for the ultimate ability. Upgrade is not critical."
+        }
+      }
+    ],
+    "notes": {
+      "FR": "Zhiliu fonctionne mieux avec beaucoup d'Intensite de competence et de Morale. Utilisez Revelation Celeste pour preparer les Talismans, puis lancez l'ultime adapte a la situation : Fortune's Clarity (2x Xun) pour le buff, Myriad Things Thrive (mixte) pour l'AoE, ou Thunder's Oracle Peal (2x Zhen) pour le burst mono-cible.",
+      "EN": "Zhiliu works best with plenty of Skill Intensity and Morale. Use Celestial Revelation to prepare Talismans, then launch the appropriate ultimate: Fortune's Clarity (2x Xun) for self-buff, Myriad Things Thrive (mixed) for AoE, or Thunder's Oracle Peal (2x Zhen) for single-target burst."
+    }
+  }
+]

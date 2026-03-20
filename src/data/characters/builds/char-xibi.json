@@ -1,0 +1,169 @@
+[
+  {
+    "characterId": "char-xibi",
+    "buildName": {
+      "FR": "DPS HP / Invocatrice",
+      "EN": "HP DPS / Summoner"
+    },
+    "weapons": {
+      "melee": [
+        {
+          "itemId": "weapons-10501",
+          "rank": "best",
+          "note": {
+            "FR": "Arme signature. PV Max +100%, ameliore le scaling de ses competences basees sur les PV.",
+            "EN": "Signature weapon. Max HP +100%, improves her HP-scaling skill damage."
+          }
+        },
+        {
+          "itemId": "weapons-10301",
+          "rank": "alternative",
+          "note": {
+            "FR": "PV Max +100%. Option inferieure a Undying Oneiros mais viable.",
+            "EN": "Max HP +100%. Inferior to Undying Oneiros but still viable."
+          }
+        },
+        {
+          "itemId": "weapons-10203",
+          "rank": "alternative",
+          "note": {
+            "FR": "Intensite de competence +40%. Focus sur l'intensite plutot que les PV.",
+            "EN": "Skill Intensity +40%. Focuses on intensity rather than HP."
+          }
+        }
+      ],
+      "ranged": [
+        {
+          "itemId": "weapons-20201",
+          "rank": "best",
+          "note": {
+            "FR": "Meilleure arme a distance. Degats de competence +48%.",
+            "EN": "Best ranged weapon. Skill Damage +48%."
+          }
+        }
+      ]
+    },
+    "demonWedges": {
+      "slots": [
+        {
+          "position": 1,
+          "itemId": "mods-51941"
+        },
+        {
+          "position": 2,
+          "itemId": "mods-51324"
+        },
+        {
+          "position": 3,
+          "itemId": "mods-51441"
+        },
+        {
+          "position": 4,
+          "itemId": "mods-56142"
+        },
+        {
+          "position": 5,
+          "itemId": "mods-51002"
+        },
+        {
+          "position": 6,
+          "itemId": "mods-51742"
+        },
+        {
+          "position": 7,
+          "itemId": "mods-51741"
+        },
+        {
+          "position": 8,
+          "itemId": "mods-51741"
+        }
+      ],
+      "affinity": {
+        "FR": "Volonte de Quetzalcoatl",
+        "EN": "Feathered Serpent's Volition"
+      },
+      "note": {
+        "FR": "Focus PV Max + Portee de competence. Nirvana et Blaze Nirvana pour le scaling PV.",
+        "EN": "Focus Max HP + Skill Range. Nirvana and Blaze Nirvana for HP scaling."
+      }
+    },
+    "statsPriority": [
+      "MaxHp",
+      "SkillRange",
+      "SkillIntensity",
+      "SkillDmg",
+      "ATK"
+    ],
+    "team": [
+      {
+        "characterId": "char-zhiliu",
+        "role": "Main DPS",
+        "note": {
+          "FR": "DPS principal actif. Peut etre remplace par Rhythm si indisponible.",
+          "EN": "Active main DPS. Can be substituted with Rhythm if unavailable."
+        }
+      },
+      {
+        "characterId": "char-baiheng",
+        "role": "Support",
+        "note": {
+          "FR": "Buff degats de competence, soins et recuperation de Lucidite.",
+          "EN": "Skill DMG buffs, healing and Sanity restoration."
+        }
+      }
+    ],
+    "genimon": [
+      {
+        "itemId": "genimon-4241",
+        "rank": "best"
+      },
+      {
+        "itemId": "genimon-4121",
+        "rank": "alternative"
+      },
+      {
+        "itemId": "genimon-4141",
+        "rank": "alternative"
+      }
+    ],
+    "skillPriority": [
+      {
+        "skillName": {
+          "FR": "Invocatrice de tempete",
+          "EN": "Stormcaller"
+        },
+        "priority": 5,
+        "note": {
+          "FR": "Competence cle d'invocation. Augmente les degats de l'Orbe du Tonnerre Chaotique. A monter en priorite absolue.",
+          "EN": "Key summoning skill. Increases Chaotic Thunderorb damage. Prioritize upgrading this first."
+        }
+      },
+      {
+        "skillName": {
+          "FR": "Conquerante divine",
+          "EN": "Divine Conqueror"
+        },
+        "priority": 4,
+        "note": {
+          "FR": "Source principale de degats directs.",
+          "EN": "Main direct damage source."
+        }
+      },
+      {
+        "skillName": {
+          "FR": "Puissance du tonnerre",
+          "EN": "Might of Thunder"
+        },
+        "priority": 4,
+        "note": {
+          "FR": "Amplifie les degats des deux autres competences.",
+          "EN": "Amplifies damage dealt by the other two skills."
+        }
+      }
+    ],
+    "notes": {
+      "FR": "Sibylle est une DPS basee sur les PV dont les competences scalent sur ce stat. Elle invoque un Orbe du Tonnerre Chaotique — attaquez-le pour infliger des degats aux ennemis lies (jusqu'a 10). Excellente contre les groupes, mais degats mono-cible faibles. Necessite Intron 6 pour des performances optimales.",
+      "EN": "Sibylle is an HP-scaling DPS whose skills scale on the HP stat. She summons a Chaotic Thunderorb — attack it to damage linked enemies (up to 10). Excels against groups, but single-target damage is low. Requires Intron 6 for optimal performance."
+    }
+  }
+]

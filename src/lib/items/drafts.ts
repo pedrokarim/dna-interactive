@@ -160,6 +160,48 @@ export function resolveDraftTextByLanguage(
   return null;
 }
 
+export interface RelatedDraftRecipe {
+  draftId: number;
+  href: string;
+  productName: Record<string, string | null>;
+  productIcon: DraftItemIcon;
+  relation: "product" | "ingredient";
+}
+
+export function getDraftRecipesForItem(
+  sourceCategory: string,
+  itemModId: number,
+): RelatedDraftRecipe[] {
+  const results: RelatedDraftRecipe[] = [];
+
+  for (const recipe of draftRecipes) {
+    if (recipe.product.sourceCategory === sourceCategory && recipe.product.id === itemModId) {
+      results.push({
+        draftId: recipe.draftId,
+        href: `/items/drafts/${recipe.draftId}`,
+        productName: recipe.product.names,
+        productIcon: recipe.icon,
+        relation: "product",
+      });
+    }
+
+    for (const ingredient of recipe.ingredients) {
+      if (ingredient.sourceCategory === sourceCategory && ingredient.id === itemModId) {
+        results.push({
+          draftId: recipe.draftId,
+          href: `/items/drafts/${recipe.draftId}`,
+          productName: recipe.product.names,
+          productIcon: recipe.icon,
+          relation: "ingredient",
+        });
+        break;
+      }
+    }
+  }
+
+  return results;
+}
+
 export function resolveDraftItemName(
   item: DraftItemReference,
   languageCode: string,

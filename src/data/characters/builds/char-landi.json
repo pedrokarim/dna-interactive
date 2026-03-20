@@ -1,0 +1,176 @@
+[
+  {
+    "characterId": "char-landi",
+    "buildName": {
+      "FR": "Support Tank DEF",
+      "EN": "DEF Tank Support"
+    },
+    "weapons": {
+      "melee": [
+        {
+          "itemId": "weapons-10104",
+          "rank": "best",
+          "note": {
+            "FR": "DEF +100%. 50% de chance de reduire le Bouclier ennemi de 350% de la DEF.",
+            "EN": "DEF +100%. 50% chance to decrease target's Shield by 350% of DEF."
+          }
+        },
+        {
+          "itemId": "weapons-10303",
+          "rank": "alternative",
+          "note": {
+            "FR": "Duree de competence +36%. Maximise l'uptime de la barriere.",
+            "EN": "Skill Duration +36%. Maximizes barrier uptime."
+          }
+        },
+        {
+          "itemId": "weapons-10503",
+          "rank": "alternative",
+          "note": {
+            "FR": "Duree de competence +36%. Alternative equivalente.",
+            "EN": "Skill Duration +36%. Equivalent alternative."
+          }
+        }
+      ],
+      "ranged": [
+        {
+          "itemId": "weapons-20602",
+          "rank": "best",
+          "note": {
+            "FR": "Duree de competence +30%. Les CRITs donnent aleatoirement un buff aux allies pendant 16s.",
+            "EN": "Skill Duration +30%. CRITs randomly grant allies a buff for 16s."
+          }
+        },
+        {
+          "itemId": "weapons-20501",
+          "rank": "alternative",
+          "note": {
+            "FR": "Duree de competence +36%. Option distance alternative.",
+            "EN": "Skill Duration +36%. Alternative ranged option."
+          }
+        }
+      ]
+    },
+    "demonWedges": {
+      "slots": [
+        {
+          "position": 1,
+          "itemId": "mods-51941"
+        },
+        {
+          "position": 2,
+          "itemId": "mods-51334"
+        },
+        {
+          "position": 3,
+          "itemId": "mods-51445"
+        },
+        {
+          "position": 4,
+          "itemId": "mods-56142"
+        },
+        {
+          "position": 5,
+          "itemId": "mods-51007"
+        },
+        {
+          "position": 6,
+          "itemId": "mods-51744"
+        },
+        {
+          "position": 7,
+          "itemId": "mods-51744"
+        },
+        {
+          "position": 8,
+          "itemId": "mods-51744"
+        }
+      ],
+      "affinity": {
+        "FR": "Volonte de Quetzalcoatl",
+        "EN": "Feathered Serpent's Volition"
+      },
+      "note": {
+        "FR": "Focus DEF + Duree de competence. 3x Standfast Eternity pour maximiser le scaling DEF.",
+        "EN": "Focus DEF + Skill Duration. 3x Standfast Eternity to maximize DEF scaling."
+      }
+    },
+    "statsPriority": [
+      "DEF",
+      "SkillSustain",
+      "MaxHp",
+      "SkillEfficiency"
+    ],
+    "team": [
+      {
+        "characterId": "char-zhiliu",
+        "role": "DPS",
+        "note": {
+          "FR": "DPS principal. Randy le protege avec sa barriere frontale.",
+          "EN": "Main DPS. Randy protects him with his frontal barrier."
+        }
+      },
+      {
+        "characterId": "char-baiheng",
+        "role": "Support",
+        "note": {
+          "FR": "Soins, Intensite de competence et recuperation de Lucidite.",
+          "EN": "Healing, Skill Intensity and Sanity recovery."
+        }
+      }
+    ],
+    "genimon": [
+      {
+        "itemId": "genimon-4241",
+        "rank": "best"
+      },
+      {
+        "itemId": "genimon-4121",
+        "rank": "alternative"
+      },
+      {
+        "itemId": "genimon-4141",
+        "rank": "alternative"
+      }
+    ],
+    "skillPriority": [
+      {
+        "skillName": {
+          "FR": "Flemme Legitime",
+          "EN": "Legitimate Slackness"
+        },
+        "priority": 5,
+        "note": {
+          "FR": "Deploie une barriere frontale bloquant les projectiles. A monter en priorite absolue.",
+          "EN": "Deploys a frontal barrier blocking projectiles. Prioritize maxing this skill."
+        }
+      },
+      {
+        "skillName": {
+          "FR": "Cadeau Special",
+          "EN": "Special Gift"
+        },
+        "priority": 4,
+        "note": {
+          "FR": "Cree des boucliers et accorde un Ultra Bouclier a toute l'equipe.",
+          "EN": "Creates shields and grants Ultra Shield to the entire team."
+        }
+      },
+      {
+        "skillName": {
+          "FR": "Bouclier Partage",
+          "EN": "Shared Shield"
+        },
+        "priority": 2,
+        "note": {
+          "FR": "Passif donnant de la DEF aux coequipiers. Priorite basse.",
+          "EN": "Passive granting DEF to teammates. Low priority."
+        }
+      }
+    ],
+    "notes": {
+      "FR": "Randy est un tank/support qui absorbe les degats et protege ses coequipiers. Sa barriere frontale bloque les projectiles et applique le debuff Rancune du Surmenage. Attention : il ne peut pas bouger pendant que la barriere est active. Focus DEF + Duree de competence. Excellent en coop grace a sa protection de zone.",
+      "EN": "Randy is a tank/support who absorbs damage and protects teammates. His frontal barrier blocks projectiles and applies the Overwork Grudge debuff. Note: he cannot move while the barrier is active. Focus DEF + Skill Duration. Excellent in co-op thanks to zone protection."
+    }
+  }
+]

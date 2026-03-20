@@ -33,6 +33,16 @@ import type {
   CharactersCatalog,
   LevelUpCurves,
 } from "@/lib/characters/types";
+import type {
+  CharacterBuild,
+  BuildDemonWedgeSlot,
+} from "@/lib/characters/builds";
+import {
+  getArmoryCircle,
+  getElementIcon,
+  ARMORY_DEFAULT_ICON,
+  ARMORY_MOD_GLOW,
+} from "@/lib/characters/builds";
 import {
   charactersFavoritesAtom,
   toggleCharacterFavoriteAtom,
@@ -46,6 +56,7 @@ type CharacterDetailClientProps = {
   catalog: CharactersCatalog;
   character: CharacterRecord;
   levelUpCurves: LevelUpCurves;
+  builds?: CharacterBuild[];
 };
 
 // ---------------------------------------------------------------------------
@@ -100,11 +111,12 @@ const PORTRAIT_LABELS: Record<PortraitType, string> = {
 // Tab system — add new tabs here
 // ---------------------------------------------------------------------------
 
-const TAB_IDS = ["stats", "portraits", "intron", "translations", "tech"] as const;
+const TAB_IDS = ["stats", "build", "portraits", "intron", "translations", "tech"] as const;
 type TabId = (typeof TAB_IDS)[number];
 
 const TAB_CONFIG: { id: TabId; label: string; icon: ComponentType<{ className?: string }> }[] = [
   { id: "stats", label: "Attributs", icon: BarChart3 },
+  { id: "build", label: "Build", icon: Swords },
   { id: "portraits", label: "Portraits", icon: ImageIcon },
   { id: "intron", label: "Intron", icon: Layers },
   { id: "translations", label: "Traductions", icon: Languages },
@@ -200,6 +212,453 @@ function StatBar({
 }
 
 // ---------------------------------------------------------------------------
+// Build tab
+// ---------------------------------------------------------------------------
+
+function BuildLocalizedText({
+  texts,
+  lang,
+}: {
+  texts: Record<string, string>;
+  lang: string;
+}) {
+  const value =
+    texts[lang.toUpperCase()] ??
+    texts.FR ??
+    texts.EN ??
+    Object.values(texts)[0] ??
+    null;
+  return value ? <>{value}</> : null;
+}
+
+function DemonWedgeSlotCard({
+  slot,
+  elementKey,
+}: {
+  slot: BuildDemonWedgeSlot;
+  elementKey: string;
+}) {
+  const circleSrc = getArmoryCircle(elementKey);
+  const icon = slot.item?.icon ?? ARMORY_DEFAULT_ICON;
+  const name = slot.item?.name ?? "Vide";
+  const href = slot.item?.href;
+
+  const content = (
+    <div className="flex flex-col items-center gap-1">
+      <div className="relative h-20 w-20 sm:h-24 sm:w-24">
+        {/* Glow */}
+        <img
+          src={ARMORY_MOD_GLOW}
+          alt=""
+          className="absolute inset-0 h-full w-full object-contain opacity-40"
+        />
+        {/* Element circle */}
+        <img
+          src={circleSrc}
+          alt=""
+          className="absolute inset-0 h-full w-full object-contain"
+        />
+        {/* Mod icon */}
+        <img
+          src={icon}
+          alt={name}
+          className="absolute inset-[15%] h-[70%] w-[70%] object-contain"
+        />
+      </div>
+      <p className="max-w-[6.5rem] truncate text-center text-xs text-slate-200">{name}</p>
+    </div>
+  );
+
+  if (href) {
+    return (
+      <Link href={href} className="transition-transform hover:scale-105">
+        {content}
+      </Link>
+    );
+  }
+  return content;
+}
+
+function DemonWedgeLayout({
+  slots,
+  affinity,
+  elementKey,
+  lang,
+}: {
+  slots: BuildDemonWedgeSlot[];
+  affinity: Record<string, string>;
+  elementKey: string;
+  lang: string;
+}) {
+  const topLeft = slots.filter((s) => s.position >= 1 && s.position <= 2);
+  const topRight = slots.filter((s) => s.position >= 3 && s.position <= 4);
+  const bottomLeft = slots.filter((s) => s.position >= 5 && s.position <= 6);
+  const bottomRight = slots.filter((s) => s.position >= 7 && s.position <= 8);
+
+  return (
+    <div className="flex flex-col items-center gap-6">
+      {/* Desktop layout */}
+      <div className="hidden w-full max-w-3xl items-center justify-center gap-4 md:flex">
+        {/* Left column */}
+        <div className="flex flex-col items-center gap-6">
+          <div className="flex gap-3">
+            {topLeft.map((s) => (
+              <DemonWedgeSlotCard key={s.position} slot={s} elementKey={elementKey} />
+            ))}
+          </div>
+          <div className="flex gap-3">
+            {bottomLeft.map((s) => (
+              <DemonWedgeSlotCard key={s.position} slot={s} elementKey={elementKey} />
+            ))}
+          </div>
+        </div>
+
+        {/* Center affinity */}
+        <div className="flex flex-col items-center gap-2 px-4">
+          <div className="relative h-20 w-20">
+            <img
+              src={getElementIcon(elementKey)}
+              alt={elementKey}
+              className="absolute inset-0 h-full w-full object-contain"
+            />
+          </div>
+          <p className="text-center text-xs font-medium text-slate-300">
+            <BuildLocalizedText texts={affinity} lang={lang} />
+          </p>
+        </div>
+
+        {/* Right column */}
+        <div className="flex flex-col items-center gap-6">
+          <div className="flex gap-3">
+            {topRight.map((s) => (
+              <DemonWedgeSlotCard key={s.position} slot={s} elementKey={elementKey} />
+            ))}
+          </div>
+          <div className="flex gap-3">
+            {bottomRight.map((s) => (
+              <DemonWedgeSlotCard key={s.position} slot={s} elementKey={elementKey} />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile layout: simple 2x4 grid */}
+      <div className="grid w-full grid-cols-2 place-items-center gap-4 sm:grid-cols-4 md:hidden">
+        {slots.map((s) => (
+          <DemonWedgeSlotCard key={s.position} slot={s} elementKey={elementKey} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function BuildTabContent({
+  builds,
+  characterElement,
+  selectedLanguage,
+}: {
+  builds: CharacterBuild[];
+  characterElement: string;
+  selectedLanguage: string;
+}) {
+  const [activeBuildIndex, setActiveBuildIndex] = useState(0);
+
+  if (builds.length === 0) {
+    return (
+      <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-8 text-center">
+        <Swords className="mx-auto h-10 w-10 text-slate-600" />
+        <p className="mt-3 text-sm text-slate-400">
+          Aucun build recommande disponible pour le moment.
+        </p>
+      </section>
+    );
+  }
+
+  const build = builds[activeBuildIndex] ?? builds[0];
+
+  const hasWeapons = build.weapons.melee.length > 0 || build.weapons.ranged.length > 0;
+  const hasDemonWedges = build.demonWedges.slots.length > 0;
+  const hasTeam = build.team.length > 0;
+  const hasGenimon = build.genimon.length > 0;
+  const hasStats = build.statsPriority.length > 0;
+  const hasSkills = build.skillPriority.length > 0;
+  const hasNotes = Object.keys(build.notes).length > 0;
+
+  return (
+    <div className="space-y-5">
+      {/* Build selector (if multiple) */}
+      {builds.length > 1 && (
+        <div className="flex gap-2">
+          {builds.map((b, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => setActiveBuildIndex(i)}
+              className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
+                i === activeBuildIndex
+                  ? "border border-indigo-400/40 bg-indigo-500/20 text-indigo-100"
+                  : "border border-transparent text-slate-400 hover:bg-slate-800/60 hover:text-slate-200"
+              }`}
+            >
+              <BuildLocalizedText texts={b.buildName} lang={selectedLanguage} />
+            </button>
+          ))}
+        </div>
+      )}
+
+      {/* --- Weapons --- */}
+      {hasWeapons && (
+        <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
+          <h2 className="flex items-center gap-2 text-lg font-semibold text-white">
+            <Swords className="h-4 w-4 text-indigo-400/80" />
+            Armes recommandees
+          </h2>
+          <div className="mt-4 space-y-4">
+            {(["melee", "ranged"] as const).map((type) => {
+              const weapons = build.weapons[type];
+              if (weapons.length === 0) return null;
+              return (
+                <div key={type}>
+                  <h3 className="mb-2 text-xs font-medium uppercase tracking-wider text-slate-400">
+                    {type === "melee" ? "Melee" : "Distance"}
+                  </h3>
+                  <div className="space-y-2">
+                    {weapons.map((w, i) => (
+                      <div
+                        key={i}
+                        className="flex items-center gap-3 rounded-lg border border-slate-700/60 bg-slate-950/55 px-4 py-3"
+                      >
+                        {w.item ? (
+                          <Link
+                            href={w.item.href}
+                            className="flex min-w-0 flex-1 items-center gap-3 transition-colors hover:text-indigo-200"
+                          >
+                            <img
+                              src={w.item.icon}
+                              alt=""
+                              className="h-10 w-10 shrink-0 object-contain"
+                            />
+                            <div className="min-w-0 flex-1">
+                              <p className="truncate text-sm font-medium text-slate-100">
+                                {w.item.name}
+                              </p>
+                              <p className="truncate text-xs text-slate-400">
+                                <BuildLocalizedText texts={w.note} lang={selectedLanguage} />
+                              </p>
+                            </div>
+                          </Link>
+                        ) : (
+                          <p className="text-sm text-slate-500">Item non trouve</p>
+                        )}
+                        <span
+                          className={`shrink-0 rounded-full px-2.5 py-0.5 text-xs font-medium ${
+                            w.rank === "best"
+                              ? "border border-amber-400/40 bg-amber-500/15 text-amber-200"
+                              : "border border-slate-600/80 bg-slate-800/40 text-slate-300"
+                          }`}
+                        >
+                          {w.rank === "best" ? "Best" : "Alt"}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
+      {/* --- Demon Wedges (game layout) --- */}
+      {hasDemonWedges && (
+        <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
+          <h2 className="flex items-center gap-2 text-lg font-semibold text-white">
+            <Shield className="h-4 w-4 text-indigo-400/80" />
+            Sceaux demoniaques
+          </h2>
+          <div className="mt-6">
+            <DemonWedgeLayout
+              slots={build.demonWedges.slots}
+              affinity={build.demonWedges.affinity}
+              elementKey={characterElement}
+              lang={selectedLanguage}
+            />
+          </div>
+          {Object.keys(build.demonWedges.note).length > 0 && (
+            <p className="mt-4 text-center text-xs text-slate-400">
+              <BuildLocalizedText texts={build.demonWedges.note} lang={selectedLanguage} />
+            </p>
+          )}
+        </section>
+      )}
+
+      {/* --- Stats priority --- */}
+      {hasStats && (
+        <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
+          <h2 className="flex items-center gap-2 text-lg font-semibold text-white">
+            <BarChart3 className="h-4 w-4 text-indigo-400/80" />
+            Priorite de stats
+          </h2>
+          <ol className="mt-4 space-y-2">
+            {build.statsPriority.map((stat, i) => (
+              <li
+                key={stat}
+                className="flex items-center gap-3 rounded-lg border border-slate-700/60 bg-slate-950/55 px-4 py-2.5"
+              >
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-indigo-500/25 text-xs font-bold text-indigo-200">
+                  {i + 1}
+                </span>
+                <span className="text-sm text-slate-100">
+                  {ATTR_LABELS[stat] ?? stat}
+                </span>
+              </li>
+            ))}
+          </ol>
+        </section>
+      )}
+
+      {/* --- Team --- */}
+      {hasTeam && (
+        <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
+          <h2 className="flex items-center gap-2 text-lg font-semibold text-white">
+            <Sparkles className="h-4 w-4 text-indigo-400/80" />
+            Composition d&apos;equipe
+          </h2>
+          <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {build.team.map((t, i) => {
+              const ec = t.character
+                ? ELEMENT_COLORS[t.character.element.key] ?? ELEMENT_COLORS.Water
+                : ELEMENT_COLORS.Water;
+              return (
+                <div
+                  key={i}
+                  className={`rounded-lg border ${ec.border} ${ec.bg} p-3`}
+                >
+                  {t.character ? (
+                    <Link
+                      href={t.character.href}
+                      className="flex items-center gap-3 transition-colors hover:text-indigo-200"
+                    >
+                      {t.character.portrait && (
+                        <img
+                          src={t.character.portrait}
+                          alt=""
+                          className="h-12 w-12 shrink-0 rounded-full border border-slate-600 object-cover"
+                        />
+                      )}
+                      <div className="min-w-0">
+                        <p className="truncate text-sm font-medium text-slate-100">
+                          {t.character.name}
+                        </p>
+                        <p className="text-xs text-slate-300">{t.role}</p>
+                        <p className="truncate text-xs text-slate-400">
+                          <BuildLocalizedText texts={t.note} lang={selectedLanguage} />
+                        </p>
+                      </div>
+                    </Link>
+                  ) : (
+                    <p className="text-sm text-slate-500">Personnage non trouve</p>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
+      {/* --- Genimon --- */}
+      {hasGenimon && (
+        <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
+          <h2 className="text-lg font-semibold text-white">Genimon</h2>
+          <div className="mt-4 space-y-2">
+            {build.genimon.map((g, i) => (
+              <div
+                key={i}
+                className="flex items-center gap-3 rounded-lg border border-slate-700/60 bg-slate-950/55 px-4 py-3"
+              >
+                {g.item ? (
+                  <Link
+                    href={g.item.href}
+                    className="flex min-w-0 flex-1 items-center gap-3 transition-colors hover:text-indigo-200"
+                  >
+                    <img
+                      src={g.item.icon}
+                      alt=""
+                      className="h-10 w-10 shrink-0 object-contain"
+                    />
+                    <p className="truncate text-sm font-medium text-slate-100">{g.item.name}</p>
+                  </Link>
+                ) : (
+                  <p className="text-sm text-slate-500">Genimon non trouve</p>
+                )}
+                <span
+                  className={`shrink-0 rounded-full px-2.5 py-0.5 text-xs font-medium ${
+                    g.rank === "best"
+                      ? "border border-amber-400/40 bg-amber-500/15 text-amber-200"
+                      : "border border-slate-600/80 bg-slate-800/40 text-slate-300"
+                  }`}
+                >
+                  {g.rank === "best" ? "Best" : "Alt"}
+                </span>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* --- Skill priority --- */}
+      {hasSkills && (
+        <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
+          <h2 className="text-lg font-semibold text-white">Priorite de competences</h2>
+          <div className="mt-4 space-y-2">
+            {build.skillPriority
+              .slice()
+              .sort((a, b) => b.priority - a.priority)
+              .map((s, i) => (
+                <div
+                  key={i}
+                  className="flex items-center gap-3 rounded-lg border border-slate-700/60 bg-slate-950/55 px-4 py-2.5"
+                >
+                  <div className="flex gap-0.5">
+                    {Array.from({ length: 5 }, (_, j) => (
+                      <span
+                        key={j}
+                        className={`text-sm ${
+                          j < s.priority ? "text-amber-400" : "text-slate-700"
+                        }`}
+                      >
+                        ★
+                      </span>
+                    ))}
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate text-sm font-medium text-slate-100">
+                      <BuildLocalizedText texts={s.skillName} lang={selectedLanguage} />
+                    </p>
+                    <p className="truncate text-xs text-slate-400">
+                      <BuildLocalizedText texts={s.note} lang={selectedLanguage} />
+                    </p>
+                  </div>
+                </div>
+              ))}
+          </div>
+        </section>
+      )}
+
+      {/* --- Notes --- */}
+      {hasNotes && (
+        <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
+          <h2 className="text-lg font-semibold text-white">Notes</h2>
+          <p className="mt-3 text-sm leading-relaxed text-slate-300">
+            <BuildLocalizedText texts={build.notes} lang={selectedLanguage} />
+          </p>
+        </section>
+      )}
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
 // Main component
 // ---------------------------------------------------------------------------
 
@@ -207,6 +666,7 @@ export default function CharacterDetailClient({
   catalog,
   character,
   levelUpCurves,
+  builds = [],
 }: CharacterDetailClientProps) {
   const [favoriteChars] = useAtom(charactersFavoritesAtom);
   const [, toggleFavorite] = useAtom(toggleCharacterFavoriteAtom);
@@ -744,6 +1204,15 @@ export default function CharacterDetailClient({
             </div>
           )}
         </section>
+      )}
+
+      {/* ---------- Build tab ---------- */}
+      {activeTab === "build" && (
+        <BuildTabContent
+          builds={builds}
+          characterElement={character.element.key}
+          selectedLanguage={selectedLanguage}
+        />
       )}
 
       {/* ---------- Portraits tab ---------- */}

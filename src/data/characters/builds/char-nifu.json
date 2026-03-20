@@ -1,0 +1,175 @@
+[
+  {
+    "characterId": "char-nifu",
+    "buildName": {
+      "FR": "DPS Portee",
+      "EN": "Skill Range DPS"
+    },
+    "weapons": {
+      "melee": [
+        {
+          "itemId": "weapons-10602",
+          "rank": "best",
+          "note": {
+            "FR": "Portee de competence +72%. Arme signature pour maximiser la conversion Portee → Degats.",
+            "EN": "Skill Range +72%. Signature weapon to maximize Range-to-Damage conversion."
+          }
+        },
+        {
+          "itemId": "weapons-10403",
+          "rank": "alternative",
+          "note": {
+            "FR": "Portee de competence +72%. Alternative viable.",
+            "EN": "Skill Range +72%. Viable alternative."
+          }
+        },
+        {
+          "itemId": "weapons-10206",
+          "rank": "alternative",
+          "note": {
+            "FR": "Degats de competence +48%. Option budget.",
+            "EN": "Skill Damage +48%. Budget option."
+          }
+        }
+      ],
+      "ranged": [
+        {
+          "itemId": "weapons-20603",
+          "rank": "best",
+          "note": {
+            "FR": "Augmente la Portee et fournit des fleches traqueuses avec buff d'Intensite.",
+            "EN": "Boosts Skill Range and provides tracking arrows with Skill Intensity buff."
+          }
+        },
+        {
+          "itemId": "weapons-20101",
+          "rank": "alternative",
+          "note": {
+            "FR": "Probabilite de declenchement +150%. Projectiles supplementaires.",
+            "EN": "Trigger Probability +150%. Extra projectiles."
+          }
+        }
+      ]
+    },
+    "demonWedges": {
+      "slots": [
+        {
+          "position": 1,
+          "itemId": "mods-51326"
+        },
+        {
+          "position": 2,
+          "itemId": "mods-51461"
+        },
+        {
+          "position": 3,
+          "itemId": "mods-51761"
+        },
+        {
+          "position": 4,
+          "itemId": "mods-51761"
+        },
+        {
+          "position": 5,
+          "itemId": "mods-51761"
+        },
+        {
+          "position": 6,
+          "itemId": "mods-51761"
+        },
+        {
+          "position": 7,
+          "itemId": "mods-51761"
+        },
+        {
+          "position": 8,
+          "itemId": "mods-51761"
+        }
+      ],
+      "affinity": {
+        "FR": "Pouvoir de Quetzalcoatl",
+        "EN": "Feathered Serpent's Power"
+      },
+      "note": {
+        "FR": "6x Scorch pour maximiser les degats. Noyau Esquive. Tolerance augmente au niv. +5.",
+        "EN": "6x Scorch to maximize damage. Sidestep core. Tolerance increases at +5."
+      }
+    },
+    "statsPriority": [
+      "SkillDmg",
+      "ATK",
+      "SkillRange"
+    ],
+    "team": [
+      {
+        "characterId": "char-zhangyu",
+        "role": "Support",
+        "note": {
+          "FR": "Support polyvalent. Augmente les degats et apporte du controle.",
+          "EN": "Versatile support. Boosts team damage and provides crowd control."
+        }
+      },
+      {
+        "characterId": "char-baiheng",
+        "role": "Support",
+        "note": {
+          "FR": "Soins et recuperation de Lucidite. Indispensable avant Intron 6.",
+          "EN": "Healing and Sanity recovery. Essential before Intron 6."
+        }
+      }
+    ],
+    "genimon": [
+      {
+        "itemId": "genimon-4261",
+        "rank": "best"
+      },
+      {
+        "itemId": "genimon-4163",
+        "rank": "alternative"
+      },
+      {
+        "itemId": "genimon-4063",
+        "rank": "alternative"
+      }
+    ],
+    "skillPriority": [
+      {
+        "skillName": {
+          "FR": "Chasse Lunaire",
+          "EN": "Lunar Hunt"
+        },
+        "priority": 5,
+        "note": {
+          "FR": "Augmente les degats infliges et renforce les debuffs.",
+          "EN": "Increases damage dealt and enhances debuffs."
+        }
+      },
+      {
+        "skillName": {
+          "FR": "Cris Entrelaces",
+          "EN": "Interwoven Cries"
+        },
+        "priority": 5,
+        "note": {
+          "FR": "Augmente la probabilite de generer Eclipse Solaire ou Chasse Lunaire.",
+          "EN": "Increases probability of generating Solar Eclipse or Lunar Hunt."
+        }
+      },
+      {
+        "skillName": {
+          "FR": "Requiem de la Mer Brumeuse",
+          "EN": "Misty Sea Requiem"
+        },
+        "priority": 4,
+        "note": {
+          "FR": "Active le Rite Funeraire qui convertit l'exces de Portee en Degats.",
+          "EN": "Activates Funeral Rite converting excess Skill Range into Skill Damage."
+        }
+      }
+    ],
+    "notes": {
+      "FR": "Lady Nifle depend de la gestion de la Lucidite avant Intron 6. A I6, les armes a distance declenchent Chasse Lunaire/Eclipse Solaire. Requiem de la Mer Brumeuse convertit l'exces de Portee en Degats de competence. Focus Probabilite de declenchement sur les armes a distance.",
+      "EN": "Lady Nifle depends on Sanity management before Intron 6. At I6, ranged weapons trigger Lunar Hunt/Solar Eclipse. Misty Sea Requiem converts excess Skill Range into Skill Damage. Build Trigger Probability on ranged weapons."
+    }
+  }
+]
