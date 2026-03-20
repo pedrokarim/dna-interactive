@@ -40,6 +40,7 @@ import type {
 import {
   getArmoryCircle,
   getElementIcon,
+  getTrackIcon,
   ARMORY_DEFAULT_ICON,
   ARMORY_MOD_GLOW,
 } from "@/lib/characters/builds";
@@ -267,6 +268,7 @@ function DemonWedgeSlotCard({
   const borderColor = ELEMENT_BORDER_COLORS[elementKey] ?? ELEMENT_BORDER_COLORS.Water;
   const glowColor = ELEMENT_GLOW_COLORS[elementKey] ?? ELEMENT_GLOW_COLORS.Water;
   const clip = side === "left" ? CLIP_LEFT : CLIP_RIGHT;
+  const trackIconSrc = getTrackIcon(slot.item?.polarity ?? null);
 
   const card = (
     <div
@@ -287,6 +289,13 @@ function DemonWedgeSlotCard({
           className="h-12 w-12 object-contain drop-shadow-lg sm:h-14 sm:w-14"
         />
       </div>
+      {trackIconSrc && (
+        <img
+          src={trackIconSrc}
+          alt=""
+          className="absolute right-1 top-1 h-4 w-4 object-contain opacity-80 sm:h-5 sm:w-5"
+        />
+      )}
     </div>
   );
 
@@ -474,6 +483,7 @@ function BuildTabContent({
 
   const hasWeapons = build.weapons.melee.length > 0 || build.weapons.ranged.length > 0;
   const hasDemonWedges = build.demonWedges.slots.length > 0;
+  const hasConsonance = build.consonanceWeapon !== null;
   const hasTeam = build.team.length > 0;
   const hasGenimon = build.genimon.length > 0;
   const hasStats = build.statsPriority.length > 0;
@@ -585,6 +595,33 @@ function BuildTabContent({
             <p className="mt-4 text-center text-xs text-slate-400">
               <BuildLocalizedText texts={build.demonWedges.note} lang={selectedLanguage} />
             </p>
+          )}
+        </section>
+      )}
+
+      {/* --- Consonance Weapon --- */}
+      {hasConsonance && build.consonanceWeapon && (
+        <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
+          <h2 className="flex items-center gap-2 text-lg font-semibold text-white">
+            <Swords className="h-4 w-4 text-indigo-400/80" />
+            Arme de Consonance
+          </h2>
+          <p className="mt-2 text-sm font-medium text-slate-200">
+            <BuildLocalizedText texts={build.consonanceWeapon.name} lang={selectedLanguage} />
+          </p>
+          {build.consonanceWeapon.slots.length > 0 && (
+            <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
+              {build.consonanceWeapon.slots.map((s, i) => (
+                <div
+                  key={i}
+                  className="rounded-lg border border-purple-500/30 bg-purple-500/10 px-3 py-2 text-center"
+                >
+                  <p className="text-xs font-medium text-purple-200">
+                    <BuildLocalizedText texts={s.name} lang={selectedLanguage} />
+                  </p>
+                </div>
+              ))}
+            </div>
           )}
         </section>
       )}

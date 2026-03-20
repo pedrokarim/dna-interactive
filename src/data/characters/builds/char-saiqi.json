@@ -42,6 +42,15 @@
       { "skillName": { "FR": "Lumiere d'Ambre", "EN": "Amberlight" }, "priority": 5, "note": { "FR": "Passif essentiel qui ameliore les buffs.", "EN": "Essential passive that enhances buffs." } },
       { "skillName": { "FR": "Chrysalide Onirique", "EN": "Chrysalis Dreamweave" }, "priority": 4, "note": { "FR": "Augmente les degats et la vulnerabilite des ennemis.", "EN": "Increases damage and enemy vulnerability." } }
     ],
+    "consonanceWeapon": {
+      "name": { "FR": "Aile de Papillon", "EN": "Butterfly Wing" },
+      "slots": [
+        { "name": { "FR": "Impulsion de Sphinx", "EN": "Eldtrich Sphinx's Impetus" } },
+        { "name": { "FR": "Penetration de Sphinx", "EN": "Eldtrich Sphinx's Penetration" } },
+        { "name": { "FR": "Repli de Sphinx", "EN": "Eldtrich Sphinx's Foldover" } },
+        { "name": { "FR": "Entrave de Sphinx", "EN": "Eldtrich Sphinx's Trammel" } }
+      ]
+    },
     "notes": {
       "FR": "Psyche est une DPS centree sur son ultime et son arme de consonance. Durant Flamboyance, spammez les attaques a distance en consommant des PV (convertis en bouclier). L'Intron 1 est essentiel pour la restauration de PV en vol.",
       "EN": "Psyche is a DPS built around her ultimate and Consonance Weapon. During Flamboyance, spam ranged attacks while consuming HP (converted to shield). Intron 1 is essential for HP restoration during flight."

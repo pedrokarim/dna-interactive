@@ -43,6 +43,15 @@
       { "skillName": { "FR": "Rafale tactique", "EN": "Tactical Rapid Fire" }, "priority": 4, "note": { "FR": "Passif qui augmente les degats via Prechargement.", "EN": "Passive that boosts damage through Preload stacks." } },
       { "skillName": { "FR": "Floraison fatale", "EN": "Deadly Blossom" }, "priority": 3, "note": { "FR": "Dash offensif. Secondaire.", "EN": "Offensive dash. Secondary." } }
     ],
+    "consonanceWeapon": {
+      "name": { "FR": "Hansel et Gretel", "EN": "Hansel and Gretel" },
+      "slots": [
+        { "name": { "FR": "Impulsion de Lilith", "EN": "Eldtrich Lilith's Impetus" } },
+        { "name": { "FR": "Penetration de Lilith", "EN": "Eldtrich Lilith's Penetration" } },
+        { "name": { "FR": "Repli de Lilith", "EN": "Eldtrich Lilith's Foldover" } },
+        { "name": { "FR": "Entrave de Lilith", "EN": "Eldtrich Lilith's Trammel" } }
+      ]
+    },
     "notes": {
       "FR": "Lynn est une DPS Pyro axee Degats d'arme. Ballet explosif → mode Hansel et Gretel (consomme Lucidite). Accumulez Prechargement puis Tir suppressif pour le burst. Avec Fina et Fushu.",
       "EN": "Lynn is a Pyro Weapon DMG DPS. Gunpowder Revelry → Hansel and Gretel mode (consumes Sanity). Accumulate Preload then Suppressing Fire for burst. With Fina and Fushu."

@@ -59,6 +59,10 @@ interface RawCharacterBuild {
   team?: RawTeamEntry[];
   genimon?: RawGenimonEntry[];
   skillPriority?: RawSkillPriority[];
+  consonanceWeapon?: {
+    name: RawLocalizedText;
+    slots: { name: RawLocalizedText }[];
+  };
   notes?: RawLocalizedText;
 }
 
@@ -74,6 +78,7 @@ export interface ResolvedItemRef {
   href: string;
   rarity: number | null;
   element: string | null;
+  polarity: number | null;
 }
 
 export interface ResolvedCharacterRef {
@@ -131,6 +136,10 @@ export interface CharacterBuild {
   team: BuildTeamEntry[];
   genimon: BuildGenimonEntry[];
   skillPriority: BuildSkillPriority[];
+  consonanceWeapon: {
+    name: RawLocalizedText;
+    slots: { name: RawLocalizedText }[];
+  } | null;
   notes: RawLocalizedText;
 }
 
@@ -163,6 +172,7 @@ function resolveItemRef(
     href: `/items/${categoryId}/${item.id}`,
     rarity: item.stats.rarity,
     element: item.affinity?.char ?? null,
+    polarity: item.stats.polarity ?? null,
   };
 }
 
@@ -234,6 +244,12 @@ export function getCharacterBuilds(characterId: string): CharacterBuild[] {
         priority: s.priority,
         note: s.note ?? {},
       })),
+      consonanceWeapon: raw.consonanceWeapon
+        ? {
+            name: raw.consonanceWeapon.name ?? {},
+            slots: (raw.consonanceWeapon.slots ?? []).map((s) => ({ name: s.name ?? {} })),
+          }
+        : null,
       notes: raw.notes ?? {},
     }));
 }
@@ -296,3 +312,15 @@ export function getElementIcon(elementKey: string): string {
 
 export const ARMORY_DEFAULT_ICON = "/assets/ui/armory/T_Armory_Default.png";
 export const ARMORY_MOD_GLOW = "/assets/ui/armory/T_Mod_H64_GreenCircle.png";
+
+const TRACK_ICON_MAP: Record<number, string> = {
+  1: "/assets/ui/tracks/track-assault.png",
+  2: "/assets/ui/tracks/track-healing.png",
+  3: "/assets/ui/tracks/track-ability.png",
+  4: "/assets/ui/tracks/track-specialisation.png",
+};
+
+export function getTrackIcon(polarity: number | null): string | null {
+  if (polarity === null || polarity < 1) return null;
+  return TRACK_ICON_MAP[polarity] ?? null;
+}

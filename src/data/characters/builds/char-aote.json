@@ -43,6 +43,15 @@
       { "skillName": { "FR": "Croc pour Croc", "EN": "Fang for Fang" }, "priority": 5, "note": { "FR": "Passif essentiel qui amplifie les degats.", "EN": "Essential passive that amplifies damage." } },
       { "skillName": { "FR": "Traque Furtive", "EN": "Stealthy Prowl" }, "priority": 3, "note": { "FR": "Utilitaire secondaire.", "EN": "Secondary utility." } }
     ],
+    "consonanceWeapon": {
+      "name": { "FR": "Crocs Sauvages", "EN": "Wild Fang" },
+      "slots": [
+        { "name": { "FR": "Impulsion de Griffin", "EN": "Eldtrich Griffin's Impetus" } },
+        { "name": { "FR": "Penetration de Griffin", "EN": "Eldtrich Griffin's Penetration" } },
+        { "name": { "FR": "Repli de Griffin", "EN": "Eldtrich Griffin's Foldover" } },
+        { "name": { "FR": "Entrave de Griffin", "EN": "Eldtrich Griffin's Trammel" } }
+      ]
+    },
     "notes": {
       "FR": "Outsider est un DPS Anemo specialise dans les degats soutenus. Midnight Sun + Huntdown pour les degats, Volition + Resolve pour ATQ et critiques.",
       "EN": "Outsider is an Anemo DPS specialized in sustained damage. Midnight Sun + Huntdown for damage, Volition + Resolve for ATK and crits."

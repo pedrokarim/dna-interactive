@@ -42,6 +42,15 @@
       { "skillName": { "FR": "Hmph !!", "EN": "Hmph!!" }, "priority": 4, "note": { "FR": "Ameliore Samael selon le Niveau de Combo (C/B/A/S).", "EN": "Enhances Samael based on Combo Level (C/B/A/S)." } },
       { "skillName": { "FR": "Au nom de la patience", "EN": "In the Name of Patience" }, "priority": 3, "note": { "FR": "Degats Lumino en zone. Correct mais gourmand en ressources.", "EN": "Lumino AoE damage. Decent but resource-intensive." } }
     ],
+    "consonanceWeapon": {
+      "name": { "FR": "Samael", "EN": "Samael" },
+      "slots": [
+        { "name": { "FR": "Impulsion de Cerberus", "EN": "Eldtrich Cerberus's Impetus" } },
+        { "name": { "FR": "Penetration de Cerberus", "EN": "Eldtrich Cerberus's Penetration" } },
+        { "name": { "FR": "Repli de Cerberus", "EN": "Eldtrich Cerberus's Foldover" } },
+        { "name": { "FR": "Entrave de Cerberus", "EN": "Eldtrich Cerberus's Trammel" } }
+      ]
+    },
     "notes": {
       "FR": "Lisbell est centree sur l'Arme de Consonance Samael. Activez 'C'est fini !' pour equiper Samael, puis maintenez l'attaque pour charger des coups puissants. Le Niveau de Combo (C→S) ameliore la portee et les degats. Gerez la Lucidite car Samael en consomme.",
       "EN": "Lisbell centers on the Consonance Weapon Samael. Activate 'That's It!' to equip Samael, then hold attack to charge powerful strikes. Combo Level (C→S) enhances range and damage. Manage Sanity as Samael consumes it."
