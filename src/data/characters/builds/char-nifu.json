@@ -93,7 +93,8 @@
       "note": {
         "FR": "6x Scorch pour maximiser les degats. Noyau Esquive. Tolerance augmente au niv. +5.",
         "EN": "6x Scorch to maximize damage. Sidestep core. Tolerance increases at +5."
-      }
+      },
+      "centerItemId": "mods-31531"
     },
     "statsPriority": [
       "SkillDmg",

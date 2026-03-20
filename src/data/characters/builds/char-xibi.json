@@ -85,7 +85,8 @@
       "note": {
         "FR": "Focus PV Max + Portee de competence. Nirvana et Blaze Nirvana pour le scaling PV.",
         "EN": "Focus Max HP + Skill Range. Nirvana and Blaze Nirvana for HP scaling."
-      }
+      },
+      "centerItemId": "mods-31502"
     },
     "statsPriority": [
       "MaxHp",

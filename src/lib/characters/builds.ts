@@ -25,6 +25,7 @@ interface RawDemonWedgeSlot {
 
 interface RawDemonWedgesConfig {
   slots: RawDemonWedgeSlot[];
+  centerItemId?: string;
   affinity?: RawLocalizedText;
   note?: RawLocalizedText;
 }
@@ -96,6 +97,7 @@ export interface BuildDemonWedgeSlot {
 
 export interface BuildDemonWedgesConfig {
   slots: BuildDemonWedgeSlot[];
+  centerItem: ResolvedItemRef | null;
   affinity: RawLocalizedText;
   note: RawLocalizedText;
 }
@@ -211,6 +213,9 @@ export function getCharacterBuilds(characterId: string): CharacterBuild[] {
           position: s.position,
           item: resolveItemRef("mods", s.itemId),
         })),
+        centerItem: raw.demonWedges?.centerItemId
+          ? resolveItemRef("mods", raw.demonWedges.centerItemId)
+          : null,
         affinity: raw.demonWedges?.affinity ?? {},
         note: raw.demonWedges?.note ?? {},
       },

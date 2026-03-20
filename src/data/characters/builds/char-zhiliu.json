@@ -85,7 +85,8 @@
       "note": {
         "FR": "Focus Intensite de competence + Morale. La Tolerance augmente avec l'affinite au niv. +5.",
         "EN": "Focus Skill Intensity + Morale. Tolerance increases with affinity at core +5."
-      }
+      },
+      "centerItemId": "mods-31502"
     },
     "statsPriority": [
       "SkillIntensity",

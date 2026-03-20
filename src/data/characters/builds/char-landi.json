@@ -93,7 +93,8 @@
       "note": {
         "FR": "Focus DEF + Duree de competence. 3x Standfast Eternity pour maximiser le scaling DEF.",
         "EN": "Focus DEF + Skill Duration. 3x Standfast Eternity to maximize DEF scaling."
-      }
+      },
+      "centerItemId": "mods-31502"
     },
     "statsPriority": [
       "DEF",

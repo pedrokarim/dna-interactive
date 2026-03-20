@@ -93,7 +93,8 @@
       "note": {
         "FR": "4x Blaze Eternity pour maximiser la duree de competence. Prismatic Neon pour le buff Lumino.",
         "EN": "4x Blaze Eternity to maximize skill duration. Prismatic Neon for Lumino buff."
-      }
+      },
+      "centerItemId": "mods-31525"
     },
     "statsPriority": [
       "SkillSustain",

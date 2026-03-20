@@ -93,7 +93,8 @@
       "note": {
         "FR": "Focus Degats de competence + Intensite + Morale. Tolerance 152/100.",
         "EN": "Focus Skill Damage + Intensity + Morale. Tolerance 152/100."
-      }
+      },
+      "centerItemId": "mods-31502"
     },
     "statsPriority": [
       "SkillDmg",

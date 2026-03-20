@@ -231,61 +231,165 @@ function BuildLocalizedText({
   return value ? <>{value}</> : null;
 }
 
+const ELEMENT_BORDER_COLORS: Record<string, string> = {
+  Thunder: "border-violet-500/70 shadow-violet-500/20",
+  Water: "border-blue-400/70 shadow-blue-400/20",
+  Wind: "border-emerald-400/70 shadow-emerald-400/20",
+  Fire: "border-amber-400/70 shadow-amber-400/20",
+  Light: "border-yellow-200/70 shadow-yellow-200/20",
+  Dark: "border-indigo-400/70 shadow-indigo-400/20",
+};
+
+const ELEMENT_GLOW_COLORS: Record<string, string> = {
+  Thunder: "from-violet-500/15 to-violet-900/30",
+  Water: "from-blue-500/15 to-blue-900/30",
+  Wind: "from-emerald-500/15 to-emerald-900/30",
+  Fire: "from-amber-500/15 to-amber-900/30",
+  Light: "from-yellow-300/15 to-yellow-800/30",
+  Dark: "from-indigo-500/15 to-indigo-900/30",
+};
+
+const CLIP_LEFT = "polygon(15% 0%, 100% 0%, 85% 100%, 0% 100%)";
+const CLIP_RIGHT = "polygon(0% 0%, 85% 0%, 100% 100%, 15% 100%)";
+
 function DemonWedgeSlotCard({
   slot,
   elementKey,
+  side,
 }: {
   slot: BuildDemonWedgeSlot;
   elementKey: string;
+  side: "left" | "right";
 }) {
-  const circleSrc = getArmoryCircle(elementKey);
   const icon = slot.item?.icon ?? ARMORY_DEFAULT_ICON;
   const name = slot.item?.name ?? "Vide";
   const href = slot.item?.href;
+  const borderColor = ELEMENT_BORDER_COLORS[elementKey] ?? ELEMENT_BORDER_COLORS.Water;
+  const glowColor = ELEMENT_GLOW_COLORS[elementKey] ?? ELEMENT_GLOW_COLORS.Water;
+  const clip = side === "left" ? CLIP_LEFT : CLIP_RIGHT;
 
-  const content = (
-    <div className="flex flex-col items-center gap-1">
-      <div className="relative h-20 w-20 sm:h-24 sm:w-24">
-        {/* Glow */}
-        <img
-          src={ARMORY_MOD_GLOW}
-          alt=""
-          className="absolute inset-0 h-full w-full object-contain opacity-40"
-        />
-        {/* Element circle */}
-        <img
-          src={circleSrc}
-          alt=""
-          className="absolute inset-0 h-full w-full object-contain"
-        />
-        {/* Mod icon */}
+  const card = (
+    <div
+      className={`relative h-28 w-20 border-2 shadow-lg sm:h-32 sm:w-[5.5rem] ${borderColor}`}
+      style={{
+        clipPath: clip,
+        background: "linear-gradient(135deg, rgba(15,23,42,0.9), rgba(30,41,59,0.95))",
+      }}
+    >
+      <div
+        className={`absolute inset-0 bg-gradient-to-b ${glowColor}`}
+        style={{ clipPath: clip }}
+      />
+      <div className="absolute inset-0 flex items-center justify-center">
         <img
           src={icon}
           alt={name}
-          className="absolute inset-[15%] h-[70%] w-[70%] object-contain"
+          className="h-12 w-12 object-contain drop-shadow-lg sm:h-14 sm:w-14"
         />
       </div>
-      <p className="max-w-[6.5rem] truncate text-center text-xs text-slate-200">{name}</p>
     </div>
   );
 
-  if (href) {
-    return (
-      <Link href={href} className="transition-transform hover:scale-105">
-        {content}
-      </Link>
-    );
-  }
-  return content;
+  const tooltip = slot.item ? (
+    <div className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 hidden w-56 -translate-x-1/2 rounded-xl border border-slate-700/80 bg-slate-950/95 p-3 text-sm shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
+      <p className="font-medium text-slate-100">{name}</p>
+      <div className="mt-1.5 flex flex-wrap gap-1 text-[11px]">
+        <span className="rounded-full border border-slate-600/80 px-2 py-0.5 text-slate-200">
+          #{slot.item.modId}
+        </span>
+        {slot.item.rarity !== null && (
+          <span className="rounded-full border border-amber-500/40 bg-amber-500/10 px-2 py-0.5 text-amber-200">
+            {slot.item.rarity}★
+          </span>
+        )}
+        {slot.item.element && (
+          <span className="rounded-full border border-slate-600/80 px-2 py-0.5 text-slate-200">
+            {slot.item.element}
+          </span>
+        )}
+      </div>
+    </div>
+  ) : null;
+
+  return (
+    <div className="group relative flex flex-col items-center gap-1.5">
+      {href ? (
+        <Link href={href} className="block transition-transform duration-150 hover:scale-105">
+          {card}
+        </Link>
+      ) : (
+        card
+      )}
+      <p className="max-w-[6rem] truncate text-center text-[11px] text-slate-300">{name}</p>
+      {tooltip}
+    </div>
+  );
+}
+
+function DemonWedgeCenterSlot({
+  centerItem,
+  affinity,
+  elementKey,
+  lang,
+}: {
+  centerItem: import("@/lib/characters/builds").ResolvedItemRef | null;
+  affinity: Record<string, string>;
+  elementKey: string;
+  lang: string;
+}) {
+  const circleSrc = getArmoryCircle(elementKey);
+  const icon = centerItem?.icon ?? ARMORY_DEFAULT_ICON;
+  const name = centerItem?.name ?? null;
+  const href = centerItem?.href;
+
+  const circle = (
+    <div className="relative h-24 w-24">
+      <img src={circleSrc} alt="" className="absolute inset-0 h-full w-full object-contain opacity-60" />
+      <img src={ARMORY_MOD_GLOW} alt="" className="absolute inset-0 h-full w-full object-contain opacity-30" />
+      <img src={icon} alt={name ?? ""} className="absolute inset-[18%] h-[64%] w-[64%] object-contain drop-shadow-lg" />
+    </div>
+  );
+
+  return (
+    <div className="group relative flex flex-col items-center gap-2 px-2">
+      {href ? (
+        <Link href={href} className="block transition-transform duration-150 hover:scale-105">
+          {circle}
+        </Link>
+      ) : (
+        circle
+      )}
+      <p className="max-w-[8rem] text-center text-xs font-medium text-slate-300">
+        <BuildLocalizedText texts={affinity} lang={lang} />
+      </p>
+      {centerItem && (
+        <div className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 hidden w-56 -translate-x-1/2 rounded-xl border border-slate-700/80 bg-slate-950/95 p-3 text-sm shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
+          <p className="font-medium text-slate-100">{name}</p>
+          <div className="mt-1.5 flex flex-wrap gap-1 text-[11px]">
+            <span className="rounded-full border border-slate-600/80 px-2 py-0.5 text-slate-200">
+              #{centerItem.modId}
+            </span>
+            {centerItem.rarity !== null && (
+              <span className="rounded-full border border-amber-500/40 bg-amber-500/10 px-2 py-0.5 text-amber-200">
+                {centerItem.rarity}★
+              </span>
+            )}
+          </div>
+        </div>
+      )}
+    </div>
+  );
 }
 
 function DemonWedgeLayout({
   slots,
+  centerItem,
   affinity,
   elementKey,
   lang,
 }: {
   slots: BuildDemonWedgeSlot[];
+  centerItem: import("@/lib/characters/builds").ResolvedItemRef | null;
   affinity: Record<string, string>;
   elementKey: string;
   lang: string;
@@ -298,55 +402,47 @@ function DemonWedgeLayout({
   return (
     <div className="flex flex-col items-center gap-6">
       {/* Desktop layout */}
-      <div className="hidden w-full max-w-3xl items-center justify-center gap-4 md:flex">
-        {/* Left column */}
-        <div className="flex flex-col items-center gap-6">
-          <div className="flex gap-3">
+      <div className="hidden w-full max-w-4xl items-center justify-center gap-6 md:flex">
+        {/* Left column — parallelograms lean right */}
+        <div className="flex flex-col items-center gap-4">
+          <div className="flex gap-2">
             {topLeft.map((s) => (
-              <DemonWedgeSlotCard key={s.position} slot={s} elementKey={elementKey} />
+              <DemonWedgeSlotCard key={s.position} slot={s} elementKey={elementKey} side="left" />
             ))}
           </div>
-          <div className="flex gap-3">
+          <div className="flex gap-2">
             {bottomLeft.map((s) => (
-              <DemonWedgeSlotCard key={s.position} slot={s} elementKey={elementKey} />
+              <DemonWedgeSlotCard key={s.position} slot={s} elementKey={elementKey} side="left" />
             ))}
           </div>
         </div>
 
-        {/* Center affinity */}
-        <div className="flex flex-col items-center gap-2 px-4">
-          <div className="relative h-20 w-20">
-            <img
-              src={getElementIcon(elementKey)}
-              alt={elementKey}
-              className="absolute inset-0 h-full w-full object-contain"
-            />
-          </div>
-          <p className="text-center text-xs font-medium text-slate-300">
-            <BuildLocalizedText texts={affinity} lang={lang} />
-          </p>
-        </div>
+        {/* Center — actual demon wedge in a circle */}
+        <DemonWedgeCenterSlot centerItem={centerItem} affinity={affinity} elementKey={elementKey} lang={lang} />
 
-        {/* Right column */}
-        <div className="flex flex-col items-center gap-6">
-          <div className="flex gap-3">
+        {/* Right column — parallelograms lean left (mirrored) */}
+        <div className="flex flex-col items-center gap-4">
+          <div className="flex gap-2">
             {topRight.map((s) => (
-              <DemonWedgeSlotCard key={s.position} slot={s} elementKey={elementKey} />
+              <DemonWedgeSlotCard key={s.position} slot={s} elementKey={elementKey} side="right" />
             ))}
           </div>
-          <div className="flex gap-3">
+          <div className="flex gap-2">
             {bottomRight.map((s) => (
-              <DemonWedgeSlotCard key={s.position} slot={s} elementKey={elementKey} />
+              <DemonWedgeSlotCard key={s.position} slot={s} elementKey={elementKey} side="right" />
             ))}
           </div>
         </div>
       </div>
 
-      {/* Mobile layout: simple 2x4 grid */}
+      {/* Mobile layout */}
       <div className="grid w-full grid-cols-2 place-items-center gap-4 sm:grid-cols-4 md:hidden">
         {slots.map((s) => (
-          <DemonWedgeSlotCard key={s.position} slot={s} elementKey={elementKey} />
+          <DemonWedgeSlotCard key={s.position} slot={s} elementKey={elementKey} side={s.position <= 4 ? "left" : "right"} />
         ))}
+        <div className="col-span-2 sm:col-span-4">
+          <DemonWedgeCenterSlot centerItem={centerItem} affinity={affinity} elementKey={elementKey} lang={lang} />
+        </div>
       </div>
     </div>
   );
@@ -479,6 +575,7 @@ function BuildTabContent({
           <div className="mt-6">
             <DemonWedgeLayout
               slots={build.demonWedges.slots}
+              centerItem={build.demonWedges.centerItem}
               affinity={build.demonWedges.affinity}
               elementKey={characterElement}
               lang={selectedLanguage}
