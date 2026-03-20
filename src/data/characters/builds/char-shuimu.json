@@ -1,0 +1,51 @@
+[
+  {
+    "characterId": "char-shuimu",
+    "buildName": { "FR": "DPS Invocations", "EN": "Summon DPS" },
+    "weapons": {
+      "melee": [
+        { "itemId": "weapons-10201", "rank": "best", "note": { "FR": "Arme signature. Augmente les degats Hydro et renforce les invocations.", "EN": "Signature weapon. Increases Hydro damage and empowers summons." } },
+        { "itemId": "weapons-10206", "rank": "alternative", "note": { "FR": "Degats de competence +48%. Option solide.", "EN": "Skill Damage +48%. Solid option." } },
+        { "itemId": "weapons-10103", "rank": "alternative", "note": { "FR": "Option budget 4 etoiles.", "EN": "Budget 4-star option." } }
+      ],
+      "ranged": [
+        { "itemId": "weapons-20201", "rank": "best", "note": { "FR": "Meilleure arme a distance. Degats de competence +48%.", "EN": "Best ranged weapon. Skill Damage +48%." } },
+        { "itemId": "weapons-20303", "rank": "alternative", "note": { "FR": "Alternative avec bonus de degats elementaires.", "EN": "Alternative with elemental damage bonus." } }
+      ]
+    },
+    "demonWedges": {
+      "slots": [
+        { "position": 1, "itemId": "mods-51921" },
+        { "position": 2, "itemId": "mods-51322" },
+        { "position": 3, "itemId": "mods-51421" },
+        { "position": 4, "itemId": "mods-51722" },
+        { "position": 5, "itemId": "mods-51723" },
+        { "position": 6, "itemId": "mods-51723" },
+        { "position": 7, "itemId": "mods-51723" },
+        { "position": 8, "itemId": "mods-51723" }
+      ],
+      "centerItemId": "mods-31531",
+      "affinity": { "FR": "Specialisation de Quetzalcoatl", "EN": "Feathered Serpent's Specialisation" },
+      "note": { "FR": "Focus Degats de competence + Portee. 4x Blaze Inspo maximise les degats.", "EN": "Focus Skill Damage + Range. 4x Blaze Inspo maximizes damage." }
+    },
+    "statsPriority": ["SkillDmg", "SkillRange", "SkillEfficiency", "ATK"],
+    "team": [
+      { "characterId": "char-zhangyu", "role": "Support", "note": { "FR": "Buff de degats et soutien Hydro.", "EN": "Damage buffs and Hydro support." } },
+      { "characterId": "char-baiheng", "role": "Support", "note": { "FR": "Intensite de competence, soins et recuperation de Lucidite.", "EN": "Skill Intensity, healing and Sanity recovery." } }
+    ],
+    "genimon": [
+      { "itemId": "genimon-4221", "rank": "best" },
+      { "itemId": "genimon-4121", "rank": "alternative" },
+      { "itemId": "genimon-4021", "rank": "alternative" }
+    ],
+    "skillPriority": [
+      { "skillName": { "FR": "Rosee de Lada", "EN": "Lada Lovedew" }, "priority": 5, "note": { "FR": "Ultime — burst massif de degats Hydro.", "EN": "Ultimate — massive Hydro burst damage." } },
+      { "skillName": { "FR": "Caresse d'Aurelia", "EN": "Aurelian Caress" }, "priority": 5, "note": { "FR": "Invoque des Aurelia Aurita (max 3). Degats continus Hydro.", "EN": "Summons Aurelia Aurita (max 3). Continuous Hydro damage." } },
+      { "skillName": { "FR": "Epreuve du Vrai Amour", "EN": "Truelove Trial" }, "priority": 3, "note": { "FR": "Passif utile mais secondaire.", "EN": "Useful passive but secondary." } }
+    ],
+    "notes": {
+      "FR": "Rebecca invoque des meduses (Aurelia Aurita) qui heritent 100% de ses stats et infligent des degats Hydro continus. Deployez jusqu'a 3 invocations aux points strategiques. Empilez Poison d'Amour puis burst avec Rosee de Lada. Privilegiez Degats de competence et Portee.",
+      "EN": "Rebecca summons jellyfish (Aurelia Aurita) that inherit 100% of her stats and deal continuous Hydro damage. Deploy up to 3 summons at strategic points. Stack Poison of Love then burst with Lada Lovedew. Prioritize Skill Damage and Range."
+    }
+  }
+]
