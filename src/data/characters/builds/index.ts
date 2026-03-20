@@ -8,6 +8,11 @@ import charBaiheng from "./char-baiheng.json";
 import charShuimu from "./char-shuimu.json";
 import charBaonu from "./char-baonu.json";
 import charSaiqi from "./char-saiqi.json";
+import charZhangyu from "./char-zhangyu.json";
+import charAote from "./char-aote.json";
+import charLinen from "./char-linen.json";
+import charHeitao from "./char-heitao.json";
+import charTuosi from "./char-tuosi.json";
 
 // Add new character builds here:
 // 1. import charXxx from "./char-xxx.json";
@@ -24,4 +29,9 @@ export const allBuilds = [
   ...charShuimu,
   ...charBaonu,
   ...charSaiqi,
+  ...charZhangyu,
+  ...charAote,
+  ...charLinen,
+  ...charHeitao,
+  ...charTuosi,
 ];

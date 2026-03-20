@@ -1,0 +1,51 @@
+[
+  {
+    "characterId": "char-heitao",
+    "buildName": { "FR": "DPS Umbro", "EN": "Umbro DPS" },
+    "weapons": {
+      "melee": [
+        { "itemId": "weapons-10103", "rank": "best", "note": { "FR": "Arme signature. 66% restaurer 3 Lucidite sur CRIT.", "EN": "Signature weapon. 66% restore 3 Sanity on CRIT." } },
+        { "itemId": "weapons-10206", "rank": "alternative", "note": { "FR": "Degats de competence +48%.", "EN": "Skill Damage +48%." } },
+        { "itemId": "weapons-10101", "rank": "alternative", "note": { "FR": "ATQ +120%.", "EN": "ATK +120%." } }
+      ],
+      "ranged": [
+        { "itemId": "weapons-20201", "rank": "best", "note": { "FR": "Degats de competence +48%.", "EN": "Skill Damage +48%." } },
+        { "itemId": "weapons-20405", "rank": "alternative", "note": { "FR": "ATQ +100% avec Efficacite.", "EN": "ATK +100% with Skill Efficiency." } }
+      ]
+    },
+    "demonWedges": {
+      "slots": [
+        { "position": 1, "itemId": "mods-51911" },
+        { "position": 2, "itemId": "mods-51331" },
+        { "position": 3, "itemId": "mods-51411" },
+        { "position": 4, "itemId": "mods-51712" },
+        { "position": 5, "itemId": "mods-56112" },
+        { "position": 6, "itemId": "mods-51711" },
+        { "position": 7, "itemId": "mods-51711" },
+        { "position": 8, "itemId": "mods-51711" }
+      ],
+      "centerItemId": "mods-31531",
+      "affinity": { "FR": "Pouvoir de Quetzalcoatl", "EN": "Feathered Serpent's Power" },
+      "note": { "FR": "Focus Degats + Morale. 3x Scorch.", "EN": "Focus Skill DMG + Morale. 3x Scorch." }
+    },
+    "statsPriority": ["SkillDmg", "ATK", "MaxSp", "SkillEfficiency", "CritRate"],
+    "team": [
+      { "characterId": "char-feina", "role": "Support", "note": { "FR": "Support polyvalent.", "EN": "Versatile support." } },
+      { "characterId": "char-maer", "role": "Sub-DPS", "note": { "FR": "Option F2P. DPS secondaire.", "EN": "F2P option. Secondary DPS." } }
+    ],
+    "genimon": [
+      { "itemId": "genimon-4211", "rank": "best" },
+      { "itemId": "genimon-4111", "rank": "alternative" },
+      { "itemId": "genimon-4011", "rank": "alternative" }
+    ],
+    "skillPriority": [
+      { "skillName": { "FR": "Flammes Infernales", "EN": "Netherflames" }, "priority": 5, "note": { "FR": "Source principale de degats mono-cible.", "EN": "Main single-target damage source." } },
+      { "skillName": { "FR": "Lueur Pale", "EN": "Faintlight" }, "priority": 4, "note": { "FR": "Mobilite et degats de zone.", "EN": "Mobility and AoE damage." } },
+      { "skillName": { "FR": "Recuperation", "EN": "Recuperation" }, "priority": 3, "note": { "FR": "Restauration de Lucidite.", "EN": "Sanity restoration." } }
+    ],
+    "notes": {
+      "FR": "Berenica est une DPS Umbro mono-cible via Flammes Infernales. Priorisez Degats de competence et ATQ. Lueur Pale pour mobilite, Recuperation pour Lucidite.",
+      "EN": "Berenica is an Umbro single-target DPS through Netherflames. Prioritize Skill DMG and ATK. Faintlight for mobility, Recuperation for Sanity."
+    }
+  }
+]

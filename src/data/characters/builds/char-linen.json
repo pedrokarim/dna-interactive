@@ -1,0 +1,51 @@
+[
+  {
+    "characterId": "char-linen",
+    "buildName": { "FR": "DPS Pyro", "EN": "Pyro DPS" },
+    "weapons": {
+      "melee": [
+        { "itemId": "weapons-10206", "rank": "best", "note": { "FR": "Degats de competence +48%.", "EN": "Skill Damage +48%." } },
+        { "itemId": "weapons-10303", "rank": "alternative", "note": { "FR": "Duree +36%. Prolonge Ballet explosif.", "EN": "Duration +36%. Extends Gunpowder Revelry." } }
+      ],
+      "ranged": [
+        { "itemId": "weapons-20203", "rank": "best", "note": { "FR": "Arme signature. Duree + buff degats pistolets (90%).", "EN": "Signature weapon. Duration + dual pistol damage buff (90%)." } },
+        { "itemId": "weapons-20201", "rank": "alternative", "note": { "FR": "Degats de competence +48%.", "EN": "Skill Damage +48%." } },
+        { "itemId": "weapons-20102", "rank": "alternative", "note": { "FR": "ATQ +120%. Stat-stick.", "EN": "ATK +120%. Stat-stick." } }
+      ]
+    },
+    "demonWedges": {
+      "slots": [
+        { "position": 1, "itemId": "mods-51931" },
+        { "position": 2, "itemId": "mods-51333" },
+        { "position": 3, "itemId": "mods-51431" },
+        { "position": 4, "itemId": "mods-56131" },
+        { "position": 5, "itemId": "mods-51732" },
+        { "position": 6, "itemId": "mods-51732" },
+        { "position": 7, "itemId": "mods-51732" },
+        { "position": 8, "itemId": "mods-51732" }
+      ],
+      "centerItemId": "mods-31531",
+      "affinity": { "FR": "Pouvoir de Quetzalcoatl", "EN": "Feathered Serpent's Power" },
+      "note": { "FR": "Focus ATQ + Intensite. 4x Blaze Eternity.", "EN": "Focus ATK + Intensity. 4x Blaze Eternity." }
+    },
+    "statsPriority": ["SkillIntensity", "ATK", "SkillSustain", "SkillEfficiency"],
+    "team": [
+      { "characterId": "char-feina", "role": "Support", "note": { "FR": "Buffs Degats d'arme. Synergie parfaite.", "EN": "Weapon DMG buffs. Perfect synergy." } },
+      { "characterId": "char-baiheng", "role": "Support", "note": { "FR": "Soins, Lucidite et Intensite.", "EN": "Healing, Sanity and Intensity." } }
+    ],
+    "genimon": [
+      { "itemId": "genimon-4231", "rank": "best" },
+      { "itemId": "genimon-4031", "rank": "alternative" },
+      { "itemId": "genimon-4131", "rank": "alternative" }
+    ],
+    "skillPriority": [
+      { "skillName": { "FR": "Ballet explosif", "EN": "Gunpowder Revelry" }, "priority": 5, "note": { "FR": "Competence principale — Hansel et Gretel pour DPS soutenu.", "EN": "Main skill — Hansel and Gretel for sustained DPS." } },
+      { "skillName": { "FR": "Rafale tactique", "EN": "Tactical Rapid Fire" }, "priority": 4, "note": { "FR": "Passif qui augmente les degats via Prechargement.", "EN": "Passive that boosts damage through Preload stacks." } },
+      { "skillName": { "FR": "Floraison fatale", "EN": "Deadly Blossom" }, "priority": 3, "note": { "FR": "Dash offensif. Secondaire.", "EN": "Offensive dash. Secondary." } }
+    ],
+    "notes": {
+      "FR": "Lynn est une DPS Pyro axee Degats d'arme. Ballet explosif → mode Hansel et Gretel (consomme Lucidite). Accumulez Prechargement puis Tir suppressif pour le burst. Avec Fina et Fushu.",
+      "EN": "Lynn is a Pyro Weapon DMG DPS. Gunpowder Revelry → Hansel and Gretel mode (consumes Sanity). Accumulate Preload then Suppressing Fire for burst. With Fina and Fushu."
+    }
+  }
+]

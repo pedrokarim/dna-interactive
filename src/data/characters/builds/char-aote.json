@@ -1,0 +1,51 @@
+[
+  {
+    "characterId": "char-aote",
+    "buildName": { "FR": "DPS Anemo", "EN": "Anemo DPS" },
+    "weapons": {
+      "melee": [
+        { "itemId": "weapons-10402", "rank": "best", "note": { "FR": "Meilleure arme melee. Synergie parfaite.", "EN": "Best melee weapon. Perfect synergy." } },
+        { "itemId": "weapons-10601", "rank": "alternative", "note": { "FR": "Excellente alternative.", "EN": "Excellent alternative." } },
+        { "itemId": "weapons-10204", "rank": "alternative", "note": { "FR": "Option polyvalente.", "EN": "Versatile option." } }
+      ],
+      "ranged": [
+        { "itemId": "weapons-20102", "rank": "best", "note": { "FR": "Meilleure arme a distance pour Outsider.", "EN": "Best ranged weapon for Outsider." } },
+        { "itemId": "weapons-20201", "rank": "alternative", "note": { "FR": "Bonne alternative.", "EN": "Good alternative." } }
+      ]
+    },
+    "demonWedges": {
+      "slots": [
+        { "position": 1, "itemId": "mods-51335" },
+        { "position": 2, "itemId": "mods-51453" },
+        { "position": 3, "itemId": "mods-51753" },
+        { "position": 4, "itemId": "mods-51753" },
+        { "position": 5, "itemId": "mods-51752" },
+        { "position": 6, "itemId": "mods-51752" },
+        { "position": 7, "itemId": "mods-51752" },
+        { "position": 8, "itemId": "mods-51752" }
+      ],
+      "centerItemId": "mods-31502",
+      "affinity": { "FR": "Piste d'Assaut", "EN": "Assault Track" },
+      "note": { "FR": "Focus degats Anemo via Tenacite et Volonte. 4x Blaze Resolve.", "EN": "Focus Anemo damage via Resolve and Volition. 4x Blaze Resolve." }
+    },
+    "statsPriority": ["ATK", "SkillDmg", "CritRate", "CritDmg", "SkillEfficiency"],
+    "team": [
+      { "characterId": "char-songlu", "role": "Support", "note": { "FR": "Buff de Tenacite et soutien offensif.", "EN": "Resolve buff and offensive support." } },
+      { "characterId": "char-feina", "role": "Support", "note": { "FR": "Support polyvalent avec buffs offensifs.", "EN": "Versatile support with offensive buffs." } }
+    ],
+    "genimon": [
+      { "itemId": "genimon-4251", "rank": "best" },
+      { "itemId": "genimon-4051", "rank": "alternative" },
+      { "itemId": "genimon-4151", "rank": "alternative" }
+    ],
+    "skillPriority": [
+      { "skillName": { "FR": "Bond du Predateur", "EN": "Predator's Pounce" }, "priority": 5, "note": { "FR": "Ultime — source principale de degats.", "EN": "Ultimate — primary damage source." } },
+      { "skillName": { "FR": "Croc pour Croc", "EN": "Fang for Fang" }, "priority": 5, "note": { "FR": "Passif essentiel qui amplifie les degats.", "EN": "Essential passive that amplifies damage." } },
+      { "skillName": { "FR": "Traque Furtive", "EN": "Stealthy Prowl" }, "priority": 3, "note": { "FR": "Utilitaire secondaire.", "EN": "Secondary utility." } }
+    ],
+    "notes": {
+      "FR": "Outsider est un DPS Anemo specialise dans les degats soutenus. Midnight Sun + Huntdown pour les degats, Volition + Resolve pour ATQ et critiques.",
+      "EN": "Outsider is an Anemo DPS specialized in sustained damage. Midnight Sun + Huntdown for damage, Volition + Resolve for ATK and crits."
+    }
+  }
+]

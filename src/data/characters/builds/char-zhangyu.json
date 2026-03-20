@@ -1,0 +1,50 @@
+[
+  {
+    "characterId": "char-zhangyu",
+    "buildName": { "FR": "Support Degats de Competence", "EN": "Skill DMG Support" },
+    "weapons": {
+      "melee": [
+        { "itemId": "weapons-10502", "rank": "best", "note": { "FR": "Meilleure arme support. Degats de competence +40% et buff Intensite sur CRIT Hydro.", "EN": "Best support weapon. Skill Damage +40% and Skill Intensity buff on Hydro CRIT." } },
+        { "itemId": "weapons-10102", "rank": "alternative", "note": { "FR": "Arme signature. Probabilite de declenchement et ATQ allies.", "EN": "Signature weapon. Trigger Probability and allies ATK boost." } }
+      ],
+      "ranged": [
+        { "itemId": "weapons-20602", "rank": "best", "note": { "FR": "Duree +30%. CRITs donnent un buff aleatoire aux allies.", "EN": "Duration +30%. CRITs randomly grant allies a buff." } },
+        { "itemId": "weapons-20205", "rank": "alternative", "note": { "FR": "Alternative a distance.", "EN": "Ranged alternative." } }
+      ]
+    },
+    "demonWedges": {
+      "slots": [
+        { "position": 1, "itemId": "mods-51922" },
+        { "position": 2, "itemId": "mods-51332" },
+        { "position": 3, "itemId": "mods-51424" },
+        { "position": 4, "itemId": "mods-56124" },
+        { "position": 5, "itemId": "mods-51723" },
+        { "position": 6, "itemId": "mods-51723" },
+        { "position": 7, "itemId": "mods-51723" },
+        { "position": 8, "itemId": "mods-51723" }
+      ],
+      "centerItemId": "mods-31525",
+      "affinity": { "FR": "Sauvetage de Quetzalcoatl", "EN": "Feathered Serpent's Rescue" },
+      "note": { "FR": "Focus Degats de competence et Duree. 4x Blaze Inspo.", "EN": "Focus Skill DMG and Duration. 4x Blaze Inspo." }
+    },
+    "statsPriority": ["SkillDmg", "SkillSustain", "ATK", "CritRate", "MaxHp"],
+    "team": [
+      { "characterId": "char-nifu", "role": "DPS", "note": { "FR": "DPS principal.", "EN": "Main DPS." } },
+      { "characterId": "char-baiheng", "role": "Support", "note": { "FR": "Second support. Soins et Lucidite.", "EN": "Second support. Healing and Sanity." } }
+    ],
+    "genimon": [
+      { "itemId": "genimon-4261", "rank": "best" },
+      { "itemId": "genimon-4221", "rank": "alternative" },
+      { "itemId": "genimon-4021", "rank": "alternative" }
+    ],
+    "skillPriority": [
+      { "skillName": { "FR": "Specialite de Tabethe !", "EN": "Tabethe's Specialty!" }, "priority": 5, "note": { "FR": "Buff principal : Tentacules + Degats de competence equipe.", "EN": "Primary buff: Tentacles + team Skill DMG." } },
+      { "skillName": { "FR": "Bagarre pour la Justice !", "EN": "Brawl for Justice!" }, "priority": 3, "note": { "FR": "Ultime — 9 Tentacules pour le CC.", "EN": "Ultimate — 9 Tentacles for CC." } },
+      { "skillName": { "FR": "Les Ruses du Voyage !", "EN": "Have Tricks, Will Travel!" }, "priority": 3, "note": { "FR": "Passif : genere des Tentacules via CRITs (max 18).", "EN": "Passive: generates Tentacles via CRITs (max 18)." } }
+    ],
+    "notes": {
+      "FR": "Tabethe est un support Degats de competence. Deployez-la comme Partenaire de Combat. Armes a distance pour generer des Tentacules via CRITs (max 18). Ultime pour 9 supplementaires. Avec Lady Nifle/Rebecca + Fushu.",
+      "EN": "Tabethe is a Skill DMG support. Deploy as Combat Partner. Ranged weapons to generate Tentacles via CRITs (max 18). Ultimate for 9 more. With Lady Nifle/Rebecca + Fushu."
+    }
+  }
+]
