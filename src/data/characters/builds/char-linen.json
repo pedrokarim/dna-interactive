@@ -39,9 +39,9 @@
       { "itemId": "genimon-4131", "rank": "alternative" }
     ],
     "skillPriority": [
-      { "skillName": { "FR": "Ballet explosif", "EN": "Gunpowder Revelry" }, "priority": 5, "note": { "FR": "Competence principale — Hansel et Gretel pour DPS soutenu.", "EN": "Main skill — Hansel and Gretel for sustained DPS." } },
-      { "skillName": { "FR": "Rafale tactique", "EN": "Tactical Rapid Fire" }, "priority": 4, "note": { "FR": "Passif qui augmente les degats via Prechargement.", "EN": "Passive that boosts damage through Preload stacks." } },
-      { "skillName": { "FR": "Floraison fatale", "EN": "Deadly Blossom" }, "priority": 3, "note": { "FR": "Dash offensif. Secondaire.", "EN": "Offensive dash. Secondary." } }
+      { "skillName": { "FR": "Ballet explosif", "EN": "Gunpowder Revelry" }, "skillIndex": 1, "priority": 5, "note": { "FR": "Competence principale — Hansel et Gretel pour DPS soutenu.", "EN": "Main skill — Hansel and Gretel for sustained DPS." } },
+      { "skillName": { "FR": "Rafale tactique", "EN": "Tactical Rapid Fire" }, "skillIndex": 2, "priority": 4, "note": { "FR": "Passif qui augmente les degats via Prechargement.", "EN": "Passive that boosts damage through Preload stacks." } },
+      { "skillName": { "FR": "Floraison fatale", "EN": "Deadly Blossom" }, "skillIndex": 3, "priority": 3, "note": { "FR": "Dash offensif. Secondaire.", "EN": "Offensive dash. Secondary." } }
     ],
     "consonanceWeapon": {
       "name": { "FR": "Hansel et Gretel", "EN": "Hansel and Gretel" },

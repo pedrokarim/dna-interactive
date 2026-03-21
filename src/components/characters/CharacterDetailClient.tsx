@@ -484,11 +484,13 @@ function BuildTabContent({
   characterElement,
   selectedLanguage,
   onNavigateToStats,
+  skillIcons,
 }: {
   builds: CharacterBuild[];
   characterElement: string;
   selectedLanguage: string;
   onNavigateToStats?: () => void;
+  skillIcons?: { skill1: { publicPath: string | null }; skill2: { publicPath: string | null }; skill3: { publicPath: string | null } };
 }) {
   const [activeBuildIndex, setActiveBuildIndex] = useState(0);
   const [showTrackAdjust, setShowTrackAdjust] = useState(true);
@@ -876,6 +878,16 @@ function BuildTabContent({
                   key={i}
                   className="flex items-center gap-3 rounded-lg border border-slate-700/60 bg-slate-950/55 px-4 py-2.5"
                 >
+                  {(() => {
+                    const idx = s.skillIndex;
+                    const iconKey = idx === 1 ? "skill1" : idx === 2 ? "skill2" : idx === 3 ? "skill3" : null;
+                    const iconSrc = iconKey ? skillIcons?.[iconKey]?.publicPath : null;
+                    return iconSrc ? (
+                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-slate-600/60 bg-slate-800/80">
+                        <img src={iconSrc} alt="" className="h-6 w-6 object-contain" />
+                      </div>
+                    ) : null;
+                  })()}
                   <div className="flex gap-0.5">
                     {Array.from({ length: 5 }, (_, j) => (
                       <span
@@ -1482,6 +1494,30 @@ export default function CharacterDetailClient({
               </div>
             </div>
           )}
+          {/* Skill Icons */}
+          {(character.skillIcons.skill1.publicPath || character.skillIcons.skill2.publicPath || character.skillIcons.skill3.publicPath) && (
+            <div className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
+              <h2 className="flex items-center gap-2 text-lg font-semibold text-white">
+                <Sparkles className="h-4 w-4 text-indigo-400/80" />
+                Competences
+              </h2>
+              <div className="mt-4 flex flex-wrap gap-4">
+                {([["skill1", "Comp. 1"], ["skill2", "Comp. 2"], ["skill3", "Comp. 3"]] as const).map(([key, label]) => {
+                  const icon = character.skillIcons[key].publicPath;
+                  if (!icon) return null;
+                  return (
+                    <div key={key} className="flex flex-col items-center gap-2">
+                      <div className="flex h-16 w-16 items-center justify-center rounded-full border border-slate-600/60 bg-slate-800/80">
+                        <img src={icon} alt={label} className="h-10 w-10 object-contain" />
+                      </div>
+                      <span className="text-xs text-slate-400">{label}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
           {/* Consonance Weapon info box */}
           {character.consonanceWeapons?.length > 0 && (
             <div className="rounded-xl border border-purple-500/30 bg-purple-500/5 p-5">
@@ -1531,6 +1567,7 @@ export default function CharacterDetailClient({
           characterElement={character.element.key}
           selectedLanguage={selectedLanguage}
           onNavigateToStats={() => setActiveTab("stats")}
+          skillIcons={character.skillIcons}
         />
       )}
 

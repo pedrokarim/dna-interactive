@@ -93,6 +93,11 @@ export interface CharacterRecord {
   textKeys: CharacterTextKeys;
   portraits: CharacterPortraits;
   consonanceWeapons: CharacterConsonanceWeapon[];
+  skillIcons: {
+    skill1: CharacterPortrait;
+    skill2: CharacterPortrait;
+    skill3: CharacterPortrait;
+  };
   translations: Record<string, CharacterLocalizedContent>;
 }
 

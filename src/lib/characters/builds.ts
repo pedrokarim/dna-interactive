@@ -44,6 +44,7 @@ interface RawGenimonEntry {
 
 interface RawSkillPriority {
   skillName: RawLocalizedText;
+  skillIndex?: number;
   priority: number;
   note?: RawLocalizedText;
 }
@@ -124,6 +125,7 @@ export interface BuildGenimonEntry {
 
 export interface BuildSkillPriority {
   skillName: RawLocalizedText;
+  skillIndex?: number;
   priority: number;
   note: RawLocalizedText;
 }
@@ -248,6 +250,7 @@ export function getCharacterBuilds(characterId: string): CharacterBuild[] {
       })),
       skillPriority: (raw.skillPriority ?? []).map((s) => ({
         skillName: s.skillName ?? {},
+        skillIndex: s.skillIndex,
         priority: s.priority,
         note: s.note ?? {},
       })),
