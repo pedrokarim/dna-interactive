@@ -92,7 +92,16 @@ export interface CharacterRecord {
   ascensionLevels: number[];
   textKeys: CharacterTextKeys;
   portraits: CharacterPortraits;
+  consonanceWeapons: CharacterConsonanceWeapon[];
   translations: Record<string, CharacterLocalizedContent>;
+}
+
+export interface CharacterConsonanceWeapon {
+  weaponId: number;
+  nameKey: string | null;
+  rarity: number;
+  icon: { publicPath: string | null };
+  translations: Record<string, { name: string | null }>;
 }
 
 export interface CharactersCatalog {

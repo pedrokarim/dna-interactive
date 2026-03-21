@@ -43,13 +43,9 @@
       { "skillName": { "FR": "Chrysalide Onirique", "EN": "Chrysalis Dreamweave" }, "priority": 4, "note": { "FR": "Augmente les degats et la vulnerabilite des ennemis.", "EN": "Increases damage and enemy vulnerability." } }
     ],
     "consonanceWeapon": {
-      "name": { "FR": "Aile de Papillon", "EN": "Butterfly Wing" },
-      "slots": [
-        { "name": { "FR": "Impulsion de Sphinx", "EN": "Eldtrich Sphinx's Impetus" } },
-        { "name": { "FR": "Penetration de Sphinx", "EN": "Eldtrich Sphinx's Penetration" } },
-        { "name": { "FR": "Repli de Sphinx", "EN": "Eldtrich Sphinx's Foldover" } },
-        { "name": { "FR": "Entrave de Sphinx", "EN": "Eldtrich Sphinx's Trammel" } }
-      ]
+      "name": { "FR": "Icare", "EN": "Icarus" },
+      "icon": "/assets/weapons/consonance/T_Head_Saiqi_WP.png",
+      "slots": ["mods-55102", "mods-55001", "mods-55002", "mods-55004"]
     },
     "notes": {
       "FR": "Psyche est une DPS centree sur son ultime et son arme de consonance. Durant Flamboyance, spammez les attaques a distance en consommant des PV (convertis en bouclier). L'Intron 1 est essentiel pour la restauration de PV en vol.",

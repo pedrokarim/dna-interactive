@@ -61,7 +61,8 @@ interface RawCharacterBuild {
   skillPriority?: RawSkillPriority[];
   consonanceWeapon?: {
     name: RawLocalizedText;
-    slots: { name: RawLocalizedText }[];
+    icon?: string;
+    slots: string[];
   };
   notes?: RawLocalizedText;
 }
@@ -138,7 +139,8 @@ export interface CharacterBuild {
   skillPriority: BuildSkillPriority[];
   consonanceWeapon: {
     name: RawLocalizedText;
-    slots: { name: RawLocalizedText }[];
+    icon: string | null;
+    slots: ResolvedItemRef[];
   } | null;
   notes: RawLocalizedText;
 }
@@ -247,7 +249,10 @@ export function getCharacterBuilds(characterId: string): CharacterBuild[] {
       consonanceWeapon: raw.consonanceWeapon
         ? {
             name: raw.consonanceWeapon.name ?? {},
-            slots: (raw.consonanceWeapon.slots ?? []).map((s) => ({ name: s.name ?? {} })),
+            icon: raw.consonanceWeapon.icon ?? null,
+            slots: (raw.consonanceWeapon.slots ?? [])
+              .map((itemId) => resolveItemRef("mods", itemId))
+              .filter((ref): ref is ResolvedItemRef => ref !== null),
           }
         : null,
       notes: raw.notes ?? {},

@@ -45,12 +45,8 @@
     ],
     "consonanceWeapon": {
       "name": { "FR": "Hansel et Gretel", "EN": "Hansel and Gretel" },
-      "slots": [
-        { "name": { "FR": "Impulsion de Lilith", "EN": "Eldtrich Lilith's Impetus" } },
-        { "name": { "FR": "Penetration de Lilith", "EN": "Eldtrich Lilith's Penetration" } },
-        { "name": { "FR": "Repli de Lilith", "EN": "Eldtrich Lilith's Foldover" } },
-        { "name": { "FR": "Entrave de Lilith", "EN": "Eldtrich Lilith's Trammel" } }
-      ]
+      "icon": "/assets/weapons/consonance/T_Head_Linen_WP.png",
+      "slots": ["mods-55001", "mods-55102", "mods-55005", "mods-55006"]
     },
     "notes": {
       "FR": "Lynn est une DPS Pyro axee Degats d'arme. Ballet explosif → mode Hansel et Gretel (consomme Lucidite). Accumulez Prechargement puis Tir suppressif pour le burst. Avec Fina et Fushu.",

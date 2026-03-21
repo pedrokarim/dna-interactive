@@ -44,13 +44,9 @@
       { "skillName": { "FR": "Recuperation", "EN": "Recuperation" }, "priority": 3, "note": { "FR": "Restauration de Lucidite.", "EN": "Sanity restoration." } }
     ],
     "consonanceWeapon": {
-      "name": { "FR": "Serre Cardinale", "EN": "Cardinal Talon" },
-      "slots": [
-        { "name": { "FR": "Impulsion de Fenrir", "EN": "Eldtrich Fenrir's Impetus" } },
-        { "name": { "FR": "Penetration de Fenrir", "EN": "Eldtrich Fenrir's Penetration" } },
-        { "name": { "FR": "Repli de Fenrir", "EN": "Eldtrich Fenrir's Foldover" } },
-        { "name": { "FR": "Entrave de Fenrir", "EN": "Eldtrich Fenrir's Trammel" } }
-      ]
+      "name": { "FR": "Ymir", "EN": "Ymir" },
+      "icon": "/assets/weapons/consonance/T_Head_Heitao_WP.png",
+      "slots": ["mods-54004", "mods-54001", "mods-54101", "mods-54006"]
     },
     "notes": {
       "FR": "Berenica est une DPS Umbro mono-cible via Flammes Infernales. Priorisez Degats de competence et ATQ. Lueur Pale pour mobilite, Recuperation pour Lucidite.",

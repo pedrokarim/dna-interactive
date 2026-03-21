@@ -272,7 +272,7 @@ function DemonWedgeSlotCard({
 
   const card = (
     <div
-      className={`relative h-28 w-20 border-2 shadow-lg sm:h-32 sm:w-[5.5rem] ${borderColor}`}
+      className={`relative h-36 w-[6.5rem] border-2 shadow-lg sm:h-44 sm:w-32 ${borderColor}`}
       style={{
         clipPath: clip,
         background: "linear-gradient(135deg, rgba(15,23,42,0.9), rgba(30,41,59,0.95))",
@@ -286,14 +286,14 @@ function DemonWedgeSlotCard({
         <img
           src={icon}
           alt={name}
-          className="h-12 w-12 object-contain drop-shadow-lg sm:h-14 sm:w-14"
+          className="h-14 w-14 object-contain drop-shadow-lg sm:h-[4.5rem] sm:w-[4.5rem]"
         />
       </div>
       {trackIconSrc && (
         <img
           src={trackIconSrc}
           alt=""
-          className="absolute right-1 top-1 h-4 w-4 object-contain opacity-80 sm:h-5 sm:w-5"
+          className="absolute right-1.5 top-1.5 h-5 w-5 object-contain opacity-80 sm:h-6 sm:w-6"
         />
       )}
     </div>
@@ -329,7 +329,7 @@ function DemonWedgeSlotCard({
       ) : (
         card
       )}
-      <p className="max-w-[6rem] truncate text-center text-[11px] text-slate-300">{name}</p>
+      <p className="max-w-[8rem] truncate text-center text-xs text-slate-300">{name}</p>
       {tooltip}
     </div>
   );
@@ -352,7 +352,7 @@ function DemonWedgeCenterSlot({
   const href = centerItem?.href;
 
   const circle = (
-    <div className="relative h-24 w-24">
+    <div className="relative h-28 w-28 sm:h-32 sm:w-32">
       <img src={circleSrc} alt="" className="absolute inset-0 h-full w-full object-contain opacity-60" />
       <img src={ARMORY_MOD_GLOW} alt="" className="absolute inset-0 h-full w-full object-contain opacity-30" />
       <img src={icon} alt={name ?? ""} className="absolute inset-[18%] h-[64%] w-[64%] object-contain drop-shadow-lg" />
@@ -606,23 +606,65 @@ function BuildTabContent({
             <Swords className="h-4 w-4 text-indigo-400/80" />
             Arme de Consonance
           </h2>
-          <p className="mt-2 text-sm font-medium text-slate-200">
-            <BuildLocalizedText texts={build.consonanceWeapon.name} lang={selectedLanguage} />
-          </p>
-          {build.consonanceWeapon.slots.length > 0 && (
-            <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
-              {build.consonanceWeapon.slots.map((s, i) => (
+          {build.consonanceWeapon.slots.length > 0 && (() => {
+            const cw = build.consonanceWeapon!;
+            const weaponIcon = cw.icon;
+
+            const renderSlot = (s: typeof cw.slots[number], idx: number, clip: string) => (
+              <div key={idx} className="flex flex-col items-center gap-1.5">
                 <div
-                  key={i}
-                  className="rounded-lg border border-purple-500/30 bg-purple-500/10 px-3 py-2 text-center"
+                  className="relative flex h-36 w-[6.5rem] items-center justify-center border-2 border-purple-500/50 shadow-lg shadow-purple-500/20 sm:h-44 sm:w-32"
+                  style={{ clipPath: clip, background: "linear-gradient(135deg, rgba(15,23,42,0.9), rgba(30,20,50,0.95))" }}
                 >
-                  <p className="text-xs font-medium text-purple-200">
-                    <BuildLocalizedText texts={s.name} lang={selectedLanguage} />
-                  </p>
+                  <div className="absolute inset-0 bg-gradient-to-b from-purple-500/15 to-purple-900/30" style={{ clipPath: clip }} />
+                  <img src={s.icon} alt={s.name} className="h-14 w-14 object-contain drop-shadow-lg sm:h-[4.5rem] sm:w-[4.5rem]" />
                 </div>
-              ))}
-            </div>
-          )}
+                <p className="max-w-[8rem] truncate text-center text-xs text-slate-300">{s.name}</p>
+              </div>
+            );
+
+            return (
+              <div className="mt-6 flex flex-col items-center gap-6">
+                {/* Desktop */}
+                <div className="hidden items-center justify-center gap-6 md:flex">
+                  <div className="flex gap-3">
+                    {cw.slots.slice(0, 2).map((s, i) => renderSlot(s, i, CLIP_LEFT))}
+                  </div>
+                  <div className="flex flex-col items-center gap-2 px-4">
+                    <div className="flex h-28 w-28 items-center justify-center rounded-full border-2 border-purple-400/50 bg-purple-500/10 shadow-lg shadow-purple-500/20 sm:h-32 sm:w-32">
+                      {weaponIcon ? (
+                        <img src={weaponIcon} alt="" className="h-16 w-16 object-contain drop-shadow-lg sm:h-20 sm:w-20" />
+                      ) : (
+                        <Swords className="h-12 w-12 text-purple-300 sm:h-14 sm:w-14" />
+                      )}
+                    </div>
+                    <p className="max-w-[10rem] text-center text-sm font-medium text-purple-200">
+                      <BuildLocalizedText texts={cw.name} lang={selectedLanguage} />
+                    </p>
+                  </div>
+                  <div className="flex gap-3">
+                    {cw.slots.slice(2, 4).map((s, i) => renderSlot(s, i, CLIP_RIGHT))}
+                  </div>
+                </div>
+                {/* Mobile */}
+                <div className="grid w-full grid-cols-2 place-items-center gap-4 md:hidden">
+                  {cw.slots.map((s, i) => renderSlot(s, i, i < 2 ? CLIP_LEFT : CLIP_RIGHT))}
+                  <div className="col-span-2 flex flex-col items-center gap-1">
+                    <div className="flex h-20 w-20 items-center justify-center rounded-full border-2 border-purple-400/50 bg-purple-500/10">
+                      {weaponIcon ? (
+                        <img src={weaponIcon} alt="" className="h-12 w-12 object-contain" />
+                      ) : (
+                        <Swords className="h-10 w-10 text-purple-300" />
+                      )}
+                    </div>
+                    <p className="text-sm font-medium text-purple-200">
+                      <BuildLocalizedText texts={cw.name} lang={selectedLanguage} />
+                    </p>
+                  </div>
+                </div>
+              </div>
+            );
+          })()}
         </section>
       )}
 
@@ -1076,6 +1118,28 @@ export default function CharacterDetailClient({
                   {wt}
                 </span>
               ))}
+
+              {character.consonanceWeapons?.length > 0 &&
+                character.consonanceWeapons.map((cw) => {
+                  const cwName =
+                    cw.translations[selectedLanguage]?.name ??
+                    cw.translations.EN?.name ??
+                    cw.translations.FR?.name ??
+                    `CW #${cw.weaponId}`;
+                  return (
+                    <span
+                      key={cw.weaponId}
+                      className="inline-flex items-center gap-1.5 rounded-full border border-purple-400/40 bg-purple-500/15 px-3 py-1 text-purple-200"
+                    >
+                      {cw.icon.publicPath ? (
+                        <img src={cw.icon.publicPath} alt="" className="h-4 w-4 object-contain" />
+                      ) : (
+                        <Swords className="h-3 w-3" />
+                      )}
+                      {cwName}
+                    </span>
+                  );
+                })}
 
               {translation.campName && (
                 <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-600/80 px-3 py-1 text-slate-300">

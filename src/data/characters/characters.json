@@ -136,6 +136,7 @@
         "publicPath": "/assets/characters/charpiece/T_CharPiece_Lise.png"
       }
     },
+    "consonanceWeapons": [],
     "translations": {
       "DE": {
         "name": "Rhythm",
@@ -332,6 +333,7 @@
         "publicPath": "/assets/characters/charpiece/T_CharPiece_Landi.png"
       }
     },
+    "consonanceWeapons": [],
     "translations": {
       "DE": {
         "name": "Randy",
@@ -527,6 +529,7 @@
         "publicPath": "/assets/characters/charpiece/T_CharPiece_Aote.png"
       }
     },
+    "consonanceWeapons": [],
     "translations": {
       "DE": {
         "name": "Outsider",
@@ -717,6 +720,7 @@
         "publicPath": "/assets/characters/charpiece/T_CharPiece_Dafu.png"
       }
     },
+    "consonanceWeapons": [],
     "translations": {
       "DE": {
         "name": "Daphne",
@@ -906,6 +910,7 @@
         "publicPath": "/assets/characters/charpiece/T_CharPiece_Yeer.png"
       }
     },
+    "consonanceWeapons": [],
     "translations": {
       "DE": {
         "name": "Yale und Oliver",
@@ -1096,6 +1101,7 @@
         "publicPath": "/assets/characters/charpiece/T_CharPiece_Haier.png"
       }
     },
+    "consonanceWeapons": [],
     "translations": {
       "DE": {
         "name": "Hellfire",
@@ -1286,6 +1292,7 @@
         "publicPath": "/assets/characters/charpiece/T_CharPiece_Maer.png"
       }
     },
+    "consonanceWeapons": [],
     "translations": {
       "DE": {
         "name": "Margie",
@@ -1482,6 +1489,39 @@
         "publicPath": "/assets/characters/charpiece/T_CharPiece_Heitao.png"
       }
     },
+    "consonanceWeapons": [
+      {
+        "weaponId": 110101,
+        "nameKey": "UI_WEAPON_NAME_110101",
+        "rarity": 5,
+        "icon": {
+          "publicPath": "/assets/weapons/consonance/T_Head_Heitao_WP.png"
+        },
+        "translations": {
+          "DE": {
+            "name": "Ymir"
+          },
+          "EN": {
+            "name": "Ymir"
+          },
+          "ES": {
+            "name": "Ymir"
+          },
+          "FR": {
+            "name": "Ymir"
+          },
+          "JP": {
+            "name": "ユミル"
+          },
+          "KR": {
+            "name": "이미르"
+          },
+          "TC": {
+            "name": "伊彌爾"
+          }
+        }
+      }
+    ],
     "translations": {
       "DE": {
         "name": "Berenica",
@@ -1677,6 +1717,7 @@
         "publicPath": "/assets/characters/charpiece/T_CharPiece_Tuosi.png"
       }
     },
+    "consonanceWeapons": [],
     "translations": {
       "DE": {
         "name": "Phantasio",
@@ -1838,6 +1879,7 @@
         "publicPath": "/assets/characters/charpiece/T_CharPiece_Kami.png"
       }
     },
+    "consonanceWeapons": [],
     "translations": {
       "DE": {
         "name": "Camilla",
@@ -2032,6 +2074,7 @@
         "publicPath": "/assets/characters/charpiece/T_CharPiece_Zhangyu.png"
       }
     },
+    "consonanceWeapons": [],
     "translations": {
       "DE": {
         "name": "Tabethe",
@@ -2221,6 +2264,7 @@
         "publicPath": "/assets/characters/charpiece/T_CharPiece_Zhiliu.png"
       }
     },
+    "consonanceWeapons": [],
     "translations": {
       "DE": {
         "name": "Zhiliu",
@@ -2411,6 +2455,7 @@
         "publicPath": "/assets/characters/charpiece/T_CharPiece_Xibi.png"
       }
     },
+    "consonanceWeapons": [],
     "translations": {
       "DE": {
         "name": "Sibylle",
@@ -2601,6 +2646,7 @@
         "publicPath": "/assets/characters/charpiece/T_CharPiece_Yuming.png"
       }
     },
+    "consonanceWeapons": [],
     "translations": {
       "DE": {
         "name": "Yuming",
@@ -2796,6 +2842,39 @@
         "publicPath": "/assets/characters/charpiece/T_CharPiece_Linen.png"
       }
     },
+    "consonanceWeapons": [
+      {
+        "weaponId": 310101,
+        "nameKey": "UI_WEAPON_NAME_310101",
+        "rarity": 5,
+        "icon": {
+          "publicPath": "/assets/weapons/consonance/T_Head_Linen_WP.png"
+        },
+        "translations": {
+          "DE": {
+            "name": "Hansel und Gretel"
+          },
+          "EN": {
+            "name": "Hansel and Gretel"
+          },
+          "ES": {
+            "name": "Hansel y Gretel"
+          },
+          "FR": {
+            "name": "Hansel et Gretel"
+          },
+          "JP": {
+            "name": "ヘンゼル&グレーテル"
+          },
+          "KR": {
+            "name": "헨젤과 그레텔"
+          },
+          "TC": {
+            "name": "漢塞爾與格雷特"
+          }
+        }
+      }
+    ],
     "translations": {
       "DE": {
         "name": "Lynn",
@@ -2986,6 +3065,7 @@
         "publicPath": "/assets/characters/charpiece/T_CharPiece_Shuimu.png"
       }
     },
+    "consonanceWeapons": [],
     "translations": {
       "DE": {
         "name": "Rebecca",
@@ -3116,6 +3196,7 @@
         "publicPath": null
       }
     },
+    "consonanceWeapons": [],
     "translations": {
       "DE": {
         "name": "Yvaine",
@@ -3312,6 +3393,7 @@
         "publicPath": "/assets/characters/charpiece/T_CharPiece_Xier.png"
       }
     },
+    "consonanceWeapons": [],
     "translations": {
       "DE": {
         "name": "Hilda",
@@ -3507,6 +3589,7 @@
         "publicPath": "/assets/characters/charpiece/T_CharPiece_Songlu.png"
       }
     },
+    "consonanceWeapons": [],
     "translations": {
       "DE": {
         "name": "Truffle und Filbert",
@@ -3703,6 +3786,7 @@
         "publicPath": "/assets/characters/charpiece/T_CharPiece_Baiheng.png"
       }
     },
+    "consonanceWeapons": [],
     "translations": {
       "DE": {
         "name": "Fushu",
@@ -3900,6 +3984,39 @@
         "publicPath": "/assets/characters/charpiece/T_CharPiece_Saiqi.png"
       }
     },
+    "consonanceWeapons": [
+      {
+        "weaponId": 530101,
+        "nameKey": "UI_WEAPON_NAME_530101",
+        "rarity": 5,
+        "icon": {
+          "publicPath": "/assets/weapons/consonance/T_Head_Saiqi_WP.png"
+        },
+        "translations": {
+          "DE": {
+            "name": "Icarus"
+          },
+          "EN": {
+            "name": "Icarus"
+          },
+          "ES": {
+            "name": "Icarus"
+          },
+          "FR": {
+            "name": "Icare"
+          },
+          "JP": {
+            "name": "イカルス"
+          },
+          "KR": {
+            "name": "이카루스"
+          },
+          "TC": {
+            "name": "伊卡洛斯"
+          }
+        }
+      }
+    ],
     "translations": {
       "DE": {
         "name": "Psyche",
@@ -4088,6 +4205,7 @@
         "publicPath": "/assets/characters/charpiece/T_CharPiece_Feina.png"
       }
     },
+    "consonanceWeapons": [],
     "translations": {
       "DE": {
         "name": "Fina",
@@ -4283,6 +4401,39 @@
         "publicPath": "/assets/characters/charpiece/T_CharPiece_Baonu.png"
       }
     },
+    "consonanceWeapons": [
+      {
+        "weaponId": 150101,
+        "nameKey": "UI_WEAPON_NAME_150101",
+        "rarity": 5,
+        "icon": {
+          "publicPath": "/assets/weapons/consonance/T_Head_Baonu_WP.png"
+        },
+        "translations": {
+          "DE": {
+            "name": "Samael"
+          },
+          "EN": {
+            "name": "Samael"
+          },
+          "ES": {
+            "name": "Samael"
+          },
+          "FR": {
+            "name": "Samaël"
+          },
+          "JP": {
+            "name": "サマエル"
+          },
+          "KR": {
+            "name": "사마엘"
+          },
+          "TC": {
+            "name": "薩麥爾"
+          }
+        }
+      }
+    ],
     "translations": {
       "DE": {
         "name": "Lisbell",
@@ -4472,6 +4623,7 @@
         "publicPath": "/assets/characters/charpiece/T_CharPiece_Nifu.png"
       }
     },
+    "consonanceWeapons": [],
     "translations": {
       "DE": {
         "name": "Frau Nifle",
@@ -4664,6 +4816,7 @@
         "publicPath": "/assets/characters/charpiece/T_CharPiece_Kezhou.png"
       }
     },
+    "consonanceWeapons": [],
     "translations": {
       "DE": {
         "name": "Kezhou",
@@ -4824,6 +4977,39 @@
         "publicPath": null
       }
     },
+    "consonanceWeapons": [
+      {
+        "weaponId": 150401,
+        "nameKey": "UI_WEAPON_NAME_150304",
+        "rarity": 5,
+        "icon": {
+          "publicPath": "/assets/weapons/consonance/T_Head_Heitao_WP.png"
+        },
+        "translations": {
+          "DE": {
+            "name": null
+          },
+          "EN": {
+            "name": null
+          },
+          "ES": {
+            "name": null
+          },
+          "FR": {
+            "name": null
+          },
+          "JP": {
+            "name": null
+          },
+          "KR": {
+            "name": null
+          },
+          "TC": {
+            "name": null
+          }
+        }
+      }
+    ],
     "translations": {
       "DE": {
         "name": "Su Yi",
@@ -5012,6 +5198,7 @@
         "publicPath": null
       }
     },
+    "consonanceWeapons": [],
     "translations": {
       "DE": {
         "name": "Protagonistin",
@@ -5200,6 +5387,7 @@
         "publicPath": null
       }
     },
+    "consonanceWeapons": [],
     "translations": {
       "DE": {
         "name": "Protagonist",

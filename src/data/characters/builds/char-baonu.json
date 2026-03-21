@@ -44,12 +44,8 @@
     ],
     "consonanceWeapon": {
       "name": { "FR": "Samael", "EN": "Samael" },
-      "slots": [
-        { "name": { "FR": "Impulsion de Cerberus", "EN": "Eldtrich Cerberus's Impetus" } },
-        { "name": { "FR": "Penetration de Cerberus", "EN": "Eldtrich Cerberus's Penetration" } },
-        { "name": { "FR": "Repli de Cerberus", "EN": "Eldtrich Cerberus's Foldover" } },
-        { "name": { "FR": "Entrave de Cerberus", "EN": "Eldtrich Cerberus's Trammel" } }
-      ]
+      "icon": "/assets/weapons/consonance/T_Head_Baonu_WP.png",
+      "slots": ["mods-54103", "mods-54002", "mods-54001", "mods-54004"]
     },
     "notes": {
       "FR": "Lisbell est centree sur l'Arme de Consonance Samael. Activez 'C'est fini !' pour equiper Samael, puis maintenez l'attaque pour charger des coups puissants. Le Niveau de Combo (C→S) ameliore la portee et les degats. Gerez la Lucidite car Samael en consomme.",
