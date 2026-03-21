@@ -72,6 +72,15 @@ export async function generateMetadata(
   );
 }
 
+const ELEMENT_AMBIENT: Record<string, string> = {
+  Fire: "rgba(239, 68, 68, 0.08)",
+  Water: "rgba(96, 165, 250, 0.08)",
+  Thunder: "rgba(167, 139, 250, 0.08)",
+  Wind: "rgba(52, 211, 153, 0.08)",
+  Light: "rgba(251, 191, 36, 0.07)",
+  Dark: "rgba(129, 140, 248, 0.08)",
+};
+
 export default async function CharacterDetailPage({
   params,
 }: CharacterDetailPageProps) {
@@ -84,22 +93,31 @@ export default async function CharacterDetailPage({
 
   const catalog = getCharactersCatalog();
   const levelUpCurves = getLevelUpCurves();
+  const ambientColor = ELEMENT_AMBIENT[character.element.key] ?? ELEMENT_AMBIENT.Water;
 
   return (
-    <Suspense
-      fallback={
-        <CharactersSuspenseFallback
-          title="Chargement du personnage"
-          description="Preparation des portraits, traductions et statistiques."
-        />
-      }
-    >
-      <CharacterDetailClient
-        catalog={catalog}
-        character={character}
-        levelUpCurves={levelUpCurves}
-        builds={getCharacterBuilds(character.id)}
+    <>
+      <div
+        className="pointer-events-none fixed inset-0 z-0"
+        style={{
+          background: `radial-gradient(ellipse 70% 60% at 90% 80%, ${ambientColor}, transparent)`,
+        }}
       />
-    </Suspense>
+      <Suspense
+        fallback={
+          <CharactersSuspenseFallback
+            title="Chargement du personnage"
+            description="Preparation des portraits, traductions et statistiques."
+          />
+        }
+      >
+        <CharacterDetailClient
+          catalog={catalog}
+          character={character}
+          levelUpCurves={levelUpCurves}
+          builds={getCharacterBuilds(character.id)}
+        />
+      </Suspense>
+    </>
   );
 }

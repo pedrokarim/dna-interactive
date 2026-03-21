@@ -73,6 +73,15 @@ const ELEMENT_COLORS: Record<string, { border: string; bg: string; text: string 
   Dark: { border: "border-indigo-400/50", bg: "bg-indigo-400/15", text: "text-indigo-200" },
 };
 
+const ELEMENT_AMBIENT: Record<string, string> = {
+  Fire: "rgba(239, 68, 68, 0.07)",
+  Water: "rgba(96, 165, 250, 0.07)",
+  Thunder: "rgba(167, 139, 250, 0.07)",
+  Wind: "rgba(52, 211, 153, 0.07)",
+  Light: "rgba(251, 191, 36, 0.06)",
+  Dark: "rgba(129, 140, 248, 0.07)",
+};
+
 const ELEMENT_ICONS: Record<string, string> = {
   Fire: "/assets/items/mods/T_Armory_Fire.png",
   Water: "/assets/items/mods/T_Armory_Water.png",
@@ -1281,8 +1290,37 @@ export default function CharacterDetailClient({
               {character.unlockRequiredPiece && (
                 <div>
                   <dt className="text-slate-400">Pieces pour debloquer</dt>
-                  <dd className="text-slate-100">
-                    {character.unlockRequiredPiece} introns
+                  <dd className="mt-1.5">
+                    <div className="group/intron relative inline-flex flex-col items-center gap-1">
+                      <button
+                        type="button"
+                        onClick={() => setActiveTab("intron")}
+                        className="relative flex h-16 w-16 items-center justify-center rounded-lg border-2 border-indigo-500/50 shadow-lg shadow-indigo-500/10 transition-transform duration-150 hover:scale-105"
+                        style={{ background: "linear-gradient(135deg, rgba(15,23,42,0.9), rgba(30,41,59,0.95))" }}
+                      >
+                        <div className="absolute inset-0 rounded-lg bg-gradient-to-b from-indigo-500/15 to-indigo-900/30" />
+                        {character.portraits.charpiece?.publicPath ? (
+                          <img
+                            src={character.portraits.charpiece.publicPath}
+                            alt="Intron"
+                            className="relative h-10 w-10 object-contain drop-shadow-lg"
+                          />
+                        ) : (
+                          <Layers className="relative h-8 w-8 text-indigo-300" />
+                        )}
+                      </button>
+                      <p className="text-center text-xs text-slate-300">×{character.unlockRequiredPiece}</p>
+                      <div className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 hidden w-56 -translate-x-1/2 rounded-xl border border-slate-700/80 bg-slate-950/95 p-3 text-sm shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover/intron:block">
+                        <p className="font-medium text-slate-100">Piece d&apos;intron</p>
+                        <div className="mt-1.5 flex flex-wrap gap-1 text-[11px]">
+                          <span className="rounded-full border border-slate-600/80 px-2 py-0.5 text-slate-200">#{character.charPieceId}</span>
+                          <span className="rounded-full border border-indigo-500/40 bg-indigo-500/10 px-2 py-0.5 text-indigo-200">{character.intronLevels.length} niveaux</span>
+                        </div>
+                        <p className="mt-2 text-xs leading-relaxed text-slate-400">
+                          {character.unlockRequiredPiece} pieces necessaires par niveau d&apos;intron. Cliquez pour voir les details.
+                        </p>
+                      </div>
+                    </div>
                   </dd>
                 </div>
               )}
