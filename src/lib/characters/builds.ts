@@ -21,6 +21,7 @@ interface RawWeaponEntry {
 interface RawDemonWedgeSlot {
   position: number;
   itemId: string;
+  track?: number | null;
 }
 
 interface RawDemonWedgesConfig {
@@ -75,6 +76,7 @@ export interface ResolvedItemRef {
   itemId: string;
   modId: number;
   name: string;
+  description: string | null;
   icon: string;
   href: string;
   rarity: number | null;
@@ -99,6 +101,7 @@ export interface BuildWeaponEntry {
 export interface BuildDemonWedgeSlot {
   position: number;
   item: ResolvedItemRef | null;
+  track: number | null;
 }
 
 export interface BuildDemonWedgesConfig {
@@ -170,6 +173,7 @@ function resolveItemRef(
     itemId: item.id,
     modId: item.modId,
     name,
+    description: translation.passiveEffectsDescription ?? translation.description ?? null,
     icon: item.icon.publicPath ?? item.icon.placeholderPath ?? "/marker-default.svg",
     href: `/items/${categoryId}/${item.id}`,
     rarity: item.stats.rarity,
@@ -224,6 +228,7 @@ export function getCharacterBuilds(characterId: string): CharacterBuild[] {
         slots: (raw.demonWedges?.slots ?? []).map((s) => ({
           position: s.position,
           item: resolveItemRef("mods", s.itemId),
+          track: s.track ?? null,
         })),
         centerItem: raw.demonWedges?.centerItemId
           ? resolveItemRef("mods", raw.demonWedges.centerItemId)

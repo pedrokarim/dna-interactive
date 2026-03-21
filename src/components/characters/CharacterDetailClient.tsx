@@ -257,10 +257,12 @@ function DemonWedgeSlotCard({
   slot,
   elementKey,
   side,
+  showTrackAdjust = false,
 }: {
   slot: BuildDemonWedgeSlot;
   elementKey: string;
   side: "left" | "right";
+  showTrackAdjust?: boolean;
 }) {
   const icon = slot.item?.icon ?? ARMORY_DEFAULT_ICON;
   const name = slot.item?.name ?? "Vide";
@@ -268,7 +270,10 @@ function DemonWedgeSlotCard({
   const borderColor = ELEMENT_BORDER_COLORS[elementKey] ?? ELEMENT_BORDER_COLORS.Water;
   const glowColor = ELEMENT_GLOW_COLORS[elementKey] ?? ELEMENT_GLOW_COLORS.Water;
   const clip = side === "left" ? CLIP_LEFT : CLIP_RIGHT;
-  const trackIconSrc = getTrackIcon(slot.item?.polarity ?? null);
+  const polarityIconSrc = getTrackIcon(slot.item?.polarity ?? null);
+  const trackAdjustIconSrc = slot.track !== null ? getTrackIcon(slot.track) : null;
+  const topSide = side === "left" ? "right-1.5" : "left-1.5";
+  const bottomSide = side === "left" ? "left-1.5" : "right-1.5";
 
   const card = (
     <div
@@ -289,18 +294,27 @@ function DemonWedgeSlotCard({
           className="h-14 w-14 object-contain drop-shadow-lg sm:h-[4.5rem] sm:w-[4.5rem]"
         />
       </div>
-      {trackIconSrc && (
+      {polarityIconSrc && (
         <img
-          src={trackIconSrc}
+          src={polarityIconSrc}
           alt=""
-          className="absolute right-1.5 top-1.5 h-5 w-5 object-contain opacity-80 sm:h-6 sm:w-6"
+          className={`absolute top-1.5 h-5 w-5 object-contain opacity-80 sm:h-6 sm:w-6 ${topSide}`}
         />
+      )}
+      {showTrackAdjust && slot.track !== null && (
+        <div className={`absolute bottom-2 flex h-6 w-6 items-center justify-center rounded border border-amber-400/50 bg-slate-900/90 sm:h-7 sm:w-7 ${bottomSide}`}>
+          {trackAdjustIconSrc ? (
+            <img src={trackAdjustIconSrc} alt="" className="h-4 w-4 object-contain sm:h-5 sm:w-5" />
+          ) : (
+            <span className="text-xs text-red-400">✖</span>
+          )}
+        </div>
       )}
     </div>
   );
 
   const tooltip = slot.item ? (
-    <div className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 hidden w-56 -translate-x-1/2 rounded-xl border border-slate-700/80 bg-slate-950/95 p-3 text-sm shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
+    <div className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 hidden w-64 -translate-x-1/2 rounded-xl border border-slate-700/80 bg-slate-950/95 p-3 text-sm shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
       <p className="font-medium text-slate-100">{name}</p>
       <div className="mt-1.5 flex flex-wrap gap-1 text-[11px]">
         <span className="rounded-full border border-slate-600/80 px-2 py-0.5 text-slate-200">
@@ -317,6 +331,9 @@ function DemonWedgeSlotCard({
           </span>
         )}
       </div>
+      {slot.item.description && (
+        <p className="mt-2 text-xs leading-relaxed text-slate-400">{slot.item.description}</p>
+      )}
     </div>
   ) : null;
 
@@ -372,7 +389,7 @@ function DemonWedgeCenterSlot({
         <BuildLocalizedText texts={affinity} lang={lang} />
       </p>
       {centerItem && (
-        <div className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 hidden w-56 -translate-x-1/2 rounded-xl border border-slate-700/80 bg-slate-950/95 p-3 text-sm shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
+        <div className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 hidden w-64 -translate-x-1/2 rounded-xl border border-slate-700/80 bg-slate-950/95 p-3 text-sm shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
           <p className="font-medium text-slate-100">{name}</p>
           <div className="mt-1.5 flex flex-wrap gap-1 text-[11px]">
             <span className="rounded-full border border-slate-600/80 px-2 py-0.5 text-slate-200">
@@ -384,6 +401,9 @@ function DemonWedgeCenterSlot({
               </span>
             )}
           </div>
+          {centerItem.description && (
+            <p className="mt-2 text-xs leading-relaxed text-slate-400">{centerItem.description}</p>
+          )}
         </div>
       )}
     </div>
@@ -396,12 +416,14 @@ function DemonWedgeLayout({
   affinity,
   elementKey,
   lang,
+  showTrackAdjust = false,
 }: {
   slots: BuildDemonWedgeSlot[];
   centerItem: import("@/lib/characters/builds").ResolvedItemRef | null;
   affinity: Record<string, string>;
   elementKey: string;
   lang: string;
+  showTrackAdjust?: boolean;
 }) {
   const topLeft = slots.filter((s) => s.position >= 1 && s.position <= 2);
   const topRight = slots.filter((s) => s.position >= 3 && s.position <= 4);
@@ -416,12 +438,12 @@ function DemonWedgeLayout({
         <div className="flex flex-col items-center gap-4">
           <div className="flex gap-2">
             {topLeft.map((s) => (
-              <DemonWedgeSlotCard key={s.position} slot={s} elementKey={elementKey} side="left" />
+              <DemonWedgeSlotCard key={s.position} slot={s} elementKey={elementKey} side="left" showTrackAdjust={showTrackAdjust} />
             ))}
           </div>
           <div className="flex gap-2">
             {bottomLeft.map((s) => (
-              <DemonWedgeSlotCard key={s.position} slot={s} elementKey={elementKey} side="left" />
+              <DemonWedgeSlotCard key={s.position} slot={s} elementKey={elementKey} side="left" showTrackAdjust={showTrackAdjust} />
             ))}
           </div>
         </div>
@@ -433,12 +455,12 @@ function DemonWedgeLayout({
         <div className="flex flex-col items-center gap-4">
           <div className="flex gap-2">
             {topRight.map((s) => (
-              <DemonWedgeSlotCard key={s.position} slot={s} elementKey={elementKey} side="right" />
+              <DemonWedgeSlotCard key={s.position} slot={s} elementKey={elementKey} side="right" showTrackAdjust={showTrackAdjust} />
             ))}
           </div>
           <div className="flex gap-2">
             {bottomRight.map((s) => (
-              <DemonWedgeSlotCard key={s.position} slot={s} elementKey={elementKey} side="right" />
+              <DemonWedgeSlotCard key={s.position} slot={s} elementKey={elementKey} side="right" showTrackAdjust={showTrackAdjust} />
             ))}
           </div>
         </div>
@@ -447,7 +469,7 @@ function DemonWedgeLayout({
       {/* Mobile layout */}
       <div className="grid w-full grid-cols-2 place-items-center gap-4 sm:grid-cols-4 md:hidden">
         {slots.map((s) => (
-          <DemonWedgeSlotCard key={s.position} slot={s} elementKey={elementKey} side={s.position <= 4 ? "left" : "right"} />
+          <DemonWedgeSlotCard key={s.position} slot={s} elementKey={elementKey} side={s.position <= 4 ? "left" : "right"} showTrackAdjust={showTrackAdjust} />
         ))}
         <div className="col-span-2 sm:col-span-4">
           <DemonWedgeCenterSlot centerItem={centerItem} affinity={affinity} elementKey={elementKey} lang={lang} />
@@ -461,12 +483,15 @@ function BuildTabContent({
   builds,
   characterElement,
   selectedLanguage,
+  onNavigateToStats,
 }: {
   builds: CharacterBuild[];
   characterElement: string;
   selectedLanguage: string;
+  onNavigateToStats?: () => void;
 }) {
   const [activeBuildIndex, setActiveBuildIndex] = useState(0);
+  const [showTrackAdjust, setShowTrackAdjust] = useState(true);
 
   if (builds.length === 0) {
     return (
@@ -578,10 +603,31 @@ function BuildTabContent({
       {/* --- Demon Wedges (game layout) --- */}
       {hasDemonWedges && (
         <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
-          <h2 className="flex items-center gap-2 text-lg font-semibold text-white">
-            <Shield className="h-4 w-4 text-indigo-400/80" />
-            Sceaux demoniaques
-          </h2>
+          <div className="flex items-center justify-between">
+            <h2 className="flex items-center gap-2 text-lg font-semibold text-white">
+              <Shield className="h-4 w-4 text-indigo-400/80" />
+              Sceaux demoniaques
+            </h2>
+            {build.demonWedges.slots.some((s) => s.track !== null) && (
+              <div className="group relative">
+                <button
+                  type="button"
+                  onClick={() => setShowTrackAdjust((prev) => !prev)}
+                  className={`flex items-center gap-2 rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
+                    showTrackAdjust
+                      ? "border border-amber-400/50 bg-amber-500/15 text-amber-200"
+                      : "border border-slate-600/80 text-slate-400 hover:border-slate-500 hover:text-slate-300"
+                  }`}
+                >
+                  <span className="h-2 w-2 rounded-full" style={{ background: showTrackAdjust ? "#fbbf24" : "#64748b" }} />
+                  Ajustements de piste
+                </button>
+                <div className="pointer-events-none absolute right-0 top-full z-30 mt-2 hidden w-64 rounded-xl border border-slate-700/80 bg-slate-950/95 p-3 text-xs leading-relaxed text-slate-400 shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
+                  Les ajustements de piste permettent de modifier la polarite d&apos;un emplacement de sceau demoniaque a l&apos;aide de Modules de decalage de piste. Les icones dorees en bas de chaque emplacement indiquent la piste recommandee.
+                </div>
+              </div>
+            )}
+          </div>
           <div className="mt-6">
             <DemonWedgeLayout
               slots={build.demonWedges.slots}
@@ -589,6 +635,7 @@ function BuildTabContent({
               affinity={build.demonWedges.affinity}
               elementKey={characterElement}
               lang={selectedLanguage}
+              showTrackAdjust={showTrackAdjust}
             />
           </div>
           {Object.keys(build.demonWedges.note).length > 0 && (
@@ -596,6 +643,7 @@ function BuildTabContent({
               <BuildLocalizedText texts={build.demonWedges.note} lang={selectedLanguage} />
             </p>
           )}
+
         </section>
       )}
 
@@ -610,8 +658,8 @@ function BuildTabContent({
             const cw = build.consonanceWeapon!;
             const weaponIcon = cw.icon;
 
-            const renderSlot = (s: typeof cw.slots[number], idx: number, clip: string) => (
-              <div key={idx} className="flex flex-col items-center gap-1.5">
+            const renderSlot = (s: typeof cw.slots[number], idx: number, clip: string) => {
+              const card = (
                 <div
                   className="relative flex h-36 w-[6.5rem] items-center justify-center border-2 border-purple-500/50 shadow-lg shadow-purple-500/20 sm:h-44 sm:w-32"
                   style={{ clipPath: clip, background: "linear-gradient(135deg, rgba(15,23,42,0.9), rgba(30,20,50,0.95))" }}
@@ -619,9 +667,28 @@ function BuildTabContent({
                   <div className="absolute inset-0 bg-gradient-to-b from-purple-500/15 to-purple-900/30" style={{ clipPath: clip }} />
                   <img src={s.icon} alt={s.name} className="h-14 w-14 object-contain drop-shadow-lg sm:h-[4.5rem] sm:w-[4.5rem]" />
                 </div>
-                <p className="max-w-[8rem] truncate text-center text-xs text-slate-300">{s.name}</p>
-              </div>
-            );
+              );
+              return (
+                <div key={idx} className="group relative flex flex-col items-center gap-1.5">
+                  {s.href ? (
+                    <Link href={s.href} className="block transition-transform duration-150 hover:scale-105">{card}</Link>
+                  ) : card}
+                  <p className="max-w-[8rem] truncate text-center text-xs text-slate-300">{s.name}</p>
+                  <div className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 hidden w-64 -translate-x-1/2 rounded-xl border border-slate-700/80 bg-slate-950/95 p-3 text-sm shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
+                    <p className="font-medium text-slate-100">{s.name}</p>
+                    <div className="mt-1.5 flex flex-wrap gap-1 text-[11px]">
+                      <span className="rounded-full border border-slate-600/80 px-2 py-0.5 text-slate-200">#{s.modId}</span>
+                      {s.rarity !== null && (
+                        <span className="rounded-full border border-amber-500/40 bg-amber-500/10 px-2 py-0.5 text-amber-200">{s.rarity}★</span>
+                      )}
+                    </div>
+                    {s.description && (
+                      <p className="mt-2 text-xs leading-relaxed text-slate-400">{s.description}</p>
+                    )}
+                  </div>
+                </div>
+              );
+            };
 
             return (
               <div className="mt-6 flex flex-col items-center gap-6">
@@ -630,17 +697,31 @@ function BuildTabContent({
                   <div className="flex gap-3">
                     {cw.slots.slice(0, 2).map((s, i) => renderSlot(s, i, CLIP_LEFT))}
                   </div>
-                  <div className="flex flex-col items-center gap-2 px-4">
-                    <div className="flex h-28 w-28 items-center justify-center rounded-full border-2 border-purple-400/50 bg-purple-500/10 shadow-lg shadow-purple-500/20 sm:h-32 sm:w-32">
-                      {weaponIcon ? (
-                        <img src={weaponIcon} alt="" className="h-16 w-16 object-contain drop-shadow-lg sm:h-20 sm:w-20" />
-                      ) : (
-                        <Swords className="h-12 w-12 text-purple-300 sm:h-14 sm:w-14" />
-                      )}
+                  <div className="group relative">
+                    <button
+                      type="button"
+                      onClick={onNavigateToStats}
+                      className="flex flex-col items-center gap-2 px-4 transition-transform duration-150 hover:scale-105"
+                    >
+                      <div className="flex h-28 w-28 items-center justify-center rounded-full border-2 border-purple-400/50 bg-purple-500/10 shadow-lg shadow-purple-500/20 sm:h-32 sm:w-32">
+                        {weaponIcon ? (
+                          <img src={weaponIcon} alt="" className="h-16 w-16 object-contain drop-shadow-lg sm:h-20 sm:w-20" />
+                        ) : (
+                          <Swords className="h-12 w-12 text-purple-300 sm:h-14 sm:w-14" />
+                        )}
+                      </div>
+                      <p className="max-w-[10rem] text-center text-sm font-medium text-purple-200">
+                        <BuildLocalizedText texts={cw.name} lang={selectedLanguage} />
+                      </p>
+                    </button>
+                    <div className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 hidden w-56 -translate-x-1/2 rounded-xl border border-slate-700/80 bg-slate-950/95 p-3 text-sm shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
+                      <p className="font-medium text-purple-200">
+                        <BuildLocalizedText texts={cw.name} lang={selectedLanguage} />
+                      </p>
+                      <p className="mt-1.5 text-xs text-slate-400">
+                        Arme de Consonance — cliquez pour voir les details dans l&apos;onglet Attributs.
+                      </p>
                     </div>
-                    <p className="max-w-[10rem] text-center text-sm font-medium text-purple-200">
-                      <BuildLocalizedText texts={cw.name} lang={selectedLanguage} />
-                    </p>
                   </div>
                   <div className="flex gap-3">
                     {cw.slots.slice(2, 4).map((s, i) => renderSlot(s, i, CLIP_RIGHT))}
@@ -1401,6 +1482,45 @@ export default function CharacterDetailClient({
               </div>
             </div>
           )}
+          {/* Consonance Weapon info box */}
+          {character.consonanceWeapons?.length > 0 && (
+            <div className="rounded-xl border border-purple-500/30 bg-purple-500/5 p-5">
+              <h2 className="flex items-center gap-2 text-lg font-semibold text-white">
+                <Swords className="h-4 w-4 text-purple-400/80" />
+                Arme de Consonance
+              </h2>
+              <div className="mt-4 space-y-3">
+                {character.consonanceWeapons.map((cw) => {
+                  const cwName =
+                    cw.translations[selectedLanguage]?.name ??
+                    cw.translations.EN?.name ??
+                    cw.translations.FR?.name ??
+                    `#${cw.weaponId}`;
+                  return (
+                    <div key={cw.weaponId} className="flex items-center gap-4">
+                      {cw.icon.publicPath && (
+                        <img src={cw.icon.publicPath} alt={cwName} className="h-16 w-16 shrink-0 object-contain drop-shadow-lg" />
+                      )}
+                      <div>
+                        <p className="text-sm font-medium text-purple-200">{cwName}</p>
+                        <div className="mt-1 flex flex-wrap gap-1.5 text-[11px]">
+                          <span className="rounded-full border border-purple-400/40 bg-purple-500/10 px-2 py-0.5 text-purple-200">
+                            {cw.rarity}★
+                          </span>
+                          <span className="rounded-full border border-slate-600/80 px-2 py-0.5 text-slate-300">
+                            Nv. max 80
+                          </span>
+                          <span className="rounded-full border border-slate-600/80 px-2 py-0.5 text-slate-300">
+                            ID {cw.weaponId}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
         </section>
       )}
 
@@ -1410,6 +1530,7 @@ export default function CharacterDetailClient({
           builds={builds}
           characterElement={character.element.key}
           selectedLanguage={selectedLanguage}
+          onNavigateToStats={() => setActiveTab("stats")}
         />
       )}
 

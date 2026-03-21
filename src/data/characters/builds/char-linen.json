@@ -15,14 +15,14 @@
     },
     "demonWedges": {
       "slots": [
-        { "position": 1, "itemId": "mods-51931" },
-        { "position": 2, "itemId": "mods-51333" },
-        { "position": 3, "itemId": "mods-51431" },
-        { "position": 4, "itemId": "mods-56131" },
-        { "position": 5, "itemId": "mods-51732" },
-        { "position": 6, "itemId": "mods-51732" },
-        { "position": 7, "itemId": "mods-51732" },
-        { "position": 8, "itemId": "mods-51732" }
+        { "position": 1, "itemId": "mods-51931", "track": 4 },
+        { "position": 2, "itemId": "mods-51333", "track": 3 },
+        { "position": 3, "itemId": "mods-51431", "track": 1 },
+        { "position": 4, "itemId": "mods-56131", "track": 2 },
+        { "position": 5, "itemId": "mods-51732", "track": 2 },
+        { "position": 6, "itemId": "mods-51732", "track": 2 },
+        { "position": 7, "itemId": "mods-51732", "track": 2 },
+        { "position": 8, "itemId": "mods-51732", "track": null }
       ],
       "centerItemId": "mods-31531",
       "affinity": { "FR": "Pouvoir de Quetzalcoatl", "EN": "Feathered Serpent's Power" },
