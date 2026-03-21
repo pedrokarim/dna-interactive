@@ -1,51 +1,188 @@
 [
   {
     "characterId": "char-saiqi",
-    "buildName": { "FR": "DPS Ultime Anemo", "EN": "Anemo Ultimate DPS" },
+    "buildName": {
+      "FR": "DPS Ultime Anemo",
+      "EN": "Anemo Ultimate DPS"
+    },
     "weapons": {
       "melee": [
-        { "itemId": "weapons-10204", "rank": "best", "note": { "FR": "Arme signature. Boost les degats de l'ultime et la survivabilite en Flamboyance.", "EN": "Signature weapon. Boosts ultimate damage and survivability during Flamboyance." } },
-        { "itemId": "weapons-10206", "rank": "alternative", "note": { "FR": "Option budget. Degats de competence +48%.", "EN": "Budget option. Skill Damage +48%." } }
+        {
+          "itemId": "weapons-10204",
+          "rank": "best",
+          "note": {
+            "FR": "Arme signature. Boost les degats de l'ultime et la survivabilite en Flamboyance.",
+            "EN": "Signature weapon. Boosts ultimate damage and survivability during Flamboyance."
+          }
+        },
+        {
+          "itemId": "weapons-10206",
+          "rank": "alternative",
+          "note": {
+            "FR": "Option budget. Degats de competence +48%.",
+            "EN": "Budget option. Skill Damage +48%."
+          }
+        }
       ],
       "ranged": [
-        { "itemId": "weapons-20201", "rank": "best", "note": { "FR": "Meilleure arme a distance. Synergie avec le spam d'attaques en Flamboyance.", "EN": "Best ranged weapon. Synergizes with attack spam during Flamboyance." } },
-        { "itemId": "weapons-20501", "rank": "alternative", "note": { "FR": "Alternative solide si Excresduo indisponible.", "EN": "Solid alternative if Excresduo unavailable." } }
+        {
+          "itemId": "weapons-20201",
+          "rank": "best",
+          "note": {
+            "FR": "Meilleure arme a distance. Synergie avec le spam d'attaques en Flamboyance.",
+            "EN": "Best ranged weapon. Synergizes with attack spam during Flamboyance."
+          }
+        },
+        {
+          "itemId": "weapons-20501",
+          "rank": "alternative",
+          "note": {
+            "FR": "Alternative solide si Excresduo indisponible.",
+            "EN": "Solid alternative if Excresduo unavailable."
+          }
+        }
       ]
     },
     "demonWedges": {
       "slots": [
-        { "position": 1, "itemId": "mods-51951" },
-        { "position": 2, "itemId": "mods-51325" },
-        { "position": 3, "itemId": "mods-51452" },
-        { "position": 4, "itemId": "mods-56154" },
-        { "position": 5, "itemId": "mods-51754" },
-        { "position": 6, "itemId": "mods-51753" },
-        { "position": 7, "itemId": "mods-51753" },
-        { "position": 8, "itemId": "mods-51753" }
+        {
+          "position": 1,
+          "itemId": "mods-51951",
+          "track": 4
+        },
+        {
+          "position": 2,
+          "itemId": "mods-51325",
+          "track": null
+        },
+        {
+          "position": 3,
+          "itemId": "mods-51452",
+          "track": 1
+        },
+        {
+          "position": 4,
+          "itemId": "mods-56154",
+          "track": 2
+        },
+        {
+          "position": 5,
+          "itemId": "mods-51754",
+          "track": null
+        },
+        {
+          "position": 6,
+          "itemId": "mods-51753",
+          "track": null
+        },
+        {
+          "position": 7,
+          "itemId": "mods-51753",
+          "track": null
+        },
+        {
+          "position": 8,
+          "itemId": "mods-51753",
+          "track": null
+        }
       ],
       "centerItemId": "mods-31512",
-      "affinity": { "FR": "Pouvoir de Quetzalcoatl", "EN": "Feathered Serpent's Power" },
-      "note": { "FR": "Focus piste Tenacite (Pouvoir). Tolerance augmente au niv. +5.", "EN": "Focus Resolve (Ability) track. Tolerance increases at core +5." }
+      "affinity": {
+        "FR": "Pouvoir de Quetzalcoatl",
+        "EN": "Feathered Serpent's Power"
+      },
+      "note": {
+        "FR": "Focus piste Tenacite (Pouvoir). Tolerance augmente au niv. +5.",
+        "EN": "Focus Resolve (Ability) track. Tolerance increases at core +5."
+      }
     },
-    "statsPriority": ["SkillDmg", "ATK", "SkillEfficiency", "MaxSp", "CritRate", "CritDmg"],
+    "statsPriority": [
+      "SkillDmg",
+      "ATK",
+      "SkillEfficiency",
+      "MaxSp",
+      "CritRate",
+      "CritDmg"
+    ],
     "team": [
-      { "characterId": "char-baiheng", "role": "Support", "note": { "FR": "Buffs offensifs et soins. Synergie avec la consommation de PV de Psyche.", "EN": "Offensive buffs and healing. Synergy with Psyche's HP consumption." } },
-      { "characterId": "char-feina", "role": "Support", "note": { "FR": "Support polyvalent avec buffs et restauration de Lucidite.", "EN": "Versatile support with buffs and Sanity restoration." } }
+      {
+        "characterId": "char-baiheng",
+        "role": "Support",
+        "note": {
+          "FR": "Buffs offensifs et soins. Synergie avec la consommation de PV de Psyche.",
+          "EN": "Offensive buffs and healing. Synergy with Psyche's HP consumption."
+        }
+      },
+      {
+        "characterId": "char-feina",
+        "role": "Support",
+        "note": {
+          "FR": "Support polyvalent avec buffs et restauration de Lucidite.",
+          "EN": "Versatile support with buffs and Sanity restoration."
+        }
+      }
     ],
     "genimon": [
-      { "itemId": "genimon-4251", "rank": "best" },
-      { "itemId": "genimon-4051", "rank": "alternative" },
-      { "itemId": "genimon-4151", "rank": "alternative" }
+      {
+        "itemId": "genimon-4251",
+        "rank": "best"
+      },
+      {
+        "itemId": "genimon-4051",
+        "rank": "alternative"
+      },
+      {
+        "itemId": "genimon-4151",
+        "rank": "alternative"
+      }
     ],
     "skillPriority": [
-      { "skillName": { "FR": "Eclosion Fluorescente", "EN": "Fluorescent Eclosion" }, "priority": 5, "note": { "FR": "Ultime — source principale de degats.", "EN": "Ultimate — primary damage source." } },
-      { "skillName": { "FR": "Lumiere d'Ambre", "EN": "Amberlight" }, "priority": 5, "note": { "FR": "Passif essentiel qui ameliore les buffs.", "EN": "Essential passive that enhances buffs." } },
-      { "skillName": { "FR": "Chrysalide Onirique", "EN": "Chrysalis Dreamweave" }, "priority": 4, "note": { "FR": "Augmente les degats et la vulnerabilite des ennemis.", "EN": "Increases damage and enemy vulnerability." } }
+      {
+        "skillName": {
+          "FR": "Eclosion Fluorescente",
+          "EN": "Fluorescent Eclosion"
+        },
+        "priority": 5,
+        "note": {
+          "FR": "Ultime — source principale de degats.",
+          "EN": "Ultimate — primary damage source."
+        }
+      },
+      {
+        "skillName": {
+          "FR": "Lumiere d'Ambre",
+          "EN": "Amberlight"
+        },
+        "priority": 5,
+        "note": {
+          "FR": "Passif essentiel qui ameliore les buffs.",
+          "EN": "Essential passive that enhances buffs."
+        }
+      },
+      {
+        "skillName": {
+          "FR": "Chrysalide Onirique",
+          "EN": "Chrysalis Dreamweave"
+        },
+        "priority": 4,
+        "note": {
+          "FR": "Augmente les degats et la vulnerabilite des ennemis.",
+          "EN": "Increases damage and enemy vulnerability."
+        }
+      }
     ],
     "consonanceWeapon": {
-      "name": { "FR": "Icare", "EN": "Icarus" },
+      "name": {
+        "FR": "Icare",
+        "EN": "Icarus"
+      },
       "icon": "/assets/weapons/consonance/T_Head_Saiqi_WP.png",
-      "slots": ["mods-55102", "mods-55001", "mods-55002", "mods-55004"]
+      "slots": [
+        "mods-55102",
+        "mods-55001",
+        "mods-55002",
+        "mods-55004"
+      ]
     },
     "notes": {
       "FR": "Psyche est une DPS centree sur son ultime et son arme de consonance. Durant Flamboyance, spammez les attaques a distance en consommant des PV (convertis en bouclier). L'Intron 1 est essentiel pour la restauration de PV en vol.",

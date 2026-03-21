@@ -1,42 +1,148 @@
 [
   {
     "characterId": "char-tuosi",
-    "buildName": { "FR": "DPS Umbro", "EN": "Umbro DPS" },
+    "buildName": {
+      "FR": "DPS Umbro",
+      "EN": "Umbro DPS"
+    },
     "weapons": {
       "melee": [
-        { "itemId": "weapons-10206", "rank": "best", "note": { "FR": "Degats de competence +48%.", "EN": "Skill Damage +48%." } },
-        { "itemId": "weapons-10101", "rank": "alternative", "note": { "FR": "ATQ +120%.", "EN": "ATK +120%." } }
+        {
+          "itemId": "weapons-10206",
+          "rank": "best",
+          "note": {
+            "FR": "Degats de competence +48%.",
+            "EN": "Skill Damage +48%."
+          }
+        },
+        {
+          "itemId": "weapons-10101",
+          "rank": "alternative",
+          "note": {
+            "FR": "ATQ +120%.",
+            "EN": "ATK +120%."
+          }
+        }
       ],
       "ranged": [
-        { "itemId": "weapons-20201", "rank": "best", "note": { "FR": "Degats de competence +48%.", "EN": "Skill Damage +48%." } },
-        { "itemId": "weapons-20405", "rank": "alternative", "note": { "FR": "ATQ +100% avec Efficacite.", "EN": "ATK +100% with Skill Efficiency." } },
-        { "itemId": "weapons-20102", "rank": "alternative", "note": { "FR": "ATQ +120%.", "EN": "ATK +120%." } }
+        {
+          "itemId": "weapons-20201",
+          "rank": "best",
+          "note": {
+            "FR": "Degats de competence +48%.",
+            "EN": "Skill Damage +48%."
+          }
+        },
+        {
+          "itemId": "weapons-20405",
+          "rank": "alternative",
+          "note": {
+            "FR": "ATQ +100% avec Efficacite.",
+            "EN": "ATK +100% with Skill Efficiency."
+          }
+        },
+        {
+          "itemId": "weapons-20102",
+          "rank": "alternative",
+          "note": {
+            "FR": "ATQ +120%.",
+            "EN": "ATK +120%."
+          }
+        }
       ]
     },
     "demonWedges": {
       "slots": [
-        { "position": 1, "itemId": "mods-51911" },
-        { "position": 2, "itemId": "mods-51331" },
-        { "position": 3, "itemId": "mods-51411" },
-        { "position": 4, "itemId": "mods-56114" },
-        { "position": 5, "itemId": "mods-51712" },
-        { "position": 6, "itemId": "mods-51712" },
-        { "position": 7, "itemId": "mods-51711" },
-        { "position": 8, "itemId": "mods-51711" }
+        {
+          "position": 1,
+          "itemId": "mods-51911",
+          "track": 4
+        },
+        {
+          "position": 2,
+          "itemId": "mods-51331",
+          "track": 1
+        },
+        {
+          "position": 3,
+          "itemId": "mods-51411",
+          "track": 3
+        },
+        {
+          "position": 4,
+          "itemId": "mods-56114",
+          "track": 2
+        },
+        {
+          "position": 5,
+          "itemId": "mods-51712",
+          "track": null
+        },
+        {
+          "position": 6,
+          "itemId": "mods-51712",
+          "track": null
+        },
+        {
+          "position": 7,
+          "itemId": "mods-51711",
+          "track": 1
+        },
+        {
+          "position": 8,
+          "itemId": "mods-51711",
+          "track": 1
+        }
       ],
       "centerItemId": "mods-31531",
-      "affinity": { "FR": "Pouvoir de Quetzalcoatl", "EN": "Feathered Serpent's Power" },
-      "note": { "FR": "4x Covenanter (slots 5-8). Tolerance augmente au niv. +5.", "EN": "4x Covenanter (slots 5-8). Tolerance increases at core +5." }
+      "affinity": {
+        "FR": "Pouvoir de Quetzalcoatl",
+        "EN": "Feathered Serpent's Power"
+      },
+      "note": {
+        "FR": "4x Covenanter (slots 5-8). Tolerance augmente au niv. +5.",
+        "EN": "4x Covenanter (slots 5-8). Tolerance increases at core +5."
+      }
     },
-    "statsPriority": ["SkillDmg", "Morale", "ATK", "CritRate", "CritDmg", "MaxSp"],
+    "statsPriority": [
+      "SkillDmg",
+      "Morale",
+      "ATK",
+      "CritRate",
+      "CritDmg",
+      "MaxSp"
+    ],
     "team": [
-      { "characterId": "char-feina", "role": "Support", "note": { "FR": "Support polyvalent avec buffs offensifs.", "EN": "Versatile support with offensive buffs." } },
-      { "characterId": "char-baiheng", "role": "Support", "note": { "FR": "Soins et recuperation de Lucidite.", "EN": "Healing and Sanity recovery." } }
+      {
+        "characterId": "char-feina",
+        "role": "Support",
+        "note": {
+          "FR": "Support polyvalent avec buffs offensifs.",
+          "EN": "Versatile support with offensive buffs."
+        }
+      },
+      {
+        "characterId": "char-baiheng",
+        "role": "Support",
+        "note": {
+          "FR": "Soins et recuperation de Lucidite.",
+          "EN": "Healing and Sanity recovery."
+        }
+      }
     ],
     "genimon": [
-      { "itemId": "genimon-4211", "rank": "best" },
-      { "itemId": "genimon-4111", "rank": "alternative" },
-      { "itemId": "genimon-4011", "rank": "alternative" }
+      {
+        "itemId": "genimon-4211",
+        "rank": "best"
+      },
+      {
+        "itemId": "genimon-4111",
+        "rank": "alternative"
+      },
+      {
+        "itemId": "genimon-4011",
+        "rank": "alternative"
+      }
     ],
     "skillPriority": [],
     "notes": {

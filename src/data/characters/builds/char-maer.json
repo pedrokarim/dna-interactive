@@ -1,45 +1,165 @@
 [
   {
     "characterId": "char-maer",
-    "buildName": { "FR": "DPS Pyro", "EN": "Pyro DPS" },
+    "buildName": {
+      "FR": "DPS Pyro",
+      "EN": "Pyro DPS"
+    },
     "weapons": {
       "melee": [
-        { "itemId": "weapons-10206", "rank": "best", "note": { "FR": "Degats de competence +48%.", "EN": "Skill Damage +48%." } }
+        {
+          "itemId": "weapons-10206",
+          "rank": "best",
+          "note": {
+            "FR": "Degats de competence +48%.",
+            "EN": "Skill Damage +48%."
+          }
+        }
       ],
       "ranged": [
-        { "itemId": "weapons-20201", "rank": "best", "note": { "FR": "Degats de competence +48%. DPS principal.", "EN": "Skill Damage +48%. Primary DPS." } },
-        { "itemId": "weapons-20602", "rank": "alternative", "note": { "FR": "Buffs allies. Utile en role hybride support.", "EN": "Ally buffs. Useful in hybrid support role." } }
+        {
+          "itemId": "weapons-20201",
+          "rank": "best",
+          "note": {
+            "FR": "Degats de competence +48%. DPS principal.",
+            "EN": "Skill Damage +48%. Primary DPS."
+          }
+        },
+        {
+          "itemId": "weapons-20602",
+          "rank": "alternative",
+          "note": {
+            "FR": "Buffs allies. Utile en role hybride support.",
+            "EN": "Ally buffs. Useful in hybrid support role."
+          }
+        }
       ]
     },
     "demonWedges": {
       "slots": [
-        { "position": 1, "itemId": "mods-51931" },
-        { "position": 2, "itemId": "mods-51431" },
-        { "position": 3, "itemId": "mods-51323" },
-        { "position": 4, "itemId": "mods-51733" },
-        { "position": 5, "itemId": "mods-51733" },
-        { "position": 6, "itemId": "mods-51733" },
-        { "position": 7, "itemId": "mods-51733" },
-        { "position": 8, "itemId": "mods-51733" }
+        {
+          "position": 1,
+          "itemId": "mods-51931",
+          "track": 4
+        },
+        {
+          "position": 2,
+          "itemId": "mods-51431",
+          "track": 1
+        },
+        {
+          "position": 3,
+          "itemId": "mods-51323",
+          "track": 3
+        },
+        {
+          "position": 4,
+          "itemId": "mods-51733",
+          "track": 3
+        },
+        {
+          "position": 5,
+          "itemId": "mods-51733",
+          "track": 3
+        },
+        {
+          "position": 6,
+          "itemId": "mods-51733",
+          "track": null
+        },
+        {
+          "position": 7,
+          "itemId": "mods-51733",
+          "track": null
+        },
+        {
+          "position": 8,
+          "itemId": "mods-51733",
+          "track": null
+        }
       ],
       "centerItemId": "mods-31525",
-      "affinity": { "FR": "Pouvoir de Quetzalcoatl", "EN": "Feathered Serpent's Power" },
-      "note": { "FR": "Focus ATQ + Efficacite. 5x Blaze Inspo pour spam de competences.", "EN": "Focus ATK + Efficiency. 5x Blaze Inspo for skill spam." }
+      "affinity": {
+        "FR": "Pouvoir de Quetzalcoatl",
+        "EN": "Feathered Serpent's Power"
+      },
+      "note": {
+        "FR": "Focus ATQ + Efficacite. 5x Blaze Inspo pour spam de competences.",
+        "EN": "Focus ATK + Efficiency. 5x Blaze Inspo for skill spam."
+      }
     },
-    "statsPriority": ["ATK", "SkillEfficiency", "SkillDmg", "SkillIntensity"],
+    "statsPriority": [
+      "ATK",
+      "SkillEfficiency",
+      "SkillDmg",
+      "SkillIntensity"
+    ],
     "team": [
-      { "characterId": "char-linen", "role": "DPS", "note": { "FR": "DPS principal. Margie en sub-DPS/support.", "EN": "Main DPS. Margie as sub-DPS/support." } },
-      { "characterId": "char-baiheng", "role": "Support", "note": { "FR": "Soins et buffs.", "EN": "Healing and buffs." } }
+      {
+        "characterId": "char-linen",
+        "role": "DPS",
+        "note": {
+          "FR": "DPS principal. Margie en sub-DPS/support.",
+          "EN": "Main DPS. Margie as sub-DPS/support."
+        }
+      },
+      {
+        "characterId": "char-baiheng",
+        "role": "Support",
+        "note": {
+          "FR": "Soins et buffs.",
+          "EN": "Healing and buffs."
+        }
+      }
     ],
     "genimon": [
-      { "itemId": "genimon-4231", "rank": "best" },
-      { "itemId": "genimon-4031", "rank": "alternative" },
-      { "itemId": "genimon-4131", "rank": "alternative" }
+      {
+        "itemId": "genimon-4231",
+        "rank": "best"
+      },
+      {
+        "itemId": "genimon-4031",
+        "rank": "alternative"
+      },
+      {
+        "itemId": "genimon-4131",
+        "rank": "alternative"
+      }
     ],
     "skillPriority": [
-      { "skillName": { "FR": "Poubelle combustible", "EN": "Combustible Bin" }, "priority": 5, "note": { "FR": "Ultime — source principale de degats. Consomme les stacks Jackpot.", "EN": "Ultimate — main damage source. Consumes Jackpot stacks." } },
-      { "skillName": { "FR": "Sac de recyclage", "EN": "Recycling Sack" }, "priority": 4, "note": { "FR": "Passif. Buff ATQ universel.", "EN": "Passive. Universal ATK buff." } },
-      { "skillName": { "FR": "Pelle au tresor", "EN": "Treasure Shovel" }, "priority": 3, "note": { "FR": "Accumuler les stacks Jackpot avant l'ultime.", "EN": "Stack Jackpot before ultimate." } }
+      {
+        "skillName": {
+          "FR": "Poubelle combustible",
+          "EN": "Combustible Bin"
+        },
+        "priority": 5,
+        "note": {
+          "FR": "Ultime — source principale de degats. Consomme les stacks Jackpot.",
+          "EN": "Ultimate — main damage source. Consumes Jackpot stacks."
+        }
+      },
+      {
+        "skillName": {
+          "FR": "Sac de recyclage",
+          "EN": "Recycling Sack"
+        },
+        "priority": 4,
+        "note": {
+          "FR": "Passif. Buff ATQ universel.",
+          "EN": "Passive. Universal ATK buff."
+        }
+      },
+      {
+        "skillName": {
+          "FR": "Pelle au tresor",
+          "EN": "Treasure Shovel"
+        },
+        "priority": 3,
+        "note": {
+          "FR": "Accumuler les stacks Jackpot avant l'ultime.",
+          "EN": "Stack Jackpot before ultimate."
+        }
+      }
     ],
     "notes": {
       "FR": "Margie est une DPS/support Pyro. Accumulez les stacks Jackpot (max 20) via le ramassage de butin, puis Poubelle combustible pour le burst (3 stacks = portee, 6 = Zone Fervente, 9 = AoE). Buff ATQ permanent via Pep Song. Avec Lynn et Fushu.",
