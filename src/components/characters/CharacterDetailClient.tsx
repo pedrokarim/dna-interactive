@@ -106,6 +106,15 @@ const RARITY_COLORS: Record<number, string> = {
   3: "text-blue-300",
 };
 
+const ELEMENT_RGB: Record<string, string> = {
+  Fire: "239, 68, 68",
+  Water: "96, 165, 250",
+  Thunder: "167, 139, 250",
+  Wind: "52, 211, 153",
+  Light: "251, 191, 36",
+  Dark: "129, 140, 248",
+};
+
 type PortraitType = "gacha" | "head" | "icon" | "bust" | "phantom" | "charpiece";
 
 const PORTRAIT_LABELS: Record<PortraitType, string> = {
@@ -875,53 +884,98 @@ function BuildTabContent({
       )}
 
       {/* --- Skill priority --- */}
-      {hasSkills && (
-        <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
-          <h2 className="text-lg font-semibold text-white">Priorite de competences</h2>
-          <div className="mt-4 space-y-2">
-            {build.skillPriority
-              .slice()
-              .sort((a, b) => b.priority - a.priority)
-              .map((s, i) => (
-                <div
-                  key={i}
-                  className="flex items-center gap-3 rounded-lg border border-slate-700/60 bg-slate-950/55 px-4 py-2.5"
-                >
-                  {(() => {
-                    const idx = s.skillIndex;
-                    const iconKey = idx === 1 ? "skill1" : idx === 2 ? "skill2" : idx === 3 ? "skill3" : null;
-                    const iconSrc = iconKey ? skillIcons?.[iconKey]?.publicPath : null;
-                    return iconSrc ? (
-                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-slate-600/60 bg-slate-800/80">
-                        <img src={iconSrc} alt="" className="h-6 w-6 object-contain" />
-                      </div>
-                    ) : null;
-                  })()}
-                  <div className="flex gap-0.5">
-                    {Array.from({ length: 5 }, (_, j) => (
-                      <span
-                        key={j}
-                        className={`text-sm ${
-                          j < s.priority ? "text-amber-400" : "text-slate-700"
-                        }`}
+      {hasSkills && (() => {
+        const rgb = ELEMENT_RGB[characterElement] ?? ELEMENT_RGB.Water;
+        const sorted = build.skillPriority.slice().sort((a, b) => b.priority - a.priority);
+        return (
+          <section className="relative py-6">
+            <h2 className="mb-8 text-lg font-semibold text-white">Priorite de competences</h2>
+
+            <div className="relative ml-4 md:ml-8">
+              {/* Vertical connecting vine */}
+              <div
+                className="absolute left-7 top-0 bottom-0 w-px"
+                style={{ background: `linear-gradient(to bottom, rgba(${rgb}, 0.4), rgba(${rgb}, 0.08) 80%, transparent)` }}
+              />
+
+              <div className="flex flex-col gap-10">
+                {sorted.map((s, i) => {
+                  const idx = s.skillIndex;
+                  const iconKey = idx === 1 ? "skill1" : idx === 2 ? "skill2" : idx === 3 ? "skill3" : null;
+                  const iconSrc = iconKey ? skillIcons?.[iconKey]?.publicPath : null;
+                  const isTop = i === 0;
+
+                  return (
+                    <div
+                      key={i}
+                      className="relative flex items-center gap-5"
+                      style={{ paddingLeft: `${i * 20}px` }}
+                    >
+                      {/* Floating circle */}
+                      <div
+                        className="relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-full"
+                        style={{
+                          border: `2px solid rgba(${rgb}, ${isTop ? 0.6 : 0.2})`,
+                          boxShadow: isTop ? `0 0 20px rgba(${rgb}, 0.25), inset 0 0 12px rgba(${rgb}, 0.1)` : "none",
+                          background: isTop
+                            ? `radial-gradient(circle at center, rgba(${rgb}, 0.12), rgba(15, 23, 42, 0.9))`
+                            : "rgba(15, 23, 42, 0.6)",
+                        }}
                       >
-                        ★
-                      </span>
-                    ))}
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <p className="truncate text-sm font-medium text-slate-100">
-                      <BuildLocalizedText texts={s.skillName} lang={selectedLanguage} />
-                    </p>
-                    <p className="truncate text-xs text-slate-400">
-                      <BuildLocalizedText texts={s.note} lang={selectedLanguage} />
-                    </p>
-                  </div>
-                </div>
-              ))}
-          </div>
-        </section>
-      )}
+                        {iconSrc ? (
+                          <img
+                            src={iconSrc}
+                            alt=""
+                            className="h-8 w-8 object-contain drop-shadow-lg"
+                            style={isTop ? { filter: `drop-shadow(0 0 6px rgba(${rgb}, 0.5))` } : undefined}
+                          />
+                        ) : (
+                          <span className={`text-xl font-bold ${isTop ? "text-white" : "text-slate-500"}`}>
+                            {i + 1}
+                          </span>
+                        )}
+
+                        {/* Priority rank badge */}
+                        <div
+                          className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full text-[10px] font-bold"
+                          style={{
+                            background: isTop ? `rgba(${rgb}, 0.8)` : "rgba(71, 85, 105, 0.8)",
+                            color: isTop ? "#0f172a" : "#cbd5e1",
+                          }}
+                        >
+                          {i + 1}
+                        </div>
+                      </div>
+
+                      {/* Skill info floating to the right */}
+                      <div className="min-w-0 flex-1">
+                        <p className={`font-medium ${isTop ? "text-base text-white" : "text-sm text-slate-300"}`}>
+                          <BuildLocalizedText texts={s.skillName} lang={selectedLanguage} />
+                        </p>
+                        <div className="mt-1 flex flex-wrap items-center gap-2">
+                          <div className="flex gap-0.5">
+                            {Array.from({ length: 5 }, (_, j) => (
+                              <span
+                                key={j}
+                                className={`text-[10px] ${j < s.priority ? "text-amber-400" : "text-slate-700"}`}
+                              >
+                                ★
+                              </span>
+                            ))}
+                          </div>
+                          <p className="truncate text-xs text-slate-500">
+                            <BuildLocalizedText texts={s.note} lang={selectedLanguage} />
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+        );
+      })()}
 
       {/* --- Notes --- */}
       {hasNotes && (
@@ -1656,44 +1710,121 @@ export default function CharacterDetailClient({
       )}
 
       {/* ---------- Intron tab ---------- */}
-      {activeTab === "intron" && (
-        <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
-          <h2 className="text-lg font-semibold text-white">
-            Niveaux d&apos;intron
-          </h2>
-          {character.intronLevels.length > 0 ? (
-            <>
-              <p className="mt-1 text-sm text-slate-400">
-                Chaque niveau necessite {character.intronLevels[0]?.resourceNum ?? 30} pieces d&apos;intron (CharPiece #{character.charPieceId}).
-              </p>
-              <div className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-                {character.intronLevels.map((intronLevel) => (
-                  <div
-                    key={`intron-${intronLevel.cardLevel}`}
-                    className="flex items-center justify-between rounded-lg border border-slate-700/60 bg-slate-950/55 px-3 py-2"
-                  >
-                    <div>
-                      <p className="text-sm font-medium text-slate-100">
-                        Niveau {intronLevel.cardLevel}
-                      </p>
-                      <p className="text-xs text-slate-400">
-                        Resource #{intronLevel.resourceId}
-                      </p>
-                    </div>
-                    <span className="rounded-full border border-indigo-500/35 bg-indigo-500/10 px-2.5 py-0.5 text-xs text-indigo-100">
-                      {intronLevel.resourceNum} pieces
-                    </span>
+      {activeTab === "intron" && (() => {
+        const rgb = ELEMENT_RGB[character.element.key] ?? ELEMENT_RGB.Water;
+        const intronLevels = character.intronLevels;
+        const bustSrc = character.portraits.bust?.publicPath;
+        // Vertical offsets (%) from top for each circle
+        const CIRCLE_Y = [2, 16, 32, 48, 64, 80];
+        // Horizontal offsets — symmetric: 1↔6, 2↔5, 3↔4
+        const CIRCLE_X = [8, 42, 62, 62, 42, 8];
+
+        return (
+          <section className="py-6">
+            <h2 className="mb-8 flex items-center gap-2 text-lg font-semibold text-white">
+              <Layers className="h-4 w-4 text-indigo-400/80" />
+              Niveaux d&apos;intron
+            </h2>
+            {intronLevels.length > 0 ? (
+              <div className="flex gap-6 md:gap-10">
+                {/* Left: bust portrait */}
+                {bustSrc && (
+                  <div className="hidden shrink-0 md:block" style={{ width: "480px" }}>
+                    <img
+                      src={bustSrc}
+                      alt={character.internalName}
+                      className="h-auto w-full object-contain"
+                      style={{ filter: `drop-shadow(0 0 50px rgba(${rgb}, 0.25))` }}
+                    />
                   </div>
-                ))}
+                )}
+
+                {/* Right: floating circles constellation */}
+                <div className="relative min-h-[520px] flex-1">
+                  {/* SVG connecting lines */}
+                  <svg className="pointer-events-none absolute inset-0 h-full w-full" preserveAspectRatio="none">
+                    {intronLevels.map((_, idx) => {
+                      if (idx === 0) return null;
+                      const x1 = (CIRCLE_X[idx - 1] ?? 0) + 5;
+                      const y1 = (CIRCLE_Y[idx - 1] ?? 0) + 5;
+                      const x2 = (CIRCLE_X[idx] ?? 0) + 5;
+                      const y2 = (CIRCLE_Y[idx] ?? 0) + 5;
+                      const mx = (x1 + x2) / 2;
+                      return (
+                        <path
+                          key={`line-${idx}`}
+                          d={`M ${x1}% ${y1}% Q ${mx}% ${(y1 + y2) / 2}% ${x2}% ${y2}%`}
+                          fill="none"
+                          stroke={`rgba(${rgb}, 0.15)`}
+                          strokeWidth="1"
+                          strokeDasharray="4 6"
+                        />
+                      );
+                    })}
+                  </svg>
+
+                  {/* Circles */}
+                  {intronLevels.map((intronLevel, idx) => {
+                    const num = idx + 1;
+                    const iconSrc = num >= 1 && num <= 6 ? `/assets/ui/intron/intron-${num}.png` : null;
+                    const isFirst = idx === 0;
+
+                    return (
+                      <div
+                        key={`intron-${num}`}
+                        className="absolute flex items-center gap-3"
+                        style={{
+                          left: `${CIRCLE_X[idx] ?? 0}%`,
+                          top: `${CIRCLE_Y[idx] ?? 0}%`,
+                        }}
+                      >
+                        {/* Glowing circle */}
+                        <div
+                          className="flex h-[72px] w-[72px] shrink-0 items-center justify-center rounded-full"
+                          style={{
+                            border: `2px solid rgba(${rgb}, ${isFirst ? 0.7 : 0.2})`,
+                            boxShadow: isFirst
+                              ? `0 0 28px rgba(${rgb}, 0.35), 0 0 56px rgba(${rgb}, 0.12), inset 0 0 16px rgba(${rgb}, 0.12)`
+                              : `0 0 10px rgba(${rgb}, 0.06)`,
+                            background: isFirst
+                              ? `radial-gradient(circle at center, rgba(${rgb}, 0.18), rgba(15, 23, 42, 0.9))`
+                              : "rgba(15, 23, 42, 0.4)",
+                          }}
+                        >
+                          {iconSrc ? (
+                            <img
+                              src={iconSrc}
+                              alt={`Intron ${num}`}
+                              className="h-14 w-14 object-contain"
+                              style={isFirst ? { filter: `drop-shadow(0 0 8px rgba(${rgb}, 0.6))` } : undefined}
+                            />
+                          ) : (
+                            <span className="text-xl font-bold text-slate-500">{num}</span>
+                          )}
+                        </div>
+
+                        {/* Label */}
+                        <div>
+                          <p className={`text-xs font-medium ${isFirst ? "text-white" : "text-slate-500"}`}>
+                            Intron {num}
+                          </p>
+                          <p className="text-[10px] text-slate-600">
+                            {intronLevel.resourceNum} pieces
+                          </p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
-            </>
-          ) : (
-            <p className="mt-4 text-sm text-slate-400">
-              Aucune donnee d&apos;intron disponible.
-            </p>
-          )}
-        </section>
-      )}
+            ) : (
+              <p className="mt-4 text-sm text-slate-400">
+                Aucune donnee d&apos;intron disponible.
+              </p>
+            )}
+          </section>
+        );
+      })()}
 
       {/* ---------- Translations tab ---------- */}
       {activeTab === "translations" && (
