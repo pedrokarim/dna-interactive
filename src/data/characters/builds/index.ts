@@ -18,6 +18,7 @@ import charDafu from "./char-dafu.json";
 import charKezhou from "./char-kezhou.json";
 import charHaier from "./char-haier.json";
 import charMaer from "./char-maer.json";
+import charYeer from "./char-yeer.json";
 
 // Add new character builds here:
 // 1. import charXxx from "./char-xxx.json";
@@ -44,4 +45,5 @@ export const allBuilds = [
   ...charKezhou,
   ...charHaier,
   ...charMaer,
+  ...charYeer,
 ];
