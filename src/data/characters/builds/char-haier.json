@@ -1,0 +1,50 @@
+[
+  {
+    "characterId": "char-haier",
+    "buildName": { "FR": "DPS Pyro Tank", "EN": "Pyro Tank DPS" },
+    "weapons": {
+      "melee": [
+        { "itemId": "weapons-10301", "rank": "best", "note": { "FR": "Arme signature. Duree + buff degats Pyro.", "EN": "Signature weapon. Duration + Pyro damage buff." } },
+        { "itemId": "weapons-10501", "rank": "alternative", "note": { "FR": "PV max +100%. Ameliore le scaling PV.", "EN": "Max HP +100%. Enhances HP scaling." } }
+      ],
+      "ranged": [
+        { "itemId": "weapons-20201", "rank": "best", "note": { "FR": "Degats de competence +48%.", "EN": "Skill Damage +48%." } },
+        { "itemId": "weapons-20301", "rank": "alternative", "note": { "FR": "Option lance-grenades. Stats offensives.", "EN": "Grenade launcher option. Offensive stats." } }
+      ]
+    },
+    "demonWedges": {
+      "slots": [
+        { "position": 1, "itemId": "mods-51931" },
+        { "position": 2, "itemId": "mods-51323" },
+        { "position": 3, "itemId": "mods-51431" },
+        { "position": 4, "itemId": "mods-51002" },
+        { "position": 5, "itemId": "mods-51734" },
+        { "position": 6, "itemId": "mods-51734" },
+        { "position": 7, "itemId": "mods-51734" },
+        { "position": 8, "itemId": "mods-51734" }
+      ],
+      "centerItemId": "mods-31524",
+      "affinity": { "FR": "Pouvoir de Quetzalcoatl", "EN": "Feathered Serpent's Power" },
+      "note": { "FR": "Focus PV max + Portee. 4x Nirvana Spectre. Vigilant en centre.", "EN": "Focus Max HP + Range. 4x Nirvana Spectrum. Vigilant center." }
+    },
+    "statsPriority": ["SkillDmg", "MaxHp", "SkillRange", "ATK", "SkillIntensity"],
+    "team": [
+      { "characterId": "char-linen", "role": "DPS", "note": { "FR": "DPS Pyro principal. Synergie elementaire.", "EN": "Main Pyro DPS. Elemental synergy." } },
+      { "characterId": "char-baiheng", "role": "Support", "note": { "FR": "Soins, Lucidite et buff Degats de competence.", "EN": "Healing, Sanity and Skill DMG buff." } }
+    ],
+    "genimon": [
+      { "itemId": "genimon-4231", "rank": "best" },
+      { "itemId": "genimon-4031", "rank": "alternative" },
+      { "itemId": "genimon-4131", "rank": "alternative" }
+    ],
+    "skillPriority": [
+      { "skillName": { "FR": "Inferno dechaine", "EN": "Raging Inferno" }, "priority": 5, "note": { "FR": "Source de degats principale. Zone de flammes continue.", "EN": "Primary damage source. Continuous flame zone." } },
+      { "skillName": { "FR": "Cage du desespoir", "EN": "Cage of Despair" }, "priority": 4, "note": { "FR": "Ultime. Provoque les ennemis et active Retribution.", "EN": "Ultimate. Taunts enemies and triggers Retribution." } },
+      { "skillName": { "FR": "Resolution punitive", "EN": "Retributive Resolve" }, "priority": 3, "note": { "FR": "Passif de survie et scaling de degats via PV.", "EN": "Survivability passive and HP-based damage scaling." } }
+    ],
+    "notes": {
+      "FR": "Vulcera est une DPS tank Pyro dont les degats scale avec les PV max. Verdict coupable augmente les degats de 50% contre les ennemis provoques. Intron : I1 > I6 > I4 > I2. Avec Lynn et Fushu.",
+      "EN": "Hellfire is a Pyro tank DPS whose damage scales with Max HP. Guilty Verdict increases damage by 50% against taunted enemies. Intron: I1 > I6 > I4 > I2. With Lynn and Fushu."
+    }
+  }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "characterId": "char-kezhou",
+    "buildName": { "FR": "DPS Lumino Arme", "EN": "Lumino Weapon DPS" },
+    "weapons": {
+      "melee": [
+        { "itemId": "weapons-10601", "rank": "best", "note": { "FR": "Meilleure arme melee. Synergie avec le gameplay rapide.", "EN": "Best melee weapon. Synergy with fast-paced gameplay." } },
+        { "itemId": "weapons-10202", "rank": "alternative", "note": { "FR": "Alternative solide. Bonus ATQ.", "EN": "Solid alternative. ATK bonus." } }
+      ],
+      "ranged": [
+        { "itemId": "weapons-20510", "rank": "best", "note": { "FR": "Arme signature. Maximise les degats a distance et la synergie Phanosword.", "EN": "Signature weapon. Maximizes ranged damage and Phanosword synergy." } },
+        { "itemId": "weapons-20205", "rank": "alternative", "note": { "FR": "Alternative viable a distance.", "EN": "Viable ranged alternative." } }
+      ]
+    },
+    "demonWedges": {
+      "slots": [
+        { "position": 1, "itemId": "mods-51962" },
+        { "position": 2, "itemId": "mods-51461" },
+        { "position": 3, "itemId": "mods-51336" },
+        { "position": 4, "itemId": "mods-51763" },
+        { "position": 5, "itemId": "mods-51763" },
+        { "position": 6, "itemId": "mods-51761" },
+        { "position": 7, "itemId": "mods-51761" },
+        { "position": 8, "itemId": "mods-51761" }
+      ],
+      "centerItemId": "mods-31531",
+      "affinity": { "FR": "Pouvoir de Quetzalcoatl", "EN": "Feathered Serpent's Power" },
+      "note": { "FR": "1x Gleam & Glimmer, 1x Prime Morale, 1x Skylume Soleil de Minuit, 2x Blaze Eternite, 3x Scorch. Noyau Esquive.", "EN": "1x Gleam & Glimmer, 1x Prime Morale, 1x Skylume Midnight Sun, 2x Blaze Eternity, 3x Scorch. Sidestep core." }
+    },
+    "statsPriority": ["ATK", "CritDmg", "SkillSustain", "CritRate"],
+    "team": [
+      { "characterId": "char-feina", "role": "Support", "note": { "FR": "Buffs degats d'arme. Synergie ideale avec le gameplay arme de Kezhou.", "EN": "Weapon damage buffs. Ideal synergy with Kezhou's weapon gameplay." } },
+      { "characterId": "char-baiheng", "role": "Support", "note": { "FR": "Soins et gestion de la Lucidite.", "EN": "Healing and Sanity management." } }
+    ],
+    "genimon": [
+      { "itemId": "genimon-4261", "rank": "best" },
+      { "itemId": "genimon-4163", "rank": "alternative" },
+      { "itemId": "genimon-4063", "rank": "alternative" }
+    ],
+    "skillPriority": [
+      { "skillName": { "FR": "Derive de Jeunesse", "EN": "Drift of Youth" }, "priority": 5, "note": { "FR": "Augmente la Vitesse d'attaque. Essentiel.", "EN": "Boosts ATK Speed. Essential." } },
+      { "skillName": { "FR": "Sabres de Lumiere", "EN": "Lightswords Slice Starry Streams" }, "priority": 5, "note": { "FR": "Donne acces au Phanosword.", "EN": "Grants Phanosword access." } },
+      { "skillName": { "FR": "Flux Changeant", "EN": "Life's A Fleeting, Shifting Tide" }, "priority": 4, "note": { "FR": "Mecaniques d'Intention et reduction du cout de l'ultime.", "EN": "Intent mechanics and ultimate cost reduction." } }
+    ],
+    "notes": {
+      "FR": "Kezhou est un DPS Lumino rapide centre sur les degats d'arme. L'ultime transforme l'arme en Phanosword avec portee et stats ameliorees. Les projectiles Phanoplume attaquent automatiquement. Alternez l'ultime pour gerer Intention d'Epee et Intention de Corde.",
+      "EN": "Kezhou is a fast Lumino weapon DPS. Ultimate transforms weapon into Phanosword with enhanced range and stats. Phanoplume projectiles auto-attack. Toggle ultimate to manage Sword Intent and String Intent."
+    }
+  }
+]

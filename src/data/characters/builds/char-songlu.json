@@ -1,0 +1,50 @@
+[
+  {
+    "characterId": "char-songlu",
+    "buildName": { "FR": "Support Anemo", "EN": "Anemo Support" },
+    "weapons": {
+      "melee": [
+        { "itemId": "weapons-10501", "rank": "best", "note": { "FR": "Arme signature. PV max +100%, synergie parfaite avec le scaling PV de Truffle.", "EN": "Signature weapon. Max HP +100%, perfect synergy with Truffle's HP scaling." } },
+        { "itemId": "weapons-10301", "rank": "alternative", "note": { "FR": "Bonus de PV et duree de competence. Bonne alternative.", "EN": "HP bonus and Skill Duration. Good alternative." } }
+      ],
+      "ranged": [
+        { "itemId": "weapons-20602", "rank": "best", "note": { "FR": "Duree de competence +30%. Buffs aleatoires pour les allies sur CRIT.", "EN": "Skill Duration +30%. Random ally buffs on CRIT." } },
+        { "itemId": "weapons-20203", "rank": "alternative", "note": { "FR": "Duree de competence +30%. Projectiles rebondissants.", "EN": "Skill Duration +30%. Bouncing projectiles." } }
+      ]
+    },
+    "demonWedges": {
+      "slots": [
+        { "position": 1, "itemId": "mods-56154" },
+        { "position": 2, "itemId": "mods-51952" },
+        { "position": 3, "itemId": "mods-51335" },
+        { "position": 4, "itemId": "mods-51454" },
+        { "position": 5, "itemId": "mods-51754" },
+        { "position": 6, "itemId": "mods-51754" },
+        { "position": 7, "itemId": "mods-51754" },
+        { "position": 8, "itemId": "mods-51754" }
+      ],
+      "centerItemId": "mods-31521",
+      "affinity": { "FR": "Eternite de Quetzalcoatl", "EN": "Feathered Serpent's Eternity" },
+      "note": { "FR": "4x Wings Eternity pour maximiser la duree de competence. Turbulent Cyclone et Wings Inspo Resolve pour les buffs de Tenacite.", "EN": "4x Wings Eternity to maximize Skill Duration. Turbulent Cyclone and Wings Inspo Resolve for Resolve buffs." }
+    },
+    "statsPriority": ["MaxHp", "MaxSp", "SkillSustain", "SkillEfficiency", "ATK"],
+    "team": [
+      { "characterId": "char-saiqi", "role": "DPS", "note": { "FR": "DPS principal Anemo. Profite pleinement des buffs de Tenacite et des soins de Truffle.", "EN": "Main Anemo DPS. Fully benefits from Truffle's Resolve buffs and healing." } },
+      { "characterId": "char-feina", "role": "Support", "note": { "FR": "Second support avec buffs offensifs et restauration de Lucidite.", "EN": "Second support with offensive buffs and Sanity restoration." } }
+    ],
+    "genimon": [
+      { "itemId": "genimon-4251", "rank": "best" },
+      { "itemId": "genimon-4051", "rank": "alternative" },
+      { "itemId": "genimon-4151", "rank": "alternative" }
+    ],
+    "skillPriority": [
+      { "skillName": { "FR": "Pas de panique, c'est Filbert !", "EN": "Trotters Trot-Trot" }, "priority": 5, "note": { "FR": "Competence principale. Invoque Filbert pour infliger des degats Anemo et soigner les allies.", "EN": "Primary skill. Summons Filbert to deal Anemo damage and heal allies." } },
+      { "skillName": { "FR": "Depechez-vous, les rations !", "EN": "Chop-Chop, Commissaries!" }, "priority": 4, "note": { "FR": "Passif Poids Lourd. Augmente les degats infliges et reduit les degats subis.", "EN": "Heavyweight passive. Increases damage dealt and reduces damage taken." } },
+      { "skillName": { "FR": "A plein regime", "EN": "Tummy Full, Hands Full" }, "priority": 2, "note": { "FR": "Monte sur Filbert pour infliger des degats de zone. Moins critique pour le role support.", "EN": "Mounts Filbert for AoE damage. Less critical for support role." } }
+    ],
+    "notes": {
+      "FR": "Truffle et Filbert est un support Anemo axe sur les soins et les buffs de Tenacite via les PV max. Gardez Filbert invoque en permanence pour soigner l'equipe. Le passif Poids Lourd s'accumule en se deplacant, augmentant les degats et la resistance. Synergie optimale avec des DPS Anemo (Psyche, Outsider). A Intron 1, les soins sont considerablement ameliores.",
+      "EN": "Truffle and Filbert is an Anemo support focused on healing and Resolve buffs through Max HP scaling. Keep Filbert summoned at all times to heal the team. The Heavyweight passive stacks while moving, increasing damage and resistance. Optimal synergy with Anemo DPS (Psyche, Outsider). At Intron 1, healing is significantly improved."
+    }
+  }
+]

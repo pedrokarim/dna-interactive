@@ -1,0 +1,51 @@
+[
+  {
+    "characterId": "char-dafu",
+    "buildName": { "FR": "Support Anemo", "EN": "Anemo Support" },
+    "weapons": {
+      "melee": [
+        { "itemId": "weapons-10503", "rank": "best", "note": { "FR": "Duree de competence +36%. Maximise l'uptime des buffs et soins.", "EN": "Skill Duration +36%. Maximizes buff and healing uptime." } },
+        { "itemId": "weapons-10303", "rank": "alternative", "note": { "FR": "Duree de competence +36%. Alternative equivalente.", "EN": "Skill Duration +36%. Equivalent alternative." } },
+        { "itemId": "weapons-10101", "rank": "alternative", "note": { "FR": "Bonus d'ATQ% pour ameliorer les soins.", "EN": "ATK% bonus to enhance healing output." } }
+      ],
+      "ranged": [
+        { "itemId": "weapons-20602", "rank": "best", "note": { "FR": "Duree de competence +30%, accorde des buffs aleatoires (ATQ, DEF, Degats de competence ou Duree de competence) aux allies sur CRIT.", "EN": "Skill Duration +30%, grants random buffs (ATK, DEF, Skill DMG or Skill Duration) to allies on CRIT." } },
+        { "itemId": "weapons-20501", "rank": "alternative", "note": { "FR": "Duree de competence +36%. Option solide a distance.", "EN": "Skill Duration +36%. Solid ranged option." } }
+      ]
+    },
+    "demonWedges": {
+      "slots": [
+        { "position": 1, "itemId": "mods-56154" },
+        { "position": 2, "itemId": "mods-51952" },
+        { "position": 3, "itemId": "mods-51335" },
+        { "position": 4, "itemId": "mods-51454" },
+        { "position": 5, "itemId": "mods-51754" },
+        { "position": 6, "itemId": "mods-51754" },
+        { "position": 7, "itemId": "mods-51754" },
+        { "position": 8, "itemId": "mods-51754" }
+      ],
+      "centerItemId": "mods-31525",
+      "affinity": { "FR": "Soins", "EN": "Healing Track" },
+      "note": { "FR": "4x Wings Eternity pour maximiser la duree de competence. Turbulent Cyclone et Prime Serenity pour la Lucidite et la Tenacite d'equipe.", "EN": "4x Wings Eternity to maximize skill duration. Turbulent Cyclone and Prime Serenity for team Sanity and Resolve." }
+    },
+    "statsPriority": ["SkillSustain", "MaxSp", "ATK", "SkillDmg"],
+    "team": [
+      { "characterId": "char-kezhou", "role": "DPS", "note": { "FR": "DPS principal. Profite des buffs Anemo et des soins de Daphne.", "EN": "Main DPS. Benefits from Daphne's Anemo buffs and healing." } },
+      { "characterId": "char-feina", "role": "Support", "note": { "FR": "Second support. Buffs Degats d'arme complementaires aux buffs Anemo de Daphne.", "EN": "Second support. Weapon DMG buffs complement Daphne's Anemo buffs." } }
+    ],
+    "genimon": [
+      { "itemId": "genimon-4251", "rank": "best" },
+      { "itemId": "genimon-4051", "rank": "alternative" },
+      { "itemId": "genimon-4151", "rank": "alternative" }
+    ],
+    "skillPriority": [
+      { "skillName": { "FR": "Synthese Repulsive", "EN": "Repulsion Synthesis" }, "priority": 5, "note": { "FR": "Source principale de buff. Soigne les allies et applique la Formule de Purification (buff Degats Anemo).", "EN": "Primary buff source. Heals allies and applies Purification Formula (Anemo DMG buff)." } },
+      { "skillName": { "FR": "Effusion d'Emeraude", "EN": "Emerald Effusion" }, "priority": 4, "note": { "FR": "Soins de zone continus et ralentissement des ennemis.", "EN": "Continuous AoE healing and enemy slow." } },
+      { "skillName": { "FR": "Projectile d'Azoth", "EN": "Azoth Projectile" }, "priority": 3, "note": { "FR": "Source de degats. Chaque stack augmente la probabilite d'effet bonus de l'arme a distance.", "EN": "Damage source. Each stack increases ranged weapon bonus trigger probability." } }
+    ],
+    "notes": {
+      "FR": "Daphne est un support Anemo polyvalent offrant soins et buffs de degats. Deployez le champ de soins (Effusion d'Emeraude) pour restaurer les PV des allies et ralentir les ennemis. Utilisez Synthese Repulsive pour appliquer la Formule de Purification (buff Degats Anemo) tout en debuffant les ennemis. Collectez les Projectiles d'Azoth — chaque stack augmente l'effet bonus de l'arme a distance, appliquant un DoT (Formule de Decomposition). Priorisez la Duree de competence et la Lucidite max pour maintenir les buffs en permanence. Gratuite via l'evenement Marcher sous la Pluie.",
+      "EN": "Daphne is a versatile Anemo support providing healing and damage buffs. Deploy healing field (Emerald Effusion) to restore ally HP and slow enemies. Use Repulsion Synthesis to apply Purification Formula (Anemo DMG buff) while debuffing enemies. Collect Azoth Projectiles — each stack increases ranged weapon bonus trigger probability, applying DoT (Decay Formula). Prioritize Skill Duration and Max Sanity for permanent buff uptime. Free via Step into the Rainveil event."
+    }
+  }
+]
