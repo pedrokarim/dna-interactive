@@ -1,0 +1,1869 @@
+[
+  {
+    "id": "purgatorio-island",
+    "name": "Purgatorio Island",
+    "image": "/assets/maps/purgatorio_island_v1.png",
+    "imageSize": {
+      "width": 4096,
+      "height": 4096
+    },
+    "markerCount": 169,
+    "imageCount": 164,
+    "legend": [
+      {
+        "type": "Collectibles",
+        "label": "Collectibles",
+        "icon": "/assets/icons/1749672600072455391.png",
+        "markers": [
+          {
+            "id": 20,
+            "name": "Spring Water",
+            "icon": "/assets/icons/1749555724812935497.png"
+          },
+          {
+            "id": 21,
+            "name": "Seashell",
+            "icon": "/assets/icons/1749555732233735760.png"
+          },
+          {
+            "id": 24,
+            "name": "Hard Shell Fruit",
+            "icon": "/assets/icons/1749555921415533794.png"
+          },
+          {
+            "id": 25,
+            "name": "Caramel Mushroom",
+            "icon": "/assets/icons/1749555938060153157.png"
+          },
+          {
+            "id": 27,
+            "name": "Dewioletr",
+            "icon": "/assets/icons/1749556012460864902.png"
+          },
+          {
+            "id": 29,
+            "name": "Bird Egg",
+            "icon": "/assets/icons/1749556033266528734.png"
+          },
+          {
+            "id": 30,
+            "name": "Indigofly",
+            "icon": "/assets/icons/1749556044734397730.png"
+          },
+          {
+            "id": 31,
+            "name": "Virifly",
+            "icon": "/assets/icons/1749556059763681063.png"
+          },
+          {
+            "id": 32,
+            "name": "Crackbloom",
+            "icon": "/assets/icons/1749556082401623363.png"
+          }
+        ]
+      },
+      {
+        "type": "Landmarks",
+        "label": "Landmarks",
+        "icon": "/assets/icons/1749672609569330275.png",
+        "markers": [
+          {
+            "id": 35,
+            "name": "Teleport Point",
+            "icon": "/assets/icons/1749557822886359503.png"
+          },
+          {
+            "id": 36,
+            "name": "Nightmare Echo",
+            "icon": "/assets/icons/1749557928850108966.png"
+          },
+          {
+            "id": 38,
+            "name": "Fishing Spot",
+            "icon": "/assets/icons/1749561882699685405.png"
+          }
+        ]
+      },
+      {
+        "type": "Geniemon",
+        "label": "Geniemon",
+        "icon": "/assets/icons/1749562159541539924.png",
+        "markers": [
+          {
+            "id": 42,
+            "name": "Geniemon Spawn Point",
+            "icon": "/assets/icons/1749672734516496170.png"
+          }
+        ]
+      },
+      {
+        "type": "Storage Chest",
+        "label": "Storage Chest",
+        "icon": "/assets/icons/1749672743841364457.png",
+        "markers": [
+          {
+            "id": 43,
+            "name": "Storage Chest",
+            "icon": "/assets/icons/1749566001012138274.png"
+          },
+          {
+            "id": 44,
+            "name": "Treasure Map Chest",
+            "icon": "/assets/icons/1749560145785106563.png"
+          },
+          {
+            "id": 60,
+            "name": "Monster Chest",
+            "icon": "/assets/icons/1749565963302865436.png"
+          },
+          {
+            "id": 62,
+            "name": "Hidden Chest",
+            "icon": "/assets/icons/1749566014147617037.png"
+          }
+        ]
+      },
+      {
+        "type": "Collectibles",
+        "label": "Collectibles",
+        "icon": "/assets/icons/1749672777020326442.png",
+        "markers": [
+          {
+            "id": 48,
+            "name": "Exploration Token: Purgatorio Island",
+            "icon": "/assets/icons/1749560891496954404.png"
+          },
+          {
+            "id": 50,
+            "name": "Pan Spirit",
+            "icon": "/assets/icons/1749562536811567798.png"
+          },
+          {
+            "id": 204,
+            "name": "Music Segment",
+            "icon": "/assets/icons/1761791369509849777.png"
+          }
+        ]
+      },
+      {
+        "type": "NPC",
+        "label": "NPC",
+        "icon": "/assets/icons/1749672792691326823.png",
+        "markers": [
+          {
+            "id": 51,
+            "name": "NPC",
+            "icon": "/assets/icons/1749562234816683808.png"
+          }
+        ]
+      },
+      {
+        "type": "Readables",
+        "label": "Readables",
+        "icon": "/assets/icons/1749562186043874576.png",
+        "markers": [
+          {
+            "id": 52,
+            "name": "Inscription Rubbing",
+            "icon": "/assets/icons/1749615716537770510.png"
+          },
+          {
+            "id": 120,
+            "name": "Scattered Diary: Part I",
+            "icon": "/assets/icons/1749615740517719576.png"
+          },
+          {
+            "id": 121,
+            "name": "Scattered Diary: Part II",
+            "icon": "/assets/icons/1749615746647197694.png"
+          },
+          {
+            "id": 122,
+            "name": "Scattered Diary: Part III",
+            "icon": "/assets/icons/1749615753081742547.png"
+          },
+          {
+            "id": 165,
+            "name": "Purgatorio Island: Part I",
+            "icon": "/assets/icons/1749616176909633936.png"
+          },
+          {
+            "id": 166,
+            "name": "Purgatorio Island: Part II",
+            "icon": "/assets/icons/1749616182416215705.png"
+          },
+          {
+            "id": 167,
+            "name": "Purgatorio Island: Part III",
+            "icon": "/assets/icons/1749616189494845795.png"
+          },
+          {
+            "id": 168,
+            "name": "Purgatorio Island: Part IV",
+            "icon": "/assets/icons/1749616197188971156.png"
+          }
+        ]
+      },
+      {
+        "type": "Challenges",
+        "label": "Challenges",
+        "icon": "/assets/icons/1749672639131620419.png",
+        "markers": [
+          {
+            "id": 56,
+            "name": "Parkour Challenge",
+            "icon": "/assets/icons/1749672644630282670.png"
+          },
+          {
+            "id": 57,
+            "name": "Shooting Challenge",
+            "icon": "/assets/icons/1749672672913484663.png"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "icelake",
+    "name": "Icelake",
+    "image": "/assets/maps/icelake_v1.png",
+    "imageSize": {
+      "width": 4096,
+      "height": 4096
+    },
+    "markerCount": 341,
+    "imageCount": 325,
+    "legend": [
+      {
+        "type": "Collectibles",
+        "label": "Collectibles",
+        "icon": "/assets/icons/1749672600072455391.png",
+        "markers": [
+          {
+            "id": 18,
+            "name": "Lustrous/Silverstone",
+            "icon": "/assets/icons/1749555687524970863.png"
+          },
+          {
+            "id": 19,
+            "name": "Thumpstone",
+            "icon": "/assets/icons/1749555699717831145.png"
+          },
+          {
+            "id": 23,
+            "name": "Holy Sound Lily",
+            "icon": "/assets/icons/1749555916053522771.png"
+          },
+          {
+            "id": 27,
+            "name": "Dewioletr",
+            "icon": "/assets/icons/1749556012460864902.png"
+          },
+          {
+            "id": 28,
+            "name": "Lotus Grass",
+            "icon": "/assets/icons/1749556022430404224.png"
+          },
+          {
+            "id": 29,
+            "name": "Bird Egg",
+            "icon": "/assets/icons/1749556033266528734.png"
+          },
+          {
+            "id": 30,
+            "name": "Indigofly",
+            "icon": "/assets/icons/1749556044734397730.png"
+          },
+          {
+            "id": 32,
+            "name": "Crackbloom",
+            "icon": "/assets/icons/1749556082401623363.png"
+          },
+          {
+            "id": 34,
+            "name": "Bottled Lunar Sap",
+            "icon": "/assets/icons/1749556572625658617.png"
+          }
+        ]
+      },
+      {
+        "type": "Landmarks",
+        "label": "Landmarks",
+        "icon": "/assets/icons/1749672609569330275.png",
+        "markers": [
+          {
+            "id": 35,
+            "name": "Teleport Point",
+            "icon": "/assets/icons/1749557822886359503.png"
+          },
+          {
+            "id": 36,
+            "name": "Nightmare Echo",
+            "icon": "/assets/icons/1749557928850108966.png"
+          },
+          {
+            "id": 37,
+            "name": "Shop",
+            "icon": "/assets/icons/1749562619726215825.png"
+          },
+          {
+            "id": 38,
+            "name": "Fishing Spot",
+            "icon": "/assets/icons/1749561882699685405.png"
+          },
+          {
+            "id": 39,
+            "name": "Galeia Opera House",
+            "icon": "/assets/icons/1749561275017403530.png"
+          },
+          {
+            "id": 41,
+            "name": "Legion Hospital",
+            "icon": "/assets/icons/1749561255158437835.png"
+          }
+        ]
+      },
+      {
+        "type": "Geniemon",
+        "label": "Geniemon",
+        "icon": "/assets/icons/1749562159541539924.png",
+        "markers": [
+          {
+            "id": 42,
+            "name": "Geniemon Spawn Point",
+            "icon": "/assets/icons/1749672734516496170.png"
+          }
+        ]
+      },
+      {
+        "type": "Storage Chest",
+        "label": "Storage Chest",
+        "icon": "/assets/icons/1749672743841364457.png",
+        "markers": [
+          {
+            "id": 43,
+            "name": "Storage Chest",
+            "icon": "/assets/icons/1749566001012138274.png"
+          },
+          {
+            "id": 44,
+            "name": "Treasure Map Chest",
+            "icon": "/assets/icons/1749560145785106563.png"
+          },
+          {
+            "id": 60,
+            "name": "Monster Chest",
+            "icon": "/assets/icons/1749565963302865436.png"
+          },
+          {
+            "id": 62,
+            "name": "Hidden Chest",
+            "icon": "/assets/icons/1749566014147617037.png"
+          },
+          {
+            "id": 202,
+            "name": "Mechanism Puzzle",
+            "icon": "/assets/icons/1761708704906275975.png"
+          }
+        ]
+      },
+      {
+        "type": "Collectibles",
+        "label": "Collectibles",
+        "icon": "/assets/icons/1749672777020326442.png",
+        "markers": [
+          {
+            "id": 47,
+            "name": "Explorer’s Proof: Ice Lake City",
+            "icon": "/assets/icons/1749560835499262022.png"
+          },
+          {
+            "id": 50,
+            "name": "Pan Spirit",
+            "icon": "/assets/icons/1749562536811567798.png"
+          },
+          {
+            "id": 204,
+            "name": "Music Segment",
+            "icon": "/assets/icons/1761791369509849777.png"
+          }
+        ]
+      },
+      {
+        "type": "NPC",
+        "label": "NPC",
+        "icon": "/assets/icons/1749672792691326823.png",
+        "markers": [
+          {
+            "id": 51,
+            "name": "NPC",
+            "icon": "/assets/icons/1749562234816683808.png"
+          }
+        ]
+      },
+      {
+        "type": "Readables",
+        "label": "Readables",
+        "icon": "/assets/icons/1749562186043874576.png",
+        "markers": [
+          {
+            "id": 124,
+            "name": "\"Disease and Man\" - Blight Excerpt",
+            "icon": "/assets/icons/1749615772801980700.png"
+          },
+          {
+            "id": 125,
+            "name": "Foreign Book",
+            "icon": "/assets/icons/1749615780168411850.png"
+          },
+          {
+            "id": 126,
+            "name": "Letter from the Collector",
+            "icon": "/assets/icons/1749615787957275836.png"
+          },
+          {
+            "id": 127,
+            "name": "Unsent Reply",
+            "icon": "/assets/icons/1749615796437662301.png"
+          },
+          {
+            "id": 128,
+            "name": "Dusty Family Letter",
+            "icon": "/assets/icons/1749615807153841954.png"
+          },
+          {
+            "id": 129,
+            "name": "The Invincible Legion Commander I",
+            "icon": "/assets/icons/1749615814101373765.png"
+          },
+          {
+            "id": 132,
+            "name": "Observation Log I",
+            "icon": "/assets/icons/1749615837089396583.png"
+          },
+          {
+            "id": 140,
+            "name": "Farewell to Poverty, Rise to Success",
+            "icon": "/assets/icons/1749615914910523138.png"
+          },
+          {
+            "id": 154,
+            "name": "Opened Letter",
+            "icon": "/assets/icons/1749616086884133068.png"
+          },
+          {
+            "id": 155,
+            "name": "Overdue Bill",
+            "icon": "/assets/icons/1749616094181220554.png"
+          },
+          {
+            "id": 156,
+            "name": "Potion Label",
+            "icon": "/assets/icons/1749616101066380962.png"
+          },
+          {
+            "id": 157,
+            "name": "A Note",
+            "icon": "/assets/icons/1749616107322809812.png"
+          },
+          {
+            "id": 158,
+            "name": "Saiki Frey’s File",
+            "icon": "/assets/icons/1749616114741633007.png"
+          },
+          {
+            "id": 159,
+            "name": "Alyssa Taylor’s File",
+            "icon": "/assets/icons/1749616121879596672.png"
+          },
+          {
+            "id": 160,
+            "name": "Hunter Clark’s File",
+            "icon": "/assets/icons/1749616130131381963.png"
+          },
+          {
+            "id": 162,
+            "name": "Emperor’s Tailring Medal",
+            "icon": "/assets/icons/1749616152403797489.png"
+          },
+          {
+            "id": 163,
+            "name": "Old Newspaper",
+            "icon": "/assets/icons/1749616159692383192.png"
+          },
+          {
+            "id": 169,
+            "name": "Ice Lake City I",
+            "icon": "/assets/icons/1749616207529733414.png"
+          },
+          {
+            "id": 170,
+            "name": "Ice Lake City II",
+            "icon": "/assets/icons/1749616211699187117.png"
+          },
+          {
+            "id": 171,
+            "name": "Ice Lake City III",
+            "icon": "/assets/icons/1749616220178547492.png"
+          },
+          {
+            "id": 173,
+            "name": "Ice Lake City V",
+            "icon": "/assets/icons/1749616233548364863.png"
+          },
+          {
+            "id": 174,
+            "name": "Ice Lake City VI",
+            "icon": "/assets/icons/1749616247840353305.png"
+          },
+          {
+            "id": 175,
+            "name": "Ice Lake City VII",
+            "icon": "/assets/icons/1749616257970196150.png"
+          },
+          {
+            "id": 176,
+            "name": "Ice Lake City VIII",
+            "icon": "/assets/icons/1749616263848697046.png"
+          },
+          {
+            "id": 186,
+            "name": "Filled Old Diary",
+            "icon": "/assets/icons/1750037932759988256.png"
+          },
+          {
+            "id": 189,
+            "name": "Silver Candle Carnival Hymn I",
+            "icon": "/assets/icons/1760780809402182925.png"
+          },
+          {
+            "id": 190,
+            "name": "Moon-Bearing Branches: Eve of Uprising",
+            "icon": "/assets/icons/1760967129324924057.png"
+          },
+          {
+            "id": 191,
+            "name": "Silver Candle Carnival Hymn VIII",
+            "icon": "/assets/icons/1760971097160903420.png"
+          },
+          {
+            "id": 192,
+            "name": "Silver Candle Carnival Hymn II",
+            "icon": "/assets/icons/1761051095698583485.png"
+          },
+          {
+            "id": 198,
+            "name": "Have a Drink, Please Speak",
+            "icon": "/assets/icons/1761052831397514596.png"
+          },
+          {
+            "id": 199,
+            "name": "Forsaken Alliance Secret I",
+            "icon": "/assets/icons/1761054400156205233.png"
+          },
+          {
+            "id": 203,
+            "name": "Tide of Tainted Beasts",
+            "icon": "/assets/icons/1761708973472919138.png"
+          }
+        ]
+      },
+      {
+        "type": "Challenges",
+        "label": "Challenges",
+        "icon": "/assets/icons/1749672639131620419.png",
+        "markers": [
+          {
+            "id": 56,
+            "name": "Parkour Challenge",
+            "icon": "/assets/icons/1749672644630282670.png"
+          },
+          {
+            "id": 57,
+            "name": "Shooting Challenge",
+            "icon": "/assets/icons/1749672672913484663.png"
+          }
+        ]
+      },
+      {
+        "type": "Others",
+        "label": "Others",
+        "icon": "/assets/icons/1749672703904257929.png",
+        "markers": [
+          {
+            "id": 63,
+            "name": "Impression Check",
+            "icon": "/assets/icons/1749672708678399884.png"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "icelake-sewer",
+    "name": "Icelake Sewer",
+    "image": "/assets/maps/icelake_sewer_v1.png",
+    "imageSize": {
+      "width": 4096,
+      "height": 4096
+    },
+    "markerCount": 152,
+    "imageCount": 141,
+    "legend": [
+      {
+        "type": "Collectibles",
+        "label": "Collectibles",
+        "icon": "/assets/icons/1749672600072455391.png",
+        "markers": [
+          {
+            "id": 23,
+            "name": "Holy Sound Lily",
+            "icon": "/assets/icons/1749555916053522771.png"
+          },
+          {
+            "id": 26,
+            "name": "Snowcap",
+            "icon": "/assets/icons/1749555951565856688.png"
+          }
+        ]
+      },
+      {
+        "type": "Landmarks",
+        "label": "Landmarks",
+        "icon": "/assets/icons/1749672609569330275.png",
+        "markers": [
+          {
+            "id": 35,
+            "name": "Teleport Point",
+            "icon": "/assets/icons/1749557822886359503.png"
+          },
+          {
+            "id": 38,
+            "name": "Fishing Spot",
+            "icon": "/assets/icons/1749561882699685405.png"
+          }
+        ]
+      },
+      {
+        "type": "Geniemon",
+        "label": "Geniemon",
+        "icon": "/assets/icons/1749562159541539924.png",
+        "markers": [
+          {
+            "id": 42,
+            "name": "Geniemon Spawn Point",
+            "icon": "/assets/icons/1749672734516496170.png"
+          }
+        ]
+      },
+      {
+        "type": "Storage Chest",
+        "label": "Storage Chest",
+        "icon": "/assets/icons/1749672743841364457.png",
+        "markers": [
+          {
+            "id": 43,
+            "name": "Storage Chest",
+            "icon": "/assets/icons/1749566001012138274.png"
+          },
+          {
+            "id": 44,
+            "name": "Treasure Map Chest",
+            "icon": "/assets/icons/1749560145785106563.png"
+          },
+          {
+            "id": 62,
+            "name": "Hidden Chest",
+            "icon": "/assets/icons/1749566014147617037.png"
+          }
+        ]
+      },
+      {
+        "type": "Collectibles",
+        "label": "Collectibles",
+        "icon": "/assets/icons/1749672777020326442.png",
+        "markers": [
+          {
+            "id": 47,
+            "name": "Explorer’s Proof: Ice Lake City",
+            "icon": "/assets/icons/1749560835499262022.png"
+          },
+          {
+            "id": 50,
+            "name": "Pan Spirit",
+            "icon": "/assets/icons/1749562536811567798.png"
+          },
+          {
+            "id": 204,
+            "name": "Music Segment",
+            "icon": "/assets/icons/1761791369509849777.png"
+          }
+        ]
+      },
+      {
+        "type": "NPC",
+        "label": "NPC",
+        "icon": "/assets/icons/1749672792691326823.png",
+        "markers": [
+          {
+            "id": 51,
+            "name": "NPC",
+            "icon": "/assets/icons/1749562234816683808.png"
+          }
+        ]
+      },
+      {
+        "type": "Readables",
+        "label": "Readables",
+        "icon": "/assets/icons/1749562186043874576.png",
+        "markers": [
+          {
+            "id": 130,
+            "name": "The Invincible Legion Commander II",
+            "icon": "/assets/icons/1749615821553708305.png"
+          },
+          {
+            "id": 138,
+            "name": "Scratches of Anger",
+            "icon": "/assets/icons/1749615880243299519.png"
+          },
+          {
+            "id": 139,
+            "name": "Whispers in the Wall Cracks",
+            "icon": "/assets/icons/1749615887269987201.png"
+          },
+          {
+            "id": 177,
+            "name": "Ice Lake City IX",
+            "icon": "/assets/icons/1749616269794635039.png"
+          },
+          {
+            "id": 178,
+            "name": "Ice Lake City X",
+            "icon": "/assets/icons/1749616275971480086.png"
+          },
+          {
+            "id": 185,
+            "name": "Bloodstained Diary",
+            "icon": "/assets/icons/1750037921661945825.png"
+          },
+          {
+            "id": 187,
+            "name": "Metamorphosis",
+            "icon": "/assets/icons/1750037939672536911.png"
+          },
+          {
+            "id": 188,
+            "name": "Crumpled Pamphlet of the Godforsaken Alliance",
+            "icon": "/assets/icons/1750037949368368138.png"
+          },
+          {
+            "id": 193,
+            "name": "Silver Candle Carnival Hymn III",
+            "icon": "/assets/icons/1761051109805591365.png"
+          },
+          {
+            "id": 194,
+            "name": "Silver Candle Carnival Hymn IV",
+            "icon": "/assets/icons/1761051117583389701.png"
+          },
+          {
+            "id": 195,
+            "name": "Silver Candle Carnival Hymn V",
+            "icon": "/assets/icons/1761051124418145644.png"
+          },
+          {
+            "id": 196,
+            "name": "Silver Candle Carnival Hymn VI",
+            "icon": "/assets/icons/1761051132036824302.png"
+          },
+          {
+            "id": 197,
+            "name": "Silver Candle Carnival Hymn VII",
+            "icon": "/assets/icons/1761051137982645989.png"
+          },
+          {
+            "id": 200,
+            "name": "Warning in the Wall Cracks",
+            "icon": "/assets/icons/1761275320957912608.png"
+          },
+          {
+            "id": 205,
+            "name": "Silver Candle Carnival Hymn IX",
+            "icon": "/assets/icons/1761915525685645969.png"
+          },
+          {
+            "id": 206,
+            "name": "Silver Candle Carnival Hymn X",
+            "icon": "/assets/icons/1761915860512155379.png"
+          },
+          {
+            "id": 209,
+            "name": "Boycott the Silver Candle Carnival",
+            "icon": "/assets/icons/1761985545977784864.png"
+          }
+        ]
+      },
+      {
+        "type": "Challenges",
+        "label": "Challenges",
+        "icon": "/assets/icons/1749672639131620419.png",
+        "markers": [
+          {
+            "id": 56,
+            "name": "Parkour Challenge",
+            "icon": "/assets/icons/1749672644630282670.png"
+          },
+          {
+            "id": 57,
+            "name": "Shooting Challenge",
+            "icon": "/assets/icons/1749672672913484663.png"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "glevum-pit",
+    "name": "Glevum Pit",
+    "image": "/assets/maps/glevum_pit_v1.png",
+    "imageSize": {
+      "width": 4096,
+      "height": 4096
+    },
+    "markerCount": 92,
+    "imageCount": 73,
+    "legend": [
+      {
+        "type": "Collectibles",
+        "label": "Collectibles",
+        "icon": "/assets/icons/1749672600072455391.png",
+        "markers": [
+          {
+            "id": 18,
+            "name": "Lustrous/Silverstone",
+            "icon": "/assets/icons/1749555687524970863.png"
+          },
+          {
+            "id": 34,
+            "name": "Bottled Lunar Sap",
+            "icon": "/assets/icons/1749556572625658617.png"
+          },
+          {
+            "id": 54,
+            "name": "Camilla’s Dice",
+            "icon": "/assets/icons/1749560753035889403.png"
+          }
+        ]
+      },
+      {
+        "type": "Landmarks",
+        "label": "Landmarks",
+        "icon": "/assets/icons/1749672609569330275.png",
+        "markers": [
+          {
+            "id": 35,
+            "name": "Teleport Point",
+            "icon": "/assets/icons/1749557822886359503.png"
+          }
+        ]
+      },
+      {
+        "type": "Geniemon",
+        "label": "Geniemon",
+        "icon": "/assets/icons/1749562159541539924.png",
+        "markers": [
+          {
+            "id": 42,
+            "name": "Geniemon Spawn Point",
+            "icon": "/assets/icons/1749672734516496170.png"
+          }
+        ]
+      },
+      {
+        "type": "Storage Chest",
+        "label": "Storage Chest",
+        "icon": "/assets/icons/1749672743841364457.png",
+        "markers": [
+          {
+            "id": 43,
+            "name": "Storage Chest",
+            "icon": "/assets/icons/1749566001012138274.png"
+          },
+          {
+            "id": 44,
+            "name": "Treasure Map Chest",
+            "icon": "/assets/icons/1749560145785106563.png"
+          },
+          {
+            "id": 60,
+            "name": "Monster Chest",
+            "icon": "/assets/icons/1749565963302865436.png"
+          }
+        ]
+      },
+      {
+        "type": "Collectibles",
+        "label": "Collectibles",
+        "icon": "/assets/icons/1749672777020326442.png",
+        "markers": [
+          {
+            "id": 47,
+            "name": "Explorer’s Proof: Ice Lake City",
+            "icon": "/assets/icons/1749560835499262022.png"
+          },
+          {
+            "id": 50,
+            "name": "Pan Spirit",
+            "icon": "/assets/icons/1749562536811567798.png"
+          },
+          {
+            "id": 204,
+            "name": "Music Segment",
+            "icon": "/assets/icons/1761791369509849777.png"
+          }
+        ]
+      },
+      {
+        "type": "Readables",
+        "label": "Readables",
+        "icon": "/assets/icons/1749562186043874576.png",
+        "markers": [
+          {
+            "id": 136,
+            "name": "Lost Diary",
+            "icon": "/assets/icons/1749615865342402970.png"
+          },
+          {
+            "id": 137,
+            "name": "Old Diary",
+            "icon": "/assets/icons/1749615872365436842.png"
+          },
+          {
+            "id": 172,
+            "name": "Ice Lake City IV",
+            "icon": "/assets/icons/1749616226428551695.png"
+          },
+          {
+            "id": 207,
+            "name": "Alchemist’s Notes I",
+            "icon": "/assets/icons/1761916098830898779.png"
+          },
+          {
+            "id": 210,
+            "name": "Alchemist’s Notes II",
+            "icon": "/assets/icons/1761992746009445845.png"
+          }
+        ]
+      },
+      {
+        "type": "Challenges",
+        "label": "Challenges",
+        "icon": "/assets/icons/1749672639131620419.png",
+        "markers": [
+          {
+            "id": 56,
+            "name": "Parkour Challenge",
+            "icon": "/assets/icons/1749672644630282670.png"
+          },
+          {
+            "id": 57,
+            "name": "Shooting Challenge",
+            "icon": "/assets/icons/1749672672913484663.png"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "galea-theater",
+    "name": "Galea Theater",
+    "image": "/assets/maps/galea_theater_v1.png",
+    "imageSize": {
+      "width": 4096,
+      "height": 4096
+    },
+    "markerCount": 13,
+    "imageCount": 13,
+    "legend": [
+      {
+        "type": "Landmarks",
+        "label": "Landmarks",
+        "icon": "/assets/icons/1749672609569330275.png",
+        "markers": [
+          {
+            "id": 35,
+            "name": "Teleport Point",
+            "icon": "/assets/icons/1749557822886359503.png"
+          }
+        ]
+      },
+      {
+        "type": "Storage Chest",
+        "label": "Storage Chest",
+        "icon": "/assets/icons/1749672743841364457.png",
+        "markers": [
+          {
+            "id": 43,
+            "name": "Storage Chest",
+            "icon": "/assets/icons/1749566001012138274.png"
+          }
+        ]
+      },
+      {
+        "type": "Collectibles",
+        "label": "Collectibles",
+        "icon": "/assets/icons/1749672777020326442.png",
+        "markers": [
+          {
+            "id": 47,
+            "name": "Explorer’s Proof: Ice Lake City",
+            "icon": "/assets/icons/1749560835499262022.png"
+          }
+        ]
+      },
+      {
+        "type": "Readables",
+        "label": "Readables",
+        "icon": "/assets/icons/1749562186043874576.png",
+        "markers": [
+          {
+            "id": 161,
+            "name": "Galleia Theater Prop List",
+            "icon": "/assets/icons/1749616145214712631.png"
+          },
+          {
+            "id": 181,
+            "name": "“Crimson Leaf Rebellion Secrets” Part I",
+            "icon": "/assets/icons/1750037873760736470.png"
+          },
+          {
+            "id": 182,
+            "name": "“Crimson Leaf Rebellion Secrets” Part II",
+            "icon": "/assets/icons/1750037888684478469.png"
+          },
+          {
+            "id": 183,
+            "name": "Crimson Leaf Rebellion Secrets” Part III",
+            "icon": "/assets/icons/1750037898405269869.png"
+          },
+          {
+            "id": 184,
+            "name": "“Crimson Leaf Rebellion Secrets” Part IV",
+            "icon": "/assets/icons/1750037904364935163.png"
+          }
+        ]
+      },
+      {
+        "type": "Challenges",
+        "label": "Challenges",
+        "icon": "/assets/icons/1749672639131620419.png",
+        "markers": [
+          {
+            "id": 56,
+            "name": "Parkour Challenge",
+            "icon": "/assets/icons/1749672644630282670.png"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lonza-fortress",
+    "name": "Lonza Fortress",
+    "image": "/assets/maps/lonza_fortress_v1.png",
+    "imageSize": {
+      "width": 4096,
+      "height": 4096
+    },
+    "markerCount": 165,
+    "imageCount": 162,
+    "legend": [
+      {
+        "type": "Collectibles",
+        "label": "Collectibles",
+        "icon": "/assets/icons/1749672600072455391.png",
+        "markers": [
+          {
+            "id": 22,
+            "name": "Golden Shell Fruit",
+            "icon": "/assets/icons/1749555783038694078.png"
+          },
+          {
+            "id": 24,
+            "name": "Hard Shell Fruit",
+            "icon": "/assets/icons/1749555921415533794.png"
+          },
+          {
+            "id": 33,
+            "name": "Portable Power Supply Device",
+            "icon": "/assets/icons/1749556099909291238.png"
+          },
+          {
+            "id": 34,
+            "name": "Bottled Lunar Sap",
+            "icon": "/assets/icons/1749556572625658617.png"
+          }
+        ]
+      },
+      {
+        "type": "Landmarks",
+        "label": "Landmarks",
+        "icon": "/assets/icons/1749672609569330275.png",
+        "markers": [
+          {
+            "id": 35,
+            "name": "Teleport Point",
+            "icon": "/assets/icons/1749557822886359503.png"
+          }
+        ]
+      },
+      {
+        "type": "Geniemon",
+        "label": "Geniemon",
+        "icon": "/assets/icons/1749562159541539924.png",
+        "markers": [
+          {
+            "id": 42,
+            "name": "Geniemon Spawn Point",
+            "icon": "/assets/icons/1749672734516496170.png"
+          }
+        ]
+      },
+      {
+        "type": "Storage Chest",
+        "label": "Storage Chest",
+        "icon": "/assets/icons/1749672743841364457.png",
+        "markers": [
+          {
+            "id": 43,
+            "name": "Storage Chest",
+            "icon": "/assets/icons/1749566001012138274.png"
+          },
+          {
+            "id": 44,
+            "name": "Treasure Map Chest",
+            "icon": "/assets/icons/1749560145785106563.png"
+          },
+          {
+            "id": 60,
+            "name": "Monster Chest",
+            "icon": "/assets/icons/1749565963302865436.png"
+          },
+          {
+            "id": 62,
+            "name": "Hidden Chest",
+            "icon": "/assets/icons/1749566014147617037.png"
+          }
+        ]
+      },
+      {
+        "type": "Collectibles",
+        "label": "Collectibles",
+        "icon": "/assets/icons/1749672777020326442.png",
+        "markers": [
+          {
+            "id": 49,
+            "name": "Explorer’s Proof: Longsha Fortress",
+            "icon": "/assets/icons/1749560904621944643.png"
+          },
+          {
+            "id": 50,
+            "name": "Pan Spirit",
+            "icon": "/assets/icons/1749562536811567798.png"
+          },
+          {
+            "id": 204,
+            "name": "Music Segment",
+            "icon": "/assets/icons/1761791369509849777.png"
+          }
+        ]
+      },
+      {
+        "type": "Readables",
+        "label": "Readables",
+        "icon": "/assets/icons/1749562186043874576.png",
+        "markers": [
+          {
+            "id": 141,
+            "name": "Letter Without an Address",
+            "icon": "/assets/icons/1749615930903405303.png"
+          },
+          {
+            "id": 142,
+            "name": "Forsaken Alliance Pamphlet",
+            "icon": "/assets/icons/1749615939270317527.png"
+          },
+          {
+            "id": 143,
+            "name": "Application for Additional Fortress Maintenance Personnel",
+            "icon": "/assets/icons/1749615949604652348.png"
+          },
+          {
+            "id": 144,
+            "name": "Crumpled Paper Scrap",
+            "icon": "/assets/icons/1749615959705430102.png"
+          },
+          {
+            "id": 145,
+            "name": "Diary of an Alliance Member",
+            "icon": "/assets/icons/1749615967812516513.png"
+          },
+          {
+            "id": 146,
+            "name": "Application to Improve Drainage Mechanisms",
+            "icon": "/assets/icons/1749615977212585841.png"
+          },
+          {
+            "id": 147,
+            "name": "Triumph Festival Holiday Notice",
+            "icon": "/assets/icons/1749615984701234539.png"
+          },
+          {
+            "id": 148,
+            "name": "Longsha Fortress Action Orders",
+            "icon": "/assets/icons/1749615996949118336.png"
+          },
+          {
+            "id": 149,
+            "name": "Simulated Battlefield Combat Record",
+            "icon": "/assets/icons/1749616004317459868.png"
+          },
+          {
+            "id": 150,
+            "name": "My Best Companions",
+            "icon": "/assets/icons/1749616044444395110.png"
+          },
+          {
+            "id": 151,
+            "name": "Injured Personnel Treatment Log",
+            "icon": "/assets/icons/1749616055911816992.png"
+          },
+          {
+            "id": 152,
+            "name": "Transcript of a Conversation",
+            "icon": "/assets/icons/1749616063795973119.png"
+          },
+          {
+            "id": 153,
+            "name": "Healer’s Diary",
+            "icon": "/assets/icons/1749616079691407231.png"
+          },
+          {
+            "id": 179,
+            "name": "Longsha Fortress I",
+            "icon": "/assets/icons/1749616283682147062.png"
+          },
+          {
+            "id": 180,
+            "name": "Longsha Fortress II",
+            "icon": "/assets/icons/1749616288606110275.png"
+          },
+          {
+            "id": 201,
+            "name": "Longsha Fortress III",
+            "icon": "/assets/icons/1761553087123321170.png"
+          }
+        ]
+      },
+      {
+        "type": "Challenges",
+        "label": "Challenges",
+        "icon": "/assets/icons/1749672639131620419.png",
+        "markers": [
+          {
+            "id": 56,
+            "name": "Parkour Challenge",
+            "icon": "/assets/icons/1749672644630282670.png"
+          },
+          {
+            "id": 57,
+            "name": "Shooting Challenge",
+            "icon": "/assets/icons/1749672672913484663.png"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "huaxu",
+    "name": "Huaxu",
+    "image": "/assets/maps/huaxu.png",
+    "imageSize": {
+      "width": 4096,
+      "height": 4096
+    },
+    "markerCount": 390,
+    "imageCount": 370,
+    "legend": [
+      {
+        "type": "Collectibles",
+        "label": "Collectibles",
+        "icon": "/assets/icons/1749672600072455391.png",
+        "markers": [
+          {
+            "id": 25,
+            "name": "Caramel Mushroom",
+            "icon": "/assets/icons/1749555938060153157.png"
+          },
+          {
+            "id": 267,
+            "name": "Rain-Watching Frog",
+            "icon": "/assets/icons/1765894397092927731.png"
+          },
+          {
+            "id": 268,
+            "name": "Unyielding Stone",
+            "icon": "/assets/icons/1765894372845379889.png"
+          },
+          {
+            "id": 272,
+            "name": "Appeal to the Heavens",
+            "icon": "/assets/icons/1765896212749709662.png"
+          },
+          {
+            "id": 273,
+            "name": "Loom Maiden",
+            "icon": "/assets/icons/1765935521602957704.png"
+          },
+          {
+            "id": 274,
+            "name": "Broken Relic",
+            "icon": "/assets/icons/1765968430918592158.png"
+          },
+          {
+            "id": 276,
+            "name": "Dustbreath Butterfly",
+            "icon": "/assets/icons/1765972566168198522.png"
+          },
+          {
+            "id": 278,
+            "name": "Mountain Coral",
+            "icon": "/assets/icons/1765976905227847152.png"
+          },
+          {
+            "id": 279,
+            "name": "Rock Skink",
+            "icon": "/assets/icons/1765976947832794736.png"
+          }
+        ]
+      },
+      {
+        "type": "Landmarks",
+        "label": "Landmarks",
+        "icon": "/assets/icons/1749672609569330275.png",
+        "markers": [
+          {
+            "id": 35,
+            "name": "Teleport Point",
+            "icon": "/assets/icons/1749557822886359503.png"
+          },
+          {
+            "id": 37,
+            "name": "Shop",
+            "icon": "/assets/icons/1749562619726215825.png"
+          },
+          {
+            "id": 38,
+            "name": "Fishing Spot",
+            "icon": "/assets/icons/1749561882699685405.png"
+          },
+          {
+            "id": 275,
+            "name": "Hidden Dragon's Dwelling",
+            "icon": "/assets/icons/1765971010467508417.png"
+          },
+          {
+            "id": 277,
+            "name": "Cave Entrance",
+            "icon": "/assets/icons/1766206423964852436.png"
+          },
+          {
+            "id": 280,
+            "name": "Echo of the Spirit Bird",
+            "icon": "/assets/icons/1766199602451464010.png"
+          },
+          {
+            "id": 281,
+            "name": "Zhuyin Altar",
+            "icon": "/assets/icons/1766205393736869341.png"
+          }
+        ]
+      },
+      {
+        "type": "Geniemon",
+        "label": "Geniemon",
+        "icon": "/assets/icons/1749562159541539924.png",
+        "markers": [
+          {
+            "id": 42,
+            "name": "Geniemon Spawn Point",
+            "icon": "/assets/icons/1749672734516496170.png"
+          }
+        ]
+      },
+      {
+        "type": "Storage Chest",
+        "label": "Storage Chest",
+        "icon": "/assets/icons/1749672743841364457.png",
+        "markers": [
+          {
+            "id": 43,
+            "name": "Storage Chest",
+            "icon": "/assets/icons/1749566001012138274.png"
+          },
+          {
+            "id": 44,
+            "name": "Treasure Map Chest",
+            "icon": "/assets/icons/1749560145785106563.png"
+          },
+          {
+            "id": 60,
+            "name": "Monster Chest",
+            "icon": "/assets/icons/1749565963302865436.png"
+          },
+          {
+            "id": 202,
+            "name": "Mechanism Puzzle",
+            "icon": "/assets/icons/1765893938085545821.png"
+          }
+        ]
+      },
+      {
+        "type": "Collectibles",
+        "label": "Collectibles",
+        "icon": "/assets/icons/1749672777020326442.png",
+        "markers": [
+          {
+            "id": 269,
+            "name": "Explorer’s Certificate · Yanjin Ferry",
+            "icon": "/assets/icons/1765894260519984691.png"
+          },
+          {
+            "id": 270,
+            "name": "Great Void Rune",
+            "icon": "/assets/icons/1765894335012307828.png"
+          }
+        ]
+      },
+      {
+        "type": "Readables",
+        "label": "Readables",
+        "icon": "/assets/icons/1749562186043874576.png",
+        "markers": [
+          {
+            "id": 286,
+            "name": "Yanjin Ferry · Part I",
+            "icon": "/assets/icons/1766206809091538160.png"
+          },
+          {
+            "id": 287,
+            "name": "Yanjin Ferry · Part II",
+            "icon": "/assets/icons/1766206820496324420.png"
+          },
+          {
+            "id": 288,
+            "name": "Yanjin Ferry · Part III",
+            "icon": "/assets/icons/1766206830100457272.png"
+          },
+          {
+            "id": 289,
+            "name": "Yanjin Ferry · Part IV",
+            "icon": "/assets/icons/1766206837578442035.png"
+          },
+          {
+            "id": 290,
+            "name": "Yanjin Ferry · Part V",
+            "icon": "/assets/icons/1766206846106628307.png"
+          },
+          {
+            "id": 291,
+            "name": "Investigation Notes on the Disaster of Zhuyin",
+            "icon": "/assets/icons/1766206887193318337.png"
+          },
+          {
+            "id": 292,
+            "name": "When Villains Rule · Part I",
+            "icon": "/assets/icons/1766206921303764876.png"
+          },
+          {
+            "id": 293,
+            "name": "When Villains Rule · Part II",
+            "icon": "/assets/icons/1766206930729674569.png"
+          },
+          {
+            "id": 294,
+            "name": "When Villains Rule · Part III",
+            "icon": "/assets/icons/1766206940147783743.png"
+          },
+          {
+            "id": 295,
+            "name": "When Villains Rule · Part IV",
+            "icon": "/assets/icons/1766206948489209837.png"
+          },
+          {
+            "id": 296,
+            "name": "Greenwich Archaeological Association Project Application",
+            "icon": "/assets/icons/1766207015516262878.png"
+          },
+          {
+            "id": 297,
+            "name": "Forged Calligraphy and Paintings",
+            "icon": "/assets/icons/1766207035562618163.png"
+          },
+          {
+            "id": 298,
+            "name": "Luoxiang Methods of Discernment · Volume Ten",
+            "icon": "/assets/icons/1766207118436625179.png"
+          },
+          {
+            "id": 299,
+            "name": "Compendium of a Hundred Schools",
+            "icon": "/assets/icons/1766207254454677969.png"
+          },
+          {
+            "id": 300,
+            "name": "A Page from a Diary",
+            "icon": "/assets/icons/1766207384418978269.png"
+          },
+          {
+            "id": 301,
+            "name": "The Huaxu People’s View on Life and Death",
+            "icon": "/assets/icons/1766207418813983389.png"
+          },
+          {
+            "id": 302,
+            "name": "Notice on the Suspension of External Trade at Yanjin Ferry",
+            "icon": "/assets/icons/1766207444510486538.png"
+          },
+          {
+            "id": 303,
+            "name": "Incense Offering Rituals",
+            "icon": "/assets/icons/1766207871122397357.png"
+          },
+          {
+            "id": 304,
+            "name": "Lord of Wind’s Miscellany (Excerpt)",
+            "icon": "/assets/icons/1766207890867672232.png"
+          },
+          {
+            "id": 305,
+            "name": "Traces of Huaxu · Yanjin Ferry Chapter",
+            "icon": "/assets/icons/1766207932036644181.png"
+          },
+          {
+            "id": 306,
+            "name": "Cargo Delivery Memorandum",
+            "icon": "/assets/icons/1766207957905517627.png"
+          },
+          {
+            "id": 309,
+            "name": "Jinli Jiaojiao’s Book of Commerce · Volume Seven",
+            "icon": "/assets/icons/1766223409010380134.png"
+          },
+          {
+            "id": 310,
+            "name": "The Marvels of Mechanisms",
+            "icon": "/assets/icons/1766224390848791811.png"
+          },
+          {
+            "id": 311,
+            "name": "Loan Contract of She Yuqing, Year X of the Great Wind",
+            "icon": "/assets/icons/1766226050032737119.png"
+          },
+          {
+            "id": 313,
+            "name": "Biographies of the Star-Weaving Travelers",
+            "icon": "/assets/icons/1766237301244282897.png"
+          },
+          {
+            "id": 314,
+            "name": "Analysis of Popular Characters in Huaxu Newborn Names",
+            "icon": "/assets/icons/1766237750796508729.png"
+          },
+          {
+            "id": 315,
+            "name": "A Letter Between Star-Weaving Travelers",
+            "icon": "/assets/icons/1766237785440634261.png"
+          },
+          {
+            "id": 316,
+            "name": "An Elder’s Admonition",
+            "icon": "/assets/icons/1766237799463493916.png"
+          },
+          {
+            "id": 317,
+            "name": "An Unknown Person’s Final Words",
+            "icon": "/assets/icons/1766237815119377659.png"
+          },
+          {
+            "id": 318,
+            "name": "Riding the Dragon to the Heavens · Chapter Five",
+            "icon": "/assets/icons/1766237829098731347.png"
+          }
+        ]
+      },
+      {
+        "type": "Emergency/Dispatch",
+        "label": "Emergency/Dispatch",
+        "icon": "/assets/icons/1765893914674126617.png",
+        "markers": [
+          {
+            "id": 212,
+            "name": "Centennial Spring Remembrance",
+            "icon": "/assets/icons/1766235500796431327.png"
+          },
+          {
+            "id": 231,
+            "name": "Interwoven Feelings",
+            "icon": "/assets/icons/1766235520293783965.png"
+          },
+          {
+            "id": 234,
+            "name": "Rescue the Demon Spirit",
+            "icon": "/assets/icons/1766205804498307101.png"
+          },
+          {
+            "id": 240,
+            "name": "Absent-Minded Fisherman",
+            "icon": "/assets/icons/1766205638781434960.png"
+          }
+        ]
+      },
+      {
+        "type": "Challenge",
+        "label": "Challenge",
+        "icon": "/assets/icons/1749672639131620419.png",
+        "markers": [
+          {
+            "id": 56,
+            "name": "Parkour Challenge",
+            "icon": "/assets/icons/1749672644630282670.png"
+          },
+          {
+            "id": 57,
+            "name": "Shooting Challenge",
+            "icon": "/assets/icons/1749672672913484663.png"
+          }
+        ]
+      },
+      {
+        "type": "Others",
+        "label": "Others",
+        "icon": "/assets/icons/1749672703904257929.png",
+        "markers": [
+          {
+            "id": 63,
+            "name": "Impression Check",
+            "icon": "/assets/icons/1766212428224753824.png"
+          },
+          {
+            "id": 282,
+            "name": "Side Quest",
+            "icon": "/assets/icons/1766206498223250888.png"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "haojing",
+    "name": "Haojing",
+    "image": "/assets/maps/haojing.png",
+    "imageSize": {
+      "width": 4096,
+      "height": 4096
+    },
+    "markerCount": 143,
+    "imageCount": 33,
+    "legend": [
+      {
+        "type": "Landmarks",
+        "label": "Landmarks",
+        "icon": "https://herobox-img.yingxiong.com/map/1749672609569330275.png",
+        "markers": [
+          {
+            "id": 35,
+            "name": "Teleport Point",
+            "icon": "https://herobox-img.yingxiong.com/map/1749557822886359503.png"
+          },
+          {
+            "id": 37,
+            "name": "Shop",
+            "icon": "https://herobox-img.yingxiong.com/map/1749562619726215825.png"
+          },
+          {
+            "id": 38,
+            "name": "Fishing Spot",
+            "icon": "https://herobox-img.yingxiong.com/map/1749561882699685405.png"
+          },
+          {
+            "id": 280,
+            "name": "Echo of the Spirit Bird",
+            "icon": "https://herobox-img.yingxiong.com/map/1766199602451464010.png"
+          },
+          {
+            "id": 353,
+            "name": "Inner City",
+            "icon": "https://herobox-img.yingxiong.com/map/1775116381573399004.png"
+          },
+          {
+            "id": 354,
+            "name": "Taixu Mausoleum",
+            "icon": "https://herobox-img.yingxiong.com/map/1775116402443805842.png"
+          }
+        ]
+      },
+      {
+        "type": "Geniemon",
+        "label": "Geniemon",
+        "icon": "https://herobox-img.yingxiong.com/map/1749562159541539924.png",
+        "markers": [
+          {
+            "id": 42,
+            "name": "Geniemon (Respawn every 3 days)",
+            "icon": "https://herobox-img.yingxiong.com/map/1749672734516496170.png"
+          }
+        ]
+      },
+      {
+        "type": "Storage Chest",
+        "label": "Storage Chest",
+        "icon": "https://herobox-img.yingxiong.com/map/1749672743841364457.png",
+        "markers": [
+          {
+            "id": 43,
+            "name": "Storage Chest",
+            "icon": "https://herobox-img.yingxiong.com/map/1749566001012138274.png"
+          }
+        ]
+      },
+      {
+        "type": "Collectibles",
+        "label": "Collectibles",
+        "icon": "https://herobox-img.yingxiong.com/map/1749672777020326442.png",
+        "markers": [
+          {
+            "id": 269,
+            "name": "Explorers Certificate",
+            "icon": "https://herobox-img.yingxiong.com/map/1765894260519984691.png"
+          },
+          {
+            "id": 270,
+            "name": "Great Void Rune",
+            "icon": "https://herobox-img.yingxiong.com/map/1765894335012307828.png"
+          }
+        ]
+      },
+      {
+        "type": "Unexpected Events/Dispatch",
+        "label": "Unexpected Events/Dispatch",
+        "icon": "https://herobox-img.yingxiong.com/map/1765893914674126617.png",
+        "markers": [
+          {
+            "id": 234,
+            "name": "Rescue the Demon Spirit",
+            "icon": "https://herobox-img.yingxiong.com/map/1766205804498307101.png"
+          },
+          {
+            "id": 349,
+            "name": "Gold, Silver, and Bronze Chests",
+            "icon": "https://herobox-img.yingxiong.com/map/1775115425785361739.png"
+          },
+          {
+            "id": 350,
+            "name": "Incense Encounter",
+            "icon": "https://herobox-img.yingxiong.com/map/1775115445089255114.png"
+          }
+        ]
+      },
+      {
+        "type": "Reading Materials 1.3",
+        "label": "Reading Materials 1.3",
+        "icon": "https://herobox-img.yingxiong.com/map/1775037924290944511.png",
+        "markers": [
+          {
+            "id": 324,
+            "name": "Compendium of Incense Rituals: Sacrificial Rites",
+            "icon": "https://herobox-img.yingxiong.com/map/1775041036099260351.png"
+          },
+          {
+            "id": 325,
+            "name": "Grand Incense Ceremony Records (Excerpt)",
+            "icon": "https://herobox-img.yingxiong.com/map/1775041070402752059.png"
+          },
+          {
+            "id": 326,
+            "name": "Qingyuan Manuscript",
+            "icon": "https://herobox-img.yingxiong.com/map/1775041083832838007.png"
+          },
+          {
+            "id": 327,
+            "name": "Huaxu Trends: Haojing Special Edition",
+            "icon": "https://herobox-img.yingxiong.com/map/1775041108238558703.png"
+          },
+          {
+            "id": 328,
+            "name": "Ode of Nine Chapters",
+            "icon": "https://herobox-img.yingxiong.com/map/1775041154816835389.png"
+          },
+          {
+            "id": 329,
+            "name": "Incense Codex",
+            "icon": "https://herobox-img.yingxiong.com/map/1775041164100492445.png"
+          },
+          {
+            "id": 330,
+            "name": "Mandarin Pairing Rite",
+            "icon": "https://herobox-img.yingxiong.com/map/1775041172047454114.png"
+          },
+          {
+            "id": 331,
+            "name": "Artisan Guild Annals: Works Summary\"",
+            "icon": "https://herobox-img.yingxiong.com/map/1775041190406851004.png"
+          },
+          {
+            "id": 332,
+            "name": "Teachings of Master Zhuxi",
+            "icon": "https://herobox-img.yingxiong.com/map/1775041201082414866.png"
+          },
+          {
+            "id": 335,
+            "name": "Incense Trial: A Hidden Official Selection System Conducted Through Incense Rites",
+            "icon": "https://herobox-img.yingxiong.com/map/1775041377152158736.png"
+          },
+          {
+            "id": 336,
+            "name": "How to Become a Dragon Abyss High Minister",
+            "icon": "https://herobox-img.yingxiong.com/map/1775041390322806058.png"
+          },
+          {
+            "id": 337,
+            "name": "Haojing Court Bulletin I",
+            "icon": "https://herobox-img.yingxiong.com/map/1775041399027784031.png"
+          },
+          {
+            "id": 338,
+            "name": "Haojing Court Bulletin II",
+            "icon": "https://herobox-img.yingxiong.com/map/1775041404563916125.png"
+          },
+          {
+            "id": 339,
+            "name": "Mirage Notes, Vol. II",
+            "icon": "https://herobox-img.yingxiong.com/map/1775041413982260990.png"
+          },
+          {
+            "id": 340,
+            "name": "Huaxu Chronicles: Haojing Chapter",
+            "icon": "https://herobox-img.yingxiong.com/map/1775041441393873018.png"
+          },
+          {
+            "id": 341,
+            "name": "Creative Incense Sachets: Full Crafting Notes",
+            "icon": "https://herobox-img.yingxiong.com/map/1775041461849247773.png"
+          }
+        ]
+      }
+    ]
+  }
+]

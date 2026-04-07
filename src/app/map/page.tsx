@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useAtom } from "jotai";
 import dynamic from "next/dynamic";
-import mapData from "@/data/mapData.json";
+import mapIndex from "@/data/mapIndex.json";
+import { useMapData } from "@/hooks/useMapData";
 import Loading from "@/components/Loading";
 import ConfirmDialog from "@/components/ConfirmDialog";
 import ExportModal from "@/components/ExportModal";
@@ -164,7 +165,7 @@ export default function MapPage() {
     const uniqueSubCategories = new Map<string, (typeof allSubCategories)[0]>();
 
     // Collecter toutes les sous-catégories en évitant les doublons
-    mapData.forEach((map) => {
+    mapIndex.forEach((map) => {
       if (map.legend) {
         map.legend.forEach((category) => {
           if (category.markers) {
@@ -432,37 +433,33 @@ export default function MapPage() {
     return () => clearInterval(interval);
   }, []);
 
-  // Trouver la carte sélectionnée
-  const selectedMap = mapData.find((map) => map.id === selectedMapId) || null;
+  // Charger la carte sélectionnée (lazy-loaded par map)
+  const { selectedMap, isLoading: isMapLoading } = useMapData(selectedMapId);
 
 
   // Charger la carte persistée au montage du composant
   useEffect(() => {
-    if (typeof window !== 'undefined' && mapData.length > 0 && !hasInitializedMap) {
+    if (typeof window !== 'undefined' && mapIndex.length > 0 && !hasInitializedMap) {
       setHasInitializedMap(true);
 
       // Récupérer la valeur persistée directement depuis localStorage
       const persistedMapId = localStorage.getItem('selected-map');
-      console.log('🔍 Chargement initial - Valeur localStorage:', persistedMapId);
 
       if (persistedMapId) {
-        // Vérifier que cette carte existe dans les données actuelles
-        const persistedMap = mapData.find((map) => map.id === persistedMapId);
-        if (persistedMap) {
-          console.log('🔍 Chargement carte persistée:', persistedMapId);
+        // Vérifier que cette carte existe dans l'index
+        const exists = mapIndex.some((map) => map.id === persistedMapId);
+        if (exists) {
           setSelectedMapId(persistedMapId);
           return;
         } else {
-          console.log('🔍 Carte persistée non trouvée, suppression');
           localStorage.removeItem('selected-map');
         }
       }
 
       // Si pas de carte persistée valide, utiliser la première carte
-      console.log('🔍 Utilisation première carte:', mapData[0].id);
-      setSelectedMapId(mapData[0].id);
+      setSelectedMapId(mapIndex[0].id);
     }
-  }, [mapData, hasInitializedMap, setSelectedMapId]);
+  }, [hasInitializedMap, setSelectedMapId]);
 
   // Initialiser la visibilité des catégories quand la carte change
   useEffect(() => {
@@ -616,7 +613,7 @@ export default function MapPage() {
                     }}
                     className="w-full bg-slate-800/50 backdrop-blur-sm border border-indigo-500/30 rounded-md px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400"
                   >
-                    {mapData.map((map) => (
+                    {mapIndex.map((map) => (
                       <option
                         key={map.id}
                         value={map.id}

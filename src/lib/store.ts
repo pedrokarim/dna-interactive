@@ -7,34 +7,6 @@ const markedMarkersStorageAtom = atomWithStorage<string[]>(
   []
 );
 
-// Types
-export interface MarkerInstance {
-  id: number;
-  position: { x: number; y: number };
-  image?: string; // Image descriptive du marqueur (screenshot, guide visuel)
-}
-
-export interface Marker {
-  id: number;
-  name: string;
-  icon: string;
-  instances: MarkerInstance[];
-}
-
-export interface Category {
-  id: string;
-  name: string;
-  icon: string;
-  markers: Marker[];
-}
-
-export interface GameMap {
-  id: string;
-  name: string;
-  image: string;
-  imageSize: { width: number; height: number };
-  categories: Category[];
-}
 
 export interface GameCode {
   id: string;
@@ -346,12 +318,6 @@ export const markedMarkersAtom = atom(
     set(markedMarkersStorageAtom, Array.from(newValue));
   }
 );
-
-// Atoms dérivés
-export const selectedMapAtom = atom<GameMap | null>((get) => {
-  // Cette valeur sera définie dynamiquement depuis les données
-  return null;
-});
 
 // Actions
 export const toggleMarkerMarkedAtom = atom(

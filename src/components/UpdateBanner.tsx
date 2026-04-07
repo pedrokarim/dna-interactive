@@ -25,17 +25,17 @@ type HomeAnnouncement = {
 
 const HOME_ANNOUNCEMENTS: HomeAnnouncement[] = [
   {
-    id: "home-map-huaxu-v1-1",
-    badge: "v1.1",
+    id: "home-map-haojing-v1-3",
+    badge: "v1.3",
     icon: MapPin,
     title: "Nouvelle map disponible !",
-    desktopDetails: "Explorez Huaxu avec 371 nouveaux marqueurs",
+    desktopDetails: "Explorez Haojing avec 143 nouveaux marqueurs",
     href: "/map",
     ctaLabel: "Explorer",
     gradientClassName:
-      "bg-linear-to-r from-emerald-600/90 via-teal-600/90 to-cyan-600/90",
-    borderClassName: "border-emerald-400/30",
-    accentTextClassName: "text-emerald-200",
+      "bg-linear-to-r from-amber-600/90 via-orange-600/90 to-red-600/90",
+    borderClassName: "border-amber-400/30",
+    accentTextClassName: "text-amber-200",
     ctaIcon: Map,
   },
   {

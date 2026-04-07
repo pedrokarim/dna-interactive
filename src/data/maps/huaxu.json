@@ -1,0 +1,3621 @@
+{
+  "id": "huaxu",
+  "name": "Huaxu",
+  "image": "/assets/maps/huaxu.png",
+  "imageSize": {
+    "width": 4096,
+    "height": 4096
+  },
+  "legend": [
+    {
+      "type": "Collectibles",
+      "label": "Collectibles",
+      "icon": "/assets/icons/1749672600072455391.png",
+      "markers": [
+        {
+          "id": 25,
+          "name": "Caramel Mushroom",
+          "icon": "/assets/icons/1749555938060153157.png",
+          "markers": [
+            {
+              "id": 1885,
+              "position": {
+                "x": 2334,
+                "y": 2442.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765977366410728866.jpg"
+            },
+            {
+              "id": 1886,
+              "position": {
+                "x": 2419,
+                "y": 2415.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765977422129753551.jpg"
+            },
+            {
+              "id": 1891,
+              "position": {
+                "x": 2141.5,
+                "y": 2443
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765977770418466831.jpg"
+            },
+            {
+              "id": 1901,
+              "position": {
+                "x": 2024.25,
+                "y": 2423.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765978440968306782.jpg"
+            },
+            {
+              "id": 1919,
+              "position": {
+                "x": 2367.75,
+                "y": 2407
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765979995371465177.jpg"
+            }
+          ]
+        },
+        {
+          "id": 267,
+          "name": "Rain-Watching Frog",
+          "icon": "/assets/icons/1765894397092927731.png",
+          "markers": [
+            {
+              "id": 1605,
+              "position": {
+                "x": 2653.25,
+                "y": 2970.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765893308574549164.jpg"
+            },
+            {
+              "id": 1606,
+              "position": {
+                "x": 2678.25,
+                "y": 2988.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765893364616692450.jpg"
+            },
+            {
+              "id": 1613,
+              "position": {
+                "x": 2454.75,
+                "y": 2960.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765894772852999171.jpg"
+            },
+            {
+              "id": 1615,
+              "position": {
+                "x": 2508.25,
+                "y": 2798.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765894904050711824.jpg"
+            },
+            {
+              "id": 1616,
+              "position": {
+                "x": 2558.75,
+                "y": 2707
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765894980664326222.jpg"
+            },
+            {
+              "id": 1617,
+              "position": {
+                "x": 2649.25,
+                "y": 2745.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765895135159219597.jpg"
+            },
+            {
+              "id": 1618,
+              "position": {
+                "x": 2611.75,
+                "y": 2674.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765895154210148703.jpg"
+            },
+            {
+              "id": 1636,
+              "position": {
+                "x": 2793.5,
+                "y": 2632.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765896452765793024.jpg"
+            },
+            {
+              "id": 1637,
+              "position": {
+                "x": 2816.25,
+                "y": 2575.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765896508775181338.jpg"
+            },
+            {
+              "id": 1641,
+              "position": {
+                "x": 2931.75,
+                "y": 2597
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765896729773561252.jpg"
+            },
+            {
+              "id": 1646,
+              "position": {
+                "x": 2801.25,
+                "y": 2392.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765897183352312996.jpg"
+            },
+            {
+              "id": 1650,
+              "position": {
+                "x": 2869.25,
+                "y": 2306.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765932138710799625.jpg"
+            },
+            {
+              "id": 1651,
+              "position": {
+                "x": 3032,
+                "y": 2378.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765932227694638123.jpg"
+            },
+            {
+              "id": 1728,
+              "position": {
+                "x": 2293,
+                "y": 1822.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765954136412435760.jpg"
+            },
+            {
+              "id": 1729,
+              "position": {
+                "x": 2363.25,
+                "y": 1833.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765954627827944934.jpg"
+            },
+            {
+              "id": 1738,
+              "position": {
+                "x": 2294.25,
+                "y": 1423
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765955417106836045.jpg"
+            },
+            {
+              "id": 1741,
+              "position": {
+                "x": 2463.25,
+                "y": 1438
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765955577803248003.jpg"
+            },
+            {
+              "id": 1765,
+              "position": {
+                "x": 2693,
+                "y": 1967
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765960202311196785.jpg"
+            },
+            {
+              "id": 1768,
+              "position": {
+                "x": 2717.5,
+                "y": 1913.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765960454834183196.jpg"
+            },
+            {
+              "id": 1801,
+              "position": {
+                "x": 2105.25,
+                "y": 1940.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765966832274684300.jpg"
+            },
+            {
+              "id": 1803,
+              "position": {
+                "x": 2046.590848058925,
+                "y": 1840.1671475472008
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765967227872772955.jpg"
+            },
+            {
+              "id": 1805,
+              "position": {
+                "x": 2031,
+                "y": 1911
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765967391087832307.jpg"
+            },
+            {
+              "id": 1811,
+              "position": {
+                "x": 2036.25,
+                "y": 2051.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765967916906309388.jpg"
+            }
+          ]
+        },
+        {
+          "id": 268,
+          "name": "Unyielding Stone",
+          "icon": "/assets/icons/1765894372845379889.png",
+          "markers": [
+            {
+              "id": 1847,
+              "position": {
+                "x": 1633,
+                "y": 1774.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765973268212620051.jpg"
+            },
+            {
+              "id": 1849,
+              "position": {
+                "x": 1688.75,
+                "y": 1772.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765973543893728575.jpg"
+            },
+            {
+              "id": 1853,
+              "position": {
+                "x": 1719.75,
+                "y": 1791.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765973845412642742.jpg"
+            },
+            {
+              "id": 1857,
+              "position": {
+                "x": 1701.5,
+                "y": 1749.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765973934452905948.jpg"
+            },
+            {
+              "id": 1861,
+              "position": {
+                "x": 1668,
+                "y": 1610.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765974169572427877.jpg"
+            }
+          ]
+        },
+        {
+          "id": 272,
+          "name": "Appeal to the Heavens",
+          "icon": "/assets/icons/1765896212749709662.png",
+          "markers": [
+            {
+              "id": 1633,
+              "position": {
+                "x": 2931.75,
+                "y": 2725.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765896267725749727.jpg"
+            },
+            {
+              "id": 1640,
+              "position": {
+                "x": 2889.75,
+                "y": 2642.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765896661543414175.jpg"
+            },
+            {
+              "id": 1642,
+              "position": {
+                "x": 2914.75,
+                "y": 2472.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765934786518431903.jpg"
+            },
+            {
+              "id": 1653,
+              "position": {
+                "x": 3039.25,
+                "y": 2437.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765932481788607222.jpg"
+            },
+            {
+              "id": 1658,
+              "position": {
+                "x": 2855.5,
+                "y": 2387.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765933341398133198.jpg"
+            },
+            {
+              "id": 1732,
+              "position": {
+                "x": 2376.25,
+                "y": 1712.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765955020168748551.jpg"
+            },
+            {
+              "id": 1739,
+              "position": {
+                "x": 2301.5,
+                "y": 1382.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765955472572676663.jpg"
+            },
+            {
+              "id": 1743,
+              "position": {
+                "x": 2417,
+                "y": 1400
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765955674834479416.jpg"
+            },
+            {
+              "id": 1744,
+              "position": {
+                "x": 2485,
+                "y": 1393
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765955730866732584.jpg"
+            },
+            {
+              "id": 1758,
+              "position": {
+                "x": 2288.75,
+                "y": 1581.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765956507041467651.jpg"
+            },
+            {
+              "id": 1795,
+              "position": {
+                "x": 2852,
+                "y": 1939
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765965920846725852.jpg"
+            },
+            {
+              "id": 1895,
+              "position": {
+                "x": 2139.25,
+                "y": 2336.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765978010493435575.jpg"
+            },
+            {
+              "id": 1899,
+              "position": {
+                "x": 2057.75,
+                "y": 2475.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765978352606423735.jpg"
+            }
+          ]
+        },
+        {
+          "id": 273,
+          "name": "Loom Maiden",
+          "icon": "/assets/icons/1765935521602957704.png",
+          "markers": [
+            {
+              "id": 1662,
+              "position": {
+                "x": 2489.25,
+                "y": 2517.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765935566289474406.jpg"
+            },
+            {
+              "id": 1669,
+              "position": {
+                "x": 2579.75,
+                "y": 2418
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765936463519175501.jpg"
+            },
+            {
+              "id": 1671,
+              "position": {
+                "x": 2597,
+                "y": 2380.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765936622838946093.jpg"
+            },
+            {
+              "id": 1676,
+              "position": {
+                "x": 2501.25,
+                "y": 2270.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765938002442655626.jpg"
+            },
+            {
+              "id": 1677,
+              "position": {
+                "x": 2531.5,
+                "y": 2187.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765938099712230293.jpg"
+            },
+            {
+              "id": 1679,
+              "position": {
+                "x": 2618.5,
+                "y": 2172
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765938220900650518.jpg"
+            },
+            {
+              "id": 1682,
+              "position": {
+                "x": 2687.5,
+                "y": 2221.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765938523901298758.jpg"
+            }
+          ]
+        },
+        {
+          "id": 274,
+          "name": "Broken Relic",
+          "icon": "/assets/icons/1765968430918592158.png",
+          "markers": [
+            {
+              "id": 1814,
+              "position": {
+                "x": 1701,
+                "y": 2336.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765968485269830457.jpg"
+            },
+            {
+              "id": 1824,
+              "position": {
+                "x": 1751.5,
+                "y": 2213.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765970162463517619.jpg"
+            },
+            {
+              "id": 1825,
+              "position": {
+                "x": 1690.75,
+                "y": 2246
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765970228759782444.jpg"
+            },
+            {
+              "id": 1835,
+              "position": {
+                "x": 1554,
+                "y": 2175.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765971555917638284.jpg"
+            },
+            {
+              "id": 1836,
+              "position": {
+                "x": 1342,
+                "y": 2151
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765971768145554463.jpg"
+            },
+            {
+              "id": 1837,
+              "position": {
+                "x": 1232.25,
+                "y": 2095.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765971862706299448.jpg"
+            },
+            {
+              "id": 1838,
+              "position": {
+                "x": 1150.75,
+                "y": 2116.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765971920889968299.jpg"
+            },
+            {
+              "id": 1839,
+              "position": {
+                "x": 920,
+                "y": 2150.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765972046800402955.jpg"
+            },
+            {
+              "id": 1840,
+              "position": {
+                "x": 1267,
+                "y": 2204
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765972196757119886.jpg"
+            }
+          ]
+        },
+        {
+          "id": 276,
+          "name": "Dustbreath Butterfly",
+          "icon": "/assets/icons/1765972566168198522.png",
+          "markers": [
+            {
+              "id": 1842,
+              "position": {
+                "x": 1590.75,
+                "y": 1987.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765972621871964041.jpg"
+            },
+            {
+              "id": 1850,
+              "position": {
+                "x": 1664.5,
+                "y": 1780.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765973609618642309.jpg"
+            },
+            {
+              "id": 1852,
+              "position": {
+                "x": 1734,
+                "y": 1814.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765973808818929581.jpg"
+            },
+            {
+              "id": 1860,
+              "position": {
+                "x": 1631,
+                "y": 1697.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765974107602457839.jpg"
+            },
+            {
+              "id": 1865,
+              "position": {
+                "x": 1706.25,
+                "y": 1529.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765974531200104228.jpg"
+            },
+            {
+              "id": 1867,
+              "position": {
+                "x": 1627,
+                "y": 1528
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765974768711667893.jpg"
+            }
+          ]
+        },
+        {
+          "id": 278,
+          "name": "Mountain Coral",
+          "icon": "/assets/icons/1765976905227847152.png",
+          "markers": [
+            {
+              "id": 1884,
+              "position": {
+                "x": 2326,
+                "y": 2452.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765977265255311032.jpg"
+            },
+            {
+              "id": 1893,
+              "position": {
+                "x": 2146.25,
+                "y": 2422.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765977928010968875.jpg"
+            },
+            {
+              "id": 1897,
+              "position": {
+                "x": 2093,
+                "y": 2462.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765978224178526810.jpg"
+            },
+            {
+              "id": 1906,
+              "position": {
+                "x": 1942.5,
+                "y": 2530.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765978829845342988.jpg"
+            },
+            {
+              "id": 1912,
+              "position": {
+                "x": 2021,
+                "y": 2616
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765979247274170172.jpg"
+            }
+          ]
+        },
+        {
+          "id": 279,
+          "name": "Rock Skink",
+          "icon": "/assets/icons/1765976947832794736.png",
+          "markers": [
+            {
+              "id": 1880,
+              "position": {
+                "x": 2387.25,
+                "y": 2427
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765976985895561986.jpg"
+            },
+            {
+              "id": 1887,
+              "position": {
+                "x": 2322.75,
+                "y": 2343
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765977500200889610.jpg"
+            },
+            {
+              "id": 1894,
+              "position": {
+                "x": 2118.75,
+                "y": 2348.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765978119231976330.jpg"
+            },
+            {
+              "id": 1902,
+              "position": {
+                "x": 1984.5,
+                "y": 2390
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765978603664691285.jpg"
+            },
+            {
+              "id": 1905,
+              "position": {
+                "x": 1929.75,
+                "y": 2446
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765978739879214546.jpg"
+            },
+            {
+              "id": 1914,
+              "position": {
+                "x": 2044.75,
+                "y": 2581.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765979624815210529.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Landmarks",
+      "label": "Landmarks",
+      "icon": "/assets/icons/1749672609569330275.png",
+      "markers": [
+        {
+          "id": 35,
+          "name": "Teleport Point",
+          "icon": "/assets/icons/1749557822886359503.png",
+          "markers": [
+            {
+              "id": 1626,
+              "position": {
+                "x": 2705.75,
+                "y": 2819.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765895743084658878.jpg"
+            },
+            {
+              "id": 1657,
+              "position": {
+                "x": 2816.25,
+                "y": 2422.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765933226679360550.jpg"
+            },
+            {
+              "id": 1660,
+              "position": {
+                "x": 2492.5,
+                "y": 2603.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765935365299336030.jpg"
+            },
+            {
+              "id": 1673,
+              "position": {
+                "x": 2632.5,
+                "y": 2254
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765937609138430011.jpg"
+            },
+            {
+              "id": 1675,
+              "position": {
+                "x": 2455.5,
+                "y": 2317.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765937755001319307.jpg"
+            },
+            {
+              "id": 1690,
+              "position": {
+                "x": 2083,
+                "y": 2453.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765939110841294509.jpg"
+            },
+            {
+              "id": 1697,
+              "position": {
+                "x": 2564.5,
+                "y": 1946.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765946136312905790.jpg"
+            },
+            {
+              "id": 1701,
+              "position": {
+                "x": 2181.5,
+                "y": 1888.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765948498533147791.png"
+            },
+            {
+              "id": 1702,
+              "position": {
+                "x": 2354.5,
+                "y": 1628.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765948633363670297.png"
+            },
+            {
+              "id": 1703,
+              "position": {
+                "x": 1770.25,
+                "y": 2226.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765948815989557405.png"
+            },
+            {
+              "id": 1704,
+              "position": {
+                "x": 1354,
+                "y": 2149.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765948966350173545.png"
+            },
+            {
+              "id": 1705,
+              "position": {
+                "x": 1661.5,
+                "y": 1638.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765949110088171924.png"
+            },
+            {
+              "id": 1889,
+              "position": {
+                "x": 2212.25,
+                "y": 2432.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765977625481615564.jpg"
+            }
+          ]
+        },
+        {
+          "id": 37,
+          "name": "Shop",
+          "icon": "/assets/icons/1749562619726215825.png",
+          "markers": [
+            {
+              "id": 1608,
+              "position": {
+                "x": 2576.5,
+                "y": 2858.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765893707040592252.jpg"
+            },
+            {
+              "id": 1696,
+              "position": {
+                "x": 2595.5,
+                "y": 1935.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765946142831887685.jpg"
+            },
+            {
+              "id": 1776,
+              "position": {
+                "x": 2481.5,
+                "y": 1967
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765961189539372322.jpg"
+            },
+            {
+              "id": 1819,
+              "position": {
+                "x": 1782,
+                "y": 2185.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765969482413505912.jpg"
+            }
+          ]
+        },
+        {
+          "id": 38,
+          "name": "Fishing Spot",
+          "icon": "/assets/icons/1749561882699685405.png",
+          "markers": [
+            {
+              "id": 1596,
+              "position": {
+                "x": 2561.5,
+                "y": 3063
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765892268015208962.jpg"
+            },
+            {
+              "id": 1731,
+              "position": {
+                "x": 2324,
+                "y": 1805.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765954914516115185.jpg"
+            },
+            {
+              "id": 1778,
+              "position": {
+                "x": 2537.75,
+                "y": 2078
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765962480278281931.jpg"
+            },
+            {
+              "id": 1815,
+              "position": {
+                "x": 1669.25,
+                "y": 2256
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765968589618478914.jpg"
+            },
+            {
+              "id": 1910,
+              "position": {
+                "x": 1959,
+                "y": 2580
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765979080825278035.jpg"
+            }
+          ]
+        },
+        {
+          "id": 275,
+          "name": "Hidden Dragon's Dwelling",
+          "icon": "/assets/icons/1765971010467508417.png",
+          "markers": [
+            {
+              "id": 1829,
+              "position": {
+                "x": 1621.5,
+                "y": 2167.5
+              },
+              "image": ""
+            }
+          ]
+        },
+        {
+          "id": 277,
+          "name": "Cave Entrance",
+          "icon": "/assets/icons/1766206423964852436.png",
+          "markers": [
+            {
+              "id": 1872,
+              "position": {
+                "x": 1698.5,
+                "y": 1728.75
+              },
+              "image": ""
+            },
+            {
+              "id": 1873,
+              "position": {
+                "x": 2172.25,
+                "y": 2034.25
+              },
+              "image": ""
+            },
+            {
+              "id": 1917,
+              "position": {
+                "x": 1895.25,
+                "y": 2254.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765979812090442513.jpg"
+            },
+            {
+              "id": 1918,
+              "position": {
+                "x": 2376.75,
+                "y": 2308
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765979902494827614.jpg"
+            }
+          ]
+        },
+        {
+          "id": 280,
+          "name": "Echo of the Spirit Bird",
+          "icon": "/assets/icons/1766199602451464010.png",
+          "markers": [
+            {
+              "id": 1933,
+              "position": {
+                "x": 1669,
+                "y": 1788.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766199899069728356.jpg"
+            },
+            {
+              "id": 1935,
+              "position": {
+                "x": 2372,
+                "y": 1740.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766200317932624359.jpg"
+            },
+            {
+              "id": 1937,
+              "position": {
+                "x": 2687.25,
+                "y": 2166.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766200524829599462.jpg"
+            },
+            {
+              "id": 1938,
+              "position": {
+                "x": 2163.75,
+                "y": 2432.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766200985867842487.jpg"
+            },
+            {
+              "id": 1939,
+              "position": {
+                "x": 1945,
+                "y": 2437.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766201096670585375.jpg"
+            },
+            {
+              "id": 1940,
+              "position": {
+                "x": 2794.75,
+                "y": 2753.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766202322044381817.jpg"
+            }
+          ]
+        },
+        {
+          "id": 281,
+          "name": "Zhuyin Altar",
+          "icon": "/assets/icons/1766205393736869341.png",
+          "markers": [
+            {
+              "id": 1944,
+              "position": {
+                "x": 1885.25,
+                "y": 1439.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766205503602910090.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Geniemon",
+      "label": "Geniemon",
+      "icon": "/assets/icons/1749562159541539924.png",
+      "markers": [
+        {
+          "id": 42,
+          "name": "Geniemon Spawn Point",
+          "icon": "/assets/icons/1749672734516496170.png",
+          "markers": [
+            {
+              "id": 1603,
+              "position": {
+                "x": 2699,
+                "y": 3119.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766458097518175745.jpg"
+            },
+            {
+              "id": 1611,
+              "position": {
+                "x": 2584.75,
+                "y": 2757.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765894645405797895.jpg"
+            },
+            {
+              "id": 1612,
+              "position": {
+                "x": 2488,
+                "y": 2748.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765894697654695056.jpg"
+            },
+            {
+              "id": 1619,
+              "position": {
+                "x": 2705,
+                "y": 2703.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765895226620455146.jpg"
+            },
+            {
+              "id": 1649,
+              "position": {
+                "x": 2807,
+                "y": 2279
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765932068557580114.jpg"
+            },
+            {
+              "id": 1654,
+              "position": {
+                "x": 3031.25,
+                "y": 2442.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766458034701752528.jpg"
+            },
+            {
+              "id": 1659,
+              "position": {
+                "x": 2808.5,
+                "y": 2546.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765935039191509879.jpg"
+            },
+            {
+              "id": 1661,
+              "position": {
+                "x": 2511,
+                "y": 2584.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765935383015231390.jpg"
+            },
+            {
+              "id": 1688,
+              "position": {
+                "x": 2155,
+                "y": 2366
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765938988072703335.jpg"
+            },
+            {
+              "id": 1691,
+              "position": {
+                "x": 1035.5,
+                "y": 2046.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765940151678386334.jpg"
+            },
+            {
+              "id": 1693,
+              "position": {
+                "x": 894,
+                "y": 2159
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765940286238421462.jpg"
+            },
+            {
+              "id": 1715,
+              "position": {
+                "x": 1727,
+                "y": 2306.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765952082856564770.png"
+            },
+            {
+              "id": 1720,
+              "position": {
+                "x": 2516,
+                "y": 1811.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765953032785388119.jpg"
+            },
+            {
+              "id": 1721,
+              "position": {
+                "x": 1674,
+                "y": 2245.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765953069219233128.png"
+            },
+            {
+              "id": 1726,
+              "position": {
+                "x": 2332.25,
+                "y": 1734
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765953942441915076.jpg"
+            },
+            {
+              "id": 1733,
+              "position": {
+                "x": 2370.5,
+                "y": 1579.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765955161200385625.jpg"
+            },
+            {
+              "id": 1736,
+              "position": {
+                "x": 1636.25,
+                "y": 2165
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765955293776324187.png"
+            },
+            {
+              "id": 1737,
+              "position": {
+                "x": 2364.5,
+                "y": 1439.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765955339671242644.jpg"
+            },
+            {
+              "id": 1770,
+              "position": {
+                "x": 2629.25,
+                "y": 1965
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766207019943719734.png"
+            },
+            {
+              "id": 1777,
+              "position": {
+                "x": 2512,
+                "y": 2024
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765961240137391854.jpg"
+            },
+            {
+              "id": 1782,
+              "position": {
+                "x": 2431.5,
+                "y": 2098.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765962330366114097.jpg"
+            },
+            {
+              "id": 1807,
+              "position": {
+                "x": 1977.5,
+                "y": 2001.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765967503716386042.jpg"
+            },
+            {
+              "id": 1809,
+              "position": {
+                "x": 1683.5,
+                "y": 1928.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765967650164881693.png"
+            },
+            {
+              "id": 1812,
+              "position": {
+                "x": 1685,
+                "y": 1760.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765967924521588799.png"
+            },
+            {
+              "id": 1816,
+              "position": {
+                "x": 1675.5,
+                "y": 2170
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765969292542923067.jpg"
+            },
+            {
+              "id": 1854,
+              "position": {
+                "x": 1719.5,
+                "y": 1797.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766215858312663105.png"
+            },
+            {
+              "id": 1862,
+              "position": {
+                "x": 1576,
+                "y": 1484.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765974244735330413.jpg"
+            },
+            {
+              "id": 1915,
+              "position": {
+                "x": 2047.75,
+                "y": 2600.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765979654315828876.jpg"
+            },
+            {
+              "id": 1924,
+              "position": {
+                "x": 2339,
+                "y": 2465
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766458212876984711.jpg"
+            },
+            {
+              "id": 1925,
+              "position": {
+                "x": 1488,
+                "y": 2097
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766461043500954478.jpg"
+            },
+            {
+              "id": 1926,
+              "position": {
+                "x": 1819.5,
+                "y": 2249.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766460957432909680.jpg"
+            },
+            {
+              "id": 1927,
+              "position": {
+                "x": 1209,
+                "y": 2235
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766461093984530925.jpg"
+            },
+            {
+              "id": 1928,
+              "position": {
+                "x": 2031,
+                "y": 2167
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766206406080835054.png"
+            },
+            {
+              "id": 1929,
+              "position": {
+                "x": 2193,
+                "y": 1921
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766204651487512353.jpg"
+            },
+            {
+              "id": 1930,
+              "position": {
+                "x": 2293,
+                "y": 1592
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766460790281982243.jpg"
+            },
+            {
+              "id": 1931,
+              "position": {
+                "x": 2259,
+                "y": 1713
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766460837268525528.jpg"
+            },
+            {
+              "id": 1932,
+              "position": {
+                "x": 2704,
+                "y": 2173
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766459125857366339.jpg"
+            },
+            {
+              "id": 1968,
+              "position": {
+                "x": 1750.5,
+                "y": 1621.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766461176313660423.jpg"
+            },
+            {
+              "id": 1970,
+              "position": {
+                "x": 1585,
+                "y": 2165.476273087772
+              },
+              "image": ""
+            },
+            {
+              "id": 1971,
+              "position": {
+                "x": 2589.25,
+                "y": 1908.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766460651899615364.jpg"
+            },
+            {
+              "id": 1972,
+              "position": {
+                "x": 2177,
+                "y": 2101.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766460899486190989.jpg"
+            },
+            {
+              "id": 1973,
+              "position": {
+                "x": 2162.75,
+                "y": 2367
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766490320942386537.png"
+            },
+            {
+              "id": 9993,
+              "position": {
+                "x": 2809,
+                "y": 2784
+              },
+              "image": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Storage Chest",
+      "label": "Storage Chest",
+      "icon": "/assets/icons/1749672743841364457.png",
+      "markers": [
+        {
+          "id": 43,
+          "name": "Storage Chest",
+          "icon": "/assets/icons/1749566001012138274.png",
+          "markers": [
+            {
+              "id": 1598,
+              "position": {
+                "x": 2521,
+                "y": 3043.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765892460676294286.jpg"
+            },
+            {
+              "id": 1600,
+              "position": {
+                "x": 2616,
+                "y": 3070.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765892881772319563.jpg"
+            },
+            {
+              "id": 1602,
+              "position": {
+                "x": 2745.75,
+                "y": 3124.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765893015909209650.jpg"
+            },
+            {
+              "id": 1610,
+              "position": {
+                "x": 2621.5,
+                "y": 2817.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765894618352638528.jpg"
+            },
+            {
+              "id": 1620,
+              "position": {
+                "x": 2633.75,
+                "y": 2727
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765895295557401077.jpg"
+            },
+            {
+              "id": 1622,
+              "position": {
+                "x": 2711.25,
+                "y": 2605.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765895410381761763.jpg"
+            },
+            {
+              "id": 1630,
+              "position": {
+                "x": 2746.25,
+                "y": 2846.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765895953496559686.jpg"
+            },
+            {
+              "id": 1639,
+              "position": {
+                "x": 2864.75,
+                "y": 2590
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765896614483245258.jpg"
+            },
+            {
+              "id": 1656,
+              "position": {
+                "x": 2859.5,
+                "y": 2472.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765933178819503750.jpg"
+            },
+            {
+              "id": 1699,
+              "position": {
+                "x": 2624.75,
+                "y": 1884.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765946930091321201.jpg"
+            },
+            {
+              "id": 1713,
+              "position": {
+                "x": 1783.75,
+                "y": 2148.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765951665791167515.png"
+            },
+            {
+              "id": 1718,
+              "position": {
+                "x": 1708,
+                "y": 2119.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765952635177305763.png"
+            },
+            {
+              "id": 1735,
+              "position": {
+                "x": 2343.25,
+                "y": 1524
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765955277432276027.jpg"
+            },
+            {
+              "id": 1747,
+              "position": {
+                "x": 2388.25,
+                "y": 1458.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765955899511656774.jpg"
+            },
+            {
+              "id": 1749,
+              "position": {
+                "x": 2320.75,
+                "y": 1509.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765956044605199628.jpg"
+            },
+            {
+              "id": 1750,
+              "position": {
+                "x": 1553.25,
+                "y": 2078
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765956058787201040.png"
+            },
+            {
+              "id": 1760,
+              "position": {
+                "x": 1623,
+                "y": 2079.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765956781516226675.png"
+            },
+            {
+              "id": 1761,
+              "position": {
+                "x": 1608,
+                "y": 2170
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765956922483697417.png"
+            },
+            {
+              "id": 1762,
+              "position": {
+                "x": 1691,
+                "y": 2137.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765957046696123682.png"
+            },
+            {
+              "id": 1767,
+              "position": {
+                "x": 2686.75,
+                "y": 1925.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765960369623804929.jpg"
+            },
+            {
+              "id": 1771,
+              "position": {
+                "x": 2551.25,
+                "y": 1957.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765960732789320802.jpg"
+            },
+            {
+              "id": 1781,
+              "position": {
+                "x": 2421.75,
+                "y": 2090.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765962307447683284.jpg"
+            },
+            {
+              "id": 1797,
+              "position": {
+                "x": 2806,
+                "y": 1908.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765966067196818628.jpg"
+            },
+            {
+              "id": 1806,
+              "position": {
+                "x": 1973.75,
+                "y": 1983
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765967470432126859.jpg"
+            },
+            {
+              "id": 1851,
+              "position": {
+                "x": 1693.25,
+                "y": 1809.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765973705889980740.jpg"
+            },
+            {
+              "id": 1855,
+              "position": {
+                "x": 1750.5,
+                "y": 1776.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765973872163871513.jpg"
+            },
+            {
+              "id": 1856,
+              "position": {
+                "x": 1686.75,
+                "y": 1727.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765973892669863034.jpg"
+            },
+            {
+              "id": 1904,
+              "position": {
+                "x": 1952,
+                "y": 2361.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765978664626130284.jpg"
+            },
+            {
+              "id": 1909,
+              "position": {
+                "x": 1846.5,
+                "y": 2585.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765979007911401645.jpg"
+            },
+            {
+              "id": 1920,
+              "position": {
+                "x": 2241.75,
+                "y": 2045.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765980510033326986.jpg"
+            },
+            {
+              "id": 1921,
+              "position": {
+                "x": 2125.75,
+                "y": 2162.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765980665867382498.jpg"
+            },
+            {
+              "id": 1943,
+              "position": {
+                "x": 2398,
+                "y": 1669.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766204114445296379.jpg"
+            }
+          ]
+        },
+        {
+          "id": 44,
+          "name": "Treasure Map Chest",
+          "icon": "/assets/icons/1749560145785106563.png",
+          "markers": [
+            {
+              "id": 1826,
+              "position": {
+                "x": 1693.5,
+                "y": 2328.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765970329650128997.jpg"
+            },
+            {
+              "id": 1869,
+              "position": {
+                "x": 1724.25,
+                "y": 1693.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765975108847161562.jpg"
+            },
+            {
+              "id": 1878,
+              "position": {
+                "x": 3021,
+                "y": 2360.5
+              },
+              "image": ""
+            },
+            {
+              "id": 1958,
+              "position": {
+                "x": 2425.5,
+                "y": 1392.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766236599622265372.jpg"
+            },
+            {
+              "id": 1959,
+              "position": {
+                "x": 2494.5,
+                "y": 1932.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766237037941679366.jpg"
+            }
+          ]
+        },
+        {
+          "id": 60,
+          "name": "Monster Chest",
+          "icon": "/assets/icons/1749565963302865436.png",
+          "markers": [
+            {
+              "id": 1614,
+              "position": {
+                "x": 2421.25,
+                "y": 2966.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765894823709794518.jpg"
+            },
+            {
+              "id": 1647,
+              "position": {
+                "x": 2697.25,
+                "y": 2477.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765897242570512398.jpg"
+            },
+            {
+              "id": 1683,
+              "position": {
+                "x": 2697,
+                "y": 2234.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765938574148752025.jpg"
+            },
+            {
+              "id": 1740,
+              "position": {
+                "x": 1874,
+                "y": 2158
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765955505418713234.png"
+            },
+            {
+              "id": 1785,
+              "position": {
+                "x": 1568.75,
+                "y": 1873
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765963434892687898.png"
+            },
+            {
+              "id": 1788,
+              "position": {
+                "x": 2379.5,
+                "y": 2157.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765964356552728408.jpg"
+            },
+            {
+              "id": 1794,
+              "position": {
+                "x": 2825.5,
+                "y": 1994.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765965799012828171.jpg"
+            },
+            {
+              "id": 1846,
+              "position": {
+                "x": 1579.5,
+                "y": 1769
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765973169694763807.jpg"
+            },
+            {
+              "id": 1883,
+              "position": {
+                "x": 2441.75,
+                "y": 2403.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765977131856590904.jpg"
+            },
+            {
+              "id": 1890,
+              "position": {
+                "x": 2137,
+                "y": 2410.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765977749147416694.jpg"
+            }
+          ]
+        },
+        {
+          "id": 202,
+          "name": "Mechanism Puzzle",
+          "icon": "/assets/icons/1765893938085545821.png",
+          "markers": [
+            {
+              "id": 1663,
+              "position": {
+                "x": 2493.25,
+                "y": 2531
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765935632577386199.jpg"
+            },
+            {
+              "id": 1665,
+              "position": {
+                "x": 2313.5,
+                "y": 2776.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765935823553424018.jpg"
+            },
+            {
+              "id": 1672,
+              "position": {
+                "x": 2510.5,
+                "y": 2362
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765937498410301724.jpg"
+            },
+            {
+              "id": 1681,
+              "position": {
+                "x": 2667,
+                "y": 2187.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765938420032612759.jpg"
+            },
+            {
+              "id": 1684,
+              "position": {
+                "x": 2395,
+                "y": 2233.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765938738277154698.jpg"
+            },
+            {
+              "id": 1685,
+              "position": {
+                "x": 2265.75,
+                "y": 2220.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766486479554390038.jpg"
+            },
+            {
+              "id": 1687,
+              "position": {
+                "x": 2225,
+                "y": 2379.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765938929247509202.jpg"
+            },
+            {
+              "id": 1689,
+              "position": {
+                "x": 2114.25,
+                "y": 2327
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765939057751980286.jpg"
+            },
+            {
+              "id": 1695,
+              "position": {
+                "x": 2280.5,
+                "y": 2467.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765940577455348101.jpg"
+            },
+            {
+              "id": 1745,
+              "position": {
+                "x": 2446.25,
+                "y": 1409
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765955824857502779.jpg"
+            },
+            {
+              "id": 1798,
+              "position": {
+                "x": 2815.75,
+                "y": 1901.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765966115516124753.jpg"
+            },
+            {
+              "id": 1804,
+              "position": {
+                "x": 2022.840848058925,
+                "y": 1828.1671475472008
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765967290600997687.jpg"
+            },
+            {
+              "id": 1813,
+              "position": {
+                "x": 1927.75,
+                "y": 2174.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765968206461790996.jpg"
+            },
+            {
+              "id": 1841,
+              "position": {
+                "x": 1540,
+                "y": 2034
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765972421262436202.jpg"
+            },
+            {
+              "id": 1848,
+              "position": {
+                "x": 1620,
+                "y": 1777.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765973306800989857.jpg"
+            },
+            {
+              "id": 1858,
+              "position": {
+                "x": 1635.25,
+                "y": 1746.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765973988950442470.jpg"
+            },
+            {
+              "id": 1859,
+              "position": {
+                "x": 1655.25,
+                "y": 1751.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765974042517773160.jpg"
+            },
+            {
+              "id": 1863,
+              "position": {
+                "x": 1560,
+                "y": 1506.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765974267237965725.jpg"
+            },
+            {
+              "id": 1864,
+              "position": {
+                "x": 1609.5,
+                "y": 1390.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765974352104742004.jpg"
+            },
+            {
+              "id": 1871,
+              "position": {
+                "x": 1772.75,
+                "y": 1675.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765975231853855335.jpg"
+            },
+            {
+              "id": 1882,
+              "position": {
+                "x": 2435,
+                "y": 2407.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765977101941627872.jpg"
+            },
+            {
+              "id": 1898,
+              "position": {
+                "x": 2041.25,
+                "y": 2448.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765978292231216267.jpg"
+            },
+            {
+              "id": 1911,
+              "position": {
+                "x": 1927.75,
+                "y": 2615.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765979124392512747.jpg"
+            },
+            {
+              "id": 1941,
+              "position": {
+                "x": 2463.25,
+                "y": 2443
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766202628325860500.jpg"
+            },
+            {
+              "id": 1942,
+              "position": {
+                "x": 2320.25,
+                "y": 2645.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766202716570377822.jpg"
+            },
+            {
+              "id": 9991,
+              "position": {
+                "x": 1250,
+                "y": 2308
+              },
+              "image": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Collectibles",
+      "label": "Collectibles",
+      "icon": "/assets/icons/1749672777020326442.png",
+      "markers": [
+        {
+          "id": 269,
+          "name": "Explorer’s Certificate · Yanjin Ferry",
+          "icon": "/assets/icons/1765894260519984691.png",
+          "markers": [
+            {
+              "id": 1624,
+              "position": {
+                "x": 2702.75,
+                "y": 2610.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765895552459678976.jpg"
+            },
+            {
+              "id": 1634,
+              "position": {
+                "x": 2948.75,
+                "y": 2666.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765896361985975567.jpg"
+            },
+            {
+              "id": 1666,
+              "position": {
+                "x": 2310.75,
+                "y": 2790
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765935847819935115.jpg"
+            },
+            {
+              "id": 1694,
+              "position": {
+                "x": 1075.25,
+                "y": 2196
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765940353278991641.jpg"
+            },
+            {
+              "id": 1700,
+              "position": {
+                "x": 2572.25,
+                "y": 1841.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765946984359869798.jpg"
+            },
+            {
+              "id": 1706,
+              "position": {
+                "x": 1432.25,
+                "y": 2127
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765949542548522343.png"
+            },
+            {
+              "id": 1711,
+              "position": {
+                "x": 1698.75,
+                "y": 2164
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765951418936873998.png"
+            },
+            {
+              "id": 1719,
+              "position": {
+                "x": 1630.25,
+                "y": 2187.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765952917159798900.png"
+            },
+            {
+              "id": 1734,
+              "position": {
+                "x": 2344.5,
+                "y": 1536.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765955203241778901.jpg"
+            },
+            {
+              "id": 1774,
+              "position": {
+                "x": 2546.75,
+                "y": 1876.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765961015828875775.jpg"
+            },
+            {
+              "id": 1791,
+              "position": {
+                "x": 2646,
+                "y": 2029.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765965412702173587.jpg"
+            },
+            {
+              "id": 1802,
+              "position": {
+                "x": 2053.25,
+                "y": 1974
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765966892287118880.jpg"
+            },
+            {
+              "id": 1817,
+              "position": {
+                "x": 1682.5,
+                "y": 1774.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765969331393804191.png"
+            },
+            {
+              "id": 1870,
+              "position": {
+                "x": 1776.25,
+                "y": 1668
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765975208070436098.jpg"
+            },
+            {
+              "id": 1879,
+              "position": {
+                "x": 2941,
+                "y": 2376
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765976550881766057.jpg"
+            },
+            {
+              "id": 1896,
+              "position": {
+                "x": 2129.25,
+                "y": 2391.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765978063413789879.jpg"
+            },
+            {
+              "id": 1908,
+              "position": {
+                "x": 1899.25,
+                "y": 2538.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765978929868500169.jpg"
+            },
+            {
+              "id": 1950,
+              "position": {
+                "x": 2627.25,
+                "y": 3191.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766218606442636050.jpg"
+            }
+          ]
+        },
+        {
+          "id": 270,
+          "name": "Great Void Rune",
+          "icon": "/assets/icons/1765894335012307828.png",
+          "markers": [
+            {
+              "id": 1595,
+              "position": {
+                "x": 2583,
+                "y": 2950.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765892088410177438.jpg"
+            },
+            {
+              "id": 1601,
+              "position": {
+                "x": 2603.25,
+                "y": 3085.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765892936971868227.jpg"
+            },
+            {
+              "id": 1609,
+              "position": {
+                "x": 2556.5,
+                "y": 2826.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765894508029793514.jpg"
+            },
+            {
+              "id": 1623,
+              "position": {
+                "x": 2724.25,
+                "y": 2630
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765895476620649957.jpg"
+            },
+            {
+              "id": 1625,
+              "position": {
+                "x": 2739.5,
+                "y": 2648.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765895627794458471.jpg"
+            },
+            {
+              "id": 1627,
+              "position": {
+                "x": 2735.5,
+                "y": 2835.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765895781132999188.jpg"
+            },
+            {
+              "id": 1628,
+              "position": {
+                "x": 2723.5,
+                "y": 2784.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765895802286647143.jpg"
+            },
+            {
+              "id": 1629,
+              "position": {
+                "x": 2712.5,
+                "y": 2974
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765895894420664204.jpg"
+            },
+            {
+              "id": 1631,
+              "position": {
+                "x": 2796.5,
+                "y": 2796.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765896009242617967.jpg"
+            },
+            {
+              "id": 1632,
+              "position": {
+                "x": 2901.75,
+                "y": 2746.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765896100618965042.jpg"
+            },
+            {
+              "id": 1635,
+              "position": {
+                "x": 2953,
+                "y": 2667.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765896383265413463.jpg"
+            },
+            {
+              "id": 1638,
+              "position": {
+                "x": 2833.5,
+                "y": 2592.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765896579594913486.jpg"
+            },
+            {
+              "id": 1643,
+              "position": {
+                "x": 2672.25,
+                "y": 2524.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765896890613679830.jpg"
+            },
+            {
+              "id": 1645,
+              "position": {
+                "x": 2753.25,
+                "y": 2457.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765897139300683668.jpg"
+            },
+            {
+              "id": 1648,
+              "position": {
+                "x": 2787.75,
+                "y": 2292.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765932044804643537.jpg"
+            },
+            {
+              "id": 1652,
+              "position": {
+                "x": 3033.75,
+                "y": 2350.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765932384440538292.jpg"
+            },
+            {
+              "id": 1664,
+              "position": {
+                "x": 2395,
+                "y": 2703
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765935713415783116.jpg"
+            },
+            {
+              "id": 1668,
+              "position": {
+                "x": 2523.75,
+                "y": 2512
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765936378259218924.jpg"
+            },
+            {
+              "id": 1670,
+              "position": {
+                "x": 2569,
+                "y": 2400.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765936478389679006.jpg"
+            },
+            {
+              "id": 1674,
+              "position": {
+                "x": 2582,
+                "y": 2246.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765937669230779176.jpg"
+            },
+            {
+              "id": 1680,
+              "position": {
+                "x": 2622.75,
+                "y": 2134.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765938316493932312.jpg"
+            },
+            {
+              "id": 1686,
+              "position": {
+                "x": 2276.25,
+                "y": 2374.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765938866878244754.jpg"
+            },
+            {
+              "id": 1708,
+              "position": {
+                "x": 1696,
+                "y": 2167.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765969360438588723.jpg"
+            },
+            {
+              "id": 1710,
+              "position": {
+                "x": 1729.75,
+                "y": 2136
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765969689161958353.jpg"
+            },
+            {
+              "id": 1714,
+              "position": {
+                "x": 1777.75,
+                "y": 2235.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765951914091856301.png"
+            },
+            {
+              "id": 1716,
+              "position": {
+                "x": 1689.5,
+                "y": 2321.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765952217317673587.png"
+            },
+            {
+              "id": 1722,
+              "position": {
+                "x": 1627,
+                "y": 2274.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765953203084989502.png"
+            },
+            {
+              "id": 1723,
+              "position": {
+                "x": 2502.5,
+                "y": 1802.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765953744037290152.jpg"
+            },
+            {
+              "id": 1724,
+              "position": {
+                "x": 2428.25,
+                "y": 1704.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765953829316511014.jpg"
+            },
+            {
+              "id": 1725,
+              "position": {
+                "x": 2369.75,
+                "y": 1737.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765953891065583384.jpg"
+            },
+            {
+              "id": 1727,
+              "position": {
+                "x": 2273.5,
+                "y": 1690
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765954020406288295.jpg"
+            },
+            {
+              "id": 1730,
+              "position": {
+                "x": 2334.5,
+                "y": 1822
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765954721245642697.jpg"
+            },
+            {
+              "id": 1742,
+              "position": {
+                "x": 1861.25,
+                "y": 2166.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765955654647185731.png"
+            },
+            {
+              "id": 1754,
+              "position": {
+                "x": 1477.75,
+                "y": 2064.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765956265548162054.png"
+            },
+            {
+              "id": 1755,
+              "position": {
+                "x": 2287.75,
+                "y": 1527.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765956307173401223.jpg"
+            },
+            {
+              "id": 1756,
+              "position": {
+                "x": 2399.25,
+                "y": 1549.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765956322437404835.jpg"
+            },
+            {
+              "id": 1757,
+              "position": {
+                "x": 2243,
+                "y": 1593.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765956367673247278.jpg"
+            },
+            {
+              "id": 1759,
+              "position": {
+                "x": 1557.5,
+                "y": 2032.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765956558784469698.png"
+            },
+            {
+              "id": 1763,
+              "position": {
+                "x": 1565.25,
+                "y": 1979.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765957451990628115.png"
+            },
+            {
+              "id": 1764,
+              "position": {
+                "x": 2654,
+                "y": 1942.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765959714144436808.jpg"
+            },
+            {
+              "id": 1766,
+              "position": {
+                "x": 2681.5,
+                "y": 1918.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765960357081195303.jpg"
+            },
+            {
+              "id": 1773,
+              "position": {
+                "x": 2560.5,
+                "y": 2011
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765960952248357252.jpg"
+            },
+            {
+              "id": 1780,
+              "position": {
+                "x": 2485,
+                "y": 2001
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765962146124143782.jpg"
+            },
+            {
+              "id": 1783,
+              "position": {
+                "x": 1626.25,
+                "y": 1933.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765962752911963395.png"
+            },
+            {
+              "id": 1784,
+              "position": {
+                "x": 1542.5,
+                "y": 1881.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765963331622645453.png"
+            },
+            {
+              "id": 1786,
+              "position": {
+                "x": 1666,
+                "y": 1862.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765963582155594741.png"
+            },
+            {
+              "id": 1787,
+              "position": {
+                "x": 2442.25,
+                "y": 2165.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765964201345745436.jpg"
+            },
+            {
+              "id": 1789,
+              "position": {
+                "x": 2744,
+                "y": 2094.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765964929597166471.jpg"
+            },
+            {
+              "id": 1790,
+              "position": {
+                "x": 2682.5,
+                "y": 2048.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765965197716763491.jpg"
+            },
+            {
+              "id": 1808,
+              "position": {
+                "x": 1688,
+                "y": 1923.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765967441188312114.png"
+            },
+            {
+              "id": 1843,
+              "position": {
+                "x": 1593.5,
+                "y": 1874.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765972784210548463.jpg"
+            },
+            {
+              "id": 1844,
+              "position": {
+                "x": 1639.75,
+                "y": 1913.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765972858403585916.jpg"
+            },
+            {
+              "id": 1877,
+              "position": {
+                "x": 2634,
+                "y": 2843
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765976225761355344.jpg"
+            },
+            {
+              "id": 1888,
+              "position": {
+                "x": 2272,
+                "y": 2427
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765977556883675063.jpg"
+            },
+            {
+              "id": 1892,
+              "position": {
+                "x": 2144.5,
+                "y": 2398.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765977903707889432.jpg"
+            },
+            {
+              "id": 1900,
+              "position": {
+                "x": 2035.25,
+                "y": 2414.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765978416968857124.jpg"
+            },
+            {
+              "id": 1907,
+              "position": {
+                "x": 1914.75,
+                "y": 2538.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765978897221747962.jpg"
+            },
+            {
+              "id": 1913,
+              "position": {
+                "x": 2025.75,
+                "y": 2596.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765979566404245043.jpg"
+            },
+            {
+              "id": 1916,
+              "position": {
+                "x": 1959.25,
+                "y": 2300
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765979747287429330.jpg"
+            },
+            {
+              "id": 9984,
+              "position": {
+                "x": 893,
+                "y": 2146
+              },
+              "image": "https://i.imgur.com/fa6pxu8.png"
+            },
+            {
+              "id": 9983,
+              "position": {
+                "x": 1011,
+                "y": 2044
+              },
+              "image": "https://i.imgur.com/NnjgHHU.png"
+            },
+            {
+              "id": 9982,
+              "position": {
+                "x": 1163,
+                "y": 2058
+              },
+              "image": "https://i.imgur.com/5A7dtuc.png"
+            },
+            {
+              "id": 9981,
+              "position": {
+                "x": 1092,
+                "y": 2236
+              },
+              "image": "https://i.imgur.com/AC0U4Mc.png"
+            },
+            {
+              "id": 9980,
+              "position": {
+                "x": 1199,
+                "y": 2278
+              },
+              "image": "https://i.imgur.com/c9MW78f.png"
+            },
+            {
+              "id": 9979,
+              "position": {
+                "x": 1328,
+                "y": 2291
+              },
+              "image": "https://i.imgur.com/IRsowHg.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Readables",
+      "label": "Readables",
+      "icon": "/assets/icons/1749562186043874576.png",
+      "markers": [
+        {
+          "id": 286,
+          "name": "Yanjin Ferry · Part I",
+          "icon": "/assets/icons/1766206809091538160.png",
+          "markers": [
+            {
+              "id": 1876,
+              "position": {
+                "x": 2724.5,
+                "y": 3098.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765976126360788884.jpg"
+            }
+          ]
+        },
+        {
+          "id": 287,
+          "name": "Yanjin Ferry · Part II",
+          "icon": "/assets/icons/1766206820496324420.png",
+          "markers": [
+            {
+              "id": 1951,
+              "position": {
+                "x": 2573.5,
+                "y": 1996.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766222214646364129.jpg"
+            }
+          ]
+        },
+        {
+          "id": 288,
+          "name": "Yanjin Ferry · Part III",
+          "icon": "/assets/icons/1766206830100457272.png",
+          "markers": [
+            {
+              "id": 1957,
+              "position": {
+                "x": 2436.75,
+                "y": 1798
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766236316805987858.png"
+            }
+          ]
+        },
+        {
+          "id": 289,
+          "name": "Yanjin Ferry · Part IV",
+          "icon": "/assets/icons/1766206837578442035.png",
+          "markers": [
+            {
+              "id": 1822,
+              "position": {
+                "x": 1738.25,
+                "y": 2137
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765969830553940025.jpg"
+            }
+          ]
+        },
+        {
+          "id": 290,
+          "name": "Yanjin Ferry · Part V",
+          "icon": "/assets/icons/1766206846106628307.png",
+          "markers": [
+            {
+              "id": 1866,
+              "position": {
+                "x": 1718.5,
+                "y": 1519
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765974564157301660.jpg"
+            }
+          ]
+        },
+        {
+          "id": 291,
+          "name": "Investigation Notes on the Disaster of Zhuyin",
+          "icon": "/assets/icons/1766206887193318337.png",
+          "markers": [
+            {
+              "id": 1753,
+              "position": {
+                "x": 1554.25,
+                "y": 2069.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765956163855468019.png"
+            }
+          ]
+        },
+        {
+          "id": 292,
+          "name": "When Villains Rule · Part I",
+          "icon": "/assets/icons/1766206921303764876.png",
+          "markers": [
+            {
+              "id": 1830,
+              "position": {
+                "x": 1617.25,
+                "y": 2150
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765971195048742682.jpg"
+            }
+          ]
+        },
+        {
+          "id": 293,
+          "name": "When Villains Rule · Part II",
+          "icon": "/assets/icons/1766206930729674569.png",
+          "markers": [
+            {
+              "id": 1821,
+              "position": {
+                "x": 1733.5,
+                "y": 2123.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765969838838109346.jpg"
+            }
+          ]
+        },
+        {
+          "id": 294,
+          "name": "When Villains Rule · Part III",
+          "icon": "/assets/icons/1766206940147783743.png",
+          "markers": [
+            {
+              "id": 1834,
+              "position": {
+                "x": 1632.25,
+                "y": 2247.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765971452742673082.jpg"
+            }
+          ]
+        },
+        {
+          "id": 295,
+          "name": "When Villains Rule · Part IV",
+          "icon": "/assets/icons/1766206948489209837.png",
+          "markers": [
+            {
+              "id": 1832,
+              "position": {
+                "x": 1641.75,
+                "y": 2145.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765971212207149606.jpg"
+            }
+          ]
+        },
+        {
+          "id": 296,
+          "name": "Greenwich Archaeological Association Project Application",
+          "icon": "/assets/icons/1766207015516262878.png",
+          "markers": [
+            {
+              "id": 1831,
+              "position": {
+                "x": 1629,
+                "y": 2147.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765971187748624430.jpg"
+            }
+          ]
+        },
+        {
+          "id": 297,
+          "name": "Forged Calligraphy and Paintings",
+          "icon": "/assets/icons/1766207035562618163.png",
+          "markers": [
+            {
+              "id": 1833,
+              "position": {
+                "x": 1657.75,
+                "y": 2145.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765971342402555834.jpg"
+            }
+          ]
+        },
+        {
+          "id": 298,
+          "name": "Luoxiang Methods of Discernment · Volume Ten",
+          "icon": "/assets/icons/1766207118436625179.png",
+          "markers": [
+            {
+              "id": 1903,
+              "position": {
+                "x": 1967.75,
+                "y": 2407.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765978637264389029.jpg"
+            }
+          ]
+        },
+        {
+          "id": 299,
+          "name": "Compendium of a Hundred Schools",
+          "icon": "/assets/icons/1766207254454677969.png",
+          "markers": [
+            {
+              "id": 1923,
+              "position": {
+                "x": 2103.5,
+                "y": 2675
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765984640579792170.png"
+            }
+          ]
+        },
+        {
+          "id": 300,
+          "name": "A Page from a Diary",
+          "icon": "/assets/icons/1766207384418978269.png",
+          "markers": [
+            {
+              "id": 1751,
+              "position": {
+                "x": 2333.5,
+                "y": 1497.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765956096625273087.jpg"
+            }
+          ]
+        },
+        {
+          "id": 301,
+          "name": "The Huaxu People’s View on Life and Death",
+          "icon": "/assets/icons/1766207418813983389.png",
+          "markers": [
+            {
+              "id": 1748,
+              "position": {
+                "x": 2371.5,
+                "y": 1520.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765955962996801501.jpg"
+            }
+          ]
+        },
+        {
+          "id": 302,
+          "name": "Notice on the Suspension of External Trade at Yanjin Ferry",
+          "icon": "/assets/icons/1766207444510486538.png",
+          "markers": [
+            {
+              "id": 1775,
+              "position": {
+                "x": 2558.5,
+                "y": 1879.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765961081787127345.jpg"
+            }
+          ]
+        },
+        {
+          "id": 303,
+          "name": "Incense Offering Rituals",
+          "icon": "/assets/icons/1766207871122397357.png",
+          "markers": [
+            {
+              "id": 1792,
+              "position": {
+                "x": 2626.75,
+                "y": 2018.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765965482873546088.jpg"
+            }
+          ]
+        },
+        {
+          "id": 304,
+          "name": "Lord of Wind’s Miscellany (Excerpt)",
+          "icon": "/assets/icons/1766207890867672232.png",
+          "markers": [
+            {
+              "id": 1793,
+              "position": {
+                "x": 2641.5,
+                "y": 2094.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765965578088878734.jpg"
+            }
+          ]
+        },
+        {
+          "id": 305,
+          "name": "Traces of Huaxu · Yanjin Ferry Chapter",
+          "icon": "/assets/icons/1766207932036644181.png",
+          "markers": [
+            {
+              "id": 1874,
+              "position": {
+                "x": 2604,
+                "y": 2885
+              },
+              "image": ""
+            }
+          ]
+        },
+        {
+          "id": 306,
+          "name": "Cargo Delivery Memorandum",
+          "icon": "/assets/icons/1766207957905517627.png",
+          "markers": [
+            {
+              "id": 1597,
+              "position": {
+                "x": 2506.5,
+                "y": 3170
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765892359336767493.jpg"
+            }
+          ]
+        },
+        {
+          "id": 309,
+          "name": "Jinli Jiaojiao’s Book of Commerce · Volume Seven",
+          "icon": "/assets/icons/1766223409010380134.png",
+          "markers": [
+            {
+              "id": 1952,
+              "position": {
+                "x": 2492.25,
+                "y": 1955.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766223480288150388.jpg"
+            }
+          ]
+        },
+        {
+          "id": 310,
+          "name": "The Marvels of Mechanisms",
+          "icon": "/assets/icons/1766224390848791811.png",
+          "markers": [
+            {
+              "id": 1953,
+              "position": {
+                "x": 2198.5,
+                "y": 2351.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766224445981423103.jpg"
+            }
+          ]
+        },
+        {
+          "id": 311,
+          "name": "Loan Contract of She Yuqing, Year X of the Great Wind",
+          "icon": "/assets/icons/1766226050032737119.png",
+          "markers": [
+            {
+              "id": 1954,
+              "position": {
+                "x": 1832.5,
+                "y": 2244
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766226093080673805.jpg"
+            }
+          ]
+        },
+        {
+          "id": 313,
+          "name": "Biographies of the Star-Weaving Travelers",
+          "icon": "/assets/icons/1766237301244282897.png",
+          "markers": [
+            {
+              "id": 1960,
+              "position": {
+                "x": 2680.25,
+                "y": 1923.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766237356912753697.jpg"
+            }
+          ]
+        },
+        {
+          "id": 314,
+          "name": "Analysis of Popular Characters in Huaxu Newborn Names",
+          "icon": "/assets/icons/1766237750796508729.png",
+          "markers": [
+            {
+              "id": 1961,
+              "position": {
+                "x": 2449,
+                "y": 1753.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766237899308315357.jpg"
+            }
+          ]
+        },
+        {
+          "id": 315,
+          "name": "A Letter Between Star-Weaving Travelers",
+          "icon": "/assets/icons/1766237785440634261.png",
+          "markers": [
+            {
+              "id": 1962,
+              "position": {
+                "x": 2611.5,
+                "y": 1948.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766238522427462364.jpg"
+            }
+          ]
+        },
+        {
+          "id": 316,
+          "name": "An Elder’s Admonition",
+          "icon": "/assets/icons/1766237799463493916.png",
+          "markers": [
+            {
+              "id": 1964,
+              "position": {
+                "x": 2429,
+                "y": 1392
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766241006579228431.jpg"
+            }
+          ]
+        },
+        {
+          "id": 317,
+          "name": "An Unknown Person’s Final Words",
+          "icon": "/assets/icons/1766237815119377659.png",
+          "markers": [
+            {
+              "id": 1963,
+              "position": {
+                "x": 1911,
+                "y": 1426.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766240047310603576.jpg"
+            }
+          ]
+        },
+        {
+          "id": 318,
+          "name": "Riding the Dragon to the Heavens · Chapter Five",
+          "icon": "/assets/icons/1766237829098731347.png",
+          "markers": [
+            {
+              "id": 1965,
+              "position": {
+                "x": 2531.75,
+                "y": 2921.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766241740735731438.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Emergency/Dispatch",
+      "label": "Emergency/Dispatch",
+      "icon": "/assets/icons/1765893914674126617.png",
+      "markers": [
+        {
+          "id": 212,
+          "name": "Centennial Spring Remembrance",
+          "icon": "/assets/icons/1766235500796431327.png",
+          "markers": [
+            {
+              "id": 1956,
+              "position": {
+                "x": 2630,
+                "y": 2024.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766235679404180220.jpg"
+            }
+          ]
+        },
+        {
+          "id": 231,
+          "name": "Interwoven Feelings",
+          "icon": "/assets/icons/1766235520293783965.png",
+          "markers": [
+            {
+              "id": 1936,
+              "position": {
+                "x": 2519.25,
+                "y": 2036.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766200610717806404.jpg"
+            }
+          ]
+        },
+        {
+          "id": 234,
+          "name": "Rescue the Demon Spirit",
+          "icon": "/assets/icons/1766205804498307101.png",
+          "markers": [
+            {
+              "id": 1955,
+              "position": {
+                "x": 2280,
+                "y": 2577
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766235775275422917.jpg"
+            }
+          ]
+        },
+        {
+          "id": 240,
+          "name": "Absent-Minded Fisherman",
+          "icon": "/assets/icons/1766205638781434960.png",
+          "markers": [
+            {
+              "id": 1934,
+              "position": {
+                "x": 2341,
+                "y": 1753.25
+              },
+              "image": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Challenge",
+      "label": "Challenge",
+      "icon": "/assets/icons/1749672639131620419.png",
+      "markers": [
+        {
+          "id": 56,
+          "name": "Parkour Challenge",
+          "icon": "/assets/icons/1749672644630282670.png",
+          "markers": [
+            {
+              "id": 1604,
+              "position": {
+                "x": 2737.25,
+                "y": 3219
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765893158567275545.jpg"
+            },
+            {
+              "id": 1621,
+              "position": {
+                "x": 2646.25,
+                "y": 2695.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765895352719900445.jpg"
+            },
+            {
+              "id": 1644,
+              "position": {
+                "x": 2692.25,
+                "y": 2556
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765897029603260404.jpg"
+            },
+            {
+              "id": 1692,
+              "position": {
+                "x": 1049.5,
+                "y": 2064.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765940234743249629.jpg"
+            },
+            {
+              "id": 9992,
+              "position": {
+                "x": 2280,
+                "y": 1688
+              },
+              "image": ""
+            }
+          ]
+        },
+        {
+          "id": 57,
+          "name": "Shooting Challenge",
+          "icon": "/assets/icons/1749672672913484663.png",
+          "markers": [
+            {
+              "id": 1678,
+              "position": {
+                "x": 2593.5,
+                "y": 2169
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765938161587618106.jpg"
+            },
+            {
+              "id": 1746,
+              "position": {
+                "x": 1573.5,
+                "y": 2207.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765955884938453520.png"
+            },
+            {
+              "id": 1752,
+              "position": {
+                "x": 2292.75,
+                "y": 1465.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765956160651590812.jpg"
+            },
+            {
+              "id": 1796,
+              "position": {
+                "x": 2883.75,
+                "y": 1926
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765966010629988055.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Others",
+      "label": "Others",
+      "icon": "/assets/icons/1749672703904257929.png",
+      "markers": [
+        {
+          "id": 63,
+          "name": "Impression Check",
+          "icon": "/assets/icons/1766212428224753824.png",
+          "markers": [
+            {
+              "id": 1599,
+              "position": {
+                "x": 2594.75,
+                "y": 3062.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765892525040552987.jpg"
+            },
+            {
+              "id": 1607,
+              "position": {
+                "x": 2582.25,
+                "y": 2914.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765893499446229420.jpg"
+            },
+            {
+              "id": 1655,
+              "position": {
+                "x": 2918,
+                "y": 2379
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765976508390100472.jpg"
+            },
+            {
+              "id": 1667,
+              "position": {
+                "x": 2288,
+                "y": 2638.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765936162940580306.jpg"
+            },
+            {
+              "id": 1698,
+              "position": {
+                "x": 2610.25,
+                "y": 1905
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765946844938919701.jpg"
+            },
+            {
+              "id": 1769,
+              "position": {
+                "x": 2623.75,
+                "y": 1959.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765960515390363557.jpg"
+            },
+            {
+              "id": 1772,
+              "position": {
+                "x": 2546,
+                "y": 1983.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765960833711331294.jpg"
+            },
+            {
+              "id": 1779,
+              "position": {
+                "x": 2499.5,
+                "y": 2063.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765961400206452471.jpg"
+            },
+            {
+              "id": 1799,
+              "position": {
+                "x": 2137.75,
+                "y": 1974.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765966580705760156.jpg"
+            },
+            {
+              "id": 1800,
+              "position": {
+                "x": 2129.75,
+                "y": 2017.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765966772963185629.jpg"
+            },
+            {
+              "id": 1810,
+              "position": {
+                "x": 1995.5,
+                "y": 2030.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765967791211887074.jpg"
+            },
+            {
+              "id": 1820,
+              "position": {
+                "x": 1773.5,
+                "y": 2177.5
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765969542740229709.jpg"
+            },
+            {
+              "id": 1823,
+              "position": {
+                "x": 1726.5,
+                "y": 2178.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765970030727289790.jpg"
+            },
+            {
+              "id": 1827,
+              "position": {
+                "x": 1583.5,
+                "y": 2222
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765970696804569928.jpg"
+            },
+            {
+              "id": 1845,
+              "position": {
+                "x": 1583,
+                "y": 1824.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765973080827241088.jpg"
+            },
+            {
+              "id": 1868,
+              "position": {
+                "x": 1549.25,
+                "y": 1425
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765974991604370420.jpg"
+            },
+            {
+              "id": 1875,
+              "position": {
+                "x": 2619.5,
+                "y": 3164
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765976024553217497.jpg"
+            },
+            {
+              "id": 1922,
+              "position": {
+                "x": 2075.25,
+                "y": 1979.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1765980888201381336.jpg"
+            },
+            {
+              "id": 1974,
+              "position": {
+                "x": 2602.2038488208304,
+                "y": 1882.9415457694124
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766490158267955344.png"
+            },
+            {
+              "id": 9998,
+              "position": {
+                "x": 1322,
+                "y": 2107
+              },
+              "image": ""
+            },
+            {
+              "id": 9997,
+              "position": {
+                "x": 2144,
+                "y": 2386
+              },
+              "image": ""
+            },
+            {
+              "id": 9996,
+              "position": {
+                "x": 2452,
+                "y": 2394
+              },
+              "image": ""
+            },
+            {
+              "id": 9995,
+              "position": {
+                "x": 2598,
+                "y": 1978
+              },
+              "image": ""
+            },
+            {
+              "id": 9994,
+              "position": {
+                "x": 2314,
+                "y": 1400
+              },
+              "image": ""
+            },
+            {
+              "id": 9990,
+              "position": {
+                "x": 1663,
+                "y": 2279
+              },
+              "image": ""
+            },
+            {
+              "id": 9989,
+              "position": {
+                "x": 1711,
+                "y": 1893
+              },
+              "image": ""
+            },
+            {
+              "id": 9988,
+              "position": {
+                "x": 2158,
+                "y": 1923
+              },
+              "image": ""
+            },
+            {
+              "id": 9987,
+              "position": {
+                "x": 2645,
+                "y": 2917
+              },
+              "image": ""
+            },
+            {
+              "id": 9986,
+              "position": {
+                "x": 2670,
+                "y": 3116
+              },
+              "image": ""
+            }
+          ]
+        },
+        {
+          "id": 282,
+          "name": "Side Quest",
+          "icon": "/assets/icons/1766206498223250888.png",
+          "markers": [
+            {
+              "id": 1945,
+              "position": {
+                "x": 2559.75,
+                "y": 1963
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766208862132596741.jpg"
+            },
+            {
+              "id": 1946,
+              "position": {
+                "x": 1548.75,
+                "y": 2115.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766210336402487220.jpg"
+            },
+            {
+              "id": 1947,
+              "position": {
+                "x": 2246.5,
+                "y": 2357.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766210901814126913.jpg"
+            },
+            {
+              "id": 1948,
+              "position": {
+                "x": 2134.25,
+                "y": 1900
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766211275294735089.jpg"
+            },
+            {
+              "id": 1949,
+              "position": {
+                "x": 2608.5,
+                "y": 2816.75
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766211947339270598.jpg"
+            },
+            {
+              "id": 1966,
+              "position": {
+                "x": 1673.75,
+                "y": 2228
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1766298674483499561.jpg"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

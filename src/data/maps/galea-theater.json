@@ -1,0 +1,213 @@
+{
+  "id": "galea-theater",
+  "name": "Galea Theater",
+  "image": "/assets/maps/galea_theater_v1.png",
+  "imageSize": {
+    "width": 4096,
+    "height": 4096
+  },
+  "legend": [
+    {
+      "type": "Landmarks",
+      "label": "Landmarks",
+      "icon": "/assets/icons/1749672609569330275.png",
+      "markers": [
+        {
+          "id": 35,
+          "name": "Teleport Point",
+          "icon": "/assets/icons/1749557822886359503.png",
+          "markers": [
+            {
+              "id": 1252,
+              "position": {
+                "x": 2160,
+                "y": 3620
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1761355457998752101.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Storage Chest",
+      "label": "Storage Chest",
+      "icon": "/assets/icons/1749672743841364457.png",
+      "markers": [
+        {
+          "id": 43,
+          "name": "Storage Chest",
+          "icon": "/assets/icons/1749566001012138274.png",
+          "markers": [
+            {
+              "id": 706,
+              "position": {
+                "x": 2890,
+                "y": 1795.7817071126126
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1761355789624358102.png"
+            },
+            {
+              "id": 731,
+              "position": {
+                "x": 1196,
+                "y": 1200.25
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1761355936133866915.png"
+            },
+            {
+              "id": 734,
+              "position": {
+                "x": 1848.187434754317,
+                "y": 3515.568077289971
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1761355500152796008.png"
+            },
+            {
+              "id": 888,
+              "position": {
+                "x": 2711.0408825669083,
+                "y": 567.6717363268187
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1761356091733514809.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Collectibles",
+      "label": "Collectibles",
+      "icon": "/assets/icons/1749672777020326442.png",
+      "markers": [
+        {
+          "id": 47,
+          "name": "Explorer’s Proof: Ice Lake City",
+          "icon": "/assets/icons/1749560835499262022.png",
+          "markers": [
+            {
+              "id": 1043,
+              "position": {
+                "x": 1520.2425907138677,
+                "y": 3459.6914794194063
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1761355712311683885.png"
+            },
+            {
+              "id": 1046,
+              "position": {
+                "x": 2564.3189972379205,
+                "y": 3451.560130940727
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1761355657250663388.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Readables",
+      "label": "Readables",
+      "icon": "/assets/icons/1749562186043874576.png",
+      "markers": [
+        {
+          "id": 161,
+          "name": "Galleia Theater Prop List",
+          "icon": "/assets/icons/1749616145214712631.png",
+          "markers": [
+            {
+              "id": 1380,
+              "position": {
+                "x": 2856,
+                "y": 1128
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1761356281411345395.png"
+            }
+          ]
+        },
+        {
+          "id": 181,
+          "name": "“Crimson Leaf Rebellion Secrets” Part I",
+          "icon": "/assets/icons/1750037873760736470.png",
+          "markers": [
+            {
+              "id": 1298,
+              "position": {
+                "x": 1164.5580970957178,
+                "y": 1186.79571958572
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1761355923630783767.png"
+            }
+          ]
+        },
+        {
+          "id": 182,
+          "name": "“Crimson Leaf Rebellion Secrets” Part II",
+          "icon": "/assets/icons/1750037888684478469.png",
+          "markers": [
+            {
+              "id": 1379,
+              "position": {
+                "x": 2828,
+                "y": 1040
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1761356191469406491.png"
+            }
+          ]
+        },
+        {
+          "id": 183,
+          "name": "Crimson Leaf Rebellion Secrets” Part III",
+          "icon": "/assets/icons/1750037898405269869.png",
+          "markers": [
+            {
+              "id": 1458,
+              "position": {
+                "x": 1144,
+                "y": 1188
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1761789633203940396.png"
+            }
+          ]
+        },
+        {
+          "id": 184,
+          "name": "“Crimson Leaf Rebellion Secrets” Part IV",
+          "icon": "/assets/icons/1750037904364935163.png",
+          "markers": [
+            {
+              "id": 1378,
+              "position": {
+                "x": 2972,
+                "y": 1264
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1761356063429212981.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Challenges",
+      "label": "Challenges",
+      "icon": "/assets/icons/1749672639131620419.png",
+      "markers": [
+        {
+          "id": 56,
+          "name": "Parkour Challenge",
+          "icon": "/assets/icons/1749672644630282670.png",
+          "markers": [
+            {
+              "id": 1044,
+              "position": {
+                "x": 2536.3032383923346,
+                "y": 3383.700360633267
+              },
+              "image": "https://herobox-img.yingxiong.com/map/1761355665386354350.png"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

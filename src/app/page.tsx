@@ -247,7 +247,7 @@ export default function Home() {
                   Carte Interactive Complète
                 </h3>
                 <p className="text-gray-300">
-                  Carte complète couvrant les 7 régions du jeu.
+                  Carte complète couvrant les 8 régions du jeu.
                 </p>
               </div>
 

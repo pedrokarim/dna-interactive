@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect } from "react";
-import mapData from "@/data/mapData.json";
+import mapIndex from "@/data/mapIndex.json";
+import type { GameMapSummary } from "@/types/map";
 
 interface MapInfoModalProps {
   isOpen: boolean;
@@ -30,69 +31,21 @@ export default function MapInfoModal({
 
   if (!isOpen) return null;
 
-  // Calculer les statistiques globales
-  const totalMaps = mapData.length;
-  const totalMarkers = mapData.reduce(
-    (sum, map) =>
-      sum +
-      map.legend.reduce(
-        (catSum, cat) =>
-          catSum +
-          cat.markers.reduce(
-            (markerSum, marker) => markerSum + marker.markers.length,
-            0
-          ),
-        0
-      ),
-    0
-  );
-  const totalImages = mapData.reduce(
-    (sum, map) =>
-      sum +
-      map.legend.reduce(
-        (catSum, cat) =>
-          catSum +
-          cat.markers.reduce(
-            (markerSum, marker) =>
-              markerSum +
-              marker.markers.filter((m) => m.image && m.image !== "").length,
-            0
-          ),
-        0
-      ),
-    0
-  );
+  const index = mapIndex as GameMapSummary[];
+
+  // Calculer les statistiques globales depuis l'index (pre-computed)
+  const totalMaps = index.length;
+  const totalMarkers = index.reduce((sum, m) => sum + m.markerCount, 0);
+  const totalImages = index.reduce((sum, m) => sum + m.imageCount, 0);
 
   // Statistiques de la map sélectionnée
   const selectedMap = selectedMapId
-    ? mapData.find((m) => m.id === selectedMapId)
+    ? index.find((m) => m.id === selectedMapId)
     : null;
 
-  const selectedMapMarkers = selectedMap
-    ? selectedMap.legend.reduce(
-        (sum, cat) =>
-          sum +
-          cat.markers.reduce((s, mt) => s + mt.markers.length, 0),
-        0
-      )
-    : 0;
-
-  const selectedMapImages = selectedMap
-    ? selectedMap.legend.reduce(
-        (sum, cat) =>
-          sum +
-          cat.markers.reduce(
-            (s, mt) =>
-              s + mt.markers.filter((m) => m.image && m.image !== "").length,
-            0
-          ),
-        0
-      )
-    : 0;
-
-  const selectedMapCategories = selectedMap
-    ? selectedMap.legend.length
-    : 0;
+  const selectedMapMarkers = selectedMap?.markerCount ?? 0;
+  const selectedMapImages = selectedMap?.imageCount ?? 0;
+  const selectedMapCategories = selectedMap?.legend.length ?? 0;
 
   // Date de mise à jour (date actuelle ou dernière modification)
   const lastUpdateDate = new Date().toLocaleDateString("fr-FR", {
@@ -235,53 +188,32 @@ export default function MapInfoModal({
               Toutes les Maps
             </h4>
             <div className="space-y-2 max-h-48 overflow-y-auto">
-              {mapData.map((map) => {
-                const mapMarkers = map.legend.reduce(
-                  (sum, cat) =>
-                    sum +
-                    cat.markers.reduce((s, mt) => s + mt.markers.length, 0),
-                  0
-                );
-                const mapImages = map.legend.reduce(
-                  (sum, cat) =>
-                    sum +
-                    cat.markers.reduce(
-                      (s, mt) =>
-                        s +
-                        mt.markers.filter((m) => m.image && m.image !== "")
-                          .length,
-                      0
-                    ),
-                  0
-                );
-
-                return (
-                  <div
-                    key={map.id}
-                    className={`bg-slate-800/50 border rounded-lg p-3 ${
-                      map.id === selectedMapId
-                        ? "border-indigo-500 bg-indigo-500/10"
-                        : "border-indigo-500/30"
-                    }`}
-                  >
-                    <div className="flex items-center justify-between">
-                      <div className="flex-1">
-                        <div className="text-sm font-medium text-white">
-                          {map.name}
-                        </div>
-                        <div className="text-xs text-gray-400 mt-1">
-                          {mapMarkers} marqueurs • {mapImages} images
-                        </div>
+              {index.map((map) => (
+                <div
+                  key={map.id}
+                  className={`bg-slate-800/50 border rounded-lg p-3 ${
+                    map.id === selectedMapId
+                      ? "border-indigo-500 bg-indigo-500/10"
+                      : "border-indigo-500/30"
+                  }`}
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex-1">
+                      <div className="text-sm font-medium text-white">
+                        {map.name}
                       </div>
-                      {map.id === selectedMapId && (
-                        <div className="px-2 py-1 bg-indigo-500/20 border border-indigo-500/50 rounded text-xs text-indigo-400 font-medium">
-                          Actuelle
-                        </div>
-                      )}
+                      <div className="text-xs text-gray-400 mt-1">
+                        {map.markerCount} marqueurs • {map.imageCount} images
+                      </div>
                     </div>
+                    {map.id === selectedMapId && (
+                      <div className="px-2 py-1 bg-indigo-500/20 border border-indigo-500/50 rounded text-xs text-indigo-400 font-medium">
+                        Actuelle
+                      </div>
+                    )}
                   </div>
-                );
-              })}
+                </div>
+              ))}
             </div>
           </div>
 
@@ -320,4 +252,3 @@ export default function MapInfoModal({
     </>
   );
 }
-
