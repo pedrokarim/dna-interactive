@@ -6,7 +6,6 @@ import ItemsSuspenseFallback from "@/components/items/ItemsSuspenseFallback";
 import {
   getDraftAvailableLanguages,
   getDraftRecipeById,
-  getDraftRecipes,
   resolveDraftItemDescription,
   resolveDraftItemName,
 } from "@/lib/items/drafts";
@@ -16,12 +15,6 @@ type DraftDetailPageProps = {
   params: Promise<{ draftId: string }>;
 };
 
-export function generateStaticParams() {
-  const recipes = getDraftRecipes();
-  return recipes.map((recipe) => ({
-    draftId: `${recipe.draftId}`,
-  }));
-}
 
 export async function generateMetadata(
   { params }: DraftDetailPageProps,

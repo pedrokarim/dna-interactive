@@ -5,10 +5,8 @@ import ItemDetailClient from "@/components/items/ItemDetailClient";
 import ItemsSuspenseFallback from "@/components/items/ItemsSuspenseFallback";
 import {
   getItemByCategoryAndId,
-  getItemCatalog,
   getItemCategoryBySlug,
   getItemTranslation,
-  getItemsByCategoryId,
 } from "@/lib/items/catalog";
 import { getDraftRecipesForItem } from "@/lib/items/drafts";
 import { generatePageMetadata } from "@/lib/metadata";
@@ -17,22 +15,6 @@ type ItemDetailPageProps = {
   params: Promise<{ category: string; itemId: string }>;
 };
 
-export function generateStaticParams() {
-  const catalog = getItemCatalog();
-  const params: Array<{ category: string; itemId: string }> = [];
-
-  for (const category of catalog.categories) {
-    const items = getItemsByCategoryId(category.id);
-    for (const item of items) {
-      params.push({
-        category: category.slug,
-        itemId: item.id,
-      });
-    }
-  }
-
-  return params;
-}
 
 export async function generateMetadata(
   { params }: ItemDetailPageProps,

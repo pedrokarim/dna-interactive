@@ -20,7 +20,7 @@
     "jotai": "^2.15.1",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.552.0",
-    "next": "16.0.7",
+    "next": "^16.2.2",
     "nodemailer": "^7.0.12",
     "nuqs": "^2.8.8",
     "react": "19.2.0",
@@ -37,6 +37,6 @@
     "@tailwindcss/postcss": "^4",
     "tailwindcss": "^4",
     "eslint": "^9",
-    "eslint-config-next": "16.0.1"
+    "eslint-config-next": "^16.2.2"
   }
 }
