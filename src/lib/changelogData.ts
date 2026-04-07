@@ -9,6 +9,53 @@ export interface ChangelogEntry {
 
 export const changelogData: ChangelogEntry[] = [
   {
+    date: "2026-04-07",
+    version: "1.6.0",
+    type: "feature",
+    title: "Nouvelle Map Haojing (Patch 1.3)",
+    description:
+      "Ajout de la map Haojing avec 143 marqueurs et optimisation majeure du chargement des données cartographiques.",
+    items: [
+      "🗺️ Nouvelle map Haojing ajoutée (8e region) avec 143 marqueurs et 6 categories",
+      "⚡ Refonte du systeme de donnees : chargement par map a la demande au lieu d'un fichier monolithique",
+      "📦 Reduction du payload initial de ~75% (54KB index + 1 map au lieu de 439KB)",
+      "🔧 Correction du parser boarhat.gg pour gerer les noms avec guillemets",
+      "🏠 Nouveau bandeau v1.3 sur la page d'accueil pour Haojing",
+    ],
+  },
+  {
+    date: "2026-03-21",
+    version: "1.5.0",
+    type: "feature",
+    title: "Builds de Personnages",
+    description:
+      "Systeme complet de builds recommandes pour les 22 personnages jouables, avec armes de consonance et ajustements de piste.",
+    items: [
+      "🎮 21 builds de personnages ajoutes avec equipements et Demon Wedges recommandes",
+      "⚔️ Extraction et affichage des armes de consonance depuis les donnees du jeu",
+      "🎚️ Ajustements de piste (Track Adjustments) avec toggle et icones",
+      "🎨 Redesign de l'onglet Intron avec cercles flottants et priorite de competences",
+      "🌈 Gradient ambiant par element sur les pages de detail personnage",
+      "🖼️ Icones de competences dans l'onglet attributs",
+      "💡 Tooltips enrichis pour les equipements de build",
+    ],
+  },
+  {
+    date: "2026-02-23",
+    version: "1.4.0",
+    type: "feature",
+    title: "Catalogue Personnages et Peche",
+    description:
+      "Ajout du catalogue complet des personnages jouables avec statistiques detaillees et de la categorie Peche dans les items.",
+    items: [
+      "👤 Catalogue de tous les personnages jouables avec fiche detaillee",
+      "📊 Statistiques par niveau avec courbes de croissance et formules",
+      "🎣 Nouvelle categorie Peche avec items extraits des donnees du jeu",
+      "🐾 Correction des valeurs dynamiques des passifs Genimons",
+      "🌐 Labels de cles de texte contextualises par categorie d'item",
+    ],
+  },
+  {
     date: "2026-02-22",
     version: "1.3.0",
     type: "feature",
