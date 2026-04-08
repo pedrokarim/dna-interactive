@@ -2,12 +2,16 @@
 
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 import { SITE_CONFIG } from "@/lib/constants";
 import { changelogData } from "@/lib/changelogData";
 import { typeConfig } from "@/lib/changelogConfig";
 
 export default function ChangelogPage() {
+  const t = useTranslations('changelog');
+  const tn = useTranslations('nav');
+  const tc = useTranslations('common');
   return (
     <div className="min-h-screen bg-linear-to-br from-purple-950 via-slate-900 to-indigo-950 text-white">
       {/* Header */}
@@ -46,10 +50,10 @@ export default function ChangelogPage() {
               </div>
               <div>
                 <h1 className="text-4xl font-bold text-white mb-2">
-                  Changelog
+                  {t('title')}
                 </h1>
                 <p className="text-gray-300 text-lg">
-                  Historique des modifications et améliorations
+                  {t('description')}
                 </p>
               </div>
             </div>
@@ -133,7 +137,7 @@ export default function ChangelogPage() {
               href="/"
               className="inline-flex items-center gap-2 px-6 py-3 bg-linear-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 rounded-lg font-semibold text-white transition-all duration-300 shadow-lg shadow-indigo-500/25"
             >
-              ← Retour à l'accueil
+              {tc('backToHome')}
             </Link>
           </motion.div>
         </div>
@@ -159,37 +163,37 @@ export default function ChangelogPage() {
                 href="/"
                 className="hover:text-indigo-400 transition-colors"
               >
-                Accueil
+                {tn('home')}
               </Link>
               <Link
                 href="/map"
                 className="hover:text-indigo-400 transition-colors"
               >
-                Carte Interactive
+                {tn('map')}
               </Link>
               <Link
                 href="/codes"
                 className="hover:text-indigo-400 transition-colors"
               >
-                Codes de Rédemption
+                {tn('codes')}
               </Link>
               <Link
                 href="/about"
                 className="hover:text-indigo-400 transition-colors"
               >
-                À propos
+                {tn('about')}
               </Link>
               <Link
                 href="/support"
                 className="hover:text-indigo-400 transition-colors"
               >
-                Support
+                {tn('support')}
               </Link>
               <Link
                 href="/contact"
                 className="hover:text-indigo-400 transition-colors"
               >
-                Contact
+                {tn('contact')}
               </Link>
             </div>
           </div>

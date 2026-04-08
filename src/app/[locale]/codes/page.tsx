@@ -1,4 +1,5 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
+import { getTranslations } from "next-intl/server";
 import { SITE_CONFIG } from "@/lib/constants";
 import CodesList from "@/components/CodesList";
 import type { Metadata, ResolvingMetadata } from "next";
@@ -11,7 +12,12 @@ export async function generateMetadata(
   return generatePageMetadata(pageMetadata.codes, parent);
 }
 
-export default function CodesPage() {
+export default async function CodesPage() {
+  const tNav = await getTranslations('nav');
+  const tCommon = await getTranslations('common');
+  const tCodes = await getTranslations('codes');
+  const tLegal = await getTranslations('legal');
+  const tSite = await getTranslations('site');
   return (
     <div className="min-h-screen bg-linear-to-br from-purple-950 via-slate-900 to-indigo-950 text-white">
       {/* Header */}
@@ -28,7 +34,7 @@ export default function CodesPage() {
                 <div className="text-2xl font-bold text-white flex items-center gap-2">
                   {SITE_CONFIG.name}
                 </div>
-                <p className="text-xs text-gray-400">{SITE_CONFIG.tagline}</p>
+                <p className="text-xs text-gray-400">{tSite('tagline')}</p>
               </div>
             </div>
 
@@ -37,40 +43,40 @@ export default function CodesPage() {
                 href="/"
                 className="text-gray-300 hover:text-indigo-400 transition-colors"
               >
-                Accueil
+                {tNav('home')}
               </Link>
               <Link
                 href="/map"
                 className="text-gray-300 hover:text-indigo-400 transition-colors"
               >
-                Carte Interactive
+                {tNav('map')}
               </Link>
               <Link
                 href="/items"
                 className="text-gray-300 hover:text-indigo-400 transition-colors"
               >
-                Items
+                {tNav('items')}
               </Link>
               <Link href="/codes" className="text-indigo-400 font-medium">
-                Codes de Rédemption
+                {tNav('codes')}
               </Link>
               <Link
                 href="/about"
                 className="text-gray-300 hover:text-indigo-400 transition-colors"
               >
-                À propos
+                {tNav('about')}
               </Link>
               <Link
                 href="/support"
                 className="text-gray-300 hover:text-indigo-400 transition-colors"
               >
-                Support
+                {tNav('support')}
               </Link>
               <Link
                 href="/contact"
                 className="text-gray-300 hover:text-indigo-400 transition-colors"
               >
-                Contact
+                {tNav('contact')}
               </Link>
             </nav>
           </div>
@@ -99,59 +105,57 @@ export default function CodesPage() {
 
             <div className="flex items-center space-x-6 text-sm text-gray-400">
               <Link href="/" className="hover:text-indigo-400 transition-colors">
-                Accueil
+                {tNav('home')}
               </Link>
               <Link
                 href="/map"
                 className="hover:text-indigo-400 transition-colors"
               >
-                Carte Interactive
+                {tNav('map')}
               </Link>
               <Link
                 href="/items"
                 className="hover:text-indigo-400 transition-colors"
               >
-                Items
+                {tNav('items')}
               </Link>
               <Link href="/codes" className="text-indigo-400">
-                Codes de Rédemption
+                {tNav('codes')}
               </Link>
               <Link
                 href="/about"
                 className="hover:text-indigo-400 transition-colors"
               >
-                À propos
+                {tNav('about')}
               </Link>
               <Link
                 href="/support"
                 className="hover:text-indigo-400 transition-colors"
               >
-                Support
+                {tNav('support')}
               </Link>
               <Link
                 href="/contact"
                 className="hover:text-indigo-400 transition-colors"
               >
-                Contact
+                {tNav('contact')}
               </Link>
             </div>
           </div>
 
           <div className="mt-8 pt-8 border-t border-indigo-500/10 text-center text-sm text-gray-500">
             <p>
-              © 2025 {SITE_CONFIG.name}. Créé par Ahmed Karim aka PedroKarim
-              avec ❤️
+              {tLegal('copyright', { siteName: SITE_CONFIG.name, creator: 'Ahmed Karim aka PedroKarim' })}
             </p>
             <p className="mt-2">
-              Ce site n'est pas affilié ou lié au créateur du jeu Duet Night
-              Abyss.
+              {tLegal('disclaimer')}
               <a
                 href="https://ascencia.re/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-indigo-400 hover:text-indigo-300 ml-1"
               >
-                Ascencia
+                {tLegal('ascenciaCredit')}
               </a>
             </p>
             <p className="mt-3">
@@ -159,7 +163,7 @@ export default function CodesPage() {
                 href="/changelog"
                 className="text-indigo-400 hover:text-indigo-300 transition-colors"
               >
-                📋 Voir le changelog
+                {tCommon('viewChangelog')}
               </Link>
             </p>
           </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { useTranslations } from "next-intl";
 
 interface ImportModalProps {
   isOpen: boolean;
@@ -13,6 +14,8 @@ export default function ImportModal({
   onClose,
   onImport,
 }: ImportModalProps) {
+  const t = useTranslations("import");
+  const tCommon = useTranslations("common");
   const [isDragging, setIsDragging] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -42,7 +45,7 @@ export default function ImportModal({
 
   const validateFile = (file: File): boolean => {
     if (!file.name.endsWith(".json")) {
-      setError("Le fichier doit être au format JSON (.json)");
+      setError(t("errorJsonRequired"));
       return false;
     }
     setError(null);
@@ -106,7 +109,7 @@ export default function ImportModal({
           onClick={(e) => e.stopPropagation()}
         >
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-bold text-white">Importer les marqueurs</h3>
+            <h3 className="text-lg font-bold text-white">{t("title")}</h3>
             <button
               onClick={handleClose}
               className="text-gray-400 hover:text-white transition-colors"
@@ -128,7 +131,7 @@ export default function ImportModal({
           </div>
 
           <p className="text-sm text-gray-300 mb-6">
-            Glissez-déposez un fichier JSON ou cliquez pour sélectionner un fichier.
+            {t("description")}
           </p>
 
           {/* Drag and Drop Zone */}
@@ -170,21 +173,21 @@ export default function ImportModal({
 
               {isDragging ? (
                 <p className="text-indigo-400 font-medium">
-                  Relâchez pour importer le fichier
+                  {t("releaseToImport")}
                 </p>
               ) : (
                 <>
                   <p className="text-white font-medium mb-1">
-                    Glissez-déposez votre fichier ici
+                    {t("dropHere")}
                   </p>
                   <p className="text-gray-400 text-sm">
-                    ou cliquez pour parcourir
+                    {t("orBrowse")}
                   </p>
                 </>
               )}
 
               <div className="mt-4 text-xs text-gray-500">
-                Format accepté : JSON (.json)
+                {t("acceptedFormat")}
               </div>
             </div>
           </div>
@@ -202,7 +205,7 @@ export default function ImportModal({
               onClick={handleClose}
               className="px-4 py-2 text-sm font-medium text-gray-300 bg-slate-800/50 hover:bg-slate-700/50 rounded-md transition-colors border border-indigo-500/20"
             >
-              Annuler
+              {tCommon("cancel")}
             </button>
           </div>
         </div>

@@ -1,11 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { SITE_CONFIG, ASSETS_PATHS, NAVIGATION, CONTACT_INFO, CREATOR_INFO, LEGAL_INFO } from "@/lib/constants";
 
 export default function ContactPage() {
+  const t = useTranslations('contact');
+  const tn = useTranslations('nav');
+  const tc = useTranslations('common');
   const { executeRecaptcha } = useGoogleReCaptcha();
 
   const [formData, setFormData] = useState({
@@ -36,7 +40,7 @@ export default function ContactPage() {
     try {
       // Vérifier si reCAPTCHA est disponible
       if (!executeRecaptcha) {
-        throw new Error('reCAPTCHA n\'est pas encore chargé. Veuillez réessayer.');
+        throw new Error(t('errorRecaptcha'));
       }
 
       // Obtenir le token reCAPTCHA
@@ -63,7 +67,7 @@ export default function ContactPage() {
         // Succès
         setSubmitStatus({
           type: 'success',
-          message: 'Votre message a été envoyé avec succès ! Nous vous répondrons sous 24-48h.'
+          message: t('successMessage')
         });
 
         // Réinitialiser le formulaire
@@ -77,14 +81,14 @@ export default function ContactPage() {
         // Erreur
         setSubmitStatus({
           type: 'error',
-          message: result.error || 'Une erreur est survenue lors de l\'envoi du message.'
+          message: result.error || t('errorGeneric')
         });
       }
     } catch (error) {
       console.error('Erreur lors de l\'envoi:', error);
       setSubmitStatus({
         type: 'error',
-        message: error instanceof Error ? error.message : 'Une erreur inattendue est survenue.'
+        message: error instanceof Error ? error.message : t('errorUnexpected')
       });
     } finally {
       setIsSubmitting(false);
@@ -116,31 +120,31 @@ export default function ContactPage() {
                 href={NAVIGATION.home}
                 className="text-gray-300 hover:text-indigo-400 transition-colors"
               >
-                Accueil
+                {tn('home')}
               </Link>
               <Link
                 href={NAVIGATION.map}
                 className="text-gray-300 hover:text-indigo-400 transition-colors"
               >
-                Carte Interactive
+                {tn('map')}
               </Link>
               <Link
                 href={NAVIGATION.items}
                 className="text-gray-300 hover:text-indigo-400 transition-colors"
               >
-                Items
+                {tn('items')}
               </Link>
               <Link
                 href={NAVIGATION.about}
                 className="text-gray-300 hover:text-indigo-400 transition-colors"
               >
-                À propos
+                {tn('about')}
               </Link>
               <Link
                 href={NAVIGATION.support}
                 className="text-gray-300 hover:text-indigo-400 transition-colors"
               >
-                Support
+                {tn('support')}
               </Link>
             </nav>
           </div>
@@ -152,9 +156,9 @@ export default function ContactPage() {
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <h1 className="text-4xl font-bold text-white mb-4">Contactez-nous</h1>
+              <h1 className="text-4xl font-bold text-white mb-4">{t('title')}</h1>
               <p className="text-xl text-gray-400">
-                Une question ou un retour ? N'hésitez pas à nous contacter !
+                {t('subtitle')}
               </p>
             </div>
 
@@ -162,7 +166,7 @@ export default function ContactPage() {
               {/* Contact Info */}
               <div className="space-y-8">
                 <div className="bg-linear-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border border-indigo-500/20 rounded-xl p-8">
-                  <h3 className="text-2xl font-semibold text-white mb-6">Informations</h3>
+                  <h3 className="text-2xl font-semibold text-white mb-6">{t('infoTitle')}</h3>
 
                   <div className="space-y-6">
                     <div className="flex items-start space-x-4">
@@ -172,7 +176,7 @@ export default function ContactPage() {
                         </svg>
                       </div>
                       <div>
-                        <h4 className="text-lg font-medium text-white mb-1">Email</h4>
+                        <h4 className="text-lg font-medium text-white mb-1">{t('emailLabel')}</h4>
                         <p className="text-gray-400">{CONTACT_INFO.email}</p>
                       </div>
                     </div>
@@ -184,9 +188,9 @@ export default function ContactPage() {
                         </svg>
                       </div>
                       <div>
-                        <h4 className="text-lg font-medium text-white mb-1">Support</h4>
+                        <h4 className="text-lg font-medium text-white mb-1">{t('supportLabel')}</h4>
                         <p className="text-gray-400">
-                          Pour le support technique, rejoignez notre Discord ou consultez la page Support
+                          {t('supportDescription')}
                         </p>
                       </div>
                     </div>
@@ -198,18 +202,17 @@ export default function ContactPage() {
                         </svg>
                       </div>
                       <div>
-                        <h4 className="text-lg font-medium text-white mb-1">Temps de réponse</h4>
-                        <p className="text-gray-400">Nous répondons généralement sous 24-48h</p>
+                        <h4 className="text-lg font-medium text-white mb-1">{t('responseTimeLabel')}</h4>
+                        <p className="text-gray-400">{t('responseTimeValue')}</p>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 <div className="bg-linear-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border border-indigo-500/20 rounded-xl p-8">
-                  <h3 className="text-2xl font-semibold text-white mb-4">Rejoignez notre communauté</h3>
+                  <h3 className="text-2xl font-semibold text-white mb-4">{t('joinCommunityTitle')}</h3>
                   <p className="text-gray-400 mb-6">
-                    Pour discuter avec d'autres joueurs et obtenir de l'aide,
-                    rejoignez notre serveur Discord !
+                    {t('joinCommunityDescription')}
                   </p>
                   <a
                     href={CONTACT_INFO.discord.url}
@@ -227,13 +230,13 @@ export default function ContactPage() {
 
               {/* Contact Form */}
               <div className="bg-linear-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border border-indigo-500/20 rounded-xl p-8">
-                <h3 className="text-2xl font-semibold text-white mb-6">Envoyez-nous un message</h3>
+                <h3 className="text-2xl font-semibold text-white mb-6">{t('formTitle')}</h3>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
-                        Nom complet
+                        {t('labelName')}
                       </label>
                       <input
                         type="text"
@@ -242,14 +245,14 @@ export default function ContactPage() {
                         value={formData.name}
                         onChange={handleChange}
                         className="w-full bg-slate-700/50 border border-indigo-500/30 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400"
-                        placeholder="Votre nom"
+                        placeholder={t('placeholderName')}
                         required
                       />
                     </div>
 
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-                        Email
+                        {t('labelEmail')}
                       </label>
                       <input
                         type="email"
@@ -258,7 +261,7 @@ export default function ContactPage() {
                         value={formData.email}
                         onChange={handleChange}
                         className="w-full bg-slate-700/50 border border-indigo-500/30 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400"
-                        placeholder="votre@email.com"
+                        placeholder={t('placeholderEmail')}
                         required
                       />
                     </div>
@@ -266,7 +269,7 @@ export default function ContactPage() {
 
                   <div>
                     <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">
-                      Sujet
+                      {t('labelSubject')}
                     </label>
                     <select
                       id="subject"
@@ -276,18 +279,18 @@ export default function ContactPage() {
                       className="w-full bg-slate-700/50 border border-indigo-500/30 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400"
                       required
                     >
-                      <option value="">Sélectionnez un sujet</option>
-                      <option value="bug">Signaler un bug</option>
-                      <option value="suggestion">Suggestion d'amélioration</option>
-                      <option value="question">Question générale</option>
-                      <option value="partnership">Partenariat</option>
-                      <option value="other">Autre</option>
+                      <option value="">{t('placeholderSubject')}</option>
+                      <option value="bug">{t('subjectBug')}</option>
+                      <option value="suggestion">{t('subjectSuggestion')}</option>
+                      <option value="question">{t('subjectQuestion')}</option>
+                      <option value="partnership">{t('subjectPartnership')}</option>
+                      <option value="other">{t('subjectOther')}</option>
                     </select>
                   </div>
 
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
-                      Message
+                      {t('labelMessage')}
                     </label>
                     <textarea
                       id="message"
@@ -296,7 +299,7 @@ export default function ContactPage() {
                       onChange={handleChange}
                       rows={6}
                       className="w-full bg-slate-700/50 border border-indigo-500/30 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400 resize-none"
-                      placeholder="Votre message..."
+                      placeholder={t('placeholderMessage')}
                       required
                     />
                   </div>
@@ -338,16 +341,16 @@ export default function ContactPage() {
                           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                         </svg>
-                        Envoi en cours...
+                        {t('submitting')}
                       </div>
                     ) : (
-                      'Envoyer le message'
+                      t('submitButton')
                     )}
                   </button>
                 </form>
 
                 <p className="text-sm text-gray-500 mt-4 text-center">
-                  * Tous les champs sont obligatoires. Votre message sera envoyé directement à notre équipe.
+                  {t('requiredFieldsNote')}
                 </p>
               </div>
             </div>
@@ -370,19 +373,19 @@ export default function ContactPage() {
 
             <div className="flex items-center space-x-6 text-sm text-gray-400">
               <Link href={NAVIGATION.home} className="hover:text-indigo-400 transition-colors">
-                Accueil
+                {tn('home')}
               </Link>
               <Link href={NAVIGATION.map} className="hover:text-indigo-400 transition-colors">
-                Carte Interactive
+                {tn('map')}
               </Link>
               <Link href={NAVIGATION.items} className="hover:text-indigo-400 transition-colors">
-                Items
+                {tn('items')}
               </Link>
               <Link href={NAVIGATION.about} className="hover:text-indigo-400 transition-colors">
-                À propos
+                {tn('about')}
               </Link>
               <Link href={NAVIGATION.support} className="hover:text-indigo-400 transition-colors">
-                Support
+                {tn('support')}
               </Link>
             </div>
           </div>
@@ -400,7 +403,7 @@ export default function ContactPage() {
                 href="/changelog"
                 className="text-indigo-400 hover:text-indigo-300 transition-colors"
               >
-                📋 Voir le changelog
+                {tc('viewChangelog')}
               </Link>
             </p>
           </div>

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { X, Download, ZoomIn, ZoomOut, RotateCw } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 interface ImageZoomModalProps {
   imageUrl: string | null;
@@ -13,6 +14,7 @@ export default function ImageZoomModal({
   imageUrl,
   onClose,
 }: ImageZoomModalProps) {
+  const t = useTranslations("imageZoom");
   const [zoom, setZoom] = useState(1);
   const [rotation, setRotation] = useState(0);
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -121,7 +123,7 @@ export default function ImageZoomModal({
           onClick={handleZoomOut}
           disabled={zoom <= 0.5}
           className="p-2 bg-indigo-600/80 hover:bg-indigo-600 rounded-lg text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-          title="Zoom arrière"
+          title={t("zoomOut")}
         >
           <ZoomOut className="w-5 h-5" />
         </button>
@@ -132,7 +134,7 @@ export default function ImageZoomModal({
           onClick={handleZoomIn}
           disabled={zoom >= 5}
           className="p-2 bg-indigo-600/80 hover:bg-indigo-600 rounded-lg text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-          title="Zoom avant"
+          title={t("zoomIn")}
         >
           <ZoomIn className="w-5 h-5" />
         </button>
@@ -140,7 +142,7 @@ export default function ImageZoomModal({
         <button
           onClick={handleRotate}
           className="p-2 bg-indigo-600/80 hover:bg-indigo-600 rounded-lg text-white transition-colors"
-          title="Rotation 90°"
+          title={t("rotate")}
         >
           <RotateCw className="w-5 h-5" />
         </button>
@@ -148,7 +150,7 @@ export default function ImageZoomModal({
         <button
           onClick={handleDownload}
           className="p-2 bg-green-600/80 hover:bg-green-600 rounded-lg text-white transition-colors"
-          title="Télécharger l'image"
+          title={t("download")}
         >
           <Download className="w-5 h-5" />
         </button>
@@ -156,15 +158,15 @@ export default function ImageZoomModal({
         <button
           onClick={handleReset}
           className="px-3 py-2 bg-slate-700/80 hover:bg-slate-700 rounded-lg text-white text-sm transition-colors"
-          title="Réinitialiser"
+          title={t("reset")}
         >
-          Réinitialiser
+          {t("reset")}
         </button>
         <div className="w-px h-6 bg-indigo-500/30" />
         <button
           onClick={onClose}
           className="p-2 bg-red-600/80 hover:bg-red-600 rounded-lg text-white transition-colors"
-          title="Fermer (ESC)"
+          title={t("closeEsc")}
         >
           <X className="w-5 h-5" />
         </button>
@@ -207,7 +209,7 @@ export default function ImageZoomModal({
         onClick={(e) => e.stopPropagation()}
       >
         <p>
-          Molette pour zoomer • Cliquer-glisser pour déplacer • ESC pour fermer
+          {t("instructions")}
         </p>
       </div>
     </div>

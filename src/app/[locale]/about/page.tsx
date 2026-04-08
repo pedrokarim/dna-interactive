@@ -1,5 +1,6 @@
 import type { Metadata, ResolvingMetadata } from "next";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
+import { getTranslations } from "next-intl/server";
 import {
   SITE_CONFIG,
   ASSETS_PATHS,
@@ -20,7 +21,12 @@ export async function generateMetadata(
   return generatePageMetadata(pageMetadata.about, parent);
 }
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const tAbout = await getTranslations('about');
+  const tNav = await getTranslations('nav');
+  const tCommon = await getTranslations('common');
+  const tLegal = await getTranslations('legal');
+  const tSite = await getTranslations('site');
   return (
     <div className="min-h-screen bg-linear-to-br from-purple-950 via-slate-900 to-indigo-950 text-white">
       {/* Header */}
@@ -37,7 +43,7 @@ export default function AboutPage() {
                 <div className="text-2xl font-bold text-white flex items-center gap-2">
                   {SITE_CONFIG.name}
                 </div>
-                <p className="text-xs text-gray-400">{SITE_CONFIG.tagline}</p>
+                <p className="text-xs text-gray-400">{tSite('tagline')}</p>
               </div>
             </Link>
 
@@ -46,31 +52,31 @@ export default function AboutPage() {
                 href={NAVIGATION.home}
                 className="text-gray-300 hover:text-indigo-400 transition-colors"
               >
-                Accueil
+                {tNav('home')}
               </Link>
               <Link
                 href={NAVIGATION.map}
                 className="text-gray-300 hover:text-indigo-400 transition-colors"
               >
-                Carte Interactive
+                {tNav('map')}
               </Link>
               <Link
                 href={NAVIGATION.items}
                 className="text-gray-300 hover:text-indigo-400 transition-colors"
               >
-                Items
+                {tNav('items')}
               </Link>
               <Link
                 href={NAVIGATION.support}
                 className="text-gray-300 hover:text-indigo-400 transition-colors"
               >
-                Support
+                {tNav('support')}
               </Link>
               <Link
                 href={NAVIGATION.contact}
                 className="text-gray-300 hover:text-indigo-400 transition-colors"
               >
-                Contact
+                {tNav('contact')}
               </Link>
             </nav>
           </div>
@@ -83,10 +89,10 @@ export default function AboutPage() {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h1 className="text-4xl font-bold text-white mb-4">
-                À propos de {SITE_CONFIG.name}
+                {tAbout('title', { siteName: SITE_CONFIG.name })}
               </h1>
               <p className="text-xl text-gray-400">
-                Notre mission : faciliter l'exploration de {GAME_INFO.name}
+                {tAbout('mission', { gameName: GAME_INFO.name })}
               </p>
             </div>
 
@@ -110,30 +116,14 @@ export default function AboutPage() {
                     </svg>
                   </div>
                   <h3 className="text-2xl font-semibold text-white">
-                    L'origine du projet
+                    {tAbout('originTitle')}
                   </h3>
                 </div>
                 <p className="text-gray-300 leading-relaxed mb-4">
-                  {SITE_CONFIG.name} est né de la passion d'un joueur pour{" "}
-                  <strong>{GAME_INFO.name}</strong>, un jeu d'aventure captivant
-                  développé par{" "}
-                  <a
-                    href={CONTACT_INFO.ascencia.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-indigo-400 hover:text-indigo-300"
-                  >
-                    Ascencia
-                  </a>
-                  . Face à l'immensité du monde de jeu et à la complexité de son
-                  exploration, nous avons décidé de créer un outil pour aider
-                  les joueurs à naviguer plus efficacement.
+                  {tAbout('originParagraph1', { siteName: SITE_CONFIG.name, gameName: GAME_INFO.name })}
                 </p>
                 <p className="text-gray-300 leading-relaxed">
-                  Notre objectif est simple : fournir une carte interactive
-                  complète et intuitive qui permette à tous les joueurs de
-                  découvrir les secrets cachés de {GAME_INFO.name}
-                  sans se perdre dans ce monde mystérieux et fascinant.
+                  {tAbout('originParagraph2', { gameName: GAME_INFO.name })}
                 </p>
               </div>
 
@@ -156,7 +146,7 @@ export default function AboutPage() {
                     </svg>
                   </div>
                   <h3 className="text-2xl font-semibold text-white">
-                    Ce que nous proposons
+                    {tAbout('offerTitle')}
                   </h3>
                 </div>
 
@@ -178,11 +168,10 @@ export default function AboutPage() {
                       </svg>
                       <div>
                         <h4 className="text-white font-medium">
-                          Carte Interactive Complète
+                          {tAbout('offerMapTitle')}
                         </h4>
                         <p className="text-gray-400 text-sm">
-                          6 régions entièrement cartographiées avec navigation
-                          fluide
+                          {tAbout('offerMapDescription')}
                         </p>
                       </div>
                     </div>
@@ -203,10 +192,10 @@ export default function AboutPage() {
                       </svg>
                       <div>
                         <h4 className="text-white font-medium">
-                          Système de Marqueurs
+                          {tAbout('offerMarkersTitle')}
                         </h4>
                         <p className="text-gray-400 text-sm">
-                          Suivi automatique de votre progression d'exploration
+                          {tAbout('offerMarkersDescription')}
                         </p>
                       </div>
                     </div>
@@ -227,11 +216,10 @@ export default function AboutPage() {
                       </svg>
                       <div>
                         <h4 className="text-white font-medium">
-                          Filtres Avancés
+                          {tAbout('offerFiltersTitle')}
                         </h4>
                         <p className="text-gray-400 text-sm">
-                          Catégorisation par type de contenu (coffres, PNJ,
-                          points d'intérêt)
+                          {tAbout('offerFiltersDescription')}
                         </p>
                       </div>
                     </div>
@@ -254,11 +242,10 @@ export default function AboutPage() {
                       </svg>
                       <div>
                         <h4 className="text-white font-medium">
-                          Interface Responsive
+                          {tAbout('offerResponsiveTitle')}
                         </h4>
                         <p className="text-gray-400 text-sm">
-                          Compatible desktop et mobile pour une accessibilité
-                          maximale
+                          {tAbout('offerResponsiveDescription')}
                         </p>
                       </div>
                     </div>
@@ -279,10 +266,10 @@ export default function AboutPage() {
                       </svg>
                       <div>
                         <h4 className="text-white font-medium">
-                          Fait avec Passion
+                          {tAbout('offerPassionTitle')}
                         </h4>
                         <p className="text-gray-400 text-sm">
-                          Projet communautaire créé par et pour les joueurs
+                          {tAbout('offerPassionDescription')}
                         </p>
                       </div>
                     </div>
@@ -303,11 +290,10 @@ export default function AboutPage() {
                       </svg>
                       <div>
                         <h4 className="text-white font-medium">
-                          Continuellement Mis à Jour
+                          {tAbout('offerUpdatesTitle')}
                         </h4>
                         <p className="text-gray-400 text-sm">
-                          Évolution constante basée sur les retours de la
-                          communauté
+                          {tAbout('offerUpdatesDescription')}
                         </p>
                       </div>
                     </div>
@@ -334,7 +320,7 @@ export default function AboutPage() {
                     </svg>
                   </div>
                   <h3 className="text-2xl font-semibold text-white">
-                    L'équipe
+                    {tAbout('teamTitle')}
                   </h3>
                 </div>
 
@@ -402,31 +388,13 @@ export default function AboutPage() {
                   </div>
                   <div>
                     <h4 className="text-red-400 font-semibold mb-2">
-                      Avis Important
+                      {tAbout('disclaimerTitle')}
                     </h4>
                     <p className="text-gray-300 text-sm leading-relaxed">
-                      <strong className="text-white">
-                        {SITE_CONFIG.name} n'est en aucun cas affilié ou lié au
-                        créateur du jeu {GAME_INFO.name}.
-                      </strong>
-                      Ce site est un projet communautaire indépendant créé par
-                      des fans pour des fans. Toutes les données et ressources
-                      utilisées proviennent de sources publiques et respectent
-                      les droits d'auteur et les conditions d'utilisation du jeu
-                      original.
+                      {tAbout('disclaimerBody', { siteName: SITE_CONFIG.name, gameName: GAME_INFO.name })}
                     </p>
                     <p className="text-gray-400 text-sm mt-3">
-                      Pour plus d'informations sur le jeu officiel, visitez le
-                      site d'
-                      <a
-                        href={CONTACT_INFO.ascencia.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-indigo-400 hover:text-indigo-300"
-                      >
-                        Ascencia
-                      </a>
-                      .
+                      {tAbout('disclaimerOfficialLink')}
                     </p>
                   </div>
                 </div>
@@ -435,12 +403,10 @@ export default function AboutPage() {
               {/* Call to action */}
               <div className="text-center">
                 <h3 className="text-2xl font-semibold text-white mb-4">
-                  Rejoignez la communauté !
+                  {tAbout('joinCommunityTitle')}
                 </h3>
                 <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
-                  DNA Interactive évolue grâce à vous. Partagez vos retours,
-                  suggestions et expériences pour nous aider à améliorer l'outil
-                  pour toute la communauté.
+                  {tAbout('joinCommunityDescription')}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <a
@@ -504,31 +470,31 @@ export default function AboutPage() {
                 href={NAVIGATION.home}
                 className="hover:text-indigo-400 transition-colors"
               >
-                Accueil
+                {tNav('home')}
               </Link>
               <Link
                 href={NAVIGATION.map}
                 className="hover:text-indigo-400 transition-colors"
               >
-                Carte Interactive
+                {tNav('map')}
               </Link>
               <Link
                 href={NAVIGATION.items}
                 className="hover:text-indigo-400 transition-colors"
               >
-                Items
+                {tNav('items')}
               </Link>
               <Link
                 href={NAVIGATION.support}
                 className="hover:text-indigo-400 transition-colors"
               >
-                Support
+                {tNav('support')}
               </Link>
               <Link
                 href={NAVIGATION.contact}
                 className="hover:text-indigo-400 transition-colors"
               >
-                Contact
+                {tNav('contact')}
               </Link>
             </div>
           </div>
@@ -551,7 +517,7 @@ export default function AboutPage() {
                 href="/changelog"
                 className="text-indigo-400 hover:text-indigo-300 transition-colors"
               >
-                📋 Voir le changelog
+                {tCommon('viewChangelog')}
               </Link>
             </p>
           </div>

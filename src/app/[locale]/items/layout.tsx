@@ -1,5 +1,6 @@
 import type { Metadata, ResolvingMetadata } from "next";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
+import { getTranslations } from "next-intl/server";
 import {
   ASSETS_PATHS,
   CONTACT_INFO,
@@ -18,11 +19,24 @@ export async function generateMetadata(
   return generatePageMetadata(pageMetadata.items, parent);
 }
 
-export default function ItemsLayout({
+export default async function ItemsLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const tNav = await getTranslations('nav');
+  const tCommon = await getTranslations('common');
+  const tSite = await getTranslations('site');
+
+  const navLabels: Record<string, string> = {
+    [NAVIGATION.map]: tNav('map'),
+    [NAVIGATION.items]: tNav('items'),
+    [NAVIGATION.characters]: tNav('characters'),
+    [NAVIGATION.codes]: tNav('codes'),
+    [NAVIGATION.about]: tNav('about'),
+    [NAVIGATION.support]: tNav('support'),
+    [NAVIGATION.contact]: tNav('contact'),
+  };
   return (
     <div className="min-h-screen bg-linear-to-br from-slate-950 via-slate-900 to-indigo-950 text-white">
       <header className="relative z-50 border-b border-indigo-500/20 bg-slate-950/80 backdrop-blur-sm">
@@ -36,7 +50,7 @@ export default function ItemsLayout({
               />
               <div>
                 <div className="text-2xl font-bold text-white">{SITE_CONFIG.name}</div>
-                <p className="text-xs text-slate-400">{SITE_CONFIG.tagline}</p>
+                <p className="text-xs text-slate-400">{tSite('tagline')}</p>
               </div>
             </Link>
 
@@ -51,7 +65,7 @@ export default function ItemsLayout({
                       : "text-slate-300 hover:text-indigo-400"
                   }`}
                 >
-                  {link.label}
+                  {navLabels[link.href] ?? link.label}
                 </Link>
               ))}
             </nav>
@@ -83,7 +97,7 @@ export default function ItemsLayout({
                       : "hover:text-indigo-400"
                   }`}
                 >
-                  {link.label}
+                  {navLabels[link.href] ?? link.label}
                 </Link>
               ))}
             </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Boxes, Map, Sparkles, X, MapPin } from "lucide-react";
 import { useAtom } from "jotai";
@@ -8,15 +8,17 @@ import {
   dismissHomeAnnouncementAtom,
   dismissedHomeAnnouncementsAtom,
 } from "@/lib/store";
+import { useTranslations } from "next-intl";
 
 type HomeAnnouncement = {
   id: string;
-  badge: string;
+  badge?: string;
+  badgeKey?: string;
   icon: typeof MapPin;
-  title: string;
-  desktopDetails: string;
+  titleKey: string;
+  desktopDetailsKey: string;
   href: string;
-  ctaLabel: string;
+  ctaLabelKey: string;
   gradientClassName: string;
   borderClassName: string;
   accentTextClassName: string;
@@ -28,10 +30,10 @@ const HOME_ANNOUNCEMENTS: HomeAnnouncement[] = [
     id: "home-map-haojing-v1-3",
     badge: "v1.3",
     icon: MapPin,
-    title: "Nouvelle map disponible !",
-    desktopDetails: "Explorez Haojing avec 143 nouveaux marqueurs",
+    titleKey: "newMapTitle",
+    desktopDetailsKey: "newMapDetails",
     href: "/map?mapId=haojing",
-    ctaLabel: "Explorer",
+    ctaLabelKey: "newMapCta",
     gradientClassName:
       "bg-linear-to-r from-amber-600/90 via-orange-600/90 to-red-600/90",
     borderClassName: "border-amber-400/30",
@@ -40,12 +42,12 @@ const HOME_ANNOUNCEMENTS: HomeAnnouncement[] = [
   },
   {
     id: "home-items-library-v1-3",
-    badge: "NOUVEAU",
+    badgeKey: "badgeNew",
     icon: Boxes,
-    title: "Bibliothèque Items disponible !",
-    desktopDetails: "Parcourez Demon Wedges, ressources, armes et plans de forge",
+    titleKey: "itemsLibraryTitle",
+    desktopDetailsKey: "itemsLibraryDetails",
     href: "/items",
-    ctaLabel: "Voir les items",
+    ctaLabelKey: "itemsLibraryCta",
     gradientClassName:
       "bg-linear-to-r from-indigo-600/90 via-violet-600/90 to-fuchsia-600/90",
     borderClassName: "border-indigo-400/30",
@@ -63,6 +65,8 @@ const BANNER_PARTICLES = [
 ];
 
 export default function UpdateBanner() {
+  const t = useTranslations("banner");
+  const tCommon = useTranslations("common");
   const [dismissedAnnouncements] = useAtom(dismissedHomeAnnouncementsAtom);
   const [, dismissAnnouncement] = useAtom(dismissHomeAnnouncementAtom);
 
@@ -109,7 +113,7 @@ export default function UpdateBanner() {
                     >
                       <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs font-bold text-white border border-white/30">
                         <Sparkles className="w-3 h-3" />
-                        {announcement.badge}
+                        {announcement.badgeKey ? t(announcement.badgeKey) : announcement.badge}
                       </span>
                     </motion.div>
 
@@ -119,14 +123,14 @@ export default function UpdateBanner() {
                         className={`w-4 h-4 shrink-0 ${announcement.accentTextClassName}`}
                       />
                       <p className="text-sm md:text-base font-medium">
-                        <span className="font-bold">{announcement.title}</span>
+                        <span className="font-bold">{t(announcement.titleKey)}</span>
                         <span className="hidden sm:inline">
                           {" "}
                           —{" "}
                           <span
                             className={`font-bold ${announcement.accentTextClassName}`}
                           >
-                            {announcement.desktopDetails}
+                            {t(announcement.desktopDetailsKey)}
                           </span>
                         </span>
                       </p>
@@ -140,12 +144,12 @@ export default function UpdateBanner() {
                       className="hidden sm:inline-flex items-center gap-1.5 px-4 py-1.5 bg-white/20 hover:bg-white/30 rounded-lg text-sm font-semibold text-white transition-all duration-200 border border-white/20 hover:border-white/40"
                     >
                       <CtaIcon className="w-4 h-4" />
-                      {announcement.ctaLabel}
+                      {t(announcement.ctaLabelKey)}
                     </Link>
                     <button
                       onClick={() => dismissAnnouncement(announcement.id)}
                       className="p-1.5 hover:bg-white/20 rounded-lg transition-colors"
-                      aria-label="Fermer"
+                      aria-label={tCommon("close")}
                     >
                       <X className="w-4 h-4 text-white/80 hover:text-white" />
                     </button>

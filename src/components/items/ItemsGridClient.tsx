@@ -1,6 +1,7 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useState } from "react";
 import { ChevronRight, Heart, Languages, Search, SlidersHorizontal, X, ZoomIn } from "lucide-react";
 import { useAtom } from "jotai";
@@ -173,6 +174,8 @@ export default function ItemsGridClient({
   items,
   favoritesOnly = false,
 }: ItemsGridClientProps) {
+  const t = useTranslations('items');
+  const tc = useTranslations('common');
   const [persistedItemsFilters, setPersistedItemsFilters] = useAtom(itemsFiltersStorageAtom);
   const [favoriteItems] = useAtom(itemsFavoritesAtom);
   const [, toggleItemFavorite] = useAtom(toggleItemFavoriteAtom);
@@ -537,7 +540,7 @@ export default function ItemsGridClient({
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div>
             <p className="text-xs uppercase tracking-[0.3em] text-indigo-400/80">
-              {favoritesOnly ? "Favoris" : "Categorie"}
+              {favoritesOnly ? tc('favorites') : t('categoryLabel')}
             </p>
             <h1 className="mt-2 text-3xl font-semibold text-white">
               {favoritesOnly ? `Favoris ${category.title}` : category.title}
@@ -545,8 +548,8 @@ export default function ItemsGridClient({
             <p className="mt-2 max-w-2xl text-sm text-slate-300">{category.description}</p>
             <p className="mt-3 text-sm text-slate-400">
               {favoritesOnly
-                ? `${filteredItems.length} favori(s) affiche(s) sur ${categoryFavoriteCount}`
-                : `${filteredItems.length} / ${items.length} items`}
+                ? t('favoritesCount', { count: filteredItems.length, total: categoryFavoriteCount })
+                : t('itemsCount', { filtered: filteredItems.length, total: items.length })}
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
@@ -554,14 +557,14 @@ export default function ItemsGridClient({
               href="/items"
               className="rounded-lg border border-slate-600/70 px-4 py-2 text-sm text-slate-200 transition-colors hover:border-indigo-400/40 hover:text-white"
             >
-              Retour categories
+              {tc('backToCategories')}
             </Link>
             {favoritesOnly ? (
               <Link
                 href={`/items/${category.slug}`}
                 className="rounded-lg border border-slate-600/70 px-4 py-2 text-sm text-slate-200 transition-colors hover:border-indigo-400/40 hover:text-white"
               >
-                Retour liste
+                {tc('backToList')}
               </Link>
             ) : (
               <Link
@@ -569,7 +572,7 @@ export default function ItemsGridClient({
                 className="inline-flex items-center gap-2 rounded-lg border border-rose-500/40 bg-rose-500/10 px-4 py-2 text-sm text-rose-100 transition-colors hover:bg-rose-500/20"
               >
                 <Heart className="h-4 w-4" />
-                Favoris ({categoryFavoriteCount})
+                {t('favoritesLabel', { count: categoryFavoriteCount })}
               </Link>
             )}
           </div>
@@ -587,8 +590,8 @@ export default function ItemsGridClient({
               className="w-full bg-transparent text-sm text-slate-100 outline-none placeholder:text-slate-500"
               placeholder={
                 isModsCategory
-                  ? "Rechercher par id, nom Demon Wedge..."
-                  : "Rechercher par id, nom, description..."
+                  ? t('searchModsPlaceholder')
+                  : t('searchDefaultPlaceholder')
               }
             />
           </label>
@@ -596,7 +599,7 @@ export default function ItemsGridClient({
           <div className="rounded-xl border border-slate-700/70 bg-slate-950/60 p-3">
             <div className="mb-2 flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-slate-400">
               <Languages className="h-4 w-4 text-indigo-400/80" />
-              Langues affichees
+              {tc('displayedLanguages')}
             </div>
             <div className="flex flex-wrap items-center gap-2">
               {selectedLanguages.map((code) => (
@@ -622,7 +625,7 @@ export default function ItemsGridClient({
                 onChange={(event) => addLanguage(event.target.value)}
                 className="rounded-lg border border-slate-600/80 bg-slate-900 px-2 py-1 text-xs text-slate-200 outline-none"
               >
-                <option value="">Ajouter langue...</option>
+                <option value="">{tc('addLanguage')}</option>
                 {unselectedLanguages.map((code) => (
                   <option key={code} value={code}>
                     {getLanguageLabel(code)}
@@ -638,7 +641,7 @@ export default function ItemsGridClient({
             <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2">
               <div className="mb-1 flex items-center gap-2 text-xs text-slate-400">
                 <SlidersHorizontal className="h-3.5 w-3.5 text-indigo-400/80" />
-                Rarete
+                {tc('rarity')}
               </div>
               <select
                 value={rarityFilter}
@@ -647,7 +650,7 @@ export default function ItemsGridClient({
                 }}
                 className="w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-sm text-slate-100"
               >
-                <option value="all">Toutes</option>
+                <option value="all">{tc('allFeminine')}</option>
                 {rarityOptions.map((value) => (
                   <option key={value} value={value}>
                     {value}
@@ -661,7 +664,7 @@ export default function ItemsGridClient({
             <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2">
               <div className="mb-1 flex items-center gap-2 text-xs text-slate-400">
                 <SlidersHorizontal className="h-3.5 w-3.5 text-indigo-400/80" />
-                Polarite
+                {tc('polarity')}
               </div>
               <select
                 value={polarityFilter}
@@ -670,7 +673,7 @@ export default function ItemsGridClient({
                 }}
                 className="w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-sm text-slate-100"
               >
-                <option value="all">Toutes</option>
+                <option value="all">{tc('allFeminine')}</option>
                 {polarityOptions.map((value) => (
                   <option key={value} value={value}>
                     {value}
@@ -682,7 +685,7 @@ export default function ItemsGridClient({
 
           {hasArchiveData && (
             <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2">
-              <div className="mb-1 text-xs text-slate-400">Archive</div>
+              <div className="mb-1 text-xs text-slate-400">{tc('archive')}</div>
               <select
                 value={archiveFilter}
                 onChange={(event) => {
@@ -693,16 +696,16 @@ export default function ItemsGridClient({
                 }}
                 className="w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-sm text-slate-100"
               >
-                <option value="all">Toutes</option>
-                <option value="withArchive">Avec archive</option>
-                <option value="withoutArchive">Sans archive</option>
+                <option value="all">{tc('allFeminine')}</option>
+                <option value="withArchive">{tc('withArchive')}</option>
+                <option value="withoutArchive">{tc('withoutArchive')}</option>
               </select>
             </div>
           )}
 
           {itemTypeOptions.length > 0 && (
             <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2">
-              <div className="mb-1 text-xs text-slate-400">Type</div>
+              <div className="mb-1 text-xs text-slate-400">{tc('type')}</div>
               <select
                 value={itemTypeFilter}
                 onChange={(event) => {
@@ -710,7 +713,7 @@ export default function ItemsGridClient({
                 }}
                 className="w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-sm text-slate-100"
               >
-                <option value="all">Tous</option>
+                <option value="all">{tc('all')}</option>
                 {itemTypeOptions.map((value) => (
                   <option key={value} value={value}>
                     {value}
@@ -722,7 +725,7 @@ export default function ItemsGridClient({
 
           {itemSubTypeOptions.length > 0 && (
             <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2">
-              <div className="mb-1 text-xs text-slate-400">Sous-type</div>
+              <div className="mb-1 text-xs text-slate-400">{tc('subType')}</div>
               <select
                 value={itemSubTypeFilter}
                 onChange={(event) => {
@@ -730,7 +733,7 @@ export default function ItemsGridClient({
                 }}
                 className="w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-sm text-slate-100"
               >
-                <option value="all">Tous</option>
+                <option value="all">{tc('all')}</option>
                 {itemSubTypeOptions.map((value) => (
                   <option key={value} value={value}>
                     {value}
@@ -741,7 +744,7 @@ export default function ItemsGridClient({
           )}
 
           <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2">
-            <div className="mb-1 text-xs text-slate-400">Tri</div>
+            <div className="mb-1 text-xs text-slate-400">{tc('sort')}</div>
             <select
               value={sortMode}
               onChange={(event) => {
@@ -752,24 +755,23 @@ export default function ItemsGridClient({
               }}
               className="w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-sm text-slate-100"
             >
-              <option value="id">Par id</option>
-              <option value="rarityAsc">Rarete croissante</option>
-              <option value="rarityDesc">Rarete decroissante</option>
+              <option value="id">{t('sortById')}</option>
+              <option value="rarityAsc">{t('sortRarityAsc')}</option>
+              <option value="rarityDesc">{t('sortRarityDesc')}</option>
             </select>
           </div>
         </div>
 
         <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-slate-700/60 bg-slate-950/60 px-3 py-2 text-sm text-slate-300">
           <p>
-            Affichage {filteredItems.length === 0 ? 0 : pageStart + 1}-
-            {Math.min(pageEnd, filteredItems.length)} sur {filteredItems.length}
+            {tc('displayRange', { start: filteredItems.length === 0 ? 0 : pageStart + 1, end: Math.min(pageEnd, filteredItems.length), total: filteredItems.length })}
           </p>
           <button
             type="button"
             onClick={resetFilters}
             className="rounded-md border border-slate-700 px-3 py-1 text-xs text-slate-300 transition-colors hover:border-indigo-400/40 hover:text-white"
           >
-            Reinitialiser filtres
+            {tc('resetFilters')}
           </button>
         </div>
       </section>
@@ -778,13 +780,13 @@ export default function ItemsGridClient({
         <div className="rounded-xl border border-slate-700 bg-slate-900/45 p-10 text-center">
           <p className="text-lg text-slate-200">
             {favoritesOnly
-              ? "Aucun favori ne correspond aux filtres."
-              : "Aucun item ne correspond aux filtres actuels."}
+              ? t('noFavoriteResults')
+              : t('noItemResults')}
           </p>
           <p className="mt-2 text-sm text-slate-400">
             {favoritesOnly
-              ? "Ajoute des favoris depuis la liste des items, ou ajuste les filtres."
-              : "Ajuste les filtres ou la recherche."}
+              ? t('noFavoriteResultsHint')
+              : t('noItemResultsHint')}
           </p>
         </div>
       ) : (
@@ -828,7 +830,7 @@ export default function ItemsGridClient({
                           });
                         }}
                         className="absolute -bottom-3 -right-3 z-10 rounded-full border border-slate-700 bg-slate-900/95 p-1 text-slate-200 shadow-sm transition-colors hover:border-indigo-400/60 hover:bg-indigo-500/80 hover:text-white"
-                        aria-label={`Agrandir l'icone de ${category.technicalName} ${item.modId}`}
+                        aria-label={t('zoomIcon', { id: item.modId })}
                       >
                         <ZoomIn className="h-3 w-3" />
                       </button>
@@ -945,8 +947,7 @@ export default function ItemsGridClient({
       {filteredItems.length > 0 && (
         <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-700/70 bg-slate-900/50 p-3">
           <p className="text-sm text-slate-300">
-            Affichage {filteredItems.length === 0 ? 0 : pageStart + 1}-
-            {Math.min(pageEnd, filteredItems.length)} sur {filteredItems.length}
+            {tc('displayRange', { start: filteredItems.length === 0 ? 0 : pageStart + 1, end: Math.min(pageEnd, filteredItems.length), total: filteredItems.length })}
           </p>
 
           <div className="flex flex-wrap items-center justify-end gap-3">
@@ -956,7 +957,7 @@ export default function ItemsGridClient({
                 onClick={() => updateQueryFilters({ page: 1 })}
                 disabled={safeCurrentPage === 1}
                 className="rounded-md border border-slate-700 px-2 py-1 text-xs text-slate-200 transition-colors hover:border-indigo-400/40 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
-                aria-label="Premiere page"
+                aria-label={tc('paginationFirst')}
               >
                 {"<<"}
               </button>
@@ -968,7 +969,7 @@ export default function ItemsGridClient({
                 }}
                 disabled={safeCurrentPage === 1}
                 className="rounded-md border border-slate-700 px-2 py-1 text-xs text-slate-200 transition-colors hover:border-indigo-400/40 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
-                aria-label="Page precedente"
+                aria-label={tc('paginationPrevious')}
               >
                 {"<"}
               </button>
@@ -992,7 +993,7 @@ export default function ItemsGridClient({
                         ? "border-indigo-400/70 bg-indigo-500/25 text-indigo-100"
                         : "border-slate-700 text-slate-200 hover:border-indigo-400/40 hover:text-white"
                     }`}
-                    aria-label={`Aller a la page ${page}`}
+                    aria-label={tc('paginationGoTo', { page })}
                     aria-current={page === safeCurrentPage ? "page" : undefined}
                   >
                     {page}
@@ -1008,7 +1009,7 @@ export default function ItemsGridClient({
                 }}
                 disabled={safeCurrentPage === totalPages}
                 className="rounded-md border border-slate-700 px-2 py-1 text-xs text-slate-200 transition-colors hover:border-indigo-400/40 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
-                aria-label="Page suivante"
+                aria-label={tc('paginationNext')}
               >
                 {">"}
               </button>
@@ -1017,7 +1018,7 @@ export default function ItemsGridClient({
                 onClick={() => updateQueryFilters({ page: totalPages })}
                 disabled={safeCurrentPage === totalPages}
                 className="rounded-md border border-slate-700 px-2 py-1 text-xs text-slate-200 transition-colors hover:border-indigo-400/40 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
-                aria-label="Derniere page"
+                aria-label={tc('paginationLast')}
               >
                 {">>"}
               </button>
@@ -1063,7 +1064,7 @@ export default function ItemsGridClient({
                 type="button"
                 onClick={() => setPreviewIcon(null)}
                 className="rounded-full p-1 text-slate-300 transition-colors hover:bg-slate-800 hover:text-white"
-                aria-label="Fermer l'apercu"
+                aria-label={tc('close')}
               >
                 <X className="h-4 w-4" />
               </button>

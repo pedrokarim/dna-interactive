@@ -9,8 +9,11 @@ import {
   resetAllCodesAtom,
 } from "@/lib/store";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 export default function CodesList() {
+  const t = useTranslations("codes");
+  const tCommon = useTranslations("common");
   const [usedCodes] = useAtom(usedCodesAtom);
   const [, toggleCodeUsed] = useAtom(toggleCodeUsedAtom);
   const [, resetAllCodes] = useAtom(resetAllCodesAtom);
@@ -31,7 +34,7 @@ export default function CodesList() {
   };
 
   const handleResetAll = () => {
-    if (confirm("Êtes-vous sûr de vouloir réinitialiser tous les codes ?")) {
+    if (confirm(t("resetConfirm"))) {
       resetAllCodes();
     }
   };
@@ -45,25 +48,22 @@ export default function CodesList() {
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
           <Gift className="w-8 h-8 text-indigo-400" />
-          <h1 className="text-3xl font-bold text-white">Codes de Rédemption</h1>
+          <h1 className="text-3xl font-bold text-white">{t("title")}</h1>
         </div>
         <p className="text-gray-300 text-lg leading-relaxed">
-          Voici la liste des codes actifs pour Duet Night Abyss. Cliquez sur un
-          code pour le marquer comme utilisé. Les codes utilisés seront
-          sauvegardés localement et barrés.
+          {t("description")}
         </p>
         <div className="mt-4 p-4 bg-indigo-950/50 border border-indigo-500/30 rounded-lg">
           <p className="text-sm text-indigo-200">
-            <strong>Comment utiliser :</strong> Dans le jeu, allez dans
-            Paramètres → Consommables → Code de Rédemption
+            <strong>{t("howToUse")}</strong> {t("howToUseSteps")}
           </p>
         </div>
       </div>
 
       <div className="flex justify-between items-center mb-6">
         <div className="text-sm text-gray-400">
-          {usedCodes.size} / {activeCodes.length} codes actifs utilisés
-          {expiredCodes.length > 0 && ` • ${expiredCodes.length} codes expirés`}
+          {t("usedCount", { used: usedCodes.size, total: activeCodes.length })}
+          {expiredCodes.length > 0 && ` • ${t("expiredCount", { count: expiredCodes.length })}`}
         </div>
         {usedCodes.size > 0 && (
           <button
@@ -71,7 +71,7 @@ export default function CodesList() {
             className="flex items-center gap-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors"
           >
             <RotateCcw className="w-4 h-4" />
-            Tout réinitialiser
+            {t("resetAll")}
           </button>
         )}
       </div>
@@ -112,13 +112,13 @@ export default function CodesList() {
                     </code>
                     {gameCode.isNew && (
                       <span className="px-2 py-1 bg-green-600 text-white text-xs rounded-full font-medium">
-                        NOUVEAU
+                        {tCommon("new")}
                       </span>
                     )}
                     {gameCode.expiresAt && (
                       <span className="flex items-center gap-1 px-2 py-1 bg-orange-600/20 border border-orange-500/30 text-orange-300 text-xs rounded-full font-medium">
                         <Clock className="w-3 h-3" />
-                        Expire {gameCode.expiresAt}
+                        {t("expires", { date: gameCode.expiresAt })}
                       </span>
                     )}
                   </div>
@@ -156,7 +156,7 @@ export default function CodesList() {
                           : "bg-indigo-600 hover:bg-indigo-500 text-white"
                       }
                     `}
-                    title="Copier le code"
+                    title={t("copyCode")}
                   >
                     {isCopied ? (
                       <Check className="w-4 h-4" />
@@ -182,7 +182,7 @@ export default function CodesList() {
 
               {isCopied && (
                 <div className="absolute top-2 right-2 bg-green-600 text-white text-xs px-2 py-1 rounded">
-                  Copié !
+                  {tCommon("copied")}
                 </div>
               )}
             </div>
@@ -195,7 +195,7 @@ export default function CodesList() {
         <div className="mt-12">
           <div className="flex items-center gap-3 mb-6">
             <AlertTriangle className="w-6 h-6 text-orange-500" />
-            <h2 className="text-2xl font-bold text-white">Codes expirés</h2>
+            <h2 className="text-2xl font-bold text-white">{t("expiredTitle")}</h2>
           </div>
           <div className="space-y-4 opacity-75">
             {expiredCodes.map((gameCode) => {
@@ -213,7 +213,7 @@ export default function CodesList() {
                           {gameCode.code}
                         </code>
                         <span className="px-2 py-1 bg-red-600/20 border border-red-500/30 text-red-400 text-xs rounded-full font-medium">
-                          EXPIRÉ
+                          {tCommon("expired")}
                         </span>
                       </div>
 
@@ -236,7 +236,7 @@ export default function CodesList() {
                           copyToClipboard(gameCode.code);
                         }}
                         className="p-2 rounded-lg transition-colors bg-red-600 hover:bg-red-500 text-white"
-                        title="Copier le code (expiré)"
+                        title={t("copyCodeExpired")}
                       >
                         {isCopied ? (
                           <Check className="w-4 h-4" />
@@ -249,7 +249,7 @@ export default function CodesList() {
 
                   {isCopied && (
                     <div className="absolute top-2 right-2 bg-green-600 text-white text-xs px-2 py-1 rounded">
-                      Copié !
+                      {tCommon("copied")}
                     </div>
                   )}
                 </div>
@@ -261,34 +261,31 @@ export default function CodesList() {
 
       <div className="mt-12 p-6 bg-slate-800/50 border border-indigo-500/20 rounded-xl">
         <h3 className="text-xl font-semibold text-white mb-4">
-          Informations importantes
+          {t("importantInfo")}
         </h3>
         <ul className="space-y-2 text-gray-300">
           <li className="flex items-start gap-2">
             <span className="text-indigo-400 mt-1">•</span>
             <span>
-              Les codes peuvent être utilisés une seule fois par compte
+              {t("infoOneUse")}
             </span>
           </li>
           <li className="flex items-start gap-2">
             <span className="text-indigo-400 mt-1">•</span>
             <span>
-              Certains codes peuvent expirer, vérifiez régulièrement les mises à
-              jour
+              {t("infoExpire")}
             </span>
           </li>
           <li className="flex items-start gap-2">
             <span className="text-indigo-400 mt-1">•</span>
             <span>
-              Les récompenses sont automatiquement créditées à votre compte
-              après validation
+              {t("infoAutoCredit")}
             </span>
           </li>
           <li className="flex items-start gap-2">
             <span className="text-indigo-400 mt-1">•</span>
             <span>
-              Si un code ne fonctionne pas, il peut avoir expiré ou déjà été
-              utilisé
+              {t("infoNotWorking")}
             </span>
           </li>
         </ul>

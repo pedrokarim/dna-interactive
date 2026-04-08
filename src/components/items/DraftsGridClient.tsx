@@ -1,6 +1,7 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 import { useMemo, useState } from "react";
 import {
   ChevronRight,
@@ -129,6 +130,9 @@ export default function DraftsGridClient({
   availableLanguages,
   defaultLanguages,
 }: DraftsGridClientProps) {
+  const t = useTranslations('drafts');
+  const td = useTranslations('draftDetail');
+  const tc = useTranslations('common');
   const normalizedDefaultLanguages = normalizeLanguageCodes(
     defaultLanguages,
     availableLanguages,
@@ -333,20 +337,20 @@ export default function DraftsGridClient({
       <section className="rounded-2xl border border-amber-500/30 bg-slate-900/60 p-6 shadow-[0_20px_45px_rgba(15,23,42,0.45)] backdrop-blur-sm">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
-            <p className="text-xs uppercase tracking-[0.3em] text-amber-300/90">Forge Drafts</p>
-            <h1 className="mt-2 text-3xl font-semibold text-white">Plans de fabrication</h1>
+            <p className="text-xs uppercase tracking-[0.3em] text-amber-300/90">{t('headerLabel')}</p>
+            <h1 className="mt-2 text-3xl font-semibold text-white">{t('title')}</h1>
             <p className="mt-2 max-w-3xl text-sm text-slate-300">
-              Explore les recettes de forge: item final, composants requis, rarete et temps.
+              {t('description')}
             </p>
             <p className="mt-3 text-sm text-slate-400">
-              {filteredRecipes.length} / {recipes.length} plans
+              {t('count', { filtered: filteredRecipes.length, total: recipes.length })}
             </p>
           </div>
           <Link
             href="/items"
             className="rounded-lg border border-slate-600/80 px-4 py-2 text-sm text-slate-200 transition-colors hover:border-amber-400/50 hover:text-white"
           >
-            Retour categories
+            {tc('backToCategories')}
           </Link>
         </div>
 
@@ -357,14 +361,14 @@ export default function DraftsGridClient({
               value={search}
               onChange={(event) => updateFilters({ q: event.target.value, page: 1 })}
               className="w-full bg-transparent text-sm text-slate-100 outline-none placeholder:text-slate-500"
-              placeholder="Rechercher par id draft, nom produit, ingredient..."
+              placeholder={t('searchPlaceholder')}
             />
           </label>
 
           <div className="rounded-xl border border-slate-700/70 bg-slate-950/60 p-3">
             <div className="mb-2 flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-slate-400">
               <Languages className="h-4 w-4 text-amber-300/90" />
-              Langues affichees
+              {tc('displayedLanguages')}
             </div>
             <div className="flex flex-wrap items-center gap-2">
               {selectedLanguages.map((code) => (
@@ -390,7 +394,7 @@ export default function DraftsGridClient({
                 onChange={(event) => addLanguage(event.target.value)}
                 className="rounded-lg border border-slate-600/80 bg-slate-900 px-2 py-1 text-xs text-slate-200 outline-none"
               >
-                <option value="">Ajouter langue...</option>
+                <option value="">{tc('addLanguage')}</option>
                 {unselectedLanguages.map((code) => (
                   <option key={code} value={code}>
                     {getLanguageLabel(code)}
@@ -405,14 +409,14 @@ export default function DraftsGridClient({
           <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2">
             <div className="mb-1 flex items-center gap-2 text-xs text-slate-400">
               <SlidersHorizontal className="h-3.5 w-3.5 text-amber-300/90" />
-              Type produit
+              {t('filterProductType')}
             </div>
             <select
               value={productTypeFilter}
               onChange={(event) => updateFilters({ ptype: event.target.value, page: 1 })}
               className="w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-sm text-slate-100"
             >
-              <option value="all">Tous</option>
+              <option value="all">{tc('all')}</option>
               {productTypeOptions.map((value) => (
                 <option key={value} value={value}>
                   {value}
@@ -422,13 +426,13 @@ export default function DraftsGridClient({
           </div>
 
           <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2">
-            <div className="mb-1 text-xs text-slate-400">Ingredient requis</div>
+            <div className="mb-1 text-xs text-slate-400">{t('filterIngredientType')}</div>
             <select
               value={ingredientTypeFilter}
               onChange={(event) => updateFilters({ itype: event.target.value, page: 1 })}
               className="w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-sm text-slate-100"
             >
-              <option value="all">Tous</option>
+              <option value="all">{tc('all')}</option>
               {ingredientTypeOptions.map((value) => (
                 <option key={value} value={value}>
                   {value}
@@ -438,13 +442,13 @@ export default function DraftsGridClient({
           </div>
 
           <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2">
-            <div className="mb-1 text-xs text-slate-400">Rarete</div>
+            <div className="mb-1 text-xs text-slate-400">{tc('rarity')}</div>
             <select
               value={rarityFilter}
               onChange={(event) => updateFilters({ rarity: event.target.value, page: 1 })}
               className="w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-sm text-slate-100"
             >
-              <option value="all">Toutes</option>
+              <option value="all">{tc('allFeminine')}</option>
               {rarityOptions.map((value) => (
                 <option key={value} value={value}>
                   {value}
@@ -454,40 +458,39 @@ export default function DraftsGridClient({
           </div>
 
           <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2">
-            <div className="mb-1 text-xs text-slate-400">Tri</div>
+            <div className="mb-1 text-xs text-slate-400">{tc('sort')}</div>
             <select
               value={sortMode}
               onChange={(event) => updateFilters({ sort: event.target.value as DraftSortMode, page: 1 })}
               className="w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-sm text-slate-100"
             >
-              <option value="id">Par id</option>
-              <option value="rarityDesc">Rarete decroissante</option>
-              <option value="rarityAsc">Rarete croissante</option>
-              <option value="durationAsc">Temps croissant</option>
-              <option value="durationDesc">Temps decroissant</option>
+              <option value="id">{t('sortById')}</option>
+              <option value="rarityDesc">{t('sortRarityDesc')}</option>
+              <option value="rarityAsc">{t('sortRarityAsc')}</option>
+              <option value="durationAsc">{t('sortDurationAsc')}</option>
+              <option value="durationDesc">{t('sortDurationDesc')}</option>
             </select>
           </div>
         </div>
 
         <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-slate-700/60 bg-slate-950/60 px-3 py-2 text-sm text-slate-300">
           <p>
-            Affichage {filteredRecipes.length === 0 ? 0 : pageStart + 1}-
-            {Math.min(pageEnd, filteredRecipes.length)} sur {filteredRecipes.length}
+            {tc('displayRange', { start: filteredRecipes.length === 0 ? 0 : pageStart + 1, end: Math.min(pageEnd, filteredRecipes.length), total: filteredRecipes.length })}
           </p>
           <button
             type="button"
             onClick={resetFilters}
             className="rounded-md border border-slate-700 px-3 py-1 text-xs text-slate-300 transition-colors hover:border-amber-400/50 hover:text-white"
           >
-            Reinitialiser filtres
+            {tc('resetFilters')}
           </button>
         </div>
       </section>
 
       {filteredRecipes.length === 0 ? (
         <div className="rounded-xl border border-slate-700 bg-slate-900/45 p-10 text-center">
-          <p className="text-lg text-slate-200">Aucun plan ne correspond aux filtres actuels.</p>
-          <p className="mt-2 text-sm text-slate-400">Ajuste les filtres ou la recherche.</p>
+          <p className="text-lg text-slate-200">{t('noResults')}</p>
+          <p className="mt-2 text-sm text-slate-400">{t('noResultsHint')}</p>
         </div>
       ) : (
         <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
@@ -538,7 +541,7 @@ export default function DraftsGridClient({
                           });
                         }}
                         className="absolute -bottom-3 -right-3 z-10 rounded-full border border-slate-700 bg-slate-900/95 p-1 text-slate-200 shadow-sm transition-colors hover:border-amber-400/60 hover:bg-amber-500/80 hover:text-white"
-                        aria-label={`Agrandir l'icone du draft ${recipe.draftId}`}
+                        aria-label={t('zoomDraftIcon', { id: recipe.draftId })}
                       >
                         <ZoomIn className="h-3 w-3" />
                       </button>
@@ -553,7 +556,7 @@ export default function DraftsGridClient({
                       {productNameLead}
                     </h2>
                     <p className="truncate text-xs text-slate-400">
-                      Produit {recipe.product.type} x{recipe.productQuantity}
+                      {td('productLabel', { type: recipe.product.type, quantity: recipe.productQuantity })}
                     </p>
                   </div>
 
@@ -614,7 +617,7 @@ export default function DraftsGridClient({
                   </span>
                   {typeof recipe.rarity === "number" ? (
                     <span className="rounded-full border border-slate-600/80 px-2 py-0.5 text-slate-300">
-                      Rarete {recipe.rarity}
+                      {td('rarityLabel', { rarity: recipe.rarity })}
                     </span>
                   ) : null}
                   <span className="inline-flex items-center gap-1 rounded-full border border-slate-600/80 px-2 py-0.5 text-slate-300">
@@ -631,8 +634,7 @@ export default function DraftsGridClient({
       {filteredRecipes.length > 0 ? (
         <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-700/70 bg-slate-900/50 p-3">
           <p className="text-sm text-slate-300">
-            Affichage {filteredRecipes.length === 0 ? 0 : pageStart + 1}-
-            {Math.min(pageEnd, filteredRecipes.length)} sur {filteredRecipes.length}
+            {tc('displayRange', { start: filteredRecipes.length === 0 ? 0 : pageStart + 1, end: Math.min(pageEnd, filteredRecipes.length), total: filteredRecipes.length })}
           </p>
 
           <div className="flex flex-wrap items-center justify-end gap-3">
@@ -642,7 +644,7 @@ export default function DraftsGridClient({
                 onClick={() => updateFilters({ page: 1 })}
                 disabled={safeCurrentPage === 1}
                 className="rounded-md border border-slate-700 px-2 py-1 text-xs text-slate-200 transition-colors hover:border-amber-400/40 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
-                aria-label="Premiere page"
+                aria-label={tc('paginationFirst')}
               >
                 {"<<"}
               </button>
@@ -651,7 +653,7 @@ export default function DraftsGridClient({
                 onClick={() => updateFilters({ page: Math.max(1, safeCurrentPage - 1) })}
                 disabled={safeCurrentPage === 1}
                 className="rounded-md border border-slate-700 px-2 py-1 text-xs text-slate-200 transition-colors hover:border-amber-400/40 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
-                aria-label="Page precedente"
+                aria-label={tc('paginationPrevious')}
               >
                 {"<"}
               </button>
@@ -675,7 +677,7 @@ export default function DraftsGridClient({
                         ? "border-amber-400/70 bg-amber-500/25 text-amber-100"
                         : "border-slate-700 text-slate-200 hover:border-amber-400/40 hover:text-white"
                     }`}
-                    aria-label={`Aller a la page ${page}`}
+                    aria-label={tc('paginationGoTo', { page })}
                     aria-current={page === safeCurrentPage ? "page" : undefined}
                   >
                     {page}
@@ -688,7 +690,7 @@ export default function DraftsGridClient({
                 onClick={() => updateFilters({ page: Math.min(totalPages, safeCurrentPage + 1) })}
                 disabled={safeCurrentPage === totalPages}
                 className="rounded-md border border-slate-700 px-2 py-1 text-xs text-slate-200 transition-colors hover:border-amber-400/40 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
-                aria-label="Page suivante"
+                aria-label={tc('paginationNext')}
               >
                 {">"}
               </button>
@@ -697,7 +699,7 @@ export default function DraftsGridClient({
                 onClick={() => updateFilters({ page: totalPages })}
                 disabled={safeCurrentPage === totalPages}
                 className="rounded-md border border-slate-700 px-2 py-1 text-xs text-slate-200 transition-colors hover:border-amber-400/40 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
-                aria-label="Derniere page"
+                aria-label={tc('paginationLast')}
               >
                 {">>"}
               </button>
@@ -739,7 +741,7 @@ export default function DraftsGridClient({
                 type="button"
                 onClick={() => setPreviewIcon(null)}
                 className="rounded-full p-1 text-slate-300 transition-colors hover:bg-slate-800 hover:text-white"
-                aria-label="Fermer l'apercu"
+                aria-label={tc('close')}
               >
                 <X className="h-4 w-4" />
               </button>

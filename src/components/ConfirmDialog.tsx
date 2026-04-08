@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { useTranslations } from "next-intl";
 
 interface ConfirmDialogProps {
   isOpen: boolean;
@@ -19,10 +20,13 @@ export default function ConfirmDialog({
   onConfirm,
   title,
   message,
-  confirmText = "Confirmer",
-  cancelText = "Annuler",
+  confirmText,
+  cancelText,
   confirmButtonColor = "bg-red-600/80 hover:bg-red-600",
 }: ConfirmDialogProps) {
+  const t = useTranslations("common");
+  const resolvedConfirmText = confirmText ?? t("confirm");
+  const resolvedCancelText = cancelText ?? t("cancel");
   // Fermer avec Escape
   useEffect(() => {
     if (!isOpen) return;
@@ -66,13 +70,13 @@ export default function ConfirmDialog({
               onClick={onClose}
               className="px-4 py-2 text-sm font-medium text-gray-300 bg-slate-800/50 hover:bg-slate-700/50 rounded-md transition-colors border border-indigo-500/20"
             >
-              {cancelText}
+              {resolvedCancelText}
             </button>
             <button
               onClick={handleConfirm}
               className={`px-4 py-2 text-sm font-medium text-white rounded-md transition-colors border ${confirmButtonColor} border-red-500/50`}
             >
-              {confirmText}
+              {resolvedConfirmText}
             </button>
           </div>
         </div>

@@ -1,12 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { motion } from "framer-motion";
 import { Map, ChevronDown } from "lucide-react";
 import { ASSETS_PATHS, GAME_INFO } from "@/lib/constants";
+import { useTranslations } from "next-intl";
 
 export default function HeroSection() {
+  const t = useTranslations("home");
   const [currentImage, setCurrentImage] = useState(0);
   const [isButtonAnimated, setIsButtonAnimated] = useState(false);
 
@@ -57,15 +59,13 @@ export default function HeroSection() {
       <div className="relative z-10 container mx-auto px-6 py-20">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-linear-to-r from-indigo-400 via-purple-400 to-indigo-300 bg-clip-text text-transparent">
-            DNA Interactive
+            {t("heroTitle")}
           </h1>
           <h2 className="text-2xl md:text-4xl font-semibold mb-8 text-gray-200">
-            Carte interactive pour {GAME_INFO.name}
+            {t("heroSubtitle", { gameName: GAME_INFO.name })}
           </h2>
           <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Découvrez le monde mystérieux de {GAME_INFO.name} avec notre carte
-            interactive complète. Explorez, marquez et maîtrisez chaque aspect
-            du jeu.
+            {t("heroDescription", { gameName: GAME_INFO.name })}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <motion.div
@@ -91,7 +91,7 @@ export default function HeroSection() {
                 className="inline-flex items-center justify-center px-8 py-4 bg-linear-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 rounded-lg font-semibold text-white transition-all duration-300 shadow-lg shadow-indigo-500/25"
               >
                 <Map className="w-5 h-5 mr-2" />
-                Explorer la Carte Interactive DNA
+                {t("heroCta")}
               </Link>
             </motion.div>
           </div>

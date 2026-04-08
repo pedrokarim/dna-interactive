@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 import { useQueryState, parseAsString } from "nuqs";
 import { useAtom } from "jotai";
 import dynamic from "next/dynamic";
@@ -45,6 +46,9 @@ const MapComponent = dynamic(() => import("@/components/MapComponent"), {
 });
 
 export default function MapPage() {
+  const t = useTranslations('map');
+  const tc = useTranslations('common');
+  const tn = useTranslations('nav');
   const [selectedMapId, setSelectedMapId] = useAtom(selectedMapIdWithPersistenceAtom);
   const [visibleCategories, setVisibleCategories] = useAtom(
     visibleCategoriesAtom
@@ -199,37 +203,37 @@ export default function MapPage() {
     // Définir les groupes logiques avec des icônes appropriées
     const categoryGroups = {
       collectibles: {
-        name: "Collectibles",
+        name: t('categoryCollectibles'),
         icon: "https://herobox-img.yingxiong.com/map/1749672600072455391.png",
         items: [] as typeof allSubCategories,
       },
       chests: {
-        name: "Coffres",
+        name: t('categoryChests'),
         icon: "https://herobox-img.yingxiong.com/map/1749672743841364457.png",
         items: [] as typeof allSubCategories,
       },
       books: {
-        name: "Livres & Documents",
+        name: t('categoryBooks'),
         icon: "https://herobox-img.yingxiong.com/map/1749555921415533794.png",
         items: [] as typeof allSubCategories,
       },
       locations: {
-        name: "Lieux & PNJ",
+        name: t('categoryLocations'),
         icon: "https://herobox-img.yingxiong.com/map/1749555783038694078.png",
         items: [] as typeof allSubCategories,
       },
       genimons: {
-        name: "Genimons",
+        name: t('categoryGenimons'),
         icon: "https://herobox-img.yingxiong.com/map/1749672734516496170.png",
         items: [] as typeof allSubCategories,
       },
       challenges: {
-        name: "Événements & Défis",
+        name: t('categoryChallenges'),
         icon: "https://herobox-img.yingxiong.com/map/1749556012460864902.png",
         items: [] as typeof allSubCategories,
       },
       others: {
-        name: "Autres",
+        name: t('categoryOthers'),
         icon: "https://herobox-img.yingxiong.com/map/1749672734516496170.png",
         items: [] as typeof allSubCategories,
       },
@@ -356,16 +360,14 @@ export default function MapPage() {
 
           if (markers.length < data.markers.length) {
             alert(
-              `Import réussi : ${markers.length} marqueur(s) importé(s). ${
-                data.markers.length - markers.length
-              } ancien(s) format(s) ignoré(s) et nécessitent d'être re-marqué(s).`
+              t('importSuccess', { imported: markers.length, ignored: data.markers.length - markers.length })
             );
           }
         } else {
-          alert("Format de fichier invalide");
+          alert(t('importInvalidFormat'));
         }
       } catch (error) {
-        alert("Erreur lors de l'import : fichier invalide");
+        alert(t('importError'));
       }
     };
     reader.readAsText(file);
@@ -527,7 +529,7 @@ export default function MapPage() {
                     <div className="text-xl font-bold text-white flex items-center gap-2">
                       {SITE_CONFIG.name}
                     </div>
-                    <p className="text-xs text-gray-400">Carte Interactive</p>
+                    <p className="text-xs text-gray-400">{t('interactiveMap')}</p>
                   </div>
                 </div>
 
@@ -535,7 +537,7 @@ export default function MapPage() {
                 <div className="relative">
                   <input
                     type="text"
-                    placeholder="Marqueurs dans la zone..."
+                    placeholder={t('searchPlaceholder')}
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="w-full bg-slate-800/50 backdrop-blur-sm border border-indigo-500/30 rounded-md px-3 py-2 pl-10 text-sm text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400"
@@ -558,7 +560,7 @@ export default function MapPage() {
                 {/* Sélecteur de région */}
                 <div>
                   <label className="block text-sm text-gray-300 mb-2">
-                    Région
+                    {t('region')}
                   </label>
                   <select
                     value={selectedMap?.id || ""}
@@ -584,7 +586,7 @@ export default function MapPage() {
                 {/* Toggle Masquer les marqueurs trouvés */}
                 <div className="flex items-center justify-between pt-2">
                   <span className="text-sm text-gray-300">
-                    Masquer les marqueurs trouvés
+                    {t('hideFoundMarkers')}
                   </span>
                   <button
                     onClick={() => setHideFoundMarkers(!hideFoundMarkers)}
@@ -632,7 +634,7 @@ export default function MapPage() {
             {/* Contenu des catégories avec accordéons */}
             <div className="relative z-20">
               <h3 className="text-lg font-semibold text-white mb-4">
-                Catégories
+                {t('categories')}
               </h3>
               <div className="space-y-2">
                 {filteredGroups.map((group) => {
@@ -685,8 +687,8 @@ export default function MapPage() {
                               {group.name}
                             </span>
                             <div className="text-xs text-gray-400">
-                              {group.items.length} types • {totalMarkers}{" "}
-                              marqueurs
+                              {group.items.length} {t('types')} • {totalMarkers}{" "}
+                              {t('markers')}
                             </div>
                           </div>
                         </div>
@@ -703,7 +705,7 @@ export default function MapPage() {
                                   selectAllInGroup(group);
                                 }}
                                 className="text-xs px-2 py-1 bg-indigo-600/80 hover:bg-indigo-600 rounded text-white transition-colors"
-                                title="Tout sélectionner"
+                                title={t('selectAll')}
                               >
                                 ✓
                               </button>
@@ -715,7 +717,7 @@ export default function MapPage() {
                                   deselectAllInGroup(group);
                                 }}
                                 className="text-xs px-2 py-1 bg-red-600/80 hover:bg-red-600 rounded text-white transition-colors"
-                                title="Tout désélectionner"
+                                title={t('deselectAll')}
                               >
                                 ✗
                               </button>
@@ -835,7 +837,7 @@ export default function MapPage() {
                   d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
                 />
               </svg>
-              Réinitialiser
+              {t('resetSidebar')}
             </button>
 
             <div className="flex flex-wrap gap-x-3 gap-y-1 text-xs text-gray-500 pt-2 border-t border-indigo-500/20">
@@ -843,31 +845,31 @@ export default function MapPage() {
                 href="/"
                 className="hover:text-indigo-400 transition-colors"
               >
-                ← Accueil
+                {tn('home')}
               </Link>
               <Link
                 href="/changelog"
                 className="hover:text-indigo-400 transition-colors"
               >
-                Changelog
+                {tn('changelog')}
               </Link>
               <Link
                 href="/items"
                 className="hover:text-indigo-400 transition-colors"
               >
-                Items
+                {tn('items')}
               </Link>
               <Link
                 href="/about"
                 className="hover:text-indigo-400 transition-colors"
               >
-                À propos
+                {tn('about')}
               </Link>
               <Link
                 href="/support"
                 className="hover:text-indigo-400 transition-colors"
               >
-                Support
+                {tn('support')}
               </Link>
             </div>
           </div>
@@ -880,7 +882,7 @@ export default function MapPage() {
           className="absolute top-10 bottom-10 z-[105] w-1 bg-indigo-500/20 hover:bg-indigo-500/40 cursor-ew-resize transition-colors duration-200 rounded-full"
           style={{ left: 16 + sidebarWidth }}
           onMouseDown={handleMouseDown}
-          title="Redimensionner la sidebar"
+          title={t('resizeSidebar')}
         />
       )}
 
@@ -914,7 +916,7 @@ export default function MapPage() {
           <button
             onClick={() => setIsActionMenuOpen(!isActionMenuOpen)}
             className="p-2.5 hover:bg-slate-700/50 rounded-lg transition-colors bg-slate-800/80 backdrop-blur-sm border border-indigo-500/20 shadow-lg"
-            title="Menu d'actions"
+            title={t('actionMenu')}
           >
             <svg
               className="w-5 h-5 text-white"

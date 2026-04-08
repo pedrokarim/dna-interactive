@@ -1,5 +1,6 @@
 import type { Metadata, ResolvingMetadata } from "next";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
+import { getTranslations } from "next-intl/server";
 import { Map, Gift, Info, HelpCircle, Mail, Boxes, Users, ArrowRight } from "lucide-react";
 import {
   SITE_CONFIG,
@@ -36,7 +37,24 @@ const navIcons = {
   [NAVIGATION.contact]: Mail,
 };
 
-export default function Home() {
+export default async function Home() {
+  const tHome = await getTranslations('home');
+  const tNav = await getTranslations('nav');
+  const tCommon = await getTranslations('common');
+  const tLegal = await getTranslations('legal');
+  const tCommunity = await getTranslations('community');
+  const tSite = await getTranslations('site');
+
+  const navLabels: Record<string, string> = {
+    [NAVIGATION.map]: tNav('map'),
+    [NAVIGATION.items]: tNav('items'),
+    [NAVIGATION.characters]: tNav('characters'),
+    [NAVIGATION.codes]: tNav('codes'),
+    [NAVIGATION.about]: tNav('about'),
+    [NAVIGATION.support]: tNav('support'),
+    [NAVIGATION.contact]: tNav('contact'),
+  };
+
   return (
     <div className="min-h-screen bg-linear-to-br from-purple-950 via-slate-900 to-indigo-950 text-white">
       {/* Header */}
@@ -53,7 +71,7 @@ export default function Home() {
                 <div className="text-2xl font-bold text-white flex items-center gap-2">
                   {SITE_CONFIG.name}
                 </div>
-                <p className="text-xs text-gray-400">{SITE_CONFIG.tagline}</p>
+                <p className="text-xs text-gray-400">{tSite('tagline')}</p>
               </div>
             </div>
 
@@ -67,7 +85,7 @@ export default function Home() {
                     className="flex items-center gap-2 text-gray-300 hover:text-indigo-400 transition-colors"
                   >
                     {IconComponent && <IconComponent className="w-4 h-4" />}
-                    <span>{link.label}</span>
+                    <span>{navLabels[link.href] ?? link.label}</span>
                   </Link>
                 );
               })}
@@ -91,11 +109,10 @@ export default function Home() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold text-white mb-6">
-                Communauté & Ressources
+                {tHome('communityTitle')}
               </h2>
               <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-                Rejoignez la communauté DNA et accédez aux ressources créées par
-                la communauté pour améliorer votre expérience de jeu.
+                {tHome('communityDescription')}
               </p>
             </div>
 
@@ -147,26 +164,24 @@ export default function Home() {
 
               <div className="relative z-10 px-8 py-10 sm:px-12 sm:py-14">
                 <span className="inline-flex items-center rounded-full border border-indigo-300/35 bg-indigo-500/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-indigo-100">
-                  Nouveau
+                  {tHome('itemsSpotlightBadge')}
                 </span>
                 <h2 className="mt-4 max-w-3xl text-3xl font-bold text-white sm:text-4xl">
-                  La bibliothèque Items est en ligne
+                  {tHome('itemsSpotlightTitle')}
                 </h2>
                 <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-200">
-                  Accedez rapidement aux Demon Wedges, armes, ressources et plans
-                  de fabrication avec des fiches detaillees, filtres et recherche
-                  multilingue.
+                  {tHome('itemsSpotlightDescription')}
                 </p>
                 <div className="mt-7 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
                   <Link
                     href="/items"
                     className="inline-flex items-center gap-2 rounded-xl border border-indigo-200/40 bg-indigo-500/20 px-5 py-3 text-sm font-semibold text-white transition-all duration-200 hover:border-indigo-100/70 hover:bg-indigo-500/30"
                   >
-                    Explorer les items
+                    {tHome('itemsSpotlightCta')}
                     <ArrowRight className="h-4 w-4" />
                   </Link>
                   <p className="text-sm text-slate-300/90">
-                    Demon Wedge • Armes • Ressources • Drafts
+                    {tHome('itemsSpotlightCategories')}
                   </p>
                 </div>
               </div>
@@ -190,14 +205,13 @@ export default function Home() {
 
               <div className="relative z-10 px-8 py-10 sm:px-12 sm:py-14">
                 <span className="inline-flex items-center rounded-full border border-violet-300/35 bg-violet-500/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-violet-100">
-                  Nouveau
+                  {tHome('charactersSpotlightBadge')}
                 </span>
                 <h2 className="mt-4 max-w-3xl text-3xl font-bold text-white sm:text-4xl">
-                  Les personnages sont disponibles
+                  {tHome('charactersSpotlightTitle')}
                 </h2>
                 <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-200">
-                  Decouvrez tous les personnages jouables de Duet Night Abyss : elements,
-                  armes, factions, portraits et traductions en 7 langues.
+                  {tHome('charactersSpotlightDescription')}
                 </p>
                 <div className="mt-7 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
                   <Link
@@ -205,11 +219,11 @@ export default function Home() {
                     className="inline-flex items-center gap-2 rounded-xl border border-violet-200/40 bg-violet-500/20 px-5 py-3 text-sm font-semibold text-white transition-all duration-200 hover:border-violet-100/70 hover:bg-violet-500/30"
                   >
                     <Users className="h-4 w-4" />
-                    Explorer les personnages
+                    {tHome('charactersSpotlightCta')}
                     <ArrowRight className="h-4 w-4" />
                   </Link>
                   <p className="text-sm text-slate-300/90">
-                    6 Elements • 13 Armes • 5 Factions • 7 Langues
+                    {tHome('charactersSpotlightCategories')}
                   </p>
                 </div>
               </div>
@@ -224,7 +238,7 @@ export default function Home() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold text-white mb-6">
-                Fonctionnalités
+                {tHome('featuresTitle')}
               </h2>
             </div>
 
@@ -234,10 +248,10 @@ export default function Home() {
                   <Map className="w-6 h-6 text-white" />
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-3">
-                  Carte Interactive Complète
+                  {tHome('featureMapTitle')}
                 </h3>
                 <p className="text-gray-300">
-                  Carte complète couvrant les 8 régions du jeu.
+                  {tHome('featureMapDescription')}
                 </p>
               </div>
 
@@ -258,10 +272,10 @@ export default function Home() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-3">
-                  Système de Marqueurs
+                  {tHome('featureMarkersTitle')}
                 </h3>
                 <p className="text-gray-300">
-                  Système de marquage pour suivre votre progression.
+                  {tHome('featureMarkersDescription')}
                 </p>
               </div>
 
@@ -282,10 +296,10 @@ export default function Home() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-3">
-                  Filtres Avancés
+                  {tHome('featureFiltersTitle')}
                 </h3>
                 <p className="text-gray-300">
-                  Filtres avancés par catégorie d&apos;éléments.
+                  {tHome('featureFiltersDescription')}
                 </p>
               </div>
 
@@ -306,10 +320,10 @@ export default function Home() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-3">
-                  Interface Responsive
+                  {tHome('featureResponsiveTitle')}
                 </h3>
                 <p className="text-gray-300">
-                  Interface responsive et adaptée à tous les écrans.
+                  {tHome('featureResponsiveDescription')}
                 </p>
               </div>
 
@@ -318,11 +332,10 @@ export default function Home() {
                   <Boxes className="w-6 h-6 text-white" />
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-3">
-                  Bibliotheque Items
+                  {tHome('featureItemsTitle')}
                 </h3>
                 <p className="text-gray-300">
-                  Base Demon Wedge avec recherche, filtres, pagination
-                  et comparaison multilingue.
+                  {tHome('featureItemsDescription')}
                 </p>
               </div>
 
@@ -343,10 +356,10 @@ export default function Home() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-3">
-                  Mises à Jour Régulières
+                  {tHome('featureUpdatesTitle')}
                 </h3>
                 <p className="text-gray-300">
-                  Mises à jour régulières selon vos retours.
+                  {tHome('featureUpdatesDescription')}
                 </p>
               </div>
             </div>
@@ -357,14 +370,14 @@ export default function Home() {
                 className="inline-flex items-center justify-center px-8 py-4 bg-linear-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 rounded-lg font-semibold text-white transition-all duration-300 transform hover:scale-105 shadow-lg shadow-indigo-500/25"
               >
                 <Map className="w-5 h-5 mr-2" />
-                Explorer la Carte
+                {tHome('exploreMap')}
               </Link>
               <Link
                 href="/items"
                 className="inline-flex items-center justify-center px-8 py-4 bg-slate-800/70 hover:bg-slate-700/80 border border-indigo-400/30 rounded-lg font-semibold text-white transition-all duration-300 transform hover:scale-105"
               >
                 <Boxes className="w-5 h-5 mr-2" />
-                Explorer les Items
+                {tHome('exploreItems')}
               </Link>
             </div>
           </div>
@@ -393,7 +406,7 @@ export default function Home() {
                   href={link.href}
                   className="hover:text-indigo-400 transition-colors"
                 >
-                  {link.label}
+                  {navLabels[link.href] ?? link.label}
                 </Link>
               ))}
             </div>
@@ -413,16 +426,10 @@ export default function Home() {
               </a>
             </p>
             <p className="mt-3 text-xs text-gray-500 italic max-w-2xl mx-auto">
-              <span className="font-semibold text-gray-400">Disclaimer:</span>{" "}
-              Cette carte intègre des données de localisation de base et des
-              matériaux de référence provenant de contributions de la communauté
-              CN. Ce site ne monétise à aucun cas. C&apos;est un outil gratuit
-              disponible aux joueurs pour faciliter leur exploration.{" "}
+              <span className="font-semibold text-gray-400">{tCommon('disclaimer')}:</span>{" "}
+              {tLegal('disclaimerFull')}{" "}
               <span className="block mt-1">
-                This map incorporates base location data and reference materials
-                sourced from CN community contributions. This site does not
-                monetize in any way. It is a free tool available to players to
-                facilitate their exploration.
+                {tLegal('disclaimerFullEn')}
               </span>
             </p>
             <p className="mt-3">
@@ -430,7 +437,7 @@ export default function Home() {
                 href="/changelog"
                 className="text-indigo-400 hover:text-indigo-300 transition-colors"
               >
-                📋 Voir le changelog
+                {tCommon('viewChangelog')}
               </Link>
             </p>
           </div>

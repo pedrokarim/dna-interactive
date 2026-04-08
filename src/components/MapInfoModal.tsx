@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import mapIndex from "@/data/mapIndex.json";
 import type { GameMapSummary } from "@/types/map";
+import { useTranslations } from "next-intl";
 
 interface MapInfoModalProps {
   isOpen: boolean;
@@ -15,6 +16,8 @@ export default function MapInfoModal({
   onClose,
   selectedMapId,
 }: MapInfoModalProps) {
+  const t = useTranslations("mapInfo");
+  const tCommon = useTranslations("common");
   // Fermer avec Escape
   useEffect(() => {
     if (!isOpen) return;
@@ -88,7 +91,7 @@ export default function MapInfoModal({
                   d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              Informations sur les Maps
+              {t("title")}
             </h3>
             <button
               onClick={onClose}
@@ -113,12 +116,12 @@ export default function MapInfoModal({
           {/* Version et Date */}
           <div className="grid grid-cols-2 gap-4 mb-6">
             <div className="bg-slate-800/50 border border-indigo-500/30 rounded-lg p-4">
-              <div className="text-xs text-gray-400 mb-1">Version</div>
+              <div className="text-xs text-gray-400 mb-1">{tCommon("version")}</div>
               <div className="text-lg font-bold text-indigo-400">{version}</div>
             </div>
             <div className="bg-slate-800/50 border border-indigo-500/30 rounded-lg p-4">
               <div className="text-xs text-gray-400 mb-1">
-                Dernière mise à jour
+                {t("lastUpdate")}
               </div>
               <div className="text-lg font-bold text-white">
                 {lastUpdateDate}
@@ -129,26 +132,26 @@ export default function MapInfoModal({
           {/* Statistiques globales */}
           <div className="mb-6">
             <h4 className="text-sm font-semibold text-gray-300 mb-3 uppercase tracking-wide">
-              Statistiques Globales
+              {t("globalStats")}
             </h4>
             <div className="grid grid-cols-3 gap-3">
               <div className="bg-slate-800/50 border border-indigo-500/30 rounded-lg p-4 text-center">
                 <div className="text-2xl font-bold text-indigo-400">
                   {totalMaps}
                 </div>
-                <div className="text-xs text-gray-400 mt-1">Maps</div>
+                <div className="text-xs text-gray-400 mt-1">{t("maps")}</div>
               </div>
               <div className="bg-slate-800/50 border border-indigo-500/30 rounded-lg p-4 text-center">
                 <div className="text-2xl font-bold text-green-400">
                   {totalMarkers}
                 </div>
-                <div className="text-xs text-gray-400 mt-1">Marqueurs</div>
+                <div className="text-xs text-gray-400 mt-1">{t("markers")}</div>
               </div>
               <div className="bg-slate-800/50 border border-indigo-500/30 rounded-lg p-4 text-center">
                 <div className="text-2xl font-bold text-purple-400">
                   {totalImages}
                 </div>
-                <div className="text-xs text-gray-400 mt-1">Images</div>
+                <div className="text-xs text-gray-400 mt-1">{t("images")}</div>
               </div>
             </div>
           </div>
@@ -157,26 +160,26 @@ export default function MapInfoModal({
           {selectedMap && (
             <div className="mb-6">
               <h4 className="text-sm font-semibold text-gray-300 mb-3 uppercase tracking-wide">
-                Map Actuelle : {selectedMap.name}
+                {t("currentMap", { name: selectedMap.name })}
               </h4>
               <div className="grid grid-cols-3 gap-3">
                 <div className="bg-slate-800/50 border border-indigo-500/30 rounded-lg p-4 text-center">
                   <div className="text-xl font-bold text-indigo-400">
                     {selectedMapCategories}
                   </div>
-                  <div className="text-xs text-gray-400 mt-1">Catégories</div>
+                  <div className="text-xs text-gray-400 mt-1">{t("categoriesCount")}</div>
                 </div>
                 <div className="bg-slate-800/50 border border-indigo-500/30 rounded-lg p-4 text-center">
                   <div className="text-xl font-bold text-green-400">
                     {selectedMapMarkers}
                   </div>
-                  <div className="text-xs text-gray-400 mt-1">Marqueurs</div>
+                  <div className="text-xs text-gray-400 mt-1">{t("markers")}</div>
                 </div>
                 <div className="bg-slate-800/50 border border-indigo-500/30 rounded-lg p-4 text-center">
                   <div className="text-xl font-bold text-purple-400">
                     {selectedMapImages}
                   </div>
-                  <div className="text-xs text-gray-400 mt-1">Images</div>
+                  <div className="text-xs text-gray-400 mt-1">{t("images")}</div>
                 </div>
               </div>
             </div>
@@ -185,7 +188,7 @@ export default function MapInfoModal({
           {/* Liste des maps */}
           <div className="mb-6">
             <h4 className="text-sm font-semibold text-gray-300 mb-3 uppercase tracking-wide">
-              Toutes les Maps
+              {t("allMaps")}
             </h4>
             <div className="space-y-2 max-h-48 overflow-y-auto">
               {index.map((map) => (
@@ -203,12 +206,12 @@ export default function MapInfoModal({
                         {map.name}
                       </div>
                       <div className="text-xs text-gray-400 mt-1">
-                        {map.markerCount} marqueurs • {map.imageCount} images
+                        {t("markerCount", { markers: map.markerCount, images: map.imageCount })}
                       </div>
                     </div>
                     {map.id === selectedMapId && (
                       <div className="px-2 py-1 bg-indigo-500/20 border border-indigo-500/50 rounded text-xs text-indigo-400 font-medium">
-                        Actuelle
+                        {t("current")}
                       </div>
                     )}
                   </div>
@@ -220,20 +223,14 @@ export default function MapInfoModal({
           {/* Disclaimer */}
           <div className="bg-slate-800/30 border border-indigo-500/20 rounded-lg p-4 mb-6">
             <div className="text-xs text-gray-400 mb-2 font-semibold uppercase tracking-wide">
-              Disclaimer
+              {tCommon("disclaimer")}
             </div>
             <div className="text-xs text-gray-300 leading-relaxed space-y-2">
               <p>
-                Cette carte intègre des données de localisation de base et des
-                matériaux de référence provenant de contributions de la
-                communauté CN. Ce site ne monétise à aucun cas. C'est un outil
-                gratuit disponible aux joueurs pour faciliter leur exploration.
+                {t("disclaimerFr")}
               </p>
               <p className="text-gray-400 italic">
-                This map incorporates base location data and reference materials
-                sourced from CN community contributions. This site does not
-                monetize in any way. It is a free tool available to players to
-                facilitate their exploration.
+                {t("disclaimerEn")}
               </p>
             </div>
           </div>
@@ -244,7 +241,7 @@ export default function MapInfoModal({
               onClick={onClose}
               className="px-4 py-2 text-sm font-medium text-white bg-indigo-600/80 hover:bg-indigo-600 rounded-md transition-colors border border-indigo-500/50"
             >
-              Fermer
+              {tCommon("close")}
             </button>
           </div>
         </div>

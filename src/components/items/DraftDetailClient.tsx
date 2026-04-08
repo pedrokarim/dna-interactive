@@ -1,6 +1,7 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 import { useMemo } from "react";
 import { ArrowLeft, Clock3, ExternalLink, Languages } from "lucide-react";
 import { parseAsStringLiteral, useQueryState } from "nuqs";
@@ -49,20 +50,20 @@ function metadataNumber(item: DraftItemReference, key: string): number | null {
   return typeof value === "number" && Number.isFinite(value) ? value : null;
 }
 
-function sourceCategoryLabel(sourceCategory: DraftItemReference["sourceCategory"]): string {
+function sourceCategoryLabelKey(sourceCategory: DraftItemReference["sourceCategory"]): string {
   if (sourceCategory === "mods") {
-    return "Demon Wedge";
+    return "sourceDemonWedge";
   }
   if (sourceCategory === "resources") {
-    return "Ressource";
+    return "sourceResource";
   }
   if (sourceCategory === "weapons") {
-    return "Arme";
+    return "sourceWeapon";
   }
   if (sourceCategory === "char-accessories") {
-    return "Accessoire";
+    return "sourceAccessory";
   }
-  return "Inconnu";
+  return "sourceUnknown";
 }
 
 function nodeAccentClasses(sourceCategory: DraftItemReference["sourceCategory"]): string {
@@ -89,6 +90,8 @@ type RecipeNodeProps = {
 };
 
 function RecipeNode({ item, selectedLanguage, fallbackLanguages, primary = false }: RecipeNodeProps) {
+  const td = useTranslations('draftDetail');
+  const tc = useTranslations('common');
   const iconSrc = item.icon.publicPath ?? item.icon.placeholderPath ?? "/marker-default.svg";
   const name = resolveDraftItemName(item, selectedLanguage, fallbackLanguages);
   const description = resolveDraftItemDescription(item, selectedLanguage, fallbackLanguages);
@@ -119,7 +122,7 @@ function RecipeNode({ item, selectedLanguage, fallbackLanguages, primary = false
           href={item.href}
           className="block"
           onClick={(event) => event.stopPropagation()}
-          aria-label={`Ouvrir la fiche ${name}`}
+          aria-label={td('openItem', { name })}
         >
           {nodeBody}
         </Link>
@@ -131,14 +134,14 @@ function RecipeNode({ item, selectedLanguage, fallbackLanguages, primary = false
         <p className="font-medium text-slate-100">{name}</p>
         <div className="mt-2 flex flex-wrap gap-1.5 text-[11px]">
           <span className={`rounded-full border px-2 py-0.5 ${nodeAccentClasses(item.sourceCategory)}`}>
-            {sourceCategoryLabel(item.sourceCategory)}
+            {td(sourceCategoryLabelKey(item.sourceCategory))}
           </span>
           <span className="rounded-full border border-slate-600/80 px-2 py-0.5 text-slate-200">
             {item.type}
           </span>
           {typeof item.rarity === "number" ? (
             <span className="rounded-full border border-slate-600/80 px-2 py-0.5 text-slate-200">
-              Rarete {item.rarity}
+              {td('rarityLabel', { rarity: item.rarity })}
             </span>
           ) : null}
         </div>
@@ -165,7 +168,7 @@ function RecipeNode({ item, selectedLanguage, fallbackLanguages, primary = false
         {description ? (
           <p className="mt-2 text-xs leading-relaxed text-slate-300">{description}</p>
         ) : (
-          <p className="mt-2 text-xs text-slate-500">Description indisponible.</p>
+          <p className="mt-2 text-xs text-slate-500">{tc('descriptionUnavailable')}</p>
         )}
 
       </div>
@@ -174,6 +177,8 @@ function RecipeNode({ item, selectedLanguage, fallbackLanguages, primary = false
 }
 
 export default function DraftDetailClient({ recipe, availableLanguages }: DraftDetailClientProps) {
+  const t = useTranslations('draftDetail');
+  const tc = useTranslations('common');
   const preferredLanguage = normalizeLanguageCodes(["FR"], availableLanguages, ["FR", "EN"])[0];
   const selectedLanguageParser = useMemo(
     () =>
@@ -217,7 +222,7 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
               className="inline-flex items-center gap-2 rounded-lg border border-slate-600/80 px-3 py-2 text-sm text-slate-200 transition-colors hover:border-amber-400/40 hover:text-white"
             >
               <ArrowLeft className="h-4 w-4" />
-              Retour aux plans
+              {tc('backToPlans')}
             </Link>
           </div>
 
@@ -242,11 +247,11 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
             DRAFT #{recipe.draftId}
           </span>
           <span className="rounded-full border border-slate-600/80 px-3 py-1 text-slate-300">
-            Produit {recipe.product.type} x{recipe.productQuantity}
+            {t('productLabel', { type: recipe.product.type, quantity: recipe.productQuantity })}
           </span>
           {typeof recipe.product.rarity === "number" ? (
             <span className="rounded-full border border-slate-600/80 px-3 py-1 text-slate-300">
-              Rarete {recipe.product.rarity}
+              {t('rarityLabel', { rarity: recipe.product.rarity })}
             </span>
           ) : null}
           <span className="inline-flex items-center gap-1 rounded-full border border-slate-600/80 px-3 py-1 text-slate-300">
@@ -258,8 +263,8 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
 
       <section className="grid gap-5 xl:grid-cols-[1.35fr_0.95fr]">
         <article className="rounded-2xl border border-amber-500/30 bg-[radial-gradient(circle_at_50%_22%,rgba(245,158,11,0.16),rgba(15,23,42,0.72)_52%,rgba(2,6,23,0.92)_100%)] p-6">
-          <h2 className="text-lg font-semibold text-white">Procede de forge</h2>
-          <p className="mt-1 text-sm text-slate-300">Survole un node pour voir nom, description et lien vers la fiche.</p>
+          <h2 className="text-lg font-semibold text-white">{t('forgeProcessTitle')}</h2>
+          <p className="mt-1 text-sm text-slate-300">{t('forgeProcessHint')}</p>
 
           <div className="mt-8">
             <div className="flex justify-center">
@@ -306,7 +311,7 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
                 <img src={recipeIcon} alt={productName} className="max-h-full max-w-full object-contain" />
               </div>
               <div className="min-w-0">
-                <p className="text-xs uppercase tracking-[0.22em] text-amber-300/90">Resultat</p>
+                <p className="text-xs uppercase tracking-[0.22em] text-amber-300/90">{t('resultLabel')}</p>
                 <h1 className="mt-1 text-xl font-semibold text-white">{productName}</h1>
                 <p className="text-xs text-slate-400">
                   {recipe.product.type} x{recipe.productQuantity}
@@ -336,16 +341,16 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
             {productDescription ? (
               <p className="mt-3 whitespace-pre-wrap text-sm leading-relaxed text-slate-300">{productDescription}</p>
             ) : (
-              <p className="mt-3 text-sm text-slate-500">Description indisponible.</p>
+              <p className="mt-3 text-sm text-slate-500">{tc('descriptionUnavailable')}</p>
             )}
           </div>
 
           <div className="mt-4 space-y-3 text-sm">
             <div className="rounded-lg border border-slate-700/70 bg-slate-950/60 p-3">
-              <h2 className="text-xs uppercase tracking-[0.2em] text-slate-400">Synthese forge</h2>
+              <h2 className="text-xs uppercase tracking-[0.2em] text-slate-400">{t('forgeSummaryTitle')}</h2>
               <dl className="mt-2 space-y-1.5 text-slate-200">
                 <div className="flex items-center justify-between gap-3">
-                  <dt>Temps</dt>
+                  <dt>{t('timeLabel')}</dt>
                   <dd>{formatDuration(recipe.crafting.durationSec)}</dd>
                 </div>
                 <div className="flex items-center justify-between gap-3">
@@ -433,14 +438,14 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
                       <span
                         className={`rounded-full border px-2 py-0.5 ${nodeAccentClasses(ingredient.sourceCategory)}`}
                       >
-                        {sourceCategoryLabel(ingredient.sourceCategory)}
+                        {t(sourceCategoryLabelKey(ingredient.sourceCategory))}
                       </span>
                       <span className="rounded-full border border-slate-600/80 px-2 py-0.5 text-slate-300">
                         {ingredient.type}
                       </span>
                       {typeof ingredient.rarity === "number" ? (
                         <span className="rounded-full border border-slate-600/80 px-2 py-0.5 text-slate-300">
-                          Rarete {ingredient.rarity}
+                          {t('rarityLabel', { rarity: ingredient.rarity })}
                         </span>
                       ) : null}
                     </div>
@@ -450,7 +455,7 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
                 {ingredientDescription ? (
                   <p className="mt-3 text-xs leading-relaxed text-slate-300">{ingredientDescription}</p>
                 ) : (
-                  <p className="mt-3 text-xs text-slate-500">Description indisponible.</p>
+                  <p className="mt-3 text-xs text-slate-500">{tc('descriptionUnavailable')}</p>
                 )}
 
                 {ingredient.href ? (
@@ -458,7 +463,7 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
                     href={ingredient.href}
                     className="mt-3 inline-flex items-center gap-1 rounded-md border border-amber-500/35 bg-amber-500/10 px-2 py-1 text-xs text-amber-100 transition-colors hover:bg-amber-500/20"
                   >
-                    Ouvrir la fiche
+                    {t('openItem', { name: resolveDraftItemName(ingredient, selectedLanguage, availableLanguages) })}
                     <ExternalLink className="h-3.5 w-3.5" />
                   </Link>
                 ) : null}

@@ -1,6 +1,7 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 import { type ComponentType, useMemo, useState } from "react";
 import {
   ArrowLeft,
@@ -282,8 +283,9 @@ function DemonWedgeSlotCard({
   side: "left" | "right";
   showTrackAdjust?: boolean;
 }) {
+  const td = useTranslations('characterDetail');
   const icon = slot.item?.icon ?? ARMORY_DEFAULT_ICON;
-  const name = slot.item?.name ?? "Vide";
+  const name = slot.item?.name ?? td('demonWedgeEmpty');
   const href = slot.item?.href;
   const borderColor = ELEMENT_BORDER_COLORS[elementKey] ?? ELEMENT_BORDER_COLORS.Water;
   const glowColor = ELEMENT_GLOW_COLORS[elementKey] ?? ELEMENT_GLOW_COLORS.Water;
@@ -510,6 +512,7 @@ function BuildTabContent({
   onNavigateToStats?: () => void;
   skillIcons?: { skill1: { publicPath: string | null }; skill2: { publicPath: string | null }; skill3: { publicPath: string | null } };
 }) {
+  const t = useTranslations('characterDetail');
   const [activeBuildIndex, setActiveBuildIndex] = useState(0);
   const [showTrackAdjust, setShowTrackAdjust] = useState(true);
 
@@ -518,7 +521,7 @@ function BuildTabContent({
       <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-8 text-center">
         <Swords className="mx-auto h-10 w-10 text-slate-600" />
         <p className="mt-3 text-sm text-slate-400">
-          Aucun build recommande disponible pour le moment.
+          {t('noBuildAvailable')}
         </p>
       </section>
     );
@@ -562,7 +565,7 @@ function BuildTabContent({
         <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
           <h2 className="flex items-center gap-2 text-lg font-semibold text-white">
             <Swords className="h-4 w-4 text-indigo-400/80" />
-            Armes recommandees
+            {t('weaponsTitle')}
           </h2>
           <div className="mt-4 space-y-4">
             {(["melee", "ranged"] as const).map((type) => {
@@ -571,7 +574,7 @@ function BuildTabContent({
               return (
                 <div key={type}>
                   <h3 className="mb-2 text-xs font-medium uppercase tracking-wider text-slate-400">
-                    {type === "melee" ? "Melee" : "Distance"}
+                    {type === "melee" ? t('weaponMelee') : t('weaponRanged')}
                   </h3>
                   <div className="space-y-2">
                     {weapons.map((w, i) => (
@@ -599,7 +602,7 @@ function BuildTabContent({
                             </div>
                           </Link>
                         ) : (
-                          <p className="text-sm text-slate-500">Item non trouve</p>
+                          <p className="text-sm text-slate-500">{t('weaponItemNotFound')}</p>
                         )}
                         <span
                           className={`shrink-0 rounded-full px-2.5 py-0.5 text-xs font-medium ${
@@ -608,7 +611,7 @@ function BuildTabContent({
                               : "border border-slate-600/80 bg-slate-800/40 text-slate-300"
                           }`}
                         >
-                          {w.rank === "best" ? "Best" : "Alt"}
+                          {w.rank === "best" ? t('weaponBest') : t('weaponAlt')}
                         </span>
                       </div>
                     ))}
@@ -626,7 +629,7 @@ function BuildTabContent({
           <div className="flex items-center justify-between">
             <h2 className="flex items-center gap-2 text-lg font-semibold text-white">
               <Shield className="h-4 w-4 text-indigo-400/80" />
-              Sceaux demoniaques
+              {t('demonWedgesTitle')}
             </h2>
             {build.demonWedges.slots.some((s) => s.track !== null) && (
               <div className="group relative">
@@ -640,10 +643,10 @@ function BuildTabContent({
                   }`}
                 >
                   <span className="h-2 w-2 rounded-full" style={{ background: showTrackAdjust ? "#fbbf24" : "#64748b" }} />
-                  Ajustements de piste
+                  {t('demonWedgeTrackAdjust')}
                 </button>
                 <div className="pointer-events-none absolute right-0 top-full z-30 mt-2 hidden w-64 rounded-xl border border-slate-700/80 bg-slate-950/95 p-3 text-xs leading-relaxed text-slate-400 shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
-                  Les ajustements de piste permettent de modifier la polarite d&apos;un emplacement de sceau demoniaque a l&apos;aide de Modules de decalage de piste. Les icones dorees en bas de chaque emplacement indiquent la piste recommandee.
+                  {t('demonWedgeTrackTooltip')}
                 </div>
               </div>
             )}
@@ -672,7 +675,7 @@ function BuildTabContent({
         <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
           <h2 className="flex items-center gap-2 text-lg font-semibold text-white">
             <Swords className="h-4 w-4 text-indigo-400/80" />
-            Arme de Consonance
+            {t('consonanceTitle')}
           </h2>
           {build.consonanceWeapon.slots.length > 0 && (() => {
             const cw = build.consonanceWeapon!;
@@ -739,7 +742,7 @@ function BuildTabContent({
                         <BuildLocalizedText texts={cw.name} lang={selectedLanguage} />
                       </p>
                       <p className="mt-1.5 text-xs text-slate-400">
-                        Arme de Consonance — cliquez pour voir les details dans l&apos;onglet Attributs.
+                        {t('consonanceTooltip')}
                       </p>
                     </div>
                   </div>
@@ -774,7 +777,7 @@ function BuildTabContent({
         <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
           <h2 className="flex items-center gap-2 text-lg font-semibold text-white">
             <BarChart3 className="h-4 w-4 text-indigo-400/80" />
-            Priorite de stats
+            {t('statsPriorityTitle')}
           </h2>
           <ol className="mt-4 space-y-2">
             {build.statsPriority.map((stat, i) => (
@@ -799,42 +802,42 @@ function BuildTabContent({
         <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
           <h2 className="flex items-center gap-2 text-lg font-semibold text-white">
             <Sparkles className="h-4 w-4 text-indigo-400/80" />
-            Composition d&apos;equipe
+            {t('teamTitle')}
           </h2>
           <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {build.team.map((t, i) => {
-              const ec = t.character
-                ? ELEMENT_COLORS[t.character.element.key] ?? ELEMENT_COLORS.Water
+            {build.team.map((tm, i) => {
+              const ec = tm.character
+                ? ELEMENT_COLORS[tm.character.element.key] ?? ELEMENT_COLORS.Water
                 : ELEMENT_COLORS.Water;
               return (
                 <div
                   key={i}
                   className={`rounded-lg border ${ec.border} ${ec.bg} p-3`}
                 >
-                  {t.character ? (
+                  {tm.character ? (
                     <Link
-                      href={t.character.href}
+                      href={tm.character.href}
                       className="flex items-center gap-3 transition-colors hover:text-indigo-200"
                     >
-                      {t.character.portrait && (
+                      {tm.character.portrait && (
                         <img
-                          src={t.character.portrait}
+                          src={tm.character.portrait}
                           alt=""
                           className="h-12 w-12 shrink-0 rounded-full border border-slate-600 object-cover"
                         />
                       )}
                       <div className="min-w-0">
                         <p className="truncate text-sm font-medium text-slate-100">
-                          {t.character.name}
+                          {tm.character.name}
                         </p>
-                        <p className="text-xs text-slate-300">{t.role}</p>
+                        <p className="text-xs text-slate-300">{tm.role}</p>
                         <p className="truncate text-xs text-slate-400">
-                          <BuildLocalizedText texts={t.note} lang={selectedLanguage} />
+                          <BuildLocalizedText texts={tm.note} lang={selectedLanguage} />
                         </p>
                       </div>
                     </Link>
                   ) : (
-                    <p className="text-sm text-slate-500">Personnage non trouve</p>
+                    <p className="text-sm text-slate-500">{t('teamCharNotFound')}</p>
                   )}
                 </div>
               );
@@ -846,7 +849,7 @@ function BuildTabContent({
       {/* --- Genimon --- */}
       {hasGenimon && (
         <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
-          <h2 className="text-lg font-semibold text-white">Genimon</h2>
+          <h2 className="text-lg font-semibold text-white">{t('genimonTitle')}</h2>
           <div className="mt-4 space-y-2">
             {build.genimon.map((g, i) => (
               <div
@@ -866,7 +869,7 @@ function BuildTabContent({
                     <p className="truncate text-sm font-medium text-slate-100">{g.item.name}</p>
                   </Link>
                 ) : (
-                  <p className="text-sm text-slate-500">Genimon non trouve</p>
+                  <p className="text-sm text-slate-500">{t('genimonNotFound')}</p>
                 )}
                 <span
                   className={`shrink-0 rounded-full px-2.5 py-0.5 text-xs font-medium ${
@@ -889,7 +892,7 @@ function BuildTabContent({
         const sorted = build.skillPriority.slice().sort((a, b) => b.priority - a.priority);
         return (
           <section className="relative py-6">
-            <h2 className="mb-8 text-lg font-semibold text-white">Priorite de competences</h2>
+            <h2 className="mb-8 text-lg font-semibold text-white">{t('skillPriorityTitle')}</h2>
 
             <div className="relative ml-4 md:ml-8">
               {/* Vertical connecting vine */}
@@ -980,7 +983,7 @@ function BuildTabContent({
       {/* --- Notes --- */}
       {hasNotes && (
         <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
-          <h2 className="text-lg font-semibold text-white">Notes</h2>
+          <h2 className="text-lg font-semibold text-white">{t('notesTitle')}</h2>
           <p className="mt-3 text-sm leading-relaxed text-slate-300">
             <BuildLocalizedText texts={build.notes} lang={selectedLanguage} />
           </p>
@@ -1000,6 +1003,8 @@ export default function CharacterDetailClient({
   levelUpCurves,
   builds = [],
 }: CharacterDetailClientProps) {
+  const t = useTranslations('characterDetail');
+  const tc = useTranslations('common');
   const [favoriteChars] = useAtom(charactersFavoritesAtom);
   const [, toggleFavorite] = useAtom(toggleCharacterFavoriteAtom);
 
@@ -1114,7 +1119,7 @@ export default function CharacterDetailClient({
               className="inline-flex items-center gap-2 rounded-lg border border-slate-600/80 px-3 py-2 text-sm text-slate-200 transition-colors hover:border-indigo-400/40 hover:text-white"
             >
               <ArrowLeft className="h-4 w-4" />
-              Retour liste
+              {tc('backToList')}
             </Link>
             <button
               type="button"
@@ -1128,7 +1133,7 @@ export default function CharacterDetailClient({
               <Heart
                 className={`h-4 w-4 ${isFavorite ? "fill-rose-400 text-rose-400" : ""}`}
               />
-              {isFavorite ? "Retirer favori" : "Ajouter favori"}
+              {isFavorite ? tc('removeFavorite') : tc('addFavorite')}
             </button>
           </div>
 
@@ -1137,7 +1142,7 @@ export default function CharacterDetailClient({
               <Link
                 href={`/characters/${prevCharacter.id}`}
                 className="inline-flex items-center gap-1 rounded-lg border border-slate-600/80 px-2 py-2 text-sm text-slate-300 transition-colors hover:border-indigo-400/40 hover:text-white"
-                aria-label={`Personnage precedent : ${prevCharacter.internalName}`}
+                aria-label={t('previousCharacter', { name: prevCharacter.internalName })}
               >
                 <ChevronLeft className="h-4 w-4" />
               </Link>
@@ -1146,7 +1151,7 @@ export default function CharacterDetailClient({
               <Link
                 href={`/characters/${nextCharacter.id}`}
                 className="inline-flex items-center gap-1 rounded-lg border border-slate-600/80 px-2 py-2 text-sm text-slate-300 transition-colors hover:border-indigo-400/40 hover:text-white"
-                aria-label={`Personnage suivant : ${nextCharacter.internalName}`}
+                aria-label={t('nextCharacter', { name: nextCharacter.internalName })}
               >
                 <ChevronRight className="h-4 w-4" />
               </Link>
@@ -1615,7 +1620,7 @@ export default function CharacterDetailClient({
             <div className="rounded-xl border border-purple-500/30 bg-purple-500/5 p-5">
               <h2 className="flex items-center gap-2 text-lg font-semibold text-white">
                 <Swords className="h-4 w-4 text-purple-400/80" />
-                Arme de Consonance
+                {t('consonanceTitle')}
               </h2>
               <div className="mt-4 space-y-3">
                 {character.consonanceWeapons.map((cw) => {
@@ -1835,8 +1840,8 @@ export default function CharacterDetailClient({
           </h2>
           <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {catalog.availableLanguages.map((langCode) => {
-              const t = character.translations[langCode];
-              if (!t) return null;
+              const tr = character.translations[langCode];
+              if (!tr) return null;
               const isActive = langCode === selectedLanguage;
               return (
                 <button
@@ -1853,16 +1858,16 @@ export default function CharacterDetailClient({
                     {getLanguageLabel(langCode)}
                   </p>
                   <p className="mt-1 text-sm font-medium text-slate-100">
-                    {t.name ?? "N/A"}
+                    {tr.name ?? "N/A"}
                   </p>
-                  {t.subtitle && (
+                  {tr.subtitle && (
                     <p className="mt-0.5 truncate text-xs text-slate-400">
-                      {t.subtitle}
+                      {tr.subtitle}
                     </p>
                   )}
-                  {t.campName && (
+                  {tr.campName && (
                     <p className="mt-1 truncate text-xs text-slate-500">
-                      {t.campName}
+                      {tr.campName}
                     </p>
                   )}
                 </button>
@@ -1952,7 +1957,7 @@ export default function CharacterDetailClient({
                 type="button"
                 onClick={() => setZoomedPortrait(null)}
                 className="rounded-full p-1 text-slate-300 transition-colors hover:bg-slate-800 hover:text-white"
-                aria-label="Fermer"
+                aria-label={tc('close')}
               >
                 <X className="h-4 w-4" />
               </button>

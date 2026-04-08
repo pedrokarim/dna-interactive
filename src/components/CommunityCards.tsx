@@ -1,8 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 export default function CommunityCards() {
+  const t = useTranslations("community");
   return (
     <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
       {/* Streamer Card */}
@@ -41,16 +43,15 @@ export default function CommunityCards() {
           </motion.div>
           <div>
             <h3 className="text-xl font-semibold text-white group-hover:text-purple-300 transition-colors">
-              Velkaine
+              {t("streamerName")}
             </h3>
             <p className="text-sm text-gray-400">
-              Streamer & Joueur DNA
+              {t("streamerRole")}
             </p>
           </div>
         </div>
         <p className="text-gray-300 mb-6 leading-relaxed">
-          Suivez Velkaine en live pour découvrir ses sessions de jeu,
-          ses stratégies et ses découvertes dans le monde de DNA.
+          {t("streamerDescription")}
         </p>
         <a
           href="https://www.twitch.tv/velkaine"
@@ -65,7 +66,7 @@ export default function CommunityCards() {
           >
             <path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z" />
           </svg>
-          Suivre sur Twitch
+          {t("streamerCta")}
         </a>
       </motion.div>
 
@@ -99,17 +100,15 @@ export default function CommunityCards() {
           </motion.div>
           <div>
             <h3 className="text-xl font-semibold text-white group-hover:text-green-300 transition-colors">
-              Wiki Communautaire
+              {t("wikiTitle")}
             </h3>
             <p className="text-sm text-gray-400">
-              Guide complet du jeu
+              {t("wikiRole")}
             </p>
           </div>
         </div>
         <p className="text-gray-300 mb-6 leading-relaxed">
-          Accédez au wiki communautaire complet créé par Velkaine et la
-          communauté. Toutes les informations essentielles sur DNA en un
-          seul endroit.
+          {t("wikiDescription")}
         </p>
         <a
           href="https://docs.google.com/spreadsheets/d/1eDUiExtAhh3igmfUZG6DOU0ZlbnTaHIObCqLjLKGaQI/edit?gid=692497117#gid=692497117"
@@ -124,7 +123,7 @@ export default function CommunityCards() {
           >
             <path d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032 s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2 C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.748L12.545,10.239z" />
           </svg>
-          Consulter le Wiki
+          {t("wikiCta")}
         </a>
       </motion.div>
     </div>

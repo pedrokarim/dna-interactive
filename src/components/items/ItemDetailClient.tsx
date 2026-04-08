@@ -1,6 +1,7 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 import { useMemo, useState, type ReactNode } from "react";
 import { ArrowLeft, ChevronDown, Database, Heart, Languages, SlidersHorizontal, Tag } from "lucide-react";
 import { useAtom } from "jotai";
@@ -34,6 +35,7 @@ function formatRawFieldValue(value: ItemRawField): string {
 
 function RawFieldsSection({ fieldEntries }: { fieldEntries: [string, ItemRawField][] }) {
   const [open, setOpen] = useState(false);
+  const ti = useTranslations('itemDetail');
 
   return (
     <section className="rounded-xl border border-slate-700/70 bg-slate-900/55">
@@ -42,7 +44,7 @@ function RawFieldsSection({ fieldEntries }: { fieldEntries: [string, ItemRawFiel
         onClick={() => setOpen((prev) => !prev)}
         className="flex w-full items-center justify-between p-5 text-left"
       >
-        <h2 className="text-lg font-semibold text-white">Raw fields</h2>
+        <h2 className="text-lg font-semibold text-white">{ti('rawFieldsTitle')}</h2>
         <ChevronDown
           className={`h-5 w-5 text-slate-400 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
         />
@@ -247,6 +249,8 @@ function parseBattlePetAttributes(value: ItemRawField | undefined): ParsedBattle
 }
 
 export default function ItemDetailClient({ category, item, relatedDrafts = [] }: ItemDetailClientProps) {
+  const t = useTranslations('itemDetail');
+  const tc = useTranslations('common');
   const [favoriteItems] = useAtom(itemsFavoritesAtom);
   const [, toggleItemFavorite] = useAtom(toggleItemFavoriteAtom);
   const isModsCategory = category.id === "mods";
@@ -431,7 +435,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
               className="inline-flex items-center gap-2 rounded-lg border border-slate-600/80 px-3 py-2 text-sm text-slate-200 transition-colors hover:border-indigo-400/40 hover:text-white"
             >
               <ArrowLeft className="h-4 w-4" />
-              Retour liste
+              {tc('backToList')}
             </Link>
             <button
               type="button"
@@ -443,7 +447,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
               }`}
             >
               <Heart className={`h-4 w-4 ${isFavorite ? "fill-rose-400 text-rose-400" : ""}`} />
-              {isFavorite ? "Retirer favori" : "Ajouter favori"}
+              {isFavorite ? tc('removeFavorite') : tc('addFavorite')}
             </button>
           </div>
 

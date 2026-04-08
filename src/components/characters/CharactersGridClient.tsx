@@ -1,6 +1,7 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useState } from "react";
 import {
   ChevronRight,
@@ -128,6 +129,8 @@ export default function CharactersGridClient({
   catalog,
   characters,
 }: CharactersGridClientProps) {
+  const t = useTranslations('characters');
+  const tc = useTranslations('common');
   const [persistedFilters, setPersistedFilters] = useAtom(charactersFiltersStorageAtom);
   const [favoriteChars] = useAtom(charactersFavoritesAtom);
   const [, toggleFavorite] = useAtom(toggleCharacterFavoriteAtom);
@@ -377,23 +380,22 @@ export default function CharactersGridClient({
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div>
             <p className="text-xs uppercase tracking-[0.3em] text-indigo-400/80">
-              Personnages
+              {t('headerLabel')}
             </p>
             <h1 className="mt-2 text-3xl font-semibold text-white">
-              Personnages Duet Night Abyss
+              {t('title')}
             </h1>
             <p className="mt-2 max-w-2xl text-sm text-slate-300">
-              Base de donnees des personnages jouables : elements, armes, factions, portraits et
-              traductions multilingues.
+              {t('description')}
             </p>
             <p className="mt-3 text-sm text-slate-400">
-              {filteredCharacters.length} / {characters.length} personnages
+              {t('count', { filtered: filteredCharacters.length, total: characters.length })}
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
             <span className="inline-flex items-center gap-2 rounded-lg border border-rose-500/40 bg-rose-500/10 px-4 py-2 text-sm text-rose-100">
               <Heart className="h-4 w-4" />
-              Favoris ({favoriteCount})
+              {tc('favorites')} ({favoriteCount})
             </span>
           </div>
         </div>
@@ -408,14 +410,14 @@ export default function CharactersGridClient({
                 updateQueryFilters({ q: event.target.value, page: 1 })
               }
               className="w-full bg-transparent text-sm text-slate-100 outline-none placeholder:text-slate-500"
-              placeholder="Rechercher par nom, element, arme, faction..."
+              placeholder={t('searchPlaceholder')}
             />
           </label>
 
           <div className="rounded-xl border border-slate-700/70 bg-slate-950/60 p-3">
             <div className="mb-2 flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-slate-400">
               <Languages className="h-4 w-4 text-indigo-400/80" />
-              Langues affichees
+              {tc('displayedLanguages')}
             </div>
             <div className="flex flex-wrap items-center gap-2">
               {selectedLanguages.map((code) => (
@@ -441,7 +443,7 @@ export default function CharactersGridClient({
                 onChange={(event) => addLanguage(event.target.value)}
                 className="rounded-lg border border-slate-600/80 bg-slate-900 px-2 py-1 text-xs text-slate-200 outline-none"
               >
-                <option value="">Ajouter langue...</option>
+                <option value="">{tc('addLanguage')}</option>
                 {unselectedLanguages.map((code) => (
                   <option key={code} value={code}>
                     {getLanguageLabel(code)}
@@ -457,7 +459,7 @@ export default function CharactersGridClient({
           <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2">
             <div className="mb-1 flex items-center gap-2 text-xs text-slate-400">
               <SlidersHorizontal className="h-3.5 w-3.5 text-indigo-400/80" />
-              Element
+              {t('filterElement')}
             </div>
             <select
               value={elementFilter}
@@ -466,7 +468,7 @@ export default function CharactersGridClient({
               }
               className="w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-sm text-slate-100"
             >
-              <option value="all">Tous</option>
+              <option value="all">{tc('all')}</option>
               {catalog.elements.map((el) => (
                 <option key={el.key} value={el.key}>
                   {el.label} ({el.key})
@@ -478,7 +480,7 @@ export default function CharactersGridClient({
           <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2">
             <div className="mb-1 flex items-center gap-2 text-xs text-slate-400">
               <SlidersHorizontal className="h-3.5 w-3.5 text-indigo-400/80" />
-              Arme
+              {t('filterWeapon')}
             </div>
             <select
               value={weaponFilter}
@@ -487,7 +489,7 @@ export default function CharactersGridClient({
               }
               className="w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-sm text-slate-100"
             >
-              <option value="all">Toutes</option>
+              <option value="all">{tc('allFeminine')}</option>
               {catalog.weaponTypes.map((wt) => (
                 <option key={wt} value={wt}>
                   {wt}
@@ -499,7 +501,7 @@ export default function CharactersGridClient({
           <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2">
             <div className="mb-1 flex items-center gap-2 text-xs text-slate-400">
               <SlidersHorizontal className="h-3.5 w-3.5 text-indigo-400/80" />
-              Faction
+              {t('filterFaction')}
             </div>
             <select
               value={campFilter}
@@ -508,7 +510,7 @@ export default function CharactersGridClient({
               }
               className="w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-sm text-slate-100"
             >
-              <option value="all">Toutes</option>
+              <option value="all">{tc('allFeminine')}</option>
               {catalog.camps.map((c) => (
                 <option key={c.key} value={c.key}>
                   {c.key}
@@ -518,7 +520,7 @@ export default function CharactersGridClient({
           </div>
 
           <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2">
-            <div className="mb-1 text-xs text-slate-400">Tri</div>
+            <div className="mb-1 text-xs text-slate-400">{tc('sort')}</div>
             <select
               value={sortMode}
               onChange={(event) =>
@@ -529,10 +531,10 @@ export default function CharactersGridClient({
               }
               className="w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-sm text-slate-100"
             >
-              <option value="default">Par defaut</option>
-              <option value="name">Par nom</option>
-              <option value="element">Par element</option>
-              <option value="rarity">Par rarete</option>
+              <option value="default">{t('sortDefault')}</option>
+              <option value="name">{t('sortName')}</option>
+              <option value="element">{t('sortElement')}</option>
+              <option value="rarity">{t('sortRarity')}</option>
             </select>
           </div>
         </div>
@@ -540,15 +542,14 @@ export default function CharactersGridClient({
         {/* Result count + reset */}
         <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-slate-700/60 bg-slate-950/60 px-3 py-2 text-sm text-slate-300">
           <p>
-            Affichage {filteredCharacters.length === 0 ? 0 : pageStart + 1}-
-            {Math.min(pageEnd, filteredCharacters.length)} sur {filteredCharacters.length}
+            {tc('displayRange', { start: filteredCharacters.length === 0 ? 0 : pageStart + 1, end: Math.min(pageEnd, filteredCharacters.length), total: filteredCharacters.length })}
           </p>
           <button
             type="button"
             onClick={resetFilters}
             className="rounded-md border border-slate-700 px-3 py-1 text-xs text-slate-300 transition-colors hover:border-indigo-400/40 hover:text-white"
           >
-            Reinitialiser filtres
+            {tc('resetFilters')}
           </button>
         </div>
       </section>
@@ -557,10 +558,10 @@ export default function CharactersGridClient({
       {filteredCharacters.length === 0 ? (
         <div className="rounded-xl border border-slate-700 bg-slate-900/45 p-10 text-center">
           <p className="text-lg text-slate-200">
-            Aucun personnage ne correspond aux filtres actuels.
+            {t('noResults')}
           </p>
           <p className="mt-2 text-sm text-slate-400">
-            Ajuste les filtres ou la recherche.
+            {t('noResultsHint')}
           </p>
         </div>
       ) : (
@@ -653,7 +654,7 @@ export default function CharactersGridClient({
                         });
                       }}
                       className="absolute bottom-2 right-2 rounded-full border border-slate-700 bg-slate-900/90 p-1.5 text-slate-200 opacity-0 shadow-sm transition-all hover:border-indigo-400/60 hover:bg-indigo-500/80 hover:text-white group-hover:opacity-100"
-                      aria-label={`Agrandir le portrait de ${lead.name ?? character.internalName}`}
+                      aria-label={t('zoomPortrait', { name: lead.name ?? character.internalName })}
                     >
                       <ZoomIn className="h-3.5 w-3.5" />
                     </button>
@@ -679,7 +680,7 @@ export default function CharactersGridClient({
                         toggleFavorite(character.id);
                       }}
                       aria-label={
-                        isFavorite ? "Retirer des favoris" : "Ajouter aux favoris"
+                        isFavorite ? t('removeFromFavorites') : t('addToFavorites')
                       }
                       className={`shrink-0 rounded-full p-1.5 transition-colors ${
                         isFavorite
@@ -740,9 +741,7 @@ export default function CharactersGridClient({
       {filteredCharacters.length > 0 && (
         <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-700/70 bg-slate-900/50 p-3">
           <p className="text-sm text-slate-300">
-            Affichage {filteredCharacters.length === 0 ? 0 : pageStart + 1}-
-            {Math.min(pageEnd, filteredCharacters.length)} sur{" "}
-            {filteredCharacters.length}
+            {tc('displayRange', { start: filteredCharacters.length === 0 ? 0 : pageStart + 1, end: Math.min(pageEnd, filteredCharacters.length), total: filteredCharacters.length })}
           </p>
 
           <div className="flex flex-wrap items-center justify-end gap-3">
@@ -752,7 +751,7 @@ export default function CharactersGridClient({
                 onClick={() => updateQueryFilters({ page: 1 })}
                 disabled={safeCurrentPage === 1}
                 className="rounded-md border border-slate-700 px-2 py-1 text-xs text-slate-200 transition-colors hover:border-indigo-400/40 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
-                aria-label="Premiere page"
+                aria-label={tc('paginationFirst')}
               >
                 {"<<"}
               </button>
@@ -763,7 +762,7 @@ export default function CharactersGridClient({
                 }
                 disabled={safeCurrentPage === 1}
                 className="rounded-md border border-slate-700 px-2 py-1 text-xs text-slate-200 transition-colors hover:border-indigo-400/40 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
-                aria-label="Page precedente"
+                aria-label={tc('paginationPrevious')}
               >
                 {"<"}
               </button>
@@ -787,7 +786,7 @@ export default function CharactersGridClient({
                         ? "border-indigo-400/70 bg-indigo-500/25 text-indigo-100"
                         : "border-slate-700 text-slate-200 hover:border-indigo-400/40 hover:text-white"
                     }`}
-                    aria-label={`Aller a la page ${page}`}
+                    aria-label={tc('paginationGoTo', { page })}
                     aria-current={page === safeCurrentPage ? "page" : undefined}
                   >
                     {page}
@@ -804,7 +803,7 @@ export default function CharactersGridClient({
                 }
                 disabled={safeCurrentPage === totalPages}
                 className="rounded-md border border-slate-700 px-2 py-1 text-xs text-slate-200 transition-colors hover:border-indigo-400/40 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
-                aria-label="Page suivante"
+                aria-label={tc('paginationNext')}
               >
                 {">"}
               </button>
@@ -813,7 +812,7 @@ export default function CharactersGridClient({
                 onClick={() => updateQueryFilters({ page: totalPages })}
                 disabled={safeCurrentPage === totalPages}
                 className="rounded-md border border-slate-700 px-2 py-1 text-xs text-slate-200 transition-colors hover:border-indigo-400/40 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
-                aria-label="Derniere page"
+                aria-label={tc('paginationLast')}
               >
                 {">>"}
               </button>
@@ -863,7 +862,7 @@ export default function CharactersGridClient({
                 type="button"
                 onClick={() => setPreviewPortrait(null)}
                 className="rounded-full p-1 text-slate-300 transition-colors hover:bg-slate-800 hover:text-white"
-                aria-label="Fermer l'apercu"
+                aria-label={tc('close')}
               >
                 <X className="h-4 w-4" />
               </button>

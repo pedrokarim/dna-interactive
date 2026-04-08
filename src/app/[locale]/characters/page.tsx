@@ -1,9 +1,11 @@
 import { Suspense } from "react";
+import { getTranslations } from "next-intl/server";
 import CharactersGridClient from "@/components/characters/CharactersGridClient";
 import CharactersSuspenseFallback from "@/components/characters/CharactersSuspenseFallback";
 import { getAllCharacters, getCharactersCatalog } from "@/lib/characters/catalog";
 
-export default function CharactersPage() {
+export default async function CharactersPage() {
+  const tCharacters = await getTranslations('characters');
   const catalog = getCharactersCatalog();
   const characters = getAllCharacters();
 
@@ -11,8 +13,8 @@ export default function CharactersPage() {
     <Suspense
       fallback={
         <CharactersSuspenseFallback
-          title="Chargement des personnages"
-          description="Initialisation des filtres, tri et pagination."
+          title={tCharacters('loading')}
+          description={tCharacters('loadingDescription')}
         />
       }
     >

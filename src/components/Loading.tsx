@@ -1,4 +1,7 @@
+"use client";
+
 import { Loader2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 interface LoadingProps {
   /**
@@ -25,10 +28,12 @@ interface LoadingProps {
 
 export default function Loading({
   mode = "simple",
-  message = "Chargement...",
+  message,
   size = 24,
   className = "",
 }: LoadingProps) {
+  const t = useTranslations("common");
+  const resolvedMessage = message ?? t("loading");
   const spinner = (
     <Loader2
       className={`animate-spin ${className}`}
@@ -47,7 +52,7 @@ export default function Loading({
     return (
       <div className="flex items-center space-x-3">
         {spinner}
-        <span className="text-gray-600 dark:text-gray-300">{message}</span>
+        <span className="text-gray-600 dark:text-gray-300">{resolvedMessage}</span>
       </div>
     );
   }
@@ -57,9 +62,9 @@ export default function Loading({
     return (
       <div className="flex flex-col items-center justify-center h-full py-8">
         {spinner}
-        {message && (
+        {resolvedMessage && (
           <p className="mt-4 text-gray-600 dark:text-gray-300 text-center">
-            {message}
+            {resolvedMessage}
           </p>
         )}
       </div>
@@ -72,9 +77,9 @@ export default function Loading({
       <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9999] flex items-center justify-center">
         <div className="bg-white dark:bg-slate-800 rounded-lg shadow-xl p-8 flex flex-col items-center space-y-4 max-w-sm mx-4">
           {spinner}
-          {message && (
+          {resolvedMessage && (
             <p className="text-gray-900 dark:text-white text-center font-medium">
-              {message}
+              {resolvedMessage}
             </p>
           )}
         </div>
