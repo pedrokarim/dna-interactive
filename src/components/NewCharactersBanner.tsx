@@ -80,15 +80,35 @@ export default function NewCharactersBanner() {
 
   return (
     <section className="relative w-full overflow-hidden" style={{ height: "85vh", minHeight: 550, maxHeight: 800 }}>
-      {/* Character full art as BACKGROUND */}
+      {/* z-0: Deco calligraphy characters (lowest layer) */}
       <AnimatePresence mode="wait">
         <motion.div
-          key={active.id + "-bg"}
+          key={active.id + "-deco"}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 0.04, y: 0 }}
+          exit={{ opacity: 0, y: -30 }}
+          transition={{ duration: 0.8 }}
+          className="absolute z-0 top-1/2 left-[15%] -translate-y-1/2 select-none pointer-events-none"
+        >
+          <span className="text-[14rem] md:text-[20rem] lg:text-[26rem] font-black text-white leading-none whitespace-nowrap">
+            {active.decoText}
+          </span>
+        </motion.div>
+      </AnimatePresence>
+
+      {/* z-[1]: Dark gradient - left side for text readability */}
+      <div className="absolute inset-0 z-[1] bg-gradient-to-r from-slate-950 via-slate-950/85 to-transparent" />
+      <div className="absolute inset-0 z-[1] bg-gradient-to-t from-slate-950/80 via-transparent to-slate-950/40" />
+
+      {/* z-[2]: Character full art - ABOVE the gradient */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={active.id + "-art"}
           initial={{ opacity: 0, scale: 1.05 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="absolute inset-0"
+          className="absolute inset-0 z-[2]"
         >
           <Image
             src={active.fullImage}
@@ -101,28 +121,8 @@ export default function NewCharactersBanner() {
         </motion.div>
       </AnimatePresence>
 
-      {/* Dark overlay gradient - left side for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-slate-950/40" />
-
-      {/* Deco calligraphy characters */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={active.id + "-deco"}
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 0.04, y: 0 }}
-          exit={{ opacity: 0, y: -30 }}
-          transition={{ duration: 0.8 }}
-          className="absolute top-1/2 left-[15%] -translate-y-1/2 select-none pointer-events-none"
-        >
-          <span className="text-[14rem] md:text-[20rem] lg:text-[26rem] font-black text-white leading-none whitespace-nowrap">
-            {active.decoText}
-          </span>
-        </motion.div>
-      </AnimatePresence>
-
-      {/* Content overlay */}
-      <div className="relative z-10 h-full flex flex-col justify-center px-8 md:px-16 lg:px-24">
+      {/* z-[3]: Content overlay - text + selectors (highest layer) */}
+      <div className="relative z-[3] h-full flex flex-col justify-center px-8 md:px-16 lg:px-24">
         {/* Badge */}
         <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 backdrop-blur-sm border border-white/15 rounded-full mb-6 w-fit">
           <Sparkles className="w-3.5 h-3.5 text-white/70" />
@@ -213,7 +213,7 @@ export default function NewCharactersBanner() {
       </div>
 
       {/* Bottom fade into page */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-slate-900 to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-24 z-[3] bg-gradient-to-t from-slate-900 to-transparent pointer-events-none" />
     </section>
   );
 }

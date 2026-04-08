@@ -67,6 +67,7 @@ export const ASSETS_PATHS = {
     "/assets/worldview/worldview-9.webp",
     "/assets/worldview/worldview-10.webp",
     "/assets/worldview/worldview-11.webp",
+    "/assets/official-v1.3/bg.webp",
   ],
 } as const;
 
