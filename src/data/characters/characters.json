@@ -166,9 +166,9 @@
       "ES": {
         "name": "Rhythm",
         "subtitle": "Buscador de Faro",
-        "birthday": "Imperio Hyperboreano",
+        "birthday": "Imperio Hiperbóreo",
         "force": "La 6.ª Legión",
-        "campName": "Imperio Hyperboreano"
+        "campName": "Imperio Hiperbóreo"
       },
       "FR": {
         "name": "Rhythm",
@@ -374,9 +374,9 @@
       "ES": {
         "name": "Randy",
         "subtitle": "Holgazán Astuto",
-        "birthday": "Imperio Hyperboreano",
+        "birthday": "Imperio Hiperbóreo",
         "force": "La 13.ª Legión",
-        "campName": "Imperio Hyperboreano"
+        "campName": "Imperio Hiperbóreo"
       },
       "FR": {
         "name": "Randy",
@@ -581,7 +581,7 @@
       "ES": {
         "name": "Outsider",
         "subtitle": "El Forastero",
-        "birthday": "Imperio Hyperboreano",
+        "birthday": "Imperio Hiperbóreo",
         "force": "Los Noctoviajeros",
         "campName": "Los Noctoviajeros"
       },
@@ -785,7 +785,7 @@
         "subtitle": "Gracia en la Lluvia",
         "birthday": "Imperio Hiperbóreo",
         "force": "La 13.ª Legión",
-        "campName": "Imperio Hyperboreano"
+        "campName": "Imperio Hiperbóreo"
       },
       "FR": {
         "name": "Daphne",
@@ -984,7 +984,7 @@
       "ES": {
         "name": "Yale y Oliver",
         "subtitle": "Krackle × Kaboom",
-        "birthday": "Imperio Hyperboreano",
+        "birthday": "Imperio Hiperbóreo",
         "force": "No afiliado",
         "campName": "Sin afiliación"
       },
@@ -1186,9 +1186,9 @@
       "ES": {
         "name": "Hellfire",
         "subtitle": "Penitenciaría Infernal",
-        "birthday": "Imperio Hyperboreano",
+        "birthday": "Imperio Hiperbóreo",
         "force": "Prisión Militar Real",
-        "campName": "Imperio Hyperboreano"
+        "campName": "Imperio Hiperbóreo"
       },
       "FR": {
         "name": "Vulcera",
@@ -1388,7 +1388,7 @@
       "ES": {
         "name": "Margie",
         "subtitle": "Vagabunda del Paisaje Urbano",
-        "birthday": "Imperio Hyperboreano",
+        "birthday": "Imperio Hiperbóreo",
         "force": "No afiliado",
         "campName": "Sin afiliación"
       },
@@ -1628,7 +1628,7 @@
       "ES": {
         "name": "Berenica",
         "subtitle": "El Futuro Expectante",
-        "birthday": "Imperio Hyperborean",
+        "birthday": "Imperio Hiperbóreo",
         "force": "No afiliado",
         "campName": "Los Noctoviajeros"
       },
@@ -1835,7 +1835,7 @@
       "ES": {
         "name": "Phantasio",
         "subtitle": "Cantor Anónimo",
-        "birthday": "Imperio Hyperboreano",
+        "birthday": "Imperio Hiperbóreo",
         "force": "No afiliado",
         "campName": "Sin afiliación"
       },
@@ -1888,8 +1888,8 @@
     },
     "rarity": 5,
     "maxLevel": 80,
-    "colorVar": null,
-    "gender": null,
+    "colorVar": "Pink",
+    "gender": true,
     "sortPriority": 4006,
     "charPieceId": 1003202,
     "unlockRequiredPiece": 30,
@@ -1926,23 +1926,56 @@
       }
     ],
     "baseStats": {
-      "atk": 13,
+      "atk": 25,
       "atkGrowCurve": "ATKS",
-      "def": 345,
+      "def": 330,
       "defGrowCurve": "DEFS",
-      "maxHp": 185,
+      "maxHp": 120,
       "maxHpGrowCurve": "MaxHpS",
       "maxES": 120,
       "maxESGrowCurve": "MaxESS",
-      "maxSp": 200
+      "maxSp": 160
     },
-    "addonAttrs": [],
+    "addonAttrs": [
+      {
+        "attrId": 320201,
+        "attrName": "ATK",
+        "rate": 0.2,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_08.png",
+        "nameKey": "ADDONATTR_320201_NAME"
+      },
+      {
+        "attrId": 320202,
+        "attrName": "ATK",
+        "rate": 0.3,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_08.png",
+        "nameKey": "ADDONATTR_320202_NAME"
+      },
+      {
+        "attrId": 320203,
+        "attrName": "SkillIntensity",
+        "rate": 0.08,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_12.png",
+        "nameKey": "ADDONATTR_320203_NAME"
+      },
+      {
+        "attrId": 320204,
+        "attrName": "SkillIntensity",
+        "rate": 0.12,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_12.png",
+        "nameKey": "ADDONATTR_320204_NAME"
+      }
+    ],
     "positioning": [
       "DPS",
       "SkillDPS",
       "Support"
     ],
-    "recommendAttr": [],
+    "recommendAttr": [
+      "ATK_Fire",
+      "SkillIntensity",
+      "SkillEfficiency"
+    ],
     "ascensionLevels": [
       20,
       30,
@@ -1954,19 +1987,19 @@
     "textKeys": {
       "nameKey": "UI_CHAR_NAME_3202",
       "subtitleKey": "UI_CHAR_SUBTITLE_3202",
-      "birthdayKey": null,
-      "forceKey": null,
+      "birthdayKey": "UI_CHAR_BIRTH_3202",
+      "forceKey": "UI_CHAR_FORCE_3202",
       "campNameKey": "Camp_Name_Diguo"
     },
     "portraits": {
       "gacha": {
-        "publicPath": null
+        "publicPath": "/assets/characters/gacha/T_Gacha_AvatarKami.png"
       },
       "head": {
         "publicPath": "/assets/characters/head/T_Head_Kami.png"
       },
       "icon": {
-        "publicPath": null
+        "publicPath": "/assets/characters/icon/T_Icon_Kami.png"
       },
       "bust": {
         "publicPath": "/assets/characters/bust/T_Bust_Kami.png"
@@ -1981,63 +2014,63 @@
     "consonanceWeapons": [],
     "skillIcons": {
       "skill1": {
-        "publicPath": null
+        "publicPath": "/assets/characters/skills/T_Skill_Kami01.png"
       },
       "skill2": {
-        "publicPath": null
+        "publicPath": "/assets/characters/skills/T_Skill_Kami02.png"
       },
       "skill3": {
-        "publicPath": null
+        "publicPath": "/assets/characters/skills/T_Skill_Kami03.png"
       }
     },
     "translations": {
       "DE": {
         "name": "Camilla",
-        "subtitle": null,
-        "birthday": null,
-        "force": null,
+        "subtitle": "Karmesinnektar",
+        "birthday": "Hyperborean Empire",
+        "force": "None",
         "campName": "Hyperboreisches Imperium"
       },
       "EN": {
         "name": "Camilla",
-        "subtitle": null,
-        "birthday": null,
-        "force": null,
+        "subtitle": "Scarlet Nectar",
+        "birthday": "Hyperborean Empire",
+        "force": "None",
         "campName": "The Hyperborean Empire"
       },
       "ES": {
         "name": "Camilla",
-        "subtitle": null,
-        "birthday": null,
-        "force": null,
-        "campName": "Imperio Hyperboreano"
+        "subtitle": "Néctar Escarlata",
+        "birthday": "Hyperborean Empire",
+        "force": "None",
+        "campName": "Imperio Hiperbóreo"
       },
       "FR": {
         "name": "Camilla",
-        "subtitle": null,
-        "birthday": null,
-        "force": null,
+        "subtitle": "Cru Écarlate",
+        "birthday": "Empire Hyperboréen",
+        "force": "Aucune affiliation",
         "campName": "Empire Hyperboréen"
       },
       "JP": {
         "name": "カミラ",
-        "subtitle": null,
-        "birthday": null,
-        "force": null,
+        "subtitle": "朱き影のキアンティ",
+        "birthday": "ヒュペリア帝国",
+        "force": "なし",
         "campName": "ヒュペリア帝国"
       },
       "KR": {
         "name": "카밀라",
-        "subtitle": null,
-        "birthday": null,
-        "force": null,
+        "subtitle": "붉은 그림자와 좋은 술",
+        "birthday": "휘페르보레아 제국",
+        "force": "없음",
         "campName": "휘페르보레아 제국"
       },
       "TC": {
         "name": "卡蜜拉",
-        "subtitle": null,
-        "birthday": null,
-        "force": null,
+        "subtitle": "赤影佳釀",
+        "birthday": "海伯利亞帝國",
+        "force": "無",
         "campName": "海伯利亞帝國"
       }
     }
@@ -2321,14 +2354,14 @@
         "attrName": "StrongValue",
         "value": 0.06,
         "iconPath": "/assets/characters/skills/T_SkillTalent_02.png",
-        "nameKey": "StrongValue"
+        "nameKey": "ADDONATTR_410201_NAME"
       },
       {
         "attrId": 410202,
         "attrName": "StrongValue",
         "value": 0.09,
         "iconPath": "/assets/characters/skills/T_SkillTalent_02.png",
-        "nameKey": "StrongValue"
+        "nameKey": "ADDONATTR_410202_NAME"
       },
       {
         "attrId": 410203,
@@ -2617,9 +2650,9 @@
       "ES": {
         "name": "Sibylle",
         "subtitle": "La Grajilla",
-        "birthday": "Imperio Hyperboreano",
+        "birthday": "Imperio Hiperbóreo",
         "force": "La 13.ª Legión",
-        "campName": "Imperio Hyperboreano"
+        "campName": "Imperio Hiperbóreo"
       },
       "FR": {
         "name": "Sibylle",
@@ -3058,9 +3091,9 @@
       "ES": {
         "name": "Lynn",
         "subtitle": "Asedio Inquieto",
-        "birthday": "Imperio Hyperboreano",
+        "birthday": "Imperio Hiperbóreo",
         "force": "La 13.ª Legión",
-        "campName": "Imperio Hyperboreano"
+        "campName": "Imperio Hiperbóreo"
       },
       "FR": {
         "name": "Lynn",
@@ -3610,9 +3643,9 @@
       "ES": {
         "name": "Hilda",
         "subtitle": "Elegancia Protectora",
-        "birthday": "Imperio Hyperboreano",
+        "birthday": "Imperio Hiperbóreo",
         "force": "No afiliado",
-        "campName": "Imperio Hyperboreano"
+        "campName": "Imperio Hiperbóreo"
       },
       "FR": {
         "name": "Hilda",
@@ -4266,7 +4299,7 @@
       "ES": {
         "name": "Psyche",
         "subtitle": "Ensueño de la Crisálida",
-        "birthday": "Imperio Hyperboreano",
+        "birthday": "Imperio Hiperbóreo",
         "force": "No afiliado",
         "campName": "Sin afiliación"
       },
@@ -4297,6 +4330,175 @@
         "birthday": "海伯利亞帝國",
         "force": "無",
         "campName": "無陣營"
+      }
+    }
+  },
+  {
+    "id": "char-fuluo",
+    "charId": 1102,
+    "internalName": "Fuluo",
+    "element": {
+      "key": "Dark",
+      "label": "Umbro"
+    },
+    "weaponTags": [
+      "Sword",
+      "Pistol"
+    ],
+    "camp": {
+      "key": "Diguo",
+      "nameKey": "Camp_Name_Diguo",
+      "iconGamePath": "/Game/UI/Texture/Dynamic/Image/Camp/T_Gacha_CampIcon_Diguo.T_Gacha_CampIcon_Diguo"
+    },
+    "rarity": 5,
+    "maxLevel": 80,
+    "colorVar": "Yellow",
+    "gender": null,
+    "sortPriority": 5009,
+    "charPieceId": 1001102,
+    "unlockRequiredPiece": 30,
+    "intronLevels": [
+      {
+        "cardLevel": 0,
+        "resourceId": 1001102,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 1,
+        "resourceId": 1001102,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 2,
+        "resourceId": 1001102,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 3,
+        "resourceId": 1001102,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 4,
+        "resourceId": 1001102,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 5,
+        "resourceId": 1001102,
+        "resourceNum": 30
+      }
+    ],
+    "baseStats": {
+      "atk": 20,
+      "atkGrowCurve": "ATKA",
+      "def": 300,
+      "defGrowCurve": "DEFA",
+      "maxHp": 100,
+      "maxHpGrowCurve": "MaxHpA",
+      "maxES": 100,
+      "maxESGrowCurve": "MaxESA",
+      "maxSp": 120
+    },
+    "addonAttrs": [],
+    "positioning": [],
+    "recommendAttr": [],
+    "ascensionLevels": [
+      20,
+      30,
+      40,
+      50,
+      60,
+      70
+    ],
+    "textKeys": {
+      "nameKey": "UI_CHAR_NAME_1102",
+      "subtitleKey": "UI_CHAR_SUBTITLE_1102",
+      "birthdayKey": null,
+      "forceKey": null,
+      "campNameKey": "Camp_Name_Diguo"
+    },
+    "portraits": {
+      "gacha": {
+        "publicPath": null
+      },
+      "head": {
+        "publicPath": null
+      },
+      "icon": {
+        "publicPath": null
+      },
+      "bust": {
+        "publicPath": null
+      },
+      "phantom": {
+        "publicPath": null
+      },
+      "charpiece": {
+        "publicPath": null
+      }
+    },
+    "consonanceWeapons": [],
+    "skillIcons": {
+      "skill1": {
+        "publicPath": null
+      },
+      "skill2": {
+        "publicPath": null
+      },
+      "skill3": {
+        "publicPath": null
+      }
+    },
+    "translations": {
+      "DE": {
+        "name": "Flora",
+        "subtitle": "Umgekehrte Infloreszenz",
+        "birthday": null,
+        "force": null,
+        "campName": "Hyperboreisches Imperium"
+      },
+      "EN": {
+        "name": "Flora",
+        "subtitle": "Mutinous Inflorescence",
+        "birthday": null,
+        "force": null,
+        "campName": "The Hyperborean Empire"
+      },
+      "ES": {
+        "name": "Flora",
+        "subtitle": "Inflorescencia Rebelde",
+        "birthday": null,
+        "force": null,
+        "campName": "Imperio Hiperbóreo"
+      },
+      "FR": {
+        "name": "Flora",
+        "subtitle": "Floraison Rebelle",
+        "birthday": null,
+        "force": null,
+        "campName": "Empire Hyperboréen"
+      },
+      "JP": {
+        "name": "フローラ",
+        "subtitle": "反逆の花",
+        "birthday": null,
+        "force": null,
+        "campName": "ヒュペリア帝国"
+      },
+      "KR": {
+        "name": "플로라",
+        "subtitle": "반대로 피는 꽃",
+        "birthday": null,
+        "force": null,
+        "campName": "휘페르보레아 제국"
+      },
+      "TC": {
+        "name": "芙羅拉",
+        "subtitle": "反逆花序",
+        "birthday": null,
+        "force": null,
+        "campName": "海伯利亞帝國"
       }
     }
   },
@@ -4466,7 +4668,7 @@
       "ES": {
         "name": "Fina",
         "subtitle": "Canto del Ruiseñor",
-        "birthday": "Imperio Hyperboreano",
+        "birthday": "Imperio Hiperbóreo",
         "force": "No afiliado",
         "campName": "Sin afiliación"
       },
@@ -5163,8 +5365,8 @@
     },
     "rarity": 5,
     "maxLevel": 80,
-    "colorVar": "Green",
-    "gender": null,
+    "colorVar": "Cyan",
+    "gender": true,
     "sortPriority": 5013,
     "charPieceId": 1001504,
     "unlockRequiredPiece": 30,
@@ -5201,9 +5403,9 @@
       }
     ],
     "baseStats": {
-      "atk": 28,
+      "atk": 29,
       "atkGrowCurve": "ATKS",
-      "def": 252,
+      "def": 220,
       "defGrowCurve": "DEFS",
       "maxHp": 70,
       "maxHpGrowCurve": "MaxHpS",
@@ -5211,12 +5413,46 @@
       "maxESGrowCurve": "MaxESS",
       "maxSp": 150
     },
-    "addonAttrs": [],
+    "addonAttrs": [
+      {
+        "attrId": 150401,
+        "attrName": "SkillRange",
+        "rate": 0.12,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_10.png",
+        "nameKey": "ADDONATTR_150401_NAME"
+      },
+      {
+        "attrId": 150402,
+        "attrName": "SkillRange",
+        "rate": 0.18,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_10.png",
+        "nameKey": "ADDONATTR_150402_NAME"
+      },
+      {
+        "attrId": 150403,
+        "attrName": "StrongValue",
+        "value": 0.06,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_02.png",
+        "nameKey": "ADDONATTR_150403_NAME"
+      },
+      {
+        "attrId": 150404,
+        "attrName": "StrongValue",
+        "value": 0.09,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_02.png",
+        "nameKey": "ADDONATTR_150404_NAME"
+      }
+    ],
     "positioning": [
       "DPS",
       "SkillDPS"
     ],
-    "recommendAttr": [],
+    "recommendAttr": [
+      "MaxSp",
+      "ATK_Light",
+      "SkillIntensity",
+      "SkillRange"
+    ],
     "ascensionLevels": [
       20,
       30,
@@ -5228,122 +5464,90 @@
     "textKeys": {
       "nameKey": "UI_CHAR_NAME_1504",
       "subtitleKey": "UI_CHAR_SUBTITLE_1504",
-      "birthdayKey": null,
-      "forceKey": null,
+      "birthdayKey": "UI_CHAR_BIRTH_1504",
+      "forceKey": "UI_CHAR_FORCE_1504",
       "campNameKey": "Camp_Name_Dongguo"
     },
     "portraits": {
       "gacha": {
-        "publicPath": null
+        "publicPath": "/assets/characters/gacha/T_Gacha_AvatarSuyi.png"
       },
       "head": {
-        "publicPath": null
+        "publicPath": "/assets/characters/head/T_Head_Suyi.png"
       },
       "icon": {
-        "publicPath": null
+        "publicPath": "/assets/characters/icon/T_Icon_Suyi.png"
       },
       "bust": {
-        "publicPath": null
+        "publicPath": "/assets/characters/bust/T_Bust_Suyi.png"
       },
       "phantom": {
-        "publicPath": null
+        "publicPath": "/assets/characters/phantom/T_Phantom_Suyi.png"
       },
       "charpiece": {
-        "publicPath": null
+        "publicPath": "/assets/characters/charpiece/T_CharPiece_Suyi.png"
       }
     },
-    "consonanceWeapons": [
-      {
-        "weaponId": 150401,
-        "nameKey": "UI_WEAPON_NAME_150304",
-        "rarity": 5,
-        "icon": {
-          "publicPath": "/assets/weapons/consonance/T_Head_Heitao_WP.png"
-        },
-        "translations": {
-          "DE": {
-            "name": null
-          },
-          "EN": {
-            "name": null
-          },
-          "ES": {
-            "name": null
-          },
-          "FR": {
-            "name": null
-          },
-          "JP": {
-            "name": null
-          },
-          "KR": {
-            "name": null
-          },
-          "TC": {
-            "name": null
-          }
-        }
-      }
-    ],
+    "consonanceWeapons": [],
     "skillIcons": {
       "skill1": {
-        "publicPath": null
+        "publicPath": "/assets/characters/skills/T_Skill_Suyi01_On.png"
       },
       "skill2": {
-        "publicPath": null
+        "publicPath": "/assets/characters/skills/T_Skill_Suyi02_On.png"
       },
       "skill3": {
-        "publicPath": null
+        "publicPath": "/assets/characters/skills/T_Skill_Suyi03.png"
       }
     },
     "translations": {
       "DE": {
         "name": "Su Yi",
         "subtitle": "Junger Drachen",
-        "birthday": null,
-        "force": null,
+        "birthday": "Huaxu",
+        "force": "Outer Peaks – Drifter",
         "campName": "Huaxu"
       },
       "EN": {
         "name": "Su Yi",
-        "subtitle": "Fledgling Kite",
-        "birthday": null,
-        "force": null,
+        "subtitle": "Plumes of Gilded Dawn",
+        "birthday": "Huaxu",
+        "force": "Outer Peaks – Drifter",
         "campName": "Huaxu"
       },
       "ES": {
         "name": "Su Yi",
         "subtitle": "Joven Milano",
-        "birthday": null,
-        "force": null,
+        "birthday": "Huaxu",
+        "force": "Outer Peaks – Drifter",
         "campName": "Huaxu"
       },
       "FR": {
         "name": "Su Yi",
-        "subtitle": "Jeune Milan",
-        "birthday": null,
-        "force": null,
+        "subtitle": "Premier Envol",
+        "birthday": "Huaxu",
+        "force": "Les Pics Extérieurs – Vagabond",
         "campName": "Huaxu"
       },
       "JP": {
         "name": "スーイー",
-        "subtitle": "鳶の雛",
-        "birthday": null,
-        "force": null,
+        "subtitle": "新しき翼",
+        "birthday": "華胥",
+        "force": "華胥 流れ者",
         "campName": "華胥"
       },
       "KR": {
         "name": "소을",
-        "subtitle": "솔개",
-        "birthday": null,
-        "force": null,
+        "subtitle": "새로운 실험의 날개",
+        "birthday": "화서",
+        "force": "산외산·나그네",
         "campName": "화서"
       },
       "TC": {
         "name": "蘇乙",
-        "subtitle": "鳶雛",
-        "birthday": null,
-        "force": null,
+        "subtitle": "試新羽",
+        "birthday": "華胥",
+        "force": "山外山·飄零人",
         "campName": "華胥"
       }
     }
