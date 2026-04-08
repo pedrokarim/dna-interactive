@@ -63,7 +63,7 @@ export default function NewCharactersBanner() {
                         alt={character.name}
                         width={96}
                         height={96}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain"
                       />
                     </div>
                     {/* Glow effect */}
