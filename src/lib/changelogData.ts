@@ -10,6 +10,27 @@ export interface ChangelogEntry {
 export const changelogData: ChangelogEntry[] = [
   {
     date: "2026-04-08",
+    version: "1.8.0",
+    type: "feature",
+    title: "Internationalisation, showcase personnages et deep-linking map",
+    description:
+      "Refonte majeure avec support multilingue complet (7 langues), nouveau showcase interactif des personnages v1.3, et navigation améliorée.",
+    items: [
+      "🌐 Internationalisation complète du site avec next-intl : 7 langues (FR, EN, DE, ES, JP, KR, TC)",
+      "🔍 Détection automatique de la langue du navigateur avec persistance du choix par cookie",
+      "🗂️ Routing i18n : chaque langue a ses propres URLs (/fr/map, /en/characters, etc.)",
+      "🌏 Sélecteur de langue dans toutes les pages du site",
+      "🎭 Nouveau showcase interactif des personnages v1.3 sur la page d'accueil (Su Yi, Camilla, Yuming, Zhiliu)",
+      "🖼️ Artwork plein écran avec sélecteur d'avatars, dégradés par personnage et caractères calligraphiques décoratifs",
+      "🔗 Deep-linking map : le bandeau Haojing redirige directement vers la bonne carte (?mapId=haojing)",
+      "📐 Fix du wrap des liens dans la sidebar de la carte",
+      "🖼️ Image v1.3 ajoutée au Ken Burns du hero banner",
+      "⚡ Fix turbopack.root pour accélérer la compilation dev",
+      "🏷️ SEO : balises hreflang, metadata localisée, sitemap multi-locale",
+    ],
+  },
+  {
+    date: "2026-04-08",
     version: "1.7.0",
     type: "feature",
     title: "Mise a jour v1.3 du jeu et variantes Genimons",
