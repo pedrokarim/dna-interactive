@@ -20,10 +20,11 @@ import CommunityCards from "@/components/CommunityCards";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 export async function generateMetadata(
-  _props: Record<string, never>,
+  { params }: { params: Promise<{ locale: string }> },
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  return generatePageMetadata(pageMetadata.home, parent);
+  const { locale } = await params;
+  return generatePageMetadata(pageMetadata.home, parent, locale);
 }
 
 
@@ -57,7 +58,7 @@ export default async function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-purple-950 via-slate-900 to-indigo-950 text-white">
+    <main className="min-h-screen bg-linear-to-br from-purple-950 via-slate-900 to-indigo-950 text-white">
       {/* Header */}
       <header className="relative z-50 bg-slate-950/80 backdrop-blur-sm border-b border-indigo-500/20">
         <div className="container mx-auto px-6 py-4">
@@ -447,6 +448,6 @@ export default async function Home() {
           </div>
         </div>
       </footer>
-    </div>
+    </main>
   );
 }

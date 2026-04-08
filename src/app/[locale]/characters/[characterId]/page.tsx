@@ -14,7 +14,7 @@ import { getCharacterBuilds } from "@/lib/characters/builds";
 import { generatePageMetadata } from "@/lib/metadata";
 
 type CharacterDetailPageProps = {
-  params: Promise<{ characterId: string }>;
+  params: Promise<{ locale: string; characterId: string }>;
 };
 
 export function generateStaticParams() {
@@ -28,7 +28,7 @@ export async function generateMetadata(
   { params }: CharacterDetailPageProps,
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  const { characterId } = await params;
+  const { locale, characterId } = await params;
   const character = getCharacterById(characterId);
 
   if (!character) {
@@ -36,9 +36,10 @@ export async function generateMetadata(
       {
         title: "Personnage introuvable",
         description: "Ce personnage n'existe pas dans la base de donnees.",
-        url: "https://dna-interactive.ascencia.re/characters",
+        path: "/characters",
       },
       parent,
+      locale,
     );
   }
 
@@ -54,7 +55,7 @@ export async function generateMetadata(
     {
       title: `${charName} - ${character.element.label} ${character.weaponTags[0] ?? ""}`,
       description: `Fiche complete de ${charName} dans Duet Night Abyss : element ${character.element.label}, armes, faction, portraits et traductions multilingues.`,
-      url: `https://dna-interactive.ascencia.re/characters/${character.id}`,
+      path: `/characters/${character.id}`,
       image: character.portraits.gacha.publicPath ?? undefined,
       keywords: [
         "Duet Night Abyss",
@@ -69,6 +70,7 @@ export async function generateMetadata(
       ],
     },
     parent,
+    locale,
   );
 }
 

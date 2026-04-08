@@ -7,7 +7,7 @@ import { getItemCatalog, getItemsByCategorySlug } from "@/lib/items/catalog";
 import { generatePageMetadata } from "@/lib/metadata";
 
 type ItemCategoryPageProps = {
-  params: Promise<{ category: string }>;
+  params: Promise<{ locale: string; category: string }>;
 };
 
 export function generateStaticParams() {
@@ -21,7 +21,7 @@ export async function generateMetadata(
   { params }: ItemCategoryPageProps,
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  const { category } = await params;
+  const { locale, category } = await params;
   const payload = getItemsByCategorySlug(category);
 
   if (!payload) {
@@ -29,9 +29,10 @@ export async function generateMetadata(
       {
         title: "Items",
         description: "Item categories for Duet Night Abyss.",
-        url: "https://dna-interactive.ascencia.re/items",
+        path: "/items",
       },
       parent,
+      locale,
     );
   }
 
@@ -39,7 +40,7 @@ export async function generateMetadata(
     {
       title: `${payload.category.title} - ${payload.items.length} items`,
       description: `${payload.category.description} Search, filter, and compare localized names across ${payload.category.availableLanguages.length} languages.`,
-      url: `https://dna-interactive.ascencia.re/items/${payload.category.slug}`,
+      path: `/items/${payload.category.slug}`,
       keywords: [
         "Duet Night Abyss",
         "item database",
@@ -50,6 +51,7 @@ export async function generateMetadata(
       ],
     },
     parent,
+    locale,
   );
 }
 

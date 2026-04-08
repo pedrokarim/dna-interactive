@@ -6,10 +6,11 @@ import Loading from "@/components/Loading";
 import { generatePageMetadata, pageMetadata } from "@/lib/metadata";
 
 export async function generateMetadata(
-  {}: {},
+  { params }: { params: Promise<{ locale: string }> },
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  return generatePageMetadata(pageMetadata.map, parent);
+  const { locale } = await params;
+  return generatePageMetadata(pageMetadata.map, parent, locale);
 }
 
 export default async function MapLayout({

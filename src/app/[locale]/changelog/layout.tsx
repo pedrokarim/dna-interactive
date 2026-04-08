@@ -2,10 +2,11 @@ import type { Metadata, ResolvingMetadata } from "next";
 import { generatePageMetadata, pageMetadata } from "@/lib/metadata";
 
 export async function generateMetadata(
-  {}: {},
+  { params }: { params: Promise<{ locale: string }> },
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  return generatePageMetadata(pageMetadata.changelog, parent);
+  const { locale } = await params;
+  return generatePageMetadata(pageMetadata.changelog, parent, locale);
 }
 
 export default function ChangelogLayout({

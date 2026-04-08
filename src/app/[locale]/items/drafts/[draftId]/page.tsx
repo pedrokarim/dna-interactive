@@ -12,7 +12,7 @@ import {
 import { generatePageMetadata } from "@/lib/metadata";
 
 type DraftDetailPageProps = {
-  params: Promise<{ draftId: string }>;
+  params: Promise<{ locale: string; draftId: string }>;
 };
 
 
@@ -20,7 +20,7 @@ export async function generateMetadata(
   { params }: DraftDetailPageProps,
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  const { draftId } = await params;
+  const { locale, draftId } = await params;
   const recipe = getDraftRecipeById(draftId);
 
   if (!recipe) {
@@ -28,9 +28,10 @@ export async function generateMetadata(
       {
         title: "Detail plan de forge",
         description: "Plan de forge introuvable.",
-        url: "https://dna-interactive.ascencia.re/items/drafts",
+        path: "/items/drafts",
       },
       parent,
+      locale,
     );
   }
 
@@ -44,7 +45,7 @@ export async function generateMetadata(
       description:
         productDescription ??
         `Detail du plan de forge #${recipe.draftId} avec ingredients, couts et temps de fabrication.`,
-      url: `https://dna-interactive.ascencia.re/items/drafts/${recipe.draftId}`,
+      path: `/items/drafts/${recipe.draftId}`,
       keywords: [
         "Duet Night Abyss",
         "draft",
@@ -55,6 +56,7 @@ export async function generateMetadata(
       ],
     },
     parent,
+    locale,
   );
 }
 

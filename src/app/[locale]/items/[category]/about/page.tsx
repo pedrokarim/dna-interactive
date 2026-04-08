@@ -20,7 +20,7 @@ import { getItemCatalog, getItemCategoryBySlug } from "@/lib/items/catalog";
 import { generatePageMetadata } from "@/lib/metadata";
 
 type CategoryAboutPageProps = {
-  params: Promise<{ category: string }>;
+  params: Promise<{ locale: string; category: string }>;
 };
 
 function GuideBadge({ icon, label }: { icon: React.ReactNode; label: string }) {
@@ -431,7 +431,7 @@ export async function generateMetadata(
   { params }: CategoryAboutPageProps,
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  const { category: categorySlug } = await params;
+  const { locale, category: categorySlug } = await params;
   const category = getItemCategoryBySlug(categorySlug);
 
   if (!category) {
@@ -439,9 +439,10 @@ export async function generateMetadata(
       {
         title: "Guide items",
         description: "Documentation des categories d'items Duet Night Abyss.",
-        url: "https://dna-interactive.ascencia.re/items",
+        path: "/items",
       },
       parent,
+      locale,
     );
   }
 
@@ -449,7 +450,7 @@ export async function generateMetadata(
     {
       title: `Guide ${category.title}`,
       description: `Comprendre le fonctionnement de ${category.title}: niveaux, affinite, tolerance, traductions et lecture des effets.`,
-      url: `https://dna-interactive.ascencia.re/items/${category.slug}/about`,
+      path: `/items/${category.slug}/about`,
       keywords: [
         "Duet Night Abyss",
         "items guide",
@@ -461,6 +462,7 @@ export async function generateMetadata(
       ],
     },
     parent,
+    locale,
   );
 }
 

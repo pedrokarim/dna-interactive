@@ -14,10 +14,11 @@ import { generatePageMetadata, pageMetadata } from "@/lib/metadata";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 export async function generateMetadata(
-  _props: object,
+  { params }: { params: Promise<{ locale: string }> },
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  return generatePageMetadata(pageMetadata.characters, parent);
+  const { locale } = await params;
+  return generatePageMetadata(pageMetadata.characters, parent, locale);
 }
 
 export default async function CharactersLayout({

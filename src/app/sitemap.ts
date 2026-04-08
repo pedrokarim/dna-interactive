@@ -8,10 +8,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://dna-interactive.ascencia.re";
   const now = new Date();
 
+  // Map locale codes to valid BCP 47 hreflang tags
+  const localeToHreflang: Record<string, string> = {
+    fr: "fr",
+    en: "en",
+    de: "de",
+    es: "es",
+    jp: "ja",
+    kr: "ko",
+    tc: "zh-Hant",
+  };
+
   const alternatesForPath = (path: string) => ({
-    languages: Object.fromEntries(
-      locales.map((l) => [l, `${baseUrl}/${l}${path}`])
-    ),
+    languages: {
+      ...Object.fromEntries(
+        locales.map((l) => [localeToHreflang[l] ?? l, `${baseUrl}/${l}${path}`])
+      ),
+      "x-default": `${baseUrl}/fr${path}`,
+    },
   });
 
   const staticPaths = [

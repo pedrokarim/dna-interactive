@@ -7,10 +7,11 @@ import { generatePageMetadata, pageMetadata } from "@/lib/metadata";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 export async function generateMetadata(
-  {}: {},
+  { params }: { params: Promise<{ locale: string }> },
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  return generatePageMetadata(pageMetadata.codes, parent);
+  const { locale } = await params;
+  return generatePageMetadata(pageMetadata.codes, parent, locale);
 }
 
 export default async function CodesPage() {

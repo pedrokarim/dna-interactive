@@ -6,15 +6,16 @@ import { getDraftAvailableLanguages, getDraftRecipeSummaries } from "@/lib/items
 import { generatePageMetadata } from "@/lib/metadata";
 
 export async function generateMetadata(
-  _props: object,
+  { params }: { params: Promise<{ locale: string }> },
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
+  const { locale } = await params;
   return generatePageMetadata(
     {
       title: "Plans de forge (Drafts) - Duet Night Abyss",
       description:
         "Base de donnees des plans de forge: recettes, ingredients, temps de fabrication et details des objets finaux.",
-      url: "https://dna-interactive.ascencia.re/items/drafts",
+      path: "/items/drafts",
       keywords: [
         "Duet Night Abyss",
         "draft",
@@ -26,6 +27,7 @@ export async function generateMetadata(
       ],
     },
     parent,
+    locale,
   );
 }
 

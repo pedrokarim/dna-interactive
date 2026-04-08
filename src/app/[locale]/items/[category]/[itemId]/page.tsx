@@ -12,7 +12,7 @@ import { getDraftRecipesForItem } from "@/lib/items/drafts";
 import { generatePageMetadata } from "@/lib/metadata";
 
 type ItemDetailPageProps = {
-  params: Promise<{ category: string; itemId: string }>;
+  params: Promise<{ locale: string; category: string; itemId: string }>;
 };
 
 
@@ -20,7 +20,7 @@ export async function generateMetadata(
   { params }: ItemDetailPageProps,
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  const { category: categorySlug, itemId } = await params;
+  const { locale, category: categorySlug, itemId } = await params;
   const category = getItemCategoryBySlug(categorySlug);
   if (!category) {
     return generatePageMetadata(
@@ -29,6 +29,7 @@ export async function generateMetadata(
         description: "Details for Duet Night Abyss items.",
       },
       parent,
+      locale,
     );
   }
 
@@ -38,9 +39,10 @@ export async function generateMetadata(
       {
         title: "Item details",
         description: "Item not found.",
-        url: `https://dna-interactive.ascencia.re/items/${category.slug}`,
+        path: `/items/${category.slug}`,
       },
       parent,
+      locale,
     );
   }
 
@@ -57,7 +59,7 @@ export async function generateMetadata(
       description:
         localized.description ??
         `${category.displayName} details for ${modName} in ${category.availableLanguages.length} languages.`,
-      url: `https://dna-interactive.ascencia.re/items/${category.slug}/${item.id}`,
+      path: `/items/${category.slug}/${item.id}`,
       keywords: [
         "Duet Night Abyss",
         "item database",
@@ -68,6 +70,7 @@ export async function generateMetadata(
       ],
     },
     parent,
+    locale,
   );
 }
 

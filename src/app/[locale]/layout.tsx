@@ -1,4 +1,5 @@
 import type { Metadata, ResolvingMetadata } from "next";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -11,6 +12,26 @@ import {
 } from "@/lib/constants";
 import { locales } from "@/i18n/config";
 import type { Locale } from "@/i18n/config";
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
+  subsets: ["latin"],
+});
+
+const localeToHtmlLang: Record<string, string> = {
+  fr: "fr",
+  en: "en",
+  de: "de",
+  es: "es",
+  jp: "ja",
+  kr: "ko",
+  tc: "zh-Hant",
+};
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -31,7 +52,7 @@ export async function generateMetadata(
       default: `DNA Interactive - Carte Interactive Duet Night Abyss`,
       template: `%s | DNA Interactive`,
     },
-    description: `Carte interactive ultime pour Duet Night Abyss. Explorez le monde du jeu avec DNA Interactive : trouvez tous les secrets, coffres et collectibles. Outil indispensable pour les joueurs de DNA.`,
+    description: `Carte interactive Duet Night Abyss : secrets, coffres, collectibles, personnages et items. Explorez le monde de DNA.`,
     keywords: [
       "DNA",
       "DNA Interactive",
@@ -69,12 +90,12 @@ export async function generateMetadata(
     },
     openGraph: {
       type: "website",
-      locale: locale === "fr" ? "fr_FR" : locale === "en" ? "en_US" : locale,
+      locale: ({fr:"fr_FR",en:"en_US",de:"de_DE",es:"es_ES",jp:"ja_JP",kr:"ko_KR",tc:"zh_TW"})[locale] ?? "fr_FR",
       url: `${baseUrl}/${locale}`,
       siteName: "DNA Interactive",
-      title: "DNA Interactive - Carte Interactive Duet Night Abyss | Map Gaming",
+      title: "DNA Interactive - Carte Interactive Duet Night Abyss",
       description:
-        "Carte interactive ultime pour Duet Night Abyss. Explorez le monde du jeu avec DNA Interactive : trouvez tous les secrets, coffres et collectibles.",
+        "Carte interactive Duet Night Abyss : secrets, coffres, collectibles, personnages et items. Explorez le monde de DNA.",
       images: [
         {
           url: "/assets/worldview/worldview-1.webp",
@@ -89,7 +110,7 @@ export async function generateMetadata(
       card: "summary_large_image",
       title: "DNA Interactive - Carte Interactive Duet Night Abyss",
       description:
-        "Carte interactive ultime pour Duet Night Abyss. Trouvez tous les secrets et collectibles avec DNA Interactive.",
+        "Carte interactive Duet Night Abyss : secrets, coffres, collectibles, personnages et items.",
       images: ["/assets/worldview/worldview-1.webp"],
       creator: "@dna_interactive",
     },
@@ -98,9 +119,16 @@ export async function generateMetadata(
     },
     alternates: {
       canonical: `${baseUrl}/${locale}`,
-      languages: Object.fromEntries(
-        locales.map((l) => [l, `${baseUrl}/${l}`])
-      ),
+      languages: {
+        fr: `${baseUrl}/fr`,
+        en: `${baseUrl}/en`,
+        de: `${baseUrl}/de`,
+        es: `${baseUrl}/es`,
+        ja: `${baseUrl}/jp`,
+        ko: `${baseUrl}/kr`,
+        "zh-Hant": `${baseUrl}/tc`,
+        "x-default": `${baseUrl}/fr`,
+      },
     },
     manifest: "/manifest.json",
     icons: {
@@ -130,11 +158,18 @@ export default async function LocaleLayout({
   }
 
   const messages = await getMessages();
+  const htmlLang = localeToHtmlLang[locale] ?? "fr";
 
   return (
-    <NextIntlClientProvider messages={messages}>
-      <Providers>{children}</Providers>
-      <StructuredData type="organization" />
-    </NextIntlClientProvider>
+    <html lang={htmlLang}>
+      <body
+        className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}
+      >
+        <NextIntlClientProvider messages={messages}>
+          <Providers>{children}</Providers>
+          <StructuredData type="organization" />
+        </NextIntlClientProvider>
+      </body>
+    </html>
   );
 }

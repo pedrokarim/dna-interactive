@@ -1,12 +1,26 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import { SITE_CONFIG, GAME_INFO, CREATOR_INFO } from "@/lib/constants";
+import { locales } from "@/i18n/config";
+
+const BASE_URL = "https://dna-interactive.ascencia.re";
+
+const localeToOgLocale: Record<string, string> = {
+  fr: "fr_FR",
+  en: "en_US",
+  de: "de_DE",
+  es: "es_ES",
+  jp: "ja_JP",
+  kr: "ko_KR",
+  tc: "zh_TW",
+};
 
 export interface PageMetadataOptions {
   title?: string;
   description?: string;
   keywords?: string[];
   image?: string;
-  url?: string;
+  /** Path without locale prefix, e.g. "" for home, "/map", "/characters" */
+  path?: string;
   type?: "website" | "article";
 }
 
@@ -15,23 +29,46 @@ export interface PageMetadataOptions {
  */
 export async function generatePageMetadata(
   options: PageMetadataOptions,
-  parent?: ResolvingMetadata
+  parent?: ResolvingMetadata,
+  locale?: string,
 ): Promise<Metadata> {
   const {
     title,
     description,
     keywords = [],
     image = "/assets/worldview/worldview-1.webp",
-    url = "https://dna-interactive.ascencia.re",
+    path = "",
     type = "website",
   } = options;
+
+  const currentLocale = locale ?? "fr";
+  const canonicalUrl = `${BASE_URL}/${currentLocale}${path}`;
+  const ogLocale = localeToOgLocale[currentLocale] ?? "fr_FR";
+
+  // Map locale codes to valid BCP 47 hreflang tags
+  const localeToHreflang: Record<string, string> = {
+    fr: "fr",
+    en: "en",
+    de: "de",
+    es: "es",
+    jp: "ja",
+    kr: "ko",
+    tc: "zh-Hant",
+  };
+
+  // Build hreflang alternates for all locales
+  const languages: Record<string, string> = {};
+  for (const l of locales) {
+    languages[localeToHreflang[l] ?? l] = `${BASE_URL}/${l}${path}`;
+  }
+  languages["x-default"] = `${BASE_URL}/fr${path}`;
 
   // Hériter des métadonnées parentes si elles existent
   const parentMetadata = parent ? await parent : null;
   const previousImages = parentMetadata?.openGraph?.images || [];
 
   const finalTitle = title || `${SITE_CONFIG.name} - Carte Interactive Duet Night Abyss`;
-  const finalDescription = description || `Carte interactive ultime pour Duet Night Abyss. Explorez le monde du jeu avec ${SITE_CONFIG.name}.`;
+  const finalDescription = description || `Carte interactive Duet Night Abyss : secrets, coffres, collectibles, personnages et items. Explorez le monde de DNA.`;
 
   return {
     title: finalTitle,
@@ -59,8 +96,8 @@ export async function generatePageMetadata(
     publisher: SITE_CONFIG.name,
     openGraph: {
       type,
-      locale: "fr_FR",
-      url,
+      locale: ogLocale,
+      url: canonicalUrl,
       siteName: SITE_CONFIG.name,
       title: finalTitle,
       description: finalDescription,
@@ -82,7 +119,8 @@ export async function generatePageMetadata(
       creator: "@dna_interactive",
     },
     alternates: {
-      canonical: url,
+      canonical: canonicalUrl,
+      languages,
     },
     robots: {
       index: true,
@@ -103,8 +141,8 @@ export async function generatePageMetadata(
  */
 export const pageMetadata = {
   home: {
-    title: `${SITE_CONFIG.name} - Carte Interactive Duet Night Abyss | Map Gaming`,
-    description: `Carte interactive ultime pour Duet Night Abyss. Explorez le monde du jeu avec ${SITE_CONFIG.name} : trouvez tous les secrets, coffres et collectibles. Outil indispensable pour les joueurs de DNA.`,
+    title: `${SITE_CONFIG.name} - Carte Interactive Duet Night Abyss`,
+    description: `Carte interactive Duet Night Abyss : secrets, coffres, collectibles, personnages et items. Explorez le monde de DNA.`,
     keywords: [
       GAME_INFO.name,
       ...SITE_CONFIG.keywords,
@@ -125,6 +163,7 @@ export const pageMetadata = {
       "joueurs DNA",
     ],
     image: "/assets/worldview/worldview-1.webp",
+    path: "",
   },
   map: {
     title: `Carte Interactive - ${SITE_CONFIG.name}`,
@@ -151,7 +190,7 @@ export const pageMetadata = {
       "marqueurs détaillés",
     ],
     image: "/assets/worldview/worldview-2.webp",
-    url: "https://dna-interactive.ascencia.re/map",
+    path: "/map",
   },
   items: {
     title: `Items & Demon Wedges - ${SITE_CONFIG.name}`,
@@ -173,7 +212,7 @@ export const pageMetadata = {
       SITE_CONFIG.name,
     ],
     image: "/assets/worldview/worldview-8.webp",
-    url: "https://dna-interactive.ascencia.re/items",
+    path: "/items",
   },
   characters: {
     title: `Personnages - ${SITE_CONFIG.name}`,
@@ -193,7 +232,7 @@ export const pageMetadata = {
       SITE_CONFIG.name,
     ],
     image: "/assets/worldview/worldview-9.webp",
-    url: "https://dna-interactive.ascencia.re/characters",
+    path: "/characters",
   },
   codes: {
     title: `Codes de Rédemption Duet Night Abyss | ${SITE_CONFIG.name}`,
@@ -215,7 +254,7 @@ export const pageMetadata = {
       "récompenses jeu",
     ],
     image: "/assets/worldview/worldview-3.webp",
-    url: "https://dna-interactive.ascencia.re/codes",
+    path: "/codes",
   },
   about: {
     title: `À propos - ${SITE_CONFIG.name}`,
@@ -237,7 +276,7 @@ export const pageMetadata = {
       "mission",
     ],
     image: "/assets/worldview/worldview-5.webp",
-    url: "https://dna-interactive.ascencia.re/about",
+    path: "/about",
   },
   contact: {
     title: `Contact - ${SITE_CONFIG.name}`,
@@ -257,7 +296,7 @@ export const pageMetadata = {
       "contact équipe",
     ],
     image: "/assets/worldview/worldview-6.webp",
-    url: "https://dna-interactive.ascencia.re/contact",
+    path: "/contact",
   },
   support: {
     title: `Support & Aide - ${SITE_CONFIG.name}`,
@@ -279,7 +318,7 @@ export const pageMetadata = {
       "support technique",
     ],
     image: "/assets/worldview/worldview-4.webp",
-    url: "https://dna-interactive.ascencia.re/support",
+    path: "/support",
   },
   changelog: {
     title: `Changelog - ${SITE_CONFIG.name}`,
@@ -300,6 +339,6 @@ export const pageMetadata = {
       SITE_CONFIG.name,
     ],
     image: "/assets/worldview/worldview-7.webp",
-    url: "https://dna-interactive.ascencia.re/changelog",
+    path: "/changelog",
   },
 };

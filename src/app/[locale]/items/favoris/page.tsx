@@ -7,17 +7,19 @@ import { getItemsByCategorySlug } from "@/lib/items/catalog";
 import { generatePageMetadata } from "@/lib/metadata";
 
 export async function generateMetadata(
-  _props: object,
+  { params }: { params: Promise<{ locale: string }> },
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
+  const { locale } = await params;
   return generatePageMetadata(
     {
       title: "Favoris Demon Wedge",
       description:
         "Retrouvez vos Demon Wedges favoris sauvegardes localement, avec filtres et langues personnalisables.",
-      url: "https://dna-interactive.ascencia.re/items/favoris",
+      path: "/items/favoris",
     },
     parent,
+    locale,
   );
 }
 
