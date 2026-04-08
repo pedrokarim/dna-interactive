@@ -9,6 +9,24 @@ export interface ChangelogEntry {
 
 export const changelogData: ChangelogEntry[] = [
   {
+    date: "2026-04-08",
+    version: "1.7.0",
+    type: "feature",
+    title: "Mise a jour v1.3 du jeu et variantes Genimons",
+    description:
+      "Re-extraction complete des donnees du jeu depuis la version 1.3, ajout de nouveaux personnages et systeme de variantes pour les Genimons.",
+    items: [
+      "🔄 Re-extraction des 1176 fichiers Lua depuis les paks v1.3 du jeu",
+      "👤 Ajout de Su Yi (complete avec portraits et skills) et Flora (donnees, pas encore sortie)",
+      "🎭 Completion de Camilla (stats, traductions, portraits, skills)",
+      "🐾 Systeme de variantes Genimons : chaque espece affiche ses variantes avec navigation croisee",
+      "✨ Badge Premium dore pour les variantes shiny des Genimons",
+      "🎣 Nouveaux poissons de la region Est (Haojing) ajoutes",
+      "📦 Mise a jour de tous les items, mods et ressources avec les donnees v1.3",
+      "🌐 Correction des traductions espagnoles (Hyperboreano → Hiporboreo)",
+    ],
+  },
+  {
     date: "2026-04-07",
     version: "1.6.0",
     type: "feature",
