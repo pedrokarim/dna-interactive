@@ -44,4 +44,9 @@ research_data/
 CONTACT_SETUP.md
 NODEMAILER_SETUP_GUIDE.md
 https___dna-interactive.ascencia.re_*
-.claude/settings.local.json
+# claude
+.claude/
+
+# skills
+.agents/
+skills-lock.json
