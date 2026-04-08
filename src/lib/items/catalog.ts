@@ -160,6 +160,13 @@ export function normalizeLanguageCodes(
   return Array.from(selected);
 }
 
+export function getGenimonVariants(item: ItemRecord): ItemRecord[] {
+  if (item.categoryId !== "genimons" || !item.variants?.siblingIds) return [];
+  const items = getItemsByCategoryId("genimons");
+  const siblingSet = new Set(item.variants.siblingIds);
+  return items.filter((i) => siblingSet.has(i.id));
+}
+
 export function getItemTranslation(
   item: ItemRecord,
   languageCode: string,

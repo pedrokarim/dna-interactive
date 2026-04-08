@@ -80,6 +80,14 @@ export interface ItemTypeCompatibility {
   tags: ItemTypeCompatibilityTag[];
 }
 
+export interface ItemVariantInfo {
+  speciesId: number;
+  guid: number;
+  isPremium: boolean;
+  premiumGuid: number | null;
+  siblingIds: string[];
+}
+
 export interface ItemRecord {
   id: string;
   categoryId: string;
@@ -94,6 +102,7 @@ export interface ItemRecord {
   scaling: ItemScaling;
   translations: Record<string, ItemLocalizedContent>;
   fields: Record<string, ItemRawField>;
+  variants?: ItemVariantInfo | null;
 }
 
 export interface ItemCategory {

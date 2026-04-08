@@ -77,8 +77,8 @@
         },
         "ES": {
           "name": "Módulo de cambio de afinidad",
-          "description": "Se trata de un instrumento de precisión procedente del Imperio Hyperboreano que recuerda mucho a una caja de herramientas. Cuando sus engranajes comienzan a girar, la Cuña Demoníaca colocada en su interior se modifica para adaptarse al usuario. Al actuar directamente sobre el portador, alcanza un mayor nivel de precisión y potencia aún más las capacidades del usuario.",
-          "flavor": "“Aprender a utilizar las herramientas en las ocasiones adecuadas no es pereza. De hecho, es una táctica vital para concluir los combates con eficiencia. En cuanto al tiempo que se ahorra, debe destinarse a relajar el cuerpo y la mente ya agotados con un sueño bien merecido…”\n\n— Randy, Oficial de Hyperborea"
+          "description": "Se trata de un instrumento de precisión procedente del Imperio Hiperbóreo que recuerda mucho a una caja de herramientas. Cuando sus engranajes comienzan a girar, la Cuña Demoníaca colocada en su interior se modifica para adaptarse al usuario. Al actuar directamente sobre el portador, alcanza un mayor nivel de precisión y potencia aún más las capacidades del usuario.",
+          "flavor": "“Aprender a utilizar las herramientas en las ocasiones adecuadas no es pereza. De hecho, es una táctica vital para concluir los combates con eficiencia. En cuanto al tiempo que se ahorra, debe destinarse a relajar el cuerpo y la mente ya agotados con un sueño bien merecido…”\n\n— Randy, Oficial de Hiperbórea"
         },
         "FR": {
           "name": "Module de transfert d’affinité",
@@ -152,7 +152,7 @@
         },
         "ES": {
           "name": "Módulo de cambio de afinidad de arma",
-          "description": "Se trata de un instrumento de precisión procedente del Imperio Hyperboreano que recuerda mucho a una caja de herramientas. Cuando sus engranajes comienzan a girar, la Cuña Demoníaca colocada en su interior se modifica para adaptarse al usuario. Posee una excelente capacidad de detectar todo tipo de armas estándar y potenciar su rendimiento.",
+          "description": "Se trata de un instrumento de precisión procedente del Imperio Hiperbóreo que recuerda mucho a una caja de herramientas. Cuando sus engranajes comienzan a girar, la Cuña Demoníaca colocada en su interior se modifica para adaptarse al usuario. Posee una excelente capacidad de detectar todo tipo de armas estándar y potenciar su rendimiento.",
           "flavor": "“¡Las armas tienen, por supuesto, su propio temperamento! Si no están de buen humor, yo tampoco me siento tranquila al pelear… es natural preocuparse. ¡Somos compañeras y socias inseparables! Samael, ¿verdad que tengo razón?”\n\n— Lisbell, candidata a Paciencia de Las Siete Virtudes de Elysium"
         },
         "FR": {
@@ -233,7 +233,7 @@
         "FR": {
           "name": "Essence vitale",
           "description": "Une substance gélatineuse utilisée pour fabriquer des Modules de transfert d’affinité. Sa composition pure et soluble dans l’eau se dégrade à haute température, exigeant des conditions de conservation strictes. Sa polyvalence justifie qu’on l’emporte partout.",
-          "flavor": "« La pureté est une lame à double tranchant : un seul composant en accroît la puissance, mais en abrège aussi la durée. Mon travail consiste simplement à ajuster le ratio des impuretés, à trouver l’équilibre entre force et pérennité. En réalité, cette loi ne s’applique pas seulement à l’alchimie, mais aussi à tout groupe humain. »\n\n— Ecodna, chef du département d’applications biologiques des Spathatoi, Désassemblage et recomposition : biologie des Souillés"
+          "flavor": "« La pureté est une lame à double tranchant : un seul composant en accroît la puissance, mais en abrège aussi la durée. Mon travail consiste simplement à ajuster le ratio des impuretés, à trouver l’équilibre entre force et pérennité. En réalité, cette loi ne s’applique pas seulement à l’alchimie, mais aussi à tout groupe humain. »\n\n— Ecodna, chef du département d’applications biologiques des Spathatoi, <I>Désassemblage et recomposition : biologie des Souillés</>"
         },
         "JP": {
           "name": "生命エキス",
@@ -252,7 +252,7 @@
         }
       },
       "fields": {
-        "AccessKey": "T.RT_51",
+        "AccessKey": "T.RT_55",
         "DetailDes": "RESOURCE_DESC_30001",
         "FunctionDes": "RESOURCE_FUNCTION_30001",
         "Icon": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resource_PolarityPart01.T_Resource_PolarityPart01",
@@ -327,7 +327,7 @@
         }
       },
       "fields": {
-        "AccessKey": "T.RT_51",
+        "AccessKey": "T.RT_55",
         "DetailDes": "RESOURCE_DESC_30002",
         "FunctionDes": "RESOURCE_FUNCTION_30002",
         "Icon": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resource_PolarityPart02.T_Resource_PolarityPart02",

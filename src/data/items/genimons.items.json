@@ -96,8 +96,8 @@
         "modName": "Wishen de los talismanes",
         "description": "Un Wishen que maneja talismanes destructivos con asombrosa facilidad, pero lo que más te intriga es de dónde saca esta casi infinita reserva de talismanes.",
         "demonWedgeName": null,
-        "functionLabel": "Damage increases to 600% of the main character's ATK",
-        "passiveEffectsDescription": "\nDefeat 30 enemies: Damage increases to 12000% of the main character's ATK.\nDefeat 60 enemies: Skill Intensity +150%.\nDefeat 90 enemies: Support Skill cooldown -50%.\nDefeat 120 enemies: Skill DMG +90%.",
+        "functionLabel": "El daño aumenta hasta el 600% del ATQ del personaje principal",
+        "passiveEffectsDescription": "Derrota a 30 enemigos: El daño aumenta hasta el 12000% del ATQ del personaje principal.\n Derrota a 60 enemigos: Daño de Habilidad +150%.\nDerrota a 90 enemigos: Tiempo de Recarga de la Habilidad de Apoyo -50%.\nDerrota a 120 enemigos: Daño de Habilidad +90%.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -170,6 +170,15 @@
         1
       ],
       "PetLevelMaxExpAtMaxLevel": 50
+    },
+    "variants": {
+      "speciesId": 601,
+      "guid": 601,
+      "isPremium": false,
+      "premiumGuid": null,
+      "siblingIds": [
+        "genimon-601"
+      ]
     }
   },
   {
@@ -269,8 +278,8 @@
         "modName": "Wishen asceta",
         "description": "Un Wishen de apariencia calmada y controlada, pero despertar su ira podría tener consecuencias que nadie se atreve a imaginar.",
         "demonWedgeName": null,
-        "functionLabel": "Damage increases to 400% of the main character's ATK",
-        "passiveEffectsDescription": "\nDefeat 30 enemies: Damage increases to 1000% of the main character's ATK.\nDefeat 60 enemies: Multishot +75%.\nDefeat 90 enemies: Support Skill cooldown -50%.\nDefeat 120 enemies: Ranged Weapon Attack Speed +90%.",
+        "functionLabel": "El daño aumenta hasta el 400% del ATQ del personaje principal",
+        "passiveEffectsDescription": "Derrota a 30 enemigos: El daño aumenta hasta el 1000% del ATQ del personaje principal.\nDerrota a 60 enemigos: Multidisparo +75%.\nDerrota a 90 enemigos: Tiempo de Recarga de la Habilidad de Apoyo -50%.\nDerrota a 120 enemigos: Vel. de Ataque de Armas a Distancia +90%.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -343,6 +352,15 @@
         1
       ],
       "PetLevelMaxExpAtMaxLevel": 50
+    },
+    "variants": {
+      "speciesId": 602,
+      "guid": 602,
+      "isPremium": false,
+      "premiumGuid": null,
+      "siblingIds": [
+        "genimon-602"
+      ]
     }
   },
   {
@@ -442,8 +460,8 @@
         "modName": "Wishen de las hojas danzantes",
         "description": "Un Wishen maestro en el arte de hacer girar las espadas: las hojas que giran a su alrededor formarían un fondo perfecto para una foto… siempre que acepte concederte este favor.",
         "demonWedgeName": null,
-        "functionLabel": "Generates 3 additional blades",
-        "passiveEffectsDescription": "\nDefeat 30 enemies: Generates 3 additional blades.\nDefeat 60 enemies: Weapon DMG +135%.\nDefeat 90 enemies: Support Skill cooldown -50%.\nDefeat 120 enemies: Melee Weapon Attack Speed +90%.",
+        "functionLabel": "Genera 3 hojas adicionales",
+        "passiveEffectsDescription": "Derrota a 30 enemigos: Genera 3 Hojas adicionales.\nDerrota a 60 enemigos: Daño de Arma +135%%.\nDerrota a 90 enemigos: Tiempo de Recarga de la Habilidad de Apoyo -50%.\nDerrota a 120 enemigos: Vel. de Ataque de Armas Cuerpo a Cuerpo +90%.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -516,6 +534,15 @@
         1
       ],
       "PetLevelMaxExpAtMaxLevel": 50
+    },
+    "variants": {
+      "speciesId": 603,
+      "guid": 603,
+      "isPremium": false,
+      "premiumGuid": null,
+      "siblingIds": [
+        "genimon-603"
+      ]
     }
   },
   {
@@ -615,8 +642,8 @@
         "modName": "Wishen de las praderas",
         "description": "Un Wishen que se desplaza siempre con ligereza despreocupada. En días sombríos, basta acariciar suavemente la parte superior de su cabeza para sentir tu corazón más ligero.",
         "demonWedgeName": null,
-        "functionLabel": "Damage increases to 1000% of the main character's ATK",
-        "passiveEffectsDescription": "\nDefeat 30 enemies: Damage increases to 12000% of the main character's ATK.\nDefeat 60 enemies: Skill Range +100%; Skill Duration +100%.\nDefeat 90 enemies: Support Skill cooldown -50%.\nDefeat 120 enemies: Damage dealt by summons +500%.",
+        "functionLabel": "El daño aumenta hasta el 1000% del ATQ del personaje principal",
+        "passiveEffectsDescription": "Derrota a 30 enemigos: El daño aumenta hasta el 12000% del ATQ del personaje principal.\n Derrota a 60 enemigos: Rango de Habilidad +100% y Duración de Habilidad +100%.\nDerrota a 90 enemigos: Tiempo de Recarga de la Habilidad de Apoyo -50%.\nDerrota a 120 enemigos: Daño de las Invocaciones +500%.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -689,6 +716,15 @@
         1
       ],
       "PetLevelMaxExpAtMaxLevel": 50
+    },
+    "variants": {
+      "speciesId": 604,
+      "guid": 604,
+      "isPremium": false,
+      "premiumGuid": null,
+      "siblingIds": [
+        "genimon-604"
+      ]
     }
   },
   {
@@ -911,6 +947,17 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 401,
+      "guid": 4011,
+      "isPremium": false,
+      "premiumGuid": 4013,
+      "siblingIds": [
+        "genimon-4011",
+        "genimon-4012",
+        "genimon-4013"
+      ]
     }
   },
   {
@@ -1133,6 +1180,17 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 401,
+      "guid": 4012,
+      "isPremium": false,
+      "premiumGuid": 4013,
+      "siblingIds": [
+        "genimon-4011",
+        "genimon-4012",
+        "genimon-4013"
+      ]
     }
   },
   {
@@ -1356,6 +1414,17 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 401,
+      "guid": 4013,
+      "isPremium": true,
+      "premiumGuid": 4013,
+      "siblingIds": [
+        "genimon-4011",
+        "genimon-4012",
+        "genimon-4013"
+      ]
     }
   },
   {
@@ -1578,6 +1647,17 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 402,
+      "guid": 4021,
+      "isPremium": false,
+      "premiumGuid": 4023,
+      "siblingIds": [
+        "genimon-4021",
+        "genimon-4022",
+        "genimon-4023"
+      ]
     }
   },
   {
@@ -1800,6 +1880,17 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 402,
+      "guid": 4022,
+      "isPremium": false,
+      "premiumGuid": 4023,
+      "siblingIds": [
+        "genimon-4021",
+        "genimon-4022",
+        "genimon-4023"
+      ]
     }
   },
   {
@@ -2023,6 +2114,17 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 402,
+      "guid": 4023,
+      "isPremium": true,
+      "premiumGuid": 4023,
+      "siblingIds": [
+        "genimon-4021",
+        "genimon-4022",
+        "genimon-4023"
+      ]
     }
   },
   {
@@ -2245,6 +2347,18 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 403,
+      "guid": 4031,
+      "isPremium": false,
+      "premiumGuid": 4033,
+      "siblingIds": [
+        "genimon-4031",
+        "genimon-4032",
+        "genimon-4033",
+        "genimon-4039"
+      ]
     }
   },
   {
@@ -2467,6 +2581,18 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 403,
+      "guid": 4032,
+      "isPremium": false,
+      "premiumGuid": 4033,
+      "siblingIds": [
+        "genimon-4031",
+        "genimon-4032",
+        "genimon-4033",
+        "genimon-4039"
+      ]
     }
   },
   {
@@ -2690,6 +2816,18 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 403,
+      "guid": 4033,
+      "isPremium": true,
+      "premiumGuid": 4033,
+      "siblingIds": [
+        "genimon-4031",
+        "genimon-4032",
+        "genimon-4033",
+        "genimon-4039"
+      ]
     }
   },
   {
@@ -2912,6 +3050,18 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 403,
+      "guid": 4039,
+      "isPremium": false,
+      "premiumGuid": 4033,
+      "siblingIds": [
+        "genimon-4031",
+        "genimon-4032",
+        "genimon-4033",
+        "genimon-4039"
+      ]
     }
   },
   {
@@ -3134,6 +3284,18 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 404,
+      "guid": 4041,
+      "isPremium": false,
+      "premiumGuid": 4043,
+      "siblingIds": [
+        "genimon-4041",
+        "genimon-4042",
+        "genimon-4043",
+        "genimon-4049"
+      ]
     }
   },
   {
@@ -3356,6 +3518,18 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 404,
+      "guid": 4042,
+      "isPremium": false,
+      "premiumGuid": 4043,
+      "siblingIds": [
+        "genimon-4041",
+        "genimon-4042",
+        "genimon-4043",
+        "genimon-4049"
+      ]
     }
   },
   {
@@ -3579,6 +3753,18 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 404,
+      "guid": 4043,
+      "isPremium": true,
+      "premiumGuid": 4043,
+      "siblingIds": [
+        "genimon-4041",
+        "genimon-4042",
+        "genimon-4043",
+        "genimon-4049"
+      ]
     }
   },
   {
@@ -3801,6 +3987,18 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 404,
+      "guid": 4049,
+      "isPremium": false,
+      "premiumGuid": 4043,
+      "siblingIds": [
+        "genimon-4041",
+        "genimon-4042",
+        "genimon-4043",
+        "genimon-4049"
+      ]
     }
   },
   {
@@ -4023,6 +4221,18 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 405,
+      "guid": 4051,
+      "isPremium": false,
+      "premiumGuid": 4053,
+      "siblingIds": [
+        "genimon-4051",
+        "genimon-4052",
+        "genimon-4053",
+        "genimon-4059"
+      ]
     }
   },
   {
@@ -4245,6 +4455,18 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 405,
+      "guid": 4052,
+      "isPremium": false,
+      "premiumGuid": 4053,
+      "siblingIds": [
+        "genimon-4051",
+        "genimon-4052",
+        "genimon-4053",
+        "genimon-4059"
+      ]
     }
   },
   {
@@ -4468,6 +4690,18 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 405,
+      "guid": 4053,
+      "isPremium": true,
+      "premiumGuid": 4053,
+      "siblingIds": [
+        "genimon-4051",
+        "genimon-4052",
+        "genimon-4053",
+        "genimon-4059"
+      ]
     }
   },
   {
@@ -4690,6 +4924,18 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 405,
+      "guid": 4059,
+      "isPremium": false,
+      "premiumGuid": 4053,
+      "siblingIds": [
+        "genimon-4051",
+        "genimon-4052",
+        "genimon-4053",
+        "genimon-4059"
+      ]
     }
   },
   {
@@ -4912,6 +5158,17 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 406,
+      "guid": 4061,
+      "isPremium": false,
+      "premiumGuid": 4063,
+      "siblingIds": [
+        "genimon-4061",
+        "genimon-4062",
+        "genimon-4063"
+      ]
     }
   },
   {
@@ -5134,6 +5391,17 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 406,
+      "guid": 4062,
+      "isPremium": false,
+      "premiumGuid": 4063,
+      "siblingIds": [
+        "genimon-4061",
+        "genimon-4062",
+        "genimon-4063"
+      ]
     }
   },
   {
@@ -5357,6 +5625,17 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 406,
+      "guid": 4063,
+      "isPremium": true,
+      "premiumGuid": 4063,
+      "siblingIds": [
+        "genimon-4061",
+        "genimon-4062",
+        "genimon-4063"
+      ]
     }
   },
   {
@@ -5580,6 +5859,18 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 407,
+      "guid": 4071,
+      "isPremium": false,
+      "premiumGuid": 4073,
+      "siblingIds": [
+        "genimon-4071",
+        "genimon-4072",
+        "genimon-4073",
+        "genimon-4079"
+      ]
     }
   },
   {
@@ -5803,6 +6094,18 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 407,
+      "guid": 4072,
+      "isPremium": false,
+      "premiumGuid": 4073,
+      "siblingIds": [
+        "genimon-4071",
+        "genimon-4072",
+        "genimon-4073",
+        "genimon-4079"
+      ]
     }
   },
   {
@@ -6027,6 +6330,18 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 407,
+      "guid": 4073,
+      "isPremium": true,
+      "premiumGuid": 4073,
+      "siblingIds": [
+        "genimon-4071",
+        "genimon-4072",
+        "genimon-4073",
+        "genimon-4079"
+      ]
     }
   },
   {
@@ -6250,6 +6565,18 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 407,
+      "guid": 4079,
+      "isPremium": false,
+      "premiumGuid": 4073,
+      "siblingIds": [
+        "genimon-4071",
+        "genimon-4072",
+        "genimon-4073",
+        "genimon-4079"
+      ]
     }
   },
   {
@@ -6475,6 +6802,17 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 408,
+      "guid": 4081,
+      "isPremium": false,
+      "premiumGuid": 4083,
+      "siblingIds": [
+        "genimon-4081",
+        "genimon-4082",
+        "genimon-4083"
+      ]
     }
   },
   {
@@ -6700,6 +7038,17 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 408,
+      "guid": 4082,
+      "isPremium": false,
+      "premiumGuid": 4083,
+      "siblingIds": [
+        "genimon-4081",
+        "genimon-4082",
+        "genimon-4083"
+      ]
     }
   },
   {
@@ -6926,6 +7275,17 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 408,
+      "guid": 4083,
+      "isPremium": true,
+      "premiumGuid": 4083,
+      "siblingIds": [
+        "genimon-4081",
+        "genimon-4082",
+        "genimon-4083"
+      ]
     }
   },
   {
@@ -7151,6 +7511,17 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 409,
+      "guid": 4091,
+      "isPremium": false,
+      "premiumGuid": 4093,
+      "siblingIds": [
+        "genimon-4091",
+        "genimon-4092",
+        "genimon-4093"
+      ]
     }
   },
   {
@@ -7376,6 +7747,17 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 409,
+      "guid": 4092,
+      "isPremium": false,
+      "premiumGuid": 4093,
+      "siblingIds": [
+        "genimon-4091",
+        "genimon-4092",
+        "genimon-4093"
+      ]
     }
   },
   {
@@ -7602,6 +7984,17 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 409,
+      "guid": 4093,
+      "isPremium": true,
+      "premiumGuid": 4093,
+      "siblingIds": [
+        "genimon-4091",
+        "genimon-4092",
+        "genimon-4093"
+      ]
     }
   },
   {
@@ -7826,6 +8219,17 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 411,
+      "guid": 4111,
+      "isPremium": false,
+      "premiumGuid": 4113,
+      "siblingIds": [
+        "genimon-4111",
+        "genimon-4112",
+        "genimon-4113"
+      ]
     }
   },
   {
@@ -8050,6 +8454,17 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 411,
+      "guid": 4112,
+      "isPremium": false,
+      "premiumGuid": 4113,
+      "siblingIds": [
+        "genimon-4111",
+        "genimon-4112",
+        "genimon-4113"
+      ]
     }
   },
   {
@@ -8275,6 +8690,17 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 411,
+      "guid": 4113,
+      "isPremium": true,
+      "premiumGuid": 4113,
+      "siblingIds": [
+        "genimon-4111",
+        "genimon-4112",
+        "genimon-4113"
+      ]
     }
   },
   {
@@ -8499,6 +8925,18 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 412,
+      "guid": 4121,
+      "isPremium": false,
+      "premiumGuid": 4123,
+      "siblingIds": [
+        "genimon-4121",
+        "genimon-4122",
+        "genimon-4123",
+        "genimon-4128"
+      ]
     }
   },
   {
@@ -8723,6 +9161,18 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 412,
+      "guid": 4122,
+      "isPremium": false,
+      "premiumGuid": 4123,
+      "siblingIds": [
+        "genimon-4121",
+        "genimon-4122",
+        "genimon-4123",
+        "genimon-4128"
+      ]
     }
   },
   {
@@ -8948,6 +9398,18 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 412,
+      "guid": 4123,
+      "isPremium": true,
+      "premiumGuid": 4123,
+      "siblingIds": [
+        "genimon-4121",
+        "genimon-4122",
+        "genimon-4123",
+        "genimon-4128"
+      ]
     }
   },
   {
@@ -9172,6 +9634,18 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 412,
+      "guid": 4128,
+      "isPremium": false,
+      "premiumGuid": 4123,
+      "siblingIds": [
+        "genimon-4121",
+        "genimon-4122",
+        "genimon-4123",
+        "genimon-4128"
+      ]
     }
   },
   {
@@ -9396,6 +9870,17 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 413,
+      "guid": 4131,
+      "isPremium": false,
+      "premiumGuid": 4133,
+      "siblingIds": [
+        "genimon-4131",
+        "genimon-4132",
+        "genimon-4133"
+      ]
     }
   },
   {
@@ -9620,6 +10105,17 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 413,
+      "guid": 4132,
+      "isPremium": false,
+      "premiumGuid": 4133,
+      "siblingIds": [
+        "genimon-4131",
+        "genimon-4132",
+        "genimon-4133"
+      ]
     }
   },
   {
@@ -9845,6 +10341,17 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 413,
+      "guid": 4133,
+      "isPremium": true,
+      "premiumGuid": 4133,
+      "siblingIds": [
+        "genimon-4131",
+        "genimon-4132",
+        "genimon-4133"
+      ]
     }
   },
   {
@@ -10069,6 +10576,17 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 414,
+      "guid": 4141,
+      "isPremium": false,
+      "premiumGuid": 4143,
+      "siblingIds": [
+        "genimon-4141",
+        "genimon-4142",
+        "genimon-4143"
+      ]
     }
   },
   {
@@ -10293,6 +10811,17 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 414,
+      "guid": 4142,
+      "isPremium": false,
+      "premiumGuid": 4143,
+      "siblingIds": [
+        "genimon-4141",
+        "genimon-4142",
+        "genimon-4143"
+      ]
     }
   },
   {
@@ -10518,6 +11047,17 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 414,
+      "guid": 4143,
+      "isPremium": true,
+      "premiumGuid": 4143,
+      "siblingIds": [
+        "genimon-4141",
+        "genimon-4142",
+        "genimon-4143"
+      ]
     }
   },
   {
@@ -10742,6 +11282,17 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 415,
+      "guid": 4151,
+      "isPremium": false,
+      "premiumGuid": 4153,
+      "siblingIds": [
+        "genimon-4151",
+        "genimon-4152",
+        "genimon-4153"
+      ]
     }
   },
   {
@@ -10966,6 +11517,17 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 415,
+      "guid": 4152,
+      "isPremium": false,
+      "premiumGuid": 4153,
+      "siblingIds": [
+        "genimon-4151",
+        "genimon-4152",
+        "genimon-4153"
+      ]
     }
   },
   {
@@ -11191,6 +11753,17 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 415,
+      "guid": 4153,
+      "isPremium": true,
+      "premiumGuid": 4153,
+      "siblingIds": [
+        "genimon-4151",
+        "genimon-4152",
+        "genimon-4153"
+      ]
     }
   },
   {
@@ -11415,6 +11988,17 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 416,
+      "guid": 4161,
+      "isPremium": false,
+      "premiumGuid": 4163,
+      "siblingIds": [
+        "genimon-4161",
+        "genimon-4162",
+        "genimon-4163"
+      ]
     }
   },
   {
@@ -11639,6 +12223,17 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 416,
+      "guid": 4162,
+      "isPremium": false,
+      "premiumGuid": 4163,
+      "siblingIds": [
+        "genimon-4161",
+        "genimon-4162",
+        "genimon-4163"
+      ]
     }
   },
   {
@@ -11864,6 +12459,17 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 416,
+      "guid": 4163,
+      "isPremium": true,
+      "premiumGuid": 4163,
+      "siblingIds": [
+        "genimon-4161",
+        "genimon-4162",
+        "genimon-4163"
+      ]
     }
   },
   {
@@ -12103,6 +12709,15 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 421,
+      "guid": 4211,
+      "isPremium": true,
+      "premiumGuid": null,
+      "siblingIds": [
+        "genimon-4211"
+      ]
     }
   },
   {
@@ -12342,6 +12957,15 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 422,
+      "guid": 4221,
+      "isPremium": true,
+      "premiumGuid": null,
+      "siblingIds": [
+        "genimon-4221"
+      ]
     }
   },
   {
@@ -12581,6 +13205,15 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 423,
+      "guid": 4231,
+      "isPremium": true,
+      "premiumGuid": null,
+      "siblingIds": [
+        "genimon-4231"
+      ]
     }
   },
   {
@@ -12820,6 +13453,15 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 424,
+      "guid": 4241,
+      "isPremium": true,
+      "premiumGuid": null,
+      "siblingIds": [
+        "genimon-4241"
+      ]
     }
   },
   {
@@ -13059,6 +13701,15 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 425,
+      "guid": 4251,
+      "isPremium": true,
+      "premiumGuid": null,
+      "siblingIds": [
+        "genimon-4251"
+      ]
     }
   },
   {
@@ -13298,6 +13949,15 @@
       "PetCollectRewardExp": 50,
       "PetLevelMaxExpAtMaxLevel": 345,
       "PetTotalExpAtMaxLevel": 11505
+    },
+    "variants": {
+      "speciesId": 426,
+      "guid": 4261,
+      "isPremium": true,
+      "premiumGuid": null,
+      "siblingIds": [
+        "genimon-4261"
+      ]
     }
   },
   {
@@ -13482,6 +14142,17 @@
         1
       ],
       "PetLevelMaxExpAtMaxLevel": 50
+    },
+    "variants": {
+      "speciesId": 491,
+      "guid": 4911,
+      "isPremium": false,
+      "premiumGuid": null,
+      "siblingIds": [
+        "genimon-4911",
+        "genimon-4912",
+        "genimon-4913"
+      ]
     }
   },
   {
@@ -13666,6 +14337,17 @@
         1
       ],
       "PetLevelMaxExpAtMaxLevel": 50
+    },
+    "variants": {
+      "speciesId": 491,
+      "guid": 4912,
+      "isPremium": false,
+      "premiumGuid": null,
+      "siblingIds": [
+        "genimon-4911",
+        "genimon-4912",
+        "genimon-4913"
+      ]
     }
   },
   {
@@ -13850,6 +14532,17 @@
         1
       ],
       "PetLevelMaxExpAtMaxLevel": 50
+    },
+    "variants": {
+      "speciesId": 491,
+      "guid": 4913,
+      "isPremium": false,
+      "premiumGuid": null,
+      "siblingIds": [
+        "genimon-4911",
+        "genimon-4912",
+        "genimon-4913"
+      ]
     }
   },
   {
@@ -14034,6 +14727,17 @@
         1
       ],
       "PetLevelMaxExpAtMaxLevel": 50
+    },
+    "variants": {
+      "speciesId": 492,
+      "guid": 4921,
+      "isPremium": false,
+      "premiumGuid": null,
+      "siblingIds": [
+        "genimon-4921",
+        "genimon-4922",
+        "genimon-4923"
+      ]
     }
   },
   {
@@ -14218,6 +14922,17 @@
         1
       ],
       "PetLevelMaxExpAtMaxLevel": 50
+    },
+    "variants": {
+      "speciesId": 492,
+      "guid": 4922,
+      "isPremium": false,
+      "premiumGuid": null,
+      "siblingIds": [
+        "genimon-4921",
+        "genimon-4922",
+        "genimon-4923"
+      ]
     }
   },
   {
@@ -14402,6 +15117,17 @@
         1
       ],
       "PetLevelMaxExpAtMaxLevel": 50
+    },
+    "variants": {
+      "speciesId": 492,
+      "guid": 4923,
+      "isPremium": false,
+      "premiumGuid": null,
+      "siblingIds": [
+        "genimon-4921",
+        "genimon-4922",
+        "genimon-4923"
+      ]
     }
   },
   {
@@ -14586,6 +15312,17 @@
         1
       ],
       "PetLevelMaxExpAtMaxLevel": 50
+    },
+    "variants": {
+      "speciesId": 493,
+      "guid": 4931,
+      "isPremium": false,
+      "premiumGuid": null,
+      "siblingIds": [
+        "genimon-4931",
+        "genimon-4934",
+        "genimon-4935"
+      ]
     }
   },
   {
@@ -14770,6 +15507,16 @@
         1
       ],
       "PetLevelMaxExpAtMaxLevel": 50
+    },
+    "variants": {
+      "speciesId": 494,
+      "guid": 4932,
+      "isPremium": false,
+      "premiumGuid": null,
+      "siblingIds": [
+        "genimon-4932",
+        "genimon-4936"
+      ]
     }
   },
   {
@@ -14954,6 +15701,15 @@
         1
       ],
       "PetLevelMaxExpAtMaxLevel": 50
+    },
+    "variants": {
+      "speciesId": 495,
+      "guid": 4933,
+      "isPremium": false,
+      "premiumGuid": null,
+      "siblingIds": [
+        "genimon-4933"
+      ]
     }
   },
   {
@@ -15139,6 +15895,17 @@
         1
       ],
       "PetLevelMaxExpAtMaxLevel": 50
+    },
+    "variants": {
+      "speciesId": 493,
+      "guid": 4934,
+      "isPremium": false,
+      "premiumGuid": null,
+      "siblingIds": [
+        "genimon-4931",
+        "genimon-4934",
+        "genimon-4935"
+      ]
     }
   },
   {
@@ -15324,6 +16091,17 @@
         1
       ],
       "PetLevelMaxExpAtMaxLevel": 50
+    },
+    "variants": {
+      "speciesId": 493,
+      "guid": 4935,
+      "isPremium": false,
+      "premiumGuid": null,
+      "siblingIds": [
+        "genimon-4931",
+        "genimon-4934",
+        "genimon-4935"
+      ]
     }
   },
   {
@@ -15509,6 +16287,16 @@
         1
       ],
       "PetLevelMaxExpAtMaxLevel": 50
+    },
+    "variants": {
+      "speciesId": 494,
+      "guid": 4936,
+      "isPremium": false,
+      "premiumGuid": null,
+      "siblingIds": [
+        "genimon-4932",
+        "genimon-4936"
+      ]
     }
   },
   {
@@ -15693,6 +16481,17 @@
         1
       ],
       "PetLevelMaxExpAtMaxLevel": 50
+    },
+    "variants": {
+      "speciesId": 496,
+      "guid": 4941,
+      "isPremium": false,
+      "premiumGuid": null,
+      "siblingIds": [
+        "genimon-4941",
+        "genimon-4942",
+        "genimon-4943"
+      ]
     }
   },
   {
@@ -15878,6 +16677,17 @@
         1
       ],
       "PetLevelMaxExpAtMaxLevel": 50
+    },
+    "variants": {
+      "speciesId": 496,
+      "guid": 4942,
+      "isPremium": false,
+      "premiumGuid": null,
+      "siblingIds": [
+        "genimon-4941",
+        "genimon-4942",
+        "genimon-4943"
+      ]
     }
   },
   {
@@ -16063,6 +16873,17 @@
         1
       ],
       "PetLevelMaxExpAtMaxLevel": 50
+    },
+    "variants": {
+      "speciesId": 496,
+      "guid": 4943,
+      "isPremium": false,
+      "premiumGuid": null,
+      "siblingIds": [
+        "genimon-4941",
+        "genimon-4942",
+        "genimon-4943"
+      ]
     }
   }
 ]

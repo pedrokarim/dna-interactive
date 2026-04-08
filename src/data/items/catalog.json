@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-03-02T12:52:40.973Z",
+  "generatedAt": "2026-04-08T09:35:51.534Z",
   "categories": [
     {
       "id": "mods",
       "slug": "mods",
-      "title": "Demon Wedge",
+      "title": "MOD / Demon Wedge",
       "technicalName": "MOD",
       "displayName": "Demon Wedge",
-      "description": "Liste des Demon Wedges avec noms multilingues, descriptions et informations d'archives.",
+      "description": "Liste des MOD (Demon Wedges) avec noms multilingues, descriptions et informations d'archives.",
       "itemCount": 714,
       "availableLanguages": [
         "DE",
@@ -54,39 +54,13 @@
       "sampleIconPath": "/assets/items/genimons/T_Head_Pet_Wuyou01.png"
     },
     {
-      "id": "resources",
-      "slug": "resources",
-      "title": "Ressources / Items",
-      "technicalName": "RESOURCE",
-      "displayName": "Items",
-      "description": "Liste des ressources avec noms multilingues, descriptions et icones extraites du jeu.",
-      "itemCount": 610,
-      "availableLanguages": [
-        "DE",
-        "EN",
-        "ES",
-        "FR",
-        "JP",
-        "KR",
-        "TC"
-      ],
-      "defaultGridLanguages": [
-        "FR",
-        "EN"
-      ],
-      "defaultDetailLanguage": "FR",
-      "datasetFile": "resources.items.json",
-      "iconDirectory": "/assets/items/resources",
-      "sampleIconPath": "/assets/items/resources/T_Coin_Main_Lv1.png"
-    },
-    {
       "id": "fishing",
       "slug": "fishing",
       "title": "Peche / Fishing",
       "technicalName": "FISHING",
       "displayName": "Peche",
       "description": "Poissons, cannes, leurres et monnaie lies a la peche.",
-      "itemCount": 111,
+      "itemCount": 141,
       "availableLanguages": [
         "DE",
         "EN",
@@ -104,32 +78,6 @@
       "datasetFile": "fishing.items.json",
       "iconDirectory": "/assets/items/fishing",
       "sampleIconPath": "/assets/items/fishing/T_Coin_Other_Fishing.png"
-    },
-    {
-      "id": "weapons",
-      "slug": "weapons",
-      "title": "Armes / Weapons",
-      "technicalName": "WEAPON",
-      "displayName": "Armes",
-      "description": "Liste des armes avec noms multilingues, type melee/range, sous-type et icones.",
-      "itemCount": 54,
-      "availableLanguages": [
-        "DE",
-        "EN",
-        "ES",
-        "FR",
-        "JP",
-        "KR",
-        "TC"
-      ],
-      "defaultGridLanguages": [
-        "FR",
-        "EN"
-      ],
-      "defaultDetailLanguage": "FR",
-      "datasetFile": "weapons.items.json",
-      "iconDirectory": "/assets/items/weapons",
-      "sampleIconPath": "/assets/items/weapons/T_Head_Sword_Zhuiyi.png"
     }
   ]
 }

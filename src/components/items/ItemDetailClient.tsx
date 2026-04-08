@@ -6,6 +6,7 @@ import { ArrowLeft, ChevronDown, Database, Heart, Languages, SlidersHorizontal, 
 import { useAtom } from "jotai";
 import { parseAsInteger, parseAsStringLiteral, useQueryState } from "nuqs";
 import {
+  getGenimonVariants,
   getItemTranslation,
   getLanguageLabel,
   normalizeLanguageCodes,
@@ -355,6 +356,10 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
       ),
     [item.fields.BattlePet_ResolvedAddAttrs, item.fields.BattlePet_AddAttrs],
   );
+  const variantSiblings = useMemo(
+    () => (isGenimonsCategory ? getGenimonVariants(item) : []),
+    [isGenimonsCategory, item],
+  );
   const hasAffinityData =
     Boolean(
       affinityIconSrc ||
@@ -548,9 +553,49 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
                   Tolerance {selectedTolerance ?? "N/A"}
                 </span>
               ) : null}
+              {item.variants?.isPremium ? (
+                <span className="rounded-full border border-amber-500/50 bg-amber-500/10 px-3 py-1 text-amber-100">
+                  Premium
+                </span>
+              ) : null}
             </div>
           </div>
         </div>
+
+        {isGenimonsCategory && variantSiblings.length > 1 ? (
+          <section className="mt-5 rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
+            <h2 className="text-lg font-semibold text-white">Variantes</h2>
+            <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+              {variantSiblings.map((sibling) => {
+                const isCurrent = sibling.id === item.id;
+                const siblingTranslation = getItemTranslation(sibling, selectedLanguage, category.availableLanguages);
+                const siblingIsPremium = sibling.variants?.isPremium ?? false;
+                const siblingIcon = sibling.icon.publicPath ?? sibling.icon.placeholderPath ?? "/marker-default.svg";
+                return (
+                  <Link
+                    key={sibling.id}
+                    href={`/items/${category.slug}/${sibling.id}`}
+                    className={`flex items-center gap-3 rounded-lg border px-3 py-2 transition-colors ${
+                      isCurrent
+                        ? "border-indigo-500/50 bg-indigo-500/10"
+                        : "border-slate-700/60 bg-slate-950/55 hover:border-indigo-400/40"
+                    } ${siblingIsPremium ? "ring-1 ring-amber-500/30" : ""}`}
+                  >
+                    <img src={siblingIcon} alt="" className="h-10 w-10 shrink-0 object-contain" />
+                    <div className="min-w-0">
+                      <p className="truncate text-sm font-medium text-slate-100">
+                        {siblingTranslation.modName ?? `#${sibling.modId}`}
+                      </p>
+                      {siblingIsPremium ? (
+                        <span className="text-xs text-amber-300">Premium</span>
+                      ) : null}
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </section>
+        ) : null}
 
         {hasScalingData ? (
           <div className="mt-4 max-w-xl rounded-lg border border-slate-700/70 bg-slate-950/55 px-3 py-2.5">
