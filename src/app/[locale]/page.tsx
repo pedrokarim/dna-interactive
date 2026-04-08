@@ -17,6 +17,7 @@ import UpdateBanner from "@/components/UpdateBanner";
 import HeroSection from "@/components/HeroSection";
 import NewCharactersBanner from "@/components/NewCharactersBanner";
 import CommunityCards from "@/components/CommunityCards";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 export async function generateMetadata(
   _props: Record<string, never>,
@@ -75,21 +76,24 @@ export default async function Home() {
               </div>
             </div>
 
-            <nav className="hidden md:flex items-center space-x-8">
-              {NAV_LINKS.map((link) => {
-                const IconComponent = navIcons[link.href];
-                return (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="flex items-center gap-2 text-gray-300 hover:text-indigo-400 transition-colors"
-                  >
-                    {IconComponent && <IconComponent className="w-4 h-4" />}
-                    <span>{navLabels[link.href] ?? link.label}</span>
-                  </Link>
-                );
-              })}
-            </nav>
+            <div className="hidden md:flex items-center gap-6">
+              <nav className="flex items-center space-x-8">
+                {NAV_LINKS.map((link) => {
+                  const IconComponent = navIcons[link.href];
+                  return (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="flex items-center gap-2 text-gray-300 hover:text-indigo-400 transition-colors"
+                    >
+                      {IconComponent && <IconComponent className="w-4 h-4" />}
+                      <span>{navLabels[link.href] ?? link.label}</span>
+                    </Link>
+                  );
+                })}
+              </nav>
+              <LanguageSwitcher />
+            </div>
           </div>
         </div>
       </header>

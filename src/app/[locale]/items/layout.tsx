@@ -11,6 +11,7 @@ import {
   SITE_CONFIG,
 } from "@/lib/constants";
 import { generatePageMetadata, pageMetadata } from "@/lib/metadata";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 export async function generateMetadata(
   _props: object,
@@ -54,21 +55,24 @@ export default async function ItemsLayout({
               </div>
             </Link>
 
-            <nav className="hidden items-center gap-7 md:flex">
-              {NAV_LINKS.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`text-sm transition-colors ${
-                    link.href === NAVIGATION.items
-                      ? "font-medium text-indigo-400"
-                      : "text-slate-300 hover:text-indigo-400"
-                  }`}
-                >
-                  {navLabels[link.href] ?? link.label}
-                </Link>
-              ))}
-            </nav>
+            <div className="hidden items-center gap-6 md:flex">
+              <nav className="flex items-center gap-7">
+                {NAV_LINKS.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`text-sm transition-colors ${
+                      link.href === NAVIGATION.items
+                        ? "font-medium text-indigo-400"
+                        : "text-slate-300 hover:text-indigo-400"
+                    }`}
+                  >
+                    {navLabels[link.href] ?? link.label}
+                  </Link>
+                ))}
+              </nav>
+              <LanguageSwitcher />
+            </div>
           </div>
         </div>
       </header>

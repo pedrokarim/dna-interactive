@@ -5,6 +5,7 @@ import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { SITE_CONFIG, ASSETS_PATHS, NAVIGATION, CONTACT_INFO, CREATOR_INFO, LEGAL_INFO } from "@/lib/constants";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 export default function ContactPage() {
   const t = useTranslations('contact');
@@ -115,38 +116,41 @@ export default function ContactPage() {
               </div>
             </Link>
 
-            <nav className="hidden md:flex items-center space-x-8">
-              <Link
-                href={NAVIGATION.home}
-                className="text-gray-300 hover:text-indigo-400 transition-colors"
-              >
-                {tn('home')}
-              </Link>
-              <Link
-                href={NAVIGATION.map}
-                className="text-gray-300 hover:text-indigo-400 transition-colors"
-              >
-                {tn('map')}
-              </Link>
-              <Link
-                href={NAVIGATION.items}
-                className="text-gray-300 hover:text-indigo-400 transition-colors"
-              >
-                {tn('items')}
-              </Link>
-              <Link
-                href={NAVIGATION.about}
-                className="text-gray-300 hover:text-indigo-400 transition-colors"
-              >
-                {tn('about')}
-              </Link>
-              <Link
-                href={NAVIGATION.support}
-                className="text-gray-300 hover:text-indigo-400 transition-colors"
-              >
-                {tn('support')}
-              </Link>
-            </nav>
+            <div className="hidden md:flex items-center gap-6">
+              <nav className="flex items-center space-x-8">
+                <Link
+                  href={NAVIGATION.home}
+                  className="text-gray-300 hover:text-indigo-400 transition-colors"
+                >
+                  {tn('home')}
+                </Link>
+                <Link
+                  href={NAVIGATION.map}
+                  className="text-gray-300 hover:text-indigo-400 transition-colors"
+                >
+                  {tn('map')}
+                </Link>
+                <Link
+                  href={NAVIGATION.items}
+                  className="text-gray-300 hover:text-indigo-400 transition-colors"
+                >
+                  {tn('items')}
+                </Link>
+                <Link
+                  href={NAVIGATION.about}
+                  className="text-gray-300 hover:text-indigo-400 transition-colors"
+                >
+                  {tn('about')}
+                </Link>
+                <Link
+                  href={NAVIGATION.support}
+                  className="text-gray-300 hover:text-indigo-400 transition-colors"
+                >
+                  {tn('support')}
+                </Link>
+              </nav>
+              <LanguageSwitcher />
+            </div>
           </div>
         </div>
       </header>

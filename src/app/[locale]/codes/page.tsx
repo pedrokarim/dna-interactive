@@ -4,6 +4,7 @@ import { SITE_CONFIG } from "@/lib/constants";
 import CodesList from "@/components/CodesList";
 import type { Metadata, ResolvingMetadata } from "next";
 import { generatePageMetadata, pageMetadata } from "@/lib/metadata";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 export async function generateMetadata(
   {}: {},
@@ -38,47 +39,50 @@ export default async function CodesPage() {
               </div>
             </div>
 
-            <nav className="hidden md:flex items-center space-x-8">
-              <Link
-                href="/"
-                className="text-gray-300 hover:text-indigo-400 transition-colors"
-              >
-                {tNav('home')}
-              </Link>
-              <Link
-                href="/map"
-                className="text-gray-300 hover:text-indigo-400 transition-colors"
-              >
-                {tNav('map')}
-              </Link>
-              <Link
-                href="/items"
-                className="text-gray-300 hover:text-indigo-400 transition-colors"
-              >
-                {tNav('items')}
-              </Link>
-              <Link href="/codes" className="text-indigo-400 font-medium">
-                {tNav('codes')}
-              </Link>
-              <Link
-                href="/about"
-                className="text-gray-300 hover:text-indigo-400 transition-colors"
-              >
-                {tNav('about')}
-              </Link>
-              <Link
-                href="/support"
-                className="text-gray-300 hover:text-indigo-400 transition-colors"
-              >
-                {tNav('support')}
-              </Link>
-              <Link
-                href="/contact"
-                className="text-gray-300 hover:text-indigo-400 transition-colors"
-              >
-                {tNav('contact')}
-              </Link>
-            </nav>
+            <div className="hidden md:flex items-center gap-6">
+              <nav className="flex items-center space-x-8">
+                <Link
+                  href="/"
+                  className="text-gray-300 hover:text-indigo-400 transition-colors"
+                >
+                  {tNav('home')}
+                </Link>
+                <Link
+                  href="/map"
+                  className="text-gray-300 hover:text-indigo-400 transition-colors"
+                >
+                  {tNav('map')}
+                </Link>
+                <Link
+                  href="/items"
+                  className="text-gray-300 hover:text-indigo-400 transition-colors"
+                >
+                  {tNav('items')}
+                </Link>
+                <Link href="/codes" className="text-indigo-400 font-medium">
+                  {tNav('codes')}
+                </Link>
+                <Link
+                  href="/about"
+                  className="text-gray-300 hover:text-indigo-400 transition-colors"
+                >
+                  {tNav('about')}
+                </Link>
+                <Link
+                  href="/support"
+                  className="text-gray-300 hover:text-indigo-400 transition-colors"
+                >
+                  {tNav('support')}
+                </Link>
+                <Link
+                  href="/contact"
+                  className="text-gray-300 hover:text-indigo-400 transition-colors"
+                >
+                  {tNav('contact')}
+                </Link>
+              </nav>
+              <LanguageSwitcher />
+            </div>
           </div>
         </div>
       </header>
