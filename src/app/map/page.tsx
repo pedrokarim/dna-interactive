@@ -198,115 +198,60 @@ export default function MapPage() {
     const categoryGroups = {
       collectibles: {
         name: "Collectibles",
-        icon: "https://herobox-img.yingxiong.com/map/1749672600072455391.png", // Icône collectibles originale
+        icon: "https://herobox-img.yingxiong.com/map/1749672600072455391.png",
         items: [] as typeof allSubCategories,
       },
       chests: {
         name: "Coffres",
-        icon: "https://herobox-img.yingxiong.com/map/1749672743841364457.png", // Icône coffre originale
+        icon: "https://herobox-img.yingxiong.com/map/1749672743841364457.png",
         items: [] as typeof allSubCategories,
       },
       books: {
         name: "Livres & Documents",
-        icon: "https://herobox-img.yingxiong.com/map/1749555921415533794.png", // Icône livre temporaire
+        icon: "https://herobox-img.yingxiong.com/map/1749555921415533794.png",
         items: [] as typeof allSubCategories,
       },
       locations: {
         name: "Lieux & PNJ",
-        icon: "https://herobox-img.yingxiong.com/map/1749555783038694078.png", // Icône lieu temporaire
+        icon: "https://herobox-img.yingxiong.com/map/1749555783038694078.png",
+        items: [] as typeof allSubCategories,
+      },
+      genimons: {
+        name: "Genimons",
+        icon: "https://herobox-img.yingxiong.com/map/1749672734516496170.png",
         items: [] as typeof allSubCategories,
       },
       challenges: {
         name: "Événements & Défis",
-        icon: "https://herobox-img.yingxiong.com/map/1749556012460864902.png", // Icône défi temporaire
+        icon: "https://herobox-img.yingxiong.com/map/1749556012460864902.png",
         items: [] as typeof allSubCategories,
       },
       others: {
         name: "Autres",
-        icon: "https://herobox-img.yingxiong.com/map/1749672734516496170.png", // Icône autres
+        icon: "https://herobox-img.yingxiong.com/map/1749672734516496170.png",
         items: [] as typeof allSubCategories,
       },
     };
 
-    // Regrouper les éléments dans les bonnes catégories
-    allSubCategories.forEach((item) => {
-      const name = item.name.toLowerCase();
+    // Classification basée sur le type de catégorie source (plus fiable que les keywords)
+    const typeToGroup: Record<string, keyof typeof categoryGroups> = {
+      "Collectibles": "collectibles",
+      "Storage Chest": "chests",
+      "Readables": "books",
+      "Reading Materials 1.3": "books",
+      "Landmarks": "locations",
+      "NPC": "locations",
+      "Geniemon": "genimons",
+      "Challenges": "challenges",
+      "Challenge": "challenges",
+      "Emergency/Dispatch": "challenges",
+      "Unexpected Events/Dispatch": "challenges",
+      "Others": "others",
+    };
 
-      // Collectibles
-      if (
-        name.includes("spring") ||
-        name.includes("shell") ||
-        name.includes("mushroom") ||
-        name.includes("flower") ||
-        name.includes("butterfly") ||
-        name.includes("egg") ||
-        name.includes("sap") ||
-        name.includes("grass") ||
-        name.includes("stone") ||
-        name.includes("lily") ||
-        name.includes("snowcap") ||
-        name.includes("cracks")
-      ) {
-        categoryGroups.collectibles.items.push(item);
-      }
-      // Coffres
-      else if (name.includes("chest") || name.includes("coffre")) {
-        categoryGroups.chests.items.push(item);
-      }
-      // Livres et documents
-      else if (
-        name.includes("diary") ||
-        name.includes("part ") ||
-        name.includes("letter") ||
-        name.includes("book") ||
-        name.includes("file") ||
-        name.includes("hymn") ||
-        name.includes("excerpt") ||
-        name.includes("newspaper") ||
-        name.includes("note") ||
-        name.includes("bill") ||
-        name.includes("label") ||
-        name.includes("medal") ||
-        name.includes("log ") ||
-        name.includes("candle") ||
-        name.includes("alliance") ||
-        name.includes("drink") ||
-        name.includes("branches") ||
-        name.includes("command") ||
-        name.includes("farewell") ||
-        name.includes("success") ||
-        name.includes("poverty")
-      ) {
-        categoryGroups.books.items.push(item);
-      }
-      // Lieux et PNJ
-      else if (
-        name.includes("npc") ||
-        name.includes("shop") ||
-        name.includes("house") ||
-        name.includes("hospital") ||
-        name.includes("temple") ||
-        name.includes("barrel")
-      ) {
-        categoryGroups.locations.items.push(item);
-      }
-      // Événements et défis
-      else if (
-        name.includes("challenge") ||
-        name.includes("event") ||
-        name.includes("shooting") ||
-        name.includes("parkour") ||
-        name.includes("equipment") ||
-        name.includes("protect") ||
-        name.includes("explorer") ||
-        name.includes("检定")
-      ) {
-        categoryGroups.challenges.items.push(item);
-      }
-      // Autres (points de téléportation, démons, pêche, etc.)
-      else {
-        categoryGroups.others.items.push(item);
-      }
+    allSubCategories.forEach((item) => {
+      const group = typeToGroup[item.parentType] || "others";
+      categoryGroups[group].items.push(item);
     });
 
     // Retourner seulement les groupes qui ont des éléments
