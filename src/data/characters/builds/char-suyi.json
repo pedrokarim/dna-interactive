@@ -1,0 +1,86 @@
+[
+  {
+    "characterId": "char-suyi",
+    "buildName": { "FR": "DPS Lumino", "EN": "Lumino DPS" },
+    "weapons": {
+      "melee": [
+        {
+          "itemId": "weapons-10206",
+          "rank": "best",
+          "note": {
+            "FR": "Degats de competence +48%.",
+            "EN": "Skill Damage +48%."
+          }
+        }
+      ],
+      "ranged": []
+    },
+    "demonWedges": {
+      "slots": [
+        { "position": 1, "itemId": "mods-56162", "track": null },
+        { "position": 2, "itemId": "mods-51461", "track": null },
+        { "position": 3, "itemId": "mods-51326", "track": null },
+        { "position": 4, "itemId": "mods-51761", "track": null },
+        { "position": 5, "itemId": "mods-51761", "track": null },
+        { "position": 6, "itemId": "mods-51761", "track": null },
+        { "position": 7, "itemId": "mods-51761", "track": null },
+        { "position": 8, "itemId": "mods-51761", "track": null }
+      ],
+      "centerItemId": "mods-31502",
+      "affinity": { "FR": "Morale de Quetzalcoatl", "EN": "Feathered Serpent's Morale" },
+      "note": {
+        "FR": "Focus Intensite de competence + Morale. 5x Scorch pour maximiser les degats.",
+        "EN": "Focus Skill Intensity + Morale. 5x Scorch for maximum damage."
+      }
+    },
+    "statsPriority": [
+      "SkillIntensity",
+      "Morale",
+      "ATK"
+    ],
+    "team": [
+      {
+        "characterId": "char-feina",
+        "role": "Support",
+        "note": {
+          "FR": "Buffs degats d'arme, penetration et degats.",
+          "EN": "Weapon DMG, PEN and damage buffs."
+        }
+      },
+      {
+        "characterId": "char-baiheng",
+        "role": "Support",
+        "note": {
+          "FR": "Intensite de competence, soins, boucliers et Lucidite.",
+          "EN": "Skill Intensity, healing, Ultra Shields and Sanity recovery."
+        }
+      }
+    ],
+    "genimon": [
+      { "itemId": "genimon-4261", "rank": "best" },
+      { "itemId": "genimon-4161", "rank": "alternative" },
+      { "itemId": "genimon-4061", "rank": "alternative" }
+    ],
+    "skillPriority": [
+      {
+        "skillName": { "FR": "Mode Etoile Filante", "EN": "Starfall Mode" },
+        "priority": 5,
+        "note": { "FR": "Source principale de degats.", "EN": "Primary damage source." }
+      },
+      {
+        "skillName": { "FR": "Prete a Frapper", "EN": "Poised To Strike" },
+        "priority": 4,
+        "note": { "FR": "Recuperation de Lucidite et amplification des degats.", "EN": "Sanity recovery and damage amplification." }
+      },
+      {
+        "skillName": { "FR": "Vers le Soleil", "EN": "Sunward" },
+        "priority": 2,
+        "note": { "FR": "Outil de mobilite uniquement.", "EN": "Mobility tool only." }
+      }
+    ],
+    "notes": {
+      "FR": "Su Yi est une DPS Lumino a distance. Entrez en Starfall Mode pour invoquer Fengshi et accumuler des degats. Chaque point de Lucidite depense augmente les munitions via l'arme signature.",
+      "EN": "Su Yi is a ranged Lumino DPS. Enter Starfall Mode to summon Fengshi and stack damage. Each Sanity spent increases ammo through the signature weapon."
+    }
+  }
+]

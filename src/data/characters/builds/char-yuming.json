@@ -1,0 +1,96 @@
+[
+  {
+    "characterId": "char-yuming",
+    "buildName": { "FR": "Sub-DPS Electro", "EN": "Electro Sub-DPS" },
+    "weapons": {
+      "melee": [
+        {
+          "itemId": "weapons-10203",
+          "rank": "best",
+          "note": {
+            "FR": "Arme signature. Intensite de competence +40%.",
+            "EN": "Signature weapon. Skill Intensity +40%."
+          }
+        }
+      ],
+      "ranged": [
+        {
+          "itemId": "weapons-20102",
+          "rank": "best",
+          "note": {
+            "FR": "ATQ +120%. Meilleure option distance.",
+            "EN": "ATK +120%. Best ranged option."
+          }
+        }
+      ]
+    },
+    "demonWedges": {
+      "slots": [
+        { "position": 1, "itemId": "mods-51941", "track": 4 },
+        { "position": 2, "itemId": "mods-51441", "track": 1 },
+        { "position": 3, "itemId": "mods-51324", "track": 3 },
+        { "position": 4, "itemId": "mods-56142", "track": 2 },
+        { "position": 5, "itemId": "mods-51742", "track": null },
+        { "position": 6, "itemId": "mods-51742", "track": null },
+        { "position": 7, "itemId": "mods-51743", "track": null },
+        { "position": 8, "itemId": "mods-51743", "track": null }
+      ],
+      "centerItemId": "mods-31502",
+      "affinity": { "FR": "Volonte de Quetzalcoatl", "EN": "Feathered Serpent's Volition" },
+      "note": {
+        "FR": "Focus Intensite de competence + Morale. Meme setup que Zhiliu.",
+        "EN": "Focus Skill Intensity + Morale. Same setup as Zhiliu."
+      }
+    },
+    "statsPriority": [
+      "SkillIntensity",
+      "Morale",
+      "ATK",
+      "SkillRange"
+    ],
+    "team": [
+      {
+        "characterId": "char-baiheng",
+        "role": "Support",
+        "note": {
+          "FR": "Intensite de competence, soins et Lucidite.",
+          "EN": "Skill Intensity, healing and Sanity recovery."
+        }
+      },
+      {
+        "characterId": "char-feina",
+        "role": "Support",
+        "note": {
+          "FR": "Buffs degats d'arme et penetration.",
+          "EN": "Weapon DMG and PEN buffs."
+        }
+      }
+    ],
+    "genimon": [
+      { "itemId": "genimon-4241", "rank": "best" },
+      { "itemId": "genimon-4121", "rank": "alternative" },
+      { "itemId": "genimon-4141", "rank": "alternative" }
+    ],
+    "skillPriority": [
+      {
+        "skillName": { "FR": "Chute de Tonnerre", "EN": "Precipitous Thunderfall" },
+        "priority": 5,
+        "note": { "FR": "Source principale de degats.", "EN": "Primary damage source." }
+      },
+      {
+        "skillName": { "FR": "Ecailles Sinistres", "EN": "Grimscales" },
+        "priority": 4,
+        "note": { "FR": "Debuffs ennemis, potentiel complet.", "EN": "Enemy debuffs, unlocks full potential." }
+      },
+      {
+        "skillName": { "FR": "Ascension Celeste", "EN": "Soaring Sky-High" },
+        "priority": 3,
+        "note": { "FR": "Buff de degats pour toute l'equipe.", "EN": "Party-wide damage buff." }
+      }
+    ],
+    "notes": {
+      "FR": "Yuming est un Sub-DPS Electro qui excelle en debuff et burst. Utilisez Grimscales pour debuffer les ennemis puis enchainez avec Precipitous Thunderfall pour le burst.",
+      "EN": "Yuming is an Electro Sub-DPS who excels at debuffing and burst. Use Grimscales to debuff enemies then follow up with Precipitous Thunderfall for burst damage."
+    }
+  }
+]
