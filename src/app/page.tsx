@@ -85,20 +85,6 @@ export default function Home() {
       {/* New Characters Banner */}
       <NewCharactersBanner />
 
-      {/* About Section */}
-      <section id="about" className="py-20">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-bold text-white mb-8">À propos</h2>
-            <div className="bg-linear-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border border-indigo-500/20 rounded-xl p-8">
-              <p className="text-lg text-gray-300 leading-relaxed">
-                {GAME_INFO.description}
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Community Section */}
       <section className="py-20 bg-slate-900/50">
         <div className="container mx-auto px-6">
