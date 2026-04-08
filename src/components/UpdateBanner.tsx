@@ -30,7 +30,7 @@ const HOME_ANNOUNCEMENTS: HomeAnnouncement[] = [
     icon: MapPin,
     title: "Nouvelle map disponible !",
     desktopDetails: "Explorez Haojing avec 143 nouveaux marqueurs",
-    href: "/map",
+    href: "/map?mapId=haojing",
     ctaLabel: "Explorer",
     gradientClassName:
       "bg-linear-to-r from-amber-600/90 via-orange-600/90 to-red-600/90",

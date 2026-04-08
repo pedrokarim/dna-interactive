@@ -14,6 +14,7 @@ import {
 import { generatePageMetadata, pageMetadata } from "@/lib/metadata";
 import UpdateBanner from "@/components/UpdateBanner";
 import HeroSection from "@/components/HeroSection";
+import NewCharactersBanner from "@/components/NewCharactersBanner";
 import CommunityCards from "@/components/CommunityCards";
 
 export async function generateMetadata(
@@ -80,6 +81,9 @@ export default function Home() {
 
       {/* Hero Section - Composant client */}
       <HeroSection />
+
+      {/* New Characters Banner */}
+      <NewCharactersBanner />
 
       {/* About Section */}
       <section id="about" className="py-20">

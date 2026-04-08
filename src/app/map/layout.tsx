@@ -1,5 +1,7 @@
+import { Suspense } from "react";
 import type { Metadata, ResolvingMetadata } from "next";
 import StructuredData from "@/components/StructuredData";
+import Loading from "@/components/Loading";
 import { generatePageMetadata, pageMetadata } from "@/lib/metadata";
 
 export async function generateMetadata(
@@ -17,7 +19,9 @@ export default function MapLayout({
   return (
     <>
       <StructuredData type="map" />
-      {children}
+      <Suspense fallback={<Loading mode="box" message="Chargement de la carte..." size={48} />}>
+        {children}
+      </Suspense>
     </>
   );
 }

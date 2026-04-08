@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useQueryState, parseAsString } from "nuqs";
 import { useAtom } from "jotai";
 import dynamic from "next/dynamic";
 import mapIndex from "@/data/mapIndex.json";
@@ -104,6 +105,7 @@ export default function MapPage() {
   const [showMapInfoModal, setShowMapInfoModal] = useState(false);
   const [showChangelogModal, setShowChangelogModal] = useState(false);
   const [hasInitializedMap, setHasInitializedMap] = useState(false);
+  const [urlMapId] = useQueryState('mapId', parseAsString);
 
   // Gestionnaires pour le redimensionnement de la sidebar
   const handleMouseDown = (e: React.MouseEvent) => {
@@ -387,7 +389,16 @@ export default function MapPage() {
     if (typeof window !== 'undefined' && mapIndex.length > 0 && !hasInitializedMap) {
       setHasInitializedMap(true);
 
-      // Récupérer la valeur persistée directement depuis localStorage
+      // Priorité 1 : paramètre URL ?mapId=xxx
+      if (urlMapId) {
+        const exists = mapIndex.some((map) => map.id === urlMapId);
+        if (exists) {
+          setSelectedMapId(urlMapId);
+          return;
+        }
+      }
+
+      // Priorité 2 : valeur persistée dans localStorage
       const persistedMapId = localStorage.getItem('selected-map');
 
       if (persistedMapId) {
@@ -404,7 +415,7 @@ export default function MapPage() {
       // Si pas de carte persistée valide, utiliser la première carte
       setSelectedMapId(mapIndex[0].id);
     }
-  }, [hasInitializedMap, setSelectedMapId]);
+  }, [hasInitializedMap, setSelectedMapId, urlMapId]);
 
   // Initialiser la visibilité des catégories quand la carte change
   useEffect(() => {
@@ -827,39 +838,37 @@ export default function MapPage() {
               Réinitialiser
             </button>
 
-            <div className="flex justify-between text-xs text-gray-500 pt-2 border-t border-indigo-500/20">
+            <div className="flex flex-wrap gap-x-3 gap-y-1 text-xs text-gray-500 pt-2 border-t border-indigo-500/20">
               <Link
                 href="/"
                 className="hover:text-indigo-400 transition-colors"
               >
                 ← Accueil
               </Link>
-              <div className="flex space-x-3">
-                <Link
-                  href="/changelog"
-                  className="hover:text-indigo-400 transition-colors"
-                >
-                  Changelog
-                </Link>
-                <Link
-                  href="/items"
-                  className="hover:text-indigo-400 transition-colors"
-                >
-                  Items
-                </Link>
-                <Link
-                  href="/about"
-                  className="hover:text-indigo-400 transition-colors"
-                >
-                  À propos
-                </Link>
-                <Link
-                  href="/support"
-                  className="hover:text-indigo-400 transition-colors"
-                >
-                  Support
-                </Link>
-              </div>
+              <Link
+                href="/changelog"
+                className="hover:text-indigo-400 transition-colors"
+              >
+                Changelog
+              </Link>
+              <Link
+                href="/items"
+                className="hover:text-indigo-400 transition-colors"
+              >
+                Items
+              </Link>
+              <Link
+                href="/about"
+                className="hover:text-indigo-400 transition-colors"
+              >
+                À propos
+              </Link>
+              <Link
+                href="/support"
+                className="hover:text-indigo-400 transition-colors"
+              >
+                Support
+              </Link>
             </div>
           </div>
         )}
