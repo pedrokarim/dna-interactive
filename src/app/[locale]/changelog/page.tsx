@@ -158,10 +158,10 @@ export default function ChangelogPage() {
               </span>
             </div>
 
-            <div className="flex items-center space-x-6 text-sm text-gray-400">
+            <nav className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-slate-300 md:gap-x-6">
               <Link
                 href="/"
-                className="hover:text-indigo-400 transition-colors"
+                className="hover:text-indigo-300 transition-colors"
               >
                 {tn('home')}
               </Link>
@@ -191,11 +191,11 @@ export default function ChangelogPage() {
               </Link>
               <Link
                 href="/contact"
-                className="hover:text-indigo-400 transition-colors"
+                className="hover:text-indigo-300 transition-colors"
               >
                 {tn('contact')}
               </Link>
-            </div>
+            </nav>
           </div>
 
           <div className="mt-8 pt-8 border-t border-indigo-500/10 text-center text-sm text-gray-500">

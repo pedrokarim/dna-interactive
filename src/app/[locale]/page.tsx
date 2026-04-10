@@ -392,10 +392,10 @@ export default async function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-slate-950 border-t border-indigo-500/20 py-12">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row items-center justify-between">
-            <div className="flex items-center gap-3 mb-4 md:mb-0">
+      <footer className="bg-slate-950 border-t border-indigo-500/20 py-8 md:py-12">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="flex items-center gap-3">
               <img
                 src={ASSETS_PATHS.logo}
                 alt={`${SITE_CONFIG.name} Logo`}
@@ -408,7 +408,7 @@ export default async function Home() {
               </span>
             </div>
 
-            <div className="flex items-center space-x-6 text-sm text-slate-300">
+            <nav className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-slate-300 md:gap-x-6">
               {FOOTER_LINKS.map((link) => (
                 <Link
                   key={link.href}
@@ -418,10 +418,10 @@ export default async function Home() {
                   {navLabels[link.href] ?? link.label}
                 </Link>
               ))}
-            </div>
+            </nav>
           </div>
 
-          <div className="mt-8 pt-8 border-t border-indigo-500/10 text-center text-sm text-slate-300">
+          <div className="mt-6 pt-6 md:mt-8 md:pt-8 border-t border-indigo-500/10 text-center text-sm text-slate-300">
             <p>{LEGAL_INFO.copyright}</p>
             <p className="mt-2">
               {LEGAL_INFO.disclaimer}

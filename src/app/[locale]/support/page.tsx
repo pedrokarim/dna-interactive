@@ -200,7 +200,7 @@ export default async function SupportPage() {
               <span className="text-white font-semibold">{SITE_CONFIG.name}</span>
             </div>
 
-            <div className="flex items-center space-x-6 text-sm text-gray-400">
+            <nav className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-slate-300 md:gap-x-6">
               <Link href={NAVIGATION.home} className="hover:text-indigo-400 transition-colors">
                 {tNav('home')}
               </Link>
@@ -213,10 +213,10 @@ export default async function SupportPage() {
               <Link href={NAVIGATION.about} className="hover:text-indigo-400 transition-colors">
                 {tNav('about')}
               </Link>
-              <Link href={NAVIGATION.contact} className="hover:text-indigo-400 transition-colors">
+              <Link href={NAVIGATION.contact} className="hover:text-indigo-300 transition-colors">
                 {tNav('contact')}
               </Link>
-            </div>
+            </nav>
           </div>
 
           <div className="mt-8 pt-8 border-t border-indigo-500/10 text-center text-sm text-gray-500">

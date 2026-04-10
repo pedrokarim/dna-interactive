@@ -91,24 +91,24 @@ export default async function CharactersLayout({
               />
               <span className="text-sm font-semibold text-white">{SITE_CONFIG.name}</span>
             </div>
-            <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-slate-400">
+            <nav className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-slate-300 md:gap-x-6">
               {FOOTER_LINKS.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   className={`transition-colors ${
                     link.href === NAVIGATION.characters
-                      ? "text-indigo-400"
-                      : "hover:text-indigo-400"
+                      ? "text-indigo-300"
+                      : "hover:text-indigo-300"
                   }`}
                 >
                   {navLabels[link.href] ?? link.label}
                 </Link>
               ))}
-            </div>
+            </nav>
           </div>
 
-          <div className="mt-8 border-t border-indigo-500/10 pt-8 text-center text-sm text-slate-500">
+          <div className="mt-6 md:mt-8 border-t border-indigo-500/10 pt-6 md:pt-8 text-center text-sm text-slate-300">
             <p>{LEGAL_INFO.copyright}</p>
             <p className="mt-2">
               {LEGAL_INFO.disclaimer}
@@ -116,7 +116,7 @@ export default async function CharactersLayout({
                 href={CONTACT_INFO.ascencia.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="ml-1 text-indigo-400 hover:text-indigo-300"
+                className="ml-1 text-indigo-300 hover:text-indigo-200 underline underline-offset-2"
               >
                 {LEGAL_INFO.ascenciaCredit}
               </a>
