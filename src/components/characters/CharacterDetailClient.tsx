@@ -782,20 +782,34 @@ function BuildTabContent({
                     {cw.slots.slice(2, 4).map((s, i) => renderSlot(s, i, CLIP_RIGHT))}
                   </div>
                 </div>
-                {/* Mobile */}
-                <div className="grid w-full grid-cols-2 place-items-center gap-4 md:hidden">
-                  {cw.slots.map((s, i) => renderSlot(s, i, i < 2 ? CLIP_LEFT : CLIP_RIGHT))}
-                  <div className="col-span-2 flex flex-col items-center gap-1">
-                    <div className="flex h-20 w-20 items-center justify-center rounded-full border-2 border-purple-400/50 bg-purple-500/10">
+                {/* Mobile — top row (slots 0/2), center weapon, bottom row (slots 1/3),
+                    mirroring the DemonWedgeLayout mobile pattern */}
+                <div className="flex w-full flex-col items-center gap-4 md:hidden">
+                  <div className="grid w-full grid-cols-2 place-items-center gap-4">
+                    {cw.slots[0] ? renderSlot(cw.slots[0], 0, CLIP_LEFT) : <div />}
+                    {cw.slots[2] ? renderSlot(cw.slots[2], 2, CLIP_RIGHT) : <div />}
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={onNavigateToStats}
+                    className="flex flex-col items-center gap-1 transition-transform duration-150 active:scale-95"
+                  >
+                    <div className="flex h-20 w-20 items-center justify-center rounded-full border-2 border-purple-400/50 bg-purple-500/10 shadow-lg shadow-purple-500/20">
                       {weaponIcon ? (
-                        <img src={weaponIcon} alt="" className="h-12 w-12 object-contain" />
+                        <img src={weaponIcon} alt="" className="h-12 w-12 object-contain drop-shadow-lg" />
                       ) : (
                         <Swords className="h-10 w-10 text-purple-300" />
                       )}
                     </div>
-                    <p className="text-sm font-medium text-purple-200">
+                    <p className="max-w-[10rem] text-center text-sm font-medium text-purple-200">
                       <BuildLocalizedText texts={cw.name} lang={selectedLanguage} />
                     </p>
+                  </button>
+
+                  <div className="grid w-full grid-cols-2 place-items-center gap-4">
+                    {cw.slots[1] ? renderSlot(cw.slots[1], 1, CLIP_LEFT) : <div />}
+                    {cw.slots[3] ? renderSlot(cw.slots[3], 3, CLIP_RIGHT) : <div />}
                   </div>
                 </div>
               </div>

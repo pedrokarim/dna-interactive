@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { Menu, X, Map, Gift, Info, HelpCircle, Mail, Boxes, Users } from "lucide-react";
@@ -32,7 +33,12 @@ export default function MobileMenu() {
   const openLabel = "Menu";
   const closeLabel = "Fermer";
   const [isOpen, setIsOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Close on route change
   useEffect(() => {
@@ -62,39 +68,30 @@ export default function MobileMenu() {
     return pathname === href || pathname.startsWith(`${href}/`);
   };
 
-  return (
-    <>
-      <button
-        type="button"
-        onClick={() => setIsOpen(true)}
-        className="flex h-10 w-10 items-center justify-center rounded-lg border border-indigo-500/30 bg-slate-900/60 text-slate-200 transition-colors hover:border-indigo-400/60 hover:bg-slate-800 hover:text-white md:hidden"
-        aria-expanded={isOpen}
-        aria-controls="mobile-menu-drawer"
-        aria-label={openLabel}
-      >
-        <Menu className="h-5 w-5" />
-      </button>
-
-      {/* Backdrop */}
+  // The drawer + backdrop must be rendered into document.body via a portal,
+  // otherwise the surrounding `<header>` (which uses `backdrop-blur`) creates
+  // a containing block that traps `position: fixed` descendants and shrinks
+  // the drawer to the header's height.
+  const overlay = (
+    <div className="md:hidden">
       <div
-        className={`fixed inset-0 z-[60] bg-slate-950/80 backdrop-blur-sm transition-opacity duration-300 md:hidden ${
+        className={`fixed inset-0 z-[60] bg-slate-950/80 backdrop-blur-sm transition-opacity duration-300 ${
           isOpen ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
         onClick={() => setIsOpen(false)}
         aria-hidden="true"
       />
 
-      {/* Drawer */}
       <aside
         id="mobile-menu-drawer"
-        className={`fixed inset-y-0 right-0 z-[70] flex w-[85%] max-w-sm flex-col border-l border-indigo-500/25 bg-slate-950 shadow-[0_0_60px_rgba(15,23,42,0.8)] transition-transform duration-300 ease-out md:hidden ${
+        className={`fixed inset-y-0 right-0 z-[70] flex w-[85%] max-w-sm flex-col border-l border-indigo-500/25 bg-slate-950 shadow-[0_0_60px_rgba(15,23,42,0.8)] transition-transform duration-300 ease-out ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
         role="dialog"
         aria-modal="true"
         aria-label={openLabel}
+        aria-hidden={!isOpen}
       >
-        {/* Header */}
         <div className="flex items-center justify-between gap-3 border-b border-indigo-500/20 px-4 py-4">
           <div className="flex items-center gap-2.5">
             <img
@@ -118,7 +115,6 @@ export default function MobileMenu() {
           </button>
         </div>
 
-        {/* Nav links */}
         <nav className="flex-1 overflow-y-auto px-3 py-4">
           <ul className="flex flex-col gap-1">
             {NAV_LINKS.map((link) => {
@@ -143,11 +139,26 @@ export default function MobileMenu() {
           </ul>
         </nav>
 
-        {/* Footer with language switcher */}
         <div className="border-t border-indigo-500/20 px-4 py-4">
-          <LanguageSwitcher />
+          <LanguageSwitcher direction="up" align="start" />
         </div>
       </aside>
+    </div>
+  );
+
+  return (
+    <>
+      <button
+        type="button"
+        onClick={() => setIsOpen(true)}
+        className="flex h-10 w-10 items-center justify-center rounded-lg border border-indigo-500/30 bg-slate-900/60 text-slate-200 transition-colors hover:border-indigo-400/60 hover:bg-slate-800 hover:text-white md:hidden"
+        aria-expanded={isOpen}
+        aria-controls="mobile-menu-drawer"
+        aria-label={openLabel}
+      >
+        <Menu className="h-5 w-5" />
+      </button>
+      {mounted ? createPortal(overlay, document.body) : null}
     </>
   );
 }

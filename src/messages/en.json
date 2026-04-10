@@ -1,4 +1,26 @@
 {
+  "characterShowcase": {
+    "suyi": {
+      "subtitle": "Plumes of Gilded Dawn",
+      "description": "A fish should not be caged in a pond; a bird was born to soar across the sky. Carrying unfinished dreams—and the grudges entangled with them—she cuts through the horizon, unyielding.",
+      "camp": "Huaxu"
+    },
+    "kami": {
+      "subtitle": "Scarlet Nectar",
+      "description": "Welcome—The Asphodel shelters all who wander here. Everything you desire has its proper price: fine wine, secrets, treasures, forbidden favors… even a path towards “freedom.”",
+      "camp": "Hyperborean Empire"
+    },
+    "yuming": {
+      "subtitle": "Sinless Cagedman",
+      "description": "Bound by duty, yet yearning for a truth buried beneath layers of law and silence. The cage he carries is not made of iron—it is woven from the oaths he refuses to break.",
+      "camp": "Huaxu"
+    },
+    "zhiliu": {
+      "subtitle": "Confluence of Kairos",
+      "description": "Time bends at her command—yet even its master cannot outrun fate. Between the ticking of moments, Zhiliu weaves threads of causality, each one a gamble against the inevitable.",
+      "camp": "Huaxu"
+    }
+  },
   "site": {
     "name": "DNA Interactive",
     "tagline": "Interactive Map & Resources",

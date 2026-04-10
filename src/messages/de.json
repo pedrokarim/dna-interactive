@@ -1,4 +1,26 @@
 {
+  "characterShowcase": {
+    "suyi": {
+      "subtitle": "Federn der goldenen Morgendämmerung",
+      "description": "Ein Fisch sollte nicht in einem Teich gefangen sein; ein Vogel wurde geboren, um über den Himmel zu fliegen. Unerfüllte Träume tragend – und die damit verwobenen Grollgefühle – durchschneidet sie unbeirrbar den Horizont.",
+      "camp": "Huaxu"
+    },
+    "kami": {
+      "subtitle": "Scharlachroter Nektar",
+      "description": "Willkommen – Der Asphodel beherbergt alle, die sich hierher verirren. Alles, was du begehrst, hat seinen angemessenen Preis: edler Wein, Geheimnisse, Schätze, verbotene Gefälligkeiten… sogar ein Weg zur „Freiheit“.",
+      "camp": "Hyperboreisches Imperium"
+    },
+    "yuming": {
+      "subtitle": "Sündenloser Käfigmann",
+      "description": "An die Pflicht gebunden, doch nach einer Wahrheit verlangend, die unter Schichten von Gesetz und Schweigen begraben liegt. Der Käfig, den er trägt, ist nicht aus Eisen – er ist aus den Eiden gewoben, die er sich weigert zu brechen.",
+      "camp": "Huaxu"
+    },
+    "zhiliu": {
+      "subtitle": "Zusammenfluss des Kairos",
+      "description": "Die Zeit beugt sich ihrem Befehl – doch selbst ihre Herrin kann dem Schicksal nicht entkommen. Zwischen dem Ticken der Augenblicke webt Zhiliu Fäden der Kausalität, jeder davon eine Wette gegen das Unvermeidliche.",
+      "camp": "Huaxu"
+    }
+  },
   "site": {
     "name": "DNA Interactive",
     "tagline": "Interaktive Karte & Ressourcen",

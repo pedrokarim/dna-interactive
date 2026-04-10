@@ -1,4 +1,26 @@
 {
+  "characterShowcase": {
+    "suyi": {
+      "subtitle": "Plumes de l'Aube Dorée",
+      "description": "Un poisson ne devrait pas être enfermé dans un bassin ; un oiseau est né pour traverser le ciel. Portant des rêves inachevés — et les rancunes qui s'y mêlent — elle fend l'horizon, indomptable.",
+      "camp": "Huaxu"
+    },
+    "kami": {
+      "subtitle": "Nectar Écarlate",
+      "description": "Bienvenue — l'Asphòdele accueille tous ceux qui s'égarent ici. Tout ce que vous désirez a son juste prix : vin fin, secrets, trésors, faveurs interdites… même un chemin vers la « liberté ».",
+      "camp": "Empire Hyperboréen"
+    },
+    "yuming": {
+      "subtitle": "Prisonnier sans Péché",
+      "description": "Lié par le devoir, mais assoiffé d'une vérité enfouie sous des couches de loi et de silence. La cage qu'il porte n'est pas de fer — elle est tissée des serments qu'il refuse de briser.",
+      "camp": "Huaxu"
+    },
+    "zhiliu": {
+      "subtitle": "Confluence du Kairos",
+      "description": "Le temps se plie à son commandement — mais même sa maîtresse ne peut fuir le destin. Entre les battements des instants, Zhiliu tisse les fils de la causalité, chacun un pari contre l'inévitable.",
+      "camp": "Huaxu"
+    }
+  },
   "site": {
     "name": "DNA Interactive",
     "tagline": "Interactive Map & Resources",

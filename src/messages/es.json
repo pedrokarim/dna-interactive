@@ -1,4 +1,26 @@
 {
+  "characterShowcase": {
+    "suyi": {
+      "subtitle": "Plumas del Alba Dorada",
+      "description": "Un pez no debería estar enjaulado en un estanque; un pájaro nació para surcar el cielo. Llevando sueños inconclusos —y los rencores entrelazados con ellos— ella atraviesa el horizonte, indomable.",
+      "camp": "Huaxu"
+    },
+    "kami": {
+      "subtitle": "Néctar Escarlata",
+      "description": "Bienvenido —El Asfódelo acoge a todos los que vagan hasta aquí. Todo lo que deseas tiene su precio justo: buen vino, secretos, tesoros, favores prohibidos… incluso un camino hacia la «libertad».",
+      "camp": "Imperio Hiperbóreo"
+    },
+    "yuming": {
+      "subtitle": "Prisionero sin Pecado",
+      "description": "Atado por el deber, pero anhelando una verdad enterrada bajo capas de ley y silencio. La jaula que lleva no está hecha de hierro —está tejida con los juramentos que se niega a romper.",
+      "camp": "Huaxu"
+    },
+    "zhiliu": {
+      "subtitle": "Confluencia de Kairos",
+      "description": "El tiempo se doblega a su mando —pero ni siquiera su dueña puede huir del destino. Entre el tictac de los instantes, Zhiliu teje hilos de causalidad, cada uno una apuesta contra lo inevitable.",
+      "camp": "Huaxu"
+    }
+  },
   "site": {
     "name": "DNA Interactive",
     "tagline": "Mapa Interactivo y Recursos",

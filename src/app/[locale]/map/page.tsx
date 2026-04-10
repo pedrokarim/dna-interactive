@@ -61,6 +61,9 @@ export default function MapPage() {
   const [, toggleMarkerMarked] = useAtom(toggleMarkerMarkedAtom);
   const [, toggleCategoryVisibility] = useAtom(toggleCategoryVisibilityAtom);
 
+  // Charger la carte sélectionnée (lazy-loaded par map)
+  const { selectedMap, isLoading: isMapLoading } = useMapData(selectedMapId);
+
   // Fonction pour reset la taille de la sidebar
   const resetSidebarWidth = () => {
     setSidebarWidth(320); // Taille par défaut
@@ -170,32 +173,30 @@ export default function MapPage() {
     // Utiliser un Map pour éviter les doublons par nom
     const uniqueSubCategories = new Map<string, (typeof allSubCategories)[0]>();
 
-    // Collecter toutes les sous-catégories en évitant les doublons
-    mapIndex.forEach((map) => {
-      if (map.legend) {
-        map.legend.forEach((category) => {
-          if (category.markers) {
-            category.markers.forEach((subCategory) => {
-              const uniqueId = `${map.id}-${category.type}-${subCategory.id}`;
-              const nameKey = subCategory.name.toLowerCase().trim();
+    // Ne collecter que les sous-catégories présentes sur la map sélectionnée
+    // afin que le panneau de filtres reflète strictement le contenu visible.
+    if (selectedMap?.legend) {
+      selectedMap.legend.forEach((category) => {
+        if (category.markers) {
+          category.markers.forEach((subCategory) => {
+            const uniqueId = `${selectedMap.id}-${category.type}-${subCategory.id}`;
+            const nameKey = subCategory.name.toLowerCase().trim();
 
-              // Si cette sous-catégorie n'existe pas encore, l'ajouter
-              if (!uniqueSubCategories.has(nameKey)) {
-                uniqueSubCategories.set(nameKey, {
-                  id: uniqueId, // Garder l'ID original pour la logique existante
-                  name: subCategory.name,
-                  icon: subCategory.icon,
-                  parentType: category.type,
-                  parentLabel: category.label,
-                  parentIcon: category.icon,
-                  mapId: map.id,
-                });
-              }
-            });
-          }
-        });
-      }
-    });
+            if (!uniqueSubCategories.has(nameKey)) {
+              uniqueSubCategories.set(nameKey, {
+                id: uniqueId,
+                name: subCategory.name,
+                icon: subCategory.icon,
+                parentType: category.type,
+                parentLabel: category.label,
+                parentIcon: category.icon,
+                mapId: selectedMap.id,
+              });
+            }
+          });
+        }
+      });
+    }
 
     // Convertir le Map en Array
     allSubCategories.push(...uniqueSubCategories.values());
@@ -381,10 +382,6 @@ export default function MapPage() {
 
     return () => clearInterval(interval);
   }, []);
-
-  // Charger la carte sélectionnée (lazy-loaded par map)
-  const { selectedMap, isLoading: isMapLoading } = useMapData(selectedMapId);
-
 
   // Charger la carte persistée au montage du composant
   useEffect(() => {
