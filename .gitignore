@@ -41,6 +41,7 @@ yarn-error.log*
 next-env.d.ts
 
 research_data/
+.references/
 CONTACT_SETUP.md
 NODEMAILER_SETUP_GUIDE.md
 https___dna-interactive.ascencia.re_*
