@@ -36,6 +36,7 @@ export interface CharacterLocalizedContent {
   birthday: string | null;
   force: string | null;
   campName: string | null;
+  intronEffects: (string | null)[];
 }
 
 export interface CharacterIntronLevel {
@@ -85,6 +86,8 @@ export interface CharacterRecord {
   charPieceId: number | null;
   unlockRequiredPiece: number | null;
   intronLevels: CharacterIntronLevel[];
+  intronDescriptionKeys: string[];
+  intronParameters: string[];
   baseStats: CharacterBaseStats;
   addonAttrs: CharacterAddonAttr[];
   positioning: string[];

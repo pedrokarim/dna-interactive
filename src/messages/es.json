@@ -398,7 +398,17 @@
     "skillPriorityTitle": "Prioridad de skills",
     "notesTitle": "Notas",
     "previousCharacter": "Personaje anterior: {name}",
-    "nextCharacter": "Personaje siguiente: {name}"
+    "nextCharacter": "Personaje siguiente: {name}",
+    "intron": {
+      "progressionBadge": "Progresión",
+      "title": "Niveles de intrón",
+      "subtitle": "{count} niveles que desbloquean las habilidades y bonus del personaje.",
+      "empty": "No hay datos de intrón disponibles.",
+      "levelLabel": "Intrón {num}",
+      "baseBadge": "Base",
+      "pieces": "{count} piezas",
+      "helperHint": "Pasa el ratón (o toca) un nivel para ver su efecto."
+    }
   },
   "items": {
     "libraryLabel": "Biblioteca de Objetos",

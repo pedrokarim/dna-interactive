@@ -398,7 +398,17 @@
     "skillPriorityTitle": "Skill priority",
     "notesTitle": "Notes",
     "previousCharacter": "Previous character: {name}",
-    "nextCharacter": "Next character: {name}"
+    "nextCharacter": "Next character: {name}",
+    "intron": {
+      "progressionBadge": "Progression",
+      "title": "Intron Levels",
+      "subtitle": "{count} tiers unlocking the character's abilities and bonuses.",
+      "empty": "No intron data available.",
+      "levelLabel": "Intron {num}",
+      "baseBadge": "Base",
+      "pieces": "{count} pieces",
+      "helperHint": "Hover (or tap) a tier to reveal its effect."
+    }
   },
   "items": {
     "libraryLabel": "Items Library",

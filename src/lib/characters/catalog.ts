@@ -71,6 +71,7 @@ export function getCharacterTranslation(
       birthday: null,
       force: null,
       campName: null,
+      intronEffects: [],
     }
   );
 }

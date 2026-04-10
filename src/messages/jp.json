@@ -398,7 +398,17 @@
     "skillPriorityTitle": "スキル優先度",
     "notesTitle": "備考",
     "previousCharacter": "前のキャラクター：{name}",
-    "nextCharacter": "次のキャラクター：{name}"
+    "nextCharacter": "次のキャラクター：{name}",
+    "intron": {
+      "progressionBadge": "進行",
+      "title": "イントロンレベル",
+      "subtitle": "{count}段階でキャラクターの能力とボーナスを解放します。",
+      "empty": "イントロンのデータがありません。",
+      "levelLabel": "イントロン {num}",
+      "baseBadge": "基本",
+      "pieces": "{count}個",
+      "helperHint": "段階にカーソルを合わせる（またはタップ）すると効果が表示されます。"
+    }
   },
   "items": {
     "libraryLabel": "アイテムライブラリ",

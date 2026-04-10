@@ -398,7 +398,17 @@
     "skillPriorityTitle": "技能優先順序",
     "notesTitle": "備註",
     "previousCharacter": "上一個角色：{name}",
-    "nextCharacter": "下一個角色：{name}"
+    "nextCharacter": "下一個角色：{name}",
+    "intron": {
+      "progressionBadge": "進程",
+      "title": "內含子等級",
+      "subtitle": "{count} 個階段解鎖角色的能力與加成。",
+      "empty": "無內含子資料。",
+      "levelLabel": "內含子 {num}",
+      "baseBadge": "基礎",
+      "pieces": "{count} 個",
+      "helperHint": "將滑鼠移到（或點擊）階段即可顯示其效果。"
+    }
   },
   "items": {
     "libraryLabel": "道具資料庫",

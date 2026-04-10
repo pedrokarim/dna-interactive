@@ -398,7 +398,17 @@
     "skillPriorityTitle": "Skill-Priorität",
     "notesTitle": "Hinweise",
     "previousCharacter": "Vorheriger Charakter: {name}",
-    "nextCharacter": "Nächster Charakter: {name}"
+    "nextCharacter": "Nächster Charakter: {name}",
+    "intron": {
+      "progressionBadge": "Fortschritt",
+      "title": "Intron-Stufen",
+      "subtitle": "{count} Stufen schalten Fähigkeiten und Boni des Charakters frei.",
+      "empty": "Keine Intron-Daten verfügbar.",
+      "levelLabel": "Intron {num}",
+      "baseBadge": "Basis",
+      "pieces": "{count} Teile",
+      "helperHint": "Fahre (oder tippe) über eine Stufe, um ihren Effekt anzuzeigen."
+    }
   },
   "items": {
     "libraryLabel": "Gegenstände-Bibliothek",

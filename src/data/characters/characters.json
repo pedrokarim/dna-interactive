@@ -55,6 +55,17 @@
         "resourceNum": 30
       }
     ],
+    "intronDescriptionKeys": [
+      "GRADEUP_4101_01",
+      "GRADEUP_4101_02",
+      "GRADEUP_4101_03",
+      "GRADEUP_4101_04",
+      "GRADEUP_4101_05",
+      "GRADEUP_4101_06"
+    ],
+    "intronParameters": [
+      "$#PassiveEffect[410101].Vars.Grade4Per*100$%"
+    ],
     "baseStats": {
       "atk": 22,
       "atkGrowCurve": "ATKS",
@@ -154,49 +165,105 @@
         "subtitle": "Zum Leuchtturm",
         "birthday": "Hyperboreisches Imperium",
         "force": "Die 6. Legion",
-        "campName": "Hyperboreisches Imperium"
+        "campName": "Hyperboreisches Imperium",
+        "intronEffects": [
+          "[Elektrische Ladung] verursacht Flächenschaden innerhalb eines Radius von 3 m.",
+          "Wenn ein Gegner mit [Elektrischer Ladung] handlungsunfähig wird, wird seine [Elektrische Ladung] auf ein anderes zufälliges Ziel in einem Radius von 20 m übertragen.",
+          "Stufe von [Voltsturm] +2, Stufe von [Taktische Stromsparung] +1.",
+          "Zu Beginn des Kampfes erhält Rhythm [Elektroenergie] in Höhe von #1 ihres max. Geists.",
+          "Stufe von [Elektro-Wirbel] +2, Stufe von [Taktische Stromsparung] +1.",
+          "Die Anzahl der Gegner, die durch [Elektro-Ausbruch] pro Sekunde SCH erleiden, wird auf 2 erhöht."
+        ]
       },
       "EN": {
         "name": "Rhythm",
         "subtitle": "Beaconlight Seeker",
         "birthday": "Hyperborean Empire",
         "force": "The 6th Legion",
-        "campName": "The Hyperborean Empire"
+        "campName": "The Hyperborean Empire",
+        "intronEffects": [
+          "[Electric Charge] deals AoE Damage within a 3-metre radius.",
+          null,
+          "[Volt Rush] Level +2, [Tactical Preservation] Level +1.",
+          "At the start of battle, Rhythm gains [Electric Energy] equal to #1 of her Max Sanity.",
+          "[Electro Vortex] Level +2, [Tactical Preservation] Level +1.",
+          "The number of enemies [Electro Surge] deals damage to per second is increased to 2."
+        ]
       },
       "ES": {
         "name": "Rhythm",
         "subtitle": "Buscador de Faro",
         "birthday": "Imperio Hiperbóreo",
         "force": "La 6.ª Legión",
-        "campName": "Imperio Hiperbóreo"
+        "campName": "Imperio Hiperbóreo",
+        "intronEffects": [
+          "El daño de [Carga Eléctrica] se convierte en daño de área en un radio de 3 metros.",
+          "Cuando un enemigo con [Carga Eléctrica] es derrotado, su [Carga Eléctrica] se transfiere a otro objetivo en un radio de 20 metros según el tiempo restante.",
+          "[Irrupción Rápida] nivel +2, [Preservación Táctica] nivel +1.",
+          "Al inicio de la batalla, obtiene [Energía Eléctrica] igual a #1 de su Cordura Máx.",
+          "[Vórtice Eléctrico] nivel +2, [Preservación Táctica] nivel +1.",
+          "El número de enemigos a los que [Oleada Eléctrica] inflige daño por segundo aumenta a 2."
+        ]
       },
       "FR": {
         "name": "Rhythm",
         "subtitle": "Appel du Phare",
         "birthday": "Empire Hyperboréen",
         "force": "VIᵉ Légion",
-        "campName": "Empire Hyperboréen"
+        "campName": "Empire Hyperboréen",
+        "intronEffects": [
+          "La [Charge statique] inflige désormais des Dégâts de zone dans un rayon de 3 m.",
+          "Lorsqu’un ennemi affecté par [Charge statique] est vaincu, sa [Charge statique] est transmise à une cible aléatoire dans un rayon de 20 m, conservant sa durée restante.",
+          "[Ruée fulgurante] niveau +2 ; [Conversion tactique] niveau +1.",
+          "Commence le combat avec un montant d’[Énergie électrique] équivalant à #1 de la Lucidité max.",
+          "[Vortex électrique] niveau +2 ; [Conversion tactique] niveau +1.",
+          "[Surtension] affecte désormais 2 ennemis par seconde."
+        ]
       },
       "JP": {
         "name": "リズム",
         "subtitle": "灯台の元へ",
         "birthday": "ヒュペリア帝国",
         "force": "第六軍団",
-        "campName": "ヒュペリア帝国"
+        "campName": "ヒュペリア帝国",
+        "intronEffects": [
+          "「エレキテル」の与ダメージ半径が3メートルに拡大。",
+          "「電荷」を持っている敵が倒されると、残り時間に応じて周囲20メートル内の他の目標に伝播する。",
+          "「サンダーブリッツ」レベル+2、「省エネ戦術」レベル+1。",
+          "初期から最大SP#1の「エナジー」を所持。",
+          "「テスラコイル」レベル+2、「省エネ戦術」レベル+1。",
+          "1秒ごとに「パルスレギュレーター」で選択できる目標の数が2体まで増える。"
+        ]
       },
       "KR": {
         "name": "리듬",
         "subtitle": "등대를 향해",
         "birthday": "휘페르보레아 제국",
         "force": "제6군단",
-        "campName": "휘페르보레아 제국"
+        "campName": "휘페르보레아 제국",
+        "intronEffects": [
+          "[전하]로 입힌 대미지는 반경 3m의 범위 대미지로 전환된다.",
+          "[전하]를 보유한 적 처치 시, [전하]를 남은 시간에 따라 주변 20m 내의 다른 대상에게 전달한다.",
+          "[빠른 출격] 레벨+2, [절약 전술] 레벨+1.",
+          "초기에 자신의 최대 정신력의 #1 [전기 에너지] 보유.",
+          "[소용돌이 전기장] 레벨+2, [절약 전술] 레벨+1.",
+          "[전기장 폭발]로 매초 선택한 적의 수량이 2명까지 증가한다."
+        ]
       },
       "TC": {
         "name": "黎瑟",
         "subtitle": "到燈塔去",
         "birthday": "海伯利亞帝國",
         "force": "第六軍團",
-        "campName": "海伯利亞帝國"
+        "campName": "海伯利亞帝國",
+        "intronEffects": [
+          "「電荷」造成的傷害變為半徑3米的範圍傷害。",
+          "帶有「電荷」的敵人被擊敗時，將「電荷」按照剩餘時間傳遞給其周圍20米內的其他目標。",
+          "「快速出擊」等級+2，「戰術節能」等級+1。",
+          "初始擁有#1自身最大神智的「電能」。",
+          "「渦旋電場」等級+2，「戰術節能」等級+1。",
+          "「電場爆發」每秒選取的敵人的數量增加至2名。"
+        ]
       }
     }
   },
@@ -255,6 +322,18 @@
         "resourceId": 1004202,
         "resourceNum": 30
       }
+    ],
+    "intronDescriptionKeys": [
+      "GRADEUP_4202_01",
+      "GRADEUP_4202_02",
+      "GRADEUP_4202_03",
+      "GRADEUP_4202_04",
+      "GRADEUP_4202_05",
+      "GRADEUP_4202_06"
+    ],
+    "intronParameters": [
+      "$#Buff[420200].AddAttrs[1].Value$",
+      "$#PassiveEffect[420201].Vars.Grade6DamageRate*100$%"
     ],
     "baseStats": {
       "atk": 14,
@@ -362,49 +441,105 @@
         "subtitle": "Lässiger Faulenzer",
         "birthday": "Hyperboreisches Imperium",
         "force": "Die 13. Legion",
-        "campName": "Hyperboreisches Imperium"
+        "campName": "Hyperboreisches Imperium",
+        "intronEffects": [
+          "Wenn [Barriere] den Schaden von Geschossen absorbiert, wird der Angreifer 3 Sekunden lang mit 1 Stapelung [Überlastungsgroll] belegt. Auf diese Weise kann [Überlastungsgroll] bis zu 2-mal gestapelt werden.",
+          "Jede von Randys Stufen erhöht seine Ultra-Schild-Obergrenze um #1 Punkte.",
+          "Stufe von [Legitimes Faulenzen] +2; Stufe von [Gemeinsamer Schild] +1.",
+          "Wenn ein Ziel vom Effekt [Aufprall] getroffen wird, erleidet es einmal den Schaden von [Überlastungsgroll].",
+          "Stufe von [Spezialgeschenk] +2; Stufe von [Gemeinsamer Schild] +1.",
+          "Wenn [Aufprall] ein Ziel trifft, wird zusätzlich Elektro-SCH in Höhe von #2 von Randys [Schild-Punkte + Ultra-Schil-Punkte] verursacht."
+        ]
       },
       "EN": {
         "name": "Randy",
         "subtitle": "Savvy Slacker",
         "birthday": "Hyperborean Empire",
         "force": "The 13th Legion",
-        "campName": "The Hyperborean Empire"
+        "campName": "The Hyperborean Empire",
+        "intronEffects": [
+          "When [Barrier] absorbs damage from projectiles, inflicts 1 stack of [Overwork Grudge] on the attacker for 3s, up to 2 stacks. [Overwork Grudge] is only stackable in this way.",
+          "Each Randy's level increases his Ultra Shield cap by #1 points.",
+          "[Legitimate Slackness] Level +2; [Shared Shield] Level +1.",
+          "Target hit by [Impact] immediately takes the damage of [Overwork Grudge] inflicted on the target 1 time.",
+          "[Special Gift] Level +2; [Shared Shield] Level +1.",
+          "When [Impact] hits a target, it also deals additional Electro DMG equal to #2 of Randy's [Shield points + Ultra Shield points]."
+        ]
       },
       "ES": {
         "name": "Randy",
         "subtitle": "Holgazán Astuto",
         "birthday": "Imperio Hiperbóreo",
         "force": "La 13.ª Legión",
-        "campName": "Imperio Hiperbóreo"
+        "campName": "Imperio Hiperbóreo",
+        "intronEffects": [
+          "Cuando [Barrera] bloquea un proyectil y absorbe su daño, inflige 1 acumulación de [Rencor por Sobrecarga de Trabajo] a la fuente de daño durante 3 s. Solo de esta manera se puede acumular [Rencor por Sobrecarga de Trabajo], hasta un máximo de 2 acumulaciones.",
+          "Cada nivel de Randy aumenta su límite de Escudo Ultra en #1 puntos.",
+          "[Desidia Legítima] nivel +2; [Escudo Compartido] nivel +1.",
+          "El objetivo alcanzado por [Impacto] recibe inmediatamente 1 vez el daño de [Rencor por Sobrecarga de Trabajo] infligido al objetivo.",
+          "[Regalo Especial] nivel +2; [Escudo Compartido] nivel +1.",
+          "Cuando [Impacto] impacta a un objetivo, también inflige Daño Electro adicional igual a #2 veces los [puntos de Escudo + puntos de Escudo Ultra] de Randy."
+        ]
       },
       "FR": {
         "name": "Randy",
         "subtitle": "Paresseux Stratège",
         "birthday": "Empire Hyperboréen",
         "force": "XIIIᵉ Légion",
-        "campName": "Empire Hyperboréen"
+        "campName": "Empire Hyperboréen",
+        "intronEffects": [
+          "Lorsque la [Barrière] absorbe un projectile, applique 1 cumul de [Lassitude amère] à l’ennemi à l’origine du tir pendant 3 s, jusqu’à 2 cumuls.\n[Cet effet ne peut être cumulé que de cette manière.]",
+          "Chaque niveau de Randy augmente son maximum d’Ultra-bouclier de #1 points.",
+          "[Repos mérité] niveau +2 ; [Flegme assuré] niveau +1.",
+          "Lorsqu’un ennemi est touché par [Choc], il subit immédiatement les dégâts de son effet [Lassitude amère].",
+          "[Cadeau surprise] niveau +2 ; [Flegme assuré] niveau +1.",
+          "Lorsqu’un [Choc] atteint une cible, inflige des Dégâts Électro supplémentaires équivalents à #2 de la somme du Bouclier + Ultra-bouclier de Randy."
+        ]
       },
       "JP": {
         "name": "ランディー",
         "subtitle": "サボり魔",
         "birthday": "ヒュペリア帝国",
         "force": "帝国軍第十三軍団",
-        "campName": "ヒュペリア帝国"
+        "campName": "ヒュペリア帝国",
+        "intronEffects": [
+          "「バリア」が投射物を防いでそのダメージを吸収する際、ダメージ源に「残業の怨み」を1トークン付加、3秒持続。「残業の怨み」はこの方法でのみ重ねがけが可能、最大2トークンまで重ねがけ可能。",
+          "自身のレベルに基づき、レベルごとに過負荷シールドの上限が#1Ptアップする。",
+          "「戦略的怠慢」Lv.+2、「シェアシールド」Lv.+1。",
+          "対象に「インパクト」効果を付加する際、「残業の怨み」によるダメージが発生する。",
+          "「特製の贈り物」Lv.+2、「シェアシールド」Lv.+1。",
+          "「インパクト」が命中すると、追加で自身の「シールド+過負荷シールド」#2の雷属性ダメージを与える。"
+        ]
       },
       "KR": {
         "name": "랜디",
         "subtitle": "게으른 '바보'",
         "birthday": "휘페르보레아 제국",
         "force": "제13군단",
-        "campName": "휘페르보레아 제국"
+        "campName": "휘페르보레아 제국",
+        "intronEffects": [
+          "[방어벽]이 투사체를 막아 대미지를 흡수할 시 투사체를 던진 대상에게 [과로의 원한] 1단계를 부여한다. 지속 시간 #3초. 해당 방법으로만 [과로의 원한] 중첩 가능. 최대 2단계 중첩.",
+          "자신의 레벨에 기반하여 레벨당 최대 오버로드 실드가 #1 증가한다.",
+          "[정당한 태업] 레벨+2, [방패와 함께] 레벨+1",
+          "[충격] 효과가 대상 적중 시 대상의 [과로의 원한] 대미지를 1회 입힌다.",
+          "[특별한 선물] 레벨+2, [방패와 함께] 레벨+1",
+          "[충격] 효과가 대상에게 명중 시, 자신의 [실드 수치+오버로드 실드 수치]의 #2에 해당하는 번개 속성 대미지를 추가로 1회 입힌다."
+        ]
       },
       "TC": {
         "name": "蘭迪",
         "subtitle": "散漫愚者",
         "birthday": "海伯利亞帝國",
         "force": "第十三軍團",
-        "campName": "海伯利亞帝國"
+        "campName": "海伯利亞帝國",
+        "intronEffects": [
+          "「屏障」抵擋投射物吸收其傷害時，對傷害來源附加1層「過勞怨念」，持續3秒，僅此方式可疊加「過勞怨念」，最多疊加2層。",
+          "基於自身等級，每級增加自身#1點超限護盾上限。",
+          "「正當怠工」等級+2，「有盾同擋」等級+1。",
+          "「震撼」效果命中目標時，結算1次目標的「過勞怨念」傷害。",
+          "「特殊禮物」等級+2，「有盾同擋」等級+1。",
+          "[震撼]效果命中目標時，額外造成1次自身[護盾值+超限護盾值]#2的雷屬性傷害。"
+        ]
       }
     }
   },
@@ -463,6 +598,21 @@
         "resourceId": 1005102,
         "resourceNum": 30
       }
+    ],
+    "intronDescriptionKeys": [
+      "GRADEUP_5102_01",
+      "GRADEUP_5102_02",
+      "GRADEUP_5102_03",
+      "GRADEUP_5102_04",
+      "GRADEUP_5102_05",
+      "GRADEUP_5102_06"
+    ],
+    "intronParameters": [
+      "$#Buff[510212].AddAttrs[1].Value*100$%",
+      "$#PassiveEffect[510201].Vars.Grade2Rate*100$%",
+      "$#PassiveEffect[510201].Vars.Grade1LastTime$",
+      "$#Buff[510213].AddAttrs[1].Value*100$%",
+      "$#Buff[510222].AddAttrs[3].Value*100$%"
     ],
     "baseStats": {
       "atk": 20,
@@ -569,49 +719,105 @@
         "subtitle": "Der Fremde",
         "birthday": "Hyperboreisches Imperium",
         "force": "Die Nachtfahrer",
-        "campName": "Die Nachtfahrer"
+        "campName": "Die Nachtfahrer",
+        "intronEffects": [
+          "Das Verlassen des Zustands [Tarnung] erhöht die KRIT-Rate der Waffe um #4 für #3 Sek.",
+          "Wenn [Zahn um Zahn] oder [Unstillbarer Biss] einen [Reißzahnstachel] generieren, besteht eine Chance von #2, 1 zusätzlichen [Reißzahnstachel] zu generieren.",
+          "Stufe von [Heimliche Pirsch] +2, Stufe von [Reißzahnstachel] +1.",
+          "Im Zustand [Tarnung] erhöht sich die Bewegungs-GES um #1.",
+          "Stufe von [Jägers Sprungangriff] +2, Stufe von [Reißzahnstachel] +1.",
+          "Im Zustand [Jagd] verursacht Outsider zusätzlichen Anemo-SCH in Höhe von #5."
+        ]
       },
       "EN": {
         "name": "Outsider",
         "subtitle": "The Stranger",
         "birthday": "Hyperborean Empire",
         "force": "The Noctoyagers",
-        "campName": "The Noctoyagers"
+        "campName": "The Noctoyagers",
+        "intronEffects": [
+          "Exiting [Stealth] state increases the weapon CRIT Chance by #4 for #3s.",
+          "When [Fang for Fang] or [Ravenous Gnaw] generates [Fang Spike], there is a #2 chance to generate 1 additional [Fang Spike].",
+          "[Stealthy Prowl] Level +2, [Fang Spike] Level +1.",
+          "When in [Stealth] state, increases Movement Speed by #1.",
+          "[Predator's Pounce] Level +2, [Fang Spike] Level +1.",
+          "When in [Relentless Hunt] state, Outsider deals additional Anemo Damage by #5."
+        ]
       },
       "ES": {
         "name": "Outsider",
         "subtitle": "El Forastero",
         "birthday": "Imperio Hiperbóreo",
         "force": "Los Noctoviajeros",
-        "campName": "Los Noctoviajeros"
+        "campName": "Los Noctoviajeros",
+        "intronEffects": [
+          "Al salir del estado [Sigilo] aumenta la Prob. CRIT del arma en #4 durante #3 s.",
+          "Cuando [Ojo por Ojo] o [Mordisco Voraz] genera [Púa de Colmillo], hay #2 de probabilidad de activación de generar 1 [Púa de Colmillo] adicional.",
+          "[Acecho Sigiloso] nivel +2; [Púa de Colmillo] nivel +1.",
+          "En estado [Sigilo], aumenta la Velocidad de Movimiento en #1.",
+          "[Ataque del Depredador] nivel +2; [Púa de Colmillo] nivel +1.",
+          "En estado [Caza Implacable], obtiene #5 de Daño Anemo adicional."
+        ]
       },
       "FR": {
         "name": "L’Étranger",
         "subtitle": "Le Traqueur",
         "birthday": "Empire Hyperboréen",
         "force": "Vagabonds de la Nuit",
-        "campName": "Les Vagabonds de la Nuit"
+        "campName": "Les Vagabonds de la Nuit",
+        "intronEffects": [
+          "Quitter l’état [Furtivité] augmente le Taux CRIT d’arme de #4 pendant #3 s.",
+          "Lorsqu’un [Éclat de croc] est généré via [Croc pour croc] ou [Instinct vorace], il y a #2 de chances d’en générer un supplémentaire.",
+          "[Traque silencieuse] niveau +2 ; [Éclat de croc] niveau +1.",
+          "En [Furtivité], la Vitesse de déplacement augmente de #1.",
+          "[Assaut du prédateur] niveau +2 ; [Éclat de croc] niveau +1.",
+          "En état [Chasse inlassable], l’Étranger gagne +#5 Dégâts Anémo supplémentaires."
+        ]
       },
       "JP": {
         "name": "アウトサイダー",
         "subtitle": "異邦人",
         "birthday": "ヒュペリア帝国",
         "force": "ノクトボイジャー小隊",
-        "campName": "ノクトボイジャー小隊"
+        "campName": "ノクトボイジャー小隊",
+        "intronEffects": [
+          "自ら「潜行」状態を解除する時、#3秒間武器のクリティカル率が#4アップする。",
+          "「歯には歯を」と「嚙みつく」の効果によって「ファングスラスト」を生成する時、#2の確率で追加で1本生成する。",
+          "「隠密」レベル+2、「ファングスラスト」レベル+1。",
+          "「潜行」状態では、移動速度が#1アップする。",
+          "「襲撃狩り」レベル+2、「ファングスラスト」レベル+1。",
+          "「狩猟」状態では、#5の風属性追加ダメージを得る。"
+        ]
       },
       "KR": {
         "name": "아웃사이더",
         "subtitle": "이방인",
         "birthday": "휘페르보레아 제국",
         "force": "팀 '녹토 보이저'",
-        "campName": "팀 '녹토 보이저'"
+        "campName": "팀 '녹토 보이저'",
+        "intronEffects": [
+          "자발적으로 [종적 감추기] 상태에서 나갈 때, 무기 크리티컬 확률 #4 상승 효과를 획득한다. 지속 시간 #3초.",
+          "[이에는 이]와 [물어뜯기] 효과로 [송곳니의 가시] 생성 시, #2 확률로 1발을 추가로 생성한다.",
+          "[은닉] 레벨+2, [송곳니의 가시] 레벨+1.",
+          "[종적 감추기] 상태에서, 이동 속도 상승 #1.",
+          "[엽습] 레벨+2, [송곳니의 가시] 레벨+1.",
+          "[쟁취] 상태에서, #5의 바람 속성 추가 대미지 획득."
+        ]
       },
       "TC": {
         "name": "奧特賽德",
         "subtitle": "異鄉人",
         "birthday": "海伯利亞帝國",
         "force": "夜航者小隊",
-        "campName": "夜航者小隊"
+        "campName": "夜航者小隊",
+        "intronEffects": [
+          "主動退出「匿蹤」狀態時，獲得武器暴擊率提高#4效果，持續#3秒。",
+          "「以牙還牙」和「噬咬」效果生成「獠牙之刺」時，有#2概率額外生成1枚。",
+          "「隱匿」等級+2，「獠牙之刺」等級+1。",
+          "「匿蹤」狀態中，移動速度提高#1。",
+          "「獵襲」等級+2，「獠牙之刺」等級+1。",
+          "「追獵」狀態中，獲得#5風屬性追加傷害。"
+        ]
       }
     }
   },
@@ -670,6 +876,22 @@
         "resourceId": 1005401,
         "resourceNum": 30
       }
+    ],
+    "intronDescriptionKeys": [
+      "GRADEUP_5401_01",
+      "GRADEUP_5401_02",
+      "GRADEUP_5401_03",
+      "GRADEUP_5401_04",
+      "GRADEUP_5401_05",
+      "GRADEUP_5401_06"
+    ],
+    "intronParameters": [
+      "$#PassiveEffect[540101].Vars.Grade1AddLayer$",
+      "$#PassiveEffect[540101].Vars.Grade2AddSp$",
+      "$#Buff[540114].AddAttrs[1].Value*100$%",
+      "$#Buff[540123].AddAttrs[1].Value*100$%",
+      "$#PassiveEffect[540102].Vars.G6BuffLastTime$",
+      "$#Buff[540123].MaxLayer$"
     ],
     "baseStats": {
       "atk": 19,
@@ -771,49 +993,105 @@
         "subtitle": "Gnade im Regen",
         "birthday": "Hyperboreisches Imperium",
         "force": "Die 13. Legion",
-        "campName": "Hyperboreisches Imperium"
+        "campName": "Hyperboreisches Imperium",
+        "intronEffects": [
+          "Während [Smaragd-Verstreuung] aktiv ist, wird der verursachte SCH von Daphne und Verbündeten um #3 erhöht.",
+          "Während [Smaragd-Verstreuung] erhöht sich die Anzahl der [Azoth-Projektile], die Daphne pro Sekunde erhält, um #1.",
+          "Stufe von [Smaragd-Verstreuung] +2; Stufe von [Azoth-Projektil] +1.",
+          "Stellt #2 Punkte Geist für jedes verbrauchte [Azoth-Projektil] wieder her.",
+          "Stufe von [Abstoß-Synthese +2; Stufe von [Azoth-Projektil] +1.",
+          "Wenn ein Teammitglied mit [Reinigungsformel] einem Gegner SCH zufügt, der mit [Verfallsformel] belegt ist, wird der verursachte SCH von Daphne um #4 für #5 Sek. erhöht, bis zu #6-mal stapelbar. Dieser Effekt kann nur einmal pro Sekunde ausgelöst werden."
+        ]
       },
       "EN": {
         "name": "Daphne",
         "subtitle": "Grace in Pluvia",
         "birthday": "Hyperborean Empire",
         "force": "The 13th Legion",
-        "campName": "The Hyperborean Empire"
+        "campName": "The Hyperborean Empire",
+        "intronEffects": [
+          "While [Emerald Effusion] is active, self and allies gain +#3 Damage Dealt.",
+          "During [Emerald Effusion] state, the [Azoth Projectile] Daphne gains per second increases to #1.",
+          "[Emerald Effusion] Level +2; [Azoth Projectile] Level +1.",
+          "Restores #2 points of Sanity for each [Azoth Projectile] consumed.",
+          "[Repulsion Synthesis] Level +2; [Azoth Projectile] Level +1.",
+          "When a teammate applied with [Purification Formula] deals damage to an enemy inflicted with [Decay Formula], Daphne gains 1 stack that increases Damage Dealt by #4 for #5s, up to #6 stacks. This effect can only be triggered once per second."
+        ]
       },
       "ES": {
         "name": "Daphne",
         "subtitle": "Gracia en la Lluvia",
         "birthday": "Imperio Hiperbóreo",
         "force": "La 13.ª Legión",
-        "campName": "Imperio Hiperbóreo"
+        "campName": "Imperio Hiperbóreo",
+        "intronEffects": [
+          "Durante [Efusión Esmeralda], el daño infligido del usuario y aliados aumenta en #3.",
+          "Durante [Efusión Esmeralda], los [Proyectiles de Azoth] obtenidos por segundo aumentan a #1.",
+          "[Efusión Esmeralda] nivel +2; [Proyectil de Azoth] nivel +1.",
+          "Por cada [Proyectil de Azoth] consumido, restaura #2 puntos de Cordura.",
+          "[Síntesis de Repulsión] nivel +2; [Proyectil de Azoth] nivel +1.",
+          "Cuando un objetivo con [Fórmula de Purificación] inflige daño a un objetivo con [Fórmula de Decadencia], obtiene 1 acumulación que aumenta el daño infligido en #4, con una duración de #5 s, hasta un máximo de #6 acumulaciones. Este efecto solo puede activarse una vez por segundo."
+        ]
       },
       "FR": {
         "name": "Daphne",
         "subtitle": "Grâce de la Pluie",
         "birthday": "Empire Hyperboréen",
         "force": "XIIIᵉ Légion",
-        "campName": "Empire Hyperboréen"
+        "campName": "Empire Hyperboréen",
+        "intronEffects": [
+          "Tant que [Effusion d’émeraude] est actif, augmente les dégâts infligés par soi-même et ses alliés de #3.",
+          "Pendant [Effusion d’émeraude], Daphne génère désormais #1 [Charges d’Azoth] par seconde.",
+          "[Effusion d’émeraude] niveau +2 ; [Charge d’Azoth] niveau +1.",
+          "Pour chaque [Charge d’Azoth] consommée, Daphne récupère #2 de Lucidité.",
+          "[Alchimie dissidente] niveau +2 ; [Charge d’Azoth] niveau +1.",
+          "Lorsqu’un allié affecté par [Formule purificatrice] inflige des dégâts à un ennemi affecté par [Formule de déclin], Daphne obtient 1 cumul augmentant les dégâts infligés de #4 pendant #5 s, jusqu’à un maximum de #6 cumuls.\nCet effet ne peut se produire qu’une fois par seconde."
+        ]
       },
       "JP": {
         "name": "ダフネ",
         "subtitle": "雨行く者",
         "birthday": "ヒュペリア帝国",
         "force": "帝国軍第十三軍団",
-        "campName": "ヒュペリア帝国"
+        "campName": "ヒュペリア帝国",
+        "intronEffects": [
+          "「ジェイドミラージュ」中、自身と仲間の与ダメージが#3アップ。",
+          "「ジェイドミラージュ」持続時間中、1秒ごとに獲得する「アゾット弾」が#1発まで増加。",
+          "「ジェイドミラージュ」レベル+2、「アゾット弾」レベル+1。",
+          "1発の「アゾット弾」を消費するたびに、自身のSPが#2回復する。",
+          "「アンビバレントフォーミュラ」レベル+2、「アゾット弾」レベル+1。",
+          "「活性処方」を持つ目標が「腐蝕処方」を持つ目標にダメージを与えた時、#5秒間ダメージが#4アップする（最大#6回まで重ねがけ可）。この効果は1秒ごとに1回のみ発動可能。"
+        ]
       },
       "KR": {
         "name": "다프네",
         "subtitle": "빗속의 사람",
         "birthday": "휘페르보레아 제국",
         "force": "제13군단",
-        "campName": "휘페르보레아 제국"
+        "campName": "휘페르보레아 제국",
+        "intronEffects": [
+          "[흩뿌려진 비취옥] 지속 기간, 자신과 팀원이 입히는 대미지가 #3 상승한다.",
+          "[흩뿌려진 비취옥] 지속 기간, 매초 획득하는 [아조트탄]이 1발까지 증가한다.",
+          "[흩뿌려진 비취옥] 레벨+2, [아조트탄] 레벨+1.",
+          "[아조트탄] 1발을 소모할 때마다, 자신은 #2 정신력을 회복한다.",
+          "[호척 단련] 레벨+2, [아조트탄] 레벨+1.",
+          "[정화 레시피]를 보유한 대상이 [부패 레시피]를 보유한 대상에게 대미지를 입힐 시, 1단계의 대미지 #4 상승 효과 획득한다. 지속 시간 #5초, 최대 #6단계 중첩. 해당 효과는 매초 최대 1회 발동한다."
+        ]
       },
       "TC": {
         "name": "達芙涅",
         "subtitle": "雨中人",
         "birthday": "海伯利亞帝國",
         "force": "第十三軍團",
-        "campName": "海伯利亞帝國"
+        "campName": "海伯利亞帝國",
+        "intronEffects": [
+          "[翠玉彌散]持續期間，自身和隊友造成的傷害提高#3。",
+          "「翠玉彌散」持續期間，每秒獲得「阿佐特彈」增加至#1發。",
+          "「翠玉彌散」等級+2，「阿佐特彈」等級+1。",
+          "每消耗1發「阿佐特彈」，自身回復#2點神智。",
+          "「互斥煉成」等級+2，「阿佐特彈」等級+1。",
+          "帶有「淨化配方」的目標對帶有「腐朽配方」的目標造成傷害時，獲得1層傷害提高#4，持續#5秒，最多疊加#6層。該效果每秒最多觸發1次。"
+        ]
       }
     }
   },
@@ -872,6 +1150,20 @@
         "resourceId": 1003103,
         "resourceNum": 30
       }
+    ],
+    "intronDescriptionKeys": [
+      "GRADEUP_3103_01",
+      "GRADEUP_3103_02",
+      "GRADEUP_3103_03",
+      "GRADEUP_3103_04",
+      "GRADEUP_3103_05",
+      "GRADEUP_3103_06"
+    ],
+    "intronParameters": [
+      "$#PassiveEffect[310301].Vars.ReturnSpSmall$",
+      "$#PassiveEffect[310301].Vars.ReturnSpLarge$",
+      "$-#Buff[310323].AddAttrs[1].Value*100$%",
+      "$#PassiveEffect[310301].Vars.Grade4Prob*100$%"
     ],
     "baseStats": {
       "atk": 21,
@@ -972,49 +1264,105 @@
         "subtitle": "Knall × Boom",
         "birthday": "Hyperboreisches Imperium",
         "force": "Unabhängig",
-        "campName": "Keine Zugehörigkeit"
+        "campName": "Keine Zugehörigkeit",
+        "intronEffects": [
+          "[Bombenfieber]: Erhöht die Fähigkeitseffizienz. Wird ein [Kleiner Knaller] von einer anderen Art von [Kleiner Knaller] zur Detonation gebracht, stellen Yale und Oliver #1 Punkte Geist wieder her. Wird er von derselben Art detoniert, werden #2 Punkte Geist wiederhergestellt.",
+          "Die Reduzierung der Bewegungs-GES von Gegnern im [Alptraumlabor] wird auf #3 erhöht.",
+          "Stufe von [Kleiner Knaller] +2; Stufe von [Bomben-Spielregeln] +1.",
+          "Beim Einsatz eines [Kleinen Knallers] im [Alptraumlabor] besteht eine Chance von #4, 1 zusätzlichen [Kleinen Knaller] einzusetzen.",
+          "Stufe von [Alptraumerinnerung] +2; Stufe von [Bomben-Spielregeln] +1.",
+          "Wenn Yale und Oliver mit [Bombenfieber] belegt sind, vereint jeder eingesetzte [Kleiner Knaller] die Effekte beider Varianten, verursacht höheren Schaden und erhöht die Reduzierung der Kampfhaltung."
+        ]
       },
       "EN": {
         "name": "Yale and Oliver",
         "subtitle": "Krackle × Kaboom",
         "birthday": "Hyperborean Empire",
         "force": "Unaffiliated",
-        "campName": "No Affiliation"
+        "campName": "No Affiliation",
+        "intronEffects": [
+          "If a [Tot Popper] is detonated by a different type of [Tot Popper], restores #1 point of Sanity for Yale and Oliver; if detonated by the same type, restores #2.",
+          "The Movement Speed decrease effect inflicted on enemies in [Nightmare Lab] is increased to #3.",
+          "[Tot Popper] Level +2; [The Rules of Bomb] Level +1.",
+          "When deploying a [Tot Popper] in [Nightmare Lab], there's a #4 chance to deploy 1 additional [Tot Popper].",
+          "[Nightmare's Grasp] Level +2; [The Rules of Bomb] Level +1.",
+          "When Yale and Oliver is applied with [Bombing Frenzy], each deployed [Tot Popper] combines the features of both types, dealing higher damage and posing greater Stance reduction."
+        ]
       },
       "ES": {
         "name": "Yale y Oliver",
         "subtitle": "Krackle × Kaboom",
         "birthday": "Imperio Hiperbóreo",
         "force": "No afiliado",
-        "campName": "Sin afiliación"
+        "campName": "Sin afiliación",
+        "intronEffects": [
+          "Si un [Pequeño Bum] es detonado por un tipo diferente de [Pequeño Bum], restaura #1 puntos de Cordura a Yale y Oliver; si es detonado por el mismo tipo, restaura #2 puntos.",
+          "El efecto de reducción de Velocidad de Movimiento infligido a los enemigos en [Laboratorio de Pesadilla] aumenta a #3.",
+          "[Pequeño Bum] nivel +2; [Reglas de la Bomba] nivel +1.",
+          "Al desplegar un [Pequeño Bum] en [Laboratorio de Pesadilla], hay #4 probabilidad de activación de desplegar 1 [Pequeño Bum] adicional.",
+          "[Recuerdos de Pesadilla] nivel +2; [Reglas de la Bomba] nivel +1.",
+          "Cuando Yale y Oliver se aplican con [Frenesí de Bombardeo], cada [Pequeño Bum] desplegado combina las características de ambos tipos e inflige mayor daño y una mayor reducción de Postura."
+        ]
       },
       "FR": {
         "name": "Yale et Oliver",
         "subtitle": "Boum & Bang",
         "birthday": "Empire Hyperboréen",
         "force": "Aucune affiliation",
-        "campName": "Aucune affiliation"
+        "campName": "Aucune affiliation",
+        "intronEffects": [
+          "Si un [P’tit Boum] est déclenché par un modèle différent, Yale et Oliver restaurent #1 de Lucidité. Si déclenché par le même modèle, ils restaurent #2 de Lucidité.",
+          "Augmente la réduction de Vitesse de déplacement infligée par [Labo des cauchemars] à #3.",
+          "[P’tit Boum] niveau +2 ; [Mode d’emploi : Kaboom !] niveau +1.",
+          "Lorsque [P’tit Boum] est lancé dans [Labo des cauchemars], a #4 de chance de lancer 1 [P’tit Boum] supplémentaire.",
+          "[Souvenir cauchemardesque] niveau +2 ; [Mode d’emploi : Kaboom !] niveau +1.",
+          "Sous [Frénésie explosive], chaque [P’tit Boum] lancé combine les deux modèles : inflige davantage de dégâts et applique un affaiblissement de la posture supérieur."
+        ]
       },
       "JP": {
         "name": "イェールとオリバー",
         "subtitle": "サプライズ×ドッキリ",
         "birthday": "ヒュペリア帝国",
         "force": "なし",
-        "campName": "無所属"
+        "campName": "無所属",
+        "intronEffects": [
+          "「キュートちゃん」が異なる種類の「キュートちゃん」によって誘爆されると、自身のSPが#1Pt回復する。同じ種類の「キュートちゃん」によって誘爆されると、イェール＆オリバーのSPが#2回復する。",
+          "「悪夢の実験室」の移動速度ダウン効果が#3までアップ。",
+          "「キュートちゃん」Lv.+2、「正しいプレイルール」のLv.+1。",
+          "「悪夢の実験室」範囲内で「キュートちゃん」を投げると、#4の確率で追加の「キュートちゃん」を1つ投げる。",
+          "「悪夢の記憶」Lv.+2、「正しいプレイルール」Lv.+1。",
+          "「轟く狂気」を保有した状態で投げる「キュートちゃん」が、高ダメージと体勢崩し2つの効果を持つ。"
+        ]
       },
       "KR": {
         "name": "예일과 올리버",
         "subtitle": "서프라이즈 × 깜짝",
         "birthday": "휘페르보레아 제국",
         "force": "없음",
-        "campName": "무소속"
+        "campName": "무소속",
+        "intronEffects": [
+          "[귀요미]가 다른 유형의 [귀요미]에 의해 폭발할 경우 자신이 정신력을 #1 회복하며, 같은 유형의 [귀요미]에 의해 폭발할 경우 정신력을 #2 회복한다.",
+          "[악몽의 실험실] 이동 속도 감소 효과가 #3까지 상승한다.",
+          "[귀요미] 레벨+2, [정확한 플레이 방법] 레벨+1.",
+          "[악몽의 실험실]에서 [귀요미] 시전 시 #4 확률로 [귀요미] 1개를 추가 투척한다.",
+          "[악몽 회상] 레벨+2, [정확한 플레이 방법] 레벨+1.",
+          "[광란의 굉음] 보유 시 투척하는 [귀요미]는 2가지 유형의 특성을 동시에 보유하며, 입히는 대미지와 전투 태세 약화 효과가 상승한다."
+        ]
       },
       "TC": {
         "name": "耶爾與奧利弗",
         "subtitle": "驚喜×驚嚇",
         "birthday": "海伯利亞帝國",
         "force": "無",
-        "campName": "無陣營"
+        "campName": "無陣營",
+        "intronEffects": [
+          "「小可愛」如果被不同類型的「小可愛」引爆，自身回復#1點神智；如果被同類型的「小可愛」引爆，自身回復#2點神智。",
+          "「噩夢實驗室」的移動速度降低效果提高至#3。",
+          "「小可愛」等級+2，「正確遊玩方式」等級+1。",
+          "在「噩夢實驗室」中時釋放「小可愛」時，有#4概率額外丟出1枚「小可愛」。",
+          "「噩夢回憶」等級+2，「正確遊玩方式」等級+1。",
+          "帶有「轟鳴狂熱」時，丟出的「小可愛」同時擁有2種類型的特性，可以造成更高的傷害和戰姿削減。"
+        ]
       }
     }
   },
@@ -1073,6 +1421,19 @@
         "resourceId": 1003201,
         "resourceNum": 30
       }
+    ],
+    "intronDescriptionKeys": [
+      "GRADEUP_3201_01",
+      "GRADEUP_3201_02",
+      "GRADEUP_3201_03",
+      "GRADEUP_3201_04",
+      "GRADEUP_3201_05",
+      "GRADEUP_3201_06"
+    ],
+    "intronParameters": [
+      "$#PassiveEffect[320101].Vars.Grade1BuffRate*100$%",
+      "$#Buff[320100].DotDatas[1].Rate*100$%",
+      "$#PassiveEffect[320101].Vars.Grade6CD$"
     ],
     "baseStats": {
       "atk": 15,
@@ -1174,49 +1535,105 @@
         "subtitle": "Inferno-Kerker",
         "birthday": "Hyperboreisches Imperium",
         "force": "Königliches Militärgefängnis",
-        "campName": "Hyperboreisches Imperium"
+        "campName": "Hyperboreisches Imperium",
+        "intronEffects": [
+          "Erhöht den Schaden, der Gegnern im Umkreis von 6 m um Hellfire zugefügt wird, um #1.",
+          "Erhöht die durch [Strafentschlossenheit] gewährte LP-Wiederherstellung auf #2.",
+          "Stufe von [Glühendes Inferno] +2; Stufe von [Strafentschlossenheit] +1.",
+          "Reduziert das Intervall, in dem [Durchdringende Vergeltung] Pyro-SCH verursacht, auf 1,4 Sek.",
+          "Stufe von [Käfig der Verzweiflung] +2; Stufe von [Strafentschlossenheit] +1.",
+          "Für jeweils 5 Punkte Geist, die durch Fähigkeiten der Verbündeten in der Nähe verbraucht werden, entfesselt Hellfire automatisch [Käfig der Verzweiflung]. Kann einmal alle #3 Sekunden ausgelöst werden."
+        ]
       },
       "EN": {
         "name": "Hellfire",
         "subtitle": "Inferno Penitentiary",
         "birthday": "Hyperborean Empire",
         "force": "Imperial Military Prison",
-        "campName": "The Hyperborean Empire"
+        "campName": "The Hyperborean Empire",
+        "intronEffects": [
+          "Increases damage dealt to enemies within a 6-metre radius around Hellfire by #1.",
+          "Increases the HP recovery granted by [Retributive Resolve] to #2.",
+          "[Raging Inferno] Level +2; [Retributive Resolve] Level +1.",
+          "Decreases the interval of dealing [Puncture Retribution] Pyro Damage to 1.4s.",
+          "[Cage of Despair] Level +2; [Retributive Resolve] Level +1.",
+          "For every 5 Sanity-consuming skill uses by nearby allies, Hellfire automatically unleashes [Cage of Despair]. Can trigger once every #3s."
+        ]
       },
       "ES": {
         "name": "Hellfire",
         "subtitle": "Penitenciaría Infernal",
         "birthday": "Imperio Hiperbóreo",
         "force": "Prisión Militar Real",
-        "campName": "Imperio Hiperbóreo"
+        "campName": "Imperio Hiperbóreo",
+        "intronEffects": [
+          "Aumenta el daño infligido a los enemigos en un radio de 6 metros alrededor de Hellfire en #1.",
+          "Aumenta la recuperación de PV otorgada por [Resolución Retributiva] a #2.",
+          "[Infierno Furioso] nivel +2; [Resolución Retributiva] nivel +1.",
+          "Disminuye el intervalo de infligir Daño Pyro de [Retribución por Punzada] a 1,4 s.",
+          "[Jaula de Desesperación] nivel +2; [Resolución Retributiva] nivel +1.",
+          "Por cada 5 usos de habilidades de aliados cercanos que consumen Cordura, Hellfire desata automáticamente [Jaula de Desesperación]. Se puede activar una vez cada #3s."
+        ]
       },
       "FR": {
         "name": "Vulcera",
         "subtitle": "Juge des Cendres",
         "birthday": "Empire Hyperboréen",
         "force": "Prison Militaire Royale",
-        "campName": "Empire Hyperboréen"
+        "campName": "Empire Hyperboréen",
+        "intronEffects": [
+          "Augmente de #1 les dégâts infligés aux ennemis dans un rayon de 6 m autour de Vulcera.",
+          "L’effet de régénération de PV de [Détermination purgatrice] passe à #2.",
+          "[Enfer ardent] niveau +2 ; [Détermination purgatrice] niveau +1.",
+          "[Châtiment transperçant] peut désormais se déclencher toutes les 1,4 s.",
+          "[Cage du désespoir] niveau +2 ; [Détermination purgatrice] niveau +1.",
+          "Chaque fois que les alliés utilisent des compétences consommant de la Lucidité un total de 5 fois, déclenche automatiquement [Cage du Désespoir]. Cet effet peut se déclencher une fois toutes les #3 s."
+        ]
       },
       "JP": {
         "name": "ヘルファイア",
         "subtitle": "煉火の牢獄",
         "birthday": "ヒュペリア帝国",
         "force": "皇立軍事監獄",
-        "campName": "ヒュペリア帝国"
+        "campName": "ヒュペリア帝国",
+        "intronEffects": [
+          "ヘルファイアの6メートル範囲内の敵に対して、与ダメージが#1アップ。",
+          "「パニッシュディシジョン」のHP持続回復効果が#2までアップする。",
+          "「インフェルノ」Lv.+2、「パニッシュディシジョン」Lv.+1。",
+          "「インフェルノ」の「貫通の裁き」効果が1.4秒ごとに1回発動できるようになる。",
+          "「デスペアープリズン」Lv.+2、「パニッシュディシジョン」Lv.+1。",
+          "付近の味方がスキル発動でSPを5回消費すると、自動的に自身が「デスペアープリズン」を1回発動する、#3秒に一回発動可能。"
+        ]
       },
       "KR": {
         "name": "헬파이어",
         "subtitle": "지옥불의 감옥",
         "birthday": "휘페르보레아 제국",
         "force": "황실 군교도소",
-        "campName": "휘페르보레아 제국"
+        "campName": "휘페르보레아 제국",
+        "intronEffects": [
+          "자신 주위 6m 범위 내의 적에게 입히는 대미지가 #1 상승한다.",
+          "[징벌의 결의]의 HP 지속 회복 효과가 #2까지 상승.",
+          "[타오르는 지옥] 레벨+2, [징벌의 결의] 레벨+1",
+          "[타오르는 지옥]의 [꿰뚫는 심판] 효과가 1.4초에 최대 1회 발동으로 변경된다.",
+          "[절망의 감옥] 레벨+2, [징벌의 결의] 레벨+1",
+          "다른 팀원이 정신력을 소모해 스킬을 누적 5회 시전할 때마다 [절망의 감옥] 효과를 자동으로 1회 발동한다. #3초마다 최대 1회 발동한다."
+        ]
       },
       "TC": {
         "name": "海爾法",
         "subtitle": "煉火囚籠",
         "birthday": "海伯利亞帝國",
         "force": "皇家軍事監獄",
-        "campName": "海伯利亞帝國"
+        "campName": "海伯利亞帝國",
+        "intronEffects": [
+          "對自身周圍6米範圍內的敵人造成的傷害提高#1。",
+          "「懲戒決意」的生命值持續回復效果提高至#2。",
+          "「灼熱地獄」等級+2，「懲戒決意」等級+1。",
+          "「灼熱地獄」的「穿刺裁罰」效果變為每1.4秒最多觸發1次。",
+          "「絕望牢籠」等級+2，「懲戒決意」等級+1。",
+          "其他隊友每累計5次消耗神智釋放技能，自身自動釋放1次[絕望牢籠]效果，每#3秒最多觸發1次。"
+        ]
       }
     }
   },
@@ -1275,6 +1692,21 @@
         "resourceId": 1003301,
         "resourceNum": 30
       }
+    ],
+    "intronDescriptionKeys": [
+      "GRADEUP_3301_01",
+      "GRADEUP_3301_02",
+      "GRADEUP_3301_03",
+      "GRADEUP_3301_04",
+      "GRADEUP_3301_05",
+      "GRADEUP_3301_06"
+    ],
+    "intronParameters": [
+      "$#PassiveEffect[330101].Vars.Grade1PropReturn*100$%",
+      "$#PassiveEffect[330101].Vars.Skill01AddRate*100$%",
+      "$#SkillCreature[330115].TimeLife$",
+      "$#PassiveEffect[330101].Vars.Grade6LastTime$",
+      "$#PassiveEffect[330101].Vars.Grade6DamageRate*100$%"
     ],
     "baseStats": {
       "atk": 21,
@@ -1376,49 +1808,105 @@
         "subtitle": "Stadtstreiferin",
         "birthday": "Hyperboreisches Imperium",
         "force": "Unabhängig",
-        "campName": "Keine Zugehörigkeit"
+        "campName": "Keine Zugehörigkeit",
+        "intronEffects": [
+          "Wenn [Margies Brandmülltonne] Stapelungen von [Jackpot!] verbraucht, besteht eine Chance von #1, die verbrauchten Stapelungen wieder zurückzuerhalten.",
+          "Beim Einsatz von [Margies Schatzschaufel] besteht eine Chance von #2, bei 1 zufälligen Gegner innerhalb der Reichweite einmal zusätzlichen Schaden zu verursachen.",
+          "Stufe von [Margies Schatzschaufel] +2; Stufe von [Margies Sammelbeutel] +1.",
+          "Verlängert die Dauer der durch [Margies Brandmülltonne] erschaffenen Eiferzone um #3 Sek.",
+          "Stufe von [Margies Brandmülltonne] +2; Stufe von [Margies Sammelbeutel] +1.",
+          "Wenn [Margies Brandmülltonne] Schaden verursacht, erhöht sich der Schaden, der dem Ziel durch Margie zugefügt wird, um #5 für #4 Sek."
+        ]
       },
       "EN": {
         "name": "Margie",
         "subtitle": "Cityscape Roamer",
         "birthday": "Hyperborean Empire",
         "force": "Unaffiliated",
-        "campName": "No Affiliation"
+        "campName": "No Affiliation",
+        "intronEffects": [
+          "When [Margie's Combustible Bin] consumes [Jackpot!] stacks, there's a #1 chance to regain the consumed stacks.",
+          "When using [Margie's Treasure Shovel], there's a #2 chance to deal additional damage to 1 random enemy within range once.",
+          "[Margie's Treasure Shovel] Level +2; [Margie's Recycling Sack] Level +1.",
+          "Extends the duration of the Zealous Zone created by [Margie's Combustible Bin] to #3s.",
+          "[Margie's Combustible Bin] Level +2; [Margie's Recycling Sack] Level +1.",
+          "When [Margie's Combustible Bin] deals damage, damage dealt to the target from Margie is increased by #5 for #4s."
+        ]
       },
       "ES": {
         "name": "Margie",
         "subtitle": "Vagabunda del Paisaje Urbano",
         "birthday": "Imperio Hiperbóreo",
         "force": "No afiliado",
-        "campName": "Sin afiliación"
+        "campName": "Sin afiliación",
+        "intronEffects": [
+          "Cuando [Basurero Combustible de Margie] consume acumulaciones de [¡Tesoro!], hay una probabilidad de #1 de recuperar las acumulaciones consumidas.",
+          "Al usar [Pala del Tesoro de Margie], hay una probabilidad de activación de #2 de infligir daño adicional a 1 enemigo aleatorio dentro del alcance una vez.",
+          "[Pala del Tesoro de Margie] nivel +2; [Saco de Reciclaje de Margie] nivel +1.",
+          "Prolonga la duración de la zona ferviente creada por [Basurero Combustible de Margie] a #3 s.",
+          "[Basurero Combustible de Margie] nivel +2; [Saco de Reciclaje de Margie] nivel +1.",
+          "Cuando [Basurero Combustible de Margie] inflige daño, el daño infligido al objetivo por Margie aumenta en #5 durante #4 s."
+        ]
       },
       "FR": {
         "name": "Margie",
         "subtitle": "Exploratrice Citadine",
         "birthday": "Empire Hyperboréen",
         "force": "Aucune affiliation",
-        "campName": "Aucune affiliation"
+        "campName": "Aucune affiliation",
+        "intronEffects": [
+          "Lorsqu’un [Jackpot !] est consommé par [Poubelle explosive de Margie], a #1 de chance de restituer les cumuls consommés.",
+          "Lors de l’utilisation de [Pelle à trésors de Margie], a #2 de chances d’infliger 1 instance de dégâts supplémentaires à un ennemi aléatoire dans la zone.",
+          "[Pelle à trésors de Margie] niveau +2 ; [Sac de recyclage de Margie] niveau +1.",
+          "Prolonge la durée de la zone de cendres résiduelles de [Poubelle explosive de Margie] jusqu’à #3 s.",
+          "[Poubelle explosive de Margie] niveau +2 ; [Sac de recyclage de Margie] niveau +1.",
+          "Lorsque [Poubelle explosive de Margie] inflige des dégâts, la cible subit davantage de dégâts de Margie, augmentés de #5 pendant #4 s."
+        ]
       },
       "JP": {
         "name": "マギー",
         "subtitle": "街の探索者",
         "birthday": "ヒュペリア帝国",
         "force": "なし",
-        "campName": "無所属"
+        "campName": "無所属",
+        "intronEffects": [
+          "「マギーの燃えるゴミ箱」を発動して「お宝はっけーん！」を解除すると、#1の確率で解除された「お宝はっけーん！」が復活する。",
+          "「マギーの万能シャベル」を放つと、#2の確率で範囲内のランダムな敵1体にダメージを与える。",
+          "「マギーの万能シャベル」Lv.+2、「マギーのリサイクルバッグ」Lv.+1。",
+          "「マギーの燃えるゴミ箱」によって生成された焼け跡エリアの持続時間が#3秒まで延長される。",
+          "「マギーの燃えるゴミ箱」Lv.+2、「マギーのリサイクルバッグ」Lv.+1。",
+          "「マギーの燃えるゴミ箱」がダメージを与えると、#4秒間目標がマギーから受けるダメージが#5アップする。"
+        ]
       },
       "KR": {
         "name": "마르제",
         "subtitle": "도시의 떠돌이",
         "birthday": "휘페르보레아 제국",
         "force": "없음",
-        "campName": "무소속"
+        "campName": "무소속",
+        "intronEffects": [
+          "[마르제의 가연 쓰레기통]을 시전해 [보물이다!] 제거 시 #1 확률로 제거한 [보물이다!]가 반환된다.",
+          "[마르제의 만능 보물 탐색 삽] 시전 시 #2 확률로 범위 내 무작위 1명의 적에게 추가 대미지를 1회 입힌다.",
+          "[마르제의 만능 보물 탐색 삽] 레벨+2, [마르제의 재활용품 보관 자루] 레벨+1.",
+          "[마르제의 가연 쓰레기통]이 남긴 잿더미 지역의 지속 시간을 #3초로 연장한다.",
+          "[마르제의 가연 쓰레기통] 레벨+2, [마르제의 재활용품 보관 자루] 레벨+1.",
+          "[마르제의 가연 쓰레기통]으로 대미지를 입힌 후, 대상이 마르제로부터 받는 대미지가 #5 상승한다. 지속 시간 #4초."
+        ]
       },
       "TC": {
         "name": "瑪爾潔",
         "subtitle": "城市漫遊者",
         "birthday": "海伯利亞帝國",
         "force": "無",
-        "campName": "無陣營"
+        "campName": "無陣營",
+        "intronEffects": [
+          "釋放「瑪爾潔的可燃垃圾箱」移除「撿到寶了！」後，有#1的概率返還移除的「撿到寶了！」。",
+          "釋放「瑪爾潔的萬能尋寶鏟」時，有#2概率對範圍內的隨機1個敵人額外造成1次傷害。",
+          "「瑪爾潔的萬能尋寶鏟」等級+2，「瑪爾潔的回收儲物袋」等級+1。",
+          "[瑪爾潔的可燃垃圾箱]殘留的灰燼區域，持續時間延長至#3秒。",
+          "「瑪爾潔的可燃垃圾箱」等級+2，「瑪爾潔的回收儲物袋」等級+1。",
+          "「瑪爾潔的可燃垃圾箱」造成傷害後，目標受到來自瑪爾潔的傷害提高#5，持續#4秒。"
+        ]
       }
     }
   },
@@ -1477,6 +1965,21 @@
         "resourceId": 1001101,
         "resourceNum": 30
       }
+    ],
+    "intronDescriptionKeys": [
+      "GRADEUP_1101_01",
+      "GRADEUP_1101_02",
+      "GRADEUP_1101_03",
+      "GRADEUP_1101_04",
+      "GRADEUP_1101_05",
+      "GRADEUP_1101_06"
+    ],
+    "intronParameters": [
+      "$#Buff[110111].AddAttrs[1].Rate*100$%",
+      "$#PassiveEffect[110101].Vars.Grade1LastTime$",
+      "$#PassiveEffect[110101].Vars.Grade2BuffRate*100$%",
+      "$#Buff[110112].AddAttrs[1].Rate*100$%",
+      "$#PassiveEffect[110101].Vars.Grade6Rate*100$%"
     ],
     "baseStats": {
       "atk": 20,
@@ -1616,49 +2119,105 @@
         "subtitle": "Unvermeidliche Zukunft",
         "birthday": "Hyperboreisches Imperium",
         "force": "Unabhängig",
-        "campName": "Die Nachtfahrer"
+        "campName": "Die Nachtfahrer",
+        "intronEffects": [
+          "Beim Einsatz von Spiralsprung oder [Letzter Schein] wird Berenicas Fähigkeitseffizienz um #1 für #2 Sek. erhöht, bis zu 3-mal stapelbar.",
+          "Erhöht den Schaden, den Berenica gegen Ziele verursacht, deren LP-Prozentsatz unter ihrem eigenen liegt, um #3.",
+          "Stufe von [Letzter Schein] +2; Stufe von [Kreisel] +1.",
+          "Erhöht Berenicas ANG um #4 pro Kombostufe.",
+          "Stufe von [Unterweltflammen] +2; Stufe von [Kreisel] +1.",
+          "Im Zustand [Unterweltflammen] besteht eine Chance, dass jeder Angriff 1 zusätzliche Schwertwelle entfesselt. Die Wahrscheinlichkeit entspricht #5 der [Ymir]s Auslöserate."
+        ]
       },
       "EN": {
         "name": "Berenica",
         "subtitle": "The Expectant Future",
         "birthday": "Hyperborean Empire",
         "force": "Unaffiliated",
-        "campName": "The Noctoyagers"
+        "campName": "The Noctoyagers",
+        "intronEffects": [
+          "Upon using Helix Leap or [Faintlight], Berenica gains 1 stack that increases Skill Efficiency by #1 for #2s, up to 3 stacks.",
+          "Increases damage dealt to targets with a HP percentage lower than Berenica by #3.",
+          "[Faintlight] Level +2; [Recuperation] Level +1.",
+          "Increases Berenica's Attack by #4 per Combo Level.",
+          "[Netherflames] Level +2; [Recuperation] Level +1.",
+          "When in [Netherflames] state, each attack has a chance to unleash 1 additional Swordwave. The probability equals to #5 of [Ymir]'s Trigger Probability."
+        ]
       },
       "ES": {
         "name": "Berenica",
         "subtitle": "El Futuro Expectante",
         "birthday": "Imperio Hiperbóreo",
         "force": "No afiliado",
-        "campName": "Los Noctoviajeros"
+        "campName": "Los Noctoviajeros",
+        "intronEffects": [
+          "Al usar Salto Espiral o [Luz Tenue], Berenica obtiene 1 acumulación de Eficiencia de Habilidad +#1 durante #2 s, hasta 3 acumulaciones.",
+          "Aumenta el daño infligido en #3 contra objetivos con un porcentaje de PV inferior al de Berenica.",
+          "[Luz Tenue] nivel +2; [Recuperación] nivel +1.",
+          "Aumenta el ATQ de Berenica en #4 por cada nivel del combo.",
+          "[Llama Infernal] nivel +2; [Recuperación] nivel +1.",
+          "Después de usar [Llama Infernal], al lanzar ondas de espada hay probabilidad de generar 1 onda adicional. La probabilidad equivale al #5 de la Probabilidad de Activación de [Ymir]."
+        ]
       },
       "FR": {
         "name": "Berenica",
         "subtitle": "Espoir Inébranlable",
         "birthday": "Empire Hyperboréen",
         "force": "Aucune affiliation",
-        "campName": "Les Vagabonds de la Nuit"
+        "campName": "Les Vagabonds de la Nuit",
+        "intronEffects": [
+          "Après avoir utilisé Bond Cyclonique ou [Lueur de l’oubli], Berenica obtient 1 cumul qui augmente son Efficacité de compétence de #1 pendant #2 s, jusqu’à 3 cumuls.",
+          "Inflige #3 de dégâts supplémentaires aux cibles dont le pourcentage de PV est inférieur aux siens.",
+          "[Lueur de l’oubli] niveau +2 ; [Éveil silencieux] niveau +1.",
+          "Augmente l’Attaque de Berenica de #4 par niveau de Combo.",
+          "[Lame infernale] niveau +2 ; [Éveil silencieux] niveau +1.",
+          "Lors de l’état [Lame infernale], chaque attaque a une chance de générer 1 onde tranchante supplémentaire.\nLa probabilité correspond à #5 de la Chance de déclenchement d’[Ymir]."
+        ]
       },
       "JP": {
         "name": "ベレニカ",
         "subtitle": "確かな未来",
         "birthday": "ヒュペリア帝国",
         "force": "なし",
-        "campName": "ノクトボイジャー小隊"
+        "campName": "ノクトボイジャー小隊",
+        "intronEffects": [
+          "スピンジャンプまたは「ルミネセンス」を発動すると、#2秒間スキル効率が#1アップする（最大3回まで重ねがけ可）。",
+          "最大HPに対する残りHP比率が自身より低い対象への与ダメージが#3アップする。",
+          "「ルミネセンス」Lv.+2、「スウィング」Lv.+1。",
+          "自身のコンボLv.がアップするごとに攻撃力が#4アップ。",
+          "「ゲヘナ」Lv.+2、「スウィング」Lv.+1。",
+          "「ゲヘナ」発動中に剣波を放つ際、一定確率で追加の剣波をもう1発放つ。この確率は「ユミル」が有する発動確率の#5に基づく。"
+        ]
       },
       "KR": {
         "name": "베레니카",
         "subtitle": "확실한 미래",
         "birthday": "휘페르보레아 제국",
         "force": "없음",
-        "campName": "팀 '녹토 보이저'"
+        "campName": "팀 '녹토 보이저'",
+        "intronEffects": [
+          "스파이럴 점프와 [잔광] 시전 시, 자신은 1단계의 스킬 효율 #1 상승 효과를 획득한다. 지속 시간 #2초, 최대 3단계 중첩.",
+          "HP 비율이 자신보다 낮은 대상에게 입히는 대미지 #3 상승.",
+          "[잔광] 레벨+2, [회전] 레벨+1",
+          "자신의 콤보 레벨에 따라 공격이 상승한다. 레벨당 #4 상승.",
+          "[어둠의 불꽃] 레벨+2, [회전] 레벨+1",
+          "[어둠의 불꽃] 사용 후, 검기 발동 시 일정 확률로 1개의 검기를 추가로 생성한다. 확률은 [이미르] 발동 확률 속성치의 #5."
+        ]
       },
       "TC": {
         "name": "貝蕾妮卡",
         "subtitle": "確定的明天",
         "birthday": "海伯利亞",
         "force": "無",
-        "campName": "夜航者小隊"
+        "campName": "夜航者小隊",
+        "intronEffects": [
+          "螺旋跳躍和釋放「殘光」後，自身獲得1層技能效益提高#1，持續#2秒，最多疊加3層。",
+          "對生命值百分比低於自身的目標，造成的傷害提高#3。",
+          "「殘光」等級+2，「回轉」等級+1。",
+          "根據自身連擊等級提高攻擊，每級提高#4。",
+          "「冥焰」等級+2，「回轉」等級+1。",
+          "使用「冥焰」後，釋放劍氣時有概率額外生成1道劍氣。概率為「伊彌爾」觸發概率屬性值的#5。"
+        ]
       }
     }
   },
@@ -1717,6 +2276,20 @@
         "resourceId": 1001103,
         "resourceNum": 30
       }
+    ],
+    "intronDescriptionKeys": [
+      "GRADEUP_1103_01",
+      "GRADEUP_1103_02",
+      "GRADEUP_1103_03",
+      "GRADEUP_1103_04",
+      "GRADEUP_1103_05",
+      "GRADEUP_1103_06"
+    ],
+    "intronParameters": [
+      "$#PassiveEffect[110301].Vars.Grade1MspOnHit*100$%",
+      "$#Buff[110304].BuffDamagedRate.Value*(-100)$%",
+      "$#PassiveEffect[110301].Vars.Grade4ExtraRate*100$%",
+      "$#Buff[110341].AddAttrs[2].Value*100$%"
     ],
     "baseStats": {
       "atk": 21,
@@ -1823,49 +2396,105 @@
         "subtitle": "Anonymer Sänger",
         "birthday": "Hyperboreisches Imperium",
         "force": "Unabhängig",
-        "campName": "Keine Zugehörigkeit"
+        "campName": "Keine Zugehörigkeit",
+        "intronEffects": [
+          "Durch [Duett] erhaltene [Immersion] erhöht sich auf #1 des max. Geists.",
+          "Beim Einsatz der 3-Angriff von [Wütende Klauen] und [Klagendes Heulen] verringert sich der erlittene SCH um #2 und die Chance, [Adagio] durch [Konzert] zuzufügen, erhöht sich auf 100 %.",
+          "Stufe von [Rezitativ] +2, Stufe von [Auf der Bühne] +1.",
+          "Wird mit dem 4-Angriff von [Wütende Klauen] oder einem Sturzangriff SCH verursacht, erhöht sich der SCH um #3, wenn das Ziel mit 10 Stapelungen [Adagio] belegt ist.",
+          "Stufe von [Vorhang Auf] +2, Stufe von [Auf der Bühne] +1.",
+          "[Presto] gewährt eine zusätzliche Erhöhung der Moral um #4. Wenn [Immersion] von [Duett] ausgelöst ist, verlängert sich die Dauer von [Presto] um 0,2 Sek."
+        ]
       },
       "EN": {
         "name": "Phantasio",
         "subtitle": "Unsung Songster",
         "birthday": "Hyperborean Empire",
         "force": "Unaffiliated",
-        "campName": "No Affiliation"
+        "campName": "No Affiliation",
+        "intronEffects": [
+          "[Immersion] gained from [Duo] is increased to #1 of Max Sanity.",
+          "When using the 3-hit of [Furious Claws] and [Mournful Howl], decreases Damage Taken by #2 and increases the chance of inflicting [Adagio] through [Concerto] to 100%.",
+          "[Recitativo] Level +2, [On Stage] Level +1.",
+          "When dealing damage with the 4th hit of [Savage Claws] or a Plunging Attack, increases damage by #3 if the target has 10 stacks of [Adagio].",
+          "[Curtain Up] Level +2, [On Stage] Level +1.",
+          "[Presto] grants an additional #4 Morale Increase. When [Duo]'s [Immersion] is triggered, extends [Presto]'s duration by 0.2s."
+        ]
       },
       "ES": {
         "name": "Phantasio",
         "subtitle": "Cantor Anónimo",
         "birthday": "Imperio Hiperbóreo",
         "force": "No afiliado",
-        "campName": "Sin afiliación"
+        "campName": "Sin afiliación",
+        "intronEffects": [
+          "La [Inmersión] obtenida con [Dúo] aumenta a #1 de la Cordura Máx.",
+          "Al usar el 3.º golpe de [Garra Furiosa] o [Aullido Lamentable], reduce el daño recibido en #2 y la probabilidad de aplicar [Adagio] mediante [Concierto] pasa al 100%.",
+          "[Recitativo] nivel +2, [En el Escenario] nivel +1.",
+          "Cuando el 4.º golpe de [Garra Furiosa] o un Ataque Descendente inflige daño, si el objetivo tiene 10 acumulaciones de [Adagio], el daño aumenta en #3.",
+          "[Telón Arriba] nivel +2, [En el Escenario] nivel +1.",
+          "[Presto] otorga además Moral +#4. Al activarse la ganancia de [Inmersión] de [Dúo], la duración de [Presto] se extiende 0,2 s."
+        ]
       },
       "FR": {
         "name": "Phantasio",
         "subtitle": "La Voix Oubliée",
         "birthday": "Empire Hyperboréen",
         "force": "Aucune affiliation",
-        "campName": "Aucune affiliation"
+        "campName": "Aucune affiliation",
+        "intronEffects": [
+          "La [Fusion] obtenue via [Duo] augmente jusqu’à #1 de la Lucidité max.",
+          "Pendant l’utilisation du 3ᵉ coup de [Griffes sauvages] et de [Hurlement funèbre], réduit les Dégâts subis de #2 et porte la probabilité d’appliquer [Adagio] via [Concerto] à 100 %.",
+          "[Recitativo] niveau +2 ; [Sous les projecteurs] niveau +1.",
+          "Lorsque le 4e coup de [Griffes sauvages] ou une Attaque plongeante inflige des dégâts, ceux-ci sont augmentés de #3 si la cible possède 10 cumuls de [Adagio].",
+          "[Lever de rideau] niveau +2 ; [Sous les projecteurs] niveau +1.",
+          "[Presto] confère un bonus supplémentaire de +#4 en Vigueur. Lorsque l’effet de [Duo] génère de la [Fusion], la durée de [Presto] est prolongée de 0,2 s."
+        ]
       },
       "JP": {
         "name": "ファンタジオ",
         "subtitle": "名も無き儚子",
         "birthday": "ヒュペリア帝国",
         "force": "なし",
-        "campName": "無所属"
+        "campName": "無所属",
+        "intronEffects": [
+          "「デュエット」で獲得する「イマージョン」が最大SPの#1までアップする。",
+          "「怒りの爪」の3段目の攻撃と「悲嘆の咆哮」を発動している間、被ダメージが#2ダウンする。「コンチェルト」で「アダージョ」を付与する確率が100%までアップする。",
+          "「レチタティーヴォ」レベル+2、「舞台演出」レベル+1。",
+          "「激怒の鋭爪」の4段目の攻撃と空中からの落下攻撃でダメージを与えた時、目標に10スタックの「アダージョ」が付与されている場合、ダメージが#3アップする。",
+          "「幕開け」レベル+2、「舞台演出」レベル+1。",
+          "「プレスト」が追加で高揚#4アップの効果を得る。「デュエット」効果で「同調率」を獲得すると、「プレスト」の持続時間が0.2秒延長する。"
+        ]
       },
       "KR": {
         "name": "환상",
         "subtitle": "이름 없는 노래꾼",
         "birthday": "휘페르보레아 제국",
         "force": "없음",
-        "campName": "무소속"
+        "campName": "무소속",
+        "intronEffects": [
+          "[듀엣]으로 획득한 [몰입도]는 최대 정신력의 #1까지 상승한다.",
+          "[격노한 예리한 발톱] 3단계와 [비통한 울부짖음] 시전 기간에 받는 대미지가 #2 감소한다. [협주곡]에 [아다지오]를 부여할 확률이 100%까지 상승한다.",
+          "[레치타티보] 레벨+2. [무대 연출] 레벨+1.",
+          "[격노한 예리한 발톱] 4단계와 공중 낙하로 대미지를 입힐 시, 대상이 10단계의 [아다지오]를 보유할 경우 대미지가 #3 상승한다.",
+          "[개막] 레벨+2. [무대 연출] 레벨+1.",
+          "[프레스토]가 격양 #4 상승 효과를 추가로 획득한다. [듀엣] 발동으로 [몰입도] 효과 획득 시, [프레스토] 지속 시간이 0.2초 연장된다."
+        ]
       },
       "TC": {
         "name": "幻景",
         "subtitle": "無名歌者",
         "birthday": "海伯利亞帝國",
         "force": "無",
-        "campName": "無陣營"
+        "campName": "無陣營",
+        "intronEffects": [
+          "「二重唱」獲得的「沉浸度」提高至最大神智的#1。",
+          "釋放「狂怒的銳爪」第三段和「悲慟的鳴嘯」期間受到的傷害降低#2，「協奏曲」附加「柔板」的概率提升至100%。",
+          "「宣敘調」等級+2，「舞台演繹」等級+1。",
+          "[狂怒的銳爪]第四段和空中下落造成傷害時，如果目標帶有10層[柔板]，傷害提高#3。",
+          "「幕啟」等級+2，「舞台演繹」等級+1。",
+          "[急板]額外獲得昂揚提高#4效果；觸發[二重唱]的獲得[沉浸度]效果時，[急板]持續時間延長0.2秒。"
+        ]
       }
     }
   },
@@ -1924,6 +2553,22 @@
         "resourceId": 1003202,
         "resourceNum": 30
       }
+    ],
+    "intronDescriptionKeys": [
+      "GRADEUP_3202_01",
+      "GRADEUP_3202_02",
+      "GRADEUP_3202_03",
+      "GRADEUP_3202_04",
+      "GRADEUP_3202_05",
+      "GRADEUP_3202_06"
+    ],
+    "intronParameters": [
+      "$#PassiveEffect[320201].Vars.Grade1Prob*100$%",
+      "$#Buff[320211].BuffDamagedRate.Value*(-100)$%",
+      "$#Buff[320211].AddAttrs[1].Value*100$%",
+      "$#PassiveEffect[320201].Vars.Grade4InDamage*100$%",
+      "$#SkillCreature[320202].Vars.Grade4OffsetSpeed/100$$GText(\\\"SKILL_DESC_Meter\\\")$/$GText(\\\"SKILL_DESC_Second\\\")$",
+      "$#Buff[320212].AddAttrs[1].Value*100$%"
     ],
     "baseStats": {
       "atk": 25,
@@ -2029,49 +2674,105 @@
         "subtitle": "Karmesinnektar",
         "birthday": "Hyperborean Empire",
         "force": "None",
-        "campName": "Hyperboreisches Imperium"
+        "campName": "Hyperboreisches Imperium",
+        "intronEffects": [
+          "Der Schaden durch [Drehklingen] hat eine Chance von #1, 1 zusätzliche Stapelung [Risswunde] zuzufügen.",
+          "Angriffe durch [Burgunder-Gestöber] können eingehende Geschosse blocken. Jede Stapelung [Rausch] reduziert den erlittenen SCH um #2.",
+          "Stufe von [Burgunder-Gestöber] +2, Stufe von [Weinroter Walzer] +1.",
+          "Der Schaden durch Detonation der [Risswunde] wird um #3 erhöht.",
+          "Stufe von [Weinroter Walzer] +2, Stufe von [Burgunder-Gestöber] +1.",
+          "Jeder Waffen- und Fähigkeits-SCH, außer [Drehklingen] und [Risswunde], detoniert 2 Stapelungen [Risswunde]."
+        ]
       },
       "EN": {
         "name": "Camilla",
         "subtitle": "Scarlet Nectar",
         "birthday": "Hyperborean Empire",
         "force": "None",
-        "campName": "The Hyperborean Empire"
+        "campName": "The Hyperborean Empire",
+        "intronEffects": [
+          "Damage from [Spinblades] has a #1 chance to inflict 1 additional stack of [Laceration].",
+          "When orbited by [Spinblades], reduces Damage Taken by #2 and increases Damage Dealt by #3.",
+          "[Burgundy Flurry] Level +2, [Claret Waltz] Level +1.",
+          "Damage from [Laceration] detonation is increased by #4, [Spinblade] Launch Speed is increased by #5.",
+          "[Claret Waltz] Level +2, [Burgundy Flurry] Level +1.",
+          "All Pyro Weapon and Skill DMG (excluding [Spinblades] and [Laceration]) detonates 2 stacks of [Laceration] and deals Pyro Damage 2 times. While [Spinblades] is active, additionally grants #6 PEN stats."
+        ]
       },
       "ES": {
         "name": "Camilla",
         "subtitle": "Néctar Escarlata",
         "birthday": "Hyperborean Empire",
         "force": "None",
-        "campName": "Imperio Hiperbóreo"
+        "campName": "Imperio Hiperbóreo",
+        "intronEffects": [
+          "El daño de [Dagas Rotatorias] tiene #1 probabilidad de activación de infligir 1 acumulación adicional de [Laceración].",
+          "Los ataques de [Ráfaga Carmesí] pueden bloquear proyectiles. Cada acumulación de [Ebriedad] reduce el daño recibido en #2.",
+          "[Ráfaga Carmesí] nivel +2, [Vals Escarlata] nivel +1.",
+          "El daño de la detonación de [Laceración] aumenta en #3.",
+          "[Vals Escarlata] nivel +2, [Ráfaga Carmesí] nivel +1.",
+          "Todo el daño de armas y habilidades (excepto [Dagas Rotatorias] y [Laceración]) detona 2 acumulaciones de [Laceración]."
+        ]
       },
       "FR": {
         "name": "Camilla",
         "subtitle": "Cru Écarlate",
         "birthday": "Empire Hyperboréen",
         "force": "Aucune affiliation",
-        "campName": "Empire Hyperboréen"
+        "campName": "Empire Hyperboréen",
+        "intronEffects": [
+          "Les dégâts des [Lames tournoyantes] ont #1 % de chances d’appliquer 1 [Lacération] supplémentaire.",
+          "Lorsque vous êtes équipé de [Lames tournoyantes], les dégâts subis sont réduits de #2 et les dégâts infligés augmentent de #3.",
+          "[Rafale pourpre] niveau +2 ; [Valse écarlate] niveau +1.",
+          "Les dégâts causés par la détonation de [Lacération] sont augmentés de #4, et la vitesse de vol de [Lames tournoyantes] est augmentée à #5.",
+          "[Valse écarlate] niveau +2 ; [Rafale pourpre] niveau +1.",
+          "Lorsque [Lame du sommelier] est active, votre Pénétration tous attributs augmente de #6.\nLorsque [Blessure écarlate] est supprimée, 1 cumul supplémentaire est retiré et une instance de dégâts supplémentaire est infligée."
+        ]
       },
       "JP": {
         "name": "カミラ",
         "subtitle": "朱き影のキアンティ",
         "birthday": "ヒュペリア帝国",
         "force": "なし",
-        "campName": "ヒュペリア帝国"
+        "campName": "ヒュペリア帝国",
+        "intronEffects": [
+          "「回転ダガー」のダメージは#1の確率で追加の「裂傷」1スタックを付与。",
+          "「回転ダガー」を所持している時、被ダメージが#2減少し、与ダメージが#3アップする。",
+          "「紅連打」レベル+2、「紅炎舞」レベル+1。",
+          "「裂傷」爆発ダメージが#4アップ。「回転ダガー」のノックアップ飛行速度が#5までアップ。",
+          "「紅炎舞」レベル+2、「紅連打」レベル+1。",
+          "武器および[回転ダガー]・[裂傷]以外のスキルダメージは火属性の場合、[裂傷]を2スタック爆発させ、火属性ダメージを2回与える。[回転ダガー]所持中、追加で#6属性貫通を付与する。"
+        ]
       },
       "KR": {
         "name": "카밀라",
         "subtitle": "붉은 그림자와 좋은 술",
         "birthday": "휘페르보레아 제국",
         "force": "없음",
-        "campName": "휘페르보레아 제국"
+        "campName": "휘페르보레아 제국",
+        "intronEffects": [
+          "[회전 비수] 대미지가 #1 확률로 [찢어짐] 1단계를 추가로 부여한다.",
+          "[회전 비수] 보유 시, 받는 대미지가 #2 감소하고, 입히는 대미지가 #3 상승한다.",
+          "[감홍빛 연타] 레벨+2, [노을의 춤] 레벨+1",
+          "[찢어짐] 기폭 시 입히는 대미지가 #4 상승하고, [회전 비수] 넉백 비행 속도가 #5까지 상승한다.",
+          "[노을의 춤] 레벨+2, [감홍빛 연타] 레벨+1",
+          "무기 및 스킬 대미지([회전 비수], [찢어짐] 제외)가 불 속성 대미지일 경우, [찢어짐] 2단계를 기폭하고 불 속성 대미지를 2회 입힌다. [회전 비수] 보유 시, #6 속성 관통을 추가로 부여한다."
+        ]
       },
       "TC": {
         "name": "卡蜜拉",
         "subtitle": "赤影佳釀",
         "birthday": "海伯利亞帝國",
         "force": "無",
-        "campName": "海伯利亞帝國"
+        "campName": "海伯利亞帝國",
+        "intronEffects": [
+          "來自[匕首輪]的傷害有#1概率額外附加1層[裂傷]。",
+          "持有[匕首輪]時，受到的傷害降低#2，造成的傷害提升#3。",
+          "[甘紅連打]等級+2，[赤霞狂舞]等級+1。",
+          "引爆[裂傷]造成的傷害提升#4,[匕首輪]擊飛飛行速度提升為#5。",
+          "[赤霞狂舞]等級+2，[甘紅連打]等級+1。",
+          "所有來自武器及除[匕首輪]、[裂傷]外的技能傷害，若為火屬性傷害，會引爆2層[裂傷]並造成2次火屬性傷害，持有[匕首輪]時，額外提供#6屬性穿透。"
+        ]
       }
     }
   },
@@ -2130,6 +2831,19 @@
         "resourceId": 1002301,
         "resourceNum": 30
       }
+    ],
+    "intronDescriptionKeys": [
+      "GRADEUP_2301_01",
+      "GRADEUP_2301_02",
+      "GRADEUP_2301_03",
+      "GRADEUP_2301_04",
+      "GRADEUP_2301_05",
+      "GRADEUP_2301_06"
+    ],
+    "intronParameters": [
+      "$#PassiveEffect[230102].Vars.Grade2TriggerProb*100$%",
+      "$#Buff[230121].AddAttrs[1].Value*100$%",
+      "$#Buff[230122].DotDatas[1].Rate*100$%"
     ],
     "baseStats": {
       "atk": 17,
@@ -2235,49 +2949,105 @@
         "subtitle": "Flüssige Streiche",
         "birthday": "Republik Luca",
         "force": "Unabhängig",
-        "campName": "Republik Luca"
+        "campName": "Republik Luca",
+        "intronEffects": [
+          "Erhöht die Anzahl der [Tentakel], die durch [Gerechtigkeitskeilerei!] beschworen werden, auf 12, und die maximale Anzahl der [Tentakel], die gleichzeitig existieren können, auf 24.",
+          "Wenn ein [Tentakel] SCH verursacht, besteht eine Chance von #1, 1 Geschoss für Tabethe nachzuladen. Dieser Effekt kann nur einmal pro Sekunde ausgelöst werden.",
+          "Stufe von [Tabethes Spezialität!] +2; Stufe von [Die Farce beginnt!] +1.",
+          "Für jeden [Tentakel] auf dem Kampffeld erhöht sich Tabethes KRIT-Rate um #2.",
+          "Stufe von [Gerechtigkeitskeilerei!] +2; Stufe von [Die Farce beginnt!] +1.",
+          "Von [Tentakel] erfasste Gegner erleiden einmal alle 2 Sek. Hydro-SCH in Höhe von #3 des ANG des [Tentakels]."
+        ]
       },
       "EN": {
         "name": "Tabethe",
         "subtitle": "Aqueous Trickery",
         "birthday": "Republic of Luca",
         "force": "Unaffiliated",
-        "campName": "Republic of Luca"
+        "campName": "Republic of Luca",
+        "intronEffects": [
+          "Increases the number of [Tentacles] summoned through [Brawl For Justice!] to 12 and the maximum number of [Tentacles] that can exist at the same time to 24.",
+          "When [Tentacle] deals damage, there is a #1 chance to reload 1 projectile for Tabethe. This effect can only be triggered once every second.",
+          "[Tabethe's Specialty!] Level +2; [Have Tricks, Will Travel!] Level +1.",
+          "For each [Tentacle] on the field, increases Tabethe's CRIT Chance by #2.",
+          "[Brawl For Justice!] Level +2; [Have Tricks, Will Travel!] Level +1.",
+          "Enemies captured by [Tentacle] take Hydro Damage equivalent to #3 of [Tentacle]'s ATK once every 2s."
+        ]
       },
       "ES": {
         "name": "Tabethe",
         "subtitle": "Trucos Acuosos",
         "birthday": "República de Luca",
         "force": "No afiliado",
-        "campName": "República de Luca"
+        "campName": "República de Luca",
+        "intronEffects": [
+          "Aumenta el número de [Tentáculos] invocados por [¡Paliza por la Justicia!] a 12 y el número máximo de [Tentáculos] que pueden existir al mismo tiempo a 24.",
+          "Cuando [Tentáculos] inflige daño, Tabethe tiene #1 de probabilidad de recargar 1 proyectil. Este efecto solo puede activarse una vez cada segundo..",
+          "[¡Truco Especial!] nivel +2; [¡Que empiece el Espectáculo!] nivel +1.",
+          "Por cada [Tentáculo] en el campo, la Prob. CRIT de Tabethe aumenta en #2.",
+          "[¡Paliza por la Justicia!] nivel +2; [¡Que empiece el Espectáculo!] nivel +1.",
+          "Los enemigos capturados por el [Tentáculo] reciben Daño de Hydro equivalente a #3 del ATQ del [Tentáculo] una vez cada 2 s."
+        ]
       },
       "FR": {
         "name": "Tabethe",
         "subtitle": "Trublion Abyssal",
         "birthday": "République de Luca",
         "force": "Aucune affiliation",
-        "campName": "République de Luca"
+        "campName": "République de Luca",
+        "intronEffects": [
+          "[Justice tentaculaire !] invoque désormais 12 [Tentacules], et le nombre maximal pouvant être présents simultanément passe à 24.",
+          "Lorsqu’un [Tentacule] inflige des dégâts, il y a #1 de chance de restaurer 1 munition pour Tabethe. Cet effet peut se déclencher une fois par seconde.",
+          "[Coup de maître !] niveau +2 ; [Pan ! Encore un !] niveau +1.",
+          "Pour chaque [Tentacule] présent sur le champ de bataille, le Taux CRIT de Tabethe augmente de #2.",
+          "[Justice tentaculaire !] niveau +2 ; [Pan ! Encore un !] niveau +1.",
+          "Les ennemis saisis par un [Tentacule] subissent des Dégâts Hydro équivalents à #3 de l’ATQ du [Tentacule] toutes les 2 s."
+        ]
       },
       "JP": {
         "name": "タビテ",
         "subtitle": "変幻自在の悪戯っ子",
         "birthday": "ルッカ共和国",
         "force": "なし",
-        "campName": "ルッカ共和国"
+        "campName": "ルッカ共和国",
+        "intronEffects": [
+          "「正義のタコ殴りだ！」で召喚できる「召喚ユニット‐触手」の数が12本になり、フィールドに同時に24本まで存在できる。",
+          "「召喚ユニット‐触手」の攻撃でダメージを与えると、#1の確率で「タビテ」の弾薬が1発補充される。1秒ごとに1回のみ発動可能。",
+          "「オレ様のオハコだぜ！」Lv.+2、「笑劇の始まり！」Lv.+1。",
+          "フィールドに存在する自身の召喚した「召喚ユニット‐触手」1本につき、タビテのクリティカル率が#2アップ。",
+          "「正義のタコ殴りだ！」Lv.+2、「笑劇の始まり！」Lv.+1。",
+          "「召喚ユニット‐触手」に捕らえられた敵は、2秒ごとに「召喚ユニット‐触手」攻撃力#3の水属性持続ダメージを受ける。"
+        ]
       },
       "KR": {
         "name": "타비사",
         "subtitle": "꼬물꼬물 장난꾸러기",
         "birthday": "루카 공화국",
         "force": "없음",
-        "campName": "루카 공화국"
+        "campName": "루카 공화국",
+        "intronEffects": [
+          "[정의의 집단 구타!]가 소환하는 [소환물·촉수]의 개수가 12개로 상승하며, 동시에 존재할 수 있는 최대 수량이 24개로 상승한다.",
+          "[소환물·촉수] 공격으로 대미지를 입힐 시, #1 확률로 [타비사]의 탄약을 1발 보충한다. 매초 최대 1회 발동.",
+          "[전매특허!] 레벨+2, [활극 시작!] 레벨+1",
+          "필드에 자신이 소환한 [소환물·촉수]가 1개 있을 때마다 자신의 크리티컬 확률이 #2 상승한다.",
+          "[정의의 집단 구타!] 레벨+2, [활극 시작!] 레벨+1",
+          "[소환물·촉수]에 잡힌 적은 2초마다 [소환물·촉수] 공격력의 #3만큼 물 속성 지속 대미지를 받는다."
+        ]
       },
       "TC": {
         "name": "塔比瑟",
         "subtitle": "流動惡作劇",
         "birthday": "盧卡",
         "force": "無",
-        "campName": "盧卡共和國"
+        "campName": "盧卡共和國",
+        "intronEffects": [
+          "「正義群毆！」召喚的「召喚物·觸手」個數提高至12個，同時最多存在數量提高至24個。",
+          "「召喚物·觸手」攻擊造成傷害時，有#1概率為「塔比瑟」補充1枚彈藥，每秒最多觸發1次。",
+          "「拿手把戲！」等級+2，「鬧劇開幕！」等級+1。",
+          "場上每有1個自身召喚的「召喚物·觸手」，自身暴擊率提高#2。",
+          "「正義群毆！」等級+2，「鬧劇開幕！」等級+1。",
+          "被「召喚物·觸手」抓取的敵人，每2秒受到「召喚物·觸手」攻擊力#3的水屬性持續傷害。"
+        ]
       }
     }
   },
@@ -2336,6 +3106,21 @@
         "resourceId": 1004102,
         "resourceNum": 30
       }
+    ],
+    "intronDescriptionKeys": [
+      "GRADEUP_4102_01",
+      "GRADEUP_4102_02",
+      "GRADEUP_4102_03",
+      "GRADEUP_4102_04",
+      "GRADEUP_4102_05",
+      "GRADEUP_4102_06"
+    ],
+    "intronParameters": [
+      "$#PassiveEffect[410201].Vars.Grade1ExpandBuff$",
+      "$-#Buff[410243].DotDatas[1].Value$",
+      "$#Buff[410241].AddAttrs[1].Rate*100$%",
+      "$#SkillEffects[410251].TaskEffects[1].LastTime$",
+      "$#Buff[410242].AddAttrs[1].Value*100$%"
     ],
     "baseStats": {
       "atk": 24,
@@ -2436,49 +3221,105 @@
         "subtitle": "Zusammenfluss von Kairos",
         "birthday": "Huaxu",
         "force": "EverSpring",
-        "campName": "Huaxu"
+        "campName": "Huaxu",
+        "intronEffects": [
+          "Das Einsetzen von [Donnerndes Orakel] verlängert die Dauer der SCH-Erhöhung von [Klarheit des Schicksals] um #1 Sek. und aktiviert [Vier-Reiche-Harmonisierung], um [Zhen-Xun-Konvergenz] ein weiteres Mal auszulösen. Jeder Bolzen der [Zhen-Xun-Konvergenz] verursacht dabei 60 % Basis-SCH.",
+          "Verstärkt [Alles Gedeiht] mit alternativen Auslöseffekten. Drücken: [Zhen-Xun-Konvergenz] zielt auf bis zu 8 Gegner. Halten: [Vier-Reiche-Harmonisierung] bleibt für den Rest des Kampfes bestehen, verbraucht #2 Punkte Geist pro Sekunde; endet, wenn Geist 0 erreicht oder eine Fähigkeit bzw. Waffe eingesetzt wird.",
+          "Stufe von [Himmlische Offenbarung] +2, Stufe von [Talisman-Paartanz] +1.",
+          "Beim Einsetzen von [Himmlische Offenbarung] erhöht sich der ANG für Zhiliu und die in der Nähe stehenden Teammitglieder um #3 für #4 Sek.",
+          "Stufe von [Himmel-Erde-Divination] +2, Stufe von [Talisman-Paartanz] +1.",
+          "Erhöht Zhilius Durchschlag um #5, solange sie sich im Wirkungsbereich von [Vier-Reiche-Harmonisierung] befindet."
+        ]
       },
       "EN": {
         "name": "Zhiliu",
         "subtitle": "Confluence of Kairos",
         "birthday": "Huaxu",
         "force": "EverSpring",
-        "campName": "Huaxu"
+        "campName": "Huaxu",
+        "intronEffects": [
+          "Casting [Thunder's Oracle Peal] causes [Four Realms Align] to trigger [Zhen-Xun Convergence] one additional time, each [Zhen-Xun Convergence] bolt dealing 60% of the base damage.",
+          "Empowers [Myriad Things Thrive] with alternate trigger effects. Tap: [Zhen-Xun Convergence] targets up to 8 enemies. Hold: [Four Realms Align] persists for the rest of the battle, consuming #2 Sanity per second; ends when Sanity reaches 0 or upon casting a skill or using a weapon.",
+          "[Celestial Revelation] Level +2, [Talismans Coalescence] Level +1.",
+          "When excess Sanity Recovery overflows, grants 1 stack of +#3 ATK Boost for #4s for self and allies, stacking up to 5 times.",
+          "[Heaven-Earth Divination] Level +2, [Talismans Coalescence] Level +1.",
+          "When within [Four Realms Align]'s range, increases Zhiliu's PEN stats by #5, and gains Skill DMG Boost from [Fortune's Clarity]."
+        ]
       },
       "ES": {
         "name": "Zhiliu",
         "subtitle": "Confluencia de Kairos",
         "birthday": "Huaxu",
         "force": "Primavera Eterna",
-        "campName": "Huaxu"
+        "campName": "Huaxu",
+        "intronEffects": [
+          "Lanzar [Toque Oracular del Trueno] prolonga el bono de Daño de Habilidad de [Claridad Cósmica] en #1 s. Además, [Armonía de los Cuatro Reinos] activa una instancia adicional de [Convergencia Zhen-Xun], e cada una inflige un 60% del daño base.",
+          "Potencia [Resurgimiento Cósmico] con efectos de activación alternativos. Pulsar: [Convergencia Zhen-Xun] ataca hasta 8 enemigos. Mantener pulsado: [Armonía de los Cuatro Reinos] persiste durante el resto de la batalla y consume #2 puntos de Cordura por segundo; termina cuando la Cordura llega a 0, o al usar una habilidad o un arma.",
+          "[Revelación Celestial] nivel +2, [Coalescencia de Talismánes] nivel +1.",
+          "Cuando la recuperación de Cordura excedente se desborda, otorga 1 acumulación de Aumento de ATQ de +#3 durante #4 s a ti y a tus aliados. Se puede acumular hasta 5 veces.",
+          "[Adivinación Cielo-Tierra] nivel +2, [Coalescencia de Talismánes] nivel +1.",
+          "Dentro del alcance de [Armonía de los Cuatro Reinos], aumenta la penetración de atributos en #5 y obtiene un Aumento de Daño de Habilidad de [Claridad Cósmica]."
+        ]
       },
       "FR": {
         "name": "Zhiliu",
         "subtitle": "Augure des Eaux Calmes",
         "birthday": "Huaxu",
         "force": "Éternel Printemps",
-        "campName": "Huaxu"
+        "campName": "Huaxu",
+        "intronEffects": [
+          "Lors de l’utilisation d’[Oracle du tonnerre], [Harmonie des Quatre Royaumes] déclenche une occurrence supplémentaire de [Convergence Zhen-Xun], chacune infligeant 60 % des dégâts de base.",
+          "Renforce [Convergence primordiale] avec des effets alternatifs selon la manière d’activation :\n– Appui simple : [Convergence Zhen-Xun] peut cibler jusqu’à 8 ennemis.\n– Appui long : le champ [Harmonie des Quatre Royaumes] devient permanent, consommant #2 de Lucidité par seconde.\nL’effet prend fin lorsque la Lucidité tombe à 0, ou lors de l’utilisation d’une compétence ou d’une arme.",
+          "[Révélation céleste] niveau +2 ; [Rituel jumelé] niveau +1.",
+          "Lorsqu’un gain supplémentaire de Régénération de Lucidité entraîne un débordement, confère à vous et à vos alliés 1 cumul d’augmentation d’ATQ de #3 pendant #4 s, cumulable jusqu’à 5 fois.",
+          "[Divination cosmique] niveau +2 ; [Rituel jumelé] niveau +1.",
+          "Lorsque Zhiliu se trouve dans la zone d’[Harmonie des Quatre Royaumes], sa Pénétration (tous attributs) augmente de #5 et elle bénéficie en continu de l’augmentation des Dégâts de compétence conférée par [Clarté du destin]."
+        ]
       },
       "JP": {
         "name": "シリュウ",
         "subtitle": "春江を渡るに利ろし",
         "birthday": "華胥",
         "force": "百年春",
-        "campName": "華胥"
+        "campName": "華胥",
+        "intronEffects": [
+          "「雷鳴招来」を発動すると、「雷風四方陣」が「雷風相和」を1回追加発動させる。各「雷風相和」は本来の60%のダメージを与える。",
+          "「万物蘇生」を強化し、タップと長押しで異なる効果を得る。タップ時は「雷風相和」の対象数が最大8体に増加。長押し時は「雷風四方陣」の領域が永続化し、効果中は毎秒#2SPを消費。SPが0になるか、スキルや武器を使用すると領域は解除される。",
+          "「解天道」レベル+2、「双水演舞」レベル+1。",
+          "追加のSP回復効果によって、SPがオーバーした場合、#4秒間自身および味方の攻撃力が#3アップする。最大#5スタックまで重ねがけできる。",
+          "「天地の理」レベル+2、「双水演舞」レベル+1。",
+          "自身が「雷風四方陣」の領域内にいる場合、全属性貫通が#5アップし、持続的に「天地照明」のスキルダメージアップ効果を獲得する。"
+        ]
       },
       "KR": {
         "name": "지류",
         "subtitle": "강을 건너는 인도자",
         "birthday": "화서",
         "force": "백년춘",
-        "campName": "화서"
+        "campName": "화서",
+        "intronEffects": [
+          "[진동 소리] 시전 시, [사방으로 부는 번개 바람]이 [번개 바람의 만남] 효과를 추가로 1회 발동한다. [번개 바람의 만남] 1개마다 기존 대미지의 60%에 해당하는 대미지를 입힌다.",
+          "[만물생]을 강화하여 클릭 및 길게 누를 때 각기 다른 효과를 획득한다. 클릭하여 [만물생] 시전 시, [번개 바람의 만남] 효과가 선택할 수 있는 적이 8명까지 상승한다. 길게 눌러 [만물생] 시전 시, [사방으로 부는 번개 바람] 영역이 영구 지속으로 변경되며, 지속 기간 매초 정신력을 #2 소모한다. 정신력이 0이 되거나 임의의 스킬을 시전하면, 무기 사용 시 [사방으로 부는 번개 바람] 영역이 제거된다.",
+          "[해천기] 레벨+2, [두 개의 샘] 레벨+1.",
+          "추가 정신력 회복 효과로 인해 정신력이 초과될 때, 자신과 팀원에게 추가로 1단계의 공격 #3 상승 효과를 부여한다. 지속 시간 #4초. 최대 5단계 중첩.",
+          "[천지 연출]레벨+2,[두 개의 샘] 레벨+1.",
+          "자신이 [사방으로 부는 번개 바람] 영역 범위 내에 있을 때, 모든 속성 관통이 #5 상승한다. 또한 [천지명]의 스킬 피해 증가 효과를 지속적으로 획득한다."
+        ]
       },
       "TC": {
         "name": "止流",
         "subtitle": "利涉春江",
         "birthday": "華胥",
         "force": "百年春",
-        "campName": "華胥"
+        "campName": "華胥",
+        "intronEffects": [
+          "釋放[震有聲]時，使[雷風齊四方]額外觸發1次[雷風相與]效果，每道[雷風相與]造成原本60%的傷害。",
+          "強化[萬物生]，點按釋放和長按釋放獲得不同的效果。點按釋放[萬物生]時，[雷風相與]效果選取敵人數量提升至8名；長按釋放[萬物生]時，[雷風齊四方]領域變為永續，持續期間每秒消耗#2點神智，神智下降為0或釋放任意技能、使用武器時移除[雷風齊四方]領域。",
+          "「解天機」等級+2，「雙泉並舞」等級+1。",
+          "受到額外的神智回復效果導致神智溢出時，為自身和隊友附加1層攻擊提高#3，持續#4秒，最多疊加5層。",
+          "「天地演繹」等級+2，「雙泉並舞」等級+1。",
+          "自身處於「雷風齊四方」領域範圍內時，全屬性穿透提高#5，並持續獲得[天地明]的技能傷害提高效果。"
+        ]
       }
     }
   },
@@ -2537,6 +3378,22 @@
         "resourceId": 1004301,
         "resourceNum": 30
       }
+    ],
+    "intronDescriptionKeys": [
+      "GRADEUP_4301_01",
+      "GRADEUP_4301_02",
+      "GRADEUP_4301_03",
+      "GRADEUP_4301_04",
+      "GRADEUP_4301_05",
+      "GRADEUP_4301_06"
+    ],
+    "intronParameters": [
+      "$#PassiveEffect[430101].Vars.DamageAddRateGrade2*100$%",
+      "$#PassiveEffect[430101].Vars.LinkAddGrade2*100$%",
+      "$#PassiveEffect[430101].Vars.Skill02LinkAddedRate*100$%",
+      "$#SkillEffects[430155].TaskEffects[1].Rate*100$%",
+      "$#SkillEffects[430155].TaskEffects[1].Value$",
+      "$#PassiveEffect[430101].Vars.Grade4Rate*100$%"
     ],
     "baseStats": {
       "atk": 13,
@@ -2638,49 +3495,105 @@
         "subtitle": "Die Dohle",
         "birthday": "Hyperboreisches Imperium",
         "force": "Die 13. Legion",
-        "campName": "Hyperboreisches Imperium"
+        "campName": "Hyperboreisches Imperium",
+        "intronEffects": [
+          "Beim Erleiden von Schaden durch [Göttliche Herrschaft] und [Bestrafung der Legion] wird das Schadensübertragungsverhältnis der [Chaotischen Donnerkugel] um #3 erhöht.",
+          "Die Obergrenze von [Kraft des Donners] wird auf 600 Punkte erhöht. Jeder Punkt von [Kraft des Donners] erhöht den Schaden von [Bestrafung der Legion] um #1. Jeder Punkt von [Kraft des Donners] erhöht zudem das Schadensübertragungsverhältnis der [Chaotischen Donnerkugel] um #2.",
+          "Stufe von [Göttliche Herrschaft] +2; Stufe von [Kraft des Donners] +1.",
+          "Wenn [Bestrafung der Legion] Schaden verursacht, besteht eine Chance von #6, seinen Effekt einmal auszulösen.",
+          "Stufe von [Sturmrufer] +2; Stufe von [Kraft des Donners] +1.",
+          "Wenn ein Gegner zum ersten Mal mit der [Chaotischen Donnerkugel] verbunden ist, verursacht Sibylle bei diesem Ziel zusätzlich einmal [Bestrafung der Legion]-SCH mit 500 % des Basismultiplikators, wodurch der Elektro-Bonuseffekt garantiert ausgelöst wird."
+        ]
       },
       "EN": {
         "name": "Sibylle",
         "subtitle": "The Jackdaw",
         "birthday": "Hyperborean Empire",
         "force": "The 13th Legion",
-        "campName": "The Hyperborean Empire"
+        "campName": "The Hyperborean Empire",
+        "intronEffects": [
+          "When taking damage from [Divine Conqueror] and [Legion's Punishment], [Chaotic Thunderorb]'s damage taken transfer ratio is increased by #3.",
+          null,
+          "[Divine Conqueror] Level +2; [Might of Thunder] Level +1.",
+          "When [Legion's Punishment] deals damage, there is a #6 chance to trigger its effect once.",
+          "[Stormcaller] Level +2; [Might of Thunder] Level +1.",
+          "When an enemy is linked to the [Summon: Chaotic Thunderorb] for the first time, [Sibylle] deals an additional instance of [Legion's Punishment] damage to that target at 500% of the base multiplier, guaranteed to trigger the Electro bonus effect."
+        ]
       },
       "ES": {
         "name": "Sibylle",
         "subtitle": "La Grajilla",
         "birthday": "Imperio Hiperbóreo",
         "force": "La 13.ª Legión",
-        "campName": "Imperio Hiperbóreo"
+        "campName": "Imperio Hiperbóreo",
+        "intronEffects": [
+          "Al recibir daño de [Conquistador Divino] y [Castigo de Legión], la proporción de transferencia de daño de [Orbe Trueno de Caótico] aumenta en #3.",
+          "Aumenta el límite de puntos de [Poder del Trueno] a 600. Cada punto de [Poder del Trueno] aumenta el daño de [Castigo de Legión] en #1. Cada punto de [Poder del Trueno] aumenta la proporción de transferencia de daño de [Orbe Trueno de Caótico] en #2.",
+          "[Conquistador Divino] nivel +2; [Poder del Trueno] nivel +1.",
+          "Cuando [Castigo de Legión] inflige daño, hay una probabilidad de activación de #6 de activar su efecto una vez más.",
+          "[Invocador de Tormentas] nivel +2; [Poder del Trueno] nivel +1.",
+          "Cuando un enemigo se vincula a la [Orbe Trueno de Caótico] por primera vez, [Sibylle] inflige una instancia adicional de daño de [Castigo de Legión] al 500% del valor base, activando automáticamente el Efecto Adicional Electro."
+        ]
       },
       "FR": {
         "name": "Sibylle",
         "subtitle": "La Corneille",
         "birthday": "Empire Hyperboréen",
         "force": "XIIIᵉ Légion",
-        "campName": "Empire Hyperboréen"
+        "campName": "Empire Hyperboréen",
+        "intronEffects": [
+          "Lorsque [Orbe chaotique] subit les dégâts d’[Usurpation divine] ou [Châtiment de la Légion], son taux de transfert de dégâts augmente de #3.",
+          "Limite de point de [Puissance foudroyante] augmenté à 600. Chaque point augmente les Dégâts de [Châtiment de la Légion] de #1. Chaque point augmente le taux de transfert de dégâts de l’[Orbe chaotique] de #2.",
+          "[Usurpation divine] niveau +2 ; [Puissance foudroyante] niveau +1.",
+          "À chaque fois que [Châtiment de la Légion] inflige des dégâts, a #6 de chance de déclencher l’effet une fois supplémentaire.",
+          "[Appel de la tempête] niveau +2 ; [Puissance foudroyante] niveau +1.",
+          "Lorsqu’un ennemi est lié pour la première fois à [Invocation : Orbe chaotique], [Sibylle] lui inflige une instance supplémentaire de dégâts de [Châtiment de la Légion] à 500 % de la valeur de base, déclenchant automatiquement l’Effet supplémentaire Électro."
+        ]
       },
       "JP": {
         "name": "シビル",
         "subtitle": "カラス",
         "birthday": "ヒュペリア帝国",
         "force": "帝国軍第十三軍団",
-        "campName": "ヒュペリア帝国"
+        "campName": "ヒュペリア帝国",
+        "intronEffects": [
+          "「召喚ユニット・サンダーボール」が「エクスディウム」もしくは「軍団懲戒」からのダメージを受けると、リンクされた敵へのダメージ伝達率が#3アップ。",
+          "「雷霆万鈞」の上限が600までアップする。「軍団懲戒」がダメージを与える時、「雷霆万鈞」1ptごとにダメージが#1アップする。また、「召喚ユニット‐サンダーボール」がダメージを伝達する時、「雷霆万鈞」1ptごとにダメージ伝達率が#2アップする。",
+          "「エクスディウム」Lv.+2、「雷霆万鈞」Lv.+1。",
+          "「軍団懲戒」がダメージを与えるたびに、#6の確率で再度発動できる。",
+          "「指先の嵐」Lv.+2、「雷霆万鈞」Lv.+1。",
+          "「召喚ユニット・サンダーボール」が敵をリンクした時、初めてリンクされる目標には「シビル」が追加で「軍団懲戒」ダメージを1回与える、ダメージ倍率は元の500%で、また必ず雷属性追加効果を発動する。"
+        ]
       },
       "KR": {
         "name": "시빌라",
         "subtitle": "갈까마귀",
         "birthday": "휘페르보레아 제국",
         "force": "제13군단",
-        "campName": "휘페르보레아 제국"
+        "campName": "휘페르보레아 제국",
+        "intronEffects": [
+          "[소환물·혼돈의 번개구]가 [신의 권력]과 [군단 징벌]의 대미지를 입을 때, 대미지 전달 비율이 #3 증가한다.",
+          "[만물의 힘] 상한이 600까지 증가한다. [군단 징벌]이 대미지를 입힐 시, [만물의 힘] 1당 [군단 징벌]의 대미지가 #1 상승한다. [소환물·혼돈의 번개구]가 대미지를 전달할 때, [만물의 힘] 1당 [소환물·혼돈의 번개구]의 대미지 전달 비율이 #2 증가한다.",
+          "[신의 권력] 레벨+2, [만물의 힘] 레벨+1.",
+          "[군단 징벌]이 대미지를 입힐 때마다, #6 확률로 1회 더 발동한다.",
+          "[거센 폭풍] 레벨+2, [만물의 힘] 레벨+1.",
+          "[소환물·혼돈의 번개구]가 적 연결 시, 해당 대상이 처음으로 연결될 경우, [시빌라]가 대상에게 [군단 징벌] 대미지를 1회 입힌다(기존 배율의 500%). 반드시 번개 속성 추가 효과를 발동한다."
+        ]
       },
       "TC": {
         "name": "西比爾",
         "subtitle": "寒鴉",
         "birthday": "海伯利亞帝國",
         "force": "第十三軍團",
-        "campName": "海伯利亞帝國"
+        "campName": "海伯利亞帝國",
+        "intronEffects": [
+          "「召喚物·紊亂雷球」受到「奪神權柄」和「軍團懲戒」的傷害時，傷害傳遞比例增加#3。",
+          "「萬鈞之勢」上限增加至600點，「軍團懲戒」造成傷害時，每有1點「萬鈞之勢」令「軍團懲戒」的傷害提高#1；「召喚物·紊亂雷球」傳遞傷害時，每有1點「萬鈞之勢」令「召喚物·紊亂雷球」傳遞傷害的比例增加#2。",
+          "「奪神權柄」等級+2，「萬鈞之勢」等級+1。",
+          "「軍團懲戒」每次造成傷害時，#6概率再觸發一次。",
+          "「指尖風暴」等級+2，「萬鈞之勢」等級+1。",
+          "[召喚物·紊亂雷球]鏈接敵人時，如果該目標為首次被鏈接，[西比爾]對目標額外造成1次[軍團懲戒]傷害，倍率為原倍率的500%，且必定觸發雷屬性額外效果。"
+        ]
       }
     }
   },
@@ -2739,6 +3652,26 @@
         "resourceId": 1004201,
         "resourceNum": 30
       }
+    ],
+    "intronDescriptionKeys": [
+      "GRADEUP_4201_01",
+      "GRADEUP_4201_02",
+      "GRADEUP_4201_03",
+      "GRADEUP_4201_04",
+      "GRADEUP_4201_05",
+      "GRADEUP_4201_06"
+    ],
+    "intronParameters": [
+      "$#Buff[420113].AddAttrs[2].Value/100$",
+      "$#Buff[420113].AddAttrs[1].Rate*100$%",
+      "$#SkillEffects[420142].TaskEffects[1].LastTime$",
+      "$#PassiveEffect[420101].Vars.Grade4BonusRate*100$%",
+      "$#Buff[420104].AddAttrs[1].SupLimitValue*100$%",
+      "$#Buff[420141].AddAttrs[1].Value*100$%",
+      "$#PassiveEffect[420103].Vars.Grade6Count$",
+      "$#SkillEffects[420124].TaskEffects[1].Rate/#SkillEffects[420123].TaskEffects[1].Rate*100$%",
+      "$#SkillEffects[420145].TaskEffects[1].Rate/#SkillEffects[420124].TaskEffects[1].Rate*100$%",
+      "$#PassiveEffect[420101].Vars.Grade6CD$"
     ],
     "baseStats": {
       "atk": 22,
@@ -2840,49 +3773,105 @@
         "subtitle": "Sündenloser Gefangener",
         "birthday": "Huaxu",
         "force": "Magistrat von Yingtian",
-        "campName": "Huaxu"
+        "campName": "Huaxu",
+        "intronEffects": [
+          "Während [Xuanjiao-Besessenheit] gewährt jeder [Stürzende Gewitterfall] 1 zusätzliche [Widerschuppe]. Der Einsatz von [Milchstraßensturz] erhöht außerdem die Waffenreichweite um #1 und die Fähigkeitsreichweite um #2 für sich selbst und Verbündete für #3 Sek.",
+          "Der SCH des [Fisch-Drachen-Tanzes] wird auf #8 seines Basis-SCH erhöht.",
+          "Stufe von [Stürzender Gewitterfall] +2; Stufe von [Himmelsgebrüll] +1.",
+          "Sturzangriff verursacht zusätzlichen SCH in Höhe von #4 des Yumings Fähigkeits-SCH, bis zu #5.",
+          "Stufe von [Düsterschuppen] +2; Stufe von [Himmelsgebrüll] +1.",
+          "[Sternenlichtabstieg] und [Milchstraßensturz] verursachen #6 mehr Schaden bei Zielen, die mit [Donnernder Ansturm] belegt sind. Der Einsatz von [Milchstraßensturz] stellt #7 der SCH-Absorption von [Xuanjiao] wieder her."
+        ]
       },
       "EN": {
         "name": "Yuming",
         "subtitle": "Sinless Cagedman",
         "birthday": "Huaxu",
         "force": "Magistrates of Yingtian",
-        "campName": "Huaxu"
+        "campName": "Huaxu",
+        "intronEffects": [
+          "While in [Xuanjiao Manifest], each [Precipitous Thunderfall] grants 1 extra [Reverse Scale]. Using [Starstorm Descent] also increases Weapon Attack Range by #1 and Skill Range by #2 for self and allies, lasting #3s.",
+          "[Thunderous Onslaught] deals #8 of its base damage.",
+          "[Precipitous Thunderfall] Level +2; [Soaring Sky-High] Level +1.",
+          "Plunging Attack deals additional Electro damage equal to #4 of Yuming's Skill Intensity, with a maximum of #5.",
+          "[Grimscales] Level +2; [Soaring Sky-High] Level +1.",
+          "During [Xuanjiao Manifest], increases PEN stats by #6. After triggering [Thunderous Onslaught] #7 times, deals an additional instance of [Thunderous Onslaught] damage at #9 of its original multiplier to all targets affected. Can trigger once every #10s."
+        ]
       },
       "ES": {
         "name": "Yuming",
         "subtitle": "Prisionero Inocente",
         "birthday": "Huaxu",
         "force": "Magistrado de Yingtian",
-        "campName": "Huaxu"
+        "campName": "Huaxu",
+        "intronEffects": [
+          "Durante [Encarnación de Xuanjiao], cada [Caída del Trueno Precipitosa] otorga 1 [Escama Inversa] adicional. Usar [Descenso de Tormenta Estelar] también aumenta el Rango de Ataque del arma en #1 y el Rango de Habilidad en #2 para sí mismo y sus aliados durante #3 s.",
+          "[Embestida Estruendosa] inflige #8 de su daño base.",
+          "[Caída del Trueno Precipitosa] nivel +2; [Ascenso Celestial] nivel +1.",
+          "El Ataque Descendente inflige daño Electro adicional equivalente a #4 del Daño de Habilidad de Yuming, con un máximo de #5.",
+          "[Escamas Sombrías] nivel +2; [Ascenso Celestial] nivel +1.",
+          "Durante el estado [Manifiesto del Dragón Oscuro], la Penetración de todos los Atributos aumenta en #6. Después de activar [Embestida Estruendosa] #7 veces, inflige un daño adicional de [Embestida Estruendosa] al #9 de su multiplicador original a todos los objetivos afectados. Se puede activar una vez cada #10 s."
+        ]
       },
       "FR": {
         "name": "Yuming",
         "subtitle": "L’Éclair Entravé",
         "birthday": "Huaxu",
         "force": "Magistrat de Yingtian",
-        "campName": "Huaxu"
+        "campName": "Huaxu",
+        "intronEffects": [
+          "Pendant l’état [Éveil de Xuanjiao], chaque [Chute foudroyante] octroie une [Écaille inversée] supplémentaire.\nL’utilisation de [Fracas astral] augmente la Portée d’attaque d’arme de #1 et la Portée de compétence de #2 pour vous et vos alliés, pendant #3 s.",
+          "[Fureur foudroyante] inflige désormais #8 de ses dégâts de base.",
+          "[Chute foudroyante] niveau +2 ; [Effleurer les cieux] niveau +1.",
+          "Les Attaques plongeantes au corps à corps infligent des Dégâts Électro supplémentaires équivalents à #4 de la Puissance de compétence de Yuming, jusqu’à un maximum de #5.",
+          "[Écailles sinistres] niveau +2 ; [Effleurer les cieux] niveau +1.",
+          "Sous l’état [Éveil de Xuanjiao], la Pénétration de tous les Attributs augmente de #6.\nAprès avoir déclenché cumulativement #7 effets de dégâts de [Fureur foudroyante], une instance supplémentaire de dégâts de [Fureur foudroyante], équivalente à son multiplicateur initial de #9, est infligée à toutes les cibles affectées. Cet effet ne peut être déclenché qu’une fois toutes les #10 s."
+        ]
       },
       "JP": {
         "name": "ユーミン",
         "subtitle": "罪なき囚人",
         "birthday": "華胥",
         "force": "応天尉",
-        "campName": "華胥"
+        "campName": "華胥",
+        "intronEffects": [
+          "「ミズチ憑依」状態では、「玉山崩れ」を発動するたびに追加で1枚の「逆鱗」を得る。「星川凋零」を発動する時、#3秒間追加で自身および近くにいる味方の武器攻撃範囲を#1、スキル範囲を#2アップさせる。",
+          "「酣戦」のダメージ倍率がもとの#8に上昇。",
+          "「玉山崩れ」Lv.+2、「玄穹蕩揺」Lv.+1。",
+          "落下攻撃の雷属性追加ダメージを得る。ダメージ数値はスキル威力の#4（最大#5まで）。",
+          "「清暗龍鱗」Lv.+2、「玄穹蕩揺」Lv.+1。",
+          "「ミズチ憑依」状態では、全属性貫通が#6アップする。「酣戦」のダメージ効果を累計#7回発動させると、[酣戦]状態の全ての敵に追加で元の倍率の#9の[酣戦]ダメージを1回与える。この効果は#10秒ごとに1回のみ発動できる。"
+        ]
       },
       "KR": {
         "name": "욱명",
         "subtitle": "죄 없는 죄수",
         "birthday": "화서",
         "force": "응천위",
-        "campName": "화서"
+        "campName": "화서",
+        "intronEffects": [
+          "[현교 빙의] 상태에서 [옥산붕]을 시전할 때마다 추가로 [역린] 1개를 획득한다. [적막한 은하수] 시전 시 추가로 자신과 팀원에게 무기 공격 범위 #1 상승 및 스킬 범위 #2 상승 효과를 부여한다. 지속 시간 #3초.",
+          "[열전]의 대미지 배율이 기존 대미지의 #8까지 상승한다.",
+          "[옥산붕] 레벨+2, [천공의 손길] 레벨+1",
+          "근접 낙하 공격 시 번개 속성 추가 대미지를 획득한다. (자신의 스킬 위력의 #4, 상한 #5)",
+          "[어둠의 비늘] 레벨+2, [천공의 손길] 레벨+1",
+          "[현교 빙의] 상태에서 모든 속성 관통이 #6 상승한다. [열전] 대미지 효과가 누적 #7회 발동될 시, [열전]을 보유한 모든 대상에게 기존 배율 #9만큼의 [열전] 대미지를 추가로 입힌다. 효과는 #10초당 최대 1회 발동된다."
+        ]
       },
       "TC": {
         "name": "煜明",
         "subtitle": "無罪囚徒",
         "birthday": "華胥",
         "force": "應天尉",
-        "campName": "華胥"
+        "campName": "華胥",
+        "intronEffects": [
+          "[玄蛟附身]狀態中，每次釋放[玉山崩]時，額外獲得1枚[逆鱗]。釋放[星河寥落]時額外為自身和隊友附加武器攻擊範圍提高#1和技能範圍提高#2的效果，持續#3秒。",
+          "[酣戰]傷害倍率提高至原本的#8。",
+          "「玉山崩」等級+2，「拂玄穹」等級+1。",
+          "自身獲得近戰下落攻擊雷屬性追加傷害，數值為自身技能威力的#4，上限#5。",
+          "「濯暗鱗」等級+2，「拂玄穹」等級+1。",
+          "[玄蛟附身]狀態中，全屬性穿透提高#6。累計觸發#7次[酣戰]傷害效果後，對所有帶有[酣戰]的目標額外造成1次原本倍率#9的[酣戰]傷害，效果每#10秒最多觸發1次。"
+        ]
       }
     }
   },
@@ -2941,6 +3930,22 @@
         "resourceId": 1003101,
         "resourceNum": 30
       }
+    ],
+    "intronDescriptionKeys": [
+      "GRADEUP_3101_01",
+      "GRADEUP_3101_02",
+      "GRADEUP_3101_03",
+      "GRADEUP_3101_04",
+      "GRADEUP_3101_05",
+      "GRADEUP_3101_06"
+    ],
+    "intronParameters": [
+      "$#Buff[310121].BuffDamagedRate.Value*(-100)$%",
+      "$#PassiveEffect[310101].Vars.Grade4HpBelow*100$%",
+      "$#PassiveEffect[310101].Vars.Grade4BuffRate*100$%",
+      "$#Buff[310141].AddAttrs[1].Value*100$%",
+      "$#PassiveEffect[310101].Vars.Grade1LastTime$",
+      "$#PassiveEffect[310101].Vars.Grade6DebuffLastTime$"
     ],
     "baseStats": {
       "atk": 23,
@@ -3079,49 +4084,105 @@
         "subtitle": "Ruheloser Belagerung",
         "birthday": "Hyperboreisches Imperium",
         "force": "Die 13. Legion",
-        "campName": "Hyperboreisches Imperium"
+        "campName": "Hyperboreisches Imperium",
+        "intronEffects": [
+          "Gewährt 6 Stapelungen [Vorladen] bei Kampfbeginn Erhöht die Moral um #4 für #5 Sek.",
+          "Während [Pulverrausch] verringert sich der erlittene SCH um #1 und das Intervall des Erhalts der Erhöhung der Angriffs-GES verkürzt sich auf 0,06 Sek.",
+          "Stufe von [Tödliche Blüte] +2; Stufe von [Taktisches Schnellfeuer] +1.",
+          "Erhöht den Schaden, der an Zielen mit einem LP-Prozentsatz unter #3 verursacht wird, um #4.",
+          "Stufe von [Pulverrausch] +2; Stufe von [Taktisches Schnellfeuer] +1.",
+          "Wenn während [Pulverrausch] mit [Hansel und Gretel] der Bonuseffekt ausgelöst wird, wird das Ziel für #6 Sek. mit [Risswunde] belegt."
+        ]
       },
       "EN": {
         "name": "Lynn",
         "subtitle": "Restless Siege",
         "birthday": "Hyperborean Empire",
         "force": "The 13th Legion",
-        "campName": "The Hyperborean Empire"
+        "campName": "The Hyperborean Empire",
+        "intronEffects": [
+          "Grants 6 stacks of [Preload] when battle starts, and increases Morale by #4 for #5s.",
+          "During [Gunpowder Revelry], reduces Damage Taken by #1, and decreases the interval of gaining the ATK Speed boost to 0.06s.",
+          "[Deadly Blossom] Level +2; [Tactical Rapid Fire] Level +1.",
+          "Increases damage dealt to targets with a HP percentage lower than #2 by #3.",
+          "[Gunpowder Revelry] Level +2; [Tactical Rapid Fire] Level +1.",
+          "During [Gunpowder Revelry], when triggering Bonus Effect using [Hansel and Gretel], inflicts [Laceration] on the target(s) for #6s."
+        ]
       },
       "ES": {
         "name": "Lynn",
         "subtitle": "Asedio Inquieto",
         "birthday": "Imperio Hiperbóreo",
         "force": "La 13.ª Legión",
-        "campName": "Imperio Hiperbóreo"
+        "campName": "Imperio Hiperbóreo",
+        "intronEffects": [
+          "Obtiene 6 acumulaciones de [Precarga] al entrar en combate. Además, Moral +#4 durante #5 s.",
+          "Durante [Festejo de Pólvora], reduce el Daño Recibido en #1 y el intervalo para ganar Velocidad de Ataque baja a 0,06 s.",
+          "[Flor Mortal] nivel +2; [Disparo Rápido Táctico] nivel +1.",
+          "Aumenta el daño infligido a objetivos con un porcentaje de PV inferior a #2 en #3.",
+          "[Festejo de Pólvora] nivel +2; [Disparo Rápido Táctico] nivel +1.",
+          "Durante [Festejo de Pólvora], al activar el efecto extra con [Hansel y Gretel], aplica [Laceración] al objetivo durante #6 s."
+        ]
       },
       "FR": {
         "name": "Lynn",
         "subtitle": "Gâchette Ardente",
         "birthday": "Empire Hyperboréen",
         "force": "XIIIᵉ Légion",
-        "campName": "Empire Hyperboréen"
+        "campName": "Empire Hyperboréen",
+        "intronEffects": [
+          "En entrant en combat, accorde 6 cumuls de [Préchargement].\nAugmente aussi la Vigueur de #4 pendant #5 s.",
+          "Pendant [Ballet explosif], réduit les dégâts subis de #1 et réduit l’intervalle d’obtention des cumuls de Vitesse d’attaque à 0,06 s.",
+          "[Floraison fatale] niveau +2 ; [Rafale tactique] niveau +1.",
+          "Augmente les dégâts infligés aux cibles dont le pourcentage de PV est inférieur à #2 de #3.",
+          "[Ballet explosif] niveau +2 ; [Rafale tactique] niveau +1.",
+          "Pendant [Ballet explosif], lorsque [Hansel et Gretel] déclenchent un Effet supplémentaire, la cible est affectée par [Lacération] pendant #6 s."
+        ]
       },
       "JP": {
         "name": "リーン",
         "subtitle": "封じ込められた衝動",
         "birthday": "ヒュペリア帝国",
         "force": "帝国軍第十三軍団",
-        "campName": "ヒュペリア帝国"
+        "campName": "ヒュペリア帝国",
+        "intronEffects": [
+          "戦闘開始時、「予装填」を6トークン獲得し、同時に高揚が#4アップ。この効果は#5秒持続。",
+          "「バスターストレージ」持続中、被ダメージが#1ダウン。射撃持続中の攻撃速度アップの発動間隔が0.06秒に短縮される。",
+          "「リーサルブルーム」Lv.+2、「ファストショット」Lv.+1。",
+          "最大HPに対する残りHP比率が#3未満の対象に対して、与ダメージが#4アップする。",
+          "「バスターストレージ」Lv.+2、「ファストショット」Lv.+1。",
+          "「バスターストレージ」発動中に「ヘンゼル＆グレーテル」による攻撃で追加効果を発動すると、対象に「裂傷」効果を付加、#6秒持続。"
+        ]
       },
       "KR": {
         "name": "린",
         "subtitle": "봉쇄된 폭동",
         "birthday": "휘페르보레아 제국",
         "force": "제13군단",
-        "campName": "휘페르보레아 제국"
+        "campName": "휘페르보레아 제국",
+        "intronEffects": [
+          "전투 개시 시 [예비 장전] 6단계를 획득하고, 격양 #4 상승 효과를 획득한다. \n지속 시간 #5초.",
+          "[화약 행사] 지속 기간 동안 받는 대미지가 #1 감소하고, 공격 속도 상승의 중첩 간격이 0.06초로 감소한다.",
+          "[치명적 만개] 레벨+2, [전술 속사] 레벨+1",
+          "HP 비율이 #2보다 낮은 대상에게 입히는 대미지 #3 상승.",
+          "[화약 행사] 레벨+2, [전술 속사] 레벨+1",
+          "[화약 행사] 기간 동안 [헨젤과 그레텔]을 사용하여 추가 효과 발동 시 대상에게 [찢어짐]을 부여한다. 지속 시간 #6초."
+        ]
       },
       "TC": {
         "name": "琳恩",
         "subtitle": "封鎖的躁動",
         "birthday": "海伯利亞帝國",
         "force": "第十三軍團",
-        "campName": "海伯利亞帝國"
+        "campName": "海伯利亞帝國",
+        "intronEffects": [
+          "進入戰鬥時，獲得6層「預裝填」。同時獲得昂揚提高#4，持續#5秒。",
+          "「火藥酬賓」持續期間受到的傷害降低#1，攻擊速度提高的疊加間隔降低至0.06秒。",
+          "「致命綻放」等級+2，「戰術速射」等級+1。",
+          "對生命值百分比低於#2的目標，造成的傷害提高#3。",
+          "「火藥酬賓」等級+2，「戰術速射」等級+1。",
+          "「火藥酬賓」期間使用「漢塞爾與格雷特」觸發額外效果時為目標附加「裂傷」，持續#6秒。"
+        ]
       }
     }
   },
@@ -3180,6 +4241,20 @@
         "resourceId": 1002101,
         "resourceNum": 30
       }
+    ],
+    "intronDescriptionKeys": [
+      "GRADEUP_2101_01",
+      "GRADEUP_2101_02",
+      "GRADEUP_2101_03",
+      "GRADEUP_2101_04",
+      "GRADEUP_2101_05",
+      "GRADEUP_2101_06"
+    ],
+    "intronParameters": [
+      "$#PassiveEffect[210101].Vars.Grade4DamagedRate*100$%",
+      "$#Buff[210121].AddAttrs[1].Rate*100$%",
+      "$#Buff[210121].MaxLayer$",
+      "$#PassiveEffect[210101].Vars.Grade6LastTime$"
     ],
     "baseStats": {
       "atk": 25,
@@ -3281,49 +4356,105 @@
         "subtitle": "Aurelia-Affinität",
         "birthday": "Republik Luca",
         "force": "Unabhängig",
-        "campName": "Republik Luca"
+        "campName": "Republik Luca",
+        "intronEffects": [
+          "Beim Auslösen des Bonuseffekts wird das Ziel mit 1 zusätzlicher Stapelung [Gift der Liebe] belegt.",
+          "Erhöht die maximale Anzahl von [Aurelia Aurita], die auf dem Feld erlaubt sind, auf 5, und die Stapelung-Obergrenze von [Gift der Liebe] auf 8.",
+          "Stufe von [Aurelische Berührung] +2; Stufe von [Prüfung der wahren Liebe] +1.",
+          "Erleidet #1 weniger Schaden durch Ziele, die mit [Gift der Liebe] belegt sind.",
+          "Stufe von [Ladas Liebestau] +2; Stufe von [Prüfung der wahren Liebe] +1.",
+          "Wenn ein Ziel, das mit [Gift der Liebe] belegt ist, besiegt wird, erhöht sich Rebeccas ANG um #2 für #4 Sek., bis zu #3‑mal stapelbar. Die Dauer des Effekts wird bei jeder neuen Stapelung aktualisiert."
+        ]
       },
       "EN": {
         "name": "Rebecca",
         "subtitle": "Aurelia Affinity",
         "birthday": "Republic of Luca",
         "force": "Unaffiliated",
-        "campName": "Republic of Luca"
+        "campName": "Republic of Luca",
+        "intronEffects": [
+          "When triggering Bonus Effect, inflicts 1 additional stack of [Poison of Love] on the target.",
+          "Increases the maximum number of [Aurelia Aurita] allowed on the field to 5 and the stack cap of [Poison of Love] to 8.",
+          "[Aurelian Caress] Level +2; [Truelove Trial] Level +1.",
+          "Takes #1 less damage from targets inflicted with [Poison of Love].",
+          "[Lada Lovedew] Level +2; [Truelove Trial] Level +1.",
+          "When defeating a target inflicted with [Poison of Love], Rebecca gains 1 stack that increases Attack by #2 for #4s, up to #3 stacks. The remaining time of the effect is refreshed with each new stack gained."
+        ]
       },
       "ES": {
         "name": "Rebecca",
         "subtitle": "Afinidad Aurelia",
         "birthday": "República de Luca",
         "force": "No afiliado",
-        "campName": "República de Luca"
+        "campName": "República de Luca",
+        "intronEffects": [
+          "Al activar un efecto adicional, aplica 1 acumulación adicional de [Veneno de Amor].",
+          "Aumenta el máximo simultáneo de [invocación: Aurelia Aurita] a 5 y el límite de acumulaciones de [Veneno de Amor] a 8.",
+          "[Caricia Aureliana] nivel +2; [Prueba del Verdadero Amor] nivel +1.",
+          "El daño recibido de objetivos con [Veneno de Amor] se reduce en #1.",
+          "[Néctar de Eros] nivel +2; [Prueba del Verdadero Amor] nivel +1.",
+          "Al derrotar a un objetivo con [Veneno de Amor], Rebecca obtiene 1 acumulación de ATQ +#2 durante #4s, hasta #3 acumulaciones; al acumular, la duración se restablece."
+        ]
       },
       "FR": {
         "name": "Rebecca",
         "subtitle": "Méduse Sentimentale",
         "birthday": "République de Luca",
         "force": "Aucune affiliation",
-        "campName": "République de Luca"
+        "campName": "République de Luca",
+        "intronEffects": [
+          "Lorsqu’un Effet supplémentaire est déclenché, applique 1 cumul additionnel de [Venin de l’amour].",
+          "Le nombre maximal d’[Aurelia] passe à 5, et le plafond de cumuls de [Venin de l’amour] passe à 8.",
+          "[Caresse d’Aurelia] niveau +2 ; [Épreuve d’Amour Pur] niveau +1.",
+          "Réduit les dégâts subis de la part des ennemis affectés par [Venin de l’amour] de #1.",
+          "[Rosée de Lada] niveau +2 ; [Jugement du cœur] niveau +1.",
+          "Lorsque Rebecca vainc une cible affectée par [Venin de l’amour], elle gagne 1 cumul conférant +#2 d’Attaque pendant #4 s, jusqu’à #3 cumuls.\nL’obtention d’un nouveau cumul réinitialise la durée restante."
+        ]
       },
       "JP": {
         "name": "レベッカ",
         "subtitle": "純愛のトゲ",
         "birthday": "ルッカ共和国",
         "force": "なし",
-        "campName": "ルッカ共和国"
+        "campName": "ルッカ共和国",
+        "intronEffects": [
+          "追加効果を発動すると「愛の毒」1トークンを追加で付加。",
+          "「召喚ユニット‐クラゲ」がフィールドに同時に存在できる数が最大5匹まで、「愛の毒」の重ねがけできる回数が最大8回までになる。",
+          "「イシュタリア」Lv.+2、「純愛の試練」Lv.+1。",
+          "「愛の毒」を持つ対象からの被ダメージが#1ダウン。",
+          "「フレイヤの甘露」Lv.+2、「純愛の試練」Lv.+1。",
+          "「愛の毒」を持つ対象を撃破すると、1回につきレベッカの攻撃力が#2アップ、#4秒持続。この効果は最大#3回まで重ねがけ可能、重ねがけすると残り時間がリセットされる。"
+        ]
       },
       "KR": {
         "name": "레베카",
         "subtitle": "순수한 사랑의 독침",
         "birthday": "루카 공화국",
         "force": "없음",
-        "campName": "루카 공화국"
+        "campName": "루카 공화국",
+        "intronEffects": [
+          "추가 효과 발동 시 [사랑의 독] 1단계 추가 부여.",
+          "동시에 존재할 수 있는 [소환물·달의 해파리]가 최대 5개로 상승한다. [사랑의 독]의 최대 중첩 단계가 8단계로 상승한다.",
+          "[옭아매는 촉수] 레벨+2, [순애의 시련] 레벨+1",
+          "[사랑의 독]을 보유한 대상의 대미지가 #1 감소한다.",
+          "[큐피드의 이슬] 레벨+2, [순애의 시련] 레벨+1",
+          "[사랑의 독]을 보유한 대상 처치 시, 자신이 1단계의 공격 #2 상승 효과를 획득한다. 지속 시간 #4초, 최대 #3 단계 중첩. 중첩 시 남은 시간 리셋."
+        ]
       },
       "TC": {
         "name": "麗蓓卡",
         "subtitle": "純愛蜇刺",
         "birthday": "盧卡",
         "force": "無",
-        "campName": "盧卡共和國"
+        "campName": "盧卡共和國",
+        "intronEffects": [
+          "觸發額外效果時，額外附加1層「愛之毒」。",
+          "「召喚物·海月水母」同時最多存在數量提高至5個，「愛之毒」最多疊加層數提高至8層。",
+          "「纏綿之觸」等級+2，「純愛試煉」等級+1。",
+          "受到來自帶有「愛之毒」的目標的傷害降低#1。",
+          "「愛神蜜露」等級+2，「純愛試煉」等級+1。",
+          "擊敗帶有「愛之毒」的目標時，自身獲得1層攻擊提高#2，持續#4秒，最多疊加#3層，疊加時刷新剩餘時間。"
+        ]
       }
     }
   },
@@ -3352,6 +4483,8 @@
     "charPieceId": 1002102,
     "unlockRequiredPiece": 30,
     "intronLevels": [],
+    "intronDescriptionKeys": [],
+    "intronParameters": [],
     "baseStats": {
       "atk": 25,
       "atkGrowCurve": "ATKS",
@@ -3423,49 +4556,56 @@
         "subtitle": null,
         "birthday": null,
         "force": null,
-        "campName": "Republik Luca"
+        "campName": "Republik Luca",
+        "intronEffects": []
       },
       "EN": {
         "name": "Yvaine",
         "subtitle": null,
         "birthday": null,
         "force": null,
-        "campName": "Republic of Luca"
+        "campName": "Republic of Luca",
+        "intronEffects": []
       },
       "ES": {
         "name": "Yvaine",
         "subtitle": null,
         "birthday": null,
         "force": null,
-        "campName": "República de Luca"
+        "campName": "República de Luca",
+        "intronEffects": []
       },
       "FR": {
         "name": "Yvaine",
         "subtitle": null,
         "birthday": null,
         "force": null,
-        "campName": "République de Luca"
+        "campName": "République de Luca",
+        "intronEffects": []
       },
       "JP": {
         "name": "イブ",
         "subtitle": null,
         "birthday": null,
         "force": null,
-        "campName": "ルッカ共和国"
+        "campName": "ルッカ共和国",
+        "intronEffects": []
       },
       "KR": {
         "name": "이브",
         "subtitle": null,
         "birthday": null,
         "force": null,
-        "campName": "루카 공화국"
+        "campName": "루카 공화국",
+        "intronEffects": []
       },
       "TC": {
         "name": "伊薇",
         "subtitle": null,
         "birthday": null,
         "force": null,
-        "campName": "盧卡共和國"
+        "campName": "盧卡共和國",
+        "intronEffects": []
       }
     }
   },
@@ -3524,6 +4664,21 @@
         "resourceId": 1003102,
         "resourceNum": 30
       }
+    ],
+    "intronDescriptionKeys": [
+      "GRADEUP_3102_01",
+      "GRADEUP_3102_02",
+      "GRADEUP_3102_03",
+      "GRADEUP_3102_04",
+      "GRADEUP_3102_05",
+      "GRADEUP_3102_06"
+    ],
+    "intronParameters": [
+      "$#Buff[310205].BuffDamageRate.Value*(-100)$%",
+      "$#PassiveEffect[310201].Vars.Skill2DeDamageLastTime$",
+      "$#PassiveEffect[310201].Vars.Grade2InDamageRate*100$%",
+      "$#PassiveEffect[310202].Vars.Skill1IncreaseDamageLastTime$",
+      "$#Buff[310206].AddAttrs[1].Value*100$%"
     ],
     "baseStats": {
       "atk": 27,
@@ -3631,49 +4786,105 @@
         "subtitle": "Schützende Eleganz",
         "birthday": "Hyperboreisches Imperium",
         "force": "Unabhängig",
-        "campName": "Hyperboreisches Imperium"
+        "campName": "Hyperboreisches Imperium",
+        "intronEffects": [
+          "Erhöht Hildas Ausweichversuche um 2 und den Effekt [Elegante Wut] um 30 %.",
+          "Erhöht die Reichweite von [Hyperthermischer Reinigungsstrahl] um 50 %. Verursacht [Hyperthermischer Reinigungsstrahl] Schaden, wird das Ziel mit einem Effekt belegt, der den von Hilda verursachten Schaden um #3 für #4 Sek. erhöht.",
+          "Stufe von [Pyrolytische Reinigung] +2; Stufe von [Automatische Reinigung] +1.",
+          "Beim Einsatz von [Hingebungsvoller Service] werden 2 zusätzliche [Leichte Schmutzvertilger] beschworen und der vom Ziel verursachte SCH wird um #1 für #2 Sek. reduziert.",
+          "Stufe von [Hingebungsvoller Service] +2; Stufe von [Automatische Reinigung] +1.",
+          "Erhöht Hildas Durchschlag um #5 während [Pyrolytische Reinigung]."
+        ]
       },
       "EN": {
         "name": "Hilda",
         "subtitle": "Protective Elegance",
         "birthday": "Hyperborean Empire",
         "force": "Unaffiliated",
-        "campName": "The Hyperborean Empire"
+        "campName": "The Hyperborean Empire",
+        "intronEffects": [
+          "Increases Hilda's Dodge Attempts by 2 and the effect [Elegant Anger] grants by 30%.",
+          null,
+          "[Pyrolytic Cleaning] Level +2; [Automatic Sanitizing] Level +1.",
+          "When using [Wholehearted Service], summons 2 additional [Light Dirtexpellers], and decreases the target's damage by #1 for #2s.",
+          "[Wholehearted Service] Level +2; [Automatic Sanitizing] Level +1.",
+          "Increases Hilda's PEN stats by #5 during [Pyrolytic Cleaning]."
+        ]
       },
       "ES": {
         "name": "Hilda",
         "subtitle": "Elegancia Protectora",
         "birthday": "Imperio Hiperbóreo",
         "force": "No afiliado",
-        "campName": "Imperio Hiperbóreo"
+        "campName": "Imperio Hiperbóreo",
+        "intronEffects": [
+          "Aumenta los intentos de esquiva de Hilda en 2 y el efecto que otorga [Ira Elegante] en un 30%.",
+          "Aumenta la longitud de [Rayo Purificador Hipertermal] en un 50%. Cuando [Rayo Purificador Hipertermal] inflige daño, aplica un efecto al objetivo que aumenta el daño recibido de Hilda en #3 durante #4 s.",
+          "[Limpieza por Pirólisis] nivel +2; [Desinfección Automática] nivel +1.",
+          "Al usar [Servicio Dedicado], invoca 2 [Desempolvadores Ligeros] adicionales y reduce el daño infligido por el objetivo en #1 durante #2 s.",
+          "[Servicio Dedicado] nivel +2; [Desinfección Automática] nivel +1.",
+          "Aumenta la penetración de atributos de Hilda en #5 durante [Limpieza por Pirólisis]."
+        ]
       },
       "FR": {
         "name": "Hilda",
         "subtitle": "Grâce Protectrice",
         "birthday": "Empire Hyperboréen",
         "force": "Aucune affiliation",
-        "campName": "Empire Hyperboréen"
+        "campName": "Empire Hyperboréen",
+        "intronEffects": [
+          "Nombre d’esquives +2. [Colère raffinée] voit son efficacité augmentée de 30 %.",
+          "La portée des [Rayons incinérateurs] augmente de 50 %. Lorsqu’ils infligent des dégâts, la cible subit +#3 de dégâts provenant d’Hilda pendant #4 s.",
+          "[Nettoyage thermique] niveau +2 ; [Service automatique] niveau +1.",
+          "L’utilisation de [Dévotion armée] invoque 2 [Crassinators légers] supplémentaires et réduit les dégâts infligés par la cible de #1 pendant #2 s.",
+          "[Dévotion armée] niveau +2 ; [Service automatique] niveau +1.",
+          "Pendant [Nettoyage thermique], la Pénétration (tous attributs) d’Hilda est augmentée de #5."
+        ]
       },
       "JP": {
         "name": "ヒルダ",
         "subtitle": "優雅なるメイド",
         "birthday": "ヒュペリア帝国",
         "force": "なし",
-        "campName": "ヒュペリア帝国"
+        "campName": "ヒュペリア帝国",
+        "intronEffects": [
+          "回避回数+2、「華麗なる怒り」効果倍率30%アップ。",
+          "「高温洗浄フレイム」の長さが50%アップする。ダメージを与えると、その目標は#4秒間「ヒルダ」から受けるダメージが#3アップする。",
+          "「高温につきご注意を」Lv.+2、「自動清掃」Lv.+1。",
+          "「真心込めたご奉仕」を発動するたびに、追加で2台の「小型掃除機」を生成し、#2秒間目標に与える付加ダメージが#1ダウンする。",
+          "「真心込めたご奉仕」Lv.+2、「自動清掃」Lv.+1。",
+          "「高温につきご注意を」効果期間中、自身の全属性貫通が#5アップする。"
+        ]
       },
       "KR": {
         "name": "힐다",
         "subtitle": "고상한 몸놀림",
         "birthday": "휘페르보레아 제국",
         "force": "없음",
-        "campName": "휘페르보레아 제국"
+        "campName": "휘페르보레아 제국",
+        "intronEffects": [
+          "회피 횟수+2, [우아한 분노] 효과 배율 30% 증가.",
+          "[고온 정화 화염] 길이가 50% 상승한다. 대미지를 입힐 시 대상에게 [힐다]로부터 입은 대미지 #3 상승 효과를 부여한다. 지속 시간 #4초.",
+          "[고온 청소] 레벨+2, [자동 청소] 레벨+1",
+          "[정성스런 서비스] 시전 시, 추가로 2개의 [경량 청소기]를 생성하고, 대상에게 대미지 #1 감소를 부여한다. 지속 시간 #2초.",
+          "[정성스런 서비스] 레벨+2, [자동 청소] 레벨+1",
+          "[고온 청소] 지속 기간에, 자신은 모든 속성 관통 #5 상승."
+        ]
       },
       "TC": {
         "name": "希爾妲",
         "subtitle": "幽雅隨行",
         "birthday": "海伯利亞帝國",
         "force": "無",
-        "campName": "海伯利亞帝國"
+        "campName": "海伯利亞帝國",
+        "intronEffects": [
+          "閃避次數+2，「優雅怒意」效果倍率增加30%。",
+          "「高溫祛汙焰束」長度提高50%，造成傷害時為目標附加受到來自「希爾妲」的傷害提高#3效果，持續#4秒。",
+          "「高溫清掃」等級+2，「自動保潔」等級+1。",
+          "釋放「傾情服務」時，額外生成2座「輕型清掃機」，並對目標附加造成的傷害降低#1的效果，持續#2秒。",
+          "「傾情服務」等級+2，「自動保潔」等級+1。",
+          "「高溫清掃」持續期間，自身全屬性穿透提高#5。"
+        ]
       }
     }
   },
@@ -3732,6 +4943,22 @@
         "resourceId": 1005101,
         "resourceNum": 30
       }
+    ],
+    "intronDescriptionKeys": [
+      "GRADEUP_5101_01",
+      "GRADEUP_5101_02",
+      "GRADEUP_5101_03",
+      "GRADEUP_5101_04",
+      "GRADEUP_5101_05",
+      "GRADEUP_5101_06"
+    ],
+    "intronParameters": [
+      "$#PassiveEffect[510101].Vars.Grade2AddAtk*100$%",
+      "$#PassiveEffect[510101].Vars.Grade2BuffTime$",
+      "$#Buff[510105].AddAttrs[1].Rate*100$%",
+      "$#PassiveEffect[510101].Vars.Grade6LastTime$",
+      "$#Buff[510104].AddAttrs[1].SupLimitValue$",
+      "$#Buff[510105].MaxLayer$"
     ],
     "baseStats": {
       "atk": 12,
@@ -3838,49 +5065,105 @@
         "subtitle": "Hopp Hopp, Kommissarin!",
         "birthday": "Die Elysische Kirche",
         "force": "Die Elysische Kirche",
-        "campName": "Die Elysische Kirche"
+        "campName": "Die Elysische Kirche",
+        "intronEffects": [
+          "Reduziert die Verlust-GES von [Arbeitsleidenschaft] um 50 %.",
+          "Beim Einsatz einer Fähigkeit wird der ANG der Verbundeten um #1 der Truffles max. LP für #2 Sek erhöht, bis zu #5.",
+          "Stufe von [Huf-Getrappel] 2; Stufe von [Hopp Hopp, Kommissarin!] +1.",
+          "Erhöht die Stapelung-Obergrenze von [Schwergewicht] auf 20. Wenn Truffle auf Filbert aufsteigt, werden 20 Stapelungen [Schwergewicht] erhalten.",
+          "Stufe von [Voller Bauch, volle Hände] +2; Stufe von [Hopp Hopp, Kommissarin!] +1.",
+          "Nach dem Aufnehmen von [Aktiviertes Sal Volatil], [Beruhigungstautropfen] oder [Munitionskiste] wird Truffles Fähigkeits-SCH um #3 für #4 Sek. erhöht, bis zu #6-mal stapelbar."
+        ]
       },
       "EN": {
         "name": "Truffle and Filbert",
         "subtitle": "Chop-Chop, Commissaries!",
         "birthday": "The Elysian Church",
         "force": "The Elysian Church",
-        "campName": "The Elysian Church"
+        "campName": "The Elysian Church",
+        "intronEffects": [
+          "Decreases the losing speed of [Passion For Work] by 50%.",
+          "When using a skill, applies an Attack boost equivalent to #1 of Truffle's Max HP to her teammates for #2s, with a maximum boost of #5.",
+          "[Trotters Trot-Trot] Level +2; [Chop-Chop, Commissaries!] Level +1.",
+          "Increases the stack cap of [Heavyweight] to 20. When Truffle starts mounting [Filbert], gains 20 stacks of [Heavyweight].",
+          "[Tummy Full, Hands Full] Level +2; [Chop-Chop, Commissaries!] Level +1.",
+          "After picking up [Activated Sal Volatile], [Tranquilizer Dewdrop], or [Ammo Supply Chest], Truffle gains 1 stack that increases her Skill Intensity by #3 for #4s, up to #6 stacks."
+        ]
       },
       "ES": {
         "name": "Truffle y Filbert",
         "subtitle": "¡A por todas, Comisarias!",
         "birthday": "Iglesia Elysiana",
         "force": "Iglesia Elysiana",
-        "campName": "Iglesia Elysiana"
+        "campName": "Iglesia Elysiana",
+        "intronEffects": [
+          "Reduce la velocidad de disminución de [Pasión por el Trabajo] un 50%.",
+          "Al usar una habilidad, aplica un aumento de ATQ a los compañeros durante #2 s, equivalente a #1 de los PV Máx. de [Truffle], con un aumento máximo de #5.",
+          "[Trotadores Trota-Trota] nivel +2; [¡A por todas, Comisarias!] nivel +1.",
+          "Aumenta el límite de acumulaciones de [Peso Pesado] a 20. Al comenzar a montar A [Filbert], obtiene 20 acumulaciones de [Peso Pesado].",
+          "[Barriga llena, manos llenas] nivel +2; [¡A por todas, Comisarias!] nivel +1.",
+          "Tras recoger [Sal volátil activada], [Gota de tranquilizante] o [Caja de suministros de munición], obtiene 1 acumulación que aumenta el daño de habilidad en #3, hasta un máximo de #6 acumulaciones, durante #4 s."
+        ]
       },
       "FR": {
         "name": "Truffle et Filbert",
         "subtitle": "Dépêchez-vous, les rations !",
         "birthday": "Église Élyséenne",
         "force": "Église Élyséenne",
-        "campName": "Église Élyséenne"
+        "campName": "Église Élyséenne",
+        "intronEffects": [
+          "Le rythme de perte de [Passion du travail] est réduit de 50 %.",
+          "Lors de l’utilisation d’une compétence, Truffle confère à ses alliés un bonus d’Attaque équivalent à #1 de ses PV max, jusqu’à un maximum de #5, pendant #2 s.",
+          "[Pas de panique, c’est Filbert !] niveau +2 ; [Dépêchez-vous, les rations !] niveau +1.",
+          "Le plafond de cumuls de [Gros gabarit] passe à 20. Au début de la chevauchée sur [Filbert], Truffle gagne immédiatement 20 cumuls.",
+          "[À plein régime] niveau +2 ; [Dépêchez-vous, les rations !] niveau +1.",
+          "En ramassant [Sel volatil stimulant], [Goutte de rosée apaisante] ou une [Caisse de munitions], Truffle gagne 1 cumul augmentant sa Puissance de compétence de #3 pendant #4 s, jusqu’à #6 cumuls."
+        ]
       },
       "JP": {
         "name": "トリュフ&ヘーゼルナッツ",
         "subtitle": "ごはん係は大忙し",
         "birthday": "エリュシオン礼賛会",
         "force": "エリュシオン礼賛会",
-        "campName": "エリュシオン礼賛会"
+        "campName": "エリュシオン礼賛会",
+        "intronEffects": [
+          "「ヤル気」の減少速度が50%ダウンする。",
+          "スキルを使用すると、味方の攻撃力が「トリュフ」最大HPの#1相当アップ（最大#5まで）、#2秒持続。",
+          "「ブヒブヒダッシュ」Lv.+2、「ごはん係は大忙し」Lv.+1。",
+          "「重量級」を最大20トークンまで重ねがけできるようになる。「ヘーゼルナッツ」に騎乗すると直ちに「重量級」20トークンを獲得する。",
+          "「お腹いっぱい元気いっぱい」Lv.+2、「ごはん係は大忙し」Lv.+1。",
+          "「気つけ薬」 「結露」 「弾薬の補給箱」を拾うと、自身のスキル威力が#3アップ(#4秒持続）、最大#6回まで重ねがけ可能。"
+        ]
       },
       "KR": {
         "name": "트러플과 헤이즐넛",
         "subtitle": "바쁘다 바빠 식량 보급관",
         "birthday": "엘리시안 교회",
         "force": "엘리시안 교회",
-        "campName": "엘리시안 교회"
+        "campName": "엘리시안 교회",
+        "intronEffects": [
+          "[일에 대한 열정] 감소 속도가 50% 감소한다.",
+          "스킬 시전 시 아군에게 공격력 상승 효과를 부여한다. 수치는 [트러플] 최대 HP의 #1, 최대 #5, 지속 시간 #2초.",
+          "[가자, 헤이즐넛!] 레벨+2, [바쁘다 바빠 식량 보급관] 레벨+1",
+          "[중요 인물]의 최대 중첩 단계가 20단계로 상승하며, [헤이즐넛] 탑승 시작 시 [중요 인물] 20단계를 획득한다.",
+          "[먹고 일하자] 레벨+2, [바쁘다 바빠 식량 보급관] 레벨+1",
+          "[활성화된 스멜링 솔트], [정신 집중의 이슬], [탄약 보급 상자] 습득 시 자신이 1단계의 스킬 위력이 #3 상승한다. 최대 #6 단계 중첩, 지속 시간 #4초."
+        ]
       },
       "TC": {
         "name": "松露與榛子",
         "subtitle": "忙忙糧秣官",
         "birthday": "艾利西安傳頌會",
         "force": "艾利西安傳頌會",
-        "campName": "艾利西安傳頌會"
+        "campName": "艾利西安傳頌會",
+        "intronEffects": [
+          "「工作熱情」下降速度降低50%。",
+          "釋放技能時，為隊友附加攻擊提高效果，數值為「松露」最大生命的#1，上限#5，持續#2秒。",
+          "「蹄蹄小跑」等級+2，「忙忙糧秣官」等級+1。",
+          "「重磅人物」最多疊加層數提高至20層，開始騎乘「榛子」時，獲得20層「重磅人物」。",
+          "「飽飽工作」等級+2，「忙忙糧秣官」等級+1。",
+          "拾取「活化嗅鹽」「凝神露滴」「彈藥補給箱」後，自身獲得1層技能威力提高#3，最多疊加#6層，持續#4秒。"
+        ]
       }
     }
   },
@@ -3939,6 +5222,21 @@
         "resourceId": 1002401,
         "resourceNum": 30
       }
+    ],
+    "intronDescriptionKeys": [
+      "GRADEUP_2401_01",
+      "GRADEUP_2401_02",
+      "GRADEUP_2401_03",
+      "GRADEUP_2401_04",
+      "GRADEUP_2401_05",
+      "GRADEUP_2401_06"
+    ],
+    "intronParameters": [
+      "$#PassiveEffect[240104].Vars.Rate*100$%",
+      "$#SkillEffects[240112].TaskEffects[1].MaxSummonCount$",
+      "$#Buff[240134].MaxLayer$",
+      "$#Buff[240124].AddAttrs[2].Value*100$%",
+      "$#Buff[240134].AddAttrs[2].Value*100$%"
     ],
     "baseStats": {
       "atk": 23,
@@ -4046,49 +5344,105 @@
         "subtitle": "Aprikosensilhouette",
         "birthday": "Huaxu",
         "force": "Halle der Vergänglichkeit",
-        "campName": "Huaxu"
+        "campName": "Huaxu",
+        "intronEffects": [
+          "Wenn Fushu oder ihre Teammitglieder in der Nähe mit [Neun-Nadel-Therapie] belegt werden, ignorieren sie die VTD des Ziels um #1, wenn sie Fähigkeits-SCH verursachen.",
+          "Erhöht die maximale Anzahl der [Yunchi], die gleichzeitig auf dem Kampffeld erlaubt sind, auf #2.",
+          "Stufe von [Unterhimmelstrost] +2; Stufe von [Archäus-Wiederbelebung] +1.",
+          "Erhöht die Stapelung-Obergrenze von [Archäus-Wiederbelebung] auf #3.",
+          "Stufe von [Ganzheitliche Harmonie] +2; Stufe von [Archäus-Wiederbelebung] +1.",
+          "Während der Erhöhung der Angriffs-GES durch [Ganzheitliche Harmonie] verursacht Fushu #4 zusätzlichen Hydro-SCH."
+        ]
       },
       "EN": {
         "name": "Fushu",
         "subtitle": "Silhouette Beneath Apricots",
         "birthday": "Huaxu",
         "force": "Hall of Ephemerality",
-        "campName": "Huaxu"
+        "campName": "Huaxu",
+        "intronEffects": [
+          "When Fushu or her nearby teammates are applied with [Nine-Needle Therapy], they ignore the target's DEF by #1 when dealing Skill DMG.",
+          "Increases the maximum number of [Yunchi] allowed on the field at the same time to #2.",
+          "[Subcelestial Solace] Level +2; [Archaeus Revival] Level +1.",
+          "Increase the stack cap of [Archaeus Revival] to #3, and grants #5 Morale Boost per stack.",
+          "[Holistic Harmony] Level +2; [Archaeus Revival] Level +1.",
+          "During the ATK Speed boost effect granted by [Holistic Harmony], Fushu's melee normal attack deals #4 additional Hydro Damage."
+        ]
       },
       "ES": {
         "name": "Fushu",
         "subtitle": "Silueta bajo Albaricoques",
         "birthday": "Huaxu",
         "force": "Pabellón de lo Efímero",
-        "campName": "Huaxu"
+        "campName": "Huaxu",
+        "intronEffects": [
+          "Con [Terapia de las Nueve Agujas], al infligir Daño de Habilidad se ignora #1 de la DEF del objetivo.",
+          "El número máximo de [Yunchi] que pueden estar presentes simultáneamente aumenta a #2.",
+          "[Consuelo Subcelestial] nivel +2; [Renacimiento de Archaeus] nivel +1.",
+          "Aumenta el límite de acumulaciones de [Renacimiento de Archaeus] a #3; cada acumulación también otorga Moral +#5.",
+          "[Armonía Holística] nivel +2; [Renacimiento de Archaeus] nivel +1.",
+          "Durante el efecto de aumento de Velocidad de Ataque otorgado por [Armonía Holística], el Ataque Normal cuerpo a cuerpo de Fushu inflige #4 de Daño Hydro adicional."
+        ]
       },
       "FR": {
         "name": "Fushu",
         "subtitle": "Silhouette sous l’Abricotier",
         "birthday": "Huaxu",
         "force": "Pavillon de l’Éphémère",
-        "campName": "Huaxu"
+        "campName": "Huaxu",
+        "intronEffects": [
+          "Lorsque Fushu ou ses alliés proches bénéficient de [Thérapie des neuf aiguilles], leurs Dégâts de compétence ignorent #1 de la DÉF de la cible.",
+          "Le nombre maximal de [Yunchi] pouvant être présents simultanément passe à #2.",
+          "[Soutien céleste] niveau +2 ; [Rythme de l’âme] niveau +1.",
+          "Le nombre maximal de cumuls de [Rythme de l’âme] passe à #3, et chaque cumul confère une augmentation de Vigueur de #5.",
+          "[Symbiose parfaite] niveau +2 ; [Rythme de l’âme] niveau +1.",
+          "Pendant toute la durée de l’augmentation de la Vitesse d’attaque conférée par [Symbiose parfaite], les attaques normales de mêlée de Fushu infligent #4 de Dégâts Hydro supplémentaires."
+        ]
       },
       "JP": {
         "name": "フーシュ",
         "subtitle": "杏林の木漏れ日",
         "birthday": "華胥",
         "force": "枯栄閣（コエイカク）",
-        "campName": "華胥"
+        "campName": "華胥",
+        "intronEffects": [
+          "「九針擁護」を持つ目標がスキルダメージを与える時、目標の防御力を#1無視する。",
+          "フィールドに同時に存在する「召喚ユニット‐雲龍」の最大数が#2体まで増加。",
+          "「我が身はあなたと共に」Lv.+2、「誠心に帰すべし」Lv.+1。",
+          "「誠心に帰すべし」の最大スタック数が#3まで増加。スタックごとに追加した「高揚」が#5アップする。",
+          "「神の御座す形」Lv.+2、「誠心に帰すべし」Lv.+1。",
+          "「神の御座す形」の攻撃速度アップ効果期間中、自身の近接通常攻撃が水属性追加ダメージを#4得る。"
+        ]
       },
       "KR": {
         "name": "부소",
         "subtitle": "살구나무 숲의 그림자",
         "birthday": "화서",
         "force": "고영각",
-        "campName": "화서"
+        "campName": "화서",
+        "intronEffects": [
+          "[아홉 침의 치료]를 보유한 대상은, 스킬 대미지를 입힐 시 대상의 #1 방어를 무시한다.",
+          "동시에 존재할 수 있는 [소환물·운리] 수량이 #2개까지 상승한다.",
+          "[끌어당기기] 레벨+2, [신의 구원] 레벨+1",
+          "[신의 구원]의 최대 중첩 단계가 #3단계까지 상승하고, 단계당 격양이 #5 상승한다.",
+          "[혼신합일] 레벨+2, [신의 구원] 레벨+1",
+          "[혼신합일]의 공격 속도 상승 효과 지속 기간, 자신이 근거리 일반 공격 시 #4의 물 속성 추가 대미지를 획득한다."
+        ]
       },
       "TC": {
         "name": "扶疏",
         "subtitle": "杏林疏影",
         "birthday": "華胥",
         "force": "枯榮閣",
-        "campName": "華胥"
+        "campName": "華胥",
+        "intronEffects": [
+          "帶有「九針治未」的目標，造成技能傷害時無視目標#1防禦。",
+          "「召喚物·雲螭」同時最多存在數量提高至#2個。",
+          "「提挈浮沉」等級+2，「神歸心舍」等級+1。",
+          "「神歸心舍」最多疊加層數提高至#3層，且每層獲得昂揚提高#5。",
+          "「形與神俱」等級+2，「神歸心舍」等級+1。",
+          "「形與神俱」的攻擊速度提高效果持續期間，自身獲得#4近戰普通攻擊水屬性追加傷害。"
+        ]
       }
     }
   },
@@ -4147,6 +5501,23 @@
         "resourceId": 1005301,
         "resourceNum": 30
       }
+    ],
+    "intronDescriptionKeys": [
+      "GRADEUP_5301_01",
+      "GRADEUP_5301_02",
+      "GRADEUP_5301_03",
+      "GRADEUP_5301_04",
+      "GRADEUP_5301_05",
+      "GRADEUP_5301_06"
+    ],
+    "intronParameters": [
+      "$#PassiveEffect[530102].Vars.Grade2TriggerProb*100$%",
+      "$#Buff[530121].AddAttrs[1].Value*100$%",
+      "$#SkillEffects[530141].TaskEffects[1].Rate*100$%",
+      "$#SkillEffects[530141].TaskEffects[2].LastTime$",
+      "$#Buff[530112].BuffDamagedRate.Value*(-100)$%",
+      "$#Buff[530113].AddAttrs[1].Value*100$%",
+      "$#Buff[530122].DotDatas[1].Interval$"
     ],
     "baseStats": {
       "atk": 28,
@@ -4287,49 +5658,105 @@
         "subtitle": "Tagtraum des Kokons",
         "birthday": "Hyperboreisches Imperium",
         "force": "Unabhängig",
-        "campName": "Keine Zugehörigkeit"
+        "campName": "Keine Zugehörigkeit",
+        "intronEffects": [
+          "Der Einsatz von [Chrysalis-Traumgewebe] oder [Phototaxis] stellt #3 der Psyches max. LP wieder her und erhöht Psyches SCH um #2 für #4 Sek.",
+          "Im Zustand [Schlüpfen] werden alle #7 Sekunden 16 Partikel [Ätherisches Pulver] abgefeuert. Wenn [Ätherisches Pulver] oder [Pulverstigma] SCH verursacht, besteht eine Chance von #1, am Standort des Ziels ein [Trugbild] zu erzeugen.",
+          "Stufe von [Chrysalis-Traumgewebe] +2; Stufe von [Bernsteinlicht] +1.",
+          "Im Zustand [Schlüpfen] erhält Psyche [Eklosion]. [Eklosion]: Immun gegen Trefferstarre, reduziert den erlittenen SCH um #5 und erhöht den Sammelradius um 15.",
+          "Stufe von [Fluoreszierende Eklosion] +2; Stufe von [Bernsteinlicht] +1.",
+          "Im Zustand [Schlüpfen] erhöhen sich Psyches Durchschlag um #6."
+        ]
       },
       "EN": {
         "name": "Psyche",
         "subtitle": "Chrysalis' Daydream",
         "birthday": "Hyperborean Empire",
         "force": "Unaffiliated",
-        "campName": "No Affiliation"
+        "campName": "No Affiliation",
+        "intronEffects": [
+          "Using [Chrysalis Dreamweave] or [Phototaxis] restores #3 of Psyche's Max HP and increases Psyche's damage by #2 for #4s.",
+          "While in [Flamboyance], fires 16 [Ethereal Powder] particles every #7s. When [Ethereal Powder] or [Powder Stigma] deals damage, there is a #1 chance to spawn a [Phantasm] at the target's location.",
+          "[Chrysalis Dreamweave] Level +2; [Amberlight] Level +1.",
+          null,
+          "[Fluorescent Eclosion] Level +2; [Amberlight] Level +1.",
+          "During [Flamboyance] state, increases Psyche's PEN stats by #6."
+        ]
       },
       "ES": {
         "name": "Psyche",
         "subtitle": "Ensueño de la Crisálida",
         "birthday": "Imperio Hiperbóreo",
         "force": "No afiliado",
-        "campName": "Sin afiliación"
+        "campName": "Sin afiliación",
+        "intronEffects": [
+          "Al usar [Tejido de Crisálida Onírica] y [Fototaxis], restaura #3 de PV Máx. y obtiene un aumento de daño infligido de #2 durante #4 s.",
+          "En estado [Metamorfosis Radiante], dispara 16 [Polvos Etéreos] cada #7 s. Cuando [Polvo Etéreo] o [Estigma de Polvo] inflige daño, hay una probabilidad de #1 de generar 1 [Fantasma] en la ubicación del objetivo.",
+          "[Tejido de Crisálida Onírica] nivel +2; [Resplandor Ámbar] nivel +1.",
+          "En estado [Metamorfosis Radiante], obtiene [Eclosión]: inmunidad al Aturdimiento al recibir daño, disminuye el daño recibido en #5 y aumenta el rango de recogida automática en 15.",
+          "[Eclosión Fluorescente] nivel +2; [Resplandor Ámbar] nivel +1.",
+          "En estado [Metamorfosis Radiante], aumenta la penetración de atributos de Psyche en #6."
+        ]
       },
       "FR": {
         "name": "Psyche",
         "subtitle": "Papillon Onirique",
         "birthday": "Empire Hyperboréen",
         "force": "Aucune affiliation",
-        "campName": "Aucune affiliation"
+        "campName": "Aucune affiliation",
+        "intronEffects": [
+          "Utiliser [Rêve de Chrysalide] ou [Chasse-lumière] restaure #3 des PV max de Psyche et augmente ses dégâts de #2 pendant #4 s.",
+          "Pendant l’état [Métamorphose radieuse], tire 16 projectiles de [Poussière éthérée] toutes les #7 s.\nLorsque [Poussière éthérée] ou [Poussière d’écailles] inflige des dégâts, il y a #1 de chances de faire apparaître un [Mirage] à l’emplacement de la cible.",
+          "[Rêve de Chrysalide] niveau +2 ; [Lueur changeante] niveau +1.",
+          "Sous l’état [Métamorphose radieuse], Psyche obtient [Éveil ailé] :\n– Immunité aux interruptions\n– Réduction des dégâts subis de #5\n– Augmentation de la Portée ramassage auto de +15",
+          "[Éclosion luminescente] niveau +2 ; [Lueur changeante] niveau +1.",
+          "Pendant [Métamorphose radieuse], Psyche gagne +#6 en Pénétration (tous attributs)."
+        ]
       },
       "JP": {
         "name": "サイキ",
         "subtitle": "繭の白昼夢",
         "birthday": "ヒュペリア帝国",
         "force": "なし",
-        "campName": "無所属"
+        "campName": "無所属",
+        "intronEffects": [
+          "「繭から紡ぐ夢」および「フロウライト」を発動する時、自身の最大HPの#3を回復して#4秒間与ダメージが#2アップする。",
+          "「羽化」状態中、#7秒ごとに16枚の「光の鱗粉」を放つ。「光の鱗粉」や「鱗粉の烙印」でダメージを与えると、#1の確率でその場所に「ミラージュ」を生成。",
+          "「繭から紡ぐ夢」レベル+2、「ホタルの光」レベル+1。",
+          "「羽化」状態では自身が「胡蝶」を獲得する。「羽化」：ダメージを受けてものけ反らない。被ダメージが#5ダウンし、回収範囲が15増加する。",
+          "「メメント‐モリ」Lv.+2、「ホタルの光」Lv.+1。",
+          "「羽化」状態では自身の全属性貫通が#6アップする。"
+        ]
       },
       "KR": {
         "name": "프시케",
         "subtitle": "고치의 백일몽",
         "birthday": "휘페르보레아 제국",
         "force": "없음",
-        "campName": "무소속"
+        "campName": "무소속",
+        "intronEffects": [
+          "[고치의 꿈]과 [빛 쫓기] 시전 시, 자신은 #3의 최대 HP를 회복하고, 입히는 대미지 #2 상승 효과를 획득하며, 지속 시간 #4초.",
+          "[허물 벗기] 상태에서 #7초마다 [빛나는 비늘 가루] 16개를 발사한다. [빛나는 비늘 가루]와 [비늘 가루 인장]으로 대미지를 입힐 시, #1 확률로 대상 위치에 1개의 [환영]을 생성한다.",
+          "[고치의 꿈] 레벨+2, [반딧불의 빛] 레벨+1.",
+          "[허물 벗기] 상태에서 [우화]를 획득한다.\n[우화]: 대미지를 받을 때 경직되지 않고, 받는 대미지가 #5 감소하며, 습득 범위 15 증가한다.",
+          "[재탄생] 레벨+2, [반딧불의 빛] 레벨+1",
+          "[허물 벗기] 상태에서 자신의 모든 속성 관통 #6 상승."
+        ]
       },
       "TC": {
         "name": "賽琪",
         "subtitle": "繭的白晝夢",
         "birthday": "海伯利亞帝國",
         "force": "無",
-        "campName": "無陣營"
+        "campName": "無陣營",
+        "intronEffects": [
+          "釋放「抽繭成夢」和「逐光」時，回復自身#3的最大生命，並獲得造成的傷害提高#2效果，持續#4秒。",
+          "[破繭]狀態中，每#7秒發射16枚[浮光鱗粉]；[浮光鱗粉]和[鱗粉印記]造成傷害時，有#1概率在目標處生成1個[幻象]。",
+          "「抽繭成夢」等級+2，「螢燭微光」等級+1。",
+          "「破繭」狀態中自身獲得「羽化」：受到傷害時不會產生僵直，受到的傷害降低#5，拾取范圍增加15。",
+          "「腐草為螢」等級+2，「螢燭微光」等級+1。",
+          "「破繭」狀態中自身全屬性穿透提高#6。"
+        ]
       }
     }
   },
@@ -4389,6 +5816,8 @@
         "resourceNum": 30
       }
     ],
+    "intronDescriptionKeys": [],
+    "intronParameters": [],
     "baseStats": {
       "atk": 20,
       "atkGrowCurve": "ATKA",
@@ -4456,49 +5885,56 @@
         "subtitle": "Umgekehrte Infloreszenz",
         "birthday": null,
         "force": null,
-        "campName": "Hyperboreisches Imperium"
+        "campName": "Hyperboreisches Imperium",
+        "intronEffects": []
       },
       "EN": {
         "name": "Flora",
         "subtitle": "Mutinous Inflorescence",
         "birthday": null,
         "force": null,
-        "campName": "The Hyperborean Empire"
+        "campName": "The Hyperborean Empire",
+        "intronEffects": []
       },
       "ES": {
         "name": "Flora",
         "subtitle": "Inflorescencia Rebelde",
         "birthday": null,
         "force": null,
-        "campName": "Imperio Hiperbóreo"
+        "campName": "Imperio Hiperbóreo",
+        "intronEffects": []
       },
       "FR": {
         "name": "Flora",
         "subtitle": "Floraison Rebelle",
         "birthday": null,
         "force": null,
-        "campName": "Empire Hyperboréen"
+        "campName": "Empire Hyperboréen",
+        "intronEffects": []
       },
       "JP": {
         "name": "フローラ",
         "subtitle": "反逆の花",
         "birthday": null,
         "force": null,
-        "campName": "ヒュペリア帝国"
+        "campName": "ヒュペリア帝国",
+        "intronEffects": []
       },
       "KR": {
         "name": "플로라",
         "subtitle": "반대로 피는 꽃",
         "birthday": null,
         "force": null,
-        "campName": "휘페르보레아 제국"
+        "campName": "휘페르보레아 제국",
+        "intronEffects": []
       },
       "TC": {
         "name": "芙羅拉",
         "subtitle": "反逆花序",
         "birthday": null,
         "force": null,
-        "campName": "海伯利亞帝國"
+        "campName": "海伯利亞帝國",
+        "intronEffects": []
       }
     }
   },
@@ -4557,6 +5993,20 @@
         "resourceId": 1001801,
         "resourceNum": 30
       }
+    ],
+    "intronDescriptionKeys": [
+      "GRADEUP_1801_01",
+      "GRADEUP_1801_02",
+      "GRADEUP_1801_03",
+      "GRADEUP_1801_04",
+      "GRADEUP_1801_05",
+      "GRADEUP_1801_06"
+    ],
+    "intronParameters": [
+      "$#Buff[180135].AddAttrs[2].Value*100$%",
+      "$#Buff[180114].AddAttrs[2].Rate*100$%",
+      "$#Buff[180114].AddAttrs[3].Rate*100$%",
+      "$#PassiveEffect[180101].Vars.Grade6CritRate*100$%"
     ],
     "baseStats": {
       "atk": 22,
@@ -4656,49 +6106,105 @@
         "subtitle": "Legende der Nachtigall",
         "birthday": "Hyperboreisches Imperium",
         "force": "Unabhängig",
-        "campName": "Keine Zugehörigkeit"
+        "campName": "Keine Zugehörigkeit",
+        "intronEffects": [
+          "Ziele, die durch [Ausgelassene Teeparty] zusätzlichen Elementarschaden erhalten, bekommen einen Effekt, der ihren Durchschlag pro zusätzlichem Schadenseffekt, mit dem sie belegt sind, um #1 erhöht.",
+          "Erhöht die max. Anzahl der Stapelungen von [Märchenfeder] auf 45. Der Einsatz von [„An einem warmen Nachmittag“] gewährt 3 zusätzliche Stapelungen. Während [Ausgelassene Teeparty] aktiv ist, wird 1 zusätzliche Stapelung pro Sekunde erhalten.",
+          "Stufe von [„An einem warmen Nachmittag“] +2; Stufe von [„Böse Zauberer hassen Sonnenlicht!“] +1.",
+          "Jede Stapelung [Märchenfeder] erhöht Finas Fähigkeits-SCH um #2 und die Fähigkeitsreichweite um #3.",
+          "Stufe von [„Die Teeparty beginnt!“] +2; Stufe von [„Böse Zauberer hassen Sonnenlicht!“] +1.",
+          "Wenn Fina während [Ausgelassene Teeparty] SCH durch Waffen verursacht, wird die KRIT-Rate dieses Angriffs für jeden Bonuseffekt, den das Ziel erleidet, um #4 erhöht, und der Elementartyp des Schadens wird in den Schwachpunkt-Typ des Ziels umgewandelt."
+        ]
       },
       "EN": {
         "name": "Fina",
         "subtitle": "Millitale of Nightingale",
         "birthday": "Hyperborean Empire",
         "force": "Unaffiliated",
-        "campName": "No Affiliation"
+        "campName": "No Affiliation",
+        "intronEffects": [
+          "Targets granted the ability to deal additional elemental damage by [Boisterous Tea Party] gain an effect that increases their PEN stats by #1 for each type of additional damage effect they possess.",
+          "Increases max [Taleweaver Quill] stacks to 45. Using [\"On a Warm Afternoon\"] grants 3 additional stacks. While [Boisterous Tea Party] is active, gains 1 extra stack per second.",
+          "[\"On a Warm Afternoon\"] Level +2; [\"Bad Sorcerers Hate Sunlight!\"] Level +1.",
+          "Each stack of [Taleweaver Quill] increases Fina's Skill Intensity by #2 and Skill Range by #3.",
+          "[\"Let the Tea Party Begin!\"] Level +2; [\"Bad Sorcerers Hate Sunlight!\"] Level +1.",
+          "During [Boisterous Tea Party], when Fina deals weapon damage, for each Bonus Effect the target is suffering, the CRIT Chance of this attack is increased by #4, and the elemental type of the damage is converted to the target's weakness type."
+        ]
       },
       "ES": {
         "name": "Fina",
         "subtitle": "Canto del Ruiseñor",
         "birthday": "Imperio Hiperbóreo",
         "force": "No afiliado",
-        "campName": "Sin afiliación"
+        "campName": "Sin afiliación",
+        "intronEffects": [
+          "Por cada atributo de Daño elemental adicional proporcionado por [Fiesta de Té Escandalosa], aumenta la Penetración de todos los atributos en #1.",
+          "Aumenta el máximo de [Pluma Tejedora de Cuentos] a 45. Usar [\"En una tarde cálida\"] otorga 3 acumulaciones adicionales. Mientras [Fiesta de Té Escandalosa] está activa, obtiene 1 acumulación extra por segundo.",
+          "[\"En una tarde cálida\"] nivel +2; [\"¡Los hechiceros malos odian la luz del sol!\"] nivel +1.",
+          "Cada acumulación de [Pluma Tejedora de Cuentos] aumenta el Daño de Habilidad de Fina en #2 y su Rango de Habilidad en #3.",
+          "[\"¡Es la Hora del té!\"] nivel +2; [\"¡Los hechiceros malos odian la luz del sol!\"] nivel +1.",
+          "Durante [Fiesta de Té Escandalosa], cuando Fina inflige Daño de Arma, por cada efecto adicional de atributo presente en el objetivo, la Prob. CRIT de ese ataque aumenta en #4 y el daño elemental se convierte al atributo débil del objetivo."
+        ]
       },
       "FR": {
         "name": "Fina",
         "subtitle": "Mille Contes du Rossignol",
         "birthday": "Empire Hyperboréen",
         "force": "Aucune affiliation",
-        "campName": "Aucune affiliation"
+        "campName": "Aucune affiliation",
+        "intronEffects": [
+          "Pour chaque attribut de Dégâts élémentaires supplémentaires fournis par [Goûter endiablé], augmente la Pénétration (tous attributs) de #1.",
+          "Augmente le maximum de cumuls de [Plume enchantée] à 45. Lors de l’utilisation de [« Par une belle journée »], gagnez 3 cumuls supplémentaires. Pendant [Goûter endiablé], gagnez 1 cumul supplémentaire par seconde.",
+          "[« Par une belle journée »] niveau +2 ; [« Les méchants ont peur du soleil ! »] niveau +1.",
+          "Chaque cumul de [Plume enchantée] augmente la Puissance de compétence de #2 et la Portée de compétence de #3.",
+          "[« C’est l’heure du goûter »] niveau +2 ; [« Les méchants ont peur du soleil ! »] niveau +1.",
+          "Pendant [Goûter endiablé], lorsque Fina inflige des DGT d’arme, chaque Effet supplémentaire affectant la cible augmente le Taux CRIT de cette attaque de #4 et convertit l’attribut élémentaire des dégâts en l’élément auquel la cible est vulnérable."
+        ]
       },
       "JP": {
         "name": "フィーナ",
         "subtitle": "ナイチンゲールの物語",
         "birthday": "ヒュペリア帝国",
         "force": "なし",
-        "campName": "無所属"
+        "campName": "無所属",
+        "intronEffects": [
+          "「にぎやかなお茶会」の追加ダメージ効果を持つ目標の全属性貫通が、1つの属性追加ダメージ効果につき#1アップする。",
+          "「夢に咲く花」が最大45スタックまで重ねがけ可能になる。「あるうららかな午後のこと」を発動する時、追加で「夢に咲く花」を3スタック得る。「にぎやかなお茶会」領域展開中、1秒ごとに「夢に咲く花」を追加で1スタック得る。",
+          "「あるうららかな午後」Lv.+2、「悪い魔法使いは光が苦手」Lv.+1 ",
+          "「夢に咲く花」1スタックにつき、自身のスキル威力が#2アップし、スキル範囲が#3アップする。",
+          "「お茶会のはじまりです！」Lv.+2、「悪い魔法使いは光が苦手」Lv.+1",
+          "「にぎやかなお茶会」領域展開中、自身の武器ダメージを与える時、目標の追加属性効果1つにつき、クリティカル率が#4アップする。また、与える元素属性ダメージが目標の弱点属性ダメージに変換される。"
+        ]
       },
       "KR": {
         "name": "피나",
         "subtitle": "나이팅게일의 이야기",
         "birthday": "휘페르보레아 제국",
         "force": "없음",
-        "campName": "무소속"
+        "campName": "무소속",
+        "intronEffects": [
+          "[떠들썩한 티타임]에 부여된 추가 대미지를 보유한 대상은, 1개의 속성 추가 대미지 효과를 보유하고 있을 때마다, 모든 속성 관통 #1 상승.",
+          "[붓 끝에 핀 꽃]의 최대 중첩 단계가 45까지 상승한다. ['어느 따뜻한 오후에'] 시전 시 추가로 [붓 끝에 핀 꽃] 3단계를 획득하고, [떠들썩한 티타임] 영역 지속 기간 매초 추가로 [붓 끝에 핀 꽃] 1단계를 획득한다.",
+          "[\"어느 따뜻한 오후에\"] 레벨+2, [\"나쁜 마법사는 햇빛을 무서워한대!\"] 레벨+1.",
+          "[붓 끝에 핀 꽃] 단계당 자신의 스킬 위력이 #2 상승하고, 스킬 범위가 #3 상승한다.",
+          "[\"티타임이 시작됐다!\"] 레벨+2, [\"나쁜 마법사는 햇빛을 무서워한대!\"] 레벨+1.",
+          "[떠들썩한 티타임] 영역 지속 기간에, 자신이 무기 대미지를 입힐 때, 대상이 1개의 속성 추가 발동 효과를 보유하고 있을 때마다, 해당 대미지의 크리티컬 확률이 #4 상승하고, 그중 원소 속성 대미지는 대상의 약점 속성 대미지로 전환된다."
+        ]
       },
       "TC": {
         "name": "菲娜",
         "subtitle": "夜鶯千夜譚",
         "birthday": "海伯利亞帝國",
         "force": "無",
-        "campName": "無陣營"
+        "campName": "無陣營",
+        "intronEffects": [
+          "帶有「喧鬧下午茶」附加的追加傷害的目標，每帶有1種屬性的追加傷害效果，全屬性穿透提高#1。",
+          "[夢筆生花]最多疊加層數提高至45層，釋放[「在一個暖和的午後」]時額外獲得3層[夢筆生花]，[喧鬧下午茶]領域持續期間每秒額外獲得1層[夢筆生花]。",
+          "「「在一個暖和的午後」」等級+2，「「壞巫師最怕陽光了！」」等級+1。",
+          "每層「夢筆生花」令自身技能威力提高#2、技能範圍提高#3。",
+          "「「下午茶開始了！」」等級+2，「「壞巫師最怕陽光了！」」等級+1。",
+          "「喧鬧下午茶」領域持續期間，自身造成武器傷害時，目標每帶有1個屬性額外觸發效果，此次傷害的暴擊率提高#4，並將其中元素屬性傷害轉換為目標的弱點屬性傷害。"
+        ]
       }
     }
   },
@@ -4757,6 +6263,22 @@
         "resourceId": 1001501,
         "resourceNum": 30
       }
+    ],
+    "intronDescriptionKeys": [
+      "GRADEUP_1501_01",
+      "GRADEUP_1501_02",
+      "GRADEUP_1501_03",
+      "GRADEUP_1501_04",
+      "GRADEUP_1501_05",
+      "GRADEUP_1501_06"
+    ],
+    "intronParameters": [
+      "$#Buff[150141].AddAttrs[1].Rate*100$%",
+      "$#PassiveEffect[150101].Vars.Grade1LastTime$",
+      "$#PassiveEffect[150101].Vars.Grade2Prob*100$%",
+      "$#PassiveEffect[150101].Vars.Grade4Combo$",
+      "$#Buff[150104].AddAttrs[1].Value*100$%",
+      "$#PassiveEffect[150101].Vars.Grade6LastTime$"
     ],
     "baseStats": {
       "atk": 24,
@@ -4895,49 +6417,105 @@
         "subtitle": "Geduld · Launenhaftigkeit",
         "birthday": "Die Elysische Kirche",
         "force": "Die Elysische Kirche",
-        "campName": "Die Elysische Kirche"
+        "campName": "Die Elysische Kirche",
+        "intronEffects": [
+          "Der Einsatz von [Im Namen der Geduld] erhöht den Figur-ANG um #1 für #2 Sek.",
+          "Wenn ein Bonuseffekt auslöst wird, wird 1 zusätzlicher Kombopunkt erhalten.",
+          "Stufe von [Im Namen der Geduld] +2, Stufe von [Hmpf!] +1",
+          "Wenn die Kombostufe steigt, werden #4 zusätzliche Kombopunkte erhalten.",
+          "Stufe von [Das war's!] +2, Stufe von [Hmpf!] +1",
+          "Nach dem Einsatz von [Das war's!] oder [Samael]s geladenem Angriff wird zusätzlicher Lumino-SCH um #5 für #6 Sek. erhöht."
+        ]
       },
       "EN": {
         "name": "Lisbell",
         "subtitle": "Patience·Petulance",
         "birthday": "The Elysian Church",
         "force": "The Elysian Church",
-        "campName": "The Elysian Church"
+        "campName": "The Elysian Church",
+        "intronEffects": [
+          "Using [In the Name of Patience] increases Character ATK by #1 for #2s.",
+          "When damage triggers a bonus effect, gain 1 additional combo point.",
+          "[In the Name of Patience] Level +2, [Hmph!!] Level +1",
+          "When Combo Level increases, gains #4 additional combo points.",
+          "[That's It!] Level +2, [Hmph!!] Level +1",
+          "After using [That's It!] or [Samael]'s Charged Attack, gains #5 additional Lumino Damage for #6 seconds."
+        ]
       },
       "ES": {
         "name": "Lisbell",
         "subtitle": "Paciencia · Petulancia",
         "birthday": "Iglesia Elysiana",
         "force": "Iglesia Elysiana",
-        "campName": "Iglesia Elysiana"
+        "campName": "Iglesia Elysiana",
+        "intronEffects": [
+          "Al usar [En Nombre de la Paciencia], el ATQ del personaje aumenta en #1 durante #2 s.",
+          "Al activar un efecto adicional con daño, obtiene 1 punto de combo adicional.",
+          "[En Nombre de la Paciencia] nivel +2, [¡Bah!] nivel +1.",
+          "Al aumentar el Nivel de Combo, obtiene #4 puntos de combo adicionales.",
+          "[¡No puedo más!] nivel +2, [¡Bah!] nivel +1.",
+          "Después de usar [¡No puedo más!] o el Ataque Cargado de [Samael], obtiene #5 daño adicional Lumino durante #6s."
+        ]
       },
       "FR": {
         "name": "Lisbell",
         "subtitle": "Résilience · Courroux",
         "birthday": "Église Élyséenne",
         "force": "Église Élyséenne",
-        "campName": "Église Élyséenne"
+        "campName": "Église Élyséenne",
+        "intronEffects": [
+          "Utiliser [Au nom de la Résilience] augmente l’ATQ du personnage de #1 pendant #2 s.",
+          "Lorsque des dégâts déclenchent un Effet supplémentaire, gagne 1 point de combo supplémentaire.",
+          "[Au nom de la Résilience] niveau +2 ; [Hmpf !] niveau +1.",
+          "Lorsque le niveau de Combo augmente, obtient #4 points de combo supplémentaires.",
+          "[J’en peux plus !] niveau +2 ; [Hmpf !] niveau +1.",
+          "Après avoir utilisé [J’en peux plus !] ou l’Attaque chargée de [Samaël], obtient +#5 Dégâts Lumino pendant #6 s."
+        ]
       },
       "JP": {
         "name": "リズベル",
         "subtitle": "ペイシェンス&リズベル",
         "birthday": "エリュシオン礼賛会",
         "force": "エリュシオン礼賛会",
-        "campName": "エリュシオン礼賛会"
+        "campName": "エリュシオン礼賛会",
+        "intronEffects": [
+          "「堅忍の名のもとに」発動時、攻撃力#1アップ、#2秒継続。",
+          "ダメージを与えて追加効果が発動すると、コンボポイントが1Pt増える。",
+          "「堅忍の名のもとに」Lv.+2、「ふん！！」Lv.+1。",
+          "コンボLv.アップ時、コンボポイント#4を追加獲得。",
+          "「もう我慢できない！」Lv.+2、「ふん！！」Lv.+1。",
+          "「もう我慢できない！」と「サマエル」溜め攻撃後、光属性追加ダメージ#5を得る、#6秒継続。"
+        ]
       },
       "KR": {
         "name": "리사벨",
         "subtitle": "인내와 분노",
         "birthday": "엘리시안 교회",
         "force": "엘리시안 교회",
-        "campName": "엘리시안 교회"
+        "campName": "엘리시안 교회",
+        "intronEffects": [
+          "[인내의 이름으로] 시전 시, 자신의 공격력이 #1 상승한다. 지속 시간 #2초.",
+          "대미지를 입혀 추가 효과 발동 시, 1 콤보 포인트를 추가로 획득한다.",
+          "[인내의 이름으로] 레벨+2, [흥!!] 레벨+1",
+          "콤보 레벨 상승 시, #4 콤보 포인트를 추가로 획득한다.",
+          "[안 참아!] 레벨+2, [흥!!] 레벨+1",
+          "[안 참아!], [사마엘] 차지 공격 시전 후, 자신이 #5 빛 속성 추가 대미지를 입힌다, 지속 시간 #6초."
+        ]
       },
       "TC": {
         "name": "莉茲貝爾",
         "subtitle": "堅忍 · 暴怒",
         "birthday": "艾利西安傳頌會",
         "force": "艾利西安傳頌會",
-        "campName": "艾利西安傳頌會"
+        "campName": "艾利西安傳頌會",
+        "intronEffects": [
+          "釋放[以堅忍之名]時，自身獲得攻擊提高#1，持續#2秒。",
+          "造成的傷害觸發額外效果時，額外獲得1點連擊點數。",
+          "[以堅忍之名]等級+2，[哼！！]等級+1。",
+          "連擊等級提高時，額外獲得#4點連擊點數。",
+          "[我不忍啦！]等級+2，[哼！！]等級+1。",
+          "釋放[我不忍啦！]和[薩麥爾]蓄力攻擊後，自身獲得#5光屬性追加傷害，持續#6秒。"
+        ]
       }
     }
   },
@@ -4996,6 +6574,22 @@
         "resourceId": 1001502,
         "resourceNum": 30
       }
+    ],
+    "intronDescriptionKeys": [
+      "GRADEUP_1502_01",
+      "GRADEUP_1502_02",
+      "GRADEUP_1502_03",
+      "GRADEUP_1502_04",
+      "GRADEUP_1502_05",
+      "GRADEUP_1502_06"
+    ],
+    "intronParameters": [
+      "$#PassiveEffect[150201].Vars.Grade1BaseRate*100$%",
+      "$#PassiveEffect[150201].Vars.Grade2Skill01Rate*100$%",
+      "$#PassiveEffect[150201].Vars.Grade4HealedRate*100$%",
+      "$#Buff[150231].AddAttrs[1].Value*100$%",
+      "$#PassiveEffect[150201].Vars.Grade6PropRate*100$%",
+      "$#PassiveEffect[150201].Vars.Grade1MaxRate*100$%"
     ],
     "baseStats": {
       "atk": 21,
@@ -5096,49 +6690,105 @@
         "subtitle": "Fährfrau des Nebelmeers",
         "birthday": "Die Elysische Kirche",
         "force": "Unabhängig",
-        "campName": "Keine Zugehörigkeit"
+        "campName": "Keine Zugehörigkeit",
+        "intronEffects": [
+          "Erhöht die Auslöserate des Effekts [Verwobene Rufe] um #1 und seine max. Auslöserate auf #6.",
+          "Nachdem [Mondjagd] Schaden verursacht hat, erleiden die Ziele für 3 Sek. um #2 erhöhten Schaden durch [Sonnenfinsternis]; nachdem [Sonnenfinsternis] Schaden verursacht hat, erleiden die Ziele für 3 Sek. um #2 erhöhten Schaden durch [Mondjagd].",
+          "Stufe von [Mondjagd] +2, Stufe von [Verwobene Rufe] +1.",
+          "Erhöht Frau Nifles erhaltene Heilung um #3 und die Geisteswiederherstellung um #4.",
+          "Stufe von [Nebelmeer-Requiem] +2; Stufe von [Verwobene Rufe] +1.",
+          "Wird Schaden mit einer Fernkampfwaffe verursacht, besteht eine Chance von #5, entweder [Mondjagd] oder [Sonnenfinsternis] am Standort des Ziels zu erscahffen. Dieser Effekt kann nur einmal pro Sekunde ausgelöst werden."
+        ]
       },
       "EN": {
         "name": "Lady Nifle",
         "subtitle": "Ferrywoman of the Misty Sea",
         "birthday": "The Elysian Church",
         "force": "Unaffiliated",
-        "campName": "No Affiliation"
+        "campName": "No Affiliation",
+        "intronEffects": [
+          "Increases [Interwoven Cries] Effect Trigger Probability by #1 and its max Trigger Probability to #6.",
+          "When [Lunar Hunt] deals damage, [Solar Eclipse] gains +#2 damage against the target for 3s. When [Solar Eclipse] deals damage, [Lunar Hunt] gains +#2 damage against the target for 3s.",
+          "[Lunar Hunt] Level +2, [Interwoven Cries] Level +1.",
+          "Increases Lady Nifle's Healing Received by #3 and Sanity Recovery by #4.",
+          "[Misty Sea Requiem] Level +2; [Interwoven Cries] Level +1.",
+          "When dealing damage using a ranged weapon, there's a #5 chance to summon either [Lunar Hunt] or [Solar Eclipse] at the target's location. This effect can only be triggered once every second."
+        ]
       },
       "ES": {
         "name": "Dama Nifle",
         "subtitle": "La Barquera del Mar Nebuloso",
         "birthday": "Iglesia Elysiana",
         "force": "No afiliado",
-        "campName": "Sin afiliación"
+        "campName": "Sin afiliación",
+        "intronEffects": [
+          "Aumenta en #1 la Probabilidad de Activación de [Gritos Entrelazados] y eleva su límite máximo a #6.",
+          "Tras infligir daño con [Cacería Lunar], el daño de [Eclipse Solar] contra ese objetivo aumenta en #2 durante 3 s; tras infligir daño con [Eclipse Solar], el daño de [Cacería Lunar] contra ese objetivo aumenta en #2 durante 3 s.",
+          "[Cacería Lunar] nivel +2, [Gritos Entrelazados] nivel +1.",
+          "Aumenta la Curación Recibida de Dama Nifle en #3 y su Recuperación de Cordura en #4.",
+          "[Réquiem del Mar Nebuloso] nivel +2; [Gritos Entrelazados] nivel +1.",
+          "Al infligir daño con un arma a distancia, hay #5 de probabilidad de generar aleatoriamente [Cacería Lunar] o [Eclipse Solar] en la posición del objetivo. Se activa como máximo una vez por segundo."
+        ]
       },
       "FR": {
         "name": "Dame Nifle",
         "subtitle": "Passeuse de la Mer du Silence",
         "birthday": "Église Élyséenne",
         "force": "Aucune affiliation",
-        "campName": "Aucune affiliation"
+        "campName": "Aucune affiliation",
+        "intronEffects": [
+          "Augmente la Chance d’activation de l’effet de [Lamentation entrelacée] de #1, et sa limite passe à #6.",
+          "Lorsqu’une [Chasse lunaire] inflige des dégâts, la cible subit +#2 de dégâts d’[Éclipse solaire] pendant 3 s.\nInversement, lorsqu’une [Éclipse solaire] inflige des dégâts, la cible subit +#2 de dégâts de [Chasse lunaire] pendant 3 s.",
+          "Niveau de [Chasse lunaire] +2, niveau de [Lamentation entrelacée] +1.",
+          "Augmente les soins reçus par Dame Nifle de #3 et sa Régénération de Lucidité de #4.",
+          "[Requiem de la Mer du Silence] niveau +2 ; [Lamentation entrelacée] niveau +1.",
+          "Lorsque Dame Nifle inflige des dégâts avec une arme à distance, a #5 de chance de générer aléatoirement 1 [Chasse lunaire] ou 1 [Éclipse solaire] à l’emplacement de la cible. Effet limité à une fois par seconde."
+        ]
       },
       "JP": {
         "name": "ニフル夫人",
         "subtitle": "ニヴルヘイムの導き手",
         "birthday": "エリュシオン礼賛会",
         "force": "なし",
-        "campName": "無所属"
+        "campName": "無所属",
+        "intronEffects": [
+          "「百鳥の輪唱」効果確率が#1アップする（確率上限が#6までアップ）。",
+          "「日食」でダメージを与えると、3秒以内に目標が受ける「月食」ダメージが#2アップする。また「月食」でダメージを与えると、3秒以内に目標が受ける「日食」ダメージが#2アップする。",
+          "「月食」Lv.+2、「百鳥の輪唱」Lv.+1。",
+          "自身の受けた回復効果が#3アップし、SP回復量が#4アップする。",
+          "「ニヴルヘイムのレクイエム」レベル+2、「百鳥の輪唱」レベル+1。",
+          "遠隔武器でダメージを与えると、#5の確率で目標位置に1個の「月食」または「日食」を生成する。この効果は1秒ごとに1回のみ発動できる。"
+        ]
       },
       "KR": {
         "name": "나이플 부인",
         "subtitle": "안개의 바다의 인도자",
         "birthday": "엘리시안 교회",
         "force": "없음",
-        "campName": "무소속"
+        "campName": "무소속",
+        "intronEffects": [
+          "[뒤엉킨 울음] 효과 확률 상승 #1, 확률 상한 #6까지 증가.",
+          "[달 사냥]으로 대미지를 입힌 후, 3초 동안 대상이 받는 [일식] 대미지가 #2 상승한다. [일식]으로 대미지를 입힌 후, 3초 동안 대상이 받는 [달 사냥]의 대미지가 #2 상승한다.",
+          "[달 사냥] 레벨+2, [뒤엉킨 울음] 레벨+1",
+          "자신이 받은 치료 상승 #3, 정신력 회복량 상승 #4.",
+          "[안개의 바다 진혼] 레벨+2, [뒤엉킨 울음] 레벨+1.",
+          "원거리 무기로 대미지 입힐 시, #5 확률로 대상 위치에 1발의 [달 사냥] 또는 [일식] 랜덤 생성, 효과는 매초 최대 1회 발동."
+        ]
       },
       "TC": {
         "name": "妮弗爾夫人",
         "subtitle": "霧海引渡人",
         "birthday": "艾利西安傳頌會",
         "force": "無",
-        "campName": "無陣營"
+        "campName": "無陣營",
+        "intronEffects": [
+          "「啼鳴交織」效果概率增加#1，概率上限增加至#6。",
+          "[月獵]造成傷害後，目標在3秒內受到[日食]的傷害提高#2；[日食]造成傷害後，目標在3秒內受到[月獵]的傷害提高#2。",
+          "[月獵]等級+2，[啼鳴交織]等級+1。",
+          "自身受到的治療提高#3，神智回復量提高#4。",
+          "「霧海安魂」等級+2，「啼鳴交織」等級+1。",
+          "使用遠端武器造成傷害時，有#5概率在目標位置隨機生成1枚「月獵」或「日食」，效果每秒最多觸發1次。"
+        ]
       }
     }
   },
@@ -5196,6 +6846,25 @@
         "resourceId": 1001503,
         "resourceNum": 30
       }
+    ],
+    "intronDescriptionKeys": [
+      "GRADEUP_1503_01",
+      "GRADEUP_1503_02",
+      "GRADEUP_1503_03",
+      "GRADEUP_1503_04",
+      "GRADEUP_1503_05",
+      "GRADEUP_1503_06"
+    ],
+    "intronParameters": [
+      "$#Buff[150307].AddAttrs[1].Value*100-#Buff[150301].AddAttrs[1].Value*100$%",
+      "$#PassiveEffect[150301].Vars.Grade2AddSp$",
+      "$#PassiveEffect[150301].Vars.Grade2CDTime$",
+      "$#Buff[150327].BuffDamagedRate.Value*(-100)$%",
+      "$#SkillEffects[150325].TaskEffects[3].LastTime$",
+      "$#Buff[150328].AddAttrs[1].Value*100$%",
+      "$#PassiveEffect[150301].Vars.Grade6BuffTime$",
+      "$#Buff[150326].AddAttrs[1].Value*100$%",
+      "$#PassiveEffect[150301].Vars.Grade2BuffTime$"
     ],
     "baseStats": {
       "atk": 25,
@@ -5300,49 +6969,105 @@
         "subtitle": "Schwertdrift",
         "birthday": "Huaxu",
         "force": "Außenberge – Wanderer",
-        "campName": "Huaxu"
+        "campName": "Huaxu",
+        "intronEffects": [
+          "Erhöht den Effektprozentsatz von [Schwertabsicht]/[Saitenabsicht], der bei [Das Leben treibt, die Gezeiten wandeln] angewendet wird, um #1. Befindet sich im Umkreis von 20 Metern 1/2 Gegner, wird der gemeinsame Umwandlungspunkt zwischen [Schwertabsicht] und [Saitenabsicht] beim Verursachen von Waffen-SCH durch Kezhou auf 3/2 Punkte erhöht.",
+          "Wenn ein Bonuseffekt ausgelöst wird, wird der verursachte SCH um #8 für #9 Sek. erhöht und es wird #2 Punkte Geist wiederhergestellt. Die Geist-Wiederherstellung kann einmal alle #3 Sek. ausgelöst werden.",
+          "Stufe von [Drift der Jugend] +2; Stufe von [Das Leben treibt, die Gezeiten wandeln] +1.",
+          "Beim Einsatz von [Sternenstreifendes Frostschwert] erhält Kezhou [Gesegnet von Wind und Mond]: Immun gegen Trefferstarre und reduziert den erlittenen SCH um #4 für #5 Sek.",
+          null,
+          "Beim Auslösen eines Bonuseffekts wird Kezhous Durchschlag um #6 für #7 Sek. erhöht, bis zu 6-mal stapelbar."
+        ]
       },
       "EN": {
         "name": "Kezhou",
         "subtitle": "Drift of the Sword",
         "birthday": "Huaxu",
         "force": "Outer Peaks – Drifter",
-        "campName": "Huaxu"
+        "campName": "Huaxu",
+        "intronEffects": [
+          null,
+          "When damage triggers a bonus effect, gains +#8 Damage Dealt for #9s and restores #2 Sanity. Sanity restoration can occur once every #3s.",
+          "[Drift of Youth] Level +2; [Life's A Fleeting, Shifting Tide] Level +1.",
+          "When using [Lightswords Slice Starry Streams], Kezhou gains [Blessed by Wind and Moon]: Grants immunity to Hitstun and reduces Damage Taken by #4 for #5s.",
+          null,
+          "When triggering Bonus Effect, Kezhou gains 1 stack that increases his PEN stats by #6 for #7s, up to 18 stacks."
+        ]
       },
       "ES": {
         "name": "Kezhou",
         "subtitle": "Deriva de la Espada",
         "birthday": "Huaxu",
         "force": "Picos Exteriores - Errante",
-        "campName": "Huaxu"
+        "campName": "Huaxu",
+        "intronEffects": [
+          "Aumenta en #1 el porcentaje de efecto de [Intención de Espada]/[Intención de Cuerda] aplicado a [La vida deriva, las fuerzas se invierten]. Cuando hay 1/2 enemigo/s dentro de 20 metros, el punto de conversión mutua entre [Intención de Espada] e [Intención de Cuerda] aumenta a 3/2 puntos cuando Kezhou inflige daño de arma.",
+          "Al activar un efecto adicional con daño, obtiene daño infligido +#8 durante #9s y restaura #2 de Cordura. La restauración de Cordura puede ocurrir una vez cada #3 s.",
+          "[Deriva de la Juventud] nivel +2; [La vida deriva, las fuerzas se invierten] nivel +1.",
+          "Al usar la Habilidad Definitiva, Kezhou obtiene [Bendecido por el Viento y la Luna]: Otorga inmunidad al Aturdimiento de golpe y reduce el Daño Recibido en #4 durante #5 s.",
+          "[Sables de Luz Cortan Corrientes Estrelladas] nivel +2; [La vida deriva, las fuerzas se invierten] nivel +1.",
+          "Al activar un efecto adicional, Kezhou obtiene 1 acumulación de penetración de atributo +#6 durante #7s, hasta 18 acumulaciones."
+        ]
       },
       "FR": {
         "name": "Kezhou",
         "subtitle": "Lame Vagabonde",
         "birthday": "Huaxu",
         "force": "Les Pics Extérieurs – Vagabond",
-        "campName": "Huaxu"
+        "campName": "Huaxu",
+        "intronEffects": [
+          "Augmente les bonus d’[Élan de lame] et d’[Élan de corde] fournis par [La vie dérive, les forces s’inversent] de #1 chacun.\nS’il n’y a qu’un seul ennemi dans un rayon de 20 m, chaque conversion d’[Élan de lame] et d’[Élan de corde] vaut 3 pts ;\ns’il y en a deux, chaque conversion vaut 2 pts.",
+          "Lorsque des dégâts déclenchent un Effet supplémentaire, confère un bonus de +#8 aux dégâts infligés pendant #9 s, et restaure #2 de Lucidité.\nCet effet de restauration ne peut se produire qu’une fois toutes les #3 s.",
+          "[Errance juvénile] niveau +2 ; [La vie dérive, les forces s’inversent] niveau +1.",
+          "Après avoir utilisé sa compétence ultime, obtient [Vent caressant, lune voilée] : immunité aux interruptions et réduction des dégâts subis de #4 pendant #5 s.",
+          "[Ciel tranché par la lumière] niveau +2 ; [La vie dérive, les forces s’inversent] niveau +1.",
+          "Lorsqu’un Effet supplémentaire est déclenché, obtient 1 cumul de Pénétration +#6 pendant #7 s, jusqu’à 18 cumuls."
+        ]
       },
       "JP": {
         "name": "カシュウ",
         "subtitle": "放浪の剣士",
         "birthday": "華胥",
         "force": "山外山・流れ者",
-        "campName": "華胥"
+        "campName": "華胥",
+        "intronEffects": [
+          "「無常たる浮世」の「剣意」と「弦意」バフ倍率が#1アップする。\n自身の20メートル以内に敵1体しかいない場合は、武器ダメージで転換された「剣意」は3点となる。\n自身の20メートル以内に敵2体しかいない場合は、武器ダメージで転換された「弦意」は2点となる。",
+          "ダメージで追加効果を発動すると、与ダメージアップ#8を獲得、#9秒継続。さらにSPを#2回復。このSP回復効果は#3秒ごとに最大1回まで。",
+          "「少年の遊」レベル+2、「無常たる浮世」レベル+1",
+          "必殺技を発動すると、「月影風陣」を得る：#5秒間ダメージを受けてものけ反らなくなり、被ダメージが#4ダウンする。",
+          "「星霜の神撃」レベル+2、「無常たる浮世」レベル+1。",
+          "ダメージを与えて追加効果が発動すると、#7秒間属性貫通効果#6アップの効果を得る（最大18回まで重ねがけ可）。"
+        ]
       },
       "KR": {
         "name": "각주",
         "subtitle": "방랑 검객",
         "birthday": "화서",
         "force": "산외산·나그네",
-        "campName": "화서"
+        "campName": "화서",
+        "intronEffects": [
+          "[인생무상]의 [검의 의지], [현의 의지]마다 수익 배율 #1 증가. 주변 20m 내 1/2명의 적만 있으면 무기 대미지를 입힐 때마다 전환되는 [검의 의지], [현의 의지]가 3/2 된다.",
+          "대미지를 입혀 추가 효과 발동 시, 입히는 대미지 #8 상승 효과를 획득한다. 지속 시간 #9초, 자신이 정신력을 #2 회복한다. 정신력 회복 효과는 #3초마다 최대 1회 발한다.",
+          "[소년유] 레벨+2, [인생무상] 레벨+1.",
+          "종결 스킬 시전 후, [달빛을 스치는 바람] 획득. 대미지를 받을 때 경직되지 않으며, 받는 대미지 #4 감소, 지속 시간 #5초.",
+          "[서리검 유성 털기] 레벨+2, [인생무상] 레벨+1.",
+          "대미지를 입혀 추가 효과 발동 시, 1단계의 속성 관통 #6 상승 효과 획득, 지속 시간 #7초, 최대 18단계 중첩."
+        ]
       },
       "TC": {
         "name": "刻舟",
         "subtitle": "仗劍遊",
         "birthday": "華胥",
         "force": "山外山·飄零人",
-        "campName": "華胥"
+        "campName": "華胥",
+        "intronEffects": [
+          "「浮生多變化」的每點「劍意值」「弦意值」收益倍率增加#1，自身周圍20米內僅有1/2名敵人時，每次造成武器傷害時轉化的「劍意值」「弦意值」變為3/2點。",
+          "造成的傷害觸發額外效果時，獲得造成的傷害提高#8效果，持續#9秒，自身回復#2點神智，回復神智的效果每#3秒最多觸發1次。",
+          "「少年遊」等級+2，「浮生多變化」等級+1。",
+          "釋放終結技後，獲得「風拂月照」：受到傷害時不會產生僵直，受到的傷害降低#4，持續#5秒。",
+          "「霜劍拂流星」等級+2，「浮生多變化」等級+1。",
+          "造成的傷害觸發額外效果時，獲得1層屬性穿透提高#6的效果，持續#7秒，最多疊加18層。"
+        ]
       }
     }
   },
@@ -5401,6 +7126,20 @@
         "resourceId": 1001504,
         "resourceNum": 30
       }
+    ],
+    "intronDescriptionKeys": [
+      "GRADEUP_1504_01",
+      "GRADEUP_1504_02",
+      "GRADEUP_1504_03",
+      "GRADEUP_1504_04",
+      "GRADEUP_1504_05",
+      "GRADEUP_1504_06"
+    ],
+    "intronParameters": [
+      "$#Buff[150421].MaxLayer$",
+      "$#TargetFilter[#SkillEffects[150476].TargetFilter].LuaFilterParaments.Radius/100$$GText(\\\"SKILL_DESC_Meter\\\")$",
+      "$#Buff[150404].AddAttrs[1].Value*100$%",
+      "$#PassiveEffect[150401].Vars.Grade6DamagePer*100$%"
     ],
     "baseStats": {
       "atk": 29,
@@ -5506,49 +7245,105 @@
         "subtitle": "Junger Drachen",
         "birthday": "Huaxu",
         "force": "Outer Peaks – Drifter",
-        "campName": "Huaxu"
+        "campName": "Huaxu",
+        "intronEffects": [
+          "Wenn das [Kunstwerker-Großschwert] oder das [Kunstwerker-Geschütz] SCH verursacht, wird am Zielort zusätzlich eine Instanz von Lumino-AoE-SCH ausgelöst. Dieser Effekt kann alle 0,5 Sek. einmal ausgelöst werden.",
+          "[Kunstwerker-Vorrat] erhöht zusätzlich den Fähigkeits-SCH.",
+          "Stufe von [Gleitflug] +2, Stufe von [Kunstwerker-Kinetik] +1.",
+          "Jedes vom [Kunstwerker-Arsenal] abgefeuerte Projektil stellt dem [Kunstwerker-Schild] LP wieder her. Solange der Schild aktiv ist, wird erlittenen Schaden reduziert.",
+          "Stufe von [Kunstwerker-Bewaffnung] +2, Stufe von [Kunstwerker-Kinetik] +1.",
+          "Für 10 Sekunden nach Einsatz des Ultimates stellt jedes abgefeuerte Geschoss des [Kunstwerker-Arsenals] 1 Geschoss wieder her, und die Obergrenze der Überhitzung wird auf 600 erhöht."
+        ]
       },
       "EN": {
         "name": "Su Yi",
         "subtitle": "Plumes of Gilded Dawn",
         "birthday": "Huaxu",
         "force": "Outer Peaks – Drifter",
-        "campName": "Huaxu"
+        "campName": "Huaxu",
+        "intronEffects": [
+          "Maximum [Overheat] stacks increased to 200. Gain 2 [Overheat] stacks for each round consumed by [Artificer Armament].",
+          "While [Artificer Armament] is active, [Artificer Cannon] automatically performs 4 ranged attacks every 5 seconds and grants the user 8 stacks of [Overheat]. These attacks do not consume [Artificer Ammo].",
+          "[Cruise] Level ＋2, [Artificer Kinetics] Level ＋1.",
+          null,
+          "[Artificer Armament] Level ＋2, [Artificer Kinetics] Level ＋1.",
+          "Each stack of [Artificer Supply] additionally increases All-Element Penetration by #3. When an [Artificer Drone] is launched, two extra drones are generated, each dealing 50% of the original DMG."
+        ]
       },
       "ES": {
         "name": "Su Yi",
         "subtitle": "Joven Milano",
         "birthday": "Huaxu",
         "force": "Outer Peaks – Drifter",
-        "campName": "Huaxu"
+        "campName": "Huaxu",
+        "intronEffects": [
+          "Cuando la [Gran espada del artífice] o el [Cañón del artífice] inflige daño, se activa una instancia adicional de Daño Lumino de área en la ubicación del objetivo. Este efecto puede activarse una vez cada 0,5 s.",
+          "[Suministro del artífice] también aumenta el Daño de Habilidad infligido.",
+          "[Crucero] Niv. +2; [Potencial del artífice] Niv. +1.",
+          "Cada proyectil consumido por la [Plataforma del artífice] restaura PV al [Escudo del artífice]. Mientras el [Escudo del artífice] esté activo, el daño recibido se reduce.",
+          "[Armamento del artífice] Niv. +2; [Potencial del artífice] Niv. +1.",
+          "Durante 10 s después de usar la Habilidad definitiva, cada proyectil disparado por la [Plataforma del artífice] restaura 1 proyectil, y el límite de acumulaciones de [Sobrecalentamiento] aumenta a 600."
+        ]
       },
       "FR": {
         "name": "Su Yi",
         "subtitle": "Premier Envol",
         "birthday": "Huaxu",
         "force": "Les Pics Extérieurs – Vagabond",
-        "campName": "Huaxu"
+        "campName": "Huaxu",
+        "intronEffects": [
+          "Le nombre maximal de cumuls d’[Accumulation] est augmenté à #1.\nChaque [Poudre d’artifice] consommée confère 2 cumuls d’[Accumulation].",
+          "Pendant l’état [Mode annihilation stellaire], [Pluie d’étoiles] effectue automatiquement 4 attaques à distance toutes les 5 secondes et confère 8 cumuls d’[Accumulation], sans consommer de [Poudre d’artifice].",
+          "[Poursuite du soleil] niveau +2 ; [Puissance accumulée] niveau +1.",
+          "Lorsque vous infligez des Dégâts de compétence, une probabilité basée sur votre arme à distance peut déclencher un Effet supplémentaire Lumino.\nLorsque cet effet est déclenché, les ennemis dans un rayon de #2 sont attirés vers le centre de l’impact.\nCet effet peut se déclencher au maximum une fois par seconde.",
+          "[Mode annihilation stellaire] niveau +2 ; [Puissance accumulée] niveau +1.",
+          "Chaque cumul d’[Errance céleste] confère #3 de Pénétration tous attributs supplémentaire.\nLorsque la méchapoupée Fengshi est projetée, 2 unités supplémentaires sont générées. Chacune inflige #4 des dégâts initiaux."
+        ]
       },
       "JP": {
         "name": "スーイー",
         "subtitle": "新しき翼",
         "birthday": "華胥",
         "force": "華胥 流れ者",
-        "campName": "華胥"
+        "campName": "華胥",
+        "intronEffects": [
+          "[オーバーヒート]の上限が200層に増加する。[天工プラットフォーム]の弾丸を1発消費するたびに[オーバーヒート]を2層獲得。",
+          "［天工神器］状態継続中、［天工神器・砲］は5秒ごとに自動で遠隔攻撃を4回行い、［オーバーヒート］を8スタック獲得する。この攻撃は［天工弾薬］を消費しない。",
+          "［巡航］Lv.+2、［天工ポテンシャル］Lv.+1。",
+          "自身がスキルダメージを与える時、遠隔武器の発動確率に基づいて、光属性の追加効果を発動できる。\n自身の与ダメージで追加効果が発動した時、半径#2以内の対象をダメージ中心へ引き寄せる。この効果は1秒に最大1回まで発動する。",
+          "［天工武器］Lv.+2、［天工ポテンシャル］Lv.+1。",
+          "［天工補給］1スタックにつき、全属性貫通が#3追加でアップする。［天工神器・機］が飛び出す際、さらに2機追加で生成され、各機のダメージ倍率は元の50%となる。"
+        ]
       },
       "KR": {
         "name": "소을",
         "subtitle": "새로운 실험의 날개",
         "birthday": "화서",
         "force": "산외산·나그네",
-        "campName": "화서"
+        "campName": "화서",
+        "intronEffects": [
+          "[과열]이 최대 200까지 중첩된다. [천공 플랫폼] 탄환 1개를 소모할 때마다 [과열]이 2단계 중첩된다.",
+          "[천공 신기] 상태 지속 중, [천공 신기-캐논]이 5초마다 자동으로 원거리 공격 4회를 수행하며, [과열] 8단계를 획득한다. [천공 탄약]은 소모되지 않는다.",
+          "[순항] 레벨+2, [천공 위치에너지] 레벨+1",
+          "자신이 스킬 대미지를 입힐 시 원거리 무기 발동 확률에 따라 빛 속성 추가 효과를 발동할 수 있다.\n자신이 입히는 대미지로 추가 효과가 발동할 경우, 반경 #2 내의 대상이 대미지 중심으로 끌려오며, 효과는 1초당 최대 1회 발동된다.",
+          "[천공 무기] 레벨+2, [천공 위치에너지] 레벨+1",
+          "[천공 보급] 1단계마다 모든 속성 관통이 #3만큼 추가로 상승한다. [천공 신기-호위기] 발사 시, 추가로 2대를 생성하며, 대당 대미지 배율은 기존의 50%를 적용한다."
+        ]
       },
       "TC": {
         "name": "蘇乙",
         "subtitle": "試新羽",
         "birthday": "華胥",
         "force": "山外山·飄零人",
-        "campName": "華胥"
+        "campName": "華胥",
+        "intronEffects": [
+          "[過熱]最大層數變為200層，每消耗[天工平台]1枚子彈，獲得2層[過熱]",
+          "[殲星模式]狀態持續期間，[星如雨]每5秒自動進行4次遠程攻擊並獲得8層[蓄勢]，不消耗[天工火藥]。",
+          "[巡航]等級+2，[天工勢能]等級+1。",
+          "自身造成技能傷害時可以基於遠端武器觸發概率觸發光屬性額外效果。\n自身造成的傷害觸發額外效果時，將半徑#2內的目標拉向傷害中心,效果每1秒最多觸發1次。",
+          "[天工武器]等級+2，[天工勢能]等級+1。",
+          "每層[遨遊]額外提供#3全屬性穿透提高。[風師機傀]飛出時額外生成2架，每架的傷害倍率為原本的#4。"
+        ]
       }
     }
   },
@@ -5607,6 +7402,23 @@
         "resourceId": 1001601,
         "resourceNum": 30
       }
+    ],
+    "intronDescriptionKeys": [
+      "GRADEUP_1601_01",
+      "GRADEUP_1601_02",
+      "GRADEUP_1601_03",
+      "GRADEUP_1601_04",
+      "GRADEUP_1601_05",
+      "GRADEUP_1601_06"
+    ],
+    "intronParameters": [
+      "$#PassiveEffect[160101].Vars.AddDamageRate*100$%",
+      "$#SkillCreature[160103].TimeLife$",
+      "$#Buff[160102].AddAttrs[1].Value*(-100)$%",
+      "$#Buff[160103].AddAttrs[1].Value*100$%",
+      "$#PassiveEffect[160101].Vars.BuffLastTime$",
+      "$#Buff[160103].MaxLayer$",
+      "$#Buff[160104].AddAttrs[1].Value*100$%"
     ],
     "baseStats": {
       "atk": 22,
@@ -5706,49 +7518,105 @@
         "subtitle": "Vita / Mors",
         "birthday": null,
         "force": null,
-        "campName": "Keine Zugehörigkeit"
+        "campName": "Keine Zugehörigkeit",
+        "intronEffects": [
+          "Mit [Weißglut] wird der SCH der Schwertwellen von [Morgendämmerung jenseits der Nacht] um #1 erhöht.",
+          "Beim Einsatz von [Leuchtblitz] wrd ein [Prisma]-Feld mit einem Radius von 10 m erzeugt, das #2 Sek. anhält. Verringert kontinuierlich die Bewegungs-GES der Gegner im Feld um #3.",
+          "Stufe von [Morgendämmerung jenseits der Nacht] +2, Stufe von [Streuung] +1.",
+          "Beim Einsatz einer Fähigkeit wird die Angriffs-GES um #4 für #5 Sek. erhöht, bis zu #6-mal stapelbar.",
+          "Stufe von [Leuchtblitz] +2, Stufe von [Streuung] +1.",
+          "[Weißglut] gewährt zusätzlich +#7 KRIT-Rate."
+        ]
       },
       "EN": {
         "name": "Female Protagonist",
         "subtitle": "Vita / Mors",
         "birthday": null,
         "force": null,
-        "campName": "No Affiliation"
+        "campName": "No Affiliation",
+        "intronEffects": [
+          "While under [Incandescence], [Dawn Beyond Night]'s Swordwaves deal #1 more damage.",
+          "Casting [Flare] creates a [Prism] field with a 10-metre radius that lasts for #2s. Continuously reduces the Movement Speed of enemies inside by #3.",
+          "[Dawn Beyond Night] Level +2, [Diffusion] Level +1.",
+          "Using a skill grants +#4 ATK Speed for #5s, stacking up to #6 times.",
+          "[Flare] Level +2, [Diffusion] Level +1.",
+          "[Incandescence] additionally grants +#7 CRIT Chance."
+        ]
       },
       "ES": {
         "name": "Protagonista Femenina",
         "subtitle": "Vita / Mors",
         "birthday": null,
         "force": null,
-        "campName": "Sin afiliación"
+        "campName": "Sin afiliación",
+        "intronEffects": [
+          "Con [Incandescencia], las ondas de espada de [Aurora y Crepúsculo] infligen #1 más de daño.",
+          "Al usar [Llamarada], crea un campo [Prisma] de 10 m de radio que dura #2 s. Los enemigos dentro del campo sufren una reducción continua de Velocidad de Movimiento de #3.",
+          "[Aurora y Crepúsculo] nivel +2, [Difusión] nivel +1.",
+          "Al usar una Habilidad de combate, obtienes Velocidad de Ataque +#4 durante #5 s, hasta #6 acumulaciones.",
+          "[Llamarada] nivel +2, [Difusión] nivel +1.",
+          "[Incandescencia] también otorga Prob. CRIT +#7."
+        ]
       },
       "FR": {
         "name": "Protagoniste Feminine",
         "subtitle": "Vita / Mors",
         "birthday": null,
         "force": null,
-        "campName": "Aucune affiliation"
+        "campName": "Aucune affiliation",
+        "intronEffects": [
+          "Sous [Incandescence], les ondes tranchantes d’[Aurore et Crépuscule] infligent +#1 dégâts.",
+          "Lors de l’utilisation de [Flamboiement], crée une zone [Prisme] de 10 m de rayon durant #2 s. Les ennemis présents dans la zone voient leur Vitesse de déplacement réduite de #3 en continu.",
+          "[Aurore et Crépuscule] niveau +2 ; [Diffusion] niveau +1.",
+          "L’utilisation d’une compétence confère +#4 % de Vitesse d’attaque pendant #5 s, jusqu’à #6 cumuls.",
+          "[Flamboiement] niveau +2 ; [Diffusion] niveau +1.",
+          "[Incandescence] confère également +#7 % de Taux CRIT."
+        ]
       },
       "JP": {
         "name": "女性主人公",
         "subtitle": "Vita / Mors",
         "birthday": null,
         "force": null,
-        "campName": "無所属"
+        "campName": "無所属",
+        "intronEffects": [
+          "自身が「白熱」を持つ時、「晨昏」の剣気ダメージが#1アップする。",
+          "「飛芒」を発動すると、半径10メートルに#2秒間持続する「プリズム」領域を1個生成する。領域内の敵は、移動速度低下#3の効果を継続的に付与される。",
+          "「晨昏」レベル+2、「散射」レベル+1。",
+          "スキル発動時、自身に攻撃速度アップ#4を1スタック付与（#5秒継続、最大#6スタックまで重ねがけ可）。",
+          "「飛芒」レベル+2、「散射」レベル+1。",
+          "「白熱」は追加でクリティカル率アップ#7を付与する。"
+        ]
       },
       "KR": {
         "name": "여성 주인공",
         "subtitle": "Vita / Mors",
         "birthday": null,
         "force": null,
-        "campName": "무소속"
+        "campName": "무소속",
+        "intronEffects": [
+          "자신이 [백열] 보유 시 [조석]의 검기 대미지가 #1 상승한다.",
+          "[빛보라] 발동 시, 반경 10m의 [프리즘] 영역을 1개 생성한다, 지속 시간 #2초. 영역 내의 적에게 이동 속도 감소 #3 효과를 부여한다.",
+          "[조석] 레벨+2, [난반사] 레벨+1",
+          "스킬 시전 시, 자신이 1단계의 공격 속도 #4 상승 효과를 획득한다. 지속 시간 #5초, 최대 #6단계 중첩.",
+          "[빛보라] 레벨+2, [난반사] 레벨+1",
+          "[백열]이 추가로 크리티컬 확률 #7 상승 효과를 제공한다."
+        ]
       },
       "TC": {
         "name": "女主角",
         "subtitle": "Vita / Mors",
         "birthday": null,
         "force": null,
-        "campName": "無陣營"
+        "campName": "無陣營",
+        "intronEffects": [
+          "自身帶有[白熾]時，[晨昏]的劍氣傷害提高#1。",
+          "釋放[飛芒]時，生成1個半徑10米[稜鏡]領域，持續#2秒。領域內的敵人被持續附加移動速度降低#3的效果。",
+          "[晨昏]等級+2，[散射]等級+1。",
+          "釋放技能時，自身獲得1層攻擊速度提高#4的效果，持續#5秒，最多疊加#6層。",
+          "[飛芒]等級+2，[散射]等級+1。",
+          "[白熾]額外提供暴擊率提高#7的效果。"
+        ]
       }
     }
   },
@@ -5807,6 +7675,23 @@
         "resourceId": 1001601,
         "resourceNum": 30
       }
+    ],
+    "intronDescriptionKeys": [
+      "GRADEUP_1601_01",
+      "GRADEUP_1601_02",
+      "GRADEUP_1601_03",
+      "GRADEUP_1601_04",
+      "GRADEUP_1601_05",
+      "GRADEUP_1601_06"
+    ],
+    "intronParameters": [
+      "$#PassiveEffect[160101].Vars.AddDamageRate*100$%",
+      "$#SkillCreature[160103].TimeLife$",
+      "$#Buff[160102].AddAttrs[1].Value*(-100)$%",
+      "$#Buff[160103].AddAttrs[1].Value*100$%",
+      "$#PassiveEffect[160101].Vars.BuffLastTime$",
+      "$#Buff[160103].MaxLayer$",
+      "$#Buff[160104].AddAttrs[1].Value*100$%"
     ],
     "baseStats": {
       "atk": 22,
@@ -5906,49 +7791,105 @@
         "subtitle": "Vita / Mors",
         "birthday": null,
         "force": null,
-        "campName": "Keine Zugehörigkeit"
+        "campName": "Keine Zugehörigkeit",
+        "intronEffects": [
+          "Mit [Weißglut] wird der SCH der Schwertwellen von [Morgendämmerung jenseits der Nacht] um #1 erhöht.",
+          "Beim Einsatz von [Leuchtblitz] wrd ein [Prisma]-Feld mit einem Radius von 10 m erzeugt, das #2 Sek. anhält. Verringert kontinuierlich die Bewegungs-GES der Gegner im Feld um #3.",
+          "Stufe von [Morgendämmerung jenseits der Nacht] +2, Stufe von [Streuung] +1.",
+          "Beim Einsatz einer Fähigkeit wird die Angriffs-GES um #4 für #5 Sek. erhöht, bis zu #6-mal stapelbar.",
+          "Stufe von [Leuchtblitz] +2, Stufe von [Streuung] +1.",
+          "[Weißglut] gewährt zusätzlich +#7 KRIT-Rate."
+        ]
       },
       "EN": {
         "name": "Male Protagonist",
         "subtitle": "Vita / Mors",
         "birthday": null,
         "force": null,
-        "campName": "No Affiliation"
+        "campName": "No Affiliation",
+        "intronEffects": [
+          "While under [Incandescence], [Dawn Beyond Night]'s Swordwaves deal #1 more damage.",
+          "Casting [Flare] creates a [Prism] field with a 10-metre radius that lasts for #2s. Continuously reduces the Movement Speed of enemies inside by #3.",
+          "[Dawn Beyond Night] Level +2, [Diffusion] Level +1.",
+          "Using a skill grants +#4 ATK Speed for #5s, stacking up to #6 times.",
+          "[Flare] Level +2, [Diffusion] Level +1.",
+          "[Incandescence] additionally grants +#7 CRIT Chance."
+        ]
       },
       "ES": {
         "name": "Protagonista Masculino",
         "subtitle": "Vita / Mors",
         "birthday": null,
         "force": null,
-        "campName": "Sin afiliación"
+        "campName": "Sin afiliación",
+        "intronEffects": [
+          "Con [Incandescencia], las ondas de espada de [Aurora y Crepúsculo] infligen #1 más de daño.",
+          "Al usar [Llamarada], crea un campo [Prisma] de 10 m de radio que dura #2 s. Los enemigos dentro del campo sufren una reducción continua de Velocidad de Movimiento de #3.",
+          "[Aurora y Crepúsculo] nivel +2, [Difusión] nivel +1.",
+          "Al usar una Habilidad de combate, obtienes Velocidad de Ataque +#4 durante #5 s, hasta #6 acumulaciones.",
+          "[Llamarada] nivel +2, [Difusión] nivel +1.",
+          "[Incandescencia] también otorga Prob. CRIT +#7."
+        ]
       },
       "FR": {
         "name": "Protagoniste Masculin",
         "subtitle": "Vita / Mors",
         "birthday": null,
         "force": null,
-        "campName": "Aucune affiliation"
+        "campName": "Aucune affiliation",
+        "intronEffects": [
+          "Sous [Incandescence], les ondes tranchantes d’[Aurore et Crépuscule] infligent +#1 dégâts.",
+          "Lors de l’utilisation de [Flamboiement], crée une zone [Prisme] de 10 m de rayon durant #2 s. Les ennemis présents dans la zone voient leur Vitesse de déplacement réduite de #3 en continu.",
+          "[Aurore et Crépuscule] niveau +2 ; [Diffusion] niveau +1.",
+          "L’utilisation d’une compétence confère +#4 % de Vitesse d’attaque pendant #5 s, jusqu’à #6 cumuls.",
+          "[Flamboiement] niveau +2 ; [Diffusion] niveau +1.",
+          "[Incandescence] confère également +#7 % de Taux CRIT."
+        ]
       },
       "JP": {
         "name": "男性主人公",
         "subtitle": "Vita / Mors",
         "birthday": null,
         "force": null,
-        "campName": "無所属"
+        "campName": "無所属",
+        "intronEffects": [
+          "自身が「白熱」を持つ時、「晨昏」の剣気ダメージが#1アップする。",
+          "「飛芒」を発動すると、半径10メートルに#2秒間持続する「プリズム」領域を1個生成する。領域内の敵は、移動速度低下#3の効果を継続的に付与される。",
+          "「晨昏」レベル+2、「散射」レベル+1。",
+          "スキル発動時、自身に攻撃速度アップ#4を1スタック付与（#5秒継続、最大#6スタックまで重ねがけ可）。",
+          "「飛芒」レベル+2、「散射」レベル+1。",
+          "「白熱」は追加でクリティカル率アップ#7を付与する。"
+        ]
       },
       "KR": {
         "name": "남성 주인공",
         "subtitle": "Vita / Mors",
         "birthday": null,
         "force": null,
-        "campName": "무소속"
+        "campName": "무소속",
+        "intronEffects": [
+          "자신이 [백열] 보유 시 [조석]의 검기 대미지가 #1 상승한다.",
+          "[빛보라] 발동 시, 반경 10m의 [프리즘] 영역을 1개 생성한다, 지속 시간 #2초. 영역 내의 적에게 이동 속도 감소 #3 효과를 부여한다.",
+          "[조석] 레벨+2, [난반사] 레벨+1",
+          "스킬 시전 시, 자신이 1단계의 공격 속도 #4 상승 효과를 획득한다. 지속 시간 #5초, 최대 #6단계 중첩.",
+          "[빛보라] 레벨+2, [난반사] 레벨+1",
+          "[백열]이 추가로 크리티컬 확률 #7 상승 효과를 제공한다."
+        ]
       },
       "TC": {
         "name": "男主角",
         "subtitle": "Vita / Mors",
         "birthday": null,
         "force": null,
-        "campName": "無陣營"
+        "campName": "無陣營",
+        "intronEffects": [
+          "自身帶有[白熾]時，[晨昏]的劍氣傷害提高#1。",
+          "釋放[飛芒]時，生成1個半徑10米[稜鏡]領域，持續#2秒。領域內的敵人被持續附加移動速度降低#3的效果。",
+          "[晨昏]等級+2，[散射]等級+1。",
+          "釋放技能時，自身獲得1層攻擊速度提高#4的效果，持續#5秒，最多疊加#6層。",
+          "[飛芒]等級+2，[散射]等級+1。",
+          "[白熾]額外提供暴擊率提高#7的效果。"
+        ]
       }
     }
   }

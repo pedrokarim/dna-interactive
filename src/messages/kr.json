@@ -398,7 +398,17 @@
     "skillPriorityTitle": "스킬 우선순위",
     "notesTitle": "참고사항",
     "previousCharacter": "이전 캐릭터: {name}",
-    "nextCharacter": "다음 캐릭터: {name}"
+    "nextCharacter": "다음 캐릭터: {name}",
+    "intron": {
+      "progressionBadge": "진행",
+      "title": "인트론 레벨",
+      "subtitle": "{count}단계로 캐릭터의 능력과 보너스를 해금합니다.",
+      "empty": "인트론 데이터가 없습니다.",
+      "levelLabel": "인트론 {num}",
+      "baseBadge": "기본",
+      "pieces": "{count}개",
+      "helperHint": "단계에 마우스를 올리거나 탭하면 효과가 표시됩니다."
+    }
   },
   "items": {
     "libraryLabel": "아이템 라이브러리",

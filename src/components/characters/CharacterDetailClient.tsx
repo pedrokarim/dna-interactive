@@ -1119,6 +1119,9 @@ export default function CharacterDetailClient({
   const nextCharacter =
     currentIndex < allCharacters.length - 1 ? allCharacters[currentIndex + 1] : null;
 
+  // --- Intron popover state ---
+  const [activeIntronIdx, setActiveIntronIdx] = useState<number | null>(null);
+
   // --- Stats computation ---
   const maxLevel = character.maxLevel ?? 80;
   const [level, setLevel] = useState(maxLevel);
@@ -1765,13 +1768,16 @@ export default function CharacterDetailClient({
         const rgb = ELEMENT_RGB[character.element.key] ?? ELEMENT_RGB.Water;
         const intronLevels = character.intronLevels;
         const bustSrc = character.portraits.bust?.publicPath;
-        // Vertical offsets (%) from top for each circle
-        const CIRCLE_Y = [4, 18, 34, 52, 68, 84];
-        // Horizontal offsets — symmetric: 1↔6, 2↔5, 3↔4
-        const CIRCLE_X = [6, 40, 62, 62, 40, 6];
+        const intronEffects = translation.intronEffects ?? [];
+        // Horizontal offsets (%) — equal 31% step between consecutive circles
+        // (1→2 and 2→3 identical), symmetric: 1↔6, 2↔5, 3↔4.
+        const CIRCLE_X = [6, 37, 68, 68, 37, 6];
+        // Vertical offsets (%) — extra gap between top (1,2,3) and bottom (4,5,6).
+        // Symmetric around 42% (visual center with circle size).
+        const CIRCLE_Y = [2, 16, 30, 54, 68, 82];
 
         return (
-          <section className="relative overflow-hidden rounded-2xl border border-slate-800/60 bg-slate-950/40" style={{ minHeight: 720 }}>
+          <section className="relative overflow-hidden rounded-2xl border border-slate-800/60 bg-slate-950/40 md:min-h-[720px]">
             {/* z-0: Bust image as background — oversized, positioned left */}
             {bustSrc && (
               <div
@@ -1802,9 +1808,9 @@ export default function CharacterDetailClient({
             />
             <div className="absolute inset-0 z-[1] pointer-events-none bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
 
-            {/* z-[2]: Header title — top-right */}
-            <div className="relative z-[2] p-6 md:p-8 lg:p-10 flex justify-end">
-              <div className="text-right max-w-md">
+            {/* z-[2]: Header title — centered on mobile, top-right on desktop */}
+            <div className="relative z-[2] p-4 md:p-8 lg:p-10 flex md:justify-end">
+              <div className="text-left md:text-right max-w-md">
                 <div
                   className="inline-flex items-center gap-2 px-3 py-1 rounded-full border mb-3"
                   style={{
@@ -1814,22 +1820,129 @@ export default function CharacterDetailClient({
                 >
                   <Layers className="h-3.5 w-3.5" style={{ color: `rgb(${rgb})` }} />
                   <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: `rgb(${rgb})` }}>
-                    Progression
+                    {t("intron.progressionBadge")}
                   </span>
                 </div>
                 <h2 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">
-                  Niveaux d&apos;intron
+                  {t("intron.title")}
                 </h2>
                 <p className="mt-2 text-sm text-slate-400">
                   {intronLevels.length > 0
-                    ? `${intronLevels.length} paliers débloquant les capacités et bonus du personnage.`
-                    : "Aucune donnée d'intron disponible."}
+                    ? t("intron.subtitle", { count: intronLevels.length })
+                    : t("intron.empty")}
                 </p>
+                {intronLevels.length > 0 && (
+                  <p className="mt-1 text-[11px] italic text-slate-500 hidden md:block">
+                    {t("intron.helperHint")}
+                  </p>
+                )}
               </div>
             </div>
 
+            {/* Mobile list layout — vertical cards with effect text always visible */}
             {intronLevels.length > 0 && (
-              <div className="relative z-[2] min-h-[560px] px-6 md:px-10 lg:px-16 pb-10">
+              <div className="relative z-[2] md:hidden px-4 pb-6 space-y-3">
+                {intronLevels.map((intronLevel, idx) => {
+                  const num = idx + 1;
+                  const iconSrc = num >= 1 && num <= 6 ? `/assets/ui/intron/intron-${num}.png` : null;
+                  const isFirst = idx === 0;
+                  const romanNumeral = ["I", "II", "III", "IV", "V", "VI"][idx];
+                  const effectText = intronEffects[idx] ?? null;
+
+                  return (
+                    <div
+                      key={`intron-mobile-${num}`}
+                      className="rounded-xl border bg-slate-950/70 p-3 backdrop-blur-sm"
+                      style={{
+                        borderColor: `rgba(${rgb}, ${isFirst ? 0.45 : 0.2})`,
+                        boxShadow: isFirst
+                          ? `0 0 24px rgba(${rgb}, 0.18), inset 0 0 20px rgba(${rgb}, 0.08)`
+                          : undefined,
+                      }}
+                    >
+                      <div className="flex items-start gap-3">
+                        {/* Icon circle */}
+                        <div
+                          className="relative flex h-[64px] w-[64px] shrink-0 items-center justify-center rounded-full"
+                          style={{
+                            border: `2px solid rgba(${rgb}, ${isFirst ? 0.75 : 0.35})`,
+                            background: isFirst
+                              ? `radial-gradient(circle at center, rgba(${rgb}, 0.28), rgba(15, 23, 42, 0.95))`
+                              : "rgba(15, 23, 42, 0.65)",
+                            boxShadow: isFirst
+                              ? `0 0 20px rgba(${rgb}, 0.45), inset 0 0 14px rgba(${rgb}, 0.18)`
+                              : `0 0 10px rgba(${rgb}, 0.1)`,
+                          }}
+                        >
+                          {iconSrc ? (
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <img
+                              src={iconSrc}
+                              alt=""
+                              className="h-11 w-11 object-contain"
+                              style={
+                                isFirst
+                                  ? { filter: `drop-shadow(0 0 10px rgba(${rgb}, 0.8))` }
+                                  : { opacity: 0.75 }
+                              }
+                            />
+                          ) : (
+                            <span className="text-xl font-bold text-slate-500">{num}</span>
+                          )}
+                          <div
+                            className="absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full text-[9px] font-black"
+                            style={{
+                              background: isFirst ? `rgb(${rgb})` : "rgba(30, 41, 59, 0.95)",
+                              color: isFirst ? "rgb(15, 23, 42)" : `rgba(${rgb}, 0.85)`,
+                              border: `1px solid rgba(${rgb}, ${isFirst ? 0.9 : 0.5})`,
+                            }}
+                          >
+                            {romanNumeral}
+                          </div>
+                        </div>
+
+                        {/* Header */}
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-baseline gap-2">
+                            <p className="text-sm font-bold text-white">
+                              {t("intron.levelLabel", { num })}
+                            </p>
+                            {isFirst && (
+                              <span
+                                className="text-[9px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded"
+                                style={{
+                                  background: `rgba(${rgb}, 0.2)`,
+                                  color: `rgb(${rgb})`,
+                                }}
+                              >
+                                {t("intron.baseBadge")}
+                              </span>
+                            )}
+                          </div>
+                          <p className="text-[11px] text-slate-500 mt-0.5">
+                            {t("intron.pieces", { count: intronLevel.resourceNum })}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Effect description */}
+                      {effectText && (
+                        <p
+                          className="mt-3 text-xs leading-relaxed text-slate-300 whitespace-pre-line border-t pt-3"
+                          style={{ borderColor: `rgba(${rgb}, 0.15)` }}
+                        >
+                          {effectText}
+                        </p>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+
+            {/* Desktop constellation layout */}
+            {intronLevels.length > 0 && (
+              <div className="relative z-[2] min-h-[560px] px-6 md:px-10 lg:px-16 pb-10 hidden md:block">
                 <div className="relative ml-auto md:w-[55%] lg:w-[52%] h-[560px]">
                   {/* SVG connecting lines — organic curves */}
                   <svg className="pointer-events-none absolute inset-0 h-full w-full" preserveAspectRatio="none">
@@ -1865,6 +1978,10 @@ export default function CharacterDetailClient({
                     const iconSrc = num >= 1 && num <= 6 ? `/assets/ui/intron/intron-${num}.png` : null;
                     const isFirst = idx === 0;
                     const romanNumeral = ["I", "II", "III", "IV", "V", "VI"][idx];
+                    const effectText = intronEffects[idx] ?? null;
+                    const isActive = activeIntronIdx === idx;
+                    // Popover opens to the left for right-half circles, to the right for left-half
+                    const popoverOnLeft = (CIRCLE_X[idx] ?? 0) >= 40;
 
                     return (
                       <div
@@ -1873,29 +1990,39 @@ export default function CharacterDetailClient({
                         style={{
                           left: `${CIRCLE_X[idx] ?? 0}%`,
                           top: `${CIRCLE_Y[idx] ?? 0}%`,
+                          zIndex: isActive ? 20 : 10,
                         }}
+                        onMouseEnter={() => setActiveIntronIdx(idx)}
+                        onMouseLeave={() => setActiveIntronIdx((prev) => (prev === idx ? null : prev))}
                       >
                         {/* Glowing circle */}
-                        <div
-                          className="relative flex h-[92px] w-[92px] shrink-0 items-center justify-center rounded-full transition-transform duration-300 group-hover:scale-105"
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setActiveIntronIdx((prev) => (prev === idx ? null : idx))
+                          }
+                          className="relative flex h-[92px] w-[92px] shrink-0 items-center justify-center rounded-full transition-transform duration-300 group-hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
                           style={{
-                            border: `2px solid rgba(${rgb}, ${isFirst ? 0.75 : 0.25})`,
-                            boxShadow: isFirst
-                              ? `0 0 40px rgba(${rgb}, 0.45), 0 0 80px rgba(${rgb}, 0.18), inset 0 0 24px rgba(${rgb}, 0.18)`
-                              : `0 0 16px rgba(${rgb}, 0.1)`,
-                            background: isFirst
-                              ? `radial-gradient(circle at center, rgba(${rgb}, 0.28), rgba(15, 23, 42, 0.95))`
-                              : "rgba(15, 23, 42, 0.65)",
+                            border: `2px solid rgba(${rgb}, ${isActive || isFirst ? 0.85 : 0.25})`,
+                            boxShadow:
+                              isActive || isFirst
+                                ? `0 0 40px rgba(${rgb}, 0.55), 0 0 80px rgba(${rgb}, 0.2), inset 0 0 24px rgba(${rgb}, 0.22)`
+                                : `0 0 16px rgba(${rgb}, 0.1)`,
+                            background:
+                              isActive || isFirst
+                                ? `radial-gradient(circle at center, rgba(${rgb}, 0.32), rgba(15, 23, 42, 0.95))`
+                                : "rgba(15, 23, 42, 0.65)",
                             backdropFilter: "blur(6px)",
                           }}
+                          aria-label={`Intron ${num}`}
                         >
                           {iconSrc ? (
                             <img
                               src={iconSrc}
-                              alt={`Intron ${num}`}
+                              alt=""
                               className="h-16 w-16 object-contain"
                               style={
-                                isFirst
+                                isActive || isFirst
                                   ? { filter: `drop-shadow(0 0 12px rgba(${rgb}, 0.8))` }
                                   : { opacity: 0.7 }
                               }
@@ -1907,20 +2034,20 @@ export default function CharacterDetailClient({
                           <div
                             className="absolute -bottom-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full text-[10px] font-black"
                             style={{
-                              background: isFirst ? `rgb(${rgb})` : "rgba(30, 41, 59, 0.95)",
-                              color: isFirst ? "rgb(15, 23, 42)" : `rgba(${rgb}, 0.8)`,
-                              border: `1px solid rgba(${rgb}, ${isFirst ? 0.9 : 0.4})`,
+                              background: isActive || isFirst ? `rgb(${rgb})` : "rgba(30, 41, 59, 0.95)",
+                              color: isActive || isFirst ? "rgb(15, 23, 42)" : `rgba(${rgb}, 0.8)`,
+                              border: `1px solid rgba(${rgb}, ${isActive || isFirst ? 0.9 : 0.4})`,
                             }}
                           >
                             {romanNumeral}
                           </div>
-                        </div>
+                        </button>
 
                         {/* Label */}
                         <div className="min-w-[120px]">
                           <div className="flex items-baseline gap-2">
-                            <p className={`text-sm font-bold ${isFirst ? "text-white" : "text-slate-400"}`}>
-                              Intron {num}
+                            <p className={`text-sm font-bold ${isActive || isFirst ? "text-white" : "text-slate-400"}`}>
+                              {t("intron.levelLabel", { num })}
                             </p>
                             {isFirst && (
                               <span
@@ -1930,14 +2057,47 @@ export default function CharacterDetailClient({
                                   color: `rgb(${rgb})`,
                                 }}
                               >
-                                Base
+                                {t("intron.baseBadge")}
                               </span>
                             )}
                           </div>
                           <p className="text-xs text-slate-500 mt-0.5">
-                            {intronLevel.resourceNum} pièces
+                            {t("intron.pieces", { count: intronLevel.resourceNum })}
                           </p>
                         </div>
+
+                        {/* Popover with effect description */}
+                        {isActive && effectText && (
+                          <div
+                            className={`absolute top-1/2 -translate-y-1/2 ${
+                              popoverOnLeft ? "right-full mr-4" : "left-full ml-4"
+                            } w-[280px] sm:w-[320px] rounded-xl border bg-slate-950/95 p-4 shadow-[0_20px_50px_rgba(2,6,23,0.7)] backdrop-blur-md`}
+                            style={{
+                              borderColor: `rgba(${rgb}, 0.45)`,
+                              boxShadow: `0 0 30px rgba(${rgb}, 0.25), 0 20px 50px rgba(2, 6, 23, 0.7)`,
+                            }}
+                            role="tooltip"
+                          >
+                            <div className="flex items-center gap-2 mb-2">
+                              <span
+                                className="text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded"
+                                style={{
+                                  background: `rgba(${rgb}, 0.2)`,
+                                  color: `rgb(${rgb})`,
+                                  border: `1px solid rgba(${rgb}, 0.4)`,
+                                }}
+                              >
+                                {romanNumeral}
+                              </span>
+                              <p className="text-sm font-bold text-white">
+                                {t("intron.levelLabel", { num })}
+                              </p>
+                            </div>
+                            <p className="text-xs leading-relaxed text-slate-300 whitespace-pre-line">
+                              {effectText}
+                            </p>
+                          </div>
+                        )}
                       </div>
                     );
                   })}

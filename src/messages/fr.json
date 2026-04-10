@@ -398,7 +398,17 @@
     "skillPriorityTitle": "Priorite de competences",
     "notesTitle": "Notes",
     "previousCharacter": "Personnage precedent : {name}",
-    "nextCharacter": "Personnage suivant : {name}"
+    "nextCharacter": "Personnage suivant : {name}",
+    "intron": {
+      "progressionBadge": "Progression",
+      "title": "Niveaux d'intron",
+      "subtitle": "{count} paliers debloquant les capacites et bonus du personnage.",
+      "empty": "Aucune donnee d'intron disponible.",
+      "levelLabel": "Intron {num}",
+      "baseBadge": "Base",
+      "pieces": "{count} pieces",
+      "helperHint": "Survolez (ou touchez) un palier pour afficher son effet."
+    }
   },
   "items": {
     "libraryLabel": "Bibliotheque Items",
