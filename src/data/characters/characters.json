@@ -1420,6 +1420,11 @@
         "cardLevel": 5,
         "resourceId": 1003201,
         "resourceNum": 30
+      },
+      {
+        "cardLevel": 7,
+        "resourceId": 1003201,
+        "resourceNum": 30
       }
     ],
     "intronDescriptionKeys": [
@@ -1428,7 +1433,8 @@
       "GRADEUP_3201_03",
       "GRADEUP_3201_04",
       "GRADEUP_3201_05",
-      "GRADEUP_3201_06"
+      "GRADEUP_3201_06",
+      "OVERRIDE_INTRON_VII_3201"
     ],
     "intronParameters": [
       "$#PassiveEffect[320101].Vars.Grade1BuffRate*100$%",
@@ -1542,7 +1548,8 @@
           "Stufe von [Glühendes Inferno] +2; Stufe von [Strafentschlossenheit] +1.",
           "Reduziert das Intervall, in dem [Durchdringende Vergeltung] Pyro-SCH verursacht, auf 1,4 Sek.",
           "Stufe von [Käfig der Verzweiflung] +2; Stufe von [Strafentschlossenheit] +1.",
-          "Für jeweils 5 Punkte Geist, die durch Fähigkeiten der Verbündeten in der Nähe verbraucht werden, entfesselt Hellfire automatisch [Käfig der Verzweiflung]. Kann einmal alle #3 Sekunden ausgelöst werden."
+          "Für jeweils 5 Punkte Geist, die durch Fähigkeiten der Verbündeten in der Nähe verbraucht werden, entfesselt Hellfire automatisch [Käfig der Verzweiflung]. Kann einmal alle #3 Sekunden ausgelöst werden.",
+          "Während der Wirkung von [Vergeltung] hast du beim Zufügen von Fertigkeits- oder Nahkampfwaffenschaden an einem Gegner eine Chance von 40,0 %, [Durchdringende Vergeltung] ein weiteres Mal auf dem Ziel zentriert auszulösen und 1 Stapelung von [Sündenzählung] zu erhalten, bis zu 18-mal stapelbar.\nWenn deine LP bei 80 % sind, erleidest du zusätzlich Schaden in Höhe von 8,1 % deiner max. LP. Dieser Effekt kann alle 2 Sek. bis zu 8-mal ausgelöst werden.\nJede Stapelung von [Sündenzählung] erhöht den zugefügten Schaden um 1,8 % und erhöht den Schadensmultiplikator von [Käfig der Verzweiflung] um 2,0 %."
         ]
       },
       "EN": {
@@ -1557,7 +1564,8 @@
           "[Raging Inferno] Level +2; [Retributive Resolve] Level +1.",
           "Decreases the interval of dealing [Puncture Retribution] Pyro Damage to 1.4s.",
           "[Cage of Despair] Level +2; [Retributive Resolve] Level +1.",
-          "For every 5 Sanity-consuming skill uses by nearby allies, Hellfire automatically unleashes [Cage of Despair]. Can trigger once every #3s."
+          "For every 5 Sanity-consuming skill uses by nearby allies, Hellfire automatically unleashes [Cage of Despair]. Can trigger once every #3s.",
+          "While under the effect of [Retribution], when you deal Skill Damage or melee weapon damage to an enemy, you have a 40.0% chance to trigger an additional [Puncture Retribution] centered on the target and gain 1 stack of [Sin Count], stackable up to 18 times.\nWhen your HP is at 80%, you additionally take damage equal to 8.1% of your max HP. This effect can trigger at most 8 times every 2s.\nEach stack of [Sin Count] increases damage dealt by 1.8% and increases the damage multiplier of [Cage of Despair] by 2.0%."
         ]
       },
       "ES": {
@@ -1572,7 +1580,8 @@
           "[Infierno Furioso] nivel +2; [Resolución Retributiva] nivel +1.",
           "Disminuye el intervalo de infligir Daño Pyro de [Retribución por Punzada] a 1,4 s.",
           "[Jaula de Desesperación] nivel +2; [Resolución Retributiva] nivel +1.",
-          "Por cada 5 usos de habilidades de aliados cercanos que consumen Cordura, Hellfire desata automáticamente [Jaula de Desesperación]. Se puede activar una vez cada #3s."
+          "Por cada 5 usos de habilidades de aliados cercanos que consumen Cordura, Hellfire desata automáticamente [Jaula de Desesperación]. Se puede activar una vez cada #3s.",
+          "Durante el efecto de [Retribución], al infligir Daño de habilidad o Daño de arma cuerpo a cuerpo a un enemigo, tienes un 40,0 % de probabilidad de activar [Retribución por Punzada] una vez adicional centrada en el objetivo y obtener 1 acumulación de [Recuento de Pecados], hasta 18 acumulaciones.\nSi tus PV están al 80 %, además recibes daño equivalente al 8,1 % de tus PV máximos. Este efecto puede activarse hasta 8 veces cada 2 s.\nCada acumulación de [Recuento de Pecados] aumenta el daño infligido en un 1,8 % y aumenta el multiplicador de daño de [Jaula de Desesperación] en un 2,0 %."
         ]
       },
       "FR": {
@@ -1587,7 +1596,8 @@
           "[Enfer ardent] niveau +2 ; [Détermination purgatrice] niveau +1.",
           "[Châtiment transperçant] peut désormais se déclencher toutes les 1,4 s.",
           "[Cage du désespoir] niveau +2 ; [Détermination purgatrice] niveau +1.",
-          "Chaque fois que les alliés utilisent des compétences consommant de la Lucidité un total de 5 fois, déclenche automatiquement [Cage du Désespoir]. Cet effet peut se déclencher une fois toutes les #3 s."
+          "Chaque fois que les alliés utilisent des compétences consommant de la Lucidité un total de 5 fois, déclenche automatiquement [Cage du Désespoir]. Cet effet peut se déclencher une fois toutes les #3 s.",
+          "Pendant la durée de l'effet [Châtiment], lorsque vous infligez des Dégâts de compétence ou d'arme de mêlée à un ennemi, vous avez 40,0 % de chances de déclencher une fois supplémentaire [Châtiment transperçant] centré sur la cible et d'obtenir 1 cumul de [Décompte des péchés], cumulable jusqu'à 18 fois.\nSi vos PV sont à 80 %, vous subissez en plus des dégâts équivalents à 8,1 % de vos PV max. Cet effet peut se déclencher au maximum 8 fois toutes les 2 s.\nChaque cumul de [Décompte des péchés] augmente les Dégâts infligés de 1,8 % et augmente le multiplicateur de dégâts de [Cage du désespoir] de 2,0 %."
         ]
       },
       "JP": {
@@ -1602,7 +1612,8 @@
           "「インフェルノ」Lv.+2、「パニッシュディシジョン」Lv.+1。",
           "「インフェルノ」の「貫通の裁き」効果が1.4秒ごとに1回発動できるようになる。",
           "「デスペアープリズン」Lv.+2、「パニッシュディシジョン」Lv.+1。",
-          "付近の味方がスキル発動でSPを5回消費すると、自動的に自身が「デスペアープリズン」を1回発動する、#3秒に一回発動可能。"
+          "付近の味方がスキル発動でSPを5回消費すると、自動的に自身が「デスペアープリズン」を1回発動する、#3秒に一回発動可能。",
+          "「裁き」の効果中、スキルダメージまたは近接武器のダメージを敵に与えると、40.0%の確率で追加で「貫通の裁き」を対象を中心に発動させ、「罪の数え上げ」を1スタック獲得する。最大18スタックまで累積可能。\nHPが80%の状態では、さらに最大HPの8.1%に等しいダメージを受ける。この効果は2秒毎に最大8回まで発動可能。\n「罪の数え上げ」のスタック1つにつき与ダメージが1.8%上昇し、「デスペアープリズン」のダメージ倍率が2.0%上昇する。"
         ]
       },
       "KR": {
@@ -1617,7 +1628,8 @@
           "[타오르는 지옥] 레벨+2, [징벌의 결의] 레벨+1",
           "[타오르는 지옥]의 [꿰뚫는 심판] 효과가 1.4초에 최대 1회 발동으로 변경된다.",
           "[절망의 감옥] 레벨+2, [징벌의 결의] 레벨+1",
-          "다른 팀원이 정신력을 소모해 스킬을 누적 5회 시전할 때마다 [절망의 감옥] 효과를 자동으로 1회 발동한다. #3초마다 최대 1회 발동한다."
+          "다른 팀원이 정신력을 소모해 스킬을 누적 5회 시전할 때마다 [절망의 감옥] 효과를 자동으로 1회 발동한다. #3초마다 최대 1회 발동한다.",
+          "[사팔] 효과 지속 시간 동안, 적에게 스킬 피해 또는 근접 무기 피해를 가할 때 40.0% 확률로 대상을 중심으로 [꿰뚫는 사팔]을 1회 추가 발동하고 [죄의 계수]를 1단계 획득한다. 최대 18단계까지 중첩 가능.\nHP가 80% 상태일 때 추가로 최대 HP의 8.1%에 해당하는 피해를 입는다. 이 효과는 2초마다 최대 8회 발동 가능.\n[죄의 계수] 1단계당 가하는 피해가 1.8% 증가하고 [절망의 감옥]의 피해 배율이 2.0% 증가한다."
         ]
       },
       "TC": {
@@ -1632,7 +1644,8 @@
           "「灼熱地獄」等級+2，「懲戒決意」等級+1。",
           "「灼熱地獄」的「穿刺裁罰」效果變為每1.4秒最多觸發1次。",
           "「絕望牢籠」等級+2，「懲戒決意」等級+1。",
-          "其他隊友每累計5次消耗神智釋放技能，自身自動釋放1次[絕望牢籠]效果，每#3秒最多觸發1次。"
+          "其他隊友每累計5次消耗神智釋放技能，自身自動釋放1次[絕望牢籠]效果，每#3秒最多觸發1次。",
+          "「裁罰」效果期間，對敵人造成技能傷害或近戰武器傷害時，有40.0%機率以目標為中心額外觸發一次「穿刺裁罰」，並獲得1層「罪惡計數」，最多可疊加18層。\n生命值為80%時，額外受到相當於最大生命值8.1%的傷害。此效果每2秒最多觸發8次。\n「罪惡計數」每1層使造成的傷害提升1.8%，並使「絕望牢籠」的傷害倍率提升2.0%。"
         ]
       }
     }
@@ -4240,6 +4253,11 @@
         "cardLevel": 5,
         "resourceId": 1002101,
         "resourceNum": 30
+      },
+      {
+        "cardLevel": 7,
+        "resourceId": 1002101,
+        "resourceNum": 30
       }
     ],
     "intronDescriptionKeys": [
@@ -4248,7 +4266,8 @@
       "GRADEUP_2101_03",
       "GRADEUP_2101_04",
       "GRADEUP_2101_05",
-      "GRADEUP_2101_06"
+      "GRADEUP_2101_06",
+      "OVERRIDE_INTRON_VII_2101"
     ],
     "intronParameters": [
       "$#PassiveEffect[210101].Vars.Grade4DamagedRate*100$%",
@@ -4363,7 +4382,8 @@
           "Stufe von [Aurelische Berührung] +2; Stufe von [Prüfung der wahren Liebe] +1.",
           "Erleidet #1 weniger Schaden durch Ziele, die mit [Gift der Liebe] belegt sind.",
           "Stufe von [Ladas Liebestau] +2; Stufe von [Prüfung der wahren Liebe] +1.",
-          "Wenn ein Ziel, das mit [Gift der Liebe] belegt ist, besiegt wird, erhöht sich Rebeccas ANG um #2 für #4 Sek., bis zu #3‑mal stapelbar. Die Dauer des Effekts wird bei jeder neuen Stapelung aktualisiert."
+          "Wenn ein Ziel, das mit [Gift der Liebe] belegt ist, besiegt wird, erhöht sich Rebeccas ANG um #2 für #4 Sek., bis zu #3‑mal stapelbar. Die Dauer des Effekts wird bei jeder neuen Stapelung aktualisiert.",
+          "Wenn [Aurelia Aurita] angreift, hat sie eine Wahrscheinlichkeit, 3 Stapelungen von [Gift der Liebe] direkt anzuwenden, die 100 % der KRIT-Rate deiner Nahkampfwaffe entspricht.\nWenn [Aurelia Aurita] angreift, hat sie eine Chance von 30,0 %, den [Gift der Liebe]-Schaden des Ziels ein weiteres Mal auszulösen.\nFür jede [Aurelia Aurita] auf dem Feld werden der von dir und der Beschwörung zugefügte Schaden um 12,0 % erhöht."
         ]
       },
       "EN": {
@@ -4378,7 +4398,8 @@
           "[Aurelian Caress] Level +2; [Truelove Trial] Level +1.",
           "Takes #1 less damage from targets inflicted with [Poison of Love].",
           "[Lada Lovedew] Level +2; [Truelove Trial] Level +1.",
-          "When defeating a target inflicted with [Poison of Love], Rebecca gains 1 stack that increases Attack by #2 for #4s, up to #3 stacks. The remaining time of the effect is refreshed with each new stack gained."
+          "When defeating a target inflicted with [Poison of Love], Rebecca gains 1 stack that increases Attack by #2 for #4s, up to #3 stacks. The remaining time of the effect is refreshed with each new stack gained.",
+          "When [Aurelia Aurita] attacks, it has a chance to directly apply 3 stacks of [Poison of Love], equal to 100% of your melee weapon's CRIT Rate.\nWhen [Aurelia Aurita] attacks, it has a 30.0% chance to trigger the target's [Poison of Love] damage one additional time.\nFor each [Aurelia Aurita] present on the field, damage dealt by you and the summon is increased by 12.0%."
         ]
       },
       "ES": {
@@ -4393,7 +4414,8 @@
           "[Caricia Aureliana] nivel +2; [Prueba del Verdadero Amor] nivel +1.",
           "El daño recibido de objetivos con [Veneno de Amor] se reduce en #1.",
           "[Néctar de Eros] nivel +2; [Prueba del Verdadero Amor] nivel +1.",
-          "Al derrotar a un objetivo con [Veneno de Amor], Rebecca obtiene 1 acumulación de ATQ +#2 durante #4s, hasta #3 acumulaciones; al acumular, la duración se restablece."
+          "Al derrotar a un objetivo con [Veneno de Amor], Rebecca obtiene 1 acumulación de ATQ +#2 durante #4s, hasta #3 acumulaciones; al acumular, la duración se restablece.",
+          "Cuando [Aurelia Aurita] ataca, tiene una probabilidad de aplicar directamente 3 acumulaciones de [Veneno de Amor], equivalente al 100 % de la Tasa CRIT de tu arma cuerpo a cuerpo.\nCuando [Aurelia Aurita] ataca, tiene un 30,0 % de probabilidad de activar una vez adicional el daño de [Veneno de Amor] del objetivo.\nPor cada [Aurelia Aurita] presente en el campo, el daño infligido por ti y por la invocación aumenta en un 12,0 %."
         ]
       },
       "FR": {
@@ -4408,7 +4430,8 @@
           "[Caresse d’Aurelia] niveau +2 ; [Épreuve d’Amour Pur] niveau +1.",
           "Réduit les dégâts subis de la part des ennemis affectés par [Venin de l’amour] de #1.",
           "[Rosée de Lada] niveau +2 ; [Jugement du cœur] niveau +1.",
-          "Lorsque Rebecca vainc une cible affectée par [Venin de l’amour], elle gagne 1 cumul conférant +#2 d’Attaque pendant #4 s, jusqu’à #3 cumuls.\nL’obtention d’un nouveau cumul réinitialise la durée restante."
+          "Lorsque Rebecca vainc une cible affectée par [Venin de l’amour], elle gagne 1 cumul conférant +#2 d’Attaque pendant #4 s, jusqu’à #3 cumuls.\nL’obtention d’un nouveau cumul réinitialise la durée restante.",
+          "Lorsque l'Invocation : Aurelia attaque, elle a une probabilité d'appliquer directement 3 cumuls de [Venin de l'amour], équivalente à 100 % du Taux CRIT de votre arme de mêlée.\nLorsque l'Invocation : Aurelia attaque, elle a 30,0 % de chances de déclencher une fois supplémentaire les dégâts de [Venin de l'amour] de la cible.\nPour chaque Invocation : Aurelia présente sur le terrain, les dégâts que vous infligez ainsi que ceux de l'invocation sont augmentés de 12,0 %."
         ]
       },
       "JP": {
@@ -4423,7 +4446,8 @@
           "「イシュタリア」Lv.+2、「純愛の試練」Lv.+1。",
           "「愛の毒」を持つ対象からの被ダメージが#1ダウン。",
           "「フレイヤの甘露」Lv.+2、「純愛の試練」Lv.+1。",
-          "「愛の毒」を持つ対象を撃破すると、1回につきレベッカの攻撃力が#2アップ、#4秒持続。この効果は最大#3回まで重ねがけ可能、重ねがけすると残り時間がリセットされる。"
+          "「愛の毒」を持つ対象を撃破すると、1回につきレベッカの攻撃力が#2アップ、#4秒持続。この効果は最大#3回まで重ねがけ可能、重ねがけすると残り時間がリセットされる。",
+          "「召喚ユニット・クラゲ」が攻撃する時、近接武器のクリティカル率の100%に相当する確率で直接「愛の毒」を3スタック付与する。\n「召喚ユニット・クラゲ」が攻撃する時、30.0%の確率で対象の「愛の毒」のダメージを追加で1回発動させる。\nフィールドに存在する「召喚ユニット・クラゲ」1体につき、自身と召喚物が与えるダメージが12.0%上昇する。"
         ]
       },
       "KR": {
@@ -4438,7 +4462,8 @@
           "[옭아매는 촉수] 레벨+2, [순애의 시련] 레벨+1",
           "[사랑의 독]을 보유한 대상의 대미지가 #1 감소한다.",
           "[큐피드의 이슬] 레벨+2, [순애의 시련] 레벨+1",
-          "[사랑의 독]을 보유한 대상 처치 시, 자신이 1단계의 공격 #2 상승 효과를 획득한다. 지속 시간 #4초, 최대 #3 단계 중첩. 중첩 시 남은 시간 리셋."
+          "[사랑의 독]을 보유한 대상 처치 시, 자신이 1단계의 공격 #2 상승 효과를 획득한다. 지속 시간 #4초, 최대 #3 단계 중첩. 중첩 시 남은 시간 리셋.",
+          "[소환물·해파리]가 공격 시, 근접 무기의 치명타율의 100%에 해당하는 확률로 [사랑의 독] 3단계를 직접 부여한다.\n[소환물·해파리]가 공격 시, 30.0% 확률로 대상의 [사랑의 독] 피해를 1회 추가 발동한다.\n필드에 존재하는 [소환물·해파리] 1개당 자신과 소환물이 가하는 피해가 12.0% 증가한다."
         ]
       },
       "TC": {
@@ -4453,7 +4478,8 @@
           "「纏綿之觸」等級+2，「純愛試煉」等級+1。",
           "受到來自帶有「愛之毒」的目標的傷害降低#1。",
           "「愛神蜜露」等級+2，「純愛試煉」等級+1。",
-          "擊敗帶有「愛之毒」的目標時，自身獲得1層攻擊提高#2，持續#4秒，最多疊加#3層，疊加時刷新剩餘時間。"
+          "擊敗帶有「愛之毒」的目標時，自身獲得1層攻擊提高#2，持續#4秒，最多疊加#3層，疊加時刷新剩餘時間。",
+          "「召喚物·海月水母」攻擊時，以近戰武器暴擊率的100%為機率，直接施加3層「愛之毒」。\n「召喚物·海月水母」攻擊時，有30.0%機率額外觸發一次目標的「愛之毒」傷害。\n場上每存在1個「召喚物·海月水母」，自身與召喚物造成的傷害提升12.0%。"
         ]
       }
     }

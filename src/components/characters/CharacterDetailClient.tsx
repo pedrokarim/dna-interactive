@@ -1771,42 +1771,47 @@ export default function CharacterDetailClient({
         const intronEffects = translation.intronEffects ?? [];
         // Horizontal offsets (%) — equal 31% step between consecutive circles
         // (1→2 and 2→3 identical), symmetric: 1↔6, 2↔5, 3↔4.
-        const CIRCLE_X = [6, 37, 68, 68, 37, 6];
+        // Index 6 (Intron VII) sits on the left column, between 1 (top) and 6 (bottom).
+        const CIRCLE_X = [6, 37, 68, 68, 37, 6, 6];
         // Vertical offsets (%) — extra gap between top (1,2,3) and bottom (4,5,6).
-        // Symmetric around 42% (visual center with circle size).
-        const CIRCLE_Y = [2, 16, 30, 54, 68, 82];
+        // Index 6 (Intron VII) is at the vertical midpoint of the left column.
+        const CIRCLE_Y = [2, 16, 30, 54, 68, 82, 42];
+        const ROMAN_NUMERALS = ["I", "II", "III", "IV", "V", "VI", "VII"];
 
         return (
-          <section className="relative overflow-hidden rounded-2xl border border-slate-800/60 bg-slate-950/40 md:min-h-[720px]">
-            {/* z-0: Bust image as background — oversized, positioned left */}
-            {bustSrc && (
-              <div
-                className="absolute z-0 pointer-events-none select-none hidden md:block"
-                style={{
-                  left: "-6%",
-                  top: "50%",
-                  transform: "translateY(-50%)",
-                  width: "60%",
-                  height: "115%",
-                }}
-              >
-                <img
-                  src={bustSrc}
-                  alt={character.internalName}
-                  className="h-full w-full object-contain object-center"
-                  style={{ filter: `drop-shadow(0 0 90px rgba(${rgb}, 0.45))` }}
-                />
-              </div>
-            )}
+          <section className="relative rounded-2xl border border-slate-800/60 bg-slate-950/40 md:min-h-[720px]">
+            {/* Background clipping wrapper — only clips bust + glow so popovers can escape the section */}
+            <div className="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none">
+              {/* z-0: Bust image as background — oversized, positioned left */}
+              {bustSrc && (
+                <div
+                  className="absolute z-0 select-none hidden md:block"
+                  style={{
+                    left: "-6%",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    width: "60%",
+                    height: "115%",
+                  }}
+                >
+                  <img
+                    src={bustSrc}
+                    alt={character.internalName}
+                    className="h-full w-full object-contain object-center"
+                    style={{ filter: `drop-shadow(0 0 90px rgba(${rgb}, 0.45))` }}
+                  />
+                </div>
+              )}
 
-            {/* z-[1]: Element color ambient glow */}
-            <div
-              className="absolute inset-0 z-[1] pointer-events-none"
-              style={{
-                background: `radial-gradient(ellipse 55% 75% at 22% 50%, rgba(${rgb}, 0.2), transparent 70%)`,
-              }}
-            />
-            <div className="absolute inset-0 z-[1] pointer-events-none bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
+              {/* z-[1]: Element color ambient glow */}
+              <div
+                className="absolute inset-0 z-[1]"
+                style={{
+                  background: `radial-gradient(ellipse 55% 75% at 22% 50%, rgba(${rgb}, 0.2), transparent 70%)`,
+                }}
+              />
+              <div className="absolute inset-0 z-[1] bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
+            </div>
 
             {/* z-[2]: Header title — centered on mobile, top-right on desktop */}
             <div className="relative z-[2] p-4 md:p-8 lg:p-10 flex md:justify-end">
@@ -1846,7 +1851,9 @@ export default function CharacterDetailClient({
                   const num = idx + 1;
                   const iconSrc = num >= 1 && num <= 6 ? `/assets/ui/intron/intron-${num}.png` : null;
                   const isFirst = idx === 0;
-                  const romanNumeral = ["I", "II", "III", "IV", "V", "VI"][idx];
+                  const isSeventh = idx === 6;
+                  const isHighlighted = isFirst || isSeventh;
+                  const romanNumeral = ROMAN_NUMERALS[idx] ?? "";
                   const effectText = intronEffects[idx] ?? null;
 
                   return (
@@ -1854,8 +1861,8 @@ export default function CharacterDetailClient({
                       key={`intron-mobile-${num}`}
                       className="rounded-xl border bg-slate-950/70 p-3 backdrop-blur-sm"
                       style={{
-                        borderColor: `rgba(${rgb}, ${isFirst ? 0.45 : 0.2})`,
-                        boxShadow: isFirst
+                        borderColor: `rgba(${rgb}, ${isHighlighted ? 0.45 : 0.2})`,
+                        boxShadow: isHighlighted
                           ? `0 0 24px rgba(${rgb}, 0.18), inset 0 0 20px rgba(${rgb}, 0.08)`
                           : undefined,
                       }}
@@ -1865,11 +1872,11 @@ export default function CharacterDetailClient({
                         <div
                           className="relative flex h-[64px] w-[64px] shrink-0 items-center justify-center rounded-full"
                           style={{
-                            border: `2px solid rgba(${rgb}, ${isFirst ? 0.75 : 0.35})`,
-                            background: isFirst
+                            border: `2px solid rgba(${rgb}, ${isHighlighted ? 0.75 : 0.35})`,
+                            background: isHighlighted
                               ? `radial-gradient(circle at center, rgba(${rgb}, 0.28), rgba(15, 23, 42, 0.95))`
                               : "rgba(15, 23, 42, 0.65)",
-                            boxShadow: isFirst
+                            boxShadow: isHighlighted
                               ? `0 0 20px rgba(${rgb}, 0.45), inset 0 0 14px rgba(${rgb}, 0.18)`
                               : `0 0 10px rgba(${rgb}, 0.1)`,
                           }}
@@ -1881,24 +1888,34 @@ export default function CharacterDetailClient({
                               alt=""
                               className="h-11 w-11 object-contain"
                               style={
-                                isFirst
+                                isHighlighted
                                   ? { filter: `drop-shadow(0 0 10px rgba(${rgb}, 0.8))` }
                                   : { opacity: 0.75 }
                               }
                             />
                           ) : (
-                            <span className="text-xl font-bold text-slate-500">{num}</span>
+                            <span
+                              className="text-xl font-black tracking-wider"
+                              style={{
+                                color: `rgb(${rgb})`,
+                                textShadow: `0 0 8px rgba(${rgb}, 0.9)`,
+                              }}
+                            >
+                              {romanNumeral}
+                            </span>
                           )}
-                          <div
-                            className="absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full text-[9px] font-black"
-                            style={{
-                              background: isFirst ? `rgb(${rgb})` : "rgba(30, 41, 59, 0.95)",
-                              color: isFirst ? "rgb(15, 23, 42)" : `rgba(${rgb}, 0.85)`,
-                              border: `1px solid rgba(${rgb}, ${isFirst ? 0.9 : 0.5})`,
-                            }}
-                          >
-                            {romanNumeral}
-                          </div>
+                          {!isSeventh && (
+                            <div
+                              className="absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full text-[9px] font-black"
+                              style={{
+                                background: isHighlighted ? `rgb(${rgb})` : "rgba(30, 41, 59, 0.95)",
+                                color: isHighlighted ? "rgb(15, 23, 42)" : `rgba(${rgb}, 0.85)`,
+                                border: `1px solid rgba(${rgb}, ${isHighlighted ? 0.9 : 0.5})`,
+                              }}
+                            >
+                              {romanNumeral}
+                            </div>
+                          )}
                         </div>
 
                         {/* Header */}
@@ -1953,7 +1970,8 @@ export default function CharacterDetailClient({
                       </linearGradient>
                     </defs>
                     {intronLevels.map((_, idx) => {
-                      if (idx === 0) return null;
+                      // Skip idx 0 (no previous) and idx 6 (VII floats at the centre, unconnected).
+                      if (idx === 0 || idx === 6) return null;
                       const x1 = (CIRCLE_X[idx - 1] ?? 0) + 7;
                       const y1 = (CIRCLE_Y[idx - 1] ?? 0) + 6;
                       const x2 = (CIRCLE_X[idx] ?? 0) + 7;
@@ -1977,10 +1995,13 @@ export default function CharacterDetailClient({
                     const num = idx + 1;
                     const iconSrc = num >= 1 && num <= 6 ? `/assets/ui/intron/intron-${num}.png` : null;
                     const isFirst = idx === 0;
-                    const romanNumeral = ["I", "II", "III", "IV", "V", "VI"][idx];
+                    // Intron VII (idx=6) is the new high-tier addition — treated as "highlighted".
+                    const isSeventh = idx === 6;
+                    const isHighlighted = isFirst || isSeventh;
+                    const romanNumeral = ROMAN_NUMERALS[idx] ?? "";
                     const effectText = intronEffects[idx] ?? null;
                     const isActive = activeIntronIdx === idx;
-                    // Popover opens to the left for right-half circles, to the right for left-half
+                    // Popover opens to the left for right-half circles, to the right for left-half.
                     const popoverOnLeft = (CIRCLE_X[idx] ?? 0) >= 40;
 
                     return (
@@ -2003,13 +2024,13 @@ export default function CharacterDetailClient({
                           }
                           className="relative flex h-[92px] w-[92px] shrink-0 items-center justify-center rounded-full transition-transform duration-300 group-hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
                           style={{
-                            border: `2px solid rgba(${rgb}, ${isActive || isFirst ? 0.85 : 0.25})`,
+                            border: `2px solid rgba(${rgb}, ${isActive || isHighlighted ? 0.85 : 0.25})`,
                             boxShadow:
-                              isActive || isFirst
+                              isActive || isHighlighted
                                 ? `0 0 40px rgba(${rgb}, 0.55), 0 0 80px rgba(${rgb}, 0.2), inset 0 0 24px rgba(${rgb}, 0.22)`
                                 : `0 0 16px rgba(${rgb}, 0.1)`,
                             background:
-                              isActive || isFirst
+                              isActive || isHighlighted
                                 ? `radial-gradient(circle at center, rgba(${rgb}, 0.32), rgba(15, 23, 42, 0.95))`
                                 : "rgba(15, 23, 42, 0.65)",
                             backdropFilter: "blur(6px)",
@@ -2022,31 +2043,41 @@ export default function CharacterDetailClient({
                               alt=""
                               className="h-16 w-16 object-contain"
                               style={
-                                isActive || isFirst
+                                isActive || isHighlighted
                                   ? { filter: `drop-shadow(0 0 12px rgba(${rgb}, 0.8))` }
                                   : { opacity: 0.7 }
                               }
                             />
                           ) : (
-                            <span className="text-2xl font-bold text-slate-500">{num}</span>
+                            <span
+                              className="text-3xl font-black tracking-wider"
+                              style={{
+                                color: `rgb(${rgb})`,
+                                textShadow: `0 0 12px rgba(${rgb}, 0.9)`,
+                              }}
+                            >
+                              {romanNumeral}
+                            </span>
                           )}
-                          {/* Roman numeral badge */}
-                          <div
-                            className="absolute -bottom-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full text-[10px] font-black"
-                            style={{
-                              background: isActive || isFirst ? `rgb(${rgb})` : "rgba(30, 41, 59, 0.95)",
-                              color: isActive || isFirst ? "rgb(15, 23, 42)" : `rgba(${rgb}, 0.8)`,
-                              border: `1px solid rgba(${rgb}, ${isActive || isFirst ? 0.9 : 0.4})`,
-                            }}
-                          >
-                            {romanNumeral}
-                          </div>
+                          {/* Roman numeral badge — hidden on circle 7 (the big roman is already in the centre) */}
+                          {!isSeventh && (
+                            <div
+                              className="absolute -bottom-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full text-[10px] font-black"
+                              style={{
+                                background: isActive || isHighlighted ? `rgb(${rgb})` : "rgba(30, 41, 59, 0.95)",
+                                color: isActive || isHighlighted ? "rgb(15, 23, 42)" : `rgba(${rgb}, 0.8)`,
+                                border: `1px solid rgba(${rgb}, ${isActive || isHighlighted ? 0.9 : 0.4})`,
+                              }}
+                            >
+                              {romanNumeral}
+                            </div>
+                          )}
                         </button>
 
                         {/* Label */}
                         <div className="min-w-[120px]">
                           <div className="flex items-baseline gap-2">
-                            <p className={`text-sm font-bold ${isActive || isFirst ? "text-white" : "text-slate-400"}`}>
+                            <p className={`text-sm font-bold ${isActive || isHighlighted ? "text-white" : "text-slate-400"}`}>
                               {t("intron.levelLabel", { num })}
                             </p>
                             {isFirst && (
