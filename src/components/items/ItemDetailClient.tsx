@@ -426,8 +426,8 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
   const isFavorite = favoriteItems.has(favoriteKey);
 
   return (
-    <div className="space-y-8">
-      <section className="rounded-2xl border border-indigo-500/20 bg-slate-900/60 p-6 shadow-[0_20px_45px_rgba(15,23,42,0.45)] backdrop-blur-sm">
+    <div className="space-y-4 md:space-y-8">
+      <section className="rounded-2xl border border-indigo-500/20 bg-slate-900/60 p-4 md:p-6 shadow-[0_20px_45px_rgba(15,23,42,0.45)] backdrop-blur-sm">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex flex-wrap items-center gap-2">
             <Link
@@ -469,8 +469,8 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
           </div>
         </div>
 
-        <div className="mt-6 flex flex-col gap-6 lg:flex-row">
-          <div className="flex h-36 w-36 shrink-0 items-center justify-center rounded-2xl border border-indigo-500/25 bg-slate-950/70 p-4">
+        <div className="mt-4 md:mt-6 flex flex-col gap-4 md:gap-6 lg:flex-row">
+          <div className="flex h-28 w-28 md:h-36 md:w-36 shrink-0 mx-auto lg:mx-0 items-center justify-center rounded-2xl border border-indigo-500/25 bg-slate-950/70 p-4">
             <img
               src={iconSrc}
               alt={`${category.technicalName} ${item.modId}`}
@@ -478,11 +478,11 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
             />
           </div>
 
-          <div className="min-w-0 flex-1 space-y-3">
+          <div className="min-w-0 flex-1 space-y-3 text-center lg:text-left">
             <p className="text-xs uppercase tracking-[0.28em] text-indigo-400/80">
               {category.technicalName} #{item.modId}
             </p>
-            <h1 className="text-3xl font-semibold text-white">
+            <h1 className="text-2xl md:text-3xl font-semibold text-white">
               <span className="inline-flex items-center gap-2">
                 {elementalAffinity?.iconSrc ? (
                   <img
@@ -501,7 +501,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
                 : translation.functionLabel ??
                   (isModsCategory ? "No Demon Wedge translation for this language." : category.displayName)}
             </p>
-            <div className="flex flex-wrap gap-2 text-xs">
+            <div className="flex flex-wrap justify-center lg:justify-start gap-1.5 md:gap-2 text-xs">
               <span className="rounded-full border border-slate-600/80 px-3 py-1 text-slate-300">
                 ID {item.modId}
               </span>
@@ -567,9 +567,9 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
         </div>
 
         {isGenimonsCategory && variantSiblings.length > 1 ? (
-          <section className="mt-5 rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
-            <h2 className="text-lg font-semibold text-white">Variantes</h2>
-            <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+          <section className="mt-4 md:mt-5 rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
+            <h2 className="text-base md:text-lg font-semibold text-white">Variantes</h2>
+            <div className="mt-3 md:mt-4 grid grid-cols-2 gap-2 md:gap-3 sm:grid-cols-3 lg:grid-cols-4">
               {variantSiblings.map((sibling) => {
                 const isCurrent = sibling.id === item.id;
                 const siblingTranslation = getItemTranslation(sibling, selectedLanguage, category.availableLanguages);
@@ -635,9 +635,9 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
         ) : null}
       </section>
 
-      <section className="grid gap-4 lg:grid-cols-3">
-        <div className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5 lg:col-span-2">
-          <h2 className="text-lg font-semibold text-white">Description</h2>
+      <section className="grid gap-3 md:gap-4 lg:grid-cols-3">
+        <div className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5 lg:col-span-2">
+          <h2 className="text-base md:text-lg font-semibold text-white">Description</h2>
           <p className="mt-3 whitespace-pre-wrap text-sm leading-relaxed text-slate-300">
             {translation.description
               ? renderTextWithDynamicMentions(
@@ -761,9 +761,9 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
           ) : null}
         </div>
 
-        <div className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
-          <h2 className="text-lg font-semibold text-white">Localized Info</h2>
-          <dl className="mt-4 space-y-3 text-sm">
+        <div className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
+          <h2 className="text-base md:text-lg font-semibold text-white">Localized Info</h2>
+          <dl className="mt-3 md:mt-4 space-y-2 md:space-y-3 text-sm">
             <div>
               <dt className="text-slate-400">Label fonction</dt>
               <dd className="text-slate-100">{translation.functionLabel ?? "N/A"}</dd>
@@ -875,13 +875,13 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
         </div>
       </section>
 
-      <section className="grid gap-4 lg:grid-cols-2">
-        <div className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
-          <h2 className="flex items-center gap-2 text-lg font-semibold text-white">
+      <section className="grid gap-3 md:gap-4 lg:grid-cols-2">
+        <div className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
+          <h2 className="flex items-center gap-2 text-base md:text-lg font-semibold text-white">
             <Tag className="h-4 w-4 text-indigo-400/80" />
             Text keys
           </h2>
-          <dl className="mt-4 space-y-3 text-sm">
+          <dl className="mt-3 md:mt-4 space-y-2 md:space-y-3 text-sm">
             {textKeyRows.map((row) => (
               <div key={row.label}>
                 <dt className="text-slate-400">{row.label}</dt>
@@ -891,12 +891,12 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
           </dl>
         </div>
 
-        <div className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
-          <h2 className="flex items-center gap-2 text-lg font-semibold text-white">
+        <div className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
+          <h2 className="flex items-center gap-2 text-base md:text-lg font-semibold text-white">
             <Database className="h-4 w-4 text-indigo-400/80" />
             Technical
           </h2>
-          <dl className="mt-4 space-y-3 text-sm">
+          <dl className="mt-3 md:mt-4 space-y-2 md:space-y-3 text-sm">
             <div>
               <dt className="text-slate-400">id</dt>
               <dd className="text-slate-100">{item.id}</dd>
@@ -928,9 +928,9 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
       </section>
 
       {relatedDrafts.length > 0 && (
-        <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
-          <h2 className="text-lg font-semibold text-white">Plans associes</h2>
-          <div className="mt-4 space-y-3">
+        <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
+          <h2 className="text-base md:text-lg font-semibold text-white">Plans associes</h2>
+          <div className="mt-3 md:mt-4 space-y-2 md:space-y-3">
             {relatedDrafts.map((draft) => {
               const draftName =
                 resolveDraftTextByLanguage(draft.productName, selectedLanguage, category.availableLanguages) ??

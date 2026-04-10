@@ -451,7 +451,7 @@ function DemonWedgeLayout({
   const bottomRight = slots.filter((s) => s.position >= 7 && s.position <= 8);
 
   return (
-    <div className="flex flex-col items-center gap-6">
+    <div className="flex flex-col items-center gap-3 md:gap-6">
       {/* Desktop layout */}
       <div className="hidden w-full max-w-4xl items-center justify-center gap-6 md:flex">
         {/* Left column — parallelograms lean right */}
@@ -518,7 +518,7 @@ function BuildTabContent({
 
   if (builds.length === 0) {
     return (
-      <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-8 text-center">
+      <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5 md:p-8 text-center">
         <Swords className="mx-auto h-10 w-10 text-slate-600" />
         <p className="mt-3 text-sm text-slate-400">
           {t('noBuildAvailable')}
@@ -539,7 +539,7 @@ function BuildTabContent({
   const hasNotes = Object.keys(build.notes).length > 0;
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-3 md:space-y-5">
       {/* Build selector (if multiple) */}
       {builds.length > 1 && (
         <div className="flex gap-2">
@@ -562,8 +562,8 @@ function BuildTabContent({
 
       {/* --- Weapons --- */}
       {hasWeapons && (
-        <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
-          <h2 className="flex items-center gap-2 text-lg font-semibold text-white">
+        <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
+          <h2 className="flex items-center gap-2 text-base md:text-lg font-semibold text-white">
             <Swords className="h-4 w-4 text-indigo-400/80" />
             {t('weaponsTitle')}
           </h2>
@@ -625,9 +625,9 @@ function BuildTabContent({
 
       {/* --- Demon Wedges (game layout) --- */}
       {hasDemonWedges && (
-        <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
+        <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
           <div className="flex items-center justify-between">
-            <h2 className="flex items-center gap-2 text-lg font-semibold text-white">
+            <h2 className="flex items-center gap-2 text-base md:text-lg font-semibold text-white">
               <Shield className="h-4 w-4 text-indigo-400/80" />
               {t('demonWedgesTitle')}
             </h2>
@@ -672,8 +672,8 @@ function BuildTabContent({
 
       {/* --- Consonance Weapon --- */}
       {hasConsonance && build.consonanceWeapon && (
-        <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
-          <h2 className="flex items-center gap-2 text-lg font-semibold text-white">
+        <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
+          <h2 className="flex items-center gap-2 text-base md:text-lg font-semibold text-white">
             <Swords className="h-4 w-4 text-indigo-400/80" />
             {t('consonanceTitle')}
           </h2>
@@ -774,8 +774,8 @@ function BuildTabContent({
 
       {/* --- Stats priority --- */}
       {hasStats && (
-        <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
-          <h2 className="flex items-center gap-2 text-lg font-semibold text-white">
+        <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
+          <h2 className="flex items-center gap-2 text-base md:text-lg font-semibold text-white">
             <BarChart3 className="h-4 w-4 text-indigo-400/80" />
             {t('statsPriorityTitle')}
           </h2>
@@ -799,8 +799,8 @@ function BuildTabContent({
 
       {/* --- Team --- */}
       {hasTeam && (
-        <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
-          <h2 className="flex items-center gap-2 text-lg font-semibold text-white">
+        <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
+          <h2 className="flex items-center gap-2 text-base md:text-lg font-semibold text-white">
             <Sparkles className="h-4 w-4 text-indigo-400/80" />
             {t('teamTitle')}
           </h2>
@@ -848,8 +848,8 @@ function BuildTabContent({
 
       {/* --- Genimon --- */}
       {hasGenimon && (
-        <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
-          <h2 className="text-lg font-semibold text-white">{t('genimonTitle')}</h2>
+        <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
+          <h2 className="text-base md:text-lg font-semibold text-white">{t('genimonTitle')}</h2>
           <div className="mt-4 space-y-2">
             {build.genimon.map((g, i) => (
               <div
@@ -892,7 +892,7 @@ function BuildTabContent({
         const sorted = build.skillPriority.slice().sort((a, b) => b.priority - a.priority);
         return (
           <section className="relative py-6">
-            <h2 className="mb-8 text-lg font-semibold text-white">{t('skillPriorityTitle')}</h2>
+            <h2 className="mb-8 text-base md:text-lg font-semibold text-white">{t('skillPriorityTitle')}</h2>
 
             <div className="relative ml-4 md:ml-8">
               {/* Vertical connecting vine */}
@@ -982,8 +982,8 @@ function BuildTabContent({
 
       {/* --- Notes --- */}
       {hasNotes && (
-        <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
-          <h2 className="text-lg font-semibold text-white">{t('notesTitle')}</h2>
+        <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
+          <h2 className="text-base md:text-lg font-semibold text-white">{t('notesTitle')}</h2>
           <p className="mt-3 text-sm leading-relaxed text-slate-300">
             <BuildLocalizedText texts={build.notes} lang={selectedLanguage} />
           </p>
@@ -1107,11 +1107,11 @@ export default function CharacterDetailClient({
   // =========================================================================
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 md:space-y-6">
       {/* ================================================================= */}
       {/* Top bar + Hero section (always visible, above tabs)               */}
       {/* ================================================================= */}
-      <section className="rounded-2xl border border-indigo-500/20 bg-slate-900/60 p-6 shadow-[0_20px_45px_rgba(15,23,42,0.45)] backdrop-blur-sm">
+      <section className="rounded-2xl border border-indigo-500/20 bg-slate-900/60 p-4 md:p-6 shadow-[0_20px_45px_rgba(15,23,42,0.45)] backdrop-blur-sm">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex flex-wrap items-center gap-2">
             <Link
@@ -1175,7 +1175,7 @@ export default function CharacterDetailClient({
         </div>
 
         {/* Hero section */}
-        <div className="mt-6 flex flex-col gap-6 lg:flex-row">
+        <div className="mt-4 md:mt-6 flex flex-col gap-4 md:gap-6 lg:flex-row">
           {/* Portrait */}
           <div className="relative flex w-full shrink-0 flex-col items-center lg:w-64">
             <div className="relative w-full overflow-hidden rounded-2xl border border-indigo-500/25 bg-slate-950/70">
@@ -1235,18 +1235,18 @@ export default function CharacterDetailClient({
               <p className="text-xs uppercase tracking-[0.28em] text-indigo-400/80">
                 Personnage #{character.charId}
               </p>
-              <h1 className="mt-1 text-3xl font-semibold text-white">
+              <h1 className="mt-1 text-2xl md:text-3xl font-semibold text-white">
                 {translation.name ?? character.internalName}
               </h1>
               {translation.subtitle && (
-                <p className="mt-1 text-base text-slate-300">
+                <p className="mt-1 text-sm md:text-base text-slate-300">
                   {translation.subtitle}
                 </p>
               )}
             </div>
 
             {/* Badges */}
-            <div className="flex flex-wrap gap-2 text-xs">
+            <div className="flex flex-wrap gap-1.5 md:gap-2 text-xs">
               {elementStyle && (
                 <span
                   className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 font-medium ${elementStyle.border} ${elementStyle.bg} ${elementStyle.text}`}
@@ -1415,9 +1415,9 @@ export default function CharacterDetailClient({
 
       {/* ---------- Stats / Attributs tab ---------- */}
       {activeTab === "stats" && (
-        <section className="space-y-5">
+        <section className="space-y-3 md:space-y-5">
           {/* Level slider */}
-          <div className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
+          <div className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
             <div className="flex items-center justify-between">
               <h3 className="text-sm font-medium text-slate-300">Niveau</h3>
               <span className="rounded-lg border border-indigo-500/30 bg-indigo-500/10 px-3 py-1 text-lg font-bold tabular-nums text-indigo-100">
@@ -1439,7 +1439,7 @@ export default function CharacterDetailClient({
           </div>
 
           {/* Base stats */}
-          <div className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
+          <div className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
             <h3 className="text-xs font-medium uppercase tracking-wider text-slate-400">
               Stats de base
             </h3>
@@ -1490,7 +1490,7 @@ export default function CharacterDetailClient({
 
           {/* Addon attrs (ascension bonuses) */}
           {character.addonAttrs.length > 0 && (
-            <div className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
+            <div className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
               <h3 className="text-xs font-medium uppercase tracking-wider text-slate-400">
                 Bonus d&apos;ascension
               </h3>
@@ -1522,9 +1522,9 @@ export default function CharacterDetailClient({
           )}
 
           {/* Recommended attrs + Positioning */}
-          <div className="grid gap-5 lg:grid-cols-2">
+          <div className="grid gap-3 md:gap-5 lg:grid-cols-2">
             {character.recommendAttr.length > 0 && (
-              <div className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
+              <div className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
                 <h3 className="text-xs font-medium uppercase tracking-wider text-slate-400">
                   Attributs recommandes
                 </h3>
@@ -1542,7 +1542,7 @@ export default function CharacterDetailClient({
             )}
 
             {character.positioning.length > 0 && (
-              <div className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
+              <div className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
                 <h3 className="text-xs font-medium uppercase tracking-wider text-slate-400">
                   Positionnement
                 </h3>
@@ -1567,7 +1567,7 @@ export default function CharacterDetailClient({
 
           {/* Ascension levels */}
           {character.ascensionLevels.length > 0 && (
-            <div className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
+            <div className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
               <h3 className="text-xs font-medium uppercase tracking-wider text-slate-400">
                 Paliers d&apos;ascension
               </h3>
@@ -1593,8 +1593,8 @@ export default function CharacterDetailClient({
           )}
           {/* Skill Icons */}
           {(character.skillIcons.skill1.publicPath || character.skillIcons.skill2.publicPath || character.skillIcons.skill3.publicPath) && (
-            <div className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
-              <h2 className="flex items-center gap-2 text-lg font-semibold text-white">
+            <div className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
+              <h2 className="flex items-center gap-2 text-base md:text-lg font-semibold text-white">
                 <Sparkles className="h-4 w-4 text-indigo-400/80" />
                 Competences
               </h2>
@@ -1617,8 +1617,8 @@ export default function CharacterDetailClient({
 
           {/* Consonance Weapon info box */}
           {character.consonanceWeapons?.length > 0 && (
-            <div className="rounded-xl border border-purple-500/30 bg-purple-500/5 p-5">
-              <h2 className="flex items-center gap-2 text-lg font-semibold text-white">
+            <div className="rounded-xl border border-purple-500/30 bg-purple-500/5 p-3 md:p-5">
+              <h2 className="flex items-center gap-2 text-base md:text-lg font-semibold text-white">
                 <Swords className="h-4 w-4 text-purple-400/80" />
                 {t('consonanceTitle')}
               </h2>
@@ -1670,10 +1670,10 @@ export default function CharacterDetailClient({
 
       {/* ---------- Portraits tab ---------- */}
       {activeTab === "portraits" && (
-        <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
-          <h2 className="text-lg font-semibold text-white">Galerie de portraits</h2>
+        <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
+          <h2 className="text-base md:text-base md:text-lg font-semibold text-white">Galerie de portraits</h2>
           {availablePortraits.length > 1 ? (
-            <div className="mt-4 grid gap-3 sm:grid-cols-3 lg:grid-cols-6">
+            <div className="mt-3 md:mt-4 grid gap-2 md:gap-3 grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
               {availablePortraits.map((type) => {
                 const src = character.portraits[type].publicPath;
                 if (!src) return null;
@@ -1726,7 +1726,7 @@ export default function CharacterDetailClient({
 
         return (
           <section className="py-6">
-            <h2 className="mb-8 flex items-center gap-2 text-lg font-semibold text-white">
+            <h2 className="mb-8 flex items-center gap-2 text-base md:text-lg font-semibold text-white">
               <Layers className="h-4 w-4 text-indigo-400/80" />
               Niveaux d&apos;intron
             </h2>
@@ -1833,12 +1833,12 @@ export default function CharacterDetailClient({
 
       {/* ---------- Translations tab ---------- */}
       {activeTab === "translations" && (
-        <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
-          <h2 className="flex items-center gap-2 text-lg font-semibold text-white">
+        <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
+          <h2 className="flex items-center gap-2 text-base md:text-base md:text-lg font-semibold text-white">
             <Languages className="h-5 w-5 text-indigo-400/80" />
             Traductions
           </h2>
-          <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="mt-3 md:mt-4 grid gap-2 md:gap-3 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
             {catalog.availableLanguages.map((langCode) => {
               const tr = character.translations[langCode];
               if (!tr) return null;
@@ -1879,10 +1879,10 @@ export default function CharacterDetailClient({
 
       {/* ---------- Technical tab ---------- */}
       {activeTab === "tech" && (
-        <section className="grid gap-4 lg:grid-cols-2">
-          <div className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
-            <h2 className="text-lg font-semibold text-white">Text keys</h2>
-            <dl className="mt-4 space-y-3 text-sm">
+        <section className="grid gap-3 md:gap-4 lg:grid-cols-2">
+          <div className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
+            <h2 className="text-base md:text-base md:text-lg font-semibold text-white">Text keys</h2>
+            <dl className="mt-3 md:mt-4 space-y-2 md:space-y-3 text-sm">
               {Object.entries(character.textKeys).map(([key, value]) => (
                 <div key={key}>
                   <dt className="text-slate-400">{key}</dt>
@@ -1892,9 +1892,9 @@ export default function CharacterDetailClient({
             </dl>
           </div>
 
-          <div className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5">
-            <h2 className="text-lg font-semibold text-white">Donnees techniques</h2>
-            <dl className="mt-4 space-y-3 text-sm">
+          <div className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
+            <h2 className="text-base md:text-base md:text-lg font-semibold text-white">Donnees techniques</h2>
+            <dl className="mt-3 md:mt-4 space-y-2 md:space-y-3 text-sm">
               <div>
                 <dt className="text-slate-400">ID personnage</dt>
                 <dd className="text-slate-100">{character.id}</dd>

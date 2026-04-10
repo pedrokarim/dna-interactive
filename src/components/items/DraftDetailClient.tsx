@@ -213,8 +213,8 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
   );
 
   return (
-    <div className="space-y-8">
-      <section className="rounded-2xl border border-amber-500/30 bg-slate-900/60 p-6 shadow-[0_20px_45px_rgba(15,23,42,0.45)] backdrop-blur-sm">
+    <div className="space-y-4 md:space-y-8">
+      <section className="rounded-2xl border border-amber-500/30 bg-slate-900/60 p-4 md:p-6 shadow-[0_20px_45px_rgba(15,23,42,0.45)] backdrop-blur-sm">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex flex-wrap items-center gap-2">
             <Link
@@ -242,7 +242,7 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
           </div>
         </div>
 
-        <div className="mt-5 flex flex-wrap items-center gap-2 text-xs">
+        <div className="mt-4 md:mt-5 flex flex-wrap items-center gap-1.5 md:gap-2 text-xs">
           <span className="rounded-full border border-slate-600/80 px-3 py-1 text-slate-300">
             DRAFT #{recipe.draftId}
           </span>
@@ -261,12 +261,12 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
         </div>
       </section>
 
-      <section className="grid gap-5 xl:grid-cols-[1.35fr_0.95fr]">
-        <article className="rounded-2xl border border-amber-500/30 bg-[radial-gradient(circle_at_50%_22%,rgba(245,158,11,0.16),rgba(15,23,42,0.72)_52%,rgba(2,6,23,0.92)_100%)] p-6">
-          <h2 className="text-lg font-semibold text-white">{t('forgeProcessTitle')}</h2>
+      <section className="grid gap-3 md:gap-5 lg:grid-cols-[1.35fr_0.95fr]">
+        <article className="rounded-2xl border border-amber-500/30 bg-[radial-gradient(circle_at_50%_22%,rgba(245,158,11,0.16),rgba(15,23,42,0.72)_52%,rgba(2,6,23,0.92)_100%)] p-4 md:p-6">
+          <h2 className="text-base md:text-lg font-semibold text-white">{t('forgeProcessTitle')}</h2>
           <p className="mt-1 text-sm text-slate-300">{t('forgeProcessHint')}</p>
 
-          <div className="mt-8">
+          <div className="mt-5 md:mt-8">
             <div className="flex justify-center">
               <RecipeNode
                 item={recipe.product}
@@ -304,15 +304,15 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
           </div>
         </article>
 
-        <article className="rounded-2xl border border-slate-700/70 bg-slate-900/65 p-5">
-          <div className="rounded-xl border border-amber-500/30 bg-slate-950/60 p-4">
+        <article className="rounded-2xl border border-slate-700/70 bg-slate-900/65 p-3 md:p-5">
+          <div className="rounded-xl border border-amber-500/30 bg-slate-950/60 p-3 md:p-4">
             <div className="flex items-start gap-3">
-              <div className="flex h-16 w-16 items-center justify-center rounded-lg border border-amber-500/30 bg-slate-950/80 p-2">
+              <div className="flex h-14 w-14 md:h-16 md:w-16 shrink-0 items-center justify-center rounded-lg border border-amber-500/30 bg-slate-950/80 p-2">
                 <img src={recipeIcon} alt={productName} className="max-h-full max-w-full object-contain" />
               </div>
               <div className="min-w-0">
                 <p className="text-xs uppercase tracking-[0.22em] text-amber-300/90">{t('resultLabel')}</p>
-                <h1 className="mt-1 text-xl font-semibold text-white">{productName}</h1>
+                <h1 className="mt-1 text-lg md:text-xl font-semibold text-white">{productName}</h1>
                 <p className="text-xs text-slate-400">
                   {recipe.product.type} x{recipe.productQuantity}
                 </p>
@@ -407,9 +407,9 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
         </article>
       </section>
 
-      <section className="rounded-2xl border border-slate-700/70 bg-slate-900/55 p-5">
-        <h2 className="text-lg font-semibold text-white">Composants requis</h2>
-        <div className="mt-4 grid gap-3 md:grid-cols-2">
+      <section className="rounded-2xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
+        <h2 className="text-base md:text-lg font-semibold text-white">Composants requis</h2>
+        <div className="mt-3 md:mt-4 grid gap-2 md:gap-3 md:grid-cols-2">
           {recipe.ingredients.map((ingredient, index) => {
             const ingredientName = resolveDraftItemName(ingredient, selectedLanguage, availableLanguages);
             const ingredientDescription = resolveDraftItemDescription(

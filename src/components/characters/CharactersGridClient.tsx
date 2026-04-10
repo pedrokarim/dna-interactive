@@ -374,15 +374,15 @@ export default function CharactersGridClient({
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-4 md:space-y-8">
       {/* Header + filters */}
-      <section className="rounded-2xl border border-indigo-500/20 bg-slate-900/55 p-6 shadow-[0_20px_45px_rgba(15,23,42,0.45)] backdrop-blur-sm">
+      <section className="rounded-2xl border border-indigo-500/20 bg-slate-900/55 p-4 md:p-6 shadow-[0_20px_45px_rgba(15,23,42,0.45)] backdrop-blur-sm">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div>
             <p className="text-xs uppercase tracking-[0.3em] text-indigo-400/80">
               {t('headerLabel')}
             </p>
-            <h1 className="mt-2 text-3xl font-semibold text-white">
+            <h1 className="mt-2 text-2xl md:text-3xl font-semibold text-white">
               {t('title')}
             </h1>
             <p className="mt-2 max-w-2xl text-sm text-slate-300">
@@ -401,7 +401,7 @@ export default function CharactersGridClient({
         </div>
 
         {/* Search + languages */}
-        <div className="mt-6 grid gap-4 lg:grid-cols-2">
+        <div className="mt-4 md:mt-6 grid gap-3 md:gap-4 lg:grid-cols-2">
           <label className="flex items-center gap-3 rounded-xl border border-slate-700/70 bg-slate-950/60 px-3 py-2">
             <Search className="h-4 w-4 text-indigo-400/80" />
             <input
@@ -455,7 +455,7 @@ export default function CharactersGridClient({
         </div>
 
         {/* Filter selects */}
-        <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-3 md:mt-4 grid gap-2 md:gap-3 grid-cols-2 lg:grid-cols-4">
           <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2">
             <div className="mb-1 flex items-center gap-2 text-xs text-slate-400">
               <SlidersHorizontal className="h-3.5 w-3.5 text-indigo-400/80" />
@@ -556,8 +556,8 @@ export default function CharactersGridClient({
 
       {/* Grid */}
       {filteredCharacters.length === 0 ? (
-        <div className="rounded-xl border border-slate-700 bg-slate-900/45 p-10 text-center">
-          <p className="text-lg text-slate-200">
+        <div className="rounded-xl border border-slate-700 bg-slate-900/45 p-6 md:p-10 text-center">
+          <p className="text-base md:text-lg text-slate-200">
             {t('noResults')}
           </p>
           <p className="mt-2 text-sm text-slate-400">
@@ -565,7 +565,7 @@ export default function CharactersGridClient({
           </p>
         </div>
       ) : (
-        <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <section className="grid gap-3 md:gap-4 grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {paginatedCharacters.map((character) => {
             const lead = getCharacterTranslation(
               character,

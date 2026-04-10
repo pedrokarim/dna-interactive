@@ -42,7 +42,7 @@ export default async function ItemsLayout({
   return (
     <div className="min-h-screen bg-linear-to-br from-slate-950 via-slate-900 to-indigo-950 text-white">
       <header className="relative z-50 border-b border-indigo-500/20 bg-slate-950/80 backdrop-blur-sm">
-        <div className="container mx-auto px-6 py-4">
+        <div className="container mx-auto px-3 md:px-6 py-3 md:py-4">
           <div className="flex items-center justify-between gap-6">
             <Link href={NAVIGATION.home} className="flex items-center gap-3">
               <img
@@ -78,10 +78,10 @@ export default async function ItemsLayout({
         </div>
       </header>
 
-      <main className="container mx-auto px-6 py-10">{children}</main>
+      <main className="container mx-auto px-3 md:px-6 py-5 md:py-10">{children}</main>
 
-      <footer className="border-t border-indigo-500/20 bg-slate-950 py-12">
-        <div className="container mx-auto px-6">
+      <footer className="border-t border-indigo-500/20 bg-slate-950 py-8 md:py-12">
+        <div className="container mx-auto px-3 md:px-6">
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <div className="flex items-center gap-3">
               <img

@@ -535,14 +535,14 @@ export default function ItemsGridClient({
   };
 
   return (
-    <div className="space-y-8">
-      <section className="rounded-2xl border border-indigo-500/20 bg-slate-900/55 p-6 shadow-[0_20px_45px_rgba(15,23,42,0.45)] backdrop-blur-sm">
+    <div className="space-y-4 md:space-y-8">
+      <section className="rounded-2xl border border-indigo-500/20 bg-slate-900/55 p-4 md:p-6 shadow-[0_20px_45px_rgba(15,23,42,0.45)] backdrop-blur-sm">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div>
             <p className="text-xs uppercase tracking-[0.3em] text-indigo-400/80">
               {favoritesOnly ? tc('favorites') : t('categoryLabel')}
             </p>
-            <h1 className="mt-2 text-3xl font-semibold text-white">
+            <h1 className="mt-2 text-2xl md:text-3xl font-semibold text-white">
               {favoritesOnly ? `Favoris ${category.title}` : category.title}
             </h1>
             <p className="mt-2 max-w-2xl text-sm text-slate-300">{category.description}</p>
@@ -578,7 +578,7 @@ export default function ItemsGridClient({
           </div>
         </div>
 
-        <div className="mt-6 grid gap-4 lg:grid-cols-2">
+        <div className="mt-4 md:mt-6 grid gap-3 md:gap-4 lg:grid-cols-2">
           <label className="flex items-center gap-3 rounded-xl border border-slate-700/70 bg-slate-950/60 px-3 py-2">
             <Search className="h-4 w-4 text-indigo-400/80" />
             <input
@@ -636,7 +636,7 @@ export default function ItemsGridClient({
           </div>
         </div>
 
-        <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+        <div className="mt-3 md:mt-4 grid gap-2 md:gap-3 grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
           {rarityOptions.length > 0 && (
             <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2">
               <div className="mb-1 flex items-center gap-2 text-xs text-slate-400">
@@ -777,8 +777,8 @@ export default function ItemsGridClient({
       </section>
 
       {filteredItems.length === 0 ? (
-        <div className="rounded-xl border border-slate-700 bg-slate-900/45 p-10 text-center">
-          <p className="text-lg text-slate-200">
+        <div className="rounded-xl border border-slate-700 bg-slate-900/45 p-6 md:p-10 text-center">
+          <p className="text-base md:text-lg text-slate-200">
             {favoritesOnly
               ? t('noFavoriteResults')
               : t('noItemResults')}
@@ -790,7 +790,7 @@ export default function ItemsGridClient({
           </p>
         </div>
       ) : (
-        <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+        <section className="grid gap-3 md:gap-4 sm:grid-cols-2 xl:grid-cols-3">
           {paginatedItems.map((item) => {
             const lead = getItemTranslation(
               item,
@@ -806,10 +806,10 @@ export default function ItemsGridClient({
               <Link
                 key={item.id}
                 href={`/items/${category.slug}/${item.id}`}
-                className="group rounded-2xl border border-slate-700/70 bg-slate-900/55 p-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-indigo-400/40 hover:bg-slate-900/75"
+                className="group rounded-2xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-indigo-400/40 hover:bg-slate-900/75"
               >
                 <div className="flex items-start gap-3">
-                  <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl border border-indigo-500/20 bg-slate-950/80 p-2">
+                  <div className="flex h-14 w-14 md:h-16 md:w-16 shrink-0 items-center justify-center rounded-xl border border-indigo-500/20 bg-slate-950/80 p-2">
                     <div className="relative h-full w-full">
                       <div className="h-full w-full overflow-hidden rounded-lg">
                         <img
@@ -880,7 +880,7 @@ export default function ItemsGridClient({
                   <ChevronRight className="mt-1 h-4 w-4 text-slate-400 transition-colors group-hover:text-indigo-300" />
                 </div>
 
-                <div className="mt-4 space-y-2">
+                <div className="mt-3 md:mt-4 space-y-2">
                   {selectedLanguages.map((langCode) => {
                     const translation = item.translations[langCode];
                     return (
@@ -901,7 +901,7 @@ export default function ItemsGridClient({
                   })}
                 </div>
 
-                <div className="mt-4 flex flex-wrap gap-2 text-xs">
+                <div className="mt-3 md:mt-4 flex flex-wrap gap-1.5 md:gap-2 text-xs">
                   <span className="rounded-full border border-slate-600/80 px-2 py-0.5 text-slate-300">
                     ID {item.modId}
                   </span>
