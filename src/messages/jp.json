@@ -130,7 +130,8 @@
   },
   "newCharacters": {
     "badge": "新キャラクター",
-    "viewCharacter": "キャラクターを見る"
+    "viewCharacter": "キャラクターを見る",
+    "viewBuild": "ビルドを見る"
   },
   "community": {
     "streamerName": "Velkaine",

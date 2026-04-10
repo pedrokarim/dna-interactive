@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, ArrowRight, Globe, Check } from "lucide-react";
+import { Sparkles, ArrowRight, Globe, Check, Swords } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { locales, LANGUAGE_LABELS } from "@/i18n/config";
 import type { Locale } from "@/i18n/config";
@@ -269,13 +269,22 @@ export default function NewCharactersBanner() {
               <p className="text-sm md:text-base text-gray-400 leading-relaxed italic max-w-md">
                 &ldquo;{charData.description}&rdquo;
               </p>
-              <Link
-                href={`/characters/${active.id}`}
-                className="inline-flex items-center gap-2 mt-8 px-5 py-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/15 hover:border-white/30 rounded-lg text-sm font-medium text-white transition-all duration-300"
-              >
-                {tc("viewCharacter")}
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+              <div className="flex flex-wrap items-center gap-3 mt-8">
+                <Link
+                  href={`/characters/${active.id}`}
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/15 hover:border-white/30 rounded-lg text-sm font-medium text-white transition-all duration-300"
+                >
+                  {tc("viewCharacter")}
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+                <Link
+                  href={`/characters/${active.id}?tab=build`}
+                  className={`inline-flex items-center gap-2 px-5 py-2.5 backdrop-blur-sm border rounded-lg text-sm font-semibold text-white transition-all duration-300 ${styles.border} bg-white/[0.08] hover:bg-white/20 hover:border-white/40`}
+                >
+                  <Swords className="w-4 h-4" />
+                  {tc("viewBuild")}
+                </Link>
+              </div>
             </motion.div>
           </AnimatePresence>
         </div>

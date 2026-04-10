@@ -130,7 +130,8 @@
   },
   "newCharacters": {
     "badge": "新角色",
-    "viewCharacter": "查看角色"
+    "viewCharacter": "查看角色",
+    "viewBuild": "查看配置"
   },
   "community": {
     "streamerName": "Velkaine",

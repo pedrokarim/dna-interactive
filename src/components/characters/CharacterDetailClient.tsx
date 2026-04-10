@@ -1766,49 +1766,94 @@ export default function CharacterDetailClient({
         const intronLevels = character.intronLevels;
         const bustSrc = character.portraits.bust?.publicPath;
         // Vertical offsets (%) from top for each circle
-        const CIRCLE_Y = [2, 16, 32, 48, 64, 80];
+        const CIRCLE_Y = [4, 18, 34, 52, 68, 84];
         // Horizontal offsets — symmetric: 1↔6, 2↔5, 3↔4
-        const CIRCLE_X = [8, 42, 62, 62, 42, 8];
+        const CIRCLE_X = [6, 40, 62, 62, 40, 6];
 
         return (
-          <section className="py-6">
-            <h2 className="mb-8 flex items-center gap-2 text-base md:text-lg font-semibold text-white">
-              <Layers className="h-4 w-4 text-indigo-400/80" />
-              Niveaux d&apos;intron
-            </h2>
-            {intronLevels.length > 0 ? (
-              <div className="flex gap-6 md:gap-10">
-                {/* Left: bust portrait */}
-                {bustSrc && (
-                  <div className="hidden shrink-0 md:block" style={{ width: "480px" }}>
-                    <img
-                      src={bustSrc}
-                      alt={character.internalName}
-                      className="h-auto w-full object-contain"
-                      style={{ filter: `drop-shadow(0 0 50px rgba(${rgb}, 0.25))` }}
-                    />
-                  </div>
-                )}
+          <section className="relative overflow-hidden rounded-2xl border border-slate-800/60 bg-slate-950/40" style={{ minHeight: 720 }}>
+            {/* z-0: Bust image as background — oversized, positioned left */}
+            {bustSrc && (
+              <div
+                className="absolute z-0 pointer-events-none select-none hidden md:block"
+                style={{
+                  left: "-6%",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  width: "60%",
+                  height: "115%",
+                }}
+              >
+                <img
+                  src={bustSrc}
+                  alt={character.internalName}
+                  className="h-full w-full object-contain object-center"
+                  style={{ filter: `drop-shadow(0 0 90px rgba(${rgb}, 0.45))` }}
+                />
+              </div>
+            )}
 
-                {/* Right: floating circles constellation */}
-                <div className="relative min-h-[520px] flex-1">
-                  {/* SVG connecting lines */}
+            {/* z-[1]: Element color ambient glow */}
+            <div
+              className="absolute inset-0 z-[1] pointer-events-none"
+              style={{
+                background: `radial-gradient(ellipse 55% 75% at 22% 50%, rgba(${rgb}, 0.2), transparent 70%)`,
+              }}
+            />
+            <div className="absolute inset-0 z-[1] pointer-events-none bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
+
+            {/* z-[2]: Header title — top-right */}
+            <div className="relative z-[2] p-6 md:p-8 lg:p-10 flex justify-end">
+              <div className="text-right max-w-md">
+                <div
+                  className="inline-flex items-center gap-2 px-3 py-1 rounded-full border mb-3"
+                  style={{
+                    borderColor: `rgba(${rgb}, 0.35)`,
+                    background: `rgba(${rgb}, 0.08)`,
+                  }}
+                >
+                  <Layers className="h-3.5 w-3.5" style={{ color: `rgb(${rgb})` }} />
+                  <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: `rgb(${rgb})` }}>
+                    Progression
+                  </span>
+                </div>
+                <h2 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">
+                  Niveaux d&apos;intron
+                </h2>
+                <p className="mt-2 text-sm text-slate-400">
+                  {intronLevels.length > 0
+                    ? `${intronLevels.length} paliers débloquant les capacités et bonus du personnage.`
+                    : "Aucune donnée d'intron disponible."}
+                </p>
+              </div>
+            </div>
+
+            {intronLevels.length > 0 && (
+              <div className="relative z-[2] min-h-[560px] px-6 md:px-10 lg:px-16 pb-10">
+                <div className="relative ml-auto md:w-[55%] lg:w-[52%] h-[560px]">
+                  {/* SVG connecting lines — organic curves */}
                   <svg className="pointer-events-none absolute inset-0 h-full w-full" preserveAspectRatio="none">
+                    <defs>
+                      <linearGradient id={`intron-line-${character.id}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor={`rgba(${rgb}, 0.5)`} />
+                        <stop offset="100%" stopColor={`rgba(${rgb}, 0.12)`} />
+                      </linearGradient>
+                    </defs>
                     {intronLevels.map((_, idx) => {
                       if (idx === 0) return null;
-                      const x1 = (CIRCLE_X[idx - 1] ?? 0) + 5;
-                      const y1 = (CIRCLE_Y[idx - 1] ?? 0) + 5;
-                      const x2 = (CIRCLE_X[idx] ?? 0) + 5;
-                      const y2 = (CIRCLE_Y[idx] ?? 0) + 5;
+                      const x1 = (CIRCLE_X[idx - 1] ?? 0) + 7;
+                      const y1 = (CIRCLE_Y[idx - 1] ?? 0) + 6;
+                      const x2 = (CIRCLE_X[idx] ?? 0) + 7;
+                      const y2 = (CIRCLE_Y[idx] ?? 0) + 6;
                       const mx = (x1 + x2) / 2;
                       return (
                         <path
                           key={`line-${idx}`}
                           d={`M ${x1}% ${y1}% Q ${mx}% ${(y1 + y2) / 2}% ${x2}% ${y2}%`}
                           fill="none"
-                          stroke={`rgba(${rgb}, 0.15)`}
-                          strokeWidth="1"
-                          strokeDasharray="4 6"
+                          stroke={`url(#intron-line-${character.id})`}
+                          strokeWidth="1.5"
+                          strokeDasharray="5 7"
                         />
                       );
                     })}
@@ -1819,11 +1864,12 @@ export default function CharacterDetailClient({
                     const num = idx + 1;
                     const iconSrc = num >= 1 && num <= 6 ? `/assets/ui/intron/intron-${num}.png` : null;
                     const isFirst = idx === 0;
+                    const romanNumeral = ["I", "II", "III", "IV", "V", "VI"][idx];
 
                     return (
                       <div
                         key={`intron-${num}`}
-                        className="absolute flex items-center gap-3"
+                        className="absolute flex items-center gap-3 group"
                         style={{
                           left: `${CIRCLE_X[idx] ?? 0}%`,
                           top: `${CIRCLE_Y[idx] ?? 0}%`,
@@ -1831,36 +1877,65 @@ export default function CharacterDetailClient({
                       >
                         {/* Glowing circle */}
                         <div
-                          className="flex h-[72px] w-[72px] shrink-0 items-center justify-center rounded-full"
+                          className="relative flex h-[92px] w-[92px] shrink-0 items-center justify-center rounded-full transition-transform duration-300 group-hover:scale-105"
                           style={{
-                            border: `2px solid rgba(${rgb}, ${isFirst ? 0.7 : 0.2})`,
+                            border: `2px solid rgba(${rgb}, ${isFirst ? 0.75 : 0.25})`,
                             boxShadow: isFirst
-                              ? `0 0 28px rgba(${rgb}, 0.35), 0 0 56px rgba(${rgb}, 0.12), inset 0 0 16px rgba(${rgb}, 0.12)`
-                              : `0 0 10px rgba(${rgb}, 0.06)`,
+                              ? `0 0 40px rgba(${rgb}, 0.45), 0 0 80px rgba(${rgb}, 0.18), inset 0 0 24px rgba(${rgb}, 0.18)`
+                              : `0 0 16px rgba(${rgb}, 0.1)`,
                             background: isFirst
-                              ? `radial-gradient(circle at center, rgba(${rgb}, 0.18), rgba(15, 23, 42, 0.9))`
-                              : "rgba(15, 23, 42, 0.4)",
+                              ? `radial-gradient(circle at center, rgba(${rgb}, 0.28), rgba(15, 23, 42, 0.95))`
+                              : "rgba(15, 23, 42, 0.65)",
+                            backdropFilter: "blur(6px)",
                           }}
                         >
                           {iconSrc ? (
                             <img
                               src={iconSrc}
                               alt={`Intron ${num}`}
-                              className="h-14 w-14 object-contain"
-                              style={isFirst ? { filter: `drop-shadow(0 0 8px rgba(${rgb}, 0.6))` } : undefined}
+                              className="h-16 w-16 object-contain"
+                              style={
+                                isFirst
+                                  ? { filter: `drop-shadow(0 0 12px rgba(${rgb}, 0.8))` }
+                                  : { opacity: 0.7 }
+                              }
                             />
                           ) : (
-                            <span className="text-xl font-bold text-slate-500">{num}</span>
+                            <span className="text-2xl font-bold text-slate-500">{num}</span>
                           )}
+                          {/* Roman numeral badge */}
+                          <div
+                            className="absolute -bottom-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full text-[10px] font-black"
+                            style={{
+                              background: isFirst ? `rgb(${rgb})` : "rgba(30, 41, 59, 0.95)",
+                              color: isFirst ? "rgb(15, 23, 42)" : `rgba(${rgb}, 0.8)`,
+                              border: `1px solid rgba(${rgb}, ${isFirst ? 0.9 : 0.4})`,
+                            }}
+                          >
+                            {romanNumeral}
+                          </div>
                         </div>
 
                         {/* Label */}
-                        <div>
-                          <p className={`text-xs font-medium ${isFirst ? "text-white" : "text-slate-500"}`}>
-                            Intron {num}
-                          </p>
-                          <p className="text-[10px] text-slate-600">
-                            {intronLevel.resourceNum} pieces
+                        <div className="min-w-[120px]">
+                          <div className="flex items-baseline gap-2">
+                            <p className={`text-sm font-bold ${isFirst ? "text-white" : "text-slate-400"}`}>
+                              Intron {num}
+                            </p>
+                            {isFirst && (
+                              <span
+                                className="text-[9px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded"
+                                style={{
+                                  background: `rgba(${rgb}, 0.2)`,
+                                  color: `rgb(${rgb})`,
+                                }}
+                              >
+                                Base
+                              </span>
+                            )}
+                          </div>
+                          <p className="text-xs text-slate-500 mt-0.5">
+                            {intronLevel.resourceNum} pièces
                           </p>
                         </div>
                       </div>
@@ -1868,10 +1943,6 @@ export default function CharacterDetailClient({
                   })}
                 </div>
               </div>
-            ) : (
-              <p className="mt-4 text-sm text-slate-400">
-                Aucune donnee d&apos;intron disponible.
-              </p>
             )}
           </section>
         );
