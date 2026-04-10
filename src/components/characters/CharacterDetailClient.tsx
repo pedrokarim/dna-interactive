@@ -2,7 +2,7 @@
 
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
-import { type ComponentType, useMemo, useState } from "react";
+import { type ComponentType, Fragment, useMemo, useState } from "react";
 import {
   ArrowLeft,
   BarChart3,
@@ -486,28 +486,44 @@ function DemonWedgeLayout({
         </div>
       </div>
 
-      {/* Mobile layout — keep desktop top/bottom split:
-          - Top half (positions 1-4) arranged in a 2x2 grid
+      {/* Mobile layout — desktop top/bottom split, each row symmetric:
+          - Top half (2 rows): each row pairs topLeft[i] (leans right) with topRight[i] (leans left)
           - Center wedge in the middle
-          - Bottom half (positions 5-8) arranged in a 2x2 grid */}
+          - Bottom half (2 rows): each row pairs bottomLeft[i] with bottomRight[i] */}
       <div className="flex w-full flex-col items-center gap-3 md:hidden">
         <div className="grid grid-cols-2 place-items-center gap-3">
-          {topLeft.map((s) => (
-            <DemonWedgeSlotCard key={s.position} slot={s} elementKey={elementKey} side="left" showTrackAdjust={showTrackAdjust} />
-          ))}
-          {topRight.map((s) => (
-            <DemonWedgeSlotCard key={s.position} slot={s} elementKey={elementKey} side="right" showTrackAdjust={showTrackAdjust} />
+          {[0, 1].map((i) => (
+            <Fragment key={`mobile-top-${i}`}>
+              {topLeft[i] ? (
+                <DemonWedgeSlotCard slot={topLeft[i]} elementKey={elementKey} side="left" showTrackAdjust={showTrackAdjust} />
+              ) : (
+                <div />
+              )}
+              {topRight[i] ? (
+                <DemonWedgeSlotCard slot={topRight[i]} elementKey={elementKey} side="right" showTrackAdjust={showTrackAdjust} />
+              ) : (
+                <div />
+              )}
+            </Fragment>
           ))}
         </div>
 
         <DemonWedgeCenterSlot centerItem={centerItem} affinity={affinity} elementKey={elementKey} lang={lang} />
 
         <div className="grid grid-cols-2 place-items-center gap-3">
-          {bottomLeft.map((s) => (
-            <DemonWedgeSlotCard key={s.position} slot={s} elementKey={elementKey} side="left" showTrackAdjust={showTrackAdjust} />
-          ))}
-          {bottomRight.map((s) => (
-            <DemonWedgeSlotCard key={s.position} slot={s} elementKey={elementKey} side="right" showTrackAdjust={showTrackAdjust} />
+          {[0, 1].map((i) => (
+            <Fragment key={`mobile-bottom-${i}`}>
+              {bottomLeft[i] ? (
+                <DemonWedgeSlotCard slot={bottomLeft[i]} elementKey={elementKey} side="left" showTrackAdjust={showTrackAdjust} />
+              ) : (
+                <div />
+              )}
+              {bottomRight[i] ? (
+                <DemonWedgeSlotCard slot={bottomRight[i]} elementKey={elementKey} side="right" showTrackAdjust={showTrackAdjust} />
+              ) : (
+                <div />
+              )}
+            </Fragment>
           ))}
         </div>
       </div>
