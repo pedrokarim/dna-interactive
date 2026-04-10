@@ -2,12 +2,13 @@
 
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
-import { type ComponentType, useMemo, useState } from "react";
+import { type ComponentType, Fragment, useMemo, useState } from "react";
 import {
   ArrowLeft,
   BarChart3,
   ChevronLeft,
   ChevronRight,
+  HelpCircle,
   Heart,
   Image as ImageIcon,
   Languages,
@@ -486,13 +487,63 @@ function DemonWedgeLayout({
         </div>
       </div>
 
-      {/* Mobile layout */}
-      <div className="grid w-full grid-cols-2 place-items-center gap-4 sm:grid-cols-4 md:hidden">
-        {slots.map((s) => (
-          <DemonWedgeSlotCard key={s.position} slot={s} elementKey={elementKey} side={s.position <= 4 ? "left" : "right"} showTrackAdjust={showTrackAdjust} />
-        ))}
-        <div className="col-span-2 sm:col-span-4">
-          <DemonWedgeCenterSlot centerItem={centerItem} affinity={affinity} elementKey={elementKey} lang={lang} />
+      {/* Mobile layout — 90° rotation:
+          - Left column = desktop top row (positions 1,2,3,4 top-to-bottom)
+          - Right column = desktop bottom row (positions 5,6,7,8 top-to-bottom)
+          - Center wedge spans both columns, vertically in the middle */}
+      <div className="w-full md:hidden">
+        <details className="group mb-3 rounded-lg border border-indigo-500/30 bg-indigo-500/5 open:bg-indigo-500/10">
+          <summary className="flex cursor-pointer items-center gap-2 px-3 py-2 text-xs text-indigo-200 list-none [&::-webkit-details-marker]:hidden">
+            <HelpCircle className="h-4 w-4 shrink-0" />
+            <span className="flex-1">Comment lire ce layout sur mobile ?</span>
+            <ChevronRight className="h-3.5 w-3.5 transition-transform group-open:rotate-90" />
+          </summary>
+          <div className="border-t border-indigo-500/20 px-3 py-2 text-xs leading-relaxed text-slate-300">
+            L&apos;affichage est tourné pour tenir sur l&apos;écran.
+            <br />
+            <strong className="text-indigo-200">Colonne gauche</strong> = ligne du <strong>haut</strong> du layout desktop (emplacements 1–4).
+            <br />
+            <strong className="text-indigo-200">Colonne droite</strong> = ligne du <strong>bas</strong> (emplacements 5–8).
+          </div>
+        </details>
+
+        <div className="grid grid-cols-2 place-items-center gap-3">
+          {/* Top rows — desktop top row split into left column */}
+          {[0, 1].map((i) => (
+            <Fragment key={`top-pair-${i}`}>
+              {topLeft[i] ? (
+                <DemonWedgeSlotCard slot={topLeft[i]} elementKey={elementKey} side="left" showTrackAdjust={showTrackAdjust} />
+              ) : (
+                <div />
+              )}
+              {bottomLeft[i] ? (
+                <DemonWedgeSlotCard slot={bottomLeft[i]} elementKey={elementKey} side="right" showTrackAdjust={showTrackAdjust} />
+              ) : (
+                <div />
+              )}
+            </Fragment>
+          ))}
+
+          {/* Center wedge */}
+          <div className="col-span-2 flex justify-center py-2">
+            <DemonWedgeCenterSlot centerItem={centerItem} affinity={affinity} elementKey={elementKey} lang={lang} />
+          </div>
+
+          {/* Bottom rows — desktop bottom row split into right column */}
+          {[0, 1].map((i) => (
+            <Fragment key={`bottom-pair-${i}`}>
+              {topRight[i] ? (
+                <DemonWedgeSlotCard slot={topRight[i]} elementKey={elementKey} side="left" showTrackAdjust={showTrackAdjust} />
+              ) : (
+                <div />
+              )}
+              {bottomRight[i] ? (
+                <DemonWedgeSlotCard slot={bottomRight[i]} elementKey={elementKey} side="right" showTrackAdjust={showTrackAdjust} />
+              ) : (
+                <div />
+              )}
+            </Fragment>
+          ))}
         </div>
       </div>
     </div>
