@@ -67,6 +67,8 @@ export default async function Home() {
               <img
                 src={ASSETS_PATHS.logo}
                 alt={`${SITE_CONFIG.name} Logo`}
+                width={40}
+                height={40}
                 className="h-10 w-auto"
               />
               <div>
@@ -397,6 +399,8 @@ export default async function Home() {
               <img
                 src={ASSETS_PATHS.logo}
                 alt={`${SITE_CONFIG.name} Logo`}
+                width={32}
+                height={32}
                 className="h-8 w-auto"
               />
               <span className="text-white font-semibold">
@@ -404,12 +408,12 @@ export default async function Home() {
               </span>
             </div>
 
-            <div className="flex items-center space-x-6 text-sm text-gray-400">
+            <div className="flex items-center space-x-6 text-sm text-slate-300">
               {FOOTER_LINKS.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="hover:text-indigo-400 transition-colors"
+                  className="hover:text-indigo-300 transition-colors"
                 >
                   {navLabels[link.href] ?? link.label}
                 </Link>
@@ -417,7 +421,7 @@ export default async function Home() {
             </div>
           </div>
 
-          <div className="mt-8 pt-8 border-t border-indigo-500/10 text-center text-sm text-gray-500">
+          <div className="mt-8 pt-8 border-t border-indigo-500/10 text-center text-sm text-slate-300">
             <p>{LEGAL_INFO.copyright}</p>
             <p className="mt-2">
               {LEGAL_INFO.disclaimer}
@@ -425,13 +429,13 @@ export default async function Home() {
                 href={CONTACT_INFO.ascencia.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-indigo-400 hover:text-indigo-300 ml-1"
+                className="text-indigo-300 hover:text-indigo-200 underline underline-offset-2 ml-1"
               >
                 {LEGAL_INFO.ascenciaCredit}
               </a>
             </p>
-            <p className="mt-3 text-xs text-gray-500 italic max-w-2xl mx-auto">
-              <span className="font-semibold text-gray-400">{tCommon('disclaimer')}:</span>{" "}
+            <p className="mt-3 text-xs text-slate-300 italic max-w-2xl mx-auto">
+              <span className="font-semibold text-slate-200">{tCommon('disclaimer')}:</span>{" "}
               {tLegal('disclaimerFull')}{" "}
               <span className="block mt-1">
                 {tLegal('disclaimerFullEn')}
@@ -440,7 +444,7 @@ export default async function Home() {
             <p className="mt-3">
               <Link
                 href="/changelog"
-                className="text-indigo-400 hover:text-indigo-300 transition-colors"
+                className="text-indigo-300 hover:text-indigo-200 underline underline-offset-2 transition-colors"
               >
                 {tCommon('viewChangelog')}
               </Link>

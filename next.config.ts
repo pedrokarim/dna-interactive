@@ -19,6 +19,21 @@ const nextConfig: NextConfig = {
   // Optimisation SEO
   compress: true,
   poweredByHeader: false,
+  async headers() {
+    return [
+      {
+        // Allow bfcache by removing no-store on HTML pages.
+        // Excludes API routes, _next assets and static files (which keep their own cache rules).
+        source: '/((?!api|_next/|.*\\..*).*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'private, no-cache, must-revalidate',
+          },
+        ],
+      },
+    ];
+  },
 };
 
 export default withNextIntl(nextConfig);
