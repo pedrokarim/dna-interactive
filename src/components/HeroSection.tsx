@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { motion } from "framer-motion";
 import { Map, ChevronDown } from "lucide-react";
@@ -12,13 +13,16 @@ export default function HeroSection() {
   const [currentImage, setCurrentImage] = useState(0);
   const [isButtonAnimated, setIsButtonAnimated] = useState(false);
 
-  // Effet pour changer l'image de fond toutes les 4 secondes
+  // Effet pour changer l'image de fond toutes les 4 secondes (démarre après le LCP)
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % ASSETS_PATHS.worldview.length);
+    const start = setTimeout(() => {
+      const interval = setInterval(() => {
+        setCurrentImage((prev) => (prev + 1) % ASSETS_PATHS.worldview.length);
+      }, 4000);
+      return () => clearInterval(interval);
     }, 4000);
 
-    return () => clearInterval(interval);
+    return () => clearTimeout(start);
   }, []);
 
   // Effet pour déclencher l'animation du bouton aléatoirement
@@ -41,14 +45,19 @@ export default function HeroSection() {
 
   return (
     <section className="relative min-h-screen flex items-center">
-      {/* Background avec effet Ken Burns */}
+      {/* Background avec effet Ken Burns - LCP critique : on render uniquement l'image actuelle */}
       <div className="absolute inset-0 overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center transition-all duration-16000 ease-out scale-110"
-          style={{
-            backgroundImage: `url(${ASSETS_PATHS.worldview[currentImage]})`,
-            animation: "kenBurns 16s ease-out infinite",
-          }}
+        <Image
+          key={ASSETS_PATHS.worldview[currentImage]}
+          src={ASSETS_PATHS.worldview[currentImage]}
+          alt=""
+          fill
+          priority
+          fetchPriority="high"
+          sizes="100vw"
+          quality={70}
+          className="object-cover object-center scale-110"
+          style={{ animation: "kenBurns 16s ease-out infinite" }}
         />
         {/* Overlay sombre */}
         <div className="absolute inset-0 bg-linear-to-r from-slate-950/90 via-slate-950/70 to-slate-950/90" />

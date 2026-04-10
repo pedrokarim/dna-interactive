@@ -140,30 +140,30 @@ export default async function Home() {
               <div className="absolute inset-0 bg-linear-to-r from-slate-950/95 via-slate-950/78 to-slate-950/35" />
               <div className="absolute inset-0 bg-linear-to-t from-indigo-950/70 via-transparent to-black/20" />
 
-              <div className="pointer-events-none absolute inset-0 hidden md:block">
+              <div className="pointer-events-none absolute inset-0 hidden md:block" aria-hidden="true">
                 <div className="absolute left-[56%] top-[18%] h-14 w-14 -rotate-12 rounded-xl border border-cyan-400/35 bg-slate-950/70 p-2 shadow-[0_8px_24px_rgba(34,211,238,0.22)]">
-                  <img src="/assets/items/mods/T_Mod_Phoenix01.png" alt="" className="h-full w-full object-contain" />
+                  <img src="/assets/optimized/home-spotlight/T_Mod_Phoenix01.webp" alt="Demon Wedge Phoenix" width="56" height="56" loading="lazy" className="h-full w-full object-contain" />
                 </div>
                 <div className="absolute left-[63%] top-[42%] h-14 w-14 rotate-9 rounded-xl border border-indigo-400/35 bg-slate-950/70 p-2 shadow-[0_8px_24px_rgba(99,102,241,0.22)]">
-                  <img src="/assets/items/mods/T_Mod_Typhon01_Blue.png" alt="" className="h-full w-full object-contain" />
+                  <img src="/assets/optimized/home-spotlight/T_Mod_Typhon01_Blue.webp" alt="Demon Wedge Typhon" width="56" height="56" loading="lazy" className="h-full w-full object-contain" />
                 </div>
                 <div className="absolute left-[73%] top-[22%] h-12 w-12 -rotate-6 rounded-lg border border-rose-400/30 bg-slate-950/70 p-2">
-                  <img src="/assets/items/drafts/T_Draft_Mod_Griffin01_Red.png" alt="" className="h-full w-full object-contain" />
+                  <img src="/assets/optimized/home-spotlight/T_Draft_Mod_Griffin01_Red.webp" alt="Plan de forge Griffin" width="48" height="48" loading="lazy" className="h-full w-full object-contain" />
                 </div>
                 <div className="absolute left-[79%] top-[48%] h-12 w-12 rotate-12 rounded-lg border border-amber-300/30 bg-slate-950/70 p-2">
-                  <img src="/assets/items/drafts/T_Draft_Mod_Typhon01_Orange.png" alt="" className="h-full w-full object-contain" />
+                  <img src="/assets/optimized/home-spotlight/T_Draft_Mod_Typhon01_Orange.webp" alt="Plan de forge Typhon" width="48" height="48" loading="lazy" className="h-full w-full object-contain" />
                 </div>
                 <div className="absolute left-[69%] top-[64%] h-11 w-11 -rotate-3 rounded-lg border border-violet-400/30 bg-slate-950/70 p-2">
-                  <img src="/assets/items/weapon-types/T_Armory_WeaponType_Katana.png" alt="" className="h-full w-full object-contain" />
+                  <img src="/assets/optimized/home-spotlight/T_Armory_WeaponType_Katana.webp" alt="Katana" width="44" height="44" loading="lazy" className="h-full w-full object-contain" />
                 </div>
                 <div className="absolute left-[83%] top-[70%] h-12 w-12 rotate-6 rounded-lg border border-sky-300/30 bg-slate-950/70 p-2">
-                  <img src="/assets/items/weapons/T_Head_Katana_Yuli.png" alt="" className="h-full w-full object-contain" />
+                  <img src="/assets/optimized/home-spotlight/T_Head_Katana_Yuli.webp" alt="Katana de Yuli" width="48" height="48" loading="lazy" className="h-full w-full object-contain" />
                 </div>
                 <div className="absolute left-[61%] top-[70%] h-10 w-10 -rotate-12 rounded-md border border-orange-300/30 bg-slate-950/70 p-1.5">
-                  <img src="/assets/items/mods/T_Armory_Fire.png" alt="" className="h-full w-full object-contain" />
+                  <img src="/assets/optimized/home-spotlight/T_Armory_Fire.webp" alt="Element Feu" width="40" height="40" loading="lazy" className="h-full w-full object-contain" />
                 </div>
                 <div className="absolute left-[76%] top-[10%] h-10 w-10 rotate-12 rounded-md border border-cyan-300/30 bg-slate-950/70 p-1.5">
-                  <img src="/assets/items/mods/T_Armory_Water.png" alt="" className="h-full w-full object-contain" />
+                  <img src="/assets/optimized/home-spotlight/T_Armory_Water.webp" alt="Element Eau" width="40" height="40" loading="lazy" className="h-full w-full object-contain" />
                 </div>
               </div>
 

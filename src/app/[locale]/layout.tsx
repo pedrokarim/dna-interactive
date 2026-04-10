@@ -52,7 +52,7 @@ export async function generateMetadata(
       default: `DNA Interactive - Carte Interactive Duet Night Abyss`,
       template: `%s | DNA Interactive`,
     },
-    description: `Carte interactive Duet Night Abyss : secrets, coffres, collectibles, personnages et items. Explorez le monde de DNA.`,
+    description: `Carte interactive Duet Night Abyss : explorez le monde, trouvez tous les coffres, secrets, items, personnages, codes et plans de forge. Outil DNA gratuit.`,
     keywords: [
       "DNA",
       "DNA Interactive",
@@ -95,7 +95,7 @@ export async function generateMetadata(
       siteName: "DNA Interactive",
       title: "DNA Interactive - Carte Interactive Duet Night Abyss",
       description:
-        "Carte interactive Duet Night Abyss : secrets, coffres, collectibles, personnages et items. Explorez le monde de DNA.",
+        "Carte interactive Duet Night Abyss : explorez le monde, trouvez tous les coffres, secrets, items, personnages, codes et plans de forge. Outil DNA gratuit.",
       images: [
         {
           url: "/assets/worldview/worldview-1.webp",
@@ -110,7 +110,7 @@ export async function generateMetadata(
       card: "summary_large_image",
       title: "DNA Interactive - Carte Interactive Duet Night Abyss",
       description:
-        "Carte interactive Duet Night Abyss : secrets, coffres, collectibles, personnages et items.",
+        "Carte interactive Duet Night Abyss : coffres, secrets, items, personnages, codes et plans de forge. Outil DNA gratuit.",
       images: ["/assets/worldview/worldview-1.webp"],
       creator: "@dna_interactive",
     },

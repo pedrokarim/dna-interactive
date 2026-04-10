@@ -68,7 +68,7 @@ export async function generatePageMetadata(
   const previousImages = parentMetadata?.openGraph?.images || [];
 
   const finalTitle = title || `${SITE_CONFIG.name} - Carte Interactive Duet Night Abyss`;
-  const finalDescription = description || `Carte interactive Duet Night Abyss : secrets, coffres, collectibles, personnages et items. Explorez le monde de DNA.`;
+  const finalDescription = description || `Carte interactive Duet Night Abyss : explorez le monde, trouvez tous les coffres, secrets, items, personnages, codes et plans de forge. Outil DNA gratuit.`;
 
   return {
     title: finalTitle,
@@ -142,7 +142,7 @@ export async function generatePageMetadata(
 export const pageMetadata = {
   home: {
     title: `${SITE_CONFIG.name} - Carte Interactive Duet Night Abyss`,
-    description: `Carte interactive Duet Night Abyss : secrets, coffres, collectibles, personnages et items. Explorez le monde de DNA.`,
+    description: `Carte interactive Duet Night Abyss : explorez le monde, trouvez tous les coffres, secrets, items, personnages, codes et plans de forge. Outil DNA gratuit.`,
     keywords: [
       GAME_INFO.name,
       ...SITE_CONFIG.keywords,
