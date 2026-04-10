@@ -12,6 +12,7 @@ import {
 } from "@/lib/constants";
 import { generatePageMetadata, pageMetadata } from "@/lib/metadata";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import MobileMenu from "@/components/MobileMenu";
 
 export async function generateMetadata(
   { params }: { params: Promise<{ locale: string }> },
@@ -42,19 +43,23 @@ export default async function ItemsLayout({
   return (
     <div className="min-h-screen bg-linear-to-br from-slate-950 via-slate-900 to-indigo-950 text-white">
       <header className="relative z-50 border-b border-indigo-500/20 bg-slate-950/80 backdrop-blur-sm">
-        <div className="container mx-auto px-3 md:px-6 py-3 md:py-4">
-          <div className="flex items-center justify-between gap-6">
-            <Link href={NAVIGATION.home} className="flex items-center gap-3">
+        <div className="container mx-auto px-4 md:px-6 py-3 md:py-4">
+          <div className="flex items-center justify-between gap-3">
+            <Link href={NAVIGATION.home} className="flex items-center gap-2 md:gap-3 min-w-0">
               <img
                 src={ASSETS_PATHS.logo}
                 alt={`${SITE_CONFIG.name} logo`}
-                className="h-10 w-auto"
+                width={40}
+                height={40}
+                className="h-9 md:h-10 w-auto"
               />
-              <div>
-                <div className="text-2xl font-bold text-white">{SITE_CONFIG.name}</div>
-                <p className="text-xs text-slate-400">{tSite('tagline')}</p>
+              <div className="min-w-0">
+                <div className="text-lg md:text-2xl font-bold text-white truncate">{SITE_CONFIG.name}</div>
+                <p className="text-xs text-slate-400 truncate">{tSite('tagline')}</p>
               </div>
             </Link>
+
+            <MobileMenu />
 
             <div className="hidden items-center gap-6 md:flex">
               <nav className="flex items-center gap-7">
