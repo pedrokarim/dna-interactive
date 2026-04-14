@@ -112,6 +112,59 @@ export interface CharacterConsonanceWeapon {
   translations: Record<string, { name: string | null }>;
 }
 
+export interface CharacterSkillParam {
+  label: string | null;
+  labelKey: string | null;
+  formula: string;
+  valuesByLevel: Record<string, string | null>;
+  levelDependent: boolean;
+}
+
+export const SKILL_LEVEL_MIN = 1;
+export const SKILL_LEVEL_MAX = 20;
+
+export interface CharacterSkillSection {
+  heading: string | null;
+  headingKey: string | null;
+  indices: number[];
+}
+
+export interface CharacterSkillCombatTerm {
+  id: string;
+  nameKey: string | null;
+  explanationKey: string | null;
+  name: string | null;
+  explanation: string | null;
+}
+
+export interface CharacterSkillLocalized {
+  name: string | null;
+  description: string | null;
+  params: CharacterSkillParam[];
+  sections: CharacterSkillSection[];
+  combatTerms: CharacterSkillCombatTerm[];
+}
+
+export interface CharacterSkill {
+  skillId: number;
+  skillType: string | null;
+  iconPublicPath: string | null;
+  iconName: string | null;
+  explanationIds: string[];
+  skillDescKeys: (string | null)[];
+  skillDescValues: (string | null)[];
+  skillDescGroups: Array<{ sectionKey: string; indices: number[] }>;
+  translations: Record<string, CharacterSkillLocalized>;
+}
+
+export interface CharacterSkillSet {
+  charId: number;
+  charName: string | null;
+  skillList: number[];
+  upgradeSkillExtraLevel: Array<{ grade: number; skillId: number; extraLv: number }>;
+  skills: CharacterSkill[];
+}
+
 export interface CharactersCatalog {
   generatedAt: string;
   characterCount: number;

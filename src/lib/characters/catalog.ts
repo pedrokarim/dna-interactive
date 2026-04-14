@@ -1,9 +1,11 @@
 import catalogJson from "@/data/characters/catalog.json";
 import charactersJson from "@/data/characters/characters.json";
 import levelUpCurvesJson from "@/data/characters/levelup-curves.json";
+import skillsJson from "@/data/characters/skills.json";
 import type {
   CharacterLocalizedContent,
   CharacterRecord,
+  CharacterSkillSet,
   CharactersCatalog,
   LevelUpCurves,
 } from "@/lib/characters/types";
@@ -21,6 +23,8 @@ const LANGUAGE_LABELS: Record<string, string> = {
 const catalog = catalogJson as CharactersCatalog;
 const characters = charactersJson as unknown as CharacterRecord[];
 const levelUpCurves = levelUpCurvesJson as unknown as LevelUpCurves;
+const skills = skillsJson as unknown as CharacterSkillSet[];
+const skillsByCharId = new Map(skills.map((s) => [s.charId, s]));
 
 export function getLanguageLabel(code: string): string {
   return LANGUAGE_LABELS[code] ?? code;
@@ -121,4 +125,8 @@ export function getStatAtLevel(
   if (!curve) return baseStat;
   const multiplier = curve[level] ?? 1;
   return Math.round(baseStat * multiplier);
+}
+
+export function getCharacterSkills(charId: number): CharacterSkillSet | null {
+  return skillsByCharId.get(charId) ?? null;
 }

@@ -31,9 +31,12 @@ import {
 import type {
   CharacterAddonAttr,
   CharacterRecord,
+  CharacterSkill,
+  CharacterSkillSet,
   CharactersCatalog,
   LevelUpCurves,
 } from "@/lib/characters/types";
+import { SKILL_LEVEL_MAX, SKILL_LEVEL_MIN } from "@/lib/characters/types";
 import type {
   CharacterBuild,
   BuildDemonWedgeSlot,
@@ -59,6 +62,7 @@ type CharacterDetailClientProps = {
   character: CharacterRecord;
   levelUpCurves: LevelUpCurves;
   builds?: CharacterBuild[];
+  skillSet?: CharacterSkillSet | null;
 };
 
 // ---------------------------------------------------------------------------
@@ -131,12 +135,13 @@ const PORTRAIT_LABELS: Record<PortraitType, string> = {
 // Tab system — add new tabs here
 // ---------------------------------------------------------------------------
 
-const TAB_IDS = ["stats", "build", "portraits", "intron", "translations", "tech"] as const;
+const TAB_IDS = ["stats", "build", "skills", "portraits", "intron", "translations", "tech"] as const;
 type TabId = (typeof TAB_IDS)[number];
 
 const TAB_CONFIG: { id: TabId; label: string; icon: ComponentType<{ className?: string }> }[] = [
   { id: "stats", label: "Attributs", icon: BarChart3 },
   { id: "build", label: "Build", icon: Swords },
+  { id: "skills", label: "Competences", icon: Sparkles },
   { id: "portraits", label: "Portraits", icon: ImageIcon },
   { id: "intron", label: "Intron", icon: Layers },
   { id: "translations", label: "Traductions", icon: Languages },
@@ -528,6 +533,293 @@ function DemonWedgeLayout({
         </div>
       </div>
     </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Skills tab — per-skill card with name, description, stats, and combat terms
+// ---------------------------------------------------------------------------
+
+const SKILL_TYPE_LABELS: Record<string, string> = {
+  Skill1: "Competence 1",
+  Skill2: "Competence 2",
+  Skill3: "Competence 3",
+  Passive: "Passif",
+  ExtraPassive: "Passif supplementaire",
+  UltraPassive: "Passif ultime",
+  Movement: "Mouvement",
+  PhantomPassive: "Passif spectre",
+};
+
+function getSkillLocalized<T extends { translations: Record<string, unknown> }>(
+  skill: T,
+  lang: string,
+): T["translations"][string] | null {
+  const up = lang.toUpperCase();
+  return (skill.translations[up] ??
+    skill.translations.EN ??
+    skill.translations.FR ??
+    Object.values(skill.translations)[0] ??
+    null) as T["translations"][string] | null;
+}
+
+// Render in-game markup: <H>text</> → highlighted span.
+// Game text uses this format to mark special annotations (e.g. "deployed as Combat Partner").
+function renderSkillMarkup(text: string): React.ReactNode {
+  const parts: React.ReactNode[] = [];
+  const regex = /<H>([\s\S]*?)<\/>/g;
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+  let idx = 0;
+  while ((match = regex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push(text.slice(lastIndex, match.index));
+    }
+    parts.push(
+      <span key={`h-${idx++}`} className="text-indigo-300">
+        {match[1]}
+      </span>,
+    );
+    lastIndex = match.index + match[0].length;
+  }
+  if (lastIndex < text.length) parts.push(text.slice(lastIndex));
+  return parts;
+}
+
+function SkillCard({
+  skill,
+  selectedLanguage,
+  elementKey,
+  skillLevel,
+}: {
+  skill: CharacterSkill;
+  selectedLanguage: string;
+  elementKey: string;
+  skillLevel: number;
+}) {
+  const localized = getSkillLocalized(skill, selectedLanguage);
+  if (!localized) return null;
+  const typeLabel = skill.skillType ? SKILL_TYPE_LABELS[skill.skillType] ?? skill.skillType : null;
+  const rgb = ELEMENT_RGB[elementKey] ?? ELEMENT_RGB.Water;
+
+  // Group params by section if any
+  const sections = localized.sections;
+  const paramsInSections = new Set<number>();
+  for (const s of sections) for (const i of s.indices) paramsInSections.add(i);
+  const ungroupedParams = localized.params
+    .map((p, i) => ({ param: p, index: i + 1 }))
+    .filter((p) => !paramsInSections.has(p.index));
+
+  return (
+    <article className="overflow-hidden rounded-xl border border-slate-700/70 bg-slate-900/55">
+      <header
+        className="flex items-start gap-3 border-b border-slate-800/70 p-4"
+        style={{
+          background: `linear-gradient(135deg, rgba(${rgb}, 0.12), transparent 60%)`,
+        }}
+      >
+        {skill.iconPublicPath ? (
+          <div
+            className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg border border-slate-600/60 bg-slate-950/70"
+            style={{ boxShadow: `0 0 24px rgba(${rgb}, 0.25)` }}
+          >
+            <img src={skill.iconPublicPath} alt="" className="h-10 w-10 object-contain" />
+          </div>
+        ) : (
+          <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg border border-slate-700/60 bg-slate-800/70">
+            <Sparkles className="h-5 w-5 text-slate-500" />
+          </div>
+        )}
+        <div className="min-w-0 flex-1">
+          <div className="flex flex-wrap items-center gap-2">
+            <h3 className="text-base font-semibold text-white">
+              {localized.name ?? `#${skill.skillId}`}
+            </h3>
+            {typeLabel && (
+              <span className="rounded-full border border-indigo-400/40 bg-indigo-500/10 px-2 py-0.5 text-[11px] font-medium text-indigo-200">
+                {typeLabel}
+              </span>
+            )}
+            <span className="rounded-full border border-slate-700/80 bg-slate-900/60 px-2 py-0.5 text-[11px] text-slate-400">
+              ID {skill.skillId}
+            </span>
+          </div>
+          {localized.description && (
+            <p className="mt-2 whitespace-pre-line text-sm leading-relaxed text-slate-300">
+              {renderSkillMarkup(localized.description)}
+            </p>
+          )}
+        </div>
+      </header>
+
+      {(ungroupedParams.length > 0 || sections.length > 0) && (
+        <div className="space-y-4 p-4">
+          {ungroupedParams.length > 0 && (
+            <SkillParamList
+              items={ungroupedParams.map(({ param }) => param)}
+              skillLevel={skillLevel}
+            />
+          )}
+          {sections.map((section) => {
+            const items = section.indices
+              .map((idx) => localized.params[idx - 1])
+              .filter((p): p is NonNullable<typeof p> => Boolean(p));
+            if (items.length === 0) return null;
+            return (
+              <div key={section.headingKey}>
+                {section.heading && (
+                  <h4 className="mb-2 text-[11px] font-semibold uppercase tracking-wider text-indigo-300">
+                    {section.heading}
+                  </h4>
+                )}
+                <SkillParamList items={items} skillLevel={skillLevel} />
+              </div>
+            );
+          })}
+        </div>
+      )}
+
+      {localized.combatTerms.length > 0 && (
+        <div className="border-t border-slate-800/70 bg-slate-950/30 p-4">
+          <h4 className="mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-400">
+            Termes
+          </h4>
+          <dl className="space-y-2">
+            {localized.combatTerms.map((term) => (
+              <div key={term.id} className="rounded-lg border border-slate-800/60 bg-slate-900/50 px-3 py-2">
+                <dt className="text-xs font-semibold text-slate-100">
+                  {term.name ?? term.id}
+                </dt>
+                {term.explanation && (
+                  <dd className="mt-1 whitespace-pre-line text-xs leading-relaxed text-slate-400">
+                    {renderSkillMarkup(term.explanation)}
+                  </dd>
+                )}
+              </div>
+            ))}
+          </dl>
+        </div>
+      )}
+    </article>
+  );
+}
+
+function SkillParamList({
+  items,
+  skillLevel,
+}: {
+  items: CharacterSkill["translations"][string]["params"];
+  skillLevel: number;
+}) {
+  return (
+    <dl className="grid grid-cols-1 gap-x-6 gap-y-1.5 sm:grid-cols-2">
+      {items.map((p, idx) => {
+        const value = p.valuesByLevel[String(skillLevel)] ?? null;
+        return (
+          <div key={`${p.labelKey ?? "row"}-${idx}`} className="flex items-baseline justify-between gap-2 border-b border-slate-800/40 py-1.5">
+            <dt className="flex items-baseline gap-1.5 text-xs text-slate-400">
+              <span>{p.label ?? p.labelKey ?? "—"}</span>
+              {p.levelDependent && (
+                <span className="rounded-full border border-indigo-400/30 bg-indigo-500/10 px-1.5 py-px text-[10px] font-medium text-indigo-300">
+                  Lv
+                </span>
+              )}
+            </dt>
+            <dd className="text-sm font-semibold tabular-nums text-white">
+              {value ?? (
+                <span className="text-xs font-normal text-slate-500" title={p.formula}>
+                  —
+                </span>
+              )}
+            </dd>
+          </div>
+        );
+      })}
+    </dl>
+  );
+}
+
+function SkillsTabContent({
+  skillSet,
+  selectedLanguage,
+  elementKey,
+}: {
+  skillSet: CharacterSkillSet | null;
+  selectedLanguage: string;
+  elementKey: string;
+}) {
+  const [skillLevel, setSkillLevel] = useState(SKILL_LEVEL_MAX);
+
+  if (!skillSet || skillSet.skills.length === 0) {
+    return (
+      <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5 md:p-8 text-center">
+        <Sparkles className="mx-auto h-10 w-10 text-slate-600" />
+        <p className="mt-3 text-sm text-slate-400">
+          Aucune competence disponible pour ce personnage.
+        </p>
+      </section>
+    );
+  }
+
+  // Filter out skills that have no name in any language (shared/empty stubs like Eve's).
+  const skills = skillSet.skills.filter((s) => {
+    const localized = getSkillLocalized(s, selectedLanguage);
+    return localized?.name || localized?.description;
+  });
+
+  if (skills.length === 0) {
+    return (
+      <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5 md:p-8 text-center">
+        <Sparkles className="mx-auto h-10 w-10 text-slate-600" />
+        <p className="mt-3 text-sm text-slate-400">
+          Les competences de ce personnage ne sont pas encore traduites.
+        </p>
+      </section>
+    );
+  }
+
+  return (
+    <section className="space-y-4">
+      <div className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
+        <div className="flex items-center justify-between gap-3">
+          <div>
+            <h3 className="text-sm font-medium text-slate-300">Niveau de competence</h3>
+            <p className="mt-0.5 text-[11px] text-slate-500">
+              Les valeurs marquees
+              <span className="mx-1 inline-block rounded-full border border-indigo-400/30 bg-indigo-500/10 px-1.5 py-0 align-middle text-[10px] font-medium text-indigo-300">Lv</span>
+              varient selon le niveau de la competence.
+            </p>
+          </div>
+          <span className="rounded-lg border border-indigo-500/30 bg-indigo-500/10 px-3 py-1 text-lg font-bold tabular-nums text-indigo-100">
+            {skillLevel}
+          </span>
+        </div>
+        <div className="mt-3 flex items-center gap-3">
+          <span className="shrink-0 text-xs text-slate-500">{SKILL_LEVEL_MIN}</span>
+          <input
+            type="range"
+            min={SKILL_LEVEL_MIN}
+            max={SKILL_LEVEL_MAX}
+            value={skillLevel}
+            onChange={(e) => setSkillLevel(Number(e.target.value))}
+            className="h-2 flex-1 cursor-pointer appearance-none rounded-full bg-slate-800 accent-indigo-500"
+          />
+          <span className="shrink-0 text-xs text-slate-500">{SKILL_LEVEL_MAX}</span>
+        </div>
+      </div>
+
+      <div className="grid gap-3 md:gap-4">
+        {skills.map((skill) => (
+          <SkillCard
+            key={skill.skillId}
+            skill={skill}
+            selectedLanguage={selectedLanguage}
+            elementKey={elementKey}
+            skillLevel={skillLevel}
+          />
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -1048,6 +1340,7 @@ export default function CharacterDetailClient({
   character,
   levelUpCurves,
   builds = [],
+  skillSet,
 }: CharacterDetailClientProps) {
   const t = useTranslations('characterDetail');
   const tc = useTranslations('common');
@@ -1714,6 +2007,15 @@ export default function CharacterDetailClient({
           selectedLanguage={selectedLanguage}
           onNavigateToStats={() => setActiveTab("stats")}
           skillIcons={character.skillIcons}
+        />
+      )}
+
+      {/* ---------- Skills tab ---------- */}
+      {activeTab === "skills" && (
+        <SkillsTabContent
+          skillSet={skillSet ?? null}
+          selectedLanguage={selectedLanguage}
+          elementKey={character.element.key}
         />
       )}
 

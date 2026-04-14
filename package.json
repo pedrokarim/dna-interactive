@@ -11,7 +11,8 @@
     "extract:items:site": "bun run research_data/extract-items-localization.ts",
     "extract:fishing:site": "bun run research_data/extract-fishing-items.ts",
     "extract:characters:site": "bun run research_data/extract-characters.ts",
-    "extract:genimons:site": "bun run research_data/extract-genimons.ts"
+    "extract:genimons:site": "bun run research_data/extract-genimons.ts",
+    "extract:skills:site": "bun run research_data/extract-skills.ts"
   },
   "dependencies": {
     "@types/leaflet": "^1.9.21",

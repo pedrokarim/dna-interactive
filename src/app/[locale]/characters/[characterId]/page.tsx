@@ -7,6 +7,7 @@ import {
   getAllCharacters,
   getCharacterById,
   getCharactersCatalog,
+  getCharacterSkills,
   getCharacterTranslation,
   getLevelUpCurves,
 } from "@/lib/characters/catalog";
@@ -118,6 +119,7 @@ export default async function CharacterDetailPage({
           character={character}
           levelUpCurves={levelUpCurves}
           builds={getCharacterBuilds(character.id)}
+          skillSet={getCharacterSkills(character.charId)}
         />
       </Suspense>
     </>
