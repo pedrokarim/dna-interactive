@@ -10,6 +10,7 @@ import {
   type ResolvedItemRef,
 } from "@/lib/characters/builds";
 import type { CharacterRecord } from "@/lib/characters/types";
+import CursorTooltip from "@/components/CursorTooltip";
 
 // ---------------------------------------------------------------------------
 // Card visual constants — palette inspired by Enka.network
@@ -109,51 +110,114 @@ function RarityStars({ rarity }: { rarity: number | null }) {
   );
 }
 
+function ItemTooltipBody({
+  item,
+  rank,
+  kindLabel,
+}: {
+  item: ResolvedItemRef;
+  rank?: "best" | "alternative";
+  kindLabel?: string;
+}) {
+  return (
+    <div className="pointer-events-none">
+      <div className="flex items-start gap-3">
+        <img
+          src={item.icon}
+          alt=""
+          className="h-12 w-12 shrink-0 object-contain drop-shadow-md"
+        />
+        <div className="min-w-0">
+          <p className="text-sm font-semibold text-white">{item.name}</p>
+          <div className="mt-1 flex flex-wrap items-center gap-1 text-[10px]">
+            {item.rarity !== null && (
+              <span className="rounded-full border border-amber-400/40 bg-amber-400/10 px-2 py-0.5 text-amber-200">
+                {"★".repeat(item.rarity)}
+              </span>
+            )}
+            <span className="rounded-full border border-slate-600/70 px-2 py-0.5 font-mono text-slate-300">
+              #{item.modId}
+            </span>
+            {item.element && (
+              <span className="rounded-full border border-indigo-400/40 bg-indigo-500/10 px-2 py-0.5 text-indigo-200">
+                {item.element}
+              </span>
+            )}
+            {rank === "best" && (
+              <span className="rounded-full border border-amber-300/50 bg-amber-400/20 px-2 py-0.5 font-semibold text-amber-200">
+                S-tier
+              </span>
+            )}
+            {kindLabel && (
+              <span className="rounded-full border border-slate-700/70 px-2 py-0.5 text-slate-300">
+                {kindLabel}
+              </span>
+            )}
+          </div>
+        </div>
+      </div>
+      {item.description && (
+        <p className="mt-2.5 whitespace-pre-line text-xs leading-relaxed text-slate-300">
+          {item.description}
+        </p>
+      )}
+    </div>
+  );
+}
+
 function WeaponCell({
   weapon,
   size = "md",
+  kindLabel,
 }: {
   weapon: { item: ResolvedItemRef | null; rank: "best" | "alternative" };
   size?: "lg" | "md" | "sm";
+  kindLabel?: string;
 }) {
   if (!weapon.item) return null;
+  const item = weapon.item;
   const isBest = weapon.rank === "best";
   const iconSize = size === "lg" ? "h-16 w-16" : size === "md" ? "h-13 w-13" : "h-11 w-11";
   const sizeStyle = size === "lg" ? { height: 64, width: 64 } : size === "md" ? { height: 52, width: 52 } : { height: 44, width: 44 };
   const textSize = size === "lg" ? "text-sm" : size === "md" ? "text-xs" : "text-[11px]";
   return (
-    <div className="flex items-center gap-2">
-      {/* Icon only — no frame, no background. The image itself IS the visual. */}
-      <div
-        className={`relative ${iconSize} shrink-0`}
-        style={sizeStyle}
-      >
-        <img
-          src={weapon.item.icon}
-          alt=""
-          className="absolute inset-0 h-full w-full object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]"
-        />
-        {isBest && (
-          <span className="absolute -right-1 -top-1 rounded-full bg-amber-300/95 px-1.5 text-[9px] font-bold leading-tight text-slate-950 shadow">
-            S
-          </span>
-        )}
-      </div>
-      <div className="min-w-0">
-        <p
-          className={`truncate font-medium text-white ${textSize}`}
-          style={{ textShadow: "0 1px 3px rgba(0,0,0,0.6)" }}
+    <CursorTooltip
+      width={300}
+      content={<ItemTooltipBody item={item} rank={weapon.rank} kindLabel={kindLabel} />}
+    >
+      <div className="flex cursor-default items-center gap-2">
+        {/* Icon only — no frame, no background. The image itself IS the visual. */}
+        <div
+          className={`relative ${iconSize} shrink-0`}
+          style={sizeStyle}
         >
-          {weapon.item.name}
-        </p>
-        <div className="mt-0.5 flex items-center gap-1 text-[10px] text-white/80">
-          <RarityStars rarity={weapon.item.rarity} />
-          <span className="rounded border border-white/25 px-1 font-mono">
-            #{weapon.item.modId}
-          </span>
+          <img
+            src={item.icon}
+            alt=""
+            className="absolute inset-0 h-full w-full object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]"
+          />
+          {isBest && (
+            <span className="absolute -right-1 -top-1 rounded-full bg-amber-300/95 px-1.5 text-[9px] font-bold leading-tight text-slate-950 shadow">
+              S
+            </span>
+          )}
+        </div>
+        <div className="min-w-0">
+          <p
+            className={`truncate font-medium text-white ${textSize}`}
+            style={{ textShadow: "0 1px 3px rgba(0,0,0,0.6)" }}
+          >
+            {item.name}
+          </p>
+          <div className="mt-0.5 flex items-center gap-1 text-[10px] text-white/80">
+            <RarityStars rarity={item.rarity} />
+            <span className="rounded border border-white/25 px-1 font-mono">
+              #{item.modId}
+            </span>
+          </div>
         </div>
       </div>
-    </div>
+    </CursorTooltip>
   );
 }
 
@@ -215,9 +279,9 @@ function WedgeSlot({
   const topSide = side === "left" ? "right-1" : "left-1";
   const bottomSide = side === "left" ? "left-1" : "right-1";
   const d = WEDGE_DIMS[scale];
-  return (
+  const inner = (
     <div
-      className="relative shrink-0"
+      className="relative shrink-0 cursor-default"
       style={{
         height: d.slotH,
         width: d.slotW,
@@ -248,6 +312,15 @@ function WedgeSlot({
         </div>
       )}
     </div>
+  );
+  if (!slot.item) return inner;
+  return (
+    <CursorTooltip
+      width={280}
+      content={<ItemTooltipBody item={slot.item} kindLabel={`Slot ${slot.position}`} />}
+    >
+      {inner}
+    </CursorTooltip>
   );
 }
 
@@ -340,7 +413,7 @@ function wedgeScale(totalWeapons: number): WedgeScale {
 //      backgrounds so it reads over both the feathered portrait and the bg.
 // ---------------------------------------------------------------------------
 
-function QuickBuildCard({
+export function QuickBuildCard({
   character,
   build,
   lang,
@@ -349,7 +422,7 @@ function QuickBuildCard({
   character: CharacterRecord;
   build: CharacterBuild;
   lang: string;
-  cardRef: React.Ref<HTMLDivElement>;
+  cardRef?: React.Ref<HTMLDivElement> | null;
 }) {
   const elementKey = character.element.key;
   const rgb = ELEMENT_RGB[elementKey] ?? ELEMENT_RGB.Water;
@@ -374,7 +447,7 @@ function QuickBuildCard({
 
   return (
     <div
-      ref={cardRef}
+      ref={cardRef ?? undefined}
       className="relative overflow-hidden rounded-2xl"
       style={{ width: CARD_W, height: CARD_H, background: cardBg }}
     >
@@ -522,7 +595,7 @@ function QuickBuildCard({
                     </p>
                     <div className="space-y-1.5">
                       {meleeList.map((w, i) => (
-                        <WeaponCell key={`m-${i}`} weapon={w} size={meleeCellSize} />
+                        <WeaponCell key={`m-${i}`} weapon={w} size={meleeCellSize} kindLabel="Mêlée" />
                       ))}
                     </div>
                   </div>
@@ -536,7 +609,7 @@ function QuickBuildCard({
                     </p>
                     <div className="space-y-1.5">
                       {rangedList.map((w, i) => (
-                        <WeaponCell key={`r-${i}`} weapon={w} size={rangedCellSize} />
+                        <WeaponCell key={`r-${i}`} weapon={w} size={rangedCellSize} kindLabel="Distance" />
                       ))}
                     </div>
                   </div>
@@ -545,33 +618,28 @@ function QuickBuildCard({
             })()}
           </div>
 
-          {build.demonWedges.slots.length > 0 && (() => {
-            const totalWeapons = Math.min(3, meleeBest.length + meleeAlt.length) +
-                                 Math.min(3, rangedBest.length + rangedAlt.length);
-            const scale = wedgeScale(totalWeapons);
-            return (
-              <div className="flex min-h-0 flex-1 flex-col rounded-xl border border-white/20 bg-black/35 px-4 py-3">
-                <p
-                  className="mb-2 text-[11px] font-semibold uppercase tracking-wider"
-                  style={{ color: accent }}
-                >
-                  Demon Wedge
-                </p>
-                <div className="flex flex-1 items-center justify-center">
-                  <WedgeLayout
-                    slots={build.demonWedges.slots}
-                    centerItem={build.demonWedges.centerItem}
-                    rgb={rgb}
-                    scale={scale}
-                  />
-                </div>
+          {build.demonWedges.slots.length > 0 && (
+            <div className="flex min-h-0 flex-1 flex-col px-2">
+              <p
+                className="mb-2 text-[11px] font-semibold uppercase tracking-wider"
+                style={{ color: accent, textShadow: "0 1px 3px rgba(0,0,0,0.6)" }}
+              >
+                Demon Wedge
+              </p>
+              <div className="flex flex-1 items-center justify-center">
+                <WedgeLayout
+                  slots={build.demonWedges.slots}
+                  centerItem={build.demonWedges.centerItem}
+                  rgb={rgb}
+                  scale="lg"
+                />
               </div>
-            );
-          })()}
+            </div>
+          )}
         </div>
 
         {/* Right — genimons + stats + brand */}
-        <div className="relative flex w-[280px] shrink-0 flex-col gap-4 px-5 py-5">
+        <div className="relative flex w-[280px] shrink-0 flex-col gap-4 px-5 pb-0 pt-5">
           {build.genimon.length > 0 && (
             <div>
               <p
@@ -584,22 +652,28 @@ function QuickBuildCard({
               <div className="grid grid-cols-3 gap-1.5">
                 {build.genimon.slice(0, 3).map((g, i) => {
                   if (!g.item) return null;
+                  const item = g.item;
                   const isBest = g.rank === "best";
                   return (
-                    <div
+                    <CursorTooltip
                       key={`g-${i}`}
-                      className="relative flex aspect-square items-center justify-center overflow-hidden rounded-lg border bg-black/40"
-                      style={{
-                        borderColor: isBest ? "rgba(252, 211, 77, 0.9)" : "rgba(255, 255, 255, 0.3)",
-                      }}
+                      width={280}
+                      content={<ItemTooltipBody item={item} rank={g.rank} kindLabel="Génimon" />}
                     >
-                      <img src={g.item.icon} alt="" className="h-full w-full object-contain" />
-                      {isBest && (
-                        <span className="absolute right-0.5 top-0.5 rounded bg-amber-300/95 px-1 text-[9px] font-bold leading-tight text-slate-950">
-                          S
-                        </span>
-                      )}
-                    </div>
+                      <div
+                        className="relative flex aspect-square cursor-default items-center justify-center overflow-hidden rounded-lg border bg-black/40"
+                        style={{
+                          borderColor: isBest ? "rgba(252, 211, 77, 0.9)" : "rgba(255, 255, 255, 0.3)",
+                        }}
+                      >
+                        <img src={item.icon} alt="" className="h-full w-full object-contain" />
+                        {isBest && (
+                          <span className="absolute right-0.5 top-0.5 rounded bg-amber-300/95 px-1 text-[9px] font-bold leading-tight text-slate-950">
+                            S
+                          </span>
+                        )}
+                      </div>
+                    </CursorTooltip>
                   );
                 })}
               </div>
@@ -739,19 +813,27 @@ function QuickBuildCard({
             </div>
           )}
 
-          <div className="mt-auto border-t border-white/15 pt-3">
-            <p
-              className="text-[10px] font-semibold uppercase tracking-[0.3em]"
-              style={{ color: accent, textShadow: "0 1px 2px rgba(0,0,0,0.5)" }}
-            >
-              DNA Interactive
-            </p>
-            <p
-              className="mt-0.5 text-[10px] text-white/60"
-              style={{ textShadow: "0 1px 2px rgba(0,0,0,0.5)" }}
-            >
-              dna-interactive · Duet Night Abyss
-            </p>
+          <div className="mt-auto flex items-center gap-2.5 border-t border-white/15 py-1">
+            <img
+              src="/assets/images/logo_optimized.png"
+              alt=""
+              crossOrigin="anonymous"
+              className="h-9 w-9 shrink-0 object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
+            />
+            <div className="min-w-0">
+              <p
+                className="text-[10px] font-semibold uppercase tracking-[0.3em]"
+                style={{ color: accent, textShadow: "0 1px 2px rgba(0,0,0,0.5)" }}
+              >
+                DNA Interactive
+              </p>
+              <p
+                className="mt-0.5 truncate text-[10px] text-white/60"
+                style={{ textShadow: "0 1px 2px rgba(0,0,0,0.5)" }}
+              >
+                dna-interactive · Duet Night Abyss
+              </p>
+            </div>
           </div>
         </div>
       </div>

@@ -15,6 +15,7 @@ import {
 import { generatePageMetadata, pageMetadata } from "@/lib/metadata";
 import UpdateBanner from "@/components/UpdateBanner";
 import HeroSection from "@/components/HeroSection";
+import BuildShowcase from "@/components/BuildShowcase";
 import NewCharactersBanner from "@/components/NewCharactersBanner";
 import CommunityCards from "@/components/CommunityCards";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
@@ -241,6 +242,9 @@ export default async function Home() {
           </div>
         </div>
       </section>
+
+      {/* Build Card Showcase — demos the Quick Build feature with Psyche */}
+      <BuildShowcase />
 
       {/* Features Section */}
       <section className="py-20 bg-slate-900/30">

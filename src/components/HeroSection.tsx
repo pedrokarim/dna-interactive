@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { motion } from "framer-motion";
-import { Map, ChevronDown } from "lucide-react";
+import { ArrowRight, FileImage, Map, ChevronDown } from "lucide-react";
 import { ASSETS_PATHS, GAME_INFO } from "@/lib/constants";
 import { useTranslations } from "next-intl";
 
@@ -111,6 +111,39 @@ export default function HeroSection() {
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
         <ChevronDown className="w-6 h-6 text-indigo-400" />
       </div>
+
+      {/* Psyche build teaser — bottom-right, scrolls to #build-showcase */}
+      <motion.a
+        href="#build-showcase"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.2, duration: 0.6 }}
+        whileHover={{ scale: 1.04 }}
+        className="group absolute bottom-6 right-4 z-20 hidden items-center gap-3 rounded-2xl border border-indigo-400/30 bg-slate-950/80 p-2 pr-4 shadow-[0_12px_32px_rgba(15,23,42,0.6)] backdrop-blur-sm transition-colors hover:border-indigo-300/60 md:flex"
+        aria-label="Voir un exemple de carte de build (Psyche)"
+      >
+        <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl border border-indigo-400/40 bg-indigo-500/10">
+          <Image
+            src="/assets/characters/head/T_Head_Saiqi.png"
+            alt="Psyche"
+            fill
+            sizes="56px"
+            className="object-cover"
+          />
+          <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full border border-indigo-200/50 bg-indigo-500 text-white shadow-md">
+            <FileImage className="h-3 w-3" />
+          </span>
+        </div>
+        <div className="min-w-0">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-indigo-300">
+            Nouveau · Cartes de build
+          </p>
+          <p className="mt-0.5 flex items-center gap-1.5 text-sm font-semibold text-white">
+            Exemple avec Psyche
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+          </p>
+        </div>
+      </motion.a>
     </section>
   );
 }

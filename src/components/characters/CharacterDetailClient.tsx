@@ -2,10 +2,12 @@
 
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
-import { type ComponentType, Fragment, useMemo, useState } from "react";
+import { type ComponentType, Fragment, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { toPng } from "html-to-image";
 import {
   ArrowLeft,
   BarChart3,
+  ChevronDown,
   ChevronLeft,
   ChevronRight,
   FileImage,
@@ -20,9 +22,9 @@ import {
   X,
   ZoomIn,
 } from "lucide-react";
-import QuickBuildModal from "@/components/characters/QuickBuildModal";
+import QuickBuildModal, { QuickBuildCard } from "@/components/characters/QuickBuildModal";
 import { useAtom } from "jotai";
-import { parseAsStringLiteral, useQueryState } from "nuqs";
+import { parseAsBoolean, parseAsStringLiteral, useQueryState } from "nuqs";
 import {
   getAllCharacters,
   getCharacterTranslation,
@@ -825,19 +827,123 @@ function SkillsTabContent({
   );
 }
 
+// ---------------------------------------------------------------------------
+// Quick build card accordion — collapsed by default, shareable via ?build=open.
+// If the URL lands with the param set to "open", we auto-scroll to it once.
+// ---------------------------------------------------------------------------
+
+function QuickBuildAccordion({
+  character,
+  build,
+  lang,
+}: {
+  character: CharacterRecord;
+  build: CharacterBuild;
+  lang: string;
+}) {
+  const [open, setOpen] = useQueryState(
+    "build",
+    parseAsBoolean.withDefault(false).withOptions({ clearOnDefault: true }),
+  );
+  const cardRef = useRef<HTMLDivElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const [downloading, setDownloading] = useState(false);
+  const scrolledRef = useRef(false);
+
+  useEffect(() => {
+    if (open && !scrolledRef.current && containerRef.current) {
+      containerRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+      scrolledRef.current = true;
+    }
+  }, [open]);
+
+  const handleDownload = useCallback(async () => {
+    if (!cardRef.current) return;
+    setDownloading(true);
+    try {
+      const dataUrl = await toPng(cardRef.current, {
+        cacheBust: true,
+        pixelRatio: 2,
+        backgroundColor: "#0b1225",
+      });
+      const link = document.createElement("a");
+      const safeName = character.internalName.toLowerCase().replace(/[^a-z0-9]/g, "");
+      link.download = `build-${safeName}.png`;
+      link.href = dataUrl;
+      link.click();
+    } catch (err) {
+      console.error("Failed to export build card", err);
+    } finally {
+      setDownloading(false);
+    }
+  }, [character.internalName]);
+
+  return (
+    <div
+      ref={containerRef}
+      id="quick-build"
+      className="overflow-hidden rounded-xl border border-indigo-400/30 bg-indigo-500/5"
+    >
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        className="flex w-full items-center justify-between gap-3 px-4 py-3 text-left transition-colors hover:bg-indigo-500/10"
+        aria-expanded={open}
+        aria-controls="quick-build-panel"
+      >
+        <span className="flex items-center gap-2 text-sm font-medium text-indigo-100">
+          <FileImage className="h-4 w-4 text-indigo-300" />
+          Carte build partageable
+        </span>
+        <div className="flex items-center gap-3">
+          {open && (
+            <span
+              role="button"
+              tabIndex={0}
+              onClick={(e) => { e.stopPropagation(); handleDownload(); }}
+              onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); e.stopPropagation(); handleDownload(); } }}
+              className="inline-flex cursor-pointer items-center gap-1.5 rounded-md border border-indigo-400/40 bg-indigo-500/15 px-2.5 py-1 text-xs font-medium text-indigo-100 transition-colors hover:bg-indigo-500/30"
+            >
+              {downloading ? "Export..." : "Telecharger PNG"}
+            </span>
+          )}
+          <ChevronDown
+            className={`h-4 w-4 text-indigo-300 transition-transform ${open ? "rotate-180" : ""}`}
+          />
+        </div>
+      </button>
+      {open && (
+        <div
+          id="quick-build-panel"
+          className="overflow-auto bg-slate-950/40 p-3 md:p-4"
+        >
+          <div className="mx-auto w-fit">
+            <QuickBuildCard
+              character={character}
+              build={build}
+              lang={lang}
+              cardRef={cardRef}
+            />
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function BuildTabContent({
   builds,
+  character,
   characterElement,
   selectedLanguage,
   onNavigateToStats,
-  onOpenQuickBuild,
   skillIcons,
 }: {
   builds: CharacterBuild[];
+  character: CharacterRecord;
   characterElement: string;
   selectedLanguage: string;
   onNavigateToStats?: () => void;
-  onOpenQuickBuild?: () => void;
   skillIcons?: { skill1: { publicPath: string | null }; skill2: { publicPath: string | null }; skill3: { publicPath: string | null } };
 }) {
   const t = useTranslations('characterDetail');
@@ -868,38 +974,32 @@ function BuildTabContent({
 
   return (
     <div className="space-y-3 md:space-y-5">
-      {/* Build selector + quick build trigger */}
-      {(builds.length > 1 || onOpenQuickBuild) && (
-        <div className="flex flex-wrap items-center justify-between gap-2">
-          <div className="flex flex-wrap gap-2">
-            {builds.length > 1 &&
-              builds.map((b, i) => (
-                <button
-                  key={i}
-                  type="button"
-                  onClick={() => setActiveBuildIndex(i)}
-                  className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
-                    i === activeBuildIndex
-                      ? "border border-indigo-400/40 bg-indigo-500/20 text-indigo-100"
-                      : "border border-transparent text-slate-400 hover:bg-slate-800/60 hover:text-slate-200"
-                  }`}
-                >
-                  <BuildLocalizedText texts={b.buildName} lang={selectedLanguage} />
-                </button>
-              ))}
-          </div>
-          {onOpenQuickBuild && (
+      {/* Build selector (if multiple) */}
+      {builds.length > 1 && (
+        <div className="flex flex-wrap gap-2">
+          {builds.map((b, i) => (
             <button
+              key={i}
               type="button"
-              onClick={onOpenQuickBuild}
-              className="inline-flex items-center gap-2 rounded-lg border border-indigo-400/40 bg-indigo-500/15 px-3 py-2 text-sm font-medium text-indigo-100 transition-colors hover:bg-indigo-500/30"
+              onClick={() => setActiveBuildIndex(i)}
+              className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
+                i === activeBuildIndex
+                  ? "border border-indigo-400/40 bg-indigo-500/20 text-indigo-100"
+                  : "border border-transparent text-slate-400 hover:bg-slate-800/60 hover:text-slate-200"
+              }`}
             >
-              <FileImage className="h-4 w-4" />
-              Carte build
+              <BuildLocalizedText texts={b.buildName} lang={selectedLanguage} />
             </button>
-          )}
+          ))}
         </div>
       )}
+
+      {/* Quick build card accordion — shareable via ?build=open */}
+      <QuickBuildAccordion
+        character={character}
+        build={build}
+        lang={selectedLanguage}
+      />
 
       {/* --- Weapons --- */}
       {hasWeapons && (
@@ -2031,10 +2131,10 @@ export default function CharacterDetailClient({
       {activeTab === "build" && (
         <BuildTabContent
           builds={builds}
+          character={character}
           characterElement={character.element.key}
           selectedLanguage={selectedLanguage}
           onNavigateToStats={() => setActiveTab("stats")}
-          onOpenQuickBuild={() => setQuickBuildOpen(true)}
           skillIcons={character.skillIcons}
         />
       )}
