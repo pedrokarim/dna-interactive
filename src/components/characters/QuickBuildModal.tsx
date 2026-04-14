@@ -335,9 +335,9 @@ function WedgeCenter({
 }) {
   const d = WEDGE_DIMS[scale];
   const icon = item?.icon;
-  return (
+  const circle = (
     <div
-      className="relative flex items-center justify-center rounded-full"
+      className="relative flex cursor-default items-center justify-center rounded-full"
       style={{
         height: d.centerH,
         width: d.centerH,
@@ -348,6 +348,15 @@ function WedgeCenter({
     >
       {icon && <img src={icon} alt="" className={`${d.centerIcon} object-contain drop-shadow-lg`} />}
     </div>
+  );
+  if (!item) return circle;
+  return (
+    <CursorTooltip
+      width={280}
+      content={<ItemTooltipBody item={item} kindLabel="Demon Wedge central" />}
+    >
+      {circle}
+    </CursorTooltip>
   );
 }
 

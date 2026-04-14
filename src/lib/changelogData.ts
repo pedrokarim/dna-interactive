@@ -9,6 +9,24 @@ export interface ChangelogEntry {
 
 export const changelogData: ChangelogEntry[] = [
   {
+    date: "2026-04-15",
+    version: "1.9.0",
+    type: "feature",
+    title: "Cartes de build, onglet Compétences et tooltips curseur",
+    description:
+      "Nouvel onglet Compétences par personnage avec slider de niveau, cartes de build exportables en PNG, et un système de tooltips qui suit le curseur sur desktop.",
+    items: [
+      "🎴 Nouvelle carte de build partageable (modale + accordéon ?build=true) avec portrait feathered, layout Demon Wedge in-game et téléchargement PNG",
+      "🃏 Showcase de la carte de build sur la home (Psyche) avec ancre #build-showcase et teaser dans la hero banner",
+      "⚔️ Onglet Compétences complet : nom, description, paramètres, sections, termes de combat, en 7 langues",
+      "🎚️ Slider de niveau de compétence (1-20) qui recalcule en direct les valeurs dépendantes du niveau via SkillGrow",
+      "🧩 Icônes de compétence en ligne et équipe recommandée dans la carte de build",
+      "🪄 Nouveau composant CursorTooltip : suit le curseur sur desktop, click-to-toggle sur mobile, portalisé dans body",
+      "🛡️ Tooltips curseur sur armes, Génimons et slots Demon Wedge (centre inclus) de la carte de build",
+      "🏷️ Pipeline d'extraction extract-skills.ts : parse 9 fichiers Lua + SkillGrow, formules #N évaluées pour chaque niveau",
+    ],
+  },
+  {
     date: "2026-04-08",
     version: "1.8.0",
     type: "feature",
