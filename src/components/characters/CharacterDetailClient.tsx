@@ -8,6 +8,7 @@ import {
   BarChart3,
   ChevronLeft,
   ChevronRight,
+  FileImage,
   Heart,
   Image as ImageIcon,
   Languages,
@@ -19,6 +20,7 @@ import {
   X,
   ZoomIn,
 } from "lucide-react";
+import QuickBuildModal from "@/components/characters/QuickBuildModal";
 import { useAtom } from "jotai";
 import { parseAsStringLiteral, useQueryState } from "nuqs";
 import {
@@ -828,12 +830,14 @@ function BuildTabContent({
   characterElement,
   selectedLanguage,
   onNavigateToStats,
+  onOpenQuickBuild,
   skillIcons,
 }: {
   builds: CharacterBuild[];
   characterElement: string;
   selectedLanguage: string;
   onNavigateToStats?: () => void;
+  onOpenQuickBuild?: () => void;
   skillIcons?: { skill1: { publicPath: string | null }; skill2: { publicPath: string | null }; skill3: { publicPath: string | null } };
 }) {
   const t = useTranslations('characterDetail');
@@ -864,23 +868,36 @@ function BuildTabContent({
 
   return (
     <div className="space-y-3 md:space-y-5">
-      {/* Build selector (if multiple) */}
-      {builds.length > 1 && (
-        <div className="flex gap-2">
-          {builds.map((b, i) => (
+      {/* Build selector + quick build trigger */}
+      {(builds.length > 1 || onOpenQuickBuild) && (
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <div className="flex flex-wrap gap-2">
+            {builds.length > 1 &&
+              builds.map((b, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  onClick={() => setActiveBuildIndex(i)}
+                  className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
+                    i === activeBuildIndex
+                      ? "border border-indigo-400/40 bg-indigo-500/20 text-indigo-100"
+                      : "border border-transparent text-slate-400 hover:bg-slate-800/60 hover:text-slate-200"
+                  }`}
+                >
+                  <BuildLocalizedText texts={b.buildName} lang={selectedLanguage} />
+                </button>
+              ))}
+          </div>
+          {onOpenQuickBuild && (
             <button
-              key={i}
               type="button"
-              onClick={() => setActiveBuildIndex(i)}
-              className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
-                i === activeBuildIndex
-                  ? "border border-indigo-400/40 bg-indigo-500/20 text-indigo-100"
-                  : "border border-transparent text-slate-400 hover:bg-slate-800/60 hover:text-slate-200"
-              }`}
+              onClick={onOpenQuickBuild}
+              className="inline-flex items-center gap-2 rounded-lg border border-indigo-400/40 bg-indigo-500/15 px-3 py-2 text-sm font-medium text-indigo-100 transition-colors hover:bg-indigo-500/30"
             >
-              <BuildLocalizedText texts={b.buildName} lang={selectedLanguage} />
+              <FileImage className="h-4 w-4" />
+              Carte build
             </button>
-          ))}
+          )}
         </div>
       )}
 
@@ -1414,6 +1431,7 @@ export default function CharacterDetailClient({
 
   // --- Intron popover state ---
   const [activeIntronIdx, setActiveIntronIdx] = useState<number | null>(null);
+  const [quickBuildOpen, setQuickBuildOpen] = useState(false);
 
   // --- Stats computation ---
   const maxLevel = character.maxLevel ?? 80;
@@ -1477,6 +1495,16 @@ export default function CharacterDetailClient({
               />
               {isFavorite ? tc('removeFavorite') : tc('addFavorite')}
             </button>
+            {builds.length > 0 && (
+              <button
+                type="button"
+                onClick={() => setQuickBuildOpen(true)}
+                className="inline-flex items-center gap-2 rounded-lg border border-indigo-400/40 bg-indigo-500/15 px-3 py-2 text-sm font-medium text-indigo-100 transition-colors hover:bg-indigo-500/30"
+              >
+                <FileImage className="h-4 w-4" />
+                Build rapide
+              </button>
+            )}
           </div>
 
           <div className="flex items-center gap-3">
@@ -2006,6 +2034,7 @@ export default function CharacterDetailClient({
           characterElement={character.element.key}
           selectedLanguage={selectedLanguage}
           onNavigateToStats={() => setActiveTab("stats")}
+          onOpenQuickBuild={() => setQuickBuildOpen(true)}
           skillIcons={character.skillIcons}
         />
       )}
@@ -2543,6 +2572,17 @@ export default function CharacterDetailClient({
           </div>
         </section>
       )}
+
+      {/* ================================================================= */}
+      {/* Quick Build modal                                                 */}
+      {/* ================================================================= */}
+      <QuickBuildModal
+        character={character}
+        builds={builds}
+        lang={selectedLanguage}
+        open={quickBuildOpen}
+        onClose={() => setQuickBuildOpen(false)}
+      />
 
       {/* ================================================================= */}
       {/* Portrait zoom modal                                               */}

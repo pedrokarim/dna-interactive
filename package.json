@@ -19,6 +19,7 @@
     "@types/nodemailer": "^7.0.4",
     "country-flag-icons": "^1.6.15",
     "framer-motion": "^12.23.24",
+    "html-to-image": "^1.11.13",
     "jotai": "^2.15.1",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.552.0",
