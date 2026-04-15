@@ -1867,7 +1867,7 @@ export default function CharacterDetailClient({
             key={id}
             type="button"
             onClick={() => setActiveTab(id)}
-            className={`flex shrink-0 items-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium transition-colors ${
+            className={`flex shrink-0 items-center gap-1.5 rounded-lg px-2.5 py-2 text-xs font-medium transition-colors md:gap-2 md:px-4 md:py-2.5 md:text-sm ${
               activeTab === id
                 ? "border border-indigo-400/40 bg-indigo-500/20 text-indigo-100"
                 : "border border-transparent text-slate-400 hover:bg-slate-800/60 hover:text-slate-200"

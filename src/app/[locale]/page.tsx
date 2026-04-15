@@ -83,8 +83,8 @@ export default async function Home() {
 
             <MobileMenu />
 
-            <div className="hidden md:flex items-center gap-6">
-              <nav className="flex items-center space-x-8">
+            <div className="hidden md:flex items-center gap-3 lg:gap-6">
+              <nav className="flex items-center gap-4 lg:gap-6 xl:gap-8 text-sm lg:text-base">
                 {NAV_LINKS.map((link) => {
                   const IconComponent = navIcons[link.href];
                   return (

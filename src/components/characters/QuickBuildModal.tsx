@@ -851,6 +851,33 @@ export function QuickBuildCard({
 }
 
 // ---------------------------------------------------------------------------
+// ResponsiveQuickBuildCard — scales the fixed-size card down to fit tablet /
+// mobile viewports via CSS transform. The inner card keeps its intrinsic
+// 1280×560 dimensions (so `cardRef` + html-to-image exports still capture at
+// full resolution); only the visual footprint shrinks.
+// ---------------------------------------------------------------------------
+
+export function ResponsiveQuickBuildCard({
+  character,
+  build,
+  lang,
+  cardRef,
+}: {
+  character: CharacterRecord;
+  build: CharacterBuild;
+  lang: string;
+  cardRef?: React.Ref<HTMLDivElement> | null;
+}) {
+  return (
+    <div className="relative mx-auto w-[320px] h-[140px] sm:w-[576px] sm:h-[252px] md:w-[704px] md:h-[308px] lg:w-[960px] lg:h-[420px] xl:w-[1280px] xl:h-[560px]">
+      <div className="absolute left-0 top-0 origin-top-left scale-[0.25] sm:scale-[0.45] md:scale-[0.55] lg:scale-[0.75] xl:scale-100">
+        <QuickBuildCard character={character} build={build} lang={lang} cardRef={cardRef} />
+      </div>
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
 // Modal wrapper
 // ---------------------------------------------------------------------------
 
@@ -905,7 +932,7 @@ export default function QuickBuildModal({
   if (builds.length === 0) {
     return (
       <div
-        className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/85 p-4 backdrop-blur-sm"
+        className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/85 p-2 sm:p-4 backdrop-blur-sm"
         onClick={onClose}
         role="dialog"
         aria-modal="true"
@@ -934,7 +961,7 @@ export default function QuickBuildModal({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/85 p-4 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/85 p-2 sm:p-4 backdrop-blur-sm"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
@@ -993,14 +1020,12 @@ export default function QuickBuildModal({
         </div>
 
         <div className="overflow-auto bg-slate-950/60 p-4 md:p-6">
-          <div className="mx-auto w-fit">
-            <QuickBuildCard
-              character={character}
-              build={build}
-              lang={lang}
-              cardRef={cardRef}
-            />
-          </div>
+          <ResponsiveQuickBuildCard
+            character={character}
+            build={build}
+            lang={lang}
+            cardRef={cardRef}
+          />
         </div>
       </div>
     </div>

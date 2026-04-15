@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "@/i18n/navigation";
 import { ArrowRight, ChevronLeft, ChevronRight, FileImage, Users } from "lucide-react";
-import { QuickBuildCard } from "@/components/characters/QuickBuildModal";
+import { ResponsiveQuickBuildCard } from "@/components/characters/QuickBuildModal";
 import { getCharacterById } from "@/lib/characters/catalog";
 import { getCharacterBuilds } from "@/lib/characters/builds";
 
@@ -146,7 +146,7 @@ export default function BuildShowcase() {
                 i === active ? "opacity-100 scale-100" : "opacity-60 scale-[0.97]"
               }`}
             >
-              <QuickBuildCard
+              <ResponsiveQuickBuildCard
                 character={entry.character}
                 build={entry.build}
                 lang="FR"

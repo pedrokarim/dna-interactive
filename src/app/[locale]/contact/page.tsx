@@ -242,7 +242,7 @@ export default function ContactPage() {
                 <h3 className="text-2xl font-semibold text-white mb-6">{t('formTitle')}</h3>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-6">
+                  <div className="grid sm:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
                         {t('labelName')}

@@ -790,7 +790,7 @@ export default function ItemsGridClient({
           </p>
         </div>
       ) : (
-        <section className="grid gap-3 md:gap-4 sm:grid-cols-2 xl:grid-cols-3">
+        <section className="grid gap-3 md:gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {paginatedItems.map((item) => {
             const lead = getItemTranslation(
               item,

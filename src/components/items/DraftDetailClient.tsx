@@ -280,7 +280,7 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
 
             <div className="relative mx-auto mt-1 max-w-4xl">
               <div className="absolute left-[12.5%] right-[12.5%] top-0 h-px bg-amber-200/35" />
-              <div className="grid grid-cols-4 gap-3 pt-3">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3">
                 {ingredientSlots.map((ingredient, index) => (
                   <div key={`slot-${index}`} className="relative flex justify-center">
                     <div className="absolute -top-3 h-3 w-px bg-amber-200/35" />

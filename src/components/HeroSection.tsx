@@ -65,15 +65,15 @@ export default function HeroSection() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 py-20">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-20">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-linear-to-r from-indigo-400 via-purple-400 to-indigo-300 bg-clip-text text-transparent">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 bg-linear-to-r from-indigo-400 via-purple-400 to-indigo-300 bg-clip-text text-transparent">
             {t("heroTitle")}
           </h1>
-          <h2 className="text-2xl md:text-4xl font-semibold mb-8 text-gray-200">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-8 text-gray-200">
             {t("heroSubtitle", { gameName: GAME_INFO.name })}
           </h2>
-          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
             {t("heroDescription", { gameName: GAME_INFO.name })}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -119,7 +119,7 @@ export default function HeroSection() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2, duration: 0.6 }}
         whileHover={{ scale: 1.04 }}
-        className="group absolute bottom-6 right-4 z-20 hidden items-center gap-3 rounded-2xl border border-indigo-400/30 bg-slate-950/80 p-2 pr-4 shadow-[0_12px_32px_rgba(15,23,42,0.6)] backdrop-blur-sm transition-colors hover:border-indigo-300/60 md:flex"
+        className="group absolute bottom-6 right-4 z-20 hidden items-center gap-3 rounded-2xl border border-indigo-400/30 bg-slate-950/80 p-2 pr-4 shadow-[0_12px_32px_rgba(15,23,42,0.6)] backdrop-blur-sm transition-colors hover:border-indigo-300/60 sm:flex"
         aria-label="Voir un exemple de carte de build (Psyche)"
       >
         <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl border border-indigo-400/40 bg-indigo-500/10">

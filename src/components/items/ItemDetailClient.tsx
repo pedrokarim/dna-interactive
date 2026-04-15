@@ -569,7 +569,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
         {isGenimonsCategory && variantSiblings.length > 1 ? (
           <section className="mt-4 md:mt-5 rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
             <h2 className="text-base md:text-lg font-semibold text-white">Variantes</h2>
-            <div className="mt-3 md:mt-4 grid grid-cols-2 gap-2 md:gap-3 sm:grid-cols-3 lg:grid-cols-4">
+            <div className="mt-3 md:mt-4 grid grid-cols-2 gap-2 md:gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
               {variantSiblings.map((sibling) => {
                 const isCurrent = sibling.id === item.id;
                 const siblingTranslation = getItemTranslation(sibling, selectedLanguage, category.availableLanguages);

@@ -93,7 +93,7 @@ export default async function SupportPage() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid sm:grid-cols-2 gap-8">
               {/* Discord Support */}
               <div className="bg-linear-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border border-indigo-500/20 rounded-xl p-8 hover:border-indigo-400/40 transition-all duration-300">
                 <div className="w-16 h-16 bg-linear-to-br from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center mb-6">
@@ -161,7 +161,7 @@ export default async function SupportPage() {
             <div className="mt-16 bg-linear-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border border-indigo-500/20 rounded-xl p-8">
               <h3 className="text-2xl font-semibold text-white mb-8 text-center">{tSupport('faqTitle')}</h3>
 
-              <div className="grid md:grid-cols-2 gap-8">
+              <div className="grid sm:grid-cols-2 gap-8">
                 {FAQ_ITEMS.map((faq, index) => (
                   <div key={index}>
                     <h4 className="text-lg font-medium text-white mb-3">{faq.question}</h4>
@@ -174,7 +174,7 @@ export default async function SupportPage() {
             </div>
 
             {/* Links Section */}
-            <div className="mt-8 grid md:grid-cols-3 gap-6">
+            <div className="mt-8 grid sm:grid-cols-2 md:grid-cols-3 gap-6">
               {SUPPORT_QUICK_LINKS.map((link, index) => (
                 <a
                   key={index}
