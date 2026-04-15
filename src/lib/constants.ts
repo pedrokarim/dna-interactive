@@ -88,10 +88,7 @@ export const NAV_LINKS = [
   { href: NAVIGATION.map, label: "Carte Interactive" },
   { href: NAVIGATION.items, label: "Items" },
   { href: NAVIGATION.characters, label: "Personnages" },
-  { href: NAVIGATION.codes, label: "Codes de Rédemption" },
   { href: NAVIGATION.about, label: "À propos" },
-  { href: NAVIGATION.support, label: "Support" },
-  { href: NAVIGATION.contact, label: "Contact" },
 ] as const;
 
 // Liens du footer
