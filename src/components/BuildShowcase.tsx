@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { Link } from "@/i18n/navigation";
 import { ArrowRight, ChevronLeft, ChevronRight, FileImage, Users } from "lucide-react";
 import { ResponsiveQuickBuildCard } from "@/components/characters/QuickBuildModal";
@@ -8,12 +8,13 @@ import { getCharacterById } from "@/lib/characters/catalog";
 import { getCharacterBuilds } from "@/lib/characters/builds";
 
 // ---------------------------------------------------------------------------
-// BuildShowcase — home-page section showcasing 3 build cards in a horizontal
-// slider. Buttons above scroll-snap to the matching card; clicking a card CTA
-// opens that character's full build on the detail page.
+// BuildShowcase — Twitch-style peek carousel. Active card centered at full
+// size; previous/next cards shifted and scaled down on the sides, dimmed.
+// Clicking a peek card (or an arrow / nav button) promotes it to active.
 // ---------------------------------------------------------------------------
 
-const FEATURED_IDS = ["char-saiqi", "char-linen", "char-feina"] as const;
+// Visual order: left | middle (hero / default active) | right
+const FEATURED_IDS = ["char-linen", "char-saiqi", "char-feina"] as const;
 
 export default function BuildShowcase() {
   const featured = FEATURED_IDS.map((id) => {
@@ -23,46 +24,18 @@ export default function BuildShowcase() {
     return { character, build };
   }).filter((x): x is NonNullable<typeof x> => x !== null);
 
-  const [active, setActive] = useState(0);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-  const scrollTo = useCallback((index: number) => {
-    const node = cardRefs.current[index];
-    const track = trackRef.current;
-    if (!node || !track) return;
-    const left = node.offsetLeft - (track.clientWidth - node.clientWidth) / 2;
-    track.scrollTo({ left, behavior: "smooth" });
-    setActive(index);
-  }, []);
-
-  useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return;
-    const onScroll = () => {
-      const center = track.scrollLeft + track.clientWidth / 2;
-      let best = 0;
-      let bestDist = Infinity;
-      cardRefs.current.forEach((node, i) => {
-        if (!node) return;
-        const nodeCenter = node.offsetLeft + node.clientWidth / 2;
-        const dist = Math.abs(nodeCenter - center);
-        if (dist < bestDist) {
-          bestDist = dist;
-          best = i;
-        }
-      });
-      setActive(best);
-    };
-    track.addEventListener("scroll", onScroll, { passive: true });
-    return () => track.removeEventListener("scroll", onScroll);
-  }, []);
+  const [active, setActive] = useState(Math.floor(FEATURED_IDS.length / 2));
 
   if (featured.length === 0) return null;
 
   const activeEntry = featured[active];
   const activeName =
     activeEntry.character.translations.FR?.name ?? activeEntry.character.internalName;
+
+  const go = (i: number) => {
+    if (i < 0 || i >= featured.length) return;
+    setActive(i);
+  };
 
   return (
     <section
@@ -95,7 +68,7 @@ export default function BuildShowcase() {
               <button
                 key={entry.character.id}
                 type="button"
-                onClick={() => scrollTo(i)}
+                onClick={() => go(i)}
                 aria-pressed={isActive}
                 className={`rounded-full border px-4 py-2 text-sm font-semibold transition-all duration-200 ${
                   isActive
@@ -110,49 +83,91 @@ export default function BuildShowcase() {
         </div>
       </div>
 
-      {/* Card slider */}
-      <div className="relative mt-8 md:mt-10">
+      {/* Peek carousel — active centered, neighbors peeking on sides */}
+      <div className="relative mt-8 w-full overflow-hidden md:mt-10">
+        <div className="relative mx-auto flex h-[160px] items-center justify-center sm:h-[272px] md:h-[328px] lg:h-[440px] xl:h-[580px]">
+          {featured.map((entry, i) => {
+            const offset = i - active;
+            const isActive = offset === 0;
+            const isAdjacent = Math.abs(offset) === 1;
+            const dir = offset === 0 ? 0 : offset > 0 ? 1 : -1;
+
+            // Percentage of card width to shift side cards (Twitch-like peek).
+            // Responsive via CSS variable would be cleaner; here we use a
+            // conservative 62% which keeps ~38% of the peek card visible.
+            const translatePct = dir * 62;
+            const scale = isActive ? 1 : isAdjacent ? 0.82 : 0.7;
+            const opacity = isActive ? 1 : isAdjacent ? 0.45 : 0;
+            const z = isActive ? 20 : isAdjacent ? 10 : 0;
+            const pointer = isActive ? "auto" : isAdjacent ? "auto" : "none";
+
+            return (
+              <button
+                key={entry.character.id}
+                type="button"
+                onClick={() => go(i)}
+                aria-label={
+                  isActive
+                    ? undefined
+                    : `Voir le build de ${entry.character.translations.FR?.name ?? entry.character.internalName}`
+                }
+                tabIndex={isActive ? -1 : 0}
+                disabled={isActive}
+                className="absolute left-1/2 top-1/2 cursor-pointer border-0 bg-transparent p-0 transition-all duration-500 ease-out"
+                style={{
+                  transform: `translate(-50%, -50%) translateX(${translatePct}%) scale(${scale})`,
+                  opacity,
+                  zIndex: z,
+                  pointerEvents: pointer,
+                  cursor: isActive ? "default" : "pointer",
+                }}
+              >
+                <ResponsiveQuickBuildCard
+                  character={entry.character}
+                  build={entry.build}
+                  lang="FR"
+                  cardRef={null}
+                />
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Arrows */}
         <button
           type="button"
-          onClick={() => scrollTo(Math.max(0, active - 1))}
+          onClick={() => go(active - 1)}
           disabled={active === 0}
           aria-label="Carte précédente"
-          className="absolute left-2 top-1/2 z-10 hidden -translate-y-1/2 items-center justify-center rounded-full border border-slate-600/50 bg-slate-900/80 p-2 text-white backdrop-blur transition hover:border-indigo-400/60 hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-30 md:inline-flex"
+          className="absolute left-2 top-1/2 z-30 -translate-y-1/2 inline-flex items-center justify-center rounded-full border border-slate-600/50 bg-slate-900/80 p-2 text-white backdrop-blur transition hover:border-indigo-400/60 hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-30 md:p-3"
         >
-          <ChevronLeft className="h-5 w-5" />
+          <ChevronLeft className="h-5 w-5 md:h-6 md:w-6" />
         </button>
         <button
           type="button"
-          onClick={() => scrollTo(Math.min(featured.length - 1, active + 1))}
+          onClick={() => go(active + 1)}
           disabled={active === featured.length - 1}
           aria-label="Carte suivante"
-          className="absolute right-2 top-1/2 z-10 hidden -translate-y-1/2 items-center justify-center rounded-full border border-slate-600/50 bg-slate-900/80 p-2 text-white backdrop-blur transition hover:border-indigo-400/60 hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-30 md:inline-flex"
+          className="absolute right-2 top-1/2 z-30 -translate-y-1/2 inline-flex items-center justify-center rounded-full border border-slate-600/50 bg-slate-900/80 p-2 text-white backdrop-blur transition hover:border-indigo-400/60 hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-30 md:p-3"
         >
-          <ChevronRight className="h-5 w-5" />
+          <ChevronRight className="h-5 w-5 md:h-6 md:w-6" />
         </button>
 
-        <div
-          ref={trackRef}
-          className="flex w-full snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth px-4 pb-4 md:gap-8 md:px-12"
-          style={{ scrollbarWidth: "thin" }}
-        >
+        {/* Dots */}
+        <div className="mt-4 flex items-center justify-center gap-2">
           {featured.map((entry, i) => (
-            <div
+            <button
               key={entry.character.id}
-              ref={(el) => {
-                cardRefs.current[i] = el;
-              }}
-              className={`shrink-0 snap-center transition-all duration-300 ${
-                i === active ? "opacity-100 scale-100" : "opacity-60 scale-[0.97]"
+              type="button"
+              onClick={() => go(i)}
+              aria-label={`Aller à la carte ${i + 1}`}
+              aria-current={i === active ? "true" : undefined}
+              className={`h-2 rounded-full transition-all duration-300 ${
+                i === active
+                  ? "w-8 bg-indigo-400"
+                  : "w-2 bg-slate-600 hover:bg-slate-500"
               }`}
-            >
-              <ResponsiveQuickBuildCard
-                character={entry.character}
-                build={entry.build}
-                lang="FR"
-                cardRef={null}
-              />
-            </div>
+            />
           ))}
         </div>
       </div>
