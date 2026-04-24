@@ -1,7 +1,7 @@
 "use client";
 
 import { Link } from "@/i18n/navigation";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { type ComponentType, Fragment, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { toPng } from "html-to-image";
 import {
@@ -1465,11 +1465,16 @@ export default function CharacterDetailClient({
   const [, toggleFavorite] = useAtom(toggleCharacterFavoriteAtom);
 
   // --- Language state ---
-  const preferredLanguage = normalizeLanguageCodes(
-    [catalog.defaultDetailLanguage],
-    catalog.availableLanguages,
-    ["FR", "EN"],
-  )[0];
+  const locale = useLocale();
+  const preferredLanguage = useMemo(
+    () =>
+      normalizeLanguageCodes(
+        [locale, catalog.defaultDetailLanguage],
+        catalog.availableLanguages,
+        ["FR", "EN"],
+      )[0],
+    [locale, catalog.defaultDetailLanguage, catalog.availableLanguages],
+  );
 
   const selectedLanguageParser = useMemo(
     () =>
