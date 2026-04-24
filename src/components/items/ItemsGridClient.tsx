@@ -840,23 +840,28 @@ export default function ItemsGridClient({
                     <p className="text-xs uppercase tracking-[0.22em] text-indigo-400/80">
                       {category.technicalName} #{item.modId}
                     </p>
-                    <h3 className="text-lg font-semibold text-white transition-colors group-hover:text-indigo-100">
-                      <span className="inline-flex min-w-0 items-center gap-2">
-                        {elementalAffinity?.iconSrc ? (
-                          <img
-                            src={elementalAffinity.iconSrc}
-                            alt=""
-                            aria-hidden="true"
-                            className="h-5 w-5 shrink-0 object-contain"
-                          />
-                        ) : null}
-                        <span className="truncate">
-                          {lead.modName
-                            ? lead.demonWedgeName ? `${lead.modName} ${lead.demonWedgeName}` : lead.modName
-                            : `${category.displayName} ${item.modId}`}
-                        </span>
-                      </span>
-                    </h3>
+                    {(() => {
+                      const displayName = lead.modName
+                        ? lead.demonWedgeName ? `${lead.modName} ${lead.demonWedgeName}` : lead.modName
+                        : `${category.displayName} ${item.modId}`;
+                      return (
+                        <h3 className="text-lg font-semibold text-white transition-colors group-hover:text-indigo-100">
+                          <span className="flex min-w-0 items-center gap-2">
+                            {elementalAffinity?.iconSrc ? (
+                              <img
+                                src={elementalAffinity.iconSrc}
+                                alt=""
+                                aria-hidden="true"
+                                className="h-5 w-5 shrink-0 object-contain"
+                              />
+                            ) : null}
+                            <span className="min-w-0 truncate" title={displayName}>
+                              {displayName}
+                            </span>
+                          </span>
+                        </h3>
+                      );
+                    })()}
                     <p className="truncate text-xs text-slate-400">
                       {lead.functionLabel ?? (isModsCategory ? "Demon Wedge" : category.displayName)}
                     </p>
