@@ -17,6 +17,7 @@ import {
   getLanguageLabel,
   normalizeLanguageCodes,
 } from "@/lib/items/catalog";
+import { isModReleaseVersionRecent } from "@/lib/items/new-releases";
 import type { ItemCategory, ItemRecord } from "@/lib/items/types";
 import {
   itemsFavoritesAtom,
@@ -25,8 +26,10 @@ import {
 } from "@/lib/store";
 
 type ArchiveFilter = "all" | "withArchive" | "withoutArchive";
+type NewFilter = "all" | "newOnly";
 type SortMode = "id" | "rarityAsc" | "rarityDesc";
 const ARCHIVE_FILTER_VALUES = ["all", "withArchive", "withoutArchive"] as const;
+const NEW_FILTER_VALUES = ["all", "newOnly"] as const;
 const SORT_MODE_VALUES = ["id", "rarityAsc", "rarityDesc"] as const;
 const PAGE_SIZE_VALUES = [12, 24, 48, 96] as const;
 
@@ -35,6 +38,10 @@ type ItemsGridClientProps = {
   items: ItemRecord[];
   favoritesOnly?: boolean;
 };
+
+function isNewFilter(value: string): value is NewFilter {
+  return value === "all" || value === "newOnly";
+}
 
 function isArchiveFilter(value: string): value is ArchiveFilter {
   return value === "all" || value === "withArchive" || value === "withoutArchive";
@@ -196,6 +203,7 @@ export default function ItemsGridClient({
     itype: parseAsString,
     isub: parseAsString,
     archive: parseAsStringLiteral(ARCHIVE_FILTER_VALUES),
+    new: parseAsStringLiteral(NEW_FILTER_VALUES),
     sort: parseAsStringLiteral(SORT_MODE_VALUES),
     size: parseAsInteger,
     page: parseAsInteger,
@@ -208,6 +216,7 @@ export default function ItemsGridClient({
     queryFilters.itype !== null ||
     queryFilters.isub !== null ||
     queryFilters.archive !== null ||
+    queryFilters.new !== null ||
     queryFilters.sort !== null ||
     queryFilters.size !== null ||
     queryFilters.page !== null;
@@ -230,6 +239,10 @@ export default function ItemsGridClient({
   const rawArchiveFilter =
     queryFilters.archive ?? (hasUrlFilters ? "all" : persisted?.archiveFilter ?? "all");
   const archiveFilter: ArchiveFilter = isArchiveFilter(rawArchiveFilter) ? rawArchiveFilter : "all";
+
+  const rawNewFilter =
+    queryFilters.new ?? (hasUrlFilters ? "all" : persisted?.newFilter ?? "all");
+  const newFilter: NewFilter = isNewFilter(rawNewFilter) ? rawNewFilter : "all";
 
   const rawSortMode = queryFilters.sort ?? (hasUrlFilters ? "id" : persisted?.sortMode ?? "id");
   const sortMode: SortMode = isSortMode(rawSortMode) ? rawSortMode : "id";
@@ -254,6 +267,7 @@ export default function ItemsGridClient({
     itype?: string;
     isub?: string;
     archive?: ArchiveFilter;
+    new?: NewFilter;
     sort?: SortMode;
     size?: number;
     page?: number;
@@ -266,6 +280,7 @@ export default function ItemsGridClient({
       itype: itemTypeFilter,
       isub: itemSubTypeFilter,
       archive: archiveFilter,
+      new: newFilter,
       sort: sortMode,
       size: pageSize,
       page: currentPage,
@@ -280,6 +295,7 @@ export default function ItemsGridClient({
       itype: next.itype,
       isub: next.isub,
       archive: next.archive,
+      new: next.new,
       sort: next.sort,
       size: next.size,
       page: next.page,
@@ -388,6 +404,10 @@ export default function ItemsGridClient({
           return false;
         }
 
+        if (newFilter === "newOnly" && !isModReleaseVersionRecent(item.stats.releaseVersion)) {
+          return false;
+        }
+
         return true;
       })
       .map(({ item }) => item);
@@ -416,6 +436,7 @@ export default function ItemsGridClient({
     itemTypeFilter,
     itemSubTypeFilter,
     archiveFilter,
+    newFilter,
     sortMode,
     searchable,
     category.id,
@@ -450,6 +471,7 @@ export default function ItemsGridClient({
       itemTypeFilter,
       itemSubTypeFilter,
       archiveFilter,
+      newFilter,
       sortMode,
       pageSize,
       currentPage: safeCurrentPage,
@@ -464,6 +486,7 @@ export default function ItemsGridClient({
         previous?.itemTypeFilter === next.itemTypeFilter &&
         previous?.itemSubTypeFilter === next.itemSubTypeFilter &&
         previous?.archiveFilter === next.archiveFilter &&
+        previous?.newFilter === next.newFilter &&
         previous?.sortMode === next.sortMode &&
         previous?.pageSize === next.pageSize &&
         previous?.currentPage === next.currentPage &&
@@ -486,6 +509,7 @@ export default function ItemsGridClient({
     itemTypeFilter,
     itemSubTypeFilter,
     archiveFilter,
+    newFilter,
     sortMode,
     pageSize,
     safeCurrentPage,
@@ -528,6 +552,7 @@ export default function ItemsGridClient({
       itype: "all",
       isub: "all",
       archive: "all",
+      new: "all",
       sort: "id",
       size: 24,
       page: 1,
@@ -703,6 +728,25 @@ export default function ItemsGridClient({
             </div>
           )}
 
+          {isModsCategory && (
+            <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2">
+              <div className="mb-1 text-xs text-slate-400">{t('newBadge')}</div>
+              <select
+                value={newFilter}
+                onChange={(event) => {
+                  updateQueryFilters({
+                    new: event.target.value as NewFilter,
+                    page: 1,
+                  });
+                }}
+                className="w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-sm text-slate-100"
+              >
+                <option value="all">{tc('all')}</option>
+                <option value="newOnly">{t('newOnly')}</option>
+              </select>
+            </div>
+          )}
+
           {itemTypeOptions.length > 0 && (
             <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2">
               <div className="mb-1 text-xs text-slate-400">{tc('type')}</div>
@@ -801,6 +845,7 @@ export default function ItemsGridClient({
             const iconSrc = item.icon.publicPath ?? item.icon.placeholderPath ?? "/marker-default.svg";
             const favoriteKey = toFavoriteKey(category.id, item.id);
             const isFavorite = favoriteItems.has(favoriteKey);
+            const isNew = isModsCategory && isModReleaseVersionRecent(item.stats.releaseVersion);
 
             return (
               <Link
@@ -837,9 +882,16 @@ export default function ItemsGridClient({
                     </div>
                   </div>
                   <div className="min-w-0 flex-1">
-                    <p className="text-xs uppercase tracking-[0.22em] text-indigo-400/80">
-                      {category.technicalName} #{item.modId}
-                    </p>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <p className="text-xs uppercase tracking-[0.22em] text-indigo-400/80">
+                        {category.technicalName} #{item.modId}
+                      </p>
+                      {isNew ? (
+                        <span className="rounded-full bg-amber-500/15 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-amber-300 ring-1 ring-amber-400/40">
+                          {t('newBadge')}
+                        </span>
+                      ) : null}
+                    </div>
                     {(() => {
                       const displayName = lead.modName
                         ? lead.demonWedgeName ? `${lead.modName} ${lead.demonWedgeName}` : lead.modName

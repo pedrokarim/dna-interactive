@@ -436,7 +436,9 @@
     "sortById": "Nach ID",
     "sortRarityAsc": "Seltenheit aufsteigend",
     "sortRarityDesc": "Seltenheit absteigend",
-    "zoomIcon": "Icon für Gegenstand {id} vergrößern"
+    "zoomIcon": "Icon für Gegenstand {id} vergrößern",
+    "newBadge": "NEU",
+    "newOnly": "Nur neue"
   },
   "itemDetail": {
     "rawFieldsTitle": "Rohdaten",

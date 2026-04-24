@@ -436,7 +436,9 @@
     "sortById": "ID順",
     "sortRarityAsc": "レアリティ昇順",
     "sortRarityDesc": "レアリティ降順",
-    "zoomIcon": "アイテム{id}のアイコンを拡大"
+    "zoomIcon": "アイテム{id}のアイコンを拡大",
+    "newBadge": "NEW",
+    "newOnly": "新規のみ"
   },
   "itemDetail": {
     "rawFieldsTitle": "生データフィールド",

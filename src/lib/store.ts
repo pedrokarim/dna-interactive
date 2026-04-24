@@ -165,6 +165,7 @@ export type PersistedItemsFilters = Record<
     rarityFilter: string;
     polarityFilter: string;
     archiveFilter: string;
+    newFilter: string;
     itemTypeFilter: string;
     itemSubTypeFilter: string;
     sortMode: string;

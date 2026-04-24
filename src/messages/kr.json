@@ -436,7 +436,9 @@
     "sortById": "ID순",
     "sortRarityAsc": "레어리티 오름차순",
     "sortRarityDesc": "레어리티 내림차순",
-    "zoomIcon": "아이템 {id}의 아이콘 확대"
+    "zoomIcon": "아이템 {id}의 아이콘 확대",
+    "newBadge": "NEW",
+    "newOnly": "신규만"
   },
   "itemDetail": {
     "rawFieldsTitle": "원시 데이터",

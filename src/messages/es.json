@@ -436,7 +436,9 @@
     "sortById": "Por id",
     "sortRarityAsc": "Rareza ascendente",
     "sortRarityDesc": "Rareza descendente",
-    "zoomIcon": "Ampliar icono del objeto {id}"
+    "zoomIcon": "Ampliar icono del objeto {id}",
+    "newBadge": "NUEVO",
+    "newOnly": "Solo nuevos"
   },
   "itemDetail": {
     "rawFieldsTitle": "Campos sin procesar",

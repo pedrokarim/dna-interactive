@@ -436,7 +436,9 @@
     "sortById": "Par id",
     "sortRarityAsc": "Rarete croissante",
     "sortRarityDesc": "Rarete decroissante",
-    "zoomIcon": "Agrandir l'icone de l'item {id}"
+    "zoomIcon": "Agrandir l'icone de l'item {id}",
+    "newBadge": "NOUVEAU",
+    "newOnly": "Nouveautés"
   },
   "itemDetail": {
     "rawFieldsTitle": "Raw fields",

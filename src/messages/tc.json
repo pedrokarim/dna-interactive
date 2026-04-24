@@ -436,7 +436,9 @@
     "sortById": "依 ID",
     "sortRarityAsc": "稀有度升序",
     "sortRarityDesc": "稀有度降序",
-    "zoomIcon": "放大道具 {id} 的圖示"
+    "zoomIcon": "放大道具 {id} 的圖示",
+    "newBadge": "NEW",
+    "newOnly": "僅新項目"
   },
   "itemDetail": {
     "rawFieldsTitle": "原始資料",
