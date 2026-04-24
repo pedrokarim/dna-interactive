@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-08T09:35:51.534Z",
+  "generatedAt": "2026-04-24T17:38:15.522Z",
   "categories": [
     {
       "id": "mods",
@@ -26,58 +26,6 @@
       "datasetFile": "mods.items.json",
       "iconDirectory": "/assets/items/mods",
       "sampleIconPath": "/assets/items/mods/T_Mod_Phoenix01.png"
-    },
-    {
-      "id": "genimons",
-      "slug": "genimons",
-      "title": "Genimons",
-      "technicalName": "GENIMON",
-      "displayName": "Genimons",
-      "description": "Compagnons Genimons avec variantes, descriptions multilingues et effets passifs.",
-      "itemCount": 75,
-      "availableLanguages": [
-        "DE",
-        "EN",
-        "ES",
-        "FR",
-        "JP",
-        "KR",
-        "TC"
-      ],
-      "defaultGridLanguages": [
-        "FR",
-        "EN"
-      ],
-      "defaultDetailLanguage": "FR",
-      "datasetFile": "genimons.items.json",
-      "iconDirectory": "/assets/items/genimons",
-      "sampleIconPath": "/assets/items/genimons/T_Head_Pet_Wuyou01.png"
-    },
-    {
-      "id": "fishing",
-      "slug": "fishing",
-      "title": "Peche / Fishing",
-      "technicalName": "FISHING",
-      "displayName": "Peche",
-      "description": "Poissons, cannes, leurres et monnaie lies a la peche.",
-      "itemCount": 141,
-      "availableLanguages": [
-        "DE",
-        "EN",
-        "ES",
-        "FR",
-        "JP",
-        "KR",
-        "TC"
-      ],
-      "defaultGridLanguages": [
-        "FR",
-        "EN"
-      ],
-      "defaultDetailLanguage": "FR",
-      "datasetFile": "fishing.items.json",
-      "iconDirectory": "/assets/items/fishing",
-      "sampleIconPath": "/assets/items/fishing/T_Coin_Other_Fishing.png"
     }
   ]
 }
