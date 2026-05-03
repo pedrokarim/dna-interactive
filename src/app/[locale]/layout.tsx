@@ -114,9 +114,6 @@ export async function generateMetadata(
       images: ["/assets/worldview/worldview-1.webp"],
       creator: "@dna_interactive",
     },
-    verification: {
-      google: "i_GLyVEAubN9keZoMX6Kk8-T8XyldPJ8zXc1atDYv-k",
-    },
     alternates: {
       canonical: `${baseUrl}/${locale}`,
       languages: {
