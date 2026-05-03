@@ -44,7 +44,7 @@ export async function generateMetadata(
   const { locale } = await params;
   const previousImages = (await parent).openGraph?.images || [];
 
-  const baseUrl = "https://dna-interactive.ascencia.re";
+  const baseUrl = "https://dna.ascencia.re";
 
   return {
     metadataBase: new URL(baseUrl),

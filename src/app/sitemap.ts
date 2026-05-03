@@ -5,7 +5,7 @@ import { getItemCatalog } from "@/lib/items/catalog";
 import { locales } from "@/i18n/config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://dna-interactive.ascencia.re";
+  const baseUrl = "https://dna.ascencia.re";
   const now = new Date();
 
   // Map locale codes to valid BCP 47 hreflang tags

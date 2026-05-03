@@ -840,7 +840,7 @@ export function QuickBuildCard({
                 className="mt-0.5 truncate text-[10px] text-white/60"
                 style={{ textShadow: "0 1px 2px rgba(0,0,0,0.5)" }}
               >
-                dna-interactive · Duet Night Abyss
+                dna.ascencia.re · Duet Night Abyss
               </p>
             </div>
           </div>

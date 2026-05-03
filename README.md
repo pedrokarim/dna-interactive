@@ -167,7 +167,7 @@ bun run analyze      # Analyse du bundle (si configuré)
 1. **Variables d'environnement**
    ```bash
    # Créez un fichier .env.local
-   NEXT_PUBLIC_SITE_URL=https://dna-interactive.ascencia.re
+   NEXT_PUBLIC_SITE_URL=https://dna.ascencia.re
    ```
 
 2. **Build de production**

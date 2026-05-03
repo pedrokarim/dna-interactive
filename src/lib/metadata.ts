@@ -2,7 +2,7 @@ import type { Metadata, ResolvingMetadata } from "next";
 import { SITE_CONFIG, GAME_INFO, CREATOR_INFO } from "@/lib/constants";
 import { locales } from "@/i18n/config";
 
-const BASE_URL = "https://dna-interactive.ascencia.re";
+const BASE_URL = "https://dna.ascencia.re";
 
 const localeToOgLocale: Record<string, string> = {
   fr: "fr_FR",

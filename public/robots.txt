@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://dna-interactive.ascencia.re/sitemap.xml
+Sitemap: https://dna.ascencia.re/sitemap.xml

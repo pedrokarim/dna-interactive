@@ -20,11 +20,11 @@ export default function StructuredData({
     "@type": "WebSite",
     name: SITE_CONFIG.name,
     description: SITE_CONFIG.description,
-    url: "https://dna-interactive.ascencia.re",
+    url: "https://dna.ascencia.re",
     potentialAction: {
       "@type": "SearchAction",
       target:
-        "https://dna-interactive.ascencia.re/map?search={search_term_string}",
+        "https://dna.ascencia.re/map?search={search_term_string}",
       "query-input": "required name=search_term_string",
     },
     publisher: {
@@ -32,7 +32,7 @@ export default function StructuredData({
       name: SITE_CONFIG.name,
       logo: {
         "@type": "ImageObject",
-        url: "https://dna-interactive.ascencia.re/assets/images/logo_optimized.png",
+        url: "https://dna.ascencia.re/assets/images/logo_optimized.png",
       },
       contactPoint: {
         "@type": "ContactPoint",
@@ -138,8 +138,8 @@ export default function StructuredData({
             "@context": "https://schema.org",
             "@type": "Organization",
             name: SITE_CONFIG.name,
-            url: "https://dna-interactive.ascencia.re",
-            logo: "https://dna-interactive.ascencia.re/assets/images/logo_optimized.png",
+            url: "https://dna.ascencia.re",
+            logo: "https://dna.ascencia.re/assets/images/logo_optimized.png",
             contactPoint: {
               "@type": "ContactPoint",
               contactType: "customer service",
