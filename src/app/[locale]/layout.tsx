@@ -112,7 +112,8 @@ export async function generateMetadata(
       description:
         "Carte interactive Duet Night Abyss : coffres, secrets, items, personnages, codes et plans de forge. Outil DNA gratuit.",
       images: ["/assets/worldview/worldview-1.webp"],
-      creator: "@dna_interactive",
+      site: "@ascencia64",
+      creator: "@ascencia64",
     },
     alternates: {
       canonical: `${baseUrl}/${locale}`,

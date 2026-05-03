@@ -116,7 +116,8 @@ export async function generatePageMetadata(
       title: finalTitle,
       description: finalDescription,
       images: [image],
-      creator: "@dna_interactive",
+      site: "@ascencia64",
+      creator: "@ascencia64",
     },
     alternates: {
       canonical: canonicalUrl,

@@ -146,7 +146,11 @@ export default function StructuredData({
               email: CONTACT_INFO.email,
               url: CONTACT_INFO.discord.url,
             },
-            sameAs: [CONTACT_INFO.discord.url, CONTACT_INFO.ascencia.url],
+            sameAs: [
+              CONTACT_INFO.discord.url,
+              CONTACT_INFO.ascencia.url,
+              CONTACT_INFO.twitter.url,
+            ],
           }),
         }}
       />

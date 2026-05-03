@@ -26,6 +26,11 @@ export const CONTACT_INFO = {
     url: "https://ascencia.re/",
     label: "Ascencia",
   },
+  twitter: {
+    url: "https://x.com/ascencia64",
+    handle: "@ascencia64",
+    label: "X / Twitter",
+  },
 } as const;
 
 // Informations sur le créateur
