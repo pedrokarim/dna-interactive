@@ -21,6 +21,7 @@ import charMaer from "./char-maer.json";
 import charYeer from "./char-yeer.json";
 import charYuming from "./char-yuming.json";
 import charSuyi from "./char-suyi.json";
+import charKami from "./char-kami.json";
 
 // Add new character builds here:
 // 1. import charXxx from "./char-xxx.json";
@@ -50,4 +51,5 @@ export const allBuilds = [
   ...charYeer,
   ...charYuming,
   ...charSuyi,
+  ...charKami,
 ];

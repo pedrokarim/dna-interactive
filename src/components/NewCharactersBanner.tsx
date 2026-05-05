@@ -28,7 +28,7 @@ const ALL_MESSAGES: Record<Locale, typeof frMessages> = {
   tc: tcMessages as typeof frMessages,
 };
 
-type CharKey = "suyi" | "kami" | "yuming" | "zhiliu";
+type CharKey = "kami" | "suyi" | "yuming" | "zhiliu";
 
 const SHOWCASE_CHARACTERS: Array<{
   id: string;
@@ -43,18 +43,6 @@ const SHOWCASE_CHARACTERS: Array<{
   ringColor: string;
 }> = [
   {
-    id: "char-suyi",
-    key: "suyi",
-    name: "Su Yi",
-    decoText: "\u7D20\u8863",
-    fullImage: "/assets/official-v1.3/image-sy.webp",
-    fullImageMobile: "/assets/official-v1.3/image-sy-mobile.webp",
-    avatar: "/assets/official-v1.3/avatar-sy.webp",
-    element: "Lumino",
-    accentColor: "cyan",
-    ringColor: "ring-cyan-400",
-  },
-  {
     id: "char-kami",
     key: "kami",
     name: "Camilla",
@@ -65,6 +53,18 @@ const SHOWCASE_CHARACTERS: Array<{
     element: "Pyro",
     accentColor: "rose",
     ringColor: "ring-rose-400",
+  },
+  {
+    id: "char-suyi",
+    key: "suyi",
+    name: "Su Yi",
+    decoText: "\u7D20\u8863",
+    fullImage: "/assets/official-v1.3/image-sy.webp",
+    fullImageMobile: "/assets/official-v1.3/image-sy-mobile.webp",
+    avatar: "/assets/official-v1.3/avatar-sy.webp",
+    element: "Lumino",
+    accentColor: "cyan",
+    ringColor: "ring-cyan-400",
   },
   {
     id: "char-yuming",
