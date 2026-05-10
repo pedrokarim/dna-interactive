@@ -32,6 +32,7 @@ type CharKey = "kami" | "suyi" | "yuming" | "zhiliu";
 
 const SHOWCASE_CHARACTERS: Array<{
   id: string;
+  slug: string;
   key: CharKey;
   name: string;
   decoText: string;
@@ -44,6 +45,7 @@ const SHOWCASE_CHARACTERS: Array<{
 }> = [
   {
     id: "char-kami",
+    slug: "camilla",
     key: "kami",
     name: "Camilla",
     decoText: "\u5361\u7C73\u62C9",
@@ -56,6 +58,7 @@ const SHOWCASE_CHARACTERS: Array<{
   },
   {
     id: "char-suyi",
+    slug: "su-yi",
     key: "suyi",
     name: "Su Yi",
     decoText: "\u7D20\u8863",
@@ -68,6 +71,7 @@ const SHOWCASE_CHARACTERS: Array<{
   },
   {
     id: "char-yuming",
+    slug: "yuming",
     key: "yuming",
     name: "Yuming",
     decoText: "\u7FBD\u660E",
@@ -80,6 +84,7 @@ const SHOWCASE_CHARACTERS: Array<{
   },
   {
     id: "char-zhiliu",
+    slug: "zhiliu",
     key: "zhiliu",
     name: "Zhiliu",
     decoText: "\u77E5\u7559",
@@ -271,14 +276,14 @@ export default function NewCharactersBanner() {
               </p>
               <div className="flex flex-wrap items-center gap-3 mt-8">
                 <Link
-                  href={`/characters/${active.id}`}
+                  href={`/characters/${active.slug}`}
                   className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/15 hover:border-white/30 rounded-lg text-sm font-medium text-white transition-all duration-300"
                 >
                   {tc("viewCharacter")}
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
-                  href={`/characters/${active.id}?tab=build`}
+                  href={`/characters/${active.slug}?tab=build`}
                   className={`inline-flex items-center gap-2 px-5 py-2.5 backdrop-blur-sm border rounded-lg text-sm font-semibold text-white transition-all duration-300 ${styles.border} bg-white/[0.08] hover:bg-white/20 hover:border-white/40`}
                 >
                   <Swords className="w-4 h-4" />
@@ -371,7 +376,7 @@ export default function NewCharactersBanner() {
                 &ldquo;{charData.description}&rdquo;
               </p>
               <Link
-                href={`/characters/${active.id}`}
+                href={`/characters/${active.slug}`}
                 className="inline-flex items-center gap-2 mt-4 px-5 py-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/15 rounded-lg text-sm font-medium text-white transition-all duration-300"
               >
                 {tc("viewCharacter")}

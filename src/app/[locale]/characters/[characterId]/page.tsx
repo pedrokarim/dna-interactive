@@ -1,11 +1,12 @@
 import type { Metadata, ResolvingMetadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { Suspense } from "react";
 import CharacterDetailClient from "@/components/characters/CharacterDetailClient";
 import CharactersSuspenseFallback from "@/components/characters/CharactersSuspenseFallback";
 import {
   getAllCharacters,
   getCharacterById,
+  getCharacterSlug,
   getCharactersCatalog,
   getCharacterSkills,
   getCharacterTranslation,
@@ -21,7 +22,7 @@ type CharacterDetailPageProps = {
 export function generateStaticParams() {
   const characters = getAllCharacters();
   return characters.map((character) => ({
-    characterId: character.id,
+    characterId: getCharacterSlug(character),
   }));
 }
 
@@ -51,12 +52,13 @@ export async function generateMetadata(
     catalog.availableLanguages,
   );
   const charName = localized.name ?? character.internalName;
+  const slug = getCharacterSlug(character);
 
   return generatePageMetadata(
     {
       title: `${charName} - ${character.element.label} ${character.weaponTags[0] ?? ""}`,
       description: `Fiche complete de ${charName} dans Duet Night Abyss : element ${character.element.label}, armes, faction, portraits et traductions multilingues.`,
-      path: `/characters/${character.id}`,
+      path: `/characters/${slug}`,
       image: character.portraits.gacha.publicPath ?? undefined,
       keywords: [
         "Duet Night Abyss",
@@ -87,11 +89,16 @@ const ELEMENT_AMBIENT: Record<string, string> = {
 export default async function CharacterDetailPage({
   params,
 }: CharacterDetailPageProps) {
-  const { characterId } = await params;
+  const { locale, characterId } = await params;
   const character = getCharacterById(characterId);
 
   if (!character) {
     notFound();
+  }
+
+  const canonicalSlug = getCharacterSlug(character);
+  if (characterId !== canonicalSlug) {
+    redirect(`/${locale}/characters/${canonicalSlug}`);
   }
 
   const catalog = getCharactersCatalog();

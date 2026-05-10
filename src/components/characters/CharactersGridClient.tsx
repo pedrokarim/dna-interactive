@@ -21,6 +21,7 @@ import {
   useQueryStates,
 } from "nuqs";
 import {
+  getCharacterSlug,
   getCharacterTranslation,
   getLanguageLabel,
   normalizeLanguageCodes,
@@ -582,7 +583,7 @@ export default function CharactersGridClient({
             return (
               <Link
                 key={character.id}
-                href={`/characters/${character.id}`}
+                href={`/characters/${getCharacterSlug(character)}`}
                 className={`group relative overflow-hidden rounded-2xl border bg-slate-900/55 transition-all duration-200 hover:-translate-y-0.5 hover:bg-slate-900/75 ${
                   rarityStyle
                     ? `${rarityStyle.border} hover:border-opacity-70`

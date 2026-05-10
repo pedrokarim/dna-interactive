@@ -1,6 +1,6 @@
 import { allBuilds } from "@/data/characters/builds";
 import { getItemByCategoryAndId, getItemTranslation } from "@/lib/items/catalog";
-import { getCharacterById, getCharacterTranslation } from "@/lib/characters/catalog";
+import { getCharacterById, getCharacterSlug, getCharacterTranslation } from "@/lib/characters/catalog";
 import type { ItemRecord } from "@/lib/items/types";
 import type { CharacterRecord } from "@/lib/characters/types";
 
@@ -197,7 +197,7 @@ function resolveCharacterRef(
     characterId: character.id,
     name: translation.name ?? character.internalName,
     portrait: character.portraits.head?.publicPath ?? null,
-    href: `/characters/${character.id}`,
+    href: `/characters/${getCharacterSlug(character)}`,
     element: character.element,
   };
 }

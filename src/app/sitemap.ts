@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 import { NAVIGATION } from "@/lib/constants";
-import { getAllCharacters } from "@/lib/characters/catalog";
+import { getAllCharacters, getCharacterSlug } from "@/lib/characters/catalog";
 import { getItemCatalog } from "@/lib/items/catalog";
 import { locales } from "@/i18n/config";
 
@@ -88,7 +88,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   }
   for (const character of characters) {
-    const path = `${NAVIGATION.characters}/${character.id}`;
+    const path = `${NAVIGATION.characters}/${getCharacterSlug(character)}`;
     for (const locale of locales) {
       entries.push({
         url: `${baseUrl}/${locale}${path}`,

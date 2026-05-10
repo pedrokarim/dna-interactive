@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Link } from "@/i18n/navigation";
 import { ArrowRight, ChevronLeft, ChevronRight, FileImage, Users } from "lucide-react";
 import { ResponsiveQuickBuildCard } from "@/components/characters/QuickBuildModal";
-import { getCharacterById } from "@/lib/characters/catalog";
+import { getCharacterById, getCharacterSlug } from "@/lib/characters/catalog";
 import { getCharacterBuilds } from "@/lib/characters/builds";
 
 // ---------------------------------------------------------------------------
@@ -176,7 +176,7 @@ export default function BuildShowcase() {
       <div className="container mx-auto mt-6 px-4 md:mt-8 md:px-6">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-3 md:flex-row md:gap-4">
           <Link
-            href={`/characters/${activeEntry.character.id}?tab=build&build=true#quick-build`}
+            href={`/characters/${getCharacterSlug(activeEntry.character)}?tab=build&build=true#quick-build`}
             className="group inline-flex items-center justify-center gap-2 rounded-xl border border-indigo-300/40 bg-gradient-to-r from-indigo-600 to-purple-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/25 transition-all duration-200 hover:scale-105 hover:shadow-indigo-500/40"
           >
             <FileImage className="h-4 w-4" />

@@ -26,6 +26,29 @@ const levelUpCurves = levelUpCurvesJson as unknown as LevelUpCurves;
 const skills = skillsJson as unknown as CharacterSkillSet[];
 const skillsByCharId = new Map(skills.map((s) => [s.charId, s]));
 
+function slugifyEnglishName(name: string | null | undefined): string | null {
+  if (!name) return null;
+  const slug = name
+    .normalize("NFKD")
+    .replace(/[̀-ͯ]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+  return slug.length > 0 ? slug : null;
+}
+
+export function getCharacterSlug(character: CharacterRecord): string {
+  return slugifyEnglishName(character.translations?.EN?.name) ?? character.id;
+}
+
+const slugToCharacter = new Map<string, CharacterRecord>();
+for (const character of characters) {
+  const slug = slugifyEnglishName(character.translations?.EN?.name);
+  if (slug && !slugToCharacter.has(slug)) {
+    slugToCharacter.set(slug, character);
+  }
+}
+
 export function getLanguageLabel(code: string): string {
   return LANGUAGE_LABELS[code] ?? code;
 }
@@ -40,6 +63,8 @@ export function getAllCharacters(): CharacterRecord[] {
 
 export function getCharacterById(id: string): CharacterRecord | null {
   const normalized = id.trim().toLowerCase();
+  const bySlug = slugToCharacter.get(normalized);
+  if (bySlug) return bySlug;
   return (
     characters.find(
       (c) =>
@@ -47,6 +72,16 @@ export function getCharacterById(id: string): CharacterRecord | null {
         `${c.charId}` === id ||
         c.internalName.toLowerCase() === normalized,
     ) ?? null
+  );
+}
+
+export function isLegacyCharacterId(value: string): boolean {
+  const normalized = value.trim().toLowerCase();
+  return characters.some(
+    (c) =>
+      c.id.toLowerCase() === normalized ||
+      `${c.charId}` === value ||
+      c.internalName.toLowerCase() === normalized,
   );
 }
 

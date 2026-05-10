@@ -27,6 +27,7 @@ import { useAtom } from "jotai";
 import { parseAsBoolean, parseAsStringLiteral, useQueryState } from "nuqs";
 import {
   getAllCharacters,
+  getCharacterSlug,
   getCharacterTranslation,
   getLanguageLabel,
   getStatAtLevel,
@@ -1615,7 +1616,7 @@ export default function CharacterDetailClient({
           <div className="flex items-center gap-3">
             {prevCharacter && (
               <Link
-                href={`/characters/${prevCharacter.id}`}
+                href={`/characters/${getCharacterSlug(prevCharacter)}`}
                 className="inline-flex items-center gap-1 rounded-lg border border-slate-600/80 px-2 py-2 text-sm text-slate-300 transition-colors hover:border-indigo-400/40 hover:text-white"
                 aria-label={t('previousCharacter', { name: prevCharacter.internalName })}
               >
@@ -1624,7 +1625,7 @@ export default function CharacterDetailClient({
             )}
             {nextCharacter && (
               <Link
-                href={`/characters/${nextCharacter.id}`}
+                href={`/characters/${getCharacterSlug(nextCharacter)}`}
                 className="inline-flex items-center gap-1 rounded-lg border border-slate-600/80 px-2 py-2 text-sm text-slate-300 transition-colors hover:border-indigo-400/40 hover:text-white"
                 aria-label={t('nextCharacter', { name: nextCharacter.internalName })}
               >
