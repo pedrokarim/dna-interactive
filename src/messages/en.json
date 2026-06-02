@@ -126,6 +126,12 @@
     "itemsLibraryTitle": "Items Library available!",
     "itemsLibraryDetails": "Browse Demon Wedges, resources, weapons and forge plans",
     "itemsLibraryCta": "View items",
+    "patchV14Title": "Patch 1.4 'Silver Torrent' integrated!",
+    "patchV14Details": "New characters, mods, skills and items",
+    "patchV14Cta": "View changelog",
+    "newMapsV14Title": "5 new maps added!",
+    "newMapsV14Details": "Bloomfield Station, Ironworks, Outer Peaks, Taixu Mausoleum, Youlai Alley",
+    "newMapsV14Cta": "Explore Bloomfield",
     "badgeNew": "NEW"
   },
   "newCharacters": {

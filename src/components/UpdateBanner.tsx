@@ -12,6 +12,9 @@ import { useTranslations } from "next-intl";
 
 type HomeAnnouncement = {
   id: string;
+  // Date de sortie du patch (ISO YYYY-MM-DD). Le bandeau disparaît
+  // automatiquement BANNER_LIFETIME_DAYS jours après cette date.
+  releaseDate: string;
   badge?: string;
   badgeKey?: string;
   icon: typeof MapPin;
@@ -25,9 +28,57 @@ type HomeAnnouncement = {
   ctaIcon: typeof Map;
 };
 
+// Les bandeaux d'annonce d'un patch deviennent invisibles 4 semaines après la
+// sortie du patch — passé ce délai, on considère que les joueurs ont eu le
+// temps d'explorer la nouveauté. Les entrées restent dans le code pour
+// l'historique mais ne s'affichent plus.
+const BANNER_LIFETIME_DAYS = 28;
+
+function isAnnouncementExpired(announcement: HomeAnnouncement): boolean {
+  const release = new Date(announcement.releaseDate);
+  if (Number.isNaN(release.getTime())) {
+    return false;
+  }
+  const expiry = release.getTime() + BANNER_LIFETIME_DAYS * 24 * 60 * 60 * 1000;
+  return Date.now() > expiry;
+}
+
 const HOME_ANNOUNCEMENTS: HomeAnnouncement[] = [
+  // Patch 1.4 "Silver Torrent / Racing Stars" — 2 juin 2026
+  {
+    id: "home-patch-v1-4",
+    releaseDate: "2026-06-02",
+    badge: "v1.4",
+    icon: Sparkles,
+    titleKey: "patchV14Title",
+    desktopDetailsKey: "patchV14Details",
+    href: "/changelog",
+    ctaLabelKey: "patchV14Cta",
+    gradientClassName:
+      "bg-linear-to-r from-sky-600/90 via-cyan-600/90 to-teal-600/90",
+    borderClassName: "border-sky-400/30",
+    accentTextClassName: "text-sky-200",
+    ctaIcon: Sparkles,
+  },
+  {
+    id: "home-maps-v1-4",
+    releaseDate: "2026-06-02",
+    badge: "v1.4",
+    icon: MapPin,
+    titleKey: "newMapsV14Title",
+    desktopDetailsKey: "newMapsV14Details",
+    href: "/map?mapId=bloomfield-station",
+    ctaLabelKey: "newMapsV14Cta",
+    gradientClassName:
+      "bg-linear-to-r from-emerald-600/90 via-teal-600/90 to-cyan-600/90",
+    borderClassName: "border-emerald-400/30",
+    accentTextClassName: "text-emerald-200",
+    ctaIcon: Map,
+  },
+  // Patch 1.3 "Firmament Unbound" — 7 avril 2026 (auto-expirés depuis le 5 mai)
   {
     id: "home-map-haojing-v1-3",
+    releaseDate: "2026-04-07",
     badge: "v1.3",
     icon: MapPin,
     titleKey: "newMapTitle",
@@ -42,6 +93,7 @@ const HOME_ANNOUNCEMENTS: HomeAnnouncement[] = [
   },
   {
     id: "home-items-library-v1-3",
+    releaseDate: "2026-04-07",
     badgeKey: "badgeNew",
     icon: Boxes,
     titleKey: "itemsLibraryTitle",
@@ -71,7 +123,9 @@ export default function UpdateBanner() {
   const [, dismissAnnouncement] = useAtom(dismissHomeAnnouncementAtom);
 
   const visibleAnnouncements = HOME_ANNOUNCEMENTS.filter(
-    (announcement) => !dismissedAnnouncements[announcement.id]
+    (announcement) =>
+      !dismissedAnnouncements[announcement.id] &&
+      !isAnnouncementExpired(announcement)
   );
 
   if (visibleAnnouncements.length === 0) {
