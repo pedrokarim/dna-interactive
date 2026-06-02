@@ -61,6 +61,21 @@ export const GAME_INFO = {
 export const ASSETS_PATHS = {
   logo: "/assets/images/logo_optimized.png",
   worldview: [
+    // Update 1.4 "Silver Torrent / Racing Stars" (2026-06) — affichés en premier
+    "/assets/worldview/worldview-1-4-1.webp",
+    "/assets/worldview/worldview-1-4-2.webp",
+    "/assets/worldview/worldview-1-4-3.webp",
+    "/assets/worldview/worldview-1-4-4.webp",
+    "/assets/worldview/worldview-1-4-5.webp",
+    // Update 1.3 "Firmament Unbound" (2026-04)
+    "/assets/worldview/worldview-1-3-1.webp",
+    "/assets/worldview/worldview-1-3-2.webp",
+    "/assets/worldview/worldview-1-3-3.webp",
+    "/assets/worldview/worldview-1-3-4.webp",
+    "/assets/worldview/worldview-1-3-5.webp",
+    "/assets/worldview/worldview-1-3-6.webp",
+    "/assets/worldview/worldview-1-3-8.webp",
+    // Wallpapers originels
     "/assets/worldview/worldview-1.webp",
     "/assets/worldview/worldview-2.webp",
     "/assets/worldview/worldview-3.webp",
@@ -72,18 +87,6 @@ export const ASSETS_PATHS = {
     "/assets/worldview/worldview-9.webp",
     "/assets/worldview/worldview-10.webp",
     "/assets/worldview/worldview-11.webp",
-    "/assets/worldview/worldview-1-3-1.webp",
-    "/assets/worldview/worldview-1-3-2.webp",
-    "/assets/worldview/worldview-1-3-3.webp",
-    "/assets/worldview/worldview-1-3-4.webp",
-    "/assets/worldview/worldview-1-3-5.webp",
-    "/assets/worldview/worldview-1-3-6.webp",
-    "/assets/worldview/worldview-1-3-8.webp",
-    "/assets/worldview/worldview-1-4-1.webp",
-    "/assets/worldview/worldview-1-4-2.webp",
-    "/assets/worldview/worldview-1-4-3.webp",
-    "/assets/worldview/worldview-1-4-4.webp",
-    "/assets/worldview/worldview-1-4-5.webp",
     "/assets/official-v1.3/bg.webp",
   ],
 } as const;
