@@ -3,8 +3,8 @@
     "DE": {
       "packNameCharTrack": "Truhe „Figuren-Spurwechsel“",
       "packNameWeaponTrack": "Truhe „Waffen-Spurwechsel“",
-      "trackAdjustment": "Spuranpassung",
-      "toleranceTrack": "Toleranz/Spur"
+      "trackAdjustment": "Modificación de afinidad",
+      "toleranceTrack": "Tolerancia/Afinidad"
     },
     "EN": {
       "packNameCharTrack": "Character Track-Shift Chest",
@@ -78,7 +78,7 @@
         "ES": {
           "name": "Módulo de cambio de afinidad",
           "description": "Se trata de un instrumento de precisión procedente del Imperio Hiperbóreo que recuerda mucho a una caja de herramientas. Cuando sus engranajes comienzan a girar, la Cuña Demoníaca colocada en su interior se modifica para adaptarse al usuario. Al actuar directamente sobre el portador, alcanza un mayor nivel de precisión y potencia aún más las capacidades del usuario.",
-          "flavor": "“Aprender a utilizar las herramientas en las ocasiones adecuadas no es pereza. De hecho, es una táctica vital para concluir los combates con eficiencia. En cuanto al tiempo que se ahorra, debe destinarse a relajar el cuerpo y la mente ya agotados con un sueño bien merecido…”\n\n— Randy, Oficial de Hiperbórea"
+          "flavor": "\"Aprender a utilizar las herramientas en las ocasiones adecuadas no es pereza. De hecho, es una táctica vital para concluir los combates con eficiencia. En cuanto al tiempo que se ahorra, debe destinarse a relajar el cuerpo y la mente ya agotados con un sueño bien merecido…\"\n\n— Randy, Oficial de Hiperbórea"
         },
         "FR": {
           "name": "Module de transfert d’affinité",
@@ -104,6 +104,8 @@
       "fields": {
         "AccessKey": "T.RT_3",
         "DetailDes": "RESOURCE_DESC_201",
+        "ExcludeCollect": true,
+        "ExcludeCollectServer": true,
         "FunctionDes": "RESOURCE_FUNCTION_CHARPOL",
         "Icon": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resource_PolarityStyle.T_Resource_PolarityStyle",
         "IpDes": "RESOURCE_TEXT_201",
@@ -153,7 +155,7 @@
         "ES": {
           "name": "Módulo de cambio de afinidad de arma",
           "description": "Se trata de un instrumento de precisión procedente del Imperio Hiperbóreo que recuerda mucho a una caja de herramientas. Cuando sus engranajes comienzan a girar, la Cuña Demoníaca colocada en su interior se modifica para adaptarse al usuario. Posee una excelente capacidad de detectar todo tipo de armas estándar y potenciar su rendimiento.",
-          "flavor": "“¡Las armas tienen, por supuesto, su propio temperamento! Si no están de buen humor, yo tampoco me siento tranquila al pelear… es natural preocuparse. ¡Somos compañeras y socias inseparables! Samael, ¿verdad que tengo razón?”\n\n— Lisbell, candidata a Paciencia de Las Siete Virtudes de Elysium"
+          "flavor": "\"¡Las armas tienen, por supuesto, su propio temperamento! Si no están de buen humor, yo tampoco me siento tranquila al pelear… es natural preocuparse. ¡Somos compañeras y socias inseparables! Samael, ¿verdad que tengo razón?\"\n\n— Lisbell, candidata a Paciencia de Las Siete Virtudes de Elysium"
         },
         "FR": {
           "name": "Module de transfert d’affinité d’arme",
@@ -179,6 +181,8 @@
       "fields": {
         "AccessKey": "T.RT_3",
         "DetailDes": "RESOURCE_DESC_202",
+        "ExcludeCollect": true,
+        "ExcludeCollectServer": true,
         "FunctionDes": "RESOURCE_FUNCTION_WEAPONPOL",
         "Icon": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resource_PolarityAura.T_Resource_PolarityAura",
         "IpDes": "RESOURCE_TEXT_202",
@@ -228,7 +232,7 @@
         "ES": {
           "name": "Esencia vital",
           "description": "Material de consistencia gelatinosa utilizado para fabricar Módulos de cambio de afinidad. Su composición no contiene impurezas, se disuelve fácilmente en agua y se desactiva a altas temperaturas, por lo que requiere almacenarse en condiciones estrictas. A pesar de ello, tiene muchas funcionalidades útiles, por lo que vale la pena llevarlo consigo.",
-          "flavor": "“La pureza siempre ha sido una espada de doble filo. La simplicidad potencia el efecto, pero reduce su duración. Mi trabajo consiste únicamente en regular las impurezas, en busca del equilibrio entre poder y durabilidad. De hecho, este principio no rige solo la alquimia, sino cualquier colectivo.”\n\n— Ecodna, jefa de Biología Aplicada de La Academia Spathatoi, Descomposición y recomposición: Biología Filthoid"
+          "flavor": "\"La pureza siempre ha sido una espada de doble filo. La simplicidad potencia el efecto, pero reduce su duración. Mi trabajo consiste únicamente en regular las impurezas, en busca del equilibrio entre poder y durabilidad. De hecho, este principio no rige solo la alquimia, sino cualquier colectivo.\"\n\n— Ecodna, jefa de Biología Aplicada de La Academia Spathatoi, <I>Descomposición y recomposición: Biología Filthoid</>"
         },
         "FR": {
           "name": "Essence vitale",
@@ -252,8 +256,10 @@
         }
       },
       "fields": {
-        "AccessKey": "T.RT_55",
+        "AccessKey": "T.RT_32",
         "DetailDes": "RESOURCE_DESC_30001",
+        "ExcludeCollect": true,
+        "ExcludeCollectServer": true,
         "FunctionDes": "RESOURCE_FUNCTION_30001",
         "Icon": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resource_PolarityPart01.T_Resource_PolarityPart01",
         "IpDes": "RESOURCE_TEXT_30001",
@@ -303,7 +309,7 @@
         "ES": {
           "name": "Imán de precisión",
           "description": "Material utilizado para fabricar Módulos de cambio de afinidad de armas. Consiste de una magnetita sometida a un tratamiento especial, capaz de generar reacciones vibratorias de distintas frecuencias según los distintos componentes metálicos. Los usuarios experimentados pueden utilizar dichas vibraciones para detectar hasta las anomalías más sutiles en un arma.",
-          "flavor": "“¡Qué divertido! Aunque ahora parezcan simples y aburridas, en cuanto se prenda la mecha, estas pequeñas piezas soltarán una explosión increíble.”\n\n— Oliver, experto en bombas"
+          "flavor": "\"¡Qué divertido! Aunque ahora parezcan simples y aburridas, en cuanto se prenda la mecha, estas pequeñas piezas soltarán una explosión increíble.\"\n\n— Oliver, experto en bombas"
         },
         "FR": {
           "name": "Aimant de précision",
@@ -327,8 +333,10 @@
         }
       },
       "fields": {
-        "AccessKey": "T.RT_55",
+        "AccessKey": "T.RT_32",
         "DetailDes": "RESOURCE_DESC_30002",
+        "ExcludeCollect": true,
+        "ExcludeCollectServer": true,
         "FunctionDes": "RESOURCE_FUNCTION_30002",
         "Icon": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resource_PolarityPart02.T_Resource_PolarityPart02",
         "IpDes": "RESOURCE_TEXT_30002",
