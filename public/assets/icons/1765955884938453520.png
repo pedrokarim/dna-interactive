@@ -1,0 +1,198 @@
+<!DOCTYPE html><html lang="en" data-astro-cid-sckkx6r4> <head><!-- <meta name="admaven-placement" content="Bqdk4rda8" /> --><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-GNP1RVH5ZQ"></script><script type="module">window.nitroAds.createAd("floating-outstream-video",{refreshTime:30,format:"floating",report:{enabled:!0,icon:!0,wording:"Report Ad",position:"top-left"}});</script><script data-cfasync="false">
+      window.nitroAds = window.nitroAds || {
+        createAd: function () {
+          return new Promise((e) => {
+            window.nitroAds.queue.push(["createAd", arguments, e]);
+          });
+        },
+        addUserToken: function () {
+          window.nitroAds.queue.push(["addUserToken", arguments]);
+        },
+        queue: [],
+      };
+    </script><script data-cfasync="false" async src="https://s.nitropay.com/ads-2076.js"></script><!-- <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2268238379584535"
+      crossorigin="anonymous"></script> --><script>
+      (() => {
+        const CF_MATCH = [
+          "challenges.cloudflare.com",
+          "cdn-cgi/challenge-platform",
+        ];
+
+        const suppress = (original, args) => {
+          const msg = args?.[0];
+          if (
+            typeof msg === "string" &&
+            CF_MATCH.some((d) => msg.includes(d))
+          ) {
+            return; // ignore Cloudflare noise
+          }
+          original.apply(console, args);
+        };
+
+        ["error", "warn", "info", "debug"].forEach((method) => {
+          const original = console[method];
+          console[method] = (...args) => suppress(original, args);
+        });
+
+        // suppress network/resource load errors
+        window.addEventListener(
+          "error",
+          (event) => {
+            if (
+              event?.target?.src &&
+              CF_MATCH.some((d) => event.target.src.includes(d))
+            ) {
+              event.stopImmediatePropagation();
+            }
+          },
+          true,
+        );
+      })();
+    </script><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="https://files.boarhat.gg/assets/main/boarhat_icon_v2.png"><meta name="generator" content="Astro v5.15.9"><link rel="sitemap" href="/sitemap-index.xml"><link rel="stylesheet" href="/styles/global.css"><title>
+      Boarhat.gg - One stop place for your gacha games
+    </title><meta property="og:title" content="Boarhat.gg"><meta property="og:description" content="One stop place for your gacha games"><meta property="og:image" content="https://files.boarhat.gg/assets/main/boarhat_icon_v2.png"><meta property="og:url" content="https://boarhat.gg/"><link rel="stylesheet" href="/_astro/callback.C738nZdg.css">
+<style>html,body{margin:0;width:100%;height:100%}
+</style></head> <body class="bg-gray-900" data-astro-cid-sckkx6r4> <div class="max-w-[2000px] mx-auto w-full" data-astro-cid-sckkx6r4>  <section class="flex flex-col bg-gray-900 text-white min-h-full bg-contain bg-top relative bg-no-repeat" style="background-image: url('/background.png')"> <!-- Gradient overlay --> <div class="absolute inset-0 h-full w-full bg-gradient-to-b from-gray-900/80 to-gray-900 z-0"></div> <section class="flex flex-col z-10"> <!-- Header --> <header class="flex
+          justify-between
+          items-center
+          py-6
+          px-10"> <a href="/"> <img src="https://files.boarhat.gg/assets/main/boarhat_icon_WITHNAME_v4.png" alt="Main Icon" class="w-[150px]"> </a> <nav class="flex space-x-4"> <!-- <a href="#" class="text-gray-300 hover:text-white">Blog</a> --> <a target="_blank" href="https://discord.gg/nFbTTVbtKD" class="text-gray-300 hover:text-white"> <img src="/discord.svg" class="w-8 h-8 text-white"></a> <!-- <a href="#" class="text-gray-300 hover:text-white">Twitter</a> --> </nav> </header> <!-- Intro --> <section class="relative bg-cover bg-center py-20"> <div class="p-10"> <div class="max-w-3xl mx-auto text-center"> <h2 class="text-4xl font-extrabold mb-4">
+One stop source of guides and tier list for your favorite games
+</h2> <p class="text-lg">
+Boarhat.gg provides news, tier lists, and detailed guides for
+              games like Go Go Muffin, Crystal of Atlan, Duet Night Abyss, and
+              more. Everything you need for your favorite games in one place!
+</p> </div> </div> </section> <!-- Popular Games Section --> <!-- <section class="py-12 px-6 md:px-16 g:px-32">
+     <h3 class="text-2xl font-bold mb-6">Popular games</h3>
+     <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+       <a href="#" class="block bg-gray-800 rounded-lg overflow-hidden">
+         <img
+           src="https://placehold.co/400x200"
+           alt="Girls' Frontline 2"
+           class="w-full"
+         />
+         <div class="p-4">
+           <h4 class="text-lg font-bold">Girls' Frontline 2: Exilium</h4>
+         </div>
+       </a>
+     </div>
+   </section> --> <!-- All Games Section --> <section class="py-12 px-8 md:px-32 z-5"> <h3 class="text-2xl font-bold mb-6">All games</h3> <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"> <!-- <a
+     href="/games/heaven-burns-red"
+     class="bg-gray-800 rounded-lg overflow-hidden"
+   >
+     <img
+       src="https://files.boarhat.gg/assets/hbr/cover.PNG"
+       alt="Heaven Burns Red"
+       class="w-full h-[200px]"
+     />
+     <div class="p-4">
+       <h4 class="text-lg font-bold">Heaven Burns Red</h4>
+     </div>
+   </a> --> <a href="/games/go-go-muffin/" class="bg-gray-800 rounded-lg overflow-hidden"> <img src="https://files.boarhat.gg/assets/gogomuffin/gogomuffin.PNG" alt="Go GO Muffin" class="w-full h-[200px]"> <div class="p-4"> <h4 class="text-lg font-bold">Go Go Muffin</h4> </div> </a> <a href="/games/crystal-of-atlan/" class="bg-gray-800 rounded-lg overflow-hidden"> <img src="https://files.boarhat.gg/assets/crystalofatlan/crystalofatlan.jpg" alt="Crystal of Atlan" class="w-full h-[200px]"> <div class="p-4"> <h4 class="text-lg font-bold">Crystal of Atlan</h4> </div> </a> <a href="/games/duet-night-abyss/" class="bg-gray-800 rounded-lg overflow-hidden"> <img src="https://files.boarhat.gg/assets/duetnightabyss/duetnightabyss.jpg" alt="Duet Night abyss" class="w-full h-[200px]"> <div class="p-4"> <h4 class="text-lg font-bold">Duet Night Abyss</h4> </div> </a> <a href="/games/where-winds-meet/" class="bg-gray-800 rounded-lg overflow-hidden"> <img src="https://files.boarhat.gg/assets/wherewindsmeet/wherewindsmeet.jpg" alt="WWM" class="w-full h-[200px]"> <div class="p-4"> <h4 class="text-lg font-bold">Where Winds Meet</h4> </div> </a><a href="/games/honor-of-kings-world/" class="bg-gray-800 rounded-lg overflow-hidden"> <img src="https://files.boarhat.gg/assets/hokw/honorofkingsworld.jpeg" alt="hokw" class="w-full h-[200px]"> <div class="p-4"> <h4 class="text-lg font-bold">Honor of Kings : World</h4> </div> </a> </div> </section> <!--Features --> <h1 class="flex font-bold self-center text-center text-2xl">
+How Boarhat helps you on your journey
+</h1> <section class="py-16 lg:py-4 px-8 md:px-32"> <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"> <div class="flex flex-col bg-gray-800 rounded-lg overflow-hidden pt-2"> <svg width="32" height="32" class="self-center" data-icon="book">   <symbol id="ai:local:book" viewBox="0 0 24 24"><path fill="currentColor" d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1m0 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5z"/><path fill="currentColor" d="M17.5 10.5c.88 0 1.73.09 2.5.26V9.24c-.79-.15-1.64-.24-2.5-.24-1.7 0-3.24.29-4.5.83v1.66c1.13-.64 2.7-.99 4.5-.99M13 12.49v1.66c1.13-.64 2.7-.99 4.5-.99.88 0 1.73.09 2.5.26V11.9c-.79-.15-1.64-.24-2.5-.24-1.7 0-3.24.3-4.5.83m4.5 1.84c-1.7 0-3.24.29-4.5.83v1.66c1.13-.64 2.7-.99 4.5-.99.88 0 1.73.09 2.5.26v-1.52c-.79-.16-1.64-.24-2.5-.24"/></symbol><use href="#ai:local:book"></use>  </svg> <div class="p-4 text-center"> <h4 class="text-lg font-bold">Beginner and Advanced Guides</h4> </div> <div class="p-4 text-center"> <h4 class="text-lg text-ellipsis">
+Knowledge is power and Boarhat teaches you what to do (or what
+                not to do) in order to gain advantage over other players.
+</h4> </div> </div> <div class="flex flex-col bg-gray-800 rounded-lg overflow-hidden pt-2"> <svg width="32" height="32" class="self-center" data-icon="account">   <symbol id="ai:local:account" viewBox="0 0 24 24"><path fill="currentColor" d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2m-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6m7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58z"/></symbol><use href="#ai:local:account"></use>  </svg> <div class="p-4 text-center"> <h4 class="text-lg font-bold">Detailed Character Reviews</h4> </div> <div class="p-4 text-center"> <h4 class="text-lg text-ellipsis">
+Games revolve around characters and Boarhat helps you use them
+                in an optimal way.
+</h4> </div> </div> <div class="flex flex-col bg-gray-800 rounded-lg overflow-hidden pt-2"> <svg width="32" height="32" class="self-center" data-icon="chart">   <symbol id="ai:local:chart" viewBox="0 0 24 24"><path fill="currentColor" d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2m0 16H5V5h14zM7 10h2v7H7zm4-3h2v10h-2zm4 6h2v4h-2z"/></symbol><use href="#ai:local:chart"></use>  </svg> <div class="p-4 text-center"> <h4 class="text-lg font-bold">Tier Lists and Meta Analysis</h4> </div> <div class="p-4 text-center"> <h4 class="text-lg text-ellipsis">
+Whether you are a meta slave or a casual, playing any game
+                without a good tier list makes everything harder.
+</h4> </div> </div> <div class="flex flex-col bg-gray-800 rounded-lg overflow-hidden pt-2"> <svg width="32" height="32" class="self-center" data-icon="news">   <symbol id="ai:local:news" viewBox="0 0 24 24"><path fill="currentColor" d="m22 3-1.67 1.67L18.67 3 17 4.67 15.33 3l-1.66 1.67L12 3l-1.67 1.67L8.67 3 7 4.67 5.33 3 3.67 4.67 2 3v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2zM11 19H4v-6h7zm9 0h-7v-2h7zm0-4h-7v-2h7zm0-4H4V8h16z"/></symbol><use href="#ai:local:news"></use>  </svg> <div class="p-4 text-center"> <h4 class="text-lg font-bold">Latest News and Updates</h4> </div> <div class="p-4 text-center"> <h4 class="text-lg text-ellipsis">
+Stay up to date with any patch notes, new content or other
+                important updates.
+</h4> </div> </div> </div> </section> <!--Stats --> <!-- <h1 class="flex font-bold self-center text-2xl">Boarhat in numbers</h1>
+   <section class="py-12 px-8 md:px-16 g:px-32">
+     <div class="grid grid-cols-4 gap-6">
+       <div
+         class="flex flex-col bg-gray-800 rounded-lg overflow-hidden justify-center"
+       >
+         <img
+           src="https://cdn1.iconfinder.com/data/icons/image-manipulations/100/13-256.png"
+           alt="Ash Echoes Global"
+           class="w-10 self-center"
+         />
+         <div class="p-4">
+           <h4 class="text-lg font-bold">Beginner and Advanced Guides</h4>
+         </div>
+         <div class="p-4">
+           <h4 class="text-lg">
+             Knowledge is power and Boarhat teaches you what to do (or what not
+             to do) in order to gain advantage over other players.
+           </h4>
+         </div>
+       </div>
+       <div
+         class="flex flex-col bg-gray-800 rounded-lg overflow-hidden justify-center"
+       >
+         <img
+           src="https://cdn1.iconfinder.com/data/icons/image-manipulations/100/13-256.png"
+           alt="icon"
+           class="w-10 self-center"
+         />
+         <div class="p-4">
+           <h4 class="text-lg font-bold">Character reviews</h4>
+         </div>
+         <div class="p-4">
+           <h4 class="text-lg">
+             Gacha games revolve about collecting characters and Boarhat helps
+             you use them in an optimal way.
+           </h4>
+         </div>
+       </div>
+       <div
+         class="flex flex-col bg-gray-800 rounded-lg overflow-hidden justify-center"
+       >
+         <img
+           src="https://cdn1.iconfinder.com/data/icons/image-manipulations/100/13-256.png"
+           alt="icon"
+           class="w-10 self-center"
+         />
+         <div class="p-4">
+           <h4 class="text-lg font-bold">Tier lists and meta analysis</h4>
+         </div>
+         <div class="p-4">
+           <h4 class="text-lg">
+             Whether you are a meta slave or a collector, playing any gacha game
+             without a good tier list makes everything harder.
+           </h4>
+         </div>
+       </div>
+       <div
+         class="flex flex-col bg-gray-800 rounded-lg overflow-hidden justify-center"
+       >
+         <img
+           src="https://cdn1.iconfinder.com/data/icons/image-manipulations/100/13-256.png"
+           alt="icon"
+           class="w-10 self-center"
+         />
+         <div class="p-4">
+           <h4 class="text-lg font-bold">News and updates</h4>
+         </div>
+         <div class="p-4">
+           <h4 class="text-lg">
+             Stay up to date with any patch notes, new content or other important
+             updates.
+           </h4>
+         </div>
+       </div>
+     </div>
+   </section> --> <!-- Community --> <h1 class="flex font-bold self-center text-center text-2xl">
+Became a part of the Boarhat community
+</h1> <section class="py-16 lg:py-4 px-8 md:px-32"> <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6"> <div class="flex flex-col bg-gray-800 rounded-lg overflow-hidden justify-center p-4"> <img src="https://files.boarhat.gg/assets/main/Boar_Hat_bar_2.png" alt="Discord" class="w-full h-[400px]"> <div class="py-4"> <h4 class="text-lg font-bold">Meet the team on Discord</h4> </div> <div class="py-4"> <h4 class="text-lg">
+Join the ever-growing community on our Discord and meet the
+                team! Get fast notification and discussion between passionate
+                gamers in our community!
+</h4> </div> <a target="_blank" href="https://discord.gg/nFbTTVbtKD" class="py-4"> <div class="h-10 bg-blue-500 cursor-pointer flex items-center justify-center"> <img src="/discord.svg" class="w-6 h-6 text-white mr-2 lg:w-8 lg:h-8"><p>Join Our Discord</p> </div> </a> </div> <div class="flex flex-col bg-gray-800 rounded-lg overflow-hidden justify-center p-4"> <img src="https://files.boarhat.gg/assets/main/boarhat_donation.png" alt="Ko-Fi" class="w-full h-[400px] self-center"> <div class="py-4"> <h4 class="text-lg font-bold">Support Boarhat on Ko-Fi</h4> </div> <div class="py-4"> <h4 class="text-lg">
+If you love what we are doing and you would like to support us,
+                you can do it via Ko-Fi and gain some unique benefits in return!
+</h4> </div> <a target="_blank" href="https://ko-fi.com/boarhatgg" class="py-4"> <div class="h-10 bg-red-500 cursor-pointer flex items-center justify-center"> <img src="/kofi_symbol.png" class="w-6 h-6 text-white mr-2 lg:w-8 lg:h-8"><p>Support Us On Ko-Fi</p> </div> </a> </div> </div> </section> <!-- Footer --> <section class="pt-20 justify-center"> <div class="bg-black bg-opacity-50 py-10 px-8 md:px-32"> <div class="grid grid-cols-1 lg:grid-cols-3 gap-0 text-center lg:text-left"> <div class="col-sp"> <h1 class="text-xl font-bold">Boarhat.gg</h1> <p>
+Boarhat.gg provides database, tier lists, and detailed guides
+                for games like Go Go Muffin, and more. Everything you need for
+                you favorite games in one place!
+</p> </div> <div class="flex flex-col lg:text-end"> <h1 class="text-xl font-bold">Boarhat</h1> <a href="#">Home</a> <!-- <a href="#">Blog</a> --> <!-- <a href="#">Contact Us</a> --> </div> <div class="flex flex-col lg:text-end"> <h1 class="text-xl font-bold">Social Media</h1> <a target="_blank" href="https://discord.gg/nFbTTVbtKD" class="flex flex-row self-center lg:self-end"> <img src="/discord.svg" class="w-6 h-6 text-white mr-2">Discord</a> <!-- <a href="#">Twitter</a> --> </div> </div> <h1 class="text-xl font-bold pt-10 text-center lg:text-left">
+Supported Games
+</h1> <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 text-center lg:text-left"> <!-- <a href="/games/heaven-burns-red">Heaven Burns Red</a> --> <a href="/games/go-go-muffin/">Go Go Muffin</a> <a href="/games/crystal-of-atlan/">Crystal of Atlan</a> <a href="/games/duet-night-abyss/">Duet Night Abyss</a> </div> <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-10 text-center lg:text-left"> <a href="/privacy-policy/"> <p>Privacy Policy</p> <div id="ncmp-consent-link" class="text-blue-500"></div> <span data-ccpa-link="1" class="text-blue-500"></span> </a> <p class="lg:text-end">Copyright @ 2025 Boarhat.gg</p> </div> </div> </section> </section> </section>  </div> <script type="module">window.nitroAds.createAd("interstitial",{format:"interstitial"});</script> <script type="module">window.nitroAds.createAd("anchor-bottom",{refreshTime:30,format:"anchor-v2",anchor:"bottom",anchorPersistClose:!1,mediaQuery:"(min-width: 0px)",report:{enabled:!0,icon:!0,wording:"Report Ad",position:"top-right"}});</script> <script type="module">window.dataLayer=window.dataLayer||[];function a(){dataLayer.push(arguments)}a("js",new Date);a("config","G-GNP1RVH5ZQ");</script> </body> </html> 

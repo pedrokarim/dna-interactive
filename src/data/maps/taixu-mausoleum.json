@@ -1,0 +1,46 @@
+{
+  "id": "taixu-mausoleum",
+  "name": "Taixu Mausoleum",
+  "image": "/assets/maps/taixu_mausoleum.png",
+  "imageSize": {
+    "width": 4096,
+    "height": 4096
+  },
+  "legend": [
+    {
+      "type": "Landmarks",
+      "label": "Landmarks",
+      "icon": "https://herobox-img.yingxiong.com/map/1749672609569330275.png",
+      "markers": [
+        {
+          "id": 35,
+          "name": "Teleport Point",
+          "icon": "https://herobox-img.yingxiong.com/map/1749557822886359503.png",
+          "markers": [
+            {
+              "id": 2226,
+              "position": {
+                "x": 793.5256854094187,
+                "y": 2067.6782435112736
+              }
+            }
+          ]
+        },
+        {
+          "id": 36,
+          "name": "Nightmare Echo",
+          "icon": "https://herobox-img.yingxiong.com/map/1749557928850108966.png",
+          "markers": [
+            {
+              "id": 2227,
+              "position": {
+                "x": 2982.5,
+                "y": 2060.5
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
