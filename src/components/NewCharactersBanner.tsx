@@ -28,7 +28,7 @@ const ALL_MESSAGES: Record<Locale, typeof frMessages> = {
   tc: tcMessages as typeof frMessages,
 };
 
-type CharKey = "flora" | "suyi" | "nvzhu02" | "nanzhu02";
+type CharKey = "flora" | "hilda" | "nvzhu02" | "nanzhu02";
 
 const SHOWCASE_CHARACTERS: Array<{
   id: string;
@@ -57,18 +57,20 @@ const SHOWCASE_CHARACTERS: Array<{
     accentColor: "indigo",
     ringColor: "ring-indigo-400",
   },
+  // Hilda \u2014 Pyro, sortie 30 juin 2026 (patch 1.4 phase 2). Pas de marketing
+  // officiel : on utilise le bust FModel re-encode en WebP (cf. official-v1.4/).
   {
-    id: "char-suyi",
-    slug: "su-yi",
-    key: "suyi",
-    name: "Su Yi",
-    decoText: "\u7D20\u8863",
-    fullImage: "/assets/official-v1.3/image-sy.webp",
-    fullImageMobile: "/assets/official-v1.3/image-sy-mobile.webp",
-    avatar: "/assets/official-v1.3/avatar-sy.webp",
-    element: "Lumino",
-    accentColor: "cyan",
-    ringColor: "ring-cyan-400",
+    id: "char-xier",
+    slug: "hilda",
+    key: "hilda",
+    name: "Hilda",
+    decoText: "\u5E0C\u513F",
+    fullImage: "/assets/official-v1.4/image-hilda.webp",
+    fullImageMobile: "/assets/official-v1.4/image-hilda-mobile.webp",
+    avatar: "/assets/official-v1.4/avatar-hilda.webp",
+    element: "Pyro",
+    accentColor: "rose",
+    ringColor: "ring-rose-400",
   },
   // Formes Umbro du Phoxhunter (protagoniste) \u2014 d\u00E9bloqu\u00E9es via la narration
   // du patch 1.4 "Silver Torrent, Rising Star". Pas de marketing officiel
@@ -84,8 +86,8 @@ const SHOWCASE_CHARACTERS: Array<{
     fullImageMobile: "/assets/official-v1.4/image-nvzhu02-mobile.webp",
     avatar: "/assets/official-v1.4/avatar-nvzhu02.webp",
     element: "Umbro",
-    accentColor: "rose",
-    ringColor: "ring-rose-400",
+    accentColor: "cyan",
+    ringColor: "ring-cyan-400",
   },
   {
     id: "char-nanzhu02",
