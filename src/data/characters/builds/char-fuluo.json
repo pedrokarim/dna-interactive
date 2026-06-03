@@ -1,0 +1,87 @@
+[
+  {
+    "characterId": "char-fuluo",
+    "buildName": { "FR": "DPS Umbro - Weapon DMG", "EN": "Umbro Weapon DPS" },
+    "weapons": {
+      "melee": [
+        {
+          "itemId": "weapons-10402",
+          "rank": "alternative",
+          "note": {
+            "FR": "Alternative en attendant l'importation de Chainbreak Pinion (arme signature non encore en base).",
+            "EN": "Alternative while Chainbreak Pinion (signature weapon) is not yet in the database."
+          }
+        },
+        {
+          "itemId": "weapons-10601",
+          "rank": "alternative",
+          "note": {
+            "FR": "Seconde alternative melee.",
+            "EN": "Second melee alternative."
+          }
+        }
+      ],
+      "ranged": [
+        {
+          "itemId": "weapons-20102",
+          "rank": "best",
+          "note": {
+            "FR": "Rendhusk - buff ATK du personnage qui amplifie significativement les degats critiques de Flora.",
+            "EN": "Rendhusk - Character ATK buff that significantly inflates Flora's crit damage."
+          }
+        }
+      ]
+    },
+    "demonWedges": {
+      "slots": [
+        { "position": 1, "itemId": "mods-56112", "track": null },
+        { "position": 2, "itemId": "mods-51413", "track": null },
+        { "position": 3, "itemId": "mods-51911", "track": null },
+        { "position": 4, "itemId": "mods-51321", "track": null },
+        { "position": 5, "itemId": "mods-51713", "track": null },
+        { "position": 6, "itemId": "mods-51711", "track": null },
+        { "position": 7, "itemId": "mods-51712", "track": null },
+        { "position": 8, "itemId": "mods-51313", "track": null }
+      ],
+      "centerItemId": null,
+      "affinity": { "FR": "Volonte du Serpent a Plumes", "EN": "Feathered Serpent's Morale" },
+      "note": {
+        "FR": "Focus Morale + Degats Critiques + Degats Umbro + ATK. Affinity centrale Feathered Serpent's Morale (Demon Wedge 1.4) pas encore en base - emplacement centre vide en attendant l'import.",
+        "EN": "Focus Morale + CRIT DMG + Umbro DMG + ATK. Central affinity Feathered Serpent's Morale (1.4 Demon Wedge) not yet in DB - center slot empty pending import."
+      }
+    },
+    "statsPriority": [
+      "Morale",
+      "CritDamage",
+      "ATK"
+    ],
+    "team": [
+      {
+        "characterId": "char-nvzhu02",
+        "role": "Sub-DPS",
+        "note": {
+          "FR": "Phoxhunter (Umbro) - sub-DPS qui amplifie les degats Umbro de Flora. Equipez idealement Siren's Wings Inspo Rage pour boost CRIT DMG.",
+          "EN": "Phoxhunter (Umbro) - sub-DPS amplifying Flora's Umbro damage. Equip with Siren's Wings Inspo Rage for CRIT DMG boost."
+        }
+      },
+      {
+        "characterId": "char-feina",
+        "role": "Support",
+        "note": {
+          "FR": "Fina ameliore les Degats d'Arme (Weapon DMG) - synergie directe avec le kit de Flora.",
+          "EN": "Fina improves Weapon DMG - direct synergy with Flora's kit."
+        }
+      }
+    ],
+    "genimon": [
+      { "itemId": "genimon-4211", "rank": "best" },
+      { "itemId": "genimon-4111", "rank": "alternative" },
+      { "itemId": "genimon-4011", "rank": "alternative" }
+    ],
+    "skillPriority": [],
+    "notes": {
+      "FR": "Flora est la premiere personnage centree sur les Degats d'Arme dont les competences scalent avec le Weapon DMG. Elle inflige enormement de critiques et de degats d'arme, beneficie d'une mobilite correcte et tire parti des meilleurs Demon Wedges et supports. Build orienté pleine offensive Umbro.\n\nItems v1.4 non encore importes dans la base : Chainbreak Pinion (arme signature melee), Thorned Requiem (Calamity weapon ranged), Feathered Serpent's Morale (Demon Wedge central). A ajouter manuellement quand l'extraction sera complete.\n\nSource : Game8 (https://game8.co/games/Duet-Night-Abyss/archives/602498).",
+      "EN": "Flora is the first character whose skills damage scales with Weapon DMG. She deals huge crit and weapon damage, has decent mobility, and benefits from top-tier Demon Wedges and supports. Build focused on full-offensive Umbro.\n\nv1.4 items not yet imported into the database: Chainbreak Pinion (signature melee weapon), Thorned Requiem (Calamity ranged weapon), Feathered Serpent's Morale (central Demon Wedge). To be added manually once extraction pipeline catches up.\n\nSource: Game8 (https://game8.co/games/Duet-Night-Abyss/archives/602498)."
+    }
+  }
+]
