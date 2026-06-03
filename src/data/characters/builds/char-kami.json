@@ -1,15 +1,15 @@
 [
   {
     "characterId": "char-kami",
-    "buildName": { "FR": "Sub-DPS Pyro", "EN": "Pyro Sub-DPS" },
+    "buildName": { "FR": "Sub-DPS Pyro - Valse pourpre", "EN": "Pyro Sub-DPS - Claret Waltz" },
     "weapons": {
       "melee": [
         {
           "itemId": "weapons-10206",
           "rank": "best",
           "note": {
-            "FR": "Degats de competence +48%.",
-            "EN": "Skill Damage +48%."
+            "FR": "Wanewraith - Degats de competence +48%.",
+            "EN": "Wanewraith - Skill Damage +48%."
           }
         }
       ],
@@ -18,8 +18,8 @@
           "itemId": "weapons-20201",
           "rank": "alternative",
           "note": {
-            "FR": "Degats de competence +48%. Arme signature Dregs of Glimmer pas encore importee dans la base.",
-            "EN": "Skill Damage +48%. Signature weapon Dregs of Glimmer not yet imported in the database."
+            "FR": "Excresduo - Degats de competence +48%. Premiere alternative en attendant l'import de Dregs of Glimmer (BIS Game8, Multishot +75%, Skill DMG +5% par cast jusqu'a 30 stacks) non encore en base.",
+            "EN": "Excresduo - Skill Damage +48%. First alternative while Dregs of Glimmer (Game8 BIS, Multishot +75%, Skill DMG +5% per cast up to 30 stacks) is not yet in the database."
           }
         }
       ]
@@ -35,33 +35,33 @@
         { "position": 7, "itemId": "mods-51732", "track": 2 },
         { "position": 8, "itemId": "mods-51732", "track": 2 }
       ],
-      "centerItemId": "mods-31502",
-      "affinity": { "FR": "Volonte de Quetzalcoatl", "EN": "Feathered Serpent's Volition" },
+      "centerItemId": "mods-31531",
+      "affinity": { "FR": "Esquive", "EN": "Sidestep" },
       "note": {
-        "FR": "Focus Intensite de competence + Degats de competence + Morale Pyro. Tolerance 126/100.",
-        "EN": "Focus Skill Intensity + Skill DMG + Pyro Morale. Tolerance 126/100."
+        "FR": "Focus Intensite de competence + Degats de competence + Morale Pyro. Tolerance cible 126/100. 7 modules de Track-Shift requis.\n\nAjustements d'affinite (Game8) : Slot 1 Triangle, Slot 2 Triangle, Slot 3 Ellipse, Slot 4 Diamond, Slot 5 aucun, Slot 6 Crescent, Slot 7 Crescent, Slot 8 Crescent.\n\nLoadout : Inferno·Midnight Sun (Pyro) en slot 1, Prime·Morale en slot 2, Devouring Wildfire en slot 3, 2x Blaze·Inspo en slots 4-5, Wings·Inspo en slot 6, 2x Blaze·Eternity en slots 7-8. Centre : Sidestep.",
+        "EN": "Focus Skill Intensity + Skill DMG + Pyro Morale. Target Tolerance 126/100. 7 Track-Shift modules required.\n\nTrack adjustments (Game8): Slot 1 Triangle, Slot 2 Triangle, Slot 3 Ellipse, Slot 4 Diamond, Slot 5 none, Slot 6 Crescent, Slot 7 Crescent, Slot 8 Crescent.\n\nLoadout: Inferno·Midnight Sun (Pyro) slot 1, Prime·Morale slot 2, Devouring Wildfire slot 3, 2x Blaze·Inspo slots 4-5, Wings·Inspo slot 6, 2x Blaze·Eternity slots 7-8. Core: Sidestep."
       }
     },
     "statsPriority": [
       "SkillIntensity",
-      "ATK",
-      "Morale"
+      "SkillDamage",
+      "ATK"
     ],
     "team": [
       {
         "characterId": "char-linen",
         "role": "DPS",
         "note": {
-          "FR": "DPS Pyro principal — Camilla l'amplifie via son passif Robe Roses-Tintees (Morale aux allies Pyro).",
-          "EN": "Main Pyro DPS — Camilla amplifies via her Rose-Tinted Dress passive (Morale to Pyro allies)."
+          "FR": "Lynn - DPS Pyro principal en active. Camilla l'amplifie via son passif Robe Rouge-Tintee (Morale aux allies Pyro).",
+          "EN": "Lynn - main Pyro DPS as active unit. Camilla amplifies via her Rose-Tinted Dress passive (Morale to Pyro allies)."
         }
       },
       {
         "characterId": "char-baiheng",
         "role": "Support",
         "note": {
-          "FR": "Intensite de competence, soins, boucliers et Lucidite.",
-          "EN": "Skill Intensity, healing, shields and Sanity recovery."
+          "FR": "Fushu - Intensite de competence, soins, boucliers et Lucidite.",
+          "EN": "Fushu - Skill Intensity, healing, shields and Sanity recovery."
         }
       }
     ],
@@ -74,22 +74,31 @@
       {
         "skillName": { "FR": "Banquet ecarlate", "EN": "Scarlet Banquet" },
         "priority": 5,
-        "note": { "FR": "Source principale de degats; lance les Lames de Sommelier accumulees.", "EN": "Primary damage source; launches stored Sommelier Blades." }
+        "note": {
+          "FR": "Source principale de degats; lance les Lames de Sommelier accumulees. Donne des stacks Tipsy et l'immunite hitstun.",
+          "EN": "Primary damage source; launches stored Sommelier Blades. Grants Tipsy stacks and hitstun immunity."
+        }
       },
       {
         "skillName": { "FR": "Valse pourpre", "EN": "Claret Waltz" },
         "priority": 5,
-        "note": { "FR": "Coeur du kit; invoque 8 Lames de Sommelier qui orbitent.", "EN": "Core of the kit; summons 8 orbiting Sommelier Blades." }
+        "note": {
+          "FR": "Coeur du kit; invoque 8 Lames de Sommelier qui orbitent. Pas de drain de Lucidite tant qu'elles orbitent.",
+          "EN": "Core of the kit; summons 8 orbiting Sommelier Blades. No Sanity drain while orbiting."
+        }
       },
       {
         "skillName": { "FR": "Gorgee mortelle", "EN": "Deadly Sip" },
         "priority": 5,
-        "note": { "FR": "Buff de degats, Morale et restauration de Lucidite alliee.", "EN": "Damage buff, Morale and ally Sanity recovery." }
+        "note": {
+          "FR": "Applique des stacks Crimson Wound, debloque la synergie passive.",
+          "EN": "Applies Crimson Wound stacks, enables passive synergy."
+        }
       }
     ],
     "notes": {
-      "FR": "Camilla est une Sub-DPS Pyro centree sur l'usage actif de son ultime Valse pourpre, qui orbite 8 Lames de Sommelier autour d'elle. Pairing optimal en sub-DPS pour Lynn (DPS Pyro principale). Note: arme signature Dregs of Glimmer pas encore dans la base de donnees.",
-      "EN": "Camilla is a Pyro Sub-DPS centered on actively using her ultimate Claret Waltz, which orbits 8 Sommelier Blades around her. Optimal as sub-DPS for Lynn (main Pyro DPS). Note: signature weapon Dregs of Glimmer not yet in the database."
+      "FR": "Camilla est une Sub-DPS Pyro centree sur son ultime Valse pourpre, qui orbite 8 Lames de Sommelier autour d'elle. Pairing optimal en sub-DPS pour Lynn (DPS Pyro principale).\n\nMecanique cœur : utiliser Claret Waltz en premier pour invoquer les lames (aucun drain de Lucidite tant qu'elles orbitent). Maintenir Scarlet Banquet pour enchainer les casts, ce qui met les lames en pause et accorde l'immunite hitstun. Les stacks Crimson Wound poses par les lames declenchent des degats Pyro supplementaires quand un allie Pyro les retire. A 20 stacks de Revelry, la Lucidite se restaure.\n\nIntron priority (ordre d'unlock) :\n- I1 (★★★★★) : 30% de chance que les Lames de Sommelier infligent un Crimson Wound supplementaire.\n- I6 (★★★★★) : 45% PEN tant que les lames sont actives, degats supplementaires au moment du retrait.\n- I2 (★★★★☆) : -15% degats subis + 55% degats infliges supplementaires tant qu'elle est orbitee.\n- I4 (★★★★☆) : Crimson Wound degats +30%, Launch Speed boost.\n\nSynergie : excellente en sub-DPS dans une equipe Pyro (avec Lynn idealement). Son passif Robe Rouge-Tintee donne Morale a elle-meme et aux allies Pyro quand deployee en compagnon. L'empilement de passifs cree un scaling de degats exponentiel avec un sequencage coordonne des skills Pyro.\n\nSource : Game8 (https://game8.co/games/Duet-Night-Abyss/archives/570658).",
+      "EN": "Camilla is a Pyro Sub-DPS built around her ultimate Claret Waltz, which orbits 8 Sommelier Blades around her. Optimal as sub-DPS for Lynn (main Pyro DPS).\n\nCore mechanic: use Claret Waltz first to summon the blades (no Sanity drain while orbiting). Hold Scarlet Banquet to chain casts, pausing blade duration and granting hitstun immunity. Crimson Wound stacks from blade hits trigger additional Pyro damage when removed by ally Pyro skills. At 20 Revelry stacks, Sanity restores.\n\nIntron priority (unlock order):\n- I1 (★★★★★): 30% chance Sommelier's Blades inflict additional Crimson Wound.\n- I6 (★★★★★): 45% PEN while blades active, extra damage on removal.\n- I2 (★★★★☆): -15% damage taken + 55% damage dealt while orbited.\n- I4 (★★★★☆): Crimson Wound damage +30%, Launch Speed boost.\n\nSynergy: excels as sub-DPS in Pyro teams (particularly with Lynn). Her Rose-Tinted Dress passive grants Morale to herself and Pyro allies when deployed as companion. Passive stacking creates exponential damage scaling with coordinated Pyro skill sequencing.\n\nSource: Game8 (https://game8.co/games/Duet-Night-Abyss/archives/570658)."
     }
   }
 ]
