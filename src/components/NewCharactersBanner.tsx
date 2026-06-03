@@ -43,16 +43,21 @@ const SHOWCASE_CHARACTERS: Array<{
   accentColor: string;
   ringColor: string;
 }> = [
-  // Flora en vedette (position 0 = active par d\u00E9faut au chargement)
+  // Flora en vedette (position 0 = active par d\u00E9faut au chargement).
+  // Pas de marketing officiel v1.4 : assets d\u00E9riv\u00E9s du bust FModel
+  // (T_Bust_Fuluo.png) re-encod\u00E9 en WebP sous official-v1.4/.
+  // L'asset official-v1.3/image-fs.webp = Fushu, pas Flora \u2014 pr\u00E9fixe fs =
+  // Fushu, et non Flora comme on a pu croire (cf. char-baiheng dans le JSON
+  // dont le nom d'affichage est Fushu).
   {
-    id: "char-flora",
-    slug: "flora",
+    id: "char-fuluo",
+    slug: "char-fuluo",
     key: "flora",
     name: "Flora",
     decoText: "\u5F17\u6D1B\u62C9",
-    fullImage: "/assets/official-v1.3/image-fs.webp",
-    fullImageMobile: "/assets/official-v1.3/image-fs-mobile.webp",
-    avatar: "/assets/official-v1.3/avatar-fs.webp",
+    fullImage: "/assets/official-v1.4/image-flora.webp",
+    fullImageMobile: "/assets/official-v1.4/image-flora-mobile.webp",
+    avatar: "/assets/official-v1.4/avatar-flora.webp",
     element: "Umbro",
     accentColor: "indigo",
     ringColor: "ring-indigo-400",
