@@ -28,6 +28,11 @@ const skillsByCharId = new Map(skills.map((s) => [s.charId, s]));
 
 function slugifyEnglishName(name: string | null | undefined): string | null {
   if (!name) return null;
+  // Les protagonistes utilisent un nom-template "{nickname}" résolu côté
+  // client avec le pseudo du joueur. Ce template slugifie en "nickname",
+  // ce qui collisionne entre plusieurs persos (variantes Lumino/Umbro).
+  // → fallback sur character.id pour ces cas.
+  if (/^\{[^}]+\}$/.test(name.trim())) return null;
   const slug = name
     .normalize("NFKD")
     .replace(/[̀-ͯ]/g, "")

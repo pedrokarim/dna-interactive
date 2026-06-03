@@ -1,24 +1,24 @@
 {
   "characterShowcase": {
+    "flora": {
+      "subtitle": "Rebel Bloom",
+      "description": "Beneath petals of onyx simmers a slow wrath. Each thorn marks a broken oath; each blossom, a deferred reckoning. Night opens to her passage like a garden someone forgot to lock.",
+      "camp": "Hyperborean Empire"
+    },
     "suyi": {
       "subtitle": "Plumes of Gilded Dawn",
       "description": "A fish should not be caged in a pond; a bird was born to soar across the sky. Carrying unfinished dreams—and the grudges entangled with them—she cuts through the horizon, unyielding.",
       "camp": "Huaxu"
     },
-    "kami": {
-      "subtitle": "Scarlet Nectar",
-      "description": "Welcome—The Asphodel shelters all who wander here. Everything you desire has its proper price: fine wine, secrets, treasures, forbidden favors… even a path towards “freedom.”",
-      "camp": "Hyperborean Empire"
+    "nvzhu02": {
+      "subtitle": "Shadow's Reflection",
+      "description": "The other side of fate: where the light fades, another voice rises. She walks the abyss wearing the same face, but different oaths — and this time she chooses not to turn back.",
+      "camp": "None"
     },
-    "yuming": {
-      "subtitle": "Sinless Cagedman",
-      "description": "Bound by duty, yet yearning for a truth buried beneath layers of law and silence. The cage he carries is not made of iron—it is woven from the oaths he refuses to break.",
-      "camp": "Huaxu"
-    },
-    "zhiliu": {
-      "subtitle": "Confluence of Kairos",
-      "description": "Time bends at her command—yet even its master cannot outrun fate. Between the ticking of moments, Zhiliu weaves threads of causality, each one a gamble against the inevitable.",
-      "camp": "Huaxu"
+    "nanzhu02": {
+      "subtitle": "Echo in Ink",
+      "description": "What you think you left behind sometimes returns, dressed as yourself. Beneath the mantle of shadow rest unkept promises, and a quiet step that no longer asks for forgiveness.",
+      "camp": "None"
     }
   },
   "site": {

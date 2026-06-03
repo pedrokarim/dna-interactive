@@ -1,24 +1,24 @@
 {
   "characterShowcase": {
+    "flora": {
+      "subtitle": "Floración Rebelde",
+      "description": "Bajo pétalos de ónice arde una ira lenta. Cada espina marca un juramento roto; cada flor, un ajuste de cuentas aplazado. La noche se abre a su paso como un jardín que alguien olvidó cerrar.",
+      "camp": "Imperio Hiperbóreo"
+    },
     "suyi": {
       "subtitle": "Plumas del Alba Dorada",
       "description": "Un pez no debería estar enjaulado en un estanque; un pájaro nació para surcar el cielo. Llevando sueños inconclusos —y los rencores entrelazados con ellos— ella atraviesa el horizonte, indomable.",
       "camp": "Huaxu"
     },
-    "kami": {
-      "subtitle": "Néctar Escarlata",
-      "description": "Bienvenido —El Asfódelo acoge a todos los que vagan hasta aquí. Todo lo que deseas tiene su precio justo: buen vino, secretos, tesoros, favores prohibidos… incluso un camino hacia la «libertad».",
-      "camp": "Imperio Hiperbóreo"
+    "nvzhu02": {
+      "subtitle": "Reflejo de Sombra",
+      "description": "El otro lado del destino: donde la luz se apaga, otra voz se alza. Camina el abismo con el mismo rostro, pero juramentos distintos — y esta vez elige no volver atrás.",
+      "camp": "Ninguno"
     },
-    "yuming": {
-      "subtitle": "Prisionero sin Pecado",
-      "description": "Atado por el deber, pero anhelando una verdad enterrada bajo capas de ley y silencio. La jaula que lleva no está hecha de hierro —está tejida con los juramentos que se niega a romper.",
-      "camp": "Huaxu"
-    },
-    "zhiliu": {
-      "subtitle": "Confluencia de Kairos",
-      "description": "El tiempo se doblega a su mando —pero ni siquiera su dueña puede huir del destino. Entre el tictac de los instantes, Zhiliu teje hilos de causalidad, cada uno una apuesta contra lo inevitable.",
-      "camp": "Huaxu"
+    "nanzhu02": {
+      "subtitle": "Eco de Tinta",
+      "description": "Lo que crees haber dejado atrás a veces regresa vestido de ti mismo. Bajo el manto de sombra descansan promesas incumplidas, y un paso sereno que ya no pide perdón.",
+      "camp": "Ninguno"
     }
   },
   "site": {

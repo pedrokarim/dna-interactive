@@ -28,7 +28,7 @@ const ALL_MESSAGES: Record<Locale, typeof frMessages> = {
   tc: tcMessages as typeof frMessages,
 };
 
-type CharKey = "kami" | "suyi" | "yuming" | "zhiliu";
+type CharKey = "flora" | "suyi" | "nvzhu02" | "nanzhu02";
 
 const SHOWCASE_CHARACTERS: Array<{
   id: string;
@@ -43,18 +43,19 @@ const SHOWCASE_CHARACTERS: Array<{
   accentColor: string;
   ringColor: string;
 }> = [
+  // Flora en vedette (position 0 = active par d\u00E9faut au chargement)
   {
-    id: "char-kami",
-    slug: "camilla",
-    key: "kami",
-    name: "Camilla",
-    decoText: "\u5361\u7C73\u62C9",
-    fullImage: "/assets/official-v1.3/image-kml.webp",
-    fullImageMobile: "/assets/official-v1.3/image-kml-mobile.webp",
-    avatar: "/assets/official-v1.3/avatar-kml.webp",
-    element: "Pyro",
-    accentColor: "rose",
-    ringColor: "ring-rose-400",
+    id: "char-flora",
+    slug: "flora",
+    key: "flora",
+    name: "Flora",
+    decoText: "\u5F17\u6D1B\u62C9",
+    fullImage: "/assets/official-v1.3/image-fs.webp",
+    fullImageMobile: "/assets/official-v1.3/image-fs-mobile.webp",
+    avatar: "/assets/official-v1.3/avatar-fs.webp",
+    element: "Umbro",
+    accentColor: "indigo",
+    ringColor: "ring-indigo-400",
   },
   {
     id: "char-suyi",
@@ -69,29 +70,31 @@ const SHOWCASE_CHARACTERS: Array<{
     accentColor: "cyan",
     ringColor: "ring-cyan-400",
   },
+  // Nouveaux protagonistes Umbro v1.4 \u2014 pas de marketing officiel, on utilise
+  // les busts FModel re-encod\u00E9s en WebP optimis\u00E9 (cf. official-v1.4/).
   {
-    id: "char-yuming",
-    slug: "yuming",
-    key: "yuming",
-    name: "Yuming",
-    decoText: "\u7FBD\u660E",
-    fullImage: "/assets/official-v1.3/image-ym.webp",
-    fullImageMobile: "/assets/official-v1.3/image-ym-mobile.webp",
-    avatar: "/assets/official-v1.3/avatar-ym.webp",
-    element: "Electro",
-    accentColor: "indigo",
-    ringColor: "ring-indigo-400",
+    id: "char-nvzhu02",
+    slug: "char-nvzhu02",
+    key: "nvzhu02",
+    name: "Nvzhu02",
+    decoText: "\u5973\u4E3B\u00B7\u6697",
+    fullImage: "/assets/official-v1.4/image-nvzhu02.webp",
+    fullImageMobile: "/assets/official-v1.4/image-nvzhu02-mobile.webp",
+    avatar: "/assets/official-v1.4/avatar-nvzhu02.webp",
+    element: "Umbro",
+    accentColor: "rose",
+    ringColor: "ring-rose-400",
   },
   {
-    id: "char-zhiliu",
-    slug: "zhiliu",
-    key: "zhiliu",
-    name: "Zhiliu",
-    decoText: "\u77E5\u7559",
-    fullImage: "/assets/official-v1.3/image-zl.webp",
-    fullImageMobile: "/assets/official-v1.3/image-zl-mobile.webp",
-    avatar: "/assets/official-v1.3/avatar-zl.webp",
-    element: "Electro",
+    id: "char-nanzhu02",
+    slug: "char-nanzhu02",
+    key: "nanzhu02",
+    name: "Nanzhu02",
+    decoText: "\u7537\u4E3B\u00B7\u6697",
+    fullImage: "/assets/official-v1.4/image-nanzhu02.webp",
+    fullImageMobile: "/assets/official-v1.4/image-nanzhu02-mobile.webp",
+    avatar: "/assets/official-v1.4/avatar-nanzhu02.webp",
+    element: "Umbro",
     accentColor: "amber",
     ringColor: "ring-amber-400",
   },
