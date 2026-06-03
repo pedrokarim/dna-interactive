@@ -70,13 +70,15 @@ const SHOWCASE_CHARACTERS: Array<{
     accentColor: "cyan",
     ringColor: "ring-cyan-400",
   },
-  // Nouveaux protagonistes Umbro v1.4 \u2014 pas de marketing officiel, on utilise
-  // les busts FModel re-encod\u00E9s en WebP optimis\u00E9 (cf. official-v1.4/).
+  // Formes Umbro du Phoxhunter (protagoniste) \u2014 d\u00E9bloqu\u00E9es via la narration
+  // du patch 1.4 "Silver Torrent, Rising Star". Pas de marketing officiel
+  // d\u00E9di\u00E9, on utilise les busts FModel re-encod\u00E9s en WebP (cf. official-v1.4/).
+  // Le nom interne dans Char.lua est Nvzhu02 (f\u00E9minin) / Nanzhu02 (masculin).
   {
     id: "char-nvzhu02",
     slug: "char-nvzhu02",
     key: "nvzhu02",
-    name: "Nvzhu02",
+    name: "Phoxhunter (Umbro) \u2640",
     decoText: "\u5973\u4E3B\u00B7\u6697",
     fullImage: "/assets/official-v1.4/image-nvzhu02.webp",
     fullImageMobile: "/assets/official-v1.4/image-nvzhu02-mobile.webp",
@@ -89,7 +91,7 @@ const SHOWCASE_CHARACTERS: Array<{
     id: "char-nanzhu02",
     slug: "char-nanzhu02",
     key: "nanzhu02",
-    name: "Nanzhu02",
+    name: "Phoxhunter (Umbro) \u2642",
     decoText: "\u7537\u4E3B\u00B7\u6697",
     fullImage: "/assets/official-v1.4/image-nanzhu02.webp",
     fullImageMobile: "/assets/official-v1.4/image-nanzhu02-mobile.webp",
