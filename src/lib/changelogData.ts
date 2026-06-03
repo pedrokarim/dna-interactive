@@ -9,6 +9,28 @@ export interface ChangelogEntry {
 
 export const changelogData: ChangelogEntry[] = [
   {
+    date: "2026-06-03",
+    version: "2.0.0",
+    type: "feature",
+    title: "Patch 1.4 du jeu, 5 nouvelles maps et refonte de l'accueil",
+    description:
+      "Re-extraction complete des donnees du jeu jusqu'au patch 1.4.153 (Silver Torrent), integration des 2 protagonistes Umbro Nvzhu02/Nanzhu02, 5 nouvelles cartes interactives, 12 wallpapers ajoutes et systeme de bandeaux a expiration automatique.",
+    items: [
+      "🎮 Re-extraction complete des donnees du jeu jusqu'au patch 1.4.153 \"Silver Torrent / Racing Stars\"",
+      "👤 Ajout des 2 protagonistes Umbro Nvzhu02 (#1201) et Nanzhu02 (#120101)",
+      "⚔️ +27 skills, +18 Demon Wedges, +157 ressources, refonte des items de peche",
+      "🗺️ 5 nouvelles cartes interactives : Bloomfield Station, Ironworks, Outer Peaks, Taixu Mausoleum, Youlai Alley",
+      "📍 Resync de 1589 icones de marqueurs depuis boarhat.gg sur l'ensemble des 13 cartes",
+      "🖼️ 12 nouveaux wallpapers worldview (7 du patch 1.3, 5 du patch 1.4) ajoutes au Ken Burns",
+      "⚡ Optimisation des wallpapers v1.3/v1.4 : downscale 4K → Full HD, WebP q70 (-73% de poids)",
+      "🌟 Carousel d'accueil reorganise : les nouveaux wallpapers s'affichent en premier",
+      "📢 Nouveau systeme de bandeaux d'annonce avec expiration automatique 4 semaines apres la sortie du patch (historique preserve dans le code)",
+      "🎭 Showcase personnages reagence : Flora en vedette (Umbro), Su Yi, Nvzhu02 et Nanzhu02",
+      "🔧 Fix collateral : slugifyEnglishName ignore les noms-template \"{nickname}\" pour eviter la collision d'URL entre les variantes de protagoniste",
+      "💾 Refactor du pipeline d'extraction : stockage des paks et exports FModel deporte sur disque externe pour ne plus saturer le SSD systeme",
+    ],
+  },
+  {
     date: "2026-04-15",
     version: "1.9.0",
     type: "feature",
