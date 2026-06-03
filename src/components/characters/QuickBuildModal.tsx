@@ -10,6 +10,7 @@ import {
   type ResolvedItemRef,
 } from "@/lib/characters/builds";
 import type { CharacterRecord } from "@/lib/characters/types";
+import { resolveCharacterDisplayName } from "@/lib/characters/catalog";
 import CursorTooltip from "@/components/CursorTooltip";
 
 // ---------------------------------------------------------------------------
@@ -439,7 +440,7 @@ export function QuickBuildCard({
   const accent = CARD_ACCENT[elementKey] ?? CARD_ACCENT.Water;
   const elementIcon = ELEMENT_ICONS[elementKey];
 
-  const name = character.translations?.[lang.toUpperCase()]?.name ?? character.internalName;
+  const name = resolveCharacterDisplayName(character, lang);
   const subtitle = character.translations?.[lang.toUpperCase()]?.subtitle ?? "";
   const bust =
     character.portraits.bust?.publicPath ??
@@ -974,7 +975,7 @@ export default function QuickBuildModal({
         <div className="flex items-center justify-between gap-3 border-b border-slate-700/60 px-5 py-3">
           <div className="flex min-w-0 items-center gap-3">
             <h3 className="truncate text-base font-semibold text-white">
-              Build rapide — {character.translations?.[lang.toUpperCase()]?.name ?? character.internalName}
+              Build rapide — {resolveCharacterDisplayName(character, lang)}
             </h3>
             {builds.length > 1 && (
               <div className="flex gap-1">

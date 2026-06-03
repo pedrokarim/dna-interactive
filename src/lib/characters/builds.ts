@@ -1,6 +1,11 @@
 import { allBuilds } from "@/data/characters/builds";
 import { getItemByCategoryAndId, getItemTranslation } from "@/lib/items/catalog";
-import { getCharacterById, getCharacterSlug, getCharacterTranslation } from "@/lib/characters/catalog";
+import {
+  getCharacterById,
+  getCharacterSlug,
+  getCharacterTranslation,
+  resolveDisplayName,
+} from "@/lib/characters/catalog";
 import type { ItemRecord } from "@/lib/items/types";
 import type { CharacterRecord } from "@/lib/characters/types";
 
@@ -193,14 +198,29 @@ function resolveCharacterRef(
 
   const translation = getCharacterTranslation(character, lang, FALLBACK_LANGS);
 
+  // Les protagonistes Umbro (Nvzhu02, Nanzhu02) ont translation.name =
+  // "{nickname}" — utiliser le nom marketing en fallback (cf. DISPLAY_NAME_OVERRIDES).
+  const displayName = resolveDisplayName(
+    translation.name,
+    DISPLAY_NAME_OVERRIDES_BY_CHARID[character.charId] ?? character.internalName,
+  );
+
   return {
     characterId: character.id,
-    name: translation.name ?? character.internalName,
+    name: displayName,
     portrait: character.portraits.head?.publicPath ?? null,
     href: `/characters/${getCharacterSlug(character)}`,
     element: character.element,
   };
 }
+
+// Mapping local des overrides (mirroir de DISPLAY_NAME_OVERRIDES dans catalog.ts).
+// Dupliqué ici pour éviter une dépendance circulaire ; à fusionner si on bouge
+// l'API à un endroit partagé.
+const DISPLAY_NAME_OVERRIDES_BY_CHARID: Record<number, string> = {
+  1201: "Phoxhunter (Umbro) ♀",
+  120101: "Phoxhunter (Umbro) ♂",
+};
 
 // ---------------------------------------------------------------------------
 // Public API

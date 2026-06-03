@@ -32,6 +32,7 @@ import {
   getLanguageLabel,
   getStatAtLevel,
   normalizeLanguageCodes,
+  resolveCharacterDisplayName,
 } from "@/lib/characters/catalog";
 import type {
   CharacterAddonAttr,
@@ -1499,6 +1500,13 @@ export default function CharacterDetailClient({
     [character, selectedLanguage, catalog.availableLanguages],
   );
 
+  // Nom d'affichage propre — gère les noms-template {nickname} des
+  // protagonistes Umbro en y substituant un nom marketing.
+  const displayName = useMemo(
+    () => resolveCharacterDisplayName(character, selectedLanguage),
+    [character, selectedLanguage],
+  );
+
   // --- Tab state ---
   const tabParser = useMemo(
     () => parseAsStringLiteral(TAB_IDS).withDefault("stats" as const),
@@ -1658,7 +1666,7 @@ export default function CharacterDetailClient({
               {activePortraitSrc ? (
                 <img
                   src={activePortraitSrc}
-                  alt={`${translation.name ?? character.internalName} - ${PORTRAIT_LABELS[activePortrait]}`}
+                  alt={`${displayName} - ${PORTRAIT_LABELS[activePortrait]}`}
                   className="max-h-[420px] w-full object-contain"
                 />
               ) : (
@@ -1674,7 +1682,7 @@ export default function CharacterDetailClient({
                   onClick={() =>
                     setZoomedPortrait({
                       src: activePortraitSrc,
-                      alt: `${translation.name ?? character.internalName} - ${PORTRAIT_LABELS[activePortrait]}`,
+                      alt: `${displayName} - ${PORTRAIT_LABELS[activePortrait]}`,
                     })
                   }
                   className="absolute bottom-3 right-3 rounded-full border border-slate-700 bg-slate-900/90 p-2 text-slate-200 transition-all hover:border-indigo-400/60 hover:bg-indigo-500/80 hover:text-white"
@@ -1712,7 +1720,7 @@ export default function CharacterDetailClient({
                 Personnage #{character.charId}
               </p>
               <h1 className="mt-1 text-2xl md:text-3xl font-semibold text-white">
-                {translation.name ?? character.internalName}
+                {displayName}
               </h1>
               {translation.subtitle && (
                 <p className="mt-1 text-sm md:text-base text-slate-300">
@@ -2170,7 +2178,7 @@ export default function CharacterDetailClient({
                     onClick={() =>
                       setZoomedPortrait({
                         src,
-                        alt: `${translation.name ?? character.internalName} - ${PORTRAIT_LABELS[type]}`,
+                        alt: `${displayName} - ${PORTRAIT_LABELS[type]}`,
                       })
                     }
                     className="group overflow-hidden rounded-xl border border-slate-700/60 bg-slate-950/60 transition-colors hover:border-indigo-400/40"

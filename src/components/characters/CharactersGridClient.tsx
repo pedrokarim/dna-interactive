@@ -27,6 +27,7 @@ import {
   normalizeLanguageCodes,
 } from "@/lib/characters/catalog";
 import type { CharacterRecord, CharactersCatalog } from "@/lib/characters/types";
+import { resolveCharacterDisplayName } from "@/lib/characters/catalog";
 import {
   charactersFavoritesAtom,
   charactersFiltersStorageAtom,
@@ -118,7 +119,11 @@ function characterSearchText(
   for (const langCode of availableLanguages) {
     const translation = character.translations[langCode];
     if (!translation) continue;
-    if (translation.name) values.push(translation.name);
+    // resolveCharacterDisplayName remplace les noms-template "{nickname}"
+    // par le nom marketing, sinon la recherche sur les protagonistes Umbro
+    // ne matcherait jamais "Phoxhunter".
+    const displayName = resolveCharacterDisplayName(character, langCode);
+    if (displayName) values.push(displayName);
     if (translation.subtitle) values.push(translation.subtitle);
     if (translation.campName) values.push(translation.campName);
     if (translation.force) values.push(translation.force);

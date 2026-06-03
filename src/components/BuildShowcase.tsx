@@ -4,7 +4,11 @@ import { useState } from "react";
 import { Link } from "@/i18n/navigation";
 import { ArrowRight, ChevronLeft, ChevronRight, FileImage, Users } from "lucide-react";
 import { ResponsiveQuickBuildCard } from "@/components/characters/QuickBuildModal";
-import { getCharacterById, getCharacterSlug } from "@/lib/characters/catalog";
+import {
+  getCharacterById,
+  getCharacterSlug,
+  resolveCharacterDisplayName,
+} from "@/lib/characters/catalog";
 import { getCharacterBuilds } from "@/lib/characters/builds";
 
 // ---------------------------------------------------------------------------
@@ -29,8 +33,7 @@ export default function BuildShowcase() {
   if (featured.length === 0) return null;
 
   const activeEntry = featured[active];
-  const activeName =
-    activeEntry.character.translations.FR?.name ?? activeEntry.character.internalName;
+  const activeName = resolveCharacterDisplayName(activeEntry.character, "FR");
 
   const go = (i: number) => {
     if (i < 0 || i >= featured.length) return;
@@ -61,8 +64,7 @@ export default function BuildShowcase() {
         {/* Character selector buttons */}
         <div className="mx-auto mt-8 flex max-w-6xl flex-wrap items-center justify-center gap-2 md:gap-3">
           {featured.map((entry, i) => {
-            const name =
-              entry.character.translations.FR?.name ?? entry.character.internalName;
+            const name = resolveCharacterDisplayName(entry.character, "FR");
             const isActive = i === active;
             return (
               <button
@@ -109,7 +111,7 @@ export default function BuildShowcase() {
                 aria-label={
                   isActive
                     ? undefined
-                    : `Voir le build de ${entry.character.translations.FR?.name ?? entry.character.internalName}`
+                    : `Voir le build de ${resolveCharacterDisplayName(entry.character, "FR")}`
                 }
                 tabIndex={isActive ? -1 : 0}
                 disabled={isActive}

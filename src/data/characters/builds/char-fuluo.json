@@ -43,11 +43,11 @@
         { "position": 7, "itemId": "mods-51712", "track": null },
         { "position": 8, "itemId": "mods-51313", "track": null }
       ],
-      "centerItemId": null,
+      "centerItemId": "mods-31502",
       "affinity": { "FR": "Volonte du Serpent a Plumes", "EN": "Feathered Serpent's Morale" },
       "note": {
-        "FR": "Focus Morale + Degats Critiques + Degats Umbro + ATK. Tolerance cible 148/100. 5 modules de Track-Shift requis.\n\nAjustements d'affinite (Game8) : Slot 1 Crescent, Slot 2 Triangle, Slot 3 Ellipse, Slot 4 Diamond, Slot 5 aucun, Slot 6 Triangle, Slot 7 aucun, Slot 8 aucun.\n\nAffinity centrale Feathered Serpent's Morale (Demon Wedge 1.4) : +5 augmente la Tolerance maximale. Pas encore en base - emplacement centre vide en attendant l'import.",
-        "EN": "Focus Morale + CRIT DMG + Umbro DMG + ATK. Target Tolerance 148/100. 5 Track-Shift modules required.\n\nTrack adjustments (Game8): Slot 1 Crescent, Slot 2 Triangle, Slot 3 Ellipse, Slot 4 Diamond, Slot 5 none, Slot 6 Triangle, Slot 7 none, Slot 8 none.\n\nCentral affinity Feathered Serpent's Morale (1.4 Demon Wedge): +5 increases max Tolerance. Not yet in DB - center slot empty pending import."
+        "FR": "Focus Morale + Degats Critiques + Degats Umbro + ATK. Tolerance cible 148/100. 5 modules de Track-Shift requis.\n\nAjustements d'affinite (Game8) : Slot 1 Crescent, Slot 2 Triangle, Slot 3 Ellipse, Slot 4 Diamond, Slot 5 aucun, Slot 6 Triangle, Slot 7 aucun, Slot 8 aucun.\n\nAffinity centrale officielle Game8 : Feathered Serpent's Morale (Demon Wedge 1.4) : +5 augmente la Tolerance maximale. Pas encore en base — Helido (mods-31502) utilise en fallback temporaire pour eviter l'emplacement central vide sur la build card.",
+        "EN": "Focus Morale + CRIT DMG + Umbro DMG + ATK. Target Tolerance 148/100. 5 Track-Shift modules required.\n\nTrack adjustments (Game8): Slot 1 Crescent, Slot 2 Triangle, Slot 3 Ellipse, Slot 4 Diamond, Slot 5 none, Slot 6 Triangle, Slot 7 none, Slot 8 none.\n\nOfficial Game8 central affinity: Feathered Serpent's Morale (1.4 Demon Wedge): +5 increases max Tolerance. Not yet in DB — Helido (mods-31502) used as temporary fallback to avoid the empty center slot on the build card."
       }
     },
     "statsPriority": [
