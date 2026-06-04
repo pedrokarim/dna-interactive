@@ -67,11 +67,11 @@
         { "position": 7, "itemId": "mods-51761", "track": null },
         { "position": 8, "itemId": "mods-51761", "track": null }
       ],
-      "centerItemId": "mods-31502",
-      "affinity": { "FR": "Volonte du Serpent a Plumes", "EN": "Feathered Serpent's Morale" },
+      "centerItemId": "mods-51765",
+      "affinity": { "FR": "Volonte du Serpent a Plumes - Morale", "EN": "Feathered Serpent's Morale" },
       "note": {
-        "FR": "Focus Intensite de competence + Morale. Tolerance cible 149/100. 5 modules de Track-Shift requis.\n\nAjustements d'affinite (Game8) : Slot 1 Crescent, Slot 2 Triangle, Slot 3 Diamond, Slot 4 Ellipse, Slot 5 Triangle, Slots 6-8 aucun.\n\nLoadout : Wings·Inspo·Morale (Lumino) en slot 1, Prime·Morale en slot 2, Skylume·Wildfire en slot 3, Fengshi Type III: Tracking Mode (mod exclusif Su Yi, projectiles a tete chercheuse) en slot 4, 4x Scorch (Lumino) sur slots 5-8.\n\nAffinity centrale officielle Game8 : Feathered Serpent's Morale (Demon Wedge 1.4 pas encore en base) — Helido (mods-31502) utilise en fallback temporaire.",
-        "EN": "Focus Skill Intensity + Morale. Target Tolerance 149/100. 5 Track-Shift modules required.\n\nTrack adjustments (Game8): Slot 1 Crescent, Slot 2 Triangle, Slot 3 Diamond, Slot 4 Ellipse, Slot 5 Triangle, Slots 6-8 none.\n\nLoadout: Wings·Inspo·Morale (Lumino) slot 1, Prime·Morale slot 2, Skylume·Wildfire slot 3, Fengshi Type III: Tracking Mode (Su Yi exclusive mod, homing projectiles) slot 4, 4x Scorch (Lumino) slots 5-8.\n\nOfficial Game8 central affinity: Feathered Serpent's Morale (1.4 Demon Wedge, not yet in DB) — Helido (mods-31502) used as temporary fallback."
+        "FR": "Focus Intensite de competence + Morale. Tolerance cible 149/100. 5 modules de Track-Shift requis.\n\nAjustements d'affinite (Game8) : Slot 1 Crescent, Slot 2 Triangle, Slot 3 Diamond, Slot 4 Ellipse, Slot 5 Triangle, Slots 6-8 aucun.\n\nLoadout : Wings·Inspo·Morale (Lumino) en slot 1, Prime·Morale en slot 2, Skylume·Wildfire en slot 3, Fengshi Type III: Tracking Mode (mod exclusif Su Yi, projectiles a tete chercheuse) en slot 4, 4x Scorch (Lumino) sur slots 5-8.\n\nAffinity centrale : Feathered Serpent's Morale (mods-51765, r5 Lumino). NB : le composite EN affiche 'Morale Feathered Serpent's{空格}' a cause d'un placeholder chinois non substitue par le pipeline d'extraction — affichage cosmetique a corriger, l'ID est bien le bon.",
+        "EN": "Focus Skill Intensity + Morale. Target Tolerance 149/100. 5 Track-Shift modules required.\n\nTrack adjustments (Game8): Slot 1 Crescent, Slot 2 Triangle, Slot 3 Diamond, Slot 4 Ellipse, Slot 5 Triangle, Slots 6-8 none.\n\nLoadout: Wings·Inspo·Morale (Lumino) slot 1, Prime·Morale slot 2, Skylume·Wildfire slot 3, Fengshi Type III: Tracking Mode (Su Yi exclusive mod, homing projectiles) slot 4, 4x Scorch (Lumino) slots 5-8.\n\nCentral affinity: Feathered Serpent's Morale (mods-51765, r5 Lumino). NB: the EN composite displays as 'Morale Feathered Serpent's{空格}' due to a Chinese placeholder not substituted by the extraction pipeline — cosmetic display issue to fix later, the ID is correct."
       }
     },
     "statsPriority": [
