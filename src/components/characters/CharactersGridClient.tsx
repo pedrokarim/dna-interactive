@@ -111,10 +111,10 @@ function characterSearchText(
   character: CharacterRecord,
   availableLanguages: string[],
 ): string {
+  const elements = character.elements ?? [character.element];
   const values: string[] = [
     character.internalName,
-    character.element.key,
-    character.element.label,
+    ...elements.flatMap((e) => [e.key, e.label]),
     character.camp.key,
     ...character.weaponTags,
     `${character.charId}`,
@@ -256,7 +256,12 @@ export default function CharactersGridClient({
         if (normalizedSearch.length > 0 && !searchText.includes(normalizedSearch)) {
           return false;
         }
-        if (elementFilter !== "all" && character.element.key !== elementFilter) {
+        if (
+          elementFilter !== "all" &&
+          !(character.elements ?? [character.element]).some(
+            (e) => e.key === elementFilter,
+          )
+        ) {
           return false;
         }
         if (weaponFilter !== "all" && !character.weaponTags.includes(weaponFilter)) {
@@ -564,6 +569,7 @@ export default function CharactersGridClient({
             const iconSrc = character.portraits.icon.publicPath;
             const thumbSrc = headSrc ?? iconSrc;
             const isFavorite = favoriteChars.has(character.id);
+            const elements = character.elements ?? [character.element];
             const elementStyle = ELEMENT_COLORS[character.element.key];
             const elementIcon = ELEMENT_ICONS[character.element.key];
             const rarityStyle = RARITY_COLORS[character.rarity ?? 0];
@@ -591,13 +597,20 @@ export default function CharactersGridClient({
                         {character.internalName[0]}
                       </div>
                     )}
-                    {elementIcon ? (
-                      <span className="absolute -bottom-1 -right-1 inline-flex h-5 w-5 items-center justify-center rounded-full border border-slate-700 bg-slate-950/90">
-                        <img
-                          src={elementIcon}
-                          alt={character.element.label}
-                          className="h-3 w-3 object-contain"
-                        />
+                    {elements.length > 0 ? (
+                      <span className="absolute -bottom-1 -right-1 inline-flex items-center gap-0.5 rounded-full border border-slate-700 bg-slate-950/90 px-0.5 py-0.5">
+                        {elements.map((el) => {
+                          const icon = ELEMENT_ICONS[el.key];
+                          if (!icon) return null;
+                          return (
+                            <img
+                              key={el.key}
+                              src={icon}
+                              alt={el.label}
+                              className="h-3 w-3 object-contain"
+                            />
+                          );
+                        })}
                       </span>
                     ) : null}
                   </div>
@@ -616,21 +629,27 @@ export default function CharactersGridClient({
                       ) : null}
                     </div>
                     <div className="mt-1 flex flex-wrap items-center gap-1.5 text-[11px]">
-                      {elementStyle ? (
-                        <span
-                          className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 ${elementStyle.border} ${elementStyle.bg} ${elementStyle.text}`}
-                        >
-                          {elementIcon ? (
-                            <img
-                              src={elementIcon}
-                              alt=""
-                              aria-hidden="true"
-                              className="h-3 w-3 object-contain"
-                            />
-                          ) : null}
-                          {character.element.label}
-                        </span>
-                      ) : null}
+                      {elements.map((el) => {
+                        const style = ELEMENT_COLORS[el.key];
+                        const icon = ELEMENT_ICONS[el.key];
+                        if (!style) return null;
+                        return (
+                          <span
+                            key={el.key}
+                            className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 ${style.border} ${style.bg} ${style.text}`}
+                          >
+                            {icon ? (
+                              <img
+                                src={icon}
+                                alt=""
+                                aria-hidden="true"
+                                className="h-3 w-3 object-contain"
+                              />
+                            ) : null}
+                            {el.label}
+                          </span>
+                        );
+                      })}
                       {character.weaponTags.map((tag) => (
                         <span
                           key={tag}
@@ -700,7 +719,7 @@ export default function CharactersGridClient({
             const headSrc = character.portraits.head.publicPath;
             const iconSrc = character.portraits.icon.publicPath;
             const isFavorite = favoriteChars.has(character.id);
-            const elementIcon = ELEMENT_ICONS[character.element.key];
+            const elements = character.elements ?? [character.element];
             const rarityStyle = RARITY_COLORS[character.rarity ?? 0];
             const displayName = lead.name ?? character.internalName;
 
@@ -737,14 +756,21 @@ export default function CharactersGridClient({
                   </div>
                 )}
 
-                {/* Element icon */}
-                {elementIcon ? (
-                  <span className="absolute left-1.5 top-1.5 inline-flex h-6 w-6 items-center justify-center rounded-full border border-white/15 bg-slate-950/70 backdrop-blur-sm">
-                    <img
-                      src={elementIcon}
-                      alt={character.element.label}
-                      className="h-4 w-4 object-contain"
-                    />
+                {/* Element icon(s) — stacked for multi-element characters */}
+                {elements.length > 0 ? (
+                  <span className="absolute left-1.5 top-1.5 inline-flex items-center gap-0.5 rounded-full border border-white/15 bg-slate-950/70 px-1 py-1 backdrop-blur-sm">
+                    {elements.map((el) => {
+                      const icon = ELEMENT_ICONS[el.key];
+                      if (!icon) return null;
+                      return (
+                        <img
+                          key={el.key}
+                          src={icon}
+                          alt={el.label}
+                          className="h-4 w-4 object-contain"
+                        />
+                      );
+                    })}
                   </span>
                 ) : null}
 

@@ -56,6 +56,9 @@ interface RawSkillPriority {
 
 interface RawCharacterBuild {
   characterId: string;
+  // Élément du build pour les persos multi-éléments (clé : "Dark", "Light"…).
+  // Absent = build valable pour tous les éléments (persos mono-élément).
+  element?: string;
   buildName: RawLocalizedText;
   weapons?: {
     melee?: RawWeaponEntry[];
@@ -137,6 +140,7 @@ export interface BuildSkillPriority {
 
 export interface CharacterBuild {
   characterId: string;
+  element: string | null;
   buildName: RawLocalizedText;
   weapons: {
     melee: BuildWeaponEntry[];
@@ -233,6 +237,7 @@ export function getCharacterBuilds(characterId: string): CharacterBuild[] {
     .filter((b) => b.characterId === characterId)
     .map((raw) => ({
       characterId: raw.characterId,
+      element: raw.element ?? null,
       buildName: raw.buildName ?? {},
       weapons: {
         melee: (raw.weapons?.melee ?? []).map((w) => ({

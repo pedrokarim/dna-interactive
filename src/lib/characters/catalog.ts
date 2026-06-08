@@ -3,6 +3,7 @@ import charactersJson from "@/data/characters/characters.json";
 import levelUpCurvesJson from "@/data/characters/levelup-curves.json";
 import skillsJson from "@/data/characters/skills.json";
 import type {
+  CharacterElement,
   CharacterLocalizedContent,
   CharacterRecord,
   CharacterSkillSet,
@@ -104,6 +105,100 @@ for (const character of characters) {
   }
 }
 
+// Anciens identifiants des variantes d'élément du protagoniste, désormais
+// fusionnées en un seul record multi-éléments (cf. MULTI_ELEMENT_GROUPS dans
+// le générateur). On les redirige vers le record unifié pour ne pas casser les
+// liens/bookmarks existants. Les charIds/internalName du membre *primary*
+// (1201 / 120101 / Nvzhu02 / Nanzhu02) résolvent déjà nativement via le record.
+const LEGACY_ID_ALIASES: Record<string, string> = {
+  "char-nvzhu": "char-protagonist-female",
+  "char-nvzhu02": "char-protagonist-female",
+  nvzhu: "char-protagonist-female",
+  "1601": "char-protagonist-female",
+  "char-nanzhu": "char-protagonist-male",
+  "char-nanzhu02": "char-protagonist-male",
+  nanzhu: "char-protagonist-male",
+  "160101": "char-protagonist-male",
+};
+
+// ---------------------------------------------------------------------------
+// Multi-element helpers
+// ---------------------------------------------------------------------------
+
+/** Tous les éléments d'un perso (un seul pour les persos mono-élément). */
+export function getCharacterElements(character: CharacterRecord): CharacterElement[] {
+  return character.elements ?? [character.element];
+}
+
+/**
+ * Résout la clé d'élément active pour un perso multi-éléments. Accepte une clé
+ * (`Dark`) ou un label (`Umbro`). Retombe sur l'élément par défaut du record.
+ */
+export function resolveActiveElementKey(
+  character: CharacterRecord,
+  requested?: string | null,
+): string {
+  if (!character.variants) return character.element.key;
+  if (requested) {
+    if (character.variants[requested]) return requested;
+    const byLabel = getCharacterElements(character).find(
+      (e) => e.label.toLowerCase() === requested.toLowerCase(),
+    );
+    if (byLabel && character.variants[byLabel.key]) return byLabel.key;
+  }
+  if (character.variants[character.element.key]) return character.element.key;
+  return Object.keys(character.variants)[0] ?? character.element.key;
+}
+
+function mergeVariantTranslations(
+  base: Record<string, CharacterLocalizedContent>,
+  variant: Record<string, CharacterLocalizedContent>,
+): Record<string, CharacterLocalizedContent> {
+  const merged: Record<string, CharacterLocalizedContent> = {};
+  for (const [code, t] of Object.entries(base)) {
+    const v = variant[code];
+    // On garde le nom/sous-titre "marketing" stable du record unifié, mais on
+    // prend les effets d'intron spécifiques à l'élément actif.
+    merged[code] = v ? { ...t, intronEffects: v.intronEffects } : t;
+  }
+  return merged;
+}
+
+/**
+ * Renvoie une vue "aplatie" du perso pour l'élément actif : le record de base
+ * avec les champs de la variante choisie écrasés. Pour un perso mono-élément
+ * (pas de `variants`), renvoie le record tel quel.
+ */
+export function getActiveCharacterView(
+  character: CharacterRecord,
+  elementKey?: string | null,
+): CharacterRecord {
+  if (!character.variants) return character;
+  const key = resolveActiveElementKey(character, elementKey);
+  const variant = character.variants[key];
+  if (!variant) return character;
+  return {
+    ...character,
+    charId: variant.charId,
+    internalName: variant.internalName,
+    element: variant.element,
+    weaponTags: variant.weaponTags,
+    maxLevel: variant.maxLevel,
+    baseStats: variant.baseStats,
+    addonAttrs: variant.addonAttrs,
+    positioning: variant.positioning,
+    recommendAttr: variant.recommendAttr,
+    ascensionLevels: variant.ascensionLevels,
+    intronLevels: variant.intronLevels,
+    intronDescriptionKeys: variant.intronDescriptionKeys,
+    intronParameters: variant.intronParameters,
+    portraits: variant.portraits,
+    skillIcons: variant.skillIcons,
+    consonanceWeapons: variant.consonanceWeapons,
+    translations: mergeVariantTranslations(character.translations, variant.translations),
+  };
+}
+
 export function getLanguageLabel(code: string): string {
   return LANGUAGE_LABELS[code] ?? code;
 }
@@ -118,6 +213,11 @@ export function getAllCharacters(): CharacterRecord[] {
 
 export function getCharacterById(id: string): CharacterRecord | null {
   const normalized = id.trim().toLowerCase();
+  const aliasTarget = LEGACY_ID_ALIASES[normalized];
+  if (aliasTarget) {
+    const aliased = characters.find((c) => c.id.toLowerCase() === aliasTarget);
+    if (aliased) return aliased;
+  }
   const bySlug = slugToCharacter.get(normalized);
   if (bySlug) return bySlug;
   return (

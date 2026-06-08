@@ -71,11 +71,43 @@ export interface LevelUpCurves {
   curves: Record<string, Record<number, number>>;
 }
 
+// Per-element override block for a multi-element character (e.g. the
+// protagonist). Holds everything that changes when the player switches the
+// character's element on the detail page. See `getActiveCharacterView`.
+export interface CharacterVariant {
+  charId: number;
+  internalName: string;
+  element: CharacterElement;
+  weaponTags: string[];
+  maxLevel: number | null;
+  baseStats: CharacterBaseStats;
+  addonAttrs: CharacterAddonAttr[];
+  positioning: string[];
+  recommendAttr: string[];
+  ascensionLevels: number[];
+  intronLevels: CharacterIntronLevel[];
+  intronDescriptionKeys: string[];
+  intronParameters: string[];
+  portraits: CharacterPortraits;
+  skillIcons: {
+    skill1: CharacterPortrait;
+    skill2: CharacterPortrait;
+    skill3: CharacterPortrait;
+  };
+  consonanceWeapons: CharacterConsonanceWeapon[];
+  translations: Record<string, CharacterLocalizedContent>;
+}
+
 export interface CharacterRecord {
   id: string;
   charId: number;
   internalName: string;
   element: CharacterElement;
+  // Multi-element characters list all their elements here (in display order)
+  // and carry a per-element override in `variants`. Single-element characters
+  // leave both undefined.
+  elements?: CharacterElement[];
+  variants?: Record<string, CharacterVariant>;
   weaponTags: string[];
   camp: CharacterCamp;
   rarity: number | null;
