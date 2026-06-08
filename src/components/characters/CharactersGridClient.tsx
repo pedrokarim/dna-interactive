@@ -143,7 +143,7 @@ export default function CharactersGridClient({
   const [persistedFilters, setPersistedFilters] = useAtom(charactersFiltersStorageAtom);
   const [favoriteChars] = useAtom(charactersFavoritesAtom);
   const [, toggleFavorite] = useAtom(toggleCharacterFavoriteAtom);
-  const [viewMode, setViewMode] = useListViewMode();
+  const [viewMode, setViewMode] = useListViewMode("characters", "simplified");
 
   const defaultLanguages = normalizeLanguageCodes(
     catalog.defaultGridLanguages,
@@ -414,6 +414,7 @@ export default function CharactersGridClient({
               labels={{
                 simplified: tc('viewSimplified'),
                 list: tc('viewList'),
+                detailed: tc('viewDetailed'),
                 group: tc('viewMode'),
               }}
             />
@@ -557,7 +558,169 @@ export default function CharactersGridClient({
           </p>
         </div>
       ) : (
-        viewMode === "list" ? (
+        viewMode === "detailed" ? (
+        <section className="grid gap-3 md:gap-4 grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+          {paginatedCharacters.map((character) => {
+            const lead = getCharacterTranslation(
+              character,
+              selectedLanguages[0],
+              catalog.availableLanguages,
+            );
+            const headSrc = character.portraits.head.publicPath;
+            const iconSrc = character.portraits.icon.publicPath;
+            const isFavorite = favoriteChars.has(character.id);
+            const elements = character.elements ?? [character.element];
+            const rarityStyle = RARITY_COLORS[character.rarity ?? 0];
+            const displayName = lead.name ?? character.internalName;
+
+            return (
+              <Link
+                key={character.id}
+                href={`/characters/${getCharacterSlug(character)}`}
+                className={`group relative overflow-hidden rounded-2xl border bg-slate-900/55 transition-all duration-200 hover:-translate-y-0.5 hover:bg-slate-900/75 ${
+                  rarityStyle
+                    ? `${rarityStyle.border} hover:border-opacity-70`
+                    : "border-slate-700/70 hover:border-indigo-400/40"
+                }`}
+              >
+                <div className="relative aspect-square overflow-hidden bg-slate-950/80">
+                  {headSrc ? (
+                    <img
+                      src={headSrc}
+                      alt={displayName}
+                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                  ) : iconSrc ? (
+                    <div className="flex h-full w-full items-center justify-center p-8">
+                      <img
+                        src={iconSrc}
+                        alt={displayName}
+                        className="max-h-full max-w-full object-contain"
+                      />
+                    </div>
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center">
+                      <span className="text-4xl font-bold text-slate-700">
+                        {character.internalName[0]}
+                      </span>
+                    </div>
+                  )}
+
+                  {elements.length > 0 ? (
+                    <span className="absolute left-2 top-2 inline-flex items-center gap-0.5 rounded-full border border-white/15 bg-slate-950/70 px-1.5 py-1 backdrop-blur-sm">
+                      {elements.map((el) => {
+                        const icon = ELEMENT_ICONS[el.key];
+                        if (!icon) return null;
+                        return (
+                          <img
+                            key={el.key}
+                            src={icon}
+                            alt={el.label}
+                            className="h-4 w-4 object-contain"
+                          />
+                        );
+                      })}
+                    </span>
+                  ) : null}
+
+                  {character.rarity ? (
+                    <span
+                      className={`absolute right-2 top-2 rounded-full px-2 py-0.5 text-xs font-medium backdrop-blur-sm ${
+                        rarityStyle
+                          ? `${rarityStyle.border} bg-slate-950/70 ${rarityStyle.text}`
+                          : "border border-slate-600/60 bg-slate-950/70 text-slate-300"
+                      }`}
+                    >
+                      {"★".repeat(character.rarity)}
+                    </span>
+                  ) : null}
+
+                  {headSrc ? (
+                    <button
+                      type="button"
+                      onClick={(event) => {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        setPreviewPortrait({ src: headSrc, alt: displayName });
+                      }}
+                      className="absolute bottom-2 right-2 rounded-full border border-slate-700 bg-slate-900/90 p-1.5 text-slate-200 opacity-0 shadow-sm transition-all hover:border-indigo-400/60 hover:bg-indigo-500/80 hover:text-white group-hover:opacity-100"
+                      aria-label={t('zoomPortrait', { name: displayName })}
+                    >
+                      <ZoomIn className="h-3.5 w-3.5" />
+                    </button>
+                  ) : null}
+                </div>
+
+                <div className="p-3">
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="min-w-0 flex-1">
+                      <h3 className="truncate text-base font-semibold text-white transition-colors group-hover:text-indigo-100">
+                        {displayName}
+                      </h3>
+                      <p className="truncate text-xs text-slate-400">
+                        {character.weaponTags.join(" / ")}
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={(event) => {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        toggleFavorite(character.id);
+                      }}
+                      aria-label={isFavorite ? t('removeFromFavorites') : t('addToFavorites')}
+                      className={`shrink-0 rounded-full p-1.5 transition-colors ${
+                        isFavorite
+                          ? "text-rose-400 hover:text-rose-300"
+                          : "text-slate-500 hover:text-rose-300"
+                      }`}
+                    >
+                      <Heart
+                        className={`h-4 w-4 ${isFavorite ? "fill-rose-400 text-rose-400" : ""}`}
+                      />
+                    </button>
+                  </div>
+
+                  {selectedLanguages.length > 0 && (
+                    <div className="mt-2 space-y-1.5">
+                      {selectedLanguages.map((langCode) => {
+                        const translation = character.translations[langCode];
+                        return (
+                          <div
+                            key={`${character.id}-${langCode}`}
+                            className="rounded-lg border border-slate-700/60 bg-slate-950/55 px-2.5 py-1.5"
+                          >
+                            <p className="text-[10px] uppercase tracking-[0.18em] text-slate-400">
+                              {getLanguageLabel(langCode)}
+                            </p>
+                            <p className="truncate text-sm font-medium text-slate-100">
+                              {translation?.name ?? "N/A"}
+                            </p>
+                            {translation?.subtitle && (
+                              <p className="truncate text-xs text-slate-400">
+                                {translation.subtitle}
+                              </p>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
+
+                  <div className="mt-2 flex flex-wrap gap-1.5 text-[11px]">
+                    {lead.campName && (
+                      <span className="rounded-full border border-slate-600/70 px-2 py-0.5 text-slate-300">
+                        {lead.campName}
+                      </span>
+                    )}
+                    <ChevronRight className="ml-auto mt-0.5 h-3.5 w-3.5 text-slate-500 transition-colors group-hover:text-indigo-300" />
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
+        </section>
+        ) : viewMode === "list" ? (
         <ul className="space-y-2">
           {paginatedCharacters.map((character) => {
             const lead = getCharacterTranslation(
@@ -570,8 +733,6 @@ export default function CharactersGridClient({
             const thumbSrc = headSrc ?? iconSrc;
             const isFavorite = favoriteChars.has(character.id);
             const elements = character.elements ?? [character.element];
-            const elementStyle = ELEMENT_COLORS[character.element.key];
-            const elementIcon = ELEMENT_ICONS[character.element.key];
             const rarityStyle = RARITY_COLORS[character.rarity ?? 0];
             const displayName = lead.name ?? character.internalName;
 

@@ -190,7 +190,10 @@ export default function ItemsGridClient({
   const [favoriteItems] = useAtom(itemsFavoritesAtom);
   const [, toggleItemFavorite] = useAtom(toggleItemFavoriteAtom);
   const isModsCategory = category.id === "mods";
-  const [viewMode, setViewMode] = useListViewMode();
+  const [viewMode, setViewMode] = useListViewMode(
+    `items:${category.id}`,
+    isModsCategory ? "detailed" : "simplified",
+  );
 
   const defaultLanguages = normalizeLanguageCodes(
     category.defaultGridLanguages,
@@ -582,17 +585,16 @@ export default function ItemsGridClient({
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-3">
-            {!isModsCategory ? (
-              <ViewModeToggle
-                value={viewMode}
-                onChange={setViewMode}
-                labels={{
-                  simplified: tc('viewSimplified'),
-                  list: tc('viewList'),
-                  group: tc('viewMode'),
-                }}
-              />
-            ) : null}
+            <ViewModeToggle
+              value={viewMode}
+              onChange={setViewMode}
+              labels={{
+                simplified: tc('viewSimplified'),
+                list: tc('viewList'),
+                detailed: tc('viewDetailed'),
+                group: tc('viewMode'),
+              }}
+            />
             <Link
               href="/items"
               className="rounded-lg border border-slate-600/70 px-4 py-2 text-sm text-slate-200 transition-colors hover:border-indigo-400/40 hover:text-white"
@@ -938,7 +940,7 @@ export default function ItemsGridClient({
               : t('noItemResultsHint')}
           </p>
         </div>
-      ) : isModsCategory ? (
+      ) : viewMode === "detailed" ? (
         <section className="grid gap-3 md:gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {paginatedItems.map((item) => {
             const lead = getItemTranslation(

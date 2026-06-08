@@ -156,12 +156,14 @@ export const expandedCategoriesAtom = atomWithStorage<Record<string, boolean>>(
 );
 export const sidebarWidthAtom = atomWithStorage<number>("sidebar-width", 320);
 
-// Mode d'affichage des listes (hors MOD/Demon Wedge) : préférence globale partagée
-// entre la liste Personnages, les catalogues d'items non-mods et les plans (drafts).
-export type ListViewMode = "simplified" | "list";
-export const listViewModeAtom = atomWithStorage<ListViewMode>(
-  "list-view-mode",
-  "simplified",
+// Mode d'affichage des listes : 3 modes sélectionnables partout (Simplifié = images en
+// grand plan, Liste = lignes, Détaillé = cartes avec traductions). Le défaut dépend de la
+// liste (DW/mods → "detailed", les autres → "simplified"). Persistance PAR liste (clé de
+// surface : "characters", "items:<categoryId>", "drafts") pour respecter ces défauts.
+export type ListViewMode = "simplified" | "list" | "detailed";
+export const listViewModesAtom = atomWithStorage<Record<string, ListViewMode>>(
+  "list-view-modes",
+  {},
 );
 
 // Persistance des filtres de la section Items (par catégorie)

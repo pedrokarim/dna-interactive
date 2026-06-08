@@ -1,12 +1,12 @@
 "use client";
 
-import { LayoutGrid, List } from "lucide-react";
+import { LayoutGrid, List, Rows3 } from "lucide-react";
 import type { ListViewMode } from "@/lib/store";
 
 export type ViewModeToggleProps = {
   value: ListViewMode;
   onChange: (mode: ListViewMode) => void;
-  labels: { simplified: string; list: string; group?: string };
+  labels: { simplified: string; list: string; detailed: string; group?: string };
   className?: string;
 };
 
@@ -22,6 +22,7 @@ export default function ViewModeToggle({
   const options: Array<{ mode: ListViewMode; label: string; Icon: typeof LayoutGrid }> = [
     { mode: "simplified", label: labels.simplified, Icon: LayoutGrid },
     { mode: "list", label: labels.list, Icon: List },
+    { mode: "detailed", label: labels.detailed, Icon: Rows3 },
   ];
 
   return (

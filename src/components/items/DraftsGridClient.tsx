@@ -115,6 +115,19 @@ function formatDuration(seconds: number | null): string {
   return `${mins}:${secs.toString().padStart(2, "0")}`;
 }
 
+function slotPositionsForIngredients(count: number): number[] {
+  if (count <= 1) {
+    return [1];
+  }
+  if (count === 2) {
+    return [1, 2];
+  }
+  if (count === 3) {
+    return [0, 1, 2];
+  }
+  return [0, 1, 2, 3];
+}
+
 export default function DraftsGridClient({
   recipes,
   availableLanguages,
@@ -129,7 +142,7 @@ export default function DraftsGridClient({
     ["FR", "EN"],
   );
 
-  const [viewMode, setViewMode] = useListViewMode();
+  const [viewMode, setViewMode] = useListViewMode("drafts", "simplified");
 
   const [previewIcon, setPreviewIcon] = useState<{
     src: string;
@@ -345,6 +358,7 @@ export default function DraftsGridClient({
               labels={{
                 simplified: tc('viewSimplified'),
                 list: tc('viewList'),
+                detailed: tc('viewDetailed'),
                 group: tc('viewMode'),
               }}
             />
@@ -475,7 +489,147 @@ export default function DraftsGridClient({
           <p className="mt-2 text-sm text-slate-400">{t('noResultsHint')}</p>
         </div>
       ) : (
-        viewMode === "list" ? (
+        viewMode === "detailed" ? (
+        <section className="grid gap-3 md:gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          {paginatedRecipes.map((recipe) => {
+            const productNameLead = resolveDraftItemName(
+              recipe.product,
+              selectedLanguages[0],
+              availableLanguages,
+            );
+            const recipeIconSrc =
+              recipe.icon.publicPath ??
+              recipe.product.icon.publicPath ??
+              recipe.icon.placeholderPath ??
+              recipe.product.icon.placeholderPath ??
+              "/marker-default.svg";
+            const ingredientSlots = Array.from(
+              { length: 4 },
+              () => null as DraftRecipeSummary["ingredients"][number] | null,
+            );
+            const positions = slotPositionsForIngredients(recipe.ingredients.length);
+            recipe.ingredients.slice(0, 4).forEach((ingredient, index) => {
+              const slot = positions[index] ?? index;
+              ingredientSlots[slot] = ingredient;
+            });
+
+            return (
+              <Link
+                key={recipe.id}
+                href={`/items/drafts/${recipe.draftId}`}
+                className="group rounded-2xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-amber-400/40 hover:bg-slate-900/75"
+              >
+                <div className="flex items-start gap-3">
+                  <div className="flex h-14 w-14 md:h-16 md:w-16 shrink-0 items-center justify-center rounded-xl border border-amber-500/25 bg-slate-950/80 p-2">
+                    <div className="relative h-full w-full">
+                      <div className="h-full w-full overflow-hidden rounded-lg">
+                        <img
+                          src={recipeIconSrc}
+                          alt={`Draft ${recipe.draftId}`}
+                          className="max-h-full max-w-full object-contain transition-transform duration-200 hover:scale-110"
+                        />
+                      </div>
+                      <button
+                        type="button"
+                        onClick={(event) => {
+                          event.preventDefault();
+                          event.stopPropagation();
+                          setPreviewIcon({
+                            src: recipeIconSrc,
+                            alt: productNameLead,
+                            draftId: recipe.draftId,
+                          });
+                        }}
+                        className="absolute -bottom-3 -right-3 z-10 rounded-full border border-slate-700 bg-slate-900/95 p-1 text-slate-200 shadow-sm transition-colors hover:border-amber-400/60 hover:bg-amber-500/80 hover:text-white"
+                        aria-label={t('zoomDraftIcon', { id: recipe.draftId })}
+                      >
+                        <ZoomIn className="h-3 w-3" />
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="min-w-0 flex-1">
+                    <p className="text-xs uppercase tracking-[0.22em] text-amber-300/90">
+                      DRAFT #{recipe.draftId}
+                    </p>
+                    <h2 className="truncate text-lg font-semibold text-white transition-colors group-hover:text-amber-100">
+                      {productNameLead}
+                    </h2>
+                    <p className="truncate text-xs text-slate-400">
+                      {td('productLabel', { type: recipe.product.type, quantity: recipe.productQuantity })}
+                    </p>
+                  </div>
+
+                  <ChevronRight className="mt-1 h-4 w-4 text-slate-400 transition-colors group-hover:text-amber-300" />
+                </div>
+
+                <div className="mt-4 space-y-2">
+                  {selectedLanguages.map((langCode) => {
+                    const localizedName = resolveDraftItemName(recipe.product, langCode, availableLanguages);
+                    return (
+                      <div
+                        key={`${recipe.id}-${langCode}`}
+                        className="rounded-lg border border-slate-700/60 bg-slate-950/55 px-3 py-2"
+                      >
+                        <p className="text-[10px] uppercase tracking-[0.18em] text-slate-400">
+                          {getLanguageLabel(langCode)}
+                        </p>
+                        <p className="truncate text-sm font-medium text-slate-100">{localizedName}</p>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                <div className="mt-4">
+                  <p className="mb-2 text-[11px] uppercase tracking-[0.22em] text-slate-400">Recette</p>
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                    {ingredientSlots.map((ingredient, index) =>
+                      ingredient ? (
+                        <div
+                          key={`${recipe.id}-ingredient-${ingredient.id}-${index}`}
+                          className="relative rounded-lg border border-slate-700/70 bg-slate-950/70 p-2"
+                        >
+                          <img
+                            src={ingredient.icon.publicPath ?? ingredient.icon.placeholderPath ?? "/marker-default.svg"}
+                            alt={resolveDraftItemName(ingredient, selectedLanguages[0], availableLanguages)}
+                            className="mx-auto h-8 w-8 object-contain"
+                          />
+                          <span className="absolute bottom-1 right-1 rounded bg-slate-900/90 px-1 text-[10px] font-medium text-amber-100">
+                            {ingredient.quantity}
+                          </span>
+                        </div>
+                      ) : (
+                        <div
+                          key={`${recipe.id}-ingredient-empty-${index}`}
+                          className="rounded-lg border border-slate-800 bg-slate-950/35 p-2"
+                        >
+                          <div className="mx-auto h-8 w-8 rounded-md border border-slate-800 bg-slate-900/50" />
+                        </div>
+                      ),
+                    )}
+                  </div>
+                </div>
+
+                <div className="mt-4 flex flex-wrap gap-2 text-xs">
+                  <span className="inline-flex items-center gap-1 rounded-full border border-slate-600/80 px-2 py-0.5 text-slate-300">
+                    <Grid3X3 className="h-3.5 w-3.5 text-amber-300/90" />
+                    {recipe.productType}
+                  </span>
+                  {typeof recipe.rarity === "number" ? (
+                    <span className="rounded-full border border-slate-600/80 px-2 py-0.5 text-slate-300">
+                      {td('rarityLabel', { rarity: recipe.rarity })}
+                    </span>
+                  ) : null}
+                  <span className="inline-flex items-center gap-1 rounded-full border border-slate-600/80 px-2 py-0.5 text-slate-300">
+                    <Clock3 className="h-3.5 w-3.5 text-amber-300/90" />
+                    {formatDuration(recipe.durationSec)}
+                  </span>
+                </div>
+              </Link>
+            );
+          })}
+        </section>
+        ) : viewMode === "list" ? (
         <ul className="space-y-2">
           {paginatedRecipes.map((recipe) => {
             const productNameLead = resolveDraftItemName(
