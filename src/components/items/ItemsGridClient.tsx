@@ -24,6 +24,9 @@ import {
   itemsFiltersStorageAtom,
   toggleItemFavoriteAtom,
 } from "@/lib/store";
+import FilterChips from "@/components/list/FilterChips";
+import ViewModeToggle from "@/components/list/ViewModeToggle";
+import { useListViewMode } from "@/components/list/useListViewMode";
 
 type ArchiveFilter = "all" | "withArchive" | "withoutArchive";
 type NewFilter = "all" | "newOnly";
@@ -187,6 +190,7 @@ export default function ItemsGridClient({
   const [favoriteItems] = useAtom(itemsFavoritesAtom);
   const [, toggleItemFavorite] = useAtom(toggleItemFavoriteAtom);
   const isModsCategory = category.id === "mods";
+  const [viewMode, setViewMode] = useListViewMode();
 
   const defaultLanguages = normalizeLanguageCodes(
     category.defaultGridLanguages,
@@ -577,7 +581,18 @@ export default function ItemsGridClient({
                 : t('itemsCount', { filtered: filteredItems.length, total: items.length })}
             </p>
           </div>
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap items-center gap-3">
+            {!isModsCategory ? (
+              <ViewModeToggle
+                value={viewMode}
+                onChange={setViewMode}
+                labels={{
+                  simplified: tc('viewSimplified'),
+                  list: tc('viewList'),
+                  group: tc('viewMode'),
+                }}
+              />
+            ) : null}
             <Link
               href="/items"
               className="rounded-lg border border-slate-600/70 px-4 py-2 text-sm text-slate-200 transition-colors hover:border-indigo-400/40 hover:text-white"
@@ -661,6 +676,7 @@ export default function ItemsGridClient({
           </div>
         </div>
 
+        {isModsCategory ? (
         <div className="mt-3 md:mt-4 grid gap-2 md:gap-3 grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
           {rarityOptions.length > 0 && (
             <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2">
@@ -805,6 +821,95 @@ export default function ItemsGridClient({
             </select>
           </div>
         </div>
+        ) : (
+        <div className="mt-3 md:mt-4 space-y-2 md:space-y-3">
+          {rarityOptions.length > 0 ? (
+            <FilterChips
+              label={tc('rarity')}
+              icon={<SlidersHorizontal className="h-3.5 w-3.5 text-indigo-400/80" />}
+              options={rarityOptions.map((value) => ({ value: String(value), label: String(value) }))}
+              value={rarityFilter}
+              onChange={(value) => updateQueryFilters({ rarity: value, page: 1 })}
+              allLabel={tc('allFeminine')}
+            />
+          ) : null}
+          {polarityOptions.length > 0 ? (
+            <FilterChips
+              label={tc('polarity')}
+              icon={<SlidersHorizontal className="h-3.5 w-3.5 text-indigo-400/80" />}
+              options={polarityOptions.map((value) => ({
+                value: String(value),
+                label: String(value),
+                iconSrc:
+                  value >= 1 && value <= 4
+                    ? `/assets/items/mods/T_Armory_Polarity0${value}.png`
+                    : null,
+              }))}
+              value={polarityFilter}
+              onChange={(value) => updateQueryFilters({ polarity: value, page: 1 })}
+              allLabel={tc('allFeminine')}
+            />
+          ) : null}
+          {itemTypeOptions.length > 0 ? (
+            <FilterChips
+              label={tc('type')}
+              icon={<SlidersHorizontal className="h-3.5 w-3.5 text-indigo-400/80" />}
+              options={itemTypeOptions.map((value) => ({ value, label: value }))}
+              value={itemTypeFilter}
+              onChange={(value) => updateQueryFilters({ itype: value, page: 1 })}
+              allLabel={tc('all')}
+            />
+          ) : null}
+          {itemSubTypeOptions.length > 0 ? (
+            <FilterChips
+              label={tc('subType')}
+              icon={<SlidersHorizontal className="h-3.5 w-3.5 text-indigo-400/80" />}
+              options={itemSubTypeOptions.map((value) => ({ value, label: value }))}
+              value={itemSubTypeFilter}
+              onChange={(value) => updateQueryFilters({ isub: value, page: 1 })}
+              allLabel={tc('all')}
+            />
+          ) : null}
+          <div className="grid gap-2 md:gap-3 sm:grid-cols-2">
+            {hasArchiveData ? (
+              <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2">
+                <div className="mb-1 text-xs text-slate-400">{tc('archive')}</div>
+                <select
+                  value={archiveFilter}
+                  onChange={(event) => {
+                    updateQueryFilters({
+                      archive: event.target.value as ArchiveFilter,
+                      page: 1,
+                    });
+                  }}
+                  className="w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-sm text-slate-100"
+                >
+                  <option value="all">{tc('allFeminine')}</option>
+                  <option value="withArchive">{tc('withArchive')}</option>
+                  <option value="withoutArchive">{tc('withoutArchive')}</option>
+                </select>
+              </div>
+            ) : null}
+            <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2">
+              <div className="mb-1 text-xs text-slate-400">{tc('sort')}</div>
+              <select
+                value={sortMode}
+                onChange={(event) => {
+                  updateQueryFilters({
+                    sort: event.target.value as SortMode,
+                    page: 1,
+                  });
+                }}
+                className="w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-sm text-slate-100"
+              >
+                <option value="id">{t('sortById')}</option>
+                <option value="rarityAsc">{t('sortRarityAsc')}</option>
+                <option value="rarityDesc">{t('sortRarityDesc')}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        )}
 
         <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-slate-700/60 bg-slate-950/60 px-3 py-2 text-sm text-slate-300">
           <p>
@@ -833,7 +938,7 @@ export default function ItemsGridClient({
               : t('noItemResultsHint')}
           </p>
         </div>
-      ) : (
+      ) : isModsCategory ? (
         <section className="grid gap-3 md:gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {paginatedItems.map((item) => {
             const lead = getItemTranslation(
@@ -994,6 +1099,196 @@ export default function ItemsGridClient({
                     Cout {item.stats.cost}
                   </span>
                   )}
+                </div>
+              </Link>
+            );
+          })}
+        </section>
+      ) : viewMode === "list" ? (
+        <ul className="space-y-2">
+          {paginatedItems.map((item) => {
+            const lead = getItemTranslation(
+              item,
+              selectedLanguages[0],
+              category.availableLanguages,
+            );
+            const elementalAffinity = resolveElementalAffinity(item, lead.typeCompatibilityNames);
+            const iconSrc = item.icon.publicPath ?? item.icon.placeholderPath ?? "/marker-default.svg";
+            const favoriteKey = toFavoriteKey(category.id, item.id);
+            const isFavorite = favoriteItems.has(favoriteKey);
+            const displayName = lead.modName
+              ? lead.demonWedgeName
+                ? `${lead.modName} ${lead.demonWedgeName}`
+                : lead.modName
+              : `${category.displayName} ${item.modId}`;
+
+            return (
+              <li key={item.id}>
+                <Link
+                  href={`/items/${category.slug}/${item.id}`}
+                  className="group flex items-center gap-4 rounded-2xl border border-slate-700/70 bg-slate-900/55 p-3 transition-all duration-200 hover:border-indigo-400/40 hover:bg-slate-900/75"
+                >
+                  <div className="relative flex h-16 w-16 shrink-0 items-center justify-center rounded-xl border border-indigo-500/20 bg-slate-950/80 p-2">
+                    <img
+                      src={iconSrc}
+                      alt={displayName}
+                      className="max-h-full max-w-full object-contain"
+                    />
+                    <button
+                      type="button"
+                      onClick={(event) => {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        setPreviewIcon({ src: iconSrc, alt: displayName, modId: item.modId });
+                      }}
+                      className="absolute -bottom-2 -right-2 z-10 rounded-full border border-slate-700 bg-slate-900/95 p-1 text-slate-200 shadow-sm transition-colors hover:border-indigo-400/60 hover:bg-indigo-500/80 hover:text-white"
+                      aria-label={t('zoomIcon', { id: item.modId })}
+                    >
+                      <ZoomIn className="h-3 w-3" />
+                    </button>
+                  </div>
+
+                  <div className="min-w-0 flex-1">
+                    <p className="text-xs uppercase tracking-[0.22em] text-indigo-400/80">
+                      {category.technicalName} #{item.modId}
+                    </p>
+                    <h3 className="flex items-center gap-2 truncate text-base font-semibold text-white transition-colors group-hover:text-indigo-100">
+                      {elementalAffinity?.iconSrc ? (
+                        <img
+                          src={elementalAffinity.iconSrc}
+                          alt=""
+                          aria-hidden="true"
+                          className="h-4 w-4 shrink-0 object-contain"
+                        />
+                      ) : null}
+                      <span className="truncate" title={displayName}>
+                        {displayName}
+                      </span>
+                    </h3>
+                    <div className="mt-1 flex flex-wrap items-center gap-1.5 text-[11px]">
+                      {elementalAffinity ? (
+                        <span className="inline-flex items-center gap-1.5 rounded-full border border-cyan-500/35 bg-cyan-500/10 px-2 py-0.5 text-cyan-100">
+                          {elementalAffinity.iconSrc ? (
+                            <img
+                              src={elementalAffinity.iconSrc}
+                              alt={elementalAffinity.label}
+                              className="h-3.5 w-3.5 object-contain"
+                            />
+                          ) : null}
+                          {elementalAffinity.label}
+                        </span>
+                      ) : null}
+                      {typeof item.stats.rarity === "number" ? (
+                        <span className="rounded-full border border-slate-600/80 px-2 py-0.5 text-slate-300">
+                          Rarete {item.stats.rarity}
+                        </span>
+                      ) : null}
+                      {typeof item.stats.polarity === "number" ? (
+                        <span className="rounded-full border border-slate-600/80 px-2 py-0.5 text-slate-300">
+                          Polarite {item.stats.polarity}
+                        </span>
+                      ) : null}
+                    </div>
+                  </div>
+
+                  <div className="flex shrink-0 items-center gap-1">
+                    <button
+                      type="button"
+                      onClick={(event) => {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        toggleItemFavorite(favoriteKey);
+                      }}
+                      aria-label={isFavorite ? "Retirer des favoris" : "Ajouter aux favoris"}
+                      className={`rounded-full p-1.5 transition-colors ${
+                        isFavorite
+                          ? "text-rose-400 hover:text-rose-300"
+                          : "text-slate-500 hover:text-rose-300"
+                      }`}
+                    >
+                      <Heart className={`h-4 w-4 ${isFavorite ? "fill-rose-400 text-rose-400" : ""}`} />
+                    </button>
+                    <ChevronRight className="h-4 w-4 text-slate-400 transition-colors group-hover:text-indigo-300" />
+                  </div>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      ) : (
+        <section className="grid gap-2.5 md:gap-3 grid-cols-3 sm:grid-cols-4 md:grid-cols-6 xl:grid-cols-8">
+          {paginatedItems.map((item) => {
+            const lead = getItemTranslation(
+              item,
+              selectedLanguages[0],
+              category.availableLanguages,
+            );
+            const elementalAffinity = resolveElementalAffinity(item, lead.typeCompatibilityNames);
+            const iconSrc = item.icon.publicPath ?? item.icon.placeholderPath ?? "/marker-default.svg";
+            const favoriteKey = toFavoriteKey(category.id, item.id);
+            const isFavorite = favoriteItems.has(favoriteKey);
+            const displayName = lead.modName
+              ? lead.demonWedgeName
+                ? `${lead.modName} ${lead.demonWedgeName}`
+                : lead.modName
+              : `${category.displayName} ${item.modId}`;
+
+            return (
+              <Link
+                key={item.id}
+                href={`/items/${category.slug}/${item.id}`}
+                title={displayName}
+                className="group relative flex aspect-square flex-col overflow-hidden rounded-xl border border-slate-700/70 bg-slate-950/80 p-2 transition-all duration-200 hover:-translate-y-0.5 hover:border-indigo-400/40"
+              >
+                <div className="relative flex flex-1 items-center justify-center overflow-hidden">
+                  <img
+                    src={iconSrc}
+                    alt={displayName}
+                    className="max-h-full max-w-full object-contain transition-transform duration-200 group-hover:scale-105"
+                  />
+                  {elementalAffinity?.iconSrc ? (
+                    <span className="absolute left-0 top-0 inline-flex h-6 w-6 items-center justify-center rounded-full border border-white/15 bg-slate-950/70 backdrop-blur-sm">
+                      <img
+                        src={elementalAffinity.iconSrc}
+                        alt={elementalAffinity.label}
+                        className="h-4 w-4 object-contain"
+                      />
+                    </span>
+                  ) : null}
+                  <button
+                    type="button"
+                    onClick={(event) => {
+                      event.preventDefault();
+                      event.stopPropagation();
+                      toggleItemFavorite(favoriteKey);
+                    }}
+                    aria-label={isFavorite ? "Retirer des favoris" : "Ajouter aux favoris"}
+                    className={`absolute right-0 top-0 z-10 rounded-full bg-slate-950/60 p-1 backdrop-blur-sm transition-all ${
+                      isFavorite
+                        ? "text-rose-400"
+                        : "text-slate-300 opacity-0 hover:text-rose-300 group-hover:opacity-100"
+                    }`}
+                  >
+                    <Heart className={`h-3.5 w-3.5 ${isFavorite ? "fill-rose-400 text-rose-400" : ""}`} />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={(event) => {
+                      event.preventDefault();
+                      event.stopPropagation();
+                      setPreviewIcon({ src: iconSrc, alt: displayName, modId: item.modId });
+                    }}
+                    className="absolute bottom-0 right-0 z-10 rounded-full border border-slate-700 bg-slate-900/90 p-1 text-slate-200 opacity-0 shadow-sm transition-all hover:border-indigo-400/60 hover:bg-indigo-500/80 hover:text-white group-hover:opacity-100"
+                    aria-label={t('zoomIcon', { id: item.modId })}
+                  >
+                    <ZoomIn className="h-3 w-3" />
+                  </button>
+                </div>
+                <div className="mt-1">
+                  <p className="truncate text-xs font-semibold text-white">{displayName}</p>
+                  <p className="truncate text-[10px] text-slate-400">
+                    {category.technicalName} #{item.modId}
+                  </p>
                 </div>
               </Link>
             );

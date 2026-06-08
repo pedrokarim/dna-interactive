@@ -156,6 +156,14 @@ export const expandedCategoriesAtom = atomWithStorage<Record<string, boolean>>(
 );
 export const sidebarWidthAtom = atomWithStorage<number>("sidebar-width", 320);
 
+// Mode d'affichage des listes (hors MOD/Demon Wedge) : préférence globale partagée
+// entre la liste Personnages, les catalogues d'items non-mods et les plans (drafts).
+export type ListViewMode = "simplified" | "list";
+export const listViewModeAtom = atomWithStorage<ListViewMode>(
+  "list-view-mode",
+  "simplified",
+);
+
 // Persistance des filtres de la section Items (par catégorie)
 export type PersistedItemsFilters = Record<
   string,

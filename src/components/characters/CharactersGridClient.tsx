@@ -33,6 +33,9 @@ import {
   charactersFiltersStorageAtom,
   toggleCharacterFavoriteAtom,
 } from "@/lib/store";
+import FilterChips from "@/components/list/FilterChips";
+import ViewModeToggle from "@/components/list/ViewModeToggle";
+import { useListViewMode } from "@/components/list/useListViewMode";
 
 type SortMode = "default" | "name" | "element" | "rarity";
 const SORT_MODE_VALUES = ["default", "name", "element", "rarity"] as const;
@@ -140,6 +143,7 @@ export default function CharactersGridClient({
   const [persistedFilters, setPersistedFilters] = useAtom(charactersFiltersStorageAtom);
   const [favoriteChars] = useAtom(charactersFavoritesAtom);
   const [, toggleFavorite] = useAtom(toggleCharacterFavoriteAtom);
+  const [viewMode, setViewMode] = useListViewMode();
 
   const defaultLanguages = normalizeLanguageCodes(
     catalog.defaultGridLanguages,
@@ -398,7 +402,16 @@ export default function CharactersGridClient({
               {t('count', { filtered: filteredCharacters.length, total: characters.length })}
             </p>
           </div>
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap items-center gap-3">
+            <ViewModeToggle
+              value={viewMode}
+              onChange={setViewMode}
+              labels={{
+                simplified: tc('viewSimplified'),
+                list: tc('viewList'),
+                group: tc('viewMode'),
+              }}
+            />
             <span className="inline-flex items-center gap-2 rounded-lg border border-rose-500/40 bg-rose-500/10 px-4 py-2 text-sm text-rose-100">
               <Heart className="h-4 w-4" />
               {tc('favorites')} ({favoriteCount})
@@ -460,72 +473,40 @@ export default function CharactersGridClient({
           </div>
         </div>
 
-        {/* Filter selects */}
-        <div className="mt-3 md:mt-4 grid gap-2 md:gap-3 grid-cols-2 lg:grid-cols-4">
-          <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2">
-            <div className="mb-1 flex items-center gap-2 text-xs text-slate-400">
-              <SlidersHorizontal className="h-3.5 w-3.5 text-indigo-400/80" />
-              {t('filterElement')}
-            </div>
-            <select
-              value={elementFilter}
-              onChange={(event) =>
-                updateQueryFilters({ element: event.target.value, page: 1 })
-              }
-              className="w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-sm text-slate-100"
-            >
-              <option value="all">{tc('all')}</option>
-              {catalog.elements.map((el) => (
-                <option key={el.key} value={el.key}>
-                  {el.label} ({el.key})
-                </option>
-              ))}
-            </select>
-          </div>
+        {/* Filter chips */}
+        <div className="mt-3 md:mt-4 space-y-2 md:space-y-3">
+          <FilterChips
+            label={t('filterElement')}
+            icon={<SlidersHorizontal className="h-3.5 w-3.5 text-indigo-400/80" />}
+            options={catalog.elements.map((el) => ({
+              value: el.key,
+              label: `${el.label} (${el.key})`,
+              iconSrc: ELEMENT_ICONS[el.key] ?? null,
+            }))}
+            value={elementFilter}
+            onChange={(value) => updateQueryFilters({ element: value, page: 1 })}
+            allLabel={tc('all')}
+          />
 
-          <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2">
-            <div className="mb-1 flex items-center gap-2 text-xs text-slate-400">
-              <SlidersHorizontal className="h-3.5 w-3.5 text-indigo-400/80" />
-              {t('filterWeapon')}
-            </div>
-            <select
-              value={weaponFilter}
-              onChange={(event) =>
-                updateQueryFilters({ weapon: event.target.value, page: 1 })
-              }
-              className="w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-sm text-slate-100"
-            >
-              <option value="all">{tc('allFeminine')}</option>
-              {catalog.weaponTypes.map((wt) => (
-                <option key={wt} value={wt}>
-                  {wt}
-                </option>
-              ))}
-            </select>
-          </div>
+          <FilterChips
+            label={t('filterWeapon')}
+            icon={<SlidersHorizontal className="h-3.5 w-3.5 text-indigo-400/80" />}
+            options={catalog.weaponTypes.map((wt) => ({ value: wt, label: wt }))}
+            value={weaponFilter}
+            onChange={(value) => updateQueryFilters({ weapon: value, page: 1 })}
+            allLabel={tc('allFeminine')}
+          />
 
-          <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2">
-            <div className="mb-1 flex items-center gap-2 text-xs text-slate-400">
-              <SlidersHorizontal className="h-3.5 w-3.5 text-indigo-400/80" />
-              {t('filterFaction')}
-            </div>
-            <select
-              value={campFilter}
-              onChange={(event) =>
-                updateQueryFilters({ camp: event.target.value, page: 1 })
-              }
-              className="w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-sm text-slate-100"
-            >
-              <option value="all">{tc('allFeminine')}</option>
-              {catalog.camps.map((c) => (
-                <option key={c.key} value={c.key}>
-                  {c.key}
-                </option>
-              ))}
-            </select>
-          </div>
+          <FilterChips
+            label={t('filterFaction')}
+            icon={<SlidersHorizontal className="h-3.5 w-3.5 text-indigo-400/80" />}
+            options={catalog.camps.map((c) => ({ value: c.key, label: c.key }))}
+            value={campFilter}
+            onChange={(value) => updateQueryFilters({ camp: value, page: 1 })}
+            allLabel={tc('allFeminine')}
+          />
 
-          <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2">
+          <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2 sm:max-w-xs">
             <div className="mb-1 text-xs text-slate-400">{tc('sort')}</div>
             <select
               value={sortMode}
@@ -571,7 +552,8 @@ export default function CharactersGridClient({
           </p>
         </div>
       ) : (
-        <section className="grid gap-3 md:gap-4 grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+        viewMode === "list" ? (
+        <ul className="space-y-2">
           {paginatedCharacters.map((character) => {
             const lead = getCharacterTranslation(
               character,
@@ -580,104 +562,92 @@ export default function CharactersGridClient({
             );
             const headSrc = character.portraits.head.publicPath;
             const iconSrc = character.portraits.icon.publicPath;
+            const thumbSrc = headSrc ?? iconSrc;
             const isFavorite = favoriteChars.has(character.id);
             const elementStyle = ELEMENT_COLORS[character.element.key];
             const elementIcon = ELEMENT_ICONS[character.element.key];
             const rarityStyle = RARITY_COLORS[character.rarity ?? 0];
+            const displayName = lead.name ?? character.internalName;
 
             return (
-              <Link
-                key={character.id}
-                href={`/characters/${getCharacterSlug(character)}`}
-                className={`group relative overflow-hidden rounded-2xl border bg-slate-900/55 transition-all duration-200 hover:-translate-y-0.5 hover:bg-slate-900/75 ${
-                  rarityStyle
-                    ? `${rarityStyle.border} hover:border-opacity-70`
-                    : "border-slate-700/70 hover:border-indigo-400/40"
-                }`}
-              >
-                {/* Portrait */}
-                <div className="relative aspect-square overflow-hidden bg-slate-950/80">
-                  {headSrc ? (
-                    <img
-                      src={headSrc}
-                      alt={lead.name ?? character.internalName}
-                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                  ) : iconSrc ? (
-                    <div className="flex h-full w-full items-center justify-center p-8">
+              <li key={character.id}>
+                <Link
+                  href={`/characters/${getCharacterSlug(character)}`}
+                  className={`group flex items-center gap-4 rounded-2xl border bg-slate-900/55 p-3 transition-all duration-200 hover:bg-slate-900/75 ${
+                    rarityStyle
+                      ? `${rarityStyle.border} hover:border-opacity-70`
+                      : "border-slate-700/70 hover:border-indigo-400/40"
+                  }`}
+                >
+                  <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl border border-slate-700/70 bg-slate-950/80">
+                    {thumbSrc ? (
                       <img
-                        src={iconSrc}
-                        alt={lead.name ?? character.internalName}
-                        className="max-h-full max-w-full object-contain"
+                        src={thumbSrc}
+                        alt={displayName}
+                        className="h-full w-full object-cover"
                       />
-                    </div>
-                  ) : (
-                    <div className="flex h-full w-full items-center justify-center">
-                      <span className="text-4xl font-bold text-slate-700">
+                    ) : (
+                      <div className="flex h-full w-full items-center justify-center text-2xl font-bold text-slate-700">
                         {character.internalName[0]}
-                      </span>
-                    </div>
-                  )}
-
-                  {/* Element badge */}
-                  {elementStyle && (
-                    <span
-                      className={`absolute left-2 top-2 inline-flex items-center gap-1 rounded-full px-2 py-1 text-xs font-medium ${elementStyle.border} ${elementStyle.bg} ${elementStyle.text} backdrop-blur-sm`}
-                    >
-                      {elementIcon ? (
+                      </div>
+                    )}
+                    {elementIcon ? (
+                      <span className="absolute -bottom-1 -right-1 inline-flex h-5 w-5 items-center justify-center rounded-full border border-slate-700 bg-slate-950/90">
                         <img
                           src={elementIcon}
                           alt={character.element.label}
-                          className="h-4 w-4 object-contain"
+                          className="h-3 w-3 object-contain"
                         />
-                      ) : null}
-                    </span>
-                  )}
+                      </span>
+                    ) : null}
+                  </div>
 
-                  {/* Rarity stars */}
-                  {character.rarity && (
-                    <span
-                      className={`absolute right-2 top-2 rounded-full px-2 py-0.5 text-xs font-medium backdrop-blur-sm ${
-                        rarityStyle
-                          ? `${rarityStyle.border} bg-slate-950/70 ${rarityStyle.text}`
-                          : "border border-slate-600/60 bg-slate-950/70 text-slate-300"
-                      }`}
-                    >
-                      {"★".repeat(character.rarity)}
-                    </span>
-                  )}
-
-                  {/* Zoom button */}
-                  {headSrc && (
-                    <button
-                      type="button"
-                      onClick={(event) => {
-                        event.preventDefault();
-                        event.stopPropagation();
-                        setPreviewPortrait({
-                          src: headSrc,
-                          alt: lead.name ?? character.internalName,
-                        });
-                      }}
-                      className="absolute bottom-2 right-2 rounded-full border border-slate-700 bg-slate-900/90 p-1.5 text-slate-200 opacity-0 shadow-sm transition-all hover:border-indigo-400/60 hover:bg-indigo-500/80 hover:text-white group-hover:opacity-100"
-                      aria-label={t('zoomPortrait', { name: lead.name ?? character.internalName })}
-                    >
-                      <ZoomIn className="h-3.5 w-3.5" />
-                    </button>
-                  )}
-                </div>
-
-                {/* Info */}
-                <div className="p-3">
-                  <div className="flex items-start justify-between gap-2">
-                    <div className="min-w-0 flex-1">
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-2">
                       <h3 className="truncate text-base font-semibold text-white transition-colors group-hover:text-indigo-100">
-                        {lead.name ?? character.internalName}
+                        {displayName}
                       </h3>
-                      <p className="truncate text-xs text-slate-400">
-                        {character.weaponTags.join(" / ")}
-                      </p>
+                      {character.rarity ? (
+                        <span
+                          className={`shrink-0 text-xs ${rarityStyle ? rarityStyle.text : "text-slate-300"}`}
+                        >
+                          {"★".repeat(character.rarity)}
+                        </span>
+                      ) : null}
                     </div>
+                    <div className="mt-1 flex flex-wrap items-center gap-1.5 text-[11px]">
+                      {elementStyle ? (
+                        <span
+                          className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 ${elementStyle.border} ${elementStyle.bg} ${elementStyle.text}`}
+                        >
+                          {elementIcon ? (
+                            <img
+                              src={elementIcon}
+                              alt=""
+                              aria-hidden="true"
+                              className="h-3 w-3 object-contain"
+                            />
+                          ) : null}
+                          {character.element.label}
+                        </span>
+                      ) : null}
+                      {character.weaponTags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-full border border-slate-600/70 px-2 py-0.5 text-slate-300"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                      {lead.campName ? (
+                        <span className="rounded-full border border-slate-600/70 px-2 py-0.5 text-slate-300">
+                          {lead.campName}
+                        </span>
+                      ) : null}
+                    </div>
+                  </div>
+
+                  <div className="flex shrink-0 items-center gap-1">
                     <button
                       type="button"
                       onClick={(event) => {
@@ -688,7 +658,7 @@ export default function CharactersGridClient({
                       aria-label={
                         isFavorite ? t('removeFromFavorites') : t('addToFavorites')
                       }
-                      className={`shrink-0 rounded-full p-1.5 transition-colors ${
+                      className={`rounded-full p-1.5 transition-colors ${
                         isFavorite
                           ? "text-rose-400 hover:text-rose-300"
                           : "text-slate-500 hover:text-rose-300"
@@ -698,49 +668,140 @@ export default function CharactersGridClient({
                         className={`h-4 w-4 ${isFavorite ? "fill-rose-400 text-rose-400" : ""}`}
                       />
                     </button>
+                    {headSrc ? (
+                      <button
+                        type="button"
+                        onClick={(event) => {
+                          event.preventDefault();
+                          event.stopPropagation();
+                          setPreviewPortrait({ src: headSrc, alt: displayName });
+                        }}
+                        className="rounded-full border border-slate-700 bg-slate-900/90 p-1.5 text-slate-200 transition-colors hover:border-indigo-400/60 hover:bg-indigo-500/80 hover:text-white"
+                        aria-label={t('zoomPortrait', { name: displayName })}
+                      >
+                        <ZoomIn className="h-3.5 w-3.5" />
+                      </button>
+                    ) : null}
+                    <ChevronRight className="h-4 w-4 text-slate-500 transition-colors group-hover:text-indigo-300" />
                   </div>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+        ) : (
+        <section className="grid gap-2.5 md:gap-3 grid-cols-3 sm:grid-cols-4 md:grid-cols-6 xl:grid-cols-8">
+          {paginatedCharacters.map((character) => {
+            const lead = getCharacterTranslation(
+              character,
+              selectedLanguages[0],
+              catalog.availableLanguages,
+            );
+            const headSrc = character.portraits.head.publicPath;
+            const iconSrc = character.portraits.icon.publicPath;
+            const isFavorite = favoriteChars.has(character.id);
+            const elementIcon = ELEMENT_ICONS[character.element.key];
+            const rarityStyle = RARITY_COLORS[character.rarity ?? 0];
+            const displayName = lead.name ?? character.internalName;
 
-                  {/* Language translations */}
-                  {selectedLanguages.length > 0 && (
-                    <div className="mt-2 space-y-1.5">
-                      {selectedLanguages.map((langCode) => {
-                        const translation = character.translations[langCode];
-                        return (
-                          <div
-                            key={`${character.id}-${langCode}`}
-                            className="rounded-lg border border-slate-700/60 bg-slate-950/55 px-2.5 py-1.5"
-                          >
-                            <p className="text-[10px] uppercase tracking-[0.18em] text-slate-400">
-                              {getLanguageLabel(langCode)}
-                            </p>
-                            <p className="truncate text-sm font-medium text-slate-100">
-                              {translation?.name ?? "N/A"}
-                            </p>
-                            {translation?.subtitle && (
-                              <p className="truncate text-xs text-slate-400">
-                                {translation.subtitle}
-                              </p>
-                            )}
-                          </div>
-                        );
-                      })}
-                    </div>
-                  )}
-
-                  {/* Tags */}
-                  <div className="mt-2 flex flex-wrap gap-1.5 text-[11px]">
-                    {lead.campName && (
-                      <span className="rounded-full border border-slate-600/70 px-2 py-0.5 text-slate-300">
-                        {lead.campName}
-                      </span>
-                    )}
-                    <ChevronRight className="ml-auto mt-0.5 h-3.5 w-3.5 text-slate-500 transition-colors group-hover:text-indigo-300" />
+            return (
+              <Link
+                key={character.id}
+                href={`/characters/${getCharacterSlug(character)}`}
+                title={displayName}
+                className={`group relative aspect-square overflow-hidden rounded-xl border bg-slate-950/80 transition-all duration-200 hover:-translate-y-0.5 ${
+                  rarityStyle
+                    ? `${rarityStyle.border} hover:border-opacity-70`
+                    : "border-slate-700/70 hover:border-indigo-400/40"
+                }`}
+              >
+                {headSrc ? (
+                  <img
+                    src={headSrc}
+                    alt={displayName}
+                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                ) : iconSrc ? (
+                  <div className="flex h-full w-full items-center justify-center p-4">
+                    <img
+                      src={iconSrc}
+                      alt={displayName}
+                      className="max-h-full max-w-full object-contain"
+                    />
                   </div>
+                ) : (
+                  <div className="flex h-full w-full items-center justify-center">
+                    <span className="text-3xl font-bold text-slate-700">
+                      {character.internalName[0]}
+                    </span>
+                  </div>
+                )}
+
+                {/* Element icon */}
+                {elementIcon ? (
+                  <span className="absolute left-1.5 top-1.5 inline-flex h-6 w-6 items-center justify-center rounded-full border border-white/15 bg-slate-950/70 backdrop-blur-sm">
+                    <img
+                      src={elementIcon}
+                      alt={character.element.label}
+                      className="h-4 w-4 object-contain"
+                    />
+                  </span>
+                ) : null}
+
+                {/* Favorite */}
+                <button
+                  type="button"
+                  onClick={(event) => {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    toggleFavorite(character.id);
+                  }}
+                  aria-label={isFavorite ? t('removeFromFavorites') : t('addToFavorites')}
+                  className={`absolute right-1.5 top-1.5 z-10 rounded-full bg-slate-950/60 p-1 backdrop-blur-sm transition-all ${
+                    isFavorite
+                      ? "text-rose-400"
+                      : "text-slate-300 opacity-0 hover:text-rose-300 group-hover:opacity-100"
+                  }`}
+                >
+                  <Heart
+                    className={`h-3.5 w-3.5 ${isFavorite ? "fill-rose-400 text-rose-400" : ""}`}
+                  />
+                </button>
+
+                {/* Zoom */}
+                {headSrc ? (
+                  <button
+                    type="button"
+                    onClick={(event) => {
+                      event.preventDefault();
+                      event.stopPropagation();
+                      setPreviewPortrait({ src: headSrc, alt: displayName });
+                    }}
+                    className="absolute bottom-1.5 right-1.5 z-10 rounded-full border border-slate-700 bg-slate-900/90 p-1 text-slate-200 opacity-0 shadow-sm transition-all hover:border-indigo-400/60 hover:bg-indigo-500/80 hover:text-white group-hover:opacity-100"
+                    aria-label={t('zoomPortrait', { name: displayName })}
+                  >
+                    <ZoomIn className="h-3 w-3" />
+                  </button>
+                ) : null}
+
+                {/* Bottom caption */}
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/95 via-slate-950/55 to-transparent p-2 pt-6">
+                  {character.rarity ? (
+                    <p
+                      className={`text-[10px] leading-none ${rarityStyle ? rarityStyle.text : "text-slate-300"}`}
+                    >
+                      {"★".repeat(character.rarity)}
+                    </p>
+                  ) : null}
+                  <p className="mt-0.5 truncate text-xs font-semibold text-white">
+                    {displayName}
+                  </p>
                 </div>
               </Link>
             );
           })}
         </section>
+        )
       )}
 
       {/* Pagination */}
