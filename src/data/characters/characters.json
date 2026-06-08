@@ -5940,19 +5940,19 @@
         "publicPath": "/assets/characters/phantom/T_Phantom_Fuluo.png"
       },
       "charpiece": {
-        "publicPath": null
+        "publicPath": "/assets/characters/charpiece/T_CharPiece_Fuluo.png"
       }
     },
     "consonanceWeapons": [],
     "skillIcons": {
       "skill1": {
-        "publicPath": null
+        "publicPath": "/assets/characters/skills/T_Skill_Fuluo01.png"
       },
       "skill2": {
-        "publicPath": null
+        "publicPath": "/assets/characters/skills/T_Skill_Fuluo02_On.png"
       },
       "skill3": {
-        "publicPath": null
+        "publicPath": "/assets/characters/skills/T_Skill_Fuluo03.png"
       }
     },
     "translations": {
@@ -7473,7 +7473,7 @@
     }
   },
   {
-    "id": "char-nvzhu02",
+    "id": "char-protagonist-female",
     "charId": 1201,
     "internalName": "Nvzhu02",
     "element": {
@@ -7639,8 +7639,8 @@
     },
     "translations": {
       "DE": {
-        "name": "{nickname}",
-        "subtitle": null,
+        "name": "Protagonistin",
+        "subtitle": "Vita / Mors",
         "birthday": null,
         "force": null,
         "campName": "Sin afiliación",
@@ -7654,8 +7654,8 @@
         ]
       },
       "EN": {
-        "name": "{nickname}",
-        "subtitle": null,
+        "name": "Female Protagonist",
+        "subtitle": "Vita / Mors",
         "birthday": null,
         "force": null,
         "campName": "No Affiliation",
@@ -7669,8 +7669,8 @@
         ]
       },
       "ES": {
-        "name": "{nickname}",
-        "subtitle": null,
+        "name": "Protagonista Femenina",
+        "subtitle": "Vita / Mors",
         "birthday": null,
         "force": null,
         "campName": "Sin afiliación",
@@ -7684,8 +7684,8 @@
         ]
       },
       "FR": {
-        "name": "{nickname}",
-        "subtitle": null,
+        "name": "Protagoniste Feminine",
+        "subtitle": "Vita / Mors",
         "birthday": null,
         "force": null,
         "campName": "Aucune affiliation",
@@ -7699,8 +7699,8 @@
         ]
       },
       "JP": {
-        "name": "{nickname}",
-        "subtitle": null,
+        "name": "女性主人公",
+        "subtitle": "Vita / Mors",
         "birthday": null,
         "force": null,
         "campName": "無所属",
@@ -7714,8 +7714,8 @@
         ]
       },
       "KR": {
-        "name": "{nickname}",
-        "subtitle": null,
+        "name": "여성 주인공",
+        "subtitle": "Vita / Mors",
         "birthday": null,
         "force": null,
         "campName": "무소속",
@@ -7729,8 +7729,8 @@
         ]
       },
       "TC": {
-        "name": "{nickname}",
-        "subtitle": null,
+        "name": "女主角",
+        "subtitle": "Vita / Mors",
         "birthday": null,
         "force": null,
         "campName": "無陣營",
@@ -7743,283 +7743,530 @@
           "[回魂]觸發[漆黑之手]效果的攻擊次數增加至3次。觸發效果時，自身獲得#5的全屬性穿透，持續#6秒。"
         ]
       }
+    },
+    "elements": [
+      {
+        "key": "Dark",
+        "label": "Umbro"
+      },
+      {
+        "key": "Light",
+        "label": "Lumino"
+      }
+    ],
+    "variants": {
+      "Dark": {
+        "charId": 1201,
+        "internalName": "Nvzhu02",
+        "element": {
+          "key": "Dark",
+          "label": "Umbro"
+        },
+        "weaponTags": [
+          "Sword",
+          "Machinegun"
+        ],
+        "maxLevel": 80,
+        "baseStats": {
+          "atk": 20,
+          "atkGrowCurve": "ATKA",
+          "def": 300,
+          "defGrowCurve": "DEFA",
+          "maxHp": 100,
+          "maxHpGrowCurve": "MaxHpA",
+          "maxES": 100,
+          "maxESGrowCurve": "MaxESA",
+          "maxSp": 150
+        },
+        "addonAttrs": [
+          {
+            "attrId": 120101,
+            "attrName": "ATK",
+            "rate": 0.2,
+            "iconPath": "/assets/characters/skills/T_SkillTalent_08.png",
+            "nameKey": "ADDONATTR_120101_NAME"
+          },
+          {
+            "attrId": 120102,
+            "attrName": "ATK",
+            "rate": 0.3,
+            "iconPath": "/assets/characters/skills/T_SkillTalent_08.png",
+            "nameKey": "ADDONATTR_120102_NAME"
+          },
+          {
+            "attrId": 120103,
+            "attrName": "SkillSustain",
+            "rate": 0.06,
+            "iconPath": "/assets/characters/skills/T_SkillTalent_11.png",
+            "nameKey": "ADDONATTR_120103_NAME"
+          },
+          {
+            "attrId": 120104,
+            "attrName": "SkillSustain",
+            "rate": 0.09,
+            "iconPath": "/assets/characters/skills/T_SkillTalent_11.png",
+            "nameKey": "ADDONATTR_120104_NAME"
+          }
+        ],
+        "positioning": [
+          "DPS",
+          "WeaponDPS"
+        ],
+        "recommendAttr": [],
+        "ascensionLevels": [
+          20,
+          30,
+          40,
+          50,
+          60,
+          70
+        ],
+        "intronLevels": [
+          {
+            "cardLevel": 0,
+            "resourceId": 1001201,
+            "resourceNum": 30
+          },
+          {
+            "cardLevel": 1,
+            "resourceId": 1001201,
+            "resourceNum": 30
+          },
+          {
+            "cardLevel": 2,
+            "resourceId": 1001201,
+            "resourceNum": 30
+          },
+          {
+            "cardLevel": 3,
+            "resourceId": 1001201,
+            "resourceNum": 30
+          },
+          {
+            "cardLevel": 4,
+            "resourceId": 1001201,
+            "resourceNum": 30
+          },
+          {
+            "cardLevel": 5,
+            "resourceId": 1001201,
+            "resourceNum": 30
+          }
+        ],
+        "intronDescriptionKeys": [
+          "GRADEUP_1201_01",
+          "GRADEUP_1201_02",
+          "GRADEUP_1201_03",
+          "GRADEUP_1201_04",
+          "GRADEUP_1201_05",
+          "GRADEUP_1201_06"
+        ],
+        "intronParameters": [
+          "$#SkillEffects[120133].TaskEffects[2].ComboCount$",
+          "$#SkillCreature[120121].TimeLife$",
+          "$#Buff[120103].AddAttrs[1].Value*(-100)$%",
+          "$#SkillEffects[120125].TaskEffects[2].Rate*100$%",
+          "$#Buff[120112].AddAttrs[1].Value*100$%",
+          "$#PassiveEffect[120101].Vars.Grade6BuffLastTime$"
+        ],
+        "portraits": {
+          "gacha": {
+            "publicPath": "/assets/characters/gacha/T_Gacha_AvatarNvzhu02.png"
+          },
+          "head": {
+            "publicPath": "/assets/characters/head/T_Head_Nvzhu02.png"
+          },
+          "icon": {
+            "publicPath": null
+          },
+          "bust": {
+            "publicPath": "/assets/characters/bust/T_Bust_Nvzhu02.png"
+          },
+          "phantom": {
+            "publicPath": "/assets/characters/phantom/T_Phantom_Nvzhu02.png"
+          },
+          "charpiece": {
+            "publicPath": null
+          }
+        },
+        "skillIcons": {
+          "skill1": {
+            "publicPath": null
+          },
+          "skill2": {
+            "publicPath": null
+          },
+          "skill3": {
+            "publicPath": null
+          }
+        },
+        "consonanceWeapons": [],
+        "translations": {
+          "DE": {
+            "name": "{nickname}",
+            "subtitle": null,
+            "birthday": null,
+            "force": null,
+            "campName": "Sin afiliación",
+            "intronEffects": [
+              "Cuando [Retorno vital] activa el efecto de [La mano oscura], otorga #1 punto(s) de combo.",
+              "Al lanzar [Himno del Mar Nebuloso], genera un campo de [Prisma oscuro] con un radio de 10 metros que dura #2 s. El rango del efecto está sujeto al alcance de la habilidad y la duración a la duración de la habilidad.\nLos enemigos dentro del campo reciben de manera continua una reducción de la Vel. de Movimiento del #3 y sufren un daño equivalente al #4 del ATQ del personaje una vez por segundo.",
+              "[Marcha nocturna] nivel +2, [Retorno vital] nivel +1.",
+              "[Retorno vital] ahora requiere solo 6 Ataques Normales de Cuerpo a Cuerpo para hacer que [La mano oscura] ataque.",
+              "[Himno del Mar Nebuloso] nivel +2, [Retorno vital] nivel +1.",
+              "La cantidad de ataques de [Retorno vital] que activan el efecto de [La mano oscura] aumenta a 3. Al activarse, otorga un #5 de Penetración total de atributos durante #6 s."
+            ]
+          },
+          "EN": {
+            "name": "{nickname}",
+            "subtitle": null,
+            "birthday": null,
+            "force": null,
+            "campName": "No Affiliation",
+            "intronEffects": [
+              "When [Soul Refrain] causes [Tenebrous Hand] to attack, the caster gains #1 Combo Points.",
+              null,
+              "[Nightwalk] Level +2, [Soul Refrain] Level +1.",
+              "[Soul Refrain] now requires only 6 Melee Normal Attacks to cause [Tenebrous Hand] to attack.",
+              "[Hymn of the Misty Sea] Level +2, [Soul Refrain] Level +1.",
+              "When [Soul Refrain] causes [Tenebrous Hand] to attack, it attacks 3 times instead. When this occurs, the caster gains #5 PEN stats for #6s."
+            ]
+          },
+          "ES": {
+            "name": "{nickname}",
+            "subtitle": null,
+            "birthday": null,
+            "force": null,
+            "campName": "Sin afiliación",
+            "intronEffects": [
+              "Cuando [Retorno vital] activa el efecto de [La mano oscura], otorga #1 punto(s) de combo.",
+              "Al lanzar [Himno del Mar Nebuloso], genera un campo de [Prisma oscuro] con un radio de 10 metros que dura #2 s. El rango del efecto está sujeto al alcance de la habilidad y la duración a la duración de la habilidad.\nLos enemigos dentro del campo reciben de manera continua una reducción de la Vel. de Movimiento del #3 y sufren un daño equivalente al #4 del ATQ del personaje una vez por segundo.",
+              "[Marcha nocturna] nivel +2, [Retorno vital] nivel +1.",
+              "[Retorno vital] ahora requiere solo 6 Ataques Normales de Cuerpo a Cuerpo para hacer que [La mano oscura] ataque.",
+              "[Himno del Mar Nebuloso] nivel +2, [Retorno vital] nivel +1.",
+              "La cantidad de ataques de [Retorno vital] que activan el efecto de [La mano oscura] aumenta a 3. Al activarse, otorga un #5 de Penetración total de atributos durante #6 s."
+            ]
+          },
+          "FR": {
+            "name": "{nickname}",
+            "subtitle": null,
+            "birthday": null,
+            "force": null,
+            "campName": "Aucune affiliation",
+            "intronEffects": [
+              "Lorsque [Refrain de l’âme] déclenche l’effet de [Main d’ébène], le personnage obtient #1 point de Combo.",
+              "Lors de l’utilisation de [Hymne de la Mer du Silence], crée un champ [Prisme ombral] de 10 mètres de rayon pendant #2 s. La portée du champ est affectée par la Portée des compétences, et sa durée par la Durée des compétences.\nLes ennemis à l’intérieur du champ subissent continuellement une réduction de Vitesse de déplacement de #3 et reçoivent chaque seconde des dégâts équivalents à #4 de l’ATQ du personnage.",
+              "[Marche nocturne] niveau +2 ; [Refrain de l’âme] niveau +1.",
+              "Le nombre d’attaques normales de mêlée nécessaires à [Refrain de l’âme] pour déclencher l’effet de [Main d’ébène] est réduit à 6.",
+              "[Hymne de la Mer du Silence] niveau +2 ; [Refrain de l’âme] niveau +1.",
+              "Lorsque [Refrain de l’âme] déclenche l’effet de [Main d’ébène], celle-ci attaque désormais 3 fois. Lors du déclenchement, le personnage obtient #5 de pénétration de tous les attributs pendant #6 s."
+            ]
+          },
+          "JP": {
+            "name": "{nickname}",
+            "subtitle": null,
+            "birthday": null,
+            "force": null,
+            "campName": "無所属",
+            "intronEffects": [
+              "[反魂]が[漆黒の手]の効果を発動した時、自身は#1コンボポイントを獲得する。",
+              "[ニヴルヘイムの祈り]を発動した時、半径10メートルの[暗色プリズム]領域を1つ生成する。持続時間は#2秒。効果範囲はスキル範囲補正の影響を受け、持続時間はスキル耐久補正の影響を受ける。\n 領域内の敵には、移動速度#3ダウンの効果が持続的に付与され、毎秒1回、#4キャラクター攻撃分のダメージを受ける。",
+              "[夜を往く]レベル+2、[反魂]レベル+1。",
+              "[反魂]が[漆黒の手]効果を発動するために必要な近接通常攻撃回数が6回に減少する。",
+              "[ニヴルヘイムの祈り]レベル+2、[反魂]レベル+1。",
+              "[反魂]が[漆黒の手]効果で発動する攻撃回数が3回に増加する。効果発動時、自身は#5の全属性貫通を獲得する。持続時間は#6秒。"
+            ]
+          },
+          "KR": {
+            "name": "{nickname}",
+            "subtitle": null,
+            "birthday": null,
+            "force": null,
+            "campName": "무소속",
+            "intronEffects": [
+              "[혼의 귀환]이 [칠흑의 손]의 효과 발동 시 자신이 #1 콤보 포인트를 획득한다.",
+              "[안개 바다의 기도] 시전 시 반경 10m의 [다크 프리즘] 영역을 생성한다. 지속 시간 #2초. 효과 범위는 스킬 범위 보정을 받고, 지속 시간은 스킬 지속 보정을 받는다.\n영역 내 적들은 지속적으로 이동 속도 #3 감소 효과를 받으며, 초당 캐릭터 공격력 #4의 대미지를 1회 받는다.",
+              "[밤의 행차] 레벨+2, [혼의 귀환] 레벨+1.",
+              "[혼의 귀환]의 [칠흑의 손] 효과 발동에 필요한 근접 기본 공격 횟수가 6회로 감소한다.",
+              "[안개 바다의 기도] 레벨+2, [혼의 귀환] 레벨+1.",
+              "[혼의 귀환]의 [칠흑의 손] 효과 발동에 필요한 공격 횟수가 3회로 증가하고, 효과 발동 시 자신이 모든 속성 관통을 #5 획득한다. 지속 시간 #6초."
+            ]
+          },
+          "TC": {
+            "name": "{nickname}",
+            "subtitle": null,
+            "birthday": null,
+            "force": null,
+            "campName": "無陣營",
+            "intronEffects": [
+              "[回魂]觸發[漆黑之手]的效果時，自身獲得#1連擊點數。",
+              "釋放[霧海禱音]時，生成1個半徑10米的[暗色稜鏡]領域，持續#2秒，效果範圍受技能範圍修正，持續時間受技能耐久修正。\n領域內的敵人被持續附加移動速度降低#3的效果，每秒受到1次#4角色攻擊的傷害。",
+              "[夜行]等級+2，[回魂]等級+1。",
+              "[回魂]觸發[漆黑之手]效果所需的近戰普通攻擊次數減少至6次。",
+              "[霧海禱音]等級+2，[回魂]等級+1。",
+              "[回魂]觸發[漆黑之手]效果的攻擊次數增加至3次。觸發效果時，自身獲得#5的全屬性穿透，持續#6秒。"
+            ]
+          }
+        }
+      },
+      "Light": {
+        "charId": 1601,
+        "internalName": "Nvzhu",
+        "element": {
+          "key": "Light",
+          "label": "Lumino"
+        },
+        "weaponTags": [
+          "Sword",
+          "Machinegun"
+        ],
+        "maxLevel": 80,
+        "baseStats": {
+          "atk": 22,
+          "atkGrowCurve": "ATKA",
+          "def": 300,
+          "defGrowCurve": "DEFA",
+          "maxHp": 120,
+          "maxHpGrowCurve": "MaxHpA",
+          "maxES": 120,
+          "maxESGrowCurve": "MaxESA",
+          "maxSp": 100
+        },
+        "addonAttrs": [
+          {
+            "attrId": 160101,
+            "attrName": "SkillSustain",
+            "rate": 0.06,
+            "iconPath": "/assets/characters/skills/T_SkillTalent_11.png",
+            "nameKey": "ADDONATTR_160101_NAME"
+          },
+          {
+            "attrId": 160102,
+            "attrName": "SkillSustain",
+            "rate": 0.09,
+            "iconPath": "/assets/characters/skills/T_SkillTalent_11.png",
+            "nameKey": "ADDONATTR_160102_NAME"
+          },
+          {
+            "attrId": 160103,
+            "attrName": "SkillRange",
+            "rate": 0.12,
+            "iconPath": "/assets/characters/skills/T_SkillTalent_10.png",
+            "nameKey": "ADDONATTR_160103_NAME"
+          },
+          {
+            "attrId": 160104,
+            "attrName": "SkillRange",
+            "rate": 0.18,
+            "iconPath": "/assets/characters/skills/T_SkillTalent_10.png",
+            "nameKey": "ADDONATTR_160104_NAME"
+          }
+        ],
+        "positioning": [
+          "Support"
+        ],
+        "recommendAttr": [],
+        "ascensionLevels": [
+          20,
+          30,
+          40,
+          50,
+          60,
+          70
+        ],
+        "intronLevels": [
+          {
+            "cardLevel": 0,
+            "resourceId": 1001601,
+            "resourceNum": 30
+          },
+          {
+            "cardLevel": 1,
+            "resourceId": 1001601,
+            "resourceNum": 30
+          },
+          {
+            "cardLevel": 2,
+            "resourceId": 1001601,
+            "resourceNum": 30
+          },
+          {
+            "cardLevel": 3,
+            "resourceId": 1001601,
+            "resourceNum": 30
+          },
+          {
+            "cardLevel": 4,
+            "resourceId": 1001601,
+            "resourceNum": 30
+          },
+          {
+            "cardLevel": 5,
+            "resourceId": 1001601,
+            "resourceNum": 30
+          }
+        ],
+        "intronDescriptionKeys": [
+          "GRADEUP_1601_01",
+          "GRADEUP_1601_02",
+          "GRADEUP_1601_03",
+          "GRADEUP_1601_04",
+          "GRADEUP_1601_05",
+          "GRADEUP_1601_06"
+        ],
+        "intronParameters": [
+          "$#PassiveEffect[160101].Vars.AddDamageRate*100$%",
+          "$#SkillCreature[160103].TimeLife$",
+          "$#Buff[160102].AddAttrs[1].Value*(-100)$%",
+          "$#Buff[160103].AddAttrs[1].Value*100$%",
+          "$#PassiveEffect[160101].Vars.BuffLastTime$",
+          "$#Buff[160103].MaxLayer$",
+          "$#Buff[160104].AddAttrs[1].Value*100$%"
+        ],
+        "portraits": {
+          "gacha": {
+            "publicPath": "/assets/characters/gacha/T_Gacha_AvatarNvzhu.png"
+          },
+          "head": {
+            "publicPath": "/assets/characters/head/T_Head_Nvzhu.png"
+          },
+          "icon": {
+            "publicPath": "/assets/characters/icon/T_Icon_Nvzhu.png"
+          },
+          "bust": {
+            "publicPath": null
+          },
+          "phantom": {
+            "publicPath": "/assets/characters/phantom/T_Phantom_Nvzhu.png"
+          },
+          "charpiece": {
+            "publicPath": null
+          }
+        },
+        "skillIcons": {
+          "skill1": {
+            "publicPath": null
+          },
+          "skill2": {
+            "publicPath": null
+          },
+          "skill3": {
+            "publicPath": null
+          }
+        },
+        "consonanceWeapons": [],
+        "translations": {
+          "DE": {
+            "name": "Protagonistin",
+            "subtitle": "Vita / Mors",
+            "birthday": null,
+            "force": null,
+            "campName": "Sin afiliación",
+            "intronEffects": [
+              "Con [Incandescencia], las ondas de espada de [Aurora y Crepúsculo] infligen #1 más de daño.",
+              "Al usar [Llamarada], crea un campo [Prisma] de 10 m de radio que dura #2 s. Los enemigos dentro del campo sufren una reducción continua de Velocidad de Movimiento de #3.",
+              "[Aurora y Crepúsculo] nivel +2, [Difusión] nivel +1.",
+              "Al usar una Habilidad de combate, obtienes Velocidad de Ataque +#4 durante #5 s, hasta #6 acumulaciones.",
+              "[Llamarada] nivel +2, [Difusión] nivel +1.",
+              "[Incandescencia] también otorga Prob. CRIT +#7."
+            ]
+          },
+          "EN": {
+            "name": "Female Protagonist",
+            "subtitle": "Vita / Mors",
+            "birthday": null,
+            "force": null,
+            "campName": "No Affiliation",
+            "intronEffects": [
+              "While under [Incandescence], [Dawn Beyond Night]'s Swordwaves deal #1 more damage.",
+              "Casting [Flare] creates a [Prism] field with a 10-metre radius that lasts for #2s. Continuously reduces the Movement Speed of enemies inside by #3.",
+              "[Dawn Beyond Night] Level +2, [Diffusion] Level +1.",
+              "Using a skill grants +#4 ATK Speed for #5s, stacking up to #6 times.",
+              "[Flare] Level +2, [Diffusion] Level +1.",
+              "[Incandescence] additionally grants +#7 CRIT Chance."
+            ]
+          },
+          "ES": {
+            "name": "Protagonista Femenina",
+            "subtitle": "Vita / Mors",
+            "birthday": null,
+            "force": null,
+            "campName": "Sin afiliación",
+            "intronEffects": [
+              "Con [Incandescencia], las ondas de espada de [Aurora y Crepúsculo] infligen #1 más de daño.",
+              "Al usar [Llamarada], crea un campo [Prisma] de 10 m de radio que dura #2 s. Los enemigos dentro del campo sufren una reducción continua de Velocidad de Movimiento de #3.",
+              "[Aurora y Crepúsculo] nivel +2, [Difusión] nivel +1.",
+              "Al usar una Habilidad de combate, obtienes Velocidad de Ataque +#4 durante #5 s, hasta #6 acumulaciones.",
+              "[Llamarada] nivel +2, [Difusión] nivel +1.",
+              "[Incandescencia] también otorga Prob. CRIT +#7."
+            ]
+          },
+          "FR": {
+            "name": "Protagoniste Feminine",
+            "subtitle": "Vita / Mors",
+            "birthday": null,
+            "force": null,
+            "campName": "Aucune affiliation",
+            "intronEffects": [
+              "Sous [Incandescence], les ondes tranchantes d’[Aurore et Crépuscule] infligent +#1 dégâts.",
+              "Lors de l’utilisation de [Flamboiement], crée une zone [Prisme] de 10 m de rayon durant #2 s. Les ennemis présents dans la zone voient leur Vitesse de déplacement réduite de #3 en continu.",
+              "[Aurore et Crépuscule] niveau +2 ; [Diffusion] niveau +1.",
+              "L’utilisation d’une compétence confère +#4 de Vitesse d’attaque pendant #5 s, jusqu’à #6 cumuls.",
+              "[Flamboiement] niveau +2 ; [Diffusion] niveau +1.",
+              "[Incandescence] confère également +#7 de Taux CRIT."
+            ]
+          },
+          "JP": {
+            "name": "女性主人公",
+            "subtitle": "Vita / Mors",
+            "birthday": null,
+            "force": null,
+            "campName": "無所属",
+            "intronEffects": [
+              "自身が「白熱」を持つ時、「晨昏」の剣気ダメージが#1アップする。",
+              "「飛芒」を発動すると、半径10メートルに#2秒間持続する「プリズム」領域を1個生成する。領域内の敵は、移動速度低下#3の効果を継続的に付与される。",
+              "「晨昏」レベル+2、「散射」レベル+1。",
+              "スキル発動時、自身に攻撃速度アップ#4を1スタック付与（#5秒継続、最大#6スタックまで重ねがけ可）。",
+              "「飛芒」レベル+2、「散射」レベル+1。",
+              "「白熱」は追加でクリティカル率アップ#7を付与する。"
+            ]
+          },
+          "KR": {
+            "name": "여성 주인공",
+            "subtitle": "Vita / Mors",
+            "birthday": null,
+            "force": null,
+            "campName": "무소속",
+            "intronEffects": [
+              "자신이 [백열] 보유 시 [조석]의 검기 대미지가 #1 상승한다.",
+              "[빛보라] 발동 시, 반경 10m의 [프리즘] 영역을 1개 생성한다, 지속 시간 #2초. 영역 내의 적에게 이동 속도 감소 #3 효과를 부여한다.",
+              "[조석] 레벨+2, [난반사] 레벨+1",
+              "스킬 시전 시, 자신이 1단계의 공격 속도 #4 상승 효과를 획득한다. 지속 시간 #5초, 최대 #6단계 중첩.",
+              "[빛보라] 레벨+2, [난반사] 레벨+1",
+              "[백열]이 추가로 크리티컬 확률 #7 상승 효과를 제공한다."
+            ]
+          },
+          "TC": {
+            "name": "女主角",
+            "subtitle": "Vita / Mors",
+            "birthday": null,
+            "force": null,
+            "campName": "無陣營",
+            "intronEffects": [
+              "自身帶有[白熾]時，[晨昏]的劍氣傷害提高#1。",
+              "釋放[飛芒]時，生成1個半徑10米[稜鏡]領域，持續#2秒。領域內的敵人被持續附加移動速度降低#3的效果。",
+              "[晨昏]等級+2，[散射]等級+1。",
+              "釋放技能時，自身獲得1層攻擊速度提高#4的效果，持續#5秒，最多疊加#6層。",
+              "[飛芒]等級+2，[散射]等級+1。",
+              "[白熾]額外提供暴擊率提高#7的效果。"
+            ]
+          }
+        }
+      }
     }
   },
   {
-    "id": "char-nvzhu",
-    "charId": 1601,
-    "internalName": "Nvzhu",
-    "element": {
-      "key": "Light",
-      "label": "Lumino"
-    },
-    "weaponTags": [
-      "Sword",
-      "Machinegun"
-    ],
-    "camp": {
-      "key": "None",
-      "nameKey": "Camp_Name_None",
-      "iconGamePath": "/Game/UI/Texture/Dynamic/Image/Camp/T_Gacha_CampIcon_NoCamp.T_Gacha_CampIcon_NoCamp"
-    },
-    "rarity": 5,
-    "maxLevel": 80,
-    "colorVar": null,
-    "gender": null,
-    "sortPriority": 5014,
-    "charPieceId": 1001601,
-    "unlockRequiredPiece": 30,
-    "intronLevels": [
-      {
-        "cardLevel": 0,
-        "resourceId": 1001601,
-        "resourceNum": 30
-      },
-      {
-        "cardLevel": 1,
-        "resourceId": 1001601,
-        "resourceNum": 30
-      },
-      {
-        "cardLevel": 2,
-        "resourceId": 1001601,
-        "resourceNum": 30
-      },
-      {
-        "cardLevel": 3,
-        "resourceId": 1001601,
-        "resourceNum": 30
-      },
-      {
-        "cardLevel": 4,
-        "resourceId": 1001601,
-        "resourceNum": 30
-      },
-      {
-        "cardLevel": 5,
-        "resourceId": 1001601,
-        "resourceNum": 30
-      }
-    ],
-    "intronDescriptionKeys": [
-      "GRADEUP_1601_01",
-      "GRADEUP_1601_02",
-      "GRADEUP_1601_03",
-      "GRADEUP_1601_04",
-      "GRADEUP_1601_05",
-      "GRADEUP_1601_06"
-    ],
-    "intronParameters": [
-      "$#PassiveEffect[160101].Vars.AddDamageRate*100$%",
-      "$#SkillCreature[160103].TimeLife$",
-      "$#Buff[160102].AddAttrs[1].Value*(-100)$%",
-      "$#Buff[160103].AddAttrs[1].Value*100$%",
-      "$#PassiveEffect[160101].Vars.BuffLastTime$",
-      "$#Buff[160103].MaxLayer$",
-      "$#Buff[160104].AddAttrs[1].Value*100$%"
-    ],
-    "baseStats": {
-      "atk": 22,
-      "atkGrowCurve": "ATKA",
-      "def": 300,
-      "defGrowCurve": "DEFA",
-      "maxHp": 120,
-      "maxHpGrowCurve": "MaxHpA",
-      "maxES": 120,
-      "maxESGrowCurve": "MaxESA",
-      "maxSp": 100
-    },
-    "addonAttrs": [
-      {
-        "attrId": 160101,
-        "attrName": "SkillSustain",
-        "rate": 0.06,
-        "iconPath": "/assets/characters/skills/T_SkillTalent_11.png",
-        "nameKey": "ADDONATTR_160101_NAME"
-      },
-      {
-        "attrId": 160102,
-        "attrName": "SkillSustain",
-        "rate": 0.09,
-        "iconPath": "/assets/characters/skills/T_SkillTalent_11.png",
-        "nameKey": "ADDONATTR_160102_NAME"
-      },
-      {
-        "attrId": 160103,
-        "attrName": "SkillRange",
-        "rate": 0.12,
-        "iconPath": "/assets/characters/skills/T_SkillTalent_10.png",
-        "nameKey": "ADDONATTR_160103_NAME"
-      },
-      {
-        "attrId": 160104,
-        "attrName": "SkillRange",
-        "rate": 0.18,
-        "iconPath": "/assets/characters/skills/T_SkillTalent_10.png",
-        "nameKey": "ADDONATTR_160104_NAME"
-      }
-    ],
-    "positioning": [
-      "Support"
-    ],
-    "recommendAttr": [],
-    "ascensionLevels": [
-      20,
-      30,
-      40,
-      50,
-      60,
-      70
-    ],
-    "textKeys": {
-      "nameKey": "UI_CHAR_NAME_1601",
-      "subtitleKey": "UI_CHAR_SUBTITLE_1601",
-      "birthdayKey": null,
-      "forceKey": null,
-      "campNameKey": "Camp_Name_None"
-    },
-    "portraits": {
-      "gacha": {
-        "publicPath": "/assets/characters/gacha/T_Gacha_AvatarNvzhu.png"
-      },
-      "head": {
-        "publicPath": "/assets/characters/head/T_Head_Nvzhu.png"
-      },
-      "icon": {
-        "publicPath": "/assets/characters/icon/T_Icon_Nvzhu.png"
-      },
-      "bust": {
-        "publicPath": null
-      },
-      "phantom": {
-        "publicPath": "/assets/characters/phantom/T_Phantom_Nvzhu.png"
-      },
-      "charpiece": {
-        "publicPath": null
-      }
-    },
-    "consonanceWeapons": [],
-    "skillIcons": {
-      "skill1": {
-        "publicPath": null
-      },
-      "skill2": {
-        "publicPath": null
-      },
-      "skill3": {
-        "publicPath": null
-      }
-    },
-    "translations": {
-      "DE": {
-        "name": "Protagonistin",
-        "subtitle": "Vita / Mors",
-        "birthday": null,
-        "force": null,
-        "campName": "Sin afiliación",
-        "intronEffects": [
-          "Con [Incandescencia], las ondas de espada de [Aurora y Crepúsculo] infligen #1 más de daño.",
-          "Al usar [Llamarada], crea un campo [Prisma] de 10 m de radio que dura #2 s. Los enemigos dentro del campo sufren una reducción continua de Velocidad de Movimiento de #3.",
-          "[Aurora y Crepúsculo] nivel +2, [Difusión] nivel +1.",
-          "Al usar una Habilidad de combate, obtienes Velocidad de Ataque +#4 durante #5 s, hasta #6 acumulaciones.",
-          "[Llamarada] nivel +2, [Difusión] nivel +1.",
-          "[Incandescencia] también otorga Prob. CRIT +#7."
-        ]
-      },
-      "EN": {
-        "name": "Female Protagonist",
-        "subtitle": "Vita / Mors",
-        "birthday": null,
-        "force": null,
-        "campName": "No Affiliation",
-        "intronEffects": [
-          "While under [Incandescence], [Dawn Beyond Night]'s Swordwaves deal #1 more damage.",
-          "Casting [Flare] creates a [Prism] field with a 10-metre radius that lasts for #2s. Continuously reduces the Movement Speed of enemies inside by #3.",
-          "[Dawn Beyond Night] Level +2, [Diffusion] Level +1.",
-          "Using a skill grants +#4 ATK Speed for #5s, stacking up to #6 times.",
-          "[Flare] Level +2, [Diffusion] Level +1.",
-          "[Incandescence] additionally grants +#7 CRIT Chance."
-        ]
-      },
-      "ES": {
-        "name": "Protagonista Femenina",
-        "subtitle": "Vita / Mors",
-        "birthday": null,
-        "force": null,
-        "campName": "Sin afiliación",
-        "intronEffects": [
-          "Con [Incandescencia], las ondas de espada de [Aurora y Crepúsculo] infligen #1 más de daño.",
-          "Al usar [Llamarada], crea un campo [Prisma] de 10 m de radio que dura #2 s. Los enemigos dentro del campo sufren una reducción continua de Velocidad de Movimiento de #3.",
-          "[Aurora y Crepúsculo] nivel +2, [Difusión] nivel +1.",
-          "Al usar una Habilidad de combate, obtienes Velocidad de Ataque +#4 durante #5 s, hasta #6 acumulaciones.",
-          "[Llamarada] nivel +2, [Difusión] nivel +1.",
-          "[Incandescencia] también otorga Prob. CRIT +#7."
-        ]
-      },
-      "FR": {
-        "name": "Protagoniste Feminine",
-        "subtitle": "Vita / Mors",
-        "birthday": null,
-        "force": null,
-        "campName": "Aucune affiliation",
-        "intronEffects": [
-          "Sous [Incandescence], les ondes tranchantes d’[Aurore et Crépuscule] infligent +#1 dégâts.",
-          "Lors de l’utilisation de [Flamboiement], crée une zone [Prisme] de 10 m de rayon durant #2 s. Les ennemis présents dans la zone voient leur Vitesse de déplacement réduite de #3 en continu.",
-          "[Aurore et Crépuscule] niveau +2 ; [Diffusion] niveau +1.",
-          "L’utilisation d’une compétence confère +#4 de Vitesse d’attaque pendant #5 s, jusqu’à #6 cumuls.",
-          "[Flamboiement] niveau +2 ; [Diffusion] niveau +1.",
-          "[Incandescence] confère également +#7 de Taux CRIT."
-        ]
-      },
-      "JP": {
-        "name": "女性主人公",
-        "subtitle": "Vita / Mors",
-        "birthday": null,
-        "force": null,
-        "campName": "無所属",
-        "intronEffects": [
-          "自身が「白熱」を持つ時、「晨昏」の剣気ダメージが#1アップする。",
-          "「飛芒」を発動すると、半径10メートルに#2秒間持続する「プリズム」領域を1個生成する。領域内の敵は、移動速度低下#3の効果を継続的に付与される。",
-          "「晨昏」レベル+2、「散射」レベル+1。",
-          "スキル発動時、自身に攻撃速度アップ#4を1スタック付与（#5秒継続、最大#6スタックまで重ねがけ可）。",
-          "「飛芒」レベル+2、「散射」レベル+1。",
-          "「白熱」は追加でクリティカル率アップ#7を付与する。"
-        ]
-      },
-      "KR": {
-        "name": "여성 주인공",
-        "subtitle": "Vita / Mors",
-        "birthday": null,
-        "force": null,
-        "campName": "무소속",
-        "intronEffects": [
-          "자신이 [백열] 보유 시 [조석]의 검기 대미지가 #1 상승한다.",
-          "[빛보라] 발동 시, 반경 10m의 [프리즘] 영역을 1개 생성한다, 지속 시간 #2초. 영역 내의 적에게 이동 속도 감소 #3 효과를 부여한다.",
-          "[조석] 레벨+2, [난반사] 레벨+1",
-          "스킬 시전 시, 자신이 1단계의 공격 속도 #4 상승 효과를 획득한다. 지속 시간 #5초, 최대 #6단계 중첩.",
-          "[빛보라] 레벨+2, [난반사] 레벨+1",
-          "[백열]이 추가로 크리티컬 확률 #7 상승 효과를 제공한다."
-        ]
-      },
-      "TC": {
-        "name": "女主角",
-        "subtitle": "Vita / Mors",
-        "birthday": null,
-        "force": null,
-        "campName": "無陣營",
-        "intronEffects": [
-          "自身帶有[白熾]時，[晨昏]的劍氣傷害提高#1。",
-          "釋放[飛芒]時，生成1個半徑10米[稜鏡]領域，持續#2秒。領域內的敵人被持續附加移動速度降低#3的效果。",
-          "[晨昏]等級+2，[散射]等級+1。",
-          "釋放技能時，自身獲得1層攻擊速度提高#4的效果，持續#5秒，最多疊加#6層。",
-          "[飛芒]等級+2，[散射]等級+1。",
-          "[白熾]額外提供暴擊率提高#7的效果。"
-        ]
-      }
-    }
-  },
-  {
-    "id": "char-nanzhu02",
+    "id": "char-protagonist-male",
     "charId": 120101,
     "internalName": "Nanzhu02",
     "element": {
@@ -8185,8 +8432,8 @@
     },
     "translations": {
       "DE": {
-        "name": "{nickname}",
-        "subtitle": null,
+        "name": "Protagonist",
+        "subtitle": "Vita / Mors",
         "birthday": null,
         "force": null,
         "campName": "Sin afiliación",
@@ -8200,8 +8447,8 @@
         ]
       },
       "EN": {
-        "name": "{nickname}",
-        "subtitle": null,
+        "name": "Male Protagonist",
+        "subtitle": "Vita / Mors",
         "birthday": null,
         "force": null,
         "campName": "No Affiliation",
@@ -8215,8 +8462,8 @@
         ]
       },
       "ES": {
-        "name": "{nickname}",
-        "subtitle": null,
+        "name": "Protagonista Masculino",
+        "subtitle": "Vita / Mors",
         "birthday": null,
         "force": null,
         "campName": "Sin afiliación",
@@ -8230,8 +8477,8 @@
         ]
       },
       "FR": {
-        "name": "{nickname}",
-        "subtitle": null,
+        "name": "Protagoniste Masculin",
+        "subtitle": "Vita / Mors",
         "birthday": null,
         "force": null,
         "campName": "Aucune affiliation",
@@ -8245,8 +8492,8 @@
         ]
       },
       "JP": {
-        "name": "{nickname}",
-        "subtitle": null,
+        "name": "男性主人公",
+        "subtitle": "Vita / Mors",
         "birthday": null,
         "force": null,
         "campName": "無所属",
@@ -8260,8 +8507,8 @@
         ]
       },
       "KR": {
-        "name": "{nickname}",
-        "subtitle": null,
+        "name": "남성 주인공",
+        "subtitle": "Vita / Mors",
         "birthday": null,
         "force": null,
         "campName": "무소속",
@@ -8275,8 +8522,8 @@
         ]
       },
       "TC": {
-        "name": "{nickname}",
-        "subtitle": null,
+        "name": "男主角",
+        "subtitle": "Vita / Mors",
         "birthday": null,
         "force": null,
         "campName": "無陣營",
@@ -8289,278 +8536,525 @@
           "[回魂]觸發[漆黑之手]效果的攻擊次數增加至3次。觸發效果時，自身獲得#5的全屬性穿透，持續#6秒。"
         ]
       }
-    }
-  },
-  {
-    "id": "char-nanzhu",
-    "charId": 160101,
-    "internalName": "Nanzhu",
-    "element": {
-      "key": "Light",
-      "label": "Lumino"
     },
-    "weaponTags": [
-      "Sword",
-      "Machinegun"
-    ],
-    "camp": {
-      "key": "None",
-      "nameKey": "Camp_Name_None",
-      "iconGamePath": "/Game/UI/Texture/Dynamic/Image/Camp/T_Gacha_CampIcon_NoCamp.T_Gacha_CampIcon_NoCamp"
-    },
-    "rarity": 5,
-    "maxLevel": 80,
-    "colorVar": null,
-    "gender": null,
-    "sortPriority": 5015,
-    "charPieceId": 1001601,
-    "unlockRequiredPiece": 30,
-    "intronLevels": [
+    "elements": [
       {
-        "cardLevel": 0,
-        "resourceId": 1001601,
-        "resourceNum": 30
+        "key": "Dark",
+        "label": "Umbro"
       },
       {
-        "cardLevel": 1,
-        "resourceId": 1001601,
-        "resourceNum": 30
-      },
-      {
-        "cardLevel": 2,
-        "resourceId": 1001601,
-        "resourceNum": 30
-      },
-      {
-        "cardLevel": 3,
-        "resourceId": 1001601,
-        "resourceNum": 30
-      },
-      {
-        "cardLevel": 4,
-        "resourceId": 1001601,
-        "resourceNum": 30
-      },
-      {
-        "cardLevel": 5,
-        "resourceId": 1001601,
-        "resourceNum": 30
+        "key": "Light",
+        "label": "Lumino"
       }
     ],
-    "intronDescriptionKeys": [
-      "GRADEUP_1601_01",
-      "GRADEUP_1601_02",
-      "GRADEUP_1601_03",
-      "GRADEUP_1601_04",
-      "GRADEUP_1601_05",
-      "GRADEUP_1601_06"
-    ],
-    "intronParameters": [
-      "$#PassiveEffect[160101].Vars.AddDamageRate*100$%",
-      "$#SkillCreature[160103].TimeLife$",
-      "$#Buff[160102].AddAttrs[1].Value*(-100)$%",
-      "$#Buff[160103].AddAttrs[1].Value*100$%",
-      "$#PassiveEffect[160101].Vars.BuffLastTime$",
-      "$#Buff[160103].MaxLayer$",
-      "$#Buff[160104].AddAttrs[1].Value*100$%"
-    ],
-    "baseStats": {
-      "atk": 22,
-      "atkGrowCurve": "ATKA",
-      "def": 300,
-      "defGrowCurve": "DEFA",
-      "maxHp": 120,
-      "maxHpGrowCurve": "MaxHpA",
-      "maxES": 120,
-      "maxESGrowCurve": "MaxESA",
-      "maxSp": 100
-    },
-    "addonAttrs": [
-      {
-        "attrId": 160101,
-        "attrName": "SkillSustain",
-        "rate": 0.06,
-        "iconPath": "/assets/characters/skills/T_SkillTalent_11.png",
-        "nameKey": "ADDONATTR_160101_NAME"
+    "variants": {
+      "Dark": {
+        "charId": 120101,
+        "internalName": "Nanzhu02",
+        "element": {
+          "key": "Dark",
+          "label": "Umbro"
+        },
+        "weaponTags": [
+          "Sword",
+          "Machinegun"
+        ],
+        "maxLevel": 80,
+        "baseStats": {
+          "atk": 20,
+          "atkGrowCurve": "ATKA",
+          "def": 300,
+          "defGrowCurve": "DEFA",
+          "maxHp": 100,
+          "maxHpGrowCurve": "MaxHpA",
+          "maxES": 100,
+          "maxESGrowCurve": "MaxESA",
+          "maxSp": 150
+        },
+        "addonAttrs": [
+          {
+            "attrId": 120101,
+            "attrName": "ATK",
+            "rate": 0.2,
+            "iconPath": "/assets/characters/skills/T_SkillTalent_08.png",
+            "nameKey": "ADDONATTR_120101_NAME"
+          },
+          {
+            "attrId": 120102,
+            "attrName": "ATK",
+            "rate": 0.3,
+            "iconPath": "/assets/characters/skills/T_SkillTalent_08.png",
+            "nameKey": "ADDONATTR_120102_NAME"
+          },
+          {
+            "attrId": 120103,
+            "attrName": "SkillSustain",
+            "rate": 0.06,
+            "iconPath": "/assets/characters/skills/T_SkillTalent_11.png",
+            "nameKey": "ADDONATTR_120103_NAME"
+          },
+          {
+            "attrId": 120104,
+            "attrName": "SkillSustain",
+            "rate": 0.09,
+            "iconPath": "/assets/characters/skills/T_SkillTalent_11.png",
+            "nameKey": "ADDONATTR_120104_NAME"
+          }
+        ],
+        "positioning": [
+          "DPS",
+          "WeaponDPS"
+        ],
+        "recommendAttr": [],
+        "ascensionLevels": [
+          20,
+          30,
+          40,
+          50,
+          60,
+          70
+        ],
+        "intronLevels": [
+          {
+            "cardLevel": 0,
+            "resourceId": 1001201,
+            "resourceNum": 30
+          },
+          {
+            "cardLevel": 1,
+            "resourceId": 1001201,
+            "resourceNum": 30
+          },
+          {
+            "cardLevel": 2,
+            "resourceId": 1001201,
+            "resourceNum": 30
+          },
+          {
+            "cardLevel": 3,
+            "resourceId": 1001201,
+            "resourceNum": 30
+          },
+          {
+            "cardLevel": 4,
+            "resourceId": 1001201,
+            "resourceNum": 30
+          },
+          {
+            "cardLevel": 5,
+            "resourceId": 1001201,
+            "resourceNum": 30
+          }
+        ],
+        "intronDescriptionKeys": [
+          "GRADEUP_1201_01",
+          "GRADEUP_1201_02",
+          "GRADEUP_1201_03",
+          "GRADEUP_1201_04",
+          "GRADEUP_1201_05",
+          "GRADEUP_1201_06"
+        ],
+        "intronParameters": [
+          "$#SkillEffects[120133].TaskEffects[2].ComboCount$",
+          "$#SkillCreature[120121].TimeLife$",
+          "$#Buff[120103].AddAttrs[1].Value*(-100)$%",
+          "$#SkillEffects[120125].TaskEffects[2].Rate*100$%",
+          "$#Buff[120112].AddAttrs[1].Value*100$%",
+          "$#PassiveEffect[120101].Vars.Grade6BuffLastTime$"
+        ],
+        "portraits": {
+          "gacha": {
+            "publicPath": "/assets/characters/gacha/T_Gacha_AvatarNanzhu02.png"
+          },
+          "head": {
+            "publicPath": "/assets/characters/head/T_Head_Nanzhu02.png"
+          },
+          "icon": {
+            "publicPath": null
+          },
+          "bust": {
+            "publicPath": "/assets/characters/bust/T_Bust_Nanzhu02.png"
+          },
+          "phantom": {
+            "publicPath": "/assets/characters/phantom/T_Phantom_Nanzhu02.png"
+          },
+          "charpiece": {
+            "publicPath": null
+          }
+        },
+        "skillIcons": {
+          "skill1": {
+            "publicPath": null
+          },
+          "skill2": {
+            "publicPath": null
+          },
+          "skill3": {
+            "publicPath": null
+          }
+        },
+        "consonanceWeapons": [],
+        "translations": {
+          "DE": {
+            "name": "{nickname}",
+            "subtitle": null,
+            "birthday": null,
+            "force": null,
+            "campName": "Sin afiliación",
+            "intronEffects": [
+              "Cuando [Retorno vital] activa el efecto de [La mano oscura], otorga #1 punto(s) de combo.",
+              "Al lanzar [Himno del Mar Nebuloso], genera un campo de [Prisma oscuro] con un radio de 10 metros que dura #2 s. El rango del efecto está sujeto al alcance de la habilidad y la duración a la duración de la habilidad.\nLos enemigos dentro del campo reciben de manera continua una reducción de la Vel. de Movimiento del #3 y sufren un daño equivalente al #4 del ATQ del personaje una vez por segundo.",
+              "[Marcha nocturna] nivel +2, [Retorno vital] nivel +1.",
+              "[Retorno vital] ahora requiere solo 6 Ataques Normales de Cuerpo a Cuerpo para hacer que [La mano oscura] ataque.",
+              "[Himno del Mar Nebuloso] nivel +2, [Retorno vital] nivel +1.",
+              "La cantidad de ataques de [Retorno vital] que activan el efecto de [La mano oscura] aumenta a 3. Al activarse, otorga un #5 de Penetración total de atributos durante #6 s."
+            ]
+          },
+          "EN": {
+            "name": "{nickname}",
+            "subtitle": null,
+            "birthday": null,
+            "force": null,
+            "campName": "No Affiliation",
+            "intronEffects": [
+              "When [Soul Refrain] causes [Tenebrous Hand] to attack, the caster gains #1 Combo Points.",
+              null,
+              "[Nightwalk] Level +2, [Soul Refrain] Level +1.",
+              "[Soul Refrain] now requires only 6 Melee Normal Attacks to cause [Tenebrous Hand] to attack.",
+              "[Hymn of the Misty Sea] Level +2, [Soul Refrain] Level +1.",
+              "When [Soul Refrain] causes [Tenebrous Hand] to attack, it attacks 3 times instead. When this occurs, the caster gains #5 PEN stats for #6s."
+            ]
+          },
+          "ES": {
+            "name": "{nickname}",
+            "subtitle": null,
+            "birthday": null,
+            "force": null,
+            "campName": "Sin afiliación",
+            "intronEffects": [
+              "Cuando [Retorno vital] activa el efecto de [La mano oscura], otorga #1 punto(s) de combo.",
+              "Al lanzar [Himno del Mar Nebuloso], genera un campo de [Prisma oscuro] con un radio de 10 metros que dura #2 s. El rango del efecto está sujeto al alcance de la habilidad y la duración a la duración de la habilidad.\nLos enemigos dentro del campo reciben de manera continua una reducción de la Vel. de Movimiento del #3 y sufren un daño equivalente al #4 del ATQ del personaje una vez por segundo.",
+              "[Marcha nocturna] nivel +2, [Retorno vital] nivel +1.",
+              "[Retorno vital] ahora requiere solo 6 Ataques Normales de Cuerpo a Cuerpo para hacer que [La mano oscura] ataque.",
+              "[Himno del Mar Nebuloso] nivel +2, [Retorno vital] nivel +1.",
+              "La cantidad de ataques de [Retorno vital] que activan el efecto de [La mano oscura] aumenta a 3. Al activarse, otorga un #5 de Penetración total de atributos durante #6 s."
+            ]
+          },
+          "FR": {
+            "name": "{nickname}",
+            "subtitle": null,
+            "birthday": null,
+            "force": null,
+            "campName": "Aucune affiliation",
+            "intronEffects": [
+              "Lorsque [Refrain de l’âme] déclenche l’effet de [Main d’ébène], le personnage obtient #1 point de Combo.",
+              "Lors de l’utilisation de [Hymne de la Mer du Silence], crée un champ [Prisme ombral] de 10 mètres de rayon pendant #2 s. La portée du champ est affectée par la Portée des compétences, et sa durée par la Durée des compétences.\nLes ennemis à l’intérieur du champ subissent continuellement une réduction de Vitesse de déplacement de #3 et reçoivent chaque seconde des dégâts équivalents à #4 de l’ATQ du personnage.",
+              "[Marche nocturne] niveau +2 ; [Refrain de l’âme] niveau +1.",
+              "Le nombre d’attaques normales de mêlée nécessaires à [Refrain de l’âme] pour déclencher l’effet de [Main d’ébène] est réduit à 6.",
+              "[Hymne de la Mer du Silence] niveau +2 ; [Refrain de l’âme] niveau +1.",
+              "Lorsque [Refrain de l’âme] déclenche l’effet de [Main d’ébène], celle-ci attaque désormais 3 fois. Lors du déclenchement, le personnage obtient #5 de pénétration de tous les attributs pendant #6 s."
+            ]
+          },
+          "JP": {
+            "name": "{nickname}",
+            "subtitle": null,
+            "birthday": null,
+            "force": null,
+            "campName": "無所属",
+            "intronEffects": [
+              "[反魂]が[漆黒の手]の効果を発動した時、自身は#1コンボポイントを獲得する。",
+              "[ニヴルヘイムの祈り]を発動した時、半径10メートルの[暗色プリズム]領域を1つ生成する。持続時間は#2秒。効果範囲はスキル範囲補正の影響を受け、持続時間はスキル耐久補正の影響を受ける。\n 領域内の敵には、移動速度#3ダウンの効果が持続的に付与され、毎秒1回、#4キャラクター攻撃分のダメージを受ける。",
+              "[夜を往く]レベル+2、[反魂]レベル+1。",
+              "[反魂]が[漆黒の手]効果を発動するために必要な近接通常攻撃回数が6回に減少する。",
+              "[ニヴルヘイムの祈り]レベル+2、[反魂]レベル+1。",
+              "[反魂]が[漆黒の手]効果で発動する攻撃回数が3回に増加する。効果発動時、自身は#5の全属性貫通を獲得する。持続時間は#6秒。"
+            ]
+          },
+          "KR": {
+            "name": "{nickname}",
+            "subtitle": null,
+            "birthday": null,
+            "force": null,
+            "campName": "무소속",
+            "intronEffects": [
+              "[혼의 귀환]이 [칠흑의 손]의 효과 발동 시 자신이 #1 콤보 포인트를 획득한다.",
+              "[안개 바다의 기도] 시전 시 반경 10m의 [다크 프리즘] 영역을 생성한다. 지속 시간 #2초. 효과 범위는 스킬 범위 보정을 받고, 지속 시간은 스킬 지속 보정을 받는다.\n영역 내 적들은 지속적으로 이동 속도 #3 감소 효과를 받으며, 초당 캐릭터 공격력 #4의 대미지를 1회 받는다.",
+              "[밤의 행차] 레벨+2, [혼의 귀환] 레벨+1.",
+              "[혼의 귀환]의 [칠흑의 손] 효과 발동에 필요한 근접 기본 공격 횟수가 6회로 감소한다.",
+              "[안개 바다의 기도] 레벨+2, [혼의 귀환] 레벨+1.",
+              "[혼의 귀환]의 [칠흑의 손] 효과 발동에 필요한 공격 횟수가 3회로 증가하고, 효과 발동 시 자신이 모든 속성 관통을 #5 획득한다. 지속 시간 #6초."
+            ]
+          },
+          "TC": {
+            "name": "{nickname}",
+            "subtitle": null,
+            "birthday": null,
+            "force": null,
+            "campName": "無陣營",
+            "intronEffects": [
+              "[回魂]觸發[漆黑之手]的效果時，自身獲得#1連擊點數。",
+              "釋放[霧海禱音]時，生成1個半徑10米的[暗色稜鏡]領域，持續#2秒，效果範圍受技能範圍修正，持續時間受技能耐久修正。\n領域內的敵人被持續附加移動速度降低#3的效果，每秒受到1次#4角色攻擊的傷害。",
+              "[夜行]等級+2，[回魂]等級+1。",
+              "[回魂]觸發[漆黑之手]效果所需的近戰普通攻擊次數減少至6次。",
+              "[霧海禱音]等級+2，[回魂]等級+1。",
+              "[回魂]觸發[漆黑之手]效果的攻擊次數增加至3次。觸發效果時，自身獲得#5的全屬性穿透，持續#6秒。"
+            ]
+          }
+        }
       },
-      {
-        "attrId": 160102,
-        "attrName": "SkillSustain",
-        "rate": 0.09,
-        "iconPath": "/assets/characters/skills/T_SkillTalent_11.png",
-        "nameKey": "ADDONATTR_160102_NAME"
-      },
-      {
-        "attrId": 160103,
-        "attrName": "SkillRange",
-        "rate": 0.12,
-        "iconPath": "/assets/characters/skills/T_SkillTalent_10.png",
-        "nameKey": "ADDONATTR_160103_NAME"
-      },
-      {
-        "attrId": 160104,
-        "attrName": "SkillRange",
-        "rate": 0.18,
-        "iconPath": "/assets/characters/skills/T_SkillTalent_10.png",
-        "nameKey": "ADDONATTR_160104_NAME"
-      }
-    ],
-    "positioning": [
-      "Support"
-    ],
-    "recommendAttr": [],
-    "ascensionLevels": [
-      20,
-      30,
-      40,
-      50,
-      60,
-      70
-    ],
-    "textKeys": {
-      "nameKey": "UI_CHAR_NAME_160101",
-      "subtitleKey": "UI_CHAR_SUBTITLE_160101",
-      "birthdayKey": null,
-      "forceKey": null,
-      "campNameKey": "Camp_Name_None"
-    },
-    "portraits": {
-      "gacha": {
-        "publicPath": "/assets/characters/gacha/T_Gacha_AvatarNanzhu.png"
-      },
-      "head": {
-        "publicPath": "/assets/characters/head/T_Head_Nanzhu.png"
-      },
-      "icon": {
-        "publicPath": "/assets/characters/icon/T_Icon_Nanzhu.png"
-      },
-      "bust": {
-        "publicPath": null
-      },
-      "phantom": {
-        "publicPath": "/assets/characters/phantom/T_Phantom_Nanzhu.png"
-      },
-      "charpiece": {
-        "publicPath": null
-      }
-    },
-    "consonanceWeapons": [],
-    "skillIcons": {
-      "skill1": {
-        "publicPath": null
-      },
-      "skill2": {
-        "publicPath": null
-      },
-      "skill3": {
-        "publicPath": null
-      }
-    },
-    "translations": {
-      "DE": {
-        "name": "Protagonist",
-        "subtitle": "Vita / Mors",
-        "birthday": null,
-        "force": null,
-        "campName": "Sin afiliación",
-        "intronEffects": [
-          "Con [Incandescencia], las ondas de espada de [Aurora y Crepúsculo] infligen #1 más de daño.",
-          "Al usar [Llamarada], crea un campo [Prisma] de 10 m de radio que dura #2 s. Los enemigos dentro del campo sufren una reducción continua de Velocidad de Movimiento de #3.",
-          "[Aurora y Crepúsculo] nivel +2, [Difusión] nivel +1.",
-          "Al usar una Habilidad de combate, obtienes Velocidad de Ataque +#4 durante #5 s, hasta #6 acumulaciones.",
-          "[Llamarada] nivel +2, [Difusión] nivel +1.",
-          "[Incandescencia] también otorga Prob. CRIT +#7."
-        ]
-      },
-      "EN": {
-        "name": "Male Protagonist",
-        "subtitle": "Vita / Mors",
-        "birthday": null,
-        "force": null,
-        "campName": "No Affiliation",
-        "intronEffects": [
-          "While under [Incandescence], [Dawn Beyond Night]'s Swordwaves deal #1 more damage.",
-          "Casting [Flare] creates a [Prism] field with a 10-metre radius that lasts for #2s. Continuously reduces the Movement Speed of enemies inside by #3.",
-          "[Dawn Beyond Night] Level +2, [Diffusion] Level +1.",
-          "Using a skill grants +#4 ATK Speed for #5s, stacking up to #6 times.",
-          "[Flare] Level +2, [Diffusion] Level +1.",
-          "[Incandescence] additionally grants +#7 CRIT Chance."
-        ]
-      },
-      "ES": {
-        "name": "Protagonista Masculino",
-        "subtitle": "Vita / Mors",
-        "birthday": null,
-        "force": null,
-        "campName": "Sin afiliación",
-        "intronEffects": [
-          "Con [Incandescencia], las ondas de espada de [Aurora y Crepúsculo] infligen #1 más de daño.",
-          "Al usar [Llamarada], crea un campo [Prisma] de 10 m de radio que dura #2 s. Los enemigos dentro del campo sufren una reducción continua de Velocidad de Movimiento de #3.",
-          "[Aurora y Crepúsculo] nivel +2, [Difusión] nivel +1.",
-          "Al usar una Habilidad de combate, obtienes Velocidad de Ataque +#4 durante #5 s, hasta #6 acumulaciones.",
-          "[Llamarada] nivel +2, [Difusión] nivel +1.",
-          "[Incandescencia] también otorga Prob. CRIT +#7."
-        ]
-      },
-      "FR": {
-        "name": "Protagoniste Masculin",
-        "subtitle": "Vita / Mors",
-        "birthday": null,
-        "force": null,
-        "campName": "Aucune affiliation",
-        "intronEffects": [
-          "Sous [Incandescence], les ondes tranchantes d’[Aurore et Crépuscule] infligent +#1 dégâts.",
-          "Lors de l’utilisation de [Flamboiement], crée une zone [Prisme] de 10 m de rayon durant #2 s. Les ennemis présents dans la zone voient leur Vitesse de déplacement réduite de #3 en continu.",
-          "[Aurore et Crépuscule] niveau +2 ; [Diffusion] niveau +1.",
-          "L’utilisation d’une compétence confère +#4 de Vitesse d’attaque pendant #5 s, jusqu’à #6 cumuls.",
-          "[Flamboiement] niveau +2 ; [Diffusion] niveau +1.",
-          "[Incandescence] confère également +#7 de Taux CRIT."
-        ]
-      },
-      "JP": {
-        "name": "男性主人公",
-        "subtitle": "Vita / Mors",
-        "birthday": null,
-        "force": null,
-        "campName": "無所属",
-        "intronEffects": [
-          "自身が「白熱」を持つ時、「晨昏」の剣気ダメージが#1アップする。",
-          "「飛芒」を発動すると、半径10メートルに#2秒間持続する「プリズム」領域を1個生成する。領域内の敵は、移動速度低下#3の効果を継続的に付与される。",
-          "「晨昏」レベル+2、「散射」レベル+1。",
-          "スキル発動時、自身に攻撃速度アップ#4を1スタック付与（#5秒継続、最大#6スタックまで重ねがけ可）。",
-          "「飛芒」レベル+2、「散射」レベル+1。",
-          "「白熱」は追加でクリティカル率アップ#7を付与する。"
-        ]
-      },
-      "KR": {
-        "name": "남성 주인공",
-        "subtitle": "Vita / Mors",
-        "birthday": null,
-        "force": null,
-        "campName": "무소속",
-        "intronEffects": [
-          "자신이 [백열] 보유 시 [조석]의 검기 대미지가 #1 상승한다.",
-          "[빛보라] 발동 시, 반경 10m의 [프리즘] 영역을 1개 생성한다, 지속 시간 #2초. 영역 내의 적에게 이동 속도 감소 #3 효과를 부여한다.",
-          "[조석] 레벨+2, [난반사] 레벨+1",
-          "스킬 시전 시, 자신이 1단계의 공격 속도 #4 상승 효과를 획득한다. 지속 시간 #5초, 최대 #6단계 중첩.",
-          "[빛보라] 레벨+2, [난반사] 레벨+1",
-          "[백열]이 추가로 크리티컬 확률 #7 상승 효과를 제공한다."
-        ]
-      },
-      "TC": {
-        "name": "男主角",
-        "subtitle": "Vita / Mors",
-        "birthday": null,
-        "force": null,
-        "campName": "無陣營",
-        "intronEffects": [
-          "自身帶有[白熾]時，[晨昏]的劍氣傷害提高#1。",
-          "釋放[飛芒]時，生成1個半徑10米[稜鏡]領域，持續#2秒。領域內的敵人被持續附加移動速度降低#3的效果。",
-          "[晨昏]等級+2，[散射]等級+1。",
-          "釋放技能時，自身獲得1層攻擊速度提高#4的效果，持續#5秒，最多疊加#6層。",
-          "[飛芒]等級+2，[散射]等級+1。",
-          "[白熾]額外提供暴擊率提高#7的效果。"
-        ]
+      "Light": {
+        "charId": 160101,
+        "internalName": "Nanzhu",
+        "element": {
+          "key": "Light",
+          "label": "Lumino"
+        },
+        "weaponTags": [
+          "Sword",
+          "Machinegun"
+        ],
+        "maxLevel": 80,
+        "baseStats": {
+          "atk": 22,
+          "atkGrowCurve": "ATKA",
+          "def": 300,
+          "defGrowCurve": "DEFA",
+          "maxHp": 120,
+          "maxHpGrowCurve": "MaxHpA",
+          "maxES": 120,
+          "maxESGrowCurve": "MaxESA",
+          "maxSp": 100
+        },
+        "addonAttrs": [
+          {
+            "attrId": 160101,
+            "attrName": "SkillSustain",
+            "rate": 0.06,
+            "iconPath": "/assets/characters/skills/T_SkillTalent_11.png",
+            "nameKey": "ADDONATTR_160101_NAME"
+          },
+          {
+            "attrId": 160102,
+            "attrName": "SkillSustain",
+            "rate": 0.09,
+            "iconPath": "/assets/characters/skills/T_SkillTalent_11.png",
+            "nameKey": "ADDONATTR_160102_NAME"
+          },
+          {
+            "attrId": 160103,
+            "attrName": "SkillRange",
+            "rate": 0.12,
+            "iconPath": "/assets/characters/skills/T_SkillTalent_10.png",
+            "nameKey": "ADDONATTR_160103_NAME"
+          },
+          {
+            "attrId": 160104,
+            "attrName": "SkillRange",
+            "rate": 0.18,
+            "iconPath": "/assets/characters/skills/T_SkillTalent_10.png",
+            "nameKey": "ADDONATTR_160104_NAME"
+          }
+        ],
+        "positioning": [
+          "Support"
+        ],
+        "recommendAttr": [],
+        "ascensionLevels": [
+          20,
+          30,
+          40,
+          50,
+          60,
+          70
+        ],
+        "intronLevels": [
+          {
+            "cardLevel": 0,
+            "resourceId": 1001601,
+            "resourceNum": 30
+          },
+          {
+            "cardLevel": 1,
+            "resourceId": 1001601,
+            "resourceNum": 30
+          },
+          {
+            "cardLevel": 2,
+            "resourceId": 1001601,
+            "resourceNum": 30
+          },
+          {
+            "cardLevel": 3,
+            "resourceId": 1001601,
+            "resourceNum": 30
+          },
+          {
+            "cardLevel": 4,
+            "resourceId": 1001601,
+            "resourceNum": 30
+          },
+          {
+            "cardLevel": 5,
+            "resourceId": 1001601,
+            "resourceNum": 30
+          }
+        ],
+        "intronDescriptionKeys": [
+          "GRADEUP_1601_01",
+          "GRADEUP_1601_02",
+          "GRADEUP_1601_03",
+          "GRADEUP_1601_04",
+          "GRADEUP_1601_05",
+          "GRADEUP_1601_06"
+        ],
+        "intronParameters": [
+          "$#PassiveEffect[160101].Vars.AddDamageRate*100$%",
+          "$#SkillCreature[160103].TimeLife$",
+          "$#Buff[160102].AddAttrs[1].Value*(-100)$%",
+          "$#Buff[160103].AddAttrs[1].Value*100$%",
+          "$#PassiveEffect[160101].Vars.BuffLastTime$",
+          "$#Buff[160103].MaxLayer$",
+          "$#Buff[160104].AddAttrs[1].Value*100$%"
+        ],
+        "portraits": {
+          "gacha": {
+            "publicPath": "/assets/characters/gacha/T_Gacha_AvatarNanzhu.png"
+          },
+          "head": {
+            "publicPath": "/assets/characters/head/T_Head_Nanzhu.png"
+          },
+          "icon": {
+            "publicPath": "/assets/characters/icon/T_Icon_Nanzhu.png"
+          },
+          "bust": {
+            "publicPath": null
+          },
+          "phantom": {
+            "publicPath": "/assets/characters/phantom/T_Phantom_Nanzhu.png"
+          },
+          "charpiece": {
+            "publicPath": null
+          }
+        },
+        "skillIcons": {
+          "skill1": {
+            "publicPath": null
+          },
+          "skill2": {
+            "publicPath": null
+          },
+          "skill3": {
+            "publicPath": null
+          }
+        },
+        "consonanceWeapons": [],
+        "translations": {
+          "DE": {
+            "name": "Protagonist",
+            "subtitle": "Vita / Mors",
+            "birthday": null,
+            "force": null,
+            "campName": "Sin afiliación",
+            "intronEffects": [
+              "Con [Incandescencia], las ondas de espada de [Aurora y Crepúsculo] infligen #1 más de daño.",
+              "Al usar [Llamarada], crea un campo [Prisma] de 10 m de radio que dura #2 s. Los enemigos dentro del campo sufren una reducción continua de Velocidad de Movimiento de #3.",
+              "[Aurora y Crepúsculo] nivel +2, [Difusión] nivel +1.",
+              "Al usar una Habilidad de combate, obtienes Velocidad de Ataque +#4 durante #5 s, hasta #6 acumulaciones.",
+              "[Llamarada] nivel +2, [Difusión] nivel +1.",
+              "[Incandescencia] también otorga Prob. CRIT +#7."
+            ]
+          },
+          "EN": {
+            "name": "Male Protagonist",
+            "subtitle": "Vita / Mors",
+            "birthday": null,
+            "force": null,
+            "campName": "No Affiliation",
+            "intronEffects": [
+              "While under [Incandescence], [Dawn Beyond Night]'s Swordwaves deal #1 more damage.",
+              "Casting [Flare] creates a [Prism] field with a 10-metre radius that lasts for #2s. Continuously reduces the Movement Speed of enemies inside by #3.",
+              "[Dawn Beyond Night] Level +2, [Diffusion] Level +1.",
+              "Using a skill grants +#4 ATK Speed for #5s, stacking up to #6 times.",
+              "[Flare] Level +2, [Diffusion] Level +1.",
+              "[Incandescence] additionally grants +#7 CRIT Chance."
+            ]
+          },
+          "ES": {
+            "name": "Protagonista Masculino",
+            "subtitle": "Vita / Mors",
+            "birthday": null,
+            "force": null,
+            "campName": "Sin afiliación",
+            "intronEffects": [
+              "Con [Incandescencia], las ondas de espada de [Aurora y Crepúsculo] infligen #1 más de daño.",
+              "Al usar [Llamarada], crea un campo [Prisma] de 10 m de radio que dura #2 s. Los enemigos dentro del campo sufren una reducción continua de Velocidad de Movimiento de #3.",
+              "[Aurora y Crepúsculo] nivel +2, [Difusión] nivel +1.",
+              "Al usar una Habilidad de combate, obtienes Velocidad de Ataque +#4 durante #5 s, hasta #6 acumulaciones.",
+              "[Llamarada] nivel +2, [Difusión] nivel +1.",
+              "[Incandescencia] también otorga Prob. CRIT +#7."
+            ]
+          },
+          "FR": {
+            "name": "Protagoniste Masculin",
+            "subtitle": "Vita / Mors",
+            "birthday": null,
+            "force": null,
+            "campName": "Aucune affiliation",
+            "intronEffects": [
+              "Sous [Incandescence], les ondes tranchantes d’[Aurore et Crépuscule] infligent +#1 dégâts.",
+              "Lors de l’utilisation de [Flamboiement], crée une zone [Prisme] de 10 m de rayon durant #2 s. Les ennemis présents dans la zone voient leur Vitesse de déplacement réduite de #3 en continu.",
+              "[Aurore et Crépuscule] niveau +2 ; [Diffusion] niveau +1.",
+              "L’utilisation d’une compétence confère +#4 de Vitesse d’attaque pendant #5 s, jusqu’à #6 cumuls.",
+              "[Flamboiement] niveau +2 ; [Diffusion] niveau +1.",
+              "[Incandescence] confère également +#7 de Taux CRIT."
+            ]
+          },
+          "JP": {
+            "name": "男性主人公",
+            "subtitle": "Vita / Mors",
+            "birthday": null,
+            "force": null,
+            "campName": "無所属",
+            "intronEffects": [
+              "自身が「白熱」を持つ時、「晨昏」の剣気ダメージが#1アップする。",
+              "「飛芒」を発動すると、半径10メートルに#2秒間持続する「プリズム」領域を1個生成する。領域内の敵は、移動速度低下#3の効果を継続的に付与される。",
+              "「晨昏」レベル+2、「散射」レベル+1。",
+              "スキル発動時、自身に攻撃速度アップ#4を1スタック付与（#5秒継続、最大#6スタックまで重ねがけ可）。",
+              "「飛芒」レベル+2、「散射」レベル+1。",
+              "「白熱」は追加でクリティカル率アップ#7を付与する。"
+            ]
+          },
+          "KR": {
+            "name": "남성 주인공",
+            "subtitle": "Vita / Mors",
+            "birthday": null,
+            "force": null,
+            "campName": "무소속",
+            "intronEffects": [
+              "자신이 [백열] 보유 시 [조석]의 검기 대미지가 #1 상승한다.",
+              "[빛보라] 발동 시, 반경 10m의 [프리즘] 영역을 1개 생성한다, 지속 시간 #2초. 영역 내의 적에게 이동 속도 감소 #3 효과를 부여한다.",
+              "[조석] 레벨+2, [난반사] 레벨+1",
+              "스킬 시전 시, 자신이 1단계의 공격 속도 #4 상승 효과를 획득한다. 지속 시간 #5초, 최대 #6단계 중첩.",
+              "[빛보라] 레벨+2, [난반사] 레벨+1",
+              "[백열]이 추가로 크리티컬 확률 #7 상승 효과를 제공한다."
+            ]
+          },
+          "TC": {
+            "name": "男主角",
+            "subtitle": "Vita / Mors",
+            "birthday": null,
+            "force": null,
+            "campName": "無陣營",
+            "intronEffects": [
+              "自身帶有[白熾]時，[晨昏]的劍氣傷害提高#1。",
+              "釋放[飛芒]時，生成1個半徑10米[稜鏡]領域，持續#2秒。領域內的敵人被持續附加移動速度降低#3的效果。",
+              "[晨昏]等級+2，[散射]等級+1。",
+              "釋放技能時，自身獲得1層攻擊速度提高#4的效果，持續#5秒，最多疊加#6層。",
+              "[飛芒]等級+2，[散射]等級+1。",
+              "[白熾]額外提供暴擊率提高#7的效果。"
+            ]
+          }
+        }
       }
     }
   }

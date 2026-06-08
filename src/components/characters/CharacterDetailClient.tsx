@@ -26,7 +26,10 @@ import QuickBuildModal, { QuickBuildCard } from "@/components/characters/QuickBu
 import { useAtom } from "jotai";
 import { parseAsBoolean, parseAsStringLiteral, useQueryState } from "nuqs";
 import {
+  getActiveCharacterView,
   getAllCharacters,
+  getCharacterElements,
+  getCharacterSkills,
   getCharacterSlug,
   getCharacterTranslation,
   getLanguageLabel,
@@ -1456,7 +1459,7 @@ function BuildTabContent({
 
 export default function CharacterDetailClient({
   catalog,
-  character,
+  character: baseCharacter,
   levelUpCurves,
   builds = [],
   skillSet,
@@ -1465,6 +1468,45 @@ export default function CharacterDetailClient({
   const tc = useTranslations('common');
   const [favoriteChars] = useAtom(charactersFavoritesAtom);
   const [, toggleFavorite] = useAtom(toggleCharacterFavoriteAtom);
+
+  // --- Element state (multi-element characters, e.g. the protagonist) ---
+  // `baseCharacter` is the canonical unified record; `character` below is the
+  // flattened view for the selected element. Single-element characters have no
+  // `variants`, so the view is identical to the record and the selector is hidden.
+  const elementOptions = useMemo(
+    () => getCharacterElements(baseCharacter),
+    [baseCharacter],
+  );
+  const hasElementSwitch = (baseCharacter.elements?.length ?? 0) > 1;
+  const elementParser = useMemo(
+    () =>
+      parseAsStringLiteral(elementOptions.map((e) => e.key))
+        .withDefault(baseCharacter.element.key)
+        .withOptions({ clearOnDefault: true }),
+    [elementOptions, baseCharacter.element.key],
+  );
+  const [selectedElement, setSelectedElement] = useQueryState(
+    "element",
+    elementParser,
+  );
+
+  const character = useMemo(
+    () => getActiveCharacterView(baseCharacter, selectedElement),
+    [baseCharacter, selectedElement],
+  );
+
+  // Skills depend on the active element (each variant keeps its own charId).
+  const activeSkillSet = useMemo(
+    () => getCharacterSkills(character.charId) ?? skillSet ?? null,
+    [character.charId, skillSet],
+  );
+
+  // Builds tagged with an element are shown only for that element; untagged
+  // builds apply to every element (single-element characters).
+  const activeBuilds = useMemo(
+    () => builds.filter((b) => !b.element || b.element === character.element.key),
+    [builds, character.element.key],
+  );
 
   // --- Language state ---
   const locale = useLocale();
@@ -1609,7 +1651,7 @@ export default function CharacterDetailClient({
               />
               {isFavorite ? tc('removeFavorite') : tc('addFavorite')}
             </button>
-            {builds.length > 0 && (
+            {activeBuilds.length > 0 && (
               <button
                 type="button"
                 onClick={() => setQuickBuildOpen(true)}
@@ -1639,6 +1681,35 @@ export default function CharacterDetailClient({
               >
                 <ChevronRight className="h-4 w-4" />
               </Link>
+            )}
+
+            {hasElementSwitch && (
+              <div className="flex items-center gap-1 rounded-lg border border-slate-700/70 bg-slate-950/60 p-1">
+                {elementOptions.map((el) => {
+                  const isActive = character.element.key === el.key;
+                  const style = ELEMENT_COLORS[el.key];
+                  const icon = ELEMENT_ICONS[el.key];
+                  return (
+                    <button
+                      key={el.key}
+                      type="button"
+                      onClick={() => setSelectedElement(el.key)}
+                      aria-pressed={isActive}
+                      title={el.label}
+                      className={`inline-flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-sm font-medium transition-colors ${
+                        isActive
+                          ? `border ${style?.border ?? "border-indigo-400/60"} ${style?.bg ?? "bg-indigo-500/20"} ${style?.text ?? "text-indigo-100"}`
+                          : "border border-transparent text-slate-300 hover:text-white"
+                      }`}
+                    >
+                      {icon && (
+                        <img src={icon} alt="" className="h-4 w-4 object-contain" />
+                      )}
+                      {el.label}
+                    </button>
+                  );
+                })}
+              </div>
             )}
 
             <div className="flex items-center gap-2 rounded-lg border border-slate-700/70 bg-slate-950/60 px-3 py-2">
@@ -2144,7 +2215,7 @@ export default function CharacterDetailClient({
       {/* ---------- Build tab ---------- */}
       {activeTab === "build" && (
         <BuildTabContent
-          builds={builds}
+          builds={activeBuilds}
           character={character}
           characterElement={character.element.key}
           selectedLanguage={selectedLanguage}
@@ -2156,7 +2227,7 @@ export default function CharacterDetailClient({
       {/* ---------- Skills tab ---------- */}
       {activeTab === "skills" && (
         <SkillsTabContent
-          skillSet={skillSet ?? null}
+          skillSet={activeSkillSet}
           selectedLanguage={selectedLanguage}
           elementKey={character.element.key}
         />
@@ -2692,7 +2763,7 @@ export default function CharacterDetailClient({
       {/* ================================================================= */}
       <QuickBuildModal
         character={character}
-        builds={builds}
+        builds={activeBuilds}
         lang={selectedLanguage}
         open={quickBuildOpen}
         onClose={() => setQuickBuildOpen(false)}
