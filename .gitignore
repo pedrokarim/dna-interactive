@@ -55,3 +55,7 @@ skills-lock.json
 
 # dev server log (design system migration)
 .dna-dev.log
+
+*storybook.log
+storybook-static
+.sb-dev.log

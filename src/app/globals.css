@@ -92,3 +92,55 @@ body:has(.map-page) .grecaptcha-badge {
   opacity: 0 !important;
   display: none !important;
 }
+
+/* ===========================================================================
+   DNA UI — primitives ornementales (clip-paths, animations, frise, watermark)
+   que Tailwind ne fournit pas. Consommées par les composants src/components/dna.
+   =========================================================================== */
+
+/* clip-paths */
+.dna-clip-notch   { clip-path: polygon(9px 0, 100% 0, calc(100% - 9px) 100%, 0 100%); }
+.dna-clip-ribbon  { clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 10px 100%, 0 50%); }
+.dna-clip-nouveau { clip-path: polygon(14% 0, 100% 0, 86% 100%, 0 100%); }
+.dna-clip-pill    { clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%); }
+.dna-clip-seal    { clip-path: polygon(0 0, 100% 0, 100% 100%, 12px 100%, 0 calc(100% - 12px)); }
+.dna-clip-bevel   { clip-path: polygon(12% 0, 100% 0, 100% 88%, 88% 100%, 0 100%, 0 12%); }
+
+/* animations */
+@keyframes dnaShimmer { 0% { left: -60%; } 60%, 100% { left: 130%; } }
+@keyframes dnaPulse   { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+@keyframes dnaFloat   { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+@keyframes dnaPing    { 0% { opacity: 0.7; transform: translate(-50%,-50%) scale(1); } 100% { opacity: 0; transform: translate(-50%,-50%) scale(2.4); } }
+@keyframes dnaUnderline { 0%,100% { background-position: 0% 50%; opacity: 0.85; } 50% { background-position: 100% 50%; opacity: 1; } }
+
+.dna-anim-pulse { animation: dnaPulse 2.4s infinite; }
+.dna-anim-float { animation: dnaFloat 7s ease-in-out infinite; }
+
+/* reflet doré qui balaye (boutons/seal primaires) */
+.dna-shine { position: relative; overflow: hidden; }
+.dna-shine::after {
+  content: ""; position: absolute; top: 0; left: -60%; width: 45%; height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(227,205,149,0.30), transparent);
+  transform: skewX(-20deg); transition: left 0.6s ease; pointer-events: none;
+}
+.dna-shine:hover::after { left: 120%; }
+
+/* soulignement doré animé */
+.dna-underline {
+  height: 2px; background: linear-gradient(90deg, #c2a86a, #e3cd95, #c2a86a);
+  background-size: 200% 100%; box-shadow: 0 0 8px rgba(194,168,106,0.55);
+  animation: dnaUnderline 2.5s infinite ease-in-out;
+}
+
+/* filigrane fantôme géant */
+.dna-watermark {
+  font-family: var(--font-cinzel), serif; font-weight: 700;
+  letter-spacing: 0.12em; color: rgba(236,228,210,0.02);
+  white-space: nowrap; user-select: none; pointer-events: none;
+}
+
+/* ping de marqueur de carte */
+.dna-ping::after {
+  content: ""; position: absolute; left: 50%; top: 50%; width: 24px; height: 24px;
+  border-radius: 50%; border: 1px solid currentColor; animation: dnaPing 2.4s ease-out infinite;
+}
