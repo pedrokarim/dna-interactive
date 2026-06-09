@@ -36,6 +36,9 @@ import {
 import FilterChips from "@/components/list/FilterChips";
 import ViewModeToggle from "@/components/list/ViewModeToggle";
 import { useListViewMode } from "@/components/list/useListViewMode";
+import { DnaCharacterCard } from "@/components/dna/CharacterCard";
+import { cn } from "@/components/dna/cn";
+import type { ElementKey } from "@/components/dna/elements";
 
 type SortMode = "default" | "name" | "element" | "rarity";
 const SORT_MODE_VALUES = ["default", "name", "element", "rarity"] as const;
@@ -870,7 +873,7 @@ export default function CharactersGridClient({
           })}
         </ul>
         ) : (
-        <section className="grid gap-2.5 md:gap-3 grid-cols-3 sm:grid-cols-4 md:grid-cols-6 xl:grid-cols-8">
+        <section className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 md:gap-4 xl:grid-cols-5">
           {paginatedCharacters.map((character) => {
             const lead = getCharacterTranslation(
               character,
@@ -879,9 +882,8 @@ export default function CharactersGridClient({
             );
             const headSrc = character.portraits.head.publicPath;
             const iconSrc = character.portraits.icon.publicPath;
+            const portrait = character.portraits.gacha.publicPath ?? headSrc ?? iconSrc;
             const isFavorite = favoriteChars.has(character.id);
-            const elements = character.elements ?? [character.element];
-            const rarityStyle = RARITY_COLORS[character.rarity ?? 0];
             const displayName = lead.name ?? character.internalName;
 
             return (
@@ -889,101 +891,51 @@ export default function CharactersGridClient({
                 key={character.id}
                 href={`/characters/${getCharacterSlug(character)}`}
                 title={displayName}
-                className={`group relative aspect-square overflow-hidden rounded-xl border bg-ink/80 transition-all duration-200 hover:-translate-y-0.5 ${
-                  rarityStyle
-                    ? `${rarityStyle.border} hover:border-opacity-70`
-                    : "border-white/10 hover:border-gold/40"
-                }`}
+                className="group/card relative block"
               >
-                {headSrc ? (
-                  <img
-                    src={headSrc}
-                    alt={displayName}
-                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                ) : iconSrc ? (
-                  <div className="flex h-full w-full items-center justify-center p-4">
-                    <img
-                      src={iconSrc}
-                      alt={displayName}
-                      className="max-h-full max-w-full object-contain"
-                    />
-                  </div>
-                ) : (
-                  <div className="flex h-full w-full items-center justify-center">
-                    <span className="text-3xl font-bold text-muted-2">
-                      {character.internalName[0]}
-                    </span>
-                  </div>
-                )}
-
-                {/* Element icon(s) — stacked for multi-element characters */}
-                {elements.length > 0 ? (
-                  <span className="absolute left-1.5 top-1.5 inline-flex items-center gap-0.5 rounded-full border border-white/15 bg-ink/70 px-1 py-1 backdrop-blur-sm">
-                    {elements.map((el) => {
-                      const icon = ELEMENT_ICONS[el.key];
-                      if (!icon) return null;
-                      return (
-                        <img
-                          key={el.key}
-                          src={icon}
-                          alt={el.label}
-                          className="h-4 w-4 object-contain"
-                        />
-                      );
-                    })}
-                  </span>
-                ) : null}
-
-                {/* Favorite */}
-                <button
-                  type="button"
-                  onClick={(event) => {
-                    event.preventDefault();
-                    event.stopPropagation();
-                    toggleFavorite(character.id);
-                  }}
-                  aria-label={isFavorite ? t('removeFromFavorites') : t('addToFavorites')}
-                  className={`absolute right-1.5 top-1.5 z-10 rounded-full bg-ink/60 p-1 backdrop-blur-sm transition-all ${
-                    isFavorite
-                      ? "text-crimson-bright"
-                      : "text-parch/85 opacity-0 hover:text-crimson-bright group-hover:opacity-100"
-                  }`}
-                >
-                  <Heart
-                    className={`h-3.5 w-3.5 ${isFavorite ? "fill-crimson-bright text-crimson-bright" : ""}`}
-                  />
-                </button>
-
-                {/* Zoom */}
-                {headSrc ? (
-                  <button
-                    type="button"
-                    onClick={(event) => {
-                      event.preventDefault();
-                      event.stopPropagation();
-                      setPreviewPortrait({ src: headSrc, alt: displayName });
-                    }}
-                    className="absolute bottom-1.5 right-1.5 z-10 rounded-full border border-white/10 bg-panel/90 p-1 text-parch opacity-0 shadow-sm transition-all hover:border-gold/60 hover:bg-gold/80 hover:text-parch group-hover:opacity-100"
-                    aria-label={t('zoomPortrait', { name: displayName })}
-                  >
-                    <ZoomIn className="h-3 w-3" />
-                  </button>
-                ) : null}
-
-                {/* Bottom caption */}
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/95 via-ink/55 to-transparent p-2 pt-6">
-                  {character.rarity ? (
-                    <p
-                      className={`text-[10px] leading-none ${rarityStyle ? rarityStyle.text : "text-parch/85"}`}
+                <DnaCharacterCard
+                  name={displayName}
+                  subtitle={lead.subtitle ?? undefined}
+                  element={character.element.key as ElementKey}
+                  elements={(character.elements ?? [character.element]).map((e) => e.key as ElementKey)}
+                  rarity={character.rarity ?? 5}
+                  weapons={character.weaponTags}
+                  portrait={portrait}
+                  topRight={
+                    <button
+                      type="button"
+                      onClick={(event) => {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        toggleFavorite(character.id);
+                      }}
+                      aria-label={isFavorite ? t('removeFromFavorites') : t('addToFavorites')}
+                      className={cn(
+                        "rounded-full bg-ink/60 p-1 backdrop-blur-sm transition-all",
+                        isFavorite
+                          ? "text-crimson-bright"
+                          : "text-parch/85 opacity-0 hover:text-crimson-bright group-hover/card:opacity-100",
+                      )}
                     >
-                      {"★".repeat(character.rarity)}
-                    </p>
+                      <Heart className={cn("h-3.5 w-3.5", isFavorite && "fill-crimson-bright text-crimson-bright")} />
+                    </button>
+                  }
+                >
+                  {headSrc ? (
+                    <button
+                      type="button"
+                      onClick={(event) => {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        setPreviewPortrait({ src: headSrc, alt: displayName });
+                      }}
+                      className="absolute bottom-2 right-2 z-[4] rounded-full border border-white/10 bg-panel/90 p-1 text-parch opacity-0 transition-all hover:border-gold/60 hover:bg-gold/80 hover:text-ink group-hover/card:opacity-100"
+                      aria-label={t('zoomPortrait', { name: displayName })}
+                    >
+                      <ZoomIn className="h-3 w-3" />
+                    </button>
                   ) : null}
-                  <p className="mt-0.5 truncate font-display text-sm font-semibold text-parch">
-                    {displayName}
-                  </p>
-                </div>
+                </DnaCharacterCard>
               </Link>
             );
           })}

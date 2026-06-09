@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { cn } from "./cn";
 import { ELEMENTS, type ElementKey } from "./elements";
 import { DnaElementBadge } from "./ElementBadge";
@@ -6,19 +7,27 @@ import { DnaStars } from "./RarityStars";
 export type DnaCharacterCardProps = {
   name: string;
   subtitle?: string;
+  /** Élément principal (lueur). */
   element: ElementKey;
+  /** Tous les éléments (perso multi-élément) — badges empilés. Défaut: [element]. */
+  elements?: ElementKey[];
   rarity?: number;
   weapons?: string[];
   portrait?: string | null;
+  /** Slot en haut à droite (ex. bouton favori). */
+  topRight?: ReactNode;
+  /** Overlays libres (ex. bouton zoom). */
+  children?: ReactNode;
   className?: string;
 };
 
 /**
- * Carte de personnage (grille) — portrait, lueur teintée par élément, badge
- * élément, étoiles, tags d'armes. Réutilisable dans la liste des personnages.
+ * Carte de personnage (grille) — portrait, lueur teintée par élément, badges
+ * d'élément (vraies icônes du jeu, multi-élément), étoiles, tags d'armes.
  */
-export function DnaCharacterCard({ name, subtitle, element, rarity = 5, weapons = [], portrait, className }: DnaCharacterCardProps) {
+export function DnaCharacterCard({ name, subtitle, element, elements, rarity = 5, weapons = [], portrait, topRight, children, className }: DnaCharacterCardProps) {
   const el = ELEMENTS[element];
+  const elementList = elements && elements.length > 0 ? elements : [element];
   return (
     <div
       className={cn(
@@ -43,11 +52,16 @@ export function DnaCharacterCard({ name, subtitle, element, rarity = 5, weapons 
         style={{ background: `linear-gradient(180deg, ${el.hex}, transparent 70%)` }}
       />
       <span aria-hidden className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent" />
-      <div className="absolute inset-x-2 top-2 z-[2] flex items-center justify-between">
-        <DnaElementBadge element={element} size={28} />
-        <DnaStars value={rarity} />
+      <div className="absolute inset-x-2 top-2 z-[3] flex items-start justify-between">
+        <span className="flex items-center gap-1">
+          {elementList.map((e) => (
+            <DnaElementBadge key={e} element={e} size={26} />
+          ))}
+        </span>
+        {topRight}
       </div>
       <div className="absolute inset-x-0 bottom-0 z-[2] p-3.5">
+        <DnaStars value={rarity} className="mb-0.5" />
         <div className="font-display text-[1.32rem] leading-tight text-parch transition-colors group-hover:text-gold-bright">{name}</div>
         {subtitle ? <div className="truncate font-sans text-[0.68rem] text-muted">{subtitle}</div> : null}
         {weapons.length > 0 ? (
@@ -60,6 +74,7 @@ export function DnaCharacterCard({ name, subtitle, element, rarity = 5, weapons 
           </div>
         ) : null}
       </div>
+      {children}
     </div>
   );
 }

@@ -1,7 +1,9 @@
 "use client";
 
 import { LayoutGrid, List, Rows3 } from "lucide-react";
+import type { ReactNode } from "react";
 import type { ListViewMode } from "@/lib/store";
+import { DnaSegmented } from "@/components/dna/Segmented";
 
 export type ViewModeToggleProps = {
   value: ListViewMode;
@@ -10,47 +12,28 @@ export type ViewModeToggleProps = {
   className?: string;
 };
 
-const BUTTON_BASE =
-  "inline-flex items-center gap-2 px-3 py-2 text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gold/60";
-
-export default function ViewModeToggle({
-  value,
-  onChange,
-  labels,
-  className,
-}: ViewModeToggleProps) {
-  const options: Array<{ mode: ListViewMode; label: string; Icon: typeof LayoutGrid }> = [
-    { mode: "simplified", label: labels.simplified, Icon: LayoutGrid },
-    { mode: "list", label: labels.list, Icon: List },
-    { mode: "detailed", label: labels.detailed, Icon: Rows3 },
-  ];
-
+function tab(Icon: typeof LayoutGrid, label: string): ReactNode {
   return (
-    <div
-      role="group"
-      aria-label={labels.group}
-      className={`inline-flex overflow-hidden rounded-lg border border-white/10 bg-ink/60 ${className ?? ""}`}
-    >
-      {options.map(({ mode, label, Icon }, index) => {
-        const active = value === mode;
-        return (
-          <button
-            key={mode}
-            type="button"
-            aria-pressed={active}
-            onClick={() => onChange(mode)}
-            className={`${BUTTON_BASE} ${index > 0 ? "border-l border-white/10" : ""} ${
-              active
-                ? "bg-gold/20 text-gold-bright"
-                : "text-muted hover:bg-white/5 hover:text-parch"
-            }`}
-          >
-            <Icon className="h-4 w-4" aria-hidden="true" />
-            <span className="hidden sm:inline">{label}</span>
-            <span className="sr-only sm:hidden">{label}</span>
-          </button>
-        );
-      })}
-    </div>
+    <span className="inline-flex items-center gap-2">
+      <Icon className="h-4 w-4" aria-hidden="true" />
+      <span className="hidden sm:inline">{label}</span>
+    </span>
+  );
+}
+
+/** Bascule de mode d'affichage (design system DNA). */
+export default function ViewModeToggle({ value, onChange, labels, className }: ViewModeToggleProps) {
+  return (
+    <DnaSegmented<ListViewMode>
+      className={className}
+      ariaLabel={labels.group}
+      value={value}
+      onChange={onChange}
+      options={[
+        { value: "simplified", label: tab(LayoutGrid, labels.simplified) },
+        { value: "list", label: tab(List, labels.list) },
+        { value: "detailed", label: tab(Rows3, labels.detailed) },
+      ]}
+    />
   );
 }
