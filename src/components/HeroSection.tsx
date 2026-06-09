@@ -60,14 +60,14 @@ export default function HeroSection() {
           style={{ animation: "kenBurns 16s ease-out infinite" }}
         />
         {/* Overlay sombre */}
-        <div className="absolute inset-0 bg-linear-to-r from-slate-950/90 via-slate-950/70 to-slate-950/90" />
-        <div className="absolute inset-0 bg-linear-to-t from-slate-950 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-r from-ink/90 via-ink/70 to-ink/90" />
+        <div className="absolute inset-0 bg-linear-to-t from-ink via-transparent to-transparent" />
       </div>
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-20">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 bg-linear-to-r from-indigo-400 via-purple-400 to-indigo-300 bg-clip-text text-transparent">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 bg-linear-to-r from-gold via-electro to-gold bg-clip-text text-transparent">
             {t("heroTitle")}
           </h1>
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-8 text-gray-200">
@@ -97,7 +97,7 @@ export default function HeroSection() {
             >
               <Link
                 href="/map"
-                className="inline-flex items-center justify-center px-8 py-4 bg-linear-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 rounded-lg font-semibold text-white transition-all duration-300 shadow-lg shadow-indigo-500/25"
+                className="inline-flex items-center justify-center px-8 py-4 bg-linear-to-r from-gold to-electro hover:from-gold hover:to-electro rounded-lg font-semibold text-parch transition-all duration-300 shadow-lg shadow-gold/25"
               >
                 <Map className="w-5 h-5 mr-2" />
                 {t("heroCta")}
@@ -109,7 +109,7 @@ export default function HeroSection() {
 
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <ChevronDown className="w-6 h-6 text-indigo-400" />
+        <ChevronDown className="w-6 h-6 text-gold" />
       </div>
 
       {/* Psyche build teaser — bottom-right, scrolls to #build-showcase */}
@@ -119,10 +119,10 @@ export default function HeroSection() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2, duration: 0.6 }}
         whileHover={{ scale: 1.04 }}
-        className="group absolute bottom-6 right-4 z-20 hidden items-center gap-3 rounded-2xl border border-indigo-400/30 bg-slate-950/80 p-2 pr-4 shadow-[0_12px_32px_rgba(15,23,42,0.6)] backdrop-blur-sm transition-colors hover:border-indigo-300/60 sm:flex"
+        className="group absolute bottom-6 right-4 z-20 hidden items-center gap-3 rounded-2xl border border-gold/30 bg-ink/80 p-2 pr-4 shadow-[0_12px_32px_rgba(15,23,42,0.6)] backdrop-blur-sm transition-colors hover:border-gold/60 sm:flex"
         aria-label="Voir un exemple de carte de build (Psyche)"
       >
-        <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl border border-indigo-400/40 bg-indigo-500/10">
+        <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl border border-gold/40 bg-gold/10">
           <Image
             src="/assets/characters/head/T_Head_Saiqi.png"
             alt="Psyche"
@@ -130,15 +130,15 @@ export default function HeroSection() {
             sizes="56px"
             className="object-cover"
           />
-          <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full border border-indigo-200/50 bg-indigo-500 text-white shadow-md">
+          <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full border border-gold/50 bg-gold text-parch shadow-md">
             <FileImage className="h-3 w-3" />
           </span>
         </div>
         <div className="min-w-0">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-indigo-300">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-gold">
             Nouveau · Cartes de build
           </p>
-          <p className="mt-0.5 flex items-center gap-1.5 text-sm font-semibold text-white">
+          <p className="mt-0.5 flex items-center gap-1.5 text-sm font-semibold text-parch">
             Exemple avec Psyche
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
           </p>

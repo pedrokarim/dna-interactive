@@ -60,9 +60,9 @@ export default async function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-linear-to-br from-purple-950 via-slate-900 to-indigo-950 text-white">
+    <main className="min-h-screen bg-linear-to-br from-electro via-panel to-ink text-parch">
       {/* Header */}
-      <header className="relative z-50 bg-slate-950/80 backdrop-blur-sm border-b border-indigo-500/20">
+      <header className="relative z-50 bg-ink/80 backdrop-blur-sm border-b border-gold/20">
         <div className="container mx-auto px-4 md:px-6 py-3 md:py-4">
           <div className="flex items-center justify-between gap-3">
             <div className="flex items-center gap-2 md:gap-3 min-w-0">
@@ -74,10 +74,10 @@ export default async function Home() {
                 className="h-9 md:h-10 w-auto"
               />
               <div className="min-w-0">
-                <div className="text-lg md:text-2xl font-bold text-white flex items-center gap-2 truncate">
+                <div className="text-lg md:text-2xl font-bold text-parch flex items-center gap-2 truncate">
                   {SITE_CONFIG.name}
                 </div>
-                <p className="text-xs text-slate-400 truncate">{tSite('tagline')}</p>
+                <p className="text-xs text-muted truncate">{tSite('tagline')}</p>
               </div>
             </div>
 
@@ -91,7 +91,7 @@ export default async function Home() {
                     <Link
                       key={link.href}
                       href={link.href}
-                      className="flex items-center gap-2 text-gray-300 hover:text-indigo-400 transition-colors"
+                      className="flex items-center gap-2 text-gray-300 hover:text-gold transition-colors"
                     >
                       {IconComponent && <IconComponent className="w-4 h-4" />}
                       <span>{navLabels[link.href] ?? link.label}</span>
@@ -115,11 +115,11 @@ export default async function Home() {
       <NewCharactersBanner />
 
       {/* Community Section */}
-      <section className="py-20 bg-slate-900/50">
+      <section className="py-20 bg-panel/50">
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-white mb-6">
+              <h2 className="text-4xl font-bold text-parch mb-6">
                 {tHome('communityTitle')}
               </h2>
               <p className="text-lg text-gray-300 max-w-3xl mx-auto">
@@ -134,64 +134,64 @@ export default async function Home() {
       </section>
 
       {/* Items Spotlight Section */}
-      <section className="py-20 bg-slate-900/35">
+      <section className="py-20 bg-panel/35">
         <div className="container mx-auto px-6">
           <div className="mx-auto max-w-6xl">
-            <article className="group relative overflow-hidden rounded-3xl border border-indigo-400/35 bg-slate-950/70 shadow-[0_32px_80px_rgba(15,23,42,0.55)]">
+            <article className="group relative overflow-hidden rounded-3xl border border-gold/35 bg-ink/70 shadow-[0_32px_80px_rgba(15,23,42,0.55)]">
               <img
                 src="/assets/worldview/worldview-8.webp"
                 alt="Apercu visuel de la section Items"
                 className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-linear-to-r from-slate-950/95 via-slate-950/78 to-slate-950/35" />
-              <div className="absolute inset-0 bg-linear-to-t from-indigo-950/70 via-transparent to-black/20" />
+              <div className="absolute inset-0 bg-linear-to-r from-ink/95 via-ink/78 to-ink/35" />
+              <div className="absolute inset-0 bg-linear-to-t from-ink/70 via-transparent to-black/20" />
 
               <div className="pointer-events-none absolute inset-0 hidden md:block" aria-hidden="true">
-                <div className="absolute left-[56%] top-[18%] h-14 w-14 -rotate-12 rounded-xl border border-cyan-400/35 bg-slate-950/70 p-2 shadow-[0_8px_24px_rgba(34,211,238,0.22)]">
+                <div className="absolute left-[56%] top-[18%] h-14 w-14 -rotate-12 rounded-xl border border-hydro/35 bg-ink/70 p-2 shadow-[0_8px_24px_rgba(34,211,238,0.22)]">
                   <img src="/assets/optimized/home-spotlight/T_Mod_Phoenix01.webp" alt="Demon Wedge Phoenix" width="56" height="56" loading="lazy" className="h-full w-full object-contain" />
                 </div>
-                <div className="absolute left-[63%] top-[42%] h-14 w-14 rotate-9 rounded-xl border border-indigo-400/35 bg-slate-950/70 p-2 shadow-[0_8px_24px_rgba(99,102,241,0.22)]">
+                <div className="absolute left-[63%] top-[42%] h-14 w-14 rotate-9 rounded-xl border border-gold/35 bg-ink/70 p-2 shadow-[0_8px_24px_rgba(99,102,241,0.22)]">
                   <img src="/assets/optimized/home-spotlight/T_Mod_Typhon01_Blue.webp" alt="Demon Wedge Typhon" width="56" height="56" loading="lazy" className="h-full w-full object-contain" />
                 </div>
-                <div className="absolute left-[73%] top-[22%] h-12 w-12 -rotate-6 rounded-lg border border-rose-400/30 bg-slate-950/70 p-2">
+                <div className="absolute left-[73%] top-[22%] h-12 w-12 -rotate-6 rounded-lg border border-crimson-bright/30 bg-ink/70 p-2">
                   <img src="/assets/optimized/home-spotlight/T_Draft_Mod_Griffin01_Red.webp" alt="Plan de forge Griffin" width="48" height="48" loading="lazy" className="h-full w-full object-contain" />
                 </div>
-                <div className="absolute left-[79%] top-[48%] h-12 w-12 rotate-12 rounded-lg border border-amber-300/30 bg-slate-950/70 p-2">
+                <div className="absolute left-[79%] top-[48%] h-12 w-12 rotate-12 rounded-lg border border-gold/30 bg-ink/70 p-2">
                   <img src="/assets/optimized/home-spotlight/T_Draft_Mod_Typhon01_Orange.webp" alt="Plan de forge Typhon" width="48" height="48" loading="lazy" className="h-full w-full object-contain" />
                 </div>
-                <div className="absolute left-[69%] top-[64%] h-11 w-11 -rotate-3 rounded-lg border border-violet-400/30 bg-slate-950/70 p-2">
+                <div className="absolute left-[69%] top-[64%] h-11 w-11 -rotate-3 rounded-lg border border-electro/30 bg-ink/70 p-2">
                   <img src="/assets/optimized/home-spotlight/T_Armory_WeaponType_Katana.webp" alt="Katana" width="44" height="44" loading="lazy" className="h-full w-full object-contain" />
                 </div>
-                <div className="absolute left-[83%] top-[70%] h-12 w-12 rotate-6 rounded-lg border border-sky-300/30 bg-slate-950/70 p-2">
+                <div className="absolute left-[83%] top-[70%] h-12 w-12 rotate-6 rounded-lg border border-hydro/30 bg-ink/70 p-2">
                   <img src="/assets/optimized/home-spotlight/T_Head_Katana_Yuli.webp" alt="Katana de Yuli" width="48" height="48" loading="lazy" className="h-full w-full object-contain" />
                 </div>
-                <div className="absolute left-[61%] top-[70%] h-10 w-10 -rotate-12 rounded-md border border-orange-300/30 bg-slate-950/70 p-1.5">
+                <div className="absolute left-[61%] top-[70%] h-10 w-10 -rotate-12 rounded-md border border-pyro/30 bg-ink/70 p-1.5">
                   <img src="/assets/optimized/home-spotlight/T_Armory_Fire.webp" alt="Element Feu" width="40" height="40" loading="lazy" className="h-full w-full object-contain" />
                 </div>
-                <div className="absolute left-[76%] top-[10%] h-10 w-10 rotate-12 rounded-md border border-cyan-300/30 bg-slate-950/70 p-1.5">
+                <div className="absolute left-[76%] top-[10%] h-10 w-10 rotate-12 rounded-md border border-hydro/30 bg-ink/70 p-1.5">
                   <img src="/assets/optimized/home-spotlight/T_Armory_Water.webp" alt="Element Eau" width="40" height="40" loading="lazy" className="h-full w-full object-contain" />
                 </div>
               </div>
 
               <div className="relative z-10 px-8 py-10 sm:px-12 sm:py-14">
-                <span className="inline-flex items-center rounded-full border border-indigo-300/35 bg-indigo-500/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-indigo-100">
+                <span className="inline-flex items-center rounded-full border border-gold/35 bg-gold/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-gold">
                   {tHome('itemsSpotlightBadge')}
                 </span>
-                <h2 className="mt-4 max-w-3xl text-3xl font-bold text-white sm:text-4xl">
+                <h2 className="mt-4 max-w-3xl text-3xl font-bold text-parch sm:text-4xl">
                   {tHome('itemsSpotlightTitle')}
                 </h2>
-                <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-200">
+                <p className="mt-4 max-w-2xl text-base leading-relaxed text-parch">
                   {tHome('itemsSpotlightDescription')}
                 </p>
                 <div className="mt-7 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
                   <Link
                     href="/items"
-                    className="inline-flex items-center gap-2 rounded-xl border border-indigo-200/40 bg-indigo-500/20 px-5 py-3 text-sm font-semibold text-white transition-all duration-200 hover:border-indigo-100/70 hover:bg-indigo-500/30"
+                    className="inline-flex items-center gap-2 rounded-xl border border-gold/40 bg-gold/20 px-5 py-3 text-sm font-semibold text-parch transition-all duration-200 hover:border-gold/70 hover:bg-gold/30"
                   >
                     {tHome('itemsSpotlightCta')}
                     <ArrowRight className="h-4 w-4" />
                   </Link>
-                  <p className="text-sm text-slate-300/90">
+                  <p className="text-sm text-parch/85/90">
                     {tHome('itemsSpotlightCategories')}
                   </p>
                 </div>
@@ -202,38 +202,38 @@ export default async function Home() {
       </section>
 
       {/* Characters Spotlight Section */}
-      <section className="py-20 bg-slate-900/45">
+      <section className="py-20 bg-panel/45">
         <div className="container mx-auto px-6">
           <div className="mx-auto max-w-6xl">
-            <article className="group relative overflow-hidden rounded-3xl border border-violet-400/35 bg-slate-950/70 shadow-[0_32px_80px_rgba(15,23,42,0.55)]">
+            <article className="group relative overflow-hidden rounded-3xl border border-electro/35 bg-ink/70 shadow-[0_32px_80px_rgba(15,23,42,0.55)]">
               <img
                 src="/assets/worldview/worldview-9.webp"
                 alt="Apercu visuel de la section Personnages"
                 className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-linear-to-r from-slate-950/95 via-slate-950/78 to-slate-950/35" />
-              <div className="absolute inset-0 bg-linear-to-t from-violet-950/70 via-transparent to-black/20" />
+              <div className="absolute inset-0 bg-linear-to-r from-ink/95 via-ink/78 to-ink/35" />
+              <div className="absolute inset-0 bg-linear-to-t from-electro/70 via-transparent to-black/20" />
 
               <div className="relative z-10 px-8 py-10 sm:px-12 sm:py-14">
-                <span className="inline-flex items-center rounded-full border border-violet-300/35 bg-violet-500/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-violet-100">
+                <span className="inline-flex items-center rounded-full border border-electro/35 bg-electro/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-electro">
                   {tHome('charactersSpotlightBadge')}
                 </span>
-                <h2 className="mt-4 max-w-3xl text-3xl font-bold text-white sm:text-4xl">
+                <h2 className="mt-4 max-w-3xl text-3xl font-bold text-parch sm:text-4xl">
                   {tHome('charactersSpotlightTitle')}
                 </h2>
-                <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-200">
+                <p className="mt-4 max-w-2xl text-base leading-relaxed text-parch">
                   {tHome('charactersSpotlightDescription')}
                 </p>
                 <div className="mt-7 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
                   <Link
                     href="/characters"
-                    className="inline-flex items-center gap-2 rounded-xl border border-violet-200/40 bg-violet-500/20 px-5 py-3 text-sm font-semibold text-white transition-all duration-200 hover:border-violet-100/70 hover:bg-violet-500/30"
+                    className="inline-flex items-center gap-2 rounded-xl border border-electro/40 bg-electro/20 px-5 py-3 text-sm font-semibold text-parch transition-all duration-200 hover:border-electro/70 hover:bg-electro/30"
                   >
                     <Users className="h-4 w-4" />
                     {tHome('charactersSpotlightCta')}
                     <ArrowRight className="h-4 w-4" />
                   </Link>
-                  <p className="text-sm text-slate-300/90">
+                  <p className="text-sm text-parch/85/90">
                     {tHome('charactersSpotlightCategories')}
                   </p>
                 </div>
@@ -247,21 +247,21 @@ export default async function Home() {
       <BuildShowcase />
 
       {/* Features Section */}
-      <section className="py-20 bg-slate-900/30">
+      <section className="py-20 bg-panel/30">
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-white mb-6">
+              <h2 className="text-4xl font-bold text-parch mb-6">
                 {tHome('featuresTitle')}
               </h2>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="bg-linear-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border border-indigo-500/20 rounded-xl p-6 hover:border-indigo-400/40 transition-colors">
-                <div className="w-12 h-12 bg-linear-to-br from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center mb-4">
-                  <Map className="w-6 h-6 text-white" />
+              <div className="bg-linear-to-br from-panel/50 to-panel/50 backdrop-blur-sm border border-gold/20 rounded-xl p-6 hover:border-gold/40 transition-colors">
+                <div className="w-12 h-12 bg-linear-to-br from-gold to-electro rounded-lg flex items-center justify-center mb-4">
+                  <Map className="w-6 h-6 text-parch" />
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-3">
+                <h3 className="text-xl font-semibold text-parch mb-3">
                   {tHome('featureMapTitle')}
                 </h3>
                 <p className="text-gray-300">
@@ -269,10 +269,10 @@ export default async function Home() {
                 </p>
               </div>
 
-              <div className="bg-linear-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border border-indigo-500/20 rounded-xl p-6 hover:border-indigo-400/40 transition-colors">
-                <div className="w-12 h-12 bg-linear-to-br from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center mb-4">
+              <div className="bg-linear-to-br from-panel/50 to-panel/50 backdrop-blur-sm border border-gold/20 rounded-xl p-6 hover:border-gold/40 transition-colors">
+                <div className="w-12 h-12 bg-linear-to-br from-gold to-electro rounded-lg flex items-center justify-center mb-4">
                   <svg
-                    className="w-6 h-6 text-white"
+                    className="w-6 h-6 text-parch"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -285,7 +285,7 @@ export default async function Home() {
                     />
                   </svg>
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-3">
+                <h3 className="text-xl font-semibold text-parch mb-3">
                   {tHome('featureMarkersTitle')}
                 </h3>
                 <p className="text-gray-300">
@@ -293,10 +293,10 @@ export default async function Home() {
                 </p>
               </div>
 
-              <div className="bg-linear-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border border-indigo-500/20 rounded-xl p-6 hover:border-indigo-400/40 transition-colors">
-                <div className="w-12 h-12 bg-linear-to-br from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center mb-4">
+              <div className="bg-linear-to-br from-panel/50 to-panel/50 backdrop-blur-sm border border-gold/20 rounded-xl p-6 hover:border-gold/40 transition-colors">
+                <div className="w-12 h-12 bg-linear-to-br from-gold to-electro rounded-lg flex items-center justify-center mb-4">
                   <svg
-                    className="w-6 h-6 text-white"
+                    className="w-6 h-6 text-parch"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -309,7 +309,7 @@ export default async function Home() {
                     />
                   </svg>
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-3">
+                <h3 className="text-xl font-semibold text-parch mb-3">
                   {tHome('featureFiltersTitle')}
                 </h3>
                 <p className="text-gray-300">
@@ -317,10 +317,10 @@ export default async function Home() {
                 </p>
               </div>
 
-              <div className="bg-linear-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border border-indigo-500/20 rounded-xl p-6 hover:border-indigo-400/40 transition-colors">
-                <div className="w-12 h-12 bg-linear-to-br from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center mb-4">
+              <div className="bg-linear-to-br from-panel/50 to-panel/50 backdrop-blur-sm border border-gold/20 rounded-xl p-6 hover:border-gold/40 transition-colors">
+                <div className="w-12 h-12 bg-linear-to-br from-gold to-electro rounded-lg flex items-center justify-center mb-4">
                   <svg
-                    className="w-6 h-6 text-white"
+                    className="w-6 h-6 text-parch"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -333,7 +333,7 @@ export default async function Home() {
                     />
                   </svg>
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-3">
+                <h3 className="text-xl font-semibold text-parch mb-3">
                   {tHome('featureResponsiveTitle')}
                 </h3>
                 <p className="text-gray-300">
@@ -341,11 +341,11 @@ export default async function Home() {
                 </p>
               </div>
 
-              <div className="bg-linear-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border border-indigo-500/20 rounded-xl p-6 hover:border-indigo-400/40 transition-colors">
-                <div className="w-12 h-12 bg-linear-to-br from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center mb-4">
-                  <Boxes className="w-6 h-6 text-white" />
+              <div className="bg-linear-to-br from-panel/50 to-panel/50 backdrop-blur-sm border border-gold/20 rounded-xl p-6 hover:border-gold/40 transition-colors">
+                <div className="w-12 h-12 bg-linear-to-br from-gold to-electro rounded-lg flex items-center justify-center mb-4">
+                  <Boxes className="w-6 h-6 text-parch" />
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-3">
+                <h3 className="text-xl font-semibold text-parch mb-3">
                   {tHome('featureItemsTitle')}
                 </h3>
                 <p className="text-gray-300">
@@ -353,10 +353,10 @@ export default async function Home() {
                 </p>
               </div>
 
-              <div className="bg-linear-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border border-indigo-500/20 rounded-xl p-6 hover:border-indigo-400/40 transition-colors">
-                <div className="w-12 h-12 bg-linear-to-br from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center mb-4">
+              <div className="bg-linear-to-br from-panel/50 to-panel/50 backdrop-blur-sm border border-gold/20 rounded-xl p-6 hover:border-gold/40 transition-colors">
+                <div className="w-12 h-12 bg-linear-to-br from-gold to-electro rounded-lg flex items-center justify-center mb-4">
                   <svg
-                    className="w-6 h-6 text-white"
+                    className="w-6 h-6 text-parch"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -369,7 +369,7 @@ export default async function Home() {
                     />
                   </svg>
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-3">
+                <h3 className="text-xl font-semibold text-parch mb-3">
                   {tHome('featureUpdatesTitle')}
                 </h3>
                 <p className="text-gray-300">
@@ -381,14 +381,14 @@ export default async function Home() {
             <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
                 href="/map"
-                className="inline-flex items-center justify-center px-8 py-4 bg-linear-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 rounded-lg font-semibold text-white transition-all duration-300 transform hover:scale-105 shadow-lg shadow-indigo-500/25"
+                className="inline-flex items-center justify-center px-8 py-4 bg-linear-to-r from-gold to-electro hover:from-gold hover:to-electro rounded-lg font-semibold text-parch transition-all duration-300 transform hover:scale-105 shadow-lg shadow-gold/25"
               >
                 <Map className="w-5 h-5 mr-2" />
                 {tHome('exploreMap')}
               </Link>
               <Link
                 href="/items"
-                className="inline-flex items-center justify-center px-8 py-4 bg-slate-800/70 hover:bg-slate-700/80 border border-indigo-400/30 rounded-lg font-semibold text-white transition-all duration-300 transform hover:scale-105"
+                className="inline-flex items-center justify-center px-8 py-4 bg-panel/70 hover:bg-white/10 border border-gold/30 rounded-lg font-semibold text-parch transition-all duration-300 transform hover:scale-105"
               >
                 <Boxes className="w-5 h-5 mr-2" />
                 {tHome('exploreItems')}
@@ -399,7 +399,7 @@ export default async function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-slate-950 border-t border-indigo-500/20 py-8 md:py-12">
+      <footer className="bg-ink border-t border-gold/20 py-8 md:py-12">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-3">
@@ -410,17 +410,17 @@ export default async function Home() {
                 height={32}
                 className="h-8 w-auto"
               />
-              <span className="text-white font-semibold">
+              <span className="text-parch font-semibold">
                 {SITE_CONFIG.name}
               </span>
             </div>
 
-            <nav className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-slate-300 md:gap-x-6">
+            <nav className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-parch/85 md:gap-x-6">
               {FOOTER_LINKS.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="hover:text-indigo-300 transition-colors"
+                  className="hover:text-gold transition-colors"
                 >
                   {navLabels[link.href] ?? link.label}
                 </Link>
@@ -428,7 +428,7 @@ export default async function Home() {
             </nav>
           </div>
 
-          <div className="mt-6 pt-6 md:mt-8 md:pt-8 border-t border-indigo-500/10 text-center text-sm text-slate-300">
+          <div className="mt-6 pt-6 md:mt-8 md:pt-8 border-t border-gold/10 text-center text-sm text-parch/85">
             <p>{LEGAL_INFO.copyright}</p>
             <p className="mt-2">
               {LEGAL_INFO.disclaimer}
@@ -436,13 +436,13 @@ export default async function Home() {
                 href={CONTACT_INFO.ascencia.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-indigo-300 hover:text-indigo-200 underline underline-offset-2 ml-1"
+                className="text-gold hover:text-gold underline underline-offset-2 ml-1"
               >
                 {LEGAL_INFO.ascenciaCredit}
               </a>
             </p>
-            <p className="mt-3 text-xs text-slate-300 italic max-w-2xl mx-auto">
-              <span className="font-semibold text-slate-200">{tCommon('disclaimer')}:</span>{" "}
+            <p className="mt-3 text-xs text-parch/85 italic max-w-2xl mx-auto">
+              <span className="font-semibold text-parch">{tCommon('disclaimer')}:</span>{" "}
               {tLegal('disclaimerFull')}{" "}
               <span className="block mt-1">
                 {tLegal('disclaimerFullEn')}
@@ -451,7 +451,7 @@ export default async function Home() {
             <p className="mt-3">
               <Link
                 href="/changelog"
-                className="text-indigo-300 hover:text-indigo-200 underline underline-offset-2 transition-colors"
+                className="text-gold hover:text-gold underline underline-offset-2 transition-colors"
               >
                 {tCommon('viewChangelog')}
               </Link>

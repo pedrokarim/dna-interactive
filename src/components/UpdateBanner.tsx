@@ -55,9 +55,9 @@ const HOME_ANNOUNCEMENTS: HomeAnnouncement[] = [
     href: "/changelog",
     ctaLabelKey: "patchV14Cta",
     gradientClassName:
-      "bg-linear-to-r from-sky-600/90 via-cyan-600/90 to-teal-600/90",
-    borderClassName: "border-sky-400/30",
-    accentTextClassName: "text-sky-200",
+      "bg-linear-to-r from-hydro/90 via-hydro/90 to-anemo/90",
+    borderClassName: "border-hydro/30",
+    accentTextClassName: "text-hydro",
     ctaIcon: Sparkles,
   },
   {
@@ -70,9 +70,9 @@ const HOME_ANNOUNCEMENTS: HomeAnnouncement[] = [
     href: "/map?mapId=bloomfield-station",
     ctaLabelKey: "newMapsV14Cta",
     gradientClassName:
-      "bg-linear-to-r from-emerald-600/90 via-teal-600/90 to-cyan-600/90",
-    borderClassName: "border-emerald-400/30",
-    accentTextClassName: "text-emerald-200",
+      "bg-linear-to-r from-anemo/90 via-anemo/90 to-hydro/90",
+    borderClassName: "border-anemo/30",
+    accentTextClassName: "text-anemo",
     ctaIcon: Map,
   },
   // Patch 1.3 "Firmament Unbound" — 7 avril 2026 (auto-expirés depuis le 5 mai)
@@ -86,9 +86,9 @@ const HOME_ANNOUNCEMENTS: HomeAnnouncement[] = [
     href: "/map?mapId=haojing",
     ctaLabelKey: "newMapCta",
     gradientClassName:
-      "bg-linear-to-r from-amber-600/90 via-orange-600/90 to-red-600/90",
-    borderClassName: "border-amber-400/30",
-    accentTextClassName: "text-amber-200",
+      "bg-linear-to-r from-gold/90 via-pyro/90 to-crimson-bright/90",
+    borderClassName: "border-gold/30",
+    accentTextClassName: "text-gold",
     ctaIcon: Map,
   },
   {
@@ -101,9 +101,9 @@ const HOME_ANNOUNCEMENTS: HomeAnnouncement[] = [
     href: "/items",
     ctaLabelKey: "itemsLibraryCta",
     gradientClassName:
-      "bg-linear-to-r from-indigo-600/90 via-violet-600/90 to-fuchsia-600/90",
-    borderClassName: "border-indigo-400/30",
-    accentTextClassName: "text-indigo-200",
+      "bg-linear-to-r from-gold/90 via-electro/90 to-electro/90",
+    borderClassName: "border-gold/30",
+    accentTextClassName: "text-gold",
     ctaIcon: Boxes,
   },
 ];
@@ -165,14 +165,14 @@ export default function UpdateBanner() {
                       }}
                       className="shrink-0"
                     >
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs font-bold text-white border border-white/30">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs font-bold text-parch border border-white/30">
                         <Sparkles className="w-3 h-3" />
                         {announcement.badgeKey ? t(announcement.badgeKey) : announcement.badge}
                       </span>
                     </motion.div>
 
                     {/* Texte */}
-                    <div className="flex items-center gap-2 text-white">
+                    <div className="flex items-center gap-2 text-parch">
                       <BannerIcon
                         className={`w-4 h-4 shrink-0 ${announcement.accentTextClassName}`}
                       />
@@ -195,7 +195,7 @@ export default function UpdateBanner() {
                   <div className="flex items-center gap-2">
                     <Link
                       href={announcement.href}
-                      className="hidden sm:inline-flex items-center gap-1.5 px-4 py-1.5 bg-white/20 hover:bg-white/30 rounded-lg text-sm font-semibold text-white transition-all duration-200 border border-white/20 hover:border-white/40"
+                      className="hidden sm:inline-flex items-center gap-1.5 px-4 py-1.5 bg-white/20 hover:bg-white/30 rounded-lg text-sm font-semibold text-parch transition-all duration-200 border border-white/20 hover:border-white/40"
                     >
                       <CtaIcon className="w-4 h-4" />
                       {t(announcement.ctaLabelKey)}
@@ -205,7 +205,7 @@ export default function UpdateBanner() {
                       className="p-1.5 hover:bg-white/20 rounded-lg transition-colors"
                       aria-label={tCommon("close")}
                     >
-                      <X className="w-4 h-4 text-white/80 hover:text-white" />
+                      <X className="w-4 h-4 text-parch/80 hover:text-parch" />
                     </button>
                   </div>
                 </div>

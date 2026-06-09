@@ -9,7 +9,7 @@ export default function CommunityCards() {
     <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
       {/* Streamer Card */}
       <motion.div
-        className="bg-linear-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border border-indigo-500/20 rounded-xl p-8 hover:border-indigo-400/40 transition-all duration-300 group"
+        className="bg-linear-to-br from-panel/50 to-panel/50 backdrop-blur-sm border border-gold/20 rounded-xl p-8 hover:border-gold/40 transition-all duration-300 group"
         whileHover={{ y: -5 }}
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -25,11 +25,11 @@ export default function CommunityCards() {
             <img
               src="/assets/images/ffee63d2-5cba-4a8f-910f-7b67f97ccc96-profile_image-70x70.png"
               alt="Velkaine - Streamer et créateur de contenu pour Duet Night Abyss"
-              className="w-16 h-16 rounded-full border-2 border-purple-500/50 group-hover:border-purple-400 transition-colors"
+              className="w-16 h-16 rounded-full border-2 border-electro/50 group-hover:border-electro transition-colors"
             />
-            <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
+            <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-crimson-bright rounded-full flex items-center justify-center">
               <svg
-                className="w-3 h-3 text-white"
+                className="w-3 h-3 text-parch"
                 fill="currentColor"
                 viewBox="0 0 20 20"
               >
@@ -42,7 +42,7 @@ export default function CommunityCards() {
             </div>
           </motion.div>
           <div>
-            <h3 className="text-xl font-semibold text-white group-hover:text-purple-300 transition-colors">
+            <h3 className="text-xl font-semibold text-parch group-hover:text-electro transition-colors">
               {t("streamerName")}
             </h3>
             <p className="text-sm text-gray-400">
@@ -57,7 +57,7 @@ export default function CommunityCards() {
           href="https://www.twitch.tv/velkaine"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-6 py-3 bg-linear-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 rounded-lg font-semibold text-white transition-all duration-300 shadow-lg shadow-purple-500/25"
+          className="inline-flex items-center gap-2 px-6 py-3 bg-linear-to-r from-electro to-crimson-bright hover:from-electro hover:to-crimson-bright rounded-lg font-semibold text-parch transition-all duration-300 shadow-lg shadow-electro/25"
         >
           <svg
             className="w-5 h-5"
@@ -72,7 +72,7 @@ export default function CommunityCards() {
 
       {/* Wiki Card */}
       <motion.div
-        className="bg-linear-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border border-indigo-500/20 rounded-xl p-8 hover:border-indigo-400/40 transition-all duration-300 group"
+        className="bg-linear-to-br from-panel/50 to-panel/50 backdrop-blur-sm border border-gold/20 rounded-xl p-8 hover:border-gold/40 transition-all duration-300 group"
         whileHover={{ y: -5 }}
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -81,11 +81,11 @@ export default function CommunityCards() {
       >
         <div className="flex items-center gap-4 mb-6">
           <motion.div
-            className="w-16 h-16 bg-linear-to-br from-green-500 to-emerald-500 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
+            className="w-16 h-16 bg-linear-to-br from-anemo to-anemo rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
             whileHover={{ rotate: 5 }}
           >
             <svg
-              className="w-8 h-8 text-white"
+              className="w-8 h-8 text-parch"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -99,7 +99,7 @@ export default function CommunityCards() {
             </svg>
           </motion.div>
           <div>
-            <h3 className="text-xl font-semibold text-white group-hover:text-green-300 transition-colors">
+            <h3 className="text-xl font-semibold text-parch group-hover:text-anemo transition-colors">
               {t("wikiTitle")}
             </h3>
             <p className="text-sm text-gray-400">
@@ -114,7 +114,7 @@ export default function CommunityCards() {
           href="https://docs.google.com/spreadsheets/d/1eDUiExtAhh3igmfUZG6DOU0ZlbnTaHIObCqLjLKGaQI/edit?gid=692497117#gid=692497117"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-6 py-3 bg-linear-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 rounded-lg font-semibold text-white transition-all duration-300 shadow-lg shadow-green-500/25"
+          className="inline-flex items-center gap-2 px-6 py-3 bg-linear-to-r from-anemo to-anemo hover:from-anemo hover:to-anemo rounded-lg font-semibold text-parch transition-all duration-300 shadow-lg shadow-anemo/25"
         >
           <svg
             className="w-5 h-5"

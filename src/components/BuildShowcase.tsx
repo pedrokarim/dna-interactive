@@ -43,18 +43,18 @@ export default function BuildShowcase() {
   return (
     <section
       id="build-showcase"
-      className="relative py-16 md:py-20 bg-gradient-to-br from-indigo-950/50 via-slate-900/60 to-purple-950/50"
+      className="relative py-16 md:py-20 bg-gradient-to-br from-ink/50 via-panel/60 to-electro/50"
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="mx-auto max-w-6xl text-center">
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-indigo-300/40 bg-indigo-500/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-indigo-100">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-gold/40 bg-gold/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-gold">
             <FileImage className="h-3.5 w-3.5" />
             Nouveau
           </span>
-          <h2 className="mt-4 text-3xl font-bold text-white md:text-4xl">
+          <h2 className="mt-4 text-3xl font-bold text-parch md:text-4xl">
             Partagez vos builds avec style
           </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-slate-300 md:text-base">
+          <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-parch/85 md:text-base">
             Des cartes de build exportables en PNG, directement sur chaque fiche
             personnage. Armes, Demon Wedge, Génimons, priorités stats et équipe
             recommandée — tout en un visuel.
@@ -74,8 +74,8 @@ export default function BuildShowcase() {
                 aria-pressed={isActive}
                 className={`rounded-full border px-4 py-2 text-sm font-semibold transition-all duration-200 ${
                   isActive
-                    ? "border-indigo-300/60 bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg shadow-indigo-500/30"
-                    : "border-slate-600/50 bg-slate-900/60 text-slate-300 hover:border-indigo-400/40 hover:text-white"
+                    ? "border-gold/60 bg-gradient-to-r from-gold to-electro text-parch shadow-lg shadow-gold/30"
+                    : "border-white/10 bg-panel/60 text-parch/85 hover:border-gold/40 hover:text-parch"
                 }`}
               >
                 {name}
@@ -141,7 +141,7 @@ export default function BuildShowcase() {
           onClick={() => go(active - 1)}
           disabled={active === 0}
           aria-label="Carte précédente"
-          className="absolute left-2 top-1/2 z-30 -translate-y-1/2 inline-flex items-center justify-center rounded-full border border-slate-600/50 bg-slate-900/80 p-2 text-white backdrop-blur transition hover:border-indigo-400/60 hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-30 md:p-3"
+          className="absolute left-2 top-1/2 z-30 -translate-y-1/2 inline-flex items-center justify-center rounded-full border border-white/10 bg-panel/80 p-2 text-parch backdrop-blur transition hover:border-gold/60 hover:bg-panel disabled:cursor-not-allowed disabled:opacity-30 md:p-3"
         >
           <ChevronLeft className="h-5 w-5 md:h-6 md:w-6" />
         </button>
@@ -150,7 +150,7 @@ export default function BuildShowcase() {
           onClick={() => go(active + 1)}
           disabled={active === featured.length - 1}
           aria-label="Carte suivante"
-          className="absolute right-2 top-1/2 z-30 -translate-y-1/2 inline-flex items-center justify-center rounded-full border border-slate-600/50 bg-slate-900/80 p-2 text-white backdrop-blur transition hover:border-indigo-400/60 hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-30 md:p-3"
+          className="absolute right-2 top-1/2 z-30 -translate-y-1/2 inline-flex items-center justify-center rounded-full border border-white/10 bg-panel/80 p-2 text-parch backdrop-blur transition hover:border-gold/60 hover:bg-panel disabled:cursor-not-allowed disabled:opacity-30 md:p-3"
         >
           <ChevronRight className="h-5 w-5 md:h-6 md:w-6" />
         </button>
@@ -166,8 +166,8 @@ export default function BuildShowcase() {
               aria-current={i === active ? "true" : undefined}
               className={`h-2 rounded-full transition-all duration-300 ${
                 i === active
-                  ? "w-8 bg-indigo-400"
-                  : "w-2 bg-slate-600 hover:bg-slate-500"
+                  ? "w-8 bg-gold"
+                  : "w-2 bg-white/10 hover:bg-white/20"
               }`}
             />
           ))}
@@ -179,7 +179,7 @@ export default function BuildShowcase() {
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-3 md:flex-row md:gap-4">
           <Link
             href={`/characters/${getCharacterSlug(activeEntry.character)}?tab=build&build=true#quick-build`}
-            className="group inline-flex items-center justify-center gap-2 rounded-xl border border-indigo-300/40 bg-gradient-to-r from-indigo-600 to-purple-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/25 transition-all duration-200 hover:scale-105 hover:shadow-indigo-500/40"
+            className="group inline-flex items-center justify-center gap-2 rounded-xl border border-gold/40 bg-gradient-to-r from-gold to-electro px-6 py-3 text-sm font-semibold text-parch shadow-lg shadow-gold/25 transition-all duration-200 hover:scale-105 hover:shadow-gold/40"
           >
             <FileImage className="h-4 w-4" />
             Ouvrir le build de {activeName}
@@ -187,7 +187,7 @@ export default function BuildShowcase() {
           </Link>
           <Link
             href="/characters"
-            className="inline-flex items-center justify-center gap-2 rounded-xl border border-violet-300/30 bg-slate-900/70 px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:border-violet-200/60 hover:bg-slate-800/80"
+            className="inline-flex items-center justify-center gap-2 rounded-xl border border-electro/30 bg-panel/70 px-6 py-3 text-sm font-semibold text-parch transition-all duration-200 hover:border-electro/60 hover:bg-panel/80"
           >
             <Users className="h-4 w-4" />
             Voir tous les personnages
