@@ -105,7 +105,7 @@ function localized(texts: Record<string, string> | undefined, lang: string): str
 function RarityStars({ rarity }: { rarity: number | null }) {
   if (!rarity) return null;
   return (
-    <span className="inline-flex items-center text-[10px] leading-none tracking-tighter text-amber-300">
+    <span className="inline-flex items-center text-[10px] leading-none tracking-tighter text-gold">
       {"★".repeat(rarity)}
     </span>
   );
@@ -129,28 +129,28 @@ function ItemTooltipBody({
           className="h-12 w-12 shrink-0 object-contain drop-shadow-md"
         />
         <div className="min-w-0">
-          <p className="text-sm font-semibold text-white">{item.name}</p>
+          <p className="text-sm font-semibold text-parch">{item.name}</p>
           <div className="mt-1 flex flex-wrap items-center gap-1 text-[10px]">
             {item.rarity !== null && (
-              <span className="rounded-full border border-amber-400/40 bg-amber-400/10 px-2 py-0.5 text-amber-200">
+              <span className="rounded-full border border-gold/40 bg-gold/10 px-2 py-0.5 text-gold">
                 {"★".repeat(item.rarity)}
               </span>
             )}
-            <span className="rounded-full border border-slate-600/70 px-2 py-0.5 font-mono text-slate-300">
+            <span className="rounded-full border border-white/10 px-2 py-0.5 font-mono text-parch/85">
               #{item.modId}
             </span>
             {item.element && (
-              <span className="rounded-full border border-indigo-400/40 bg-indigo-500/10 px-2 py-0.5 text-indigo-200">
+              <span className="rounded-full border border-gold/40 bg-gold/10 px-2 py-0.5 text-gold">
                 {item.element}
               </span>
             )}
             {rank === "best" && (
-              <span className="rounded-full border border-amber-300/50 bg-amber-400/20 px-2 py-0.5 font-semibold text-amber-200">
+              <span className="rounded-full border border-gold/50 bg-gold/20 px-2 py-0.5 font-semibold text-gold">
                 S-tier
               </span>
             )}
             {kindLabel && (
-              <span className="rounded-full border border-slate-700/70 px-2 py-0.5 text-slate-300">
+              <span className="rounded-full border border-white/10 px-2 py-0.5 text-parch/85">
                 {kindLabel}
               </span>
             )}
@@ -158,7 +158,7 @@ function ItemTooltipBody({
         </div>
       </div>
       {item.description && (
-        <p className="mt-2.5 whitespace-pre-line text-xs leading-relaxed text-slate-300">
+        <p className="mt-2.5 whitespace-pre-line text-xs leading-relaxed text-parch/85">
           {item.description}
         </p>
       )}
@@ -198,19 +198,19 @@ function WeaponCell({
             className="absolute inset-0 h-full w-full object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]"
           />
           {isBest && (
-            <span className="absolute -right-1 -top-1 rounded-full bg-amber-300/95 px-1.5 text-[9px] font-bold leading-tight text-slate-950 shadow">
+            <span className="absolute -right-1 -top-1 rounded-full bg-gold/95 px-1.5 text-[9px] font-bold leading-tight text-ink shadow">
               S
             </span>
           )}
         </div>
         <div className="min-w-0">
           <p
-            className={`truncate font-medium text-white ${textSize}`}
+            className={`truncate font-medium text-parch ${textSize}`}
             style={{ textShadow: "0 1px 3px rgba(0,0,0,0.6)" }}
           >
             {item.name}
           </p>
-          <div className="mt-0.5 flex items-center gap-1 text-[10px] text-white/80">
+          <div className="mt-0.5 flex items-center gap-1 text-[10px] text-parch/80">
             <RarityStars rarity={item.rarity} />
             <span className="rounded border border-white/25 px-1 font-mono">
               #{item.modId}
@@ -295,7 +295,7 @@ function WedgeSlot({
         {icon ? (
           <img src={icon} alt="" className={`${d.iconSize} object-contain drop-shadow-md`} />
         ) : (
-          <span className="text-xs text-white/40">—</span>
+          <span className="text-xs text-parch/40">—</span>
         )}
       </div>
       {polarityIcon && (
@@ -307,7 +307,7 @@ function WedgeSlot({
       )}
       {trackAdjustIcon && (
         <div
-          className={`absolute bottom-0.5 ${bottomSide} flex ${d.trackBoxSize} items-center justify-center rounded border border-amber-300/70 bg-black/70`}
+          className={`absolute bottom-0.5 ${bottomSide} flex ${d.trackBoxSize} items-center justify-center rounded border border-gold/70 bg-black/70`}
         >
           <img src={trackAdjustIcon} alt="" className={`${d.trackIconSize} object-contain`} />
         </div>
@@ -549,14 +549,14 @@ export function QuickBuildCard({
           {character.element.label}
         </p>
         <h2
-          className="mt-1 text-[54px] font-bold leading-[0.95] text-white"
+          className="mt-1 text-[54px] font-bold leading-[0.95] text-parch"
           style={{ textShadow: "0 4px 18px rgba(0,0,0,0.85)" }}
         >
           {name}
         </h2>
         {subtitle && (
           <p
-            className="mt-1.5 text-sm text-white/90"
+            className="mt-1.5 text-sm text-parch/90"
             style={{ textShadow: "0 2px 6px rgba(0,0,0,0.7)" }}
           >
             {subtitle}
@@ -678,7 +678,7 @@ export function QuickBuildCard({
                       >
                         <img src={item.icon} alt="" className="h-full w-full object-contain" />
                         {isBest && (
-                          <span className="absolute right-0.5 top-0.5 rounded bg-amber-300/95 px-1 text-[9px] font-bold leading-tight text-slate-950">
+                          <span className="absolute right-0.5 top-0.5 rounded bg-gold/95 px-1 text-[9px] font-bold leading-tight text-ink">
                             S
                           </span>
                         )}
@@ -714,7 +714,7 @@ export function QuickBuildCard({
                     >
                       {i + 1}
                     </span>
-                    <span className="text-white/95" style={{ textShadow: "0 1px 2px rgba(0,0,0,0.5)" }}>
+                    <span className="text-parch/95" style={{ textShadow: "0 1px 2px rgba(0,0,0,0.5)" }}>
                       {STAT_LABELS[stat] ?? stat}
                     </span>
                   </li>
@@ -776,7 +776,7 @@ export function QuickBuildCard({
                         </div>
                       )}
                       {i < items.length - 1 && (
-                        <span className="mx-1 text-white/40">›</span>
+                        <span className="mx-1 text-parch/40">›</span>
                       )}
                     </div>
                   ))}
@@ -811,7 +811,7 @@ export function QuickBuildCard({
                         </div>
                       )}
                       <p
-                        className="truncate text-[11px] font-medium text-white"
+                        className="truncate text-[11px] font-medium text-parch"
                         style={{ textShadow: "0 1px 2px rgba(0,0,0,0.5)" }}
                       >
                         {t.character.name}
@@ -838,7 +838,7 @@ export function QuickBuildCard({
                 DNA Interactive
               </p>
               <p
-                className="mt-0.5 truncate text-[10px] text-white/60"
+                className="mt-0.5 truncate text-[10px] text-parch/60"
                 style={{ textShadow: "0 1px 2px rgba(0,0,0,0.5)" }}
               >
                 dna.ascencia.re · Duet Night Abyss
@@ -933,23 +933,23 @@ export default function QuickBuildModal({
   if (builds.length === 0) {
     return (
       <div
-        className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/85 p-2 sm:p-4 backdrop-blur-sm"
+        className="fixed inset-0 z-50 flex items-center justify-center bg-ink/85 p-2 sm:p-4 backdrop-blur-sm"
         onClick={onClose}
         role="dialog"
         aria-modal="true"
       >
         <div
-          className="max-w-md rounded-2xl border border-slate-700/70 bg-slate-900/95 p-6 text-center shadow-2xl"
+          className="max-w-md rounded-2xl border border-white/10 bg-panel/95 p-6 text-center shadow-2xl"
           onClick={(e) => e.stopPropagation()}
         >
-          <Sparkles className="mx-auto h-10 w-10 text-slate-600" />
-          <p className="mt-3 text-sm text-slate-300">
+          <Sparkles className="mx-auto h-10 w-10 text-muted-2" />
+          <p className="mt-3 text-sm text-parch/85">
             Aucun build disponible pour ce personnage.
           </p>
           <button
             type="button"
             onClick={onClose}
-            className="mt-4 rounded-lg border border-slate-600/70 bg-slate-800/80 px-4 py-2 text-sm text-slate-200 hover:bg-slate-700/80"
+            className="mt-4 rounded-lg border border-white/10 bg-panel/80 px-4 py-2 text-sm text-parch hover:bg-white/10"
           >
             Fermer
           </button>
@@ -962,19 +962,19 @@ export default function QuickBuildModal({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/85 p-2 sm:p-4 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-ink/85 p-2 sm:p-4 backdrop-blur-sm"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
       aria-label="Build rapide"
     >
       <div
-        className="flex max-h-[95vh] w-full max-w-[1360px] flex-col overflow-hidden rounded-2xl border border-indigo-500/30 bg-slate-900/95 shadow-[0_40px_80px_rgba(2,6,23,0.8)]"
+        className="flex max-h-[95vh] w-full max-w-[1360px] flex-col overflow-hidden rounded-2xl border border-gold/30 bg-panel/95 shadow-[0_40px_80px_rgba(2,6,23,0.8)]"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between gap-3 border-b border-slate-700/60 px-5 py-3">
+        <div className="flex items-center justify-between gap-3 border-b border-white/10 px-5 py-3">
           <div className="flex min-w-0 items-center gap-3">
-            <h3 className="truncate text-base font-semibold text-white">
+            <h3 className="truncate text-base font-semibold text-parch">
               Build rapide — {resolveCharacterDisplayName(character, lang)}
             </h3>
             {builds.length > 1 && (
@@ -988,8 +988,8 @@ export default function QuickBuildModal({
                       onClick={() => setActiveBuildIndex(i)}
                       className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
                         i === activeBuildIndex
-                          ? "border border-indigo-400/50 bg-indigo-500/20 text-indigo-100"
-                          : "border border-slate-700/70 text-slate-400 hover:text-slate-200"
+                          ? "border border-gold/50 bg-gold/20 text-gold"
+                          : "border border-white/10 text-muted hover:text-parch"
                       }`}
                     >
                       {bname}
@@ -1004,7 +1004,7 @@ export default function QuickBuildModal({
               type="button"
               onClick={handleDownload}
               disabled={downloading}
-              className="flex items-center gap-2 rounded-lg border border-indigo-400/40 bg-indigo-500/15 px-3 py-1.5 text-xs font-medium text-indigo-100 transition-colors hover:bg-indigo-500/30 disabled:opacity-50"
+              className="flex items-center gap-2 rounded-lg border border-gold/40 bg-gold/15 px-3 py-1.5 text-xs font-medium text-gold transition-colors hover:bg-gold/30 disabled:opacity-50"
             >
               <Download className="h-3.5 w-3.5" />
               {downloading ? "Export..." : "Telecharger PNG"}
@@ -1012,7 +1012,7 @@ export default function QuickBuildModal({
             <button
               type="button"
               onClick={onClose}
-              className="rounded-full p-1.5 text-slate-300 transition-colors hover:bg-slate-800 hover:text-white"
+              className="rounded-full p-1.5 text-parch/85 transition-colors hover:bg-panel hover:text-parch"
               aria-label="Fermer"
             >
               <X className="h-4 w-4" />
@@ -1020,7 +1020,7 @@ export default function QuickBuildModal({
           </div>
         </div>
 
-        <div className="overflow-auto bg-slate-950/60 p-4 md:p-6">
+        <div className="overflow-auto bg-ink/60 p-4 md:p-6">
           <ResponsiveQuickBuildCard
             character={character}
             build={build}

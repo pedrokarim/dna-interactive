@@ -60,7 +60,7 @@ const SHOWCASE_CHARACTERS: Array<{
     avatar: "/assets/official-v1.4/avatar-flora.webp",
     element: "Umbro",
     accentColor: "indigo",
-    ringColor: "ring-indigo-400",
+    ringColor: "ring-gold",
   },
   // Hilda \u2014 Pyro, sortie 30 juin 2026 (patch 1.4 phase 2). Pas de marketing
   // officiel : on utilise le bust FModel re-encode en WebP (cf. official-v1.4/).
@@ -75,7 +75,7 @@ const SHOWCASE_CHARACTERS: Array<{
     avatar: "/assets/official-v1.4/avatar-hilda.webp",
     element: "Pyro",
     accentColor: "rose",
-    ringColor: "ring-rose-400",
+    ringColor: "ring-crimson-bright",
   },
   // Formes Umbro du Phoxhunter (protagoniste) \u2014 d\u00E9bloqu\u00E9es via la narration
   // du patch 1.4 "Silver Torrent, Rising Star". Pas de marketing officiel
@@ -92,7 +92,7 @@ const SHOWCASE_CHARACTERS: Array<{
     avatar: "/assets/official-v1.4/avatar-nvzhu02.webp",
     element: "Umbro",
     accentColor: "cyan",
-    ringColor: "ring-cyan-400",
+    ringColor: "ring-hydro",
   },
   {
     id: "char-nanzhu02",
@@ -105,16 +105,16 @@ const SHOWCASE_CHARACTERS: Array<{
     avatar: "/assets/official-v1.4/avatar-nanzhu02.webp",
     element: "Umbro",
     accentColor: "amber",
-    ringColor: "ring-amber-400",
+    ringColor: "ring-gold",
   },
 ];
 
 // Color mappings pour éviter les classes Tailwind dynamiques non-purgées
 const ACCENT_STYLES: Record<string, { text: string; border: string; subtitleText: string }> = {
-  amber: { text: "text-amber-300", border: "border-amber-500/30", subtitleText: "text-amber-200/90" },
-  indigo: { text: "text-indigo-300", border: "border-indigo-500/30", subtitleText: "text-indigo-200/90" },
-  cyan: { text: "text-cyan-300", border: "border-cyan-500/30", subtitleText: "text-cyan-200/90" },
-  rose: { text: "text-rose-300", border: "border-rose-500/30", subtitleText: "text-rose-200/90" },
+  amber: { text: "text-gold", border: "border-gold/30", subtitleText: "text-gold/90" },
+  indigo: { text: "text-gold", border: "border-gold/30", subtitleText: "text-gold/90" },
+  cyan: { text: "text-hydro", border: "border-hydro/30", subtitleText: "text-hydro/90" },
+  rose: { text: "text-crimson-bright", border: "border-crimson/30", subtitleText: "text-crimson-bright/90" },
 };
 
 export default function NewCharactersBanner() {
@@ -142,8 +142,8 @@ export default function NewCharactersBanner() {
   const badgeRow = (
     <div className="flex items-center gap-3">
       <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 backdrop-blur-sm border border-white/15 rounded-full">
-        <Sparkles className="w-3.5 h-3.5 text-white/70" />
-        <span className="text-xs font-semibold text-white/70 uppercase tracking-widest">
+        <Sparkles className="w-3.5 h-3.5 text-parch/70" />
+        <span className="text-xs font-semibold text-parch/70 uppercase tracking-widest">
           {tc("badge")}
         </span>
       </div>
@@ -152,11 +152,11 @@ export default function NewCharactersBanner() {
           onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
           className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/15 rounded-full transition-colors duration-200"
         >
-          <Globe className="w-3.5 h-3.5 text-white/70" />
-          <span className="text-xs font-semibold text-white/70 uppercase">{displayLocale}</span>
+          <Globe className="w-3.5 h-3.5 text-parch/70" />
+          <span className="text-xs font-semibold text-parch/70 uppercase">{displayLocale}</span>
         </button>
         {isLangMenuOpen && (
-          <div className="absolute left-0 top-full mt-2 bg-slate-900 border border-white/15 rounded-lg shadow-xl overflow-hidden z-50 min-w-[160px]">
+          <div className="absolute left-0 top-full mt-2 bg-panel border border-white/15 rounded-lg shadow-xl overflow-hidden z-50 min-w-[160px]">
             {locales.map((l) => (
               <button
                 key={l}
@@ -166,8 +166,8 @@ export default function NewCharactersBanner() {
                 }}
                 className={`w-full flex items-center gap-2 px-3 py-2 text-xs transition-colors ${
                   l === displayLocale
-                    ? "bg-white/10 text-white font-medium"
-                    : "text-gray-300 hover:bg-white/5 hover:text-white"
+                    ? "bg-white/10 text-parch font-medium"
+                    : "text-gray-300 hover:bg-white/5 hover:text-parch"
                 }`}
               >
                 <span className="uppercase font-mono w-5">{l}</span>
@@ -189,7 +189,7 @@ export default function NewCharactersBanner() {
           onClick={() => setActiveIndex(index)}
           className={`relative w-14 h-14 md:w-16 md:h-16 rounded-lg overflow-hidden border-2 transition-all duration-300 ${
             index === activeIndex
-              ? `${char.ringColor} ring-2 ring-offset-2 ring-offset-slate-950 border-white/70 scale-110`
+              ? `${char.ringColor} ring-2 ring-offset-2 ring-offset-ink border-white/70 scale-110`
               : "border-white/20 hover:border-white/50 opacity-50 hover:opacity-100"
           }`}
         >
@@ -240,8 +240,8 @@ export default function NewCharactersBanner() {
         </AnimatePresence>
 
         {/* z-[1]: Smooth gradient from dark left to transparent right — no hard cut */}
-        <div className="absolute inset-0 z-[1] bg-gradient-to-r from-slate-950 from-0% via-slate-950/80 via-30% to-transparent to-70%" />
-        <div className="absolute inset-0 z-[1] bg-gradient-to-t from-slate-950/60 via-transparent to-slate-950/30" />
+        <div className="absolute inset-0 z-[1] bg-gradient-to-r from-ink from-0% via-ink/80 via-30% to-transparent to-70%" />
+        <div className="absolute inset-0 z-[1] bg-gradient-to-t from-ink/60 via-transparent to-ink/30" />
 
         {/* z-[2]: Deco calligraphy - above gradient, subtle overlay on left */}
         <AnimatePresence mode="wait">
@@ -253,7 +253,7 @@ export default function NewCharactersBanner() {
             transition={{ duration: 0.8 }}
             className="absolute z-[2] top-1/2 left-0 -translate-y-1/2 select-none pointer-events-none overflow-hidden w-[45%]"
           >
-            <span className="text-[14rem] lg:text-[18rem] font-black text-white leading-none whitespace-nowrap block">
+            <span className="text-[14rem] lg:text-[18rem] font-black text-parch leading-none whitespace-nowrap block">
               {active.decoText}
             </span>
           </motion.div>
@@ -272,13 +272,13 @@ export default function NewCharactersBanner() {
               transition={{ duration: 0.4, ease: "easeOut" }}
               className="max-w-lg"
             >
-              <h2 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-2 tracking-tight leading-none">
+              <h2 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-parch mb-2 tracking-tight leading-none">
                 {active.name}
               </h2>
               <p className={`text-lg md:text-xl font-semibold ${styles.subtitleText} mb-2`}>
                 {charData.subtitle}
               </p>
-              <div className="flex items-center gap-3 text-sm text-white/40 mb-6">
+              <div className="flex items-center gap-3 text-sm text-parch/40 mb-6">
                 <span>{active.element}</span>
                 <span className="w-1 h-1 rounded-full bg-white/30" />
                 <span>{charData.camp}</span>
@@ -289,14 +289,14 @@ export default function NewCharactersBanner() {
               <div className="flex flex-wrap items-center gap-3 mt-8">
                 <Link
                   href={`/characters/${active.slug}`}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/15 hover:border-white/30 rounded-lg text-sm font-medium text-white transition-all duration-300"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/15 hover:border-white/30 rounded-lg text-sm font-medium text-parch transition-all duration-300"
                 >
                   {tc("viewCharacter")}
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
                   href={`/characters/${active.slug}?tab=build`}
-                  className={`inline-flex items-center gap-2 px-5 py-2.5 backdrop-blur-sm border rounded-lg text-sm font-semibold text-white transition-all duration-300 ${styles.border} bg-white/[0.08] hover:bg-white/20 hover:border-white/40`}
+                  className={`inline-flex items-center gap-2 px-5 py-2.5 backdrop-blur-sm border rounded-lg text-sm font-semibold text-parch transition-all duration-300 ${styles.border} bg-white/[0.08] hover:bg-white/20 hover:border-white/40`}
                 >
                   <Swords className="w-4 h-4" />
                   {tc("viewBuild")}
@@ -312,12 +312,12 @@ export default function NewCharactersBanner() {
         )}
 
         {/* Bottom fade into page */}
-        <div className="absolute bottom-0 left-0 right-0 h-24 z-[3] bg-gradient-to-t from-slate-900 to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 left-0 right-0 h-24 z-[3] bg-gradient-to-t from-panel to-transparent pointer-events-none" />
       </section>
 
       {/* ============================ MOBILE LAYOUT ============================ */}
       <section
-        className="relative w-full overflow-hidden md:hidden bg-gradient-to-b from-slate-950 via-slate-900/60 to-slate-950 flex flex-col"
+        className="relative w-full overflow-hidden md:hidden bg-gradient-to-b from-ink via-panel/60 to-ink flex flex-col"
         style={{ minHeight: "100vh" }}
       >
         {/* Deco calligraphy - behind everything */}
@@ -330,7 +330,7 @@ export default function NewCharactersBanner() {
             transition={{ duration: 0.6 }}
             className="absolute inset-0 z-0 flex items-center justify-center select-none pointer-events-none"
           >
-            <span className="text-[16rem] font-black text-white leading-none whitespace-nowrap">
+            <span className="text-[16rem] font-black text-parch leading-none whitespace-nowrap">
               {active.decoText}
             </span>
           </motion.div>
@@ -373,13 +373,13 @@ export default function NewCharactersBanner() {
               transition={{ duration: 0.4, ease: "easeOut" }}
               className="text-center w-full max-w-md flex-shrink-0"
             >
-              <h2 className="text-4xl font-extrabold text-white mb-1 tracking-tight leading-none">
+              <h2 className="text-4xl font-extrabold text-parch mb-1 tracking-tight leading-none">
                 {active.name}
               </h2>
               <p className={`text-base font-semibold ${styles.subtitleText} mb-1`}>
                 {charData.subtitle}
               </p>
-              <div className="flex items-center justify-center gap-2 text-xs text-white/40 mb-3">
+              <div className="flex items-center justify-center gap-2 text-xs text-parch/40 mb-3">
                 <span>{active.element}</span>
                 <span className="w-1 h-1 rounded-full bg-white/30" />
                 <span>{charData.camp}</span>
@@ -389,7 +389,7 @@ export default function NewCharactersBanner() {
               </p>
               <Link
                 href={`/characters/${active.slug}`}
-                className="inline-flex items-center gap-2 mt-4 px-5 py-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/15 rounded-lg text-sm font-medium text-white transition-all duration-300"
+                className="inline-flex items-center gap-2 mt-4 px-5 py-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/15 rounded-lg text-sm font-medium text-parch transition-all duration-300"
               >
                 {tc("viewCharacter")}
                 <ArrowRight className="w-4 h-4" />

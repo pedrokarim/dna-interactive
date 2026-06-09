@@ -79,21 +79,21 @@ type CharacterDetailClientProps = {
 // ---------------------------------------------------------------------------
 
 const ELEMENT_COLORS: Record<string, { border: string; bg: string; text: string }> = {
-  Fire: { border: "border-red-500/50", bg: "bg-red-500/15", text: "text-red-200" },
-  Water: { border: "border-blue-400/50", bg: "bg-blue-400/15", text: "text-blue-200" },
-  Thunder: { border: "border-violet-400/50", bg: "bg-violet-400/15", text: "text-violet-200" },
-  Wind: { border: "border-emerald-400/50", bg: "bg-emerald-400/15", text: "text-emerald-200" },
-  Light: { border: "border-amber-400/50", bg: "bg-amber-400/15", text: "text-amber-200" },
-  Dark: { border: "border-indigo-400/50", bg: "bg-indigo-400/15", text: "text-indigo-200" },
+  Fire: { border: "border-pyro/50", bg: "bg-pyro/15", text: "text-pyro" },
+  Water: { border: "border-hydro/50", bg: "bg-hydro/15", text: "text-hydro" },
+  Thunder: { border: "border-electro/50", bg: "bg-electro/15", text: "text-electro" },
+  Wind: { border: "border-anemo/50", bg: "bg-anemo/15", text: "text-anemo" },
+  Light: { border: "border-lumino/50", bg: "bg-lumino/15", text: "text-lumino" },
+  Dark: { border: "border-umbro/50", bg: "bg-umbro/15", text: "text-umbro" },
 };
 
 const ELEMENT_AMBIENT: Record<string, string> = {
-  Fire: "rgba(239, 68, 68, 0.07)",
-  Water: "rgba(96, 165, 250, 0.07)",
-  Thunder: "rgba(167, 139, 250, 0.07)",
-  Wind: "rgba(52, 211, 153, 0.07)",
-  Light: "rgba(251, 191, 36, 0.06)",
-  Dark: "rgba(129, 140, 248, 0.07)",
+  Fire: "rgba(226, 102, 74, 0.07)",
+  Water: "rgba(95, 168, 255, 0.07)",
+  Thunder: "rgba(164, 142, 208, 0.07)",
+  Wind: "rgba(87, 214, 166, 0.07)",
+  Light: "rgba(227, 205, 149, 0.06)",
+  Dark: "rgba(142, 132, 255, 0.07)",
 };
 
 const ELEMENT_ICONS: Record<string, string> = {
@@ -106,18 +106,18 @@ const ELEMENT_ICONS: Record<string, string> = {
 };
 
 const ELEMENT_BAR_COLORS: Record<string, string> = {
-  Fire: "from-red-600/80 to-red-400/60",
-  Water: "from-blue-600/80 to-blue-400/60",
-  Thunder: "from-violet-600/80 to-violet-400/60",
-  Wind: "from-emerald-600/80 to-emerald-400/60",
-  Light: "from-amber-600/80 to-amber-400/60",
-  Dark: "from-indigo-600/80 to-indigo-400/60",
+  Fire: "from-pyro/80 to-pyro/60",
+  Water: "from-hydro/80 to-hydro/60",
+  Thunder: "from-electro/80 to-electro/60",
+  Wind: "from-anemo/80 to-anemo/60",
+  Light: "from-lumino/80 to-lumino/60",
+  Dark: "from-umbro/80 to-umbro/60",
 };
 
 const RARITY_COLORS: Record<number, string> = {
-  5: "text-amber-300",
-  4: "text-violet-300",
-  3: "text-blue-300",
+  5: "text-gold-bright",
+  4: "text-electro",
+  3: "text-hydro",
 };
 
 const ELEMENT_RGB: Record<string, string> = {
@@ -189,10 +189,10 @@ const ATTR_LABELS: Record<string, string> = {
 };
 
 const POSITIONING_STYLES: Record<string, { label: string; className: string }> = {
-  DPS: { label: "DPS", className: "border-red-500/40 bg-red-500/10 text-red-200" },
-  Support: { label: "Support", className: "border-green-500/40 bg-green-500/10 text-green-200" },
-  Uweapon: { label: "Arme ultime", className: "border-cyan-500/40 bg-cyan-500/10 text-cyan-200" },
-  WeaponDPS: { label: "DPS Arme", className: "border-amber-500/40 bg-amber-500/10 text-amber-200" },
+  DPS: { label: "DPS", className: "border-crimson-bright/40 bg-crimson-bright/10 text-crimson-bright" },
+  Support: { label: "Support", className: "border-anemo/40 bg-anemo/10 text-anemo" },
+  Uweapon: { label: "Arme ultime", className: "border-hydro/40 bg-hydro/10 text-hydro" },
+  WeaponDPS: { label: "DPS Arme", className: "border-gold/40 bg-gold/10 text-gold" },
 };
 
 function formatAddonValue(attr: CharacterAddonAttr): string {
@@ -226,15 +226,15 @@ function StatBar({
   const percent = maxValue > 0 ? Math.min((value / maxValue) * 100, 100) : 100;
   return (
     <div className="flex items-center gap-3">
-      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-slate-700/50 bg-slate-800/80">
+      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-panel/80">
         {icon}
       </div>
       <div className="min-w-0 flex-1">
         <div className="flex items-baseline justify-between gap-2">
-          <span className="text-sm text-slate-300">{label}</span>
-          <span className="text-sm font-semibold tabular-nums text-white">{value}</span>
+          <span className="text-sm text-parch/85">{label}</span>
+          <span className="text-sm font-semibold tabular-nums text-parch">{value}</span>
         </div>
-        <div className="mt-1 h-1.5 overflow-hidden rounded-full bg-slate-800">
+        <div className="mt-1 h-1.5 overflow-hidden rounded-full bg-panel">
           <div
             className={`h-full rounded-full bg-gradient-to-r transition-all duration-300 ${barColorClass}`}
             style={{ width: `${percent}%` }}
@@ -266,21 +266,21 @@ function BuildLocalizedText({
 }
 
 const ELEMENT_BORDER_COLORS: Record<string, string> = {
-  Thunder: "border-violet-500/70 shadow-violet-500/20",
-  Water: "border-blue-400/70 shadow-blue-400/20",
-  Wind: "border-emerald-400/70 shadow-emerald-400/20",
-  Fire: "border-amber-400/70 shadow-amber-400/20",
-  Light: "border-yellow-200/70 shadow-yellow-200/20",
-  Dark: "border-indigo-400/70 shadow-indigo-400/20",
+  Thunder: "border-electro/70 shadow-electro/20",
+  Water: "border-hydro/70 shadow-hydro/20",
+  Wind: "border-anemo/70 shadow-anemo/20",
+  Fire: "border-pyro/70 shadow-pyro/20",
+  Light: "border-lumino/70 shadow-lumino/20",
+  Dark: "border-umbro/70 shadow-umbro/20",
 };
 
 const ELEMENT_GLOW_COLORS: Record<string, string> = {
-  Thunder: "from-violet-500/15 to-violet-900/30",
-  Water: "from-blue-500/15 to-blue-900/30",
-  Wind: "from-emerald-500/15 to-emerald-900/30",
-  Fire: "from-amber-500/15 to-amber-900/30",
-  Light: "from-yellow-300/15 to-yellow-800/30",
-  Dark: "from-indigo-500/15 to-indigo-900/30",
+  Thunder: "from-electro/15 to-electro/30",
+  Water: "from-hydro/15 to-hydro/30",
+  Wind: "from-anemo/15 to-anemo/30",
+  Fire: "from-pyro/15 to-pyro/30",
+  Light: "from-lumino/15 to-lumino/30",
+  Dark: "from-umbro/15 to-umbro/30",
 };
 
 const CLIP_LEFT = "polygon(15% 0%, 100% 0%, 85% 100%, 0% 100%)";
@@ -336,11 +336,11 @@ function DemonWedgeSlotCard({
         />
       )}
       {showTrackAdjust && slot.track !== null && (
-        <div className={`absolute bottom-2 flex h-6 w-6 items-center justify-center rounded border border-amber-400/50 bg-slate-900/90 sm:h-7 sm:w-7 ${bottomSide}`}>
+        <div className={`absolute bottom-2 flex h-6 w-6 items-center justify-center rounded border border-gold/50 bg-panel/90 sm:h-7 sm:w-7 ${bottomSide}`}>
           {trackAdjustIconSrc ? (
             <img src={trackAdjustIconSrc} alt="" className="h-4 w-4 object-contain sm:h-5 sm:w-5" />
           ) : (
-            <span className="text-xs text-red-400">✖</span>
+            <span className="text-xs text-crimson-bright">✖</span>
           )}
         </div>
       )}
@@ -348,25 +348,25 @@ function DemonWedgeSlotCard({
   );
 
   const tooltip = slot.item ? (
-    <div className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 hidden w-64 -translate-x-1/2 rounded-xl border border-slate-700/80 bg-slate-950/95 p-3 text-sm shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
-      <p className="font-medium text-slate-100">{name}</p>
+    <div className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 hidden w-64 -translate-x-1/2 rounded-xl border border-white/10 bg-ink/95 p-3 text-sm shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
+      <p className="font-medium text-parch">{name}</p>
       <div className="mt-1.5 flex flex-wrap gap-1 text-[11px]">
-        <span className="rounded-full border border-slate-600/80 px-2 py-0.5 text-slate-200">
+        <span className="rounded-full border border-white/10 px-2 py-0.5 text-parch">
           #{slot.item.modId}
         </span>
         {slot.item.rarity !== null && (
-          <span className="rounded-full border border-amber-500/40 bg-amber-500/10 px-2 py-0.5 text-amber-200">
+          <span className="rounded-full border border-gold/40 bg-gold/10 px-2 py-0.5 text-gold">
             {slot.item.rarity}★
           </span>
         )}
         {slot.item.element && (
-          <span className="rounded-full border border-slate-600/80 px-2 py-0.5 text-slate-200">
+          <span className="rounded-full border border-white/10 px-2 py-0.5 text-parch">
             {slot.item.element}
           </span>
         )}
       </div>
       {slot.item.description && (
-        <p className="mt-2 text-xs leading-relaxed text-slate-400">{slot.item.description}</p>
+        <p className="mt-2 text-xs leading-relaxed text-muted">{slot.item.description}</p>
       )}
     </div>
   ) : null;
@@ -380,7 +380,7 @@ function DemonWedgeSlotCard({
       ) : (
         card
       )}
-      <p className="max-w-[8rem] truncate text-center text-xs text-slate-300">{name}</p>
+      <p className="max-w-[8rem] truncate text-center text-xs text-parch/85">{name}</p>
       {tooltip}
     </div>
   );
@@ -419,24 +419,24 @@ function DemonWedgeCenterSlot({
       ) : (
         circle
       )}
-      <p className="max-w-[8rem] text-center text-xs font-medium text-slate-300">
+      <p className="max-w-[8rem] text-center text-xs font-medium text-parch/85">
         <BuildLocalizedText texts={affinity} lang={lang} />
       </p>
       {centerItem && (
-        <div className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 hidden w-64 -translate-x-1/2 rounded-xl border border-slate-700/80 bg-slate-950/95 p-3 text-sm shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
-          <p className="font-medium text-slate-100">{name}</p>
+        <div className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 hidden w-64 -translate-x-1/2 rounded-xl border border-white/10 bg-ink/95 p-3 text-sm shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
+          <p className="font-medium text-parch">{name}</p>
           <div className="mt-1.5 flex flex-wrap gap-1 text-[11px]">
-            <span className="rounded-full border border-slate-600/80 px-2 py-0.5 text-slate-200">
+            <span className="rounded-full border border-white/10 px-2 py-0.5 text-parch">
               #{centerItem.modId}
             </span>
             {centerItem.rarity !== null && (
-              <span className="rounded-full border border-amber-500/40 bg-amber-500/10 px-2 py-0.5 text-amber-200">
+              <span className="rounded-full border border-gold/40 bg-gold/10 px-2 py-0.5 text-gold">
                 {centerItem.rarity}★
               </span>
             )}
           </div>
           {centerItem.description && (
-            <p className="mt-2 text-xs leading-relaxed text-slate-400">{centerItem.description}</p>
+            <p className="mt-2 text-xs leading-relaxed text-muted">{centerItem.description}</p>
           )}
         </div>
       )}
@@ -585,7 +585,7 @@ function renderSkillMarkup(text: string): React.ReactNode {
       parts.push(text.slice(lastIndex, match.index));
     }
     parts.push(
-      <span key={`h-${idx++}`} className="text-indigo-300">
+      <span key={`h-${idx++}`} className="text-gold">
         {match[1]}
       </span>,
     );
@@ -620,41 +620,41 @@ function SkillCard({
     .filter((p) => !paramsInSections.has(p.index));
 
   return (
-    <article className="overflow-hidden rounded-xl border border-slate-700/70 bg-slate-900/55">
+    <article className="overflow-hidden rounded-xl border border-white/10 bg-panel/55">
       <header
-        className="flex items-start gap-3 border-b border-slate-800/70 p-4"
+        className="flex items-start gap-3 border-b border-panel/70 p-4"
         style={{
           background: `linear-gradient(135deg, rgba(${rgb}, 0.12), transparent 60%)`,
         }}
       >
         {skill.iconPublicPath ? (
           <div
-            className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg border border-slate-600/60 bg-slate-950/70"
+            className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-ink/70"
             style={{ boxShadow: `0 0 24px rgba(${rgb}, 0.25)` }}
           >
             <img src={skill.iconPublicPath} alt="" className="h-10 w-10 object-contain" />
           </div>
         ) : (
-          <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg border border-slate-700/60 bg-slate-800/70">
-            <Sparkles className="h-5 w-5 text-slate-500" />
+          <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-panel/70">
+            <Sparkles className="h-5 w-5 text-muted-2" />
           </div>
         )}
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
-            <h3 className="text-base font-semibold text-white">
+            <h3 className="text-base font-semibold text-parch">
               {localized.name ?? `#${skill.skillId}`}
             </h3>
             {typeLabel && (
-              <span className="rounded-full border border-indigo-400/40 bg-indigo-500/10 px-2 py-0.5 text-[11px] font-medium text-indigo-200">
+              <span className="rounded-full border border-gold/40 bg-gold/10 px-2 py-0.5 text-[11px] font-medium text-gold">
                 {typeLabel}
               </span>
             )}
-            <span className="rounded-full border border-slate-700/80 bg-slate-900/60 px-2 py-0.5 text-[11px] text-slate-400">
+            <span className="rounded-full border border-white/10 bg-panel/60 px-2 py-0.5 text-[11px] text-muted">
               ID {skill.skillId}
             </span>
           </div>
           {localized.description && (
-            <p className="mt-2 whitespace-pre-line text-sm leading-relaxed text-slate-300">
+            <p className="mt-2 whitespace-pre-line text-sm leading-relaxed text-parch/85">
               {renderSkillMarkup(localized.description)}
             </p>
           )}
@@ -677,7 +677,7 @@ function SkillCard({
             return (
               <div key={section.headingKey}>
                 {section.heading && (
-                  <h4 className="mb-2 text-[11px] font-semibold uppercase tracking-wider text-indigo-300">
+                  <h4 className="mb-2 text-[11px] font-semibold uppercase tracking-wider text-gold">
                     {section.heading}
                   </h4>
                 )}
@@ -689,18 +689,18 @@ function SkillCard({
       )}
 
       {localized.combatTerms.length > 0 && (
-        <div className="border-t border-slate-800/70 bg-slate-950/30 p-4">
-          <h4 className="mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-400">
+        <div className="border-t border-panel/70 bg-ink/30 p-4">
+          <h4 className="mb-2 text-[11px] font-semibold uppercase tracking-wider text-muted">
             Termes
           </h4>
           <dl className="space-y-2">
             {localized.combatTerms.map((term) => (
-              <div key={term.id} className="rounded-lg border border-slate-800/60 bg-slate-900/50 px-3 py-2">
-                <dt className="text-xs font-semibold text-slate-100">
+              <div key={term.id} className="rounded-lg border border-panel/60 bg-panel/50 px-3 py-2">
+                <dt className="text-xs font-semibold text-parch">
                   {term.name ?? term.id}
                 </dt>
                 {term.explanation && (
-                  <dd className="mt-1 whitespace-pre-line text-xs leading-relaxed text-slate-400">
+                  <dd className="mt-1 whitespace-pre-line text-xs leading-relaxed text-muted">
                     {renderSkillMarkup(term.explanation)}
                   </dd>
                 )}
@@ -725,18 +725,18 @@ function SkillParamList({
       {items.map((p, idx) => {
         const value = p.valuesByLevel[String(skillLevel)] ?? null;
         return (
-          <div key={`${p.labelKey ?? "row"}-${idx}`} className="flex items-baseline justify-between gap-2 border-b border-slate-800/40 py-1.5">
-            <dt className="flex items-baseline gap-1.5 text-xs text-slate-400">
+          <div key={`${p.labelKey ?? "row"}-${idx}`} className="flex items-baseline justify-between gap-2 border-b border-panel/40 py-1.5">
+            <dt className="flex items-baseline gap-1.5 text-xs text-muted">
               <span>{p.label ?? p.labelKey ?? "—"}</span>
               {p.levelDependent && (
-                <span className="rounded-full border border-indigo-400/30 bg-indigo-500/10 px-1.5 py-px text-[10px] font-medium text-indigo-300">
+                <span className="rounded-full border border-gold/30 bg-gold/10 px-1.5 py-px text-[10px] font-medium text-gold">
                   Lv
                 </span>
               )}
             </dt>
-            <dd className="text-sm font-semibold tabular-nums text-white">
+            <dd className="text-sm font-semibold tabular-nums text-parch">
               {value ?? (
-                <span className="text-xs font-normal text-slate-500" title={p.formula}>
+                <span className="text-xs font-normal text-muted-2" title={p.formula}>
                   —
                 </span>
               )}
@@ -761,9 +761,9 @@ function SkillsTabContent({
 
   if (!skillSet || skillSet.skills.length === 0) {
     return (
-      <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5 md:p-8 text-center">
-        <Sparkles className="mx-auto h-10 w-10 text-slate-600" />
-        <p className="mt-3 text-sm text-slate-400">
+      <section className="rounded-xl border border-white/10 bg-panel/55 p-5 md:p-8 text-center">
+        <Sparkles className="mx-auto h-10 w-10 text-muted-2" />
+        <p className="mt-3 text-sm text-muted">
           Aucune competence disponible pour ce personnage.
         </p>
       </section>
@@ -778,9 +778,9 @@ function SkillsTabContent({
 
   if (skills.length === 0) {
     return (
-      <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5 md:p-8 text-center">
-        <Sparkles className="mx-auto h-10 w-10 text-slate-600" />
-        <p className="mt-3 text-sm text-slate-400">
+      <section className="rounded-xl border border-white/10 bg-panel/55 p-5 md:p-8 text-center">
+        <Sparkles className="mx-auto h-10 w-10 text-muted-2" />
+        <p className="mt-3 text-sm text-muted">
           Les competences de ce personnage ne sont pas encore traduites.
         </p>
       </section>
@@ -789,31 +789,31 @@ function SkillsTabContent({
 
   return (
     <section className="space-y-4">
-      <div className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
+      <div className="rounded-xl border border-white/10 bg-panel/55 p-3 md:p-5">
         <div className="flex items-center justify-between gap-3">
           <div>
-            <h3 className="text-sm font-medium text-slate-300">Niveau de competence</h3>
-            <p className="mt-0.5 text-[11px] text-slate-500">
+            <h3 className="text-sm font-medium text-parch/85">Niveau de competence</h3>
+            <p className="mt-0.5 text-[11px] text-muted-2">
               Les valeurs marquees
-              <span className="mx-1 inline-block rounded-full border border-indigo-400/30 bg-indigo-500/10 px-1.5 py-0 align-middle text-[10px] font-medium text-indigo-300">Lv</span>
+              <span className="mx-1 inline-block rounded-full border border-gold/30 bg-gold/10 px-1.5 py-0 align-middle text-[10px] font-medium text-gold">Lv</span>
               varient selon le niveau de la competence.
             </p>
           </div>
-          <span className="rounded-lg border border-indigo-500/30 bg-indigo-500/10 px-3 py-1 text-lg font-bold tabular-nums text-indigo-100">
+          <span className="rounded-lg border border-gold/30 bg-gold/10 px-3 py-1 text-lg font-bold tabular-nums text-gold">
             {skillLevel}
           </span>
         </div>
         <div className="mt-3 flex items-center gap-3">
-          <span className="shrink-0 text-xs text-slate-500">{SKILL_LEVEL_MIN}</span>
+          <span className="shrink-0 text-xs text-muted-2">{SKILL_LEVEL_MIN}</span>
           <input
             type="range"
             min={SKILL_LEVEL_MIN}
             max={SKILL_LEVEL_MAX}
             value={skillLevel}
             onChange={(e) => setSkillLevel(Number(e.target.value))}
-            className="h-2 flex-1 cursor-pointer appearance-none rounded-full bg-slate-800 accent-indigo-500"
+            className="h-2 flex-1 cursor-pointer appearance-none rounded-full bg-panel accent-gold"
           />
-          <span className="shrink-0 text-xs text-slate-500">{SKILL_LEVEL_MAX}</span>
+          <span className="shrink-0 text-xs text-muted-2">{SKILL_LEVEL_MAX}</span>
         </div>
       </div>
 
@@ -887,17 +887,17 @@ function QuickBuildAccordion({
     <div
       ref={containerRef}
       id="quick-build"
-      className="overflow-hidden rounded-xl border border-indigo-400/30 bg-indigo-500/5"
+      className="overflow-hidden rounded-xl border border-gold/30 bg-gold/5"
     >
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="flex w-full items-center justify-between gap-3 px-4 py-3 text-left transition-colors hover:bg-indigo-500/10"
+        className="flex w-full items-center justify-between gap-3 px-4 py-3 text-left transition-colors hover:bg-gold/10"
         aria-expanded={open}
         aria-controls="quick-build-panel"
       >
-        <span className="flex items-center gap-2 text-sm font-medium text-indigo-100">
-          <FileImage className="h-4 w-4 text-indigo-300" />
+        <span className="flex items-center gap-2 text-sm font-medium text-gold">
+          <FileImage className="h-4 w-4 text-gold" />
           Carte build partageable
         </span>
         <div className="flex items-center gap-3">
@@ -907,20 +907,20 @@ function QuickBuildAccordion({
               tabIndex={0}
               onClick={(e) => { e.stopPropagation(); handleDownload(); }}
               onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); e.stopPropagation(); handleDownload(); } }}
-              className="inline-flex cursor-pointer items-center gap-1.5 rounded-md border border-indigo-400/40 bg-indigo-500/15 px-2.5 py-1 text-xs font-medium text-indigo-100 transition-colors hover:bg-indigo-500/30"
+              className="inline-flex cursor-pointer items-center gap-1.5 rounded-md border border-gold/40 bg-gold/15 px-2.5 py-1 text-xs font-medium text-gold transition-colors hover:bg-gold/30"
             >
               {downloading ? "Export..." : "Telecharger PNG"}
             </span>
           )}
           <ChevronDown
-            className={`h-4 w-4 text-indigo-300 transition-transform ${open ? "rotate-180" : ""}`}
+            className={`h-4 w-4 text-gold transition-transform ${open ? "rotate-180" : ""}`}
           />
         </div>
       </button>
       {open && (
         <div
           id="quick-build-panel"
-          className="overflow-auto bg-slate-950/40 p-3 md:p-4"
+          className="overflow-auto bg-ink/40 p-3 md:p-4"
         >
           <div className="mx-auto w-fit">
             <QuickBuildCard
@@ -957,9 +957,9 @@ function BuildTabContent({
 
   if (builds.length === 0) {
     return (
-      <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-5 md:p-8 text-center">
-        <Swords className="mx-auto h-10 w-10 text-slate-600" />
-        <p className="mt-3 text-sm text-slate-400">
+      <section className="rounded-xl border border-white/10 bg-panel/55 p-5 md:p-8 text-center">
+        <Swords className="mx-auto h-10 w-10 text-muted-2" />
+        <p className="mt-3 text-sm text-muted">
           {t('noBuildAvailable')}
         </p>
       </section>
@@ -989,8 +989,8 @@ function BuildTabContent({
               onClick={() => setActiveBuildIndex(i)}
               className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
                 i === activeBuildIndex
-                  ? "border border-indigo-400/40 bg-indigo-500/20 text-indigo-100"
-                  : "border border-transparent text-slate-400 hover:bg-slate-800/60 hover:text-slate-200"
+                  ? "border border-gold/40 bg-gold/20 text-gold"
+                  : "border border-transparent text-muted hover:bg-panel/60 hover:text-parch"
               }`}
             >
               <BuildLocalizedText texts={b.buildName} lang={selectedLanguage} />
@@ -1008,9 +1008,9 @@ function BuildTabContent({
 
       {/* --- Weapons --- */}
       {hasWeapons && (
-        <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
-          <h2 className="flex items-center gap-2 text-base md:text-lg font-semibold text-white">
-            <Swords className="h-4 w-4 text-indigo-400/80" />
+        <section className="rounded-xl border border-white/10 bg-panel/55 p-3 md:p-5">
+          <h2 className="flex items-center gap-2 text-base md:text-lg font-semibold text-parch">
+            <Swords className="h-4 w-4 text-gold/80" />
             {t('weaponsTitle')}
           </h2>
           <div className="mt-4 space-y-4">
@@ -1019,19 +1019,19 @@ function BuildTabContent({
               if (weapons.length === 0) return null;
               return (
                 <div key={type}>
-                  <h3 className="mb-2 text-xs font-medium uppercase tracking-wider text-slate-400">
+                  <h3 className="mb-2 text-xs font-medium uppercase tracking-wider text-muted">
                     {type === "melee" ? t('weaponMelee') : t('weaponRanged')}
                   </h3>
                   <div className="space-y-2">
                     {weapons.map((w, i) => (
                       <div
                         key={i}
-                        className="flex items-center gap-3 rounded-lg border border-slate-700/60 bg-slate-950/55 px-4 py-3"
+                        className="flex items-center gap-3 rounded-lg border border-white/10 bg-ink/55 px-4 py-3"
                       >
                         {w.item ? (
                           <Link
                             href={w.item.href}
-                            className="flex min-w-0 flex-1 items-center gap-3 transition-colors hover:text-indigo-200"
+                            className="flex min-w-0 flex-1 items-center gap-3 transition-colors hover:text-gold"
                           >
                             <img
                               src={w.item.icon}
@@ -1039,22 +1039,22 @@ function BuildTabContent({
                               className="h-10 w-10 shrink-0 object-contain"
                             />
                             <div className="min-w-0 flex-1">
-                              <p className="truncate text-sm font-medium text-slate-100">
+                              <p className="truncate text-sm font-medium text-parch">
                                 {w.item.name}
                               </p>
-                              <p className="truncate text-xs text-slate-400">
+                              <p className="truncate text-xs text-muted">
                                 <BuildLocalizedText texts={w.note} lang={selectedLanguage} />
                               </p>
                             </div>
                           </Link>
                         ) : (
-                          <p className="text-sm text-slate-500">{t('weaponItemNotFound')}</p>
+                          <p className="text-sm text-muted-2">{t('weaponItemNotFound')}</p>
                         )}
                         <span
                           className={`shrink-0 rounded-full px-2.5 py-0.5 text-xs font-medium ${
                             w.rank === "best"
-                              ? "border border-amber-400/40 bg-amber-500/15 text-amber-200"
-                              : "border border-slate-600/80 bg-slate-800/40 text-slate-300"
+                              ? "border border-gold/40 bg-gold/15 text-gold"
+                              : "border border-white/10 bg-panel/40 text-parch/85"
                           }`}
                         >
                           {w.rank === "best" ? t('weaponBest') : t('weaponAlt')}
@@ -1071,10 +1071,10 @@ function BuildTabContent({
 
       {/* --- Demon Wedges (game layout) --- */}
       {hasDemonWedges && (
-        <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
+        <section className="rounded-xl border border-white/10 bg-panel/55 p-3 md:p-5">
           <div className="flex items-center justify-between">
-            <h2 className="flex items-center gap-2 text-base md:text-lg font-semibold text-white">
-              <Shield className="h-4 w-4 text-indigo-400/80" />
+            <h2 className="flex items-center gap-2 text-base md:text-lg font-semibold text-parch">
+              <Shield className="h-4 w-4 text-gold/80" />
               {t('demonWedgesTitle')}
             </h2>
             {build.demonWedges.slots.some((s) => s.track !== null) && (
@@ -1084,14 +1084,14 @@ function BuildTabContent({
                   onClick={() => setShowTrackAdjust((prev) => !prev)}
                   className={`flex items-center gap-2 rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
                     showTrackAdjust
-                      ? "border border-amber-400/50 bg-amber-500/15 text-amber-200"
-                      : "border border-slate-600/80 text-slate-400 hover:border-slate-500 hover:text-slate-300"
+                      ? "border border-gold/50 bg-gold/15 text-gold"
+                      : "border border-white/10 text-muted hover:border-white/10 hover:text-parch/85"
                   }`}
                 >
                   <span className="h-2 w-2 rounded-full" style={{ background: showTrackAdjust ? "#fbbf24" : "#64748b" }} />
                   {t('demonWedgeTrackAdjust')}
                 </button>
-                <div className="pointer-events-none absolute right-0 top-full z-30 mt-2 hidden w-64 rounded-xl border border-slate-700/80 bg-slate-950/95 p-3 text-xs leading-relaxed text-slate-400 shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
+                <div className="pointer-events-none absolute right-0 top-full z-30 mt-2 hidden w-64 rounded-xl border border-white/10 bg-ink/95 p-3 text-xs leading-relaxed text-muted shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
                   {t('demonWedgeTrackTooltip')}
                 </div>
               </div>
@@ -1108,7 +1108,7 @@ function BuildTabContent({
             />
           </div>
           {Object.keys(build.demonWedges.note).length > 0 && (
-            <p className="mt-4 text-center text-xs text-slate-400">
+            <p className="mt-4 text-center text-xs text-muted">
               <BuildLocalizedText texts={build.demonWedges.note} lang={selectedLanguage} />
             </p>
           )}
@@ -1118,9 +1118,9 @@ function BuildTabContent({
 
       {/* --- Consonance Weapon --- */}
       {hasConsonance && build.consonanceWeapon && (
-        <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
-          <h2 className="flex items-center gap-2 text-base md:text-lg font-semibold text-white">
-            <Swords className="h-4 w-4 text-indigo-400/80" />
+        <section className="rounded-xl border border-white/10 bg-panel/55 p-3 md:p-5">
+          <h2 className="flex items-center gap-2 text-base md:text-lg font-semibold text-parch">
+            <Swords className="h-4 w-4 text-gold/80" />
             {t('consonanceTitle')}
           </h2>
           {build.consonanceWeapon.slots.length > 0 && (() => {
@@ -1130,10 +1130,10 @@ function BuildTabContent({
             const renderSlot = (s: typeof cw.slots[number], idx: number, clip: string) => {
               const card = (
                 <div
-                  className="relative flex h-36 w-[6.5rem] items-center justify-center border-2 border-purple-500/50 shadow-lg shadow-purple-500/20 sm:h-44 sm:w-32"
+                  className="relative flex h-36 w-[6.5rem] items-center justify-center border-2 border-electro/50 shadow-lg shadow-electro/20 sm:h-44 sm:w-32"
                   style={{ clipPath: clip, background: "linear-gradient(135deg, rgba(15,23,42,0.9), rgba(30,20,50,0.95))" }}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-b from-purple-500/15 to-purple-900/30" style={{ clipPath: clip }} />
+                  <div className="absolute inset-0 bg-gradient-to-b from-electro/15 to-electro/30" style={{ clipPath: clip }} />
                   <img src={s.icon} alt={s.name} className="h-14 w-14 object-contain drop-shadow-lg sm:h-[4.5rem] sm:w-[4.5rem]" />
                 </div>
               );
@@ -1142,17 +1142,17 @@ function BuildTabContent({
                   {s.href ? (
                     <Link href={s.href} className="block transition-transform duration-150 hover:scale-105">{card}</Link>
                   ) : card}
-                  <p className="max-w-[8rem] truncate text-center text-xs text-slate-300">{s.name}</p>
-                  <div className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 hidden w-64 -translate-x-1/2 rounded-xl border border-slate-700/80 bg-slate-950/95 p-3 text-sm shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
-                    <p className="font-medium text-slate-100">{s.name}</p>
+                  <p className="max-w-[8rem] truncate text-center text-xs text-parch/85">{s.name}</p>
+                  <div className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 hidden w-64 -translate-x-1/2 rounded-xl border border-white/10 bg-ink/95 p-3 text-sm shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
+                    <p className="font-medium text-parch">{s.name}</p>
                     <div className="mt-1.5 flex flex-wrap gap-1 text-[11px]">
-                      <span className="rounded-full border border-slate-600/80 px-2 py-0.5 text-slate-200">#{s.modId}</span>
+                      <span className="rounded-full border border-white/10 px-2 py-0.5 text-parch">#{s.modId}</span>
                       {s.rarity !== null && (
-                        <span className="rounded-full border border-amber-500/40 bg-amber-500/10 px-2 py-0.5 text-amber-200">{s.rarity}★</span>
+                        <span className="rounded-full border border-gold/40 bg-gold/10 px-2 py-0.5 text-gold">{s.rarity}★</span>
                       )}
                     </div>
                     {s.description && (
-                      <p className="mt-2 text-xs leading-relaxed text-slate-400">{s.description}</p>
+                      <p className="mt-2 text-xs leading-relaxed text-muted">{s.description}</p>
                     )}
                   </div>
                 </div>
@@ -1172,22 +1172,22 @@ function BuildTabContent({
                       onClick={onNavigateToStats}
                       className="flex flex-col items-center gap-2 px-4 transition-transform duration-150 hover:scale-105"
                     >
-                      <div className="flex h-28 w-28 items-center justify-center rounded-full border-2 border-purple-400/50 bg-purple-500/10 shadow-lg shadow-purple-500/20 sm:h-32 sm:w-32">
+                      <div className="flex h-28 w-28 items-center justify-center rounded-full border-2 border-electro/50 bg-electro/10 shadow-lg shadow-electro/20 sm:h-32 sm:w-32">
                         {weaponIcon ? (
                           <img src={weaponIcon} alt="" className="h-16 w-16 object-contain drop-shadow-lg sm:h-20 sm:w-20" />
                         ) : (
-                          <Swords className="h-12 w-12 text-purple-300 sm:h-14 sm:w-14" />
+                          <Swords className="h-12 w-12 text-electro sm:h-14 sm:w-14" />
                         )}
                       </div>
-                      <p className="max-w-[10rem] text-center text-sm font-medium text-purple-200">
+                      <p className="max-w-[10rem] text-center text-sm font-medium text-electro">
                         <BuildLocalizedText texts={cw.name} lang={selectedLanguage} />
                       </p>
                     </button>
-                    <div className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 hidden w-56 -translate-x-1/2 rounded-xl border border-slate-700/80 bg-slate-950/95 p-3 text-sm shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
-                      <p className="font-medium text-purple-200">
+                    <div className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 hidden w-56 -translate-x-1/2 rounded-xl border border-white/10 bg-ink/95 p-3 text-sm shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
+                      <p className="font-medium text-electro">
                         <BuildLocalizedText texts={cw.name} lang={selectedLanguage} />
                       </p>
-                      <p className="mt-1.5 text-xs text-slate-400">
+                      <p className="mt-1.5 text-xs text-muted">
                         {t('consonanceTooltip')}
                       </p>
                     </div>
@@ -1209,14 +1209,14 @@ function BuildTabContent({
                     onClick={onNavigateToStats}
                     className="flex flex-col items-center gap-1 transition-transform duration-150 active:scale-95"
                   >
-                    <div className="flex h-20 w-20 items-center justify-center rounded-full border-2 border-purple-400/50 bg-purple-500/10 shadow-lg shadow-purple-500/20">
+                    <div className="flex h-20 w-20 items-center justify-center rounded-full border-2 border-electro/50 bg-electro/10 shadow-lg shadow-electro/20">
                       {weaponIcon ? (
                         <img src={weaponIcon} alt="" className="h-12 w-12 object-contain drop-shadow-lg" />
                       ) : (
-                        <Swords className="h-10 w-10 text-purple-300" />
+                        <Swords className="h-10 w-10 text-electro" />
                       )}
                     </div>
-                    <p className="max-w-[10rem] text-center text-sm font-medium text-purple-200">
+                    <p className="max-w-[10rem] text-center text-sm font-medium text-electro">
                       <BuildLocalizedText texts={cw.name} lang={selectedLanguage} />
                     </p>
                   </button>
@@ -1234,21 +1234,21 @@ function BuildTabContent({
 
       {/* --- Stats priority --- */}
       {hasStats && (
-        <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
-          <h2 className="flex items-center gap-2 text-base md:text-lg font-semibold text-white">
-            <BarChart3 className="h-4 w-4 text-indigo-400/80" />
+        <section className="rounded-xl border border-white/10 bg-panel/55 p-3 md:p-5">
+          <h2 className="flex items-center gap-2 text-base md:text-lg font-semibold text-parch">
+            <BarChart3 className="h-4 w-4 text-gold/80" />
             {t('statsPriorityTitle')}
           </h2>
           <ol className="mt-4 space-y-2">
             {build.statsPriority.map((stat, i) => (
               <li
                 key={stat}
-                className="flex items-center gap-3 rounded-lg border border-slate-700/60 bg-slate-950/55 px-4 py-2.5"
+                className="flex items-center gap-3 rounded-lg border border-white/10 bg-ink/55 px-4 py-2.5"
               >
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-indigo-500/25 text-xs font-bold text-indigo-200">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gold/25 text-xs font-bold text-gold">
                   {i + 1}
                 </span>
-                <span className="text-sm text-slate-100">
+                <span className="text-sm text-parch">
                   {ATTR_LABELS[stat] ?? stat}
                 </span>
               </li>
@@ -1259,9 +1259,9 @@ function BuildTabContent({
 
       {/* --- Team --- */}
       {hasTeam && (
-        <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
-          <h2 className="flex items-center gap-2 text-base md:text-lg font-semibold text-white">
-            <Sparkles className="h-4 w-4 text-indigo-400/80" />
+        <section className="rounded-xl border border-white/10 bg-panel/55 p-3 md:p-5">
+          <h2 className="flex items-center gap-2 text-base md:text-lg font-semibold text-parch">
+            <Sparkles className="h-4 w-4 text-gold/80" />
             {t('teamTitle')}
           </h2>
           <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -1277,27 +1277,27 @@ function BuildTabContent({
                   {tm.character ? (
                     <Link
                       href={tm.character.href}
-                      className="flex items-center gap-3 transition-colors hover:text-indigo-200"
+                      className="flex items-center gap-3 transition-colors hover:text-gold"
                     >
                       {tm.character.portrait && (
                         <img
                           src={tm.character.portrait}
                           alt=""
-                          className="h-12 w-12 shrink-0 rounded-full border border-slate-600 object-cover"
+                          className="h-12 w-12 shrink-0 rounded-full border border-white/10 object-cover"
                         />
                       )}
                       <div className="min-w-0">
-                        <p className="truncate text-sm font-medium text-slate-100">
+                        <p className="truncate text-sm font-medium text-parch">
                           {tm.character.name}
                         </p>
-                        <p className="text-xs text-slate-300">{tm.role}</p>
-                        <p className="truncate text-xs text-slate-400">
+                        <p className="text-xs text-parch/85">{tm.role}</p>
+                        <p className="truncate text-xs text-muted">
                           <BuildLocalizedText texts={tm.note} lang={selectedLanguage} />
                         </p>
                       </div>
                     </Link>
                   ) : (
-                    <p className="text-sm text-slate-500">{t('teamCharNotFound')}</p>
+                    <p className="text-sm text-muted-2">{t('teamCharNotFound')}</p>
                   )}
                 </div>
               );
@@ -1308,34 +1308,34 @@ function BuildTabContent({
 
       {/* --- Genimon --- */}
       {hasGenimon && (
-        <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
-          <h2 className="text-base md:text-lg font-semibold text-white">{t('genimonTitle')}</h2>
+        <section className="rounded-xl border border-white/10 bg-panel/55 p-3 md:p-5">
+          <h2 className="text-base md:text-lg font-semibold text-parch">{t('genimonTitle')}</h2>
           <div className="mt-4 space-y-2">
             {build.genimon.map((g, i) => (
               <div
                 key={i}
-                className="flex items-center gap-3 rounded-lg border border-slate-700/60 bg-slate-950/55 px-4 py-3"
+                className="flex items-center gap-3 rounded-lg border border-white/10 bg-ink/55 px-4 py-3"
               >
                 {g.item ? (
                   <Link
                     href={g.item.href}
-                    className="flex min-w-0 flex-1 items-center gap-3 transition-colors hover:text-indigo-200"
+                    className="flex min-w-0 flex-1 items-center gap-3 transition-colors hover:text-gold"
                   >
                     <img
                       src={g.item.icon}
                       alt=""
                       className="h-10 w-10 shrink-0 object-contain"
                     />
-                    <p className="truncate text-sm font-medium text-slate-100">{g.item.name}</p>
+                    <p className="truncate text-sm font-medium text-parch">{g.item.name}</p>
                   </Link>
                 ) : (
-                  <p className="text-sm text-slate-500">{t('genimonNotFound')}</p>
+                  <p className="text-sm text-muted-2">{t('genimonNotFound')}</p>
                 )}
                 <span
                   className={`shrink-0 rounded-full px-2.5 py-0.5 text-xs font-medium ${
                     g.rank === "best"
-                      ? "border border-amber-400/40 bg-amber-500/15 text-amber-200"
-                      : "border border-slate-600/80 bg-slate-800/40 text-slate-300"
+                      ? "border border-gold/40 bg-gold/15 text-gold"
+                      : "border border-white/10 bg-panel/40 text-parch/85"
                   }`}
                 >
                   {g.rank === "best" ? "Best" : "Alt"}
@@ -1352,7 +1352,7 @@ function BuildTabContent({
         const sorted = build.skillPriority.slice().sort((a, b) => b.priority - a.priority);
         return (
           <section className="relative py-6">
-            <h2 className="mb-8 text-base md:text-lg font-semibold text-white">{t('skillPriorityTitle')}</h2>
+            <h2 className="mb-8 text-base md:text-lg font-semibold text-parch">{t('skillPriorityTitle')}</h2>
 
             <div className="relative ml-4 md:ml-8">
               {/* Vertical connecting vine */}
@@ -1393,7 +1393,7 @@ function BuildTabContent({
                             style={isTop ? { filter: `drop-shadow(0 0 6px rgba(${rgb}, 0.5))` } : undefined}
                           />
                         ) : (
-                          <span className={`text-xl font-bold ${isTop ? "text-white" : "text-slate-500"}`}>
+                          <span className={`text-xl font-bold ${isTop ? "text-parch" : "text-muted-2"}`}>
                             {i + 1}
                           </span>
                         )}
@@ -1412,7 +1412,7 @@ function BuildTabContent({
 
                       {/* Skill info floating to the right */}
                       <div className="min-w-0 flex-1">
-                        <p className={`font-medium ${isTop ? "text-base text-white" : "text-sm text-slate-300"}`}>
+                        <p className={`font-medium ${isTop ? "text-base text-parch" : "text-sm text-parch/85"}`}>
                           <BuildLocalizedText texts={s.skillName} lang={selectedLanguage} />
                         </p>
                         <div className="mt-1 flex flex-wrap items-center gap-2">
@@ -1420,13 +1420,13 @@ function BuildTabContent({
                             {Array.from({ length: 5 }, (_, j) => (
                               <span
                                 key={j}
-                                className={`text-[10px] ${j < s.priority ? "text-amber-400" : "text-slate-700"}`}
+                                className={`text-[10px] ${j < s.priority ? "text-gold" : "text-muted-2"}`}
                               >
                                 ★
                               </span>
                             ))}
                           </div>
-                          <p className="truncate text-xs text-slate-500">
+                          <p className="truncate text-xs text-muted-2">
                             <BuildLocalizedText texts={s.note} lang={selectedLanguage} />
                           </p>
                         </div>
@@ -1442,9 +1442,9 @@ function BuildTabContent({
 
       {/* --- Notes --- */}
       {hasNotes && (
-        <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
-          <h2 className="text-base md:text-lg font-semibold text-white">{t('notesTitle')}</h2>
-          <p className="mt-3 text-sm leading-relaxed text-slate-300">
+        <section className="rounded-xl border border-white/10 bg-panel/55 p-3 md:p-5">
+          <h2 className="text-base md:text-lg font-semibold text-parch">{t('notesTitle')}</h2>
+          <p className="mt-3 text-sm leading-relaxed text-parch/85">
             <BuildLocalizedText texts={build.notes} lang={selectedLanguage} />
           </p>
         </section>
@@ -1560,7 +1560,7 @@ export default function CharacterDetailClient({
   const isFavorite = favoriteChars.has(character.id);
   const elementStyle = ELEMENT_COLORS[character.element.key];
   const elementIcon = ELEMENT_ICONS[character.element.key];
-  const rarityColor = RARITY_COLORS[character.rarity ?? 0] ?? "text-slate-300";
+  const rarityColor = RARITY_COLORS[character.rarity ?? 0] ?? "text-parch/85";
 
   // --- Portraits ---
   const availablePortraits = useMemo(() => {
@@ -1616,7 +1616,7 @@ export default function CharacterDetailClient({
   }, [character.baseStats, maxLevel, levelUpCurves]);
 
   const atkLabel = `ATQ ${character.element.label}`;
-  const atkBarColor = ELEMENT_BAR_COLORS[character.element.key] ?? "from-slate-600 to-slate-400";
+  const atkBarColor = ELEMENT_BAR_COLORS[character.element.key] ?? "from-muted-2 to-muted";
 
   // =========================================================================
   // Render
@@ -1627,12 +1627,12 @@ export default function CharacterDetailClient({
       {/* ================================================================= */}
       {/* Top bar + Hero section (always visible, above tabs)               */}
       {/* ================================================================= */}
-      <section className="rounded-2xl border border-indigo-500/20 bg-slate-900/60 p-4 md:p-6 shadow-[0_20px_45px_rgba(15,23,42,0.45)] backdrop-blur-sm">
+      <section className="rounded-2xl border border-gold/20 bg-panel/60 p-4 md:p-6 shadow-[0_20px_45px_rgba(15,23,42,0.45)] backdrop-blur-sm">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex flex-wrap items-center gap-2">
             <Link
               href="/characters"
-              className="inline-flex items-center gap-2 rounded-lg border border-slate-600/80 px-3 py-2 text-sm text-slate-200 transition-colors hover:border-indigo-400/40 hover:text-white"
+              className="inline-flex items-center gap-2 rounded-lg border border-white/10 px-3 py-2 text-sm text-parch transition-colors hover:border-gold/40 hover:text-parch"
             >
               <ArrowLeft className="h-4 w-4" />
               {tc('backToList')}
@@ -1642,12 +1642,12 @@ export default function CharacterDetailClient({
               onClick={() => toggleFavorite(character.id)}
               className={`inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors ${
                 isFavorite
-                  ? "text-rose-300 hover:text-rose-200"
-                  : "text-slate-300 hover:text-rose-300"
+                  ? "text-crimson-bright hover:text-crimson-bright"
+                  : "text-parch/85 hover:text-crimson-bright"
               }`}
             >
               <Heart
-                className={`h-4 w-4 ${isFavorite ? "fill-rose-400 text-rose-400" : ""}`}
+                className={`h-4 w-4 ${isFavorite ? "fill-crimson-bright text-crimson-bright" : ""}`}
               />
               {isFavorite ? tc('removeFavorite') : tc('addFavorite')}
             </button>
@@ -1655,7 +1655,7 @@ export default function CharacterDetailClient({
               <button
                 type="button"
                 onClick={() => setQuickBuildOpen(true)}
-                className="inline-flex items-center gap-2 rounded-lg border border-indigo-400/40 bg-indigo-500/15 px-3 py-2 text-sm font-medium text-indigo-100 transition-colors hover:bg-indigo-500/30"
+                className="inline-flex items-center gap-2 rounded-lg border border-gold/40 bg-gold/15 px-3 py-2 text-sm font-medium text-gold transition-colors hover:bg-gold/30"
               >
                 <FileImage className="h-4 w-4" />
                 Build rapide
@@ -1667,7 +1667,7 @@ export default function CharacterDetailClient({
             {prevCharacter && (
               <Link
                 href={`/characters/${getCharacterSlug(prevCharacter)}`}
-                className="inline-flex items-center gap-1 rounded-lg border border-slate-600/80 px-2 py-2 text-sm text-slate-300 transition-colors hover:border-indigo-400/40 hover:text-white"
+                className="inline-flex items-center gap-1 rounded-lg border border-white/10 px-2 py-2 text-sm text-parch/85 transition-colors hover:border-gold/40 hover:text-parch"
                 aria-label={t('previousCharacter', { name: prevCharacter.internalName })}
               >
                 <ChevronLeft className="h-4 w-4" />
@@ -1676,7 +1676,7 @@ export default function CharacterDetailClient({
             {nextCharacter && (
               <Link
                 href={`/characters/${getCharacterSlug(nextCharacter)}`}
-                className="inline-flex items-center gap-1 rounded-lg border border-slate-600/80 px-2 py-2 text-sm text-slate-300 transition-colors hover:border-indigo-400/40 hover:text-white"
+                className="inline-flex items-center gap-1 rounded-lg border border-white/10 px-2 py-2 text-sm text-parch/85 transition-colors hover:border-gold/40 hover:text-parch"
                 aria-label={t('nextCharacter', { name: nextCharacter.internalName })}
               >
                 <ChevronRight className="h-4 w-4" />
@@ -1684,7 +1684,7 @@ export default function CharacterDetailClient({
             )}
 
             {hasElementSwitch && (
-              <div className="flex items-center gap-1 rounded-lg border border-slate-700/70 bg-slate-950/60 p-1">
+              <div className="flex items-center gap-1 rounded-lg border border-white/10 bg-ink/60 p-1">
                 {elementOptions.map((el) => {
                   const isActive = character.element.key === el.key;
                   const style = ELEMENT_COLORS[el.key];
@@ -1698,8 +1698,8 @@ export default function CharacterDetailClient({
                       title={el.label}
                       className={`inline-flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-sm font-medium transition-colors ${
                         isActive
-                          ? `border ${style?.border ?? "border-indigo-400/60"} ${style?.bg ?? "bg-indigo-500/20"} ${style?.text ?? "text-indigo-100"}`
-                          : "border border-transparent text-slate-300 hover:text-white"
+                          ? `border ${style?.border ?? "border-gold/60"} ${style?.bg ?? "bg-gold/20"} ${style?.text ?? "text-gold"}`
+                          : "border border-transparent text-parch/85 hover:text-parch"
                       }`}
                     >
                       {icon && (
@@ -1712,15 +1712,15 @@ export default function CharacterDetailClient({
               </div>
             )}
 
-            <div className="flex items-center gap-2 rounded-lg border border-slate-700/70 bg-slate-950/60 px-3 py-2">
-              <Languages className="h-4 w-4 text-indigo-400/80" />
+            <div className="flex items-center gap-2 rounded-lg border border-white/10 bg-ink/60 px-3 py-2">
+              <Languages className="h-4 w-4 text-gold/80" />
               <select
                 value={selectedLanguage}
                 onChange={(event) => setSelectedLanguage(event.target.value)}
-                className="bg-transparent text-sm text-slate-100 outline-none"
+                className="bg-transparent text-sm text-parch outline-none"
               >
                 {catalog.availableLanguages.map((code) => (
-                  <option key={code} value={code} className="bg-slate-900">
+                  <option key={code} value={code} className="bg-panel">
                     {getLanguageLabel(code)}
                   </option>
                 ))}
@@ -1733,7 +1733,7 @@ export default function CharacterDetailClient({
         <div className="mt-4 md:mt-6 flex flex-col gap-4 md:gap-6 lg:flex-row">
           {/* Portrait */}
           <div className="relative flex w-full shrink-0 flex-col items-center lg:w-64">
-            <div className="relative w-full overflow-hidden rounded-2xl border border-indigo-500/25 bg-slate-950/70">
+            <div className="relative w-full overflow-hidden rounded-2xl border border-gold/25 bg-ink/70">
               {activePortraitSrc ? (
                 <img
                   src={activePortraitSrc}
@@ -1742,7 +1742,7 @@ export default function CharacterDetailClient({
                 />
               ) : (
                 <div className="flex aspect-square w-full items-center justify-center">
-                  <span className="text-6xl font-bold text-slate-700">
+                  <span className="text-6xl font-bold text-muted-2">
                     {character.internalName[0]}
                   </span>
                 </div>
@@ -1756,7 +1756,7 @@ export default function CharacterDetailClient({
                       alt: `${displayName} - ${PORTRAIT_LABELS[activePortrait]}`,
                     })
                   }
-                  className="absolute bottom-3 right-3 rounded-full border border-slate-700 bg-slate-900/90 p-2 text-slate-200 transition-all hover:border-indigo-400/60 hover:bg-indigo-500/80 hover:text-white"
+                  className="absolute bottom-3 right-3 rounded-full border border-white/10 bg-panel/90 p-2 text-parch transition-all hover:border-gold/60 hover:bg-gold/80 hover:text-parch"
                   aria-label="Agrandir le portrait"
                 >
                   <ZoomIn className="h-4 w-4" />
@@ -1773,8 +1773,8 @@ export default function CharacterDetailClient({
                     onClick={() => setActivePortrait(type)}
                     className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
                       activePortrait === type
-                        ? "border border-indigo-400/60 bg-indigo-500/25 text-indigo-100"
-                        : "border border-slate-700/60 bg-slate-950/60 text-slate-300 hover:border-indigo-400/30 hover:text-white"
+                        ? "border border-gold/60 bg-gold/25 text-gold"
+                        : "border border-white/10 bg-ink/60 text-parch/85 hover:border-gold/30 hover:text-parch"
                     }`}
                   >
                     {PORTRAIT_LABELS[type]}
@@ -1787,14 +1787,14 @@ export default function CharacterDetailClient({
           {/* Info */}
           <div className="min-w-0 flex-1 space-y-4">
             <div>
-              <p className="text-xs uppercase tracking-[0.28em] text-indigo-400/80">
+              <p className="text-xs uppercase tracking-[0.28em] text-gold/80">
                 Personnage #{character.charId}
               </p>
-              <h1 className="mt-1 text-2xl md:text-3xl font-semibold text-white">
+              <h1 className="mt-1 text-2xl md:text-3xl font-semibold text-parch">
                 {displayName}
               </h1>
               {translation.subtitle && (
-                <p className="mt-1 text-sm md:text-base text-slate-300">
+                <p className="mt-1 text-sm md:text-base text-parch/85">
                   {translation.subtitle}
                 </p>
               )}
@@ -1819,7 +1819,7 @@ export default function CharacterDetailClient({
 
               {character.rarity && (
                 <span
-                  className={`rounded-full border border-slate-600/80 px-3 py-1 font-medium ${rarityColor}`}
+                  className={`rounded-full border border-white/10 px-3 py-1 font-medium ${rarityColor}`}
                 >
                   {"★".repeat(character.rarity)} {character.rarity} etoiles
                 </span>
@@ -1828,7 +1828,7 @@ export default function CharacterDetailClient({
               {character.weaponTags.map((wt) => (
                 <span
                   key={wt}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-cyan-500/35 bg-cyan-500/10 px-3 py-1 text-cyan-100"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-hydro/35 bg-hydro/10 px-3 py-1 text-hydro"
                 >
                   <Swords className="h-3 w-3" />
                   {wt}
@@ -1845,7 +1845,7 @@ export default function CharacterDetailClient({
                   return (
                     <span
                       key={cw.weaponId}
-                      className="inline-flex items-center gap-1.5 rounded-full border border-purple-400/40 bg-purple-500/15 px-3 py-1 text-purple-200"
+                      className="inline-flex items-center gap-1.5 rounded-full border border-electro/40 bg-electro/15 px-3 py-1 text-electro"
                     >
                       {cw.icon.publicPath ? (
                         <img src={cw.icon.publicPath} alt="" className="h-4 w-4 object-contain" />
@@ -1858,14 +1858,14 @@ export default function CharacterDetailClient({
                 })}
 
               {translation.campName && (
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-600/80 px-3 py-1 text-slate-300">
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 px-3 py-1 text-parch/85">
                   <Shield className="h-3 w-3" />
                   {translation.campName}
                 </span>
               )}
 
               {character.maxLevel && (
-                <span className="rounded-full border border-slate-600/80 px-3 py-1 text-slate-300">
+                <span className="rounded-full border border-white/10 px-3 py-1 text-parch/85">
                   Max Lv {character.maxLevel}
                 </span>
               )}
@@ -1875,44 +1875,44 @@ export default function CharacterDetailClient({
             <dl className="grid gap-x-6 gap-y-3 text-sm sm:grid-cols-2">
               {translation.force && (
                 <div>
-                  <dt className="text-slate-400">Force / Organisation</dt>
-                  <dd className="text-slate-100">{translation.force}</dd>
+                  <dt className="text-muted">Force / Organisation</dt>
+                  <dd className="text-parch">{translation.force}</dd>
                 </div>
               )}
               {translation.birthday && (
                 <div>
-                  <dt className="text-slate-400">Origine / Nation</dt>
-                  <dd className="text-slate-100">{translation.birthday}</dd>
+                  <dt className="text-muted">Origine / Nation</dt>
+                  <dd className="text-parch">{translation.birthday}</dd>
                 </div>
               )}
               <div>
-                <dt className="text-slate-400">Nom interne</dt>
-                <dd className="text-slate-100">{character.internalName}</dd>
+                <dt className="text-muted">Nom interne</dt>
+                <dd className="text-parch">{character.internalName}</dd>
               </div>
               <div>
-                <dt className="text-slate-400">ID</dt>
-                <dd className="text-slate-100">{character.charId}</dd>
+                <dt className="text-muted">ID</dt>
+                <dd className="text-parch">{character.charId}</dd>
               </div>
               {character.gender !== null && (
                 <div>
-                  <dt className="text-slate-400">Genre</dt>
-                  <dd className="text-slate-100">
+                  <dt className="text-muted">Genre</dt>
+                  <dd className="text-parch">
                     {character.gender ? "Feminin" : "Masculin"}
                   </dd>
                 </div>
               )}
               {character.unlockRequiredPiece && (
                 <div>
-                  <dt className="text-slate-400">Pieces pour debloquer</dt>
+                  <dt className="text-muted">Pieces pour debloquer</dt>
                   <dd className="mt-1.5">
                     <div className="group/intron relative inline-flex flex-col items-center gap-1">
                       <button
                         type="button"
                         onClick={() => setActiveTab("intron")}
-                        className="relative flex h-16 w-16 items-center justify-center rounded-lg border-2 border-indigo-500/50 shadow-lg shadow-indigo-500/10 transition-transform duration-150 hover:scale-105"
+                        className="relative flex h-16 w-16 items-center justify-center rounded-lg border-2 border-gold/50 shadow-lg shadow-gold/10 transition-transform duration-150 hover:scale-105"
                         style={{ background: "linear-gradient(135deg, rgba(15,23,42,0.9), rgba(30,41,59,0.95))" }}
                       >
-                        <div className="absolute inset-0 rounded-lg bg-gradient-to-b from-indigo-500/15 to-indigo-900/30" />
+                        <div className="absolute inset-0 rounded-lg bg-gradient-to-b from-gold/15 to-panel/30" />
                         {character.portraits.charpiece?.publicPath ? (
                           <img
                             src={character.portraits.charpiece.publicPath}
@@ -1920,17 +1920,17 @@ export default function CharacterDetailClient({
                             className="relative h-10 w-10 object-contain drop-shadow-lg"
                           />
                         ) : (
-                          <Layers className="relative h-8 w-8 text-indigo-300" />
+                          <Layers className="relative h-8 w-8 text-gold" />
                         )}
                       </button>
-                      <p className="text-center text-xs text-slate-300">×{character.unlockRequiredPiece}</p>
-                      <div className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 hidden w-56 -translate-x-1/2 rounded-xl border border-slate-700/80 bg-slate-950/95 p-3 text-sm shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover/intron:block">
-                        <p className="font-medium text-slate-100">Piece d&apos;intron</p>
+                      <p className="text-center text-xs text-parch/85">×{character.unlockRequiredPiece}</p>
+                      <div className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 hidden w-56 -translate-x-1/2 rounded-xl border border-white/10 bg-ink/95 p-3 text-sm shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover/intron:block">
+                        <p className="font-medium text-parch">Piece d&apos;intron</p>
                         <div className="mt-1.5 flex flex-wrap gap-1 text-[11px]">
-                          <span className="rounded-full border border-slate-600/80 px-2 py-0.5 text-slate-200">#{character.charPieceId}</span>
-                          <span className="rounded-full border border-indigo-500/40 bg-indigo-500/10 px-2 py-0.5 text-indigo-200">{character.intronLevels.length} niveaux</span>
+                          <span className="rounded-full border border-white/10 px-2 py-0.5 text-parch">#{character.charPieceId}</span>
+                          <span className="rounded-full border border-gold/40 bg-gold/10 px-2 py-0.5 text-gold">{character.intronLevels.length} niveaux</span>
                         </div>
-                        <p className="mt-2 text-xs leading-relaxed text-slate-400">
+                        <p className="mt-2 text-xs leading-relaxed text-muted">
                           {character.unlockRequiredPiece} pieces necessaires par niveau d&apos;intron. Cliquez pour voir les details.
                         </p>
                       </div>
@@ -1946,7 +1946,7 @@ export default function CharacterDetailClient({
       {/* ================================================================= */}
       {/* Tab bar                                                           */}
       {/* ================================================================= */}
-      <nav className="flex gap-1 overflow-x-auto rounded-xl border border-slate-700/70 bg-slate-900/55 p-1.5">
+      <nav className="flex gap-1 overflow-x-auto rounded-xl border border-white/10 bg-panel/55 p-1.5">
         {TAB_CONFIG.map(({ id, label, icon: Icon }) => (
           <button
             key={id}
@@ -1954,8 +1954,8 @@ export default function CharacterDetailClient({
             onClick={() => setActiveTab(id)}
             className={`flex shrink-0 items-center gap-1.5 rounded-lg px-2.5 py-2 text-xs font-medium transition-colors md:gap-2 md:px-4 md:py-2.5 md:text-sm ${
               activeTab === id
-                ? "border border-indigo-400/40 bg-indigo-500/20 text-indigo-100"
-                : "border border-transparent text-slate-400 hover:bg-slate-800/60 hover:text-slate-200"
+                ? "border border-gold/40 bg-gold/20 text-gold"
+                : "border border-transparent text-muted hover:bg-panel/60 hover:text-parch"
             }`}
           >
             <Icon className="h-4 w-4" />
@@ -1972,30 +1972,30 @@ export default function CharacterDetailClient({
       {activeTab === "stats" && (
         <section className="space-y-3 md:space-y-5">
           {/* Level slider */}
-          <div className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
+          <div className="rounded-xl border border-white/10 bg-panel/55 p-3 md:p-5">
             <div className="flex items-center justify-between">
-              <h3 className="text-sm font-medium text-slate-300">Niveau</h3>
-              <span className="rounded-lg border border-indigo-500/30 bg-indigo-500/10 px-3 py-1 text-lg font-bold tabular-nums text-indigo-100">
+              <h3 className="text-sm font-medium text-parch/85">Niveau</h3>
+              <span className="rounded-lg border border-gold/30 bg-gold/10 px-3 py-1 text-lg font-bold tabular-nums text-gold">
                 {level}
               </span>
             </div>
             <div className="mt-3 flex items-center gap-3">
-              <span className="shrink-0 text-xs text-slate-500">1</span>
+              <span className="shrink-0 text-xs text-muted-2">1</span>
               <input
                 type="range"
                 min={1}
                 max={maxLevel}
                 value={level}
                 onChange={(e) => setLevel(Number(e.target.value))}
-                className="h-2 flex-1 cursor-pointer appearance-none rounded-full bg-slate-800 accent-indigo-500"
+                className="h-2 flex-1 cursor-pointer appearance-none rounded-full bg-panel accent-gold"
               />
-              <span className="shrink-0 text-xs text-slate-500">{maxLevel}</span>
+              <span className="shrink-0 text-xs text-muted-2">{maxLevel}</span>
             </div>
           </div>
 
           {/* Base stats */}
-          <div className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
-            <h3 className="text-xs font-medium uppercase tracking-wider text-slate-400">
+          <div className="rounded-xl border border-white/10 bg-panel/55 p-3 md:p-5">
+            <h3 className="text-xs font-medium uppercase tracking-wider text-muted">
               Stats de base
             </h3>
             <div className="mt-4 space-y-3">
@@ -2007,7 +2007,7 @@ export default function CharacterDetailClient({
                   elementIcon ? (
                     <img src={elementIcon} alt="" className="h-5 w-5 object-contain" />
                   ) : (
-                    <Swords className="h-4 w-4 text-slate-400" />
+                    <Swords className="h-4 w-4 text-muted" />
                   )
                 }
                 barColorClass={atkBarColor}
@@ -2016,46 +2016,46 @@ export default function CharacterDetailClient({
                 label="PV Max"
                 value={computedStats.maxHp}
                 maxValue={maxLevelStats.maxHp}
-                icon={<Heart className="h-4 w-4 text-green-400" />}
-                barColorClass="from-green-600/80 to-green-400/60"
+                icon={<Heart className="h-4 w-4 text-anemo" />}
+                barColorClass="from-anemo/80 to-anemo/60"
               />
               <StatBar
                 label="Bouclier"
                 value={computedStats.maxES}
                 maxValue={maxLevelStats.maxES}
-                icon={<Shield className="h-4 w-4 text-blue-400" />}
-                barColorClass="from-blue-600/80 to-blue-400/60"
+                icon={<Shield className="h-4 w-4 text-hydro" />}
+                barColorClass="from-hydro/80 to-hydro/60"
               />
               <StatBar
                 label="DEF"
                 value={computedStats.def}
                 maxValue={maxLevelStats.def}
-                icon={<Shield className="h-4 w-4 text-amber-400" />}
-                barColorClass="from-amber-600/80 to-amber-400/60"
+                icon={<Shield className="h-4 w-4 text-gold" />}
+                barColorClass="from-gold/80 to-gold/60"
               />
               <StatBar
                 label="Lucidite max"
                 value={computedStats.maxSp}
                 maxValue={maxLevelStats.maxSp}
-                icon={<Sparkles className="h-4 w-4 text-violet-400" />}
-                barColorClass="from-violet-600/80 to-violet-400/60"
+                icon={<Sparkles className="h-4 w-4 text-electro" />}
+                barColorClass="from-electro/80 to-electro/60"
               />
             </div>
           </div>
 
           {/* Addon attrs (ascension bonuses) */}
           {character.addonAttrs.length > 0 && (
-            <div className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
-              <h3 className="text-xs font-medium uppercase tracking-wider text-slate-400">
+            <div className="rounded-xl border border-white/10 bg-panel/55 p-3 md:p-5">
+              <h3 className="text-xs font-medium uppercase tracking-wider text-muted">
                 Bonus d&apos;ascension
               </h3>
               <div className="mt-4 grid gap-2 sm:grid-cols-2">
                 {character.addonAttrs.map((attr) => (
                   <div
                     key={attr.attrId}
-                    className="flex items-center gap-3 rounded-lg border border-slate-700/50 bg-slate-950/50 px-3 py-2.5"
+                    className="flex items-center gap-3 rounded-lg border border-white/10 bg-ink/50 px-3 py-2.5"
                   >
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-slate-700/50 bg-slate-800/80">
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-panel/80">
                       <img
                         src={attr.iconPath}
                         alt=""
@@ -2063,11 +2063,11 @@ export default function CharacterDetailClient({
                       />
                     </div>
                     <div className="min-w-0 flex-1">
-                      <p className="text-sm text-slate-300">
+                      <p className="text-sm text-parch/85">
                         {ATTR_LABELS[attr.attrName] ?? attr.attrName}
                       </p>
                     </div>
-                    <span className="shrink-0 text-sm font-semibold text-indigo-200">
+                    <span className="shrink-0 text-sm font-semibold text-gold">
                       {formatAddonValue(attr)}
                     </span>
                   </div>
@@ -2079,15 +2079,15 @@ export default function CharacterDetailClient({
           {/* Recommended attrs + Positioning */}
           <div className="grid gap-3 md:gap-5 lg:grid-cols-2">
             {character.recommendAttr.length > 0 && (
-              <div className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
-                <h3 className="text-xs font-medium uppercase tracking-wider text-slate-400">
+              <div className="rounded-xl border border-white/10 bg-panel/55 p-3 md:p-5">
+                <h3 className="text-xs font-medium uppercase tracking-wider text-muted">
                   Attributs recommandes
                 </h3>
                 <div className="mt-3 flex flex-wrap gap-2">
                   {character.recommendAttr.map((attr) => (
                     <span
                       key={attr}
-                      className="rounded-full border border-slate-600/60 bg-slate-800/60 px-3 py-1 text-xs text-slate-200"
+                      className="rounded-full border border-white/10 bg-panel/60 px-3 py-1 text-xs text-parch"
                     >
                       {ATTR_LABELS[attr] ?? attr}
                     </span>
@@ -2097,8 +2097,8 @@ export default function CharacterDetailClient({
             )}
 
             {character.positioning.length > 0 && (
-              <div className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
-                <h3 className="text-xs font-medium uppercase tracking-wider text-slate-400">
+              <div className="rounded-xl border border-white/10 bg-panel/55 p-3 md:p-5">
+                <h3 className="text-xs font-medium uppercase tracking-wider text-muted">
                   Positionnement
                 </h3>
                 <div className="mt-3 flex flex-wrap gap-2">
@@ -2108,7 +2108,7 @@ export default function CharacterDetailClient({
                       <span
                         key={pos}
                         className={`rounded-full border px-3 py-1 text-xs font-medium ${
-                          style?.className ?? "border-slate-600/60 text-slate-300"
+                          style?.className ?? "border-white/10 text-parch/85"
                         }`}
                       >
                         {style?.label ?? pos}
@@ -2122,8 +2122,8 @@ export default function CharacterDetailClient({
 
           {/* Ascension levels */}
           {character.ascensionLevels.length > 0 && (
-            <div className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
-              <h3 className="text-xs font-medium uppercase tracking-wider text-slate-400">
+            <div className="rounded-xl border border-white/10 bg-panel/55 p-3 md:p-5">
+              <h3 className="text-xs font-medium uppercase tracking-wider text-muted">
                 Paliers d&apos;ascension
               </h3>
               <div className="mt-3 flex flex-wrap items-center gap-1">
@@ -2132,14 +2132,14 @@ export default function CharacterDetailClient({
                     <span
                       className={`rounded-lg border px-3 py-1.5 text-xs font-medium tabular-nums ${
                         level >= lvl
-                          ? "border-indigo-400/40 bg-indigo-500/15 text-indigo-100"
-                          : "border-slate-700/50 bg-slate-800/50 text-slate-400"
+                          ? "border-gold/40 bg-gold/15 text-gold"
+                          : "border-white/10 bg-panel/50 text-muted"
                       }`}
                     >
                       Nv. {lvl}
                     </span>
                     {i < character.ascensionLevels.length - 1 && (
-                      <ChevronRight className="h-3 w-3 text-slate-600" />
+                      <ChevronRight className="h-3 w-3 text-muted-2" />
                     )}
                   </div>
                 ))}
@@ -2148,9 +2148,9 @@ export default function CharacterDetailClient({
           )}
           {/* Skill Icons */}
           {(character.skillIcons.skill1.publicPath || character.skillIcons.skill2.publicPath || character.skillIcons.skill3.publicPath) && (
-            <div className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
-              <h2 className="flex items-center gap-2 text-base md:text-lg font-semibold text-white">
-                <Sparkles className="h-4 w-4 text-indigo-400/80" />
+            <div className="rounded-xl border border-white/10 bg-panel/55 p-3 md:p-5">
+              <h2 className="flex items-center gap-2 text-base md:text-lg font-semibold text-parch">
+                <Sparkles className="h-4 w-4 text-gold/80" />
                 Competences
               </h2>
               <div className="mt-4 flex flex-wrap gap-4">
@@ -2159,10 +2159,10 @@ export default function CharacterDetailClient({
                   if (!icon) return null;
                   return (
                     <div key={key} className="flex flex-col items-center gap-2">
-                      <div className="flex h-16 w-16 items-center justify-center rounded-full border border-slate-600/60 bg-slate-800/80">
+                      <div className="flex h-16 w-16 items-center justify-center rounded-full border border-white/10 bg-panel/80">
                         <img src={icon} alt={label} className="h-10 w-10 object-contain" />
                       </div>
-                      <span className="text-xs text-slate-400">{label}</span>
+                      <span className="text-xs text-muted">{label}</span>
                     </div>
                   );
                 })}
@@ -2172,9 +2172,9 @@ export default function CharacterDetailClient({
 
           {/* Consonance Weapon info box */}
           {character.consonanceWeapons?.length > 0 && (
-            <div className="rounded-xl border border-purple-500/30 bg-purple-500/5 p-3 md:p-5">
-              <h2 className="flex items-center gap-2 text-base md:text-lg font-semibold text-white">
-                <Swords className="h-4 w-4 text-purple-400/80" />
+            <div className="rounded-xl border border-electro/30 bg-electro/5 p-3 md:p-5">
+              <h2 className="flex items-center gap-2 text-base md:text-lg font-semibold text-parch">
+                <Swords className="h-4 w-4 text-electro/80" />
                 {t('consonanceTitle')}
               </h2>
               <div className="mt-4 space-y-3">
@@ -2190,15 +2190,15 @@ export default function CharacterDetailClient({
                         <img src={cw.icon.publicPath} alt={cwName} className="h-16 w-16 shrink-0 object-contain drop-shadow-lg" />
                       )}
                       <div>
-                        <p className="text-sm font-medium text-purple-200">{cwName}</p>
+                        <p className="text-sm font-medium text-electro">{cwName}</p>
                         <div className="mt-1 flex flex-wrap gap-1.5 text-[11px]">
-                          <span className="rounded-full border border-purple-400/40 bg-purple-500/10 px-2 py-0.5 text-purple-200">
+                          <span className="rounded-full border border-electro/40 bg-electro/10 px-2 py-0.5 text-electro">
                             {cw.rarity}★
                           </span>
-                          <span className="rounded-full border border-slate-600/80 px-2 py-0.5 text-slate-300">
+                          <span className="rounded-full border border-white/10 px-2 py-0.5 text-parch/85">
                             Nv. max 80
                           </span>
-                          <span className="rounded-full border border-slate-600/80 px-2 py-0.5 text-slate-300">
+                          <span className="rounded-full border border-white/10 px-2 py-0.5 text-parch/85">
                             ID {cw.weaponId}
                           </span>
                         </div>
@@ -2235,8 +2235,8 @@ export default function CharacterDetailClient({
 
       {/* ---------- Portraits tab ---------- */}
       {activeTab === "portraits" && (
-        <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
-          <h2 className="text-base md:text-base md:text-lg font-semibold text-white">Galerie de portraits</h2>
+        <section className="rounded-xl border border-white/10 bg-panel/55 p-3 md:p-5">
+          <h2 className="text-base md:text-base md:text-lg font-semibold text-parch">Galerie de portraits</h2>
           {availablePortraits.length > 1 ? (
             <div className="mt-3 md:mt-4 grid gap-2 md:gap-3 grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
               {availablePortraits.map((type) => {
@@ -2252,7 +2252,7 @@ export default function CharacterDetailClient({
                         alt: `${displayName} - ${PORTRAIT_LABELS[type]}`,
                       })
                     }
-                    className="group overflow-hidden rounded-xl border border-slate-700/60 bg-slate-950/60 transition-colors hover:border-indigo-400/40"
+                    className="group overflow-hidden rounded-xl border border-white/10 bg-ink/60 transition-colors hover:border-gold/40"
                   >
                     <div className="relative aspect-square overflow-hidden">
                       <img
@@ -2260,11 +2260,11 @@ export default function CharacterDetailClient({
                         alt={`${PORTRAIT_LABELS[type]}`}
                         className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-105"
                       />
-                      <div className="absolute inset-0 flex items-center justify-center bg-slate-950/0 transition-colors group-hover:bg-slate-950/30">
-                        <ZoomIn className="h-5 w-5 text-white opacity-0 transition-opacity group-hover:opacity-100" />
+                      <div className="absolute inset-0 flex items-center justify-center bg-ink/0 transition-colors group-hover:bg-ink/30">
+                        <ZoomIn className="h-5 w-5 text-parch opacity-0 transition-opacity group-hover:opacity-100" />
                       </div>
                     </div>
-                    <p className="px-2 py-1.5 text-center text-xs text-slate-300">
+                    <p className="px-2 py-1.5 text-center text-xs text-parch/85">
                       {PORTRAIT_LABELS[type]}
                     </p>
                   </button>
@@ -2272,7 +2272,7 @@ export default function CharacterDetailClient({
               })}
             </div>
           ) : (
-            <p className="mt-4 text-sm text-slate-400">
+            <p className="mt-4 text-sm text-muted">
               Aucun portrait supplementaire disponible.
             </p>
           )}
@@ -2295,7 +2295,7 @@ export default function CharacterDetailClient({
         const ROMAN_NUMERALS = ["I", "II", "III", "IV", "V", "VI", "VII"];
 
         return (
-          <section className="relative rounded-2xl border border-slate-800/60 bg-slate-950/40 md:min-h-[720px]">
+          <section className="relative rounded-2xl border border-panel/60 bg-ink/40 md:min-h-[720px]">
             {/* Background clipping wrapper — only clips bust + glow so popovers can escape the section */}
             <div className="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none">
               {/* z-0: Bust image as background — oversized, positioned left */}
@@ -2326,7 +2326,7 @@ export default function CharacterDetailClient({
                   background: `radial-gradient(ellipse 55% 75% at 22% 50%, rgba(${rgb}, 0.2), transparent 70%)`,
                 }}
               />
-              <div className="absolute inset-0 z-[1] bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
+              <div className="absolute inset-0 z-[1] bg-gradient-to-t from-ink/70 via-transparent to-transparent" />
             </div>
 
             {/* z-[2]: Header title — centered on mobile, top-right on desktop */}
@@ -2344,16 +2344,16 @@ export default function CharacterDetailClient({
                     {t("intron.progressionBadge")}
                   </span>
                 </div>
-                <h2 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">
+                <h2 className="text-3xl md:text-4xl font-extrabold text-parch tracking-tight">
                   {t("intron.title")}
                 </h2>
-                <p className="mt-2 text-sm text-slate-400">
+                <p className="mt-2 text-sm text-muted">
                   {intronLevels.length > 0
                     ? t("intron.subtitle", { count: intronLevels.length })
                     : t("intron.empty")}
                 </p>
                 {intronLevels.length > 0 && (
-                  <p className="mt-1 text-[11px] italic text-slate-500 hidden md:block">
+                  <p className="mt-1 text-[11px] italic text-muted-2 hidden md:block">
                     {t("intron.helperHint")}
                   </p>
                 )}
@@ -2375,7 +2375,7 @@ export default function CharacterDetailClient({
                   return (
                     <div
                       key={`intron-mobile-${num}`}
-                      className="rounded-xl border bg-slate-950/70 p-3 backdrop-blur-sm"
+                      className="rounded-xl border bg-ink/70 p-3 backdrop-blur-sm"
                       style={{
                         borderColor: `rgba(${rgb}, ${isHighlighted ? 0.45 : 0.2})`,
                         boxShadow: isHighlighted
@@ -2437,7 +2437,7 @@ export default function CharacterDetailClient({
                         {/* Header */}
                         <div className="flex-1 min-w-0">
                           <div className="flex items-baseline gap-2">
-                            <p className="text-sm font-bold text-white">
+                            <p className="text-sm font-bold text-parch">
                               {t("intron.levelLabel", { num })}
                             </p>
                             {isFirst && (
@@ -2452,7 +2452,7 @@ export default function CharacterDetailClient({
                               </span>
                             )}
                           </div>
-                          <p className="text-[11px] text-slate-500 mt-0.5">
+                          <p className="text-[11px] text-muted-2 mt-0.5">
                             {t("intron.pieces", { count: intronLevel.resourceNum })}
                           </p>
                         </div>
@@ -2461,7 +2461,7 @@ export default function CharacterDetailClient({
                       {/* Effect description */}
                       {effectText && (
                         <p
-                          className="mt-3 text-xs leading-relaxed text-slate-300 whitespace-pre-line border-t pt-3"
+                          className="mt-3 text-xs leading-relaxed text-parch/85 whitespace-pre-line border-t pt-3"
                           style={{ borderColor: `rgba(${rgb}, 0.15)` }}
                         >
                           {effectText}
@@ -2593,7 +2593,7 @@ export default function CharacterDetailClient({
                         {/* Label */}
                         <div className="min-w-[120px]">
                           <div className="flex items-baseline gap-2">
-                            <p className={`text-sm font-bold ${isActive || isHighlighted ? "text-white" : "text-slate-400"}`}>
+                            <p className={`text-sm font-bold ${isActive || isHighlighted ? "text-parch" : "text-muted"}`}>
                               {t("intron.levelLabel", { num })}
                             </p>
                             {isFirst && (
@@ -2608,7 +2608,7 @@ export default function CharacterDetailClient({
                               </span>
                             )}
                           </div>
-                          <p className="text-xs text-slate-500 mt-0.5">
+                          <p className="text-xs text-muted-2 mt-0.5">
                             {t("intron.pieces", { count: intronLevel.resourceNum })}
                           </p>
                         </div>
@@ -2618,7 +2618,7 @@ export default function CharacterDetailClient({
                           <div
                             className={`absolute top-1/2 -translate-y-1/2 ${
                               popoverOnLeft ? "right-full mr-4" : "left-full ml-4"
-                            } w-[280px] sm:w-[320px] rounded-xl border bg-slate-950/95 p-4 shadow-[0_20px_50px_rgba(2,6,23,0.7)] backdrop-blur-md`}
+                            } w-[280px] sm:w-[320px] rounded-xl border bg-ink/95 p-4 shadow-[0_20px_50px_rgba(2,6,23,0.7)] backdrop-blur-md`}
                             style={{
                               borderColor: `rgba(${rgb}, 0.45)`,
                               boxShadow: `0 0 30px rgba(${rgb}, 0.25), 0 20px 50px rgba(2, 6, 23, 0.7)`,
@@ -2636,11 +2636,11 @@ export default function CharacterDetailClient({
                               >
                                 {romanNumeral}
                               </span>
-                              <p className="text-sm font-bold text-white">
+                              <p className="text-sm font-bold text-parch">
                                 {t("intron.levelLabel", { num })}
                               </p>
                             </div>
-                            <p className="text-xs leading-relaxed text-slate-300 whitespace-pre-line">
+                            <p className="text-xs leading-relaxed text-parch/85 whitespace-pre-line">
                               {effectText}
                             </p>
                           </div>
@@ -2657,9 +2657,9 @@ export default function CharacterDetailClient({
 
       {/* ---------- Translations tab ---------- */}
       {activeTab === "translations" && (
-        <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
-          <h2 className="flex items-center gap-2 text-base md:text-base md:text-lg font-semibold text-white">
-            <Languages className="h-5 w-5 text-indigo-400/80" />
+        <section className="rounded-xl border border-white/10 bg-panel/55 p-3 md:p-5">
+          <h2 className="flex items-center gap-2 text-base md:text-base md:text-lg font-semibold text-parch">
+            <Languages className="h-5 w-5 text-gold/80" />
             Traductions
           </h2>
           <div className="mt-3 md:mt-4 grid gap-2 md:gap-3 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
@@ -2674,23 +2674,23 @@ export default function CharacterDetailClient({
                   onClick={() => setSelectedLanguage(langCode)}
                   className={`rounded-xl border p-3 text-left transition-colors ${
                     isActive
-                      ? "border-indigo-400/50 bg-indigo-500/10"
-                      : "border-slate-700/60 bg-slate-950/55 hover:border-indigo-400/30"
+                      ? "border-gold/50 bg-gold/10"
+                      : "border-white/10 bg-ink/55 hover:border-gold/30"
                   }`}
                 >
-                  <p className="text-[10px] uppercase tracking-[0.2em] text-slate-400">
+                  <p className="text-[10px] uppercase tracking-[0.2em] text-muted">
                     {getLanguageLabel(langCode)}
                   </p>
-                  <p className="mt-1 text-sm font-medium text-slate-100">
+                  <p className="mt-1 text-sm font-medium text-parch">
                     {tr.name ?? "N/A"}
                   </p>
                   {tr.subtitle && (
-                    <p className="mt-0.5 truncate text-xs text-slate-400">
+                    <p className="mt-0.5 truncate text-xs text-muted">
                       {tr.subtitle}
                     </p>
                   )}
                   {tr.campName && (
-                    <p className="mt-1 truncate text-xs text-slate-500">
+                    <p className="mt-1 truncate text-xs text-muted-2">
                       {tr.campName}
                     </p>
                   )}
@@ -2704,52 +2704,52 @@ export default function CharacterDetailClient({
       {/* ---------- Technical tab ---------- */}
       {activeTab === "tech" && (
         <section className="grid gap-3 md:gap-4 lg:grid-cols-2">
-          <div className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
-            <h2 className="text-base md:text-base md:text-lg font-semibold text-white">Text keys</h2>
+          <div className="rounded-xl border border-white/10 bg-panel/55 p-3 md:p-5">
+            <h2 className="text-base md:text-base md:text-lg font-semibold text-parch">Text keys</h2>
             <dl className="mt-3 md:mt-4 space-y-2 md:space-y-3 text-sm">
               {Object.entries(character.textKeys).map(([key, value]) => (
                 <div key={key}>
-                  <dt className="text-slate-400">{key}</dt>
-                  <dd className="text-slate-100">{value ?? "N/A"}</dd>
+                  <dt className="text-muted">{key}</dt>
+                  <dd className="text-parch">{value ?? "N/A"}</dd>
                 </div>
               ))}
             </dl>
           </div>
 
-          <div className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
-            <h2 className="text-base md:text-base md:text-lg font-semibold text-white">Donnees techniques</h2>
+          <div className="rounded-xl border border-white/10 bg-panel/55 p-3 md:p-5">
+            <h2 className="text-base md:text-base md:text-lg font-semibold text-parch">Donnees techniques</h2>
             <dl className="mt-3 md:mt-4 space-y-2 md:space-y-3 text-sm">
               <div>
-                <dt className="text-slate-400">ID personnage</dt>
-                <dd className="text-slate-100">{character.id}</dd>
+                <dt className="text-muted">ID personnage</dt>
+                <dd className="text-parch">{character.id}</dd>
               </div>
               <div>
-                <dt className="text-slate-400">charId</dt>
-                <dd className="text-slate-100">{character.charId}</dd>
+                <dt className="text-muted">charId</dt>
+                <dd className="text-parch">{character.charId}</dd>
               </div>
               <div>
-                <dt className="text-slate-400">internalName</dt>
-                <dd className="text-slate-100">{character.internalName}</dd>
+                <dt className="text-muted">internalName</dt>
+                <dd className="text-parch">{character.internalName}</dd>
               </div>
               <div>
-                <dt className="text-slate-400">sortPriority</dt>
-                <dd className="text-slate-100">{character.sortPriority ?? "N/A"}</dd>
+                <dt className="text-muted">sortPriority</dt>
+                <dd className="text-parch">{character.sortPriority ?? "N/A"}</dd>
               </div>
               <div>
-                <dt className="text-slate-400">colorVar</dt>
-                <dd className="text-slate-100">{character.colorVar ?? "N/A"}</dd>
+                <dt className="text-muted">colorVar</dt>
+                <dd className="text-parch">{character.colorVar ?? "N/A"}</dd>
               </div>
               <div>
-                <dt className="text-slate-400">charPieceId</dt>
-                <dd className="text-slate-100">{character.charPieceId ?? "N/A"}</dd>
+                <dt className="text-muted">charPieceId</dt>
+                <dd className="text-parch">{character.charPieceId ?? "N/A"}</dd>
               </div>
               <div>
-                <dt className="text-slate-400">Camp key</dt>
-                <dd className="text-slate-100">{character.camp.key}</dd>
+                <dt className="text-muted">Camp key</dt>
+                <dd className="text-parch">{character.camp.key}</dd>
               </div>
               <div>
-                <dt className="text-slate-400">Camp icon (game)</dt>
-                <dd className="break-all text-slate-100">
+                <dt className="text-muted">Camp icon (game)</dt>
+                <dd className="break-all text-parch">
                   {character.camp.iconGamePath ?? "N/A"}
                 </dd>
               </div>
@@ -2774,30 +2774,30 @@ export default function CharacterDetailClient({
       {/* ================================================================= */}
       {zoomedPortrait && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/85 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-ink/85 p-4 backdrop-blur-sm"
           onClick={() => setZoomedPortrait(null)}
           role="dialog"
           aria-modal="true"
           aria-label={`Portrait agrandi : ${zoomedPortrait.alt}`}
         >
           <div
-            className="max-h-[90vh] max-w-2xl overflow-hidden rounded-2xl border border-indigo-500/30 bg-slate-900/95 shadow-[0_25px_60px_rgba(2,6,23,0.65)]"
+            className="max-h-[90vh] max-w-2xl overflow-hidden rounded-2xl border border-gold/30 bg-panel/95 shadow-[0_25px_60px_rgba(2,6,23,0.65)]"
             onClick={(event) => event.stopPropagation()}
           >
-            <div className="flex items-center justify-between gap-3 border-b border-slate-700/60 px-4 py-3">
-              <p className="text-sm font-medium text-slate-100">
+            <div className="flex items-center justify-between gap-3 border-b border-white/10 px-4 py-3">
+              <p className="text-sm font-medium text-parch">
                 {zoomedPortrait.alt}
               </p>
               <button
                 type="button"
                 onClick={() => setZoomedPortrait(null)}
-                className="rounded-full p-1 text-slate-300 transition-colors hover:bg-slate-800 hover:text-white"
+                className="rounded-full p-1 text-parch/85 transition-colors hover:bg-panel hover:text-parch"
                 aria-label={tc('close')}
               >
                 <X className="h-4 w-4" />
               </button>
             </div>
-            <div className="flex items-center justify-center bg-slate-950/80 p-2">
+            <div className="flex items-center justify-center bg-ink/80 p-2">
               <img
                 src={zoomedPortrait.src}
                 alt={zoomedPortrait.alt}
