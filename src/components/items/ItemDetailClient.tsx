@@ -3,7 +3,7 @@
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { useMemo, useState, type ReactNode } from "react";
-import { ArrowLeft, ChevronDown, Database, Heart, Languages, SlidersHorizontal, Tag } from "lucide-react";
+import { ArrowLeft, ChevronDown, Heart, Languages } from "lucide-react";
 import { useAtom } from "jotai";
 import { parseAsInteger, parseAsStringLiteral, useQueryState } from "nuqs";
 import {
@@ -18,6 +18,19 @@ import { resolveDraftTextByLanguage } from "@/lib/items/drafts";
 import { itemsFavoritesAtom, toggleItemFavoriteAtom } from "@/lib/store";
 import { DnaPanel } from "@/components/dna/Panel";
 import { DnaSectionLabel } from "@/components/dna/SectionLabel";
+import { DnaStatRow } from "@/components/dna/StatRow";
+import { DnaStars } from "@/components/dna/RarityStars";
+import { DnaTag } from "@/components/dna/Tag";
+import { ELEMENTS, type ElementKey } from "@/components/dna/elements";
+
+const GOLD_HEX = "#c2a86a";
+
+/** Teinte hex tirée de l'affinité élémentaire d'un mod (UI_Attr_Fire → pyro…), sinon or. */
+function elementHexFromKey(key: string | undefined): string {
+  if (!key) return GOLD_HEX;
+  const stripped = key.replace(/^UI_Attr_/, "").replace(/_Name$/, "") as ElementKey;
+  return ELEMENTS[stripped]?.hex ?? GOLD_HEX;
+}
 
 type ItemDetailClientProps = {
   category: ItemCategory;
@@ -427,219 +440,247 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
   const favoriteKey = `${category.id}:${item.id}`;
   const isFavorite = favoriteItems.has(favoriteKey);
 
+  const elHex = elementHexFromKey(elementalAffinity?.key);
+  const tinted = elHex !== GOLD_HEX;
+  const displayName = translation.modName ?? `${category.displayName} ${item.modId}`;
+  const subtitle = translation.demonWedgeName
+    ? `${category.displayName} ${translation.demonWedgeName}`
+    : translation.functionLabel ?? (isModsCategory ? "Demon Wedge" : category.displayName);
+
   return (
     <div className="space-y-4 md:space-y-8">
-      <DnaPanel className="p-4 md:p-6 shadow-[0_20px_45px_rgba(15,23,42,0.45)]">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <div className="flex flex-wrap items-center gap-2">
-            <Link
-              href={`/items/${category.slug}`}
-              className="inline-flex items-center gap-2 rounded-sm border border-white/10 px-3 py-2 text-sm text-parch transition-colors hover:border-gold/40 hover:text-parch"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              {tc('backToList')}
-            </Link>
-            <button
-              type="button"
-              onClick={() => toggleItemFavorite(favoriteKey)}
-              className={`inline-flex items-center gap-2 rounded-sm px-3 py-2 text-sm transition-colors ${
-                isFavorite
-                  ? "text-crimson-bright hover:text-crimson-bright"
-                  : "text-parch/85 hover:text-crimson-bright"
-              }`}
-            >
-              <Heart className={`h-4 w-4 ${isFavorite ? "fill-crimson-bright text-crimson-bright" : ""}`} />
-              {isFavorite ? tc('removeFavorite') : tc('addFavorite')}
-            </button>
-          </div>
-
-          <div className="flex items-center gap-2 rounded-sm border border-white/10 bg-ink/60 px-3 py-2">
-            <Languages className="h-4 w-4 text-gold/80" />
-            <select
-              value={selectedLanguage}
-              onChange={(event) => {
-                setSelectedLanguage(event.target.value);
-              }}
-              className="bg-transparent text-sm text-parch outline-none"
-            >
-              {category.availableLanguages.map((code) => (
-                <option key={code} value={code} className="bg-panel">
-                  {getLanguageLabel(code)}
-                </option>
-              ))}
-            </select>
-          </div>
+      {/* Top bar */}
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div className="flex flex-wrap items-center gap-2">
+          <Link
+            href={`/items/${category.slug}`}
+            className="inline-flex items-center gap-2 border border-line/25 bg-panel/55 px-3 py-2 text-sm text-parch backdrop-blur-sm transition-colors hover:border-gold/40 hover:bg-panel/80"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            {tc('backToList')}
+          </Link>
+          <button
+            type="button"
+            onClick={() => toggleItemFavorite(favoriteKey)}
+            className={`inline-flex items-center gap-2 border px-3 py-2 text-sm backdrop-blur-sm transition-colors ${
+              isFavorite
+                ? "border-crimson-bright/50 bg-crimson/10 text-crimson-bright"
+                : "border-line/25 bg-panel/55 text-parch/85 hover:border-crimson-bright/40 hover:text-crimson-bright"
+            }`}
+          >
+            <Heart className={`h-4 w-4 ${isFavorite ? "fill-crimson-bright text-crimson-bright" : ""}`} />
+            {isFavorite ? tc('removeFavorite') : tc('addFavorite')}
+          </button>
         </div>
 
-        <div className="mt-4 md:mt-6 flex flex-col gap-4 md:gap-6 lg:flex-row">
-          <div className="flex h-28 w-28 md:h-36 md:w-36 shrink-0 mx-auto lg:mx-0 items-center justify-center rounded-sm border border-gold/25 bg-ink/70 p-4">
-            <img
-              src={iconSrc}
-              alt={`${category.technicalName} ${item.modId}`}
-              className="max-h-full max-w-full object-contain"
-            />
-          </div>
+        <div className="flex items-center gap-2 border border-line/25 bg-panel/55 px-3 py-2 backdrop-blur-sm">
+          <Languages className="h-4 w-4 text-gold/80" />
+          <select
+            value={selectedLanguage}
+            onChange={(event) => {
+              setSelectedLanguage(event.target.value);
+            }}
+            className="bg-transparent text-sm text-parch outline-none"
+          >
+            {category.availableLanguages.map((code) => (
+              <option key={code} value={code} className="bg-panel">
+                {getLanguageLabel(code)}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
 
-          <div className="min-w-0 flex-1 space-y-3 text-center lg:text-left">
-            <p className="font-caps text-[0.7rem] uppercase tracking-[0.28em] text-gold/80">
+      {/* Hero : stage teinté par l'élément + colonne de stats */}
+      <div className="grid gap-4 md:gap-5 lg:grid-cols-[1fr_360px]">
+        {/* Stage : médaillon icône + bandeau nom */}
+        <div
+          className="relative flex min-h-[360px] items-center justify-center overflow-hidden border border-white/10"
+          style={{ background: `radial-gradient(60% 60% at 50% 40%, ${elHex}22, transparent 60%), linear-gradient(180deg, rgba(20,19,17,0.4), rgba(8,7,6,0.62))` }}
+        >
+          {/* Bandeau nom (overlay) */}
+          <div className="absolute left-4 top-4 z-10 max-w-[82%] md:left-6 md:top-6">
+            <p className="font-caps text-[0.6rem] uppercase tracking-[0.22em] text-gold">
               {category.technicalName} #{item.modId}
             </p>
-            <h1 className="font-display text-3xl md:text-4xl text-parch">
-              <span className="inline-flex items-center gap-2">
-                {elementalAffinity?.iconSrc ? (
-                  <img
-                    src={elementalAffinity.iconSrc}
-                    alt=""
-                    aria-hidden="true"
-                    className="h-7 w-7 shrink-0 object-contain"
-                  />
-                ) : null}
-                <span>{translation.modName ?? `${category.displayName} ${item.modId}`}</span>
-              </span>
+            <h1 className="mt-0.5 font-display text-4xl text-parch md:text-5xl [text-shadow:0_2px_24px_rgba(0,0,0,0.85)]">
+              {displayName}
             </h1>
-            <p className="text-sm text-parch/85">
-              {translation.demonWedgeName
-                ? `${category.displayName} ${translation.demonWedgeName}`
-                : translation.functionLabel ??
-                  (isModsCategory ? "No Demon Wedge translation for this language." : category.displayName)}
-            </p>
-            <div className="flex flex-wrap justify-center lg:justify-start gap-1.5 md:gap-2 text-xs">
-              <span className="rounded-sm border border-white/10 px-3 py-1 text-parch/85">
-                ID {item.modId}
-              </span>
-              {typeof item.stats.rarity === "number" && (
-                <span className="rounded-sm border border-white/10 px-3 py-1 text-parch/85">
-                  Rarity {item.stats.rarity}
-                </span>
-              )}
-              {hasAffinityData ? (
-                <span className="inline-flex items-center gap-2 rounded-sm border border-white/10 px-3 py-1 text-parch/85">
-                {affinityIconSrc ? (
-                  <img
-                    src={affinityIconSrc}
-                    alt={translation.affinityName ?? `Affinity ${item.affinity.id ?? "?"}`}
-                    className="h-4 w-4 object-contain"
-                  />
-                ) : null}
-                <span>
-                  {translation.affinityName ?? `Polarity ${item.stats.polarity ?? "N/A"}`}
-                  {item.affinity.char ? ` (${item.affinity.char})` : ""}
-                </span>
-                </span>
-              ) : null}
+            <p className="mt-0.5 font-display text-lg italic text-muted">{subtitle}</p>
+            {typeof item.stats.rarity === "number" ? (
+              <DnaStars value={item.stats.rarity} className="mt-1.5 text-sm" />
+            ) : null}
+            <div className="mt-2 flex flex-wrap items-center gap-1.5">
               {elementalAffinity ? (
-                <span className="inline-flex items-center gap-2 rounded-sm border border-hydro/35 bg-hydro/10 px-3 py-1 text-hydro">
+                <span
+                  className="inline-flex items-center gap-1.5 border px-2.5 py-1 font-caps text-[0.56rem] uppercase tracking-[0.14em]"
+                  style={{ borderColor: `${elHex}66`, background: `${elHex}1f`, color: elHex }}
+                >
                   {elementalAffinity.iconSrc ? (
-                    <img
-                      src={elementalAffinity.iconSrc}
-                      alt={elementalAffinity.label}
-                      className="h-4 w-4 object-contain"
-                    />
+                    <img src={elementalAffinity.iconSrc} alt="" className="h-3.5 w-3.5 object-contain" />
                   ) : null}
                   {elementalAffinity.label}
                 </span>
               ) : null}
-              {typeof item.stats.maxLevel === "number" && (
-                <span className="rounded-sm border border-white/10 px-3 py-1 text-parch/85">
-                  Max Level {item.stats.maxLevel}
-                </span>
-              )}
-              {typeof item.stats.cost === "number" && (
-                <span className="rounded-sm border border-white/10 px-3 py-1 text-parch/85">
-                  Cost {item.stats.cost}
-                </span>
-              )}
-              {hasScalingData ? (
-                <span className="rounded-sm border border-gold/40 bg-gold/10 px-3 py-1 text-gold">
-                  Niveau actif {selectedLevel}
-                </span>
-              ) : null}
-              {isModsCategory ? (
-                <span className="rounded-sm border border-white/10 px-3 py-1 text-parch/85">
-                  Tolerance {selectedTolerance ?? "N/A"}
-                </span>
-              ) : null}
-              {item.variants?.isPremium ? (
-                <span className="rounded-sm border border-gold/50 bg-gold/10 px-3 py-1 text-gold">
-                  Premium
-                </span>
-              ) : null}
+              {item.variants?.isPremium ? <DnaTag>Premium</DnaTag> : null}
             </div>
+          </div>
+
+          {/* Sol lumineux */}
+          <span
+            aria-hidden
+            className="absolute bottom-[10%] left-1/2 h-12 w-56 -translate-x-1/2 rounded-[50%] blur-md"
+            style={{ background: `radial-gradient(ellipse, ${elHex}3a, transparent 70%)` }}
+          />
+          {/* Halo + médaillon icône */}
+          <span
+            aria-hidden
+            className="absolute left-1/2 top-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 rounded-full blur-2xl"
+            style={{ background: `radial-gradient(circle, ${elHex}33, transparent 64%)` }}
+          />
+          <div
+            className="relative z-[1] grid h-44 w-44 place-items-center rounded-full border bg-ink/40 md:h-52 md:w-52"
+            style={{ borderColor: `${elHex}66`, boxShadow: `0 0 44px -10px ${elHex}, inset 0 0 30px -12px ${elHex}` }}
+          >
+            <img
+              src={iconSrc}
+              alt={`${category.technicalName} ${item.modId}`}
+              className="h-[64%] w-[64%] object-contain drop-shadow-[0_10px_26px_rgba(0,0,0,0.6)]"
+            />
           </div>
         </div>
 
-        {isGenimonsCategory && variantSiblings.length > 1 ? (
-          <section className="mt-4 md:mt-5 rounded-sm border border-white/10 bg-ink/40 p-3 md:p-5">
-            <DnaSectionLabel>Variantes</DnaSectionLabel>
-            <div className="mt-3 md:mt-4 grid grid-cols-2 gap-2 md:gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
-              {variantSiblings.map((sibling) => {
-                const isCurrent = sibling.id === item.id;
-                const siblingTranslation = getItemTranslation(sibling, selectedLanguage, category.availableLanguages);
-                const siblingIsPremium = sibling.variants?.isPremium ?? false;
-                const siblingIcon = sibling.icon.publicPath ?? sibling.icon.placeholderPath ?? "/marker-default.svg";
-                return (
-                  <Link
-                    key={sibling.id}
-                    href={`/items/${category.slug}/${sibling.id}`}
-                    className={`flex items-center gap-3 rounded-sm border px-3 py-2 transition-colors ${
-                      isCurrent
-                        ? "border-gold/50 bg-gold/10"
-                        : "border-white/10 bg-ink/55 hover:border-gold/40"
-                    } ${siblingIsPremium ? "ring-1 ring-gold/30" : ""}`}
-                  >
-                    <img src={siblingIcon} alt="" className="h-10 w-10 shrink-0 object-contain" />
-                    <div className="min-w-0">
-                      <p className="truncate text-sm font-medium text-parch">
-                        {siblingTranslation.modName ?? `#${sibling.modId}`}
-                      </p>
-                      {siblingIsPremium ? (
-                        <span className="text-xs text-gold">Premium</span>
+        {/* Colonne de stats */}
+        <aside className="flex flex-col gap-4">
+          <DnaPanel className="p-4 md:p-5">
+            <DnaSectionLabel>{category.technicalName} #{item.modId}</DnaSectionLabel>
+            {hasScalingData ? (
+              <div className="mt-3 flex items-end justify-between border-b border-white/6 pb-3">
+                <div
+                  className="font-caps text-2xl font-semibold leading-none"
+                  style={{ color: tinted ? elHex : undefined }}
+                >
+                  {selectedLevel}
+                  <small className="text-sm text-muted-2"> / {sliderMaxLevel}</small>
+                </div>
+                <div className="text-right font-caps text-[0.52rem] uppercase leading-tight tracking-[0.14em] text-muted">
+                  Niveau<br />actif
+                </div>
+              </div>
+            ) : null}
+            <div className="mt-1">
+              {typeof item.stats.rarity === "number" ? (
+                <DnaStatRow label="Rareté" value={<DnaStars value={item.stats.rarity} />} />
+              ) : null}
+              {hasAffinityData ? (
+                <DnaStatRow
+                  label="Affinité"
+                  value={
+                    <span className="inline-flex items-center gap-1.5">
+                      {affinityIconSrc ? (
+                        <img src={affinityIconSrc} alt="" className="h-4 w-4 object-contain" />
                       ) : null}
-                    </div>
-                  </Link>
-                );
-              })}
+                      {translation.affinityName ?? `Polarité ${item.stats.polarity ?? "N/A"}`}
+                      {item.affinity.char ? ` (${item.affinity.char})` : ""}
+                    </span>
+                  }
+                />
+              ) : null}
+              {elementalAffinity ? (
+                <DnaStatRow
+                  label="Affinité élémentaire"
+                  accent={tinted ? elHex : undefined}
+                  value={
+                    <span className="inline-flex items-center gap-1.5">
+                      {elementalAffinity.iconSrc ? (
+                        <img src={elementalAffinity.iconSrc} alt="" className="h-4 w-4 object-contain" />
+                      ) : null}
+                      {elementalAffinity.label}
+                    </span>
+                  }
+                />
+              ) : null}
+              {typeof item.stats.cost === "number" ? (
+                <DnaStatRow label="Coût" value={item.stats.cost} />
+              ) : null}
+              {typeof item.stats.maxLevel === "number" ? (
+                <DnaStatRow label="Niveau max" value={item.stats.maxLevel} />
+              ) : null}
+              {isModsCategory ? (
+                <DnaStatRow label="Tolérance" value={selectedTolerance ?? "N/A"} className="border-b-0" />
+              ) : null}
             </div>
-          </section>
-        ) : null}
+          </DnaPanel>
 
-        {hasScalingData ? (
-          <div className="mt-4 max-w-xl rounded-sm border border-white/10 bg-ink/55 px-3 py-2.5">
-            <div className="flex flex-wrap items-center justify-between gap-2">
-              <p className="flex items-center gap-1.5 text-xs font-medium text-parch">
-                <SlidersHorizontal className="h-3.5 w-3.5 text-gold/80" />
-                Niveau de progression
-              </p>
-              <p className="text-xs text-parch/85">
-                Lv {selectedLevel} / {sliderMaxLevel}
-              </p>
-            </div>
-            <input
-              type="range"
-              min={sliderMinLevel}
-              max={sliderMaxLevel}
-              step={1}
-              value={selectedLevel}
-              onChange={(event) => {
-                const requested = Number(event.target.value);
-                const nextLevel = nearestAllowedLevel(requested, levelOptions);
-                void setSelectedLevelRaw(nextLevel);
-              }}
-              className="mt-2 w-full accent-gold"
-              aria-label={`Niveau du ${category.technicalName}`}
-            />
-            <div className="mt-1 flex flex-wrap gap-x-3 gap-y-1 text-[11px] text-muted">
-              <span>Defaut {item.scaling.defaultLevel}</span>
-              <span>Max {item.scaling.maxLevel}</span>
-              <span>Dyn {dynamicValueEntries.length}</span>
-            </div>
+          {hasScalingData ? (
+            <DnaPanel className="p-4">
+              <DnaSectionLabel>Niveau de progression</DnaSectionLabel>
+              <div className="mt-3 flex items-center justify-between font-caps text-xs uppercase tracking-[0.14em] text-muted">
+                <span>Lv {selectedLevel}</span>
+                <span>Max {sliderMaxLevel}</span>
+              </div>
+              <input
+                type="range"
+                min={sliderMinLevel}
+                max={sliderMaxLevel}
+                step={1}
+                value={selectedLevel}
+                onChange={(event) => {
+                  const requested = Number(event.target.value);
+                  const nextLevel = nearestAllowedLevel(requested, levelOptions);
+                  void setSelectedLevelRaw(nextLevel);
+                }}
+                className="mt-2 w-full cursor-pointer"
+                style={{ accentColor: tinted ? elHex : GOLD_HEX }}
+                aria-label={`Niveau du ${category.technicalName}`}
+              />
+              <div className="mt-1.5 flex flex-wrap gap-x-3 gap-y-1 text-[11px] text-muted">
+                <span>Défaut {item.scaling.defaultLevel}</span>
+                <span>Max {item.scaling.maxLevel}</span>
+                <span>Dyn {dynamicValueEntries.length}</span>
+              </div>
+            </DnaPanel>
+          ) : null}
+        </aside>
+      </div>
+
+      {/* Variantes (genimon) */}
+      {isGenimonsCategory && variantSiblings.length > 1 ? (
+        <DnaPanel className="p-3 md:p-5">
+          <DnaSectionLabel>Variantes</DnaSectionLabel>
+          <div className="mt-3 md:mt-4 grid grid-cols-2 gap-2 md:gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+            {variantSiblings.map((sibling) => {
+              const isCurrent = sibling.id === item.id;
+              const siblingTranslation = getItemTranslation(sibling, selectedLanguage, category.availableLanguages);
+              const siblingIsPremium = sibling.variants?.isPremium ?? false;
+              const siblingIcon = sibling.icon.publicPath ?? sibling.icon.placeholderPath ?? "/marker-default.svg";
+              return (
+                <Link
+                  key={sibling.id}
+                  href={`/items/${category.slug}/${sibling.id}`}
+                  className={`flex items-center gap-3 rounded-sm border px-3 py-2 transition-colors ${
+                    isCurrent
+                      ? "border-gold/50 bg-gold/10"
+                      : "border-white/10 bg-ink/55 hover:border-gold/40"
+                  } ${siblingIsPremium ? "ring-1 ring-gold/30" : ""}`}
+                >
+                  <img src={siblingIcon} alt="" className="h-10 w-10 shrink-0 object-contain" />
+                  <div className="min-w-0">
+                    <p className="truncate text-sm font-medium text-parch">
+                      {siblingTranslation.modName ?? `#${sibling.modId}`}
+                    </p>
+                    {siblingIsPremium ? <span className="text-xs text-gold">Premium</span> : null}
+                  </div>
+                </Link>
+              );
+            })}
           </div>
-        ) : null}
-      </DnaPanel>
+        </DnaPanel>
+      ) : null}
 
       <section className="grid gap-3 md:gap-4 lg:grid-cols-3">
-        <DnaPanel className="p-3 md:p-5 lg:col-span-2">
-          <h2 className="font-display text-xl text-parch">Description</h2>
+        <DnaPanel className="p-4 md:p-5 lg:col-span-2">
+          <DnaSectionLabel>Description</DnaSectionLabel>
           <p className="mt-3 whitespace-pre-wrap text-sm leading-relaxed text-parch/85">
             {translation.description
               ? renderTextWithDynamicMentions(
@@ -679,12 +720,9 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
                 <div className="mt-3 flex flex-wrap gap-2">
                   {dynamicValueEntries.length > 0 ? (
                     dynamicValueEntries.map(([index, value]) => (
-                      <span
-                        key={`dynamic-${index}`}
-                        className="rounded-sm border border-gold/35 bg-gold/10 px-2.5 py-1 text-xs text-gold"
-                      >
+                      <DnaTag key={`dynamic-${index}`}>
                         #{index} = {formatDynamicNumber(value)}
-                      </span>
+                      </DnaTag>
                     ))
                   ) : (
                     <span className="text-xs text-muted-2">Aucune variable dynamique pour ce niveau.</span>
@@ -702,20 +740,23 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
               {selectedLevelAttributesVisible.length === 0 ? (
                 <p className="mt-2 text-sm text-muted-2">Aucun attribut scalable detecte.</p>
               ) : (
-                <div className="mt-3 space-y-2">
+                <div className="mt-2">
                   {selectedLevelAttributesVisible.map((attribute, index) => (
-                    <div
+                    <DnaStatRow
                       key={`resolved-attr-${attribute.attrName ?? "unknown"}-${index}`}
-                      className="rounded-sm border border-white/10 bg-ink/60 px-3 py-2"
-                    >
-                      <p className="text-sm font-medium text-parch">{attribute.attrName ?? "Attr"}</p>
-                      {attribute.allowModMultiplier && (
-                        <p className="text-xs text-muted-2">
-                          Multiplicateur: {attribute.allowModMultiplier}
-                        </p>
-                      )}
-                      <p className="mt-1 text-sm text-gold">{formatResolvedAttributeValue(attribute)}</p>
-                    </div>
+                      accent={tinted ? elHex : undefined}
+                      label={
+                        <span className="flex flex-col">
+                          <span className="text-parch">{attribute.attrName ?? "Attr"}</span>
+                          {attribute.allowModMultiplier ? (
+                            <span className="text-[11px] text-muted-2">
+                              Multiplicateur : {attribute.allowModMultiplier}
+                            </span>
+                          ) : null}
+                        </span>
+                      }
+                      value={formatResolvedAttributeValue(attribute)}
+                    />
                   ))}
                 </div>
               )}
@@ -730,7 +771,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
               {genimonAttributes.length === 0 ? (
                 <p className="mt-2 text-sm text-muted-2">Aucun attribut resolu detecte.</p>
               ) : (
-                <div className="mt-3 space-y-2">
+                <div className="mt-2">
                   {genimonAttributes.map((attribute, index) => {
                     const pieces: string[] = [];
                     if (attribute.rate) {
@@ -740,21 +781,20 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
                       pieces.push(`Value: ${attribute.value}`);
                     }
                     return (
-                      <div
+                      <DnaStatRow
                         key={`genimon-attr-${attribute.attrName}-${index}`}
-                        className="rounded-sm border border-white/10 bg-ink/60 px-3 py-2"
-                      >
-                        <p className="text-sm font-medium text-parch">{attribute.attrName}</p>
-                        <p className="mt-1 text-sm text-gold">
-                          {pieces.length > 0
+                        accent={tinted ? elHex : undefined}
+                        label={<span className="text-parch">{attribute.attrName}</span>}
+                        value={
+                          pieces.length > 0
                             ? renderTextWithDynamicMentions(
                                 pieces.join(" | "),
                                 selectedLevel,
                                 dynamicValuesByIndex,
                               )
-                            : "N/A"}
-                        </p>
-                      </div>
+                            : "N/A"
+                        }
+                      />
                     );
                   })}
                 </div>
@@ -763,8 +803,8 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
           ) : null}
         </DnaPanel>
 
-        <DnaPanel className="p-3 md:p-5">
-          <h2 className="font-display text-xl text-parch">Localized Info</h2>
+        <DnaPanel className="p-4 md:p-5">
+          <DnaSectionLabel>Localized Info</DnaSectionLabel>
           <dl className="mt-3 md:mt-4 space-y-2 md:space-y-3 text-sm">
             <div>
               <dt className="text-muted">Label fonction</dt>
@@ -878,11 +918,8 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
       </section>
 
       <section className="grid gap-3 md:gap-4 lg:grid-cols-2">
-        <DnaPanel className="p-3 md:p-5">
-          <h2 className="flex items-center gap-2 font-display text-xl text-parch">
-            <Tag className="h-4 w-4 text-gold/80" />
-            Text keys
-          </h2>
+        <DnaPanel className="p-4 md:p-5">
+          <DnaSectionLabel>Text keys</DnaSectionLabel>
           <dl className="mt-3 md:mt-4 space-y-2 md:space-y-3 text-sm">
             {textKeyRows.map((row) => (
               <div key={row.label}>
@@ -893,11 +930,8 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
           </dl>
         </DnaPanel>
 
-        <DnaPanel className="p-3 md:p-5">
-          <h2 className="flex items-center gap-2 font-display text-xl text-parch">
-            <Database className="h-4 w-4 text-gold/80" />
-            Technical
-          </h2>
+        <DnaPanel className="p-4 md:p-5">
+          <DnaSectionLabel>Technical</DnaSectionLabel>
           <dl className="mt-3 md:mt-4 space-y-2 md:space-y-3 text-sm">
             <div>
               <dt className="text-muted">id</dt>
@@ -930,8 +964,8 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
       </section>
 
       {relatedDrafts.length > 0 && (
-        <DnaPanel className="p-3 md:p-5">
-          <h2 className="font-display text-xl text-parch">Plans associes</h2>
+        <DnaPanel className="p-4 md:p-5">
+          <DnaSectionLabel>Plans associes</DnaSectionLabel>
           <div className="mt-3 md:mt-4 space-y-2 md:space-y-3">
             {relatedDrafts.map((draft) => {
               const draftName =
