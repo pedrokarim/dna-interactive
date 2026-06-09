@@ -20,6 +20,7 @@ import { resolveDraftItemName } from "@/lib/items/drafts";
 import FilterChips from "@/components/list/FilterChips";
 import ViewModeToggle from "@/components/list/ViewModeToggle";
 import { useListViewMode } from "@/components/list/useListViewMode";
+import { DnaPanel } from "@/components/dna/Panel";
 
 const SORT_VALUES = ["id", "rarityDesc", "rarityAsc", "durationAsc", "durationDesc"] as const;
 const PAGE_SIZE_VALUES = [12, 24, 48, 96] as const;
@@ -339,11 +340,11 @@ export default function DraftsGridClient({
 
   return (
     <div className="space-y-4 md:space-y-8">
-      <section className="rounded-2xl border border-gold/30 bg-panel/60 p-4 md:p-6 shadow-[0_20px_45px_rgba(15,23,42,0.45)] backdrop-blur-sm">
+      <DnaPanel className="border-gold/30 p-4 md:p-6 shadow-[0_20px_45px_rgba(15,23,42,0.45)]">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
-            <p className="text-xs uppercase tracking-[0.3em] text-gold/90">{t('headerLabel')}</p>
-            <h1 className="mt-2 text-2xl md:text-3xl font-semibold text-parch">{t('title')}</h1>
+            <p className="font-caps text-[0.7rem] uppercase tracking-[0.34em] text-gold/90">{t('headerLabel')}</p>
+            <h1 className="mt-2 font-display text-3xl md:text-4xl text-parch">{t('title')}</h1>
             <p className="mt-2 max-w-3xl text-sm text-parch/85">
               {t('description')}
             </p>
@@ -364,7 +365,7 @@ export default function DraftsGridClient({
             />
             <Link
               href="/items"
-              className="rounded-lg border border-white/10 px-4 py-2 text-sm text-parch transition-colors hover:border-gold/50 hover:text-parch"
+              className="rounded-sm border border-white/10 px-4 py-2 text-sm text-parch transition-colors hover:border-gold/50 hover:text-parch"
             >
               {tc('backToCategories')}
             </Link>
@@ -372,7 +373,7 @@ export default function DraftsGridClient({
         </div>
 
         <div className="mt-4 md:mt-6 grid gap-3 md:gap-4 lg:grid-cols-2">
-          <label className="flex items-center gap-3 rounded-xl border border-white/10 bg-ink/60 px-3 py-2">
+          <label className="flex items-center gap-3 rounded-sm border border-white/10 bg-ink/60 px-3 py-2">
             <Search className="h-4 w-4 text-gold/90" />
             <input
               value={search}
@@ -382,7 +383,7 @@ export default function DraftsGridClient({
             />
           </label>
 
-          <div className="rounded-xl border border-white/10 bg-ink/60 p-3">
+          <div className="rounded-sm border border-white/10 bg-ink/60 p-3">
             <div className="mb-2 flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-muted">
               <Languages className="h-4 w-4 text-gold/90" />
               {tc('displayedLanguages')}
@@ -391,7 +392,7 @@ export default function DraftsGridClient({
               {selectedLanguages.map((code) => (
                 <span
                   key={code}
-                  className="inline-flex items-center gap-2 rounded-full border border-gold/35 bg-gold/10 px-3 py-1 text-xs text-gold"
+                  className="inline-flex items-center gap-2 rounded-sm border border-gold/35 bg-gold/10 px-3 py-1 text-xs text-gold"
                 >
                   {getLanguageLabel(code)}
                   {selectedLanguages.length > 1 && (
@@ -409,7 +410,7 @@ export default function DraftsGridClient({
               <select
                 value=""
                 onChange={(event) => addLanguage(event.target.value)}
-                className="rounded-lg border border-white/10 bg-panel px-2 py-1 text-xs text-parch outline-none"
+                className="rounded-sm border border-white/10 bg-panel px-2 py-1 text-xs text-parch outline-none"
               >
                 <option value="">{tc('addLanguage')}</option>
                 {unselectedLanguages.map((code) => (
@@ -453,12 +454,12 @@ export default function DraftsGridClient({
             accent="amber"
           />
 
-          <div className="rounded-lg border border-white/10 bg-ink/60 p-2 sm:max-w-xs">
+          <div className="rounded-sm border border-white/10 bg-ink/60 p-2 sm:max-w-xs">
             <div className="mb-1 text-xs text-muted">{tc('sort')}</div>
             <select
               value={sortMode}
               onChange={(event) => updateFilters({ sort: event.target.value as DraftSortMode, page: 1 })}
-              className="w-full rounded-md border border-white/10 bg-panel px-2 py-1.5 text-sm text-parch"
+              className="w-full rounded-sm border border-white/10 bg-panel px-2 py-1.5 text-sm text-parch"
             >
               <option value="id">{t('sortById')}</option>
               <option value="rarityDesc">{t('sortRarityDesc')}</option>
@@ -469,22 +470,22 @@ export default function DraftsGridClient({
           </div>
         </div>
 
-        <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-white/10 bg-ink/60 px-3 py-2 text-sm text-parch/85">
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-sm border border-white/10 bg-ink/60 px-3 py-2 text-sm text-parch/85">
           <p>
             {tc('displayRange', { start: filteredRecipes.length === 0 ? 0 : pageStart + 1, end: Math.min(pageEnd, filteredRecipes.length), total: filteredRecipes.length })}
           </p>
           <button
             type="button"
             onClick={resetFilters}
-            className="rounded-md border border-white/10 px-3 py-1 text-xs text-parch/85 transition-colors hover:border-gold/50 hover:text-parch"
+            className="rounded-sm border border-white/10 px-3 py-1 text-xs text-parch/85 transition-colors hover:border-gold/50 hover:text-parch"
           >
             {tc('resetFilters')}
           </button>
         </div>
-      </section>
+      </DnaPanel>
 
       {filteredRecipes.length === 0 ? (
-        <div className="rounded-xl border border-white/10 bg-panel/45 p-6 md:p-10 text-center">
+        <div className="rounded-sm border border-white/10 bg-panel/45 p-6 md:p-10 text-center">
           <p className="text-base md:text-lg text-parch">{t('noResults')}</p>
           <p className="mt-2 text-sm text-muted">{t('noResultsHint')}</p>
         </div>
@@ -517,12 +518,12 @@ export default function DraftsGridClient({
               <Link
                 key={recipe.id}
                 href={`/items/drafts/${recipe.draftId}`}
-                className="group rounded-2xl border border-white/10 bg-panel/55 p-3 md:p-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-gold/40 hover:bg-panel/75"
+                className="group relative border border-line/25 bg-panel/85 p-3 md:p-4 backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-gold/40 hover:bg-panel/95"
               >
                 <div className="flex items-start gap-3">
-                  <div className="flex h-14 w-14 md:h-16 md:w-16 shrink-0 items-center justify-center rounded-xl border border-gold/25 bg-ink/80 p-2">
+                  <div className="flex h-14 w-14 md:h-16 md:w-16 shrink-0 items-center justify-center rounded-sm border border-gold/25 bg-ink/80 p-2">
                     <div className="relative h-full w-full">
-                      <div className="h-full w-full overflow-hidden rounded-lg">
+                      <div className="h-full w-full overflow-hidden rounded-sm">
                         <img
                           src={recipeIconSrc}
                           alt={`Draft ${recipe.draftId}`}
@@ -569,7 +570,7 @@ export default function DraftsGridClient({
                     return (
                       <div
                         key={`${recipe.id}-${langCode}`}
-                        className="rounded-lg border border-white/10 bg-ink/55 px-3 py-2"
+                        className="rounded-sm border border-white/10 bg-ink/55 px-3 py-2"
                       >
                         <p className="text-[10px] uppercase tracking-[0.18em] text-muted">
                           {getLanguageLabel(langCode)}
@@ -587,23 +588,23 @@ export default function DraftsGridClient({
                       ingredient ? (
                         <div
                           key={`${recipe.id}-ingredient-${ingredient.id}-${index}`}
-                          className="relative rounded-lg border border-white/10 bg-ink/70 p-2"
+                          className="relative rounded-sm border border-white/10 bg-ink/70 p-2"
                         >
                           <img
                             src={ingredient.icon.publicPath ?? ingredient.icon.placeholderPath ?? "/marker-default.svg"}
                             alt={resolveDraftItemName(ingredient, selectedLanguages[0], availableLanguages)}
                             className="mx-auto h-8 w-8 object-contain"
                           />
-                          <span className="absolute bottom-1 right-1 rounded bg-panel/90 px-1 text-[10px] font-medium text-gold">
+                          <span className="absolute bottom-1 right-1 rounded-sm bg-panel/90 px-1 text-[10px] font-medium text-gold">
                             {ingredient.quantity}
                           </span>
                         </div>
                       ) : (
                         <div
                           key={`${recipe.id}-ingredient-empty-${index}`}
-                          className="rounded-lg border border-panel bg-ink/35 p-2"
+                          className="rounded-sm border border-panel bg-ink/35 p-2"
                         >
-                          <div className="mx-auto h-8 w-8 rounded-md border border-panel bg-panel/50" />
+                          <div className="mx-auto h-8 w-8 rounded-sm border border-panel bg-panel/50" />
                         </div>
                       ),
                     )}
@@ -611,16 +612,16 @@ export default function DraftsGridClient({
                 </div>
 
                 <div className="mt-4 flex flex-wrap gap-2 text-xs">
-                  <span className="inline-flex items-center gap-1 rounded-full border border-white/10 px-2 py-0.5 text-parch/85">
+                  <span className="inline-flex items-center gap-1 rounded-sm border border-white/10 px-2 py-0.5 text-parch/85">
                     <Grid3X3 className="h-3.5 w-3.5 text-gold/90" />
                     {recipe.productType}
                   </span>
                   {typeof recipe.rarity === "number" ? (
-                    <span className="rounded-full border border-white/10 px-2 py-0.5 text-parch/85">
+                    <span className="rounded-sm border border-white/10 px-2 py-0.5 text-parch/85">
                       {td('rarityLabel', { rarity: recipe.rarity })}
                     </span>
                   ) : null}
-                  <span className="inline-flex items-center gap-1 rounded-full border border-white/10 px-2 py-0.5 text-parch/85">
+                  <span className="inline-flex items-center gap-1 rounded-sm border border-white/10 px-2 py-0.5 text-parch/85">
                     <Clock3 className="h-3.5 w-3.5 text-gold/90" />
                     {formatDuration(recipe.durationSec)}
                   </span>
@@ -648,9 +649,9 @@ export default function DraftsGridClient({
               <li key={recipe.id}>
                 <Link
                   href={`/items/drafts/${recipe.draftId}`}
-                  className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-panel/55 p-3 transition-all duration-200 hover:border-gold/40 hover:bg-panel/75"
+                  className="group relative flex items-center gap-4 border border-line/25 bg-panel/85 p-3 backdrop-blur-sm transition-all duration-200 hover:border-gold/40 hover:bg-panel/95"
                 >
-                  <div className="relative flex h-16 w-16 shrink-0 items-center justify-center rounded-xl border border-gold/25 bg-ink/80 p-2">
+                  <div className="relative flex h-16 w-16 shrink-0 items-center justify-center rounded-sm border border-gold/25 bg-ink/80 p-2">
                     <img
                       src={recipeIconSrc}
                       alt={productNameLead}
@@ -682,16 +683,16 @@ export default function DraftsGridClient({
                       {productNameLead}
                     </h2>
                     <div className="mt-1 flex flex-wrap items-center gap-1.5 text-[11px]">
-                      <span className="inline-flex items-center gap-1 rounded-full border border-white/10 px-2 py-0.5 text-parch/85">
+                      <span className="inline-flex items-center gap-1 rounded-sm border border-white/10 px-2 py-0.5 text-parch/85">
                         <Grid3X3 className="h-3 w-3 text-gold/90" />
                         {recipe.productType}
                       </span>
                       {typeof recipe.rarity === "number" ? (
-                        <span className="rounded-full border border-white/10 px-2 py-0.5 text-parch/85">
+                        <span className="rounded-sm border border-white/10 px-2 py-0.5 text-parch/85">
                           {td('rarityLabel', { rarity: recipe.rarity })}
                         </span>
                       ) : null}
-                      <span className="inline-flex items-center gap-1 rounded-full border border-white/10 px-2 py-0.5 text-parch/85">
+                      <span className="inline-flex items-center gap-1 rounded-sm border border-white/10 px-2 py-0.5 text-parch/85">
                         <Clock3 className="h-3 w-3 text-gold/90" />
                         {formatDuration(recipe.durationSec)}
                       </span>
@@ -702,14 +703,14 @@ export default function DraftsGridClient({
                     {recipe.ingredients.slice(0, 4).map((ingredient, index) => (
                       <div
                         key={`${recipe.id}-ingredient-${ingredient.id}-${index}`}
-                        className="relative h-10 w-10 rounded-lg border border-white/10 bg-ink/70 p-1"
+                        className="relative h-10 w-10 rounded-sm border border-white/10 bg-ink/70 p-1"
                       >
                         <img
                           src={ingredient.icon.publicPath ?? ingredient.icon.placeholderPath ?? "/marker-default.svg"}
                           alt={resolveDraftItemName(ingredient, selectedLanguages[0], availableLanguages)}
                           className="h-full w-full object-contain"
                         />
-                        <span className="absolute -bottom-1 -right-1 rounded bg-panel/90 px-1 text-[9px] font-medium text-gold">
+                        <span className="absolute -bottom-1 -right-1 rounded-sm bg-panel/90 px-1 text-[9px] font-medium text-gold">
                           {ingredient.quantity}
                         </span>
                       </div>
@@ -742,7 +743,7 @@ export default function DraftsGridClient({
                 key={recipe.id}
                 href={`/items/drafts/${recipe.draftId}`}
                 title={productNameLead}
-                className="group relative flex aspect-square flex-col overflow-hidden rounded-xl border border-white/10 bg-ink/80 p-2 transition-all duration-200 hover:-translate-y-0.5 hover:border-gold/40"
+                className="group relative flex aspect-square flex-col overflow-hidden rounded-sm border border-white/10 bg-ink/80 p-2 transition-all duration-200 hover:-translate-y-0.5 hover:border-gold/40"
               >
                 <div className="relative flex flex-1 items-center justify-center overflow-hidden">
                   <img
@@ -751,7 +752,7 @@ export default function DraftsGridClient({
                     className="max-h-full max-w-full object-contain transition-transform duration-200 group-hover:scale-105"
                   />
                   {typeof recipe.rarity === "number" ? (
-                    <span className="absolute left-0 top-0 rounded-full border border-gold/40 bg-ink/70 px-1.5 py-0.5 text-[10px] text-gold">
+                    <span className="absolute left-0 top-0 rounded-sm border border-gold/40 bg-ink/70 px-1.5 py-0.5 text-[10px] text-gold">
                       {recipe.rarity}
                     </span>
                   ) : null}
@@ -787,7 +788,7 @@ export default function DraftsGridClient({
       )}
 
       {filteredRecipes.length > 0 ? (
-        <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-white/10 bg-panel/50 p-3">
+        <div className="flex flex-wrap items-center justify-between gap-3 rounded-sm border border-white/10 bg-panel/50 p-3">
           <p className="text-sm text-parch/85">
             {tc('displayRange', { start: filteredRecipes.length === 0 ? 0 : pageStart + 1, end: Math.min(pageEnd, filteredRecipes.length), total: filteredRecipes.length })}
           </p>
@@ -798,7 +799,7 @@ export default function DraftsGridClient({
                 type="button"
                 onClick={() => updateFilters({ page: 1 })}
                 disabled={safeCurrentPage === 1}
-                className="rounded-md border border-white/10 px-2 py-1 text-xs text-parch transition-colors hover:border-gold/40 hover:text-parch disabled:cursor-not-allowed disabled:opacity-50"
+                className="rounded-sm border border-white/10 px-2 py-1 text-xs text-parch transition-colors hover:border-gold/40 hover:text-parch disabled:cursor-not-allowed disabled:opacity-50"
                 aria-label={tc('paginationFirst')}
               >
                 {"<<"}
@@ -807,7 +808,7 @@ export default function DraftsGridClient({
                 type="button"
                 onClick={() => updateFilters({ page: Math.max(1, safeCurrentPage - 1) })}
                 disabled={safeCurrentPage === 1}
-                className="rounded-md border border-white/10 px-2 py-1 text-xs text-parch transition-colors hover:border-gold/40 hover:text-parch disabled:cursor-not-allowed disabled:opacity-50"
+                className="rounded-sm border border-white/10 px-2 py-1 text-xs text-parch transition-colors hover:border-gold/40 hover:text-parch disabled:cursor-not-allowed disabled:opacity-50"
                 aria-label={tc('paginationPrevious')}
               >
                 {"<"}
@@ -827,7 +828,7 @@ export default function DraftsGridClient({
                     key={`page-${page}`}
                     type="button"
                     onClick={() => updateFilters({ page })}
-                    className={`rounded-md border px-2 py-1 text-xs transition-colors ${
+                    className={`rounded-sm border px-2 py-1 text-xs transition-colors ${
                       page === safeCurrentPage
                         ? "border-gold/70 bg-gold/25 text-gold"
                         : "border-white/10 text-parch hover:border-gold/40 hover:text-parch"
@@ -844,7 +845,7 @@ export default function DraftsGridClient({
                 type="button"
                 onClick={() => updateFilters({ page: Math.min(totalPages, safeCurrentPage + 1) })}
                 disabled={safeCurrentPage === totalPages}
-                className="rounded-md border border-white/10 px-2 py-1 text-xs text-parch transition-colors hover:border-gold/40 hover:text-parch disabled:cursor-not-allowed disabled:opacity-50"
+                className="rounded-sm border border-white/10 px-2 py-1 text-xs text-parch transition-colors hover:border-gold/40 hover:text-parch disabled:cursor-not-allowed disabled:opacity-50"
                 aria-label={tc('paginationNext')}
               >
                 {">"}
@@ -853,7 +854,7 @@ export default function DraftsGridClient({
                 type="button"
                 onClick={() => updateFilters({ page: totalPages })}
                 disabled={safeCurrentPage === totalPages}
-                className="rounded-md border border-white/10 px-2 py-1 text-xs text-parch transition-colors hover:border-gold/40 hover:text-parch disabled:cursor-not-allowed disabled:opacity-50"
+                className="rounded-sm border border-white/10 px-2 py-1 text-xs text-parch transition-colors hover:border-gold/40 hover:text-parch disabled:cursor-not-allowed disabled:opacity-50"
                 aria-label={tc('paginationLast')}
               >
                 {">>"}
@@ -865,7 +866,7 @@ export default function DraftsGridClient({
               <select
                 value={pageSize}
                 onChange={(event) => updateFilters({ size: Number(event.target.value), page: 1 })}
-                className="rounded-md border border-white/10 bg-panel px-2 py-1 text-xs text-parch"
+                className="rounded-sm border border-white/10 bg-panel px-2 py-1 text-xs text-parch"
               >
                 {PAGE_SIZE_VALUES.map((value) => (
                   <option key={value} value={value}>
@@ -887,7 +888,7 @@ export default function DraftsGridClient({
           aria-label={`Apercu de l'icone draft ${previewIcon.draftId}`}
         >
           <div
-            className="w-full max-w-sm rounded-2xl border border-gold/35 bg-panel/95 p-4 shadow-[0_25px_60px_rgba(2,6,23,0.65)]"
+            className="w-full max-w-sm border border-gold/35 bg-panel/95 p-4 shadow-[0_25px_60px_rgba(2,6,23,0.65)]"
             onClick={(event) => event.stopPropagation()}
           >
             <div className="flex items-center justify-between gap-3">
@@ -901,7 +902,7 @@ export default function DraftsGridClient({
                 <X className="h-4 w-4" />
               </button>
             </div>
-            <div className="mt-3 flex h-64 items-center justify-center rounded-xl border border-gold/25 bg-ink/80 p-4">
+            <div className="mt-3 flex h-64 items-center justify-center rounded-sm border border-gold/25 bg-ink/80 p-4">
               <img src={previewIcon.src} alt={previewIcon.alt} className="max-h-full max-w-full object-contain" />
             </div>
           </div>
