@@ -55,9 +55,9 @@ const HOME_ANNOUNCEMENTS: HomeAnnouncement[] = [
     href: "/changelog",
     ctaLabelKey: "patchV14Cta",
     gradientClassName:
-      "bg-linear-to-r from-hydro/90 via-hydro/90 to-anemo/90",
-    borderClassName: "border-hydro/30",
-    accentTextClassName: "text-hydro",
+      "bg-linear-to-r from-gold/85 via-pyro/85 to-crimson-bright/85",
+    borderClassName: "border-gold/30",
+    accentTextClassName: "text-gold-bright",
     ctaIcon: Sparkles,
   },
   {
@@ -70,9 +70,9 @@ const HOME_ANNOUNCEMENTS: HomeAnnouncement[] = [
     href: "/map?mapId=bloomfield-station",
     ctaLabelKey: "newMapsV14Cta",
     gradientClassName:
-      "bg-linear-to-r from-anemo/90 via-anemo/90 to-hydro/90",
-    borderClassName: "border-anemo/30",
-    accentTextClassName: "text-anemo",
+      "bg-linear-to-r from-crimson/85 via-crimson-bright/80 to-gold/80",
+    borderClassName: "border-gold/30",
+    accentTextClassName: "text-gold-bright",
     ctaIcon: Map,
   },
   // Patch 1.3 "Firmament Unbound" — 7 avril 2026 (auto-expirés depuis le 5 mai)

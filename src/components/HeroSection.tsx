@@ -67,7 +67,7 @@ export default function HeroSection() {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-20">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 bg-linear-to-r from-gold via-electro to-gold bg-clip-text text-transparent">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 bg-linear-to-r from-gold-bright via-gold to-gold-bright bg-clip-text text-transparent">
             {t("heroTitle")}
           </h1>
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-8 text-gray-200">
@@ -97,7 +97,7 @@ export default function HeroSection() {
             >
               <Link
                 href="/map"
-                className="inline-flex items-center justify-center px-8 py-4 bg-linear-to-r from-gold to-electro hover:from-gold hover:to-electro rounded-lg font-semibold text-parch transition-all duration-300 shadow-lg shadow-gold/25"
+                className="inline-flex items-center justify-center px-8 py-4 bg-linear-to-r from-gold-bright to-gold hover:from-gold hover:to-gold-deep rounded-lg font-semibold text-ink transition-all duration-300 shadow-lg shadow-gold/25"
               >
                 <Map className="w-5 h-5 mr-2" />
                 {t("heroCta")}
