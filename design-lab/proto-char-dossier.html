@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fiche perso · Dossier</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="./assets/dna-ui.css" />
+<style>
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 1.4rem 2rem 5rem; }
+  .top { display: flex; align-items: center; justify-content: space-between; }
+  .top .nav { display: flex; gap: 0.6rem; }
+
+  /* hero dossier */
+  .hero { display: grid; grid-template-columns: 320px 1fr; gap: 2.2rem; margin-top: 1.6rem; align-items: start; }
+  .frame { position: relative; padding: 10px; }
+  .frame .crestwrap { position: absolute; top: -11px; left: 0; right: 0; display: flex; justify-content: center; }
+  .frame .port { position: relative; aspect-ratio: 3/4; overflow: hidden; border: 1px solid var(--line);
+    background: radial-gradient(circle at 50% 30%, rgba(164,142,208,0.2), rgba(14,12,9,0.9)); }
+  .frame .port img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; }
+  .frame .cb { position: absolute; width: 22px; height: 22px; color: var(--gold); }
+  .frame .cb.tl { top: 2px; left: 2px; border-left: 1px solid; border-top: 1px solid; }
+  .frame .cb.tr { top: 2px; right: 2px; border-right: 1px solid; border-top: 1px solid; }
+  .frame .cb.bl { bottom: 2px; left: 2px; border-left: 1px solid; border-bottom: 1px solid; }
+  .frame .cb.br { bottom: 2px; right: 2px; border-right: 1px solid; border-bottom: 1px solid; }
+  .types { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.8rem; justify-content: center; }
+  .types .t { font-family: var(--caps); font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--muted); border: 1px solid var(--line-soft); padding: 0.25rem 0.6rem; cursor: pointer; }
+  .types .t.on { color: var(--gold-bright); border-color: var(--gold); }
+
+  .ident .eyebrow { font-family: var(--caps); font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); }
+  .ident h1 { font-family: var(--serif); font-weight: 600; font-size: 4rem; line-height: 0.95; color: var(--gold-bright); margin-top: 0.3rem; }
+  .ident .sub { font-family: var(--serif); font-style: italic; font-size: 1.4rem; color: var(--muted); }
+  .badges { display: flex; flex-wrap: wrap; gap: 0.55rem; margin-top: 1rem; }
+  .badge { display: inline-flex; align-items: center; gap: 0.4rem; border: 1px solid var(--line); border-radius: 999px;
+    padding: 0.35rem 0.8rem; font-family: var(--ui); font-size: 0.78rem; color: var(--parch); }
+  .badge img { width: 16px; height: 16px; object-fit: contain; }
+  .badge.el { color: var(--el-electro); border-color: color-mix(in srgb, var(--el-electro) 45%, transparent); }
+  .dl { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.6rem 2rem; margin-top: 1.4rem; }
+  .dl div { border-bottom: 1px solid var(--line-soft); padding-bottom: 0.4rem; }
+  .dl dt { font-family: var(--caps); font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted-2); }
+  .dl dd { font-family: var(--ui); font-size: 0.95rem; color: var(--parch); margin-top: 0.15rem; }
+
+  .divider { margin: 2.4rem 0 1.6rem; }
+
+  /* panels grid */
+  .panels { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+  .panels .wide { grid-column: 1 / -1; }
+  .panel { padding: 1.3rem 1.5rem; }
+  .panel .lbl { margin-bottom: 1rem; }
+  .statrow { display: flex; align-items: center; gap: 0.8rem; padding: 0.5rem 0; }
+  .statrow .ic { width: 22px; height: 22px; flex-shrink: 0; }
+  .statrow .ic img { width: 100%; height: 100%; object-fit: contain; }
+  .statrow .nm { font-family: var(--ui); font-size: 0.85rem; color: var(--muted); width: 110px; flex-shrink: 0; }
+  .statrow .bar { flex: 1; height: 5px; background: rgba(255,255,255,0.06); position: relative; }
+  .statrow .bar i { position: absolute; inset: 0 auto 0 0; }
+  .statrow .v { font-family: var(--ui); font-size: 0.9rem; color: var(--parch); width: 64px; text-align: right; font-variant-numeric: tabular-nums; }
+  .arow { display: flex; align-items: center; justify-content: space-between; border: 1px solid var(--line-soft); background: rgba(255,255,255,0.015); padding: 0.6rem 0.8rem; }
+  .arow .l { display: flex; align-items: center; gap: 0.6rem; font-family: var(--ui); font-size: 0.85rem; color: var(--parch); }
+  .arow .l img { width: 22px; height: 22px; object-fit: contain; filter: brightness(0) invert(1) opacity(0.8); }
+  .arow .vv { font-family: var(--ui); font-weight: 500; color: var(--gold-bright); }
+  .skills { display: flex; gap: 1.2rem; }
+  .skill { text-align: center; }
+  .skill .si { width: 56px; height: 56px; border-radius: 50%; border: 1px solid var(--line); background: rgba(255,255,255,0.03); display: grid; place-items: center; overflow: hidden; }
+  .skill .si img { width: 70%; height: 70%; object-fit: contain; filter: brightness(0) invert(1); }
+  .skill .sn { font-family: var(--ui); font-size: 0.66rem; color: var(--muted); margin-top: 0.4rem; }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+</style>
+</head>
+<body>
+  <div class="dna-bg"></div>
+  <div class="dna-grain"></div>
+  <div class="dna-vignette"></div>
+
+  <div class="wrap">
+    <div class="top">
+      <div class="nav">
+        <button class="dna-btn dna-btn--ghost">← Retour liste</button>
+        <button class="dna-btn dna-btn--ghost">♡ Favori</button>
+        <button class="dna-btn dna-btn--gold">▤ Build rapide</button>
+      </div>
+      <button class="dna-btn dna-btn--ghost">⌘ Français ▾</button>
+    </div>
+
+    <div class="hero">
+      <div>
+        <div class="frame">
+          <div class="crestwrap"><span class="dna-crest" style="width:180px"></span></div>
+          <div class="port">
+            <span class="cb tl"></span><span class="cb tr"></span><span class="cb bl"></span><span class="cb br"></span>
+            <img src="../public/assets/characters/gacha/T_Gacha_AvatarLise.png" alt="Rhythm" />
+          </div>
+        </div>
+        <div class="types">
+          <span class="t on">Gacha</span><span class="t">Portrait</span><span class="t">Icône</span>
+          <span class="t">Bust</span><span class="t">Phantom</span><span class="t">Intron</span>
+        </div>
+      </div>
+
+      <div class="ident">
+        <div class="eyebrow">Personnage #4101</div>
+        <h1>Rhythm</h1>
+        <div class="sub">Appel du Phare</div>
+        <div class="badges">
+          <span class="badge el"><img src="../public/assets/items/mods/T_Armory_Thunder.png" alt="" />Electro</span>
+          <span class="badge" style="color:var(--gold-bright)">★★★★★ · 5 étoiles</span>
+          <span class="badge">⚔ Katana</span>
+          <span class="badge">⚔ Machinegun</span>
+        </div>
+        <dl class="dl">
+          <div><dt>Force / Organisation</dt><dd>VIᵉ Légion</dd></div>
+          <div><dt>Origine / Nation</dt><dd>Empire Hyperboréen</dd></div>
+          <div><dt>Nom interne</dt><dd>Lise</dd></div>
+          <div><dt>Genre</dt><dd>Féminin</dd></div>
+          <div><dt>ID</dt><dd>4101</dd></div>
+          <div><dt>Pièces pour débloquer</dt><dd>×30</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="dna-divider divider"><span></span></div>
+
+    <div class="panels">
+      <div class="dna-panel dna-panel--inner panel">
+        <div class="dna-seclabel lbl">Stats de base</div>
+        <div class="statrow"><span class="ic"><img src="../public/assets/items/mods/T_Armory_Thunder.png" alt=""></span><span class="nm">ATQ Electro</span><span class="bar"><i style="width:90%;background:linear-gradient(90deg,#a48ed088,#a48ed0)"></i></span><span class="v">1 628</span></div>
+        <div class="statrow"><span class="ic" style="color:#57d6a6">❤</span><span class="nm">PV Max</span><span class="bar"><i style="width:74%;background:linear-gradient(90deg,#57d6a688,#57d6a6)"></i></span><span class="v">2 129</span></div>
+        <div class="statrow"><span class="ic" style="color:#5fa8ff">⛨</span><span class="nm">Bouclier</span><span class="bar"><i style="width:66%;background:linear-gradient(90deg,#5fa8ff88,#5fa8ff)"></i></span><span class="v">1 757</span></div>
+        <div class="statrow"><span class="ic" style="color:#c2a86a">⛨</span><span class="nm">DÉF</span><span class="bar"><i style="width:48%;background:linear-gradient(90deg,#c2a86a88,#c2a86a)"></i></span><span class="v">534</span></div>
+        <div class="statrow"><span class="ic" style="color:#a48ed0">✦</span><span class="nm">Lucidité max</span><span class="bar"><i style="width:55%;background:linear-gradient(90deg,#a48ed088,#a48ed0)"></i></span><span class="v">528</span></div>
+      </div>
+
+      <div class="dna-panel dna-panel--inner panel">
+        <div class="dna-seclabel lbl">Bonus d'ascension</div>
+        <div style="display:grid;gap:0.5rem">
+          <div class="arow"><span class="l"><img src="../public/assets/characters/skills/T_SkillTalent_08.png" alt="">ATQ</span><span class="vv">+20%</span></div>
+          <div class="arow"><span class="l"><img src="../public/assets/characters/skills/T_SkillTalent_08.png" alt="">ATQ</span><span class="vv">+30%</span></div>
+          <div class="arow"><span class="l"><img src="../public/assets/characters/skills/T_SkillTalent_10.png" alt="">Portée</span><span class="vv">+12%</span></div>
+          <div class="arow"><span class="l"><img src="../public/assets/characters/skills/T_SkillTalent_10.png" alt="">Portée</span><span class="vv">+18%</span></div>
+        </div>
+      </div>
+
+      <div class="dna-panel dna-panel--inner panel">
+        <div class="dna-seclabel lbl">Attributs recommandés · Positionnement</div>
+        <div class="tags">
+          <span class="dna-tag">CRIT</span><span class="dna-tag">ATK%</span><span class="dna-tag">ELEM DMG</span>
+        </div>
+        <div class="tags" style="margin-top:0.8rem">
+          <span class="dna-tag dna-tag--crimson">DPS</span><span class="dna-tag">SkillDPS</span>
+        </div>
+      </div>
+
+      <div class="dna-panel dna-panel--inner panel">
+        <div class="dna-seclabel lbl">Compétences</div>
+        <div class="skills">
+          <div class="skill"><div class="si"><img src="../public/assets/characters/skills/T_SkillTalent_01.png" alt=""></div><div class="sn">Compétence 1</div></div>
+          <div class="skill"><div class="si"><img src="../public/assets/characters/skills/T_SkillTalent_02.png" alt=""></div><div class="sn">Compétence 2</div></div>
+          <div class="skill"><div class="si"><img src="../public/assets/characters/skills/T_SkillTalent_03.png" alt=""></div><div class="sn">Passif</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a class="dna-back" href="./index.html">◀ Design Lab</a>
+</body>
+</html>

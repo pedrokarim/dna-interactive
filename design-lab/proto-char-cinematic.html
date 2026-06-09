@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fiche perso · Cinématique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="./assets/dna-ui.css" />
+<style>
+  body { overflow-x: hidden; }
+  .stage { position: relative; min-height: 100vh; }
+  /* render plein cadre à droite */
+  .render { position: fixed; right: -2%; top: 0; bottom: 0; width: 60%; z-index: 0; pointer-events: none; }
+  .render .glow { position: absolute; right: 14%; top: 18%; width: 60%; aspect-ratio: 1; border-radius: 50%;
+    background: radial-gradient(circle, rgba(164,142,208,0.34), transparent 62%); filter: blur(20px); }
+  .render img { position: absolute; right: 0; bottom: 0; height: 100%; object-fit: contain; object-position: bottom right;
+    filter: drop-shadow(0 20px 60px rgba(0,0,0,0.7)); }
+  .render::after { content: ""; position: absolute; inset: 0;
+    background: linear-gradient(90deg, var(--ink) 0%, rgba(10,10,11,0.5) 28%, transparent 60%); }
+  .wm { position: fixed; right: 4%; top: 50%; transform: translateY(-50%); z-index: 0; pointer-events: none;
+    font-family: var(--caps); font-weight: 700; font-size: 16rem; letter-spacing: 0.1em; color: rgba(164,142,208,0.04);
+    writing-mode: vertical-rl; }
+
+  .topbar { position: relative; z-index: 3; display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 2.4rem; }
+  .topbar .left { display: flex; gap: 0.7rem; }
+  .topbar .right { display: flex; gap: 0.7rem; align-items: center; }
+  .crumbs { font-family: var(--caps); font-size: 0.62rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted); }
+
+  .info { position: relative; z-index: 2; max-width: 620px; padding: 1.5rem 2.4rem 2rem; }
+  .eyebrow { font-family: var(--caps); font-size: 0.72rem; letter-spacing: 0.34em; text-transform: uppercase; color: var(--gold);
+    display: flex; align-items: center; gap: 0.8rem; }
+  .eyebrow::after { content: ""; width: 60px; height: 1px; background: linear-gradient(90deg, var(--gold), transparent); }
+  h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(4rem, 9vw, 7rem); line-height: 0.9; color: var(--parch);
+    margin: 0.5rem 0 0; text-shadow: 0 4px 40px rgba(0,0,0,0.6); }
+  h1 em { font-style: italic; color: var(--gold-bright);
+    background: linear-gradient(180deg, #f7e2ad, var(--gold)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .sub { font-family: var(--serif); font-style: italic; font-size: 1.5rem; color: var(--muted); margin-top: 0.4rem; }
+
+  .badges { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.4rem; }
+  .badge { display: inline-flex; align-items: center; gap: 0.5rem; border: 1px solid var(--line); border-radius: 999px;
+    padding: 0.4rem 0.9rem; font-family: var(--ui); font-size: 0.82rem; color: var(--parch); background: rgba(20,19,17,0.6); backdrop-filter: blur(4px); }
+  .badge img { width: 18px; height: 18px; object-fit: contain; }
+  .badge.el { color: var(--el-electro); border-color: color-mix(in srgb, var(--el-electro) 45%, transparent); box-shadow: 0 0 14px -4px var(--el-electro); }
+  .badge .stars { color: var(--gold-bright); letter-spacing: -1px; }
+
+  .stats { display: flex; gap: 2.2rem; margin-top: 2rem; }
+  .stat .v { font-family: var(--serif); font-weight: 600; font-size: 2.2rem; line-height: 1; color: var(--parch); }
+  .stat.hl .v { color: var(--el-electro); text-shadow: 0 0 18px rgba(164,142,208,0.5); }
+  .stat .k { font-family: var(--caps); font-size: 0.54rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted-2); margin-top: 0.3rem; }
+
+  .ctarow { display: flex; gap: 0.9rem; margin-top: 2.2rem; }
+
+  /* barre d'onglets en bas */
+  .tabs { position: fixed; left: 0; right: 0; bottom: 0; z-index: 3; display: flex; gap: 0.2rem; padding: 0 2.4rem;
+    background: linear-gradient(0deg, rgba(8,7,6,0.95), transparent); }
+  .tab { font-family: var(--caps); font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted);
+    padding: 1rem 1.2rem; cursor: pointer; border-bottom: 2px solid transparent; display: flex; align-items: center; gap: 0.5rem; }
+  .tab.on { color: var(--gold-bright); border-bottom-color: var(--gold-bright); }
+  .tab:hover { color: var(--parch); }
+</style>
+</head>
+<body>
+  <div class="dna-bg dna-bg--world"></div>
+  <div class="dna-grain"></div>
+
+  <div class="render">
+    <div class="glow"></div>
+    <img src="../public/assets/characters/bust/T_Bust_Lise.png" alt="Rhythm" onerror="this.src='../public/assets/characters/gacha/T_Gacha_AvatarLise.png'" />
+  </div>
+  <div class="wm">RHYTHM</div>
+
+  <div class="stage">
+    <div class="topbar">
+      <div class="left">
+        <button class="dna-btn dna-btn--ghost">← Retour</button>
+        <button class="dna-btn dna-btn--ghost">♡ Favori</button>
+        <button class="dna-btn dna-btn--gold">▤ Build rapide</button>
+      </div>
+      <div class="right">
+        <span class="crumbs">Arsenal · Personnages</span>
+        <button class="dna-btn dna-btn--ghost">Français ▾</button>
+      </div>
+    </div>
+
+    <div class="info">
+      <div class="eyebrow">Personnage #4101</div>
+      <h1><em>Rhythm</em></h1>
+      <div class="sub">Appel du Phare</div>
+
+      <div class="badges">
+        <span class="badge el"><img src="../public/assets/items/mods/T_Armory_Thunder.png" alt="" />Electro</span>
+        <span class="badge"><span class="stars">★★★★★</span> 5 étoiles</span>
+        <span class="badge">⚔ Katana</span>
+        <span class="badge">⚔ Machinegun</span>
+        <span class="badge">⛨ Empire Hyperboréen</span>
+      </div>
+
+      <div class="stats">
+        <div class="stat hl"><div class="v">1 628</div><div class="k">ATQ Electro</div></div>
+        <div class="stat"><div class="v">2 129</div><div class="k">PV Max</div></div>
+        <div class="stat"><div class="v">1 757</div><div class="k">Bouclier</div></div>
+        <div class="stat"><div class="v">534</div><div class="k">DÉF</div></div>
+        <div class="stat"><div class="v">528</div><div class="k">Lucidité</div></div>
+      </div>
+
+      <div class="ctarow">
+        <button class="dna-btn dna-btn--gold">Voir le build</button>
+        <button class="dna-btn dna-btn--ghost">Compétences</button>
+      </div>
+    </div>
+  </div>
+
+  <nav class="tabs">
+    <div class="tab on">▦ Attributs</div>
+    <div class="tab">⚔ Build</div>
+    <div class="tab">✦ Compétences</div>
+    <div class="tab">▥ Portraits</div>
+    <div class="tab">❖ Intron</div>
+    <div class="tab">⌘ Traductions</div>
+  </nav>
+
+  <a class="dna-back" href="./index.html">◀ Design Lab</a>
+</body>
+</html>

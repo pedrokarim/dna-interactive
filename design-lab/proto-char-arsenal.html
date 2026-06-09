@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fiche perso · Arsenal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="./assets/dna-ui.css" />
+<style>
+  body { overflow: hidden; height: 100vh; }
+  .world { position: fixed; inset: 0; z-index: -2; transition: background 0.5s;
+    background: radial-gradient(55% 60% at 50% 38%, var(--ecbg, rgba(164,142,208,0.16)), transparent 60%),
+      radial-gradient(45% 50% at 82% 78%, rgba(140,100,60,0.1), transparent 60%),
+      linear-gradient(160deg, #0a0a0d, #08070a 60%, #0b0f10); }
+  .app { height: 100vh; display: grid; grid-template-rows: 52px 1fr 48px; }
+
+  .top { display: flex; align-items: center; gap: 1rem; padding: 0 1.6rem; border-bottom: 1px solid var(--line); background: linear-gradient(180deg, rgba(8,7,6,0.95), rgba(8,7,6,0.4)); z-index: 5; }
+  .top .crumb { font-family: var(--caps); font-weight: 600; font-size: 1rem; letter-spacing: 0.16em; color: var(--gold-bright); text-transform: uppercase; }
+  .switch { display: flex; gap: 0.4rem; margin-left: 0.8rem; border-left: 1px solid var(--line); padding-left: 1rem; }
+  .switch button { font-family: var(--ui); font-size: 0.78rem; color: var(--muted); border: 1px solid var(--line-soft); background: rgba(255,255,255,0.015); border-radius: 999px; padding: 0.28rem 0.85rem; cursor: pointer; transition: all 0.2s; }
+  .switch button:hover { color: var(--parch); border-color: rgba(255,255,255,0.25); }
+  .switch button.on { color: #1a1206; font-weight: 500; border-color: transparent; }
+  .top .spacer { flex: 1; }
+  .top .nav { display: flex; gap: 0.5rem; }
+
+  .main { display: grid; grid-template-columns: 60px 1fr 340px; overflow: hidden; }
+
+  .rail { display: flex; flex-direction: column; align-items: center; gap: 0.2rem; padding: 0.8rem 0; background: rgba(8,7,6,0.7); border-right: 1px solid var(--line-soft); z-index: 4; }
+  .rico { position: relative; width: 42px; height: 42px; display: grid; place-items: center; color: var(--muted); cursor: pointer; font-size: 1.05rem; transition: color 0.2s; }
+  .rico:hover, .rico.on { color: var(--gold-bright); }
+  .rico.on::before { content: ""; position: absolute; left: -8px; top: 50%; transform: translateY(-50%); width: 2px; height: 22px; background: var(--gold-bright); box-shadow: 0 0 8px var(--gold); }
+  .rail .sp { flex: 1; }
+
+  /* stage central — render recentré */
+  .stage { position: relative; overflow: hidden; }
+  .floor { position: absolute; bottom: 7%; left: 50%; transform: translateX(-50%); width: 340px; height: 56px; border-radius: 50%; background: radial-gradient(ellipse, var(--ecfloor, rgba(164,142,208,0.24)), transparent 70%); filter: blur(5px); z-index: 1; }
+  .render { position: absolute; inset: 0; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 5%; z-index: 2; }
+  .render .glow { position: absolute; left: 50%; top: 30%; transform: translate(-50%,-50%); width: 46%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, var(--ecglow, rgba(164,142,208,0.24)), transparent 62%); filter: blur(16px); }
+  .render img { position: relative; max-height: 92%; max-width: 56%; width: auto; object-fit: contain; object-position: center bottom; filter: drop-shadow(0 18px 50px rgba(0,0,0,0.6)); transition: opacity 0.3s; }
+
+  .namebanner { position: absolute; left: 1.6rem; top: 1.2rem; z-index: 3; }
+  .namebanner .lv { font-family: var(--caps); font-size: 0.6rem; letter-spacing: 0.2em; color: var(--gold); }
+  .namebanner h2 { font-family: var(--serif); font-weight: 600; font-size: 3.4rem; line-height: 1; color: var(--parch); display: flex; align-items: center; gap: 0.7rem; text-shadow: 0 2px 24px rgba(0,0,0,0.8); }
+  .namebanner h2 .el { width: 30px; height: 30px; display: inline-grid; place-items: center; border-radius: 50%; border: 1px solid var(--ec, #a48ed0); box-shadow: 0 0 12px -2px var(--ec, #a48ed0); }
+  .namebanner h2 .el img { width: 64%; height: 64%; object-fit: contain; }
+  .namebanner .sub { font-family: var(--serif); font-style: italic; font-size: 1.1rem; color: var(--muted); margin-top: 0.2rem; }
+  .namebanner .stars { color: var(--gold-bright); font-size: 0.8rem; margin-top: 0.3rem; }
+
+  .ptypes { position: absolute; left: 1.6rem; bottom: 1.4rem; display: flex; gap: 0.35rem; z-index: 3; }
+  .ptypes .t { font-family: var(--caps); font-size: 0.52rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--line-soft); padding: 0.25rem 0.55rem; cursor: pointer; }
+  .ptypes .t.on { color: var(--gold-bright); border-color: var(--gold); }
+
+  .stats { border-left: 1px solid var(--line); background: var(--panel); display: flex; flex-direction: column; overflow: hidden; z-index: 4; }
+  .stats .head { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.2rem 0.8rem; border-bottom: 1px solid var(--line-soft); }
+  .stats .head .lvl { font-family: var(--caps); font-size: 1.6rem; color: var(--gold-bright); font-weight: 600; }
+  .stats .head .lvl small { font-size: 0.7rem; color: var(--muted-2); }
+  .stats .head .wpn { font-family: var(--caps); font-size: 0.55rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); text-align: right; }
+  .stats .body { flex: 1; overflow-y: auto; padding: 0.6rem 1.2rem; }
+  .srow { display: flex; align-items: center; justify-content: space-between; padding: 0.62rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .srow .k { display: flex; align-items: center; gap: 0.5rem; font-family: var(--ui); font-size: 0.84rem; color: var(--muted); }
+  .srow .k .d { width: 6px; height: 6px; transform: rotate(45deg); background: var(--gold-deep); }
+  .srow .v { font-family: var(--ui); font-size: 0.95rem; color: var(--parch); font-variant-numeric: tabular-nums; }
+  .srow.hl .k .d { background: var(--ec, #a48ed0); box-shadow: 0 0 6px var(--ec, #a48ed0); }
+  .srow.hl .v { color: var(--ec, #a48ed0); }
+  .srow .v.pct { color: var(--gold-bright); }
+  .details { text-align: center; padding: 0.7rem; font-family: var(--caps); font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); cursor: pointer; border-top: 1px solid var(--line-soft); }
+  .details:hover { color: var(--gold-bright); }
+
+  .bottom { display: flex; align-items: center; justify-content: space-between; padding: 0 1.6rem; border-top: 1px solid var(--line); background: linear-gradient(0deg, rgba(8,7,6,0.95), rgba(8,7,6,0.3)); }
+  .hint { display: flex; gap: 1.4rem; }
+  .hint span { font-family: var(--caps); font-size: 0.58rem; letter-spacing: 0.16em; color: var(--muted); display: flex; align-items: center; gap: 0.5rem; }
+</style>
+</head>
+<body>
+  <div class="world"></div>
+  <div class="dna-grain"></div>
+
+  <div class="app">
+    <div class="top">
+      <span class="crumb" id="crumb">Rhythm</span>
+      <div class="switch" id="switch"></div>
+      <span class="spacer"></span>
+      <div class="nav">
+        <button class="dna-btn dna-btn--ghost">♡ Favori</button>
+        <button class="dna-btn dna-btn--gold">▤ Build rapide</button>
+        <button class="dna-btn dna-btn--ghost">⌘ FR ▾</button>
+      </div>
+    </div>
+
+    <div class="main">
+      <nav class="rail">
+        <div class="rico on" title="Attributs">▦</div>
+        <div class="rico" title="Build">⚔</div>
+        <div class="rico" title="Compétences">✦</div>
+        <div class="rico" title="Portraits">▥</div>
+        <div class="rico" title="Intron">❖</div>
+        <div class="sp"></div>
+        <div class="rico" title="Technique">⚙</div>
+      </nav>
+
+      <div class="stage">
+        <div class="namebanner">
+          <div class="lv">Niv. 80 / 80</div>
+          <h2 id="nbName">Rhythm <span class="el"><img id="nbElIcon" src="" alt=""></span></h2>
+          <div class="sub" id="nbSub">Appel du Phare</div>
+          <div class="stars">★★★★★</div>
+        </div>
+        <div class="floor"></div>
+        <div class="render">
+          <div class="glow"></div>
+          <img id="renderImg" src="" alt="" />
+        </div>
+        <div class="ptypes">
+          <span class="t on">Gacha</span><span class="t">Portrait</span><span class="t">Bust</span><span class="t">Phantom</span><span class="t">Intron</span>
+        </div>
+      </div>
+
+      <aside class="stats">
+        <div class="head">
+          <div class="lvl">80<small> / 80</small></div>
+          <div class="wpn">Armes<br><span id="wpn">Katana · Mitrailleuse</span></div>
+        </div>
+        <div class="body" id="statsBody"></div>
+        <div class="details">Voir tous les détails ▸</div>
+        <div class="dna-seal" style="margin:0.4rem">
+          <h4>⬥ Sceau démoniaque</h4>
+          <div class="bar"><i id="sealBar" style="width:94%"></i></div>
+          <small id="sealTxt">Tolérance 139 / 145</small>
+        </div>
+      </aside>
+    </div>
+
+    <div class="bottom">
+      <a class="dna-back" href="./index.html" style="position:static;border:none;background:none;padding:0">◀ Design Lab</a>
+      <div class="hint"><span>◄ ► Personnage</span><span>F · Build</span><span>Échap · Retour</span></div>
+    </div>
+  </div>
+
+  <script>
+    const A = "../public/assets";
+    const CHARS = [
+      { key:"rhythm", name:"Rhythm", sub:"Appel du Phare", el:"Electro", elIcon:"Thunder", hex:"#a48ed0",
+        bust:"Lise", gacha:"Lise", wpn:"Katana · Mitrailleuse", seal:"139 / 145", sealPct:94,
+        stats:[["ATQ Electro","1 628.69",1],["PV Max","2 129"],["Bouclier","1 757"],["DÉF","534.24"],["Lucidité max","528"],["ATQ bonus","+30 %","p"],["Portée compétence","+18 %","p"],["Vigueur","100 %","p"]] },
+      { key:"camilla", name:"Camilla", sub:"Cru Écarlate", el:"Pyro", elIcon:"Fire", hex:"#e2664a",
+        bust:"Kami", gacha:"Kami", wpn:"Fouet-épée · Mitrailleuse", seal:"128 / 145", sealPct:88,
+        stats:[["ATQ Pyro","1 540.20",1],["PV Max","2 380"],["Bouclier","1 410"],["DÉF","612.50"],["Lucidité max","540"],["ATQ bonus","+24 %","p"],["Infliction","+20 %","p"],["Vigueur","100 %","p"]] },
+      { key:"berenica", name:"Berenica", sub:"Espoir Inébranlable", el:"Umbro", elIcon:"Dark", hex:"#8e84ff",
+        bust:"Heitao", gacha:"Heitao", wpn:"Épée · Arbalète", seal:"145 / 145", sealPct:100,
+        stats:[["ATQ Umbro","1 712.40",1],["PV Max","1 980"],["Bouclier","2 050"],["DÉF","498.10"],["Lucidité max","512"],["ATQ bonus","+32 %","p"],["Pénétration","+15 %","p"],["Vigueur","100 %","p"]] },
+    ];
+
+    const $ = (id) => document.getElementById(id);
+    function hexA(hex, a) { const n = parseInt(hex.slice(1), 16); return `rgba(${(n>>16)&255},${(n>>8)&255},${n&255},${a})`; }
+
+    function render(c) {
+      document.documentElement.style.setProperty('--ec', c.hex);
+      document.documentElement.style.setProperty('--ecbg', hexA(c.hex, 0.16));
+      document.documentElement.style.setProperty('--ecglow', hexA(c.hex, 0.24));
+      document.documentElement.style.setProperty('--ecfloor', hexA(c.hex, 0.24));
+      $('crumb').textContent = c.name;
+      $('nbName').childNodes[0].textContent = c.name + " ";
+      $('nbSub').textContent = c.sub;
+      $('nbElIcon').src = `${A}/items/mods/T_Armory_${c.elIcon}.png`;
+      $('wpn').textContent = c.wpn;
+      const img = $('renderImg');
+      img.src = `${A}/characters/bust/T_Bust_${c.bust}.png`;
+      img.onerror = () => { img.onerror = null; img.src = `${A}/characters/gacha/T_Gacha_Avatar${c.gacha}.png`; };
+      $('statsBody').innerHTML = c.stats.map(([k,v,flag]) =>
+        `<div class="srow${flag===1?' hl':''}"><span class="k"><span class="d"></span>${k}</span><span class="v${flag==='p'?' pct':''}">${v}</span></div>`).join('');
+      $('sealBar').style.width = c.sealPct + '%';
+      $('sealTxt').textContent = `Tolérance ${c.seal}`;
+      document.querySelectorAll('#switch button').forEach(b => b.classList.toggle('on', b.dataset.k === c.key));
+      document.querySelectorAll('#switch button.on').forEach(b => b.style.background = `linear-gradient(180deg, var(--gold-bright), ${c.hex})`);
+      document.querySelectorAll('#switch button:not(.on)').forEach(b => b.style.background = '');
+    }
+
+    const sw = $('switch');
+    CHARS.forEach(c => {
+      const b = document.createElement('button'); b.textContent = c.name; b.dataset.k = c.key;
+      b.onclick = () => render(c); sw.appendChild(b);
+    });
+    render(CHARS[0]);
+  </script>
+</body>
+</html>
