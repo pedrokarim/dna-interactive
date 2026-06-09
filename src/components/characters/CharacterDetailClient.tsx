@@ -1019,7 +1019,7 @@ function BuildTabContent({
               if (weapons.length === 0) return null;
               return (
                 <div key={type}>
-                  <h3 className="mb-2 text-xs font-medium uppercase tracking-wider text-muted">
+                  <h3 className="mb-2 font-caps text-[0.7rem] uppercase tracking-[0.2em] text-gold">
                     {type === "melee" ? t('weaponMelee') : t('weaponRanged')}
                   </h3>
                   <div className="space-y-2">
@@ -1787,10 +1787,10 @@ export default function CharacterDetailClient({
           {/* Info */}
           <div className="min-w-0 flex-1 space-y-4">
             <div>
-              <p className="text-xs uppercase tracking-[0.28em] text-gold/80">
+              <p className="font-caps text-[0.7rem] uppercase tracking-[0.3em] text-gold">
                 Personnage #{character.charId}
               </p>
-              <h1 className="mt-1 text-2xl md:text-3xl font-semibold text-parch">
+              <h1 className="mt-1 font-display text-3xl md:text-4xl font-semibold text-gold-bright">
                 {displayName}
               </h1>
               {translation.subtitle && (
@@ -1995,7 +1995,7 @@ export default function CharacterDetailClient({
 
           {/* Base stats */}
           <div className="rounded-xl border border-white/10 bg-panel/55 p-3 md:p-5">
-            <h3 className="text-xs font-medium uppercase tracking-wider text-muted">
+            <h3 className="font-caps text-[0.7rem] uppercase tracking-[0.2em] text-gold">
               Stats de base
             </h3>
             <div className="mt-4 space-y-3">
@@ -2046,7 +2046,7 @@ export default function CharacterDetailClient({
           {/* Addon attrs (ascension bonuses) */}
           {character.addonAttrs.length > 0 && (
             <div className="rounded-xl border border-white/10 bg-panel/55 p-3 md:p-5">
-              <h3 className="text-xs font-medium uppercase tracking-wider text-muted">
+              <h3 className="font-caps text-[0.7rem] uppercase tracking-[0.2em] text-gold">
                 Bonus d&apos;ascension
               </h3>
               <div className="mt-4 grid gap-2 sm:grid-cols-2">
@@ -2080,7 +2080,7 @@ export default function CharacterDetailClient({
           <div className="grid gap-3 md:gap-5 lg:grid-cols-2">
             {character.recommendAttr.length > 0 && (
               <div className="rounded-xl border border-white/10 bg-panel/55 p-3 md:p-5">
-                <h3 className="text-xs font-medium uppercase tracking-wider text-muted">
+                <h3 className="font-caps text-[0.7rem] uppercase tracking-[0.2em] text-gold">
                   Attributs recommandes
                 </h3>
                 <div className="mt-3 flex flex-wrap gap-2">
@@ -2098,7 +2098,7 @@ export default function CharacterDetailClient({
 
             {character.positioning.length > 0 && (
               <div className="rounded-xl border border-white/10 bg-panel/55 p-3 md:p-5">
-                <h3 className="text-xs font-medium uppercase tracking-wider text-muted">
+                <h3 className="font-caps text-[0.7rem] uppercase tracking-[0.2em] text-gold">
                   Positionnement
                 </h3>
                 <div className="mt-3 flex flex-wrap gap-2">
@@ -2123,7 +2123,7 @@ export default function CharacterDetailClient({
           {/* Ascension levels */}
           {character.ascensionLevels.length > 0 && (
             <div className="rounded-xl border border-white/10 bg-panel/55 p-3 md:p-5">
-              <h3 className="text-xs font-medium uppercase tracking-wider text-muted">
+              <h3 className="font-caps text-[0.7rem] uppercase tracking-[0.2em] text-gold">
                 Paliers d&apos;ascension
               </h3>
               <div className="mt-3 flex flex-wrap items-center gap-1">
