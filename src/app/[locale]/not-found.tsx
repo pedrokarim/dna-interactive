@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <main className="min-h-screen bg-linear-to-br from-electro via-panel to-ink text-parch flex items-center justify-center px-6">
+    <main className="min-h-screen bg-linear-to-br from-ink via-panel to-ink text-parch flex items-center justify-center px-6">
       <div className="max-w-2xl text-center">
         <img
           src={ASSETS_PATHS.logo}
@@ -36,7 +36,7 @@ export default function NotFound() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
             href="/"
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-linear-to-r from-gold to-electro hover:from-gold hover:to-electro rounded-lg font-semibold text-parch transition-all duration-300 shadow-lg shadow-gold/25"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-linear-to-r from-gold to-gold-deep hover:from-gold hover:to-electro rounded-lg font-semibold text-parch transition-all duration-300 shadow-lg shadow-gold/25"
           >
             <Home className="w-5 h-5" />
             Retour à l&apos;accueil

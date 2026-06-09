@@ -14,7 +14,7 @@ export default function ChangelogPage() {
   const tn = useTranslations('nav');
   const tc = useTranslations('common');
   return (
-    <div className="min-h-screen bg-linear-to-br from-electro via-panel to-ink text-parch">
+    <div className="min-h-screen bg-linear-to-br from-ink via-panel to-ink text-parch">
       {/* Header */}
       <header className="relative z-50 bg-ink/80 backdrop-blur-sm border-b border-gold/20">
         <div className="container mx-auto px-4 md:px-6 py-3 md:py-4">
@@ -49,7 +49,7 @@ export default function ChangelogPage() {
             className="mb-12"
           >
             <div className="flex items-center gap-4 mb-6">
-              <div className="w-16 h-16 bg-linear-to-br from-gold to-electro rounded-lg flex items-center justify-center">
+              <div className="w-16 h-16 bg-linear-to-br from-gold to-gold-deep rounded-lg flex items-center justify-center">
                 <Sparkles className="w-8 h-8 text-parch" />
               </div>
               <div>
@@ -139,7 +139,7 @@ export default function ChangelogPage() {
           >
             <Link
               href="/"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-linear-to-r from-gold to-electro hover:from-gold hover:to-electro rounded-lg font-semibold text-parch transition-all duration-300 shadow-lg shadow-gold/25"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-linear-to-r from-gold to-gold-deep hover:from-gold hover:to-electro rounded-lg font-semibold text-parch transition-all duration-300 shadow-lg shadow-gold/25"
             >
               {tc('backToHome')}
             </Link>

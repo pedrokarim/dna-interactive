@@ -60,7 +60,7 @@ export default async function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-linear-to-br from-electro via-panel to-ink text-parch">
+    <main className="min-h-screen bg-linear-to-br from-ink via-panel to-ink text-parch">
       {/* Header */}
       <header className="relative z-50 bg-ink/80 backdrop-blur-sm border-b border-gold/20">
         <div className="container mx-auto px-4 md:px-6 py-3 md:py-4">
@@ -119,7 +119,7 @@ export default async function Home() {
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-parch mb-6">
+              <h2 className="font-display text-4xl font-semibold text-parch mb-6">
                 {tHome('communityTitle')}
               </h2>
               <p className="text-lg text-parch/85 max-w-3xl mx-auto">
@@ -177,7 +177,7 @@ export default async function Home() {
                 <span className="inline-flex items-center rounded-full border border-gold/35 bg-gold/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-gold">
                   {tHome('itemsSpotlightBadge')}
                 </span>
-                <h2 className="mt-4 max-w-3xl text-3xl font-bold text-parch sm:text-4xl">
+                <h2 className="mt-4 max-w-3xl font-display text-3xl font-semibold text-parch sm:text-4xl">
                   {tHome('itemsSpotlightTitle')}
                 </h2>
                 <p className="mt-4 max-w-2xl text-base leading-relaxed text-parch">
@@ -218,7 +218,7 @@ export default async function Home() {
                 <span className="inline-flex items-center rounded-full border border-electro/35 bg-electro/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-electro">
                   {tHome('charactersSpotlightBadge')}
                 </span>
-                <h2 className="mt-4 max-w-3xl text-3xl font-bold text-parch sm:text-4xl">
+                <h2 className="mt-4 max-w-3xl font-display text-3xl font-semibold text-parch sm:text-4xl">
                   {tHome('charactersSpotlightTitle')}
                 </h2>
                 <p className="mt-4 max-w-2xl text-base leading-relaxed text-parch">
@@ -251,14 +251,14 @@ export default async function Home() {
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-parch mb-6">
+              <h2 className="font-display text-4xl font-semibold text-parch mb-6">
                 {tHome('featuresTitle')}
               </h2>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               <div className="bg-linear-to-br from-panel/50 to-panel/50 backdrop-blur-sm border border-gold/20 rounded-xl p-6 hover:border-gold/40 transition-colors">
-                <div className="w-12 h-12 bg-linear-to-br from-gold to-electro rounded-lg flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-linear-to-br from-gold to-gold-deep rounded-lg flex items-center justify-center mb-4">
                   <Map className="w-6 h-6 text-parch" />
                 </div>
                 <h3 className="text-xl font-semibold text-parch mb-3">
@@ -270,7 +270,7 @@ export default async function Home() {
               </div>
 
               <div className="bg-linear-to-br from-panel/50 to-panel/50 backdrop-blur-sm border border-gold/20 rounded-xl p-6 hover:border-gold/40 transition-colors">
-                <div className="w-12 h-12 bg-linear-to-br from-gold to-electro rounded-lg flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-linear-to-br from-gold to-gold-deep rounded-lg flex items-center justify-center mb-4">
                   <svg
                     className="w-6 h-6 text-parch"
                     fill="none"
@@ -294,7 +294,7 @@ export default async function Home() {
               </div>
 
               <div className="bg-linear-to-br from-panel/50 to-panel/50 backdrop-blur-sm border border-gold/20 rounded-xl p-6 hover:border-gold/40 transition-colors">
-                <div className="w-12 h-12 bg-linear-to-br from-gold to-electro rounded-lg flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-linear-to-br from-gold to-gold-deep rounded-lg flex items-center justify-center mb-4">
                   <svg
                     className="w-6 h-6 text-parch"
                     fill="none"
@@ -318,7 +318,7 @@ export default async function Home() {
               </div>
 
               <div className="bg-linear-to-br from-panel/50 to-panel/50 backdrop-blur-sm border border-gold/20 rounded-xl p-6 hover:border-gold/40 transition-colors">
-                <div className="w-12 h-12 bg-linear-to-br from-gold to-electro rounded-lg flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-linear-to-br from-gold to-gold-deep rounded-lg flex items-center justify-center mb-4">
                   <svg
                     className="w-6 h-6 text-parch"
                     fill="none"
@@ -342,7 +342,7 @@ export default async function Home() {
               </div>
 
               <div className="bg-linear-to-br from-panel/50 to-panel/50 backdrop-blur-sm border border-gold/20 rounded-xl p-6 hover:border-gold/40 transition-colors">
-                <div className="w-12 h-12 bg-linear-to-br from-gold to-electro rounded-lg flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-linear-to-br from-gold to-gold-deep rounded-lg flex items-center justify-center mb-4">
                   <Boxes className="w-6 h-6 text-parch" />
                 </div>
                 <h3 className="text-xl font-semibold text-parch mb-3">
@@ -354,7 +354,7 @@ export default async function Home() {
               </div>
 
               <div className="bg-linear-to-br from-panel/50 to-panel/50 backdrop-blur-sm border border-gold/20 rounded-xl p-6 hover:border-gold/40 transition-colors">
-                <div className="w-12 h-12 bg-linear-to-br from-gold to-electro rounded-lg flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-linear-to-br from-gold to-gold-deep rounded-lg flex items-center justify-center mb-4">
                   <svg
                     className="w-6 h-6 text-parch"
                     fill="none"
@@ -381,7 +381,7 @@ export default async function Home() {
             <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
                 href="/map"
-                className="inline-flex items-center justify-center px-8 py-4 bg-linear-to-r from-gold to-electro hover:from-gold hover:to-electro rounded-lg font-semibold text-parch transition-all duration-300 transform hover:scale-105 shadow-lg shadow-gold/25"
+                className="inline-flex items-center justify-center px-8 py-4 bg-linear-to-r from-gold to-gold-deep hover:from-gold hover:to-electro rounded-lg font-semibold text-parch transition-all duration-300 transform hover:scale-105 shadow-lg shadow-gold/25"
               >
                 <Map className="w-5 h-5 mr-2" />
                 {tHome('exploreMap')}

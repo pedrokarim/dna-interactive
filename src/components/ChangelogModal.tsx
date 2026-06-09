@@ -51,7 +51,7 @@ export default function ChangelogModal({
           {/* Header */}
           <div className="flex items-center justify-between p-6 border-b border-gold/20">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-linear-to-br from-gold to-electro rounded-lg flex items-center justify-center">
+              <div className="w-12 h-12 bg-linear-to-br from-gold to-gold-deep rounded-lg flex items-center justify-center">
                 <Sparkles className="w-6 h-6 text-parch" />
               </div>
               <div>
