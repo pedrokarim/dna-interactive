@@ -16,6 +16,8 @@ import type { ItemCategory, ItemRawField, ItemRecord, ItemResolvedAttribute } fr
 import type { RelatedDraftRecipe } from "@/lib/items/drafts";
 import { resolveDraftTextByLanguage } from "@/lib/items/drafts";
 import { itemsFavoritesAtom, toggleItemFavoriteAtom } from "@/lib/store";
+import { DnaPanel } from "@/components/dna/Panel";
+import { DnaSectionLabel } from "@/components/dna/SectionLabel";
 
 type ItemDetailClientProps = {
   category: ItemCategory;
@@ -38,13 +40,13 @@ function RawFieldsSection({ fieldEntries }: { fieldEntries: [string, ItemRawFiel
   const ti = useTranslations('itemDetail');
 
   return (
-    <section className="rounded-xl border border-white/10 bg-panel/55">
+    <DnaPanel>
       <button
         type="button"
         onClick={() => setOpen((prev) => !prev)}
         className="flex w-full items-center justify-between p-5 text-left"
       >
-        <h2 className="text-lg font-semibold text-parch">{ti('rawFieldsTitle')}</h2>
+        <h2 className="font-display text-xl text-parch">{ti('rawFieldsTitle')}</h2>
         <ChevronDown
           className={`h-5 w-5 text-muted transition-transform duration-200 ${open ? "rotate-180" : ""}`}
         />
@@ -69,7 +71,7 @@ function RawFieldsSection({ fieldEntries }: { fieldEntries: [string, ItemRawFiel
           </table>
         </div>
       )}
-    </section>
+    </DnaPanel>
   );
 }
 
@@ -165,10 +167,10 @@ function renderTextWithDynamicMentions(
     const inlineValue = resolved !== undefined ? formatDynamicNumber(resolved) : fullToken;
     parts.push(
       <span key={`mention-${start}-${fullToken}`} className="group relative inline-flex align-middle">
-        <span className="mx-0.5 rounded-md border border-gold/35 bg-gold/20 px-1.5 py-0.5 font-medium text-gold">
+        <span className="mx-0.5 rounded-sm border border-gold/35 bg-gold/20 px-1.5 py-0.5 font-medium text-gold">
           {inlineValue}
         </span>
-        <span className="pointer-events-none absolute left-1/2 top-full z-20 mt-1 hidden -translate-x-1/2 whitespace-nowrap rounded-md border border-white/10 bg-ink/95 px-2 py-1 text-[11px] text-parch shadow-[0_8px_20px_rgba(2,6,23,0.45)] group-hover:block">
+        <span className="pointer-events-none absolute left-1/2 top-full z-20 mt-1 hidden -translate-x-1/2 whitespace-nowrap rounded-sm border border-white/10 bg-ink/95 px-2 py-1 text-[11px] text-parch shadow-[0_8px_20px_rgba(2,6,23,0.45)] group-hover:block">
           {resolved !== undefined
             ? `#${index} | Niveau ${level}: ${formatDynamicNumber(resolved)}`
             : `#${index} | Niveau ${level}: valeur indisponible`}
@@ -427,12 +429,12 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
 
   return (
     <div className="space-y-4 md:space-y-8">
-      <section className="rounded-2xl border border-gold/20 bg-panel/60 p-4 md:p-6 shadow-[0_20px_45px_rgba(15,23,42,0.45)] backdrop-blur-sm">
+      <DnaPanel className="p-4 md:p-6 shadow-[0_20px_45px_rgba(15,23,42,0.45)]">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex flex-wrap items-center gap-2">
             <Link
               href={`/items/${category.slug}`}
-              className="inline-flex items-center gap-2 rounded-lg border border-white/10 px-3 py-2 text-sm text-parch transition-colors hover:border-gold/40 hover:text-parch"
+              className="inline-flex items-center gap-2 rounded-sm border border-white/10 px-3 py-2 text-sm text-parch transition-colors hover:border-gold/40 hover:text-parch"
             >
               <ArrowLeft className="h-4 w-4" />
               {tc('backToList')}
@@ -440,7 +442,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
             <button
               type="button"
               onClick={() => toggleItemFavorite(favoriteKey)}
-              className={`inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors ${
+              className={`inline-flex items-center gap-2 rounded-sm px-3 py-2 text-sm transition-colors ${
                 isFavorite
                   ? "text-crimson-bright hover:text-crimson-bright"
                   : "text-parch/85 hover:text-crimson-bright"
@@ -451,7 +453,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
             </button>
           </div>
 
-          <div className="flex items-center gap-2 rounded-lg border border-white/10 bg-ink/60 px-3 py-2">
+          <div className="flex items-center gap-2 rounded-sm border border-white/10 bg-ink/60 px-3 py-2">
             <Languages className="h-4 w-4 text-gold/80" />
             <select
               value={selectedLanguage}
@@ -470,7 +472,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
         </div>
 
         <div className="mt-4 md:mt-6 flex flex-col gap-4 md:gap-6 lg:flex-row">
-          <div className="flex h-28 w-28 md:h-36 md:w-36 shrink-0 mx-auto lg:mx-0 items-center justify-center rounded-2xl border border-gold/25 bg-ink/70 p-4">
+          <div className="flex h-28 w-28 md:h-36 md:w-36 shrink-0 mx-auto lg:mx-0 items-center justify-center rounded-sm border border-gold/25 bg-ink/70 p-4">
             <img
               src={iconSrc}
               alt={`${category.technicalName} ${item.modId}`}
@@ -479,10 +481,10 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
           </div>
 
           <div className="min-w-0 flex-1 space-y-3 text-center lg:text-left">
-            <p className="text-xs uppercase tracking-[0.28em] text-gold/80">
+            <p className="font-caps text-[0.7rem] uppercase tracking-[0.28em] text-gold/80">
               {category.technicalName} #{item.modId}
             </p>
-            <h1 className="text-2xl md:text-3xl font-semibold text-parch">
+            <h1 className="font-display text-3xl md:text-4xl text-parch">
               <span className="inline-flex items-center gap-2">
                 {elementalAffinity?.iconSrc ? (
                   <img
@@ -502,16 +504,16 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
                   (isModsCategory ? "No Demon Wedge translation for this language." : category.displayName)}
             </p>
             <div className="flex flex-wrap justify-center lg:justify-start gap-1.5 md:gap-2 text-xs">
-              <span className="rounded-full border border-white/10 px-3 py-1 text-parch/85">
+              <span className="rounded-sm border border-white/10 px-3 py-1 text-parch/85">
                 ID {item.modId}
               </span>
               {typeof item.stats.rarity === "number" && (
-                <span className="rounded-full border border-white/10 px-3 py-1 text-parch/85">
+                <span className="rounded-sm border border-white/10 px-3 py-1 text-parch/85">
                   Rarity {item.stats.rarity}
                 </span>
               )}
               {hasAffinityData ? (
-                <span className="inline-flex items-center gap-2 rounded-full border border-white/10 px-3 py-1 text-parch/85">
+                <span className="inline-flex items-center gap-2 rounded-sm border border-white/10 px-3 py-1 text-parch/85">
                 {affinityIconSrc ? (
                   <img
                     src={affinityIconSrc}
@@ -526,7 +528,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
                 </span>
               ) : null}
               {elementalAffinity ? (
-                <span className="inline-flex items-center gap-2 rounded-full border border-hydro/35 bg-hydro/10 px-3 py-1 text-hydro">
+                <span className="inline-flex items-center gap-2 rounded-sm border border-hydro/35 bg-hydro/10 px-3 py-1 text-hydro">
                   {elementalAffinity.iconSrc ? (
                     <img
                       src={elementalAffinity.iconSrc}
@@ -538,27 +540,27 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
                 </span>
               ) : null}
               {typeof item.stats.maxLevel === "number" && (
-                <span className="rounded-full border border-white/10 px-3 py-1 text-parch/85">
+                <span className="rounded-sm border border-white/10 px-3 py-1 text-parch/85">
                   Max Level {item.stats.maxLevel}
                 </span>
               )}
               {typeof item.stats.cost === "number" && (
-                <span className="rounded-full border border-white/10 px-3 py-1 text-parch/85">
+                <span className="rounded-sm border border-white/10 px-3 py-1 text-parch/85">
                   Cost {item.stats.cost}
                 </span>
               )}
               {hasScalingData ? (
-                <span className="rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-gold">
+                <span className="rounded-sm border border-gold/40 bg-gold/10 px-3 py-1 text-gold">
                   Niveau actif {selectedLevel}
                 </span>
               ) : null}
               {isModsCategory ? (
-                <span className="rounded-full border border-white/10 px-3 py-1 text-parch/85">
+                <span className="rounded-sm border border-white/10 px-3 py-1 text-parch/85">
                   Tolerance {selectedTolerance ?? "N/A"}
                 </span>
               ) : null}
               {item.variants?.isPremium ? (
-                <span className="rounded-full border border-gold/50 bg-gold/10 px-3 py-1 text-gold">
+                <span className="rounded-sm border border-gold/50 bg-gold/10 px-3 py-1 text-gold">
                   Premium
                 </span>
               ) : null}
@@ -567,8 +569,8 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
         </div>
 
         {isGenimonsCategory && variantSiblings.length > 1 ? (
-          <section className="mt-4 md:mt-5 rounded-xl border border-white/10 bg-panel/55 p-3 md:p-5">
-            <h2 className="text-base md:text-lg font-semibold text-parch">Variantes</h2>
+          <section className="mt-4 md:mt-5 rounded-sm border border-white/10 bg-ink/40 p-3 md:p-5">
+            <DnaSectionLabel>Variantes</DnaSectionLabel>
             <div className="mt-3 md:mt-4 grid grid-cols-2 gap-2 md:gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
               {variantSiblings.map((sibling) => {
                 const isCurrent = sibling.id === item.id;
@@ -579,7 +581,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
                   <Link
                     key={sibling.id}
                     href={`/items/${category.slug}/${sibling.id}`}
-                    className={`flex items-center gap-3 rounded-lg border px-3 py-2 transition-colors ${
+                    className={`flex items-center gap-3 rounded-sm border px-3 py-2 transition-colors ${
                       isCurrent
                         ? "border-gold/50 bg-gold/10"
                         : "border-white/10 bg-ink/55 hover:border-gold/40"
@@ -602,7 +604,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
         ) : null}
 
         {hasScalingData ? (
-          <div className="mt-4 max-w-xl rounded-lg border border-white/10 bg-ink/55 px-3 py-2.5">
+          <div className="mt-4 max-w-xl rounded-sm border border-white/10 bg-ink/55 px-3 py-2.5">
             <div className="flex flex-wrap items-center justify-between gap-2">
               <p className="flex items-center gap-1.5 text-xs font-medium text-parch">
                 <SlidersHorizontal className="h-3.5 w-3.5 text-gold/80" />
@@ -633,11 +635,11 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
             </div>
           </div>
         ) : null}
-      </section>
+      </DnaPanel>
 
       <section className="grid gap-3 md:gap-4 lg:grid-cols-3">
-        <div className="rounded-xl border border-white/10 bg-panel/55 p-3 md:p-5 lg:col-span-2">
-          <h2 className="text-base md:text-lg font-semibold text-parch">Description</h2>
+        <DnaPanel className="p-3 md:p-5 lg:col-span-2">
+          <h2 className="font-display text-xl text-parch">Description</h2>
           <p className="mt-3 whitespace-pre-wrap text-sm leading-relaxed text-parch/85">
             {translation.description
               ? renderTextWithDynamicMentions(
@@ -649,7 +651,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
           </p>
           {showPassiveDescription ? (
             <div className="mt-5 border-t border-white/10 pt-4">
-              <h3 className="text-sm font-medium uppercase tracking-[0.18em] text-muted">
+              <h3 className="font-caps text-[0.66rem] uppercase tracking-[0.24em] text-gold/80">
                 {isModsCategory
                   ? `Description effet passif (niveau ${selectedLevel})`
                   : "Description trait passif"}
@@ -668,7 +670,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
                   Survole les valeurs en surbrillance pour voir le token source <code>#n</code>.
                 </p>
               ) : null}
-              <details className="mt-3 rounded-lg border border-white/10 bg-ink/55 p-3">
+              <details className="mt-3 rounded-sm border border-white/10 bg-ink/55 p-3">
                 <summary className="cursor-pointer select-none text-xs uppercase tracking-[0.18em] text-parch/85">
                   {isModsCategory
                     ? `Variables dynamiques (niveau ${selectedLevel})`
@@ -679,7 +681,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
                     dynamicValueEntries.map(([index, value]) => (
                       <span
                         key={`dynamic-${index}`}
-                        className="rounded-full border border-gold/35 bg-gold/10 px-2.5 py-1 text-xs text-gold"
+                        className="rounded-sm border border-gold/35 bg-gold/10 px-2.5 py-1 text-xs text-gold"
                       >
                         #{index} = {formatDynamicNumber(value)}
                       </span>
@@ -694,7 +696,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
 
           {isModsCategory ? (
             <div className="mt-5 border-t border-white/10 pt-4">
-              <h3 className="text-sm font-medium uppercase tracking-[0.18em] text-muted">
+              <h3 className="font-caps text-[0.66rem] uppercase tracking-[0.24em] text-gold/80">
                 Attributs resolus (niveau {selectedLevel})
               </h3>
               {selectedLevelAttributesVisible.length === 0 ? (
@@ -704,7 +706,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
                   {selectedLevelAttributesVisible.map((attribute, index) => (
                     <div
                       key={`resolved-attr-${attribute.attrName ?? "unknown"}-${index}`}
-                      className="rounded-lg border border-white/10 bg-ink/60 px-3 py-2"
+                      className="rounded-sm border border-white/10 bg-ink/60 px-3 py-2"
                     >
                       <p className="text-sm font-medium text-parch">{attribute.attrName ?? "Attr"}</p>
                       {attribute.allowModMultiplier && (
@@ -722,7 +724,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
 
           {isGenimonsCategory ? (
             <div className="mt-5 border-t border-white/10 pt-4">
-              <h3 className="text-sm font-medium uppercase tracking-[0.18em] text-muted">
+              <h3 className="font-caps text-[0.66rem] uppercase tracking-[0.24em] text-gold/80">
                 Attributs du trait passif
               </h3>
               {genimonAttributes.length === 0 ? (
@@ -740,7 +742,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
                     return (
                       <div
                         key={`genimon-attr-${attribute.attrName}-${index}`}
-                        className="rounded-lg border border-white/10 bg-ink/60 px-3 py-2"
+                        className="rounded-sm border border-white/10 bg-ink/60 px-3 py-2"
                       >
                         <p className="text-sm font-medium text-parch">{attribute.attrName}</p>
                         <p className="mt-1 text-sm text-gold">
@@ -759,10 +761,10 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
               )}
             </div>
           ) : null}
-        </div>
+        </DnaPanel>
 
-        <div className="rounded-xl border border-white/10 bg-panel/55 p-3 md:p-5">
-          <h2 className="text-base md:text-lg font-semibold text-parch">Localized Info</h2>
+        <DnaPanel className="p-3 md:p-5">
+          <h2 className="font-display text-xl text-parch">Localized Info</h2>
           <dl className="mt-3 md:mt-4 space-y-2 md:space-y-3 text-sm">
             <div>
               <dt className="text-muted">Label fonction</dt>
@@ -872,12 +874,12 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
             ) : null}
           </dl>
 
-        </div>
+        </DnaPanel>
       </section>
 
       <section className="grid gap-3 md:gap-4 lg:grid-cols-2">
-        <div className="rounded-xl border border-white/10 bg-panel/55 p-3 md:p-5">
-          <h2 className="flex items-center gap-2 text-base md:text-lg font-semibold text-parch">
+        <DnaPanel className="p-3 md:p-5">
+          <h2 className="flex items-center gap-2 font-display text-xl text-parch">
             <Tag className="h-4 w-4 text-gold/80" />
             Text keys
           </h2>
@@ -889,10 +891,10 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
               </div>
             ))}
           </dl>
-        </div>
+        </DnaPanel>
 
-        <div className="rounded-xl border border-white/10 bg-panel/55 p-3 md:p-5">
-          <h2 className="flex items-center gap-2 text-base md:text-lg font-semibold text-parch">
+        <DnaPanel className="p-3 md:p-5">
+          <h2 className="flex items-center gap-2 font-display text-xl text-parch">
             <Database className="h-4 w-4 text-gold/80" />
             Technical
           </h2>
@@ -924,12 +926,12 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
               </>
             ) : null}
           </dl>
-        </div>
+        </DnaPanel>
       </section>
 
       {relatedDrafts.length > 0 && (
-        <section className="rounded-xl border border-white/10 bg-panel/55 p-3 md:p-5">
-          <h2 className="text-base md:text-lg font-semibold text-parch">Plans associes</h2>
+        <DnaPanel className="p-3 md:p-5">
+          <h2 className="font-display text-xl text-parch">Plans associes</h2>
           <div className="mt-3 md:mt-4 space-y-2 md:space-y-3">
             {relatedDrafts.map((draft) => {
               const draftName =
@@ -940,7 +942,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
                 <Link
                   key={`${draft.draftId}-${draft.relation}`}
                   href={draft.href}
-                  className="flex items-center gap-3 rounded-lg border border-white/10 bg-ink/55 px-4 py-3 transition-colors hover:border-gold/40 hover:bg-panel/75"
+                  className="flex items-center gap-3 rounded-sm border border-white/10 bg-ink/55 px-4 py-3 transition-colors hover:border-gold/40 hover:bg-panel/75"
                 >
                   {iconSrc && (
                     <img src={iconSrc} alt="" className="h-8 w-8 shrink-0 object-contain" />
@@ -958,7 +960,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
               );
             })}
           </div>
-        </section>
+        </DnaPanel>
       )}
 
       <RawFieldsSection fieldEntries={fieldEntries} />
