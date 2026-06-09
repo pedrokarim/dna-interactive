@@ -46,6 +46,7 @@ import type {
   LevelUpCurves,
 } from "@/lib/characters/types";
 import { SKILL_LEVEL_MAX, SKILL_LEVEL_MIN } from "@/lib/characters/types";
+import { ELEMENTS, type ElementKey } from "@/components/dna/elements";
 import type {
   CharacterBuild,
   BuildDemonWedgeSlot,
@@ -1558,7 +1559,7 @@ export default function CharacterDetailClient({
 
   // --- Character metadata ---
   const isFavorite = favoriteChars.has(character.id);
-  const elementStyle = ELEMENT_COLORS[character.element.key];
+  const elHex = ELEMENTS[character.element.key as ElementKey]?.hex ?? "#c2a86a";
   const elementIcon = ELEMENT_ICONS[character.element.key];
   const rarityColor = RARITY_COLORS[character.rarity ?? 0] ?? "text-parch/85";
 
@@ -1569,7 +1570,12 @@ export default function CharacterDetailClient({
   }, [character.portraits]);
 
   const [activePortrait, setActivePortrait] = useState<PortraitType>(
-    availablePortraits.includes("gacha") ? "gacha" : availablePortraits[0] ?? "head",
+    // Préférer le bust (perso entier) pour le render centré, sinon gacha.
+    availablePortraits.includes("bust")
+      ? "bust"
+      : availablePortraits.includes("gacha")
+        ? "gacha"
+        : availablePortraits[0] ?? "head",
   );
   const [zoomedPortrait, setZoomedPortrait] = useState<{
     src: string;
@@ -1729,25 +1735,44 @@ export default function CharacterDetailClient({
           </div>
         </div>
 
-        {/* Hero section */}
-        <div className="mt-4 md:mt-6 flex flex-col gap-4 md:gap-6 lg:flex-row">
-          {/* Portrait */}
-          <div className="relative flex w-full shrink-0 flex-col items-center lg:w-64">
-            <div className="relative w-full overflow-hidden rounded-2xl border border-gold/25 bg-ink/70">
-              {activePortraitSrc ? (
+        {/* Hero section — disposition Arsenal */}
+        <div className="mt-4 grid gap-4 md:mt-6 md:gap-5 lg:grid-cols-[1fr_360px]">
+          {/* Stage : render centré + bandeau nom + switch portraits */}
+          <div
+            className="relative flex min-h-[460px] items-center justify-center overflow-hidden rounded-2xl border border-white/10"
+            style={{ background: `radial-gradient(60% 60% at 50% 36%, ${elHex}22, transparent 60%), linear-gradient(180deg, rgba(20,19,17,0.4), rgba(8,7,6,0.6))` }}
+          >
+            {/* Bandeau nom (overlay) */}
+            <div className="absolute left-4 top-4 z-10 md:left-6 md:top-6">
+              <p className="font-caps text-[0.6rem] uppercase tracking-[0.2em] text-gold">Niv. {character.maxLevel ?? 80}</p>
+              <h1 className="mt-0.5 flex items-center gap-2.5 font-display text-4xl font-semibold text-parch md:text-5xl [text-shadow:0_2px_24px_rgba(0,0,0,0.85)]">
+                {displayName}
+                {elementIcon ? (
+                  <span className="inline-grid h-8 w-8 shrink-0 place-items-center rounded-full border bg-ink/60" style={{ borderColor: elHex, boxShadow: `0 0 12px -2px ${elHex}` }}>
+                    <img src={elementIcon} alt={character.element.label} className="h-[60%] w-[60%] object-contain" />
+                  </span>
+                ) : null}
+              </h1>
+              {translation.subtitle && (
+                <p className="mt-0.5 font-display text-lg italic text-muted">{translation.subtitle}</p>
+              )}
+              {character.rarity ? (
+                <div className="mt-1 text-sm tracking-[-1px] text-gold-bright [text-shadow:0_1px_3px_#000]">{"★".repeat(character.rarity)}</div>
+              ) : null}
+            </div>
+
+            {/* Sol lumineux */}
+            <span aria-hidden className="absolute bottom-[8%] left-1/2 h-14 w-72 -translate-x-1/2 rounded-[50%] blur-md" style={{ background: `radial-gradient(ellipse, ${elHex}3a, transparent 70%)` }} />
+
+            {/* Render */}
+            {activePortraitSrc ? (
+              <>
+                <span aria-hidden className="absolute left-1/2 top-[34%] h-[46%] w-[46%] -translate-x-1/2 -translate-y-1/2 rounded-full blur-2xl" style={{ background: `radial-gradient(circle, ${elHex}38, transparent 62%)` }} />
                 <img
                   src={activePortraitSrc}
                   alt={`${displayName} - ${PORTRAIT_LABELS[activePortrait]}`}
-                  className="max-h-[420px] w-full object-contain"
+                  className="relative z-[1] max-h-[440px] max-w-[78%] object-contain drop-shadow-[0_18px_50px_rgba(0,0,0,0.6)]"
                 />
-              ) : (
-                <div className="flex aspect-square w-full items-center justify-center">
-                  <span className="text-6xl font-bold text-muted-2">
-                    {character.internalName[0]}
-                  </span>
-                </div>
-              )}
-              {activePortraitSrc && (
                 <button
                   type="button"
                   onClick={() =>
@@ -1756,25 +1781,28 @@ export default function CharacterDetailClient({
                       alt: `${displayName} - ${PORTRAIT_LABELS[activePortrait]}`,
                     })
                   }
-                  className="absolute bottom-3 right-3 rounded-full border border-white/10 bg-panel/90 p-2 text-parch transition-all hover:border-gold/60 hover:bg-gold/80 hover:text-parch"
+                  className="absolute bottom-3 right-3 z-10 rounded-full border border-white/10 bg-panel/90 p-2 text-parch transition-all hover:border-gold/60 hover:bg-gold/80 hover:text-ink"
                   aria-label="Agrandir le portrait"
                 >
                   <ZoomIn className="h-4 w-4" />
                 </button>
-              )}
-            </div>
+              </>
+            ) : (
+              <span className="text-6xl font-bold text-muted-2">{character.internalName[0]}</span>
+            )}
 
+            {/* Switch de portraits */}
             {availablePortraits.length > 1 && (
-              <div className="mt-3 flex flex-wrap justify-center gap-1.5">
+              <div className="absolute bottom-3 left-4 z-10 flex flex-wrap gap-1.5 md:left-6">
                 {availablePortraits.map((type) => (
                   <button
                     key={type}
                     type="button"
                     onClick={() => setActivePortrait(type)}
-                    className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
+                    className={`rounded-md px-2.5 py-1 font-caps text-[0.55rem] uppercase tracking-[0.14em] transition-colors ${
                       activePortrait === type
-                        ? "border border-gold/60 bg-gold/25 text-gold"
-                        : "border border-white/10 bg-ink/60 text-parch/85 hover:border-gold/30 hover:text-parch"
+                        ? "border border-gold/60 bg-gold/20 text-gold-bright"
+                        : "border border-white/10 bg-ink/60 text-muted hover:border-gold/30 hover:text-parch"
                     }`}
                   >
                     {PORTRAIT_LABELS[type]}
@@ -1784,162 +1812,147 @@ export default function CharacterDetailClient({
             )}
           </div>
 
-          {/* Info */}
-          <div className="min-w-0 flex-1 space-y-4">
-            <div>
-              <p className="font-caps text-[0.7rem] uppercase tracking-[0.3em] text-gold">
+          {/* Panneau stats (droite) — disposition Arsenal */}
+          <aside className="flex flex-col gap-4">
+            <div className="rounded-2xl border border-line/25 bg-panel/85 p-4 md:p-5">
+              <p className="font-caps text-[0.62rem] uppercase tracking-[0.3em] text-gold">
                 Personnage #{character.charId}
               </p>
-              <h1 className="mt-1 font-display text-3xl md:text-4xl font-semibold text-gold-bright">
-                {displayName}
-              </h1>
-              {translation.subtitle && (
-                <p className="mt-1 text-sm md:text-base text-parch/85">
-                  {translation.subtitle}
-                </p>
-              )}
-            </div>
-
-            {/* Badges */}
-            <div className="flex flex-wrap gap-1.5 md:gap-2 text-xs">
-              {elementStyle && (
-                <span
-                  className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 font-medium ${elementStyle.border} ${elementStyle.bg} ${elementStyle.text}`}
-                >
-                  {elementIcon ? (
-                    <img
-                      src={elementIcon}
-                      alt={character.element.label}
-                      className="h-4 w-4 object-contain"
-                    />
-                  ) : null}
-                  {character.element.label}
-                </span>
-              )}
-
-              {character.rarity && (
-                <span
-                  className={`rounded-full border border-white/10 px-3 py-1 font-medium ${rarityColor}`}
-                >
-                  {"★".repeat(character.rarity)} {character.rarity} etoiles
-                </span>
-              )}
-
-              {character.weaponTags.map((wt) => (
-                <span
-                  key={wt}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-hydro/35 bg-hydro/10 px-3 py-1 text-hydro"
-                >
-                  <Swords className="h-3 w-3" />
-                  {wt}
-                </span>
-              ))}
-
-              {character.consonanceWeapons?.length > 0 &&
-                character.consonanceWeapons.map((cw) => {
-                  const cwName =
-                    cw.translations[selectedLanguage]?.name ??
-                    cw.translations.EN?.name ??
-                    cw.translations.FR?.name ??
-                    `CW #${cw.weaponId}`;
-                  return (
-                    <span
-                      key={cw.weaponId}
-                      className="inline-flex items-center gap-1.5 rounded-full border border-electro/40 bg-electro/15 px-3 py-1 text-electro"
-                    >
-                      {cw.icon.publicPath ? (
-                        <img src={cw.icon.publicPath} alt="" className="h-4 w-4 object-contain" />
-                      ) : (
-                        <Swords className="h-3 w-3" />
-                      )}
-                      {cwName}
+              <div className="mt-3 flex items-end justify-between border-b border-white/6 pb-3">
+                <div className="font-caps text-2xl font-semibold leading-none text-gold-bright">
+                  {character.maxLevel ?? 80}
+                  <small className="text-sm text-muted-2"> / {character.maxLevel ?? 80}</small>
+                </div>
+                <div className="text-right font-caps text-[0.52rem] uppercase leading-tight tracking-[0.14em] text-muted">
+                  Armes<br />{character.weaponTags.join(" · ")}
+                </div>
+              </div>
+              <div className="mt-1">
+                {[
+                  { k: atkLabel, v: computedStats.atk, hl: true },
+                  { k: "PV Max", v: computedStats.maxHp },
+                  { k: "Bouclier", v: computedStats.maxES },
+                  { k: "DÉF", v: computedStats.def },
+                  { k: "Lucidité max", v: computedStats.maxSp },
+                ].map((r) => (
+                  <div key={r.k} className="flex items-center justify-between border-b border-white/[0.04] py-2.5">
+                    <span className="flex items-center gap-2 font-sans text-[0.84rem] text-muted">
+                      <span
+                        className="h-1.5 w-1.5 rotate-45"
+                        style={r.hl ? { background: elHex, boxShadow: `0 0 6px ${elHex}` } : { background: "var(--color-gold-deep)" }}
+                      />
+                      {r.k}
                     </span>
-                  );
-                })}
-
-              {translation.campName && (
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 px-3 py-1 text-parch/85">
-                  <Shield className="h-3 w-3" />
-                  {translation.campName}
-                </span>
-              )}
-
-              {character.maxLevel && (
-                <span className="rounded-full border border-white/10 px-3 py-1 text-parch/85">
-                  Max Lv {character.maxLevel}
-                </span>
-              )}
+                    <span
+                      className="font-sans text-[0.92rem] tabular-nums text-parch"
+                      style={r.hl ? { color: elHex } : undefined}
+                    >
+                      {Math.round(r.v).toLocaleString("fr-FR")}
+                    </span>
+                  </div>
+                ))}
+              </div>
+              <button
+                type="button"
+                onClick={() => setActiveTab("stats")}
+                className="mt-2 w-full text-center font-caps text-[0.6rem] uppercase tracking-[0.22em] text-gold transition-colors hover:text-gold-bright"
+              >
+                Voir tous les attributs ▸
+              </button>
             </div>
 
-            {/* Additional info */}
-            <dl className="grid gap-x-6 gap-y-3 text-sm sm:grid-cols-2">
-              {translation.force && (
-                <div>
-                  <dt className="text-muted">Force / Organisation</dt>
-                  <dd className="text-parch">{translation.force}</dd>
-                </div>
-              )}
-              {translation.birthday && (
-                <div>
-                  <dt className="text-muted">Origine / Nation</dt>
-                  <dd className="text-parch">{translation.birthday}</dd>
-                </div>
-              )}
-              <div>
-                <dt className="text-muted">Nom interne</dt>
-                <dd className="text-parch">{character.internalName}</dd>
-              </div>
-              <div>
-                <dt className="text-muted">ID</dt>
-                <dd className="text-parch">{character.charId}</dd>
-              </div>
-              {character.gender !== null && (
-                <div>
-                  <dt className="text-muted">Genre</dt>
-                  <dd className="text-parch">
-                    {character.gender ? "Feminin" : "Masculin"}
-                  </dd>
-                </div>
-              )}
-              {character.unlockRequiredPiece && (
-                <div>
-                  <dt className="text-muted">Pieces pour debloquer</dt>
-                  <dd className="mt-1.5">
-                    <div className="group/intron relative inline-flex flex-col items-center gap-1">
-                      <button
-                        type="button"
-                        onClick={() => setActiveTab("intron")}
-                        className="relative flex h-16 w-16 items-center justify-center rounded-lg border-2 border-gold/50 shadow-lg shadow-gold/10 transition-transform duration-150 hover:scale-105"
-                        style={{ background: "linear-gradient(135deg, rgba(15,23,42,0.9), rgba(30,41,59,0.95))" }}
-                      >
-                        <div className="absolute inset-0 rounded-lg bg-gradient-to-b from-gold/15 to-panel/30" />
-                        {character.portraits.charpiece?.publicPath ? (
-                          <img
-                            src={character.portraits.charpiece.publicPath}
-                            alt="Intron"
-                            className="relative h-10 w-10 object-contain drop-shadow-lg"
-                          />
+            <div className="rounded-2xl border border-line/25 bg-panel/85 p-4 md:p-5">
+              <div className="flex flex-wrap gap-1.5 text-xs">
+                {character.rarity && (
+                  <span className={`rounded-full border border-white/10 px-3 py-1 font-medium ${rarityColor}`}>
+                    {"★".repeat(character.rarity)} {character.rarity} étoiles
+                  </span>
+                )}
+                {character.weaponTags.map((wt) => (
+                  <span key={wt} className="inline-flex items-center gap-1.5 rounded-full border border-hydro/35 bg-hydro/10 px-3 py-1 text-hydro">
+                    <Swords className="h-3 w-3" />
+                    {wt}
+                  </span>
+                ))}
+                {character.consonanceWeapons?.length > 0 &&
+                  character.consonanceWeapons.map((cw) => {
+                    const cwName =
+                      cw.translations[selectedLanguage]?.name ??
+                      cw.translations.EN?.name ??
+                      cw.translations.FR?.name ??
+                      `CW #${cw.weaponId}`;
+                    return (
+                      <span key={cw.weaponId} className="inline-flex items-center gap-1.5 rounded-full border border-electro/40 bg-electro/15 px-3 py-1 text-electro">
+                        {cw.icon.publicPath ? (
+                          <img src={cw.icon.publicPath} alt="" className="h-4 w-4 object-contain" />
                         ) : (
-                          <Layers className="relative h-8 w-8 text-gold" />
+                          <Swords className="h-3 w-3" />
                         )}
-                      </button>
-                      <p className="text-center text-xs text-parch/85">×{character.unlockRequiredPiece}</p>
-                      <div className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 hidden w-56 -translate-x-1/2 rounded-xl border border-white/10 bg-ink/95 p-3 text-sm shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover/intron:block">
-                        <p className="font-medium text-parch">Piece d&apos;intron</p>
-                        <div className="mt-1.5 flex flex-wrap gap-1 text-[11px]">
-                          <span className="rounded-full border border-white/10 px-2 py-0.5 text-parch">#{character.charPieceId}</span>
-                          <span className="rounded-full border border-gold/40 bg-gold/10 px-2 py-0.5 text-gold">{character.intronLevels.length} niveaux</span>
-                        </div>
-                        <p className="mt-2 text-xs leading-relaxed text-muted">
-                          {character.unlockRequiredPiece} pieces necessaires par niveau d&apos;intron. Cliquez pour voir les details.
-                        </p>
-                      </div>
-                    </div>
-                  </dd>
+                        {cwName}
+                      </span>
+                    );
+                  })}
+                {translation.campName && (
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 px-3 py-1 text-parch/85">
+                    <Shield className="h-3 w-3" />
+                    {translation.campName}
+                  </span>
+                )}
+              </div>
+
+              <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-3 text-sm">
+                {translation.force && (
+                  <div className="border-b border-white/6 pb-1.5">
+                    <dt className="font-caps text-[0.52rem] uppercase tracking-[0.16em] text-muted-2">Force / Organisation</dt>
+                    <dd className="text-parch">{translation.force}</dd>
+                  </div>
+                )}
+                {translation.birthday && (
+                  <div className="border-b border-white/6 pb-1.5">
+                    <dt className="font-caps text-[0.52rem] uppercase tracking-[0.16em] text-muted-2">Origine / Nation</dt>
+                    <dd className="text-parch">{translation.birthday}</dd>
+                  </div>
+                )}
+                <div className="border-b border-white/6 pb-1.5">
+                  <dt className="font-caps text-[0.52rem] uppercase tracking-[0.16em] text-muted-2">Nom interne</dt>
+                  <dd className="text-parch">{character.internalName}</dd>
                 </div>
+                <div className="border-b border-white/6 pb-1.5">
+                  <dt className="font-caps text-[0.52rem] uppercase tracking-[0.16em] text-muted-2">ID</dt>
+                  <dd className="text-parch">{character.charId}</dd>
+                </div>
+                {character.gender !== null && (
+                  <div className="border-b border-white/6 pb-1.5">
+                    <dt className="font-caps text-[0.52rem] uppercase tracking-[0.16em] text-muted-2">Genre</dt>
+                    <dd className="text-parch">{character.gender ? "Feminin" : "Masculin"}</dd>
+                  </div>
+                )}
+              </dl>
+
+              {character.unlockRequiredPiece && (
+                <button
+                  type="button"
+                  onClick={() => setActiveTab("intron")}
+                  className="mt-4 flex w-full items-center gap-3 rounded-xl border border-white/10 bg-ink/50 p-2.5 text-left transition-colors hover:border-gold/40"
+                >
+                  <span
+                    className="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-lg border-2 border-gold/50"
+                    style={{ background: "linear-gradient(135deg, rgba(15,23,42,0.9), rgba(30,41,59,0.95))" }}
+                  >
+                    {character.portraits.charpiece?.publicPath ? (
+                      <img src={character.portraits.charpiece.publicPath} alt="Intron" className="h-9 w-9 object-contain" />
+                    ) : (
+                      <Layers className="h-7 w-7 text-gold" />
+                    )}
+                  </span>
+                  <span className="text-sm">
+                    <span className="block font-medium text-parch">Pièce d&apos;intron ×{character.unlockRequiredPiece}</span>
+                    <span className="block text-xs text-muted">{character.intronLevels.length} niveaux · voir l&apos;onglet Intron ▸</span>
+                  </span>
+                </button>
               )}
-            </dl>
-          </div>
+            </div>
+          </aside>
         </div>
       </section>
 
