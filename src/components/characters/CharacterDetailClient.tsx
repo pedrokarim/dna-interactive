@@ -231,7 +231,7 @@ function StatBar({
   const percent = maxValue > 0 ? Math.min((value / maxValue) * 100, 100) : 100;
   return (
     <div className="flex items-center gap-3">
-      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-panel/80">
+      <div className="flex h-9 w-9 shrink-0 items-center justify-center border border-white/10 bg-panel/80">
         {icon}
       </div>
       <div className="min-w-0 flex-1">
@@ -353,19 +353,19 @@ function DemonWedgeSlotCard({
   );
 
   const tooltip = slot.item ? (
-    <div className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 hidden w-64 -translate-x-1/2 rounded-xl border border-white/10 bg-ink/95 p-3 text-sm shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
+    <div className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 hidden w-64 -translate-x-1/2 border border-white/10 bg-ink/95 p-3 text-sm shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
       <p className="font-medium text-parch">{name}</p>
       <div className="mt-1.5 flex flex-wrap gap-1 text-[11px]">
-        <span className="rounded-full border border-white/10 px-2 py-0.5 text-parch">
+        <span className="rounded-sm border border-white/10 px-2 py-0.5 text-parch">
           #{slot.item.modId}
         </span>
         {slot.item.rarity !== null && (
-          <span className="rounded-full border border-gold/40 bg-gold/10 px-2 py-0.5 text-gold">
+          <span className="rounded-sm border border-gold/40 bg-gold/10 px-2 py-0.5 text-gold">
             {slot.item.rarity}★
           </span>
         )}
         {slot.item.element && (
-          <span className="rounded-full border border-white/10 px-2 py-0.5 text-parch">
+          <span className="rounded-sm border border-white/10 px-2 py-0.5 text-parch">
             {slot.item.element}
           </span>
         )}
@@ -428,14 +428,14 @@ function DemonWedgeCenterSlot({
         <BuildLocalizedText texts={affinity} lang={lang} />
       </p>
       {centerItem && (
-        <div className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 hidden w-64 -translate-x-1/2 rounded-xl border border-white/10 bg-ink/95 p-3 text-sm shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
+        <div className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 hidden w-64 -translate-x-1/2 border border-white/10 bg-ink/95 p-3 text-sm shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
           <p className="font-medium text-parch">{name}</p>
           <div className="mt-1.5 flex flex-wrap gap-1 text-[11px]">
-            <span className="rounded-full border border-white/10 px-2 py-0.5 text-parch">
+            <span className="rounded-sm border border-white/10 px-2 py-0.5 text-parch">
               #{centerItem.modId}
             </span>
             {centerItem.rarity !== null && (
-              <span className="rounded-full border border-gold/40 bg-gold/10 px-2 py-0.5 text-gold">
+              <span className="rounded-sm border border-gold/40 bg-gold/10 px-2 py-0.5 text-gold">
                 {centerItem.rarity}★
               </span>
             )}
@@ -625,7 +625,7 @@ function SkillCard({
     .filter((p) => !paramsInSections.has(p.index));
 
   return (
-    <article className="overflow-hidden relative border border-line/25 bg-panel/85 backdrop-blur-sm before:pointer-events-none before:absolute before:inset-[7px] before:border before:border-gold/12 before:content-['']">
+    <article className="overflow-hidden border border-line/25 bg-panel/85 backdrop-blur-sm">
       <header
         className="flex items-start gap-3 border-b border-panel/70 p-4"
         style={{
@@ -634,13 +634,13 @@ function SkillCard({
       >
         {skill.iconPublicPath ? (
           <div
-            className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-ink/70"
+            className="flex h-14 w-14 shrink-0 items-center justify-center border border-white/10 bg-ink/70"
             style={{ boxShadow: `0 0 24px rgba(${rgb}, 0.25)` }}
           >
             <img src={skill.iconPublicPath} alt="" className="h-10 w-10 object-contain" />
           </div>
         ) : (
-          <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-panel/70">
+          <div className="flex h-14 w-14 shrink-0 items-center justify-center border border-white/10 bg-panel/70">
             <Sparkles className="h-5 w-5 text-muted-2" />
           </div>
         )}
@@ -650,11 +650,11 @@ function SkillCard({
               {localized.name ?? `#${skill.skillId}`}
             </h3>
             {typeLabel && (
-              <span className="rounded-full border border-gold/40 bg-gold/10 px-2 py-0.5 text-[11px] font-medium text-gold">
+              <span className="rounded-sm border border-gold/40 bg-gold/10 px-2 py-0.5 text-[11px] font-medium text-gold">
                 {typeLabel}
               </span>
             )}
-            <span className="rounded-full border border-white/10 bg-panel/60 px-2 py-0.5 text-[11px] text-muted">
+            <span className="rounded-sm border border-white/10 bg-panel/60 px-2 py-0.5 text-[11px] text-muted">
               ID {skill.skillId}
             </span>
           </div>
@@ -700,7 +700,7 @@ function SkillCard({
           </h4>
           <dl className="space-y-2">
             {localized.combatTerms.map((term) => (
-              <div key={term.id} className="rounded-lg border border-panel/60 bg-panel/50 px-3 py-2">
+              <div key={term.id} className="border border-panel/60 bg-panel/50 px-3 py-2">
                 <dt className="text-xs font-semibold text-parch">
                   {term.name ?? term.id}
                 </dt>
@@ -734,7 +734,7 @@ function SkillParamList({
             <dt className="flex items-baseline gap-1.5 text-xs text-muted">
               <span>{p.label ?? p.labelKey ?? "—"}</span>
               {p.levelDependent && (
-                <span className="rounded-full border border-gold/30 bg-gold/10 px-1.5 py-px text-[10px] font-medium text-gold">
+                <span className="rounded-sm border border-gold/30 bg-gold/10 px-1.5 py-px text-[10px] font-medium text-gold">
                   Lv
                 </span>
               )}
@@ -766,7 +766,7 @@ function SkillsTabContent({
 
   if (!skillSet || skillSet.skills.length === 0) {
     return (
-      <section className="relative border border-line/25 bg-panel/85 backdrop-blur-sm before:pointer-events-none before:absolute before:inset-[7px] before:border before:border-gold/12 before:content-[''] p-5 md:p-8 text-center">
+      <section className="border border-line/25 bg-panel/85 backdrop-blur-sm p-5 md:p-8 text-center">
         <Sparkles className="mx-auto h-10 w-10 text-muted-2" />
         <p className="mt-3 text-sm text-muted">
           Aucune competence disponible pour ce personnage.
@@ -783,7 +783,7 @@ function SkillsTabContent({
 
   if (skills.length === 0) {
     return (
-      <section className="relative border border-line/25 bg-panel/85 backdrop-blur-sm before:pointer-events-none before:absolute before:inset-[7px] before:border before:border-gold/12 before:content-[''] p-5 md:p-8 text-center">
+      <section className="border border-line/25 bg-panel/85 backdrop-blur-sm p-5 md:p-8 text-center">
         <Sparkles className="mx-auto h-10 w-10 text-muted-2" />
         <p className="mt-3 text-sm text-muted">
           Les competences de ce personnage ne sont pas encore traduites.
@@ -794,17 +794,17 @@ function SkillsTabContent({
 
   return (
     <section className="space-y-4">
-      <div className="relative border border-line/25 bg-panel/85 backdrop-blur-sm before:pointer-events-none before:absolute before:inset-[7px] before:border before:border-gold/12 before:content-[''] p-3 md:p-5">
+      <div className="border border-line/25 bg-panel/85 backdrop-blur-sm p-3 md:p-5">
         <div className="flex items-center justify-between gap-3">
           <div>
             <h3 className="text-sm font-medium text-parch/85">Niveau de competence</h3>
             <p className="mt-0.5 text-[11px] text-muted-2">
               Les valeurs marquees
-              <span className="mx-1 inline-block rounded-full border border-gold/30 bg-gold/10 px-1.5 py-0 align-middle text-[10px] font-medium text-gold">Lv</span>
+              <span className="mx-1 inline-block rounded-sm border border-gold/30 bg-gold/10 px-1.5 py-0 align-middle text-[10px] font-medium text-gold">Lv</span>
               varient selon le niveau de la competence.
             </p>
           </div>
-          <span className="rounded-lg border border-gold/30 bg-gold/10 px-3 py-1 text-lg font-bold tabular-nums text-gold">
+          <span className="border border-gold/30 bg-gold/10 px-3 py-1 text-lg font-bold tabular-nums text-gold">
             {skillLevel}
           </span>
         </div>
@@ -892,7 +892,7 @@ function QuickBuildAccordion({
     <div
       ref={containerRef}
       id="quick-build"
-      className="overflow-hidden rounded-xl border border-gold/30 bg-gold/5"
+      className="overflow-hidden border border-gold/30 bg-gold/5"
     >
       <button
         type="button"
@@ -912,7 +912,7 @@ function QuickBuildAccordion({
               tabIndex={0}
               onClick={(e) => { e.stopPropagation(); handleDownload(); }}
               onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); e.stopPropagation(); handleDownload(); } }}
-              className="inline-flex cursor-pointer items-center gap-1.5 rounded-md border border-gold/40 bg-gold/15 px-2.5 py-1 text-xs font-medium text-gold transition-colors hover:bg-gold/30"
+              className="inline-flex cursor-pointer items-center gap-1.5 border border-gold/40 bg-gold/15 px-2.5 py-1 text-xs font-medium text-gold transition-colors hover:bg-gold/30"
             >
               {downloading ? "Export..." : "Telecharger PNG"}
             </span>
@@ -962,7 +962,7 @@ function BuildTabContent({
 
   if (builds.length === 0) {
     return (
-      <section className="relative border border-line/25 bg-panel/85 backdrop-blur-sm before:pointer-events-none before:absolute before:inset-[7px] before:border before:border-gold/12 before:content-[''] p-5 md:p-8 text-center">
+      <section className="border border-line/25 bg-panel/85 backdrop-blur-sm p-5 md:p-8 text-center">
         <Swords className="mx-auto h-10 w-10 text-muted-2" />
         <p className="mt-3 text-sm text-muted">
           {t('noBuildAvailable')}
@@ -992,7 +992,7 @@ function BuildTabContent({
               key={i}
               type="button"
               onClick={() => setActiveBuildIndex(i)}
-              className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
+              className={`px-4 py-2 text-sm font-medium transition-colors ${
                 i === activeBuildIndex
                   ? "border border-gold/40 bg-gold/20 text-gold"
                   : "border border-transparent text-muted hover:bg-panel/60 hover:text-parch"
@@ -1013,7 +1013,7 @@ function BuildTabContent({
 
       {/* --- Weapons --- */}
       {hasWeapons && (
-        <section className="relative border border-line/25 bg-panel/85 backdrop-blur-sm before:pointer-events-none before:absolute before:inset-[7px] before:border before:border-gold/12 before:content-[''] p-3 md:p-5">
+        <section className="border border-line/25 bg-panel/85 backdrop-blur-sm p-3 md:p-5">
           <h2 className="flex items-center gap-2 text-base md:text-lg font-semibold text-parch">
             <Swords className="h-4 w-4 text-gold/80" />
             {t('weaponsTitle')}
@@ -1031,7 +1031,7 @@ function BuildTabContent({
                     {weapons.map((w, i) => (
                       <div
                         key={i}
-                        className="flex items-center gap-3 rounded-lg border border-white/10 bg-ink/55 px-4 py-3"
+                        className="flex items-center gap-3 border border-white/10 bg-ink/55 px-4 py-3"
                       >
                         {w.item ? (
                           <Link
@@ -1056,7 +1056,7 @@ function BuildTabContent({
                           <p className="text-sm text-muted-2">{t('weaponItemNotFound')}</p>
                         )}
                         <span
-                          className={`shrink-0 rounded-full px-2.5 py-0.5 text-xs font-medium ${
+                          className={`shrink-0 rounded-sm px-2.5 py-0.5 text-xs font-medium ${
                             w.rank === "best"
                               ? "border border-gold/40 bg-gold/15 text-gold"
                               : "border border-white/10 bg-panel/40 text-parch/85"
@@ -1076,7 +1076,7 @@ function BuildTabContent({
 
       {/* --- Demon Wedges (game layout) --- */}
       {hasDemonWedges && (
-        <section className="relative border border-line/25 bg-panel/85 backdrop-blur-sm before:pointer-events-none before:absolute before:inset-[7px] before:border before:border-gold/12 before:content-[''] p-3 md:p-5">
+        <section className="border border-line/25 bg-panel/85 backdrop-blur-sm p-3 md:p-5">
           <div className="flex items-center justify-between">
             <h2 className="flex items-center gap-2 text-base md:text-lg font-semibold text-parch">
               <Shield className="h-4 w-4 text-gold/80" />
@@ -1087,7 +1087,7 @@ function BuildTabContent({
                 <button
                   type="button"
                   onClick={() => setShowTrackAdjust((prev) => !prev)}
-                  className={`flex items-center gap-2 rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
+                  className={`flex items-center gap-2 px-3 py-1.5 text-xs font-medium transition-colors ${
                     showTrackAdjust
                       ? "border border-gold/50 bg-gold/15 text-gold"
                       : "border border-white/10 text-muted hover:border-white/10 hover:text-parch/85"
@@ -1096,7 +1096,7 @@ function BuildTabContent({
                   <span className="h-2 w-2 rounded-full" style={{ background: showTrackAdjust ? "#fbbf24" : "#64748b" }} />
                   {t('demonWedgeTrackAdjust')}
                 </button>
-                <div className="pointer-events-none absolute right-0 top-full z-30 mt-2 hidden w-64 rounded-xl border border-white/10 bg-ink/95 p-3 text-xs leading-relaxed text-muted shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
+                <div className="pointer-events-none absolute right-0 top-full z-30 mt-2 hidden w-64 border border-white/10 bg-ink/95 p-3 text-xs leading-relaxed text-muted shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
                   {t('demonWedgeTrackTooltip')}
                 </div>
               </div>
@@ -1123,7 +1123,7 @@ function BuildTabContent({
 
       {/* --- Consonance Weapon --- */}
       {hasConsonance && build.consonanceWeapon && (
-        <section className="relative border border-line/25 bg-panel/85 backdrop-blur-sm before:pointer-events-none before:absolute before:inset-[7px] before:border before:border-gold/12 before:content-[''] p-3 md:p-5">
+        <section className="border border-line/25 bg-panel/85 backdrop-blur-sm p-3 md:p-5">
           <h2 className="flex items-center gap-2 text-base md:text-lg font-semibold text-parch">
             <Swords className="h-4 w-4 text-gold/80" />
             {t('consonanceTitle')}
@@ -1148,12 +1148,12 @@ function BuildTabContent({
                     <Link href={s.href} className="block transition-transform duration-150 hover:scale-105">{card}</Link>
                   ) : card}
                   <p className="max-w-[8rem] truncate text-center text-xs text-parch/85">{s.name}</p>
-                  <div className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 hidden w-64 -translate-x-1/2 rounded-xl border border-white/10 bg-ink/95 p-3 text-sm shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
+                  <div className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 hidden w-64 -translate-x-1/2 border border-white/10 bg-ink/95 p-3 text-sm shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
                     <p className="font-medium text-parch">{s.name}</p>
                     <div className="mt-1.5 flex flex-wrap gap-1 text-[11px]">
-                      <span className="rounded-full border border-white/10 px-2 py-0.5 text-parch">#{s.modId}</span>
+                      <span className="rounded-sm border border-white/10 px-2 py-0.5 text-parch">#{s.modId}</span>
                       {s.rarity !== null && (
-                        <span className="rounded-full border border-gold/40 bg-gold/10 px-2 py-0.5 text-gold">{s.rarity}★</span>
+                        <span className="rounded-sm border border-gold/40 bg-gold/10 px-2 py-0.5 text-gold">{s.rarity}★</span>
                       )}
                     </div>
                     {s.description && (
@@ -1188,7 +1188,7 @@ function BuildTabContent({
                         <BuildLocalizedText texts={cw.name} lang={selectedLanguage} />
                       </p>
                     </button>
-                    <div className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 hidden w-56 -translate-x-1/2 rounded-xl border border-white/10 bg-ink/95 p-3 text-sm shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
+                    <div className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 hidden w-56 -translate-x-1/2 border border-white/10 bg-ink/95 p-3 text-sm shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
                       <p className="font-medium text-electro">
                         <BuildLocalizedText texts={cw.name} lang={selectedLanguage} />
                       </p>
@@ -1239,7 +1239,7 @@ function BuildTabContent({
 
       {/* --- Stats priority --- */}
       {hasStats && (
-        <section className="relative border border-line/25 bg-panel/85 backdrop-blur-sm before:pointer-events-none before:absolute before:inset-[7px] before:border before:border-gold/12 before:content-[''] p-3 md:p-5">
+        <section className="border border-line/25 bg-panel/85 backdrop-blur-sm p-3 md:p-5">
           <h2 className="flex items-center gap-2 text-base md:text-lg font-semibold text-parch">
             <BarChart3 className="h-4 w-4 text-gold/80" />
             {t('statsPriorityTitle')}
@@ -1248,7 +1248,7 @@ function BuildTabContent({
             {build.statsPriority.map((stat, i) => (
               <li
                 key={stat}
-                className="flex items-center gap-3 rounded-lg border border-white/10 bg-ink/55 px-4 py-2.5"
+                className="flex items-center gap-3 border border-white/10 bg-ink/55 px-4 py-2.5"
               >
                 <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gold/25 text-xs font-bold text-gold">
                   {i + 1}
@@ -1264,7 +1264,7 @@ function BuildTabContent({
 
       {/* --- Team --- */}
       {hasTeam && (
-        <section className="relative border border-line/25 bg-panel/85 backdrop-blur-sm before:pointer-events-none before:absolute before:inset-[7px] before:border before:border-gold/12 before:content-[''] p-3 md:p-5">
+        <section className="border border-line/25 bg-panel/85 backdrop-blur-sm p-3 md:p-5">
           <h2 className="flex items-center gap-2 text-base md:text-lg font-semibold text-parch">
             <Sparkles className="h-4 w-4 text-gold/80" />
             {t('teamTitle')}
@@ -1277,7 +1277,7 @@ function BuildTabContent({
               return (
                 <div
                   key={i}
-                  className={`rounded-lg border ${ec.border} ${ec.bg} p-3`}
+                  className={`border ${ec.border} ${ec.bg} p-3`}
                 >
                   {tm.character ? (
                     <Link
@@ -1313,13 +1313,13 @@ function BuildTabContent({
 
       {/* --- Genimon --- */}
       {hasGenimon && (
-        <section className="relative border border-line/25 bg-panel/85 backdrop-blur-sm before:pointer-events-none before:absolute before:inset-[7px] before:border before:border-gold/12 before:content-[''] p-3 md:p-5">
+        <section className="border border-line/25 bg-panel/85 backdrop-blur-sm p-3 md:p-5">
           <h2 className="text-base md:text-lg font-semibold text-parch">{t('genimonTitle')}</h2>
           <div className="mt-4 space-y-2">
             {build.genimon.map((g, i) => (
               <div
                 key={i}
-                className="flex items-center gap-3 rounded-lg border border-white/10 bg-ink/55 px-4 py-3"
+                className="flex items-center gap-3 border border-white/10 bg-ink/55 px-4 py-3"
               >
                 {g.item ? (
                   <Link
@@ -1337,7 +1337,7 @@ function BuildTabContent({
                   <p className="text-sm text-muted-2">{t('genimonNotFound')}</p>
                 )}
                 <span
-                  className={`shrink-0 rounded-full px-2.5 py-0.5 text-xs font-medium ${
+                  className={`shrink-0 rounded-sm px-2.5 py-0.5 text-xs font-medium ${
                     g.rank === "best"
                       ? "border border-gold/40 bg-gold/15 text-gold"
                       : "border border-white/10 bg-panel/40 text-parch/85"
@@ -1447,7 +1447,7 @@ function BuildTabContent({
 
       {/* --- Notes --- */}
       {hasNotes && (
-        <section className="relative border border-line/25 bg-panel/85 backdrop-blur-sm before:pointer-events-none before:absolute before:inset-[7px] before:border before:border-gold/12 before:content-[''] p-3 md:p-5">
+        <section className="border border-line/25 bg-panel/85 backdrop-blur-sm p-3 md:p-5">
           <h2 className="text-base md:text-lg font-semibold text-parch">{t('notesTitle')}</h2>
           <p className="mt-3 text-sm leading-relaxed text-parch/85">
             <BuildLocalizedText texts={build.notes} lang={selectedLanguage} />
@@ -1637,12 +1637,12 @@ export default function CharacterDetailClient({
       {/* ================================================================= */}
       {/* Top bar + Hero section (always visible, above tabs)               */}
       {/* ================================================================= */}
-      <div className="rounded-2xl border border-line/25 bg-panel/55 px-3 py-2.5 backdrop-blur-sm md:px-4">
+      <div className="border border-line/25 bg-panel/55 px-3 py-2.5 backdrop-blur-sm md:px-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex flex-wrap items-center gap-2">
             <Link
               href="/characters"
-              className="inline-flex items-center gap-2 rounded-lg border border-white/10 px-3 py-2 text-sm text-parch transition-colors hover:border-gold/40 hover:text-parch"
+              className="inline-flex items-center gap-2 border border-white/10 px-3 py-2 text-sm text-parch transition-colors hover:border-gold/40 hover:text-parch"
             >
               <ArrowLeft className="h-4 w-4" />
               {tc('backToList')}
@@ -1650,7 +1650,7 @@ export default function CharacterDetailClient({
             <button
               type="button"
               onClick={() => toggleFavorite(character.id)}
-              className={`inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors ${
+              className={`inline-flex items-center gap-2 px-3 py-2 text-sm transition-colors ${
                 isFavorite
                   ? "text-crimson-bright hover:text-crimson-bright"
                   : "text-parch/85 hover:text-crimson-bright"
@@ -1665,7 +1665,7 @@ export default function CharacterDetailClient({
               <button
                 type="button"
                 onClick={() => setQuickBuildOpen(true)}
-                className="inline-flex items-center gap-2 rounded-lg border border-gold/40 bg-gold/15 px-3 py-2 text-sm font-medium text-gold transition-colors hover:bg-gold/30"
+                className="inline-flex items-center gap-2 border border-gold/40 bg-gold/15 px-3 py-2 text-sm font-medium text-gold transition-colors hover:bg-gold/30"
               >
                 <FileImage className="h-4 w-4" />
                 Build rapide
@@ -1677,7 +1677,7 @@ export default function CharacterDetailClient({
             {prevCharacter && (
               <Link
                 href={`/characters/${getCharacterSlug(prevCharacter)}`}
-                className="inline-flex items-center gap-1 rounded-lg border border-white/10 px-2 py-2 text-sm text-parch/85 transition-colors hover:border-gold/40 hover:text-parch"
+                className="inline-flex items-center gap-1 border border-white/10 px-2 py-2 text-sm text-parch/85 transition-colors hover:border-gold/40 hover:text-parch"
                 aria-label={t('previousCharacter', { name: prevCharacter.internalName })}
               >
                 <ChevronLeft className="h-4 w-4" />
@@ -1686,7 +1686,7 @@ export default function CharacterDetailClient({
             {nextCharacter && (
               <Link
                 href={`/characters/${getCharacterSlug(nextCharacter)}`}
-                className="inline-flex items-center gap-1 rounded-lg border border-white/10 px-2 py-2 text-sm text-parch/85 transition-colors hover:border-gold/40 hover:text-parch"
+                className="inline-flex items-center gap-1 border border-white/10 px-2 py-2 text-sm text-parch/85 transition-colors hover:border-gold/40 hover:text-parch"
                 aria-label={t('nextCharacter', { name: nextCharacter.internalName })}
               >
                 <ChevronRight className="h-4 w-4" />
@@ -1694,7 +1694,7 @@ export default function CharacterDetailClient({
             )}
 
             {hasElementSwitch && (
-              <div className="flex items-center gap-1 rounded-lg border border-white/10 bg-ink/60 p-1">
+              <div className="flex items-center gap-1 border border-white/10 bg-ink/60 p-1">
                 {elementOptions.map((el) => {
                   const isActive = character.element.key === el.key;
                   const style = ELEMENT_COLORS[el.key];
@@ -1706,7 +1706,7 @@ export default function CharacterDetailClient({
                       onClick={() => setSelectedElement(el.key)}
                       aria-pressed={isActive}
                       title={el.label}
-                      className={`inline-flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-sm font-medium transition-colors ${
+                      className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 text-sm font-medium transition-colors ${
                         isActive
                           ? `border ${style?.border ?? "border-gold/60"} ${style?.bg ?? "bg-gold/20"} ${style?.text ?? "text-gold"}`
                           : "border border-transparent text-parch/85 hover:text-parch"
@@ -1722,7 +1722,7 @@ export default function CharacterDetailClient({
               </div>
             )}
 
-            <div className="flex items-center gap-2 rounded-lg border border-white/10 bg-ink/60 px-3 py-2">
+            <div className="flex items-center gap-2 border border-white/10 bg-ink/60 px-3 py-2">
               <Languages className="h-4 w-4 text-gold/80" />
               <select
                 value={selectedLanguage}
@@ -1742,7 +1742,7 @@ export default function CharacterDetailClient({
 
       {/* ===== Shell Arsenal : rail d'onglets (gauche) + contenu ===== */}
       <div className="grid grid-cols-[52px_1fr] gap-3 md:grid-cols-[60px_1fr] md:gap-4">
-        <nav className="flex flex-col items-center gap-1 self-start rounded-2xl border border-line/25 bg-panel/55 p-1.5 backdrop-blur-sm">
+        <nav className="flex flex-col items-center gap-1 self-start border border-line/25 bg-panel/55 p-1.5 backdrop-blur-sm">
           {TAB_CONFIG.map(({ id, label, icon: Icon }) => (
             <button
               key={id}
@@ -1751,7 +1751,7 @@ export default function CharacterDetailClient({
               title={label}
               aria-label={label}
               aria-pressed={activeTab === id}
-              className={`relative grid h-11 w-11 place-items-center rounded-lg transition-colors ${
+              className={`relative grid h-11 w-11 place-items-center transition-colors ${
                 activeTab === id
                   ? "border border-gold/40 bg-gold/20 text-gold-bright"
                   : "border border-transparent text-muted hover:bg-panel/60 hover:text-parch"
@@ -1772,7 +1772,7 @@ export default function CharacterDetailClient({
               <div className="grid gap-4 md:gap-5 lg:grid-cols-[1fr_360px]">
           {/* Stage : render centré + bandeau nom + switch portraits */}
           <div
-            className="relative flex min-h-[460px] items-center justify-center overflow-hidden rounded-2xl border border-white/10"
+            className="relative flex min-h-[460px] items-center justify-center overflow-hidden border border-white/10"
             style={{ background: `radial-gradient(60% 60% at 50% 36%, ${elHex}22, transparent 60%), linear-gradient(180deg, rgba(20,19,17,0.4), rgba(8,7,6,0.6))` }}
           >
             {/* Bandeau nom (overlay) */}
@@ -1832,7 +1832,7 @@ export default function CharacterDetailClient({
                     key={type}
                     type="button"
                     onClick={() => setActivePortrait(type)}
-                    className={`rounded-md px-2.5 py-1 font-caps text-[0.55rem] uppercase tracking-[0.14em] transition-colors ${
+                    className={`px-2.5 py-1 font-caps text-[0.55rem] uppercase tracking-[0.14em] transition-colors ${
                       activePortrait === type
                         ? "border border-gold/60 bg-gold/20 text-gold-bright"
                         : "border border-white/10 bg-ink/60 text-muted hover:border-gold/30 hover:text-parch"
@@ -1847,7 +1847,7 @@ export default function CharacterDetailClient({
 
           {/* Panneau stats (droite) — disposition Arsenal */}
           <aside className="flex flex-col gap-4">
-            <DnaPanel inner className="p-4 md:p-5">
+            <DnaPanel className="p-4 md:p-5">
               <DnaSectionLabel>Personnage #{character.charId}</DnaSectionLabel>
               <div className="mt-3 flex items-end justify-between border-b border-white/6 pb-3">
                 <div className="font-caps text-2xl font-semibold leading-none text-gold-bright">
@@ -1883,7 +1883,7 @@ export default function CharacterDetailClient({
               </button>
             </DnaPanel>
 
-            <DnaPanel inner className="p-4 md:p-5">
+            <DnaPanel className="p-4 md:p-5">
               <div className="flex flex-wrap gap-1.5">
                 {character.rarity ? (
                   <DnaTag className="text-gold-bright">
@@ -1955,10 +1955,10 @@ export default function CharacterDetailClient({
                 <button
                   type="button"
                   onClick={() => setActiveTab("intron")}
-                  className="mt-4 flex w-full items-center gap-3 rounded-xl border border-white/10 bg-ink/50 p-2.5 text-left transition-colors hover:border-gold/40"
+                  className="mt-4 flex w-full items-center gap-3 border border-white/10 bg-ink/50 p-2.5 text-left transition-colors hover:border-gold/40"
                 >
                   <span
-                    className="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-lg border-2 border-gold/50"
+                    className="relative flex h-14 w-14 shrink-0 items-center justify-center border-2 border-gold/50"
                     style={{ background: "linear-gradient(135deg, rgba(15,23,42,0.9), rgba(30,41,59,0.95))" }}
                   >
                     {character.portraits.charpiece?.publicPath ? (
@@ -1979,10 +1979,10 @@ export default function CharacterDetailClient({
               {/* — attributs détaillés (suite de l'onglet Attributs) — */}
               <section className="space-y-3 md:space-y-5">
           {/* Level slider */}
-          <div className="relative border border-line/25 bg-panel/85 backdrop-blur-sm before:pointer-events-none before:absolute before:inset-[7px] before:border before:border-gold/12 before:content-[''] p-3 md:p-5">
+          <div className="border border-line/25 bg-panel/85 backdrop-blur-sm p-3 md:p-5">
             <div className="flex items-center justify-between">
               <h3 className="text-sm font-medium text-parch/85">Niveau</h3>
-              <span className="rounded-lg border border-gold/30 bg-gold/10 px-3 py-1 text-lg font-bold tabular-nums text-gold">
+              <span className="border border-gold/30 bg-gold/10 px-3 py-1 text-lg font-bold tabular-nums text-gold">
                 {level}
               </span>
             </div>
@@ -2001,7 +2001,7 @@ export default function CharacterDetailClient({
           </div>
 
           {/* Base stats */}
-          <div className="relative border border-line/25 bg-panel/85 backdrop-blur-sm before:pointer-events-none before:absolute before:inset-[7px] before:border before:border-gold/12 before:content-[''] p-3 md:p-5">
+          <div className="border border-line/25 bg-panel/85 backdrop-blur-sm p-3 md:p-5">
             <h3 className="relative flex items-center gap-2.5 font-caps text-[0.66rem] uppercase tracking-[0.34em] text-gold"><span aria-hidden className="text-[0.7rem] text-gold-bright">◈</span>
               Stats de base
             </h3>
@@ -2052,7 +2052,7 @@ export default function CharacterDetailClient({
 
           {/* Addon attrs (ascension bonuses) */}
           {character.addonAttrs.length > 0 && (
-            <div className="relative border border-line/25 bg-panel/85 backdrop-blur-sm before:pointer-events-none before:absolute before:inset-[7px] before:border before:border-gold/12 before:content-[''] p-3 md:p-5">
+            <div className="border border-line/25 bg-panel/85 backdrop-blur-sm p-3 md:p-5">
               <h3 className="relative flex items-center gap-2.5 font-caps text-[0.66rem] uppercase tracking-[0.34em] text-gold"><span aria-hidden className="text-[0.7rem] text-gold-bright">◈</span>
                 Bonus d&apos;ascension
               </h3>
@@ -2060,9 +2060,9 @@ export default function CharacterDetailClient({
                 {character.addonAttrs.map((attr) => (
                   <div
                     key={attr.attrId}
-                    className="flex items-center gap-3 rounded-lg border border-white/10 bg-ink/50 px-3 py-2.5"
+                    className="flex items-center gap-3 border border-white/10 bg-ink/50 px-3 py-2.5"
                   >
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-panel/80">
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center border border-white/10 bg-panel/80">
                       <img
                         src={attr.iconPath}
                         alt=""
@@ -2086,7 +2086,7 @@ export default function CharacterDetailClient({
           {/* Recommended attrs + Positioning */}
           <div className="grid gap-3 md:gap-5 lg:grid-cols-2">
             {character.recommendAttr.length > 0 && (
-              <div className="relative border border-line/25 bg-panel/85 backdrop-blur-sm before:pointer-events-none before:absolute before:inset-[7px] before:border before:border-gold/12 before:content-[''] p-3 md:p-5">
+              <div className="border border-line/25 bg-panel/85 backdrop-blur-sm p-3 md:p-5">
                 <h3 className="relative flex items-center gap-2.5 font-caps text-[0.66rem] uppercase tracking-[0.34em] text-gold"><span aria-hidden className="text-[0.7rem] text-gold-bright">◈</span>
                   Attributs recommandes
                 </h3>
@@ -2094,7 +2094,7 @@ export default function CharacterDetailClient({
                   {character.recommendAttr.map((attr) => (
                     <span
                       key={attr}
-                      className="rounded-full border border-white/10 bg-panel/60 px-3 py-1 text-xs text-parch"
+                      className="rounded-sm border border-white/10 bg-panel/60 px-3 py-1 text-xs text-parch"
                     >
                       {ATTR_LABELS[attr] ?? attr}
                     </span>
@@ -2104,7 +2104,7 @@ export default function CharacterDetailClient({
             )}
 
             {character.positioning.length > 0 && (
-              <div className="relative border border-line/25 bg-panel/85 backdrop-blur-sm before:pointer-events-none before:absolute before:inset-[7px] before:border before:border-gold/12 before:content-[''] p-3 md:p-5">
+              <div className="border border-line/25 bg-panel/85 backdrop-blur-sm p-3 md:p-5">
                 <h3 className="relative flex items-center gap-2.5 font-caps text-[0.66rem] uppercase tracking-[0.34em] text-gold"><span aria-hidden className="text-[0.7rem] text-gold-bright">◈</span>
                   Positionnement
                 </h3>
@@ -2114,7 +2114,7 @@ export default function CharacterDetailClient({
                     return (
                       <span
                         key={pos}
-                        className={`rounded-full border px-3 py-1 text-xs font-medium ${
+                        className={`rounded-sm border px-3 py-1 text-xs font-medium ${
                           style?.className ?? "border-white/10 text-parch/85"
                         }`}
                       >
@@ -2129,7 +2129,7 @@ export default function CharacterDetailClient({
 
           {/* Ascension levels */}
           {character.ascensionLevels.length > 0 && (
-            <div className="relative border border-line/25 bg-panel/85 backdrop-blur-sm before:pointer-events-none before:absolute before:inset-[7px] before:border before:border-gold/12 before:content-[''] p-3 md:p-5">
+            <div className="border border-line/25 bg-panel/85 backdrop-blur-sm p-3 md:p-5">
               <h3 className="relative flex items-center gap-2.5 font-caps text-[0.66rem] uppercase tracking-[0.34em] text-gold"><span aria-hidden className="text-[0.7rem] text-gold-bright">◈</span>
                 Paliers d&apos;ascension
               </h3>
@@ -2137,7 +2137,7 @@ export default function CharacterDetailClient({
                 {character.ascensionLevels.map((lvl, i) => (
                   <div key={lvl} className="flex items-center gap-1">
                     <span
-                      className={`rounded-lg border px-3 py-1.5 text-xs font-medium tabular-nums ${
+                      className={`border px-3 py-1.5 text-xs font-medium tabular-nums ${
                         level >= lvl
                           ? "border-gold/40 bg-gold/15 text-gold"
                           : "border-white/10 bg-panel/50 text-muted"
@@ -2155,7 +2155,7 @@ export default function CharacterDetailClient({
           )}
           {/* Skill Icons */}
           {(character.skillIcons.skill1.publicPath || character.skillIcons.skill2.publicPath || character.skillIcons.skill3.publicPath) && (
-            <div className="relative border border-line/25 bg-panel/85 backdrop-blur-sm before:pointer-events-none before:absolute before:inset-[7px] before:border before:border-gold/12 before:content-[''] p-3 md:p-5">
+            <div className="border border-line/25 bg-panel/85 backdrop-blur-sm p-3 md:p-5">
               <h2 className="flex items-center gap-2 text-base md:text-lg font-semibold text-parch">
                 <Sparkles className="h-4 w-4 text-gold/80" />
                 Competences
@@ -2179,7 +2179,7 @@ export default function CharacterDetailClient({
 
           {/* Consonance Weapon info box */}
           {character.consonanceWeapons?.length > 0 && (
-            <div className="rounded-xl border border-electro/30 bg-electro/5 p-3 md:p-5">
+            <div className="border border-electro/30 bg-electro/5 p-3 md:p-5">
               <h2 className="flex items-center gap-2 text-base md:text-lg font-semibold text-parch">
                 <Swords className="h-4 w-4 text-electro/80" />
                 {t('consonanceTitle')}
@@ -2199,13 +2199,13 @@ export default function CharacterDetailClient({
                       <div>
                         <p className="text-sm font-medium text-electro">{cwName}</p>
                         <div className="mt-1 flex flex-wrap gap-1.5 text-[11px]">
-                          <span className="rounded-full border border-electro/40 bg-electro/10 px-2 py-0.5 text-electro">
+                          <span className="rounded-sm border border-electro/40 bg-electro/10 px-2 py-0.5 text-electro">
                             {cw.rarity}★
                           </span>
-                          <span className="rounded-full border border-white/10 px-2 py-0.5 text-parch/85">
+                          <span className="rounded-sm border border-white/10 px-2 py-0.5 text-parch/85">
                             Nv. max 80
                           </span>
-                          <span className="rounded-full border border-white/10 px-2 py-0.5 text-parch/85">
+                          <span className="rounded-sm border border-white/10 px-2 py-0.5 text-parch/85">
                             ID {cw.weaponId}
                           </span>
                         </div>
@@ -2243,7 +2243,7 @@ export default function CharacterDetailClient({
 
       {/* ---------- Portraits tab ---------- */}
       {activeTab === "portraits" && (
-        <section className="relative border border-line/25 bg-panel/85 backdrop-blur-sm before:pointer-events-none before:absolute before:inset-[7px] before:border before:border-gold/12 before:content-[''] p-3 md:p-5">
+        <section className="border border-line/25 bg-panel/85 backdrop-blur-sm p-3 md:p-5">
           <h2 className="text-base md:text-base md:text-lg font-semibold text-parch">Galerie de portraits</h2>
           {availablePortraits.length > 1 ? (
             <div className="mt-3 md:mt-4 grid gap-2 md:gap-3 grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
@@ -2260,7 +2260,7 @@ export default function CharacterDetailClient({
                         alt: `${displayName} - ${PORTRAIT_LABELS[type]}`,
                       })
                     }
-                    className="group overflow-hidden rounded-xl border border-white/10 bg-ink/60 transition-colors hover:border-gold/40"
+                    className="group overflow-hidden border border-white/10 bg-ink/60 transition-colors hover:border-gold/40"
                   >
                     <div className="relative aspect-square overflow-hidden">
                       <img
@@ -2303,9 +2303,9 @@ export default function CharacterDetailClient({
         const ROMAN_NUMERALS = ["I", "II", "III", "IV", "V", "VI", "VII"];
 
         return (
-          <section className="relative rounded-2xl border border-panel/60 bg-ink/40 md:min-h-[720px]">
+          <section className="relative border border-panel/60 bg-ink/40 md:min-h-[720px]">
             {/* Background clipping wrapper — only clips bust + glow so popovers can escape the section */}
-            <div className="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none">
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
               {/* z-0: Bust image as background — oversized, positioned left */}
               {bustSrc && (
                 <div
@@ -2383,7 +2383,7 @@ export default function CharacterDetailClient({
                   return (
                     <div
                       key={`intron-mobile-${num}`}
-                      className="rounded-xl border bg-ink/70 p-3 backdrop-blur-sm"
+                      className="border bg-ink/70 p-3 backdrop-blur-sm"
                       style={{
                         borderColor: `rgba(${rgb}, ${isHighlighted ? 0.45 : 0.2})`,
                         boxShadow: isHighlighted
@@ -2626,7 +2626,7 @@ export default function CharacterDetailClient({
                           <div
                             className={`absolute top-1/2 -translate-y-1/2 ${
                               popoverOnLeft ? "right-full mr-4" : "left-full ml-4"
-                            } w-[280px] sm:w-[320px] rounded-xl border bg-ink/95 p-4 shadow-[0_20px_50px_rgba(2,6,23,0.7)] backdrop-blur-md`}
+                            } w-[280px] sm:w-[320px] border bg-ink/95 p-4 shadow-[0_20px_50px_rgba(2,6,23,0.7)] backdrop-blur-md`}
                             style={{
                               borderColor: `rgba(${rgb}, 0.45)`,
                               boxShadow: `0 0 30px rgba(${rgb}, 0.25), 0 20px 50px rgba(2, 6, 23, 0.7)`,
@@ -2665,7 +2665,7 @@ export default function CharacterDetailClient({
 
       {/* ---------- Translations tab ---------- */}
       {activeTab === "translations" && (
-        <section className="relative border border-line/25 bg-panel/85 backdrop-blur-sm before:pointer-events-none before:absolute before:inset-[7px] before:border before:border-gold/12 before:content-[''] p-3 md:p-5">
+        <section className="border border-line/25 bg-panel/85 backdrop-blur-sm p-3 md:p-5">
           <h2 className="flex items-center gap-2 text-base md:text-base md:text-lg font-semibold text-parch">
             <Languages className="h-5 w-5 text-gold/80" />
             Traductions
@@ -2680,7 +2680,7 @@ export default function CharacterDetailClient({
                   type="button"
                   key={langCode}
                   onClick={() => setSelectedLanguage(langCode)}
-                  className={`rounded-xl border p-3 text-left transition-colors ${
+                  className={`border p-3 text-left transition-colors ${
                     isActive
                       ? "border-gold/50 bg-gold/10"
                       : "border-white/10 bg-ink/55 hover:border-gold/30"
@@ -2712,7 +2712,7 @@ export default function CharacterDetailClient({
       {/* ---------- Technical tab ---------- */}
       {activeTab === "tech" && (
         <section className="grid gap-3 md:gap-4 lg:grid-cols-2">
-          <div className="relative border border-line/25 bg-panel/85 backdrop-blur-sm before:pointer-events-none before:absolute before:inset-[7px] before:border before:border-gold/12 before:content-[''] p-3 md:p-5">
+          <div className="border border-line/25 bg-panel/85 backdrop-blur-sm p-3 md:p-5">
             <h2 className="text-base md:text-base md:text-lg font-semibold text-parch">Text keys</h2>
             <dl className="mt-3 md:mt-4 space-y-2 md:space-y-3 text-sm">
               {Object.entries(character.textKeys).map(([key, value]) => (
@@ -2724,7 +2724,7 @@ export default function CharacterDetailClient({
             </dl>
           </div>
 
-          <div className="relative border border-line/25 bg-panel/85 backdrop-blur-sm before:pointer-events-none before:absolute before:inset-[7px] before:border before:border-gold/12 before:content-[''] p-3 md:p-5">
+          <div className="border border-line/25 bg-panel/85 backdrop-blur-sm p-3 md:p-5">
             <h2 className="text-base md:text-base md:text-lg font-semibold text-parch">Donnees techniques</h2>
             <dl className="mt-3 md:mt-4 space-y-2 md:space-y-3 text-sm">
               <div>
@@ -2791,7 +2791,7 @@ export default function CharacterDetailClient({
           aria-label={`Portrait agrandi : ${zoomedPortrait.alt}`}
         >
           <div
-            className="max-h-[90vh] max-w-2xl overflow-hidden rounded-2xl border border-gold/30 bg-panel/95 shadow-[0_25px_60px_rgba(2,6,23,0.65)]"
+            className="max-h-[90vh] max-w-2xl overflow-hidden border border-gold/30 bg-panel/95 shadow-[0_25px_60px_rgba(2,6,23,0.65)]"
             onClick={(event) => event.stopPropagation()}
           >
             <div className="flex items-center justify-between gap-3 border-b border-white/10 px-4 py-3">
