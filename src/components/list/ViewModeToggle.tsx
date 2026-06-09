@@ -11,7 +11,7 @@ export type ViewModeToggleProps = {
 };
 
 const BUTTON_BASE =
-  "inline-flex items-center gap-2 px-3 py-2 text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400/60";
+  "inline-flex items-center gap-2 px-3 py-2 text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gold/60";
 
 export default function ViewModeToggle({
   value,
@@ -29,7 +29,7 @@ export default function ViewModeToggle({
     <div
       role="group"
       aria-label={labels.group}
-      className={`inline-flex overflow-hidden rounded-lg border border-slate-700/70 bg-slate-950/60 ${className ?? ""}`}
+      className={`inline-flex overflow-hidden rounded-lg border border-white/10 bg-ink/60 ${className ?? ""}`}
     >
       {options.map(({ mode, label, Icon }, index) => {
         const active = value === mode;
@@ -39,10 +39,10 @@ export default function ViewModeToggle({
             type="button"
             aria-pressed={active}
             onClick={() => onChange(mode)}
-            className={`${BUTTON_BASE} ${index > 0 ? "border-l border-slate-700/70" : ""} ${
+            className={`${BUTTON_BASE} ${index > 0 ? "border-l border-white/10" : ""} ${
               active
-                ? "bg-indigo-500/25 text-indigo-100"
-                : "text-slate-300 hover:bg-slate-800/60 hover:text-white"
+                ? "bg-gold/20 text-gold-bright"
+                : "text-muted hover:bg-white/5 hover:text-parch"
             }`}
           >
             <Icon className="h-4 w-4" aria-hidden="true" />

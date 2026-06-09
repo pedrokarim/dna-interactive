@@ -41,8 +41,8 @@ export default async function CharactersLayout({
     [NAVIGATION.contact]: tNav('contact'),
   };
   return (
-    <div className="min-h-screen bg-linear-to-br from-slate-950 via-slate-900 to-indigo-950 text-white">
-      <header className="relative z-50 border-b border-indigo-500/20 bg-slate-950/80 backdrop-blur-sm">
+    <div className="min-h-screen text-parch">
+      <header className="relative z-50 border-b border-line/20 bg-ink/80 backdrop-blur-sm">
         <div className="container mx-auto px-4 md:px-6 py-3 md:py-4">
           <div className="flex items-center justify-between gap-3">
             <Link href={NAVIGATION.home} className="flex items-center gap-2 md:gap-3 min-w-0">
@@ -54,8 +54,8 @@ export default async function CharactersLayout({
                 className="h-9 md:h-10 w-auto"
               />
               <div className="min-w-0">
-                <div className="text-lg md:text-2xl font-bold text-white truncate">{SITE_CONFIG.name}</div>
-                <p className="text-xs text-slate-400 truncate">{tSite('tagline')}</p>
+                <div className="text-lg md:text-2xl font-display font-semibold text-parch truncate">{SITE_CONFIG.name}</div>
+                <p className="text-xs text-muted truncate">{tSite('tagline')}</p>
               </div>
             </Link>
 
@@ -69,8 +69,8 @@ export default async function CharactersLayout({
                     href={link.href}
                     className={`text-sm transition-colors ${
                       link.href === NAVIGATION.characters
-                        ? "font-medium text-indigo-400"
-                        : "text-slate-300 hover:text-indigo-400"
+                        ? "font-medium text-gold-bright"
+                        : "text-muted hover:text-gold-bright"
                     }`}
                   >
                     {navLabels[link.href] ?? link.label}
@@ -85,7 +85,7 @@ export default async function CharactersLayout({
 
       <main className="container mx-auto px-3 md:px-6 py-5 md:py-10">{children}</main>
 
-      <footer className="border-t border-indigo-500/20 bg-slate-950 py-8 md:py-12">
+      <footer className="border-t border-line/20 bg-ink/80 py-8 md:py-12">
         <div className="container mx-auto px-3 md:px-6">
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <div className="flex items-center gap-3">
@@ -94,17 +94,17 @@ export default async function CharactersLayout({
                 alt={`${SITE_CONFIG.name} logo`}
                 className="h-8 w-auto"
               />
-              <span className="text-sm font-semibold text-white">{SITE_CONFIG.name}</span>
+              <span className="text-sm font-semibold text-parch">{SITE_CONFIG.name}</span>
             </div>
-            <nav className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-slate-300 md:gap-x-6">
+            <nav className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-muted md:gap-x-6">
               {FOOTER_LINKS.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   className={`transition-colors ${
                     link.href === NAVIGATION.characters
-                      ? "text-indigo-300"
-                      : "hover:text-indigo-300"
+                      ? "text-gold-bright"
+                      : "hover:text-gold-bright"
                   }`}
                 >
                   {navLabels[link.href] ?? link.label}
@@ -113,7 +113,7 @@ export default async function CharactersLayout({
             </nav>
           </div>
 
-          <div className="mt-6 md:mt-8 border-t border-indigo-500/10 pt-6 md:pt-8 text-center text-sm text-slate-300">
+          <div className="mt-6 md:mt-8 border-t border-line/10 pt-6 md:pt-8 text-center text-sm text-muted">
             <p>{LEGAL_INFO.copyright}</p>
             <p className="mt-2">
               {LEGAL_INFO.disclaimer}
@@ -121,7 +121,7 @@ export default async function CharactersLayout({
                 href={CONTACT_INFO.ascencia.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="ml-1 text-indigo-300 hover:text-indigo-200 underline underline-offset-2"
+                className="ml-1 text-gold-bright hover:text-gold underline underline-offset-2"
               >
                 {LEGAL_INFO.ascenciaCredit}
               </a>

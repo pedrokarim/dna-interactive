@@ -42,12 +42,12 @@ const SORT_MODE_VALUES = ["default", "name", "element", "rarity"] as const;
 const PAGE_SIZE_VALUES = [12, 24, 48] as const;
 
 const ELEMENT_COLORS: Record<string, { border: string; bg: string; text: string }> = {
-  Fire: { border: "border-red-500/50", bg: "bg-red-500/15", text: "text-red-200" },
-  Water: { border: "border-blue-400/50", bg: "bg-blue-400/15", text: "text-blue-200" },
-  Thunder: { border: "border-violet-400/50", bg: "bg-violet-400/15", text: "text-violet-200" },
-  Wind: { border: "border-emerald-400/50", bg: "bg-emerald-400/15", text: "text-emerald-200" },
-  Light: { border: "border-amber-400/50", bg: "bg-amber-400/15", text: "text-amber-200" },
-  Dark: { border: "border-indigo-400/50", bg: "bg-indigo-400/15", text: "text-indigo-200" },
+  Fire: { border: "border-pyro/50", bg: "bg-pyro/15", text: "text-pyro" },
+  Water: { border: "border-hydro/50", bg: "bg-hydro/15", text: "text-hydro" },
+  Thunder: { border: "border-electro/50", bg: "bg-electro/15", text: "text-electro" },
+  Wind: { border: "border-anemo/50", bg: "bg-anemo/15", text: "text-anemo" },
+  Light: { border: "border-lumino/50", bg: "bg-lumino/15", text: "text-lumino" },
+  Dark: { border: "border-umbro/50", bg: "bg-umbro/15", text: "text-umbro" },
 };
 
 const ELEMENT_ICONS: Record<string, string> = {
@@ -60,9 +60,9 @@ const ELEMENT_ICONS: Record<string, string> = {
 };
 
 const RARITY_COLORS: Record<number, { border: string; text: string }> = {
-  5: { border: "border-amber-400/50", text: "text-amber-300" },
-  4: { border: "border-violet-400/50", text: "text-violet-300" },
-  3: { border: "border-blue-400/50", text: "text-blue-300" },
+  5: { border: "border-gold/50", text: "text-gold-bright" },
+  4: { border: "border-electro/50", text: "text-electro" },
+  3: { border: "border-hydro/50", text: "text-hydro" },
 };
 
 type CharactersGridClientProps = {
@@ -391,19 +391,19 @@ export default function CharactersGridClient({
   return (
     <div className="space-y-4 md:space-y-8">
       {/* Header + filters */}
-      <section className="rounded-2xl border border-indigo-500/20 bg-slate-900/55 p-4 md:p-6 shadow-[0_20px_45px_rgba(15,23,42,0.45)] backdrop-blur-sm">
+      <section className="rounded-2xl border border-gold/20 bg-panel/55 p-4 md:p-6 shadow-[0_20px_45px_rgba(15,23,42,0.45)] backdrop-blur-sm">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div>
-            <p className="text-xs uppercase tracking-[0.3em] text-indigo-400/80">
+            <p className="font-caps text-[0.7rem] uppercase tracking-[0.3em] text-gold">
               {t('headerLabel')}
             </p>
-            <h1 className="mt-2 text-2xl md:text-3xl font-semibold text-white">
+            <h1 className="mt-2 font-display text-3xl md:text-4xl font-semibold text-gold-bright">
               {t('title')}
             </h1>
-            <p className="mt-2 max-w-2xl text-sm text-slate-300">
+            <p className="mt-2 max-w-2xl text-sm text-parch/85">
               {t('description')}
             </p>
-            <p className="mt-3 text-sm text-slate-400">
+            <p className="mt-3 text-sm text-muted">
               {t('count', { filtered: filteredCharacters.length, total: characters.length })}
             </p>
           </div>
@@ -418,7 +418,7 @@ export default function CharactersGridClient({
                 group: tc('viewMode'),
               }}
             />
-            <span className="inline-flex items-center gap-2 rounded-lg border border-rose-500/40 bg-rose-500/10 px-4 py-2 text-sm text-rose-100">
+            <span className="inline-flex items-center gap-2 rounded-lg border border-crimson/40 bg-crimson/10 px-4 py-2 text-sm text-crimson-bright">
               <Heart className="h-4 w-4" />
               {tc('favorites')} ({favoriteCount})
             </span>
@@ -427,35 +427,35 @@ export default function CharactersGridClient({
 
         {/* Search + languages */}
         <div className="mt-4 md:mt-6 grid gap-3 md:gap-4 lg:grid-cols-2">
-          <label className="flex items-center gap-3 rounded-xl border border-slate-700/70 bg-slate-950/60 px-3 py-2">
-            <Search className="h-4 w-4 text-indigo-400/80" />
+          <label className="flex items-center gap-3 rounded-xl border border-white/10 bg-ink/60 px-3 py-2">
+            <Search className="h-4 w-4 text-gold/80" />
             <input
               value={search}
               onChange={(event) =>
                 updateQueryFilters({ q: event.target.value, page: 1 })
               }
-              className="w-full bg-transparent text-sm text-slate-100 outline-none placeholder:text-slate-500"
+              className="w-full bg-transparent text-sm text-parch outline-none placeholder:text-muted-2"
               placeholder={t('searchPlaceholder')}
             />
           </label>
 
-          <div className="rounded-xl border border-slate-700/70 bg-slate-950/60 p-3">
-            <div className="mb-2 flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-slate-400">
-              <Languages className="h-4 w-4 text-indigo-400/80" />
+          <div className="rounded-xl border border-white/10 bg-ink/60 p-3">
+            <div className="mb-2 flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-muted">
+              <Languages className="h-4 w-4 text-gold/80" />
               {tc('displayedLanguages')}
             </div>
             <div className="flex flex-wrap items-center gap-2">
               {selectedLanguages.map((code) => (
                 <span
                   key={code}
-                  className="inline-flex items-center gap-2 rounded-full border border-indigo-500/35 bg-indigo-500/10 px-3 py-1 text-xs text-indigo-100"
+                  className="inline-flex items-center gap-2 rounded-full border border-gold/35 bg-gold/10 px-3 py-1 text-xs text-gold"
                 >
                   {getLanguageLabel(code)}
                   {selectedLanguages.length > 1 && (
                     <button
                       type="button"
                       onClick={() => removeLanguage(code)}
-                      className="rounded-full p-0.5 text-indigo-100/80 transition-colors hover:bg-indigo-400/20 hover:text-white"
+                      className="rounded-full p-0.5 text-gold/80 transition-colors hover:bg-gold/20 hover:text-parch"
                       aria-label={`Supprimer la langue ${code}`}
                     >
                       <X className="h-3 w-3" />
@@ -466,7 +466,7 @@ export default function CharactersGridClient({
               <select
                 value=""
                 onChange={(event) => addLanguage(event.target.value)}
-                className="rounded-lg border border-slate-600/80 bg-slate-900 px-2 py-1 text-xs text-slate-200 outline-none"
+                className="rounded-lg border border-white/10 bg-panel px-2 py-1 text-xs text-parch outline-none"
               >
                 <option value="">{tc('addLanguage')}</option>
                 {unselectedLanguages.map((code) => (
@@ -483,7 +483,7 @@ export default function CharactersGridClient({
         <div className="mt-3 md:mt-4 space-y-2 md:space-y-3">
           <FilterChips
             label={t('filterElement')}
-            icon={<SlidersHorizontal className="h-3.5 w-3.5 text-indigo-400/80" />}
+            icon={<SlidersHorizontal className="h-3.5 w-3.5 text-gold/80" />}
             options={catalog.elements.map((el) => ({
               value: el.key,
               label: `${el.label} (${el.key})`,
@@ -496,7 +496,7 @@ export default function CharactersGridClient({
 
           <FilterChips
             label={t('filterWeapon')}
-            icon={<SlidersHorizontal className="h-3.5 w-3.5 text-indigo-400/80" />}
+            icon={<SlidersHorizontal className="h-3.5 w-3.5 text-gold/80" />}
             options={catalog.weaponTypes.map((wt) => ({ value: wt, label: wt }))}
             value={weaponFilter}
             onChange={(value) => updateQueryFilters({ weapon: value, page: 1 })}
@@ -505,15 +505,15 @@ export default function CharactersGridClient({
 
           <FilterChips
             label={t('filterFaction')}
-            icon={<SlidersHorizontal className="h-3.5 w-3.5 text-indigo-400/80" />}
+            icon={<SlidersHorizontal className="h-3.5 w-3.5 text-gold/80" />}
             options={catalog.camps.map((c) => ({ value: c.key, label: c.key }))}
             value={campFilter}
             onChange={(value) => updateQueryFilters({ camp: value, page: 1 })}
             allLabel={tc('allFeminine')}
           />
 
-          <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2 sm:max-w-xs">
-            <div className="mb-1 text-xs text-slate-400">{tc('sort')}</div>
+          <div className="rounded-lg border border-white/10 bg-ink/60 p-2 sm:max-w-xs">
+            <div className="mb-1 text-xs text-muted">{tc('sort')}</div>
             <select
               value={sortMode}
               onChange={(event) =>
@@ -522,7 +522,7 @@ export default function CharactersGridClient({
                   page: 1,
                 })
               }
-              className="w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-sm text-slate-100"
+              className="w-full rounded-md border border-white/10 bg-panel px-2 py-1.5 text-sm text-parch"
             >
               <option value="default">{t('sortDefault')}</option>
               <option value="name">{t('sortName')}</option>
@@ -533,14 +533,14 @@ export default function CharactersGridClient({
         </div>
 
         {/* Result count + reset */}
-        <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-slate-700/60 bg-slate-950/60 px-3 py-2 text-sm text-slate-300">
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-white/10 bg-ink/60 px-3 py-2 text-sm text-parch/85">
           <p>
             {tc('displayRange', { start: filteredCharacters.length === 0 ? 0 : pageStart + 1, end: Math.min(pageEnd, filteredCharacters.length), total: filteredCharacters.length })}
           </p>
           <button
             type="button"
             onClick={resetFilters}
-            className="rounded-md border border-slate-700 px-3 py-1 text-xs text-slate-300 transition-colors hover:border-indigo-400/40 hover:text-white"
+            className="rounded-md border border-white/10 px-3 py-1 text-xs text-parch/85 transition-colors hover:border-gold/40 hover:text-parch"
           >
             {tc('resetFilters')}
           </button>
@@ -549,11 +549,11 @@ export default function CharactersGridClient({
 
       {/* Grid */}
       {filteredCharacters.length === 0 ? (
-        <div className="rounded-xl border border-slate-700 bg-slate-900/45 p-6 md:p-10 text-center">
-          <p className="text-base md:text-lg text-slate-200">
+        <div className="rounded-xl border border-white/10 bg-panel/45 p-6 md:p-10 text-center">
+          <p className="text-base md:text-lg text-parch">
             {t('noResults')}
           </p>
-          <p className="mt-2 text-sm text-slate-400">
+          <p className="mt-2 text-sm text-muted">
             {t('noResultsHint')}
           </p>
         </div>
@@ -577,13 +577,13 @@ export default function CharactersGridClient({
               <Link
                 key={character.id}
                 href={`/characters/${getCharacterSlug(character)}`}
-                className={`group relative overflow-hidden rounded-2xl border bg-slate-900/55 transition-all duration-200 hover:-translate-y-0.5 hover:bg-slate-900/75 ${
+                className={`group relative overflow-hidden rounded-2xl border bg-panel/55 transition-all duration-200 hover:-translate-y-0.5 hover:bg-panel/75 ${
                   rarityStyle
                     ? `${rarityStyle.border} hover:border-opacity-70`
-                    : "border-slate-700/70 hover:border-indigo-400/40"
+                    : "border-white/10 hover:border-gold/40"
                 }`}
               >
-                <div className="relative aspect-square overflow-hidden bg-slate-950/80">
+                <div className="relative aspect-square overflow-hidden bg-ink/80">
                   {headSrc ? (
                     <img
                       src={headSrc}
@@ -600,14 +600,14 @@ export default function CharactersGridClient({
                     </div>
                   ) : (
                     <div className="flex h-full w-full items-center justify-center">
-                      <span className="text-4xl font-bold text-slate-700">
+                      <span className="text-4xl font-bold text-muted-2">
                         {character.internalName[0]}
                       </span>
                     </div>
                   )}
 
                   {elements.length > 0 ? (
-                    <span className="absolute left-2 top-2 inline-flex items-center gap-0.5 rounded-full border border-white/15 bg-slate-950/70 px-1.5 py-1 backdrop-blur-sm">
+                    <span className="absolute left-2 top-2 inline-flex items-center gap-0.5 rounded-full border border-white/15 bg-ink/70 px-1.5 py-1 backdrop-blur-sm">
                       {elements.map((el) => {
                         const icon = ELEMENT_ICONS[el.key];
                         if (!icon) return null;
@@ -627,8 +627,8 @@ export default function CharactersGridClient({
                     <span
                       className={`absolute right-2 top-2 rounded-full px-2 py-0.5 text-xs font-medium backdrop-blur-sm ${
                         rarityStyle
-                          ? `${rarityStyle.border} bg-slate-950/70 ${rarityStyle.text}`
-                          : "border border-slate-600/60 bg-slate-950/70 text-slate-300"
+                          ? `${rarityStyle.border} bg-ink/70 ${rarityStyle.text}`
+                          : "border border-white/10 bg-ink/70 text-parch/85"
                       }`}
                     >
                       {"★".repeat(character.rarity)}
@@ -643,7 +643,7 @@ export default function CharactersGridClient({
                         event.stopPropagation();
                         setPreviewPortrait({ src: headSrc, alt: displayName });
                       }}
-                      className="absolute bottom-2 right-2 rounded-full border border-slate-700 bg-slate-900/90 p-1.5 text-slate-200 opacity-0 shadow-sm transition-all hover:border-indigo-400/60 hover:bg-indigo-500/80 hover:text-white group-hover:opacity-100"
+                      className="absolute bottom-2 right-2 rounded-full border border-white/10 bg-panel/90 p-1.5 text-parch opacity-0 shadow-sm transition-all hover:border-gold/60 hover:bg-gold/80 hover:text-parch group-hover:opacity-100"
                       aria-label={t('zoomPortrait', { name: displayName })}
                     >
                       <ZoomIn className="h-3.5 w-3.5" />
@@ -654,10 +654,10 @@ export default function CharactersGridClient({
                 <div className="p-3">
                   <div className="flex items-start justify-between gap-2">
                     <div className="min-w-0 flex-1">
-                      <h3 className="truncate text-base font-semibold text-white transition-colors group-hover:text-indigo-100">
+                      <h3 className="truncate font-display text-lg font-semibold text-parch transition-colors group-hover:text-gold-bright">
                         {displayName}
                       </h3>
-                      <p className="truncate text-xs text-slate-400">
+                      <p className="truncate text-xs text-muted">
                         {character.weaponTags.join(" / ")}
                       </p>
                     </div>
@@ -671,12 +671,12 @@ export default function CharactersGridClient({
                       aria-label={isFavorite ? t('removeFromFavorites') : t('addToFavorites')}
                       className={`shrink-0 rounded-full p-1.5 transition-colors ${
                         isFavorite
-                          ? "text-rose-400 hover:text-rose-300"
-                          : "text-slate-500 hover:text-rose-300"
+                          ? "text-crimson-bright hover:text-crimson-bright"
+                          : "text-muted-2 hover:text-crimson-bright"
                       }`}
                     >
                       <Heart
-                        className={`h-4 w-4 ${isFavorite ? "fill-rose-400 text-rose-400" : ""}`}
+                        className={`h-4 w-4 ${isFavorite ? "fill-crimson-bright text-crimson-bright" : ""}`}
                       />
                     </button>
                   </div>
@@ -688,16 +688,16 @@ export default function CharactersGridClient({
                         return (
                           <div
                             key={`${character.id}-${langCode}`}
-                            className="rounded-lg border border-slate-700/60 bg-slate-950/55 px-2.5 py-1.5"
+                            className="rounded-lg border border-white/10 bg-ink/55 px-2.5 py-1.5"
                           >
-                            <p className="text-[10px] uppercase tracking-[0.18em] text-slate-400">
+                            <p className="text-[10px] uppercase tracking-[0.18em] text-muted">
                               {getLanguageLabel(langCode)}
                             </p>
-                            <p className="truncate text-sm font-medium text-slate-100">
+                            <p className="truncate text-sm font-medium text-parch">
                               {translation?.name ?? "N/A"}
                             </p>
                             {translation?.subtitle && (
-                              <p className="truncate text-xs text-slate-400">
+                              <p className="truncate text-xs text-muted">
                                 {translation.subtitle}
                               </p>
                             )}
@@ -709,11 +709,11 @@ export default function CharactersGridClient({
 
                   <div className="mt-2 flex flex-wrap gap-1.5 text-[11px]">
                     {lead.campName && (
-                      <span className="rounded-full border border-slate-600/70 px-2 py-0.5 text-slate-300">
+                      <span className="rounded-full border border-white/10 px-2 py-0.5 text-parch/85">
                         {lead.campName}
                       </span>
                     )}
-                    <ChevronRight className="ml-auto mt-0.5 h-3.5 w-3.5 text-slate-500 transition-colors group-hover:text-indigo-300" />
+                    <ChevronRight className="ml-auto mt-0.5 h-3.5 w-3.5 text-muted-2 transition-colors group-hover:text-gold" />
                   </div>
                 </div>
               </Link>
@@ -740,13 +740,13 @@ export default function CharactersGridClient({
               <li key={character.id}>
                 <Link
                   href={`/characters/${getCharacterSlug(character)}`}
-                  className={`group flex items-center gap-4 rounded-2xl border bg-slate-900/55 p-3 transition-all duration-200 hover:bg-slate-900/75 ${
+                  className={`group flex items-center gap-4 rounded-2xl border bg-panel/55 p-3 transition-all duration-200 hover:bg-panel/75 ${
                     rarityStyle
                       ? `${rarityStyle.border} hover:border-opacity-70`
-                      : "border-slate-700/70 hover:border-indigo-400/40"
+                      : "border-white/10 hover:border-gold/40"
                   }`}
                 >
-                  <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl border border-slate-700/70 bg-slate-950/80">
+                  <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl border border-white/10 bg-ink/80">
                     {thumbSrc ? (
                       <img
                         src={thumbSrc}
@@ -754,12 +754,12 @@ export default function CharactersGridClient({
                         className="h-full w-full object-cover"
                       />
                     ) : (
-                      <div className="flex h-full w-full items-center justify-center text-2xl font-bold text-slate-700">
+                      <div className="flex h-full w-full items-center justify-center text-2xl font-bold text-muted-2">
                         {character.internalName[0]}
                       </div>
                     )}
                     {elements.length > 0 ? (
-                      <span className="absolute -bottom-1 -right-1 inline-flex items-center gap-0.5 rounded-full border border-slate-700 bg-slate-950/90 px-0.5 py-0.5">
+                      <span className="absolute -bottom-1 -right-1 inline-flex items-center gap-0.5 rounded-full border border-white/10 bg-ink/90 px-0.5 py-0.5">
                         {elements.map((el) => {
                           const icon = ELEMENT_ICONS[el.key];
                           if (!icon) return null;
@@ -778,12 +778,12 @@ export default function CharactersGridClient({
 
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2">
-                      <h3 className="truncate text-base font-semibold text-white transition-colors group-hover:text-indigo-100">
+                      <h3 className="truncate font-display text-lg font-semibold text-parch transition-colors group-hover:text-gold-bright">
                         {displayName}
                       </h3>
                       {character.rarity ? (
                         <span
-                          className={`shrink-0 text-xs ${rarityStyle ? rarityStyle.text : "text-slate-300"}`}
+                          className={`shrink-0 text-xs ${rarityStyle ? rarityStyle.text : "text-parch/85"}`}
                         >
                           {"★".repeat(character.rarity)}
                         </span>
@@ -814,13 +814,13 @@ export default function CharactersGridClient({
                       {character.weaponTags.map((tag) => (
                         <span
                           key={tag}
-                          className="rounded-full border border-slate-600/70 px-2 py-0.5 text-slate-300"
+                          className="rounded-full border border-white/10 px-2 py-0.5 text-parch/85"
                         >
                           {tag}
                         </span>
                       ))}
                       {lead.campName ? (
-                        <span className="rounded-full border border-slate-600/70 px-2 py-0.5 text-slate-300">
+                        <span className="rounded-full border border-white/10 px-2 py-0.5 text-parch/85">
                           {lead.campName}
                         </span>
                       ) : null}
@@ -840,12 +840,12 @@ export default function CharactersGridClient({
                       }
                       className={`rounded-full p-1.5 transition-colors ${
                         isFavorite
-                          ? "text-rose-400 hover:text-rose-300"
-                          : "text-slate-500 hover:text-rose-300"
+                          ? "text-crimson-bright hover:text-crimson-bright"
+                          : "text-muted-2 hover:text-crimson-bright"
                       }`}
                     >
                       <Heart
-                        className={`h-4 w-4 ${isFavorite ? "fill-rose-400 text-rose-400" : ""}`}
+                        className={`h-4 w-4 ${isFavorite ? "fill-crimson-bright text-crimson-bright" : ""}`}
                       />
                     </button>
                     {headSrc ? (
@@ -856,13 +856,13 @@ export default function CharactersGridClient({
                           event.stopPropagation();
                           setPreviewPortrait({ src: headSrc, alt: displayName });
                         }}
-                        className="rounded-full border border-slate-700 bg-slate-900/90 p-1.5 text-slate-200 transition-colors hover:border-indigo-400/60 hover:bg-indigo-500/80 hover:text-white"
+                        className="rounded-full border border-white/10 bg-panel/90 p-1.5 text-parch transition-colors hover:border-gold/60 hover:bg-gold/80 hover:text-parch"
                         aria-label={t('zoomPortrait', { name: displayName })}
                       >
                         <ZoomIn className="h-3.5 w-3.5" />
                       </button>
                     ) : null}
-                    <ChevronRight className="h-4 w-4 text-slate-500 transition-colors group-hover:text-indigo-300" />
+                    <ChevronRight className="h-4 w-4 text-muted-2 transition-colors group-hover:text-gold" />
                   </div>
                 </Link>
               </li>
@@ -889,10 +889,10 @@ export default function CharactersGridClient({
                 key={character.id}
                 href={`/characters/${getCharacterSlug(character)}`}
                 title={displayName}
-                className={`group relative aspect-square overflow-hidden rounded-xl border bg-slate-950/80 transition-all duration-200 hover:-translate-y-0.5 ${
+                className={`group relative aspect-square overflow-hidden rounded-xl border bg-ink/80 transition-all duration-200 hover:-translate-y-0.5 ${
                   rarityStyle
                     ? `${rarityStyle.border} hover:border-opacity-70`
-                    : "border-slate-700/70 hover:border-indigo-400/40"
+                    : "border-white/10 hover:border-gold/40"
                 }`}
               >
                 {headSrc ? (
@@ -911,7 +911,7 @@ export default function CharactersGridClient({
                   </div>
                 ) : (
                   <div className="flex h-full w-full items-center justify-center">
-                    <span className="text-3xl font-bold text-slate-700">
+                    <span className="text-3xl font-bold text-muted-2">
                       {character.internalName[0]}
                     </span>
                   </div>
@@ -919,7 +919,7 @@ export default function CharactersGridClient({
 
                 {/* Element icon(s) — stacked for multi-element characters */}
                 {elements.length > 0 ? (
-                  <span className="absolute left-1.5 top-1.5 inline-flex items-center gap-0.5 rounded-full border border-white/15 bg-slate-950/70 px-1 py-1 backdrop-blur-sm">
+                  <span className="absolute left-1.5 top-1.5 inline-flex items-center gap-0.5 rounded-full border border-white/15 bg-ink/70 px-1 py-1 backdrop-blur-sm">
                     {elements.map((el) => {
                       const icon = ELEMENT_ICONS[el.key];
                       if (!icon) return null;
@@ -944,14 +944,14 @@ export default function CharactersGridClient({
                     toggleFavorite(character.id);
                   }}
                   aria-label={isFavorite ? t('removeFromFavorites') : t('addToFavorites')}
-                  className={`absolute right-1.5 top-1.5 z-10 rounded-full bg-slate-950/60 p-1 backdrop-blur-sm transition-all ${
+                  className={`absolute right-1.5 top-1.5 z-10 rounded-full bg-ink/60 p-1 backdrop-blur-sm transition-all ${
                     isFavorite
-                      ? "text-rose-400"
-                      : "text-slate-300 opacity-0 hover:text-rose-300 group-hover:opacity-100"
+                      ? "text-crimson-bright"
+                      : "text-parch/85 opacity-0 hover:text-crimson-bright group-hover:opacity-100"
                   }`}
                 >
                   <Heart
-                    className={`h-3.5 w-3.5 ${isFavorite ? "fill-rose-400 text-rose-400" : ""}`}
+                    className={`h-3.5 w-3.5 ${isFavorite ? "fill-crimson-bright text-crimson-bright" : ""}`}
                   />
                 </button>
 
@@ -964,7 +964,7 @@ export default function CharactersGridClient({
                       event.stopPropagation();
                       setPreviewPortrait({ src: headSrc, alt: displayName });
                     }}
-                    className="absolute bottom-1.5 right-1.5 z-10 rounded-full border border-slate-700 bg-slate-900/90 p-1 text-slate-200 opacity-0 shadow-sm transition-all hover:border-indigo-400/60 hover:bg-indigo-500/80 hover:text-white group-hover:opacity-100"
+                    className="absolute bottom-1.5 right-1.5 z-10 rounded-full border border-white/10 bg-panel/90 p-1 text-parch opacity-0 shadow-sm transition-all hover:border-gold/60 hover:bg-gold/80 hover:text-parch group-hover:opacity-100"
                     aria-label={t('zoomPortrait', { name: displayName })}
                   >
                     <ZoomIn className="h-3 w-3" />
@@ -972,15 +972,15 @@ export default function CharactersGridClient({
                 ) : null}
 
                 {/* Bottom caption */}
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/95 via-slate-950/55 to-transparent p-2 pt-6">
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/95 via-ink/55 to-transparent p-2 pt-6">
                   {character.rarity ? (
                     <p
-                      className={`text-[10px] leading-none ${rarityStyle ? rarityStyle.text : "text-slate-300"}`}
+                      className={`text-[10px] leading-none ${rarityStyle ? rarityStyle.text : "text-parch/85"}`}
                     >
                       {"★".repeat(character.rarity)}
                     </p>
                   ) : null}
-                  <p className="mt-0.5 truncate text-xs font-semibold text-white">
+                  <p className="mt-0.5 truncate font-display text-sm font-semibold text-parch">
                     {displayName}
                   </p>
                 </div>
@@ -993,8 +993,8 @@ export default function CharactersGridClient({
 
       {/* Pagination */}
       {filteredCharacters.length > 0 && (
-        <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-700/70 bg-slate-900/50 p-3">
-          <p className="text-sm text-slate-300">
+        <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-white/10 bg-panel/50 p-3">
+          <p className="text-sm text-parch/85">
             {tc('displayRange', { start: filteredCharacters.length === 0 ? 0 : pageStart + 1, end: Math.min(pageEnd, filteredCharacters.length), total: filteredCharacters.length })}
           </p>
 
@@ -1004,7 +1004,7 @@ export default function CharactersGridClient({
                 type="button"
                 onClick={() => updateQueryFilters({ page: 1 })}
                 disabled={safeCurrentPage === 1}
-                className="rounded-md border border-slate-700 px-2 py-1 text-xs text-slate-200 transition-colors hover:border-indigo-400/40 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
+                className="rounded-md border border-white/10 px-2 py-1 text-xs text-parch transition-colors hover:border-gold/40 hover:text-parch disabled:cursor-not-allowed disabled:opacity-50"
                 aria-label={tc('paginationFirst')}
               >
                 {"<<"}
@@ -1015,7 +1015,7 @@ export default function CharactersGridClient({
                   updateQueryFilters({ page: Math.max(1, safeCurrentPage - 1) })
                 }
                 disabled={safeCurrentPage === 1}
-                className="rounded-md border border-slate-700 px-2 py-1 text-xs text-slate-200 transition-colors hover:border-indigo-400/40 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
+                className="rounded-md border border-white/10 px-2 py-1 text-xs text-parch transition-colors hover:border-gold/40 hover:text-parch disabled:cursor-not-allowed disabled:opacity-50"
                 aria-label={tc('paginationPrevious')}
               >
                 {"<"}
@@ -1025,7 +1025,7 @@ export default function CharactersGridClient({
                 page === "..." ? (
                   <span
                     key={`ellipsis-${index}`}
-                    className="px-1 text-xs text-slate-500"
+                    className="px-1 text-xs text-muted-2"
                     aria-hidden="true"
                   >
                     ...
@@ -1037,8 +1037,8 @@ export default function CharactersGridClient({
                     onClick={() => updateQueryFilters({ page })}
                     className={`rounded-md border px-2 py-1 text-xs transition-colors ${
                       page === safeCurrentPage
-                        ? "border-indigo-400/70 bg-indigo-500/25 text-indigo-100"
-                        : "border-slate-700 text-slate-200 hover:border-indigo-400/40 hover:text-white"
+                        ? "border-gold/70 bg-gold/25 text-gold"
+                        : "border-white/10 text-parch hover:border-gold/40 hover:text-parch"
                     }`}
                     aria-label={tc('paginationGoTo', { page })}
                     aria-current={page === safeCurrentPage ? "page" : undefined}
@@ -1056,7 +1056,7 @@ export default function CharactersGridClient({
                   })
                 }
                 disabled={safeCurrentPage === totalPages}
-                className="rounded-md border border-slate-700 px-2 py-1 text-xs text-slate-200 transition-colors hover:border-indigo-400/40 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
+                className="rounded-md border border-white/10 px-2 py-1 text-xs text-parch transition-colors hover:border-gold/40 hover:text-parch disabled:cursor-not-allowed disabled:opacity-50"
                 aria-label={tc('paginationNext')}
               >
                 {">"}
@@ -1065,7 +1065,7 @@ export default function CharactersGridClient({
                 type="button"
                 onClick={() => updateQueryFilters({ page: totalPages })}
                 disabled={safeCurrentPage === totalPages}
-                className="rounded-md border border-slate-700 px-2 py-1 text-xs text-slate-200 transition-colors hover:border-indigo-400/40 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
+                className="rounded-md border border-white/10 px-2 py-1 text-xs text-parch transition-colors hover:border-gold/40 hover:text-parch disabled:cursor-not-allowed disabled:opacity-50"
                 aria-label={tc('paginationLast')}
               >
                 {">>"}
@@ -1073,7 +1073,7 @@ export default function CharactersGridClient({
             </div>
 
             <div className="flex items-center gap-2">
-              <span className="text-xs uppercase tracking-[0.18em] text-slate-400">
+              <span className="text-xs uppercase tracking-[0.18em] text-muted">
                 Par page
               </span>
               <select
@@ -1084,7 +1084,7 @@ export default function CharactersGridClient({
                     page: 1,
                   })
                 }
-                className="rounded-md border border-slate-700 bg-slate-900 px-2 py-1 text-xs text-slate-100"
+                className="rounded-md border border-white/10 bg-panel px-2 py-1 text-xs text-parch"
               >
                 <option value={12}>12</option>
                 <option value={24}>24</option>
@@ -1098,30 +1098,30 @@ export default function CharactersGridClient({
       {/* Portrait preview modal */}
       {previewPortrait && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-ink/80 p-4 backdrop-blur-sm"
           onClick={() => setPreviewPortrait(null)}
           role="dialog"
           aria-modal="true"
           aria-label={`Apercu du portrait de ${previewPortrait.alt}`}
         >
           <div
-            className="w-full max-w-md rounded-2xl border border-indigo-500/30 bg-slate-900/95 p-4 shadow-[0_25px_60px_rgba(2,6,23,0.65)]"
+            className="w-full max-w-md rounded-2xl border border-gold/30 bg-panel/95 p-4 shadow-[0_25px_60px_rgba(2,6,23,0.65)]"
             onClick={(event) => event.stopPropagation()}
           >
             <div className="flex items-center justify-between gap-3">
-              <p className="text-sm font-medium text-slate-100">
+              <p className="text-sm font-medium text-parch">
                 {previewPortrait.alt}
               </p>
               <button
                 type="button"
                 onClick={() => setPreviewPortrait(null)}
-                className="rounded-full p-1 text-slate-300 transition-colors hover:bg-slate-800 hover:text-white"
+                className="rounded-full p-1 text-parch/85 transition-colors hover:bg-panel hover:text-parch"
                 aria-label={tc('close')}
               >
                 <X className="h-4 w-4" />
               </button>
             </div>
-            <div className="mt-3 flex items-center justify-center overflow-hidden rounded-xl border border-indigo-500/20 bg-slate-950/80">
+            <div className="mt-3 flex items-center justify-center overflow-hidden rounded-xl border border-gold/20 bg-ink/80">
               <img
                 src={previewPortrait.src}
                 alt={previewPortrait.alt}

@@ -24,13 +24,13 @@ export type FilterChipsProps = {
 };
 
 const ACCENT_ACTIVE: Record<"indigo" | "amber", string> = {
-  indigo: "border-indigo-400/70 bg-indigo-500/25 text-indigo-100",
-  amber: "border-amber-400/70 bg-amber-500/25 text-amber-100",
+  indigo: "border-gold/70 bg-gold/20 text-gold-bright",
+  amber: "border-gold-bright/70 bg-gold-bright/20 text-gold-bright",
 };
 
 const ACCENT_HOVER: Record<"indigo" | "amber", string> = {
-  indigo: "hover:border-indigo-400/40 hover:text-white",
-  amber: "hover:border-amber-400/40 hover:text-white",
+  indigo: "hover:border-gold/50 hover:text-parch",
+  amber: "hover:border-gold-bright/50 hover:text-parch",
 };
 
 export default function FilterChips({
@@ -47,9 +47,9 @@ export default function FilterChips({
   const chips: FilterChipOption[] = [{ value: allValue, label: allLabel }, ...options];
 
   return (
-    <div className={`rounded-lg border border-slate-700/60 bg-slate-950/60 p-2 ${className ?? ""}`}>
+    <div className={`rounded-lg border border-white/10 bg-ink/60 p-2 ${className ?? ""}`}>
       {label ? (
-        <div className="mb-1.5 flex items-center gap-2 text-xs text-slate-400">
+        <div className="mb-1.5 flex items-center gap-2 text-xs text-muted">
           {icon}
           {label}
         </div>
@@ -66,7 +66,7 @@ export default function FilterChips({
               className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs transition-colors ${
                 active
                   ? ACCENT_ACTIVE[accent]
-                  : `border-slate-700 text-slate-300 ${ACCENT_HOVER[accent]}`
+                  : `border-white/10 text-muted ${ACCENT_HOVER[accent]}`
               }`}
             >
               {chip.iconSrc ? (

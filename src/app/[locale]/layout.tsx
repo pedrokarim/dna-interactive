@@ -1,5 +1,5 @@
 import type { Metadata, ResolvingMetadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Cinzel, Cormorant_Garamond, Jost, JetBrains_Mono } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -13,9 +13,28 @@ import {
 import { locales } from "@/i18n/config";
 import type { Locale } from "@/i18n/config";
 
-const inter = Inter({
-  variable: "--font-inter",
+// Polices du design system DNA : Cinzel (capitales gravées), Cormorant
+// Garamond (titres/noms sérif), Jost (UI). JetBrains Mono conservé pour le code.
+const cinzel = Cinzel({
+  variable: "--font-cinzel",
   subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  display: "swap",
+});
+
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
+  display: "swap",
+});
+
+const jost = Jost({
+  variable: "--font-jost",
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+  display: "swap",
 });
 
 const jetbrainsMono = JetBrains_Mono({
@@ -166,7 +185,7 @@ export default async function LocaleLayout({
         <link rel="dns-prefetch" href="https://www.google.com" />
       </head>
       <body
-        className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}
+        className={`${cinzel.variable} ${cormorant.variable} ${jost.variable} ${jetbrainsMono.variable} antialiased`}
       >
         <NextIntlClientProvider messages={messages}>
           <Providers>{children}</Providers>
