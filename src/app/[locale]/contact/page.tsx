@@ -98,7 +98,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-electro via-panel to-ink text-parch">
+    <div className="min-h-screen bg-linear-to-br from-ink via-panel to-ink text-parch">
       {/* Header */}
       <header className="relative z-50 bg-ink/80 backdrop-blur-sm border-b border-gold/20">
         <div className="container mx-auto px-4 md:px-6 py-3 md:py-4">
@@ -179,7 +179,7 @@ export default function ContactPage() {
 
                   <div className="space-y-6">
                     <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-linear-to-br from-gold to-electro rounded-lg flex items-center justify-center flex-shrink-0">
+                      <div className="w-12 h-12 bg-linear-to-br from-gold to-gold-deep rounded-lg flex items-center justify-center flex-shrink-0">
                         <svg className="w-6 h-6 text-parch" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                         </svg>
@@ -191,7 +191,7 @@ export default function ContactPage() {
                     </div>
 
                     <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-linear-to-br from-gold to-electro rounded-lg flex items-center justify-center flex-shrink-0">
+                      <div className="w-12 h-12 bg-linear-to-br from-gold to-gold-deep rounded-lg flex items-center justify-center flex-shrink-0">
                         <svg className="w-6 h-6 text-parch" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
@@ -205,7 +205,7 @@ export default function ContactPage() {
                     </div>
 
                     <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-linear-to-br from-gold to-electro rounded-lg flex items-center justify-center flex-shrink-0">
+                      <div className="w-12 h-12 bg-linear-to-br from-gold to-gold-deep rounded-lg flex items-center justify-center flex-shrink-0">
                         <svg className="w-6 h-6 text-parch" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
@@ -341,7 +341,7 @@ export default function ContactPage() {
                     className={`w-full rounded-lg py-3 px-6 font-semibold text-parch transition-all duration-300 transform ${
                       isSubmitting
                         ? 'bg-panel cursor-not-allowed'
-                        : 'bg-linear-to-r from-gold to-electro hover:from-gold hover:to-electro hover:scale-105'
+                        : 'bg-linear-to-r from-gold-bright to-gold hover:from-gold hover:to-gold-deep hover:scale-105'
                     }`}
                   >
                     {isSubmitting ? (

@@ -31,7 +31,7 @@ export default async function AboutPage() {
   const tLegal = await getTranslations('legal');
   const tSite = await getTranslations('site');
   return (
-    <div className="min-h-screen bg-linear-to-br from-electro via-panel to-ink text-parch">
+    <div className="min-h-screen bg-linear-to-br from-ink via-panel to-ink text-parch">
       {/* Header */}
       <header className="relative z-50 bg-ink/80 backdrop-blur-sm border-b border-gold/20">
         <div className="container mx-auto px-4 md:px-6 py-3 md:py-4">
@@ -110,7 +110,7 @@ export default async function AboutPage() {
               {/* Project Origin */}
               <div className="bg-linear-to-br from-panel/50 to-panel/50 backdrop-blur-sm border border-gold/20 rounded-xl p-8">
                 <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-linear-to-br from-gold to-electro rounded-lg flex items-center justify-center mr-4">
+                  <div className="w-12 h-12 bg-linear-to-br from-gold to-gold-deep rounded-lg flex items-center justify-center mr-4">
                     <svg
                       className="w-6 h-6 text-parch"
                       fill="none"
@@ -140,7 +140,7 @@ export default async function AboutPage() {
               {/* What we offer */}
               <div className="bg-linear-to-br from-panel/50 to-panel/50 backdrop-blur-sm border border-gold/20 rounded-xl p-8">
                 <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-linear-to-br from-gold to-electro rounded-lg flex items-center justify-center mr-4">
+                  <div className="w-12 h-12 bg-linear-to-br from-gold to-gold-deep rounded-lg flex items-center justify-center mr-4">
                     <svg
                       className="w-6 h-6 text-parch"
                       fill="none"
@@ -314,7 +314,7 @@ export default async function AboutPage() {
               {/* Team */}
               <div className="bg-linear-to-br from-panel/50 to-panel/50 backdrop-blur-sm border border-gold/20 rounded-xl p-8">
                 <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-linear-to-br from-gold to-electro rounded-lg flex items-center justify-center mr-4">
+                  <div className="w-12 h-12 bg-linear-to-br from-gold to-gold-deep rounded-lg flex items-center justify-center mr-4">
                     <svg
                       className="w-6 h-6 text-parch"
                       fill="none"
@@ -340,7 +340,7 @@ export default async function AboutPage() {
                       key={index}
                       className="bg-linear-to-br from-ink/50 to-panel/50 rounded-lg p-6 inline-block"
                     >
-                      <div className="w-20 h-20 bg-linear-to-br from-gold to-electro rounded-full flex items-center justify-center mx-auto mb-4">
+                      <div className="w-20 h-20 bg-linear-to-br from-gold to-gold-deep rounded-full flex items-center justify-center mx-auto mb-4">
                         <svg
                           className="w-10 h-10 text-parch"
                           fill="none"

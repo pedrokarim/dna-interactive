@@ -22,7 +22,7 @@ export default async function CodesPage() {
   const tLegal = await getTranslations('legal');
   const tSite = await getTranslations('site');
   return (
-    <div className="min-h-screen bg-linear-to-br from-electro via-panel to-ink text-parch">
+    <div className="min-h-screen bg-linear-to-br from-ink via-panel to-ink text-parch">
       {/* Header */}
       <header className="relative z-50 bg-ink/80 backdrop-blur-sm border-b border-gold/20">
         <div className="container mx-auto px-4 md:px-6 py-3 md:py-4">
