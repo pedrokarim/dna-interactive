@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+/* Force le scan de tout le source (sinon Storybook/Vite peut rater des
+   utilities employées uniquement dans les stories). */
+@source "../**/*.{ts,tsx,mdx}";
+
 /* ===========================================================================
    DNA UI — design tokens (calés au pixel sur l'interface du jeu)
    Exposés en utilitaires Tailwind v4 : bg-ink, text-gold, border-line,

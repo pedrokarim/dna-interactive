@@ -10,6 +10,8 @@
 
 /* Canvas sombre DNA autour de chaque story (story + docs) */
 .dna-sb-canvas {
+  width: 100%;
+  box-sizing: border-box;
   min-height: 140px;
   display: flex;
   align-items: center;
