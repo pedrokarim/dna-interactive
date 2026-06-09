@@ -31,9 +31,9 @@ export default async function AboutPage() {
   const tLegal = await getTranslations('legal');
   const tSite = await getTranslations('site');
   return (
-    <div className="min-h-screen bg-linear-to-br from-purple-950 via-slate-900 to-indigo-950 text-white">
+    <div className="min-h-screen bg-linear-to-br from-electro via-panel to-ink text-parch">
       {/* Header */}
-      <header className="relative z-50 bg-slate-950/80 backdrop-blur-sm border-b border-indigo-500/20">
+      <header className="relative z-50 bg-ink/80 backdrop-blur-sm border-b border-gold/20">
         <div className="container mx-auto px-4 md:px-6 py-3 md:py-4">
           <div className="flex items-center justify-between gap-3">
             <Link href={NAVIGATION.home} className="flex items-center gap-2 md:gap-3 min-w-0">
@@ -45,10 +45,10 @@ export default async function AboutPage() {
                 className="h-9 md:h-10 w-auto"
               />
               <div className="min-w-0">
-                <div className="text-lg md:text-2xl font-bold text-white flex items-center gap-2 truncate">
+                <div className="text-lg md:text-2xl font-bold text-parch flex items-center gap-2 truncate">
                   {SITE_CONFIG.name}
                 </div>
-                <p className="text-xs text-slate-400 truncate">{tSite('tagline')}</p>
+                <p className="text-xs text-muted truncate">{tSite('tagline')}</p>
               </div>
             </Link>
 
@@ -58,31 +58,31 @@ export default async function AboutPage() {
               <nav className="flex items-center space-x-8">
                 <Link
                   href={NAVIGATION.home}
-                  className="text-gray-300 hover:text-indigo-400 transition-colors"
+                  className="text-gray-300 hover:text-gold transition-colors"
                 >
                   {tNav('home')}
                 </Link>
                 <Link
                   href={NAVIGATION.map}
-                  className="text-gray-300 hover:text-indigo-400 transition-colors"
+                  className="text-gray-300 hover:text-gold transition-colors"
                 >
                   {tNav('map')}
                 </Link>
                 <Link
                   href={NAVIGATION.items}
-                  className="text-gray-300 hover:text-indigo-400 transition-colors"
+                  className="text-gray-300 hover:text-gold transition-colors"
                 >
                   {tNav('items')}
                 </Link>
                 <Link
                   href={NAVIGATION.support}
-                  className="text-gray-300 hover:text-indigo-400 transition-colors"
+                  className="text-gray-300 hover:text-gold transition-colors"
                 >
                   {tNav('support')}
                 </Link>
                 <Link
                   href={NAVIGATION.contact}
-                  className="text-gray-300 hover:text-indigo-400 transition-colors"
+                  className="text-gray-300 hover:text-gold transition-colors"
                 >
                   {tNav('contact')}
                 </Link>
@@ -98,7 +98,7 @@ export default async function AboutPage() {
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <h1 className="text-4xl font-bold text-white mb-4">
+              <h1 className="text-4xl font-bold text-parch mb-4">
                 {tAbout('title', { siteName: SITE_CONFIG.name })}
               </h1>
               <p className="text-xl text-gray-400">
@@ -108,11 +108,11 @@ export default async function AboutPage() {
 
             <div className="space-y-12">
               {/* Project Origin */}
-              <div className="bg-linear-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border border-indigo-500/20 rounded-xl p-8">
+              <div className="bg-linear-to-br from-panel/50 to-panel/50 backdrop-blur-sm border border-gold/20 rounded-xl p-8">
                 <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-linear-to-br from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center mr-4">
+                  <div className="w-12 h-12 bg-linear-to-br from-gold to-electro rounded-lg flex items-center justify-center mr-4">
                     <svg
-                      className="w-6 h-6 text-white"
+                      className="w-6 h-6 text-parch"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -125,7 +125,7 @@ export default async function AboutPage() {
                       />
                     </svg>
                   </div>
-                  <h3 className="text-2xl font-semibold text-white">
+                  <h3 className="text-2xl font-semibold text-parch">
                     {tAbout('originTitle')}
                   </h3>
                 </div>
@@ -138,11 +138,11 @@ export default async function AboutPage() {
               </div>
 
               {/* What we offer */}
-              <div className="bg-linear-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border border-indigo-500/20 rounded-xl p-8">
+              <div className="bg-linear-to-br from-panel/50 to-panel/50 backdrop-blur-sm border border-gold/20 rounded-xl p-8">
                 <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-linear-to-br from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center mr-4">
+                  <div className="w-12 h-12 bg-linear-to-br from-gold to-electro rounded-lg flex items-center justify-center mr-4">
                     <svg
-                      className="w-6 h-6 text-white"
+                      className="w-6 h-6 text-parch"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -155,7 +155,7 @@ export default async function AboutPage() {
                       />
                     </svg>
                   </div>
-                  <h3 className="text-2xl font-semibold text-white">
+                  <h3 className="text-2xl font-semibold text-parch">
                     {tAbout('offerTitle')}
                   </h3>
                 </div>
@@ -164,7 +164,7 @@ export default async function AboutPage() {
                   <div className="space-y-4">
                     <div className="flex items-start space-x-3">
                       <svg
-                        className="w-5 h-5 text-indigo-400 mt-1 shrink-0"
+                        className="w-5 h-5 text-gold mt-1 shrink-0"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -177,7 +177,7 @@ export default async function AboutPage() {
                         />
                       </svg>
                       <div>
-                        <h4 className="text-white font-medium">
+                        <h4 className="text-parch font-medium">
                           {tAbout('offerMapTitle')}
                         </h4>
                         <p className="text-gray-400 text-sm">
@@ -188,7 +188,7 @@ export default async function AboutPage() {
 
                     <div className="flex items-start space-x-3">
                       <svg
-                        className="w-5 h-5 text-indigo-400 mt-1 shrink-0"
+                        className="w-5 h-5 text-gold mt-1 shrink-0"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -201,7 +201,7 @@ export default async function AboutPage() {
                         />
                       </svg>
                       <div>
-                        <h4 className="text-white font-medium">
+                        <h4 className="text-parch font-medium">
                           {tAbout('offerMarkersTitle')}
                         </h4>
                         <p className="text-gray-400 text-sm">
@@ -212,7 +212,7 @@ export default async function AboutPage() {
 
                     <div className="flex items-start space-x-3">
                       <svg
-                        className="w-5 h-5 text-indigo-400 mt-1 shrink-0"
+                        className="w-5 h-5 text-gold mt-1 shrink-0"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -225,7 +225,7 @@ export default async function AboutPage() {
                         />
                       </svg>
                       <div>
-                        <h4 className="text-white font-medium">
+                        <h4 className="text-parch font-medium">
                           {tAbout('offerFiltersTitle')}
                         </h4>
                         <p className="text-gray-400 text-sm">
@@ -238,7 +238,7 @@ export default async function AboutPage() {
                   <div className="space-y-4">
                     <div className="flex items-start space-x-3">
                       <svg
-                        className="w-5 h-5 text-indigo-400 mt-1 shrink-0"
+                        className="w-5 h-5 text-gold mt-1 shrink-0"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -251,7 +251,7 @@ export default async function AboutPage() {
                         />
                       </svg>
                       <div>
-                        <h4 className="text-white font-medium">
+                        <h4 className="text-parch font-medium">
                           {tAbout('offerResponsiveTitle')}
                         </h4>
                         <p className="text-gray-400 text-sm">
@@ -262,7 +262,7 @@ export default async function AboutPage() {
 
                     <div className="flex items-start space-x-3">
                       <svg
-                        className="w-5 h-5 text-indigo-400 mt-1 shrink-0"
+                        className="w-5 h-5 text-gold mt-1 shrink-0"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -275,7 +275,7 @@ export default async function AboutPage() {
                         />
                       </svg>
                       <div>
-                        <h4 className="text-white font-medium">
+                        <h4 className="text-parch font-medium">
                           {tAbout('offerPassionTitle')}
                         </h4>
                         <p className="text-gray-400 text-sm">
@@ -286,7 +286,7 @@ export default async function AboutPage() {
 
                     <div className="flex items-start space-x-3">
                       <svg
-                        className="w-5 h-5 text-indigo-400 mt-1 shrink-0"
+                        className="w-5 h-5 text-gold mt-1 shrink-0"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -299,7 +299,7 @@ export default async function AboutPage() {
                         />
                       </svg>
                       <div>
-                        <h4 className="text-white font-medium">
+                        <h4 className="text-parch font-medium">
                           {tAbout('offerUpdatesTitle')}
                         </h4>
                         <p className="text-gray-400 text-sm">
@@ -312,11 +312,11 @@ export default async function AboutPage() {
               </div>
 
               {/* Team */}
-              <div className="bg-linear-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border border-indigo-500/20 rounded-xl p-8">
+              <div className="bg-linear-to-br from-panel/50 to-panel/50 backdrop-blur-sm border border-gold/20 rounded-xl p-8">
                 <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-linear-to-br from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center mr-4">
+                  <div className="w-12 h-12 bg-linear-to-br from-gold to-electro rounded-lg flex items-center justify-center mr-4">
                     <svg
-                      className="w-6 h-6 text-white"
+                      className="w-6 h-6 text-parch"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -329,7 +329,7 @@ export default async function AboutPage() {
                       />
                     </svg>
                   </div>
-                  <h3 className="text-2xl font-semibold text-white">
+                  <h3 className="text-2xl font-semibold text-parch">
                     {tAbout('teamTitle')}
                   </h3>
                 </div>
@@ -338,11 +338,11 @@ export default async function AboutPage() {
                   {TEAM_INFO.members.map((member, index) => (
                     <div
                       key={index}
-                      className="bg-linear-to-br from-slate-700/50 to-slate-800/50 rounded-lg p-6 inline-block"
+                      className="bg-linear-to-br from-ink/50 to-panel/50 rounded-lg p-6 inline-block"
                     >
-                      <div className="w-20 h-20 bg-linear-to-br from-indigo-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <div className="w-20 h-20 bg-linear-to-br from-gold to-electro rounded-full flex items-center justify-center mx-auto mb-4">
                         <svg
-                          className="w-10 h-10 text-white"
+                          className="w-10 h-10 text-parch"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -355,10 +355,10 @@ export default async function AboutPage() {
                           />
                         </svg>
                       </div>
-                      <h4 className="text-xl font-semibold text-white mb-1">
+                      <h4 className="text-xl font-semibold text-parch mb-1">
                         {member.name}
                       </h4>
-                      <p className="text-indigo-400 font-medium mb-2">
+                      <p className="text-gold font-medium mb-2">
                         aka {member.nickname}
                       </p>
                       <p className="text-gray-400 text-sm">{member.role}</p>
@@ -379,11 +379,11 @@ export default async function AboutPage() {
               </div>
 
               {/* Disclaimer */}
-              <div className="bg-red-900/20 border border-red-500/30 rounded-xl p-6">
+              <div className="bg-crimson-bright/20 border border-crimson-bright/30 rounded-xl p-6">
                 <div className="flex items-start space-x-3">
-                  <div className="w-8 h-8 bg-red-500/20 rounded-lg flex items-center justify-center shrink-0 mt-1">
+                  <div className="w-8 h-8 bg-crimson-bright/20 rounded-lg flex items-center justify-center shrink-0 mt-1">
                     <svg
-                      className="w-5 h-5 text-red-400"
+                      className="w-5 h-5 text-crimson-bright"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -397,7 +397,7 @@ export default async function AboutPage() {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="text-red-400 font-semibold mb-2">
+                    <h4 className="text-crimson-bright font-semibold mb-2">
                       {tAbout('disclaimerTitle')}
                     </h4>
                     <p className="text-gray-300 text-sm leading-relaxed">
@@ -412,7 +412,7 @@ export default async function AboutPage() {
 
               {/* Call to action */}
               <div className="text-center">
-                <h3 className="text-2xl font-semibold text-white mb-4">
+                <h3 className="text-2xl font-semibold text-parch mb-4">
                   {tAbout('joinCommunityTitle')}
                 </h3>
                 <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
@@ -423,7 +423,7 @@ export default async function AboutPage() {
                     href="https://discord.gg/rTd95UpUEb"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center px-6 py-3 bg-indigo-600 hover:bg-indigo-700 rounded-lg font-medium text-white transition-colors"
+                    className="inline-flex items-center justify-center px-6 py-3 bg-gold hover:bg-gold rounded-lg font-medium text-parch transition-colors"
                   >
                     <svg
                       className="w-5 h-5 mr-2"
@@ -436,7 +436,7 @@ export default async function AboutPage() {
                   </a>
                   <Link
                     href="/contact"
-                    className="inline-flex items-center justify-center px-6 py-3 bg-slate-600 hover:bg-slate-700 rounded-lg font-medium text-white transition-colors"
+                    className="inline-flex items-center justify-center px-6 py-3 bg-white/10 hover:bg-white/10 rounded-lg font-medium text-parch transition-colors"
                   >
                     <svg
                       className="w-5 h-5 mr-2"
@@ -461,7 +461,7 @@ export default async function AboutPage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-slate-950 border-t border-indigo-500/20 py-8 md:py-12">
+      <footer className="bg-ink border-t border-gold/20 py-8 md:py-12">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-3">
@@ -472,46 +472,46 @@ export default async function AboutPage() {
                 height={32}
                 className="h-8 w-auto"
               />
-              <span className="text-white font-semibold">
+              <span className="text-parch font-semibold">
                 {SITE_CONFIG.name}
               </span>
             </div>
 
-            <nav className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-slate-300 md:gap-x-6">
+            <nav className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-parch/85 md:gap-x-6">
               <Link
                 href={NAVIGATION.home}
-                className="hover:text-indigo-400 transition-colors"
+                className="hover:text-gold transition-colors"
               >
                 {tNav('home')}
               </Link>
               <Link
                 href={NAVIGATION.map}
-                className="hover:text-indigo-400 transition-colors"
+                className="hover:text-gold transition-colors"
               >
                 {tNav('map')}
               </Link>
               <Link
                 href={NAVIGATION.items}
-                className="hover:text-indigo-400 transition-colors"
+                className="hover:text-gold transition-colors"
               >
                 {tNav('items')}
               </Link>
               <Link
                 href={NAVIGATION.support}
-                className="hover:text-indigo-400 transition-colors"
+                className="hover:text-gold transition-colors"
               >
                 {tNav('support')}
               </Link>
               <Link
                 href={NAVIGATION.contact}
-                className="hover:text-indigo-300 transition-colors"
+                className="hover:text-gold transition-colors"
               >
                 {tNav('contact')}
               </Link>
             </nav>
           </div>
 
-          <div className="mt-8 pt-8 border-t border-indigo-500/10 text-center text-sm text-gray-500">
+          <div className="mt-8 pt-8 border-t border-gold/10 text-center text-sm text-gray-500">
             <p>{LEGAL_INFO.copyright}</p>
             <p className="mt-2">
               {LEGAL_INFO.disclaimer}
@@ -519,7 +519,7 @@ export default async function AboutPage() {
                 href={CONTACT_INFO.ascencia.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-indigo-400 hover:text-indigo-300 ml-1"
+                className="text-gold hover:text-gold ml-1"
               >
                 {LEGAL_INFO.ascenciaCredit}
               </a>
@@ -527,7 +527,7 @@ export default async function AboutPage() {
             <p className="mt-3">
               <Link
                 href="/changelog"
-                className="text-indigo-400 hover:text-indigo-300 transition-colors"
+                className="text-gold hover:text-gold transition-colors"
               >
                 {tCommon('viewChangelog')}
               </Link>

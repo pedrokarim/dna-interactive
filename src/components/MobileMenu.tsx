@@ -75,7 +75,7 @@ export default function MobileMenu() {
   const overlay = (
     <div className="md:hidden">
       <div
-        className={`fixed inset-0 z-[60] bg-slate-950/80 backdrop-blur-sm transition-opacity duration-300 ${
+        className={`fixed inset-0 z-[60] bg-ink/80 backdrop-blur-sm transition-opacity duration-300 ${
           isOpen ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
         onClick={() => setIsOpen(false)}
@@ -84,7 +84,7 @@ export default function MobileMenu() {
 
       <aside
         id="mobile-menu-drawer"
-        className={`fixed inset-y-0 right-0 z-[70] flex w-[85%] max-w-sm flex-col border-l border-indigo-500/25 bg-slate-950 shadow-[0_0_60px_rgba(15,23,42,0.8)] transition-transform duration-300 ease-out ${
+        className={`fixed inset-y-0 right-0 z-[70] flex w-[85%] max-w-sm flex-col border-l border-gold/25 bg-ink shadow-[0_0_60px_rgba(15,23,42,0.8)] transition-transform duration-300 ease-out ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
         role="dialog"
@@ -92,7 +92,7 @@ export default function MobileMenu() {
         aria-label={openLabel}
         aria-hidden={!isOpen}
       >
-        <div className="flex items-center justify-between gap-3 border-b border-indigo-500/20 px-4 py-4">
+        <div className="flex items-center justify-between gap-3 border-b border-gold/20 px-4 py-4">
           <div className="flex items-center gap-2.5">
             <img
               src={ASSETS_PATHS.logo}
@@ -101,14 +101,14 @@ export default function MobileMenu() {
               height={32}
               className="h-8 w-auto"
             />
-            <span className="text-base font-semibold text-white">
+            <span className="text-base font-semibold text-parch">
               {SITE_CONFIG.name}
             </span>
           </div>
           <button
             type="button"
             onClick={() => setIsOpen(false)}
-            className="flex h-9 w-9 items-center justify-center rounded-lg text-slate-300 transition-colors hover:bg-slate-800 hover:text-white"
+            className="flex h-9 w-9 items-center justify-center rounded-lg text-parch/85 transition-colors hover:bg-panel hover:text-parch"
             aria-label={closeLabel}
           >
             <X className="h-5 w-5" />
@@ -126,8 +126,8 @@ export default function MobileMenu() {
                     href={link.href}
                     className={`flex items-center gap-3 rounded-lg px-3 py-3 text-base transition-colors ${
                       active
-                        ? "bg-indigo-500/15 text-indigo-100 border border-indigo-400/30"
-                        : "text-slate-200 hover:bg-slate-800/70 hover:text-white border border-transparent"
+                        ? "bg-gold/15 text-gold border border-gold/30"
+                        : "text-parch hover:bg-panel/70 hover:text-parch border border-transparent"
                     }`}
                   >
                     {Icon && <Icon className="h-5 w-5 shrink-0" />}
@@ -139,7 +139,7 @@ export default function MobileMenu() {
           </ul>
         </nav>
 
-        <div className="border-t border-indigo-500/20 px-4 py-4">
+        <div className="border-t border-gold/20 px-4 py-4">
           <LanguageSwitcher direction="up" align="start" />
         </div>
       </aside>
@@ -151,7 +151,7 @@ export default function MobileMenu() {
       <button
         type="button"
         onClick={() => setIsOpen(true)}
-        className="flex h-10 w-10 items-center justify-center rounded-lg border border-indigo-500/30 bg-slate-900/60 text-slate-200 transition-colors hover:border-indigo-400/60 hover:bg-slate-800 hover:text-white md:hidden"
+        className="flex h-10 w-10 items-center justify-center rounded-lg border border-gold/30 bg-panel/60 text-parch transition-colors hover:border-gold/60 hover:bg-panel hover:text-parch md:hidden"
         aria-expanded={isOpen}
         aria-controls="mobile-menu-drawer"
         aria-label={openLabel}
