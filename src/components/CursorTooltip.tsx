@@ -129,7 +129,7 @@ export default function CursorTooltip({ content, children, width = 260, as = "in
       {mounted && show && createPortal(
         <div
           style={tooltipStyle}
-          className="rounded-lg border border-slate-600/70 bg-slate-900/95 p-3 text-sm shadow-[0_20px_40px_rgba(2,6,23,0.7)] backdrop-blur"
+          className="rounded-lg border border-white/10 bg-panel/95 p-3 text-sm shadow-[0_20px_40px_rgba(2,6,23,0.7)] backdrop-blur"
           role="tooltip"
         >
           {content}

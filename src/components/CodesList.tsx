@@ -47,14 +47,14 @@ export default function CodesList() {
     <div className="max-w-4xl mx-auto p-6">
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
-          <Gift className="w-8 h-8 text-indigo-400" />
-          <h1 className="text-3xl font-bold text-white">{t("title")}</h1>
+          <Gift className="w-8 h-8 text-gold" />
+          <h1 className="text-3xl font-bold text-parch">{t("title")}</h1>
         </div>
         <p className="text-gray-300 text-lg leading-relaxed">
           {t("description")}
         </p>
-        <div className="mt-4 p-4 bg-indigo-950/50 border border-indigo-500/30 rounded-lg">
-          <p className="text-sm text-indigo-200">
+        <div className="mt-4 p-4 bg-ink/50 border border-gold/30 rounded-lg">
+          <p className="text-sm text-gold">
             <strong>{t("howToUse")}</strong> {t("howToUseSteps")}
           </p>
         </div>
@@ -68,7 +68,7 @@ export default function CodesList() {
         {usedCodes.size > 0 && (
           <button
             onClick={handleResetAll}
-            className="flex items-center gap-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors"
+            className="flex items-center gap-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-parch rounded-lg transition-colors"
           >
             <RotateCcw className="w-4 h-4" />
             {t("resetAll")}
@@ -90,8 +90,8 @@ export default function CodesList() {
                 relative p-6 rounded-xl border transition-all duration-200 cursor-pointer
                 ${
                   isUsed
-                    ? "bg-slate-800/50 border-gray-600 opacity-60"
-                    : "bg-linear-to-r from-slate-800/50 to-slate-900/50 border-indigo-500/30 hover:border-indigo-400/50 hover:from-slate-800/70 hover:to-slate-900/70"
+                    ? "bg-panel/50 border-gray-600 opacity-60"
+                    : "bg-linear-to-r from-panel/50 to-panel/50 border-gold/30 hover:border-gold/50 hover:from-panel/70 hover:to-panel/70"
                 }
               `}
             >
@@ -104,19 +104,19 @@ export default function CodesList() {
                         ${
                           isUsed
                             ? "bg-gray-700 border-gray-600 text-gray-400 line-through"
-                            : "bg-indigo-950 border-indigo-500 text-indigo-200"
+                            : "bg-ink border-gold text-gold"
                         }
                       `}
                     >
                       {gameCode.code}
                     </code>
                     {gameCode.isNew && (
-                      <span className="px-2 py-1 bg-green-600 text-white text-xs rounded-full font-medium">
+                      <span className="px-2 py-1 bg-anemo text-parch text-xs rounded-full font-medium">
                         {tCommon("new")}
                       </span>
                     )}
                     {gameCode.expiresAt && (
-                      <span className="flex items-center gap-1 px-2 py-1 bg-orange-600/20 border border-orange-500/30 text-orange-300 text-xs rounded-full font-medium">
+                      <span className="flex items-center gap-1 px-2 py-1 bg-pyro/20 border border-pyro/30 text-pyro text-xs rounded-full font-medium">
                         <Clock className="w-3 h-3" />
                         {t("expires", { date: gameCode.expiresAt })}
                       </span>
@@ -132,7 +132,7 @@ export default function CodesList() {
                           ${
                             isUsed
                               ? "bg-gray-700 border-gray-600 text-gray-500"
-                              : "bg-purple-950 border-purple-500/30 text-purple-200"
+                              : "bg-electro border-electro/30 text-electro"
                           }
                         `}
                       >
@@ -153,7 +153,7 @@ export default function CodesList() {
                       ${
                         isUsed
                           ? "bg-gray-700 hover:bg-gray-600 text-gray-400"
-                          : "bg-indigo-600 hover:bg-indigo-500 text-white"
+                          : "bg-gold hover:bg-gold text-parch"
                       }
                     `}
                     title={t("copyCode")}
@@ -170,8 +170,8 @@ export default function CodesList() {
                       w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all
                       ${
                         isUsed
-                          ? "bg-green-600 border-green-600 text-white"
-                          : "border-gray-500 hover:border-indigo-400"
+                          ? "bg-anemo border-anemo text-parch"
+                          : "border-gray-500 hover:border-gold"
                       }
                     `}
                   >
@@ -181,7 +181,7 @@ export default function CodesList() {
               </div>
 
               {isCopied && (
-                <div className="absolute top-2 right-2 bg-green-600 text-white text-xs px-2 py-1 rounded">
+                <div className="absolute top-2 right-2 bg-anemo text-parch text-xs px-2 py-1 rounded">
                   {tCommon("copied")}
                 </div>
               )}
@@ -194,8 +194,8 @@ export default function CodesList() {
       {expiredCodes.length > 0 && (
         <div className="mt-12">
           <div className="flex items-center gap-3 mb-6">
-            <AlertTriangle className="w-6 h-6 text-orange-500" />
-            <h2 className="text-2xl font-bold text-white">{t("expiredTitle")}</h2>
+            <AlertTriangle className="w-6 h-6 text-pyro" />
+            <h2 className="text-2xl font-bold text-parch">{t("expiredTitle")}</h2>
           </div>
           <div className="space-y-4 opacity-75">
             {expiredCodes.map((gameCode) => {
@@ -204,15 +204,15 @@ export default function CodesList() {
               return (
                 <div
                   key={gameCode.id}
-                  className="relative p-6 rounded-xl border bg-linear-to-r from-red-950/20 to-orange-950/20 border-red-500/20"
+                  className="relative p-6 rounded-xl border bg-linear-to-r from-crimson-bright/20 to-pyro/20 border-crimson-bright/20"
                 >
                   <div className="flex items-start justify-between">
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-3 mb-2">
-                        <code className="text-lg font-mono px-3 py-1 rounded border bg-red-950 border-red-500 text-red-300 line-through">
+                        <code className="text-lg font-mono px-3 py-1 rounded border bg-crimson-bright border-crimson-bright text-crimson-bright line-through">
                           {gameCode.code}
                         </code>
-                        <span className="px-2 py-1 bg-red-600/20 border border-red-500/30 text-red-400 text-xs rounded-full font-medium">
+                        <span className="px-2 py-1 bg-crimson-bright/20 border border-crimson-bright/30 text-crimson-bright text-xs rounded-full font-medium">
                           {tCommon("expired")}
                         </span>
                       </div>
@@ -221,7 +221,7 @@ export default function CodesList() {
                         {gameCode.rewards.map((reward, index) => (
                           <span
                             key={index}
-                            className="px-2 py-1 text-sm rounded border bg-red-950/50 border-red-500/30 text-red-300/70"
+                            className="px-2 py-1 text-sm rounded border bg-crimson-bright/50 border-crimson-bright/30 text-crimson-bright/70"
                           >
                             {reward}
                           </span>
@@ -235,7 +235,7 @@ export default function CodesList() {
                           e.stopPropagation();
                           copyToClipboard(gameCode.code);
                         }}
-                        className="p-2 rounded-lg transition-colors bg-red-600 hover:bg-red-500 text-white"
+                        className="p-2 rounded-lg transition-colors bg-crimson-bright hover:bg-crimson-bright text-parch"
                         title={t("copyCodeExpired")}
                       >
                         {isCopied ? (
@@ -248,7 +248,7 @@ export default function CodesList() {
                   </div>
 
                   {isCopied && (
-                    <div className="absolute top-2 right-2 bg-green-600 text-white text-xs px-2 py-1 rounded">
+                    <div className="absolute top-2 right-2 bg-anemo text-parch text-xs px-2 py-1 rounded">
                       {tCommon("copied")}
                     </div>
                   )}
@@ -259,31 +259,31 @@ export default function CodesList() {
         </div>
       )}
 
-      <div className="mt-12 p-6 bg-slate-800/50 border border-indigo-500/20 rounded-xl">
-        <h3 className="text-xl font-semibold text-white mb-4">
+      <div className="mt-12 p-6 bg-panel/50 border border-gold/20 rounded-xl">
+        <h3 className="text-xl font-semibold text-parch mb-4">
           {t("importantInfo")}
         </h3>
         <ul className="space-y-2 text-gray-300">
           <li className="flex items-start gap-2">
-            <span className="text-indigo-400 mt-1">•</span>
+            <span className="text-gold mt-1">•</span>
             <span>
               {t("infoOneUse")}
             </span>
           </li>
           <li className="flex items-start gap-2">
-            <span className="text-indigo-400 mt-1">•</span>
+            <span className="text-gold mt-1">•</span>
             <span>
               {t("infoExpire")}
             </span>
           </li>
           <li className="flex items-start gap-2">
-            <span className="text-indigo-400 mt-1">•</span>
+            <span className="text-gold mt-1">•</span>
             <span>
               {t("infoAutoCredit")}
             </span>
           </li>
           <li className="flex items-start gap-2">
-            <span className="text-indigo-400 mt-1">•</span>
+            <span className="text-gold mt-1">•</span>
             <span>
               {t("infoNotWorking")}
             </span>

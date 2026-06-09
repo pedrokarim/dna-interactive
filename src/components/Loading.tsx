@@ -75,10 +75,10 @@ export default function Loading({
   if (mode === "fullscreen") {
     return (
       <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9999] flex items-center justify-center">
-        <div className="bg-white dark:bg-slate-800 rounded-lg shadow-xl p-8 flex flex-col items-center space-y-4 max-w-sm mx-4">
+        <div className="bg-white dark:bg-panel rounded-lg shadow-xl p-8 flex flex-col items-center space-y-4 max-w-sm mx-4">
           {spinner}
           {resolvedMessage && (
-            <p className="text-gray-900 dark:text-white text-center font-medium">
+            <p className="text-gray-900 dark:text-parch text-center font-medium">
               {resolvedMessage}
             </p>
           )}

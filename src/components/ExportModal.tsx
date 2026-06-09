@@ -49,14 +49,14 @@ export default function ExportModal({
       {/* Dialog */}
       <div className="fixed inset-0 z-[210] flex items-center justify-center p-4">
         <div
-          className="bg-slate-950/95 backdrop-blur-md rounded-lg border border-indigo-500/40 shadow-[0_20px_60px_rgba(0,0,0,0.8)] max-w-md w-full p-6"
+          className="bg-ink/95 backdrop-blur-md rounded-lg border border-gold/40 shadow-[0_20px_60px_rgba(0,0,0,0.8)] max-w-md w-full p-6"
           onClick={(e) => e.stopPropagation()}
         >
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-bold text-white">Exporter les marqueurs</h3>
+            <h3 className="text-lg font-bold text-parch">Exporter les marqueurs</h3>
             <button
               onClick={onClose}
-              className="text-gray-400 hover:text-white transition-colors"
+              className="text-gray-400 hover:text-parch transition-colors"
             >
               <svg
                 className="w-5 h-5"
@@ -75,7 +75,7 @@ export default function ExportModal({
           </div>
 
           <p className="text-sm text-gray-300 mb-6">
-            Vous allez exporter <span className="font-semibold text-indigo-400">{markerCount}</span> marqueur{markerCount > 1 ? "s" : ""} au format sélectionné.
+            Vous allez exporter <span className="font-semibold text-gold">{markerCount}</span> marqueur{markerCount > 1 ? "s" : ""} au format sélectionné.
           </p>
 
           {/* Format selection */}
@@ -84,21 +84,21 @@ export default function ExportModal({
               Format du fichier
             </label>
             <div className="space-y-2">
-              <label className="flex items-center p-3 rounded-lg border border-indigo-500/30 bg-slate-800/50 hover:bg-slate-700/50 transition-colors cursor-pointer">
+              <label className="flex items-center p-3 rounded-lg border border-gold/30 bg-panel/50 hover:bg-white/10 transition-colors cursor-pointer">
                 <input
                   type="radio"
                   name="format"
                   value="json"
                   checked={selectedFormat === "json"}
                   onChange={() => setSelectedFormat("json")}
-                  className="mr-3 text-indigo-500 focus:ring-indigo-500 focus:ring-offset-slate-950"
+                  className="mr-3 text-gold focus:ring-gold focus:ring-offset-ink"
                 />
                 <div className="flex-1">
-                  <div className="text-white font-medium">JSON</div>
+                  <div className="text-parch font-medium">JSON</div>
                   <div className="text-xs text-gray-400">Format structuré, facile à réimporter</div>
                 </div>
                 <svg
-                  className="w-5 h-5 text-indigo-400 ml-2"
+                  className="w-5 h-5 text-gold ml-2"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -112,21 +112,21 @@ export default function ExportModal({
                 </svg>
               </label>
 
-              <label className="flex items-center p-3 rounded-lg border border-indigo-500/30 bg-slate-800/50 hover:bg-slate-700/50 transition-colors cursor-pointer">
+              <label className="flex items-center p-3 rounded-lg border border-gold/30 bg-panel/50 hover:bg-white/10 transition-colors cursor-pointer">
                 <input
                   type="radio"
                   name="format"
                   value="csv"
                   checked={selectedFormat === "csv"}
                   onChange={() => setSelectedFormat("csv")}
-                  className="mr-3 text-indigo-500 focus:ring-indigo-500 focus:ring-offset-slate-950"
+                  className="mr-3 text-gold focus:ring-gold focus:ring-offset-ink"
                 />
                 <div className="flex-1">
-                  <div className="text-white font-medium">CSV</div>
+                  <div className="text-parch font-medium">CSV</div>
                   <div className="text-xs text-gray-400">Format tableur, compatible Excel</div>
                 </div>
                 <svg
-                  className="w-5 h-5 text-indigo-400 ml-2"
+                  className="w-5 h-5 text-gold ml-2"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -146,13 +146,13 @@ export default function ExportModal({
           <div className="flex gap-3 justify-end">
             <button
               onClick={onClose}
-              className="px-4 py-2 text-sm font-medium text-gray-300 bg-slate-800/50 hover:bg-slate-700/50 rounded-md transition-colors border border-indigo-500/20"
+              className="px-4 py-2 text-sm font-medium text-gray-300 bg-panel/50 hover:bg-white/10 rounded-md transition-colors border border-gold/20"
             >
               Annuler
             </button>
             <button
               onClick={handleExport}
-              className="px-4 py-2 text-sm font-medium text-white bg-indigo-600/80 hover:bg-indigo-600 rounded-md transition-colors border border-indigo-500/50 flex items-center gap-2"
+              className="px-4 py-2 text-sm font-medium text-parch bg-gold/80 hover:bg-gold rounded-md transition-colors border border-gold/50 flex items-center gap-2"
             >
               <svg
                 className="w-4 h-4"

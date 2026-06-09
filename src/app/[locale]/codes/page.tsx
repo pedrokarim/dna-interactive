@@ -22,9 +22,9 @@ export default async function CodesPage() {
   const tLegal = await getTranslations('legal');
   const tSite = await getTranslations('site');
   return (
-    <div className="min-h-screen bg-linear-to-br from-purple-950 via-slate-900 to-indigo-950 text-white">
+    <div className="min-h-screen bg-linear-to-br from-electro via-panel to-ink text-parch">
       {/* Header */}
-      <header className="relative z-50 bg-slate-950/80 backdrop-blur-sm border-b border-indigo-500/20">
+      <header className="relative z-50 bg-ink/80 backdrop-blur-sm border-b border-gold/20">
         <div className="container mx-auto px-4 md:px-6 py-3 md:py-4">
           <div className="flex items-center justify-between gap-3">
             <div className="flex items-center gap-2 md:gap-3 min-w-0">
@@ -36,10 +36,10 @@ export default async function CodesPage() {
                 className="h-9 md:h-10 w-auto"
               />
               <div className="min-w-0">
-                <div className="text-lg md:text-2xl font-bold text-white flex items-center gap-2 truncate">
+                <div className="text-lg md:text-2xl font-bold text-parch flex items-center gap-2 truncate">
                   {SITE_CONFIG.name}
                 </div>
-                <p className="text-xs text-slate-400 truncate">{tSite('tagline')}</p>
+                <p className="text-xs text-muted truncate">{tSite('tagline')}</p>
               </div>
             </div>
 
@@ -49,40 +49,40 @@ export default async function CodesPage() {
               <nav className="flex items-center space-x-8">
                 <Link
                   href="/"
-                  className="text-gray-300 hover:text-indigo-400 transition-colors"
+                  className="text-gray-300 hover:text-gold transition-colors"
                 >
                   {tNav('home')}
                 </Link>
                 <Link
                   href="/map"
-                  className="text-gray-300 hover:text-indigo-400 transition-colors"
+                  className="text-gray-300 hover:text-gold transition-colors"
                 >
                   {tNav('map')}
                 </Link>
                 <Link
                   href="/items"
-                  className="text-gray-300 hover:text-indigo-400 transition-colors"
+                  className="text-gray-300 hover:text-gold transition-colors"
                 >
                   {tNav('items')}
                 </Link>
-                <Link href="/codes" className="text-indigo-400 font-medium">
+                <Link href="/codes" className="text-gold font-medium">
                   {tNav('codes')}
                 </Link>
                 <Link
                   href="/about"
-                  className="text-gray-300 hover:text-indigo-400 transition-colors"
+                  className="text-gray-300 hover:text-gold transition-colors"
                 >
                   {tNav('about')}
                 </Link>
                 <Link
                   href="/support"
-                  className="text-gray-300 hover:text-indigo-400 transition-colors"
+                  className="text-gray-300 hover:text-gold transition-colors"
                 >
                   {tNav('support')}
                 </Link>
                 <Link
                   href="/contact"
-                  className="text-gray-300 hover:text-indigo-400 transition-colors"
+                  className="text-gray-300 hover:text-gold transition-colors"
                 >
                   {tNav('contact')}
                 </Link>
@@ -99,7 +99,7 @@ export default async function CodesPage() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-slate-950 border-t border-indigo-500/20 py-12">
+      <footer className="bg-ink border-t border-gold/20 py-12">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="flex items-center gap-3 mb-4 md:mb-0">
@@ -108,52 +108,52 @@ export default async function CodesPage() {
                 alt={`${SITE_CONFIG.name} Logo`}
                 className="h-8 w-auto"
               />
-              <span className="text-white font-semibold">
+              <span className="text-parch font-semibold">
                 {SITE_CONFIG.name}
               </span>
             </div>
 
-            <nav className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-slate-300 md:gap-x-6">
-              <Link href="/" className="hover:text-indigo-400 transition-colors">
+            <nav className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-parch/85 md:gap-x-6">
+              <Link href="/" className="hover:text-gold transition-colors">
                 {tNav('home')}
               </Link>
               <Link
                 href="/map"
-                className="hover:text-indigo-400 transition-colors"
+                className="hover:text-gold transition-colors"
               >
                 {tNav('map')}
               </Link>
               <Link
                 href="/items"
-                className="hover:text-indigo-400 transition-colors"
+                className="hover:text-gold transition-colors"
               >
                 {tNav('items')}
               </Link>
-              <Link href="/codes" className="text-indigo-400">
+              <Link href="/codes" className="text-gold">
                 {tNav('codes')}
               </Link>
               <Link
                 href="/about"
-                className="hover:text-indigo-400 transition-colors"
+                className="hover:text-gold transition-colors"
               >
                 {tNav('about')}
               </Link>
               <Link
                 href="/support"
-                className="hover:text-indigo-400 transition-colors"
+                className="hover:text-gold transition-colors"
               >
                 {tNav('support')}
               </Link>
               <Link
                 href="/contact"
-                className="hover:text-indigo-300 transition-colors"
+                className="hover:text-gold transition-colors"
               >
                 {tNav('contact')}
               </Link>
             </nav>
           </div>
 
-          <div className="mt-8 pt-8 border-t border-indigo-500/10 text-center text-sm text-gray-500">
+          <div className="mt-8 pt-8 border-t border-gold/10 text-center text-sm text-gray-500">
             <p>
               {tLegal('copyright', { siteName: SITE_CONFIG.name, creator: 'Ahmed Karim aka PedroKarim' })}
             </p>
@@ -163,7 +163,7 @@ export default async function CodesPage() {
                 href="https://ascencia.re/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-indigo-400 hover:text-indigo-300 ml-1"
+                className="text-gold hover:text-gold ml-1"
               >
                 {tLegal('ascenciaCredit')}
               </a>
@@ -171,7 +171,7 @@ export default async function CodesPage() {
             <p className="mt-3">
               <Link
                 href="/changelog"
-                className="text-indigo-400 hover:text-indigo-300 transition-colors"
+                className="text-gold hover:text-gold transition-colors"
               >
                 {tCommon('viewChangelog')}
               </Link>

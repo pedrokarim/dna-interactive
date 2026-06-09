@@ -116,56 +116,56 @@ export default function ImageZoomModal({
     >
       {/* Contrôles en haut */}
       <div
-        className="absolute top-4 left-1/2 transform -translate-x-1/2 z-[100000] flex items-center gap-2 bg-slate-900/90 backdrop-blur-md rounded-lg px-4 py-2 border border-indigo-500/30"
+        className="absolute top-4 left-1/2 transform -translate-x-1/2 z-[100000] flex items-center gap-2 bg-panel/90 backdrop-blur-md rounded-lg px-4 py-2 border border-gold/30"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={handleZoomOut}
           disabled={zoom <= 0.5}
-          className="p-2 bg-indigo-600/80 hover:bg-indigo-600 rounded-lg text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="p-2 bg-gold/80 hover:bg-gold rounded-lg text-parch transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           title={t("zoomOut")}
         >
           <ZoomOut className="w-5 h-5" />
         </button>
-        <span className="text-white text-sm font-medium min-w-[60px] text-center">
+        <span className="text-parch text-sm font-medium min-w-[60px] text-center">
           {Math.round(zoom * 100)}%
         </span>
         <button
           onClick={handleZoomIn}
           disabled={zoom >= 5}
-          className="p-2 bg-indigo-600/80 hover:bg-indigo-600 rounded-lg text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="p-2 bg-gold/80 hover:bg-gold rounded-lg text-parch transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           title={t("zoomIn")}
         >
           <ZoomIn className="w-5 h-5" />
         </button>
-        <div className="w-px h-6 bg-indigo-500/30" />
+        <div className="w-px h-6 bg-gold/30" />
         <button
           onClick={handleRotate}
-          className="p-2 bg-indigo-600/80 hover:bg-indigo-600 rounded-lg text-white transition-colors"
+          className="p-2 bg-gold/80 hover:bg-gold rounded-lg text-parch transition-colors"
           title={t("rotate")}
         >
           <RotateCw className="w-5 h-5" />
         </button>
-        <div className="w-px h-6 bg-indigo-500/30" />
+        <div className="w-px h-6 bg-gold/30" />
         <button
           onClick={handleDownload}
-          className="p-2 bg-green-600/80 hover:bg-green-600 rounded-lg text-white transition-colors"
+          className="p-2 bg-anemo/80 hover:bg-anemo rounded-lg text-parch transition-colors"
           title={t("download")}
         >
           <Download className="w-5 h-5" />
         </button>
-        <div className="w-px h-6 bg-indigo-500/30" />
+        <div className="w-px h-6 bg-gold/30" />
         <button
           onClick={handleReset}
-          className="px-3 py-2 bg-slate-700/80 hover:bg-slate-700 rounded-lg text-white text-sm transition-colors"
+          className="px-3 py-2 bg-white/10 hover:bg-white/10 rounded-lg text-parch text-sm transition-colors"
           title={t("reset")}
         >
           {t("reset")}
         </button>
-        <div className="w-px h-6 bg-indigo-500/30" />
+        <div className="w-px h-6 bg-gold/30" />
         <button
           onClick={onClose}
-          className="p-2 bg-red-600/80 hover:bg-red-600 rounded-lg text-white transition-colors"
+          className="p-2 bg-crimson-bright/80 hover:bg-crimson-bright rounded-lg text-parch transition-colors"
           title={t("closeEsc")}
         >
           <X className="w-5 h-5" />
@@ -205,7 +205,7 @@ export default function ImageZoomModal({
 
       {/* Instructions en bas */}
       <div
-        className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-[100000] bg-slate-900/90 backdrop-blur-md rounded-lg px-4 py-2 border border-indigo-500/30 text-white text-xs text-center"
+        className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-[100000] bg-panel/90 backdrop-blur-md rounded-lg px-4 py-2 border border-gold/30 text-parch text-xs text-center"
         onClick={(e) => e.stopPropagation()}
       >
         <p>

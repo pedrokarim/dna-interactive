@@ -45,17 +45,17 @@ export default function ChangelogModal({
       {/* Dialog */}
       <div className="fixed inset-0 z-[210] flex items-center justify-center p-4">
         <div
-          className="bg-slate-950/95 backdrop-blur-md rounded-lg border border-indigo-500/40 shadow-[0_20px_60px_rgba(0,0,0,0.8)] max-w-4xl w-full max-h-[90vh] flex flex-col"
+          className="bg-ink/95 backdrop-blur-md rounded-lg border border-gold/40 shadow-[0_20px_60px_rgba(0,0,0,0.8)] max-w-4xl w-full max-h-[90vh] flex flex-col"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header */}
-          <div className="flex items-center justify-between p-6 border-b border-indigo-500/20">
+          <div className="flex items-center justify-between p-6 border-b border-gold/20">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-linear-to-br from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center">
-                <Sparkles className="w-6 h-6 text-white" />
+              <div className="w-12 h-12 bg-linear-to-br from-gold to-electro rounded-lg flex items-center justify-center">
+                <Sparkles className="w-6 h-6 text-parch" />
               </div>
               <div>
-                <h3 className="text-xl font-bold text-white">{t("title")}</h3>
+                <h3 className="text-xl font-bold text-parch">{t("title")}</h3>
                 <p className="text-sm text-gray-400">
                   {t("description")}
                 </p>
@@ -63,7 +63,7 @@ export default function ChangelogModal({
             </div>
             <button
               onClick={onClose}
-              className="text-gray-400 hover:text-white transition-colors"
+              className="text-gray-400 hover:text-parch transition-colors"
             >
               <svg
                 className="w-5 h-5"
@@ -94,28 +94,28 @@ export default function ChangelogModal({
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3, delay: index * 0.05 }}
-                    className={`bg-linear-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border ${config.borderColor} rounded-xl p-5 hover:border-indigo-400/40 transition-all duration-300`}
+                    className={`bg-linear-to-br from-panel/50 to-panel/50 backdrop-blur-sm border ${config.borderColor} rounded-xl p-5 hover:border-gold/40 transition-all duration-300`}
                   >
                     <div className="flex items-start gap-4 mb-4">
                       <div
                         className={`w-12 h-12 bg-linear-to-br ${config.color} rounded-lg flex items-center justify-center shrink-0`}
                       >
-                        <IconComponent className="w-6 h-6 text-white" />
+                        <IconComponent className="w-6 h-6 text-parch" />
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-2 flex-wrap">
-                          <h4 className="text-lg font-bold text-white">
+                          <h4 className="text-lg font-bold text-parch">
                             {entry.title}
                           </h4>
                           <span
-                            className={`px-3 py-1 rounded-full text-xs font-semibold ${config.bgColor} border ${config.borderColor} text-white`}
+                            className={`px-3 py-1 rounded-full text-xs font-semibold ${config.bgColor} border ${config.borderColor} text-parch`}
                           >
                             {config.label}
                           </span>
                         </div>
                         <div className="flex items-center gap-4 text-sm text-gray-400 mb-2">
                           <span className="flex items-center gap-1">
-                            <span className="font-semibold text-indigo-400">
+                            <span className="font-semibold text-gold">
                               v{entry.version}
                             </span>
                           </span>
@@ -140,7 +140,7 @@ export default function ChangelogModal({
                           key={itemIndex}
                           className="flex items-start gap-3 text-sm text-gray-300"
                         >
-                          <span className="text-indigo-400 mt-1 shrink-0">
+                          <span className="text-gold mt-1 shrink-0">
                             •
                           </span>
                           <span className="leading-relaxed">{item}</span>
@@ -154,10 +154,10 @@ export default function ChangelogModal({
           </div>
 
           {/* Footer */}
-          <div className="p-6 border-t border-indigo-500/20">
+          <div className="p-6 border-t border-gold/20">
             <button
               onClick={onClose}
-              className="w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600/80 hover:bg-indigo-600 rounded-md transition-colors border border-indigo-500/50"
+              className="w-full px-4 py-2 text-sm font-medium text-parch bg-gold/80 hover:bg-gold rounded-md transition-colors border border-gold/50"
             >
               {tCommon("close")}
             </button>

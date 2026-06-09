@@ -105,14 +105,14 @@ export default function ImportModal({
       {/* Dialog */}
       <div className="fixed inset-0 z-[210] flex items-center justify-center p-4">
         <div
-          className="bg-slate-950/95 backdrop-blur-md rounded-lg border border-indigo-500/40 shadow-[0_20px_60px_rgba(0,0,0,0.8)] max-w-md w-full p-6"
+          className="bg-ink/95 backdrop-blur-md rounded-lg border border-gold/40 shadow-[0_20px_60px_rgba(0,0,0,0.8)] max-w-md w-full p-6"
           onClick={(e) => e.stopPropagation()}
         >
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-bold text-white">{t("title")}</h3>
+            <h3 className="text-lg font-bold text-parch">{t("title")}</h3>
             <button
               onClick={handleClose}
-              className="text-gray-400 hover:text-white transition-colors"
+              className="text-gray-400 hover:text-parch transition-colors"
             >
               <svg
                 className="w-5 h-5"
@@ -142,8 +142,8 @@ export default function ImportModal({
             onClick={handleClick}
             className={`border-2 border-dashed rounded-lg p-8 text-center transition-all cursor-pointer ${
               isDragging
-                ? "border-indigo-500 bg-indigo-500/10 scale-105"
-                : "border-indigo-500/30 bg-slate-800/30 hover:border-indigo-500/50 hover:bg-slate-800/50"
+                ? "border-gold bg-gold/10 scale-105"
+                : "border-gold/30 bg-panel/30 hover:border-gold/50 hover:bg-panel/50"
             }`}
           >
             <input
@@ -157,7 +157,7 @@ export default function ImportModal({
             <div className="flex flex-col items-center">
               <svg
                 className={`w-12 h-12 mb-4 transition-colors ${
-                  isDragging ? "text-indigo-400" : "text-indigo-500/50"
+                  isDragging ? "text-gold" : "text-gold/50"
                 }`}
                 fill="none"
                 stroke="currentColor"
@@ -172,12 +172,12 @@ export default function ImportModal({
               </svg>
 
               {isDragging ? (
-                <p className="text-indigo-400 font-medium">
+                <p className="text-gold font-medium">
                   {t("releaseToImport")}
                 </p>
               ) : (
                 <>
-                  <p className="text-white font-medium mb-1">
+                  <p className="text-parch font-medium mb-1">
                     {t("dropHere")}
                   </p>
                   <p className="text-gray-400 text-sm">
@@ -194,8 +194,8 @@ export default function ImportModal({
 
           {/* Error message */}
           {error && (
-            <div className="mt-4 p-3 bg-red-500/10 border border-red-500/30 rounded-lg">
-              <p className="text-red-400 text-sm">{error}</p>
+            <div className="mt-4 p-3 bg-crimson-bright/10 border border-crimson-bright/30 rounded-lg">
+              <p className="text-crimson-bright text-sm">{error}</p>
             </div>
           )}
 
@@ -203,7 +203,7 @@ export default function ImportModal({
           <div className="flex gap-3 justify-end mt-6">
             <button
               onClick={handleClose}
-              className="px-4 py-2 text-sm font-medium text-gray-300 bg-slate-800/50 hover:bg-slate-700/50 rounded-md transition-colors border border-indigo-500/20"
+              className="px-4 py-2 text-sm font-medium text-gray-300 bg-panel/50 hover:bg-white/10 rounded-md transition-colors border border-gold/20"
             >
               {tCommon("cancel")}
             </button>
