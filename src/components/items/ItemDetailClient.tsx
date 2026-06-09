@@ -38,31 +38,31 @@ function RawFieldsSection({ fieldEntries }: { fieldEntries: [string, ItemRawFiel
   const ti = useTranslations('itemDetail');
 
   return (
-    <section className="rounded-xl border border-slate-700/70 bg-slate-900/55">
+    <section className="rounded-xl border border-white/10 bg-panel/55">
       <button
         type="button"
         onClick={() => setOpen((prev) => !prev)}
         className="flex w-full items-center justify-between p-5 text-left"
       >
-        <h2 className="text-lg font-semibold text-white">{ti('rawFieldsTitle')}</h2>
+        <h2 className="text-lg font-semibold text-parch">{ti('rawFieldsTitle')}</h2>
         <ChevronDown
-          className={`h-5 w-5 text-slate-400 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+          className={`h-5 w-5 text-muted transition-transform duration-200 ${open ? "rotate-180" : ""}`}
         />
       </button>
       {open && (
-        <div className="overflow-x-auto border-t border-slate-700/70 px-5 pb-5">
-          <table className="min-w-full divide-y divide-slate-700 text-left text-sm">
+        <div className="overflow-x-auto border-t border-white/10 px-5 pb-5">
+          <table className="min-w-full divide-y divide-white/10 text-left text-sm">
             <thead>
-              <tr className="text-slate-400">
+              <tr className="text-muted">
                 <th className="py-2 pr-4 font-medium">Field</th>
                 <th className="py-2 font-medium">Value</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800">
+            <tbody className="divide-y divide-panel">
               {fieldEntries.map(([field, value]) => (
                 <tr key={field}>
-                  <td className="whitespace-nowrap py-2 pr-4 text-slate-300">{field}</td>
-                  <td className="py-2 text-slate-100">{formatRawFieldValue(value)}</td>
+                  <td className="whitespace-nowrap py-2 pr-4 text-parch/85">{field}</td>
+                  <td className="py-2 text-parch">{formatRawFieldValue(value)}</td>
                 </tr>
               ))}
             </tbody>
@@ -165,10 +165,10 @@ function renderTextWithDynamicMentions(
     const inlineValue = resolved !== undefined ? formatDynamicNumber(resolved) : fullToken;
     parts.push(
       <span key={`mention-${start}-${fullToken}`} className="group relative inline-flex align-middle">
-        <span className="mx-0.5 rounded-md border border-indigo-400/35 bg-indigo-500/20 px-1.5 py-0.5 font-medium text-indigo-100">
+        <span className="mx-0.5 rounded-md border border-gold/35 bg-gold/20 px-1.5 py-0.5 font-medium text-gold">
           {inlineValue}
         </span>
-        <span className="pointer-events-none absolute left-1/2 top-full z-20 mt-1 hidden -translate-x-1/2 whitespace-nowrap rounded-md border border-slate-700/90 bg-slate-950/95 px-2 py-1 text-[11px] text-slate-100 shadow-[0_8px_20px_rgba(2,6,23,0.45)] group-hover:block">
+        <span className="pointer-events-none absolute left-1/2 top-full z-20 mt-1 hidden -translate-x-1/2 whitespace-nowrap rounded-md border border-white/10 bg-ink/95 px-2 py-1 text-[11px] text-parch shadow-[0_8px_20px_rgba(2,6,23,0.45)] group-hover:block">
           {resolved !== undefined
             ? `#${index} | Niveau ${level}: ${formatDynamicNumber(resolved)}`
             : `#${index} | Niveau ${level}: valeur indisponible`}
@@ -427,12 +427,12 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
 
   return (
     <div className="space-y-4 md:space-y-8">
-      <section className="rounded-2xl border border-indigo-500/20 bg-slate-900/60 p-4 md:p-6 shadow-[0_20px_45px_rgba(15,23,42,0.45)] backdrop-blur-sm">
+      <section className="rounded-2xl border border-gold/20 bg-panel/60 p-4 md:p-6 shadow-[0_20px_45px_rgba(15,23,42,0.45)] backdrop-blur-sm">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex flex-wrap items-center gap-2">
             <Link
               href={`/items/${category.slug}`}
-              className="inline-flex items-center gap-2 rounded-lg border border-slate-600/80 px-3 py-2 text-sm text-slate-200 transition-colors hover:border-indigo-400/40 hover:text-white"
+              className="inline-flex items-center gap-2 rounded-lg border border-white/10 px-3 py-2 text-sm text-parch transition-colors hover:border-gold/40 hover:text-parch"
             >
               <ArrowLeft className="h-4 w-4" />
               {tc('backToList')}
@@ -442,26 +442,26 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
               onClick={() => toggleItemFavorite(favoriteKey)}
               className={`inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors ${
                 isFavorite
-                  ? "text-rose-300 hover:text-rose-200"
-                  : "text-slate-300 hover:text-rose-300"
+                  ? "text-crimson-bright hover:text-crimson-bright"
+                  : "text-parch/85 hover:text-crimson-bright"
               }`}
             >
-              <Heart className={`h-4 w-4 ${isFavorite ? "fill-rose-400 text-rose-400" : ""}`} />
+              <Heart className={`h-4 w-4 ${isFavorite ? "fill-crimson-bright text-crimson-bright" : ""}`} />
               {isFavorite ? tc('removeFavorite') : tc('addFavorite')}
             </button>
           </div>
 
-          <div className="flex items-center gap-2 rounded-lg border border-slate-700/70 bg-slate-950/60 px-3 py-2">
-            <Languages className="h-4 w-4 text-indigo-400/80" />
+          <div className="flex items-center gap-2 rounded-lg border border-white/10 bg-ink/60 px-3 py-2">
+            <Languages className="h-4 w-4 text-gold/80" />
             <select
               value={selectedLanguage}
               onChange={(event) => {
                 setSelectedLanguage(event.target.value);
               }}
-              className="bg-transparent text-sm text-slate-100 outline-none"
+              className="bg-transparent text-sm text-parch outline-none"
             >
               {category.availableLanguages.map((code) => (
-                <option key={code} value={code} className="bg-slate-900">
+                <option key={code} value={code} className="bg-panel">
                   {getLanguageLabel(code)}
                 </option>
               ))}
@@ -470,7 +470,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
         </div>
 
         <div className="mt-4 md:mt-6 flex flex-col gap-4 md:gap-6 lg:flex-row">
-          <div className="flex h-28 w-28 md:h-36 md:w-36 shrink-0 mx-auto lg:mx-0 items-center justify-center rounded-2xl border border-indigo-500/25 bg-slate-950/70 p-4">
+          <div className="flex h-28 w-28 md:h-36 md:w-36 shrink-0 mx-auto lg:mx-0 items-center justify-center rounded-2xl border border-gold/25 bg-ink/70 p-4">
             <img
               src={iconSrc}
               alt={`${category.technicalName} ${item.modId}`}
@@ -479,10 +479,10 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
           </div>
 
           <div className="min-w-0 flex-1 space-y-3 text-center lg:text-left">
-            <p className="text-xs uppercase tracking-[0.28em] text-indigo-400/80">
+            <p className="text-xs uppercase tracking-[0.28em] text-gold/80">
               {category.technicalName} #{item.modId}
             </p>
-            <h1 className="text-2xl md:text-3xl font-semibold text-white">
+            <h1 className="text-2xl md:text-3xl font-semibold text-parch">
               <span className="inline-flex items-center gap-2">
                 {elementalAffinity?.iconSrc ? (
                   <img
@@ -495,23 +495,23 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
                 <span>{translation.modName ?? `${category.displayName} ${item.modId}`}</span>
               </span>
             </h1>
-            <p className="text-sm text-slate-300">
+            <p className="text-sm text-parch/85">
               {translation.demonWedgeName
                 ? `${category.displayName} ${translation.demonWedgeName}`
                 : translation.functionLabel ??
                   (isModsCategory ? "No Demon Wedge translation for this language." : category.displayName)}
             </p>
             <div className="flex flex-wrap justify-center lg:justify-start gap-1.5 md:gap-2 text-xs">
-              <span className="rounded-full border border-slate-600/80 px-3 py-1 text-slate-300">
+              <span className="rounded-full border border-white/10 px-3 py-1 text-parch/85">
                 ID {item.modId}
               </span>
               {typeof item.stats.rarity === "number" && (
-                <span className="rounded-full border border-slate-600/80 px-3 py-1 text-slate-300">
+                <span className="rounded-full border border-white/10 px-3 py-1 text-parch/85">
                   Rarity {item.stats.rarity}
                 </span>
               )}
               {hasAffinityData ? (
-                <span className="inline-flex items-center gap-2 rounded-full border border-slate-600/80 px-3 py-1 text-slate-300">
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/10 px-3 py-1 text-parch/85">
                 {affinityIconSrc ? (
                   <img
                     src={affinityIconSrc}
@@ -526,7 +526,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
                 </span>
               ) : null}
               {elementalAffinity ? (
-                <span className="inline-flex items-center gap-2 rounded-full border border-cyan-500/35 bg-cyan-500/10 px-3 py-1 text-cyan-100">
+                <span className="inline-flex items-center gap-2 rounded-full border border-hydro/35 bg-hydro/10 px-3 py-1 text-hydro">
                   {elementalAffinity.iconSrc ? (
                     <img
                       src={elementalAffinity.iconSrc}
@@ -538,27 +538,27 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
                 </span>
               ) : null}
               {typeof item.stats.maxLevel === "number" && (
-                <span className="rounded-full border border-slate-600/80 px-3 py-1 text-slate-300">
+                <span className="rounded-full border border-white/10 px-3 py-1 text-parch/85">
                   Max Level {item.stats.maxLevel}
                 </span>
               )}
               {typeof item.stats.cost === "number" && (
-                <span className="rounded-full border border-slate-600/80 px-3 py-1 text-slate-300">
+                <span className="rounded-full border border-white/10 px-3 py-1 text-parch/85">
                   Cost {item.stats.cost}
                 </span>
               )}
               {hasScalingData ? (
-                <span className="rounded-full border border-indigo-500/40 bg-indigo-500/10 px-3 py-1 text-indigo-100">
+                <span className="rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-gold">
                   Niveau actif {selectedLevel}
                 </span>
               ) : null}
               {isModsCategory ? (
-                <span className="rounded-full border border-slate-600/80 px-3 py-1 text-slate-300">
+                <span className="rounded-full border border-white/10 px-3 py-1 text-parch/85">
                   Tolerance {selectedTolerance ?? "N/A"}
                 </span>
               ) : null}
               {item.variants?.isPremium ? (
-                <span className="rounded-full border border-amber-500/50 bg-amber-500/10 px-3 py-1 text-amber-100">
+                <span className="rounded-full border border-gold/50 bg-gold/10 px-3 py-1 text-gold">
                   Premium
                 </span>
               ) : null}
@@ -567,8 +567,8 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
         </div>
 
         {isGenimonsCategory && variantSiblings.length > 1 ? (
-          <section className="mt-4 md:mt-5 rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
-            <h2 className="text-base md:text-lg font-semibold text-white">Variantes</h2>
+          <section className="mt-4 md:mt-5 rounded-xl border border-white/10 bg-panel/55 p-3 md:p-5">
+            <h2 className="text-base md:text-lg font-semibold text-parch">Variantes</h2>
             <div className="mt-3 md:mt-4 grid grid-cols-2 gap-2 md:gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
               {variantSiblings.map((sibling) => {
                 const isCurrent = sibling.id === item.id;
@@ -581,17 +581,17 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
                     href={`/items/${category.slug}/${sibling.id}`}
                     className={`flex items-center gap-3 rounded-lg border px-3 py-2 transition-colors ${
                       isCurrent
-                        ? "border-indigo-500/50 bg-indigo-500/10"
-                        : "border-slate-700/60 bg-slate-950/55 hover:border-indigo-400/40"
-                    } ${siblingIsPremium ? "ring-1 ring-amber-500/30" : ""}`}
+                        ? "border-gold/50 bg-gold/10"
+                        : "border-white/10 bg-ink/55 hover:border-gold/40"
+                    } ${siblingIsPremium ? "ring-1 ring-gold/30" : ""}`}
                   >
                     <img src={siblingIcon} alt="" className="h-10 w-10 shrink-0 object-contain" />
                     <div className="min-w-0">
-                      <p className="truncate text-sm font-medium text-slate-100">
+                      <p className="truncate text-sm font-medium text-parch">
                         {siblingTranslation.modName ?? `#${sibling.modId}`}
                       </p>
                       {siblingIsPremium ? (
-                        <span className="text-xs text-amber-300">Premium</span>
+                        <span className="text-xs text-gold">Premium</span>
                       ) : null}
                     </div>
                   </Link>
@@ -602,13 +602,13 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
         ) : null}
 
         {hasScalingData ? (
-          <div className="mt-4 max-w-xl rounded-lg border border-slate-700/70 bg-slate-950/55 px-3 py-2.5">
+          <div className="mt-4 max-w-xl rounded-lg border border-white/10 bg-ink/55 px-3 py-2.5">
             <div className="flex flex-wrap items-center justify-between gap-2">
-              <p className="flex items-center gap-1.5 text-xs font-medium text-slate-100">
-                <SlidersHorizontal className="h-3.5 w-3.5 text-indigo-400/80" />
+              <p className="flex items-center gap-1.5 text-xs font-medium text-parch">
+                <SlidersHorizontal className="h-3.5 w-3.5 text-gold/80" />
                 Niveau de progression
               </p>
-              <p className="text-xs text-slate-300">
+              <p className="text-xs text-parch/85">
                 Lv {selectedLevel} / {sliderMaxLevel}
               </p>
             </div>
@@ -623,10 +623,10 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
                 const nextLevel = nearestAllowedLevel(requested, levelOptions);
                 void setSelectedLevelRaw(nextLevel);
               }}
-              className="mt-2 w-full accent-indigo-400"
+              className="mt-2 w-full accent-gold"
               aria-label={`Niveau du ${category.technicalName}`}
             />
-            <div className="mt-1 flex flex-wrap gap-x-3 gap-y-1 text-[11px] text-slate-400">
+            <div className="mt-1 flex flex-wrap gap-x-3 gap-y-1 text-[11px] text-muted">
               <span>Defaut {item.scaling.defaultLevel}</span>
               <span>Max {item.scaling.maxLevel}</span>
               <span>Dyn {dynamicValueEntries.length}</span>
@@ -636,9 +636,9 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
       </section>
 
       <section className="grid gap-3 md:gap-4 lg:grid-cols-3">
-        <div className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5 lg:col-span-2">
-          <h2 className="text-base md:text-lg font-semibold text-white">Description</h2>
-          <p className="mt-3 whitespace-pre-wrap text-sm leading-relaxed text-slate-300">
+        <div className="rounded-xl border border-white/10 bg-panel/55 p-3 md:p-5 lg:col-span-2">
+          <h2 className="text-base md:text-lg font-semibold text-parch">Description</h2>
+          <p className="mt-3 whitespace-pre-wrap text-sm leading-relaxed text-parch/85">
             {translation.description
               ? renderTextWithDynamicMentions(
                   translation.description,
@@ -648,13 +648,13 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
               : "No description available in the selected language."}
           </p>
           {showPassiveDescription ? (
-            <div className="mt-5 border-t border-slate-700/70 pt-4">
-              <h3 className="text-sm font-medium uppercase tracking-[0.18em] text-slate-400">
+            <div className="mt-5 border-t border-white/10 pt-4">
+              <h3 className="text-sm font-medium uppercase tracking-[0.18em] text-muted">
                 {isModsCategory
                   ? `Description effet passif (niveau ${selectedLevel})`
                   : "Description trait passif"}
               </h3>
-              <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed text-slate-300">
+              <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed text-parch/85">
                 {translation.passiveEffectsDescription
                   ? renderTextWithDynamicMentions(
                       translation.passiveEffectsDescription,
@@ -664,12 +664,12 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
                   : "No passive effects description available in the selected language."}
               </p>
               {passiveDescriptionHasDynamicTokens ? (
-                <p className="mt-2 text-xs text-slate-500">
+                <p className="mt-2 text-xs text-muted-2">
                   Survole les valeurs en surbrillance pour voir le token source <code>#n</code>.
                 </p>
               ) : null}
-              <details className="mt-3 rounded-lg border border-slate-700/70 bg-slate-950/55 p-3">
-                <summary className="cursor-pointer select-none text-xs uppercase tracking-[0.18em] text-slate-300">
+              <details className="mt-3 rounded-lg border border-white/10 bg-ink/55 p-3">
+                <summary className="cursor-pointer select-none text-xs uppercase tracking-[0.18em] text-parch/85">
                   {isModsCategory
                     ? `Variables dynamiques (niveau ${selectedLevel})`
                     : "Variables dynamiques"}
@@ -679,13 +679,13 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
                     dynamicValueEntries.map(([index, value]) => (
                       <span
                         key={`dynamic-${index}`}
-                        className="rounded-full border border-indigo-500/35 bg-indigo-500/10 px-2.5 py-1 text-xs text-indigo-100"
+                        className="rounded-full border border-gold/35 bg-gold/10 px-2.5 py-1 text-xs text-gold"
                       >
                         #{index} = {formatDynamicNumber(value)}
                       </span>
                     ))
                   ) : (
-                    <span className="text-xs text-slate-500">Aucune variable dynamique pour ce niveau.</span>
+                    <span className="text-xs text-muted-2">Aucune variable dynamique pour ce niveau.</span>
                   )}
                 </div>
               </details>
@@ -693,26 +693,26 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
           ) : null}
 
           {isModsCategory ? (
-            <div className="mt-5 border-t border-slate-700/70 pt-4">
-              <h3 className="text-sm font-medium uppercase tracking-[0.18em] text-slate-400">
+            <div className="mt-5 border-t border-white/10 pt-4">
+              <h3 className="text-sm font-medium uppercase tracking-[0.18em] text-muted">
                 Attributs resolus (niveau {selectedLevel})
               </h3>
               {selectedLevelAttributesVisible.length === 0 ? (
-                <p className="mt-2 text-sm text-slate-500">Aucun attribut scalable detecte.</p>
+                <p className="mt-2 text-sm text-muted-2">Aucun attribut scalable detecte.</p>
               ) : (
                 <div className="mt-3 space-y-2">
                   {selectedLevelAttributesVisible.map((attribute, index) => (
                     <div
                       key={`resolved-attr-${attribute.attrName ?? "unknown"}-${index}`}
-                      className="rounded-lg border border-slate-700/60 bg-slate-950/60 px-3 py-2"
+                      className="rounded-lg border border-white/10 bg-ink/60 px-3 py-2"
                     >
-                      <p className="text-sm font-medium text-slate-100">{attribute.attrName ?? "Attr"}</p>
+                      <p className="text-sm font-medium text-parch">{attribute.attrName ?? "Attr"}</p>
                       {attribute.allowModMultiplier && (
-                        <p className="text-xs text-slate-500">
+                        <p className="text-xs text-muted-2">
                           Multiplicateur: {attribute.allowModMultiplier}
                         </p>
                       )}
-                      <p className="mt-1 text-sm text-indigo-100">{formatResolvedAttributeValue(attribute)}</p>
+                      <p className="mt-1 text-sm text-gold">{formatResolvedAttributeValue(attribute)}</p>
                     </div>
                   ))}
                 </div>
@@ -721,12 +721,12 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
           ) : null}
 
           {isGenimonsCategory ? (
-            <div className="mt-5 border-t border-slate-700/70 pt-4">
-              <h3 className="text-sm font-medium uppercase tracking-[0.18em] text-slate-400">
+            <div className="mt-5 border-t border-white/10 pt-4">
+              <h3 className="text-sm font-medium uppercase tracking-[0.18em] text-muted">
                 Attributs du trait passif
               </h3>
               {genimonAttributes.length === 0 ? (
-                <p className="mt-2 text-sm text-slate-500">Aucun attribut resolu detecte.</p>
+                <p className="mt-2 text-sm text-muted-2">Aucun attribut resolu detecte.</p>
               ) : (
                 <div className="mt-3 space-y-2">
                   {genimonAttributes.map((attribute, index) => {
@@ -740,10 +740,10 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
                     return (
                       <div
                         key={`genimon-attr-${attribute.attrName}-${index}`}
-                        className="rounded-lg border border-slate-700/60 bg-slate-950/60 px-3 py-2"
+                        className="rounded-lg border border-white/10 bg-ink/60 px-3 py-2"
                       >
-                        <p className="text-sm font-medium text-slate-100">{attribute.attrName}</p>
-                        <p className="mt-1 text-sm text-indigo-100">
+                        <p className="text-sm font-medium text-parch">{attribute.attrName}</p>
+                        <p className="mt-1 text-sm text-gold">
                           {pieces.length > 0
                             ? renderTextWithDynamicMentions(
                                 pieces.join(" | "),
@@ -761,36 +761,36 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
           ) : null}
         </div>
 
-        <div className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
-          <h2 className="text-base md:text-lg font-semibold text-white">Localized Info</h2>
+        <div className="rounded-xl border border-white/10 bg-panel/55 p-3 md:p-5">
+          <h2 className="text-base md:text-lg font-semibold text-parch">Localized Info</h2>
           <dl className="mt-3 md:mt-4 space-y-2 md:space-y-3 text-sm">
             <div>
-              <dt className="text-slate-400">Label fonction</dt>
-              <dd className="text-slate-100">{translation.functionLabel ?? "N/A"}</dd>
+              <dt className="text-muted">Label fonction</dt>
+              <dd className="text-parch">{translation.functionLabel ?? "N/A"}</dd>
             </div>
             {resourceSType ? (
               <div>
-                <dt className="text-slate-400">Type ressource</dt>
-                <dd className="text-slate-100">{resourceSType}</dd>
+                <dt className="text-muted">Type ressource</dt>
+                <dd className="text-parch">{resourceSType}</dd>
               </div>
             ) : null}
             {isModsCategory ? (
               <>
                 <div>
-                  <dt className="text-slate-400">Nom archive</dt>
-                  <dd className="text-slate-100">{translation.archiveName ?? "N/A"}</dd>
+                  <dt className="text-muted">Nom archive</dt>
+                  <dd className="text-parch">{translation.archiveName ?? "N/A"}</dd>
                 </div>
                 <div>
-                  <dt className="text-slate-400">Affinite</dt>
-                  <dd className="text-slate-100">
+                  <dt className="text-muted">Affinite</dt>
+                  <dd className="text-parch">
                     {translation.affinityName ?? "N/A"}
                     {item.affinity.char ? ` (${item.affinity.char})` : ""}
                   </dd>
                 </div>
                 {elementalAffinity ? (
                   <div>
-                    <dt className="text-slate-400">Affinite elementaire</dt>
-                    <dd className="inline-flex items-center gap-2 text-slate-100">
+                    <dt className="text-muted">Affinite elementaire</dt>
+                    <dd className="inline-flex items-center gap-2 text-parch">
                       {elementalAffinity.iconSrc ? (
                         <img
                           src={elementalAffinity.iconSrc}
@@ -803,68 +803,68 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
                   </div>
                 ) : null}
                 <div>
-                  <dt className="text-slate-400">PassiveEffects</dt>
-                  <dd className="text-slate-100">{passiveEffectsRaw}</dd>
+                  <dt className="text-muted">PassiveEffects</dt>
+                  <dd className="text-parch">{passiveEffectsRaw}</dd>
                 </div>
                 <div>
-                  <dt className="text-slate-400">Archive id</dt>
-                  <dd className="text-slate-100">{item.archiveId ?? "N/A"}</dd>
+                  <dt className="text-muted">Archive id</dt>
+                  <dd className="text-parch">{item.archiveId ?? "N/A"}</dd>
                 </div>
                 <div>
-                  <dt className="text-slate-400">Tolerance (niveau {selectedLevel})</dt>
-                  <dd className="text-slate-100">{selectedTolerance ?? "N/A"}</dd>
+                  <dt className="text-muted">Tolerance (niveau {selectedLevel})</dt>
+                  <dd className="text-parch">{selectedTolerance ?? "N/A"}</dd>
                 </div>
               </>
             ) : null}
             {isGenimonsCategory ? (
               <>
                 <div>
-                  <dt className="text-slate-400">Battle Pet ID</dt>
-                  <dd className="text-slate-100">{battlePetId ?? "N/A"}</dd>
+                  <dt className="text-muted">Battle Pet ID</dt>
+                  <dd className="text-parch">{battlePetId ?? "N/A"}</dd>
                 </div>
                 <div>
-                  <dt className="text-slate-400">Support Skill ID</dt>
-                  <dd className="text-slate-100">{supportSkillId ?? "N/A"}</dd>
+                  <dt className="text-muted">Support Skill ID</dt>
+                  <dd className="text-parch">{supportSkillId ?? "N/A"}</dd>
                 </div>
                 <div>
-                  <dt className="text-slate-400">Battle Pet Type</dt>
-                  <dd className="text-slate-100">{battlePetType ?? "N/A"}</dd>
+                  <dt className="text-muted">Battle Pet Type</dt>
+                  <dd className="text-parch">{battlePetType ?? "N/A"}</dd>
                 </div>
                 <div>
-                  <dt className="text-slate-400">Trait key</dt>
-                  <dd className="text-slate-100">{item.textKeys.passiveEffectsDescKey ?? "N/A"}</dd>
+                  <dt className="text-muted">Trait key</dt>
+                  <dd className="text-parch">{item.textKeys.passiveEffectsDescKey ?? "N/A"}</dd>
                 </div>
                 <div>
-                  <dt className="text-slate-400">PassiveEffects (raw)</dt>
-                  <dd className="text-slate-100">{passiveEffectsRaw}</dd>
+                  <dt className="text-muted">PassiveEffects (raw)</dt>
+                  <dd className="text-parch">{passiveEffectsRaw}</dd>
                 </div>
                 <div>
-                  <dt className="text-slate-400">Paliers ascension</dt>
-                  <dd className="text-slate-100">
+                  <dt className="text-muted">Paliers ascension</dt>
+                  <dd className="text-parch">
                     {genimonBreakLevels.length > 0 ? genimonBreakLevels.join(" / ") : "N/A"}
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-slate-400">Etapes ascension</dt>
-                  <dd className="text-slate-100">
+                  <dt className="text-muted">Etapes ascension</dt>
+                  <dd className="text-parch">
                     {genimonBreakEntryNums.length > 0 ? genimonBreakEntryNums.join(", ") : "N/A"}
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-slate-400">EXP collecte (rupture)</dt>
-                  <dd className="text-slate-100">{genimonCollectRewardExp ?? "N/A"}</dd>
+                  <dt className="text-muted">EXP collecte (rupture)</dt>
+                  <dd className="text-parch">{genimonCollectRewardExp ?? "N/A"}</dd>
                 </div>
                 <div>
-                  <dt className="text-slate-400">EXP max du niveau max</dt>
-                  <dd className="text-slate-100">{genimonMaxLevelExp ?? "N/A"}</dd>
+                  <dt className="text-muted">EXP max du niveau max</dt>
+                  <dd className="text-parch">{genimonMaxLevelExp ?? "N/A"}</dd>
                 </div>
                 <div>
-                  <dt className="text-slate-400">EXP totale vers niveau max</dt>
-                  <dd className="text-slate-100">{genimonTotalExpAtMax ?? "N/A"}</dd>
+                  <dt className="text-muted">EXP totale vers niveau max</dt>
+                  <dd className="text-parch">{genimonTotalExpAtMax ?? "N/A"}</dd>
                 </div>
                 <div>
-                  <dt className="text-slate-400">AddModMultiplier (resolu)</dt>
-                  <dd className="whitespace-pre-wrap text-slate-100">
+                  <dt className="text-muted">AddModMultiplier (resolu)</dt>
+                  <dd className="whitespace-pre-wrap text-parch">
                     {resolvedAddModMultiplier ?? "N/A"}
                   </dd>
                 </div>
@@ -876,48 +876,48 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
       </section>
 
       <section className="grid gap-3 md:gap-4 lg:grid-cols-2">
-        <div className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
-          <h2 className="flex items-center gap-2 text-base md:text-lg font-semibold text-white">
-            <Tag className="h-4 w-4 text-indigo-400/80" />
+        <div className="rounded-xl border border-white/10 bg-panel/55 p-3 md:p-5">
+          <h2 className="flex items-center gap-2 text-base md:text-lg font-semibold text-parch">
+            <Tag className="h-4 w-4 text-gold/80" />
             Text keys
           </h2>
           <dl className="mt-3 md:mt-4 space-y-2 md:space-y-3 text-sm">
             {textKeyRows.map((row) => (
               <div key={row.label}>
-                <dt className="text-slate-400">{row.label}</dt>
-                <dd className="text-slate-100">{row.value ?? "N/A"}</dd>
+                <dt className="text-muted">{row.label}</dt>
+                <dd className="text-parch">{row.value ?? "N/A"}</dd>
               </div>
             ))}
           </dl>
         </div>
 
-        <div className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
-          <h2 className="flex items-center gap-2 text-base md:text-lg font-semibold text-white">
-            <Database className="h-4 w-4 text-indigo-400/80" />
+        <div className="rounded-xl border border-white/10 bg-panel/55 p-3 md:p-5">
+          <h2 className="flex items-center gap-2 text-base md:text-lg font-semibold text-parch">
+            <Database className="h-4 w-4 text-gold/80" />
             Technical
           </h2>
           <dl className="mt-3 md:mt-4 space-y-2 md:space-y-3 text-sm">
             <div>
-              <dt className="text-slate-400">id</dt>
-              <dd className="text-slate-100">{item.id}</dd>
+              <dt className="text-muted">id</dt>
+              <dd className="text-parch">{item.id}</dd>
             </div>
             <div>
-              <dt className="text-slate-400">game icon path</dt>
-              <dd className="break-all text-slate-100">{item.icon.gamePath ?? "N/A"}</dd>
+              <dt className="text-muted">game icon path</dt>
+              <dd className="break-all text-parch">{item.icon.gamePath ?? "N/A"}</dd>
             </div>
             <div>
-              <dt className="text-slate-400">public icon path</dt>
-              <dd className="break-all text-slate-100">{item.icon.publicPath ?? "N/A"}</dd>
+              <dt className="text-muted">public icon path</dt>
+              <dd className="break-all text-parch">{item.icon.publicPath ?? "N/A"}</dd>
             </div>
             {isModsCategory ? (
               <>
                 <div>
-                  <dt className="text-slate-400">affinity icon path</dt>
-                  <dd className="break-all text-slate-100">{item.affinity.icon.publicPath ?? "N/A"}</dd>
+                  <dt className="text-muted">affinity icon path</dt>
+                  <dd className="break-all text-parch">{item.affinity.icon.publicPath ?? "N/A"}</dd>
                 </div>
                 <div>
-                  <dt className="text-slate-400">tolerance base / step</dt>
-                  <dd className="text-slate-100">
+                  <dt className="text-muted">tolerance base / step</dt>
+                  <dd className="text-parch">
                     {item.tolerance.baseCost ?? "N/A"} / {item.tolerance.costChange ?? "N/A"}
                   </dd>
                 </div>
@@ -928,8 +928,8 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
       </section>
 
       {relatedDrafts.length > 0 && (
-        <section className="rounded-xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-5">
-          <h2 className="text-base md:text-lg font-semibold text-white">Plans associes</h2>
+        <section className="rounded-xl border border-white/10 bg-panel/55 p-3 md:p-5">
+          <h2 className="text-base md:text-lg font-semibold text-parch">Plans associes</h2>
           <div className="mt-3 md:mt-4 space-y-2 md:space-y-3">
             {relatedDrafts.map((draft) => {
               const draftName =
@@ -940,20 +940,20 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
                 <Link
                   key={`${draft.draftId}-${draft.relation}`}
                   href={draft.href}
-                  className="flex items-center gap-3 rounded-lg border border-slate-700/60 bg-slate-950/55 px-4 py-3 transition-colors hover:border-indigo-400/40 hover:bg-slate-900/75"
+                  className="flex items-center gap-3 rounded-lg border border-white/10 bg-ink/55 px-4 py-3 transition-colors hover:border-gold/40 hover:bg-panel/75"
                 >
                   {iconSrc && (
                     <img src={iconSrc} alt="" className="h-8 w-8 shrink-0 object-contain" />
                   )}
                   <div className="min-w-0 flex-1">
-                    <p className="truncate text-sm font-medium text-slate-100">{draftName}</p>
-                    <p className="text-xs text-slate-400">
+                    <p className="truncate text-sm font-medium text-parch">{draftName}</p>
+                    <p className="text-xs text-muted">
                       Plan #{draft.draftId}
                       {" — "}
                       {draft.relation === "product" ? "Fabrique cet item" : "Utilise cet item comme ingredient"}
                     </p>
                   </div>
-                  <ChevronDown className="h-4 w-4 -rotate-90 text-slate-400" />
+                  <ChevronDown className="h-4 w-4 -rotate-90 text-muted" />
                 </Link>
               );
             })}

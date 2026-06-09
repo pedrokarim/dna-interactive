@@ -25,7 +25,7 @@ type CategoryAboutPageProps = {
 
 function GuideBadge({ icon, label }: { icon: React.ReactNode; label: string }) {
   return (
-    <span className="inline-flex items-center gap-2 rounded-full border border-slate-600/80 bg-slate-950/60 px-3 py-1 text-xs text-slate-200">
+    <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-ink/60 px-3 py-1 text-xs text-parch">
       {icon}
       {label}
     </span>
@@ -42,12 +42,12 @@ function GuideIconCard({
   sublabel?: string;
 }) {
   return (
-    <div className="rounded-xl border border-slate-700/70 bg-slate-950/65 p-3">
-      <div className="flex h-14 w-14 items-center justify-center rounded-lg border border-indigo-500/20 bg-slate-900/70 p-2">
+    <div className="rounded-xl border border-white/10 bg-ink/65 p-3">
+      <div className="flex h-14 w-14 items-center justify-center rounded-lg border border-gold/20 bg-panel/70 p-2">
         <img src={src} alt={label} className="max-h-full max-w-full object-contain" />
       </div>
-      <p className="mt-2 text-sm font-medium text-slate-100">{label}</p>
-      {sublabel ? <p className="text-xs text-slate-400">{sublabel}</p> : null}
+      <p className="mt-2 text-sm font-medium text-parch">{label}</p>
+      {sublabel ? <p className="text-xs text-muted">{sublabel}</p> : null}
     </div>
   );
 }
@@ -83,41 +83,41 @@ const TYPE_COMPAT_EXAMPLES = [
 function ModsAboutContent({ categorySlug }: { categorySlug: string }) {
   return (
     <div className="space-y-8">
-      <section className="rounded-2xl border border-cyan-400/25 bg-slate-900/65 p-8 shadow-[0_24px_55px_rgba(8,47,73,0.45)] backdrop-blur-sm">
+      <section className="rounded-2xl border border-hydro/25 bg-panel/65 p-8 shadow-[0_24px_55px_rgba(8,47,73,0.45)] backdrop-blur-sm">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <Link
             href={`/items/${categorySlug}`}
-            className="inline-flex items-center gap-2 rounded-lg border border-slate-600/80 px-3 py-2 text-sm text-slate-200 transition-colors hover:border-cyan-400/40 hover:text-white"
+            className="inline-flex items-center gap-2 rounded-lg border border-white/10 px-3 py-2 text-sm text-parch transition-colors hover:border-hydro/40 hover:text-parch"
           >
             <ArrowLeft className="h-4 w-4" />
             Retour a la liste
           </Link>
-          <GuideBadge icon={<BookOpenText className="h-3.5 w-3.5 text-cyan-300" />} label="Guide Demon Wedge" />
+          <GuideBadge icon={<BookOpenText className="h-3.5 w-3.5 text-hydro" />} label="Guide Demon Wedge" />
         </div>
 
-        <h1 className="mt-5 text-4xl font-semibold text-white">Comment fonctionnent les Demon Wedges</h1>
-        <p className="mt-3 max-w-3xl text-slate-300">
+        <h1 className="mt-5 text-4xl font-semibold text-parch">Comment fonctionnent les Demon Wedges</h1>
+        <p className="mt-3 max-w-3xl text-parch/85">
           Dans le jeu, les Demon Wedges peuvent aussi apparaitre sous le nom technique{" "}
-          <span className="text-cyan-200">MOD</span> dans certaines donnees. Cette page explique les champs
+          <span className="text-hydro">MOD</span> dans certaines donnees. Cette page explique les champs
           importants utilises sur le site: niveau, affinite, tolerance, effets dynamiques et correspondance des
           assets.
         </p>
 
         <div className="mt-5 flex flex-wrap gap-2">
-          <GuideBadge icon={<Layers className="h-3.5 w-3.5 text-indigo-300" />} label="Niveaux 0 -> MaxLevel" />
-          <GuideBadge icon={<Calculator className="h-3.5 w-3.5 text-amber-300" />} label="Tolerance = Cost + Level * CostChange" />
-          <GuideBadge icon={<Languages className="h-3.5 w-3.5 text-emerald-300" />} label="Traductions FR/EN/..." />
-          <GuideBadge icon={<Database className="h-3.5 w-3.5 text-violet-300" />} label="Infos de reference gameplay" />
+          <GuideBadge icon={<Layers className="h-3.5 w-3.5 text-gold" />} label="Niveaux 0 -> MaxLevel" />
+          <GuideBadge icon={<Calculator className="h-3.5 w-3.5 text-gold" />} label="Tolerance = Cost + Level * CostChange" />
+          <GuideBadge icon={<Languages className="h-3.5 w-3.5 text-anemo" />} label="Traductions FR/EN/..." />
+          <GuideBadge icon={<Database className="h-3.5 w-3.5 text-electro" />} label="Infos de reference gameplay" />
         </div>
       </section>
 
       <section className="grid gap-5 lg:grid-cols-3">
-        <article className="rounded-2xl border border-slate-700/70 bg-slate-900/55 p-6 lg:col-span-2">
-          <h2 className="flex items-center gap-2 text-xl font-semibold text-white">
-            <ImageIcon className="h-5 w-5 text-fuchsia-300" />
+        <article className="rounded-2xl border border-white/10 bg-panel/55 p-6 lg:col-span-2">
+          <h2 className="flex items-center gap-2 text-xl font-semibold text-parch">
+            <ImageIcon className="h-5 w-5 text-electro" />
             Vitrine visuelle Demon Wedge
           </h2>
-          <p className="mt-3 text-sm text-slate-300">
+          <p className="mt-3 text-sm text-parch/85">
             Exemples d&apos;icones Demon Wedge utilises dans la grille et la page detail. L&apos;objectif est de reconnaitre
             rapidement un Demon Wedge au premier coup d&apos;oeil.
           </p>
@@ -128,42 +128,42 @@ function ModsAboutContent({ categorySlug }: { categorySlug: string }) {
           </div>
         </article>
 
-        <article className="rounded-2xl border border-slate-700/70 bg-slate-900/55 p-6">
-          <h2 className="text-lg font-semibold text-white">Lire une fiche en 3 repères</h2>
-          <div className="mt-4 space-y-3 text-sm text-slate-300">
-            <div className="rounded-lg border border-slate-700/70 bg-slate-950/60 p-3">
-              <p className="font-medium text-slate-100">1) Icône principale</p>
-              <p className="mt-1 text-xs text-slate-400">Permet d&apos;identifier le Demon Wedge dans la grille.</p>
+        <article className="rounded-2xl border border-white/10 bg-panel/55 p-6">
+          <h2 className="text-lg font-semibold text-parch">Lire une fiche en 3 repères</h2>
+          <div className="mt-4 space-y-3 text-sm text-parch/85">
+            <div className="rounded-lg border border-white/10 bg-ink/60 p-3">
+              <p className="font-medium text-parch">1) Icône principale</p>
+              <p className="mt-1 text-xs text-muted">Permet d&apos;identifier le Demon Wedge dans la grille.</p>
             </div>
-            <div className="rounded-lg border border-slate-700/70 bg-slate-950/60 p-3">
-              <p className="font-medium text-slate-100">2) Affinite / polarite</p>
-              <p className="mt-1 text-xs text-slate-400">
+            <div className="rounded-lg border border-white/10 bg-ink/60 p-3">
+              <p className="font-medium text-parch">2) Affinite / polarite</p>
+              <p className="mt-1 text-xs text-muted">
                 Le symbole a cote du nom indique le type d&apos;affinite du Demon Wedge.
               </p>
             </div>
-            <div className="rounded-lg border border-slate-700/70 bg-slate-950/60 p-3">
-              <p className="font-medium text-slate-100">3) Niveau actif</p>
-              <p className="mt-1 text-xs text-slate-400">
+            <div className="rounded-lg border border-white/10 bg-ink/60 p-3">
+              <p className="font-medium text-parch">3) Niveau actif</p>
+              <p className="mt-1 text-xs text-muted">
                 Le slider du detail fait varier les valeurs dynamiques #1, #2, #3.
               </p>
             </div>
           </div>
           <div className="mt-4 grid grid-cols-4 gap-2">
-            <img src="/assets/items/mods/T_Armory_Polarity01.png" alt="Polarity 1" className="h-9 w-9 rounded-md border border-slate-700/70 bg-slate-950/70 p-1 object-contain" />
-            <img src="/assets/items/mods/T_Armory_Polarity02.png" alt="Polarity 2" className="h-9 w-9 rounded-md border border-slate-700/70 bg-slate-950/70 p-1 object-contain" />
-            <img src="/assets/items/mods/T_Armory_Polarity03.png" alt="Polarity 3" className="h-9 w-9 rounded-md border border-slate-700/70 bg-slate-950/70 p-1 object-contain" />
-            <img src="/assets/items/mods/T_Armory_Polarity04.png" alt="Polarity 4" className="h-9 w-9 rounded-md border border-slate-700/70 bg-slate-950/70 p-1 object-contain" />
+            <img src="/assets/items/mods/T_Armory_Polarity01.png" alt="Polarity 1" className="h-9 w-9 rounded-md border border-white/10 bg-ink/70 p-1 object-contain" />
+            <img src="/assets/items/mods/T_Armory_Polarity02.png" alt="Polarity 2" className="h-9 w-9 rounded-md border border-white/10 bg-ink/70 p-1 object-contain" />
+            <img src="/assets/items/mods/T_Armory_Polarity03.png" alt="Polarity 3" className="h-9 w-9 rounded-md border border-white/10 bg-ink/70 p-1 object-contain" />
+            <img src="/assets/items/mods/T_Armory_Polarity04.png" alt="Polarity 4" className="h-9 w-9 rounded-md border border-white/10 bg-ink/70 p-1 object-contain" />
           </div>
         </article>
       </section>
 
       <section className="grid gap-5 lg:grid-cols-3">
-        <article className="rounded-2xl border border-slate-700/70 bg-slate-900/55 p-5 lg:col-span-2">
-          <h2 className="flex items-center gap-2 text-xl font-semibold text-white">
-            <BadgeInfo className="h-5 w-5 text-cyan-300" />
+        <article className="rounded-2xl border border-white/10 bg-panel/55 p-5 lg:col-span-2">
+          <h2 className="flex items-center gap-2 text-xl font-semibold text-parch">
+            <BadgeInfo className="h-5 w-5 text-hydro" />
             1) Structure d&apos;un Demon Wedge
           </h2>
-          <ul className="mt-4 space-y-3 text-sm text-slate-300">
+          <ul className="mt-4 space-y-3 text-sm text-parch/85">
             <li>
               Chaque Demon Wedge possede un nom, une description, une rarete, une affinite et un niveau max.
             </li>
@@ -180,29 +180,29 @@ function ModsAboutContent({ categorySlug }: { categorySlug: string }) {
           </ul>
         </article>
 
-        <article className="rounded-2xl border border-slate-700/70 bg-slate-900/55 p-5">
-          <h2 className="text-lg font-semibold text-white">Affinites, polarites et compatibilites</h2>
-          <p className="mt-3 text-sm text-slate-300">
+        <article className="rounded-2xl border border-white/10 bg-panel/55 p-5">
+          <h2 className="text-lg font-semibold text-parch">Affinites, polarites et compatibilites</h2>
+          <p className="mt-3 text-sm text-parch/85">
             La fiche detail combine plusieurs reperes visuels: symbole de polarite, affinite elementaire et tags de
             compatibilite du type de personnage/arme.
           </p>
 
           <div className="mt-4">
-            <p className="mb-2 text-xs uppercase tracking-[0.22em] text-slate-400">Polarite</p>
+            <p className="mb-2 text-xs uppercase tracking-[0.22em] text-muted">Polarite</p>
             <div className="grid grid-cols-2 gap-2">
-              <div className="flex items-center gap-2 rounded-lg border border-slate-700/70 bg-slate-950/60 p-2 text-xs text-slate-200">
+              <div className="flex items-center gap-2 rounded-lg border border-white/10 bg-ink/60 p-2 text-xs text-parch">
                 <img src="/assets/items/mods/T_Armory_Polarity01.png" alt="Polarity 1" className="h-6 w-6 object-contain" />
                 Polarity 1
               </div>
-              <div className="flex items-center gap-2 rounded-lg border border-slate-700/70 bg-slate-950/60 p-2 text-xs text-slate-200">
+              <div className="flex items-center gap-2 rounded-lg border border-white/10 bg-ink/60 p-2 text-xs text-parch">
                 <img src="/assets/items/mods/T_Armory_Polarity02.png" alt="Polarity 2" className="h-6 w-6 object-contain" />
                 Polarity 2
               </div>
-              <div className="flex items-center gap-2 rounded-lg border border-slate-700/70 bg-slate-950/60 p-2 text-xs text-slate-200">
+              <div className="flex items-center gap-2 rounded-lg border border-white/10 bg-ink/60 p-2 text-xs text-parch">
                 <img src="/assets/items/mods/T_Armory_Polarity03.png" alt="Polarity 3" className="h-6 w-6 object-contain" />
                 Polarity 3
               </div>
-              <div className="flex items-center gap-2 rounded-lg border border-slate-700/70 bg-slate-950/60 p-2 text-xs text-slate-200">
+              <div className="flex items-center gap-2 rounded-lg border border-white/10 bg-ink/60 p-2 text-xs text-parch">
                 <img src="/assets/items/mods/T_Armory_Polarity04.png" alt="Polarity 4" className="h-6 w-6 object-contain" />
                 Polarity 4
               </div>
@@ -210,12 +210,12 @@ function ModsAboutContent({ categorySlug }: { categorySlug: string }) {
           </div>
 
           <div className="mt-4">
-            <p className="mb-2 text-xs uppercase tracking-[0.22em] text-slate-400">Affinites elementaires</p>
+            <p className="mb-2 text-xs uppercase tracking-[0.22em] text-muted">Affinites elementaires</p>
             <div className="grid grid-cols-3 gap-2">
               {AFFINITY_EXAMPLES.map((entry) => (
                 <div
                   key={entry.src}
-                  className="flex items-center gap-2 rounded-lg border border-slate-700/70 bg-slate-950/60 p-2 text-xs text-slate-200"
+                  className="flex items-center gap-2 rounded-lg border border-white/10 bg-ink/60 p-2 text-xs text-parch"
                 >
                   <img src={entry.src} alt={entry.label} className="h-5 w-5 object-contain" />
                   {entry.label}
@@ -225,12 +225,12 @@ function ModsAboutContent({ categorySlug }: { categorySlug: string }) {
           </div>
 
           <div className="mt-4">
-            <p className="mb-2 text-xs uppercase tracking-[0.22em] text-slate-400">Type compatible</p>
+            <p className="mb-2 text-xs uppercase tracking-[0.22em] text-muted">Type compatible</p>
             <div className="grid grid-cols-2 gap-2">
               {TYPE_COMPAT_EXAMPLES.map((entry) => (
                 <div
                   key={entry.src}
-                  className="flex items-center gap-2 rounded-lg border border-slate-700/70 bg-slate-950/60 p-2 text-xs text-slate-200"
+                  className="flex items-center gap-2 rounded-lg border border-white/10 bg-ink/60 p-2 text-xs text-parch"
                 >
                   <img src={entry.src} alt={entry.label} className="h-5 w-5 object-contain" />
                   {entry.label}
@@ -242,59 +242,59 @@ function ModsAboutContent({ categorySlug }: { categorySlug: string }) {
       </section>
 
       <section className="grid gap-5 lg:grid-cols-2">
-        <article className="rounded-2xl border border-slate-700/70 bg-slate-900/55 p-6">
-          <h2 className="flex items-center gap-2 text-xl font-semibold text-white">
-            <SlidersHorizontal className="h-5 w-5 text-indigo-300" />
+        <article className="rounded-2xl border border-white/10 bg-panel/55 p-6">
+          <h2 className="flex items-center gap-2 text-xl font-semibold text-parch">
+            <SlidersHorizontal className="h-5 w-5 text-gold" />
             2) Niveaux et valeurs dynamiques
           </h2>
-          <p className="mt-3 text-sm leading-relaxed text-slate-300">
+          <p className="mt-3 text-sm leading-relaxed text-parch/85">
             Les valeurs <code>#1</code>, <code>#2</code>, etc. changent selon le niveau du Demon Wedge. Le slider dans
             la page detail applique ces valeurs depuis la table de croissance et affiche l&apos;effet au niveau choisi.
           </p>
-          <div className="mt-4 rounded-xl border border-indigo-500/25 bg-indigo-500/10 p-4 text-sm text-indigo-100">
+          <div className="mt-4 rounded-xl border border-gold/25 bg-gold/10 p-4 text-sm text-gold">
             Niveau par defaut = <code>0</code> (piece non montee)<br />
             Niveau max = <code>MaxLevel</code>
           </div>
         </article>
 
-        <article className="rounded-2xl border border-slate-700/70 bg-slate-900/55 p-6">
-          <h2 className="flex items-center gap-2 text-xl font-semibold text-white">
-            <Calculator className="h-5 w-5 text-amber-300" />
+        <article className="rounded-2xl border border-white/10 bg-panel/55 p-6">
+          <h2 className="flex items-center gap-2 text-xl font-semibold text-parch">
+            <Calculator className="h-5 w-5 text-gold" />
             3) Tolerance / cout
           </h2>
-          <p className="mt-3 text-sm leading-relaxed text-slate-300">
+          <p className="mt-3 text-sm leading-relaxed text-parch/85">
             La tolerance affichee evolue avec le niveau. Le calcul expose dans les donnees est:
           </p>
-          <div className="mt-4 rounded-xl border border-amber-500/25 bg-amber-500/10 p-4 font-mono text-sm text-amber-100">
+          <div className="mt-4 rounded-xl border border-gold/25 bg-gold/10 p-4 font-mono text-sm text-gold">
             tolerance(level) = Cost + level * CostChange
           </div>
-          <p className="mt-3 text-xs text-slate-400">
+          <p className="mt-3 text-xs text-muted">
             Le site pre-calcule les valeurs par niveau et les place dans <code>tolerance.valuesByLevel</code>.
           </p>
         </article>
       </section>
 
       <section className="grid gap-5 lg:grid-cols-2">
-        <article className="rounded-2xl border border-slate-700/70 bg-slate-900/55 p-6">
-          <h2 className="flex items-center gap-2 text-xl font-semibold text-white">
-            <Languages className="h-5 w-5 text-emerald-300" />
+        <article className="rounded-2xl border border-white/10 bg-panel/55 p-6">
+          <h2 className="flex items-center gap-2 text-xl font-semibold text-parch">
+            <Languages className="h-5 w-5 text-anemo" />
             4) Multi-langue
           </h2>
-          <p className="mt-3 text-sm leading-relaxed text-slate-300">
+          <p className="mt-3 text-sm leading-relaxed text-parch/85">
             Sur la grille: tu peux afficher plusieurs langues en meme temps pour comparer les noms. Sur le detail:
             une langue unique peut etre choisie et partagee via l&apos;URL.
           </p>
-          <p className="mt-3 text-xs text-slate-400">
+          <p className="mt-3 text-xs text-muted">
             Les langues actuellement disponibles dependent du dataset charge pour la categorie.
           </p>
         </article>
 
-        <article className="rounded-2xl border border-slate-700/70 bg-slate-900/55 p-6">
-          <h2 className="flex items-center gap-2 text-xl font-semibold text-white">
-            <Wrench className="h-5 w-5 text-violet-300" />
+        <article className="rounded-2xl border border-white/10 bg-panel/55 p-6">
+          <h2 className="flex items-center gap-2 text-xl font-semibold text-parch">
+            <Wrench className="h-5 w-5 text-electro" />
             5) Ce que le site affiche
           </h2>
-          <ul className="mt-3 space-y-2 text-sm text-slate-300">
+          <ul className="mt-3 space-y-2 text-sm text-parch/85">
             <li>
               Informations generales du Demon Wedge (nom, rarete, fonction, description)
             </li>
@@ -314,24 +314,24 @@ function ModsAboutContent({ categorySlug }: { categorySlug: string }) {
         </article>
       </section>
 
-      <section className="rounded-2xl border border-indigo-500/25 bg-linear-to-r from-indigo-500/10 via-slate-900/40 to-fuchsia-500/10 p-6">
-        <h2 className="flex items-center gap-2 text-xl font-semibold text-white">
-          <Zap className="h-5 w-5 text-indigo-300" />
+      <section className="rounded-2xl border border-gold/25 bg-linear-to-r from-gold/10 via-panel/40 to-electro/10 p-6">
+        <h2 className="flex items-center gap-2 text-xl font-semibold text-parch">
+          <Zap className="h-5 w-5 text-gold" />
           Lecture rapide d&apos;un Demon Wedge dans le site
         </h2>
-        <p className="mt-3 text-sm text-slate-200">
+        <p className="mt-3 text-sm text-parch">
           Le parcours visuel est toujours le meme: identifier l&apos;icone, verifier l&apos;affinite, puis ajuster le
           niveau pour voir les effets dynamiques.
         </p>
         <div className="mt-5 grid gap-3 md:grid-cols-3">
-          <div className="rounded-xl border border-slate-700/70 bg-slate-950/60 p-4">
-            <p className="text-xs uppercase tracking-[0.22em] text-slate-400">Etape 1</p>
-            <p className="mt-1 text-sm font-medium text-slate-100">Identifier le Demon Wedge</p>
+          <div className="rounded-xl border border-white/10 bg-ink/60 p-4">
+            <p className="text-xs uppercase tracking-[0.22em] text-muted">Etape 1</p>
+            <p className="mt-1 text-sm font-medium text-parch">Identifier le Demon Wedge</p>
             <div className="mt-3 flex items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg border border-slate-700/70 bg-slate-900/70 p-2">
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg border border-white/10 bg-panel/70 p-2">
                 <img src="/assets/items/mods/T_Mod_Phoenix01.png" alt="Exemple Demon Wedge Phoenix" className="max-h-full max-w-full object-contain" />
               </div>
-              <div className="text-xs text-slate-400">
+              <div className="text-xs text-muted">
                 Nom + icone
                 <br />
                 directement sur la grille
@@ -339,51 +339,51 @@ function ModsAboutContent({ categorySlug }: { categorySlug: string }) {
             </div>
           </div>
 
-          <div className="rounded-xl border border-slate-700/70 bg-slate-950/60 p-4">
-            <p className="text-xs uppercase tracking-[0.22em] text-slate-400">Etape 2</p>
-            <p className="mt-1 text-sm font-medium text-slate-100">Verifier affinite et type</p>
+          <div className="rounded-xl border border-white/10 bg-ink/60 p-4">
+            <p className="text-xs uppercase tracking-[0.22em] text-muted">Etape 2</p>
+            <p className="mt-1 text-sm font-medium text-parch">Verifier affinite et type</p>
             <div className="mt-3 flex items-center gap-2">
-              <img src="/assets/items/mods/T_Armory_Fire.png" alt="Affinite Fire" className="h-7 w-7 rounded-md border border-slate-700/70 bg-slate-900/70 p-1 object-contain" />
-              <img src="/assets/items/mods/T_Armory_Polarity02.png" alt="Polarity 2" className="h-7 w-7 rounded-md border border-slate-700/70 bg-slate-900/70 p-1 object-contain" />
-              <img src="/assets/items/mods/T_Armory_RoleType_03.png" alt="Compatibilite Distance" className="h-7 w-7 rounded-md border border-slate-700/70 bg-slate-900/70 p-1 object-contain" />
+              <img src="/assets/items/mods/T_Armory_Fire.png" alt="Affinite Fire" className="h-7 w-7 rounded-md border border-white/10 bg-panel/70 p-1 object-contain" />
+              <img src="/assets/items/mods/T_Armory_Polarity02.png" alt="Polarity 2" className="h-7 w-7 rounded-md border border-white/10 bg-panel/70 p-1 object-contain" />
+              <img src="/assets/items/mods/T_Armory_RoleType_03.png" alt="Compatibilite Distance" className="h-7 w-7 rounded-md border border-white/10 bg-panel/70 p-1 object-contain" />
             </div>
           </div>
 
-          <div className="rounded-xl border border-slate-700/70 bg-slate-950/60 p-4">
-            <p className="text-xs uppercase tracking-[0.22em] text-slate-400">Etape 3</p>
-            <p className="mt-1 text-sm font-medium text-slate-100">Ajuster le niveau</p>
-            <div className="mt-3 rounded-lg border border-indigo-500/30 bg-indigo-500/10 px-3 py-2 text-xs text-indigo-100">
+          <div className="rounded-xl border border-white/10 bg-ink/60 p-4">
+            <p className="text-xs uppercase tracking-[0.22em] text-muted">Etape 3</p>
+            <p className="mt-1 text-sm font-medium text-parch">Ajuster le niveau</p>
+            <div className="mt-3 rounded-lg border border-gold/30 bg-gold/10 px-3 py-2 text-xs text-gold">
               #1 / #2 / #3 se mettent a jour
               <br />
               selon le slider de niveau
             </div>
-            <div className="mt-2 flex items-center gap-2 text-xs text-slate-400">
-              <Target className="h-3.5 w-3.5 text-indigo-300" />
+            <div className="mt-2 flex items-center gap-2 text-xs text-muted">
+              <Target className="h-3.5 w-3.5 text-gold" />
               Niveau 0 = valeur de base non montee
             </div>
           </div>
         </div>
       </section>
 
-      <section className="rounded-2xl border border-cyan-500/25 bg-linear-to-r from-cyan-500/10 to-indigo-500/10 p-6">
-        <h2 className="flex items-center gap-2 text-xl font-semibold text-white">
-          <Sparkles className="h-5 w-5 text-cyan-300" />
+      <section className="rounded-2xl border border-hydro/25 bg-linear-to-r from-hydro/10 to-gold/10 p-6">
+        <h2 className="flex items-center gap-2 text-xl font-semibold text-parch">
+          <Sparkles className="h-5 w-5 text-hydro" />
           Ce que tu peux faire ensuite
         </h2>
-        <p className="mt-3 text-sm text-slate-200">
+        <p className="mt-3 text-sm text-parch">
           Utilise la grille pour filtrer et comparer rapidement, puis ouvre un item pour voir ses valeurs dynamiques,
           sa tolerance par niveau et son affinite.
         </p>
         <div className="mt-4 flex flex-wrap gap-3">
           <Link
             href={`/items/${categorySlug}`}
-            className="inline-flex items-center gap-2 rounded-lg border border-cyan-400/35 bg-cyan-500/10 px-4 py-2 text-sm font-medium text-cyan-100 transition-colors hover:bg-cyan-500/20"
+            className="inline-flex items-center gap-2 rounded-lg border border-hydro/35 bg-hydro/10 px-4 py-2 text-sm font-medium text-hydro transition-colors hover:bg-hydro/20"
           >
             Ouvrir la grille Demon Wedge
           </Link>
           <Link
             href="/items/favoris"
-            className="inline-flex items-center gap-2 rounded-lg border border-slate-600/80 px-4 py-2 text-sm text-slate-200 transition-colors hover:border-cyan-400/40 hover:text-white"
+            className="inline-flex items-center gap-2 rounded-lg border border-white/10 px-4 py-2 text-sm text-parch transition-colors hover:border-hydro/40 hover:text-parch"
           >
             Voir mes favoris
           </Link>
@@ -402,16 +402,16 @@ function GenericCategoryAboutContent({
 }) {
   return (
     <div className="space-y-8">
-      <section className="rounded-2xl border border-indigo-500/25 bg-slate-900/65 p-8">
+      <section className="rounded-2xl border border-gold/25 bg-panel/65 p-8">
         <Link
           href={`/items/${categorySlug}`}
-          className="inline-flex items-center gap-2 rounded-lg border border-slate-600/80 px-3 py-2 text-sm text-slate-200 transition-colors hover:border-indigo-400/40 hover:text-white"
+          className="inline-flex items-center gap-2 rounded-lg border border-white/10 px-3 py-2 text-sm text-parch transition-colors hover:border-gold/40 hover:text-parch"
         >
           <ArrowLeft className="h-4 w-4" />
           Retour a la liste
         </Link>
-        <h1 className="mt-5 text-4xl font-semibold text-white">Guide {categoryTitle}</h1>
-        <p className="mt-3 max-w-3xl text-slate-300">
+        <h1 className="mt-5 text-4xl font-semibold text-parch">Guide {categoryTitle}</h1>
+        <p className="mt-3 max-w-3xl text-parch/85">
           Cette categorie est prete pour recevoir une page explicative detaillee. Le systeme est deja en place pour
           ajouter les regles, formules et visuels specifiques a chaque nouvelle famille d&apos;items.
         </p>

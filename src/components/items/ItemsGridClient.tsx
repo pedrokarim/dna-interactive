@@ -568,17 +568,17 @@ export default function ItemsGridClient({
 
   return (
     <div className="space-y-4 md:space-y-8">
-      <section className="rounded-2xl border border-indigo-500/20 bg-slate-900/55 p-4 md:p-6 shadow-[0_20px_45px_rgba(15,23,42,0.45)] backdrop-blur-sm">
+      <section className="rounded-2xl border border-gold/20 bg-panel/55 p-4 md:p-6 shadow-[0_20px_45px_rgba(15,23,42,0.45)] backdrop-blur-sm">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div>
-            <p className="text-xs uppercase tracking-[0.3em] text-indigo-400/80">
+            <p className="text-xs uppercase tracking-[0.3em] text-gold/80">
               {favoritesOnly ? tc('favorites') : t('categoryLabel')}
             </p>
-            <h1 className="mt-2 text-2xl md:text-3xl font-semibold text-white">
+            <h1 className="mt-2 text-2xl md:text-3xl font-semibold text-parch">
               {favoritesOnly ? `Favoris ${category.title}` : category.title}
             </h1>
-            <p className="mt-2 max-w-2xl text-sm text-slate-300">{category.description}</p>
-            <p className="mt-3 text-sm text-slate-400">
+            <p className="mt-2 max-w-2xl text-sm text-parch/85">{category.description}</p>
+            <p className="mt-3 text-sm text-muted">
               {favoritesOnly
                 ? t('favoritesCount', { count: filteredItems.length, total: categoryFavoriteCount })
                 : t('itemsCount', { filtered: filteredItems.length, total: items.length })}
@@ -597,21 +597,21 @@ export default function ItemsGridClient({
             />
             <Link
               href="/items"
-              className="rounded-lg border border-slate-600/70 px-4 py-2 text-sm text-slate-200 transition-colors hover:border-indigo-400/40 hover:text-white"
+              className="rounded-lg border border-white/10 px-4 py-2 text-sm text-parch transition-colors hover:border-gold/40 hover:text-parch"
             >
               {tc('backToCategories')}
             </Link>
             {favoritesOnly ? (
               <Link
                 href={`/items/${category.slug}`}
-                className="rounded-lg border border-slate-600/70 px-4 py-2 text-sm text-slate-200 transition-colors hover:border-indigo-400/40 hover:text-white"
+                className="rounded-lg border border-white/10 px-4 py-2 text-sm text-parch transition-colors hover:border-gold/40 hover:text-parch"
               >
                 {tc('backToList')}
               </Link>
             ) : (
               <Link
                 href="/items/favoris"
-                className="inline-flex items-center gap-2 rounded-lg border border-rose-500/40 bg-rose-500/10 px-4 py-2 text-sm text-rose-100 transition-colors hover:bg-rose-500/20"
+                className="inline-flex items-center gap-2 rounded-lg border border-crimson/40 bg-crimson/10 px-4 py-2 text-sm text-crimson-bright transition-colors hover:bg-crimson/20"
               >
                 <Heart className="h-4 w-4" />
                 {t('favoritesLabel', { count: categoryFavoriteCount })}
@@ -621,15 +621,15 @@ export default function ItemsGridClient({
         </div>
 
         <div className="mt-4 md:mt-6 grid gap-3 md:gap-4 lg:grid-cols-2">
-          <label className="flex items-center gap-3 rounded-xl border border-slate-700/70 bg-slate-950/60 px-3 py-2">
-            <Search className="h-4 w-4 text-indigo-400/80" />
+          <label className="flex items-center gap-3 rounded-xl border border-white/10 bg-ink/60 px-3 py-2">
+            <Search className="h-4 w-4 text-gold/80" />
             <input
               value={search}
               onChange={(event) => {
                 const value = event.target.value;
                 updateQueryFilters({ q: value, page: 1 });
               }}
-              className="w-full bg-transparent text-sm text-slate-100 outline-none placeholder:text-slate-500"
+              className="w-full bg-transparent text-sm text-parch outline-none placeholder:text-muted-2"
               placeholder={
                 isModsCategory
                   ? t('searchModsPlaceholder')
@@ -638,23 +638,23 @@ export default function ItemsGridClient({
             />
           </label>
 
-          <div className="rounded-xl border border-slate-700/70 bg-slate-950/60 p-3">
-            <div className="mb-2 flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-slate-400">
-              <Languages className="h-4 w-4 text-indigo-400/80" />
+          <div className="rounded-xl border border-white/10 bg-ink/60 p-3">
+            <div className="mb-2 flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-muted">
+              <Languages className="h-4 w-4 text-gold/80" />
               {tc('displayedLanguages')}
             </div>
             <div className="flex flex-wrap items-center gap-2">
               {selectedLanguages.map((code) => (
                 <span
                   key={code}
-                  className="inline-flex items-center gap-2 rounded-full border border-indigo-500/35 bg-indigo-500/10 px-3 py-1 text-xs text-indigo-100"
+                  className="inline-flex items-center gap-2 rounded-full border border-gold/35 bg-gold/10 px-3 py-1 text-xs text-gold"
                 >
                   {getLanguageLabel(code)}
                   {selectedLanguages.length > 1 && (
                     <button
                       type="button"
                       onClick={() => removeLanguage(code)}
-                      className="rounded-full p-0.5 text-indigo-100/80 transition-colors hover:bg-indigo-400/20 hover:text-white"
+                      className="rounded-full p-0.5 text-gold/80 transition-colors hover:bg-gold/20 hover:text-parch"
                       aria-label={`Supprimer la langue ${code}`}
                     >
                       <X className="h-3 w-3" />
@@ -665,7 +665,7 @@ export default function ItemsGridClient({
               <select
                 value=""
                 onChange={(event) => addLanguage(event.target.value)}
-                className="rounded-lg border border-slate-600/80 bg-slate-900 px-2 py-1 text-xs text-slate-200 outline-none"
+                className="rounded-lg border border-white/10 bg-panel px-2 py-1 text-xs text-parch outline-none"
               >
                 <option value="">{tc('addLanguage')}</option>
                 {unselectedLanguages.map((code) => (
@@ -681,9 +681,9 @@ export default function ItemsGridClient({
         {isModsCategory ? (
         <div className="mt-3 md:mt-4 grid gap-2 md:gap-3 grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
           {rarityOptions.length > 0 && (
-            <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2">
-              <div className="mb-1 flex items-center gap-2 text-xs text-slate-400">
-                <SlidersHorizontal className="h-3.5 w-3.5 text-indigo-400/80" />
+            <div className="rounded-lg border border-white/10 bg-ink/60 p-2">
+              <div className="mb-1 flex items-center gap-2 text-xs text-muted">
+                <SlidersHorizontal className="h-3.5 w-3.5 text-gold/80" />
                 {tc('rarity')}
               </div>
               <select
@@ -691,7 +691,7 @@ export default function ItemsGridClient({
                 onChange={(event) => {
                   updateQueryFilters({ rarity: event.target.value, page: 1 });
                 }}
-                className="w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-sm text-slate-100"
+                className="w-full rounded-md border border-white/10 bg-panel px-2 py-1.5 text-sm text-parch"
               >
                 <option value="all">{tc('allFeminine')}</option>
                 {rarityOptions.map((value) => (
@@ -704,9 +704,9 @@ export default function ItemsGridClient({
           )}
 
           {polarityOptions.length > 0 && (
-            <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2">
-              <div className="mb-1 flex items-center gap-2 text-xs text-slate-400">
-                <SlidersHorizontal className="h-3.5 w-3.5 text-indigo-400/80" />
+            <div className="rounded-lg border border-white/10 bg-ink/60 p-2">
+              <div className="mb-1 flex items-center gap-2 text-xs text-muted">
+                <SlidersHorizontal className="h-3.5 w-3.5 text-gold/80" />
                 {tc('polarity')}
               </div>
               <select
@@ -714,7 +714,7 @@ export default function ItemsGridClient({
                 onChange={(event) => {
                   updateQueryFilters({ polarity: event.target.value, page: 1 });
                 }}
-                className="w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-sm text-slate-100"
+                className="w-full rounded-md border border-white/10 bg-panel px-2 py-1.5 text-sm text-parch"
               >
                 <option value="all">{tc('allFeminine')}</option>
                 {polarityOptions.map((value) => (
@@ -727,8 +727,8 @@ export default function ItemsGridClient({
           )}
 
           {hasArchiveData && (
-            <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2">
-              <div className="mb-1 text-xs text-slate-400">{tc('archive')}</div>
+            <div className="rounded-lg border border-white/10 bg-ink/60 p-2">
+              <div className="mb-1 text-xs text-muted">{tc('archive')}</div>
               <select
                 value={archiveFilter}
                 onChange={(event) => {
@@ -737,7 +737,7 @@ export default function ItemsGridClient({
                     page: 1,
                   });
                 }}
-                className="w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-sm text-slate-100"
+                className="w-full rounded-md border border-white/10 bg-panel px-2 py-1.5 text-sm text-parch"
               >
                 <option value="all">{tc('allFeminine')}</option>
                 <option value="withArchive">{tc('withArchive')}</option>
@@ -747,8 +747,8 @@ export default function ItemsGridClient({
           )}
 
           {isModsCategory && (
-            <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2">
-              <div className="mb-1 text-xs text-slate-400">{t('newBadge')}</div>
+            <div className="rounded-lg border border-white/10 bg-ink/60 p-2">
+              <div className="mb-1 text-xs text-muted">{t('newBadge')}</div>
               <select
                 value={newFilter}
                 onChange={(event) => {
@@ -757,7 +757,7 @@ export default function ItemsGridClient({
                     page: 1,
                   });
                 }}
-                className="w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-sm text-slate-100"
+                className="w-full rounded-md border border-white/10 bg-panel px-2 py-1.5 text-sm text-parch"
               >
                 <option value="all">{tc('all')}</option>
                 <option value="newOnly">{t('newOnly')}</option>
@@ -766,14 +766,14 @@ export default function ItemsGridClient({
           )}
 
           {itemTypeOptions.length > 0 && (
-            <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2">
-              <div className="mb-1 text-xs text-slate-400">{tc('type')}</div>
+            <div className="rounded-lg border border-white/10 bg-ink/60 p-2">
+              <div className="mb-1 text-xs text-muted">{tc('type')}</div>
               <select
                 value={itemTypeFilter}
                 onChange={(event) => {
                   updateQueryFilters({ itype: event.target.value, page: 1 });
                 }}
-                className="w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-sm text-slate-100"
+                className="w-full rounded-md border border-white/10 bg-panel px-2 py-1.5 text-sm text-parch"
               >
                 <option value="all">{tc('all')}</option>
                 {itemTypeOptions.map((value) => (
@@ -786,14 +786,14 @@ export default function ItemsGridClient({
           )}
 
           {itemSubTypeOptions.length > 0 && (
-            <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2">
-              <div className="mb-1 text-xs text-slate-400">{tc('subType')}</div>
+            <div className="rounded-lg border border-white/10 bg-ink/60 p-2">
+              <div className="mb-1 text-xs text-muted">{tc('subType')}</div>
               <select
                 value={itemSubTypeFilter}
                 onChange={(event) => {
                   updateQueryFilters({ isub: event.target.value, page: 1 });
                 }}
-                className="w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-sm text-slate-100"
+                className="w-full rounded-md border border-white/10 bg-panel px-2 py-1.5 text-sm text-parch"
               >
                 <option value="all">{tc('all')}</option>
                 {itemSubTypeOptions.map((value) => (
@@ -805,8 +805,8 @@ export default function ItemsGridClient({
             </div>
           )}
 
-          <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2">
-            <div className="mb-1 text-xs text-slate-400">{tc('sort')}</div>
+          <div className="rounded-lg border border-white/10 bg-ink/60 p-2">
+            <div className="mb-1 text-xs text-muted">{tc('sort')}</div>
             <select
               value={sortMode}
               onChange={(event) => {
@@ -815,7 +815,7 @@ export default function ItemsGridClient({
                   page: 1,
                 });
               }}
-              className="w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-sm text-slate-100"
+              className="w-full rounded-md border border-white/10 bg-panel px-2 py-1.5 text-sm text-parch"
             >
               <option value="id">{t('sortById')}</option>
               <option value="rarityAsc">{t('sortRarityAsc')}</option>
@@ -828,7 +828,7 @@ export default function ItemsGridClient({
           {rarityOptions.length > 0 ? (
             <FilterChips
               label={tc('rarity')}
-              icon={<SlidersHorizontal className="h-3.5 w-3.5 text-indigo-400/80" />}
+              icon={<SlidersHorizontal className="h-3.5 w-3.5 text-gold/80" />}
               options={rarityOptions.map((value) => ({ value: String(value), label: String(value) }))}
               value={rarityFilter}
               onChange={(value) => updateQueryFilters({ rarity: value, page: 1 })}
@@ -838,7 +838,7 @@ export default function ItemsGridClient({
           {polarityOptions.length > 0 ? (
             <FilterChips
               label={tc('polarity')}
-              icon={<SlidersHorizontal className="h-3.5 w-3.5 text-indigo-400/80" />}
+              icon={<SlidersHorizontal className="h-3.5 w-3.5 text-gold/80" />}
               options={polarityOptions.map((value) => ({
                 value: String(value),
                 label: String(value),
@@ -855,7 +855,7 @@ export default function ItemsGridClient({
           {itemTypeOptions.length > 0 ? (
             <FilterChips
               label={tc('type')}
-              icon={<SlidersHorizontal className="h-3.5 w-3.5 text-indigo-400/80" />}
+              icon={<SlidersHorizontal className="h-3.5 w-3.5 text-gold/80" />}
               options={itemTypeOptions.map((value) => ({ value, label: value }))}
               value={itemTypeFilter}
               onChange={(value) => updateQueryFilters({ itype: value, page: 1 })}
@@ -865,7 +865,7 @@ export default function ItemsGridClient({
           {itemSubTypeOptions.length > 0 ? (
             <FilterChips
               label={tc('subType')}
-              icon={<SlidersHorizontal className="h-3.5 w-3.5 text-indigo-400/80" />}
+              icon={<SlidersHorizontal className="h-3.5 w-3.5 text-gold/80" />}
               options={itemSubTypeOptions.map((value) => ({ value, label: value }))}
               value={itemSubTypeFilter}
               onChange={(value) => updateQueryFilters({ isub: value, page: 1 })}
@@ -874,8 +874,8 @@ export default function ItemsGridClient({
           ) : null}
           <div className="grid gap-2 md:gap-3 sm:grid-cols-2">
             {hasArchiveData ? (
-              <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2">
-                <div className="mb-1 text-xs text-slate-400">{tc('archive')}</div>
+              <div className="rounded-lg border border-white/10 bg-ink/60 p-2">
+                <div className="mb-1 text-xs text-muted">{tc('archive')}</div>
                 <select
                   value={archiveFilter}
                   onChange={(event) => {
@@ -884,7 +884,7 @@ export default function ItemsGridClient({
                       page: 1,
                     });
                   }}
-                  className="w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-sm text-slate-100"
+                  className="w-full rounded-md border border-white/10 bg-panel px-2 py-1.5 text-sm text-parch"
                 >
                   <option value="all">{tc('allFeminine')}</option>
                   <option value="withArchive">{tc('withArchive')}</option>
@@ -892,8 +892,8 @@ export default function ItemsGridClient({
                 </select>
               </div>
             ) : null}
-            <div className="rounded-lg border border-slate-700/60 bg-slate-950/60 p-2">
-              <div className="mb-1 text-xs text-slate-400">{tc('sort')}</div>
+            <div className="rounded-lg border border-white/10 bg-ink/60 p-2">
+              <div className="mb-1 text-xs text-muted">{tc('sort')}</div>
               <select
                 value={sortMode}
                 onChange={(event) => {
@@ -902,7 +902,7 @@ export default function ItemsGridClient({
                     page: 1,
                   });
                 }}
-                className="w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-sm text-slate-100"
+                className="w-full rounded-md border border-white/10 bg-panel px-2 py-1.5 text-sm text-parch"
               >
                 <option value="id">{t('sortById')}</option>
                 <option value="rarityAsc">{t('sortRarityAsc')}</option>
@@ -913,14 +913,14 @@ export default function ItemsGridClient({
         </div>
         )}
 
-        <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-slate-700/60 bg-slate-950/60 px-3 py-2 text-sm text-slate-300">
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-white/10 bg-ink/60 px-3 py-2 text-sm text-parch/85">
           <p>
             {tc('displayRange', { start: filteredItems.length === 0 ? 0 : pageStart + 1, end: Math.min(pageEnd, filteredItems.length), total: filteredItems.length })}
           </p>
           <button
             type="button"
             onClick={resetFilters}
-            className="rounded-md border border-slate-700 px-3 py-1 text-xs text-slate-300 transition-colors hover:border-indigo-400/40 hover:text-white"
+            className="rounded-md border border-white/10 px-3 py-1 text-xs text-parch/85 transition-colors hover:border-gold/40 hover:text-parch"
           >
             {tc('resetFilters')}
           </button>
@@ -928,13 +928,13 @@ export default function ItemsGridClient({
       </section>
 
       {filteredItems.length === 0 ? (
-        <div className="rounded-xl border border-slate-700 bg-slate-900/45 p-6 md:p-10 text-center">
-          <p className="text-base md:text-lg text-slate-200">
+        <div className="rounded-xl border border-white/10 bg-panel/45 p-6 md:p-10 text-center">
+          <p className="text-base md:text-lg text-parch">
             {favoritesOnly
               ? t('noFavoriteResults')
               : t('noItemResults')}
           </p>
-          <p className="mt-2 text-sm text-slate-400">
+          <p className="mt-2 text-sm text-muted">
             {favoritesOnly
               ? t('noFavoriteResultsHint')
               : t('noItemResultsHint')}
@@ -958,10 +958,10 @@ export default function ItemsGridClient({
               <Link
                 key={item.id}
                 href={`/items/${category.slug}/${item.id}`}
-                className="group rounded-2xl border border-slate-700/70 bg-slate-900/55 p-3 md:p-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-indigo-400/40 hover:bg-slate-900/75"
+                className="group rounded-2xl border border-white/10 bg-panel/55 p-3 md:p-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-gold/40 hover:bg-panel/75"
               >
                 <div className="flex items-start gap-3">
-                  <div className="flex h-14 w-14 md:h-16 md:w-16 shrink-0 items-center justify-center rounded-xl border border-indigo-500/20 bg-slate-950/80 p-2">
+                  <div className="flex h-14 w-14 md:h-16 md:w-16 shrink-0 items-center justify-center rounded-xl border border-gold/20 bg-ink/80 p-2">
                     <div className="relative h-full w-full">
                       <div className="h-full w-full overflow-hidden rounded-lg">
                         <img
@@ -981,7 +981,7 @@ export default function ItemsGridClient({
                             modId: item.modId,
                           });
                         }}
-                        className="absolute -bottom-3 -right-3 z-10 rounded-full border border-slate-700 bg-slate-900/95 p-1 text-slate-200 shadow-sm transition-colors hover:border-indigo-400/60 hover:bg-indigo-500/80 hover:text-white"
+                        className="absolute -bottom-3 -right-3 z-10 rounded-full border border-white/10 bg-panel/95 p-1 text-parch shadow-sm transition-colors hover:border-gold/60 hover:bg-gold/80 hover:text-parch"
                         aria-label={t('zoomIcon', { id: item.modId })}
                       >
                         <ZoomIn className="h-3 w-3" />
@@ -990,11 +990,11 @@ export default function ItemsGridClient({
                   </div>
                   <div className="min-w-0 flex-1">
                     <div className="flex flex-wrap items-center gap-2">
-                      <p className="text-xs uppercase tracking-[0.22em] text-indigo-400/80">
+                      <p className="text-xs uppercase tracking-[0.22em] text-gold/80">
                         {category.technicalName} #{item.modId}
                       </p>
                       {isNew ? (
-                        <span className="rounded-full bg-amber-500/15 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-amber-300 ring-1 ring-amber-400/40">
+                        <span className="rounded-full bg-gold/15 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-gold ring-1 ring-gold/40">
                           {t('newBadge')}
                         </span>
                       ) : null}
@@ -1004,7 +1004,7 @@ export default function ItemsGridClient({
                         ? lead.demonWedgeName ? `${lead.modName} ${lead.demonWedgeName}` : lead.modName
                         : `${category.displayName} ${item.modId}`;
                       return (
-                        <h3 className="text-lg font-semibold text-white transition-colors group-hover:text-indigo-100">
+                        <h3 className="text-lg font-semibold text-parch transition-colors group-hover:text-gold">
                           <span className="flex min-w-0 items-center gap-2">
                             {elementalAffinity?.iconSrc ? (
                               <img
@@ -1021,7 +1021,7 @@ export default function ItemsGridClient({
                         </h3>
                       );
                     })()}
-                    <p className="truncate text-xs text-slate-400">
+                    <p className="truncate text-xs text-muted">
                       {lead.functionLabel ?? (isModsCategory ? "Demon Wedge" : category.displayName)}
                     </p>
                   </div>
@@ -1035,13 +1035,13 @@ export default function ItemsGridClient({
                     aria-label={isFavorite ? "Retirer des favoris" : "Ajouter aux favoris"}
                     className={`rounded-full p-1.5 transition-colors ${
                       isFavorite
-                        ? "text-rose-400 hover:text-rose-300"
-                        : "text-slate-500 hover:text-rose-300"
+                        ? "text-crimson-bright hover:text-crimson-bright"
+                        : "text-muted-2 hover:text-crimson-bright"
                     }`}
                   >
-                    <Heart className={`h-4 w-4 ${isFavorite ? "fill-rose-400 text-rose-400" : ""}`} />
+                    <Heart className={`h-4 w-4 ${isFavorite ? "fill-crimson-bright text-crimson-bright" : ""}`} />
                   </button>
-                  <ChevronRight className="mt-1 h-4 w-4 text-slate-400 transition-colors group-hover:text-indigo-300" />
+                  <ChevronRight className="mt-1 h-4 w-4 text-muted transition-colors group-hover:text-gold" />
                 </div>
 
                 <div className="mt-3 md:mt-4 space-y-2">
@@ -1050,12 +1050,12 @@ export default function ItemsGridClient({
                     return (
                       <div
                         key={`${item.id}-${langCode}`}
-                        className="rounded-lg border border-slate-700/60 bg-slate-950/55 px-3 py-2"
+                        className="rounded-lg border border-white/10 bg-ink/55 px-3 py-2"
                       >
-                        <p className="text-[10px] uppercase tracking-[0.18em] text-slate-400">
+                        <p className="text-[10px] uppercase tracking-[0.18em] text-muted">
                           {getLanguageLabel(langCode)}
                         </p>
-                        <p className="truncate text-sm font-medium text-slate-100">
+                        <p className="truncate text-sm font-medium text-parch">
                           {translation?.modName
                             ? translation?.demonWedgeName ? `${translation.modName} ${translation.demonWedgeName}` : translation.modName
                             : "N/A"}
@@ -1066,11 +1066,11 @@ export default function ItemsGridClient({
                 </div>
 
                 <div className="mt-3 md:mt-4 flex flex-wrap gap-1.5 md:gap-2 text-xs">
-                  <span className="rounded-full border border-slate-600/80 px-2 py-0.5 text-slate-300">
+                  <span className="rounded-full border border-white/10 px-2 py-0.5 text-parch/85">
                     ID {item.modId}
                   </span>
                   {elementalAffinity ? (
-                    <span className="inline-flex items-center gap-1.5 rounded-full border border-cyan-500/35 bg-cyan-500/10 px-2 py-0.5 text-cyan-100">
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-hydro/35 bg-hydro/10 px-2 py-0.5 text-hydro">
                       {elementalAffinity.iconSrc ? (
                         <img
                           src={elementalAffinity.iconSrc}
@@ -1082,22 +1082,22 @@ export default function ItemsGridClient({
                     </span>
                   ) : null}
                   {typeof item.stats.rarity === "number" && (
-                  <span className="rounded-full border border-slate-600/80 px-2 py-0.5 text-slate-300">
+                  <span className="rounded-full border border-white/10 px-2 py-0.5 text-parch/85">
                     Rarete {item.stats.rarity}
                   </span>
                   )}
                   {typeof item.stats.polarity === "number" && (
-                  <span className="rounded-full border border-slate-600/80 px-2 py-0.5 text-slate-300">
+                  <span className="rounded-full border border-white/10 px-2 py-0.5 text-parch/85">
                     Polarite {item.stats.polarity}
                   </span>
                   )}
                   {typeof item.stats.maxLevel === "number" && (
-                  <span className="rounded-full border border-slate-600/80 px-2 py-0.5 text-slate-300">
+                  <span className="rounded-full border border-white/10 px-2 py-0.5 text-parch/85">
                     Max Lv {item.stats.maxLevel}
                   </span>
                   )}
                   {typeof item.stats.cost === "number" && (
-                  <span className="rounded-full border border-slate-600/80 px-2 py-0.5 text-slate-300">
+                  <span className="rounded-full border border-white/10 px-2 py-0.5 text-parch/85">
                     Cout {item.stats.cost}
                   </span>
                   )}
@@ -1128,9 +1128,9 @@ export default function ItemsGridClient({
               <li key={item.id}>
                 <Link
                   href={`/items/${category.slug}/${item.id}`}
-                  className="group flex items-center gap-4 rounded-2xl border border-slate-700/70 bg-slate-900/55 p-3 transition-all duration-200 hover:border-indigo-400/40 hover:bg-slate-900/75"
+                  className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-panel/55 p-3 transition-all duration-200 hover:border-gold/40 hover:bg-panel/75"
                 >
-                  <div className="relative flex h-16 w-16 shrink-0 items-center justify-center rounded-xl border border-indigo-500/20 bg-slate-950/80 p-2">
+                  <div className="relative flex h-16 w-16 shrink-0 items-center justify-center rounded-xl border border-gold/20 bg-ink/80 p-2">
                     <img
                       src={iconSrc}
                       alt={displayName}
@@ -1143,7 +1143,7 @@ export default function ItemsGridClient({
                         event.stopPropagation();
                         setPreviewIcon({ src: iconSrc, alt: displayName, modId: item.modId });
                       }}
-                      className="absolute -bottom-2 -right-2 z-10 rounded-full border border-slate-700 bg-slate-900/95 p-1 text-slate-200 shadow-sm transition-colors hover:border-indigo-400/60 hover:bg-indigo-500/80 hover:text-white"
+                      className="absolute -bottom-2 -right-2 z-10 rounded-full border border-white/10 bg-panel/95 p-1 text-parch shadow-sm transition-colors hover:border-gold/60 hover:bg-gold/80 hover:text-parch"
                       aria-label={t('zoomIcon', { id: item.modId })}
                     >
                       <ZoomIn className="h-3 w-3" />
@@ -1151,10 +1151,10 @@ export default function ItemsGridClient({
                   </div>
 
                   <div className="min-w-0 flex-1">
-                    <p className="text-xs uppercase tracking-[0.22em] text-indigo-400/80">
+                    <p className="text-xs uppercase tracking-[0.22em] text-gold/80">
                       {category.technicalName} #{item.modId}
                     </p>
-                    <h3 className="flex items-center gap-2 truncate text-base font-semibold text-white transition-colors group-hover:text-indigo-100">
+                    <h3 className="flex items-center gap-2 truncate text-base font-semibold text-parch transition-colors group-hover:text-gold">
                       {elementalAffinity?.iconSrc ? (
                         <img
                           src={elementalAffinity.iconSrc}
@@ -1169,7 +1169,7 @@ export default function ItemsGridClient({
                     </h3>
                     <div className="mt-1 flex flex-wrap items-center gap-1.5 text-[11px]">
                       {elementalAffinity ? (
-                        <span className="inline-flex items-center gap-1.5 rounded-full border border-cyan-500/35 bg-cyan-500/10 px-2 py-0.5 text-cyan-100">
+                        <span className="inline-flex items-center gap-1.5 rounded-full border border-hydro/35 bg-hydro/10 px-2 py-0.5 text-hydro">
                           {elementalAffinity.iconSrc ? (
                             <img
                               src={elementalAffinity.iconSrc}
@@ -1181,12 +1181,12 @@ export default function ItemsGridClient({
                         </span>
                       ) : null}
                       {typeof item.stats.rarity === "number" ? (
-                        <span className="rounded-full border border-slate-600/80 px-2 py-0.5 text-slate-300">
+                        <span className="rounded-full border border-white/10 px-2 py-0.5 text-parch/85">
                           Rarete {item.stats.rarity}
                         </span>
                       ) : null}
                       {typeof item.stats.polarity === "number" ? (
-                        <span className="rounded-full border border-slate-600/80 px-2 py-0.5 text-slate-300">
+                        <span className="rounded-full border border-white/10 px-2 py-0.5 text-parch/85">
                           Polarite {item.stats.polarity}
                         </span>
                       ) : null}
@@ -1204,13 +1204,13 @@ export default function ItemsGridClient({
                       aria-label={isFavorite ? "Retirer des favoris" : "Ajouter aux favoris"}
                       className={`rounded-full p-1.5 transition-colors ${
                         isFavorite
-                          ? "text-rose-400 hover:text-rose-300"
-                          : "text-slate-500 hover:text-rose-300"
+                          ? "text-crimson-bright hover:text-crimson-bright"
+                          : "text-muted-2 hover:text-crimson-bright"
                       }`}
                     >
-                      <Heart className={`h-4 w-4 ${isFavorite ? "fill-rose-400 text-rose-400" : ""}`} />
+                      <Heart className={`h-4 w-4 ${isFavorite ? "fill-crimson-bright text-crimson-bright" : ""}`} />
                     </button>
-                    <ChevronRight className="h-4 w-4 text-slate-400 transition-colors group-hover:text-indigo-300" />
+                    <ChevronRight className="h-4 w-4 text-muted transition-colors group-hover:text-gold" />
                   </div>
                 </Link>
               </li>
@@ -1240,7 +1240,7 @@ export default function ItemsGridClient({
                 key={item.id}
                 href={`/items/${category.slug}/${item.id}`}
                 title={displayName}
-                className="group relative flex aspect-square flex-col overflow-hidden rounded-xl border border-slate-700/70 bg-slate-950/80 p-2 transition-all duration-200 hover:-translate-y-0.5 hover:border-indigo-400/40"
+                className="group relative flex aspect-square flex-col overflow-hidden rounded-xl border border-white/10 bg-ink/80 p-2 transition-all duration-200 hover:-translate-y-0.5 hover:border-gold/40"
               >
                 <div className="relative flex flex-1 items-center justify-center overflow-hidden">
                   <img
@@ -1249,7 +1249,7 @@ export default function ItemsGridClient({
                     className="max-h-full max-w-full object-contain transition-transform duration-200 group-hover:scale-105"
                   />
                   {elementalAffinity?.iconSrc ? (
-                    <span className="absolute left-0 top-0 inline-flex h-6 w-6 items-center justify-center rounded-full border border-white/15 bg-slate-950/70 backdrop-blur-sm">
+                    <span className="absolute left-0 top-0 inline-flex h-6 w-6 items-center justify-center rounded-full border border-white/15 bg-ink/70 backdrop-blur-sm">
                       <img
                         src={elementalAffinity.iconSrc}
                         alt={elementalAffinity.label}
@@ -1265,13 +1265,13 @@ export default function ItemsGridClient({
                       toggleItemFavorite(favoriteKey);
                     }}
                     aria-label={isFavorite ? "Retirer des favoris" : "Ajouter aux favoris"}
-                    className={`absolute right-0 top-0 z-10 rounded-full bg-slate-950/60 p-1 backdrop-blur-sm transition-all ${
+                    className={`absolute right-0 top-0 z-10 rounded-full bg-ink/60 p-1 backdrop-blur-sm transition-all ${
                       isFavorite
-                        ? "text-rose-400"
-                        : "text-slate-300 opacity-0 hover:text-rose-300 group-hover:opacity-100"
+                        ? "text-crimson-bright"
+                        : "text-parch/85 opacity-0 hover:text-crimson-bright group-hover:opacity-100"
                     }`}
                   >
-                    <Heart className={`h-3.5 w-3.5 ${isFavorite ? "fill-rose-400 text-rose-400" : ""}`} />
+                    <Heart className={`h-3.5 w-3.5 ${isFavorite ? "fill-crimson-bright text-crimson-bright" : ""}`} />
                   </button>
                   <button
                     type="button"
@@ -1280,15 +1280,15 @@ export default function ItemsGridClient({
                       event.stopPropagation();
                       setPreviewIcon({ src: iconSrc, alt: displayName, modId: item.modId });
                     }}
-                    className="absolute bottom-0 right-0 z-10 rounded-full border border-slate-700 bg-slate-900/90 p-1 text-slate-200 opacity-0 shadow-sm transition-all hover:border-indigo-400/60 hover:bg-indigo-500/80 hover:text-white group-hover:opacity-100"
+                    className="absolute bottom-0 right-0 z-10 rounded-full border border-white/10 bg-panel/90 p-1 text-parch opacity-0 shadow-sm transition-all hover:border-gold/60 hover:bg-gold/80 hover:text-parch group-hover:opacity-100"
                     aria-label={t('zoomIcon', { id: item.modId })}
                   >
                     <ZoomIn className="h-3 w-3" />
                   </button>
                 </div>
                 <div className="mt-1">
-                  <p className="truncate text-xs font-semibold text-white">{displayName}</p>
-                  <p className="truncate text-[10px] text-slate-400">
+                  <p className="truncate text-xs font-semibold text-parch">{displayName}</p>
+                  <p className="truncate text-[10px] text-muted">
                     {category.technicalName} #{item.modId}
                   </p>
                 </div>
@@ -1299,8 +1299,8 @@ export default function ItemsGridClient({
       )}
 
       {filteredItems.length > 0 && (
-        <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-700/70 bg-slate-900/50 p-3">
-          <p className="text-sm text-slate-300">
+        <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-white/10 bg-panel/50 p-3">
+          <p className="text-sm text-parch/85">
             {tc('displayRange', { start: filteredItems.length === 0 ? 0 : pageStart + 1, end: Math.min(pageEnd, filteredItems.length), total: filteredItems.length })}
           </p>
 
@@ -1310,7 +1310,7 @@ export default function ItemsGridClient({
                 type="button"
                 onClick={() => updateQueryFilters({ page: 1 })}
                 disabled={safeCurrentPage === 1}
-                className="rounded-md border border-slate-700 px-2 py-1 text-xs text-slate-200 transition-colors hover:border-indigo-400/40 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
+                className="rounded-md border border-white/10 px-2 py-1 text-xs text-parch transition-colors hover:border-gold/40 hover:text-parch disabled:cursor-not-allowed disabled:opacity-50"
                 aria-label={tc('paginationFirst')}
               >
                 {"<<"}
@@ -1322,7 +1322,7 @@ export default function ItemsGridClient({
                   updateQueryFilters({ page: nextPage });
                 }}
                 disabled={safeCurrentPage === 1}
-                className="rounded-md border border-slate-700 px-2 py-1 text-xs text-slate-200 transition-colors hover:border-indigo-400/40 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
+                className="rounded-md border border-white/10 px-2 py-1 text-xs text-parch transition-colors hover:border-gold/40 hover:text-parch disabled:cursor-not-allowed disabled:opacity-50"
                 aria-label={tc('paginationPrevious')}
               >
                 {"<"}
@@ -1332,7 +1332,7 @@ export default function ItemsGridClient({
                 page === "..." ? (
                   <span
                     key={`ellipsis-${index}`}
-                    className="px-1 text-xs text-slate-500"
+                    className="px-1 text-xs text-muted-2"
                     aria-hidden="true"
                   >
                     ...
@@ -1344,8 +1344,8 @@ export default function ItemsGridClient({
                     onClick={() => updateQueryFilters({ page })}
                     className={`rounded-md border px-2 py-1 text-xs transition-colors ${
                       page === safeCurrentPage
-                        ? "border-indigo-400/70 bg-indigo-500/25 text-indigo-100"
-                        : "border-slate-700 text-slate-200 hover:border-indigo-400/40 hover:text-white"
+                        ? "border-gold/70 bg-gold/25 text-gold"
+                        : "border-white/10 text-parch hover:border-gold/40 hover:text-parch"
                     }`}
                     aria-label={tc('paginationGoTo', { page })}
                     aria-current={page === safeCurrentPage ? "page" : undefined}
@@ -1362,7 +1362,7 @@ export default function ItemsGridClient({
                   updateQueryFilters({ page: nextPage });
                 }}
                 disabled={safeCurrentPage === totalPages}
-                className="rounded-md border border-slate-700 px-2 py-1 text-xs text-slate-200 transition-colors hover:border-indigo-400/40 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
+                className="rounded-md border border-white/10 px-2 py-1 text-xs text-parch transition-colors hover:border-gold/40 hover:text-parch disabled:cursor-not-allowed disabled:opacity-50"
                 aria-label={tc('paginationNext')}
               >
                 {">"}
@@ -1371,7 +1371,7 @@ export default function ItemsGridClient({
                 type="button"
                 onClick={() => updateQueryFilters({ page: totalPages })}
                 disabled={safeCurrentPage === totalPages}
-                className="rounded-md border border-slate-700 px-2 py-1 text-xs text-slate-200 transition-colors hover:border-indigo-400/40 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
+                className="rounded-md border border-white/10 px-2 py-1 text-xs text-parch transition-colors hover:border-gold/40 hover:text-parch disabled:cursor-not-allowed disabled:opacity-50"
                 aria-label={tc('paginationLast')}
               >
                 {">>"}
@@ -1379,7 +1379,7 @@ export default function ItemsGridClient({
             </div>
 
             <div className="flex items-center gap-2">
-              <span className="text-xs uppercase tracking-[0.18em] text-slate-400">Par page</span>
+              <span className="text-xs uppercase tracking-[0.18em] text-muted">Par page</span>
               <select
                 value={pageSize}
                 onChange={(event) => {
@@ -1388,7 +1388,7 @@ export default function ItemsGridClient({
                     page: 1,
                   });
                 }}
-                className="rounded-md border border-slate-700 bg-slate-900 px-2 py-1 text-xs text-slate-100"
+                className="rounded-md border border-white/10 bg-panel px-2 py-1 text-xs text-parch"
               >
                 <option value={12}>12</option>
                 <option value={24}>24</option>
@@ -1402,28 +1402,28 @@ export default function ItemsGridClient({
 
       {previewIcon && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-ink/80 p-4 backdrop-blur-sm"
           onClick={() => setPreviewIcon(null)}
           role="dialog"
           aria-modal="true"
           aria-label={`Apercu de l'icone ${category.technicalName} ${previewIcon.modId}`}
         >
           <div
-            className="w-full max-w-sm rounded-2xl border border-indigo-500/30 bg-slate-900/95 p-4 shadow-[0_25px_60px_rgba(2,6,23,0.65)]"
+            className="w-full max-w-sm rounded-2xl border border-gold/30 bg-panel/95 p-4 shadow-[0_25px_60px_rgba(2,6,23,0.65)]"
             onClick={(event) => event.stopPropagation()}
           >
             <div className="flex items-center justify-between gap-3">
-              <p className="text-sm font-medium text-slate-100">{previewIcon.alt}</p>
+              <p className="text-sm font-medium text-parch">{previewIcon.alt}</p>
               <button
                 type="button"
                 onClick={() => setPreviewIcon(null)}
-                className="rounded-full p-1 text-slate-300 transition-colors hover:bg-slate-800 hover:text-white"
+                className="rounded-full p-1 text-parch/85 transition-colors hover:bg-panel hover:text-parch"
                 aria-label={tc('close')}
               >
                 <X className="h-4 w-4" />
               </button>
             </div>
-            <div className="mt-3 flex h-64 items-center justify-center rounded-xl border border-indigo-500/20 bg-slate-950/80 p-4">
+            <div className="mt-3 flex h-64 items-center justify-center rounded-xl border border-gold/20 bg-ink/80 p-4">
               <img
                 src={previewIcon.src}
                 alt={previewIcon.alt}
