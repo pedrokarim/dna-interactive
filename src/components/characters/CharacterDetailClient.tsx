@@ -1633,7 +1633,7 @@ export default function CharacterDetailClient({
       {/* ================================================================= */}
       {/* Top bar + Hero section (always visible, above tabs)               */}
       {/* ================================================================= */}
-      <section className="rounded-2xl border border-gold/20 bg-panel/60 p-4 md:p-6 shadow-[0_20px_45px_rgba(15,23,42,0.45)] backdrop-blur-sm">
+      <div className="rounded-2xl border border-line/25 bg-panel/55 px-3 py-2.5 backdrop-blur-sm md:px-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex flex-wrap items-center gap-2">
             <Link
@@ -1734,9 +1734,38 @@ export default function CharacterDetailClient({
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Hero section — disposition Arsenal */}
-        <div className="mt-4 grid gap-4 md:mt-6 md:gap-5 lg:grid-cols-[1fr_360px]">
+      {/* ===== Shell Arsenal : rail d'onglets (gauche) + contenu ===== */}
+      <div className="grid grid-cols-[52px_1fr] gap-3 md:grid-cols-[60px_1fr] md:gap-4">
+        <nav className="flex flex-col items-center gap-1 self-start rounded-2xl border border-line/25 bg-panel/55 p-1.5 backdrop-blur-sm">
+          {TAB_CONFIG.map(({ id, label, icon: Icon }) => (
+            <button
+              key={id}
+              type="button"
+              onClick={() => setActiveTab(id)}
+              title={label}
+              aria-label={label}
+              aria-pressed={activeTab === id}
+              className={`relative grid h-11 w-11 place-items-center rounded-lg transition-colors ${
+                activeTab === id
+                  ? "border border-gold/40 bg-gold/20 text-gold-bright"
+                  : "border border-transparent text-muted hover:bg-panel/60 hover:text-parch"
+              }`}
+            >
+              <Icon className="h-5 w-5" />
+              {activeTab === id && (
+                <span className="absolute -left-[7px] top-1/2 h-5 w-0.5 -translate-y-1/2 rounded-full bg-gold-bright" />
+              )}
+            </button>
+          ))}
+        </nav>
+
+        <div className="min-w-0 space-y-4">
+          {/* ---------- Attributs : render + stats + détails ---------- */}
+          {activeTab === "stats" && (
+            <div className="space-y-4 md:space-y-5">
+              <div className="grid gap-4 md:gap-5 lg:grid-cols-[1fr_360px]">
           {/* Stage : render centré + bandeau nom + switch portraits */}
           <div
             className="relative flex min-h-[460px] items-center justify-center overflow-hidden rounded-2xl border border-white/10"
@@ -1954,36 +1983,8 @@ export default function CharacterDetailClient({
             </div>
           </aside>
         </div>
-      </section>
-
-      {/* ================================================================= */}
-      {/* Tab bar                                                           */}
-      {/* ================================================================= */}
-      <nav className="flex gap-1 overflow-x-auto rounded-xl border border-white/10 bg-panel/55 p-1.5">
-        {TAB_CONFIG.map(({ id, label, icon: Icon }) => (
-          <button
-            key={id}
-            type="button"
-            onClick={() => setActiveTab(id)}
-            className={`flex shrink-0 items-center gap-1.5 rounded-lg px-2.5 py-2 text-xs font-medium transition-colors md:gap-2 md:px-4 md:py-2.5 md:text-sm ${
-              activeTab === id
-                ? "border border-gold/40 bg-gold/20 text-gold"
-                : "border border-transparent text-muted hover:bg-panel/60 hover:text-parch"
-            }`}
-          >
-            <Icon className="h-4 w-4" />
-            <span className="hidden sm:inline">{label}</span>
-          </button>
-        ))}
-      </nav>
-
-      {/* ================================================================= */}
-      {/* Tab content                                                       */}
-      {/* ================================================================= */}
-
-      {/* ---------- Stats / Attributs tab ---------- */}
-      {activeTab === "stats" && (
-        <section className="space-y-3 md:space-y-5">
+              {/* — attributs détaillés (suite de l'onglet Attributs) — */}
+              <section className="space-y-3 md:space-y-5">
           {/* Level slider */}
           <div className="rounded-xl border border-white/10 bg-panel/55 p-3 md:p-5">
             <div className="flex items-center justify-between">
@@ -2222,8 +2223,9 @@ export default function CharacterDetailClient({
               </div>
             </div>
           )}
-        </section>
-      )}
+              </section>
+            </div>
+          )}
 
       {/* ---------- Build tab ---------- */}
       {activeTab === "build" && (
@@ -2770,6 +2772,8 @@ export default function CharacterDetailClient({
           </div>
         </section>
       )}
+        </div>
+      </div>
 
       {/* ================================================================= */}
       {/* Quick Build modal                                                 */}
