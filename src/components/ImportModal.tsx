@@ -112,7 +112,7 @@ export default function ImportModal({
             <h3 className="text-lg font-bold text-parch">{t("title")}</h3>
             <button
               onClick={handleClose}
-              className="text-gray-400 hover:text-parch transition-colors"
+              className="text-muted hover:text-parch transition-colors"
             >
               <svg
                 className="w-5 h-5"
@@ -130,7 +130,7 @@ export default function ImportModal({
             </button>
           </div>
 
-          <p className="text-sm text-gray-300 mb-6">
+          <p className="text-sm text-parch/85 mb-6">
             {t("description")}
           </p>
 
@@ -180,13 +180,13 @@ export default function ImportModal({
                   <p className="text-parch font-medium mb-1">
                     {t("dropHere")}
                   </p>
-                  <p className="text-gray-400 text-sm">
+                  <p className="text-muted text-sm">
                     {t("orBrowse")}
                   </p>
                 </>
               )}
 
-              <div className="mt-4 text-xs text-gray-500">
+              <div className="mt-4 text-xs text-muted-2">
                 {t("acceptedFormat")}
               </div>
             </div>
@@ -203,7 +203,7 @@ export default function ImportModal({
           <div className="flex gap-3 justify-end mt-6">
             <button
               onClick={handleClose}
-              className="px-4 py-2 text-sm font-medium text-gray-300 bg-panel/50 hover:bg-white/10 rounded-md transition-colors border border-gold/20"
+              className="px-4 py-2 text-sm font-medium text-parch/85 bg-panel/50 hover:bg-white/10 rounded-md transition-colors border border-gold/20"
             >
               {tCommon("cancel")}
             </button>

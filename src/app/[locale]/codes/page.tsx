@@ -49,19 +49,19 @@ export default async function CodesPage() {
               <nav className="flex items-center space-x-8">
                 <Link
                   href="/"
-                  className="text-gray-300 hover:text-gold transition-colors"
+                  className="text-parch/85 hover:text-gold transition-colors"
                 >
                   {tNav('home')}
                 </Link>
                 <Link
                   href="/map"
-                  className="text-gray-300 hover:text-gold transition-colors"
+                  className="text-parch/85 hover:text-gold transition-colors"
                 >
                   {tNav('map')}
                 </Link>
                 <Link
                   href="/items"
-                  className="text-gray-300 hover:text-gold transition-colors"
+                  className="text-parch/85 hover:text-gold transition-colors"
                 >
                   {tNav('items')}
                 </Link>
@@ -70,19 +70,19 @@ export default async function CodesPage() {
                 </Link>
                 <Link
                   href="/about"
-                  className="text-gray-300 hover:text-gold transition-colors"
+                  className="text-parch/85 hover:text-gold transition-colors"
                 >
                   {tNav('about')}
                 </Link>
                 <Link
                   href="/support"
-                  className="text-gray-300 hover:text-gold transition-colors"
+                  className="text-parch/85 hover:text-gold transition-colors"
                 >
                   {tNav('support')}
                 </Link>
                 <Link
                   href="/contact"
-                  className="text-gray-300 hover:text-gold transition-colors"
+                  className="text-parch/85 hover:text-gold transition-colors"
                 >
                   {tNav('contact')}
                 </Link>
@@ -153,7 +153,7 @@ export default async function CodesPage() {
             </nav>
           </div>
 
-          <div className="mt-8 pt-8 border-t border-gold/10 text-center text-sm text-gray-500">
+          <div className="mt-8 pt-8 border-t border-gold/10 text-center text-sm text-muted-2">
             <p>
               {tLegal('copyright', { siteName: SITE_CONFIG.name, creator: 'Ahmed Karim aka PedroKarim' })}
             </p>

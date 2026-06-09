@@ -167,7 +167,7 @@ export default function NewCharactersBanner() {
                 className={`w-full flex items-center gap-2 px-3 py-2 text-xs transition-colors ${
                   l === displayLocale
                     ? "bg-white/10 text-parch font-medium"
-                    : "text-gray-300 hover:bg-white/5 hover:text-parch"
+                    : "text-parch/85 hover:bg-white/5 hover:text-parch"
                 }`}
               >
                 <span className="uppercase font-mono w-5">{l}</span>
@@ -283,7 +283,7 @@ export default function NewCharactersBanner() {
                 <span className="w-1 h-1 rounded-full bg-white/30" />
                 <span>{charData.camp}</span>
               </div>
-              <p className="text-sm md:text-base text-gray-400 leading-relaxed italic max-w-md">
+              <p className="text-sm md:text-base text-muted leading-relaxed italic max-w-md">
                 &ldquo;{charData.description}&rdquo;
               </p>
               <div className="flex flex-wrap items-center gap-3 mt-8">
@@ -384,7 +384,7 @@ export default function NewCharactersBanner() {
                 <span className="w-1 h-1 rounded-full bg-white/30" />
                 <span>{charData.camp}</span>
               </div>
-              <p className="text-sm text-gray-400 leading-relaxed italic px-2">
+              <p className="text-sm text-muted leading-relaxed italic px-2">
                 &ldquo;{charData.description}&rdquo;
               </p>
               <Link

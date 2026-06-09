@@ -56,14 +56,14 @@ export default function ChangelogModal({
               </div>
               <div>
                 <h3 className="text-xl font-bold text-parch">{t("title")}</h3>
-                <p className="text-sm text-gray-400">
+                <p className="text-sm text-muted">
                   {t("description")}
                 </p>
               </div>
             </div>
             <button
               onClick={onClose}
-              className="text-gray-400 hover:text-parch transition-colors"
+              className="text-muted hover:text-parch transition-colors"
             >
               <svg
                 className="w-5 h-5"
@@ -113,7 +113,7 @@ export default function ChangelogModal({
                             {config.label}
                           </span>
                         </div>
-                        <div className="flex items-center gap-4 text-sm text-gray-400 mb-2">
+                        <div className="flex items-center gap-4 text-sm text-muted mb-2">
                           <span className="flex items-center gap-1">
                             <span className="font-semibold text-gold">
                               v{entry.version}
@@ -128,7 +128,7 @@ export default function ChangelogModal({
                             })}
                           </span>
                         </div>
-                        <p className="text-gray-300 text-sm leading-relaxed">
+                        <p className="text-parch/85 text-sm leading-relaxed">
                           {entry.description}
                         </p>
                       </div>
@@ -138,7 +138,7 @@ export default function ChangelogModal({
                       {entry.items.map((item, itemIndex) => (
                         <div
                           key={itemIndex}
-                          className="flex items-start gap-3 text-sm text-gray-300"
+                          className="flex items-start gap-3 text-sm text-parch/85"
                         >
                           <span className="text-gold mt-1 shrink-0">
                             •

@@ -39,7 +39,7 @@ import {
 const MapComponent = dynamic(() => import("@/components/MapComponent"), {
   ssr: false,
   loading: () => (
-    <div className="w-full h-full bg-gray-900">
+    <div className="w-full h-full bg-ink">
       <Loading mode="box" message="Chargement de la carte..." size={48} />
     </div>
   ),
@@ -526,7 +526,7 @@ export default function MapPage() {
                     <div className="text-xl font-bold text-parch flex items-center gap-2">
                       {SITE_CONFIG.name}
                     </div>
-                    <p className="text-xs text-gray-400">{t('interactiveMap')}</p>
+                    <p className="text-xs text-muted">{t('interactiveMap')}</p>
                   </div>
                 </div>
 
@@ -537,10 +537,10 @@ export default function MapPage() {
                     placeholder={t('searchPlaceholder')}
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full bg-panel/50 backdrop-blur-sm border border-gold/30 rounded-md px-3 py-2 pl-10 text-sm text-parch placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold"
+                    className="w-full bg-panel/50 backdrop-blur-sm border border-gold/30 rounded-md px-3 py-2 pl-10 text-sm text-parch placeholder-muted-2 focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold"
                   />
                   <svg
-                    className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400"
+                    className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -556,7 +556,7 @@ export default function MapPage() {
 
                 {/* Sélecteur de région */}
                 <div>
-                  <label className="block text-sm text-gray-300 mb-2">
+                  <label className="block text-sm text-parch/85 mb-2">
                     {t('region')}
                   </label>
                   <select
@@ -582,7 +582,7 @@ export default function MapPage() {
 
                 {/* Toggle Masquer les marqueurs trouvés */}
                 <div className="flex items-center justify-between pt-2">
-                  <span className="text-sm text-gray-300">
+                  <span className="text-sm text-parch/85">
                     {t('hideFoundMarkers')}
                   </span>
                   <button
@@ -683,7 +683,7 @@ export default function MapPage() {
                             <span className="text-sm font-medium text-parch">
                               {group.name}
                             </span>
-                            <div className="text-xs text-gray-400">
+                            <div className="text-xs text-muted">
                               {group.items.length} {t('types')} • {totalMarkers}{" "}
                               {t('markers')}
                             </div>
@@ -820,7 +820,7 @@ export default function MapPage() {
         {!isMenuCollapsed && (
           <div className="mt-auto p-6 border-t border-gold/20 space-y-4">
             {/* Bouton Réinitialiser */}
-            <button className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-panel/50 hover:bg-white/10 rounded-md text-sm text-gray-300 hover:text-parch transition-colors">
+            <button className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-panel/50 hover:bg-white/10 rounded-md text-sm text-parch/85 hover:text-parch transition-colors">
               <svg
                 className="w-4 h-4"
                 fill="none"
@@ -837,7 +837,7 @@ export default function MapPage() {
               {t('resetSidebar')}
             </button>
 
-            <div className="flex flex-wrap gap-x-3 gap-y-1 text-xs text-gray-500 pt-2 border-t border-gold/20">
+            <div className="flex flex-wrap gap-x-3 gap-y-1 text-xs text-muted-2 pt-2 border-t border-gold/20">
               <Link
                 href="/"
                 className="hover:text-gold transition-colors"
@@ -1152,7 +1152,7 @@ export default function MapPage() {
           <div className="flex items-center space-x-4 text-sm">
             <div className="flex items-center space-x-2">
               <div className="w-2 h-2 bg-gold rounded-full"></div>
-              <span className="text-gray-300">Carte active</span>
+              <span className="text-parch/85">Carte active</span>
             </div>
             <div className="flex items-center space-x-2">
               <svg
@@ -1174,7 +1174,7 @@ export default function MapPage() {
                   d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                 />
               </svg>
-              <span className="text-gray-300">
+              <span className="text-parch/85">
                 {selectedMap?.legend?.reduce(
                   (total, cat) =>
                     total +

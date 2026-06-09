@@ -95,7 +95,7 @@ export default function MapInfoModal({
             </h3>
             <button
               onClick={onClose}
-              className="text-gray-400 hover:text-parch transition-colors"
+              className="text-muted hover:text-parch transition-colors"
             >
               <svg
                 className="w-5 h-5"
@@ -116,11 +116,11 @@ export default function MapInfoModal({
           {/* Version et Date */}
           <div className="grid grid-cols-2 gap-4 mb-6">
             <div className="bg-panel/50 border border-gold/30 rounded-lg p-4">
-              <div className="text-xs text-gray-400 mb-1">{tCommon("version")}</div>
+              <div className="text-xs text-muted mb-1">{tCommon("version")}</div>
               <div className="text-lg font-bold text-gold">{version}</div>
             </div>
             <div className="bg-panel/50 border border-gold/30 rounded-lg p-4">
-              <div className="text-xs text-gray-400 mb-1">
+              <div className="text-xs text-muted mb-1">
                 {t("lastUpdate")}
               </div>
               <div className="text-lg font-bold text-parch">
@@ -131,7 +131,7 @@ export default function MapInfoModal({
 
           {/* Statistiques globales */}
           <div className="mb-6">
-            <h4 className="text-sm font-semibold text-gray-300 mb-3 uppercase tracking-wide">
+            <h4 className="text-sm font-semibold text-parch/85 mb-3 uppercase tracking-wide">
               {t("globalStats")}
             </h4>
             <div className="grid grid-cols-3 gap-3">
@@ -139,19 +139,19 @@ export default function MapInfoModal({
                 <div className="text-2xl font-bold text-gold">
                   {totalMaps}
                 </div>
-                <div className="text-xs text-gray-400 mt-1">{t("maps")}</div>
+                <div className="text-xs text-muted mt-1">{t("maps")}</div>
               </div>
               <div className="bg-panel/50 border border-gold/30 rounded-lg p-4 text-center">
                 <div className="text-2xl font-bold text-anemo">
                   {totalMarkers}
                 </div>
-                <div className="text-xs text-gray-400 mt-1">{t("markers")}</div>
+                <div className="text-xs text-muted mt-1">{t("markers")}</div>
               </div>
               <div className="bg-panel/50 border border-gold/30 rounded-lg p-4 text-center">
                 <div className="text-2xl font-bold text-electro">
                   {totalImages}
                 </div>
-                <div className="text-xs text-gray-400 mt-1">{t("images")}</div>
+                <div className="text-xs text-muted mt-1">{t("images")}</div>
               </div>
             </div>
           </div>
@@ -159,7 +159,7 @@ export default function MapInfoModal({
           {/* Statistiques de la map sélectionnée */}
           {selectedMap && (
             <div className="mb-6">
-              <h4 className="text-sm font-semibold text-gray-300 mb-3 uppercase tracking-wide">
+              <h4 className="text-sm font-semibold text-parch/85 mb-3 uppercase tracking-wide">
                 {t("currentMap", { name: selectedMap.name })}
               </h4>
               <div className="grid grid-cols-3 gap-3">
@@ -167,19 +167,19 @@ export default function MapInfoModal({
                   <div className="text-xl font-bold text-gold">
                     {selectedMapCategories}
                   </div>
-                  <div className="text-xs text-gray-400 mt-1">{t("categoriesCount")}</div>
+                  <div className="text-xs text-muted mt-1">{t("categoriesCount")}</div>
                 </div>
                 <div className="bg-panel/50 border border-gold/30 rounded-lg p-4 text-center">
                   <div className="text-xl font-bold text-anemo">
                     {selectedMapMarkers}
                   </div>
-                  <div className="text-xs text-gray-400 mt-1">{t("markers")}</div>
+                  <div className="text-xs text-muted mt-1">{t("markers")}</div>
                 </div>
                 <div className="bg-panel/50 border border-gold/30 rounded-lg p-4 text-center">
                   <div className="text-xl font-bold text-electro">
                     {selectedMapImages}
                   </div>
-                  <div className="text-xs text-gray-400 mt-1">{t("images")}</div>
+                  <div className="text-xs text-muted mt-1">{t("images")}</div>
                 </div>
               </div>
             </div>
@@ -187,7 +187,7 @@ export default function MapInfoModal({
 
           {/* Liste des maps */}
           <div className="mb-6">
-            <h4 className="text-sm font-semibold text-gray-300 mb-3 uppercase tracking-wide">
+            <h4 className="text-sm font-semibold text-parch/85 mb-3 uppercase tracking-wide">
               {t("allMaps")}
             </h4>
             <div className="space-y-2 max-h-48 overflow-y-auto">
@@ -205,7 +205,7 @@ export default function MapInfoModal({
                       <div className="text-sm font-medium text-parch">
                         {map.name}
                       </div>
-                      <div className="text-xs text-gray-400 mt-1">
+                      <div className="text-xs text-muted mt-1">
                         {t("markerCount", { markers: map.markerCount, images: map.imageCount })}
                       </div>
                     </div>
@@ -222,14 +222,14 @@ export default function MapInfoModal({
 
           {/* Disclaimer */}
           <div className="bg-panel/30 border border-gold/20 rounded-lg p-4 mb-6">
-            <div className="text-xs text-gray-400 mb-2 font-semibold uppercase tracking-wide">
+            <div className="text-xs text-muted mb-2 font-semibold uppercase tracking-wide">
               {tCommon("disclaimer")}
             </div>
-            <div className="text-xs text-gray-300 leading-relaxed space-y-2">
+            <div className="text-xs text-parch/85 leading-relaxed space-y-2">
               <p>
                 {t("disclaimerFr")}
               </p>
-              <p className="text-gray-400 italic">
+              <p className="text-muted italic">
                 {t("disclaimerEn")}
               </p>
             </div>

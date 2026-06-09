@@ -56,7 +56,7 @@ export default function ExportModal({
             <h3 className="text-lg font-bold text-parch">Exporter les marqueurs</h3>
             <button
               onClick={onClose}
-              className="text-gray-400 hover:text-parch transition-colors"
+              className="text-muted hover:text-parch transition-colors"
             >
               <svg
                 className="w-5 h-5"
@@ -74,13 +74,13 @@ export default function ExportModal({
             </button>
           </div>
 
-          <p className="text-sm text-gray-300 mb-6">
+          <p className="text-sm text-parch/85 mb-6">
             Vous allez exporter <span className="font-semibold text-gold">{markerCount}</span> marqueur{markerCount > 1 ? "s" : ""} au format sélectionné.
           </p>
 
           {/* Format selection */}
           <div className="mb-6">
-            <label className="block text-sm font-medium text-gray-300 mb-3">
+            <label className="block text-sm font-medium text-parch/85 mb-3">
               Format du fichier
             </label>
             <div className="space-y-2">
@@ -95,7 +95,7 @@ export default function ExportModal({
                 />
                 <div className="flex-1">
                   <div className="text-parch font-medium">JSON</div>
-                  <div className="text-xs text-gray-400">Format structuré, facile à réimporter</div>
+                  <div className="text-xs text-muted">Format structuré, facile à réimporter</div>
                 </div>
                 <svg
                   className="w-5 h-5 text-gold ml-2"
@@ -123,7 +123,7 @@ export default function ExportModal({
                 />
                 <div className="flex-1">
                   <div className="text-parch font-medium">CSV</div>
-                  <div className="text-xs text-gray-400">Format tableur, compatible Excel</div>
+                  <div className="text-xs text-muted">Format tableur, compatible Excel</div>
                 </div>
                 <svg
                   className="w-5 h-5 text-gold ml-2"
@@ -146,7 +146,7 @@ export default function ExportModal({
           <div className="flex gap-3 justify-end">
             <button
               onClick={onClose}
-              className="px-4 py-2 text-sm font-medium text-gray-300 bg-panel/50 hover:bg-white/10 rounded-md transition-colors border border-gold/20"
+              className="px-4 py-2 text-sm font-medium text-parch/85 bg-panel/50 hover:bg-white/10 rounded-md transition-colors border border-gold/20"
             >
               Annuler
             </button>

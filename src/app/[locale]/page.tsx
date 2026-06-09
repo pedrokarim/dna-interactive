@@ -91,7 +91,7 @@ export default async function Home() {
                     <Link
                       key={link.href}
                       href={link.href}
-                      className="flex items-center gap-2 text-gray-300 hover:text-gold transition-colors"
+                      className="flex items-center gap-2 text-parch/85 hover:text-gold transition-colors"
                     >
                       {IconComponent && <IconComponent className="w-4 h-4" />}
                       <span>{navLabels[link.href] ?? link.label}</span>
@@ -122,7 +122,7 @@ export default async function Home() {
               <h2 className="text-4xl font-bold text-parch mb-6">
                 {tHome('communityTitle')}
               </h2>
-              <p className="text-lg text-gray-300 max-w-3xl mx-auto">
+              <p className="text-lg text-parch/85 max-w-3xl mx-auto">
                 {tHome('communityDescription')}
               </p>
             </div>
@@ -264,7 +264,7 @@ export default async function Home() {
                 <h3 className="text-xl font-semibold text-parch mb-3">
                   {tHome('featureMapTitle')}
                 </h3>
-                <p className="text-gray-300">
+                <p className="text-parch/85">
                   {tHome('featureMapDescription')}
                 </p>
               </div>
@@ -288,7 +288,7 @@ export default async function Home() {
                 <h3 className="text-xl font-semibold text-parch mb-3">
                   {tHome('featureMarkersTitle')}
                 </h3>
-                <p className="text-gray-300">
+                <p className="text-parch/85">
                   {tHome('featureMarkersDescription')}
                 </p>
               </div>
@@ -312,7 +312,7 @@ export default async function Home() {
                 <h3 className="text-xl font-semibold text-parch mb-3">
                   {tHome('featureFiltersTitle')}
                 </h3>
-                <p className="text-gray-300">
+                <p className="text-parch/85">
                   {tHome('featureFiltersDescription')}
                 </p>
               </div>
@@ -336,7 +336,7 @@ export default async function Home() {
                 <h3 className="text-xl font-semibold text-parch mb-3">
                   {tHome('featureResponsiveTitle')}
                 </h3>
-                <p className="text-gray-300">
+                <p className="text-parch/85">
                   {tHome('featureResponsiveDescription')}
                 </p>
               </div>
@@ -348,7 +348,7 @@ export default async function Home() {
                 <h3 className="text-xl font-semibold text-parch mb-3">
                   {tHome('featureItemsTitle')}
                 </h3>
-                <p className="text-gray-300">
+                <p className="text-parch/85">
                   {tHome('featureItemsDescription')}
                 </p>
               </div>
@@ -372,7 +372,7 @@ export default async function Home() {
                 <h3 className="text-xl font-semibold text-parch mb-3">
                   {tHome('featureUpdatesTitle')}
                 </h3>
-                <p className="text-gray-300">
+                <p className="text-parch/85">
                   {tHome('featureUpdatesDescription')}
                 </p>
               </div>

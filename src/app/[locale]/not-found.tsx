@@ -27,10 +27,10 @@ export default function NotFound() {
         <h1 className="text-3xl md:text-4xl font-bold text-parch mb-4">
           Page introuvable
         </h1>
-        <p className="text-lg text-gray-300 mb-2">
+        <p className="text-lg text-parch/85 mb-2">
           La page que vous cherchez n&apos;existe pas ou a été déplacée.
         </p>
-        <p className="text-sm text-gray-400 mb-10">
+        <p className="text-sm text-muted mb-10">
           The page you are looking for does not exist or has been moved.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">

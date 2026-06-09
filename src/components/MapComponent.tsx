@@ -373,7 +373,7 @@ export default function MapComponent({
                   </div>
                   <p className="font-semibold text-parch">{data.marker.name}</p>
                 </div>
-                <div className="text-sm text-gray-300 mb-4 bg-panel/30 rounded-md p-2 border border-gold/20">
+                <div className="text-sm text-parch/85 mb-4 bg-panel/30 rounded-md p-2 border border-gold/20">
                   <p>
                     <strong className="text-gold">Position:</strong> (
                     {data.instance.position.x}, {data.instance.position.y})
@@ -390,7 +390,7 @@ export default function MapComponent({
                         e.currentTarget.style.display = "none";
                       }}
                     />
-                    <p className="text-xs text-gray-400 text-center mt-1 px-2">
+                    <p className="text-xs text-muted text-center mt-1 px-2">
                       Cliquez pour agrandir
                     </p>
                   </div>
@@ -430,7 +430,7 @@ export default function MapComponent({
 
   if (!isClient || !selectedMap) {
     return (
-      <div className="w-full h-screen bg-gray-900">
+      <div className="w-full h-screen bg-ink">
         <Loading mode="box" message="Chargement de la carte..." size={48} />
       </div>
     );

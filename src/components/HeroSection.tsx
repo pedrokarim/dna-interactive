@@ -70,10 +70,10 @@ export default function HeroSection() {
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 bg-linear-to-r from-gold-bright via-gold to-gold-bright bg-clip-text text-transparent">
             {t("heroTitle")}
           </h1>
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-8 text-gray-200">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-8 text-parch">
             {t("heroSubtitle", { gameName: GAME_INFO.name })}
           </h2>
-          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-parch/85 mb-8 max-w-3xl mx-auto leading-relaxed">
             {t("heroDescription", { gameName: GAME_INFO.name })}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

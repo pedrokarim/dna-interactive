@@ -58,31 +58,31 @@ export default async function AboutPage() {
               <nav className="flex items-center space-x-8">
                 <Link
                   href={NAVIGATION.home}
-                  className="text-gray-300 hover:text-gold transition-colors"
+                  className="text-parch/85 hover:text-gold transition-colors"
                 >
                   {tNav('home')}
                 </Link>
                 <Link
                   href={NAVIGATION.map}
-                  className="text-gray-300 hover:text-gold transition-colors"
+                  className="text-parch/85 hover:text-gold transition-colors"
                 >
                   {tNav('map')}
                 </Link>
                 <Link
                   href={NAVIGATION.items}
-                  className="text-gray-300 hover:text-gold transition-colors"
+                  className="text-parch/85 hover:text-gold transition-colors"
                 >
                   {tNav('items')}
                 </Link>
                 <Link
                   href={NAVIGATION.support}
-                  className="text-gray-300 hover:text-gold transition-colors"
+                  className="text-parch/85 hover:text-gold transition-colors"
                 >
                   {tNav('support')}
                 </Link>
                 <Link
                   href={NAVIGATION.contact}
-                  className="text-gray-300 hover:text-gold transition-colors"
+                  className="text-parch/85 hover:text-gold transition-colors"
                 >
                   {tNav('contact')}
                 </Link>
@@ -101,7 +101,7 @@ export default async function AboutPage() {
               <h1 className="text-4xl font-bold text-parch mb-4">
                 {tAbout('title', { siteName: SITE_CONFIG.name })}
               </h1>
-              <p className="text-xl text-gray-400">
+              <p className="text-xl text-muted">
                 {tAbout('mission', { gameName: GAME_INFO.name })}
               </p>
             </div>
@@ -129,10 +129,10 @@ export default async function AboutPage() {
                     {tAbout('originTitle')}
                   </h3>
                 </div>
-                <p className="text-gray-300 leading-relaxed mb-4">
+                <p className="text-parch/85 leading-relaxed mb-4">
                   {tAbout('originParagraph1', { siteName: SITE_CONFIG.name, gameName: GAME_INFO.name })}
                 </p>
-                <p className="text-gray-300 leading-relaxed">
+                <p className="text-parch/85 leading-relaxed">
                   {tAbout('originParagraph2', { gameName: GAME_INFO.name })}
                 </p>
               </div>
@@ -180,7 +180,7 @@ export default async function AboutPage() {
                         <h4 className="text-parch font-medium">
                           {tAbout('offerMapTitle')}
                         </h4>
-                        <p className="text-gray-400 text-sm">
+                        <p className="text-muted text-sm">
                           {tAbout('offerMapDescription')}
                         </p>
                       </div>
@@ -204,7 +204,7 @@ export default async function AboutPage() {
                         <h4 className="text-parch font-medium">
                           {tAbout('offerMarkersTitle')}
                         </h4>
-                        <p className="text-gray-400 text-sm">
+                        <p className="text-muted text-sm">
                           {tAbout('offerMarkersDescription')}
                         </p>
                       </div>
@@ -228,7 +228,7 @@ export default async function AboutPage() {
                         <h4 className="text-parch font-medium">
                           {tAbout('offerFiltersTitle')}
                         </h4>
-                        <p className="text-gray-400 text-sm">
+                        <p className="text-muted text-sm">
                           {tAbout('offerFiltersDescription')}
                         </p>
                       </div>
@@ -254,7 +254,7 @@ export default async function AboutPage() {
                         <h4 className="text-parch font-medium">
                           {tAbout('offerResponsiveTitle')}
                         </h4>
-                        <p className="text-gray-400 text-sm">
+                        <p className="text-muted text-sm">
                           {tAbout('offerResponsiveDescription')}
                         </p>
                       </div>
@@ -278,7 +278,7 @@ export default async function AboutPage() {
                         <h4 className="text-parch font-medium">
                           {tAbout('offerPassionTitle')}
                         </h4>
-                        <p className="text-gray-400 text-sm">
+                        <p className="text-muted text-sm">
                           {tAbout('offerPassionDescription')}
                         </p>
                       </div>
@@ -302,7 +302,7 @@ export default async function AboutPage() {
                         <h4 className="text-parch font-medium">
                           {tAbout('offerUpdatesTitle')}
                         </h4>
-                        <p className="text-gray-400 text-sm">
+                        <p className="text-muted text-sm">
                           {tAbout('offerUpdatesDescription')}
                         </p>
                       </div>
@@ -361,14 +361,14 @@ export default async function AboutPage() {
                       <p className="text-gold font-medium mb-2">
                         aka {member.nickname}
                       </p>
-                      <p className="text-gray-400 text-sm">{member.role}</p>
+                      <p className="text-muted text-sm">{member.role}</p>
                     </div>
                   ))}
 
                   {TEAM_INFO.members.map((member, index) => (
                     <p
                       key={index}
-                      className="text-gray-300 mt-6 leading-relaxed"
+                      className="text-parch/85 mt-6 leading-relaxed"
                     >
                       {member.description
                         .replace("DNA Interactive", SITE_CONFIG.name)
@@ -400,10 +400,10 @@ export default async function AboutPage() {
                     <h4 className="text-crimson-bright font-semibold mb-2">
                       {tAbout('disclaimerTitle')}
                     </h4>
-                    <p className="text-gray-300 text-sm leading-relaxed">
+                    <p className="text-parch/85 text-sm leading-relaxed">
                       {tAbout('disclaimerBody', { siteName: SITE_CONFIG.name, gameName: GAME_INFO.name })}
                     </p>
-                    <p className="text-gray-400 text-sm mt-3">
+                    <p className="text-muted text-sm mt-3">
                       {tAbout('disclaimerOfficialLink')}
                     </p>
                   </div>
@@ -415,7 +415,7 @@ export default async function AboutPage() {
                 <h3 className="text-2xl font-semibold text-parch mb-4">
                   {tAbout('joinCommunityTitle')}
                 </h3>
-                <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
+                <p className="text-muted mb-8 max-w-2xl mx-auto">
                   {tAbout('joinCommunityDescription')}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -511,7 +511,7 @@ export default async function AboutPage() {
             </nav>
           </div>
 
-          <div className="mt-8 pt-8 border-t border-gold/10 text-center text-sm text-gray-500">
+          <div className="mt-8 pt-8 border-t border-gold/10 text-center text-sm text-muted-2">
             <p>{LEGAL_INFO.copyright}</p>
             <p className="mt-2">
               {LEGAL_INFO.disclaimer}

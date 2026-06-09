@@ -47,31 +47,31 @@ export default async function SupportPage() {
               <nav className="flex items-center space-x-8">
                 <Link
                   href={NAVIGATION.home}
-                  className="text-gray-300 hover:text-gold transition-colors"
+                  className="text-parch/85 hover:text-gold transition-colors"
                 >
                   {tNav('home')}
                 </Link>
                 <Link
                   href={NAVIGATION.map}
-                  className="text-gray-300 hover:text-gold transition-colors"
+                  className="text-parch/85 hover:text-gold transition-colors"
                 >
                   {tNav('map')}
                 </Link>
                 <Link
                   href={NAVIGATION.items}
-                  className="text-gray-300 hover:text-gold transition-colors"
+                  className="text-parch/85 hover:text-gold transition-colors"
                 >
                   {tNav('items')}
                 </Link>
                 <Link
                   href={NAVIGATION.about}
-                  className="text-gray-300 hover:text-gold transition-colors"
+                  className="text-parch/85 hover:text-gold transition-colors"
                 >
                   {tNav('about')}
                 </Link>
                 <Link
                   href={NAVIGATION.contact}
-                  className="text-gray-300 hover:text-gold transition-colors"
+                  className="text-parch/85 hover:text-gold transition-colors"
                 >
                   {tNav('contact')}
                 </Link>
@@ -88,7 +88,7 @@ export default async function SupportPage() {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h1 className="text-4xl font-bold text-parch mb-4">{tSupport('title')}</h1>
-              <p className="text-xl text-gray-400">
+              <p className="text-xl text-muted">
                 {tSupport('subtitle')}
               </p>
             </div>
@@ -102,7 +102,7 @@ export default async function SupportPage() {
                   </svg>
                 </div>
                 <h3 className="text-2xl font-semibold text-parch mb-4">{tSupport('discordTitle')}</h3>
-                <p className="text-gray-400 mb-6 leading-relaxed">
+                <p className="text-muted mb-6 leading-relaxed">
                   {tSupport('discordDescription')}
                 </p>
                 <div className="space-y-4">
@@ -118,7 +118,7 @@ export default async function SupportPage() {
                     {CONTACT_INFO.discord.label}
                   </a>
 
-                  <div className="text-sm text-gray-500 space-y-1">
+                  <div className="text-sm text-muted-2 space-y-1">
                     <p>• {tSupport('discordBullet1')}</p>
                     <p>• {tSupport('discordBullet2')}</p>
                     <p>• {tSupport('discordBullet3')}</p>
@@ -134,7 +134,7 @@ export default async function SupportPage() {
                   </svg>
                 </div>
                 <h3 className="text-2xl font-semibold text-parch mb-4">{tSupport('emailTitle')}</h3>
-                <p className="text-gray-400 mb-6 leading-relaxed">
+                <p className="text-muted mb-6 leading-relaxed">
                   {tSupport('emailDescription')}
                 </p>
                 <div className="space-y-4">
@@ -148,7 +148,7 @@ export default async function SupportPage() {
                     {CONTACT_INFO.email}
                   </a>
 
-                  <div className="text-sm text-gray-500 space-y-1">
+                  <div className="text-sm text-muted-2 space-y-1">
                     <p>• {tSupport('emailBullet1')}</p>
                     <p>• {tSupport('emailBullet2')}</p>
                     <p>• {tSupport('emailBullet3')}</p>
@@ -165,7 +165,7 @@ export default async function SupportPage() {
                 {FAQ_ITEMS.map((faq, index) => (
                   <div key={index}>
                     <h4 className="text-lg font-medium text-parch mb-3">{faq.question}</h4>
-                    <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                    <p className="text-muted text-sm leading-relaxed mb-6">
                       {faq.answer}
                     </p>
                   </div>
@@ -184,7 +184,7 @@ export default async function SupportPage() {
                   className="bg-linear-to-br from-panel/50 to-panel/50 backdrop-blur-sm border border-gold/20 rounded-lg p-6 hover:border-gold/40 transition-all duration-300 text-center"
                 >
                   <h4 className="text-lg font-medium text-parch mb-2">{link.label}</h4>
-                  <p className="text-sm text-gray-400">{link.description}</p>
+                  <p className="text-sm text-muted">{link.description}</p>
                 </a>
               ))}
             </div>
@@ -224,7 +224,7 @@ export default async function SupportPage() {
             </nav>
           </div>
 
-          <div className="mt-8 pt-8 border-t border-gold/10 text-center text-sm text-gray-500">
+          <div className="mt-8 pt-8 border-t border-gold/10 text-center text-sm text-muted-2">
             <p>{LEGAL_INFO.copyright}</p>
             <p className="mt-2">
               {LEGAL_INFO.disclaimer}

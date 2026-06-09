@@ -52,7 +52,7 @@ export default function Loading({
     return (
       <div className="flex items-center space-x-3">
         {spinner}
-        <span className="text-gray-600 dark:text-gray-300">{resolvedMessage}</span>
+        <span className="text-muted-2 dark:text-parch/85">{resolvedMessage}</span>
       </div>
     );
   }
@@ -63,7 +63,7 @@ export default function Loading({
       <div className="flex flex-col items-center justify-center h-full py-8">
         {spinner}
         {resolvedMessage && (
-          <p className="mt-4 text-gray-600 dark:text-gray-300 text-center">
+          <p className="mt-4 text-muted-2 dark:text-parch/85 text-center">
             {resolvedMessage}
           </p>
         )}
@@ -78,7 +78,7 @@ export default function Loading({
         <div className="bg-white dark:bg-panel rounded-lg shadow-xl p-8 flex flex-col items-center space-y-4 max-w-sm mx-4">
           {spinner}
           {resolvedMessage && (
-            <p className="text-gray-900 dark:text-parch text-center font-medium">
+            <p className="text-muted-2 dark:text-parch text-center font-medium">
               {resolvedMessage}
             </p>
           )}

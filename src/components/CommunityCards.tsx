@@ -45,12 +45,12 @@ export default function CommunityCards() {
             <h3 className="text-xl font-semibold text-parch group-hover:text-electro transition-colors">
               {t("streamerName")}
             </h3>
-            <p className="text-sm text-gray-400">
+            <p className="text-sm text-muted">
               {t("streamerRole")}
             </p>
           </div>
         </div>
-        <p className="text-gray-300 mb-6 leading-relaxed">
+        <p className="text-parch/85 mb-6 leading-relaxed">
           {t("streamerDescription")}
         </p>
         <a
@@ -102,12 +102,12 @@ export default function CommunityCards() {
             <h3 className="text-xl font-semibold text-parch group-hover:text-anemo transition-colors">
               {t("wikiTitle")}
             </h3>
-            <p className="text-sm text-gray-400">
+            <p className="text-sm text-muted">
               {t("wikiRole")}
             </p>
           </div>
         </div>
-        <p className="text-gray-300 mb-6 leading-relaxed">
+        <p className="text-parch/85 mb-6 leading-relaxed">
           {t("wikiDescription")}
         </p>
         <a

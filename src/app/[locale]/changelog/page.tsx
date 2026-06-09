@@ -56,7 +56,7 @@ export default function ChangelogPage() {
                 <h1 className="text-4xl font-bold text-parch mb-2">
                   {t('title')}
                 </h1>
-                <p className="text-gray-300 text-lg">
+                <p className="text-parch/85 text-lg">
                   {t('description')}
                 </p>
               </div>
@@ -93,7 +93,7 @@ export default function ChangelogPage() {
                           {config.label}
                         </span>
                       </div>
-                      <div className="flex items-center gap-4 text-sm text-gray-400 mb-3">
+                      <div className="flex items-center gap-4 text-sm text-muted mb-3">
                         <span className="flex items-center gap-1">
                           <span className="font-semibold text-gold">
                             v{entry.version}
@@ -108,7 +108,7 @@ export default function ChangelogPage() {
                           })}
                         </span>
                       </div>
-                      <p className="text-gray-300 mb-4 leading-relaxed">
+                      <p className="text-parch/85 mb-4 leading-relaxed">
                         {entry.description}
                       </p>
                     </div>
@@ -118,7 +118,7 @@ export default function ChangelogPage() {
                     {entry.items.map((item, itemIndex) => (
                       <div
                         key={itemIndex}
-                        className="flex items-start gap-3 text-gray-300"
+                        className="flex items-start gap-3 text-parch/85"
                       >
                         <span className="text-gold mt-1 shrink-0">•</span>
                         <span className="leading-relaxed">{item}</span>
@@ -202,7 +202,7 @@ export default function ChangelogPage() {
             </nav>
           </div>
 
-          <div className="mt-8 pt-8 border-t border-gold/10 text-center text-sm text-gray-500">
+          <div className="mt-8 pt-8 border-t border-gold/10 text-center text-sm text-muted-2">
             <p>
               © 2025 {SITE_CONFIG.name}. Créé par Ahmed Karim aka PedroKarim
               avec ❤️

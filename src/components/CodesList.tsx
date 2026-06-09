@@ -50,7 +50,7 @@ export default function CodesList() {
           <Gift className="w-8 h-8 text-gold" />
           <h1 className="text-3xl font-bold text-parch">{t("title")}</h1>
         </div>
-        <p className="text-gray-300 text-lg leading-relaxed">
+        <p className="text-parch/85 text-lg leading-relaxed">
           {t("description")}
         </p>
         <div className="mt-4 p-4 bg-ink/50 border border-gold/30 rounded-lg">
@@ -61,14 +61,14 @@ export default function CodesList() {
       </div>
 
       <div className="flex justify-between items-center mb-6">
-        <div className="text-sm text-gray-400">
+        <div className="text-sm text-muted">
           {t("usedCount", { used: usedCodes.size, total: activeCodes.length })}
           {expiredCodes.length > 0 && ` • ${t("expiredCount", { count: expiredCodes.length })}`}
         </div>
         {usedCodes.size > 0 && (
           <button
             onClick={handleResetAll}
-            className="flex items-center gap-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-parch rounded-lg transition-colors"
+            className="flex items-center gap-2 px-4 py-2 bg-panel hover:bg-panel text-parch rounded-lg transition-colors"
           >
             <RotateCcw className="w-4 h-4" />
             {t("resetAll")}
@@ -90,7 +90,7 @@ export default function CodesList() {
                 relative p-6 rounded-xl border transition-all duration-200 cursor-pointer
                 ${
                   isUsed
-                    ? "bg-panel/50 border-gray-600 opacity-60"
+                    ? "bg-panel/50 border-white/10 opacity-60"
                     : "bg-linear-to-r from-panel/50 to-panel/50 border-gold/30 hover:border-gold/50 hover:from-panel/70 hover:to-panel/70"
                 }
               `}
@@ -103,7 +103,7 @@ export default function CodesList() {
                         text-lg font-mono px-3 py-1 rounded border
                         ${
                           isUsed
-                            ? "bg-gray-700 border-gray-600 text-gray-400 line-through"
+                            ? "bg-panel border-white/10 text-muted line-through"
                             : "bg-ink border-gold text-gold"
                         }
                       `}
@@ -111,7 +111,7 @@ export default function CodesList() {
                       {gameCode.code}
                     </code>
                     {gameCode.isNew && (
-                      <span className="px-2 py-1 bg-anemo text-parch text-xs rounded-full font-medium">
+                      <span className="px-2 py-1 bg-gold text-ink text-xs rounded-full font-medium">
                         {tCommon("new")}
                       </span>
                     )}
@@ -131,8 +131,8 @@ export default function CodesList() {
                           px-2 py-1 text-sm rounded border
                           ${
                             isUsed
-                              ? "bg-gray-700 border-gray-600 text-gray-500"
-                              : "bg-electro border-electro/30 text-electro"
+                              ? "bg-white/5 border-white/10 text-muted-2"
+                              : "bg-electro/15 border-electro/30 text-electro"
                           }
                         `}
                       >
@@ -152,7 +152,7 @@ export default function CodesList() {
                       p-2 rounded-lg transition-colors
                       ${
                         isUsed
-                          ? "bg-gray-700 hover:bg-gray-600 text-gray-400"
+                          ? "bg-panel hover:bg-panel text-muted"
                           : "bg-gold hover:bg-gold text-parch"
                       }
                     `}
@@ -170,8 +170,8 @@ export default function CodesList() {
                       w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all
                       ${
                         isUsed
-                          ? "bg-anemo border-anemo text-parch"
-                          : "border-gray-500 hover:border-gold"
+                          ? "bg-gold border-gold text-ink"
+                          : "border-white/15 hover:border-gold"
                       }
                     `}
                   >
@@ -181,7 +181,7 @@ export default function CodesList() {
               </div>
 
               {isCopied && (
-                <div className="absolute top-2 right-2 bg-anemo text-parch text-xs px-2 py-1 rounded">
+                <div className="absolute top-2 right-2 bg-gold text-ink text-xs px-2 py-1 rounded">
                   {tCommon("copied")}
                 </div>
               )}
@@ -248,7 +248,7 @@ export default function CodesList() {
                   </div>
 
                   {isCopied && (
-                    <div className="absolute top-2 right-2 bg-anemo text-parch text-xs px-2 py-1 rounded">
+                    <div className="absolute top-2 right-2 bg-gold text-ink text-xs px-2 py-1 rounded">
                       {tCommon("copied")}
                     </div>
                   )}
@@ -263,7 +263,7 @@ export default function CodesList() {
         <h3 className="text-xl font-semibold text-parch mb-4">
           {t("importantInfo")}
         </h3>
-        <ul className="space-y-2 text-gray-300">
+        <ul className="space-y-2 text-parch/85">
           <li className="flex items-start gap-2">
             <span className="text-gold mt-1">•</span>
             <span>

@@ -125,31 +125,31 @@ export default function ContactPage() {
               <nav className="flex items-center space-x-8">
                 <Link
                   href={NAVIGATION.home}
-                  className="text-gray-300 hover:text-gold transition-colors"
+                  className="text-parch/85 hover:text-gold transition-colors"
                 >
                   {tn('home')}
                 </Link>
                 <Link
                   href={NAVIGATION.map}
-                  className="text-gray-300 hover:text-gold transition-colors"
+                  className="text-parch/85 hover:text-gold transition-colors"
                 >
                   {tn('map')}
                 </Link>
                 <Link
                   href={NAVIGATION.items}
-                  className="text-gray-300 hover:text-gold transition-colors"
+                  className="text-parch/85 hover:text-gold transition-colors"
                 >
                   {tn('items')}
                 </Link>
                 <Link
                   href={NAVIGATION.about}
-                  className="text-gray-300 hover:text-gold transition-colors"
+                  className="text-parch/85 hover:text-gold transition-colors"
                 >
                   {tn('about')}
                 </Link>
                 <Link
                   href={NAVIGATION.support}
-                  className="text-gray-300 hover:text-gold transition-colors"
+                  className="text-parch/85 hover:text-gold transition-colors"
                 >
                   {tn('support')}
                 </Link>
@@ -166,7 +166,7 @@ export default function ContactPage() {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h1 className="text-4xl font-bold text-parch mb-4">{t('title')}</h1>
-              <p className="text-xl text-gray-400">
+              <p className="text-xl text-muted">
                 {t('subtitle')}
               </p>
             </div>
@@ -186,7 +186,7 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <h4 className="text-lg font-medium text-parch mb-1">{t('emailLabel')}</h4>
-                        <p className="text-gray-400">{CONTACT_INFO.email}</p>
+                        <p className="text-muted">{CONTACT_INFO.email}</p>
                       </div>
                     </div>
 
@@ -198,7 +198,7 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <h4 className="text-lg font-medium text-parch mb-1">{t('supportLabel')}</h4>
-                        <p className="text-gray-400">
+                        <p className="text-muted">
                           {t('supportDescription')}
                         </p>
                       </div>
@@ -212,7 +212,7 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <h4 className="text-lg font-medium text-parch mb-1">{t('responseTimeLabel')}</h4>
-                        <p className="text-gray-400">{t('responseTimeValue')}</p>
+                        <p className="text-muted">{t('responseTimeValue')}</p>
                       </div>
                     </div>
                   </div>
@@ -220,7 +220,7 @@ export default function ContactPage() {
 
                 <div className="bg-linear-to-br from-panel/50 to-panel/50 backdrop-blur-sm border border-gold/20 rounded-xl p-8">
                   <h3 className="text-2xl font-semibold text-parch mb-4">{t('joinCommunityTitle')}</h3>
-                  <p className="text-gray-400 mb-6">
+                  <p className="text-muted mb-6">
                     {t('joinCommunityDescription')}
                   </p>
                   <a
@@ -244,7 +244,7 @@ export default function ContactPage() {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+                      <label htmlFor="name" className="block text-sm font-medium text-parch/85 mb-2">
                         {t('labelName')}
                       </label>
                       <input
@@ -253,14 +253,14 @@ export default function ContactPage() {
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
-                        className="w-full bg-white/10 border border-gold/30 rounded-lg px-4 py-3 text-parch placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold"
+                        className="w-full bg-white/10 border border-gold/30 rounded-lg px-4 py-3 text-parch placeholder-muted-2 focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold"
                         placeholder={t('placeholderName')}
                         required
                       />
                     </div>
 
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+                      <label htmlFor="email" className="block text-sm font-medium text-parch/85 mb-2">
                         {t('labelEmail')}
                       </label>
                       <input
@@ -269,7 +269,7 @@ export default function ContactPage() {
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full bg-white/10 border border-gold/30 rounded-lg px-4 py-3 text-parch placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold"
+                        className="w-full bg-white/10 border border-gold/30 rounded-lg px-4 py-3 text-parch placeholder-muted-2 focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold"
                         placeholder={t('placeholderEmail')}
                         required
                       />
@@ -277,7 +277,7 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">
+                    <label htmlFor="subject" className="block text-sm font-medium text-parch/85 mb-2">
                       {t('labelSubject')}
                     </label>
                     <select
@@ -298,7 +298,7 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+                    <label htmlFor="message" className="block text-sm font-medium text-parch/85 mb-2">
                       {t('labelMessage')}
                     </label>
                     <textarea
@@ -307,7 +307,7 @@ export default function ContactPage() {
                       value={formData.message}
                       onChange={handleChange}
                       rows={6}
-                      className="w-full bg-white/10 border border-gold/30 rounded-lg px-4 py-3 text-parch placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold resize-none"
+                      className="w-full bg-white/10 border border-gold/30 rounded-lg px-4 py-3 text-parch placeholder-muted-2 focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold resize-none"
                       placeholder={t('placeholderMessage')}
                       required
                     />
@@ -340,7 +340,7 @@ export default function ContactPage() {
                     disabled={isSubmitting}
                     className={`w-full rounded-lg py-3 px-6 font-semibold text-parch transition-all duration-300 transform ${
                       isSubmitting
-                        ? 'bg-gray-600 cursor-not-allowed'
+                        ? 'bg-panel cursor-not-allowed'
                         : 'bg-linear-to-r from-gold to-electro hover:from-gold hover:to-electro hover:scale-105'
                     }`}
                   >
@@ -358,7 +358,7 @@ export default function ContactPage() {
                   </button>
                 </form>
 
-                <p className="text-sm text-gray-500 mt-4 text-center">
+                <p className="text-sm text-muted-2 mt-4 text-center">
                   {t('requiredFieldsNote')}
                 </p>
               </div>
@@ -399,7 +399,7 @@ export default function ContactPage() {
             </nav>
           </div>
 
-          <div className="mt-8 pt-8 border-t border-gold/10 text-center text-sm text-gray-500">
+          <div className="mt-8 pt-8 border-t border-gold/10 text-center text-sm text-muted-2">
             <p>{LEGAL_INFO.copyright}</p>
             <p className="mt-2">
               {LEGAL_INFO.disclaimer}

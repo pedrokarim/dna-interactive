@@ -63,12 +63,12 @@ export default function ConfirmDialog({
           onClick={(e) => e.stopPropagation()}
         >
           <h3 className="text-lg font-bold text-parch mb-3">{title}</h3>
-          <p className="text-sm text-gray-300 mb-6">{message}</p>
+          <p className="text-sm text-parch/85 mb-6">{message}</p>
 
           <div className="flex gap-3 justify-end">
             <button
               onClick={onClose}
-              className="px-4 py-2 text-sm font-medium text-gray-300 bg-panel/50 hover:bg-white/10 rounded-md transition-colors border border-gold/20"
+              className="px-4 py-2 text-sm font-medium text-parch/85 bg-panel/50 hover:bg-white/10 rounded-md transition-colors border border-gold/20"
             >
               {resolvedCancelText}
             </button>
