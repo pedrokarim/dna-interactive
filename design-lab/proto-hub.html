@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Design Lab · Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:wght@500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="./assets/dna-ui.css" />
+<style>
+  body { overflow: hidden; height: 100vh; }
+  /* monde flouté à droite */
+  .world {
+    position: fixed; inset: 0; z-index: -2;
+    background:
+      radial-gradient(50% 60% at 72% 42%, rgba(120,150,160,0.18), transparent 60%),
+      radial-gradient(40% 50% at 85% 80%, rgba(180,140,70,0.12), transparent 60%),
+      linear-gradient(120deg, #0a0a0d 0%, #0c1014 40%, #15110b 100%);
+  }
+  .world::after { content: ""; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 90% 80% at 60% 50%, transparent 45%, rgba(0,0,0,0.7)); }
+
+  .shell {
+    position: relative; z-index: 1; height: 100vh; width: min(620px, 60vw);
+    display: flex; flex-direction: column;
+    background: linear-gradient(100deg, rgba(10,9,8,0.92) 70%, rgba(10,9,8,0.7));
+    border-right: 1px solid var(--line);
+    padding: 1.1rem 1.6rem 1.4rem 1.9rem;
+  }
+
+  /* top bar */
+  .toprow { display: flex; align-items: center; justify-content: space-between; }
+  .uid { font-family: var(--ui); font-size: 0.66rem; letter-spacing: 0.12em; color: var(--muted-2); display: flex; align-items: center; gap: 0.4rem; }
+  .rank { display: flex; align-items: center; gap: 0.3rem; }
+  .rank .stars { color: var(--gold-bright); font-size: 0.6rem; }
+  .rank .lbl { font-family: var(--caps); font-size: 0.5rem; letter-spacing: 0.16em; color: #241a08; background: linear-gradient(180deg,var(--gold-bright),var(--gold)); padding: 0.14rem 0.45rem; }
+
+  /* player card */
+  .player { display: flex; align-items: center; gap: 1rem; margin-top: 1rem; }
+  .avatar {
+    position: relative; width: 60px; height: 60px; flex-shrink: 0;
+    border: 1px solid var(--gold); background: radial-gradient(circle at 50% 35%, rgba(177,140,255,0.4), rgba(20,17,13,0.9));
+    display: grid; place-items: center; font-family: var(--caps); font-size: 1.4rem; color: var(--parch);
+    clip-path: polygon(12% 0, 100% 0, 100% 88%, 88% 100%, 0 100%, 0 12%);
+  }
+  .avatar .lv { position: absolute; bottom: -7px; right: -7px; font-family: var(--caps); font-size: 0.5rem; color: #241a08;
+    background: linear-gradient(180deg,var(--gold-bright),var(--gold)); padding: 0.1rem 0.35rem; }
+  .pinfo { flex: 1; min-width: 0; }
+  .pinfo .name { font-family: var(--serif); font-size: 1.9rem; font-weight: 600; color: #fff; line-height: 1; }
+  .pinfo .ribwrap { margin-top: 0.3rem; }
+  .expbar { margin-top: 0.55rem; }
+  .expbar .row { display: flex; justify-content: space-between; align-items: baseline; }
+  .expbar .k { font-family: var(--caps); font-size: 0.56rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+  .expbar .v { font-family: var(--ui); font-size: 0.72rem; color: var(--gold-bright); }
+  .expbar .track { margin-top: 0.3rem; height: 3px; background: rgba(255,255,255,0.06); position: relative; }
+  .expbar .track i { position: absolute; inset: 0 auto 0 0; width: 78%; background: linear-gradient(90deg, var(--gold-deep), var(--gold-bright)); box-shadow: 0 0 6px var(--gold); }
+
+  .pbtns { display: flex; gap: 0.6rem; margin-top: 0.9rem; }
+  .pbtn { flex: 1; font-family: var(--ui); font-size: 0.72rem; letter-spacing: 0.04em; color: var(--parch);
+    border: 1px solid var(--line); background: rgba(255,255,255,0.02); padding: 0.5rem 0.7rem; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; gap: 0.45rem; transition: all 0.25s; }
+  .pbtn:hover { border-color: var(--gold); color: var(--gold-bright); }
+
+  /* body : rail + grid */
+  .body { display: flex; gap: 0.9rem; margin-top: 1.1rem; flex: 1; min-height: 0; }
+  .rail { width: 44px; flex-shrink: 0; }
+  .grid { flex: 1; overflow-y: auto; padding-right: 0.3rem;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.7rem; align-content: start; }
+  .grid .span2 { grid-column: span 2; }
+  .ico { color: currentColor; }
+
+  /* power + hint footer */
+  .foot { display: flex; align-items: center; justify-content: space-between; margin-top: 1rem; }
+  .power { width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid var(--line); color: var(--muted); cursor: pointer; transition: all 0.25s; }
+  .power:hover { color: var(--crimson-br); border-color: var(--crimson-br); }
+  .hint { font-family: var(--caps); font-size: 0.56rem; letter-spacing: 0.2em; color: var(--muted-2); display: flex; gap: 1rem; }
+</style>
+</head>
+<body>
+  <div class="world"></div>
+  <div class="dna-grain"></div>
+
+  <aside class="shell dna-anim">
+    <div class="toprow">
+      <span class="uid">UID · 4000 2311 3477 ▭</span>
+      <span class="rank"><span class="lbl">Nouveau</span><span class="stars">★★★</span></span>
+    </div>
+
+    <div class="player">
+      <div class="avatar">A<span class="lv">62</span></div>
+      <div class="pinfo">
+        <div class="name">Ascencia</div>
+        <div class="ribwrap"><span class="dna-ribbon">Messager impérial</span></div>
+      </div>
+    </div>
+
+    <div class="expbar">
+      <div class="row"><span class="k">EXP d'aventure</span><span class="v">70 855 / 90 660</span></div>
+      <div class="track"><i></i></div>
+    </div>
+
+    <div class="pbtns">
+      <button class="pbtn">⌕ EXP d'aventure obtenue</button>
+      <button class="pbtn">☘ Bonus de résonance</button>
+    </div>
+
+    <div class="body">
+      <nav class="rail dna-rail" id="rail"></nav>
+      <div class="grid" id="grid"></div>
+    </div>
+
+    <div class="foot">
+      <a class="power" href="./index.html" title="Quitter">⏻</a>
+      <div class="hint"><span>◄ ► Naviguer</span><span>Échap · Retour</span></div>
+    </div>
+  </aside>
+
+  <a class="dna-back" href="./index.html">◀ Design Lab</a>
+
+  <script>
+    // -- rail icons --
+    const RAIL = ['▦','✦','✉','◷','▤','◫','⚙'];
+    const railEl = document.getElementById('rail');
+    RAIL.forEach((g, i) => {
+      const d = document.createElement('div');
+      d.className = 'dna-rail__ico' + (i === 0 ? ' is-active' : '');
+      d.innerHTML = `<span style="font-size:1.05rem">${g}</span>`;
+      if (i === 2 || i === 4) { const n = document.createElement('span'); n.className = 'dna-notif'; d.appendChild(n); }
+      d.addEventListener('click', () => { document.querySelector('.dna-rail__ico.is-active')?.classList.remove('is-active'); d.classList.add('is-active'); });
+      railEl.appendChild(d);
+    });
+
+    // -- menu tiles --
+    const I = {
+      shop:'M5 7 L8 4 H18 L20 7 M5 7 H20 V19 A1 1 0 0 1 19 20 H6 A1 1 0 0 1 5 19 Z M9 11 A3 3 0 0 0 15 11',
+      event:'M12 2 L15 9 L22 9 L16 14 L18 21 L12 17 L6 21 L8 14 L2 9 L9 9 Z',
+      char:'M12 4 A4 4 0 1 1 12 12 A4 4 0 0 1 12 4 M5 21 C5 16 8 14 12 14 C16 14 19 16 19 21',
+      inv:'M4 7 H20 V20 H4 Z M8 7 V5 A2 2 0 0 1 10 3 H14 A2 2 0 0 1 16 5 V7',
+      cup:'M7 4 H17 V9 A5 5 0 0 1 7 9 Z M5 5 H7 M17 5 H19 M10 14 H14 V19 H9 V20 H15',
+      quest:'M6 3 H16 L18 5 V21 L6 21 Z M9 8 H15 M9 12 H15 M9 16 H13',
+      adv:'M12 3 L20 7 V13 C20 18 16 21 12 22 C8 21 4 18 4 13 V7 Z',
+      forge:'M3 17 L9 11 M9 11 L12 14 L20 6 M14 4 H20 V10',
+      myriade:'M12 2 L4 7 V17 L12 22 L20 17 V7 Z M12 8 L8 10 V14 L12 16 L16 14 V10 Z',
+      look:'M4 4 H10 L12 6 L14 4 H20 V8 L17 9 V20 H7 V9 L4 8 Z',
+      tuto:'M12 3 A5 5 0 0 1 13 13 V15 H11 V13 A5 5 0 0 1 12 3 M11 18 H13',
+      amis:'M9 5 A3 3 0 1 1 9 11 A3 3 0 0 1 9 5 M3 20 C3 16 6 14 9 14 M15 8 A2.5 2.5 0 1 1 15 13 M21 19 C21 16 18 15 16 15',
+      guilde:'M6 4 H18 V8 L12 11 L6 8 Z M12 11 V20 M7 20 H17',
+      menestrel:'M8 4 V15 A3 3 0 1 1 5 12 M8 6 L18 4 V13 A3 3 0 1 1 15 10 V6',
+      codex:'M12 2 L20 6 V12 C20 17 16 20 12 22 C8 20 4 17 4 12 V6 Z M12 7 L14 11 H10 Z',
+      map:'M4 6 L9 4 L15 6 L20 4 V18 L15 20 L9 18 L4 20 Z M9 4 V18 M15 6 V20',
+      repute:'M12 3 L14 9 L20 9 L15 13 L17 20 L12 16 L7 20 L9 13 L4 9 L10 9 Z',
+      atlas:'M5 4 H17 L19 6 V20 H7 L5 18 Z M5 4 L7 6 H19 M9 10 H15 M9 13 H15',
+      seal:'M12 3 A4 4 0 1 1 12 11 A4 4 0 0 1 12 3 M12 11 V15 M8 20 L12 15 L16 20',
+      archive:'M4 4 H20 V8 H4 Z M5 8 V20 H19 V8 M9 12 H15',
+    };
+    function svg(p){return `<svg class="ico" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="${p}"/></svg>`;}
+    const TILES = [
+      { t:'Boutique', g:'PAN GU', i:'shop', wide:true, nouveau:true },
+      { t:'Événements', g:'HEURIS', i:'event', wide:true, nouveau:true },
+      { t:'Arsenal', i:'char' }, { t:'Inventaire', i:'inv' }, { t:'Succès', i:'cup' }, { t:'Quêtes', i:'quest' },
+      { t:'Aventure', i:'adv', notif:true }, { t:'Forge', i:'forge', nouveau:true }, { t:'Myriade', i:'myriade' }, { t:'Apparence', i:'look', nouveau:true },
+      { t:'Tutoriels', i:'tuto', nouveau:true }, { t:'Amis', i:'amis' }, { t:'Guilde', i:'guilde' }, { t:'Ballade', i:'menestrel' },
+      { t:'Codex', i:'codex', nouveau:true }, { t:'Carte', i:'map', notif:true }, { t:'Réputation', i:'repute', notif:true }, { t:'Atlasium', i:'atlas' },
+      { t:'Mandats', i:'seal' }, { t:'Archives', i:'archive' },
+    ];
+    const gridEl = document.getElementById('grid');
+    TILES.forEach(t => {
+      const a = document.createElement('div');
+      a.className = 'dna-tile' + (t.wide ? ' dna-tile--wide span2' : '');
+      a.innerHTML =
+        (t.nouveau ? '<span class="dna-nouveau">Nouveau</span>' : '') +
+        (t.notif ? '<span class="dna-notif"></span>' : '') +
+        `<span class="dna-tile__ico">${svg(I[t.i])}</span>` +
+        `<span class="dna-tile__label">${t.t}</span>` +
+        (t.g ? `<span class="dna-tile__ghost">${t.g}</span>` : '');
+      gridEl.appendChild(a);
+    });
+  </script>
+</body>
+</html>

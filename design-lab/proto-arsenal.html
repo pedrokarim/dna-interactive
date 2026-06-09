@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Design Lab · Arsenal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #08070a;
+    --panel: rgba(14, 13, 17, 0.86);
+    --panel-2: rgba(22, 20, 26, 0.92);
+    --line: rgba(194, 168, 106, 0.20);
+    --line-soft: rgba(255,255,255,0.06);
+    --gold: #c2a86a;
+    --gold-bright: #e3cd95;
+    --gold-deep: #897240;
+    --crimson: #b5302a;
+    --parch: #e9e3d6;
+    --muted: #8d8576;
+    --muted-2: #5f5848;
+    --electro: #a48ed0;
+    --caps: "Cinzel", serif;
+    --body: "Jost", system-ui, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--ink); color: var(--parch);
+    font-family: var(--body); height: 100vh; overflow: hidden;
+    font-weight: 300;
+  }
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-thumb { background: var(--gold-deep); }
+  ::-webkit-scrollbar-track { background: transparent; }
+
+  /* atmospheric blurred world */
+  .world {
+    position: fixed; inset: 0; z-index: -2;
+    background:
+      radial-gradient(60% 50% at 30% 30%, rgba(70,110,120,0.18), transparent 60%),
+      radial-gradient(50% 60% at 75% 70%, rgba(140,100,60,0.14), transparent 60%),
+      linear-gradient(160deg, #0a0a0d, #07060a 60%, #0b0f10);
+  }
+  .world::after {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 90% 80% at 50% 50%, transparent 50%, rgba(0,0,0,0.7));
+  }
+  .grain {
+    position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: 0.045;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .app {
+    height: 100vh; display: grid;
+    grid-template-rows: 52px 1fr 56px;
+  }
+
+  /* ---- top breadcrumb bar ---- */
+  .top {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 1.6rem;
+    background: linear-gradient(180deg, rgba(8,7,10,0.95), rgba(8,7,10,0.5));
+    border-bottom: 1px solid var(--line);
+  }
+  .top-left { display: flex; align-items: center; gap: 1rem; }
+  .crumb {
+    font-family: var(--caps); font-weight: 600; font-size: 1.05rem;
+    letter-spacing: 0.18em; color: var(--gold-bright); text-transform: uppercase;
+  }
+  .crumb-sub {
+    font-family: var(--caps); font-size: 0.6rem; letter-spacing: 0.3em;
+    color: var(--muted-2); text-transform: uppercase; border-left: 1px solid var(--line); padding-left: 1rem;
+  }
+  .top-tabs { display: flex; gap: 0.4rem; }
+  .top-tab {
+    width: 34px; height: 34px; display: grid; place-items: center;
+    border: 1px solid transparent; color: var(--muted); cursor: pointer; transition: all 0.25s;
+  }
+  .top-tab:hover, .top-tab.active { color: var(--gold-bright); border-color: var(--line); background: rgba(194, 168, 106,0.06); }
+  .team-btn {
+    font-family: var(--body); font-size: 0.8rem; font-weight: 400; letter-spacing: 0.01em;
+    color: var(--parch); border: 1px solid rgba(255,255,255,0.22); border-radius: 7px;
+    background: linear-gradient(180deg, rgba(42,40,36,0.55), rgba(16,15,13,0.72));
+    padding: 0.4rem 1rem; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: all 0.25s;
+  }
+  .team-btn:hover { border-color: rgba(255,255,255,0.45); color: #fff; }
+
+  /* ---- main 4-column ---- */
+  .main {
+    display: grid;
+    grid-template-columns: 60px 104px 1fr 320px;
+    overflow: hidden;
+  }
+
+  /* icon rail */
+  .rail {
+    display: flex; flex-direction: column; align-items: center; gap: 0.3rem;
+    padding: 0.8rem 0;
+    background: rgba(8,7,10,0.7); border-right: 1px solid var(--line-soft);
+  }
+  .rail-ico {
+    width: 40px; height: 40px; display: grid; place-items: center;
+    color: var(--muted); cursor: pointer; position: relative; transition: color 0.25s;
+  }
+  .rail-ico:hover { color: var(--gold-bright); }
+  .rail-ico.active { color: var(--gold-bright); }
+  .rail-ico.active::before {
+    content: ""; position: absolute; left: -8px; top: 50%; transform: translateY(-50%);
+    width: 2px; height: 22px; background: var(--gold-bright); box-shadow: 0 0 8px var(--gold);
+  }
+  .rail-spacer { flex: 1; }
+
+  /* roster */
+  .roster {
+    overflow-y: auto; padding: 0.7rem 0.5rem;
+    background: rgba(10,9,12,0.55); border-right: 1px solid var(--line-soft);
+    display: flex; flex-direction: column; gap: 0.55rem;
+  }
+  .ros {
+    position: relative; aspect-ratio: 1; cursor: pointer;
+    border: 1px solid var(--line-soft); overflow: hidden;
+    transition: border-color 0.25s, transform 0.25s;
+    background: linear-gradient(160deg, rgba(40,34,48,0.6), rgba(14,13,17,0.9));
+  }
+  .ros:hover { transform: translateY(-2px); border-color: var(--gold); }
+  .ros.active { border-color: var(--gold-bright); box-shadow: 0 0 0 1px var(--gold-bright), 0 0 14px rgba(194, 168, 106,0.3); }
+  .ros .face {
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 50% 35%, rgba(164, 142, 208,0.35), transparent 60%);
+  }
+  .ros .ini {
+    position: absolute; inset: 0; display: grid; place-items: center;
+    font-family: var(--caps); font-size: 1.1rem; color: rgba(233,227,214,0.85); font-weight: 600;
+  }
+  .ros .lv {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    font-size: 0.5rem; text-align: center; letter-spacing: 0.1em;
+    background: rgba(8,7,10,0.8); color: var(--gold); padding: 1px 0;
+  }
+  .ros .star {
+    position: absolute; top: 2px; right: 3px; font-size: 0.5rem; color: var(--gold-bright);
+  }
+
+  /* center stage */
+  .stage {
+    position: relative; overflow: hidden;
+    display: flex; flex-direction: column;
+  }
+  .stage-tabs {
+    display: flex; gap: 0.2rem; padding: 0.8rem 1.4rem 0; position: relative; z-index: 5;
+  }
+  .stab {
+    font-family: var(--caps); font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--muted); padding: 0.55rem 1.1rem; cursor: pointer; position: relative;
+    border-bottom: 1px solid transparent; transition: color 0.25s; display: flex; align-items: center; gap: 0.45rem;
+  }
+  .stab .dotn { width: 5px; height: 5px; background: var(--crimson); border-radius: 50%; }
+  .stab:hover { color: var(--parch); }
+  .stab.active { color: var(--gold-bright); border-bottom-color: var(--gold-bright); }
+
+  .render-zone {
+    flex: 1; position: relative; display: grid; place-items: center;
+  }
+  .render-zone .floor {
+    position: absolute; bottom: 8%; left: 50%; transform: translateX(-50%);
+    width: 300px; height: 60px; border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(164, 142, 208,0.22), transparent 70%);
+    filter: blur(4px);
+  }
+  .char-figure {
+    position: relative; width: 240px; height: 440px;
+    animation: breathe 6s ease-in-out infinite;
+  }
+  .char-figure .glow {
+    position: absolute; inset: -40px; border-radius: 50%;
+    background: radial-gradient(circle at 50% 40%, rgba(164, 142, 208,0.20), transparent 60%);
+    filter: blur(10px);
+  }
+  .char-figure .body {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(164, 142, 208,0.18), rgba(142, 24, 19,0.05));
+    border: 1px solid rgba(164, 142, 208,0.30);
+    clip-path: polygon(50% 0, 70% 14%, 62% 48%, 78% 100%, 22% 100%, 38% 48%, 30% 14%);
+  }
+  .char-figure .wings {
+    position: absolute; top: 20%; left: 50%; transform: translateX(-50%);
+    width: 360px; height: 200px;
+    background: conic-gradient(from 180deg at 50% 0%, transparent, rgba(120,200,255,0.16), transparent 60%);
+    filter: blur(2px); opacity: 0.7;
+    clip-path: polygon(50% 100%, 0 0, 25% 40%, 50% 10%, 75% 40%, 100% 0);
+  }
+
+  /* name banner bottom-left of stage */
+  .name-banner {
+    position: absolute; left: 1.6rem; top: 4.2rem; z-index: 6;
+  }
+  .name-banner .lv-badge {
+    font-family: var(--caps); font-size: 0.6rem; letter-spacing: 0.2em; color: var(--gold);
+  }
+  .name-banner h2 {
+    font-family: var(--caps); font-weight: 700; font-size: 2.6rem; letter-spacing: 0.04em;
+    color: var(--parch); line-height: 1; text-shadow: 0 2px 20px rgba(0,0,0,0.7);
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .name-banner h2 .el {
+    font-size: 0.9rem; color: var(--electro); border: 1px solid var(--electro); border-radius: 50%;
+    width: 26px; height: 26px; display: inline-grid; place-items: center;
+    box-shadow: 0 0 12px rgba(164, 142, 208,0.4);
+  }
+  .stars { display: flex; gap: 2px; margin-top: 0.4rem; color: var(--gold-bright); font-size: 0.7rem; }
+
+  /* right stats panel */
+  .stats {
+    background: var(--panel); border-left: 1px solid var(--line);
+    display: flex; flex-direction: column; overflow: hidden;
+  }
+  .stats-head {
+    padding: 1rem 1.2rem 0.8rem; border-bottom: 1px solid var(--line-soft);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .stats-head .lvl { font-family: var(--caps); font-size: 1.5rem; color: var(--gold-bright); font-weight: 600; }
+  .stats-head .lvl small { font-size: 0.7rem; color: var(--muted-2); }
+  .wpn-tag { font-family: var(--caps); font-size: 0.55rem; letter-spacing: 0.16em; color: var(--muted); text-transform: uppercase; text-align: right; }
+  .stats-body { flex: 1; overflow-y: auto; padding: 0.6rem 1.2rem; }
+  .stat-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.62rem 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .stat-row .k { display: flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--muted); letter-spacing: 0.02em; }
+  .stat-row .k .d { width: 6px; height: 6px; transform: rotate(45deg); background: var(--gold-deep); }
+  .stat-row .v { font-size: 0.95rem; color: var(--parch); font-weight: 400; font-variant-numeric: tabular-nums; }
+  .stat-row.hl .k .d { background: var(--electro); box-shadow: 0 0 6px var(--electro); }
+  .stat-row.hl .v { color: var(--electro); }
+  .pct { color: var(--gold-bright) !important; }
+
+  .details-link {
+    text-align: center; padding: 0.7rem; font-family: var(--caps); font-size: 0.6rem;
+    letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); cursor: pointer;
+    border-top: 1px solid var(--line-soft); transition: color 0.25s;
+  }
+  .details-link:hover { color: var(--gold-bright); }
+
+  .seal {
+    margin: 0.4rem; position: relative; padding: 0.85rem 1rem; cursor: pointer;
+    background: linear-gradient(100deg, rgba(142, 24, 19,0.45), rgba(120,30,24,0.25));
+    border: 1px solid rgba(181, 48, 42,0.5); overflow: hidden;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+    transition: transform 0.25s;
+  }
+  .seal:hover { transform: translateY(-2px); }
+  .seal::after {
+    content: ""; position: absolute; top: 0; left: -60%; width: 40%; height: 100%;
+    background: linear-gradient(100deg, transparent, rgba(255,200,150,0.3), transparent);
+    transform: skewX(-20deg); animation: sweep 3.5s infinite;
+  }
+  .seal h4 { font-family: var(--caps); font-size: 0.75rem; letter-spacing: 0.14em; color: #ffd9c8; text-transform: uppercase; }
+  .seal .bar { margin-top: 0.5rem; height: 4px; background: rgba(0,0,0,0.4); position: relative; }
+  .seal .bar i { position: absolute; inset: 0 6% 0 0; background: linear-gradient(90deg, var(--gold), var(--gold-bright)); box-shadow: 0 0 8px var(--gold); }
+  .seal small { display:block; margin-top: 0.35rem; font-size: 0.62rem; color: rgba(255,217,200,0.7); letter-spacing: 0.08em; }
+
+  /* bottom bar */
+  .bottom {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 1.6rem;
+    background: linear-gradient(0deg, rgba(8,7,10,0.95), rgba(8,7,10,0.4));
+    border-top: 1px solid var(--line);
+  }
+  .hint { display: flex; gap: 1.6rem; }
+  .hint span { font-size: 0.72rem; color: var(--muted); display: flex; align-items: center; gap: 0.5rem; letter-spacing: 0.04em; }
+  .key {
+    font-family: var(--caps); font-size: 0.6rem; color: var(--parch); border: 1px solid var(--line);
+    padding: 0.15rem 0.45rem; min-width: 22px; text-align: center;
+  }
+  .back {
+    font-family: var(--caps); font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none; transition: color 0.25s;
+  }
+  .back:hover { color: var(--gold-bright); }
+
+  @keyframes breathe { 0%,100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-8px) scale(1.01); } }
+  @keyframes sweep { 0% { left: -60%; } 60%,100% { left: 130%; } }
+
+  .fade { animation: fin 0.6s ease both; }
+  @keyframes fin { from { opacity: 0; } to { opacity: 1; } }
+</style>
+</head>
+<body>
+  <div class="world"></div>
+  <div class="grain"></div>
+
+  <div class="app fade">
+    <!-- top -->
+    <div class="top">
+      <div class="top-left">
+        <span class="crumb">Arsenal</span>
+        <span class="crumb-sub">Personnages</span>
+      </div>
+      <div class="top-tabs">
+        <div class="top-tab active">◆</div>
+        <div class="top-tab">⚔</div>
+        <div class="top-tab">✦</div>
+        <div class="top-tab">⬡</div>
+      </div>
+      <button class="team-btn">⬡ Équipe</button>
+    </div>
+
+    <!-- main -->
+    <div class="main">
+      <!-- icon rail -->
+      <nav class="rail">
+        <div class="rail-ico active" title="Personnages">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.3"/><path d="M5 21 C5 16 8 14 12 14 C16 14 19 16 19 21" stroke="currentColor" stroke-width="1.3"/></svg>
+        </div>
+        <div class="rail-ico" title="Sceaux">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2 L20 6 V13 C20 18 16 21 12 22 C8 21 4 18 4 13 V6 Z" stroke="currentColor" stroke-width="1.3"/></svg>
+        </div>
+        <div class="rail-ico" title="Compétences">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2 L15 9 L22 9 L16 14 L18 21 L12 17 L6 21 L8 14 L2 9 L9 9 Z" stroke="currentColor" stroke-width="1.2"/></svg>
+        </div>
+        <div class="rail-ico" title="Inventaire">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="4" y="7" width="16" height="13" rx="1" stroke="currentColor" stroke-width="1.3"/><path d="M8 7 V5 A2 2 0 0 1 10 3 H14 A2 2 0 0 1 16 5 V7" stroke="currentColor" stroke-width="1.3"/></svg>
+        </div>
+        <div class="rail-spacer"></div>
+        <div class="rail-ico" title="Paramètres">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.3"/><path d="M12 2 V5 M12 19 V22 M2 12 H5 M19 12 H22 M5 5 L7 7 M17 17 L19 19 M19 5 L17 7 M7 17 L5 19" stroke="currentColor" stroke-width="1.1"/></svg>
+        </div>
+      </nav>
+
+      <!-- roster -->
+      <div class="roster" id="roster"></div>
+
+      <!-- center stage -->
+      <div class="stage">
+        <div class="stage-tabs">
+          <div class="stab active">Attributs</div>
+          <div class="stab">Compétences</div>
+          <div class="stab">Intron <span class="dotn"></span></div>
+          <div class="stab">Cosmétique</div>
+          <div class="stab">Profil</div>
+        </div>
+
+        <div class="name-banner">
+          <div class="lv-badge">Niv. 80 / 80</div>
+          <h2>Zhiliu <span class="el">⚡</span></h2>
+          <div class="stars">★★★★★★</div>
+        </div>
+
+        <div class="render-zone">
+          <div class="char-figure">
+            <div class="glow"></div>
+            <div class="wings"></div>
+            <div class="body"></div>
+          </div>
+          <div class="floor"></div>
+        </div>
+      </div>
+
+      <!-- stats panel -->
+      <aside class="stats">
+        <div class="stats-head">
+          <div class="lvl">80<small> / 80</small></div>
+          <div class="wpn-tag">Armes<br/>Espadon · Doubles pistolets</div>
+        </div>
+        <div class="stats-body">
+          <div class="stat-row hl">
+            <span class="k"><span class="d"></span>ATQ Electro</span><span class="v">1 628.69</span>
+          </div>
+          <div class="stat-row"><span class="k"><span class="d"></span>PV</span><span class="v">2 129</span></div>
+          <div class="stat-row"><span class="k"><span class="d"></span>Bouclier</span><span class="v">1 757</span></div>
+          <div class="stat-row"><span class="k"><span class="d"></span>DÉF</span><span class="v">534.24</span></div>
+          <div class="stat-row"><span class="k"><span class="d"></span>Lucidité max</span><span class="v">528</span></div>
+          <div class="stat-row"><span class="k"><span class="d"></span>Puissance de compétence</span><span class="v pct">310.6 %</span></div>
+          <div class="stat-row"><span class="k"><span class="d"></span>Portée de compétence</span><span class="v pct">124 %</span></div>
+          <div class="stat-row"><span class="k"><span class="d"></span>Durée de compétence</span><span class="v pct">100 %</span></div>
+          <div class="stat-row"><span class="k"><span class="d"></span>Efficacité de compétence</span><span class="v pct">172 %</span></div>
+          <div class="stat-row"><span class="k"><span class="d"></span>Vigueur</span><span class="v pct">100 %</span></div>
+          <div class="stat-row"><span class="k"><span class="d"></span>Ténacité</span><span class="v pct">0 %</span></div>
+        </div>
+        <div class="details-link">Voir les détails ▸</div>
+        <div class="seal">
+          <h4>⬥ Sceau démoniaque</h4>
+          <div class="bar"><i></i></div>
+          <small>Tolérance 139 / 145</small>
+        </div>
+      </aside>
+    </div>
+
+    <!-- bottom -->
+    <div class="bottom">
+      <a class="back" href="./index.html">◀ Design Lab</a>
+      <div class="hint">
+        <span><span class="key">F</span> Détails</span>
+        <span><span class="key">C</span> Comparer</span>
+        <span><span class="key">Esc</span> Retour</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const ROSTER = [
+      { n: "Zhiliu", el: "#a48ed0", lv: 80, star: 6, active: true },
+      { n: "Ascencia", el: "#7fb2ff", lv: 70, star: 5 },
+      { n: "Berenica", el: "#ff7a6a", lv: 65, star: 5 },
+      { n: "Luno", el: "#7be0c0", lv: 58, star: 4 },
+      { n: "Galea", el: "#e3cd95", lv: 80, star: 6 },
+      { n: "Vesper", el: "#ff8fd0", lv: 42, star: 4 },
+      { n: "Orin", el: "#9ad0ff", lv: 60, star: 5 },
+      { n: "Selka", el: "#c2a86a", lv: 35, star: 4 },
+      { n: "Riven", el: "#a48ed0", lv: 50, star: 5 },
+      { n: "Aoi", el: "#7be0c0", lv: 28, star: 3 },
+    ];
+    const rosterEl = document.getElementById('roster');
+    ROSTER.forEach((c) => {
+      const d = document.createElement('div');
+      d.className = 'ros' + (c.active ? ' active' : '');
+      d.innerHTML = `
+        <div class="face" style="background:radial-gradient(circle at 50% 35%, ${c.el}55, transparent 60%)"></div>
+        <div class="ini">${c.n[0]}</div>
+        <div class="star">${'★'.repeat(Math.min(c.star,3))}</div>
+        <div class="lv">Lv.${c.lv}</div>`;
+      d.addEventListener('click', () => {
+        document.querySelector('.ros.active')?.classList.remove('active');
+        d.classList.add('active');
+      });
+      rosterEl.appendChild(d);
+    });
+    document.querySelectorAll('.stab').forEach(t => t.addEventListener('click', () => {
+      document.querySelector('.stab.active')?.classList.remove('active');
+      t.classList.add('active');
+    }));
+  </script>
+</body>
+</html>

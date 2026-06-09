@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Design Lab · Réglages</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:wght@500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="./assets/dna-ui.css" />
+<style>
+  body { overflow: hidden; height: 100vh; }
+  .world { position: fixed; inset: 0; z-index: -2;
+    background:
+      radial-gradient(50% 50% at 25% 30%, rgba(120,150,160,0.14), transparent 60%),
+      radial-gradient(40% 50% at 80% 70%, rgba(150,110,70,0.12), transparent 60%),
+      linear-gradient(150deg, #0a0a0d, #0b0a08 55%, #0d1011);
+  }
+  .world::after { content:""; position:absolute; inset:0; background: radial-gradient(ellipse 90% 80% at 50% 50%, transparent 50%, rgba(0,0,0,0.72)); }
+
+  .app { height: 100vh; display: grid; grid-template-rows: 56px 1fr 48px; }
+
+  /* top bar */
+  .top { display: flex; align-items: center; gap: 1.4rem; padding: 0 1.6rem;
+    background: linear-gradient(180deg, rgba(8,7,6,0.95), rgba(8,7,6,0.4)); border-bottom: 1px solid var(--line); }
+  .emblem { width: 30px; height: 30px; display: grid; place-items: center; }
+  .top h1 { font-family: var(--caps); font-weight: 600; font-size: 1.1rem; letter-spacing: 0.16em; color: var(--gold-bright); text-transform: uppercase; }
+  .topicons { display: flex; gap: 0.3rem; margin-left: 1rem; }
+  .topico { width: 36px; height: 36px; display: grid; place-items: center; color: var(--muted); border: 1px solid transparent; cursor: pointer; transition: all 0.25s; position: relative; }
+  .topico:hover, .topico.is-active { color: var(--gold-bright); border-color: var(--line); background: rgba(201,162,75,0.06); }
+  .topico .kh { position: absolute; bottom: -1px; right: 1px; font-family: var(--caps); font-size: 0.42rem; color: var(--muted-2); }
+  .top .spacer { flex: 1; }
+  .keyhint { font-family: var(--caps); font-size: 0.58rem; letter-spacing: 0.18em; color: var(--muted); display: flex; align-items: center; gap: 0.5rem; }
+
+  /* content */
+  .content { display: grid; grid-template-columns: 1fr 340px; overflow: hidden; }
+  .settings { padding: 1.4rem 2rem; overflow: hidden; display: flex; flex-direction: column; }
+  .subtabs { display: flex; gap: 1.8rem; border-bottom: 1px solid var(--line-soft); padding-bottom: 0.7rem; }
+  .subtabs .dna-tab { display: flex; align-items: center; gap: 0.5rem; }
+
+  .listhead { display: flex; align-items: center; justify-content: space-between; margin-top: 1.2rem; padding: 0.5rem 0.8rem;
+    background: linear-gradient(90deg, rgba(201,162,75,0.08), transparent); border-left: 2px solid var(--gold); }
+  .listhead .t { font-family: var(--caps); font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-bright); }
+  .listhead .chev { color: var(--gold); }
+
+  .rows { margin-top: 0.6rem; overflow-y: auto; padding-right: 0.4rem; flex: 1; }
+  .krow { display: flex; align-items: center; justify-content: space-between; padding: 0.7rem 0.9rem; transition: background 0.2s; cursor: pointer; }
+  .krow:nth-child(odd) { background: rgba(255,255,255,0.015); }
+  .krow:hover { background: linear-gradient(90deg, rgba(201,162,75,0.08), transparent); }
+  .krow .lbl { font-family: var(--ui); font-size: 0.9rem; color: var(--parch); letter-spacing: 0.01em; }
+  .krow:hover .lbl { color: var(--gold-bright); }
+
+  /* character standee */
+  .standee { position: relative; border-left: 1px solid var(--line); background: linear-gradient(180deg, rgba(14,12,9,0.4), rgba(8,7,6,0.7));
+    display: flex; align-items: flex-end; justify-content: center; overflow: hidden; }
+  .standee .glow { position: absolute; top: 18%; left: 50%; transform: translateX(-50%); width: 220px; height: 220px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,162,75,0.18), transparent 65%); filter: blur(6px); }
+  .figure { position: relative; width: 200px; height: 380px; margin-bottom: 56px; animation: dna-float 7s ease-in-out infinite; }
+  .figure .body { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(236,228,210,0.16), rgba(156,43,33,0.05));
+    border: 1px solid rgba(201,162,75,0.25); clip-path: polygon(50% 0, 68% 14%, 60% 50%, 76% 100%, 24% 100%, 40% 50%, 32% 14%); }
+  .crate { position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%); width: 150px; height: 44px;
+    background: linear-gradient(180deg, #3a2c1c, #211810); border: 1px solid rgba(201,162,75,0.3); }
+  .crate::before { content:""; position:absolute; inset:6px; border:1px solid rgba(201,162,75,0.18); }
+  .standee .cap { position: absolute; bottom: 8px; left: 0; right: 0; text-align: center; font-family: var(--caps); font-size: 0.56rem; letter-spacing: 0.3em; color: var(--muted-2); text-transform: uppercase; }
+
+  /* bottom */
+  .bottom { display: flex; align-items: center; justify-content: space-between; padding: 0 1.6rem;
+    background: linear-gradient(0deg, rgba(8,7,6,0.95), rgba(8,7,6,0.3)); border-top: 1px solid var(--line); }
+  .bhint { display: flex; gap: 1.6rem; }
+  .bhint span { font-family: var(--caps); font-size: 0.58rem; letter-spacing: 0.16em; color: var(--muted); display: flex; align-items: center; gap: 0.5rem; }
+
+  @media (max-width: 900px) { .content { grid-template-columns: 1fr; } .standee { display: none; } }
+</style>
+</head>
+<body>
+  <div class="world"></div>
+  <div class="dna-grain"></div>
+
+  <div class="app dna-anim">
+    <!-- top -->
+    <div class="top">
+      <span class="emblem">
+        <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+          <path d="M6 16 a10 10 0 1 1 20 0 a7 7 0 1 0 -14 0 a10 10 0 0 1 -6 0 z" fill="#9c2b21"/>
+          <circle cx="22" cy="11" r="2" fill="#c8463a"/>
+        </svg>
+      </span>
+      <h1>Paramètres</h1>
+      <div class="topicons">
+        <div class="topico"><span style="font-size:1rem">⌨</span><span class="kh">A</span></div>
+        <div class="topico is-active"><span style="font-size:1rem">⎙</span></div>
+        <div class="topico"><span style="font-size:1rem">▥</span></div>
+        <div class="topico"><span style="font-size:1rem">▤</span></div>
+        <div class="topico"><span style="font-size:1rem">♪</span></div>
+        <div class="topico"><span style="font-size:1rem">⊕</span></div>
+        <div class="topico"><span style="font-size:1rem">◆</span><span class="kh">E</span></div>
+      </div>
+      <span class="spacer"></span>
+      <span class="keyhint">Assignation des touches</span>
+    </div>
+
+    <!-- content -->
+    <div class="content">
+      <div class="settings">
+        <div class="subtabs">
+          <button class="dna-tab is-active"><span class="dna-key">Q</span> Clavier et souris</button>
+          <button class="dna-tab"><span class="dna-key">D</span> Manette</button>
+        </div>
+
+        <div class="listhead">
+          <span class="t">Commandes modifiables</span>
+          <span class="chev">▲</span>
+        </div>
+
+        <div class="rows" id="rows"></div>
+      </div>
+
+      <!-- standee -->
+      <div class="standee">
+        <div class="glow"></div>
+        <div class="figure"><div class="body"></div></div>
+        <div class="crate"></div>
+        <div class="cap">Aperçu · opérateur</div>
+      </div>
+    </div>
+
+    <!-- bottom -->
+    <div class="bottom">
+      <a class="dna-back" href="./index.html" style="position:static;border:none;background:none;padding:0">◀ Design Lab</a>
+      <div class="bhint">
+        <span><span class="dna-key">R</span> Restaurer par défaut</span>
+        <span><span class="dna-key">Esc</span> Retour</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const BINDS = [
+      ['Attaque de mêlée', '🖱 G'], ['Attaque à distance', '🖱 D'], ['Compétence de combat', 'E'],
+      ['Compétence ultime', 'A'], ['Soutien de Géniemon', 'W'], ['Sauter', 'Space'],
+      ['Glisser / S\'accroupir', 'L Ctrl'], ['Esquiver', '🖱 M'], ['Bond Cyclonique', '4'],
+      ['Réanimer', 'X'], ['Interagir', 'F'], ['Ouvrir la carte', 'M'],
+      ['Inventaire rapide', 'I'], ['Marqueur de ping', 'V'], ['Changer d\'arme', 'Q'],
+    ];
+    const rowsEl = document.getElementById('rows');
+    BINDS.forEach(([label, key]) => {
+      const r = document.createElement('div');
+      r.className = 'krow';
+      r.innerHTML = `<span class="lbl">${label}</span><span class="dna-key">${key}</span>`;
+      rowsEl.appendChild(r);
+    });
+  </script>
+</body>
+</html>

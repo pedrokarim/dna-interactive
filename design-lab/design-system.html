@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Design Lab · Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="./assets/dna-ui.css" />
+<style>
+  html { scroll-behavior: smooth; }
+  .ds-shell { display: grid; grid-template-columns: 232px 1fr; align-items: start; }
+
+  /* nav */
+  .ds-nav { position: sticky; top: 0; height: 100vh; overflow-y: auto; border-right: 1px solid var(--line);
+    background: rgba(8,7,6,0.6); padding: 1.6rem 1.2rem; }
+  .ds-brand { font-family: var(--caps); font-weight: 600; font-size: 0.85rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold-bright); }
+  .ds-brand small { display: block; font-family: var(--ui); font-size: 0.6rem; letter-spacing: 0.2em; color: var(--muted-2); margin-top: 0.3rem; }
+  .ds-nav .grp { margin-top: 1.6rem; }
+  .ds-nav .grp > b { font-family: var(--caps); font-size: 0.56rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); }
+  .ds-nav a { display: block; font-family: var(--ui); font-size: 0.82rem; color: var(--muted); text-decoration: none;
+    padding: 0.3rem 0 0.3rem 0.8rem; border-left: 1px solid var(--line-soft); margin-top: 0.2rem; transition: all 0.2s; }
+  .ds-nav a:hover { color: var(--parch); border-color: var(--gold); }
+  .ds-nav a.is-active { color: var(--gold-bright); border-color: var(--gold-bright); border-left-width: 2px; padding-left: calc(0.8rem - 1px); }
+
+  /* main */
+  .ds-main { padding: 2.4rem 3rem 8rem; max-width: 1100px; }
+  .ds-hero h1 { font-family: var(--serif); font-weight: 600; font-size: 3.2rem; color: var(--parch); line-height: 1; }
+  .ds-hero h1 em { font-style: italic; color: var(--gold-bright); }
+  .ds-hero p { font-family: var(--serif); font-size: 1.25rem; color: var(--muted); max-width: 40rem; margin-top: 0.8rem; line-height: 1.55; }
+
+  .ds-section { margin-top: 3.2rem; scroll-margin-top: 1.5rem; }
+  .ds-h2 { font-family: var(--caps); font-weight: 600; font-size: 1.4rem; letter-spacing: 0.06em; color: var(--gold-bright);
+    display: flex; align-items: center; gap: 0.7rem; padding-bottom: 0.7rem; border-bottom: 1px solid var(--line); }
+  .ds-h2::before { content: "◆"; font-size: 0.8rem; color: var(--gold); }
+  .ds-note { font-family: var(--serif); font-style: italic; color: var(--muted); margin-top: 0.7rem; font-size: 1.05rem; }
+
+  .ds-grid { margin-top: 1.4rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; }
+  .ds-demo { position: relative; border: 1px solid var(--line-soft); background: rgba(255,255,255,0.012); padding: 1.4rem 1.2rem 2.4rem; border-radius: 4px;
+    display: flex; align-items: center; justify-content: center; min-height: 110px; gap: 0.7rem; flex-wrap: wrap; }
+  .ds-demo.col { flex-direction: column; align-items: stretch; }
+  .ds-demo.wide { grid-column: 1 / -1; }
+  .ds-cap { position: absolute; left: 0.7rem; bottom: 0.55rem; font-family: var(--ui); font-size: 0.66rem; color: var(--muted-2); }
+  .ds-cap code { font-family: ui-monospace, monospace; font-size: 0.66rem; color: var(--gold); background: rgba(194,168,106,0.08); padding: 0.05rem 0.35rem; border-radius: 3px; }
+
+  /* color swatches */
+  .ds-swatches { margin-top: 1.4rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 0.8rem; }
+  .sw { border: 1px solid var(--line-soft); border-radius: 4px; overflow: hidden; }
+  .sw .chip { height: 64px; }
+  .sw .meta { padding: 0.5rem 0.6rem; }
+  .sw .nm { font-family: var(--ui); font-size: 0.78rem; color: var(--parch); }
+  .sw .hx { font-family: ui-monospace, monospace; font-size: 0.68rem; color: var(--muted-2); }
+
+  /* type scale */
+  .ds-type > div { padding: 0.6rem 0; border-bottom: 1px solid var(--line-soft); display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+  .ds-type .lbl { font-family: var(--ui); font-size: 0.66rem; letter-spacing: 0.1em; color: var(--muted-2); white-space: nowrap; }
+
+  .ds-demo .tile-wrap { width: 130px; }
+</style>
+</head>
+<body>
+  <div class="dna-bg"></div>
+  <div class="dna-grain"></div>
+
+  <div class="ds-shell">
+    <!-- NAV -->
+    <nav class="ds-nav" id="nav">
+      <div class="ds-brand">Design System<small>Duet Night Abyss · DNA UI</small></div>
+      <div class="grp"><b>Fondations</b>
+        <a href="#couleurs">Couleurs</a>
+        <a href="#typographie">Typographie</a>
+        <a href="#atmosphere">Atmosphère</a>
+      </div>
+      <div class="grp"><b>Contrôles</b>
+        <a href="#boutons">Boutons</a>
+        <a href="#champs">Champs & filtres</a>
+        <a href="#etats">Switch · Stepper · Vues</a>
+        <a href="#onglets">Onglets & touches</a>
+      </div>
+      <div class="grp"><b>Affichage</b>
+        <a href="#tags">Tags · Pills · Badges</a>
+        <a href="#rarete">Rareté & avatars</a>
+      </div>
+      <div class="grp"><b>Conteneurs</b>
+        <a href="#panneaux">Panneaux & frise</a>
+        <a href="#ornements">Ribbon · Accordéon · Seal</a>
+        <a href="#tuiles">Tuiles de menu</a>
+      </div>
+      <div class="grp"><b>Données</b>
+        <a href="#stats">Stat rows & barres</a>
+        <a href="#rewards">Butin</a>
+      </div>
+      <div class="grp"><b>Effets récupérés</b>
+        <a href="#effets">3D · Anneaux · Glitch</a>
+      </div>
+      <div class="grp"><b></b>
+        <a href="./index.html">◀ Retour galerie</a>
+      </div>
+    </nav>
+
+    <!-- MAIN -->
+    <main class="ds-main">
+      <div class="ds-hero">
+        <h1>DNA <em>UI</em></h1>
+        <p>Le système de composants du site, calé sur l'interface du jeu : or laiton mat, cramoisi profond, charbon neutre. Tout est dans <code style="font-family:ui-monospace,monospace;color:var(--gold)">assets/dna-ui.css</code> — pas de Storybook, cette page <strong style="color:var(--parch)">est</strong> la référence.</p>
+      </div>
+
+      <!-- COULEURS -->
+      <section class="ds-section" id="couleurs">
+        <h2 class="ds-h2">Couleurs</h2>
+        <p class="ds-note">Échantillonnées au pixel sur les captures du jeu. L'or n'est pas un jaune saturé mais un laiton mat ; le cramoisi est profond, pas orangé.</p>
+        <div class="ds-swatches" id="swNoyau"></div>
+        <h3 style="font-family:var(--caps);font-size:0.7rem;letter-spacing:0.2em;color:var(--gold);margin-top:1.6rem;text-transform:uppercase">Éléments</h3>
+        <div class="ds-swatches" id="swEl"></div>
+      </section>
+
+      <!-- TYPO -->
+      <section class="ds-section" id="typographie">
+        <h2 class="ds-h2">Typographie</h2>
+        <p class="ds-note">Trois familles : Cinzel (capitales gravées, labels & titres de section), Cormorant Garamond (titres & noms, sérif à fort contraste), Jost (UI, casse normale).</p>
+        <div class="ds-type" style="margin-top:1rem">
+          <div><span style="font-family:var(--serif);font-weight:600;font-size:2.6rem;color:var(--parch)">Périple ferroviaire de Luno</span><span class="lbl">Cormorant · titre</span></div>
+          <div><span style="font-family:var(--caps);font-weight:600;font-size:1.3rem;letter-spacing:0.14em;color:var(--gold-bright)">ARSENAL · PERSONNAGES</span><span class="lbl">Cinzel · label</span></div>
+          <div><span style="font-family:var(--ui);font-size:1rem;color:var(--parch)">Au sifflet de Luno, partez à la découverte des merveilles.</span><span class="lbl">Jost · corps</span></div>
+          <div><span style="font-family:var(--serif);font-style:italic;font-size:1.3rem;color:var(--muted)">« Un sceau ne se porte pas : il se mérite. »</span><span class="lbl">Cormorant · italique</span></div>
+        </div>
+      </section>
+
+      <!-- ATMOSPHÈRE -->
+      <section class="ds-section" id="atmosphere">
+        <h2 class="ds-h2">Atmosphère</h2>
+        <div class="ds-grid">
+          <div class="ds-demo" style="background:var(--ink)"><span class="dna-crest" style="width:160px"></span><span class="ds-cap"><code>.dna-crest</code> · frise filigrane</span></div>
+          <div class="ds-demo"><span class="dna-divider" style="width:100%"><span></span></span><span class="ds-cap"><code>.dna-divider</code></span></div>
+          <div class="ds-demo"><span class="dna-seclabel" style="width:100%">Annonces d'événements</span><span class="ds-cap"><code>.dna-seclabel</code></span></div>
+          <div class="ds-demo" style="overflow:hidden"><span style="font-family:var(--caps);font-weight:700;font-size:3rem;letter-spacing:0.1em;color:rgba(236,228,210,0.06)">PAN GU</span><span class="ds-cap"><code>.dna-watermark</code> · filigrane fantôme</span></div>
+        </div>
+      </section>
+
+      <!-- BOUTONS -->
+      <section class="ds-section" id="boutons">
+        <h2 class="ds-h2">Boutons</h2>
+        <p class="ds-note">Calés sur le jeu : rectangle arrondi, fond sombre, liseré fin, casse normale. Le primaire ajoute un liseré doré et un léger voile laiton.</p>
+        <div class="ds-grid">
+          <div class="ds-demo"><button class="dna-btn dna-btn--gold">Voir l'événement</button><span class="ds-cap"><code>.dna-btn--gold</code> · primaire</span></div>
+          <div class="ds-demo"><button class="dna-btn dna-btn--ghost">Conditions</button><span class="ds-cap"><code>.dna-btn--ghost</code> · secondaire</span></div>
+          <div class="ds-demo"><button class="dna-btn dna-btn--gold">⌖ Équiper</button><button class="dna-btn dna-btn--ghost">Analyser</button><span class="ds-cap">association primaire + secondaire</span></div>
+        </div>
+      </section>
+
+      <!-- CHAMPS -->
+      <section class="ds-section" id="champs">
+        <h2 class="ds-h2">Champs & filtres</h2>
+        <div class="ds-grid">
+          <div class="ds-demo"><span class="dna-field"><span style="color:var(--muted)">⌕</span><input placeholder="Rechercher…" /></span><span class="ds-cap"><code>.dna-field</code></span></div>
+          <div class="ds-demo"><button class="dna-chip">Katana</button><button class="dna-chip is-on">Espadon</button><span class="ds-cap"><code>.dna-chip</code> · neutre / actif</span></div>
+          <div class="ds-demo">
+            <button class="dna-chip dna-chip--el is-on" style="color:#a48ed0"><span class="dot"></span>Electro</button>
+            <button class="dna-chip dna-chip--el" style="color:#e2664a"><span class="dot"></span>Pyro</button>
+            <span class="ds-cap"><code>.dna-chip--el</code> · élément</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ÉTATS -->
+      <section class="ds-section" id="etats">
+        <h2 class="ds-h2">Switch · Stepper · Vues</h2>
+        <div class="ds-grid">
+          <div class="ds-demo"><span class="dna-switch is-on" data-toggle></span><span class="dna-switch" data-toggle></span><span class="ds-cap"><code>.dna-switch</code></span></div>
+          <div class="ds-demo"><span class="dna-stepper"><button data-step="-1">▼</button><span class="val"><b id="stv">30</b><small> / 99</small></span><button data-step="1">▲</button></span><span class="ds-cap"><code>.dna-stepper</code></span></div>
+          <div class="ds-demo"><span class="dna-segmented" id="seg"><button class="is-on">▦ Grille</button><button>≡ Liste</button></span><span class="ds-cap"><code>.dna-segmented</code></span></div>
+        </div>
+      </section>
+
+      <!-- ONGLETS -->
+      <section class="ds-section" id="onglets">
+        <h2 class="ds-h2">Onglets & touches</h2>
+        <div class="ds-grid">
+          <div class="ds-demo wide" style="justify-content:flex-start"><nav class="dna-tabs"><a class="is-active">Attributs</a><a>Compétences</a><a>Cosmétique</a><a>Profil</a></nav><span class="ds-cap"><code>.dna-tabs</code></span></div>
+          <div class="ds-demo"><span class="dna-key">E</span><span class="dna-key">Esc</span><span class="dna-key">L&nbsp;Ctrl</span><span class="dna-key">Space</span><span class="ds-cap"><code>.dna-key</code></span></div>
+          <div class="ds-demo"><span class="dna-tooltip"><button class="dna-btn dna-btn--ghost">Survol</button><span class="dna-tooltip__bubble"><b>Astuce</b> · texte d'aide</span></span><span class="ds-cap"><code>.dna-tooltip</code></span></div>
+        </div>
+      </section>
+
+      <!-- TAGS -->
+      <section class="ds-section" id="tags">
+        <h2 class="ds-h2">Tags · Pills · Badges</h2>
+        <div class="ds-grid">
+          <div class="ds-demo"><span class="dna-tag">DPS</span><span class="dna-tag">SkillDPS</span><span class="dna-tag dna-tag--crimson">Conflit</span><span class="ds-cap"><code>.dna-tag</code></span></div>
+          <div class="ds-demo"><span class="dna-pill">03·06</span><span class="dna-pill">Lv.20</span><span class="ds-cap"><code>.dna-pill</code> · date / valeur</span></div>
+          <div class="ds-demo">
+            <span class="dna-elem" style="color:#a48ed0">ϟ</span>
+            <span class="dna-elem" style="color:#e2664a">✦</span>
+            <span class="dna-elem" style="color:#5fa8ff">❖</span>
+            <span class="ds-cap"><code>.dna-elem</code> · badge élément</span>
+          </div>
+          <div class="ds-demo" style="background:#15110b">
+            <div style="position:relative;width:120px;height:70px;border:1px solid var(--line)"><span class="dna-nouveau">Nouveau</span><span class="dna-notif"></span></div>
+            <span class="ds-cap"><code>.dna-nouveau</code> + <code>.dna-notif</code></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- RARETÉ -->
+      <section class="ds-section" id="rarete">
+        <h2 class="ds-h2">Rareté & avatars</h2>
+        <div class="ds-grid">
+          <div class="ds-demo"><span class="dna-stars">★★★★★</span><span class="dna-stars" data-empty="★★">★★★</span><span class="ds-cap"><code>.dna-stars</code></span></div>
+          <div class="ds-demo">
+            <span class="dna-avatar"><img src="../public/assets/characters/head/T_Head_Lise.png" alt="" onerror="this.replaceWith(document.createTextNode('R'))"/></span>
+            <span class="dna-avatar dna-avatar--round"><img src="../public/assets/characters/head/T_Head_Kami.png" alt="" onerror="this.replaceWith(document.createTextNode('C'))"/></span>
+            <span class="ds-cap"><code>.dna-avatar</code> · biseau / rond</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- PANNEAUX -->
+      <section class="ds-section" id="panneaux">
+        <h2 class="ds-h2">Panneaux & frise</h2>
+        <div class="ds-grid">
+          <div class="ds-demo col" style="min-height:140px"><div class="dna-panel dna-panel--inner" style="padding:1.1rem;width:100%"><div class="dna-seclabel" style="margin-bottom:0.6rem">Identité</div><div style="font-family:var(--serif);font-size:1.4rem;color:var(--parch)">Rhythm</div><div style="font-size:0.8rem;color:var(--muted)">Appel du Phare</div></div><span class="ds-cap"><code>.dna-panel--inner</code> · double filet</span></div>
+          <div class="ds-demo col" style="min-height:140px;padding-top:1.6rem"><div class="dna-panel" style="position:relative;padding:1.4rem 1.1rem 1rem;width:100%"><span class="dna-panel__crest"><span class="dna-crest"></span></span><div style="font-family:var(--serif);font-size:1.3rem;color:var(--gold-bright);text-align:center">Informations</div></div><span class="ds-cap"><code>.dna-panel__crest</code> · panneau à frise</span></div>
+          <div class="ds-demo col wide" style="padding:0;min-height:150px;overflow:hidden;border:none">
+            <div class="dna-hero-warm" style="padding:1.6rem 1.8rem;width:100%;min-height:150px;position:relative">
+              <div class="halo" style="width:120px;height:120px;right:30px;top:10px"></div>
+              <div style="font-family:var(--serif);font-weight:600;font-size:1.8rem;color:#241a08">Registre narratif</div>
+              <div style="font-family:var(--ui);font-size:0.8rem;color:#4a3a26;margin-top:0.3rem">En-tête chaud ivoire → tan → sombre</div>
+            </div>
+            <span class="ds-cap"><code>.dna-hero-warm</code></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ORNEMENTS -->
+      <section class="ds-section" id="ornements">
+        <h2 class="ds-h2">Ribbon · Accordéon · Seal</h2>
+        <div class="ds-grid">
+          <div class="ds-demo"><span class="dna-ribbon">Messager impérial</span><span class="ds-cap"><code>.dna-ribbon</code> · cartouche</span></div>
+          <div class="ds-demo col wide" style="align-items:stretch">
+            <div class="dna-acc is-open" id="acc" style="width:100%"><div class="dna-acc__head">Durée de l'événement<span class="dna-acc__chev">▶</span></div><div class="dna-acc__body">Du 4 juin au 25 juin · serveurs Europe, Asie et Amériques.</div></div>
+            <span class="ds-cap"><code>.dna-acc</code> · accordéon ◆</span>
+          </div>
+          <div class="ds-demo col"><div class="dna-seal" style="width:100%"><h4>⬥ Sceau démoniaque</h4><div class="bar"><i style="right:6%"></i></div><small>Tolérance 139 / 145</small></div><span class="ds-cap"><code>.dna-seal</code></span></div>
+        </div>
+      </section>
+
+      <!-- TUILES -->
+      <section class="ds-section" id="tuiles">
+        <h2 class="ds-h2">Tuiles de menu</h2>
+        <div class="ds-grid">
+          <div class="ds-demo"><div class="tile-wrap"><div class="dna-tile"><span class="dna-nouveau">Nouveau</span><span class="dna-tile__ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1"><path d="M12 2 L15 9 L22 9 L16 14 L18 21 L12 17 L6 21 L8 14 L2 9 L9 9 Z"/></svg></span><span class="dna-tile__label">Événements</span><span class="dna-tile__ghost">Heuris</span></div></div><span class="ds-cap"><code>.dna-tile</code></span></div>
+          <div class="ds-demo"><div class="dna-tile dna-tile--wide" style="width:200px"><span class="dna-tile__ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1"><circle cx="12" cy="8" r="4"/><path d="M5 21 C5 16 8 14 12 14 C16 14 19 16 19 21"/></svg></span><span class="dna-tile__label">Arsenal</span></div><span class="ds-cap"><code>.dna-tile--wide</code></span></div>
+        </div>
+      </section>
+
+      <!-- DONNÉES -->
+      <section class="ds-section" id="stats">
+        <h2 class="ds-h2">Stat rows & barres</h2>
+        <div class="ds-grid">
+          <div class="ds-demo col"><div style="width:100%">
+            <div class="dna-statrow dna-statrow--hl"><span class="k"><span class="d"></span>ATQ Electro</span><span class="v">1 628.69</span></div>
+            <div class="dna-statrow"><span class="k"><span class="d"></span>PV</span><span class="v">2 129</span></div>
+            <div class="dna-statrow"><span class="k"><span class="d"></span>DÉF</span><span class="v">534.24</span></div>
+          </div><span class="ds-cap"><code>.dna-statrow</code> · <code>--hl</code></span></div>
+          <div class="ds-demo col"><div style="width:100%">
+            <div class="dna-progress" style="margin-bottom:1rem"><i style="width:64%"></i></div>
+            <div class="dna-bar" style="--bc:#a48ed0"><div class="dna-bar__row"><span class="k">STABILITÉ</span><span class="v">78%</span></div><div class="dna-bar__track"><i style="width:78%"></i></div></div>
+            <div class="dna-bar" style="--bc:var(--crimson-br)"><div class="dna-bar__row"><span class="k">DIVERGENCE</span><span class="v">23%</span></div><div class="dna-bar__track"><i style="width:23%"></i></div></div>
+          </div><span class="ds-cap"><code>.dna-progress</code> · <code>.dna-bar</code></span></div>
+        </div>
+      </section>
+
+      <!-- REWARDS -->
+      <section class="ds-section" id="rewards">
+        <h2 class="ds-h2">Butin</h2>
+        <div class="ds-grid">
+          <div class="ds-demo wide"><div class="dna-rewards" style="width:100%;grid-template-columns:repeat(8,1fr)">
+            <div class="dna-reward dna-reward--rare"><span class="dna-reward__badge">Bonus</span><span class="sym">✦</span><span class="q">×1</span></div>
+            <div class="dna-reward"><span class="sym">◈</span><span class="q">×4</span></div>
+            <div class="dna-reward"><span class="sym">⬡</span><span class="q">×27k</span></div>
+            <div class="dna-reward"><span class="sym">❖</span><span class="q">×8</span></div>
+            <div class="dna-reward"><span class="sym">✧</span><span class="q">×3</span></div>
+            <div class="dna-reward dna-reward--rare"><span class="sym">⬥</span><span class="q">×1</span></div>
+            <div class="dna-reward"><span class="sym">◆</span><span class="q">×12</span></div>
+            <div class="dna-reward"><span class="sym">✤</span><span class="q">×5</span></div>
+          </div><span class="ds-cap"><code>.dna-rewards</code> · <code>.dna-reward--rare</code> · <code>__badge</code></span></div>
+        </div>
+      </section>
+
+      <!-- EFFETS -->
+      <section class="ds-section" id="effets">
+        <h2 class="ds-h2">Effets récupérés <span style="font-family:var(--ui);font-size:0.7rem;letter-spacing:0;text-transform:none;color:var(--muted);font-weight:400">— recolorés sur la palette, pas jetés</span></h2>
+        <p class="ds-note">Les effets élaborés des protos (figures 3D, anneaux rotatifs, portrait à séparation RGB) sont conservés comme composants et passés du cyan/magenta à l'or/cramoisi.</p>
+        <div class="ds-grid">
+          <div class="ds-demo" style="min-height:230px"><div class="dna-figure" style="--fc:rgba(164,142,208,0.3);height:200px"><div class="glow"></div><div class="body"></div><div class="floor"></div></div><span class="ds-cap"><code>.dna-figure</code> · 3D breathing</span></div>
+          <div class="ds-demo" style="min-height:230px"><div class="dna-rings" style="width:160px;height:160px">
+            <svg class="r1" viewBox="0 0 200 200" fill="none"><g stroke="#c2a86a" stroke-width="0.6"><polygon points="100,10 186,55 186,145 100,190 14,145 14,55"/><circle cx="100" cy="100" r="90" stroke-dasharray="2 4"/></g></svg>
+            <svg class="r2" viewBox="0 0 200 200" fill="none"><g stroke="#e3cd95" stroke-width="0.8"><polygon points="100,20 170,60 170,140 100,180 30,140 30,60"/></g></svg>
+            <span style="font-family:var(--caps);color:var(--gold);font-size:0.8rem;letter-spacing:0.2em">PAN&nbsp;GU</span>
+          </div><span class="ds-cap"><code>.dna-rings</code> · anneaux rotatifs</span></div>
+          <div class="ds-demo" style="min-height:230px"><div class="dna-glitch" style="width:140px;height:190px;border:1px solid var(--line)">
+            <img class="a" src="../public/assets/characters/gacha/T_Gacha_AvatarLise.png" alt="" />
+            <img class="b" src="../public/assets/characters/gacha/T_Gacha_AvatarLise.png" alt="" />
+            <img class="m" src="../public/assets/characters/gacha/T_Gacha_AvatarLise.png" alt="" onerror="this.closest('.dna-glitch').style.background='rgba(164,142,208,0.15)'"/>
+            <span class="bar"></span>
+          </div><span class="ds-cap"><code>.dna-glitch</code> · split RGB or/cramoisi</span></div>
+          <div class="ds-demo" style="min-height:230px;background:radial-gradient(70% 70% at 50% 45%, #0e171c, #080a0c)">
+            <div style="position:relative;width:100%;height:170px">
+              <span class="dna-marker ping" style="left:30%;top:40%;--mc:#a48ed0"><span class="pin">◈</span></span>
+              <span class="dna-marker" style="left:60%;top:55%;--mc:#e3cd95"><span class="pin">▣</span></span>
+              <span class="dna-marker ping" style="left:50%;top:30%;--mc:#b5302a"><span class="pin">✦</span></span>
+            </div>
+            <span class="ds-cap"><code>.dna-marker</code> · pin + ping</span>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // color swatches
+    const NOYAU = [
+      ['Ink', '#0a0a0b'], ['Panneau', '#131211'], ['Or laiton', '#c2a86a'], ['Or clair', '#e3cd95'],
+      ['Or profond', '#897240'], ['Cramoisi', '#8e1813'], ['Cramoisi vif', '#b5302a'], ['Parchemin', '#ece4d2'], ['Muet', '#9a907c'],
+    ];
+    const ELS = [
+      ['Electro', '#a48ed0'], ['Pyro', '#e2664a'], ['Hydro', '#5fa8ff'], ['Anemo', '#57d6a6'], ['Lumino', '#e3cd95'], ['Umbro', '#8e84ff'],
+    ];
+    const swatch = (n, h) => `<div class="sw"><div class="chip" style="background:${h}"></div><div class="meta"><div class="nm">${n}</div><div class="hx">${h}</div></div></div>`;
+    document.getElementById('swNoyau').innerHTML = NOYAU.map(([n,h]) => swatch(n,h)).join('');
+    document.getElementById('swEl').innerHTML = ELS.map(([n,h]) => swatch(n,h)).join('');
+
+    // interactions
+    document.querySelectorAll('[data-toggle]').forEach(s => s.addEventListener('click', () => s.classList.toggle('is-on')));
+    let stv = 30; const stvEl = document.getElementById('stv');
+    document.querySelectorAll('[data-step]').forEach(b => b.addEventListener('click', () => { stv = Math.max(1, Math.min(99, stv + +b.dataset.step)); stvEl.textContent = stv; }));
+    document.querySelectorAll('#seg button').forEach((b, _, all) => b.addEventListener('click', () => { all.forEach(x => x.classList.remove('is-on')); b.classList.add('is-on'); }));
+    document.getElementById('acc').querySelector('.dna-acc__head').addEventListener('click', function(){ this.parentElement.classList.toggle('is-open'); });
+
+    // nav scrollspy
+    const links = [...document.querySelectorAll('.ds-nav a[href^="#"]')];
+    const secs = links.map(a => document.querySelector(a.getAttribute('href')));
+    const spy = () => { let cur = 0; secs.forEach((s, i) => { if (s && s.getBoundingClientRect().top < 120) cur = i; });
+      links.forEach((a, i) => a.classList.toggle('is-active', i === cur)); };
+    window.addEventListener('scroll', spy, { passive: true }); spy();
+  </script>
+</body>
+</html>

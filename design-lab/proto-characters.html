@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Design Lab · Personnages</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="./assets/dna-ui.css" />
+<style>
+  body { min-height: 100vh; }
+  .world { position: fixed; inset: 0; z-index: -2;
+    background:
+      radial-gradient(60% 50% at 80% 12%, rgba(120,150,160,0.12), transparent 60%),
+      radial-gradient(50% 50% at 15% 90%, rgba(150,110,70,0.12), transparent 60%),
+      linear-gradient(160deg, #0a0a0b, #0b0a08 55%, #0c0f10);
+  }
+
+  .page { max-width: 1340px; margin: 0 auto; padding: 1.6rem 2rem 5rem; position: relative; z-index: 1; }
+
+  /* header */
+  .head { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .head .title h1 { font-family: var(--caps); font-weight: 600; font-size: 1.7rem; letter-spacing: 0.16em; color: var(--gold-bright); text-transform: uppercase; line-height: 1; }
+  .head .title .sub { font-family: var(--ui); font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted-2); margin-top: 0.35rem; }
+  .head .title .sub b { color: var(--gold); font-weight: 400; }
+  .head .tools { display: flex; align-items: center; gap: 0.7rem; }
+  .search { display: flex; align-items: center; gap: 0.5rem; border: 1px solid rgba(255,255,255,0.18); border-radius: 7px;
+    background: linear-gradient(180deg, rgba(42,40,36,0.5), rgba(16,15,13,0.7)); padding: 0.45rem 0.8rem; }
+  .search input { background: none; border: none; outline: none; color: var(--parch); font-family: var(--ui); font-size: 0.85rem; width: 150px; }
+  .search input::placeholder { color: var(--muted-2); }
+  .search .ic { color: var(--muted); }
+  .vtoggle { display: flex; border: 1px solid rgba(255,255,255,0.18); border-radius: 7px; overflow: hidden; }
+  .vtoggle button { width: 38px; height: 36px; background: none; border: none; color: var(--muted); cursor: pointer; transition: all 0.2s; }
+  .vtoggle button.on { color: var(--gold-bright); background: rgba(194,168,106,0.12); }
+
+  /* filters */
+  .filters { margin-top: 1.3rem; display: flex; flex-direction: column; gap: 0.7rem; }
+  .frow { display: flex; align-items: center; gap: 0.55rem; flex-wrap: wrap; }
+  .frow > .lab { font-family: var(--caps); font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted-2); width: 64px; flex-shrink: 0; }
+  .chip { font-family: var(--ui); font-size: 0.76rem; letter-spacing: 0.02em; color: var(--muted);
+    border: 1px solid rgba(255,255,255,0.14); border-radius: 20px; background: rgba(255,255,255,0.015);
+    padding: 0.32rem 0.85rem; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.4rem; }
+  .chip:hover { color: var(--parch); border-color: rgba(255,255,255,0.3); }
+  .chip .dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+  .chip.on { color: #1a1206; background: linear-gradient(180deg, var(--gold-bright), var(--gold)); border-color: var(--gold); font-weight: 500; }
+  .chip.on.el { color: #fff; background: rgba(255,255,255,0.06); border-color: currentColor; box-shadow: 0 0 10px -2px currentColor; }
+  .reset { font-family: var(--ui); font-size: 0.72rem; color: var(--muted-2); background: none; border: none; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+  .reset:hover { color: var(--gold-bright); }
+
+  .count { margin-top: 1.1rem; font-family: var(--ui); font-size: 0.74rem; letter-spacing: 0.04em; color: var(--muted-2); }
+  .count b { color: var(--gold); font-weight: 400; }
+
+  /* GRID view */
+  .grid { margin-top: 0.9rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(184px, 1fr)); gap: 1rem; }
+  .card { position: relative; aspect-ratio: 3/4; overflow: hidden; cursor: pointer;
+    border: 1px solid var(--line); background: linear-gradient(160deg, rgba(30,26,30,0.6), rgba(12,11,10,0.9));
+    transition: transform 0.28s cubic-bezier(.2,.8,.2,1), border-color 0.28s, box-shadow 0.28s;
+    animation: dna-rise 0.6s cubic-bezier(.2,.8,.2,1) both; }
+  .card:hover { transform: translateY(-5px); border-color: var(--gold); box-shadow: 0 10px 30px -8px rgba(0,0,0,0.7); }
+  .card .por { position: absolute; inset: 0; }
+  .card .por img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; transition: transform 0.4s; }
+  .card:hover .por img { transform: scale(1.05); }
+  .card .por.empty { display: grid; place-items: center; }
+  .card .por.empty span { font-family: var(--caps); font-size: 2.4rem; color: rgba(236,228,210,0.18); }
+  /* element-tinted top glow */
+  .card .eltint { position: absolute; inset: 0 0 auto 0; height: 45%; pointer-events: none;
+    background: linear-gradient(180deg, var(--ec, transparent) -40%, transparent 70%); opacity: 0.5; }
+  .card .ov { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(8,7,6,0.96) 6%, rgba(8,7,6,0.5) 34%, transparent 60%); }
+  .card .topline { position: absolute; top: 0.55rem; left: 0.55rem; right: 0.55rem; display: flex; align-items: center; justify-content: space-between; z-index: 2; }
+  .elbadge { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font-size: 0.85rem;
+    border: 1px solid currentColor; background: rgba(8,7,6,0.55); box-shadow: 0 0 10px -2px currentColor; }
+  .stars { font-size: 0.6rem; color: var(--gold-bright); letter-spacing: -1px; text-shadow: 0 1px 3px #000; }
+  .card .body { position: absolute; left: 0; right: 0; bottom: 0; padding: 0.85rem 0.9rem; z-index: 2; }
+  .card .nm { font-family: var(--serif); font-weight: 600; font-size: 1.32rem; color: var(--parch); line-height: 1.05; }
+  .card:hover .nm { color: var(--gold-bright); }
+  .card .st { font-family: var(--ui); font-size: 0.68rem; color: var(--muted); margin-top: 0.12rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .card .wp { margin-top: 0.5rem; display: flex; gap: 0.3rem; flex-wrap: wrap; }
+  .wtag { font-family: var(--ui); font-size: 0.58rem; letter-spacing: 0.04em; color: var(--muted); border: 1px solid var(--line-soft); padding: 0.1rem 0.4rem; border-radius: 3px; background: rgba(0,0,0,0.3); }
+
+  /* LIST view */
+  .list { margin-top: 0.9rem; display: none; flex-direction: column; border: 1px solid var(--line-soft); }
+  .list.on { display: flex; }
+  .grid.off { display: none; }
+  .lrow { display: grid; grid-template-columns: 52px 1.6fr 0.8fr 1.4fr 0.7fr; align-items: center; gap: 1rem;
+    padding: 0.55rem 1rem; border-bottom: 1px solid var(--line-soft); cursor: pointer; transition: background 0.2s; }
+  .lrow:nth-child(odd) { background: rgba(255,255,255,0.012); }
+  .lrow:hover { background: linear-gradient(90deg, rgba(194,168,106,0.08), transparent); }
+  .lrow .lav { width: 44px; height: 44px; border-radius: 50%; overflow: hidden; border: 1px solid var(--line); background: rgba(30,26,30,0.7); }
+  .lrow .lav img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; }
+  .lrow .lnm { font-family: var(--serif); font-size: 1.25rem; font-weight: 600; color: var(--parch); }
+  .lrow:hover .lnm { color: var(--gold-bright); }
+  .lrow .lnm small { display: block; font-family: var(--ui); font-size: 0.66rem; color: var(--muted-2); font-weight: 400; }
+  .lrow .lel { font-family: var(--ui); font-size: 0.82rem; display: flex; align-items: center; gap: 0.5rem; }
+  .lrow .lwp { font-family: var(--ui); font-size: 0.76rem; color: var(--muted); }
+  .lrow .lst { text-align: right; font-size: 0.6rem; color: var(--gold-bright); letter-spacing: -1px; }
+  .lhead { font-family: var(--caps); font-size: 0.56rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted-2); background: rgba(255,255,255,0.02); }
+  .lhead:hover { background: rgba(255,255,255,0.02); }
+
+  .empty-msg { margin-top: 2rem; text-align: center; font-family: var(--serif); font-style: italic; font-size: 1.2rem; color: var(--muted-2); }
+</style>
+</head>
+<body>
+  <div class="world"></div>
+  <div class="dna-grain"></div>
+
+  <div class="page">
+    <div class="head">
+      <div class="title">
+        <h1>Personnages</h1>
+        <div class="sub"><b id="totalCount">29</b> protagonistes · Arsenal</div>
+      </div>
+      <div class="tools">
+        <div class="search">
+          <span class="ic">⌕</span>
+          <input id="q" type="text" placeholder="Rechercher…" />
+        </div>
+        <div class="vtoggle">
+          <button id="vGrid" class="on" title="Grille">▦</button>
+          <button id="vList" title="Liste">≡</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="filters">
+      <div class="frow">
+        <span class="lab">Élément</span>
+        <div id="elFilters" style="display:flex;gap:0.55rem;flex-wrap:wrap"></div>
+      </div>
+      <div class="frow">
+        <span class="lab">Arme</span>
+        <div id="wpFilters" style="display:flex;gap:0.55rem;flex-wrap:wrap"></div>
+        <button class="reset" id="reset">Réinitialiser</button>
+      </div>
+    </div>
+
+    <div class="count"><b id="shown">29</b> personnages affichés</div>
+
+    <div class="grid" id="grid"></div>
+    <div class="list" id="list"></div>
+    <div class="empty-msg" id="emptyMsg" style="display:none">Aucun personnage ne correspond aux filtres.</div>
+  </div>
+
+  <a class="dna-back" href="./index.html">◀ Design Lab</a>
+
+  <script id="data" type="application/json">[{"id":"char-heitao","name":"Berenica","subtitle":"Espoir Inébranlable","camp":"Les Vagabonds de la Nuit","element":{"key":"Dark","label":"Umbro"},"weapons":["Sword","Crossbow"],"rarity":5,"pos":["DPS","Uweapon","WeaponDPS"],"icon":"../public/assets/characters/icon/T_Icon_Heitao.png","gacha":"../public/assets/characters/gacha/T_Gacha_AvatarHeitao.png","head":"../public/assets/characters/head/T_Head_Heitao.png"},{"id":"char-kami","name":"Camilla","subtitle":"Cru Écarlate","camp":"Empire Hyperboréen","element":{"key":"Fire","label":"Pyro"},"weapons":["Swordwhip","Machinegun"],"rarity":5,"pos":["DPS","SkillDPS","Support"],"icon":"../public/assets/characters/icon/T_Icon_Kami.png","gacha":"../public/assets/characters/gacha/T_Gacha_AvatarKami.png","head":"../public/assets/characters/head/T_Head_Kami.png"},{"id":"char-nifu","name":"Dame Nifle","subtitle":"Passeuse de la Mer du Silence","camp":"Aucune affiliation","element":{"key":"Light","label":"Lumino"},"weapons":["Katana","Pistol"],"rarity":5,"pos":["DPS","SkillDPS"],"icon":"../public/assets/characters/icon/T_Icon_Nifu.png","gacha":"../public/assets/characters/gacha/T_Gacha_AvatarNifu.png","head":"../public/assets/characters/head/T_Head_Nifu.png"},{"id":"char-dafu","name":"Daphne","subtitle":"Grâce de la Pluie","camp":"Empire Hyperboréen","element":{"key":"Wind","label":"Anemo"},"weapons":["Swordwhip","Machinegun"],"rarity":5,"pos":["Support","Control","Heal"],"icon":"../public/assets/characters/icon/T_Icon_Dafu.png","gacha":"../public/assets/characters/gacha/T_Gacha_AvatarDafu.png","head":"../public/assets/characters/head/T_Head_Dafu.png"},{"id":"char-eve","name":"Eve","subtitle":"","camp":"République de Luca","element":{"key":"Water","label":"Hydro"},"weapons":["Polearm","Cannon"],"rarity":5,"pos":["DPS","Minion","SkillDPS"],"icon":null,"gacha":null,"head":null},{"id":"char-feina","name":"Fina","subtitle":"Mille Contes du Rossignol","camp":"Aucune affiliation","element":{"key":"Light","label":"Lumino"},"weapons":["Sword","Machinegun"],"rarity":5,"pos":["Support"],"icon":"../public/assets/characters/icon/T_Icon_Feina.png","gacha":"../public/assets/characters/gacha/T_Gacha_AvatarFeina.png","head":"../public/assets/characters/head/T_Head_Feina.png"},{"id":"char-fuluo","name":"Flora","subtitle":"Floraison Rebelle","camp":"Empire Hyperboréen","element":{"key":"Dark","label":"Umbro"},"weapons":["Sword","Machinegun"],"rarity":5,"pos":["DPS","WeaponDPS"],"icon":"../public/assets/characters/icon/T_Icon_Fuluo.png","gacha":"../public/assets/characters/gacha/T_Gacha_AvatarFuluo.png","head":"../public/assets/characters/head/T_Head_Fuluo.png"},{"id":"char-baiheng","name":"Fushu","subtitle":"Silhouette sous l’Abricotier","camp":"Huaxu","element":{"key":"Water","label":"Hydro"},"weapons":["Swordwhip","Bow"],"rarity":5,"pos":["Support","SPRecover","Heal"],"icon":"../public/assets/characters/icon/T_Icon_Baiheng.png","gacha":"../public/assets/characters/gacha/T_Gacha_AvatarBaiheng.png","head":"../public/assets/characters/head/T_Head_Baiheng.png"},{"id":"char-xier","name":"Hilda","subtitle":"Grâce Protectrice","camp":"Empire Hyperboréen","element":{"key":"Fire","label":"Pyro"},"weapons":["Dualblade","Cannon"],"rarity":5,"pos":["DPS","SkillDPS","WeaponDPS"],"icon":"../public/assets/characters/icon/T_Icon_Xier.png","gacha":"../public/assets/characters/gacha/T_Gacha_AvatarXier.png","head":"../public/assets/characters/head/T_Head_Xier.png"},{"id":"char-kezhou","name":"Kezhou","subtitle":"Lame Vagabonde","camp":"Huaxu","element":{"key":"Light","label":"Lumino"},"weapons":["Almighty"],"rarity":5,"pos":["DPS","WeaponDPS"],"icon":"../public/assets/characters/icon/T_Icon_Kezhou.png","gacha":"../public/assets/characters/gacha/T_Gacha_AvatarKezhou.png","head":"../public/assets/characters/head/T_Head_Kezhou.png"},{"id":"char-aote","name":"L’Étranger","subtitle":"Le Traqueur","camp":"Les Vagabonds de la Nuit","element":{"key":"Wind","label":"Anemo"},"weapons":["Dualblade","Crossbow"],"rarity":5,"pos":["DPS","WeaponDPS"],"icon":"../public/assets/characters/icon/T_Icon_Aote.png","gacha":"../public/assets/characters/gacha/T_Gacha_AvatarAote.png","head":"../public/assets/characters/head/T_Head_Aote.png"},{"id":"char-baonu","name":"Lisbell","subtitle":"Résilience · Courroux","camp":"Église Élyséenne","element":{"key":"Light","label":"Lumino"},"weapons":["Claymore","Shotgun"],"rarity":5,"pos":["DPS","Uweapon","WeaponDPS"],"icon":"../public/assets/characters/icon/T_Icon_Baonu.png","gacha":"../public/assets/characters/gacha/T_Gacha_AvatarBaonu.png","head":"../public/assets/characters/head/T_Head_Baonu.png"},{"id":"char-linen","name":"Lynn","subtitle":"Gâchette Ardente","camp":"Empire Hyperboréen","element":{"key":"Fire","label":"Pyro"},"weapons":["Claymore","Crossbow"],"rarity":5,"pos":["DPS","Uweapon","WeaponDPS"],"icon":"../public/assets/characters/icon/T_Icon_Linen.png","gacha":"../public/assets/characters/gacha/T_Gacha_AvatarLinen.png","head":"../public/assets/characters/head/T_Head_Linen.png"},{"id":"char-maer","name":"Margie","subtitle":"Exploratrice Citadine","camp":"Aucune affiliation","element":{"key":"Fire","label":"Pyro"},"weapons":["Polearm","Shotgun"],"rarity":5,"pos":["DPS","Control","SkillDPS"],"icon":"../public/assets/characters/icon/T_Icon_Maer.png","gacha":"../public/assets/characters/gacha/T_Gacha_AvatarMaer.png","head":"../public/assets/characters/head/T_Head_Maer.png"},{"id":"char-tuosi","name":"Phantasio","subtitle":"La Voix Oubliée","camp":"Aucune affiliation","element":{"key":"Dark","label":"Umbro"},"weapons":["Claymore","Shotgun"],"rarity":5,"pos":["DPS","SkillDPS"],"icon":"../public/assets/characters/icon/T_Icon_Tuosi.png","gacha":"../public/assets/characters/gacha/T_Gacha_AvatarTuosi.png","head":"../public/assets/characters/head/T_Head_Tuosi.png"},{"id":"char-protagonist-female","name":"Protagoniste Feminine","subtitle":"Vita / Mors","camp":"Aucune affiliation","element":{"key":"Dark","label":"Umbro"},"weapons":["Sword","Machinegun"],"rarity":5,"pos":["DPS","WeaponDPS"],"icon":null,"gacha":"../public/assets/characters/gacha/T_Gacha_AvatarNvzhu02.png","head":"../public/assets/characters/head/T_Head_Nvzhu02.png"},{"id":"char-protagonist-male","name":"Protagoniste Masculin","subtitle":"Vita / Mors","camp":"Aucune affiliation","element":{"key":"Dark","label":"Umbro"},"weapons":["Sword","Machinegun"],"rarity":5,"pos":["DPS","WeaponDPS"],"icon":null,"gacha":"../public/assets/characters/gacha/T_Gacha_AvatarNanzhu02.png","head":"../public/assets/characters/head/T_Head_Nanzhu02.png"},{"id":"char-saiqi","name":"Psyche","subtitle":"Papillon Onirique","camp":"Aucune affiliation","element":{"key":"Wind","label":"Anemo"},"weapons":["Polearm","Machinegun"],"rarity":5,"pos":["DPS","Uweapon","WeaponDPS","SkillDPS"],"icon":"../public/assets/characters/icon/T_Icon_Saiqi.png","gacha":"../public/assets/characters/gacha/T_Gacha_AvatarSaiqi.png","head":"../public/assets/characters/head/T_Head_Saiqi.png"},{"id":"char-landi","name":"Randy","subtitle":"Paresseux Stratège","camp":"Empire Hyperboréen","element":{"key":"Thunder","label":"Electro"},"weapons":["Sword","Pistol"],"rarity":5,"pos":["Support","DEF","ES"],"icon":"../public/assets/characters/icon/T_Icon_Landi.png","gacha":"../public/assets/characters/gacha/T_Gacha_AvatarLandi.png","head":"../public/assets/characters/head/T_Head_Landi.png"},{"id":"char-shuimu","name":"Rebecca","subtitle":"Méduse Sentimentale","camp":"République de Luca","element":{"key":"Water","label":"Hydro"},"weapons":["Polearm","Cannon"],"rarity":5,"pos":["DPS","Minion","SkillDPS"],"icon":"../public/assets/characters/icon/T_Icon_Shuimu.png","gacha":"../public/assets/characters/gacha/T_Gacha_AvatarShuimu.png","head":"../public/assets/characters/head/T_Head_Shuimu.png"},{"id":"char-lise","name":"Rhythm","subtitle":"Appel du Phare","camp":"Empire Hyperboréen","element":{"key":"Thunder","label":"Electro"},"weapons":["Katana","Machinegun"],"rarity":5,"pos":["DPS","SkillDPS"],"icon":"../public/assets/characters/icon/T_Icon_Lise.png","gacha":"../public/assets/characters/gacha/T_Gacha_AvatarLise.png","head":"../public/assets/characters/head/T_Head_Lise.png"},{"id":"char-xibi","name":"Sibylle","subtitle":"La Corneille","camp":"Empire Hyperboréen","element":{"key":"Thunder","label":"Electro"},"weapons":["Swordwhip","Pistol"],"rarity":5,"pos":["DPS","HP","SkillDPS"],"icon":"../public/assets/characters/icon/T_Icon_Xibi.png","gacha":"../public/assets/characters/gacha/T_Gacha_AvatarXibi.png","head":"../public/assets/characters/head/T_Head_Xibi.png"},{"id":"char-suyi","name":"Su Yi","subtitle":"Premier Envol","camp":"Huaxu","element":{"key":"Light","label":"Lumino"},"weapons":["Polearm","Shotgun"],"rarity":5,"pos":["DPS","SkillDPS"],"icon":"../public/assets/characters/icon/T_Icon_Suyi.png","gacha":"../public/assets/characters/gacha/T_Gacha_AvatarSuyi.png","head":"../public/assets/characters/head/T_Head_Suyi.png"},{"id":"char-zhangyu","name":"Tabethe","subtitle":"Trublion Abyssal","camp":"République de Luca","element":{"key":"Water","label":"Hydro"},"weapons":["Sword","Bow"],"rarity":5,"pos":["Support","Minion","Control"],"icon":"../public/assets/characters/icon/T_Icon_Zhangyu.png","gacha":"../public/assets/characters/gacha/T_Gacha_AvatarZhangyu.png","head":"../public/assets/characters/head/T_Head_Zhangyu.png"},{"id":"char-songlu","name":"Truffle et Filbert","subtitle":"Dépêchez-vous, les rations !","camp":"Église Élyséenne","element":{"key":"Wind","label":"Anemo"},"weapons":["Polearm","Bow"],"rarity":5,"pos":["Support","HP","Heal"],"icon":"../public/assets/characters/icon/T_Icon_Songlu.png","gacha":"../public/assets/characters/gacha/T_Gacha_AvatarSonglu.png","head":"../public/assets/characters/head/T_Head_Songlu.png"},{"id":"char-haier","name":"Vulcera","subtitle":"Juge des Cendres","camp":"Empire Hyperboréen","element":{"key":"Fire","label":"Pyro"},"weapons":["Claymore","Cannon"],"rarity":5,"pos":["DPS","HP","SkillDPS"],"icon":"../public/assets/characters/icon/T_Icon_Haier.png","gacha":"../public/assets/characters/gacha/T_Gacha_AvatarHaier.png","head":"../public/assets/characters/head/T_Head_Haier.png"},{"id":"char-yeer","name":"Yale et Oliver","subtitle":"Boum & Bang","camp":"Aucune affiliation","element":{"key":"Fire","label":"Pyro"},"weapons":["Sword","Shotgun"],"rarity":5,"pos":["DPS","SkillDPS"],"icon":"../public/assets/characters/icon/T_Icon_Yeer.png","gacha":"../public/assets/characters/gacha/T_Gacha_AvatarYeer.png","head":"../public/assets/characters/head/T_Head_Yeer.png"},{"id":"char-yuming","name":"Yuming","subtitle":"L’Éclair Entravé","camp":"Huaxu","element":{"key":"Thunder","label":"Electro"},"weapons":["Polearm","Machinegun"],"rarity":5,"pos":["DPS","SkillDPS","WeaponDPS"],"icon":"../public/assets/characters/icon/T_Icon_Yuming.png","gacha":"../public/assets/characters/gacha/T_Gacha_AvatarYuming.png","head":"../public/assets/characters/head/T_Head_Yuming.png"},{"id":"char-zhiliu","name":"Zhiliu","subtitle":"Augure des Eaux Calmes","camp":"Huaxu","element":{"key":"Thunder","label":"Electro"},"weapons":["Claymore","Crossbow"],"rarity":5,"pos":["DPS","SkillDPS"],"icon":"../public/assets/characters/icon/T_Icon_Zhiliu.png","gacha":"../public/assets/characters/gacha/T_Gacha_AvatarZhiliu.png","head":"../public/assets/characters/head/T_Head_Zhiliu.png"}]</script>
+  <script>
+    const CHARS = JSON.parse(document.getElementById('data').textContent);
+    document.getElementById('totalCount').textContent = CHARS.length;
+
+    const EL = {
+      Thunder: { label: 'Electro', color: '#a48ed0', glyph: 'ϟ' },
+      Fire:    { label: 'Pyro',    color: '#e2664a', glyph: '✦' },
+      Water:   { label: 'Hydro',   color: '#5fa8ff', glyph: '❖' },
+      Wind:    { label: 'Anemo',   color: '#57d6a6', glyph: '❀' },
+      Light:   { label: 'Lumino',  color: '#e3cd95', glyph: '✸' },
+      Dark:    { label: 'Umbro',   color: '#8e84ff', glyph: '☾' },
+    };
+    const WP_FR = { Sword:'Épée', Claymore:'Espadon', Katana:'Katana', Dualblade:'Double lame', Polearm:'Lance',
+      Swordwhip:'Fouet-épée', Almighty:'Polyvalent', Machinegun:'Mitrailleuse', Pistol:'Pistolet', Crossbow:'Arbalète',
+      Cannon:'Canon', Bow:'Arc', Shotgun:'Fusil', };
+
+    const state = { el: new Set(), wp: new Set(), q: '' };
+
+    // build element filter chips
+    const elBox = document.getElementById('elFilters');
+    Object.entries(EL).forEach(([key, e]) => {
+      const c = document.createElement('button');
+      c.className = 'chip el'; c.style.color = e.color;
+      c.innerHTML = `<span class="dot"></span>${e.label}`;
+      c.onclick = () => { state.el.has(key) ? state.el.delete(key) : state.el.add(key); c.classList.toggle('on'); render(); };
+      c.dataset.key = key; elBox.appendChild(c);
+    });
+    // build weapon filter chips (only present ones)
+    const wpBox = document.getElementById('wpFilters');
+    [...new Set(CHARS.flatMap(c => c.weapons))].sort((a,b)=>(WP_FR[a]||a).localeCompare(WP_FR[b]||b)).forEach(w => {
+      const c = document.createElement('button');
+      c.className = 'chip'; c.textContent = WP_FR[w] || w;
+      c.onclick = () => { state.wp.has(w) ? state.wp.delete(w) : state.wp.add(w); c.classList.toggle('on'); render(); };
+      wpBox.appendChild(c);
+    });
+    document.getElementById('q').addEventListener('input', e => { state.q = e.target.value.toLowerCase().trim(); render(); });
+    document.getElementById('reset').onclick = () => {
+      state.el.clear(); state.wp.clear(); state.q = '';
+      document.getElementById('q').value = '';
+      document.querySelectorAll('.chip.on').forEach(c => c.classList.remove('on'));
+      render();
+    };
+
+    // view toggle
+    const grid = document.getElementById('grid'), list = document.getElementById('list');
+    document.getElementById('vGrid').onclick = function(){ this.classList.add('on'); document.getElementById('vList').classList.remove('on'); grid.classList.remove('off'); list.classList.remove('on'); };
+    document.getElementById('vList').onclick = function(){ this.classList.add('on'); document.getElementById('vGrid').classList.remove('on'); grid.classList.add('off'); list.classList.add('on'); };
+
+    function match(c) {
+      if (state.el.size && !state.el.has(c.element.key)) return false;
+      if (state.wp.size && !c.weapons.some(w => state.wp.has(w))) return false;
+      if (state.q && !(c.name.toLowerCase().includes(state.q) || (c.subtitle||'').toLowerCase().includes(state.q))) return false;
+      return true;
+    }
+    const imgOf = c => c.gacha || c.head || c.icon;
+
+    function render() {
+      const rows = CHARS.filter(match);
+      document.getElementById('shown').textContent = rows.length;
+      document.getElementById('emptyMsg').style.display = rows.length ? 'none' : 'block';
+
+      // GRID
+      grid.innerHTML = rows.map((c, i) => {
+        const e = EL[c.element.key]; const img = imgOf(c);
+        const por = img
+          ? `<div class="por"><img src="${img}" alt="${c.name}" loading="lazy" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>${c.name[0]}</span>'"/></div>`
+          : `<div class="por empty"><span>${c.name[0]}</span></div>`;
+        const wps = c.weapons.map(w => `<span class="wtag">${WP_FR[w]||w}</span>`).join('');
+        return `<div class="card" style="--ec:${e.color}; animation-delay:${Math.min(i*22,500)}ms" title="${c.name}">
+          ${por}
+          <div class="eltint"></div>
+          <div class="ov"></div>
+          <div class="topline">
+            <span class="elbadge" style="color:${e.color}" title="${e.label}">${e.glyph}</span>
+            <span class="stars">${'★'.repeat(c.rarity)}</span>
+          </div>
+          <div class="body">
+            <div class="nm">${c.name}</div>
+            <div class="st">${c.subtitle || '—'}</div>
+            <div class="wp">${wps}</div>
+          </div>
+        </div>`;
+      }).join('');
+
+      // LIST
+      list.innerHTML = `<div class="lrow lhead"><span></span><span>Nom</span><span>Élément</span><span>Armes</span><span>Rareté</span></div>` +
+      rows.map(c => {
+        const e = EL[c.element.key]; const img = imgOf(c);
+        const av = img ? `<img src="${img}" alt="" loading="lazy" onerror="this.remove()"/>` : '';
+        return `<div class="lrow">
+          <span class="lav">${av}</span>
+          <span class="lnm">${c.name}<small>${c.subtitle||'—'}</small></span>
+          <span class="lel" style="color:${e.color}"><span style="width:9px;height:9px;border-radius:50%;background:${e.color};display:inline-block"></span>${e.label}</span>
+          <span class="lwp">${c.weapons.map(w=>WP_FR[w]||w).join(' · ')}</span>
+          <span class="lst">${'★'.repeat(c.rarity)}</span>
+        </div>`;
+      }).join('');
+    }
+    render();
+  </script>
+</body>
+</html>

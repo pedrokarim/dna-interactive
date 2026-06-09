@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Design Lab · POC HUD — Armurerie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --cyan: #7dd3fc; --cyan-strong: #22d3ee; --gold: #fbbf24; --magenta: #e11d48;
+    --rar: #fbbf24; /* rarity 5 = gold */
+    --hud: "Rajdhani", "Segoe UI", system-ui, sans-serif;
+    --term: "Share Tech Mono", ui-monospace, monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #050f14; color: #e2e8f0; font-family: var(--hud); min-height: 100vh; overflow-x: hidden; }
+  ::-webkit-scrollbar { height: 7px; width: 7px; }
+  ::-webkit-scrollbar-thumb { background: rgba(125,211,252,0.4); }
+  .wrap { position: relative; min-height: 100vh; width: 100%; overflow: hidden; }
+
+  .bg-deep { position: absolute; inset: 0; z-index: 0;
+    background: radial-gradient(ellipse 120% 80% at 20% 10%, rgba(14,116,144,0.18), transparent 60%),
+      radial-gradient(ellipse 120% 80% at 90% 90%, rgba(8,51,68,0.35), transparent 55%),
+      linear-gradient(180deg, #040d12 0%, #05141a 50%, #07171e 100%); }
+  .bg-iso { position: absolute; inset: 0; z-index: 0; opacity: 0.08;
+    background-image: linear-gradient(rgba(125,211,252,0.5) 0.5px, transparent 0.5px), linear-gradient(90deg, rgba(125,211,252,0.5) 0.5px, transparent 0.5px);
+    background-size: 46px 46px; transform: skewX(-18deg); transform-origin: top; }
+  .bg-glyph { position: absolute; inset: 0; z-index: 0; overflow: hidden; opacity: 0.07; color: var(--cyan-strong); font-family: var(--term); }
+  .bg-glyph span { position: absolute; font-size: 12px; line-height: 1.4; max-width: 240px; word-break: break-all; }
+  .bg-scan { position: absolute; inset: 0; z-index: 0; opacity: 0.06; mix-blend-mode: screen;
+    background: repeating-linear-gradient(180deg, rgba(125,211,252,0.8) 0 1px, transparent 1px 4px); }
+  .bg-vig { position: absolute; inset: 0; z-index: 0;
+    background: radial-gradient(ellipse 100% 80% at 50% 50%, transparent 55%, rgba(0,0,0,0.7) 100%); }
+
+  header { position: relative; z-index: 20; display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 2.4rem; }
+  .brand { display: flex; align-items: center; gap: 0.8rem; }
+  .brand .label { font-family: var(--term); font-size: 10px; letter-spacing: 0.5em; color: rgba(125,211,252,0.7); }
+  .brand .name { font-size: 1.3rem; font-weight: 600; letter-spacing: 0.16em; color: #fff; line-height: 1; }
+  .meters { display: flex; align-items: center; gap: 1.6rem; }
+  .meter { display: flex; align-items: center; gap: 0.5rem; }
+  .meter .k { font-family: var(--term); font-size: 10px; letter-spacing: 0.3em; color: rgba(186,230,253,0.5); }
+  .meter .track { position: relative; height: 4px; width: 96px; background: rgba(255,255,255,0.05); }
+  .meter .track i { position: absolute; inset: 0 auto 0 0; }
+  .meter .v { font-family: var(--term); font-size: 10px; }
+  .sess { text-align: right; font-family: var(--term); font-size: 10px; line-height: 1.4; color: rgba(186,230,253,0.6); }
+  .htools { display: flex; align-items: center; gap: 0.5rem; }
+  .htools a.link { font-family: var(--term); font-size: 10px; letter-spacing: 0.3em; color: rgba(224,242,254,0.5); text-decoration: none; }
+  .htools a.link:hover { color: var(--cyan); }
+  .isq { display: grid; place-items: center; height: 36px; width: 36px; border: 1px solid; font-size: 0.9rem; }
+  .exitb { display: grid; place-items: center; height: 36px; width: 36px; border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.7); text-decoration: none; font-size: 1.1rem; }
+  .exitb:hover { border-color: rgba(255,255,255,0.8); color: #fff; }
+
+  .sec { position: relative; z-index: 20; padding: 0 2.4rem; }
+  .sec-row { display: flex; align-items: center; gap: 0.8rem; }
+  .sec h1 { font-size: 2rem; font-weight: 300; letter-spacing: 0.2em; color: var(--rar); text-shadow: 0 0 14px rgba(251,191,36,0.33); }
+  .sec .rule { height: 1px; flex: 1; background: linear-gradient(90deg, rgba(251,191,36,0.4), transparent); }
+  .sec .sub { margin-top: 0.25rem; padding-left: 2rem; font-family: var(--term); font-size: 10px; letter-spacing: 0.4em; color: rgba(186,230,253,0.4); }
+
+  main { position: relative; z-index: 10; display: grid; grid-template-columns: 3fr 6fr 3fr; gap: 1.5rem; padding: 2rem 2.4rem; align-items: start; }
+  .col { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .panel { position: relative; border: 1px solid rgba(255,255,255,0.1); background: rgba(10,25,32,0.55); backdrop-filter: blur(3px);
+    clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px)); }
+  .panel-h { display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 1rem;
+    border-bottom: 1px solid rgba(125,211,252,0.2); background: linear-gradient(90deg, rgba(56,189,248,0.1), transparent); }
+  .panel-h .t { display: flex; align-items: center; gap: 0.5rem; font-family: var(--term); font-size: 10px; font-weight: 600; letter-spacing: 0.35em; color: #bae6fd; }
+  .panel-h .t .dia { height: 8px; width: 8px; transform: rotate(45deg); border: 1px solid #7dd3fc; }
+  .panel-h .s { font-family: var(--term); font-size: 9px; letter-spacing: 0.3em; color: rgba(224,242,254,0.4); }
+  .panel-b { padding: 1rem; }
+  .panel-b.compact { padding: 0.75rem; }
+
+  .k-sm { font-family: var(--term); font-size: 10px; letter-spacing: 0.35em; color: rgba(186,230,253,0.5); }
+  .desig { margin-top: 0.25rem; font-size: 1.8rem; font-weight: 600; letter-spacing: 0.04em; color: #fff; }
+  .uline { margin-top: 0.25rem; height: 2px; width: 80px; background: linear-gradient(90deg,#7dd3fc,#22d3ee,#7dd3fc); background-size: 200% 100%;
+    box-shadow: 0 0 8px rgba(125,211,252,0.6); animation: underline 2.5s infinite ease-in-out; }
+  .uline.gold { background: linear-gradient(90deg,#fbbf24,#22d3ee,#fbbf24); background-size: 200% 100%; }
+  .subtxt { margin-top: 0.75rem; font-size: 0.9rem; color: rgba(224,242,254,0.7); font-style: italic; }
+
+  .drow { display: flex; align-items: center; justify-content: space-between; margin-top: 0.5rem; padding: 0.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .drow .dk { font-family: var(--term); font-size: 10px; letter-spacing: 0.3em; color: rgba(186,230,253,0.5); }
+  .drow .dv { font-family: var(--term); font-size: 12px; font-weight: 500; color: #e0f2fe; }
+
+  .telem { margin-top: 0.75rem; }
+  .telem .row { display: flex; justify-content: space-between; }
+  .telem .row .k { font-family: var(--term); font-size: 9px; letter-spacing: 0.3em; color: rgba(186,230,253,0.5); }
+  .telem .row .v { font-family: var(--term); font-size: 10px; color: rgba(186,230,253,0.8); }
+  .telem .track { position: relative; margin-top: 0.25rem; height: 4px; width: 100%; background: rgba(255,255,255,0.05); }
+  .telem .track i { position: absolute; inset: 0 auto 0 0; }
+
+  .affrow { display: flex; gap: 0.75rem; align-items: flex-start; }
+  .affrow .ic { position: relative; height: 48px; width: 48px; flex-shrink: 0; border: 1px solid rgba(251,191,36,0.4); background: rgba(251,191,36,0.08); display: grid; place-items: center; }
+  .affrow .ic img { height: 100%; width: 100%; object-fit: contain; padding: 4px; filter: drop-shadow(0 0 6px rgba(251,191,36,0.4)); }
+  .affrow .at { font-size: 0.9rem; font-weight: 500; color: var(--rar); }
+  .affrow .as { margin-top: 0.25rem; font-family: var(--term); font-size: 10px; letter-spacing: 0.3em; color: rgba(224,242,254,0.4); }
+
+  .tg { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 0; font-family: var(--term); font-size: 10px; letter-spacing: 0.2em; color: rgba(186,230,253,0.6); }
+  .tg .r { text-align: right; color: #bae6fd; }
+
+  /* mod icon frame */
+  .iconframe { position: relative; width: 100%; max-width: 460px; margin: 0 auto; aspect-ratio: 1/1; }
+  .cb { position: absolute; pointer-events: none; }
+  .cb.s26 { width: 26px; height: 26px; }
+  .cb.tl { left: 0; top: 0; border-left: 2px solid var(--rar); border-top: 2px solid var(--rar); }
+  .cb.tr { right: 0; top: 0; border-right: 2px solid var(--rar); border-top: 2px solid var(--rar); }
+  .cb.bl { left: 0; bottom: 0; border-left: 2px solid var(--rar); border-bottom: 2px solid var(--rar); }
+  .cb.br { right: 0; bottom: 0; border-right: 2px solid var(--rar); border-bottom: 2px solid var(--rar); }
+  .badgeMD { position: absolute; top: -8px; left: 16px; z-index: 20; display: grid; place-items: center; height: 40px; width: 56px;
+    font-family: var(--term); font-size: 1rem; font-weight: 600; color: #fff; border: 1px solid rgba(251,191,36,0.6); }
+  .stars { position: absolute; top: -8px; right: 16px; z-index: 20; height: 40px; display: flex; align-items: center; gap: 2px; padding: 0 0.75rem;
+    border: 1px solid rgba(251,191,36,0.6); color: var(--rar); }
+  .hexring { position: absolute; inset: 0; display: grid; place-items: center; }
+  .hexring svg { width: 95%; height: 95%; opacity: 0.25; animation: spin 40s linear infinite; }
+  .hexring2 { position: absolute; inset: 0; display: grid; place-items: center; }
+  .hexring2 svg { width: 70%; height: 70%; opacity: 0.2; animation: spin 60s linear infinite reverse; }
+  .gridback { position: absolute; inset: 16px; opacity: 0.25;
+    background-image: linear-gradient(rgba(251,191,36,0.25) 0.3px, transparent 0.3px), linear-gradient(90deg, rgba(251,191,36,0.25) 0.3px, transparent 0.3px);
+    background-size: 20px 20px; }
+  .iconglow { position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, rgba(251,191,36,0.2), transparent 50%); }
+  .iconimg { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .iconimg img { position: absolute; height: 55%; width: 55%; object-fit: contain; }
+  .iconimg img.r { filter: drop-shadow(2px 0 0 rgba(255,0,120,0.5)); mix-blend-mode: screen; opacity: 0.7; }
+  .iconimg img.b { filter: drop-shadow(-2px 0 0 rgba(56,189,248,0.6)); mix-blend-mode: screen; opacity: 0.7; }
+  .iconimg img.m { position: relative; filter: contrast(1.05) saturate(1.1) drop-shadow(0 8px 30px rgba(251,191,36,0.5)); }
+  .glitch-bar { position: absolute; left: 0; right: 0; height: 5px; background: rgba(103,232,249,0.7); mix-blend-mode: screen; animation: glitch 7s infinite ease-in-out; }
+  .mname { position: absolute; left: 0; right: 0; bottom: 0; z-index: 10; display: flex; flex-direction: column; align-items: center; padding-bottom: 0.5rem; }
+  .mname .op { font-family: var(--term); font-size: 10px; letter-spacing: 0.5em; color: rgba(186,230,253,0.6); }
+  .mname .big { font-size: 1.5rem; font-weight: 300; letter-spacing: 0.3em; color: #fff; text-shadow: 0 0 12px rgba(251,191,36,0.6); }
+
+  /* tier strip */
+  .lvstrip { max-width: 460px; margin: 1.5rem auto 0; }
+  .lvstrip .top { display: flex; align-items: flex-end; justify-content: space-between; }
+  .lvstrip .lv { font-size: 1.9rem; font-weight: 300; color: #fff; display: flex; align-items: center; gap: 0.75rem; }
+  .lvstrip .charge { text-align: right; font-family: var(--term); font-size: 10px; letter-spacing: 0.35em; color: rgba(224,242,254,0.5); }
+  .lvstrip .charge b { color: var(--rar); font-weight: 400; }
+  .slider-wrap { position: relative; margin-top: 0.75rem; height: 6px; width: 100%; background: rgba(255,255,255,0.05); }
+  .slider-wrap .fill { position: absolute; inset: 0 auto 0 0; background: linear-gradient(90deg,#fbbf2488,#fbbf24); box-shadow: 0 0 10px #fbbf24; }
+  .slider-wrap .tick { position: absolute; top: -6px; height: 16px; width: 1px; background: rgba(125,211,252,0.4); }
+  .slider-wrap input { position: absolute; inset: 0; width: 100%; height: 100%; appearance: none; background: transparent; cursor: pointer; }
+  .slider-wrap input::-webkit-slider-thumb { appearance: none; width: 3px; height: 20px; background: #fbbf24; box-shadow: 0 0 10px #fbbf24; }
+  .slider-wrap input::-moz-range-thumb { width: 3px; height: 20px; background: #fbbf24; border: none; box-shadow: 0 0 10px #fbbf24; }
+  .lvticks { margin-top: 0.5rem; display: flex; justify-content: space-between; font-family: var(--term); font-size: 9px; letter-spacing: 0.3em; color: rgba(224,242,254,0.4); }
+  .lvticks span.on { color: var(--rar); }
+
+  .subhead { display: flex; align-items: center; gap: 0.75rem; max-width: 460px; margin: 2rem auto 0; }
+  .subhead h3 { font-size: 0.85rem; letter-spacing: 0.3em; color: var(--rar); }
+  .subhead .rule { height: 1px; flex: 1; background: linear-gradient(90deg, rgba(125,211,252,0.4), transparent); }
+
+  .attrs-grid { max-width: 460px; margin: 1rem auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .stat { position: relative; padding: 0.5rem 0.75rem; }
+  .stat .cbm { position: absolute; width: 10px; height: 10px; }
+  .stat .sh { display: flex; align-items: baseline; justify-content: space-between; }
+  .stat .sl { font-family: var(--term); font-size: 9px; letter-spacing: 0.3em; color: rgba(186,230,253,0.5); }
+  .stat .ss { font-family: var(--term); font-size: 9px; letter-spacing: 0.25em; color: rgba(224,242,254,0.3); }
+  .stat .sv { font-size: 1.7rem; font-weight: 300; color: var(--rar); text-shadow: 0 0 12px rgba(251,191,36,0.4); }
+
+  .descp { max-width: 460px; margin: 2rem auto 0; }
+  .desc-body { font-size: 0.9rem; line-height: 1.7; color: rgba(224,242,254,0.8); }
+  .desc-meta { margin-top: 0.75rem; display: flex; align-items: center; gap: 0.5rem; font-family: var(--term); font-size: 10px; letter-spacing: 0.3em; color: rgba(224,242,254,0.4); }
+  .desc-meta b { color: var(--cyan); font-weight: 400; }
+
+  /* compat */
+  .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .tag { border: 1px solid rgba(251,191,36,0.33); color: var(--gold); background: rgba(251,191,36,0.06); padding: 0.25rem 0.5rem; font-family: var(--term); font-size: 10px; letter-spacing: 0.2em; }
+  .compat-grid { margin-top: 0.75rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
+  .compat-cell { position: relative; aspect-ratio: 1; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.02); display: grid; place-items: center; color: rgba(125,211,252,0.4); }
+
+  /* cost scale */
+  .cost-list { display: flex; flex-direction: column; gap: 0.5rem; }
+  .cost { display: flex; align-items: center; justify-content: space-between; border-left: 2px solid rgba(125,211,252,0.3); background: rgba(255,255,255,0.02); padding: 0.5rem 0.75rem; }
+  .cost.on { border-left-color: var(--rar); background: rgba(251,191,36,0.08); }
+  .cost .ck { font-family: var(--term); font-size: 10px; letter-spacing: 0.3em; color: rgba(186,230,253,0.5); }
+  .cost .cv { font-family: var(--term); font-size: 0.85rem; font-weight: 600; color: #7dd3fc; }
+  .cost.on .cv { color: var(--rar); }
+
+  .hash { font-family: var(--term); font-size: 0.75rem; color: #bae6fd; word-break: break-all; }
+  .hash-k { font-family: var(--term); font-size: 10px; letter-spacing: 0.3em; color: rgba(186,230,253,0.5); }
+
+  /* related drawer */
+  .rel-sec { position: relative; z-index: 10; padding: 0 2.4rem 2rem; }
+  .rel-h { display: flex; align-items: center; gap: 0.75rem; }
+  .rel-h h2 { font-size: 0.85rem; letter-spacing: 0.3em; color: var(--cyan); }
+  .rel-h .rule { height: 1px; flex: 1; background: linear-gradient(90deg, rgba(125,211,252,0.4), transparent); }
+  .rel { margin-top: 1rem; display: flex; gap: 0.75rem; overflow-x: auto; padding-bottom: 0.5rem; }
+  .rcard { position: relative; display: block; height: 128px; width: 112px; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(8,20,26,0.7); text-decoration: none; transition: border-color 0.2s; cursor: pointer; padding: 0.75rem; }
+  .rcard:hover { border-color: rgba(56,189,248,0.6); }
+  .rcard .n { position: absolute; top: -8px; left: 4px; background: #07171e; padding: 0 4px; font-family: var(--term); font-size: 10px; color: #7dd3fc; }
+  .rcard .ri { margin: 0 auto; height: 64px; width: 64px; display: grid; place-items: center; }
+  .rcard .ri img { height: 100%; width: 100%; object-fit: contain; }
+  .rcard .ri .ph { color: rgba(125,211,252,0.4); font-size: 1.4rem; }
+  .rcard .rn { margin-top: 0.5rem; text-align: center; font-size: 10px; letter-spacing: 0.05em; color: #fff; line-height: 1.2; }
+  .rcard .dot { position: absolute; right: 4px; top: 4px; height: 8px; width: 8px; border-radius: 50%; }
+  .rcard .rs { position: absolute; bottom: 4px; left: 4px; font-family: var(--term); font-size: 9px; }
+
+  footer { position: relative; z-index: 10; padding: 0 2.4rem 2.5rem; }
+  .frow { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .fid { font-family: var(--term); font-size: 10px; letter-spacing: 0.5em; color: rgba(224,242,254,0.4); }
+  .btns { display: flex; gap: 0.75rem; }
+  .btn { padding: 0.75rem 1.5rem; font-size: 0.85rem; letter-spacing: 0.3em; cursor: pointer; border: none;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px)); transition: all 0.2s; }
+  .btn.ghost { border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.03); color: #bae6fd; }
+  .btn.ghost:hover { border-color: #7dd3fc; }
+  .btn.primary { background: #fff; color: #0f172a; box-shadow: 0 0 30px rgba(251,191,36,0.4); }
+  .btn.primary:hover { background: #fde68a; }
+  .loadbar { margin-top: 1.5rem; display: flex; align-items: flex-end; gap: 1rem; }
+  .loadbar .lb-l { flex: 1; }
+  .loadbar .lb-label { font-family: var(--term); font-size: 10px; letter-spacing: 0.4em; color: rgba(224,242,254,0.5); }
+  .loadbar .lb-track { position: relative; margin-top: 0.5rem; height: 4px; width: 100%; background: rgba(255,255,255,0.05); overflow: hidden; }
+  .loadbar .lb-track i { position: absolute; inset: 0 auto 0 0; background: linear-gradient(90deg,#f43f5e,#ef4444,#fb7185); box-shadow: 0 0 12px #e11d48; }
+  .loadbar .lb-badge { position: relative; padding: 0.25rem 0.75rem; }
+  .loadbar .lb-badge .bd { position: absolute; inset: 0; border: 2px solid rgba(244,63,94,0.4);
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px)); }
+  .loadbar .lb-pct { display: flex; align-items: flex-end; gap: 4px; }
+  .loadbar .lb-pct b { font-size: 3rem; font-weight: 300; color: #fff; text-shadow: 0 0 20px rgba(225,29,72,0.5); }
+  .loadbar .lb-pct s { margin-bottom: 0.5rem; font-size: 1.25rem; color: #fb7185; text-decoration: none; }
+
+  .backlink { position: fixed; left: 1.2rem; bottom: 1.2rem; z-index: 60; font-family: var(--term); font-size: 10px; letter-spacing: 0.3em;
+    color: rgba(186,230,253,0.6); text-decoration: none; border: 1px solid rgba(125,211,252,0.3); padding: 0.5rem 0.9rem; background: rgba(5,15,20,0.8); }
+  .backlink:hover { color: var(--cyan); border-color: var(--cyan); }
+
+  @keyframes underline { 0%,100% { background-position: 0% 50%; opacity: 0.8; } 50% { background-position: 100% 50%; opacity: 1; } }
+  @keyframes spin { from { transform: rotate(0); } to { transform: rotate(360deg); } }
+  @keyframes glitch { 0%,45%,80%,100% { top: 0%; opacity: 0; } 50% { top: 20%; opacity: 0.9; } 70% { top: 70%; opacity: 0.7; } }
+  @media (max-width: 1024px) { main { grid-template-columns: 1fr; } .meters, .sess { display: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="bg-deep"></div>
+  <div class="bg-iso"></div>
+  <div class="bg-glyph">
+    <span style="top:80px;left:8%">ᚠᚢᚦᚨᚱᚲᚷᚹᚺᚾᛁᛃᛇᛈᛉᛊᛏᛒᛖᛗᛚᛝᛟᛞᛚᛜᚠᚢᚦᚨᚱᚲᚷᚹᚺᚾᛁᛃᛇᛈ</span>
+    <span style="top:40%;right:5%">ᚹᚺᚾᛁᛃᛇᛈᛉᛊᛏᛒᛖᛗᛚᛝᛟᛞᛚᛜᚠᚢᚦᚨᚱᚲᚷᚹᚺᚾᛁᛃᛇᛈᛉᛊᛏᛒᛖᛗ</span>
+  </div>
+  <div class="bg-scan"></div>
+  <div class="bg-vig"></div>
+
+  <header>
+    <div class="brand">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><polygon points="12,2 22,7 22,17 12,22 2,17 2,7" stroke="#7dd3fc" stroke-width="1.3" fill="rgba(125,211,252,0.08)"/><polygon points="12,6 18,9 18,15 12,18 6,15 6,9" stroke="#22d3ee" stroke-width="0.8" fill="none"/></svg>
+      <div><div class="label">MATRICE //</div><div class="name">ARMURERIE</div></div>
+    </div>
+    <div class="meters">
+      <div class="meter"><span class="k">INTEG</span><div class="track"><i style="width:96%;background:#7dd3fc;box-shadow:0 0 6px #7dd3fc"></i></div><span class="v" style="color:#7dd3fc">096</span></div>
+      <div class="meter"><span class="k">CHARGE</span><div class="track"><i style="width:70%;background:#fbbf24;box-shadow:0 0 6px #fbbf24"></i></div><span class="v" style="color:#fbbf24">070</span></div>
+      <div class="sess"><div>ARCHIVE · 0x002AF9</div><div>LOC · FR · AVAIL 6L</div></div>
+    </div>
+    <div class="htools">
+      <a class="link" href="./proto-poc-hud.html">← OPERATEURS</a>
+      <span class="isq" style="border-color:rgba(251,191,36,0.4);color:#fbbf24;box-shadow:0 0 8px rgba(251,191,36,0.2) inset">!</span>
+      <span class="isq" style="border-color:rgba(125,211,252,0.4);color:#7dd3fc;box-shadow:0 0 8px rgba(125,211,252,0.2) inset">◈</span>
+      <a class="exitb" href="./index.html" aria-label="Quitter">×</a>
+    </div>
+  </header>
+
+  <div class="sec">
+    <div class="sec-row">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="1" y="1" width="18" height="18" stroke="#fbbf24" stroke-width="1" fill="none"/><rect x="8" y="8" width="4" height="4" fill="#fbbf24"/></svg>
+      <h1>Module</h1>
+      <span class="rule"></span>
+    </div>
+    <div class="sub">PALIER 4 / 4 · COST 8 · RELEASE V1.4</div>
+  </div>
+
+  <main>
+    <!-- LEFT -->
+    <div class="col">
+      <div class="panel">
+        <div class="panel-h"><span class="t"><span class="dia"></span>01 · ENTREE D'INVENTAIRE</span><span class="s">FICHE MOD</span></div>
+        <div class="panel-b">
+          <span class="k-sm">DESIGNATION</span>
+          <h2 class="desig">Apogée · Vigueur</h2>
+          <div class="uline gold"></div>
+          <p class="subtxt">« Module Décision +6 »</p>
+          <div class="drow"><span class="dk">RARETE</span><span class="dv" style="color:#fbbf24">★★★★★</span></div>
+          <div class="drow"><span class="dk">POLARITE</span><span class="dv" style="color:#7dd3fc">+ · Δ</span></div>
+          <div class="drow"><span class="dk">COUT</span><span class="dv">8</span></div>
+          <div class="drow"><span class="dk">PALIER MAX</span><span class="dv">4</span></div>
+          <div class="drow"><span class="dk">MODID</span><span class="dv">#11001</span></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-h"><span class="t"><span class="dia"></span>02 · AFFINITE</span><span class="s">TRACK D'ARMURERIE</span></div>
+        <div class="panel-b">
+          <div class="affrow">
+            <div class="ic"><img src="./assets/mod-icon.png" alt="" onerror="this.parentElement.textContent='★'"/></div>
+            <div><div class="at">Ardeur · Décision</div><div class="as">POL · +1 · CHAR Δ</div></div>
+          </div>
+          <div class="telem"><div class="row"><span class="k">COMPAT</span><span class="v">88%</span></div><div class="track"><i style="width:88%;background:linear-gradient(90deg,#7dd3fc88,#7dd3fc);box-shadow:0 0 8px rgba(125,211,252,0.4)"></i></div></div>
+          <div class="telem"><div class="row"><span class="k">INSTABILITE</span><span class="v">14%</span></div><div class="track"><i style="width:14%;background:linear-gradient(90deg,#e11d4888,#e11d48);box-shadow:0 0 8px rgba(225,29,72,0.4)"></i></div></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-h"><span class="t"><span class="dia"></span>03 · TELEMETRIE</span><span class="s">DONNEES BRUTES</span></div>
+        <div class="panel-b compact">
+          <div class="tg">
+            <span>NODE</span><span class="r">M-11001</span>
+            <span>ARCHIVE</span><span class="r">AF-77</span>
+            <span>APPTYPE</span><span class="r">GLOBAL</span>
+            <span>OPEN</span><span class="r">v1.0</span>
+            <span>RELEASE</span><span class="r">v1.4</span>
+            <span>SISTERS</span><span class="r">6</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CENTER -->
+    <div class="col">
+      <div class="iconframe">
+        <span class="cb tl s26"></span><span class="cb tr s26"></span><span class="cb bl s26"></span><span class="cb br s26"></span>
+        <div class="badgeMD">MD</div>
+        <div class="stars">★★★★★</div>
+        <div class="hexring"><svg viewBox="0 0 200 200"><g stroke="#fbbf24" stroke-width="0.5" fill="none"><polygon points="100,10 186,55 186,145 100,190 14,145 14,55"/><circle cx="100" cy="100" r="92" stroke-dasharray="2 4"/></g></svg></div>
+        <div class="hexring2"><svg viewBox="0 0 200 200"><g stroke="#22d3ee" stroke-width="0.6" fill="none"><polygon points="100,20 170,60 170,140 100,180 30,140 30,60"/><circle cx="100" cy="100" r="60" stroke-dasharray="1 3"/></g></svg></div>
+        <div class="gridback"></div>
+        <div class="iconglow"></div>
+        <div class="iconimg">
+          <img class="r" src="./assets/mod-icon.png" alt="" aria-hidden="true"/>
+          <img class="b" src="./assets/mod-icon.png" alt="" aria-hidden="true"/>
+          <img class="m" src="./assets/mod-icon.png" alt="Apogée Vigueur"/>
+          <div class="glitch-bar"></div>
+        </div>
+        <div class="mname">
+          <div class="op">MODULE // 0x002AF9</div>
+          <div class="big">APOGÉE · VIGUEUR</div>
+          <div class="uline gold" style="width:128px"></div>
+        </div>
+      </div>
+
+      <div class="lvstrip">
+        <div class="top">
+          <div class="lv">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#fbbf24" stroke-width="0.5" stroke-dasharray="2 2"/><path d="M12 4 L13.5 10.5 L20 12 L13.5 13.5 L12 20 L10.5 13.5 L4 12 L10.5 10.5 Z" fill="#fbbf24" opacity="0.8"/></svg>
+            <span>Palier <b id="tierNum" style="font-weight:300">4</b></span>
+          </div>
+          <div class="charge"><div>CHARGE ACTUELLE</div><div><b id="costVal">8</b> PT</div></div>
+        </div>
+        <div class="slider-wrap">
+          <div class="fill" id="tierFill" style="width:100%"></div>
+          <span class="tick" style="left:0%"></span><span class="tick" style="left:25%"></span><span class="tick" style="left:50%"></span><span class="tick" style="left:75%"></span><span class="tick" style="left:100%"></span>
+          <input id="tierRange" type="range" min="0" max="4" value="4" aria-label="Palier" />
+        </div>
+        <div class="lvticks" id="tierTicks"><span>T0</span><span>T1</span><span>T2</span><span>T3</span><span class="on">T4</span></div>
+      </div>
+
+      <div class="subhead">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="1" y="1" width="18" height="18" stroke="#fbbf24" stroke-width="1" fill="none"/><rect x="8" y="8" width="4" height="4" fill="#fbbf24"/></svg>
+        <h3>ATTRIBUTS · PALIER <span id="tierLabel">4</span></h3><span class="rule"></span>
+      </div>
+      <div class="attrs-grid" id="attrsGrid"></div>
+
+      <div class="descp">
+        <div class="panel">
+          <div class="panel-h"><span class="t"><span class="dia"></span>DESCRIPTION</span><span class="s">CODEX</span></div>
+          <div class="panel-b">
+            <p class="desc-body">Renforce la résonance de Vigueur du porteur. À pleine charge, chaque empilement d'affinité Décision augmente la puissance de compétence et réduit le coût de tolérance des modules adjacents de même famille.</p>
+            <div class="desc-meta"><span>// LANGUE</span><b>FR</b><span>·</span><span>6 TRADUCTIONS DISPONIBLES</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="col">
+      <div class="panel">
+        <div class="panel-h"><span class="t"><span class="dia"></span>04 · COMPATIBILITE</span><span class="s">APPLICATION</span></div>
+        <div class="panel-b">
+          <div class="tags"><span class="tag">ESPADON</span><span class="tag">DOUBLES PISTOLETS</span></div>
+          <div class="compat-grid">
+            <div class="compat-cell">◇</div><div class="compat-cell">◇</div><div class="compat-cell">◇</div>
+            <div class="compat-cell">◇</div><div class="compat-cell">◇</div><div class="compat-cell">◇</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-h"><span class="t"><span class="dia"></span>05 · ECHELLE DE COUT</span><span class="s">TOLERANCE</span></div>
+        <div class="panel-b">
+          <div class="cost-list" id="costList">
+            <div class="cost" data-t="0"><span class="ck">PALIER T0</span><span class="cv">2 PT</span></div>
+            <div class="cost" data-t="1"><span class="ck">PALIER T1</span><span class="cv">3 PT</span></div>
+            <div class="cost" data-t="2"><span class="ck">PALIER T2</span><span class="cv">5 PT</span></div>
+            <div class="cost" data-t="3"><span class="ck">PALIER T3</span><span class="cv">6 PT</span></div>
+            <div class="cost on" data-t="4"><span class="ck">PALIER T4</span><span class="cv">8 PT</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-h"><span class="t"><span class="dia"></span>06 · EMPREINTE</span><span class="s">SIGNATURE</span></div>
+        <div class="panel-b compact">
+          <div class="hash-k">HASH</div>
+          <div class="hash">002AF9 · J7K2QX · 1A2C</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <section class="rel-sec">
+    <div class="rel-h">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="1" y="1" width="18" height="18" stroke="#7dd3fc" stroke-width="1" fill="none"/><rect x="8" y="8" width="4" height="4" fill="#7dd3fc"/></svg>
+      <h2>MODULES ADJACENTS · INVENTAIRE</h2><span class="rule"></span>
+    </div>
+    <div class="rel" id="rel"></div>
+  </section>
+
+  <footer>
+    <div class="frow">
+      <div class="fid">IDENTIFIANT · M-000011001</div>
+      <div class="btns"><button class="btn ghost">Analyser</button><button class="btn primary">Équiper le module</button></div>
+    </div>
+    <div class="loadbar">
+      <div class="lb-l"><div class="lb-label">SYNTHESE EN COURS...</div><div class="lb-track"><i style="width:73%"></i></div></div>
+      <div class="lb-badge"><span class="bd"></span><div class="lb-pct"><b>73</b><s>%</s></div></div>
+    </div>
+  </footer>
+</div>
+
+<a class="backlink" href="./index.html">◀ DESIGN LAB</a>
+
+<script>
+  // attributes per tier
+  const TIERS = {
+    0: [{l:'VIGUEUR',v:'+4',s:'BASE'},{l:'DECISION',v:'+2',s:'BASE'}],
+    1: [{l:'VIGUEUR',v:'+6',s:'BASE'},{l:'DECISION',v:'+3',s:'BASE'}],
+    2: [{l:'VIGUEUR',v:'+9',s:'MOD'},{l:'DECISION',v:'+4',s:'BASE'},{l:'PUISS. CMP',v:'+6',suf:'%',s:'MOD'}],
+    3: [{l:'VIGUEUR',v:'+12',s:'MOD'},{l:'DECISION',v:'+5',s:'BASE'},{l:'PUISS. CMP',v:'+9',suf:'%',s:'MOD'}],
+    4: [{l:'VIGUEUR',v:'+15',s:'MOD'},{l:'DECISION',v:'+6',s:'BASE'},{l:'PUISS. CMP',v:'+12',suf:'%',s:'MOD'},{l:'TOLERANCE',v:'-2',s:'SET'}],
+  };
+  const COST = { 0:2, 1:3, 2:5, 3:6, 4:8 };
+  const grid = document.getElementById('attrsGrid');
+  function renderAttrs(t) {
+    grid.innerHTML = '';
+    TIERS[t].forEach(a => {
+      const d = document.createElement('div');
+      d.className = 'stat';
+      d.innerHTML = `
+        <span class="cbm" style="left:0;top:0;border-left:1px solid #fbbf24;border-top:1px solid #fbbf24"></span>
+        <span class="cbm" style="right:0;bottom:0;border-right:1px solid #fbbf24;border-bottom:1px solid #fbbf24"></span>
+        <div class="sh"><span class="sl">${a.l}</span><span class="ss">[${a.s}]</span></div>
+        <div class="sv">${a.v}${a.suf?'<span style="font-size:0.9rem;color:rgba(186,230,253,0.7)">'+a.suf+'</span>':''}</div>`;
+      grid.appendChild(d);
+    });
+  }
+
+  const range = document.getElementById('tierRange');
+  const tierNum = document.getElementById('tierNum');
+  const tierLabel = document.getElementById('tierLabel');
+  const tierFill = document.getElementById('tierFill');
+  const costVal = document.getElementById('costVal');
+  const tierTicks = [...document.querySelectorAll('#tierTicks span')];
+  const costRows = [...document.querySelectorAll('#costList .cost')];
+  function update() {
+    const t = Number(range.value);
+    tierNum.textContent = t;
+    tierLabel.textContent = t;
+    tierFill.style.width = (t / 4 * 100) + '%';
+    costVal.textContent = COST[t];
+    tierTicks.forEach((s, i) => s.classList.toggle('on', i === t));
+    costRows.forEach(r => r.classList.toggle('on', Number(r.dataset.t) === t));
+    renderAttrs(t);
+  }
+  range.addEventListener('input', update);
+  update();
+
+  // related mods
+  const REL = [
+    { n: "Aile · Inspiration", c: "#fbbf24", s: 5 },
+    { n: "Assaut", c: "#c084fc", s: 4 },
+    { n: "Nirvana", c: "#c084fc", s: 4 },
+    { n: "Foudre destructrice", c: "#60a5fa", s: 3 },
+    { n: "Éternité · Abnégation", c: "#fbbf24", s: 5 },
+    { n: "Ardeur · Décision", c: "#60a5fa", s: 3 },
+    { n: "Pouvoir", c: "#34d399", s: 2 },
+  ];
+  const relEl = document.getElementById('rel');
+  REL.forEach((m, i) => {
+    const a = document.createElement('a');
+    a.className = 'rcard';
+    a.href = '#';
+    a.innerHTML = `
+      <span class="n">${String(i+1).padStart(2,'0')}</span>
+      <div class="ri"><span class="ph">◇</span></div>
+      <div class="rn">${m.n}</div>
+      <span class="dot" style="background:${m.c};box-shadow:0 0 6px ${m.c}"></span>
+      <span class="rs" style="color:${m.c}">${'★'.repeat(m.s)}</span>`;
+    a.addEventListener('click', e => e.preventDefault());
+    relEl.appendChild(a);
+  });
+</script>
+</body>
+</html>

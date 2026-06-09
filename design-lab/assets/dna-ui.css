@@ -1,0 +1,535 @@
+/* ============================================================================
+   DNA UI KIT — composants partagés extraits de l'interface du jeu
+   (Duet Night Abyss). Deux registres : « froid/fonctionnel » (hub, fiches,
+   réglages) et « chaud/narratif » (événements, gacha).
+   Charger avec les polices Cinzel + Cormorant Garamond + Jost.
+   ========================================================================== */
+
+:root {
+  /* --- noyau (calé sur l'échantillonnage des screenshots du jeu) --- */
+  --ink:        #0a0a0b;   /* charbon quasi-neutre */
+  --ink-2:      #161513;
+  --panel:      rgba(19, 18, 17, 0.86);   /* mesuré ~#181818, neutre */
+  --panel-soft: rgba(26, 24, 21, 0.7);
+  --line:       rgba(194, 168, 106, 0.24);
+  --line-soft:  rgba(255, 255, 255, 0.06);
+
+  --gold:        #c2a86a;   /* laiton mat — mesuré #bfa76a (pas un or jaune saturé) */
+  --gold-bright: #e3cd95;   /* or clair crémeux */
+  --gold-deep:   #897240;
+  --crimson:     #8e1813;   /* rouge profond — mesuré #9a1816 / logo #840300 */
+  --crimson-br:  #b5302a;
+
+  --parch:   #ece4d2;
+  --muted:   #9a907c;
+  --muted-2: #6a6150;
+
+  /* --- registre chaud / narratif (ivoire, pas rose) --- */
+  --warm-1:   #ece0c6;   /* ivoire — mesuré crèmes #d8d8d8/#f0f0f0 */
+  --warm-2:   #cbb491;   /* tan — mesuré #bfb091 */
+  --warm-rose:#bb9173;
+
+  /* --- éléments --- */
+  --el-electro: #a48ed0;   /* violet poussiéreux — mesuré #8d7ab5 */
+  --el-fire:    #e2664a;
+  --el-water:   #5fa8ff;
+  --el-wind:    #57d6a6;
+  --el-light:   #e3cd95;
+  --el-dark:    #8e84ff;
+
+  /* --- polices --- */
+  --caps:  "Cinzel", serif;
+  --serif: "Cormorant Garamond", Georgia, serif;
+  --ui:    "Jost", system-ui, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+::selection { background: rgba(201, 162, 75, 0.3); color: #fff; }
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-thumb { background: linear-gradient(var(--gold), var(--gold-deep)); }
+::-webkit-scrollbar-track { background: rgba(0,0,0,0.3); }
+
+body {
+  background: var(--ink);
+  color: var(--parch);
+  font-family: var(--ui);
+  font-weight: 300;
+  min-height: 100vh;
+}
+
+/* ---------------------------------------------------------------------------
+   ATMOSPHÈRE — fond, grain, vignette, filigrane fantôme
+   --------------------------------------------------------------------------- */
+.dna-bg {
+  position: fixed; inset: 0; z-index: -3;
+  background:
+    radial-gradient(120% 90% at 80% 4%, rgba(156,43,33,0.14), transparent 55%),
+    radial-gradient(130% 100% at 10% 98%, rgba(36,78,86,0.18), transparent 60%),
+    linear-gradient(175deg, #0d0b08 0%, #0a0908 48%, #08110f 100%);
+}
+.dna-bg--world::after { /* suggestion de monde flouté derrière le panneau */
+  content: ""; position: absolute; inset: 0;
+  background:
+    radial-gradient(38% 30% at 82% 72%, rgba(120,150,160,0.10), transparent 70%),
+    radial-gradient(30% 26% at 18% 22%, rgba(180,140,70,0.08), transparent 70%);
+  filter: blur(8px);
+}
+.dna-grain {
+  position: fixed; inset: 0; z-index: -2; pointer-events: none; opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.dna-vignette {
+  position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(ellipse 100% 80% at 50% 45%, transparent 52%, rgba(0,0,0,0.72) 100%);
+}
+.dna-watermark {
+  position: fixed; left: 50%; top: 32%; transform: translate(-50%, -50%);
+  font-family: var(--caps); font-weight: 700;
+  font-size: clamp(7rem, 20vw, 20rem); letter-spacing: 0.12em;
+  color: rgba(236, 228, 210, 0.018); white-space: nowrap;
+  z-index: -1; pointer-events: none; user-select: none;
+}
+
+/* ---------------------------------------------------------------------------
+   CREST — frise de filigrane dorée (ornement central au sommet d'un panneau)
+   --------------------------------------------------------------------------- */
+.dna-crest {
+  display: block; width: 100%; height: 22px; color: var(--gold);
+  background: center/auto 22px no-repeat
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='22' viewBox='0 0 220 22' fill='none' stroke='%23c2a86a' stroke-width='1'%3E%3Cpath d='M110 4 l5 5 -5 5 -5 -5 z' fill='%23c2a86a' stroke='none'/%3E%3Cpath d='M115 9 h26'/%3E%3Cpath d='M141 9 c10 0 8 -7 16 -7 6 0 8 5 3 7 -4 2 -8 -1 -5 -4'/%3E%3Cpath d='M160 9 h40'/%3E%3Ccircle cx='205' cy='9' r='2.2' fill='%23c2a86a' stroke='none'/%3E%3Cpath d='M105 9 h-26'/%3E%3Cpath d='M79 9 c-10 0 -8 -7 -16 -7 -6 0 -8 5 -3 7 4 2 8 -1 5 -4'/%3E%3Cpath d='M60 9 h-40'/%3E%3Ccircle cx='15' cy='9' r='2.2' fill='%23c2a86a' stroke='none'/%3E%3C/svg%3E");
+  opacity: 0.9;
+}
+
+/* ---------------------------------------------------------------------------
+   PANEL — panneau translucide, double filet intérieur, variantes
+   --------------------------------------------------------------------------- */
+.dna-panel {
+  position: relative;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(3px);
+}
+.dna-panel--inner::before { /* double filet intérieur */
+  content: ""; position: absolute; inset: 7px;
+  border: 1px solid rgba(201, 162, 75, 0.12);
+  pointer-events: none;
+}
+.dna-panel__crest { /* crest qui chevauche le bord supérieur */
+  position: absolute; top: -11px; left: 0; right: 0;
+}
+
+/* en-tête « chaud / narratif » : ivoire → tan → sombre (mesuré, peu de rose) */
+.dna-hero-warm {
+  position: relative; overflow: hidden;
+  background:
+    radial-gradient(60% 120% at 50% -10%, rgba(236,224,198,0.95), transparent 60%),
+    radial-gradient(50% 90% at 78% 0%, rgba(203,180,145,0.5), transparent 60%),
+    linear-gradient(180deg, #e6dcc4 0%, #b6a07e 28%, #49392a 68%, #181410 100%);
+  color: #2a2113;
+}
+.dna-hero-warm .halo { /* halo circulaire derrière l'art (ambre doux) */
+  position: absolute; border-radius: 50%;
+  background: radial-gradient(circle, rgba(232,206,158,0.5), transparent 65%);
+  filter: blur(2px); pointer-events: none;
+}
+
+/* ---------------------------------------------------------------------------
+   SECTION LABEL & ACCORDION ◆
+   --------------------------------------------------------------------------- */
+.dna-seclabel {
+  display: flex; align-items: center; gap: 0.7rem;
+  font-family: var(--caps); font-size: 0.66rem; letter-spacing: 0.34em;
+  text-transform: uppercase; color: var(--gold);
+}
+.dna-seclabel::before { content: "◈"; color: var(--gold-bright); font-size: 0.7rem; }
+.dna-seclabel::after {
+  content: ""; flex: 1; height: 1px;
+  background: linear-gradient(90deg, var(--line), transparent);
+}
+
+.dna-acc { border-bottom: 1px solid var(--line-soft); }
+.dna-acc__head {
+  display: flex; align-items: center; gap: 0.6rem;
+  padding: 0.85rem 0.2rem; cursor: pointer;
+  font-family: var(--caps); font-size: 0.82rem; letter-spacing: 0.08em;
+  color: var(--gold-bright); position: relative;
+  text-transform: none;
+}
+.dna-acc__head::before { /* puce losange */
+  content: "◆"; color: var(--gold); font-size: 0.7rem;
+}
+.dna-acc__chev {
+  margin-left: auto; color: var(--gold); font-size: 0.7rem;
+  transition: transform 0.3s ease;
+}
+.dna-acc.is-open .dna-acc__chev { transform: rotate(90deg); }
+.dna-acc__head::after { /* fin trait doré sous l'en-tête */
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
+  background: linear-gradient(90deg, var(--gold-deep), transparent 70%);
+}
+.dna-acc__body {
+  max-height: 0; overflow: hidden; opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.3s, padding 0.3s;
+  font-family: var(--serif); font-size: 1.05rem; line-height: 1.65; color: #d8cdb6;
+}
+.dna-acc.is-open .dna-acc__body {
+  max-height: 600px; opacity: 1; padding: 0.6rem 0.2rem 1.1rem;
+}
+
+/* ---------------------------------------------------------------------------
+   RIBBON — cartouche de titre à bouts pointus (« ⚜ Messager impérial ⚜ »)
+   --------------------------------------------------------------------------- */
+.dna-ribbon {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.28rem 1.4rem;
+  font-family: var(--caps); font-size: 0.62rem; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--gold-bright);
+  background: linear-gradient(180deg, rgba(201,162,75,0.18), rgba(122,99,48,0.12));
+  border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 10px 100%, 0 50%);
+}
+.dna-ribbon::before, .dna-ribbon::after { content: "⬥"; color: var(--gold); font-size: 0.6rem; }
+
+/* ---------------------------------------------------------------------------
+   NOUVEAU — onglet doré en parallélogramme sur le bord haut d'une tuile
+   --------------------------------------------------------------------------- */
+.dna-nouveau {
+  position: absolute; top: 0; right: 10px; z-index: 4;
+  font-family: var(--caps); font-size: 0.5rem; letter-spacing: 0.16em;
+  text-transform: uppercase; color: #241a08; padding: 0.2rem 0.6rem;
+  background: linear-gradient(180deg, var(--gold-bright), var(--gold));
+  clip-path: polygon(14% 0, 100% 0, 86% 100%, 0 100%);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+.dna-notif { /* point rouge de notification */
+  position: absolute; top: 6px; right: 6px; z-index: 4;
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--crimson-br); box-shadow: 0 0 7px var(--crimson-br);
+}
+
+/* ---------------------------------------------------------------------------
+   TILE — tuile de menu (icône fine + label + sous-titre fantôme en capitales)
+   --------------------------------------------------------------------------- */
+.dna-tile {
+  position: relative; overflow: hidden; cursor: pointer;
+  background: linear-gradient(180deg, rgba(34,29,21,0.55), rgba(14,12,9,0.8));
+  border: 1px solid var(--line-soft);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 0.5rem; padding: 1.2rem 0.8rem; min-height: 104px;
+  transition: transform 0.25s, border-color 0.25s, background 0.25s;
+}
+.dna-tile::after { /* lueur dorée au survol */
+  content: ""; position: absolute; inset: 0; opacity: 0;
+  background: radial-gradient(70% 60% at 50% 0%, rgba(201,162,75,0.16), transparent 70%);
+  transition: opacity 0.35s;
+}
+.dna-tile:hover { transform: translateY(-3px); border-color: var(--gold); background: linear-gradient(180deg, rgba(44,37,26,0.7), rgba(18,15,11,0.9)); }
+.dna-tile:hover::after { opacity: 1; }
+.dna-tile__ghost { /* sous-titre fantôme en capitales derrière le label */
+  position: absolute; bottom: 0.55rem; left: 0; right: 0; text-align: center;
+  font-family: var(--caps); font-size: 0.55rem; letter-spacing: 0.4em;
+  text-transform: uppercase; color: rgba(236,228,210,0.06); pointer-events: none;
+}
+.dna-tile__ico { color: var(--gold); position: relative; z-index: 2; opacity: 0.92; }
+.dna-tile__label { font-family: var(--serif); font-size: 1.15rem; color: var(--parch); position: relative; z-index: 2; }
+.dna-tile:hover .dna-tile__label { color: var(--gold-bright); }
+.dna-tile--wide { flex-direction: row; justify-content: flex-start; gap: 1rem; min-height: 96px; padding: 1.2rem 1.4rem; }
+
+/* ---------------------------------------------------------------------------
+   ICON RAIL — rail d'icônes vertical fines
+   --------------------------------------------------------------------------- */
+.dna-rail {
+  display: flex; flex-direction: column; align-items: center; gap: 0.25rem;
+  padding: 0.7rem 0; background: rgba(8,7,6,0.7); border-right: 1px solid var(--line-soft);
+}
+.dna-rail__ico {
+  position: relative; width: 40px; height: 40px; display: grid; place-items: center;
+  color: var(--muted); cursor: pointer; transition: color 0.25s;
+}
+.dna-rail__ico:hover, .dna-rail__ico.is-active { color: var(--gold-bright); }
+.dna-rail__ico.is-active::before {
+  content: ""; position: absolute; left: -7px; top: 50%; transform: translateY(-50%);
+  width: 2px; height: 20px; background: var(--gold-bright); box-shadow: 0 0 8px var(--gold);
+}
+
+/* ---------------------------------------------------------------------------
+   ELEMENT BADGE — pastille élémentaire circulaire
+   --------------------------------------------------------------------------- */
+.dna-elem {
+  width: 26px; height: 26px; display: inline-grid; place-items: center;
+  border-radius: 50%; border: 1px solid currentColor; font-size: 0.8rem;
+  box-shadow: 0 0 10px currentColor;
+}
+
+/* ---------------------------------------------------------------------------
+   PILL / KEY CAP / TAG
+   --------------------------------------------------------------------------- */
+.dna-pill { /* pastille dorée (date, valeur) */
+  font-family: var(--caps); font-size: 0.56rem; letter-spacing: 0.12em;
+  color: #2a1f0c; background: linear-gradient(180deg, var(--gold-bright), var(--gold));
+  padding: 0.26rem 0.55rem; white-space: nowrap;
+  clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%);
+  box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+}
+.dna-key { /* capsule de touche clavier — arrondie, liseré clair (calée sur le jeu) */
+  font-family: var(--ui); font-size: 0.7rem; font-weight: 500; color: var(--parch);
+  border: 1px solid rgba(255,255,255,0.28); border-radius: 5px; background: rgba(255,255,255,0.04);
+  padding: 0.14rem 0.5rem; min-width: 24px; text-align: center; display: inline-block;
+}
+.dna-tag {
+  font-family: var(--caps); font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--gold); border: 1px solid var(--line); background: rgba(201,162,75,0.06);
+  padding: 0.28rem 0.65rem;
+}
+.dna-tag--crimson { color: #ffb3a6; border-color: rgba(200,70,58,0.5); background: rgba(156,43,33,0.18); }
+
+/* ---------------------------------------------------------------------------
+   SEAL — bannière cramoisie « Sceau démoniaque » avec barre
+   --------------------------------------------------------------------------- */
+.dna-seal {
+  position: relative; padding: 0.85rem 1rem; cursor: pointer; overflow: hidden;
+  background: linear-gradient(100deg, rgba(156,43,33,0.5), rgba(120,30,24,0.28));
+  border: 1px solid rgba(200,70,58,0.5);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  transition: transform 0.25s;
+}
+.dna-seal:hover { transform: translateY(-2px); }
+.dna-seal::after {
+  content: ""; position: absolute; top: 0; left: -60%; width: 40%; height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255,200,150,0.3), transparent);
+  transform: skewX(-20deg); animation: dna-sweep 3.5s infinite;
+}
+.dna-seal h4 { font-family: var(--caps); font-size: 0.74rem; letter-spacing: 0.12em; color: #ffd9c8; text-transform: uppercase; }
+.dna-seal .bar { margin-top: 0.5rem; height: 4px; background: rgba(0,0,0,0.4); position: relative; }
+.dna-seal .bar i { position: absolute; inset: 0; background: linear-gradient(90deg, var(--gold), var(--gold-bright)); box-shadow: 0 0 8px var(--gold); }
+.dna-seal small { display: block; margin-top: 0.35rem; font-size: 0.62rem; color: rgba(255,217,200,0.7); letter-spacing: 0.08em; }
+
+/* ---------------------------------------------------------------------------
+   REWARDS — grille de butin
+   --------------------------------------------------------------------------- */
+.dna-rewards { display: grid; grid-template-columns: repeat(auto-fill, minmax(64px, 1fr)); gap: 0.6rem; }
+.dna-reward {
+  position: relative; aspect-ratio: 1; cursor: pointer;
+  border: 1px solid var(--line); display: grid; place-items: center;
+  background: linear-gradient(160deg, rgba(40,32,18,0.7), rgba(14,12,9,0.9));
+  transition: transform 0.22s, border-color 0.22s;
+}
+.dna-reward:hover { transform: translateY(-3px); border-color: var(--gold); }
+.dna-reward .sym { font-size: 1.3rem; color: var(--gold); }
+.dna-reward .q { position: absolute; bottom: 2px; right: 4px; font-size: 0.6rem; color: var(--gold-bright); }
+.dna-reward--rare { border-color: rgba(177,140,255,0.5); }
+.dna-reward--rare .sym { color: var(--el-electro); }
+.dna-reward__badge { /* étiquette Bonus dorée en haut */
+  position: absolute; top: -8px; left: 50%; transform: translateX(-50%);
+  font-family: var(--caps); font-size: 0.45rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: #241a08; background: linear-gradient(180deg, var(--gold-bright), var(--gold));
+  padding: 0.12rem 0.4rem; white-space: nowrap;
+}
+
+/* ---------------------------------------------------------------------------
+   BUTTONS — biseau doré / fantôme
+   --------------------------------------------------------------------------- */
+/* Boutons calés sur le jeu : rectangle ARRONDI, fond sombre, liseré clair fin,
+   texte sans en casse normale (pas de capitales, pas de plein doré). */
+.dna-btn {
+  font-family: var(--ui); font-size: 0.84rem; font-weight: 400; letter-spacing: 0.01em;
+  padding: 0.6rem 1.5rem; cursor: pointer; border-radius: 7px; position: relative; overflow: hidden;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  color: var(--parch);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: linear-gradient(180deg, rgba(42, 40, 36, 0.55), rgba(16, 15, 13, 0.72));
+  transition: border-color 0.25s, background 0.25s, color 0.25s, box-shadow 0.25s, transform 0.2s;
+}
+.dna-btn:hover { border-color: rgba(255, 255, 255, 0.45); transform: translateY(-1px); }
+.dna-btn:active { transform: translateY(0); }
+/* secondaire = bouton de base (alias explicite) */
+.dna-btn--ghost { }
+/* primaire : liseré doré + léger voile laiton + texte crème (reste discret) */
+.dna-btn--gold {
+  color: var(--gold-bright);
+  border-color: var(--gold);
+  background: linear-gradient(180deg, rgba(122, 102, 58, 0.42), rgba(32, 27, 17, 0.72));
+  box-shadow: inset 0 1px 0 rgba(227, 205, 149, 0.22);
+}
+.dna-btn--gold::after { /* léger reflet au survol */
+  content: ""; position: absolute; top: 0; left: -60%; width: 45%; height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(227, 205, 149, 0.28), transparent);
+  transform: skewX(-20deg); transition: left 0.6s ease;
+}
+.dna-btn--gold:hover {
+  border-color: var(--gold-bright); color: #fff6e6; transform: translateY(-1px);
+  box-shadow: inset 0 1px 0 rgba(227, 205, 149, 0.4), 0 0 16px rgba(194, 168, 106, 0.22);
+}
+.dna-btn--gold:hover::after { left: 120%; }
+
+/* ---------------------------------------------------------------------------
+   TOPBAR + TABS + back link communs
+   --------------------------------------------------------------------------- */
+.dna-tabs { display: flex; gap: 1.6rem; }
+.dna-tabs a, .dna-tab {
+  font-family: var(--caps); font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--muted); text-decoration: none; cursor: pointer; position: relative;
+  padding: 0.4rem 0; transition: color 0.3s; background: none; border: none;
+}
+.dna-tabs a::after, .dna-tab::after {
+  content: ""; position: absolute; left: 50%; bottom: -2px; width: 0; height: 1px;
+  background: var(--gold-bright); transform: translateX(-50%);
+  transition: width 0.3s ease; box-shadow: 0 0 8px var(--gold);
+}
+.dna-tabs a:hover, .dna-tab:hover { color: var(--gold-bright); }
+.dna-tab.is-active, .dna-tabs a.is-active { color: var(--parch); }
+.dna-tab.is-active::after, .dna-tabs a.is-active::after { width: 100%; }
+
+.dna-back {
+  position: fixed; left: 1.5rem; bottom: 1.5rem; z-index: 60;
+  font-family: var(--caps); font-size: 0.6rem; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--muted); text-decoration: none; border: 1px solid var(--line);
+  padding: 0.55rem 1rem; background: rgba(10,9,8,0.75); backdrop-filter: blur(4px);
+  transition: color 0.3s, border-color 0.3s;
+}
+.dna-back:hover { color: var(--gold-bright); border-color: var(--gold); }
+
+/* divider ornemental ◇ */
+.dna-divider { display: flex; align-items: center; gap: 0.9rem; color: var(--gold-deep); }
+.dna-divider span { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--line), transparent); }
+.dna-divider::before, .dna-divider::after { content: "◇"; font-size: 0.6rem; color: var(--gold); }
+
+/* ---------------------------------------------------------------------------
+   ANIMATIONS
+   --------------------------------------------------------------------------- */
+@keyframes dna-rise  { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes dna-sweep { 0% { left: -60%; } 60%, 100% { left: 130%; } }
+@keyframes dna-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+@keyframes dna-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+@keyframes dna-spin  { from { transform: rotate(0); } to { transform: rotate(360deg); } }
+@keyframes dna-breathe { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-8px) scale(1.012); } }
+@keyframes dna-glitch { 0%, 45%, 80%, 100% { top: 0%; opacity: 0; } 50% { top: 22%; opacity: 0.85; } 70% { top: 66%; opacity: 0.6; } }
+@keyframes dna-ping  { 0% { opacity: 0.7; transform: translate(-50%,-50%) scale(1); } 100% { opacity: 0; transform: translate(-50%,-50%) scale(2.4); } }
+.dna-anim { animation: dna-rise 0.8s cubic-bezier(.2,.8,.2,1) both; }
+
+/* ===========================================================================
+   CONTRÔLES — champ, chip, switch, stepper, segmented, tooltip
+   =========================================================================== */
+.dna-field {
+  display: inline-flex; align-items: center; gap: 0.5rem; border-radius: 7px;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: linear-gradient(180deg, rgba(42,40,36,0.5), rgba(16,15,13,0.7));
+  padding: 0.45rem 0.8rem; color: var(--muted);
+}
+.dna-field:focus-within { border-color: var(--gold); }
+.dna-field input { background: none; border: none; outline: none; color: var(--parch); font-family: var(--ui); font-size: 0.85rem; min-width: 0; }
+.dna-field input::placeholder { color: var(--muted-2); }
+
+.dna-chip {
+  font-family: var(--ui); font-size: 0.76rem; color: var(--muted);
+  border: 1px solid rgba(255,255,255,0.14); border-radius: 20px; background: rgba(255,255,255,0.015);
+  padding: 0.32rem 0.85rem; cursor: pointer; transition: all 0.2s;
+  display: inline-flex; align-items: center; gap: 0.4rem;
+}
+.dna-chip:hover { color: var(--parch); border-color: rgba(255,255,255,0.3); }
+.dna-chip .dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+.dna-chip.is-on { color: #1a1206; background: linear-gradient(180deg, var(--gold-bright), var(--gold)); border-color: var(--gold); font-weight: 500; }
+.dna-chip--el.is-on { color: #fff; background: rgba(255,255,255,0.06); border-color: currentColor; box-shadow: 0 0 10px -2px currentColor; }
+
+.dna-switch { width: 46px; height: 22px; border-radius: 11px; background: rgba(255,255,255,0.08); border: 1px solid var(--line);
+  position: relative; cursor: pointer; transition: background 0.25s; flex-shrink: 0; }
+.dna-switch::after { content: ""; position: absolute; top: 1px; left: 1px; width: 18px; height: 18px; border-radius: 50%;
+  background: var(--muted); transition: left 0.25s, background 0.25s; }
+.dna-switch.is-on { background: rgba(194,168,106,0.45); }
+.dna-switch.is-on::after { left: 25px; background: var(--gold-bright); box-shadow: 0 0 8px var(--gold); }
+
+.dna-stepper { display: inline-flex; align-items: center; border: 1px solid var(--line); background: rgba(255,255,255,0.02); }
+.dna-stepper button { width: 38px; height: 38px; background: none; border: none; color: var(--gold); font-size: 1.1rem; cursor: pointer; transition: all 0.2s; }
+.dna-stepper button:hover { color: var(--gold-bright); background: rgba(194,168,106,0.1); }
+.dna-stepper .val { font-family: var(--caps); font-size: 1rem; color: var(--parch); letter-spacing: 0.06em; padding: 0 1rem; min-width: 70px; text-align: center; }
+.dna-stepper .val small { color: var(--muted-2); }
+
+.dna-segmented { display: inline-flex; border: 1px solid rgba(255,255,255,0.18); border-radius: 7px; overflow: hidden; }
+.dna-segmented button { min-width: 38px; height: 36px; padding: 0 0.6rem; background: none; border: none; color: var(--muted);
+  font-family: var(--ui); font-size: 0.78rem; cursor: pointer; transition: all 0.2s; }
+.dna-segmented button + button { border-left: 1px solid var(--line-soft); }
+.dna-segmented button.is-on { color: var(--gold-bright); background: rgba(194,168,106,0.12); }
+
+.dna-tooltip { position: relative; display: inline-flex; }
+.dna-tooltip__bubble {
+  position: absolute; left: 50%; bottom: 130%; transform: translateX(-50%); white-space: nowrap;
+  font-family: var(--ui); font-size: 0.72rem; color: var(--parch);
+  background: rgba(10,9,8,0.94); border: 1px solid var(--line); padding: 0.3rem 0.6rem;
+  opacity: 0; pointer-events: none; transition: opacity 0.18s; z-index: 30;
+}
+.dna-tooltip__bubble b { color: var(--gold-bright); font-weight: 400; }
+.dna-tooltip:hover .dna-tooltip__bubble { opacity: 1; }
+
+/* ===========================================================================
+   AFFICHAGE — étoiles, avatar
+   =========================================================================== */
+.dna-stars { color: var(--gold-bright); letter-spacing: -1px; text-shadow: 0 1px 3px #000; font-size: 0.7rem; }
+.dna-stars[data-empty]::after { content: attr(data-empty); color: var(--muted-2); text-shadow: none; }
+
+.dna-avatar { width: 54px; height: 54px; overflow: hidden; border: 1px solid var(--gold);
+  background: radial-gradient(circle at 50% 35%, rgba(164,142,208,0.35), rgba(20,17,13,0.9));
+  display: grid; place-items: center; font-family: var(--caps); color: var(--parch);
+  clip-path: polygon(12% 0, 100% 0, 100% 88%, 88% 100%, 0 100%, 0 12%); }
+.dna-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 16%; }
+.dna-avatar--round { border-radius: 50%; clip-path: none; }
+
+/* ===========================================================================
+   DONNÉES — stat row, progress, telemetry bar, list row
+   =========================================================================== */
+.dna-statrow { display: flex; align-items: center; justify-content: space-between; padding: 0.55rem 0; border-bottom: 1px solid var(--line-soft); }
+.dna-statrow .k { display: flex; align-items: center; gap: 0.5rem; font-family: var(--ui); font-size: 0.84rem; color: var(--muted); }
+.dna-statrow .k .d { width: 6px; height: 6px; transform: rotate(45deg); background: var(--gold-deep); }
+.dna-statrow .v { font-family: var(--ui); font-size: 0.92rem; color: var(--parch); font-variant-numeric: tabular-nums; }
+.dna-statrow--hl .k .d { background: var(--el-electro); box-shadow: 0 0 6px var(--el-electro); }
+.dna-statrow--hl .v { color: var(--el-electro); }
+
+.dna-progress { height: 4px; background: rgba(255,255,255,0.06); position: relative; }
+.dna-progress > i { position: absolute; inset: 0 auto 0 0; background: linear-gradient(90deg, var(--gold-deep), var(--gold-bright)); box-shadow: 0 0 6px var(--gold); }
+
+.dna-bar { margin-top: 0.6rem; }
+.dna-bar__row { display: flex; justify-content: space-between; font-family: var(--ui); }
+.dna-bar__row .k { font-size: 0.7rem; letter-spacing: 0.04em; color: var(--muted); }
+.dna-bar__row .v { font-size: 0.72rem; color: var(--muted); }
+.dna-bar__track { margin-top: 0.3rem; height: 4px; background: rgba(255,255,255,0.06); position: relative; }
+.dna-bar__track > i { position: absolute; inset: 0 auto 0 0; background: linear-gradient(90deg, color-mix(in srgb, var(--bc, var(--gold)) 55%, transparent), var(--bc, var(--gold))); box-shadow: 0 0 8px -2px var(--bc, var(--gold)); }
+
+.dna-listrow { display: grid; align-items: center; gap: 1rem; padding: 0.6rem 1rem; border-bottom: 1px solid var(--line-soft); cursor: pointer; transition: background 0.2s; }
+.dna-listrow:nth-child(odd) { background: rgba(255,255,255,0.012); }
+.dna-listrow:hover { background: linear-gradient(90deg, rgba(194,168,106,0.08), transparent); }
+
+/* ===========================================================================
+   EFFETS RÉCUPÉRÉS — recolorés sur la nouvelle palette (or / cramoisi)
+   =========================================================================== */
+/* figure 3D « breathing » avec halo (ex-Arsenal/Settings) */
+.dna-figure { position: relative; width: 200px; height: 360px; animation: dna-breathe 6s ease-in-out infinite; }
+.dna-figure .glow { position: absolute; inset: -34px; border-radius: 50%;
+  background: radial-gradient(circle at 50% 40%, var(--fc, rgba(194,168,106,0.22)), transparent 60%); filter: blur(10px); }
+.dna-figure .body { position: absolute; inset: 0;
+  background: linear-gradient(180deg, var(--fc, rgba(194,168,106,0.16)), rgba(142,24,19,0.05));
+  border: 1px solid color-mix(in srgb, var(--fc, var(--gold)) 60%, transparent);
+  clip-path: polygon(50% 0, 70% 14%, 62% 48%, 78% 100%, 22% 100%, 38% 48%, 30% 14%); }
+.dna-figure .floor { position: absolute; bottom: -6%; left: 50%; transform: translateX(-50%); width: 70%; height: 40px;
+  border-radius: 50%; background: radial-gradient(ellipse, var(--fc, rgba(194,168,106,0.2)), transparent 70%); filter: blur(4px); }
+
+/* anneaux hexagonaux rotatifs (ex-POC HUD), recolorés or */
+.dna-rings { position: relative; display: grid; place-items: center; }
+.dna-rings svg { position: absolute; }
+.dna-rings .r1 { width: 100%; height: 100%; opacity: 0.3; animation: dna-spin 40s linear infinite; }
+.dna-rings .r2 { width: 70%; height: 70%; opacity: 0.25; animation: dna-spin 60s linear infinite reverse; }
+
+/* portrait à séparation RGB + barre glitch — recoloré OR / CRAMOISI (ex-cyan/magenta) */
+.dna-glitch { position: relative; overflow: hidden; }
+.dna-glitch img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; }
+.dna-glitch img.a { filter: drop-shadow(3px 0 0 rgba(181,48,42,0.55)); mix-blend-mode: screen; opacity: 0.7; }
+.dna-glitch img.b { filter: drop-shadow(-3px 0 0 rgba(227,205,149,0.6)); mix-blend-mode: screen; opacity: 0.7; }
+.dna-glitch img.m { position: relative; filter: contrast(1.04) saturate(1.05) drop-shadow(0 10px 40px rgba(194,168,106,0.22)); }
+.dna-glitch .bar { position: absolute; left: 0; right: 0; height: 5px; background: rgba(227,205,149,0.65); mix-blend-mode: screen; animation: dna-glitch 7s infinite ease-in-out; }
+
+/* marqueur de carte (pin + ping + tooltip) */
+.dna-marker { position: absolute; transform: translate(-50%, -50%); cursor: pointer; }
+.dna-marker .pin { width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; font-size: 0.7rem; color: #0c0a06;
+  border: 1px solid rgba(0,0,0,0.4); background: radial-gradient(circle at 50% 35%, color-mix(in srgb, var(--mc) 80%, white), var(--mc));
+  box-shadow: 0 2px 6px rgba(0,0,0,0.6), 0 0 12px -2px var(--mc); transition: transform 0.18s; }
+.dna-marker:hover .pin { transform: scale(1.25); }
+.dna-marker.ping::after { content: ""; position: absolute; left: 50%; top: 50%; width: 24px; height: 24px;
+  border-radius: 50%; border: 1px solid var(--mc); animation: dna-ping 2.4s ease-out infinite; }

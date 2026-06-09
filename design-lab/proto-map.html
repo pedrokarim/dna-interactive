@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Design Lab · Carte</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="./assets/dna-ui.css" />
+<style>
+  body { overflow: hidden; height: 100vh; }
+  .app { height: 100vh; display: grid; grid-template-rows: 54px 1fr; }
+
+  /* top bar */
+  .top { display: flex; align-items: center; gap: 1.2rem; padding: 0 1.4rem;
+    background: linear-gradient(180deg, rgba(8,7,6,0.95), rgba(8,7,6,0.45)); border-bottom: 1px solid var(--line); z-index: 20; }
+  .top .emblem { color: var(--gold); display: grid; place-items: center; }
+  .top h1 { font-family: var(--caps); font-weight: 600; font-size: 1.05rem; letter-spacing: 0.16em; color: var(--gold-bright); text-transform: uppercase; }
+  .top .crumb { font-family: var(--ui); font-size: 0.72rem; letter-spacing: 0.06em; color: var(--muted); border-left: 1px solid var(--line); padding-left: 1.2rem; }
+  .top .crumb b { color: var(--parch); font-weight: 400; }
+  .top .spacer { flex: 1; }
+  .explore { display: flex; align-items: center; gap: 0.6rem; font-family: var(--ui); font-size: 0.72rem; color: var(--muted); }
+  .explore .bar { width: 120px; height: 4px; background: rgba(255,255,255,0.06); position: relative; }
+  .explore .bar i { position: absolute; inset: 0 36% 0 0; background: linear-gradient(90deg, var(--gold-deep), var(--gold-bright)); box-shadow: 0 0 6px var(--gold); }
+  .explore b { color: var(--gold-bright); font-weight: 400; }
+
+  .body { position: relative; display: grid; grid-template-columns: 250px 1fr; overflow: hidden; }
+
+  /* region panel */
+  .regions { border-right: 1px solid var(--line); background: rgba(8,7,6,0.6); overflow-y: auto; padding: 1rem 0.9rem; }
+  .regions .dna-seclabel { margin-bottom: 0.9rem; }
+  .region { position: relative; padding: 0.7rem 0.8rem; cursor: pointer; border-left: 2px solid transparent; transition: background 0.2s, border-color 0.2s; }
+  .region:hover { background: linear-gradient(90deg, rgba(194,168,106,0.07), transparent); }
+  .region.on { background: linear-gradient(90deg, rgba(194,168,106,0.12), transparent); border-left-color: var(--gold-bright); }
+  .region .rn { font-family: var(--serif); font-size: 1.18rem; color: var(--parch); line-height: 1.1; }
+  .region.on .rn { color: var(--gold-bright); }
+  .region.locked .rn { color: var(--muted-2); }
+  .region .meta { display: flex; align-items: center; justify-content: space-between; margin-top: 0.35rem; }
+  .region .pct { font-family: var(--ui); font-size: 0.66rem; color: var(--muted); }
+  .region .pbar { height: 3px; width: 70%; background: rgba(255,255,255,0.06); position: relative; }
+  .region .pbar i { position: absolute; inset: 0; background: linear-gradient(90deg, var(--gold-deep), var(--gold)); }
+  .region .lock { font-size: 0.7rem; color: var(--muted-2); }
+
+  /* map viewport */
+  .map-vp { position: relative; overflow: hidden; cursor: grab;
+    background: radial-gradient(80% 70% at 50% 45%, #0e171c, #080a0c 70%, #060708); }
+  .map-vp:active { cursor: grabbing; }
+  .map-inner { position: absolute; inset: 0; transform-origin: center; transition: transform 0.12s ease-out; }
+  .map-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+  /* fog of war / vignette over map */
+  .fog { position: absolute; inset: 0; pointer-events: none; z-index: 5;
+    background: radial-gradient(ellipse 70% 65% at 50% 48%, transparent 55%, rgba(4,5,6,0.85) 100%); }
+  .grain-map { position: absolute; inset: 0; pointer-events: none; z-index: 4; opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+  /* markers */
+  .markers { position: absolute; inset: 0; }
+  .mk { position: absolute; transform: translate(-50%, -50%); cursor: pointer; z-index: 6; }
+  .mk .pin { width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; font-size: 0.7rem;
+    color: #0c0a06; border: 1px solid rgba(0,0,0,0.4);
+    background: radial-gradient(circle at 50% 35%, color-mix(in srgb, var(--mc) 80%, white), var(--mc));
+    box-shadow: 0 2px 6px rgba(0,0,0,0.6), 0 0 12px -2px var(--mc); transition: transform 0.18s; }
+  .mk::after { content: ""; position: absolute; left: 50%; top: 50%; width: 24px; height: 24px; transform: translate(-50%,-50%);
+    border-radius: 50%; border: 1px solid var(--mc); opacity: 0; }
+  .mk:hover .pin { transform: scale(1.25); }
+  .mk.ping::after { animation: mk-ping 2.4s ease-out infinite; }
+  @keyframes mk-ping { 0% { opacity: 0.7; width: 24px; height: 24px; } 100% { opacity: 0; width: 60px; height: 60px; } }
+  .mk .tip { position: absolute; left: 50%; bottom: 130%; transform: translateX(-50%);
+    white-space: nowrap; font-family: var(--ui); font-size: 0.72rem; color: var(--parch);
+    background: rgba(10,9,8,0.92); border: 1px solid var(--line); padding: 0.3rem 0.6rem;
+    opacity: 0; pointer-events: none; transition: opacity 0.18s; }
+  .mk .tip b { color: var(--gold-bright); font-weight: 400; }
+  .mk:hover .tip { opacity: 1; }
+  .mk.hidden { display: none; }
+
+  /* legend (top-right floating) */
+  .legend { position: absolute; top: 1rem; right: 1rem; z-index: 10; width: 200px; padding: 0.9rem 1rem; }
+  .legend .dna-seclabel { margin-bottom: 0.75rem; }
+  .leg { display: flex; align-items: center; gap: 0.6rem; padding: 0.4rem 0.3rem; cursor: pointer; border-radius: 4px; transition: background 0.2s; user-select: none; }
+  .leg:hover { background: rgba(255,255,255,0.03); }
+  .leg .sw { width: 18px; height: 18px; border-radius: 50%; display: grid; place-items: center; font-size: 0.55rem; color: #0c0a06;
+    background: radial-gradient(circle at 50% 35%, color-mix(in srgb, var(--mc) 80%, white), var(--mc)); flex-shrink: 0; }
+  .leg .lt { font-family: var(--ui); font-size: 0.82rem; color: var(--parch); flex: 1; }
+  .leg .ct { font-family: var(--ui); font-size: 0.7rem; color: var(--muted-2); }
+  .leg.off { opacity: 0.4; }
+  .leg.off .lt { text-decoration: line-through; }
+
+  /* zoom + compass (bottom-right) */
+  .controls { position: absolute; right: 1rem; bottom: 1rem; z-index: 10; display: flex; flex-direction: column; align-items: center; gap: 0.6rem; }
+  .compass { width: 56px; height: 56px; }
+  .zoom { display: flex; flex-direction: column; border: 1px solid var(--line); background: rgba(10,9,8,0.8); }
+  .zoom button { width: 40px; height: 38px; background: none; border: none; color: var(--gold); font-size: 1.1rem; cursor: pointer; transition: all 0.2s; }
+  .zoom button:hover { background: rgba(194,168,106,0.12); color: var(--gold-bright); }
+  .zoom button + button { border-top: 1px solid var(--line-soft); }
+  .zoom .reset { font-size: 0.7rem; }
+
+  /* region info (bottom-left) */
+  .info { position: absolute; left: 1rem; bottom: 1rem; z-index: 10; width: 280px; padding: 1rem 1.1rem; }
+  .info .crest-wrap { position: absolute; top: -11px; left: 0; right: 0; }
+  .info h3 { font-family: var(--serif); font-size: 1.5rem; font-weight: 600; color: var(--gold-bright); line-height: 1; margin-top: 0.2rem; }
+  .info .sub { font-family: var(--caps); font-size: 0.56rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted-2); margin-top: 0.3rem; }
+  .info p { font-family: var(--serif); font-size: 1rem; line-height: 1.5; color: var(--muted); margin-top: 0.7rem; }
+  .info .stats { display: flex; gap: 1.4rem; margin-top: 0.9rem; }
+  .info .stats .s b { display: block; font-family: var(--serif); font-size: 1.4rem; color: var(--gold-bright); }
+  .info .stats .s small { font-family: var(--caps); font-size: 0.5rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted-2); }
+
+  /* scale bar */
+  .scale { position: absolute; left: 1rem; top: 1rem; z-index: 10; display: flex; align-items: center; gap: 0.5rem;
+    font-family: var(--ui); font-size: 0.66rem; color: var(--muted); }
+  .scale .ln { width: 70px; height: 1px; background: var(--muted); position: relative; }
+  .scale .ln::before, .scale .ln::after { content: ""; position: absolute; bottom: 0; width: 1px; height: 5px; background: var(--muted); }
+  .scale .ln::before { left: 0; } .scale .ln::after { right: 0; }
+
+  @media (max-width: 900px) { .body { grid-template-columns: 1fr; } .regions { display: none; } .legend { display: none; } }
+</style>
+</head>
+<body>
+  <div class="app">
+    <!-- top bar -->
+    <div class="top">
+      <span class="emblem"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4 6 L9 4 L15 6 L20 4 V18 L15 20 L9 18 L4 20 Z"/><path d="M9 4 V18 M15 6 V20"/></svg></span>
+      <h1>Carte</h1>
+      <span class="crumb">Atlas du monde · <b id="crumbRegion">Empire Hyperboréen</b></span>
+      <span class="spacer"></span>
+      <span class="explore">Exploration <span class="bar"><i></i></span><b>64 %</b></span>
+    </div>
+
+    <div class="body">
+      <!-- region list -->
+      <aside class="regions">
+        <div class="dna-seclabel">Régions</div>
+        <div id="regionList"></div>
+      </aside>
+
+      <!-- map -->
+      <div class="map-vp" id="vp">
+        <div class="map-inner" id="inner">
+          <svg class="map-svg" viewBox="0 0 1000 700" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <radialGradient id="water" cx="50%" cy="45%" r="70%">
+                <stop offset="0%" stop-color="#13242b"/>
+                <stop offset="100%" stop-color="#0a1014"/>
+              </radialGradient>
+              <pattern id="grat" width="50" height="50" patternUnits="userSpaceOnUse">
+                <path d="M50 0 H0 V50" fill="none" stroke="#c2a86a" stroke-width="0.3" opacity="0.12"/>
+              </pattern>
+            </defs>
+            <rect width="1000" height="700" fill="url(#water)"/>
+            <rect width="1000" height="700" fill="url(#grat)"/>
+            <!-- faint contour rings -->
+            <g fill="none" stroke="#3a5560" stroke-width="0.6" opacity="0.4">
+              <ellipse cx="500" cy="340" rx="430" ry="300"/>
+              <ellipse cx="500" cy="340" rx="340" ry="235"/>
+              <ellipse cx="500" cy="340" rx="250" ry="175"/>
+            </g>
+            <!-- landmasses (gold outline, dark fill) -->
+            <g stroke="#c2a86a" stroke-width="1.2" fill="#11140f">
+              <path d="M250 180 C320 130 460 140 520 180 C600 165 690 210 700 290 C760 320 740 430 660 460 C620 540 470 560 400 510 C300 540 210 470 230 380 C170 330 190 230 250 180 Z" fill="#11140f" opacity="0.96"/>
+              <path d="M730 130 C790 120 840 160 825 210 C860 250 820 300 770 290 C720 300 690 250 710 210 C690 170 700 140 730 130 Z" fill="#12130d" opacity="0.95"/>
+              <path d="M150 520 C200 500 250 520 250 560 C270 600 220 640 170 625 C120 630 110 560 150 520 Z" fill="#0f120d" opacity="0.95"/>
+            </g>
+            <!-- rivers / roads -->
+            <g fill="none" stroke="#c2a86a" stroke-width="0.9" opacity="0.35" stroke-dasharray="3 4">
+              <path d="M420 200 C460 280 430 360 500 420 C560 470 600 460 640 440"/>
+              <path d="M300 320 C380 330 430 300 520 330"/>
+            </g>
+            <!-- region labels -->
+            <g font-family="Cinzel, serif" fill="#c2a86a" opacity="0.5" letter-spacing="3">
+              <text x="420" y="270" font-size="15" text-anchor="middle">EMPIRE HYPERBORÉEN</text>
+              <text x="610" y="400" font-size="11" text-anchor="middle" opacity="0.7">HUAXU</text>
+              <text x="300" y="450" font-size="11" text-anchor="middle" opacity="0.7">LUCA</text>
+              <text x="775" y="215" font-size="9" text-anchor="middle" opacity="0.6">ÎLE DE NUIT</text>
+            </g>
+            <text x="500" y="660" font-family="Cinzel, serif" font-size="9" fill="#6a6150" text-anchor="middle" letter-spacing="6" opacity="0.6">ATLAS · PAN GU</text>
+          </svg>
+          <div class="markers" id="markers"></div>
+        </div>
+
+        <div class="grain-map"></div>
+        <div class="fog"></div>
+
+        <!-- scale bar -->
+        <div class="scale"><span class="ln"></span><span>2 km</span></div>
+
+        <!-- legend -->
+        <div class="legend dna-panel dna-panel--inner">
+          <div class="dna-seclabel">Légende</div>
+          <div id="legend"></div>
+        </div>
+
+        <!-- region info -->
+        <div class="info dna-panel dna-panel--inner">
+          <div class="crest-wrap"><span class="dna-crest"></span></div>
+          <h3 id="infoName">Empire Hyperboréen</h3>
+          <div class="sub" id="infoSub">VIᵉ Légion · Capitale Galea</div>
+          <p id="infoDesc">Cœur industriel de l'Abîme, sillonné de rails et de dômes de verre. Le chemin de fer de Luno y relie les districts.</p>
+          <div class="stats">
+            <div class="s"><b id="stPoi">24</b><small>Points d'intérêt</small></div>
+            <div class="s"><b>82 %</b><small>Complété</small></div>
+            <div class="s"><b>5</b><small>Failles</small></div>
+          </div>
+        </div>
+
+        <!-- controls -->
+        <div class="controls">
+          <svg class="compass" viewBox="0 0 56 56" fill="none">
+            <circle cx="28" cy="28" r="25" stroke="#c2a86a" stroke-width="1" opacity="0.5"/>
+            <circle cx="28" cy="28" r="20" stroke="#c2a86a" stroke-width="0.4" opacity="0.3"/>
+            <path d="M28 8 L33 28 L28 24 L23 28 Z" fill="#b5302a"/>
+            <path d="M28 48 L23 28 L28 32 L33 28 Z" fill="#c2a86a" opacity="0.7"/>
+            <text x="28" y="7" font-family="Cinzel" font-size="6" fill="#e3cd95" text-anchor="middle">N</text>
+          </svg>
+          <div class="zoom">
+            <button id="zin">+</button>
+            <button id="zout">−</button>
+            <button class="reset" id="zreset" title="Recentrer">⌖</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a class="dna-back" href="./index.html">◀ Design Lab</a>
+
+  <script>
+    // ---- POI categories ----
+    const CATS = {
+      teleport:  { label: 'Téléporteur', color: '#a48ed0', glyph: '◈' },
+      chest:     { label: 'Coffre',      color: '#e3cd95', glyph: '▣' },
+      npc:       { label: 'PNJ',         color: '#5fa8ff', glyph: '☻' },
+      boss:      { label: 'Faille',      color: '#b5302a', glyph: '✦' },
+      collect:   { label: 'Vestige',     color: '#57d6a6', glyph: '✿' },
+      vendor:    { label: 'Marchand',    color: '#e2664a', glyph: '⌂' },
+    };
+    // ---- markers (x,y in %) ----
+    const MARKERS = [
+      ['teleport', 42, 30, 'Gare de Galea'], ['teleport', 60, 56, 'Relais de Huaxu'], ['teleport', 30, 62, 'Quai de Luca'],
+      ['chest', 48, 38, 'Coffre scellé'], ['chest', 55, 44, 'Coffre commun'], ['chest', 38, 50, 'Coffre doré'], ['chest', 64, 35, 'Coffre commun'],
+      ['npc', 45, 42, 'Le Ménestrel'], ['npc', 52, 30, 'Marchande Galea'],
+      ['boss', 58, 48, 'Faille · Apogée'], ['boss', 33, 44, 'Faille · Décision'],
+      ['collect', 50, 52, 'Vestige stellaire'], ['collect', 62, 42, 'Vestige stellaire'], ['collect', 40, 36, 'Vestige stellaire'],
+      ['vendor', 47, 34, 'Échoppe ambulante'],
+    ];
+
+    // ---- regions ----
+    const REGIONS = [
+      { name: 'Empire Hyperboréen', sub: 'VIᵉ Légion · Capitale Galea', pct: 82, poi: 24, locked: false,
+        desc: "Cœur industriel de l'Abîme, sillonné de rails et de dômes de verre. Le chemin de fer de Luno y relie les districts." },
+      { name: 'Huaxu', sub: 'Cité-jardin · Anciens sceaux', pct: 47, poi: 18, locked: false,
+        desc: "Terrasses suspendues et brumes de jade. On y récite encore les ballades des premiers Augures." },
+      { name: 'République de Luca', sub: 'Port franc · Canaux', pct: 30, poi: 15, locked: false,
+        desc: "Dédale de canaux et de méduses lumineuses. Le commerce y prospère autant que la contrebande." },
+      { name: 'Les Vagabonds de la Nuit', sub: 'Marche frontalière', pct: 12, poi: 9, locked: false,
+        desc: "Campements mouvants sous des cieux sans étoiles, refuge des traqueurs et des exilés." },
+      { name: 'Église Élyséenne', sub: 'Sanctuaire scellé', pct: 0, poi: 0, locked: true,
+        desc: "Région verrouillée — progressez dans la chronique principale pour en lever le sceau." },
+    ];
+
+    // build region list
+    const rl = document.getElementById('regionList');
+    REGIONS.forEach((r, i) => {
+      const d = document.createElement('div');
+      d.className = 'region' + (i === 0 ? ' on' : '') + (r.locked ? ' locked' : '');
+      d.innerHTML = `<div class="rn">${r.name}</div>
+        <div class="meta">${ r.locked
+          ? '<span class="lock">🔒 Verrouillée</span>'
+          : `<span class="pbar"><i style="width:${r.pct}%"></i></span><span class="pct">${r.pct}%</span>` }</div>`;
+      d.onclick = () => {
+        if (r.locked) return;
+        document.querySelector('.region.on')?.classList.remove('on');
+        d.classList.add('on');
+        document.getElementById('crumbRegion').textContent = r.name;
+        document.getElementById('infoName').textContent = r.name;
+        document.getElementById('infoSub').textContent = r.sub;
+        document.getElementById('infoDesc').textContent = r.desc;
+        document.getElementById('stPoi').textContent = r.poi;
+        document.querySelector('.info .stats .s:nth-child(2) b').textContent = r.pct + ' %';
+      };
+      rl.appendChild(d);
+    });
+
+    // build markers
+    const mk = document.getElementById('markers');
+    MARKERS.forEach(([cat, x, y, name], i) => {
+      const c = CATS[cat];
+      const el = document.createElement('div');
+      el.className = 'mk' + (cat === 'boss' || cat === 'teleport' ? ' ping' : '');
+      el.dataset.cat = cat;
+      el.style.left = x + '%'; el.style.top = y + '%'; el.style.setProperty('--mc', c.color);
+      el.innerHTML = `<div class="pin">${c.glyph}</div><div class="tip"><b>${name}</b> · ${c.label}</div>`;
+      mk.appendChild(el);
+    });
+
+    // build legend with counts + toggle
+    const lg = document.getElementById('legend');
+    const counts = {}; MARKERS.forEach(([c]) => counts[c] = (counts[c]||0)+1);
+    Object.entries(CATS).forEach(([key, c]) => {
+      const row = document.createElement('div');
+      row.className = 'leg'; row.style.setProperty('--mc', c.color);
+      row.innerHTML = `<span class="sw">${c.glyph}</span><span class="lt">${c.label}</span><span class="ct">${counts[key]||0}</span>`;
+      row.onclick = () => {
+        row.classList.toggle('off');
+        const hide = row.classList.contains('off');
+        document.querySelectorAll(`.mk[data-cat="${key}"]`).forEach(m => m.classList.toggle('hidden', hide));
+      };
+      lg.appendChild(row);
+    });
+
+    // ---- zoom + pan ----
+    const inner = document.getElementById('inner'), vp = document.getElementById('vp');
+    let scale = 1, tx = 0, ty = 0;
+    function apply(){ inner.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`; }
+    document.getElementById('zin').onclick = () => { scale = Math.min(2.4, scale + 0.25); apply(); };
+    document.getElementById('zout').onclick = () => { scale = Math.max(1, scale - 0.25); if (scale === 1){ tx = ty = 0; } apply(); };
+    document.getElementById('zreset').onclick = () => { scale = 1; tx = ty = 0; apply(); };
+    vp.addEventListener('wheel', e => { e.preventDefault(); scale = Math.min(2.4, Math.max(1, scale + (e.deltaY < 0 ? 0.15 : -0.15))); if (scale===1){tx=ty=0;} apply(); }, { passive: false });
+    // drag pan
+    let drag = false, sx, sy;
+    vp.addEventListener('mousedown', e => { if (e.target.closest('.mk, .legend, .info, .controls')) return; drag = true; sx = e.clientX - tx; sy = e.clientY - ty; });
+    window.addEventListener('mousemove', e => { if (!drag) return; const lim = (scale - 1) * 280; tx = Math.max(-lim, Math.min(lim, e.clientX - sx)); ty = Math.max(-lim, Math.min(lim, e.clientY - sy)); apply(); });
+    window.addEventListener('mouseup', () => drag = false);
+  </script>
+</body>
+</html>

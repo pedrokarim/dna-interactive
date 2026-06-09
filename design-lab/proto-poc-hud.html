@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Design Lab · POC HUD — Matrice Finale</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --cyan: #7dd3fc; --cyan-strong: #22d3ee; --gold: #fbbf24; --magenta: #e11d48;
+    --electro: #a78bfa;
+    --hud: "Rajdhani", "Segoe UI", system-ui, sans-serif;
+    --term: "Share Tech Mono", ui-monospace, monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #050f14; color: #e2e8f0; font-family: var(--hud); min-height: 100vh; overflow-x: hidden; }
+  ::-webkit-scrollbar { height: 7px; width: 7px; }
+  ::-webkit-scrollbar-thumb { background: rgba(125,211,252,0.4); }
+  .wrap { position: relative; min-height: 100vh; width: 100%; overflow: hidden; }
+
+  /* ---------- background layers ---------- */
+  .bg-deep { position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 120% 80% at 20% 10%, rgba(14,116,144,0.18), transparent 60%),
+      radial-gradient(ellipse 120% 80% at 90% 90%, rgba(8,51,68,0.35), transparent 55%),
+      linear-gradient(180deg, #040d12 0%, #05141a 50%, #07171e 100%); }
+  .bg-iso { position: absolute; inset: 0; z-index: 0; opacity: 0.08;
+    background-image: linear-gradient(rgba(125,211,252,0.5) 0.5px, transparent 0.5px), linear-gradient(90deg, rgba(125,211,252,0.5) 0.5px, transparent 0.5px);
+    background-size: 46px 46px; transform: skewX(-18deg); transform-origin: top; }
+  .bg-glyph { position: absolute; inset: 0; z-index: 0; overflow: hidden; opacity: 0.07; color: var(--cyan-strong); font-family: var(--term); }
+  .bg-glyph span { position: absolute; font-size: 12px; line-height: 1.4; max-width: 240px; word-break: break-all; }
+  .bg-scan { position: absolute; inset: 0; z-index: 0; opacity: 0.06; mix-blend-mode: screen;
+    background: repeating-linear-gradient(180deg, rgba(125,211,252,0.8) 0 1px, transparent 1px 4px); }
+  .bg-vig { position: absolute; inset: 0; z-index: 0;
+    background: radial-gradient(ellipse 100% 80% at 50% 50%, transparent 55%, rgba(0,0,0,0.7) 100%); }
+
+  /* ---------- header ---------- */
+  header { position: relative; z-index: 20; display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 2.4rem; }
+  .brand { display: flex; align-items: center; gap: 0.8rem; }
+  .brand .label { font-family: var(--term); font-size: 10px; letter-spacing: 0.5em; color: rgba(125,211,252,0.7); }
+  .brand .name { font-size: 1.3rem; font-weight: 600; letter-spacing: 0.16em; color: #fff; line-height: 1; }
+  .meters { display: flex; align-items: center; gap: 1.6rem; }
+  .meter { display: flex; align-items: center; gap: 0.5rem; }
+  .meter .k { font-family: var(--term); font-size: 10px; letter-spacing: 0.3em; color: rgba(186,230,253,0.5); }
+  .meter .track { position: relative; height: 4px; width: 96px; background: rgba(255,255,255,0.05); }
+  .meter .track i { position: absolute; inset: 0 auto 0 0; }
+  .meter .v { font-family: var(--term); font-size: 10px; }
+  .sess { text-align: right; font-family: var(--term); font-size: 10px; line-height: 1.4; color: rgba(186,230,253,0.6); }
+  .htools { display: flex; align-items: center; gap: 0.5rem; }
+  .htools a.link { font-family: var(--term); font-size: 10px; letter-spacing: 0.3em; color: rgba(224,242,254,0.5); text-decoration: none; }
+  .htools a.link:hover { color: var(--cyan); }
+  .isq { display: grid; place-items: center; height: 36px; width: 36px; border: 1px solid; font-size: 0.9rem; }
+  .exitb { display: grid; place-items: center; height: 36px; width: 36px; border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.7); text-decoration: none; font-size: 1.1rem; }
+  .exitb:hover { border-color: rgba(255,255,255,0.8); color: #fff; }
+
+  /* ---------- section header ---------- */
+  .sec { position: relative; z-index: 20; padding: 0 2.4rem; }
+  .sec-row { display: flex; align-items: center; gap: 0.8rem; }
+  .sec h1 { font-size: 2rem; font-weight: 300; letter-spacing: 0.2em; color: var(--cyan); text-shadow: 0 0 14px rgba(125,211,252,0.33); }
+  .sec .rule { height: 1px; flex: 1; background: linear-gradient(90deg, rgba(125,211,252,0.4), transparent); }
+  .sec .sub { margin-top: 0.25rem; padding-left: 2rem; font-family: var(--term); font-size: 10px; letter-spacing: 0.4em; color: rgba(186,230,253,0.4); }
+
+  /* ---------- layout grid ---------- */
+  main { position: relative; z-index: 10; display: grid; grid-template-columns: 3fr 6fr 3fr; gap: 1.5rem; padding: 2rem 2.4rem; align-items: start; }
+  .col { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  /* ---------- hud panel ---------- */
+  .panel { position: relative; border: 1px solid rgba(255,255,255,0.1); background: rgba(10,25,32,0.55); backdrop-filter: blur(3px);
+    clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px)); }
+  .panel-h { display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 1rem;
+    border-bottom: 1px solid rgba(125,211,252,0.2); background: linear-gradient(90deg, rgba(56,189,248,0.1), transparent); }
+  .panel-h .t { display: flex; align-items: center; gap: 0.5rem; font-family: var(--term); font-size: 10px; font-weight: 600; letter-spacing: 0.35em; color: #bae6fd; }
+  .panel-h .t .dia { height: 8px; width: 8px; transform: rotate(45deg); border: 1px solid #7dd3fc; }
+  .panel-h .s { font-family: var(--term); font-size: 9px; letter-spacing: 0.3em; color: rgba(224,242,254,0.4); }
+  .panel-b { padding: 1rem; }
+  .panel-b.compact { padding: 0.75rem; }
+
+  .k-sm { font-family: var(--term); font-size: 10px; letter-spacing: 0.35em; color: rgba(186,230,253,0.5); }
+  .desig { margin-top: 0.25rem; font-size: 1.8rem; font-weight: 600; letter-spacing: 0.04em; color: #fff; }
+  .uline { margin-top: 0.25rem; height: 2px; width: 80px; background: linear-gradient(90deg,#7dd3fc,#22d3ee,#7dd3fc); background-size: 200% 100%;
+    box-shadow: 0 0 8px rgba(125,211,252,0.6); animation: underline 2.5s infinite ease-in-out; }
+  .subtxt { margin-top: 0.75rem; font-size: 0.9rem; color: rgba(224,242,254,0.7); }
+
+  .drow { display: flex; align-items: center; justify-content: space-between; margin-top: 0.5rem; padding: 0.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .drow .dk { font-family: var(--term); font-size: 10px; letter-spacing: 0.3em; color: rgba(186,230,253,0.5); }
+  .drow .dv { font-family: var(--term); font-size: 12px; font-weight: 500; color: #e0f2fe; }
+
+  /* telemetry bars */
+  .telem { margin-top: 0.75rem; }
+  .telem .row { display: flex; justify-content: space-between; }
+  .telem .row .k { font-family: var(--term); font-size: 9px; letter-spacing: 0.3em; color: rgba(186,230,253,0.5); }
+  .telem .row .v { font-family: var(--term); font-size: 10px; color: rgba(186,230,253,0.8); }
+  .telem .track { position: relative; margin-top: 0.25rem; height: 4px; width: 100%; background: rgba(255,255,255,0.05); }
+  .telem .track i { position: absolute; inset: 0 auto 0 0; }
+
+  /* circuit bonus */
+  .bonus { display: flex; gap: 0.75rem; align-items: flex-start; }
+  .bonus .star { color: var(--cyan); }
+  .bonus .bt { font-size: 0.9rem; font-weight: 500; color: var(--cyan); }
+  .bonus .bs { margin-top: 0.25rem; font-family: var(--term); font-size: 10px; letter-spacing: 0.3em; color: rgba(224,242,254,0.4); }
+
+  /* telemetry grid */
+  .tg { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 0; font-family: var(--term); font-size: 10px; letter-spacing: 0.2em; color: rgba(186,230,253,0.6); }
+  .tg .r { text-align: right; color: #bae6fd; }
+
+  /* ---------- portrait frame ---------- */
+  .portrait { position: relative; width: 100%; max-width: 520px; margin: 0 auto; aspect-ratio: 3/4; }
+  .cb { position: absolute; pointer-events: none; }
+  .cb.tl { left: 0; top: 0; border-left: 2px solid var(--cyan); border-top: 2px solid var(--cyan); }
+  .cb.tr { right: 0; top: 0; border-right: 2px solid var(--cyan); border-top: 2px solid var(--cyan); }
+  .cb.bl { left: 0; bottom: 0; border-left: 2px solid var(--cyan); border-bottom: 2px solid var(--cyan); }
+  .cb.br { right: 0; bottom: 0; border-right: 2px solid var(--cyan); border-bottom: 2px solid var(--cyan); }
+  .cb.s26 { width: 26px; height: 26px; }
+  .badge01 { position: absolute; top: -8px; left: 16px; z-index: 20; display: grid; place-items: center; height: 40px; width: 56px;
+    font-family: var(--term); font-size: 1.1rem; font-weight: 600; letter-spacing: 0.1em; color: #fff; }
+  .badge01 span.c { position: absolute; width: 8px; height: 8px; }
+  .hexring { position: absolute; inset: 0; display: grid; place-items: center; }
+  .hexring svg { width: 90%; height: 90%; opacity: 0.2; animation: spin 40s linear infinite; }
+  .gridback { position: absolute; inset: 16px; opacity: 0.25;
+    background-image: linear-gradient(rgba(125,211,252,0.3) 0.3px, transparent 0.3px), linear-gradient(90deg, rgba(125,211,252,0.3) 0.3px, transparent 0.3px);
+    background-size: 20px 20px; }
+  .render { position: absolute; inset: 0; display: flex; align-items: flex-end; justify-content: center; overflow: hidden; }
+  .render img { position: absolute; inset: 0; height: 100%; width: 100%; object-fit: contain; }
+  .render img.r { filter: drop-shadow(3px 0 0 rgba(255,0,120,0.5)); mix-blend-mode: screen; opacity: 0.7; }
+  .render img.b { filter: drop-shadow(-3px 0 0 rgba(56,189,248,0.6)); mix-blend-mode: screen; opacity: 0.7; }
+  .render img.m { position: relative; filter: contrast(1.05) saturate(1.1) drop-shadow(0 10px 40px rgba(125,211,252,0.2)); }
+  .glitch-bar { position: absolute; left: 0; right: 0; height: 6px; background: rgba(103,232,249,0.7); mix-blend-mode: screen; animation: glitch 7s infinite ease-in-out; }
+  .pname { position: absolute; left: 0; right: 0; bottom: 0; z-index: 10; display: flex; flex-direction: column; align-items: center; padding-bottom: 0.5rem; }
+  .pname .op { font-family: var(--term); font-size: 10px; letter-spacing: 0.5em; color: rgba(186,230,253,0.6); }
+  .pname .big { font-size: 1.5rem; font-weight: 300; letter-spacing: 0.3em; color: #fff; text-shadow: 0 0 12px rgba(125,211,252,0.6); }
+
+  /* level strip */
+  .lvstrip { max-width: 520px; margin: 1.5rem auto 0; }
+  .lvstrip .top { display: flex; align-items: flex-end; justify-content: space-between; }
+  .lvstrip .lv { font-size: 1.9rem; font-weight: 300; letter-spacing: 0.04em; color: #fff; display: flex; align-items: center; gap: 0.75rem; }
+  .lvstrip .prog { text-align: right; font-family: var(--term); font-size: 10px; letter-spacing: 0.35em; color: rgba(224,242,254,0.5); }
+  .lvstrip .prog b { color: var(--cyan); font-weight: 400; }
+  .slider-wrap { position: relative; margin-top: 0.75rem; height: 6px; width: 100%; background: rgba(255,255,255,0.05); }
+  .slider-wrap .fill { position: absolute; inset: 0 auto 0 0; background: linear-gradient(90deg,#38bdf8,#a5f3fc); }
+  .slider-wrap .cap { position: absolute; top: -4px; height: 14px; width: 2px; background: #7dd3fc; }
+  .slider-wrap input { position: absolute; inset: 0; width: 100%; height: 100%; appearance: none; background: transparent; cursor: pointer; }
+  .slider-wrap input::-webkit-slider-thumb { appearance: none; width: 3px; height: 20px; background: #7dd3fc; box-shadow: 0 0 10px #7dd3fc; }
+  .slider-wrap input::-moz-range-thumb { width: 3px; height: 20px; background: #7dd3fc; border: none; box-shadow: 0 0 10px #7dd3fc; }
+  .lvticks { margin-top: 0.5rem; display: flex; justify-content: space-between; font-family: var(--term); font-size: 9px; letter-spacing: 0.3em; color: rgba(224,242,254,0.4); }
+
+  /* stat hud grid */
+  .stats-grid { max-width: 520px; margin: 2rem auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .stat { position: relative; padding: 0.5rem 0.75rem; }
+  .stat .cbm { position: absolute; width: 10px; height: 10px; }
+  .stat .sh { display: flex; align-items: baseline; justify-content: space-between; }
+  .stat .sl { font-family: var(--term); font-size: 9px; letter-spacing: 0.35em; color: rgba(186,230,253,0.5); }
+  .stat .ss { font-family: var(--term); font-size: 9px; letter-spacing: 0.25em; color: rgba(224,242,254,0.3); }
+  .stat .sv { font-size: 1.8rem; font-weight: 300; }
+
+  /* skill card */
+  .skill { position: relative; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.02); padding: 0.75rem; }
+  .skill .row { display: flex; align-items: center; gap: 0.75rem; }
+  .skill .ic { position: relative; height: 48px; width: 48px; flex-shrink: 0; border: 1px solid rgba(56,189,248,0.4); background: rgba(56,189,248,0.1); display: grid; place-items: center; color: rgba(125,211,252,0.6); font-size: 1.1rem; }
+  .skill .ic .n { position: absolute; top: -8px; left: -8px; background: #07171e; padding: 0 4px; font-family: var(--term); font-size: 10px; color: var(--cyan); }
+  .skill .body { min-width: 0; flex: 1; }
+  .skill .nm { font-size: 0.9rem; color: #fff; }
+  .skill .kd { font-family: var(--term); font-size: 10px; letter-spacing: 0.3em; color: rgba(224,242,254,0.4); }
+  .skill .lvrow { margin-top: 0.25rem; display: flex; align-items: center; gap: 0.5rem; }
+  .skill .lvtxt { font-family: var(--term); font-size: 10px; color: var(--cyan); }
+  .skill .lvbar { position: relative; height: 3px; flex: 1; background: rgba(255,255,255,0.05); }
+  .skill .lvbar i { position: absolute; inset: 0 auto 0 0; background: #67e8f9; box-shadow: 0 0 6px #7dd3fc; }
+
+  /* tags */
+  .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .tag { border: 1px solid rgba(125,211,252,0.33); color: var(--cyan); background: rgba(125,211,252,0.06); padding: 0.25rem 0.5rem; font-family: var(--term); font-size: 10px; letter-spacing: 0.2em; }
+  .tag.gold { border-color: rgba(251,191,36,0.33); color: var(--gold); background: rgba(251,191,36,0.06); }
+  .attr-list { margin-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
+  .attr { display: flex; align-items: center; justify-content: space-between; border-left: 2px solid rgba(56,189,248,0.5); background: rgba(255,255,255,0.02); padding: 0.5rem 0.75rem; }
+  .attr .ak { font-size: 0.8rem; color: rgba(224,242,254,0.7); }
+  .attr .av { font-family: var(--term); font-size: 0.8rem; font-weight: 600; color: var(--cyan); }
+
+  /* roster */
+  .roster-sec { position: relative; z-index: 10; padding: 0 2.4rem 2rem; }
+  .roster-h { display: flex; align-items: center; gap: 0.75rem; }
+  .roster-h h2 { font-size: 0.85rem; letter-spacing: 0.3em; color: var(--cyan); }
+  .roster-h .rule { height: 1px; flex: 1; background: linear-gradient(90deg, rgba(125,211,252,0.4), transparent); }
+  .roster { margin-top: 1rem; display: flex; gap: 0.75rem; overflow-x: auto; padding-bottom: 0.5rem; }
+  .rcard { position: relative; display: block; height: 128px; width: 96px; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(8,20,26,0.7); text-decoration: none; transition: border-color 0.2s; cursor: pointer; }
+  .rcard:hover { border-color: rgba(56,189,248,0.6); }
+  .rcard.active { border-color: #7dd3fc; box-shadow: 0 0 16px rgba(125,211,252,0.5) inset; }
+  .rcard .n { position: absolute; top: -8px; left: 4px; background: #07171e; padding: 0 4px; font-family: var(--term); font-size: 10px; color: #7dd3fc; z-index: 2; }
+  .rcard img { height: 100%; width: 100%; object-fit: cover; opacity: 0.9; }
+  .rcard:not(.active) img { filter: saturate(0.7) brightness(0.9); }
+  .rcard .nm { position: absolute; left: 0; right: 0; bottom: 0; padding: 2px; text-align: center; font-size: 10px; letter-spacing: 0.1em; color: #fff;
+    background: linear-gradient(0deg, rgba(0,0,0,0.8), transparent); text-shadow: 0 1px 3px #000; }
+  .rcard .dot { position: absolute; right: 4px; top: 4px; height: 8px; width: 8px; border-radius: 50%; }
+
+  /* footer */
+  footer { position: relative; z-index: 10; padding: 0 2.4rem 2.5rem; }
+  .frow { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .fid { font-family: var(--term); font-size: 10px; letter-spacing: 0.5em; color: rgba(224,242,254,0.4); }
+  .btns { display: flex; gap: 0.75rem; }
+  .btn { padding: 0.75rem 1.5rem; font-size: 0.85rem; letter-spacing: 0.3em; cursor: pointer; border: none;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px)); transition: all 0.2s; }
+  .btn.ghost { border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.03); color: #bae6fd; }
+  .btn.ghost:hover { border-color: #7dd3fc; }
+  .btn.primary { background: #fff; color: #0f172a; box-shadow: 0 0 30px rgba(125,211,252,0.4); }
+  .btn.primary:hover { background: #bae6fd; }
+  .loadbar { margin-top: 1.5rem; display: flex; align-items: flex-end; gap: 1rem; }
+  .loadbar .lb-l { flex: 1; }
+  .loadbar .lb-label { font-family: var(--term); font-size: 10px; letter-spacing: 0.4em; color: rgba(224,242,254,0.5); }
+  .loadbar .lb-track { position: relative; margin-top: 0.5rem; height: 4px; width: 100%; background: rgba(255,255,255,0.05); overflow: hidden; }
+  .loadbar .lb-track i { position: absolute; inset: 0 auto 0 0; background: linear-gradient(90deg,#f43f5e,#ef4444,#fb7185); box-shadow: 0 0 12px #e11d48; }
+  .loadbar .lb-badge { position: relative; padding: 0.25rem 0.75rem; }
+  .loadbar .lb-badge .bd { position: absolute; inset: 0; border: 2px solid rgba(244,63,94,0.4);
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px)); }
+  .loadbar .lb-pct { display: flex; align-items: flex-end; gap: 4px; }
+  .loadbar .lb-pct b { font-size: 3rem; font-weight: 300; color: #fff; text-shadow: 0 0 20px rgba(225,29,72,0.5); }
+  .loadbar .lb-pct s { margin-bottom: 0.5rem; font-size: 1.25rem; color: #fb7185; text-decoration: none; }
+
+  .backlink { position: fixed; left: 1.2rem; bottom: 1.2rem; z-index: 60; font-family: var(--term); font-size: 10px; letter-spacing: 0.3em;
+    color: rgba(186,230,253,0.6); text-decoration: none; border: 1px solid rgba(125,211,252,0.3); padding: 0.5rem 0.9rem; background: rgba(5,15,20,0.8); }
+  .backlink:hover { color: var(--cyan); border-color: var(--cyan); }
+
+  @keyframes underline { 0%,100% { background-position: 0% 50%; opacity: 0.8; } 50% { background-position: 100% 50%; opacity: 1; } }
+  @keyframes spin { from { transform: rotate(0); } to { transform: rotate(360deg); } }
+  @keyframes glitch { 0%,45%,80%,100% { top: 0%; opacity: 0; } 50% { top: 20%; opacity: 0.9; } 70% { top: 70%; opacity: 0.7; } }
+
+  @media (max-width: 1024px) { main { grid-template-columns: 1fr; } .meters, .sess { display: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="bg-deep"></div>
+  <div class="bg-iso"></div>
+  <div class="bg-glyph">
+    <span style="top:80px;left:8%">ᚠᚢᚦᚨᚱᚲᚷᚹᚺᚾᛁᛃᛇᛈᛉᛊᛏᛒᛖᛗᛚᛝᛟᛞᛚᛜᚠᚢᚦᚨᚱᚲᚷᚹᚺᚾᛁᛃᛇᛈ</span>
+    <span style="top:40%;right:5%">ᚹᚺᚾᛁᛃᛇᛈᛉᛊᛏᛒᛖᛗᛚᛝᛟᛞᛚᛜᚠᚢᚦᚨᚱᚲᚷᚹᚺᚾᛁᛃᛇᛈᛉᛊᛏᛒᛖᛗ</span>
+    <span style="bottom:90px;left:42%">ᛁᛃᛇᛈᛉᛊᛏᛒᛖᛗᛚᛝᛟᛞᛚᛜᚠᚢᚦᚨᚱᚲᚷᚹᚺᚾᛁᛃᛇᛈᛉᛊᛏᛒᛖᛗᛚ</span>
+  </div>
+  <div class="bg-scan"></div>
+  <div class="bg-vig"></div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="brand">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><polygon points="12,2 22,7 22,17 12,22 2,17 2,7" stroke="#7dd3fc" stroke-width="1.3" fill="rgba(125,211,252,0.08)"/><polygon points="12,6 18,9 18,15 12,18 6,15 6,9" stroke="#22d3ee" stroke-width="0.8" fill="none"/></svg>
+      <div>
+        <div class="label">MATRICE //</div>
+        <div class="name">FINALE</div>
+      </div>
+    </div>
+    <div class="meters">
+      <div class="meter"><span class="k">SYNC</span><div class="track"><i style="width:87%;background:#7dd3fc;box-shadow:0 0 6px #7dd3fc"></i></div><span class="v" style="color:#7dd3fc">087</span></div>
+      <div class="meter"><span class="k">RESO</span><div class="track"><i style="width:42%;background:#fbbf24;box-shadow:0 0 6px #fbbf24"></i></div><span class="v" style="color:#fbbf24">042</span></div>
+      <div class="sess"><div>SESSION · 0x1005</div><div>LOC · FR · MATRIX 2026-06-09</div></div>
+    </div>
+    <div class="htools">
+      <a class="link" href="./proto-poc-hud-mod.html">→ ARMORY</a>
+      <span class="isq" style="border-color:rgba(251,191,36,0.4);color:#fbbf24;box-shadow:0 0 8px rgba(251,191,36,0.2) inset">!</span>
+      <span class="isq" style="border-color:rgba(125,211,252,0.4);color:#7dd3fc;box-shadow:0 0 8px rgba(125,211,252,0.2) inset">◈</span>
+      <a class="exitb" href="./index.html" aria-label="Quitter">×</a>
+    </div>
+  </header>
+
+  <!-- SECTION HEADER -->
+  <div class="sec">
+    <div class="sec-row">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="1" y="1" width="18" height="18" stroke="#7dd3fc" stroke-width="1" fill="none"/><path d="M4 4 L8 4 M4 4 L4 8 M16 4 L12 4 M16 4 L16 8 M4 16 L8 16 M4 16 L4 12 M16 16 L12 16 M16 16 L16 12" stroke="#22d3ee" stroke-width="1"/><rect x="8" y="8" width="4" height="4" fill="#7dd3fc"/></svg>
+      <h1>Accord stable</h1>
+      <span class="rule"></span>
+    </div>
+    <div class="sub">FICHE DE SYNCHRONISATION · NORMAL · PALIER 8</div>
+  </div>
+
+  <!-- MAIN -->
+  <main>
+    <!-- LEFT -->
+    <div class="col">
+      <div class="panel">
+        <div class="panel-h"><span class="t"><span class="dia"></span>01 · IDENTITE</span><span class="s">VECTEUR D'OPERATEUR</span></div>
+        <div class="panel-b">
+          <span class="k-sm">DESIGNATION</span>
+          <h2 class="desig">Rhythm</h2>
+          <div class="uline"></div>
+          <p class="subtxt">Appel du Phare</p>
+          <div class="drow"><span class="dk">RARITE</span><span class="dv">★ 5</span></div>
+          <div class="drow"><span class="dk">VECTEUR</span><span class="dv">Katana / Machinegun</span></div>
+          <div class="drow"><span class="dk">FACTION</span><span class="dv">EMPIRE HYPERBORÉEN</span></div>
+          <div class="drow"><span class="dk">ELEMENT</span><span class="dv" style="color:#a78bfa">Electro</span></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-h"><span class="t"><span class="dia"></span>02 · BONUS DE CIRCUIT</span><span class="s">EFFETS PASSIFS</span></div>
+        <div class="panel-b">
+          <div class="bonus">
+            <svg class="star" width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#7dd3fc" stroke-width="0.5" stroke-dasharray="2 2"/><path d="M12 4 L13.5 10.5 L20 12 L13.5 13.5 L12 20 L10.5 13.5 L4 12 L10.5 10.5 Z" fill="#7dd3fc" opacity="0.8"/></svg>
+            <div><div class="bt">Renforcement d'Effets négatifs</div><div class="bs">+24% INFLICTION · +12% DUREE</div></div>
+          </div>
+          <div class="telem"><div class="row"><span class="k">STABILITE</span><span class="v">78%</span></div><div class="track"><i style="width:78%;background:linear-gradient(90deg,#7dd3fc88,#7dd3fc);box-shadow:0 0 8px rgba(125,211,252,0.4)"></i></div></div>
+          <div class="telem"><div class="row"><span class="k">DIVERGENCE</span><span class="v">23%</span></div><div class="track"><i style="width:23%;background:linear-gradient(90deg,#e11d4888,#e11d48);box-shadow:0 0 8px rgba(225,29,72,0.4)"></i></div></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-h"><span class="t"><span class="dia"></span>03 · TELEMETRIE</span><span class="s">DONNEES BRUTES</span></div>
+        <div class="panel-b compact">
+          <div class="tg">
+            <span>NODE</span><span class="r">A-4101</span>
+            <span>CURVE</span><span class="r">ATK5</span>
+            <span>PRIORITY</span><span class="r">4001</span>
+            <span>MAXLVL</span><span class="r">80</span>
+            <span>COLOR</span><span class="r">Blue</span>
+            <span>UNLOCK</span><span class="r">30pc</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CENTER -->
+    <div class="col">
+      <div class="portrait">
+        <span class="cb tl s26"></span><span class="cb tr s26"></span><span class="cb bl s26"></span><span class="cb br s26"></span>
+        <div class="badge01">
+          <span class="c" style="left:0;top:0;border-left:1px solid #7dd3fc;border-top:1px solid #7dd3fc"></span>
+          <span class="c" style="right:0;top:0;border-right:1px solid #7dd3fc;border-top:1px solid #7dd3fc"></span>
+          <span class="c" style="left:0;bottom:0;border-left:1px solid #7dd3fc;border-bottom:1px solid #7dd3fc"></span>
+          <span class="c" style="right:0;bottom:0;border-right:1px solid #7dd3fc;border-bottom:1px solid #7dd3fc"></span>
+          01
+        </div>
+        <div class="hexring">
+          <svg viewBox="0 0 200 200"><g stroke="#7dd3fc" stroke-width="0.5" fill="none"><polygon points="100,10 186,55 186,145 100,190 14,145 14,55"/><polygon points="100,30 170,65 170,135 100,170 30,135 30,65"/><circle cx="100" cy="100" r="90" stroke-dasharray="2 4"/><circle cx="100" cy="100" r="70" stroke-dasharray="1 3"/></g></svg>
+        </div>
+        <div class="gridback"></div>
+        <div class="render">
+          <img class="r" src="./assets/render-main.png" alt="" aria-hidden="true" />
+          <img class="b" src="./assets/render-main.png" alt="" aria-hidden="true" />
+          <img class="m" src="./assets/render-main.png" alt="Rhythm" />
+          <div class="glitch-bar"></div>
+        </div>
+        <div class="pname">
+          <div class="op">OPERATEUR // 0x1005</div>
+          <div class="big">RHYTHM</div>
+          <div class="uline" style="width:128px"></div>
+        </div>
+      </div>
+
+      <div class="lvstrip">
+        <div class="top">
+          <div class="lv">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" fill="#fbbf24"/><g stroke="#fbbf24" stroke-width="1.5"><path d="M12 2 L12 5 M12 19 L12 22 M2 12 L5 12 M19 12 L22 12 M5 5 L7 7 M17 17 L19 19 M5 19 L7 17 M17 7 L19 5"/></g></svg>
+            <span>Nv. <b id="lvNum" style="font-weight:300">80</b></span>
+          </div>
+          <div class="prog"><div>PROGRESSION</div><div><b id="growthTop">100</b>% // 100%</div></div>
+        </div>
+        <div class="slider-wrap">
+          <div class="fill" id="lvFill" style="width:100%"></div>
+          <span class="cap" style="left:-1px"></span><span class="cap" style="right:-1px"></span>
+          <input id="lvRange" type="range" min="1" max="80" value="80" aria-label="Niveau" />
+        </div>
+        <div class="lvticks"><span>01</span><span id="ascTxt">ASCENSION · 4/4</span><span>80</span></div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat" data-base="1628" data-curve="ATK5"><span class="cbm" style="left:0;top:0;border-left:1px solid #7dd3fc;border-top:1px solid #7dd3fc"></span><span class="cbm" style="right:0;bottom:0;border-right:1px solid #7dd3fc;border-bottom:1px solid #7dd3fc"></span><div class="sh"><span class="sl">ATK</span><span class="ss">[ATK5]</span></div><div class="sv" style="color:#7dd3fc;text-shadow:0 0 12px rgba(125,211,252,0.4)"><span class="num">1628</span></div></div>
+        <div class="stat" data-base="534"><span class="cbm" style="left:0;top:0;border-left:1px solid #7dd3fc;border-top:1px solid #7dd3fc"></span><span class="cbm" style="right:0;bottom:0;border-right:1px solid #7dd3fc;border-bottom:1px solid #7dd3fc"></span><div class="sh"><span class="sl">DEF</span><span class="ss">[DEF1]</span></div><div class="sv" style="color:#7dd3fc;text-shadow:0 0 12px rgba(125,211,252,0.4)"><span class="num">534</span></div></div>
+        <div class="stat" data-base="2129"><span class="cbm" style="left:0;top:0;border-left:1px solid #7dd3fc;border-top:1px solid #7dd3fc"></span><span class="cbm" style="right:0;bottom:0;border-right:1px solid #7dd3fc;border-bottom:1px solid #7dd3fc"></span><div class="sh"><span class="sl">PV MAX</span><span class="ss">[HP5]</span></div><div class="sv" style="color:#7dd3fc;text-shadow:0 0 12px rgba(125,211,252,0.4)"><span class="num">2129</span></div></div>
+        <div class="stat" data-base="1757"><span class="cbm" style="left:0;top:0;border-left:1px solid #7dd3fc;border-top:1px solid #7dd3fc"></span><span class="cbm" style="right:0;bottom:0;border-right:1px solid #7dd3fc;border-bottom:1px solid #7dd3fc"></span><div class="sh"><span class="sl">ES MAX</span><span class="ss">[ES5]</span></div><div class="sv" style="color:#7dd3fc;text-shadow:0 0 12px rgba(125,211,252,0.4)"><span class="num">1757</span></div></div>
+        <div class="stat"><span class="cbm" style="left:0;top:0;border-left:1px solid #fbbf24;border-top:1px solid #fbbf24"></span><span class="cbm" style="right:0;bottom:0;border-right:1px solid #fbbf24;border-bottom:1px solid #fbbf24"></span><div class="sh"><span class="sl">SP</span><span class="ss">[—]</span></div><div class="sv" style="color:#fbbf24;text-shadow:0 0 12px rgba(251,191,36,0.4)">528</div></div>
+        <div class="stat"><span class="cbm" style="left:0;top:0;border-left:1px solid #7dd3fc;border-top:1px solid #7dd3fc"></span><span class="cbm" style="right:0;bottom:0;border-right:1px solid #7dd3fc;border-bottom:1px solid #7dd3fc"></span><div class="sh"><span class="sl">GROWTH</span><span class="ss">[DYN]</span></div><div class="sv" style="color:#7dd3fc;text-shadow:0 0 12px rgba(125,211,252,0.4)"><span id="growthCard">100</span><span style="font-size:0.9rem;color:rgba(186,230,253,0.7)">%</span></div></div>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="col">
+      <div class="panel">
+        <div class="panel-h"><span class="t"><span class="dia"></span>04 · CIRCUITS</span><span class="s">MODULES ACTIFS</span></div>
+        <div class="panel-b" style="display:flex;flex-direction:column;gap:0.75rem">
+          <div class="skill"><div class="row"><div class="ic">◈<span class="n">01</span></div><div class="body"><div class="nm">Irrupción Rápida</div><div class="kd">SKILL1</div><div class="lvrow"><span class="lvtxt">Lv 12/20</span><div class="lvbar"><i style="width:60%"></i></div></div></div></div></div>
+          <div class="skill"><div class="row"><div class="ic">◈<span class="n">02</span></div><div class="body"><div class="nm">Vórtice Eléctrico</div><div class="kd">SKILL2</div><div class="lvrow"><span class="lvtxt">Lv 10/20</span><div class="lvbar"><i style="width:50%"></i></div></div></div></div></div>
+          <div class="skill"><div class="row"><div class="ic">◈<span class="n">03</span></div><div class="body"><div class="nm">Preservación Táctica</div><div class="kd">PASSIVE</div><div class="lvrow"><span class="lvtxt">Lv 08/20</span><div class="lvbar"><i style="width:40%"></i></div></div></div></div></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-h"><span class="t"><span class="dia"></span>05 · ATTRIBUTS RECOMMANDES</span><span class="s">OPTIMISATION</span></div>
+        <div class="panel-b">
+          <div class="tags"><span class="tag">CRIT</span><span class="tag">ATK%</span><span class="tag">ELEM DMG</span></div>
+          <div class="attr-list">
+            <div class="attr"><span class="ak">ATK</span><span class="av">+20%</span></div>
+            <div class="attr"><span class="ak">ATK</span><span class="av">+30%</span></div>
+            <div class="attr"><span class="ak">SkillRange</span><span class="av">+12%</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-h"><span class="t"><span class="dia"></span>06 · POSITIONNEMENT</span><span class="s">ROLE TACTIQUE</span></div>
+        <div class="panel-b compact"><div class="tags"><span class="tag gold">DPS</span><span class="tag gold">SkillDPS</span></div></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ROSTER -->
+  <section class="roster-sec">
+    <div class="roster-h">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="1" y="1" width="18" height="18" stroke="#7dd3fc" stroke-width="1" fill="none"/><rect x="8" y="8" width="4" height="4" fill="#7dd3fc"/></svg>
+      <h2>ROSTER · EQUIPE DISPONIBLE</h2><span class="rule"></span>
+    </div>
+    <div class="roster" id="roster"></div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="frow">
+      <div class="fid">IDENTIFIANT · 000004101</div>
+      <div class="btns"><button class="btn ghost">Bilan des ennemis</button><button class="btn primary">Commencer le défi</button></div>
+    </div>
+    <div class="loadbar">
+      <div class="lb-l"><div class="lb-label">CHARGEMENT EN COURS...</div><div class="lb-track"><i style="width:35%"></i></div></div>
+      <div class="lb-badge"><span class="bd"></span><div class="lb-pct"><b>35</b><s>%</s></div></div>
+    </div>
+  </footer>
+</div>
+
+<a class="backlink" href="./index.html">◀ DESIGN LAB</a>
+
+<script>
+  const ROSTER = [
+    { n: "Rhythm", el: "#a78bfa", img: "head-Heitao", active: true },
+    { n: "Kami", el: "#60a5fa", img: "head-Kami" },
+    { n: "Linen", el: "#34d399", img: "head-Linen" },
+    { n: "Feina", el: "#fbbf24", img: "head-Feina" },
+    { n: "Fuluo", el: "#ef4444", img: "head-Fuluo" },
+    { n: "Baiheng", el: "#7dd3fc", img: "head-Baiheng" },
+    { n: "Aote", el: "#818cf8", img: "head-Aote" },
+    { n: "Dafu", el: "#a78bfa", img: "head-Dafu" },
+    { n: "Haier", el: "#60a5fa", img: "head-Haier" },
+    { n: "Baonu", el: "#34d399", img: "head-Baonu" },
+  ];
+  const rosterEl = document.getElementById('roster');
+  ROSTER.forEach((c, i) => {
+    const a = document.createElement('a');
+    a.className = 'rcard' + (c.active ? ' active' : '');
+    a.href = '#';
+    a.innerHTML = `
+      <span class="n">${String(i+1).padStart(2,'0')}</span>
+      <img src="./assets/${c.img}.png" alt="${c.n}" onerror="this.style.display='none'"/>
+      <span class="dot" style="background:${c.el};box-shadow:0 0 6px ${c.el}"></span>
+      <span class="nm">${c.n}</span>`;
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      document.querySelector('.rcard.active')?.classList.remove('active');
+      a.classList.add('active');
+    });
+    rosterEl.appendChild(a);
+  });
+
+  // level slider -> scale stats (simple growth approximation)
+  const range = document.getElementById('lvRange');
+  const lvNum = document.getElementById('lvNum');
+  const lvFill = document.getElementById('lvFill');
+  const growthTop = document.getElementById('growthTop');
+  const growthCard = document.getElementById('growthCard');
+  const ascTxt = document.getElementById('ascTxt');
+  const stats = [...document.querySelectorAll('.stat[data-base]')];
+  function update() {
+    const lv = Number(range.value);
+    const pct = lv / 80;
+    lvNum.textContent = lv;
+    lvFill.style.width = (pct * 100) + '%';
+    const g = Math.round(pct * 100);
+    growthTop.textContent = g;
+    growthCard.textContent = g;
+    ascTxt.textContent = 'ASCENSION · ' + (Math.floor(lv / 20) + 1) + '/4';
+    // growth curve: starts ~22% of base at lv1, full at 80
+    const f = 0.22 + 0.78 * Math.pow(pct, 1.1);
+    stats.forEach(s => {
+      const base = Number(s.dataset.base);
+      s.querySelector('.num').textContent = Math.round(base * f).toLocaleString('fr-FR');
+    });
+  }
+  range.addEventListener('input', update);
+  update();
+</script>
+</body>
+</html>

@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Design Lab · Pavillon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Spectral:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #0a0908;
+    --ink-2: #14110d;
+    --panel: rgba(20, 17, 13, 0.74);
+    --panel-solid: #16130e;
+    --line: rgba(194, 168, 106, 0.22);
+    --gold: #c2a86a;
+    --gold-bright: #e3cd95;
+    --gold-deep: #897240;
+    --crimson: #8e1813;
+    --crimson-bright: #b5302a;
+    --parch: #ece4d2;
+    --muted: #9a907c;
+    --muted-2: #6f6755;
+    --serif: "Cormorant Garamond", Georgia, serif;
+    --caps: "Cinzel", serif;
+    --body: "Spectral", Georgia, serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ink);
+    color: var(--parch);
+    font-family: var(--body);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* ---- atmospheric backdrop ---- */
+  .bg {
+    position: fixed;
+    inset: 0;
+    z-index: -3;
+    background:
+      radial-gradient(120% 90% at 78% 8%, rgba(142, 24, 19, 0.16), transparent 55%),
+      radial-gradient(130% 100% at 12% 96%, rgba(36, 78, 86, 0.20), transparent 60%),
+      radial-gradient(90% 70% at 50% 40%, rgba(194, 168, 106, 0.05), transparent 70%),
+      linear-gradient(175deg, #0d0b08 0%, #0a0908 45%, #08110f 100%);
+  }
+  .bg::after {
+    /* faint blurred "world" suggestion */
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(40% 30% at 85% 75%, rgba(120, 150, 160, 0.10), transparent 70%),
+      radial-gradient(30% 25% at 20% 20%, rgba(180, 140, 70, 0.08), transparent 70%);
+    filter: blur(8px);
+  }
+  .grain {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .vignette {
+    position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background: radial-gradient(ellipse 100% 80% at 50% 45%, transparent 52%, rgba(0,0,0,0.72) 100%);
+  }
+
+  /* giant ghost watermark */
+  .watermark {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--caps);
+    font-weight: 700;
+    font-size: clamp(8rem, 22vw, 22rem);
+    letter-spacing: 0.12em;
+    color: rgba(236, 228, 210, 0.018);
+    white-space: nowrap;
+    z-index: -1;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  /* ---------- top bar ---------- */
+  .topbar {
+    position: sticky; top: 0; z-index: 50;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.85rem 2.4rem;
+    background: linear-gradient(180deg, rgba(10,9,8,0.92), rgba(10,9,8,0.4) 70%, transparent);
+    backdrop-filter: blur(6px);
+  }
+  .brand { display: flex; align-items: center; gap: 0.85rem; }
+  .emblem {
+    width: 30px; height: 30px;
+    display: grid; place-items: center;
+    position: relative;
+  }
+  .emblem svg { filter: drop-shadow(0 0 7px rgba(181, 48, 42,0.55)); }
+  .brand-name {
+    font-family: var(--caps);
+    font-weight: 600;
+    font-size: 0.92rem;
+    letter-spacing: 0.42em;
+    color: var(--parch);
+    text-transform: uppercase;
+  }
+  .brand-name b { color: var(--crimson-bright); font-weight: 600; }
+
+  .nav { display: flex; gap: 2.1rem; }
+  .nav a {
+    font-family: var(--caps);
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    position: relative;
+    padding: 0.4rem 0;
+    transition: color 0.35s;
+  }
+  .nav a::after {
+    content: ""; position: absolute; left: 50%; bottom: -2px;
+    width: 0; height: 1px; background: var(--gold-bright);
+    transform: translateX(-50%);
+    transition: width 0.35s ease;
+    box-shadow: 0 0 8px var(--gold);
+  }
+  .nav a:hover { color: var(--gold-bright); }
+  .nav a:hover::after { width: 100%; }
+  .nav a.active { color: var(--parch); }
+  .nav a.active::after { width: 100%; }
+
+  .uid {
+    font-family: var(--caps);
+    font-size: 0.62rem; letter-spacing: 0.2em;
+    color: var(--muted-2);
+    border: 1px solid var(--line);
+    padding: 0.4rem 0.8rem;
+  }
+
+  /* ---------- layout ---------- */
+  .stage {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 2rem 2.4rem 6rem;
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 2.2rem;
+    align-items: start;
+  }
+
+  /* section label */
+  .sec-label {
+    display: flex; align-items: center; gap: 0.7rem;
+    font-family: var(--caps);
+    font-size: 0.66rem; letter-spacing: 0.34em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.1rem;
+  }
+  .sec-label::before { content: "◈"; color: var(--gold-bright); font-size: 0.7rem; }
+  .sec-label::after {
+    content: ""; flex: 1; height: 1px;
+    background: linear-gradient(90deg, var(--line), transparent);
+  }
+
+  /* ---------- news list (left) ---------- */
+  .news { animation: rise 0.9s cubic-bezier(.2,.8,.2,1) both; animation-delay: 0.15s; }
+  .news-item {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 0.95rem 1rem;
+    border-bottom: 1px solid rgba(194, 168, 106,0.10);
+    cursor: pointer;
+    position: relative;
+    transition: background 0.3s, padding-left 0.3s;
+  }
+  .news-item::before {
+    content: ""; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 2px; background: var(--gold-bright);
+    transform: scaleY(0); transform-origin: center;
+    transition: transform 0.35s ease;
+    box-shadow: 0 0 10px var(--gold);
+  }
+  .news-item:hover { background: linear-gradient(90deg, rgba(194, 168, 106,0.07), transparent); padding-left: 1.5rem; }
+  .news-item:hover::before { transform: scaleY(1); }
+  .news-item.active { background: linear-gradient(90deg, rgba(194, 168, 106,0.10), transparent); }
+  .news-item.active::before { transform: scaleY(1); }
+  .news-marker {
+    font-size: 0.7rem; color: var(--gold); opacity: 0; transition: opacity 0.3s;
+  }
+  .news-item:hover .news-marker, .news-item.active .news-marker { opacity: 1; }
+  .news-title {
+    flex: 1;
+    font-family: var(--serif);
+    font-size: 1.18rem;
+    font-weight: 500;
+    color: var(--parch);
+    line-height: 1.2;
+  }
+  .news-item.active .news-title { color: var(--gold-bright); }
+  .date-pill {
+    font-family: var(--caps);
+    font-size: 0.56rem; letter-spacing: 0.12em;
+    color: #2a1f0c;
+    background: linear-gradient(180deg, var(--gold-bright), var(--gold));
+    padding: 0.28rem 0.55rem;
+    white-space: nowrap;
+    clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%);
+    box-shadow: 0 1px 6px rgba(0,0,0,0.4);
+  }
+
+  /* ---------- hero (right) ---------- */
+  .hero {
+    position: relative;
+    min-height: 560px;
+    animation: rise 0.9s cubic-bezier(.2,.8,.2,1) both; animation-delay: 0.05s;
+  }
+  .frame {
+    position: relative;
+    background:
+      linear-gradient(180deg, rgba(28,22,15,0.55), rgba(12,10,8,0.85)),
+      radial-gradient(120% 80% at 70% 0%, rgba(142, 24, 19,0.18), transparent 60%);
+    border: 1px solid var(--line);
+    padding: 2.6rem 2.8rem 2.4rem;
+    min-height: 560px;
+    overflow: hidden;
+    backdrop-filter: blur(3px);
+  }
+  /* double inner rule */
+  .frame::before {
+    content: ""; position: absolute; inset: 9px;
+    border: 1px solid rgba(194, 168, 106,0.14);
+    pointer-events: none;
+  }
+  /* gold corner ornaments */
+  .corner {
+    position: absolute; width: 56px; height: 56px;
+    color: var(--gold); opacity: 0.85; z-index: 3;
+    pointer-events: none;
+  }
+  .corner.tl { top: 4px; left: 4px; }
+  .corner.tr { top: 4px; right: 4px; transform: scaleX(-1); }
+  .corner.bl { bottom: 4px; left: 4px; transform: scaleY(-1); }
+  .corner.br { bottom: 4px; right: 4px; transform: scale(-1,-1); }
+
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.55rem;
+    font-family: var(--caps); font-size: 0.62rem; letter-spacing: 0.32em;
+    text-transform: uppercase; color: var(--gold);
+    border: 1px solid var(--line); padding: 0.4rem 0.85rem;
+    margin-bottom: 1.6rem;
+    position: relative; z-index: 2;
+  }
+  .hero-tag .dot {
+    width: 6px; height: 6px; background: var(--crimson-bright); border-radius: 50%;
+    box-shadow: 0 0 8px var(--crimson-bright);
+    animation: pulse 2.4s infinite;
+  }
+
+  .hero h1 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(2.8rem, 5vw, 4.6rem);
+    line-height: 0.98;
+    letter-spacing: 0.01em;
+    color: var(--parch);
+    position: relative; z-index: 2;
+    text-shadow: 0 2px 30px rgba(0,0,0,0.6);
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold-bright);
+    background: linear-gradient(180deg, #f7e2ad, var(--gold));
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .hero-sub {
+    margin-top: 1.4rem; max-width: 30rem;
+    font-size: 1.02rem; line-height: 1.7; color: var(--muted);
+    font-weight: 300;
+    position: relative; z-index: 2;
+  }
+  .divider-orn {
+    display: flex; align-items: center; gap: 0.9rem; margin: 1.8rem 0;
+    color: var(--gold-deep); position: relative; z-index: 2;
+  }
+  .divider-orn span { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--line), transparent); }
+  .divider-orn::before, .divider-orn::after { content: "◇"; font-size: 0.6rem; color: var(--gold); }
+
+  .meta-row {
+    display: flex; gap: 2.4rem; margin-bottom: 2rem; position: relative; z-index: 2;
+  }
+  .meta b {
+    display: block; font-family: var(--serif); font-size: 1.7rem; font-weight: 600; color: var(--gold-bright);
+  }
+  .meta small {
+    font-family: var(--caps); font-size: 0.56rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted-2);
+  }
+
+  .cta-row { display: flex; gap: 1rem; position: relative; z-index: 2; }
+  /* boutons calés sur le jeu : arrondi, sombre, liseré fin, casse normale */
+  .btn {
+    font-family: var(--body); font-size: 0.9rem; font-weight: 400; letter-spacing: 0.01em;
+    padding: 0.7rem 1.6rem; cursor: pointer; border-radius: 7px; position: relative; overflow: hidden;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    transition: border-color 0.25s, background 0.25s, color 0.25s, box-shadow 0.25s, transform 0.2s;
+  }
+  .btn-gold {
+    color: var(--gold-bright);
+    border: 1px solid var(--gold);
+    background: linear-gradient(180deg, rgba(122,102,58,0.42), rgba(32,27,17,0.72));
+    box-shadow: inset 0 1px 0 rgba(227,205,149,0.22);
+  }
+  .btn-gold::after {
+    content: ""; position: absolute; top: 0; left: -60%; width: 45%; height: 100%;
+    background: linear-gradient(100deg, transparent, rgba(227,205,149,0.28), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.6s ease;
+  }
+  .btn-gold:hover { transform: translateY(-1px); border-color: var(--gold-bright); color: #fff6e6;
+    box-shadow: inset 0 1px 0 rgba(227,205,149,0.4), 0 0 16px rgba(194,168,106,0.22); }
+  .btn-gold:hover::after { left: 120%; }
+  .btn-ghost {
+    color: var(--parch); background: linear-gradient(180deg, rgba(42,40,36,0.55), rgba(16,15,13,0.72));
+    border: 1px solid rgba(255,255,255,0.22);
+  }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.45); color: #fff; transform: translateY(-1px); }
+
+  /* floating ornamental render placeholder */
+  .render {
+    position: absolute; right: -10px; bottom: -10px; width: 300px; height: 440px; z-index: 1;
+    pointer-events: none;
+    opacity: 0.9;
+  }
+  .render .halo {
+    position: absolute; right: 30px; top: 40px; width: 240px; height: 240px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(194, 168, 106,0.22), transparent 65%);
+    filter: blur(6px);
+    animation: float 7s ease-in-out infinite;
+  }
+  .render .figure {
+    position: absolute; right: 20px; bottom: 0; width: 230px; height: 400px;
+    background: linear-gradient(180deg, rgba(194, 168, 106,0.10), rgba(142, 24, 19,0.06));
+    clip-path: polygon(50% 0, 72% 18%, 66% 55%, 80% 100%, 20% 100%, 34% 55%, 28% 18%);
+    border: 1px solid rgba(194, 168, 106,0.18);
+    animation: float 7s ease-in-out infinite reverse;
+  }
+
+  /* lower band: feature tiles */
+  .tiles {
+    grid-column: 1 / -1;
+    margin-top: 1rem;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.1rem;
+  }
+  .tile {
+    position: relative; padding: 1.5rem 1.3rem; min-height: 150px;
+    background: var(--panel); border: 1px solid var(--line);
+    cursor: pointer; overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s, background 0.3s;
+    animation: rise 0.9s cubic-bezier(.2,.8,.2,1) both;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .tile:nth-child(1){animation-delay:.25s}
+  .tile:nth-child(2){animation-delay:.33s}
+  .tile:nth-child(3){animation-delay:.41s}
+  .tile:nth-child(4){animation-delay:.49s}
+  .tile::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(80% 60% at 50% 0%, rgba(194, 168, 106,0.12), transparent 70%);
+    opacity: 0; transition: opacity 0.4s;
+  }
+  .tile:hover { transform: translateY(-5px); border-color: var(--gold); background: rgba(28,23,16,0.85); }
+  .tile:hover::before { opacity: 1; }
+  .tile .ico { color: var(--gold); margin-bottom: 0.8rem; }
+  .tile h3 { font-family: var(--serif); font-size: 1.35rem; font-weight: 600; color: var(--parch); }
+  .tile p { font-size: 0.8rem; color: var(--muted-2); margin-top: 0.25rem; font-weight: 300; }
+  .tile .badge {
+    position: absolute; top: 0; right: 0;
+    font-family: var(--caps); font-size: 0.5rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: #241a08; background: linear-gradient(180deg, var(--gold-bright), var(--gold));
+    padding: 0.22rem 0.5rem;
+    clip-path: polygon(12% 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  /* back link */
+  .back {
+    position: fixed; left: 1.5rem; bottom: 1.5rem; z-index: 60;
+    font-family: var(--caps); font-size: 0.62rem; letter-spacing: 0.24em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none; border: 1px solid var(--line);
+    padding: 0.55rem 1rem; background: rgba(10,9,8,0.7); backdrop-filter: blur(4px);
+    transition: color 0.3s, border-color 0.3s;
+  }
+  .back:hover { color: var(--gold-bright); border-color: var(--gold); }
+
+  @keyframes rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+
+  @media (max-width: 980px) {
+    .stage { grid-template-columns: 1fr; }
+    .tiles { grid-template-columns: repeat(2,1fr); }
+    .render { display: none; }
+    .nav { display: none; }
+  }
+</style>
+</head>
+<body>
+  <div class="bg"></div>
+  <div class="grain"></div>
+  <div class="watermark">PAN&nbsp;GU</div>
+  <div class="vignette"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="emblem">
+        <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
+          <path d="M16 1 L30 16 L16 31 L2 16 Z" stroke="#b5302a" stroke-width="1.4" fill="rgba(142, 24, 19,0.18)"/>
+          <path d="M16 7 L25 16 L16 25 L7 16 Z" stroke="#c2a86a" stroke-width="0.9" fill="none"/>
+          <circle cx="16" cy="16" r="2.4" fill="#b5302a"/>
+        </svg>
+      </span>
+      <span class="brand-name">Duet&nbsp;Night&nbsp;<b>Abyss</b></span>
+    </div>
+    <nav class="nav">
+      <a href="#" class="active">Accueil</a>
+      <a href="#">Personnages</a>
+      <a href="#">Sceaux</a>
+      <a href="#">Carte</a>
+      <a href="#">Codex</a>
+    </nav>
+    <span class="uid">UID&nbsp;·&nbsp;4000 2311 3477</span>
+  </header>
+
+  <main class="stage">
+    <!-- left: news -->
+    <section class="news">
+      <div class="sec-label">Annonces d'événements</div>
+      <div class="news-item active">
+        <span class="news-marker">▶</span>
+        <span class="news-title">Périple ferroviaire de Luno</span>
+        <span class="date-pill">03·06</span>
+      </div>
+      <div class="news-item">
+        <span class="news-marker">▶</span>
+        <span class="news-title">Grâce à cette douce nuit</span>
+        <span class="date-pill">02·06</span>
+      </div>
+      <div class="news-item">
+        <span class="news-marker">▶</span>
+        <span class="news-title">Songes d'été</span>
+        <span class="date-pill">02·06</span>
+      </div>
+      <div class="news-item">
+        <span class="news-marker">▶</span>
+        <span class="news-title">Au-delà de la cage</span>
+        <span class="date-pill">01·06</span>
+      </div>
+      <div class="news-item">
+        <span class="news-marker">▶</span>
+        <span class="news-title">Théâtre immersif</span>
+        <span class="date-pill">31·05</span>
+      </div>
+      <div class="news-item">
+        <span class="news-marker">▶</span>
+        <span class="news-title">Battement de l'Empire</span>
+        <span class="date-pill">28·05</span>
+      </div>
+      <div class="news-item">
+        <span class="news-marker">▶</span>
+        <span class="news-title">Voyage en Atlasia</span>
+        <span class="date-pill">25·05</span>
+      </div>
+    </section>
+
+    <!-- right: hero frame -->
+    <section class="hero">
+      <div class="frame">
+        <svg class="corner tl" viewBox="0 0 56 56" fill="none">
+          <path d="M2 2 H30 M2 2 V30" stroke="currentColor" stroke-width="1.2"/>
+          <path d="M2 12 C16 12 12 26 26 26" stroke="currentColor" stroke-width="0.8" fill="none" opacity="0.7"/>
+          <circle cx="9" cy="9" r="2.4" fill="currentColor"/>
+          <path d="M14 6 L18 6 M6 14 L6 18" stroke="currentColor" stroke-width="0.8"/>
+        </svg>
+        <svg class="corner tr" viewBox="0 0 56 56" fill="none">
+          <path d="M2 2 H30 M2 2 V30" stroke="currentColor" stroke-width="1.2"/>
+          <path d="M2 12 C16 12 12 26 26 26" stroke="currentColor" stroke-width="0.8" fill="none" opacity="0.7"/>
+          <circle cx="9" cy="9" r="2.4" fill="currentColor"/>
+          <path d="M14 6 L18 6 M6 14 L6 18" stroke="currentColor" stroke-width="0.8"/>
+        </svg>
+        <svg class="corner bl" viewBox="0 0 56 56" fill="none">
+          <path d="M2 2 H30 M2 2 V30" stroke="currentColor" stroke-width="1.2"/>
+          <path d="M2 12 C16 12 12 26 26 26" stroke="currentColor" stroke-width="0.8" fill="none" opacity="0.7"/>
+          <circle cx="9" cy="9" r="2.4" fill="currentColor"/>
+        </svg>
+        <svg class="corner br" viewBox="0 0 56 56" fill="none">
+          <path d="M2 2 H30 M2 2 V30" stroke="currentColor" stroke-width="1.2"/>
+          <path d="M2 12 C16 12 12 26 26 26" stroke="currentColor" stroke-width="0.8" fill="none" opacity="0.7"/>
+          <circle cx="9" cy="9" r="2.4" fill="currentColor"/>
+        </svg>
+
+        <div class="render">
+          <div class="halo"></div>
+          <div class="figure"></div>
+        </div>
+
+        <span class="hero-tag"><span class="dot"></span>Événement à durée limitée</span>
+        <h1>Périple<br/>ferroviaire<br/>de <em>Luno</em></h1>
+        <div class="divider-orn"><span></span></div>
+        <p class="hero-sub">
+          Au sifflet de Luno, partez à la découverte des merveilles du chemin de fer.
+          Reproduisant l'animation jadis organisée au Théâtre Galea — chantez et dansez
+          sous le dôme d'entrée.
+        </p>
+        <div class="divider-orn"><span></span></div>
+        <div class="meta-row">
+          <div class="meta"><b>21j</b><small>Restant</small></div>
+          <div class="meta"><b>×8</b><small>Récompenses</small></div>
+          <div class="meta"><b>Lv.20</b><small>Requis</small></div>
+        </div>
+        <div class="cta-row">
+          <button class="btn btn-gold">Voir l'événement</button>
+          <button class="btn btn-ghost">Conditions</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- lower feature tiles -->
+    <section class="tiles">
+      <div class="tile">
+        <span class="badge">Nouveau</span>
+        <span class="ico">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 2 L15 9 L22 9 L16.5 13.5 L18.5 21 L12 16.5 L5.5 21 L7.5 13.5 L2 9 L9 9 Z" stroke="#c2a86a" stroke-width="1.1" fill="rgba(194, 168, 106,0.08)"/></svg>
+        </span>
+        <div><h3>Personnages</h3><p>42 protagonistes</p></div>
+      </div>
+      <div class="tile">
+        <span class="ico">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 3 L20 7 V13 C20 18 16 21 12 22 C8 21 4 18 4 13 V7 Z" stroke="#c2a86a" stroke-width="1.1" fill="rgba(194, 168, 106,0.08)"/><path d="M9 12 L11 14 L15 9" stroke="#c2a86a" stroke-width="1.1"/></svg>
+        </span>
+        <div><h3>Sceaux</h3><p>Forge démoniaque</p></div>
+      </div>
+      <div class="tile">
+        <span class="badge">Nouveau</span>
+        <span class="ico">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 6 L9 4 L15 6 L20 4 V18 L15 20 L9 18 L4 20 Z" stroke="#c2a86a" stroke-width="1.1" fill="rgba(194, 168, 106,0.08)"/><path d="M9 4 V18 M15 6 V20" stroke="#c2a86a" stroke-width="0.8"/></svg>
+        </span>
+        <div><h3>Carte</h3><p>Atlas du monde</p></div>
+      </div>
+      <div class="tile">
+        <span class="ico">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="1" stroke="#c2a86a" stroke-width="1.1" fill="rgba(194, 168, 106,0.08)"/><path d="M8 8 H16 M8 12 H16 M8 16 H13" stroke="#c2a86a" stroke-width="1"/></svg>
+        </span>
+        <div><h3>Codex</h3><p>Guides & lore</p></div>
+      </div>
+    </section>
+  </main>
+
+  <a class="back" href="./index.html">◀ Design Lab</a>
+
+  <script>
+    document.querySelectorAll('.news-item').forEach(item => {
+      item.addEventListener('click', () => {
+        document.querySelector('.news-item.active')?.classList.remove('active');
+        item.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
