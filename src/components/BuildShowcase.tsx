@@ -10,6 +10,7 @@ import {
   resolveCharacterDisplayName,
 } from "@/lib/characters/catalog";
 import { getCharacterBuilds } from "@/lib/characters/builds";
+import { ELEMENTS, type ElementKey } from "@/components/dna/elements";
 
 // ---------------------------------------------------------------------------
 // BuildShowcase — Twitch-style peek carousel. Active card centered at full
@@ -34,6 +35,8 @@ export default function BuildShowcase() {
 
   const activeEntry = featured[active];
   const activeName = resolveCharacterDisplayName(activeEntry.character, "FR");
+  // Teinte dérivée de l'élément du personnage actif (le gradient suit l'élément).
+  const elHex = ELEMENTS[activeEntry.character.element.key as ElementKey]?.hex ?? "#c2a86a";
 
   const go = (i: number) => {
     if (i < 0 || i >= featured.length) return;
@@ -43,7 +46,10 @@ export default function BuildShowcase() {
   return (
     <section
       id="build-showcase"
-      className="relative py-16 md:py-20 bg-gradient-to-br from-ink/50 via-panel/60 to-electro/50"
+      className="relative py-16 transition-[background] duration-500 md:py-20"
+      style={{
+        background: `linear-gradient(to bottom right, rgba(10,10,11,0.5) 0%, rgba(20,19,17,0.65) 45%, ${elHex}40 100%)`,
+      }}
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="mx-auto max-w-6xl text-center">
@@ -72,9 +78,14 @@ export default function BuildShowcase() {
                 type="button"
                 onClick={() => go(i)}
                 aria-pressed={isActive}
+                style={
+                  isActive
+                    ? { background: `linear-gradient(to right, #c2a86a, ${ELEMENTS[entry.character.element.key as ElementKey]?.hex ?? "#c2a86a"})` }
+                    : undefined
+                }
                 className={`rounded-full border px-4 py-2 text-sm font-semibold transition-all duration-200 ${
                   isActive
-                    ? "border-gold/60 bg-gradient-to-r from-gold to-electro text-parch shadow-lg shadow-gold/30"
+                    ? "border-gold/60 text-parch shadow-lg shadow-gold/30"
                     : "border-white/10 bg-panel/60 text-parch/85 hover:border-gold/40 hover:text-parch"
                 }`}
               >
@@ -179,7 +190,8 @@ export default function BuildShowcase() {
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-3 md:flex-row md:gap-4">
           <Link
             href={`/characters/${getCharacterSlug(activeEntry.character)}?tab=build&build=true#quick-build`}
-            className="group inline-flex items-center justify-center gap-2 rounded-xl border border-gold/40 bg-gradient-to-r from-gold to-electro px-6 py-3 text-sm font-semibold text-parch shadow-lg shadow-gold/25 transition-all duration-200 hover:scale-105 hover:shadow-gold/40"
+            style={{ background: `linear-gradient(to right, #c2a86a, ${elHex})` }}
+            className="group inline-flex items-center justify-center gap-2 rounded-xl border border-gold/40 px-6 py-3 text-sm font-semibold text-parch shadow-lg shadow-gold/25 transition-all duration-200 hover:scale-105 hover:shadow-gold/40"
           >
             <FileImage className="h-4 w-4" />
             Ouvrir le build de {activeName}
