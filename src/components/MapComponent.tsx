@@ -43,12 +43,12 @@ const createCustomIcon = (
       // Cercle de fond avec couleur selon l'état du marqueur
       if (isFound) {
         // Marqueur trouvé : fond rouge/orange plus transparent
-        ctx.fillStyle = "rgba(220, 38, 38, 0.7)"; // red-600
-        ctx.strokeStyle = "rgba(239, 68, 68, 0.8)"; // red-500
+        ctx.fillStyle = "rgba(220, 38, 38, 0.7)"; // crimson-bright
+        ctx.strokeStyle = "rgba(239, 68, 68, 0.8)"; // crimson-bright
       } else {
         // Marqueur actif : fond indigo/bleu vif pour contraste
-        ctx.fillStyle = "rgba(67, 56, 202, 0.9)"; // indigo-700
-        ctx.strokeStyle = "rgba(99, 102, 241, 1)"; // indigo-500
+        ctx.fillStyle = "rgba(67, 56, 202, 0.9)"; // gold
+        ctx.strokeStyle = "rgba(99, 102, 241, 1)"; // gold
       }
       ctx.lineWidth = 2;
 
@@ -344,9 +344,9 @@ export default function MapComponent({
             opacity={data.isMarked ? 0.6 : 1}
           >
             <Popup>
-              <div className="bg-slate-950/95 backdrop-blur-md rounded-lg p-4 min-w-[320px] border border-indigo-500/40 shadow-[0_8px_24px_rgba(0,0,0,0.6)]">
+              <div className="bg-ink/95 backdrop-blur-md rounded-lg p-4 min-w-[320px] border border-gold/40 shadow-[0_8px_24px_rgba(0,0,0,0.6)]">
                 <div className="flex items-center space-x-3 mb-4">
-                  <div className="w-12 h-12 rounded-lg border border-indigo-500/40 shadow-sm bg-slate-700/60 flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-lg border border-gold/40 shadow-sm bg-white/10 flex items-center justify-center">
                     <img
                       src={data.category.icon}
                       alt={`Icône ${data.category.name} - Catégorie de marqueurs sur la carte interactive Duet Night Abyss`}
@@ -356,12 +356,12 @@ export default function MapComponent({
                       }}
                     />
                   </div>
-                  <h3 className="font-bold text-white text-lg">
+                  <h3 className="font-bold text-parch text-lg">
                     {data.category.name}
                   </h3>
                 </div>
-                <div className="flex items-center space-x-3 mb-3 bg-slate-800/50 rounded-lg p-2 border border-indigo-500/20">
-                  <div className="w-10 h-10 rounded-lg border border-indigo-500/40 shadow-sm bg-slate-700/60 flex items-center justify-center">
+                <div className="flex items-center space-x-3 mb-3 bg-panel/50 rounded-lg p-2 border border-gold/20">
+                  <div className="w-10 h-10 rounded-lg border border-gold/40 shadow-sm bg-white/10 flex items-center justify-center">
                     <img
                       src={data.marker.icon}
                       alt={`Icône ${data.marker.name} - Marqueur sur la carte interactive Duet Night Abyss`}
@@ -371,16 +371,16 @@ export default function MapComponent({
                       }}
                     />
                   </div>
-                  <p className="font-semibold text-white">{data.marker.name}</p>
+                  <p className="font-semibold text-parch">{data.marker.name}</p>
                 </div>
-                <div className="text-sm text-gray-300 mb-4 bg-slate-800/30 rounded-md p-2 border border-indigo-500/20">
+                <div className="text-sm text-gray-300 mb-4 bg-panel/30 rounded-md p-2 border border-gold/20">
                   <p>
-                    <strong className="text-indigo-400">Position:</strong> (
+                    <strong className="text-gold">Position:</strong> (
                     {data.instance.position.x}, {data.instance.position.y})
                   </p>
                 </div>
                 {data.instance.image && (
-                  <div className="mb-4 rounded-lg overflow-hidden border border-indigo-500/30 bg-slate-800/50">
+                  <div className="mb-4 rounded-lg overflow-hidden border border-gold/30 bg-panel/50">
                     <img
                       src={data.instance.image}
                       alt={`Guide visuel ${data.marker.name} - Localisation sur la carte interactive Duet Night Abyss`}
@@ -398,10 +398,10 @@ export default function MapComponent({
                 <div className="flex gap-2">
                   <button
                     onClick={() => onToggleMarker?.(data.key)}
-                    className={`px-4 py-2 text-white text-sm font-medium rounded-md transition-colors flex-1 ${
+                    className={`px-4 py-2 text-parch text-sm font-medium rounded-md transition-colors flex-1 ${
                       data.isMarked
-                        ? "bg-red-600/80 hover:bg-red-600 border border-red-500/50"
-                        : "bg-indigo-600/80 hover:bg-indigo-600 border border-indigo-500/50"
+                        ? "bg-crimson-bright/80 hover:bg-crimson-bright border border-crimson-bright/50"
+                        : "bg-gold/80 hover:bg-gold border border-gold/50"
                     }`}
                   >
                     {data.isMarked
@@ -449,7 +449,7 @@ export default function MapComponent({
             mode="withMessage"
             message="Chargement des marqueurs..."
             size={20}
-            className="text-white"
+            className="text-parch"
           />
         </div>
       )}

@@ -497,10 +497,10 @@ export default function MapPage() {
 
       {/* Sidebar flottante */}
       <aside
-        className={`absolute left-4 top-4 bottom-4 bg-slate-950/95 backdrop-blur-md flex flex-col z-[100] transition-all duration-300 ${
+        className={`absolute left-4 top-4 bottom-4 bg-ink/95 backdrop-blur-md flex flex-col z-[100] transition-all duration-300 ${
           isMenuCollapsed
             ? "w-0 overflow-hidden opacity-0 pointer-events-none border-0 shadow-none"
-            : "rounded-3xl opacity-100 border border-indigo-500/30 shadow-[0_20px_60px_rgba(0,0,0,0.8),0_0_0_1px_rgba(99,102,241,0.2),inset_0_1px_0_rgba(255,255,255,0.05)]"
+            : "rounded-3xl opacity-100 border border-gold/30 shadow-[0_20px_60px_rgba(0,0,0,0.8),0_0_0_1px_rgba(99,102,241,0.2),inset_0_1px_0_rgba(255,255,255,0.05)]"
         }`}
         style={{
           width: isMenuCollapsed ? 0 : sidebarWidth,
@@ -508,7 +508,7 @@ export default function MapPage() {
       >
         {/* Titre et sélection de région */}
         <div
-          className={`p-6 border-b border-indigo-500/20 ${
+          className={`p-6 border-b border-gold/20 ${
             isMenuCollapsed ? "p-4" : ""
           }`}
         >
@@ -523,7 +523,7 @@ export default function MapPage() {
                     className="h-8 w-auto"
                   />
                   <div>
-                    <div className="text-xl font-bold text-white flex items-center gap-2">
+                    <div className="text-xl font-bold text-parch flex items-center gap-2">
                       {SITE_CONFIG.name}
                     </div>
                     <p className="text-xs text-gray-400">{t('interactiveMap')}</p>
@@ -537,7 +537,7 @@ export default function MapPage() {
                     placeholder={t('searchPlaceholder')}
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full bg-slate-800/50 backdrop-blur-sm border border-indigo-500/30 rounded-md px-3 py-2 pl-10 text-sm text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400"
+                    className="w-full bg-panel/50 backdrop-blur-sm border border-gold/30 rounded-md px-3 py-2 pl-10 text-sm text-parch placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold"
                   />
                   <svg
                     className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400"
@@ -566,13 +566,13 @@ export default function MapPage() {
                       console.log('🔄 Changement de région vers:', newMapId);
                       setSelectedMapId(newMapId);
                     }}
-                    className="w-full bg-slate-800/50 backdrop-blur-sm border border-indigo-500/30 rounded-md px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400"
+                    className="w-full bg-panel/50 backdrop-blur-sm border border-gold/30 rounded-md px-3 py-2 text-sm text-parch focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold"
                   >
                     {mapIndex.map((map) => (
                       <option
                         key={map.id}
                         value={map.id}
-                        className="bg-slate-800"
+                        className="bg-panel"
                       >
                         {map.name}
                       </option>
@@ -588,7 +588,7 @@ export default function MapPage() {
                   <button
                     onClick={() => setHideFoundMarkers(!hideFoundMarkers)}
                     className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                      hideFoundMarkers ? "bg-indigo-600" : "bg-slate-600"
+                      hideFoundMarkers ? "bg-gold" : "bg-white/10"
                     }`}
                   >
                     <span
@@ -605,7 +605,7 @@ export default function MapPage() {
 
         {/* Section Catégories - Grid */}
         {!isMenuCollapsed && (
-          <div className="relative p-2 border-b border-indigo-500/20 flex-1 overflow-y-auto custom-scrollbar">
+          <div className="relative p-2 border-b border-gold/20 flex-1 overflow-y-auto custom-scrollbar">
             {/* Arrière-plan avec effet Ken Burns */}
             <div className="absolute inset-0 overflow-hidden">
               {ASSETS_PATHS.worldview.map((imagePath, index) => (
@@ -623,14 +623,14 @@ export default function MapPage() {
                 />
               ))}
               {/* Dégradé depuis le bas */}
-              <div className="absolute inset-0 bg-linear-to-t from-slate-950/95 via-slate-950/60 to-transparent z-10" />
+              <div className="absolute inset-0 bg-linear-to-t from-ink/95 via-ink/60 to-transparent z-10" />
               {/* Overlay pour améliorer la lisibilité */}
-              <div className="absolute inset-0 bg-slate-950/20 backdrop-blur-[0.5px] z-10" />
+              <div className="absolute inset-0 bg-ink/20 backdrop-blur-[0.5px] z-10" />
             </div>
 
             {/* Contenu des catégories avec accordéons */}
             <div className="relative z-20">
-              <h3 className="text-lg font-semibold text-white mb-4">
+              <h3 className="text-lg font-semibold text-parch mb-4">
                 {t('categories')}
               </h3>
               <div className="space-y-2">
@@ -661,15 +661,15 @@ export default function MapPage() {
                   return (
                     <div
                       key={group.id}
-                      className="bg-slate-800/30 rounded-lg border border-indigo-500/20 overflow-hidden"
+                      className="bg-panel/30 rounded-lg border border-gold/20 overflow-hidden"
                     >
                       {/* En-tête de la catégorie */}
                       <button
                         onClick={() => toggleCategoryExpansion(group.id)}
-                        className="w-full flex items-center justify-between p-3 hover:bg-slate-700/30 transition-colors"
+                        className="w-full flex items-center justify-between p-3 hover:bg-white/10 transition-colors"
                       >
                         <div className="flex items-center gap-3">
-                          <div className="w-8 h-8 rounded border border-indigo-500/30 bg-slate-700/60 flex items-center justify-center">
+                          <div className="w-8 h-8 rounded border border-gold/30 bg-white/10 flex items-center justify-center">
                             <img
                               src={group.icon}
                               alt={`Icône ${group.name} - Catégorie de marqueurs pour la carte interactive Duet Night Abyss`}
@@ -680,7 +680,7 @@ export default function MapPage() {
                             />
                           </div>
                           <div className="text-left">
-                            <span className="text-sm font-medium text-white">
+                            <span className="text-sm font-medium text-parch">
                               {group.name}
                             </span>
                             <div className="text-xs text-gray-400">
@@ -690,7 +690,7 @@ export default function MapPage() {
                           </div>
                         </div>
                         <div className="flex items-center gap-2">
-                          <span className="text-xs text-indigo-400 font-semibold">
+                          <span className="text-xs text-gold font-semibold">
                             {visibleItems.length}/{group.items.length}
                           </span>
                           {/* Boutons Tout sélectionner/Désélectionner */}
@@ -701,7 +701,7 @@ export default function MapPage() {
                                   e.stopPropagation();
                                   selectAllInGroup(group);
                                 }}
-                                className="text-xs px-2 py-1 bg-indigo-600/80 hover:bg-indigo-600 rounded text-white transition-colors"
+                                className="text-xs px-2 py-1 bg-gold/80 hover:bg-gold rounded text-parch transition-colors"
                                 title={t('selectAll')}
                               >
                                 ✓
@@ -713,7 +713,7 @@ export default function MapPage() {
                                   e.stopPropagation();
                                   deselectAllInGroup(group);
                                 }}
-                                className="text-xs px-2 py-1 bg-red-600/80 hover:bg-red-600 rounded text-white transition-colors"
+                                className="text-xs px-2 py-1 bg-crimson-bright/80 hover:bg-crimson-bright rounded text-parch transition-colors"
                                 title={t('deselectAll')}
                               >
                                 ✗
@@ -721,7 +721,7 @@ export default function MapPage() {
                             )}
                           </div>
                           <svg
-                            className={`w-4 h-4 text-indigo-400 transition-transform duration-200 ${
+                            className={`w-4 h-4 text-gold transition-transform duration-200 ${
                               isExpanded ? "rotate-180" : ""
                             }`}
                             fill="none"
@@ -779,11 +779,11 @@ export default function MapPage() {
                                     visibleCategories[
                                       item.name.toLowerCase().trim()
                                     ] !== false
-                                      ? "bg-indigo-600/20 border-indigo-400/50 shadow-sm"
-                                      : "bg-slate-700/40 hover:bg-slate-600/50 border-indigo-500/20 hover:border-indigo-400/30 opacity-50"
+                                      ? "bg-gold/20 border-gold/50 shadow-sm"
+                                      : "bg-white/10 hover:bg-white/10 border-gold/20 hover:border-gold/30 opacity-50"
                                   }`}
                                 >
-                                  <div className="w-10 h-10 rounded overflow-hidden border border-indigo-500/30 shadow-sm mb-1 flex items-center justify-center bg-slate-600/50">
+                                  <div className="w-10 h-10 rounded overflow-hidden border border-gold/30 shadow-sm mb-1 flex items-center justify-center bg-white/10">
                                     <img
                                       src={item.icon}
                                       alt={`Icône ${item.name} - Marqueur pour la carte interactive Duet Night Abyss`}
@@ -793,12 +793,12 @@ export default function MapPage() {
                                       }}
                                     />
                                   </div>
-                                  <span className="text-xs text-white text-center truncate w-full font-medium mb-0.5 leading-tight">
+                                  <span className="text-xs text-parch text-center truncate w-full font-medium mb-0.5 leading-tight">
                                     {item.name}
                                   </span>
                                   {visibleCategories[item.id] !== false &&
                                     markerCount > 0 && (
-                                      <div className="text-xs font-semibold text-indigo-400">
+                                      <div className="text-xs font-semibold text-gold">
                                         {markerCount}
                                       </div>
                                     )}
@@ -818,9 +818,9 @@ export default function MapPage() {
 
         {/* Footer du menu */}
         {!isMenuCollapsed && (
-          <div className="mt-auto p-6 border-t border-indigo-500/20 space-y-4">
+          <div className="mt-auto p-6 border-t border-gold/20 space-y-4">
             {/* Bouton Réinitialiser */}
-            <button className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-slate-800/50 hover:bg-slate-700/50 rounded-md text-sm text-gray-300 hover:text-white transition-colors">
+            <button className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-panel/50 hover:bg-white/10 rounded-md text-sm text-gray-300 hover:text-parch transition-colors">
               <svg
                 className="w-4 h-4"
                 fill="none"
@@ -837,34 +837,34 @@ export default function MapPage() {
               {t('resetSidebar')}
             </button>
 
-            <div className="flex flex-wrap gap-x-3 gap-y-1 text-xs text-gray-500 pt-2 border-t border-indigo-500/20">
+            <div className="flex flex-wrap gap-x-3 gap-y-1 text-xs text-gray-500 pt-2 border-t border-gold/20">
               <Link
                 href="/"
-                className="hover:text-indigo-400 transition-colors"
+                className="hover:text-gold transition-colors"
               >
                 {tn('home')}
               </Link>
               <Link
                 href="/changelog"
-                className="hover:text-indigo-400 transition-colors"
+                className="hover:text-gold transition-colors"
               >
                 {tn('changelog')}
               </Link>
               <Link
                 href="/items"
-                className="hover:text-indigo-400 transition-colors"
+                className="hover:text-gold transition-colors"
               >
                 {tn('items')}
               </Link>
               <Link
                 href="/about"
-                className="hover:text-indigo-400 transition-colors"
+                className="hover:text-gold transition-colors"
               >
                 {tn('about')}
               </Link>
               <Link
                 href="/support"
-                className="hover:text-indigo-400 transition-colors"
+                className="hover:text-gold transition-colors"
               >
                 {tn('support')}
               </Link>
@@ -876,7 +876,7 @@ export default function MapPage() {
       {/* Handle de redimensionnement */}
       {!isMenuCollapsed && (
         <div
-          className="absolute top-10 bottom-10 z-[105] w-1 bg-indigo-500/20 hover:bg-indigo-500/40 cursor-ew-resize transition-colors duration-200 rounded-full"
+          className="absolute top-10 bottom-10 z-[105] w-1 bg-gold/20 hover:bg-gold/40 cursor-ew-resize transition-colors duration-200 rounded-full"
           style={{ left: 16 + sidebarWidth }}
           onMouseDown={handleMouseDown}
           title={t('resizeSidebar')}
@@ -886,13 +886,13 @@ export default function MapPage() {
       {/* Bouton toggle sidebar - Toujours visible, positionné différemment selon l'état */}
       <button
         onClick={() => setIsMenuCollapsed(!isMenuCollapsed)}
-        className="absolute z-[110] bg-slate-800/90 backdrop-blur-sm hover:bg-slate-700/90 rounded-lg p-2.5 transition-all duration-300 border border-indigo-500/30 shadow-lg top-1/2 -translate-y-1/2"
+        className="absolute z-[110] bg-panel/90 backdrop-blur-sm hover:bg-white/10 rounded-lg p-2.5 transition-all duration-300 border border-gold/30 shadow-lg top-1/2 -translate-y-1/2"
         style={{
           left: isMenuCollapsed ? 16 : 20 + sidebarWidth,
         }}
       >
         <svg
-          className="w-5 h-5 text-white"
+          className="w-5 h-5 text-parch"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -912,11 +912,11 @@ export default function MapPage() {
         <div className="relative">
           <button
             onClick={() => setIsActionMenuOpen(!isActionMenuOpen)}
-            className="p-2.5 hover:bg-slate-700/50 rounded-lg transition-colors bg-slate-800/80 backdrop-blur-sm border border-indigo-500/20 shadow-lg"
+            className="p-2.5 hover:bg-white/10 rounded-lg transition-colors bg-panel/80 backdrop-blur-sm border border-gold/20 shadow-lg"
             title={t('actionMenu')}
           >
             <svg
-              className="w-5 h-5 text-white"
+              className="w-5 h-5 text-parch"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -938,7 +938,7 @@ export default function MapPage() {
                 className="fixed inset-0 z-[105]"
                 onClick={() => setIsActionMenuOpen(false)}
               />
-              <div className="absolute top-full right-0 mt-2 w-56 bg-slate-950/95 backdrop-blur-md rounded-lg border border-indigo-500/40 shadow-[0_8px_24px_rgba(0,0,0,0.6)] z-[110] overflow-hidden">
+              <div className="absolute top-full right-0 mt-2 w-56 bg-ink/95 backdrop-blur-md rounded-lg border border-gold/40 shadow-[0_8px_24px_rgba(0,0,0,0.6)] z-[110] overflow-hidden">
                 <div className="py-2">
                   {/* Exporter */}
                   <button
@@ -946,10 +946,10 @@ export default function MapPage() {
                       setShowExportModal(true);
                       setIsActionMenuOpen(false);
                     }}
-                    className="w-full px-4 py-2.5 text-left text-sm text-white hover:bg-slate-800/70 transition-colors flex items-center gap-3"
+                    className="w-full px-4 py-2.5 text-left text-sm text-parch hover:bg-panel/70 transition-colors flex items-center gap-3"
                   >
                     <svg
-                      className="w-4 h-4 text-indigo-400"
+                      className="w-4 h-4 text-gold"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -970,10 +970,10 @@ export default function MapPage() {
                       setShowImportModal(true);
                       setIsActionMenuOpen(false);
                     }}
-                    className="w-full px-4 py-2.5 text-left text-sm text-white hover:bg-slate-800/70 transition-colors flex items-center gap-3"
+                    className="w-full px-4 py-2.5 text-left text-sm text-parch hover:bg-panel/70 transition-colors flex items-center gap-3"
                   >
                     <svg
-                      className="w-4 h-4 text-indigo-400"
+                      className="w-4 h-4 text-gold"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -988,7 +988,7 @@ export default function MapPage() {
                     <span>Importer les marqueurs</span>
                   </button>
 
-                  <div className="h-px bg-indigo-500/20 my-1"></div>
+                  <div className="h-px bg-gold/20 my-1"></div>
 
                   {/* Changelog */}
                   <button
@@ -996,10 +996,10 @@ export default function MapPage() {
                       setShowChangelogModal(true);
                       setIsActionMenuOpen(false);
                     }}
-                    className="w-full px-4 py-2.5 text-left text-sm text-white hover:bg-slate-800/70 transition-colors flex items-center gap-3"
+                    className="w-full px-4 py-2.5 text-left text-sm text-parch hover:bg-panel/70 transition-colors flex items-center gap-3"
                   >
                     <svg
-                      className="w-4 h-4 text-purple-400"
+                      className="w-4 h-4 text-electro"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -1014,7 +1014,7 @@ export default function MapPage() {
                     <span>Changelog</span>
                   </button>
 
-                  <div className="h-px bg-indigo-500/20 my-1"></div>
+                  <div className="h-px bg-gold/20 my-1"></div>
 
                   {/* Informations sur la map */}
                   <button
@@ -1022,10 +1022,10 @@ export default function MapPage() {
                       setShowMapInfoModal(true);
                       setIsActionMenuOpen(false);
                     }}
-                    className="w-full px-4 py-2.5 text-left text-sm text-white hover:bg-slate-800/70 transition-colors flex items-center gap-3"
+                    className="w-full px-4 py-2.5 text-left text-sm text-parch hover:bg-panel/70 transition-colors flex items-center gap-3"
                   >
                     <svg
-                      className="w-4 h-4 text-blue-400"
+                      className="w-4 h-4 text-hydro"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -1040,7 +1040,7 @@ export default function MapPage() {
                     <span>Informations sur la map</span>
                   </button>
 
-                  <div className="h-px bg-indigo-500/20 my-1"></div>
+                  <div className="h-px bg-gold/20 my-1"></div>
 
                   {/* Réinitialiser */}
                   <button
@@ -1048,10 +1048,10 @@ export default function MapPage() {
                       setShowResetConfirm(true);
                       setIsActionMenuOpen(false);
                     }}
-                    className="w-full px-4 py-2.5 text-left text-sm text-white hover:bg-slate-800/70 transition-colors flex items-center gap-3"
+                    className="w-full px-4 py-2.5 text-left text-sm text-parch hover:bg-panel/70 transition-colors flex items-center gap-3"
                   >
                     <svg
-                      className="w-4 h-4 text-red-400"
+                      className="w-4 h-4 text-crimson-bright"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -1063,12 +1063,12 @@ export default function MapPage() {
                         d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
                       />
                     </svg>
-                    <span className="text-red-400">
+                    <span className="text-crimson-bright">
                       Réinitialiser tous les marqueurs
                     </span>
                   </button>
 
-                  <div className="h-px bg-indigo-500/20 my-1"></div>
+                  <div className="h-px bg-gold/20 my-1"></div>
 
                   {/* Reset sidebar */}
                   <button
@@ -1076,10 +1076,10 @@ export default function MapPage() {
                       resetSidebarWidth();
                       setIsActionMenuOpen(false);
                     }}
-                    className="w-full px-4 py-2.5 text-left text-sm text-white hover:bg-slate-800/70 transition-colors flex items-center gap-3"
+                    className="w-full px-4 py-2.5 text-left text-sm text-parch hover:bg-panel/70 transition-colors flex items-center gap-3"
                   >
                     <svg
-                      className="w-4 h-4 text-blue-400"
+                      className="w-4 h-4 text-hydro"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -1091,7 +1091,7 @@ export default function MapPage() {
                         d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 1v4m0 0h-4m4 0l-5-5"
                       />
                     </svg>
-                    <span className="text-blue-400">
+                    <span className="text-hydro">
                       Réinitialiser la taille du panneau
                     </span>
                   </button>
@@ -1146,17 +1146,17 @@ export default function MapPage() {
       {/* Barre de statut en bas à gauche - Positionnée à droite de la sidebar */}
       {!isMenuCollapsed && (
         <div
-          className="absolute bottom-6 bg-slate-900/80 backdrop-blur-sm border border-indigo-500/30 rounded-lg p-3 z-[90] shadow-lg"
+          className="absolute bottom-6 bg-panel/80 backdrop-blur-sm border border-gold/30 rounded-lg p-3 z-[90] shadow-lg"
           style={{ left: 20 + sidebarWidth }}
         >
           <div className="flex items-center space-x-4 text-sm">
             <div className="flex items-center space-x-2">
-              <div className="w-2 h-2 bg-indigo-400 rounded-full"></div>
+              <div className="w-2 h-2 bg-gold rounded-full"></div>
               <span className="text-gray-300">Carte active</span>
             </div>
             <div className="flex items-center space-x-2">
               <svg
-                className="w-4 h-4 text-indigo-400"
+                className="w-4 h-4 text-gold"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
