@@ -2,7 +2,7 @@
 
 import { Link } from "@/i18n/navigation";
 import { useLocale, useTranslations } from "next-intl";
-import { type ComponentType, Fragment, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { type ComponentType, type PointerEvent as ReactPointerEvent, Fragment, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { toPng } from "html-to-image";
 import {
   ArrowLeft,
@@ -21,6 +21,8 @@ import {
   Swords,
   X,
   ZoomIn,
+  ZoomOut,
+  RotateCcw,
 } from "lucide-react";
 import QuickBuildModal, { QuickBuildCard } from "@/components/characters/QuickBuildModal";
 import { useAtom } from "jotai";
@@ -1588,6 +1590,78 @@ export default function CharacterDetailClient({
 
   const activePortraitSrc = character.portraits[activePortrait]?.publicPath;
 
+  // --- Zoom/pan du render sur place (façon carte) ---
+  const stageRef = useRef<HTMLDivElement>(null);
+  const [renderZoom, setRenderZoom] = useState(1);
+  const [renderPan, setRenderPan] = useState({ x: 0, y: 0 });
+  const [dragging, setDragging] = useState(false);
+  const dragOrigin = useRef<{ px: number; py: number; x: number; y: number } | null>(null);
+
+  const clampStagePan = useCallback((x: number, y: number, scale: number) => {
+    const el = stageRef.current;
+    if (!el || scale <= 1) return { x: 0, y: 0 };
+    const mx = (el.clientWidth * (scale - 1)) / 2;
+    const my = (el.clientHeight * (scale - 1)) / 2;
+    return { x: Math.max(-mx, Math.min(mx, x)), y: Math.max(-my, Math.min(my, y)) };
+  }, []);
+
+  const zoomRenderAt = useCallback(
+    (factor: number, cx = 0, cy = 0) => {
+      setRenderZoom((s) => {
+        const ns = Math.min(4, Math.max(1, +(s * factor).toFixed(3)));
+        setRenderPan((p) => {
+          if (ns === 1) return { x: 0, y: 0 };
+          const nx = cx - (cx - p.x) * (ns / s);
+          const ny = cy - (cy - p.y) * (ns / s);
+          return clampStagePan(nx, ny, ns);
+        });
+        return ns;
+      });
+    },
+    [clampStagePan],
+  );
+
+  const resetRenderZoom = useCallback(() => {
+    setRenderZoom(1);
+    setRenderPan({ x: 0, y: 0 });
+  }, []);
+
+  // Reset au changement de portrait / de personnage
+  useEffect(() => {
+    resetRenderZoom();
+  }, [activePortrait, character.id, resetRenderZoom]);
+
+  // Molette → zoom vers le curseur (listener natif non-passif)
+  useEffect(() => {
+    const el = stageRef.current;
+    if (!el || !activePortraitSrc) return;
+    const onWheel = (e: WheelEvent) => {
+      e.preventDefault();
+      const r = el.getBoundingClientRect();
+      const cx = e.clientX - r.left - r.width / 2;
+      const cy = e.clientY - r.top - r.height / 2;
+      zoomRenderAt(e.deltaY < 0 ? 1.18 : 1 / 1.18, cx, cy);
+    };
+    el.addEventListener("wheel", onWheel, { passive: false });
+    return () => el.removeEventListener("wheel", onWheel);
+  }, [activePortraitSrc, zoomRenderAt]);
+
+  const onStagePointerDown = (e: ReactPointerEvent) => {
+    if (renderZoom <= 1 || (e.target as HTMLElement).closest("button")) return;
+    (e.currentTarget as HTMLElement).setPointerCapture?.(e.pointerId);
+    dragOrigin.current = { px: e.clientX, py: e.clientY, x: renderPan.x, y: renderPan.y };
+    setDragging(true);
+  };
+  const onStagePointerMove = (e: ReactPointerEvent) => {
+    const d = dragOrigin.current;
+    if (!d) return;
+    setRenderPan(clampStagePan(d.x + (e.clientX - d.px), d.y + (e.clientY - d.py), renderZoom));
+  };
+  const onStagePointerUp = () => {
+    dragOrigin.current = null;
+    setDragging(false);
+  };
+
   // --- Prev/Next navigation ---
   const allCharacters = useMemo(() => getAllCharacters(), []);
   const currentIndex = allCharacters.findIndex((c) => c.id === character.id);
@@ -1772,7 +1846,14 @@ export default function CharacterDetailClient({
               <div className="grid gap-4 md:gap-5 lg:grid-cols-[1fr_360px]">
           {/* Stage : render centré + bandeau nom + switch portraits */}
           <div
-            className="relative flex min-h-[460px] items-center justify-center overflow-hidden border border-white/10"
+            ref={stageRef}
+            onPointerDown={onStagePointerDown}
+            onPointerMove={onStagePointerMove}
+            onPointerUp={onStagePointerUp}
+            onPointerLeave={onStagePointerUp}
+            className={`relative flex min-h-[520px] items-center justify-center overflow-hidden border border-white/10 ${
+              renderZoom > 1 ? (dragging ? "cursor-grabbing" : "cursor-grab") : ""
+            }`}
             style={{ background: `radial-gradient(60% 60% at 50% 36%, ${elHex}22, transparent 60%), linear-gradient(180deg, rgba(20,19,17,0.4), rgba(8,7,6,0.6))` }}
           >
             {/* Bandeau nom (overlay) */}
@@ -1804,21 +1885,46 @@ export default function CharacterDetailClient({
                 <img
                   src={activePortraitSrc}
                   alt={`${displayName} - ${PORTRAIT_LABELS[activePortrait]}`}
-                  className="relative z-[1] max-h-[440px] max-w-[78%] object-contain drop-shadow-[0_18px_50px_rgba(0,0,0,0.6)]"
+                  draggable={false}
+                  className="relative z-[1] max-h-[500px] max-w-[84%] select-none object-contain drop-shadow-[0_18px_50px_rgba(0,0,0,0.6)]"
+                  style={{
+                    transform: `translate(${renderPan.x}px, ${renderPan.y}px) scale(${renderZoom})`,
+                    transition: dragging ? "none" : "transform 0.14s ease-out",
+                  }}
                 />
-                <button
-                  type="button"
-                  onClick={() =>
-                    setZoomedPortrait({
-                      src: activePortraitSrc,
-                      alt: `${displayName} - ${PORTRAIT_LABELS[activePortrait]}`,
-                    })
-                  }
-                  className="absolute bottom-3 right-3 z-10 rounded-full border border-white/10 bg-panel/90 p-2 text-parch transition-all hover:border-gold/60 hover:bg-gold/80 hover:text-ink"
-                  aria-label="Agrandir le portrait"
-                >
-                  <ZoomIn className="h-4 w-4" />
-                </button>
+                {/* Contrôles de zoom — façon carte */}
+                <div className="absolute bottom-3 right-3 z-10 flex flex-col gap-1">
+                  <button
+                    type="button"
+                    onClick={() => zoomRenderAt(1.4)}
+                    className="rounded-sm border border-white/10 bg-panel/90 p-2 text-parch transition-all hover:border-gold/60 hover:bg-gold/80 hover:text-ink disabled:cursor-not-allowed disabled:opacity-40"
+                    disabled={renderZoom >= 4}
+                    aria-label="Zoomer"
+                    title="Zoomer (molette)"
+                  >
+                    <ZoomIn className="h-4 w-4" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => zoomRenderAt(1 / 1.4)}
+                    className="rounded-sm border border-white/10 bg-panel/90 p-2 text-parch transition-all hover:border-gold/60 hover:bg-gold/80 hover:text-ink disabled:cursor-not-allowed disabled:opacity-40"
+                    disabled={renderZoom <= 1}
+                    aria-label="Dézoomer"
+                  >
+                    <ZoomOut className="h-4 w-4" />
+                  </button>
+                  {renderZoom > 1 ? (
+                    <button
+                      type="button"
+                      onClick={resetRenderZoom}
+                      className="rounded-sm border border-white/10 bg-panel/90 p-2 text-parch transition-all hover:border-gold/60 hover:bg-gold/80 hover:text-ink"
+                      aria-label="Réinitialiser le zoom"
+                      title="Réinitialiser"
+                    >
+                      <RotateCcw className="h-4 w-4" />
+                    </button>
+                  ) : null}
+                </div>
               </>
             ) : (
               <span className="text-6xl font-bold text-muted-2">{character.internalName[0]}</span>
