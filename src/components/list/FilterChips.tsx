@@ -40,7 +40,7 @@ export default function FilterChips({
   const chips: FilterChipOption[] = [{ value: allValue, label: allLabel }, ...options];
 
   return (
-    <div className={cn("rounded-lg border border-white/10 bg-ink/60 p-2", className)}>
+    <div className={cn("rounded-sm border border-white/10 bg-ink/60 p-2", className)}>
       {label ? (
         <div className="mb-1.5 flex items-center gap-2 font-caps text-[0.58rem] uppercase tracking-[0.2em] text-muted">
           {icon}

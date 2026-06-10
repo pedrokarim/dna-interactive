@@ -21,7 +21,7 @@ export function DnaChip({ children, selected, color, onClick, className }: DnaCh
       aria-pressed={selected}
       style={isEl ? { color } : undefined}
       className={cn(
-        "inline-flex items-center gap-1.5 rounded-full border px-3.5 py-1.5 font-sans text-[0.78rem] transition-colors",
+        "inline-flex items-center gap-1.5 rounded-sm border px-3.5 py-1.5 font-sans text-[0.78rem] transition-colors",
         selected
           ? isEl
             ? "border-current bg-white/6 text-white shadow-[0_0_10px_-2px_currentColor]"

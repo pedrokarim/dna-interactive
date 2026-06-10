@@ -394,7 +394,7 @@ export default function CharactersGridClient({
   return (
     <div className="space-y-4 md:space-y-8">
       {/* Header + filters */}
-      <section className="rounded-2xl border border-gold/20 bg-panel/55 p-4 md:p-6 shadow-[0_20px_45px_rgba(15,23,42,0.45)] backdrop-blur-sm">
+      <section className="border border-gold/20 bg-panel/55 p-4 md:p-6 shadow-[0_20px_45px_rgba(15,23,42,0.45)] backdrop-blur-sm">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div>
             <p className="font-caps text-[0.7rem] uppercase tracking-[0.3em] text-gold">
@@ -421,7 +421,7 @@ export default function CharactersGridClient({
                 group: tc('viewMode'),
               }}
             />
-            <span className="inline-flex items-center gap-2 rounded-lg border border-crimson/40 bg-crimson/10 px-4 py-2 text-sm text-crimson-bright">
+            <span className="inline-flex items-center gap-2 rounded-sm border border-crimson/40 bg-crimson/10 px-4 py-2 text-sm text-crimson-bright">
               <Heart className="h-4 w-4" />
               {tc('favorites')} ({favoriteCount})
             </span>
@@ -430,7 +430,7 @@ export default function CharactersGridClient({
 
         {/* Search + languages */}
         <div className="mt-4 md:mt-6 grid gap-3 md:gap-4 lg:grid-cols-2">
-          <label className="flex items-center gap-3 rounded-xl border border-white/10 bg-ink/60 px-3 py-2">
+          <label className="flex items-center gap-3 rounded-sm border border-white/10 bg-ink/60 px-3 py-2">
             <Search className="h-4 w-4 text-gold/80" />
             <input
               value={search}
@@ -442,7 +442,7 @@ export default function CharactersGridClient({
             />
           </label>
 
-          <div className="rounded-xl border border-white/10 bg-ink/60 p-3">
+          <div className="rounded-sm border border-white/10 bg-ink/60 p-3">
             <div className="mb-2 flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-muted">
               <Languages className="h-4 w-4 text-gold/80" />
               {tc('displayedLanguages')}
@@ -451,7 +451,7 @@ export default function CharactersGridClient({
               {selectedLanguages.map((code) => (
                 <span
                   key={code}
-                  className="inline-flex items-center gap-2 rounded-full border border-gold/35 bg-gold/10 px-3 py-1 text-xs text-gold"
+                  className="inline-flex items-center gap-2 rounded-sm border border-gold/35 bg-gold/10 px-3 py-1 text-xs text-gold"
                 >
                   {getLanguageLabel(code)}
                   {selectedLanguages.length > 1 && (
@@ -469,7 +469,7 @@ export default function CharactersGridClient({
               <select
                 value=""
                 onChange={(event) => addLanguage(event.target.value)}
-                className="rounded-lg border border-white/10 bg-panel px-2 py-1 text-xs text-parch outline-none"
+                className="rounded-sm border border-white/10 bg-panel px-2 py-1 text-xs text-parch outline-none"
               >
                 <option value="">{tc('addLanguage')}</option>
                 {unselectedLanguages.map((code) => (
@@ -515,7 +515,7 @@ export default function CharactersGridClient({
             allLabel={tc('allFeminine')}
           />
 
-          <div className="rounded-lg border border-white/10 bg-ink/60 p-2 sm:max-w-xs">
+          <div className="rounded-sm border border-white/10 bg-ink/60 p-2 sm:max-w-xs">
             <div className="mb-1 text-xs text-muted">{tc('sort')}</div>
             <select
               value={sortMode}
@@ -525,7 +525,7 @@ export default function CharactersGridClient({
                   page: 1,
                 })
               }
-              className="w-full rounded-md border border-white/10 bg-panel px-2 py-1.5 text-sm text-parch"
+              className="w-full rounded-sm border border-white/10 bg-panel px-2 py-1.5 text-sm text-parch"
             >
               <option value="default">{t('sortDefault')}</option>
               <option value="name">{t('sortName')}</option>
@@ -536,14 +536,14 @@ export default function CharactersGridClient({
         </div>
 
         {/* Result count + reset */}
-        <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-white/10 bg-ink/60 px-3 py-2 text-sm text-parch/85">
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-sm border border-white/10 bg-ink/60 px-3 py-2 text-sm text-parch/85">
           <p>
             {tc('displayRange', { start: filteredCharacters.length === 0 ? 0 : pageStart + 1, end: Math.min(pageEnd, filteredCharacters.length), total: filteredCharacters.length })}
           </p>
           <button
             type="button"
             onClick={resetFilters}
-            className="rounded-md border border-white/10 px-3 py-1 text-xs text-parch/85 transition-colors hover:border-gold/40 hover:text-parch"
+            className="rounded-sm border border-white/10 px-3 py-1 text-xs text-parch/85 transition-colors hover:border-gold/40 hover:text-parch"
           >
             {tc('resetFilters')}
           </button>
@@ -552,7 +552,7 @@ export default function CharactersGridClient({
 
       {/* Grid */}
       {filteredCharacters.length === 0 ? (
-        <div className="rounded-xl border border-white/10 bg-panel/45 p-6 md:p-10 text-center">
+        <div className="rounded-sm border border-white/10 bg-panel/45 p-6 md:p-10 text-center">
           <p className="text-base md:text-lg text-parch">
             {t('noResults')}
           </p>
@@ -580,7 +580,7 @@ export default function CharactersGridClient({
               <Link
                 key={character.id}
                 href={`/characters/${getCharacterSlug(character)}`}
-                className={`group relative overflow-hidden rounded-2xl border bg-panel/55 transition-all duration-200 hover:-translate-y-0.5 hover:bg-panel/75 ${
+                className={`group relative overflow-hidden border bg-panel/55 transition-all duration-200 hover:-translate-y-0.5 hover:bg-panel/75 ${
                   rarityStyle
                     ? `${rarityStyle.border} hover:border-opacity-70`
                     : "border-white/10 hover:border-gold/40"
@@ -691,7 +691,7 @@ export default function CharactersGridClient({
                         return (
                           <div
                             key={`${character.id}-${langCode}`}
-                            className="rounded-lg border border-white/10 bg-ink/55 px-2.5 py-1.5"
+                            className="rounded-sm border border-white/10 bg-ink/55 px-2.5 py-1.5"
                           >
                             <p className="text-[10px] uppercase tracking-[0.18em] text-muted">
                               {getLanguageLabel(langCode)}
@@ -712,7 +712,7 @@ export default function CharactersGridClient({
 
                   <div className="mt-2 flex flex-wrap gap-1.5 text-[11px]">
                     {lead.campName && (
-                      <span className="rounded-full border border-white/10 px-2 py-0.5 text-parch/85">
+                      <span className="rounded-sm border border-white/10 px-2 py-0.5 text-parch/85">
                         {lead.campName}
                       </span>
                     )}
@@ -743,13 +743,13 @@ export default function CharactersGridClient({
               <li key={character.id}>
                 <Link
                   href={`/characters/${getCharacterSlug(character)}`}
-                  className={`group flex items-center gap-4 rounded-2xl border bg-panel/55 p-3 transition-all duration-200 hover:bg-panel/75 ${
+                  className={`group flex items-center gap-4 border bg-panel/55 p-3 transition-all duration-200 hover:bg-panel/75 ${
                     rarityStyle
                       ? `${rarityStyle.border} hover:border-opacity-70`
                       : "border-white/10 hover:border-gold/40"
                   }`}
                 >
-                  <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl border border-white/10 bg-ink/80">
+                  <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-sm border border-white/10 bg-ink/80">
                     {thumbSrc ? (
                       <img
                         src={thumbSrc}
@@ -800,7 +800,7 @@ export default function CharactersGridClient({
                         return (
                           <span
                             key={el.key}
-                            className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 ${style.border} ${style.bg} ${style.text}`}
+                            className={`inline-flex items-center gap-1 rounded-sm border px-2 py-0.5 ${style.border} ${style.bg} ${style.text}`}
                           >
                             {icon ? (
                               <img
@@ -817,13 +817,13 @@ export default function CharactersGridClient({
                       {character.weaponTags.map((tag) => (
                         <span
                           key={tag}
-                          className="rounded-full border border-white/10 px-2 py-0.5 text-parch/85"
+                          className="rounded-sm border border-white/10 px-2 py-0.5 text-parch/85"
                         >
                           {tag}
                         </span>
                       ))}
                       {lead.campName ? (
-                        <span className="rounded-full border border-white/10 px-2 py-0.5 text-parch/85">
+                        <span className="rounded-sm border border-white/10 px-2 py-0.5 text-parch/85">
                           {lead.campName}
                         </span>
                       ) : null}
@@ -945,7 +945,7 @@ export default function CharactersGridClient({
 
       {/* Pagination */}
       {filteredCharacters.length > 0 && (
-        <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-white/10 bg-panel/50 p-3">
+        <div className="flex flex-wrap items-center justify-between gap-3 rounded-sm border border-white/10 bg-panel/50 p-3">
           <p className="text-sm text-parch/85">
             {tc('displayRange', { start: filteredCharacters.length === 0 ? 0 : pageStart + 1, end: Math.min(pageEnd, filteredCharacters.length), total: filteredCharacters.length })}
           </p>
@@ -956,7 +956,7 @@ export default function CharactersGridClient({
                 type="button"
                 onClick={() => updateQueryFilters({ page: 1 })}
                 disabled={safeCurrentPage === 1}
-                className="rounded-md border border-white/10 px-2 py-1 text-xs text-parch transition-colors hover:border-gold/40 hover:text-parch disabled:cursor-not-allowed disabled:opacity-50"
+                className="rounded-sm border border-white/10 px-2 py-1 text-xs text-parch transition-colors hover:border-gold/40 hover:text-parch disabled:cursor-not-allowed disabled:opacity-50"
                 aria-label={tc('paginationFirst')}
               >
                 {"<<"}
@@ -967,7 +967,7 @@ export default function CharactersGridClient({
                   updateQueryFilters({ page: Math.max(1, safeCurrentPage - 1) })
                 }
                 disabled={safeCurrentPage === 1}
-                className="rounded-md border border-white/10 px-2 py-1 text-xs text-parch transition-colors hover:border-gold/40 hover:text-parch disabled:cursor-not-allowed disabled:opacity-50"
+                className="rounded-sm border border-white/10 px-2 py-1 text-xs text-parch transition-colors hover:border-gold/40 hover:text-parch disabled:cursor-not-allowed disabled:opacity-50"
                 aria-label={tc('paginationPrevious')}
               >
                 {"<"}
@@ -987,7 +987,7 @@ export default function CharactersGridClient({
                     key={`page-${page}`}
                     type="button"
                     onClick={() => updateQueryFilters({ page })}
-                    className={`rounded-md border px-2 py-1 text-xs transition-colors ${
+                    className={`rounded-sm border px-2 py-1 text-xs transition-colors ${
                       page === safeCurrentPage
                         ? "border-gold/70 bg-gold/25 text-gold"
                         : "border-white/10 text-parch hover:border-gold/40 hover:text-parch"
@@ -1008,7 +1008,7 @@ export default function CharactersGridClient({
                   })
                 }
                 disabled={safeCurrentPage === totalPages}
-                className="rounded-md border border-white/10 px-2 py-1 text-xs text-parch transition-colors hover:border-gold/40 hover:text-parch disabled:cursor-not-allowed disabled:opacity-50"
+                className="rounded-sm border border-white/10 px-2 py-1 text-xs text-parch transition-colors hover:border-gold/40 hover:text-parch disabled:cursor-not-allowed disabled:opacity-50"
                 aria-label={tc('paginationNext')}
               >
                 {">"}
@@ -1017,7 +1017,7 @@ export default function CharactersGridClient({
                 type="button"
                 onClick={() => updateQueryFilters({ page: totalPages })}
                 disabled={safeCurrentPage === totalPages}
-                className="rounded-md border border-white/10 px-2 py-1 text-xs text-parch transition-colors hover:border-gold/40 hover:text-parch disabled:cursor-not-allowed disabled:opacity-50"
+                className="rounded-sm border border-white/10 px-2 py-1 text-xs text-parch transition-colors hover:border-gold/40 hover:text-parch disabled:cursor-not-allowed disabled:opacity-50"
                 aria-label={tc('paginationLast')}
               >
                 {">>"}
@@ -1036,7 +1036,7 @@ export default function CharactersGridClient({
                     page: 1,
                   })
                 }
-                className="rounded-md border border-white/10 bg-panel px-2 py-1 text-xs text-parch"
+                className="rounded-sm border border-white/10 bg-panel px-2 py-1 text-xs text-parch"
               >
                 <option value={12}>12</option>
                 <option value={24}>24</option>
@@ -1057,7 +1057,7 @@ export default function CharactersGridClient({
           aria-label={`Apercu du portrait de ${previewPortrait.alt}`}
         >
           <div
-            className="w-full max-w-md rounded-2xl border border-gold/30 bg-panel/95 p-4 shadow-[0_25px_60px_rgba(2,6,23,0.65)]"
+            className="w-full max-w-md border border-gold/30 bg-panel/95 p-4 shadow-[0_25px_60px_rgba(2,6,23,0.65)]"
             onClick={(event) => event.stopPropagation()}
           >
             <div className="flex items-center justify-between gap-3">
@@ -1073,7 +1073,7 @@ export default function CharactersGridClient({
                 <X className="h-4 w-4" />
               </button>
             </div>
-            <div className="mt-3 flex items-center justify-center overflow-hidden rounded-xl border border-gold/20 bg-ink/80">
+            <div className="mt-3 flex items-center justify-center overflow-hidden rounded-sm border border-gold/20 bg-ink/80">
               <img
                 src={previewPortrait.src}
                 alt={previewPortrait.alt}
