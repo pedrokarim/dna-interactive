@@ -353,7 +353,7 @@ function DemonWedgeSlotCard({
   );
 
   const tooltip = slot.item ? (
-    <div className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 hidden w-64 -translate-x-1/2 border border-white/10 bg-ink/95 p-3 text-sm shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
+    <div className="pointer-events-none absolute left-1/2 top-full z-50 mt-2 hidden w-64 -translate-x-1/2 border border-white/10 bg-ink/95 p-3 text-sm shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
       <p className="font-medium text-parch">{name}</p>
       <div className="mt-1.5 flex flex-wrap gap-1 text-[11px]">
         <span className="rounded-sm border border-white/10 px-2 py-0.5 text-parch">
@@ -377,7 +377,7 @@ function DemonWedgeSlotCard({
   ) : null;
 
   return (
-    <div className="group relative flex flex-col items-center gap-1.5">
+    <div className="group relative flex flex-col items-center gap-1.5 hover:z-50">
       {href ? (
         <Link href={href} className="block transition-transform duration-150 hover:scale-105">
           {card}
@@ -416,7 +416,7 @@ function DemonWedgeCenterSlot({
   );
 
   return (
-    <div className="group relative flex flex-col items-center gap-2 px-2">
+    <div className="group relative flex flex-col items-center gap-2 px-2 hover:z-50">
       {href ? (
         <Link href={href} className="block transition-transform duration-150 hover:scale-105">
           {circle}
@@ -425,10 +425,10 @@ function DemonWedgeCenterSlot({
         circle
       )}
       <p className="max-w-[8rem] text-center text-xs font-medium text-parch/85">
-        <BuildLocalizedText texts={affinity} lang={lang} />
+        {name ?? <BuildLocalizedText texts={affinity} lang={lang} />}
       </p>
       {centerItem && (
-        <div className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 hidden w-64 -translate-x-1/2 border border-white/10 bg-ink/95 p-3 text-sm shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
+        <div className="pointer-events-none absolute left-1/2 top-full z-50 mt-2 hidden w-64 -translate-x-1/2 border border-white/10 bg-ink/95 p-3 text-sm shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
           <p className="font-medium text-parch">{name}</p>
           <div className="mt-1.5 flex flex-wrap gap-1 text-[11px]">
             <span className="rounded-sm border border-white/10 px-2 py-0.5 text-parch">
@@ -1076,7 +1076,7 @@ function BuildTabContent({
 
       {/* --- Demon Wedges (game layout) --- */}
       {hasDemonWedges && (
-        <section className="border border-line/25 bg-panel/85 backdrop-blur-sm p-3 md:p-5">
+        <section className="relative border border-line/25 bg-panel/85 backdrop-blur-sm p-3 md:p-5 [&:has(.group:hover)]:z-50">
           <div className="flex items-center justify-between">
             <h2 className="flex items-center gap-2 text-base md:text-lg font-semibold text-parch">
               <Shield className="h-4 w-4 text-gold/80" />
@@ -1123,7 +1123,7 @@ function BuildTabContent({
 
       {/* --- Consonance Weapon --- */}
       {hasConsonance && build.consonanceWeapon && (
-        <section className="border border-line/25 bg-panel/85 backdrop-blur-sm p-3 md:p-5">
+        <section className="relative border border-line/25 bg-panel/85 backdrop-blur-sm p-3 md:p-5 [&:has(.group:hover)]:z-50">
           <h2 className="flex items-center gap-2 text-base md:text-lg font-semibold text-parch">
             <Swords className="h-4 w-4 text-gold/80" />
             {t('consonanceTitle')}
@@ -1143,12 +1143,12 @@ function BuildTabContent({
                 </div>
               );
               return (
-                <div key={idx} className="group relative flex flex-col items-center gap-1.5">
+                <div key={idx} className="group relative flex flex-col items-center gap-1.5 hover:z-50">
                   {s.href ? (
                     <Link href={s.href} className="block transition-transform duration-150 hover:scale-105">{card}</Link>
                   ) : card}
                   <p className="max-w-[8rem] truncate text-center text-xs text-parch/85">{s.name}</p>
-                  <div className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 hidden w-64 -translate-x-1/2 border border-white/10 bg-ink/95 p-3 text-sm shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
+                  <div className="pointer-events-none absolute left-1/2 top-full z-50 mt-2 hidden w-64 -translate-x-1/2 border border-white/10 bg-ink/95 p-3 text-sm shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
                     <p className="font-medium text-parch">{s.name}</p>
                     <div className="mt-1.5 flex flex-wrap gap-1 text-[11px]">
                       <span className="rounded-sm border border-white/10 px-2 py-0.5 text-parch">#{s.modId}</span>
@@ -1171,7 +1171,7 @@ function BuildTabContent({
                   <div className="flex gap-3">
                     {cw.slots.slice(0, 2).map((s, i) => renderSlot(s, i, CLIP_LEFT))}
                   </div>
-                  <div className="group relative">
+                  <div className="group relative hover:z-50">
                     <button
                       type="button"
                       onClick={onNavigateToStats}
@@ -1188,7 +1188,7 @@ function BuildTabContent({
                         <BuildLocalizedText texts={cw.name} lang={selectedLanguage} />
                       </p>
                     </button>
-                    <div className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 hidden w-56 -translate-x-1/2 border border-white/10 bg-ink/95 p-3 text-sm shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
+                    <div className="pointer-events-none absolute left-1/2 top-full z-50 mt-2 hidden w-56 -translate-x-1/2 border border-white/10 bg-ink/95 p-3 text-sm shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
                       <p className="font-medium text-electro">
                         <BuildLocalizedText texts={cw.name} lang={selectedLanguage} />
                       </p>
