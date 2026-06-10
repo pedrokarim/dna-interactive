@@ -201,7 +201,7 @@ export default async function Home() {
                 <div className="mt-7 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
                   <Link
                     href="/characters"
-                    className="dna-shine inline-flex items-center gap-2 rounded-sm border border-electro bg-gradient-to-b from-electro/25 to-ink/70 px-5 py-3 text-sm font-medium text-electro transition-all duration-200 hover:-translate-y-px hover:border-electro hover:text-white"
+                    className="dna-shine inline-flex items-center gap-2 rounded-sm border border-gold bg-gradient-to-b from-gold-deep/40 to-ink/70 px-5 py-3 text-sm font-medium text-gold-bright transition-all duration-200 hover:-translate-y-px hover:border-gold-bright hover:text-[#fff6e6]"
                   >
                     <Users className="h-4 w-4" />
                     {tHome("charactersSpotlightCta")}

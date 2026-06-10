@@ -165,7 +165,7 @@ export default function UpdateBanner() {
                       }}
                       className="shrink-0"
                     >
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs font-bold text-parch border border-white/30">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/20 backdrop-blur-sm rounded-sm text-xs font-bold text-parch border border-white/30">
                         <Sparkles className="w-3 h-3" />
                         {announcement.badgeKey ? t(announcement.badgeKey) : announcement.badge}
                       </span>
@@ -195,14 +195,14 @@ export default function UpdateBanner() {
                   <div className="flex items-center gap-2">
                     <Link
                       href={announcement.href}
-                      className="hidden sm:inline-flex items-center gap-1.5 px-4 py-1.5 bg-white/20 hover:bg-white/30 rounded-lg text-sm font-semibold text-parch transition-all duration-200 border border-white/20 hover:border-white/40"
+                      className="hidden sm:inline-flex items-center gap-1.5 px-4 py-1.5 bg-white/20 hover:bg-white/30 rounded-sm text-sm font-semibold text-parch transition-all duration-200 border border-white/20 hover:border-white/40"
                     >
                       <CtaIcon className="w-4 h-4" />
                       {t(announcement.ctaLabelKey)}
                     </Link>
                     <button
                       onClick={() => dismissAnnouncement(announcement.id)}
-                      className="p-1.5 hover:bg-white/20 rounded-lg transition-colors"
+                      className="p-1.5 hover:bg-white/20 rounded-sm transition-colors"
                       aria-label={tCommon("close")}
                     >
                       <X className="w-4 h-4 text-parch/80 hover:text-parch" />

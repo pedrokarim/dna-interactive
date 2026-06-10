@@ -10,7 +10,6 @@ import {
   resolveCharacterDisplayName,
 } from "@/lib/characters/catalog";
 import { getCharacterBuilds } from "@/lib/characters/builds";
-import { ELEMENTS, type ElementKey } from "@/components/dna/elements";
 
 // ---------------------------------------------------------------------------
 // BuildShowcase — Twitch-style peek carousel. Active card centered at full
@@ -35,8 +34,6 @@ export default function BuildShowcase() {
 
   const activeEntry = featured[active];
   const activeName = resolveCharacterDisplayName(activeEntry.character, "FR");
-  // Teinte dérivée de l'élément du personnage actif (le gradient suit l'élément).
-  const elHex = ELEMENTS[activeEntry.character.element.key as ElementKey]?.hex ?? "#c2a86a";
 
   const go = (i: number) => {
     if (i < 0 || i >= featured.length) return;
@@ -46,18 +43,15 @@ export default function BuildShowcase() {
   return (
     <section
       id="build-showcase"
-      className="relative py-16 transition-[background] duration-500 md:py-20"
-      style={{
-        background: `linear-gradient(to bottom right, rgba(10,10,11,0.5) 0%, rgba(20,19,17,0.65) 45%, ${elHex}40 100%)`,
-      }}
+      className="relative border-y border-line/15 bg-panel/30 py-16 md:py-20"
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="mx-auto max-w-6xl text-center">
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-gold/40 bg-gold/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-gold">
+          <span className="inline-flex items-center gap-1.5 border border-gold/40 bg-gold/15 px-3 py-1 font-caps text-[0.58rem] uppercase tracking-[0.22em] text-gold">
             <FileImage className="h-3.5 w-3.5" />
             Nouveau
           </span>
-          <h2 className="mt-4 text-3xl font-bold text-parch md:text-4xl">
+          <h2 className="mt-4 font-display text-4xl text-parch md:text-5xl">
             Partagez vos builds avec style
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-parch/85 md:text-base">
@@ -78,15 +72,10 @@ export default function BuildShowcase() {
                 type="button"
                 onClick={() => go(i)}
                 aria-pressed={isActive}
-                style={
+                className={`rounded-sm border px-4 py-2 font-caps text-[0.7rem] uppercase tracking-[0.14em] transition-all duration-200 ${
                   isActive
-                    ? { background: `linear-gradient(to right, #c2a86a, ${ELEMENTS[entry.character.element.key as ElementKey]?.hex ?? "#c2a86a"})` }
-                    : undefined
-                }
-                className={`rounded-full border px-4 py-2 text-sm font-semibold transition-all duration-200 ${
-                  isActive
-                    ? "border-gold/60 text-parch shadow-lg shadow-gold/30"
-                    : "border-white/10 bg-panel/60 text-parch/85 hover:border-gold/40 hover:text-parch"
+                    ? "border-gold bg-gold/15 text-gold-bright"
+                    : "border-white/12 bg-panel/60 text-parch/80 hover:border-gold/40 hover:text-parch"
                 }`}
               >
                 {name}
@@ -190,8 +179,7 @@ export default function BuildShowcase() {
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-3 md:flex-row md:gap-4">
           <Link
             href={`/characters/${getCharacterSlug(activeEntry.character)}?tab=build&build=true#quick-build`}
-            style={{ background: `linear-gradient(to right, #c2a86a, ${elHex})` }}
-            className="group inline-flex items-center justify-center gap-2 rounded-xl border border-gold/40 px-6 py-3 text-sm font-semibold text-parch shadow-lg shadow-gold/25 transition-all duration-200 hover:scale-105 hover:shadow-gold/40"
+            className="dna-shine group inline-flex items-center justify-center gap-2 rounded-sm border border-gold bg-gradient-to-b from-gold-deep/40 to-ink/70 px-6 py-3 text-sm font-medium text-gold-bright transition-all duration-200 hover:-translate-y-px hover:border-gold-bright hover:text-[#fff6e6]"
           >
             <FileImage className="h-4 w-4" />
             Ouvrir le build de {activeName}
@@ -199,7 +187,7 @@ export default function BuildShowcase() {
           </Link>
           <Link
             href="/characters"
-            className="inline-flex items-center justify-center gap-2 rounded-xl border border-electro/30 bg-panel/70 px-6 py-3 text-sm font-semibold text-parch transition-all duration-200 hover:border-electro/60 hover:bg-panel/80"
+            className="inline-flex items-center justify-center gap-2 rounded-sm border border-white/20 bg-gradient-to-b from-panel/70 to-ink/70 px-6 py-3 text-sm font-medium text-parch transition-all duration-200 hover:-translate-y-px hover:border-white/45 hover:text-white"
           >
             <Users className="h-4 w-4" />
             Voir tous les personnages
