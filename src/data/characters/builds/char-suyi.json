@@ -1,7 +1,10 @@
 [
   {
     "characterId": "char-suyi",
-    "buildName": { "FR": "DPS Lumino - Mode Etoile Filante", "EN": "Lumino Starfall DPS" },
+    "buildName": {
+      "FR": "DPS Lumino - Mode Etoile Filante",
+      "EN": "Lumino Starfall DPS"
+    },
     "weapons": {
       "melee": [
         {
@@ -42,8 +45,8 @@
           "itemId": "weapons-20603",
           "rank": "alternative",
           "note": {
-            "FR": "Embla Inflorescence - Portee de competence +60%. Premiere alternative en attendant l'import de Fledgling's Gleam (BIS Game8, Max Ammo +180%) non encore en base.",
-            "EN": "Embla Inflorescence - Skill Range +60%. First alternative while Fledgling's Gleam (Game8 BIS, Max Ammo +180%) is not yet in the database."
+            "FR": "Embla Inflorescence - Portee de competence +60%. Premiere alternative en attendant l'import de Fledgling's Gleam (BIS, Max Ammo +180%) non encore en base.",
+            "EN": "Embla Inflorescence - Skill Range +60%. First alternative while Fledgling's Gleam (BIS, Max Ammo +180%) is not yet in the database."
           }
         },
         {
@@ -58,20 +61,55 @@
     },
     "demonWedges": {
       "slots": [
-        { "position": 1, "itemId": "mods-56162", "track": 2 },
-        { "position": 2, "itemId": "mods-51461", "track": 1 },
-        { "position": 3, "itemId": "mods-51326", "track": 3 },
-        { "position": 4, "itemId": "mods-150401", "track": 4 },
-        { "position": 5, "itemId": "mods-51761", "track": 1 },
-        { "position": 6, "itemId": "mods-51761", "track": null },
-        { "position": 7, "itemId": "mods-51761", "track": null },
-        { "position": 8, "itemId": "mods-51761", "track": null }
+        {
+          "position": 1,
+          "itemId": "mods-56162",
+          "track": 2
+        },
+        {
+          "position": 2,
+          "itemId": "mods-51461",
+          "track": 1
+        },
+        {
+          "position": 3,
+          "itemId": "mods-51326",
+          "track": 3
+        },
+        {
+          "position": 4,
+          "itemId": "mods-150401",
+          "track": 4
+        },
+        {
+          "position": 5,
+          "itemId": "mods-51761",
+          "track": 1
+        },
+        {
+          "position": 6,
+          "itemId": "mods-51761",
+          "track": null
+        },
+        {
+          "position": 7,
+          "itemId": "mods-51761",
+          "track": null
+        },
+        {
+          "position": 8,
+          "itemId": "mods-51761",
+          "track": null
+        }
       ],
       "centerItemId": "mods-51765",
-      "affinity": { "FR": "Volonte du Serpent a Plumes - Morale", "EN": "Feathered Serpent's Morale" },
+      "affinity": {
+        "FR": "Volonte du Serpent a Plumes - Morale",
+        "EN": "Feathered Serpent's Morale"
+      },
       "note": {
-        "FR": "Focus Intensite de competence + Morale. Tolerance cible 149/100. 5 modules de Track-Shift requis.\n\nAjustements d'affinite (Game8) : Slot 1 Crescent, Slot 2 Triangle, Slot 3 Diamond, Slot 4 Ellipse, Slot 5 Triangle, Slots 6-8 aucun.\n\nLoadout : Wings·Inspo·Morale (Lumino) en slot 1, Prime·Morale en slot 2, Skylume·Wildfire en slot 3, Fengshi Type III: Tracking Mode (mod exclusif Su Yi, projectiles a tete chercheuse) en slot 4, 4x Scorch (Lumino) sur slots 5-8.\n\nAffinity centrale : Feathered Serpent's Morale (mods-51765, r5 Lumino).",
-        "EN": "Focus Skill Intensity + Morale. Target Tolerance 149/100. 5 Track-Shift modules required.\n\nTrack adjustments (Game8): Slot 1 Crescent, Slot 2 Triangle, Slot 3 Diamond, Slot 4 Ellipse, Slot 5 Triangle, Slots 6-8 none.\n\nLoadout: Wings·Inspo·Morale (Lumino) slot 1, Prime·Morale slot 2, Skylume·Wildfire slot 3, Fengshi Type III: Tracking Mode (Su Yi exclusive mod, homing projectiles) slot 4, 4x Scorch (Lumino) slots 5-8.\n\nCentral affinity: Feathered Serpent's Morale (mods-51765, r5 Lumino)."
+        "FR": "Focus Intensite de competence + Morale. Tolerance cible 149/100. 5 modules de Track-Shift requis.\n\nAjustements d'affinite : Slot 1 Crescent, Slot 2 Triangle, Slot 3 Diamond, Slot 4 Ellipse, Slot 5 Triangle, Slots 6-8 aucun.\n\nLoadout : Wings·Inspo·Morale (Lumino) en slot 1, Prime·Morale en slot 2, Skylume·Wildfire en slot 3, Fengshi Type III: Tracking Mode (mod exclusif Su Yi, projectiles a tete chercheuse) en slot 4, 4x Scorch (Lumino) sur slots 5-8.\n\nAffinity centrale : Feathered Serpent's Morale (mods-51765, r5 Lumino).",
+        "EN": "Focus Skill Intensity + Morale. Target Tolerance 149/100. 5 Track-Shift modules required.\n\nTrack adjustments: Slot 1 Crescent, Slot 2 Triangle, Slot 3 Diamond, Slot 4 Ellipse, Slot 5 Triangle, Slots 6-8 none.\n\nLoadout: Wings·Inspo·Morale (Lumino) slot 1, Prime·Morale slot 2, Skylume·Wildfire slot 3, Fengshi Type III: Tracking Mode (Su Yi exclusive mod, homing projectiles) slot 4, 4x Scorch (Lumino) slots 5-8.\n\nCentral affinity: Feathered Serpent's Morale (mods-51765, r5 Lumino)."
       }
     },
     "statsPriority": [
@@ -98,13 +136,25 @@
       }
     ],
     "genimon": [
-      { "itemId": "genimon-4261", "rank": "best" },
-      { "itemId": "genimon-4161", "rank": "alternative" },
-      { "itemId": "genimon-4021", "rank": "alternative" }
+      {
+        "itemId": "genimon-4261",
+        "rank": "best"
+      },
+      {
+        "itemId": "genimon-4161",
+        "rank": "alternative"
+      },
+      {
+        "itemId": "genimon-4021",
+        "rank": "alternative"
+      }
     ],
     "skillPriority": [
       {
-        "skillName": { "FR": "Mode Etoile Filante", "EN": "Starfall Mode" },
+        "skillName": {
+          "FR": "Mode Etoile Filante",
+          "EN": "Starfall Mode"
+        },
         "priority": 5,
         "note": {
           "FR": "Source principale de degats - a monter en priorite absolue.",
@@ -112,7 +162,10 @@
         }
       },
       {
-        "skillName": { "FR": "Prete a Frapper", "EN": "Poised To Strike" },
+        "skillName": {
+          "FR": "Prete a Frapper",
+          "EN": "Poised To Strike"
+        },
         "priority": 4,
         "note": {
           "FR": "Fonctionne avec l'ultime, augmente la puissance du buff de degats Momentum.",
@@ -120,7 +173,10 @@
         }
       },
       {
-        "skillName": { "FR": "Vers le Soleil", "EN": "Sunward" },
+        "skillName": {
+          "FR": "Vers le Soleil",
+          "EN": "Sunward"
+        },
         "priority": 2,
         "note": {
           "FR": "Outil de mobilite uniquement - priorite faible.",
@@ -129,8 +185,8 @@
       }
     ],
     "notes": {
-      "FR": "Su Yi est une DPS Lumino a distance basee sur le Mode Etoile Filante (Starfall Mode), qui consume de la Lucidite pour generer des stacks de Poudre d'Artificier. Chaque palier de 40 Lucidite consommee donne 1 stack de Soar (max 10 = boost Morale maximum).\n\nBoucle de jeu :\n1. Utiliser Sunward pour traverser rapidement (commissions Excavation/Mediation).\n2. Entrer en Starfall Mode, generer Poudre d'Artificier.\n3. Coup melee = Sword Aflash (gros degats, lent), coup distance = Stars Ashower.\n4. Chaque Poudre depensee = 1 stack de Momentum.\n5. A 50+ stacks consommes, lance un Fengshi Model (AoE).\n6. Le mod Fengshi Type III: Tracking Mode (slot 4) donne le ciblage automatique - retire la charge mentale du aim.\n\nSynergie cle : Max Ammo eleve a l'arme distance = plus de Poudre a l'entree = plus de Momentum = plus de degats Fengshi + meilleure restauration de Lucidite.\n\nIntron priority (ordre d'unlock) :\n- I1 (★★★★★) : double les stacks Momentum max (200) + 2 stacks par poudre. Massif.\n- I2 (★★★★★) : auto-declenche Stars Ashower pendant Starfall, genere Momentum sans cout en poudre.\n- I4 (★★★★☆) : controle de foule, tire les ennemis ensemble sur Skill DMG.\n- I6 (★★★★☆) : PEN scaling +, lance 2 Fengshi Models additionnels a 20% degats chacun.\n- I3, I5 : stats only - priorite faible.\n- I7 : non disponible.\n\nFaiblesses : Sword Aflash lent au swing, plein potentiel verrouille derriere les Introns (surtout I1 + I2).\n\nSource : Game8 (https://game8.co/games/Duet-Night-Abyss/archives/570654).",
-      "EN": "Su Yi is a ranged Lumino DPS built around Starfall Mode, which consumes Sanity to generate Artificer Powder stacks. Every 40 Sanity consumed grants 1 stack of Soar (max 10 = max Morale boost).\n\nCore loop:\n1. Use Sunward for rapid map traversal (Excavation/Mediation commissions).\n2. Enter Starfall Mode, generate Artificer Powder.\n3. Melee swing = Sword Aflash (high damage, slow), ranged shot = Stars Ashower.\n4. Each powder spent = 1 Momentum stack.\n5. At 50+ stacks consumed, launch a Fengshi Model (AoE).\n6. The Fengshi Type III: Tracking Mode mod (slot 4) provides auto-homing - removes the aiming burden.\n\nKey synergy: Higher ranged Max Ammo = more Artificer Powder on entry = more Momentum = higher Fengshi Model damage + better Sanity restoration.\n\nIntron priority (unlock order):\n- I1 (★★★★★): doubles Momentum max stacks (200) + 2 stacks per powder. Massive damage boost.\n- I2 (★★★★★): auto-triggers Stars Ashower during Starfall, generates Momentum without powder cost.\n- I4 (★★★★☆): crowd control bonus, pulls enemies together on Skill DMG.\n- I6 (★★★★☆): PEN scaling +, launches 2 additional Fengshi Models at 20% damage each.\n- I3, I5: stat-only - low priority.\n- I7: not available.\n\nWeaknesses: Sword Aflash slow swings, full kit potential locked behind Introns (especially I1 + I2).\n\nSource: Game8 (https://game8.co/games/Duet-Night-Abyss/archives/570654)."
+      "FR": "Su Yi est une DPS Lumino a distance basee sur le Mode Etoile Filante (Starfall Mode), qui consume de la Lucidite pour generer des stacks de Poudre d'Artificier. Chaque palier de 40 Lucidite consommee donne 1 stack de Soar (max 10 = boost Morale maximum).\n\nBoucle de jeu :\n1. Utiliser Sunward pour traverser rapidement (commissions Excavation/Mediation).\n2. Entrer en Starfall Mode, generer Poudre d'Artificier.\n3. Coup melee = Sword Aflash (gros degats, lent), coup distance = Stars Ashower.\n4. Chaque Poudre depensee = 1 stack de Momentum.\n5. A 50+ stacks consommes, lance un Fengshi Model (AoE).\n6. Le mod Fengshi Type III: Tracking Mode (slot 4) donne le ciblage automatique - retire la charge mentale du aim.\n\nSynergie cle : Max Ammo eleve a l'arme distance = plus de Poudre a l'entree = plus de Momentum = plus de degats Fengshi + meilleure restauration de Lucidite.\n\nIntron priority (ordre d'unlock) :\n- I1 (★★★★★) : double les stacks Momentum max (200) + 2 stacks par poudre. Massif.\n- I2 (★★★★★) : auto-declenche Stars Ashower pendant Starfall, genere Momentum sans cout en poudre.\n- I4 (★★★★☆) : controle de foule, tire les ennemis ensemble sur Skill DMG.\n- I6 (★★★★☆) : PEN scaling +, lance 2 Fengshi Models additionnels a 20% degats chacun.\n- I3, I5 : stats only - priorite faible.\n- I7 : non disponible.\n\nFaiblesses : Sword Aflash lent au swing, plein potentiel verrouille derriere les Introns (surtout I1 + I2).",
+      "EN": "Su Yi is a ranged Lumino DPS built around Starfall Mode, which consumes Sanity to generate Artificer Powder stacks. Every 40 Sanity consumed grants 1 stack of Soar (max 10 = max Morale boost).\n\nCore loop:\n1. Use Sunward for rapid map traversal (Excavation/Mediation commissions).\n2. Enter Starfall Mode, generate Artificer Powder.\n3. Melee swing = Sword Aflash (high damage, slow), ranged shot = Stars Ashower.\n4. Each powder spent = 1 Momentum stack.\n5. At 50+ stacks consumed, launch a Fengshi Model (AoE).\n6. The Fengshi Type III: Tracking Mode mod (slot 4) provides auto-homing - removes the aiming burden.\n\nKey synergy: Higher ranged Max Ammo = more Artificer Powder on entry = more Momentum = higher Fengshi Model damage + better Sanity restoration.\n\nIntron priority (unlock order):\n- I1 (★★★★★): doubles Momentum max stacks (200) + 2 stacks per powder. Massive damage boost.\n- I2 (★★★★★): auto-triggers Stars Ashower during Starfall, generates Momentum without powder cost.\n- I4 (★★★★☆): crowd control bonus, pulls enemies together on Skill DMG.\n- I6 (★★★★☆): PEN scaling +, launches 2 additional Fengshi Models at 20% damage each.\n- I3, I5: stat-only - low priority.\n- I7: not available.\n\nWeaknesses: Sword Aflash slow swings, full kit potential locked behind Introns (especially I1 + I2)."
     }
   }
 ]

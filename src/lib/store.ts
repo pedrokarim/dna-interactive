@@ -18,7 +18,6 @@ export interface GameCode {
 }
 
 // Liste des codes disponibles (triés: nouveaux en premier, puis actifs, puis expirés)
-// Source: https://game8.co/games/Duet-Night-Abyss/archives/557781
 export const GAME_CODES: GameCode[] = [
   // Nouveaux codes actifs (décembre 2025) - TOUJOURS EN HAUT
   {
@@ -105,7 +104,7 @@ export const GAME_CODES: GameCode[] = [
     expiresAt: "24 décembre 2025",
   },
 
-  // Codes expirés (selon Game8.co)
+  // Codes expirés
   {
     id: "dnarelease",
     code: "DNARELEASE",

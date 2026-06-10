@@ -235,7 +235,7 @@ export const changelogData: ChangelogEntry[] = [
       "✅ Nouveaux codes actifs affichés en premier",
       "⏰ Badge d'expiration pour les codes avec date limite",
       "❌ Section dédiée pour les codes expirés",
-      "🔄 Mise à jour automatique depuis Game8.co",
+      "🔄 Mise à jour régulière des codes",
       "📊 Compteur de codes actifs vs expirés",
     ],
   },
