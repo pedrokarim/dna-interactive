@@ -101,14 +101,14 @@ export default function MobileMenu() {
               height={32}
               className="h-8 w-auto"
             />
-            <span className="text-base font-semibold text-parch">
+            <span className="font-display text-lg text-parch">
               {SITE_CONFIG.name}
             </span>
           </div>
           <button
             type="button"
             onClick={() => setIsOpen(false)}
-            className="flex h-9 w-9 items-center justify-center rounded-lg text-parch/85 transition-colors hover:bg-panel hover:text-parch"
+            className="flex h-9 w-9 items-center justify-center rounded-sm text-parch/85 transition-colors hover:bg-panel hover:text-parch"
             aria-label={closeLabel}
           >
             <X className="h-5 w-5" />
@@ -124,7 +124,7 @@ export default function MobileMenu() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className={`flex items-center gap-3 rounded-lg px-3 py-3 text-base transition-colors ${
+                    className={`flex items-center gap-3 rounded-sm px-3 py-3 text-base transition-colors ${
                       active
                         ? "bg-gold/15 text-gold border border-gold/30"
                         : "text-parch hover:bg-panel/70 hover:text-parch border border-transparent"
@@ -151,7 +151,7 @@ export default function MobileMenu() {
       <button
         type="button"
         onClick={() => setIsOpen(true)}
-        className="flex h-10 w-10 items-center justify-center rounded-lg border border-gold/30 bg-panel/60 text-parch transition-colors hover:border-gold/60 hover:bg-panel hover:text-parch md:hidden"
+        className="flex h-10 w-10 items-center justify-center rounded-sm border border-gold/30 bg-panel/60 text-parch transition-colors hover:border-gold/60 hover:bg-panel hover:text-parch md:hidden"
         aria-expanded={isOpen}
         aria-controls="mobile-menu-drawer"
         aria-label={openLabel}
