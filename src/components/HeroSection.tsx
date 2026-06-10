@@ -67,10 +67,10 @@ export default function HeroSection() {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-20">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 bg-linear-to-r from-gold-bright via-gold to-gold-bright bg-clip-text text-transparent">
+          <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-semibold mb-6 bg-linear-to-r from-gold-bright via-gold to-gold-bright bg-clip-text text-transparent [text-shadow:0_2px_30px_rgba(0,0,0,0.4)]">
             {t("heroTitle")}
           </h1>
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-8 text-parch">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-8 text-parch">
             {t("heroSubtitle", { gameName: GAME_INFO.name })}
           </h2>
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-parch/85 mb-8 max-w-3xl mx-auto leading-relaxed">
@@ -97,7 +97,7 @@ export default function HeroSection() {
             >
               <Link
                 href="/map"
-                className="inline-flex items-center justify-center px-8 py-4 bg-linear-to-r from-gold-bright to-gold hover:from-gold hover:to-gold-deep rounded-lg font-semibold text-ink transition-all duration-300 shadow-lg shadow-gold/25"
+                className="inline-flex items-center justify-center px-8 py-4 bg-linear-to-r from-gold-bright to-gold hover:from-gold hover:to-gold-deep rounded-sm font-semibold text-ink transition-all duration-300 shadow-lg shadow-gold/25"
               >
                 <Map className="w-5 h-5 mr-2" />
                 {t("heroCta")}
@@ -119,10 +119,10 @@ export default function HeroSection() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2, duration: 0.6 }}
         whileHover={{ scale: 1.04 }}
-        className="group absolute bottom-6 right-4 z-20 hidden items-center gap-3 rounded-2xl border border-gold/30 bg-ink/80 p-2 pr-4 shadow-[0_12px_32px_rgba(15,23,42,0.6)] backdrop-blur-sm transition-colors hover:border-gold/60 sm:flex"
+        className="group absolute bottom-6 right-4 z-20 hidden items-center gap-3 rounded-sm border border-gold/30 bg-ink/80 p-2 pr-4 shadow-[0_12px_32px_rgba(15,23,42,0.6)] backdrop-blur-sm transition-colors hover:border-gold/60 sm:flex"
         aria-label="Voir un exemple de carte de build (Psyche)"
       >
-        <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl border border-gold/40 bg-gold/10">
+        <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-sm border border-gold/40 bg-gold/10">
           <Image
             src="/assets/characters/head/T_Head_Saiqi.png"
             alt="Psyche"
