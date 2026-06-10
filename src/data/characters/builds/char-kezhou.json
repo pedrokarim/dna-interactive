@@ -47,27 +47,27 @@
       "slots": [
         {
           "position": 1,
-          "itemId": "mods-51962",
-          "track": 4
+          "itemId": "mods-56162",
+          "track": null
         },
         {
           "position": 2,
-          "itemId": "mods-51461",
-          "track": 1
+          "itemId": "mods-51962",
+          "track": null
         },
         {
           "position": 3,
-          "itemId": "mods-51336",
-          "track": 3
+          "itemId": "mods-51461",
+          "track": null
         },
         {
           "position": 4,
-          "itemId": "mods-51763",
+          "itemId": "mods-51326",
           "track": null
         },
         {
           "position": 5,
-          "itemId": "mods-51763",
+          "itemId": "mods-51761",
           "track": null
         },
         {
