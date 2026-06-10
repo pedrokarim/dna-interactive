@@ -8,6 +8,8 @@ import { parseAsStringLiteral, useQueryState } from "nuqs";
 import { getLanguageLabel, normalizeLanguageCodes } from "@/lib/items/catalog";
 import type { DraftItemReference, DraftRecipeRecord } from "@/lib/items/drafts";
 import { resolveDraftItemDescription, resolveDraftItemName } from "@/lib/items/drafts";
+import { DnaPanel } from "@/components/dna/Panel";
+import { DnaSectionLabel } from "@/components/dna/SectionLabel";
 
 type DraftDetailClientProps = {
   recipe: DraftRecipeRecord;
@@ -102,14 +104,14 @@ function RecipeNode({ item, selectedLanguage, fallbackLanguages, primary = false
 
   const nodeBody = (
     <div
-      className={`relative rounded-lg border ${
+      className={`relative rounded-sm border ${
         primary ? "border-gold/55 bg-gold/10" : "border-white/10 bg-ink/80"
       } p-2 shadow-[0_6px_18px_rgba(2,6,23,0.35)] transition-colors group-hover:border-gold/65`}
     >
-      <div className="flex h-16 w-16 items-center justify-center rounded-md border border-white/10 bg-panel/80 p-2">
+      <div className="flex h-16 w-16 items-center justify-center rounded-sm border border-white/10 bg-panel/80 p-2">
         <img src={iconSrc} alt={name} className="max-h-full max-w-full object-contain" />
       </div>
-      <span className="absolute bottom-1 right-1 rounded bg-panel/95 px-1.5 py-0.5 text-[11px] font-medium text-gold">
+      <span className="absolute bottom-1 right-1 rounded-sm bg-panel/95 px-1.5 py-0.5 text-[11px] font-medium text-gold">
         x{item.quantity}
       </span>
     </div>
@@ -130,17 +132,17 @@ function RecipeNode({ item, selectedLanguage, fallbackLanguages, primary = false
         nodeBody
       )}
 
-      <div className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 hidden w-72 -translate-x-1/2 rounded-xl border border-white/10 bg-ink/95 p-3 text-sm shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
+      <div className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 hidden w-72 -translate-x-1/2 rounded-sm border border-white/10 bg-ink/95 p-3 text-sm shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
         <p className="font-medium text-parch">{name}</p>
         <div className="mt-2 flex flex-wrap gap-1.5 text-[11px]">
-          <span className={`rounded-full border px-2 py-0.5 ${nodeAccentClasses(item.sourceCategory)}`}>
+          <span className={`rounded-sm border px-2 py-0.5 ${nodeAccentClasses(item.sourceCategory)}`}>
             {td(sourceCategoryLabelKey(item.sourceCategory))}
           </span>
-          <span className="rounded-full border border-white/10 px-2 py-0.5 text-parch">
+          <span className="rounded-sm border border-white/10 px-2 py-0.5 text-parch">
             {item.type}
           </span>
           {typeof item.rarity === "number" ? (
-            <span className="rounded-full border border-white/10 px-2 py-0.5 text-parch">
+            <span className="rounded-sm border border-white/10 px-2 py-0.5 text-parch">
               {td('rarityLabel', { rarity: item.rarity })}
             </span>
           ) : null}
@@ -149,13 +151,13 @@ function RecipeNode({ item, selectedLanguage, fallbackLanguages, primary = false
         {classLabel || subtypeLabel ? (
           <div className="mt-2 flex flex-wrap gap-2 text-xs text-parch/85">
             {classLabel ? (
-              <span className="inline-flex items-center gap-1 rounded-full border border-white/10 px-2 py-0.5">
+              <span className="inline-flex items-center gap-1 rounded-sm border border-white/10 px-2 py-0.5">
                 {classIcon ? <img src={classIcon} alt={classLabel} className="h-3.5 w-3.5 object-contain" /> : null}
                 {classLabel}
               </span>
             ) : null}
             {subtypeLabel ? (
-              <span className="inline-flex items-center gap-1 rounded-full border border-white/10 px-2 py-0.5">
+              <span className="inline-flex items-center gap-1 rounded-sm border border-white/10 px-2 py-0.5">
                 {subtypeIcon ? (
                   <img src={subtypeIcon} alt={subtypeLabel} className="h-3.5 w-3.5 object-contain" />
                 ) : null}
@@ -214,19 +216,19 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
 
   return (
     <div className="space-y-4 md:space-y-8">
-      <section className="rounded-2xl border border-gold/30 bg-panel/60 p-4 md:p-6 shadow-[0_20px_45px_rgba(15,23,42,0.45)] backdrop-blur-sm">
+      <section className="border border-gold/30 bg-panel/60 p-4 md:p-6 shadow-[0_20px_45px_rgba(15,23,42,0.45)] backdrop-blur-sm">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex flex-wrap items-center gap-2">
             <Link
               href="/items/drafts"
-              className="inline-flex items-center gap-2 rounded-lg border border-white/10 px-3 py-2 text-sm text-parch transition-colors hover:border-gold/40 hover:text-parch"
+              className="inline-flex items-center gap-2 rounded-sm border border-white/10 px-3 py-2 text-sm text-parch transition-colors hover:border-gold/40 hover:text-parch"
             >
               <ArrowLeft className="h-4 w-4" />
               {tc('backToPlans')}
             </Link>
           </div>
 
-          <div className="flex items-center gap-2 rounded-lg border border-white/10 bg-ink/60 px-3 py-2">
+          <div className="flex items-center gap-2 rounded-sm border border-white/10 bg-ink/60 px-3 py-2">
             <Languages className="h-4 w-4 text-gold/90" />
             <select
               value={selectedLanguage}
@@ -243,18 +245,18 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
         </div>
 
         <div className="mt-4 md:mt-5 flex flex-wrap items-center gap-1.5 md:gap-2 text-xs">
-          <span className="rounded-full border border-white/10 px-3 py-1 text-parch/85">
+          <span className="rounded-sm border border-white/10 px-3 py-1 text-parch/85">
             DRAFT #{recipe.draftId}
           </span>
-          <span className="rounded-full border border-white/10 px-3 py-1 text-parch/85">
+          <span className="rounded-sm border border-white/10 px-3 py-1 text-parch/85">
             {t('productLabel', { type: recipe.product.type, quantity: recipe.productQuantity })}
           </span>
           {typeof recipe.product.rarity === "number" ? (
-            <span className="rounded-full border border-white/10 px-3 py-1 text-parch/85">
+            <span className="rounded-sm border border-white/10 px-3 py-1 text-parch/85">
               {t('rarityLabel', { rarity: recipe.product.rarity })}
             </span>
           ) : null}
-          <span className="inline-flex items-center gap-1 rounded-full border border-white/10 px-3 py-1 text-parch/85">
+          <span className="inline-flex items-center gap-1 rounded-sm border border-white/10 px-3 py-1 text-parch/85">
             <Clock3 className="h-3.5 w-3.5 text-gold/90" />
             {formatDuration(recipe.crafting.durationSec)}
           </span>
@@ -262,9 +264,9 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
       </section>
 
       <section className="grid gap-3 md:gap-5 lg:grid-cols-[1.35fr_0.95fr]">
-        <article className="rounded-2xl border border-gold/30 bg-[radial-gradient(circle_at_50%_22%,rgba(245,158,11,0.16),rgba(15,23,42,0.72)_52%,rgba(2,6,23,0.92)_100%)] p-4 md:p-6">
-          <h2 className="text-base md:text-lg font-semibold text-parch">{t('forgeProcessTitle')}</h2>
-          <p className="mt-1 text-sm text-parch/85">{t('forgeProcessHint')}</p>
+        <article className="border border-gold/30 bg-[radial-gradient(circle_at_50%_22%,rgba(245,158,11,0.16),rgba(15,23,42,0.72)_52%,rgba(2,6,23,0.92)_100%)] p-4 md:p-6">
+          <DnaSectionLabel>{t('forgeProcessTitle')}</DnaSectionLabel>
+          <p className="mt-2 text-sm text-parch/85">{t('forgeProcessHint')}</p>
 
           <div className="mt-5 md:mt-8">
             <div className="flex justify-center">
@@ -291,8 +293,8 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
                         fallbackLanguages={availableLanguages}
                       />
                     ) : (
-                      <div className="rounded-lg border border-panel/80 bg-ink/55 p-2">
-                        <div className="flex h-16 w-16 items-center justify-center rounded-md border border-panel bg-panel/50 text-muted-2">
+                      <div className="rounded-sm border border-panel/80 bg-ink/55 p-2">
+                        <div className="flex h-16 w-16 items-center justify-center rounded-sm border border-panel bg-panel/50 text-muted-2">
                           -
                         </div>
                       </div>
@@ -304,15 +306,15 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
           </div>
         </article>
 
-        <article className="rounded-2xl border border-white/10 bg-panel/65 p-3 md:p-5">
-          <div className="rounded-xl border border-gold/30 bg-ink/60 p-3 md:p-4">
+        <article className="border border-white/10 bg-panel/65 p-3 md:p-5">
+          <div className="rounded-sm border border-gold/30 bg-ink/60 p-3 md:p-4">
             <div className="flex items-start gap-3">
-              <div className="flex h-14 w-14 md:h-16 md:w-16 shrink-0 items-center justify-center rounded-lg border border-gold/30 bg-ink/80 p-2">
+              <div className="flex h-14 w-14 md:h-16 md:w-16 shrink-0 items-center justify-center rounded-sm border border-gold/30 bg-ink/80 p-2">
                 <img src={recipeIcon} alt={productName} className="max-h-full max-w-full object-contain" />
               </div>
               <div className="min-w-0">
-                <p className="text-xs uppercase tracking-[0.22em] text-gold/90">{t('resultLabel')}</p>
-                <h1 className="mt-1 text-lg md:text-xl font-semibold text-parch">{productName}</h1>
+                <p className="font-caps text-[0.6rem] uppercase tracking-[0.22em] text-gold/90">{t('resultLabel')}</p>
+                <h1 className="mt-1 font-display text-xl text-parch">{productName}</h1>
                 <p className="text-xs text-muted">
                   {recipe.product.type} x{recipe.productQuantity}
                 </p>
@@ -322,13 +324,13 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
             {classLabel || subtypeLabel ? (
               <div className="mt-3 flex flex-wrap gap-2 text-xs">
                 {classLabel ? (
-                  <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 px-2.5 py-1 text-parch">
+                  <span className="inline-flex items-center gap-1.5 rounded-sm border border-white/10 px-2.5 py-1 text-parch">
                     {classIcon ? <img src={classIcon} alt={classLabel} className="h-3.5 w-3.5 object-contain" /> : null}
                     {classLabel}
                   </span>
                 ) : null}
                 {subtypeLabel ? (
-                  <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 px-2.5 py-1 text-parch">
+                  <span className="inline-flex items-center gap-1.5 rounded-sm border border-white/10 px-2.5 py-1 text-parch">
                     {subtypeIcon ? (
                       <img src={subtypeIcon} alt={subtypeLabel} className="h-3.5 w-3.5 object-contain" />
                     ) : null}
@@ -346,8 +348,8 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
           </div>
 
           <div className="mt-4 space-y-3 text-sm">
-            <div className="rounded-lg border border-white/10 bg-ink/60 p-3">
-              <h2 className="text-xs uppercase tracking-[0.2em] text-muted">{t('forgeSummaryTitle')}</h2>
+            <div className="rounded-sm border border-white/10 bg-ink/60 p-3">
+              <h2 className="font-caps text-[0.6rem] uppercase tracking-[0.2em] text-muted">{t('forgeSummaryTitle')}</h2>
               <dl className="mt-2 space-y-1.5 text-parch">
                 <div className="flex items-center justify-between gap-3">
                   <dt>{t('timeLabel')}</dt>
@@ -388,8 +390,8 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
               </dl>
             </div>
 
-            <div className="rounded-lg border border-white/10 bg-ink/60 p-3">
-              <h2 className="text-xs uppercase tracking-[0.2em] text-muted">Cout de forge</h2>
+            <div className="rounded-sm border border-white/10 bg-ink/60 p-3">
+              <h2 className="font-caps text-[0.6rem] uppercase tracking-[0.2em] text-muted">Cout de forge</h2>
               {coinCostEntries.length > 0 ? (
                 <dl className="mt-2 space-y-1.5 text-parch">
                   {coinCostEntries.map(([coinType, value]) => (
@@ -407,8 +409,8 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
         </article>
       </section>
 
-      <section className="rounded-2xl border border-white/10 bg-panel/55 p-3 md:p-5">
-        <h2 className="text-base md:text-lg font-semibold text-parch">Composants requis</h2>
+      <DnaPanel className="p-4 md:p-5">
+        <DnaSectionLabel>Composants requis</DnaSectionLabel>
         <div className="mt-3 md:mt-4 grid gap-2 md:gap-3 md:grid-cols-2">
           {recipe.ingredients.map((ingredient, index) => {
             const ingredientName = resolveDraftItemName(ingredient, selectedLanguage, availableLanguages);
@@ -423,12 +425,12 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
             return (
               <article
                 key={`${ingredient.id}-${index}`}
-                className="rounded-xl border border-white/10 bg-ink/60 p-3"
+                className="rounded-sm border border-white/10 bg-ink/60 p-3"
               >
                 <div className="flex items-start gap-3">
-                  <div className="relative flex h-14 w-14 items-center justify-center rounded-lg border border-white/10 bg-panel/70 p-2">
+                  <div className="relative flex h-14 w-14 items-center justify-center rounded-sm border border-white/10 bg-panel/70 p-2">
                     <img src={ingredientIcon} alt={ingredientName} className="max-h-full max-w-full object-contain" />
-                    <span className="absolute bottom-0 right-0 translate-x-1/4 translate-y-1/4 rounded bg-panel/95 px-1.5 py-0.5 text-[11px] font-medium text-gold">
+                    <span className="absolute bottom-0 right-0 translate-x-1/4 translate-y-1/4 rounded-sm bg-panel/95 px-1.5 py-0.5 text-[11px] font-medium text-gold">
                       x{ingredient.quantity}
                     </span>
                   </div>
@@ -436,15 +438,15 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
                     <p className="text-sm font-medium text-parch">{ingredientName}</p>
                     <div className="mt-1 flex flex-wrap gap-1.5 text-[11px]">
                       <span
-                        className={`rounded-full border px-2 py-0.5 ${nodeAccentClasses(ingredient.sourceCategory)}`}
+                        className={`rounded-sm border px-2 py-0.5 ${nodeAccentClasses(ingredient.sourceCategory)}`}
                       >
                         {t(sourceCategoryLabelKey(ingredient.sourceCategory))}
                       </span>
-                      <span className="rounded-full border border-white/10 px-2 py-0.5 text-parch/85">
+                      <span className="rounded-sm border border-white/10 px-2 py-0.5 text-parch/85">
                         {ingredient.type}
                       </span>
                       {typeof ingredient.rarity === "number" ? (
-                        <span className="rounded-full border border-white/10 px-2 py-0.5 text-parch/85">
+                        <span className="rounded-sm border border-white/10 px-2 py-0.5 text-parch/85">
                           {t('rarityLabel', { rarity: ingredient.rarity })}
                         </span>
                       ) : null}
@@ -461,7 +463,7 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
                 {ingredient.href ? (
                   <Link
                     href={ingredient.href}
-                    className="mt-3 inline-flex items-center gap-1 rounded-md border border-gold/35 bg-gold/10 px-2 py-1 text-xs text-gold transition-colors hover:bg-gold/20"
+                    className="mt-3 inline-flex items-center gap-1 rounded-sm border border-gold/35 bg-gold/10 px-2 py-1 text-xs text-gold transition-colors hover:bg-gold/20"
                   >
                     {t('openItem', { name: resolveDraftItemName(ingredient, selectedLanguage, availableLanguages) })}
                     <ExternalLink className="h-3.5 w-3.5" />
@@ -471,7 +473,7 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
             );
           })}
         </div>
-      </section>
+      </DnaPanel>
     </div>
   );
 }
