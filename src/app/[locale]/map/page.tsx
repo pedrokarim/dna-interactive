@@ -523,10 +523,10 @@ export default function MapPage() {
                     className="h-8 w-auto"
                   />
                   <div>
-                    <div className="text-xl font-bold text-parch flex items-center gap-2">
+                    <div className="font-display text-xl text-parch flex items-center gap-2">
                       {SITE_CONFIG.name}
                     </div>
-                    <p className="text-xs text-muted">{t('interactiveMap')}</p>
+                    <p className="font-caps text-[0.55rem] uppercase tracking-[0.28em] text-gold/70">{t('interactiveMap')}</p>
                   </div>
                 </div>
 
@@ -537,7 +537,7 @@ export default function MapPage() {
                     placeholder={t('searchPlaceholder')}
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full bg-panel/50 backdrop-blur-sm border border-gold/30 rounded-md px-3 py-2 pl-10 text-sm text-parch placeholder-muted-2 focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold"
+                    className="w-full bg-panel/50 backdrop-blur-sm border border-gold/30 rounded-sm px-3 py-2 pl-10 text-sm text-parch placeholder-muted-2 focus:outline-none focus:ring-1 focus:ring-gold/60 focus:border-gold"
                   />
                   <svg
                     className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted"
@@ -556,7 +556,7 @@ export default function MapPage() {
 
                 {/* Sélecteur de région */}
                 <div>
-                  <label className="block text-sm text-parch/85 mb-2">
+                  <label className="block font-caps text-[0.6rem] uppercase tracking-[0.18em] text-parch/80 mb-2">
                     {t('region')}
                   </label>
                   <select
@@ -566,7 +566,7 @@ export default function MapPage() {
                       console.log('🔄 Changement de région vers:', newMapId);
                       setSelectedMapId(newMapId);
                     }}
-                    className="w-full bg-panel/50 backdrop-blur-sm border border-gold/30 rounded-md px-3 py-2 text-sm text-parch focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold"
+                    className="w-full bg-panel/50 backdrop-blur-sm border border-gold/30 rounded-sm px-3 py-2 text-sm text-parch focus:outline-none focus:ring-1 focus:ring-gold/60 focus:border-gold"
                   >
                     {mapIndex.map((map) => (
                       <option
@@ -630,7 +630,7 @@ export default function MapPage() {
 
             {/* Contenu des catégories avec accordéons */}
             <div className="relative z-20">
-              <h3 className="text-lg font-semibold text-parch mb-4">
+              <h3 className="font-display text-xl text-parch mb-4">
                 {t('categories')}
               </h3>
               <div className="space-y-2">
@@ -661,7 +661,7 @@ export default function MapPage() {
                   return (
                     <div
                       key={group.id}
-                      className="bg-panel/30 rounded-lg border border-gold/20 overflow-hidden"
+                      className="bg-panel/30 rounded-sm border border-gold/20 overflow-hidden"
                     >
                       {/* En-tête de la catégorie */}
                       <button
@@ -669,7 +669,7 @@ export default function MapPage() {
                         className="w-full flex items-center justify-between p-3 hover:bg-white/10 transition-colors"
                       >
                         <div className="flex items-center gap-3">
-                          <div className="w-8 h-8 rounded border border-gold/30 bg-white/10 flex items-center justify-center">
+                          <div className="w-8 h-8 rounded-sm border border-gold/30 bg-white/10 flex items-center justify-center">
                             <img
                               src={group.icon}
                               alt={`Icône ${group.name} - Catégorie de marqueurs pour la carte interactive Duet Night Abyss`}
@@ -701,7 +701,7 @@ export default function MapPage() {
                                   e.stopPropagation();
                                   selectAllInGroup(group);
                                 }}
-                                className="text-xs px-2 py-1 bg-gold/80 hover:bg-gold rounded text-parch transition-colors"
+                                className="text-xs px-2 py-1 bg-gold/80 hover:bg-gold rounded-sm text-parch transition-colors"
                                 title={t('selectAll')}
                               >
                                 ✓
@@ -713,7 +713,7 @@ export default function MapPage() {
                                   e.stopPropagation();
                                   deselectAllInGroup(group);
                                 }}
-                                className="text-xs px-2 py-1 bg-crimson-bright/80 hover:bg-crimson-bright rounded text-parch transition-colors"
+                                className="text-xs px-2 py-1 bg-crimson-bright/80 hover:bg-crimson-bright rounded-sm text-parch transition-colors"
                                 title={t('deselectAll')}
                               >
                                 ✗
@@ -775,7 +775,7 @@ export default function MapPage() {
                                     )
                                   }
                                   title={item.name}
-                                  className={`group relative flex flex-col items-center p-2 rounded-md transition-all duration-300 border min-w-0 ${
+                                  className={`group relative flex flex-col items-center p-2 rounded-sm transition-all duration-300 border min-w-0 ${
                                     visibleCategories[
                                       item.name.toLowerCase().trim()
                                     ] !== false
@@ -820,7 +820,7 @@ export default function MapPage() {
         {!isMenuCollapsed && (
           <div className="mt-auto p-6 border-t border-gold/20 space-y-4">
             {/* Bouton Réinitialiser */}
-            <button className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-panel/50 hover:bg-white/10 rounded-md text-sm text-parch/85 hover:text-parch transition-colors">
+            <button className="w-full flex items-center justify-center gap-2 px-4 py-2 border border-white/15 bg-panel/50 hover:border-gold/40 hover:text-gold rounded-sm text-sm text-parch/85 transition-colors">
               <svg
                 className="w-4 h-4"
                 fill="none"
@@ -886,7 +886,7 @@ export default function MapPage() {
       {/* Bouton toggle sidebar - Toujours visible, positionné différemment selon l'état */}
       <button
         onClick={() => setIsMenuCollapsed(!isMenuCollapsed)}
-        className="absolute z-[110] bg-panel/90 backdrop-blur-sm hover:bg-white/10 rounded-lg p-2.5 transition-all duration-300 border border-gold/30 shadow-lg top-1/2 -translate-y-1/2"
+        className="absolute z-[110] bg-panel/90 backdrop-blur-sm hover:bg-white/10 rounded-sm p-2.5 transition-all duration-300 border border-gold/30 shadow-lg top-1/2 -translate-y-1/2"
         style={{
           left: isMenuCollapsed ? 16 : 20 + sidebarWidth,
         }}
@@ -912,7 +912,7 @@ export default function MapPage() {
         <div className="relative">
           <button
             onClick={() => setIsActionMenuOpen(!isActionMenuOpen)}
-            className="p-2.5 hover:bg-white/10 rounded-lg transition-colors bg-panel/80 backdrop-blur-sm border border-gold/20 shadow-lg"
+            className="p-2.5 hover:bg-white/10 rounded-sm transition-colors bg-panel/80 backdrop-blur-sm border border-gold/20 shadow-lg"
             title={t('actionMenu')}
           >
             <svg
@@ -938,7 +938,7 @@ export default function MapPage() {
                 className="fixed inset-0 z-[105]"
                 onClick={() => setIsActionMenuOpen(false)}
               />
-              <div className="absolute top-full right-0 mt-2 w-56 bg-ink/95 backdrop-blur-md rounded-lg border border-gold/40 shadow-[0_8px_24px_rgba(0,0,0,0.6)] z-[110] overflow-hidden">
+              <div className="absolute top-full right-0 mt-2 w-56 bg-ink/95 backdrop-blur-md rounded-sm border border-gold/40 shadow-[0_8px_24px_rgba(0,0,0,0.6)] z-[110] overflow-hidden">
                 <div className="py-2">
                   {/* Exporter */}
                   <button
@@ -1146,7 +1146,7 @@ export default function MapPage() {
       {/* Barre de statut en bas à gauche - Positionnée à droite de la sidebar */}
       {!isMenuCollapsed && (
         <div
-          className="absolute bottom-6 bg-panel/80 backdrop-blur-sm border border-gold/30 rounded-lg p-3 z-[90] shadow-lg"
+          className="absolute bottom-6 bg-panel/80 backdrop-blur-sm border border-gold/30 rounded-sm p-3 z-[90] shadow-lg"
           style={{ left: 20 + sidebarWidth }}
         >
           <div className="flex items-center space-x-4 text-sm">
