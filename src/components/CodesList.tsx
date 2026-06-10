@@ -10,10 +10,13 @@ import {
 } from "@/lib/store";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
+import { DnaPanel } from "@/components/dna/Panel";
+import { DnaDivider } from "@/components/dna/Divider";
 
 export default function CodesList() {
   const t = useTranslations("codes");
   const tCommon = useTranslations("common");
+  const tNav = useTranslations("nav");
   const [usedCodes] = useAtom(usedCodesAtom);
   const [, toggleCodeUsed] = useAtom(toggleCodeUsedAtom);
   const [, resetAllCodes] = useAtom(resetAllCodesAtom);
@@ -39,28 +42,28 @@ export default function CodesList() {
     }
   };
 
-  // Séparer les codes actifs et expirés
-  const activeCodes = GAME_CODES.filter(code => !code.expired);
-  const expiredCodes = GAME_CODES.filter(code => code.expired);
+  const activeCodes = GAME_CODES.filter((code) => !code.expired);
+  const expiredCodes = GAME_CODES.filter((code) => code.expired);
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
-      <div className="mb-8">
-        <div className="flex items-center gap-3 mb-4">
-          <Gift className="w-8 h-8 text-gold" />
-          <h1 className="text-3xl font-bold text-parch">{t("title")}</h1>
-        </div>
-        <p className="text-parch/85 text-lg leading-relaxed">
-          {t("description")}
-        </p>
-        <div className="mt-4 p-4 bg-ink/50 border border-gold/30 rounded-lg">
-          <p className="text-sm text-gold">
-            <strong>{t("howToUse")}</strong> {t("howToUseSteps")}
-          </p>
-        </div>
+    <div className="mx-auto max-w-4xl">
+      <div className="mb-10 text-center">
+        <span className="mx-auto mb-4 grid h-14 w-14 place-items-center border border-gold/30 bg-gold/10 text-gold">
+          <Gift className="h-7 w-7" />
+        </span>
+        <p className="font-caps text-[0.7rem] uppercase tracking-[0.34em] text-gold/80">{tNav("codes")}</p>
+        <h1 className="mt-3 font-display text-4xl text-parch md:text-5xl">{t("title")}</h1>
+        <DnaDivider className="mx-auto mt-5 max-w-[14rem]" />
+        <p className="mx-auto mt-5 max-w-2xl text-parch/80">{t("description")}</p>
       </div>
 
-      <div className="flex justify-between items-center mb-6">
+      <DnaPanel className="mb-6 p-4">
+        <p className="text-sm text-gold">
+          <strong className="font-caps tracking-[0.08em]">{t("howToUse")}</strong> {t("howToUseSteps")}
+        </p>
+      </DnaPanel>
+
+      <div className="mb-6 flex items-center justify-between">
         <div className="text-sm text-muted">
           {t("usedCount", { used: usedCodes.size, total: activeCodes.length })}
           {expiredCodes.length > 0 && ` • ${t("expiredCount", { count: expiredCodes.length })}`}
@@ -68,73 +71,57 @@ export default function CodesList() {
         {usedCodes.size > 0 && (
           <button
             onClick={handleResetAll}
-            className="flex items-center gap-2 px-4 py-2 bg-panel hover:bg-panel text-parch rounded-lg transition-colors"
+            className="inline-flex items-center gap-2 rounded-sm border border-white/15 bg-panel/60 px-4 py-2 text-parch transition-colors hover:border-gold/40 hover:text-gold"
           >
-            <RotateCcw className="w-4 h-4" />
+            <RotateCcw className="h-4 w-4" />
             {t("resetAll")}
           </button>
         )}
       </div>
 
       {/* Codes actifs */}
-      <div className="space-y-4">
+      <div className="space-y-3">
         {activeCodes.map((gameCode) => {
           const isUsed = usedCodes.has(gameCode.id);
           const isCopied = copiedCode === gameCode.code;
 
           return (
-            <div
+            <DnaPanel
               key={gameCode.id}
-              onClick={() => handleCodeClick(gameCode.id)}
-              className={`
-                relative p-6 rounded-xl border transition-all duration-200 cursor-pointer
-                ${
-                  isUsed
-                    ? "bg-panel/50 border-white/10 opacity-60"
-                    : "bg-linear-to-r from-panel/50 to-panel/50 border-gold/30 hover:border-gold/50 hover:from-panel/70 hover:to-panel/70"
-                }
-              `}
+              className={`relative cursor-pointer p-5 transition-all duration-200 ${
+                isUsed ? "opacity-60" : "hover:border-gold/45"
+              }`}
             >
-              <div className="flex items-start justify-between">
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-3 mb-2">
+              <div onClick={() => handleCodeClick(gameCode.id)} className="flex items-start justify-between">
+                <div className="min-w-0 flex-1">
+                  <div className="mb-2 flex flex-wrap items-center gap-3">
                     <code
-                      className={`
-                        text-lg font-mono px-3 py-1 rounded border
-                        ${
-                          isUsed
-                            ? "bg-panel border-white/10 text-muted line-through"
-                            : "bg-ink border-gold text-gold"
-                        }
-                      `}
+                      className={`rounded-sm border px-3 py-1 font-mono text-lg ${
+                        isUsed ? "border-white/10 bg-panel text-muted line-through" : "border-gold bg-ink text-gold"
+                      }`}
                     >
                       {gameCode.code}
                     </code>
                     {gameCode.isNew && (
-                      <span className="px-2 py-1 bg-gold text-ink text-xs rounded-full font-medium">
+                      <span className="rounded-sm bg-gold px-2 py-0.5 font-caps text-[0.56rem] uppercase tracking-[0.14em] text-ink">
                         {tCommon("new")}
                       </span>
                     )}
                     {gameCode.expiresAt && (
-                      <span className="flex items-center gap-1 px-2 py-1 bg-pyro/20 border border-pyro/30 text-pyro text-xs rounded-full font-medium">
-                        <Clock className="w-3 h-3" />
+                      <span className="inline-flex items-center gap-1 rounded-sm border border-pyro/30 bg-pyro/15 px-2 py-0.5 font-caps text-[0.56rem] uppercase tracking-[0.14em] text-pyro">
+                        <Clock className="h-3 w-3" />
                         {t("expires", { date: gameCode.expiresAt })}
                       </span>
                     )}
                   </div>
 
-                  <div className="flex flex-wrap gap-2 mb-3">
+                  <div className="flex flex-wrap gap-2">
                     {gameCode.rewards.map((reward, index) => (
                       <span
                         key={index}
-                        className={`
-                          px-2 py-1 text-sm rounded border
-                          ${
-                            isUsed
-                              ? "bg-white/5 border-white/10 text-muted-2"
-                              : "bg-electro/15 border-electro/30 text-electro"
-                          }
-                        `}
+                        className={`rounded-sm border px-2 py-0.5 text-sm ${
+                          isUsed ? "border-white/10 bg-white/5 text-muted-2" : "border-electro/30 bg-electro/15 text-electro"
+                        }`}
                       >
                         {reward}
                       </span>
@@ -142,50 +129,36 @@ export default function CodesList() {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2 ml-4">
+                <div className="ml-4 flex items-center gap-2">
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
                       copyToClipboard(gameCode.code);
                     }}
-                    className={`
-                      p-2 rounded-lg transition-colors
-                      ${
-                        isUsed
-                          ? "bg-panel hover:bg-panel text-muted"
-                          : "bg-gold hover:bg-gold text-parch"
-                      }
-                    `}
+                    className={`grid h-9 w-9 place-items-center rounded-sm transition-colors ${
+                      isUsed ? "bg-panel text-muted hover:text-parch" : "border border-gold/50 bg-gold/15 text-gold hover:bg-gold/25"
+                    }`}
                     title={t("copyCode")}
                   >
-                    {isCopied ? (
-                      <Check className="w-4 h-4" />
-                    ) : (
-                      <Copy className="w-4 h-4" />
-                    )}
+                    {isCopied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
                   </button>
 
                   <div
-                    className={`
-                      w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all
-                      ${
-                        isUsed
-                          ? "bg-gold border-gold text-ink"
-                          : "border-white/15 hover:border-gold"
-                      }
-                    `}
+                    className={`grid h-6 w-6 place-items-center rounded-full border-2 transition-all ${
+                      isUsed ? "border-gold bg-gold text-ink" : "border-white/15 hover:border-gold"
+                    }`}
                   >
-                    {isUsed && <Check className="w-4 h-4" />}
+                    {isUsed && <Check className="h-4 w-4" />}
                   </div>
                 </div>
               </div>
 
               {isCopied && (
-                <div className="absolute top-2 right-2 bg-gold text-ink text-xs px-2 py-1 rounded">
+                <div className="absolute right-2 top-2 rounded-sm bg-gold px-2 py-0.5 text-xs text-ink">
                   {tCommon("copied")}
                 </div>
               )}
-            </div>
+            </DnaPanel>
           );
         })}
       </div>
@@ -193,35 +166,32 @@ export default function CodesList() {
       {/* Codes expirés */}
       {expiredCodes.length > 0 && (
         <div className="mt-12">
-          <div className="flex items-center gap-3 mb-6">
-            <AlertTriangle className="w-6 h-6 text-pyro" />
-            <h2 className="text-2xl font-bold text-parch">{t("expiredTitle")}</h2>
+          <div className="mb-6 flex items-center gap-3">
+            <AlertTriangle className="h-6 w-6 text-pyro" />
+            <h2 className="font-display text-2xl text-parch">{t("expiredTitle")}</h2>
           </div>
-          <div className="space-y-4 opacity-75">
+          <div className="space-y-3 opacity-75">
             {expiredCodes.map((gameCode) => {
               const isCopied = copiedCode === gameCode.code;
 
               return (
-                <div
-                  key={gameCode.id}
-                  className="relative p-6 rounded-xl border bg-linear-to-r from-crimson-bright/20 to-pyro/20 border-crimson-bright/20"
-                >
+                <DnaPanel key={gameCode.id} className="relative border-crimson-bright/25 bg-crimson/10 p-5">
                   <div className="flex items-start justify-between">
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-3 mb-2">
-                        <code className="text-lg font-mono px-3 py-1 rounded border bg-crimson-bright border-crimson-bright text-crimson-bright line-through">
+                    <div className="min-w-0 flex-1">
+                      <div className="mb-2 flex flex-wrap items-center gap-3">
+                        <code className="rounded-sm border border-crimson-bright/50 bg-crimson/15 px-3 py-1 font-mono text-lg text-crimson-bright line-through">
                           {gameCode.code}
                         </code>
-                        <span className="px-2 py-1 bg-crimson-bright/20 border border-crimson-bright/30 text-crimson-bright text-xs rounded-full font-medium">
+                        <span className="rounded-sm border border-crimson-bright/30 bg-crimson/15 px-2 py-0.5 font-caps text-[0.56rem] uppercase tracking-[0.14em] text-crimson-bright">
                           {tCommon("expired")}
                         </span>
                       </div>
 
-                      <div className="flex flex-wrap gap-2 mb-3">
+                      <div className="flex flex-wrap gap-2">
                         {gameCode.rewards.map((reward, index) => (
                           <span
                             key={index}
-                            className="px-2 py-1 text-sm rounded border bg-crimson-bright/50 border-crimson-bright/30 text-crimson-bright/70"
+                            className="rounded-sm border border-crimson-bright/30 bg-crimson/15 px-2 py-0.5 text-sm text-crimson-bright/80"
                           >
                             {reward}
                           </span>
@@ -229,67 +199,43 @@ export default function CodesList() {
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-2 ml-4">
+                    <div className="ml-4 flex items-center gap-2">
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
                           copyToClipboard(gameCode.code);
                         }}
-                        className="p-2 rounded-lg transition-colors bg-crimson-bright hover:bg-crimson-bright text-parch"
+                        className="grid h-9 w-9 place-items-center rounded-sm border border-crimson-bright/40 bg-crimson/15 text-crimson-bright transition-colors hover:bg-crimson/25"
                         title={t("copyCodeExpired")}
                       >
-                        {isCopied ? (
-                          <Check className="w-4 h-4" />
-                        ) : (
-                          <Copy className="w-4 h-4" />
-                        )}
+                        {isCopied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
                       </button>
                     </div>
                   </div>
 
                   {isCopied && (
-                    <div className="absolute top-2 right-2 bg-gold text-ink text-xs px-2 py-1 rounded">
+                    <div className="absolute right-2 top-2 rounded-sm bg-gold px-2 py-0.5 text-xs text-ink">
                       {tCommon("copied")}
                     </div>
                   )}
-                </div>
+                </DnaPanel>
               );
             })}
           </div>
         </div>
       )}
 
-      <div className="mt-12 p-6 bg-panel/50 border border-gold/20 rounded-xl">
-        <h3 className="text-xl font-semibold text-parch mb-4">
-          {t("importantInfo")}
-        </h3>
+      <DnaPanel className="mt-12 p-6">
+        <h3 className="mb-4 font-display text-xl text-parch">{t("importantInfo")}</h3>
         <ul className="space-y-2 text-parch/85">
-          <li className="flex items-start gap-2">
-            <span className="text-gold mt-1">•</span>
-            <span>
-              {t("infoOneUse")}
-            </span>
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="text-gold mt-1">•</span>
-            <span>
-              {t("infoExpire")}
-            </span>
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="text-gold mt-1">•</span>
-            <span>
-              {t("infoAutoCredit")}
-            </span>
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="text-gold mt-1">•</span>
-            <span>
-              {t("infoNotWorking")}
-            </span>
-          </li>
+          {[t("infoOneUse"), t("infoExpire"), t("infoAutoCredit"), t("infoNotWorking")].map((info, i) => (
+            <li key={i} className="flex items-start gap-2">
+              <span className="mt-1 text-gold">◇</span>
+              <span>{info}</span>
+            </li>
+          ))}
         </ul>
-      </div>
+      </DnaPanel>
     </div>
   );
 }

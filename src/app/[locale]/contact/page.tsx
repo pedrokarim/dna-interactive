@@ -1,423 +1,215 @@
 "use client";
 
 import { useState } from "react";
-import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
-import { SITE_CONFIG, ASSETS_PATHS, NAVIGATION, CONTACT_INFO, CREATOR_INFO, LEGAL_INFO } from "@/lib/constants";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
-import MobileMenu from "@/components/MobileMenu";
+import { CONTACT_INFO } from "@/lib/constants";
+import { DnaPanel } from "@/components/dna/Panel";
+import { DnaDivider } from "@/components/dna/Divider";
+
+const INPUT_CLASS =
+  "w-full rounded-sm border border-gold/30 bg-ink/40 px-4 py-3 text-parch placeholder-muted-2 outline-none transition-colors focus:border-gold focus:ring-1 focus:ring-gold/60";
 
 export default function ContactPage() {
-  const t = useTranslations('contact');
-  const tn = useTranslations('nav');
-  const tc = useTranslations('common');
+  const t = useTranslations("contact");
   const { executeRecaptcha } = useGoogleReCaptcha();
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: ""
-  });
-
+  const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{
-    type: 'success' | 'error' | null;
+    type: "success" | "error" | null;
     message: string;
-  }>({ type: null, message: '' });
+  }>({ type: null, message: "" });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setSubmitStatus({ type: null, message: '' });
+    setSubmitStatus({ type: null, message: "" });
 
     try {
-      // Vérifier si reCAPTCHA est disponible
       if (!executeRecaptcha) {
-        throw new Error(t('errorRecaptcha'));
+        throw new Error(t("errorRecaptcha"));
       }
-
-      // Obtenir le token reCAPTCHA
-      const recaptchaToken = await executeRecaptcha('contact_form');
-
-      // Préparer les données à envoyer
-      const dataToSend = {
-        ...formData,
-        recaptchaToken,
-      };
-
-      // Envoyer la requête à l'API
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(dataToSend),
+      const recaptchaToken = await executeRecaptcha("contact_form");
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...formData, recaptchaToken }),
       });
-
       const result = await response.json();
 
       if (response.ok) {
-        // Succès
-        setSubmitStatus({
-          type: 'success',
-          message: t('successMessage')
-        });
-
-        // Réinitialiser le formulaire
-        setFormData({
-          name: "",
-          email: "",
-          subject: "",
-          message: ""
-        });
+        setSubmitStatus({ type: "success", message: t("successMessage") });
+        setFormData({ name: "", email: "", subject: "", message: "" });
       } else {
-        // Erreur
-        setSubmitStatus({
-          type: 'error',
-          message: result.error || t('errorGeneric')
-        });
+        setSubmitStatus({ type: "error", message: result.error || t("errorGeneric") });
       }
     } catch (error) {
-      console.error('Erreur lors de l\'envoi:', error);
+      console.error("Erreur lors de l'envoi:", error);
       setSubmitStatus({
-        type: 'error',
-        message: error instanceof Error ? error.message : t('errorUnexpected')
+        type: "error",
+        message: error instanceof Error ? error.message : t("errorUnexpected"),
       });
     } finally {
       setIsSubmitting(false);
     }
   };
 
+  const infoRows = [
+    {
+      d: "M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
+      title: t("emailLabel"),
+      value: CONTACT_INFO.email,
+    },
+    {
+      d: "M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
+      title: t("supportLabel"),
+      value: t("supportDescription"),
+    },
+    {
+      d: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z",
+      title: t("responseTimeLabel"),
+      value: t("responseTimeValue"),
+    },
+  ];
+
   return (
-    <div className="min-h-screen bg-linear-to-br from-ink via-panel to-ink text-parch">
-      {/* Header */}
-      <header className="relative z-50 bg-ink/80 backdrop-blur-sm border-b border-gold/20">
-        <div className="container mx-auto px-4 md:px-6 py-3 md:py-4">
-          <div className="flex items-center justify-between gap-3">
-            <Link href={NAVIGATION.home} className="flex items-center gap-2 md:gap-3 min-w-0">
-              <img
-                src={ASSETS_PATHS.logo}
-                alt={`${SITE_CONFIG.name} Logo`}
-                width={40}
-                height={40}
-                className="h-9 md:h-10 w-auto"
-              />
-              <div className="min-w-0">
-                <div className="text-lg md:text-2xl font-bold text-parch flex items-center gap-2 truncate">
-                  {SITE_CONFIG.name}
-                </div>
-                <p className="text-xs text-muted truncate">{SITE_CONFIG.tagline}</p>
-              </div>
-            </Link>
+    <div className="mx-auto max-w-4xl">
+      <div className="mb-12 text-center">
+        <p className="font-caps text-[0.7rem] uppercase tracking-[0.34em] text-gold/80">{t("title")}</p>
+        <h1 className="mt-3 font-display text-4xl text-parch md:text-5xl">{t("title")}</h1>
+        <DnaDivider className="mx-auto mt-5 max-w-[14rem]" />
+        <p className="mt-5 text-lg text-parch/80">{t("subtitle")}</p>
+      </div>
 
-            <MobileMenu />
-
-            <div className="hidden md:flex items-center gap-6">
-              <nav className="flex items-center space-x-8">
-                <Link
-                  href={NAVIGATION.home}
-                  className="text-parch/85 hover:text-gold transition-colors"
-                >
-                  {tn('home')}
-                </Link>
-                <Link
-                  href={NAVIGATION.map}
-                  className="text-parch/85 hover:text-gold transition-colors"
-                >
-                  {tn('map')}
-                </Link>
-                <Link
-                  href={NAVIGATION.items}
-                  className="text-parch/85 hover:text-gold transition-colors"
-                >
-                  {tn('items')}
-                </Link>
-                <Link
-                  href={NAVIGATION.about}
-                  className="text-parch/85 hover:text-gold transition-colors"
-                >
-                  {tn('about')}
-                </Link>
-                <Link
-                  href={NAVIGATION.support}
-                  className="text-parch/85 hover:text-gold transition-colors"
-                >
-                  {tn('support')}
-                </Link>
-              </nav>
-              <LanguageSwitcher />
-            </div>
-          </div>
-        </div>
-      </header>
-
-      {/* Contact Form Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h1 className="text-4xl font-bold text-parch mb-4">{t('title')}</h1>
-              <p className="text-xl text-muted">
-                {t('subtitle')}
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-12">
-              {/* Contact Info */}
-              <div className="space-y-8">
-                <div className="bg-linear-to-br from-panel/50 to-panel/50 backdrop-blur-sm border border-gold/20 rounded-xl p-8">
-                  <h3 className="text-2xl font-semibold text-parch mb-6">{t('infoTitle')}</h3>
-
-                  <div className="space-y-6">
-                    <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-linear-to-br from-gold to-gold-deep rounded-lg flex items-center justify-center flex-shrink-0">
-                        <svg className="w-6 h-6 text-parch" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h4 className="text-lg font-medium text-parch mb-1">{t('emailLabel')}</h4>
-                        <p className="text-muted">{CONTACT_INFO.email}</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-linear-to-br from-gold to-gold-deep rounded-lg flex items-center justify-center flex-shrink-0">
-                        <svg className="w-6 h-6 text-parch" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h4 className="text-lg font-medium text-parch mb-1">{t('supportLabel')}</h4>
-                        <p className="text-muted">
-                          {t('supportDescription')}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-linear-to-br from-gold to-gold-deep rounded-lg flex items-center justify-center flex-shrink-0">
-                        <svg className="w-6 h-6 text-parch" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h4 className="text-lg font-medium text-parch mb-1">{t('responseTimeLabel')}</h4>
-                        <p className="text-muted">{t('responseTimeValue')}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="bg-linear-to-br from-panel/50 to-panel/50 backdrop-blur-sm border border-gold/20 rounded-xl p-8">
-                  <h3 className="text-2xl font-semibold text-parch mb-4">{t('joinCommunityTitle')}</h3>
-                  <p className="text-muted mb-6">
-                    {t('joinCommunityDescription')}
-                  </p>
-                  <a
-                    href={CONTACT_INFO.discord.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center px-6 py-3 bg-gold hover:bg-gold rounded-lg font-medium text-parch transition-colors"
-                  >
-                    <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.120.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z"/>
+      <div className="grid gap-8 md:grid-cols-2 md:gap-12">
+        {/* Infos */}
+        <div className="space-y-8">
+          <DnaPanel className="p-7 md:p-8">
+            <h2 className="mb-6 font-display text-2xl text-parch">{t("infoTitle")}</h2>
+            <div className="space-y-6">
+              {infoRows.map((row) => (
+                <div key={row.title} className="flex items-start gap-4">
+                  <span className="grid h-11 w-11 shrink-0 place-items-center border border-gold/30 bg-gold/10 text-gold">
+                    <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d={row.d} />
                     </svg>
-                    {CONTACT_INFO.discord.label}
-                  </a>
+                  </span>
+                  <div>
+                    <h4 className="font-medium text-parch">{row.title}</h4>
+                    <p className="mt-0.5 text-muted">{row.value}</p>
+                  </div>
                 </div>
-              </div>
-
-              {/* Contact Form */}
-              <div className="bg-linear-to-br from-panel/50 to-panel/50 backdrop-blur-sm border border-gold/20 rounded-xl p-8">
-                <h3 className="text-2xl font-semibold text-parch mb-6">{t('formTitle')}</h3>
-
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid sm:grid-cols-2 gap-6">
-                    <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-parch/85 mb-2">
-                        {t('labelName')}
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        className="w-full bg-white/10 border border-gold/30 rounded-lg px-4 py-3 text-parch placeholder-muted-2 focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold"
-                        placeholder={t('placeholderName')}
-                        required
-                      />
-                    </div>
-
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-parch/85 mb-2">
-                        {t('labelEmail')}
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        className="w-full bg-white/10 border border-gold/30 rounded-lg px-4 py-3 text-parch placeholder-muted-2 focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold"
-                        placeholder={t('placeholderEmail')}
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label htmlFor="subject" className="block text-sm font-medium text-parch/85 mb-2">
-                      {t('labelSubject')}
-                    </label>
-                    <select
-                      id="subject"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      className="w-full bg-white/10 border border-gold/30 rounded-lg px-4 py-3 text-parch focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold"
-                      required
-                    >
-                      <option value="">{t('placeholderSubject')}</option>
-                      <option value="bug">{t('subjectBug')}</option>
-                      <option value="suggestion">{t('subjectSuggestion')}</option>
-                      <option value="question">{t('subjectQuestion')}</option>
-                      <option value="partnership">{t('subjectPartnership')}</option>
-                      <option value="other">{t('subjectOther')}</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-parch/85 mb-2">
-                      {t('labelMessage')}
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      rows={6}
-                      className="w-full bg-white/10 border border-gold/30 rounded-lg px-4 py-3 text-parch placeholder-muted-2 focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold resize-none"
-                      placeholder={t('placeholderMessage')}
-                      required
-                    />
-                  </div>
-
-                  {/* Messages de statut */}
-                  {submitStatus.type && (
-                    <div className={`p-4 rounded-lg mb-4 ${
-                      submitStatus.type === 'success'
-                        ? 'bg-anemo/10 border border-anemo/20 text-anemo'
-                        : 'bg-crimson-bright/10 border border-crimson-bright/20 text-crimson-bright'
-                    }`}>
-                      <div className="flex items-center">
-                        {submitStatus.type === 'success' ? (
-                          <svg className="w-5 h-5 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                          </svg>
-                        ) : (
-                          <svg className="w-5 h-5 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
-                          </svg>
-                        )}
-                        <span>{submitStatus.message}</span>
-                      </div>
-                    </div>
-                  )}
-
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className={`w-full rounded-lg py-3 px-6 font-semibold text-parch transition-all duration-300 transform ${
-                      isSubmitting
-                        ? 'bg-panel cursor-not-allowed'
-                        : 'bg-linear-to-r from-gold-bright to-gold hover:from-gold hover:to-gold-deep hover:scale-105'
-                    }`}
-                  >
-                    {isSubmitting ? (
-                      <div className="flex items-center justify-center">
-                        <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-parch" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                        </svg>
-                        {t('submitting')}
-                      </div>
-                    ) : (
-                      t('submitButton')
-                    )}
-                  </button>
-                </form>
-
-                <p className="text-sm text-muted-2 mt-4 text-center">
-                  {t('requiredFieldsNote')}
-                </p>
-              </div>
+              ))}
             </div>
-          </div>
+          </DnaPanel>
+
+          <DnaPanel className="p-7 md:p-8">
+            <h2 className="mb-3 font-display text-2xl text-parch">{t("joinCommunityTitle")}</h2>
+            <p className="mb-6 text-muted">{t("joinCommunityDescription")}</p>
+            <a
+              href={CONTACT_INFO.discord.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="dna-shine inline-flex items-center gap-2 rounded-sm border border-gold bg-gradient-to-b from-gold-deep/40 to-ink/70 px-6 py-3 font-medium text-gold-bright transition-all duration-200 hover:-translate-y-px hover:border-gold-bright hover:text-[#fff6e6]"
+            >
+              <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden>
+                <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.120.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z" />
+              </svg>
+              {CONTACT_INFO.discord.label}
+            </a>
+          </DnaPanel>
         </div>
-      </section>
 
-      {/* Footer */}
-      <footer className="bg-ink border-t border-gold/20 py-12">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row items-center justify-between">
-            <div className="flex items-center gap-3 mb-4 md:mb-0">
-              <img
-                src={ASSETS_PATHS.logo}
-                alt={`${SITE_CONFIG.name} Logo`}
-                className="h-8 w-auto"
-              />
-              <span className="text-parch font-semibold">{SITE_CONFIG.name}</span>
+        {/* Formulaire */}
+        <DnaPanel className="p-7 md:p-8">
+          <h2 className="mb-6 font-display text-2xl text-parch">{t("formTitle")}</h2>
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="grid gap-6 sm:grid-cols-2">
+              <div>
+                <label htmlFor="name" className="mb-2 block font-caps text-[0.62rem] uppercase tracking-[0.16em] text-parch/80">
+                  {t("labelName")}
+                </label>
+                <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} className={INPUT_CLASS} placeholder={t("placeholderName")} required />
+              </div>
+              <div>
+                <label htmlFor="email" className="mb-2 block font-caps text-[0.62rem] uppercase tracking-[0.16em] text-parch/80">
+                  {t("labelEmail")}
+                </label>
+                <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} className={INPUT_CLASS} placeholder={t("placeholderEmail")} required />
+              </div>
             </div>
 
-            <nav className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-parch/85 md:gap-x-6">
-              <Link href={NAVIGATION.home} className="hover:text-gold transition-colors">
-                {tn('home')}
-              </Link>
-              <Link href={NAVIGATION.map} className="hover:text-gold transition-colors">
-                {tn('map')}
-              </Link>
-              <Link href={NAVIGATION.items} className="hover:text-gold transition-colors">
-                {tn('items')}
-              </Link>
-              <Link href={NAVIGATION.about} className="hover:text-gold transition-colors">
-                {tn('about')}
-              </Link>
-              <Link href={NAVIGATION.support} className="hover:text-gold transition-colors">
-                {tn('support')}
-              </Link>
-            </nav>
-          </div>
+            <div>
+              <label htmlFor="subject" className="mb-2 block font-caps text-[0.62rem] uppercase tracking-[0.16em] text-parch/80">
+                {t("labelSubject")}
+              </label>
+              <select id="subject" name="subject" value={formData.subject} onChange={handleChange} className={INPUT_CLASS} required>
+                <option value="">{t("placeholderSubject")}</option>
+                <option value="bug">{t("subjectBug")}</option>
+                <option value="suggestion">{t("subjectSuggestion")}</option>
+                <option value="question">{t("subjectQuestion")}</option>
+                <option value="partnership">{t("subjectPartnership")}</option>
+                <option value="other">{t("subjectOther")}</option>
+              </select>
+            </div>
 
-          <div className="mt-8 pt-8 border-t border-gold/10 text-center text-sm text-muted-2">
-            <p>{LEGAL_INFO.copyright}</p>
-            <p className="mt-2">
-              {LEGAL_INFO.disclaimer}
-              <a href={CONTACT_INFO.ascencia.url} target="_blank" rel="noopener noreferrer" className="text-gold hover:text-gold ml-1">
-                {LEGAL_INFO.ascenciaCredit}
-              </a>
-            </p>
-            <p className="mt-3">
-              <Link
-                href="/changelog"
-                className="text-gold hover:text-gold transition-colors"
+            <div>
+              <label htmlFor="message" className="mb-2 block font-caps text-[0.62rem] uppercase tracking-[0.16em] text-parch/80">
+                {t("labelMessage")}
+              </label>
+              <textarea id="message" name="message" value={formData.message} onChange={handleChange} rows={6} className={`${INPUT_CLASS} resize-none`} placeholder={t("placeholderMessage")} required />
+            </div>
+
+            {submitStatus.type && (
+              <div
+                className={`flex items-center gap-2 rounded-sm border p-4 text-sm ${
+                  submitStatus.type === "success"
+                    ? "border-anemo/30 bg-anemo/10 text-anemo"
+                    : "border-crimson-bright/30 bg-crimson/10 text-crimson-bright"
+                }`}
               >
-                {tc('viewChangelog')}
-              </Link>
-            </p>
-          </div>
-        </div>
-      </footer>
+                {submitStatus.type === "success" ? (
+                  <svg className="h-5 w-5 shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                ) : (
+                  <svg className="h-5 w-5 shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
+                    <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                  </svg>
+                )}
+                <span>{submitStatus.message}</span>
+              </div>
+            )}
+
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="dna-shine inline-flex w-full items-center justify-center gap-2 rounded-sm border border-gold bg-gradient-to-b from-gold-deep/40 to-ink/70 px-6 py-3 font-medium text-gold-bright transition-all duration-200 hover:-translate-y-px hover:border-gold-bright hover:text-[#fff6e6] disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              {isSubmitting ? (
+                <>
+                  <svg className="-ml-1 h-5 w-5 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" aria-hidden>
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                  </svg>
+                  {t("submitting")}
+                </>
+              ) : (
+                t("submitButton")
+              )}
+            </button>
+          </form>
+
+          <p className="mt-4 text-center text-sm text-muted-2">{t("requiredFieldsNote")}</p>
+        </DnaPanel>
+      </div>
     </div>
   );
 }
