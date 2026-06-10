@@ -95,14 +95,14 @@
         }
       ],
       "affinity": {
-        "FR": "Volonte de Quetzalcoatl",
+        "FR": "Décision de Quetzalcoatl",
         "EN": "Feathered Serpent's Volition"
       },
       "note": {
         "FR": "Focus DEF + Duree de competence. 3x Standfast Eternity pour maximiser le scaling DEF.",
         "EN": "Focus DEF + Skill Duration. 3x Standfast Eternity to maximize DEF scaling."
       },
-      "centerItemId": "mods-31502"
+      "centerItemId": "mods-51746"
     },
     "statsPriority": [
       "DEF",

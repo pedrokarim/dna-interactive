@@ -95,14 +95,14 @@
         }
       ],
       "affinity": {
-        "FR": "Pouvoir de Quetzalcoatl",
+        "FR": "Décision de Quetzalcoatl",
         "EN": "Feathered Serpent's Volition"
       },
       "note": {
         "FR": "Focus Degats de competence + Intensite + Morale. Tolerance 152/100.",
         "EN": "Focus Skill Damage + Intensity + Morale. Tolerance 152/100."
       },
-      "centerItemId": "mods-31502"
+      "centerItemId": "mods-51746"
     },
     "statsPriority": [
       "SkillDmg",
