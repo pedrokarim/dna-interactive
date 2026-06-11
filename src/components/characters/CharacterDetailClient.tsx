@@ -1876,8 +1876,8 @@ export default function CharacterDetailClient({
               <h1 className="mt-0.5 flex items-center gap-2.5 font-display text-4xl font-semibold text-parch md:text-5xl [text-shadow:0_2px_24px_rgba(0,0,0,0.85)]">
                 {displayName}
                 {elementIcon ? (
-                  <span className="inline-grid h-8 w-8 shrink-0 place-items-center rounded-full border bg-ink/60" style={{ borderColor: elHex, boxShadow: `0 0 12px -2px ${elHex}` }}>
-                    <img src={elementIcon} alt={character.element.label} className="h-[60%] w-[60%] object-contain" />
+                  <span className="inline-grid h-9 w-9 shrink-0 place-items-center rounded-full border bg-ink/60 md:h-10 md:w-10" style={{ borderColor: elHex, boxShadow: `0 0 13px -2px ${elHex}` }}>
+                    <img src={elementIcon} alt={character.element.label} className="h-[62%] w-[62%] object-contain" />
                   </span>
                 ) : null}
               </h1>

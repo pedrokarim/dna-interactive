@@ -513,11 +513,11 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
             <div className="mt-2 flex flex-wrap items-center gap-1.5">
               {elementalAffinity ? (
                 <span
-                  className="inline-flex items-center gap-1.5 border px-2.5 py-1 font-caps text-[0.56rem] uppercase tracking-[0.14em]"
+                  className="inline-flex items-center gap-1.5 border px-2.5 py-1 font-caps text-[0.58rem] uppercase tracking-[0.14em]"
                   style={{ borderColor: `${elHex}66`, background: `${elHex}1f`, color: elHex }}
                 >
                   {elementalAffinity.iconSrc ? (
-                    <img src={elementalAffinity.iconSrc} alt="" className="h-3.5 w-3.5 object-contain" />
+                    <img src={elementalAffinity.iconSrc} alt="" className="h-5 w-5 object-contain" />
                   ) : null}
                   {elementalAffinity.label}
                 </span>
@@ -578,7 +578,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
                   value={
                     <span className="inline-flex items-center gap-1.5">
                       {affinityIconSrc ? (
-                        <img src={affinityIconSrc} alt="" className="h-4 w-4 object-contain" />
+                        <img src={affinityIconSrc} alt="" className="h-5 w-5 object-contain" />
                       ) : null}
                       {translation.affinityName ?? `Polarité ${item.stats.polarity ?? "N/A"}`}
                       {item.affinity.char ? ` (${item.affinity.char})` : ""}
@@ -593,7 +593,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
                   value={
                     <span className="inline-flex items-center gap-1.5">
                       {elementalAffinity.iconSrc ? (
-                        <img src={elementalAffinity.iconSrc} alt="" className="h-4 w-4 object-contain" />
+                        <img src={elementalAffinity.iconSrc} alt="" className="h-5 w-5 object-contain" />
                       ) : null}
                       {elementalAffinity.label}
                     </span>
@@ -837,7 +837,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
                         <img
                           src={elementalAffinity.iconSrc}
                           alt={elementalAffinity.label}
-                          className="h-4 w-4 object-contain"
+                          className="h-5 w-5 object-contain"
                         />
                       ) : null}
                       {elementalAffinity.label}

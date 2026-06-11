@@ -55,7 +55,7 @@ export function DnaCharacterCard({ name, subtitle, element, elements, rarity = 5
       <div className="absolute inset-x-2 top-2 z-[3] flex items-start justify-between">
         <span className="flex items-center gap-1">
           {elementList.map((e) => (
-            <DnaElementBadge key={e} element={e} size={26} />
+            <DnaElementBadge key={e} element={e} size={30} />
           ))}
         </span>
         {topRight}

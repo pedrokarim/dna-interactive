@@ -610,7 +610,7 @@ export default function CharactersGridClient({
                   )}
 
                   {elements.length > 0 ? (
-                    <span className="absolute left-2 top-2 inline-flex items-center gap-0.5 rounded-full border border-white/15 bg-ink/70 px-1.5 py-1 backdrop-blur-sm">
+                    <span className="absolute left-2 top-2 inline-flex items-center gap-0.5 rounded-full border border-white/15 bg-ink/70 px-2 py-1.5 backdrop-blur-sm">
                       {elements.map((el) => {
                         const icon = ELEMENT_ICONS[el.key];
                         if (!icon) return null;
@@ -619,7 +619,7 @@ export default function CharactersGridClient({
                             key={el.key}
                             src={icon}
                             alt={el.label}
-                            className="h-4 w-4 object-contain"
+                            className="h-6 w-6 object-contain"
                           />
                         );
                       })}
@@ -762,7 +762,7 @@ export default function CharactersGridClient({
                       </div>
                     )}
                     {elements.length > 0 ? (
-                      <span className="absolute -bottom-1 -right-1 inline-flex items-center gap-0.5 rounded-full border border-white/10 bg-ink/90 px-0.5 py-0.5">
+                      <span className="absolute -bottom-1 -right-1 inline-flex items-center gap-0.5 rounded-full border border-white/10 bg-ink/90 px-1 py-1">
                         {elements.map((el) => {
                           const icon = ELEMENT_ICONS[el.key];
                           if (!icon) return null;
@@ -771,7 +771,7 @@ export default function CharactersGridClient({
                               key={el.key}
                               src={icon}
                               alt={el.label}
-                              className="h-3 w-3 object-contain"
+                              className="h-4 w-4 object-contain"
                             />
                           );
                         })}
@@ -807,7 +807,7 @@ export default function CharactersGridClient({
                                 src={icon}
                                 alt=""
                                 aria-hidden="true"
-                                className="h-3 w-3 object-contain"
+                                className="h-4 w-4 object-contain"
                               />
                             ) : null}
                             {el.label}

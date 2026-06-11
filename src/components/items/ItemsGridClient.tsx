@@ -1144,7 +1144,7 @@ export default function ItemsGridClient({
                                 src={elementalAffinity.iconSrc}
                                 alt=""
                                 aria-hidden="true"
-                                className="h-5 w-5 shrink-0 object-contain"
+                                className="h-6 w-6 shrink-0 object-contain"
                               />
                             ) : null}
                             <span className="min-w-0 truncate" title={displayName}>
@@ -1208,7 +1208,7 @@ export default function ItemsGridClient({
                         <img
                           src={elementalAffinity.iconSrc}
                           alt={elementalAffinity.label}
-                          className="h-3.5 w-3.5 object-contain"
+                          className="h-4 w-4 object-contain"
                         />
                       ) : null}
                       {elementalAffinity.label}
@@ -1293,7 +1293,7 @@ export default function ItemsGridClient({
                           src={elementalAffinity.iconSrc}
                           alt=""
                           aria-hidden="true"
-                          className="h-4 w-4 shrink-0 object-contain"
+                          className="h-5 w-5 shrink-0 object-contain"
                         />
                       ) : null}
                       <span className="truncate" title={displayName}>
@@ -1307,7 +1307,7 @@ export default function ItemsGridClient({
                             <img
                               src={elementalAffinity.iconSrc}
                               alt={elementalAffinity.label}
-                              className="h-3.5 w-3.5 object-contain"
+                              className="h-4 w-4 object-contain"
                             />
                           ) : null}
                           {elementalAffinity.label}
@@ -1382,11 +1382,11 @@ export default function ItemsGridClient({
                     className="max-h-full max-w-full object-contain transition-transform duration-200 group-hover:scale-105"
                   />
                   {elementalAffinity?.iconSrc ? (
-                    <span className="absolute left-0 top-0 inline-flex h-6 w-6 items-center justify-center rounded-full border border-white/15 bg-ink/70 backdrop-blur-sm">
+                    <span className="absolute left-0 top-0 inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/15 bg-ink/70 backdrop-blur-sm">
                       <img
                         src={elementalAffinity.iconSrc}
                         alt={elementalAffinity.label}
-                        className="h-4 w-4 object-contain"
+                        className="h-5 w-5 object-contain"
                       />
                     </span>
                   ) : null}
