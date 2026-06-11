@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   MapContainer,
   ImageOverlay,
@@ -9,120 +9,48 @@ import {
   useMap,
   ZoomControl,
 } from "react-leaflet";
-import { CRS, Icon, LatLngTuple } from "leaflet";
+import { CRS, DivIcon, LatLngTuple } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import Loading from "@/components/Loading";
 import ImageZoomModal from "@/components/ImageZoomModal";
+import { cn, DnaCornerBrackets } from "@/components/dna";
 
-// Cache global pour les icônes générées (avec état trouvé/non trouvé)
-const iconCache = new Map<string, Promise<Icon>>();
+// Cache global des icônes (DivIcon synchrones, par URL + état trouvé/non trouvé).
+// On utilise des DivIcon (HTML+CSS) au lieu d'un canvas->toDataURL asynchrone :
+//  - création SYNCHRONE -> plus d'attente bloquante de toutes les images avant
+//    d'afficher le moindre marqueur (les <img> se chargent en flux dans le DOM) ;
+//  - même instance réutilisée pour tous les marqueurs d'une même icône/état
+//    -> au clic (marqué/non marqué) seul le marqueur concerné est mis à jour.
+const iconCache = new Map<string, DivIcon>();
 
-// Fonction pour créer une icône personnalisée avec cercle
-const createCustomIcon = (
-  iconUrl: string,
-  size: [number, number] = [32, 32],
-  isFound: boolean = false
-) => {
-  // Clé du cache inclut l'URL et l'état
+const getMarkerIcon = (iconUrl: string, isFound: boolean): DivIcon => {
   const cacheKey = `${iconUrl}-${isFound}`;
+  const cached = iconCache.get(cacheKey);
+  if (cached) return cached;
 
-  // Vérifier le cache d'abord
-  if (iconCache.has(cacheKey)) {
-    return iconCache.get(cacheKey)!;
-  }
+  // Couleurs conservées à l'identique de l'ancien rendu canvas
+  const bg = isFound ? "rgba(220,38,38,0.7)" : "rgba(67,56,202,0.9)";
+  const border = isFound ? "rgba(239,68,68,0.85)" : "rgba(99,102,241,1)";
+  const src = iconUrl || "/marker-default.png";
 
-  // Créer la promesse et la mettre en cache
-  const iconPromise = new Promise<Icon>((resolve) => {
-    // Créer un canvas pour dessiner l'icône avec un cercle de fond
-    const canvas = document.createElement("canvas");
-    const ctx = canvas.getContext("2d");
-    canvas.width = size[0];
-    canvas.height = size[1];
+  const html =
+    `<span style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;` +
+    `border-radius:50%;border:2px solid ${border};background:${bg};` +
+    `box-shadow:inset 0 0 0 2px rgba(148,163,184,0.4),0 2px 6px rgba(0,0,0,0.45)">` +
+    `<img src="${src}" alt="" draggable="false" ` +
+    `style="width:22px;height:22px;object-fit:contain;pointer-events:none" ` +
+    `onerror="this.style.visibility='hidden'"/></span>`;
 
-    if (ctx) {
-      // Cercle de fond avec couleur selon l'état du marqueur
-      if (isFound) {
-        // Marqueur trouvé : fond rouge/orange plus transparent
-        ctx.fillStyle = "rgba(220, 38, 38, 0.7)"; // crimson-bright
-        ctx.strokeStyle = "rgba(239, 68, 68, 0.8)"; // crimson-bright
-      } else {
-        // Marqueur actif : fond indigo/bleu vif pour contraste
-        ctx.fillStyle = "rgba(67, 56, 202, 0.9)"; // gold
-        ctx.strokeStyle = "rgba(99, 102, 241, 1)"; // gold
-      }
-      ctx.lineWidth = 2;
-
-      // Cercle principal
-      ctx.beginPath();
-      ctx.arc(size[0] / 2, size[1] / 2, size[0] / 2 - 2, 0, 2 * Math.PI);
-      ctx.fill();
-      ctx.stroke();
-
-      // Cercle intérieur plus clair pour créer un effet 3D
-      ctx.strokeStyle = "rgba(148, 163, 184, 0.4)";
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.arc(size[0] / 2, size[1] / 2, size[0] / 2 - 4, 0, 2 * Math.PI);
-      ctx.stroke();
-    }
-
-    // Charger l'image de l'icône
-    const img = new Image();
-    img.crossOrigin = "anonymous";
-
-    img.onload = () => {
-      if (ctx) {
-        // Dessiner l'icône au centre du cercle
-        const iconSize = size[0] - 8; // Laisser un peu d'espace autour
-        const iconX = (size[0] - iconSize) / 2;
-        const iconY = (size[1] - iconSize) / 2;
-
-        ctx.drawImage(img, iconX, iconY, iconSize, iconSize);
-      }
-
-      const dataUrl = canvas.toDataURL();
-
-      const icon = new Icon({
-        iconUrl: dataUrl,
-        iconSize: size,
-        iconAnchor: [size[0] / 2, size[1]], // Point d'ancrage au centre bas
-        popupAnchor: [0, -size[1]], // Popup au-dessus du marqueur
-        className: "custom-marker-icon",
-      });
-
-      resolve(icon);
-    };
-
-    img.onerror = () => {
-      // Fallback si l'image ne charge pas
-      if (ctx) {
-        ctx.fillStyle = "#ff6b6b";
-        ctx.fillRect(0, 0, size[0], size[1]);
-        ctx.fillStyle = "#000";
-        ctx.font = "16px Arial";
-        ctx.textAlign = "center";
-        ctx.fillText("?", size[0] / 2, size[1] / 2 + 6);
-      }
-
-      const dataUrl = canvas.toDataURL();
-
-      const icon = new Icon({
-        iconUrl: dataUrl,
-        iconSize: size,
-        iconAnchor: [size[0] / 2, size[1]],
-        popupAnchor: [0, -size[1]],
-        className: "custom-marker-icon",
-      });
-
-      resolve(icon);
-    };
-
-    img.src = iconUrl || "/marker-default.png";
+  const icon = new DivIcon({
+    html,
+    className: "dna-marker", // remplace .leaflet-div-icon (pas de cadre blanc par défaut)
+    iconSize: [32, 32],
+    iconAnchor: [16, 32], // ancrage bas-centre, identique à l'ancien
+    popupAnchor: [0, -32],
   });
 
-  // Mettre en cache et retourner
-  iconCache.set(cacheKey, iconPromise);
-  return iconPromise;
+  iconCache.set(cacheKey, icon);
+  return icon;
 };
 
 // Types
@@ -240,175 +168,163 @@ export default function MapComponent({
     setIsClient(true);
   }, []);
 
+  // Données structurelles des marqueurs (positions STABLES entre rendus) :
+  // ne dépend que de la carte + des catégories visibles, PAS de l'état trouvé.
+  // -> cliquer un marqueur ne recalcule pas les positions de tous les autres.
+  const markerData = useMemo(() => {
+    const out: Array<{
+      position: LatLngTuple;
+      key: string;
+      iconUrl: string;
+      category: any;
+      marker: any;
+      instance: any;
+    }> = [];
+
+    if (!selectedMap?.legend) return out;
+
+    for (const category of selectedMap.legend) {
+      if (!category.markers) continue;
+      for (const marker of category.markers) {
+        const subCategoryKey = marker.name.toLowerCase().trim();
+        if (visibleCategories[subCategoryKey] === false) continue;
+        if (!marker.markers) continue;
+        for (const instance of marker.markers) {
+          out.push({
+            // Y inversé car Leaflet a Y=0 en haut
+            position: [
+              selectedMap.imageSize.height - instance.position.y,
+              instance.position.x,
+            ],
+            // selectedMap.id + category.type pour éviter les collisions de clé
+            key: `${selectedMap.id}-${category.type}-${marker.id}-${instance.id}`,
+            iconUrl: marker.icon,
+            category,
+            marker,
+            instance,
+          });
+        }
+      }
+    }
+
+    return out;
+  }, [selectedMap, visibleCategories]);
+
   useEffect(() => {
     if (!selectedMap) return;
 
-    const loadMarkers = async () => {
+    const loadMarkers = () => {
       setLoading(true);
 
-      // Étape 1: Collecter tous les marqueurs visibles et leurs icônes nécessaires
-      const markerData: Array<{
-        position: LatLngTuple;
-        key: string;
-        iconUrl: string;
-        isMarked: boolean;
-        category: any;
-        marker: any;
-        instance: any;
-      }> = [];
-
-      if (selectedMap.legend) {
-        for (const category of selectedMap.legend) {
-          if (category.markers) {
-            for (const marker of category.markers) {
-              // Vérifier si cette sous-catégorie spécifique est visible
-              // Utiliser le nom de la sous-catégorie comme clé (comme dans la page map)
-              const subCategoryKey = marker.name.toLowerCase().trim();
-              const isSubCategoryVisible =
-                visibleCategories[subCategoryKey] !== false;
-
-              if (isSubCategoryVisible && marker.markers) {
-                for (const instance of marker.markers) {
-                  // Convertir les coordonnées (Y inversé car Leaflet a Y=0 en haut)
-                  const position: LatLngTuple = [
-                    selectedMap.imageSize.height - instance.position.y,
-                    instance.position.x,
-                  ];
-
-                  // Utiliser category.type au lieu de category.id, et inclure selectedMap.id pour éviter les collisions
-                  const markerKey = `${selectedMap.id}-${category.type}-${marker.id}-${instance.id}`;
-                  const isMarked = markedMarkers.has(markerKey);
-
-                  // Ne pas afficher les marqueurs trouvés si l'option est activée
-                  if (hideFoundMarkers && isMarked) {
-                    continue;
-                  }
-
-                  // Collecter les données du marqueur
-                  markerData.push({
-                    position,
-                    key: markerKey,
-                    iconUrl: marker.icon,
-                    isMarked,
-                    category,
-                    marker,
-                    instance,
-                  });
-                }
-              }
-            }
-          }
-        }
-      }
-
-      // Étape 2: Collecter les URLs d'icônes uniques avec leurs états
-      const iconStatesMap = new Map<string, Set<boolean>>();
-      markerData.forEach((data) => {
-        if (!iconStatesMap.has(data.iconUrl)) {
-          iconStatesMap.set(data.iconUrl, new Set());
-        }
-        iconStatesMap.get(data.iconUrl)!.add(data.isMarked);
-      });
-
-      // Étape 3: Charger toutes les icônes nécessaires en parallèle (trouvé et non trouvé)
-      const iconPromises: Promise<Icon>[] = [];
-      const iconKeys: string[] = [];
-      iconStatesMap.forEach((states, url) => {
-        states.forEach((isFound) => {
-          const key = `${url}-${isFound}`;
-          iconKeys.push(key);
-          iconPromises.push(createCustomIcon(url, [32, 32], isFound));
-        });
-      });
-      const loadedIcons = await Promise.all(iconPromises);
-
-      // Étape 4: Créer un mapping clé -> Icon
-      const iconMap = new Map<string, Icon>();
-      iconKeys.forEach((key, index) => {
-        iconMap.set(key, loadedIcons[index]);
-      });
-
-      // Étape 5: Créer les marqueurs avec les icônes déjà chargées
+      // Construire les marqueurs depuis les données structurelles mémoïsées
+      // (positions stables). L'état trouvé/non-trouvé est appliqué ici : seul le
+      // marqueur basculé change d'icône/opacité, les autres gardent leurs refs.
       const newMarkers: React.JSX.Element[] = [];
 
       for (const data of markerData) {
-        // Récupérer l'icône avec l'état approprié
-        const iconKey = `${data.iconUrl}-${data.isMarked}`;
-        const customIcon = iconMap.get(iconKey)!;
+        const isMarked = markedMarkers.has(data.key);
+
+        // Ne pas afficher les marqueurs trouvés si l'option est activée
+        if (hideFoundMarkers && isMarked) {
+          continue;
+        }
+
+        const customIcon = getMarkerIcon(data.iconUrl, isMarked);
 
         newMarkers.push(
           <Marker
             key={data.key}
             position={data.position}
             icon={customIcon}
-            opacity={data.isMarked ? 0.6 : 1}
+            opacity={isMarked ? 0.6 : 1}
           >
             <Popup>
-              <div className="bg-ink/95 backdrop-blur-md rounded-lg p-4 min-w-[320px] border border-gold/40 shadow-[0_8px_24px_rgba(0,0,0,0.6)]">
-                <div className="flex items-center space-x-3 mb-4">
-                  <div className="w-12 h-12 rounded-lg border border-gold/40 shadow-sm bg-white/10 flex items-center justify-center">
+              {/* Cadre du marqueur — design system DNA (coins nets, liseré or,
+                  équerres ornementales). Les pins eux-mêmes ne sont pas touchés. */}
+              <div className="relative min-w-[320px] border border-line/30 bg-ink/95 p-4 backdrop-blur-md shadow-[0_8px_24px_rgba(0,0,0,0.6)]">
+                <DnaCornerBrackets size={14} />
+
+                {/* En-tête : catégorie */}
+                <div className="mb-3 flex items-center gap-3">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center border border-line/30 bg-white/5">
                     <img
                       src={data.category.icon}
                       alt={`Icône ${data.category.name} - Catégorie de marqueurs sur la carte interactive Duet Night Abyss`}
-                      className="max-w-full max-h-full object-contain"
+                      className="max-h-full max-w-full object-contain"
                       onError={(e) => {
                         e.currentTarget.style.display = "none";
                       }}
                     />
                   </div>
-                  <h3 className="font-bold text-parch text-lg">
-                    {data.category.name}
-                  </h3>
+                  <div className="min-w-0">
+                    <div className="font-caps text-[0.52rem] uppercase tracking-[0.28em] text-gold/70">
+                      Catégorie
+                    </div>
+                    <h3 className="truncate font-display text-lg leading-tight text-parch">
+                      {data.category.name}
+                    </h3>
+                  </div>
                 </div>
-                <div className="flex items-center space-x-3 mb-3 bg-panel/50 rounded-lg p-2 border border-gold/20">
-                  <div className="w-10 h-10 rounded-lg border border-gold/40 shadow-sm bg-white/10 flex items-center justify-center">
+
+                <div className="mb-3 h-px bg-gradient-to-r from-line/30 to-transparent" />
+
+                {/* Marqueur */}
+                <div className="mb-3 flex items-center gap-3 border border-line/20 bg-panel/50 p-2">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center border border-line/30 bg-white/5">
                     <img
                       src={data.marker.icon}
                       alt={`Icône ${data.marker.name} - Marqueur sur la carte interactive Duet Night Abyss`}
-                      className="max-w-full max-h-full object-contain"
+                      className="max-h-full max-w-full object-contain"
                       onError={(e) => {
                         e.currentTarget.style.display = "none";
                       }}
                     />
                   </div>
-                  <p className="font-semibold text-parch">{data.marker.name}</p>
-                </div>
-                <div className="text-sm text-parch/85 mb-4 bg-panel/30 rounded-md p-2 border border-gold/20">
-                  <p>
-                    <strong className="text-gold">Position:</strong> (
-                    {data.instance.position.x}, {data.instance.position.y})
+                  <p className="font-sans text-sm font-medium text-parch">
+                    {data.marker.name}
                   </p>
                 </div>
+
+                {/* Position — ligne d'attribut (puce losange) */}
+                <div className="mb-3 flex items-center justify-between border-b border-white/10 py-2 font-sans text-[0.84rem]">
+                  <span className="flex items-center gap-2 text-muted">
+                    <span className="h-1.5 w-1.5 rotate-45 bg-gold-deep" />
+                    Position
+                  </span>
+                  <span className="tabular-nums text-parch">
+                    {data.instance.position.x}, {data.instance.position.y}
+                  </span>
+                </div>
+
                 {data.instance.image && (
-                  <div className="mb-4 rounded-lg overflow-hidden border border-gold/30 bg-panel/50">
+                  <div className="mb-3 overflow-hidden border border-line/25 bg-panel/50">
                     <img
                       src={data.instance.image}
                       alt={`Guide visuel ${data.marker.name} - Localisation sur la carte interactive Duet Night Abyss`}
-                      className="w-full h-auto object-contain max-h-64 cursor-zoom-in hover:opacity-90 transition-opacity"
+                      className="h-auto max-h-64 w-full cursor-zoom-in object-contain transition-opacity hover:opacity-90"
                       onClick={() => setZoomedImage(data.instance.image!)}
                       onError={(e) => {
                         e.currentTarget.style.display = "none";
                       }}
                     />
-                    <p className="text-xs text-muted text-center mt-1 px-2">
+                    <p className="px-2 py-1 text-center font-caps text-[0.5rem] uppercase tracking-[0.18em] text-muted-2">
                       Cliquez pour agrandir
                     </p>
                   </div>
                 )}
-                <div className="flex gap-2">
-                  <button
-                    onClick={() => onToggleMarker?.(data.key)}
-                    className={`px-4 py-2 text-parch text-sm font-medium rounded-md transition-colors flex-1 ${
-                      data.isMarked
-                        ? "bg-crimson-bright/80 hover:bg-crimson-bright border border-crimson-bright/50"
-                        : "bg-gold/80 hover:bg-gold border border-gold/50"
-                    }`}
-                  >
-                    {data.isMarked
-                      ? "Marquer comme non-vu"
-                      : "Marquer comme vu"}
-                  </button>
-                </div>
+
+                {/* Action — bouton DS (or = non vu, cramoisi = vu) */}
+                <button
+                  onClick={() => onToggleMarker?.(data.key)}
+                  className={cn(
+                    "dna-shine inline-flex w-full items-center justify-center gap-2 rounded-md px-4 py-2.5 font-sans text-sm tracking-wide transition-all duration-200",
+                    isMarked
+                      ? "border border-crimson-bright bg-gradient-to-b from-crimson/40 to-ink/70 text-[#ffb3a6] hover:-translate-y-px hover:border-crimson-bright hover:text-[#ffd2c8]"
+                      : "border border-gold bg-gradient-to-b from-gold-deep/40 to-ink/70 text-gold-bright shadow-[inset_0_1px_0_rgba(227,205,149,0.22)] hover:-translate-y-px hover:border-gold-bright hover:text-[#fff6e6]",
+                  )}
+                >
+                  {isMarked ? "Marquer comme non-vu" : "Marquer comme vu"}
+                </button>
               </div>
             </Popup>
           </Marker>
@@ -422,7 +338,7 @@ export default function MapComponent({
     loadMarkers();
   }, [
     selectedMap,
-    visibleCategories,
+    markerData,
     markedMarkers,
     hideFoundMarkers,
     onToggleMarker,
