@@ -28,17 +28,24 @@ const getMarkerIcon = (iconUrl: string, isFound: boolean): DivIcon => {
   const cached = iconCache.get(cacheKey);
   if (cached) return cached;
 
-  // Couleurs conservées à l'identique de l'ancien rendu canvas
-  const bg = isFound ? "rgba(220,38,38,0.7)" : "rgba(67,56,202,0.9)";
-  const border = isFound ? "rgba(239,68,68,0.85)" : "rgba(99,102,241,1)";
+  // Palette design system DNA : médaillon ink sombre, anneau or laiton (non vu)
+  // ou cramoisi (vu), liseré interne + halo doux teinté.
   const src = iconUrl || "/marker-default.png";
+  const ring = isFound ? "#ef4444" : "#c2a86a"; // crimson-bright / gold
+  const ringHi = isFound ? "#f87171" : "#e3cd95";
+  const glow = isFound ? "rgba(239,68,68,0.6)" : "rgba(194,168,106,0.45)";
+  const fill = isFound
+    ? "radial-gradient(circle at 50% 32%, rgba(96,20,20,0.96), rgba(20,8,8,0.97))"
+    : "radial-gradient(circle at 50% 32%, rgba(46,38,24,0.96), rgba(13,11,8,0.97))";
 
   const html =
     `<span style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;` +
-    `border-radius:50%;border:2px solid ${border};background:${bg};` +
-    `box-shadow:inset 0 0 0 2px rgba(148,163,184,0.4),0 2px 6px rgba(0,0,0,0.45)">` +
+    `border-radius:50%;background:${fill};border:1.5px solid ${ring};` +
+    `box-shadow:inset 0 0 0 1px rgba(0,0,0,0.55),inset 0 1px 1px ${ringHi}45,` +
+    `0 1px 3px rgba(0,0,0,0.6),0 0 9px -1px ${glow}">` +
     `<img src="${src}" alt="" draggable="false" ` +
-    `style="width:22px;height:22px;object-fit:contain;pointer-events:none" ` +
+    `style="width:20px;height:20px;object-fit:contain;pointer-events:none;` +
+    `filter:drop-shadow(0 1px 1px rgba(0,0,0,0.7))${isFound ? ";opacity:0.82" : ""}" ` +
     `onerror="this.style.visibility='hidden'"/></span>`;
 
   const icon = new DivIcon({
@@ -236,7 +243,7 @@ export default function MapComponent({
             key={data.key}
             position={data.position}
             icon={customIcon}
-            opacity={isMarked ? 0.6 : 1}
+            opacity={isMarked ? 0.9 : 1}
           >
             <Popup>
               {/* Cadre du marqueur — design system DNA (coins nets, liseré or,
