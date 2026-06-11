@@ -181,6 +181,36 @@ function resolveElementalAffinity(
   };
 }
 
+// --- Filtres Demon Wedge : série (Griffin/Typhon…) + compatibilité (perso/arme) ---
+const MOD_COMPAT_LABELS: Record<string, string> = {
+  UI_Armory_Char: "Personnage",
+  UI_Armory_Meleeweapon: "Arme mêlée",
+  UI_Armory_Longrange: "Arme distance",
+  UI_Armory_MeleeweaponUltra: "Consonance mêlée",
+  UI_Armory_LongrangeUltra: "Consonance distance",
+};
+const MOD_COMPAT_ORDER = [
+  "UI_Armory_Char",
+  "UI_Armory_Meleeweapon",
+  "UI_Armory_Longrange",
+  "UI_Armory_MeleeweaponUltra",
+  "UI_Armory_LongrangeUltra",
+];
+
+/** Série du Demon Wedge (nom EN stable, ex. "Griffin's"). */
+function getModSeries(item: ItemRecord): string | null {
+  const s = item.translations?.["EN"]?.demonWedgeName;
+  return typeof s === "string" && s.trim().length > 0 ? s.trim() : null;
+}
+/** Clés de compatibilité de rôle (UI_Armory_*) du Demon Wedge. */
+function getModCompatKeys(item: ItemRecord): string[] {
+  return (item.typeCompatibility?.textKeys ?? []).filter((k) => k.startsWith("UI_Armory_"));
+}
+/** Libellé d'une série (retire le possessif anglais). */
+function seriesLabel(value: string): string {
+  return value.replace(/['’]s$/u, "");
+}
+
 export default function ItemsGridClient({
   category,
   items,
@@ -211,6 +241,8 @@ export default function ItemsGridClient({
     polarity: parseAsString,
     itype: parseAsString,
     isub: parseAsString,
+    series: parseAsString,
+    compat: parseAsString,
     archive: parseAsStringLiteral(ARCHIVE_FILTER_VALUES),
     new: parseAsStringLiteral(NEW_FILTER_VALUES),
     sort: parseAsStringLiteral(SORT_MODE_VALUES),
@@ -224,6 +256,8 @@ export default function ItemsGridClient({
     queryFilters.polarity !== null ||
     queryFilters.itype !== null ||
     queryFilters.isub !== null ||
+    queryFilters.series !== null ||
+    queryFilters.compat !== null ||
     queryFilters.archive !== null ||
     queryFilters.new !== null ||
     queryFilters.sort !== null ||
@@ -244,6 +278,10 @@ export default function ItemsGridClient({
     queryFilters.itype ?? (hasUrlFilters ? "all" : persisted?.itemTypeFilter ?? "all");
   const itemSubTypeFilter =
     queryFilters.isub ?? (hasUrlFilters ? "all" : persisted?.itemSubTypeFilter ?? "all");
+  const seriesFilter =
+    queryFilters.series ?? (hasUrlFilters ? "all" : persisted?.seriesFilter ?? "all");
+  const compatFilter =
+    queryFilters.compat ?? (hasUrlFilters ? "all" : persisted?.compatFilter ?? "all");
 
   const rawArchiveFilter =
     queryFilters.archive ?? (hasUrlFilters ? "all" : persisted?.archiveFilter ?? "all");
@@ -275,6 +313,8 @@ export default function ItemsGridClient({
     polarity?: string;
     itype?: string;
     isub?: string;
+    series?: string;
+    compat?: string;
     archive?: ArchiveFilter;
     new?: NewFilter;
     sort?: SortMode;
@@ -288,6 +328,8 @@ export default function ItemsGridClient({
       polarity: polarityFilter,
       itype: itemTypeFilter,
       isub: itemSubTypeFilter,
+      series: seriesFilter,
+      compat: compatFilter,
       archive: archiveFilter,
       new: newFilter,
       sort: sortMode,
@@ -303,6 +345,8 @@ export default function ItemsGridClient({
       polarity: next.polarity,
       itype: next.itype,
       isub: next.isub,
+      series: next.series,
+      compat: next.compat,
       archive: next.archive,
       new: next.new,
       sort: next.sort,
@@ -351,6 +395,29 @@ export default function ItemsGridClient({
       }
     }
     return Array.from(values).sort((a, b) => a.localeCompare(b));
+  }, [items]);
+
+  const seriesOptions = useMemo(() => {
+    const values = new Set<string>();
+    for (const item of items) {
+      const s = getModSeries(item);
+      if (s) {
+        values.add(s);
+      }
+    }
+    return Array.from(values).sort((a, b) => seriesLabel(a).localeCompare(seriesLabel(b)));
+  }, [items]);
+
+  const compatOptions = useMemo(() => {
+    const values = new Set<string>();
+    for (const item of items) {
+      for (const key of getModCompatKeys(item)) {
+        values.add(key);
+      }
+    }
+    return MOD_COMPAT_ORDER.filter((key) => values.has(key)).concat(
+      Array.from(values).filter((key) => !MOD_COMPAT_ORDER.includes(key)),
+    );
   }, [items]);
 
   const hasArchiveData = useMemo(() => items.some((item) => item.archiveId !== null), [items]);
@@ -406,6 +473,14 @@ export default function ItemsGridClient({
           return false;
         }
 
+        if (seriesFilter !== "all" && getModSeries(item) !== seriesFilter) {
+          return false;
+        }
+
+        if (compatFilter !== "all" && !getModCompatKeys(item).includes(compatFilter)) {
+          return false;
+        }
+
         if (archiveFilter === "withArchive" && item.archiveId === null) {
           return false;
         }
@@ -444,6 +519,8 @@ export default function ItemsGridClient({
     polarityFilter,
     itemTypeFilter,
     itemSubTypeFilter,
+    seriesFilter,
+    compatFilter,
     archiveFilter,
     newFilter,
     sortMode,
@@ -479,6 +556,8 @@ export default function ItemsGridClient({
       polarityFilter,
       itemTypeFilter,
       itemSubTypeFilter,
+      seriesFilter,
+      compatFilter,
       archiveFilter,
       newFilter,
       sortMode,
@@ -494,6 +573,8 @@ export default function ItemsGridClient({
         previous?.polarityFilter === next.polarityFilter &&
         previous?.itemTypeFilter === next.itemTypeFilter &&
         previous?.itemSubTypeFilter === next.itemSubTypeFilter &&
+        previous?.seriesFilter === next.seriesFilter &&
+        previous?.compatFilter === next.compatFilter &&
         previous?.archiveFilter === next.archiveFilter &&
         previous?.newFilter === next.newFilter &&
         previous?.sortMode === next.sortMode &&
@@ -517,6 +598,8 @@ export default function ItemsGridClient({
     polarityFilter,
     itemTypeFilter,
     itemSubTypeFilter,
+    seriesFilter,
+    compatFilter,
     archiveFilter,
     newFilter,
     sortMode,
@@ -560,6 +643,8 @@ export default function ItemsGridClient({
       polarity: "all",
       itype: "all",
       isub: "all",
+      series: "all",
+      compat: "all",
       archive: "all",
       new: "all",
       sort: "id",
@@ -699,6 +784,52 @@ export default function ItemsGridClient({
                 {rarityOptions.map((value) => (
                   <option key={value} value={value}>
                     {value}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+
+          {seriesOptions.length > 0 && (
+            <div className="rounded-sm border border-white/10 bg-ink/60 p-2">
+              <div className="mb-1 flex items-center gap-2 text-xs text-muted">
+                <SlidersHorizontal className="h-3.5 w-3.5 text-gold/80" />
+                Série
+              </div>
+              <select
+                value={seriesFilter}
+                onChange={(event) => {
+                  updateQueryFilters({ series: event.target.value, page: 1 });
+                }}
+                className="w-full rounded-sm border border-white/10 bg-panel px-2 py-1.5 text-sm text-parch"
+              >
+                <option value="all">{tc('allFeminine')}</option>
+                {seriesOptions.map((value) => (
+                  <option key={value} value={value}>
+                    {seriesLabel(value)}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+
+          {compatOptions.length > 0 && (
+            <div className="rounded-sm border border-white/10 bg-ink/60 p-2">
+              <div className="mb-1 flex items-center gap-2 text-xs text-muted">
+                <SlidersHorizontal className="h-3.5 w-3.5 text-gold/80" />
+                Compatibilité
+              </div>
+              <select
+                value={compatFilter}
+                onChange={(event) => {
+                  updateQueryFilters({ compat: event.target.value, page: 1 });
+                }}
+                className="w-full rounded-sm border border-white/10 bg-panel px-2 py-1.5 text-sm text-parch"
+              >
+                <option value="all">{tc('all')}</option>
+                {compatOptions.map((value) => (
+                  <option key={value} value={value}>
+                    {MOD_COMPAT_LABELS[value] ?? value}
                   </option>
                 ))}
               </select>
