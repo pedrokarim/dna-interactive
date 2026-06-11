@@ -2,7 +2,7 @@
 
 import { Link } from "@/i18n/navigation";
 import { useLocale, useTranslations } from "next-intl";
-import { type ComponentType, type PointerEvent as ReactPointerEvent, Fragment, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { type ComponentType, type CSSProperties, type PointerEvent as ReactPointerEvent, Fragment, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { toPng } from "html-to-image";
 import {
   ArrowLeft,
@@ -150,6 +150,15 @@ const PORTRAIT_LABELS: Record<PortraitType, string> = {
 // ---------------------------------------------------------------------------
 // Tab system — add new tabs here
 // ---------------------------------------------------------------------------
+
+// Slider de progression teinté : piste/fill via le dégradé inline (background),
+// pouce stylé via variantes Tailwind (couleur = var(--rng) posée en inline).
+const RANGE_CLASS =
+  "h-1.5 flex-1 cursor-pointer appearance-none rounded-full " +
+  "[&::-webkit-slider-runnable-track]:h-1.5 [&::-webkit-slider-runnable-track]:rounded-full [&::-webkit-slider-runnable-track]:bg-transparent " +
+  "[&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:size-3.5 [&::-webkit-slider-thumb]:-mt-1 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-ink [&::-webkit-slider-thumb]:[background:var(--rng)] [&::-webkit-slider-thumb]:[box-shadow:0_0_8px_-1px_var(--rng)] " +
+  "[&::-moz-range-track]:h-1.5 [&::-moz-range-track]:rounded-full [&::-moz-range-track]:bg-transparent " +
+  "[&::-moz-range-thumb]:size-3.5 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:[background:var(--rng)]";
 
 const TAB_IDS = ["stats", "build", "skills", "portraits", "intron", "translations", "tech"] as const;
 type TabId = (typeof TAB_IDS)[number];
@@ -818,7 +827,12 @@ function SkillsTabContent({
             max={SKILL_LEVEL_MAX}
             value={skillLevel}
             onChange={(e) => setSkillLevel(Number(e.target.value))}
-            className="h-2 flex-1 cursor-pointer appearance-none rounded-full bg-panel accent-gold"
+            aria-label="Niveau de competence"
+            className={RANGE_CLASS}
+            style={{
+              "--rng": "#c2a86a",
+              background: `linear-gradient(to right, #c2a86a 0 ${((skillLevel - SKILL_LEVEL_MIN) / Math.max(1, SKILL_LEVEL_MAX - SKILL_LEVEL_MIN)) * 100}%, rgba(255,255,255,0.16) ${((skillLevel - SKILL_LEVEL_MIN) / Math.max(1, SKILL_LEVEL_MAX - SKILL_LEVEL_MIN)) * 100}% 100%)`,
+            } as CSSProperties}
           />
           <span className="shrink-0 text-xs text-muted-2">{SKILL_LEVEL_MAX}</span>
         </div>
@@ -1955,14 +1969,32 @@ export default function CharacterDetailClient({
           <aside className="flex flex-col gap-4">
             <DnaPanel className="p-4 md:p-5">
               <DnaSectionLabel>Personnage #{character.charId}</DnaSectionLabel>
-              <div className="mt-3 flex items-end justify-between border-b border-white/6 pb-3">
+              <div className="mt-3 flex items-end justify-between">
                 <div className="font-caps text-2xl font-semibold leading-none text-gold-bright">
-                  {character.maxLevel ?? 80}
+                  {level}
                   <small className="text-sm text-muted-2"> / {character.maxLevel ?? 80}</small>
                 </div>
                 <div className="text-right font-caps text-[0.52rem] uppercase leading-tight tracking-[0.14em] text-muted">
                   Armes<br />{character.weaponTags.join(" · ")}
                 </div>
+              </div>
+              {/* Slider de niveau — pilote les stats, teinté par l'élément */}
+              <div className="mt-2.5 flex items-center gap-2 border-b border-white/6 pb-3">
+                <span className="shrink-0 font-caps text-[0.55rem] uppercase tracking-[0.12em] text-muted-2">Niv.</span>
+                <input
+                  type="range"
+                  min={1}
+                  max={maxLevel}
+                  value={level}
+                  onChange={(e) => setLevel(Number(e.target.value))}
+                  aria-label="Niveau du personnage"
+                  className={RANGE_CLASS}
+                  style={{
+                    "--rng": elHex,
+                    background: `linear-gradient(to right, ${elHex} 0 ${((level - 1) / Math.max(1, maxLevel - 1)) * 100}%, rgba(255,255,255,0.16) ${((level - 1) / Math.max(1, maxLevel - 1)) * 100}% 100%)`,
+                  } as CSSProperties}
+                />
+                <span className="shrink-0 text-[0.62rem] tabular-nums text-muted-2">{maxLevel}</span>
               </div>
               <div className="mt-1">
                 {[
@@ -2084,28 +2116,6 @@ export default function CharacterDetailClient({
         </div>
               {/* — attributs détaillés (suite de l'onglet Attributs) — */}
               <section className="space-y-3 md:space-y-5">
-          {/* Level slider */}
-          <div className="border border-line/25 bg-panel/85 backdrop-blur-sm p-3 md:p-5">
-            <div className="flex items-center justify-between">
-              <h3 className="text-sm font-medium text-parch/85">Niveau</h3>
-              <span className="border border-gold/30 bg-gold/10 px-3 py-1 text-lg font-bold tabular-nums text-gold">
-                {level}
-              </span>
-            </div>
-            <div className="mt-3 flex items-center gap-3">
-              <span className="shrink-0 text-xs text-muted-2">1</span>
-              <input
-                type="range"
-                min={1}
-                max={maxLevel}
-                value={level}
-                onChange={(e) => setLevel(Number(e.target.value))}
-                className="h-2 flex-1 cursor-pointer appearance-none rounded-full bg-panel accent-gold"
-              />
-              <span className="shrink-0 text-xs text-muted-2">{maxLevel}</span>
-            </div>
-          </div>
-
           {/* Base stats */}
           <div className="border border-line/25 bg-panel/85 backdrop-blur-sm p-3 md:p-5">
             <h3 className="relative flex items-center gap-2.5 font-caps text-[0.66rem] uppercase tracking-[0.34em] text-gold"><span aria-hidden className="text-[0.7rem] text-gold-bright">◈</span>
