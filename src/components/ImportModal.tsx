@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
+import { DnaPanel, DnaButton, DnaCornerBrackets } from "@/components/dna";
 
 interface ImportModalProps {
   isOpen: boolean;
@@ -103,16 +104,21 @@ export default function ImportModal({
       />
 
       {/* Dialog */}
-      <div className="fixed inset-0 z-[210] flex items-center justify-center p-4">
+      <div
+        className="fixed inset-0 z-[210] flex items-center justify-center p-4"
+        onClick={handleClose}
+      >
         <div
-          className="bg-ink/95 backdrop-blur-md rounded-lg border border-gold/40 shadow-[0_20px_60px_rgba(0,0,0,0.8)] max-w-md w-full p-6"
+          className="max-w-md w-full"
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-bold text-parch">{t("title")}</h3>
+        <DnaPanel className="p-6 shadow-[0_20px_60px_rgba(0,0,0,0.8)]">
+          <DnaCornerBrackets size={16} />
+          <div className="relative flex items-center justify-between mb-4">
+            <h3 className="font-display text-xl text-parch">{t("title")}</h3>
             <button
               onClick={handleClose}
-              className="text-muted hover:text-parch transition-colors"
+              className="text-muted hover:text-gold-bright transition-colors"
             >
               <svg
                 className="w-5 h-5"
@@ -130,7 +136,7 @@ export default function ImportModal({
             </button>
           </div>
 
-          <p className="text-sm text-parch/85 mb-6">
+          <p className="relative text-sm text-parch/85 mb-6">
             {t("description")}
           </p>
 
@@ -140,10 +146,10 @@ export default function ImportModal({
             onDragLeave={handleDragLeave}
             onDrop={handleDrop}
             onClick={handleClick}
-            className={`border-2 border-dashed rounded-lg p-8 text-center transition-all cursor-pointer ${
+            className={`relative border-2 border-dashed p-8 text-center transition-all cursor-pointer ${
               isDragging
-                ? "border-gold bg-gold/10 scale-105"
-                : "border-gold/30 bg-panel/30 hover:border-gold/50 hover:bg-panel/50"
+                ? "border-gold bg-gold/10 scale-[1.02]"
+                : "border-line/30 bg-panel/30 hover:border-gold/50 hover:bg-panel/50"
             }`}
           >
             <input
@@ -194,20 +200,18 @@ export default function ImportModal({
 
           {/* Error message */}
           {error && (
-            <div className="mt-4 p-3 bg-crimson-bright/10 border border-crimson-bright/30 rounded-lg">
+            <div className="relative mt-4 p-3 bg-crimson/10 border border-crimson-bright/30">
               <p className="text-crimson-bright text-sm">{error}</p>
             </div>
           )}
 
           {/* Actions */}
-          <div className="flex gap-3 justify-end mt-6">
-            <button
-              onClick={handleClose}
-              className="px-4 py-2 text-sm font-medium text-parch/85 bg-panel/50 hover:bg-white/10 rounded-md transition-colors border border-gold/20"
-            >
+          <div className="relative flex gap-3 justify-end mt-6">
+            <DnaButton variant="ghost" onClick={handleClose} className="px-4 py-2">
               {tCommon("cancel")}
-            </button>
+            </DnaButton>
           </div>
+        </DnaPanel>
         </div>
       </div>
     </>

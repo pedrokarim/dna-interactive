@@ -1,6 +1,6 @@
-/* Styles personnalisés pour Leaflet */
+/* Leaflet — habillage au design system DNA (or laiton / cramoisi, coins nets) */
 .leaflet-container {
-  background: #1f2937 !important;
+  background: #08110f !important;
   outline: none;
 }
 
@@ -9,22 +9,23 @@
 }
 
 .leaflet-control-attribution {
-  background: rgba(31, 41, 55, 0.8) !important;
-  color: #9ca3af !important;
+  background: rgba(10, 9, 8, 0.8) !important;
+  color: #6a6150 !important;
+  font-family: var(--font-jost), system-ui, sans-serif;
 }
 
 .leaflet-control-attribution a {
-  color: #60a5fa !important;
+  color: #c2a86a !important;
 }
 
+/* --- Popup : le cadre DS est porté par le contenu (MapComponent), donc on
+   neutralise le wrapper Leaflet (transparent, sans coins arrondis ni ombre) --- */
 .leaflet-popup-content-wrapper {
-  background: #374151 !important;
-  color: #f3f4f6 !important;
-  border-radius: 8px !important;
-}
-
-.leaflet-popup-tip {
-  background: #374151 !important;
+  background: transparent !important;
+  color: #ece4d2 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
 }
 
 .leaflet-popup-content {
@@ -32,18 +33,40 @@
   line-height: 1.5 !important;
 }
 
+/* petite pointe sous le popup, teintée panneau + liseré doré */
+.leaflet-popup-tip {
+  background: #0a0a0b !important;
+  border: 1px solid rgba(194, 168, 106, 0.4) !important;
+  box-shadow: none !important;
+}
+
+.leaflet-popup-close-button {
+  color: #9a907c !important;
+}
+.leaflet-popup-close-button:hover {
+  color: #e3cd95 !important;
+}
+
+/* --- Contrôles de zoom : carrés nets, fond charbon, or au survol --- */
 .leaflet-control-zoom-in,
 .leaflet-control-zoom-out {
-  background: #374151 !important;
-  color: #f3f4f6 !important;
-  border: 1px solid #4b5563 !important;
+  background: rgba(10, 9, 8, 0.85) !important;
+  color: #c2a86a !important;
+  border: 1px solid rgba(194, 168, 106, 0.3) !important;
+  border-radius: 0 !important;
 }
 
 .leaflet-control-zoom-in:hover,
 .leaflet-control-zoom-out:hover {
-  background: #4b5563 !important;
+  background: rgba(194, 168, 106, 0.12) !important;
+  color: #e3cd95 !important;
+}
+
+.leaflet-bar {
+  border-radius: 0 !important;
+  border: none !important;
 }
 
 .leaflet-control-container .leaflet-control {
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4) !important;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.45) !important;
 }

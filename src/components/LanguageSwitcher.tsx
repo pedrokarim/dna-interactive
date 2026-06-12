@@ -59,17 +59,17 @@ export default function LanguageSwitcher({
     <div ref={ref} className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-2.5 py-1.5 text-sm text-parch/85 hover:text-parch bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 rounded-lg transition-all duration-200"
+        className="flex items-center gap-2 px-2.5 py-1.5 text-parch/85 hover:text-parch bg-white/5 hover:bg-white/10 border border-line/15 hover:border-gold/40 transition-all duration-200"
       >
-        <ActiveFlag className="h-4 w-6 rounded-sm shadow-sm" title={LANGUAGE_LABELS[locale.toUpperCase()] ?? locale} />
-        <span className="uppercase font-medium">{locale}</span>
+        <ActiveFlag className="h-4 w-6 shadow-sm" title={LANGUAGE_LABELS[locale.toUpperCase()] ?? locale} />
+        <span className="font-caps text-[0.7rem] uppercase tracking-[0.12em]">{locale}</span>
       </button>
 
       {isOpen && (
         <div
           className={`absolute ${align === "start" ? "left-0" : "right-0"} ${
             direction === "up" ? "bottom-full mb-2" : "top-full mt-2"
-          } bg-panel border border-gold/20 rounded-lg shadow-xl overflow-hidden z-50 min-w-[180px]`}
+          } bg-panel border border-line/20 shadow-[0_12px_30px_rgba(0,0,0,0.6)] overflow-hidden z-50 min-w-[180px]`}
         >
           {locales.map((l) => {
             const Flag = LOCALE_FLAGS[l] ?? FR;

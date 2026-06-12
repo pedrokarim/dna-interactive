@@ -15,6 +15,13 @@ import ImportModal from "@/components/ImportModal";
 import MapInfoModal from "@/components/MapInfoModal";
 import ChangelogModal from "@/components/ChangelogModal";
 import {
+  DnaSectionLabel,
+  DnaField,
+  DnaButton,
+  DnaSwitch,
+  DnaCornerBrackets,
+} from "@/components/dna";
+import {
   selectedMapIdWithPersistenceAtom,
   visibleCategoriesAtom,
   expandedCategoriesAtom,
@@ -500,15 +507,16 @@ export default function MapPage() {
         className={`absolute left-4 top-4 bottom-4 bg-ink/95 backdrop-blur-md flex flex-col z-[100] transition-all duration-300 ${
           isMenuCollapsed
             ? "w-0 overflow-hidden opacity-0 pointer-events-none border-0 shadow-none"
-            : "rounded-3xl opacity-100 border border-gold/30 shadow-[0_20px_60px_rgba(0,0,0,0.8),0_0_0_1px_rgba(99,102,241,0.2),inset_0_1px_0_rgba(255,255,255,0.05)]"
+            : "opacity-100 border border-line/30 shadow-[0_20px_60px_rgba(0,0,0,0.8),0_0_0_1px_rgba(194,168,106,0.18),inset_0_1px_0_rgba(255,255,255,0.05)]"
         }`}
         style={{
           width: isMenuCollapsed ? 0 : sidebarWidth,
         }}
       >
+        {!isMenuCollapsed && <DnaCornerBrackets size={18} className="z-20" />}
         {/* Titre et sélection de région */}
         <div
-          className={`p-6 border-b border-gold/20 ${
+          className={`relative z-20 p-6 border-b border-line/20 ${
             isMenuCollapsed ? "p-4" : ""
           }`}
         >
@@ -531,32 +539,32 @@ export default function MapPage() {
                 </div>
 
                 {/* Barre de recherche */}
-                <div className="relative">
-                  <input
-                    type="text"
-                    placeholder={t('searchPlaceholder')}
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full bg-panel/50 backdrop-blur-sm border border-gold/30 rounded-sm px-3 py-2 pl-10 text-sm text-parch placeholder-muted-2 focus:outline-none focus:ring-1 focus:ring-gold/60 focus:border-gold"
-                  />
-                  <svg
-                    className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                    />
-                  </svg>
-                </div>
+                <DnaField
+                  type="text"
+                  placeholder={t('searchPlaceholder')}
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  wrapClassName="w-full"
+                  icon={
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                      />
+                    </svg>
+                  }
+                />
 
                 {/* Sélecteur de région */}
                 <div>
-                  <label className="block font-caps text-[0.6rem] uppercase tracking-[0.18em] text-parch/80 mb-2">
+                  <label className="block font-caps text-[0.6rem] uppercase tracking-[0.18em] text-gold/80 mb-2">
                     {t('region')}
                   </label>
                   <select
@@ -566,7 +574,7 @@ export default function MapPage() {
                       console.log('🔄 Changement de région vers:', newMapId);
                       setSelectedMapId(newMapId);
                     }}
-                    className="w-full bg-panel/50 backdrop-blur-sm border border-gold/30 rounded-sm px-3 py-2 text-sm text-parch focus:outline-none focus:ring-1 focus:ring-gold/60 focus:border-gold"
+                    className="w-full rounded-md border border-white/20 bg-gradient-to-b from-panel/60 to-ink/70 px-3 py-2 font-sans text-sm text-parch outline-none transition-colors focus:border-gold"
                   >
                     {mapIndex.map((map) => (
                       <option
@@ -582,21 +590,14 @@ export default function MapPage() {
 
                 {/* Toggle Masquer les marqueurs trouvés */}
                 <div className="flex items-center justify-between pt-2">
-                  <span className="text-sm text-parch/85">
+                  <span className="font-sans text-sm text-parch/85">
                     {t('hideFoundMarkers')}
                   </span>
-                  <button
-                    onClick={() => setHideFoundMarkers(!hideFoundMarkers)}
-                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                      hideFoundMarkers ? "bg-gold" : "bg-white/10"
-                    }`}
-                  >
-                    <span
-                      className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                        hideFoundMarkers ? "translate-x-6" : "translate-x-1"
-                      }`}
-                    />
-                  </button>
+                  <DnaSwitch
+                    checked={hideFoundMarkers}
+                    onChange={setHideFoundMarkers}
+                    aria-label={t('hideFoundMarkers')}
+                  />
                 </div>
               </div>
             </>
@@ -605,7 +606,7 @@ export default function MapPage() {
 
         {/* Section Catégories - Grid */}
         {!isMenuCollapsed && (
-          <div className="relative p-2 border-b border-gold/20 flex-1 overflow-y-auto custom-scrollbar">
+          <div className="relative p-2 border-b border-line/20 flex-1 overflow-y-auto custom-scrollbar">
             {/* Arrière-plan avec effet Ken Burns */}
             <div className="absolute inset-0 overflow-hidden">
               {ASSETS_PATHS.worldview.map((imagePath, index) => (
@@ -630,9 +631,9 @@ export default function MapPage() {
 
             {/* Contenu des catégories avec accordéons */}
             <div className="relative z-20">
-              <h3 className="font-display text-xl text-parch mb-4">
+              <DnaSectionLabel className="mb-4">
                 {t('categories')}
-              </h3>
+              </DnaSectionLabel>
               <div className="space-y-2">
                 {filteredGroups.map((group) => {
                   const isExpanded = expandedCategories[group.id] || false;
@@ -661,7 +662,7 @@ export default function MapPage() {
                   return (
                     <div
                       key={group.id}
-                      className="bg-panel/30 rounded-sm border border-gold/20 overflow-hidden"
+                      className="bg-panel/30 border border-line/20 overflow-hidden"
                     >
                       {/* En-tête de la catégorie */}
                       <button
@@ -669,7 +670,7 @@ export default function MapPage() {
                         className="w-full flex items-center justify-between p-3 hover:bg-white/10 transition-colors"
                       >
                         <div className="flex items-center gap-3">
-                          <div className="w-8 h-8 rounded-sm border border-gold/30 bg-white/10 flex items-center justify-center">
+                          <div className="w-8 h-8 border border-line/30 bg-white/5 flex items-center justify-center">
                             <img
                               src={group.icon}
                               alt={`Icône ${group.name} - Catégorie de marqueurs pour la carte interactive Duet Night Abyss`}
@@ -701,7 +702,7 @@ export default function MapPage() {
                                   e.stopPropagation();
                                   selectAllInGroup(group);
                                 }}
-                                className="text-xs px-2 py-1 bg-gold/80 hover:bg-gold rounded-sm text-parch transition-colors"
+                                className="text-xs px-2 py-1 border border-gold/50 bg-gold/15 hover:bg-gold/25 text-gold transition-colors"
                                 title={t('selectAll')}
                               >
                                 ✓
@@ -713,7 +714,7 @@ export default function MapPage() {
                                   e.stopPropagation();
                                   deselectAllInGroup(group);
                                 }}
-                                className="text-xs px-2 py-1 bg-crimson-bright/80 hover:bg-crimson-bright rounded-sm text-parch transition-colors"
+                                className="text-xs px-2 py-1 border border-crimson-bright/50 bg-crimson/15 hover:bg-crimson/30 text-[#ffb3a6] transition-colors"
                                 title={t('deselectAll')}
                               >
                                 ✗
@@ -775,15 +776,15 @@ export default function MapPage() {
                                     )
                                   }
                                   title={item.name}
-                                  className={`group relative flex flex-col items-center p-2 rounded-sm transition-all duration-300 border min-w-0 ${
+                                  className={`group relative flex flex-col items-center p-2 transition-all duration-300 border min-w-0 ${
                                     visibleCategories[
                                       item.name.toLowerCase().trim()
                                     ] !== false
-                                      ? "bg-gold/20 border-gold/50 shadow-sm"
-                                      : "bg-white/10 hover:bg-white/10 border-gold/20 hover:border-gold/30 opacity-50"
+                                      ? "bg-gold/15 border-gold/50"
+                                      : "bg-white/5 border-line/15 hover:border-line/30 opacity-50 hover:opacity-80"
                                   }`}
                                 >
-                                  <div className="w-10 h-10 rounded overflow-hidden border border-gold/30 shadow-sm mb-1 flex items-center justify-center bg-white/10">
+                                  <div className="w-10 h-10 overflow-hidden border border-line/25 mb-1 flex items-center justify-center bg-white/5">
                                     <img
                                       src={item.icon}
                                       alt={`Icône ${item.name} - Marqueur pour la carte interactive Duet Night Abyss`}
@@ -818,26 +819,32 @@ export default function MapPage() {
 
         {/* Footer du menu */}
         {!isMenuCollapsed && (
-          <div className="mt-auto p-6 border-t border-gold/20 space-y-4">
+          <div className="relative z-20 mt-auto p-6 border-t border-line/20 space-y-4">
             {/* Bouton Réinitialiser */}
-            <button className="w-full flex items-center justify-center gap-2 px-4 py-2 border border-white/15 bg-panel/50 hover:border-gold/40 hover:text-gold rounded-sm text-sm text-parch/85 transition-colors">
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                />
-              </svg>
+            <DnaButton
+              variant="ghost"
+              onClick={resetSidebarWidth}
+              className="w-full px-4 py-2"
+              icon={
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                  />
+                </svg>
+              }
+            >
               {t('resetSidebar')}
-            </button>
+            </DnaButton>
 
-            <div className="flex flex-wrap gap-x-3 gap-y-1 text-xs text-muted-2 pt-2 border-t border-gold/20">
+            <div className="flex flex-wrap gap-x-3 gap-y-1 text-xs text-muted-2 pt-2 border-t border-line/20">
               <Link
                 href="/"
                 className="hover:text-gold transition-colors"
@@ -886,7 +893,7 @@ export default function MapPage() {
       {/* Bouton toggle sidebar - Toujours visible, positionné différemment selon l'état */}
       <button
         onClick={() => setIsMenuCollapsed(!isMenuCollapsed)}
-        className="absolute z-[110] bg-panel/90 backdrop-blur-sm hover:bg-white/10 rounded-sm p-2.5 transition-all duration-300 border border-gold/30 shadow-lg top-1/2 -translate-y-1/2"
+        className="absolute z-[110] bg-panel/90 backdrop-blur-sm hover:bg-white/10 hover:border-gold p-2.5 transition-all duration-300 border border-line/30 shadow-lg top-1/2 -translate-y-1/2"
         style={{
           left: isMenuCollapsed ? 16 : 20 + sidebarWidth,
         }}
@@ -912,7 +919,7 @@ export default function MapPage() {
         <div className="relative">
           <button
             onClick={() => setIsActionMenuOpen(!isActionMenuOpen)}
-            className="p-2.5 hover:bg-white/10 rounded-sm transition-colors bg-panel/80 backdrop-blur-sm border border-gold/20 shadow-lg"
+            className="p-2.5 hover:bg-white/10 hover:border-gold transition-colors bg-panel/80 backdrop-blur-sm border border-line/30 shadow-lg"
             title={t('actionMenu')}
           >
             <svg
@@ -938,8 +945,9 @@ export default function MapPage() {
                 className="fixed inset-0 z-[105]"
                 onClick={() => setIsActionMenuOpen(false)}
               />
-              <div className="absolute top-full right-0 mt-2 w-56 bg-ink/95 backdrop-blur-md rounded-sm border border-gold/40 shadow-[0_8px_24px_rgba(0,0,0,0.6)] z-[110] overflow-hidden">
-                <div className="py-2">
+              <div className="absolute top-full right-0 mt-2 w-56 bg-ink/95 backdrop-blur-md border border-line/30 shadow-[0_8px_24px_rgba(0,0,0,0.6)] z-[110] overflow-hidden">
+                <DnaCornerBrackets size={12} />
+                <div className="relative py-2">
                   {/* Exporter */}
                   <button
                     onClick={() => {
@@ -988,7 +996,7 @@ export default function MapPage() {
                     <span>Importer les marqueurs</span>
                   </button>
 
-                  <div className="h-px bg-gold/20 my-1"></div>
+                  <div className="h-px bg-line/20 my-1"></div>
 
                   {/* Changelog */}
                   <button
@@ -1014,7 +1022,7 @@ export default function MapPage() {
                     <span>Changelog</span>
                   </button>
 
-                  <div className="h-px bg-gold/20 my-1"></div>
+                  <div className="h-px bg-line/20 my-1"></div>
 
                   {/* Informations sur la map */}
                   <button
@@ -1040,7 +1048,7 @@ export default function MapPage() {
                     <span>Informations sur la map</span>
                   </button>
 
-                  <div className="h-px bg-gold/20 my-1"></div>
+                  <div className="h-px bg-line/20 my-1"></div>
 
                   {/* Réinitialiser */}
                   <button
@@ -1068,7 +1076,7 @@ export default function MapPage() {
                     </span>
                   </button>
 
-                  <div className="h-px bg-gold/20 my-1"></div>
+                  <div className="h-px bg-line/20 my-1"></div>
 
                   {/* Reset sidebar */}
                   <button
@@ -1146,7 +1154,7 @@ export default function MapPage() {
       {/* Barre de statut en bas à gauche - Positionnée à droite de la sidebar */}
       {!isMenuCollapsed && (
         <div
-          className="absolute bottom-6 bg-panel/80 backdrop-blur-sm border border-gold/30 rounded-sm p-3 z-[90] shadow-lg"
+          className="absolute bottom-6 bg-panel/80 backdrop-blur-sm border border-line/30 p-3 z-[90] shadow-lg"
           style={{ left: 20 + sidebarWidth }}
         >
           <div className="flex items-center space-x-4 text-sm">

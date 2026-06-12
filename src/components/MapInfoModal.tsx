@@ -4,6 +4,12 @@ import { useEffect } from "react";
 import mapIndex from "@/data/mapIndex.json";
 import type { GameMapSummary } from "@/types/map";
 import { useTranslations } from "next-intl";
+import {
+  DnaPanel,
+  DnaButton,
+  DnaSectionLabel,
+  DnaCornerBrackets,
+} from "@/components/dna";
 
 interface MapInfoModalProps {
   isOpen: boolean;
@@ -71,13 +77,19 @@ export default function MapInfoModal({
       />
 
       {/* Dialog */}
-      <div className="fixed inset-0 z-210 flex items-center justify-center p-4">
+      <div
+        className="fixed inset-0 z-210 flex items-center justify-center p-4"
+        onClick={onClose}
+      >
         <div
-          className="bg-ink/95 backdrop-blur-md rounded-lg border border-gold/40 shadow-[0_20px_60px_rgba(0,0,0,0.8)] max-w-2xl w-full p-6 max-h-[90vh] overflow-y-auto"
+          className="max-w-2xl w-full max-h-[90vh]"
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="flex items-center justify-between mb-6">
-            <h3 className="text-xl font-bold text-parch flex items-center gap-2">
+        <DnaPanel className="p-6 max-h-[90vh] overflow-y-auto custom-scrollbar shadow-[0_20px_60px_rgba(0,0,0,0.8)]">
+          <DnaCornerBrackets size={18} />
+
+          <div className="relative flex items-center justify-between mb-6">
+            <h3 className="font-display text-2xl text-parch flex items-center gap-2.5">
               <svg
                 className="w-6 h-6 text-gold"
                 fill="none"
@@ -95,7 +107,8 @@ export default function MapInfoModal({
             </h3>
             <button
               onClick={onClose}
-              className="text-muted hover:text-parch transition-colors"
+              className="text-muted hover:text-gold-bright transition-colors"
+              aria-label={tCommon("close")}
             >
               <svg
                 className="w-5 h-5"
@@ -114,95 +127,91 @@ export default function MapInfoModal({
           </div>
 
           {/* Version et Date */}
-          <div className="grid grid-cols-2 gap-4 mb-6">
-            <div className="bg-panel/50 border border-gold/30 rounded-lg p-4">
-              <div className="text-xs text-muted mb-1">{tCommon("version")}</div>
-              <div className="text-lg font-bold text-gold">{version}</div>
+          <div className="relative grid grid-cols-2 gap-4 mb-6">
+            <div className="bg-panel/50 border border-line/25 p-4">
+              <div className="font-caps text-[0.6rem] uppercase tracking-[0.18em] text-gold/70 mb-1">{tCommon("version")}</div>
+              <div className="font-display text-xl text-gold-bright">{version}</div>
             </div>
-            <div className="bg-panel/50 border border-gold/30 rounded-lg p-4">
-              <div className="text-xs text-muted mb-1">
+            <div className="bg-panel/50 border border-line/25 p-4">
+              <div className="font-caps text-[0.6rem] uppercase tracking-[0.18em] text-gold/70 mb-1">
                 {t("lastUpdate")}
               </div>
-              <div className="text-lg font-bold text-parch">
+              <div className="font-display text-xl text-parch">
                 {lastUpdateDate}
               </div>
             </div>
           </div>
 
           {/* Statistiques globales */}
-          <div className="mb-6">
-            <h4 className="text-sm font-semibold text-parch/85 mb-3 uppercase tracking-wide">
-              {t("globalStats")}
-            </h4>
+          <div className="relative mb-6">
+            <DnaSectionLabel className="mb-3">{t("globalStats")}</DnaSectionLabel>
             <div className="grid grid-cols-3 gap-3">
-              <div className="bg-panel/50 border border-gold/30 rounded-lg p-4 text-center">
-                <div className="text-2xl font-bold text-gold">
+              <div className="bg-panel/50 border border-line/25 p-4 text-center">
+                <div className="font-display text-3xl text-gold-bright">
                   {totalMaps}
                 </div>
-                <div className="text-xs text-muted mt-1">{t("maps")}</div>
+                <div className="font-caps text-[0.56rem] uppercase tracking-[0.16em] text-muted mt-1">{t("maps")}</div>
               </div>
-              <div className="bg-panel/50 border border-gold/30 rounded-lg p-4 text-center">
-                <div className="text-2xl font-bold text-anemo">
+              <div className="bg-panel/50 border border-line/25 p-4 text-center">
+                <div className="font-display text-3xl text-anemo">
                   {totalMarkers}
                 </div>
-                <div className="text-xs text-muted mt-1">{t("markers")}</div>
+                <div className="font-caps text-[0.56rem] uppercase tracking-[0.16em] text-muted mt-1">{t("markers")}</div>
               </div>
-              <div className="bg-panel/50 border border-gold/30 rounded-lg p-4 text-center">
-                <div className="text-2xl font-bold text-electro">
+              <div className="bg-panel/50 border border-line/25 p-4 text-center">
+                <div className="font-display text-3xl text-electro">
                   {totalImages}
                 </div>
-                <div className="text-xs text-muted mt-1">{t("images")}</div>
+                <div className="font-caps text-[0.56rem] uppercase tracking-[0.16em] text-muted mt-1">{t("images")}</div>
               </div>
             </div>
           </div>
 
           {/* Statistiques de la map sélectionnée */}
           {selectedMap && (
-            <div className="mb-6">
-              <h4 className="text-sm font-semibold text-parch/85 mb-3 uppercase tracking-wide">
+            <div className="relative mb-6">
+              <DnaSectionLabel className="mb-3">
                 {t("currentMap", { name: selectedMap.name })}
-              </h4>
+              </DnaSectionLabel>
               <div className="grid grid-cols-3 gap-3">
-                <div className="bg-panel/50 border border-gold/30 rounded-lg p-4 text-center">
-                  <div className="text-xl font-bold text-gold">
+                <div className="bg-panel/50 border border-line/25 p-4 text-center">
+                  <div className="font-display text-2xl text-gold-bright">
                     {selectedMapCategories}
                   </div>
-                  <div className="text-xs text-muted mt-1">{t("categoriesCount")}</div>
+                  <div className="font-caps text-[0.56rem] uppercase tracking-[0.16em] text-muted mt-1">{t("categoriesCount")}</div>
                 </div>
-                <div className="bg-panel/50 border border-gold/30 rounded-lg p-4 text-center">
-                  <div className="text-xl font-bold text-anemo">
+                <div className="bg-panel/50 border border-line/25 p-4 text-center">
+                  <div className="font-display text-2xl text-anemo">
                     {selectedMapMarkers}
                   </div>
-                  <div className="text-xs text-muted mt-1">{t("markers")}</div>
+                  <div className="font-caps text-[0.56rem] uppercase tracking-[0.16em] text-muted mt-1">{t("markers")}</div>
                 </div>
-                <div className="bg-panel/50 border border-gold/30 rounded-lg p-4 text-center">
-                  <div className="text-xl font-bold text-electro">
+                <div className="bg-panel/50 border border-line/25 p-4 text-center">
+                  <div className="font-display text-2xl text-electro">
                     {selectedMapImages}
                   </div>
-                  <div className="text-xs text-muted mt-1">{t("images")}</div>
+                  <div className="font-caps text-[0.56rem] uppercase tracking-[0.16em] text-muted mt-1">{t("images")}</div>
                 </div>
               </div>
             </div>
           )}
 
           {/* Liste des maps */}
-          <div className="mb-6">
-            <h4 className="text-sm font-semibold text-parch/85 mb-3 uppercase tracking-wide">
-              {t("allMaps")}
-            </h4>
-            <div className="space-y-2 max-h-48 overflow-y-auto">
+          <div className="relative mb-6">
+            <DnaSectionLabel className="mb-3">{t("allMaps")}</DnaSectionLabel>
+            <div className="space-y-2 max-h-48 overflow-y-auto custom-scrollbar">
               {index.map((map) => (
                 <div
                   key={map.id}
-                  className={`bg-panel/50 border rounded-lg p-3 ${
+                  className={`border p-3 ${
                     map.id === selectedMapId
                       ? "border-gold bg-gold/10"
-                      : "border-gold/30"
+                      : "border-line/25 bg-panel/50"
                   }`}
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex-1">
-                      <div className="text-sm font-medium text-parch">
+                      <div className="font-sans text-sm font-medium text-parch">
                         {map.name}
                       </div>
                       <div className="text-xs text-muted mt-1">
@@ -210,7 +219,7 @@ export default function MapInfoModal({
                       </div>
                     </div>
                     {map.id === selectedMapId && (
-                      <div className="px-2 py-1 bg-gold/20 border border-gold/50 rounded text-xs text-gold font-medium">
+                      <div className="px-2 py-1 bg-gold/20 border border-gold/50 font-caps text-[0.56rem] uppercase tracking-[0.16em] text-gold">
                         {t("current")}
                       </div>
                     )}
@@ -221,8 +230,8 @@ export default function MapInfoModal({
           </div>
 
           {/* Disclaimer */}
-          <div className="bg-panel/30 border border-gold/20 rounded-lg p-4 mb-6">
-            <div className="text-xs text-muted mb-2 font-semibold uppercase tracking-wide">
+          <div className="relative bg-panel/30 border border-line/20 p-4 mb-6">
+            <div className="font-caps text-[0.6rem] uppercase tracking-[0.18em] text-gold/70 mb-2">
               {tCommon("disclaimer")}
             </div>
             <div className="text-xs text-parch/85 leading-relaxed space-y-2">
@@ -236,14 +245,12 @@ export default function MapInfoModal({
           </div>
 
           {/* Actions */}
-          <div className="flex gap-3 justify-end">
-            <button
-              onClick={onClose}
-              className="px-4 py-2 text-sm font-medium text-parch bg-gold/80 hover:bg-gold rounded-md transition-colors border border-gold/50"
-            >
+          <div className="relative flex gap-3 justify-end">
+            <DnaButton variant="gold" onClick={onClose}>
               {tCommon("close")}
-            </button>
+            </DnaButton>
           </div>
+        </DnaPanel>
         </div>
       </div>
     </>

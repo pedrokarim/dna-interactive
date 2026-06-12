@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { DnaPanel, DnaButton, DnaCornerBrackets } from "@/components/dna";
 
 interface ExportModalProps {
   isOpen: boolean;
@@ -47,16 +48,21 @@ export default function ExportModal({
       />
 
       {/* Dialog */}
-      <div className="fixed inset-0 z-[210] flex items-center justify-center p-4">
+      <div
+        className="fixed inset-0 z-[210] flex items-center justify-center p-4"
+        onClick={onClose}
+      >
         <div
-          className="bg-ink/95 backdrop-blur-md rounded-lg border border-gold/40 shadow-[0_20px_60px_rgba(0,0,0,0.8)] max-w-md w-full p-6"
+          className="max-w-md w-full"
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-bold text-parch">Exporter les marqueurs</h3>
+        <DnaPanel className="p-6 shadow-[0_20px_60px_rgba(0,0,0,0.8)]">
+          <DnaCornerBrackets size={16} />
+          <div className="relative flex items-center justify-between mb-4">
+            <h3 className="font-display text-xl text-parch">Exporter les marqueurs</h3>
             <button
               onClick={onClose}
-              className="text-muted hover:text-parch transition-colors"
+              className="text-muted hover:text-gold-bright transition-colors"
             >
               <svg
                 className="w-5 h-5"
@@ -74,17 +80,17 @@ export default function ExportModal({
             </button>
           </div>
 
-          <p className="text-sm text-parch/85 mb-6">
+          <p className="relative text-sm text-parch/85 mb-6">
             Vous allez exporter <span className="font-semibold text-gold">{markerCount}</span> marqueur{markerCount > 1 ? "s" : ""} au format sélectionné.
           </p>
 
           {/* Format selection */}
-          <div className="mb-6">
-            <label className="block text-sm font-medium text-parch/85 mb-3">
+          <div className="relative mb-6">
+            <label className="block font-caps text-[0.6rem] uppercase tracking-[0.18em] text-gold/80 mb-3">
               Format du fichier
             </label>
             <div className="space-y-2">
-              <label className="flex items-center p-3 rounded-lg border border-gold/30 bg-panel/50 hover:bg-white/10 transition-colors cursor-pointer">
+              <label className="flex items-center p-3 border border-line/25 bg-panel/50 hover:bg-white/10 hover:border-gold/40 transition-colors cursor-pointer">
                 <input
                   type="radio"
                   name="format"
@@ -112,7 +118,7 @@ export default function ExportModal({
                 </svg>
               </label>
 
-              <label className="flex items-center p-3 rounded-lg border border-gold/30 bg-panel/50 hover:bg-white/10 transition-colors cursor-pointer">
+              <label className="flex items-center p-3 border border-line/25 bg-panel/50 hover:bg-white/10 hover:border-gold/40 transition-colors cursor-pointer">
                 <input
                   type="radio"
                   name="format"
@@ -143,33 +149,34 @@ export default function ExportModal({
           </div>
 
           {/* Actions */}
-          <div className="flex gap-3 justify-end">
-            <button
-              onClick={onClose}
-              className="px-4 py-2 text-sm font-medium text-parch/85 bg-panel/50 hover:bg-white/10 rounded-md transition-colors border border-gold/20"
-            >
+          <div className="relative flex gap-3 justify-end">
+            <DnaButton variant="ghost" onClick={onClose} className="px-4 py-2">
               Annuler
-            </button>
-            <button
+            </DnaButton>
+            <DnaButton
+              variant="gold"
               onClick={handleExport}
-              className="px-4 py-2 text-sm font-medium text-parch bg-gold/80 hover:bg-gold rounded-md transition-colors border border-gold/50 flex items-center gap-2"
+              className="px-4 py-2"
+              icon={
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                  />
+                </svg>
+              }
             >
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                />
-              </svg>
               Exporter
-            </button>
+            </DnaButton>
           </div>
+        </DnaPanel>
         </div>
       </div>
     </>

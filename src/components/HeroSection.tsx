@@ -119,7 +119,7 @@ export default function HeroSection() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2, duration: 0.6 }}
         whileHover={{ scale: 1.04 }}
-        className="group absolute bottom-6 right-4 z-20 hidden items-center gap-3 rounded-sm border border-gold/30 bg-ink/80 p-2 pr-4 shadow-[0_12px_32px_rgba(15,23,42,0.6)] backdrop-blur-sm transition-colors hover:border-gold/60 sm:flex"
+        className="group absolute bottom-6 right-4 z-20 hidden items-center gap-3 rounded-sm border border-gold/30 bg-ink/80 p-2 pr-4 shadow-[0_12px_32px_rgba(0,0,0,0.6)] backdrop-blur-sm transition-colors hover:border-gold/60 sm:flex"
         aria-label="Voir un exemple de carte de build (Psyche)"
       >
         <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-sm border border-gold/40 bg-gold/10">

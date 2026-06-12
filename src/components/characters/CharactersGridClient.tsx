@@ -394,7 +394,7 @@ export default function CharactersGridClient({
   return (
     <div className="space-y-4 md:space-y-8">
       {/* Header + filters */}
-      <section className="border border-gold/20 bg-panel/55 p-4 md:p-6 shadow-[0_20px_45px_rgba(15,23,42,0.45)] backdrop-blur-sm">
+      <section className="border border-gold/20 bg-panel/55 p-4 md:p-6 shadow-[0_20px_45px_rgba(0,0,0,0.45)] backdrop-blur-sm">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div>
             <p className="font-caps text-[0.7rem] uppercase tracking-[0.3em] text-gold">
@@ -1057,7 +1057,7 @@ export default function CharactersGridClient({
           aria-label={`Apercu du portrait de ${previewPortrait.alt}`}
         >
           <div
-            className="w-full max-w-md border border-gold/30 bg-panel/95 p-4 shadow-[0_25px_60px_rgba(2,6,23,0.65)]"
+            className="w-full max-w-md border border-gold/30 bg-panel/95 p-4 shadow-[0_25px_60px_rgba(0,0,0,0.65)]"
             onClick={(event) => event.stopPropagation()}
           >
             <div className="flex items-center justify-between gap-3">

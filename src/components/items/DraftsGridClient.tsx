@@ -340,7 +340,7 @@ export default function DraftsGridClient({
 
   return (
     <div className="space-y-4 md:space-y-8">
-      <DnaPanel className="border-gold/30 p-4 md:p-6 shadow-[0_20px_45px_rgba(15,23,42,0.45)]">
+      <DnaPanel className="border-gold/30 p-4 md:p-6 shadow-[0_20px_45px_rgba(0,0,0,0.45)]">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
             <p className="font-caps text-[0.7rem] uppercase tracking-[0.34em] text-gold/90">{t('headerLabel')}</p>
@@ -888,7 +888,7 @@ export default function DraftsGridClient({
           aria-label={`Apercu de l'icone draft ${previewIcon.draftId}`}
         >
           <div
-            className="w-full max-w-sm border border-gold/35 bg-panel/95 p-4 shadow-[0_25px_60px_rgba(2,6,23,0.65)]"
+            className="w-full max-w-sm border border-gold/35 bg-panel/95 p-4 shadow-[0_25px_60px_rgba(0,0,0,0.65)]"
             onClick={(event) => event.stopPropagation()}
           >
             <div className="flex items-center justify-between gap-3">

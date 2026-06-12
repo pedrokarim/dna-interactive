@@ -111,7 +111,7 @@ export default async function Home() {
       <section className="bg-panel/35 py-20">
         <div className="container mx-auto px-6">
           <div className="mx-auto max-w-6xl">
-            <article className="group relative overflow-hidden border border-gold/35 bg-ink/70 shadow-[0_32px_80px_rgba(15,23,42,0.55)]">
+            <article className="group relative overflow-hidden border border-gold/35 bg-ink/70 shadow-[0_32px_80px_rgba(0,0,0,0.55)]">
               <img
                 src="/assets/worldview/worldview-8.webp"
                 alt="Apercu visuel de la section Items"
@@ -121,10 +121,10 @@ export default async function Home() {
               <div className="absolute inset-0 bg-linear-to-t from-ink/70 via-transparent to-black/20" />
 
               <div className="pointer-events-none absolute inset-0 hidden md:block" aria-hidden="true">
-                <div className="absolute left-[56%] top-[18%] h-14 w-14 -rotate-12 rounded-sm border border-hydro/35 bg-ink/70 p-2 shadow-[0_8px_24px_rgba(34,211,238,0.22)]">
+                <div className="absolute left-[56%] top-[18%] h-14 w-14 -rotate-12 rounded-sm border border-hydro/35 bg-ink/70 p-2 shadow-[0_8px_24px_rgba(95,168,255,0.22)]">
                   <img src="/assets/optimized/home-spotlight/T_Mod_Phoenix01.webp" alt="Demon Wedge Phoenix" width="56" height="56" loading="lazy" className="h-full w-full object-contain" />
                 </div>
-                <div className="absolute left-[63%] top-[42%] h-14 w-14 rotate-9 rounded-sm border border-gold/35 bg-ink/70 p-2 shadow-[0_8px_24px_rgba(99,102,241,0.22)]">
+                <div className="absolute left-[63%] top-[42%] h-14 w-14 rotate-9 rounded-sm border border-gold/35 bg-ink/70 p-2 shadow-[0_8px_24px_rgba(95,168,255,0.22)]">
                   <img src="/assets/optimized/home-spotlight/T_Mod_Typhon01_Blue.webp" alt="Demon Wedge Typhon" width="56" height="56" loading="lazy" className="h-full w-full object-contain" />
                 </div>
                 <div className="absolute left-[73%] top-[22%] h-12 w-12 -rotate-6 rounded-sm border border-crimson-bright/30 bg-ink/70 p-2">
@@ -178,7 +178,7 @@ export default async function Home() {
       <section className="bg-panel/45 py-20">
         <div className="container mx-auto px-6">
           <div className="mx-auto max-w-6xl">
-            <article className="group relative overflow-hidden border border-electro/35 bg-ink/70 shadow-[0_32px_80px_rgba(15,23,42,0.55)]">
+            <article className="group relative overflow-hidden border border-electro/35 bg-ink/70 shadow-[0_32px_80px_rgba(0,0,0,0.55)]">
               <img
                 src="/assets/worldview/worldview-9.webp"
                 alt="Apercu visuel de la section Personnages"

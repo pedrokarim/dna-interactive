@@ -364,7 +364,7 @@ function DemonWedgeSlotCard({
   );
 
   const tooltip = slot.item ? (
-    <div className="pointer-events-none absolute left-1/2 top-full z-50 mt-2 hidden w-64 -translate-x-1/2 border border-white/10 bg-ink/95 p-3 text-sm shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
+    <div className="pointer-events-none absolute left-1/2 top-full z-50 mt-2 hidden w-64 -translate-x-1/2 border border-white/10 bg-ink/95 p-3 text-sm shadow-[0_20px_40px_rgba(0,0,0,0.65)] group-hover:block">
       <p className="font-medium text-parch">{name}</p>
       <div className="mt-1.5 flex flex-wrap gap-1 text-[11px]">
         <span className="rounded-sm border border-white/10 px-2 py-0.5 text-parch">
@@ -439,7 +439,7 @@ function DemonWedgeCenterSlot({
         {name ?? <BuildLocalizedText texts={affinity} lang={lang} />}
       </p>
       {centerItem && (
-        <div className="pointer-events-none absolute left-1/2 top-full z-50 mt-2 hidden w-64 -translate-x-1/2 border border-white/10 bg-ink/95 p-3 text-sm shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
+        <div className="pointer-events-none absolute left-1/2 top-full z-50 mt-2 hidden w-64 -translate-x-1/2 border border-white/10 bg-ink/95 p-3 text-sm shadow-[0_20px_40px_rgba(0,0,0,0.65)] group-hover:block">
           <p className="font-medium text-parch">{name}</p>
           <div className="mt-1.5 flex flex-wrap gap-1 text-[11px]">
             <span className="rounded-sm border border-white/10 px-2 py-0.5 text-parch">
@@ -1112,7 +1112,7 @@ function BuildTabContent({
                   <span className="h-2 w-2 rounded-full" style={{ background: showTrackAdjust ? "#fbbf24" : "#64748b" }} />
                   {t('demonWedgeTrackAdjust')}
                 </button>
-                <div className="pointer-events-none absolute right-0 top-full z-30 mt-2 hidden w-64 border border-white/10 bg-ink/95 p-3 text-xs leading-relaxed text-muted shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
+                <div className="pointer-events-none absolute right-0 top-full z-30 mt-2 hidden w-64 border border-white/10 bg-ink/95 p-3 text-xs leading-relaxed text-muted shadow-[0_20px_40px_rgba(0,0,0,0.65)] group-hover:block">
                   {t('demonWedgeTrackTooltip')}
                 </div>
               </div>
@@ -1164,7 +1164,7 @@ function BuildTabContent({
                     <Link href={s.href} className="block transition-transform duration-150 hover:scale-105">{card}</Link>
                   ) : card}
                   <p className="max-w-[8rem] truncate text-center text-xs text-parch/85">{s.name}</p>
-                  <div className="pointer-events-none absolute left-1/2 top-full z-50 mt-2 hidden w-64 -translate-x-1/2 border border-white/10 bg-ink/95 p-3 text-sm shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
+                  <div className="pointer-events-none absolute left-1/2 top-full z-50 mt-2 hidden w-64 -translate-x-1/2 border border-white/10 bg-ink/95 p-3 text-sm shadow-[0_20px_40px_rgba(0,0,0,0.65)] group-hover:block">
                     <p className="font-medium text-parch">{s.name}</p>
                     <div className="mt-1.5 flex flex-wrap gap-1 text-[11px]">
                       <span className="rounded-sm border border-white/10 px-2 py-0.5 text-parch">#{s.modId}</span>
@@ -1204,7 +1204,7 @@ function BuildTabContent({
                         <BuildLocalizedText texts={cw.name} lang={selectedLanguage} />
                       </p>
                     </button>
-                    <div className="pointer-events-none absolute left-1/2 top-full z-50 mt-2 hidden w-56 -translate-x-1/2 border border-white/10 bg-ink/95 p-3 text-sm shadow-[0_20px_40px_rgba(2,6,23,0.65)] group-hover:block">
+                    <div className="pointer-events-none absolute left-1/2 top-full z-50 mt-2 hidden w-56 -translate-x-1/2 border border-white/10 bg-ink/95 p-3 text-sm shadow-[0_20px_40px_rgba(0,0,0,0.65)] group-hover:block">
                       <p className="font-medium text-electro">
                         <BuildLocalizedText texts={cw.name} lang={selectedLanguage} />
                       </p>
@@ -2907,7 +2907,7 @@ export default function CharacterDetailClient({
           aria-label={`Portrait agrandi : ${zoomedPortrait.alt}`}
         >
           <div
-            className="max-h-[90vh] max-w-2xl overflow-hidden border border-gold/30 bg-panel/95 shadow-[0_25px_60px_rgba(2,6,23,0.65)]"
+            className="max-h-[90vh] max-w-2xl overflow-hidden border border-gold/30 bg-panel/95 shadow-[0_25px_60px_rgba(0,0,0,0.65)]"
             onClick={(event) => event.stopPropagation()}
           >
             <div className="flex items-center justify-between gap-3 border-b border-white/10 px-4 py-3">

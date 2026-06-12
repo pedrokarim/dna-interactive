@@ -84,7 +84,7 @@ export default function MobileMenu() {
 
       <aside
         id="mobile-menu-drawer"
-        className={`fixed inset-y-0 right-0 z-[70] flex w-[85%] max-w-sm flex-col border-l border-gold/25 bg-ink shadow-[0_0_60px_rgba(15,23,42,0.8)] transition-transform duration-300 ease-out ${
+        className={`fixed inset-y-0 right-0 z-[70] flex w-[85%] max-w-sm flex-col border-l border-gold/25 bg-ink shadow-[0_0_60px_rgba(0,0,0,0.8)] transition-transform duration-300 ease-out ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
         role="dialog"

@@ -74,11 +74,11 @@ export default function Loading({
   // Mode fullscreen : prend tout l'écran
   if (mode === "fullscreen") {
     return (
-      <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9999] flex items-center justify-center">
-        <div className="bg-white dark:bg-panel rounded-lg shadow-xl p-8 flex flex-col items-center space-y-4 max-w-sm mx-4">
+      <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[9999] flex items-center justify-center">
+        <div className="border border-line/30 bg-panel/95 shadow-[0_20px_60px_rgba(0,0,0,0.7)] p-8 flex flex-col items-center space-y-4 max-w-sm mx-4 text-gold">
           {spinner}
           {resolvedMessage && (
-            <p className="text-muted-2 dark:text-parch text-center font-medium">
+            <p className="text-parch text-center font-sans">
               {resolvedMessage}
             </p>
           )}

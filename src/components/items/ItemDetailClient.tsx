@@ -183,7 +183,7 @@ function renderTextWithDynamicMentions(
         <span className="mx-0.5 rounded-sm border border-gold/35 bg-gold/20 px-1.5 py-0.5 font-medium text-gold">
           {inlineValue}
         </span>
-        <span className="pointer-events-none absolute left-1/2 top-full z-20 mt-1 hidden -translate-x-1/2 whitespace-nowrap rounded-sm border border-white/10 bg-ink/95 px-2 py-1 text-[11px] text-parch shadow-[0_8px_20px_rgba(2,6,23,0.45)] group-hover:block">
+        <span className="pointer-events-none absolute left-1/2 top-full z-20 mt-1 hidden -translate-x-1/2 whitespace-nowrap rounded-sm border border-white/10 bg-ink/95 px-2 py-1 text-[11px] text-parch shadow-[0_8px_20px_rgba(0,0,0,0.45)] group-hover:block">
           {resolved !== undefined
             ? `#${index} | Niveau ${level}: ${formatDynamicNumber(resolved)}`
             : `#${index} | Niveau ${level}: valeur indisponible`}

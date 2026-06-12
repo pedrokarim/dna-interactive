@@ -15,7 +15,7 @@ export default async function ItemsCategoriesPage() {
 
   return (
     <div className="space-y-8">
-      <DnaPanel className="p-8 shadow-[0_24px_55px_rgba(15,23,42,0.5)]">
+      <DnaPanel className="p-8 shadow-[0_24px_55px_rgba(0,0,0,0.5)]">
         <p className="font-caps text-[0.7rem] uppercase tracking-[0.34em] text-gold/80">
           {tItems('libraryLabel')}
         </p>
