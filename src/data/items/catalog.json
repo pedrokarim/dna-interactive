@@ -28,6 +28,32 @@
       "sampleIconPath": "/assets/items/mods/T_Mod_Phoenix01.png"
     },
     {
+      "id": "weapons",
+      "slug": "weapons",
+      "title": "Armes / Weapons",
+      "technicalName": "WEAPON",
+      "displayName": "Armes",
+      "description": "Liste des armes avec noms multilingues, type melee/range, sous-type et icones.",
+      "itemCount": 108,
+      "availableLanguages": [
+        "DE",
+        "EN",
+        "ES",
+        "FR",
+        "JP",
+        "KR",
+        "TC"
+      ],
+      "defaultGridLanguages": [
+        "FR",
+        "EN"
+      ],
+      "defaultDetailLanguage": "FR",
+      "datasetFile": "weapons.items.json",
+      "iconDirectory": "/assets/items/weapons",
+      "sampleIconPath": "/assets/items/weapons/T_Head_Sword_Zhuiyi.png"
+    },
+    {
       "id": "genimons",
       "slug": "genimons",
       "title": "Genimons",
