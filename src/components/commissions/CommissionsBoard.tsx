@@ -30,18 +30,23 @@ export function CommissionsBoard({
   const [meta, setMeta] = useState(initialMeta);
   const [syncing, setSyncing] = useState(false);
   const [updatedLabel, setUpdatedLabel] = useState<string | null>(null);
+  const [nextLabel, setNextLabel] = useState<string | null>(null);
   const pollTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Heure de dernière MAJ, formatée après montage (évite le mismatch d'hydratation).
+  // Heures formatées dans le FUSEAU LOCAL du visiteur (toLocaleTimeString par
+  // défaut), avec l'abréviation de fuseau. Calculé après montage pour éviter le
+  // mismatch d'hydratation (le fuseau diffère serveur/client).
   useEffect(() => {
-    if (!meta.updatedAt) return setUpdatedLabel(null);
+    const opts: Intl.DateTimeFormatOptions = {
+      hour: "2-digit",
+      minute: "2-digit",
+      timeZoneName: "short",
+    };
+    setNextLabel(new Date(meta.nextRefreshAt).toLocaleTimeString(locale, opts));
     setUpdatedLabel(
-      new Date(meta.updatedAt).toLocaleTimeString(locale, {
-        hour: "2-digit",
-        minute: "2-digit",
-      }),
+      meta.updatedAt ? new Date(meta.updatedAt).toLocaleTimeString(locale, opts) : null,
     );
-  }, [meta.updatedAt, locale]);
+  }, [meta.nextRefreshAt, meta.updatedAt, locale]);
 
   useEffect(() => () => { if (pollTimer.current) clearTimeout(pollTimer.current); }, []);
 
@@ -78,7 +83,7 @@ export function CommissionsBoard({
   }, [state.contentHash]);
 
   return (
-    <div className="mx-auto max-w-5xl">
+    <div className="mx-auto max-w-6xl">
       <header className="mb-8 text-center">
         <p className="font-caps text-[0.7rem] uppercase tracking-[0.34em] text-gold/80">
           {t("eyebrow")}
@@ -98,9 +103,12 @@ export function CommissionsBoard({
               <p className="font-caps text-[0.62rem] uppercase tracking-[0.28em] text-gold/80">
                 {t("nextRefresh")}
               </p>
+              {nextLabel ? (
+                <p className="mt-0.5 text-[0.8rem] text-parch/80">{t("nextAt", { time: nextLabel })}</p>
+              ) : null}
               {updatedLabel ? (
-                <p className="mt-0.5 text-[0.72rem] text-parch/55">
-                  {t("lastUpdated", { time: updatedLabel })} · UTC
+                <p className="mt-0.5 text-[0.72rem] text-parch/45">
+                  {t("lastUpdated", { time: updatedLabel })}
                 </p>
               ) : null}
             </div>
@@ -128,7 +136,7 @@ export function CommissionsBoard({
         </p>
       ) : null}
 
-      <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-5 xl:grid-cols-2">
         {REGIONS.map((region) => (
           <RegionCard key={region} region={region} data={state.regions[region]} locale={locale} />
         ))}

@@ -45,12 +45,12 @@ function Column({
     >
       <div className="flex items-center gap-1.5">
         <Icon
-          className={cn("h-3.5 w-3.5", isWedge ? "text-crimson-bright" : "text-gold")}
+          className={cn("h-3.5 w-3.5 shrink-0", isWedge ? "text-crimson-bright" : "text-gold")}
           aria-hidden
         />
         <span
           className={cn(
-            "font-caps text-[0.62rem] uppercase tracking-[0.18em]",
+            "whitespace-nowrap font-caps text-[0.6rem] uppercase leading-tight tracking-[0.1em]",
             isWedge ? "text-[#ffb3a6]" : "text-gold",
           )}
         >

@@ -538,6 +538,7 @@
     "lastUpdated": "MAJ {time}",
     "syncing": "Synchronisation…",
     "fallbackNotice": "Les rotations seront bientôt disponibles.",
-    "utcNote": "Les commissions changent au début de chaque heure (UTC)."
+    "utcNote": "Les commissions changent au début de chaque heure ; horaires affichés dans votre fuseau.",
+    "nextAt": "à {time} chez vous"
   }
 }
