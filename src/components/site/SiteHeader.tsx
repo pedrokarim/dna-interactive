@@ -8,6 +8,7 @@ import {
 } from "@/lib/constants";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import MobileMenu from "@/components/MobileMenu";
+import { DnaNouveau } from "@/components/dna/Badges";
 
 /** En-tête de site — design system DNA (marque Cormorant, nav Cinzel, liseré doré). */
 export default async function SiteHeader({ active }: { active?: string }) {
@@ -64,6 +65,9 @@ export default async function SiteHeader({ active }: { active?: string }) {
                     }`}
                   >
                     {navLabels[link.href] ?? link.label}
+                    {link.href === NAVIGATION.commissions ? (
+                      <DnaNouveau className="ml-1.5 align-middle" />
+                    ) : null}
                     {isActive ? (
                       <span aria-hidden className="absolute -bottom-1.5 left-0 right-0 h-px bg-gold-bright/70" />
                     ) : null}
