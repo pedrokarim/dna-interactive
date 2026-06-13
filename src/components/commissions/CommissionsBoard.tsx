@@ -4,16 +4,17 @@ import { Clock, Loader2 } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { DnaPanel } from "@/components/dna/Panel";
-import { computeRotationMeta } from "@/lib/commissions/meta";
 import { REGIONS, type RotationMeta, type RotationState } from "@/lib/commissions/types";
 import { CountdownTimer } from "./CountdownTimer";
 import { RegionCard } from "./RegionCard";
 
-// Au passage de l'heure : le collecteur capte la nouvelle rotation peu après
-// HH:01, on laisse donc retomber puis on interroge /latest sur ~6 min.
-const POLL_DELAY_MS = 30_000;
-const POLL_INTERVAL_MS = 20_000;
-const MAX_POLLS = 18;
+// La rotation change au top de l'heure. On vérifie /latest en continu (filet de
+// sécurité → MAJ sans rechargement quoi qu'il arrive) et on accélère juste après
+// le passage du compte à rebours à 0, le temps que la collecte tourne (~HH:01).
+const STEADY_POLL_MS = 60_000;
+const BURST_DELAY_MS = 25_000;
+const BURST_INTERVAL_MS = 20_000;
+const BURST_MAX = 18;
 
 export function CommissionsBoard({
   initialState,
@@ -48,39 +49,54 @@ export function CommissionsBoard({
     );
   }, [meta.nextRefreshAt, meta.updatedAt, locale]);
 
+  // Dernier hash connu, accessible aux pollers sans les recréer à chaque MAJ.
+  const latestHashRef = useRef(state.contentHash);
+  useEffect(() => {
+    latestHashRef.current = state.contentHash;
+  }, [state.contentHash]);
+
   useEffect(() => () => { if (pollTimer.current) clearTimeout(pollTimer.current); }, []);
 
-  // Au passage du compte à rebours à 0 : on attend que le bot édite + que la
-  // collecte tourne, puis on poll /latest jusqu'à voir un nouveau contentHash.
-  const handleComplete = useCallback(() => {
-    const startHash = state.contentHash;
-    let attempts = 0;
-    setSyncing(true);
-
-    const poll = async () => {
-      attempts += 1;
-      try {
-        const res = await fetch("/api/commissions/latest", { cache: "no-store" });
-        const data = (await res.json()) as { state?: RotationState; meta?: RotationMeta };
-        if (data.meta) setMeta(data.meta);
-        if (data.state && data.state.contentHash !== startHash) {
-          setState(data.state);
-          setSyncing(false);
-          return;
-        }
-      } catch {
-        // réseau indisponible : on retentera, et on garde un meta cohérent
-        setMeta((m) => (new Date(m.nextRefreshAt).getTime() > Date.now() ? m : computeRotationMeta(m.updatedAt)));
+  // Récupère l'état courant et remplace la rotation affichée si le contenu a
+  // changé. Cache-buster `?t=` pour court-circuiter tout cache intermédiaire.
+  const checkForUpdate = useCallback(async (): Promise<boolean> => {
+    try {
+      const res = await fetch(`/api/commissions/latest?t=${Date.now()}`, { cache: "no-store" });
+      const data = (await res.json()) as { state?: RotationState; meta?: RotationMeta };
+      if (data.meta) setMeta(data.meta);
+      if (data.state?.contentHash && data.state.contentHash !== latestHashRef.current) {
+        setState(data.state);
+        setSyncing(false);
+        return true;
       }
-      if (attempts >= MAX_POLLS) {
+    } catch {
+      // réseau indisponible : on réessaiera au prochain tick
+    }
+    return false;
+  }, []);
+
+  // Filet de sécurité : vérification périodique → la page se met à jour seule.
+  useEffect(() => {
+    const id = setInterval(() => void checkForUpdate(), STEADY_POLL_MS);
+    return () => clearInterval(id);
+  }, [checkForUpdate]);
+
+  // Au passage du compte à rebours à 0 : vérifications rapprochées le temps que
+  // la nouvelle rotation soit collectée.
+  const handleComplete = useCallback(() => {
+    setSyncing(true);
+    let attempts = 0;
+    const tick = async () => {
+      attempts += 1;
+      const updated = await checkForUpdate();
+      if (updated || attempts >= BURST_MAX) {
         setSyncing(false);
         return;
       }
-      pollTimer.current = setTimeout(poll, POLL_INTERVAL_MS);
+      pollTimer.current = setTimeout(tick, BURST_INTERVAL_MS);
     };
-
-    pollTimer.current = setTimeout(poll, POLL_DELAY_MS);
-  }, [state.contentHash]);
+    pollTimer.current = setTimeout(tick, BURST_DELAY_MS);
+  }, [checkForUpdate]);
 
   return (
     <div className="mx-auto max-w-6xl">
