@@ -4,6 +4,7 @@ import { cn } from "@/components/dna/cn";
 import {
   CATEGORIES,
   CATEGORY_LABELS,
+  isInfiniteObjective,
   OBJECTIVE_FR,
   REGION_LABELS,
   type Category,
@@ -37,6 +38,8 @@ function Column({
 }) {
   const Icon = CATEGORY_ICON[category];
   const isWedge = category === "demon_wedge";
+  const infTitle =
+    locale === "fr" ? "Commission infinie — rejouable" : "Infinite commission — repeatable";
   return (
     <div
       className={cn(
@@ -75,7 +78,19 @@ function Column({
                 isWedge ? "bg-crimson-bright/70" : "bg-gold/60",
               )}
             />
-            {objectiveLabel(obj, locale)}
+            <span>{objectiveLabel(obj, locale)}</span>
+            {isInfiniteObjective(obj) ? (
+              <span
+                title={infTitle}
+                aria-label={infTitle}
+                className={cn(
+                  "ml-auto font-display text-lg leading-none",
+                  isWedge ? "text-crimson-bright" : "text-gold-bright",
+                )}
+              >
+                ∞
+              </span>
+            ) : null}
           </li>
         ))}
       </ul>
