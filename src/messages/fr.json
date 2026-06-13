@@ -35,7 +35,8 @@
     "about": "À propos",
     "support": "Support",
     "contact": "Contact",
-    "changelog": "Changelog"
+    "changelog": "Changelog",
+    "commissions": "Commissions"
   },
   "common": {
     "close": "Fermer",
@@ -528,5 +529,15 @@
     "ogTitle": "DNA Interactive - Carte Interactive Duet Night Abyss | Map Gaming",
     "ogDescription": "Carte interactive ultime pour Duet Night Abyss. Explorez le monde du jeu avec DNA Interactive : trouvez tous les secrets, coffres et collectibles.",
     "twitterDescription": "Carte interactive ultime pour Duet Night Abyss. Trouvez tous les secrets et collectibles avec DNA Interactive."
+  },
+  "commissions": {
+    "eyebrow": "Mandats scellés",
+    "title": "Covert Commissions",
+    "description": "Rotation en direct des commissions par région — Personnage, Arme et Sceau démoniaque. Le tableau se met à jour à chaque actualisation.",
+    "nextRefresh": "Prochaine actualisation",
+    "lastUpdated": "MAJ {time}",
+    "syncing": "Synchronisation…",
+    "fallbackNotice": "Les rotations seront bientôt disponibles.",
+    "utcNote": "Les commissions changent au début de chaque heure (UTC)."
   }
 }

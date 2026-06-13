@@ -35,7 +35,8 @@
     "about": "Acerca de",
     "support": "Soporte",
     "contact": "Contacto",
-    "changelog": "Registro de cambios"
+    "changelog": "Registro de cambios",
+    "commissions": "Comisiones"
   },
   "common": {
     "close": "Cerrar",
@@ -528,5 +529,15 @@
     "ogTitle": "DNA Interactive - Mapa Interactivo de Duet Night Abyss | Mapa Gaming",
     "ogDescription": "El mapa interactivo definitivo para Duet Night Abyss. Explora el mundo del juego con DNA Interactive: encuentra todos los secretos, cofres y coleccionables.",
     "twitterDescription": "El mapa interactivo definitivo para Duet Night Abyss. Encuentra todos los secretos y coleccionables con DNA Interactive."
+  },
+  "commissions": {
+    "eyebrow": "Covert Commissions",
+    "title": "Covert Commissions",
+    "description": "Live rotation of the regional commissions — Character, Weapon and Demon Wedge. The board updates on every refresh.",
+    "nextRefresh": "Next refresh",
+    "lastUpdated": "Updated {time}",
+    "syncing": "Syncing…",
+    "fallbackNotice": "Rotations will be available shortly.",
+    "utcNote": "Commissions rotate at the start of every hour (UTC)."
   }
 }

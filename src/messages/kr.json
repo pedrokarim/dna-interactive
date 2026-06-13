@@ -35,7 +35,8 @@
     "about": "소개",
     "support": "지원",
     "contact": "문의",
-    "changelog": "업데이트 내역"
+    "changelog": "업데이트 내역",
+    "commissions": "커미션"
   },
   "common": {
     "close": "닫기",
@@ -528,5 +529,15 @@
     "ogTitle": "DNA Interactive - Duet Night Abyss 인터랙티브 맵 | 게임 맵",
     "ogDescription": "Duet Night Abyss 최고의 인터랙티브 맵. DNA Interactive로 게임 세계를 탐험: 모든 비밀, 상자, 수집품을 찾아보세요.",
     "twitterDescription": "Duet Night Abyss 최고의 인터랙티브 맵. DNA Interactive로 모든 비밀과 수집품을 찾아보세요."
+  },
+  "commissions": {
+    "eyebrow": "Covert Commissions",
+    "title": "Covert Commissions",
+    "description": "Live rotation of the regional commissions — Character, Weapon and Demon Wedge. The board updates on every refresh.",
+    "nextRefresh": "Next refresh",
+    "lastUpdated": "Updated {time}",
+    "syncing": "Syncing…",
+    "fallbackNotice": "Rotations will be available shortly.",
+    "utcNote": "Commissions rotate at the start of every hour (UTC)."
   }
 }

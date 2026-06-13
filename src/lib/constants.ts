@@ -97,6 +97,7 @@ export const NAVIGATION = {
   map: "/map",
   items: "/items",
   characters: "/characters",
+  commissions: "/commissions",
   codes: "/codes",
   about: "/about",
   support: "/support",
@@ -108,6 +109,7 @@ export const NAV_LINKS = [
   { href: NAVIGATION.map, label: "Carte Interactive" },
   { href: NAVIGATION.items, label: "Items" },
   { href: NAVIGATION.characters, label: "Personnages" },
+  { href: NAVIGATION.commissions, label: "Commissions" },
   { href: NAVIGATION.about, label: "À propos" },
 ] as const;
 
@@ -116,6 +118,7 @@ export const FOOTER_LINKS = [
   { href: NAVIGATION.map, label: "Carte Interactive" },
   { href: NAVIGATION.items, label: "Items" },
   { href: NAVIGATION.characters, label: "Personnages" },
+  { href: NAVIGATION.commissions, label: "Commissions" },
   { href: NAVIGATION.codes, label: "Codes de Rédemption" },
   { href: NAVIGATION.about, label: "À propos" },
   { href: NAVIGATION.support, label: "Support" },

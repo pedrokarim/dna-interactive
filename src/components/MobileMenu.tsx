@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
-import { Menu, X, Map, Gift, Info, HelpCircle, Mail, Boxes, Users } from "lucide-react";
+import { Menu, X, Map, Gift, Info, HelpCircle, Mail, Boxes, Users, ScrollText } from "lucide-react";
 import { NAV_LINKS, NAVIGATION, SITE_CONFIG, ASSETS_PATHS } from "@/lib/constants";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 
@@ -12,6 +12,7 @@ const navIcons = {
   [NAVIGATION.map]: Map,
   [NAVIGATION.items]: Boxes,
   [NAVIGATION.characters]: Users,
+  [NAVIGATION.commissions]: ScrollText,
   [NAVIGATION.codes]: Gift,
   [NAVIGATION.about]: Info,
   [NAVIGATION.support]: HelpCircle,
@@ -22,6 +23,7 @@ const navTranslationKeys: Record<string, string> = {
   [NAVIGATION.map]: "map",
   [NAVIGATION.items]: "items",
   [NAVIGATION.characters]: "characters",
+  [NAVIGATION.commissions]: "commissions",
   [NAVIGATION.codes]: "codes",
   [NAVIGATION.about]: "about",
   [NAVIGATION.support]: "support",

@@ -35,7 +35,8 @@
     "about": "このサイトについて",
     "support": "サポート",
     "contact": "お問い合わせ",
-    "changelog": "更新履歴"
+    "changelog": "更新履歴",
+    "commissions": "コミッション"
   },
   "common": {
     "close": "閉じる",
@@ -528,5 +529,15 @@
     "ogTitle": "DNA Interactive - Duet Night Abyss インタラクティブマップ | ゲームマップ",
     "ogDescription": "Duet Night Abyss究極のインタラクティブマップ。DNA Interactiveでゲーム世界を探索：すべての秘密、宝箱、収集品を見つけよう。",
     "twitterDescription": "Duet Night Abyss究極のインタラクティブマップ。DNA Interactiveですべての秘密と収集品を見つけよう。"
+  },
+  "commissions": {
+    "eyebrow": "Covert Commissions",
+    "title": "Covert Commissions",
+    "description": "Live rotation of the regional commissions — Character, Weapon and Demon Wedge. The board updates on every refresh.",
+    "nextRefresh": "Next refresh",
+    "lastUpdated": "Updated {time}",
+    "syncing": "Syncing…",
+    "fallbackNotice": "Rotations will be available shortly.",
+    "utcNote": "Commissions rotate at the start of every hour (UTC)."
   }
 }

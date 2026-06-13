@@ -20,6 +20,7 @@ export default async function SiteFooter({ active }: { active?: string }) {
     [NAVIGATION.map]: tNav("map"),
     [NAVIGATION.items]: tNav("items"),
     [NAVIGATION.characters]: tNav("characters"),
+    [NAVIGATION.commissions]: tNav("commissions"),
     [NAVIGATION.codes]: tNav("codes"),
     [NAVIGATION.about]: tNav("about"),
     [NAVIGATION.support]: tNav("support"),

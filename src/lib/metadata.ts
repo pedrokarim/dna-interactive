@@ -235,6 +235,25 @@ export const pageMetadata = {
     image: "/assets/worldview/worldview-9.webp",
     path: "/characters",
   },
+  commissions: {
+    title: `Covert Commissions — Rotation en direct | ${SITE_CONFIG.name}`,
+    description:
+      "Rotation en direct des Covert Commissions de Duet Night Abyss (Mandats scellés) pour chaque région : Personnage, Arme et Sceau démoniaque, avec compte à rebours jusqu'à la prochaine actualisation.",
+    keywords: [
+      "Covert Commissions",
+      "Mandats scellés",
+      "Duet Night Abyss",
+      "DNA commissions",
+      "rotation commissions",
+      "convert commissions",
+      "Demon Wedge",
+      "Sceau démoniaque",
+      "rotation horaire",
+      "DNA Interactive",
+    ],
+    image: "/assets/worldview/worldview-5.webp",
+    path: "/commissions",
+  },
   codes: {
     title: `Codes de Rédemption Duet Night Abyss | ${SITE_CONFIG.name}`,
     description: "Découvrez tous les codes de rédemption actifs pour Duet Night Abyss. Codes promotionnels, récompenses gratuites et bonus exclusifs. Mise à jour régulière des nouveaux codes.",

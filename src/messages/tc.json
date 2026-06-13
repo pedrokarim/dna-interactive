@@ -35,7 +35,8 @@
     "about": "關於",
     "support": "支援",
     "contact": "聯絡我們",
-    "changelog": "更新日誌"
+    "changelog": "更新日誌",
+    "commissions": "委託任務"
   },
   "common": {
     "close": "關閉",
@@ -528,5 +529,15 @@
     "ogTitle": "DNA Interactive - Duet Night Abyss 互動地圖 | 遊戲地圖",
     "ogDescription": "Duet Night Abyss 終極互動地圖。使用 DNA Interactive 探索遊戲世界：找到所有秘密、寶箱和收藏品。",
     "twitterDescription": "Duet Night Abyss 終極互動地圖。使用 DNA Interactive 找到所有秘密和收藏品。"
+  },
+  "commissions": {
+    "eyebrow": "Covert Commissions",
+    "title": "Covert Commissions",
+    "description": "Live rotation of the regional commissions — Character, Weapon and Demon Wedge. The board updates on every refresh.",
+    "nextRefresh": "Next refresh",
+    "lastUpdated": "Updated {time}",
+    "syncing": "Syncing…",
+    "fallbackNotice": "Rotations will be available shortly.",
+    "utcNote": "Commissions rotate at the start of every hour (UTC)."
   }
 }
