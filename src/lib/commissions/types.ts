@@ -15,11 +15,13 @@ export const OBJECTIVES = [
   "Capture",
   "Defense",
   "Dismantle",
+  "Escort",
   "Excavation",
   "Expulsion",
   "Exploration",
   "Hedge",
   "Mediation",
+  "Relocation",
   "Termination",
 ] as const;
 export type Objective = (typeof OBJECTIVES)[number];
@@ -75,11 +77,13 @@ export const OBJECTIVE_FR: Record<Objective, string> = {
   Capture: "Capture",
   Defense: "Défense",
   Dismantle: "Démanteler",
+  Escort: "Escorte",
   Excavation: "Excavation",
   Expulsion: "Expulsion",
   Exploration: "Exploration",
   Hedge: "Précaution",
   Mediation: "Médiation",
+  Relocation: "Transfert",
   Termination: "Extermination",
 };
 
