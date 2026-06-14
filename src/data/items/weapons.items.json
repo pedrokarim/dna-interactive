@@ -4275,16 +4275,14 @@
       }
     },
     "icon": {
-      "gamePath": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Dualblade_Shixiang",
-      "publicPath": "/assets/items/weapons/T_Head_Dualblade_Shixiang.png",
-      "placeholderPath": null,
+      "gamePath": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Claymore_Yemei",
+      "publicPath": null,
+      "placeholderPath": "/marker-default.svg",
       "candidates": [
         "T_Head_Claymore_Yemei",
         "Head_Claymore_Yemei"
       ],
-      "allMatches": [
-        "T_Head_Dualblade_Shixiang"
-      ]
+      "allMatches": []
     },
     "scaling": {
       "defaultLevel": 0,
