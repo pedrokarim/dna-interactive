@@ -110,12 +110,12 @@
         "modName": "Bernsteinglanz-Klinge",
         "description": "Die Waffe, die Berenica trägt. Eine Klinge mit goldenen Verzierungen. Die Klinge besteht aus einem seltenen schwarzen Metall. Dies ist eindeutig keine Waffe eines der Dorfbewohner der Purgatorio-Insel.\n ",
         "demonWedgeName": null,
-        "functionLabel": "Nahkampfwaffen",
+        "functionLabel": "Arma cuerpo a cuerpo",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Nahkampfwaffen",
+          "Arma cuerpo a cuerpo",
           "Großschwert"
         ]
       },
@@ -201,7 +201,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Broadsword_Huipo",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 10111,
       "GUIPathVariableName": "Huipo",
       "GUIPathVariableType": "Broadsword",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Broadsword_Huipo",
@@ -218,6 +218,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_10101",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Melee",
@@ -342,12 +343,12 @@
         "modName": "Fessel des Einzelwolfs",
         "description": "Mögen ausgelassene Festlichkeiten deine Einsamkeit lindern.",
         "demonWedgeName": null,
-        "functionLabel": "Nahkampfwaffen",
+        "functionLabel": "Arma cuerpo a cuerpo",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Nahkampfwaffen",
+          "Arma cuerpo a cuerpo",
           "Großschwert"
         ]
       },
@@ -433,7 +434,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Broadsword_Guzi",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 10111,
       "GUIPathVariableName": "Guzi",
       "GUIPathVariableType": "Broadsword",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Broadsword_Guzi",
@@ -450,6 +451,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_10102",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Melee",
@@ -574,12 +576,12 @@
         "modName": "Nachhall der Erinnerung",
         "description": "Ein Schwert von unbekannter Herkunft. Ein Schwert, das bereits seit Urzeiten existiert. Vielleicht wird es eines Tages zum Schlüssel für die Verbindung zwischen Vergangenheit und Gegenwart.",
         "demonWedgeName": null,
-        "functionLabel": "Nahkampfwaffen",
+        "functionLabel": "Arma cuerpo a cuerpo",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Nahkampfwaffen",
+          "Arma cuerpo a cuerpo",
           "Schwert"
         ]
       },
@@ -665,7 +667,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Sword_Zhuiyi",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 10111,
       "GUIPathVariableName": "Zhuiyi",
       "GUIPathVariableType": "Sword",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Sword_Zhuiyi",
@@ -682,6 +684,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_10103",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Melee",
@@ -806,12 +809,12 @@
         "modName": "Taktik des Weisen",
         "description": "Die beste Verteidigung ist ein starker Angriff – aber vergiss nicht die Bedeutung von ausreichender Erholung.",
         "demonWedgeName": null,
-        "functionLabel": "Nahkampfwaffen",
+        "functionLabel": "Arma cuerpo a cuerpo",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Nahkampfwaffen",
+          "Arma cuerpo a cuerpo",
           "Schwert"
         ]
       },
@@ -897,7 +900,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Sword_Huimou",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 10111,
       "GUIPathVariableName": "Huimou",
       "GUIPathVariableType": "Sword",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Sword_Huimou",
@@ -914,6 +917,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_10104",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Melee",
@@ -1038,12 +1042,12 @@
         "modName": "Wandernde Rose",
         "description": "Ich werde eine Reise jenseits des Sandes antreten, genau wie du.",
         "demonWedgeName": null,
-        "functionLabel": "Nahkampfwaffen",
+        "functionLabel": "Arma cuerpo a cuerpo",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Nahkampfwaffen",
+          "Arma cuerpo a cuerpo",
           "Schwert"
         ]
       },
@@ -1129,7 +1133,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Sword_Liulang",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 10111,
       "GUIPathVariableName": "Liulang",
       "GUIPathVariableType": "Sword",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Sword_Liulang",
@@ -1146,6 +1150,240 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_10105",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
+      "WeaponToCoinType": 101,
+      "WeaponValue": 10000,
+      "Type": "Melee",
+      "ResourceSType": "Sword",
+      "WeaponClassKey": "UI_Armory_Meleeweapon",
+      "WeaponTypeKey": "WeaponType_Sword",
+      "SkinApplicationTypeCodes": [
+        101
+      ],
+      "WeaponClass": "Melee",
+      "WeaponSubtype": "Sword"
+    }
+  },
+  {
+    "id": "weapons-10107",
+    "categoryId": "weapons",
+    "modId": 10107,
+    "archiveId": null,
+    "stats": {
+      "rarity": 5,
+      "polarity": null,
+      "maxLevel": 80,
+      "cost": null,
+      "openVersion": 14,
+      "releaseVersion": 140
+    },
+    "textKeys": {
+      "modNameKey": "UI_WEAPON_NAME_10107",
+      "descriptionKey": "UI_WEAPON_DESC_10107",
+      "demonWedgeKey": null,
+      "functionKey": "UI_Armory_Meleeweapon",
+      "passiveEffectsDescKey": null,
+      "affinityNameKey": null,
+      "archiveNameKey": null
+    },
+    "affinity": {
+      "id": null,
+      "nameKey": null,
+      "char": null,
+      "icon": {
+        "gamePath": null,
+        "publicPath": null,
+        "placeholderPath": null,
+        "candidates": [],
+        "allMatches": []
+      }
+    },
+    "typeCompatibility": {
+      "applicationType": 101,
+      "textKeys": [
+        "UI_Armory_Meleeweapon",
+        "WeaponType_Sword"
+      ],
+      "tags": [
+        {
+          "key": "UI_Armory_Meleeweapon",
+          "icon": {
+            "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponTypeClose_Combat.T_Armory_WeaponTypeClose_Combat",
+            "publicPath": "/assets/items/weapon-types/T_Armory_WeaponTypeClose_Combat.png",
+            "placeholderPath": null,
+            "candidates": [
+              "T_Armory_WeaponTypeClose_Combat",
+              "Armory_WeaponTypeClose_Combat"
+            ],
+            "allMatches": [
+              "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponTypeClose_Combat.png"
+            ]
+          }
+        },
+        {
+          "key": "WeaponType_Sword",
+          "icon": {
+            "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponType_Sword.T_Armory_WeaponType_Sword",
+            "publicPath": "/assets/items/weapon-types/T_Armory_WeaponType_Sword.png",
+            "placeholderPath": null,
+            "candidates": [
+              "T_Armory_WeaponType_Sword",
+              "Armory_WeaponType_Sword"
+            ],
+            "allMatches": [
+              "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponType_Sword.png"
+            ]
+          }
+        }
+      ]
+    },
+    "tolerance": {
+      "baseCost": null,
+      "costChange": null,
+      "maxLevel": 0,
+      "valuesByLevel": {
+        "0": null
+      }
+    },
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Sword_Qiuniao",
+      "publicPath": "/assets/items/weapons/T_Head_Sword_Qiuniao.png",
+      "placeholderPath": null,
+      "candidates": [
+        "T_Head_Sword_Qiuniao",
+        "Head_Sword_Qiuniao"
+      ],
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Sword_Qiuniao.png"
+      ]
+    },
+    "scaling": {
+      "defaultLevel": 0,
+      "maxLevel": 0,
+      "availableLevels": [
+        0
+      ],
+      "valuesByLevel": {
+        "0": {}
+      },
+      "attributesByLevel": {
+        "0": []
+      }
+    },
+    "translations": {
+      "DE": {
+        "modName": "Chainbreak Pinion",
+        "description": "No cage can hold wings born for flight. From fury and longing, she will shape barbed plumes sharp enough to shear through iron.",
+        "demonWedgeName": null,
+        "functionLabel": "Arma cuerpo a cuerpo",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Arma cuerpo a cuerpo",
+          "Schwert"
+        ]
+      },
+      "EN": {
+        "modName": "Chainbreak Pinion",
+        "description": "No cage can hold wings born for flight. From fury and longing, she will shape barbed plumes sharp enough to shear through iron.",
+        "demonWedgeName": null,
+        "functionLabel": "Melee Weapons",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Melee Weapons",
+          "Sword"
+        ]
+      },
+      "ES": {
+        "modName": "Piñón Rompecadenas",
+        "description": "Ninguna jaula puede retener alas destinadas a volar; ella forjará su rabia y su anhelo en plumas espinosas que destrocen la jaula.",
+        "demonWedgeName": null,
+        "functionLabel": "Arma cuerpo a cuerpo",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Arma cuerpo a cuerpo",
+          "Espada"
+        ]
+      },
+      "FR": {
+        "modName": "Plume affranchie",
+        "description": "Nulle cage ne saurait retenir des ailes vouées à l’envol. Elle forgera de sa colère et de son désir des plumes acérées capables de fracasser la cage qui l’emprisonnait.",
+        "demonWedgeName": null,
+        "functionLabel": "Armes de mêlée",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Armes de mêlée",
+          "Épée"
+        ]
+      },
+      "JP": {
+        "modName": "ケーフィヒフォーゲル",
+        "description": "鳥かごは、運命づけられた飛翔の翼を閉じ込めることはできない。彼女は怒りと渇望を熔かし合わせ、鳥かごを打ち砕く羽へと鍛え上げる。",
+        "demonWedgeName": null,
+        "functionLabel": "近接武器",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "近接武器",
+          "片手剣"
+        ]
+      },
+      "KR": {
+        "modName": "갇힌 새의 가시깃",
+        "description": "새장은 비상하기 위해 만들어진 날개를 가두지 못한다. 그녀의 분노와 갈망은 새장을 산산이 부술 날카로운 날개로 소생할 것이다.",
+        "demonWedgeName": null,
+        "functionLabel": "근접 무기",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "근접 무기",
+          "한손검"
+        ]
+      },
+      "TC": {
+        "modName": "囚鳥的刺羽",
+        "description": "囚籠困不住注定飛翔的翅膀，她將把憤怒與渴望熔鑄成擊碎鳥籠的刺羽。",
+        "demonWedgeName": null,
+        "functionLabel": "近戰武器",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "近戰武器",
+          "單手劍"
+        ]
+      }
+    },
+    "fields": {
+      "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Sword_Qiuniao",
+      "CollectRewardExp": 400,
+      "DecomposeReward": 10111,
+      "GUIPathVariableName": "Qiuniao",
+      "GUIPathVariableType": "Sword",
+      "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Sword_Qiuniao",
+      "Icon": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Sword_Qiuniao",
+      "ModSlot": "T.RT_1",
+      "ModSlotUnlock": "T.RT_2",
+      "OpenVersion": 14,
+      "ReleaseVersion": 140,
+      "SkinApplicationType": "T.RT_3",
+      "SortPriority": 10107,
+      "Sound": "SOUND_ITEM_WEAPON",
+      "WeaponDescribe": "UI_WEAPON_DESC_10107",
+      "WeaponId": 10107,
+      "WeaponMaxLevel": 80,
+      "WeaponName": "UI_WEAPON_NAME_10107",
+      "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Melee",
@@ -1270,12 +1508,12 @@
         "modName": "Kuss der Sirene",
         "description": "Küss mich! Knutsch mich! Bevor der morgige Tag anbricht, bevor junge Herzen altern und bevor der Tod uns scheidet.",
         "demonWedgeName": null,
-        "functionLabel": "Nahkampfwaffen",
+        "functionLabel": "Arma cuerpo a cuerpo",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Nahkampfwaffen",
+          "Arma cuerpo a cuerpo",
           "Stangenwaffe"
         ]
       },
@@ -1361,7 +1599,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Polearm_Sairen",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 10211,
       "GUIPathVariableName": "Sairen",
       "GUIPathVariableType": "Polearm",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Polearm_Sairen",
@@ -1378,6 +1616,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_10201",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Melee",
@@ -1502,12 +1741,12 @@
         "modName": "Frühlingsjade-Hellebarde",
         "description": "Eine Stangenwaffe, die die Sternenweber aus ihrer Heimat mitgebracht haben – Huaxu. Form und Farbe der Klinge sind von einer besonderen Pflanze in Huaxu inspiriert, die man Weide nennt. In Huaxu symbolisiert diese Pflanze normalerweise die „Heimat“. Die Sternenweber sind zwar gerade damit beschäftigt, jeden Zentimeter von Atlasia mit Sternenhimmeln zu überziehen, aber irgendwann werden sie in ihre grüne Heimat mit den üppigen Weiden zurückkehren.",
         "demonWedgeName": null,
-        "functionLabel": "Nahkampfwaffen",
+        "functionLabel": "Arma cuerpo a cuerpo",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Nahkampfwaffen",
+          "Arma cuerpo a cuerpo",
           "Stangenwaffe"
         ]
       },
@@ -1593,7 +1832,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Polearm_Chunjue",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 10211,
       "GUIPathVariableName": "Chunjue",
       "GUIPathVariableType": "Polearm",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Polearm_Chunjue",
@@ -1610,6 +1849,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_10202",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Melee",
@@ -1734,12 +1974,12 @@
         "modName": "Widerschuppen der Sünde",
         "description": "Die Jahre vergehen, und die Erdenbewohner werden immer durchschnittlicher.",
         "demonWedgeName": null,
-        "functionLabel": "Nahkampfwaffen",
+        "functionLabel": "Arma cuerpo a cuerpo",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Nahkampfwaffen",
+          "Arma cuerpo a cuerpo",
           "Stangenwaffe"
         ]
       },
@@ -1825,7 +2065,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Polearm_Zuiqian",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 10211,
       "GUIPathVariableName": "Zuiqian",
       "GUIPathVariableType": "Polearm",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Polearm_Zuiqian",
@@ -1842,6 +2082,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_10203",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Melee",
@@ -1966,12 +2207,12 @@
         "modName": "Elpides im Überfluss",
         "description": "Einst vergrub ich einen Samen in der gefrorenen Erde und hoffte auf einen Erntemond, der vielleicht niemals kommen würde.",
         "demonWedgeName": null,
-        "functionLabel": "Nahkampfwaffen",
+        "functionLabel": "Arma cuerpo a cuerpo",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Nahkampfwaffen",
+          "Arma cuerpo a cuerpo",
           "Stangenwaffe"
         ]
       },
@@ -1989,7 +2230,7 @@
         ]
       },
       "ES": {
-        "modName": "Abundancia de Esperanza",
+        "modName": "Abundancia de la Esperanza",
         "description": "Planté una semilla en la tierra helada, esperando una cosecha que tal vez nunca llegue.",
         "demonWedgeName": null,
         "functionLabel": "Arma cuerpo a cuerpo",
@@ -2057,7 +2298,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Scythe_Xiji",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 10211,
       "GUIPathVariableName": "Xiji",
       "GUIPathVariableType": "Scythe",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Scythe_Xiji",
@@ -2074,6 +2315,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_10204",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Melee",
@@ -2198,12 +2440,12 @@
         "modName": "Schwundgespenst",
         "description": "Verfall ist das Ende des Lebens; akzeptiere ihn, und du wirst in einen ewigen und friedlichen Hafen segeln.",
         "demonWedgeName": null,
-        "functionLabel": "Nahkampfwaffen",
+        "functionLabel": "Arma cuerpo a cuerpo",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Nahkampfwaffen",
+          "Arma cuerpo a cuerpo",
           "Stangenwaffe"
         ]
       },
@@ -2289,7 +2531,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Scythe_Chixing",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 10211,
       "GUIPathVariableName": "Chixing",
       "GUIPathVariableType": "Scythe",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Scythe_Chixing",
@@ -2306,6 +2548,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_10206",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Melee",
@@ -2430,12 +2673,12 @@
         "modName": "Friedenstaube",
         "description": "Eine Taube, die schwor, die Würde zu verteidigen, und jede Feder für den Frieden opfert.",
         "demonWedgeName": null,
-        "functionLabel": "Nahkampfwaffen",
+        "functionLabel": "Arma cuerpo a cuerpo",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Nahkampfwaffen",
+          "Arma cuerpo a cuerpo",
           "Stangenwaffe"
         ]
       },
@@ -2521,7 +2764,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Scythe_Yihe",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 10211,
       "GUIPathVariableName": "Yihe",
       "GUIPathVariableType": "Scythe",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Scythe_Yihe",
@@ -2538,10 +2781,244 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_10208",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Melee",
       "ResourceSType": "Scythe",
+      "WeaponClassKey": "UI_Armory_Meleeweapon",
+      "WeaponTypeKey": "WeaponType_Polearm",
+      "SkinApplicationTypeCodes": [
+        102
+      ],
+      "WeaponClass": "Melee",
+      "WeaponSubtype": "Polearm"
+    }
+  },
+  {
+    "id": "weapons-10299",
+    "categoryId": "weapons",
+    "modId": 10299,
+    "archiveId": null,
+    "stats": {
+      "rarity": 5,
+      "polarity": null,
+      "maxLevel": 80,
+      "cost": null,
+      "openVersion": 14,
+      "releaseVersion": 140
+    },
+    "textKeys": {
+      "modNameKey": "UI_WEAPON_NAME_10299",
+      "descriptionKey": "UI_WEAPON_DESC_10299",
+      "demonWedgeKey": null,
+      "functionKey": "UI_Armory_Meleeweapon",
+      "passiveEffectsDescKey": null,
+      "affinityNameKey": null,
+      "archiveNameKey": null
+    },
+    "affinity": {
+      "id": null,
+      "nameKey": null,
+      "char": null,
+      "icon": {
+        "gamePath": null,
+        "publicPath": null,
+        "placeholderPath": null,
+        "candidates": [],
+        "allMatches": []
+      }
+    },
+    "typeCompatibility": {
+      "applicationType": 102,
+      "textKeys": [
+        "UI_Armory_Meleeweapon",
+        "WeaponType_Polearm"
+      ],
+      "tags": [
+        {
+          "key": "UI_Armory_Meleeweapon",
+          "icon": {
+            "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponTypeClose_Combat.T_Armory_WeaponTypeClose_Combat",
+            "publicPath": "/assets/items/weapon-types/T_Armory_WeaponTypeClose_Combat.png",
+            "placeholderPath": null,
+            "candidates": [
+              "T_Armory_WeaponTypeClose_Combat",
+              "Armory_WeaponTypeClose_Combat"
+            ],
+            "allMatches": [
+              "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponTypeClose_Combat.png"
+            ]
+          }
+        },
+        {
+          "key": "WeaponType_Polearm",
+          "icon": {
+            "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponType_Polearm.T_Armory_WeaponType_Polearm",
+            "publicPath": "/assets/items/weapon-types/T_Armory_WeaponType_Polearm.png",
+            "placeholderPath": null,
+            "candidates": [
+              "T_Armory_WeaponType_Polearm",
+              "Armory_WeaponType_Polearm"
+            ],
+            "allMatches": [
+              "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponType_Polearm.png"
+            ]
+          }
+        }
+      ]
+    },
+    "tolerance": {
+      "baseCost": null,
+      "costChange": null,
+      "maxLevel": 0,
+      "valuesByLevel": {
+        "0": null
+      }
+    },
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Polearm_Yemei",
+      "publicPath": "/assets/items/weapons/T_Head_Polearm_Yemei.png",
+      "placeholderPath": null,
+      "candidates": [
+        "T_Head_Polearm_Yemei",
+        "Head_Polearm_Yemei"
+      ],
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Polearm_Yemei.png"
+      ]
+    },
+    "scaling": {
+      "defaultLevel": 0,
+      "maxLevel": 0,
+      "availableLevels": [
+        0
+      ],
+      "valuesByLevel": {
+        "0": {}
+      },
+      "attributesByLevel": {
+        "0": []
+      }
+    },
+    "translations": {
+      "DE": {
+        "modName": "Metalllanze",
+        "description": "Eine gewöhnliche Lanze. Aus dem billigsten Metall hergestellt, also ist es nicht schlimm, wenn sie zerbricht.",
+        "demonWedgeName": null,
+        "functionLabel": "Arma cuerpo a cuerpo",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Arma cuerpo a cuerpo",
+          "Stangenwaffe"
+        ]
+      },
+      "EN": {
+        "modName": "Perpetual Strife",
+        "description": "One who bore this weapon was a warrior, granted it by Father Ask in honour of his valour. He sought ever mightier foes, sending challenge after challenge to distant lands. His name became a byword for strength, until at last he could no longer live without battle.\nWar granted him no release. He fell within it — an arena without victor or end. The bodies of friend and foe alike became his salvation, and his own blood his final elegy.",
+        "demonWedgeName": null,
+        "functionLabel": "Melee Weapons",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Melee Weapons",
+          "Polearm"
+        ]
+      },
+      "ES": {
+        "modName": "Lucha Perpetua",
+        "description": "Uno de los que recibió un arma era un guerrero al que el Padre Ask premió por su valentía. Retó sin descanso a rivales cada vez más poderosos, enviando desafíos tras desafío a tierras lejanas. Su nombre se volvió sinónimo de fuerza, pero poco a poco dejó de saber vivir sin el combate.\nEl combate nunca termina. Cayó en la guerra, esa arena sin ganadores. Los cadáveres de amigos y enemigos fueron su salvación; su propia sangre, su elegía.",
+        "demonWedgeName": null,
+        "functionLabel": "Arma cuerpo a cuerpo",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Arma cuerpo a cuerpo",
+          "Arma de Asta"
+        ]
+      },
+      "FR": {
+        "modName": "Conflit perpétuel",
+        "description": "L’un des porteurs de cette arme était un guerrier, récompensé par le Père Ask pour sa bravoure. Il ne cessait de défier des adversaires toujours plus puissants, portant ses défis jusqu’aux terres lointaines. Son nom devint synonyme de puissance, mais peu à peu, il ne put plus supporter une vie sans combat.\nLa guerre ne connaît pas de répit. Il y trouva la mort — dans cette arène sans vainqueur. Les corps des alliés comme des ennemis furent sa rédemption, et son propre sang, son chant funèbre.",
+        "demonWedgeName": null,
+        "functionLabel": "Armes de mêlée",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Armes de mêlée",
+          "Arme d’hast"
+        ]
+      },
+      "JP": {
+        "modName": "終わりなき果て",
+        "description": "武器を手にした者のひとりは戦士だった。父なる神はその勇猛を称えた。彼はより強き者へ、さらに強き者へと挑み続け、幾通もの果たし状が遠方へ送り届けられた。彼の名は強さの代名詞となったが、やがて彼は戦いのない日々に馴染めなくなっていった。\n 戦いは終わることなく続く。勝者なき闘技場たる戦場で、彼は倒れた。敵味方の屍は彼にとっての救いであり、自らの鮮血は彼自身への挽歌となった。",
+        "demonWedgeName": null,
+        "functionLabel": "近接武器",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "近接武器",
+          "長柄武器"
+        ]
+      },
+      "KR": {
+        "modName": "끝없는 투쟁",
+        "description": "무기를 손에 넣은 자 중 하나는 전사였다. 아버지 신에게서 용맹하다는 찬사를 받은 그는 머나먼 땅에 끊임없이 도전장을 보내며, 쉼 없이 강자를 찾아 도전했고, 그의 이름은 강함의 대명사가 되었다. 그러나, 그는 점차 싸우지 않는 삶을 견딜 수 없게 되었다.\n끝없는 투쟁을 벌이던 그 전사는, 널브러진 시체를 구원 삼고, 자신이 흘린 피를 장송곡 삼아, 끝내 승자 없는 투기장 같은 전쟁터에서 쓰러지고 말았다.",
+        "demonWedgeName": null,
+        "functionLabel": "근접 무기",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "근접 무기",
+          "장병기"
+        ]
+      },
+      "TC": {
+        "modName": "無止無休",
+        "description": "獲得武器的其中一人是名戰士，父神嘉獎他的驍勇。他不斷向著更強者、再更強者挑戰，一封封戰書不斷送至遠方。他的名字成為強大的代名詞，但他漸漸無法習慣沒有戰鬥的生活。\n戰鬥永無止息。他倒在戰爭——這場沒有贏家的角斗場裡。敵友的屍骸是他的救贖，自己的鮮血是他的輓歌。",
+        "demonWedgeName": null,
+        "functionLabel": "近戰武器",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "近戰武器",
+          "長柄"
+        ]
+      }
+    },
+    "fields": {
+      "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Polearm_Yemei",
+      "CollectRewardExp": 400,
+      "DecomposeReward": -1,
+      "GUIPathVariableName": "Yemei",
+      "GUIPathVariableType": "Polearm",
+      "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Polearm_Yemei",
+      "Icon": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Polearm_Yemei",
+      "ModSlot": "T.RT_1",
+      "ModSlotUnlock": "T.RT_2",
+      "OpenVersion": 14,
+      "ReleaseVersion": 140,
+      "SkinApplicationType": "T.RT_4",
+      "SortPriority": 10299,
+      "Sound": "SOUND_ITEM_WEAPON",
+      "WeaponDescribe": "UI_WEAPON_DESC_10299",
+      "WeaponId": 10299,
+      "WeaponMaxLevel": 80,
+      "WeaponName": "UI_WEAPON_NAME_10299",
+      "WeaponRarity": 5,
+      "WeaponSubType": "Hyper",
+      "WeaponToCoinType": 101,
+      "WeaponValue": 10000,
+      "Type": "Melee",
+      "ResourceSType": "Polearm",
       "WeaponClassKey": "UI_Armory_Meleeweapon",
       "WeaponTypeKey": "WeaponType_Polearm",
       "SkinApplicationTypeCodes": [
@@ -2662,12 +3139,12 @@
         "modName": "Strafinferno",
         "description": "Brenn, brenn, brenn! Dieses läuternde Feuer wird alles Böse auf der Welt verzehren.",
         "demonWedgeName": null,
-        "functionLabel": "Nahkampfwaffen",
+        "functionLabel": "Arma cuerpo a cuerpo",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Nahkampfwaffen",
+          "Arma cuerpo a cuerpo",
           "Großschwert"
         ]
       },
@@ -2753,7 +3230,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Claymore_Chengjie",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 10311,
       "GUIPathVariableName": "Chengjie",
       "GUIPathVariableType": "Claymore",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Claymore_Chengjie",
@@ -2770,6 +3247,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_10301",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Melee",
@@ -2894,12 +3372,12 @@
         "modName": "Eisenschmied",
         "description": "Nur unvergleichliche Stärke kann eiserne Gesetze schmieden.",
         "demonWedgeName": null,
-        "functionLabel": "Nahkampfwaffen",
+        "functionLabel": "Arma cuerpo a cuerpo",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Nahkampfwaffen",
+          "Arma cuerpo a cuerpo",
           "Großschwert"
         ]
       },
@@ -2985,7 +3463,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Claymore_Rimian",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 10311,
       "GUIPathVariableName": "Rimian",
       "GUIPathVariableType": "Claymore",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Claymore_Rimian",
@@ -3002,6 +3480,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_10302",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Melee",
@@ -3126,12 +3605,12 @@
         "modName": "Glutdurst",
         "description": "Eine makellose Klinge, die mit einem lautlosen Schrei durch die Luft schneidet – immer darauf wartend, mit Blut befleckt zu werden.",
         "demonWedgeName": null,
-        "functionLabel": "Nahkampfwaffen",
+        "functionLabel": "Arma cuerpo a cuerpo",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Nahkampfwaffen",
+          "Arma cuerpo a cuerpo",
           "Großschwert"
         ]
       },
@@ -3217,7 +3696,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Claymore_Chixing",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 10311,
       "GUIPathVariableName": "Chixing",
       "GUIPathVariableType": "Claymore",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Claymore_Chixing",
@@ -3234,6 +3713,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_10303",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Melee",
@@ -3358,12 +3838,12 @@
         "modName": "Ewiger Abschied",
         "description": "Durchtrenne die Echos längst vergangener Äonen; lass an ihrer Stelle den Frieden der Zeitalter aufsteigen.",
         "demonWedgeName": null,
-        "functionLabel": "Nahkampfwaffen",
+        "functionLabel": "Arma cuerpo a cuerpo",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Nahkampfwaffen",
+          "Arma cuerpo a cuerpo",
           "Großschwert"
         ]
       },
@@ -3449,7 +3929,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Claymore_Wangu",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 10311,
       "GUIPathVariableName": "Wangu",
       "GUIPathVariableType": "Claymore",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Claymore_Wangu",
@@ -3466,6 +3946,471 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_10304",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
+      "WeaponToCoinType": 101,
+      "WeaponValue": 10000,
+      "Type": "Melee",
+      "ResourceSType": "Claymore",
+      "WeaponClassKey": "UI_Armory_Meleeweapon",
+      "WeaponTypeKey": "WeaponType_Claymore",
+      "SkinApplicationTypeCodes": [
+        103
+      ],
+      "WeaponClass": "Melee",
+      "WeaponSubtype": "Claymore"
+    }
+  },
+  {
+    "id": "weapons-10305",
+    "categoryId": "weapons",
+    "modId": 10305,
+    "archiveId": null,
+    "stats": {
+      "rarity": 5,
+      "polarity": null,
+      "maxLevel": 80,
+      "cost": null,
+      "openVersion": 13,
+      "releaseVersion": 130
+    },
+    "textKeys": {
+      "modNameKey": "UI_WEAPON_NAME_10305",
+      "descriptionKey": "UI_WEAPON_DESC_10305",
+      "demonWedgeKey": null,
+      "functionKey": "UI_Armory_Meleeweapon",
+      "passiveEffectsDescKey": null,
+      "affinityNameKey": null,
+      "archiveNameKey": null
+    },
+    "affinity": {
+      "id": null,
+      "nameKey": null,
+      "char": null,
+      "icon": {
+        "gamePath": null,
+        "publicPath": null,
+        "placeholderPath": null,
+        "candidates": [],
+        "allMatches": []
+      }
+    },
+    "typeCompatibility": {
+      "applicationType": 103,
+      "textKeys": [
+        "UI_Armory_Meleeweapon",
+        "WeaponType_Claymore"
+      ],
+      "tags": [
+        {
+          "key": "UI_Armory_Meleeweapon",
+          "icon": {
+            "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponTypeClose_Combat.T_Armory_WeaponTypeClose_Combat",
+            "publicPath": "/assets/items/weapon-types/T_Armory_WeaponTypeClose_Combat.png",
+            "placeholderPath": null,
+            "candidates": [
+              "T_Armory_WeaponTypeClose_Combat",
+              "Armory_WeaponTypeClose_Combat"
+            ],
+            "allMatches": [
+              "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponTypeClose_Combat.png"
+            ]
+          }
+        },
+        {
+          "key": "WeaponType_Claymore",
+          "icon": {
+            "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponType_Claymore.T_Armory_WeaponType_Claymore",
+            "publicPath": "/assets/items/weapon-types/T_Armory_WeaponType_Claymore.png",
+            "placeholderPath": null,
+            "candidates": [
+              "T_Armory_WeaponType_Claymore",
+              "Armory_WeaponType_Claymore"
+            ],
+            "allMatches": [
+              "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponType_Claymore.png"
+            ]
+          }
+        }
+      ]
+    },
+    "tolerance": {
+      "baseCost": null,
+      "costChange": null,
+      "maxLevel": 0,
+      "valuesByLevel": {
+        "0": null
+      }
+    },
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Claymore_Mingjin",
+      "publicPath": "/assets/items/weapons/T_Head_Claymore_Mingjin.png",
+      "placeholderPath": null,
+      "candidates": [
+        "T_Head_Claymore_Mingjin",
+        "Head_Claymore_Mingjin"
+      ],
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Claymore_Mingjin.png"
+      ]
+    },
+    "scaling": {
+      "defaultLevel": 0,
+      "maxLevel": 0,
+      "availableLevels": [
+        0
+      ],
+      "valuesByLevel": {
+        "0": {}
+      },
+      "attributesByLevel": {
+        "0": []
+      }
+    },
+    "translations": {
+      "DE": {
+        "modName": "Aureate Drift",
+        "description": "A clear note fades beyond the clouds, a frosted robe bathed in the moonlight.",
+        "demonWedgeName": null,
+        "functionLabel": "Arma cuerpo a cuerpo",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Arma cuerpo a cuerpo",
+          "Großschwert"
+        ]
+      },
+      "EN": {
+        "modName": "Aureate Drift",
+        "description": "A clear note fades beyond the clouds, a frosted robe bathed in the moonlight.",
+        "demonWedgeName": null,
+        "functionLabel": "Melee Weapons",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Melee Weapons",
+          "Greatsword"
+        ]
+      },
+      "ES": {
+        "modName": "Deriva Áurea",
+        "description": "Una nota clara se desvanece entre las nubes, mientras una túnica escarchada se baña en la luz de la luna.",
+        "demonWedgeName": null,
+        "functionLabel": "Arma cuerpo a cuerpo",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Arma cuerpo a cuerpo",
+          "Espadón"
+        ]
+      },
+      "FR": {
+        "modName": "Écho aurifère",
+        "description": "Soudain, une note limpide traverse les nuages ; la lune emplit mille passes, la neige recouvre la robe.",
+        "demonWedgeName": null,
+        "functionLabel": "Armes de mêlée",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Armes de mêlée",
+          "Espadon"
+        ]
+      },
+      "JP": {
+        "modName": "鳴金剣",
+        "description": "清声が雲の彼方に消え、霜衣は月の下に明らかなり。",
+        "demonWedgeName": null,
+        "functionLabel": "近接武器",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "近接武器",
+          "大剣"
+        ]
+      },
+      "KR": {
+        "modName": "머나먼 울림",
+        "description": "맑은 소리가 구름을 뚫고 날아가니, 달빛 아래 눈이 옷깃에 쌓이네.",
+        "demonWedgeName": null,
+        "functionLabel": "근접 무기",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "근접 무기",
+          "대검"
+        ]
+      },
+      "TC": {
+        "modName": "鳴金遙",
+        "description": "忽有清聲穿雲去，月滿千關雪滿袍。",
+        "demonWedgeName": null,
+        "functionLabel": "近戰武器",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "近戰武器",
+          "重劍"
+        ]
+      }
+    },
+    "fields": {
+      "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Claymore_Mingjin",
+      "CollectRewardExp": 400,
+      "DecomposeReward": 10311,
+      "GUIPathVariableName": "Mingjin",
+      "GUIPathVariableType": "Claymore",
+      "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Claymore_Mingjin",
+      "Icon": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Claymore_Mingjin",
+      "ModSlot": "T.RT_1",
+      "ModSlotUnlock": "T.RT_2",
+      "OpenVersion": 13,
+      "ReleaseVersion": 130,
+      "SkinApplicationType": "T.RT_5",
+      "SortPriority": 10305,
+      "Sound": "SOUND_ITEM_WEAPON",
+      "WeaponDescribe": "UI_WEAPON_DESC_10305",
+      "WeaponId": 10305,
+      "WeaponMaxLevel": 80,
+      "WeaponName": "UI_WEAPON_NAME_10305",
+      "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
+      "WeaponToCoinType": 101,
+      "WeaponValue": 10000,
+      "Type": "Melee",
+      "ResourceSType": "Claymore",
+      "WeaponClassKey": "UI_Armory_Meleeweapon",
+      "WeaponTypeKey": "WeaponType_Claymore",
+      "SkinApplicationTypeCodes": [
+        103
+      ],
+      "WeaponClass": "Melee",
+      "WeaponSubtype": "Claymore"
+    }
+  },
+  {
+    "id": "weapons-10399",
+    "categoryId": "weapons",
+    "modId": 10399,
+    "archiveId": null,
+    "stats": {
+      "rarity": 5,
+      "polarity": null,
+      "maxLevel": 80,
+      "cost": null,
+      "openVersion": 16,
+      "releaseVersion": 160
+    },
+    "textKeys": {
+      "modNameKey": "UI_WEAPON_NAME_10399",
+      "descriptionKey": "UI_WEAPON_DESC_10399",
+      "demonWedgeKey": null,
+      "functionKey": "UI_Armory_Meleeweapon",
+      "passiveEffectsDescKey": null,
+      "affinityNameKey": null,
+      "archiveNameKey": null
+    },
+    "affinity": {
+      "id": null,
+      "nameKey": null,
+      "char": null,
+      "icon": {
+        "gamePath": null,
+        "publicPath": null,
+        "placeholderPath": null,
+        "candidates": [],
+        "allMatches": []
+      }
+    },
+    "typeCompatibility": {
+      "applicationType": 103,
+      "textKeys": [
+        "UI_Armory_Meleeweapon",
+        "WeaponType_Claymore"
+      ],
+      "tags": [
+        {
+          "key": "UI_Armory_Meleeweapon",
+          "icon": {
+            "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponTypeClose_Combat.T_Armory_WeaponTypeClose_Combat",
+            "publicPath": "/assets/items/weapon-types/T_Armory_WeaponTypeClose_Combat.png",
+            "placeholderPath": null,
+            "candidates": [
+              "T_Armory_WeaponTypeClose_Combat",
+              "Armory_WeaponTypeClose_Combat"
+            ],
+            "allMatches": [
+              "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponTypeClose_Combat.png"
+            ]
+          }
+        },
+        {
+          "key": "WeaponType_Claymore",
+          "icon": {
+            "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponType_Claymore.T_Armory_WeaponType_Claymore",
+            "publicPath": "/assets/items/weapon-types/T_Armory_WeaponType_Claymore.png",
+            "placeholderPath": null,
+            "candidates": [
+              "T_Armory_WeaponType_Claymore",
+              "Armory_WeaponType_Claymore"
+            ],
+            "allMatches": [
+              "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponType_Claymore.png"
+            ]
+          }
+        }
+      ]
+    },
+    "tolerance": {
+      "baseCost": null,
+      "costChange": null,
+      "maxLevel": 0,
+      "valuesByLevel": {
+        "0": null
+      }
+    },
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Claymore_Yemei",
+      "publicPath": null,
+      "placeholderPath": "/marker-default.svg",
+      "candidates": [
+        "T_Head_Claymore_Yemei",
+        "Head_Claymore_Yemei"
+      ],
+      "allMatches": []
+    },
+    "scaling": {
+      "defaultLevel": 0,
+      "maxLevel": 0,
+      "availableLevels": [
+        0
+      ],
+      "valuesByLevel": {
+        "0": {}
+      },
+      "attributesByLevel": {
+        "0": []
+      }
+    },
+    "translations": {
+      "DE": {
+        "modName": "Metall-Großschwert",
+        "description": "Gewöhnliches Großschwert. Aus dem billigsten Metall hergestellt, also ist es nicht schlimm, wenn es zerbricht.",
+        "demonWedgeName": null,
+        "functionLabel": "Arma cuerpo a cuerpo",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Arma cuerpo a cuerpo",
+          "Großschwert"
+        ]
+      },
+      "EN": {
+        "modName": "Metal Greatsword",
+        "description": "Ordinary greatsword. Crafted from the cheapest metal, so there's no shame if it breaks.",
+        "demonWedgeName": null,
+        "functionLabel": "Melee Weapons",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Melee Weapons",
+          "Greatsword"
+        ]
+      },
+      "ES": {
+        "modName": "Mandoble Metálico",
+        "description": "Un mandoble común, forjado en metal barato, incluso si se rompe no representa una gran pérdida.",
+        "demonWedgeName": null,
+        "functionLabel": "Arma cuerpo a cuerpo",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Arma cuerpo a cuerpo",
+          "Espadón"
+        ]
+      },
+      "FR": {
+        "modName": "Espadon en acier",
+        "description": "Un espadon ordinaire, forgé dans un métal bon marché. Même s’il venait à se briser, nul n’en éprouverait le moindre regret.",
+        "demonWedgeName": null,
+        "functionLabel": "Armes de mêlée",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Armes de mêlée",
+          "Espadon"
+        ]
+      },
+      "JP": {
+        "modName": "金属の大剣",
+        "description": "ありふれた大剣。安価な金属で作られているので、壊れても惜しくない。",
+        "demonWedgeName": null,
+        "functionLabel": "近接武器",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "近接武器",
+          "大剣"
+        ]
+      },
+      "KR": {
+        "modName": "금속 대검",
+        "description": "흔히 볼 수 있는 대검. 가장 저렴한 금속으로 제작되어, 망가져도 전혀 아깝지 않다.",
+        "demonWedgeName": null,
+        "functionLabel": "근접 무기",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "근접 무기",
+          "대검"
+        ]
+      },
+      "TC": {
+        "modName": "金屬重劍",
+        "description": "尋常的大劍。用最廉價的金屬製作而成，即使用壞也不心疼。",
+        "demonWedgeName": null,
+        "functionLabel": "近戰武器",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "近戰武器",
+          "重劍"
+        ]
+      }
+    },
+    "fields": {
+      "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Claymore_Yemei",
+      "CollectRewardExp": 400,
+      "DecomposeReward": -1,
+      "GUIPathVariableName": "Yemei",
+      "GUIPathVariableType": "Claymore",
+      "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Claymore_Yemei",
+      "Icon": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Claymore_Yemei",
+      "ModSlot": "T.RT_1",
+      "ModSlotUnlock": "T.RT_2",
+      "OpenVersion": 16,
+      "ReleaseVersion": 160,
+      "SkinApplicationType": "T.RT_5",
+      "SortPriority": 10399,
+      "Sound": "SOUND_ITEM_WEAPON",
+      "WeaponDescribe": "UI_WEAPON_DESC_10399",
+      "WeaponId": 10399,
+      "WeaponMaxLevel": 80,
+      "WeaponName": "UI_WEAPON_NAME_10399",
+      "WeaponRarity": 5,
+      "WeaponSubType": "Hyper",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Melee",
@@ -3590,12 +4535,12 @@
         "modName": "Heimlose Reißzähne",
         "description": "Ein einsamer Wolfshund hat nur seine Zähne. Vor ihm liegt das Labyrinth des Schicksals, unter ihm der verbrannte Boden seiner Heimat.",
         "demonWedgeName": null,
-        "functionLabel": "Nahkampfwaffen",
+        "functionLabel": "Arma cuerpo a cuerpo",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Nahkampfwaffen",
+          "Arma cuerpo a cuerpo",
           "Doppelklingen"
         ]
       },
@@ -3681,7 +4626,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Dualblade_Shixiang",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 10411,
       "GUIPathVariableName": "Shixiang",
       "GUIPathVariableType": "Dualblade",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Dualblade_Shixiang",
@@ -3698,6 +4643,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_10401",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Melee",
@@ -3822,12 +4768,12 @@
         "modName": "Goldene Vergangenheit",
         "description": "Als die dunkle Flut heranrollte, reckte der Träger diese goldenen Klingen als Opfergabe empor – ein letztes Gebet an einen stillen Gott, der keine Antwort gab.",
         "demonWedgeName": null,
-        "functionLabel": "Nahkampfwaffen",
+        "functionLabel": "Arma cuerpo a cuerpo",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Nahkampfwaffen",
+          "Arma cuerpo a cuerpo",
           "Doppelklingen"
         ]
       },
@@ -3913,7 +4859,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Dualblade_Liujin",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 10411,
       "GUIPathVariableName": "Liujin",
       "GUIPathVariableType": "Dualblade",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Dualblade_Liujin",
@@ -3930,6 +4876,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_10402",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Melee",
@@ -4054,12 +5001,12 @@
         "modName": "Tiefenloser Haiblick",
         "description": "Im Moment bist du das Raubtier – in der Tiefe lauernd, auf den Angriff wartend.",
         "demonWedgeName": null,
-        "functionLabel": "Nahkampfwaffen",
+        "functionLabel": "Arma cuerpo a cuerpo",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Nahkampfwaffen",
+          "Arma cuerpo a cuerpo",
           "Doppelklingen"
         ]
       },
@@ -4145,7 +5092,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Dualblade_Yousha",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 10411,
       "GUIPathVariableName": "Yousha",
       "GUIPathVariableType": "Dualblade",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Dualblade_Yousha",
@@ -4162,6 +5109,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_10403",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Melee",
@@ -4286,12 +5234,12 @@
         "modName": "Skyfall Duality",
         "description": "Raging tides shatter the blackened frost; as winds converge, a cold gleam is drawn.",
         "demonWedgeName": null,
-        "functionLabel": "Nahkampfwaffen",
+        "functionLabel": "Arma cuerpo a cuerpo",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Nahkampfwaffen",
+          "Arma cuerpo a cuerpo",
           "Doppelklingen"
         ]
       },
@@ -4309,8 +5257,8 @@
         ]
       },
       "ES": {
-        "modName": "Dualidad del Ocaso Celeste",
-        "description": "Raging tides shatter the blackened frost; as winds converge, a cold gleam is drawn.",
+        "modName": "Dualidad celestial",
+        "description": "Mareas furiosas que quiebran la escarcha; entre el rugir del viento, destella el filo helado.",
         "demonWedgeName": null,
         "functionLabel": "Arma cuerpo a cuerpo",
         "passiveEffectsDescription": null,
@@ -4377,7 +5325,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Dualblade_Fengyun",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 10411,
       "GUIPathVariableName": "Fengyun",
       "GUIPathVariableType": "Dualblade",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Dualblade_Fengyun",
@@ -4394,6 +5342,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_10404",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Melee",
@@ -4518,12 +5467,12 @@
         "modName": "Unsterbliche Oneiros",
         "description": "Ein alter Traum mit Blick auf die Zukunft.",
         "demonWedgeName": null,
-        "functionLabel": "Nahkampfwaffen",
+        "functionLabel": "Arma cuerpo a cuerpo",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Nahkampfwaffen",
+          "Arma cuerpo a cuerpo",
           "Peitschenschwert"
         ]
       },
@@ -4609,7 +5558,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Swordwhip_Buyu",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 10511,
       "GUIPathVariableName": "Buyu",
       "GUIPathVariableType": "Swordwhip",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Swordwhip_Buyu",
@@ -4626,6 +5575,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_10501",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Melee",
@@ -4750,12 +5700,12 @@
         "modName": "Friedvoller Gnadenfall",
         "description": "Der Himmel gewährt allem, was wächst, seine Gnade; der Regen spendet Barmherzigkeit, wo das Leben noch fließt.",
         "demonWedgeName": null,
-        "functionLabel": "Nahkampfwaffen",
+        "functionLabel": "Arma cuerpo a cuerpo",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Nahkampfwaffen",
+          "Arma cuerpo a cuerpo",
           "Peitschenschwert"
         ]
       },
@@ -4841,7 +5791,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Swordwhip_Zeshi",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 10511,
       "GUIPathVariableName": "Zeshi",
       "GUIPathVariableType": "Swordwhip",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Swordwhip_Zeshi",
@@ -4858,6 +5808,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_10502",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Melee",
@@ -4982,12 +5933,12 @@
         "modName": "Fesselpeitsche",
         "description": "Es sind nicht nur Gefühle, die das menschliche Herz fesseln. Diese sich windende Peitschenklinge ist fesselnder als Worte und schneidet tiefer als Vertrauen.",
         "demonWedgeName": null,
-        "functionLabel": "Nahkampfwaffen",
+        "functionLabel": "Arma cuerpo a cuerpo",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Nahkampfwaffen",
+          "Arma cuerpo a cuerpo",
           "Peitschenschwert"
         ]
       },
@@ -5073,7 +6024,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Swordwhip_Chixing",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 10511,
       "GUIPathVariableName": "Chixing",
       "GUIPathVariableType": "Swordwhip",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Swordwhip_Chixing",
@@ -5090,6 +6041,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_10503",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Melee",
@@ -5214,12 +6166,12 @@
         "modName": "Smaragdriffe",
         "description": "Ausgetrocknete Korallen liegen verstreut am stillen Ufer – Fragmente, in denen sich die zerbrochenen Träume des Meeres wiegen.",
         "demonWedgeName": null,
-        "functionLabel": "Nahkampfwaffen",
+        "functionLabel": "Arma cuerpo a cuerpo",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Nahkampfwaffen",
+          "Arma cuerpo a cuerpo",
           "Peitschenschwert"
         ]
       },
@@ -5305,7 +6257,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Swordwhip_Canghu",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 10511,
       "GUIPathVariableName": "Canghu",
       "GUIPathVariableType": "Swordwhip",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Swordwhip_Canghu",
@@ -5322,6 +6274,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_10504",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Melee",
@@ -5446,12 +6399,12 @@
         "modName": "Momiji Itteki",
         "description": "Eine einzigartig geformte Klinge aus der bekannten Tragödie Momiji: Eine Chronik der Rebellion. Ihr blutrot gefärbter Griff soll das Blut eines Königs in sich tragen – erschlagen von genau der Hand, die ihn zu beschützen geschworen hatte.",
         "demonWedgeName": null,
-        "functionLabel": "Nahkampfwaffen",
+        "functionLabel": "Arma cuerpo a cuerpo",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Nahkampfwaffen",
+          "Arma cuerpo a cuerpo",
           "Katana"
         ]
       },
@@ -5470,7 +6423,7 @@
       },
       "ES": {
         "modName": "Momiji Itteki",
-        "description": "Un sable de diseño poco común que aparece en la célebre tragedia “Momiji: Crónica de la rebelión”. Algunos dicen que la mancha roja en su empuñadura es la sangre derramada cuando su primer dueño mató a su propio rey.",
+        "description": "Un sable de diseño poco común que aparece en la célebre tragedia <I>Momiji: Crónica de la rebelión</>. Algunos dicen que la mancha roja en su empuñadura es la sangre derramada cuando su primer dueño mató a su propio rey.",
         "demonWedgeName": null,
         "functionLabel": "Arma cuerpo a cuerpo",
         "passiveEffectsDescription": null,
@@ -5537,7 +6490,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Katana_Feiqie",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 10611,
       "GUIPathVariableName": "Feiqie",
       "GUIPathVariableType": "Katana",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Katana_Feiqie",
@@ -5554,6 +6507,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_10601",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Melee",
@@ -5678,12 +6632,12 @@
         "modName": "Verwelkenschatten",
         "description": "In den Augen des Sterbenden sinkt ein einzelnes purpurrotes Blütenblatt herab – schwerelos, lautlos und endgültig.",
         "demonWedgeName": null,
-        "functionLabel": "Nahkampfwaffen",
+        "functionLabel": "Arma cuerpo a cuerpo",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Nahkampfwaffen",
+          "Arma cuerpo a cuerpo",
           "Katana"
         ]
       },
@@ -5769,7 +6723,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Katana_Chixing",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 10611,
       "GUIPathVariableName": "Chixing",
       "GUIPathVariableType": "Katana",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Katana_Chixing",
@@ -5786,6 +6740,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_10602",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Melee",
@@ -5910,12 +6865,12 @@
         "modName": "Heilige Gunst",
         "description": "Eingraviert in den Griff in verwitterter Schrift: „Gelobt sei die Elysische Kirche.“ Möge die heilige Gnade der Großen Neun auf den unglückseligen Boden von Yashnia herniedersinken.",
         "demonWedgeName": null,
-        "functionLabel": "Nahkampfwaffen",
+        "functionLabel": "Arma cuerpo a cuerpo",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Nahkampfwaffen",
+          "Arma cuerpo a cuerpo",
           "Katana"
         ]
       },
@@ -5934,7 +6889,7 @@
       },
       "ES": {
         "modName": "Fervor Sagrado",
-        "description": "En la empuñadura se distingue una inscripción apenas legible: “Alabada sea la Iglesia Elysiana”. Gracias por llevar la sagrada bendición de los Nueve Dioses al Principado de Yashnia, tierra de pecadores.",
+        "description": "En la empuñadura se distingue una inscripción apenas legible: \"Alabada sea la Iglesia Elysiana\". Gracias por llevar la sagrada bendición de los Nueve Dioses al Principado de Yashnia, tierra de pecadores.",
         "demonWedgeName": null,
         "functionLabel": "Arma cuerpo a cuerpo",
         "passiveEffectsDescription": null,
@@ -6001,7 +6956,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Katana_Yuli",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 10611,
       "GUIPathVariableName": "Yuli",
       "GUIPathVariableType": "Katana",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Katana_Yuli",
@@ -6018,6 +6973,240 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_10603",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
+      "WeaponToCoinType": 101,
+      "WeaponValue": 10000,
+      "Type": "Melee",
+      "ResourceSType": "Katana",
+      "WeaponClassKey": "UI_Armory_Meleeweapon",
+      "WeaponTypeKey": "WeaponType_Katana",
+      "SkinApplicationTypeCodes": [
+        106
+      ],
+      "WeaponClass": "Melee",
+      "WeaponSubtype": "Katana"
+    }
+  },
+  {
+    "id": "weapons-10604",
+    "categoryId": "weapons",
+    "modId": 10604,
+    "archiveId": null,
+    "stats": {
+      "rarity": 5,
+      "polarity": null,
+      "maxLevel": 80,
+      "cost": null,
+      "openVersion": 14,
+      "releaseVersion": 140
+    },
+    "textKeys": {
+      "modNameKey": "UI_WEAPON_NAME_10604",
+      "descriptionKey": "UI_WEAPON_DESC_10604",
+      "demonWedgeKey": null,
+      "functionKey": "UI_Armory_Meleeweapon",
+      "passiveEffectsDescKey": null,
+      "affinityNameKey": null,
+      "archiveNameKey": null
+    },
+    "affinity": {
+      "id": null,
+      "nameKey": null,
+      "char": null,
+      "icon": {
+        "gamePath": null,
+        "publicPath": null,
+        "placeholderPath": null,
+        "candidates": [],
+        "allMatches": []
+      }
+    },
+    "typeCompatibility": {
+      "applicationType": 106,
+      "textKeys": [
+        "UI_Armory_Meleeweapon",
+        "WeaponType_Katana"
+      ],
+      "tags": [
+        {
+          "key": "UI_Armory_Meleeweapon",
+          "icon": {
+            "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponTypeClose_Combat.T_Armory_WeaponTypeClose_Combat",
+            "publicPath": "/assets/items/weapon-types/T_Armory_WeaponTypeClose_Combat.png",
+            "placeholderPath": null,
+            "candidates": [
+              "T_Armory_WeaponTypeClose_Combat",
+              "Armory_WeaponTypeClose_Combat"
+            ],
+            "allMatches": [
+              "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponTypeClose_Combat.png"
+            ]
+          }
+        },
+        {
+          "key": "WeaponType_Katana",
+          "icon": {
+            "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponType_Katana.T_Armory_WeaponType_Katana",
+            "publicPath": "/assets/items/weapon-types/T_Armory_WeaponType_Katana.png",
+            "placeholderPath": null,
+            "candidates": [
+              "T_Armory_WeaponType_Katana",
+              "Armory_WeaponType_Katana"
+            ],
+            "allMatches": [
+              "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponType_Katana.png"
+            ]
+          }
+        }
+      ]
+    },
+    "tolerance": {
+      "baseCost": null,
+      "costChange": null,
+      "maxLevel": 0,
+      "valuesByLevel": {
+        "0": null
+      }
+    },
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Katana_Tieyu",
+      "publicPath": "/assets/items/weapons/T_Head_Katana_Tieyu.png",
+      "placeholderPath": null,
+      "candidates": [
+        "T_Head_Katana_Tieyu",
+        "Head_Katana_Tieyu"
+      ],
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Katana_Tieyu.png"
+      ]
+    },
+    "scaling": {
+      "defaultLevel": 0,
+      "maxLevel": 0,
+      "availableLevels": [
+        0
+      ],
+      "valuesByLevel": {
+        "0": {}
+      },
+      "attributesByLevel": {
+        "0": []
+      }
+    },
+    "translations": {
+      "DE": {
+        "modName": "Sanguis Sanctus – Katana",
+        "description": "Blood runs dry. Conviction does not.",
+        "demonWedgeName": null,
+        "functionLabel": "Arma cuerpo a cuerpo",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Arma cuerpo a cuerpo",
+          "Katana"
+        ]
+      },
+      "EN": {
+        "modName": "Sanguis Sanctus – Katana",
+        "description": "Blood runs dry. Conviction does not.",
+        "demonWedgeName": null,
+        "functionLabel": "Melee Weapons",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Melee Weapons",
+          "Katana"
+        ]
+      },
+      "ES": {
+        "modName": "Sangre sagrada – Katana",
+        "description": "La sangre ardiente puede secarse, pero la convicción nunca se apaga.",
+        "demonWedgeName": null,
+        "functionLabel": "Arma cuerpo a cuerpo",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Arma cuerpo a cuerpo",
+          "Katana"
+        ]
+      },
+      "FR": {
+        "modName": "Sanguis Sanctus – Katana",
+        "description": "Le sang ardent finira par se tarir, mais la foi ne s’éteindra jamais.",
+        "demonWedgeName": null,
+        "functionLabel": "Armes de mêlée",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Armes de mêlée",
+          "Katana"
+        ]
+      },
+      "JP": {
+        "modName": "【聖血】太刀",
+        "description": "熱き血はいずれ涸れる。だが、信念は決して消えない。",
+        "demonWedgeName": null,
+        "functionLabel": "近接武器",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "近接武器",
+          "太刀"
+        ]
+      },
+      "KR": {
+        "modName": "성스러운 피·대도",
+        "description": "끓어올랐던 피는 언젠가 말라붙지만, 신념은 결코 사라지지 않는다.",
+        "demonWedgeName": null,
+        "functionLabel": "근접 무기",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "근접 무기",
+          "대도"
+        ]
+      },
+      "TC": {
+        "modName": "聖血·太刀",
+        "description": "熱血終會乾涸，信念永不磨滅。",
+        "demonWedgeName": null,
+        "functionLabel": "近戰武器",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "近戰武器",
+          "太刀"
+        ]
+      }
+    },
+    "fields": {
+      "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Katana_Tieyu",
+      "CollectRewardExp": 400,
+      "DecomposeReward": 10611,
+      "GUIPathVariableName": "Tieyu",
+      "GUIPathVariableType": "Katana",
+      "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Katana_Tieyu",
+      "Icon": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Katana_Tieyu",
+      "ModSlot": "T.RT_1",
+      "ModSlotUnlock": "T.RT_2",
+      "OpenVersion": 14,
+      "ReleaseVersion": 140,
+      "SkinApplicationType": "T.RT_8",
+      "SortPriority": 10604,
+      "Sound": "SOUND_ITEM_WEAPON",
+      "WeaponDescribe": "UI_WEAPON_DESC_10604",
+      "WeaponId": 10604,
+      "WeaponMaxLevel": 80,
+      "WeaponName": "UI_WEAPON_NAME_10604",
+      "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Melee",
@@ -6142,12 +7331,12 @@
         "modName": "Entropische Singularität",
         "description": "Durch die Kugel der Wahrheit enthüllt sich die Realität.",
         "demonWedgeName": null,
-        "functionLabel": "Fernkampfwaffen",
+        "functionLabel": "Arma a distancia",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Fernkampfwaffen",
+          "Arma a distancia",
           "Pistole"
         ]
       },
@@ -6233,7 +7422,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Pistol_Wuxu",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 20111,
       "GUIPathVariableName": "Wuxu",
       "GUIPathVariableType": "Pistol",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Pistol_Wuxu",
@@ -6250,6 +7439,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_20101",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Ranged",
@@ -6374,12 +7564,12 @@
         "modName": "Schinder",
         "description": "Ein Trugschluss, herausgerissen aus dem Strudel des Todes – eine Wahrheit, die nie hätte sein dürfen.",
         "demonWedgeName": null,
-        "functionLabel": "Fernkampfwaffen",
+        "functionLabel": "Arma a distancia",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Fernkampfwaffen",
+          "Arma a distancia",
           "Pistole"
         ]
       },
@@ -6465,7 +7655,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Pistol_Chixing",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 20111,
       "GUIPathVariableName": "Chixing",
       "GUIPathVariableType": "Pistol",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Pistol_Chixing",
@@ -6482,6 +7672,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_20102",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Ranged",
@@ -6606,12 +7797,12 @@
         "modName": "Heiliges Dekret",
         "description": "Das Grollen göttlicher Orakel soll durch die Schädel aller Ketzer hallen.",
         "demonWedgeName": null,
-        "functionLabel": "Fernkampfwaffen",
+        "functionLabel": "Arma a distancia",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Fernkampfwaffen",
+          "Arma a distancia",
           "Pistole"
         ]
       },
@@ -6697,7 +7888,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Pistol_Gaoyu",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 20111,
       "GUIPathVariableName": "Gaoyu",
       "GUIPathVariableType": "Pistol",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Pistol_Gaoyu",
@@ -6714,6 +7905,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_20103",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Ranged",
@@ -6838,12 +8030,12 @@
         "modName": "Überwucherung",
         "description": "In den sich windenden Ebenen des Todes zieht jeder Fehler den nächsten nach sich – und dann noch einen.",
         "demonWedgeName": null,
-        "functionLabel": "Fernkampfwaffen",
+        "functionLabel": "Arma a distancia",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Fernkampfwaffen",
+          "Arma a distancia",
           "Doppelpistolen"
         ]
       },
@@ -6929,7 +8121,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Crossbow_Chixing",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 20211,
       "GUIPathVariableName": "Chixing",
       "GUIPathVariableType": "Crossbow",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Crossbow_Chixing",
@@ -6946,6 +8138,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_20201",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Ranged",
@@ -7070,12 +8263,12 @@
         "modName": "Blaustrom-Impuls",
         "description": "Die endlose Weite des Ozeans pulsiert unaufhörlich im Rhythmus des Lebens – üppig, überschwänglich und unerschütterlich.",
         "demonWedgeName": null,
-        "functionLabel": "Fernkampfwaffen",
+        "functionLabel": "Arma a distancia",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Fernkampfwaffen",
+          "Arma a distancia",
           "Doppelpistolen"
         ]
       },
@@ -7161,7 +8354,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Crossbow_Lanse",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 20211,
       "GUIPathVariableName": "Lanse",
       "GUIPathVariableType": "Crossbow",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Crossbow_Lanse",
@@ -7178,6 +8371,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_20203",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Ranged",
@@ -7302,12 +8496,12 @@
         "modName": "Heiliger Chor",
         "description": "Das Grollen göttlicher Orakel soll durch die Schädel aller Ketzer hallen.",
         "demonWedgeName": null,
-        "functionLabel": "Fernkampfwaffen",
+        "functionLabel": "Arma a distancia",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Fernkampfwaffen",
+          "Arma a distancia",
           "Doppelpistolen"
         ]
       },
@@ -7393,7 +8587,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Crossbow_Gaoyu",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 20211,
       "GUIPathVariableName": "Gaoyu",
       "GUIPathVariableType": "Crossbow",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Crossbow_Gaoyu",
@@ -7410,6 +8604,240 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_20205",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
+      "WeaponToCoinType": 101,
+      "WeaponValue": 10000,
+      "Type": "Ranged",
+      "ResourceSType": "Crossbow",
+      "WeaponClassKey": "UI_Armory_Longrange",
+      "WeaponTypeKey": "WeaponType_Crossbow",
+      "SkinApplicationTypeCodes": [
+        202
+      ],
+      "WeaponClass": "Ranged",
+      "WeaponSubtype": "Crossbow"
+    }
+  },
+  {
+    "id": "weapons-20298",
+    "categoryId": "weapons",
+    "modId": 20298,
+    "archiveId": null,
+    "stats": {
+      "rarity": 5,
+      "polarity": null,
+      "maxLevel": 80,
+      "cost": null,
+      "openVersion": 15,
+      "releaseVersion": 150
+    },
+    "textKeys": {
+      "modNameKey": "UI_WEAPON_NAME_20298",
+      "descriptionKey": "UI_WEAPON_DESC_20298",
+      "demonWedgeKey": null,
+      "functionKey": "UI_Armory_Longrange",
+      "passiveEffectsDescKey": null,
+      "affinityNameKey": null,
+      "archiveNameKey": null
+    },
+    "affinity": {
+      "id": null,
+      "nameKey": null,
+      "char": null,
+      "icon": {
+        "gamePath": null,
+        "publicPath": null,
+        "placeholderPath": null,
+        "candidates": [],
+        "allMatches": []
+      }
+    },
+    "typeCompatibility": {
+      "applicationType": 202,
+      "textKeys": [
+        "UI_Armory_Longrange",
+        "WeaponType_Crossbow"
+      ],
+      "tags": [
+        {
+          "key": "UI_Armory_Longrange",
+          "icon": {
+            "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponTypeLongRange.T_Armory_WeaponTypeLongRange",
+            "publicPath": "/assets/items/weapon-types/T_Armory_WeaponTypeLongRange.png",
+            "placeholderPath": null,
+            "candidates": [
+              "T_Armory_WeaponTypeLongRange",
+              "Armory_WeaponTypeLongRange"
+            ],
+            "allMatches": [
+              "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponTypeLongRange.png"
+            ]
+          }
+        },
+        {
+          "key": "WeaponType_Crossbow",
+          "icon": {
+            "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponType_Crossbow.T_Armory_WeaponType_Crossbow",
+            "publicPath": "/assets/items/weapon-types/T_Armory_WeaponType_Crossbow.png",
+            "placeholderPath": null,
+            "candidates": [
+              "T_Armory_WeaponType_Crossbow",
+              "Armory_WeaponType_Crossbow"
+            ],
+            "allMatches": [
+              "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponType_Crossbow.png"
+            ]
+          }
+        }
+      ]
+    },
+    "tolerance": {
+      "baseCost": null,
+      "costChange": null,
+      "maxLevel": 0,
+      "valuesByLevel": {
+        "0": null
+      }
+    },
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Crossbow_Yemei",
+      "publicPath": "/assets/items/weapons/T_Head_Crossbow_Yemei.png",
+      "placeholderPath": null,
+      "candidates": [
+        "T_Head_Crossbow_Yemei",
+        "Head_Crossbow_Yemei"
+      ],
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Crossbow_Yemei.png"
+      ]
+    },
+    "scaling": {
+      "defaultLevel": 0,
+      "maxLevel": 0,
+      "availableLevels": [
+        0
+      ],
+      "valuesByLevel": {
+        "0": {}
+      },
+      "attributesByLevel": {
+        "0": []
+      }
+    },
+    "translations": {
+      "DE": {
+        "modName": "Metall-Doppelpistolen",
+        "description": "Gewöhnliche Doppelpistolen. Aus dem billigsten Metall hergestellt, also ist es nicht schlimm, wenn es zerbricht.",
+        "demonWedgeName": null,
+        "functionLabel": "Arma a distancia",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Arma a distancia",
+          "Doppelpistolen"
+        ]
+      },
+      "EN": {
+        "modName": "Metal Dual Pistols",
+        "description": "Ordinary dual pistols. It's made from the cheapest metal, so there's no shame if it breaks.",
+        "demonWedgeName": null,
+        "functionLabel": "Ranged Weapons",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Ranged Weapons",
+          "Dual Pistols"
+        ]
+      },
+      "ES": {
+        "modName": "Pistolas Dobles Metálicas",
+        "description": "Pistolas Dobles comunes, forjadas en metal barato, incluso si se rompen no representan una gran pérdida.",
+        "demonWedgeName": null,
+        "functionLabel": "Arma a distancia",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Arma a distancia",
+          "Pistolas Dobles"
+        ]
+      },
+      "FR": {
+        "modName": "Doubles pistolets en acier",
+        "description": "Une paire de pistolets ordinaires, forgée dans un métal bon marché. Même s’ils venaient à se briser, nul n’en éprouverait le moindre regret.",
+        "demonWedgeName": null,
+        "functionLabel": "Armes à distance",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Armes à distance",
+          "Doubles pistolets"
+        ]
+      },
+      "JP": {
+        "modName": "メタルツインガン",
+        "description": "ありふれたデュアルガン。安価な金属で作られているので、壊れても惜しくない。",
+        "demonWedgeName": null,
+        "functionLabel": "遠隔武器",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "遠隔武器",
+          "デュアルガン"
+        ]
+      },
+      "KR": {
+        "modName": "금속 쌍권총",
+        "description": "흔히 볼 수 있는 쌍권총. 가장 저렴한 금속으로 제작되어, 망가져도 전혀 아깝지 않다.",
+        "demonWedgeName": null,
+        "functionLabel": "원거리 무기",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "원거리 무기",
+          "쌍권총"
+        ]
+      },
+      "TC": {
+        "modName": "金屬雙槍",
+        "description": "尋常的雙槍。用最廉價的金屬製作而成，即使用壞也不心疼。",
+        "demonWedgeName": null,
+        "functionLabel": "遠端武器",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "遠端武器",
+          "雙槍"
+        ]
+      }
+    },
+    "fields": {
+      "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Crossbow_Yemei",
+      "CollectRewardExp": 400,
+      "DecomposeReward": -1,
+      "GUIPathVariableName": "Yemei",
+      "GUIPathVariableType": "Crossbow",
+      "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Crossbow_Yemei",
+      "Icon": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Crossbow_Yemei",
+      "ModSlot": "T.RT_1",
+      "ModSlotUnlock": "T.RT_2",
+      "OpenVersion": 15,
+      "ReleaseVersion": 150,
+      "SkinApplicationType": "T.RT_10",
+      "SortPriority": 20298,
+      "Sound": "SOUND_ITEM_WEAPON",
+      "WeaponDescribe": "UI_WEAPON_DESC_20298",
+      "WeaponId": 20298,
+      "WeaponMaxLevel": 80,
+      "WeaponName": "UI_WEAPON_NAME_20298",
+      "WeaponRarity": 5,
+      "WeaponSubType": "Hyper",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Ranged",
@@ -7534,12 +8962,12 @@
         "modName": "Stellares Endurteil",
         "description": "Die Bußfertigen sollen nicht länger zu den Sternen aufblicken – der Himmel schenkt ihnen kein Gehör, und die Sterne gewähren ihnen keine Absolution.",
         "demonWedgeName": null,
-        "functionLabel": "Fernkampfwaffen",
+        "functionLabel": "Arma a distancia",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Fernkampfwaffen",
+          "Arma a distancia",
           "Granatwerfer"
         ]
       },
@@ -7625,7 +9053,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Cannon_Qunxing",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 20311,
       "GUIPathVariableName": "Qunxing",
       "GUIPathVariableType": "Cannon",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Cannon_Qunxing",
@@ -7642,6 +9070,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_20301",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Ranged",
@@ -7766,12 +9195,12 @@
         "modName": "Feuerwaffenfest",
         "description": "Abenddämmerung, rote Tanzschuhe und Tau auf Rosen; ein Luftzug streift die Schläfen, das entrüstete Kreischen schneller Schüsse und der Geruch von Schießpulver ... Alle bezeugen ein Fest der Projektile.",
         "demonWedgeName": null,
-        "functionLabel": "Fernkampfwaffen",
+        "functionLabel": "Arma a distancia",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Fernkampfwaffen",
+          "Arma a distancia",
           "Granatwerfer"
         ]
       },
@@ -7857,7 +9286,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Cannon_Chiqiang",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 20311,
       "GUIPathVariableName": "Chiqiang",
       "GUIPathVariableType": "Cannon",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Cannon_Chiqiang",
@@ -7874,6 +9303,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_20302",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Ranged",
@@ -7998,12 +9428,12 @@
         "modName": "Desintegration",
         "description": "Die wahrhaftigste Rückkehr zur Natur besteht darin, zu Asche zu zerfallen und in der wartenden Erde zu versinken.",
         "demonWedgeName": null,
-        "functionLabel": "Fernkampfwaffen",
+        "functionLabel": "Arma a distancia",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Fernkampfwaffen",
+          "Arma a distancia",
           "Granatwerfer"
         ]
       },
@@ -8089,7 +9519,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Cannon_Chixing",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 20311,
       "GUIPathVariableName": "Chixing",
       "GUIPathVariableType": "Cannon",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Cannon_Chixing",
@@ -8106,6 +9536,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_20303",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Ranged",
@@ -8230,12 +9661,12 @@
         "modName": "Guixu-Ratsche",
         "description": "Bronze härtet den stählernen Rahmen; inmitten von Dornen, eine Seele, geschmiedet für den Anspruch auf Heldentum.",
         "demonWedgeName": null,
-        "functionLabel": "Fernkampfwaffen",
+        "functionLabel": "Arma a distancia",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Fernkampfwaffen",
+          "Arma a distancia",
           "Granatwerfer"
         ]
       },
@@ -8321,7 +9752,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Cannon_Guixu",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 20311,
       "GUIPathVariableName": "Guixu",
       "GUIPathVariableType": "Cannon",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Cannon_Guixu",
@@ -8338,6 +9769,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_20304",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Ranged",
@@ -8462,12 +9894,12 @@
         "modName": "Silberweißes Edikt",
         "description": "Hellfire reitet auf eintausend silbernen Geschossen, die auf den Boden herabregnen, das Edikt der Götter in die Herzen aller Ketzer einätzend.",
         "demonWedgeName": null,
-        "functionLabel": "Fernkampfwaffen",
+        "functionLabel": "Arma a distancia",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Fernkampfwaffen",
+          "Arma a distancia",
           "Granatwerfer"
         ]
       },
@@ -8553,7 +9985,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Cannon_Yinbai",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 20311,
       "GUIPathVariableName": "Yinbai",
       "GUIPathVariableType": "Cannon",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Cannon_Yinbai",
@@ -8570,6 +10002,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_20305",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Ranged",
@@ -8694,12 +10127,12 @@
         "modName": "Schreisalve",
         "description": "Erst wenn der letzte Schrei verklungen ist ... kann wieder Ruhe in die Welt einkehren.",
         "demonWedgeName": null,
-        "functionLabel": "Fernkampfwaffen",
+        "functionLabel": "Arma a distancia",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Fernkampfwaffen",
+          "Arma a distancia",
           "Schrotflinte"
         ]
       },
@@ -8785,7 +10218,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Shotgun_Chixing",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 20411,
       "GUIPathVariableName": "Chixing",
       "GUIPathVariableType": "Shotgun",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Shotgun_Chixing",
@@ -8802,6 +10235,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_20401",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Ranged",
@@ -8926,12 +10360,12 @@
         "modName": "Stiller Sämann",
         "description": "Stecke Blumensamen in den Körper, damit die Zerstörung von innen heraus erblühen kann.",
         "demonWedgeName": null,
-        "functionLabel": "Fernkampfwaffen",
+        "functionLabel": "Arma a distancia",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Fernkampfwaffen",
+          "Arma a distancia",
           "Schrotflinte"
         ]
       },
@@ -9017,7 +10451,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Shotgun_Banzi",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 20411,
       "GUIPathVariableName": "Banzi",
       "GUIPathVariableType": "Shotgun",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Shotgun_Banzi",
@@ -9034,6 +10468,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_20402",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Ranged",
@@ -9158,12 +10593,12 @@
         "modName": "Tag des heiligen Urteils",
         "description": "Eine Feuerwaffe, die vom Ritterorden der Heiligen Iris der Elysischen Kirche eingesetzt wird. Heilige Erhebung! Wir geloben, die Botschaft der Großen Neun in ganz Atlasia zu verbreiten.",
         "demonWedgeName": null,
-        "functionLabel": "Fernkampfwaffen",
+        "functionLabel": "Arma a distancia",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Fernkampfwaffen",
+          "Arma a distancia",
           "Schrotflinte"
         ]
       },
@@ -9249,7 +10684,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Shotgun_Shengcai",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 20411,
       "GUIPathVariableName": "Shengcai",
       "GUIPathVariableType": "Shotgun",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Shotgun_Shengcai",
@@ -9266,6 +10701,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_20403",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Ranged",
@@ -9390,12 +10826,12 @@
         "modName": "Sprengkunst",
         "description": "– Hmm? Das Ende von Atlasia? So sei es. Es gibt schlimmere Schicksale, als in Flammen und Feuerwerk unterzugehen.",
         "demonWedgeName": null,
-        "functionLabel": "Fernkampfwaffen",
+        "functionLabel": "Arma a distancia",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Fernkampfwaffen",
+          "Arma a distancia",
           "Schrotflinte"
         ]
       },
@@ -9481,7 +10917,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Shotgun_Baopo",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 20411,
       "GUIPathVariableName": "Baopo",
       "GUIPathVariableType": "Shotgun",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Shotgun_Baopo",
@@ -9498,6 +10934,473 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_20405",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
+      "WeaponToCoinType": 101,
+      "WeaponValue": 10000,
+      "Type": "Ranged",
+      "ResourceSType": "Shotgun",
+      "WeaponClassKey": "UI_Armory_Longrange",
+      "WeaponTypeKey": "WeaponType_Shotgun",
+      "SkinApplicationTypeCodes": [
+        204
+      ],
+      "WeaponClass": "Ranged",
+      "WeaponSubtype": "Shotgun"
+    }
+  },
+  {
+    "id": "weapons-20406",
+    "categoryId": "weapons",
+    "modId": 20406,
+    "archiveId": null,
+    "stats": {
+      "rarity": 5,
+      "polarity": null,
+      "maxLevel": 80,
+      "cost": null,
+      "openVersion": 13,
+      "releaseVersion": 130
+    },
+    "textKeys": {
+      "modNameKey": "UI_WEAPON_NAME_20406",
+      "descriptionKey": "UI_WEAPON_DESC_20406",
+      "demonWedgeKey": null,
+      "functionKey": "UI_Armory_Longrange",
+      "passiveEffectsDescKey": null,
+      "affinityNameKey": null,
+      "archiveNameKey": null
+    },
+    "affinity": {
+      "id": null,
+      "nameKey": null,
+      "char": null,
+      "icon": {
+        "gamePath": null,
+        "publicPath": null,
+        "placeholderPath": null,
+        "candidates": [],
+        "allMatches": []
+      }
+    },
+    "typeCompatibility": {
+      "applicationType": 204,
+      "textKeys": [
+        "UI_Armory_Longrange",
+        "WeaponType_Shotgun"
+      ],
+      "tags": [
+        {
+          "key": "UI_Armory_Longrange",
+          "icon": {
+            "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponTypeLongRange.T_Armory_WeaponTypeLongRange",
+            "publicPath": "/assets/items/weapon-types/T_Armory_WeaponTypeLongRange.png",
+            "placeholderPath": null,
+            "candidates": [
+              "T_Armory_WeaponTypeLongRange",
+              "Armory_WeaponTypeLongRange"
+            ],
+            "allMatches": [
+              "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponTypeLongRange.png"
+            ]
+          }
+        },
+        {
+          "key": "WeaponType_Shotgun",
+          "icon": {
+            "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponType_Shotgun.T_Armory_WeaponType_Shotgun",
+            "publicPath": "/assets/items/weapon-types/T_Armory_WeaponType_Shotgun.png",
+            "placeholderPath": null,
+            "candidates": [
+              "T_Armory_WeaponType_Shotgun",
+              "Armory_WeaponType_Shotgun"
+            ],
+            "allMatches": [
+              "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponType_Shotgun.png"
+            ]
+          }
+        }
+      ]
+    },
+    "tolerance": {
+      "baseCost": null,
+      "costChange": null,
+      "maxLevel": 0,
+      "valuesByLevel": {
+        "0": null
+      }
+    },
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Shotgun_Qiege",
+      "publicPath": "/assets/items/weapons/T_Head_Shotgun_Qiege.png",
+      "placeholderPath": null,
+      "candidates": [
+        "T_Head_Shotgun_Qiege",
+        "Head_Shotgun_Qiege"
+      ],
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Shotgun_Qiege.png"
+      ]
+    },
+    "scaling": {
+      "defaultLevel": 0,
+      "maxLevel": 0,
+      "availableLevels": [
+        0
+      ],
+      "valuesByLevel": {
+        "0": {}
+      },
+      "attributesByLevel": {
+        "0": []
+      }
+    },
+    "translations": {
+      "DE": {
+        "modName": "Jagged Growl",
+        "description": "Some flee from explosive shells. Others, from the jagged growl of steel teeth.",
+        "demonWedgeName": null,
+        "functionLabel": "Arma a distancia",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Arma a distancia",
+          "Schrotflinte"
+        ]
+      },
+      "EN": {
+        "modName": "Jagged Growl",
+        "description": "Some flee from explosive shells. Others, from the jagged growl of steel teeth.",
+        "demonWedgeName": null,
+        "functionLabel": "Ranged Weapons",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Ranged Weapons",
+          "Shotgun"
+        ]
+      },
+      "ES": {
+        "modName": "Engranaje Cortante",
+        "description": "Unos huyen de los proyectiles explosivos. Otros, del rugido dentado del acero.",
+        "demonWedgeName": null,
+        "functionLabel": "Arma a distancia",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Arma a distancia",
+          "Escopeta"
+        ]
+      },
+      "FR": {
+        "modName": "Engrenage déchiqueté",
+        "description": "Certains ennemis fuient devant les obus explosifs ; d’autres devant les dents d’acier d’un engrenage.",
+        "demonWedgeName": null,
+        "functionLabel": "Armes à distance",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Armes à distance",
+          "Fusil à pompe"
+        ]
+      },
+      "JP": {
+        "modName": "ジャギッドギア",
+        "description": "敵を退けるのは砲撃の響きのみならず、鋼鉄の鋸歯もまた然り。",
+        "demonWedgeName": null,
+        "functionLabel": "遠隔武器",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "遠隔武器",
+          "ショットガン"
+        ]
+      },
+      "KR": {
+        "modName": "절단의 톱날",
+        "description": "적을 도망치게 만드는 건 포탄만이 아니다. 강철 톱날도 마찬가지다.",
+        "demonWedgeName": null,
+        "functionLabel": "원거리 무기",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "원거리 무기",
+          "산탄총"
+        ]
+      },
+      "TC": {
+        "modName": "切割齒輪",
+        "description": "能讓敵人潰逃的除了易爆的炮彈，還有鋼鋸的齒輪。",
+        "demonWedgeName": null,
+        "functionLabel": "遠端武器",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "遠端武器",
+          "霰彈槍"
+        ]
+      }
+    },
+    "fields": {
+      "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Shotgun_Qiege",
+      "CollectRewardExp": 400,
+      "DecomposeReward": 20411,
+      "GUIPathVariableName": "Qiege",
+      "GUIPathVariableType": "Shotgun",
+      "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Shotgun_Qiege",
+      "Icon": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Shotgun_Qiege",
+      "ModSlot": "T.RT_1",
+      "ModSlotUnlock": "T.RT_2",
+      "OpenVersion": 13,
+      "ReleaseVersion": 130,
+      "SkinApplicationType": "T.RT_12",
+      "SortPriority": 20406,
+      "Sound": "SOUND_ITEM_WEAPON",
+      "WeaponDescribe": "UI_WEAPON_DESC_20406",
+      "WeaponId": 20406,
+      "WeaponMaxLevel": 80,
+      "WeaponName": "UI_WEAPON_NAME_20406",
+      "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
+      "WeaponToCoinType": 101,
+      "WeaponValue": 10000,
+      "Type": "Ranged",
+      "ResourceSType": "Shotgun",
+      "WeaponClassKey": "UI_Armory_Longrange",
+      "WeaponTypeKey": "WeaponType_Shotgun",
+      "SkinApplicationTypeCodes": [
+        204
+      ],
+      "WeaponClass": "Ranged",
+      "WeaponSubtype": "Shotgun"
+    }
+  },
+  {
+    "id": "weapons-20407",
+    "categoryId": "weapons",
+    "modId": 20407,
+    "archiveId": null,
+    "stats": {
+      "rarity": 5,
+      "polarity": null,
+      "maxLevel": 80,
+      "cost": null,
+      "openVersion": 13,
+      "releaseVersion": 130
+    },
+    "textKeys": {
+      "modNameKey": "UI_WEAPON_NAME_20407",
+      "descriptionKey": "UI_WEAPON_DESC_20407",
+      "demonWedgeKey": null,
+      "functionKey": "UI_Armory_Longrange",
+      "passiveEffectsDescKey": null,
+      "affinityNameKey": null,
+      "archiveNameKey": null
+    },
+    "affinity": {
+      "id": null,
+      "nameKey": null,
+      "char": null,
+      "icon": {
+        "gamePath": null,
+        "publicPath": null,
+        "placeholderPath": null,
+        "candidates": [],
+        "allMatches": []
+      }
+    },
+    "typeCompatibility": {
+      "applicationType": 204,
+      "textKeys": [
+        "UI_Armory_Longrange",
+        "WeaponType_Shotgun"
+      ],
+      "tags": [
+        {
+          "key": "UI_Armory_Longrange",
+          "icon": {
+            "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponTypeLongRange.T_Armory_WeaponTypeLongRange",
+            "publicPath": "/assets/items/weapon-types/T_Armory_WeaponTypeLongRange.png",
+            "placeholderPath": null,
+            "candidates": [
+              "T_Armory_WeaponTypeLongRange",
+              "Armory_WeaponTypeLongRange"
+            ],
+            "allMatches": [
+              "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponTypeLongRange.png"
+            ]
+          }
+        },
+        {
+          "key": "WeaponType_Shotgun",
+          "icon": {
+            "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponType_Shotgun.T_Armory_WeaponType_Shotgun",
+            "publicPath": "/assets/items/weapon-types/T_Armory_WeaponType_Shotgun.png",
+            "placeholderPath": null,
+            "candidates": [
+              "T_Armory_WeaponType_Shotgun",
+              "Armory_WeaponType_Shotgun"
+            ],
+            "allMatches": [
+              "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponType_Shotgun.png"
+            ]
+          }
+        }
+      ]
+    },
+    "tolerance": {
+      "baseCost": null,
+      "costChange": null,
+      "maxLevel": 0,
+      "valuesByLevel": {
+        "0": null
+      }
+    },
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Shotgun_Guchu",
+      "publicPath": "/assets/items/weapons/T_Head_Shotgun_Guchu.png",
+      "placeholderPath": null,
+      "candidates": [
+        "T_Head_Shotgun_Guchu",
+        "Head_Shotgun_Guchu"
+      ],
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Shotgun_Guchu.png"
+      ]
+    },
+    "scaling": {
+      "defaultLevel": 0,
+      "maxLevel": 0,
+      "availableLevels": [
+        0
+      ],
+      "valuesByLevel": {
+        "0": {}
+      },
+      "attributesByLevel": {
+        "0": []
+      }
+    },
+    "translations": {
+      "DE": {
+        "modName": "Fledgling's Gleam",
+        "description": "A solitary figure, separated from the flock, turns the pivot of destiny; beyond the mountains, a feather traces across the vast sky.",
+        "demonWedgeName": null,
+        "functionLabel": "Arma a distancia",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Arma a distancia",
+          "Schrotflinte"
+        ]
+      },
+      "EN": {
+        "modName": "Fledgling's Gleam",
+        "description": "A solitary figure, separated from the flock, turns the pivot of destiny; beyond the mountains, a feather traces across the vast sky.",
+        "demonWedgeName": null,
+        "functionLabel": "Ranged Weapons",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Ranged Weapons",
+          "Shotgun"
+        ]
+      },
+      "ES": {
+        "modName": "Destello en la Copa",
+        "description": "Una figura solitaria, apartada de la bandada, hace girar el pivote del destino; más allá de las montañas, una pluma surca el inmenso cielo.",
+        "demonWedgeName": null,
+        "functionLabel": "Arma a distancia",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Arma a distancia",
+          "Escopeta"
+        ]
+      },
+      "FR": {
+        "modName": "Sillage solitaire",
+        "description": "Ombre solitaire séparée du vol, elle fait tourner l’axe du destin ; au-delà des montagnes, une plume trace son sillage dans le ciel.",
+        "demonWedgeName": null,
+        "functionLabel": "Armes à distance",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Armes à distance",
+          "Fusil à pompe"
+        ]
+      },
+      "JP": {
+        "modName": "雛鳥の羽跡",
+        "description": "群れから離れし孤影は機枢を廻らし、一羽で天を回らす。",
+        "demonWedgeName": null,
+        "functionLabel": "遠隔武器",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "遠隔武器",
+          "ショットガン"
+        ]
+      },
+      "KR": {
+        "modName": "고독의 자취",
+        "description": "외롭게 떠난 그림자가 기추의 길을 돌리니, 산외산의 긴 하늘에 깃털 자국을 남겼네.",
+        "demonWedgeName": null,
+        "functionLabel": "원거리 무기",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "원거리 무기",
+          "산탄총"
+        ]
+      },
+      "TC": {
+        "modName": "孤雛的羽跡",
+        "description": "離群孤影轉機樞，山外長空劃羽痕。",
+        "demonWedgeName": null,
+        "functionLabel": "遠端武器",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "遠端武器",
+          "霰彈槍"
+        ]
+      }
+    },
+    "fields": {
+      "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Shotgun_Guchu",
+      "CollectRewardExp": 400,
+      "DecomposeReward": 20411,
+      "GUIPathVariableName": "Guchu",
+      "GUIPathVariableType": "Shotgun",
+      "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Shotgun_Guchu",
+      "Icon": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Shotgun_Guchu",
+      "ModSlot": "T.RT_1",
+      "ModSlotUnlock": "T.RT_2",
+      "OpenVersion": 13,
+      "ReleaseVersion": 130,
+      "SkinApplicationType": "T.RT_12",
+      "SortPriority": 20407,
+      "Sound": "SOUND_ITEM_WEAPON",
+      "WeaponDescribe": "UI_WEAPON_DESC_20407",
+      "WeaponId": 20407,
+      "WeaponMaxLevel": 80,
+      "WeaponName": "UI_WEAPON_NAME_20407",
+      "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Ranged",
@@ -9622,12 +11525,12 @@
         "modName": "Knochenbrecher",
         "description": "Wenn Kugeln durch Fleisch pflügen und die Seele versengen, wie lange können Güte, Integrität und Tapferkeit bestehen?",
         "demonWedgeName": null,
-        "functionLabel": "Fernkampfwaffen",
+        "functionLabel": "Arma a distancia",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Fernkampfwaffen",
+          "Arma a distancia",
           "Sturmgewehr"
         ]
       },
@@ -9713,7 +11616,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Machinegun_Chixing",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 20511,
       "GUIPathVariableName": "Chixing",
       "GUIPathVariableType": "Machinegun",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Machinegun_Chixing",
@@ -9730,6 +11633,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_20501",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Ranged",
@@ -9854,12 +11758,12 @@
         "modName": "Verbannter Donnerdrache",
         "description": "Eine Waffe, die vom „Raben“ der Verlassenen benutzt wird. Vernimm den Zorn der Verbannten! Die Totenglocke des Imperiums läutet!",
         "demonWedgeName": null,
-        "functionLabel": "Fernkampfwaffen",
+        "functionLabel": "Arma a distancia",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Fernkampfwaffen",
+          "Arma a distancia",
           "Sturmgewehr"
         ]
       },
@@ -9878,7 +11782,7 @@
       },
       "ES": {
         "modName": "Hidra del Trueno Desterrada",
-        "description": "El arma utilizada por “El Cuervo” de Los Abandonados. ¡Escucha! ¡Esta es la furia de los exiliados! ¡Son las campanas que resuenan por la caída del Imperio!",
+        "description": "El arma utilizada por \"El Cuervo\" de Los Abandonados. ¡Escucha! ¡Esta es la furia de los exiliados! ¡Son las campanas que resuenan por la caída del Imperio!",
         "demonWedgeName": null,
         "functionLabel": "Arma a distancia",
         "passiveEffectsDescription": null,
@@ -9945,7 +11849,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Machinegun_Fangzhu",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 20511,
       "GUIPathVariableName": "Fangzhu",
       "GUIPathVariableType": "Machinegun",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Machinegun_Fangzhu",
@@ -9962,6 +11866,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_20502",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Ranged",
@@ -10086,12 +11991,12 @@
         "modName": "Läuterungsflamme",
         "description": "Ein Flammenwerfer, die vom Ritterorden der Heiligen Iris der Elysischen Kirche eingesetzt wird. Heilige Erhebung! Möge das heilige Feuer uns umhüllen. In deinem Namen schwören wir, alles Böse zu verbrennen.",
         "demonWedgeName": null,
-        "functionLabel": "Fernkampfwaffen",
+        "functionLabel": "Arma a distancia",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Fernkampfwaffen",
+          "Arma a distancia",
           "Sturmgewehr"
         ]
       },
@@ -10177,7 +12082,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Machinegun_Qiqing",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 20511,
       "GUIPathVariableName": "Qiqing",
       "GUIPathVariableType": "Machinegun",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Machinegun_Qiqing",
@@ -10194,6 +12099,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_20503",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Ranged",
@@ -10318,12 +12224,12 @@
         "modName": "Hymne der Morgendämmerung",
         "description": "Ein Maschinengewehr, das vom Ritterorden der Heiligen Iris der Elysischen Kirche geführt wird. „Heilige Erhebung!“ Sollten wir nur den ersten Schimmer der Morgendämmerung erblicken, auch wenn unser Weg mit Dornen übersät ist, werden wir ihn als süße Wohltat begrüßen.",
         "demonWedgeName": null,
-        "functionLabel": "Fernkampfwaffen",
+        "functionLabel": "Arma a distancia",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Fernkampfwaffen",
+          "Arma a distancia",
           "Sturmgewehr"
         ]
       },
@@ -10342,7 +12248,7 @@
       },
       "ES": {
         "modName": "Himno del Amanecer",
-        "description": "Una ametralladora empuñada por los Caballeros del Iris Sagrado de la Iglesia Elysiana. “¡Santa exaltación! Si tan solo contemplamos el primer rayo del amanecer, aunque nuestro camino esté sembrado de espinas, lo acogeremos como un dulce socorro.”",
+        "description": "Una ametralladora empuñada por los Caballeros del Iris Sagrado de la Iglesia Elysiana. \"¡Santa exaltación! Si tan solo contemplamos el primer rayo del amanecer, aunque nuestro camino esté sembrado de espinas, lo acogeremos como un dulce socorro.\"",
         "demonWedgeName": null,
         "functionLabel": "Arma a distancia",
         "passiveEffectsDescription": null,
@@ -10409,7 +12315,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Machinegun_Poxiao",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 20511,
       "GUIPathVariableName": "Poxiao",
       "GUIPathVariableType": "Machinegun",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Machinegun_Poxiao",
@@ -10426,6 +12332,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_20504",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Ranged",
@@ -10550,12 +12457,12 @@
         "modName": "Trigon Muse",
         "description": "From threefold geometry, the goddess bestowed her praise, entrusting beauty itself to be honed into lethal edge.",
         "demonWedgeName": null,
-        "functionLabel": "Fernkampfwaffen",
+        "functionLabel": "Arma a distancia",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Fernkampfwaffen",
+          "Arma a distancia",
           "Sturmgewehr"
         ]
       },
@@ -10573,8 +12480,8 @@
         ]
       },
       "ES": {
-        "modName": "Musa del Trígono",
-        "description": "From threefold geometry, the goddess bestowed her praise, entrusting beauty itself to be honed into lethal edge.",
+        "modName": "Musa trígona",
+        "description": "La perfección del triángulo, bendecida por la diosa; donde el arte de la belleza se forja en un filo letal.",
         "demonWedgeName": null,
         "functionLabel": "Arma a distancia",
         "passiveEffectsDescription": null,
@@ -10641,7 +12548,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Machinegun_Sanjiao",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 20511,
       "GUIPathVariableName": "Sanjiao",
       "GUIPathVariableType": "Machinegun",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Machinegun_Sanjiao",
@@ -10658,6 +12565,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_20505",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Ranged",
@@ -10782,12 +12690,12 @@
         "modName": "Wolkenhauch Entfaltung",
         "description": "Durch die sich teilenden Wolken nimmt ein gemalter Flug seine Form an, wo sich Pfauen auf Seide treffen, um sich gegenseitig mit ihrer Anmut zu umwerben.",
         "demonWedgeName": null,
-        "functionLabel": "Fernkampfwaffen",
+        "functionLabel": "Arma a distancia",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Fernkampfwaffen",
+          "Arma a distancia",
           "Sturmgewehr"
         ]
       },
@@ -10873,7 +12781,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Machinegun_Quewu",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 20511,
       "GUIPathVariableName": "Quewu",
       "GUIPathVariableType": "Machinegun",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Machinegun_Quewu",
@@ -10890,6 +12798,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_20506",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Ranged",
@@ -11014,12 +12923,12 @@
         "modName": "Versunkene Serenade",
         "description": "Der junge Seemann, immer zu sehr damit beschäftigt, den Mast vor dem Sturm zu sichern, nahm die versteckten Liebesbotschaften unter den Wellen niemals wahr – nicht ahnend, dass jedes Lied der Meerjungfrau eine nur für ihn bestimmte Serenade war.",
         "demonWedgeName": null,
-        "functionLabel": "Fernkampfwaffen",
+        "functionLabel": "Arma a distancia",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Fernkampfwaffen",
+          "Arma a distancia",
           "Sturmgewehr"
         ]
       },
@@ -11105,7 +13014,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Machinegun_Yinlang",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 20511,
       "GUIPathVariableName": "Yinlang",
       "GUIPathVariableType": "Machinegun",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Machinegun_Yinlang",
@@ -11122,6 +13031,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_20507",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Ranged",
@@ -11246,12 +13156,12 @@
         "modName": "Traumweber-Feder",
         "description": "Aus einer schneebedeckten Feder flocht ich einen schmalen Käfig und schloss die wilde Welt darin ein.",
         "demonWedgeName": null,
-        "functionLabel": "Fernkampfwaffen",
+        "functionLabel": "Arma a distancia",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Fernkampfwaffen",
+          "Arma a distancia",
           "Sturmgewehr"
         ]
       },
@@ -11337,7 +13247,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Machinegun_Zhimeng",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 20511,
       "GUIPathVariableName": "Zhimeng",
       "GUIPathVariableType": "Machinegun",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Machinegun_Zhimeng",
@@ -11354,6 +13264,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_20509",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Ranged",
@@ -11478,12 +13389,12 @@
         "modName": "Vergängliches Licht",
         "description": "Mein Schwert wirbelte den silbernen Mond auf, sich widerspiegelnd in einem Strom von Träumen; in der Stille der Zeit, ein weiterer Herbst verblasste unter seinem silbernen Schimmer.",
         "demonWedgeName": null,
-        "functionLabel": "Fernkampfwaffen",
+        "functionLabel": "Arma a distancia",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Fernkampfwaffen",
+          "Arma a distancia",
           "Sturmgewehr"
         ]
       },
@@ -11569,7 +13480,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Machinegun_Ruohua",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 20511,
       "GUIPathVariableName": "Ruohua",
       "GUIPathVariableType": "Machinegun",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Machinegun_Ruohua",
@@ -11586,6 +13497,706 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_20510",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
+      "WeaponToCoinType": 101,
+      "WeaponValue": 10000,
+      "Type": "Ranged",
+      "ResourceSType": "Machinegun",
+      "WeaponClassKey": "UI_Armory_Longrange",
+      "WeaponTypeKey": "WeaponType_Machinegun",
+      "SkinApplicationTypeCodes": [
+        205
+      ],
+      "WeaponClass": "Ranged",
+      "WeaponSubtype": "Machinegun"
+    }
+  },
+  {
+    "id": "weapons-20511",
+    "categoryId": "weapons",
+    "modId": 20511,
+    "archiveId": null,
+    "stats": {
+      "rarity": 5,
+      "polarity": null,
+      "maxLevel": 80,
+      "cost": null,
+      "openVersion": 14,
+      "releaseVersion": 140
+    },
+    "textKeys": {
+      "modNameKey": "UI_WEAPON_NAME_20511",
+      "descriptionKey": "UI_WEAPON_DESC_20511",
+      "demonWedgeKey": null,
+      "functionKey": "UI_Armory_Longrange",
+      "passiveEffectsDescKey": null,
+      "affinityNameKey": null,
+      "archiveNameKey": null
+    },
+    "affinity": {
+      "id": null,
+      "nameKey": null,
+      "char": null,
+      "icon": {
+        "gamePath": null,
+        "publicPath": null,
+        "placeholderPath": null,
+        "candidates": [],
+        "allMatches": []
+      }
+    },
+    "typeCompatibility": {
+      "applicationType": 205,
+      "textKeys": [
+        "UI_Armory_Longrange",
+        "WeaponType_Machinegun"
+      ],
+      "tags": [
+        {
+          "key": "UI_Armory_Longrange",
+          "icon": {
+            "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponTypeLongRange.T_Armory_WeaponTypeLongRange",
+            "publicPath": "/assets/items/weapon-types/T_Armory_WeaponTypeLongRange.png",
+            "placeholderPath": null,
+            "candidates": [
+              "T_Armory_WeaponTypeLongRange",
+              "Armory_WeaponTypeLongRange"
+            ],
+            "allMatches": [
+              "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponTypeLongRange.png"
+            ]
+          }
+        },
+        {
+          "key": "WeaponType_Machinegun",
+          "icon": {
+            "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponType_Machinegun.T_Armory_WeaponType_Machinegun",
+            "publicPath": "/assets/items/weapon-types/T_Armory_WeaponType_Machinegun.png",
+            "placeholderPath": null,
+            "candidates": [
+              "T_Armory_WeaponType_Machinegun",
+              "Armory_WeaponType_Machinegun"
+            ],
+            "allMatches": [
+              "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponType_Machinegun.png"
+            ]
+          }
+        }
+      ]
+    },
+    "tolerance": {
+      "baseCost": null,
+      "costChange": null,
+      "maxLevel": 0,
+      "valuesByLevel": {
+        "0": null
+      }
+    },
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Machinegun_Bomu",
+      "publicPath": "/assets/items/weapons/T_Head_Machinegun_Bomu.png",
+      "placeholderPath": null,
+      "candidates": [
+        "T_Head_Machinegun_Bomu",
+        "Head_Machinegun_Bomu"
+      ],
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Machinegun_Bomu.png"
+      ]
+    },
+    "scaling": {
+      "defaultLevel": 0,
+      "maxLevel": 0,
+      "availableLevels": [
+        0
+      ],
+      "valuesByLevel": {
+        "0": {}
+      },
+      "attributesByLevel": {
+        "0": []
+      }
+    },
+    "translations": {
+      "DE": {
+        "modName": "Gloam Oath",
+        "description": "In blood is engraved the oath of dusk.",
+        "demonWedgeName": null,
+        "functionLabel": "Arma a distancia",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Arma a distancia",
+          "Sturmgewehr"
+        ]
+      },
+      "EN": {
+        "modName": "Gloam Oath",
+        "description": "In blood is engraved the oath of dusk.",
+        "demonWedgeName": null,
+        "functionLabel": "Ranged Weapons",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Ranged Weapons",
+          "Assault Rifle"
+        ]
+      },
+      "ES": {
+        "modName": "Pacto Crepuscular",
+        "description": "Con sangre, se graba el juramento del crepúsculo.",
+        "demonWedgeName": null,
+        "functionLabel": "Arma a distancia",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Arma a distancia",
+          "Rifle de Asalto"
+        ]
+      },
+      "FR": {
+        "modName": "Pacte du crépuscule",
+        "description": "Par le sang se grave le serment du crépuscule.",
+        "demonWedgeName": null,
+        "functionLabel": "Armes à distance",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Armes à distance",
+          "Fusil d’assaut"
+        ]
+      },
+      "JP": {
+        "modName": "黄昏の誓い",
+        "description": "血で、黄昏の誓約を刻む。",
+        "demonWedgeName": null,
+        "functionLabel": "遠隔武器",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "遠隔武器",
+          "ライフル"
+        ]
+      },
+      "KR": {
+        "modName": "황혼의 계약",
+        "description": "붉은 피로 황혼의 서약을 써 내려간다.",
+        "demonWedgeName": null,
+        "functionLabel": "원거리 무기",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "원거리 무기",
+          "돌격소총"
+        ]
+      },
+      "TC": {
+        "modName": "薄暮契約",
+        "description": "以鮮血，銘刻薄暮的誓約。",
+        "demonWedgeName": null,
+        "functionLabel": "遠端武器",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "遠端武器",
+          "突擊槍"
+        ]
+      }
+    },
+    "fields": {
+      "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Machinegun_Bomu",
+      "CollectRewardExp": 400,
+      "DecomposeReward": 20511,
+      "GUIPathVariableName": "Bomu",
+      "GUIPathVariableType": "Machinegun",
+      "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Machinegun_Bomu",
+      "Icon": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Machinegun_Bomu",
+      "ModSlot": "T.RT_1",
+      "ModSlotUnlock": "T.RT_2",
+      "OpenVersion": 14,
+      "ReleaseVersion": 140,
+      "SkinApplicationType": "T.RT_13",
+      "SortPriority": 20511,
+      "Sound": "SOUND_ITEM_WEAPON",
+      "WeaponDescribe": "UI_WEAPON_DESC_20511",
+      "WeaponId": 20511,
+      "WeaponMaxLevel": 80,
+      "WeaponName": "UI_WEAPON_NAME_20511",
+      "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
+      "WeaponToCoinType": 101,
+      "WeaponValue": 10000,
+      "Type": "Ranged",
+      "ResourceSType": "Machinegun",
+      "WeaponClassKey": "UI_Armory_Longrange",
+      "WeaponTypeKey": "WeaponType_Machinegun",
+      "SkinApplicationTypeCodes": [
+        205
+      ],
+      "WeaponClass": "Ranged",
+      "WeaponSubtype": "Machinegun"
+    }
+  },
+  {
+    "id": "weapons-20512",
+    "categoryId": "weapons",
+    "modId": 20512,
+    "archiveId": null,
+    "stats": {
+      "rarity": 5,
+      "polarity": null,
+      "maxLevel": 80,
+      "cost": null,
+      "openVersion": 13,
+      "releaseVersion": 130
+    },
+    "textKeys": {
+      "modNameKey": "UI_WEAPON_NAME_20512",
+      "descriptionKey": "UI_WEAPON_DESC_20512",
+      "demonWedgeKey": null,
+      "functionKey": "UI_Armory_Longrange",
+      "passiveEffectsDescKey": null,
+      "affinityNameKey": null,
+      "archiveNameKey": null
+    },
+    "affinity": {
+      "id": null,
+      "nameKey": null,
+      "char": null,
+      "icon": {
+        "gamePath": null,
+        "publicPath": null,
+        "placeholderPath": null,
+        "candidates": [],
+        "allMatches": []
+      }
+    },
+    "typeCompatibility": {
+      "applicationType": 205,
+      "textKeys": [
+        "UI_Armory_Longrange",
+        "WeaponType_Machinegun"
+      ],
+      "tags": [
+        {
+          "key": "UI_Armory_Longrange",
+          "icon": {
+            "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponTypeLongRange.T_Armory_WeaponTypeLongRange",
+            "publicPath": "/assets/items/weapon-types/T_Armory_WeaponTypeLongRange.png",
+            "placeholderPath": null,
+            "candidates": [
+              "T_Armory_WeaponTypeLongRange",
+              "Armory_WeaponTypeLongRange"
+            ],
+            "allMatches": [
+              "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponTypeLongRange.png"
+            ]
+          }
+        },
+        {
+          "key": "WeaponType_Machinegun",
+          "icon": {
+            "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponType_Machinegun.T_Armory_WeaponType_Machinegun",
+            "publicPath": "/assets/items/weapon-types/T_Armory_WeaponType_Machinegun.png",
+            "placeholderPath": null,
+            "candidates": [
+              "T_Armory_WeaponType_Machinegun",
+              "Armory_WeaponType_Machinegun"
+            ],
+            "allMatches": [
+              "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponType_Machinegun.png"
+            ]
+          }
+        }
+      ]
+    },
+    "tolerance": {
+      "baseCost": null,
+      "costChange": null,
+      "maxLevel": 0,
+      "valuesByLevel": {
+        "0": null
+      }
+    },
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Machinegun_Beizhong",
+      "publicPath": "/assets/items/weapons/T_Head_Machinegun_Beizhong.png",
+      "placeholderPath": null,
+      "candidates": [
+        "T_Head_Machinegun_Beizhong",
+        "Head_Machinegun_Beizhong"
+      ],
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Machinegun_Beizhong.png"
+      ]
+    },
+    "scaling": {
+      "defaultLevel": 0,
+      "maxLevel": 0,
+      "availableLevels": [
+        0
+      ],
+      "valuesByLevel": {
+        "0": {}
+      },
+      "attributesByLevel": {
+        "0": []
+      }
+    },
+    "translations": {
+      "DE": {
+        "modName": "Dregs of Glimmer",
+        "description": "Amber light caught between waking and dreaming, the last warmth of a dying hearth.",
+        "demonWedgeName": null,
+        "functionLabel": "Arma a distancia",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Arma a distancia",
+          "Sturmgewehr"
+        ]
+      },
+      "EN": {
+        "modName": "Dregs of Glimmer",
+        "description": "Amber light caught between waking and dreaming, the last warmth of a dying hearth.",
+        "demonWedgeName": null,
+        "functionLabel": "Ranged Weapons",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Ranged Weapons",
+          "Assault Rifle"
+        ]
+      },
+      "ES": {
+        "modName": "Rescoldo en la Copa",
+        "description": "Luz ámbar atrapada entre la vigilia y el sueño, el último calor de un hogar que se apaga.",
+        "demonWedgeName": null,
+        "functionLabel": "Arma a distancia",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Arma a distancia",
+          "Rifle de Asalto"
+        ]
+      },
+      "FR": {
+        "modName": "Braise du calice",
+        "description": "Une lueur ambrée vacille entre veille et ivresse, reflétant encore la tiédeur d’un foyer presque éteint.",
+        "demonWedgeName": null,
+        "functionLabel": "Armes à distance",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Armes à distance",
+          "Fusil d’assaut"
+        ]
+      },
+      "JP": {
+        "modName": "エンバーズカクテル",
+        "description": "揺らめく琥珀色の光が、夢うつつにとどまる。炉火の微温は、いまだ絶えず。",
+        "demonWedgeName": null,
+        "functionLabel": "遠隔武器",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "遠隔武器",
+          "ライフル"
+        ]
+      },
+      "KR": {
+        "modName": "술잔의 잔불",
+        "description": "출렁이는 호박 빛이, 옅은 취기 아래 화로에 남은 온기를 비추네.",
+        "demonWedgeName": null,
+        "functionLabel": "원거리 무기",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "원거리 무기",
+          "돌격소총"
+        ]
+      },
+      "TC": {
+        "modName": "杯中的殘火",
+        "description": "蕩漾的琥珀光澤，在半醉半醒間反射著爐火的餘溫。",
+        "demonWedgeName": null,
+        "functionLabel": "遠端武器",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "遠端武器",
+          "突擊槍"
+        ]
+      }
+    },
+    "fields": {
+      "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Machinegun_Beizhong",
+      "CollectRewardExp": 400,
+      "DecomposeReward": 20511,
+      "GUIPathVariableName": "Beizhong",
+      "GUIPathVariableType": "Machinegun",
+      "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Machinegun_Beizhong",
+      "Icon": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Machinegun_Beizhong",
+      "ModSlot": "T.RT_1",
+      "ModSlotUnlock": "T.RT_2",
+      "OpenVersion": 13,
+      "ReleaseVersion": 130,
+      "SkinApplicationType": "T.RT_13",
+      "SortPriority": 20512,
+      "Sound": "SOUND_ITEM_WEAPON",
+      "WeaponDescribe": "UI_WEAPON_DESC_20512",
+      "WeaponId": 20512,
+      "WeaponMaxLevel": 80,
+      "WeaponName": "UI_WEAPON_NAME_20512",
+      "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
+      "WeaponToCoinType": 101,
+      "WeaponValue": 10000,
+      "Type": "Ranged",
+      "ResourceSType": "Machinegun",
+      "WeaponClassKey": "UI_Armory_Longrange",
+      "WeaponTypeKey": "WeaponType_Machinegun",
+      "SkinApplicationTypeCodes": [
+        205
+      ],
+      "WeaponClass": "Ranged",
+      "WeaponSubtype": "Machinegun"
+    }
+  },
+  {
+    "id": "weapons-20599",
+    "categoryId": "weapons",
+    "modId": 20599,
+    "archiveId": null,
+    "stats": {
+      "rarity": 5,
+      "polarity": null,
+      "maxLevel": 80,
+      "cost": null,
+      "openVersion": 14,
+      "releaseVersion": 140
+    },
+    "textKeys": {
+      "modNameKey": "UI_WEAPON_NAME_20599",
+      "descriptionKey": "UI_WEAPON_DESC_20599",
+      "demonWedgeKey": null,
+      "functionKey": "UI_Armory_Longrange",
+      "passiveEffectsDescKey": null,
+      "affinityNameKey": null,
+      "archiveNameKey": null
+    },
+    "affinity": {
+      "id": null,
+      "nameKey": null,
+      "char": null,
+      "icon": {
+        "gamePath": null,
+        "publicPath": null,
+        "placeholderPath": null,
+        "candidates": [],
+        "allMatches": []
+      }
+    },
+    "typeCompatibility": {
+      "applicationType": 205,
+      "textKeys": [
+        "UI_Armory_Longrange",
+        "WeaponType_Machinegun"
+      ],
+      "tags": [
+        {
+          "key": "UI_Armory_Longrange",
+          "icon": {
+            "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponTypeLongRange.T_Armory_WeaponTypeLongRange",
+            "publicPath": "/assets/items/weapon-types/T_Armory_WeaponTypeLongRange.png",
+            "placeholderPath": null,
+            "candidates": [
+              "T_Armory_WeaponTypeLongRange",
+              "Armory_WeaponTypeLongRange"
+            ],
+            "allMatches": [
+              "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponTypeLongRange.png"
+            ]
+          }
+        },
+        {
+          "key": "WeaponType_Machinegun",
+          "icon": {
+            "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponType_Machinegun.T_Armory_WeaponType_Machinegun",
+            "publicPath": "/assets/items/weapon-types/T_Armory_WeaponType_Machinegun.png",
+            "placeholderPath": null,
+            "candidates": [
+              "T_Armory_WeaponType_Machinegun",
+              "Armory_WeaponType_Machinegun"
+            ],
+            "allMatches": [
+              "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponType_Machinegun.png"
+            ]
+          }
+        }
+      ]
+    },
+    "tolerance": {
+      "baseCost": null,
+      "costChange": null,
+      "maxLevel": 0,
+      "valuesByLevel": {
+        "0": null
+      }
+    },
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Machinegun_Yemei",
+      "publicPath": "/assets/items/weapons/T_Head_Machinegun_Yemei.png",
+      "placeholderPath": null,
+      "candidates": [
+        "T_Head_Machinegun_Yemei",
+        "Head_Machinegun_Yemei"
+      ],
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Machinegun_Yemei.png"
+      ]
+    },
+    "scaling": {
+      "defaultLevel": 0,
+      "maxLevel": 0,
+      "availableLevels": [
+        0
+      ],
+      "valuesByLevel": {
+        "0": {}
+      },
+      "attributesByLevel": {
+        "0": []
+      }
+    },
+    "translations": {
+      "DE": {
+        "modName": "Metall-Sturmgewehr",
+        "description": "Ein Maschinengewehr, gefertigt unter Verwendung der neuesten Schmelz- und Vergoldungstechniken. Dieses Modell ist eine klare Empfehlung von Schmiedemeistern. Die perfekte Balance zwischen Qualität und Erschwinglichkeit macht es zu einer beliebten Wahl bei Reisenden in ganz Atlasia.",
+        "demonWedgeName": null,
+        "functionLabel": "Arma a distancia",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Arma a distancia",
+          "Sturmgewehr"
+        ]
+      },
+      "EN": {
+        "modName": "Thorned Requiem",
+        "description": "UI_WEAPON_DESC_20599",
+        "demonWedgeName": null,
+        "functionLabel": "Ranged Weapons",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Ranged Weapons",
+          "Assault Rifle"
+        ]
+      },
+      "ES": {
+        "modName": "Réquiem de Espinas",
+        "description": "Una de las que recibió un arma era una gran sanadora a quien el Padre Ask premió por su compasión. Resonaba con las cuerdas emocionales de la gente y usaba el ritmo de su música para calmar los corazones agitados.\nPero el mundo seguía lleno de sufrimientos que brotaban como espinas, así que elaboró venenos para purgar el mundo de la carne de la que nacía tal dolor.\nAl final, las frágiles cuerdas se rompieron al no poder soportar más. Fue obligada a beber el veneno que ella misma había preparado, y se hundió en una larga noche en la que no podía ni dormir ni despertar.",
+        "demonWedgeName": null,
+        "functionLabel": "Arma a distancia",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Arma a distancia",
+          "Rifle de Asalto"
+        ]
+      },
+      "FR": {
+        "modName": "Requiem d’épines",
+        "description": "L’une des porteuses de cette arme était une guérisseuse, récompensée par le Père Ask pour sa compassion. Elle faisait vibrer les cordes des émotions humaines, apaisant les cœurs troublés par les harmonies de son instrument.\nMais le monde restait envahi par d’innombrables souffrances, se propageant comme des ronces. Alors elle distilla un poison, décidée à éradiquer jusqu’aux corps mêmes qui engendraient ces tourments.\nFinalement, les cordes fragiles ne purent en supporter davantage et se brisèrent. Elle fut contrainte d’ingérer le poison qu’elle avait elle-même préparé, sombrant dans une longue nuit où ni le sommeil ni l’éveil ne lui étaient plus accessibles.",
+        "demonWedgeName": null,
+        "functionLabel": "Armes à distance",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Armes à distance",
+          "Fusil d’assaut"
+        ]
+      },
+      "JP": {
+        "modName": "荊棘のレクイエム",
+        "description": "武器を手にした者のひとりは名医だった。父なる神はその慈悲を称えた。彼女は人々の心に張られた感情の弦と共鳴し、琴線の律動でざわめく心を鎮めた。\n だがこの世には、棘のように蔓延る苦しみがあまりにも多かった。ゆえに彼女は毒を精製し、その苦しみを生み出す肉体ごと取り除こうとした。\n やがて脆い琴弦はそれ以上に耐えきれず断ち切れ、彼女は自ら調合した毒を飲まされ、眠ることも醒めることもできない長い夜へと堕ちていった。",
+        "demonWedgeName": null,
+        "functionLabel": "遠隔武器",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "遠隔武器",
+          "ライフル"
+        ]
+      },
+      "KR": {
+        "modName": "가시 돋친 절규",
+        "description": "무기를 손에 넣은 자 중 하나는 뛰어난 의사였다. 아버지 신에게서 자비롭다는 찬사를 받은 그녀는 사람들의 감정과 공명하며, 그 떨림이 만들어내는 위로의 선율로 마음을 어루만졌다.\n그러나 현실의 고통은 가시덤불처럼 뻗어 나갔고, 그녀는 고통을 낳는 육신을 지워버리고자 맹독을 추출했다.\n감정을 지탱하던 가느다란 현은 끝내 버티지 못하고 끊어졌고, 그녀는 자신이 빚어낸 맹독을 삼킨 채 영원히 잠들지도 깨어나지도 못하는 기나긴 밤의 심연으로 추락해 버리고 말았다.",
+        "demonWedgeName": null,
+        "functionLabel": "원거리 무기",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "원거리 무기",
+          "돌격소총"
+        ]
+      },
+      "TC": {
+        "modName": "棘刺絕響",
+        "description": "獲得武器的其中一人是名良醫，父神嘉獎她的慈悲。她與人們心中的情感之弦共鳴，用琴弦波動的韻律撫慰躁動的心。\n可世間依舊有著如此多如棘刺般蔓生的痛苦，於是她萃出毒劑，將製造那些痛苦的身軀也一併清除。\n最終，脆弱的琴弦因無法承受更多而繃斷，她被灌下自己親手煉製的毒藥，墜入無法睡去也無法清醒的長夜。",
+        "demonWedgeName": null,
+        "functionLabel": "遠端武器",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "遠端武器",
+          "突擊槍"
+        ]
+      }
+    },
+    "fields": {
+      "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Machinegun_Yemei",
+      "CollectRewardExp": 400,
+      "DecomposeReward": -1,
+      "GUIPathVariableName": "Yemei",
+      "GUIPathVariableType": "Machinegun",
+      "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Machinegun_Yemei",
+      "Icon": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Machinegun_Yemei",
+      "ModSlot": "T.RT_1",
+      "ModSlotUnlock": "T.RT_2",
+      "OpenVersion": 14,
+      "ReleaseVersion": 140,
+      "SkinApplicationType": "T.RT_13",
+      "SortPriority": 20599,
+      "Sound": "SOUND_ITEM_WEAPON",
+      "WeaponDescribe": "UI_WEAPON_DESC_20599",
+      "WeaponId": 20599,
+      "WeaponMaxLevel": 80,
+      "WeaponName": "UI_WEAPON_NAME_20599",
+      "WeaponRarity": 5,
+      "WeaponSubType": "Hyper",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Ranged",
@@ -11710,12 +14321,12 @@
         "modName": "Sengendes Sandflüstern",
         "description": "Du, eine einsame Seele, stehst inmitten der lodernden Flamme und wirst doch bereitwillig zu einem Sandkorn, das vom Wind der Veränderung hinweggefegt wird. So beginnt deine Wiedergeburt, und die Wiedererlangung deines Schicksals.",
         "demonWedgeName": null,
-        "functionLabel": "Fernkampfwaffen",
+        "functionLabel": "Arma a distancia",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Fernkampfwaffen",
+          "Arma a distancia",
           "Bogen"
         ]
       },
@@ -11801,7 +14412,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Bow_Shashi",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 20711,
       "GUIPathVariableName": "Shashi",
       "GUIPathVariableType": "Bow",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Bow_Shashi",
@@ -11818,6 +14429,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_20601",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Ranged",
@@ -11942,12 +14554,12 @@
         "modName": "Bogenlicht-Apokalypsen",
         "description": "Die Bogensehne summt, ein Zeichen dafür, dass die Feinde in Reichweite sind. Bleib ruhig, mein Freund – dein Gegner hat nicht den Hauch einer Chance.",
         "demonWedgeName": null,
-        "functionLabel": "Fernkampfwaffen",
+        "functionLabel": "Arma a distancia",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Fernkampfwaffen",
+          "Arma a distancia",
           "Bogen"
         ]
       },
@@ -12033,7 +14645,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Bow_Huguang",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 20611,
       "GUIPathVariableName": "Huguang",
       "GUIPathVariableType": "Bow",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Bow_Huguang",
@@ -12050,6 +14662,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_20602",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Ranged",
@@ -12174,12 +14787,12 @@
         "modName": "Embla-Infloreszenz",
         "description": "Keine lebende Seele weiß, was jenseits des Nebelmeeres liegt. Vielleicht wagt es in diesem urzeitlichen Chaos noch eine einzige unsichtbare Blume, ihre Blüte zu entfalten.",
         "demonWedgeName": null,
-        "functionLabel": "Fernkampfwaffen",
+        "functionLabel": "Arma a distancia",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Fernkampfwaffen",
+          "Arma a distancia",
           "Bogen"
         ]
       },
@@ -12265,7 +14878,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Bow_Yinbu",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 20711,
       "GUIPathVariableName": "Yinbu",
       "GUIPathVariableType": "Bow",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Bow_Yinbu",
@@ -12282,6 +14895,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_20603",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Ranged",
@@ -12406,12 +15020,12 @@
         "modName": "Seelenreißer",
         "description": "Ein Klang von Leben und Tod, ein seelenzerfetzendes Klagelied.",
         "demonWedgeName": null,
-        "functionLabel": "Fernkampfwaffen",
+        "functionLabel": "Arma a distancia",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Fernkampfwaffen",
+          "Arma a distancia",
           "Bogen"
         ]
       },
@@ -12497,7 +15111,7 @@
     "fields": {
       "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Bow_Chixing",
       "CollectRewardExp": 400,
-      "DecomposeReward": 160004,
+      "DecomposeReward": 20611,
       "GUIPathVariableName": "Chixing",
       "GUIPathVariableType": "Bow",
       "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Bow_Chixing",
@@ -12514,6 +15128,7 @@
       "WeaponMaxLevel": 80,
       "WeaponName": "UI_WEAPON_NAME_20604",
       "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
       "WeaponToCoinType": 101,
       "WeaponValue": 10000,
       "Type": "Ranged",
