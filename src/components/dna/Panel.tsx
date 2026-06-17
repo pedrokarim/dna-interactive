@@ -14,7 +14,7 @@ export type DnaPanelProps = {
 /** Panneau translucide du design system. */
 export function DnaPanel({ children, inner = false, crest = false, className }: DnaPanelProps) {
   return (
-    <div className={cn("relative border border-line/25 bg-panel/85 backdrop-blur-sm", className)}>
+    <div className={cn("relative min-w-0 border border-line/25 bg-panel/85 backdrop-blur-sm", className)}>
       {crest ? (
         <span className="absolute -top-2.5 left-0 right-0 flex justify-center">
           <DnaCrest />

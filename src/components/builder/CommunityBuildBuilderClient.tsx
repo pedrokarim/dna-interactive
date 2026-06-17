@@ -361,8 +361,8 @@ export function CommunityBuildBuilderClient({
   }
 
   return (
-    <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_20rem]">
-      <div className="flex flex-col gap-4">
+    <div className="grid min-w-0 gap-4 lg:grid-cols-[minmax(0,1fr)_20rem]">
+      <div className="flex min-w-0 flex-col gap-4">
         <DnaPanel className="p-4">
           <div className="flex flex-col gap-3 md:flex-row md:items-end">
             <label className="flex min-w-0 flex-1 flex-col gap-1.5">
@@ -370,7 +370,7 @@ export function CommunityBuildBuilderClient({
               <select
                 value={characterId}
                 onChange={(event) => setCharacterId(event.target.value)}
-                className="h-10 border border-white/20 bg-ink/80 px-3 font-sans text-sm text-parch outline-none focus:border-gold"
+                className="h-10 w-full min-w-0 border border-white/20 bg-ink/80 px-3 font-sans text-sm text-parch outline-none focus:border-gold"
               >
                 {options.characters.map((character) => (
                   <option key={character.id} value={character.id}>
@@ -417,7 +417,7 @@ export function CommunityBuildBuilderClient({
                 onChange={(event) => setNote(event.target.value)}
                 maxLength={200}
                 placeholder="Note courte optionnelle"
-                className="min-h-20 resize-y border border-white/20 bg-ink/70 px-3 py-2 font-sans text-sm text-parch outline-none placeholder:text-muted-2 focus:border-gold"
+                className="min-h-20 w-full min-w-0 resize-y border border-white/20 bg-ink/70 px-3 py-2 font-sans text-sm text-parch outline-none placeholder:text-muted-2 focus:border-gold"
               />
               <span className="self-end font-sans text-[0.68rem] text-muted-2">{note.trim().length}/200</span>
             </label>
@@ -481,7 +481,7 @@ export function CommunityBuildBuilderClient({
         </DnaPanel>
       </div>
 
-      <aside className="flex flex-col gap-4">
+      <aside className="flex min-w-0 flex-col gap-4">
         <DnaPanel className="p-4">
           <DnaSectionLabel>Priorités</DnaSectionLabel>
           <div className="mt-3 flex flex-col gap-4">
