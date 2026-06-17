@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { and, count, desc, eq, inArray } from "drizzle-orm";
+import { and, count, desc, eq, inArray, isNull, or } from "drizzle-orm";
 import { getDb, schema } from "@/db";
 import { getCurrentUser } from "@/lib/auth/session";
+import { isMissingTableError } from "@/lib/db-errors";
 import { checkRateLimit } from "@/lib/rate-limit";
 import {
   createBuildSchema,
@@ -18,67 +19,108 @@ function clampLimit(value: string | null): number {
   return Math.min(Math.max(Math.trunc(parsed), 1), 50);
 }
 
+function clampPage(value: string | null): number {
+  const parsed = Number(value ?? 1);
+  if (!Number.isFinite(parsed)) return 1;
+  return Math.max(Math.trunc(parsed), 1);
+}
+
 export async function GET(request: NextRequest) {
   const db = getDb();
   const url = new URL(request.url);
   const characterId = url.searchParams.get("characterId");
+  const element = url.searchParams.get("element");
   const sort = url.searchParams.get("sort") === "recent" ? "recent" : "top";
-  const limit = clampLimit(url.searchParams.get("limit"));
+  const pageSize = clampLimit(url.searchParams.get("pageSize") ?? url.searchParams.get("limit"));
+  const requestedPage = clampPage(url.searchParams.get("page"));
   const user = await getCurrentUser();
 
   const filters = [eq(schema.builds.hidden, false)];
   if (characterId) filters.push(eq(schema.builds.characterId, characterId));
-
-  const rows = await db
-    .select({
-      id: schema.builds.id,
-      userId: schema.builds.userId,
-      characterId: schema.builds.characterId,
-      element: schema.builds.element,
-      title: schema.builds.title,
-      note: schema.builds.note,
-      payload: schema.builds.payload,
-      voteCount: schema.builds.voteCount,
-      createdAt: schema.builds.createdAt,
-      updatedAt: schema.builds.updatedAt,
-      authorName: schema.users.name,
-      authorImage: schema.users.image,
-      authorDiscordId: schema.users.discordId,
-    })
-    .from(schema.builds)
-    .innerJoin(schema.users, eq(schema.users.id, schema.builds.userId))
-    .where(and(...filters))
-    .orderBy(
-      ...(sort === "recent"
-        ? [desc(schema.builds.updatedAt)]
-        : [desc(schema.builds.voteCount), desc(schema.builds.updatedAt)]),
-    )
-    .limit(limit);
-
-  let votedIds = new Set<string>();
-  if (user && rows.length > 0) {
-    const votes = await db
-      .select({ buildId: schema.buildVotes.buildId })
-      .from(schema.buildVotes)
-      .where(
-        and(
-          eq(schema.buildVotes.userId, user.id),
-          inArray(
-            schema.buildVotes.buildId,
-            rows.map((row) => row.id),
-          ),
-        ),
-      );
-    votedIds = new Set(votes.map((vote) => vote.buildId));
+  if (element) {
+    const elementFilter = or(isNull(schema.builds.element), eq(schema.builds.element, element));
+    if (elementFilter) filters.push(elementFilter);
   }
 
-  return NextResponse.json({
-    builds: rows.map((row) => ({
-      ...row,
-      votedByMe: votedIds.has(row.id),
-      editableByMe: user?.id === row.userId || user?.role === "admin",
-    })),
-  });
+  try {
+    const [{ value: total = 0 } = { value: 0 }] = await db
+      .select({ value: count() })
+      .from(schema.builds)
+      .where(and(...filters));
+
+    const totalPages = Math.max(1, Math.ceil(total / pageSize));
+    const page = Math.min(requestedPage, totalPages);
+
+    const rows = await db
+      .select({
+        id: schema.builds.id,
+        userId: schema.builds.userId,
+        characterId: schema.builds.characterId,
+        element: schema.builds.element,
+        title: schema.builds.title,
+        note: schema.builds.note,
+        payload: schema.builds.payload,
+        voteCount: schema.builds.voteCount,
+        createdAt: schema.builds.createdAt,
+        updatedAt: schema.builds.updatedAt,
+        authorName: schema.users.name,
+        authorImage: schema.users.image,
+        authorDiscordId: schema.users.discordId,
+      })
+      .from(schema.builds)
+      .innerJoin(schema.users, eq(schema.users.id, schema.builds.userId))
+      .where(and(...filters))
+      .orderBy(
+        ...(sort === "recent"
+          ? [desc(schema.builds.updatedAt)]
+          : [desc(schema.builds.voteCount), desc(schema.builds.updatedAt)]),
+      )
+      .limit(pageSize)
+      .offset((page - 1) * pageSize);
+
+    let votedIds = new Set<string>();
+    if (user && rows.length > 0) {
+      const votes = await db
+        .select({ buildId: schema.buildVotes.buildId })
+        .from(schema.buildVotes)
+        .where(
+          and(
+            eq(schema.buildVotes.userId, user.id),
+            inArray(
+              schema.buildVotes.buildId,
+              rows.map((row) => row.id),
+            ),
+          ),
+        );
+      votedIds = new Set(votes.map((vote) => vote.buildId));
+    }
+
+    return NextResponse.json({
+      builds: rows.map((row) => ({
+        ...row,
+        votedByMe: votedIds.has(row.id),
+        editableByMe: user?.id === row.userId || user?.role === "admin",
+      })),
+      pagination: {
+        page,
+        pageSize,
+        total,
+        totalPages,
+      },
+    });
+  } catch (error) {
+    if (!isMissingTableError(error)) throw error;
+
+    return NextResponse.json({
+      builds: [],
+      pagination: {
+        page: 1,
+        pageSize,
+        total: 0,
+        totalPages: 1,
+      },
+    });
+  }
 }
 
 export async function POST(request: NextRequest) {

@@ -53,6 +53,7 @@ import { DnaPanel } from "@/components/dna/Panel";
 import { DnaSectionLabel } from "@/components/dna/SectionLabel";
 import { DnaStatRow } from "@/components/dna/StatRow";
 import { DnaTag } from "@/components/dna/Tag";
+import { DnaButton } from "@/components/dna/Button";
 import { DnaCommunityBuildCard } from "@/components/dna/CommunityBuildCard";
 import { DnaSegmented } from "@/components/dna/Segmented";
 import { NAVIGATION } from "@/lib/constants";
@@ -98,6 +99,13 @@ type CommunityBuildListItem = {
   authorImage: string | null;
   votedByMe: boolean;
   editableByMe: boolean;
+};
+
+type CommunityBuildPagination = {
+  page: number;
+  pageSize: number;
+  total: number;
+  totalPages: number;
 };
 
 // ---------------------------------------------------------------------------
@@ -154,6 +162,8 @@ const ELEMENT_RGB: Record<string, string> = {
   Light: "251, 191, 36",
   Dark: "129, 140, 248",
 };
+
+const COMMUNITY_BUILDS_PAGE_SIZE = 6;
 
 type PortraitType = "gacha" | "head" | "icon" | "bust" | "phantom" | "charpiece";
 
@@ -984,19 +994,40 @@ function CommunityBuildsSection({
   characterElement: string;
 }) {
   const [sort, setSort] = useState<"top" | "recent">("top");
+  const [page, setPage] = useState(1);
   const [builds, setBuilds] = useState<CommunityBuildListItem[]>([]);
+  const [pagination, setPagination] = useState<CommunityBuildPagination>({
+    page: 1,
+    pageSize: COMMUNITY_BUILDS_PAGE_SIZE,
+    total: 0,
+    totalPages: 1,
+  });
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState<string | null>(null);
 
   useEffect(() => {
     let cancelled = false;
-    const params = new URLSearchParams({ characterId, sort, limit: "20" });
+    const params = new URLSearchParams({
+      characterId,
+      element: characterElement,
+      sort,
+      page: `${page}`,
+      pageSize: `${COMMUNITY_BUILDS_PAGE_SIZE}`,
+    });
     fetch(`/api/builds?${params.toString()}`)
       .then((response) => response.json())
       .then((data) => {
         if (cancelled) return;
         const rows = (data.builds ?? []) as CommunityBuildListItem[];
-        setBuilds(rows.filter((build) => !build.element || build.element === characterElement));
+        const nextPagination = (data.pagination ?? {
+          page,
+          pageSize: COMMUNITY_BUILDS_PAGE_SIZE,
+          total: rows.length,
+          totalPages: 1,
+        }) as CommunityBuildPagination;
+        setBuilds(rows);
+        setPagination(nextPagination);
+        if (nextPagination.page !== page) setPage(nextPagination.page);
         setMessage(null);
       })
       .catch(() => {
@@ -1009,7 +1040,7 @@ function CommunityBuildsSection({
     return () => {
       cancelled = true;
     };
-  }, [characterElement, characterId, sort]);
+  }, [characterElement, characterId, page, sort]);
 
   async function toggleVote(build: CommunityBuildListItem, next: boolean) {
     setBuilds((current) =>
@@ -1051,7 +1082,11 @@ function CommunityBuildsSection({
         <div className="flex flex-wrap items-center gap-2">
           <DnaSegmented
             value={sort}
-            onChange={(value) => setSort(value as "top" | "recent")}
+            onChange={(value) => {
+              setLoading(true);
+              setSort(value as "top" | "recent");
+              setPage(1);
+            }}
             options={[
               { value: "top", label: "Top" },
               { value: "recent", label: "Récent" },
@@ -1092,6 +1127,36 @@ function CommunityBuildsSection({
           ))
         )}
       </div>
+
+      {!loading && pagination.totalPages > 1 ? (
+        <div className="mt-4 flex flex-col gap-2 border-t border-white/10 pt-3 sm:flex-row sm:items-center sm:justify-between">
+          <p className="font-sans text-xs text-muted">
+            Page {pagination.page}/{pagination.totalPages} · {pagination.total} builds
+          </p>
+          <div className="flex items-center gap-2">
+            <DnaButton
+              className="px-3 py-1.5 text-xs"
+              disabled={pagination.page <= 1}
+              onClick={() => {
+                setLoading(true);
+                setPage((current) => Math.max(1, current - 1));
+              }}
+            >
+              Précédent
+            </DnaButton>
+            <DnaButton
+              className="px-3 py-1.5 text-xs"
+              disabled={pagination.page >= pagination.totalPages}
+              onClick={() => {
+                setLoading(true);
+                setPage((current) => Math.min(pagination.totalPages, current + 1));
+              }}
+            >
+              Suivant
+            </DnaButton>
+          </div>
+        </div>
+      ) : null}
     </section>
   );
 }

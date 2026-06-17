@@ -8,6 +8,7 @@ import {
 } from "@/lib/constants";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import MobileMenu from "@/components/MobileMenu";
+import { DiscordAuthButton } from "@/components/auth/DiscordAuthButton";
 import { DnaNouveau } from "@/components/dna/Badges";
 
 /** En-tête de site — design system DNA (marque Cormorant, nav Cinzel, liseré doré). */
@@ -51,10 +52,10 @@ export default async function SiteHeader({ active }: { active?: string }) {
             </div>
           </Link>
 
-          <MobileMenu />
+          <MobileMenu authSlot={<DiscordAuthButton compact />} />
 
-          <div className="hidden items-center gap-6 md:flex">
-            <nav className="flex items-center gap-7">
+          <div className="hidden items-center gap-4 md:flex xl:gap-6">
+            <nav className="flex items-center gap-4 xl:gap-7">
               {NAV_LINKS.map((link) => {
                 const isActive = link.href === active;
                 return (
@@ -77,6 +78,7 @@ export default async function SiteHeader({ active }: { active?: string }) {
               })}
             </nav>
             <LanguageSwitcher />
+            <DiscordAuthButton compact />
           </div>
         </div>
       </div>

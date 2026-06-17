@@ -4,7 +4,6 @@ import SiteFooter from "@/components/site/SiteFooter";
 import { AdminDashboardClient } from "@/components/admin/AdminDashboardClient";
 import { DnaPanel } from "@/components/dna/Panel";
 import { DnaSectionLabel } from "@/components/dna/SectionLabel";
-import { DiscordAuthButton } from "@/components/auth/DiscordAuthButton";
 import { getCurrentUser } from "@/lib/auth/session";
 
 export const dynamic = "force-dynamic";
@@ -21,12 +20,11 @@ export default async function AdminPage() {
     <main className="min-h-screen bg-ink text-parch">
       <SiteHeader />
       <section className="container mx-auto px-4 py-6 md:px-6">
-        <div className="mb-4 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+        <div className="mb-4">
           <div>
             <DnaSectionLabel>Administration</DnaSectionLabel>
             <h1 className="mt-2 font-display text-3xl leading-tight text-parch md:text-4xl">Builds communautaires</h1>
           </div>
-          <DiscordAuthButton />
         </div>
 
         {!user ? (

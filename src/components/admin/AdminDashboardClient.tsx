@@ -1,10 +1,19 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { DnaButton } from "@/components/dna/Button";
 import { DnaPanel } from "@/components/dna/Panel";
 import { DnaSectionLabel } from "@/components/dna/SectionLabel";
 import { DnaTag } from "@/components/dna/Tag";
+
+const ADMIN_PAGE_SIZE = 12;
+
+type AdminPagination = {
+  page: number;
+  pageSize: number;
+  total: number;
+  totalPages: number;
+};
 
 type AdminBuild = {
   id: string;
@@ -39,17 +48,41 @@ type AdminUser = {
   createdAt: string;
 };
 
+const EMPTY_PAGINATION: AdminPagination = {
+  page: 1,
+  pageSize: ADMIN_PAGE_SIZE,
+  total: 0,
+  totalPages: 1,
+};
+
 export function AdminDashboardClient() {
   const [builds, setBuilds] = useState<AdminBuild[]>([]);
   const [reports, setReports] = useState<AdminReport[]>([]);
   const [users, setUsers] = useState<AdminUser[]>([]);
+  const [buildPage, setBuildPage] = useState(1);
+  const [reportPage, setReportPage] = useState(1);
+  const [userPage, setUserPage] = useState(1);
+  const [buildPagination, setBuildPagination] = useState<AdminPagination>(EMPTY_PAGINATION);
+  const [reportPagination, setReportPagination] = useState<AdminPagination>(EMPTY_PAGINATION);
+  const [userPagination, setUserPagination] = useState<AdminPagination>(EMPTY_PAGINATION);
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState<string | null>(null);
 
-  async function load() {
+  const load = useCallback(async () => {
+    const buildParams = new URLSearchParams({
+      buildPage: `${buildPage}`,
+      buildPageSize: `${ADMIN_PAGE_SIZE}`,
+      reportPage: `${reportPage}`,
+      reportPageSize: `${ADMIN_PAGE_SIZE}`,
+    });
+    const userParams = new URLSearchParams({
+      page: `${userPage}`,
+      pageSize: `${ADMIN_PAGE_SIZE}`,
+    });
+
     const [buildsResponse, usersResponse] = await Promise.all([
-      fetch("/api/admin/builds"),
-      fetch("/api/admin/users"),
+      fetch(`/api/admin/builds?${buildParams.toString()}`),
+      fetch(`/api/admin/users?${userParams.toString()}`),
     ]);
 
     if (!buildsResponse.ok || !usersResponse.ok) {
@@ -62,14 +95,17 @@ export function AdminDashboardClient() {
     setBuilds(buildsData.builds ?? []);
     setReports(buildsData.reports ?? []);
     setUsers(usersData.users ?? []);
+    setBuildPagination(buildsData.pagination?.builds ?? EMPTY_PAGINATION);
+    setReportPagination(buildsData.pagination?.reports ?? EMPTY_PAGINATION);
+    setUserPagination(usersData.pagination ?? EMPTY_PAGINATION);
     setLoading(false);
     setMessage(null);
-  }
+  }, [buildPage, reportPage, userPage]);
 
   useEffect(() => {
     const frame = requestAnimationFrame(() => void load());
     return () => cancelAnimationFrame(frame);
-  }, []);
+  }, [load]);
 
   async function patchBuild(body: Record<string, unknown>) {
     const response = await fetch("/api/admin/builds", {
@@ -97,12 +133,21 @@ export function AdminDashboardClient() {
 
   return (
     <div className="grid gap-4 xl:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
+      <DnaPanel className="p-4 xl:col-span-2">
+        <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+          <DnaSectionLabel>Synthèse</DnaSectionLabel>
+          {message ? <span className="font-sans text-xs text-gold">{message}</span> : null}
+        </div>
+        <div className="mt-3 grid gap-2 sm:grid-cols-3">
+          <AdminMetric label="Builds" value={buildPagination.total} />
+          <AdminMetric label="Signalements" value={reportPagination.total} />
+          <AdminMetric label="Utilisateurs" value={userPagination.total} />
+        </div>
+      </DnaPanel>
+
       <div className="flex flex-col gap-4">
         <DnaPanel className="p-4">
-          <div className="flex items-center justify-between gap-3">
-            <DnaSectionLabel>Signalements</DnaSectionLabel>
-            {message ? <span className="font-sans text-xs text-gold">{message}</span> : null}
-          </div>
+          <DnaSectionLabel>Signalements</DnaSectionLabel>
           <div className="mt-3 flex flex-col gap-2">
             {reports.length === 0 ? (
               <p className="font-sans text-sm text-muted">Aucun signalement.</p>
@@ -130,63 +175,117 @@ export function AdminDashboardClient() {
               ))
             )}
           </div>
+          <AdminPager pagination={reportPagination} onChange={setReportPage} />
         </DnaPanel>
 
         <DnaPanel className="p-4">
-          <DnaSectionLabel>Builds récents</DnaSectionLabel>
+          <DnaSectionLabel>Builds</DnaSectionLabel>
           <div className="mt-3 flex flex-col gap-2">
-            {builds.map((build) => (
-              <div key={build.id} className="border border-white/10 bg-ink/50 p-3">
-                <div className="flex flex-wrap items-center gap-2">
-                  <p className="min-w-0 flex-1 truncate font-sans text-sm text-parch">{build.title}</p>
-                  <DnaTag tone={build.hidden ? "crimson" : "gold"}>{build.hidden ? "Masqué" : "Visible"}</DnaTag>
+            {builds.length === 0 ? (
+              <p className="font-sans text-sm text-muted">Aucun build.</p>
+            ) : (
+              builds.map((build) => (
+                <div key={build.id} className="border border-white/10 bg-ink/50 p-3">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <p className="min-w-0 flex-1 truncate font-sans text-sm text-parch">{build.title}</p>
+                    <DnaTag tone={build.hidden ? "crimson" : "gold"}>{build.hidden ? "Masqué" : "Visible"}</DnaTag>
+                  </div>
+                  <p className="mt-1 font-sans text-xs text-muted">
+                    {build.characterId} {build.element ? `(${build.element})` : ""} · {build.voteCount} votes · {build.authorName ?? "Discord"}
+                  </p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    <DnaButton className="px-3 py-1.5 text-xs" onClick={() => void patchBuild({ buildId: build.id, hidden: !build.hidden })}>
+                      {build.hidden ? "Rendre visible" : "Masquer"}
+                    </DnaButton>
+                    <DnaButton className="px-3 py-1.5 text-xs" onClick={() => void patchBuild({ buildId: build.id, deleteBuild: true })}>
+                      Supprimer
+                    </DnaButton>
+                    <DnaButton className="px-3 py-1.5 text-xs" onClick={() => void patchUser({ userId: build.authorId, banned: !build.authorBanned })}>
+                      {build.authorBanned ? "Débannir auteur" : "Bannir auteur"}
+                    </DnaButton>
+                  </div>
                 </div>
-                <p className="mt-1 font-sans text-xs text-muted">
-                  {build.characterId} {build.element ? `(${build.element})` : ""} · {build.voteCount} votes · {build.authorName ?? "Discord"}
-                </p>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  <DnaButton className="px-3 py-1.5 text-xs" onClick={() => void patchBuild({ buildId: build.id, hidden: !build.hidden })}>
-                    {build.hidden ? "Rendre visible" : "Masquer"}
-                  </DnaButton>
-                  <DnaButton className="px-3 py-1.5 text-xs" onClick={() => void patchBuild({ buildId: build.id, deleteBuild: true })}>
-                    Supprimer
-                  </DnaButton>
-                  <DnaButton className="px-3 py-1.5 text-xs" onClick={() => void patchUser({ userId: build.authorId, banned: !build.authorBanned })}>
-                    {build.authorBanned ? "Débannir auteur" : "Bannir auteur"}
-                  </DnaButton>
-                </div>
-              </div>
-            ))}
+              ))
+            )}
           </div>
+          <AdminPager pagination={buildPagination} onChange={setBuildPage} />
         </DnaPanel>
       </div>
 
       <DnaPanel className="p-4">
         <DnaSectionLabel>Utilisateurs</DnaSectionLabel>
         <div className="mt-3 flex flex-col gap-2">
-          {users.map((user) => (
-            <div key={user.id} className="border border-white/10 bg-ink/50 p-3">
-              <div className="flex flex-wrap items-center gap-2">
-                <p className="min-w-0 flex-1 truncate font-sans text-sm text-parch">{user.name ?? user.email ?? user.id}</p>
-                <DnaTag tone={user.role === "admin" ? "gold" : "crimson"}>{user.role}</DnaTag>
-                {user.banned ? <DnaTag tone="crimson">Banni</DnaTag> : null}
+          {users.length === 0 ? (
+            <p className="font-sans text-sm text-muted">Aucun utilisateur.</p>
+          ) : (
+            users.map((user) => (
+              <div key={user.id} className="border border-white/10 bg-ink/50 p-3">
+                <div className="flex flex-wrap items-center gap-2">
+                  <p className="min-w-0 flex-1 truncate font-sans text-sm text-parch">{user.name ?? user.email ?? user.id}</p>
+                  <DnaTag tone={user.role === "admin" ? "gold" : "crimson"}>{user.role}</DnaTag>
+                  {user.banned ? <DnaTag tone="crimson">Banni</DnaTag> : null}
+                </div>
+                <p className="mt-1 font-sans text-xs text-muted-2">{user.discordId ?? "discord id inconnu"}</p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  <DnaButton className="px-3 py-1.5 text-xs" onClick={() => void patchUser({ userId: user.id, banned: !user.banned })}>
+                    {user.banned ? "Débannir" : "Bannir"}
+                  </DnaButton>
+                  <DnaButton
+                    className="px-3 py-1.5 text-xs"
+                    onClick={() => void patchUser({ userId: user.id, role: user.role === "admin" ? "user" : "admin" })}
+                  >
+                    {user.role === "admin" ? "Rétrograder" : "Promouvoir"}
+                  </DnaButton>
+                </div>
               </div>
-              <p className="mt-1 font-sans text-xs text-muted-2">{user.discordId ?? "discord id inconnu"}</p>
-              <div className="mt-3 flex flex-wrap gap-2">
-                <DnaButton className="px-3 py-1.5 text-xs" onClick={() => void patchUser({ userId: user.id, banned: !user.banned })}>
-                  {user.banned ? "Débannir" : "Bannir"}
-                </DnaButton>
-                <DnaButton
-                  className="px-3 py-1.5 text-xs"
-                  onClick={() => void patchUser({ userId: user.id, role: user.role === "admin" ? "user" : "admin" })}
-                >
-                  {user.role === "admin" ? "Rétrograder" : "Promouvoir"}
-                </DnaButton>
-              </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
+        <AdminPager pagination={userPagination} onChange={setUserPage} />
       </DnaPanel>
+    </div>
+  );
+}
+
+function AdminMetric({ label, value }: { label: string; value: number }) {
+  return (
+    <div className="border border-white/10 bg-ink/50 p-3">
+      <p className="font-caps text-[0.58rem] uppercase tracking-[0.18em] text-muted">{label}</p>
+      <p className="mt-1 font-display text-2xl leading-none text-gold-bright">{value}</p>
+    </div>
+  );
+}
+
+function AdminPager({
+  pagination,
+  onChange,
+}: {
+  pagination: AdminPagination;
+  onChange: (page: number) => void;
+}) {
+  if (pagination.totalPages <= 1) return null;
+
+  return (
+    <div className="mt-3 flex flex-col gap-2 border-t border-white/10 pt-3 sm:flex-row sm:items-center sm:justify-between">
+      <p className="font-sans text-xs text-muted">
+        Page {pagination.page}/{pagination.totalPages} · {pagination.total} éléments
+      </p>
+      <div className="flex items-center gap-2">
+        <DnaButton
+          className="px-3 py-1.5 text-xs"
+          disabled={pagination.page <= 1}
+          onClick={() => onChange(Math.max(1, pagination.page - 1))}
+        >
+          Précédent
+        </DnaButton>
+        <DnaButton
+          className="px-3 py-1.5 text-xs"
+          disabled={pagination.page >= pagination.totalPages}
+          onClick={() => onChange(Math.min(pagination.totalPages, pagination.page + 1))}
+        >
+          Suivant
+        </DnaButton>
+      </div>
     </div>
   );
 }

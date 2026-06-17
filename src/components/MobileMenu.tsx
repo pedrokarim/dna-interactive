@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import { useTranslations } from "next-intl";
@@ -37,7 +38,7 @@ function subscribeMounted() {
   return () => undefined;
 }
 
-export default function MobileMenu() {
+export default function MobileMenu({ authSlot }: { authSlot?: ReactNode }) {
   const tNav = useTranslations("nav");
   const openLabel = "Menu";
   const closeLabel = "Fermer";
@@ -143,7 +144,8 @@ export default function MobileMenu() {
           </ul>
         </nav>
 
-        <div className="border-t border-gold/20 px-4 py-4">
+        <div className="flex flex-col gap-3 border-t border-gold/20 px-4 py-4">
+          {authSlot ? <div className="min-w-0">{authSlot}</div> : null}
           <LanguageSwitcher direction="up" align="start" />
         </div>
       </aside>

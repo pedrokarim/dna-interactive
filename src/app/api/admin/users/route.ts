@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { desc, eq } from "drizzle-orm";
+import { count, desc, eq } from "drizzle-orm";
 import { z } from "zod";
 import { getDb, schema } from "@/db";
 import { getCurrentUser } from "@/lib/auth/session";
@@ -12,6 +12,18 @@ const patchSchema = z.object({
   banned: z.boolean().optional(),
 });
 
+function clampPage(value: string | null): number {
+  const parsed = Number(value ?? 1);
+  if (!Number.isFinite(parsed)) return 1;
+  return Math.max(Math.trunc(parsed), 1);
+}
+
+function clampPageSize(value: string | null): number {
+  const parsed = Number(value ?? 20);
+  if (!Number.isFinite(parsed)) return 20;
+  return Math.min(Math.max(Math.trunc(parsed), 5), 50);
+}
+
 async function requireAdminResponse() {
   const user = await getCurrentUser();
   if (!user) return { response: NextResponse.json({ error: "Connexion requise." }, { status: 401 }) };
@@ -19,11 +31,19 @@ async function requireAdminResponse() {
   return { user };
 }
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   const guard = await requireAdminResponse();
   if ("response" in guard) return guard.response;
 
-  const users = await getDb()
+  const db = getDb();
+  const url = new URL(request.url);
+  const pageSize = clampPageSize(url.searchParams.get("pageSize"));
+  const requestedPage = clampPage(url.searchParams.get("page"));
+  const [{ value: total = 0 } = { value: 0 }] = await db.select({ value: count() }).from(schema.users);
+  const totalPages = Math.max(1, Math.ceil(total / pageSize));
+  const page = Math.min(requestedPage, totalPages);
+
+  const users = await db
     .select({
       id: schema.users.id,
       name: schema.users.name,
@@ -37,9 +57,10 @@ export async function GET() {
     })
     .from(schema.users)
     .orderBy(desc(schema.users.createdAt))
-    .limit(120);
+    .limit(pageSize)
+    .offset((page - 1) * pageSize);
 
-  return NextResponse.json({ users });
+  return NextResponse.json({ users, pagination: { page, pageSize, total, totalPages } });
 }
 
 export async function PATCH(request: NextRequest) {
