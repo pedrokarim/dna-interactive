@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { count, desc, eq } from "drizzle-orm";
 import { z } from "zod";
 import { getDb, schema } from "@/db";
+import { isConfiguredAdminDiscordId } from "@/lib/auth/admins";
 import { getCurrentUser } from "@/lib/auth/session";
 
 export const dynamic = "force-dynamic";
@@ -60,7 +61,13 @@ export async function GET(request: NextRequest) {
     .limit(pageSize)
     .offset((page - 1) * pageSize);
 
-  return NextResponse.json({ users, pagination: { page, pageSize, total, totalPages } });
+  return NextResponse.json({
+    users: users.map((user) => ({
+      ...user,
+      configuredAdmin: isConfiguredAdminDiscordId(user.discordId),
+    })),
+    pagination: { page, pageSize, total, totalPages },
+  });
 }
 
 export async function PATCH(request: NextRequest) {
@@ -74,8 +81,30 @@ export async function PATCH(request: NextRequest) {
   if (parsed.data.userId === guard.user.id && parsed.data.banned) {
     return NextResponse.json({ error: "Impossible de bannir ton propre compte." }, { status: 400 });
   }
+  if (parsed.data.userId === guard.user.id && parsed.data.role === "user") {
+    return NextResponse.json({ error: "Impossible de retirer ton propre accès admin." }, { status: 400 });
+  }
 
-  await getDb()
+  const db = getDb();
+  if (parsed.data.role === "user" || parsed.data.banned === true) {
+    const [target] = await db
+      .select({ discordId: schema.users.discordId })
+      .from(schema.users)
+      .where(eq(schema.users.id, parsed.data.userId))
+      .limit(1);
+
+    if (!target) {
+      return NextResponse.json({ error: "Utilisateur introuvable." }, { status: 404 });
+    }
+    if (isConfiguredAdminDiscordId(target.discordId)) {
+      return NextResponse.json(
+        { error: "Cet admin est défini par ADMIN_DISCORD_IDS et ne peut pas être rétrogradé ou banni depuis l'UI." },
+        { status: 400 },
+      );
+    }
+  }
+
+  await db
     .update(schema.users)
     .set({
       ...(parsed.data.role ? { role: parsed.data.role } : {}),

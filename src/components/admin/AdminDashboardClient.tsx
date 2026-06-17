@@ -44,6 +44,7 @@ type AdminUser = {
   email: string | null;
   discordId: string | null;
   role: "user" | "admin";
+  configuredAdmin: boolean;
   banned: boolean;
   createdAt: string;
 };
@@ -223,15 +224,21 @@ export function AdminDashboardClient() {
                 <div className="flex flex-wrap items-center gap-2">
                   <p className="min-w-0 flex-1 truncate font-sans text-sm text-parch">{user.name ?? user.email ?? user.id}</p>
                   <DnaTag tone={user.role === "admin" ? "gold" : "crimson"}>{user.role}</DnaTag>
+                  {user.configuredAdmin ? <DnaTag tone="gold">Env</DnaTag> : null}
                   {user.banned ? <DnaTag tone="crimson">Banni</DnaTag> : null}
                 </div>
                 <p className="mt-1 font-sans text-xs text-muted-2">{user.discordId ?? "discord id inconnu"}</p>
                 <div className="mt-3 flex flex-wrap gap-2">
-                  <DnaButton className="px-3 py-1.5 text-xs" onClick={() => void patchUser({ userId: user.id, banned: !user.banned })}>
+                  <DnaButton
+                    className="px-3 py-1.5 text-xs"
+                    disabled={user.configuredAdmin && !user.banned}
+                    onClick={() => void patchUser({ userId: user.id, banned: !user.banned })}
+                  >
                     {user.banned ? "Débannir" : "Bannir"}
                   </DnaButton>
                   <DnaButton
                     className="px-3 py-1.5 text-xs"
+                    disabled={user.configuredAdmin && user.role === "admin"}
                     onClick={() => void patchUser({ userId: user.id, role: user.role === "admin" ? "user" : "admin" })}
                   >
                     {user.role === "admin" ? "Rétrograder" : "Promouvoir"}
