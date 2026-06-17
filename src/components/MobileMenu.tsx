@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
-import { Menu, X, Map, Gift, Info, HelpCircle, Mail, Boxes, Users, ScrollText } from "lucide-react";
+import { Menu, X, Map, Gift, Info, HelpCircle, Mail, Boxes, Users, ScrollText, Hammer } from "lucide-react";
 import { NAV_LINKS, NAVIGATION, SITE_CONFIG, ASSETS_PATHS } from "@/lib/constants";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { DnaNouveau } from "@/components/dna/Badges";
@@ -13,6 +13,7 @@ const navIcons = {
   [NAVIGATION.map]: Map,
   [NAVIGATION.items]: Boxes,
   [NAVIGATION.characters]: Users,
+  [NAVIGATION.builder]: Hammer,
   [NAVIGATION.commissions]: ScrollText,
   [NAVIGATION.codes]: Gift,
   [NAVIGATION.about]: Info,
@@ -24,6 +25,7 @@ const navTranslationKeys: Record<string, string> = {
   [NAVIGATION.map]: "map",
   [NAVIGATION.items]: "items",
   [NAVIGATION.characters]: "characters",
+  [NAVIGATION.builder]: "builder",
   [NAVIGATION.commissions]: "commissions",
   [NAVIGATION.codes]: "codes",
   [NAVIGATION.about]: "about",
@@ -31,22 +33,17 @@ const navTranslationKeys: Record<string, string> = {
   [NAVIGATION.contact]: "contact",
 };
 
+function subscribeMounted() {
+  return () => undefined;
+}
+
 export default function MobileMenu() {
   const tNav = useTranslations("nav");
   const openLabel = "Menu";
   const closeLabel = "Fermer";
   const [isOpen, setIsOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  const mounted = useSyncExternalStore(subscribeMounted, () => true, () => false);
   const pathname = usePathname();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  // Close on route change
-  useEffect(() => {
-    setIsOpen(false);
-  }, [pathname]);
 
   // Close on escape key + body scroll lock
   useEffect(() => {
@@ -127,6 +124,7 @@ export default function MobileMenu() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
+                    onClick={() => setIsOpen(false)}
                     className={`flex items-center gap-3 rounded-sm px-3 py-3 text-base transition-colors ${
                       active
                         ? "bg-gold/15 text-gold border border-gold/30"

@@ -19,6 +19,7 @@ export default async function SiteHeader({ active }: { active?: string }) {
     [NAVIGATION.map]: tNav("map"),
     [NAVIGATION.items]: tNav("items"),
     [NAVIGATION.characters]: tNav("characters"),
+    [NAVIGATION.builder]: tNav("builder"),
     [NAVIGATION.commissions]: tNav("commissions"),
     [NAVIGATION.codes]: tNav("codes"),
     [NAVIGATION.about]: tNav("about"),
