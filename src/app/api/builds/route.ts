@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { and, count, desc, eq, inArray } from "drizzle-orm";
 import { getDb, schema } from "@/db";
 import { getCurrentUser } from "@/lib/auth/session";
+import { checkRateLimit } from "@/lib/rate-limit";
 import {
   createBuildSchema,
   validateBuildReferences,
@@ -84,6 +85,13 @@ export async function POST(request: NextRequest) {
   const user = await getCurrentUser();
   if (!user) {
     return NextResponse.json({ error: "Connexion requise." }, { status: 401 });
+  }
+  const rate = checkRateLimit(`build:create:${user.id}`, 6, 60 * 60 * 1000);
+  if (!rate.ok) {
+    return NextResponse.json(
+      { error: "Trop de publications. Réessaie plus tard." },
+      { status: 429, headers: { "Retry-After": `${rate.retryAfter}` } },
+    );
   }
 
   const body = await request.json();

@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { eq, sql } from "drizzle-orm";
 import { getDb, schema } from "@/db";
 import { getCurrentUser } from "@/lib/auth/session";
+import { checkRateLimit } from "@/lib/rate-limit";
 
 export const dynamic = "force-dynamic";
 
@@ -19,6 +20,13 @@ async function getPublicBuild(id: string) {
 export async function POST(_request: Request, { params }: RouteContext) {
   const user = await getCurrentUser();
   if (!user) return NextResponse.json({ error: "Connexion requise." }, { status: 401 });
+  const rate = checkRateLimit(`build:vote:${user.id}`, 90, 60 * 1000);
+  if (!rate.ok) {
+    return NextResponse.json(
+      { error: "Trop de votes. Réessaie plus tard." },
+      { status: 429, headers: { "Retry-After": `${rate.retryAfter}` } },
+    );
+  }
 
   const { id } = await params;
   const build = await getPublicBuild(id);
@@ -49,6 +57,13 @@ export async function POST(_request: Request, { params }: RouteContext) {
 export async function DELETE(_request: Request, { params }: RouteContext) {
   const user = await getCurrentUser();
   if (!user) return NextResponse.json({ error: "Connexion requise." }, { status: 401 });
+  const rate = checkRateLimit(`build:vote:${user.id}`, 90, 60 * 1000);
+  if (!rate.ok) {
+    return NextResponse.json(
+      { error: "Trop de votes. Réessaie plus tard." },
+      { status: 429, headers: { "Retry-After": `${rate.retryAfter}` } },
+    );
+  }
 
   const { id } = await params;
   const deleted = await getDb()

@@ -13,6 +13,7 @@
     "extract:characters:site": "bun run research_data/extract-characters.ts",
     "extract:genimons:site": "bun run research_data/extract-genimons.ts",
     "extract:skills:site": "bun run research_data/extract-skills.ts",
+    "db:push": "drizzle-kit push",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },

@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { and, eq } from "drizzle-orm";
 import { getDb, schema } from "@/db";
 import { getCurrentUser } from "@/lib/auth/session";
+import { checkRateLimit } from "@/lib/rate-limit";
 import {
   draftElementKey,
   draftSchema,
@@ -47,6 +48,13 @@ export async function GET(request: NextRequest) {
 export async function PUT(request: NextRequest) {
   const user = await getCurrentUser();
   if (!user) return NextResponse.json({ error: "Connexion requise." }, { status: 401 });
+  const rate = checkRateLimit(`build:draft:${user.id}`, 120, 60 * 1000);
+  if (!rate.ok) {
+    return NextResponse.json(
+      { error: "Trop de sauvegardes. Réessaie plus tard." },
+      { status: 429, headers: { "Retry-After": `${rate.retryAfter}` } },
+    );
+  }
 
   const parsed = draftSchema.safeParse(await request.json());
   if (!parsed.success) {
