@@ -53,6 +53,9 @@ import { DnaPanel } from "@/components/dna/Panel";
 import { DnaSectionLabel } from "@/components/dna/SectionLabel";
 import { DnaStatRow } from "@/components/dna/StatRow";
 import { DnaTag } from "@/components/dna/Tag";
+import { DnaCommunityBuildCard } from "@/components/dna/CommunityBuildCard";
+import { DnaSegmented } from "@/components/dna/Segmented";
+import { NAVIGATION } from "@/lib/constants";
 import type {
   CharacterBuild,
   BuildDemonWedgeSlot,
@@ -79,6 +82,22 @@ type CharacterDetailClientProps = {
   levelUpCurves: LevelUpCurves;
   builds?: CharacterBuild[];
   skillSet?: CharacterSkillSet | null;
+};
+
+type CommunityBuildListItem = {
+  id: string;
+  userId: string;
+  characterId: string;
+  element: string | null;
+  title: string;
+  note: string | null;
+  voteCount: number;
+  createdAt: string;
+  updatedAt: string;
+  authorName: string | null;
+  authorImage: string | null;
+  votedByMe: boolean;
+  editableByMe: boolean;
 };
 
 // ---------------------------------------------------------------------------
@@ -957,6 +976,126 @@ function QuickBuildAccordion({
   );
 }
 
+function CommunityBuildsSection({
+  characterId,
+  characterElement,
+}: {
+  characterId: string;
+  characterElement: string;
+}) {
+  const [sort, setSort] = useState<"top" | "recent">("top");
+  const [builds, setBuilds] = useState<CommunityBuildListItem[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [message, setMessage] = useState<string | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    const params = new URLSearchParams({ characterId, sort, limit: "20" });
+    fetch(`/api/builds?${params.toString()}`)
+      .then((response) => response.json())
+      .then((data) => {
+        if (cancelled) return;
+        const rows = (data.builds ?? []) as CommunityBuildListItem[];
+        setBuilds(rows.filter((build) => !build.element || build.element === characterElement));
+        setMessage(null);
+      })
+      .catch(() => {
+        if (!cancelled) setMessage("Impossible de charger les alternatives communauté.");
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [characterElement, characterId, sort]);
+
+  async function toggleVote(build: CommunityBuildListItem, next: boolean) {
+    setBuilds((current) =>
+      current.map((item) =>
+        item.id === build.id
+          ? {
+              ...item,
+              votedByMe: next,
+              voteCount: Math.max(item.voteCount + (next ? 1 : -1), 0),
+            }
+          : item,
+      ),
+    );
+
+    const response = await fetch(`/api/builds/${build.id}/vote`, { method: next ? "POST" : "DELETE" });
+    if (!response.ok) {
+      setBuilds((current) => current.map((item) => (item.id === build.id ? build : item)));
+      setMessage("Connexion Discord requise pour voter.");
+      return;
+    }
+
+    const data = await response.json();
+    setBuilds((current) =>
+      current.map((item) =>
+        item.id === build.id
+          ? { ...item, votedByMe: data.voted, voteCount: data.voteCount }
+          : item,
+      ),
+    );
+  }
+
+  return (
+    <section className="border border-line/25 bg-panel/85 p-3 backdrop-blur-sm md:p-5">
+      <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+        <div>
+          <h2 className="text-base font-semibold text-parch md:text-lg">Alternatives communauté</h2>
+          <p className="mt-1 font-sans text-xs text-muted">Builds publiés par les joueurs.</p>
+        </div>
+        <div className="flex flex-wrap items-center gap-2">
+          <DnaSegmented
+            value={sort}
+            onChange={(value) => setSort(value as "top" | "recent")}
+            options={[
+              { value: "top", label: "Top" },
+              { value: "recent", label: "Récent" },
+            ]}
+          />
+          <Link
+            href={NAVIGATION.builder}
+            className="inline-flex items-center justify-center border border-gold/40 bg-gold/10 px-3 py-2 font-caps text-[0.62rem] uppercase tracking-[0.16em] text-gold transition-colors hover:border-gold hover:text-gold-bright"
+          >
+            Proposer
+          </Link>
+        </div>
+      </div>
+
+      {message ? <p className="mt-3 font-sans text-sm text-gold">{message}</p> : null}
+
+      <div className="mt-4 flex flex-col gap-2">
+        {loading ? (
+          <p className="font-sans text-sm text-muted">Chargement...</p>
+        ) : builds.length === 0 ? (
+          <p className="font-sans text-sm text-muted">Aucune alternative communauté pour cet élément.</p>
+        ) : (
+          builds.map((build, index) => (
+            <DnaCommunityBuildCard
+              key={build.id}
+              title={build.title}
+              author={{ name: build.authorName ?? "Discord", avatar: build.authorImage }}
+              date={new Date(build.updatedAt ?? build.createdAt).toLocaleDateString("fr-FR", {
+                day: "2-digit",
+                month: "short",
+                year: "numeric",
+              })}
+              element={build.element as ElementKey | null}
+              rank={sort === "top" ? index + 1 : undefined}
+              vote={{ count: build.voteCount, voted: build.votedByMe }}
+              onVote={(next) => void toggleVote(build, next)}
+            />
+          ))
+        )}
+      </div>
+    </section>
+  );
+}
+
 function BuildTabContent({
   builds,
   character,
@@ -978,12 +1117,15 @@ function BuildTabContent({
 
   if (builds.length === 0) {
     return (
-      <section className="border border-line/25 bg-panel/85 backdrop-blur-sm p-5 md:p-8 text-center">
-        <Swords className="mx-auto h-10 w-10 text-muted-2" />
-        <p className="mt-3 text-sm text-muted">
-          {t('noBuildAvailable')}
-        </p>
-      </section>
+      <div className="space-y-3 md:space-y-5">
+        <section className="border border-line/25 bg-panel/85 p-5 text-center backdrop-blur-sm md:p-8">
+          <Swords className="mx-auto h-10 w-10 text-muted-2" />
+          <p className="mt-3 text-sm text-muted">
+            {t('noBuildAvailable')}
+          </p>
+        </section>
+        <CommunityBuildsSection characterId={character.id} characterElement={characterElement} />
+      </div>
     );
   }
 
@@ -1470,6 +1612,8 @@ function BuildTabContent({
           </p>
         </section>
       )}
+
+      <CommunityBuildsSection characterId={character.id} characterElement={characterElement} />
     </div>
   );
 }
@@ -1642,7 +1786,8 @@ export default function CharacterDetailClient({
 
   // Reset au changement de portrait / de personnage
   useEffect(() => {
-    resetRenderZoom();
+    const frame = requestAnimationFrame(() => resetRenderZoom());
+    return () => cancelAnimationFrame(frame);
   }, [activePortrait, character.id, resetRenderZoom]);
 
   // Molette → zoom vers le curseur (listener natif non-passif)
