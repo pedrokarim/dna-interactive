@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { BuilderCharacterPicker } from "@/components/builder/CharacterPicker";
 import { DnaButton } from "@/components/dna/Button";
 import { DnaConsonanceEditor } from "@/components/dna/ConsonanceEditor";
 import { DnaDemonWedgeEditor } from "@/components/dna/DemonWedgeEditor";
@@ -99,6 +100,12 @@ export function CommunityBuildBuilderClient({
   const accentHex = activeElement ? ELEMENTS[activeElement].hex : "#c2a86a";
   const consonanceWeapon = activeElement ? selectedCharacter?.consonanceByElement[activeElement] ?? null : null;
   const key = selectedCharacter ? draftKey(selectedCharacter.id, activeElement) : "";
+
+  function selectCharacter(nextCharacterId: string) {
+    const nextCharacter = options.characters.find((character) => character.id === nextCharacterId);
+    setCharacterId(nextCharacterId);
+    setElement(nextCharacter?.elements[0]?.key ?? null);
+  }
 
   useEffect(() => {
     if (!selectedCharacter) return;
@@ -364,24 +371,17 @@ export function CommunityBuildBuilderClient({
     <div className="grid min-w-0 gap-4 lg:grid-cols-[minmax(0,1fr)_20rem]">
       <div className="flex min-w-0 flex-col gap-4">
         <DnaPanel className="p-4">
-          <div className="flex flex-col gap-3 md:flex-row md:items-end">
-            <label className="flex min-w-0 flex-1 flex-col gap-1.5">
-              <span className="font-caps text-[0.62rem] uppercase tracking-[0.16em] text-gold">Personnage</span>
-              <select
-                value={characterId}
-                onChange={(event) => setCharacterId(event.target.value)}
-                className="h-10 w-full min-w-0 border border-white/20 bg-ink/80 px-3 font-sans text-sm text-parch outline-none focus:border-gold"
-              >
-                {options.characters.map((character) => (
-                  <option key={character.id} value={character.id}>
-                    {character.name}
-                  </option>
-                ))}
-              </select>
-            </label>
+          <DnaSectionLabel>Personnage</DnaSectionLabel>
+          <div className="mt-3 flex flex-col gap-4">
+            <BuilderCharacterPicker
+              characters={options.characters}
+              value={selectedCharacter.id}
+              onChange={selectCharacter}
+              statusNode={<DnaDraftStatus state={status} savedAt={savedAt} />}
+            />
 
             {selectedCharacter.elements.length > 1 ? (
-              <div className="flex flex-col gap-1.5">
+              <div className="flex min-w-0 flex-col gap-1.5">
                 <span className="font-caps text-[0.62rem] uppercase tracking-[0.16em] text-gold">Élément</span>
                 <DnaSegmented
                   value={activeElement ?? selectedCharacter.elements[0].key}
@@ -393,8 +393,6 @@ export function CommunityBuildBuilderClient({
                 />
               </div>
             ) : null}
-
-            <DnaDraftStatus state={status} savedAt={savedAt} />
           </div>
         </DnaPanel>
 

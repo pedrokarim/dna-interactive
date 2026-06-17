@@ -10,9 +10,13 @@ const ELEMENT_KEYS = new Set(["Fire", "Water", "Thunder", "Wind", "Light", "Dark
 export type BuilderCharacterOption = {
   id: string;
   name: string;
+  subtitle: string | null;
   portrait: string | null;
   element: ElementKey | null;
   elements: Array<{ key: ElementKey; label: string }>;
+  weapons: string[];
+  rarity: number | null;
+  searchText: string;
   consonanceByElement: Record<string, DnaPickerItem | null>;
 };
 
@@ -60,7 +64,15 @@ function consonanceToPickerItem(character: CharacterRecord): DnaPickerItem | nul
   };
 }
 
+function normalizeSearchText(value: string): string {
+  return value
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
+}
+
 function characterToOption(character: CharacterRecord, locale: string): BuilderCharacterOption {
+  const translation = character.translations[locale] ?? character.translations.FR ?? character.translations.EN;
   const elements = (character.elements ?? [character.element])
     .map((element) => ({ key: asElementKey(element.key), label: element.label }))
     .filter((element): element is { key: ElementKey; label: string } => element.key !== null);
@@ -70,12 +82,32 @@ function characterToOption(character: CharacterRecord, locale: string): BuilderC
     consonanceByElement[element.key] = consonanceToPickerItem(getActiveCharacterView(character, element.key));
   }
 
+  const name = resolveCharacterDisplayName(character, locale);
+  const subtitle = translation?.subtitle ?? null;
+  const searchText = normalizeSearchText(
+    [
+      name,
+      subtitle,
+      character.internalName,
+      character.id,
+      character.camp.key,
+      ...character.weaponTags,
+      ...elements.flatMap((element) => [element.key, element.label]),
+    ]
+      .filter(Boolean)
+      .join(" "),
+  );
+
   return {
     id: character.id,
-    name: resolveCharacterDisplayName(character, locale),
-    portrait: character.portraits.head?.publicPath ?? character.portraits.icon?.publicPath ?? null,
+    name,
+    subtitle,
+    portrait: character.portraits.gacha?.publicPath ?? character.portraits.head?.publicPath ?? character.portraits.icon?.publicPath ?? null,
     element: asElementKey(character.element.key),
     elements,
+    weapons: character.weaponTags,
+    rarity: character.rarity,
+    searchText,
     consonanceByElement,
   };
 }
