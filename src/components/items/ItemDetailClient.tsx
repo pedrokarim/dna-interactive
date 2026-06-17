@@ -22,6 +22,7 @@ import { DnaStatRow } from "@/components/dna/StatRow";
 import { DnaStars } from "@/components/dna/RarityStars";
 import { DnaTag } from "@/components/dna/Tag";
 import { ELEMENTS, type ElementKey } from "@/components/dna/elements";
+import { WeaponFusionTrack } from "@/components/items/WeaponFusionTrack";
 
 const GOLD_HEX = "#c2a86a";
 
@@ -157,11 +158,17 @@ function formatResolvedAttributeValue(attribute: ItemResolvedAttribute): string 
   return chunks.length > 0 ? chunks.join(" | ") : "N/A";
 }
 
+/** Retire les balises rich-text du jeu (<H>, </>, <Polarity>, <color=…>…) — pur formatage, jamais du texte affichable. */
+function stripGameRichText(text: string): string {
+  return text.replace(/<\/?[A-Za-z][^>]*>|<\/>/g, "");
+}
+
 function renderTextWithDynamicMentions(
-  text: string,
+  rawText: string,
   level: number,
   valuesByIndex: Record<string, number>,
 ): ReactNode[] {
+  const text = stripGameRichText(rawText);
   const tokenRegex = /#(\d+)/g;
   const parts: ReactNode[] = [];
   let lastIndex = 0;
@@ -270,6 +277,9 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
   const [, toggleItemFavorite] = useAtom(toggleItemFavoriteAtom);
   const isModsCategory = category.id === "mods";
   const isGenimonsCategory = category.id === "genimons";
+  const isWeaponsCategory = category.id === "weapons";
+  // Passif dont les valeurs varient avec le niveau du slider (mods = niveau, armes = niveau de fusion/doublon).
+  const hasLeveledPassive = isModsCategory || isWeaponsCategory;
   const preferredLanguage = normalizeLanguageCodes(
     [category.defaultDetailLanguage],
     category.availableLanguages,
@@ -433,14 +443,28 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
       },
     );
   }
-  const showPassiveDescription = isModsCategory || isGenimonsCategory;
+  const showPassiveDescription = isModsCategory || isGenimonsCategory || isWeaponsCategory;
   const passiveDescriptionHasDynamicTokens =
     typeof translation.passiveEffectsDescription === "string" &&
     /#\d+/.test(translation.passiveEffectsDescription);
   const favoriteKey = `${category.id}:${item.id}`;
   const isFavorite = favoriteItems.has(favoriteKey);
 
-  const elHex = elementHexFromKey(elementalAffinity?.key);
+  // Stats de combat des armes (depuis fields, peuplées par l'extraction BattleWeapon).
+  const weaponElement =
+    isWeaponsCategory && typeof item.fields.Element === "string"
+      ? ELEMENTS[item.fields.Element as ElementKey] ?? null
+      : null;
+  const weaponBaseAtk =
+    isWeaponsCategory && typeof item.fields.BaseATK === "number" ? item.fields.BaseATK : null;
+  const weaponMaxAtk =
+    isWeaponsCategory && typeof item.fields.ATKMax === "number" ? item.fields.ATKMax : null;
+  const weaponCri =
+    isWeaponsCategory && typeof item.fields.CRI === "number" ? item.fields.CRI : null;
+  const weaponCrd =
+    isWeaponsCategory && typeof item.fields.CRD === "number" ? item.fields.CRD : null;
+
+  const elHex = weaponElement?.hex ?? elementHexFromKey(elementalAffinity?.key);
   const tinted = elHex !== GOLD_HEX;
   const displayName = translation.modName ?? `${category.displayName} ${item.modId}`;
   const subtitle = translation.demonWedgeName
@@ -522,6 +546,15 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
                   {elementalAffinity.label}
                 </span>
               ) : null}
+              {weaponElement ? (
+                <span
+                  className="inline-flex items-center gap-1.5 border px-2.5 py-1 font-caps text-[0.58rem] uppercase tracking-[0.14em]"
+                  style={{ borderColor: `${elHex}66`, background: `${elHex}1f`, color: elHex }}
+                >
+                  <img src={weaponElement.icon} alt="" className="h-5 w-5 object-contain" />
+                  {weaponElement.label}
+                </span>
+              ) : null}
               {item.variants?.isPremium ? <DnaTag>Premium</DnaTag> : null}
             </div>
           </div>
@@ -548,6 +581,18 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
               className="h-[64%] w-[64%] object-contain drop-shadow-[0_10px_26px_rgba(0,0,0,0.6)]"
             />
           </div>
+
+          {/* Stepper de fusion (doublons) intégré au stage, façon écran d'arme du jeu */}
+          {isWeaponsCategory && hasScalingData ? (
+            <div className="absolute right-3 top-1/2 z-[2] -translate-y-1/2 md:right-5">
+              <WeaponFusionTrack
+                levels={levelOptions}
+                value={selectedLevel}
+                accentHex={tinted ? elHex : undefined}
+                onChange={(level) => void setSelectedLevelRaw(level)}
+              />
+            </div>
+          ) : null}
         </div>
 
         {/* Colonne de stats */}
@@ -564,7 +609,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
                   <small className="text-sm text-muted-2"> / {sliderMaxLevel}</small>
                 </div>
                 <div className="text-right font-caps text-[0.52rem] uppercase leading-tight tracking-[0.14em] text-muted">
-                  Niveau<br />actif
+                  {isWeaponsCategory ? <>Niveau<br />de fusion</> : <>Niveau<br />actif</>}
                 </div>
               </div>
             ) : null}
@@ -600,6 +645,35 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
                   }
                 />
               ) : null}
+              {weaponElement ? (
+                <DnaStatRow
+                  label="Élément"
+                  accent={tinted ? elHex : undefined}
+                  value={
+                    <span className="inline-flex items-center gap-1.5">
+                      <img src={weaponElement.icon} alt="" className="h-5 w-5 object-contain" />
+                      {weaponElement.label}
+                    </span>
+                  }
+                />
+              ) : null}
+              {weaponBaseAtk !== null ? (
+                <DnaStatRow
+                  label="ATK"
+                  accent={tinted ? elHex : undefined}
+                  value={
+                    weaponMaxAtk !== null && weaponMaxAtk !== weaponBaseAtk
+                      ? `${weaponBaseAtk} → ${weaponMaxAtk}`
+                      : `${weaponBaseAtk}`
+                  }
+                />
+              ) : null}
+              {weaponCri !== null ? (
+                <DnaStatRow label="Taux critique" value={formatRateValue(weaponCri)} />
+              ) : null}
+              {weaponCrd !== null ? (
+                <DnaStatRow label="Dégâts critiques" value={formatRateValue(weaponCrd)} />
+              ) : null}
               {typeof item.stats.cost === "number" ? (
                 <DnaStatRow label="Coût" value={item.stats.cost} />
               ) : null}
@@ -612,7 +686,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
             </div>
           </DnaPanel>
 
-          {hasScalingData ? (
+          {hasScalingData && !isWeaponsCategory ? (
             <DnaPanel className="p-4">
               <DnaSectionLabel>Niveau de progression</DnaSectionLabel>
               <div className="mt-3 flex items-center justify-between font-caps text-xs uppercase tracking-[0.14em] text-muted">
@@ -695,7 +769,9 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
               <h3 className="font-caps text-[0.66rem] uppercase tracking-[0.24em] text-gold/80">
                 {isModsCategory
                   ? `Description effet passif (niveau ${selectedLevel})`
-                  : "Description trait passif"}
+                  : isWeaponsCategory
+                    ? `Effet de fusion (niveau ${selectedLevel})`
+                    : "Description trait passif"}
               </h3>
               <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed text-parch/85">
                 {translation.passiveEffectsDescription
@@ -713,7 +789,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
               ) : null}
               <details className="mt-3 rounded-sm border border-white/10 bg-ink/55 p-3">
                 <summary className="cursor-pointer select-none text-xs uppercase tracking-[0.18em] text-parch/85">
-                  {isModsCategory
+                  {hasLeveledPassive
                     ? `Variables dynamiques (niveau ${selectedLevel})`
                     : "Variables dynamiques"}
                 </summary>
