@@ -32,6 +32,12 @@ export { DnaDivider } from "./Divider";
 export { DnaSeal } from "./Seal";
 export { DnaTile } from "./Tile";
 
+// Builder
+export { DnaItemPicker, type DnaPickerItem } from "./ItemPicker";
+export { DnaDemonWedgeEditor, type WedgeSlotData } from "./DemonWedgeEditor";
+export { DnaConsonanceEditor } from "./ConsonanceEditor";
+export { DnaSlotRow, type SlotEntry } from "./SlotRow";
+
 // Données
 export { DnaStatRow } from "./StatRow";
 export { DnaProgress } from "./ProgressBar";
