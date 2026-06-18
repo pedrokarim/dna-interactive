@@ -43,7 +43,7 @@ Les positions extérieures sont **1 à 8**. Une position ne doit pas être dupli
 
 Le slot central n'accepte **pas n'importe quel Demon Wedge**.
 
-Le centre sert d'ancre/condition de build. Dans les builds déjà présents dans nos données, les centres utilisés sont des Wedges de type Quetzalcoatl comme `Décision de Quetzalcoatl`, `Vigueur de Quetzalcoatl`, `Ténacité de Quetzalcoatl`, `Pouvoir de Quetzalcoatl` ou `Éternité de Quetzalcoatl`.
+Le centre sert d'ancre/condition de build. Les centres autorisés dans le builder sont les Wedges de type Quetzalcoatl comme `Décision de Quetzalcoatl`, `Vigueur de Quetzalcoatl`, `Ténacité de Quetzalcoatl` ou `Éternité de Quetzalcoatl`.
 
 Plusieurs descriptions de ces Wedges centraux activent un effet seulement si une condition est remplie, par exemple :
 
@@ -53,6 +53,7 @@ Plusieurs descriptions de ces Wedges centraux activent un effet seulement si une
 **Conséquence pratique :**
 
 - Un Wedge extérieur de stat ou d'effet classique ne doit jamais être importé, exporté ou publié comme centre.
+- Les entrées appelées `Pouvoir` ne sont pas des centres valides dans notre builder, même si leur asset ressemble aux autres Quetzalcoatl.
 - Le builder filtre le picker du centre sur les IDs autorisés.
 - La validation serveur refuse aussi un `centerItemId` qui n'est pas dans cette liste.
 
