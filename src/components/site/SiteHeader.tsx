@@ -52,9 +52,9 @@ export default async function SiteHeader({ active }: { active?: string }) {
             </div>
           </Link>
 
-          <MobileMenu authSlot={<DiscordAuthButton compact />} />
+          <MobileMenu authSlot={<DiscordAuthButton compact direction="up" align="start" />} />
 
-          <div className="hidden items-center gap-4 md:flex xl:gap-6">
+          <div className="hidden items-center gap-4 lg:flex xl:gap-6">
             <nav className="flex items-center gap-4 xl:gap-7">
               {NAV_LINKS.map((link) => {
                 const isActive = link.href === active;

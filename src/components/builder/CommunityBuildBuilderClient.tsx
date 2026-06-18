@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
+import { createPortal } from "react-dom";
 import { BuilderCharacterPicker } from "@/components/builder/CharacterPicker";
 import { DnaButton } from "@/components/dna/Button";
 import { DnaConsonanceEditor } from "@/components/dna/ConsonanceEditor";
@@ -33,6 +34,10 @@ const SKILL_POOL: PriorityItem[] = [
   { id: "skill-2", label: "Compétence 2", sublabel: "Esquive / outil" },
   { id: "skill-3", label: "Compétence 3", sublabel: "Ultime" },
 ];
+
+function subscribeMounted() {
+  return () => undefined;
+}
 
 type EditingTarget =
   | { kind: "demon"; position: number }
@@ -94,12 +99,31 @@ export function CommunityBuildBuilderClient({
   const [savedAt, setSavedAt] = useState<string | undefined>();
   const [message, setMessage] = useState<string | null>(null);
   const [publishing, setPublishing] = useState(false);
+  const canPortal = useSyncExternalStore(subscribeMounted, () => true, () => false);
   const hydratedRef = useRef(false);
 
   const activeElement = element ?? selectedCharacter?.elements[0]?.key ?? null;
   const accentHex = activeElement ? ELEMENTS[activeElement].hex : "#c2a86a";
   const consonanceWeapon = activeElement ? selectedCharacter?.consonanceByElement[activeElement] ?? null : null;
   const key = selectedCharacter ? draftKey(selectedCharacter.id, activeElement) : "";
+
+  useEffect(() => {
+    if (!editing) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setEditing(null);
+    };
+
+    document.addEventListener("keydown", handleEscape);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [editing]);
 
   function selectCharacter(nextCharacterId: string) {
     const nextCharacter = options.characters.find((character) => character.id === nextCharacterId);
@@ -368,7 +392,7 @@ export function CommunityBuildBuilderClient({
   }
 
   return (
-    <div className="grid min-w-0 gap-4 lg:grid-cols-[minmax(0,1fr)_20rem]">
+    <div className="grid min-w-0 gap-4 2xl:grid-cols-[minmax(0,1fr)_20rem]">
       <div className="flex min-w-0 flex-col gap-4">
         <DnaPanel className="p-4">
           <DnaSectionLabel>Personnage</DnaSectionLabel>
@@ -436,13 +460,15 @@ export function CommunityBuildBuilderClient({
           </div>
         </DnaPanel>
 
-        <DnaPanel className="p-4">
+        <DnaPanel className="p-5 md:p-6">
           <DnaSectionLabel>Demon Wedges</DnaSectionLabel>
-          <div className="mt-4 overflow-x-auto pb-2">
+          <div className="mt-5 overflow-x-auto pb-3 pt-1">
             <DnaDemonWedgeEditor
               slots={demonSlots}
               centerItem={centerItem}
               accentHex={accentHex}
+              scale="xl"
+              className="min-w-[34rem]"
               onChange={setDemonSlots}
               onSlotClick={(position) => setEditing({ kind: "demon", position })}
               onCenterClick={() => setEditing({ kind: "center" })}
@@ -458,6 +484,7 @@ export function CommunityBuildBuilderClient({
                 slots={consonanceSlots}
                 weapon={consonanceWeapon}
                 accentHex={accentHex}
+                scale="lg"
                 onChange={setConsonanceSlots}
                 onSlotClick={(position) => setEditing({ kind: "consonance", position })}
               />
@@ -479,7 +506,7 @@ export function CommunityBuildBuilderClient({
         </DnaPanel>
       </div>
 
-      <aside className="flex min-w-0 flex-col gap-4">
+      <aside className="grid min-w-0 gap-4 md:grid-cols-2 2xl:flex 2xl:flex-col">
         <DnaPanel className="p-4">
           <DnaSectionLabel>Priorités</DnaSectionLabel>
           <div className="mt-3 flex flex-col gap-4">
@@ -516,15 +543,15 @@ export function CommunityBuildBuilderClient({
         </DnaPanel>
       </aside>
 
-      {editing ? (
+      {editing && canPortal ? createPortal(
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-[500] flex items-center justify-center bg-black/75 p-4 backdrop-blur-sm"
           role="dialog"
           aria-modal="true"
           onClick={() => setEditing(null)}
         >
           <div
-            className="max-h-[85vh] w-full max-w-2xl overflow-y-auto border border-line/25 bg-panel/95 p-4 shadow-[0_24px_60px_rgba(0,0,0,0.7)]"
+            className="max-h-[88vh] w-full max-w-5xl overflow-y-auto border border-line/25 bg-panel/95 p-4 shadow-[0_24px_60px_rgba(0,0,0,0.7)] md:p-5"
             onClick={(event) => event.stopPropagation()}
           >
             <div className="mb-3 flex items-center justify-between gap-3">
@@ -533,9 +560,10 @@ export function CommunityBuildBuilderClient({
                 Fermer
               </DnaButton>
             </div>
-            <DnaItemPicker items={options.mods} columns={5} onSelect={pickMod} />
+            <DnaItemPicker items={options.mods} columns={6} minColumnWidth="8.25rem" onSelect={pickMod} />
           </div>
-        </div>
+        </div>,
+        document.body,
       ) : null}
     </div>
   );

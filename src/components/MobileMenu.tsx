@@ -74,7 +74,7 @@ export default function MobileMenu({ authSlot }: { authSlot?: ReactNode }) {
   // a containing block that traps `position: fixed` descendants and shrinks
   // the drawer to the header's height.
   const overlay = (
-    <div className="md:hidden">
+    <div className="lg:hidden">
       <div
         className={`fixed inset-0 z-[60] bg-ink/80 backdrop-blur-sm transition-opacity duration-300 ${
           isOpen ? "opacity-100" : "pointer-events-none opacity-0"
@@ -157,7 +157,7 @@ export default function MobileMenu({ authSlot }: { authSlot?: ReactNode }) {
       <button
         type="button"
         onClick={() => setIsOpen(true)}
-        className="flex h-10 w-10 items-center justify-center rounded-sm border border-gold/30 bg-panel/60 text-parch transition-colors hover:border-gold/60 hover:bg-panel hover:text-parch md:hidden"
+        className="flex h-10 w-10 items-center justify-center rounded-sm border border-gold/30 bg-panel/60 text-parch transition-colors hover:border-gold/60 hover:bg-panel hover:text-parch lg:hidden"
         aria-expanded={isOpen}
         aria-controls="mobile-menu-drawer"
         aria-label={openLabel}

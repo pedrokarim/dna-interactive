@@ -110,7 +110,6 @@ export const NAV_LINKS = [
   { href: NAVIGATION.map, label: "Carte Interactive" },
   { href: NAVIGATION.items, label: "Items" },
   { href: NAVIGATION.characters, label: "Personnages" },
-  { href: NAVIGATION.builder, label: "Builder" },
   { href: NAVIGATION.commissions, label: "Commissions" },
   { href: NAVIGATION.about, label: "À propos" },
 ] as const;

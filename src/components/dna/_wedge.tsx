@@ -17,7 +17,7 @@ export type WedgeSlotData = {
   track?: number | null;
 };
 
-export type WedgeScale = "lg" | "md" | "sm";
+export type WedgeScale = "xl" | "lg" | "md" | "sm";
 
 export const CLIP_LEFT = "polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%)";
 export const CLIP_RIGHT = "polygon(0% 0%, 80% 0%, 100% 100%, 20% 100%)";
@@ -26,6 +26,7 @@ export const WEDGE_DIMS: Record<WedgeScale, {
   slotH: number; slotW: number; centerH: number;
   gapSlots: string; gapRows: string; gapCols: string;
 }> = {
+  xl: { slotH: 124, slotW: 94, centerH: 116, gapSlots: "gap-3", gapRows: "gap-4", gapCols: "gap-5" },
   lg: { slotH: 108, slotW: 82, centerH: 100, gapSlots: "gap-2", gapRows: "gap-3", gapCols: "gap-4" },
   md: { slotH: 88, slotW: 66, centerH: 84, gapSlots: "gap-1.5", gapRows: "gap-2.5", gapCols: "gap-3" },
   sm: { slotH: 72, slotW: 56, centerH: 72, gapSlots: "gap-1.5", gapRows: "gap-2", gapCols: "gap-3" },

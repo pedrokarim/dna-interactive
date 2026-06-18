@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
+import { createPortal } from "react-dom";
 import { cn } from "./cn";
 import { ELEMENTS } from "./elements";
 import { DnaStars } from "./RarityStars";
@@ -35,6 +36,10 @@ export type DnaSlotRowProps = {
   className?: string;
 };
 
+function subscribeMounted() {
+  return () => undefined;
+}
+
 export function DnaSlotRow({
   entries,
   pool,
@@ -48,6 +53,7 @@ export function DnaSlotRow({
 }: DnaSlotRowProps) {
   // null = fermé ; -1 = ajout ; >=0 = remplacement de l'index.
   const [pickerFor, setPickerFor] = useState<number | null>(null);
+  const canPortal = useSyncExternalStore(subscribeMounted, () => true, () => false);
 
   const usedIds = entries
     .filter((_, i) => i !== pickerFor)
@@ -105,7 +111,7 @@ export function DnaSlotRow({
         </button>
       )}
 
-      {pickerFor !== null && (
+      {pickerFor !== null && canPortal ? createPortal(
         <PickerOverlay
           label={label}
           pool={pool}
@@ -113,8 +119,9 @@ export function DnaSlotRow({
           columns={pickerColumns}
           onSelect={pick}
           onClose={() => setPickerFor(null)}
-        />
-      )}
+        />,
+        document.body,
+      ) : null}
     </div>
   );
 }
@@ -203,15 +210,31 @@ function PickerOverlay({
   onSelect: (item: DnaPickerItem) => void;
   onClose: () => void;
 }) {
+  useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
+    };
+
+    document.addEventListener("keydown", handleEscape);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [onClose]);
+
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
+      className="fixed inset-0 z-[500] flex items-center justify-center bg-black/75 p-4 backdrop-blur-sm"
       role="dialog"
       aria-modal="true"
       onClick={onClose}
     >
       <div
-        className="relative flex max-h-[85vh] w-full max-w-2xl flex-col border border-line/25 bg-panel/95 p-4 shadow-[0_24px_60px_rgba(0,0,0,0.7)]"
+        className="relative flex max-h-[88vh] w-full max-w-4xl flex-col border border-line/25 bg-panel/95 p-4 shadow-[0_24px_60px_rgba(0,0,0,0.7)] md:p-5"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="mb-3 flex items-center justify-between gap-3">
@@ -221,7 +244,7 @@ function PickerOverlay({
           </DnaButton>
         </div>
         <div className="min-h-0 overflow-y-auto pr-1">
-          <DnaItemPicker items={pool} usedIds={usedIds} columns={columns} onSelect={onSelect} />
+          <DnaItemPicker items={pool} usedIds={usedIds} columns={columns} minColumnWidth="7.5rem" onSelect={onSelect} />
         </div>
       </div>
     </div>

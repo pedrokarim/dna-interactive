@@ -1,7 +1,7 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
-import { Map, Boxes, Users, ArrowRight } from "lucide-react";
+import { Map, Boxes, Users, ArrowRight, Hammer } from "lucide-react";
 import { generatePageMetadata, pageMetadata } from "@/lib/metadata";
 import UpdateBanner from "@/components/UpdateBanner";
 import HeroSection from "@/components/HeroSection";
@@ -208,6 +208,68 @@ export default async function Home() {
                     <ArrowRight className="h-4 w-4" />
                   </Link>
                   <p className="text-sm text-parch/75">{tHome("charactersSpotlightCategories")}</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      {/* Spotlight Builder */}
+      <section className="bg-ink/85 py-20">
+        <div className="container mx-auto px-6">
+          <div className="mx-auto max-w-6xl">
+            <article className="group relative overflow-hidden border border-hydro/35 bg-ink/70 shadow-[0_32px_80px_rgba(0,0,0,0.55)]">
+              <img
+                src="/assets/worldview/worldview-1-4-2.webp"
+                alt="Apercu visuel du builder communautaire"
+                className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-linear-to-r from-ink/96 via-ink/78 to-ink/30" />
+              <div className="absolute inset-0 bg-linear-to-t from-hydro/45 via-transparent to-black/25" />
+
+              <div className="pointer-events-none absolute inset-0 hidden md:block" aria-hidden="true">
+                <div className="absolute left-[58%] top-[17%] h-16 w-16 -rotate-6 overflow-hidden border border-gold/35 bg-ink/75 p-1 shadow-[0_12px_28px_rgba(0,0,0,0.45)]">
+                  <img src="/assets/characters/head/T_Head_Kami.png" alt="" width="64" height="64" loading="lazy" className="h-full w-full object-cover" />
+                </div>
+                <div className="absolute left-[67%] top-[36%] h-14 w-14 rotate-8 overflow-hidden border border-hydro/35 bg-ink/75 p-1 shadow-[0_12px_28px_rgba(0,0,0,0.45)]">
+                  <img src="/assets/characters/head/T_Head_Yuming.png" alt="" width="56" height="56" loading="lazy" className="h-full w-full object-cover" />
+                </div>
+                <div className="absolute left-[78%] top-[19%] h-14 w-14 rotate-6 border border-gold/35 bg-ink/75 p-2">
+                  <img src="/assets/items/mods/T_Mod_Phoenix01.png" alt="" width="56" height="56" loading="lazy" className="h-full w-full object-contain" />
+                </div>
+                <div className="absolute left-[61%] top-[60%] h-14 w-14 -rotate-10 border border-crimson-bright/35 bg-ink/75 p-2">
+                  <img src="/assets/items/mods/T_Mod_Typhon01_Blue.png" alt="" width="56" height="56" loading="lazy" className="h-full w-full object-contain" />
+                </div>
+                <div className="absolute left-[81%] top-[57%] h-16 w-16 rotate-12 border border-electro/35 bg-ink/75 p-2">
+                  <img src="/assets/items/weapons/T_Bust_Katana_Yuli.png" alt="" width="64" height="64" loading="lazy" className="h-full w-full object-contain" />
+                </div>
+                <div className="absolute left-[72%] top-[70%] h-12 w-12 -rotate-3 border border-gold/30 bg-ink/75 p-2">
+                  <img src="/assets/items/genimons/T_Head_Pet_Bixi.png" alt="" width="48" height="48" loading="lazy" className="h-full w-full object-contain" />
+                </div>
+              </div>
+
+              <DnaCornerBrackets size={22} color="var(--color-hydro)" className="z-10 opacity-70" />
+              <div className="relative z-10 px-8 py-10 sm:px-12 sm:py-14">
+                <span className="inline-flex items-center border border-hydro/45 bg-hydro/15 px-3 py-1 font-caps text-[0.58rem] uppercase tracking-[0.22em] text-hydro">
+                  {tHome("builderSpotlightBadge")}
+                </span>
+                <h2 className="mt-4 max-w-3xl font-display text-3xl text-parch sm:text-4xl">
+                  {tHome("builderSpotlightTitle")}
+                </h2>
+                <p className="mt-4 max-w-2xl text-base leading-relaxed text-parch/90">
+                  {tHome("builderSpotlightDescription")}
+                </p>
+                <div className="mt-7 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
+                  <Link
+                    href="/builder"
+                    className="dna-shine inline-flex items-center gap-2 rounded-sm border border-gold bg-gradient-to-b from-gold-deep/40 to-ink/70 px-5 py-3 text-sm font-medium text-gold-bright transition-all duration-200 hover:-translate-y-px hover:border-gold-bright hover:text-[#fff6e6]"
+                  >
+                    <Hammer className="h-4 w-4" />
+                    {tHome("builderSpotlightCta")}
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                  <p className="text-sm text-parch/75">{tHome("builderSpotlightCategories")}</p>
                 </div>
               </div>
             </article>

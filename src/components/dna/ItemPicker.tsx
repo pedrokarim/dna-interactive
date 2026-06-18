@@ -40,6 +40,8 @@ export type DnaItemPickerProps = {
   placeholder?: string;
   /** Nb de colonnes de la grille (défaut 4). */
   columns?: number;
+  /** Largeur minimale responsive d'une carte, utile dans les grandes modales. */
+  minColumnWidth?: string;
   className?: string;
   emptyLabel?: string;
 };
@@ -56,6 +58,7 @@ export function DnaItemPicker({
   onSelect,
   placeholder = "Rechercher…",
   columns = 4,
+  minColumnWidth,
   className,
   emptyLabel = "Aucun item ne correspond.",
 }: DnaItemPickerProps) {
@@ -153,7 +156,14 @@ export function DnaItemPicker({
           {hasFilters ? emptyLabel : "Liste vide."}
         </p>
       ) : (
-        <div className="grid gap-2" style={{ gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))` }}>
+        <div
+          className="grid gap-2"
+          style={{
+            gridTemplateColumns: minColumnWidth
+              ? `repeat(auto-fill, minmax(min(100%, ${minColumnWidth}), 1fr))`
+              : `repeat(${columns}, minmax(0, 1fr))`,
+          }}
+        >
           {filtered.map((it) => (
             <ItemCell
               key={it.id}
