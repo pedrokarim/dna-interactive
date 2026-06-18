@@ -1,4 +1,5 @@
 "use client";
+import { Eye } from "lucide-react";
 import { cn } from "./cn";
 import { ELEMENTS, type ElementKey } from "./elements";
 import { DnaPanel } from "./Panel";
@@ -34,6 +35,7 @@ export type DnaCommunityBuildCardProps = {
   weapons?: IconRef[];
   genimons?: IconRef[];
   onOpen?: () => void;
+  openLabel?: string;
   className?: string;
 };
 
@@ -51,6 +53,7 @@ export function DnaCommunityBuildCard({
   weapons = [],
   genimons = [],
   onOpen,
+  openLabel = "Voir le build",
   className,
 }: DnaCommunityBuildCardProps) {
   const accent = element ? ELEMENTS[element].hex : "#c2a86a";
@@ -102,6 +105,19 @@ export function DnaCommunityBuildCard({
               ))}
             </div>
           )}
+
+          {onOpen ? (
+            <div>
+              <button
+                type="button"
+                onClick={onOpen}
+                className="inline-flex items-center gap-1.5 border border-gold/35 bg-gold/10 px-3 py-1.5 font-caps text-[0.62rem] uppercase tracking-[0.16em] text-gold transition-colors hover:border-gold hover:bg-gold/20 hover:text-gold-bright"
+              >
+                <Eye className="h-3.5 w-3.5" />
+                {openLabel}
+              </button>
+            </div>
+          ) : null}
         </div>
 
         {/* Vote */}

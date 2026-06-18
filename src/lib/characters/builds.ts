@@ -165,7 +165,7 @@ export interface CharacterBuild {
 
 const FALLBACK_LANGS = ["FR", "EN"];
 
-function resolveItemRef(
+export function resolveBuildItemRef(
   categoryId: string,
   itemId: string,
   lang: string = "FR",
@@ -193,7 +193,7 @@ function resolveItemRef(
   };
 }
 
-function resolveCharacterRef(
+export function resolveBuildCharacterRef(
   characterId: string,
   lang: string = "FR",
 ): ResolvedCharacterRef | null {
@@ -241,12 +241,12 @@ export function getCharacterBuilds(characterId: string): CharacterBuild[] {
       buildName: raw.buildName ?? {},
       weapons: {
         melee: (raw.weapons?.melee ?? []).map((w) => ({
-          item: resolveItemRef("weapons", w.itemId),
+          item: resolveBuildItemRef("weapons", w.itemId),
           rank: w.rank,
           note: w.note ?? {},
         })),
         ranged: (raw.weapons?.ranged ?? []).map((w) => ({
-          item: resolveItemRef("weapons", w.itemId),
+          item: resolveBuildItemRef("weapons", w.itemId),
           rank: w.rank,
           note: w.note ?? {},
         })),
@@ -254,23 +254,23 @@ export function getCharacterBuilds(characterId: string): CharacterBuild[] {
       demonWedges: {
         slots: (raw.demonWedges?.slots ?? []).map((s) => ({
           position: s.position,
-          item: resolveItemRef("mods", s.itemId),
+          item: resolveBuildItemRef("mods", s.itemId),
           track: s.track ?? null,
         })),
         centerItem: raw.demonWedges?.centerItemId
-          ? resolveItemRef("mods", raw.demonWedges.centerItemId)
+          ? resolveBuildItemRef("mods", raw.demonWedges.centerItemId)
           : null,
         affinity: raw.demonWedges?.affinity ?? {},
         note: raw.demonWedges?.note ?? {},
       },
       statsPriority: raw.statsPriority ?? [],
       team: (raw.team ?? []).map((t) => ({
-        character: resolveCharacterRef(t.characterId),
+        character: resolveBuildCharacterRef(t.characterId),
         role: t.role,
         note: t.note ?? {},
       })),
       genimon: (raw.genimon ?? []).map((g) => ({
-        item: resolveItemRef("genimons", g.itemId),
+        item: resolveBuildItemRef("genimons", g.itemId),
         rank: g.rank,
       })),
       skillPriority: (raw.skillPriority ?? []).map((s) => ({
@@ -284,7 +284,7 @@ export function getCharacterBuilds(characterId: string): CharacterBuild[] {
             name: raw.consonanceWeapon.name ?? {},
             icon: raw.consonanceWeapon.icon ?? null,
             slots: (raw.consonanceWeapon.slots ?? [])
-              .map((itemId) => resolveItemRef("mods", itemId))
+              .map((itemId) => resolveBuildItemRef("mods", itemId))
               .filter((ref): ref is ResolvedItemRef => ref !== null),
           }
         : null,

@@ -3,6 +3,7 @@
 import { Link } from "@/i18n/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { type ComponentType, type CSSProperties, type PointerEvent as ReactPointerEvent, Fragment, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { toPng } from "html-to-image";
 import {
   ArrowLeft,
@@ -11,6 +12,7 @@ import {
   ChevronLeft,
   ChevronRight,
   FileImage,
+  Eye,
   Heart,
   Image as ImageIcon,
   Languages,
@@ -19,6 +21,7 @@ import {
   Shield,
   Sparkles,
   Swords,
+  Users,
   X,
   ZoomIn,
   ZoomOut,
@@ -67,7 +70,10 @@ import {
   getTrackIcon,
   ARMORY_DEFAULT_ICON,
   ARMORY_MOD_GLOW,
+  resolveBuildCharacterRef,
+  resolveBuildItemRef,
 } from "@/lib/characters/builds";
+import type { CommunityBuildPayload } from "@/lib/community-builds/validation";
 import {
   charactersFavoritesAtom,
   toggleCharacterFavoriteAtom,
@@ -97,6 +103,7 @@ type CommunityBuildListItem = {
   updatedAt: string;
   authorName: string | null;
   authorImage: string | null;
+  payload: CommunityBuildPayload;
   votedByMe: boolean;
   editableByMe: boolean;
 };
@@ -308,6 +315,98 @@ function BuildLocalizedText({
     Object.values(texts)[0] ??
     null;
   return value ? <>{value}</> : null;
+}
+
+function buildText(value: string | null | undefined, lang: string): Record<string, string> {
+  if (!value?.trim()) return {};
+  const normalized = lang.toUpperCase();
+  return normalized === "FR"
+    ? { FR: value, EN: value }
+    : { [normalized]: value, FR: value, EN: value };
+}
+
+function communityBuildToDisplayBuild(
+  build: CommunityBuildListItem,
+  lang: string,
+): CharacterBuild {
+  const payload = build.payload;
+  const buildName = buildText(build.title, lang);
+  const note = buildText(build.note, lang);
+
+  return {
+    characterId: build.characterId,
+    element: build.element ?? null,
+    buildName,
+    weapons: {
+      melee: payload.weapons.melee.map((weapon) => ({
+        item: resolveBuildItemRef("weapons", weapon.itemId, lang),
+        rank: weapon.rank,
+        note: {},
+      })),
+      ranged: payload.weapons.ranged.map((weapon) => ({
+        item: resolveBuildItemRef("weapons", weapon.itemId, lang),
+        rank: weapon.rank,
+        note: {},
+      })),
+    },
+    demonWedges: {
+      slots: payload.demonWedges.slots.map((slot) => ({
+        position: slot.position,
+        item: resolveBuildItemRef("mods", slot.itemId, lang),
+        track: slot.track ?? null,
+      })),
+      centerItem: payload.demonWedges.centerItemId
+        ? resolveBuildItemRef("mods", payload.demonWedges.centerItemId, lang)
+        : null,
+      affinity: buildText(payload.demonWedges.affinity ?? build.element, lang),
+      note: {},
+    },
+    statsPriority: payload.statsPriority,
+    team: payload.team.map((teammate) => ({
+      character: resolveBuildCharacterRef(teammate.characterId, lang),
+      role: teammate.role,
+      note: {},
+    })),
+    genimon: payload.genimon.map((genimon) => ({
+      item: resolveBuildItemRef("genimons", genimon.itemId, lang),
+      rank: genimon.rank,
+    })),
+    skillPriority: payload.skillPriority.map((skill) => ({
+      skillName: buildText(skill.skillName, lang),
+      skillIndex: skill.skillIndex,
+      priority: skill.priority,
+      note: {},
+    })),
+    consonanceWeapon: payload.consonanceWeapon
+      ? {
+          name: buildText("Consonance", lang),
+          icon: null,
+          slots: payload.consonanceWeapon.slots
+            .map((itemId) => resolveBuildItemRef("mods", itemId, lang))
+            .filter((item): item is NonNullable<typeof item> => item !== null),
+        }
+      : null,
+    notes: note,
+  };
+}
+
+function getCommunityBuildPreviewItems(build: CommunityBuildListItem, lang: string) {
+  const weaponRefs = [
+    ...build.payload.weapons.melee,
+    ...build.payload.weapons.ranged,
+  ]
+    .slice(0, 4)
+    .map((weapon) => resolveBuildItemRef("weapons", weapon.itemId, lang))
+    .filter((item): item is NonNullable<typeof item> => item !== null)
+    .map((item) => ({ icon: item.icon, name: item.name }));
+
+  const genimonRefs = build.payload.genimon
+    .slice(0, 3)
+    .map((genimon) => resolveBuildItemRef("genimons", genimon.itemId, lang))
+    .filter((item): item is NonNullable<typeof item> => item !== null)
+    .map((item) => ({ icon: item.icon, name: item.name }));
+
+  return { weapons: weaponRefs, genimons: genimonRefs };
 }
 
 const ELEMENT_BORDER_COLORS: Record<string, string> = {
@@ -987,11 +1086,13 @@ function QuickBuildAccordion({
 }
 
 function CommunityBuildsSection({
-  characterId,
+  character,
   characterElement,
+  selectedLanguage,
 }: {
-  characterId: string;
+  character: CharacterRecord;
   characterElement: string;
+  selectedLanguage: string;
 }) {
   const [sort, setSort] = useState<"top" | "recent">("top");
   const [page, setPage] = useState(1);
@@ -1004,11 +1105,12 @@ function CommunityBuildsSection({
   });
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState<string | null>(null);
+  const [selectedBuild, setSelectedBuild] = useState<CommunityBuildListItem | null>(null);
 
   useEffect(() => {
     let cancelled = false;
     const params = new URLSearchParams({
-      characterId,
+      characterId: character.id,
       element: characterElement,
       sort,
       page: `${page}`,
@@ -1040,7 +1142,21 @@ function CommunityBuildsSection({
     return () => {
       cancelled = true;
     };
-  }, [characterElement, characterId, page, sort]);
+  }, [character.id, characterElement, page, sort]);
+
+  const cards = useMemo(
+    () =>
+      builds.map((build) => ({
+        build,
+        preview: getCommunityBuildPreviewItems(build, selectedLanguage),
+      })),
+    [builds, selectedLanguage],
+  );
+
+  const selectedDisplayBuild = useMemo(
+    () => (selectedBuild ? communityBuildToDisplayBuild(selectedBuild, selectedLanguage) : null),
+    [selectedBuild, selectedLanguage],
+  );
 
   async function toggleVote(build: CommunityBuildListItem, next: boolean) {
     setBuilds((current) =>
@@ -1073,10 +1189,13 @@ function CommunityBuildsSection({
   }
 
   return (
-    <section className="border border-line/25 bg-panel/85 p-3 backdrop-blur-sm md:p-5">
+    <section id="community-builds" className="scroll-mt-24 border border-line/25 bg-panel/85 p-3 backdrop-blur-sm md:p-5">
       <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
         <div>
-          <h2 className="text-base font-semibold text-parch md:text-lg">Alternatives communauté</h2>
+          <h2 className="flex items-center gap-2 text-base font-semibold text-parch md:text-lg">
+            <Users className="h-4 w-4 text-gold/80" />
+            Alternatives communauté
+          </h2>
           <p className="mt-1 font-sans text-xs text-muted">Builds publiés par les joueurs.</p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
@@ -1109,7 +1228,7 @@ function CommunityBuildsSection({
         ) : builds.length === 0 ? (
           <p className="font-sans text-sm text-muted">Aucune alternative communauté pour cet élément.</p>
         ) : (
-          builds.map((build, index) => (
+          cards.map(({ build, preview }, index) => (
             <DnaCommunityBuildCard
               key={build.id}
               title={build.title}
@@ -1123,6 +1242,9 @@ function CommunityBuildsSection({
               rank={sort === "top" ? index + 1 : undefined}
               vote={{ count: build.voteCount, voted: build.votedByMe }}
               onVote={(next) => void toggleVote(build, next)}
+              weapons={preview.weapons}
+              genimons={preview.genimons}
+              onOpen={() => setSelectedBuild(build)}
             />
           ))
         )}
@@ -1157,7 +1279,87 @@ function CommunityBuildsSection({
           </div>
         </div>
       ) : null}
+
+      {selectedBuild && selectedDisplayBuild ? (
+        <CommunityBuildPreviewModal
+          build={selectedBuild}
+          displayBuild={selectedDisplayBuild}
+          character={character}
+          characterElement={characterElement}
+          selectedLanguage={selectedLanguage}
+          onClose={() => setSelectedBuild(null)}
+        />
+      ) : null}
     </section>
+  );
+}
+
+function CommunityBuildPreviewModal({
+  build,
+  displayBuild,
+  character,
+  characterElement,
+  selectedLanguage,
+  onClose,
+}: {
+  build: CommunityBuildListItem;
+  displayBuild: CharacterBuild;
+  character: CharacterRecord;
+  characterElement: string;
+  selectedLanguage: string;
+  onClose: () => void;
+}) {
+  if (typeof document === "undefined") return null;
+
+  return createPortal(
+    <div
+      className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-ink/85 p-3 backdrop-blur-sm md:p-6"
+      role="dialog"
+      aria-modal="true"
+      aria-label={`Build communautaire : ${build.title}`}
+    >
+      <div className="relative my-4 w-full max-w-6xl border border-gold/25 bg-ink shadow-[0_30px_80px_rgba(0,0,0,0.72)]">
+        <div className="sticky top-0 z-20 border-b border-white/10 bg-ink/95 px-4 py-3 backdrop-blur md:px-5">
+          <div className="flex items-start justify-between gap-3">
+            <div className="min-w-0">
+              <p className="font-caps text-[0.62rem] uppercase tracking-[0.2em] text-gold">
+                Build communauté
+              </p>
+              <h2 className="mt-1 truncate font-display text-xl text-parch md:text-2xl">
+                {build.title}
+              </h2>
+              <p className="mt-1 text-xs text-muted">
+                Par {build.authorName ?? "Discord"} · {build.voteCount} vote{build.voteCount > 1 ? "s" : ""}
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={onClose}
+              className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-white/10 text-parch/80 transition-colors hover:border-gold/40 hover:text-parch"
+              aria-label="Fermer le build communautaire"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          </div>
+          {build.note ? (
+            <p className="mt-3 max-w-3xl text-sm leading-relaxed text-parch/80">{build.note}</p>
+          ) : null}
+        </div>
+
+        <div className="p-3 md:p-5">
+          <BuildTabContent
+            builds={[displayBuild]}
+            character={character}
+            characterElement={characterElement}
+            selectedLanguage={selectedLanguage}
+            showCommunityBuilds={false}
+            showQuickBuildCard={false}
+            skillIcons={character.skillIcons}
+          />
+        </div>
+      </div>
+    </div>,
+    document.body,
   );
 }
 
@@ -1168,6 +1370,8 @@ function BuildTabContent({
   selectedLanguage,
   onNavigateToStats,
   skillIcons,
+  showCommunityBuilds = true,
+  showQuickBuildCard = true,
 }: {
   builds: CharacterBuild[];
   character: CharacterRecord;
@@ -1175,6 +1379,8 @@ function BuildTabContent({
   selectedLanguage: string;
   onNavigateToStats?: () => void;
   skillIcons?: { skill1: { publicPath: string | null }; skill2: { publicPath: string | null }; skill3: { publicPath: string | null } };
+  showCommunityBuilds?: boolean;
+  showQuickBuildCard?: boolean;
 }) {
   const t = useTranslations('characterDetail');
   const [activeBuildIndex, setActiveBuildIndex] = useState(0);
@@ -1189,7 +1395,13 @@ function BuildTabContent({
             {t('noBuildAvailable')}
           </p>
         </section>
-        <CommunityBuildsSection characterId={character.id} characterElement={characterElement} />
+        {showCommunityBuilds ? (
+          <CommunityBuildsSection
+            character={character}
+            characterElement={characterElement}
+            selectedLanguage={selectedLanguage}
+          />
+        ) : null}
       </div>
     );
   }
@@ -1228,11 +1440,13 @@ function BuildTabContent({
       )}
 
       {/* Quick build card accordion — shareable via ?build=open */}
-      <QuickBuildAccordion
-        character={character}
-        build={build}
-        lang={selectedLanguage}
-      />
+      {showQuickBuildCard ? (
+        <QuickBuildAccordion
+          character={character}
+          build={build}
+          lang={selectedLanguage}
+        />
+      ) : null}
 
       {/* --- Weapons --- */}
       {hasWeapons && (
@@ -1678,7 +1892,13 @@ function BuildTabContent({
         </section>
       )}
 
-      <CommunityBuildsSection characterId={character.id} characterElement={characterElement} />
+      {showCommunityBuilds ? (
+        <CommunityBuildsSection
+          character={character}
+          characterElement={characterElement}
+          selectedLanguage={selectedLanguage}
+        />
+      ) : null}
     </div>
   );
 }
@@ -1785,6 +2005,15 @@ export default function CharacterDetailClient({
     [],
   );
   const [activeTab, setActiveTab] = useQueryState("tab", tabParser);
+  const openCommunityBuilds = useCallback(() => {
+    void setActiveTab("build");
+    window.setTimeout(() => {
+      document.getElementById("community-builds")?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }, 60);
+  }, [setActiveTab]);
 
   // --- Character metadata ---
   const isFavorite = favoriteChars.has(character.id);
@@ -1969,6 +2198,14 @@ export default function CharacterDetailClient({
                 Build rapide
               </button>
             )}
+            <button
+              type="button"
+              onClick={openCommunityBuilds}
+              className="inline-flex items-center gap-2 border border-white/10 bg-ink/35 px-3 py-2 text-sm text-parch transition-colors hover:border-gold/40 hover:text-gold"
+            >
+              <Eye className="h-4 w-4" />
+              Builds communauté
+            </button>
           </div>
 
           <div className="flex items-center gap-3">
