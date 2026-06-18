@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { getCharacterById, getCharacterElements } from "@/lib/characters/catalog";
 import { getItemByCategoryAndId } from "@/lib/items/catalog";
+import { isCenterDemonWedgeItemId } from "./center-wedges";
 
 const itemIdSchema = z.string().trim().min(1).max(96);
 const rankSchema = z.enum(["best", "alternative"]);
@@ -123,6 +124,9 @@ export function validateBuildReferences(input: CreateBuildInput | DraftInput): s
   for (const slot of input.payload.demonWedges.slots) checkItem("mods", slot.itemId, "Demon Wedge");
   if (input.payload.demonWedges.centerItemId) {
     checkItem("mods", input.payload.demonWedges.centerItemId, "Demon Wedge central");
+    if (!isCenterDemonWedgeItemId(input.payload.demonWedges.centerItemId)) {
+      errors.push("Ce Demon Wedge ne peut pas etre place au centre du build.");
+    }
   }
   for (const slot of input.payload.consonanceWeapon?.slots ?? []) {
     checkItem("mods", slot, "MOD de consonance");

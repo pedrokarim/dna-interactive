@@ -240,22 +240,22 @@ const WEDGE_DIMS: Record<WedgeScale, {
   gapSlots: string; gapRows: string; gapCols: string;
 }> = {
   lg: {
-    slotH: 108, slotW: 82, iconSize: "h-14 w-14",
-    centerH: 100, centerIcon: "h-14 w-14",
+    slotH: 108, slotW: 82, iconSize: "h-16 w-16",
+    centerH: 100, centerIcon: "h-16 w-16",
     badgeSize: "h-4 w-4", badgePos: "top-1",
     trackBoxSize: "h-5 w-5", trackIconSize: "h-3.5 w-3.5",
     gapSlots: "gap-2", gapRows: "gap-3", gapCols: "gap-4",
   },
   md: {
-    slotH: 88, slotW: 66, iconSize: "h-11 w-11",
-    centerH: 84, centerIcon: "h-12 w-12",
+    slotH: 88, slotW: 66, iconSize: "h-[3.25rem] w-[3.25rem]",
+    centerH: 84, centerIcon: "h-14 w-14",
     badgeSize: "h-3.5 w-3.5", badgePos: "top-0.5",
     trackBoxSize: "h-4 w-4", trackIconSize: "h-3 w-3",
     gapSlots: "gap-1.5", gapRows: "gap-2.5", gapCols: "gap-3",
   },
   sm: {
-    slotH: 72, slotW: 56, iconSize: "h-9 w-9",
-    centerH: 72, centerIcon: "h-10 w-10",
+    slotH: 72, slotW: 56, iconSize: "h-11 w-11",
+    centerH: 72, centerIcon: "h-12 w-12",
     badgeSize: "h-3 w-3", badgePos: "top-0.5",
     trackBoxSize: "h-4 w-4", trackIconSize: "h-3 w-3",
     gapSlots: "gap-1.5", gapRows: "gap-2", gapCols: "gap-3",

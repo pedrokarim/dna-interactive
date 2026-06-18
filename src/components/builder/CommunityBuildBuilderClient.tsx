@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
+import { useEffect, useMemo, useRef, useState, useSyncExternalStore, type ChangeEvent } from "react";
 import { createPortal } from "react-dom";
+import { Download, Upload } from "lucide-react";
 import { BuilderCharacterPicker } from "@/components/builder/CharacterPicker";
 import { DnaButton } from "@/components/dna/Button";
 import { DnaConsonanceEditor } from "@/components/dna/ConsonanceEditor";
@@ -16,6 +17,15 @@ import { DnaSegmented } from "@/components/dna/Segmented";
 import { DnaSlotRow, type SlotEntry } from "@/components/dna/SlotRow";
 import { ELEMENTS, type ElementKey } from "@/components/dna/elements";
 import type { WedgeSlotData } from "@/components/dna/_wedge";
+import {
+  createCommunityBuildExport,
+  parseBuildJsonText,
+  parseBuildXmlText,
+  serializeBuildJson,
+  serializeBuildXml,
+  validateCommunityBuildExport,
+} from "@/lib/community-builds/build-io";
+import { isCenterDemonWedgeItemId } from "@/lib/community-builds/center-wedges";
 import type { BuilderOptions } from "@/lib/community-builds/options";
 import type { CommunityBuildPayload } from "@/lib/community-builds/validation";
 
@@ -101,11 +111,17 @@ export function CommunityBuildBuilderClient({
   const [publishing, setPublishing] = useState(false);
   const canPortal = useSyncExternalStore(subscribeMounted, () => true, () => false);
   const hydratedRef = useRef(false);
+  const importInputRef = useRef<HTMLInputElement>(null);
+  const importFormatRef = useRef<"json" | "xml">("json");
 
   const activeElement = element ?? selectedCharacter?.elements[0]?.key ?? null;
   const accentHex = activeElement ? ELEMENTS[activeElement].hex : "#c2a86a";
   const consonanceWeapon = activeElement ? selectedCharacter?.consonanceByElement[activeElement] ?? null : null;
   const key = selectedCharacter ? draftKey(selectedCharacter.id, activeElement) : "";
+  const centerMods = useMemo(
+    () => options.mods.filter((item) => isCenterDemonWedgeItemId(item.id)),
+    [options.mods],
+  );
 
   useEffect(() => {
     if (!editing) return;
@@ -214,7 +230,8 @@ export function CommunityBuildBuilderClient({
         return found && item ? { position: slot.position, item, track: found.track ?? item.polarity } : slot;
       }),
     );
-    setCenterItem(itemById(options.mods, next.demonWedges.centerItemId));
+    const nextCenterItem = itemById(options.mods, next.demonWedges.centerItemId);
+    setCenterItem(nextCenterItem && isCenterDemonWedgeItemId(nextCenterItem.id) ? nextCenterItem : null);
     setConsonanceSlots(
       emptyWedgeSlots(4).map((slot) => {
         const id = next.consonanceWeapon?.slots[slot.position - 1];
@@ -312,6 +329,10 @@ export function CommunityBuildBuilderClient({
   function pickMod(item: DnaPickerItem) {
     if (!editing) return;
     if (editing.kind === "center") {
+      if (!isCenterDemonWedgeItemId(item.id)) {
+        setMessage("Ce Demon Wedge ne peut pas etre place au centre du build.");
+        return;
+      }
       setCenterItem(item);
     } else if (editing.kind === "demon") {
       setDemonSlots((slots) =>
@@ -385,6 +406,91 @@ export function CommunityBuildBuilderClient({
     }
     setStatus("saved");
     setMessage("Build publié. Il apparaîtra dans les alternatives communauté.");
+  }
+
+  function currentExport() {
+    if (!selectedCharacter) return null;
+
+    try {
+      const exported = createCommunityBuildExport({
+        characterId: selectedCharacter.id,
+        element: activeElement,
+        title: title || `${selectedCharacter.name} build`,
+        note,
+        payload,
+      });
+      const validated = validateCommunityBuildExport(exported, options);
+      if (!validated.ok) {
+        setMessage(validated.errors.slice(0, 3).join(" "));
+        return null;
+      }
+
+      return validated.data;
+    } catch {
+      setMessage("Le build courant ne peut pas etre exporte.");
+      return null;
+    }
+  }
+
+  function downloadBuild(format: "json" | "xml") {
+    const exported = currentExport();
+    if (!exported) return;
+
+    const text = format === "json" ? serializeBuildJson(exported) : serializeBuildXml(exported);
+    const blob = new Blob([text], {
+      type: format === "json" ? "application/json;charset=utf-8" : "application/xml;charset=utf-8",
+    });
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement("a");
+    anchor.href = url;
+    anchor.download = `${exported.characterId}-${exported.element ?? "build"}.${format}`;
+    anchor.click();
+    URL.revokeObjectURL(url);
+    setMessage(`Export ${format.toUpperCase()} pret.`);
+  }
+
+  function openImport(format: "json" | "xml") {
+    importFormatRef.current = format;
+    importInputRef.current?.click();
+  }
+
+  async function importBuild(event: ChangeEvent<HTMLInputElement>) {
+    const file = event.currentTarget.files?.[0] ?? null;
+    event.currentTarget.value = "";
+    if (!file) return;
+
+    const format = importFormatRef.current;
+    const text = await file.text();
+    const parsed =
+      format === "json" ? parseBuildJsonText(text, options) : parseBuildXmlText(text, options);
+
+    if (!parsed.ok) {
+      setMessage(parsed.errors.slice(0, 3).join(" "));
+      return;
+    }
+
+    const imported = parsed.data;
+    const updatedAt = new Date().toISOString();
+    const importedDraft: StoredDraft = {
+      title: imported.title,
+      note: imported.note ?? "",
+      payload: imported.payload,
+      updatedAt,
+    };
+
+    window.localStorage.setItem(draftKey(imported.characterId, imported.element), JSON.stringify(importedDraft));
+    hydratedRef.current = false;
+    setCharacterId(imported.characterId);
+    setElement(imported.element);
+    setTitle(imported.title);
+    setNote(imported.note ?? "");
+    applyPayload(imported.payload);
+    setStatus("saved");
+    setSavedAt(new Date(updatedAt).toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" }));
+    setMessage("Build importe.");
+    window.setTimeout(() => {
+      hydratedRef.current = true;
+    }, 0);
   }
 
   if (!selectedCharacter) {
@@ -522,6 +628,51 @@ export function CommunityBuildBuilderClient({
         </DnaPanel>
 
         <DnaPanel className="p-4">
+          <DnaSectionLabel>Import / Export</DnaSectionLabel>
+          <div className="mt-3 grid grid-cols-2 gap-2">
+            <DnaButton
+              variant="ghost"
+              className="px-3"
+              icon={<Download className="h-4 w-4" />}
+              onClick={() => downloadBuild("json")}
+            >
+              JSON
+            </DnaButton>
+            <DnaButton
+              variant="ghost"
+              className="px-3"
+              icon={<Download className="h-4 w-4" />}
+              onClick={() => downloadBuild("xml")}
+            >
+              XML
+            </DnaButton>
+            <DnaButton
+              variant="ghost"
+              className="px-3"
+              icon={<Upload className="h-4 w-4" />}
+              onClick={() => openImport("json")}
+            >
+              JSON
+            </DnaButton>
+            <DnaButton
+              variant="ghost"
+              className="px-3"
+              icon={<Upload className="h-4 w-4" />}
+              onClick={() => openImport("xml")}
+            >
+              XML
+            </DnaButton>
+          </div>
+          <input
+            ref={importInputRef}
+            type="file"
+            accept=".json,.xml,application/json,text/xml,application/xml"
+            className="hidden"
+            onChange={importBuild}
+          />
+        </DnaPanel>
+
+        <DnaPanel className="p-4">
           <DnaSectionLabel>Publication</DnaSectionLabel>
           <div className="mt-3 flex flex-col gap-2">
             {isAuthenticated ? (
@@ -555,12 +706,19 @@ export function CommunityBuildBuilderClient({
             onClick={(event) => event.stopPropagation()}
           >
             <div className="mb-3 flex items-center justify-between gap-3">
-              <h3 className="font-caps text-xs uppercase tracking-[0.18em] text-gold">Choisir un MOD</h3>
+              <h3 className="font-caps text-xs uppercase tracking-[0.18em] text-gold">
+                {editing.kind === "center" ? "Choisir un MOD central" : "Choisir un MOD"}
+              </h3>
               <DnaButton onClick={() => setEditing(null)} className="px-3 py-1.5 text-xs">
                 Fermer
               </DnaButton>
             </div>
-            <DnaItemPicker items={options.mods} columns={6} minColumnWidth="8.25rem" onSelect={pickMod} />
+            <DnaItemPicker
+              items={editing.kind === "center" ? centerMods : options.mods}
+              columns={6}
+              minColumnWidth="8.25rem"
+              onSelect={pickMod}
+            />
           </div>
         </div>,
         document.body,

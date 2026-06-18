@@ -370,7 +370,7 @@ function DemonWedgeSlotCard({
         <img
           src={icon}
           alt={name}
-          className="h-14 w-14 object-contain drop-shadow-lg sm:h-[4.5rem] sm:w-[4.5rem]"
+          className="h-16 w-16 object-contain drop-shadow-lg sm:h-20 sm:w-20"
         />
       </div>
       {polarityIconSrc && (
@@ -451,7 +451,7 @@ function DemonWedgeCenterSlot({
     <div className="relative h-28 w-28 sm:h-32 sm:w-32">
       <img src={circleSrc} alt="" className="absolute inset-0 h-full w-full object-contain opacity-60" />
       <img src={ARMORY_MOD_GLOW} alt="" className="absolute inset-0 h-full w-full object-contain opacity-30" />
-      <img src={icon} alt={name ?? ""} className="absolute inset-[18%] h-[64%] w-[64%] object-contain drop-shadow-lg" />
+      <img src={icon} alt={name ?? ""} className="absolute inset-[12%] h-[76%] w-[76%] object-contain drop-shadow-lg" />
     </div>
   );
 
@@ -1362,7 +1362,7 @@ function BuildTabContent({
                   style={{ clipPath: clip, background: "linear-gradient(135deg, rgba(15,23,42,0.9), rgba(30,20,50,0.95))" }}
                 >
                   <div className="absolute inset-0 bg-gradient-to-b from-electro/15 to-electro/30" style={{ clipPath: clip }} />
-                  <img src={s.icon} alt={s.name} className="h-14 w-14 object-contain drop-shadow-lg sm:h-[4.5rem] sm:w-[4.5rem]" />
+                  <img src={s.icon} alt={s.name} className="h-16 w-16 object-contain drop-shadow-lg sm:h-20 sm:w-20" />
                 </div>
               );
               return (
