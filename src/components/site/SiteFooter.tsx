@@ -15,6 +15,7 @@ export default async function SiteFooter({ active }: { active?: string }) {
   const tNav = await getTranslations("nav");
   const tCommon = await getTranslations("common");
   const tLegal = await getTranslations("legal");
+  const tPrivacy = await getTranslations("privacy");
 
   const navLabels: Record<string, string> = {
     [NAVIGATION.map]: tNav("map"),
@@ -74,12 +75,18 @@ export default async function SiteFooter({ active }: { active?: string }) {
             {tLegal("disclaimerFull")}{" "}
             <span className="mt-1 block">{tLegal("disclaimerFullEn")}</span>
           </p>
-          <p className="mt-3">
+          <p className="mt-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
             <Link
               href="/changelog"
               className="font-caps text-[0.62rem] uppercase tracking-[0.16em] text-gold underline underline-offset-2 transition-colors hover:text-gold-bright"
             >
               {tCommon("viewChangelog")}
+            </Link>
+            <Link
+              href="/confidentialite"
+              className="font-caps text-[0.62rem] uppercase tracking-[0.16em] text-gold underline underline-offset-2 transition-colors hover:text-gold-bright"
+            >
+              {tPrivacy("navLabel")}
             </Link>
           </p>
         </div>

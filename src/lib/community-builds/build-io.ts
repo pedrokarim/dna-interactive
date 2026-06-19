@@ -218,6 +218,42 @@ export function serializeBuildJson(data: CommunityBuildExport) {
   return JSON.stringify(data, null, 2);
 }
 
+// --- Lien auto-portant : le build est encodé (base64url) dans l'URL, sans DB,
+// pour le partager même non publié et sans compte. ---
+function toBase64Url(str: string): string {
+  const bytes = new TextEncoder().encode(str);
+  let binary = "";
+  for (const byte of bytes) binary += String.fromCharCode(byte);
+  return btoa(binary).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+}
+
+function fromBase64Url(param: string): string {
+  const b64 = param.replace(/-/g, "+").replace(/_/g, "/");
+  const binary = atob(b64);
+  const bytes = Uint8Array.from(binary, (c) => c.charCodeAt(0));
+  return new TextDecoder().decode(bytes);
+}
+
+export function encodeBuildParam(data: CommunityBuildExport): string {
+  return toBase64Url(JSON.stringify(data));
+}
+
+export function decodeBuildParam(param: string, options: BuilderOptions): ParseResult {
+  let text: string;
+  try {
+    text = fromBase64Url(param);
+  } catch {
+    return { ok: false, errors: ["Le lien de build n'est pas valide."] };
+  }
+  const sizeError = ensureReasonableImportSize(text);
+  if (sizeError) return { ok: false, errors: [sizeError] };
+  try {
+    return validateCommunityBuildExport(JSON.parse(text), options);
+  } catch {
+    return { ok: false, errors: ["Le lien de build n'est pas valide."] };
+  }
+}
+
 export function serializeBuildXml(data: CommunityBuildExport) {
   const document = window.document.implementation.createDocument("", "dnaCommunityBuild");
   const root = document.documentElement;

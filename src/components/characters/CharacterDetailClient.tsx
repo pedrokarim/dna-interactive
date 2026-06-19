@@ -11,16 +11,21 @@ import {
   ChevronDown,
   ChevronLeft,
   ChevronRight,
+  Copy,
   FileImage,
   Eye,
+  Flag,
+  GitFork,
   Heart,
   Image as ImageIcon,
   Languages,
   Layers,
+  Pencil,
   Settings,
   Shield,
   Sparkles,
   Swords,
+  Trash2,
   Users,
   X,
   ZoomIn,
@@ -29,7 +34,7 @@ import {
 } from "lucide-react";
 import QuickBuildModal, { QuickBuildCard } from "@/components/characters/QuickBuildModal";
 import { useAtom } from "jotai";
-import { parseAsBoolean, parseAsStringLiteral, useQueryState } from "nuqs";
+import { parseAsBoolean, parseAsString, parseAsStringLiteral, useQueryState } from "nuqs";
 import {
   getActiveCharacterView,
   getAllCharacters,
@@ -986,6 +991,9 @@ function SkillsTabContent({
 // If the URL lands with the param set to "open", we auto-scroll to it once.
 // ---------------------------------------------------------------------------
 
+// Mappe les locales du site vers des tags BCP-47 pour toLocaleDateString.
+const DATE_LOCALE: Record<string, string> = { en: "en", fr: "fr", de: "de", es: "es", jp: "ja", kr: "ko", tc: "zh-TW" };
+
 function QuickBuildAccordion({
   character,
   build,
@@ -995,6 +1003,7 @@ function QuickBuildAccordion({
   build: CharacterBuild;
   lang: string;
 }) {
+  const tcb = useTranslations("communityBuilds");
   const [open, setOpen] = useQueryState(
     "build",
     parseAsBoolean.withDefault(false).withOptions({ clearOnDefault: true }),
@@ -1047,7 +1056,7 @@ function QuickBuildAccordion({
       >
         <span className="flex items-center gap-2 text-sm font-medium text-gold">
           <FileImage className="h-4 w-4 text-gold" />
-          Carte build partageable
+          {tcb("shareableCard")}
         </span>
         <div className="flex items-center gap-3">
           {open && (
@@ -1058,7 +1067,7 @@ function QuickBuildAccordion({
               onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); e.stopPropagation(); handleDownload(); } }}
               className="inline-flex cursor-pointer items-center gap-1.5 border border-gold/40 bg-gold/15 px-2.5 py-1 text-xs font-medium text-gold transition-colors hover:bg-gold/30"
             >
-              {downloading ? "Export..." : "Telecharger PNG"}
+              {downloading ? tcb("exporting") : tcb("downloadPng")}
             </span>
           )}
           <ChevronDown
@@ -1094,6 +1103,8 @@ function CommunityBuildsSection({
   characterElement: string;
   selectedLanguage: string;
 }) {
+  const tcb = useTranslations("communityBuilds");
+  const locale = useLocale();
   const [sort, setSort] = useState<"top" | "recent">("top");
   const [page, setPage] = useState(1);
   const [builds, setBuilds] = useState<CommunityBuildListItem[]>([]);
@@ -1106,6 +1117,10 @@ function CommunityBuildsSection({
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState<string | null>(null);
   const [selectedBuild, setSelectedBuild] = useState<CommunityBuildListItem | null>(null);
+  const [communityBuildId, setCommunityBuildId] = useQueryState(
+    "communityBuildId",
+    parseAsString.withDefault("").withOptions({ clearOnDefault: true }),
+  );
 
   useEffect(() => {
     let cancelled = false;
@@ -1133,7 +1148,7 @@ function CommunityBuildsSection({
         setMessage(null);
       })
       .catch(() => {
-        if (!cancelled) setMessage("Impossible de charger les alternatives communauté.");
+        if (!cancelled) setMessage(tcb("loadError"));
       })
       .finally(() => {
         if (!cancelled) setLoading(false);
@@ -1158,6 +1173,73 @@ function CommunityBuildsSection({
     [selectedBuild, selectedLanguage],
   );
 
+  const openBuild = useCallback(
+    (build: CommunityBuildListItem) => {
+      setSelectedBuild(build);
+      void setCommunityBuildId(build.id);
+    },
+    [setCommunityBuildId],
+  );
+
+  const closeBuild = useCallback(() => {
+    setSelectedBuild(null);
+    void setCommunityBuildId("");
+  }, [setCommunityBuildId]);
+
+  useEffect(() => {
+    if (!communityBuildId) return;
+    if (selectedBuild?.id === communityBuildId) return;
+
+    const localBuild = builds.find((build) => build.id === communityBuildId);
+    if (localBuild) {
+      const handle = window.setTimeout(() => setSelectedBuild(localBuild), 0);
+      return () => window.clearTimeout(handle);
+    }
+
+    let cancelled = false;
+    fetch(`/api/builds/${communityBuildId}`)
+      .then(async (response) => {
+        const data = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(data.error ?? tcb("buildNotFound"));
+        return data.build as CommunityBuildListItem;
+      })
+      .then((build) => {
+        if (cancelled) return;
+        if (build.characterId !== character.id) {
+          setMessage(tcb("linkWrongCharacter"));
+          return;
+        }
+        if (build.element && build.element !== characterElement) {
+          setMessage(tcb("buildOnOtherElement"));
+          return;
+        }
+        setSelectedBuild(build);
+        setMessage(null);
+      })
+      .catch((error: Error) => {
+        if (!cancelled) setMessage(error.message || tcb("communityBuildNotFound"));
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [builds, character.id, characterElement, communityBuildId, selectedBuild]);
+
+  function handleBuildDeleted(buildId: string) {
+    setBuilds((current) => current.filter((build) => build.id !== buildId));
+    setPagination((current) => {
+      const total = Math.max(current.total - 1, 0);
+      return {
+        ...current,
+        total,
+        totalPages: Math.max(1, Math.ceil(total / current.pageSize)),
+      };
+    });
+    setSelectedBuild(null);
+    void setCommunityBuildId("");
+    setMessage(tcb("buildDeleted"));
+  }
+
   async function toggleVote(build: CommunityBuildListItem, next: boolean) {
     setBuilds((current) =>
       current.map((item) =>
@@ -1174,7 +1256,7 @@ function CommunityBuildsSection({
     const response = await fetch(`/api/builds/${build.id}/vote`, { method: next ? "POST" : "DELETE" });
     if (!response.ok) {
       setBuilds((current) => current.map((item) => (item.id === build.id ? build : item)));
-      setMessage("Connexion Discord requise pour voter.");
+      setMessage(tcb("loginToVote"));
       return;
     }
 
@@ -1194,9 +1276,9 @@ function CommunityBuildsSection({
         <div>
           <h2 className="flex items-center gap-2 text-base font-semibold text-parch md:text-lg">
             <Users className="h-4 w-4 text-gold/80" />
-            Alternatives communauté
+            {tcb("sectionTitle")}
           </h2>
-          <p className="mt-1 font-sans text-xs text-muted">Builds publiés par les joueurs.</p>
+          <p className="mt-1 font-sans text-xs text-muted">{tcb("sectionSubtitle")}</p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <DnaSegmented
@@ -1207,15 +1289,15 @@ function CommunityBuildsSection({
               setPage(1);
             }}
             options={[
-              { value: "top", label: "Top" },
-              { value: "recent", label: "Récent" },
+              { value: "top", label: tcb("sortTop") },
+              { value: "recent", label: tcb("sortRecent") },
             ]}
           />
           <Link
             href={NAVIGATION.builder}
             className="inline-flex items-center justify-center border border-gold/40 bg-gold/10 px-3 py-2 font-caps text-[0.62rem] uppercase tracking-[0.16em] text-gold transition-colors hover:border-gold hover:text-gold-bright"
           >
-            Proposer
+            {tcb("propose")}
           </Link>
         </div>
       </div>
@@ -1226,14 +1308,14 @@ function CommunityBuildsSection({
         {loading ? (
           <p className="font-sans text-sm text-muted">Chargement...</p>
         ) : builds.length === 0 ? (
-          <p className="font-sans text-sm text-muted">Aucune alternative communauté pour cet élément.</p>
+          <p className="font-sans text-sm text-muted">{tcb("emptyForElement")}</p>
         ) : (
           cards.map(({ build, preview }, index) => (
             <DnaCommunityBuildCard
               key={build.id}
               title={build.title}
               author={{ name: build.authorName ?? "Discord", avatar: build.authorImage }}
-              date={new Date(build.updatedAt ?? build.createdAt).toLocaleDateString("fr-FR", {
+              date={new Date(build.updatedAt ?? build.createdAt).toLocaleDateString(DATE_LOCALE[locale] ?? locale, {
                 day: "2-digit",
                 month: "short",
                 year: "numeric",
@@ -1244,7 +1326,11 @@ function CommunityBuildsSection({
               onVote={(next) => void toggleVote(build, next)}
               weapons={preview.weapons}
               genimons={preview.genimons}
-              onOpen={() => setSelectedBuild(build)}
+              officialLabel={tcb("officialTier")}
+              communityLabel={tcb("community")}
+              openLabel={tcb("viewBuild")}
+              voteLabels={{ vote: tcb("voteAction"), remove: tcb("removeVote"), login: tcb("loginVote") }}
+              onOpen={() => openBuild(build)}
             />
           ))
         )}
@@ -1253,7 +1339,7 @@ function CommunityBuildsSection({
       {!loading && pagination.totalPages > 1 ? (
         <div className="mt-4 flex flex-col gap-2 border-t border-white/10 pt-3 sm:flex-row sm:items-center sm:justify-between">
           <p className="font-sans text-xs text-muted">
-            Page {pagination.page}/{pagination.totalPages} · {pagination.total} builds
+            {tcb("pageInfo", { page: pagination.page, totalPages: pagination.totalPages, total: pagination.total })}
           </p>
           <div className="flex items-center gap-2">
             <DnaButton
@@ -1264,7 +1350,7 @@ function CommunityBuildsSection({
                 setPage((current) => Math.max(1, current - 1));
               }}
             >
-              Précédent
+              {tcb("prev")}
             </DnaButton>
             <DnaButton
               className="px-3 py-1.5 text-xs"
@@ -1274,20 +1360,21 @@ function CommunityBuildsSection({
                 setPage((current) => Math.min(pagination.totalPages, current + 1));
               }}
             >
-              Suivant
+              {tcb("next")}
             </DnaButton>
           </div>
         </div>
       ) : null}
 
-      {selectedBuild && selectedDisplayBuild ? (
+      {communityBuildId && selectedBuild && selectedDisplayBuild ? (
         <CommunityBuildPreviewModal
           build={selectedBuild}
           displayBuild={selectedDisplayBuild}
           character={character}
           characterElement={characterElement}
           selectedLanguage={selectedLanguage}
-          onClose={() => setSelectedBuild(null)}
+          onClose={closeBuild}
+          onBuildDeleted={handleBuildDeleted}
         />
       ) : null}
     </section>
@@ -1301,6 +1388,7 @@ function CommunityBuildPreviewModal({
   characterElement,
   selectedLanguage,
   onClose,
+  onBuildDeleted,
 }: {
   build: CommunityBuildListItem;
   displayBuild: CharacterBuild;
@@ -1308,35 +1396,104 @@ function CommunityBuildPreviewModal({
   characterElement: string;
   selectedLanguage: string;
   onClose: () => void;
+  onBuildDeleted: (buildId: string) => void;
 }) {
+  const tcb = useTranslations("communityBuilds");
+  const [actionMessage, setActionMessage] = useState<string | null>(null);
+  const [reportOpen, setReportOpen] = useState(false);
+  const [reportReason, setReportReason] = useState("");
+  const [actionBusy, setActionBusy] = useState<"delete" | "report" | null>(null);
+
   if (typeof document === "undefined") return null;
+
+  const actionButtonClass =
+    "inline-flex items-center justify-center gap-1.5 border border-white/15 bg-white/[0.04] px-3 py-2 font-caps text-[0.58rem] uppercase tracking-[0.14em] text-parch/85 transition-colors hover:border-gold/45 hover:text-gold-bright disabled:cursor-not-allowed disabled:opacity-50";
+  const builderImportHref = `${NAVIGATION.builder}?importBuildId=${build.id}`;
+  const builderEditHref = `${NAVIGATION.builder}?editBuildId=${build.id}`;
+
+  async function copyPermalink() {
+    const url = new URL(window.location.href);
+    url.searchParams.set("tab", "build");
+    url.searchParams.set("communityBuildId", build.id);
+
+    try {
+      await navigator.clipboard.writeText(url.toString());
+      setActionMessage(tcb("linkCopied"));
+    } catch {
+      setActionMessage(url.toString());
+    }
+  }
+
+  async function deleteBuild() {
+    if (!window.confirm(tcb("deleteConfirm"))) return;
+
+    setActionBusy("delete");
+    setActionMessage(null);
+    const response = await fetch(`/api/builds/${build.id}`, { method: "DELETE" });
+    const data = await response.json().catch(() => ({}));
+    setActionBusy(null);
+
+    if (!response.ok) {
+      setActionMessage(data.error ?? "Suppression impossible.");
+      return;
+    }
+
+    onBuildDeleted(build.id);
+  }
+
+  async function reportBuild() {
+    const reason = reportReason.trim();
+    if (reason.length < 3) {
+      setActionMessage("Ajoute une raison un peu plus précise.");
+      return;
+    }
+
+    setActionBusy("report");
+    setActionMessage(null);
+    const response = await fetch(`/api/builds/${build.id}/report`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ reason }),
+    });
+    const data = await response.json().catch(() => ({}));
+    setActionBusy(null);
+
+    if (!response.ok) {
+      setActionMessage(data.error ?? tcb("reportFailed"));
+      return;
+    }
+
+    setReportOpen(false);
+    setReportReason("");
+    setActionMessage(tcb("reportSent"));
+  }
 
   return createPortal(
     <div
       className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-ink/85 p-3 backdrop-blur-sm md:p-6"
       role="dialog"
       aria-modal="true"
-      aria-label={`Build communautaire : ${build.title}`}
+      aria-label={tcb("ariaModal", { title: build.title })}
     >
       <div className="relative my-4 w-full max-w-6xl border border-gold/25 bg-ink shadow-[0_30px_80px_rgba(0,0,0,0.72)]">
         <div className="sticky top-0 z-20 border-b border-white/10 bg-ink/95 px-4 py-3 backdrop-blur md:px-5">
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
               <p className="font-caps text-[0.62rem] uppercase tracking-[0.2em] text-gold">
-                Build communauté
+                {tcb("modalKicker")}
               </p>
               <h2 className="mt-1 truncate font-display text-xl text-parch md:text-2xl">
                 {build.title}
               </h2>
               <p className="mt-1 text-xs text-muted">
-                Par {build.authorName ?? "Discord"} · {build.voteCount} vote{build.voteCount > 1 ? "s" : ""}
+                {tcb("byAuthor", { author: build.authorName ?? "Discord" })} · {tcb("votes", { count: build.voteCount })}
               </p>
             </div>
             <button
               type="button"
               onClick={onClose}
               className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-white/10 text-parch/80 transition-colors hover:border-gold/40 hover:text-parch"
-              aria-label="Fermer le build communautaire"
+              aria-label={tcb("closeModal")}
             >
               <X className="h-4 w-4" />
             </button>
@@ -1344,6 +1501,68 @@ function CommunityBuildPreviewModal({
           {build.note ? (
             <p className="mt-3 max-w-3xl text-sm leading-relaxed text-parch/80">{build.note}</p>
           ) : null}
+
+          <div className="mt-3 flex flex-wrap items-center gap-2">
+            <button type="button" onClick={copyPermalink} className={actionButtonClass}>
+              <Copy className="h-3.5 w-3.5" />
+              {tcb("copyLink")}
+            </button>
+            <Link href={builderImportHref} className={actionButtonClass}>
+              <GitFork className="h-3.5 w-3.5" />
+              {tcb("useAsBase")}
+            </Link>
+            {build.editableByMe ? (
+              <>
+                <Link href={builderEditHref} className={actionButtonClass}>
+                  <Pencil className="h-3.5 w-3.5" />
+                  {tcb("edit")}
+                </Link>
+                <button
+                  type="button"
+                  onClick={deleteBuild}
+                  disabled={actionBusy === "delete"}
+                  className="inline-flex items-center justify-center gap-1.5 border border-crimson-bright/35 bg-crimson-bright/10 px-3 py-2 font-caps text-[0.58rem] uppercase tracking-[0.14em] text-crimson-bright transition-colors hover:border-crimson-bright hover:bg-crimson-bright/18 disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  <Trash2 className="h-3.5 w-3.5" />
+                  {actionBusy === "delete" ? tcb("deleting") : tcb("delete")}
+                </button>
+              </>
+            ) : (
+              <button type="button" onClick={() => setReportOpen((open) => !open)} className={actionButtonClass}>
+                <Flag className="h-3.5 w-3.5" />
+                {tcb("report")}
+              </button>
+            )}
+          </div>
+
+          {reportOpen ? (
+            <div className="mt-3 max-w-2xl border border-white/10 bg-black/20 p-3">
+              <label className="flex flex-col gap-2">
+                <span className="font-caps text-[0.58rem] uppercase tracking-[0.16em] text-muted">{tcb("reportReasonLabel")}</span>
+                <textarea
+                  value={reportReason}
+                  onChange={(event) => setReportReason(event.target.value)}
+                  maxLength={160}
+                  placeholder={tcb("reportPlaceholder")}
+                  className="min-h-20 w-full resize-y border border-white/15 bg-ink/80 px-3 py-2 font-sans text-sm text-parch outline-none placeholder:text-muted-2 focus:border-gold"
+                />
+              </label>
+              <div className="mt-2 flex flex-wrap items-center justify-between gap-2">
+                <span className="font-sans text-[0.68rem] text-muted-2">{reportReason.trim().length}/160</span>
+                <button
+                  type="button"
+                  onClick={reportBuild}
+                  disabled={actionBusy === "report" || reportReason.trim().length < 3}
+                  className={actionButtonClass}
+                >
+                  <Flag className="h-3.5 w-3.5" />
+                  {actionBusy === "report" ? tcb("sending") : tcb("send")}
+                </button>
+              </div>
+            </div>
+          ) : null}
+
+          {actionMessage ? <p className="mt-2 break-words font-sans text-xs text-gold">{actionMessage}</p> : null}
         </div>
 
         <div className="p-3 md:p-5">
@@ -1353,7 +1572,7 @@ function CommunityBuildPreviewModal({
             characterElement={characterElement}
             selectedLanguage={selectedLanguage}
             showCommunityBuilds={false}
-            showQuickBuildCard={false}
+            showQuickBuildCard={true}
             skillIcons={character.skillIcons}
           />
         </div>
@@ -1372,6 +1591,7 @@ function BuildTabContent({
   skillIcons,
   showCommunityBuilds = true,
   showQuickBuildCard = true,
+  officialHeader = false,
 }: {
   builds: CharacterBuild[];
   character: CharacterRecord;
@@ -1381,8 +1601,11 @@ function BuildTabContent({
   skillIcons?: { skill1: { publicPath: string | null }; skill2: { publicPath: string | null }; skill3: { publicPath: string | null } };
   showCommunityBuilds?: boolean;
   showQuickBuildCard?: boolean;
+  /** Affiche l'en-tête de tier « Officiel » au-dessus du build curé (fiche perso). */
+  officialHeader?: boolean;
 }) {
   const t = useTranslations('characterDetail');
+  const tcb = useTranslations('communityBuilds');
   const [activeBuildIndex, setActiveBuildIndex] = useState(0);
   const [showTrackAdjust, setShowTrackAdjust] = useState(true);
 
@@ -1419,6 +1642,16 @@ function BuildTabContent({
 
   return (
     <div className="space-y-3 md:space-y-5">
+      {/* Tier « Officiel » — distingue le build curé des alternatives communauté. */}
+      {officialHeader ? (
+        <div className="flex items-center gap-2 border-l-2 border-gold/60 bg-gold/5 px-3 py-2">
+          <span className="inline-flex items-center rounded-sm border border-gold/50 bg-gold/15 px-2 py-0.5 font-caps text-[0.55rem] uppercase tracking-[0.16em] text-gold">
+            {tcb("officialTier")}
+          </span>
+          <span className="font-sans text-xs text-muted">{tcb("officialDesc")}</span>
+        </div>
+      ) : null}
+
       {/* Build selector (if multiple) */}
       {builds.length > 1 && (
         <div className="flex flex-wrap gap-2">
@@ -1916,6 +2149,7 @@ export default function CharacterDetailClient({
 }: CharacterDetailClientProps) {
   const t = useTranslations('characterDetail');
   const tc = useTranslations('common');
+  const tcb = useTranslations('communityBuilds');
   const [favoriteChars] = useAtom(charactersFavoritesAtom);
   const [, toggleFavorite] = useAtom(toggleCharacterFavoriteAtom);
 
@@ -2204,7 +2438,7 @@ export default function CharacterDetailClient({
               className="inline-flex items-center gap-2 border border-white/10 bg-ink/35 px-3 py-2 text-sm text-parch transition-colors hover:border-gold/40 hover:text-gold"
             >
               <Eye className="h-4 w-4" />
-              Builds communauté
+              {tcb("communityBuildsButton")}
             </button>
           </div>
 
@@ -2792,6 +3026,7 @@ export default function CharacterDetailClient({
           selectedLanguage={selectedLanguage}
           onNavigateToStats={() => setActiveTab("stats")}
           skillIcons={character.skillIcons}
+          officialHeader={activeBuilds.length > 0}
         />
       )}
 

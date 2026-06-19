@@ -128,8 +128,15 @@ export function validateBuildReferences(input: CreateBuildInput | DraftInput): s
       errors.push("Ce Demon Wedge ne peut pas etre place au centre du build.");
     }
   }
-  for (const slot of input.payload.consonanceWeapon?.slots ?? []) {
+  const consonanceSlots = input.payload.consonanceWeapon?.slots ?? [];
+  for (const slot of consonanceSlots) {
     checkItem("mods", slot, "MOD de consonance");
+  }
+  if (consonanceSlots.length > 0 && character) {
+    const consonances = (character as { consonanceWeapons?: unknown[] }).consonanceWeapons;
+    if (!Array.isArray(consonances) || consonances.length === 0) {
+      errors.push("Ce personnage n'a pas d'arme de consonance.");
+    }
   }
   for (const teammate of input.payload.team) {
     if (!getCharacterById(teammate.characterId)) {

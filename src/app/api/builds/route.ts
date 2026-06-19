@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { and, count, desc, eq, inArray, isNull, or } from "drizzle-orm";
+import { and, count, desc, eq, inArray, isNull, or, sql } from "drizzle-orm";
 import { getDb, schema } from "@/db";
 import { getCurrentUser } from "@/lib/auth/session";
 import { isMissingTableError } from "@/lib/db-errors";
@@ -148,32 +148,36 @@ export async function POST(request: NextRequest) {
   }
 
   const db = getDb();
-  const [quota] = await db
-    .select({ value: count() })
-    .from(schema.builds)
-    .where(and(eq(schema.builds.userId, user.id), eq(schema.builds.characterId, parsed.data.characterId)));
+  // Insertion atomique : la limite de 3 builds/perso est appliquée DANS la
+  // requête (INSERT ... SELECT ... WHERE count < 3), pour éviter la course
+  // entre un COUNT et un INSERT séparés — neon-http n'a pas de transaction
+  // interactive. 0 ligne renvoyée ⇒ quota atteint.
+  const result = await db.execute(sql`
+    INSERT INTO ${schema.builds} (user_id, character_id, element, title, note, payload)
+    SELECT ${user.id}, ${parsed.data.characterId}, ${parsed.data.element ?? null},
+           ${parsed.data.title}, ${parsed.data.note ?? null}, ${JSON.stringify(parsed.data.payload)}::jsonb
+    WHERE (
+      SELECT count(*) FROM ${schema.builds}
+      WHERE user_id = ${user.id} AND character_id = ${parsed.data.characterId}
+    ) < ${MAX_BUILDS_PER_CHARACTER}
+    RETURNING
+      id,
+      user_id AS "userId",
+      character_id AS "characterId",
+      element, title, note, payload,
+      vote_count AS "voteCount",
+      hidden,
+      created_at AS "createdAt",
+      updated_at AS "updatedAt"
+  `);
 
-  if ((quota?.value ?? 0) >= MAX_BUILDS_PER_CHARACTER) {
+  const createdRows = result.rows as Array<Record<string, unknown>>;
+  if (createdRows.length === 0) {
     return NextResponse.json(
       { error: "Limite atteinte : 3 builds publiés maximum par personnage." },
       { status: 409 },
     );
   }
 
-  const now = new Date();
-  const [created] = await db
-    .insert(schema.builds)
-    .values({
-      userId: user.id,
-      characterId: parsed.data.characterId,
-      element: parsed.data.element ?? null,
-      title: parsed.data.title,
-      note: parsed.data.note ?? null,
-      payload: parsed.data.payload,
-      createdAt: now,
-      updatedAt: now,
-    })
-    .returning();
-
-  return NextResponse.json({ build: created }, { status: 201 });
+  return NextResponse.json({ build: createdRows[0] }, { status: 201 });
 }

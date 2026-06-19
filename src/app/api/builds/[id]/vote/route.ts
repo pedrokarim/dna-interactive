@@ -10,7 +10,7 @@ type RouteContext = { params: Promise<{ id: string }> };
 
 async function getPublicBuild(id: string) {
   const [build] = await getDb()
-    .select({ id: schema.builds.id, hidden: schema.builds.hidden })
+    .select({ id: schema.builds.id, hidden: schema.builds.hidden, userId: schema.builds.userId })
     .from(schema.builds)
     .where(eq(schema.builds.id, id))
     .limit(1);
@@ -31,6 +31,9 @@ export async function POST(_request: Request, { params }: RouteContext) {
   const { id } = await params;
   const build = await getPublicBuild(id);
   if (!build || build.hidden) return NextResponse.json({ error: "Build introuvable." }, { status: 404 });
+  if (build.userId === user.id) {
+    return NextResponse.json({ error: "Tu ne peux pas voter pour ton propre build." }, { status: 403 });
+  }
 
   const inserted = await getDb()
     .insert(schema.buildVotes)

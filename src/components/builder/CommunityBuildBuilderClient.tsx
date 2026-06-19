@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState, useSyncExternalStore, type ChangeEvent } from "react";
+import { useSearchParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { createPortal } from "react-dom";
-import { Download, Upload } from "lucide-react";
+import { Download, Upload, Link2, Share2 } from "lucide-react";
 import { BuilderCharacterPicker } from "@/components/builder/CharacterPicker";
 import { DnaButton } from "@/components/dna/Button";
 import { DnaConsonanceEditor } from "@/components/dna/ConsonanceEditor";
@@ -19,6 +21,8 @@ import { ELEMENTS, type ElementKey } from "@/components/dna/elements";
 import type { WedgeSlotData } from "@/components/dna/_wedge";
 import {
   createCommunityBuildExport,
+  decodeBuildParam,
+  encodeBuildParam,
   parseBuildJsonText,
   parseBuildXmlText,
   serializeBuildJson,
@@ -29,21 +33,8 @@ import { isCenterDemonWedgeItemId } from "@/lib/community-builds/center-wedges";
 import type { BuilderOptions } from "@/lib/community-builds/options";
 import type { CommunityBuildPayload } from "@/lib/community-builds/validation";
 
-const STATS_POOL: PriorityItem[] = [
-  { id: "ATK", label: "ATQ" },
-  { id: "CritRate", label: "Taux Crit." },
-  { id: "CritDmg", label: "Dégâts Crit." },
-  { id: "SkillDmg", label: "Dégâts de compétence" },
-  { id: "ElementDmg", label: "Dégâts élémentaires" },
-  { id: "HP", label: "PV" },
-  { id: "DEF", label: "DÉF" },
-];
-
-const SKILL_POOL: PriorityItem[] = [
-  { id: "skill-1", label: "Compétence 1", sublabel: "Attaque normale" },
-  { id: "skill-2", label: "Compétence 2", sublabel: "Esquive / outil" },
-  { id: "skill-3", label: "Compétence 3", sublabel: "Ultime" },
-];
+const STAT_IDS = ["ATK", "CritRate", "CritDmg", "SkillDmg", "ElementDmg", "HP", "DEF"] as const;
+const SKILL_IDS = ["skill-1", "skill-2", "skill-3"] as const;
 
 function subscribeMounted() {
   return () => undefined;
@@ -53,13 +44,67 @@ type EditingTarget =
   | { kind: "demon"; position: number }
   | { kind: "center" }
   | { kind: "consonance"; position: number }
+  | { kind: "team" }
   | null;
+
+type TeamMember = { character: DnaPickerItem; role: string };
+const TEAM_ROLES = ["DPS", "Sub-DPS", "Support", "Heal", "Tank"] as const;
+const DEFAULT_ROLE = "DPS";
 
 type StoredDraft = {
   title: string;
   note: string;
   payload: CommunityBuildPayload;
   updatedAt: string;
+};
+
+type ServerDraft = {
+  title: string | null;
+  note: string | null;
+  payload: CommunityBuildPayload;
+  updatedAt: string;
+};
+
+// État de réconciliation brouillon local ↔ serveur (§3.5 du cadrage).
+type ReconcileState =
+  | { kind: "conflict"; local: StoredDraft; server: ServerDraft }
+  | { kind: "import"; local: StoredDraft }
+  | null;
+
+// Sérialisation déterministe (clés triées) — nécessaire car jsonb ne préserve
+// pas l'ordre des clés, donc une comparaison brute donnerait de faux conflits.
+function stableStringify(value: unknown): string {
+  if (value === null || typeof value !== "object") return JSON.stringify(value) ?? "null";
+  if (Array.isArray(value)) return `[${value.map(stableStringify).join(",")}]`;
+  const obj = value as Record<string, unknown>;
+  return `{${Object.keys(obj)
+    .sort()
+    .map((k) => `${JSON.stringify(k)}:${stableStringify(obj[k])}`)
+    .join(",")}}`;
+}
+
+function sameDraftContent(
+  a: { title?: string | null; note?: string | null; payload: CommunityBuildPayload },
+  b: { title?: string | null; note?: string | null; payload: CommunityBuildPayload },
+): boolean {
+  return (
+    stableStringify({ title: a.title ?? "", note: a.note ?? "", payload: a.payload }) ===
+    stableStringify({ title: b.title ?? "", note: b.note ?? "", payload: b.payload })
+  );
+}
+
+function fmtDraftTime(value: string): string {
+  return new Date(value).toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
+}
+
+type LoadedCommunityBuild = {
+  id: string;
+  characterId: string;
+  element: string | null;
+  title: string;
+  note: string | null;
+  payload: CommunityBuildPayload;
+  editableByMe: boolean;
 };
 
 function emptyWedgeSlots(max: number): WedgeSlotData[] {
@@ -79,6 +124,10 @@ function itemById(pool: DnaPickerItem[], id: string | null | undefined): DnaPick
   return pool.find((item) => item.id === id) ?? null;
 }
 
+function asElementKey(value: string | null | undefined): ElementKey | null {
+  return value && value in ELEMENTS ? (value as ElementKey) : null;
+}
+
 export function CommunityBuildBuilderClient({
   options,
   isAuthenticated,
@@ -86,6 +135,29 @@ export function CommunityBuildBuilderClient({
   options: BuilderOptions;
   isAuthenticated: boolean;
 }) {
+  const searchParams = useSearchParams();
+  const t = useTranslations("builder");
+  const STATS_POOL = useMemo<PriorityItem[]>(
+    () => STAT_IDS.map((id) => ({ id, label: t(`statLabels.${id}`) })),
+    [t],
+  );
+  const SKILL_POOL = useMemo<PriorityItem[]>(
+    () => SKILL_IDS.map((id) => ({ id, label: t(`skillLabels.${id}`), sublabel: t(`skillSub.${id}`) })),
+    [t],
+  );
+  const teamPool = useMemo<DnaPickerItem[]>(
+    () =>
+      options.characters.map((c) => ({
+        id: c.id,
+        name: c.name,
+        icon: c.portrait ?? null,
+        rarity: c.rarity ?? null,
+        element: c.elements[0]?.key ?? c.element ?? null,
+      })),
+    [options.characters],
+  );
+  const roleLabel = (role: string) =>
+    role === "Support" ? t("roleSupport") : role === "Heal" ? t("roleHeal") : role === "Tank" ? t("roleTank") : role;
   const firstCharacter = options.characters[0];
   const [characterId, setCharacterId] = useState(firstCharacter?.id ?? "");
   const selectedCharacter = useMemo(
@@ -104,13 +176,19 @@ export function CommunityBuildBuilderClient({
   const [consonanceSlots, setConsonanceSlots] = useState<WedgeSlotData[]>(() => emptyWedgeSlots(4));
   const [statsPriority, setStatsPriority] = useState<PriorityItem[]>(STATS_POOL.slice(0, 3));
   const [skillPriority, setSkillPriority] = useState<PriorityItem[]>([SKILL_POOL[2], SKILL_POOL[0]]);
+  const [team, setTeam] = useState<TeamMember[]>([]);
+  const [canShareNative, setCanShareNative] = useState(false);
   const [editing, setEditing] = useState<EditingTarget>(null);
   const [status, setStatus] = useState<DraftState>("idle");
   const [savedAt, setSavedAt] = useState<string | undefined>();
+  const [reconcile, setReconcile] = useState<ReconcileState>(null);
   const [message, setMessage] = useState<string | null>(null);
   const [publishing, setPublishing] = useState(false);
+  const [editingBuildId, setEditingBuildId] = useState<string | null>(null);
   const canPortal = useSyncExternalStore(subscribeMounted, () => true, () => false);
   const hydratedRef = useRef(false);
+  const loadedSharedBuildRef = useRef<string | null>(null);
+  const loadedShareParamRef = useRef(false);
   const importInputRef = useRef<HTMLInputElement>(null);
   const importFormatRef = useRef<"json" | "xml">("json");
 
@@ -143,6 +221,7 @@ export function CommunityBuildBuilderClient({
 
   function selectCharacter(nextCharacterId: string) {
     const nextCharacter = options.characters.find((character) => character.id === nextCharacterId);
+    setEditingBuildId(null);
     setCharacterId(nextCharacterId);
     setElement(nextCharacter?.elements[0]?.key ?? null);
   }
@@ -182,7 +261,7 @@ export function CommunityBuildBuilderClient({
         skillIndex: Number(item.id.replace("skill-", "")) || undefined,
         priority: index + 1,
       })),
-      team: [],
+      team: team.map((member) => ({ characterId: member.character.id, role: member.role })),
     }),
     [
       activeElement,
@@ -195,6 +274,7 @@ export function CommunityBuildBuilderClient({
       rangedWeapons,
       skillPriority,
       statsPriority,
+      team,
     ],
   );
 
@@ -250,6 +330,14 @@ export function CommunityBuildBuilderClient({
         .map((entry) => SKILL_POOL.find((item) => item.label === entry.skillName || item.id === `skill-${entry.skillIndex}`))
         .filter((item): item is PriorityItem => item !== undefined),
     );
+    setTeam(
+      next.team
+        .map((entry) => {
+          const character = teamPool.find((c) => c.id === entry.characterId);
+          return character ? { character, role: entry.role } : null;
+        })
+        .filter((member): member is TeamMember => member !== null),
+    );
   }
 
   useEffect(() => {
@@ -264,8 +352,10 @@ export function CommunityBuildBuilderClient({
     setConsonanceSlots(emptyWedgeSlots(4));
     setStatsPriority(STATS_POOL.slice(0, 3));
     setSkillPriority([SKILL_POOL[2], SKILL_POOL[0]]);
+    setTeam([]);
     setStatus("idle");
     setSavedAt(undefined);
+    setReconcile(null);
     setMessage(null);
 
     if (key) {
@@ -289,6 +379,120 @@ export function CommunityBuildBuilderClient({
     }, 0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [key]);
+
+  // Réconciliation local ↔ serveur (§3.5) : à l'ouverture (et à la connexion),
+  // compare le brouillon local et le brouillon serveur. Si seul le serveur
+  // existe on le charge ; si seul le local existe on propose de le synchroniser ;
+  // si les deux diffèrent vraiment (comparaison de contenu, pas d'horodatage),
+  // on demande lequel reprendre.
+  useEffect(() => {
+    if (!selectedCharacter || !key || !isAuthenticated) return;
+    if (searchParams.get("editBuildId") || searchParams.get("importBuildId")) return;
+
+    let localDraft: StoredDraft | null = null;
+    try {
+      const raw = window.localStorage.getItem(key);
+      localDraft = raw ? (JSON.parse(raw) as StoredDraft) : null;
+    } catch {
+      localDraft = null;
+    }
+
+    let cancelled = false;
+    const params = new URLSearchParams({ characterId: selectedCharacter.id });
+    if (activeElement) params.set("element", activeElement);
+    fetch(`/api/drafts?${params.toString()}`)
+      .then((response) => (response.ok ? response.json() : null))
+      .then((data) => {
+        if (cancelled) return;
+        const server: ServerDraft | null = data?.draft ?? null;
+        if (!server) {
+          if (localDraft) setReconcile({ kind: "import", local: localDraft });
+          return;
+        }
+        if (!localDraft) {
+          applyStoredDraft(server);
+          return;
+        }
+        if (!sameDraftContent(localDraft, server)) {
+          setReconcile({ kind: "conflict", local: localDraft, server });
+        }
+      })
+      .catch(() => {});
+
+    return () => {
+      cancelled = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [key, isAuthenticated, selectedCharacter, activeElement]);
+
+  useEffect(() => {
+    const editBuildId = searchParams.get("editBuildId");
+    const importBuildId = searchParams.get("importBuildId");
+    const mode = editBuildId ? "edit" : importBuildId ? "import" : null;
+    const buildId = editBuildId ?? importBuildId;
+    if (!mode || !buildId) return;
+
+    const loadKey = `${mode}:${buildId}`;
+    if (loadedSharedBuildRef.current === loadKey) return;
+    loadedSharedBuildRef.current = loadKey;
+
+    let cancelled = false;
+    setMessage(mode === "edit" ? t("editLoading") : t("baseLoadingMsg"));
+
+    fetch(`/api/builds/${buildId}`)
+      .then(async (response) => {
+        const data = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(data.error ?? "Build introuvable.");
+        return data.build as LoadedCommunityBuild;
+      })
+      .then((build) => {
+        if (cancelled) return;
+        if (mode === "edit" && !build.editableByMe) {
+          setMessage(t("cannotEdit"));
+          return;
+        }
+
+        const targetCharacter = options.characters.find((character) => character.id === build.characterId);
+        if (!targetCharacter) {
+          setMessage(t("characterMissing"));
+          return;
+        }
+
+        const nextElement = asElementKey(build.element) ?? targetCharacter.elements[0]?.key ?? null;
+        const nextTitle = mode === "import" ? `Copie - ${build.title}`.slice(0, 60) : build.title;
+        const updatedAt = new Date().toISOString();
+        const importedDraft: StoredDraft = {
+          title: nextTitle,
+          note: build.note ?? "",
+          payload: build.payload,
+          updatedAt,
+        };
+
+        window.localStorage.setItem(draftKey(build.characterId, nextElement), JSON.stringify(importedDraft));
+        hydratedRef.current = false;
+        setEditingBuildId(mode === "edit" ? build.id : null);
+        setCharacterId(build.characterId);
+        setElement(nextElement);
+        setTitle(nextTitle);
+        setNote(build.note ?? "");
+        applyPayload(build.payload);
+        setStatus("saved");
+        setSavedAt(new Date(updatedAt).toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" }));
+        window.setTimeout(() => {
+          if (cancelled) return;
+          hydratedRef.current = true;
+          setMessage(mode === "edit" ? t("editModeActive") : t("baseLoaded"));
+        }, 0);
+      })
+      .catch((error: Error) => {
+        if (!cancelled) setMessage(error.message || t("loadFailed"));
+      });
+
+    return () => {
+      cancelled = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams, options.characters]);
 
   useEffect(() => {
     if (!hydratedRef.current || !selectedCharacter || !key) return;
@@ -326,11 +530,110 @@ export function CommunityBuildBuilderClient({
     return () => window.clearTimeout(handle);
   }, [activeElement, isAuthenticated, key, note, payload, selectedCharacter, title]);
 
+  useEffect(() => {
+    setCanShareNative(typeof navigator !== "undefined" && typeof navigator.share === "function");
+  }, []);
+
+  // Lien auto-portant : si l'URL contient ?b=<build>, on pré-remplit le builder.
+  useEffect(() => {
+    if (loadedShareParamRef.current) return;
+    const param = searchParams.get("b");
+    if (!param) return;
+    loadedShareParamRef.current = true;
+    const result = decodeBuildParam(param, options);
+    if (!result.ok) {
+      setMessage(result.errors[0] ?? t("loadFailed"));
+      return;
+    }
+    const data = result.data;
+    const targetCharacter = options.characters.find((c) => c.id === data.characterId);
+    if (!targetCharacter) {
+      setMessage(t("characterMissing"));
+      return;
+    }
+    const nextElement = asElementKey(data.element) ?? targetCharacter.elements[0]?.key ?? null;
+    const updatedAt = new Date().toISOString();
+    const importedDraft: StoredDraft = { title: data.title, note: data.note ?? "", payload: data.payload, updatedAt };
+    window.localStorage.setItem(draftKey(data.characterId, nextElement), JSON.stringify(importedDraft));
+    hydratedRef.current = false;
+    setEditingBuildId(null);
+    setCharacterId(data.characterId);
+    setElement(nextElement);
+    setTitle(data.title);
+    setNote(data.note ?? "");
+    applyPayload(data.payload);
+    setStatus("saved");
+    window.setTimeout(() => {
+      hydratedRef.current = true;
+      setMessage(t("baseLoaded"));
+    }, 0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams, options]);
+
+  function shareUrlValue(): string | null {
+    const exported = currentExport();
+    if (!exported) return null;
+    return `${window.location.origin}${window.location.pathname}?b=${encodeBuildParam(exported)}`;
+  }
+
+  function shareMessage(): string {
+    return t("shareText", { character: selectedCharacter?.name ?? "" });
+  }
+
+  async function copyShareLink() {
+    const url = shareUrlValue();
+    if (!url) return;
+    try {
+      await navigator.clipboard.writeText(url);
+      setMessage(t("shareLinkCopied"));
+    } catch {
+      setMessage(url);
+    }
+  }
+
+  function openShare(href: string) {
+    window.open(href, "_blank", "noopener,noreferrer");
+  }
+
+  function shareToX() {
+    const url = shareUrlValue();
+    if (url) openShare(`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareMessage())}&url=${encodeURIComponent(url)}`);
+  }
+
+  function shareToFacebook() {
+    const url = shareUrlValue();
+    if (url) openShare(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
+  }
+
+  function shareToReddit() {
+    const url = shareUrlValue();
+    if (url) openShare(`https://www.reddit.com/submit?url=${encodeURIComponent(url)}&title=${encodeURIComponent(shareMessage())}`);
+  }
+
+  async function shareNative() {
+    const url = shareUrlValue();
+    if (!url) return;
+    try {
+      await navigator.share({ title: shareMessage(), text: shareMessage(), url });
+    } catch {
+      /* annulé par l'utilisateur */
+    }
+  }
+
+  function pickTeammate(item: DnaPickerItem) {
+    setTeam((current) =>
+      current.length >= 3 || current.some((member) => member.character.id === item.id)
+        ? current
+        : [...current, { character: item, role: DEFAULT_ROLE }],
+    );
+    setEditing(null);
+  }
+
   function pickMod(item: DnaPickerItem) {
     if (!editing) return;
     if (editing.kind === "center") {
       if (!isCenterDemonWedgeItemId(item.id)) {
-        setMessage("Ce Demon Wedge ne peut pas etre place au centre du build.");
+        setMessage(t("centerModError"));
         return;
       }
       setCenterItem(item);
@@ -340,7 +643,7 @@ export function CommunityBuildBuilderClient({
           slot.position === editing.position ? { ...slot, item, track: item.polarity } : slot,
         ),
       );
-    } else {
+    } else if (editing.kind === "consonance") {
       setConsonanceSlots((slots) =>
         slots.map((slot) =>
           slot.position === editing.position ? { ...slot, item, track: item.polarity } : slot,
@@ -350,62 +653,93 @@ export function CommunityBuildBuilderClient({
     setEditing(null);
   }
 
+  function applyStoredDraft(draft: { title?: string | null; note?: string | null; payload: CommunityBuildPayload; updatedAt: string }) {
+    hydratedRef.current = false;
+    setTitle(draft.title ?? "");
+    setNote(draft.note ?? "");
+    applyPayload(draft.payload);
+    setStatus("saved");
+    setSavedAt(fmtDraftTime(draft.updatedAt));
+    window.setTimeout(() => {
+      hydratedRef.current = true;
+    }, 0);
+  }
+
+  async function pushLocalToServer(draft: StoredDraft) {
+    if (!selectedCharacter) return;
+    setStatus("saving");
+    const response = await fetch("/api/drafts", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        characterId: selectedCharacter.id,
+        element: activeElement,
+        title: draft.title || null,
+        note: draft.note || null,
+        payload: draft.payload,
+      }),
+    });
+    setStatus(response.ok ? "saved" : "error");
+  }
+
   async function loadServerDraft() {
     if (!selectedCharacter) return;
+    setEditingBuildId(null);
     const params = new URLSearchParams({ characterId: selectedCharacter.id });
     if (activeElement) params.set("element", activeElement);
     const response = await fetch(`/api/drafts?${params.toString()}`);
     if (!response.ok) {
-      setMessage("Impossible de charger le brouillon serveur.");
+      setMessage(t("serverDraftLoadError"));
       return;
     }
     const data = await response.json();
     if (!data.draft) {
-      setMessage("Aucun brouillon serveur pour ce personnage.");
+      setMessage(t("noServerDraft"));
       return;
     }
-    hydratedRef.current = false;
-    setTitle(data.draft.title ?? "");
-    setNote(data.draft.note ?? "");
-    applyPayload(data.draft.payload);
-    setStatus("saved");
-    setSavedAt(new Date(data.draft.updatedAt).toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" }));
-    window.setTimeout(() => {
-      hydratedRef.current = true;
-    }, 0);
+    applyStoredDraft(data.draft as ServerDraft);
   }
 
   async function publishBuild() {
     if (!selectedCharacter) return;
     setPublishing(true);
     setMessage(null);
-    const response = await fetch("/api/builds", {
-      method: "POST",
+    const isUpdating = Boolean(editingBuildId);
+    const response = await fetch(isUpdating ? `/api/builds/${editingBuildId}` : "/api/builds", {
+      method: isUpdating ? "PATCH" : "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        characterId: selectedCharacter.id,
-        element: activeElement,
-        title,
-        note: note || null,
-        payload,
-      }),
+      body: JSON.stringify(
+        isUpdating
+          ? {
+              title,
+              note: note || null,
+              payload,
+            }
+          : {
+              characterId: selectedCharacter.id,
+              element: activeElement,
+              title,
+              note: note || null,
+              payload,
+            },
+      ),
     });
     const data = await response.json().catch(() => ({}));
     setPublishing(false);
 
     if (!response.ok) {
-      setMessage(data.error ?? "Publication impossible.");
+      setMessage(data.error ?? t("publishFailed"));
       return;
     }
 
-    window.localStorage.removeItem(key);
-    if (isAuthenticated) {
+    if (!isUpdating) window.localStorage.removeItem(key);
+    if (!isUpdating && isAuthenticated) {
       const params = new URLSearchParams({ characterId: selectedCharacter.id });
       if (activeElement) params.set("element", activeElement);
       void fetch(`/api/drafts?${params.toString()}`, { method: "DELETE" });
     }
     setStatus("saved");
-    setMessage("Build publié. Il apparaîtra dans les alternatives communauté.");
+    setMessage(isUpdating ? t("buildUpdated") : t("buildPublished"));
   }
 
   function currentExport() {
@@ -427,7 +761,7 @@ export function CommunityBuildBuilderClient({
 
       return validated.data;
     } catch {
-      setMessage("Le build courant ne peut pas etre exporte.");
+      setMessage(t("exportFailed"));
       return null;
     }
   }
@@ -446,10 +780,11 @@ export function CommunityBuildBuilderClient({
     anchor.download = `${exported.characterId}-${exported.element ?? "build"}.${format}`;
     anchor.click();
     URL.revokeObjectURL(url);
-    setMessage(`Export ${format.toUpperCase()} pret.`);
+    setMessage(t("exportReady", { format: format.toUpperCase() }));
   }
 
   function openImport(format: "json" | "xml") {
+    setEditingBuildId(null);
     importFormatRef.current = format;
     importInputRef.current?.click();
   }
@@ -480,6 +815,7 @@ export function CommunityBuildBuilderClient({
 
     window.localStorage.setItem(draftKey(imported.characterId, imported.element), JSON.stringify(importedDraft));
     hydratedRef.current = false;
+    setEditingBuildId(null);
     setCharacterId(imported.characterId);
     setElement(imported.element);
     setTitle(imported.title);
@@ -494,14 +830,14 @@ export function CommunityBuildBuilderClient({
   }
 
   if (!selectedCharacter) {
-    return <DnaPanel className="p-5 text-parch">Aucun personnage disponible.</DnaPanel>;
+    return <DnaPanel className="p-5 text-parch">{t("noCharacters")}</DnaPanel>;
   }
 
   return (
     <div className="grid min-w-0 gap-4 2xl:grid-cols-[minmax(0,1fr)_20rem]">
       <div className="flex min-w-0 flex-col gap-4">
         <DnaPanel className="p-4">
-          <DnaSectionLabel>Personnage</DnaSectionLabel>
+          <DnaSectionLabel>{t("character")}</DnaSectionLabel>
           <div className="mt-3 flex flex-col gap-4">
             <BuilderCharacterPicker
               characters={options.characters}
@@ -512,10 +848,13 @@ export function CommunityBuildBuilderClient({
 
             {selectedCharacter.elements.length > 1 ? (
               <div className="flex min-w-0 flex-col gap-1.5">
-                <span className="font-caps text-[0.62rem] uppercase tracking-[0.16em] text-gold">Élément</span>
+                <span className="font-caps text-[0.62rem] uppercase tracking-[0.16em] text-gold">{t("element")}</span>
                 <DnaSegmented
                   value={activeElement ?? selectedCharacter.elements[0].key}
-                  onChange={(value) => setElement(value as ElementKey)}
+                  onChange={(value) => {
+                    setEditingBuildId(null);
+                    setElement(value as ElementKey);
+                  }}
                   options={selectedCharacter.elements.map((item) => ({
                     value: item.key,
                     label: item.label,
@@ -526,15 +865,63 @@ export function CommunityBuildBuilderClient({
           </div>
         </DnaPanel>
 
+        {reconcile ? (
+          <DnaPanel className="border-gold/40 p-4">
+            {reconcile.kind === "conflict" ? (
+              <div className="flex flex-col gap-2">
+                <p className="font-sans text-sm text-parch">{t("conflictPrompt")}</p>
+                <div className="flex flex-wrap gap-2">
+                  <DnaButton
+                    variant="gold"
+                    onClick={() => {
+                      applyStoredDraft(reconcile.server);
+                      setReconcile(null);
+                    }}
+                  >
+                    {t("accountVersion", { time: fmtDraftTime(reconcile.server.updatedAt) })}
+                  </DnaButton>
+                  <DnaButton
+                    variant="ghost"
+                    onClick={() => {
+                      void pushLocalToServer(reconcile.local);
+                      setReconcile(null);
+                    }}
+                  >
+                    {t("thisDevice", { time: fmtDraftTime(reconcile.local.updatedAt) })}
+                  </DnaButton>
+                </div>
+              </div>
+            ) : (
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <p className="font-sans text-sm text-parch">{t("localDraftUnsynced")}</p>
+                <div className="flex gap-2">
+                  <DnaButton
+                    variant="gold"
+                    onClick={() => {
+                      void pushLocalToServer(reconcile.local);
+                      setReconcile(null);
+                    }}
+                  >
+                    {t("syncDraft")}
+                  </DnaButton>
+                  <DnaButton variant="ghost" onClick={() => setReconcile(null)}>
+                    {t("ignore")}
+                  </DnaButton>
+                </div>
+              </div>
+            )}
+          </DnaPanel>
+        ) : null}
+
         <DnaPanel className="p-4">
-          <DnaSectionLabel>Identité du build</DnaSectionLabel>
+          <DnaSectionLabel>{t("identity")}</DnaSectionLabel>
           <div className="mt-3 grid gap-3 md:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
             <div>
               <DnaField
                 value={title}
                 onChange={(event) => setTitle(event.target.value)}
                 maxLength={60}
-                placeholder="Nom du build"
+                placeholder={t("namePlaceholder")}
                 wrapClassName="w-full"
               />
               <p className="mt-1 text-right font-sans text-[0.68rem] text-muted-2">{title.trim().length}/60</p>
@@ -544,7 +931,7 @@ export function CommunityBuildBuilderClient({
                 value={note}
                 onChange={(event) => setNote(event.target.value)}
                 maxLength={200}
-                placeholder="Note courte optionnelle"
+                placeholder={t("notePlaceholder")}
                 className="min-h-20 w-full min-w-0 resize-y border border-white/20 bg-ink/70 px-3 py-2 font-sans text-sm text-parch outline-none placeholder:text-muted-2 focus:border-gold"
               />
               <span className="self-end font-sans text-[0.68rem] text-muted-2">{note.trim().length}/200</span>
@@ -553,21 +940,21 @@ export function CommunityBuildBuilderClient({
         </DnaPanel>
 
         <DnaPanel className="p-4">
-          <DnaSectionLabel>Armes</DnaSectionLabel>
+          <DnaSectionLabel>{t("weapons")}</DnaSectionLabel>
           <div className="mt-3 grid gap-4 xl:grid-cols-2">
             <div>
-              <p className="mb-2 font-caps text-[0.62rem] uppercase tracking-[0.16em] text-muted">Melee</p>
-              <DnaSlotRow entries={meleeWeapons} pool={options.weapons} label="Choisir une arme melee" onChange={setMeleeWeapons} />
+              <p className="mb-2 font-caps text-[0.62rem] uppercase tracking-[0.16em] text-muted">{t("melee")}</p>
+              <DnaSlotRow entries={meleeWeapons} pool={options.weapons} max={3} label={t("pickMeleeWeapon")} onChange={setMeleeWeapons} />
             </div>
             <div>
-              <p className="mb-2 font-caps text-[0.62rem] uppercase tracking-[0.16em] text-muted">Ranged</p>
-              <DnaSlotRow entries={rangedWeapons} pool={options.weapons} label="Choisir une arme ranged" onChange={setRangedWeapons} />
+              <p className="mb-2 font-caps text-[0.62rem] uppercase tracking-[0.16em] text-muted">{t("ranged")}</p>
+              <DnaSlotRow entries={rangedWeapons} pool={options.weapons} max={3} label={t("pickRangedWeapon")} onChange={setRangedWeapons} />
             </div>
           </div>
         </DnaPanel>
 
         <DnaPanel className="p-5 md:p-6">
-          <DnaSectionLabel>Demon Wedges</DnaSectionLabel>
+          <DnaSectionLabel>{t("demonWedges")}</DnaSectionLabel>
           <div className="mt-5 overflow-x-auto pb-3 pt-1">
             <DnaDemonWedgeEditor
               slots={demonSlots}
@@ -584,7 +971,7 @@ export function CommunityBuildBuilderClient({
 
         {consonanceWeapon ? (
           <DnaPanel className="p-4">
-            <DnaSectionLabel>Consonance</DnaSectionLabel>
+            <DnaSectionLabel>{t("consonance")}</DnaSectionLabel>
             <div className="mt-4 overflow-x-auto pb-2">
               <DnaConsonanceEditor
                 slots={consonanceSlots}
@@ -599,36 +986,94 @@ export function CommunityBuildBuilderClient({
         ) : null}
 
         <DnaPanel className="p-4">
-          <DnaSectionLabel>Génimons</DnaSectionLabel>
+          <DnaSectionLabel>{t("genimons")}</DnaSectionLabel>
           <div className="mt-3">
             <DnaSlotRow
               entries={genimons}
               pool={options.genimons}
-              label="Choisir un génimon"
+              max={3}
+              label={t("pickGenimon")}
               allowRanks={false}
               onChange={setGenimons}
             />
+          </div>
+        </DnaPanel>
+
+        <DnaPanel className="p-4">
+          <DnaSectionLabel>{t("team")}</DnaSectionLabel>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {team.map((member, index) => (
+              <div
+                key={member.character.id}
+                className="relative flex w-32 flex-col items-center gap-1.5 border border-white/8 bg-gradient-to-b from-[rgba(34,29,21,0.55)] to-[rgba(14,12,9,0.8)] p-2.5 text-center"
+              >
+                <button
+                  type="button"
+                  onClick={() => setTeam((current) => current.filter((_, i) => i !== index))}
+                  aria-label={t("close")}
+                  className="absolute right-1 top-1 z-[3] flex h-4 w-4 items-center justify-center rounded-full border border-white/20 bg-ink/80 text-[0.7rem] leading-none text-muted hover:border-crimson-bright hover:text-[#ffb3a6]"
+                >
+                  ×
+                </button>
+                <span className="grid aspect-square w-full place-items-center overflow-hidden bg-black/25">
+                  {member.character.icon ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={member.character.icon} alt={member.character.name} className="h-full w-full object-cover object-[50%_14%]" />
+                  ) : (
+                    <span className="font-display text-2xl text-muted-2">◇</span>
+                  )}
+                </span>
+                <span className="line-clamp-2 min-h-[2.1em] font-sans text-[0.72rem] leading-tight text-parch">
+                  {member.character.name}
+                </span>
+                <select
+                  value={member.role}
+                  onChange={(event) => {
+                    const role = event.target.value;
+                    setTeam((current) => current.map((m, i) => (i === index ? { ...m, role } : m)));
+                  }}
+                  aria-label={t("roleLabel")}
+                  className="w-full border border-white/15 bg-ink/70 px-1.5 py-1 font-sans text-[0.7rem] text-parch outline-none focus:border-gold"
+                >
+                  {TEAM_ROLES.map((role) => (
+                    <option key={role} value={role}>
+                      {roleLabel(role)}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            ))}
+            {team.length < 3 ? (
+              <button
+                type="button"
+                onClick={() => setEditing({ kind: "team" })}
+                className="flex w-32 flex-col items-center justify-center gap-1 border border-dashed border-white/20 bg-white/2 p-2 text-muted-2 transition-colors hover:border-gold hover:text-gold"
+              >
+                <span className="text-2xl leading-none">＋</span>
+                <span className="font-caps text-[0.55rem] uppercase tracking-[0.16em]">{t("addTeammate")}</span>
+              </button>
+            ) : null}
           </div>
         </DnaPanel>
       </div>
 
       <aside className="grid min-w-0 gap-4 md:grid-cols-2 2xl:flex 2xl:flex-col">
         <DnaPanel className="p-4">
-          <DnaSectionLabel>Priorités</DnaSectionLabel>
+          <DnaSectionLabel>{t("priorities")}</DnaSectionLabel>
           <div className="mt-3 flex flex-col gap-4">
             <div>
-              <p className="mb-2 font-caps text-[0.62rem] uppercase tracking-[0.16em] text-muted">Stats</p>
+              <p className="mb-2 font-caps text-[0.62rem] uppercase tracking-[0.16em] text-muted">{t("stats")}</p>
               <DnaPriorityList items={statsPriority} pool={STATS_POOL} max={6} onChange={setStatsPriority} />
             </div>
             <div>
-              <p className="mb-2 font-caps text-[0.62rem] uppercase tracking-[0.16em] text-muted">Compétences</p>
+              <p className="mb-2 font-caps text-[0.62rem] uppercase tracking-[0.16em] text-muted">{t("skills")}</p>
               <DnaPriorityList items={skillPriority} pool={SKILL_POOL} max={3} onChange={setSkillPriority} />
             </div>
           </div>
         </DnaPanel>
 
         <DnaPanel className="p-4">
-          <DnaSectionLabel>Import / Export</DnaSectionLabel>
+          <DnaSectionLabel>{t("importExport")}</DnaSectionLabel>
           <div className="mt-3 grid grid-cols-2 gap-2">
             <DnaButton
               variant="ghost"
@@ -673,20 +1118,44 @@ export function CommunityBuildBuilderClient({
         </DnaPanel>
 
         <DnaPanel className="p-4">
-          <DnaSectionLabel>Publication</DnaSectionLabel>
+          <DnaSectionLabel>{t("share")}</DnaSectionLabel>
+          <div className="mt-3 flex flex-col gap-2">
+            <DnaButton variant="ghost" className="px-3" icon={<Link2 className="h-4 w-4" />} onClick={copyShareLink}>
+              {t("shareCopyLink")}
+            </DnaButton>
+            <div className="grid grid-cols-3 gap-2">
+              <DnaButton variant="ghost" className="px-2 text-xs" onClick={shareToX}>X</DnaButton>
+              <DnaButton variant="ghost" className="px-2 text-xs" onClick={shareToFacebook}>Facebook</DnaButton>
+              <DnaButton variant="ghost" className="px-2 text-xs" onClick={shareToReddit}>Reddit</DnaButton>
+            </div>
+            {canShareNative ? (
+              <DnaButton variant="ghost" className="px-3" icon={<Share2 className="h-4 w-4" />} onClick={shareNative}>
+                {t("shareNative")}
+              </DnaButton>
+            ) : null}
+          </div>
+        </DnaPanel>
+
+        <DnaPanel className="p-4">
+          <DnaSectionLabel>{t("publication")}</DnaSectionLabel>
           <div className="mt-3 flex flex-col gap-2">
             {isAuthenticated ? (
               <>
+                {editingBuildId ? (
+                  <p className="border border-gold/25 bg-gold/10 px-3 py-2 font-sans text-xs leading-relaxed text-gold">
+                    {t("editModeHint")}
+                  </p>
+                ) : null}
                 <DnaButton variant="gold" disabled={publishing || title.trim().length < 3} onClick={publishBuild}>
-                  {publishing ? "Publication..." : "Publier"}
+                  {publishing ? (editingBuildId ? t("updating") : t("publishing")) : editingBuildId ? t("update") : t("publish")}
                 </DnaButton>
                 <DnaButton variant="ghost" onClick={loadServerDraft}>
-                  Charger brouillon serveur
+                  {t("loadServerDraft")}
                 </DnaButton>
               </>
             ) : (
               <p className="font-sans text-sm text-muted">
-                Connecte-toi avec Discord pour synchroniser et publier. Le brouillon local reste sauvegardé sur ce navigateur.
+                {t("loginToPublish")}
               </p>
             )}
             {message ? <p className="mt-2 font-sans text-sm text-gold">{message}</p> : null}
@@ -707,17 +1176,18 @@ export function CommunityBuildBuilderClient({
           >
             <div className="mb-3 flex items-center justify-between gap-3">
               <h3 className="font-caps text-xs uppercase tracking-[0.18em] text-gold">
-                {editing.kind === "center" ? "Choisir un MOD central" : "Choisir un MOD"}
+                {editing.kind === "team" ? t("pickTeammate") : editing.kind === "center" ? t("pickCenterMod") : t("pickMod")}
               </h3>
               <DnaButton onClick={() => setEditing(null)} className="px-3 py-1.5 text-xs">
-                Fermer
+                {t("close")}
               </DnaButton>
             </div>
             <DnaItemPicker
-              items={editing.kind === "center" ? centerMods : options.mods}
+              items={editing.kind === "team" ? teamPool : editing.kind === "center" ? centerMods : options.mods}
+              usedIds={editing.kind === "team" ? team.map((member) => member.character.id) : undefined}
               columns={6}
               minColumnWidth="8.25rem"
-              onSelect={pickMod}
+              onSelect={editing.kind === "team" ? pickTeammate : pickMod}
             />
           </div>
         </div>,

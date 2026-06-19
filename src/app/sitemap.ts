@@ -34,6 +34,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: NAVIGATION.items, changeFrequency: "weekly" as const, priority: 0.9 },
     { path: `${NAVIGATION.items}/favoris`, changeFrequency: "weekly" as const, priority: 0.7 },
     { path: `${NAVIGATION.items}/drafts`, changeFrequency: "weekly" as const, priority: 0.8 },
+    { path: NAVIGATION.builder, changeFrequency: "weekly" as const, priority: 0.8 },
+    { path: NAVIGATION.builds, changeFrequency: "weekly" as const, priority: 0.8 },
     { path: "/codes", changeFrequency: "weekly" as const, priority: 0.8 },
     { path: NAVIGATION.about, changeFrequency: "monthly" as const, priority: 0.7 },
     { path: NAVIGATION.support, changeFrequency: "monthly" as const, priority: 0.6 },

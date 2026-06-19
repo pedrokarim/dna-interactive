@@ -269,6 +269,13 @@ export default async function Home() {
                     {tHome("builderSpotlightCta")}
                     <ArrowRight className="h-4 w-4" />
                   </Link>
+                  <Link
+                    href="/builds"
+                    className="inline-flex items-center gap-2 rounded-sm border border-white/20 bg-ink/55 px-5 py-3 text-sm font-medium text-parch transition-all duration-200 hover:-translate-y-px hover:border-hydro/55 hover:text-hydro"
+                  >
+                    <Users className="h-4 w-4" />
+                    {tHome("builderSpotlightExploreCta")}
+                  </Link>
                   <p className="text-sm text-parch/75">{tHome("builderSpotlightCategories")}</p>
                 </div>
               </div>

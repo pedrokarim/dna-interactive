@@ -1,4 +1,5 @@
 "use client";
+import type { ReactNode } from "react";
 import { Eye } from "lucide-react";
 import { cn } from "./cn";
 import { ELEMENTS, type ElementKey } from "./elements";
@@ -32,10 +33,16 @@ export type DnaCommunityBuildCardProps = {
   onVote?: (next: boolean) => void;
   voteDisabled?: boolean;
   voteReadOnly?: boolean;
+  /** Libellés du bouton de vote (i18n via l'appelant). */
+  voteLabels?: { vote?: string; remove?: string; login?: string };
   weapons?: IconRef[];
   genimons?: IconRef[];
   onOpen?: () => void;
   openLabel?: string;
+  /** Libellés de tier (i18n via l'appelant). Défauts FR. */
+  officialLabel?: string;
+  communityLabel?: string;
+  actions?: ReactNode;
   className?: string;
 };
 
@@ -50,10 +57,14 @@ export function DnaCommunityBuildCard({
   onVote,
   voteDisabled,
   voteReadOnly,
+  voteLabels,
   weapons = [],
   genimons = [],
   onOpen,
   openLabel = "Voir le build",
+  officialLabel = "Officiel",
+  communityLabel = "Communauté",
+  actions,
   className,
 }: DnaCommunityBuildCardProps) {
   const accent = element ? ELEMENTS[element].hex : "#c2a86a";
@@ -83,7 +94,7 @@ export function DnaCommunityBuildCard({
             >
               {title}
             </button>
-            <DnaTag tone={official ? "gold" : "crimson"}>{official ? "Officiel" : "Communauté"}</DnaTag>
+            <DnaTag tone={official ? "gold" : "crimson"}>{official ? officialLabel : communityLabel}</DnaTag>
           </div>
 
           {/* Ligne auteur + date */}
@@ -106,16 +117,19 @@ export function DnaCommunityBuildCard({
             </div>
           )}
 
-          {onOpen ? (
-            <div>
-              <button
-                type="button"
-                onClick={onOpen}
-                className="inline-flex items-center gap-1.5 border border-gold/35 bg-gold/10 px-3 py-1.5 font-caps text-[0.62rem] uppercase tracking-[0.16em] text-gold transition-colors hover:border-gold hover:bg-gold/20 hover:text-gold-bright"
-              >
-                <Eye className="h-3.5 w-3.5" />
-                {openLabel}
-              </button>
+          {onOpen || actions ? (
+            <div className="flex flex-wrap items-center gap-2">
+              {onOpen ? (
+                <button
+                  type="button"
+                  onClick={onOpen}
+                  className="inline-flex items-center gap-1.5 border border-gold/35 bg-gold/10 px-3 py-1.5 font-caps text-[0.62rem] uppercase tracking-[0.16em] text-gold transition-colors hover:border-gold hover:bg-gold/20 hover:text-gold-bright"
+                >
+                  <Eye className="h-3.5 w-3.5" />
+                  {openLabel}
+                </button>
+              ) : null}
+              {actions}
             </div>
           ) : null}
         </div>
@@ -128,6 +142,7 @@ export function DnaCommunityBuildCard({
             disabled={voteDisabled}
             readOnly={voteReadOnly}
             onToggle={onVote}
+            labels={voteLabels}
           />
         </div>
       </div>
