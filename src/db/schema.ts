@@ -185,6 +185,25 @@ export const buildReports = pgTable(
   ],
 );
 
+// Journal d'audit des actions admin (qui a masqué/supprimé/banni/promu quoi).
+// adminId en set null pour conserver la trace même si le compte admin est supprimé.
+export const adminActions = pgTable(
+  "admin_actions",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    adminId: text("admin_id").references(() => users.id, { onDelete: "set null" }),
+    action: text("action").notNull(),
+    targetType: text("target_type").notNull(),
+    targetId: text("target_id"),
+    meta: jsonb("meta").$type<Record<string, unknown>>(),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [
+    index("idx_admin_actions_admin").on(t.adminId),
+    index("idx_admin_actions_created").on(t.createdAt),
+  ],
+);
+
 /**
  * Une rotation des Covert Commissions, identifiée par le hash de son contenu.
  * On détecte un changement via `contentHash` et on borne dans le temps avec

@@ -4,6 +4,7 @@ import { z } from "zod";
 import { getDb, schema } from "@/db";
 import { getCurrentUser } from "@/lib/auth/session";
 import { isMissingTableError } from "@/lib/db-errors";
+import { recordAdminAction } from "@/lib/admin/audit";
 
 export const dynamic = "force-dynamic";
 
@@ -129,11 +130,18 @@ export async function PATCH(request: NextRequest) {
   const db = getDb();
   if (parsed.data.buildId && parsed.data.deleteBuild) {
     await db.delete(schema.builds).where(eq(schema.builds.id, parsed.data.buildId));
+    await recordAdminAction({ adminId: guard.user.id, action: "delete_build", targetType: "build", targetId: parsed.data.buildId });
   } else if (parsed.data.buildId && parsed.data.hidden !== undefined) {
     await db
       .update(schema.builds)
       .set({ hidden: parsed.data.hidden, updatedAt: new Date() })
       .where(eq(schema.builds.id, parsed.data.buildId));
+    await recordAdminAction({
+      adminId: guard.user.id,
+      action: parsed.data.hidden ? "hide_build" : "unhide_build",
+      targetType: "build",
+      targetId: parsed.data.buildId,
+    });
   }
 
   if (parsed.data.reportId && parsed.data.reportStatus) {
@@ -145,6 +153,12 @@ export async function PATCH(request: NextRequest) {
         resolvedById: guard.user.id,
       })
       .where(eq(schema.buildReports.id, parsed.data.reportId));
+    await recordAdminAction({
+      adminId: guard.user.id,
+      action: `report_${parsed.data.reportStatus}`,
+      targetType: "report",
+      targetId: parsed.data.reportId,
+    });
   }
 
   return NextResponse.json({ ok: true });

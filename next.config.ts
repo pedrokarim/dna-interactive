@@ -23,6 +23,16 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
+        // En-têtes de sécurité (défense en profondeur) sur toutes les routes.
+        source: '/:path*',
+        headers: [
+          { key: 'X-Frame-Options', value: 'DENY' },
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+          { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
+        ],
+      },
+      {
         // Allow bfcache by removing no-store on HTML pages.
         // Excludes API routes, _next assets and static files (which keep their own cache rules).
         source: '/((?!api|_next/|.*\\..*).*)',

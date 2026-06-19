@@ -4,6 +4,7 @@ import { z } from "zod";
 import { getDb, schema } from "@/db";
 import { isConfiguredAdminDiscordId } from "@/lib/auth/admins";
 import { getCurrentUser } from "@/lib/auth/session";
+import { recordAdminAction } from "@/lib/admin/audit";
 
 export const dynamic = "force-dynamic";
 
@@ -112,6 +113,30 @@ export async function PATCH(request: NextRequest) {
       updatedAt: new Date(),
     })
     .where(eq(schema.users.id, parsed.data.userId));
+
+  // Bannissement : on tue immédiatement les sessions du compte (le cookie cesse
+  // de fonctionner côté serveur, en plus du blocage déjà fait via getCurrentUser).
+  if (parsed.data.banned === true) {
+    await db.delete(schema.sessions).where(eq(schema.sessions.userId, parsed.data.userId));
+  }
+
+  const action =
+    parsed.data.banned === true
+      ? "ban_user"
+      : parsed.data.banned === false
+        ? "unban_user"
+        : parsed.data.role === "admin"
+          ? "promote_user"
+          : parsed.data.role === "user"
+            ? "demote_user"
+            : "update_user";
+  await recordAdminAction({
+    adminId: guard.user.id,
+    action,
+    targetType: "user",
+    targetId: parsed.data.userId,
+    meta: { role: parsed.data.role ?? null, banned: parsed.data.banned ?? null },
+  });
 
   return NextResponse.json({ ok: true });
 }
