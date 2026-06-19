@@ -617,7 +617,7 @@ function ReportsList({
             </p>
             <p className="mt-1 font-sans text-xs text-muted-2">Par {report.reporterName ?? "Discord"} · {formatDate(report.createdAt)}</p>
           </div>
-          <div className="flex flex-wrap items-start gap-2 xl:justify-end">
+          <div className="flex flex-wrap items-center gap-2 xl:justify-end">
             <DnaButton icon={<EyeOff className="h-3.5 w-3.5" />} className="px-3 py-1.5 text-xs" onClick={() => void onPatchBuild({ buildId: report.buildId, hidden: true })}>
               Masquer
             </DnaButton>
@@ -663,7 +663,7 @@ function BuildsList({
             </p>
             {!compact ? <p className="mt-1 font-sans text-xs text-muted-2">Mis a jour {formatDate(build.updatedAt)}</p> : null}
           </div>
-          <div className="flex flex-wrap items-start gap-2 xl:justify-end">
+          <div className="flex flex-wrap items-center gap-2 xl:justify-end">
             <DnaButton
               icon={build.hidden ? <Eye className="h-3.5 w-3.5" /> : <EyeOff className="h-3.5 w-3.5" />}
               className="px-3 py-1.5 text-xs"
@@ -704,15 +704,13 @@ function UsersList({
       {users.map((user) => (
         <div key={user.id} className="grid gap-3 py-3 xl:grid-cols-[minmax(0,1fr)_auto]">
           <div className="min-w-0">
-            <div className="flex min-w-0 flex-wrap items-center gap-2">
-              <p className="min-w-0 flex-1 truncate font-sans text-sm font-medium text-parch">{user.name ?? user.email ?? user.id}</p>
-              <DnaTag tone={user.role === "admin" ? "gold" : "crimson"}>{user.role}</DnaTag>
-              {user.configuredAdmin ? <DnaTag tone="gold">Env</DnaTag> : null}
-              {user.banned ? <DnaTag tone="crimson">Banni</DnaTag> : null}
-            </div>
+            <p className="truncate font-sans text-sm font-medium text-parch">{user.name ?? user.email ?? user.id}</p>
             <p className="mt-1 font-sans text-xs text-muted-2">{user.discordId ?? "discord id inconnu"} · Depuis {formatDate(user.createdAt)}</p>
           </div>
-          <div className="flex flex-wrap items-start gap-2 xl:justify-end">
+          <div className="flex flex-wrap items-center gap-2 xl:justify-end">
+            <DnaTag tone={user.role === "admin" ? "gold" : "crimson"}>{user.role}</DnaTag>
+            {user.configuredAdmin ? <DnaTag tone="gold">Env</DnaTag> : null}
+            {user.banned ? <DnaTag tone="crimson">Banni</DnaTag> : null}
             <DnaButton
               icon={<Ban className="h-3.5 w-3.5" />}
               className="px-3 py-1.5 text-xs"
