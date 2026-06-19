@@ -1580,6 +1580,7 @@ function BuildTabContent({
   skillIcons,
   showCommunityBuilds = true,
   showQuickBuildCard = true,
+  officialHeader = false,
 }: {
   builds: CharacterBuild[];
   character: CharacterRecord;
@@ -1589,6 +1590,8 @@ function BuildTabContent({
   skillIcons?: { skill1: { publicPath: string | null }; skill2: { publicPath: string | null }; skill3: { publicPath: string | null } };
   showCommunityBuilds?: boolean;
   showQuickBuildCard?: boolean;
+  /** Affiche l'en-tête de tier « Officiel » au-dessus du build curé (fiche perso). */
+  officialHeader?: boolean;
 }) {
   const t = useTranslations('characterDetail');
   const [activeBuildIndex, setActiveBuildIndex] = useState(0);
@@ -1627,6 +1630,16 @@ function BuildTabContent({
 
   return (
     <div className="space-y-3 md:space-y-5">
+      {/* Tier « Officiel » — distingue le build curé des alternatives communauté. */}
+      {officialHeader ? (
+        <div className="flex items-center gap-2 border-l-2 border-gold/60 bg-gold/5 px-3 py-2">
+          <span className="inline-flex items-center rounded-sm border border-gold/50 bg-gold/15 px-2 py-0.5 font-caps text-[0.55rem] uppercase tracking-[0.16em] text-gold">
+            Officiel
+          </span>
+          <span className="font-sans text-xs text-muted">Build recommandé par l&apos;équipe DNA Interactive.</span>
+        </div>
+      ) : null}
+
       {/* Build selector (if multiple) */}
       {builds.length > 1 && (
         <div className="flex flex-wrap gap-2">
@@ -3000,6 +3013,7 @@ export default function CharacterDetailClient({
           selectedLanguage={selectedLanguage}
           onNavigateToStats={() => setActiveTab("stats")}
           skillIcons={character.skillIcons}
+          officialHeader={activeBuilds.length > 0}
         />
       )}
 
