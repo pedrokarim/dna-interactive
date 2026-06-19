@@ -660,11 +660,11 @@ export function CommunityBuildBuilderClient({
           <div className="mt-3 grid gap-4 xl:grid-cols-2">
             <div>
               <p className="mb-2 font-caps text-[0.62rem] uppercase tracking-[0.16em] text-muted">Melee</p>
-              <DnaSlotRow entries={meleeWeapons} pool={options.weapons} label="Choisir une arme melee" onChange={setMeleeWeapons} />
+              <DnaSlotRow entries={meleeWeapons} pool={options.weapons} max={3} label="Choisir une arme melee" onChange={setMeleeWeapons} />
             </div>
             <div>
               <p className="mb-2 font-caps text-[0.62rem] uppercase tracking-[0.16em] text-muted">Ranged</p>
-              <DnaSlotRow entries={rangedWeapons} pool={options.weapons} label="Choisir une arme ranged" onChange={setRangedWeapons} />
+              <DnaSlotRow entries={rangedWeapons} pool={options.weapons} max={3} label="Choisir une arme ranged" onChange={setRangedWeapons} />
             </div>
           </div>
         </DnaPanel>
@@ -707,6 +707,7 @@ export function CommunityBuildBuilderClient({
             <DnaSlotRow
               entries={genimons}
               pool={options.genimons}
+              max={3}
               label="Choisir un génimon"
               allowRanks={false}
               onChange={setGenimons}
