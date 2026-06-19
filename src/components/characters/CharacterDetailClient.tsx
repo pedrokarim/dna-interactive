@@ -991,6 +991,9 @@ function SkillsTabContent({
 // If the URL lands with the param set to "open", we auto-scroll to it once.
 // ---------------------------------------------------------------------------
 
+// Mappe les locales du site vers des tags BCP-47 pour toLocaleDateString.
+const DATE_LOCALE: Record<string, string> = { en: "en", fr: "fr", de: "de", es: "es", jp: "ja", kr: "ko", tc: "zh-TW" };
+
 function QuickBuildAccordion({
   character,
   build,
@@ -1000,6 +1003,7 @@ function QuickBuildAccordion({
   build: CharacterBuild;
   lang: string;
 }) {
+  const tcb = useTranslations("communityBuilds");
   const [open, setOpen] = useQueryState(
     "build",
     parseAsBoolean.withDefault(false).withOptions({ clearOnDefault: true }),
@@ -1052,7 +1056,7 @@ function QuickBuildAccordion({
       >
         <span className="flex items-center gap-2 text-sm font-medium text-gold">
           <FileImage className="h-4 w-4 text-gold" />
-          Carte build partageable
+          {tcb("shareableCard")}
         </span>
         <div className="flex items-center gap-3">
           {open && (
@@ -1063,7 +1067,7 @@ function QuickBuildAccordion({
               onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); e.stopPropagation(); handleDownload(); } }}
               className="inline-flex cursor-pointer items-center gap-1.5 border border-gold/40 bg-gold/15 px-2.5 py-1 text-xs font-medium text-gold transition-colors hover:bg-gold/30"
             >
-              {downloading ? "Export..." : "Telecharger PNG"}
+              {downloading ? tcb("exporting") : tcb("downloadPng")}
             </span>
           )}
           <ChevronDown
@@ -1099,6 +1103,8 @@ function CommunityBuildsSection({
   characterElement: string;
   selectedLanguage: string;
 }) {
+  const tcb = useTranslations("communityBuilds");
+  const locale = useLocale();
   const [sort, setSort] = useState<"top" | "recent">("top");
   const [page, setPage] = useState(1);
   const [builds, setBuilds] = useState<CommunityBuildListItem[]>([]);
@@ -1142,7 +1148,7 @@ function CommunityBuildsSection({
         setMessage(null);
       })
       .catch(() => {
-        if (!cancelled) setMessage("Impossible de charger les alternatives communauté.");
+        if (!cancelled) setMessage(tcb("loadError"));
       })
       .finally(() => {
         if (!cancelled) setLoading(false);
@@ -1194,24 +1200,24 @@ function CommunityBuildsSection({
     fetch(`/api/builds/${communityBuildId}`)
       .then(async (response) => {
         const data = await response.json().catch(() => ({}));
-        if (!response.ok) throw new Error(data.error ?? "Build introuvable.");
+        if (!response.ok) throw new Error(data.error ?? tcb("buildNotFound"));
         return data.build as CommunityBuildListItem;
       })
       .then((build) => {
         if (cancelled) return;
         if (build.characterId !== character.id) {
-          setMessage("Ce lien de build ne correspond pas à ce personnage.");
+          setMessage(tcb("linkWrongCharacter"));
           return;
         }
         if (build.element && build.element !== characterElement) {
-          setMessage("Ce build existe sur un autre élément du personnage.");
+          setMessage(tcb("buildOnOtherElement"));
           return;
         }
         setSelectedBuild(build);
         setMessage(null);
       })
       .catch((error: Error) => {
-        if (!cancelled) setMessage(error.message || "Build communauté introuvable.");
+        if (!cancelled) setMessage(error.message || tcb("communityBuildNotFound"));
       });
 
     return () => {
@@ -1231,7 +1237,7 @@ function CommunityBuildsSection({
     });
     setSelectedBuild(null);
     void setCommunityBuildId("");
-    setMessage("Build supprimé.");
+    setMessage(tcb("buildDeleted"));
   }
 
   async function toggleVote(build: CommunityBuildListItem, next: boolean) {
@@ -1250,7 +1256,7 @@ function CommunityBuildsSection({
     const response = await fetch(`/api/builds/${build.id}/vote`, { method: next ? "POST" : "DELETE" });
     if (!response.ok) {
       setBuilds((current) => current.map((item) => (item.id === build.id ? build : item)));
-      setMessage("Connexion Discord requise pour voter.");
+      setMessage(tcb("loginToVote"));
       return;
     }
 
@@ -1270,9 +1276,9 @@ function CommunityBuildsSection({
         <div>
           <h2 className="flex items-center gap-2 text-base font-semibold text-parch md:text-lg">
             <Users className="h-4 w-4 text-gold/80" />
-            Alternatives communauté
+            {tcb("sectionTitle")}
           </h2>
-          <p className="mt-1 font-sans text-xs text-muted">Builds publiés par les joueurs.</p>
+          <p className="mt-1 font-sans text-xs text-muted">{tcb("sectionSubtitle")}</p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <DnaSegmented
@@ -1283,15 +1289,15 @@ function CommunityBuildsSection({
               setPage(1);
             }}
             options={[
-              { value: "top", label: "Top" },
-              { value: "recent", label: "Récent" },
+              { value: "top", label: tcb("sortTop") },
+              { value: "recent", label: tcb("sortRecent") },
             ]}
           />
           <Link
             href={NAVIGATION.builder}
             className="inline-flex items-center justify-center border border-gold/40 bg-gold/10 px-3 py-2 font-caps text-[0.62rem] uppercase tracking-[0.16em] text-gold transition-colors hover:border-gold hover:text-gold-bright"
           >
-            Proposer
+            {tcb("propose")}
           </Link>
         </div>
       </div>
@@ -1302,14 +1308,14 @@ function CommunityBuildsSection({
         {loading ? (
           <p className="font-sans text-sm text-muted">Chargement...</p>
         ) : builds.length === 0 ? (
-          <p className="font-sans text-sm text-muted">Aucune alternative communauté pour cet élément.</p>
+          <p className="font-sans text-sm text-muted">{tcb("emptyForElement")}</p>
         ) : (
           cards.map(({ build, preview }, index) => (
             <DnaCommunityBuildCard
               key={build.id}
               title={build.title}
               author={{ name: build.authorName ?? "Discord", avatar: build.authorImage }}
-              date={new Date(build.updatedAt ?? build.createdAt).toLocaleDateString("fr-FR", {
+              date={new Date(build.updatedAt ?? build.createdAt).toLocaleDateString(DATE_LOCALE[locale] ?? locale, {
                 day: "2-digit",
                 month: "short",
                 year: "numeric",
@@ -1320,6 +1326,10 @@ function CommunityBuildsSection({
               onVote={(next) => void toggleVote(build, next)}
               weapons={preview.weapons}
               genimons={preview.genimons}
+              officialLabel={tcb("officialTier")}
+              communityLabel={tcb("community")}
+              openLabel={tcb("viewBuild")}
+              voteLabels={{ vote: tcb("voteAction"), remove: tcb("removeVote"), login: tcb("loginVote") }}
               onOpen={() => openBuild(build)}
             />
           ))
@@ -1329,7 +1339,7 @@ function CommunityBuildsSection({
       {!loading && pagination.totalPages > 1 ? (
         <div className="mt-4 flex flex-col gap-2 border-t border-white/10 pt-3 sm:flex-row sm:items-center sm:justify-between">
           <p className="font-sans text-xs text-muted">
-            Page {pagination.page}/{pagination.totalPages} · {pagination.total} builds
+            {tcb("pageInfo", { page: pagination.page, totalPages: pagination.totalPages, total: pagination.total })}
           </p>
           <div className="flex items-center gap-2">
             <DnaButton
@@ -1340,7 +1350,7 @@ function CommunityBuildsSection({
                 setPage((current) => Math.max(1, current - 1));
               }}
             >
-              Précédent
+              {tcb("prev")}
             </DnaButton>
             <DnaButton
               className="px-3 py-1.5 text-xs"
@@ -1350,7 +1360,7 @@ function CommunityBuildsSection({
                 setPage((current) => Math.min(pagination.totalPages, current + 1));
               }}
             >
-              Suivant
+              {tcb("next")}
             </DnaButton>
           </div>
         </div>
@@ -1388,6 +1398,7 @@ function CommunityBuildPreviewModal({
   onClose: () => void;
   onBuildDeleted: (buildId: string) => void;
 }) {
+  const tcb = useTranslations("communityBuilds");
   const [actionMessage, setActionMessage] = useState<string | null>(null);
   const [reportOpen, setReportOpen] = useState(false);
   const [reportReason, setReportReason] = useState("");
@@ -1407,14 +1418,14 @@ function CommunityBuildPreviewModal({
 
     try {
       await navigator.clipboard.writeText(url.toString());
-      setActionMessage("Lien du build copié.");
+      setActionMessage(tcb("linkCopied"));
     } catch {
       setActionMessage(url.toString());
     }
   }
 
   async function deleteBuild() {
-    if (!window.confirm("Supprimer définitivement ce build ?")) return;
+    if (!window.confirm(tcb("deleteConfirm"))) return;
 
     setActionBusy("delete");
     setActionMessage(null);
@@ -1448,13 +1459,13 @@ function CommunityBuildPreviewModal({
     setActionBusy(null);
 
     if (!response.ok) {
-      setActionMessage(data.error ?? "Signalement impossible.");
+      setActionMessage(data.error ?? tcb("reportFailed"));
       return;
     }
 
     setReportOpen(false);
     setReportReason("");
-    setActionMessage("Signalement transmis à l'administration.");
+    setActionMessage(tcb("reportSent"));
   }
 
   return createPortal(
@@ -1462,27 +1473,27 @@ function CommunityBuildPreviewModal({
       className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-ink/85 p-3 backdrop-blur-sm md:p-6"
       role="dialog"
       aria-modal="true"
-      aria-label={`Build communautaire : ${build.title}`}
+      aria-label={tcb("ariaModal", { title: build.title })}
     >
       <div className="relative my-4 w-full max-w-6xl border border-gold/25 bg-ink shadow-[0_30px_80px_rgba(0,0,0,0.72)]">
         <div className="sticky top-0 z-20 border-b border-white/10 bg-ink/95 px-4 py-3 backdrop-blur md:px-5">
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
               <p className="font-caps text-[0.62rem] uppercase tracking-[0.2em] text-gold">
-                Build communauté
+                {tcb("modalKicker")}
               </p>
               <h2 className="mt-1 truncate font-display text-xl text-parch md:text-2xl">
                 {build.title}
               </h2>
               <p className="mt-1 text-xs text-muted">
-                Par {build.authorName ?? "Discord"} · {build.voteCount} vote{build.voteCount > 1 ? "s" : ""}
+                {tcb("byAuthor", { author: build.authorName ?? "Discord" })} · {tcb("votes", { count: build.voteCount })}
               </p>
             </div>
             <button
               type="button"
               onClick={onClose}
               className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-white/10 text-parch/80 transition-colors hover:border-gold/40 hover:text-parch"
-              aria-label="Fermer le build communautaire"
+              aria-label={tcb("closeModal")}
             >
               <X className="h-4 w-4" />
             </button>
@@ -1494,17 +1505,17 @@ function CommunityBuildPreviewModal({
           <div className="mt-3 flex flex-wrap items-center gap-2">
             <button type="button" onClick={copyPermalink} className={actionButtonClass}>
               <Copy className="h-3.5 w-3.5" />
-              Copier le lien
+              {tcb("copyLink")}
             </button>
             <Link href={builderImportHref} className={actionButtonClass}>
               <GitFork className="h-3.5 w-3.5" />
-              Utiliser comme base
+              {tcb("useAsBase")}
             </Link>
             {build.editableByMe ? (
               <>
                 <Link href={builderEditHref} className={actionButtonClass}>
                   <Pencil className="h-3.5 w-3.5" />
-                  Modifier
+                  {tcb("edit")}
                 </Link>
                 <button
                   type="button"
@@ -1513,13 +1524,13 @@ function CommunityBuildPreviewModal({
                   className="inline-flex items-center justify-center gap-1.5 border border-crimson-bright/35 bg-crimson-bright/10 px-3 py-2 font-caps text-[0.58rem] uppercase tracking-[0.14em] text-crimson-bright transition-colors hover:border-crimson-bright hover:bg-crimson-bright/18 disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   <Trash2 className="h-3.5 w-3.5" />
-                  {actionBusy === "delete" ? "Suppression..." : "Supprimer"}
+                  {actionBusy === "delete" ? tcb("deleting") : tcb("delete")}
                 </button>
               </>
             ) : (
               <button type="button" onClick={() => setReportOpen((open) => !open)} className={actionButtonClass}>
                 <Flag className="h-3.5 w-3.5" />
-                Signaler
+                {tcb("report")}
               </button>
             )}
           </div>
@@ -1527,12 +1538,12 @@ function CommunityBuildPreviewModal({
           {reportOpen ? (
             <div className="mt-3 max-w-2xl border border-white/10 bg-black/20 p-3">
               <label className="flex flex-col gap-2">
-                <span className="font-caps text-[0.58rem] uppercase tracking-[0.16em] text-muted">Raison du signalement</span>
+                <span className="font-caps text-[0.58rem] uppercase tracking-[0.16em] text-muted">{tcb("reportReasonLabel")}</span>
                 <textarea
                   value={reportReason}
                   onChange={(event) => setReportReason(event.target.value)}
                   maxLength={160}
-                  placeholder="Spam, contenu incorrect, abus..."
+                  placeholder={tcb("reportPlaceholder")}
                   className="min-h-20 w-full resize-y border border-white/15 bg-ink/80 px-3 py-2 font-sans text-sm text-parch outline-none placeholder:text-muted-2 focus:border-gold"
                 />
               </label>
@@ -1545,7 +1556,7 @@ function CommunityBuildPreviewModal({
                   className={actionButtonClass}
                 >
                   <Flag className="h-3.5 w-3.5" />
-                  {actionBusy === "report" ? "Envoi..." : "Envoyer"}
+                  {actionBusy === "report" ? tcb("sending") : tcb("send")}
                 </button>
               </div>
             </div>
@@ -1594,6 +1605,7 @@ function BuildTabContent({
   officialHeader?: boolean;
 }) {
   const t = useTranslations('characterDetail');
+  const tcb = useTranslations('communityBuilds');
   const [activeBuildIndex, setActiveBuildIndex] = useState(0);
   const [showTrackAdjust, setShowTrackAdjust] = useState(true);
 
@@ -1634,9 +1646,9 @@ function BuildTabContent({
       {officialHeader ? (
         <div className="flex items-center gap-2 border-l-2 border-gold/60 bg-gold/5 px-3 py-2">
           <span className="inline-flex items-center rounded-sm border border-gold/50 bg-gold/15 px-2 py-0.5 font-caps text-[0.55rem] uppercase tracking-[0.16em] text-gold">
-            Officiel
+            {tcb("officialTier")}
           </span>
-          <span className="font-sans text-xs text-muted">Build recommandé par l&apos;équipe DNA Interactive.</span>
+          <span className="font-sans text-xs text-muted">{tcb("officialDesc")}</span>
         </div>
       ) : null}
 
@@ -2137,6 +2149,7 @@ export default function CharacterDetailClient({
 }: CharacterDetailClientProps) {
   const t = useTranslations('characterDetail');
   const tc = useTranslations('common');
+  const tcb = useTranslations('communityBuilds');
   const [favoriteChars] = useAtom(charactersFavoritesAtom);
   const [, toggleFavorite] = useAtom(toggleCharacterFavoriteAtom);
 
@@ -2425,7 +2438,7 @@ export default function CharacterDetailClient({
               className="inline-flex items-center gap-2 border border-white/10 bg-ink/35 px-3 py-2 text-sm text-parch transition-colors hover:border-gold/40 hover:text-gold"
             >
               <Eye className="h-4 w-4" />
-              Builds communauté
+              {tcb("communityBuildsButton")}
             </button>
           </div>
 

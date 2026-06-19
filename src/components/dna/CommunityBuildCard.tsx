@@ -33,6 +33,8 @@ export type DnaCommunityBuildCardProps = {
   onVote?: (next: boolean) => void;
   voteDisabled?: boolean;
   voteReadOnly?: boolean;
+  /** Libellés du bouton de vote (i18n via l'appelant). */
+  voteLabels?: { vote?: string; remove?: string; login?: string };
   weapons?: IconRef[];
   genimons?: IconRef[];
   onOpen?: () => void;
@@ -55,6 +57,7 @@ export function DnaCommunityBuildCard({
   onVote,
   voteDisabled,
   voteReadOnly,
+  voteLabels,
   weapons = [],
   genimons = [],
   onOpen,
@@ -139,6 +142,7 @@ export function DnaCommunityBuildCard({
             disabled={voteDisabled}
             readOnly={voteReadOnly}
             onToggle={onVote}
+            labels={voteLabels}
           />
         </div>
       </div>
