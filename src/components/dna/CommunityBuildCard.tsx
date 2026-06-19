@@ -37,6 +37,9 @@ export type DnaCommunityBuildCardProps = {
   genimons?: IconRef[];
   onOpen?: () => void;
   openLabel?: string;
+  /** Libellés de tier (i18n via l'appelant). Défauts FR. */
+  officialLabel?: string;
+  communityLabel?: string;
   actions?: ReactNode;
   className?: string;
 };
@@ -56,6 +59,8 @@ export function DnaCommunityBuildCard({
   genimons = [],
   onOpen,
   openLabel = "Voir le build",
+  officialLabel = "Officiel",
+  communityLabel = "Communauté",
   actions,
   className,
 }: DnaCommunityBuildCardProps) {
@@ -86,7 +91,7 @@ export function DnaCommunityBuildCard({
             >
               {title}
             </button>
-            <DnaTag tone={official ? "gold" : "crimson"}>{official ? "Officiel" : "Communauté"}</DnaTag>
+            <DnaTag tone={official ? "gold" : "crimson"}>{official ? officialLabel : communityLabel}</DnaTag>
           </div>
 
           {/* Ligne auteur + date */}

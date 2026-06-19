@@ -16,6 +16,8 @@ export type DnaVoteButtonProps = {
   readOnly?: boolean;
   size?: "sm" | "md";
   onToggle?: (next: boolean) => void;
+  /** Libellés (i18n via l'appelant — le DS reste pur). Défauts FR. */
+  labels?: { vote?: string; remove?: string; login?: string };
   className?: string;
 };
 
@@ -26,9 +28,13 @@ export function DnaVoteButton({
   readOnly = false,
   size = "md",
   onToggle,
+  labels,
   className,
 }: DnaVoteButtonProps) {
   const interactive = !readOnly && !disabled;
+  const voteLabel = labels?.vote ?? "Voter";
+  const removeLabel = labels?.remove ?? "Retirer mon vote";
+  const loginLabel = labels?.login ?? "Connecte-toi pour voter";
   const pad = size === "sm" ? "px-1.5 py-1" : "px-2 py-1.5";
   const num = size === "sm" ? "text-[0.7rem]" : "text-sm";
 
@@ -38,8 +44,8 @@ export function DnaVoteButton({
       disabled={disabled || readOnly}
       onClick={interactive ? () => onToggle?.(!voted) : undefined}
       aria-pressed={voted}
-      aria-label={voted ? `Retirer le vote (${count})` : `Voter (${count})`}
-      title={disabled ? "Connecte-toi pour voter" : voted ? "Retirer mon vote" : "Voter"}
+      aria-label={voted ? `${removeLabel} (${count})` : `${voteLabel} (${count})`}
+      title={disabled ? loginLabel : voted ? removeLabel : voteLabel}
       className={cn(
         "inline-flex flex-col items-center justify-center gap-0.5 rounded-md border font-caps leading-none transition-colors",
         pad,
