@@ -669,6 +669,20 @@
     "viewBuild": "View build",
     "voteAction": "Vote",
     "removeVote": "Remove my vote",
-    "loginVote": "Sign in to vote"
+    "loginVote": "Sign in to vote",
+    "hubKicker": "Community library",
+    "hubTitle": "Builds published by players",
+    "hubDescription": "Browse builds, filter by character or element, then open the page to see the full configuration.",
+    "proposeBuild": "Propose a build",
+    "allCharacters": "All characters",
+    "allElements": "All",
+    "loadingBuilds": "Loading builds...",
+    "noBuildsFilters": "No build matches these filters.",
+    "view": "View",
+    "base": "Base",
+    "hubLoadError": "Could not load builds.",
+    "loadGeneric": "Loading failed.",
+    "searchCharacter": "Search a character",
+    "element": "Element"
   }
 }

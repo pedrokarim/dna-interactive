@@ -669,6 +669,20 @@
     "viewBuild": "查看配裝",
     "voteAction": "投票",
     "removeVote": "取消我的投票",
-    "loginVote": "登入以投票"
+    "loginVote": "登入以投票",
+    "hubKicker": "社群資料庫",
+    "hubTitle": "玩家發布的配裝",
+    "hubDescription": "瀏覽配裝，依角色或元素篩選，再開啟頁面查看完整配置。",
+    "proposeBuild": "投稿配裝",
+    "allCharacters": "所有角色",
+    "allElements": "全部",
+    "loadingBuilds": "正在載入配裝...",
+    "noBuildsFilters": "沒有符合這些篩選條件的配裝。",
+    "view": "查看",
+    "base": "基礎",
+    "hubLoadError": "無法載入配裝。",
+    "loadGeneric": "載入失敗。",
+    "searchCharacter": "搜尋角色",
+    "element": "元素"
   }
 }

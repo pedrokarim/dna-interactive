@@ -669,6 +669,20 @@
     "viewBuild": "Ver build",
     "voteAction": "Votar",
     "removeVote": "Quitar mi voto",
-    "loginVote": "Inicia sesión para votar"
+    "loginVote": "Inicia sesión para votar",
+    "hubKicker": "Biblioteca de la comunidad",
+    "hubTitle": "Builds publicados por jugadores",
+    "hubDescription": "Explora los builds, filtra por personaje o elemento y abre la ficha para ver la configuración completa.",
+    "proposeBuild": "Proponer un build",
+    "allCharacters": "Todos los personajes",
+    "allElements": "Todos",
+    "loadingBuilds": "Cargando builds...",
+    "noBuildsFilters": "Ningún build coincide con estos filtros.",
+    "view": "Ver",
+    "base": "Base",
+    "hubLoadError": "No se pudieron cargar los builds.",
+    "loadGeneric": "Error al cargar.",
+    "searchCharacter": "Buscar un personaje",
+    "element": "Elemento"
   }
 }

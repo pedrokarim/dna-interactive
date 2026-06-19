@@ -669,6 +669,20 @@
     "viewBuild": "ビルドを見る",
     "voteAction": "投票",
     "removeVote": "投票を取り消す",
-    "loginVote": "ログインして投票"
+    "loginVote": "ログインして投票",
+    "hubKicker": "コミュニティライブラリ",
+    "hubTitle": "プレイヤーが公開したビルド",
+    "hubDescription": "ビルドを閲覧し、キャラクターや属性で絞り込み、ページを開いて構成全体を確認できます。",
+    "proposeBuild": "ビルドを投稿",
+    "allCharacters": "すべてのキャラクター",
+    "allElements": "すべて",
+    "loadingBuilds": "ビルドを読み込み中...",
+    "noBuildsFilters": "この絞り込みに一致するビルドはありません。",
+    "view": "見る",
+    "base": "ベース",
+    "hubLoadError": "ビルドを読み込めませんでした。",
+    "loadGeneric": "読み込みに失敗しました。",
+    "searchCharacter": "キャラクターを検索",
+    "element": "属性"
   }
 }

@@ -669,6 +669,20 @@
     "viewBuild": "빌드 보기",
     "voteAction": "투표",
     "removeVote": "내 투표 취소",
-    "loginVote": "로그인하여 투표"
+    "loginVote": "로그인하여 투표",
+    "hubKicker": "커뮤니티 라이브러리",
+    "hubTitle": "플레이어가 게시한 빌드",
+    "hubDescription": "빌드를 둘러보고 캐릭터나 속성으로 필터링한 뒤 페이지를 열어 전체 구성을 확인하세요.",
+    "proposeBuild": "빌드 제안",
+    "allCharacters": "모든 캐릭터",
+    "allElements": "전체",
+    "loadingBuilds": "빌드를 불러오는 중...",
+    "noBuildsFilters": "이 필터에 맞는 빌드가 없습니다.",
+    "view": "보기",
+    "base": "기준",
+    "hubLoadError": "빌드를 불러오지 못했습니다.",
+    "loadGeneric": "불러오기에 실패했습니다.",
+    "searchCharacter": "캐릭터 검색",
+    "element": "속성"
   }
 }

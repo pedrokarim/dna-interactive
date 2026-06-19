@@ -1,6 +1,7 @@
 "use client";
 
 import { useDeferredValue, useEffect, useMemo, useState } from "react";
+import { useTranslations } from "next-intl";
 import { ChevronLeft, ChevronRight, GitFork, Search, Users } from "lucide-react";
 import { Link, useRouter } from "@/i18n/navigation";
 import { DnaButton } from "@/components/dna/Button";
@@ -17,6 +18,7 @@ import type { CommunityBuildPayload } from "@/lib/community-builds/validation";
 import { cn } from "@/components/dna/cn";
 
 const PAGE_SIZE = 12;
+const DATE_LOCALE: Record<string, string> = { en: "en", fr: "fr", de: "de", es: "es", jp: "ja", kr: "ko", tc: "zh-TW" };
 
 type SortMode = "top" | "recent";
 
@@ -82,6 +84,7 @@ function getPreviewItems(build: CommunityBuildListItem, lang: string) {
 
 export function CommunityBuildsHubClient({ options, locale }: CommunityBuildsHubClientProps) {
   const router = useRouter();
+  const tcb = useTranslations("communityBuilds");
   const lang = locale.toUpperCase();
   const [query, setQuery] = useState("");
   const deferredQuery = useDeferredValue(query);
@@ -124,7 +127,7 @@ export function CommunityBuildsHubClient({ options, locale }: CommunityBuildsHub
     fetch(`/api/builds?${params.toString()}`)
       .then(async (response) => {
         const data = await response.json().catch(() => ({}));
-        if (!response.ok) throw new Error(data.error ?? "Chargement impossible.");
+        if (!response.ok) throw new Error(data.error ?? tcb("loadGeneric"));
         return data as { builds?: CommunityBuildListItem[]; pagination?: CommunityBuildPagination };
       })
       .then((data) => {
@@ -142,7 +145,7 @@ export function CommunityBuildsHubClient({ options, locale }: CommunityBuildsHub
         setMessage(null);
       })
       .catch((error: Error) => {
-        if (!cancelled) setMessage(error.message || "Impossible de charger les builds.");
+        if (!cancelled) setMessage(error.message || tcb("hubLoadError"));
       })
       .finally(() => {
         if (!cancelled) setLoading(false);
@@ -188,7 +191,7 @@ export function CommunityBuildsHubClient({ options, locale }: CommunityBuildsHub
     const response = await fetch(`/api/builds/${build.id}/vote`, { method: next ? "POST" : "DELETE" });
     if (!response.ok) {
       setBuilds((current) => current.map((item) => (item.id === build.id ? build : item)));
-      setMessage("Connexion Discord requise pour voter.");
+      setMessage(tcb("loginToVote"));
       return;
     }
 
@@ -207,13 +210,13 @@ export function CommunityBuildsHubClient({ options, locale }: CommunityBuildsHub
       <DnaPanel className="overflow-hidden p-4 md:p-5">
         <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
           <div className="min-w-0">
-            <p className="font-caps text-[0.62rem] uppercase tracking-[0.22em] text-gold">Bibliothèque communauté</p>
+            <p className="font-caps text-[0.62rem] uppercase tracking-[0.22em] text-gold">{tcb("hubKicker")}</p>
             <h2 className="mt-2 flex items-center gap-2 font-display text-2xl text-parch md:text-3xl">
               <Users className="h-5 w-5 text-gold/80" />
-              Builds publiés par les joueurs
+              {tcb("hubTitle")}
             </h2>
             <p className="mt-2 max-w-2xl font-sans text-sm leading-relaxed text-muted">
-              Parcours les builds, filtre par personnage ou élément, puis ouvre la fiche pour voir la configuration complète.
+              {tcb("hubDescription")}
             </p>
           </div>
           <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
@@ -221,15 +224,15 @@ export function CommunityBuildsHubClient({ options, locale }: CommunityBuildsHub
               value={sort}
               onChange={(value) => selectSort(value as SortMode)}
               options={[
-                { value: "top", label: "Top" },
-                { value: "recent", label: "Récent" },
+                { value: "top", label: tcb("sortTop") },
+                { value: "recent", label: tcb("sortRecent") },
               ]}
             />
             <Link
               href={NAVIGATION.builder}
               className="dna-shine inline-flex items-center justify-center border border-gold bg-gold/15 px-4 py-2 font-caps text-[0.62rem] uppercase tracking-[0.16em] text-gold-bright transition-colors hover:border-gold-bright hover:text-[#fff6e6]"
             >
-              Proposer un build
+              {tcb("proposeBuild")}
             </Link>
           </div>
         </div>
@@ -239,7 +242,7 @@ export function CommunityBuildsHubClient({ options, locale }: CommunityBuildsHub
             icon={<Search className="h-4 w-4" />}
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="Rechercher un personnage"
+            placeholder={tcb("searchCharacter")}
             wrapClassName="w-full min-w-0 self-start"
           />
 
@@ -253,7 +256,7 @@ export function CommunityBuildsHubClient({ options, locale }: CommunityBuildsHub
                 characterId === "all" ? "border-gold text-gold-bright" : "border-white/12 text-parch/80",
               )}
             >
-              <span className="font-caps text-[0.62rem] uppercase tracking-[0.18em]">Tous les personnages</span>
+              <span className="font-caps text-[0.62rem] uppercase tracking-[0.18em]">{tcb("allCharacters")}</span>
             </button>
             {filteredCharacters.map((character) => (
               <button
@@ -286,12 +289,12 @@ export function CommunityBuildsHubClient({ options, locale }: CommunityBuildsHub
 
         {selectedCharacter && selectedCharacter.elements.length > 0 ? (
           <div className="mt-4 flex min-w-0 flex-wrap items-center gap-2">
-            <span className="font-caps text-[0.58rem] uppercase tracking-[0.16em] text-muted">Élément</span>
+            <span className="font-caps text-[0.58rem] uppercase tracking-[0.16em] text-muted">{tcb("element")}</span>
             <DnaSegmented
               value={element}
               onChange={selectElement}
               options={[
-                { value: "all", label: "Tous" },
+                { value: "all", label: tcb("allElements") },
                 ...selectedCharacter.elements.map((characterElement) => ({
                   value: characterElement.key,
                   label: (
@@ -311,9 +314,9 @@ export function CommunityBuildsHubClient({ options, locale }: CommunityBuildsHub
 
       <div className="grid gap-3 lg:grid-cols-2">
         {loading ? (
-          <DnaPanel className="p-5 font-sans text-sm text-muted">Chargement des builds...</DnaPanel>
+          <DnaPanel className="p-5 font-sans text-sm text-muted">{tcb("loadingBuilds")}</DnaPanel>
         ) : builds.length === 0 ? (
-          <DnaPanel className="p-5 text-center font-sans text-sm text-muted">Aucun build ne correspond à ces filtres.</DnaPanel>
+          <DnaPanel className="p-5 text-center font-sans text-sm text-muted">{tcb("noBuildsFilters")}</DnaPanel>
         ) : (
           builds.map((build, index) => {
             const character = characterById.get(build.characterId);
@@ -324,7 +327,7 @@ export function CommunityBuildsHubClient({ options, locale }: CommunityBuildsHub
                 key={build.id}
                 title={build.title}
                 author={{ name: build.authorName ?? "Discord", avatar: build.authorImage }}
-                date={new Date(build.updatedAt ?? build.createdAt).toLocaleDateString("fr-FR", {
+                date={new Date(build.updatedAt ?? build.createdAt).toLocaleDateString(DATE_LOCALE[locale] ?? locale, {
                   day: "2-digit",
                   month: "short",
                   year: "numeric",
@@ -335,7 +338,10 @@ export function CommunityBuildsHubClient({ options, locale }: CommunityBuildsHub
                 onVote={(next) => void toggleVote(build, next)}
                 weapons={preview.weapons}
                 genimons={preview.genimons}
-                openLabel="Voir"
+                openLabel={tcb("view")}
+                communityLabel={tcb("community")}
+                officialLabel={tcb("officialTier")}
+                voteLabels={{ vote: tcb("voteAction"), remove: tcb("removeVote"), login: tcb("loginVote") }}
                 onOpen={() => router.push(href)}
                 actions={
                   <>
@@ -347,7 +353,7 @@ export function CommunityBuildsHubClient({ options, locale }: CommunityBuildsHub
                       className="inline-flex items-center gap-1.5 border border-white/15 bg-white/[0.04] px-2.5 py-1.5 font-caps text-[0.58rem] uppercase tracking-[0.14em] text-parch/80 transition-colors hover:border-gold/45 hover:text-gold-bright"
                     >
                       <GitFork className="h-3.5 w-3.5" />
-                      Base
+                      {tcb("base")}
                     </Link>
                   </>
                 }
@@ -360,7 +366,7 @@ export function CommunityBuildsHubClient({ options, locale }: CommunityBuildsHub
       {!loading && pagination.totalPages > 1 ? (
         <div className="flex flex-col gap-2 border-t border-white/10 pt-4 sm:flex-row sm:items-center sm:justify-between">
           <p className="font-sans text-xs text-muted">
-            Page {pagination.page}/{pagination.totalPages} · {pagination.total} builds
+            {tcb("pageInfo", { page: pagination.page, totalPages: pagination.totalPages, total: pagination.total })}
           </p>
           <div className="flex items-center gap-2">
             <DnaButton
@@ -372,7 +378,7 @@ export function CommunityBuildsHubClient({ options, locale }: CommunityBuildsHub
                 setPage((current) => Math.max(1, current - 1));
               }}
             >
-              Précédent
+              {tcb("prev")}
             </DnaButton>
             <DnaButton
               className="px-3 py-1.5 text-xs"
@@ -383,7 +389,7 @@ export function CommunityBuildsHubClient({ options, locale }: CommunityBuildsHub
                 setPage((current) => Math.min(pagination.totalPages, current + 1));
               }}
             >
-              Suivant
+              {tcb("next")}
             </DnaButton>
           </div>
         </div>
