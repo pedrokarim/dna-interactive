@@ -63,6 +63,45 @@ type StoredDraft = {
   updatedAt: string;
 };
 
+type ServerDraft = {
+  title: string | null;
+  note: string | null;
+  payload: CommunityBuildPayload;
+  updatedAt: string;
+};
+
+// État de réconciliation brouillon local ↔ serveur (§3.5 du cadrage).
+type ReconcileState =
+  | { kind: "conflict"; local: StoredDraft; server: ServerDraft }
+  | { kind: "import"; local: StoredDraft }
+  | null;
+
+// Sérialisation déterministe (clés triées) — nécessaire car jsonb ne préserve
+// pas l'ordre des clés, donc une comparaison brute donnerait de faux conflits.
+function stableStringify(value: unknown): string {
+  if (value === null || typeof value !== "object") return JSON.stringify(value) ?? "null";
+  if (Array.isArray(value)) return `[${value.map(stableStringify).join(",")}]`;
+  const obj = value as Record<string, unknown>;
+  return `{${Object.keys(obj)
+    .sort()
+    .map((k) => `${JSON.stringify(k)}:${stableStringify(obj[k])}`)
+    .join(",")}}`;
+}
+
+function sameDraftContent(
+  a: { title?: string | null; note?: string | null; payload: CommunityBuildPayload },
+  b: { title?: string | null; note?: string | null; payload: CommunityBuildPayload },
+): boolean {
+  return (
+    stableStringify({ title: a.title ?? "", note: a.note ?? "", payload: a.payload }) ===
+    stableStringify({ title: b.title ?? "", note: b.note ?? "", payload: b.payload })
+  );
+}
+
+function fmtDraftTime(value: string): string {
+  return new Date(value).toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
+}
+
 type LoadedCommunityBuild = {
   id: string;
   characterId: string;
@@ -123,6 +162,7 @@ export function CommunityBuildBuilderClient({
   const [editing, setEditing] = useState<EditingTarget>(null);
   const [status, setStatus] = useState<DraftState>("idle");
   const [savedAt, setSavedAt] = useState<string | undefined>();
+  const [reconcile, setReconcile] = useState<ReconcileState>(null);
   const [message, setMessage] = useState<string | null>(null);
   const [publishing, setPublishing] = useState(false);
   const [editingBuildId, setEditingBuildId] = useState<string | null>(null);
@@ -285,6 +325,7 @@ export function CommunityBuildBuilderClient({
     setSkillPriority([SKILL_POOL[2], SKILL_POOL[0]]);
     setStatus("idle");
     setSavedAt(undefined);
+    setReconcile(null);
     setMessage(null);
 
     if (key) {
@@ -308,6 +349,51 @@ export function CommunityBuildBuilderClient({
     }, 0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [key]);
+
+  // Réconciliation local ↔ serveur (§3.5) : à l'ouverture (et à la connexion),
+  // compare le brouillon local et le brouillon serveur. Si seul le serveur
+  // existe on le charge ; si seul le local existe on propose de le synchroniser ;
+  // si les deux diffèrent vraiment (comparaison de contenu, pas d'horodatage),
+  // on demande lequel reprendre.
+  useEffect(() => {
+    if (!selectedCharacter || !key || !isAuthenticated) return;
+    if (searchParams.get("editBuildId") || searchParams.get("importBuildId")) return;
+
+    let localDraft: StoredDraft | null = null;
+    try {
+      const raw = window.localStorage.getItem(key);
+      localDraft = raw ? (JSON.parse(raw) as StoredDraft) : null;
+    } catch {
+      localDraft = null;
+    }
+
+    let cancelled = false;
+    const params = new URLSearchParams({ characterId: selectedCharacter.id });
+    if (activeElement) params.set("element", activeElement);
+    fetch(`/api/drafts?${params.toString()}`)
+      .then((response) => (response.ok ? response.json() : null))
+      .then((data) => {
+        if (cancelled) return;
+        const server: ServerDraft | null = data?.draft ?? null;
+        if (!server) {
+          if (localDraft) setReconcile({ kind: "import", local: localDraft });
+          return;
+        }
+        if (!localDraft) {
+          applyStoredDraft(server);
+          return;
+        }
+        if (!sameDraftContent(localDraft, server)) {
+          setReconcile({ kind: "conflict", local: localDraft, server });
+        }
+      })
+      .catch(() => {});
+
+    return () => {
+      cancelled = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [key, isAuthenticated, selectedCharacter, activeElement]);
 
   useEffect(() => {
     const editBuildId = searchParams.get("editBuildId");
@@ -438,6 +524,35 @@ export function CommunityBuildBuilderClient({
     setEditing(null);
   }
 
+  function applyStoredDraft(draft: { title?: string | null; note?: string | null; payload: CommunityBuildPayload; updatedAt: string }) {
+    hydratedRef.current = false;
+    setTitle(draft.title ?? "");
+    setNote(draft.note ?? "");
+    applyPayload(draft.payload);
+    setStatus("saved");
+    setSavedAt(fmtDraftTime(draft.updatedAt));
+    window.setTimeout(() => {
+      hydratedRef.current = true;
+    }, 0);
+  }
+
+  async function pushLocalToServer(draft: StoredDraft) {
+    if (!selectedCharacter) return;
+    setStatus("saving");
+    const response = await fetch("/api/drafts", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        characterId: selectedCharacter.id,
+        element: activeElement,
+        title: draft.title || null,
+        note: draft.note || null,
+        payload: draft.payload,
+      }),
+    });
+    setStatus(response.ok ? "saved" : "error");
+  }
+
   async function loadServerDraft() {
     if (!selectedCharacter) return;
     setEditingBuildId(null);
@@ -453,15 +568,7 @@ export function CommunityBuildBuilderClient({
       setMessage("Aucun brouillon serveur pour ce personnage.");
       return;
     }
-    hydratedRef.current = false;
-    setTitle(data.draft.title ?? "");
-    setNote(data.draft.note ?? "");
-    applyPayload(data.draft.payload);
-    setStatus("saved");
-    setSavedAt(new Date(data.draft.updatedAt).toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" }));
-    window.setTimeout(() => {
-      hydratedRef.current = true;
-    }, 0);
+    applyStoredDraft(data.draft as ServerDraft);
   }
 
   async function publishBuild() {
@@ -628,6 +735,58 @@ export function CommunityBuildBuilderClient({
             ) : null}
           </div>
         </DnaPanel>
+
+        {reconcile ? (
+          <DnaPanel className="border-gold/40 p-4">
+            {reconcile.kind === "conflict" ? (
+              <div className="flex flex-col gap-2">
+                <p className="font-sans text-sm text-parch">
+                  Deux versions de ce brouillon diffèrent (ton compte et cet appareil). Laquelle reprendre ?
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  <DnaButton
+                    variant="gold"
+                    onClick={() => {
+                      applyStoredDraft(reconcile.server);
+                      setReconcile(null);
+                    }}
+                  >
+                    Version du compte ({fmtDraftTime(reconcile.server.updatedAt)})
+                  </DnaButton>
+                  <DnaButton
+                    variant="ghost"
+                    onClick={() => {
+                      void pushLocalToServer(reconcile.local);
+                      setReconcile(null);
+                    }}
+                  >
+                    Cet appareil ({fmtDraftTime(reconcile.local.updatedAt)})
+                  </DnaButton>
+                </div>
+              </div>
+            ) : (
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <p className="font-sans text-sm text-parch">
+                  Brouillon local non synchronisé sur ton compte.
+                </p>
+                <div className="flex gap-2">
+                  <DnaButton
+                    variant="gold"
+                    onClick={() => {
+                      void pushLocalToServer(reconcile.local);
+                      setReconcile(null);
+                    }}
+                  >
+                    Synchroniser
+                  </DnaButton>
+                  <DnaButton variant="ghost" onClick={() => setReconcile(null)}>
+                    Ignorer
+                  </DnaButton>
+                </div>
+              </div>
+            )}
+          </DnaPanel>
+        ) : null}
 
         <DnaPanel className="p-4">
           <DnaSectionLabel>Identité du build</DnaSectionLabel>
