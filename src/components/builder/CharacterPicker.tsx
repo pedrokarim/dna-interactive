@@ -2,6 +2,7 @@
 
 import { Check, Search } from "lucide-react";
 import { useDeferredValue, useMemo, useState, type ReactNode } from "react";
+import { useTranslations } from "next-intl";
 import { DnaElementBadge } from "@/components/dna/ElementBadge";
 import { ELEMENTS } from "@/components/dna/elements";
 import { DnaField } from "@/components/dna/Field";
@@ -30,6 +31,7 @@ export function BuilderCharacterPicker({
   statusNode,
   onChange,
 }: BuilderCharacterPickerProps) {
+  const t = useTranslations("builder");
   const [query, setQuery] = useState("");
   const deferredQuery = useDeferredValue(query);
   const selectedCharacter = useMemo(
@@ -56,14 +58,14 @@ export function BuilderCharacterPicker({
               icon={<Search className="h-4 w-4" />}
               value={query}
               onChange={(event) => setQuery(event.target.value)}
-              placeholder="Rechercher un personnage"
+              placeholder={t("searchCharacter")}
               wrapClassName="w-full min-w-0"
             />
             {statusNode ? <div className="shrink-0">{statusNode}</div> : null}
           </div>
 
           <p className="font-caps text-[0.58rem] uppercase tracking-[0.18em] text-muted">
-            {filteredCharacters.length}/{characters.length} personnages
+            {t("characterCount", { count: filteredCharacters.length, total: characters.length })}
           </p>
         </div>
       </div>
@@ -86,7 +88,7 @@ export function BuilderCharacterPicker({
         </div>
       ) : (
         <p className="border border-dashed border-white/15 bg-black/20 px-3 py-4 text-center font-sans text-sm text-muted">
-          Aucun personnage trouvé.
+          {t("noCharacterFound")}
         </p>
       )}
     </div>
@@ -94,6 +96,7 @@ export function BuilderCharacterPicker({
 }
 
 function SelectedCharacterSummary({ character }: { character: BuilderCharacterOption }) {
+  const t = useTranslations("builder");
   const elementList = character.elements.length > 0 ? character.elements : character.element ? [{ key: character.element, label: ELEMENTS[character.element].label }] : [];
   const accent = elementList[0]?.key ? ELEMENTS[elementList[0].key].hex : "#c2a86a";
 
@@ -112,7 +115,7 @@ function SelectedCharacterSummary({ character }: { character: BuilderCharacterOp
         </div>
 
         <div className="min-w-0 flex-1">
-          <p className="font-caps text-[0.58rem] uppercase tracking-[0.18em] text-gold">Personnage</p>
+          <p className="font-caps text-[0.58rem] uppercase tracking-[0.18em] text-gold">{t("character")}</p>
           <h2 className="mt-1 truncate font-display text-2xl leading-tight text-parch">{character.name}</h2>
           {character.subtitle ? <p className="truncate font-sans text-xs text-muted">{character.subtitle}</p> : null}
           <div className="mt-2 flex flex-wrap items-center gap-1.5">

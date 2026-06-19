@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState, useSyncExternalStore, type ChangeEvent } from "react";
 import { useSearchParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { createPortal } from "react-dom";
 import { Download, Upload } from "lucide-react";
 import { BuilderCharacterPicker } from "@/components/builder/CharacterPicker";
@@ -30,21 +31,8 @@ import { isCenterDemonWedgeItemId } from "@/lib/community-builds/center-wedges";
 import type { BuilderOptions } from "@/lib/community-builds/options";
 import type { CommunityBuildPayload } from "@/lib/community-builds/validation";
 
-const STATS_POOL: PriorityItem[] = [
-  { id: "ATK", label: "ATQ" },
-  { id: "CritRate", label: "Taux Crit." },
-  { id: "CritDmg", label: "Dégâts Crit." },
-  { id: "SkillDmg", label: "Dégâts de compétence" },
-  { id: "ElementDmg", label: "Dégâts élémentaires" },
-  { id: "HP", label: "PV" },
-  { id: "DEF", label: "DÉF" },
-];
-
-const SKILL_POOL: PriorityItem[] = [
-  { id: "skill-1", label: "Compétence 1", sublabel: "Attaque normale" },
-  { id: "skill-2", label: "Compétence 2", sublabel: "Esquive / outil" },
-  { id: "skill-3", label: "Compétence 3", sublabel: "Ultime" },
-];
+const STAT_IDS = ["ATK", "CritRate", "CritDmg", "SkillDmg", "ElementDmg", "HP", "DEF"] as const;
+const SKILL_IDS = ["skill-1", "skill-2", "skill-3"] as const;
 
 function subscribeMounted() {
   return () => undefined;
@@ -141,6 +129,15 @@ export function CommunityBuildBuilderClient({
   isAuthenticated: boolean;
 }) {
   const searchParams = useSearchParams();
+  const t = useTranslations("builder");
+  const STATS_POOL = useMemo<PriorityItem[]>(
+    () => STAT_IDS.map((id) => ({ id, label: t(`statLabels.${id}`) })),
+    [t],
+  );
+  const SKILL_POOL = useMemo<PriorityItem[]>(
+    () => SKILL_IDS.map((id) => ({ id, label: t(`skillLabels.${id}`), sublabel: t(`skillSub.${id}`) })),
+    [t],
+  );
   const firstCharacter = options.characters[0];
   const [characterId, setCharacterId] = useState(firstCharacter?.id ?? "");
   const selectedCharacter = useMemo(
@@ -407,7 +404,7 @@ export function CommunityBuildBuilderClient({
     loadedSharedBuildRef.current = loadKey;
 
     let cancelled = false;
-    setMessage(mode === "edit" ? "Chargement du build à modifier..." : "Chargement du build comme base...");
+    setMessage(mode === "edit" ? t("editLoading") : t("baseLoadingMsg"));
 
     fetch(`/api/builds/${buildId}`)
       .then(async (response) => {
@@ -418,13 +415,13 @@ export function CommunityBuildBuilderClient({
       .then((build) => {
         if (cancelled) return;
         if (mode === "edit" && !build.editableByMe) {
-          setMessage("Tu ne peux pas modifier ce build.");
+          setMessage(t("cannotEdit"));
           return;
         }
 
         const targetCharacter = options.characters.find((character) => character.id === build.characterId);
         if (!targetCharacter) {
-          setMessage("Le personnage de ce build n'existe pas dans le builder.");
+          setMessage(t("characterMissing"));
           return;
         }
 
@@ -451,11 +448,11 @@ export function CommunityBuildBuilderClient({
         window.setTimeout(() => {
           if (cancelled) return;
           hydratedRef.current = true;
-          setMessage(mode === "edit" ? "Mode édition actif. Les changements mettront à jour le build publié." : "Build chargé comme base. Tu peux l'ajuster puis publier ta version.");
+          setMessage(mode === "edit" ? t("editModeActive") : t("baseLoaded"));
         }, 0);
       })
       .catch((error: Error) => {
-        if (!cancelled) setMessage(error.message || "Chargement du build impossible.");
+        if (!cancelled) setMessage(error.message || t("loadFailed"));
       });
 
     return () => {
@@ -504,7 +501,7 @@ export function CommunityBuildBuilderClient({
     if (!editing) return;
     if (editing.kind === "center") {
       if (!isCenterDemonWedgeItemId(item.id)) {
-        setMessage("Ce Demon Wedge ne peut pas etre place au centre du build.");
+        setMessage(t("centerModError"));
         return;
       }
       setCenterItem(item);
@@ -560,12 +557,12 @@ export function CommunityBuildBuilderClient({
     if (activeElement) params.set("element", activeElement);
     const response = await fetch(`/api/drafts?${params.toString()}`);
     if (!response.ok) {
-      setMessage("Impossible de charger le brouillon serveur.");
+      setMessage(t("serverDraftLoadError"));
       return;
     }
     const data = await response.json();
     if (!data.draft) {
-      setMessage("Aucun brouillon serveur pour ce personnage.");
+      setMessage(t("noServerDraft"));
       return;
     }
     applyStoredDraft(data.draft as ServerDraft);
@@ -599,7 +596,7 @@ export function CommunityBuildBuilderClient({
     setPublishing(false);
 
     if (!response.ok) {
-      setMessage(data.error ?? "Publication impossible.");
+      setMessage(data.error ?? t("publishFailed"));
       return;
     }
 
@@ -610,7 +607,7 @@ export function CommunityBuildBuilderClient({
       void fetch(`/api/drafts?${params.toString()}`, { method: "DELETE" });
     }
     setStatus("saved");
-    setMessage(isUpdating ? "Build mis à jour." : "Build publié. Il apparaîtra dans les alternatives communauté.");
+    setMessage(isUpdating ? t("buildUpdated") : t("buildPublished"));
   }
 
   function currentExport() {
@@ -632,7 +629,7 @@ export function CommunityBuildBuilderClient({
 
       return validated.data;
     } catch {
-      setMessage("Le build courant ne peut pas etre exporte.");
+      setMessage(t("exportFailed"));
       return null;
     }
   }
@@ -651,7 +648,7 @@ export function CommunityBuildBuilderClient({
     anchor.download = `${exported.characterId}-${exported.element ?? "build"}.${format}`;
     anchor.click();
     URL.revokeObjectURL(url);
-    setMessage(`Export ${format.toUpperCase()} pret.`);
+    setMessage(t("exportReady", { format: format.toUpperCase() }));
   }
 
   function openImport(format: "json" | "xml") {
@@ -701,14 +698,14 @@ export function CommunityBuildBuilderClient({
   }
 
   if (!selectedCharacter) {
-    return <DnaPanel className="p-5 text-parch">Aucun personnage disponible.</DnaPanel>;
+    return <DnaPanel className="p-5 text-parch">{t("noCharacters")}</DnaPanel>;
   }
 
   return (
     <div className="grid min-w-0 gap-4 2xl:grid-cols-[minmax(0,1fr)_20rem]">
       <div className="flex min-w-0 flex-col gap-4">
         <DnaPanel className="p-4">
-          <DnaSectionLabel>Personnage</DnaSectionLabel>
+          <DnaSectionLabel>{t("character")}</DnaSectionLabel>
           <div className="mt-3 flex flex-col gap-4">
             <BuilderCharacterPicker
               characters={options.characters}
@@ -719,7 +716,7 @@ export function CommunityBuildBuilderClient({
 
             {selectedCharacter.elements.length > 1 ? (
               <div className="flex min-w-0 flex-col gap-1.5">
-                <span className="font-caps text-[0.62rem] uppercase tracking-[0.16em] text-gold">Élément</span>
+                <span className="font-caps text-[0.62rem] uppercase tracking-[0.16em] text-gold">{t("element")}</span>
                 <DnaSegmented
                   value={activeElement ?? selectedCharacter.elements[0].key}
                   onChange={(value) => {
@@ -740,9 +737,7 @@ export function CommunityBuildBuilderClient({
           <DnaPanel className="border-gold/40 p-4">
             {reconcile.kind === "conflict" ? (
               <div className="flex flex-col gap-2">
-                <p className="font-sans text-sm text-parch">
-                  Deux versions de ce brouillon diffèrent (ton compte et cet appareil). Laquelle reprendre ?
-                </p>
+                <p className="font-sans text-sm text-parch">{t("conflictPrompt")}</p>
                 <div className="flex flex-wrap gap-2">
                   <DnaButton
                     variant="gold"
@@ -751,7 +746,7 @@ export function CommunityBuildBuilderClient({
                       setReconcile(null);
                     }}
                   >
-                    Version du compte ({fmtDraftTime(reconcile.server.updatedAt)})
+                    {t("accountVersion", { time: fmtDraftTime(reconcile.server.updatedAt) })}
                   </DnaButton>
                   <DnaButton
                     variant="ghost"
@@ -760,15 +755,13 @@ export function CommunityBuildBuilderClient({
                       setReconcile(null);
                     }}
                   >
-                    Cet appareil ({fmtDraftTime(reconcile.local.updatedAt)})
+                    {t("thisDevice", { time: fmtDraftTime(reconcile.local.updatedAt) })}
                   </DnaButton>
                 </div>
               </div>
             ) : (
               <div className="flex flex-wrap items-center justify-between gap-2">
-                <p className="font-sans text-sm text-parch">
-                  Brouillon local non synchronisé sur ton compte.
-                </p>
+                <p className="font-sans text-sm text-parch">{t("localDraftUnsynced")}</p>
                 <div className="flex gap-2">
                   <DnaButton
                     variant="gold"
@@ -777,10 +770,10 @@ export function CommunityBuildBuilderClient({
                       setReconcile(null);
                     }}
                   >
-                    Synchroniser
+                    {t("syncDraft")}
                   </DnaButton>
                   <DnaButton variant="ghost" onClick={() => setReconcile(null)}>
-                    Ignorer
+                    {t("ignore")}
                   </DnaButton>
                 </div>
               </div>
@@ -789,14 +782,14 @@ export function CommunityBuildBuilderClient({
         ) : null}
 
         <DnaPanel className="p-4">
-          <DnaSectionLabel>Identité du build</DnaSectionLabel>
+          <DnaSectionLabel>{t("identity")}</DnaSectionLabel>
           <div className="mt-3 grid gap-3 md:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
             <div>
               <DnaField
                 value={title}
                 onChange={(event) => setTitle(event.target.value)}
                 maxLength={60}
-                placeholder="Nom du build"
+                placeholder={t("namePlaceholder")}
                 wrapClassName="w-full"
               />
               <p className="mt-1 text-right font-sans text-[0.68rem] text-muted-2">{title.trim().length}/60</p>
@@ -806,7 +799,7 @@ export function CommunityBuildBuilderClient({
                 value={note}
                 onChange={(event) => setNote(event.target.value)}
                 maxLength={200}
-                placeholder="Note courte optionnelle"
+                placeholder={t("notePlaceholder")}
                 className="min-h-20 w-full min-w-0 resize-y border border-white/20 bg-ink/70 px-3 py-2 font-sans text-sm text-parch outline-none placeholder:text-muted-2 focus:border-gold"
               />
               <span className="self-end font-sans text-[0.68rem] text-muted-2">{note.trim().length}/200</span>
@@ -815,21 +808,21 @@ export function CommunityBuildBuilderClient({
         </DnaPanel>
 
         <DnaPanel className="p-4">
-          <DnaSectionLabel>Armes</DnaSectionLabel>
+          <DnaSectionLabel>{t("weapons")}</DnaSectionLabel>
           <div className="mt-3 grid gap-4 xl:grid-cols-2">
             <div>
-              <p className="mb-2 font-caps text-[0.62rem] uppercase tracking-[0.16em] text-muted">Melee</p>
-              <DnaSlotRow entries={meleeWeapons} pool={options.weapons} max={3} label="Choisir une arme melee" onChange={setMeleeWeapons} />
+              <p className="mb-2 font-caps text-[0.62rem] uppercase tracking-[0.16em] text-muted">{t("melee")}</p>
+              <DnaSlotRow entries={meleeWeapons} pool={options.weapons} max={3} label={t("pickMeleeWeapon")} onChange={setMeleeWeapons} />
             </div>
             <div>
-              <p className="mb-2 font-caps text-[0.62rem] uppercase tracking-[0.16em] text-muted">Ranged</p>
-              <DnaSlotRow entries={rangedWeapons} pool={options.weapons} max={3} label="Choisir une arme ranged" onChange={setRangedWeapons} />
+              <p className="mb-2 font-caps text-[0.62rem] uppercase tracking-[0.16em] text-muted">{t("ranged")}</p>
+              <DnaSlotRow entries={rangedWeapons} pool={options.weapons} max={3} label={t("pickRangedWeapon")} onChange={setRangedWeapons} />
             </div>
           </div>
         </DnaPanel>
 
         <DnaPanel className="p-5 md:p-6">
-          <DnaSectionLabel>Demon Wedges</DnaSectionLabel>
+          <DnaSectionLabel>{t("demonWedges")}</DnaSectionLabel>
           <div className="mt-5 overflow-x-auto pb-3 pt-1">
             <DnaDemonWedgeEditor
               slots={demonSlots}
@@ -846,7 +839,7 @@ export function CommunityBuildBuilderClient({
 
         {consonanceWeapon ? (
           <DnaPanel className="p-4">
-            <DnaSectionLabel>Consonance</DnaSectionLabel>
+            <DnaSectionLabel>{t("consonance")}</DnaSectionLabel>
             <div className="mt-4 overflow-x-auto pb-2">
               <DnaConsonanceEditor
                 slots={consonanceSlots}
@@ -861,13 +854,13 @@ export function CommunityBuildBuilderClient({
         ) : null}
 
         <DnaPanel className="p-4">
-          <DnaSectionLabel>Génimons</DnaSectionLabel>
+          <DnaSectionLabel>{t("genimons")}</DnaSectionLabel>
           <div className="mt-3">
             <DnaSlotRow
               entries={genimons}
               pool={options.genimons}
               max={3}
-              label="Choisir un génimon"
+              label={t("pickGenimon")}
               allowRanks={false}
               onChange={setGenimons}
             />
@@ -877,21 +870,21 @@ export function CommunityBuildBuilderClient({
 
       <aside className="grid min-w-0 gap-4 md:grid-cols-2 2xl:flex 2xl:flex-col">
         <DnaPanel className="p-4">
-          <DnaSectionLabel>Priorités</DnaSectionLabel>
+          <DnaSectionLabel>{t("priorities")}</DnaSectionLabel>
           <div className="mt-3 flex flex-col gap-4">
             <div>
-              <p className="mb-2 font-caps text-[0.62rem] uppercase tracking-[0.16em] text-muted">Stats</p>
+              <p className="mb-2 font-caps text-[0.62rem] uppercase tracking-[0.16em] text-muted">{t("stats")}</p>
               <DnaPriorityList items={statsPriority} pool={STATS_POOL} max={6} onChange={setStatsPriority} />
             </div>
             <div>
-              <p className="mb-2 font-caps text-[0.62rem] uppercase tracking-[0.16em] text-muted">Compétences</p>
+              <p className="mb-2 font-caps text-[0.62rem] uppercase tracking-[0.16em] text-muted">{t("skills")}</p>
               <DnaPriorityList items={skillPriority} pool={SKILL_POOL} max={3} onChange={setSkillPriority} />
             </div>
           </div>
         </DnaPanel>
 
         <DnaPanel className="p-4">
-          <DnaSectionLabel>Import / Export</DnaSectionLabel>
+          <DnaSectionLabel>{t("importExport")}</DnaSectionLabel>
           <div className="mt-3 grid grid-cols-2 gap-2">
             <DnaButton
               variant="ghost"
@@ -936,25 +929,25 @@ export function CommunityBuildBuilderClient({
         </DnaPanel>
 
         <DnaPanel className="p-4">
-          <DnaSectionLabel>Publication</DnaSectionLabel>
+          <DnaSectionLabel>{t("publication")}</DnaSectionLabel>
           <div className="mt-3 flex flex-col gap-2">
             {isAuthenticated ? (
               <>
                 {editingBuildId ? (
                   <p className="border border-gold/25 bg-gold/10 px-3 py-2 font-sans text-xs leading-relaxed text-gold">
-                    Mode édition actif : ce bouton mettra à jour le build publié.
+                    {t("editModeHint")}
                   </p>
                 ) : null}
                 <DnaButton variant="gold" disabled={publishing || title.trim().length < 3} onClick={publishBuild}>
-                  {publishing ? (editingBuildId ? "Mise à jour..." : "Publication...") : editingBuildId ? "Mettre à jour" : "Publier"}
+                  {publishing ? (editingBuildId ? t("updating") : t("publishing")) : editingBuildId ? t("update") : t("publish")}
                 </DnaButton>
                 <DnaButton variant="ghost" onClick={loadServerDraft}>
-                  Charger brouillon serveur
+                  {t("loadServerDraft")}
                 </DnaButton>
               </>
             ) : (
               <p className="font-sans text-sm text-muted">
-                Connecte-toi avec Discord pour synchroniser et publier. Le brouillon local reste sauvegardé sur ce navigateur.
+                {t("loginToPublish")}
               </p>
             )}
             {message ? <p className="mt-2 font-sans text-sm text-gold">{message}</p> : null}
@@ -975,10 +968,10 @@ export function CommunityBuildBuilderClient({
           >
             <div className="mb-3 flex items-center justify-between gap-3">
               <h3 className="font-caps text-xs uppercase tracking-[0.18em] text-gold">
-                {editing.kind === "center" ? "Choisir un MOD central" : "Choisir un MOD"}
+                {editing.kind === "center" ? t("pickCenterMod") : t("pickMod")}
               </h3>
               <DnaButton onClick={() => setEditing(null)} className="px-3 py-1.5 text-xs">
-                Fermer
+                {t("close")}
               </DnaButton>
             </div>
             <DnaItemPicker
