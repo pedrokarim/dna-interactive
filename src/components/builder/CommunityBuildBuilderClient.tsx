@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState, useSyncExternalStore, type ChangeEvent } from "react";
+import { useSearchParams } from "next/navigation";
 import { createPortal } from "react-dom";
 import { Download, Upload } from "lucide-react";
 import { BuilderCharacterPicker } from "@/components/builder/CharacterPicker";
@@ -62,6 +63,16 @@ type StoredDraft = {
   updatedAt: string;
 };
 
+type LoadedCommunityBuild = {
+  id: string;
+  characterId: string;
+  element: string | null;
+  title: string;
+  note: string | null;
+  payload: CommunityBuildPayload;
+  editableByMe: boolean;
+};
+
 function emptyWedgeSlots(max: number): WedgeSlotData[] {
   return Array.from({ length: max }, (_, index) => ({ position: index + 1, item: null, track: null }));
 }
@@ -79,6 +90,10 @@ function itemById(pool: DnaPickerItem[], id: string | null | undefined): DnaPick
   return pool.find((item) => item.id === id) ?? null;
 }
 
+function asElementKey(value: string | null | undefined): ElementKey | null {
+  return value && value in ELEMENTS ? (value as ElementKey) : null;
+}
+
 export function CommunityBuildBuilderClient({
   options,
   isAuthenticated,
@@ -86,6 +101,7 @@ export function CommunityBuildBuilderClient({
   options: BuilderOptions;
   isAuthenticated: boolean;
 }) {
+  const searchParams = useSearchParams();
   const firstCharacter = options.characters[0];
   const [characterId, setCharacterId] = useState(firstCharacter?.id ?? "");
   const selectedCharacter = useMemo(
@@ -109,8 +125,10 @@ export function CommunityBuildBuilderClient({
   const [savedAt, setSavedAt] = useState<string | undefined>();
   const [message, setMessage] = useState<string | null>(null);
   const [publishing, setPublishing] = useState(false);
+  const [editingBuildId, setEditingBuildId] = useState<string | null>(null);
   const canPortal = useSyncExternalStore(subscribeMounted, () => true, () => false);
   const hydratedRef = useRef(false);
+  const loadedSharedBuildRef = useRef<string | null>(null);
   const importInputRef = useRef<HTMLInputElement>(null);
   const importFormatRef = useRef<"json" | "xml">("json");
 
@@ -143,6 +161,7 @@ export function CommunityBuildBuilderClient({
 
   function selectCharacter(nextCharacterId: string) {
     const nextCharacter = options.characters.find((character) => character.id === nextCharacterId);
+    setEditingBuildId(null);
     setCharacterId(nextCharacterId);
     setElement(nextCharacter?.elements[0]?.key ?? null);
   }
@@ -291,6 +310,75 @@ export function CommunityBuildBuilderClient({
   }, [key]);
 
   useEffect(() => {
+    const editBuildId = searchParams.get("editBuildId");
+    const importBuildId = searchParams.get("importBuildId");
+    const mode = editBuildId ? "edit" : importBuildId ? "import" : null;
+    const buildId = editBuildId ?? importBuildId;
+    if (!mode || !buildId) return;
+
+    const loadKey = `${mode}:${buildId}`;
+    if (loadedSharedBuildRef.current === loadKey) return;
+    loadedSharedBuildRef.current = loadKey;
+
+    let cancelled = false;
+    setMessage(mode === "edit" ? "Chargement du build à modifier..." : "Chargement du build comme base...");
+
+    fetch(`/api/builds/${buildId}`)
+      .then(async (response) => {
+        const data = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(data.error ?? "Build introuvable.");
+        return data.build as LoadedCommunityBuild;
+      })
+      .then((build) => {
+        if (cancelled) return;
+        if (mode === "edit" && !build.editableByMe) {
+          setMessage("Tu ne peux pas modifier ce build.");
+          return;
+        }
+
+        const targetCharacter = options.characters.find((character) => character.id === build.characterId);
+        if (!targetCharacter) {
+          setMessage("Le personnage de ce build n'existe pas dans le builder.");
+          return;
+        }
+
+        const nextElement = asElementKey(build.element) ?? targetCharacter.elements[0]?.key ?? null;
+        const nextTitle = mode === "import" ? `Copie - ${build.title}`.slice(0, 60) : build.title;
+        const updatedAt = new Date().toISOString();
+        const importedDraft: StoredDraft = {
+          title: nextTitle,
+          note: build.note ?? "",
+          payload: build.payload,
+          updatedAt,
+        };
+
+        window.localStorage.setItem(draftKey(build.characterId, nextElement), JSON.stringify(importedDraft));
+        hydratedRef.current = false;
+        setEditingBuildId(mode === "edit" ? build.id : null);
+        setCharacterId(build.characterId);
+        setElement(nextElement);
+        setTitle(nextTitle);
+        setNote(build.note ?? "");
+        applyPayload(build.payload);
+        setStatus("saved");
+        setSavedAt(new Date(updatedAt).toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" }));
+        window.setTimeout(() => {
+          if (cancelled) return;
+          hydratedRef.current = true;
+          setMessage(mode === "edit" ? "Mode édition actif. Les changements mettront à jour le build publié." : "Build chargé comme base. Tu peux l'ajuster puis publier ta version.");
+        }, 0);
+      })
+      .catch((error: Error) => {
+        if (!cancelled) setMessage(error.message || "Chargement du build impossible.");
+      });
+
+    return () => {
+      cancelled = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams, options.characters]);
+
+  useEffect(() => {
     if (!hydratedRef.current || !selectedCharacter || !key) return;
     setStatus("dirty");
     const handle = window.setTimeout(async () => {
@@ -352,6 +440,7 @@ export function CommunityBuildBuilderClient({
 
   async function loadServerDraft() {
     if (!selectedCharacter) return;
+    setEditingBuildId(null);
     const params = new URLSearchParams({ characterId: selectedCharacter.id });
     if (activeElement) params.set("element", activeElement);
     const response = await fetch(`/api/drafts?${params.toString()}`);
@@ -379,16 +468,25 @@ export function CommunityBuildBuilderClient({
     if (!selectedCharacter) return;
     setPublishing(true);
     setMessage(null);
-    const response = await fetch("/api/builds", {
-      method: "POST",
+    const isUpdating = Boolean(editingBuildId);
+    const response = await fetch(isUpdating ? `/api/builds/${editingBuildId}` : "/api/builds", {
+      method: isUpdating ? "PATCH" : "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        characterId: selectedCharacter.id,
-        element: activeElement,
-        title,
-        note: note || null,
-        payload,
-      }),
+      body: JSON.stringify(
+        isUpdating
+          ? {
+              title,
+              note: note || null,
+              payload,
+            }
+          : {
+              characterId: selectedCharacter.id,
+              element: activeElement,
+              title,
+              note: note || null,
+              payload,
+            },
+      ),
     });
     const data = await response.json().catch(() => ({}));
     setPublishing(false);
@@ -398,14 +496,14 @@ export function CommunityBuildBuilderClient({
       return;
     }
 
-    window.localStorage.removeItem(key);
-    if (isAuthenticated) {
+    if (!isUpdating) window.localStorage.removeItem(key);
+    if (!isUpdating && isAuthenticated) {
       const params = new URLSearchParams({ characterId: selectedCharacter.id });
       if (activeElement) params.set("element", activeElement);
       void fetch(`/api/drafts?${params.toString()}`, { method: "DELETE" });
     }
     setStatus("saved");
-    setMessage("Build publié. Il apparaîtra dans les alternatives communauté.");
+    setMessage(isUpdating ? "Build mis à jour." : "Build publié. Il apparaîtra dans les alternatives communauté.");
   }
 
   function currentExport() {
@@ -450,6 +548,7 @@ export function CommunityBuildBuilderClient({
   }
 
   function openImport(format: "json" | "xml") {
+    setEditingBuildId(null);
     importFormatRef.current = format;
     importInputRef.current?.click();
   }
@@ -480,6 +579,7 @@ export function CommunityBuildBuilderClient({
 
     window.localStorage.setItem(draftKey(imported.characterId, imported.element), JSON.stringify(importedDraft));
     hydratedRef.current = false;
+    setEditingBuildId(null);
     setCharacterId(imported.characterId);
     setElement(imported.element);
     setTitle(imported.title);
@@ -515,7 +615,10 @@ export function CommunityBuildBuilderClient({
                 <span className="font-caps text-[0.62rem] uppercase tracking-[0.16em] text-gold">Élément</span>
                 <DnaSegmented
                   value={activeElement ?? selectedCharacter.elements[0].key}
-                  onChange={(value) => setElement(value as ElementKey)}
+                  onChange={(value) => {
+                    setEditingBuildId(null);
+                    setElement(value as ElementKey);
+                  }}
                   options={selectedCharacter.elements.map((item) => ({
                     value: item.key,
                     label: item.label,
@@ -677,8 +780,13 @@ export function CommunityBuildBuilderClient({
           <div className="mt-3 flex flex-col gap-2">
             {isAuthenticated ? (
               <>
+                {editingBuildId ? (
+                  <p className="border border-gold/25 bg-gold/10 px-3 py-2 font-sans text-xs leading-relaxed text-gold">
+                    Mode édition actif : ce bouton mettra à jour le build publié.
+                  </p>
+                ) : null}
                 <DnaButton variant="gold" disabled={publishing || title.trim().length < 3} onClick={publishBuild}>
-                  {publishing ? "Publication..." : "Publier"}
+                  {publishing ? (editingBuildId ? "Mise à jour..." : "Publication...") : editingBuildId ? "Mettre à jour" : "Publier"}
                 </DnaButton>
                 <DnaButton variant="ghost" onClick={loadServerDraft}>
                   Charger brouillon serveur

@@ -1,4 +1,4 @@
-import { getAllCharacters, getActiveCharacterView, resolveCharacterDisplayName } from "@/lib/characters/catalog";
+import { getAllCharacters, getActiveCharacterView, getCharacterSlug, resolveCharacterDisplayName } from "@/lib/characters/catalog";
 import { getItemTranslation, getItemsByCategoryId } from "@/lib/items/catalog";
 import type { CharacterRecord } from "@/lib/characters/types";
 import type { ItemRecord } from "@/lib/items/types";
@@ -9,6 +9,7 @@ const ELEMENT_KEYS = new Set(["Fire", "Water", "Thunder", "Wind", "Light", "Dark
 
 export type BuilderCharacterOption = {
   id: string;
+  slug: string;
   name: string;
   subtitle: string | null;
   portrait: string | null;
@@ -100,6 +101,7 @@ function characterToOption(character: CharacterRecord, locale: string): BuilderC
 
   return {
     id: character.id,
+    slug: getCharacterSlug(character),
     name,
     subtitle,
     portrait: character.portraits.gacha?.publicPath ?? character.portraits.head?.publicPath ?? character.portraits.icon?.publicPath ?? null,

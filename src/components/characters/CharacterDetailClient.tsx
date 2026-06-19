@@ -11,16 +11,21 @@ import {
   ChevronDown,
   ChevronLeft,
   ChevronRight,
+  Copy,
   FileImage,
   Eye,
+  Flag,
+  GitFork,
   Heart,
   Image as ImageIcon,
   Languages,
   Layers,
+  Pencil,
   Settings,
   Shield,
   Sparkles,
   Swords,
+  Trash2,
   Users,
   X,
   ZoomIn,
@@ -29,7 +34,7 @@ import {
 } from "lucide-react";
 import QuickBuildModal, { QuickBuildCard } from "@/components/characters/QuickBuildModal";
 import { useAtom } from "jotai";
-import { parseAsBoolean, parseAsStringLiteral, useQueryState } from "nuqs";
+import { parseAsBoolean, parseAsString, parseAsStringLiteral, useQueryState } from "nuqs";
 import {
   getActiveCharacterView,
   getAllCharacters,
@@ -1106,6 +1111,10 @@ function CommunityBuildsSection({
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState<string | null>(null);
   const [selectedBuild, setSelectedBuild] = useState<CommunityBuildListItem | null>(null);
+  const [communityBuildId, setCommunityBuildId] = useQueryState(
+    "communityBuildId",
+    parseAsString.withDefault("").withOptions({ clearOnDefault: true }),
+  );
 
   useEffect(() => {
     let cancelled = false;
@@ -1157,6 +1166,73 @@ function CommunityBuildsSection({
     () => (selectedBuild ? communityBuildToDisplayBuild(selectedBuild, selectedLanguage) : null),
     [selectedBuild, selectedLanguage],
   );
+
+  const openBuild = useCallback(
+    (build: CommunityBuildListItem) => {
+      setSelectedBuild(build);
+      void setCommunityBuildId(build.id);
+    },
+    [setCommunityBuildId],
+  );
+
+  const closeBuild = useCallback(() => {
+    setSelectedBuild(null);
+    void setCommunityBuildId("");
+  }, [setCommunityBuildId]);
+
+  useEffect(() => {
+    if (!communityBuildId) return;
+    if (selectedBuild?.id === communityBuildId) return;
+
+    const localBuild = builds.find((build) => build.id === communityBuildId);
+    if (localBuild) {
+      const handle = window.setTimeout(() => setSelectedBuild(localBuild), 0);
+      return () => window.clearTimeout(handle);
+    }
+
+    let cancelled = false;
+    fetch(`/api/builds/${communityBuildId}`)
+      .then(async (response) => {
+        const data = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(data.error ?? "Build introuvable.");
+        return data.build as CommunityBuildListItem;
+      })
+      .then((build) => {
+        if (cancelled) return;
+        if (build.characterId !== character.id) {
+          setMessage("Ce lien de build ne correspond pas à ce personnage.");
+          return;
+        }
+        if (build.element && build.element !== characterElement) {
+          setMessage("Ce build existe sur un autre élément du personnage.");
+          return;
+        }
+        setSelectedBuild(build);
+        setMessage(null);
+      })
+      .catch((error: Error) => {
+        if (!cancelled) setMessage(error.message || "Build communauté introuvable.");
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [builds, character.id, characterElement, communityBuildId, selectedBuild]);
+
+  function handleBuildDeleted(buildId: string) {
+    setBuilds((current) => current.filter((build) => build.id !== buildId));
+    setPagination((current) => {
+      const total = Math.max(current.total - 1, 0);
+      return {
+        ...current,
+        total,
+        totalPages: Math.max(1, Math.ceil(total / current.pageSize)),
+      };
+    });
+    setSelectedBuild(null);
+    void setCommunityBuildId("");
+    setMessage("Build supprimé.");
+  }
 
   async function toggleVote(build: CommunityBuildListItem, next: boolean) {
     setBuilds((current) =>
@@ -1244,7 +1320,7 @@ function CommunityBuildsSection({
               onVote={(next) => void toggleVote(build, next)}
               weapons={preview.weapons}
               genimons={preview.genimons}
-              onOpen={() => setSelectedBuild(build)}
+              onOpen={() => openBuild(build)}
             />
           ))
         )}
@@ -1280,14 +1356,15 @@ function CommunityBuildsSection({
         </div>
       ) : null}
 
-      {selectedBuild && selectedDisplayBuild ? (
+      {communityBuildId && selectedBuild && selectedDisplayBuild ? (
         <CommunityBuildPreviewModal
           build={selectedBuild}
           displayBuild={selectedDisplayBuild}
           character={character}
           characterElement={characterElement}
           selectedLanguage={selectedLanguage}
-          onClose={() => setSelectedBuild(null)}
+          onClose={closeBuild}
+          onBuildDeleted={handleBuildDeleted}
         />
       ) : null}
     </section>
@@ -1301,6 +1378,7 @@ function CommunityBuildPreviewModal({
   characterElement,
   selectedLanguage,
   onClose,
+  onBuildDeleted,
 }: {
   build: CommunityBuildListItem;
   displayBuild: CharacterBuild;
@@ -1308,8 +1386,76 @@ function CommunityBuildPreviewModal({
   characterElement: string;
   selectedLanguage: string;
   onClose: () => void;
+  onBuildDeleted: (buildId: string) => void;
 }) {
+  const [actionMessage, setActionMessage] = useState<string | null>(null);
+  const [reportOpen, setReportOpen] = useState(false);
+  const [reportReason, setReportReason] = useState("");
+  const [actionBusy, setActionBusy] = useState<"delete" | "report" | null>(null);
+
   if (typeof document === "undefined") return null;
+
+  const actionButtonClass =
+    "inline-flex items-center justify-center gap-1.5 border border-white/15 bg-white/[0.04] px-3 py-2 font-caps text-[0.58rem] uppercase tracking-[0.14em] text-parch/85 transition-colors hover:border-gold/45 hover:text-gold-bright disabled:cursor-not-allowed disabled:opacity-50";
+  const builderImportHref = `${NAVIGATION.builder}?importBuildId=${build.id}`;
+  const builderEditHref = `${NAVIGATION.builder}?editBuildId=${build.id}`;
+
+  async function copyPermalink() {
+    const url = new URL(window.location.href);
+    url.searchParams.set("tab", "build");
+    url.searchParams.set("communityBuildId", build.id);
+
+    try {
+      await navigator.clipboard.writeText(url.toString());
+      setActionMessage("Lien du build copié.");
+    } catch {
+      setActionMessage(url.toString());
+    }
+  }
+
+  async function deleteBuild() {
+    if (!window.confirm("Supprimer définitivement ce build ?")) return;
+
+    setActionBusy("delete");
+    setActionMessage(null);
+    const response = await fetch(`/api/builds/${build.id}`, { method: "DELETE" });
+    const data = await response.json().catch(() => ({}));
+    setActionBusy(null);
+
+    if (!response.ok) {
+      setActionMessage(data.error ?? "Suppression impossible.");
+      return;
+    }
+
+    onBuildDeleted(build.id);
+  }
+
+  async function reportBuild() {
+    const reason = reportReason.trim();
+    if (reason.length < 3) {
+      setActionMessage("Ajoute une raison un peu plus précise.");
+      return;
+    }
+
+    setActionBusy("report");
+    setActionMessage(null);
+    const response = await fetch(`/api/builds/${build.id}/report`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ reason }),
+    });
+    const data = await response.json().catch(() => ({}));
+    setActionBusy(null);
+
+    if (!response.ok) {
+      setActionMessage(data.error ?? "Signalement impossible.");
+      return;
+    }
+
+    setReportOpen(false);
+    setReportReason("");
+    setActionMessage("Signalement transmis à l'administration.");
+  }
 
   return createPortal(
     <div
@@ -1344,6 +1490,68 @@ function CommunityBuildPreviewModal({
           {build.note ? (
             <p className="mt-3 max-w-3xl text-sm leading-relaxed text-parch/80">{build.note}</p>
           ) : null}
+
+          <div className="mt-3 flex flex-wrap items-center gap-2">
+            <button type="button" onClick={copyPermalink} className={actionButtonClass}>
+              <Copy className="h-3.5 w-3.5" />
+              Copier le lien
+            </button>
+            <Link href={builderImportHref} className={actionButtonClass}>
+              <GitFork className="h-3.5 w-3.5" />
+              Utiliser comme base
+            </Link>
+            {build.editableByMe ? (
+              <>
+                <Link href={builderEditHref} className={actionButtonClass}>
+                  <Pencil className="h-3.5 w-3.5" />
+                  Modifier
+                </Link>
+                <button
+                  type="button"
+                  onClick={deleteBuild}
+                  disabled={actionBusy === "delete"}
+                  className="inline-flex items-center justify-center gap-1.5 border border-crimson-bright/35 bg-crimson-bright/10 px-3 py-2 font-caps text-[0.58rem] uppercase tracking-[0.14em] text-crimson-bright transition-colors hover:border-crimson-bright hover:bg-crimson-bright/18 disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  <Trash2 className="h-3.5 w-3.5" />
+                  {actionBusy === "delete" ? "Suppression..." : "Supprimer"}
+                </button>
+              </>
+            ) : (
+              <button type="button" onClick={() => setReportOpen((open) => !open)} className={actionButtonClass}>
+                <Flag className="h-3.5 w-3.5" />
+                Signaler
+              </button>
+            )}
+          </div>
+
+          {reportOpen ? (
+            <div className="mt-3 max-w-2xl border border-white/10 bg-black/20 p-3">
+              <label className="flex flex-col gap-2">
+                <span className="font-caps text-[0.58rem] uppercase tracking-[0.16em] text-muted">Raison du signalement</span>
+                <textarea
+                  value={reportReason}
+                  onChange={(event) => setReportReason(event.target.value)}
+                  maxLength={160}
+                  placeholder="Spam, contenu incorrect, abus..."
+                  className="min-h-20 w-full resize-y border border-white/15 bg-ink/80 px-3 py-2 font-sans text-sm text-parch outline-none placeholder:text-muted-2 focus:border-gold"
+                />
+              </label>
+              <div className="mt-2 flex flex-wrap items-center justify-between gap-2">
+                <span className="font-sans text-[0.68rem] text-muted-2">{reportReason.trim().length}/160</span>
+                <button
+                  type="button"
+                  onClick={reportBuild}
+                  disabled={actionBusy === "report" || reportReason.trim().length < 3}
+                  className={actionButtonClass}
+                >
+                  <Flag className="h-3.5 w-3.5" />
+                  {actionBusy === "report" ? "Envoi..." : "Envoyer"}
+                </button>
+              </div>
+            </div>
+          ) : null}
+
+          {actionMessage ? <p className="mt-2 break-words font-sans text-xs text-gold">{actionMessage}</p> : null}
         </div>
 
         <div className="p-3 md:p-5">
