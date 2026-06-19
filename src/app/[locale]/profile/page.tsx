@@ -4,6 +4,7 @@ import { Boxes, Hammer, Shield } from "lucide-react";
 import SiteFooter from "@/components/site/SiteFooter";
 import SiteHeader from "@/components/site/SiteHeader";
 import { DiscordAuthButton } from "@/components/auth/DiscordAuthButton";
+import { DeleteAccountButton } from "@/components/account/DeleteAccountButton";
 import { DnaAvatar, DnaPanel, DnaSectionLabel, DnaTag } from "@/components/dna";
 import { getCurrentUser } from "@/lib/auth/session";
 
@@ -33,6 +34,7 @@ export default async function ProfilePage() {
               </div>
             </DnaPanel>
           ) : (
+            <>
             <div className="mt-6 grid gap-4 lg:grid-cols-[minmax(0,1fr)_18rem]">
               <DnaPanel className="p-5">
                 <div className="flex min-w-0 flex-col gap-4 sm:flex-row sm:items-center">
@@ -79,6 +81,24 @@ export default async function ProfilePage() {
                 </div>
               </DnaPanel>
             </div>
+
+            <DnaPanel className="mt-4 p-5">
+              <DnaSectionLabel>Confidentialité &amp; compte</DnaSectionLabel>
+              <p className="mt-3 font-sans text-sm leading-relaxed text-parch/85">
+                Tes données (pseudo, avatar, builds) sont décrites dans la{" "}
+                <Link
+                  href="/confidentialite"
+                  className="text-gold underline underline-offset-2 hover:text-gold-bright"
+                >
+                  politique de confidentialité
+                </Link>
+                .
+              </p>
+              <div className="mt-4">
+                <DeleteAccountButton />
+              </div>
+            </DnaPanel>
+            </>
           )}
         </div>
       </section>
