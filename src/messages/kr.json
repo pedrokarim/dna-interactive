@@ -621,7 +621,14 @@
     },
     "searchCharacter": "캐릭터 검색",
     "noCharacterFound": "캐릭터를 찾을 수 없습니다.",
-    "characterCount": "{count}/{total}명"
+    "characterCount": "{count}/{total}명",
+    "team": "팀",
+    "addTeammate": "추가",
+    "pickTeammate": "캐릭터 선택",
+    "roleLabel": "역할",
+    "roleSupport": "서포터",
+    "roleHeal": "힐러",
+    "roleTank": "탱커"
   },
   "communityBuilds": {
     "sectionTitle": "커뮤니티 대안",

@@ -42,7 +42,12 @@ type EditingTarget =
   | { kind: "demon"; position: number }
   | { kind: "center" }
   | { kind: "consonance"; position: number }
+  | { kind: "team" }
   | null;
+
+type TeamMember = { character: DnaPickerItem; role: string };
+const TEAM_ROLES = ["DPS", "Sub-DPS", "Support", "Heal", "Tank"] as const;
+const DEFAULT_ROLE = "DPS";
 
 type StoredDraft = {
   title: string;
@@ -138,6 +143,19 @@ export function CommunityBuildBuilderClient({
     () => SKILL_IDS.map((id) => ({ id, label: t(`skillLabels.${id}`), sublabel: t(`skillSub.${id}`) })),
     [t],
   );
+  const teamPool = useMemo<DnaPickerItem[]>(
+    () =>
+      options.characters.map((c) => ({
+        id: c.id,
+        name: c.name,
+        icon: c.portrait ?? null,
+        rarity: c.rarity ?? null,
+        element: c.elements[0]?.key ?? c.element ?? null,
+      })),
+    [options.characters],
+  );
+  const roleLabel = (role: string) =>
+    role === "Support" ? t("roleSupport") : role === "Heal" ? t("roleHeal") : role === "Tank" ? t("roleTank") : role;
   const firstCharacter = options.characters[0];
   const [characterId, setCharacterId] = useState(firstCharacter?.id ?? "");
   const selectedCharacter = useMemo(
@@ -156,6 +174,7 @@ export function CommunityBuildBuilderClient({
   const [consonanceSlots, setConsonanceSlots] = useState<WedgeSlotData[]>(() => emptyWedgeSlots(4));
   const [statsPriority, setStatsPriority] = useState<PriorityItem[]>(STATS_POOL.slice(0, 3));
   const [skillPriority, setSkillPriority] = useState<PriorityItem[]>([SKILL_POOL[2], SKILL_POOL[0]]);
+  const [team, setTeam] = useState<TeamMember[]>([]);
   const [editing, setEditing] = useState<EditingTarget>(null);
   const [status, setStatus] = useState<DraftState>("idle");
   const [savedAt, setSavedAt] = useState<string | undefined>();
@@ -238,7 +257,7 @@ export function CommunityBuildBuilderClient({
         skillIndex: Number(item.id.replace("skill-", "")) || undefined,
         priority: index + 1,
       })),
-      team: [],
+      team: team.map((member) => ({ characterId: member.character.id, role: member.role })),
     }),
     [
       activeElement,
@@ -251,6 +270,7 @@ export function CommunityBuildBuilderClient({
       rangedWeapons,
       skillPriority,
       statsPriority,
+      team,
     ],
   );
 
@@ -306,6 +326,14 @@ export function CommunityBuildBuilderClient({
         .map((entry) => SKILL_POOL.find((item) => item.label === entry.skillName || item.id === `skill-${entry.skillIndex}`))
         .filter((item): item is PriorityItem => item !== undefined),
     );
+    setTeam(
+      next.team
+        .map((entry) => {
+          const character = teamPool.find((c) => c.id === entry.characterId);
+          return character ? { character, role: entry.role } : null;
+        })
+        .filter((member): member is TeamMember => member !== null),
+    );
   }
 
   useEffect(() => {
@@ -320,6 +348,7 @@ export function CommunityBuildBuilderClient({
     setConsonanceSlots(emptyWedgeSlots(4));
     setStatsPriority(STATS_POOL.slice(0, 3));
     setSkillPriority([SKILL_POOL[2], SKILL_POOL[0]]);
+    setTeam([]);
     setStatus("idle");
     setSavedAt(undefined);
     setReconcile(null);
@@ -497,6 +526,15 @@ export function CommunityBuildBuilderClient({
     return () => window.clearTimeout(handle);
   }, [activeElement, isAuthenticated, key, note, payload, selectedCharacter, title]);
 
+  function pickTeammate(item: DnaPickerItem) {
+    setTeam((current) =>
+      current.length >= 3 || current.some((member) => member.character.id === item.id)
+        ? current
+        : [...current, { character: item, role: DEFAULT_ROLE }],
+    );
+    setEditing(null);
+  }
+
   function pickMod(item: DnaPickerItem) {
     if (!editing) return;
     if (editing.kind === "center") {
@@ -511,7 +549,7 @@ export function CommunityBuildBuilderClient({
           slot.position === editing.position ? { ...slot, item, track: item.polarity } : slot,
         ),
       );
-    } else {
+    } else if (editing.kind === "consonance") {
       setConsonanceSlots((slots) =>
         slots.map((slot) =>
           slot.position === editing.position ? { ...slot, item, track: item.polarity } : slot,
@@ -866,6 +904,63 @@ export function CommunityBuildBuilderClient({
             />
           </div>
         </DnaPanel>
+
+        <DnaPanel className="p-4">
+          <DnaSectionLabel>{t("team")}</DnaSectionLabel>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {team.map((member, index) => (
+              <div
+                key={member.character.id}
+                className="relative flex w-32 flex-col items-center gap-1.5 border border-white/8 bg-gradient-to-b from-[rgba(34,29,21,0.55)] to-[rgba(14,12,9,0.8)] p-2.5 text-center"
+              >
+                <button
+                  type="button"
+                  onClick={() => setTeam((current) => current.filter((_, i) => i !== index))}
+                  aria-label={t("close")}
+                  className="absolute right-1 top-1 z-[3] flex h-4 w-4 items-center justify-center rounded-full border border-white/20 bg-ink/80 text-[0.7rem] leading-none text-muted hover:border-crimson-bright hover:text-[#ffb3a6]"
+                >
+                  ×
+                </button>
+                <span className="grid aspect-square w-full place-items-center overflow-hidden bg-black/25">
+                  {member.character.icon ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={member.character.icon} alt={member.character.name} className="h-full w-full object-cover object-[50%_14%]" />
+                  ) : (
+                    <span className="font-display text-2xl text-muted-2">◇</span>
+                  )}
+                </span>
+                <span className="line-clamp-2 min-h-[2.1em] font-sans text-[0.72rem] leading-tight text-parch">
+                  {member.character.name}
+                </span>
+                <select
+                  value={member.role}
+                  onChange={(event) => {
+                    const role = event.target.value;
+                    setTeam((current) => current.map((m, i) => (i === index ? { ...m, role } : m)));
+                  }}
+                  aria-label={t("roleLabel")}
+                  className="w-full border border-white/15 bg-ink/70 px-1.5 py-1 font-sans text-[0.7rem] text-parch outline-none focus:border-gold"
+                >
+                  {TEAM_ROLES.map((role) => (
+                    <option key={role} value={role}>
+                      {roleLabel(role)}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            ))}
+            {team.length < 3 ? (
+              <button
+                type="button"
+                onClick={() => setEditing({ kind: "team" })}
+                className="flex w-32 flex-col items-center justify-center gap-1 border border-dashed border-white/20 bg-white/2 p-2 text-muted-2 transition-colors hover:border-gold hover:text-gold"
+              >
+                <span className="text-2xl leading-none">＋</span>
+                <span className="font-caps text-[0.55rem] uppercase tracking-[0.16em]">{t("addTeammate")}</span>
+              </button>
+            ) : null}
+          </div>
+        </DnaPanel>
       </div>
 
       <aside className="grid min-w-0 gap-4 md:grid-cols-2 2xl:flex 2xl:flex-col">
@@ -968,17 +1063,18 @@ export function CommunityBuildBuilderClient({
           >
             <div className="mb-3 flex items-center justify-between gap-3">
               <h3 className="font-caps text-xs uppercase tracking-[0.18em] text-gold">
-                {editing.kind === "center" ? t("pickCenterMod") : t("pickMod")}
+                {editing.kind === "team" ? t("pickTeammate") : editing.kind === "center" ? t("pickCenterMod") : t("pickMod")}
               </h3>
               <DnaButton onClick={() => setEditing(null)} className="px-3 py-1.5 text-xs">
                 {t("close")}
               </DnaButton>
             </div>
             <DnaItemPicker
-              items={editing.kind === "center" ? centerMods : options.mods}
+              items={editing.kind === "team" ? teamPool : editing.kind === "center" ? centerMods : options.mods}
+              usedIds={editing.kind === "team" ? team.map((member) => member.character.id) : undefined}
               columns={6}
               minColumnWidth="8.25rem"
-              onSelect={pickMod}
+              onSelect={editing.kind === "team" ? pickTeammate : pickMod}
             />
           </div>
         </div>,

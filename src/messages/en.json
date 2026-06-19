@@ -621,7 +621,14 @@
     },
     "searchCharacter": "Search a character",
     "noCharacterFound": "No character found.",
-    "characterCount": "{count}/{total} characters"
+    "characterCount": "{count}/{total} characters",
+    "team": "Team",
+    "addTeammate": "Add",
+    "pickTeammate": "Choose a character",
+    "roleLabel": "Role",
+    "roleSupport": "Support",
+    "roleHeal": "Healer",
+    "roleTank": "Tank"
   },
   "communityBuilds": {
     "sectionTitle": "Community alternatives",

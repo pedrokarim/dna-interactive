@@ -621,7 +621,14 @@
     },
     "searchCharacter": "Buscar un personaje",
     "noCharacterFound": "Ningún personaje encontrado.",
-    "characterCount": "{count}/{total} personajes"
+    "characterCount": "{count}/{total} personajes",
+    "team": "Equipo",
+    "addTeammate": "Añadir",
+    "pickTeammate": "Elegir un personaje",
+    "roleLabel": "Rol",
+    "roleSupport": "Apoyo",
+    "roleHeal": "Sanador",
+    "roleTank": "Tanque"
   },
   "communityBuilds": {
     "sectionTitle": "Alternativas de la comunidad",

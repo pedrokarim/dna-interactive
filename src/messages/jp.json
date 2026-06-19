@@ -621,7 +621,14 @@
     },
     "searchCharacter": "キャラクターを検索",
     "noCharacterFound": "キャラクターが見つかりません。",
-    "characterCount": "{count}/{total} 体"
+    "characterCount": "{count}/{total} 体",
+    "team": "チーム",
+    "addTeammate": "追加",
+    "pickTeammate": "キャラクターを選択",
+    "roleLabel": "ロール",
+    "roleSupport": "サポート",
+    "roleHeal": "ヒーラー",
+    "roleTank": "タンク"
   },
   "communityBuilds": {
     "sectionTitle": "コミュニティの代替案",

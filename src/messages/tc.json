@@ -621,7 +621,14 @@
     },
     "searchCharacter": "搜尋角色",
     "noCharacterFound": "找不到角色。",
-    "characterCount": "{count}/{total} 名角色"
+    "characterCount": "{count}/{total} 名角色",
+    "team": "隊伍",
+    "addTeammate": "新增",
+    "pickTeammate": "選擇角色",
+    "roleLabel": "定位",
+    "roleSupport": "輔助",
+    "roleHeal": "治療",
+    "roleTank": "坦克"
   },
   "communityBuilds": {
     "sectionTitle": "社群替代方案",
