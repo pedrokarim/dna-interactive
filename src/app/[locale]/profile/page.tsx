@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { Boxes, Hammer, Shield } from "lucide-react";
 import SiteFooter from "@/components/site/SiteFooter";
@@ -10,12 +11,13 @@ import { getCurrentUser } from "@/lib/auth/session";
 
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = {
-  title: "Profil - DNA Interactive",
-  description: "Profil utilisateur DNA Interactive.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("account");
+  return { title: t("metaTitle"), description: t("metaDescription") };
+}
 
 export default async function ProfilePage() {
+  const t = await getTranslations("account");
   const user = await getCurrentUser();
 
   return (
@@ -23,12 +25,12 @@ export default async function ProfilePage() {
       <SiteHeader />
       <section className="container mx-auto px-4 py-8 md:px-6 md:py-12">
         <div className="mx-auto max-w-4xl">
-          <DnaSectionLabel>Compte</DnaSectionLabel>
-          <h1 className="mt-2 font-display text-3xl leading-tight text-parch md:text-4xl">Profil</h1>
+          <DnaSectionLabel>{t("account")}</DnaSectionLabel>
+          <h1 className="mt-2 font-display text-3xl leading-tight text-parch md:text-4xl">{t("title")}</h1>
 
           {!user ? (
             <DnaPanel className="mt-6 p-5">
-              <p className="font-sans text-sm text-muted">Connecte-toi avec Discord pour afficher ton profil.</p>
+              <p className="font-sans text-sm text-muted">{t("loginPrompt")}</p>
               <div className="mt-4">
                 <DiscordAuthButton />
               </div>
@@ -40,12 +42,14 @@ export default async function ProfilePage() {
                 <div className="flex min-w-0 flex-col gap-4 sm:flex-row sm:items-center">
                   <DnaAvatar src={user.image} fallback={(user.name ?? "D").charAt(0).toUpperCase()} round size={76} />
                   <div className="min-w-0 flex-1">
-                    <p className="font-caps text-[0.62rem] uppercase tracking-[0.18em] text-gold">Connecte avec Discord</p>
+                    <p className="font-caps text-[0.62rem] uppercase tracking-[0.18em] text-gold">{t("connectedWith")}</p>
                     <h2 className="mt-1 truncate font-display text-3xl text-parch">{user.name ?? "Discord"}</h2>
                     <div className="mt-2 flex flex-wrap items-center gap-2">
-                      <DnaTag tone={user.role === "admin" ? "gold" : "crimson"}>{user.role}</DnaTag>
+                      <DnaTag tone={user.role === "admin" ? "gold" : "crimson"}>
+                        {user.role === "admin" ? t("roleAdmin") : t("roleUser")}
+                      </DnaTag>
                       {user.discordId ? (
-                        <span className="font-mono text-xs text-muted">Discord ID: {user.discordId}</span>
+                        <span className="font-mono text-xs text-muted">{t("discordId")}: {user.discordId}</span>
                       ) : null}
                     </div>
                   </div>
@@ -53,21 +57,21 @@ export default async function ProfilePage() {
               </DnaPanel>
 
               <DnaPanel className="p-4">
-                <DnaSectionLabel>Acces rapides</DnaSectionLabel>
+                <DnaSectionLabel>{t("quickAccess")}</DnaSectionLabel>
                 <div className="mt-3 flex flex-col gap-2">
                   <Link
                     href="/builder"
                     className="flex items-center gap-2 border border-white/15 bg-white/5 px-3 py-2 font-sans text-sm text-parch transition-colors hover:border-gold/45 hover:text-gold-bright"
                   >
                     <Hammer className="h-4 w-4 text-gold" />
-                    Builder
+                    {t("navBuilder")}
                   </Link>
                   <Link
                     href="/items"
                     className="flex items-center gap-2 border border-white/15 bg-white/5 px-3 py-2 font-sans text-sm text-parch transition-colors hover:border-gold/45 hover:text-gold-bright"
                   >
                     <Boxes className="h-4 w-4 text-gold" />
-                    Items
+                    {t("navItems")}
                   </Link>
                   {user.role === "admin" ? (
                     <Link
@@ -75,7 +79,7 @@ export default async function ProfilePage() {
                       className="flex items-center gap-2 border border-gold/35 bg-gold/10 px-3 py-2 font-sans text-sm text-gold transition-colors hover:border-gold hover:text-gold-bright"
                     >
                       <Shield className="h-4 w-4" />
-                      Admin
+                      {t("navAdmin")}
                     </Link>
                   ) : null}
                 </div>
@@ -83,16 +87,15 @@ export default async function ProfilePage() {
             </div>
 
             <DnaPanel className="mt-4 p-5">
-              <DnaSectionLabel>Confidentialité &amp; compte</DnaSectionLabel>
+              <DnaSectionLabel>{t("privacyBox")}</DnaSectionLabel>
               <p className="mt-3 font-sans text-sm leading-relaxed text-parch/85">
-                Tes données (pseudo, avatar, builds) sont décrites dans la{" "}
-                <Link
-                  href="/confidentialite"
-                  className="text-gold underline underline-offset-2 hover:text-gold-bright"
-                >
-                  politique de confidentialité
-                </Link>
-                .
+                {t.rich("privacyText", {
+                  link: (chunks) => (
+                    <Link href="/confidentialite" className="text-gold underline underline-offset-2 hover:text-gold-bright">
+                      {chunks}
+                    </Link>
+                  ),
+                })}
               </p>
               <div className="mt-4">
                 <DeleteAccountButton />
