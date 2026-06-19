@@ -1561,7 +1561,7 @@ function CommunityBuildPreviewModal({
             characterElement={characterElement}
             selectedLanguage={selectedLanguage}
             showCommunityBuilds={false}
-            showQuickBuildCard={false}
+            showQuickBuildCard={true}
             skillIcons={character.skillIcons}
           />
         </div>
