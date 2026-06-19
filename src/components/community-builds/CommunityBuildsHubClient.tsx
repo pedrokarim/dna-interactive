@@ -2,10 +2,11 @@
 
 import { useDeferredValue, useEffect, useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
-import { ChevronLeft, ChevronRight, GitFork, Search, Users } from "lucide-react";
+import { ChevronLeft, ChevronRight, Filter, GitFork, Search, Users } from "lucide-react";
 import { Link, useRouter } from "@/i18n/navigation";
 import { DnaButton } from "@/components/dna/Button";
-import { DnaCommunityBuildCard } from "@/components/dna/CommunityBuildCard";
+import { DnaChip } from "@/components/dna/Chip";
+import { DnaCommunityBuildBannerCard } from "@/components/dna/CommunityBuildBannerCard";
 import { DnaElementBadge } from "@/components/dna/ElementBadge";
 import { DnaField } from "@/components/dna/Field";
 import { DnaPanel } from "@/components/dna/Panel";
@@ -101,12 +102,14 @@ export function CommunityBuildsHubClient({ options, locale }: CommunityBuildsHub
   });
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState<string | null>(null);
+  const [filtersOpen, setFiltersOpen] = useState(false);
 
   const characterById = useMemo(
     () => new Map(options.characters.map((character) => [character.id, character])),
     [options.characters],
   );
   const selectedCharacter = characterId === "all" ? null : characterById.get(characterId) ?? null;
+  const activeFilterCount = (characterId !== "all" ? 1 : 0) + (element !== "all" ? 1 : 0);
 
   const filteredCharacters = useMemo(() => {
     const normalized = normalizeSearchText(deferredQuery);
@@ -219,7 +222,7 @@ export function CommunityBuildsHubClient({ options, locale }: CommunityBuildsHub
               {tcb("hubDescription")}
             </p>
           </div>
-          <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
+          <div className="flex flex-wrap items-center gap-2">
             <DnaSegmented
               value={sort}
               onChange={(value) => selectSort(value as SortMode)}
@@ -228,6 +231,15 @@ export function CommunityBuildsHubClient({ options, locale }: CommunityBuildsHub
                 { value: "recent", label: tcb("sortRecent") },
               ]}
             />
+            <DnaButton
+              variant="ghost"
+              className="px-3"
+              icon={<Filter className="h-4 w-4" />}
+              onClick={() => setFiltersOpen((open) => !open)}
+            >
+              {tcb("filters")}
+              {activeFilterCount > 0 ? ` (${activeFilterCount})` : ""}
+            </DnaButton>
             <Link
               href={NAVIGATION.builder}
               className="dna-shine inline-flex items-center justify-center border border-gold bg-gold/15 px-4 py-2 font-caps text-[0.62rem] uppercase tracking-[0.16em] text-gold-bright transition-colors hover:border-gold-bright hover:text-[#fff6e6]"
@@ -237,82 +249,106 @@ export function CommunityBuildsHubClient({ options, locale }: CommunityBuildsHub
           </div>
         </div>
 
-        <div className="mt-5 grid gap-4 lg:grid-cols-[minmax(16rem,0.34fr)_minmax(0,1fr)]">
-          <DnaField
-            icon={<Search className="h-4 w-4" />}
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder={tcb("searchCharacter")}
-            wrapClassName="w-full min-w-0 self-start"
-          />
-
-          <div className="flex min-w-0 snap-x snap-mandatory gap-3 overflow-x-auto pb-2 [scrollbar-color:rgba(194,168,106,0.7)_rgba(255,255,255,0.08)]">
+        {activeFilterCount > 0 ? (
+          <div className="mt-3 flex flex-wrap items-center gap-2">
+            {selectedCharacter ? (
+              <DnaChip selected onClick={() => selectCharacter("all")}>
+                {selectedCharacter.name} ✕
+              </DnaChip>
+            ) : null}
+            {element !== "all" ? (
+              <DnaChip selected color={ELEMENTS[element as ElementKey]?.hex} onClick={() => selectElement("all")}>
+                {ELEMENTS[element as ElementKey]?.label ?? element} ✕
+              </DnaChip>
+            ) : null}
             <button
               type="button"
               onClick={() => selectCharacter("all")}
-              aria-pressed={characterId === "all"}
-              className={cn(
-                "grid h-28 w-36 shrink-0 snap-start place-items-center border bg-black/25 p-3 text-center transition-colors hover:border-gold/60",
-                characterId === "all" ? "border-gold text-gold-bright" : "border-white/12 text-parch/80",
-              )}
+              className="font-caps text-[0.58rem] uppercase tracking-[0.16em] text-muted-2 transition-colors hover:text-parch"
             >
-              <span className="font-caps text-[0.62rem] uppercase tracking-[0.18em]">{tcb("allCharacters")}</span>
+              {tcb("resetFilters")}
             </button>
-            {filteredCharacters.map((character) => (
+          </div>
+        ) : null}
+
+        {filtersOpen ? (
+          <div className="mt-4 space-y-3 border-t border-white/10 pt-4">
+            <DnaField
+              icon={<Search className="h-4 w-4" />}
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder={tcb("searchCharacter")}
+              wrapClassName="w-full max-w-md"
+            />
+
+            <div className="flex min-w-0 snap-x snap-mandatory gap-3 overflow-x-auto pb-2 [scrollbar-color:rgba(194,168,106,0.7)_rgba(255,255,255,0.08)]">
               <button
-                key={character.id}
                 type="button"
-                onClick={() => selectCharacter(character.id)}
-                aria-pressed={character.id === characterId}
+                onClick={() => selectCharacter("all")}
+                aria-pressed={characterId === "all"}
                 className={cn(
-                  "group relative h-28 w-36 shrink-0 snap-start overflow-hidden border bg-black/25 text-left transition-all hover:-translate-y-0.5 hover:border-gold/60",
-                  character.id === characterId ? "border-gold shadow-[0_0_0_1px_rgba(194,168,106,0.35)]" : "border-white/12",
+                  "grid h-28 w-36 shrink-0 snap-start place-items-center border bg-black/25 p-3 text-center transition-colors hover:border-gold/60",
+                  characterId === "all" ? "border-gold text-gold-bright" : "border-white/12 text-parch/80",
                 )}
               >
-                {character.portrait ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img src={character.portrait} alt="" className="absolute inset-0 h-full w-full object-cover object-[50%_14%] transition-transform duration-500 group-hover:scale-105" />
-                ) : null}
-                <span aria-hidden className="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-transparent" />
-                <span className="absolute inset-x-2 bottom-2 z-[2]">
-                  <span className="flex items-center gap-1">
-                    {character.elements.slice(0, 2).map((characterElement) => (
-                      <DnaElementBadge key={characterElement.key} element={characterElement.key} size={22} />
-                    ))}
-                  </span>
-                  <span className="mt-1 block truncate font-display text-base text-parch">{character.name}</span>
-                </span>
+                <span className="font-caps text-[0.62rem] uppercase tracking-[0.18em]">{tcb("allCharacters")}</span>
               </button>
-            ))}
-          </div>
-        </div>
-
-        {selectedCharacter && selectedCharacter.elements.length > 0 ? (
-          <div className="mt-4 flex min-w-0 flex-wrap items-center gap-2">
-            <span className="font-caps text-[0.58rem] uppercase tracking-[0.16em] text-muted">{tcb("element")}</span>
-            <DnaSegmented
-              value={element}
-              onChange={selectElement}
-              options={[
-                { value: "all", label: tcb("allElements") },
-                ...selectedCharacter.elements.map((characterElement) => ({
-                  value: characterElement.key,
-                  label: (
-                    <span className="inline-flex items-center gap-1.5">
-                      <DnaElementBadge element={characterElement.key} size={20} />
-                      {ELEMENTS[characterElement.key as ElementKey]?.label ?? characterElement.label}
+              {filteredCharacters.map((character) => (
+                <button
+                  key={character.id}
+                  type="button"
+                  onClick={() => selectCharacter(character.id)}
+                  aria-pressed={character.id === characterId}
+                  className={cn(
+                    "group relative h-28 w-36 shrink-0 snap-start overflow-hidden border bg-black/25 text-left transition-all hover:-translate-y-0.5 hover:border-gold/60",
+                    character.id === characterId ? "border-gold shadow-[0_0_0_1px_rgba(194,168,106,0.35)]" : "border-white/12",
+                  )}
+                >
+                  {character.portrait ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={character.portrait} alt="" className="absolute inset-0 h-full w-full object-cover object-[50%_14%] transition-transform duration-500 group-hover:scale-105" />
+                  ) : null}
+                  <span aria-hidden className="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-transparent" />
+                  <span className="absolute inset-x-2 bottom-2 z-[2]">
+                    <span className="flex items-center gap-1">
+                      {character.elements.slice(0, 2).map((characterElement) => (
+                        <DnaElementBadge key={characterElement.key} element={characterElement.key} size={22} />
+                      ))}
                     </span>
-                  ),
-                })),
-              ]}
-            />
+                    <span className="mt-1 block truncate font-display text-base text-parch">{character.name}</span>
+                  </span>
+                </button>
+              ))}
+            </div>
+
+            {selectedCharacter && selectedCharacter.elements.length > 0 ? (
+              <div className="flex min-w-0 flex-wrap items-center gap-2">
+                <span className="font-caps text-[0.58rem] uppercase tracking-[0.16em] text-muted">{tcb("element")}</span>
+                <DnaSegmented
+                  value={element}
+                  onChange={selectElement}
+                  options={[
+                    { value: "all", label: tcb("allElements") },
+                    ...selectedCharacter.elements.map((characterElement) => ({
+                      value: characterElement.key,
+                      label: (
+                        <span className="inline-flex items-center gap-1.5">
+                          <DnaElementBadge element={characterElement.key} size={20} />
+                          {ELEMENTS[characterElement.key as ElementKey]?.label ?? characterElement.label}
+                        </span>
+                      ),
+                    })),
+                  ]}
+                />
+              </div>
+            ) : null}
           </div>
         ) : null}
       </DnaPanel>
 
       {message ? <p className="border border-gold/20 bg-gold/10 px-3 py-2 font-sans text-sm text-gold">{message}</p> : null}
 
-      <div className="grid gap-3 lg:grid-cols-2">
+      <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
         {loading ? (
           <DnaPanel className="p-5 font-sans text-sm text-muted">{tcb("loadingBuilds")}</DnaPanel>
         ) : builds.length === 0 ? (
@@ -323,7 +359,7 @@ export function CommunityBuildsHubClient({ options, locale }: CommunityBuildsHub
             const preview = getPreviewItems(build, lang);
             const href = buildCharacterHref(character, build.id);
             return (
-              <DnaCommunityBuildCard
+              <DnaCommunityBuildBannerCard
                 key={build.id}
                 title={build.title}
                 author={{ name: build.authorName ?? "Discord", avatar: build.authorImage }}
@@ -334,6 +370,8 @@ export function CommunityBuildsHubClient({ options, locale }: CommunityBuildsHub
                 })}
                 element={build.element as ElementKey | null}
                 rank={sort === "top" ? (pagination.page - 1) * pagination.pageSize + index + 1 : undefined}
+                bannerImage={character?.portrait}
+                characterName={character?.name ?? build.characterId}
                 vote={{ count: build.voteCount, voted: build.votedByMe }}
                 onVote={(next) => void toggleVote(build, next)}
                 weapons={preview.weapons}
@@ -344,18 +382,13 @@ export function CommunityBuildsHubClient({ options, locale }: CommunityBuildsHub
                 voteLabels={{ vote: tcb("voteAction"), remove: tcb("removeVote"), login: tcb("loginVote") }}
                 onOpen={() => router.push(href)}
                 actions={
-                  <>
-                    <span className="inline-flex items-center border border-white/10 bg-black/20 px-2.5 py-1.5 font-sans text-xs text-muted">
-                      {character?.name ?? build.characterId}
-                    </span>
-                    <Link
-                      href={`${NAVIGATION.builder}?importBuildId=${build.id}`}
-                      className="inline-flex items-center gap-1.5 border border-white/15 bg-white/[0.04] px-2.5 py-1.5 font-caps text-[0.58rem] uppercase tracking-[0.14em] text-parch/80 transition-colors hover:border-gold/45 hover:text-gold-bright"
-                    >
-                      <GitFork className="h-3.5 w-3.5" />
-                      {tcb("base")}
-                    </Link>
-                  </>
+                  <Link
+                    href={`${NAVIGATION.builder}?importBuildId=${build.id}`}
+                    className="inline-flex items-center gap-1.5 border border-white/15 bg-white/[0.04] px-2.5 py-1.5 font-caps text-[0.58rem] uppercase tracking-[0.14em] text-parch/80 transition-colors hover:border-gold/45 hover:text-gold-bright"
+                  >
+                    <GitFork className="h-3.5 w-3.5" />
+                    {tcb("base")}
+                  </Link>
                 }
               />
             );

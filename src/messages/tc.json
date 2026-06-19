@@ -695,7 +695,10 @@
     "hubLoadError": "無法載入配裝。",
     "loadGeneric": "載入失敗。",
     "searchCharacter": "搜尋角色",
-    "element": "元素"
+    "element": "元素",
+    "filters": "篩選",
+    "character": "角色",
+    "resetFilters": "重設"
   },
   "account": {
     "metaTitle": "個人檔案 - DNA Interactive",

@@ -695,7 +695,10 @@
     "hubLoadError": "빌드를 불러오지 못했습니다.",
     "loadGeneric": "불러오기에 실패했습니다.",
     "searchCharacter": "캐릭터 검색",
-    "element": "속성"
+    "element": "속성",
+    "filters": "필터",
+    "character": "캐릭터",
+    "resetFilters": "초기화"
   },
   "account": {
     "metaTitle": "프로필 - DNA Interactive",

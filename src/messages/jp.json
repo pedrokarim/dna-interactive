@@ -695,7 +695,10 @@
     "hubLoadError": "ビルドを読み込めませんでした。",
     "loadGeneric": "読み込みに失敗しました。",
     "searchCharacter": "キャラクターを検索",
-    "element": "属性"
+    "element": "属性",
+    "filters": "フィルター",
+    "character": "キャラクター",
+    "resetFilters": "リセット"
   },
   "account": {
     "metaTitle": "プロフィール - DNA Interactive",

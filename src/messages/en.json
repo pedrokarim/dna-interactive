@@ -695,7 +695,10 @@
     "hubLoadError": "Could not load builds.",
     "loadGeneric": "Loading failed.",
     "searchCharacter": "Search a character",
-    "element": "Element"
+    "element": "Element",
+    "filters": "Filters",
+    "character": "Character",
+    "resetFilters": "Reset"
   },
   "account": {
     "metaTitle": "Profile - DNA Interactive",

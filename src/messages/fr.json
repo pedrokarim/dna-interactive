@@ -695,7 +695,10 @@
     "hubLoadError": "Impossible de charger les builds.",
     "loadGeneric": "Chargement impossible.",
     "searchCharacter": "Rechercher un personnage",
-    "element": "Élément"
+    "element": "Élément",
+    "filters": "Filtres",
+    "character": "Personnage",
+    "resetFilters": "Réinitialiser"
   },
   "account": {
     "metaTitle": "Profil - DNA Interactive",
