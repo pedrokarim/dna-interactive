@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState, useSyncExternalStore, type Change
 import { useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { createPortal } from "react-dom";
-import { Download, Upload } from "lucide-react";
+import { Download, Upload, Link2, Share2 } from "lucide-react";
 import { BuilderCharacterPicker } from "@/components/builder/CharacterPicker";
 import { DnaButton } from "@/components/dna/Button";
 import { DnaConsonanceEditor } from "@/components/dna/ConsonanceEditor";
@@ -21,6 +21,8 @@ import { ELEMENTS, type ElementKey } from "@/components/dna/elements";
 import type { WedgeSlotData } from "@/components/dna/_wedge";
 import {
   createCommunityBuildExport,
+  decodeBuildParam,
+  encodeBuildParam,
   parseBuildJsonText,
   parseBuildXmlText,
   serializeBuildJson,
@@ -175,6 +177,7 @@ export function CommunityBuildBuilderClient({
   const [statsPriority, setStatsPriority] = useState<PriorityItem[]>(STATS_POOL.slice(0, 3));
   const [skillPriority, setSkillPriority] = useState<PriorityItem[]>([SKILL_POOL[2], SKILL_POOL[0]]);
   const [team, setTeam] = useState<TeamMember[]>([]);
+  const [canShareNative, setCanShareNative] = useState(false);
   const [editing, setEditing] = useState<EditingTarget>(null);
   const [status, setStatus] = useState<DraftState>("idle");
   const [savedAt, setSavedAt] = useState<string | undefined>();
@@ -185,6 +188,7 @@ export function CommunityBuildBuilderClient({
   const canPortal = useSyncExternalStore(subscribeMounted, () => true, () => false);
   const hydratedRef = useRef(false);
   const loadedSharedBuildRef = useRef<string | null>(null);
+  const loadedShareParamRef = useRef(false);
   const importInputRef = useRef<HTMLInputElement>(null);
   const importFormatRef = useRef<"json" | "xml">("json");
 
@@ -525,6 +529,96 @@ export function CommunityBuildBuilderClient({
 
     return () => window.clearTimeout(handle);
   }, [activeElement, isAuthenticated, key, note, payload, selectedCharacter, title]);
+
+  useEffect(() => {
+    setCanShareNative(typeof navigator !== "undefined" && typeof navigator.share === "function");
+  }, []);
+
+  // Lien auto-portant : si l'URL contient ?b=<build>, on pré-remplit le builder.
+  useEffect(() => {
+    if (loadedShareParamRef.current) return;
+    const param = searchParams.get("b");
+    if (!param) return;
+    loadedShareParamRef.current = true;
+    const result = decodeBuildParam(param, options);
+    if (!result.ok) {
+      setMessage(result.errors[0] ?? t("loadFailed"));
+      return;
+    }
+    const data = result.data;
+    const targetCharacter = options.characters.find((c) => c.id === data.characterId);
+    if (!targetCharacter) {
+      setMessage(t("characterMissing"));
+      return;
+    }
+    const nextElement = asElementKey(data.element) ?? targetCharacter.elements[0]?.key ?? null;
+    const updatedAt = new Date().toISOString();
+    const importedDraft: StoredDraft = { title: data.title, note: data.note ?? "", payload: data.payload, updatedAt };
+    window.localStorage.setItem(draftKey(data.characterId, nextElement), JSON.stringify(importedDraft));
+    hydratedRef.current = false;
+    setEditingBuildId(null);
+    setCharacterId(data.characterId);
+    setElement(nextElement);
+    setTitle(data.title);
+    setNote(data.note ?? "");
+    applyPayload(data.payload);
+    setStatus("saved");
+    window.setTimeout(() => {
+      hydratedRef.current = true;
+      setMessage(t("baseLoaded"));
+    }, 0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams, options]);
+
+  function shareUrlValue(): string | null {
+    const exported = currentExport();
+    if (!exported) return null;
+    return `${window.location.origin}${window.location.pathname}?b=${encodeBuildParam(exported)}`;
+  }
+
+  function shareMessage(): string {
+    return t("shareText", { character: selectedCharacter?.name ?? "" });
+  }
+
+  async function copyShareLink() {
+    const url = shareUrlValue();
+    if (!url) return;
+    try {
+      await navigator.clipboard.writeText(url);
+      setMessage(t("shareLinkCopied"));
+    } catch {
+      setMessage(url);
+    }
+  }
+
+  function openShare(href: string) {
+    window.open(href, "_blank", "noopener,noreferrer");
+  }
+
+  function shareToX() {
+    const url = shareUrlValue();
+    if (url) openShare(`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareMessage())}&url=${encodeURIComponent(url)}`);
+  }
+
+  function shareToFacebook() {
+    const url = shareUrlValue();
+    if (url) openShare(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
+  }
+
+  function shareToReddit() {
+    const url = shareUrlValue();
+    if (url) openShare(`https://www.reddit.com/submit?url=${encodeURIComponent(url)}&title=${encodeURIComponent(shareMessage())}`);
+  }
+
+  async function shareNative() {
+    const url = shareUrlValue();
+    if (!url) return;
+    try {
+      await navigator.share({ title: shareMessage(), text: shareMessage(), url });
+    } catch {
+      /* annulé par l'utilisateur */
+    }
+  }
 
   function pickTeammate(item: DnaPickerItem) {
     setTeam((current) =>
@@ -1021,6 +1115,25 @@ export function CommunityBuildBuilderClient({
             className="hidden"
             onChange={importBuild}
           />
+        </DnaPanel>
+
+        <DnaPanel className="p-4">
+          <DnaSectionLabel>{t("share")}</DnaSectionLabel>
+          <div className="mt-3 flex flex-col gap-2">
+            <DnaButton variant="ghost" className="px-3" icon={<Link2 className="h-4 w-4" />} onClick={copyShareLink}>
+              {t("shareCopyLink")}
+            </DnaButton>
+            <div className="grid grid-cols-3 gap-2">
+              <DnaButton variant="ghost" className="px-2 text-xs" onClick={shareToX}>X</DnaButton>
+              <DnaButton variant="ghost" className="px-2 text-xs" onClick={shareToFacebook}>Facebook</DnaButton>
+              <DnaButton variant="ghost" className="px-2 text-xs" onClick={shareToReddit}>Reddit</DnaButton>
+            </div>
+            {canShareNative ? (
+              <DnaButton variant="ghost" className="px-3" icon={<Share2 className="h-4 w-4" />} onClick={shareNative}>
+                {t("shareNative")}
+              </DnaButton>
+            ) : null}
+          </div>
         </DnaPanel>
 
         <DnaPanel className="p-4">

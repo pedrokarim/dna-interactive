@@ -628,7 +628,12 @@
     "roleLabel": "ロール",
     "roleSupport": "サポート",
     "roleHeal": "ヒーラー",
-    "roleTank": "タンク"
+    "roleTank": "タンク",
+    "share": "共有",
+    "shareCopyLink": "リンクをコピー",
+    "shareLinkCopied": "リンクをコピーしました。",
+    "shareNative": "共有…",
+    "shareText": "DNA Interactive の私の{character}ビルド"
   },
   "communityBuilds": {
     "sectionTitle": "コミュニティの代替案",

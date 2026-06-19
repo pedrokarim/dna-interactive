@@ -628,7 +628,12 @@
     "roleLabel": "定位",
     "roleSupport": "輔助",
     "roleHeal": "治療",
-    "roleTank": "坦克"
+    "roleTank": "坦克",
+    "share": "分享",
+    "shareCopyLink": "複製連結",
+    "shareLinkCopied": "已複製連結。",
+    "shareNative": "分享…",
+    "shareText": "我在 DNA Interactive 的 {character} 配裝"
   },
   "communityBuilds": {
     "sectionTitle": "社群替代方案",

@@ -628,7 +628,12 @@
     "roleLabel": "Rôle",
     "roleSupport": "Support",
     "roleHeal": "Soigneur",
-    "roleTank": "Tank"
+    "roleTank": "Tank",
+    "share": "Partager",
+    "shareCopyLink": "Copier le lien",
+    "shareLinkCopied": "Lien copié.",
+    "shareNative": "Partager…",
+    "shareText": "Mon build {character} sur DNA Interactive"
   },
   "communityBuilds": {
     "sectionTitle": "Alternatives communauté",

@@ -628,7 +628,12 @@
     "roleLabel": "역할",
     "roleSupport": "서포터",
     "roleHeal": "힐러",
-    "roleTank": "탱커"
+    "roleTank": "탱커",
+    "share": "공유",
+    "shareCopyLink": "링크 복사",
+    "shareLinkCopied": "링크를 복사했습니다.",
+    "shareNative": "공유…",
+    "shareText": "DNA Interactive의 내 {character} 빌드"
   },
   "communityBuilds": {
     "sectionTitle": "커뮤니티 대안",
