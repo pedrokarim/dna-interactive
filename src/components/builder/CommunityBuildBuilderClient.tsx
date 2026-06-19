@@ -7,6 +7,7 @@ import { createPortal } from "react-dom";
 import { Download, Upload, Link2, Share2 } from "lucide-react";
 import { BuilderCharacterPicker } from "@/components/builder/CharacterPicker";
 import { DnaButton } from "@/components/dna/Button";
+import { DnaChip } from "@/components/dna/Chip";
 import { DnaConsonanceEditor } from "@/components/dna/ConsonanceEditor";
 import { DnaDemonWedgeEditor } from "@/components/dna/DemonWedgeEditor";
 import { DnaDraftStatus, type DraftState } from "@/components/dna/DraftStatus";
@@ -32,6 +33,7 @@ import {
 import { isCenterDemonWedgeItemId } from "@/lib/community-builds/center-wedges";
 import type { BuilderOptions } from "@/lib/community-builds/options";
 import type { CommunityBuildPayload } from "@/lib/community-builds/validation";
+import { BUILD_TAGS, type BuildTag } from "@/lib/community-builds/validation";
 
 const STAT_IDS = ["ATK", "CritRate", "CritDmg", "SkillDmg", "ElementDmg", "HP", "DEF"] as const;
 const SKILL_IDS = ["skill-1", "skill-2", "skill-3"] as const;
@@ -177,6 +179,7 @@ export function CommunityBuildBuilderClient({
   const [statsPriority, setStatsPriority] = useState<PriorityItem[]>(STATS_POOL.slice(0, 3));
   const [skillPriority, setSkillPriority] = useState<PriorityItem[]>([SKILL_POOL[2], SKILL_POOL[0]]);
   const [team, setTeam] = useState<TeamMember[]>([]);
+  const [tags, setTags] = useState<BuildTag[]>([]);
   const [canShareNative, setCanShareNative] = useState(false);
   const [editing, setEditing] = useState<EditingTarget>(null);
   const [status, setStatus] = useState<DraftState>("idle");
@@ -262,6 +265,7 @@ export function CommunityBuildBuilderClient({
         priority: index + 1,
       })),
       team: team.map((member) => ({ characterId: member.character.id, role: member.role })),
+      tags,
     }),
     [
       activeElement,
@@ -275,6 +279,7 @@ export function CommunityBuildBuilderClient({
       skillPriority,
       statsPriority,
       team,
+      tags,
     ],
   );
 
@@ -338,6 +343,7 @@ export function CommunityBuildBuilderClient({
         })
         .filter((member): member is TeamMember => member !== null),
     );
+    setTags(next.tags ?? []);
   }
 
   useEffect(() => {
@@ -353,6 +359,7 @@ export function CommunityBuildBuilderClient({
     setStatsPriority(STATS_POOL.slice(0, 3));
     setSkillPriority([SKILL_POOL[2], SKILL_POOL[0]]);
     setTeam([]);
+    setTags([]);
     setStatus("idle");
     setSavedAt(undefined);
     setReconcile(null);
@@ -936,6 +943,24 @@ export function CommunityBuildBuilderClient({
               />
               <span className="self-end font-sans text-[0.68rem] text-muted-2">{note.trim().length}/200</span>
             </label>
+          </div>
+        </DnaPanel>
+
+        <DnaPanel className="p-4">
+          <DnaSectionLabel>{t("categories")}</DnaSectionLabel>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {BUILD_TAGS.map((tag) => {
+              const active = tags.includes(tag);
+              return (
+                <DnaChip
+                  key={tag}
+                  selected={active}
+                  onClick={() => setTags((current) => (active ? current.filter((value) => value !== tag) : [...current, tag]))}
+                >
+                  {t(`tagLabels.${tag}`)}
+                </DnaChip>
+              );
+            })}
           </div>
         </DnaPanel>
 

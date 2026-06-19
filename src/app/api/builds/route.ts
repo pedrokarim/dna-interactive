@@ -30,6 +30,7 @@ export async function GET(request: NextRequest) {
   const url = new URL(request.url);
   const characterId = url.searchParams.get("characterId");
   const element = url.searchParams.get("element");
+  const tag = url.searchParams.get("tag");
   const sort = url.searchParams.get("sort") === "recent" ? "recent" : "top";
   const pageSize = clampLimit(url.searchParams.get("pageSize") ?? url.searchParams.get("limit"));
   const requestedPage = clampPage(url.searchParams.get("page"));
@@ -40,6 +41,9 @@ export async function GET(request: NextRequest) {
   if (element) {
     const elementFilter = or(isNull(schema.builds.element), eq(schema.builds.element, element));
     if (elementFilter) filters.push(elementFilter);
+  }
+  if (tag) {
+    filters.push(sql`${schema.builds.payload} -> 'tags' @> ${JSON.stringify([tag])}::jsonb`);
   }
 
   try {

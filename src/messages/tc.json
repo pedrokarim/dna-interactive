@@ -633,7 +633,16 @@
     "shareCopyLink": "複製連結",
     "shareLinkCopied": "已複製連結。",
     "shareNative": "分享…",
-    "shareText": "我在 DNA Interactive 的 {character} 配裝"
+    "shareText": "我在 DNA Interactive 的 {character} 配裝",
+    "categories": "分類",
+    "tagLabels": {
+      "solo": "單人",
+      "team": "隊伍",
+      "boss": "首領",
+      "f2p": "F2P",
+      "endgame": "終盤",
+      "beginner": "新手"
+    }
   },
   "communityBuilds": {
     "sectionTitle": "社群替代方案",
@@ -698,7 +707,17 @@
     "element": "元素",
     "filters": "篩選",
     "character": "角色",
-    "resetFilters": "重設"
+    "resetFilters": "重設",
+    "categories": "分類",
+    "allTags": "全部",
+    "tagLabels": {
+      "solo": "單人",
+      "team": "隊伍",
+      "boss": "首領",
+      "f2p": "F2P",
+      "endgame": "終盤",
+      "beginner": "新手"
+    }
   },
   "account": {
     "metaTitle": "個人檔案 - DNA Interactive",

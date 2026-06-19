@@ -633,7 +633,16 @@
     "shareCopyLink": "Copiar enlace",
     "shareLinkCopied": "Enlace copiado.",
     "shareNative": "Compartir…",
-    "shareText": "Mi build de {character} en DNA Interactive"
+    "shareText": "Mi build de {character} en DNA Interactive",
+    "categories": "Categorías",
+    "tagLabels": {
+      "solo": "Solo",
+      "team": "Equipo",
+      "boss": "Boss",
+      "f2p": "F2P",
+      "endgame": "Endgame",
+      "beginner": "Principiante"
+    }
   },
   "communityBuilds": {
     "sectionTitle": "Alternativas de la comunidad",
@@ -698,7 +707,17 @@
     "element": "Elemento",
     "filters": "Filtros",
     "character": "Personaje",
-    "resetFilters": "Restablecer"
+    "resetFilters": "Restablecer",
+    "categories": "Categorías",
+    "allTags": "Todas",
+    "tagLabels": {
+      "solo": "Solo",
+      "team": "Equipo",
+      "boss": "Boss",
+      "f2p": "F2P",
+      "endgame": "Endgame",
+      "beginner": "Principiante"
+    }
   },
   "account": {
     "metaTitle": "Perfil - DNA Interactive",

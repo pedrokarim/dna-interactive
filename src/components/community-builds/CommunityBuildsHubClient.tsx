@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { ChevronLeft, ChevronRight, GitFork, Search, Users } from "lucide-react";
 import { Link, useRouter } from "@/i18n/navigation";
 import { DnaButton } from "@/components/dna/Button";
+import { DnaChip } from "@/components/dna/Chip";
 import { DnaCommunityBuildBannerCard } from "@/components/dna/CommunityBuildBannerCard";
 import { DnaElementBadge } from "@/components/dna/ElementBadge";
 import { DnaField } from "@/components/dna/Field";
@@ -15,6 +16,7 @@ import { resolveBuildItemRef } from "@/lib/characters/builds";
 import { NAVIGATION } from "@/lib/constants";
 import type { BuilderCharacterOption, BuilderOptions } from "@/lib/community-builds/options";
 import type { CommunityBuildPayload } from "@/lib/community-builds/validation";
+import { BUILD_TAGS } from "@/lib/community-builds/validation";
 import { cn } from "@/components/dna/cn";
 
 const PAGE_SIZE = 12;
@@ -90,6 +92,7 @@ export function CommunityBuildsHubClient({ options, locale }: CommunityBuildsHub
   const deferredQuery = useDeferredValue(query);
   const [characterId, setCharacterId] = useState("all");
   const [element, setElement] = useState("all");
+  const [tag, setTag] = useState("all");
   const [sort, setSort] = useState<SortMode>("top");
   const [page, setPage] = useState(1);
   const [builds, setBuilds] = useState<CommunityBuildListItem[]>([]);
@@ -123,6 +126,7 @@ export function CommunityBuildsHubClient({ options, locale }: CommunityBuildsHub
     });
     if (characterId !== "all") params.set("characterId", characterId);
     if (element !== "all") params.set("element", element);
+    if (tag !== "all") params.set("tag", tag);
 
     fetch(`/api/builds?${params.toString()}`)
       .then(async (response) => {
@@ -154,12 +158,18 @@ export function CommunityBuildsHubClient({ options, locale }: CommunityBuildsHub
     return () => {
       cancelled = true;
     };
-  }, [characterId, element, page, sort]);
+  }, [characterId, element, tag, page, sort]);
 
   function selectCharacter(nextCharacterId: string) {
     setLoading(true);
     setCharacterId(nextCharacterId);
     setElement("all");
+    setPage(1);
+  }
+
+  function selectTag(nextTag: string) {
+    setLoading(true);
+    setTag(nextTag);
     setPage(1);
   }
 
@@ -238,6 +248,18 @@ export function CommunityBuildsHubClient({ options, locale }: CommunityBuildsHub
         </div>
 
         <div className="mt-4 space-y-3 border-t border-white/10 pt-4">
+            <div className="flex min-w-0 flex-wrap items-center gap-2">
+              <span className="font-caps text-[0.58rem] uppercase tracking-[0.16em] text-muted">{tcb("categories")}</span>
+              <DnaChip selected={tag === "all"} onClick={() => selectTag("all")}>
+                {tcb("allTags")}
+              </DnaChip>
+              {BUILD_TAGS.map((buildTag) => (
+                <DnaChip key={buildTag} selected={tag === buildTag} onClick={() => selectTag(buildTag)}>
+                  {tcb(`tagLabels.${buildTag}`)}
+                </DnaChip>
+              ))}
+            </div>
+
             <DnaField
               icon={<Search className="h-4 w-4" />}
               value={query}
@@ -333,6 +355,7 @@ export function CommunityBuildsHubClient({ options, locale }: CommunityBuildsHub
                 onVote={(next) => void toggleVote(build, next)}
                 weapons={preview.weapons}
                 genimons={preview.genimons}
+                tags={(build.payload.tags ?? []).map((buildTag) => tcb(`tagLabels.${buildTag}`))}
                 openLabel={tcb("view")}
                 communityLabel={tcb("community")}
                 officialLabel={tcb("officialTier")}

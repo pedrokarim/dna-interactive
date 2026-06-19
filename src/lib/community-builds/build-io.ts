@@ -3,6 +3,7 @@ import { z } from "zod";
 import type { BuilderOptions } from "./options";
 import type { DnaPickerItem } from "@/components/dna/ItemPicker";
 import type { CommunityBuildPayload } from "./validation";
+import { BUILD_TAGS } from "./validation";
 import { isCenterDemonWedgeItemId } from "./center-wedges";
 
 export const COMMUNITY_BUILD_EXPORT_SCHEMA = "dna.community-build";
@@ -62,6 +63,7 @@ const buildPayloadIoSchema = z
           .strict(),
       )
       .max(3),
+    tags: z.array(z.enum(BUILD_TAGS)).max(5).default([]),
   })
   .strict();
 

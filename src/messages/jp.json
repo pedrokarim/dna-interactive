@@ -633,7 +633,16 @@
     "shareCopyLink": "リンクをコピー",
     "shareLinkCopied": "リンクをコピーしました。",
     "shareNative": "共有…",
-    "shareText": "DNA Interactive の私の{character}ビルド"
+    "shareText": "DNA Interactive の私の{character}ビルド",
+    "categories": "カテゴリ",
+    "tagLabels": {
+      "solo": "ソロ",
+      "team": "チーム",
+      "boss": "ボス",
+      "f2p": "F2P",
+      "endgame": "エンドゲーム",
+      "beginner": "初心者"
+    }
   },
   "communityBuilds": {
     "sectionTitle": "コミュニティの代替案",
@@ -698,7 +707,17 @@
     "element": "属性",
     "filters": "フィルター",
     "character": "キャラクター",
-    "resetFilters": "リセット"
+    "resetFilters": "リセット",
+    "categories": "カテゴリ",
+    "allTags": "すべて",
+    "tagLabels": {
+      "solo": "ソロ",
+      "team": "チーム",
+      "boss": "ボス",
+      "f2p": "F2P",
+      "endgame": "エンドゲーム",
+      "beginner": "初心者"
+    }
   },
   "account": {
     "metaTitle": "プロフィール - DNA Interactive",

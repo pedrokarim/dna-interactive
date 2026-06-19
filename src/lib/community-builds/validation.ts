@@ -6,6 +6,10 @@ import { isCenterDemonWedgeItemId } from "./center-wedges";
 const itemIdSchema = z.string().trim().min(1).max(96);
 const rankSchema = z.enum(["best", "alternative"]);
 
+// Catégories de build (tags) — jeu canonique fermé, libellés localisés à l'affichage.
+export const BUILD_TAGS = ["solo", "team", "boss", "f2p", "endgame", "beginner"] as const;
+export type BuildTag = (typeof BUILD_TAGS)[number];
+
 export const buildTitleSchema = z.string().trim().min(3).max(60);
 export const buildNoteSchema = z.string().trim().max(200).nullable().optional();
 
@@ -59,6 +63,7 @@ export const buildPayloadSchema = z.object({
     )
     .max(3)
     .default([]),
+  tags: z.array(z.enum(BUILD_TAGS)).max(5).default([]),
 });
 
 export const createBuildSchema = z.object({

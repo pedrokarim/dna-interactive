@@ -633,7 +633,16 @@
     "shareCopyLink": "링크 복사",
     "shareLinkCopied": "링크를 복사했습니다.",
     "shareNative": "공유…",
-    "shareText": "DNA Interactive의 내 {character} 빌드"
+    "shareText": "DNA Interactive의 내 {character} 빌드",
+    "categories": "카테고리",
+    "tagLabels": {
+      "solo": "솔로",
+      "team": "팀",
+      "boss": "보스",
+      "f2p": "F2P",
+      "endgame": "엔드게임",
+      "beginner": "초보자"
+    }
   },
   "communityBuilds": {
     "sectionTitle": "커뮤니티 대안",
@@ -698,7 +707,17 @@
     "element": "속성",
     "filters": "필터",
     "character": "캐릭터",
-    "resetFilters": "초기화"
+    "resetFilters": "초기화",
+    "categories": "카테고리",
+    "allTags": "전체",
+    "tagLabels": {
+      "solo": "솔로",
+      "team": "팀",
+      "boss": "보스",
+      "f2p": "F2P",
+      "endgame": "엔드게임",
+      "beginner": "초보자"
+    }
   },
   "account": {
     "metaTitle": "프로필 - DNA Interactive",

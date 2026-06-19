@@ -35,6 +35,8 @@ export type DnaCommunityBuildBannerCardProps = {
   voteLabels?: { vote?: string; remove?: string; login?: string };
   weapons?: IconRef[];
   genimons?: IconRef[];
+  /** Tags/catégories déjà localisés (le DS reste pur). */
+  tags?: string[];
   onOpen?: () => void;
   openLabel?: string;
   officialLabel?: string;
@@ -59,6 +61,7 @@ export function DnaCommunityBuildBannerCard({
   voteLabels,
   weapons = [],
   genimons = [],
+  tags = [],
   onOpen,
   openLabel = "Voir",
   officialLabel = "Officiel",
@@ -135,6 +138,19 @@ export function DnaCommunityBuildBannerCard({
             ))}
           </div>
         )}
+
+        {tags.length > 0 ? (
+          <div className="flex flex-wrap gap-1">
+            {tags.map((tag) => (
+              <span
+                key={tag}
+                className="border border-white/12 bg-white/5 px-1.5 py-0.5 font-caps text-[0.5rem] uppercase tracking-[0.12em] text-muted"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        ) : null}
 
         <div className="mt-auto flex items-center gap-2 pt-1">
           {onOpen ? (
