@@ -351,3 +351,50 @@ volontairement légère grâce à un format quasi 100 % structuré.
 Recommandation : **GO sur le v1 décrit ici.** Prochaine étape une fois ce
 cadrage validé : **plan d'implémentation détaillé lot par lot** (schémas Drizzle
 précis, schéma Zod du payload, arbo des composants du builder).
+
+---
+
+## 10. Partage de build — lien + image (proposition)
+
+> Origine : suggestion communauté (Akatsune) — *« un truc qui génère un lien à
+> partager ou une image à partager pour se passer les builds »*.
+
+### Ce qui existe déjà
+- **Image** : export **PNG** de la carte de build (`QuickBuildModal` /
+  `QuickBuildAccordion` via `html-to-image`), disponible sur les builds
+  **officiels** et **communauté** (carte partageable dans l'aperçu).
+- **Lien** : **permalien** des builds **publiés** (`?communityBuildId=…` +
+  bouton « Copier le lien »), plus **import/export JSON/XML** depuis le builder
+  et liens builder `?importBuildId=` / `?editBuildId=`.
+
+### Le manque visé
+Pouvoir partager un build **directement depuis le builder**, y compris **en
+cours / non publié** et **sans compte** — sans devoir d'abord publier.
+
+### A. Lien partageable
+Deux options, complémentaires :
+
+| Option | Principe | + | − |
+|---|---|---|---|
+| **A1 — lien auto-portant (recommandé)** | Encoder le payload (IDs only) compressé en base64url dans l'URL/hash : `/builder?b=<payload>`. À l'ouverture, le builder décode et pré-remplit. | Pas de DB, instantané, marche **sans compte**, réutilise le schéma import/export existant | URL longue (mitigeable : compression `deflate`), pas de stats |
+| **A2 — build « non listé »** | Créer une entrée DB `status='unlisted'` avec un id court → `/builds/<id>` non indexé, révocable. | URL courte, révocable, stats possibles | Nécessite **connexion** + écriture DB |
+
+Reco : **A1 pour le partage rapide** (couvre le cas « se passer un build »
+entre amis, sans compte) ; A2 en complément pour les connectés qui veulent un
+lien court/stable.
+
+### B. Image partageable
+Quasi acquis : il suffit d'**exposer l'export PNG dans le builder** pour le build
+en cours (aujourd'hui le builder n'a que JSON/XML ; le PNG existe côté affichage).
+Nécessite un petit **adaptateur `payload → CharacterBuild`** pour réutiliser
+`QuickBuildCard` (déjà noté comme reste mineur du lot 2b). Bonus possible :
+bouton « copier l'image dans le presse-papier » en plus du téléchargement.
+
+### Effort indicatif
+- **A1** (encodage/décodage URL + bouton « Copier le lien » dans le builder) : ~0,5–1 j.
+- **B** (PNG depuis le builder via adaptateur) : ~0,5–1 j.
+- **A2** (non listé en DB) : ~1 j (table/flag + route + révocation).
+
+### Statut
+**Amélioration proposée (phase 2 / quick-win).** A1 + B sont peu coûteux et à
+forte valeur d'usage ; A2 optionnel. À valider avant planification.
