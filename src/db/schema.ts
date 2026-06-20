@@ -114,6 +114,7 @@ export const builds = pgTable(
     note: text("note"),
     payload: jsonb("payload").$type<BuildPayloadJson>().notNull(),
     voteCount: integer("vote_count").notNull().default(0),
+    views: integer("views").notNull().default(0),
     hidden: boolean("hidden").notNull().default(false),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
     updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),

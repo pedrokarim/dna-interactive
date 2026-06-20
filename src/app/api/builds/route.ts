@@ -65,6 +65,7 @@ export async function GET(request: NextRequest) {
         note: schema.builds.note,
         payload: schema.builds.payload,
         voteCount: schema.builds.voteCount,
+        views: schema.builds.views,
         createdAt: schema.builds.createdAt,
         updatedAt: schema.builds.updatedAt,
         authorName: schema.users.name,

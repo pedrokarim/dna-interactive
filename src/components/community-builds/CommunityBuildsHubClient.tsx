@@ -32,6 +32,7 @@ type CommunityBuildListItem = {
   title: string;
   note: string | null;
   voteCount: number;
+  views: number;
   createdAt: string;
   updatedAt: string;
   authorName: string | null;
@@ -327,7 +328,7 @@ export function CommunityBuildsHubClient({ options, locale }: CommunityBuildsHub
 
       {message ? <p className="border border-gold/20 bg-gold/10 px-3 py-2 font-sans text-sm text-gold">{message}</p> : null}
 
-      <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {loading ? (
           <DnaPanel className="p-5 font-sans text-sm text-muted">{tcb("loadingBuilds")}</DnaPanel>
         ) : builds.length === 0 ? (
@@ -337,6 +338,13 @@ export function CommunityBuildsHubClient({ options, locale }: CommunityBuildsHub
             const character = characterById.get(build.characterId);
             const preview = getPreviewItems(build, lang);
             const href = buildCharacterHref(character, build.id);
+            const lineup = [
+              ...(character ? [{ avatar: character.portrait, name: character.name }] : []),
+              ...build.payload.team.map((member) => {
+                const teammate = characterById.get(member.characterId);
+                return { avatar: teammate?.portrait ?? null, name: teammate?.name ?? member.characterId };
+              }),
+            ];
             return (
               <DnaCommunityBuildBannerCard
                 key={build.id}
@@ -351,14 +359,15 @@ export function CommunityBuildsHubClient({ options, locale }: CommunityBuildsHub
                 rank={sort === "top" ? (pagination.page - 1) * pagination.pageSize + index + 1 : undefined}
                 bannerImage={character?.portrait}
                 characterName={character?.name ?? build.characterId}
-                vote={{ count: build.voteCount, voted: build.votedByMe }}
-                onVote={(next) => void toggleVote(build, next)}
-                weapons={preview.weapons}
-                genimons={preview.genimons}
+                lineup={lineup}
+                mainWeapon={preview.weapons[0]}
                 tags={(build.payload.tags ?? []).map((buildTag) => tcb(`tagLabels.${buildTag}`))}
-                openLabel={tcb("view")}
+                views={build.views}
+                viewsLabel={tcb("views")}
                 communityLabel={tcb("community")}
                 officialLabel={tcb("officialTier")}
+                vote={{ count: build.voteCount, voted: build.votedByMe }}
+                onVote={(next) => void toggleVote(build, next)}
                 voteLabels={{ vote: tcb("voteAction"), remove: tcb("removeVote"), login: tcb("loginVote") }}
                 onOpen={() => router.push(href)}
                 actions={

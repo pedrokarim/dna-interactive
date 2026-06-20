@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { and, eq } from "drizzle-orm";
+import { and, eq, sql } from "drizzle-orm";
 import { getDb, schema } from "@/db";
 import { getCurrentUser } from "@/lib/auth/session";
 import { isMissingTableError } from "@/lib/db-errors";
@@ -34,6 +34,7 @@ export async function GET(_request: NextRequest, { params }: RouteContext) {
         note: schema.builds.note,
         payload: schema.builds.payload,
         voteCount: schema.builds.voteCount,
+        views: schema.builds.views,
         hidden: schema.builds.hidden,
         createdAt: schema.builds.createdAt,
         updatedAt: schema.builds.updatedAt,
@@ -52,6 +53,17 @@ export async function GET(_request: NextRequest, { params }: RouteContext) {
     if (row.hidden && !editableByMe) {
       return NextResponse.json({ error: "Build introuvable." }, { status: 404 });
     }
+
+    // Compteur de vues : on incrémente quand un visiteur (pas l'auteur/admin)
+    // ouvre le build.
+    const isViewer = !editableByMe;
+    if (isViewer) {
+      await db
+        .update(schema.builds)
+        .set({ views: sql`${schema.builds.views} + 1` })
+        .where(eq(schema.builds.id, id));
+    }
+    const views = row.views + (isViewer ? 1 : 0);
 
     let votedByMe = false;
     if (user) {
@@ -73,6 +85,7 @@ export async function GET(_request: NextRequest, { params }: RouteContext) {
         note: row.note,
         payload: row.payload,
         voteCount: row.voteCount,
+        views,
         createdAt: row.createdAt,
         updatedAt: row.updatedAt,
         authorName: row.authorName,

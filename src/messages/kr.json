@@ -717,7 +717,8 @@
       "f2p": "F2P",
       "endgame": "엔드게임",
       "beginner": "초보자"
-    }
+    },
+    "views": "조회수"
   },
   "account": {
     "metaTitle": "프로필 - DNA Interactive",
