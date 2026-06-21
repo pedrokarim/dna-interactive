@@ -166,7 +166,15 @@ export function validateBuildReferences(input: CreateBuildInput | DraftInput): s
 
   for (const weapon of input.payload.weapons.melee) checkItem("weapons", weapon.itemId, "Arme melee");
   for (const weapon of input.payload.weapons.ranged) checkItem("weapons", weapon.itemId, "Arme ranged");
-  for (const genimon of input.payload.genimon) checkItem("genimons", genimon.itemId, "Génimon");
+  for (const genimon of input.payload.genimon) {
+    const item = getItemByCategoryAndId("genimons", genimon.itemId);
+    if (!item) {
+      errors.push(`Génimon introuvable : ${genimon.itemId}.`);
+    } else if (item.stats.maxLevel !== 60) {
+      // maxLevel 1 = pet d'événement (Monster Rush/Wishen) ou drone non équipable.
+      errors.push(`Génimon non équipable : ${genimon.itemId}.`);
+    }
+  }
   for (const slot of input.payload.demonWedges.slots) checkItem("mods", slot.itemId, "Demon Wedge");
   if (input.payload.demonWedges.centerItemId) {
     checkItem("mods", input.payload.demonWedges.centerItemId, "Demon Wedge central");
