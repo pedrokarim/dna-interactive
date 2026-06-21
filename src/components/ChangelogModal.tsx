@@ -1,171 +1,98 @@
 "use client";
 
-import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import { changelogData } from "@/lib/changelogData";
 import { typeConfig } from "@/lib/changelogConfig";
 import { useTranslations } from "next-intl";
-import { DnaButton, DnaCornerBrackets } from "@/components/dna";
+import { DnaButton, DnaDialog } from "@/components/dna";
 
 interface ChangelogModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-export default function ChangelogModal({
-  isOpen,
-  onClose,
-}: ChangelogModalProps) {
+export default function ChangelogModal({ isOpen, onClose }: ChangelogModalProps) {
   const t = useTranslations("changelog");
   const tCommon = useTranslations("common");
-  // Fermer avec Escape
-  useEffect(() => {
-    if (!isOpen) return;
-
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        onClose();
-      }
-    };
-
-    document.addEventListener("keydown", handleEscape);
-    return () => document.removeEventListener("keydown", handleEscape);
-  }, [isOpen, onClose]);
-
-  if (!isOpen) return null;
 
   return (
-    <>
-      {/* Overlay */}
-      <div
-        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[200]"
-        onClick={onClose}
-      />
+    <DnaDialog
+      open={isOpen}
+      onClose={onClose}
+      size="4xl"
+      title={
+        <span className="flex items-center gap-3">
+          <span className="flex h-10 w-10 items-center justify-center bg-linear-to-br from-gold to-gold-deep">
+            <Sparkles className="h-5 w-5 text-ink" />
+          </span>
+          <span className="flex flex-col">
+            <span className="font-display text-2xl text-parch">{t("title")}</span>
+            <span className="font-sans text-sm text-muted">{t("description")}</span>
+          </span>
+        </span>
+      }
+      footer={
+        <DnaButton variant="gold" onClick={onClose} className="w-full px-4 py-2">
+          {tCommon("close")}
+        </DnaButton>
+      }
+    >
+      <div className="space-y-6">
+        {changelogData.map((entry, index) => {
+          const config = typeConfig[entry.type];
+          const IconComponent = config.icon;
 
-      {/* Dialog */}
-      <div
-        className="fixed inset-0 z-[210] flex items-center justify-center p-4"
-        onClick={onClose}
-      >
-        <div
-          className="relative bg-ink/95 backdrop-blur-md border border-line/30 shadow-[0_20px_60px_rgba(0,0,0,0.8)] max-w-4xl w-full max-h-[90vh] flex flex-col"
-          onClick={(e) => e.stopPropagation()}
-        >
-          <DnaCornerBrackets size={18} className="z-10" />
-          {/* Header */}
-          <div className="relative flex items-center justify-between p-6 border-b border-line/20">
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-linear-to-br from-gold to-gold-deep flex items-center justify-center">
-                <Sparkles className="w-6 h-6 text-ink" />
-              </div>
-              <div>
-                <h3 className="font-display text-2xl text-parch">{t("title")}</h3>
-                <p className="text-sm text-muted">
-                  {t("description")}
-                </p>
-              </div>
-            </div>
-            <button
-              onClick={onClose}
-              className="text-muted hover:text-gold-bright transition-colors"
+          return (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.3, delay: index * 0.05 }}
+              className={`bg-linear-to-br from-panel/50 to-panel/50 backdrop-blur-sm border ${config.borderColor} p-5 transition-all duration-300 hover:border-gold/40`}
             >
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
-          </div>
+              <div className="mb-4 flex items-start gap-4">
+                <div className={`flex h-12 w-12 shrink-0 items-center justify-center bg-linear-to-br ${config.color}`}>
+                  <IconComponent className="h-6 w-6 text-parch" />
+                </div>
+                <div className="flex-1">
+                  <div className="mb-2 flex flex-wrap items-center gap-3">
+                    <h4 className="font-display text-xl text-parch">{entry.title}</h4>
+                    <span
+                      className={`px-2.5 py-1 font-caps text-[0.56rem] uppercase tracking-[0.16em] ${config.bgColor} border ${config.borderColor} text-parch`}
+                    >
+                      {config.label}
+                    </span>
+                  </div>
+                  <div className="mb-2 flex items-center gap-4 text-sm text-muted">
+                    <span className="flex items-center gap-1">
+                      <span className="font-semibold text-gold">v{entry.version}</span>
+                    </span>
+                    <span>•</span>
+                    <span>
+                      {new Date(entry.date).toLocaleDateString("fr-FR", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      })}
+                    </span>
+                  </div>
+                  <p className="text-sm leading-relaxed text-parch/85">{entry.description}</p>
+                </div>
+              </div>
 
-          {/* Scrollable Content */}
-          <div className="flex-1 overflow-y-auto p-6 custom-scrollbar">
-            <div className="space-y-6">
-              {changelogData.map((entry, index) => {
-                const config = typeConfig[entry.type];
-                const IconComponent = config.icon;
-
-                return (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3, delay: index * 0.05 }}
-                    className={`bg-linear-to-br from-panel/50 to-panel/50 backdrop-blur-sm border ${config.borderColor} p-5 hover:border-gold/40 transition-all duration-300`}
-                  >
-                    <div className="flex items-start gap-4 mb-4">
-                      <div
-                        className={`w-12 h-12 bg-linear-to-br ${config.color} flex items-center justify-center shrink-0`}
-                      >
-                        <IconComponent className="w-6 h-6 text-parch" />
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex items-center gap-3 mb-2 flex-wrap">
-                          <h4 className="font-display text-xl text-parch">
-                            {entry.title}
-                          </h4>
-                          <span
-                            className={`px-2.5 py-1 font-caps text-[0.56rem] uppercase tracking-[0.16em] ${config.bgColor} border ${config.borderColor} text-parch`}
-                          >
-                            {config.label}
-                          </span>
-                        </div>
-                        <div className="flex items-center gap-4 text-sm text-muted mb-2">
-                          <span className="flex items-center gap-1">
-                            <span className="font-semibold text-gold">
-                              v{entry.version}
-                            </span>
-                          </span>
-                          <span>•</span>
-                          <span>
-                            {new Date(entry.date).toLocaleDateString("fr-FR", {
-                              year: "numeric",
-                              month: "long",
-                              day: "numeric",
-                            })}
-                          </span>
-                        </div>
-                        <p className="text-parch/85 text-sm leading-relaxed">
-                          {entry.description}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="ml-16 space-y-1.5">
-                      {entry.items.map((item, itemIndex) => (
-                        <div
-                          key={itemIndex}
-                          className="flex items-start gap-3 text-sm text-parch/85"
-                        >
-                          <span className="text-gold mt-1 shrink-0">
-                            •
-                          </span>
-                          <span className="leading-relaxed">{item}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Footer */}
-          <div className="relative p-6 border-t border-line/20">
-            <DnaButton variant="gold" onClick={onClose} className="w-full px-4 py-2">
-              {tCommon("close")}
-            </DnaButton>
-          </div>
-        </div>
+              <div className="ml-16 space-y-1.5">
+                {entry.items.map((item, itemIndex) => (
+                  <div key={itemIndex} className="flex items-start gap-3 text-sm text-parch/85">
+                    <span className="mt-1 shrink-0 text-gold">•</span>
+                    <span className="leading-relaxed">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          );
+        })}
       </div>
-    </>
+    </DnaDialog>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { useQueryState, parseAsString } from "nuqs";
@@ -121,7 +121,9 @@ export default function MapPage() {
   const [showImportModal, setShowImportModal] = useState(false);
   const [showMapInfoModal, setShowMapInfoModal] = useState(false);
   const [showChangelogModal, setShowChangelogModal] = useState(false);
-  const [hasInitializedMap, setHasInitializedMap] = useState(false);
+  // Garde d'initialisation unique — un ref (pas un state) pour ne pas déclencher
+  // de setState synchrone dans l'effet d'init.
+  const hasInitializedMapRef = useRef(false);
   const [urlMapId] = useQueryState('mapId', parseAsString);
 
   // Gestionnaires pour le redimensionnement de la sidebar
@@ -396,8 +398,8 @@ export default function MapPage() {
 
   // Charger la carte persistée au montage du composant
   useEffect(() => {
-    if (typeof window !== 'undefined' && mapIndex.length > 0 && !hasInitializedMap) {
-      setHasInitializedMap(true);
+    if (typeof window !== 'undefined' && mapIndex.length > 0 && !hasInitializedMapRef.current) {
+      hasInitializedMapRef.current = true;
 
       // Priorité 1 : paramètre URL ?mapId=xxx
       if (urlMapId) {
@@ -425,7 +427,7 @@ export default function MapPage() {
       // Si pas de carte persistée valide, utiliser la première carte
       setSelectedMapId(mapIndex[0].id);
     }
-  }, [hasInitializedMap, setSelectedMapId, urlMapId]);
+  }, [setSelectedMapId, urlMapId]);
 
   // Initialiser la visibilité des catégories quand la carte change
   useEffect(() => {
@@ -434,9 +436,9 @@ export default function MapPage() {
 
       // On garde seulement les catégories de toutes les cartes vues récemment
       // Pour cette carte, on met toutes les sous-catégories à true par défaut
-      selectedMap.legend.forEach((category: any) => {
+      selectedMap.legend.forEach((category) => {
         if (category.markers) {
-          category.markers.forEach((subCategory: any) => {
+          category.markers.forEach((subCategory) => {
             const subCategoryId = `${selectedMap.id}-${category.type}-${subCategory.id}`;
             newVisibility[subCategoryId] = true;
           });

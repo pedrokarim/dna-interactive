@@ -9,6 +9,16 @@ import { DnaButton } from "./Button";
  * nets, liseré doré/cramoisi, fermeture ESC + clic backdrop). Remplace les
  * dialogues natifs du navigateur. `DnaConfirmDialog` ajoute confirmer/annuler.
  */
+const DIALOG_MAX_WIDTH = {
+  sm: "max-w-sm",
+  md: "max-w-md",
+  lg: "max-w-lg",
+  xl: "max-w-xl",
+  "2xl": "max-w-2xl",
+  "3xl": "max-w-3xl",
+  "4xl": "max-w-4xl",
+} as const;
+
 export type DnaDialogProps = {
   open: boolean;
   onClose: () => void;
@@ -17,10 +27,12 @@ export type DnaDialogProps = {
   footer?: ReactNode;
   /** Accent cramoisi (action destructive) au lieu du doré. */
   danger?: boolean;
+  /** Largeur max du panneau. Défaut `md`. */
+  size?: keyof typeof DIALOG_MAX_WIDTH;
   className?: string;
 };
 
-export function DnaDialog({ open, onClose, title, children, footer, danger, className }: DnaDialogProps) {
+export function DnaDialog({ open, onClose, title, children, footer, danger, size = "md", className }: DnaDialogProps) {
   useEffect(() => {
     if (!open) return;
     const onKey = (event: KeyboardEvent) => {
@@ -39,10 +51,14 @@ export function DnaDialog({ open, onClose, title, children, footer, danger, clas
   const accent = danger ? "#e0685a" : "#c2a86a";
 
   return (
-    <div role="dialog" aria-modal="true" className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+    <div role="dialog" aria-modal="true" className="fixed inset-0 z-[200] flex items-center justify-center p-4">
       <div aria-hidden className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={onClose} />
       <div
-        className={cn("relative w-full max-w-md border bg-[#0b0e14] shadow-[0_24px_60px_rgba(0,0,0,0.6)]", className)}
+        className={cn(
+          "relative max-h-[88vh] w-full overflow-y-auto border bg-[#0b0e14] shadow-[0_24px_60px_rgba(0,0,0,0.6)]",
+          DIALOG_MAX_WIDTH[size],
+          className,
+        )}
         style={{ borderColor: `${accent}66` }}
       >
         <span aria-hidden className="absolute inset-x-0 top-0 h-px" style={{ backgroundColor: accent }} />
