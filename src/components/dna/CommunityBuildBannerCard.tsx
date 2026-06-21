@@ -80,20 +80,20 @@ export function DnaCommunityBuildBannerCard({
       <button
         type="button"
         onClick={onOpen}
-        className={cn("group relative block h-36 w-full overflow-hidden text-left", onOpen ? "cursor-pointer" : "cursor-default")}
+        className={cn("group relative block aspect-square w-full overflow-hidden text-left", onOpen ? "cursor-pointer" : "cursor-default")}
         title={onOpen ? title : undefined}
       >
+        {/* Fond teinté toujours présent (le splash a un fond transparent). */}
+        <span aria-hidden className="absolute inset-0" style={{ background: `radial-gradient(circle at 50% 32%, ${accent}30, rgba(8,10,14,0.92))` }} />
         {bannerImage ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={bannerImage}
             alt=""
-            className="absolute inset-0 h-full w-full object-cover object-[50%_16%] transition-transform duration-500 group-hover:scale-105"
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
-        ) : (
-          <span aria-hidden className="absolute inset-0" style={{ background: `radial-gradient(circle at 50% 20%, ${accent}33, rgba(8,10,14,0.95))` }} />
-        )}
-        <span aria-hidden className="absolute inset-0 bg-gradient-to-t from-ink via-ink/45 to-transparent" />
+        ) : null}
+        <span aria-hidden className="absolute inset-0 bg-gradient-to-t from-ink via-ink/20 to-transparent" />
         <span aria-hidden className="absolute inset-x-0 bottom-0 h-px" style={{ backgroundColor: accent }} />
 
         {/* Élément (haut-gauche) */}

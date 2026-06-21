@@ -339,10 +339,10 @@ export function CommunityBuildsHubClient({ options, locale }: CommunityBuildsHub
             const preview = getPreviewItems(build, lang);
             const href = buildCharacterHref(character, build.id);
             const lineup = [
-              ...(character ? [{ avatar: character.portrait, name: character.name }] : []),
+              ...(character ? [{ avatar: character.avatar, name: character.name }] : []),
               ...build.payload.team.map((member) => {
                 const teammate = characterById.get(member.characterId);
-                return { avatar: teammate?.portrait ?? null, name: teammate?.name ?? member.characterId };
+                return { avatar: teammate?.avatar ?? null, name: teammate?.name ?? member.characterId };
               }),
             ];
             return (
@@ -357,7 +357,7 @@ export function CommunityBuildsHubClient({ options, locale }: CommunityBuildsHub
                 })}
                 element={build.element as ElementKey | null}
                 rank={sort === "top" ? (pagination.page - 1) * pagination.pageSize + index + 1 : undefined}
-                bannerImage={character?.portrait}
+                bannerImage={character?.art ?? character?.portrait}
                 characterName={character?.name ?? build.characterId}
                 lineup={lineup}
                 mainWeapon={preview.weapons[0]}

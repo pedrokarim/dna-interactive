@@ -13,6 +13,10 @@ export type BuilderCharacterOption = {
   name: string;
   subtitle: string | null;
   portrait: string | null;
+  /** Splash complet (bust 2048²) — pour la bannière des cartes. */
+  art: string | null;
+  /** Portrait carré (head) — pour les mini-avatars / line-up. */
+  avatar: string | null;
   element: ElementKey | null;
   elements: Array<{ key: ElementKey; label: string }>;
   weapons: string[];
@@ -105,6 +109,8 @@ function characterToOption(character: CharacterRecord, locale: string): BuilderC
     name,
     subtitle,
     portrait: character.portraits.gacha?.publicPath ?? character.portraits.head?.publicPath ?? character.portraits.icon?.publicPath ?? null,
+    art: character.portraits.bust?.publicPath ?? character.portraits.gacha?.publicPath ?? null,
+    avatar: character.portraits.head?.publicPath ?? character.portraits.icon?.publicPath ?? character.portraits.gacha?.publicPath ?? null,
     element: asElementKey(character.element.key),
     elements,
     weapons: character.weaponTags,
