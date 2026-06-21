@@ -138,6 +138,13 @@ function characterHasSkillIndex(
   return Boolean(path);
 }
 
+// Type d'une arme (WeaponType_Sword → "Sword") à partir du catalogue.
+function weaponTypeOf(itemId: string): string | null {
+  const item = getItemByCategoryAndId("weapons", itemId);
+  const key = (item?.typeCompatibility?.textKeys ?? []).find((k) => k.startsWith("WeaponType_"));
+  return key ? key.replace("WeaponType_", "") : null;
+}
+
 export function validateBuildReferences(input: CreateBuildInput | DraftInput): string[] {
   const errors: string[] = [];
   const character = getCharacterById(input.characterId);
@@ -154,6 +161,18 @@ export function validateBuildReferences(input: CreateBuildInput | DraftInput): s
     for (const skill of input.payload.skillPriority) {
       if (!characterHasSkillIndex(character, skill.skillIndex)) {
         errors.push(`Competence invalide pour ce personnage : #${skill.skillIndex}.`);
+      }
+    }
+
+    // Les armes doivent appartenir aux types du perso (weaponTags). "Almighty"
+    // = type joker (toutes armes autorisées).
+    if (!character.weaponTags.includes("Almighty")) {
+      const allowed = new Set(character.weaponTags);
+      for (const weapon of [...input.payload.weapons.melee, ...input.payload.weapons.ranged]) {
+        const type = weaponTypeOf(weapon.itemId);
+        if (type && !allowed.has(type)) {
+          errors.push(`Arme incompatible avec ce personnage : ${weapon.itemId} (${type}).`);
+        }
       }
     }
   }

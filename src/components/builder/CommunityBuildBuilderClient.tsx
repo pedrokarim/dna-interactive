@@ -176,6 +176,17 @@ export function CommunityBuildBuilderClient({
     if (skills.length > 0) return skills.map((s) => ({ id: `skill-${s.index}`, label: s.name }));
     return [1, 2, 3].map((i) => ({ id: `skill-${i}`, label: t(`skillLabels.skill-${i}`) }));
   }, [selectedCharacter, t]);
+  // Pools d'armes filtrés selon les types du perso (weaponTags) ; "Almighty" = toutes.
+  const { meleePool, rangedPool } = useMemo(() => {
+    const tags = selectedCharacter?.weapons ?? [];
+    const almighty = tags.includes("Almighty");
+    const allowed = new Set(tags);
+    const ok = (w: DnaPickerItem) => almighty || !w.weaponType || allowed.has(w.weaponType);
+    return {
+      meleePool: options.weapons.filter((w) => w.weaponClass === "melee" && ok(w)),
+      rangedPool: options.weapons.filter((w) => w.weaponClass === "ranged" && ok(w)),
+    };
+  }, [options.weapons, selectedCharacter]);
   const [element, setElement] = useState<ElementKey | null>(selectedCharacter?.elements[0]?.key ?? null);
 
   const [title, setTitle] = useState("");
@@ -979,11 +990,11 @@ export function CommunityBuildBuilderClient({
           <div className="mt-3 grid gap-4 xl:grid-cols-2">
             <div>
               <p className="mb-2 font-caps text-[0.62rem] uppercase tracking-[0.16em] text-muted">{t("melee")}</p>
-              <DnaSlotRow entries={meleeWeapons} pool={options.weapons} max={3} label={t("pickMeleeWeapon")} onChange={setMeleeWeapons} />
+              <DnaSlotRow entries={meleeWeapons} pool={meleePool} max={3} label={t("pickMeleeWeapon")} onChange={setMeleeWeapons} />
             </div>
             <div>
               <p className="mb-2 font-caps text-[0.62rem] uppercase tracking-[0.16em] text-muted">{t("ranged")}</p>
-              <DnaSlotRow entries={rangedWeapons} pool={options.weapons} max={3} label={t("pickRangedWeapon")} onChange={setRangedWeapons} />
+              <DnaSlotRow entries={rangedWeapons} pool={rangedPool} max={3} label={t("pickRangedWeapon")} onChange={setRangedWeapons} />
             </div>
           </div>
         </DnaPanel>

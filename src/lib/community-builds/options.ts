@@ -46,7 +46,7 @@ function itemToPickerItem(item: ItemRecord, locale: string): DnaPickerItem {
       : t.modName
     : `#${item.modId}`;
 
-  return {
+  const base: DnaPickerItem = {
     id: item.id,
     name,
     icon: item.icon.publicPath ?? item.icon.placeholderPath,
@@ -54,6 +54,17 @@ function itemToPickerItem(item: ItemRecord, locale: string): DnaPickerItem {
     element: asElementKey(item.affinity.char),
     polarity: item.stats.polarity,
   };
+
+  // Pour les armes, on expose le type (WeaponType_X) et la classe mêlée/distance
+  // afin de pouvoir filtrer le picker selon les weaponTags du perso.
+  if (item.categoryId === "weapons") {
+    const keys = item.typeCompatibility?.textKeys ?? [];
+    const typeKey = keys.find((k) => k.startsWith("WeaponType_"));
+    base.weaponType = typeKey ? typeKey.replace("WeaponType_", "") : null;
+    base.weaponClass = keys.includes("UI_Armory_Meleeweapon") ? "melee" : "ranged";
+  }
+
+  return base;
 }
 
 function consonanceToPickerItem(character: CharacterRecord): DnaPickerItem | null {

@@ -3,6 +3,7 @@ import { and, eq, sql } from "drizzle-orm";
 import { getDb, schema } from "@/db";
 import { getCurrentUser } from "@/lib/auth/session";
 import { isMissingTableError } from "@/lib/db-errors";
+import { checkRateLimit } from "@/lib/rate-limit";
 import {
   updateBuildSchema,
   validateBuildReferences,
@@ -18,7 +19,7 @@ async function getEditableBuild(id: string) {
   return build ?? null;
 }
 
-export async function GET(_request: NextRequest, { params }: RouteContext) {
+export async function GET(request: NextRequest, { params }: RouteContext) {
   const user = await getCurrentUser();
   const { id } = await params;
   const db = getDb();
@@ -55,15 +56,17 @@ export async function GET(_request: NextRequest, { params }: RouteContext) {
     }
 
     // Compteur de vues : on incrémente quand un visiteur (pas l'auteur/admin)
-    // ouvre le build.
+    // ouvre le build. Dédup anti-gonflage : 1 vue par (build, visiteur) / 30 min.
     const isViewer = !editableByMe;
-    if (isViewer) {
+    const viewerKey = user?.id ?? request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "anon";
+    const counts = isViewer && checkRateLimit(`build:view:${id}:${viewerKey}`, 1, 30 * 60 * 1000).ok;
+    if (counts) {
       await db
         .update(schema.builds)
         .set({ views: sql`${schema.builds.views} + 1` })
         .where(eq(schema.builds.id, id));
     }
-    const views = row.views + (isViewer ? 1 : 0);
+    const views = row.views + (counts ? 1 : 0);
 
     let votedByMe = false;
     if (user) {

@@ -20,6 +20,10 @@ export type DnaPickerItem = {
   element?: ElementKey | null;
   /** Track de polarité (1–4) pour les MOD ; null pour armes/génimons. */
   polarity?: number | null;
+  /** Type d'arme (Sword, Machinegun…) — armes uniquement, pour filtrer par perso. */
+  weaponType?: string | null;
+  /** Classe d'arme (mêlée/distance) — armes uniquement. */
+  weaponClass?: "melee" | "ranged" | null;
 };
 
 /** Libellés de track de polarité (MOD). Réf data : Polarity_<n>_Name. */
