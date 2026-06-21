@@ -460,6 +460,7 @@
     "newOnly": "新規のみ"
   },
   "itemDetail": {
+    "weaponBuildTitle": "おすすめのデーモンウェッジ構成",
     "rawFieldsTitle": "生データフィールド",
     "levelLabel": "レベル{level}",
     "levelValueUnavailable": "値が利用できません"

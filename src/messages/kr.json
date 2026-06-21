@@ -460,6 +460,7 @@
     "newOnly": "신규만"
   },
   "itemDetail": {
+    "weaponBuildTitle": "추천 데몬 웻지 빌드",
     "rawFieldsTitle": "원시 데이터",
     "levelLabel": "레벨 {level}",
     "levelValueUnavailable": "값을 사용할 수 없음"

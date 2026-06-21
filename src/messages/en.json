@@ -460,6 +460,7 @@
     "newOnly": "New only"
   },
   "itemDetail": {
+    "weaponBuildTitle": "Recommended Demon Wedge build",
     "rawFieldsTitle": "Raw fields",
     "levelLabel": "Level {level}",
     "levelValueUnavailable": "value unavailable"

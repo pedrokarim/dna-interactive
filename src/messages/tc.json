@@ -460,6 +460,7 @@
     "newOnly": "僅新項目"
   },
   "itemDetail": {
+    "weaponBuildTitle": "推薦惡魔楔組合",
     "rawFieldsTitle": "原始資料",
     "levelLabel": "等級 {level}",
     "levelValueUnavailable": "數值不可用"

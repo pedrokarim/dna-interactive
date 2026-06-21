@@ -460,6 +460,7 @@
     "newOnly": "Nur neue"
   },
   "itemDetail": {
+    "weaponBuildTitle": "Empfohlener Demon-Wedge-Build",
     "rawFieldsTitle": "Rohdaten",
     "levelLabel": "Stufe {level}",
     "levelValueUnavailable": "Wert nicht verfügbar"

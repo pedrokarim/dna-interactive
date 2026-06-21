@@ -460,6 +460,7 @@
     "newOnly": "Solo nuevos"
   },
   "itemDetail": {
+    "weaponBuildTitle": "Build de Demon Wedges recomendado",
     "rawFieldsTitle": "Campos sin procesar",
     "levelLabel": "Nivel {level}",
     "levelValueUnavailable": "valor no disponible"
