@@ -1,52 +1,52 @@
 {
-  "weaponId": "weapons-10107",
+  "weaponId": "weapons-10206",
   "demonWedges": {
     "slots": [
       {
         "position": 1,
-        "itemId": "mods-52011",
+        "itemId": "mods-102003",
         "track": null
       },
       {
         "position": 2,
-        "itemId": "mods-52010",
-        "track": null
-      },
-      {
-        "position": 3,
-        "itemId": "mods-201001",
-        "track": null
-      },
-      {
-        "position": 4,
         "itemId": "mods-52004",
         "track": null
       },
       {
-        "position": 5,
-        "itemId": "mods-52204",
-        "track": null
-      },
-      {
-        "position": 6,
+        "position": 3,
         "itemId": "mods-52007",
         "track": null
       },
       {
+        "position": 4,
+        "itemId": "mods-52001",
+        "track": null
+      },
+      {
+        "position": 5,
+        "itemId": "mods-52005",
+        "track": null
+      },
+      {
+        "position": 6,
+        "itemId": "mods-52101",
+        "track": null
+      },
+      {
         "position": 7,
-        "itemId": "mods-52008",
+        "itemId": "mods-42311",
         "track": null
       },
       {
         "position": 8,
-        "itemId": "mods-52001",
+        "itemId": "mods-42003",
         "track": null
       }
     ],
     "affinity": null,
     "note": {
-      "FR": "Build de Demon Wedges recommandé pour Chainbreak Pinion.",
-      "EN": "Recommended Demon Wedge build for Chainbreak Pinion."
+      "FR": "Build de Demon Wedges recommandé pour Wanewraith.",
+      "EN": "Recommended Demon Wedge build for Wanewraith."
     }
   },
   "note": {}

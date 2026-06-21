@@ -1,52 +1,52 @@
 {
-  "weaponId": "weapons-10107",
+  "weaponId": "weapons-20603",
   "demonWedges": {
     "slots": [
       {
         "position": 1,
-        "itemId": "mods-52011",
+        "itemId": "mods-53004",
         "track": null
       },
       {
         "position": 2,
-        "itemId": "mods-52010",
+        "itemId": "mods-53001",
         "track": null
       },
       {
         "position": 3,
-        "itemId": "mods-201001",
+        "itemId": "mods-53101",
         "track": null
       },
       {
         "position": 4,
-        "itemId": "mods-52004",
+        "itemId": "mods-53007",
         "track": null
       },
       {
         "position": 5,
-        "itemId": "mods-52204",
+        "itemId": "mods-43006",
         "track": null
       },
       {
         "position": 6,
-        "itemId": "mods-52007",
+        "itemId": "mods-43008",
         "track": null
       },
       {
         "position": 7,
-        "itemId": "mods-52008",
+        "itemId": "mods-43604",
         "track": null
       },
       {
         "position": 8,
-        "itemId": "mods-52001",
+        "itemId": "mods-53005",
         "track": null
       }
     ],
     "affinity": null,
     "note": {
-      "FR": "Build de Demon Wedges recommandé pour Chainbreak Pinion.",
-      "EN": "Recommended Demon Wedge build for Chainbreak Pinion."
+      "FR": "Build de Demon Wedges recommandé pour Embla Inflorescence.",
+      "EN": "Recommended Demon Wedge build for Embla Inflorescence."
     }
   },
   "note": {}
