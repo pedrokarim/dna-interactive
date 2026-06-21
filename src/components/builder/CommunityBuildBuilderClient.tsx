@@ -36,7 +36,6 @@ import type { CommunityBuildPayload } from "@/lib/community-builds/validation";
 import { BUILD_TAGS, type BuildTag } from "@/lib/community-builds/validation";
 
 const STAT_IDS = ["ATK", "CritRate", "CritDmg", "SkillDmg", "ElementDmg", "HP", "DEF"] as const;
-const SKILL_IDS = ["skill-1", "skill-2", "skill-3"] as const;
 
 function subscribeMounted() {
   return () => undefined;
@@ -49,9 +48,10 @@ type EditingTarget =
   | { kind: "team" }
   | null;
 
-type TeamMember = { character: DnaPickerItem; role: string };
 const TEAM_ROLES = ["DPS", "Sub-DPS", "Support", "Heal", "Tank"] as const;
-const DEFAULT_ROLE = "DPS";
+type TeamRole = (typeof TEAM_ROLES)[number];
+const DEFAULT_ROLE: TeamRole = "DPS";
+type TeamMember = { character: DnaPickerItem; role: TeamRole };
 
 type StoredDraft = {
   title: string;
@@ -150,10 +150,6 @@ export function CommunityBuildBuilderClient({
     () => STAT_IDS.map((id) => ({ id, label: t(`statLabels.${id}`) })),
     [t],
   );
-  const SKILL_POOL = useMemo<PriorityItem[]>(
-    () => SKILL_IDS.map((id) => ({ id, label: t(`skillLabels.${id}`), sublabel: t(`skillSub.${id}`) })),
-    [t],
-  );
   const teamPool = useMemo<DnaPickerItem[]>(
     () =>
       options.characters.map((c) => ({
@@ -173,6 +169,13 @@ export function CommunityBuildBuilderClient({
     () => options.characters.find((character) => character.id === characterId) ?? firstCharacter,
     [characterId, firstCharacter, options.characters],
   );
+  // Le picker ne propose que les VRAIES compétences du perso (la référence) ;
+  // fallback générique borné 1-3 si le kit n'est pas résolu.
+  const SKILL_POOL = useMemo<PriorityItem[]>(() => {
+    const skills = selectedCharacter?.skills ?? [];
+    if (skills.length > 0) return skills.map((s) => ({ id: `skill-${s.index}`, label: s.name }));
+    return [1, 2, 3].map((i) => ({ id: `skill-${i}`, label: t(`skillLabels.skill-${i}`) }));
+  }, [selectedCharacter, t]);
   const [element, setElement] = useState<ElementKey | null>(selectedCharacter?.elements[0]?.key ?? null);
 
   const [title, setTitle] = useState("");
@@ -265,10 +268,10 @@ export function CommunityBuildBuilderClient({
       consonanceWeapon: consonanceWeapon
         ? { slots: consonanceSlots.filter((slot) => slot.item).map((slot) => slot.item!.id) }
         : null,
-      statsPriority: statsPriority.map((item) => item.id),
+      statsPriority: statsPriority.map((item) => item.id) as CommunityBuildPayload["statsPriority"],
       skillPriority: skillPriority.map((item, index) => ({
         skillName: item.label,
-        skillIndex: Number(item.id.replace("skill-", "")) || undefined,
+        skillIndex: Number(item.id.replace("skill-", "")),
         priority: index + 1,
       })),
       team: team.map((member) => ({ characterId: member.character.id, role: member.role })),
@@ -1061,7 +1064,7 @@ export function CommunityBuildBuilderClient({
                 <select
                   value={member.role}
                   onChange={(event) => {
-                    const role = event.target.value;
+                    const role = event.target.value as TeamRole;
                     setTeam((current) => current.map((m, i) => (i === index ? { ...m, role } : m)));
                   }}
                   aria-label={t("roleLabel")}

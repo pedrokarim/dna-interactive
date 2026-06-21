@@ -3,7 +3,7 @@ import { z } from "zod";
 import type { BuilderOptions } from "./options";
 import type { DnaPickerItem } from "@/components/dna/ItemPicker";
 import type { CommunityBuildPayload } from "./validation";
-import { BUILD_TAGS } from "./validation";
+import { BUILD_TAGS, STAT_KEYS, TEAM_ROLES } from "./validation";
 import { isCenterDemonWedgeItemId } from "./center-wedges";
 
 export const COMMUNITY_BUILD_EXPORT_SCHEMA = "dna.community-build";
@@ -36,29 +36,29 @@ const buildPayloadIoSchema = z
           )
           .max(8),
         centerItemId: itemIdSchema.nullable().optional(),
-        affinity: z.string().trim().max(80).nullable().optional(),
+        affinity: elementSchema.nullable().optional(),
       })
       .strict(),
     genimon: z.array(z.object({ itemId: itemIdSchema, rank: rankSchema }).strict()).max(3),
     consonanceWeapon: z.object({ slots: z.array(itemIdSchema).max(4) }).strict().nullable(),
-    statsPriority: z.array(z.string().trim().min(1).max(40)).max(12),
+    statsPriority: z.array(z.enum(STAT_KEYS)).max(12),
     skillPriority: z
       .array(
         z
           .object({
-            skillName: z.string().trim().min(1).max(80),
-            skillIndex: z.coerce.number().int().min(1).max(12).optional(),
-            priority: z.coerce.number().int().min(1).max(12),
+            skillName: z.string().trim().max(80).optional(),
+            skillIndex: z.coerce.number().int().min(1).max(3),
+            priority: z.coerce.number().int().min(1).max(5),
           })
           .strict(),
       )
-      .max(12),
+      .max(3),
     team: z
       .array(
         z
           .object({
             characterId: z.string().trim().min(1).max(80),
-            role: z.string().trim().min(1).max(40),
+            role: z.enum(TEAM_ROLES),
           })
           .strict(),
       )

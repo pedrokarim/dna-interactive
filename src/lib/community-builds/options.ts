@@ -1,4 +1,4 @@
-import { getAllCharacters, getActiveCharacterView, getCharacterSlug, resolveCharacterDisplayName } from "@/lib/characters/catalog";
+import { getAllCharacters, getActiveCharacterView, getCharacterSlug, resolveCharacterDisplayName, getCharacterSkills } from "@/lib/characters/catalog";
 import { getItemTranslation, getItemsByCategoryId } from "@/lib/items/catalog";
 import type { CharacterRecord } from "@/lib/characters/types";
 import type { ItemRecord } from "@/lib/items/types";
@@ -17,6 +17,8 @@ export type BuilderCharacterOption = {
   art: string | null;
   /** Portrait carré (head) — pour les mini-avatars / line-up. */
   avatar: string | null;
+  /** Compétences réelles référençables (slots skill1/2/3) — le builder n'en propose pas d'autres. */
+  skills: Array<{ index: number; name: string }>;
   element: ElementKey | null;
   elements: Array<{ key: ElementKey; label: string }>;
   weapons: string[];
@@ -76,6 +78,30 @@ function normalizeSearchText(value: string): string {
     .toLowerCase();
 }
 
+// Résout les vrais noms de compétence (slots skill1/2/3) du perso, en matchant
+// l'icône du slot avec la compétence du kit (iconName / iconPublicPath normalisé).
+function resolveCharacterSkills(character: CharacterRecord, locale: string): Array<{ index: number; name: string }> {
+  const set = getCharacterSkills(character.charId);
+  if (!set) return [];
+  const norm = (s: string) => s.replace(/^.*\//, "").replace(/\.png$/i, "").replace(/^T_/i, "").toLowerCase();
+  const skillKey = (sk: (typeof set.skills)[number]) =>
+    sk.iconName ? norm(sk.iconName) : sk.iconPublicPath ? norm(sk.iconPublicPath) : null;
+  const icons = character.skillIcons;
+  const out: Array<{ index: number; name: string }> = [];
+  for (const index of [1, 2, 3] as const) {
+    const iconPath = index === 1 ? icons.skill1?.publicPath : index === 2 ? icons.skill2?.publicPath : icons.skill3?.publicPath;
+    if (!iconPath) continue;
+    const key = norm(iconPath);
+    const skill = set.skills.find((s) => skillKey(s) === key);
+    const loc = skill
+      ? skill.translations[locale] ?? skill.translations.EN ?? skill.translations.FR ?? Object.values(skill.translations)[0]
+      : null;
+    const name = loc?.name;
+    if (name) out.push({ index, name });
+  }
+  return out;
+}
+
 function characterToOption(character: CharacterRecord, locale: string): BuilderCharacterOption {
   const translation = character.translations[locale] ?? character.translations.FR ?? character.translations.EN;
   const elements = (character.elements ?? [character.element])
@@ -111,6 +137,7 @@ function characterToOption(character: CharacterRecord, locale: string): BuilderC
     portrait: character.portraits.gacha?.publicPath ?? character.portraits.head?.publicPath ?? character.portraits.icon?.publicPath ?? null,
     art: character.portraits.bust?.publicPath ?? character.portraits.gacha?.publicPath ?? null,
     avatar: character.portraits.head?.publicPath ?? character.portraits.icon?.publicPath ?? character.portraits.gacha?.publicPath ?? null,
+    skills: resolveCharacterSkills(character, locale),
     element: asElementKey(character.element.key),
     elements,
     weapons: character.weaponTags,

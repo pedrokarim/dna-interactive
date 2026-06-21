@@ -120,7 +120,7 @@ export async function PATCH(request: NextRequest, { params }: RouteContext) {
   if (parsed.data.payload) {
     const referenceErrors = validateBuildReferences({
       characterId: build.characterId,
-      element: build.element,
+      element: build.element as ("Fire" | "Water" | "Thunder" | "Wind" | "Light" | "Dark") | null,
       title: parsed.data.title ?? build.title,
       note: parsed.data.note ?? build.note,
       payload: parsed.data.payload,

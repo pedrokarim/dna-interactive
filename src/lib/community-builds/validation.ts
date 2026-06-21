@@ -6,6 +6,25 @@ import { isCenterDemonWedgeItemId } from "./center-wedges";
 const itemIdSchema = z.string().trim().min(1).max(96);
 const rankSchema = z.enum(["best", "alternative"]);
 
+// --- Sets fermés : un build communautaire ne référence que NOS entités. ---
+const ELEMENT_VALUES = ["Fire", "Water", "Thunder", "Wind", "Light", "Dark"] as const;
+export const elementKeySchema = z.enum(ELEMENT_VALUES);
+
+// Clés de stats autorisées — pas de texte libre. Couvre ATK/élément, crit,
+// compétence, morale, pénétration, etc.
+export const STAT_KEYS = [
+  "ATK", "ATK_Fire", "ATK_Water", "ATK_Thunder", "ATK_Wind", "ATK_Light", "ATK_Dark",
+  "DEF", "HP", "MaxHp", "MaxES", "MaxSp",
+  "SkillIntensity", "SkillRange", "SkillEfficiency", "SkillSustain", "SkillDmg", "ElementDmg",
+  "Morale", "CritRate", "CritDmg", "PEN", "TriggerProbability",
+] as const;
+
+// Rôles d'équipe autorisés — identiques au picker du builder.
+export const TEAM_ROLES = ["DPS", "Sub-DPS", "Support", "Heal", "Tank"] as const;
+
+// Un perso n'expose que 3 slots de compétence référençables (skill1/2/3).
+const MAX_SKILL_INDEX = 3;
+
 // Catégories de build (tags) — jeu canonique fermé, libellés localisés à l'affichage.
 export const BUILD_TAGS = ["solo", "team", "boss", "f2p", "endgame", "beginner"] as const;
 export type BuildTag = (typeof BUILD_TAGS)[number];
@@ -33,7 +52,7 @@ export const buildPayloadSchema = z.object({
         .max(8)
         .default([]),
       centerItemId: itemIdSchema.nullable().optional(),
-      affinity: z.string().trim().max(80).nullable().optional(),
+      affinity: elementKeySchema.nullable().optional(),
     })
     .default({ slots: [] }),
   genimon: z.array(z.object({ itemId: itemIdSchema, rank: rankSchema })).max(3).default([]),
@@ -43,22 +62,24 @@ export const buildPayloadSchema = z.object({
     })
     .nullable()
     .default(null),
-  statsPriority: z.array(z.string().trim().min(1).max(40)).max(12).default([]),
+  statsPriority: z.array(z.enum(STAT_KEYS)).max(12).default([]),
   skillPriority: z
     .array(
       z.object({
-        skillName: z.string().trim().min(1).max(80),
-        skillIndex: z.number().int().min(1).max(12).optional(),
-        priority: z.number().int().min(1).max(12),
+        // Nom NON autoritatif : l'app le re-résout depuis skillIndex à l'affichage.
+        skillName: z.string().trim().max(80).optional(),
+        // LA référence : index du slot de compétence (1-3) du perso. Requis + borné.
+        skillIndex: z.number().int().min(1).max(MAX_SKILL_INDEX),
+        priority: z.number().int().min(1).max(5),
       }),
     )
-    .max(12)
+    .max(MAX_SKILL_INDEX)
     .default([]),
   team: z
     .array(
       z.object({
         characterId: z.string().trim().min(1).max(80),
-        role: z.string().trim().min(1).max(40),
+        role: z.enum(TEAM_ROLES),
       }),
     )
     .max(3)
@@ -68,7 +89,7 @@ export const buildPayloadSchema = z.object({
 
 export const createBuildSchema = z.object({
   characterId: z.string().trim().min(1).max(80),
-  element: z.string().trim().min(1).max(40).nullable().optional(),
+  element: elementKeySchema.nullable().optional(),
   title: buildTitleSchema,
   note: buildNoteSchema,
   payload: buildPayloadSchema,
@@ -82,7 +103,7 @@ export const updateBuildSchema = z.object({
 
 export const draftSchema = z.object({
   characterId: z.string().trim().min(1).max(80),
-  element: z.string().trim().min(1).max(40).nullable().optional(),
+  element: elementKeySchema.nullable().optional(),
   title: z.string().trim().max(60).nullable().optional(),
   note: buildNoteSchema,
   payload: buildPayloadSchema,
@@ -105,6 +126,18 @@ export function publicElementValue(element: string | null): string | null {
   return element && element !== "default" ? element : null;
 }
 
+// Vérifie qu'un index de compétence (1-3) correspond bien à un slot réel du
+// perso (skill1/2/3 avec une icône) — on ne fait pas confiance au nombre envoyé.
+function characterHasSkillIndex(
+  character: NonNullable<ReturnType<typeof getCharacterById>>,
+  index: number,
+): boolean {
+  const icons = character.skillIcons;
+  const path =
+    index === 1 ? icons.skill1?.publicPath : index === 2 ? icons.skill2?.publicPath : index === 3 ? icons.skill3?.publicPath : null;
+  return Boolean(path);
+}
+
 export function validateBuildReferences(input: CreateBuildInput | DraftInput): string[] {
   const errors: string[] = [];
   const character = getCharacterById(input.characterId);
@@ -114,6 +147,14 @@ export function validateBuildReferences(input: CreateBuildInput | DraftInput): s
     const allowed = new Set(getCharacterElements(character).map((el) => el.key));
     if (!allowed.has(input.element)) {
       errors.push("Élément invalide pour ce personnage.");
+    }
+  }
+
+  if (character) {
+    for (const skill of input.payload.skillPriority) {
+      if (!characterHasSkillIndex(character, skill.skillIndex)) {
+        errors.push(`Competence invalide pour ce personnage : #${skill.skillIndex}.`);
+      }
     }
   }
 
