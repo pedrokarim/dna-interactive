@@ -1,0 +1,24 @@
+{
+  "weaponId": "weapons-10107",
+  "demonWedges": {
+    "slots": [
+      { "position": 1, "itemId": "mods-52011", "track": null },
+      { "position": 2, "itemId": "mods-52010", "track": null },
+      { "position": 3, "itemId": "mods-201001", "track": null },
+      { "position": 4, "itemId": "mods-52004", "track": null },
+      { "position": 5, "itemId": "mods-52204", "track": null },
+      { "position": 6, "itemId": "mods-52007", "track": null },
+      { "position": 7, "itemId": "mods-52008", "track": null },
+      { "position": 8, "itemId": "mods-52001", "track": null }
+    ],
+    "affinity": "Dark",
+    "note": {
+      "FR": "Arme signature de Flora (épée Umbro à CRIT massif). Wedges orientés ATQ / vitesse / crit pour maximiser les dégâts d'arme.",
+      "EN": "Flora's signature weapon (Umbro CRIT sword). Wedges focused on ATK / speed / crit to maximize weapon damage."
+    }
+  },
+  "note": {
+    "FR": "Build de Demon Wedges recommandé pour Chainbreak Pinion.",
+    "EN": "Recommended Demon Wedge build for Chainbreak Pinion."
+  }
+}
