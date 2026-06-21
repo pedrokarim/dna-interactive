@@ -330,13 +330,40 @@ function buildText(value: string | null | undefined, lang: string): Record<strin
     : { [normalized]: value, FR: value, EN: value };
 }
 
+// Les builds communauté stockent un nom de compétence générique ("Compétence
+// 1/2/3", issu du picker). On retrouve le vrai nom du jeu via skillIndex →
+// icône skill1/2/3 du perso → compétence correspondante du kit.
+function resolveSkillNamesByIndex(character: CharacterRecord, lang: string): Record<number, string> {
+  const set = getCharacterSkills(character.charId);
+  const map: Record<number, string> = {};
+  if (!set) return map;
+  // Basename normalisé : enlève chemin, extension et préfixe "T_" (minuscules) —
+  // pour matcher l'icône du slot (T_Skill_Fuluo02_On.png) avec le skill du kit
+  // (iconName "Skill_Fuluo02_On", iconPublicPath parfois null).
+  const norm = (s: string) => s.replace(/^.*\//, "").replace(/\.png$/i, "").replace(/^T_/i, "").toLowerCase();
+  const skillKey = (sk: (typeof set.skills)[number]) =>
+    sk.iconName ? norm(sk.iconName) : sk.iconPublicPath ? norm(sk.iconPublicPath) : null;
+  const icons = character.skillIcons;
+  for (const idx of [1, 2, 3] as const) {
+    const iconPath = idx === 1 ? icons.skill1?.publicPath : idx === 2 ? icons.skill2?.publicPath : icons.skill3?.publicPath;
+    if (!iconPath) continue;
+    const key = norm(iconPath);
+    const skill = set.skills.find((s) => skillKey(s) === key);
+    const name = skill ? getSkillLocalized(skill, lang)?.name : null;
+    if (name) map[idx] = name;
+  }
+  return map;
+}
+
 function communityBuildToDisplayBuild(
   build: CommunityBuildListItem,
   lang: string,
+  character: CharacterRecord,
 ): CharacterBuild {
   const payload = build.payload;
   const buildName = buildText(build.title, lang);
   const note = buildText(build.note, lang);
+  const skillNameByIndex = resolveSkillNamesByIndex(character, lang);
 
   return {
     characterId: build.characterId,
@@ -376,12 +403,15 @@ function communityBuildToDisplayBuild(
       item: resolveBuildItemRef("genimons", genimon.itemId, lang),
       rank: genimon.rank,
     })),
-    skillPriority: payload.skillPriority.map((skill) => ({
-      skillName: buildText(skill.skillName, lang),
-      skillIndex: skill.skillIndex,
-      priority: skill.priority,
-      note: {},
-    })),
+    skillPriority: payload.skillPriority.map((skill) => {
+      const realName = skill.skillIndex ? skillNameByIndex[skill.skillIndex] : undefined;
+      return {
+        skillName: buildText(realName ?? skill.skillName, lang),
+        skillIndex: skill.skillIndex,
+        priority: skill.priority,
+        note: {},
+      };
+    }),
     consonanceWeapon: payload.consonanceWeapon
       ? {
           name: buildText("Consonance", lang),
@@ -1169,8 +1199,8 @@ function CommunityBuildsSection({
   );
 
   const selectedDisplayBuild = useMemo(
-    () => (selectedBuild ? communityBuildToDisplayBuild(selectedBuild, selectedLanguage) : null),
-    [selectedBuild, selectedLanguage],
+    () => (selectedBuild ? communityBuildToDisplayBuild(selectedBuild, selectedLanguage, character) : null),
+    [selectedBuild, selectedLanguage, character],
   );
 
   const openBuild = useCallback(
