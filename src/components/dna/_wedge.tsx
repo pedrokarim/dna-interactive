@@ -133,7 +133,7 @@ export function WedgeSlotCell({
       <span className="absolute inset-0 flex items-center justify-center">
         {icon ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={icon} alt="" className="h-[70%] w-[70%] object-contain drop-shadow-md" draggable={false} />
+          <img src={icon} alt="" width={64} height={64} className="h-[70%] w-[70%] object-contain drop-shadow-md" draggable={false} />
         ) : (
           <span className="text-xs text-parch/40">＋</span>
         )}

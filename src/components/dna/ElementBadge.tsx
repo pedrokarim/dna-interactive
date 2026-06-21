@@ -21,7 +21,7 @@ export function DnaElementBadge({ element, size = 26, showLabel = false, classNa
         className="inline-grid shrink-0 place-items-center rounded-full border border-white/15 bg-ink/70 shadow-[0_0_10px_-3px_currentColor] backdrop-blur-sm"
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={el.icon} alt={el.label} className="h-[68%] w-[68%] object-contain" />
+        <img src={el.icon} alt={el.label} width={24} height={24} className="h-[68%] w-[68%] object-contain" />
       </span>
       {showLabel ? (
         <span style={{ color: el.hex }} className="font-sans text-sm">

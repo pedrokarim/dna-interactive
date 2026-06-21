@@ -257,6 +257,9 @@ export default function MapComponent({
                     <img
                       src={data.category.icon}
                       alt={`Icône ${data.category.name} - Catégorie de marqueurs sur la carte interactive Duet Night Abyss`}
+                      width={44}
+                      height={44}
+                      loading="lazy"
                       className="max-h-full max-w-full object-contain"
                       onError={(e) => {
                         e.currentTarget.style.display = "none";
@@ -281,6 +284,9 @@ export default function MapComponent({
                     <img
                       src={data.marker.icon}
                       alt={`Icône ${data.marker.name} - Marqueur sur la carte interactive Duet Night Abyss`}
+                      width={36}
+                      height={36}
+                      loading="lazy"
                       className="max-h-full max-w-full object-contain"
                       onError={(e) => {
                         e.currentTarget.style.display = "none";
@@ -308,6 +314,9 @@ export default function MapComponent({
                     <img
                       src={data.instance.image}
                       alt={`Guide visuel ${data.marker.name} - Localisation sur la carte interactive Duet Night Abyss`}
+                      width={400}
+                      height={400}
+                      loading="lazy"
                       className="h-auto max-h-64 w-full cursor-zoom-in object-contain transition-opacity hover:opacity-90"
                       onClick={() => setZoomedImage(data.instance.image!)}
                       onError={(e) => {

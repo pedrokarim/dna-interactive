@@ -52,7 +52,7 @@ export default function FilterChips({
           <DnaChip key={chip.value} selected={value === chip.value} onClick={() => onChange(chip.value)}>
             {chip.iconSrc ? (
               // eslint-disable-next-line @next/next/no-img-element
-              <img src={chip.iconSrc} alt="" aria-hidden="true" className="h-4 w-4 object-contain" />
+              <img src={chip.iconSrc} alt="" aria-hidden="true" width={16} height={16} className="h-4 w-4 object-contain" />
             ) : null}
             {chip.label}
           </DnaChip>

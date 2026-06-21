@@ -36,6 +36,9 @@ export default async function SiteFooter({ active }: { active?: string }) {
             <img
               src={ASSETS_PATHS.logo}
               alt={`${SITE_CONFIG.name} logo`}
+              width={32}
+              height={32}
+              loading="lazy"
               className="h-8 w-auto"
             />
             <span className="font-display text-lg text-parch">{SITE_CONFIG.name}</span>

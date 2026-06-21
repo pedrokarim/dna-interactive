@@ -1112,6 +1112,9 @@ export default function ItemsGridClient({
                         <img
                           src={iconSrc}
                           alt={`${category.technicalName} ${item.modId}`}
+                          width={64}
+                          height={64}
+                          loading="lazy"
                           className="max-h-full max-w-full object-contain transition-transform duration-200 hover:scale-110"
                         />
                       </div>
@@ -1156,6 +1159,8 @@ export default function ItemsGridClient({
                                 src={elementalAffinity.iconSrc}
                                 alt=""
                                 aria-hidden="true"
+                                width={24}
+                                height={24}
                                 className="h-6 w-6 shrink-0 object-contain"
                               />
                             ) : null}
@@ -1220,6 +1225,8 @@ export default function ItemsGridClient({
                         <img
                           src={elementalAffinity.iconSrc}
                           alt={elementalAffinity.label}
+                          width={16}
+                          height={16}
                           className="h-4 w-4 object-contain"
                         />
                       ) : null}
@@ -1279,6 +1286,9 @@ export default function ItemsGridClient({
                     <img
                       src={iconSrc}
                       alt={displayName}
+                      width={64}
+                      height={64}
+                      loading="lazy"
                       className="max-h-full max-w-full object-contain"
                     />
                     <button
@@ -1305,6 +1315,8 @@ export default function ItemsGridClient({
                           src={elementalAffinity.iconSrc}
                           alt=""
                           aria-hidden="true"
+                          width={20}
+                          height={20}
                           className="h-5 w-5 shrink-0 object-contain"
                         />
                       ) : null}
@@ -1319,6 +1331,8 @@ export default function ItemsGridClient({
                             <img
                               src={elementalAffinity.iconSrc}
                               alt={elementalAffinity.label}
+                              width={16}
+                              height={16}
                               className="h-4 w-4 object-contain"
                             />
                           ) : null}
@@ -1391,6 +1405,9 @@ export default function ItemsGridClient({
                   <img
                     src={iconSrc}
                     alt={displayName}
+                    width={96}
+                    height={96}
+                    loading="lazy"
                     className="max-h-full max-w-full object-contain transition-transform duration-200 group-hover:scale-105"
                   />
                   {elementalAffinity?.iconSrc ? (
@@ -1398,6 +1415,8 @@ export default function ItemsGridClient({
                       <img
                         src={elementalAffinity.iconSrc}
                         alt={elementalAffinity.label}
+                        width={20}
+                        height={20}
                         className="h-5 w-5 object-contain"
                       />
                     </span>
@@ -1573,6 +1592,8 @@ export default function ItemsGridClient({
               <img
                 src={previewIcon.src}
                 alt={previewIcon.alt}
+                width={200}
+                height={200}
                 className="max-h-full max-w-full object-contain"
               />
             </div>

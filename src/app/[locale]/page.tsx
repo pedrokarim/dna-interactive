@@ -115,6 +115,9 @@ export default async function Home() {
               <img
                 src="/assets/worldview/worldview-8.webp"
                 alt="Apercu visuel de la section Items"
+                width={400}
+                height={400}
+                loading="lazy"
                 className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-linear-to-r from-ink/95 via-ink/78 to-ink/35" />
@@ -182,6 +185,9 @@ export default async function Home() {
               <img
                 src="/assets/worldview/worldview-9.webp"
                 alt="Apercu visuel de la section Personnages"
+                width={400}
+                height={400}
+                loading="lazy"
                 className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-linear-to-r from-ink/95 via-ink/78 to-ink/35" />
@@ -223,6 +229,9 @@ export default async function Home() {
               <img
                 src="/assets/worldview/worldview-1-4-2.webp"
                 alt="Apercu visuel du builder communautaire"
+                width={400}
+                height={400}
+                loading="lazy"
                 className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-linear-to-r from-ink/96 via-ink/78 to-ink/30" />

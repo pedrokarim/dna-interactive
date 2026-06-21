@@ -155,7 +155,7 @@ export function CommunityBuildBuilderClient({
       options.characters.map((c) => ({
         id: c.id,
         name: c.name,
-        icon: c.portrait ?? null,
+        icon: c.avatar ?? c.portrait ?? null,
         rarity: c.rarity ?? null,
         element: c.elements[0]?.key ?? c.element ?? null,
       })),
@@ -1064,7 +1064,7 @@ export function CommunityBuildBuilderClient({
                 <span className="grid aspect-square w-full place-items-center overflow-hidden bg-black/25">
                   {member.character.icon ? (
                     // eslint-disable-next-line @next/next/no-img-element
-                    <img src={member.character.icon} alt={member.character.name} className="h-full w-full object-cover object-[50%_14%]" />
+                    <img src={member.character.icon} alt={member.character.name} className="h-full w-full object-cover object-[50%_15%]" />
                   ) : (
                     <span className="font-display text-2xl text-muted-2">◇</span>
                   )}

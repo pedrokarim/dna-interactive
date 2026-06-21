@@ -593,6 +593,9 @@ export default function CharactersGridClient({
                     <img
                       src={headSrc}
                       alt={displayName}
+                      width={200}
+                      height={200}
+                      loading="lazy"
                       className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                     />
                   ) : iconSrc ? (
@@ -600,6 +603,9 @@ export default function CharactersGridClient({
                       <img
                         src={iconSrc}
                         alt={displayName}
+                        width={200}
+                        height={200}
+                        loading="lazy"
                         className="max-h-full max-w-full object-contain"
                       />
                     </div>
@@ -621,6 +627,8 @@ export default function CharactersGridClient({
                             key={el.key}
                             src={icon}
                             alt={el.label}
+                            width={24}
+                            height={24}
                             className="h-6 w-6 object-contain"
                           />
                         );
@@ -756,6 +764,9 @@ export default function CharactersGridClient({
                       <img
                         src={thumbSrc}
                         alt={displayName}
+                        width={64}
+                        height={64}
+                        loading="lazy"
                         className="h-full w-full object-cover"
                       />
                     ) : (
@@ -773,6 +784,8 @@ export default function CharactersGridClient({
                               key={el.key}
                               src={icon}
                               alt={el.label}
+                              width={16}
+                              height={16}
                               className="h-4 w-4 object-contain"
                             />
                           );
@@ -809,6 +822,8 @@ export default function CharactersGridClient({
                                 src={icon}
                                 alt=""
                                 aria-hidden="true"
+                                width={16}
+                                height={16}
                                 className="h-4 w-4 object-contain"
                               />
                             ) : null}
@@ -1080,6 +1095,8 @@ export default function CharactersGridClient({
               <img
                 src={previewPortrait.src}
                 alt={previewPortrait.alt}
+                width={300}
+                height={400}
                 className="max-h-[70vh] max-w-full object-contain"
               />
             </div>

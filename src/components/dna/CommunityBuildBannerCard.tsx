@@ -90,6 +90,8 @@ export function DnaCommunityBuildBannerCard({
           <img
             src={bannerImage}
             alt=""
+            width={400}
+            height={400}
             className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
         ) : null}
@@ -123,7 +125,7 @@ export function DnaCommunityBuildBannerCard({
               >
                 {member.avatar ? (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img src={member.avatar} alt={member.name} className="h-full w-full object-cover object-[50%_15%]" />
+                  <img src={member.avatar} alt={member.name} width={32} height={32} className="h-full w-full object-cover object-[50%_15%]" />
                 ) : (
                   <span className="font-caps text-[0.6rem] text-parch">{member.name.charAt(0)}</span>
                 )}
@@ -140,7 +142,7 @@ export function DnaCommunityBuildBannerCard({
             <span title={mainWeapon.name} className="grid h-10 w-10 shrink-0 place-items-center border border-white/10 bg-black/30">
               {mainWeapon.icon ? (
                 // eslint-disable-next-line @next/next/no-img-element
-                <img src={mainWeapon.icon} alt={mainWeapon.name ?? ""} className="h-[82%] w-[82%] object-contain" />
+                <img src={mainWeapon.icon} alt={mainWeapon.name ?? ""} width={40} height={40} className="h-[82%] w-[82%] object-contain" />
               ) : (
                 <span className="text-sm text-muted-2">⚔</span>
               )}

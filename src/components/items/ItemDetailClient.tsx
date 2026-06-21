@@ -542,7 +542,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
                   style={{ borderColor: `${elHex}66`, background: `${elHex}1f`, color: elHex }}
                 >
                   {elementalAffinity.iconSrc ? (
-                    <img src={elementalAffinity.iconSrc} alt="" className="h-5 w-5 object-contain" />
+                    <img src={elementalAffinity.iconSrc} alt="" width={20} height={20} className="h-5 w-5 object-contain" />
                   ) : null}
                   {elementalAffinity.label}
                 </span>
@@ -552,7 +552,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
                   className="inline-flex items-center gap-1.5 border px-2.5 py-1 font-caps text-[0.58rem] uppercase tracking-[0.14em]"
                   style={{ borderColor: `${elHex}66`, background: `${elHex}1f`, color: elHex }}
                 >
-                  <img src={weaponElement.icon} alt="" className="h-5 w-5 object-contain" />
+                  <img src={weaponElement.icon} alt="" width={20} height={20} className="h-5 w-5 object-contain" />
                   {weaponElement.label}
                 </span>
               ) : null}
@@ -579,6 +579,8 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
             <img
               src={iconSrc}
               alt={`${category.technicalName} ${item.modId}`}
+              width={96}
+              height={96}
               className="h-[64%] w-[64%] object-contain drop-shadow-[0_10px_26px_rgba(0,0,0,0.6)]"
             />
           </div>
@@ -624,7 +626,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
                   value={
                     <span className="inline-flex items-center gap-1.5">
                       {affinityIconSrc ? (
-                        <img src={affinityIconSrc} alt="" className="h-5 w-5 object-contain" />
+                        <img src={affinityIconSrc} alt="" width={20} height={20} className="h-5 w-5 object-contain" />
                       ) : null}
                       {translation.affinityName ?? `Polarité ${item.stats.polarity ?? "N/A"}`}
                       {item.affinity.char ? ` (${item.affinity.char})` : ""}
@@ -639,7 +641,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
                   value={
                     <span className="inline-flex items-center gap-1.5">
                       {elementalAffinity.iconSrc ? (
-                        <img src={elementalAffinity.iconSrc} alt="" className="h-5 w-5 object-contain" />
+                        <img src={elementalAffinity.iconSrc} alt="" width={20} height={20} className="h-5 w-5 object-contain" />
                       ) : null}
                       {elementalAffinity.label}
                     </span>
@@ -652,7 +654,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
                   accent={tinted ? elHex : undefined}
                   value={
                     <span className="inline-flex items-center gap-1.5">
-                      <img src={weaponElement.icon} alt="" className="h-5 w-5 object-contain" />
+                      <img src={weaponElement.icon} alt="" width={20} height={20} className="h-5 w-5 object-contain" />
                       {weaponElement.label}
                     </span>
                   }
@@ -739,7 +741,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
                       : "border-white/10 bg-ink/55 hover:border-gold/40"
                   } ${siblingIsPremium ? "ring-1 ring-gold/30" : ""}`}
                 >
-                  <img src={siblingIcon} alt="" className="h-10 w-10 shrink-0 object-contain" />
+                  <img src={siblingIcon} alt="" width={40} height={40} loading="lazy" className="h-10 w-10 shrink-0 object-contain" />
                   <div className="min-w-0">
                     <p className="truncate text-sm font-medium text-parch">
                       {siblingTranslation.modName ?? `#${sibling.modId}`}
@@ -914,6 +916,8 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
                         <img
                           src={elementalAffinity.iconSrc}
                           alt={elementalAffinity.label}
+                          width={20}
+                          height={20}
                           className="h-5 w-5 object-contain"
                         />
                       ) : null}
@@ -1056,7 +1060,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
                   className="flex items-center gap-3 rounded-sm border border-white/10 bg-ink/55 px-4 py-3 transition-colors hover:border-gold/40 hover:bg-panel/75"
                 >
                   {iconSrc && (
-                    <img src={iconSrc} alt="" className="h-8 w-8 shrink-0 object-contain" />
+                    <img src={iconSrc} alt="" width={32} height={32} loading="lazy" className="h-8 w-8 shrink-0 object-contain" />
                   )}
                   <div className="min-w-0 flex-1">
                     <p className="truncate text-sm font-medium text-parch">{draftName}</p>

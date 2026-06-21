@@ -40,6 +40,8 @@ export function DnaCharacterCard({ name, subtitle, element, elements, rarity = 5
         <img
           src={portrait}
           alt={name}
+          width={300}
+          height={400}
           className="absolute inset-0 h-full w-full object-cover object-[50%_12%] transition-transform duration-500 group-hover:scale-105"
         />
       ) : (

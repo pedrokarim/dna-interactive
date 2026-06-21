@@ -109,7 +109,7 @@ function RecipeNode({ item, selectedLanguage, fallbackLanguages, primary = false
       } p-2 shadow-[0_6px_18px_rgba(2,6,23,0.35)] transition-colors group-hover:border-gold/65`}
     >
       <div className="flex h-16 w-16 items-center justify-center rounded-sm border border-white/10 bg-panel/80 p-2">
-        <img src={iconSrc} alt={name} className="max-h-full max-w-full object-contain" />
+        <img src={iconSrc} alt={name} width={64} height={64} className="max-h-full max-w-full object-contain" />
       </div>
       <span className="absolute bottom-1 right-1 rounded-sm bg-panel/95 px-1.5 py-0.5 text-[11px] font-medium text-gold">
         x{item.quantity}
@@ -152,14 +152,14 @@ function RecipeNode({ item, selectedLanguage, fallbackLanguages, primary = false
           <div className="mt-2 flex flex-wrap gap-2 text-xs text-parch/85">
             {classLabel ? (
               <span className="inline-flex items-center gap-1 rounded-sm border border-white/10 px-2 py-0.5">
-                {classIcon ? <img src={classIcon} alt={classLabel} className="h-3.5 w-3.5 object-contain" /> : null}
+                {classIcon ? <img src={classIcon} alt={classLabel} width={14} height={14} className="h-3.5 w-3.5 object-contain" /> : null}
                 {classLabel}
               </span>
             ) : null}
             {subtypeLabel ? (
               <span className="inline-flex items-center gap-1 rounded-sm border border-white/10 px-2 py-0.5">
                 {subtypeIcon ? (
-                  <img src={subtypeIcon} alt={subtypeLabel} className="h-3.5 w-3.5 object-contain" />
+                  <img src={subtypeIcon} alt={subtypeLabel} width={14} height={14} className="h-3.5 w-3.5 object-contain" />
                 ) : null}
                 {subtypeLabel}
               </span>
@@ -311,7 +311,7 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
           <div className="rounded-sm border border-gold/30 bg-ink/60 p-3 md:p-4">
             <div className="flex items-start gap-3">
               <div className="flex h-14 w-14 md:h-16 md:w-16 shrink-0 items-center justify-center rounded-sm border border-gold/30 bg-ink/80 p-2">
-                <img src={recipeIcon} alt={productName} className="max-h-full max-w-full object-contain" />
+                <img src={recipeIcon} alt={productName} width={64} height={64} className="max-h-full max-w-full object-contain" />
               </div>
               <div className="min-w-0">
                 <p className="font-caps text-[0.6rem] uppercase tracking-[0.22em] text-gold/90">{t('resultLabel')}</p>
@@ -326,14 +326,14 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
               <div className="mt-3 flex flex-wrap gap-2 text-xs">
                 {classLabel ? (
                   <span className="inline-flex items-center gap-1.5 rounded-sm border border-white/10 px-2.5 py-1 text-parch">
-                    {classIcon ? <img src={classIcon} alt={classLabel} className="h-3.5 w-3.5 object-contain" /> : null}
+                    {classIcon ? <img src={classIcon} alt={classLabel} width={14} height={14} className="h-3.5 w-3.5 object-contain" /> : null}
                     {classLabel}
                   </span>
                 ) : null}
                 {subtypeLabel ? (
                   <span className="inline-flex items-center gap-1.5 rounded-sm border border-white/10 px-2.5 py-1 text-parch">
                     {subtypeIcon ? (
-                      <img src={subtypeIcon} alt={subtypeLabel} className="h-3.5 w-3.5 object-contain" />
+                      <img src={subtypeIcon} alt={subtypeLabel} width={14} height={14} className="h-3.5 w-3.5 object-contain" />
                     ) : null}
                     {subtypeLabel}
                   </span>
@@ -430,7 +430,7 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
               >
                 <div className="flex items-start gap-3">
                   <div className="relative flex h-14 w-14 items-center justify-center rounded-sm border border-white/10 bg-panel/70 p-2">
-                    <img src={ingredientIcon} alt={ingredientName} className="max-h-full max-w-full object-contain" />
+                    <img src={ingredientIcon} alt={ingredientName} width={56} height={56} loading="lazy" className="max-h-full max-w-full object-contain" />
                     <span className="absolute bottom-0 right-0 translate-x-1/4 translate-y-1/4 rounded-sm bg-panel/95 px-1.5 py-0.5 text-[11px] font-medium text-gold">
                       x{ingredient.quantity}
                     </span>

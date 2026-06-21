@@ -107,7 +107,7 @@ function SelectedCharacterSummary({ character }: { character: BuilderCharacterOp
         <div className="relative h-28 w-20 shrink-0 overflow-hidden border border-white/10 bg-black/25">
           {character.portrait ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={character.portrait} alt="" className="h-full w-full object-cover object-[50%_12%]" />
+            <img src={character.portrait} alt="" width={80} height={112} className="h-full w-full object-cover object-[50%_12%]" />
           ) : (
             <span className="grid h-full place-items-center font-display text-3xl text-muted-2">{character.name.charAt(0)}</span>
           )}
@@ -172,6 +172,8 @@ function CharacterChoiceCard({
           src={character.portrait}
           alt={character.name}
           loading="lazy"
+          width={300}
+          height={400}
           className="absolute inset-0 h-full w-full object-cover object-[50%_12%] transition-transform duration-500 group-hover:scale-105"
         />
       ) : (

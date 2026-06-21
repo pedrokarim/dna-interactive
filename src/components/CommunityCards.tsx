@@ -32,6 +32,9 @@ export default function CommunityCards() {
             <img
               src="/assets/images/ffee63d2-5cba-4a8f-910f-7b67f97ccc96-profile_image-70x70.png"
               alt="Velkaine - Streamer et créateur de contenu pour Duet Night Abyss"
+              width={64}
+              height={64}
+              loading="lazy"
               className="h-16 w-16 rounded-full border-2 border-gold/40 transition-colors group-hover:border-gold"
             />
             <div className="absolute -bottom-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full bg-crimson-bright">

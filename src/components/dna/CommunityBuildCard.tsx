@@ -158,7 +158,7 @@ function IconChip({ item }: { item: IconRef }) {
     >
       {item.icon ? (
         // eslint-disable-next-line @next/next/no-img-element
-        <img src={item.icon} alt={item.name ?? ""} className="h-[80%] w-[80%] object-contain" />
+        <img src={item.icon} alt={item.name ?? ""} width={28} height={28} className="h-[80%] w-[80%] object-contain" />
       ) : (
         <span className="text-xs text-muted-2">◇</span>
       )}

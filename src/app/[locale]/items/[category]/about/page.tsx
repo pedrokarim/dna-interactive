@@ -44,7 +44,7 @@ function GuideIconCard({
   return (
     <div className="rounded-sm border border-white/10 bg-ink/65 p-3">
       <div className="flex h-14 w-14 items-center justify-center rounded-sm border border-gold/20 bg-panel/70 p-2">
-        <img src={src} alt={label} className="max-h-full max-w-full object-contain" />
+        <img src={src} alt={label} width={56} height={56} loading="lazy" className="max-h-full max-w-full object-contain" />
       </div>
       <p className="mt-2 text-sm font-medium text-parch">{label}</p>
       {sublabel ? <p className="text-xs text-muted">{sublabel}</p> : null}
@@ -149,10 +149,10 @@ function ModsAboutContent({ categorySlug }: { categorySlug: string }) {
             </div>
           </div>
           <div className="mt-4 grid grid-cols-4 gap-2">
-            <img src="/assets/items/mods/T_Armory_Polarity01.png" alt="Polarity 1" className="h-9 w-9 rounded-sm border border-white/10 bg-ink/70 p-1 object-contain" />
-            <img src="/assets/items/mods/T_Armory_Polarity02.png" alt="Polarity 2" className="h-9 w-9 rounded-sm border border-white/10 bg-ink/70 p-1 object-contain" />
-            <img src="/assets/items/mods/T_Armory_Polarity03.png" alt="Polarity 3" className="h-9 w-9 rounded-sm border border-white/10 bg-ink/70 p-1 object-contain" />
-            <img src="/assets/items/mods/T_Armory_Polarity04.png" alt="Polarity 4" className="h-9 w-9 rounded-sm border border-white/10 bg-ink/70 p-1 object-contain" />
+            <img src="/assets/items/mods/T_Armory_Polarity01.png" alt="Polarity 1" width={36} height={36} loading="lazy" className="h-9 w-9 rounded-sm border border-white/10 bg-ink/70 p-1 object-contain" />
+            <img src="/assets/items/mods/T_Armory_Polarity02.png" alt="Polarity 2" width={36} height={36} loading="lazy" className="h-9 w-9 rounded-sm border border-white/10 bg-ink/70 p-1 object-contain" />
+            <img src="/assets/items/mods/T_Armory_Polarity03.png" alt="Polarity 3" width={36} height={36} loading="lazy" className="h-9 w-9 rounded-sm border border-white/10 bg-ink/70 p-1 object-contain" />
+            <img src="/assets/items/mods/T_Armory_Polarity04.png" alt="Polarity 4" width={36} height={36} loading="lazy" className="h-9 w-9 rounded-sm border border-white/10 bg-ink/70 p-1 object-contain" />
           </div>
         </article>
       </section>
@@ -191,19 +191,19 @@ function ModsAboutContent({ categorySlug }: { categorySlug: string }) {
             <p className="mb-2 font-caps text-[0.6rem] uppercase tracking-[0.22em] text-muted">Polarite</p>
             <div className="grid grid-cols-2 gap-2">
               <div className="flex items-center gap-2 rounded-sm border border-white/10 bg-ink/60 p-2 text-xs text-parch">
-                <img src="/assets/items/mods/T_Armory_Polarity01.png" alt="Polarity 1" className="h-6 w-6 object-contain" />
+                <img src="/assets/items/mods/T_Armory_Polarity01.png" alt="Polarity 1" width={24} height={24} loading="lazy" className="h-6 w-6 object-contain" />
                 Polarity 1
               </div>
               <div className="flex items-center gap-2 rounded-sm border border-white/10 bg-ink/60 p-2 text-xs text-parch">
-                <img src="/assets/items/mods/T_Armory_Polarity02.png" alt="Polarity 2" className="h-6 w-6 object-contain" />
+                <img src="/assets/items/mods/T_Armory_Polarity02.png" alt="Polarity 2" width={24} height={24} loading="lazy" className="h-6 w-6 object-contain" />
                 Polarity 2
               </div>
               <div className="flex items-center gap-2 rounded-sm border border-white/10 bg-ink/60 p-2 text-xs text-parch">
-                <img src="/assets/items/mods/T_Armory_Polarity03.png" alt="Polarity 3" className="h-6 w-6 object-contain" />
+                <img src="/assets/items/mods/T_Armory_Polarity03.png" alt="Polarity 3" width={24} height={24} loading="lazy" className="h-6 w-6 object-contain" />
                 Polarity 3
               </div>
               <div className="flex items-center gap-2 rounded-sm border border-white/10 bg-ink/60 p-2 text-xs text-parch">
-                <img src="/assets/items/mods/T_Armory_Polarity04.png" alt="Polarity 4" className="h-6 w-6 object-contain" />
+                <img src="/assets/items/mods/T_Armory_Polarity04.png" alt="Polarity 4" width={24} height={24} loading="lazy" className="h-6 w-6 object-contain" />
                 Polarity 4
               </div>
             </div>
@@ -217,7 +217,7 @@ function ModsAboutContent({ categorySlug }: { categorySlug: string }) {
                   key={entry.src}
                   className="flex items-center gap-2 rounded-sm border border-white/10 bg-ink/60 p-2 text-xs text-parch"
                 >
-                  <img src={entry.src} alt={entry.label} className="h-5 w-5 object-contain" />
+                  <img src={entry.src} alt={entry.label} width={20} height={20} loading="lazy" className="h-5 w-5 object-contain" />
                   {entry.label}
                 </div>
               ))}
@@ -232,7 +232,7 @@ function ModsAboutContent({ categorySlug }: { categorySlug: string }) {
                   key={entry.src}
                   className="flex items-center gap-2 rounded-sm border border-white/10 bg-ink/60 p-2 text-xs text-parch"
                 >
-                  <img src={entry.src} alt={entry.label} className="h-5 w-5 object-contain" />
+                  <img src={entry.src} alt={entry.label} width={20} height={20} loading="lazy" className="h-5 w-5 object-contain" />
                   {entry.label}
                 </div>
               ))}
@@ -329,7 +329,7 @@ function ModsAboutContent({ categorySlug }: { categorySlug: string }) {
             <p className="mt-1 text-sm font-medium text-parch">Identifier le Demon Wedge</p>
             <div className="mt-3 flex items-center gap-3">
               <div className="flex h-12 w-12 items-center justify-center rounded-sm border border-white/10 bg-panel/70 p-2">
-                <img src="/assets/items/mods/T_Mod_Phoenix01.png" alt="Exemple Demon Wedge Phoenix" className="max-h-full max-w-full object-contain" />
+                <img src="/assets/items/mods/T_Mod_Phoenix01.png" alt="Exemple Demon Wedge Phoenix" width={48} height={48} loading="lazy" className="max-h-full max-w-full object-contain" />
               </div>
               <div className="text-xs text-muted">
                 Nom + icone
@@ -343,9 +343,9 @@ function ModsAboutContent({ categorySlug }: { categorySlug: string }) {
             <p className="font-caps text-[0.6rem] uppercase tracking-[0.22em] text-muted">Etape 2</p>
             <p className="mt-1 text-sm font-medium text-parch">Verifier affinite et type</p>
             <div className="mt-3 flex items-center gap-2">
-              <img src="/assets/items/mods/T_Armory_Fire.png" alt="Affinite Fire" className="h-7 w-7 rounded-sm border border-white/10 bg-panel/70 p-1 object-contain" />
-              <img src="/assets/items/mods/T_Armory_Polarity02.png" alt="Polarity 2" className="h-7 w-7 rounded-sm border border-white/10 bg-panel/70 p-1 object-contain" />
-              <img src="/assets/items/mods/T_Armory_RoleType_03.png" alt="Compatibilite Distance" className="h-7 w-7 rounded-sm border border-white/10 bg-panel/70 p-1 object-contain" />
+              <img src="/assets/items/mods/T_Armory_Fire.png" alt="Affinite Fire" width={28} height={28} loading="lazy" className="h-7 w-7 rounded-sm border border-white/10 bg-panel/70 p-1 object-contain" />
+              <img src="/assets/items/mods/T_Armory_Polarity02.png" alt="Polarity 2" width={28} height={28} loading="lazy" className="h-7 w-7 rounded-sm border border-white/10 bg-panel/70 p-1 object-contain" />
+              <img src="/assets/items/mods/T_Armory_RoleType_03.png" alt="Compatibilite Distance" width={28} height={28} loading="lazy" className="h-7 w-7 rounded-sm border border-white/10 bg-panel/70 p-1 object-contain" />
             </div>
           </div>
 

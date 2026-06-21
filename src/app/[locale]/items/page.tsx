@@ -77,6 +77,9 @@ export default async function ItemsCategoriesPage() {
                   <img
                     src={category.sampleIconPath}
                     alt={`${category.title} sample icon`}
+                    width={56}
+                    height={56}
+                    loading="lazy"
                     className="max-h-full max-w-full object-contain"
                   />
                 </div>
@@ -145,6 +148,9 @@ export default async function ItemsCategoriesPage() {
               <img
                 src="/assets/items/drafts/T_Draft_Katana_Yuli.png"
                 alt="Draft sample icon"
+                width={56}
+                height={56}
+                loading="lazy"
                 className="max-h-full max-w-full object-contain"
               />
             </div>

@@ -91,7 +91,7 @@ export function DnaConsonanceEditor({
       >
         {weapon?.icon ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={weapon.icon} alt="" className="h-[58%] w-[58%] object-contain drop-shadow-lg" draggable={false} />
+          <img src={weapon.icon} alt="" width={96} height={96} className="h-[58%] w-[58%] object-contain drop-shadow-lg" draggable={false} />
         ) : (
           <span className="text-lg text-parch/50">⚔</span>
         )}

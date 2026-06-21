@@ -110,7 +110,7 @@ export function DnaDemonWedgeEditor({
       >
         {centerItem?.icon ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={centerItem.icon} alt="" className="h-[72%] w-[72%] object-contain drop-shadow-lg" draggable={false} />
+          <img src={centerItem.icon} alt="" width={96} height={96} className="h-[72%] w-[72%] object-contain drop-shadow-lg" draggable={false} />
         ) : (
           <span className="text-sm text-parch/50">◆</span>
         )}

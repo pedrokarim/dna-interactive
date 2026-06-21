@@ -505,6 +505,8 @@ function DemonWedgeSlotCard({
         <img
           src={icon}
           alt={name}
+          width={64}
+          height={64}
           className="h-16 w-16 object-contain drop-shadow-lg sm:h-20 sm:w-20"
         />
       </div>
@@ -512,13 +514,15 @@ function DemonWedgeSlotCard({
         <img
           src={polarityIconSrc}
           alt=""
+          width={20}
+          height={20}
           className={`absolute top-1.5 h-5 w-5 object-contain opacity-80 sm:h-6 sm:w-6 ${topSide}`}
         />
       )}
       {showTrackAdjust && slot.track !== null && (
         <div className={`absolute bottom-2 flex h-6 w-6 items-center justify-center rounded border border-gold/50 bg-panel/90 sm:h-7 sm:w-7 ${bottomSide}`}>
           {trackAdjustIconSrc ? (
-            <img src={trackAdjustIconSrc} alt="" className="h-4 w-4 object-contain sm:h-5 sm:w-5" />
+            <img src={trackAdjustIconSrc} alt="" width={16} height={16} className="h-4 w-4 object-contain sm:h-5 sm:w-5" />
           ) : (
             <span className="text-xs text-crimson-bright">✖</span>
           )}
@@ -584,9 +588,9 @@ function DemonWedgeCenterSlot({
 
   const circle = (
     <div className="relative h-28 w-28 sm:h-32 sm:w-32">
-      <img src={circleSrc} alt="" className="absolute inset-0 h-full w-full object-contain opacity-60" />
-      <img src={ARMORY_MOD_GLOW} alt="" className="absolute inset-0 h-full w-full object-contain opacity-30" />
-      <img src={icon} alt={name ?? ""} className="absolute inset-[12%] h-[76%] w-[76%] object-contain drop-shadow-lg" />
+      <img src={circleSrc} alt="" width={128} height={128} className="absolute inset-0 h-full w-full object-contain opacity-60" />
+      <img src={ARMORY_MOD_GLOW} alt="" width={128} height={128} className="absolute inset-0 h-full w-full object-contain opacity-30" />
+      <img src={icon} alt={name ?? ""} width={96} height={96} className="absolute inset-[12%] h-[76%] w-[76%] object-contain drop-shadow-lg" />
     </div>
   );
 
@@ -812,7 +816,7 @@ function SkillCard({
             className="flex h-14 w-14 shrink-0 items-center justify-center border border-white/10 bg-ink/70"
             style={{ boxShadow: `0 0 24px rgba(${rgb}, 0.25)` }}
           >
-            <img src={skill.iconPublicPath} alt="" className="h-10 w-10 object-contain" />
+            <img src={skill.iconPublicPath} alt="" width={40} height={40} className="h-10 w-10 object-contain" />
           </div>
         ) : (
           <div className="flex h-14 w-14 shrink-0 items-center justify-center border border-white/10 bg-panel/70">
@@ -1751,6 +1755,8 @@ function BuildTabContent({
                             <img
                               src={w.item.icon}
                               alt=""
+                              width={40}
+                              height={40}
                               className="h-10 w-10 shrink-0 object-contain"
                             />
                             <div className="min-w-0 flex-1">
@@ -1849,7 +1855,7 @@ function BuildTabContent({
                   style={{ clipPath: clip, background: "linear-gradient(135deg, rgba(15,23,42,0.9), rgba(30,20,50,0.95))" }}
                 >
                   <div className="absolute inset-0 bg-gradient-to-b from-electro/15 to-electro/30" style={{ clipPath: clip }} />
-                  <img src={s.icon} alt={s.name} className="h-16 w-16 object-contain drop-shadow-lg sm:h-20 sm:w-20" />
+                  <img src={s.icon} alt={s.name} width={64} height={64} className="h-16 w-16 object-contain drop-shadow-lg sm:h-20 sm:w-20" />
                 </div>
               );
               return (
@@ -1889,7 +1895,7 @@ function BuildTabContent({
                     >
                       <div className="flex h-28 w-28 items-center justify-center rounded-full border-2 border-electro/50 bg-electro/10 shadow-lg shadow-electro/20 sm:h-32 sm:w-32">
                         {weaponIcon ? (
-                          <img src={weaponIcon} alt="" className="h-16 w-16 object-contain drop-shadow-lg sm:h-20 sm:w-20" />
+                          <img src={weaponIcon} alt="" width={64} height={64} className="h-16 w-16 object-contain drop-shadow-lg sm:h-20 sm:w-20" />
                         ) : (
                           <Swords className="h-12 w-12 text-electro sm:h-14 sm:w-14" />
                         )}
@@ -1926,7 +1932,7 @@ function BuildTabContent({
                   >
                     <div className="flex h-20 w-20 items-center justify-center rounded-full border-2 border-electro/50 bg-electro/10 shadow-lg shadow-electro/20">
                       {weaponIcon ? (
-                        <img src={weaponIcon} alt="" className="h-12 w-12 object-contain drop-shadow-lg" />
+                        <img src={weaponIcon} alt="" width={48} height={48} className="h-12 w-12 object-contain drop-shadow-lg" />
                       ) : (
                         <Swords className="h-10 w-10 text-electro" />
                       )}
@@ -1998,6 +2004,8 @@ function BuildTabContent({
                         <img
                           src={tm.character.portrait}
                           alt=""
+                          width={48}
+                          height={48}
                           className="h-12 w-12 shrink-0 rounded-full border border-white/10 object-cover"
                         />
                       )}
@@ -2039,6 +2047,8 @@ function BuildTabContent({
                     <img
                       src={g.item.icon}
                       alt=""
+                      width={40}
+                      height={40}
                       className="h-10 w-10 shrink-0 object-contain"
                     />
                     <p className="truncate text-sm font-medium text-parch">{g.item.name}</p>
@@ -2104,6 +2114,8 @@ function BuildTabContent({
                           <img
                             src={iconSrc}
                             alt=""
+                            width={32}
+                            height={32}
                             className="h-8 w-8 object-contain drop-shadow-lg"
                             style={isTop ? { filter: `drop-shadow(0 0 6px rgba(${rgb}, 0.5))` } : undefined}
                           />
@@ -2522,7 +2534,7 @@ export default function CharacterDetailClient({
                       }`}
                     >
                       {icon && (
-                        <img src={icon} alt="" className="h-4 w-4 object-contain" />
+                        <img src={icon} alt="" width={16} height={16} className="h-4 w-4 object-contain" />
                       )}
                       {el.label}
                     </button>
@@ -2599,7 +2611,7 @@ export default function CharacterDetailClient({
                 {displayName}
                 {elementIcon ? (
                   <span className="inline-grid h-9 w-9 shrink-0 place-items-center rounded-full border bg-ink/60 md:h-10 md:w-10" style={{ borderColor: elHex, boxShadow: `0 0 13px -2px ${elHex}` }}>
-                    <img src={elementIcon} alt={character.element.label} className="h-[62%] w-[62%] object-contain" />
+                    <img src={elementIcon} alt={character.element.label} width={36} height={36} className="h-[62%] w-[62%] object-contain" />
                   </span>
                 ) : null}
               </h1>
@@ -2622,6 +2634,8 @@ export default function CharacterDetailClient({
                   src={activePortraitSrc}
                   alt={`${displayName} - ${PORTRAIT_LABELS[activePortrait]}`}
                   draggable={false}
+                  width={300}
+                  height={400}
                   className="relative z-[1] max-h-[500px] max-w-[84%] select-none object-contain drop-shadow-[0_18px_50px_rgba(0,0,0,0.6)]"
                   style={{
                     transform: `translate(${renderPan.x}px, ${renderPan.y}px) scale(${renderZoom})`,
@@ -2766,7 +2780,7 @@ export default function CharacterDetailClient({
                     return (
                       <DnaTag key={cw.weaponId}>
                         {cw.icon.publicPath ? (
-                          <img src={cw.icon.publicPath} alt="" className="h-3.5 w-3.5 object-contain" />
+                          <img src={cw.icon.publicPath} alt="" width={14} height={14} className="h-3.5 w-3.5 object-contain" />
                         ) : (
                           <Swords className="h-3 w-3" />
                         )}
@@ -2822,7 +2836,7 @@ export default function CharacterDetailClient({
                     style={{ background: "linear-gradient(135deg, rgba(15,23,42,0.9), rgba(30,41,59,0.95))" }}
                   >
                     {character.portraits.charpiece?.publicPath ? (
-                      <img src={character.portraits.charpiece.publicPath} alt="Intron" className="h-9 w-9 object-contain" />
+                      <img src={character.portraits.charpiece.publicPath} alt="Intron" width={36} height={36} className="h-9 w-9 object-contain" />
                     ) : (
                       <Layers className="h-7 w-7 text-gold" />
                     )}
@@ -2850,7 +2864,7 @@ export default function CharacterDetailClient({
                 maxValue={maxLevelStats.atk}
                 icon={
                   elementIcon ? (
-                    <img src={elementIcon} alt="" className="h-5 w-5 object-contain" />
+                    <img src={elementIcon} alt="" width={20} height={20} className="h-5 w-5 object-contain" />
                   ) : (
                     <Swords className="h-4 w-4 text-muted" />
                   )
@@ -2904,6 +2918,8 @@ export default function CharacterDetailClient({
                       <img
                         src={attr.iconPath}
                         alt=""
+                        width={20}
+                        height={20}
                         className="h-5 w-5 object-contain brightness-0 invert"
                       />
                     </div>
@@ -3005,7 +3021,7 @@ export default function CharacterDetailClient({
                   return (
                     <div key={key} className="flex flex-col items-center gap-2">
                       <div className="flex h-16 w-16 items-center justify-center rounded-full border border-white/10 bg-panel/80">
-                        <img src={icon} alt={label} className="h-10 w-10 object-contain" />
+                        <img src={icon} alt={label} width={40} height={40} className="h-10 w-10 object-contain" />
                       </div>
                       <span className="text-xs text-muted">{label}</span>
                     </div>
@@ -3032,7 +3048,7 @@ export default function CharacterDetailClient({
                   return (
                     <div key={cw.weaponId} className="flex items-center gap-4">
                       {cw.icon.publicPath && (
-                        <img src={cw.icon.publicPath} alt={cwName} className="h-16 w-16 shrink-0 object-contain drop-shadow-lg" />
+                        <img src={cw.icon.publicPath} alt={cwName} width={64} height={64} className="h-16 w-16 shrink-0 object-contain drop-shadow-lg" />
                       )}
                       <div>
                         <p className="text-sm font-medium text-electro">{cwName}</p>
@@ -3105,6 +3121,9 @@ export default function CharacterDetailClient({
                       <img
                         src={src}
                         alt={`${PORTRAIT_LABELS[type]}`}
+                        width={200}
+                        height={200}
+                        loading="lazy"
                         className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 flex items-center justify-center bg-ink/0 transition-colors group-hover:bg-ink/30">
@@ -3160,6 +3179,8 @@ export default function CharacterDetailClient({
                   <img
                     src={bustSrc}
                     alt={character.internalName}
+                    width={300}
+                    height={400}
                     className="h-full w-full object-contain object-center"
                     style={{ filter: `drop-shadow(0 0 90px rgba(${rgb}, 0.45))` }}
                   />
@@ -3249,6 +3270,8 @@ export default function CharacterDetailClient({
                             <img
                               src={iconSrc}
                               alt=""
+                              width={44}
+                              height={44}
                               className="h-11 w-11 object-contain"
                               style={
                                 isHighlighted
@@ -3404,6 +3427,8 @@ export default function CharacterDetailClient({
                             <img
                               src={iconSrc}
                               alt=""
+                              width={64}
+                              height={64}
                               className="h-16 w-16 object-contain"
                               style={
                                 isActive || isHighlighted
@@ -3650,6 +3675,8 @@ export default function CharacterDetailClient({
               <img
                 src={zoomedPortrait.src}
                 alt={zoomedPortrait.alt}
+                width={300}
+                height={400}
                 className="max-h-[75vh] max-w-full object-contain"
               />
             </div>

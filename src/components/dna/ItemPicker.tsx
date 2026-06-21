@@ -221,7 +221,7 @@ function ItemCell({
       <span className="relative grid aspect-square w-full place-items-center bg-black/25">
         {item.icon ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={item.icon} alt={item.name} className="h-[82%] w-[82%] object-contain" loading="lazy" />
+          <img src={item.icon} alt={item.name} width={96} height={96} className="h-[82%] w-[82%] object-contain" loading="lazy" />
         ) : (
           <span className="font-display text-2xl text-muted-2">◇</span>
         )}

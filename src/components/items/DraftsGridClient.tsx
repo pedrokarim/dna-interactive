@@ -529,6 +529,9 @@ export default function DraftsGridClient({
                         <img
                           src={recipeIconSrc}
                           alt={`Draft ${recipe.draftId}`}
+                          width={64}
+                          height={64}
+                          loading="lazy"
                           className="max-h-full max-w-full object-contain transition-transform duration-200 hover:scale-110"
                         />
                       </div>
@@ -595,6 +598,9 @@ export default function DraftsGridClient({
                           <img
                             src={ingredient.icon.publicPath ?? ingredient.icon.placeholderPath ?? "/marker-default.svg"}
                             alt={resolveDraftItemName(ingredient, selectedLanguages[0], availableLanguages)}
+                            width={32}
+                            height={32}
+                            loading="lazy"
                             className="mx-auto h-8 w-8 object-contain"
                           />
                           <span className="absolute bottom-1 right-1 rounded-sm bg-panel/90 px-1 text-[10px] font-medium text-gold">
@@ -657,6 +663,9 @@ export default function DraftsGridClient({
                     <img
                       src={recipeIconSrc}
                       alt={productNameLead}
+                      width={64}
+                      height={64}
+                      loading="lazy"
                       className="max-h-full max-w-full object-contain"
                     />
                     <button
@@ -710,6 +719,9 @@ export default function DraftsGridClient({
                         <img
                           src={ingredient.icon.publicPath ?? ingredient.icon.placeholderPath ?? "/marker-default.svg"}
                           alt={resolveDraftItemName(ingredient, selectedLanguages[0], availableLanguages)}
+                          width={40}
+                          height={40}
+                          loading="lazy"
                           className="h-full w-full object-contain"
                         />
                         <span className="absolute -bottom-1 -right-1 rounded-sm bg-panel/90 px-1 text-[9px] font-medium text-gold">
@@ -751,6 +763,9 @@ export default function DraftsGridClient({
                   <img
                     src={recipeIconSrc}
                     alt={productNameLead}
+                    width={96}
+                    height={96}
+                    loading="lazy"
                     className="max-h-full max-w-full object-contain transition-transform duration-200 group-hover:scale-105"
                   />
                   {typeof recipe.rarity === "number" ? (
@@ -906,7 +921,7 @@ export default function DraftsGridClient({
               </button>
             </div>
             <div className="mt-3 flex h-64 items-center justify-center rounded-sm border border-gold/25 bg-ink/80 p-4">
-              <img src={previewIcon.src} alt={previewIcon.alt} className="max-h-full max-w-full object-contain" />
+              <img src={previewIcon.src} alt={previewIcon.alt} width={200} height={200} className="max-h-full max-w-full object-contain" />
             </div>
           </div>
         </div>

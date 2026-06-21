@@ -126,6 +126,8 @@ function ItemTooltipBody({
         <img
           src={item.icon}
           alt=""
+          width={48}
+          height={48}
           className="h-12 w-12 shrink-0 object-contain drop-shadow-md"
         />
         <div className="min-w-0">
@@ -195,6 +197,8 @@ function WeaponCell({
           <img
             src={item.icon}
             alt=""
+            width={64}
+            height={64}
             className="absolute inset-0 h-full w-full object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]"
           />
           {isBest && (
@@ -293,7 +297,7 @@ function WedgeSlot({
     >
       <div className="absolute inset-0 flex items-center justify-center">
         {icon ? (
-          <img src={icon} alt="" className={`${d.iconSize} object-contain drop-shadow-md`} />
+          <img src={icon} alt="" width={64} height={64} className={`${d.iconSize} object-contain drop-shadow-md`} />
         ) : (
           <span className="text-xs text-parch/40">—</span>
         )}
@@ -302,6 +306,8 @@ function WedgeSlot({
         <img
           src={polarityIcon}
           alt=""
+          width={16}
+          height={16}
           className={`absolute ${d.badgePos} ${topSide} ${d.badgeSize} object-contain opacity-90`}
         />
       )}
@@ -309,7 +315,7 @@ function WedgeSlot({
         <div
           className={`absolute bottom-0.5 ${bottomSide} flex ${d.trackBoxSize} items-center justify-center rounded border border-gold/70 bg-black/70`}
         >
-          <img src={trackAdjustIcon} alt="" className={`${d.trackIconSize} object-contain`} />
+          <img src={trackAdjustIcon} alt="" width={14} height={14} className={`${d.trackIconSize} object-contain`} />
         </div>
       )}
     </div>
@@ -347,7 +353,7 @@ function WedgeCenter({
         boxShadow: `0 0 24px rgba(${rgb}, 0.5), inset 0 0 12px rgba(255, 255, 255, 0.15)`,
       }}
     >
-      {icon && <img src={icon} alt="" className={`${d.centerIcon} object-contain drop-shadow-lg`} />}
+      {icon && <img src={icon} alt="" width={64} height={64} className={`${d.centerIcon} object-contain drop-shadow-lg`} />}
     </div>
   );
   if (!item) return circle;
@@ -478,6 +484,8 @@ export function QuickBuildCard({
             src={bust}
             alt=""
             crossOrigin="anonymous"
+            width={300}
+            height={400}
             className="absolute inset-0 h-full w-full select-none object-cover"
             style={{
               objectPosition: "center 18%",
@@ -497,6 +505,8 @@ export function QuickBuildCard({
         src="/assets/ui/card/shade.svg"
         alt=""
         aria-hidden
+        width={400}
+        height={400}
         className="pointer-events-none absolute left-0 top-0 h-full w-[820px] object-cover"
         style={{
           opacity: 0.45,
@@ -531,6 +541,8 @@ export function QuickBuildCard({
           alt=""
           aria-hidden
           crossOrigin="anonymous"
+          width={36}
+          height={36}
           className="pointer-events-none absolute left-5 top-5 z-[3] h-9 w-9 object-contain opacity-95"
           style={{ filter: "drop-shadow(0 2px 6px rgba(0,0,0,0.7))" }}
         />
@@ -676,7 +688,7 @@ export function QuickBuildCard({
                           borderColor: isBest ? "rgba(252, 211, 77, 0.9)" : "rgba(255, 255, 255, 0.3)",
                         }}
                       >
-                        <img src={item.icon} alt="" className="h-full w-full object-contain" />
+                        <img src={item.icon} alt="" width={96} height={96} className="h-full w-full object-contain" />
                         {isBest && (
                           <span className="absolute right-0.5 top-0.5 rounded bg-gold/95 px-1 text-[9px] font-bold leading-tight text-ink">
                             S
@@ -762,7 +774,7 @@ export function QuickBuildCard({
                             boxShadow: `0 0 10px rgba(${rgb}, 0.35)`,
                           }}
                         >
-                          <img src={iconSrc} alt="" className="h-7 w-7 object-contain" />
+                          <img src={iconSrc} alt="" width={28} height={28} className="h-7 w-7 object-contain" />
                           <span
                             className="absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full text-[10px] font-bold"
                             style={{
@@ -807,7 +819,7 @@ export function QuickBuildCard({
                           className="relative h-9 w-9 shrink-0 overflow-hidden rounded-full"
                           style={{ border: `1.5px solid rgba(${rgb}, 0.6)` }}
                         >
-                          <img src={portrait} alt="" className="h-full w-full object-cover" />
+                          <img src={portrait} alt="" width={36} height={36} className="h-full w-full object-cover" />
                         </div>
                       )}
                       <p
@@ -828,6 +840,8 @@ export function QuickBuildCard({
               src="/assets/images/logo_optimized.png"
               alt=""
               crossOrigin="anonymous"
+              width={36}
+              height={36}
               className="h-9 w-9 shrink-0 object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
             />
             <div className="min-w-0">
