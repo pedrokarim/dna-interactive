@@ -2,6 +2,7 @@
 
 import { Link } from "@/i18n/navigation";
 import { useLocale, useTranslations } from "next-intl";
+import { useConfirm } from "@/components/dna/ConfirmProvider";
 import { type ComponentType, type CSSProperties, type PointerEvent as ReactPointerEvent, Fragment, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { toPng } from "html-to-image";
@@ -1429,6 +1430,8 @@ function CommunityBuildPreviewModal({
   onBuildDeleted: (buildId: string) => void;
 }) {
   const tcb = useTranslations("communityBuilds");
+  const tCommon = useTranslations("common");
+  const { confirm } = useConfirm();
   const [actionMessage, setActionMessage] = useState<string | null>(null);
   const [reportOpen, setReportOpen] = useState(false);
   const [reportReason, setReportReason] = useState("");
@@ -1455,7 +1458,14 @@ function CommunityBuildPreviewModal({
   }
 
   async function deleteBuild() {
-    if (!window.confirm(tcb("deleteConfirm"))) return;
+    const confirmed = await confirm({
+      title: tcb("delete"),
+      message: tcb("deleteConfirm"),
+      confirmLabel: tcb("delete"),
+      cancelLabel: tCommon("cancel"),
+      danger: true,
+    });
+    if (!confirmed) return;
 
     setActionBusy("delete");
     setActionMessage(null);

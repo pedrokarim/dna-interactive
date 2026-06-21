@@ -20,6 +20,7 @@ import {
   DnaButton,
   DnaSwitch,
   DnaCornerBrackets,
+  useConfirm,
 } from "@/components/dna";
 import {
   selectedMapIdWithPersistenceAtom,
@@ -54,6 +55,8 @@ const MapComponent = dynamic(() => import("@/components/MapComponent"), {
 
 export default function MapPage() {
   const t = useTranslations('map');
+  const tCommon = useTranslations('common');
+  const { alert: showAlert } = useConfirm();
   const tc = useTranslations('common');
   const tn = useTranslations('nav');
   const [selectedMapId, setSelectedMapId] = useAtom(selectedMapIdWithPersistenceAtom);
@@ -367,15 +370,16 @@ export default function MapPage() {
           setMarkedMarkers(new Set(markers));
 
           if (markers.length < data.markers.length) {
-            alert(
-              t('importSuccess', { imported: markers.length, ignored: data.markers.length - markers.length })
-            );
+            void showAlert({
+              message: t('importSuccess', { imported: markers.length, ignored: data.markers.length - markers.length }),
+              confirmLabel: tCommon('close'),
+            });
           }
         } else {
-          alert(t('importInvalidFormat'));
+          void showAlert({ message: t('importInvalidFormat'), confirmLabel: tCommon('close') });
         }
-      } catch (error) {
-        alert(t('importError'));
+      } catch {
+        void showAlert({ message: t('importError'), confirmLabel: tCommon('close') });
       }
     };
     reader.readAsText(file);

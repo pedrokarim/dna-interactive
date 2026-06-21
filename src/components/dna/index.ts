@@ -51,3 +51,7 @@ export { DnaReward, DnaRewardsGrid } from "./RewardsGrid";
 
 // Cartes
 export { DnaCharacterCard } from "./CharacterCard";
+
+// Dialogues / modales
+export { DnaDialog, DnaConfirmDialog, type DnaDialogProps, type DnaConfirmDialogProps } from "./Dialog";
+export { ConfirmProvider, useConfirm } from "./ConfirmProvider";

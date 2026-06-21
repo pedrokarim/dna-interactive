@@ -24,6 +24,7 @@ import { DnaButton } from "@/components/dna/Button";
 import { DnaPanel } from "@/components/dna/Panel";
 import { DnaSectionLabel } from "@/components/dna/SectionLabel";
 import { DnaTag } from "@/components/dna/Tag";
+import { useConfirm } from "@/components/dna/ConfirmProvider";
 
 const ADMIN_PAGE_SIZE = 12;
 
@@ -647,6 +648,7 @@ function BuildsList({
   onPatchBuild: (body: Record<string, unknown>) => Promise<void>;
   onPatchUser: (body: Record<string, unknown>) => Promise<void>;
 }) {
+  const { confirm } = useConfirm();
   if (builds.length === 0) return <EmptyState icon={<Hammer className="h-5 w-5" />} text="Aucun build." />;
 
   return (
@@ -673,10 +675,47 @@ function BuildsList({
             </DnaButton>
             {!compact ? (
               <>
-                <DnaButton icon={<Trash2 className="h-3.5 w-3.5" />} className="px-3 py-1.5 text-xs" onClick={() => void onPatchBuild({ buildId: build.id, deleteBuild: true })}>
+                <DnaButton
+                  icon={<Trash2 className="h-3.5 w-3.5" />}
+                  variant="danger"
+                  className="px-3 py-1.5 text-xs"
+                  onClick={async () => {
+                    if (
+                      await confirm({
+                        title: "Supprimer le build",
+                        message: `Supprimer définitivement « ${build.title} » ? Cette action est irréversible.`,
+                        confirmLabel: "Supprimer",
+                        cancelLabel: "Annuler",
+                        danger: true,
+                      })
+                    ) {
+                      await onPatchBuild({ buildId: build.id, deleteBuild: true });
+                    }
+                  }}
+                >
                   Supprimer
                 </DnaButton>
-                <DnaButton icon={<Ban className="h-3.5 w-3.5" />} className="px-3 py-1.5 text-xs" onClick={() => void onPatchUser({ userId: build.authorId, banned: !build.authorBanned })}>
+                <DnaButton
+                  icon={<Ban className="h-3.5 w-3.5" />}
+                  className="px-3 py-1.5 text-xs"
+                  onClick={async () => {
+                    if (build.authorBanned) {
+                      await onPatchUser({ userId: build.authorId, banned: false });
+                      return;
+                    }
+                    if (
+                      await confirm({
+                        title: "Bannir l'auteur",
+                        message: `Bannir ${build.authorName ?? "cet utilisateur"} ? Ses sessions seront invalidées et il ne pourra plus publier.`,
+                        confirmLabel: "Bannir",
+                        cancelLabel: "Annuler",
+                        danger: true,
+                      })
+                    ) {
+                      await onPatchUser({ userId: build.authorId, banned: true });
+                    }
+                  }}
+                >
                   {build.authorBanned ? "Debannir" : "Bannir"}
                 </DnaButton>
               </>
@@ -697,6 +736,7 @@ function UsersList({
   compact?: boolean;
   onPatchUser: (body: Record<string, unknown>) => Promise<void>;
 }) {
+  const { confirm } = useConfirm();
   if (users.length === 0) return <EmptyState icon={<Users className="h-5 w-5" />} text="Aucun utilisateur." />;
 
   return (
@@ -715,7 +755,23 @@ function UsersList({
               icon={<Ban className="h-3.5 w-3.5" />}
               className="px-3 py-1.5 text-xs"
               disabled={user.configuredAdmin && !user.banned}
-              onClick={() => void onPatchUser({ userId: user.id, banned: !user.banned })}
+              onClick={async () => {
+                if (user.banned) {
+                  await onPatchUser({ userId: user.id, banned: false });
+                  return;
+                }
+                if (
+                  await confirm({
+                    title: "Bannir l'utilisateur",
+                    message: `Bannir ${user.name ?? user.email ?? "cet utilisateur"} ? Ses sessions seront invalidées et il ne pourra plus publier.`,
+                    confirmLabel: "Bannir",
+                    cancelLabel: "Annuler",
+                    danger: true,
+                  })
+                ) {
+                  await onPatchUser({ userId: user.id, banned: true });
+                }
+              }}
             >
               {user.banned ? "Debannir" : "Bannir"}
             </DnaButton>

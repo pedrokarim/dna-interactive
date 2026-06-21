@@ -12,11 +12,13 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { DnaPanel } from "@/components/dna/Panel";
 import { DnaDivider } from "@/components/dna/Divider";
+import { useConfirm } from "@/components/dna/ConfirmProvider";
 
 export default function CodesList() {
   const t = useTranslations("codes");
   const tCommon = useTranslations("common");
   const tNav = useTranslations("nav");
+  const { confirm } = useConfirm();
   const [usedCodes] = useAtom(usedCodesAtom);
   const [, toggleCodeUsed] = useAtom(toggleCodeUsedAtom);
   const [, resetAllCodes] = useAtom(resetAllCodesAtom);
@@ -36,8 +38,15 @@ export default function CodesList() {
     toggleCodeUsed(codeId);
   };
 
-  const handleResetAll = () => {
-    if (confirm(t("resetConfirm"))) {
+  const handleResetAll = async () => {
+    const confirmed = await confirm({
+      title: tCommon("reset"),
+      message: t("resetConfirm"),
+      confirmLabel: tCommon("reset"),
+      cancelLabel: tCommon("cancel"),
+      danger: true,
+    });
+    if (confirmed) {
       resetAllCodes();
     }
   };
