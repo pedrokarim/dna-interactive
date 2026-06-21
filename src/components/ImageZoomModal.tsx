@@ -111,7 +111,10 @@ export default function ImageZoomModal({
 
   const modalContent = (
     <div
-      className="fixed inset-0 z-[99999] bg-black/95 backdrop-blur-sm flex items-center justify-center"
+      role="dialog"
+      aria-modal="true"
+      aria-label={t("closeEsc")}
+      className="fixed inset-0 z-[99999] flex items-center justify-center overscroll-contain bg-black/95 backdrop-blur-sm [touch-action:none]"
       onClick={onClose}
     >
       {/* Contrôles en haut — panneau net, boutons carrés au design system */}
@@ -123,6 +126,7 @@ export default function ImageZoomModal({
           onClick={handleZoomOut}
           disabled={zoom <= 0.5}
           className="p-2 border border-line/30 bg-ink/50 text-gold transition-colors hover:bg-gold/15 hover:border-gold hover:text-gold-bright disabled:opacity-40 disabled:cursor-not-allowed"
+          aria-label={t("zoomOut")}
           title={t("zoomOut")}
         >
           <ZoomOut className="w-5 h-5" />
@@ -134,6 +138,7 @@ export default function ImageZoomModal({
           onClick={handleZoomIn}
           disabled={zoom >= 5}
           className="p-2 border border-line/30 bg-ink/50 text-gold transition-colors hover:bg-gold/15 hover:border-gold hover:text-gold-bright disabled:opacity-40 disabled:cursor-not-allowed"
+          aria-label={t("zoomIn")}
           title={t("zoomIn")}
         >
           <ZoomIn className="w-5 h-5" />
@@ -142,6 +147,7 @@ export default function ImageZoomModal({
         <button
           onClick={handleRotate}
           className="p-2 border border-line/30 bg-ink/50 text-gold transition-colors hover:bg-gold/15 hover:border-gold hover:text-gold-bright"
+          aria-label={t("rotate")}
           title={t("rotate")}
         >
           <RotateCw className="w-5 h-5" />
@@ -150,6 +156,7 @@ export default function ImageZoomModal({
         <button
           onClick={handleDownload}
           className="p-2 border border-anemo/40 bg-anemo/10 text-anemo transition-colors hover:bg-anemo/20 hover:border-anemo"
+          aria-label={t("download")}
           title={t("download")}
         >
           <Download className="w-5 h-5" />
@@ -166,6 +173,7 @@ export default function ImageZoomModal({
         <button
           onClick={onClose}
           className="p-2 border border-crimson-bright/50 bg-crimson/15 text-[#ffb3a6] transition-colors hover:bg-crimson/30 hover:border-crimson-bright hover:text-[#ffd2c8]"
+          aria-label={t("closeEsc")}
           title={t("closeEsc")}
         >
           <X className="w-5 h-5" />
