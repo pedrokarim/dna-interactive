@@ -4,6 +4,7 @@ import { Provider } from 'jotai';
 import { ReactNode } from 'react';
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 import { NuqsAdapter } from 'nuqs/adapters/next/app';
+import { MotionConfig } from 'framer-motion';
 import { ConfirmProvider } from '@/components/dna';
 
 interface ProvidersProps {
@@ -23,7 +24,9 @@ export function Providers({ children }: ProvidersProps) {
         }}
       >
         <Provider>
-          <ConfirmProvider>{children}</ConfirmProvider>
+          <MotionConfig reducedMotion="user">
+            <ConfirmProvider>{children}</ConfirmProvider>
+          </MotionConfig>
         </Provider>
       </GoogleReCaptchaProvider>
     </NuqsAdapter>

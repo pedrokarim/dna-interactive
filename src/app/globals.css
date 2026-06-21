@@ -148,3 +148,16 @@ body:has(.map-page) .grecaptcha-badge {
   content: ""; position: absolute; left: 50%; top: 50%; width: 24px; height: 24px;
   border-radius: 50%; border: 1px solid currentColor; animation: dnaPing 2.4s ease-out infinite;
 }
+
+/* Respect de prefers-reduced-motion : neutralise animations/transitions CSS
+   (spinners, pulse, kenBurns, ping…). framer-motion est géré via MotionConfig. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
