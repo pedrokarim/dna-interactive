@@ -1,6 +1,7 @@
 "use client";
 
 import { useDeferredValue, useEffect, useMemo, useState } from "react";
+import { useQueryState, parseAsString, parseAsInteger, parseAsStringLiteral } from "nuqs";
 import { useTranslations } from "next-intl";
 import { ChevronLeft, ChevronRight, GitFork, Search, Users } from "lucide-react";
 import { Link, useRouter } from "@/i18n/navigation";
@@ -89,13 +90,15 @@ export function CommunityBuildsHubClient({ options, locale }: CommunityBuildsHub
   const router = useRouter();
   const tcb = useTranslations("communityBuilds");
   const lang = locale.toUpperCase();
-  const [query, setQuery] = useState("");
+  // Filtres reflétés dans l'URL (partageables, navigables) via nuqs.
+  const urlOpts = { history: "replace" as const };
+  const [query, setQuery] = useQueryState("q", parseAsString.withDefault("").withOptions(urlOpts));
   const deferredQuery = useDeferredValue(query);
-  const [characterId, setCharacterId] = useState("all");
-  const [element, setElement] = useState("all");
-  const [tag, setTag] = useState("all");
-  const [sort, setSort] = useState<SortMode>("top");
-  const [page, setPage] = useState(1);
+  const [characterId, setCharacterId] = useQueryState("perso", parseAsString.withDefault("all").withOptions(urlOpts));
+  const [element, setElement] = useQueryState("element", parseAsString.withDefault("all").withOptions(urlOpts));
+  const [tag, setTag] = useQueryState("tag", parseAsString.withDefault("all").withOptions(urlOpts));
+  const [sort, setSort] = useQueryState("tri", parseAsStringLiteral(["top", "recent"] as const).withDefault("top").withOptions(urlOpts));
+  const [page, setPage] = useQueryState("page", parseAsInteger.withDefault(1).withOptions(urlOpts));
   const [builds, setBuilds] = useState<CommunityBuildListItem[]>([]);
   const [pagination, setPagination] = useState<CommunityBuildPagination>({
     page: 1,

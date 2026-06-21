@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
+import { useQueryState, parseAsStringLiteral } from "nuqs";
 import {
   ArrowLeft,
   Ban,
@@ -102,7 +103,11 @@ const ADMIN_NAV: Array<{ id: AdminView; label: string; icon: typeof LayoutDashbo
 ];
 
 export function AdminDashboardClient({ currentUser }: { currentUser: CurrentAdmin }) {
-  const [activeView, setActiveView] = useState<AdminView>("overview");
+  // Onglet actif reflété dans l'URL (partageable, navigable).
+  const [activeView, setActiveView] = useQueryState(
+    "vue",
+    parseAsStringLiteral(["overview", "reports", "builds", "users", "settings"] as const).withDefault("overview").withOptions({ history: "replace" }),
+  );
   const [builds, setBuilds] = useState<AdminBuild[]>([]);
   const [reports, setReports] = useState<AdminReport[]>([]);
   const [users, setUsers] = useState<AdminUser[]>([]);
