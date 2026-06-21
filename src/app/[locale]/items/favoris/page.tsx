@@ -1,5 +1,6 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
+import { getTranslations } from "next-intl/server";
 import { Suspense } from "react";
 import ItemsGridClient from "@/components/items/ItemsGridClient";
 import ItemsSuspenseFallback from "@/components/items/ItemsSuspenseFallback";
@@ -23,21 +24,18 @@ export async function generateMetadata(
   );
 }
 
-export default function ItemsFavoritesPage() {
+export default async function ItemsFavoritesPage() {
   const payload = getItemsByCategorySlug("mods");
 
   if (!payload) {
     notFound();
   }
 
+  const t = await getTranslations("common");
+
   return (
     <Suspense
-      fallback={
-        <ItemsSuspenseFallback
-          title="Chargement des favoris"
-          description="Recuperation de la selection locale et application des preferences."
-        />
-      }
+      fallback={<ItemsSuspenseFallback title={t("loading")} />}
     >
       <ItemsGridClient category={payload.category} items={payload.items} favoritesOnly />
     </Suspense>

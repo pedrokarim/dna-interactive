@@ -41,6 +41,7 @@
   },
   "common": {
     "close": "Fermer",
+    "menu": "Menu",
     "cancel": "Annuler",
     "confirm": "Confirmer",
     "loading": "Chargement...",
@@ -642,7 +643,10 @@
       "f2p": "F2P",
       "endgame": "Endgame",
       "beginner": "Débutant"
-    }
+    },
+    "pageCommunityBuilder": "Builder communautaire",
+    "pageBuildsTitle": "Builds Duet Night Abyss",
+    "accountSuspended": "Compte suspendu."
   },
   "communityBuilds": {
     "sectionTitle": "Alternatives communauté",
@@ -718,7 +722,10 @@
       "endgame": "Endgame",
       "beginner": "Débutant"
     },
-    "views": "Vues"
+    "views": "Vues",
+    "pageLibraryTitle": "Bibliothèque de builds",
+    "pageLibraryDescription": "Retrouve les builds proposés par la communauté, ouvre leur fiche complète ou utilise-les comme point de départ.",
+    "pageCreateBuild": "Créer un build"
   },
   "account": {
     "metaTitle": "Profil - DNA Interactive",
@@ -766,5 +773,14 @@
     "contactTitle": "Contact",
     "contactText": "Pour toute question relative à tes données ou au retrait d'un contenu, utilise la page <link>contact</link>.",
     "navLabel": "Confidentialité"
+  },
+  "auth": {
+    "signIn": "Connexion Discord",
+    "accountMenu": "Menu du compte",
+    "profile": "Profil",
+    "admin": "Admin",
+    "signOut": "Déconnexion",
+    "administrator": "Administrateur",
+    "discordAccount": "Compte Discord"
   }
 }

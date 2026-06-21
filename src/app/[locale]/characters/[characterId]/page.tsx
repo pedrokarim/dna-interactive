@@ -1,5 +1,6 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound, redirect } from "next/navigation";
+import { getTranslations } from "next-intl/server";
 import { Suspense } from "react";
 import CharacterDetailClient from "@/components/characters/CharacterDetailClient";
 import CharactersSuspenseFallback from "@/components/characters/CharactersSuspenseFallback";
@@ -104,6 +105,7 @@ export default async function CharacterDetailPage({
   const catalog = getCharactersCatalog();
   const levelUpCurves = getLevelUpCurves();
   const ambientColor = ELEMENT_AMBIENT[character.element.key] ?? ELEMENT_AMBIENT.Water;
+  const t = await getTranslations("common");
 
   return (
     <>
@@ -115,10 +117,7 @@ export default async function CharacterDetailPage({
       />
       <Suspense
         fallback={
-          <CharactersSuspenseFallback
-            title="Chargement du personnage"
-            description="Preparation des portraits, traductions et statistiques."
-          />
+          <CharactersSuspenseFallback title={t("loading")} />
         }
       >
         <CharacterDetailClient

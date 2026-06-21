@@ -41,6 +41,7 @@
   },
   "common": {
     "close": "關閉",
+    "menu": "選單",
     "cancel": "取消",
     "confirm": "確認",
     "loading": "載入中...",
@@ -642,7 +643,10 @@
       "f2p": "F2P",
       "endgame": "終盤",
       "beginner": "新手"
-    }
+    },
+    "pageCommunityBuilder": "社群編輯器",
+    "pageBuildsTitle": "Duet Night Abyss 配裝",
+    "accountSuspended": "帳號已停權。"
   },
   "communityBuilds": {
     "sectionTitle": "社群替代方案",
@@ -718,7 +722,10 @@
       "endgame": "終盤",
       "beginner": "新手"
     },
-    "views": "瀏覽數"
+    "views": "瀏覽數",
+    "pageLibraryTitle": "配裝庫",
+    "pageLibraryDescription": "瀏覽社群分享的配裝，開啟完整資訊，或以此作為起點。",
+    "pageCreateBuild": "建立配裝"
   },
   "account": {
     "metaTitle": "個人檔案 - DNA Interactive",
@@ -766,5 +773,14 @@
     "contactTitle": "聯絡",
     "contactText": "如對你的資料或內容移除有任何疑問，請使用<link>聯絡</link>頁面。",
     "navLabel": "隱私"
+  },
+  "auth": {
+    "signIn": "使用 Discord 登入",
+    "accountMenu": "帳號選單",
+    "profile": "個人檔案",
+    "admin": "管理",
+    "signOut": "登出",
+    "administrator": "管理員",
+    "discordAccount": "Discord 帳號"
   }
 }

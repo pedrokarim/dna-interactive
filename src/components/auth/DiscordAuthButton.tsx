@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { signIn, signOut } from "@/auth";
 import { Link } from "@/i18n/navigation";
 import { ChevronDown, LogOut, Shield, UserRound } from "lucide-react";
@@ -24,12 +25,13 @@ export async function DiscordAuthButton({
   align?: "start" | "end";
 }) {
   const user = await getCurrentUser();
+  const t = await getTranslations("auth");
 
   if (!user) {
     return (
       <form action={signInWithDiscord}>
         <DnaButton variant="gold" className={compact ? "whitespace-nowrap px-3 py-1.5 text-xs" : undefined}>
-          Connexion Discord
+          {t("signIn")}
         </DnaButton>
       </form>
     );
@@ -41,7 +43,7 @@ export async function DiscordAuthButton({
     <details className="group relative z-[80]">
       <summary
         className="flex cursor-pointer list-none items-center gap-2 rounded-sm border border-line/20 bg-white/5 px-2 py-1.5 text-parch/90 transition-colors hover:border-gold/45 hover:bg-white/10 hover:text-parch [&::-webkit-details-marker]:hidden"
-        aria-label="Menu du compte"
+        aria-label={t("accountMenu")}
       >
         <DnaAvatar src={user.image} fallback={fallback} round size={compact ? 28 : 34} />
         {!compact ? <span className="max-w-36 truncate font-sans text-sm">{user.name ?? "Discord"}</span> : null}
@@ -56,7 +58,7 @@ export async function DiscordAuthButton({
         <div className="border-b border-line/20 px-3 py-3">
           <p className="truncate font-sans text-sm text-parch">{user.name ?? "Discord"}</p>
           <p className="mt-0.5 truncate font-caps text-[0.56rem] uppercase tracking-[0.16em] text-muted">
-            {user.role === "admin" ? "Administrateur" : "Compte Discord"}
+            {user.role === "admin" ? t("administrator") : t("discordAccount")}
           </p>
         </div>
         <div className="p-1.5">
@@ -65,7 +67,7 @@ export async function DiscordAuthButton({
             className="flex w-full items-center gap-2 rounded-sm px-3 py-2 font-sans text-sm text-parch/85 transition-colors hover:bg-white/5 hover:text-parch"
           >
             <UserRound className="h-4 w-4 text-gold" />
-            Profil
+            {t("profile")}
           </Link>
           {user.role === "admin" ? (
             <Link
@@ -73,7 +75,7 @@ export async function DiscordAuthButton({
               className="flex w-full items-center gap-2 rounded-sm px-3 py-2 font-sans text-sm text-parch/85 transition-colors hover:bg-white/5 hover:text-parch"
             >
               <Shield className="h-4 w-4 text-gold" />
-              Admin
+              {t("admin")}
             </Link>
           ) : null}
           <form action={signOutCurrentUser}>
@@ -82,7 +84,7 @@ export async function DiscordAuthButton({
               className="flex w-full items-center gap-2 rounded-sm px-3 py-2 font-sans text-sm text-parch/85 transition-colors hover:bg-crimson-bright/10 hover:text-[#ffb3a6]"
             >
               <LogOut className="h-4 w-4 text-crimson-bright" />
-              Déconnexion
+              {t("signOut")}
             </button>
           </form>
         </div>

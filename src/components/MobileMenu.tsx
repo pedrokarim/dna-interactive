@@ -40,8 +40,9 @@ function subscribeMounted() {
 
 export default function MobileMenu({ authSlot }: { authSlot?: ReactNode }) {
   const tNav = useTranslations("nav");
-  const openLabel = "Menu";
-  const closeLabel = "Fermer";
+  const tCommon = useTranslations("common");
+  const openLabel = tCommon("menu");
+  const closeLabel = tCommon("close");
   const [isOpen, setIsOpen] = useState(false);
   const mounted = useSyncExternalStore(subscribeMounted, () => true, () => false);
   const pathname = usePathname();

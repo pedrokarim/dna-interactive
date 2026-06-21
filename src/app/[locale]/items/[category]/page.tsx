@@ -1,5 +1,6 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
+import { getTranslations } from "next-intl/server";
 import { Suspense } from "react";
 import ItemsGridClient from "@/components/items/ItemsGridClient";
 import ItemsSuspenseFallback from "@/components/items/ItemsSuspenseFallback";
@@ -63,14 +64,11 @@ export default async function ItemCategoryPage({ params }: ItemCategoryPageProps
     notFound();
   }
 
+  const t = await getTranslations("common");
+
   return (
     <Suspense
-      fallback={
-        <ItemsSuspenseFallback
-          title="Chargement des items"
-          description="Initialisation des filtres, tri et pagination de la categorie."
-        />
-      }
+      fallback={<ItemsSuspenseFallback title={t("loading")} />}
     >
       <ItemsGridClient category={payload.category} items={payload.items} />
     </Suspense>

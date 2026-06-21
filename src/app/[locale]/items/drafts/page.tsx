@@ -1,4 +1,5 @@
 import type { Metadata, ResolvingMetadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { Suspense } from "react";
 import DraftsGridClient from "@/components/items/DraftsGridClient";
 import ItemsSuspenseFallback from "@/components/items/ItemsSuspenseFallback";
@@ -31,18 +32,14 @@ export async function generateMetadata(
   );
 }
 
-export default function DraftsPage() {
+export default async function DraftsPage() {
   const recipes = getDraftRecipeSummaries();
   const availableLanguages = getDraftAvailableLanguages(recipes);
+  const t = await getTranslations("common");
 
   return (
     <Suspense
-      fallback={
-        <ItemsSuspenseFallback
-          title="Chargement des drafts"
-          description="Construction de la grille des recettes et des options de filtrage."
-        />
-      }
+      fallback={<ItemsSuspenseFallback title={t("loading")} />}
     >
       <DraftsGridClient
         recipes={recipes}
