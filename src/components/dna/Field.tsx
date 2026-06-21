@@ -11,7 +11,7 @@ export function DnaField({ icon, wrapClassName, className, ...rest }: DnaFieldPr
   return (
     <label
       className={cn(
-        "inline-flex items-center gap-2 rounded-md border border-white/20 bg-gradient-to-b from-panel/60 to-ink/70 px-3 py-2 text-muted transition-colors focus-within:border-gold",
+        "inline-flex items-center gap-2 rounded-md border border-white/20 bg-gradient-to-b from-panel/60 to-ink/70 px-3 py-2 text-muted transition-colors focus-within:border-gold focus-within:ring-2 focus-within:ring-gold/50",
         wrapClassName,
       )}
     >

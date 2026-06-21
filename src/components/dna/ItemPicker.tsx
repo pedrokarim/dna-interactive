@@ -200,7 +200,7 @@ function ItemCell({
       onClick={() => onSelect?.(item)}
       title={item.name}
       className={cn(
-        "group relative flex flex-col items-center gap-1.5 overflow-hidden border bg-gradient-to-b from-[rgba(34,29,21,0.55)] to-[rgba(14,12,9,0.8)] p-2.5 text-center transition-all hover:-translate-y-0.5 hover:border-gold",
+        "group relative flex flex-col items-center gap-1.5 overflow-hidden border bg-gradient-to-b from-[rgba(34,29,21,0.55)] to-[rgba(14,12,9,0.8)] p-2.5 text-center transition-[transform,border-color,box-shadow] hover:-translate-y-0.5 hover:border-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60",
         selected ? "border-gold shadow-[0_0_0_1px_var(--color-gold,#c2a86a)]" : "border-white/8",
         used && "opacity-45 grayscale",
       )}

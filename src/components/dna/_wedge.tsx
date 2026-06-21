@@ -115,7 +115,7 @@ export function WedgeSlotCell({
       onDragEnd={onDragEnd}
       aria-label={slot.item ? `${kindLabel} ${slot.position} : ${slot.item.name}` : `Emplacement ${slot.position} vide`}
       className={cn(
-        "relative shrink-0 transition-[opacity,transform]",
+        "relative shrink-0 transition-[opacity,transform] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60",
         draggable ? "cursor-grab active:cursor-grabbing" : readOnly ? "cursor-default" : "cursor-pointer",
         isDragging && "opacity-40",
         isOver && "scale-105",

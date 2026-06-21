@@ -31,7 +31,7 @@ export function DnaCharacterCard({ name, subtitle, element, elements, rarity = 5
   return (
     <div
       className={cn(
-        "group relative aspect-[3/4] cursor-pointer overflow-hidden border border-line/25 bg-gradient-to-br from-[rgba(30,26,30,0.6)] to-[rgba(12,11,10,0.9)] transition-all duration-300 hover:-translate-y-1.5 hover:border-gold hover:shadow-[0_10px_30px_-8px_rgba(0,0,0,0.7)]",
+        "group relative aspect-[3/4] cursor-pointer overflow-hidden border border-line/25 bg-gradient-to-br from-[rgba(30,26,30,0.6)] to-[rgba(12,11,10,0.9)] transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-1.5 hover:border-gold hover:shadow-[0_10px_30px_-8px_rgba(0,0,0,0.7)]",
         className,
       )}
     >

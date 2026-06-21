@@ -104,9 +104,9 @@ export function DnaSlotRow({
         <button
           type="button"
           onClick={() => setPickerFor(-1)}
-          className="flex w-28 flex-col items-center justify-center gap-1 border border-dashed border-white/20 bg-white/2 p-2 text-muted-2 transition-colors hover:border-gold hover:text-gold"
+          className="flex w-28 flex-col items-center justify-center gap-1 border border-dashed border-white/20 bg-white/2 p-2 text-muted-2 transition-colors hover:border-gold hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60"
         >
-          <span className="text-2xl leading-none">＋</span>
+          <span aria-hidden className="text-2xl leading-none">＋</span>
           <span className="font-caps text-[0.55rem] uppercase tracking-[0.16em]">Ajouter</span>
         </button>
       )}
@@ -162,7 +162,7 @@ function SlotCard({
             type="button"
             onClick={onRemove}
             aria-label="Retirer"
-            className="flex h-4 w-4 items-center justify-center rounded-full border border-white/20 bg-ink/80 text-[0.7rem] leading-none text-muted hover:border-crimson-bright hover:text-[#ffb3a6]"
+            className="flex h-4 w-4 items-center justify-center rounded-full border border-white/20 bg-ink/80 text-[0.7rem] leading-none text-muted hover:border-crimson-bright hover:text-[#ffb3a6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson-bright/70"
           >
             ×
           </button>
@@ -171,7 +171,8 @@ function SlotCard({
       <button
         type="button"
         onClick={readOnly ? undefined : onReplace}
-        className={cn("grid aspect-square w-full place-items-center bg-black/25", readOnly ? "cursor-default" : "cursor-pointer")}
+        aria-label={readOnly ? item.name : `${item.name} — remplacer`}
+        className={cn("grid aspect-square w-full place-items-center bg-black/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gold/60", readOnly ? "cursor-default" : "cursor-pointer")}
         title={readOnly ? item.name : `${item.name} — cliquer pour remplacer`}
       >
         {item.icon ? (
@@ -187,7 +188,7 @@ function SlotCard({
         (readOnly ? (
           <DnaTag tone={isBest ? "gold" : "crimson"}>{isBest ? "Best" : "Alt"}</DnaTag>
         ) : (
-          <button type="button" onClick={onSetBest} className="inline-flex" title={isBest ? "Meilleur choix" : "Définir comme meilleur"}>
+          <button type="button" onClick={onSetBest} aria-label={isBest ? "Meilleur choix" : "Définir comme meilleur"} className="inline-flex rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60" title={isBest ? "Meilleur choix" : "Définir comme meilleur"}>
             <DnaTag tone={isBest ? "gold" : "crimson"}>{isBest ? "Best" : "Alt"}</DnaTag>
           </button>
         ))}

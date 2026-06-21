@@ -19,11 +19,11 @@ export function DnaStepper({ value, min = 0, max = 99, onChange, suffix, classNa
         type="button"
         aria-label="Diminuer"
         onClick={() => onChange?.(Math.max(min, value - 1))}
-        className="h-[38px] w-[38px] text-gold transition-colors hover:bg-gold/10 hover:text-gold-bright"
+        className="h-[38px] w-[38px] text-gold transition-colors hover:bg-gold/10 hover:text-gold-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gold/60"
       >
         ▼
       </button>
-      <span className="min-w-[78px] px-3 text-center font-caps tracking-[0.06em] text-parch">
+      <span className="min-w-[78px] px-3 text-center font-caps tabular-nums tracking-[0.06em] text-parch">
         <b className="font-semibold">{value}</b>
         {suffix ? <small className="text-muted-2"> {suffix}</small> : null}
       </span>
@@ -31,7 +31,7 @@ export function DnaStepper({ value, min = 0, max = 99, onChange, suffix, classNa
         type="button"
         aria-label="Augmenter"
         onClick={() => onChange?.(Math.min(max, value + 1))}
-        className="h-[38px] w-[38px] text-gold transition-colors hover:bg-gold/10 hover:text-gold-bright"
+        className="h-[38px] w-[38px] text-gold transition-colors hover:bg-gold/10 hover:text-gold-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gold/60"
       >
         ▲
       </button>

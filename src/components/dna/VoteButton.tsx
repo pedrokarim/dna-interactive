@@ -47,7 +47,7 @@ export function DnaVoteButton({
       aria-label={voted ? `${removeLabel} (${count})` : `${voteLabel} (${count})`}
       title={disabled ? loginLabel : voted ? removeLabel : voteLabel}
       className={cn(
-        "inline-flex flex-col items-center justify-center gap-0.5 rounded-md border font-caps leading-none transition-colors",
+        "inline-flex flex-col items-center justify-center gap-0.5 rounded-md border font-caps leading-none transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60",
         pad,
         voted
           ? "border-gold bg-gradient-to-b from-gold-bright to-gold text-[#1a1206]"

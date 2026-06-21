@@ -21,7 +21,7 @@ export function DnaTile({ icon, label, ghost, nouveau, notif, wide, onClick, cla
       type="button"
       onClick={onClick}
       className={cn(
-        "group relative flex min-h-[104px] flex-col items-center justify-center gap-2 overflow-hidden border border-white/6 bg-gradient-to-b from-[rgba(34,29,21,0.55)] to-[rgba(14,12,9,0.8)] p-4 transition-all hover:-translate-y-0.5 hover:border-gold",
+        "group relative flex min-h-[104px] flex-col items-center justify-center gap-2 overflow-hidden border border-white/6 bg-gradient-to-b from-[rgba(34,29,21,0.55)] to-[rgba(14,12,9,0.8)] p-4 transition-[transform,border-color,color] hover:-translate-y-0.5 hover:border-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60",
         wide && "flex-row justify-start gap-4",
         className,
       )}

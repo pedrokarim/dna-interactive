@@ -98,7 +98,7 @@ export function DnaPriorityList({
                 type="button"
                 onClick={() => onChange?.(items.filter((_, idx) => idx !== i))}
                 aria-label="Retirer"
-                className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full border border-white/20 bg-ink/80 text-[0.7rem] leading-none text-muted hover:border-crimson-bright hover:text-[#ffb3a6]"
+                className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full border border-white/20 bg-ink/80 text-[0.7rem] leading-none text-muted hover:border-crimson-bright hover:text-[#ffb3a6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson-bright/70"
               >
                 ×
               </button>
@@ -128,7 +128,7 @@ export function DnaPriorityList({
             <button
               type="button"
               onClick={() => setAdding(false)}
-              className="font-caps text-[0.55rem] uppercase tracking-[0.16em] text-muted-2 hover:text-parch"
+              className="rounded-sm font-caps text-[0.55rem] uppercase tracking-[0.16em] text-muted-2 hover:text-parch focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60"
             >
               Fermer
             </button>
@@ -137,9 +137,9 @@ export function DnaPriorityList({
           <button
             type="button"
             onClick={() => setAdding(true)}
-            className="mt-0.5 flex items-center justify-center gap-1 border border-dashed border-white/20 bg-white/2 py-1.5 font-caps text-[0.55rem] uppercase tracking-[0.16em] text-muted-2 transition-colors hover:border-gold hover:text-gold"
+            className="mt-0.5 flex items-center justify-center gap-1 border border-dashed border-white/20 bg-white/2 py-1.5 font-caps text-[0.55rem] uppercase tracking-[0.16em] text-muted-2 transition-colors hover:border-gold hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60"
           >
-            <span className="text-sm leading-none">＋</span> {addLabel}
+            <span aria-hidden className="text-sm leading-none">＋</span> {addLabel}
           </button>
         ))}
     </div>

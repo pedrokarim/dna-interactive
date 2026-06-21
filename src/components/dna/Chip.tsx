@@ -21,7 +21,7 @@ export function DnaChip({ children, selected, color, onClick, className }: DnaCh
       aria-pressed={selected}
       style={isEl ? { color } : undefined}
       className={cn(
-        "inline-flex items-center gap-1.5 rounded-sm border px-3.5 py-1.5 font-sans text-[0.78rem] transition-colors",
+        "inline-flex items-center gap-1.5 rounded-sm border px-3.5 py-1.5 font-sans text-[0.78rem] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60",
         selected
           ? isEl
             ? "border-current bg-white/6 text-white shadow-[0_0_10px_-2px_currentColor]"
@@ -30,7 +30,7 @@ export function DnaChip({ children, selected, color, onClick, className }: DnaCh
         className,
       )}
     >
-      {isEl && <span className="h-2 w-2 rounded-full bg-current" />}
+      {isEl && <span aria-hidden className="h-2 w-2 rounded-full bg-current" />}
       {children}
     </button>
   );

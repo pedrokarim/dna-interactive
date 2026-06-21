@@ -23,7 +23,7 @@ export function DnaSegmented<T extends string>({ options, value, onChange, ariaL
           aria-pressed={value === o.value}
           onClick={() => onChange?.(o.value)}
           className={cn(
-            "inline-flex min-w-[38px] items-center gap-2 px-3 py-2 font-sans text-[0.78rem] transition-colors",
+            "inline-flex min-w-[38px] items-center gap-2 px-3 py-2 font-sans text-[0.78rem] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gold/60",
             i > 0 && "border-l border-white/10",
             value === o.value ? "bg-gold/20 text-gold-bright" : "text-muted hover:bg-white/5 hover:text-parch",
           )}
