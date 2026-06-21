@@ -126,6 +126,12 @@ export function getBuilderOptions(locale: string): BuilderOptions {
     characters: getAllCharacters().map((character) => characterToOption(character, upperLocale)),
     weapons: getItemsByCategoryId("weapons").map((item) => itemToPickerItem(item, upperLocale)),
     mods: getItemsByCategoryId("mods").map((item) => itemToPickerItem(item, upperLocale)),
-    genimons: getItemsByCategoryId("genimons").map((item) => itemToPickerItem(item, upperLocale)),
+    // On n'expose dans le builder que les vrais génimons équipables : ceux du
+    // système de leveling (maxLevel 60). Les entrées maxLevel 1 sont des pets
+    // d'événement (Monster Rush / Wishen) ou des drones non buildables —
+    // l'encyclopédie d'items les garde, mais ils n'ont rien à faire dans un build.
+    genimons: getItemsByCategoryId("genimons")
+      .filter((item) => item.stats.maxLevel === 60)
+      .map((item) => itemToPickerItem(item, upperLocale)),
   };
 }
