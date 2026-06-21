@@ -859,7 +859,7 @@ function AdminLoadingState() {
 }
 
 function formatDate(value: string) {
-  return new Date(value).toLocaleDateString("fr-FR", {
+  return new Date(value).toLocaleDateString(undefined, {
     day: "2-digit",
     month: "short",
     year: "numeric",

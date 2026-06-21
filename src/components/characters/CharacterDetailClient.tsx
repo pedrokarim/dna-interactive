@@ -2755,7 +2755,7 @@ export default function CharacterDetailClient({
                   <DnaStatRow
                     key={r.k}
                     label={r.k}
-                    value={Math.round(r.v).toLocaleString("fr-FR")}
+                    value={Math.round(r.v).toLocaleString(undefined)}
                     accent={r.hl ? elHex : undefined}
                   />
                 ))}

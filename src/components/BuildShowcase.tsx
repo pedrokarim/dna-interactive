@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { ArrowRight, ChevronLeft, ChevronRight, FileImage, Users } from "lucide-react";
 import { ResponsiveQuickBuildCard } from "@/components/characters/QuickBuildModal";
@@ -21,6 +22,7 @@ import { getCharacterBuilds } from "@/lib/characters/builds";
 const FEATURED_IDS = ["char-linen", "char-saiqi", "char-feina"] as const;
 
 export default function BuildShowcase() {
+  const lang = useLocale().toUpperCase();
   const featured = FEATURED_IDS.map((id) => {
     const character = getCharacterById(id);
     const build = character ? getCharacterBuilds(character.id)[0] : undefined;
@@ -33,7 +35,7 @@ export default function BuildShowcase() {
   if (featured.length === 0) return null;
 
   const activeEntry = featured[active];
-  const activeName = resolveCharacterDisplayName(activeEntry.character, "FR");
+  const activeName = resolveCharacterDisplayName(activeEntry.character, lang);
 
   const go = (i: number) => {
     if (i < 0 || i >= featured.length) return;
@@ -64,7 +66,7 @@ export default function BuildShowcase() {
         {/* Character selector buttons */}
         <div className="mx-auto mt-8 flex max-w-6xl flex-wrap items-center justify-center gap-2 md:gap-3">
           {featured.map((entry, i) => {
-            const name = resolveCharacterDisplayName(entry.character, "FR");
+            const name = resolveCharacterDisplayName(entry.character, lang);
             const isActive = i === active;
             return (
               <button
@@ -111,7 +113,7 @@ export default function BuildShowcase() {
                 aria-label={
                   isActive
                     ? undefined
-                    : `Voir le build de ${resolveCharacterDisplayName(entry.character, "FR")}`
+                    : `Voir le build de ${resolveCharacterDisplayName(entry.character, lang)}`
                 }
                 tabIndex={isActive ? -1 : 0}
                 disabled={isActive}
@@ -127,7 +129,7 @@ export default function BuildShowcase() {
                 <ResponsiveQuickBuildCard
                   character={entry.character}
                   build={entry.build}
-                  lang="FR"
+                  lang={lang}
                   cardRef={null}
                 />
               </button>

@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import { Link } from "@/i18n/navigation";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { changelogData } from "@/lib/changelogData";
 import { typeConfig } from "@/lib/changelogConfig";
 import { DnaPanel } from "@/components/dna/Panel";
@@ -12,6 +12,8 @@ import { DnaDivider } from "@/components/dna/Divider";
 export default function ChangelogPage() {
   const t = useTranslations("changelog");
   const tc = useTranslations("common");
+  const locale = useLocale();
+  const dateFormatter = new Intl.DateTimeFormat(locale, { year: "numeric", month: "long", day: "numeric" });
 
   return (
     <div className="mx-auto max-w-4xl">
@@ -57,13 +59,7 @@ export default function ChangelogPage() {
                     <div className="mb-3 flex items-center gap-3 text-sm text-muted">
                       <span className="font-caps font-semibold text-gold">v{entry.version}</span>
                       <span>•</span>
-                      <span>
-                        {new Date(entry.date).toLocaleDateString("fr-FR", {
-                          year: "numeric",
-                          month: "long",
-                          day: "numeric",
-                        })}
-                      </span>
+                      <span>{dateFormatter.format(new Date(entry.date))}</span>
                     </div>
                     <p className="leading-relaxed text-parch/85">{entry.description}</p>
                   </div>

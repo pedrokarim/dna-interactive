@@ -95,7 +95,7 @@ function formatDynamicNumber(value: number): string {
   }
   const absolute = Math.abs(value);
   if (absolute >= 1000) {
-    return Intl.NumberFormat("fr-FR", { maximumFractionDigits: 2 }).format(value);
+    return Intl.NumberFormat(undefined, { maximumFractionDigits: 2 }).format(value);
   }
   if (Number.isInteger(value)) {
     return `${value}`;
