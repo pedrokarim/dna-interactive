@@ -1780,6 +1780,14 @@ function BuildTabContent({
                         ) : (
                           <p className="text-sm text-muted-2">{t('weaponItemNotFound')}</p>
                         )}
+                        {w.withWedges && w.item ? (
+                          <Link
+                            href={w.item.href}
+                            className="shrink-0 text-xs text-gold/80 underline-offset-2 hover:text-gold hover:underline"
+                          >
+                            {t('demonWedgesTitle')} →
+                          </Link>
+                        ) : null}
                         <span
                           className={`shrink-0 rounded-sm px-2.5 py-0.5 text-xs font-medium ${
                             w.rank === "best"
