@@ -113,6 +113,13 @@ function emptyWedgeSlots(max: number): WedgeSlotData[] {
   return Array.from({ length: max }, (_, index) => ({ position: index + 1, item: null, track: null }));
 }
 
+// La polarité d'un mod peut être universelle (-1) : ce n'est pas une track
+// valide (1-4). On la normalise en null pour ne jamais stocker/publier un
+// track hors bornes (sinon la validation rejette « number >= 1 »).
+function normalizeTrack(value: number | null | undefined): number | null {
+  return typeof value === "number" && value >= 1 && value <= 4 ? value : null;
+}
+
 function draftKey(characterId: string, element: string | null): string {
   return `dna:builder:draft:${characterId}:${element ?? "default"}`;
 }
@@ -249,7 +256,7 @@ export function CommunityBuildBuilderClient({
           .map((slot) => ({
             position: slot.position,
             itemId: slot.item!.id,
-            track: slot.track ?? slot.item!.polarity ?? null,
+            track: normalizeTrack(slot.track ?? slot.item!.polarity),
           })),
         centerItemId: centerItem?.id ?? null,
         affinity: activeElement,
@@ -312,7 +319,7 @@ export function CommunityBuildBuilderClient({
       emptyWedgeSlots(8).map((slot) => {
         const found = next.demonWedges.slots.find((entry) => entry.position === slot.position);
         const item = itemById(options.mods, found?.itemId);
-        return found && item ? { position: slot.position, item, track: found.track ?? item.polarity } : slot;
+        return found && item ? { position: slot.position, item, track: normalizeTrack(found.track ?? item.polarity) } : slot;
       }),
     );
     const nextCenterItem = itemById(options.mods, next.demonWedges.centerItemId);
@@ -321,7 +328,7 @@ export function CommunityBuildBuilderClient({
       emptyWedgeSlots(4).map((slot) => {
         const id = next.consonanceWeapon?.slots[slot.position - 1];
         const item = itemById(options.mods, id);
-        return item ? { position: slot.position, item, track: item.polarity } : slot;
+        return item ? { position: slot.position, item, track: normalizeTrack(item.polarity) } : slot;
       }),
     );
     setStatsPriority(
@@ -647,13 +654,13 @@ export function CommunityBuildBuilderClient({
     } else if (editing.kind === "demon") {
       setDemonSlots((slots) =>
         slots.map((slot) =>
-          slot.position === editing.position ? { ...slot, item, track: item.polarity } : slot,
+          slot.position === editing.position ? { ...slot, item, track: normalizeTrack(item.polarity) } : slot,
         ),
       );
     } else if (editing.kind === "consonance") {
       setConsonanceSlots((slots) =>
         slots.map((slot) =>
-          slot.position === editing.position ? { ...slot, item, track: item.polarity } : slot,
+          slot.position === editing.position ? { ...slot, item, track: normalizeTrack(item.polarity) } : slot,
         ),
       );
     }
