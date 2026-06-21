@@ -178,7 +178,7 @@ export default async function LocaleLayout({
   const htmlLang = localeToHtmlLang[locale] ?? "fr";
 
   return (
-    <html lang={htmlLang}>
+    <html lang={htmlLang} style={{ colorScheme: "dark" }}>
       <head>
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.gstatic.com" crossOrigin="anonymous" />

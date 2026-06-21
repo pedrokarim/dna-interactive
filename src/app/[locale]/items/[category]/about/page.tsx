@@ -123,7 +123,7 @@ function ModsAboutContent({ categorySlug }: { categorySlug: string }) {
           </p>
           <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
             {DEMON_WEDGE_EXAMPLES.map((entry) => (
-              <GuideIconCard key={entry.src} src={entry.src} label={entry.label} sublabel="Exemple d&apos;icone Demon Wedge" />
+              <GuideIconCard key={entry.src} src={entry.src} label={entry.label} sublabel="Exemple d’icône Demon Wedge" />
             ))}
           </div>
         </article>
