@@ -1,7 +1,8 @@
 "use client";
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useRef, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import { cn } from "./cn";
+import { useDialogA11y } from "./useDialogA11y";
 import { ELEMENTS } from "./elements";
 import { DnaStars } from "./RarityStars";
 import { DnaTag } from "./Tag";
@@ -211,30 +212,20 @@ function PickerOverlay({
   onSelect: (item: DnaPickerItem) => void;
   onClose: () => void;
 }) {
-  useEffect(() => {
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") onClose();
-    };
-
-    document.addEventListener("keydown", handleEscape);
-
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      document.removeEventListener("keydown", handleEscape);
-    };
-  }, [onClose]);
+  const panelRef = useRef<HTMLDivElement>(null);
+  useDialogA11y(panelRef, { onClose });
 
   return (
     <div
       className="fixed inset-0 z-[500] flex items-center justify-center bg-black/75 p-4 backdrop-blur-sm"
-      role="dialog"
-      aria-modal="true"
       onClick={onClose}
     >
       <div
+        ref={panelRef}
+        tabIndex={-1}
+        role="dialog"
+        aria-modal="true"
+        aria-label={label}
         className="relative flex max-h-[88vh] w-full max-w-4xl flex-col border border-line/25 bg-panel/95 p-4 shadow-[0_24px_60px_rgba(0,0,0,0.7)] md:p-5"
         onClick={(e) => e.stopPropagation()}
       >
@@ -244,7 +235,7 @@ function PickerOverlay({
             Fermer
           </DnaButton>
         </div>
-        <div className="min-h-0 overflow-y-auto pr-1">
+        <div className="min-h-0 overflow-y-auto overscroll-contain pr-1">
           <DnaItemPicker items={pool} usedIds={usedIds} columns={columns} minColumnWidth="7.5rem" onSelect={onSelect} />
         </div>
       </div>

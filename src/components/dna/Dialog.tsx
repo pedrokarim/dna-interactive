@@ -1,8 +1,9 @@
 "use client";
-import { useEffect, useRef, type ReactNode } from "react";
+import { useRef, type ReactNode } from "react";
 import { X } from "lucide-react";
 import { cn } from "./cn";
 import { DnaButton } from "./Button";
+import { useDialogA11y } from "./useDialogA11y";
 
 /**
  * Modale du design system — coque réutilisable (overlay + panneau aux coins
@@ -34,51 +35,7 @@ export type DnaDialogProps = {
 
 export function DnaDialog({ open, onClose, title, children, footer, danger, size = "md", className }: DnaDialogProps) {
   const panelRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!open) return;
-    const previouslyFocused = document.activeElement as HTMLElement | null;
-    const focusables = () =>
-      Array.from(
-        panelRef.current?.querySelectorAll<HTMLElement>(
-          'a[href],button:not([disabled]),textarea,input:not([disabled]),select,[tabindex]:not([tabindex="-1"])',
-        ) ?? [],
-      );
-    // Déplace le focus dans la modale (1er élément focusable, sinon le panneau).
-    (focusables()[0] ?? panelRef.current)?.focus();
-
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        onClose();
-        return;
-      }
-      if (event.key === "Tab") {
-        const items = focusables();
-        if (items.length === 0) {
-          event.preventDefault();
-          return;
-        }
-        const first = items[0];
-        const last = items[items.length - 1];
-        if (event.shiftKey && document.activeElement === first) {
-          event.preventDefault();
-          last.focus();
-        } else if (!event.shiftKey && document.activeElement === last) {
-          event.preventDefault();
-          first.focus();
-        }
-      }
-    };
-
-    document.addEventListener("keydown", onKey);
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = previousOverflow;
-      previouslyFocused?.focus?.();
-    };
-  }, [open, onClose]);
+  useDialogA11y(panelRef, { open, onClose });
 
   if (!open) return null;
   const accent = danger ? "#e0685a" : "#c2a86a";

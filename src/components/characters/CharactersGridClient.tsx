@@ -2,7 +2,7 @@
 
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   ChevronRight,
   Heart,
@@ -37,6 +37,7 @@ import FilterChips from "@/components/list/FilterChips";
 import ViewModeToggle from "@/components/list/ViewModeToggle";
 import { useListViewMode } from "@/components/list/useListViewMode";
 import { DnaCharacterCard } from "@/components/dna/CharacterCard";
+import { useDialogA11y } from "@/components/dna/useDialogA11y";
 import { cn } from "@/components/dna/cn";
 import type { ElementKey } from "@/components/dna/elements";
 
@@ -203,6 +204,11 @@ export default function CharactersGridClient({
     src: string;
     alt: string;
   } | null>(null);
+  const previewPanelRef = useRef<HTMLDivElement>(null);
+  useDialogA11y(previewPanelRef, {
+    open: previewPortrait !== null,
+    onClose: () => setPreviewPortrait(null),
+  });
 
   const updateQueryFilters = (overrides: {
     q?: string;
@@ -1070,11 +1076,13 @@ export default function CharactersGridClient({
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-ink/80 p-4 backdrop-blur-sm"
           onClick={() => setPreviewPortrait(null)}
-          role="dialog"
-          aria-modal="true"
-          aria-label={`Apercu du portrait de ${previewPortrait.alt}`}
         >
           <div
+            ref={previewPanelRef}
+            tabIndex={-1}
+            role="dialog"
+            aria-modal="true"
+            aria-label={`Apercu du portrait de ${previewPortrait.alt}`}
             className="w-full max-w-md border border-gold/30 bg-panel/95 p-4 shadow-[0_25px_60px_rgba(0,0,0,0.65)]"
             onClick={(event) => event.stopPropagation()}
           >

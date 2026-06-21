@@ -18,6 +18,7 @@ import { DnaPriorityList, type PriorityItem } from "@/components/dna/PriorityLis
 import { DnaSectionLabel } from "@/components/dna/SectionLabel";
 import { DnaSegmented } from "@/components/dna/Segmented";
 import { DnaSlotRow, type SlotEntry } from "@/components/dna/SlotRow";
+import { useDialogA11y } from "@/components/dna/useDialogA11y";
 import { ELEMENTS, type ElementKey } from "@/components/dna/elements";
 import type { WedgeSlotData } from "@/components/dna/_wedge";
 import {
@@ -215,6 +216,9 @@ export function CommunityBuildBuilderClient({
   const loadedShareParamRef = useRef(false);
   const importInputRef = useRef<HTMLInputElement>(null);
   const importFormatRef = useRef<"json" | "xml">("json");
+  const panelRef = useRef<HTMLDivElement>(null);
+
+  useDialogA11y(panelRef, { open: Boolean(editing), onClose: () => setEditing(null) });
 
   const activeElement = element ?? selectedCharacter?.elements[0]?.key ?? null;
   const accentHex = activeElement ? ELEMENTS[activeElement].hex : "#c2a86a";
@@ -224,24 +228,6 @@ export function CommunityBuildBuilderClient({
     () => options.mods.filter((item) => isCenterDemonWedgeItemId(item.id)),
     [options.mods],
   );
-
-  useEffect(() => {
-    if (!editing) return;
-
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setEditing(null);
-    };
-
-    document.addEventListener("keydown", handleEscape);
-
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      document.removeEventListener("keydown", handleEscape);
-    };
-  }, [editing]);
 
   function selectCharacter(nextCharacterId: string) {
     const nextCharacter = options.characters.find((character) => character.id === nextCharacterId);
@@ -1212,12 +1198,15 @@ export function CommunityBuildBuilderClient({
       {editing && canPortal ? createPortal(
         <div
           className="fixed inset-0 z-[500] flex items-center justify-center bg-black/75 p-4 backdrop-blur-sm"
-          role="dialog"
-          aria-modal="true"
           onClick={() => setEditing(null)}
         >
           <div
-            className="max-h-[88vh] w-full max-w-5xl overflow-y-auto border border-line/25 bg-panel/95 p-4 shadow-[0_24px_60px_rgba(0,0,0,0.7)] md:p-5"
+            ref={panelRef}
+            tabIndex={-1}
+            role="dialog"
+            aria-modal="true"
+            aria-label={editing.kind === "team" ? t("pickTeammate") : editing.kind === "center" ? t("pickCenterMod") : t("pickMod")}
+            className="max-h-[88vh] w-full max-w-5xl overflow-y-auto overscroll-contain border border-line/25 bg-panel/95 p-4 shadow-[0_24px_60px_rgba(0,0,0,0.7)] md:p-5"
             onClick={(event) => event.stopPropagation()}
           >
             <div className="mb-3 flex items-center justify-between gap-3">

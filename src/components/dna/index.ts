@@ -55,3 +55,4 @@ export { DnaCharacterCard } from "./CharacterCard";
 // Dialogues / modales
 export { DnaDialog, DnaConfirmDialog, type DnaDialogProps, type DnaConfirmDialogProps } from "./Dialog";
 export { ConfirmProvider, useConfirm } from "./ConfirmProvider";
+export { useDialogA11y } from "./useDialogA11y";

@@ -65,6 +65,7 @@ import { DnaTag } from "@/components/dna/Tag";
 import { DnaButton } from "@/components/dna/Button";
 import { DnaCommunityBuildCard } from "@/components/dna/CommunityBuildCard";
 import { DnaSegmented } from "@/components/dna/Segmented";
+import { useDialogA11y } from "@/components/dna/useDialogA11y";
 import { NAVIGATION } from "@/lib/constants";
 import type {
   CharacterBuild,
@@ -1440,6 +1441,8 @@ function CommunityBuildPreviewModal({
   const [reportOpen, setReportOpen] = useState(false);
   const [reportReason, setReportReason] = useState("");
   const [actionBusy, setActionBusy] = useState<"delete" | "report" | null>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  useDialogA11y(panelRef, { onClose: onClose });
 
   if (typeof document === "undefined") return null;
 
@@ -1514,12 +1517,16 @@ function CommunityBuildPreviewModal({
 
   return createPortal(
     <div
-      className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-ink/85 p-3 backdrop-blur-sm md:p-6"
-      role="dialog"
-      aria-modal="true"
-      aria-label={tcb("ariaModal", { title: build.title })}
+      className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto overscroll-contain bg-ink/85 p-3 backdrop-blur-sm md:p-6"
     >
-      <div className="relative my-4 w-full max-w-6xl border border-gold/25 bg-ink shadow-[0_30px_80px_rgba(0,0,0,0.72)]">
+      <div
+        ref={panelRef}
+        tabIndex={-1}
+        role="dialog"
+        aria-modal="true"
+        aria-label={tcb("ariaModal", { title: build.title })}
+        className="relative my-4 w-full max-w-6xl border border-gold/25 bg-ink shadow-[0_30px_80px_rgba(0,0,0,0.72)]"
+      >
         <div className="sticky top-0 z-20 border-b border-white/10 bg-ink/95 px-4 py-3 backdrop-blur md:px-5">
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
@@ -2325,6 +2332,11 @@ export default function CharacterDetailClient({
     src: string;
     alt: string;
   } | null>(null);
+  const zoomPanelRef = useRef<HTMLDivElement>(null);
+  useDialogA11y(zoomPanelRef, {
+    open: Boolean(zoomedPortrait),
+    onClose: () => setZoomedPortrait(null),
+  });
 
   const activePortraitSrc = character.portraits[activePortrait]?.publicPath;
 
@@ -3650,12 +3662,14 @@ export default function CharacterDetailClient({
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-ink/85 p-4 backdrop-blur-sm"
           onClick={() => setZoomedPortrait(null)}
-          role="dialog"
-          aria-modal="true"
-          aria-label={`Portrait agrandi : ${zoomedPortrait.alt}`}
         >
           <div
-            className="max-h-[90vh] max-w-2xl overflow-hidden border border-gold/30 bg-panel/95 shadow-[0_25px_60px_rgba(0,0,0,0.65)]"
+            ref={zoomPanelRef}
+            tabIndex={-1}
+            role="dialog"
+            aria-modal="true"
+            aria-label={`Portrait agrandi : ${zoomedPortrait.alt}`}
+            className="max-h-[90vh] max-w-2xl overflow-hidden overscroll-contain border border-gold/30 bg-panel/95 shadow-[0_25px_60px_rgba(0,0,0,0.65)]"
             onClick={(event) => event.stopPropagation()}
           >
             <div className="flex items-center justify-between gap-3 border-b border-white/10 px-4 py-3">

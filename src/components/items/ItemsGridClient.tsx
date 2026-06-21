@@ -2,7 +2,7 @@
 
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { ChevronRight, Heart, Languages, Search, SlidersHorizontal, X, ZoomIn } from "lucide-react";
 import { useAtom } from "jotai";
 import {
@@ -29,6 +29,7 @@ import ViewModeToggle from "@/components/list/ViewModeToggle";
 import { useListViewMode } from "@/components/list/useListViewMode";
 import { DnaPanel } from "@/components/dna/Panel";
 import { DnaSectionLabel } from "@/components/dna/SectionLabel";
+import { useDialogA11y } from "@/components/dna/useDialogA11y";
 
 type ArchiveFilter = "all" | "withArchive" | "withoutArchive";
 type NewFilter = "all" | "newOnly";
@@ -305,6 +306,11 @@ export default function ItemsGridClient({
     alt: string;
     modId: number;
   } | null>(null);
+  const previewPanelRef = useRef<HTMLDivElement>(null);
+  useDialogA11y(previewPanelRef, {
+    open: previewIcon !== null,
+    onClose: () => setPreviewIcon(null),
+  });
 
   const updateQueryFilters = (overrides: {
     q?: string;
@@ -1569,11 +1575,13 @@ export default function ItemsGridClient({
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-ink/80 p-4 backdrop-blur-sm"
           onClick={() => setPreviewIcon(null)}
-          role="dialog"
-          aria-modal="true"
-          aria-label={`Apercu de l'icone ${category.technicalName} ${previewIcon.modId}`}
         >
           <div
+            ref={previewPanelRef}
+            tabIndex={-1}
+            role="dialog"
+            aria-modal="true"
+            aria-label={`Apercu de l'icone ${category.technicalName} ${previewIcon.modId}`}
             className="w-full max-w-sm border border-gold/30 bg-panel/95 p-4 shadow-[0_25px_60px_rgba(0,0,0,0.65)]"
             onClick={(event) => event.stopPropagation()}
           >

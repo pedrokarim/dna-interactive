@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { toPng } from "html-to-image";
 import { Download, Sparkles, Swords, Target, X } from "lucide-react";
 import {
@@ -11,6 +11,7 @@ import {
 } from "@/lib/characters/builds";
 import type { CharacterRecord } from "@/lib/characters/types";
 import { resolveCharacterDisplayName } from "@/lib/characters/catalog";
+import { useDialogA11y } from "@/components/dna/useDialogA11y";
 import CursorTooltip from "@/components/CursorTooltip";
 
 // ---------------------------------------------------------------------------
@@ -912,15 +913,9 @@ export default function QuickBuildModal({
   const [activeBuildIndex, setActiveBuildIndex] = useState(0);
   const [downloading, setDownloading] = useState(false);
   const cardRef = useRef<HTMLDivElement | null>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (!open) return;
-    const handler = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-    };
-    document.addEventListener("keydown", handler);
-    return () => document.removeEventListener("keydown", handler);
-  }, [open, onClose]);
+  useDialogA11y(panelRef, { open, onClose });
 
   const handleDownload = useCallback(async () => {
     if (!cardRef.current) return;
@@ -949,10 +944,13 @@ export default function QuickBuildModal({
       <div
         className="fixed inset-0 z-50 flex items-center justify-center bg-ink/85 p-2 sm:p-4 backdrop-blur-sm"
         onClick={onClose}
-        role="dialog"
-        aria-modal="true"
       >
         <div
+          ref={panelRef}
+          tabIndex={-1}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Build rapide"
           className="max-w-md rounded-2xl border border-white/10 bg-panel/95 p-6 text-center shadow-2xl"
           onClick={(e) => e.stopPropagation()}
         >
@@ -978,11 +976,13 @@ export default function QuickBuildModal({
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-ink/85 p-2 sm:p-4 backdrop-blur-sm"
       onClick={onClose}
-      role="dialog"
-      aria-modal="true"
-      aria-label="Build rapide"
     >
       <div
+        ref={panelRef}
+        tabIndex={-1}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Build rapide"
         className="flex max-h-[95vh] w-full max-w-[1360px] flex-col overflow-hidden rounded-2xl border border-gold/30 bg-panel/95 shadow-[0_40px_80px_rgba(2,6,23,0.8)]"
         onClick={(e) => e.stopPropagation()}
       >
@@ -1034,7 +1034,7 @@ export default function QuickBuildModal({
           </div>
         </div>
 
-        <div className="overflow-auto bg-ink/60 p-4 md:p-6">
+        <div className="overflow-auto overscroll-contain bg-ink/60 p-4 md:p-6">
           <ResponsiveQuickBuildCard
             character={character}
             build={build}

@@ -2,7 +2,7 @@
 
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import {
   ChevronRight,
   Clock3,
@@ -21,6 +21,7 @@ import FilterChips from "@/components/list/FilterChips";
 import ViewModeToggle from "@/components/list/ViewModeToggle";
 import { useListViewMode } from "@/components/list/useListViewMode";
 import { DnaPanel } from "@/components/dna/Panel";
+import { useDialogA11y } from "@/components/dna/useDialogA11y";
 
 const SORT_VALUES = ["id", "rarityDesc", "rarityAsc", "durationAsc", "durationDesc"] as const;
 const PAGE_SIZE_VALUES = [12, 24, 48, 96] as const;
@@ -150,6 +151,11 @@ export default function DraftsGridClient({
     alt: string;
     draftId: number;
   } | null>(null);
+  const previewPanelRef = useRef<HTMLDivElement>(null);
+  useDialogA11y(previewPanelRef, {
+    open: previewIcon !== null,
+    onClose: () => setPreviewIcon(null),
+  });
 
   const [queryFilters, setQueryFilters] = useQueryStates({
     q: parseAsString,
@@ -901,11 +907,13 @@ export default function DraftsGridClient({
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-ink/80 p-4 backdrop-blur-sm"
           onClick={() => setPreviewIcon(null)}
-          role="dialog"
-          aria-modal="true"
-          aria-label={`Apercu de l'icone draft ${previewIcon.draftId}`}
         >
           <div
+            ref={previewPanelRef}
+            tabIndex={-1}
+            role="dialog"
+            aria-modal="true"
+            aria-label={`Apercu de l'icone draft ${previewIcon.draftId}`}
             className="w-full max-w-sm border border-gold/35 bg-panel/95 p-4 shadow-[0_25px_60px_rgba(0,0,0,0.65)]"
             onClick={(event) => event.stopPropagation()}
           >
