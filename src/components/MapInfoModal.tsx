@@ -2,7 +2,7 @@
 
 import mapIndex from "@/data/mapIndex.json";
 import type { GameMapSummary } from "@/types/map";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { DnaButton, DnaDialog, DnaSectionLabel } from "@/components/dna";
 
 interface MapInfoModalProps {
@@ -14,6 +14,7 @@ interface MapInfoModalProps {
 export default function MapInfoModal({ isOpen, onClose, selectedMapId }: MapInfoModalProps) {
   const t = useTranslations("mapInfo");
   const tCommon = useTranslations("common");
+  const locale = useLocale();
 
   const index = mapIndex as GameMapSummary[];
 
@@ -26,13 +27,13 @@ export default function MapInfoModal({ isOpen, onClose, selectedMapId }: MapInfo
   const selectedMapImages = selectedMap?.imageCount ?? 0;
   const selectedMapCategories = selectedMap?.legend.length ?? 0;
 
-  const lastUpdateDate = new Date().toLocaleDateString("fr-FR", {
+  const lastUpdateDate = new Intl.DateTimeFormat(locale, {
     year: "numeric",
     month: "long",
     day: "numeric",
     hour: "2-digit",
     minute: "2-digit",
-  });
+  }).format(new Date());
 
   const version = `1.${totalMaps}.${Math.floor(totalMarkers / 100)}`;
 
@@ -43,7 +44,7 @@ export default function MapInfoModal({ isOpen, onClose, selectedMapId }: MapInfo
       size="2xl"
       title={
         <span className="flex items-center gap-2.5">
-          <svg className="h-6 w-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="h-6 w-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path
               strokeLinecap="round"
               strokeLinejoin="round"

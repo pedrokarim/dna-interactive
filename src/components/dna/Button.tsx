@@ -15,7 +15,7 @@ export function DnaButton({ variant = "ghost", icon, children, className, ...res
   return (
     <button
       className={cn(
-        "dna-shine inline-flex items-center justify-center gap-2 rounded-md px-6 py-2.5 font-sans text-sm tracking-wide transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-50",
+        "dna-shine inline-flex items-center justify-center gap-2 rounded-md px-6 py-2.5 font-sans text-sm tracking-wide transition-[transform,color,border-color,background-color,box-shadow] duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70 focus-visible:ring-offset-2 focus-visible:ring-offset-ink disabled:cursor-not-allowed disabled:opacity-50",
         variant === "gold"
           ? "border border-gold bg-gradient-to-b from-gold-deep/40 to-ink/70 text-gold-bright shadow-[inset_0_1px_0_rgba(227,205,149,0.22)] hover:-translate-y-px hover:border-gold-bright hover:text-[#fff6e6]"
           : variant === "danger"

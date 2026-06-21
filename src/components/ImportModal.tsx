@@ -84,17 +84,33 @@ export default function ImportModal({ isOpen, onClose, onImport }: ImportModalPr
       <p className="mb-6 text-sm text-parch/85">{t("description")}</p>
 
       <div
+        role="button"
+        tabIndex={0}
+        aria-label={t("dropHere")}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
         onClick={handleClick}
-        className={`cursor-pointer border-2 border-dashed p-8 text-center transition-all ${
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            handleClick();
+          }
+        }}
+        className={`cursor-pointer border-2 border-dashed p-8 text-center transition-[border-color,background-color,transform] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70 ${
           isDragging
             ? "border-gold bg-gold/10 scale-[1.02]"
             : "border-line/30 bg-panel/30 hover:border-gold/50 hover:bg-panel/50"
         }`}
       >
-        <input ref={fileInputRef} type="file" accept=".json" onChange={handleFileSelect} className="hidden" />
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept=".json"
+          onChange={handleFileSelect}
+          className="hidden"
+          aria-label={t("title")}
+        />
 
         <div className="flex flex-col items-center">
           <svg

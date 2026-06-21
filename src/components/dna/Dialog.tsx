@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 import { X } from "lucide-react";
 import { cn } from "./cn";
 import { DnaButton } from "./Button";
@@ -33,17 +33,50 @@ export type DnaDialogProps = {
 };
 
 export function DnaDialog({ open, onClose, title, children, footer, danger, size = "md", className }: DnaDialogProps) {
+  const panelRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     if (!open) return;
+    const previouslyFocused = document.activeElement as HTMLElement | null;
+    const focusables = () =>
+      Array.from(
+        panelRef.current?.querySelectorAll<HTMLElement>(
+          'a[href],button:not([disabled]),textarea,input:not([disabled]),select,[tabindex]:not([tabindex="-1"])',
+        ) ?? [],
+      );
+    // Déplace le focus dans la modale (1er élément focusable, sinon le panneau).
+    (focusables()[0] ?? panelRef.current)?.focus();
+
     const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") onClose();
+      if (event.key === "Escape") {
+        onClose();
+        return;
+      }
+      if (event.key === "Tab") {
+        const items = focusables();
+        if (items.length === 0) {
+          event.preventDefault();
+          return;
+        }
+        const first = items[0];
+        const last = items[items.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
     };
+
     document.addEventListener("keydown", onKey);
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = previousOverflow;
+      previouslyFocused?.focus?.();
     };
   }, [open, onClose]);
 
@@ -54,8 +87,10 @@ export function DnaDialog({ open, onClose, title, children, footer, danger, size
     <div role="dialog" aria-modal="true" className="fixed inset-0 z-[200] flex items-center justify-center p-4">
       <div aria-hidden className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={onClose} />
       <div
+        ref={panelRef}
+        tabIndex={-1}
         className={cn(
-          "relative max-h-[88vh] w-full overflow-y-auto border bg-[#0b0e14] shadow-[0_24px_60px_rgba(0,0,0,0.6)]",
+          "relative max-h-[88vh] w-full overflow-y-auto overscroll-contain border bg-[#0b0e14] shadow-[0_24px_60px_rgba(0,0,0,0.6)] outline-none",
           DIALOG_MAX_WIDTH[size],
           className,
         )}
@@ -70,7 +105,7 @@ export function DnaDialog({ open, onClose, title, children, footer, danger, size
             aria-label="Fermer"
             className="grid h-7 w-7 shrink-0 place-items-center text-muted transition-colors hover:text-parch"
           >
-            <X className="h-4 w-4" />
+            <X className="h-4 w-4" aria-hidden="true" />
           </button>
         </div>
         {children != null ? <div className="px-5 py-4 font-sans text-sm leading-relaxed text-parch/85">{children}</div> : null}
@@ -119,7 +154,7 @@ export function DnaConfirmDialog({
               {cancelLabel}
             </DnaButton>
           ) : null}
-          <DnaButton variant={danger ? "danger" : "gold"} onClick={onConfirm} autoFocus>
+          <DnaButton variant={danger ? "danger" : "gold"} onClick={onConfirm}>
             {confirmLabel}
           </DnaButton>
         </>
