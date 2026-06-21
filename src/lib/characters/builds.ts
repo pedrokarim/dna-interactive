@@ -21,6 +21,8 @@ interface RawWeaponEntry {
   itemId: string;
   rank: "best" | "alternative";
   note?: RawLocalizedText;
+  /** Inclure/afficher le build de Demon Wedges canonique de cette arme. */
+  withWedges?: boolean;
 }
 
 interface RawDemonWedgeSlot {
@@ -105,6 +107,7 @@ export interface BuildWeaponEntry {
   item: ResolvedItemRef | null;
   rank: "best" | "alternative";
   note: RawLocalizedText;
+  withWedges: boolean;
 }
 
 export interface BuildDemonWedgeSlot {
@@ -244,11 +247,13 @@ export function getCharacterBuilds(characterId: string): CharacterBuild[] {
           item: resolveBuildItemRef("weapons", w.itemId),
           rank: w.rank,
           note: w.note ?? {},
+          withWedges: w.withWedges ?? false,
         })),
         ranged: (raw.weapons?.ranged ?? []).map((w) => ({
           item: resolveBuildItemRef("weapons", w.itemId),
           rank: w.rank,
           note: w.note ?? {},
+          withWedges: w.withWedges ?? false,
         })),
       },
       demonWedges: {

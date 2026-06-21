@@ -551,6 +551,7 @@
     "nextAt": "at {time} your time"
   },
   "builder": {
+    "weaponWedgesToggle": "무기의 데몬 웻지 빌드 포함",
     "noCharacters": "사용 가능한 캐릭터가 없습니다.",
     "character": "캐릭터",
     "element": "속성",

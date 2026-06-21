@@ -551,6 +551,7 @@
     "nextAt": "at {time} your time"
   },
   "builder": {
+    "weaponWedgesToggle": "武器のデーモンウェッジ構成を含める",
     "noCharacters": "利用できるキャラクターがありません。",
     "character": "キャラクター",
     "element": "属性",

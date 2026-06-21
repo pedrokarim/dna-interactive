@@ -4,6 +4,7 @@ import type { CharacterRecord } from "@/lib/characters/types";
 import type { ItemRecord } from "@/lib/items/types";
 import type { DnaPickerItem } from "@/components/dna/ItemPicker";
 import type { ElementKey } from "@/components/dna/elements";
+import { allWeaponBuilds } from "@/data/weapons/builds";
 
 const ELEMENT_KEYS = new Set(["Fire", "Water", "Thunder", "Wind", "Light", "Dark"]);
 
@@ -32,6 +33,8 @@ export type BuilderOptions = {
   weapons: DnaPickerItem[];
   mods: DnaPickerItem[];
   genimons: DnaPickerItem[];
+  /** IDs des armes qui ont un build de Demon Wedges canonique (pour le toggle « inclure »). */
+  weaponBuildIds: string[];
 };
 
 function asElementKey(value: string | null | undefined): ElementKey | null {
@@ -164,6 +167,7 @@ export function getBuilderOptions(locale: string): BuilderOptions {
     characters: getAllCharacters().map((character) => characterToOption(character, upperLocale)),
     weapons: getItemsByCategoryId("weapons").map((item) => itemToPickerItem(item, upperLocale)),
     mods: getItemsByCategoryId("mods").map((item) => itemToPickerItem(item, upperLocale)),
+    weaponBuildIds: allWeaponBuilds.map((b) => b.weaponId),
     // On n'expose dans le builder que les vrais génimons équipables : ceux du
     // système de leveling (maxLevel 60). Les entrées maxLevel 1 sont des pets
     // d'événement (Monster Rush / Wishen) ou des drones non buildables —

@@ -18,8 +18,8 @@ const buildPayloadIoSchema = z
   .object({
     weapons: z
       .object({
-        melee: z.array(z.object({ itemId: itemIdSchema, rank: rankSchema }).strict()).max(3),
-        ranged: z.array(z.object({ itemId: itemIdSchema, rank: rankSchema }).strict()).max(3),
+        melee: z.array(z.object({ itemId: itemIdSchema, rank: rankSchema, withWedges: z.boolean().optional() }).strict()).max(3),
+        ranged: z.array(z.object({ itemId: itemIdSchema, rank: rankSchema, withWedges: z.boolean().optional() }).strict()).max(3),
       })
       .strict(),
     demonWedges: z

@@ -551,6 +551,7 @@
     "nextAt": "à {time} chez vous"
   },
   "builder": {
+    "weaponWedgesToggle": "Inclure le build de Demon Wedges de l'arme",
     "noCharacters": "Aucun personnage disponible.",
     "character": "Personnage",
     "element": "Élément",

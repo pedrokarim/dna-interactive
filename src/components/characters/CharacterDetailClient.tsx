@@ -376,11 +376,13 @@ function communityBuildToDisplayBuild(
         item: resolveBuildItemRef("weapons", weapon.itemId, lang),
         rank: weapon.rank,
         note: {},
+        withWedges: weapon.withWedges ?? false,
       })),
       ranged: payload.weapons.ranged.map((weapon) => ({
         item: resolveBuildItemRef("weapons", weapon.itemId, lang),
         rank: weapon.rank,
         note: {},
+        withWedges: weapon.withWedges ?? false,
       })),
     },
     demonWedges: {

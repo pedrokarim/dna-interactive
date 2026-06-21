@@ -35,8 +35,8 @@ export const buildNoteSchema = z.string().trim().max(200).nullable().optional();
 export const buildPayloadSchema = z.object({
   weapons: z
     .object({
-      melee: z.array(z.object({ itemId: itemIdSchema, rank: rankSchema })).max(3).default([]),
-      ranged: z.array(z.object({ itemId: itemIdSchema, rank: rankSchema })).max(3).default([]),
+      melee: z.array(z.object({ itemId: itemIdSchema, rank: rankSchema, withWedges: z.boolean().optional() })).max(3).default([]),
+      ranged: z.array(z.object({ itemId: itemIdSchema, rank: rankSchema, withWedges: z.boolean().optional() })).max(3).default([]),
     })
     .default({ melee: [], ranged: [] }),
   demonWedges: z

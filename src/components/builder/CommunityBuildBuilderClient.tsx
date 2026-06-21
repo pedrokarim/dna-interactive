@@ -16,6 +16,7 @@ import { DnaItemPicker, type DnaPickerItem } from "@/components/dna/ItemPicker";
 import { DnaPanel } from "@/components/dna/Panel";
 import { DnaPriorityList, type PriorityItem } from "@/components/dna/PriorityList";
 import { DnaSectionLabel } from "@/components/dna/SectionLabel";
+import { DnaSwitch } from "@/components/dna/Switch";
 import { DnaSegmented } from "@/components/dna/Segmented";
 import { DnaSlotRow, type SlotEntry } from "@/components/dna/SlotRow";
 import { useDialogA11y } from "@/components/dna/useDialogA11y";
@@ -193,6 +194,8 @@ export function CommunityBuildBuilderClient({
   const [title, setTitle] = useState("");
   const [note, setNote] = useState("");
   const [meleeWeapons, setMeleeWeapons] = useState<SlotEntry[]>([]);
+  // Armes dont on inclut le build de Demon Wedges canonique (toggle par arme).
+  const [wedgeWeaponIds, setWedgeWeaponIds] = useState<Set<string>>(new Set());
   const [rangedWeapons, setRangedWeapons] = useState<SlotEntry[]>([]);
   const [genimons, setGenimons] = useState<SlotEntry[]>([]);
   const [demonSlots, setDemonSlots] = useState<WedgeSlotData[]>(() => emptyWedgeSlots(8));
@@ -247,8 +250,8 @@ export function CommunityBuildBuilderClient({
   const payload = useMemo<CommunityBuildPayload>(
     () => ({
       weapons: {
-        melee: entriesToPayload(meleeWeapons),
-        ranged: entriesToPayload(rangedWeapons),
+        melee: meleeWeapons.map((e) => ({ itemId: e.item.id, rank: e.rank, ...(wedgeWeaponIds.has(e.item.id) ? { withWedges: true } : {}) })),
+        ranged: rangedWeapons.map((e) => ({ itemId: e.item.id, rank: e.rank, ...(wedgeWeaponIds.has(e.item.id) ? { withWedges: true } : {}) })),
       },
       demonWedges: {
         slots: demonSlots
@@ -283,6 +286,7 @@ export function CommunityBuildBuilderClient({
       genimons,
       meleeWeapons,
       rangedWeapons,
+      wedgeWeaponIds,
       skillPriority,
       statsPriority,
       team,
@@ -306,6 +310,13 @@ export function CommunityBuildBuilderClient({
           return item ? { item, rank: entry.rank } : null;
         })
         .filter((entry): entry is SlotEntry => entry !== null),
+    );
+    setWedgeWeaponIds(
+      new Set(
+        [...next.weapons.melee, ...next.weapons.ranged]
+          .filter((entry) => entry.withWedges)
+          .map((entry) => entry.itemId),
+      ),
     );
     setGenimons(
       next.genimon
@@ -983,6 +994,35 @@ export function CommunityBuildBuilderClient({
               <DnaSlotRow entries={rangedWeapons} pool={rangedPool} max={3} label={t("pickRangedWeapon")} onChange={setRangedWeapons} />
             </div>
           </div>
+          {(() => {
+            const buildable = new Set(options.weaponBuildIds);
+            const selected = [...meleeWeapons, ...rangedWeapons].filter((e) => buildable.has(e.item.id));
+            if (selected.length === 0) return null;
+            return (
+              <div className="mt-5 border-t border-white/8 pt-4">
+                <p className="mb-2 font-caps text-[0.62rem] uppercase tracking-[0.16em] text-muted">{t("weaponWedgesToggle")}</p>
+                <div className="flex flex-col gap-2">
+                  {selected.map((e) => (
+                    <div key={e.item.id} className="flex items-center justify-between gap-3 text-sm text-parch">
+                      <span className="min-w-0 truncate">{e.item.name}</span>
+                      <DnaSwitch
+                        checked={wedgeWeaponIds.has(e.item.id)}
+                        aria-label={e.item.name}
+                        onChange={(on) =>
+                          setWedgeWeaponIds((prev) => {
+                            const next = new Set(prev);
+                            if (on) next.add(e.item.id);
+                            else next.delete(e.item.id);
+                            return next;
+                          })
+                        }
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })()}
         </DnaPanel>
 
         <DnaPanel className="p-5 md:p-6">

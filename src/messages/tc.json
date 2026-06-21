@@ -551,6 +551,7 @@
     "nextAt": "at {time} your time"
   },
   "builder": {
+    "weaponWedgesToggle": "包含武器的惡魔楔組合",
     "noCharacters": "沒有可用的角色。",
     "character": "角色",
     "element": "元素",
