@@ -410,6 +410,7 @@ export default function DraftsGridClient({
               <select
                 value=""
                 onChange={(event) => addLanguage(event.target.value)}
+                aria-label={tc('addLanguage')}
                 className="rounded-sm border border-white/10 bg-panel px-2 py-1 text-xs text-parch outline-none"
               >
                 <option value="">{tc('addLanguage')}</option>
@@ -459,6 +460,7 @@ export default function DraftsGridClient({
             <select
               value={sortMode}
               onChange={(event) => updateFilters({ sort: event.target.value as DraftSortMode, page: 1 })}
+              aria-label={tc('sort')}
               className="w-full rounded-sm border border-white/10 bg-panel px-2 py-1.5 text-sm text-parch"
             >
               <option value="id">{t('sortById')}</option>
@@ -866,6 +868,7 @@ export default function DraftsGridClient({
               <select
                 value={pageSize}
                 onChange={(event) => updateFilters({ size: Number(event.target.value), page: 1 })}
+                aria-label="Par page"
                 className="rounded-sm border border-white/10 bg-panel px-2 py-1 text-xs text-parch"
               >
                 {PAGE_SIZE_VALUES.map((value) => (

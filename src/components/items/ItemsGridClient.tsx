@@ -752,6 +752,7 @@ export default function ItemsGridClient({
               <select
                 value=""
                 onChange={(event) => addLanguage(event.target.value)}
+                aria-label={tc('addLanguage')}
                 className="rounded-sm border border-white/10 bg-panel px-2 py-1 text-xs text-parch outline-none"
               >
                 <option value="">{tc('addLanguage')}</option>
@@ -778,6 +779,7 @@ export default function ItemsGridClient({
                 onChange={(event) => {
                   updateQueryFilters({ rarity: event.target.value, page: 1 });
                 }}
+                aria-label={tc('rarity')}
                 className="w-full rounded-sm border border-white/10 bg-panel px-2 py-1.5 text-sm text-parch"
               >
                 <option value="all">{tc('allFeminine')}</option>
@@ -801,6 +803,7 @@ export default function ItemsGridClient({
                 onChange={(event) => {
                   updateQueryFilters({ series: event.target.value, page: 1 });
                 }}
+                aria-label="Série"
                 className="w-full rounded-sm border border-white/10 bg-panel px-2 py-1.5 text-sm text-parch"
               >
                 <option value="all">{tc('allFeminine')}</option>
@@ -824,6 +827,7 @@ export default function ItemsGridClient({
                 onChange={(event) => {
                   updateQueryFilters({ compat: event.target.value, page: 1 });
                 }}
+                aria-label="Compatibilité"
                 className="w-full rounded-sm border border-white/10 bg-panel px-2 py-1.5 text-sm text-parch"
               >
                 <option value="all">{tc('all')}</option>
@@ -847,6 +851,7 @@ export default function ItemsGridClient({
                 onChange={(event) => {
                   updateQueryFilters({ polarity: event.target.value, page: 1 });
                 }}
+                aria-label={tc('polarity')}
                 className="w-full rounded-sm border border-white/10 bg-panel px-2 py-1.5 text-sm text-parch"
               >
                 <option value="all">{tc('allFeminine')}</option>
@@ -870,6 +875,7 @@ export default function ItemsGridClient({
                     page: 1,
                   });
                 }}
+                aria-label={tc('archive')}
                 className="w-full rounded-sm border border-white/10 bg-panel px-2 py-1.5 text-sm text-parch"
               >
                 <option value="all">{tc('allFeminine')}</option>
@@ -890,6 +896,7 @@ export default function ItemsGridClient({
                     page: 1,
                   });
                 }}
+                aria-label={t('newBadge')}
                 className="w-full rounded-sm border border-white/10 bg-panel px-2 py-1.5 text-sm text-parch"
               >
                 <option value="all">{tc('all')}</option>
@@ -906,6 +913,7 @@ export default function ItemsGridClient({
                 onChange={(event) => {
                   updateQueryFilters({ itype: event.target.value, page: 1 });
                 }}
+                aria-label={tc('type')}
                 className="w-full rounded-sm border border-white/10 bg-panel px-2 py-1.5 text-sm text-parch"
               >
                 <option value="all">{tc('all')}</option>
@@ -926,6 +934,7 @@ export default function ItemsGridClient({
                 onChange={(event) => {
                   updateQueryFilters({ isub: event.target.value, page: 1 });
                 }}
+                aria-label={tc('subType')}
                 className="w-full rounded-sm border border-white/10 bg-panel px-2 py-1.5 text-sm text-parch"
               >
                 <option value="all">{tc('all')}</option>
@@ -948,6 +957,7 @@ export default function ItemsGridClient({
                   page: 1,
                 });
               }}
+              aria-label={tc('sort')}
               className="w-full rounded-sm border border-white/10 bg-panel px-2 py-1.5 text-sm text-parch"
             >
               <option value="id">{t('sortById')}</option>
@@ -1017,6 +1027,7 @@ export default function ItemsGridClient({
                       page: 1,
                     });
                   }}
+                  aria-label={tc('archive')}
                   className="w-full rounded-sm border border-white/10 bg-panel px-2 py-1.5 text-sm text-parch"
                 >
                   <option value="all">{tc('allFeminine')}</option>
@@ -1035,6 +1046,7 @@ export default function ItemsGridClient({
                     page: 1,
                   });
                 }}
+                aria-label={tc('sort')}
                 className="w-full rounded-sm border border-white/10 bg-panel px-2 py-1.5 text-sm text-parch"
               >
                 <option value="id">{t('sortById')}</option>
@@ -1521,6 +1533,7 @@ export default function ItemsGridClient({
                     page: 1,
                   });
                 }}
+                aria-label="Par page"
                 className="rounded-sm border border-white/10 bg-panel px-2 py-1 text-xs text-parch"
               >
                 <option value={12}>12</option>

@@ -580,6 +580,7 @@ export default function MapPage() {
                       console.log('🔄 Changement de région vers:', newMapId);
                       setSelectedMapId(newMapId);
                     }}
+                    aria-label={t('region')}
                     className="w-full rounded-md border border-white/20 bg-gradient-to-b from-panel/60 to-ink/70 px-3 py-2 font-sans text-sm text-parch outline-none transition-colors focus:border-gold"
                   >
                     {mapIndex.map((map) => (

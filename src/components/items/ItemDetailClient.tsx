@@ -504,6 +504,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [] }:
             onChange={(event) => {
               setSelectedLanguage(event.target.value);
             }}
+            aria-label="Langue"
             className="bg-transparent text-sm text-parch outline-none"
           >
             {category.availableLanguages.map((code) => (

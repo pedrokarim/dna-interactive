@@ -233,6 +233,7 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
             <select
               value={selectedLanguage}
               onChange={(event) => setSelectedLanguage(event.target.value)}
+              aria-label="Langue"
               className="bg-transparent text-sm text-parch outline-none"
             >
               {availableLanguages.map((code) => (

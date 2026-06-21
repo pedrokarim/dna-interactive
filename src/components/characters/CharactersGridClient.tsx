@@ -469,6 +469,7 @@ export default function CharactersGridClient({
               <select
                 value=""
                 onChange={(event) => addLanguage(event.target.value)}
+                aria-label={tc('addLanguage')}
                 className="rounded-sm border border-white/10 bg-panel px-2 py-1 text-xs text-parch outline-none"
               >
                 <option value="">{tc('addLanguage')}</option>
@@ -525,6 +526,7 @@ export default function CharactersGridClient({
                   page: 1,
                 })
               }
+              aria-label={tc('sort')}
               className="w-full rounded-sm border border-white/10 bg-panel px-2 py-1.5 text-sm text-parch"
             >
               <option value="default">{t('sortDefault')}</option>
@@ -1036,6 +1038,7 @@ export default function CharactersGridClient({
                     page: 1,
                   })
                 }
+                aria-label="Par page"
                 className="rounded-sm border border-white/10 bg-panel px-2 py-1 text-xs text-parch"
               >
                 <option value={12}>12</option>
