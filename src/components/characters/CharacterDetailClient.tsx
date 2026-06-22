@@ -631,7 +631,7 @@ function DemonWedgeCenterSlot({
   );
 }
 
-function DemonWedgeLayout({
+export function DemonWedgeLayout({
   slots,
   centerItem,
   affinity,

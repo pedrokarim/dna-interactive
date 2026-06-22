@@ -104,7 +104,6 @@ export function WedgeSlotCell({
   const draggable = !readOnly && Boolean(slot.item);
 
   return (
-    <div className="group relative shrink-0">
     <button
       type="button"
       draggable={draggable}
@@ -152,19 +151,5 @@ export function WedgeSlotCell({
         </span>
       )}
     </button>
-      {slot.item && (
-        <div className="pointer-events-none absolute left-1/2 top-full z-50 mt-2 hidden w-52 -translate-x-1/2 border border-white/10 bg-ink/95 p-2.5 text-left shadow-[0_20px_40px_rgba(0,0,0,0.65)] group-hover:block">
-          <p className="text-sm font-medium text-parch">{slot.item.name}</p>
-          <div className="mt-1.5 flex flex-wrap gap-1 text-[11px]">
-            {slot.item.rarity != null && (
-              <span className="rounded-sm border border-gold/40 bg-gold/10 px-2 py-0.5 text-gold">{slot.item.rarity}★</span>
-            )}
-            {slot.item.element && (
-              <span className="rounded-sm border border-white/10 px-2 py-0.5 text-parch">{slot.item.element}</span>
-            )}
-          </div>
-        </div>
-      )}
-    </div>
   );
 }

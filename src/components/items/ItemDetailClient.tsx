@@ -22,8 +22,7 @@ import { DnaStatRow } from "@/components/dna/StatRow";
 import { DnaStars } from "@/components/dna/RarityStars";
 import { DnaTag } from "@/components/dna/Tag";
 import { ELEMENTS, type ElementKey } from "@/components/dna/elements";
-import { DnaDemonWedgeEditor, type WedgeSlotData } from "@/components/dna/DemonWedgeEditor";
-import type { DnaPickerItem } from "@/components/dna/ItemPicker";
+import { DemonWedgeLayout } from "@/components/characters/CharacterDetailClient";
 import { WeaponFusionTrack } from "@/components/items/WeaponFusionTrack";
 import type { WeaponBuild } from "@/lib/items/weapon-builds";
 
@@ -471,6 +470,11 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
 
   const elHex = weaponElement?.hex ?? elementHexFromKey(elementalAffinity?.key);
   const tinted = elHex !== GOLD_HEX;
+  // Élément utilisé pour teinter le board de Demon Wedges de l'arme.
+  const wedgeElementKey =
+    weaponBuild?.demonWedges.affinity ??
+    (typeof item.fields.Element === "string" ? item.fields.Element : null) ??
+    "Water";
   const displayName = translation.modName ?? `${category.displayName} ${item.modId}`;
   const subtitle = translation.demonWedgeName
     ? `${category.displayName} ${translation.demonWedgeName}`
@@ -730,42 +734,17 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
       {isWeaponsCategory && weaponBuild && weaponBuild.demonWedges.slots.length > 0 ? (
         <DnaPanel className="p-4 md:p-5">
           <DnaSectionLabel>{t("weaponBuildTitle")}</DnaSectionLabel>
-          <div className="mt-4 flex flex-col items-center gap-3">
-            <DnaDemonWedgeEditor
-              readOnly
-              scale="xl"
-              accentHex={
-                weaponBuild.demonWedges.affinity && weaponBuild.demonWedges.affinity in ELEMENTS
-                  ? ELEMENTS[weaponBuild.demonWedges.affinity as ElementKey].hex
-                  : undefined
-              }
-              centerItem={
-                weaponBuild.demonWedges.affinity && weaponBuild.demonWedges.affinity in ELEMENTS
-                  ? {
-                      id: "affinity",
-                      name: ELEMENTS[weaponBuild.demonWedges.affinity as ElementKey].label,
-                      icon: ELEMENTS[weaponBuild.demonWedges.affinity as ElementKey].icon,
-                    }
-                  : null
-              }
-              slots={weaponBuild.demonWedges.slots.map<WedgeSlotData>((s) => ({
-                position: s.position,
-                item: s.item
-                  ? ({
-                      id: s.item.itemId,
-                      name: s.item.name,
-                      icon: s.item.icon,
-                      rarity: s.item.rarity,
-                      element: s.item.element && s.item.element in ELEMENTS ? (s.item.element as ElementKey) : null,
-                      polarity: s.item.polarity,
-                    } satisfies DnaPickerItem)
-                  : null,
-                track: s.track,
-              }))}
+          <div className="mt-5">
+            <DemonWedgeLayout
+              slots={weaponBuild.demonWedges.slots}
+              centerItem={null}
+              affinity={{}}
+              elementKey={wedgeElementKey}
+              lang={selectedLanguage}
             />
             {(() => {
               const note = weaponBuild.demonWedges.note?.[selectedLanguage] ?? weaponBuild.demonWedges.note?.FR ?? weaponBuild.demonWedges.note?.EN;
-              return note ? <p className="max-w-prose text-center text-xs text-muted-2">{note}</p> : null;
+              return note ? <p className="mx-auto mt-4 max-w-prose text-center text-xs text-muted-2">{note}</p> : null;
             })()}
           </div>
         </DnaPanel>
