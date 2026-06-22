@@ -733,7 +733,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
           <div className="mt-4 flex flex-col items-center gap-3">
             <DnaDemonWedgeEditor
               readOnly
-              scale="md"
+              scale="xl"
               accentHex={
                 weaponBuild.demonWedges.affinity && weaponBuild.demonWedges.affinity in ELEMENTS
                   ? ELEMENTS[weaponBuild.demonWedges.affinity as ElementKey].hex
