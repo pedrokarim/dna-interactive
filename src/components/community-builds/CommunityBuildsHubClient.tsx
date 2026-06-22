@@ -67,9 +67,9 @@ function isPresent<T>(value: T | null | undefined): value is T {
   return value != null;
 }
 
-function buildCharacterHref(character: BuilderCharacterOption | undefined, buildId: string): string {
-  const slug = character?.slug;
-  return slug ? `${NAVIGATION.characters}/${slug}?tab=build&communityBuildId=${buildId}` : NAVIGATION.characters;
+function buildCharacterHref(_character: BuilderCharacterOption | undefined, buildId: string): string {
+  // Page dédiée par build (plus ergonomique qu'une modale sur la fiche perso).
+  return `${NAVIGATION.builds}/${buildId}`;
 }
 
 function getPreviewItems(build: CommunityBuildListItem, lang: string) {

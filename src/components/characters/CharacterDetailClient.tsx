@@ -98,7 +98,7 @@ type CharacterDetailClientProps = {
   skillSet?: CharacterSkillSet | null;
 };
 
-type CommunityBuildListItem = {
+export type CommunityBuildListItem = {
   id: string;
   userId: string;
   characterId: string;
@@ -357,7 +357,7 @@ function resolveSkillNamesByIndex(character: CharacterRecord, lang: string): Rec
   return map;
 }
 
-function communityBuildToDisplayBuild(
+export function communityBuildToDisplayBuild(
   build: CommunityBuildListItem,
   lang: string,
   character: CharacterRecord,
@@ -1635,7 +1635,7 @@ function CommunityBuildPreviewModal({
   );
 }
 
-function BuildTabContent({
+export function BuildTabContent({
   builds,
   character,
   characterElement,
