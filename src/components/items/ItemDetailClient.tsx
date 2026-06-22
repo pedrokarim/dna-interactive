@@ -741,6 +741,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
               affinity={{}}
               elementKey={wedgeElementKey}
               lang={selectedLanguage}
+              showTrackAdjust
             />
             {(() => {
               const note = weaponBuild.demonWedges.note?.[selectedLanguage] ?? weaponBuild.demonWedges.note?.FR ?? weaponBuild.demonWedges.note?.EN;
