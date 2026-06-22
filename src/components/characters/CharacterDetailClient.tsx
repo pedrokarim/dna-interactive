@@ -1036,16 +1036,20 @@ function QuickBuildAccordion({
   character,
   build,
   lang,
+  collapsible = true,
 }: {
   character: CharacterRecord;
   build: CharacterBuild;
   lang: string;
+  /** false = carte toujours affichée (pas d'accordéon), ex. page dédiée /builds/[id]. */
+  collapsible?: boolean;
 }) {
   const tcb = useTranslations("communityBuilds");
   const [open, setOpen] = useQueryState(
     "build",
     parseAsBoolean.withDefault(false).withOptions({ clearOnDefault: true }),
   );
+  const isOpen = collapsible ? open : true;
   const cardRef = useRef<HTMLDivElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [downloading, setDownloading] = useState(false);
@@ -1087,9 +1091,9 @@ function QuickBuildAccordion({
     >
       <button
         type="button"
-        onClick={() => setOpen((v) => !v)}
-        className="flex w-full items-center justify-between gap-3 px-4 py-3 text-left transition-colors hover:bg-gold/10"
-        aria-expanded={open}
+        onClick={collapsible ? () => setOpen((v) => !v) : undefined}
+        className={`flex w-full items-center justify-between gap-3 px-4 py-3 text-left transition-colors ${collapsible ? "hover:bg-gold/10" : "cursor-default"}`}
+        aria-expanded={collapsible ? open : undefined}
         aria-controls="quick-build-panel"
       >
         <span className="flex items-center gap-2 text-sm font-medium text-gold">
@@ -1097,7 +1101,7 @@ function QuickBuildAccordion({
           {tcb("shareableCard")}
         </span>
         <div className="flex items-center gap-3">
-          {open && (
+          {isOpen && (
             <span
               role="button"
               tabIndex={0}
@@ -1108,12 +1112,14 @@ function QuickBuildAccordion({
               {downloading ? tcb("exporting") : tcb("downloadPng")}
             </span>
           )}
-          <ChevronDown
-            className={`h-4 w-4 text-gold transition-transform ${open ? "rotate-180" : ""}`}
-          />
+          {collapsible && (
+            <ChevronDown
+              className={`h-4 w-4 text-gold transition-transform ${open ? "rotate-180" : ""}`}
+            />
+          )}
         </div>
       </button>
-      {open && (
+      {isOpen && (
         <div
           id="quick-build-panel"
           className="overflow-auto bg-ink/40 p-3 md:p-4"
@@ -1644,6 +1650,7 @@ export function BuildTabContent({
   skillIcons,
   showCommunityBuilds = true,
   showQuickBuildCard = true,
+  quickBuildCollapsible = true,
   officialHeader = false,
 }: {
   builds: CharacterBuild[];
@@ -1654,6 +1661,8 @@ export function BuildTabContent({
   skillIcons?: { skill1: { publicPath: string | null }; skill2: { publicPath: string | null }; skill3: { publicPath: string | null } };
   showCommunityBuilds?: boolean;
   showQuickBuildCard?: boolean;
+  /** false = carte partageable affichée directement (pas d'accordéon). */
+  quickBuildCollapsible?: boolean;
   /** Affiche l'en-tête de tier « Officiel » au-dessus du build curé (fiche perso). */
   officialHeader?: boolean;
 }) {
@@ -1731,6 +1740,7 @@ export function BuildTabContent({
           character={character}
           build={build}
           lang={selectedLanguage}
+          collapsible={quickBuildCollapsible}
         />
       ) : null}
 

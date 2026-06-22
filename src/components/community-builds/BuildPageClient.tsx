@@ -228,6 +228,7 @@ export function BuildPageClient({ build, character, characterElement, lang }: Pr
         selectedLanguage={lang}
         showCommunityBuilds={false}
         showQuickBuildCard={true}
+        quickBuildCollapsible={false}
         skillIcons={character.skillIcons}
       />
     </div>
