@@ -1,0 +1,53 @@
+{
+  "weaponId": "weapons-20405",
+  "demonWedges": {
+    "slots": [
+      {
+        "position": 1,
+        "itemId": "mods-53004",
+        "track": null
+      },
+      {
+        "position": 2,
+        "itemId": "mods-53001",
+        "track": null
+      },
+      {
+        "position": 3,
+        "itemId": "mods-53103",
+        "track": null
+      },
+      {
+        "position": 4,
+        "itemId": "mods-53007",
+        "track": null
+      },
+      {
+        "position": 5,
+        "itemId": "mods-43002",
+        "track": null
+      },
+      {
+        "position": 6,
+        "itemId": "mods-43003",
+        "track": null
+      },
+      {
+        "position": 7,
+        "itemId": "mods-43301",
+        "track": null
+      },
+      {
+        "position": 8,
+        "itemId": "mods-43401",
+        "track": null
+      }
+    ],
+    "affinity": null,
+    "note": {
+      "FR": "Build de Demon Wedges recommandé pour Blast Artistry.",
+      "EN": "Recommended Demon Wedge build for Blast Artistry."
+    }
+  },
+  "note": {}
+}

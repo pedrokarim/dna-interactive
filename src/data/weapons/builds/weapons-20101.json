@@ -1,0 +1,53 @@
+{
+  "weaponId": "weapons-20101",
+  "demonWedges": {
+    "slots": [
+      {
+        "position": 1,
+        "itemId": "mods-53004",
+        "track": null
+      },
+      {
+        "position": 2,
+        "itemId": "mods-53005",
+        "track": null
+      },
+      {
+        "position": 3,
+        "itemId": "mods-53007",
+        "track": null
+      },
+      {
+        "position": 4,
+        "itemId": "mods-53008",
+        "track": null
+      },
+      {
+        "position": 5,
+        "itemId": "mods-53001",
+        "track": null
+      },
+      {
+        "position": 6,
+        "itemId": "mods-53101",
+        "track": null
+      },
+      {
+        "position": 7,
+        "itemId": "mods-43002",
+        "track": null
+      },
+      {
+        "position": 8,
+        "itemId": "mods-43006",
+        "track": null
+      }
+    ],
+    "affinity": null,
+    "note": {
+      "FR": "Build de Demon Wedges recommandé pour Entropic Singularity.",
+      "EN": "Recommended Demon Wedge build for Entropic Singularity."
+    }
+  },
+  "note": {}
+}

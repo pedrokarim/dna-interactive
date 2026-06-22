@@ -1,0 +1,53 @@
+{
+  "weaponId": "weapons-10402",
+  "demonWedges": {
+    "slots": [
+      {
+        "position": 1,
+        "itemId": "mods-104001",
+        "track": null
+      },
+      {
+        "position": 2,
+        "itemId": "mods-52007",
+        "track": null
+      },
+      {
+        "position": 3,
+        "itemId": "mods-52001",
+        "track": null
+      },
+      {
+        "position": 4,
+        "itemId": "mods-52004",
+        "track": null
+      },
+      {
+        "position": 5,
+        "itemId": "mods-52005",
+        "track": null
+      },
+      {
+        "position": 6,
+        "itemId": "mods-52103",
+        "track": null
+      },
+      {
+        "position": 7,
+        "itemId": "mods-42403",
+        "track": null
+      },
+      {
+        "position": 8,
+        "itemId": "mods-42003",
+        "track": null
+      }
+    ],
+    "affinity": null,
+    "note": {
+      "FR": "Build de Demon Wedges recommandé pour Aureate Yore.",
+      "EN": "Recommended Demon Wedge build for Aureate Yore."
+    }
+  },
+  "note": {}
+}
