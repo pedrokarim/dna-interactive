@@ -9,6 +9,32 @@ export interface ChangelogEntry {
 
 export const changelogData: ChangelogEntry[] = [
   {
+    date: "2026-06-25",
+    version: "2.1.0",
+    type: "feature",
+    title: "Builder de builds communautaires : créez, partagez et votez",
+    description:
+      "Nouvelle plateforme communautaire : composez vos propres builds (personnage, Demon Wedges, Genimon, arme, competences et equipe), publiez-les via votre compte Discord, puis explorez et votez les builds des autres joueurs. Builds de Demon Wedges pour les 65 armes, partage de cartes, et un gros chantier d'accessibilite et de traduction.",
+    items: [
+      "🛠️ Nouveau Builder : composez un build complet (Demon Wedges, Genimon, arme, competences, equipe de 3) et publiez-le",
+      "🔐 Connexion Discord pour publier et voter ; jusqu'a 3 builds par personnage",
+      "🌐 Hub communautaire /builds : recherche, filtres (personnage, element, tags), tri et pagination",
+      "📄 Page dediee et partageable pour chaque build (/builds/[id])",
+      "👍 Votes et classement des builds de la communaute",
+      "🏷️ Tags de build : Solo, Equipe, Boss, F2P, Endgame, Debutant",
+      "👥 Selecteur d'equipe recommandee (jusqu'a 3 personnages avec role)",
+      "🔗 Partage de build : lien auto-portant + X / Facebook / Reddit + partage natif",
+      "🖼️ Export PNG de la carte de build",
+      "🥇 Tier « Officiel » distinct, au-dessus des alternatives de la communaute",
+      "💾 Brouillons hybrides : sauvegarde locale puis reconciliation avec le serveur a la connexion",
+      "⚔️ Builds de Demon Wedges d'arme pour les 65 armes, visibles sur la fiche d'arme et integrables au build (toggle)",
+      "🎴 Tooltips enrichis au survol des Demon Wedges (nom, rarete, element)",
+      "🔗 Etat des filtres dans l'URL (liens partageables et navigation arriere/avant)",
+      "♿ Accessibilite renforcee : respect global de « reduire les animations », focus visible, pieges de focus sur les fenetres, labels ARIA",
+      "📜 Page Confidentialite / CGU et suppression de compte (RGPD)",
+    ],
+  },
+  {
     date: "2026-06-03",
     version: "2.0.0",
     type: "feature",
