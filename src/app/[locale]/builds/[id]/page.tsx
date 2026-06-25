@@ -116,9 +116,17 @@ export async function generateMetadata({ params }: RouteParams): Promise<Metadat
   if (!build) return { title: "Build introuvable" };
   const character = getCharacterById(build.characterId);
   const charName = character?.element ? character.internalName : "";
+  const description =
+    build.note ?? `Build communautaire Duet Night Abyss${charName ? ` pour ${charName}` : ""}.`;
+  // og:title/og:description doivent être explicitement repris ici, sinon ils
+  // héritent du bloc openGraph générique du layout racine (les réseaux
+  // afficheraient le titre du site au lieu du titre du build). L'image OG
+  // dynamique reste fournie par opengraph-image.tsx.
   return {
     title: build.title,
-    description: build.note ?? `Build communautaire Duet Night Abyss${charName ? ` pour ${charName}` : ""}.`,
+    description,
+    openGraph: { title: build.title, description },
+    twitter: { title: build.title, description },
   };
 }
 
