@@ -551,7 +551,9 @@
     "nextAt": "à {time} chez vous"
   },
   "builder": {
-    "weaponWedgesToggle": "Inclure le build de Demon Wedges de l'arme",
+    "weaponWedgesToggle": "Configurer les Demon Wedges des armes",
+    "pickWeaponWedge": "Choisir un Demon Wedge d'arme",
+    "pickAffinity": "Choisir l'affinité",
     "noCharacters": "Aucun personnage disponible.",
     "character": "Personnage",
     "element": "Élément",
@@ -561,6 +563,7 @@
     "weapons": "Armes",
     "melee": "Mêlée",
     "ranged": "Distance",
+    "filterByCharacter": "Filtrer selon le personnage",
     "pickMeleeWeapon": "Choisir une arme de mêlée",
     "pickRangedWeapon": "Choisir une arme à distance",
     "demonWedges": "Demon Wedges",

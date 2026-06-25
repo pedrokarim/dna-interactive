@@ -20,7 +20,7 @@ import { DnaSwitch } from "@/components/dna/Switch";
 import { DnaSegmented } from "@/components/dna/Segmented";
 import { DnaSlotRow, type SlotEntry } from "@/components/dna/SlotRow";
 import { useDialogA11y } from "@/components/dna/useDialogA11y";
-import { ELEMENTS, type ElementKey } from "@/components/dna/elements";
+import { ELEMENTS, ELEMENT_KEYS, type ElementKey } from "@/components/dna/elements";
 import type { WedgeSlotData } from "@/components/dna/_wedge";
 import {
   createCommunityBuildExport,
@@ -47,8 +47,14 @@ type EditingTarget =
   | { kind: "demon"; position: number }
   | { kind: "center" }
   | { kind: "consonance"; position: number }
+  | { kind: "weaponWedge"; weaponId: string; weaponClass: "melee" | "ranged"; position: number }
+  | { kind: "weaponAffinity"; weaponId: string }
   | { kind: "team" }
   | null;
+
+// Configuration de Demon Wedges propre à une arme dans le builder (8 cases + une
+// affinité d'élément). Indépendante du build canonique de la fiche arme.
+type WeaponWedgeConfig = { slots: WedgeSlotData[]; affinity: ElementKey | null };
 
 const TEAM_ROLES = ["DPS", "Sub-DPS", "Support", "Heal", "Tank"] as const;
 type TeamRole = (typeof TEAM_ROLES)[number];
@@ -130,6 +136,24 @@ function entriesToPayload(entries: SlotEntry[]) {
   return entries.map((entry) => ({ itemId: entry.item.id, rank: entry.rank }));
 }
 
+function weaponPayloadEntry(entry: SlotEntry, config: WeaponWedgeConfig | undefined) {
+  const base = { itemId: entry.item.id, rank: entry.rank };
+  if (!config) return base;
+  return {
+    ...base,
+    demonWedges: {
+      slots: config.slots
+        .filter((slot) => slot.item)
+        .map((slot) => ({
+          position: slot.position,
+          itemId: slot.item!.id,
+          track: normalizeTrack(slot.track ?? slot.item!.polarity),
+        })),
+      affinity: config.affinity,
+    },
+  };
+}
+
 function itemById(pool: DnaPickerItem[], id: string | null | undefined): DnaPickerItem | null {
   if (!id) return null;
   return pool.find((item) => item.id === id) ?? null;
@@ -138,6 +162,24 @@ function itemById(pool: DnaPickerItem[], id: string | null | undefined): DnaPick
 function asElementKey(value: string | null | undefined): ElementKey | null {
   return value && value in ELEMENTS ? (value as ElementKey) : null;
 }
+
+// Le « centre » d'une arme n'est pas un wedge mais une affinité (élément) : on
+// synthétise un item-picker porteur de l'icône d'élément pour réutiliser
+// DnaDemonWedgeEditor tel quel.
+function affinityCenterItem(affinity: ElementKey | null): DnaPickerItem | null {
+  if (!affinity) return null;
+  return { id: `affinity-${affinity}`, name: ELEMENTS[affinity].label, icon: ELEMENTS[affinity].icon, rarity: null, element: affinity, polarity: null };
+}
+
+// Choix d'affinité = un mini-picker des 6 éléments (id = clé d'élément).
+const ELEMENT_PICKER_ITEMS: DnaPickerItem[] = ELEMENT_KEYS.map((key) => ({
+  id: key,
+  name: ELEMENTS[key].label,
+  icon: ELEMENTS[key].icon,
+  rarity: null,
+  element: key,
+  polarity: null,
+}));
 
 export function CommunityBuildBuilderClient({
   options,
@@ -178,24 +220,27 @@ export function CommunityBuildBuilderClient({
     if (skills.length > 0) return skills.map((s) => ({ id: `skill-${s.index}`, label: s.name }));
     return [1, 2, 3].map((i) => ({ id: `skill-${i}`, label: t(`skillLabels.skill-${i}`) }));
   }, [selectedCharacter, t]);
-  // Pools d'armes filtrés selon les types du perso (weaponTags) ; "Almighty" = toutes.
+  // Filtre optionnel des armes selon les types du perso (weaponTags). Désactivé
+  // par défaut : on propose TOUTES les armes ; le toggle restreint au perso.
+  const [filterWeaponsByCharacter, setFilterWeaponsByCharacter] = useState(false);
   const { meleePool, rangedPool } = useMemo(() => {
     const tags = selectedCharacter?.weapons ?? [];
     const almighty = tags.includes("Almighty");
     const allowed = new Set(tags);
-    const ok = (w: DnaPickerItem) => almighty || !w.weaponType || allowed.has(w.weaponType);
+    const ok = (w: DnaPickerItem) =>
+      !filterWeaponsByCharacter || almighty || !w.weaponType || allowed.has(w.weaponType);
     return {
       meleePool: options.weapons.filter((w) => w.weaponClass === "melee" && ok(w)),
       rangedPool: options.weapons.filter((w) => w.weaponClass === "ranged" && ok(w)),
     };
-  }, [options.weapons, selectedCharacter]);
+  }, [options.weapons, selectedCharacter, filterWeaponsByCharacter]);
   const [element, setElement] = useState<ElementKey | null>(selectedCharacter?.elements[0]?.key ?? null);
 
   const [title, setTitle] = useState("");
   const [note, setNote] = useState("");
   const [meleeWeapons, setMeleeWeapons] = useState<SlotEntry[]>([]);
-  // Armes dont on inclut le build de Demon Wedges canonique (toggle par arme).
-  const [wedgeWeaponIds, setWedgeWeaponIds] = useState<Set<string>>(new Set());
+  // DW configurés par arme (toggle opt-in → éditeur propre au build).
+  const [weaponWedges, setWeaponWedges] = useState<Record<string, WeaponWedgeConfig>>({});
   const [rangedWeapons, setRangedWeapons] = useState<SlotEntry[]>([]);
   const [genimons, setGenimons] = useState<SlotEntry[]>([]);
   const [demonSlots, setDemonSlots] = useState<WedgeSlotData[]>(() => emptyWedgeSlots(8));
@@ -250,8 +295,8 @@ export function CommunityBuildBuilderClient({
   const payload = useMemo<CommunityBuildPayload>(
     () => ({
       weapons: {
-        melee: meleeWeapons.map((e) => ({ itemId: e.item.id, rank: e.rank, ...(wedgeWeaponIds.has(e.item.id) ? { withWedges: true } : {}) })),
-        ranged: rangedWeapons.map((e) => ({ itemId: e.item.id, rank: e.rank, ...(wedgeWeaponIds.has(e.item.id) ? { withWedges: true } : {}) })),
+        melee: meleeWeapons.map((e) => weaponPayloadEntry(e, weaponWedges[e.item.id])),
+        ranged: rangedWeapons.map((e) => weaponPayloadEntry(e, weaponWedges[e.item.id])),
       },
       demonWedges: {
         slots: demonSlots
@@ -286,7 +331,7 @@ export function CommunityBuildBuilderClient({
       genimons,
       meleeWeapons,
       rangedWeapons,
-      wedgeWeaponIds,
+      weaponWedges,
       skillPriority,
       statsPriority,
       team,
@@ -311,13 +356,17 @@ export function CommunityBuildBuilderClient({
         })
         .filter((entry): entry is SlotEntry => entry !== null),
     );
-    setWedgeWeaponIds(
-      new Set(
-        [...next.weapons.melee, ...next.weapons.ranged]
-          .filter((entry) => entry.withWedges)
-          .map((entry) => entry.itemId),
-      ),
-    );
+    const nextWeaponWedges: Record<string, WeaponWedgeConfig> = {};
+    for (const entry of [...next.weapons.melee, ...next.weapons.ranged]) {
+      if (!entry.demonWedges) continue;
+      const slots = emptyWedgeSlots(8).map((slot) => {
+        const found = entry.demonWedges!.slots.find((s) => s.position === slot.position);
+        const item = itemById(options.mods, found?.itemId);
+        return found && item ? { position: slot.position, item, track: normalizeTrack(found.track ?? item.polarity) } : slot;
+      });
+      nextWeaponWedges[entry.itemId] = { slots, affinity: asElementKey(entry.demonWedges.affinity) };
+    }
+    setWeaponWedges(nextWeaponWedges);
     setGenimons(
       next.genimon
         .map((entry) => {
@@ -370,6 +419,7 @@ export function CommunityBuildBuilderClient({
     setNote("");
     setMeleeWeapons([]);
     setRangedWeapons([]);
+    setWeaponWedges({});
     setGenimons([]);
     setDemonSlots(emptyWedgeSlots(8));
     setCenterItem(null);
@@ -674,7 +724,32 @@ export function CommunityBuildBuilderClient({
           slot.position === editing.position ? { ...slot, item, track: normalizeTrack(item.polarity) } : slot,
         ),
       );
+    } else if (editing.kind === "weaponWedge") {
+      const target = editing;
+      setWeaponWedges((prev) => {
+        const current = prev[target.weaponId] ?? { slots: emptyWedgeSlots(8), affinity: null };
+        return {
+          ...prev,
+          [target.weaponId]: {
+            ...current,
+            slots: current.slots.map((slot) =>
+              slot.position === target.position ? { ...slot, item, track: normalizeTrack(item.polarity) } : slot,
+            ),
+          },
+        };
+      });
     }
+    setEditing(null);
+  }
+
+  function pickAffinity(item: DnaPickerItem) {
+    if (editing?.kind !== "weaponAffinity") return;
+    const target = editing;
+    const affinity = asElementKey(item.id);
+    setWeaponWedges((prev) => {
+      const current = prev[target.weaponId] ?? { slots: emptyWedgeSlots(8), affinity: null };
+      return { ...prev, [target.weaponId]: { ...current, affinity } };
+    });
     setEditing(null);
   }
 
@@ -983,7 +1058,17 @@ export function CommunityBuildBuilderClient({
         </DnaPanel>
 
         <DnaPanel className="p-4">
-          <DnaSectionLabel>{t("weapons")}</DnaSectionLabel>
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <DnaSectionLabel>{t("weapons")}</DnaSectionLabel>
+            <label className="flex items-center gap-2 text-xs text-muted">
+              <span>{t("filterByCharacter")}</span>
+              <DnaSwitch
+                checked={filterWeaponsByCharacter}
+                aria-label={t("filterByCharacter")}
+                onChange={setFilterWeaponsByCharacter}
+              />
+            </label>
+          </div>
           <div className="mt-3 grid gap-4 xl:grid-cols-2">
             <div>
               <p className="mb-2 font-caps text-[0.62rem] uppercase tracking-[0.16em] text-muted">{t("melee")}</p>
@@ -995,30 +1080,54 @@ export function CommunityBuildBuilderClient({
             </div>
           </div>
           {(() => {
-            const buildable = new Set(options.weaponBuildIds);
-            const selected = [...meleeWeapons, ...rangedWeapons].filter((e) => buildable.has(e.item.id));
+            const selected = [...meleeWeapons, ...rangedWeapons];
             if (selected.length === 0) return null;
             return (
               <div className="mt-5 border-t border-white/8 pt-4">
                 <p className="mb-2 font-caps text-[0.62rem] uppercase tracking-[0.16em] text-muted">{t("weaponWedgesToggle")}</p>
-                <div className="flex flex-col gap-2">
-                  {selected.map((e) => (
-                    <div key={e.item.id} className="flex items-center justify-between gap-3 text-sm text-parch">
-                      <span className="min-w-0 truncate">{e.item.name}</span>
-                      <DnaSwitch
-                        checked={wedgeWeaponIds.has(e.item.id)}
-                        aria-label={e.item.name}
-                        onChange={(on) =>
-                          setWedgeWeaponIds((prev) => {
-                            const next = new Set(prev);
-                            if (on) next.add(e.item.id);
-                            else next.delete(e.item.id);
-                            return next;
-                          })
-                        }
-                      />
-                    </div>
-                  ))}
+                <div className="flex flex-col gap-3">
+                  {selected.map((e) => {
+                    const weaponClass = (e.item.weaponClass ?? "melee") as "melee" | "ranged";
+                    const config = weaponWedges[e.item.id];
+                    return (
+                      <div key={e.item.id} className="border border-white/8 bg-black/15 p-3">
+                        <div className="flex items-center justify-between gap-3 text-sm text-parch">
+                          <span className="min-w-0 truncate">{e.item.name}</span>
+                          <DnaSwitch
+                            checked={Boolean(config)}
+                            aria-label={e.item.name}
+                            onChange={(on) =>
+                              setWeaponWedges((prev) => {
+                                const next = { ...prev };
+                                if (on) next[e.item.id] = next[e.item.id] ?? { slots: emptyWedgeSlots(8), affinity: null };
+                                else delete next[e.item.id];
+                                return next;
+                              })
+                            }
+                          />
+                        </div>
+                        {config ? (
+                          <div className="mt-3 overflow-x-auto pb-2">
+                            <DnaDemonWedgeEditor
+                              slots={config.slots}
+                              centerItem={affinityCenterItem(config.affinity)}
+                              accentHex={config.affinity ? ELEMENTS[config.affinity].hex : accentHex}
+                              scale="lg"
+                              className="min-w-[30rem]"
+                              onChange={(slots) =>
+                                setWeaponWedges((prev) => ({
+                                  ...prev,
+                                  [e.item.id]: { ...(prev[e.item.id] ?? { slots: emptyWedgeSlots(8), affinity: null }), slots },
+                                }))
+                              }
+                              onSlotClick={(position) => setEditing({ kind: "weaponWedge", weaponId: e.item.id, weaponClass, position })}
+                              onCenterClick={() => setEditing({ kind: "weaponAffinity", weaponId: e.item.id })}
+                            />
+                          </div>
+                        ) : null}
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             );
@@ -1245,24 +1354,36 @@ export function CommunityBuildBuilderClient({
             tabIndex={-1}
             role="dialog"
             aria-modal="true"
-            aria-label={editing.kind === "team" ? t("pickTeammate") : editing.kind === "center" ? t("pickCenterMod") : t("pickMod")}
+            aria-label={editing.kind === "team" ? t("pickTeammate") : editing.kind === "center" ? t("pickCenterMod") : editing.kind === "weaponAffinity" ? t("pickAffinity") : editing.kind === "weaponWedge" ? t("pickWeaponWedge") : t("pickMod")}
             className="max-h-[88vh] w-full max-w-5xl overflow-y-auto overscroll-contain border border-line/25 bg-panel/95 p-4 shadow-[0_24px_60px_rgba(0,0,0,0.7)] md:p-5"
             onClick={(event) => event.stopPropagation()}
           >
             <div className="mb-3 flex items-center justify-between gap-3">
               <h3 className="font-caps text-xs uppercase tracking-[0.18em] text-gold">
-                {editing.kind === "team" ? t("pickTeammate") : editing.kind === "center" ? t("pickCenterMod") : t("pickMod")}
+                {editing.kind === "team" ? t("pickTeammate") : editing.kind === "center" ? t("pickCenterMod") : editing.kind === "weaponAffinity" ? t("pickAffinity") : editing.kind === "weaponWedge" ? t("pickWeaponWedge") : t("pickMod")}
               </h3>
               <DnaButton onClick={() => setEditing(null)} className="px-3 py-1.5 text-xs">
                 {t("close")}
               </DnaButton>
             </div>
             <DnaItemPicker
-              items={editing.kind === "team" ? teamPool : editing.kind === "center" ? centerMods : options.mods}
+              items={
+                editing.kind === "team"
+                  ? teamPool
+                  : editing.kind === "center"
+                    ? centerMods
+                    : editing.kind === "weaponAffinity"
+                      ? ELEMENT_PICKER_ITEMS
+                      : editing.kind === "weaponWedge"
+                        ? editing.weaponClass === "melee"
+                          ? options.weaponWedges.melee
+                          : options.weaponWedges.ranged
+                        : options.mods
+              }
               usedIds={editing.kind === "team" ? team.map((member) => member.character.id) : undefined}
               columns={6}
               minColumnWidth="8.25rem"
-              onSelect={editing.kind === "team" ? pickTeammate : pickMod}
+              onSelect={editing.kind === "team" ? pickTeammate : editing.kind === "weaponAffinity" ? pickAffinity : pickMod}
             />
           </div>
         </div>,

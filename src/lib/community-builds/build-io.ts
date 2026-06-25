@@ -14,12 +14,37 @@ const itemIdSchema = z.string().trim().min(1).max(96);
 const elementSchema = z.enum(["Fire", "Water", "Thunder", "Wind", "Light", "Dark"]);
 const rankSchema = z.enum(["best", "alternative"]);
 
+const weaponEntryIoSchema = z
+  .object({
+    itemId: itemIdSchema,
+    rank: rankSchema,
+    withWedges: z.boolean().optional(),
+    demonWedges: z
+      .object({
+        slots: z
+          .array(
+            z
+              .object({
+                position: z.coerce.number().int().min(1).max(8),
+                itemId: itemIdSchema,
+                track: z.coerce.number().int().min(1).max(4).nullable().optional(),
+              })
+              .strict(),
+          )
+          .max(8),
+        affinity: elementSchema.nullable().optional(),
+      })
+      .strict()
+      .optional(),
+  })
+  .strict();
+
 const buildPayloadIoSchema = z
   .object({
     weapons: z
       .object({
-        melee: z.array(z.object({ itemId: itemIdSchema, rank: rankSchema, withWedges: z.boolean().optional() }).strict()).max(3),
-        ranged: z.array(z.object({ itemId: itemIdSchema, rank: rankSchema, withWedges: z.boolean().optional() }).strict()).max(3),
+        melee: z.array(weaponEntryIoSchema).max(3),
+        ranged: z.array(weaponEntryIoSchema).max(3),
       })
       .strict(),
     demonWedges: z
@@ -121,6 +146,14 @@ function validateAgainstOptions(data: CommunityBuildExport, options: BuilderOpti
   for (const weapon of data.payload.weapons.ranged) {
     if (!weaponIds.has(weapon.itemId)) {
       errors.push("Une arme ranged exportee n'existe pas dans le catalogue local.");
+    }
+  }
+
+  for (const weapon of [...data.payload.weapons.melee, ...data.payload.weapons.ranged]) {
+    for (const slot of weapon.demonWedges?.slots ?? []) {
+      if (!modIds.has(slot.itemId)) {
+        errors.push("Un Demon Wedge d'arme exporte n'existe pas dans le catalogue local.");
+      }
     }
   }
 

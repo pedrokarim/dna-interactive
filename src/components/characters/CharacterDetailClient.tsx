@@ -70,6 +70,7 @@ import { NAVIGATION } from "@/lib/constants";
 import type {
   CharacterBuild,
   BuildDemonWedgeSlot,
+  BuildWeaponEntry,
 } from "@/lib/characters/builds";
 import {
   getArmoryCircle,
@@ -357,6 +358,32 @@ function resolveSkillNamesByIndex(character: CharacterRecord, lang: string): Rec
   return map;
 }
 
+// Une entrée d'arme du payload communautaire → entrée d'affichage, en résolvant
+// les Demon Wedges propres à l'arme (s'ils existent dans ce build).
+function resolveCommunityWeaponEntry(
+  weapon: CommunityBuildListItem["payload"]["weapons"]["melee"][number],
+  lang: string,
+): BuildWeaponEntry {
+  const wedges = weapon.demonWedges;
+  return {
+    item: resolveBuildItemRef("weapons", weapon.itemId, lang),
+    rank: weapon.rank,
+    note: {},
+    withWedges: weapon.withWedges ?? false,
+    demonWedges:
+      wedges && wedges.slots.length > 0
+        ? {
+            slots: wedges.slots.map((slot) => ({
+              position: slot.position,
+              item: resolveBuildItemRef("mods", slot.itemId, lang),
+              track: slot.track ?? null,
+            })),
+            affinityElement: wedges.affinity ?? null,
+          }
+        : null,
+  };
+}
+
 export function communityBuildToDisplayBuild(
   build: CommunityBuildListItem,
   lang: string,
@@ -372,18 +399,8 @@ export function communityBuildToDisplayBuild(
     element: build.element ?? null,
     buildName,
     weapons: {
-      melee: payload.weapons.melee.map((weapon) => ({
-        item: resolveBuildItemRef("weapons", weapon.itemId, lang),
-        rank: weapon.rank,
-        note: {},
-        withWedges: weapon.withWedges ?? false,
-      })),
-      ranged: payload.weapons.ranged.map((weapon) => ({
-        item: resolveBuildItemRef("weapons", weapon.itemId, lang),
-        rank: weapon.rank,
-        note: {},
-        withWedges: weapon.withWedges ?? false,
-      })),
+      melee: payload.weapons.melee.map((weapon) => resolveCommunityWeaponEntry(weapon, lang)),
+      ranged: payload.weapons.ranged.map((weapon) => resolveCommunityWeaponEntry(weapon, lang)),
     },
     demonWedges: {
       slots: payload.demonWedges.slots.map((slot) => ({
@@ -1762,51 +1779,67 @@ export function BuildTabContent({
                   </h3>
                   <div className="space-y-2">
                     {weapons.map((w, i) => (
-                      <div
-                        key={i}
-                        className="flex items-center gap-3 border border-white/10 bg-ink/55 px-4 py-3"
-                      >
-                        {w.item ? (
-                          <Link
-                            href={w.item.href}
-                            className="flex min-w-0 flex-1 items-center gap-3 transition-colors hover:text-gold"
+                      <div key={i} className="border border-white/10 bg-ink/55">
+                        <div className="flex items-center gap-3 px-4 py-3">
+                          {w.item ? (
+                            <Link
+                              href={w.item.href}
+                              className="flex min-w-0 flex-1 items-center gap-3 transition-colors hover:text-gold"
+                            >
+                              <img
+                                src={w.item.icon}
+                                alt=""
+                                width={40}
+                                height={40}
+                                className="h-10 w-10 shrink-0 object-contain"
+                              />
+                              <div className="min-w-0 flex-1">
+                                <p className="truncate text-sm font-medium text-parch">
+                                  {w.item.name}
+                                </p>
+                                <p className="truncate text-xs text-muted">
+                                  <BuildLocalizedText texts={w.note} lang={selectedLanguage} />
+                                </p>
+                              </div>
+                            </Link>
+                          ) : (
+                            <p className="text-sm text-muted-2">{t('weaponItemNotFound')}</p>
+                          )}
+                          {w.withWedges && w.item ? (
+                            <Link
+                              href={w.item.href}
+                              className="shrink-0 text-xs text-gold/80 underline-offset-2 hover:text-gold hover:underline"
+                            >
+                              {t('demonWedgesTitle')} →
+                            </Link>
+                          ) : null}
+                          <span
+                            className={`shrink-0 rounded-sm px-2.5 py-0.5 text-xs font-medium ${
+                              w.rank === "best"
+                                ? "border border-gold/40 bg-gold/15 text-gold"
+                                : "border border-white/10 bg-panel/40 text-parch/85"
+                            }`}
                           >
-                            <img
-                              src={w.item.icon}
-                              alt=""
-                              width={40}
-                              height={40}
-                              className="h-10 w-10 shrink-0 object-contain"
-                            />
-                            <div className="min-w-0 flex-1">
-                              <p className="truncate text-sm font-medium text-parch">
-                                {w.item.name}
-                              </p>
-                              <p className="truncate text-xs text-muted">
-                                <BuildLocalizedText texts={w.note} lang={selectedLanguage} />
-                              </p>
+                            {w.rank === "best" ? t('weaponBest') : t('weaponAlt')}
+                          </span>
+                        </div>
+                        {w.demonWedges && w.demonWedges.slots.length > 0 ? (
+                          <details className="border-t border-white/8 px-4 py-3">
+                            <summary className="cursor-pointer font-caps text-[0.62rem] uppercase tracking-[0.16em] text-gold/85">
+                              {t('demonWedgesTitle')}
+                            </summary>
+                            <div className="mt-3 overflow-x-auto">
+                              <DemonWedgeLayout
+                                slots={w.demonWedges.slots}
+                                centerItem={null}
+                                affinity={{}}
+                                elementKey={w.demonWedges.affinityElement ?? characterElement}
+                                lang={selectedLanguage}
+                                showTrackAdjust={false}
+                              />
                             </div>
-                          </Link>
-                        ) : (
-                          <p className="text-sm text-muted-2">{t('weaponItemNotFound')}</p>
-                        )}
-                        {w.withWedges && w.item ? (
-                          <Link
-                            href={w.item.href}
-                            className="shrink-0 text-xs text-gold/80 underline-offset-2 hover:text-gold hover:underline"
-                          >
-                            {t('demonWedgesTitle')} →
-                          </Link>
+                          </details>
                         ) : null}
-                        <span
-                          className={`shrink-0 rounded-sm px-2.5 py-0.5 text-xs font-medium ${
-                            w.rank === "best"
-                              ? "border border-gold/40 bg-gold/15 text-gold"
-                              : "border border-white/10 bg-panel/40 text-parch/85"
-                          }`}
-                        >
-                          {w.rank === "best" ? t('weaponBest') : t('weaponAlt')}
-                        </span>
                       </div>
                     ))}
                   </div>

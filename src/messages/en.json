@@ -551,7 +551,9 @@
     "nextAt": "at {time} your time"
   },
   "builder": {
-    "weaponWedgesToggle": "Include the weapon's Demon Wedge build",
+    "weaponWedgesToggle": "Configure the weapons' Demon Wedges",
+    "pickWeaponWedge": "Choose a weapon Demon Wedge",
+    "pickAffinity": "Choose the affinity",
     "noCharacters": "No character available.",
     "character": "Character",
     "element": "Element",
@@ -561,6 +563,7 @@
     "weapons": "Weapons",
     "melee": "Melee",
     "ranged": "Ranged",
+    "filterByCharacter": "Filter by character",
     "pickMeleeWeapon": "Choose a melee weapon",
     "pickRangedWeapon": "Choose a ranged weapon",
     "demonWedges": "Demon Wedges",

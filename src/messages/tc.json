@@ -551,7 +551,9 @@
     "nextAt": "at {time} your time"
   },
   "builder": {
-    "weaponWedgesToggle": "包含武器的惡魔楔組合",
+    "weaponWedgesToggle": "設定武器的惡魔楔",
+    "pickWeaponWedge": "選擇武器惡魔楔",
+    "pickAffinity": "選擇親和性",
     "noCharacters": "沒有可用的角色。",
     "character": "角色",
     "element": "元素",
@@ -561,6 +563,7 @@
     "weapons": "武器",
     "melee": "近戰",
     "ranged": "遠程",
+    "filterByCharacter": "依角色篩選",
     "pickMeleeWeapon": "選擇近戰武器",
     "pickRangedWeapon": "選擇遠程武器",
     "demonWedges": "Demon Wedges",

@@ -108,6 +108,11 @@ export interface BuildWeaponEntry {
   rank: "best" | "alternative";
   note: RawLocalizedText;
   withWedges: boolean;
+  /**
+   * Demon Wedges propres à cette arme DANS ce build (builds communautaires) —
+   * résolus pour l'affichage. Indépendant du build canonique de la fiche arme.
+   */
+  demonWedges?: { slots: BuildDemonWedgeSlot[]; affinityElement: string | null } | null;
 }
 
 export interface BuildDemonWedgeSlot {

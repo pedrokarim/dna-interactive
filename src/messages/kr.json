@@ -551,7 +551,9 @@
     "nextAt": "at {time} your time"
   },
   "builder": {
-    "weaponWedgesToggle": "무기의 데몬 웻지 빌드 포함",
+    "weaponWedgesToggle": "무기의 데몬 웻지 설정",
+    "pickWeaponWedge": "무기 데몬 웻지 선택",
+    "pickAffinity": "친화력 선택",
     "noCharacters": "사용 가능한 캐릭터가 없습니다.",
     "character": "캐릭터",
     "element": "속성",
@@ -561,6 +563,7 @@
     "weapons": "무기",
     "melee": "근접",
     "ranged": "원거리",
+    "filterByCharacter": "캐릭터로 필터링",
     "pickMeleeWeapon": "근접 무기 선택",
     "pickRangedWeapon": "원거리 무기 선택",
     "demonWedges": "Demon Wedges",

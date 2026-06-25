@@ -5,6 +5,7 @@ import type { ItemRecord } from "@/lib/items/types";
 import type { DnaPickerItem } from "@/components/dna/ItemPicker";
 import type { ElementKey } from "@/components/dna/elements";
 import { allWeaponBuilds } from "@/data/weapons/builds";
+import { getWeaponWedgePool } from "@/lib/items/weapon-builds";
 
 const ELEMENT_KEYS = new Set(["Fire", "Water", "Thunder", "Wind", "Light", "Dark"]);
 
@@ -35,6 +36,8 @@ export type BuilderOptions = {
   genimons: DnaPickerItem[];
   /** IDs des armes qui ont un build de Demon Wedges canonique (pour le toggle « inclure »). */
   weaponBuildIds: string[];
+  /** Pools de Demon Wedges d'arme, séparés par classe (pour l'éditeur DW par arme du builder). */
+  weaponWedges: { melee: DnaPickerItem[]; ranged: DnaPickerItem[] };
 };
 
 function asElementKey(value: string | null | undefined): ElementKey | null {
@@ -168,6 +171,10 @@ export function getBuilderOptions(locale: string): BuilderOptions {
     weapons: getItemsByCategoryId("weapons").map((item) => itemToPickerItem(item, upperLocale)),
     mods: getItemsByCategoryId("mods").map((item) => itemToPickerItem(item, upperLocale)),
     weaponBuildIds: allWeaponBuilds.map((b) => b.weaponId),
+    weaponWedges: {
+      melee: getWeaponWedgePool("melee").map((item) => itemToPickerItem(item, upperLocale)),
+      ranged: getWeaponWedgePool("ranged").map((item) => itemToPickerItem(item, upperLocale)),
+    },
     // On n'expose dans le builder que les vrais génimons équipables : ceux du
     // système de leveling (maxLevel 60). Les entrées maxLevel 1 sont des pets
     // d'événement (Monster Rush / Wishen) ou des drones non buildables —

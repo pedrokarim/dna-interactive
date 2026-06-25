@@ -551,7 +551,9 @@
     "nextAt": "at {time} your time"
   },
   "builder": {
-    "weaponWedgesToggle": "Demon-Wedge-Build der Waffe einbeziehen",
+    "weaponWedgesToggle": "Demon Wedges der Waffen konfigurieren",
+    "pickWeaponWedge": "Waffen-Demon-Wedge wählen",
+    "pickAffinity": "Affinität wählen",
     "noCharacters": "Kein Charakter verfügbar.",
     "character": "Charakter",
     "element": "Element",
@@ -561,6 +563,7 @@
     "weapons": "Waffen",
     "melee": "Nahkampf",
     "ranged": "Fernkampf",
+    "filterByCharacter": "Nach Charakter filtern",
     "pickMeleeWeapon": "Nahkampfwaffe wählen",
     "pickRangedWeapon": "Fernkampfwaffe wählen",
     "demonWedges": "Demon Wedges",

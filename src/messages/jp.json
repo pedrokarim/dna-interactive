@@ -551,7 +551,9 @@
     "nextAt": "at {time} your time"
   },
   "builder": {
-    "weaponWedgesToggle": "武器のデーモンウェッジ構成を含める",
+    "weaponWedgesToggle": "武器のデーモンウェッジを設定",
+    "pickWeaponWedge": "武器のデーモンウェッジを選択",
+    "pickAffinity": "アフィニティを選択",
     "noCharacters": "利用できるキャラクターがありません。",
     "character": "キャラクター",
     "element": "属性",
@@ -561,6 +563,7 @@
     "weapons": "武器",
     "melee": "近接",
     "ranged": "遠隔",
+    "filterByCharacter": "キャラクターで絞り込む",
     "pickMeleeWeapon": "近接武器を選択",
     "pickRangedWeapon": "遠隔武器を選択",
     "demonWedges": "Demon Wedges",

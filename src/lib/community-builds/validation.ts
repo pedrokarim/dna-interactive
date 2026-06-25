@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { getCharacterById, getCharacterElements } from "@/lib/characters/catalog";
 import { getItemByCategoryAndId } from "@/lib/items/catalog";
+import { isWeaponWedge, type WeaponWedgeClass } from "@/lib/items/weapon-builds";
 import { isCenterDemonWedgeItemId } from "./center-wedges";
 
 const itemIdSchema = z.string().trim().min(1).max(96);
@@ -32,11 +33,37 @@ export type BuildTag = (typeof BUILD_TAGS)[number];
 export const buildTitleSchema = z.string().trim().min(3).max(60);
 export const buildNoteSchema = z.string().trim().max(200).nullable().optional();
 
+// Demon Wedges propres à une arme DANS un build (éditables, indépendants du
+// build canonique affiché sur la fiche arme). 8 cases + une affinité (élément),
+// pas de centre item. Cf. docs/cadrage-builds-armes.md.
+const weaponDemonWedgesSchema = z.object({
+  slots: z
+    .array(
+      z.object({
+        position: z.number().int().min(1).max(8),
+        itemId: itemIdSchema,
+        track: z.number().int().min(1).max(4).nullable().optional(),
+      }),
+    )
+    .max(8)
+    .default([]),
+  affinity: elementKeySchema.nullable().optional(),
+});
+
+// `withWedges` (legacy) conservé en optionnel pour ne pas casser les builds déjà
+// publiés ; le builder n'écrit plus que `demonWedges`.
+const weaponEntrySchema = z.object({
+  itemId: itemIdSchema,
+  rank: rankSchema,
+  withWedges: z.boolean().optional(),
+  demonWedges: weaponDemonWedgesSchema.optional(),
+});
+
 export const buildPayloadSchema = z.object({
   weapons: z
     .object({
-      melee: z.array(z.object({ itemId: itemIdSchema, rank: rankSchema, withWedges: z.boolean().optional() })).max(3).default([]),
-      ranged: z.array(z.object({ itemId: itemIdSchema, rank: rankSchema, withWedges: z.boolean().optional() })).max(3).default([]),
+      melee: z.array(weaponEntrySchema).max(3).default([]),
+      ranged: z.array(weaponEntrySchema).max(3).default([]),
     })
     .default({ melee: [], ranged: [] }),
   demonWedges: z
@@ -138,11 +165,14 @@ function characterHasSkillIndex(
   return Boolean(path);
 }
 
-// Type d'une arme (WeaponType_Sword → "Sword") à partir du catalogue.
-function weaponTypeOf(itemId: string): string | null {
+// Classe mêlée/distance d'une arme — pour valider que ses Demon Wedges sont du
+// bon pool (un wedge distance ne va pas sur une arme mêlée).
+function weaponClassOf(itemId: string): WeaponWedgeClass | null {
   const item = getItemByCategoryAndId("weapons", itemId);
-  const key = (item?.typeCompatibility?.textKeys ?? []).find((k) => k.startsWith("WeaponType_"));
-  return key ? key.replace("WeaponType_", "") : null;
+  const keys = item?.typeCompatibility?.textKeys ?? [];
+  if (keys.includes("UI_Armory_Meleeweapon")) return "melee";
+  if (keys.includes("UI_Armory_Longrange")) return "ranged";
+  return null;
 }
 
 export function validateBuildReferences(input: CreateBuildInput | DraftInput): string[] {
@@ -164,17 +194,9 @@ export function validateBuildReferences(input: CreateBuildInput | DraftInput): s
       }
     }
 
-    // Les armes doivent appartenir aux types du perso (weaponTags). "Almighty"
-    // = type joker (toutes armes autorisées).
-    if (!character.weaponTags.includes("Almighty")) {
-      const allowed = new Set(character.weaponTags);
-      for (const weapon of [...input.payload.weapons.melee, ...input.payload.weapons.ranged]) {
-        const type = weaponTypeOf(weapon.itemId);
-        if (type && !allowed.has(type)) {
-          errors.push(`Arme incompatible avec ce personnage : ${weapon.itemId} (${type}).`);
-        }
-      }
-    }
+    // NB : on ne restreint plus les armes aux types du perso. Le builder propose
+    // toutes les armes par défaut (filtre par perso = option côté UI, désactivée
+    // par défaut). Les armes doivent juste exister dans le catalogue (ci-dessous).
   }
 
   const checkItem = (categoryId: "weapons" | "mods" | "genimons", itemId: string, label: string) => {
@@ -185,6 +207,26 @@ export function validateBuildReferences(input: CreateBuildInput | DraftInput): s
 
   for (const weapon of input.payload.weapons.melee) checkItem("weapons", weapon.itemId, "Arme melee");
   for (const weapon of input.payload.weapons.ranged) checkItem("weapons", weapon.itemId, "Arme ranged");
+
+  // Demon Wedges propres à chaque arme : doivent exister, être du pool de la
+  // bonne classe (mêlée/distance) et ne pas se chevaucher en position.
+  for (const weapon of [...input.payload.weapons.melee, ...input.payload.weapons.ranged]) {
+    if (!weapon.demonWedges) continue;
+    const weaponClass = weaponClassOf(weapon.itemId);
+    const wedgePositions = new Set<number>();
+    for (const slot of weapon.demonWedges.slots) {
+      const mod = getItemByCategoryAndId("mods", slot.itemId);
+      if (!mod) {
+        errors.push(`Demon Wedge d'arme introuvable : ${slot.itemId}.`);
+      } else if (weaponClass && !isWeaponWedge(mod, weaponClass)) {
+        errors.push(`Demon Wedge incompatible avec l'arme (${weaponClass}) : ${slot.itemId}.`);
+      }
+      if (wedgePositions.has(slot.position)) {
+        errors.push(`Position de Demon Wedge d'arme dupliquée (${weapon.itemId}) : ${slot.position}.`);
+      }
+      wedgePositions.add(slot.position);
+    }
+  }
   for (const genimon of input.payload.genimon) {
     const item = getItemByCategoryAndId("genimons", genimon.itemId);
     if (!item) {
