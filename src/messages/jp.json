@@ -37,7 +37,9 @@
     "support": "サポート",
     "contact": "お問い合わせ",
     "changelog": "更新履歴",
-    "commissions": "コミッション"
+    "commissions": "コミッション",
+    "features": "機能",
+    "builds": "コミュニティビルド"
   },
   "common": {
     "close": "閉じる",

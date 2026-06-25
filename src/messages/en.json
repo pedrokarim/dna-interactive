@@ -37,7 +37,9 @@
     "support": "Support",
     "contact": "Contact",
     "changelog": "Changelog",
-    "commissions": "Commissions"
+    "commissions": "Commissions",
+    "features": "Features",
+    "builds": "Community Builds"
   },
   "common": {
     "close": "Close",

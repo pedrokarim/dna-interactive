@@ -37,7 +37,9 @@
     "support": "支援",
     "contact": "聯絡我們",
     "changelog": "更新日誌",
-    "commissions": "委託任務"
+    "commissions": "委託任務",
+    "features": "功能",
+    "builds": "社群配裝"
   },
   "common": {
     "close": "關閉",

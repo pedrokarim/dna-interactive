@@ -37,7 +37,9 @@
     "support": "지원",
     "contact": "문의",
     "changelog": "업데이트 내역",
-    "commissions": "커미션"
+    "commissions": "커미션",
+    "features": "기능",
+    "builds": "커뮤니티 빌드"
   },
   "common": {
     "close": "닫기",

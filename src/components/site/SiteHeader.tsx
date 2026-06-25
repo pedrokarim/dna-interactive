@@ -3,30 +3,16 @@ import { getTranslations } from "next-intl/server";
 import {
   ASSETS_PATHS,
   NAVIGATION,
-  NAV_LINKS,
   SITE_CONFIG,
 } from "@/lib/constants";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import MobileMenu from "@/components/MobileMenu";
+import DesktopNav from "@/components/site/DesktopNav";
 import { DiscordAuthButton } from "@/components/auth/DiscordAuthButton";
-import { DnaNouveau } from "@/components/dna/Badges";
 
 /** En-tête de site — design system DNA (marque Cormorant, nav Cinzel, liseré doré). */
 export default async function SiteHeader({ active }: { active?: string }) {
-  const tNav = await getTranslations("nav");
   const tSite = await getTranslations("site");
-
-  const navLabels: Record<string, string> = {
-    [NAVIGATION.map]: tNav("map"),
-    [NAVIGATION.items]: tNav("items"),
-    [NAVIGATION.characters]: tNav("characters"),
-    [NAVIGATION.builder]: tNav("builder"),
-    [NAVIGATION.commissions]: tNav("commissions"),
-    [NAVIGATION.codes]: tNav("codes"),
-    [NAVIGATION.about]: tNav("about"),
-    [NAVIGATION.support]: tNav("support"),
-    [NAVIGATION.contact]: tNav("contact"),
-  };
 
   return (
     <header className="relative z-50 border-b border-gold/20 bg-ink/85 backdrop-blur-sm">
@@ -55,28 +41,7 @@ export default async function SiteHeader({ active }: { active?: string }) {
           <MobileMenu authSlot={<DiscordAuthButton compact direction="up" align="start" />} />
 
           <div className="hidden items-center gap-4 lg:flex xl:gap-6">
-            <nav className="flex items-center gap-4 xl:gap-7">
-              {NAV_LINKS.map((link) => {
-                const isActive = link.href === active;
-                return (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className={`relative font-caps text-[0.72rem] uppercase tracking-[0.18em] transition-colors ${
-                      isActive ? "text-gold-bright" : "text-parch/80 hover:text-gold"
-                    }`}
-                  >
-                    {navLabels[link.href] ?? link.label}
-                    {link.href === NAVIGATION.commissions ? (
-                      <DnaNouveau className="ml-1.5 align-middle" />
-                    ) : null}
-                    {isActive ? (
-                      <span aria-hidden className="absolute -bottom-1.5 left-0 right-0 h-px bg-gold-bright/70" />
-                    ) : null}
-                  </Link>
-                );
-              })}
-            </nav>
+            <DesktopNav active={active} />
             <LanguageSwitcher />
             <DiscordAuthButton compact />
           </div>
