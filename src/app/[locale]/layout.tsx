@@ -117,7 +117,7 @@ export async function generateMetadata(
         "Carte interactive Duet Night Abyss : explorez le monde, trouvez tous les coffres, secrets, items, personnages, codes et plans de forge. Outil DNA gratuit.",
       images: [
         {
-          url: "/assets/worldview/worldview-1.webp",
+          url: "/assets/og/og-default.png",
           width: 1200,
           height: 630,
           alt: "DNA Interactive - Carte Interactive Duet Night Abyss",
@@ -130,7 +130,7 @@ export async function generateMetadata(
       title: "DNA Interactive - Carte Interactive Duet Night Abyss",
       description:
         "Carte interactive Duet Night Abyss : coffres, secrets, items, personnages, codes et plans de forge. Outil DNA gratuit.",
-      images: ["/assets/worldview/worldview-1.webp"],
+      images: ["/assets/og/og-default.png"],
       site: "@ascencia64",
       creator: "@ascencia64",
     },

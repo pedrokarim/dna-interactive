@@ -36,7 +36,7 @@ export async function generatePageMetadata(
     title,
     description,
     keywords = [],
-    image = "/assets/worldview/worldview-1.webp",
+    image = "/assets/og/og-default.png",
     path = "",
     type = "website",
   } = options;
@@ -163,7 +163,7 @@ export const pageMetadata = {
       "outil gaming",
       "joueurs DNA",
     ],
-    image: "/assets/worldview/worldview-1.webp",
+    image: "/assets/og/og-default.png",
     path: "",
   },
   map: {
