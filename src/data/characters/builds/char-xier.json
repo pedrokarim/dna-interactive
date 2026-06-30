@@ -1,0 +1,138 @@
+[
+  {
+    "characterId": "char-xier",
+    "buildName": {
+      "FR": "DPS Pyro - Lasers Dirtexpeller",
+      "EN": "Pyro Skill DPS - Dirtexpeller Lasers"
+    },
+    "weapons": {
+      "melee": [
+        {
+          "itemId": "weapons-10204",
+          "rank": "best",
+          "note": {
+            "FR": "Elpides Abound - Resolve +10%. Apres l'Ultime d'un personnage Anemo, accorde la Benediction des Mille Vents. Meilleur choix en endgame ou Resolve depasse Morale.",
+            "EN": "Elpides Abound - Resolve +10%. After an Anemo character uses their Ultimate, grants Thousand Winds Blessing. Best in endgame where Resolve outperforms Morale."
+          }
+        },
+        {
+          "itemId": "weapons-10206",
+          "rank": "alternative",
+          "note": {
+            "FR": "Wanewraith - Degats de Competence +48%. Polyvalente : augmente la Skill Intensity et donc les degats des lasers. Solide en usage general.",
+            "EN": "Wanewraith - Skill Damage +48%. General-purpose: raises Skill Intensity and therefore laser damage. Solid all-rounder."
+          }
+        }
+      ],
+      "ranged": [
+        {
+          "itemId": "weapons-20512",
+          "rank": "best",
+          "note": {
+            "FR": "Dregs of Glimmer - Multishot +75%. Quand un personnage Pyro inflige des degats de competence, gagne 1 stack de +5% Skill DMG. Meilleur Skill DMG de la categorie.",
+            "EN": "Dregs of Glimmer - Multishot +75%. When a Pyro character deals Skill DMG, grants 1 stack of +5% Skill DMG. Highest Skill DMG of the slot."
+          }
+        },
+        {
+          "itemId": "weapons-20302",
+          "rank": "alternative",
+          "note": {
+            "FR": "Firearm Feast - Multishot +75%. Quand un personnage Pyro esquive, gagne 1 stack de +16% Skill DMG. Plus de Multishot, bonne synergie malgre un Skill DMG plus faible.",
+            "EN": "Firearm Feast - Multishot +75%. When a Pyro character dodges, grants 1 stack of +16% Skill DMG. More Multishot, good synergy despite lower Skill DMG."
+          }
+        }
+      ]
+    },
+    "demonWedges": {
+      "slots": [
+        { "position": 1, "itemId": "mods-51432", "track": null },
+        { "position": 2, "itemId": "mods-51333", "track": null },
+        { "position": 3, "itemId": "mods-51931", "track": null },
+        { "position": 4, "itemId": "mods-51737", "track": null },
+        { "position": 5, "itemId": "mods-51737", "track": null },
+        { "position": 6, "itemId": "mods-51732", "track": null },
+        { "position": 7, "itemId": "mods-51732", "track": null },
+        { "position": 8, "itemId": "mods-51733", "track": null }
+      ],
+      "centerItemId": "mods-31524",
+      "affinity": {
+        "FR": "Vigilance du Serpent a Plumes",
+        "EN": "Feathered Serpent's Vigilant"
+      },
+      "note": {
+        "FR": "Loadout par slot (versions 5★ Pyro) : 1. Prime·Resolve, 2. Inferno·Midnight Sun, 3. Devouring Wildfire, 4. & 5. Volition (Covenanter's, x2), 6. & 7. Blaze·Eternity (Covenanter's, x2), 8. Blaze·Inspo.\n\nCore central : Vigilant (mods-31524, core 3★ de la serie Feathered Serpent's). Privilegie le Skill DMG, la duree/efficacite de competence et la survie via Resolve/Morale.",
+        "EN": "Per-slot loadout (5★ Pyro versions): 1. Prime·Resolve, 2. Inferno·Midnight Sun, 3. Devouring Wildfire, 4. & 5. Volition (Covenanter's, x2), 6. & 7. Blaze·Eternity (Covenanter's, x2), 8. Blaze·Inspo.\n\nCentral core: Vigilant (mods-31524, 3★ core of the Feathered Serpent's series). Focuses Skill DMG, skill duration/efficiency and survivability via Resolve/Morale."
+      }
+    },
+    "statsPriority": [
+      "Morale",
+      "Resolve",
+      "SkillIntensity",
+      "ATK_Fire",
+      "SkillSustain",
+      "SkillEfficiency"
+    ],
+    "team": [
+      {
+        "characterId": "char-feina",
+        "role": "Support",
+        "note": {
+          "FR": "Fina - apporte de la Penetration et des buffs de degats a l'equipe. Synergie directe avec le burst de lasers de Hilda.",
+          "EN": "Fina - provides Penetration and damage buffs to the team. Direct synergy with Hilda's laser burst."
+        }
+      },
+      {
+        "characterId": "char-baiheng",
+        "role": "Support",
+        "note": {
+          "FR": "Fushu - buffs de Skill DMG / Skill Intensity et recuperation de Lucidite. Amplifie directement les degats de competence de Hilda.",
+          "EN": "Fushu - Skill DMG / Skill Intensity buffs and Sanity recovery. Directly amplifies Hilda's skill damage."
+        }
+      }
+    ],
+    "genimon": [
+      { "itemId": "genimon-4231", "rank": "best" },
+      { "itemId": "genimon-4031", "rank": "alternative" },
+      { "itemId": "genimon-4131", "rank": "alternative" }
+    ],
+    "skillPriority": [
+      {
+        "skillName": {
+          "FR": "Nettoyage pyrolytique",
+          "EN": "Pyrolytic Cleaning"
+        },
+        "priority": 5,
+        "note": {
+          "FR": "Source de degats principale (AoE des lasers tournants). A monter des que possible.",
+          "EN": "Primary damage source (spinning laser AoE). Level whenever possible."
+        }
+      },
+      {
+        "skillName": {
+          "FR": "Service devoue",
+          "EN": "Wholehearted Service"
+        },
+        "priority": 5,
+        "note": {
+          "FR": "Controle les degats et la duree des Dirtexpeller ; l'ultime scale avec le nombre d'ennemis. A monter au maximum.",
+          "EN": "Controls Dirtexpeller damage and duration; the ultimate scales with enemy count. Level as much as possible."
+        }
+      },
+      {
+        "skillName": {
+          "FR": "Desinfection automatique",
+          "EN": "Automatic Sanitizing"
+        },
+        "priority": 4,
+        "note": {
+          "FR": "Augmente la vitesse d'attaque. Toutes les competences ont une synergie : ne pas negliger.",
+          "EN": "Increases attack speed. All skills synergize, so don't neglect it."
+        }
+      }
+    ],
+    "notes": {
+      "FR": "Hilda (Pyro, Imperium Hyperboreen) est une DPS de competence orientee controle : elle invoque des armes-lasers Dirtexpeller qui tournent autour d'elle. Boucle de jeu : invoquer les Dirtexpeller via Service devoue (ult), puis activer Nettoyage pyrolytique pour l'AoE tournante ; esquiver pour booster la vitesse d'attaque des Dirtexpeller et recharger l'arme distance. Maximiser le Multishot : son passif accorde des projectiles supplementaires et un scaling de degats base sur le % de Multishot.\n\nPriorite d'Introns (ordre d'unlock) :\n- I2 (★★★★★) : +50% de portee des lasers, ajoute du stacking de degats sur les ennemis vaincus\n- I4 (★★★★★) : supprime la limite de duree des Dirtexpeller et fait apparaitre 2 variantes Light supplementaires\n- I6 (★★★★★) : +60% PEN pendant Nettoyage pyrolytique\n- I1 (★★★★☆) : +2 charges d'esquive, +30% a l'effet de Colere Elegante\n\nForces : excellent controle de zone, fort potentiel de degats de competence avec un haut Multishot.\nFaiblesses : moins efficace en boss solo ; les lasers manquent leur cible sur terrain irregulier (escaliers, rebords).",
+      "EN": "Hilda (Pyro, Hyperborean Imperium) is a control-oriented Skill DPS who summons Dirtexpeller laser weapons that orbit her. Gameplay loop: summon Dirtexpellers via Wholehearted Service (ult), then cast Pyrolytic Cleaning for the spinning AoE; dodge to boost Dirtexpeller attack speed and reload the ranged weapon. Maximize Multishot: her passive grants extra projectiles and damage scaling based on Multishot %.\n\nIntron priority (unlock order):\n- I2 (★★★★★): +50% laser range, adds damage stacking on enemy defeats\n- I4 (★★★★★): removes Dirtexpeller duration limit and spawns 2 extra Light variants\n- I6 (★★★★★): +60% PEN during Pyrolytic Cleaning\n- I1 (★★★★☆): +2 dodge charges, +30% Elegant Anger effect\n\nStrengths: excellent area control, high Skill DMG ceiling with stacked Multishot.\nWeaknesses: weaker in single-boss fights; lasers miss on uneven terrain (stairs, ledges)."
+    }
+  }
+]

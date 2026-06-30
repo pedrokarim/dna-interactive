@@ -43,7 +43,23 @@ const SHOWCASE_CHARACTERS: Array<{
   accentColor: string;
   ringColor: string;
 }> = [
-  // Flora en vedette (position 0 = active par d\u00E9faut au chargement).
+  // Hilda en vedette (position 0 = active par d\u00E9faut au chargement) \u2014 Pyro,
+  // sortie 30 juin 2026 (patch 1.4 phase 2). Pas de marketing officiel : on
+  // utilise le bust FModel re-encode en WebP (cf. official-v1.4/).
+  {
+    id: "char-xier",
+    slug: "hilda",
+    key: "hilda",
+    name: "Hilda",
+    decoText: "\u5E0C\u513F",
+    fullImage: "/assets/official-v1.4/image-hilda.webp",
+    fullImageMobile: "/assets/official-v1.4/image-hilda-mobile.webp",
+    avatar: "/assets/official-v1.4/avatar-hilda.webp",
+    element: "Pyro",
+    accentColor: "rose",
+    ringColor: "ring-crimson-bright",
+  },
+  // Flora \u2014 ancienne vedette, repli\u00E9e juste en dessous de Hilda.
   // Pas de marketing officiel v1.4 : assets d\u00E9riv\u00E9s du bust FModel
   // (T_Bust_Fuluo.png) re-encod\u00E9 en WebP sous official-v1.4/.
   // L'asset official-v1.3/image-fs.webp = Fushu, pas Flora \u2014 pr\u00E9fixe fs =
@@ -61,21 +77,6 @@ const SHOWCASE_CHARACTERS: Array<{
     element: "Umbro",
     accentColor: "indigo",
     ringColor: "ring-gold",
-  },
-  // Hilda \u2014 Pyro, sortie 30 juin 2026 (patch 1.4 phase 2). Pas de marketing
-  // officiel : on utilise le bust FModel re-encode en WebP (cf. official-v1.4/).
-  {
-    id: "char-xier",
-    slug: "hilda",
-    key: "hilda",
-    name: "Hilda",
-    decoText: "\u5E0C\u513F",
-    fullImage: "/assets/official-v1.4/image-hilda.webp",
-    fullImageMobile: "/assets/official-v1.4/image-hilda-mobile.webp",
-    avatar: "/assets/official-v1.4/avatar-hilda.webp",
-    element: "Pyro",
-    accentColor: "rose",
-    ringColor: "ring-crimson-bright",
   },
   // Formes Umbro du Phoxhunter (protagoniste) \u2014 d\u00E9bloqu\u00E9es via la narration
   // du patch 1.4 "Silver Torrent, Rising Star". Pas de marketing officiel

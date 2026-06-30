@@ -23,6 +23,7 @@ import charYuming from "./char-yuming.json";
 import charSuyi from "./char-suyi.json";
 import charKami from "./char-kami.json";
 import charFuluo from "./char-fuluo.json";
+import charXier from "./char-xier.json";
 // Protagonistes multi-éléments : chaque entrée de build porte un champ
 // `element` ("Dark", "Light"…) ; la fiche n'affiche que les builds de
 // l'élément actif (cf. activeBuilds dans CharacterDetailClient).
@@ -59,6 +60,7 @@ export const allBuilds = [
   ...charSuyi,
   ...charKami,
   ...charFuluo,
+  ...charXier,
   ...charProtagonistFemale,
   ...charProtagonistMale,
 ];
