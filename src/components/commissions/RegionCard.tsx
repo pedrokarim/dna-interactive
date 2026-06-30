@@ -1,10 +1,12 @@
-import { Gem, Sword, UserRound, type LucideIcon } from "lucide-react";
+import { Gem, Sword, TriangleAlert, UserRound, type LucideIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { DnaPanel } from "@/components/dna/Panel";
 import { cn } from "@/components/dna/cn";
 import {
   CATEGORIES,
   CATEGORY_LABELS,
   isInfiniteObjective,
+  isKnownObjective,
   OBJECTIVE_FR,
   REGION_LABELS,
   type Category,
@@ -107,6 +109,22 @@ export function RegionCard({
   data: Record<Category, string[]>;
   locale: string;
 }) {
+  const t = useTranslations("commissions");
+
+  // On ne garde que les vrais objectifs : le pipeline recopie verbatim l'embed
+  // source, qui contient un message d'erreur quand le bot échoue à lire une
+  // région. Si rien de valide n'arrive pour toute la région, on affiche un état
+  // « indisponible » plutôt que de rendre le texte d'erreur comme un objectif.
+  const known: Record<Category, string[]> = {} as Record<Category, string[]>;
+  let hasAnyKnown = false;
+  for (const cat of CATEGORIES) {
+    const filtered = (data[cat] ?? []).filter(isKnownObjective);
+    known[cat] = filtered;
+    if (filtered.length > 0) hasAnyKnown = true;
+  }
+  const hasRawEntries = CATEGORIES.some((cat) => (data[cat] ?? []).length > 0);
+  const unavailable = !hasAnyKnown && hasRawEntries;
+
   return (
     <DnaPanel className="p-4 sm:p-5">
       <h2 className="mb-4 flex items-center gap-2.5 font-caps text-[0.72rem] uppercase tracking-[0.3em] text-gold-bright">
@@ -114,11 +132,18 @@ export function RegionCard({
         {REGION_LABELS[region]}
         <span className="h-px flex-1 bg-gradient-to-r from-line/30 to-transparent" />
       </h2>
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
-        {CATEGORIES.map((cat) => (
-          <Column key={cat} category={cat} objectives={data[cat] ?? []} locale={locale} />
-        ))}
-      </div>
+      {unavailable ? (
+        <div className="flex items-center justify-center gap-2.5 border border-line/15 bg-ink-2/40 px-4 py-6 text-center">
+          <TriangleAlert className="h-4 w-4 shrink-0 text-gold/60" aria-hidden />
+          <span className="text-[0.82rem] text-parch/55">{t("unavailable")}</span>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+          {CATEGORIES.map((cat) => (
+            <Column key={cat} category={cat} objectives={known[cat]} locale={locale} />
+          ))}
+        </div>
+      )}
     </DnaPanel>
   );
 }

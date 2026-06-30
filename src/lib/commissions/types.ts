@@ -42,6 +42,19 @@ export function isInfiniteObjective(objective: string): boolean {
   return INFINITE_OBJECTIVE_KEYS.has(objective.trim().toLowerCase());
 }
 
+/**
+ * Objectifs réels (ensemble fermé). Le pipeline d'ingestion recopie verbatim le
+ * texte de l'embed source ; quand le bot échoue à lire une région, il y écrit un
+ * message d'erreur (« User identity verification failed. ») au lieu d'un
+ * objectif. On reconnaît un vrai objectif par appartenance à `OBJECTIVES` ;
+ * tout le reste est traité comme « donnée indisponible » à l'affichage.
+ */
+const KNOWN_OBJECTIVE_KEYS = new Set<string>(OBJECTIVES.map((o) => o.toLowerCase()));
+
+export function isKnownObjective(objective: string): boolean {
+  return KNOWN_OBJECTIVE_KEYS.has(objective.trim().toLowerCase());
+}
+
 /** État d'une rotation : par région, 3 objectifs par catégorie. */
 export type RotationState = {
   /** sha256 du contenu normalisé — identité stable d'une rotation. */

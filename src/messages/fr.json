@@ -550,7 +550,8 @@
     "syncing": "Synchronisation…",
     "fallbackNotice": "Les rotations seront bientôt disponibles.",
     "utcNote": "Les commissions changent au début de chaque heure ; horaires affichés dans votre fuseau.",
-    "nextAt": "à {time} chez vous"
+    "nextAt": "à {time} chez vous",
+    "unavailable": "Momentanément indisponible"
   },
   "builder": {
     "weaponWedgesToggle": "Configurer les Demon Wedges des armes",

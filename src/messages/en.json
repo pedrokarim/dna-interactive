@@ -550,7 +550,8 @@
     "syncing": "Syncing…",
     "fallbackNotice": "Rotations will be available shortly.",
     "utcNote": "Commissions rotate at the start of every hour; times shown in your local timezone.",
-    "nextAt": "at {time} your time"
+    "nextAt": "at {time} your time",
+    "unavailable": "Temporarily unavailable"
   },
   "builder": {
     "weaponWedgesToggle": "Configure the weapons' Demon Wedges",
