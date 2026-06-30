@@ -173,6 +173,41 @@ export interface CharacterBuild {
 
 const FALLBACK_LANGS = ["FR", "EN"];
 
+/** Retire les balises rich-text du jeu (<H>, </>, <color=…>…) — pur formatage. */
+function stripGameRichText(text: string): string {
+  return text.replace(/<\/?[A-Za-z][^>]*>|<\/>/g, "");
+}
+
+function formatEffectNumber(value: number): string {
+  if (!Number.isFinite(value)) return `${value}`;
+  return Number.isInteger(value) ? `${value}` : `${+value.toFixed(2)}`;
+}
+
+/**
+ * Résout un descriptif d'effet : retire les balises <H>…</> et substitue les
+ * tokens #N par leur valeur au niveau max (scaling.valuesByLevel) — comme la
+ * fiche item. Sans valeurs (mods sans scaling), on se contente de nettoyer les
+ * balises ; un #N sans valeur connue est laissé tel quel.
+ */
+function formatEffectDescription(
+  item: ItemRecord,
+  rawText: string | null | undefined,
+): string | null {
+  if (!rawText) return null;
+  const text = stripGameRichText(rawText);
+  const values = item.scaling?.valuesByLevel;
+  if (!values || !/#\d/.test(text)) return text;
+  const levelKeys = Object.keys(values);
+  const maxKey =
+    item.scaling.maxLevel != null && values[String(item.scaling.maxLevel)]
+      ? String(item.scaling.maxLevel)
+      : levelKeys.reduce((a, b) => (Number(b) > Number(a) ? b : a), levelKeys[0] ?? "0");
+  const byIndex = values[maxKey] ?? {};
+  return text.replace(/#(\d+)/g, (full, idx: string) =>
+    byIndex[idx] !== undefined ? formatEffectNumber(byIndex[idx]) : full,
+  );
+}
+
 export function resolveBuildItemRef(
   categoryId: string,
   itemId: string,
@@ -192,7 +227,10 @@ export function resolveBuildItemRef(
     itemId: item.id,
     modId: item.modId,
     name,
-    description: translation.passiveEffectsDescription ?? translation.description ?? null,
+    description: formatEffectDescription(
+      item,
+      translation.passiveEffectsDescription ?? translation.description,
+    ),
     icon: item.icon.publicPath ?? item.icon.placeholderPath ?? "/marker-default.svg",
     href: `/items/${categoryId}/${item.id}`,
     rarity: item.stats.rarity,
@@ -240,7 +278,10 @@ const DISPLAY_NAME_OVERRIDES_BY_CHARID: Record<number, string> = {
 
 const rawBuilds = allBuilds as unknown as RawCharacterBuild[];
 
-export function getCharacterBuilds(characterId: string): CharacterBuild[] {
+export function getCharacterBuilds(
+  characterId: string,
+  lang: string = "FR",
+): CharacterBuild[] {
   return rawBuilds
     .filter((b) => b.characterId === characterId)
     .map((raw) => ({
@@ -249,13 +290,13 @@ export function getCharacterBuilds(characterId: string): CharacterBuild[] {
       buildName: raw.buildName ?? {},
       weapons: {
         melee: (raw.weapons?.melee ?? []).map((w) => ({
-          item: resolveBuildItemRef("weapons", w.itemId),
+          item: resolveBuildItemRef("weapons", w.itemId, lang),
           rank: w.rank,
           note: w.note ?? {},
           withWedges: w.withWedges ?? false,
         })),
         ranged: (raw.weapons?.ranged ?? []).map((w) => ({
-          item: resolveBuildItemRef("weapons", w.itemId),
+          item: resolveBuildItemRef("weapons", w.itemId, lang),
           rank: w.rank,
           note: w.note ?? {},
           withWedges: w.withWedges ?? false,
@@ -264,23 +305,23 @@ export function getCharacterBuilds(characterId: string): CharacterBuild[] {
       demonWedges: {
         slots: (raw.demonWedges?.slots ?? []).map((s) => ({
           position: s.position,
-          item: resolveBuildItemRef("mods", s.itemId),
+          item: resolveBuildItemRef("mods", s.itemId, lang),
           track: s.track ?? null,
         })),
         centerItem: raw.demonWedges?.centerItemId
-          ? resolveBuildItemRef("mods", raw.demonWedges.centerItemId)
+          ? resolveBuildItemRef("mods", raw.demonWedges.centerItemId, lang)
           : null,
         affinity: raw.demonWedges?.affinity ?? {},
         note: raw.demonWedges?.note ?? {},
       },
       statsPriority: raw.statsPriority ?? [],
       team: (raw.team ?? []).map((t) => ({
-        character: resolveBuildCharacterRef(t.characterId),
+        character: resolveBuildCharacterRef(t.characterId, lang),
         role: t.role,
         note: t.note ?? {},
       })),
       genimon: (raw.genimon ?? []).map((g) => ({
-        item: resolveBuildItemRef("genimons", g.itemId),
+        item: resolveBuildItemRef("genimons", g.itemId, lang),
         rank: g.rank,
       })),
       skillPriority: (raw.skillPriority ?? []).map((s) => ({
@@ -294,7 +335,7 @@ export function getCharacterBuilds(characterId: string): CharacterBuild[] {
             name: raw.consonanceWeapon.name ?? {},
             icon: raw.consonanceWeapon.icon ?? null,
             slots: (raw.consonanceWeapon.slots ?? [])
-              .map((itemId) => resolveBuildItemRef("mods", itemId))
+              .map((itemId) => resolveBuildItemRef("mods", itemId, lang))
               .filter((ref): ref is ResolvedItemRef => ref !== null),
           }
         : null,

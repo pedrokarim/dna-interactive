@@ -25,7 +25,7 @@ export default function BuildShowcase() {
   const lang = useLocale().toUpperCase();
   const featured = FEATURED_IDS.map((id) => {
     const character = getCharacterById(id);
-    const build = character ? getCharacterBuilds(character.id)[0] : undefined;
+    const build = character ? getCharacterBuilds(character.id, lang)[0] : undefined;
     if (!character || !build) return null;
     return { character, build };
   }).filter((x): x is NonNullable<typeof x> => x !== null);

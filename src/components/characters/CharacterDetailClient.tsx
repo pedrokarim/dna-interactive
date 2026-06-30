@@ -71,6 +71,7 @@ import type {
   CharacterBuild,
   BuildDemonWedgeSlot,
   BuildWeaponEntry,
+  ResolvedItemRef,
 } from "@/lib/characters/builds";
 import {
   getArmoryCircle,
@@ -1658,6 +1659,45 @@ function CommunityBuildPreviewModal({
   );
 }
 
+// Le build curé arrive déjà résolu côté serveur (noms d'items dans la locale
+// de route). Le sélecteur ?lang= doit pouvoir retraduire ces noms sans
+// rechargement : les ResolvedItemRef conservent itemId, on re-résout donc juste
+// le nom dans la langue active. (Les notes/skills utilisent déjà selectedLanguage.)
+function relocalizeCuratedBuild(build: CharacterBuild, lang: string): CharacterBuild {
+  const item = (
+    category: "weapons" | "mods" | "genimons",
+    ref: ResolvedItemRef | null,
+  ): ResolvedItemRef | null =>
+    ref ? resolveBuildItemRef(category, ref.itemId, lang) ?? ref : null;
+  return {
+    ...build,
+    weapons: {
+      melee: build.weapons.melee.map((w) => ({ ...w, item: item("weapons", w.item) })),
+      ranged: build.weapons.ranged.map((w) => ({ ...w, item: item("weapons", w.item) })),
+    },
+    demonWedges: {
+      ...build.demonWedges,
+      slots: build.demonWedges.slots.map((s) => ({ ...s, item: item("mods", s.item) })),
+      centerItem: item("mods", build.demonWedges.centerItem),
+    },
+    genimon: build.genimon.map((g) => ({ ...g, item: item("genimons", g.item) })),
+    team: build.team.map((tm) => ({
+      ...tm,
+      character: tm.character
+        ? resolveBuildCharacterRef(tm.character.characterId, lang) ?? tm.character
+        : null,
+    })),
+    consonanceWeapon: build.consonanceWeapon
+      ? {
+          ...build.consonanceWeapon,
+          slots: build.consonanceWeapon.slots.map(
+            (ref) => resolveBuildItemRef("mods", ref.itemId, lang) ?? ref,
+          ),
+        }
+      : null,
+  };
+}
+
 export function BuildTabContent({
   builds,
   character,
@@ -1688,6 +1728,14 @@ export function BuildTabContent({
   const [activeBuildIndex, setActiveBuildIndex] = useState(0);
   const [showTrackAdjust, setShowTrackAdjust] = useState(true);
 
+  // Re-localise les noms d'items du build actif selon la langue choisie
+  // (?lang=) — le build prop est résolu côté serveur dans la locale de route.
+  const activeBuild = builds[activeBuildIndex] ?? builds[0] ?? null;
+  const localizedBuild = useMemo(
+    () => (activeBuild ? relocalizeCuratedBuild(activeBuild, selectedLanguage) : null),
+    [activeBuild, selectedLanguage],
+  );
+
   if (builds.length === 0) {
     return (
       <div className="space-y-3 md:space-y-5">
@@ -1708,7 +1756,7 @@ export function BuildTabContent({
     );
   }
 
-  const build = builds[activeBuildIndex] ?? builds[0];
+  const build = localizedBuild!;
 
   const hasWeapons = build.weapons.melee.length > 0 || build.weapons.ranged.length > 0;
   const hasDemonWedges = build.demonWedges.slots.length > 0;

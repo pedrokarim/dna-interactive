@@ -139,9 +139,6 @@ function ItemTooltipBody({
                 {"★".repeat(item.rarity)}
               </span>
             )}
-            <span className="rounded-full border border-white/10 px-2 py-0.5 font-mono text-parch/85">
-              #{item.modId}
-            </span>
             {item.element && (
               <span className="rounded-full border border-gold/40 bg-gold/10 px-2 py-0.5 text-gold">
                 {item.element}
@@ -217,9 +214,6 @@ function WeaponCell({
           </p>
           <div className="mt-0.5 flex items-center gap-1 text-[10px] text-parch/80">
             <RarityStars rarity={item.rarity} />
-            <span className="rounded border border-white/25 px-1 font-mono">
-              #{item.modId}
-            </span>
           </div>
         </div>
       </div>

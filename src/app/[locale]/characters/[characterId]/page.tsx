@@ -124,7 +124,7 @@ export default async function CharacterDetailPage({
           catalog={catalog}
           character={character}
           levelUpCurves={levelUpCurves}
-          builds={getCharacterBuilds(character.id)}
+          builds={getCharacterBuilds(character.id, locale.toUpperCase())}
           skillSet={getCharacterSkills(character.charId)}
         />
       </Suspense>
