@@ -62,6 +62,7 @@ export async function generateMetadata(
         localized.description ??
         `${category.displayName} details for ${modName} in ${category.availableLanguages.length} languages.`,
       path: `/items/${category.slug}/${item.id}`,
+      dynamicOgImage: true, // image OG fournie par opengraph-image.tsx
       keywords: [
         "Duet Night Abyss",
         "item database",

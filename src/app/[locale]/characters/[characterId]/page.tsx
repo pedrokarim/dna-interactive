@@ -60,7 +60,7 @@ export async function generateMetadata(
       title: `${charName} - ${character.element.label} ${character.weaponTags[0] ?? ""}`,
       description: `Fiche complete de ${charName} dans Duet Night Abyss : element ${character.element.label}, armes, faction, portraits et traductions multilingues.`,
       path: `/characters/${slug}`,
-      image: character.portraits.gacha.publicPath ?? undefined,
+      dynamicOgImage: true, // image OG fournie par opengraph-image.tsx
       keywords: [
         "Duet Night Abyss",
         "personnage",

@@ -19,6 +19,12 @@ export interface PageMetadataOptions {
   description?: string;
   keywords?: string[];
   image?: string;
+  /**
+   * La route possède son propre `opengraph-image.tsx` (image OG générée).
+   * Dans ce cas on n'émet PAS d'image statique ici, sinon Next cumule les deux
+   * `og:image` et les réseaux affichent deux visuels.
+   */
+  dynamicOgImage?: boolean;
   /** Path without locale prefix, e.g. "" for home, "/map", "/characters" */
   path?: string;
   type?: "website" | "article";
@@ -37,6 +43,7 @@ export async function generatePageMetadata(
     description,
     keywords = [],
     image = "/assets/og/og-default.png",
+    dynamicOgImage = false,
     path = "",
     type = "website",
   } = options;
@@ -101,21 +108,22 @@ export async function generatePageMetadata(
       siteName: SITE_CONFIG.name,
       title: finalTitle,
       description: finalDescription,
-      images: [
-        {
-          url: image,
-          width: 1200,
-          height: 630,
-          alt: finalTitle,
-        },
-        ...previousImages,
-      ],
+      // Quand la route a son propre opengraph-image.tsx, on laisse Next injecter
+      // SON image et on n'en ajoute aucune ici (sinon double og:image).
+      ...(dynamicOgImage
+        ? {}
+        : {
+            images: [
+              { url: image, width: 1200, height: 630, alt: finalTitle },
+              ...previousImages,
+            ],
+          }),
     },
     twitter: {
       card: "summary_large_image",
       title: finalTitle,
       description: finalDescription,
-      images: [image],
+      ...(dynamicOgImage ? {} : { images: [image] }),
       site: "@ascencia64",
       creator: "@ascencia64",
     },
