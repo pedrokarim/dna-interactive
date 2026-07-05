@@ -8,29 +8,45 @@
     "weapons": {
       "melee": [
         {
+          "itemId": "weapons-10107",
+          "rank": "best",
+          "note": {
+            "FR": "Chainbreak Pinion - arme signature (Epee, v1.4). Augmente la Morale et accorde des buffs de degats par Combo Point. Meilleure arme melee de Flora.",
+            "EN": "Chainbreak Pinion - signature weapon (Sword, v1.4). Increases Morale and grants damage buffs per Combo Point. Flora's best melee weapon."
+          }
+        },
+        {
           "itemId": "weapons-10402",
           "rank": "alternative",
           "note": {
-            "FR": "Aureate Yore - CRIT DMG +125%, Sliding Attacks gagnent +150% CRIT Chance. Inferieure a l'arme signature mais solide en attendant l'import de Chainbreak Pinion (non encore en base).",
-            "EN": "Aureate Yore - CRIT DMG +125%, Sliding Attacks gain +150% CRIT Chance. Inferior to the signature weapon but solid while Chainbreak Pinion is not yet in the database."
+            "FR": "Aureate Yore - CRIT DMG +125%, les Sliding Attacks gagnent +150% CRIT Chance. Solide alternative a la signature.",
+            "EN": "Aureate Yore - CRIT DMG +125%, Sliding Attacks gain +150% CRIT Chance. Solid alternative to the signature."
           }
         },
         {
           "itemId": "weapons-10601",
           "rank": "alternative",
           "note": {
-            "FR": "Momiji Itteki - CRIT DMG +125%, Degats inflinges +18% plus +18% par Combo Level. Bonne seconde alternative.",
+            "FR": "Momiji Itteki - CRIT DMG +125%, Degats infliges +18% plus +18% par Combo Level. Bonne seconde alternative.",
             "EN": "Momiji Itteki - CRIT DMG +125%, Damage Dealt +18% plus +18% per Combo Level. Solid second alternative."
           }
         }
       ],
       "ranged": [
         {
-          "itemId": "weapons-20102",
+          "itemId": "weapons-20599",
           "rank": "best",
           "note": {
-            "FR": "Rendhusk - Character ATK +120%. Le buff ATK personnage amplifie significativement les degats critiques de Flora. Arme distance BIS.",
-            "EN": "Rendhusk - Character ATK +120%. Character ATK buff significantly inflates Flora's crit damage. BIS ranged weapon."
+            "FR": "Thorned Requiem - arme de Calamite (Mitrailleuse, v1.4). Bonus de Skill Intensity et de Degats Umbro. Meilleure arme distance de Flora.",
+            "EN": "Thorned Requiem - Calamity weapon (Machinegun, v1.4). Skill Intensity and Umbro DMG bonuses. Flora's best ranged weapon."
+          }
+        },
+        {
+          "itemId": "weapons-20102",
+          "rank": "alternative",
+          "note": {
+            "FR": "Rendhusk - Character ATK +120%. Le buff ATK personnage amplifie les degats critiques de Flora. Bonne alternative distance.",
+            "EN": "Rendhusk - Character ATK +120%. Character ATK buff inflates Flora's crit damage. Solid ranged alternative."
           }
         }
       ]
@@ -74,7 +90,7 @@
         },
         {
           "position": 8,
-          "itemId": "mods-51313",
+          "itemId": "mods-51717",
           "track": null
         }
       ],
@@ -98,7 +114,7 @@
     ],
     "team": [
       {
-        "characterId": "char-nvzhu02",
+        "characterId": "char-protagonist-female",
         "role": "Sub-DPS",
         "note": {
           "FR": "Phoxhunter (Umbro) - amplifie les degats Umbro et Weapon DMG de l'equipe. Equipez-le ideralement avec Siren's Wings Inspo Rage pour un boost CRIT DMG supplementaire a Flora.",
@@ -164,8 +180,8 @@
       }
     ],
     "notes": {
-      "FR": "Flora est la premiere personnage centree sur les Degats d'Arme dont les competences scalent avec le Weapon DMG (et non Skill Intensity comme la majorite des DPS). Elle inflige enormement de degats critiques et d'arme, beneficie d'une mobilite correcte et tire parti des meilleurs Demon Wedges et supports.\n\nMecanique cœur : empilement de Symphony, Reprise et Thorns pour maximiser les degats scaled-on-weapon. Quand un coup critique passe, l'ennemi devient une 'Marionnette de Cour' (incapable d'agir).\n\nIntron priority (ordre d'unlock) :\n- I2 (★★★★★) : double les stacks de Reprise + reduit le CD de Waltz\n- I6 (★★★★★) : +30% PEN actif, le Finale convertit les stacks de Reprise, declenche Waltz 5 fois\n- I1 (★★★★☆) : +5 stacks Symphony, 75% CRIT Rate\n- I4 (★★★☆☆) : gains de Lucidite/Combo Points depuis Entranced\n\nForces : enormes degats CRIT et Weapon DMG, mobilite decente, beneficie des meilleurs supports.\nFaiblesses : aucune capacite defensive en dehors de l'immunite au hitstun. Besoin d'armes top-tier pour fonctionner pleinement.\n\nItems v1.4 non encore importes dans la base : Chainbreak Pinion (arme signature melee), Thorned Requiem (Calamity weapon ranged), Feathered Serpent's Morale (Demon Wedge central). A ajouter manuellement quand l'extraction sera complete.",
-      "EN": "Flora is the first character whose skills damage scales with Weapon DMG (not Skill Intensity like most DPS). She deals huge crit and weapon damage, has decent mobility, and benefits from top-tier Demon Wedges and supports.\n\nCore mechanic: stacking Symphony, Reprise, and Thorns to maximize weapon-scaled damage. When CRIT lands, enemies become 'Courtly Marionettes' (unable to act).\n\nIntron priority (unlock order):\n- I2 (★★★★★): doubles Reprise stacks + reduces Waltz cooldown\n- I6 (★★★★★): +30% PEN when active, Finale converts Reprise stacks, triggers Waltz 5 times\n- I1 (★★★★☆): +5 Symphony stacks, 75% CRIT Rate\n- I4 (★★★☆☆): Sanity/Combo Point gains from Entranced\n\nStrengths: huge CRIT and Weapon DMG, decent mobility, scales with top-tier supports.\nWeaknesses: no defensive abilities outside of hitstun immunity. Needs built top-tier weapons to function effectively.\n\nv1.4 items not yet imported into the database: Chainbreak Pinion (signature melee weapon), Thorned Requiem (Calamity ranged weapon), Feathered Serpent's Morale (central Demon Wedge). To be added manually once extraction pipeline catches up."
+      "FR": "Flora est la premiere personnage centree sur les Degats d'Arme dont les competences scalent avec le Weapon DMG (et non Skill Intensity comme la majorite des DPS). Elle inflige enormement de degats critiques et d'arme, beneficie d'une mobilite correcte et tire parti des meilleurs Demon Wedges et supports.\n\nMecanique cœur : empilement de Symphony, Reprise et Thorns pour maximiser les degats scaled-on-weapon. Quand un coup critique passe, l'ennemi devient une 'Marionnette de Cour' (incapable d'agir).\n\nIntron priority (ordre d'unlock) :\n- I2 (★★★★★) : double les stacks de Reprise + reduit le CD de Waltz\n- I6 (★★★★★) : +30% PEN actif, le Finale convertit les stacks de Reprise, declenche Waltz 5 fois\n- I1 (★★★★☆) : +5 stacks Symphony, 75% CRIT Rate\n- I4 (★★★☆☆) : gains de Lucidite/Combo Points depuis Entranced\n\nForces : enormes degats CRIT et Weapon DMG, mobilite decente, beneficie des meilleurs supports.\nFaiblesses : aucune capacite defensive en dehors de l'immunite au hitstun. Besoin d'armes top-tier pour fonctionner pleinement.\n\nArmes v1.4 desormais integrees : Chainbreak Pinion (signature melee, Epee) en BiS mele, Thorned Requiem (Calamite, Mitrailleuse) en BiS distance, centre Feathered Serpent's Morale.",
+      "EN": "Flora is the first character whose skills damage scales with Weapon DMG (not Skill Intensity like most DPS). She deals huge crit and weapon damage, has decent mobility, and benefits from top-tier Demon Wedges and supports.\n\nCore mechanic: stacking Symphony, Reprise, and Thorns to maximize weapon-scaled damage. When CRIT lands, enemies become 'Courtly Marionettes' (unable to act).\n\nIntron priority (unlock order):\n- I2 (★★★★★): doubles Reprise stacks + reduces Waltz cooldown\n- I6 (★★★★★): +30% PEN when active, Finale converts Reprise stacks, triggers Waltz 5 times\n- I1 (★★★★☆): +5 Symphony stacks, 75% CRIT Rate\n- I4 (★★★☆☆): Sanity/Combo Point gains from Entranced\n\nStrengths: huge CRIT and Weapon DMG, decent mobility, scales with top-tier supports.\nWeaknesses: no defensive abilities outside of hitstun immunity. Needs built top-tier weapons to function effectively.\n\nv1.4 weapons now integrated: Chainbreak Pinion (signature melee, Sword) as BiS melee, Thorned Requiem (Calamity, Machinegun) as BiS ranged, central Feathered Serpent's Morale."
     }
   }
 ]
