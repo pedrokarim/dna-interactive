@@ -21,7 +21,7 @@ import FilterChips from "@/components/list/FilterChips";
 import ViewModeToggle from "@/components/list/ViewModeToggle";
 import { useListViewMode } from "@/components/list/useListViewMode";
 import { DnaPanel } from "@/components/dna/Panel";
-import { ITEM_FALLBACK_ICON } from "@/components/dna/ItemIcon";
+import { DnaItemIcon, ITEM_FALLBACK_ICON } from "@/components/dna/ItemIcon";
 import { useDialogA11y } from "@/components/dna/useDialogA11y";
 
 const SORT_VALUES = ["id", "rarityDesc", "rarityAsc", "durationAsc", "durationDesc"] as const;
@@ -533,7 +533,7 @@ export default function DraftsGridClient({
                   <div className="flex h-14 w-14 md:h-16 md:w-16 shrink-0 items-center justify-center rounded-sm border border-gold/25 bg-ink/80 p-2">
                     <div className="relative h-full w-full">
                       <div className="h-full w-full overflow-hidden rounded-sm">
-                        <img
+                        <DnaItemIcon
                           src={recipeIconSrc}
                           alt={`Draft ${recipe.draftId}`}
                           width={64}
@@ -602,7 +602,7 @@ export default function DraftsGridClient({
                           key={`${recipe.id}-ingredient-${ingredient.id}-${index}`}
                           className="relative rounded-sm border border-white/10 bg-ink/70 p-2"
                         >
-                          <img
+                          <DnaItemIcon
                             src={ingredient.icon.publicPath ?? ingredient.icon.placeholderPath ?? ITEM_FALLBACK_ICON}
                             alt={resolveDraftItemName(ingredient, selectedLanguages[0], availableLanguages)}
                             width={32}
@@ -667,7 +667,7 @@ export default function DraftsGridClient({
                   className="group relative flex items-center gap-4 border border-line/25 bg-panel/85 p-3 backdrop-blur-sm transition-all duration-200 hover:border-gold/40 hover:bg-panel/95"
                 >
                   <div className="relative flex h-16 w-16 shrink-0 items-center justify-center rounded-sm border border-gold/25 bg-ink/80 p-2">
-                    <img
+                    <DnaItemIcon
                       src={recipeIconSrc}
                       alt={productNameLead}
                       width={64}
@@ -723,7 +723,7 @@ export default function DraftsGridClient({
                         key={`${recipe.id}-ingredient-${ingredient.id}-${index}`}
                         className="relative h-10 w-10 rounded-sm border border-white/10 bg-ink/70 p-1"
                       >
-                        <img
+                        <DnaItemIcon
                           src={ingredient.icon.publicPath ?? ingredient.icon.placeholderPath ?? ITEM_FALLBACK_ICON}
                           alt={resolveDraftItemName(ingredient, selectedLanguages[0], availableLanguages)}
                           width={40}
@@ -767,7 +767,7 @@ export default function DraftsGridClient({
                 className="group relative flex aspect-square flex-col overflow-hidden rounded-sm border border-white/10 bg-ink/80 p-2 transition-all duration-200 hover:-translate-y-0.5 hover:border-gold/40"
               >
                 <div className="relative flex flex-1 items-center justify-center overflow-hidden">
-                  <img
+                  <DnaItemIcon
                     src={recipeIconSrc}
                     alt={productNameLead}
                     width={96}
@@ -930,7 +930,7 @@ export default function DraftsGridClient({
               </button>
             </div>
             <div className="mt-3 flex h-64 items-center justify-center rounded-sm border border-gold/25 bg-ink/80 p-4">
-              <img src={previewIcon.src} alt={previewIcon.alt} width={200} height={200} className="max-h-full max-w-full object-contain" />
+              <DnaItemIcon src={previewIcon.src} alt={previewIcon.alt} width={200} height={200} className="max-h-full max-w-full object-contain" />
             </div>
           </div>
         </div>

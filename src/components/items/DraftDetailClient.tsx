@@ -10,7 +10,7 @@ import type { DraftItemReference, DraftRecipeRecord } from "@/lib/items/drafts";
 import { resolveDraftItemDescription, resolveDraftItemName } from "@/lib/items/drafts";
 import { DnaPanel } from "@/components/dna/Panel";
 import { DnaSectionLabel } from "@/components/dna/SectionLabel";
-import { ITEM_FALLBACK_ICON } from "@/components/dna/ItemIcon";
+import { DnaItemIcon } from "@/components/dna/ItemIcon";
 
 type DraftDetailClientProps = {
   recipe: DraftRecipeRecord;
@@ -95,7 +95,7 @@ type RecipeNodeProps = {
 function RecipeNode({ item, selectedLanguage, fallbackLanguages, primary = false }: RecipeNodeProps) {
   const td = useTranslations('draftDetail');
   const tc = useTranslations('common');
-  const iconSrc = item.icon.publicPath ?? item.icon.placeholderPath ?? ITEM_FALLBACK_ICON;
+  const iconSrc = item.icon.publicPath ?? item.icon.placeholderPath;
   const name = resolveDraftItemName(item, selectedLanguage, fallbackLanguages);
   const description = resolveDraftItemDescription(item, selectedLanguage, fallbackLanguages);
   const classLabel = metadataString(item, "classLabelEn");
@@ -110,7 +110,7 @@ function RecipeNode({ item, selectedLanguage, fallbackLanguages, primary = false
       } p-2 shadow-[0_6px_18px_rgba(2,6,23,0.35)] transition-colors group-hover:border-gold/65`}
     >
       <div className="flex h-16 w-16 items-center justify-center rounded-sm border border-white/10 bg-panel/80 p-2">
-        <img src={iconSrc} alt={name} width={64} height={64} className="max-h-full max-w-full object-contain" />
+        <DnaItemIcon src={iconSrc} alt={name} width={64} height={64} className="max-h-full max-w-full object-contain" />
       </div>
       <span className="absolute bottom-1 right-1 rounded-sm bg-panel/95 px-1.5 py-0.5 text-[11px] font-medium text-gold">
         x{item.quantity}
@@ -194,7 +194,7 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
 
   const productName = resolveDraftItemName(recipe.product, selectedLanguage, availableLanguages);
   const productDescription = resolveDraftItemDescription(recipe.product, selectedLanguage, availableLanguages);
-  const productIcon = recipe.product.icon.publicPath ?? recipe.product.icon.placeholderPath ?? ITEM_FALLBACK_ICON;
+  const productIcon = recipe.product.icon.publicPath ?? recipe.product.icon.placeholderPath;
   const recipeIcon = recipe.icon.publicPath ?? recipe.icon.placeholderPath ?? productIcon;
   const classLabel = metadataString(recipe.product, "classLabelEn");
   const subtypeLabel = metadataString(recipe.product, "subtypeLabelEn");
@@ -312,7 +312,7 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
           <div className="rounded-sm border border-gold/30 bg-ink/60 p-3 md:p-4">
             <div className="flex items-start gap-3">
               <div className="flex h-14 w-14 md:h-16 md:w-16 shrink-0 items-center justify-center rounded-sm border border-gold/30 bg-ink/80 p-2">
-                <img src={recipeIcon} alt={productName} width={64} height={64} className="max-h-full max-w-full object-contain" />
+                <DnaItemIcon src={recipeIcon} alt={productName} width={64} height={64} className="max-h-full max-w-full object-contain" />
               </div>
               <div className="min-w-0">
                 <p className="font-caps text-[0.6rem] uppercase tracking-[0.22em] text-gold/90">{t('resultLabel')}</p>
@@ -422,7 +422,7 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
               availableLanguages,
             );
             const ingredientIcon =
-              ingredient.icon.publicPath ?? ingredient.icon.placeholderPath ?? ITEM_FALLBACK_ICON;
+              ingredient.icon.publicPath ?? ingredient.icon.placeholderPath;
 
             return (
               <article
@@ -431,7 +431,7 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
               >
                 <div className="flex items-start gap-3">
                   <div className="relative flex h-14 w-14 items-center justify-center rounded-sm border border-white/10 bg-panel/70 p-2">
-                    <img src={ingredientIcon} alt={ingredientName} width={56} height={56} loading="lazy" className="max-h-full max-w-full object-contain" />
+                    <DnaItemIcon src={ingredientIcon} alt={ingredientName} width={56} height={56} loading="lazy" className="max-h-full max-w-full object-contain" />
                     <span className="absolute bottom-0 right-0 translate-x-1/4 translate-y-1/4 rounded-sm bg-panel/95 px-1.5 py-0.5 text-[11px] font-medium text-gold">
                       x{ingredient.quantity}
                     </span>

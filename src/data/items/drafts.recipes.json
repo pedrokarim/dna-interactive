@@ -46458,8 +46458,8 @@
         },
         "icon": {
           "gamePath": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Weapon_Polearm_Zaie.T_Weapon_Polearm_Zaie'",
-          "publicPath": null,
-          "placeholderPath": "/marker-default.svg"
+          "publicPath": "/assets/items/resources/T_Weapon_Polearm_Zaie.png",
+          "placeholderPath": "/assets/items/resources/T_Weapon_Polearm_Zaie.png"
         },
         "metadata": {
           "resourceSType": "Material"
@@ -46492,8 +46492,8 @@
         },
         "icon": {
           "gamePath": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Weapon_Piece_Polearm_Zaie.T_Weapon_Piece_Polearm_Zaie'",
-          "publicPath": null,
-          "placeholderPath": "/marker-default.svg"
+          "publicPath": "/assets/items/resources/T_Weapon_Piece_Polearm_Zaie.png",
+          "placeholderPath": "/assets/items/resources/T_Weapon_Piece_Polearm_Zaie.png"
         },
         "metadata": {
           "resourceSType": "Material"
@@ -56896,8 +56896,8 @@
         },
         "icon": {
           "gamePath": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Weapon_Machinegun_Zaie.T_Weapon_Machinegun_Zaie'",
-          "publicPath": null,
-          "placeholderPath": "/marker-default.svg"
+          "publicPath": "/assets/items/resources/T_Weapon_Machinegun_Zaie.png",
+          "placeholderPath": "/assets/items/resources/T_Weapon_Machinegun_Zaie.png"
         },
         "metadata": {
           "resourceSType": "Material"
@@ -56930,8 +56930,8 @@
         },
         "icon": {
           "gamePath": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Weapon_Piece_Machinegun_Zaie.T_Weapon_Piece_Machinegun_Zaie'",
-          "publicPath": null,
-          "placeholderPath": "/marker-default.svg"
+          "publicPath": "/assets/items/resources/T_Weapon_Piece_Machinegun_Zaie.png",
+          "placeholderPath": "/assets/items/resources/T_Weapon_Piece_Machinegun_Zaie.png"
         },
         "metadata": {
           "resourceSType": "Material"
