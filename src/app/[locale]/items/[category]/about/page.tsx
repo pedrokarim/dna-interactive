@@ -16,12 +16,156 @@ import {
   Zap,
   Wrench,
 } from "lucide-react";
-import { getItemCatalog, getItemCategoryBySlug } from "@/lib/items/catalog";
+import CalamityWeaponsGuideClient, {
+  type CalamityGuideWeapon,
+} from "@/components/items/CalamityWeaponsGuideClient";
+import {
+  getItemCatalog,
+  getItemCategoryBySlug,
+  getItemTranslation,
+  getItemsByCategoryId,
+} from "@/lib/items/catalog";
+import { getWeaponBuild } from "@/lib/items/weapon-builds";
 import { generatePageMetadata } from "@/lib/metadata";
 
 type CategoryAboutPageProps = {
   params: Promise<{ locale: string; category: string }>;
 };
+
+type RawForgeCost = {
+  level: number;
+  materialIds: number[];
+  quantities: number[];
+  note?: string;
+};
+
+const FALLBACK_ICON = "/marker-default.svg";
+
+const CALAMITY_FORGE_COSTS: Record<string, RawForgeCost[]> = {
+  "weapons-10299": [
+    { level: 1, materialIds: [15002, 202, 15026, 15027], quantities: [36, 5, 30, 30] },
+    { level: 2, materialIds: [15002, 15031, 20027, 15026, 15027], quantities: [42, 20, 6, 40, 40] },
+    { level: 3, materialIds: [15002, 15031, 15037, 202, 15026, 15027], quantities: [48, 30, 5, 6, 50, 50] },
+    { level: 4, materialIds: [15002, 15031, 15037, 20027, 15026, 15027], quantities: [54, 50, 15, 6, 60, 60] },
+    { level: 5, materialIds: [15002, 15031, 15037, 1006, 15026, 15027], quantities: [100, 90, 20, 1, 100, 100] },
+  ],
+  "weapons-10399": [1, 2, 3, 4, 5].map((level) => ({
+    level,
+    materialIds: [100],
+    quantities: [5],
+    note: "Coût minimal actuellement exposé pour cette arme en acier dans les tables locales.",
+  })),
+  "weapons-20298": [1, 2, 3, 4, 5].map((level) => ({
+    level,
+    materialIds: [100],
+    quantities: [5],
+    note: "Coût minimal actuellement exposé pour cette arme en acier dans les tables locales.",
+  })),
+  "weapons-20599": [
+    { level: 1, materialIds: [15003, 202, 15028, 15029], quantities: [36, 5, 30, 30] },
+    { level: 2, materialIds: [15003, 15036, 20028, 15028, 15029], quantities: [42, 20, 6, 40, 40] },
+    { level: 3, materialIds: [15003, 15036, 15037, 202, 15028, 15029], quantities: [48, 30, 5, 6, 50, 50] },
+    { level: 4, materialIds: [15003, 15036, 15037, 20028, 15028, 15029], quantities: [54, 50, 15, 6, 60, 60] },
+    { level: 5, materialIds: [15003, 15036, 15037, 1006, 15028, 15029], quantities: [100, 90, 20, 1, 100, 100] },
+  ],
+};
+
+function stringField(value: unknown): string | null {
+  return typeof value === "string" && value.trim().length > 0 ? value : null;
+}
+
+function numberField(value: unknown): number | null {
+  return typeof value === "number" && Number.isFinite(value) ? value : null;
+}
+
+function stripGameRichText(text: string | null | undefined): string | null {
+  if (!text) return null;
+  const stripped = text.replace(/<\/?[A-Za-z][^>]*>|<\/>/g, "").trim();
+  return stripped.length > 0 ? stripped : null;
+}
+
+function buildCalamityForgeSteps(
+  weaponId: string,
+  resourcesById: Map<number, ReturnType<typeof getItemsByCategoryId>[number]>,
+): CalamityGuideWeapon["forgeSteps"] {
+  return (CALAMITY_FORGE_COSTS[weaponId] ?? []).map((step) => ({
+    level: step.level,
+    note: step.note ?? null,
+    materials: step.materialIds.map((resourceId, index) => {
+      const resource = resourcesById.get(resourceId);
+      const translated = resource ? getItemTranslation(resource, "FR", ["FR", "EN"]) : null;
+      return {
+        id: resourceId,
+        name: translated?.modName ?? `Ressource #${resourceId}`,
+        icon: resource?.icon.publicPath ?? resource?.icon.placeholderPath ?? FALLBACK_ICON,
+        quantity: step.quantities[index] ?? 0,
+      };
+    }),
+  }));
+}
+
+function buildCalamityGuideWeapons(): CalamityGuideWeapon[] {
+  const resourcesById = new Map(getItemsByCategoryId("resources").map((resource) => [resource.modId, resource]));
+
+  return getItemsByCategoryId("weapons")
+    .filter((item) => item.fields.WeaponSubType === "Hyper")
+    .sort((a, b) => a.modId - b.modId)
+    .map((item) => {
+      const translation = getItemTranslation(item, "FR", ["FR", "EN"]);
+      const english = getItemTranslation(item, "EN", ["EN", "FR"]);
+      const type = item.fields.Type === "Ranged" ? "Ranged" : "Melee";
+      const weaponBuild = getWeaponBuild(item.id, "FR");
+      const wedgePoolKey = type === "Melee" ? "UI_Armory_Meleeweapon" : "UI_Armory_Longrange";
+
+      return {
+        id: item.id,
+        href: `/items/weapons/${item.id}`,
+        name: translation.modName ?? `Arme #${item.modId}`,
+        englishName: english.modName ?? `Weapon #${item.modId}`,
+        description: stripGameRichText(translation.description),
+        icon: item.icon.publicPath ?? item.icon.placeholderPath ?? FALLBACK_ICON,
+        type,
+        typeLabel: translation.typeCompatibilityNames[0] ?? (type === "Melee" ? "Armes de mêlée" : "Armes à distance"),
+        subtype: stringField(item.fields.WeaponSubtype) ?? stringField(item.fields.ResourceSType) ?? "Unknown",
+        subtypeLabel:
+          translation.typeCompatibilityNames[1] ??
+          stringField(item.fields.WeaponSubtype) ??
+          stringField(item.fields.ResourceSType) ??
+          "Type inconnu",
+        atkType: stringField(item.fields.ATKType),
+        baseAtk: numberField(item.fields.BaseATK),
+        maxAtk: numberField(item.fields.ATKMax),
+        critRate: numberField(item.fields.CRI),
+        critDamage: numberField(item.fields.CRD),
+        openVersion: numberField(item.fields.OpenVersion),
+        passiveDescription: stripGameRichText(translation.passiveEffectsDescription),
+        potentialTreeKnown: item.id === "weapons-10299" || item.id === "weapons-20599",
+        wedgePoolKey,
+        wedgePoolLabel: type === "Melee" ? "Demon Wedges d'arme mêlée" : "Demon Wedges d'arme à distance",
+        wedgeBuildSlots:
+          weaponBuild?.demonWedges.slots.map((slot) => ({
+            position: slot.position,
+            name: slot.item?.name ?? `Slot ${slot.position}`,
+            icon: slot.item?.icon ?? FALLBACK_ICON,
+            href: slot.item?.href ?? null,
+            track: slot.track,
+          })) ?? [],
+        forgeSteps: buildCalamityForgeSteps(item.id, resourcesById),
+      };
+    });
+}
+
+function getWeaponWedgePoolCounts() {
+  const mods = getItemsByCategoryId("mods");
+  const count = (key: string) => mods.filter((mod) => mod.typeCompatibility.textKeys.includes(key)).length;
+
+  return {
+    melee: count("UI_Armory_Meleeweapon"),
+    ranged: count("UI_Armory_Longrange"),
+    consonanceMelee: count("UI_Armory_MeleeweaponUltra"),
+    consonanceRanged: count("UI_Armory_LongrangeUltra"),
+  };
+}
 
 function GuideBadge({ icon, label }: { icon: React.ReactNode; label: string }) {
   return (
@@ -448,13 +592,19 @@ export async function generateMetadata(
 
   return generatePageMetadata(
     {
-      title: `Guide ${category.title}`,
-      description: `Comprendre le fonctionnement de ${category.title}: niveaux, affinite, tolerance, traductions et lecture des effets.`,
+      title: category.id === "weapons" ? "Guide Armes de calamité" : `Guide ${category.title}`,
+      description:
+        category.id === "weapons"
+          ? "Comprendre les armes de calamité de Duet Night Abyss: Fusion de calamité, Potentiels d'arme, prérequis de maîtrise et builds de Demon Wedges."
+          : `Comprendre le fonctionnement de ${category.title}: niveaux, affinite, tolerance, traductions et lecture des effets.`,
       path: `/items/${category.slug}/about`,
       keywords: [
         "Duet Night Abyss",
         "items guide",
         "demon wedge",
+        "calamity weapons",
+        "armes de calamité",
+        "fusion de calamité",
         "mods",
         "affinite",
         "tolerance",
@@ -476,6 +626,17 @@ export default async function CategoryAboutPage({ params }: CategoryAboutPagePro
 
   if (category.id === "mods") {
     return <ModsAboutContent categorySlug={category.slug} />;
+  }
+
+  if (category.id === "weapons") {
+    return (
+      <CalamityWeaponsGuideClient
+        categorySlug={category.slug}
+        totalWeaponCount={getItemsByCategoryId("weapons").length}
+        weapons={buildCalamityGuideWeapons()}
+        wedgePools={getWeaponWedgePoolCounts()}
+      />
+    );
   }
 
   return <GenericCategoryAboutContent categoryTitle={category.title} categorySlug={category.slug} />;

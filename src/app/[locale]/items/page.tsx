@@ -7,7 +7,6 @@ import { DnaPanel } from "@/components/dna/Panel";
 
 export default async function ItemsCategoriesPage() {
   const tItems = await getTranslations('items');
-  const tCommon = await getTranslations('common');
   const catalog = getItemCatalog();
   const draftRecipes = getDraftRecipeSummaries();
   const draftLanguages = getDraftAvailableLanguages(draftRecipes);
@@ -86,14 +85,18 @@ export default async function ItemsCategoriesPage() {
               )}
             </Link>
 
-            {category.id === "mods" && (
+            {(category.id === "mods" || category.id === "weapons") && (
               <div className="mt-5 border-t border-white/10 pt-4">
                 <Link
                   href={`/items/${category.slug}/about`}
-                  className="inline-flex items-center gap-2 rounded-sm border border-hydro/35 bg-hydro/10 px-3 py-2 text-sm font-medium text-hydro transition-colors hover:bg-hydro/20"
+                  className={`inline-flex items-center gap-2 rounded-sm border px-3 py-2 text-sm font-medium transition-colors ${
+                    category.id === "weapons"
+                      ? "border-crimson-bright/35 bg-crimson/10 text-crimson-bright hover:bg-crimson/20"
+                      : "border-hydro/35 bg-hydro/10 text-hydro hover:bg-hydro/20"
+                  }`}
                 >
                   <BookOpenText className="h-4 w-4" />
-                  {tItems('demonWedgeGuide')}
+                  {category.id === "weapons" ? "Guide armes de calamité" : tItems('demonWedgeGuide')}
                 </Link>
               </div>
             )}
