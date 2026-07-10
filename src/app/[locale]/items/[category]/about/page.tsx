@@ -26,49 +26,22 @@ import {
   getItemsByCategoryId,
 } from "@/lib/items/catalog";
 import { getWeaponBuild } from "@/lib/items/weapon-builds";
+import { isCalamityWeapon } from "@/lib/items/calamity-weapons";
+import calamityForgeCosts from "@/data/weapons/calamity-forge-costs.json";
 import { generatePageMetadata } from "@/lib/metadata";
 
 type CategoryAboutPageProps = {
   params: Promise<{ locale: string; category: string }>;
 };
 
-type RawForgeCost = {
-  level: number;
-  materialIds: number[];
-  quantities: number[];
-  note?: string;
-};
+const FALLBACK_ICON = "/item-fallback.svg";
+/** Ressource « Phoxène » — les armes en acier n'exposent que ce coût minimal dans les tables locales. */
+const PHOXENE_ID = 100;
 
-const FALLBACK_ICON = "/marker-default.svg";
-
-const CALAMITY_FORGE_COSTS: Record<string, RawForgeCost[]> = {
-  "weapons-10299": [
-    { level: 1, materialIds: [15002, 202, 15026, 15027], quantities: [36, 5, 30, 30] },
-    { level: 2, materialIds: [15002, 15031, 20027, 15026, 15027], quantities: [42, 20, 6, 40, 40] },
-    { level: 3, materialIds: [15002, 15031, 15037, 202, 15026, 15027], quantities: [48, 30, 5, 6, 50, 50] },
-    { level: 4, materialIds: [15002, 15031, 15037, 20027, 15026, 15027], quantities: [54, 50, 15, 6, 60, 60] },
-    { level: 5, materialIds: [15002, 15031, 15037, 1006, 15026, 15027], quantities: [100, 90, 20, 1, 100, 100] },
-  ],
-  "weapons-10399": [1, 2, 3, 4, 5].map((level) => ({
-    level,
-    materialIds: [100],
-    quantities: [5],
-    note: "Coût minimal actuellement exposé pour cette arme en acier dans les tables locales.",
-  })),
-  "weapons-20298": [1, 2, 3, 4, 5].map((level) => ({
-    level,
-    materialIds: [100],
-    quantities: [5],
-    note: "Coût minimal actuellement exposé pour cette arme en acier dans les tables locales.",
-  })),
-  "weapons-20599": [
-    { level: 1, materialIds: [15003, 202, 15028, 15029], quantities: [36, 5, 30, 30] },
-    { level: 2, materialIds: [15003, 15036, 20028, 15028, 15029], quantities: [42, 20, 6, 40, 40] },
-    { level: 3, materialIds: [15003, 15036, 15037, 202, 15028, 15029], quantities: [48, 30, 5, 6, 50, 50] },
-    { level: 4, materialIds: [15003, 15036, 15037, 20028, 15028, 15029], quantities: [54, 50, 15, 6, 60, 60] },
-    { level: 5, materialIds: [15003, 15036, 15037, 1006, 15028, 15029], quantities: [100, 90, 20, 1, 100, 100] },
-  ],
-};
+// Coûts de Fusion de calamité extraits de HyperWeaponCardLevel (résolus par
+// research_data/gen-calamity-forge-costs.mjs → src/data/weapons/calamity-forge-costs.json).
+type ForgeCostStep = { level: number; materials: { id: number; num: number }[] };
+const CALAMITY_FORGE_COSTS = calamityForgeCosts as Record<string, ForgeCostStep[]>;
 
 function stringField(value: unknown): string | null {
   return typeof value === "string" && value.trim().length > 0 ? value : null;
@@ -88,27 +61,32 @@ function buildCalamityForgeSteps(
   weaponId: string,
   resourcesById: Map<number, ReturnType<typeof getItemsByCategoryId>[number]>,
 ): CalamityGuideWeapon["forgeSteps"] {
-  return (CALAMITY_FORGE_COSTS[weaponId] ?? []).map((step) => ({
-    level: step.level,
-    note: step.note ?? null,
-    materials: step.materialIds.map((resourceId, index) => {
-      const resource = resourcesById.get(resourceId);
-      const translated = resource ? getItemTranslation(resource, "FR", ["FR", "EN"]) : null;
-      return {
-        id: resourceId,
-        name: translated?.modName ?? `Ressource #${resourceId}`,
-        icon: resource?.icon.publicPath ?? resource?.icon.placeholderPath ?? FALLBACK_ICON,
-        quantity: step.quantities[index] ?? 0,
-      };
-    }),
-  }));
+  return (CALAMITY_FORGE_COSTS[weaponId] ?? []).map((step) => {
+    const onlyPhoxene = step.materials.length === 1 && step.materials[0]?.id === PHOXENE_ID;
+    return {
+      level: step.level,
+      note: onlyPhoxene
+        ? "Coût minimal actuellement exposé pour cette arme en acier dans les tables locales."
+        : null,
+      materials: step.materials.map((mat) => {
+        const resource = resourcesById.get(mat.id);
+        const translated = resource ? getItemTranslation(resource, "FR", ["FR", "EN"]) : null;
+        return {
+          id: mat.id,
+          name: translated?.modName ?? `Ressource #${mat.id}`,
+          icon: resource?.icon.publicPath ?? resource?.icon.placeholderPath ?? FALLBACK_ICON,
+          quantity: mat.num,
+        };
+      }),
+    };
+  });
 }
 
 function buildCalamityGuideWeapons(): CalamityGuideWeapon[] {
   const resourcesById = new Map(getItemsByCategoryId("resources").map((resource) => [resource.modId, resource]));
 
   return getItemsByCategoryId("weapons")
-    .filter((item) => item.fields.WeaponSubType === "Hyper")
+    .filter((item) => isCalamityWeapon(item))
     .sort((a, b) => a.modId - b.modId)
     .map((item) => {
       const translation = getItemTranslation(item, "FR", ["FR", "EN"]);

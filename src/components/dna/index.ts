@@ -18,6 +18,7 @@ export { DnaTag } from "./Tag";
 export { DnaPill } from "./Pill";
 export { DnaElementBadge } from "./ElementBadge";
 export { DnaStars } from "./RarityStars";
+export { DnaItemIcon, ITEM_FALLBACK_ICON } from "./ItemIcon";
 export { DnaAvatar } from "./Avatar";
 export { DnaNouveau, DnaNotifDot } from "./Badges";
 

@@ -21,6 +21,7 @@ import FilterChips from "@/components/list/FilterChips";
 import ViewModeToggle from "@/components/list/ViewModeToggle";
 import { useListViewMode } from "@/components/list/useListViewMode";
 import { DnaPanel } from "@/components/dna/Panel";
+import { ITEM_FALLBACK_ICON } from "@/components/dna/ItemIcon";
 import { useDialogA11y } from "@/components/dna/useDialogA11y";
 
 const SORT_VALUES = ["id", "rarityDesc", "rarityAsc", "durationAsc", "durationDesc"] as const;
@@ -511,7 +512,7 @@ export default function DraftsGridClient({
               recipe.product.icon.publicPath ??
               recipe.icon.placeholderPath ??
               recipe.product.icon.placeholderPath ??
-              "/marker-default.svg";
+              ITEM_FALLBACK_ICON;
             const ingredientSlots = Array.from(
               { length: 4 },
               () => null as DraftRecipeSummary["ingredients"][number] | null,
@@ -602,7 +603,7 @@ export default function DraftsGridClient({
                           className="relative rounded-sm border border-white/10 bg-ink/70 p-2"
                         >
                           <img
-                            src={ingredient.icon.publicPath ?? ingredient.icon.placeholderPath ?? "/marker-default.svg"}
+                            src={ingredient.icon.publicPath ?? ingredient.icon.placeholderPath ?? ITEM_FALLBACK_ICON}
                             alt={resolveDraftItemName(ingredient, selectedLanguages[0], availableLanguages)}
                             width={32}
                             height={32}
@@ -657,7 +658,7 @@ export default function DraftsGridClient({
               recipe.product.icon.publicPath ??
               recipe.icon.placeholderPath ??
               recipe.product.icon.placeholderPath ??
-              "/marker-default.svg";
+              ITEM_FALLBACK_ICON;
 
             return (
               <li key={recipe.id}>
@@ -723,7 +724,7 @@ export default function DraftsGridClient({
                         className="relative h-10 w-10 rounded-sm border border-white/10 bg-ink/70 p-1"
                       >
                         <img
-                          src={ingredient.icon.publicPath ?? ingredient.icon.placeholderPath ?? "/marker-default.svg"}
+                          src={ingredient.icon.publicPath ?? ingredient.icon.placeholderPath ?? ITEM_FALLBACK_ICON}
                           alt={resolveDraftItemName(ingredient, selectedLanguages[0], availableLanguages)}
                           width={40}
                           height={40}
@@ -756,7 +757,7 @@ export default function DraftsGridClient({
               recipe.product.icon.publicPath ??
               recipe.icon.placeholderPath ??
               recipe.product.icon.placeholderPath ??
-              "/marker-default.svg";
+              ITEM_FALLBACK_ICON;
 
             return (
               <Link

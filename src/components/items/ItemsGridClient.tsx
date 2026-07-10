@@ -3,7 +3,7 @@
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ChevronRight, Heart, Languages, Search, SlidersHorizontal, X, ZoomIn } from "lucide-react";
+import { ChevronRight, Flame, Heart, Languages, Search, SlidersHorizontal, X, ZoomIn } from "lucide-react";
 import { useAtom } from "jotai";
 import {
   parseAsArrayOf,
@@ -18,6 +18,7 @@ import {
   normalizeLanguageCodes,
 } from "@/lib/items/catalog";
 import { isModReleaseVersionRecent } from "@/lib/items/new-releases";
+import { isCalamityWeapon } from "@/lib/items/calamity-weapons";
 import type { ItemCategory, ItemRecord } from "@/lib/items/types";
 import {
   itemsFavoritesAtom,
@@ -28,14 +29,16 @@ import FilterChips from "@/components/list/FilterChips";
 import ViewModeToggle from "@/components/list/ViewModeToggle";
 import { useListViewMode } from "@/components/list/useListViewMode";
 import { DnaPanel } from "@/components/dna/Panel";
-import { DnaSectionLabel } from "@/components/dna/SectionLabel";
+import { DnaItemIcon, ITEM_FALLBACK_ICON } from "@/components/dna/ItemIcon";
 import { useDialogA11y } from "@/components/dna/useDialogA11y";
 
 type ArchiveFilter = "all" | "withArchive" | "withoutArchive";
 type NewFilter = "all" | "newOnly";
+type CalamityFilter = "all" | "calamityOnly";
 type SortMode = "id" | "rarityAsc" | "rarityDesc";
 const ARCHIVE_FILTER_VALUES = ["all", "withArchive", "withoutArchive"] as const;
 const NEW_FILTER_VALUES = ["all", "newOnly"] as const;
+const CALAMITY_FILTER_VALUES = ["all", "calamityOnly"] as const;
 const SORT_MODE_VALUES = ["id", "rarityAsc", "rarityDesc"] as const;
 const PAGE_SIZE_VALUES = [12, 24, 48, 96] as const;
 
@@ -246,6 +249,7 @@ export default function ItemsGridClient({
     compat: parseAsString,
     archive: parseAsStringLiteral(ARCHIVE_FILTER_VALUES),
     new: parseAsStringLiteral(NEW_FILTER_VALUES),
+    calamity: parseAsStringLiteral(CALAMITY_FILTER_VALUES),
     sort: parseAsStringLiteral(SORT_MODE_VALUES),
     size: parseAsInteger,
     page: parseAsInteger,
@@ -261,6 +265,7 @@ export default function ItemsGridClient({
     queryFilters.compat !== null ||
     queryFilters.archive !== null ||
     queryFilters.new !== null ||
+    queryFilters.calamity !== null ||
     queryFilters.sort !== null ||
     queryFilters.size !== null ||
     queryFilters.page !== null;
@@ -291,6 +296,11 @@ export default function ItemsGridClient({
   const rawNewFilter =
     queryFilters.new ?? (hasUrlFilters ? "all" : persisted?.newFilter ?? "all");
   const newFilter: NewFilter = isNewFilter(rawNewFilter) ? rawNewFilter : "all";
+
+  const isWeaponsCategory = category.id === "weapons";
+  const rawCalamityFilter =
+    queryFilters.calamity ?? (hasUrlFilters ? "all" : persisted?.calamityFilter ?? "all");
+  const calamityFilter: CalamityFilter = rawCalamityFilter === "calamityOnly" ? "calamityOnly" : "all";
 
   const rawSortMode = queryFilters.sort ?? (hasUrlFilters ? "id" : persisted?.sortMode ?? "id");
   const sortMode: SortMode = isSortMode(rawSortMode) ? rawSortMode : "id";
@@ -323,6 +333,7 @@ export default function ItemsGridClient({
     compat?: string;
     archive?: ArchiveFilter;
     new?: NewFilter;
+    calamity?: CalamityFilter;
     sort?: SortMode;
     size?: number;
     page?: number;
@@ -338,6 +349,7 @@ export default function ItemsGridClient({
       compat: compatFilter,
       archive: archiveFilter,
       new: newFilter,
+      calamity: calamityFilter,
       sort: sortMode,
       size: pageSize,
       page: currentPage,
@@ -355,6 +367,7 @@ export default function ItemsGridClient({
       compat: next.compat,
       archive: next.archive,
       new: next.new,
+      calamity: next.calamity,
       sort: next.sort,
       size: next.size,
       page: next.page,
@@ -498,6 +511,10 @@ export default function ItemsGridClient({
           return false;
         }
 
+        if (isWeaponsCategory && calamityFilter === "calamityOnly" && !isCalamityWeapon(item)) {
+          return false;
+        }
+
         return true;
       })
       .map(({ item }) => item);
@@ -529,6 +546,8 @@ export default function ItemsGridClient({
     compatFilter,
     archiveFilter,
     newFilter,
+    calamityFilter,
+    isWeaponsCategory,
     sortMode,
     searchable,
     category.id,
@@ -566,6 +585,7 @@ export default function ItemsGridClient({
       compatFilter,
       archiveFilter,
       newFilter,
+      calamityFilter,
       sortMode,
       pageSize,
       currentPage: safeCurrentPage,
@@ -583,6 +603,7 @@ export default function ItemsGridClient({
         previous?.compatFilter === next.compatFilter &&
         previous?.archiveFilter === next.archiveFilter &&
         previous?.newFilter === next.newFilter &&
+        previous?.calamityFilter === next.calamityFilter &&
         previous?.sortMode === next.sortMode &&
         previous?.pageSize === next.pageSize &&
         previous?.currentPage === next.currentPage &&
@@ -608,6 +629,7 @@ export default function ItemsGridClient({
     compatFilter,
     archiveFilter,
     newFilter,
+    calamityFilter,
     sortMode,
     pageSize,
     safeCurrentPage,
@@ -653,6 +675,7 @@ export default function ItemsGridClient({
       compat: "all",
       archive: "all",
       new: "all",
+      calamity: "all",
       sort: "id",
       size: 24,
       page: 1,
@@ -974,6 +997,36 @@ export default function ItemsGridClient({
         </div>
         ) : (
         <div className="mt-3 md:mt-4 space-y-2 md:space-y-3">
+          {isWeaponsCategory ? (
+            <button
+              type="button"
+              onClick={() =>
+                updateQueryFilters({
+                  calamity: calamityFilter === "calamityOnly" ? "all" : "calamityOnly",
+                  page: 1,
+                })
+              }
+              aria-pressed={calamityFilter === "calamityOnly"}
+              className={`inline-flex items-center gap-2.5 rounded-sm border px-3 py-2 text-sm transition-colors ${
+                calamityFilter === "calamityOnly"
+                  ? "border-crimson-bright/55 bg-crimson/15 text-crimson-bright"
+                  : "border-white/10 bg-ink/60 text-parch/85 hover:border-crimson-bright/40 hover:text-crimson-bright"
+              }`}
+            >
+              <span
+                aria-hidden
+                className={`grid h-4 w-4 place-items-center rounded-[3px] border ${
+                  calamityFilter === "calamityOnly"
+                    ? "border-crimson-bright bg-crimson-bright/80"
+                    : "border-white/25"
+                }`}
+              >
+                {calamityFilter === "calamityOnly" ? <X className="h-3 w-3 text-ink" /> : null}
+              </span>
+              <Flame className="h-4 w-4" />
+              Afficher uniquement les armes de calamité
+            </button>
+          ) : null}
           {rarityOptions.length > 0 ? (
             <FilterChips
               label={tc('rarity')}
@@ -1100,22 +1153,27 @@ export default function ItemsGridClient({
               category.availableLanguages,
             );
             const elementalAffinity = resolveElementalAffinity(item, lead.typeCompatibilityNames);
-            const iconSrc = item.icon.publicPath ?? item.icon.placeholderPath ?? "/marker-default.svg";
+            const iconSrc = item.icon.publicPath ?? item.icon.placeholderPath ?? ITEM_FALLBACK_ICON;
             const favoriteKey = toFavoriteKey(category.id, item.id);
             const isFavorite = favoriteItems.has(favoriteKey);
             const isNew = isModsCategory && isModReleaseVersionRecent(item.stats.releaseVersion);
+            const isCalamity = isCalamityWeapon(item);
 
             return (
               <Link
                 key={item.id}
                 href={`/items/${category.slug}/${item.id}`}
-                className="group relative border border-line/25 bg-panel/85 p-3 md:p-4 backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-gold/40 hover:bg-panel/95"
+                className={`group relative border bg-panel/85 p-3 md:p-4 backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-panel/95 ${
+                  isCalamity
+                    ? "border-crimson-bright/40 hover:border-crimson-bright/60"
+                    : "border-line/25 hover:border-gold/40"
+                }`}
               >
                 <div className="flex items-start gap-3">
                   <div className="flex h-14 w-14 md:h-16 md:w-16 shrink-0 items-center justify-center rounded-sm border border-gold/20 bg-ink/80 p-2">
                     <div className="relative h-full w-full">
                       <div className="h-full w-full overflow-hidden rounded-sm">
-                        <img
+                        <DnaItemIcon
                           src={iconSrc}
                           alt={`${category.technicalName} ${item.modId}`}
                           width={64}
@@ -1150,6 +1208,12 @@ export default function ItemsGridClient({
                       {isNew ? (
                         <span className="rounded-sm bg-gold/15 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-gold ring-1 ring-gold/40">
                           {t('newBadge')}
+                        </span>
+                      ) : null}
+                      {isCalamity ? (
+                        <span className="inline-flex items-center gap-1 rounded-sm bg-crimson/15 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-crimson-bright ring-1 ring-crimson-bright/40">
+                          <Flame className="h-3 w-3" />
+                          Calamité
                         </span>
                       ) : null}
                     </div>
@@ -1273,7 +1337,7 @@ export default function ItemsGridClient({
               category.availableLanguages,
             );
             const elementalAffinity = resolveElementalAffinity(item, lead.typeCompatibilityNames);
-            const iconSrc = item.icon.publicPath ?? item.icon.placeholderPath ?? "/marker-default.svg";
+            const iconSrc = item.icon.publicPath ?? item.icon.placeholderPath ?? ITEM_FALLBACK_ICON;
             const favoriteKey = toFavoriteKey(category.id, item.id);
             const isFavorite = favoriteItems.has(favoriteKey);
             const displayName = lead.modName
@@ -1281,15 +1345,20 @@ export default function ItemsGridClient({
                 ? `${lead.modName} ${lead.demonWedgeName}`
                 : lead.modName
               : `${category.displayName} ${item.modId}`;
+            const isCalamity = isCalamityWeapon(item);
 
             return (
               <li key={item.id}>
                 <Link
                   href={`/items/${category.slug}/${item.id}`}
-                  className="group relative flex items-center gap-4 border border-line/25 bg-panel/85 p-3 backdrop-blur-sm transition-all duration-200 hover:border-gold/40 hover:bg-panel/95"
+                  className={`group relative flex items-center gap-4 border bg-panel/85 p-3 backdrop-blur-sm transition-all duration-200 hover:bg-panel/95 ${
+                    isCalamity
+                      ? "border-crimson-bright/40 hover:border-crimson-bright/60"
+                      : "border-line/25 hover:border-gold/40"
+                  }`}
                 >
                   <div className="relative flex h-16 w-16 shrink-0 items-center justify-center rounded-sm border border-gold/20 bg-ink/80 p-2">
-                    <img
+                    <DnaItemIcon
                       src={iconSrc}
                       alt={displayName}
                       width={64}
@@ -1331,6 +1400,12 @@ export default function ItemsGridClient({
                       </span>
                     </h3>
                     <div className="mt-1 flex flex-wrap items-center gap-1.5 text-[11px]">
+                      {isCalamity ? (
+                        <span className="inline-flex items-center gap-1 rounded-sm border border-crimson-bright/40 bg-crimson/10 px-2 py-0.5 font-semibold uppercase tracking-wider text-crimson-bright">
+                          <Flame className="h-3 w-3" />
+                          Calamité
+                        </span>
+                      ) : null}
                       {elementalAffinity ? (
                         <span className="inline-flex items-center gap-1.5 rounded-sm border border-hydro/35 bg-hydro/10 px-2 py-0.5 text-hydro">
                           {elementalAffinity.iconSrc ? (
@@ -1391,7 +1466,7 @@ export default function ItemsGridClient({
               category.availableLanguages,
             );
             const elementalAffinity = resolveElementalAffinity(item, lead.typeCompatibilityNames);
-            const iconSrc = item.icon.publicPath ?? item.icon.placeholderPath ?? "/marker-default.svg";
+            const iconSrc = item.icon.publicPath ?? item.icon.placeholderPath ?? ITEM_FALLBACK_ICON;
             const favoriteKey = toFavoriteKey(category.id, item.id);
             const isFavorite = favoriteItems.has(favoriteKey);
             const displayName = lead.modName
@@ -1399,16 +1474,21 @@ export default function ItemsGridClient({
                 ? `${lead.modName} ${lead.demonWedgeName}`
                 : lead.modName
               : `${category.displayName} ${item.modId}`;
+            const isCalamity = isCalamityWeapon(item);
 
             return (
               <Link
                 key={item.id}
                 href={`/items/${category.slug}/${item.id}`}
                 title={displayName}
-                className="group relative flex aspect-square flex-col overflow-hidden rounded-sm border border-white/10 bg-ink/80 p-2 transition-all duration-200 hover:-translate-y-0.5 hover:border-gold/40"
+                className={`group relative flex aspect-square flex-col overflow-hidden rounded-sm border bg-ink/80 p-2 transition-all duration-200 hover:-translate-y-0.5 ${
+                  isCalamity
+                    ? "border-crimson-bright/45 hover:border-crimson-bright/65"
+                    : "border-white/10 hover:border-gold/40"
+                }`}
               >
                 <div className="relative flex flex-1 items-center justify-center overflow-hidden">
-                  <img
+                  <DnaItemIcon
                     src={iconSrc}
                     alt={displayName}
                     width={96}
@@ -1425,6 +1505,15 @@ export default function ItemsGridClient({
                         height={20}
                         className="h-5 w-5 object-contain"
                       />
+                    </span>
+                  ) : null}
+                  {isCalamity ? (
+                    <span
+                      className="absolute left-0 bottom-0 inline-flex items-center gap-1 rounded-sm border border-crimson-bright/45 bg-ink/80 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-crimson-bright backdrop-blur-sm"
+                      title="Arme de calamité"
+                    >
+                      <Flame className="h-2.5 w-2.5" />
+                      Calamité
                     </span>
                   ) : null}
                   <button
@@ -1597,7 +1686,7 @@ export default function ItemsGridClient({
               </button>
             </div>
             <div className="mt-3 flex h-64 items-center justify-center rounded-sm border border-gold/20 bg-ink/80 p-4">
-              <img
+              <DnaItemIcon
                 src={previewIcon.src}
                 alt={previewIcon.alt}
                 width={200}

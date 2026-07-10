@@ -21236,8 +21236,8 @@
     },
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_Chapter03_1",
-      "publicPath": null,
-      "placeholderPath": "/marker-default.svg",
+      "publicPath": "/assets/items/fishing/T_Fish_FreshWater_Chapter03_1.png",
+      "placeholderPath": "/assets/items/fishing/T_Fish_FreshWater_Chapter03_1.png",
       "candidates": [
         "T_Fish_FreshWater_Chapter03_1",
         "Fish_FreshWater_Chapter03_1"
@@ -21397,8 +21397,8 @@
     },
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_Chapter03_1_1",
-      "publicPath": null,
-      "placeholderPath": "/marker-default.svg",
+      "publicPath": "/assets/items/fishing/T_Fish_FreshWater_Chapter03_1_1.png",
+      "placeholderPath": "/assets/items/fishing/T_Fish_FreshWater_Chapter03_1_1.png",
       "candidates": [
         "T_Fish_FreshWater_Chapter03_1_1",
         "Fish_FreshWater_Chapter03_1_1"
@@ -21558,8 +21558,8 @@
     },
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_Chapter03_2",
-      "publicPath": null,
-      "placeholderPath": "/marker-default.svg",
+      "publicPath": "/assets/items/fishing/T_Fish_FreshWater_Chapter03_2.png",
+      "placeholderPath": "/assets/items/fishing/T_Fish_FreshWater_Chapter03_2.png",
       "candidates": [
         "T_Fish_FreshWater_Chapter03_2",
         "Fish_FreshWater_Chapter03_2"
@@ -21719,8 +21719,8 @@
     },
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_Chapter03_2_1",
-      "publicPath": null,
-      "placeholderPath": "/marker-default.svg",
+      "publicPath": "/assets/items/fishing/T_Fish_FreshWater_Chapter03_2_1.png",
+      "placeholderPath": "/assets/items/fishing/T_Fish_FreshWater_Chapter03_2_1.png",
       "candidates": [
         "T_Fish_FreshWater_Chapter03_2_1",
         "Fish_FreshWater_Chapter03_2_1"
@@ -21880,8 +21880,8 @@
     },
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_Chapter03_3",
-      "publicPath": null,
-      "placeholderPath": "/marker-default.svg",
+      "publicPath": "/assets/items/fishing/T_Fish_FreshWater_Chapter03_3.png",
+      "placeholderPath": "/assets/items/fishing/T_Fish_FreshWater_Chapter03_3.png",
       "candidates": [
         "T_Fish_FreshWater_Chapter03_3",
         "Fish_FreshWater_Chapter03_3"
@@ -22041,8 +22041,8 @@
     },
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_Chapter03_3_1",
-      "publicPath": null,
-      "placeholderPath": "/marker-default.svg",
+      "publicPath": "/assets/items/fishing/T_Fish_FreshWater_Chapter03_3_1.png",
+      "placeholderPath": "/assets/items/fishing/T_Fish_FreshWater_Chapter03_3_1.png",
       "candidates": [
         "T_Fish_FreshWater_Chapter03_3_1",
         "Fish_FreshWater_Chapter03_3_1"
@@ -22202,8 +22202,8 @@
     },
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_Chapter03_4",
-      "publicPath": null,
-      "placeholderPath": "/marker-default.svg",
+      "publicPath": "/assets/items/fishing/T_Fish_FreshWater_Chapter03_4.png",
+      "placeholderPath": "/assets/items/fishing/T_Fish_FreshWater_Chapter03_4.png",
       "candidates": [
         "T_Fish_FreshWater_Chapter03_4",
         "Fish_FreshWater_Chapter03_4"
@@ -22363,8 +22363,8 @@
     },
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_Chapter03_4_1",
-      "publicPath": null,
-      "placeholderPath": "/marker-default.svg",
+      "publicPath": "/assets/items/fishing/T_Fish_FreshWater_Chapter03_4_1.png",
+      "placeholderPath": "/assets/items/fishing/T_Fish_FreshWater_Chapter03_4_1.png",
       "candidates": [
         "T_Fish_FreshWater_Chapter03_4_1",
         "Fish_FreshWater_Chapter03_4_1"
@@ -22524,8 +22524,8 @@
     },
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_Chapter03_5",
-      "publicPath": null,
-      "placeholderPath": "/marker-default.svg",
+      "publicPath": "/assets/items/fishing/T_Fish_FreshWater_Chapter03_5.png",
+      "placeholderPath": "/assets/items/fishing/T_Fish_FreshWater_Chapter03_5.png",
       "candidates": [
         "T_Fish_FreshWater_Chapter03_5",
         "Fish_FreshWater_Chapter03_5"
@@ -22685,8 +22685,8 @@
     },
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_Chapter03_5_1",
-      "publicPath": null,
-      "placeholderPath": "/marker-default.svg",
+      "publicPath": "/assets/items/fishing/T_Fish_FreshWater_Chapter03_5_1.png",
+      "placeholderPath": "/assets/items/fishing/T_Fish_FreshWater_Chapter03_5_1.png",
       "candidates": [
         "T_Fish_FreshWater_Chapter03_5_1",
         "Fish_FreshWater_Chapter03_5_1"

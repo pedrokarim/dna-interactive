@@ -179,6 +179,7 @@ export type PersistedItemsFilters = Record<
     itemSubTypeFilter: string;
     seriesFilter?: string;
     compatFilter?: string;
+    calamityFilter?: string;
     sortMode: string;
     pageSize: number;
     currentPage: number;

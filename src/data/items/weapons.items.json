@@ -5057,7 +5057,7 @@
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Claymore_Yemei",
       "publicPath": null,
-      "placeholderPath": "/marker-default.svg",
+      "placeholderPath": null,
       "candidates": [
         "T_Head_Claymore_Yemei",
         "Head_Claymore_Yemei"

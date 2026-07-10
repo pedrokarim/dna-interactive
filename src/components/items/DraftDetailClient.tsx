@@ -10,6 +10,7 @@ import type { DraftItemReference, DraftRecipeRecord } from "@/lib/items/drafts";
 import { resolveDraftItemDescription, resolveDraftItemName } from "@/lib/items/drafts";
 import { DnaPanel } from "@/components/dna/Panel";
 import { DnaSectionLabel } from "@/components/dna/SectionLabel";
+import { ITEM_FALLBACK_ICON } from "@/components/dna/ItemIcon";
 
 type DraftDetailClientProps = {
   recipe: DraftRecipeRecord;
@@ -94,7 +95,7 @@ type RecipeNodeProps = {
 function RecipeNode({ item, selectedLanguage, fallbackLanguages, primary = false }: RecipeNodeProps) {
   const td = useTranslations('draftDetail');
   const tc = useTranslations('common');
-  const iconSrc = item.icon.publicPath ?? item.icon.placeholderPath ?? "/marker-default.svg";
+  const iconSrc = item.icon.publicPath ?? item.icon.placeholderPath ?? ITEM_FALLBACK_ICON;
   const name = resolveDraftItemName(item, selectedLanguage, fallbackLanguages);
   const description = resolveDraftItemDescription(item, selectedLanguage, fallbackLanguages);
   const classLabel = metadataString(item, "classLabelEn");
@@ -193,7 +194,7 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
 
   const productName = resolveDraftItemName(recipe.product, selectedLanguage, availableLanguages);
   const productDescription = resolveDraftItemDescription(recipe.product, selectedLanguage, availableLanguages);
-  const productIcon = recipe.product.icon.publicPath ?? recipe.product.icon.placeholderPath ?? "/marker-default.svg";
+  const productIcon = recipe.product.icon.publicPath ?? recipe.product.icon.placeholderPath ?? ITEM_FALLBACK_ICON;
   const recipeIcon = recipe.icon.publicPath ?? recipe.icon.placeholderPath ?? productIcon;
   const classLabel = metadataString(recipe.product, "classLabelEn");
   const subtypeLabel = metadataString(recipe.product, "subtypeLabelEn");
@@ -421,7 +422,7 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
               availableLanguages,
             );
             const ingredientIcon =
-              ingredient.icon.publicPath ?? ingredient.icon.placeholderPath ?? "/marker-default.svg";
+              ingredient.icon.publicPath ?? ingredient.icon.placeholderPath ?? ITEM_FALLBACK_ICON;
 
             return (
               <article

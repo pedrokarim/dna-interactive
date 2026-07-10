@@ -1,0 +1,13 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Image indisponible">
+  <!-- tuile DNA : cadre laiton, fond sombre translucide, glyphe image cassée + fêlure cramoisie -->
+  <rect x="6.5" y="10.5" width="51" height="43" rx="4" fill="#141310" fill-opacity="0.55" stroke="#897240" stroke-width="1.5"/>
+  <!-- soleil -->
+  <circle cx="22" cy="24" r="4.2" fill="#897240" fill-opacity="0.9"/>
+  <!-- montagnes (moitié gauche) -->
+  <path d="M9 47 L20 34 L27 41" fill="none" stroke="#c2a86a" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-opacity="0.85"/>
+  <!-- montagnes (moitié droite) -->
+  <path d="M37 41 L44 32 L55 47" fill="none" stroke="#c2a86a" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-opacity="0.85"/>
+  <!-- fêlure cramoisie qui traverse -->
+  <path d="M33 10.5 L29 24 L35 30 L30 41 L33 53.5" fill="none" stroke="#b5302a" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M33 10.5 L29 24 L35 30 L30 41 L33 53.5" fill="none" stroke="#b5302a" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round" stroke-opacity="0.18"/>
+</svg>

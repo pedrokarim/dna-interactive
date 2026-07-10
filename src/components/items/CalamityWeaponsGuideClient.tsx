@@ -21,7 +21,9 @@ import { Link } from "@/i18n/navigation";
 import { DnaPanel } from "@/components/dna/Panel";
 import { DnaSectionLabel } from "@/components/dna/SectionLabel";
 import { DnaStatRow } from "@/components/dna/StatRow";
+import { DnaItemIcon } from "@/components/dna/ItemIcon";
 import { WeaponFusionTrack } from "@/components/items/WeaponFusionTrack";
+import { CALAMITY_ACCENT_HEX, potentialNodesUnlocked } from "@/lib/items/calamity-weapons";
 
 type GuideWedgeSlot = {
   position: number;
@@ -81,8 +83,6 @@ type CalamityWeaponsGuideClientProps = {
   };
 };
 
-const CRIMSON_HEX = "#b5302a";
-
 const FUSION_STEPS = [
   {
     level: 0,
@@ -122,11 +122,6 @@ const FUSION_STEPS = [
   },
 ] as const;
 
-const POTENTIAL_NODE_COUNTS_BY_LEVEL: Record<string, Record<number, number>> = {
-  "weapons-10299": { 0: 1, 1: 2, 2: 2, 3: 2, 4: 2, 5: 1 },
-  "weapons-20599": { 0: 1, 1: 2, 2: 2, 3: 2, 4: 2, 5: 1 },
-};
-
 const ATK_TYPE_LABELS: Record<string, string> = {
   Psionic: "Psionique",
   Smash: "Contondant",
@@ -143,16 +138,6 @@ function formatVersion(value: number | null): string {
   if (value === null) return "N/A";
   if (value < 10) return `v${value}`;
   return `v${Math.floor(value / 10)}.${value % 10}`;
-}
-
-function potentialNodesUnlocked(weaponId: string, level: number): number | null {
-  const counts = POTENTIAL_NODE_COUNTS_BY_LEVEL[weaponId];
-  if (!counts) return null;
-  let total = 0;
-  for (let current = 0; current <= level; current += 1) {
-    total += counts[current] ?? 0;
-  }
-  return total;
 }
 
 function CalamityBadge({ children }: { children: ReactNode }) {
@@ -290,7 +275,7 @@ export default function CalamityWeaponsGuideClient({
                   }`}
                 >
                   <span className="grid h-14 w-14 shrink-0 place-items-center border border-gold/20 bg-panel/70 p-2">
-                    <img
+                    <DnaItemIcon
                       src={weapon.icon}
                       alt=""
                       width={56}
@@ -317,7 +302,7 @@ export default function CalamityWeaponsGuideClient({
               <DnaSectionLabel>Fiche active</DnaSectionLabel>
               <div className="mt-5 flex flex-col gap-5 sm:flex-row">
                 <div className="grid h-32 w-32 shrink-0 place-items-center border border-crimson-bright/35 bg-ink/70 p-4 shadow-[0_0_35px_rgba(181,48,42,0.16)]">
-                  <img
+                  <DnaItemIcon
                     src={activeWeapon.icon}
                     alt={activeWeapon.name}
                     width={128}
@@ -376,7 +361,7 @@ export default function CalamityWeaponsGuideClient({
               <WeaponFusionTrack
                 levels={[0, 1, 2, 3, 4, 5]}
                 value={fusionLevel}
-                accentHex={CRIMSON_HEX}
+                accentHex={CALAMITY_ACCENT_HEX}
                 onChange={setFusionLevel}
               />
               <div className="mt-4 border border-crimson-bright/25 bg-crimson/10 p-3">
@@ -435,7 +420,7 @@ export default function CalamityWeaponsGuideClient({
                   className="flex items-center gap-3 border border-white/10 bg-ink/55 p-3"
                 >
                   <span className="grid h-10 w-10 shrink-0 place-items-center border border-gold/20 bg-panel/70 p-1.5">
-                    <img src={material.icon} alt="" width={40} height={40} loading="lazy" className="max-h-full max-w-full object-contain" />
+                    <DnaItemIcon src={material.icon} alt="" width={40} height={40} loading="lazy" className="max-h-full max-w-full object-contain" />
                   </span>
                   <span className="min-w-0 flex-1">
                     <span className="block truncate text-sm text-parch">{material.name}</span>
@@ -489,7 +474,7 @@ export default function CalamityWeaponsGuideClient({
                 className="group border border-white/10 bg-ink/55 p-2 transition-colors hover:border-gold/40"
               >
                 <div className="flex h-12 items-center justify-center">
-                  <img src={slot.icon} alt="" width={48} height={48} loading="lazy" className="max-h-full max-w-full object-contain" />
+                  <DnaItemIcon src={slot.icon} alt="" width={48} height={48} loading="lazy" className="max-h-full max-w-full object-contain" />
                 </div>
                 <p className="mt-2 line-clamp-2 min-h-8 text-center text-[11px] leading-tight text-parch/85 group-hover:text-gold">
                   {slot.position}. {slot.name}

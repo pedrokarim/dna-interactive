@@ -3,7 +3,7 @@
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { useMemo, useState, type ReactNode } from "react";
-import { ArrowLeft, ChevronDown, Heart, Languages } from "lucide-react";
+import { ArrowLeft, ChevronDown, Flame, Heart, Languages, Lock, Sparkles, Target } from "lucide-react";
 import { useAtom } from "jotai";
 import { parseAsInteger, parseAsStringLiteral, useQueryState } from "nuqs";
 import {
@@ -21,6 +21,13 @@ import { DnaSectionLabel } from "@/components/dna/SectionLabel";
 import { DnaStatRow } from "@/components/dna/StatRow";
 import { DnaStars } from "@/components/dna/RarityStars";
 import { DnaTag } from "@/components/dna/Tag";
+import { DnaItemIcon, ITEM_FALLBACK_ICON } from "@/components/dna/ItemIcon";
+import {
+  isCalamityWeapon,
+  CALAMITY_ACCENT_HEX,
+  potentialNodesUnlocked,
+  potentialNodesTotal,
+} from "@/lib/items/calamity-weapons";
 import { ELEMENTS, type ElementKey } from "@/components/dna/elements";
 import { DemonWedgeLayout } from "@/components/characters/CharacterDetailClient";
 import { WeaponFusionTrack } from "@/components/items/WeaponFusionTrack";
@@ -345,7 +352,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
     dynamicValueEntries.length > 0 ||
     selectedLevelAttributesVisible.length > 0;
 
-  const iconSrc = item.icon.publicPath ?? item.icon.placeholderPath ?? "/marker-default.svg";
+  const iconSrc = item.icon.publicPath ?? item.icon.placeholderPath ?? ITEM_FALLBACK_ICON;
   const affinityIconSrc = item.affinity.icon.publicPath ?? item.affinity.icon.placeholderPath;
   const selectedTolerance =
     item.tolerance.valuesByLevel[String(selectedLevel)] ??
@@ -468,8 +475,13 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
   const weaponCrd =
     isWeaponsCategory && typeof item.fields.CRD === "number" ? item.fields.CRD : null;
 
-  const elHex = weaponElement?.hex ?? elementHexFromKey(elementalAffinity?.key);
+  // Arme de calamité (WeaponSubType = Hyper) : accent cramoisi + libellés dédiés.
+  const isCalamity = isWeaponsCategory && isCalamityWeapon(item);
+  const baseElHex = weaponElement?.hex ?? elementHexFromKey(elementalAffinity?.key);
+  const elHex = isCalamity ? CALAMITY_ACCENT_HEX : baseElHex;
   const tinted = elHex !== GOLD_HEX;
+  const calamityNodesUnlocked = isCalamity ? potentialNodesUnlocked(item.id, selectedLevel) : null;
+  const calamityNodesTotal = isCalamity ? potentialNodesTotal(item.id) : null;
   // Élément utilisé pour teinter le board de Demon Wedges de l'arme.
   const wedgeElementKey =
     weaponBuild?.demonWedges.affinity ??
@@ -545,6 +557,15 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
               <DnaStars value={item.stats.rarity} className="mt-1.5 text-sm" />
             ) : null}
             <div className="mt-2 flex flex-wrap items-center gap-1.5">
+              {isCalamity ? (
+                <span
+                  className="inline-flex items-center gap-1.5 border px-2.5 py-1 font-caps text-[0.58rem] uppercase tracking-[0.14em]"
+                  style={{ borderColor: `${CALAMITY_ACCENT_HEX}88`, background: `${CALAMITY_ACCENT_HEX}22`, color: CALAMITY_ACCENT_HEX }}
+                >
+                  <Flame className="h-3.5 w-3.5" />
+                  Arme de calamité
+                </span>
+              ) : null}
               {elementalAffinity ? (
                 <span
                   className="inline-flex items-center gap-1.5 border px-2.5 py-1 font-caps text-[0.58rem] uppercase tracking-[0.14em]"
@@ -585,7 +606,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
             className="relative z-[1] grid h-44 w-44 place-items-center rounded-full border bg-ink/40 md:h-52 md:w-52"
             style={{ borderColor: `${elHex}66`, boxShadow: `0 0 44px -10px ${elHex}, inset 0 0 30px -12px ${elHex}` }}
           >
-            <img
+            <DnaItemIcon
               src={iconSrc}
               alt={`${category.technicalName} ${item.modId}`}
               width={96}
@@ -671,7 +692,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
               ) : null}
               {weaponBaseAtk !== null ? (
                 <DnaStatRow
-                  label="ATK"
+                  label={isCalamity ? "Attaque de calamité" : "ATK"}
                   accent={tinted ? elHex : undefined}
                   value={
                     weaponMaxAtk !== null && weaponMaxAtk !== weaponBaseAtk
@@ -730,6 +751,67 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
         </aside>
       </div>
 
+      {/* Fusion de calamité & Potentiel (armes Hyper) */}
+      {isCalamity ? (
+        <DnaPanel className="border-crimson-bright/25 p-4 md:p-5">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <DnaSectionLabel>Fusion de calamité &amp; Potentiel</DnaSectionLabel>
+            <Link
+              href="/items/weapons/about"
+              className="inline-flex items-center gap-2 rounded-sm border border-crimson-bright/35 bg-crimson/10 px-3 py-1.5 text-xs font-medium text-crimson-bright transition-colors hover:bg-crimson/20"
+            >
+              <Sparkles className="h-3.5 w-3.5" />
+              Guide des armes de calamité
+            </Link>
+          </div>
+          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-parch/85">
+            Les Potentiels d&apos;arme se débloquent via la Fusion de calamité (paliers 0 → 5,
+            ajustés par la piste sur la fiche). Un Potentiel ne prend effet que si le type
+            d&apos;arme correspond à l&apos;arme de prédilection du personnage.
+          </p>
+
+          <div className="mt-4 grid gap-3 sm:grid-cols-3">
+            <div className="border border-crimson-bright/25 bg-crimson/10 p-3">
+              <p className="font-caps text-[0.6rem] uppercase tracking-[0.22em] text-muted">Niveau de fusion</p>
+              <p className="mt-1 font-caps text-2xl font-semibold" style={{ color: CALAMITY_ACCENT_HEX }}>
+                {selectedLevel}
+                <small className="text-sm text-muted-2"> / {sliderMaxLevel}</small>
+              </p>
+            </div>
+            <div className="border border-white/10 bg-ink/55 p-3">
+              <p className="font-caps text-[0.6rem] uppercase tracking-[0.22em] text-muted">Potentiels débloqués</p>
+              <p className="mt-1 font-caps text-2xl font-semibold text-parch">
+                {calamityNodesUnlocked === null ? (
+                  <span className="text-base text-muted-2">Arbre non détaillé</span>
+                ) : (
+                  <>
+                    {calamityNodesUnlocked}
+                    <small className="text-sm text-muted-2"> / {calamityNodesTotal}</small>
+                  </>
+                )}
+              </p>
+            </div>
+            <div className="border border-white/10 bg-ink/55 p-3">
+              <p className="font-caps text-[0.6rem] uppercase tracking-[0.22em] text-muted">Sous-type technique</p>
+              <p className="mt-1 font-caps text-lg font-semibold" style={{ color: CALAMITY_ACCENT_HEX }}>
+                Hyper
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-4 grid gap-2 sm:grid-cols-2">
+            <div className="flex items-center gap-2.5 rounded-sm border border-white/10 bg-ink/55 px-3 py-2 text-sm text-parch/85">
+              <Lock className="h-4 w-4 shrink-0 text-crimson-bright" />
+              1 arme de calamité max équipée par personnage
+            </div>
+            <div className="flex items-center gap-2.5 rounded-sm border border-white/10 bg-ink/55 px-3 py-2 text-sm text-parch/85">
+              <Target className="h-4 w-4 shrink-0 text-crimson-bright" />
+              Potentiel actif seulement avec l&apos;arme de prédilection
+            </div>
+          </div>
+        </DnaPanel>
+      ) : null}
+
       {/* Build de Demon Wedges recommandé (armes) */}
       {isWeaponsCategory && weaponBuild && weaponBuild.demonWedges.slots.length > 0 ? (
         <DnaPanel className="p-4 md:p-5">
@@ -760,7 +842,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
               const isCurrent = sibling.id === item.id;
               const siblingTranslation = getItemTranslation(sibling, selectedLanguage, category.availableLanguages);
               const siblingIsPremium = sibling.variants?.isPremium ?? false;
-              const siblingIcon = sibling.icon.publicPath ?? sibling.icon.placeholderPath ?? "/marker-default.svg";
+              const siblingIcon = sibling.icon.publicPath ?? sibling.icon.placeholderPath ?? ITEM_FALLBACK_ICON;
               return (
                 <Link
                   key={sibling.id}
@@ -771,7 +853,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
                       : "border-white/10 bg-ink/55 hover:border-gold/40"
                   } ${siblingIsPremium ? "ring-1 ring-gold/30" : ""}`}
                 >
-                  <img src={siblingIcon} alt="" width={40} height={40} loading="lazy" className="h-10 w-10 shrink-0 object-contain" />
+                  <DnaItemIcon src={siblingIcon} alt="" width={40} height={40} loading="lazy" className="h-10 w-10 shrink-0 object-contain" />
                   <div className="min-w-0">
                     <p className="truncate text-sm font-medium text-parch">
                       {siblingTranslation.modName ?? `#${sibling.modId}`}
