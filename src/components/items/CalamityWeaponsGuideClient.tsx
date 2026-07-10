@@ -23,6 +23,7 @@ import { DnaSectionLabel } from "@/components/dna/SectionLabel";
 import { DnaStatRow } from "@/components/dna/StatRow";
 import { DnaItemIcon } from "@/components/dna/ItemIcon";
 import { WeaponFusionTrack } from "@/components/items/WeaponFusionTrack";
+import { CalamityPotentialTree } from "@/components/items/CalamityPotentialTree";
 import { CALAMITY_ACCENT_HEX, potentialNodesUnlocked } from "@/lib/items/calamity-weapons";
 
 type GuideWedgeSlot = {
@@ -381,6 +382,18 @@ export default function CalamityWeaponsGuideClient({
           </div>
         </DnaPanel>
       </section>
+
+      <DnaPanel className="p-4 md:p-5">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <DnaSectionLabel>Potentiels · {activeWeapon.name}</DnaSectionLabel>
+          <span className="font-caps text-[0.6rem] uppercase tracking-[0.2em] text-muted">
+            Ajuste la piste de Fusion (palier {currentStep.label}) pour verrouiller / déverrouiller
+          </span>
+        </div>
+        <div className="mt-5">
+          <CalamityPotentialTree weaponItemId={activeWeapon.id} lang="FR" fusionLevel={fusionLevel} />
+        </div>
+      </DnaPanel>
 
       <section className="grid gap-5 lg:grid-cols-4">
         <FactCard icon={<FlameKindling className="h-5 w-5" />} title="Fusion de calamité">

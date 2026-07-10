@@ -31,6 +31,7 @@ import {
 import { ELEMENTS, type ElementKey } from "@/components/dna/elements";
 import { DemonWedgeLayout } from "@/components/characters/CharacterDetailClient";
 import { WeaponFusionTrack } from "@/components/items/WeaponFusionTrack";
+import { CalamityPotentialTree } from "@/components/items/CalamityPotentialTree";
 import type { WeaponBuild } from "@/lib/items/weapon-builds";
 
 const GOLD_HEX = "#c2a86a";
@@ -808,6 +809,14 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
               <Target className="h-4 w-4 shrink-0 text-crimson-bright" />
               Potentiel actif seulement avec l&apos;arme de prédilection
             </div>
+          </div>
+
+          <div className="mt-5 border-t border-white/10 pt-5">
+            <CalamityPotentialTree
+              weaponItemId={item.id}
+              lang={selectedLanguage}
+              fusionLevel={selectedLevel}
+            />
           </div>
         </DnaPanel>
       ) : null}
