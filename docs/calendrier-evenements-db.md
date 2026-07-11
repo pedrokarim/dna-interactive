@@ -75,5 +75,19 @@ CRUD complet, réservé admin (comme le reste de `/admin`) :
    (image, titre, catégorie, période, statut, description) + image/desc dans le détail au clic.
    `CalendarEvent` enrichi (`image`, `description`) ; `computeRows` accepte `sourceEvents`
    (prêt pour la BDD). Marche sur le fallback statique.
-4. ⏳ API admin CRUD + onglet admin « Calendrier ».
-5. ⏳ Script seed + slash-command `/maj-calendrier` (recherche → upsert).
+2b. ✅ Table `calendar_events` (schema) + `getCalendarEvents()` (lecture + fallback statique),
+   events plombés jusqu'au calendrier (home + `/calendar`).
+4. ✅ API `/api/admin/calendar-events` (GET/POST/PATCH/DELETE, gating admin, audit) +
+   **page isolée `/admin/calendar`** (`CalendarAdminClient` : liste, formulaire, édition,
+   suppression, notice migration). Isolée pour ne pas croiser la refonte admin en cours.
+5. ✅ Script `scripts/seed-calendar-events.ts` (`bun run seed:calendar`, upsert idempotent
+   par titre+date) + slash-command **`/maj-calendrier`** (`.claude/commands/`).
+
+## ⚙️ Migration à pousser (par Karim)
+La table `calendar_events` est **définie mais pas encore en base**. Pour l'activer :
+```
+bun run db:push       # crée la table (additive — répondre NON à tout rename proposé)
+bun run seed:calendar # (optionnel) pré-remplit avec la liste curée actuelle
+```
+Tant que la migration n'est pas poussée, le calendrier utilise **automatiquement** la
+liste curée statique (aucun crash). L'admin `/admin/calendar` affiche une notice.

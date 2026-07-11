@@ -14,6 +14,7 @@
     "extract:genimons:site": "bun run research_data/extract-genimons.ts",
     "extract:skills:site": "bun run research_data/extract-skills.ts",
     "db:push": "drizzle-kit push",
+    "seed:calendar": "bun run scripts/seed-calendar-events.ts",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
