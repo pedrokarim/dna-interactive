@@ -27,10 +27,10 @@
 | Plans de forge | `/items/drafts` | 🔜 | Chrome hérité ; en-tête à reskiner. |
 | Favoris | `/items/favoris` | 🔜 | Chrome hérité ; utilise `ItemsGridClient` (en-tête déjà reskiné). |
 | Builder | `/builder` | ⏳ | |
-| Builds communauté | `/builds` | ⏳ | |
-| Build (fiche) | `/builds/[id]` | ⏳ | |
-| Commissions | `/commissions` | ⏳ | |
-| Codes | `/codes` | ⏳ | |
+| Builds communauté | `/builds` | ✅ | `page.tsx` → `AppShell` (//SHARED.LOADOUTS), pleine largeur. En-tête `DnaSectionLabel` conservé (à harmoniser en gabarit plus tard). |
+| Build (fiche) | `/builds/[id]` | ⏳ | Rend son propre SiteHeader. |
+| Commissions | `/commissions` | ✅ | `page.tsx` → `AppShell` (//COVERT.OPS.LIVE), pleine largeur. |
+| Codes | `/codes` | ✅ | `page.tsx` → `AppShell` (//REDEEM.CODES), pleine largeur. |
 | Changelog | `/changelog` | ⏳ | |
 | À propos | `/about` | ⏳ | |
 | Support | `/support` | ⏳ | |
@@ -75,6 +75,7 @@ adossés au système de connexion (auth Discord déjà en place, cf. builder com
 - 2026-07-11 — `AppShell` : toggle collapse **déplacé dans le header** (fonctionnel), retiré de la sidebar ; niveau `Lv.42`→`Lv.XX` ; « Contribuer » → **Twitter/X** (`x.com/ascencia64`). Systèmes notifications/niveau/profil documentés (à câbler post-auth).
 - 2026-07-11 — Home hub enrichie sur la base de la réf **complète** (capturée via scroller interne 5116px) : ajout Codes cadeaux (copier), Calendrier des événements (Gantt placeholder), carrousel Builds de personnages, section Communauté. Données de démo à brancher (codes → `/codes`, builds → `/builds`, calendrier → données jeu).
 - 2026-07-11 — `/items` (hub) + `/items/[category]` convertis : `items/layout.tsx` → `AppShell`, en-têtes en gabarit + compteurs en équerres, pleine largeur. Sous-pages items héritent du chrome.
+- 2026-07-11 — `/builds`, `/codes`, `/commissions` convertis : SiteHeader/SiteFooter → `AppShell`, pleine largeur (chrome par `page.tsx`).
 
 ## Méthode de conversion (recette réutilisable)
 1. Le chrome vient soit d'un `<section>/layout.tsx` local, soit de `SiteHeader`/`SiteFooter` dans la `page.tsx`. Repérer lequel.
