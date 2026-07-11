@@ -8,6 +8,7 @@ import { createAuthToken } from "@/lib/auth/tokens";
 import { registerSchema } from "@/lib/auth/credentials-validation";
 import { sendVerificationEmail, toEmailLocale } from "@/lib/email/auth-emails";
 import { getSiteUrl } from "@/lib/auth/site";
+import { getAppSettings } from "@/lib/settings/db";
 
 export const dynamic = "force-dynamic";
 
@@ -19,6 +20,11 @@ export async function POST(request: Request) {
       { error: "Trop de tentatives. Réessaie plus tard." },
       { status: 429, headers: { "Retry-After": `${rate.retryAfter}` } },
     );
+  }
+
+  const settings = await getAppSettings();
+  if (!settings.signupEnabled || settings.maintenanceMode) {
+    return NextResponse.json({ error: "Les inscriptions sont temporairement fermées." }, { status: 403 });
   }
 
   const parsed = registerSchema.safeParse(await request.json().catch(() => null));
