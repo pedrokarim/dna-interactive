@@ -25,9 +25,11 @@ import {
   Wrench,
   type LucideIcon,
 } from "lucide-react";
+import { useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { AppShell } from "@/components/site/AppShell";
 import { DnaCornerBrackets, DnaNouveau, DnaTag, DnaRibbon, cn } from "@/components/dna";
+import { CALENDAR_TICKS, computeCalendarRows, todayMarkerPct } from "@/lib/events/calendar";
 
 export type HomeCode = { code: string; reward: string };
 export type HomeBuildCard = {
@@ -91,16 +93,6 @@ const TOOL_CARDS: ToolCard[] = [
 const COMMUNITY_CARDS: ToolCard[] = [
   { href: "/commissions", title: "Commissions", mono: "//COVERT.OPS.LIVE", desc: "Rotation en temps réel des commissions.", icon: ScrollText, bg: "/assets/worldview/worldview-4.webp", tint: "var(--color-pyro)" },
   { href: "https://discord.gg", title: "Discord", mono: "//COMMUNITY.HALL", desc: "Rejoins la communauté et les créateurs.", icon: Bot, bg: "/assets/worldview/worldview-1.webp", tint: "var(--color-electro)", external: true },
-];
-
-/** Calendrier — fenêtre de 30 jours, positions en %. Placeholder (pas de source jeu). */
-const CAL_DAYS = 30;
-const CAL_TICKS = ["J1", "J6", "J11", "J16", "J21", "J26", "J30"];
-const CAL_ROWS: { label: string; tint: string; events: { title: string; start: number; end: number }[] }[] = [
-  { label: "Recrutement", tint: "var(--color-crimson-bright)", events: [{ title: "Bannière — Kami", start: 1, end: 15 }, { title: "Bannière — Serpent", start: 16, end: 30 }] },
-  { label: "Armes", tint: "var(--color-gold)", events: [{ title: "Arme signature", start: 1, end: 15 }, { title: "Arme de calamité", start: 16, end: 30 }] },
-  { label: "Événements", tint: "var(--color-anemo)", events: [{ title: "Abysse nocturne", start: 3, end: 22 }, { title: "Défi hebdomadaire", start: 12, end: 19 }] },
-  { label: "Gameplay", tint: "var(--color-electro)", events: [{ title: "Mode entraînement", start: 6, end: 30 }] },
 ];
 
 /* --------------------------------------------------------------- primitives */
@@ -193,42 +185,63 @@ function CodeCard({ code, reward }: HomeCode) {
 }
 
 function EventCalendar() {
+  const locale = useLocale();
+  const fmt = new Intl.DateTimeFormat(locale, { day: "numeric", month: "short" });
+  const rows = computeCalendarRows();
+  const today = todayMarkerPct();
+  const range = (start: string, end: string) => `${fmt.format(new Date(start))} – ${fmt.format(new Date(end))}`;
   return (
     <div className="relative overflow-hidden rounded-sm border border-line/20 bg-panel/60 p-4 sm:p-5">
       <DnaCornerBrackets size={14} />
       <div className="overflow-x-auto custom-scrollbar">
-        <div className="min-w-[680px]">
-          <div className="mb-3 flex items-center gap-3">
-            <span className="w-24 shrink-0" />
+        <div className="min-w-[720px]">
+          {/* axe de dates + repère aujourd'hui */}
+          <div className="mb-2.5 flex items-center gap-3">
+            <span className="w-56 shrink-0" />
             <div className="relative flex-1">
               <div className="flex justify-between font-mono text-[0.6rem] text-muted-2">
-                {CAL_TICKS.map((t) => (
-                  <span key={t}>{t}</span>
+                {CALENDAR_TICKS.map((t) => (
+                  <span key={t.iso}>{t.label}</span>
                 ))}
               </div>
+              {today !== null ? (
+                <span
+                  aria-hidden
+                  className="absolute -bottom-1 -translate-x-1/2 font-caps text-[0.5rem] uppercase tracking-[0.14em] text-gold-bright"
+                  style={{ left: `${today}%` }}
+                >
+                  ▾ Auj.
+                </span>
+              ) : null}
             </div>
           </div>
-          <div className="flex flex-col gap-2.5">
-            {CAL_ROWS.map((row) => (
-              <div key={row.label} className="flex items-center gap-3">
-                <span className="w-24 shrink-0 font-caps text-[0.6rem] uppercase tracking-[0.16em]" style={{ color: row.tint }}>
-                  {row.label}
+          {/* lignes — 1 événement par ligne (gère les chevauchements) */}
+          <div className="flex flex-col gap-1.5">
+            {rows.map((r) => (
+              <div key={r.title} className="flex items-center gap-3">
+                <span className="flex w-56 shrink-0 items-center gap-2">
+                  <span className="h-2 w-2 shrink-0 rounded-full" style={{ background: r.tint }} />
+                  <span className="truncate text-[0.72rem] text-parch/85" title={r.title}>
+                    {r.title}
+                  </span>
                 </span>
-                <div className="relative h-9 flex-1 rounded-sm bg-ink/50">
-                  {row.events.map((ev) => {
-                    const left = (ev.start / CAL_DAYS) * 100;
-                    const width = ((ev.end - ev.start) / CAL_DAYS) * 100;
-                    return (
-                      <span
-                        key={ev.title}
-                        className="absolute inset-y-1 flex items-center overflow-hidden rounded-[3px] border px-2 font-sans text-[0.68rem] text-parch"
-                        style={{ left: `${left}%`, width: `${width}%`, borderColor: row.tint, background: `linear-gradient(90deg, ${row.tint}44, ${row.tint}18)` }}
-                        title={ev.title}
-                      >
-                        <span className="truncate">{ev.title}</span>
-                      </span>
-                    );
-                  })}
+                <div className="relative h-6 flex-1 rounded-sm bg-ink/50">
+                  {today !== null ? (
+                    <span aria-hidden className="absolute inset-y-0 w-px bg-gold-bright/40" style={{ left: `${today}%` }} />
+                  ) : null}
+                  <span
+                    className="absolute inset-y-[3px] flex items-center overflow-hidden rounded-[3px] border px-2"
+                    style={{
+                      left: `${r.leftPct}%`,
+                      width: `${r.widthPct}%`,
+                      borderColor: r.tint,
+                      background: `linear-gradient(90deg, ${r.tint}44, ${r.tint}18)`,
+                      opacity: r.upcoming ? 0.7 : 1,
+                    }}
+                    title={`${r.title} · ${range(r.start, r.end)}`}
+                  >
+                    <span className="truncate font-mono text-[0.6rem] text-parch/90">{range(r.start, r.end)}</span>
+                  </span>
                 </div>
               </div>
             ))}
@@ -236,7 +249,7 @@ function EventCalendar() {
         </div>
       </div>
       <p className="mt-3 font-mono text-[0.6rem] text-muted-2">
-        Données de démonstration — le calendrier réel sera synchronisé avec le jeu.
+        Événements en cours — mis à jour à chaque version du jeu.
       </p>
     </div>
   );

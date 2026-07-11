@@ -52,8 +52,13 @@ adossés au système de connexion (auth Discord déjà en place, cf. builder com
 - **Données** (backend à venir) : table `notifications` par utilisateur —
   `{ id, userId, type, payload, readAt, createdAt }`.
   Types envisagés : `new_content` (perso/arme/patch ajouté), `build_vote` /
-  `build_comment` (interactions sur mes builds), `code_added` (nouveau code de rédemption),
-  `event_start` (bannière/événement du calendrier qui démarre), `system` (annonces).
+  `build_comment` (interactions sur mes builds), `build_moderated` (build masqué/rétabli),
+  `report_new` (signalement — admins), `code_added` (nouveau code de rédemption),
+  `system` (annonces).
+- **EXCLU volontairement** : rotation des **Commissions** (`commission_snapshots`
+  change toutes les heures → spam de tout le monde). Ne PAS en faire une notification,
+  même en opt-in (décision Karim, 11/07/2026). Idem pour le `event_start` du calendrier
+  tant qu'il est en données de démo.
 - **Compteur** : nombre de non-lues → badge chiffré sur la cloche (remplace le point statique).
 - **Flux** : v1 = polling `GET /api/notifications` au chargement + à intervalle ; v2 = SSE/WebSocket.
   Marquage lu : `POST /api/notifications/read`. Rien n'est envoyé au client sans session.
@@ -82,6 +87,7 @@ adossés au système de connexion (auth Discord déjà en place, cf. builder com
 - 2026-07-11 — Pages contenu converties : `/changelog`, `/contact` (via layout), `/about`, `/support`, `/profile`, `/confidentialite` (via page.tsx) → `AppShell`. Largeur de lecture conservée (texte).
 - 2026-07-11 — `/builder` + `/builds/[id]` convertis. Fiches détail (`characters/[id]`, `items/.../[itemId]`, `about`, `drafts`, `favoris`) vérifiées : héritent du shell, rendent en pleine largeur, aucun `<main>` imbriqué. `admin` laissé standalone. **Refonte layout : terminée** (hors home marketing `/` et carte, volontaires).
 - 2026-07-11 — **Go-live bascule home** : `home-poc` → `/` (hub, indexée, metadata `home`, client déplacé en `src/components/home/HomeHubClient.tsx`) ; ancienne home → `/features` (landing marketing, chrome propre, metadata `features`) ; `/home-poc` supprimée ; sidebar « Accueil » → `/`, ajout « Fonctionnalités » → `/features`.
+- 2026-07-11 — **Calendrier des événements câblé sur de vrais événements** (patch 1.4, fenêtre juillet 2026) : `src/lib/events/calendar.ts` (données curées, positions déterministes, repère « aujourd'hui »), Gantt 1-événement/ligne dans la home. Aucune source tierce créditée dans le front (à rafraîchir à chaque version du jeu).
 - 2026-07-11 — Home hub **câblée sur les vraies données** : `home-poc/page.tsx` (server, `force-dynamic`) → codes réels (`GAME_CODES`), top builds + total (DB via `src/lib/community-builds/list.ts` `getTopBuilds`/`getBuildsTotal`, sûrs si table absente), compteurs personnages/items réels, portraits perso réels dans le carrousel, format nombres selon la locale. Restent en placeholder : **calendrier** (pas de source jeu, labellisé démo) et profil/notifications (auth, cf. « Systèmes à câbler »). Admin : rien à faire (dashboard propre).
 
 ## Méthode de conversion (recette réutilisable)
