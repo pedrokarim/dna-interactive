@@ -3,7 +3,6 @@
 import { useEffect, useState, type ReactNode } from "react";
 import {
   AtSign,
-  Bell,
   Bot,
   Boxes,
   CalendarDays,
@@ -25,8 +24,9 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { Link, usePathname } from "@/i18n/navigation";
-import { DnaNotifDot, DnaNouveau, DnaPill, cn } from "@/components/dna";
+import { DnaNouveau, DnaPill, cn } from "@/components/dna";
 import { SidebarProfile, TopbarAccount } from "@/components/auth/AccountControls";
+import { NotificationBell } from "@/components/notifications/NotificationBell";
 
 /* ------------------------------------------------------------------ nav data */
 
@@ -300,14 +300,7 @@ export function AppShell({ children, breadcrumb = "//COMMUNITY.HUB" }: AppShellP
             <span className="hidden items-center gap-1.5 rounded-sm border border-line/25 px-2.5 py-1.5 font-caps text-[0.6rem] uppercase tracking-[0.16em] text-parch/80 sm:inline-flex">
               🌐 FR
             </span>
-            <button
-              type="button"
-              aria-label="Notifications"
-              className="relative flex h-9 w-9 items-center justify-center rounded-sm border border-line/25 text-parch/70 hover:border-gold hover:text-gold"
-            >
-              <Bell className="h-4 w-4" />
-              <DnaNotifDot className="absolute right-2 top-2" />
-            </button>
+            <NotificationBell />
             <TopbarAccount />
           </div>
         </header>

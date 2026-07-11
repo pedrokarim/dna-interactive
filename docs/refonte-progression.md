@@ -62,7 +62,15 @@ adossés au système de connexion (auth Discord déjà en place, cf. builder com
 - **Compteur** : nombre de non-lues → badge chiffré sur la cloche (remplace le point statique).
 - **Flux** : v1 = polling `GET /api/notifications` au chargement + à intervalle ; v2 = SSE/WebSocket.
   Marquage lu : `POST /api/notifications/read`. Rien n'est envoyé au client sans session.
-- **État actuel** : cloche + point statiques, non cliquables. À rendre fonctionnel après auth.
+- **✅ v1 implémentée (dérivée, sans table)** : `src/lib/notifications/derive.ts`
+  `getNotifications(user)` dérive des tables existantes → **likes reçus sur mes builds**,
+  **modération de mes builds** (`adminActions`), **signalements ouverts** (admins).
+  API `GET /api/notifications`. Cloche `src/components/notifications/NotificationBell.tsx`
+  (dropdown, badge non-lu, « tout marquer lu ») dans l'`AppShell`. **Lu/non-lu via
+  localStorage** (`dna:notif-last-seen`), pas de colonne DB.
+- **v2** : `new_content` / `code_added` (diffusion), `build_comment` (nécessite le
+  système de commentaires), notif de **montée de niveau**, et un vrai ledger/table +
+  état lu serveur si on veut du multi-appareil. Commissions restent **exclues** (spam horaire).
 
 ### 2. Niveau / XP utilisateur — ✅ v1 (XP dérivée, sans migration DB)
 - **Lib pure** `src/lib/leveling/index.ts` : barèmes (build +40, like +8, vote donné +2,
