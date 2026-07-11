@@ -7,11 +7,18 @@ import { eq, sql } from "drizzle-orm";
 import { getDb, schema } from "@/db";
 import { isConfiguredAdminDiscordId } from "@/lib/auth/admins";
 import { verifyPassword } from "@/lib/auth/password";
+import { loadAuthOverrides } from "@/lib/auth/config-store";
+
+// Credentials OAuth pilotables via l'admin (BDD), avec fallback env. Lus au
+// démarrage (cold-start). Sûr : si la BDD est absente/KO → env uniquement.
+const overrides = await loadAuthOverrides();
 
 // Providers construits dynamiquement : Google ne s'active que si ses clés sont
-// présentes (câblé mais inerte tant que AUTH_GOOGLE_ID/SECRET ne sont pas fournis).
+// présentes (BDD ou env) ET le toggle admin est actif.
 const providers: NextAuthConfig["providers"] = [
   Discord({
+    clientId: overrides.discordId ?? process.env.AUTH_DISCORD_ID,
+    clientSecret: overrides.discordSecret ?? process.env.AUTH_DISCORD_SECRET,
     // Un même email Discord (vérifié) est rattaché au compte existant plutôt
     // que d'en créer un doublon → 1 personne = 1 compte.
     allowDangerousEmailAccountLinking: true,
@@ -45,8 +52,10 @@ const providers: NextAuthConfig["providers"] = [
   }),
 ];
 
-if (process.env.AUTH_GOOGLE_ID && process.env.AUTH_GOOGLE_SECRET) {
-  providers.push(Google({ allowDangerousEmailAccountLinking: true }));
+const googleId = overrides.googleId ?? process.env.AUTH_GOOGLE_ID;
+const googleSecret = overrides.googleSecret ?? process.env.AUTH_GOOGLE_SECRET;
+if (overrides.googleEnabled && googleId && googleSecret) {
+  providers.push(Google({ clientId: googleId, clientSecret: googleSecret, allowDangerousEmailAccountLinking: true }));
 }
 
 export const { handlers, auth, signIn, signOut } = NextAuth({

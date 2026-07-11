@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Check } from "lucide-react";
 import { DnaButton, DnaPanel, DnaSectionLabel, cn } from "@/components/dna";
 import { DEFAULT_SETTINGS, type AppSettings } from "@/lib/settings";
+import { AuthConfigPanel } from "./AuthConfigPanel";
 
 const inputClass =
   "w-full rounded-sm border border-white/10 bg-ink/60 px-3 py-2 text-sm text-parch outline-none transition-colors placeholder:text-muted-2 focus:border-gold/50";
@@ -154,11 +155,13 @@ export function SettingsAdminClient() {
         </DnaPanel>
       </div>
 
+      <AuthConfigPanel />
+
       {error ? <p className="font-sans text-sm text-[#ffb3a6]">{error}</p> : null}
 
       <div className="flex items-center gap-3">
         <DnaButton variant="gold" onClick={save} disabled={saving}>
-          {saving ? "Enregistrement…" : "Enregistrer"}
+          {saving ? "Enregistrement…" : "Enregistrer les réglages"}
         </DnaButton>
         {saved ? (
           <span className="inline-flex items-center gap-1.5 font-caps text-[0.6rem] uppercase tracking-[0.14em] text-anemo">
