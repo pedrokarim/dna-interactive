@@ -78,6 +78,7 @@ adossés au système de connexion (auth Discord déjà en place, cf. builder com
 - 2026-07-11 — `/builds`, `/codes`, `/commissions` convertis : SiteHeader/SiteFooter → `AppShell`, pleine largeur (chrome par `page.tsx`).
 - 2026-07-11 — Pages contenu converties : `/changelog`, `/contact` (via layout), `/about`, `/support`, `/profile`, `/confidentialite` (via page.tsx) → `AppShell`. Largeur de lecture conservée (texte).
 - 2026-07-11 — `/builder` + `/builds/[id]` convertis. Fiches détail (`characters/[id]`, `items/.../[itemId]`, `about`, `drafts`, `favoris`) vérifiées : héritent du shell, rendent en pleine largeur, aucun `<main>` imbriqué. `admin` laissé standalone. **Refonte layout : terminée** (hors home marketing `/` et carte, volontaires).
+- 2026-07-11 — Home hub **câblée sur les vraies données** : `home-poc/page.tsx` (server, `force-dynamic`) → codes réels (`GAME_CODES`), top builds + total (DB via `src/lib/community-builds/list.ts` `getTopBuilds`/`getBuildsTotal`, sûrs si table absente), compteurs personnages/items réels, portraits perso réels dans le carrousel, format nombres selon la locale. Restent en placeholder : **calendrier** (pas de source jeu, labellisé démo) et profil/notifications (auth, cf. « Systèmes à câbler »). Admin : rien à faire (dashboard propre).
 
 ## Méthode de conversion (recette réutilisable)
 1. Le chrome vient soit d'un `<section>/layout.tsx` local, soit de `SiteHeader`/`SiteFooter` dans la `page.tsx`. Repérer lequel.

@@ -14,14 +14,13 @@ import {
   FileStack,
   Gem,
   Hammer,
-  Heart,
   Layers,
   Map as MapIcon,
   ScrollText,
   Search,
   Sparkles,
   Swords,
-  Ticket,
+  ThumbsUp,
   Users,
   Wrench,
   type LucideIcon,
@@ -29,6 +28,25 @@ import {
 import { Link } from "@/i18n/navigation";
 import { AppShell } from "@/components/site/AppShell";
 import { DnaCornerBrackets, DnaNouveau, DnaTag, DnaRibbon, cn } from "@/components/dna";
+
+export type HomeCode = { code: string; reward: string };
+export type HomeBuildCard = {
+  id: string;
+  title: string;
+  character: string;
+  tags: string[];
+  views: number;
+  votes: number;
+  author: string;
+  portrait: string | null;
+  tint: string;
+};
+export type HomePocClientProps = {
+  codes: HomeCode[];
+  builds: HomeBuildCard[];
+  communityCount: string;
+  stats: { characters: string; items: string; builds: string };
+};
 
 /* CTA façon design system, appliqués directement sur un Link/anchor. */
 const CTA_BASE =
@@ -42,7 +60,7 @@ const CTA_GHOST = cn(
   "border border-white/20 bg-gradient-to-b from-panel/70 to-ink/70 text-parch hover:-translate-y-px hover:border-white/45 hover:text-white",
 );
 
-/* ------------------------------------------------------------------ données */
+/* ------------------------------------------------------------------ données statiques (cartes outils) */
 
 type ToolCard = {
   href: string;
@@ -75,14 +93,7 @@ const COMMUNITY_CARDS: ToolCard[] = [
   { href: "https://discord.gg", title: "Discord", mono: "//COMMUNITY.HALL", desc: "Rejoins la communauté et les créateurs.", icon: Bot, bg: "/assets/worldview/worldview-1.webp", tint: "var(--color-electro)", external: true },
 ];
 
-/** Codes cadeaux (placeholder — à brancher sur /codes). */
-const GIFT_CODES: { code: string; reward: string }[] = [
-  { code: "DNAWELCOME", reward: "×100 Éclats d'abysse · ×5 Tickets de recrutement" },
-  { code: "DUETNIGHT26", reward: "×50 000 Or · ×20 Matériaux d'ascension" },
-  { code: "ABYSSNIGHT", reward: "×10 Tickets premium" },
-];
-
-/** Calendrier — fenêtre de 30 jours, positions en %. Placeholder. */
+/** Calendrier — fenêtre de 30 jours, positions en %. Placeholder (pas de source jeu). */
 const CAL_DAYS = 30;
 const CAL_TICKS = ["J1", "J6", "J11", "J16", "J21", "J26", "J30"];
 const CAL_ROWS: { label: string; tint: string; events: { title: string; start: number; end: number }[] }[] = [
@@ -90,15 +101,6 @@ const CAL_ROWS: { label: string; tint: string; events: { title: string; start: n
   { label: "Armes", tint: "var(--color-gold)", events: [{ title: "Arme signature", start: 1, end: 15 }, { title: "Arme de calamité", start: 16, end: 30 }] },
   { label: "Événements", tint: "var(--color-anemo)", events: [{ title: "Abysse nocturne", start: 3, end: 22 }, { title: "Défi hebdomadaire", start: 12, end: 19 }] },
   { label: "Gameplay", tint: "var(--color-electro)", events: [{ title: "Mode entraînement", start: 6, end: 30 }] },
-];
-
-/** Builds vitrine (placeholder — à brancher sur /builds). */
-const SHOWCASE_BUILDS: { name: string; character: string; tags: string[]; views: number; likes: number; author: string; bg: string; tint: string }[] = [
-  { name: "Kami DPS Hydro", character: "Kami", tags: ["Late Game", "F2P"], views: 312, likes: 24, author: "movhi103", bg: "/assets/worldview/worldview-2.webp", tint: "var(--color-hydro)" },
-  { name: "Serpent Burst", character: "Feathered Serpent", tags: ["Boss"], views: 189, likes: 17, author: "sinna", bg: "/assets/worldview/worldview-6.webp", tint: "var(--color-lumino)" },
-  { name: "Contrôle Anemo", character: "Phoxhunter", tags: ["Support"], views: 254, likes: 31, author: "rayray", bg: "/assets/worldview/worldview-9.webp", tint: "var(--color-anemo)" },
-  { name: "Pyro Nuke", character: "Ardelia", tags: ["Late Game", "Crit"], views: 410, likes: 52, author: "grm", bg: "/assets/worldview/worldview-8.webp", tint: "var(--color-pyro)" },
-  { name: "Electro Hybride", character: "Estella", tags: ["F2P"], views: 135, likes: 9, author: "topaz", bg: "/assets/worldview/worldview-10.webp", tint: "var(--color-electro)" },
 ];
 
 /* --------------------------------------------------------------- primitives */
@@ -159,7 +161,7 @@ function SectionRibbon({ label, index, action }: { label: string; index?: string
   );
 }
 
-function CodeCard({ code, reward }: { code: string; reward: string }) {
+function CodeCard({ code, reward }: HomeCode) {
   const [copied, setCopied] = useState(false);
   const copy = () => {
     try {
@@ -196,7 +198,6 @@ function EventCalendar() {
       <DnaCornerBrackets size={14} />
       <div className="overflow-x-auto custom-scrollbar">
         <div className="min-w-[680px]">
-          {/* axe de dates */}
           <div className="mb-3 flex items-center gap-3">
             <span className="w-24 shrink-0" />
             <div className="relative flex-1">
@@ -207,7 +208,6 @@ function EventCalendar() {
               </div>
             </div>
           </div>
-          {/* lignes */}
           <div className="flex flex-col gap-2.5">
             {CAL_ROWS.map((row) => (
               <div key={row.label} className="flex items-center gap-3">
@@ -242,31 +242,34 @@ function EventCalendar() {
   );
 }
 
-function BuildShowcaseCard({ build }: { build: (typeof SHOWCASE_BUILDS)[number] }) {
+function BuildShowcaseCard({ build }: { build: HomeBuildCard }) {
+  const bg = build.portrait ?? "/assets/worldview/worldview-2.webp";
   return (
     <Link
-      href="/builds"
+      href={`/builds/${build.id}`}
       className="group relative flex h-full w-64 shrink-0 flex-col overflow-hidden rounded-sm border border-line/20 bg-panel/70 transition-[transform,border-color] hover:-translate-y-0.5 hover:border-gold/70"
     >
-      <div className="relative h-32 overflow-hidden">
-        <span aria-hidden className="absolute inset-0 bg-cover bg-center opacity-60 transition-transform duration-500 group-hover:scale-105" style={{ backgroundImage: `url(${build.bg})` }} />
-        <span aria-hidden className="absolute inset-0 bg-gradient-to-t from-panel via-panel/30 to-transparent" />
+      <div className="relative h-36 overflow-hidden">
+        <span aria-hidden className="absolute inset-0 bg-cover bg-[center_top] opacity-80 transition-transform duration-500 group-hover:scale-105" style={{ backgroundImage: `url(${bg})` }} />
+        <span aria-hidden className="absolute inset-0 bg-gradient-to-t from-panel via-panel/20 to-transparent" />
         <span aria-hidden className="absolute inset-x-0 bottom-0 h-px" style={{ background: `linear-gradient(90deg, ${build.tint}, transparent)` }} />
-        <span className="absolute right-2 top-2"><DnaTag>v1.4</DnaTag></span>
+        <span className="absolute right-2 top-2"><DnaTag>Communauté</DnaTag></span>
       </div>
       <div className="flex flex-1 flex-col gap-1.5 p-3">
-        <div className="font-display text-base text-parch group-hover:text-gold-bright">{build.name}</div>
+        <div className="line-clamp-2 font-display text-base leading-tight text-parch group-hover:text-gold-bright">{build.title}</div>
         <div className="font-mono text-[0.62rem] text-muted">{build.character}</div>
-        <div className="mt-1 flex flex-wrap gap-1">
-          {build.tags.map((t) => (
-            <span key={t} className="rounded-[3px] border border-white/10 bg-ink/40 px-1.5 py-0.5 font-caps text-[0.5rem] uppercase tracking-[0.12em] text-parch/70">
-              {t}
-            </span>
-          ))}
-        </div>
+        {build.tags.length > 0 ? (
+          <div className="mt-1 flex flex-wrap gap-1">
+            {build.tags.map((t) => (
+              <span key={t} className="rounded-[3px] border border-white/10 bg-ink/40 px-1.5 py-0.5 font-caps text-[0.5rem] uppercase tracking-[0.12em] text-parch/70">
+                {t}
+              </span>
+            ))}
+          </div>
+        ) : null}
         <div className="mt-auto flex items-center gap-3 pt-2 text-[0.7rem] text-muted">
           <span className="inline-flex items-center gap-1"><Eye className="h-3.5 w-3.5" />{build.views}</span>
-          <span className="inline-flex items-center gap-1"><Heart className="h-3.5 w-3.5" />{build.likes}</span>
+          <span className="inline-flex items-center gap-1"><ThumbsUp className="h-3.5 w-3.5" />{build.votes}</span>
           <span className="ml-auto truncate text-parch/60">@{build.author}</span>
         </div>
       </div>
@@ -276,13 +279,17 @@ function BuildShowcaseCard({ build }: { build: (typeof SHOWCASE_BUILDS)[number] 
 
 /* ---------------------------------------------------------------- page (POC) */
 
-export default function HomePocClient() {
+export default function HomePocClient({ codes, builds, communityCount, stats }: HomePocClientProps) {
+  const STATS = [
+    { icon: Users, value: stats.characters, label: "Personnages" },
+    { icon: Database, value: stats.items, label: "Items indexés" },
+    { icon: Layers, value: stats.builds, label: "Builds partagés" },
+  ];
   return (
     <AppShell breadcrumb="//COMMUNITY.HUB">
       <div className="mx-auto w-full max-w-[1720px] px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
         {/* =============================================== HERO (marque + sélection) */}
         <section className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.75fr)]">
-          {/* ---- bloc marque ---- */}
           <div className="relative flex flex-col overflow-hidden rounded-sm border border-line/25 bg-panel/70 p-6">
             <span aria-hidden className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-20" style={{ backgroundImage: "url(/assets/worldview/worldview-2.webp)" }} />
             <span aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink via-panel/80 to-transparent" />
@@ -306,14 +313,13 @@ export default function HomePocClient() {
                 <DnaCornerBrackets size={10} color="var(--color-gold-deep)" />
                 <Search className="h-5 w-5 shrink-0 text-gold" />
                 <span className="min-w-0">
-                  <span className="block font-caps text-[0.55rem] uppercase tracking-[0.22em] text-muted">Communauté · créations partagées</span>
-                  <span className="block font-display text-3xl font-semibold tabular-nums text-gold-bright">12 480</span>
+                  <span className="block font-caps text-[0.55rem] uppercase tracking-[0.22em] text-muted">Communauté · builds partagés</span>
+                  <span className="block font-display text-3xl font-semibold tabular-nums text-gold-bright">{communityCount}</span>
                 </span>
               </div>
             </div>
           </div>
 
-          {/* ---- bloc sélection ---- */}
           <div className="flex flex-col gap-4">
             <div className="flex items-end justify-between gap-3">
               <div>
@@ -384,17 +390,19 @@ export default function HomePocClient() {
         </section>
 
         {/* =============================================== CODES CADEAUX */}
-        <section className="mt-10 flex flex-col gap-4">
-          <SectionRibbon
-            label="Codes cadeaux"
-            action={<Link href="/codes" className="font-caps text-[0.6rem] uppercase tracking-[0.16em] text-gold hover:text-gold-bright">Tous les codes →</Link>}
-          />
-          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-            {GIFT_CODES.map((c) => (
-              <CodeCard key={c.code} code={c.code} reward={c.reward} />
-            ))}
-          </div>
-        </section>
+        {codes.length > 0 ? (
+          <section className="mt-10 flex flex-col gap-4">
+            <SectionRibbon
+              label="Codes cadeaux"
+              action={<Link href="/codes" className="font-caps text-[0.6rem] uppercase tracking-[0.16em] text-gold hover:text-gold-bright">Tous les codes →</Link>}
+            />
+            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+              {codes.map((c) => (
+                <CodeCard key={c.code} code={c.code} reward={c.reward} />
+              ))}
+            </div>
+          </section>
+        ) : null}
 
         {/* =============================================== CALENDRIER DES ÉVÉNEMENTS */}
         <section className="mt-10 flex flex-col gap-4">
@@ -410,25 +418,23 @@ export default function HomePocClient() {
         </section>
 
         {/* =============================================== BUILDS DE PERSONNAGES */}
-        <section className="mt-10 flex flex-col gap-4">
-          <SectionRibbon
-            label="Builds de personnages"
-            action={<Link href="/builds" className="font-caps text-[0.6rem] uppercase tracking-[0.16em] text-gold hover:text-gold-bright">Voir tout →</Link>}
-          />
-          <div className="-mx-1 flex gap-4 overflow-x-auto px-1 pb-2 custom-scrollbar">
-            {SHOWCASE_BUILDS.map((b) => (
-              <BuildShowcaseCard key={b.name} build={b} />
-            ))}
-          </div>
-        </section>
+        {builds.length > 0 ? (
+          <section className="mt-10 flex flex-col gap-4">
+            <SectionRibbon
+              label="Builds de personnages"
+              action={<Link href="/builds" className="font-caps text-[0.6rem] uppercase tracking-[0.16em] text-gold hover:text-gold-bright">Voir tout →</Link>}
+            />
+            <div className="-mx-1 flex gap-4 overflow-x-auto px-1 pb-2 custom-scrollbar">
+              {builds.map((b) => (
+                <BuildShowcaseCard key={b.id} build={b} />
+              ))}
+            </div>
+          </section>
+        ) : null}
 
         {/* =============================================== bandeau stats rapide */}
         <section className="mt-10 grid gap-4 sm:grid-cols-3">
-          {[
-            { icon: Users, value: "58", label: "Personnages" },
-            { icon: Database, value: "1 240+", label: "Items indexés" },
-            { icon: Layers, value: "12 480", label: "Builds partagés" },
-          ].map((s) => {
+          {STATS.map((s) => {
             const Icon = s.icon;
             return (
               <div key={s.label} className="relative flex items-center gap-4 rounded-sm border border-line/20 bg-panel/60 p-4">
