@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import SiteHeader from "@/components/site/SiteHeader";
-import SiteFooter from "@/components/site/SiteFooter";
+import { AppShell } from "@/components/site/AppShell";
 import { CommunityBuildBuilderClient } from "@/components/builder/CommunityBuildBuilderClient";
 import { DnaPanel } from "@/components/dna/Panel";
 import { DnaSectionLabel } from "@/components/dna/SectionLabel";
-import { NAVIGATION } from "@/lib/constants";
 import { getCurrentUser } from "@/lib/auth/session";
 import { getBuilderOptions } from "@/lib/community-builds/options";
 
@@ -23,9 +21,8 @@ export default async function BuilderPage({ params }: { params: Promise<{ locale
   const t = await getTranslations("builder");
 
   return (
-    <main className="min-h-screen bg-ink text-parch">
-      <SiteHeader active={NAVIGATION.builder} />
-      <section className="container mx-auto px-4 py-6 md:px-6">
+    <AppShell breadcrumb="//BUILD.FORGE">
+      <section className="mx-auto w-full max-w-[1720px] px-4 py-6 sm:px-6 lg:px-8">
         <div className="mb-4">
           <div>
             <DnaSectionLabel>{t("pageCommunityBuilder")}</DnaSectionLabel>
@@ -39,7 +36,6 @@ export default async function BuilderPage({ params }: { params: Promise<{ locale
           <CommunityBuildBuilderClient options={options} isAuthenticated={Boolean(user)} />
         )}
       </section>
-      <SiteFooter />
-    </main>
+    </AppShell>
   );
 }

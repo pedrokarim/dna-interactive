@@ -7,9 +7,7 @@ import { getCurrentUser } from "@/lib/auth/session";
 import { isMissingTableError } from "@/lib/db-errors";
 import { checkRateLimit } from "@/lib/rate-limit";
 import { getCharacterById } from "@/lib/characters/catalog";
-import SiteHeader from "@/components/site/SiteHeader";
-import SiteFooter from "@/components/site/SiteFooter";
-import { NAVIGATION } from "@/lib/constants";
+import { AppShell } from "@/components/site/AppShell";
 import { BuildPageClient } from "@/components/community-builds/BuildPageClient";
 import type { CommunityBuildPayload } from "@/lib/community-builds/validation";
 
@@ -141,9 +139,8 @@ export default async function CommunityBuildPage({ params }: RouteParams) {
   const characterElement = build.element ?? character.element.key;
 
   return (
-    <main className="min-h-screen bg-ink text-parch">
-      <SiteHeader active={NAVIGATION.builds} />
-      <section className="container mx-auto px-4 py-6 md:px-6">
+    <AppShell breadcrumb="//SHARED.LOADOUTS">
+      <section className="mx-auto w-full max-w-[1720px] px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
         <BuildPageClient
           build={build}
           character={character}
@@ -151,7 +148,6 @@ export default async function CommunityBuildPage({ params }: RouteParams) {
           lang={locale.toUpperCase()}
         />
       </section>
-      <SiteFooter active={NAVIGATION.builds} />
-    </main>
+    </AppShell>
   );
 }

@@ -19,16 +19,16 @@
 | Home marketing | `/` (actuelle) | ➖ | Conservée → future page marketing/fonctionnalités. Garde son chrome. |
 | Carte interactive | `/map` | ➖ | Ne bouge quasi pas (volontaire). |
 | Personnages (liste) | `/characters` | ✅ | **Pilote** du gabarit liste. `characters/layout.tsx` → `AppShell` pleine largeur ; en-tête reskiné (eyebrow mono + titre + compteur équerres) ; logique filtres/grille inchangée ; grille simplifiée → 6 col en 2xl. |
-| Personnage (fiche) | `/characters/[id]` | 🔜 | Chrome `AppShell` hérité du layout (OK) ; contenu interne à passer en gabarit fiche. |
+| Personnage (fiche) | `/characters/[id]` | ✅ | Hérite `AppShell` du layout ; rend en pleine largeur (compteur `#id`, panneau stats). Aucun `<main>` propre → pas de conflit. |
 | Base de données (hub) | `/items` | ✅ | `items/layout.tsx` → `AppShell` (breadcrumb `//GEAR.DATABASE`) ; en-tête gabarit + compteur catégories en équerres ; grille catégories 4 col en 2xl. |
 | Items (catégorie) | `/items/[category]` | ✅ | `ItemsGridClient` : en-tête reskiné en gabarit + compteur en équerres ; logique filtres/tri/pagination inchangée. |
-| Item (fiche) | `/items/[category]/[itemId]` | 🔜 | Chrome `AppShell` hérité (OK) ; contenu interne à passer en gabarit fiche. |
-| Guide catégorie | `/items/[category]/about` | 🔜 | Chrome hérité ; contenu à peaufiner. |
-| Plans de forge | `/items/drafts` | 🔜 | Chrome hérité ; en-tête à reskiner. |
-| Favoris | `/items/favoris` | 🔜 | Chrome hérité ; utilise `ItemsGridClient` (en-tête déjà reskiné). |
-| Builder | `/builder` | ⏳ | |
+| Item (fiche) | `/items/[category]/[itemId]` | ✅ | Hérite `AppShell` ; rend en pleine largeur (compteur `#id`, stats, build DW). |
+| Guide catégorie | `/items/[category]/about` | ✅ | Hérite `AppShell`. Pas de `<main>` propre. |
+| Plans de forge | `/items/drafts` (+ `[draftId]`) | ✅ | Hérite `AppShell`. |
+| Favoris | `/items/favoris` | ✅ | Hérite `AppShell` ; `ItemsGridClient` (en-tête déjà en gabarit). |
+| Builder | `/builder` | ✅ | `page.tsx` → `AppShell` (//BUILD.FORGE), pleine largeur. |
 | Builds communauté | `/builds` | ✅ | `page.tsx` → `AppShell` (//SHARED.LOADOUTS), pleine largeur. En-tête `DnaSectionLabel` conservé (à harmoniser en gabarit plus tard). |
-| Build (fiche) | `/builds/[id]` | ⏳ | Rend son propre SiteHeader. |
+| Build (fiche) | `/builds/[id]` | ✅ | `page.tsx` → `AppShell` (//SHARED.LOADOUTS), pleine largeur. |
 | Commissions | `/commissions` | ✅ | `page.tsx` → `AppShell` (//COVERT.OPS.LIVE), pleine largeur. |
 | Codes | `/codes` | ✅ | `page.tsx` → `AppShell` (//REDEEM.CODES), pleine largeur. |
 | Changelog | `/changelog` | ✅ | `changelog/layout.tsx` → `AppShell` (//PATCH.NOTES). Contenu centré lisible conservé. |
@@ -36,7 +36,7 @@
 | Support | `/support` | ✅ | `page.tsx` → `AppShell` (//SUPPORT.DESK). |
 | Contact | `/contact` | ✅ | `contact/layout.tsx` → `AppShell` (//CONTACT.CHANNEL). |
 | Profil | `/profile` | ✅ | `page.tsx` → `AppShell` (//ACCOUNT.PROFILE). |
-| Admin | `/admin` | ⏳ | |
+| Admin | `/admin` | ➖ | Back-office gated (404 pour non-admin), chrome propre `AdminDashboardClient` — laissé standalone comme la carte (hors nav publique). À basculer si souhaité. |
 | Confidentialité | `/confidentialite` | ✅ | `page.tsx` → `AppShell` (//PRIVACY.POLICY). |
 
 ## Systèmes fonctionnels à câbler (front prêt, backend plus tard)
@@ -76,7 +76,8 @@ adossés au système de connexion (auth Discord déjà en place, cf. builder com
 - 2026-07-11 — Home hub enrichie sur la base de la réf **complète** (capturée via scroller interne 5116px) : ajout Codes cadeaux (copier), Calendrier des événements (Gantt placeholder), carrousel Builds de personnages, section Communauté. Données de démo à brancher (codes → `/codes`, builds → `/builds`, calendrier → données jeu).
 - 2026-07-11 — `/items` (hub) + `/items/[category]` convertis : `items/layout.tsx` → `AppShell`, en-têtes en gabarit + compteurs en équerres, pleine largeur. Sous-pages items héritent du chrome.
 - 2026-07-11 — `/builds`, `/codes`, `/commissions` convertis : SiteHeader/SiteFooter → `AppShell`, pleine largeur (chrome par `page.tsx`).
-- 2026-07-11 — Pages contenu converties : `/changelog`, `/contact` (via layout), `/about`, `/support`, `/profile`, `/confidentialite` (via page.tsx) → `AppShell`. Largeur de lecture conservée (texte). Reste : `/builder`, `/admin`, fiches détail (`characters/[id]`, `items/.../[itemId]`, `builds/[id]`, drafts).
+- 2026-07-11 — Pages contenu converties : `/changelog`, `/contact` (via layout), `/about`, `/support`, `/profile`, `/confidentialite` (via page.tsx) → `AppShell`. Largeur de lecture conservée (texte).
+- 2026-07-11 — `/builder` + `/builds/[id]` convertis. Fiches détail (`characters/[id]`, `items/.../[itemId]`, `about`, `drafts`, `favoris`) vérifiées : héritent du shell, rendent en pleine largeur, aucun `<main>` imbriqué. `admin` laissé standalone. **Refonte layout : terminée** (hors home marketing `/` et carte, volontaires).
 
 ## Méthode de conversion (recette réutilisable)
 1. Le chrome vient soit d'un `<section>/layout.tsx` local, soit de `SiteHeader`/`SiteFooter` dans la `page.tsx`. Repérer lequel.
