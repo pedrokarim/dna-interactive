@@ -29,6 +29,7 @@ import FilterChips from "@/components/list/FilterChips";
 import ViewModeToggle from "@/components/list/ViewModeToggle";
 import { useListViewMode } from "@/components/list/useListViewMode";
 import { DnaPanel } from "@/components/dna/Panel";
+import { DnaCornerBrackets } from "@/components/dna/CornerBrackets";
 import { DnaItemIcon, ITEM_FALLBACK_ICON } from "@/components/dna/ItemIcon";
 import { useDialogA11y } from "@/components/dna/useDialogA11y";
 
@@ -684,22 +685,38 @@ export default function ItemsGridClient({
 
   return (
     <div className="space-y-4 md:space-y-8">
-      <DnaPanel className="p-4 md:p-6 shadow-[0_20px_45px_rgba(0,0,0,0.45)]">
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-          <div>
-            <p className="font-caps text-[0.7rem] uppercase tracking-[0.34em] text-gold/80">
-              {favoritesOnly ? tc('favorites') : t('categoryLabel')}
-            </p>
-            <h1 className="mt-2 font-display text-3xl md:text-4xl text-parch">
-              {favoritesOnly ? `Favoris ${category.title}` : category.title}
-            </h1>
-            <p className="mt-2 max-w-2xl text-sm text-parch/85">{category.description}</p>
-            <p className="mt-3 text-sm text-muted">
-              {favoritesOnly
-                ? t('favoritesCount', { count: filteredItems.length, total: categoryFavoriteCount })
-                : t('itemsCount', { filtered: filteredItems.length, total: items.length })}
-            </p>
+      {/* En-tête gabarit — eyebrow mono + titre + compteur en équerres */}
+      <div className="flex flex-wrap items-end justify-between gap-4">
+        <div className="min-w-0">
+          <p className="font-mono text-[0.72rem] uppercase tracking-[0.28em] text-gold">
+            {`// ${favoritesOnly ? tc('favorites') : t('categoryLabel')}`}
+          </p>
+          <h1 className="mt-1 font-display text-4xl font-semibold text-parch md:text-5xl">
+            {favoritesOnly ? `Favoris ${category.title}` : category.title}
+          </h1>
+          <span aria-hidden className="mt-2 block h-0.5 w-16 bg-gold" />
+          <p className="mt-3 max-w-2xl text-sm text-parch/75">{category.description}</p>
+        </div>
+        <div className="relative shrink-0 px-5 py-3">
+          <DnaCornerBrackets size={16} />
+          <div className="flex items-baseline gap-3">
+            <span className="font-display text-4xl font-semibold tabular-nums text-parch">
+              {filteredItems.length}
+            </span>
+            <span className="font-caps text-[0.55rem] uppercase leading-tight tracking-[0.2em] text-muted">
+              {category.title}
+            </span>
           </div>
+        </div>
+      </div>
+
+      <DnaPanel className="p-4 md:p-6 shadow-[0_20px_45px_rgba(0,0,0,0.45)]">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <p className="text-sm text-muted">
+            {favoritesOnly
+              ? t('favoritesCount', { count: filteredItems.length, total: categoryFavoriteCount })
+              : t('itemsCount', { filtered: filteredItems.length, total: items.length })}
+          </p>
           <div className="flex flex-wrap items-center gap-3">
             <ViewModeToggle
               value={viewMode}

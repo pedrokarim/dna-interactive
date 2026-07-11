@@ -3,7 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { BookOpenText, ChevronRight, Clock3, Grid3X3, Languages, Wrench } from "lucide-react";
 import { getItemCatalog, getLanguageLabel } from "@/lib/items/catalog";
 import { getDraftAvailableLanguages, getDraftRecipeSummaries } from "@/lib/items/drafts";
-import { DnaPanel } from "@/components/dna/Panel";
+import { DnaCornerBrackets } from "@/components/dna/CornerBrackets";
 
 export default async function ItemsCategoriesPage() {
   const tItems = await getTranslations('items');
@@ -14,19 +14,33 @@ export default async function ItemsCategoriesPage() {
 
   return (
     <div className="space-y-8">
-      <DnaPanel className="p-8 shadow-[0_24px_55px_rgba(0,0,0,0.5)]">
-        <p className="font-caps text-[0.7rem] uppercase tracking-[0.34em] text-gold/80">
-          {tItems('libraryLabel')}
-        </p>
-        <h1 className="mt-3 font-display text-4xl md:text-5xl text-parch">
-          {tItems('categoriesTitle')}
-        </h1>
-        <p className="mt-3 max-w-2xl text-parch/85">
-          {tItems('categoriesDescription', { categories: categoryNames })}
-        </p>
-      </DnaPanel>
+      <div className="flex flex-wrap items-end justify-between gap-4">
+        <div className="min-w-0">
+          <p className="font-mono text-[0.72rem] uppercase tracking-[0.28em] text-gold">
+            {`// ${tItems('libraryLabel')}`}
+          </p>
+          <h1 className="mt-1 font-display text-4xl font-semibold text-parch md:text-5xl">
+            {tItems('categoriesTitle')}
+          </h1>
+          <span aria-hidden className="mt-2 block h-0.5 w-16 bg-gold" />
+          <p className="mt-3 max-w-2xl text-sm text-parch/75">
+            {tItems('categoriesDescription', { categories: categoryNames })}
+          </p>
+        </div>
+        <div className="relative shrink-0 px-5 py-3">
+          <DnaCornerBrackets size={16} />
+          <div className="flex items-baseline gap-3">
+            <span className="font-display text-4xl font-semibold tabular-nums text-parch">
+              {catalog.categories.length}
+            </span>
+            <span className="font-caps text-[0.55rem] uppercase leading-tight tracking-[0.2em] text-muted">
+              {tItems('libraryLabel')}
+            </span>
+          </div>
+        </div>
+      </div>
 
-      <section className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+      <section className="grid gap-5 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
         {catalog.categories.map((category) => (
           <article
             key={category.id}

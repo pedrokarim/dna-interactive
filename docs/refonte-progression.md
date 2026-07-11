@@ -20,12 +20,12 @@
 | Carte interactive | `/map` | ➖ | Ne bouge quasi pas (volontaire). |
 | Personnages (liste) | `/characters` | ✅ | **Pilote** du gabarit liste. `characters/layout.tsx` → `AppShell` pleine largeur ; en-tête reskiné (eyebrow mono + titre + compteur équerres) ; logique filtres/grille inchangée ; grille simplifiée → 6 col en 2xl. |
 | Personnage (fiche) | `/characters/[id]` | 🔜 | Chrome `AppShell` hérité du layout (OK) ; contenu interne à passer en gabarit fiche. |
-| Base de données (hub) | `/items` | ⏳ | |
-| Items (catégorie) | `/items/[category]` | ⏳ | Armes = grille carrée ; mods/sets = fiches. |
-| Item (fiche) | `/items/[category]/[itemId]` | ⏳ | |
-| Guide catégorie | `/items/[category]/about` | ⏳ | |
-| Plans de forge | `/items/drafts` | ⏳ | |
-| Favoris | `/items/favoris` | ⏳ | |
+| Base de données (hub) | `/items` | ✅ | `items/layout.tsx` → `AppShell` (breadcrumb `//GEAR.DATABASE`) ; en-tête gabarit + compteur catégories en équerres ; grille catégories 4 col en 2xl. |
+| Items (catégorie) | `/items/[category]` | ✅ | `ItemsGridClient` : en-tête reskiné en gabarit + compteur en équerres ; logique filtres/tri/pagination inchangée. |
+| Item (fiche) | `/items/[category]/[itemId]` | 🔜 | Chrome `AppShell` hérité (OK) ; contenu interne à passer en gabarit fiche. |
+| Guide catégorie | `/items/[category]/about` | 🔜 | Chrome hérité ; contenu à peaufiner. |
+| Plans de forge | `/items/drafts` | 🔜 | Chrome hérité ; en-tête à reskiner. |
+| Favoris | `/items/favoris` | 🔜 | Chrome hérité ; utilise `ItemsGridClient` (en-tête déjà reskiné). |
 | Builder | `/builder` | ⏳ | |
 | Builds communauté | `/builds` | ⏳ | |
 | Build (fiche) | `/builds/[id]` | ⏳ | |
@@ -74,6 +74,7 @@ adossés au système de connexion (auth Discord déjà en place, cf. builder com
 - 2026-07-11 — `/characters` converti (pilote) : layout → `AppShell`, en-tête gabarit, pleine largeur, mobile OK. Chrome hérité sur la fiche.
 - 2026-07-11 — `AppShell` : toggle collapse **déplacé dans le header** (fonctionnel), retiré de la sidebar ; niveau `Lv.42`→`Lv.XX` ; « Contribuer » → **Twitter/X** (`x.com/ascencia64`). Systèmes notifications/niveau/profil documentés (à câbler post-auth).
 - 2026-07-11 — Home hub enrichie sur la base de la réf **complète** (capturée via scroller interne 5116px) : ajout Codes cadeaux (copier), Calendrier des événements (Gantt placeholder), carrousel Builds de personnages, section Communauté. Données de démo à brancher (codes → `/codes`, builds → `/builds`, calendrier → données jeu).
+- 2026-07-11 — `/items` (hub) + `/items/[category]` convertis : `items/layout.tsx` → `AppShell`, en-têtes en gabarit + compteurs en équerres, pleine largeur. Sous-pages items héritent du chrome.
 
 ## Méthode de conversion (recette réutilisable)
 1. Le chrome vient soit d'un `<section>/layout.tsx` local, soit de `SiteHeader`/`SiteFooter` dans la `page.tsx`. Repérer lequel.
