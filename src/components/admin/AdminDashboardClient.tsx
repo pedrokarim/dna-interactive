@@ -30,6 +30,7 @@ import { DnaSectionLabel } from "@/components/dna/SectionLabel";
 import { DnaTag } from "@/components/dna/Tag";
 import { useConfirm } from "@/components/dna/ConfirmProvider";
 import { CalendarAdminClient } from "./CalendarAdminClient";
+import { SettingsAdminClient } from "./SettingsAdminClient";
 
 const ADMIN_PAGE_SIZE = 12;
 
@@ -303,7 +304,7 @@ export function AdminDashboardClient({ currentUser }: { currentUser: CurrentAdmi
 
               {activeView === "calendar" ? <CalendarAdminClient /> : null}
 
-              {activeView === "settings" ? <SettingsView /> : null}
+              {activeView === "settings" ? <SettingsAdminClient /> : null}
             </div>
           )}
         </main>
@@ -625,53 +626,6 @@ function UsersView({
     <AdminSection title="Utilisateurs" label="Comptes" footer={<AdminPager pagination={pagination} onChange={onChangePage} />}>
       <UsersList users={users} onPatchUser={onPatchUser} />
     </AdminSection>
-  );
-}
-
-function SettingsView() {
-  return (
-    <div className="grid gap-5 xl:grid-cols-3">
-      <AdminSection title="Authentification" label="Discord">
-        <ConfigRows
-          rows={[
-            ["Provider", "Discord OAuth"],
-            ["Sessions", "Base de donnees"],
-            ["Admins racine", "ADMIN_DISCORD_IDS"],
-          ]}
-        />
-      </AdminSection>
-      <AdminSection title="Moderation" label="Regles">
-        <ConfigRows
-          rows={[
-            ["Builds masques", "Exclus de l'affichage public"],
-            ["Signalements", "Open / resolved / dismissed"],
-            ["Protections", "Admins env non retrogradables"],
-          ]}
-        />
-      </AdminSection>
-      <AdminSection title="Pagination" label="Listes">
-        <ConfigRows
-          rows={[
-            ["Page size", `${ADMIN_PAGE_SIZE} lignes`],
-            ["Builds", "Pagination serveur"],
-            ["Utilisateurs", "Pagination serveur"],
-          ]}
-        />
-      </AdminSection>
-    </div>
-  );
-}
-
-function ConfigRows({ rows }: { rows: Array<[string, string]> }) {
-  return (
-    <div className="divide-y divide-white/10">
-      {rows.map(([label, value]) => (
-        <div key={label} className="grid gap-1 py-3 sm:grid-cols-[10rem_minmax(0,1fr)]">
-          <p className="font-caps text-[0.58rem] uppercase tracking-[0.16em] text-muted">{label}</p>
-          <p className="font-sans text-sm text-parch">{value}</p>
-        </div>
-      ))}
-    </div>
   );
 }
 
