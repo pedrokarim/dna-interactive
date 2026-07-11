@@ -41,7 +41,7 @@ export type HomeBuildCard = {
   portrait: string | null;
   tint: string;
 };
-export type HomePocClientProps = {
+export type HomeHubClientProps = {
   codes: HomeCode[];
   builds: HomeBuildCard[];
   communityCount: string;
@@ -279,7 +279,7 @@ function BuildShowcaseCard({ build }: { build: HomeBuildCard }) {
 
 /* ---------------------------------------------------------------- page (POC) */
 
-export default function HomePocClient({ codes, builds, communityCount, stats }: HomePocClientProps) {
+export default function HomeHubClient({ codes, builds, communityCount, stats }: HomeHubClientProps) {
   const STATS = [
     { icon: Users, value: stats.characters, label: "Personnages" },
     { icon: Database, value: stats.items, label: "Items indexés" },

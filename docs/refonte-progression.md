@@ -15,8 +15,8 @@
 
 | Page | Route | Statut | Notes |
 |---|---|---|---|
-| Home hub | `/home-poc` | ✅ | Nouvelle home (deviendra `/`). Box image+dégradé+teinte. Sections calquées sur la réf : Hero, Base de données, Outils, Communauté, **Codes cadeaux** (copier), **Calendrier des événements** (Gantt), **Builds de personnages** (carrousel), stats. Pubs supprimées ; Suivi/Guides/Plans d'usine/projet frère non repris (pas de système équivalent). |
-| Home marketing | `/` (actuelle) | ➖ | Conservée → future page marketing/fonctionnalités. Garde son chrome. |
+| Home hub | `/` | ✅ | **Go-live** : bascule faite (`home-poc` → `/`, indexée, metadata `home`). Client `src/components/home/HomeHubClient.tsx`, données réelles. Route `/home-poc` supprimée. Sections : Hero, Base de données, Outils, Communauté, Codes cadeaux, Calendrier (démo), carrousel Builds, stats. |
+| Home marketing | `/features` | ✅ | Ancienne home déplacée telle quelle (garde son chrome landing `SiteHeader`/`HeroSection`), metadata dédiée `pageMetadata.features`. Liée depuis la sidebar (« Fonctionnalités »). |
 | Carte interactive | `/map` | ➖ | Ne bouge quasi pas (volontaire). |
 | Personnages (liste) | `/characters` | ✅ | **Pilote** du gabarit liste. `characters/layout.tsx` → `AppShell` pleine largeur ; en-tête reskiné (eyebrow mono + titre + compteur équerres) ; logique filtres/grille inchangée ; grille simplifiée → 6 col en 2xl. |
 | Personnage (fiche) | `/characters/[id]` | ✅ | Hérite `AppShell` du layout ; rend en pleine largeur (compteur `#id`, panneau stats). Aucun `<main>` propre → pas de conflit. |
@@ -78,6 +78,7 @@ adossés au système de connexion (auth Discord déjà en place, cf. builder com
 - 2026-07-11 — `/builds`, `/codes`, `/commissions` convertis : SiteHeader/SiteFooter → `AppShell`, pleine largeur (chrome par `page.tsx`).
 - 2026-07-11 — Pages contenu converties : `/changelog`, `/contact` (via layout), `/about`, `/support`, `/profile`, `/confidentialite` (via page.tsx) → `AppShell`. Largeur de lecture conservée (texte).
 - 2026-07-11 — `/builder` + `/builds/[id]` convertis. Fiches détail (`characters/[id]`, `items/.../[itemId]`, `about`, `drafts`, `favoris`) vérifiées : héritent du shell, rendent en pleine largeur, aucun `<main>` imbriqué. `admin` laissé standalone. **Refonte layout : terminée** (hors home marketing `/` et carte, volontaires).
+- 2026-07-11 — **Go-live bascule home** : `home-poc` → `/` (hub, indexée, metadata `home`, client déplacé en `src/components/home/HomeHubClient.tsx`) ; ancienne home → `/features` (landing marketing, chrome propre, metadata `features`) ; `/home-poc` supprimée ; sidebar « Accueil » → `/`, ajout « Fonctionnalités » → `/features`.
 - 2026-07-11 — Home hub **câblée sur les vraies données** : `home-poc/page.tsx` (server, `force-dynamic`) → codes réels (`GAME_CODES`), top builds + total (DB via `src/lib/community-builds/list.ts` `getTopBuilds`/`getBuildsTotal`, sûrs si table absente), compteurs personnages/items réels, portraits perso réels dans le carrousel, format nombres selon la locale. Restent en placeholder : **calendrier** (pas de source jeu, labellisé démo) et profil/notifications (auth, cf. « Systèmes à câbler »). Admin : rien à faire (dashboard propre).
 
 ## Méthode de conversion (recette réutilisable)

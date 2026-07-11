@@ -174,6 +174,22 @@ export const pageMetadata = {
     image: "/assets/og/og-default.png",
     path: "",
   },
+  features: {
+    title: `Fonctionnalités - ${SITE_CONFIG.name}`,
+    description: `Toutes les fonctionnalités de DNA Interactive pour Duet Night Abyss : carte interactive, base de données personnages et items, builder de builds, commissions, codes et plus.`,
+    keywords: [
+      GAME_INFO.name,
+      ...SITE_CONFIG.keywords,
+      "fonctionnalités",
+      "outils DNA",
+      "carte interactive",
+      "base de données",
+      "builder de builds",
+      SITE_CONFIG.name,
+    ],
+    image: "/assets/og/og-default.png",
+    path: "/features",
+  },
   map: {
     title: `Carte Interactive - ${SITE_CONFIG.name}`,
     description: `Carte interactive complète de Duet Night Abyss. Explorez les 6 régions du jeu, trouvez tous les secrets, coffres et points d'intérêt. Outil indispensable pour les joueurs de Duet Night Abyss.`,

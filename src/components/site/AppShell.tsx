@@ -10,6 +10,7 @@ import {
   Home,
   Info,
   Layers,
+  LayoutGrid,
   LifeBuoy,
   Map as MapIcon,
   Menu,
@@ -36,7 +37,7 @@ type NavEntry = {
 };
 
 const NAV_PRIMARY: NavEntry[] = [
-  { href: "/home-poc", label: "Accueil", icon: Home },
+  { href: "/", label: "Accueil", icon: Home },
   { href: "/map", label: "Carte interactive", icon: MapIcon },
   { href: "/characters", label: "Personnages", icon: Users },
   { href: "/items", label: "Base de données", icon: Boxes },
@@ -47,6 +48,7 @@ const NAV_PRIMARY: NavEntry[] = [
 ];
 
 const NAV_SECONDARY: NavEntry[] = [
+  { href: "/features", label: "Fonctionnalités", icon: LayoutGrid },
   { href: "/changelog", label: "Changelog", icon: Sparkles },
   { href: "/about", label: "À propos", icon: Info },
   { href: "/support", label: "Support", icon: LifeBuoy },
