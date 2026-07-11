@@ -37,6 +37,7 @@ import FilterChips from "@/components/list/FilterChips";
 import ViewModeToggle from "@/components/list/ViewModeToggle";
 import { useListViewMode } from "@/components/list/useListViewMode";
 import { DnaCharacterCard } from "@/components/dna/CharacterCard";
+import { DnaCornerBrackets } from "@/components/dna/CornerBrackets";
 import { useDialogA11y } from "@/components/dna/useDialogA11y";
 import { cn } from "@/components/dna/cn";
 import type { ElementKey } from "@/components/dna/elements";
@@ -399,23 +400,37 @@ export default function CharactersGridClient({
 
   return (
     <div className="space-y-4 md:space-y-8">
-      {/* Header + filters */}
-      <section className="border border-gold/20 bg-panel/55 p-4 md:p-6 shadow-[0_20px_45px_rgba(0,0,0,0.45)] backdrop-blur-sm">
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-          <div>
-            <p className="font-caps text-[0.7rem] uppercase tracking-[0.3em] text-gold">
+      {/* En-tête gabarit — eyebrow mono + titre + compteur en équerres */}
+      <div className="flex flex-wrap items-end justify-between gap-4">
+        <div className="min-w-0">
+          <p className="font-mono text-[0.72rem] uppercase tracking-[0.28em] text-gold">
+            {`// ${t('headerLabel')}`}
+          </p>
+          <h1 className="mt-1 font-display text-4xl font-semibold text-parch md:text-5xl">
+            {t('title')}
+          </h1>
+          <span aria-hidden className="mt-2 block h-0.5 w-16 bg-gold" />
+          <p className="mt-3 max-w-2xl text-sm text-parch/75">{t('description')}</p>
+        </div>
+        <div className="relative shrink-0 px-5 py-3">
+          <DnaCornerBrackets size={16} />
+          <div className="flex items-baseline gap-3">
+            <span className="font-display text-4xl font-semibold tabular-nums text-parch">
+              {filteredCharacters.length}
+            </span>
+            <span className="font-caps text-[0.55rem] uppercase leading-tight tracking-[0.2em] text-muted">
               {t('headerLabel')}
-            </p>
-            <h1 className="mt-2 font-display text-3xl md:text-4xl font-semibold text-gold-bright">
-              {t('title')}
-            </h1>
-            <p className="mt-2 max-w-2xl text-sm text-parch/85">
-              {t('description')}
-            </p>
-            <p className="mt-3 text-sm text-muted">
-              {t('count', { filtered: filteredCharacters.length, total: characters.length })}
-            </p>
+            </span>
           </div>
+        </div>
+      </div>
+
+      {/* Barre d'outils + filtres */}
+      <section className="border border-line/20 bg-panel/55 p-4 md:p-6 shadow-[0_20px_45px_rgba(0,0,0,0.45)] backdrop-blur-sm">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <p className="text-sm text-muted">
+            {t('count', { filtered: filteredCharacters.length, total: characters.length })}
+          </p>
           <div className="flex flex-wrap items-center gap-3">
             <ViewModeToggle
               value={viewMode}
@@ -896,7 +911,7 @@ export default function CharactersGridClient({
           })}
         </ul>
         ) : (
-        <section className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 md:gap-4 xl:grid-cols-5">
+        <section className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 md:gap-4 xl:grid-cols-5 2xl:grid-cols-6">
           {paginatedCharacters.map((character) => {
             const lead = getCharacterTranslation(
               character,
