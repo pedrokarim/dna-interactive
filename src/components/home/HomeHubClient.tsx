@@ -25,11 +25,10 @@ import {
   Wrench,
   type LucideIcon,
 } from "lucide-react";
-import { useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { AppShell } from "@/components/site/AppShell";
 import { DnaCornerBrackets, DnaNouveau, DnaTag, DnaRibbon, cn } from "@/components/dna";
-import { CALENDAR_TICKS, computeCalendarRows, todayMarkerPct } from "@/lib/events/calendar";
+import { EventCalendar } from "@/components/home/EventCalendar";
 
 export type HomeCode = { code: string; reward: string };
 export type HomeBuildCard = {
@@ -184,76 +183,6 @@ function CodeCard({ code, reward }: HomeCode) {
   );
 }
 
-function EventCalendar() {
-  const locale = useLocale();
-  const fmt = new Intl.DateTimeFormat(locale, { day: "numeric", month: "short" });
-  const rows = computeCalendarRows();
-  const today = todayMarkerPct();
-  const range = (start: string, end: string) => `${fmt.format(new Date(start))} – ${fmt.format(new Date(end))}`;
-  return (
-    <div className="relative overflow-hidden rounded-sm border border-line/20 bg-panel/60 p-4 sm:p-5">
-      <DnaCornerBrackets size={14} />
-      <div className="overflow-x-auto custom-scrollbar">
-        <div className="min-w-[720px]">
-          {/* axe de dates + repère aujourd'hui */}
-          <div className="mb-2.5 flex items-center gap-3">
-            <span className="w-56 shrink-0" />
-            <div className="relative flex-1">
-              <div className="flex justify-between font-mono text-[0.6rem] text-muted-2">
-                {CALENDAR_TICKS.map((t) => (
-                  <span key={t.iso}>{t.label}</span>
-                ))}
-              </div>
-              {today !== null ? (
-                <span
-                  aria-hidden
-                  className="absolute -bottom-1 -translate-x-1/2 font-caps text-[0.5rem] uppercase tracking-[0.14em] text-gold-bright"
-                  style={{ left: `${today}%` }}
-                >
-                  ▾ Auj.
-                </span>
-              ) : null}
-            </div>
-          </div>
-          {/* lignes — 1 événement par ligne (gère les chevauchements) */}
-          <div className="flex flex-col gap-1.5">
-            {rows.map((r) => (
-              <div key={r.title} className="flex items-center gap-3">
-                <span className="flex w-56 shrink-0 items-center gap-2">
-                  <span className="h-2 w-2 shrink-0 rounded-full" style={{ background: r.tint }} />
-                  <span className="truncate text-[0.72rem] text-parch/85" title={r.title}>
-                    {r.title}
-                  </span>
-                </span>
-                <div className="relative h-6 flex-1 rounded-sm bg-ink/50">
-                  {today !== null ? (
-                    <span aria-hidden className="absolute inset-y-0 w-px bg-gold-bright/40" style={{ left: `${today}%` }} />
-                  ) : null}
-                  <span
-                    className="absolute inset-y-[3px] flex items-center overflow-hidden rounded-[3px] border px-2"
-                    style={{
-                      left: `${r.leftPct}%`,
-                      width: `${r.widthPct}%`,
-                      borderColor: r.tint,
-                      background: `linear-gradient(90deg, ${r.tint}44, ${r.tint}18)`,
-                      opacity: r.upcoming ? 0.7 : 1,
-                    }}
-                    title={`${r.title} · ${range(r.start, r.end)}`}
-                  >
-                    <span className="truncate font-mono text-[0.6rem] text-parch/90">{range(r.start, r.end)}</span>
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-      <p className="mt-3 font-mono text-[0.6rem] text-muted-2">
-        Événements en cours — mis à jour à chaque version du jeu.
-      </p>
-    </div>
-  );
-}
 
 function BuildShowcaseCard({ build }: { build: HomeBuildCard }) {
   const bg = build.portrait ?? "/assets/worldview/worldview-2.webp";
