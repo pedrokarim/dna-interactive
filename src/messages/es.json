@@ -771,7 +771,14 @@
     "connGenericError": "Algo salió mal. Inténtalo de nuevo.",
     "connUnlink": "Desvincular",
     "connUnlinkConfirm": "Confirmar",
-    "connUnlinkCancel": "Cancelar"
+    "connUnlinkCancel": "Cancelar",
+    "joinedOn": "Miembro desde {date}",
+    "progressBox": "Progreso",
+    "navBuilds": "Builds de la comunidad",
+    "statBuilds": "Builds publicados",
+    "statLikes": "Me gusta recibidos",
+    "statViews": "Visitas",
+    "loginCtaAction": "Iniciar sesión"
   },
   "privacy": {
     "metaTitle": "Privacidad y condiciones - DNA Interactive",

@@ -771,7 +771,14 @@
     "connGenericError": "Something went wrong. Please try again.",
     "connUnlink": "Unlink",
     "connUnlinkConfirm": "Confirm",
-    "connUnlinkCancel": "Cancel"
+    "connUnlinkCancel": "Cancel",
+    "joinedOn": "Joined {date}",
+    "progressBox": "Progress",
+    "navBuilds": "Community builds",
+    "statBuilds": "Published builds",
+    "statLikes": "Likes received",
+    "statViews": "Views",
+    "loginCtaAction": "Log in"
   },
   "privacy": {
     "metaTitle": "Privacy & terms - DNA Interactive",

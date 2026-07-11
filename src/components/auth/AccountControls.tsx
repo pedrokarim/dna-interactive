@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { ChevronDown, LogIn, LogOut, Shield, UserRound } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { DnaAvatar, cn } from "@/components/dna";
@@ -43,14 +43,13 @@ export function TopbarAccount() {
 
   if (!user) {
     return (
-      <button
-        type="button"
-        onClick={() => signIn("discord")}
+      <Link
+        href="/login"
         className="dna-shine inline-flex items-center gap-2 rounded-sm border border-gold bg-gradient-to-b from-gold-deep/40 to-ink/70 px-3 py-1.5 font-caps text-[0.6rem] uppercase tracking-[0.14em] text-gold-bright transition-colors hover:border-gold-bright hover:text-[#fff6e6]"
       >
         <LogIn className="h-4 w-4" />
         <span className="hidden sm:inline">Se connecter</span>
-      </button>
+      </Link>
     );
   }
 
@@ -96,28 +95,26 @@ export function SidebarProfile({ collapsed = false }: { collapsed?: boolean }) {
   if (!user) {
     if (collapsed) {
       return (
-        <button
-          type="button"
-          onClick={() => signIn("discord")}
+        <Link
+          href="/login"
           aria-label="Se connecter"
           title="Se connecter"
           className="flex h-10 w-10 items-center justify-center rounded-sm border border-gold/40 bg-gold/10 text-gold-bright transition-colors hover:border-gold hover:bg-gold/15"
         >
           <LogIn className="h-4 w-4" />
-        </button>
+        </Link>
       );
     }
     return (
       <div className="rounded-sm border border-line/20 bg-panel/70 p-3">
         <p className="mb-2 font-caps text-[0.55rem] uppercase tracking-[0.2em] text-muted">Invité</p>
-        <button
-          type="button"
-          onClick={() => signIn("discord")}
+        <Link
+          href="/login"
           className="dna-shine flex w-full items-center justify-center gap-2 rounded-sm border border-gold bg-gradient-to-b from-gold-deep/40 to-ink/70 px-3 py-2.5 font-caps text-[0.62rem] uppercase tracking-[0.14em] text-gold-bright transition-colors hover:border-gold-bright hover:text-[#fff6e6]"
         >
           <LogIn className="h-4 w-4" />
           Se connecter
-        </button>
+        </Link>
       </div>
     );
   }
@@ -198,7 +195,7 @@ function AccountMenuPanel({ name, isAdmin, align }: { name?: string | null; isAd
       <div className="border-b border-line/20 px-3 py-3">
         <p className="truncate font-sans text-sm text-parch">{name ?? "Discord"}</p>
         <p className="mt-0.5 truncate font-caps text-[0.56rem] uppercase tracking-[0.16em] text-muted">
-          {isAdmin ? "Administrateur" : "Compte Discord"}
+          {isAdmin ? "Administrateur" : "Membre"}
         </p>
       </div>
       <div className="p-1.5">

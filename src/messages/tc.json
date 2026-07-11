@@ -771,7 +771,14 @@
     "connGenericError": "發生錯誤，請再試一次。",
     "connUnlink": "取消連結",
     "connUnlinkConfirm": "確認",
-    "connUnlinkCancel": "取消"
+    "connUnlinkCancel": "取消",
+    "joinedOn": "{date} 加入",
+    "progressBox": "進度",
+    "navBuilds": "社群配裝",
+    "statBuilds": "已發佈配裝",
+    "statLikes": "獲得讚數",
+    "statViews": "瀏覽數",
+    "loginCtaAction": "登入"
   },
   "privacy": {
     "metaTitle": "隱私與條款 - DNA Interactive",

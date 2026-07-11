@@ -771,7 +771,14 @@
     "connGenericError": "Une erreur est survenue. Réessaie.",
     "connUnlink": "Délier",
     "connUnlinkConfirm": "Confirmer",
-    "connUnlinkCancel": "Annuler"
+    "connUnlinkCancel": "Annuler",
+    "joinedOn": "Membre depuis {date}",
+    "progressBox": "Progression",
+    "navBuilds": "Builds communautaires",
+    "statBuilds": "Builds publiés",
+    "statLikes": "Likes reçus",
+    "statViews": "Vues",
+    "loginCtaAction": "Se connecter"
   },
   "privacy": {
     "metaTitle": "Confidentialité & conditions - DNA Interactive",

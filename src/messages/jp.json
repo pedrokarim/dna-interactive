@@ -771,7 +771,14 @@
     "connGenericError": "エラーが発生しました。もう一度お試しください。",
     "connUnlink": "連携解除",
     "connUnlinkConfirm": "確認",
-    "connUnlinkCancel": "キャンセル"
+    "connUnlinkCancel": "キャンセル",
+    "joinedOn": "{date} に登録",
+    "progressBox": "進行状況",
+    "navBuilds": "コミュニティビルド",
+    "statBuilds": "投稿ビルド",
+    "statLikes": "獲得したいいね",
+    "statViews": "閲覧数",
+    "loginCtaAction": "ログイン"
   },
   "privacy": {
     "metaTitle": "プライバシーと利用規約 - DNA Interactive",

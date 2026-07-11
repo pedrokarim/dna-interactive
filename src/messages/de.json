@@ -771,7 +771,14 @@
     "connGenericError": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
     "connUnlink": "Trennen",
     "connUnlinkConfirm": "Bestätigen",
-    "connUnlinkCancel": "Abbrechen"
+    "connUnlinkCancel": "Abbrechen",
+    "joinedOn": "Mitglied seit {date}",
+    "progressBox": "Fortschritt",
+    "navBuilds": "Community-Builds",
+    "statBuilds": "Veröffentlichte Builds",
+    "statLikes": "Erhaltene Likes",
+    "statViews": "Aufrufe",
+    "loginCtaAction": "Anmelden"
   },
   "privacy": {
     "metaTitle": "Datenschutz & Bedingungen - DNA Interactive",

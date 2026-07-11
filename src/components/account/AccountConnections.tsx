@@ -6,6 +6,7 @@ import { signIn } from "next-auth/react";
 import { Check, KeyRound, Link2, Loader2, Unlink } from "lucide-react";
 import { DnaButton } from "@/components/dna";
 import { AuthMessage } from "@/components/auth/AuthPrimitives";
+import { BrandIcon } from "@/components/icons/BrandIcons";
 
 type Provider = "discord" | "google";
 
@@ -88,7 +89,10 @@ export function AccountConnections({
             key={provider}
             className="flex items-center justify-between gap-3 border border-white/12 bg-white/[0.03] px-3 py-2.5"
           >
-            <span className="font-sans text-sm text-parch">{label}</span>
+            <span className="inline-flex items-center gap-2 font-sans text-sm text-parch">
+              <BrandIcon brand={provider} size={16} className={provider === "discord" ? "text-[#5865F2]" : "text-gold-bright"} />
+              {label}
+            </span>
             {isLinked ? (
               <div className="flex items-center gap-2">
                 <span className="inline-flex items-center gap-1.5 font-caps text-[0.58rem] uppercase tracking-[0.14em] text-gold">
@@ -130,7 +134,11 @@ export function AccountConnections({
               <button
                 type="button"
                 onClick={() => void signIn(provider, { callbackUrl })}
-                className="inline-flex items-center gap-1.5 border border-gold/40 bg-gold/10 px-3 py-1.5 font-caps text-[0.56rem] uppercase tracking-[0.14em] text-gold-bright transition-colors hover:border-gold hover:bg-gold/20"
+                className={`inline-flex items-center gap-1.5 border px-3 py-1.5 font-caps text-[0.56rem] uppercase tracking-[0.14em] transition-colors ${
+                  provider === "discord"
+                    ? "border-[#5865F2] bg-[#5865F2] text-white hover:bg-[#4752c4] hover:border-[#4752c4]"
+                    : "border-gold/50 bg-gold/10 text-gold-bright hover:border-gold hover:bg-gold/20"
+                }`}
               >
                 <Link2 className="h-3.5 w-3.5" />
                 {t("connLink")}
