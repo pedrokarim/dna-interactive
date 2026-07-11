@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { Boxes, Hammer, Shield } from "lucide-react";
-import SiteFooter from "@/components/site/SiteFooter";
-import SiteHeader from "@/components/site/SiteHeader";
+import { AppShell } from "@/components/site/AppShell";
 import { DiscordAuthButton } from "@/components/auth/DiscordAuthButton";
 import { DeleteAccountButton } from "@/components/account/DeleteAccountButton";
 import { DnaAvatar, DnaPanel, DnaSectionLabel, DnaTag } from "@/components/dna";
@@ -21,8 +20,7 @@ export default async function ProfilePage() {
   const user = await getCurrentUser();
 
   return (
-    <main className="min-h-screen bg-ink text-parch">
-      <SiteHeader />
+    <AppShell breadcrumb="//ACCOUNT.PROFILE">
       <section className="container mx-auto px-4 py-8 md:px-6 md:py-12">
         <div className="mx-auto max-w-4xl">
           <DnaSectionLabel>{t("account")}</DnaSectionLabel>
@@ -105,7 +103,6 @@ export default async function ProfilePage() {
           )}
         </div>
       </section>
-      <SiteFooter />
-    </main>
+    </AppShell>
   );
 }

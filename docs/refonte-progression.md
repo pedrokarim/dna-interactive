@@ -31,13 +31,13 @@
 | Build (fiche) | `/builds/[id]` | ⏳ | Rend son propre SiteHeader. |
 | Commissions | `/commissions` | ✅ | `page.tsx` → `AppShell` (//COVERT.OPS.LIVE), pleine largeur. |
 | Codes | `/codes` | ✅ | `page.tsx` → `AppShell` (//REDEEM.CODES), pleine largeur. |
-| Changelog | `/changelog` | ⏳ | |
-| À propos | `/about` | ⏳ | |
-| Support | `/support` | ⏳ | |
-| Contact | `/contact` | ⏳ | |
-| Profil | `/profile` | ⏳ | |
+| Changelog | `/changelog` | ✅ | `changelog/layout.tsx` → `AppShell` (//PATCH.NOTES). Contenu centré lisible conservé. |
+| À propos | `/about` | ✅ | `page.tsx` → `AppShell` (//ABOUT.PROJECT). |
+| Support | `/support` | ✅ | `page.tsx` → `AppShell` (//SUPPORT.DESK). |
+| Contact | `/contact` | ✅ | `contact/layout.tsx` → `AppShell` (//CONTACT.CHANNEL). |
+| Profil | `/profile` | ✅ | `page.tsx` → `AppShell` (//ACCOUNT.PROFILE). |
 | Admin | `/admin` | ⏳ | |
-| Confidentialité | `/confidentialite` | ⏳ | |
+| Confidentialité | `/confidentialite` | ✅ | `page.tsx` → `AppShell` (//PRIVACY.POLICY). |
 
 ## Systèmes fonctionnels à câbler (front prêt, backend plus tard)
 
@@ -76,6 +76,7 @@ adossés au système de connexion (auth Discord déjà en place, cf. builder com
 - 2026-07-11 — Home hub enrichie sur la base de la réf **complète** (capturée via scroller interne 5116px) : ajout Codes cadeaux (copier), Calendrier des événements (Gantt placeholder), carrousel Builds de personnages, section Communauté. Données de démo à brancher (codes → `/codes`, builds → `/builds`, calendrier → données jeu).
 - 2026-07-11 — `/items` (hub) + `/items/[category]` convertis : `items/layout.tsx` → `AppShell`, en-têtes en gabarit + compteurs en équerres, pleine largeur. Sous-pages items héritent du chrome.
 - 2026-07-11 — `/builds`, `/codes`, `/commissions` convertis : SiteHeader/SiteFooter → `AppShell`, pleine largeur (chrome par `page.tsx`).
+- 2026-07-11 — Pages contenu converties : `/changelog`, `/contact` (via layout), `/about`, `/support`, `/profile`, `/confidentialite` (via page.tsx) → `AppShell`. Largeur de lecture conservée (texte). Reste : `/builder`, `/admin`, fiches détail (`characters/[id]`, `items/.../[itemId]`, `builds/[id]`, drafts).
 
 ## Méthode de conversion (recette réutilisable)
 1. Le chrome vient soit d'un `<section>/layout.tsx` local, soit de `SiteHeader`/`SiteFooter` dans la `page.tsx`. Repérer lequel.

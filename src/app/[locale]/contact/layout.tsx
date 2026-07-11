@@ -1,8 +1,6 @@
 import type { Metadata, ResolvingMetadata } from "next";
-import { NAVIGATION } from "@/lib/constants";
 import { generatePageMetadata, pageMetadata } from "@/lib/metadata";
-import SiteHeader from "@/components/site/SiteHeader";
-import SiteFooter from "@/components/site/SiteFooter";
+import { AppShell } from "@/components/site/AppShell";
 
 export async function generateMetadata(
   { params }: { params: Promise<{ locale: string }> },
@@ -18,10 +16,8 @@ export default function ContactLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-linear-to-br from-ink via-panel to-ink text-parch">
-      <SiteHeader active={NAVIGATION.contact} />
-      <main className="container mx-auto px-4 py-12 md:px-6 md:py-20">{children}</main>
-      <SiteFooter active={NAVIGATION.contact} />
-    </div>
+    <AppShell breadcrumb="//CONTACT.CHANNEL">
+      <div className="mx-auto w-full max-w-[1720px] px-4 py-6 sm:px-6 lg:px-8 lg:py-8">{children}</div>
+    </AppShell>
   );
 }

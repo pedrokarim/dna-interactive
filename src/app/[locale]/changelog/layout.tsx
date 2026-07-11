@@ -1,7 +1,6 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import { generatePageMetadata, pageMetadata } from "@/lib/metadata";
-import SiteHeader from "@/components/site/SiteHeader";
-import SiteFooter from "@/components/site/SiteFooter";
+import { AppShell } from "@/components/site/AppShell";
 
 export async function generateMetadata(
   { params }: { params: Promise<{ locale: string }> },
@@ -17,10 +16,8 @@ export default function ChangelogLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-linear-to-br from-ink via-panel to-ink text-parch">
-      <SiteHeader />
-      <main className="container mx-auto px-4 py-12 md:px-6">{children}</main>
-      <SiteFooter />
-    </div>
+    <AppShell breadcrumb="//PATCH.NOTES">
+      <div className="mx-auto w-full max-w-[1720px] px-4 py-6 sm:px-6 lg:px-8 lg:py-8">{children}</div>
+    </AppShell>
   );
 }

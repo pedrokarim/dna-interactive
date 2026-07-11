@@ -4,13 +4,11 @@ import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 import {
   SITE_CONFIG,
-  NAVIGATION,
   GAME_INFO,
   TEAM_INFO,
 } from "@/lib/constants";
 import { generatePageMetadata, pageMetadata } from "@/lib/metadata";
-import SiteHeader from "@/components/site/SiteHeader";
-import SiteFooter from "@/components/site/SiteFooter";
+import { AppShell } from "@/components/site/AppShell";
 import { DnaPanel } from "@/components/dna/Panel";
 import { DnaDivider } from "@/components/dna/Divider";
 import { DnaCornerBrackets } from "@/components/dna/CornerBrackets";
@@ -78,10 +76,8 @@ export default async function AboutPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-ink via-panel to-ink text-parch">
-      <SiteHeader active={NAVIGATION.about} />
-
-      <main className="container mx-auto px-4 py-12 md:px-6 md:py-20">
+    <AppShell breadcrumb="//ABOUT.PROJECT">
+      <div className="container mx-auto px-4 py-12 md:px-6 md:py-20">
         <div className="mx-auto max-w-4xl">
           {/* Hero */}
           <div className="mb-12 text-center">
@@ -226,9 +222,7 @@ export default async function AboutPage() {
             </div>
           </div>
         </div>
-      </main>
-
-      <SiteFooter active={NAVIGATION.about} />
-    </div>
+      </div>
+    </AppShell>
   );
 }

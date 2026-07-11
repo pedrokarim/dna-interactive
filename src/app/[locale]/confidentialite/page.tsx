@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import SiteFooter from "@/components/site/SiteFooter";
-import SiteHeader from "@/components/site/SiteHeader";
+import { AppShell } from "@/components/site/AppShell";
 import { DnaPanel, DnaSectionLabel } from "@/components/dna";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -14,8 +13,7 @@ export default async function ConfidentialitePage() {
   const t = await getTranslations("privacy");
 
   return (
-    <main className="min-h-screen bg-ink text-parch">
-      <SiteHeader />
+    <AppShell breadcrumb="//PRIVACY.POLICY">
       <section className="container mx-auto px-4 py-8 md:px-6 md:py-12">
         <div className="mx-auto max-w-3xl">
           <DnaSectionLabel>{t("section")}</DnaSectionLabel>
@@ -77,7 +75,6 @@ export default async function ConfidentialitePage() {
           </div>
         </div>
       </section>
-      <SiteFooter />
-    </main>
+    </AppShell>
   );
 }

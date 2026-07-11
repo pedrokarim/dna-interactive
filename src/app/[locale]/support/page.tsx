@@ -1,9 +1,8 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import { getTranslations } from "next-intl/server";
-import { NAVIGATION, CONTACT_INFO, FAQ_ITEMS, SUPPORT_QUICK_LINKS } from "@/lib/constants";
+import { CONTACT_INFO, FAQ_ITEMS, SUPPORT_QUICK_LINKS } from "@/lib/constants";
 import { generatePageMetadata, pageMetadata } from "@/lib/metadata";
-import SiteHeader from "@/components/site/SiteHeader";
-import SiteFooter from "@/components/site/SiteFooter";
+import { AppShell } from "@/components/site/AppShell";
 import { DnaPanel } from "@/components/dna/Panel";
 import { DnaDivider } from "@/components/dna/Divider";
 import { DnaCornerBrackets } from "@/components/dna/CornerBrackets";
@@ -24,10 +23,8 @@ export default async function SupportPage() {
   const tNav = await getTranslations("nav");
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-ink via-panel to-ink text-parch">
-      <SiteHeader active={NAVIGATION.support} />
-
-      <main className="container mx-auto px-4 py-12 md:px-6 md:py-20">
+    <AppShell breadcrumb="//SUPPORT.DESK">
+      <div className="container mx-auto px-4 py-12 md:px-6 md:py-20">
         <div className="mx-auto max-w-4xl">
           <div className="mb-12 text-center">
             <p className="font-caps text-[0.7rem] uppercase tracking-[0.34em] text-gold/80">{tNav("support")}</p>
@@ -125,9 +122,7 @@ export default async function SupportPage() {
             ))}
           </div>
         </div>
-      </main>
-
-      <SiteFooter active={NAVIGATION.support} />
-    </div>
+      </div>
+    </AppShell>
   );
 }
