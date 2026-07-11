@@ -6,6 +6,7 @@ import {
   Bell,
   Bot,
   Boxes,
+  CalendarDays,
   Hammer,
   Home,
   Info,
@@ -40,6 +41,7 @@ type NavEntry = {
 const NAV_PRIMARY: NavEntry[] = [
   { href: "/", label: "Accueil", icon: Home },
   { href: "/map", label: "Carte interactive", icon: MapIcon },
+  { href: "/calendar", label: "Calendrier", icon: CalendarDays },
   { href: "/characters", label: "Personnages", icon: Users },
   { href: "/items", label: "Base de données", icon: Boxes },
   { href: "/builder", label: "Builder", icon: Hammer, badge: "new" },

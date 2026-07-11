@@ -67,5 +67,8 @@
    catégorie, clic → détail (statut + jours restants), repère « aujourd'hui »,
    chevrons de débordement, scroll horizontal. Dates en `timeZone: UTC`.
 4. ✅ Branché dans la home (remplace le Gantt statique).
-5. ⏳ (v2) page `/calendar` plein écran + état fenêtre/zoom en URL (nuqs) ;
-   `href` par événement (lien vers perso/arme/guide) ; drag-to-pan.
+5. ✅ Page `/calendar` plein écran (`variant="full"`) + **état fenêtre/zoom/filtres
+   en URL** (nuqs, partageable) ; entrée « Calendrier » dans la sidebar ; la home
+   garde sa version (`EventCalendar`, état local) avec un lien « Plein écran → ».
+   Vue partagée `CalendarView` (présentation) pilotée par deux conteneurs.
+6. ⏳ Reste : `href` par événement (lien vers perso/arme/guide) ; drag-to-pan.
