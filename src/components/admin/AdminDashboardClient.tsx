@@ -5,6 +5,7 @@ import { useQueryState, parseAsStringLiteral } from "nuqs";
 import {
   ArrowLeft,
   Ban,
+  CalendarDays,
   CheckCircle2,
   Eye,
   EyeOff,
@@ -28,10 +29,11 @@ import { DnaPanel } from "@/components/dna/Panel";
 import { DnaSectionLabel } from "@/components/dna/SectionLabel";
 import { DnaTag } from "@/components/dna/Tag";
 import { useConfirm } from "@/components/dna/ConfirmProvider";
+import { CalendarAdminClient } from "./CalendarAdminClient";
 
 const ADMIN_PAGE_SIZE = 12;
 
-type AdminView = "overview" | "reports" | "builds" | "users" | "emails" | "settings";
+type AdminView = "overview" | "reports" | "builds" | "users" | "emails" | "calendar" | "settings";
 
 type EmailStats = {
   total: number;
@@ -110,6 +112,7 @@ const ADMIN_NAV: Array<{ id: AdminView; label: string; icon: typeof LayoutDashbo
   { id: "builds", label: "Builds", icon: Hammer },
   { id: "users", label: "Utilisateurs", icon: Users },
   { id: "emails", label: "Emails", icon: Mail },
+  { id: "calendar", label: "Calendrier", icon: CalendarDays },
   { id: "settings", label: "Configuration", icon: Settings },
 ];
 
@@ -117,7 +120,7 @@ export function AdminDashboardClient({ currentUser }: { currentUser: CurrentAdmi
   // Onglet actif reflété dans l'URL (partageable, navigable).
   const [activeView, setActiveView] = useQueryState(
     "vue",
-    parseAsStringLiteral(["overview", "reports", "builds", "users", "emails", "settings"] as const).withDefault("overview").withOptions({ history: "replace" }),
+    parseAsStringLiteral(["overview", "reports", "builds", "users", "emails", "calendar", "settings"] as const).withDefault("overview").withOptions({ history: "replace" }),
   );
   const [builds, setBuilds] = useState<AdminBuild[]>([]);
   const [reports, setReports] = useState<AdminReport[]>([]);
@@ -297,6 +300,8 @@ export function AdminDashboardClient({ currentUser }: { currentUser: CurrentAdmi
               ) : null}
 
               {activeView === "emails" ? <EmailsView stats={emailStats} /> : null}
+
+              {activeView === "calendar" ? <CalendarAdminClient /> : null}
 
               {activeView === "settings" ? <SettingsView /> : null}
             </div>
