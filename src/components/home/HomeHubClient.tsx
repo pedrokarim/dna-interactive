@@ -30,6 +30,7 @@ import { AppShell } from "@/components/site/AppShell";
 import { DnaCornerBrackets, DnaNouveau, DnaTag, DnaRibbon, cn } from "@/components/dna";
 import { EventCalendar } from "@/components/home/EventCalendar";
 import type { CalendarEvent } from "@/lib/events/calendar";
+import { useAppSettings } from "@/lib/settings/useAppSettings";
 
 export type HomeCode = { code: string; reward: string };
 export type HomeBuildCard = {
@@ -224,6 +225,8 @@ function BuildShowcaseCard({ build }: { build: HomeBuildCard }) {
 /* ---------------------------------------------------------------- page (POC) */
 
 export default function HomeHubClient({ codes, builds, communityCount, stats, calendarEvents }: HomeHubClientProps) {
+  const { commissionsVisible } = useAppSettings();
+  const communityCards = commissionsVisible ? COMMUNITY_CARDS : COMMUNITY_CARDS.filter((c) => c.href !== "/commissions");
   const STATS = [
     { icon: Users, value: stats.characters, label: "Personnages" },
     { icon: Database, value: stats.items, label: "Items indexés" },
@@ -294,7 +297,9 @@ export default function HomeHubClient({ codes, builds, communityCount, stats, ca
 
             <div className="grid gap-4 sm:grid-cols-2">
               <ToolTile card={{ href: "/builder", title: "Builder", mono: "//BUILD.FORGE", desc: "Armes, Demon Wedges et consonances.", icon: Hammer, badge: "Nouveau", bg: "/assets/worldview/worldview-2.webp", tint: "var(--color-electro)" }} />
-              <ToolTile card={{ href: "/commissions", title: "Commissions", mono: "//COVERT.OPS.LIVE", desc: "Rotation en temps réel des commissions.", icon: ScrollText, bg: "/assets/worldview/worldview-4.webp", tint: "var(--color-pyro)" }} />
+              {commissionsVisible ? (
+                <ToolTile card={{ href: "/commissions", title: "Commissions", mono: "//COVERT.OPS.LIVE", desc: "Rotation en temps réel des commissions.", icon: ScrollText, bg: "/assets/worldview/worldview-4.webp", tint: "var(--color-pyro)" }} />
+              ) : null}
             </div>
           </div>
         </section>
@@ -327,7 +332,7 @@ export default function HomeHubClient({ codes, builds, communityCount, stats, ca
             card={{ href: "/builds", title: "Builds communauté", mono: "//SHARED.LOADOUTS", desc: "Explore, vote et classe les builds partagés par les joueurs.", icon: Layers, badge: "Nouveau", bg: "/assets/worldview/worldview-7.webp", tint: "var(--color-anemo)" }}
           />
           <div className="grid gap-4 sm:grid-cols-2">
-            {COMMUNITY_CARDS.map((c) => (
+            {communityCards.map((c) => (
               <ToolTile key={c.href} card={c} />
             ))}
           </div>

@@ -27,6 +27,8 @@ import { Link, usePathname } from "@/i18n/navigation";
 import { DnaNouveau, DnaPill, cn } from "@/components/dna";
 import { SidebarProfile, TopbarAccount } from "@/components/auth/AccountControls";
 import { NotificationBell } from "@/components/notifications/NotificationBell";
+import { SiteBanner } from "@/components/site/SiteBanner";
+import { useAppSettings } from "@/lib/settings/useAppSettings";
 
 /* ------------------------------------------------------------------ nav data */
 
@@ -171,6 +173,8 @@ function Sidebar({
   collapsed: boolean;
   onNavigate?: () => void;
 }) {
+  const { commissionsVisible } = useAppSettings();
+  const primaryNav = commissionsVisible ? NAV_PRIMARY : NAV_PRIMARY.filter((e) => e.href !== "/commissions");
   const sep = <span aria-hidden className="h-px bg-gradient-to-r from-line/25 via-line/10 to-transparent" />;
   return (
     <div className="flex h-full flex-col gap-4 overflow-y-auto px-3 py-4 custom-scrollbar">
@@ -178,7 +182,7 @@ function Sidebar({
       <SidebarProfile collapsed={collapsed} />
 
       <nav className="flex flex-col gap-1">
-        {NAV_PRIMARY.map((e) => (
+        {primaryNav.map((e) => (
           <SidebarLink key={e.href + e.label} entry={e} active={isActive(pathname, e.href)} collapsed={collapsed} onNavigate={onNavigate} />
         ))}
       </nav>
@@ -306,6 +310,7 @@ export function AppShell({ children, breadcrumb = "//COMMUNITY.HUB" }: AppShellP
         </header>
 
         {/* -------------------------------------------------------- CONTENU PAGE */}
+        <SiteBanner />
         <main className="flex-1">{children}</main>
 
         {/* -------------------------------------------------------- FOOTER */}

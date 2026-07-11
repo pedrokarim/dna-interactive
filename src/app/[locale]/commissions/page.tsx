@@ -1,8 +1,10 @@
 import type { Metadata, ResolvingMetadata } from "next";
+import { notFound } from "next/navigation";
 import { generatePageMetadata, pageMetadata } from "@/lib/metadata";
 import { AppShell } from "@/components/site/AppShell";
 import { CommissionsBoard } from "@/components/commissions/CommissionsBoard";
 import { getRotationForDisplay } from "@/lib/commissions";
+import { getAppSettings } from "@/lib/settings/db";
 
 // Données vivantes : rendu à la demande, jamais prérendu en statique.
 export const dynamic = "force-dynamic";
@@ -16,6 +18,8 @@ export async function generateMetadata(
 }
 
 export default async function CommissionsPage() {
+  const settings = await getAppSettings();
+  if (!settings.commissionsVisible) notFound();
   const { state, meta, hasData } = await getRotationForDisplay();
 
   return (
