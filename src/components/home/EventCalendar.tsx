@@ -61,6 +61,7 @@ export function CalendarView({
   );
 
   const [selected, setSelected] = useState<CalendarRow | null>(null);
+  const [tip, setTip] = useState<{ row: CalendarRow; x: number; y: number } | null>(null);
 
   const step = Math.max(3, Math.round(span / 3));
   const activeList = useMemo(() => Array.from(active), [active]);
@@ -185,7 +186,12 @@ export function CalendarView({
                 return (
                   <div key={r.id} className="flex items-center gap-3">
                     <span className={cn("flex shrink-0 items-center gap-2", labelW)}>
-                      <span className="h-2 w-2 shrink-0 rounded-full" style={{ background: r.tint }} />
+                      {r.image ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img src={r.image} alt="" aria-hidden loading="lazy" className="h-7 w-7 shrink-0 rounded-sm border object-cover" style={{ borderColor: r.tint }} />
+                      ) : (
+                        <span className="h-2 w-2 shrink-0 rounded-full" style={{ background: r.tint }} />
+                      )}
                       <span className="truncate text-[0.72rem] text-parch/85" title={r.title}>
                         {r.title}
                       </span>
@@ -197,6 +203,8 @@ export function CalendarView({
                       <button
                         type="button"
                         onClick={() => setSelected(isSel ? null : r)}
+                        onMouseMove={(e) => setTip({ row: r, x: e.clientX, y: e.clientY })}
+                        onMouseLeave={() => setTip((t) => (t?.row.id === r.id ? null : t))}
                         aria-label={`${r.title} — ${range(r.start, r.end)}`}
                         className={cn(
                           "absolute inset-y-[3px] flex items-center overflow-hidden rounded-[3px] border px-2 transition-[filter,box-shadow]",
@@ -227,7 +235,12 @@ export function CalendarView({
       {selected ? (
         <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1.5 rounded-sm border border-line/20 bg-ink/40 p-3">
           <span className="flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full" style={{ background: selected.tint }} />
+            {selected.image ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={selected.image} alt="" aria-hidden className="h-8 w-8 rounded-sm border object-cover" style={{ borderColor: selected.tint }} />
+            ) : (
+              <span className="h-2 w-2 rounded-full" style={{ background: selected.tint }} />
+            )}
             <span className="font-display text-sm text-parch">{selected.title}</span>
           </span>
           <span className="font-caps text-[0.55rem] uppercase tracking-[0.14em] text-muted">{selected.category}</span>
@@ -248,12 +261,52 @@ export function CalendarView({
               Voir <ExternalLink className="h-3 w-3" />
             </Link>
           ) : null}
+          {selected.description ? (
+            <span className="w-full font-sans text-xs leading-relaxed text-parch/70">{selected.description}</span>
+          ) : null}
         </div>
       ) : (
         <p className="mt-3 font-mono text-[0.6rem] text-muted-2">
-          Navigue avec ◀ ▶, zoome, filtre par catégorie, clique un événement pour le détail. Mis à jour à chaque version du jeu.
+          Navigue avec ◀ ▶, zoome, filtre par catégorie, survole ou clique un événement pour le détail.
         </p>
       )}
+
+      {/* tooltip au survol (position fixe, suit le curseur → échappe l'overflow) */}
+      {tip ? (
+        <div
+          className="pointer-events-none fixed z-[100] w-64 rounded-sm border border-gold/30 bg-panel/95 p-2.5 shadow-[0_12px_32px_rgba(0,0,0,0.6)] backdrop-blur"
+          style={{
+            left: Math.min(tip.x + 14, (typeof window !== "undefined" ? window.innerWidth : 9999) - 272),
+            top: tip.y + 14,
+          }}
+        >
+          <div className="flex items-center gap-2">
+            {tip.row.image ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={tip.row.image} alt="" aria-hidden className="h-9 w-9 shrink-0 rounded-sm border object-cover" style={{ borderColor: tip.row.tint }} />
+            ) : null}
+            <span className="min-w-0">
+              <span className="block truncate font-display text-sm text-parch">{tip.row.title}</span>
+              <span className="block font-caps text-[0.5rem] uppercase tracking-[0.14em]" style={{ color: tip.row.tint }}>
+                {tip.row.category}
+              </span>
+            </span>
+          </div>
+          <div className="mt-1.5 font-mono text-[0.62rem] text-parch/75">{range(tip.row.start, tip.row.end)}</div>
+          {(() => {
+            const info = detailInfo(tip.row);
+            return (
+              <div className={cn("mt-0.5 font-caps text-[0.55rem] uppercase tracking-[0.12em]", info.tone)}>
+                {info.label}
+                {info.note ? ` · ${info.note}` : ""}
+              </div>
+            );
+          })()}
+          {tip.row.description ? (
+            <p className="mt-1.5 font-sans text-[0.7rem] leading-snug text-parch/70">{tip.row.description}</p>
+          ) : null}
+        </div>
+      ) : null}
     </div>
   );
 }
