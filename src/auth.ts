@@ -1,9 +1,53 @@
-import NextAuth from "next-auth";
+import NextAuth, { type NextAuthConfig } from "next-auth";
 import Discord from "next-auth/providers/discord";
+import Google from "next-auth/providers/google";
+import Credentials from "next-auth/providers/credentials";
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
-import { eq } from "drizzle-orm";
+import { eq, sql } from "drizzle-orm";
 import { getDb, schema } from "@/db";
 import { isConfiguredAdminDiscordId } from "@/lib/auth/admins";
+import { verifyPassword } from "@/lib/auth/password";
+
+// Providers construits dynamiquement : Google ne s'active que si ses clés sont
+// présentes (câblé mais inerte tant que AUTH_GOOGLE_ID/SECRET ne sont pas fournis).
+const providers: NextAuthConfig["providers"] = [
+  Discord({
+    // Un même email Discord (vérifié) est rattaché au compte existant plutôt
+    // que d'en créer un doublon → 1 personne = 1 compte.
+    allowDangerousEmailAccountLinking: true,
+    authorization: { params: { scope: "identify email" } },
+  }),
+  Credentials({
+    credentials: {
+      email: { label: "Email", type: "email" },
+      password: { label: "Mot de passe", type: "password" },
+    },
+    authorize: async (credentials) => {
+      const email = String(credentials?.email ?? "").trim().toLowerCase();
+      const password = String(credentials?.password ?? "");
+      if (!email || !password) return null;
+
+      const [user] = await getDb()
+        .select()
+        .from(schema.users)
+        .where(sql`lower(${schema.users.email}) = ${email}`)
+        .limit(1);
+
+      // Refus si : pas de compte, pas de mot de passe défini (OAuth-only),
+      // banni, ou email non vérifié (login natif bloqué avant vérification).
+      if (!user || !user.passwordHash || user.banned || !user.emailVerified) return null;
+
+      const ok = await verifyPassword(password, user.passwordHash);
+      if (!ok) return null;
+
+      return { id: user.id, name: user.name, email: user.email, image: user.image };
+    },
+  }),
+];
+
+if (process.env.AUTH_GOOGLE_ID && process.env.AUTH_GOOGLE_SECRET) {
+  providers.push(Google({ allowDangerousEmailAccountLinking: true }));
+}
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: DrizzleAdapter(getDb(), {
@@ -13,12 +57,10 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     verificationTokensTable: schema.verificationTokens,
     authenticatorsTable: schema.authenticators,
   }),
-  session: { strategy: "database" },
-  providers: [
-    Discord({
-      authorization: { params: { scope: "identify email" } },
-    }),
-  ],
+  // JWT obligatoire pour le provider Credentials (la table sessions devient
+  // inutilisée mais reste définie côté adapter, sans effet).
+  session: { strategy: "jwt" },
+  providers,
   callbacks: {
     async signIn({ user }) {
       if (!user.id) return true;
@@ -45,8 +87,14 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
       return dbUser?.banned !== true;
     },
-    async session({ session, user }) {
-      if (!session.user || !user.id) return session;
+    async jwt({ token, user }) {
+      // `user` n'est présent qu'à la connexion (OAuth ou Credentials).
+      if (user?.id) token.uid = user.id;
+      return token;
+    },
+    async session({ session, token }) {
+      const uid = token.uid as string | undefined;
+      if (!session.user || !uid) return session;
 
       const [dbUser] = await getDb()
         .select({
@@ -56,7 +104,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           discordId: schema.users.discordId,
         })
         .from(schema.users)
-        .where(eq(schema.users.id, user.id))
+        .where(eq(schema.users.id, uid))
         .limit(1);
 
       const isConfiguredAdmin = isConfiguredAdminDiscordId(dbUser?.discordId);
@@ -64,10 +112,10 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         await getDb()
           .update(schema.users)
           .set({ role: "admin", updatedAt: new Date() })
-          .where(eq(schema.users.id, user.id));
+          .where(eq(schema.users.id, uid));
       }
 
-      session.user.id = user.id;
+      session.user.id = uid;
       session.user.role = isConfiguredAdmin ? "admin" : dbUser?.role ?? "user";
       session.user.banned = dbUser?.banned ?? false;
       session.user.discordId = dbUser?.discordId ?? null;

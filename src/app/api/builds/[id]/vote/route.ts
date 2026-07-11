@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
-import { eq, sql } from "drizzle-orm";
+import { and, eq, sql } from "drizzle-orm";
 import { getDb, schema } from "@/db";
-import { getCurrentUser } from "@/lib/auth/session";
 import { checkRateLimit } from "@/lib/rate-limit";
+import { getVoterKey } from "@/lib/community-builds/vote-identity";
 
 export const dynamic = "force-dynamic";
 
@@ -10,17 +10,27 @@ type RouteContext = { params: Promise<{ id: string }> };
 
 async function getPublicBuild(id: string) {
   const [build] = await getDb()
-    .select({ id: schema.builds.id, hidden: schema.builds.hidden, userId: schema.builds.userId })
+    .select({ id: schema.builds.id, hidden: schema.builds.hidden })
     .from(schema.builds)
     .where(eq(schema.builds.id, id))
     .limit(1);
   return build ?? null;
 }
 
-export async function POST(_request: Request, { params }: RouteContext) {
-  const user = await getCurrentUser();
-  if (!user) return NextResponse.json({ error: "Connexion requise." }, { status: 401 });
-  const rate = checkRateLimit(`build:vote:${user.id}`, 90, 60 * 1000);
+async function currentVoteCount(id: string) {
+  const [row] = await getDb()
+    .select({ voteCount: schema.builds.voteCount })
+    .from(schema.builds)
+    .where(eq(schema.builds.id, id))
+    .limit(1);
+  return row?.voteCount ?? 0;
+}
+
+// Vote anonyme : identité = clé dérivée de l'IP (cf. vote-identity.ts). Pas de
+// connexion requise, pas de blocage self-vote (on ne connaît plus l'auteur côté vote).
+export async function POST(request: Request, { params }: RouteContext) {
+  const voterKey = getVoterKey(request.headers);
+  const rate = checkRateLimit(`build:vote:${voterKey}`, 90, 60 * 1000);
   if (!rate.ok) {
     return NextResponse.json(
       { error: "Trop de votes. Réessaie plus tard." },
@@ -31,15 +41,12 @@ export async function POST(_request: Request, { params }: RouteContext) {
   const { id } = await params;
   const build = await getPublicBuild(id);
   if (!build || build.hidden) return NextResponse.json({ error: "Build introuvable." }, { status: 404 });
-  if (build.userId === user.id) {
-    return NextResponse.json({ error: "Tu ne peux pas voter pour ton propre build." }, { status: 403 });
-  }
 
   const inserted = await getDb()
-    .insert(schema.buildVotes)
-    .values({ buildId: id, userId: user.id })
+    .insert(schema.buildIpVotes)
+    .values({ buildId: id, voterKey })
     .onConflictDoNothing()
-    .returning({ buildId: schema.buildVotes.buildId });
+    .returning({ buildId: schema.buildIpVotes.buildId });
 
   if (inserted.length > 0) {
     await getDb()
@@ -48,19 +55,12 @@ export async function POST(_request: Request, { params }: RouteContext) {
       .where(eq(schema.builds.id, id));
   }
 
-  const [row] = await getDb()
-    .select({ voteCount: schema.builds.voteCount })
-    .from(schema.builds)
-    .where(eq(schema.builds.id, id))
-    .limit(1);
-
-  return NextResponse.json({ voted: true, voteCount: row?.voteCount ?? 0 });
+  return NextResponse.json({ voted: true, voteCount: await currentVoteCount(id) });
 }
 
-export async function DELETE(_request: Request, { params }: RouteContext) {
-  const user = await getCurrentUser();
-  if (!user) return NextResponse.json({ error: "Connexion requise." }, { status: 401 });
-  const rate = checkRateLimit(`build:vote:${user.id}`, 90, 60 * 1000);
+export async function DELETE(request: Request, { params }: RouteContext) {
+  const voterKey = getVoterKey(request.headers);
+  const rate = checkRateLimit(`build:vote:${voterKey}`, 90, 60 * 1000);
   if (!rate.ok) {
     return NextResponse.json(
       { error: "Trop de votes. Réessaie plus tard." },
@@ -70,9 +70,9 @@ export async function DELETE(_request: Request, { params }: RouteContext) {
 
   const { id } = await params;
   const deleted = await getDb()
-    .delete(schema.buildVotes)
-    .where(sql`${schema.buildVotes.buildId} = ${id} AND ${schema.buildVotes.userId} = ${user.id}`)
-    .returning({ buildId: schema.buildVotes.buildId });
+    .delete(schema.buildIpVotes)
+    .where(and(eq(schema.buildIpVotes.buildId, id), eq(schema.buildIpVotes.voterKey, voterKey)))
+    .returning({ buildId: schema.buildIpVotes.buildId });
 
   if (deleted.length > 0) {
     await getDb()
@@ -84,11 +84,5 @@ export async function DELETE(_request: Request, { params }: RouteContext) {
       .where(eq(schema.builds.id, id));
   }
 
-  const [row] = await getDb()
-    .select({ voteCount: schema.builds.voteCount })
-    .from(schema.builds)
-    .where(eq(schema.builds.id, id))
-    .limit(1);
-
-  return NextResponse.json({ voted: false, voteCount: row?.voteCount ?? 0 });
+  return NextResponse.json({ voted: false, voteCount: await currentVoteCount(id) });
 }

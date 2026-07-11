@@ -6,6 +6,7 @@ import { getDb, schema } from "@/db";
 import { getCurrentUser } from "@/lib/auth/session";
 import { isMissingTableError } from "@/lib/db-errors";
 import { checkRateLimit } from "@/lib/rate-limit";
+import { getVoterKey } from "@/lib/community-builds/vote-identity";
 import { getCharacterById } from "@/lib/characters/catalog";
 import { AppShell } from "@/components/site/AppShell";
 import { BuildPageClient } from "@/components/community-builds/BuildPageClient";
@@ -64,9 +65,11 @@ async function loadBuild(id: string, { countView }: { countView: boolean }): Pro
     const editableByMe = user?.id === row.userId || user?.role === "admin";
     if (row.hidden && !editableByMe) return null;
 
+    const requestHeaders = await headers();
+
     let views = row.views;
     if (countView && !editableByMe) {
-      const ip = (await headers()).get("x-forwarded-for")?.split(",")[0]?.trim() ?? "anon";
+      const ip = requestHeaders.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "anon";
       const viewerKey = user?.id ?? ip;
       if (checkRateLimit(`build:view:${id}:${viewerKey}`, 1, 30 * 60 * 1000).ok) {
         await db.update(schema.builds).set({ views: sql`${schema.builds.views} + 1` }).where(eq(schema.builds.id, id));
@@ -74,15 +77,14 @@ async function loadBuild(id: string, { countView }: { countView: boolean }): Pro
       }
     }
 
-    let votedByMe = false;
-    if (user) {
-      const [vote] = await db
-        .select({ buildId: schema.buildVotes.buildId })
-        .from(schema.buildVotes)
-        .where(and(eq(schema.buildVotes.buildId, id), eq(schema.buildVotes.userId, user.id)))
-        .limit(1);
-      votedByMe = Boolean(vote);
-    }
+    // Vote anonyme : "votedByMe" = ce visiteur (clé IP du jour) a-t-il voté.
+    const voterKey = getVoterKey(requestHeaders);
+    const [vote] = await db
+      .select({ buildId: schema.buildIpVotes.buildId })
+      .from(schema.buildIpVotes)
+      .where(and(eq(schema.buildIpVotes.buildId, id), eq(schema.buildIpVotes.voterKey, voterKey)))
+      .limit(1);
+    const votedByMe = Boolean(vote);
 
     return {
       id: row.id,

@@ -1318,7 +1318,7 @@ function CommunityBuildsSection({
     const response = await fetch(`/api/builds/${build.id}/vote`, { method: next ? "POST" : "DELETE" });
     if (!response.ok) {
       setBuilds((current) => current.map((item) => (item.id === build.id ? build : item)));
-      setMessage(tcb("loginToVote"));
+      setMessage(tcb("voteFailed"));
       return;
     }
 

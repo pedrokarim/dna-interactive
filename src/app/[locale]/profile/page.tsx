@@ -1,25 +1,44 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
+import { eq } from "drizzle-orm";
 import { Link } from "@/i18n/navigation";
 import { Boxes, Hammer, Shield } from "lucide-react";
 import { AppShell } from "@/components/site/AppShell";
 import { DiscordAuthButton } from "@/components/auth/DiscordAuthButton";
 import { DeleteAccountButton } from "@/components/account/DeleteAccountButton";
+import { AccountConnections } from "@/components/account/AccountConnections";
 import { DnaAvatar, DnaPanel, DnaSectionLabel, DnaTag } from "@/components/dna";
+import { getDb, schema } from "@/db";
 import { getCurrentUser } from "@/lib/auth/session";
 import { getUserProgress } from "@/lib/leveling/user";
+import { isGoogleEnabled } from "@/lib/auth/site";
 
 export const dynamic = "force-dynamic";
+
+type Props = { searchParams: Promise<{ error?: string }> };
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("account");
   return { title: t("metaTitle"), description: t("metaDescription") };
 }
 
-export default async function ProfilePage() {
+export default async function ProfilePage({ searchParams }: Props) {
   const t = await getTranslations("account");
   const user = await getCurrentUser();
+  const { error } = await searchParams;
   const progress = user ? await getUserProgress(user.id) : null;
+
+  const db = getDb();
+  const [accountRows, passwordRows] = user
+    ? await Promise.all([
+        db.select({ provider: schema.accounts.provider }).from(schema.accounts).where(eq(schema.accounts.userId, user.id)),
+        db.select({ passwordHash: schema.users.passwordHash }).from(schema.users).where(eq(schema.users.id, user.id)).limit(1),
+      ])
+    : [[], []];
+  const linkedProviders = accountRows
+    .map((r) => r.provider)
+    .filter((p): p is "discord" | "google" => p === "discord" || p === "google");
+  const hasPassword = Boolean(passwordRows[0]?.passwordHash);
 
   return (
     <AppShell breadcrumb="//ACCOUNT.PROFILE">
@@ -103,6 +122,17 @@ export default async function ProfilePage() {
                 </div>
               </DnaPanel>
             </div>
+
+            <DnaPanel className="mt-4 p-5">
+              <DnaSectionLabel>{t("connectionsBox")}</DnaSectionLabel>
+              <p className="mt-2 mb-4 font-sans text-sm text-muted">{t("connectionsHint")}</p>
+              <AccountConnections
+                linkedProviders={linkedProviders}
+                hasPassword={hasPassword}
+                googleEnabled={isGoogleEnabled()}
+                linkError={error === "OAuthAccountNotLinked"}
+              />
+            </DnaPanel>
 
             <DnaPanel className="mt-4 p-5">
               <DnaSectionLabel>{t("privacyBox")}</DnaSectionLabel>

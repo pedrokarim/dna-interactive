@@ -11,6 +11,8 @@ import {
   FileWarning,
   Hammer,
   LayoutDashboard,
+  Mail,
+  MailOpen,
   RefreshCcw,
   Settings,
   Shield,
@@ -29,7 +31,15 @@ import { useConfirm } from "@/components/dna/ConfirmProvider";
 
 const ADMIN_PAGE_SIZE = 12;
 
-type AdminView = "overview" | "reports" | "builds" | "users" | "settings";
+type AdminView = "overview" | "reports" | "builds" | "users" | "emails" | "settings";
+
+type EmailStats = {
+  total: number;
+  opened: number;
+  openRate: number;
+  byKind: Array<{ kind: string; sent: number; opened: number }>;
+  recent: Array<{ recipient: string; kind: string; sentAt: string; openedAt: string | null; openCount: number }>;
+};
 
 type AdminPagination = {
   page: number;
@@ -99,6 +109,7 @@ const ADMIN_NAV: Array<{ id: AdminView; label: string; icon: typeof LayoutDashbo
   { id: "reports", label: "Signalements", icon: FileWarning },
   { id: "builds", label: "Builds", icon: Hammer },
   { id: "users", label: "Utilisateurs", icon: Users },
+  { id: "emails", label: "Emails", icon: Mail },
   { id: "settings", label: "Configuration", icon: Settings },
 ];
 
@@ -106,7 +117,7 @@ export function AdminDashboardClient({ currentUser }: { currentUser: CurrentAdmi
   // Onglet actif reflété dans l'URL (partageable, navigable).
   const [activeView, setActiveView] = useQueryState(
     "vue",
-    parseAsStringLiteral(["overview", "reports", "builds", "users", "settings"] as const).withDefault("overview").withOptions({ history: "replace" }),
+    parseAsStringLiteral(["overview", "reports", "builds", "users", "emails", "settings"] as const).withDefault("overview").withOptions({ history: "replace" }),
   );
   const [builds, setBuilds] = useState<AdminBuild[]>([]);
   const [reports, setReports] = useState<AdminReport[]>([]);
@@ -120,6 +131,7 @@ export function AdminDashboardClient({ currentUser }: { currentUser: CurrentAdmi
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
+  const [emailStats, setEmailStats] = useState<EmailStats | null>(null);
 
   const load = useCallback(async () => {
     setRefreshing(true);
@@ -134,10 +146,13 @@ export function AdminDashboardClient({ currentUser }: { currentUser: CurrentAdmi
       pageSize: `${ADMIN_PAGE_SIZE}`,
     });
 
-    const [buildsResponse, usersResponse] = await Promise.all([
+    const [buildsResponse, usersResponse, emailsResponse] = await Promise.all([
       fetch(`/api/admin/builds?${buildParams.toString()}`),
       fetch(`/api/admin/users?${userParams.toString()}`),
+      fetch(`/api/admin/emails`),
     ]);
+
+    if (emailsResponse.ok) setEmailStats(await emailsResponse.json().catch(() => null));
 
     if (!buildsResponse.ok || !usersResponse.ok) {
       setMessage("Chargement admin impossible.");
@@ -281,6 +296,8 @@ export function AdminDashboardClient({ currentUser }: { currentUser: CurrentAdmi
                 />
               ) : null}
 
+              {activeView === "emails" ? <EmailsView stats={emailStats} /> : null}
+
               {activeView === "settings" ? <SettingsView /> : null}
             </div>
           )}
@@ -415,6 +432,100 @@ function AdminMetric({
       </div>
       <p className="mt-3 font-sans text-xs text-muted-2">{sublabel}</p>
     </DnaPanel>
+  );
+}
+
+const EMAIL_KIND_LABELS: Record<string, string> = {
+  verify_email: "Vérification",
+  reset_password: "Reset mot de passe",
+  set_password: "Définir mot de passe",
+  welcome: "Bienvenue",
+  contact: "Contact",
+};
+
+function formatEmailDate(iso: string): string {
+  const d = new Date(iso);
+  return Number.isNaN(d.getTime()) ? "—" : d.toLocaleString(undefined, { dateStyle: "short", timeStyle: "short" });
+}
+
+function EmailsView({ stats }: { stats: EmailStats | null }) {
+  if (!stats || stats.total === 0) {
+    return (
+      <DnaPanel className="p-5">
+        <DnaSectionLabel>Emails</DnaSectionLabel>
+        <p className="mt-3 font-sans text-sm text-muted">
+          Aucun email suivi pour l&apos;instant. Les envois (vérification, reset, bienvenue, contact) apparaîtront ici avec leur statut d&apos;ouverture.
+        </p>
+      </DnaPanel>
+    );
+  }
+
+  return (
+    <div className="flex flex-col gap-5">
+      <div className="grid gap-3 md:grid-cols-3">
+        <AdminMetric icon={<Mail className="h-5 w-5" />} label="Emails envoyés" value={stats.total} sublabel="Total historique" />
+        <AdminMetric icon={<MailOpen className="h-5 w-5" />} label="Ouverts" value={stats.opened} sublabel={`${stats.openRate}% de taux d'ouverture`} />
+        <AdminMetric icon={<Eye className="h-5 w-5" />} label="Taux d'ouverture" value={stats.openRate} sublabel="% — approximatif (proxys mail)" />
+      </div>
+
+      <DnaPanel className="p-4">
+        <DnaSectionLabel>Par type</DnaSectionLabel>
+        <div className="mt-3 overflow-x-auto">
+          <table className="w-full min-w-[28rem] text-left text-sm">
+            <thead>
+              <tr className="font-caps text-[0.56rem] uppercase tracking-[0.14em] text-muted">
+                <th className="pb-2 pr-4 font-normal">Type</th>
+                <th className="pb-2 pr-4 font-normal">Envoyés</th>
+                <th className="pb-2 pr-4 font-normal">Ouverts</th>
+                <th className="pb-2 font-normal">Taux</th>
+              </tr>
+            </thead>
+            <tbody className="text-parch/90">
+              {stats.byKind.map((k) => (
+                <tr key={k.kind} className="border-t border-white/8">
+                  <td className="py-2 pr-4">{EMAIL_KIND_LABELS[k.kind] ?? k.kind}</td>
+                  <td className="py-2 pr-4 font-mono">{k.sent}</td>
+                  <td className="py-2 pr-4 font-mono">{k.opened}</td>
+                  <td className="py-2 font-mono text-gold-bright">{k.sent > 0 ? Math.round((k.opened / k.sent) * 100) : 0}%</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </DnaPanel>
+
+      <DnaPanel className="p-4">
+        <DnaSectionLabel>Derniers emails</DnaSectionLabel>
+        <div className="mt-3 overflow-x-auto">
+          <table className="w-full min-w-[34rem] text-left text-sm">
+            <thead>
+              <tr className="font-caps text-[0.56rem] uppercase tracking-[0.14em] text-muted">
+                <th className="pb-2 pr-4 font-normal">Destinataire</th>
+                <th className="pb-2 pr-4 font-normal">Type</th>
+                <th className="pb-2 pr-4 font-normal">Envoyé</th>
+                <th className="pb-2 font-normal">Statut</th>
+              </tr>
+            </thead>
+            <tbody className="text-parch/90">
+              {stats.recent.map((e, i) => (
+                <tr key={`${e.recipient}-${e.sentAt}-${i}`} className="border-t border-white/8">
+                  <td className="max-w-[16rem] truncate py-2 pr-4">{e.recipient}</td>
+                  <td className="py-2 pr-4 text-muted">{EMAIL_KIND_LABELS[e.kind] ?? e.kind}</td>
+                  <td className="py-2 pr-4 font-mono text-xs text-muted">{formatEmailDate(e.sentAt)}</td>
+                  <td className="py-2">
+                    {e.openedAt ? (
+                      <DnaTag tone="gold">Ouvert{e.openCount > 1 ? ` ×${e.openCount}` : ""}</DnaTag>
+                    ) : (
+                      <span className="font-caps text-[0.56rem] uppercase tracking-[0.14em] text-muted-2">Non ouvert</span>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </DnaPanel>
+    </div>
   );
 }
 

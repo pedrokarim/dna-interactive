@@ -27,6 +27,9 @@ export const users = pgTable("users", {
   emailVerified: timestamp("email_verified", { mode: "date", withTimezone: true }),
   image: text("image"),
   discordId: text("discord_id").unique(),
+  // Hash scrypt du mot de passe (comptes natifs email/mdp). Null = compte
+  // OAuth-only tant que l'utilisateur n'a pas défini de mot de passe.
+  passwordHash: text("password_hash"),
   role: text("role", { enum: ["user", "admin"] }).notNull().default("user"),
   banned: boolean("banned").notNull().default(false),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
@@ -95,6 +98,47 @@ export const authenticators = pgTable(
   (t) => [primaryKey({ columns: [t.userId, t.credentialID] })],
 );
 
+// Tokens à usage unique pour les flux email natifs : vérification d'adresse et
+// réinitialisation de mot de passe. Seul le HASH du token est stocké (le token
+// en clair ne vit que dans le lien envoyé par email). Expiration obligatoire.
+export const authTokens = pgTable(
+  "auth_tokens",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    userId: text("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    kind: text("kind", { enum: ["verify_email", "reset_password"] }).notNull(),
+    tokenHash: text("token_hash").notNull().unique(),
+    expires: timestamp("expires", { withTimezone: true }).notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [index("idx_auth_tokens_user").on(t.userId)],
+);
+
+// Journal d'envoi/ouverture des emails (stats admin). `token` = identifiant
+// opaque encodé dans l'URL de l'asset de suivi (cf. lib/email/tracking.ts).
+// `userId` en set null pour conserver les stats même si le compte est supprimé.
+export const emailEvents = pgTable(
+  "email_events",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    token: text("token").notNull().unique(),
+    kind: text("kind").notNull(), // verify_email | reset_password | set_password | welcome | contact
+    recipient: text("recipient").notNull(),
+    userId: text("user_id").references(() => users.id, { onDelete: "set null" }),
+    sentAt: timestamp("sent_at", { withTimezone: true }).notNull().defaultNow(),
+    openedAt: timestamp("opened_at", { withTimezone: true }),
+    lastOpenedAt: timestamp("last_opened_at", { withTimezone: true }),
+    openCount: integer("open_count").notNull().default(0),
+    userAgent: text("user_agent"),
+  },
+  (t) => [
+    index("idx_email_events_kind").on(t.kind),
+    index("idx_email_events_sent").on(t.sentAt),
+  ],
+);
+
 // ---------------------------------------------------------------------------
 // Community build builder
 // ---------------------------------------------------------------------------
@@ -147,20 +191,23 @@ export const buildDrafts = pgTable(
   ],
 );
 
-export const buildVotes = pgTable(
-  "build_votes",
+// Votes anonymes par IP (plus de lien au compte). `voterKey` = hash non
+// réversible de (IP + fenêtre 24h + secret) : stable dans la fenêtre courante
+// (toggle possible), change à la fenêtre suivante (la même IP peut re-voter —
+// l'abus est accepté, cf. lib/community-builds/vote-identity.ts). `builds.voteCount`
+// reste le compteur cumulatif et permanent, jamais reconstruit depuis cette table.
+export const buildIpVotes = pgTable(
+  "build_ip_votes",
   {
     buildId: uuid("build_id")
       .notNull()
       .references(() => builds.id, { onDelete: "cascade" }),
-    userId: text("user_id")
-      .notNull()
-      .references(() => users.id, { onDelete: "cascade" }),
+    voterKey: text("voter_key").notNull(),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   },
   (t) => [
-    primaryKey({ columns: [t.buildId, t.userId] }),
-    index("idx_build_votes_user").on(t.userId),
+    primaryKey({ columns: [t.buildId, t.voterKey] }),
+    index("idx_build_ip_votes_build").on(t.buildId),
   ],
 );
 
@@ -246,7 +293,9 @@ export const commissionEntries = pgTable(
 export type CommissionSnapshotRow = typeof commissionSnapshots.$inferSelect;
 export type CommissionEntryRow = typeof commissionEntries.$inferSelect;
 export type UserRow = typeof users.$inferSelect;
+export type AuthTokenRow = typeof authTokens.$inferSelect;
+export type EmailEventRow = typeof emailEvents.$inferSelect;
 export type BuildRow = typeof builds.$inferSelect;
 export type BuildDraftRow = typeof buildDrafts.$inferSelect;
-export type BuildVoteRow = typeof buildVotes.$inferSelect;
+export type BuildIpVoteRow = typeof buildIpVotes.$inferSelect;
 export type BuildReportRow = typeof buildReports.$inferSelect;

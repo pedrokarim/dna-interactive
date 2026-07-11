@@ -1,9 +1,9 @@
 import "server-only";
-import { and, desc, eq, inArray, ne } from "drizzle-orm";
+import { and, desc, eq, inArray } from "drizzle-orm";
 import { getDb, schema } from "@/db";
 import { isMissingTableError } from "@/lib/db-errors";
 
-export type NotificationType = "build_vote" | "build_moderated" | "report_new";
+export type NotificationType = "build_moderated" | "report_new";
 
 export type AppNotification = {
   id: string;
@@ -16,44 +16,16 @@ export type AppNotification = {
 
 /**
  * Notifications DÉRIVÉES des tables existantes (aucune table dédiée) :
- * - likes reçus sur mes builds
  * - modération de mes builds (adminActions)
  * - signalements ouverts (admins)
  * Sûr si une table est absente. L'état lu/non-lu est géré côté client (localStorage).
+ *
+ * NB : les votes étant désormais anonymes (par IP), on ne peut plus notifier
+ * "X a aimé ton build" — cette source a été retirée.
  */
 export async function getNotifications(user: { id: string; role: "user" | "admin" }): Promise<AppNotification[]> {
   const db = getDb();
   const out: AppNotification[] = [];
-
-  // Likes reçus sur mes builds (hors auto-vote)
-  try {
-    const rows = await db
-      .select({
-        createdAt: schema.buildVotes.createdAt,
-        buildId: schema.builds.id,
-        title: schema.builds.title,
-        voter: schema.users.name,
-      })
-      .from(schema.buildVotes)
-      .innerJoin(schema.builds, eq(schema.builds.id, schema.buildVotes.buildId))
-      .innerJoin(schema.users, eq(schema.users.id, schema.buildVotes.userId))
-      .where(and(eq(schema.builds.userId, user.id), ne(schema.buildVotes.userId, user.id)))
-      .orderBy(desc(schema.buildVotes.createdAt))
-      .limit(15);
-    for (const r of rows) {
-      const iso = new Date(r.createdAt).toISOString();
-      out.push({
-        id: `vote-${r.buildId}-${Date.parse(iso)}`,
-        type: "build_vote",
-        title: `${r.voter ?? "Un joueur"} a aimé ton build`,
-        body: r.title,
-        href: `/builds/${r.buildId}`,
-        createdAt: iso,
-      });
-    }
-  } catch (error) {
-    if (!isMissingTableError(error)) throw error;
-  }
 
   // Modération de mes builds
   try {

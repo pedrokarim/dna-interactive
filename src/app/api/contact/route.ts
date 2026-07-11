@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import { z } from "zod";
+import { renderContactEmail } from "@/lib/email/contact-email";
+import { createEmailEvent, injectPixel } from "@/lib/email/tracking";
 
 // Schema de validation Zod pour le formulaire de contact
 const contactFormSchema = z.object({
@@ -169,60 +171,26 @@ export async function POST(request: NextRequest) {
     const emailSubject = `${
       subjectMap[subject] || "📧 Nouveau message"
     } - ${name}`;
-    const emailContent = `
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>${emailSubject}</title>
-  <style>
-    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-    .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 8px 8px 0 0; }
-    .content { background: #f8f9fa; padding: 20px; border-radius: 0 0 8px 8px; }
-    .field { margin-bottom: 15px; }
-    .label { font-weight: bold; color: #495057; }
-    .value { background: white; padding: 10px; border-radius: 4px; border-left: 4px solid #667eea; }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="header">
-      <h2>${emailSubject}</h2>
-      <p>Nouveau message depuis le formulaire de contact</p>
-    </div>
-    <div class="content">
-      <div class="field">
-        <div class="label">Nom:</div>
-        <div class="value">${name}</div>
-      </div>
-      <div class="field">
-        <div class="label">Email:</div>
-        <div class="value">${email}</div>
-      </div>
-      <div class="field">
-        <div class="label">Sujet:</div>
-        <div class="value">${subjectMap[subject] || subject}</div>
-      </div>
-      <div class="field">
-        <div class="label">Message:</div>
-        <div class="value">${message.replace(/\n/g, "<br>")}</div>
-      </div>
-      <hr style="margin: 20px 0; border: none; border-top: 1px solid #dee2e6;">
-      <p style="color: #6c757d; font-size: 12px;">
-        Cet email a été envoyé automatiquement depuis le formulaire de contact du site Ascencia.
-      </p>
-    </div>
-  </div>
-</body>
-</html>`;
+    // Template React Email au design system DNA (remplace l'ancien HTML inline).
+    const emailContent = await renderContactEmail({
+      name,
+      email,
+      subjectLabel: subjectMap[subject] || subject,
+      message,
+    });
+
+    // Suivi d'ouverture (asset injecté + événement).
+    const contactTo = process.env.CONTACT_EMAIL || "contact@ascencia.re";
+    let html = emailContent;
+    const pixel = await createEmailEvent(contactTo, "contact");
+    if (pixel) html = injectPixel(html, pixel.pixelUrl);
 
     // Configuration de l'email
     const mailOptions = {
       from: `"${name}" <${process.env.SMTP_USER || "contact@ascencia.re"}>`,
-      to: process.env.CONTACT_EMAIL || "contact@ascencia.re",
+      to: contactTo,
       subject: emailSubject,
-      html: emailContent,
+      html,
       replyTo: email,
     };
 

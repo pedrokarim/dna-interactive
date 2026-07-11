@@ -1,5 +1,5 @@
 import "server-only";
-import { count, eq } from "drizzle-orm";
+import { eq } from "drizzle-orm";
 import { getDb, schema } from "@/db";
 import { isMissingTableError } from "@/lib/db-errors";
 import { EMPTY_CONTRIBUTIONS, levelProgress, xpFromContributions, type Contributions, type LevelProgress } from "./index";
@@ -15,15 +15,12 @@ export async function getUserProgress(userId: string): Promise<UserProgress> {
       .from(schema.builds)
       .where(eq(schema.builds.userId, userId));
 
-    const [{ value: votesGiven = 0 } = { value: 0 }] = await db
-      .select({ value: count() })
-      .from(schema.buildVotes)
-      .where(eq(schema.buildVotes.userId, userId));
-
+    // Votes désormais anonymes (par IP) ⇒ plus attribuables à un utilisateur.
+    // "likesReceived" reste dérivé du compteur cumulatif builds.voteCount.
     const contributions: Contributions = {
       buildsPublished: builds.length,
       likesReceived: builds.reduce((sum, b) => sum + (b.voteCount ?? 0), 0),
-      votesGiven,
+      votesGiven: 0,
       buildViews: builds.map((b) => b.views ?? 0),
     };
 

@@ -19,6 +19,8 @@
   },
   "dependencies": {
     "@auth/drizzle-adapter": "^1.11.2",
+    "@react-email/components": "^1.0.12",
+    "@react-email/render": "^2.1.0",
     "@types/leaflet": "^1.9.21",
     "@types/nodemailer": "^7.0.4",
     "country-flag-icons": "^1.6.15",

@@ -24,3 +24,11 @@ declare module "next-auth/adapters" {
     discordId?: string | null;
   }
 }
+
+declare module "next-auth/jwt" {
+  interface JWT {
+    // Sessions JWT : on stocke l'id utilisateur DB ; role/banned/discordId
+    // sont relus en base dans le callback `session` pour rester frais.
+    uid?: string;
+  }
+}

@@ -4,6 +4,7 @@ import { getDb, schema } from "@/db";
 import { getCurrentUser } from "@/lib/auth/session";
 import { isMissingTableError } from "@/lib/db-errors";
 import { checkRateLimit } from "@/lib/rate-limit";
+import { getVoterKey } from "@/lib/community-builds/vote-identity";
 import {
   createBuildSchema,
   validateBuildReferences,
@@ -83,16 +84,18 @@ export async function GET(request: NextRequest) {
       .limit(pageSize)
       .offset((page - 1) * pageSize);
 
+    // Votes anonymes : "votedByMe" = ce visiteur (clé IP du jour) a-t-il voté.
     let votedIds = new Set<string>();
-    if (user && rows.length > 0) {
+    if (rows.length > 0) {
+      const voterKey = getVoterKey(request.headers);
       const votes = await db
-        .select({ buildId: schema.buildVotes.buildId })
-        .from(schema.buildVotes)
+        .select({ buildId: schema.buildIpVotes.buildId })
+        .from(schema.buildIpVotes)
         .where(
           and(
-            eq(schema.buildVotes.userId, user.id),
+            eq(schema.buildIpVotes.voterKey, voterKey),
             inArray(
-              schema.buildVotes.buildId,
+              schema.buildIpVotes.buildId,
               rows.map((row) => row.id),
             ),
           ),

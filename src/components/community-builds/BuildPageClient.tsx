@@ -52,13 +52,13 @@ export function BuildPageClient({ build, character, characterElement, lang }: Pr
     const next = !voted;
     const response = await fetch(`/api/builds/${build.id}/vote`, { method: next ? "POST" : "DELETE" });
     setVoteBusy(false);
-    if (response.status === 401) {
-      setActionMessage(tcb("loginToVote"));
+    if (!response.ok) {
+      setActionMessage(tcb("voteFailed"));
       return;
     }
-    if (!response.ok) return;
-    setVoted(next);
-    setVoteCount((count) => count + (next ? 1 : -1));
+    const data = await response.json().catch(() => null);
+    setVoted(data?.voted ?? next);
+    setVoteCount(data?.voteCount ?? voteCount + (next ? 1 : -1));
   }
 
   async function copyLink() {
