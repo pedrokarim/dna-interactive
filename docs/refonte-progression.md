@@ -64,10 +64,18 @@ adossés au système de connexion (auth Discord déjà en place, cf. builder com
   Marquage lu : `POST /api/notifications/read`. Rien n'est envoyé au client sans session.
 - **État actuel** : cloche + point statiques, non cliquables. À rendre fonctionnel après auth.
 
-### 2. Niveau / XP utilisateur (profil sidebar)
-- **UI** : `Voyageur · Lv.XX` (placeholder `XX`) — affiché sous le pseudo réel dans le profil sidebar.
-- **Données** : XP par compte (builds publiés, votes reçus, contributions…). Niveau dérivé d'une courbe.
-- **État actuel** : seul `Lv.XX` reste en dur ; le reste du profil est réel (cf. §3).
+### 2. Niveau / XP utilisateur — ✅ v1 (XP dérivée, sans migration DB)
+- **Lib pure** `src/lib/leveling/index.ts` : barèmes (build +40, like +8, vote donné +2,
+  paliers de vues), courbe (XP n→n+1 = 100·n), titres (Éclaireur→Voyageur→…→Abyssonaute),
+  `levelProgress(xp)`.
+- **Serveur** `src/lib/leveling/user.ts` `getUserProgress(userId)` : XP **dérivée des
+  données existantes** (builds publiés + likes reçus + vues + votes donnés) → aucune table
+  ni backfill, toujours cohérent. Exposé via `GET /api/account/level`.
+- **Affichage** : profil sidebar = `Lv.N · Titre` + **barre de progression** (fetch client) ;
+  page `/profile` = bandeau niveau + XP + progression + breakdown (tooltip).
+- **v2 possible** : sources temporelles (connexion/série), contributions carte (nouvelle
+  infra), ledger `xp_events` si on veut un historique/anti-abus fin. Récompenses restent
+  cosmétiques (titres).
 
 ### 3. Profil / compte — ✅ CÂBLÉ (session Discord)
 - `SessionProvider` (next-auth v5) dans `Providers`. Widget client

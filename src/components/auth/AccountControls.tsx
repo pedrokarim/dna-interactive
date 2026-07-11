@@ -1,9 +1,34 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { ChevronDown, LogIn, LogOut, Shield, UserRound } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { DnaAvatar, cn } from "@/components/dna";
+
+type LevelData = { level: number; title: string; ratio: number; xp: number; nextLevelAtXp: number };
+
+/** Récupère la progression (XP/niveau) du compte connecté. */
+function useLevelProgress(enabled: boolean): LevelData | null {
+  const [data, setData] = useState<LevelData | null>(null);
+  useEffect(() => {
+    if (!enabled) {
+      setData(null);
+      return;
+    }
+    let alive = true;
+    fetch("/api/account/level")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((json) => {
+        if (alive && json?.progress) setData(json.progress as LevelData);
+      })
+      .catch(() => {});
+    return () => {
+      alive = false;
+    };
+  }, [enabled]);
+  return data;
+}
 
 /* ------------------------------------------------------------------ topbar */
 
@@ -53,6 +78,7 @@ export function TopbarAccount() {
 export function SidebarProfile({ collapsed = false }: { collapsed?: boolean }) {
   const { data: session, status } = useSession();
   const user = session?.user;
+  const level = useLevelProgress(Boolean(user));
 
   if (status === "loading") {
     return (
@@ -105,7 +131,7 @@ export function SidebarProfile({ collapsed = false }: { collapsed?: boolean }) {
     );
   }
 
-  // Connecté, déployé : identité + actions
+  // Connecté, déployé : identité + niveau + actions
   return (
     <div className="rounded-sm border border-line/20 bg-panel/70 p-3">
       <div className="flex items-center gap-3">
@@ -113,10 +139,20 @@ export function SidebarProfile({ collapsed = false }: { collapsed?: boolean }) {
         <span className="min-w-0">
           <span className="block truncate font-display text-sm text-parch">{user.name ?? "Discord"}</span>
           <span className="block font-caps text-[0.55rem] uppercase tracking-[0.2em] text-muted">
-            {isAdmin ? "Administrateur" : "Voyageur · Lv.XX"}
+            {level ? `Lv.${level.level} · ${level.title}` : isAdmin ? "Administrateur" : "Voyageur"}
           </span>
         </span>
       </div>
+      {level ? (
+        <div className="mt-2.5" title={`${level.xp} XP · prochain niveau à ${level.nextLevelAtXp} XP`}>
+          <div className="h-1 w-full overflow-hidden rounded-full bg-ink/60">
+            <span
+              className="block h-full rounded-full bg-gradient-to-r from-gold-deep to-gold-bright transition-[width] duration-500"
+              style={{ width: `${Math.round(level.ratio * 100)}%` }}
+            />
+          </div>
+        </div>
+      ) : null}
       <div className="mt-2.5 flex items-center gap-2">
         <Link
           href="/profile"

@@ -7,6 +7,7 @@ import { DiscordAuthButton } from "@/components/auth/DiscordAuthButton";
 import { DeleteAccountButton } from "@/components/account/DeleteAccountButton";
 import { DnaAvatar, DnaPanel, DnaSectionLabel, DnaTag } from "@/components/dna";
 import { getCurrentUser } from "@/lib/auth/session";
+import { getUserProgress } from "@/lib/leveling/user";
 
 export const dynamic = "force-dynamic";
 
@@ -18,6 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function ProfilePage() {
   const t = await getTranslations("account");
   const user = await getCurrentUser();
+  const progress = user ? await getUserProgress(user.id) : null;
 
   return (
     <AppShell breadcrumb="//ACCOUNT.PROFILE">
@@ -50,6 +52,24 @@ export default async function ProfilePage() {
                         <span className="font-mono text-xs text-muted">{t("discordId")}: {user.discordId}</span>
                       ) : null}
                     </div>
+                    {progress ? (
+                      <div className="mt-4" title={`${progress.contributions.buildsPublished} builds · ${progress.contributions.likesReceived} likes · ${progress.contributions.votesGiven} votes`}>
+                        <div className="flex items-baseline gap-2">
+                          <span className="font-display text-lg text-gold-bright">Lv.{progress.level}</span>
+                          <span className="font-caps text-[0.6rem] uppercase tracking-[0.18em] text-muted">{progress.title}</span>
+                          <span className="ml-auto font-mono text-xs text-muted">{progress.xp} XP</span>
+                        </div>
+                        <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-ink/60">
+                          <span
+                            className="block h-full rounded-full bg-gradient-to-r from-gold-deep to-gold-bright"
+                            style={{ width: `${Math.round(progress.ratio * 100)}%` }}
+                          />
+                        </div>
+                        <p className="mt-1 font-mono text-[0.6rem] text-muted-2">
+                          {progress.xpIntoLevel} / {progress.xpForLevelSpan} → Lv.{progress.level + 1}
+                        </p>
+                      </div>
+                    ) : null}
                   </div>
                 </div>
               </DnaPanel>
