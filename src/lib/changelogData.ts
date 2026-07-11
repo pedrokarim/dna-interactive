@@ -9,6 +9,24 @@ export interface ChangelogEntry {
 
 export const changelogData: ChangelogEntry[] = [
   {
+    date: "2026-07-11",
+    version: "2.2.0",
+    type: "enhancement",
+    title: "Nouvelle interface : un accueil qui rassemble tout, plus clair et plus vivant",
+    description:
+      "L'interface du site a été entièrement retravaillée pour être plus lisible, plus agréable et plus rapide à parcourir. Nouvelle page d'accueil qui réunit tous les outils au même endroit, un menu latéral toujours à portée de main, et des pages qui exploitent tout l'écran — sur ordinateur comme sur mobile.",
+    items: [
+      "🏠 Nouvel accueil « hub » qui rassemble tout d'un coup d'œil : carte, personnages, base de données, builder, builds, codes et outils",
+      "📋 Menu latéral toujours accessible pour passer d'une section à l'autre en un clic — repliable quand vous voulez plus de place, et il garde votre préférence",
+      "🖥️ Toutes les pages repensées pour occuper tout l'écran : plus aéré, plus lisible, moins de vide",
+      "🎁 Aperçu des codes cadeaux directement sur l'accueil, avec copie en un clic",
+      "🗂️ Les meilleurs builds de la communauté mis en avant dès l'accueil",
+      "📅 Un calendrier des événements pour suivre ce qui est en cours (aperçu)",
+      "📱 Une navigation pensée pour le mobile de bout en bout",
+      "✨ Un habillage plus soigné et cohérent sur l'ensemble du site",
+    ],
+  },
+  {
     date: "2026-06-25",
     version: "2.1.0",
     type: "feature",
