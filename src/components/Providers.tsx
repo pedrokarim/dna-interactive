@@ -2,6 +2,7 @@
 
 import { Provider } from 'jotai';
 import { ReactNode } from 'react';
+import { SessionProvider } from 'next-auth/react';
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 import { NuqsAdapter } from 'nuqs/adapters/next/app';
 import { MotionConfig } from 'framer-motion';
@@ -13,22 +14,24 @@ interface ProvidersProps {
 
 export function Providers({ children }: ProvidersProps) {
   return (
-    <NuqsAdapter>
-      <GoogleReCaptchaProvider
-        reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ''}
-        scriptProps={{
-          async: false,
-          defer: false,
-          appendTo: 'head',
-          nonce: undefined,
-        }}
-      >
-        <Provider>
-          <MotionConfig reducedMotion="user">
-            <ConfirmProvider>{children}</ConfirmProvider>
-          </MotionConfig>
-        </Provider>
-      </GoogleReCaptchaProvider>
-    </NuqsAdapter>
+    <SessionProvider>
+      <NuqsAdapter>
+        <GoogleReCaptchaProvider
+          reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ''}
+          scriptProps={{
+            async: false,
+            defer: false,
+            appendTo: 'head',
+            nonce: undefined,
+          }}
+        >
+          <Provider>
+            <MotionConfig reducedMotion="user">
+              <ConfirmProvider>{children}</ConfirmProvider>
+            </MotionConfig>
+          </Provider>
+        </GoogleReCaptchaProvider>
+      </NuqsAdapter>
+    </SessionProvider>
   );
 }

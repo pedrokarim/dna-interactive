@@ -60,14 +60,17 @@ adossés au système de connexion (auth Discord déjà en place, cf. builder com
 - **État actuel** : cloche + point statiques, non cliquables. À rendre fonctionnel après auth.
 
 ### 2. Niveau / XP utilisateur (profil sidebar)
-- **UI** : `Voyageur · Lv.XX` (placeholder `XX` en attendant le back).
-- **Données** : XP par compte, gagné via actions (builds publiés, votes reçus, contributions,
-  connexions). Niveau dérivé d'une courbe d'XP. Affiché aussi possiblement sur la fiche profil.
-- **État actuel** : `Lv.XX` en dur. À brancher sur le compte connecté.
+- **UI** : `Voyageur · Lv.XX` (placeholder `XX`) — affiché sous le pseudo réel dans le profil sidebar.
+- **Données** : XP par compte (builds publiés, votes reçus, contributions…). Niveau dérivé d'une courbe.
+- **État actuel** : seul `Lv.XX` reste en dur ; le reste du profil est réel (cf. §3).
 
-### 3. Profil (avatar + pseudo)
-- Avatar + pseudo (`pedrokarim`) et bouton avatar topbar → viendront de la **session Discord**
-  (avatar, username). Menu compte (profil, déconnexion) au clic. Placeholder « K » pour l'instant.
+### 3. Profil / compte — ✅ CÂBLÉ (session Discord)
+- `SessionProvider` (next-auth v5) dans `Providers`. Widget client
+  `src/components/auth/AccountControls.tsx` : `TopbarAccount` (avatar + dropdown
+  Profil / Admin / Déconnexion, ou bouton « Se connecter ») et `SidebarProfile`
+  (identité réelle + actions, état « Invité » + login si déconnecté ; avatar → /profile en replié).
+  Intégrés dans `AppShell` (plus de faux « pedrokarim » / « K »).
+- Reste seulement : le **niveau** (§2) et les **notifications** (§1).
 
 ## Journal
 - 2026-07-11 — Socle `AppShell` posé (sidebar persistante). Home hub `home-poc` enrichie (images/dégradés). Doc de suivi créé.

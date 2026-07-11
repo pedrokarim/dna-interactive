@@ -24,7 +24,8 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { Link, usePathname } from "@/i18n/navigation";
-import { DnaCornerBrackets, DnaNotifDot, DnaNouveau, DnaPill, cn } from "@/components/dna";
+import { DnaNotifDot, DnaNouveau, DnaPill, cn } from "@/components/dna";
+import { SidebarProfile, TopbarAccount } from "@/components/auth/AccountControls";
 
 /* ------------------------------------------------------------------ nav data */
 
@@ -171,24 +172,8 @@ function Sidebar({
   const sep = <span aria-hidden className="h-px bg-gradient-to-r from-line/25 via-line/10 to-transparent" />;
   return (
     <div className="flex h-full flex-col gap-4 overflow-y-auto px-3 py-4 custom-scrollbar">
-      {/* profil */}
-      <div
-        className={cn(
-          "relative flex items-center rounded-sm border border-line/20 bg-panel/70",
-          collapsed ? "justify-center p-2" : "gap-3 p-3",
-        )}
-      >
-        {!collapsed && <DnaCornerBrackets size={10} />}
-        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-gold/40 bg-gold/10 font-display text-sm text-gold-bright">
-          K
-        </span>
-        {!collapsed && (
-          <span className="min-w-0">
-            <span className="block truncate font-display text-sm text-parch">pedrokarim</span>
-            <span className="block font-caps text-[0.55rem] uppercase tracking-[0.2em] text-muted">Voyageur · Lv.XX</span>
-          </span>
-        )}
-      </div>
+      {/* profil / compte (réel via session) */}
+      <SidebarProfile collapsed={collapsed} />
 
       <nav className="flex flex-col gap-1">
         {NAV_PRIMARY.map((e) => (
@@ -321,9 +306,7 @@ export function AppShell({ children, breadcrumb = "//COMMUNITY.HUB" }: AppShellP
               <Bell className="h-4 w-4" />
               <DnaNotifDot className="absolute right-2 top-2" />
             </button>
-            <span className="flex h-9 w-9 items-center justify-center rounded-full border border-gold/40 bg-gold/10 font-display text-sm text-gold-bright">
-              K
-            </span>
+            <TopbarAccount />
           </div>
         </header>
 
