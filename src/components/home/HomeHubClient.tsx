@@ -50,6 +50,7 @@ export type HomeHubClientProps = {
   communityCount: string;
   stats: { characters: string; items: string; builds: string };
   calendarEvents?: CalendarEvent[];
+  calendarToday?: string;
 };
 
 /* CTA façon design system, appliqués directement sur un Link/anchor. */
@@ -224,7 +225,7 @@ function BuildShowcaseCard({ build }: { build: HomeBuildCard }) {
 
 /* ---------------------------------------------------------------- page (POC) */
 
-export default function HomeHubClient({ codes, builds, communityCount, stats, calendarEvents }: HomeHubClientProps) {
+export default function HomeHubClient({ codes, builds, communityCount, stats, calendarEvents, calendarToday }: HomeHubClientProps) {
   const { commissionsVisible } = useAppSettings();
   const communityCards = commissionsVisible ? COMMUNITY_CARDS : COMMUNITY_CARDS.filter((c) => c.href !== "/commissions");
   const STATS = [
@@ -363,7 +364,7 @@ export default function HomeHubClient({ codes, builds, communityCount, stats, ca
               </span>
             }
           />
-          <EventCalendar events={calendarEvents} />
+          <EventCalendar events={calendarEvents} refToday={calendarToday} />
         </section>
 
         {/* =============================================== BUILDS DE PERSONNAGES */}

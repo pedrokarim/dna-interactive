@@ -19,7 +19,7 @@ function isZoom(n: number): n is CalendarZoom {
 }
 
 /** Calendrier plein écran — état (fenêtre / zoom / filtres) synchronisé dans l'URL. */
-export function CalendarPageClient({ events }: { events?: CalendarEvent[] }) {
+export function CalendarPageClient({ events, refToday }: { events?: CalendarEvent[]; refToday?: string }) {
   const [q, setQ] = useQueryStates({
     start: parseAsString,
     span: parseAsInteger,
@@ -27,7 +27,7 @@ export function CalendarPageClient({ events }: { events?: CalendarEvent[] }) {
   });
 
   const span: CalendarZoom = q.span && isZoom(q.span) ? q.span : DEFAULT_ZOOM;
-  const windowStart = q.start ?? defaultWindowStart(span);
+  const windowStart = q.start ?? defaultWindowStart(span, refToday);
   const active = useMemo<Set<EventCategory>>(() => {
     if (!q.cats) return new Set(CATEGORIES);
     const valid = q.cats.filter((c): c is EventCategory => (CATEGORIES as string[]).includes(c));
@@ -35,7 +35,7 @@ export function CalendarPageClient({ events }: { events?: CalendarEvent[] }) {
   }, [q.cats]);
 
   const shift = (days: number) => void setQ({ start: addDaysIso(windowStart, days) });
-  const goToday = () => void setQ({ start: defaultWindowStart(span) });
+  const goToday = () => void setQ({ start: defaultWindowStart(span, refToday) });
   const changeZoom = (z: CalendarZoom) => {
     const center = addDaysIso(windowStart, Math.round(span / 2));
     void setQ({ start: addDaysIso(center, -Math.round(z / 2)), span: z });
@@ -58,6 +58,7 @@ export function CalendarPageClient({ events }: { events?: CalendarEvent[] }) {
       onZoom={changeZoom}
       onToggleCat={toggleCat}
       events={events}
+      refToday={refToday}
       variant="full"
     />
   );

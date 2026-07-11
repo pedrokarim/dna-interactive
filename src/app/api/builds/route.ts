@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { and, count, desc, eq, inArray, isNull, or, sql } from "drizzle-orm";
 import { getDb, schema } from "@/db";
 import { getCurrentUser } from "@/lib/auth/session";
+import { getAppSettings } from "@/lib/settings/db";
 import { isMissingTableError } from "@/lib/db-errors";
 import { checkRateLimit } from "@/lib/rate-limit";
 import { getVoterKey } from "@/lib/community-builds/vote-identity";
@@ -135,6 +136,10 @@ export async function POST(request: NextRequest) {
   const user = await getCurrentUser();
   if (!user) {
     return NextResponse.json({ error: "Connexion requise." }, { status: 401 });
+  }
+  const settings = await getAppSettings();
+  if (!settings.buildCreationEnabled || settings.maintenanceMode) {
+    return NextResponse.json({ error: "La publication de builds est temporairement désactivée." }, { status: 403 });
   }
   const rate = checkRateLimit(`build:create:${user.id}`, 6, 60 * 60 * 1000);
   if (!rate.ok) {

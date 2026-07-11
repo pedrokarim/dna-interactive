@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import { AppShell } from "@/components/site/AppShell";
 import { CalendarPageClient } from "@/components/calendar/CalendarPageClient";
 import { getCalendarEvents } from "@/lib/events/db";
+import { getAppSettings } from "@/lib/settings/db";
 
 export const dynamic = "force-dynamic";
 
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
 };
 
 export default async function CalendarPage() {
-  const events = await getCalendarEvents();
+  const [events, settings] = await Promise.all([getCalendarEvents(), getAppSettings()]);
   return (
     <AppShell breadcrumb="//EVENT.CALENDAR">
       <div className="mx-auto w-full max-w-[1720px] px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
@@ -27,7 +28,7 @@ export default async function CalendarPage() {
           </p>
         </div>
         <Suspense fallback={null}>
-          <CalendarPageClient events={events} />
+          <CalendarPageClient events={events} refToday={settings.calendarToday || undefined} />
         </Suspense>
       </div>
     </AppShell>

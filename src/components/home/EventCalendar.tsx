@@ -37,6 +37,8 @@ export type CalendarViewProps = {
   onToggleCat: (cat: EventCategory) => void;
   /** Source d'événements (BDD) ; défaut = liste curée statique. */
   events?: CalendarEvent[];
+  /** Date de référence « aujourd'hui » (ISO) ; défaut = CALENDAR_TODAY. */
+  refToday?: string;
   /** compact = home ; full = page dédiée (barres/labels plus grands). */
   variant?: "compact" | "full";
   /** Slot à droite de la barre d'outils (ex. lien « Plein écran »). */
@@ -53,6 +55,7 @@ export function CalendarView({
   onZoom,
   onToggleCat,
   events,
+  refToday,
   variant = "compact",
   headerRight,
 }: CalendarViewProps) {
@@ -69,20 +72,21 @@ export function CalendarView({
 
   const step = Math.max(3, Math.round(span / 3));
   const activeList = useMemo(() => Array.from(active), [active]);
-  const rows = useMemo(() => computeRows(windowStart, span, activeList, CALENDAR_TODAY, events), [windowStart, span, activeList, events]);
+  const ref = refToday || CALENDAR_TODAY;
+  const rows = useMemo(() => computeRows(windowStart, span, activeList, ref, events), [windowStart, span, activeList, ref, events]);
   const ticks = useMemo(() => generateTicks(windowStart, span), [windowStart, span]);
-  const today = markerPct(CALENDAR_TODAY, windowStart, span);
+  const today = markerPct(ref, windowStart, span);
   const windowEnd = addDaysIso(windowStart, span);
 
   const range = (start: string, end: string) => `${dayFmt.format(new Date(start))} – ${dayFmt.format(new Date(end))}`;
 
   const detailInfo = (row: CalendarRow) => {
     if (row.status === "upcoming") {
-      const d = diffDays(CALENDAR_TODAY, row.start);
+      const d = diffDays(ref, row.start);
       return { label: "À venir", note: d > 0 ? `démarre dans ${d} j` : "démarre aujourd'hui", tone: "text-hydro" };
     }
     if (row.status === "past") return { label: "Terminé", note: "", tone: "text-muted" };
-    const d = diffDays(CALENDAR_TODAY, row.end);
+    const d = diffDays(ref, row.end);
     return { label: "En cours", note: d > 0 ? `se termine dans ${d} j` : "dernier jour", tone: "text-anemo" };
   };
 
@@ -318,13 +322,13 @@ export function CalendarView({
 /* ------------------------------------------------------------- conteneur home */
 
 /** Calendrier de la home — état local. */
-export function EventCalendar({ events }: { events?: CalendarEvent[] }) {
+export function EventCalendar({ events, refToday }: { events?: CalendarEvent[]; refToday?: string }) {
   const [span, setSpan] = useState<CalendarZoom>(DEFAULT_ZOOM);
-  const [windowStart, setWindowStart] = useState<string>(() => defaultWindowStart(DEFAULT_ZOOM));
+  const [windowStart, setWindowStart] = useState<string>(() => defaultWindowStart(DEFAULT_ZOOM, refToday));
   const [active, setActive] = useState<Set<EventCategory>>(() => new Set(CATEGORIES));
 
   const shift = (days: number) => setWindowStart((s) => addDaysIso(s, days));
-  const goToday = () => setWindowStart(defaultWindowStart(span));
+  const goToday = () => setWindowStart(defaultWindowStart(span, refToday));
   const changeZoom = (z: CalendarZoom) => {
     const center = addDaysIso(windowStart, Math.round(span / 2));
     setWindowStart(addDaysIso(center, -Math.round(z / 2)));
@@ -348,6 +352,7 @@ export function EventCalendar({ events }: { events?: CalendarEvent[] }) {
       onZoom={changeZoom}
       onToggleCat={toggleCat}
       events={events}
+      refToday={refToday}
       headerRight={
         <Link
           href="/calendar"
