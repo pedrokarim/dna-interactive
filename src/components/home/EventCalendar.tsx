@@ -17,6 +17,7 @@ import {
   diffDays,
   generateTicks,
   markerPct,
+  type CalendarEvent,
   type CalendarRow,
   type CalendarZoom,
   type EventCategory,
@@ -34,6 +35,8 @@ export type CalendarViewProps = {
   onToday: () => void;
   onZoom: (z: CalendarZoom) => void;
   onToggleCat: (cat: EventCategory) => void;
+  /** Source d'événements (BDD) ; défaut = liste curée statique. */
+  events?: CalendarEvent[];
   /** compact = home ; full = page dédiée (barres/labels plus grands). */
   variant?: "compact" | "full";
   /** Slot à droite de la barre d'outils (ex. lien « Plein écran »). */
@@ -49,6 +52,7 @@ export function CalendarView({
   onToday,
   onZoom,
   onToggleCat,
+  events,
   variant = "compact",
   headerRight,
 }: CalendarViewProps) {
@@ -65,7 +69,7 @@ export function CalendarView({
 
   const step = Math.max(3, Math.round(span / 3));
   const activeList = useMemo(() => Array.from(active), [active]);
-  const rows = useMemo(() => computeRows(windowStart, span, activeList), [windowStart, span, activeList]);
+  const rows = useMemo(() => computeRows(windowStart, span, activeList, CALENDAR_TODAY, events), [windowStart, span, activeList, events]);
   const ticks = useMemo(() => generateTicks(windowStart, span), [windowStart, span]);
   const today = markerPct(CALENDAR_TODAY, windowStart, span);
   const windowEnd = addDaysIso(windowStart, span);
@@ -314,7 +318,7 @@ export function CalendarView({
 /* ------------------------------------------------------------- conteneur home */
 
 /** Calendrier de la home — état local. */
-export function EventCalendar() {
+export function EventCalendar({ events }: { events?: CalendarEvent[] }) {
   const [span, setSpan] = useState<CalendarZoom>(DEFAULT_ZOOM);
   const [windowStart, setWindowStart] = useState<string>(() => defaultWindowStart(DEFAULT_ZOOM));
   const [active, setActive] = useState<Set<EventCategory>>(() => new Set(CATEGORIES));
@@ -343,6 +347,7 @@ export function EventCalendar() {
       onToday={goToday}
       onZoom={changeZoom}
       onToggleCat={toggleCat}
+      events={events}
       headerRight={
         <Link
           href="/calendar"

@@ -29,6 +29,7 @@ import { Link } from "@/i18n/navigation";
 import { AppShell } from "@/components/site/AppShell";
 import { DnaCornerBrackets, DnaNouveau, DnaTag, DnaRibbon, cn } from "@/components/dna";
 import { EventCalendar } from "@/components/home/EventCalendar";
+import type { CalendarEvent } from "@/lib/events/calendar";
 
 export type HomeCode = { code: string; reward: string };
 export type HomeBuildCard = {
@@ -47,6 +48,7 @@ export type HomeHubClientProps = {
   builds: HomeBuildCard[];
   communityCount: string;
   stats: { characters: string; items: string; builds: string };
+  calendarEvents?: CalendarEvent[];
 };
 
 /* CTA façon design system, appliqués directement sur un Link/anchor. */
@@ -221,7 +223,7 @@ function BuildShowcaseCard({ build }: { build: HomeBuildCard }) {
 
 /* ---------------------------------------------------------------- page (POC) */
 
-export default function HomeHubClient({ codes, builds, communityCount, stats }: HomeHubClientProps) {
+export default function HomeHubClient({ codes, builds, communityCount, stats, calendarEvents }: HomeHubClientProps) {
   const STATS = [
     { icon: Users, value: stats.characters, label: "Personnages" },
     { icon: Database, value: stats.items, label: "Items indexés" },
@@ -356,7 +358,7 @@ export default function HomeHubClient({ codes, builds, communityCount, stats }: 
               </span>
             }
           />
-          <EventCalendar />
+          <EventCalendar events={calendarEvents} />
         </section>
 
         {/* =============================================== BUILDS DE PERSONNAGES */}

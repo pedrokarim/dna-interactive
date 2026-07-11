@@ -290,8 +290,35 @@ export const commissionEntries = pgTable(
   ],
 );
 
+// ---------------------------------------------------------------------------
+// Calendrier des événements — pilotable via l'admin.
+// Dates en texte ISO "YYYY-MM-DD" (cohérent avec la logique déterministe du
+// calendrier). `category` texte libre validé côté lecture.
+// ---------------------------------------------------------------------------
+export const calendarEvents = pgTable(
+  "calendar_events",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    title: text("title").notNull(),
+    category: text("category").notNull(),
+    startDate: text("start_date").notNull(),
+    endDate: text("end_date").notNull(),
+    image: text("image"),
+    href: text("href"),
+    description: text("description"),
+    sourceUrl: text("source_url"),
+    sortOrder: integer("sort_order").notNull().default(0),
+    hidden: boolean("hidden").notNull().default(false),
+    createdById: text("created_by_id").references(() => users.id, { onDelete: "set null" }),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [index("idx_calendar_events_dates").on(t.startDate, t.endDate)],
+);
+
 export type CommissionSnapshotRow = typeof commissionSnapshots.$inferSelect;
 export type CommissionEntryRow = typeof commissionEntries.$inferSelect;
+export type CalendarEventRow = typeof calendarEvents.$inferSelect;
 export type UserRow = typeof users.$inferSelect;
 export type AuthTokenRow = typeof authTokens.$inferSelect;
 export type EmailEventRow = typeof emailEvents.$inferSelect;

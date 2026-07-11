@@ -5,6 +5,7 @@ import { GAME_CODES } from "@/lib/store";
 import { getAllCharacters, getCharacterById, resolveCharacterDisplayName } from "@/lib/characters/catalog";
 import { getItemCatalog } from "@/lib/items/catalog";
 import { getTopBuilds, getBuildsTotal } from "@/lib/community-builds/list";
+import { getCalendarEvents } from "@/lib/events/db";
 
 export const dynamic = "force-dynamic";
 
@@ -36,7 +37,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   const catalog = getItemCatalog();
   const itemsTotal = catalog.categories.reduce((sum, c) => sum + (c.itemCount ?? 0), 0);
 
-  const [topBuilds, buildsTotal] = await Promise.all([getTopBuilds(8), getBuildsTotal()]);
+  const [topBuilds, buildsTotal, calendarEvents] = await Promise.all([getTopBuilds(8), getBuildsTotal(), getCalendarEvents()]);
 
   const builds: HomeBuildCard[] = topBuilds.map((b) => {
     const ch = getCharacterById(b.characterId);
@@ -71,6 +72,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         items: fmt.format(itemsTotal),
         builds: fmt.format(buildsTotal),
       }}
+      calendarEvents={calendarEvents}
     />
   );
 }

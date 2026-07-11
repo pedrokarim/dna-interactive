@@ -9,6 +9,7 @@ import {
   DEFAULT_ZOOM,
   addDaysIso,
   defaultWindowStart,
+  type CalendarEvent,
   type CalendarZoom,
   type EventCategory,
 } from "@/lib/events/calendar";
@@ -18,7 +19,7 @@ function isZoom(n: number): n is CalendarZoom {
 }
 
 /** Calendrier plein écran — état (fenêtre / zoom / filtres) synchronisé dans l'URL. */
-export function CalendarPageClient() {
+export function CalendarPageClient({ events }: { events?: CalendarEvent[] }) {
   const [q, setQ] = useQueryStates({
     start: parseAsString,
     span: parseAsInteger,
@@ -56,6 +57,7 @@ export function CalendarPageClient() {
       onToday={goToday}
       onZoom={changeZoom}
       onToggleCat={toggleCat}
+      events={events}
       variant="full"
     />
   );
