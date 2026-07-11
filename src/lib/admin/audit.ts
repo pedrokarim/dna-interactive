@@ -3,7 +3,7 @@ import { getDb, schema } from "@/db";
 type AdminActionInput = {
   adminId: string;
   action: string;
-  targetType: "user" | "build" | "report" | "calendar_event";
+  targetType: "user" | "build" | "report" | "calendar_event" | "settings" | "redemption_code";
   targetId?: string | null;
   meta?: Record<string, unknown> | null;
 };

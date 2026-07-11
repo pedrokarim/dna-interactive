@@ -316,9 +316,20 @@ export const calendarEvents = pgTable(
   (t) => [index("idx_calendar_events_dates").on(t.startDate, t.endDate)],
 );
 
+// ---------------------------------------------------------------------------
+// Réglages applicatifs pilotables via l'admin — 1 ligne (key = "config"),
+// valeur = objet JSON des réglages (cf. src/lib/settings).
+// ---------------------------------------------------------------------------
+export const appSettings = pgTable("app_settings", {
+  key: text("key").primaryKey(),
+  value: jsonb("value").$type<Record<string, unknown>>().notNull(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
 export type CommissionSnapshotRow = typeof commissionSnapshots.$inferSelect;
 export type CommissionEntryRow = typeof commissionEntries.$inferSelect;
 export type CalendarEventRow = typeof calendarEvents.$inferSelect;
+export type AppSettingsRow = typeof appSettings.$inferSelect;
 export type UserRow = typeof users.$inferSelect;
 export type AuthTokenRow = typeof authTokens.$inferSelect;
 export type EmailEventRow = typeof emailEvents.$inferSelect;
