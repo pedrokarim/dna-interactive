@@ -48,7 +48,7 @@ export async function GET(request: NextRequest) {
 export async function PUT(request: NextRequest) {
   const user = await getCurrentUser();
   if (!user) return NextResponse.json({ error: "Connexion requise." }, { status: 401 });
-  const rate = checkRateLimit(`build:draft:${user.id}`, 40, 60 * 1000);
+  const rate = await checkRateLimit(`build:draft:${user.id}`, 40, 60 * 1000);
   if (!rate.ok) {
     return NextResponse.json(
       { error: "Trop de sauvegardes. Réessaie plus tard." },

@@ -10,7 +10,7 @@ export const dynamic = "force-dynamic";
 // (→ proposer de renvoyer le lien) d'un simple mauvais identifiant.
 export async function POST(request: Request) {
   const ip = getClientIp(request.headers);
-  if (!checkRateLimit(`auth:login-status:${ip}`, 20, 60 * 1000).ok) {
+  if (!(await checkRateLimit(`auth:login-status:${ip}`, 20, 60 * 1000)).ok) {
     return NextResponse.json({ needsVerification: false });
   }
 

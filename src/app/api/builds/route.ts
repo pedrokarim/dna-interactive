@@ -141,7 +141,7 @@ export async function POST(request: NextRequest) {
   if (!settings.buildCreationEnabled || settings.maintenanceMode) {
     return NextResponse.json({ error: "La publication de builds est temporairement désactivée." }, { status: 403 });
   }
-  const rate = checkRateLimit(`build:create:${user.id}`, 6, 60 * 60 * 1000);
+  const rate = await checkRateLimit(`build:create:${user.id}`, 6, 60 * 60 * 1000);
   if (!rate.ok) {
     return NextResponse.json(
       { error: "Trop de publications. Réessaie plus tard." },

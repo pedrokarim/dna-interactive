@@ -60,7 +60,7 @@ export async function GET(request: NextRequest, { params }: RouteContext) {
     // ouvre le build. Dédup anti-gonflage : 1 vue par (build, visiteur) / 30 min.
     const isViewer = !editableByMe;
     const viewerKey = user?.id ?? request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "anon";
-    const counts = isViewer && checkRateLimit(`build:view:${id}:${viewerKey}`, 1, 30 * 60 * 1000).ok;
+    const counts = isViewer && (await checkRateLimit(`build:view:${id}:${viewerKey}`, 1, 30 * 60 * 1000)).ok;
     if (counts) {
       await db
         .update(schema.builds)

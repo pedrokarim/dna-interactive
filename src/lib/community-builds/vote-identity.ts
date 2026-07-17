@@ -30,6 +30,12 @@ export function getClientIp(headers: HeaderGetter): string {
 export function getVoterKey(headers: HeaderGetter): string {
   const ip = getClientIp(headers);
   const bucket = Math.floor(Date.now() / WINDOW_MS);
-  const secret = process.env.AUTH_SECRET ?? "dna-vote-salt";
+  // Sel = AUTH_SECRET. Un fallback en dur (ancien "dna-vote-salt") serait public
+  // → une IP pourrait être forcée par brute-force et le vote dé-anonymisé. On
+  // exige donc un vrai secret (présent en prod, requis par Auth.js).
+  const secret = process.env.AUTH_SECRET;
+  if (!secret) {
+    throw new Error("AUTH_SECRET manquant — impossible de dériver une clé de vote sûre.");
+  }
   return createHash("sha256").update(`${ip}:${bucket}:${secret}`).digest("hex");
 }

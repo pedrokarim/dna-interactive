@@ -30,7 +30,7 @@ async function currentVoteCount(id: string) {
 // connexion requise, pas de blocage self-vote (on ne connaît plus l'auteur côté vote).
 export async function POST(request: Request, { params }: RouteContext) {
   const voterKey = getVoterKey(request.headers);
-  const rate = checkRateLimit(`build:vote:${voterKey}`, 90, 60 * 1000);
+  const rate = await checkRateLimit(`build:vote:${voterKey}`, 90, 60 * 1000);
   if (!rate.ok) {
     return NextResponse.json(
       { error: "Trop de votes. Réessaie plus tard." },
@@ -60,7 +60,7 @@ export async function POST(request: Request, { params }: RouteContext) {
 
 export async function DELETE(request: Request, { params }: RouteContext) {
   const voterKey = getVoterKey(request.headers);
-  const rate = checkRateLimit(`build:vote:${voterKey}`, 90, 60 * 1000);
+  const rate = await checkRateLimit(`build:vote:${voterKey}`, 90, 60 * 1000);
   if (!rate.ok) {
     return NextResponse.json(
       { error: "Trop de votes. Réessaie plus tard." },

@@ -14,7 +14,7 @@ export const dynamic = "force-dynamic";
 // occasion (débloque le login natif pour les comptes non encore vérifiés).
 export async function POST(request: Request) {
   const ip = getClientIp(request.headers);
-  const rate = checkRateLimit(`auth:reset:${ip}`, 10, 60 * 60 * 1000);
+  const rate = await checkRateLimit(`auth:reset:${ip}`, 10, 60 * 60 * 1000);
   if (!rate.ok) {
     return NextResponse.json(
       { error: "Trop de tentatives. Réessaie plus tard." },

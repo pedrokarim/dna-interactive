@@ -3,6 +3,7 @@ import nodemailer from "nodemailer";
 import { z } from "zod";
 import { renderContactEmail } from "@/lib/email/contact-email";
 import { createEmailEvent, injectPixel } from "@/lib/email/tracking";
+import { checkRateLimit } from "@/lib/rate-limit";
 
 // Schema de validation Zod pour le formulaire de contact
 const contactFormSchema = z.object({
@@ -46,12 +47,10 @@ const transporter = nodemailer.createTransport({
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS,
   },
-  tls: {
-    rejectUnauthorized: false, // Pour éviter les problèmes de certificat
-  },
-  // Options de debug et timeout
-  debug: true,
-  logger: true,
+  // Le certificat LWS est valide → on vérifie la chaîne TLS (protège d'un MITM
+  // sur le chemin SMTP, qui exposerait identifiants et contenu des emails).
+  // debug/logger désactivés en prod pour ne pas journaliser destinataires et
+  // dialogue SMTP (PII) dans les logs Vercel.
   connectionTimeout: 60000, // 60 secondes
   greetingTimeout: 30000, // 30 secondes
   socketTimeout: 60000, // 60 secondes
@@ -109,11 +108,18 @@ async function verifyRecaptcha(token: string): Promise<boolean> {
 
 export async function POST(request: NextRequest) {
   try {
-    // Rate limiting basique (par IP)
+    // Rate limiting par IP, partagé entre instances serverless (cf. rate-limit.ts).
     const clientIP =
-      request.headers.get("x-forwarded-for") ||
+      request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
       request.headers.get("x-real-ip") ||
       "unknown";
+    const rate = await checkRateLimit(`contact:${clientIP}`, 5, 60 * 60 * 1000);
+    if (!rate.ok) {
+      return NextResponse.json(
+        { error: "Trop de messages envoyés. Réessaie plus tard." },
+        { status: 429, headers: { "Retry-After": `${rate.retryAfter}` } },
+      );
+    }
 
     // Vérifier la taille du body (max 10KB)
     const contentLength = request.headers.get("content-length");

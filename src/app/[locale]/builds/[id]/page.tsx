@@ -71,7 +71,7 @@ async function loadBuild(id: string, { countView }: { countView: boolean }): Pro
     if (countView && !editableByMe) {
       const ip = requestHeaders.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "anon";
       const viewerKey = user?.id ?? ip;
-      if (checkRateLimit(`build:view:${id}:${viewerKey}`, 1, 30 * 60 * 1000).ok) {
+      if ((await checkRateLimit(`build:view:${id}:${viewerKey}`, 1, 30 * 60 * 1000)).ok) {
         await db.update(schema.builds).set({ views: sql`${schema.builds.views} + 1` }).where(eq(schema.builds.id, id));
         views += 1;
       }

@@ -7,7 +7,16 @@ import { createCipheriv, createDecipheriv, randomBytes, scryptSync } from "node:
  * le format est invalide → chaîne vide (⇒ fallback env côté runtime).
  */
 function key(): Buffer {
-  const secret = process.env.AUTH_SECRET || process.env.NEXTAUTH_SECRET || "";
+  const secret = process.env.AUTH_SECRET || process.env.NEXTAUTH_SECRET;
+  // Sans AUTH_SECRET, la clé dériverait d'une chaîne vide → les secrets OAuth
+  // stockés dans la base PARTAGÉE (Kagura) seraient déchiffrables par quiconque
+  // y a un accès lecture. On refuse de (dé)chiffrer plutôt que d'utiliser une
+  // clé prévisible. (decryptSecret rattrape ce throw et retombe sur l'env.)
+  if (!secret) {
+    throw new Error(
+      "AUTH_SECRET manquant — refus de chiffrer les secrets d'auth sous une clé prévisible.",
+    );
+  }
   return scryptSync(secret, "dna-auth-config-v1", 32);
 }
 

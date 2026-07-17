@@ -326,6 +326,24 @@ export const appSettings = pgTable("app_settings", {
   updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
 });
 
+// ---------------------------------------------------------------------------
+// Rate-limiting partagé (fenêtre fixe) — cf. src/lib/rate-limit.ts.
+// Remplace le compteur en mémoire, inefficace en serverless multi-instance
+// (chaque lambda Vercel avait son propre état, remis à zéro au cold-start).
+// `bucketKey` = identifiant du seau (ex. "auth:login:<ip>:<email>").
+// Purge des lignes expirées : `DELETE FROM rate_limits WHERE reset_at < now();`
+// (à planifier périodiquement — cron Pi ou job Postgres).
+// ---------------------------------------------------------------------------
+export const rateLimits = pgTable(
+  "rate_limits",
+  {
+    bucketKey: text("bucket_key").primaryKey(),
+    count: integer("count").notNull().default(0),
+    resetAt: timestamp("reset_at", { withTimezone: true }).notNull(),
+  },
+  (t) => [index("idx_rate_limits_reset").on(t.resetAt)],
+);
+
 export type CommissionSnapshotRow = typeof commissionSnapshots.$inferSelect;
 export type CommissionEntryRow = typeof commissionEntries.$inferSelect;
 export type CalendarEventRow = typeof calendarEvents.$inferSelect;

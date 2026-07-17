@@ -14,7 +14,7 @@ export const dynamic = "force-dynamic";
 // que si un compte existe pour cet email.
 export async function POST(request: Request) {
   const ip = getClientIp(request.headers);
-  const rate = checkRateLimit(`auth:reset-request:${ip}`, 5, 60 * 60 * 1000);
+  const rate = await checkRateLimit(`auth:reset-request:${ip}`, 5, 60 * 60 * 1000);
   if (!rate.ok) {
     return NextResponse.json(
       { error: "Trop de tentatives. Réessaie plus tard." },

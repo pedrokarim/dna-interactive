@@ -12,7 +12,7 @@ type RouteContext = { params: Promise<{ id: string }> };
 export async function POST(request: Request, { params }: RouteContext) {
   const user = await getCurrentUser();
   if (!user) return NextResponse.json({ error: "Connexion requise." }, { status: 401 });
-  const rate = checkRateLimit(`build:report:${user.id}`, 10, 60 * 60 * 1000);
+  const rate = await checkRateLimit(`build:report:${user.id}`, 10, 60 * 60 * 1000);
   if (!rate.ok) {
     return NextResponse.json(
       { error: "Trop de signalements. Réessaie plus tard." },

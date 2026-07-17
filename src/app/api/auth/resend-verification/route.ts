@@ -13,7 +13,7 @@ export const dynamic = "force-dynamic";
 // n'envoie que pour un compte natif existant, non vérifié, non banni.
 export async function POST(request: Request) {
   const ip = getClientIp(request.headers);
-  if (!checkRateLimit(`auth:resend:${ip}`, 5, 60 * 60 * 1000).ok) {
+  if (!(await checkRateLimit(`auth:resend:${ip}`, 5, 60 * 60 * 1000)).ok) {
     return NextResponse.json(
       { error: "Trop de demandes. Réessaie plus tard." },
       { status: 429 },

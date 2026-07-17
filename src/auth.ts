@@ -4,10 +4,12 @@ import Google from "next-auth/providers/google";
 import Credentials from "next-auth/providers/credentials";
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import { eq, sql } from "drizzle-orm";
+import { createHash } from "node:crypto";
 import { getDb, schema } from "@/db";
 import { isConfiguredAdminDiscordId } from "@/lib/auth/admins";
 import { verifyPassword } from "@/lib/auth/password";
 import { loadAuthOverrides } from "@/lib/auth/config-store";
+import { checkRateLimit } from "@/lib/rate-limit";
 
 // Credentials OAuth pilotables via l'admin (BDD), avec fallback env. Lus au
 // démarrage (cold-start). Sûr : si la BDD est absente/KO → env uniquement.
@@ -29,10 +31,28 @@ const providers: NextAuthConfig["providers"] = [
       email: { label: "Email", type: "email" },
       password: { label: "Mot de passe", type: "password" },
     },
-    authorize: async (credentials) => {
+    authorize: async (credentials, request) => {
       const email = String(credentials?.email ?? "").trim().toLowerCase();
       const password = String(credentials?.password ?? "");
       if (!email || !password) return null;
+
+      // Anti-brute-force : plafond de tentatives par (IP + email), partagé entre
+      // instances via Postgres. Clé combinée pour ne pas verrouiller un compte
+      // légitime derrière une IP mutualisée (NAT/mobile). Dépassement → on
+      // renvoie null (indistinct d'un mauvais mot de passe côté attaquant).
+      const ip =
+        request?.headers?.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+        request?.headers?.get("x-real-ip") ||
+        "unknown";
+      // Journalisation A09 : on trace les tentatives sans PII en clair (email
+      // haché, jamais l'adresse). Va dans les logs Vercel → détection brute-force.
+      const emailHash = createHash("sha256").update(email).digest("hex").slice(0, 12);
+
+      const rate = await checkRateLimit(`auth:login:${ip}:${email}`, 10, 15 * 60 * 1000);
+      if (!rate.ok) {
+        console.warn("[auth] login rate-limited", { emailHash, ip });
+        return null;
+      }
 
       const [user] = await getDb()
         .select()
@@ -42,11 +62,18 @@ const providers: NextAuthConfig["providers"] = [
 
       // Refus si : pas de compte, pas de mot de passe défini (OAuth-only),
       // banni, ou email non vérifié (login natif bloqué avant vérification).
-      if (!user || !user.passwordHash || user.banned || !user.emailVerified) return null;
+      if (!user || !user.passwordHash || user.banned || !user.emailVerified) {
+        console.warn("[auth] login failed (compte inéligible/inexistant)", { emailHash, ip });
+        return null;
+      }
 
       const ok = await verifyPassword(password, user.passwordHash);
-      if (!ok) return null;
+      if (!ok) {
+        console.warn("[auth] login failed (mot de passe invalide)", { emailHash, ip, userId: user.id });
+        return null;
+      }
 
+      console.info("[auth] login ok", { userId: user.id });
       return { id: user.id, name: user.name, email: user.email, image: user.image };
     },
   }),
