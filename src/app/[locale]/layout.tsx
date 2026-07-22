@@ -6,9 +6,12 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { Providers } from "@/components/Providers";
 import StructuredData from "@/components/StructuredData";
+import { AppShell } from "@/components/site/AppShell";
+import { resolveShellBadges } from "@/lib/shell";
 import {
   SITE_CONFIG,
   CREATOR_INFO,
+  SITE_LAUNCH_YEAR,
 } from "@/lib/constants";
 import { locales } from "@/i18n/config";
 import type { Locale } from "@/i18n/config";
@@ -153,8 +156,10 @@ export async function generateMetadata(
       apple: "/assets/images/logo_optimized.png",
     },
     other: {
-      "theme-color": "#6366f1",
-      "msapplication-TileColor": "#6366f1",
+      // Doit correspondre au fond de page (`--color-ink`) : la barre du
+      // navigateur mobile se fondait dans un indigo hérité d'un template.
+      "theme-color": "#0a0a0b",
+      "msapplication-TileColor": "#0a0a0b",
       "application-name": SITE_CONFIG.name,
       "msapplication-config": "/browserconfig.xml",
     },
@@ -177,18 +182,35 @@ export default async function LocaleLayout({
   const messages = await getMessages();
   const htmlLang = localeToHtmlLang[locale] ?? "fr";
 
+  const now = new Date();
+  const currentYear = now.getFullYear();
+  const copyrightYears =
+    currentYear > SITE_LAUNCH_YEAR ? `${SITE_LAUNCH_YEAR}-${currentYear}` : `${SITE_LAUNCH_YEAR}`;
+
   return (
     <html lang={htmlLang} style={{ colorScheme: "dark" }}>
       <head>
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://www.google.com" />
+        {/* Restaure l'état replié de la barre latérale AVANT la première
+            peinture : sans ça, la page s'affiche déployée puis saute à 64px
+            après hydratation. Cf. `--dna-sidebar-w` dans globals.css. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(localStorage.getItem('dna:sidebar-collapsed')==='1'){document.documentElement.dataset.sidebar='collapsed'}}catch(e){}`,
+          }}
+        />
       </head>
       <body
         className={`${cinzel.variable} ${cormorant.variable} ${jost.variable} ${jetbrainsMono.variable} antialiased`}
       >
         <NextIntlClientProvider messages={messages}>
-          <Providers>{children}</Providers>
+          <Providers>
+            <AppShell badges={resolveShellBadges(now)} copyrightYears={copyrightYears}>
+              {children}
+            </AppShell>
+          </Providers>
           <StructuredData type="organization" />
         </NextIntlClientProvider>
       </body>

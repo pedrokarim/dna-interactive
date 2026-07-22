@@ -26,11 +26,11 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { Link } from "@/i18n/navigation";
-import { AppShell } from "@/components/site/AppShell";
 import { DnaCornerBrackets, DnaNouveau, DnaTag, DnaRibbon, cn } from "@/components/dna";
 import { EventCalendar } from "@/components/home/EventCalendar";
 import type { CalendarEvent } from "@/lib/events/calendar";
 import { useAppSettings } from "@/lib/settings/useAppSettings";
+import { CONTACT_INFO } from "@/lib/constants";
 
 export type HomeCode = { code: string; reward: string };
 export type HomeBuildCard = {
@@ -95,7 +95,7 @@ const TOOL_CARDS: ToolCard[] = [
 
 const COMMUNITY_CARDS: ToolCard[] = [
   { href: "/commissions", title: "Commissions", mono: "//COVERT.OPS.LIVE", desc: "Rotation en temps réel des commissions.", icon: ScrollText, bg: "/assets/worldview/worldview-4.webp", tint: "var(--color-pyro)" },
-  { href: "https://discord.gg", title: "Discord", mono: "//COMMUNITY.HALL", desc: "Rejoins la communauté et les créateurs.", icon: Bot, bg: "/assets/worldview/worldview-1.webp", tint: "var(--color-electro)", external: true },
+  { href: CONTACT_INFO.discord.url, title: "Discord", mono: "//COMMUNITY.HALL", desc: "Rejoins la communauté et les créateurs.", icon: Bot, bg: "/assets/worldview/worldview-1.webp", tint: "var(--color-electro)", external: true },
 ];
 
 /* --------------------------------------------------------------- primitives */
@@ -234,173 +234,171 @@ export default function HomeHubClient({ codes, builds, communityCount, stats, ca
     { icon: Layers, value: stats.builds, label: "Builds partagés" },
   ];
   return (
-    <AppShell breadcrumb="//COMMUNITY.HUB">
-      <div className="mx-auto w-full max-w-[1720px] px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
-        {/* =============================================== HERO (marque + sélection) */}
-        <section className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.75fr)]">
-          <div className="relative flex flex-col overflow-hidden rounded-sm border border-line/25 bg-panel/70 p-6">
-            <span aria-hidden className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-20" style={{ backgroundImage: "url(/assets/worldview/worldview-2.webp)" }} />
-            <span aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink via-panel/80 to-transparent" />
-            <DnaCornerBrackets size={18} />
-            <span aria-hidden className="dna-watermark absolute -right-6 bottom-2 text-7xl">DNA</span>
+    <div className="mx-auto w-full max-w-[1720px] px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
+      {/* =============================================== HERO (marque + sélection) */}
+      <section className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.75fr)]">
+        <div className="relative flex flex-col overflow-hidden rounded-sm border border-line/25 bg-panel/70 p-6">
+          <span aria-hidden className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-20" style={{ backgroundImage: "url(/assets/worldview/worldview-2.webp)" }} />
+          <span aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink via-panel/80 to-transparent" />
+          <DnaCornerBrackets size={18} />
+          <span aria-hidden className="dna-watermark absolute -right-6 bottom-2 text-7xl">DNA</span>
 
-            <div className="relative flex flex-col gap-4">
-              <span className="font-caps text-[0.6rem] uppercase tracking-[0.34em] text-muted">Duet Night Abyss</span>
-              <h1 className="bg-gradient-to-b from-[#f4ecd8] to-gold bg-clip-text font-display text-4xl font-semibold leading-[0.95] text-transparent sm:text-5xl">DNA Interactive</h1>
-              <div className="flex items-center gap-1.5" aria-hidden>
-                {[0, 1, 2, 3, 4, 5].map((i) => (
-                  <span key={i} className={cn("h-2.5 w-2.5 rotate-45 border", i < 3 ? "border-gold bg-gold-bright" : "border-line/30")} />
-                ))}
-              </div>
-              <p className="max-w-sm text-sm leading-relaxed text-parch/75">Le hub communautaire pour Duet Night Abyss : carte, base de données, builder et outils, réunis au même endroit.</p>
-              <div className="flex flex-wrap gap-2.5">
-                <Link href="/map" className={CTA_GOLD}><Compass className="h-4 w-4" />Explorer les outils</Link>
-                <a href="https://discord.gg" target="_blank" rel="noopener noreferrer" className={CTA_GHOST}><Bot className="h-4 w-4" />Discord</a>
-              </div>
-              <div className="relative mt-2 flex items-center gap-4 rounded-sm border border-line/20 bg-ink/50 p-4">
-                <DnaCornerBrackets size={10} color="var(--color-gold-deep)" />
-                <Search className="h-5 w-5 shrink-0 text-gold" />
-                <span className="min-w-0">
-                  <span className="block font-caps text-[0.55rem] uppercase tracking-[0.22em] text-muted">Communauté · builds partagés</span>
-                  <span className="block font-display text-3xl font-semibold tabular-nums text-gold-bright">{communityCount}</span>
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex flex-col gap-4">
-            <div className="flex items-end justify-between gap-3">
-              <div>
-                <h2 className="font-display text-2xl text-parch">Sélection</h2>
-                <span className="font-mono text-[0.7rem] text-muted">//FEATURED.THIS.WEEK</span>
-              </div>
-              <Link href="/changelog" className={cn(CTA_GHOST, "px-4 py-2 text-xs")}><Sparkles className="h-4 w-4" />Nouveautés</Link>
-            </div>
-
-            <Link href="/map" className="group relative flex min-h-[230px] flex-col justify-between overflow-hidden rounded-sm border border-gold/70 bg-panel/70 p-6 shadow-[0_0_40px_-8px_rgba(194,168,106,0.45)] transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-[0_0_60px_-6px_rgba(194,168,106,0.6)]">
-              <span aria-hidden className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-45 transition-transform duration-700 group-hover:scale-[1.05]" style={{ backgroundImage: "url(/assets/worldview/worldview-6.webp)" }} />
-              <span aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-r from-ink via-ink/70 to-transparent" />
-              <span aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-ink to-transparent" />
-              <DnaCornerBrackets size={20} color="var(--color-gold-bright)" />
-              <div className="relative flex items-center gap-2">
-                <DnaTag>À la une</DnaTag>
-                <span className="rounded-sm border border-hydro/40 bg-hydro/10 px-1.5 py-0.5 font-caps text-[0.5rem] uppercase tracking-[0.16em] text-hydro">Bêta</span>
-              </div>
-              <div className="relative">
-                <h3 className="font-display text-3xl text-parch group-hover:text-gold-bright sm:text-4xl">Carte interactive</h3>
-                <span className="font-mono text-xs text-muted">//REGION.SURVEY.MAP</span>
-              </div>
-              <div className="relative flex items-center justify-between gap-3">
-                <p className="max-w-sm text-sm text-parch/75">Marqueurs, filtres et zones — toute la carte du monde annotée par la communauté.</p>
-                <span className="flex shrink-0 items-center gap-2 rounded-sm border border-gold bg-gradient-to-b from-gold-deep/40 to-ink/70 px-4 py-2 font-caps text-xs uppercase tracking-[0.14em] text-gold-bright dna-shine">Ouvrir <ArrowRight className="h-4 w-4" /></span>
-              </div>
-            </Link>
-
-            <div className="grid gap-4 sm:grid-cols-2">
-              <ToolTile card={{ href: "/builder", title: "Builder", mono: "//BUILD.FORGE", desc: "Armes, Demon Wedges et consonances.", icon: Hammer, badge: "Nouveau", bg: "/assets/worldview/worldview-2.webp", tint: "var(--color-electro)" }} />
-              {commissionsVisible ? (
-                <ToolTile card={{ href: "/commissions", title: "Commissions", mono: "//COVERT.OPS.LIVE", desc: "Rotation en temps réel des commissions.", icon: ScrollText, bg: "/assets/worldview/worldview-4.webp", tint: "var(--color-pyro)" }} />
-              ) : null}
-            </div>
-          </div>
-        </section>
-
-        {/* =============================================== BASE DE DONNÉES */}
-        <section className="mt-10 flex flex-col gap-4">
-          <SectionRibbon label="Base de données" index="03" />
-          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-            {DATABASE_CARDS.map((c) => (
-              <ToolTile key={c.href} card={c} />
-            ))}
-          </div>
-        </section>
-
-        {/* =============================================== OUTILS */}
-        <section className="mt-10 flex flex-col gap-4">
-          <SectionRibbon label="Outils" index="02" />
-          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-            {TOOL_CARDS.map((c) => (
-              <ToolTile key={c.href} card={c} />
-            ))}
-          </div>
-        </section>
-
-        {/* =============================================== COMMUNAUTÉ */}
-        <section className="mt-10 flex flex-col gap-4">
-          <SectionRibbon label="Communauté" index="01" />
-          <ToolTile
-            className="min-h-[104px]"
-            card={{ href: "/builds", title: "Builds communauté", mono: "//SHARED.LOADOUTS", desc: "Explore, vote et classe les builds partagés par les joueurs.", icon: Layers, badge: "Nouveau", bg: "/assets/worldview/worldview-7.webp", tint: "var(--color-anemo)" }}
-          />
-          <div className="grid gap-4 sm:grid-cols-2">
-            {communityCards.map((c) => (
-              <ToolTile key={c.href} card={c} />
-            ))}
-          </div>
-        </section>
-
-        {/* =============================================== CODES CADEAUX */}
-        {codes.length > 0 ? (
-          <section className="mt-10 flex flex-col gap-4">
-            <SectionRibbon
-              label="Codes cadeaux"
-              action={<Link href="/codes" className="font-caps text-[0.6rem] uppercase tracking-[0.16em] text-gold hover:text-gold-bright">Tous les codes →</Link>}
-            />
-            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-              {codes.map((c) => (
-                <CodeCard key={c.code} code={c.code} reward={c.reward} />
+          <div className="relative flex flex-col gap-4">
+            <span className="font-caps text-[0.6rem] uppercase tracking-[0.34em] text-muted">Duet Night Abyss</span>
+            <h1 className="bg-gradient-to-b from-[#f4ecd8] to-gold bg-clip-text font-display text-4xl font-semibold leading-[0.95] text-transparent sm:text-5xl">DNA Interactive</h1>
+            <div className="flex items-center gap-1.5" aria-hidden>
+              {[0, 1, 2, 3, 4, 5].map((i) => (
+                <span key={i} className={cn("h-2.5 w-2.5 rotate-45 border", i < 3 ? "border-gold bg-gold-bright" : "border-line/30")} />
               ))}
             </div>
-          </section>
-        ) : null}
+            <p className="max-w-sm text-sm leading-relaxed text-parch/75">Le hub communautaire pour Duet Night Abyss : carte, base de données, builder et outils, réunis au même endroit.</p>
+            <div className="flex flex-wrap gap-2.5">
+              <Link href="/map" className={CTA_GOLD}><Compass className="h-4 w-4" />Explorer les outils</Link>
+              <a href={CONTACT_INFO.discord.url} target="_blank" rel="noopener noreferrer" className={CTA_GHOST}><Bot className="h-4 w-4" />Discord</a>
+            </div>
+            <div className="relative mt-2 flex items-center gap-4 rounded-sm border border-line/20 bg-ink/50 p-4">
+              <DnaCornerBrackets size={10} color="var(--color-gold-deep)" />
+              <Search className="h-5 w-5 shrink-0 text-gold" />
+              <span className="min-w-0">
+                <span className="block font-caps text-[0.55rem] uppercase tracking-[0.22em] text-muted">Communauté · builds partagés</span>
+                <span className="block font-display text-3xl font-semibold tabular-nums text-gold-bright">{communityCount}</span>
+              </span>
+            </div>
+          </div>
+        </div>
 
-        {/* =============================================== CALENDRIER DES ÉVÉNEMENTS */}
+        <div className="flex flex-col gap-4">
+          <div className="flex items-end justify-between gap-3">
+            <div>
+              <h2 className="font-display text-2xl text-parch">Sélection</h2>
+              <span className="font-mono text-[0.7rem] text-muted">//FEATURED.THIS.WEEK</span>
+            </div>
+            <Link href="/changelog" className={cn(CTA_GHOST, "px-4 py-2 text-xs")}><Sparkles className="h-4 w-4" />Nouveautés</Link>
+          </div>
+
+          <Link href="/map" className="group relative flex min-h-[230px] flex-col justify-between overflow-hidden rounded-sm border border-gold/70 bg-panel/70 p-6 shadow-[0_0_40px_-8px_rgba(194,168,106,0.45)] transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-[0_0_60px_-6px_rgba(194,168,106,0.6)]">
+            <span aria-hidden className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-45 transition-transform duration-700 group-hover:scale-[1.05]" style={{ backgroundImage: "url(/assets/worldview/worldview-6.webp)" }} />
+            <span aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-r from-ink via-ink/70 to-transparent" />
+            <span aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-ink to-transparent" />
+            <DnaCornerBrackets size={20} color="var(--color-gold-bright)" />
+            <div className="relative flex items-center gap-2">
+              <DnaTag>À la une</DnaTag>
+              <span className="rounded-sm border border-hydro/40 bg-hydro/10 px-1.5 py-0.5 font-caps text-[0.5rem] uppercase tracking-[0.16em] text-hydro">Bêta</span>
+            </div>
+            <div className="relative">
+              <h3 className="font-display text-3xl text-parch group-hover:text-gold-bright sm:text-4xl">Carte interactive</h3>
+              <span className="font-mono text-xs text-muted">//REGION.SURVEY.MAP</span>
+            </div>
+            <div className="relative flex items-center justify-between gap-3">
+              <p className="max-w-sm text-sm text-parch/75">Marqueurs, filtres et zones — toute la carte du monde annotée par la communauté.</p>
+              <span className="flex shrink-0 items-center gap-2 rounded-sm border border-gold bg-gradient-to-b from-gold-deep/40 to-ink/70 px-4 py-2 font-caps text-xs uppercase tracking-[0.14em] text-gold-bright dna-shine">Ouvrir <ArrowRight className="h-4 w-4" /></span>
+            </div>
+          </Link>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            <ToolTile card={{ href: "/builder", title: "Builder", mono: "//BUILD.FORGE", desc: "Armes, Demon Wedges et consonances.", icon: Hammer, badge: "Nouveau", bg: "/assets/worldview/worldview-2.webp", tint: "var(--color-electro)" }} />
+            {commissionsVisible ? (
+              <ToolTile card={{ href: "/commissions", title: "Commissions", mono: "//COVERT.OPS.LIVE", desc: "Rotation en temps réel des commissions.", icon: ScrollText, bg: "/assets/worldview/worldview-4.webp", tint: "var(--color-pyro)" }} />
+            ) : null}
+          </div>
+        </div>
+      </section>
+
+      {/* =============================================== BASE DE DONNÉES */}
+      <section className="mt-10 flex flex-col gap-4">
+        <SectionRibbon label="Base de données" index="03" />
+        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          {DATABASE_CARDS.map((c) => (
+            <ToolTile key={c.href} card={c} />
+          ))}
+        </div>
+      </section>
+
+      {/* =============================================== OUTILS */}
+      <section className="mt-10 flex flex-col gap-4">
+        <SectionRibbon label="Outils" index="02" />
+        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          {TOOL_CARDS.map((c) => (
+            <ToolTile key={c.href} card={c} />
+          ))}
+        </div>
+      </section>
+
+      {/* =============================================== COMMUNAUTÉ */}
+      <section className="mt-10 flex flex-col gap-4">
+        <SectionRibbon label="Communauté" index="01" />
+        <ToolTile
+          className="min-h-[104px]"
+          card={{ href: "/builds", title: "Builds communauté", mono: "//SHARED.LOADOUTS", desc: "Explore, vote et classe les builds partagés par les joueurs.", icon: Layers, badge: "Nouveau", bg: "/assets/worldview/worldview-7.webp", tint: "var(--color-anemo)" }}
+        />
+        <div className="grid gap-4 sm:grid-cols-2">
+          {communityCards.map((c) => (
+            <ToolTile key={c.href} card={c} />
+          ))}
+        </div>
+      </section>
+
+      {/* =============================================== CODES CADEAUX */}
+      {codes.length > 0 ? (
         <section className="mt-10 flex flex-col gap-4">
           <SectionRibbon
-            label="Calendrier des événements"
-            action={
-              <span className="inline-flex items-center gap-1.5 font-caps text-[0.6rem] uppercase tracking-[0.16em] text-muted">
-                <Calendar className="h-3.5 w-3.5" />En cours
-              </span>
-            }
+            label="Codes cadeaux"
+            action={<Link href="/codes" className="font-caps text-[0.6rem] uppercase tracking-[0.16em] text-gold hover:text-gold-bright">Tous les codes →</Link>}
           />
-          <EventCalendar events={calendarEvents} refToday={calendarToday} />
+          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+            {codes.map((c) => (
+              <CodeCard key={c.code} code={c.code} reward={c.reward} />
+            ))}
+          </div>
         </section>
+      ) : null}
 
-        {/* =============================================== BUILDS DE PERSONNAGES */}
-        {builds.length > 0 ? (
-          <section className="mt-10 flex flex-col gap-4">
-            <SectionRibbon
-              label="Builds de personnages"
-              action={<Link href="/builds" className="font-caps text-[0.6rem] uppercase tracking-[0.16em] text-gold hover:text-gold-bright">Voir tout →</Link>}
-            />
-            <div className="-mx-1 flex gap-4 overflow-x-auto px-1 pb-2 custom-scrollbar">
-              {builds.map((b) => (
-                <BuildShowcaseCard key={b.id} build={b} />
-              ))}
+      {/* =============================================== CALENDRIER DES ÉVÉNEMENTS */}
+      <section className="mt-10 flex flex-col gap-4">
+        <SectionRibbon
+          label="Calendrier des événements"
+          action={
+            <span className="inline-flex items-center gap-1.5 font-caps text-[0.6rem] uppercase tracking-[0.16em] text-muted">
+              <Calendar className="h-3.5 w-3.5" />En cours
+            </span>
+          }
+        />
+        <EventCalendar events={calendarEvents} refToday={calendarToday} />
+      </section>
+
+      {/* =============================================== BUILDS DE PERSONNAGES */}
+      {builds.length > 0 ? (
+        <section className="mt-10 flex flex-col gap-4">
+          <SectionRibbon
+            label="Builds de personnages"
+            action={<Link href="/builds" className="font-caps text-[0.6rem] uppercase tracking-[0.16em] text-gold hover:text-gold-bright">Voir tout →</Link>}
+          />
+          <div className="-mx-1 flex gap-4 overflow-x-auto px-1 pb-2 custom-scrollbar">
+            {builds.map((b) => (
+              <BuildShowcaseCard key={b.id} build={b} />
+            ))}
+          </div>
+        </section>
+      ) : null}
+
+      {/* =============================================== bandeau stats rapide */}
+      <section className="mt-10 grid gap-4 sm:grid-cols-3">
+        {STATS.map((s) => {
+          const Icon = s.icon;
+          return (
+            <div key={s.label} className="relative flex items-center gap-4 rounded-sm border border-line/20 bg-panel/60 p-4">
+              <DnaCornerBrackets size={10} />
+              <span className="flex h-10 w-10 items-center justify-center rounded-sm border border-gold/30 bg-gold/8 text-gold">
+                <Icon className="h-5 w-5" />
+              </span>
+              <span>
+                <span className="block font-display text-2xl font-semibold tabular-nums text-parch">{s.value}</span>
+                <span className="block font-caps text-[0.55rem] uppercase tracking-[0.2em] text-muted">{s.label}</span>
+              </span>
             </div>
-          </section>
-        ) : null}
-
-        {/* =============================================== bandeau stats rapide */}
-        <section className="mt-10 grid gap-4 sm:grid-cols-3">
-          {STATS.map((s) => {
-            const Icon = s.icon;
-            return (
-              <div key={s.label} className="relative flex items-center gap-4 rounded-sm border border-line/20 bg-panel/60 p-4">
-                <DnaCornerBrackets size={10} />
-                <span className="flex h-10 w-10 items-center justify-center rounded-sm border border-gold/30 bg-gold/8 text-gold">
-                  <Icon className="h-5 w-5" />
-                </span>
-                <span>
-                  <span className="block font-display text-2xl font-semibold tabular-nums text-parch">{s.value}</span>
-                  <span className="block font-caps text-[0.55rem] uppercase tracking-[0.2em] text-muted">{s.label}</span>
-                </span>
-              </div>
-            );
-          })}
-        </section>
-      </div>
-    </AppShell>
+          );
+        })}
+      </section>
+    </div>
   );
 }

@@ -39,7 +39,10 @@
     "changelog": "更新日誌",
     "commissions": "委託任務",
     "features": "功能",
-    "builds": "社群配裝"
+    "builds": "社群配裝",
+    "calendar": "行事曆",
+    "discord": "Discord",
+    "twitter": "Twitter / X"
   },
   "common": {
     "close": "關閉",
@@ -778,7 +781,16 @@
     "statBuilds": "已發佈配裝",
     "statLikes": "獲得讚數",
     "statViews": "瀏覽數",
-    "loginCtaAction": "登入"
+    "loginCtaAction": "登入",
+    "signIn": "登入",
+    "menuLabel": "帳號選單",
+    "guest": "訪客",
+    "traveler": "旅人",
+    "member": "會員",
+    "administrator": "管理員",
+    "signOut": "登出",
+    "levelLine": "Lv.{level} · {title}",
+    "levelProgress": "{xp} XP · 下一等級 {next} XP"
   },
   "privacy": {
     "metaTitle": "隱私與條款 - DNA Interactive",
@@ -861,5 +873,25 @@
     "loginErrorUnverified": "電子郵件尚未驗證。請查看收件匣或重新寄送連結。",
     "resendVerification": "重新寄送驗證連結",
     "resendSent": "已重新寄送驗證連結，請查看收件匣。"
+  },
+  "shell": {
+    "sidebarLabel": "主導覽",
+    "navSections": "區塊",
+    "navSite": "網站",
+    "navCommunity": "社群",
+    "openMenu": "開啟選單",
+    "closeMenu": "關閉選單",
+    "expandSidebar": "展開側邊欄",
+    "collapseSidebar": "收合側邊欄",
+    "skipToContent": "跳至主要內容",
+    "breadcrumbLabel": "目前位置",
+    "badgeNew": "新增",
+    "badgeBeta": "測試版",
+    "newTab": "（在新分頁開啟）",
+    "gameVersion": "DNA v{version}",
+    "tagline": "非官方社群攻略網站 — Duet Night Abyss",
+    "copyright": "© {years}",
+    "privacy": "隱私權",
+    "language": "語言：{language}"
   }
 }

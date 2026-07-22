@@ -39,7 +39,10 @@
     "changelog": "업데이트 내역",
     "commissions": "커미션",
     "features": "기능",
-    "builds": "커뮤니티 빌드"
+    "builds": "커뮤니티 빌드",
+    "calendar": "캘린더",
+    "discord": "Discord",
+    "twitter": "Twitter / X"
   },
   "common": {
     "close": "닫기",
@@ -778,7 +781,16 @@
     "statBuilds": "게시한 빌드",
     "statLikes": "받은 좋아요",
     "statViews": "조회수",
-    "loginCtaAction": "로그인"
+    "loginCtaAction": "로그인",
+    "signIn": "로그인",
+    "menuLabel": "계정 메뉴",
+    "guest": "게스트",
+    "traveler": "여행자",
+    "member": "회원",
+    "administrator": "관리자",
+    "signOut": "로그아웃",
+    "levelLine": "Lv.{level} · {title}",
+    "levelProgress": "{xp} XP · 다음 레벨 {next} XP"
   },
   "privacy": {
     "metaTitle": "개인정보 및 약관 - DNA Interactive",
@@ -861,5 +873,25 @@
     "loginErrorUnverified": "이메일이 미인증 상태입니다. 받은편지함을 확인하거나 링크를 다시 보내세요.",
     "resendVerification": "인증 링크 다시 보내기",
     "resendSent": "인증 링크를 다시 보냈습니다. 받은편지함을 확인하세요."
+  },
+  "shell": {
+    "sidebarLabel": "주요 탐색",
+    "navSections": "섹션",
+    "navSite": "사이트",
+    "navCommunity": "커뮤니티",
+    "openMenu": "메뉴 열기",
+    "closeMenu": "메뉴 닫기",
+    "expandSidebar": "사이드바 펼치기",
+    "collapseSidebar": "사이드바 접기",
+    "skipToContent": "본문으로 건너뛰기",
+    "breadcrumbLabel": "현재 위치",
+    "badgeNew": "신규",
+    "badgeBeta": "베타",
+    "newTab": "(새 탭에서 열림)",
+    "gameVersion": "DNA v{version}",
+    "tagline": "비공식 커뮤니티 정보 사이트 — Duet Night Abyss",
+    "copyright": "© {years}",
+    "privacy": "개인정보",
+    "language": "언어: {language}"
   }
 }

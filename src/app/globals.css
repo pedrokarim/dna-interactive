@@ -98,6 +98,51 @@ body:has(.map-page) .grecaptcha-badge {
 }
 
 /* ===========================================================================
+   Coquille applicative (AppShell) — repli de la barre latérale.
+
+   L'état replié est porté par `data-sidebar="collapsed"` sur <html>, posé par
+   un script inline AVANT le premier rendu (cf. app/[locale]/layout.tsx). La
+   largeur et la forme des liens sont donc justes dès la première peinture :
+   plus de saut 256px → 64px après hydratation. React ne sert qu'à la
+   sémantique (aria-expanded, title) et à réécrire l'attribut au clic.
+   =========================================================================== */
+
+:root { --dna-sidebar-w: 16rem; }
+
+/* Blocs alternatifs : un seul des deux est rendu selon l'état de la barre. */
+.dna-when-collapsed { display: none; }
+
+@media (min-width: 1024px) {
+  :root[data-sidebar="collapsed"] { --dna-sidebar-w: 4rem; }
+
+  :root[data-sidebar="collapsed"] .dna-when-expanded { display: none; }
+  :root[data-sidebar="collapsed"] .dna-when-collapsed { display: flex; }
+
+  /* Liens : pastille carrée centrée sur l'icône. */
+  :root[data-sidebar="collapsed"] .dna-sidebar-link {
+    height: 2.5rem;
+    width: 2.5rem;
+    justify-content: center;
+    gap: 0;
+    padding: 0;
+  }
+
+  /* Libellés masqués visuellement mais TOUJOURS exposés aux lecteurs d'écran :
+     le lien conserve un nom accessible en mode replié (`display:none` le
+     priverait de nom). */
+  :root[data-sidebar="collapsed"] .dna-sidebar-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
+/* ===========================================================================
    DNA UI — primitives ornementales (clip-paths, animations, frise, watermark)
    que Tailwind ne fournit pas. Consommées par les composants src/components/dna.
    =========================================================================== */

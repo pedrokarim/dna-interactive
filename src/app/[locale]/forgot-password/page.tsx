@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { AppShell } from "@/components/site/AppShell";
 import { AuthCard } from "@/components/auth/AuthCard";
 import { ForgotPasswordForm } from "@/components/auth/ForgotPasswordForm";
 
@@ -15,19 +14,17 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function ForgotPasswordPage() {
   const t = await getTranslations("auth");
   return (
-    <AppShell breadcrumb="//ACCOUNT.RESET">
-      <AuthCard
-        kicker={t("forgotKicker")}
-        title={t("forgotTitle")}
-        subtitle={t("forgotSubtitle")}
-        footer={
-          <Link href="/login" className="text-gold hover:text-gold-bright">
-            {t("backToLogin")}
-          </Link>
-        }
-      >
-        <ForgotPasswordForm />
-      </AuthCard>
-    </AppShell>
+    <AuthCard
+      kicker={t("forgotKicker")}
+      title={t("forgotTitle")}
+      subtitle={t("forgotSubtitle")}
+      footer={
+        <Link href="/login" className="text-gold hover:text-gold-bright">
+          {t("backToLogin")}
+        </Link>
+      }
+    >
+      <ForgotPasswordForm />
+    </AuthCard>
   );
 }

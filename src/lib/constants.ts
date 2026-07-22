@@ -95,16 +95,32 @@ export const ASSETS_PATHS = {
 export const NAVIGATION = {
   home: "/",
   map: "/map",
+  calendar: "/calendar",
   items: "/items",
   characters: "/characters",
   builder: "/builder",
   builds: "/builds",
   commissions: "/commissions",
   codes: "/codes",
+  features: "/features",
+  changelog: "/changelog",
   about: "/about",
   support: "/support",
   contact: "/contact",
+  privacy: "/confidentialite",
+  profile: "/profile",
+  login: "/login",
+  admin: "/admin",
 } as const;
+
+/**
+ * Version du jeu couverte par le site (pastille de la topbar). À bumper à
+ * chaque patch — c'est l'unique endroit où elle est écrite.
+ */
+export const GAME_VERSION = "1.4";
+
+/** Année d'ouverture du site, pour le copyright (l'année de fin est calculée). */
+export const SITE_LAUNCH_YEAR = 2025;
 
 // Liens de navigation principaux
 export const NAV_LINKS = [

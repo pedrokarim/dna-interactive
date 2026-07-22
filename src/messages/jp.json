@@ -39,7 +39,10 @@
     "changelog": "更新履歴",
     "commissions": "コミッション",
     "features": "機能",
-    "builds": "コミュニティビルド"
+    "builds": "コミュニティビルド",
+    "calendar": "カレンダー",
+    "discord": "Discord",
+    "twitter": "Twitter / X"
   },
   "common": {
     "close": "閉じる",
@@ -778,7 +781,16 @@
     "statBuilds": "投稿ビルド",
     "statLikes": "獲得したいいね",
     "statViews": "閲覧数",
-    "loginCtaAction": "ログイン"
+    "loginCtaAction": "ログイン",
+    "signIn": "ログイン",
+    "menuLabel": "アカウントメニュー",
+    "guest": "ゲスト",
+    "traveler": "旅人",
+    "member": "メンバー",
+    "administrator": "管理者",
+    "signOut": "ログアウト",
+    "levelLine": "Lv.{level} · {title}",
+    "levelProgress": "{xp} XP · 次のレベルは {next} XP"
   },
   "privacy": {
     "metaTitle": "プライバシーと利用規約 - DNA Interactive",
@@ -861,5 +873,25 @@
     "loginErrorUnverified": "メールが未確認です。受信箱を確認するか、リンクを再送してください。",
     "resendVerification": "確認リンクを再送する",
     "resendSent": "確認リンクを再送しました。受信箱をご確認ください。"
+  },
+  "shell": {
+    "sidebarLabel": "メインナビゲーション",
+    "navSections": "セクション",
+    "navSite": "サイト情報",
+    "navCommunity": "コミュニティ",
+    "openMenu": "メニューを開く",
+    "closeMenu": "メニューを閉じる",
+    "expandSidebar": "サイドバーを展開",
+    "collapseSidebar": "サイドバーを折りたたむ",
+    "skipToContent": "メインコンテンツへスキップ",
+    "breadcrumbLabel": "現在地",
+    "badgeNew": "新着",
+    "badgeBeta": "ベータ",
+    "newTab": "（新しいタブで開きます）",
+    "gameVersion": "DNA v{version}",
+    "tagline": "非公式コミュニティ攻略サイト — Duet Night Abyss",
+    "copyright": "© {years}",
+    "privacy": "プライバシー",
+    "language": "言語：{language}"
   }
 }

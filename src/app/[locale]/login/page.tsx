@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { Link, redirect } from "@/i18n/navigation";
-import { AppShell } from "@/components/site/AppShell";
 import { AuthCard } from "@/components/auth/AuthCard";
 import { LoginForm } from "@/components/auth/LoginForm";
 import { getCurrentUser } from "@/lib/auth/session";
@@ -23,22 +22,20 @@ export default async function LoginPage({ params }: Props) {
 
   const t = await getTranslations("auth");
   return (
-    <AppShell breadcrumb="//ACCOUNT.LOGIN">
-      <AuthCard
-        kicker={t("loginKicker")}
-        title={t("loginTitle")}
-        subtitle={t("loginSubtitle")}
-        footer={
-          <>
-            {t("noAccount")}{" "}
-            <Link href="/signup" className="text-gold hover:text-gold-bright">
-              {t("signupLink")}
-            </Link>
-          </>
-        }
-      >
-        <LoginForm googleEnabled={isGoogleEnabled()} callbackUrl={`/${locale}`} />
-      </AuthCard>
-    </AppShell>
+    <AuthCard
+      kicker={t("loginKicker")}
+      title={t("loginTitle")}
+      subtitle={t("loginSubtitle")}
+      footer={
+        <>
+          {t("noAccount")}{" "}
+          <Link href="/signup" className="text-gold hover:text-gold-bright">
+            {t("signupLink")}
+          </Link>
+        </>
+      }
+    >
+      <LoginForm googleEnabled={isGoogleEnabled()} callbackUrl={`/${locale}`} />
+    </AuthCard>
   );
 }

@@ -39,7 +39,10 @@
     "changelog": "Änderungsprotokoll",
     "commissions": "Commissions",
     "features": "Funktionen",
-    "builds": "Community-Builds"
+    "builds": "Community-Builds",
+    "calendar": "Kalender",
+    "discord": "Discord",
+    "twitter": "Twitter / X"
   },
   "common": {
     "close": "Schließen",
@@ -778,7 +781,16 @@
     "statBuilds": "Veröffentlichte Builds",
     "statLikes": "Erhaltene Likes",
     "statViews": "Aufrufe",
-    "loginCtaAction": "Anmelden"
+    "loginCtaAction": "Anmelden",
+    "signIn": "Anmelden",
+    "menuLabel": "Kontomenü",
+    "guest": "Gast",
+    "traveler": "Reisender",
+    "member": "Mitglied",
+    "administrator": "Administrator",
+    "signOut": "Abmelden",
+    "levelLine": "Stufe {level} · {title}",
+    "levelProgress": "{xp} XP · nächste Stufe bei {next} XP"
   },
   "privacy": {
     "metaTitle": "Datenschutz & Bedingungen - DNA Interactive",
@@ -861,5 +873,25 @@
     "loginErrorUnverified": "E-Mail nicht bestätigt. Prüfe dein Postfach oder sende den Link erneut.",
     "resendVerification": "Bestätigungslink erneut senden",
     "resendSent": "Bestätigungslink erneut gesendet. Prüfe dein Postfach."
+  },
+  "shell": {
+    "sidebarLabel": "Hauptnavigation",
+    "navSections": "Bereiche",
+    "navSite": "Die Website",
+    "navCommunity": "Community",
+    "openMenu": "Menü öffnen",
+    "closeMenu": "Menü schließen",
+    "expandSidebar": "Seitenleiste ausklappen",
+    "collapseSidebar": "Seitenleiste einklappen",
+    "skipToContent": "Zum Hauptinhalt springen",
+    "breadcrumbLabel": "Position",
+    "badgeNew": "Neu",
+    "badgeBeta": "Beta",
+    "newTab": "(öffnet in neuem Tab)",
+    "gameVersion": "DNA v{version}",
+    "tagline": "Inoffizieller Community-Begleiter — Duet Night Abyss",
+    "copyright": "© {years}",
+    "privacy": "Datenschutz",
+    "language": "Sprache: {language}"
   }
 }

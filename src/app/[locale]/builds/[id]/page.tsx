@@ -8,7 +8,6 @@ import { isMissingTableError } from "@/lib/db-errors";
 import { checkRateLimit } from "@/lib/rate-limit";
 import { getVoterKey } from "@/lib/community-builds/vote-identity";
 import { getCharacterById } from "@/lib/characters/catalog";
-import { AppShell } from "@/components/site/AppShell";
 import { BuildPageClient } from "@/components/community-builds/BuildPageClient";
 import type { CommunityBuildPayload } from "@/lib/community-builds/validation";
 
@@ -141,15 +140,13 @@ export default async function CommunityBuildPage({ params }: RouteParams) {
   const characterElement = build.element ?? character.element.key;
 
   return (
-    <AppShell breadcrumb="//SHARED.LOADOUTS">
-      <section className="mx-auto w-full max-w-[1720px] px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
-        <BuildPageClient
-          build={build}
-          character={character}
-          characterElement={characterElement}
-          lang={locale.toUpperCase()}
-        />
-      </section>
-    </AppShell>
+    <section className="mx-auto w-full max-w-[1720px] px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
+      <BuildPageClient
+        build={build}
+        character={character}
+        characterElement={characterElement}
+        lang={locale.toUpperCase()}
+      />
+    </section>
   );
 }

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { eq } from "drizzle-orm";
 import { CheckCircle2, XCircle } from "lucide-react";
-import { AppShell } from "@/components/site/AppShell";
 import { DnaPanel, DnaSectionLabel } from "@/components/dna";
 import { AuthLinkButton } from "@/components/auth/AuthCard";
 import { getDb, schema } from "@/db";
@@ -53,33 +52,31 @@ export default async function VerifyEmailPage({ params, searchParams }: Props) {
   const ok = await verify(token, locale);
 
   return (
-    <AppShell breadcrumb="//ACCOUNT.VERIFY">
-      <section className="container mx-auto px-4 py-12 md:px-6 md:py-16">
-        <div className="mx-auto max-w-md">
-          <DnaSectionLabel>{t("verifyKicker")}</DnaSectionLabel>
-          <DnaPanel className="mt-4 p-6 text-center">
-            {ok ? (
-              <>
-                <CheckCircle2 className="mx-auto h-12 w-12 text-gold" />
-                <h1 className="mt-4 font-display text-2xl text-parch">{t("verifyOkTitle")}</h1>
-                <p className="mt-2 font-sans text-sm text-muted">{t("verifyOkBody")}</p>
-                <div className="mt-6">
-                  <AuthLinkButton href="/login">{t("verifyOkCta")}</AuthLinkButton>
-                </div>
-              </>
-            ) : (
-              <>
-                <XCircle className="mx-auto h-12 w-12 text-crimson-bright" />
-                <h1 className="mt-4 font-display text-2xl text-parch">{t("verifyFailTitle")}</h1>
-                <p className="mt-2 font-sans text-sm text-muted">{t("verifyFailBody")}</p>
-                <div className="mt-6">
-                  <AuthLinkButton href="/signup">{t("verifyFailCta")}</AuthLinkButton>
-                </div>
-              </>
-            )}
-          </DnaPanel>
-        </div>
-      </section>
-    </AppShell>
+    <section className="container mx-auto px-4 py-12 md:px-6 md:py-16">
+      <div className="mx-auto max-w-md">
+        <DnaSectionLabel>{t("verifyKicker")}</DnaSectionLabel>
+        <DnaPanel className="mt-4 p-6 text-center">
+          {ok ? (
+            <>
+              <CheckCircle2 className="mx-auto h-12 w-12 text-gold" />
+              <h1 className="mt-4 font-display text-2xl text-parch">{t("verifyOkTitle")}</h1>
+              <p className="mt-2 font-sans text-sm text-muted">{t("verifyOkBody")}</p>
+              <div className="mt-6">
+                <AuthLinkButton href="/login">{t("verifyOkCta")}</AuthLinkButton>
+              </div>
+            </>
+          ) : (
+            <>
+              <XCircle className="mx-auto h-12 w-12 text-crimson-bright" />
+              <h1 className="mt-4 font-display text-2xl text-parch">{t("verifyFailTitle")}</h1>
+              <p className="mt-2 font-sans text-sm text-muted">{t("verifyFailBody")}</p>
+              <div className="mt-6">
+                <AuthLinkButton href="/signup">{t("verifyFailCta")}</AuthLinkButton>
+              </div>
+            </>
+          )}
+        </DnaPanel>
+      </div>
+    </section>
   );
 }
