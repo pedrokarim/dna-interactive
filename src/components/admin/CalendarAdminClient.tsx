@@ -217,14 +217,15 @@ export function CalendarAdminClient() {
               <input type="date" className={inputClass} value={form.endDate} onChange={(e) => set("endDate", e.target.value)} />
             </div>
             <div className="sm:col-span-2">
-              <label className={labelClass}>Image (URL ou /assets/…)</label>
-              <div className="flex items-center gap-3">
-                <input className={inputClass} value={form.image} onChange={(e) => set("image", e.target.value)} placeholder="https://… ou /assets/…" />
-                {form.image ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img src={form.image} alt="" className="h-10 w-10 shrink-0 rounded-sm border border-white/15 object-cover" />
-                ) : null}
-              </div>
+              <label className={labelClass}>Bannière (URL ou /assets/… — paysage de préférence)</label>
+              <input className={inputClass} value={form.image} onChange={(e) => set("image", e.target.value)} placeholder="https://… ou /assets/events/…" />
+              {form.image ? (
+                <div className="mt-2 overflow-hidden rounded-sm border border-white/15">
+                  {/* Aperçu au format de la barre du calendrier : bannière large. */}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={form.image} alt="" className="h-20 w-full object-cover object-[50%_28%]" />
+                </div>
+              ) : null}
             </div>
             <div className="sm:col-span-2">
               <label className={labelClass}>Lien (href — clic sur l'événement)</label>
@@ -275,9 +276,9 @@ export function CalendarAdminClient() {
               >
                 {ev.image ? (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img src={ev.image} alt="" className="h-10 w-10 shrink-0 rounded-sm border border-white/15 object-cover" />
+                  <img src={ev.image} alt="" className="h-10 w-16 shrink-0 rounded-sm border border-white/15 object-cover object-[50%_28%]" />
                 ) : (
-                  <span className="h-10 w-10 shrink-0 rounded-sm border border-white/10 bg-ink/60" />
+                  <span className="h-10 w-16 shrink-0 rounded-sm border border-white/10 bg-ink/60" />
                 )}
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-2">

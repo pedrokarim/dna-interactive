@@ -5,6 +5,7 @@ import { useLocale } from "next-intl";
 import { ChevronLeft, ChevronRight, CalendarDays, ExternalLink } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { DnaCornerBrackets, cn } from "@/components/dna";
+import { useDominantColor } from "@/lib/color/dominant";
 import {
   CALENDAR_TODAY,
   CALENDAR_ZOOMS,
@@ -24,6 +25,120 @@ import {
 } from "@/lib/events/calendar";
 
 const ZOOM_LABEL: Record<CalendarZoom, string> = { 14: "2 sem.", 30: "1 mois", 60: "2 mois" };
+
+/* ------------------------------------------------------------------ couleur */
+
+/** `#rrggbb` + alpha 0-1 → `rgba(...)`. Renvoie la couleur brute si non parsable. */
+function withAlpha(hex: string, alpha: number): string {
+  const m = /^#?([0-9a-f]{6})$/i.exec(hex.trim());
+  if (!m) return hex;
+  const n = parseInt(m[1], 16);
+  return `rgba(${(n >> 16) & 255}, ${(n >> 8) & 255}, ${n & 255}, ${alpha})`;
+}
+
+/* ------------------------------------------------------------------ barre */
+
+type EventBarProps = {
+  row: CalendarRow;
+  minW: number;
+  selected: boolean;
+  rangeLabel: string;
+  startLabel: string;
+  onSelect: () => void;
+  onHover: (e: React.MouseEvent) => void;
+  onLeave: () => void;
+};
+
+/**
+ * Barre d'un événement : la bannière remplit le rectangle, la couleur dominante
+ * de l'image pilote la bordure/l'ombre/le voile, titre et pastille de date sont
+ * incrustés par-dessus. Positionnée par date, largeur = durée (avec un minimum
+ * pour que l'image reste lisible).
+ */
+function EventBar({ row, minW, selected, rangeLabel, startLabel, onSelect, onHover, onLeave }: EventBarProps) {
+  const dominant = useDominantColor(row.image);
+  // Couleur dominante de l'image → sinon teinte de catégorie.
+  const accent = dominant ?? row.tint;
+  const faded = row.status === "past";
+
+  return (
+    <button
+      type="button"
+      onClick={onSelect}
+      onMouseMove={onHover}
+      onMouseLeave={onLeave}
+      aria-label={`${row.title} — ${rangeLabel}`}
+      aria-current={selected ? "true" : undefined}
+      className={cn(
+        "group absolute inset-y-[3px] overflow-hidden rounded-[4px] border text-left transition-[box-shadow,filter] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gold/70",
+        selected ? "z-[3]" : "z-[1] hover:brightness-110",
+        faded && "grayscale-[0.35]",
+      )}
+      style={{
+        left: `${row.leftPct}%`,
+        width: `${row.widthPct}%`,
+        minWidth: minW,
+        borderColor: withAlpha(accent, selected ? 0.95 : 0.55),
+        boxShadow: selected
+          ? `0 0 0 1px ${withAlpha(accent, 0.9)}, 0 6px 22px ${withAlpha(accent, 0.4)}`
+          : `0 2px 12px ${withAlpha(accent, 0.22)}`,
+        opacity: row.status === "upcoming" ? 0.9 : 1,
+        background: withAlpha(accent, 0.12),
+      }}
+    >
+      {/* bannière incrustée */}
+      {row.image ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={row.image}
+          alt=""
+          aria-hidden
+          loading="lazy"
+          className="absolute inset-0 h-full w-full object-cover object-[50%_28%]"
+        />
+      ) : null}
+
+      {/* voile : sombre à gauche (lisibilité du texte) + teinte dominante */}
+      <span
+        aria-hidden
+        className="absolute inset-0"
+        style={{
+          background: `linear-gradient(90deg, rgba(8,8,9,0.9) 0%, rgba(8,8,9,0.6) 42%, rgba(8,8,9,0.12) 100%), linear-gradient(90deg, ${withAlpha(
+            accent,
+            0.55,
+          )} 0%, transparent 70%)`,
+        }}
+      />
+      {/* filet dominant en bas */}
+      <span aria-hidden className="absolute inset-x-0 bottom-0 h-[2px]" style={{ background: withAlpha(accent, 0.85) }} />
+
+      {/* contenu */}
+      <span className="relative flex h-full flex-col justify-between px-2.5 py-1.5">
+        <span className="flex items-center gap-1.5">
+          {row.overflowLeft ? <span className="text-[0.7rem] leading-none text-parch/80">‹</span> : null}
+          <span
+            className="rounded-[3px] border px-1.5 py-0.5 font-mono text-[0.58rem] leading-none text-parch"
+            style={{ borderColor: withAlpha(accent, 0.7), background: "rgba(8,8,9,0.72)" }}
+          >
+            {startLabel}
+          </span>
+          {row.overflowRight ? <span className="ml-auto text-[0.7rem] leading-none text-parch/80">›</span> : null}
+        </span>
+        <span className="min-w-0">
+          <span className="block truncate font-display text-[0.82rem] leading-tight text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]">
+            {row.title}
+          </span>
+          <span
+            className="block truncate font-caps text-[0.5rem] uppercase leading-none tracking-[0.16em]"
+            style={{ color: withAlpha(accent, 0.95) }}
+          >
+            {row.category}
+          </span>
+        </span>
+      </span>
+    </button>
+  );
+}
 
 /* ------------------------------------------------------------- vue présentation */
 
@@ -62,6 +177,7 @@ export function CalendarView({
   const locale = useLocale();
   // timeZone UTC : nos dates ISO sont en UTC-minuit → même jour affiché partout.
   const dayFmt = useMemo(() => new Intl.DateTimeFormat(locale, { day: "numeric", month: "short", timeZone: "UTC" }), [locale]);
+  const pillFmt = useMemo(() => new Intl.DateTimeFormat(locale, { day: "2-digit", month: "2-digit", timeZone: "UTC" }), [locale]);
   const longFmt = useMemo(
     () => new Intl.DateTimeFormat(locale, { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }),
     [locale],
@@ -91,10 +207,11 @@ export function CalendarView({
   };
 
   const full = variant === "full";
-  const labelW = full ? "w-64" : "w-52";
-  const barH = full ? "h-7" : "h-6";
+  const barH = full ? "h-14" : "h-11";
+  const minW = full ? 220 : 176;
+  const rowGap = full ? "gap-2" : "gap-1.5";
   const ctrlBtn =
-    "flex h-8 w-8 items-center justify-center rounded-sm border border-line/25 text-parch/75 transition-colors hover:border-gold hover:text-gold";
+    "flex h-8 w-8 items-center justify-center rounded-sm border border-line/25 text-parch/75 transition-colors hover:border-gold hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60";
 
   return (
     <div className="relative overflow-hidden rounded-sm border border-line/20 bg-panel/60 p-4 sm:p-5">
@@ -108,10 +225,10 @@ export function CalendarView({
         <button
           type="button"
           onClick={onToday}
-          className="flex items-center gap-1.5 rounded-sm border border-line/25 px-3 py-1.5 font-caps text-[0.58rem] uppercase tracking-[0.14em] text-parch/80 transition-colors hover:border-gold hover:text-gold"
+          className="flex items-center gap-1.5 rounded-sm border border-line/25 px-3 py-1.5 font-caps text-[0.58rem] uppercase tracking-[0.14em] text-parch/80 transition-colors hover:border-gold hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60"
         >
           <CalendarDays className="h-3.5 w-3.5" />
-          Aujourd'hui
+          Aujourd&apos;hui
         </button>
         <button type="button" aria-label="Période suivante" onClick={() => onShift(step)} className={ctrlBtn}>
           <ChevronRight className="h-4 w-4" />
@@ -125,7 +242,7 @@ export function CalendarView({
               type="button"
               onClick={() => onZoom(z)}
               className={cn(
-                "rounded-sm border px-2.5 py-1 font-caps text-[0.55rem] uppercase tracking-[0.14em] transition-colors",
+                "rounded-sm border px-2.5 py-1 font-caps text-[0.55rem] uppercase tracking-[0.14em] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60",
                 span === z ? "border-gold/50 bg-gold/12 text-gold-bright" : "border-line/25 text-muted hover:border-gold/40 hover:text-gold",
               )}
             >
@@ -148,7 +265,7 @@ export function CalendarView({
               aria-pressed={on}
               onClick={() => onToggleCat(cat)}
               className={cn(
-                "inline-flex items-center gap-1.5 rounded-sm border px-2.5 py-1 font-caps text-[0.55rem] uppercase tracking-[0.14em] transition-colors",
+                "inline-flex items-center gap-1.5 rounded-sm border px-2.5 py-1 font-caps text-[0.55rem] uppercase tracking-[0.14em] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60",
                 on ? "text-parch" : "text-muted opacity-55",
               )}
               style={{ borderColor: on ? tint : "var(--color-line)", background: on ? `${tint}1f` : "transparent" }}
@@ -162,78 +279,48 @@ export function CalendarView({
 
       {/* timeline */}
       <div className="overflow-x-auto custom-scrollbar">
-        <div className={full ? "min-w-[820px]" : "min-w-[680px]"}>
+        <div className={full ? "min-w-[860px]" : "min-w-[680px]"}>
           {/* axe + repère aujourd'hui */}
-          <div className="mb-2.5 flex items-center gap-3">
-            <span className={cn("shrink-0", labelW)} />
-            <div className="relative h-4 flex-1">
-              {ticks.map((t) => (
-                <span key={t.iso} className="absolute -translate-x-1/2 font-mono text-[0.58rem] text-muted-2" style={{ left: `${t.pct}%` }}>
-                  {dayFmt.format(new Date(t.iso))}
-                </span>
-              ))}
-              {today !== null ? (
-                <span
-                  aria-hidden
-                  className="absolute -bottom-1 -translate-x-1/2 font-caps text-[0.5rem] uppercase tracking-[0.14em] text-gold-bright"
-                  style={{ left: `${today}%` }}
-                >
-                  ▾ Auj.
-                </span>
-              ) : null}
-            </div>
+          <div className="relative mb-2 h-4">
+            {ticks.map((t) => (
+              <span key={t.iso} className="absolute -translate-x-1/2 font-mono text-[0.58rem] text-muted-2" style={{ left: `${t.pct}%` }}>
+                {dayFmt.format(new Date(t.iso))}
+              </span>
+            ))}
+            {today !== null ? (
+              <span
+                aria-hidden
+                className="absolute -bottom-1 -translate-x-1/2 font-caps text-[0.5rem] uppercase tracking-[0.14em] text-gold-bright"
+                style={{ left: `${today}%` }}
+              >
+                ▾ Auj.
+              </span>
+            ) : null}
           </div>
 
           {/* lignes */}
           {rows.length === 0 ? (
-            <p className="py-6 text-center font-mono text-[0.7rem] text-muted-2">Aucun événement sur cette période.</p>
+            <p className="py-8 text-center font-mono text-[0.7rem] text-muted-2">Aucun événement sur cette période.</p>
           ) : (
-            <div className="flex flex-col gap-1.5">
-              {rows.map((r) => {
-                const isSel = selected?.id === r.id;
-                return (
-                  <div key={r.id} className="flex items-center gap-3">
-                    <span className={cn("flex shrink-0 items-center gap-2", labelW)}>
-                      {r.image ? (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img src={r.image} alt="" aria-hidden loading="lazy" className="h-7 w-7 shrink-0 rounded-sm border object-cover" style={{ borderColor: r.tint }} />
-                      ) : (
-                        <span className="h-2 w-2 shrink-0 rounded-full" style={{ background: r.tint }} />
-                      )}
-                      <span className="truncate text-[0.72rem] text-parch/85" title={r.title}>
-                        {r.title}
-                      </span>
-                    </span>
-                    <div className={cn("relative flex-1 rounded-sm bg-ink/50", barH)}>
-                      {today !== null ? (
-                        <span aria-hidden className="absolute inset-y-0 w-px bg-gold-bright/40" style={{ left: `${today}%` }} />
-                      ) : null}
-                      <button
-                        type="button"
-                        onClick={() => setSelected(isSel ? null : r)}
-                        onMouseMove={(e) => setTip({ row: r, x: e.clientX, y: e.clientY })}
-                        onMouseLeave={() => setTip((t) => (t?.row.id === r.id ? null : t))}
-                        aria-label={`${r.title} — ${range(r.start, r.end)}`}
-                        className={cn(
-                          "absolute inset-y-[3px] flex items-center overflow-hidden rounded-[3px] border px-2 transition-[filter,box-shadow]",
-                          isSel ? "z-[2] shadow-[0_0_0_1px_var(--color-gold-bright)]" : "hover:brightness-125",
-                        )}
-                        style={{
-                          left: `${r.leftPct}%`,
-                          width: `${r.widthPct}%`,
-                          borderColor: r.tint,
-                          background: `linear-gradient(90deg, ${r.tint}44, ${r.tint}18)`,
-                          opacity: r.status === "upcoming" ? 0.7 : r.status === "past" ? 0.5 : 1,
-                        }}
-                      >
-                        {r.overflowLeft ? <span className="mr-1 text-[0.6rem] text-parch/70">‹</span> : null}
-                        <span className="truncate font-mono text-[0.6rem] text-parch/90">{range(r.start, r.end)}</span>
-                        {r.overflowRight ? <span className="ml-auto pl-1 text-[0.6rem] text-parch/70">›</span> : null}
-                      </button>
-                    </div>
-                  </div>
-                );
-              })}
+            <div className={cn("relative flex flex-col", rowGap)}>
+              {/* repère « aujourd'hui » traversant toutes les lignes */}
+              {today !== null ? (
+                <span aria-hidden className="pointer-events-none absolute inset-y-0 z-[2] w-px bg-gold-bright/45" style={{ left: `${today}%` }} />
+              ) : null}
+              {rows.map((r) => (
+                <div key={r.id} className={cn("relative rounded-[4px] bg-ink/40", barH)}>
+                  <EventBar
+                    row={r}
+                    minW={minW}
+                    selected={selected?.id === r.id}
+                    rangeLabel={range(r.start, r.end)}
+                    startLabel={pillFmt.format(new Date(r.start))}
+                    onSelect={() => setSelected((s) => (s?.id === r.id ? null : r))}
+                    onHover={(e) => setTip({ row: r, x: e.clientX, y: e.clientY })}
+                    onLeave={() => setTip((t) => (t?.row.id === r.id ? null : t))}
+                  />
+                </div>
+              ))}
             </div>
           )}
         </div>
@@ -241,37 +328,34 @@ export function CalendarView({
 
       {/* détail de l'événement sélectionné */}
       {selected ? (
-        <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1.5 rounded-sm border border-line/20 bg-ink/40 p-3">
-          <span className="flex items-center gap-2">
-            {selected.image ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img src={selected.image} alt="" aria-hidden className="h-8 w-8 rounded-sm border object-cover" style={{ borderColor: selected.tint }} />
-            ) : (
-              <span className="h-2 w-2 rounded-full" style={{ background: selected.tint }} />
-            )}
+        <div className="mt-3 overflow-hidden rounded-sm border border-line/20 bg-ink/40">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 p-3">
             <span className="font-display text-sm text-parch">{selected.title}</span>
-          </span>
-          <span className="font-caps text-[0.55rem] uppercase tracking-[0.14em] text-muted">{selected.category}</span>
-          <span className="font-mono text-[0.68rem] text-parch/75">
-            {longFmt.format(new Date(selected.start))} → {longFmt.format(new Date(selected.end))}
-          </span>
-          {(() => {
-            const info = detailInfo(selected);
-            return (
-              <span className={cn("font-caps text-[0.58rem] uppercase tracking-[0.14em]", info.tone)}>
-                {info.label}
-                {info.note ? <span className="ml-1.5 text-muted normal-case tracking-normal">· {info.note}</span> : null}
-              </span>
-            );
-          })()}
-          {selected.href ? (
-            <Link href={selected.href} className="ml-auto inline-flex items-center gap-1 font-caps text-[0.58rem] uppercase tracking-[0.14em] text-gold hover:text-gold-bright">
-              Voir <ExternalLink className="h-3 w-3" />
-            </Link>
-          ) : null}
-          {selected.description ? (
-            <span className="w-full font-sans text-xs leading-relaxed text-parch/70">{selected.description}</span>
-          ) : null}
+            <span className="font-caps text-[0.55rem] uppercase tracking-[0.14em] text-muted">{selected.category}</span>
+            <span className="font-mono text-[0.68rem] text-parch/75">
+              {longFmt.format(new Date(selected.start))} → {longFmt.format(new Date(selected.end))}
+            </span>
+            {(() => {
+              const info = detailInfo(selected);
+              return (
+                <span className={cn("font-caps text-[0.58rem] uppercase tracking-[0.14em]", info.tone)}>
+                  {info.label}
+                  {info.note ? <span className="ml-1.5 text-muted normal-case tracking-normal">· {info.note}</span> : null}
+                </span>
+              );
+            })()}
+            {selected.href ? (
+              <Link
+                href={selected.href}
+                className="ml-auto inline-flex items-center gap-1 font-caps text-[0.58rem] uppercase tracking-[0.14em] text-gold hover:text-gold-bright"
+              >
+                Voir <ExternalLink className="h-3 w-3" />
+              </Link>
+            ) : null}
+            {selected.description ? (
+              <span className="w-full font-sans text-xs leading-relaxed text-parch/70">{selected.description}</span>
+            ) : null}
+          </div>
         </div>
       ) : (
         <p className="mt-3 font-mono text-[0.6rem] text-muted-2">
@@ -282,37 +366,35 @@ export function CalendarView({
       {/* tooltip au survol (position fixe, suit le curseur → échappe l'overflow) */}
       {tip ? (
         <div
-          className="pointer-events-none fixed z-[100] w-64 rounded-sm border border-gold/30 bg-panel/95 p-2.5 shadow-[0_12px_32px_rgba(0,0,0,0.6)] backdrop-blur"
+          className="pointer-events-none fixed z-[100] w-64 overflow-hidden rounded-sm border border-gold/30 bg-panel/95 shadow-[0_12px_32px_rgba(0,0,0,0.6)] backdrop-blur"
           style={{
             left: Math.min(tip.x + 14, (typeof window !== "undefined" ? window.innerWidth : 9999) - 272),
             top: tip.y + 14,
           }}
         >
-          <div className="flex items-center gap-2">
-            {tip.row.image ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img src={tip.row.image} alt="" aria-hidden className="h-9 w-9 shrink-0 rounded-sm border object-cover" style={{ borderColor: tip.row.tint }} />
-            ) : null}
-            <span className="min-w-0">
-              <span className="block truncate font-display text-sm text-parch">{tip.row.title}</span>
-              <span className="block font-caps text-[0.5rem] uppercase tracking-[0.14em]" style={{ color: tip.row.tint }}>
-                {tip.row.category}
-              </span>
-            </span>
-          </div>
-          <div className="mt-1.5 font-mono text-[0.62rem] text-parch/75">{range(tip.row.start, tip.row.end)}</div>
-          {(() => {
-            const info = detailInfo(tip.row);
-            return (
-              <div className={cn("mt-0.5 font-caps text-[0.55rem] uppercase tracking-[0.12em]", info.tone)}>
-                {info.label}
-                {info.note ? ` · ${info.note}` : ""}
-              </div>
-            );
-          })()}
-          {tip.row.description ? (
-            <p className="mt-1.5 font-sans text-[0.7rem] leading-snug text-parch/70">{tip.row.description}</p>
+          {tip.row.image ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={tip.row.image} alt="" aria-hidden className="h-24 w-full object-cover object-[50%_28%]" />
           ) : null}
+          <div className="p-2.5">
+            <div className="font-display text-sm text-parch">{tip.row.title}</div>
+            <div className="mt-0.5 font-caps text-[0.5rem] uppercase tracking-[0.14em]" style={{ color: tip.row.tint }}>
+              {tip.row.category}
+            </div>
+            <div className="mt-1.5 font-mono text-[0.62rem] text-parch/75">{range(tip.row.start, tip.row.end)}</div>
+            {(() => {
+              const info = detailInfo(tip.row);
+              return (
+                <div className={cn("mt-0.5 font-caps text-[0.55rem] uppercase tracking-[0.12em]", info.tone)}>
+                  {info.label}
+                  {info.note ? ` · ${info.note}` : ""}
+                </div>
+              );
+            })()}
+            {tip.row.description ? (
+              <p className="mt-1.5 font-sans text-[0.7rem] leading-snug text-parch/70">{tip.row.description}</p>
+            ) : null}
+          </div>
         </div>
       ) : null}
     </div>
@@ -356,7 +438,7 @@ export function EventCalendar({ events, refToday }: { events?: CalendarEvent[]; 
       headerRight={
         <Link
           href="/calendar"
-          className="rounded-sm border border-line/25 px-2.5 py-1 font-caps text-[0.55rem] uppercase tracking-[0.14em] text-gold hover:border-gold hover:text-gold-bright"
+          className="rounded-sm border border-line/25 px-2.5 py-1 font-caps text-[0.55rem] uppercase tracking-[0.14em] text-gold hover:border-gold hover:text-gold-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60"
         >
           Plein écran →
         </Link>

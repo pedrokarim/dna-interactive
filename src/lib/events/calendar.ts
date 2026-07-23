@@ -18,7 +18,11 @@ export type CalendarEvent = {
   start: string; // ISO date (inclus)
   end: string; // ISO date (inclus)
   href?: string;
-  /** Vignette (URL ou /assets/…). */
+  /**
+   * Bannière (key art) qui remplit la barre du timeline. Idéalement une image
+   * **paysage** ; une image carrée est recadrée (`object-cover`). La couleur
+   * dominante en est extraite côté client pour teinter la barre.
+   */
   image?: string;
   /** Infos affichées au survol / dans le détail. */
   description?: string;
@@ -43,7 +47,7 @@ export type CalendarZoom = (typeof CALENDAR_ZOOMS)[number];
 export const DEFAULT_ZOOM: CalendarZoom = 30;
 
 export const CALENDAR_EVENTS: CalendarEvent[] = [
-  { id: "grace-benign-night", title: "Grace Upon the Benign Night", category: "Bannière", start: "2026-06-02", end: "2026-07-27", image: "/assets/characters/head/T_Head_Fuluo.png", description: "Bannière Myriad limitée — inclut les skins de Flora et Rebecca." },
+  { id: "grace-benign-night", title: "Grace Upon the Benign Night", category: "Bannière", start: "2026-06-02", end: "2026-07-27", image: "/assets/official-v1.4/image-flora.webp", description: "Bannière Myriad limitée — inclut les skins de Flora et Rebecca." },
   { id: "summer-dreams", title: "Summer Dreams Aflutter", category: "Bannière", start: "2026-06-02", end: "2026-07-27", image: "/assets/worldview/worldview-8.webp", description: "Bannière Myriad limitée de la saison estivale." },
   { id: "firearm-feast", title: "Firearm Feast — arme signature de Hilda", category: "Arme", start: "2026-06-30", end: "2026-07-27", image: "/assets/worldview/worldview-10.webp", description: "Bannière d'arme (Secret Letters) — l'arme signature de Hilda." },
   { id: "silver-torrent", title: "Silver Torrent, Rising Star — récompense", category: "Récompense", start: "2026-06-02", end: "2026-07-27", image: "/assets/worldview/worldview-6.webp", description: "Récompense de sélection : un personnage et une arme offerts." },
