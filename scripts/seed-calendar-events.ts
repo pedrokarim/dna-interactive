@@ -35,12 +35,16 @@ async function main() {
       image: ev.image ?? null,
       href: ev.href ?? null,
       description: ev.description ?? null,
+      sourceUrl: ev.sourceUrl ?? null,
       sortOrder: i,
       updatedAt: new Date(),
     };
     const id = idByKey.get(naturalKey(ev.title, ev.start));
     if (id) {
-      await db.update(schema.calendarEvents).set(values).where(eq(schema.calendarEvents.id, id));
+      // Pas de lien officiel dans la liste curée → on ne remet pas `null` par-dessus
+      // celui qu'un admin aurait saisi via /admin/calendar.
+      const patch = ev.sourceUrl ? values : (({ sourceUrl: _drop, ...rest }) => rest)(values);
+      await db.update(schema.calendarEvents).set(patch).where(eq(schema.calendarEvents.id, id));
       updated += 1;
     } else {
       await db.insert(schema.calendarEvents).values(values);

@@ -355,6 +355,16 @@ export function CalendarView({
             {selected.description ? (
               <span className="w-full font-sans text-xs leading-relaxed text-parch/70">{selected.description}</span>
             ) : null}
+            {selected.sourceUrl ? (
+              <a
+                href={selected.sourceUrl}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="inline-flex items-center gap-1 font-caps text-[0.55rem] uppercase tracking-[0.14em] text-muted hover:text-gold"
+              >
+                Annonce officielle <ExternalLink className="h-2.5 w-2.5" />
+              </a>
+            ) : null}
           </div>
         </div>
       ) : (

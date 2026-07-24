@@ -27,7 +27,19 @@ export type CalendarEvent = {
   image?: string;
   /** Infos affichées au survol / dans le détail. */
   description?: string;
+  /**
+   * Lien vers l'**annonce officielle** d'où l'événement est tiré (site officiel,
+   * annonce Steam de l'éditeur, PV officiel). Uniquement des sources officielles :
+   * aucun agrégateur ni site concurrent. Vide tant que rien d'officiel n'est publié.
+   */
+  sourceUrl?: string;
 };
+
+/* Annonces officielles réutilisées par plusieurs événements. */
+const SRC_V14 = "https://store.steampowered.com/news/app/3950020/view/1833968530898688";
+const SRC_V15_EVENT = "https://duetnightabyss.dna-panstudio.com/dna-event/en/";
+const SRC_V15_PV = "https://www.youtube.com/watch?v=c8di9Y1wV8E";
+const SRC_MECHAPUPPETS = "https://store.steampowered.com/news/app/3950020/view/1823825466504500";
 
 export const CATEGORIES: EventCategory[] = ["Bannière", "Arme", "Événement", "Épreuve", "Récompense"];
 
@@ -48,30 +60,30 @@ export type CalendarZoom = (typeof CALENDAR_ZOOMS)[number];
 export const DEFAULT_ZOOM: CalendarZoom = 30;
 
 export const CALENDAR_EVENTS: CalendarEvent[] = [
-  { id: "grace-benign-night", title: "Grace Upon the Benign Night", category: "Bannière", start: "2026-06-02", end: "2026-07-27", image: "/assets/official-v1.4/image-flora.webp", description: "Bannière Myriad limitée — inclut les skins de Flora et Rebecca." },
-  { id: "summer-dreams", title: "Summer Dreams Aflutter", category: "Bannière", start: "2026-06-02", end: "2026-07-27", image: "/assets/worldview/worldview-8.webp", description: "Bannière Myriad limitée de la saison estivale." },
-  { id: "firearm-feast", title: "Firearm Feast — arme signature de Hilda", category: "Arme", start: "2026-06-30", end: "2026-07-27", image: "/assets/worldview/worldview-10.webp", description: "Bannière d'arme (Secret Letters) — l'arme signature de Hilda." },
-  { id: "silver-torrent", title: "Silver Torrent, Rising Star — récompense", category: "Récompense", start: "2026-06-02", end: "2026-07-27", image: "/assets/worldview/worldview-6.webp", description: "Récompense de sélection : un personnage et une arme offerts." },
-  { id: "immersive-theatre", title: "Immersive Theatre : Ensemble Act", category: "Événement", start: "2026-06-18", end: "2026-07-27", image: "/assets/worldview/worldview-3.webp", description: "Défi coopératif : battre le boss en équipe." },
-  { id: "starry-gleanings", title: "Starry Gleanings — commissions", category: "Événement", start: "2026-06-25", end: "2026-07-13", image: "/assets/worldview/worldview-4.webp", description: "Événement commissions : récompenses à accumuler." },
-  { id: "resonant-orisons", title: "Resonant Orisons — skins Lynn & Lady Nifle", category: "Événement", start: "2026-06-30", end: "2026-07-27", image: "/assets/worldview/worldview-9.webp", description: "Événement à durée limitée — nouveaux skins pour Lynn et Lady Nifle." },
-  { id: "days-tranquility", title: "Days of Tranquility — connexion", category: "Récompense", start: "2026-06-30", end: "2026-07-27", image: "/assets/worldview/worldview-5.webp", description: "Connexion sur 7 jours pour des Sabliers immaculés." },
-  { id: "traces-sand", title: "Traces in the Sand — essai de Hilda", category: "Épreuve", start: "2026-06-30", end: "2026-07-27", image: "/assets/worldview/worldview-11.webp", description: "Essai de personnage : teste Hilda gratuitement." },
-  { id: "starry-sojourn", title: "Starry Sojourn — co-op", category: "Événement", start: "2026-07-09", end: "2026-07-27", image: "/assets/worldview/worldview-7.webp", description: "Récompenses de temps de jeu en coopération." },
-  { id: "bountiful-day-2", title: "Bountiful Day — Partie 2 (1.4)", category: "Événement", start: "2026-07-10", end: "2026-07-17", image: "/assets/worldview/worldview-2.webp", description: "Retour d'événement : taux de drop de Demon Wedge augmentés." },
-  { id: "phoxhunter-summit", title: "Phoxhunter Summit", category: "Épreuve", start: "2026-07-15", end: "2026-07-27", image: "/assets/worldview/worldview-1.webp", description: "Épreuve compétitive à venir." },
-  { id: "atlasia-calling", title: "Atlasia Calling — parrainage", category: "Récompense", start: "2026-06-02", end: "2026-07-27", image: "/assets/worldview/worldview-1-3-1.webp", description: "Invite des joueurs et récupère les paliers de récompenses de parrainage." },
-  { id: "lunos-rail-rumpus", title: "Luno's Rail Rumpus", category: "Événement", start: "2026-06-04", end: "2026-07-25", image: "/assets/worldview/worldview-1-4-1.webp", description: "Événement coopératif ferroviaire de la saison Bloomfield." },
+  { id: "grace-benign-night", title: "Grace Upon the Benign Night", category: "Bannière", start: "2026-06-02", end: "2026-07-27", image: "/assets/official-v1.4/image-flora.webp", description: "Bannière Myriad limitée — inclut les skins de Flora et Rebecca.", sourceUrl: SRC_V14 },
+  { id: "summer-dreams", title: "Summer Dreams Aflutter", category: "Bannière", start: "2026-06-02", end: "2026-07-27", image: "/assets/worldview/worldview-8.webp", description: "Bannière Myriad limitée de la saison estivale.", sourceUrl: SRC_V14 },
+  { id: "firearm-feast", title: "Firearm Feast — arme signature de Hilda", category: "Arme", start: "2026-06-30", end: "2026-07-27", image: "/assets/worldview/worldview-10.webp", description: "Bannière d'arme (Secret Letters) — l'arme signature de Hilda.", sourceUrl: SRC_V14 },
+  { id: "silver-torrent", title: "Silver Torrent, Rising Star — récompense", category: "Récompense", start: "2026-06-02", end: "2026-07-27", image: "/assets/worldview/worldview-6.webp", description: "Récompense de sélection : un personnage et une arme offerts.", sourceUrl: SRC_V14 },
+  { id: "immersive-theatre", title: "Immersive Theatre : Ensemble Act", category: "Événement", start: "2026-06-18", end: "2026-07-27", image: "/assets/worldview/worldview-3.webp", description: "Défi coopératif : battre le boss en équipe.", sourceUrl: SRC_V14 },
+  { id: "starry-gleanings", title: "Starry Gleanings — commissions", category: "Événement", start: "2026-06-25", end: "2026-07-13", image: "/assets/worldview/worldview-4.webp", description: "Événement commissions : récompenses à accumuler.", sourceUrl: SRC_V14 },
+  { id: "resonant-orisons", title: "Resonant Orisons — skins Lynn & Lady Nifle", category: "Événement", start: "2026-06-30", end: "2026-07-27", image: "/assets/worldview/worldview-9.webp", description: "Événement à durée limitée — nouveaux skins pour Lynn et Lady Nifle.", sourceUrl: SRC_V14 },
+  { id: "days-tranquility", title: "Days of Tranquility — connexion", category: "Récompense", start: "2026-06-30", end: "2026-07-27", image: "/assets/worldview/worldview-5.webp", description: "Connexion sur 7 jours pour des Sabliers immaculés.", sourceUrl: SRC_V14 },
+  { id: "traces-sand", title: "Traces in the Sand — essai de Hilda", category: "Épreuve", start: "2026-06-30", end: "2026-07-27", image: "/assets/worldview/worldview-11.webp", description: "Essai de personnage : teste Hilda gratuitement.", sourceUrl: SRC_V14 },
+  { id: "starry-sojourn", title: "Starry Sojourn — co-op", category: "Événement", start: "2026-07-09", end: "2026-07-27", image: "/assets/worldview/worldview-7.webp", description: "Récompenses de temps de jeu en coopération.", sourceUrl: SRC_V14 },
+  { id: "bountiful-day-2", title: "Bountiful Day — Partie 2 (1.4)", category: "Événement", start: "2026-07-10", end: "2026-07-17", image: "/assets/worldview/worldview-2.webp", description: "Retour d'événement : taux de drop de Demon Wedge augmentés.", sourceUrl: SRC_V14 },
+  { id: "phoxhunter-summit", title: "Phoxhunter Summit", category: "Épreuve", start: "2026-07-15", end: "2026-07-27", image: "/assets/worldview/worldview-1.webp", description: "Épreuve compétitive à venir.", sourceUrl: SRC_V14 },
+  { id: "atlasia-calling", title: "Atlasia Calling — parrainage", category: "Récompense", start: "2026-06-02", end: "2026-07-27", image: "/assets/worldview/worldview-1-3-1.webp", description: "Invite des joueurs et récupère les paliers de récompenses de parrainage.", sourceUrl: SRC_V14 },
+  { id: "lunos-rail-rumpus", title: "Luno's Rail Rumpus", category: "Événement", start: "2026-06-04", end: "2026-07-25", image: "/assets/worldview/worldview-1-4-1.webp", description: "Événement coopératif ferroviaire de la saison Bloomfield.", sourceUrl: SRC_V14 },
 
   /* ------------------------------------------------ patch 1.5 « Paradise Prelude » */
-  { id: "rabbit-in-wonderland", title: "Rabbit in Wonderland — connexion", category: "Récompense", start: "2026-07-23", end: "2026-08-04", image: "/assets/official-v1.5/key-art-ada.webp", description: "Connexion quotidienne d'ouverture de la version Paradise Prelude." },
-  { id: "paradise-prelude", title: "Paradise Prelude — événement web", category: "Récompense", start: "2026-07-23", end: "2026-09-03", image: "/assets/official-v1.5/banner-paradise-prelude.webp", description: "Événement web de la version 1.5 : Ada offerte et récompenses à réclamer." },
+  { id: "rabbit-in-wonderland", title: "Rabbit in Wonderland — connexion", category: "Récompense", start: "2026-07-23", end: "2026-08-04", image: "/assets/official-v1.5/key-art-ada.webp", description: "Connexion quotidienne d'ouverture de la version Paradise Prelude.", sourceUrl: SRC_V15_PV },
+  { id: "paradise-prelude", title: "Paradise Prelude — événement web", category: "Récompense", start: "2026-07-23", end: "2026-09-03", image: "/assets/official-v1.5/banner-paradise-prelude.webp", description: "Événement web de la version 1.5 : Ada offerte et récompenses à réclamer.", sourceUrl: SRC_V15_EVENT },
   { id: "atlasian-hunt", title: "Atlasian Hunt — quiz", category: "Événement", start: "2026-07-27", end: "2026-08-07", image: "/assets/worldview/worldview-1-3-2.webp", description: "Chasse aux réponses sur le lore d'Atlasia, récompenses quotidiennes." },
   { id: "nocturne-in-white", title: "Nocturne in White", category: "Bannière", start: "2026-07-28", end: "2026-09-07", image: "/assets/official-v1.5/image-snowlight.webp", description: "Bannière Myriad limitée de la version 1.5 — inclut le skin « Snowlight Chase » d'Ada." },
   { id: "the-best-day", title: "The Best Day — arme signature d'Ada", category: "Arme", start: "2026-07-28", end: "2026-09-07", image: "/assets/official-v1.5/image-icelake.webp", description: "Bannière d'arme (Secret Letters) : les doubles pistolets d'Ada remplacent Firearm Feast." },
   { id: "bloomfield-tales-untold", title: "Bloomfield Station : Tales Untold", category: "Événement", start: "2026-07-28", end: "2026-09-07", image: "/assets/worldview/worldview-1-4-2.webp", description: "Chapitre d'histoire de la version 1.5 autour de la gare de Flodia Bloomfield." },
   { id: "white-bunnies-invitation", title: "White Bunnies' Invitation — connexion", category: "Récompense", start: "2026-07-28", end: "2026-09-07", image: "/assets/worldview/worldview-1-3-3.webp", description: "Connexion sur la durée de la version pour des Sabliers immaculés." },
-  { id: "great-chaos-mechapuppets", title: "Great Chaos of Mechapuppets", category: "Événement", start: "2026-07-30", end: "2026-09-07", image: "/assets/official-v1.5/image-mechapuppets.webp", description: "Événement de stratégie : dompte les pantins mécaniques du parc." },
+  { id: "great-chaos-mechapuppets", title: "Great Chaos of Mechapuppets", category: "Événement", start: "2026-07-30", end: "2026-09-07", image: "/assets/official-v1.5/image-mechapuppets.webp", description: "Événement de stratégie : dompte les pantins mécaniques du parc.", sourceUrl: SRC_MECHAPUPPETS },
   { id: "bountiful-day-v15-p1", title: "Bountiful Day — Partie 1 (1.5)", category: "Événement", start: "2026-07-30", end: "2026-08-06", image: "/assets/worldview/worldview-1-4-3.webp", description: "Taux de drop de Demon Wedge augmentés pendant une semaine." },
   { id: "golden-journey-derby", title: "Golden Journey : Genimon Derby", category: "Événement", start: "2026-08-06", end: "2026-08-18", image: "/assets/worldview/worldview-1-3-4.webp", description: "Courses de génimons : mise, entraîne et empoche les gains." },
   { id: "edge-of-trial", title: "Edge of Trial", category: "Épreuve", start: "2026-08-13", end: "2026-09-01", image: "/assets/worldview/worldview-1-4-4.webp", description: "Épreuve de combat compétitive avec classement." },
@@ -120,6 +132,7 @@ export type CalendarRow = {
   href?: string;
   image?: string;
   description?: string;
+  sourceUrl?: string;
   status: EventStatus;
   leftPct: number;
   widthPct: number;
@@ -157,6 +170,7 @@ export function computeRows(
       href: ev.href,
       image: ev.image,
       description: ev.description,
+      sourceUrl: ev.sourceUrl,
       status: eventStatus(ev, refIso),
       leftPct: (left / spanDays) * 100,
       widthPct: Math.max(1.5, ((right - left) / spanDays) * 100),

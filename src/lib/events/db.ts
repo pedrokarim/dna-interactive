@@ -31,6 +31,7 @@ export async function getCalendarEvents(): Promise<CalendarEvent[]> {
       href: r.href ?? undefined,
       image: r.image ?? undefined,
       description: r.description ?? undefined,
+      sourceUrl: r.sourceUrl ?? undefined,
     }));
   } catch (error) {
     if (!isMissingTableError(error)) throw error;
