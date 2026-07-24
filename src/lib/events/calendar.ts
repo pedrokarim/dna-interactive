@@ -1,8 +1,9 @@
 /**
  * Calendrier des événements Duet Night Abyss — données + logique pure paramétrique.
  *
- * Données réelles curées (patch 1.4 « Silver Torrent, Rising Star », juillet 2026),
- * à rafraîchir à chaque version. Aucune source tierce n'est créditée au front.
+ * Données réelles curées (fin du patch 1.4 « Silver Torrent, Rising Star » et
+ * patch 1.5 « Paradise Prelude », juillet-septembre 2026), à rafraîchir à chaque
+ * version. Aucune source tierce n'est créditée au front.
  *
  * Tout est déterministe (pas de `Date.now()`) : le calendrier se déplace/zoome via
  * des fenêtres (start ISO + span en jours), sûr en SSR. « Aujourd'hui » = date de
@@ -39,7 +40,7 @@ export const CATEGORY_TINT: Record<EventCategory, string> = {
 };
 
 /** « Aujourd'hui » dans le monde du jeu (contexte applicatif). */
-export const CALENDAR_TODAY = "2026-07-11";
+export const CALENDAR_TODAY = "2026-07-24";
 
 /** Zooms disponibles (span en jours). */
 export const CALENDAR_ZOOMS = [14, 30, 60] as const;
@@ -57,8 +58,25 @@ export const CALENDAR_EVENTS: CalendarEvent[] = [
   { id: "days-tranquility", title: "Days of Tranquility — connexion", category: "Récompense", start: "2026-06-30", end: "2026-07-27", image: "/assets/worldview/worldview-5.webp", description: "Connexion sur 7 jours pour des Sabliers immaculés." },
   { id: "traces-sand", title: "Traces in the Sand — essai de Hilda", category: "Épreuve", start: "2026-06-30", end: "2026-07-27", image: "/assets/worldview/worldview-11.webp", description: "Essai de personnage : teste Hilda gratuitement." },
   { id: "starry-sojourn", title: "Starry Sojourn — co-op", category: "Événement", start: "2026-07-09", end: "2026-07-27", image: "/assets/worldview/worldview-7.webp", description: "Récompenses de temps de jeu en coopération." },
-  { id: "bountiful-day-2", title: "Bountiful Day — Partie 2", category: "Événement", start: "2026-07-10", end: "2026-07-17", image: "/assets/worldview/worldview-2.webp", description: "Retour d'événement : taux de drop de Demon Wedge augmentés." },
+  { id: "bountiful-day-2", title: "Bountiful Day — Partie 2 (1.4)", category: "Événement", start: "2026-07-10", end: "2026-07-17", image: "/assets/worldview/worldview-2.webp", description: "Retour d'événement : taux de drop de Demon Wedge augmentés." },
   { id: "phoxhunter-summit", title: "Phoxhunter Summit", category: "Épreuve", start: "2026-07-15", end: "2026-07-27", image: "/assets/worldview/worldview-1.webp", description: "Épreuve compétitive à venir." },
+  { id: "atlasia-calling", title: "Atlasia Calling — parrainage", category: "Récompense", start: "2026-06-02", end: "2026-07-27", image: "/assets/worldview/worldview-1-3-1.webp", description: "Invite des joueurs et récupère les paliers de récompenses de parrainage." },
+  { id: "lunos-rail-rumpus", title: "Luno's Rail Rumpus", category: "Événement", start: "2026-06-04", end: "2026-07-25", image: "/assets/worldview/worldview-1-4-1.webp", description: "Événement coopératif ferroviaire de la saison Bloomfield." },
+
+  /* ------------------------------------------------ patch 1.5 « Paradise Prelude » */
+  { id: "rabbit-in-wonderland", title: "Rabbit in Wonderland — connexion", category: "Récompense", start: "2026-07-23", end: "2026-08-04", image: "/assets/official-v1.5/key-art-ada.webp", description: "Connexion quotidienne d'ouverture de la version Paradise Prelude." },
+  { id: "paradise-prelude", title: "Paradise Prelude — événement web", category: "Récompense", start: "2026-07-23", end: "2026-09-03", image: "/assets/official-v1.5/banner-paradise-prelude.webp", description: "Événement web de la version 1.5 : Ada offerte et récompenses à réclamer." },
+  { id: "atlasian-hunt", title: "Atlasian Hunt — quiz", category: "Événement", start: "2026-07-27", end: "2026-08-07", image: "/assets/worldview/worldview-1-3-2.webp", description: "Chasse aux réponses sur le lore d'Atlasia, récompenses quotidiennes." },
+  { id: "nocturne-in-white", title: "Nocturne in White", category: "Bannière", start: "2026-07-28", end: "2026-09-07", image: "/assets/official-v1.5/image-snowlight.webp", description: "Bannière Myriad limitée de la version 1.5 — inclut le skin « Snowlight Chase » d'Ada." },
+  { id: "the-best-day", title: "The Best Day — arme signature d'Ada", category: "Arme", start: "2026-07-28", end: "2026-09-07", image: "/assets/official-v1.5/image-icelake.webp", description: "Bannière d'arme (Secret Letters) : les doubles pistolets d'Ada remplacent Firearm Feast." },
+  { id: "bloomfield-tales-untold", title: "Bloomfield Station : Tales Untold", category: "Événement", start: "2026-07-28", end: "2026-09-07", image: "/assets/worldview/worldview-1-4-2.webp", description: "Chapitre d'histoire de la version 1.5 autour de la gare de Flodia Bloomfield." },
+  { id: "white-bunnies-invitation", title: "White Bunnies' Invitation — connexion", category: "Récompense", start: "2026-07-28", end: "2026-09-07", image: "/assets/worldview/worldview-1-3-3.webp", description: "Connexion sur la durée de la version pour des Sabliers immaculés." },
+  { id: "great-chaos-mechapuppets", title: "Great Chaos of Mechapuppets", category: "Événement", start: "2026-07-30", end: "2026-09-07", image: "/assets/official-v1.5/image-mechapuppets.webp", description: "Événement de stratégie : dompte les pantins mécaniques du parc." },
+  { id: "bountiful-day-v15-p1", title: "Bountiful Day — Partie 1 (1.5)", category: "Événement", start: "2026-07-30", end: "2026-08-06", image: "/assets/worldview/worldview-1-4-3.webp", description: "Taux de drop de Demon Wedge augmentés pendant une semaine." },
+  { id: "golden-journey-derby", title: "Golden Journey : Genimon Derby", category: "Événement", start: "2026-08-06", end: "2026-08-18", image: "/assets/worldview/worldview-1-3-4.webp", description: "Courses de génimons : mise, entraîne et empoche les gains." },
+  { id: "edge-of-trial", title: "Edge of Trial", category: "Épreuve", start: "2026-08-13", end: "2026-09-01", image: "/assets/worldview/worldview-1-4-4.webp", description: "Épreuve de combat compétitive avec classement." },
+  { id: "crimson-mirage", title: "Crimson Mirage — skins", category: "Bannière", start: "2026-08-18", end: "2026-09-29", image: "/assets/official-v1.5/image-crimson.webp", description: "Bannière de skins à durée limitée sur le thème démons et vampires." },
+  { id: "starry-gleanings-2", title: "Starry Gleanings II — commissions", category: "Événement", start: "2026-08-20", end: "2026-09-01", image: "/assets/worldview/worldview-1-3-5.webp", description: "Retour des commissions : objectifs à accumuler pour des récompenses." },
 ];
 
 /* --------------------------------------------------------------- helpers date */
