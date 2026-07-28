@@ -62,6 +62,7 @@ type EventBarProps = {
  * pour que l'image reste lisible).
  */
 function EventBar({ row, minW, selected, rangeLabel, startLabel, onSelect, onHover, onLeave }: EventBarProps) {
+  const t = useTranslations("homeHub");
   const dominant = useDominantColor(row.image);
   // Couleur dominante de l'image → sinon teinte de catégorie.
   const accent = dominant ?? row.tint;
@@ -138,7 +139,7 @@ function EventBar({ row, minW, selected, rangeLabel, startLabel, onSelect, onHov
             className="block truncate font-caps text-[0.5rem] uppercase leading-none tracking-[0.16em]"
             style={{ color: withAlpha(accent, 0.95) }}
           >
-            {row.category}
+            {t(CATEGORY_KEY[row.category])}
           </span>
         </span>
       </span>
@@ -338,7 +339,7 @@ export function CalendarView({
         <div className="mt-3 overflow-hidden rounded-sm border border-line/20 bg-ink/40">
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 p-3">
             <span className="font-display text-sm text-parch">{selected.title}</span>
-            <span className="font-caps text-[0.55rem] uppercase tracking-[0.14em] text-muted">{selected.category}</span>
+            <span className="font-caps text-[0.55rem] uppercase tracking-[0.14em] text-muted">{t(CATEGORY_KEY[selected.category])}</span>
             <span className="font-mono text-[0.68rem] text-parch/75">
               {longFmt.format(new Date(selected.start))} → {longFmt.format(new Date(selected.end))}
             </span>
@@ -396,7 +397,7 @@ export function CalendarView({
           <div className="p-2.5">
             <div className="font-display text-sm text-parch">{tip.row.title}</div>
             <div className="mt-0.5 font-caps text-[0.5rem] uppercase tracking-[0.14em]" style={{ color: tip.row.tint }}>
-              {tip.row.category}
+              {t(CATEGORY_KEY[tip.row.category])}
             </div>
             <div className="mt-1.5 font-mono text-[0.62rem] text-parch/75">{range(tip.row.start, tip.row.end)}</div>
             {(() => {
