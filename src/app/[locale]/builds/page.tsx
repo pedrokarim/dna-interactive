@@ -9,10 +9,15 @@ import { getBuilderOptions } from "@/lib/community-builds/options";
 
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = {
-  title: "Builds communauté",
-  description: "Parcourir les builds communautaires Duet Night Abyss publiés par les joueurs.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "metadata" });
+  return { title: t("buildsTitle"), description: t("buildsDescription") };
+}
 
 export default async function CommunityBuildsPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;

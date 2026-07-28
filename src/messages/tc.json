@@ -521,28 +521,40 @@
     "feature6": "持續更新"
   },
   "metadata": {
-    "homeTitle": "DNA Interactive - Duet Night Abyss 互動地圖 | 遊戲地圖",
+    "homeTitle": "Duet Night Abyss 互動地圖",
     "homeDescription": "Duet Night Abyss 終極互動地圖。使用 DNA Interactive 探索遊戲世界：找到所有秘密、寶箱和收藏品。DNA 玩家必備工具。",
-    "mapTitle": "互動地圖 - DNA Interactive",
+    "mapTitle": "互動地圖",
     "mapDescription": "Duet Night Abyss 完整互動地圖。探索全部 6 個地區，找到每個秘密、寶箱和景點。Duet Night Abyss 玩家必備工具。",
-    "itemsTitle": "道具與 Demon Wedge - DNA Interactive",
+    "itemsTitle": "道具與 Demon Wedge",
     "itemsDescription": "Duet Night Abyss 道具資料庫：Demon Wedge、武器、資源和鍛造圖紙，配有篩選器和詳細頁面。",
-    "charactersTitle": "角色 - DNA Interactive",
+    "charactersTitle": "角色",
     "charactersDescription": "Duet Night Abyss 可操作角色資料庫：元素、武器、陣營、立繪與多語言翻譯。",
-    "codesTitle": "Duet Night Abyss 兌換碼 | DNA Interactive",
+    "codesTitle": "Duet Night Abyss 兌換碼",
     "codesDescription": "查看 Duet Night Abyss 所有有效兌換碼。優惠碼、免費獎勵和獨家福利。定期更新新碼。",
-    "aboutTitle": "關於 - DNA Interactive",
+    "aboutTitle": "關於",
     "aboutDescription": "了解 DNA Interactive 的故事與團隊。由熱情玩家為 Duet Night Abyss 社群打造的社群專案。",
-    "contactTitle": "聯絡我們 - DNA Interactive",
+    "contactTitle": "聯絡我們",
     "contactDescription": "就 Duet Night Abyss 互動地圖的問題、建議或回報聯繫 DNA Interactive 團隊。保證快速回覆。",
-    "supportTitle": "支援與幫助 - DNA Interactive",
+    "supportTitle": "支援與幫助",
     "supportDescription": "DNA Interactive 幫助中心與支援。常見問題、使用指南、Discord 聯絡方式與互動地圖技術支援。",
-    "changelogTitle": "更新日誌 - DNA Interactive",
+    "changelogTitle": "更新日誌",
     "changelogDescription": "查看 DNA Interactive（Duet Night Abyss 互動地圖）的所有更新與改善。完整版本歷史與新功能。",
     "defaultDescription": "Duet Night Abyss 終極互動地圖。使用 DNA Interactive 探索遊戲世界。",
     "ogTitle": "DNA Interactive - Duet Night Abyss 互動地圖 | 遊戲地圖",
     "ogDescription": "Duet Night Abyss 終極互動地圖。使用 DNA Interactive 探索遊戲世界：找到所有秘密、寶箱和收藏品。",
-    "twitterDescription": "Duet Night Abyss 終極互動地圖。使用 DNA Interactive 找到所有秘密和收藏品。"
+    "twitterDescription": "Duet Night Abyss 終極互動地圖。使用 DNA Interactive 找到所有秘密和收藏品。",
+    "featuresTitle": "功能",
+    "featuresDescription": "DNA Interactive 為 Duet Night Abyss 提供的所有功能：互動地圖、角色與道具資料庫、配裝產生器、Commissions 與兌換碼。",
+    "commissionsTitle": "Covert Commissions — 即時輪替",
+    "commissionsDescription": "Duet Night Abyss 各地區 Covert Commissions 即時輪替：角色、武器與 Demon Wedge，並顯示下次更新倒數。",
+    "builderTitle": "社群配裝產生器",
+    "builderDescription": "建立並發布 Duet Night Abyss 社群配裝。",
+    "buildsTitle": "社群配裝",
+    "buildsDescription": "瀏覽玩家發布的 Duet Night Abyss 社群配裝。",
+    "calendarTitle": "活動行事曆",
+    "calendarDescription": "Duet Night Abyss 卡池、武器與進行中活動的互動行事曆：可切換時間、縮放並依分類篩選。",
+    "draftsTitle": "鍛造圖紙",
+    "draftsDescription": "鍛造圖紙資料庫：配方、材料、製作時間與成品詳情。"
   },
   "commissions": {
     "eyebrow": "Covert Commissions",
@@ -965,5 +977,9 @@
     "officialAnnouncement": "官方公告",
     "calendarHint": "使用 ◀ ▶ 瀏覽、縮放並依類別篩選；將游標移至活動上或選取活動即可查看詳細資訊。",
     "fullScreen": "全螢幕"
+  },
+  "calendarPage": {
+    "heading": "活動行事曆",
+    "intro": "Duet Night Abyss 的卡池、武器與進行中活動。可切換時間、縮放並依分類篩選——狀態儲存於網址，可直接分享。"
   }
 }

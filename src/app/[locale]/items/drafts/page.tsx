@@ -13,9 +13,7 @@ export async function generateMetadata(
   const { locale } = await params;
   return generatePageMetadata(
     {
-      title: "Plans de forge (Drafts) - Duet Night Abyss",
-      description:
-        "Base de donnees des plans de forge: recettes, ingredients, temps de fabrication et details des objets finaux.",
+      key: "drafts",
       path: "/items/drafts",
       keywords: [
         "Duet Night Abyss",

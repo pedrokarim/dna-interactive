@@ -8,10 +8,15 @@ import { getBuilderOptions } from "@/lib/community-builds/options";
 
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = {
-  title: "Builder de builds communautaires",
-  description: "Créer et publier des builds communautaires Duet Night Abyss.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "metadata" });
+  return { title: t("builderTitle"), description: t("builderDescription") };
+}
 
 export default async function BuilderPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;

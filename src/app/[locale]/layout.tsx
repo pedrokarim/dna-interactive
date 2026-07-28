@@ -1,7 +1,7 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import { Cinzel, Cormorant_Garamond, Jost, JetBrains_Mono } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { getMessages, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { Providers } from "@/components/Providers";
@@ -67,14 +67,17 @@ export async function generateMetadata(
   const previousImages = (await parent).openGraph?.images || [];
 
   const baseUrl = "https://dna.ascencia.re";
+  // Métadonnées racine localisées : mêmes clés que `generatePageMetadata`.
+  const t = await getTranslations({ locale, namespace: "metadata" });
+  const rootTitle = `${t("homeTitle")} | DNA Interactive`;
 
   return {
     metadataBase: new URL(baseUrl),
     title: {
-      default: `DNA Interactive - Carte Interactive Duet Night Abyss`,
+      default: rootTitle,
       template: `%s | DNA Interactive`,
     },
-    description: `Carte interactive Duet Night Abyss : explorez le monde, trouvez tous les coffres, secrets, items, personnages, codes et plans de forge. Outil DNA gratuit.`,
+    description: t("defaultDescription"),
     keywords: [
       "DNA",
       "DNA Interactive",
@@ -115,24 +118,22 @@ export async function generateMetadata(
       locale: ({fr:"fr_FR",en:"en_US",de:"de_DE",es:"es_ES",jp:"ja_JP",kr:"ko_KR",tc:"zh_TW"})[locale] ?? "fr_FR",
       url: `${baseUrl}/${locale}`,
       siteName: "DNA Interactive",
-      title: "DNA Interactive - Carte Interactive Duet Night Abyss",
-      description:
-        "Carte interactive Duet Night Abyss : explorez le monde, trouvez tous les coffres, secrets, items, personnages, codes et plans de forge. Outil DNA gratuit.",
+      title: rootTitle,
+      description: t("ogDescription"),
       images: [
         {
           url: "/assets/og/og-default.png",
           width: 1200,
           height: 630,
-          alt: "DNA Interactive - Carte Interactive Duet Night Abyss",
+          alt: rootTitle,
         },
         ...previousImages,
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: "DNA Interactive - Carte Interactive Duet Night Abyss",
-      description:
-        "Carte interactive Duet Night Abyss : coffres, secrets, items, personnages, codes et plans de forge. Outil DNA gratuit.",
+      title: rootTitle,
+      description: t("twitterDescription"),
       images: ["/assets/og/og-default.png"],
       site: "@ascencia64",
       creator: "@ascencia64",

@@ -1,4 +1,5 @@
 import type { Metadata, ResolvingMetadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { SITE_CONFIG, GAME_INFO, CREATOR_INFO } from "@/lib/constants";
 import { locales } from "@/i18n/config";
 
@@ -14,7 +15,31 @@ const localeToOgLocale: Record<string, string> = {
   tc: "zh_TW",
 };
 
+/**
+ * Préfixe de clé dans le namespace `metadata` des messages : `<key>Title` et
+ * `<key>Description`. C'est la source de vérité localisée pour le `<title>` et
+ * la meta description ; `title`/`description` ci-dessous ne servent que de
+ * repli pour les pages qui n'ont pas (encore) de clés traduites.
+ */
+export type MetadataKey =
+  | "home"
+  | "features"
+  | "map"
+  | "items"
+  | "characters"
+  | "commissions"
+  | "codes"
+  | "about"
+  | "contact"
+  | "support"
+  | "changelog"
+  | "builder"
+  | "builds"
+  | "calendar"
+  | "drafts";
+
 export interface PageMetadataOptions {
+  key?: MetadataKey;
   title?: string;
   description?: string;
   keywords?: string[];
@@ -39,6 +64,7 @@ export async function generatePageMetadata(
   locale?: string,
 ): Promise<Metadata> {
   const {
+    key,
     title,
     description,
     keywords = [],
@@ -74,11 +100,19 @@ export async function generatePageMetadata(
   const parentMetadata = parent ? await parent : null;
   const previousImages = parentMetadata?.openGraph?.images || [];
 
-  const finalTitle = title || `${SITE_CONFIG.name} - Carte Interactive Duet Night Abyss`;
-  const finalDescription = description || `Carte interactive Duet Night Abyss : explorez le monde, trouvez tous les coffres, secrets, items, personnages, codes et plans de forge. Outil DNA gratuit.`;
+  // Titre/description localisés depuis le namespace `metadata`. Les titres y sont
+  // stockés SANS la marque : le template `%s | DNA Interactive` du layout l'ajoute.
+  const t = await getTranslations({ locale: currentLocale, namespace: "metadata" });
+  const finalTitle = key ? t(`${key}Title`) : title || t("homeTitle");
+  const finalDescription = key ? t(`${key}Description`) : description || t("defaultDescription");
+  // og:title / twitter:title ne passent pas par le template Next : on suffixe à la main
+  // pour que l'aperçu partagé porte la même chaîne que l'onglet.
+  const brandedTitle = `${finalTitle} | ${SITE_CONFIG.name}`;
 
   return {
-    title: finalTitle,
+    // Le template `%s | DNA Interactive` du layout ne s'applique qu'aux segments
+    // ENFANTS : la home, définie au même niveau, doit porter la marque elle-même.
+    title: key === "home" ? { absolute: brandedTitle } : finalTitle,
     description: finalDescription,
     keywords: keywords.length > 0 ? keywords : [
       GAME_INFO.name,
@@ -106,7 +140,7 @@ export async function generatePageMetadata(
       locale: ogLocale,
       url: canonicalUrl,
       siteName: SITE_CONFIG.name,
-      title: finalTitle,
+      title: brandedTitle,
       description: finalDescription,
       // Quand la route a son propre opengraph-image.tsx, on laisse Next injecter
       // SON image et on n'en ajoute aucune ici (sinon double og:image).
@@ -121,7 +155,7 @@ export async function generatePageMetadata(
     },
     twitter: {
       card: "summary_large_image",
-      title: finalTitle,
+      title: brandedTitle,
       description: finalDescription,
       ...(dynamicOgImage ? {} : { images: [image] }),
       site: "@ascencia64",
@@ -150,8 +184,7 @@ export async function generatePageMetadata(
  */
 export const pageMetadata = {
   home: {
-    title: `${SITE_CONFIG.name} - Carte Interactive Duet Night Abyss`,
-    description: `Carte interactive Duet Night Abyss : explorez le monde, trouvez tous les coffres, secrets, items, personnages, codes et plans de forge. Outil DNA gratuit.`,
+    key: "home",
     keywords: [
       GAME_INFO.name,
       ...SITE_CONFIG.keywords,
@@ -175,8 +208,7 @@ export const pageMetadata = {
     path: "",
   },
   features: {
-    title: `Fonctionnalités - ${SITE_CONFIG.name}`,
-    description: `Toutes les fonctionnalités de DNA Interactive pour Duet Night Abyss : carte interactive, base de données personnages et items, builder de builds, commissions, codes et plus.`,
+    key: "features",
     keywords: [
       GAME_INFO.name,
       ...SITE_CONFIG.keywords,
@@ -191,8 +223,7 @@ export const pageMetadata = {
     path: "/features",
   },
   map: {
-    title: `Carte Interactive - ${SITE_CONFIG.name}`,
-    description: `Carte interactive complète de Duet Night Abyss. Explorez les 6 régions du jeu, trouvez tous les secrets, coffres et points d'intérêt. Outil indispensable pour les joueurs de Duet Night Abyss.`,
+    key: "map",
     keywords: [
       GAME_INFO.name,
       "carte interactive",
@@ -218,9 +249,7 @@ export const pageMetadata = {
     path: "/map",
   },
   items: {
-    title: `Items & Demon Wedges - ${SITE_CONFIG.name}`,
-    description:
-      "Base de donnees des items Duet Night Abyss: Demon Wedges, armes, ressources et plans de forge avec filtres et fiches detaillees.",
+    key: "items",
     keywords: [
       GAME_INFO.name,
       "items",
@@ -240,9 +269,7 @@ export const pageMetadata = {
     path: "/items",
   },
   characters: {
-    title: `Personnages - ${SITE_CONFIG.name}`,
-    description:
-      "Base de donnees des personnages jouables de Duet Night Abyss : elements, armes, factions, portraits et traductions multilingues.",
+    key: "characters",
     keywords: [
       GAME_INFO.name,
       "characters",
@@ -260,9 +287,7 @@ export const pageMetadata = {
     path: "/characters",
   },
   commissions: {
-    title: `Covert Commissions — Rotation en direct | ${SITE_CONFIG.name}`,
-    description:
-      "Rotation en direct des Covert Commissions de Duet Night Abyss (Mandats scellés) pour chaque région : Personnage, Arme et Sceau démoniaque, avec compte à rebours jusqu'à la prochaine actualisation.",
+    key: "commissions",
     keywords: [
       "Covert Commissions",
       "Mandats scellés",
@@ -279,8 +304,7 @@ export const pageMetadata = {
     path: "/commissions",
   },
   codes: {
-    title: `Codes de Rédemption Duet Night Abyss | ${SITE_CONFIG.name}`,
-    description: "Découvrez tous les codes de rédemption actifs pour Duet Night Abyss. Codes promotionnels, récompenses gratuites et bonus exclusifs. Mise à jour régulière des nouveaux codes.",
+    key: "codes",
     keywords: [
       "codes de rédemption",
       "codes promo",
@@ -301,8 +325,7 @@ export const pageMetadata = {
     path: "/codes",
   },
   about: {
-    title: `À propos - ${SITE_CONFIG.name}`,
-    description: `Découvrez l'histoire et l'équipe derrière ${SITE_CONFIG.name}. Projet communautaire créé par des passionnés pour aider les joueurs de ${GAME_INFO.name}.`,
+    key: "about",
     keywords: [
       GAME_INFO.name,
       ...SITE_CONFIG.keywords,
@@ -323,8 +346,7 @@ export const pageMetadata = {
     path: "/about",
   },
   contact: {
-    title: `Contact - ${SITE_CONFIG.name}`,
-    description: `Contactez l'équipe de ${SITE_CONFIG.name} pour vos questions, suggestions ou signalements concernant la carte interactive Duet Night Abyss. Réponse rapide garantie.`,
+    key: "contact",
     keywords: [
       GAME_INFO.name,
       ...SITE_CONFIG.keywords,
@@ -343,8 +365,7 @@ export const pageMetadata = {
     path: "/contact",
   },
   support: {
-    title: `Support & Aide - ${SITE_CONFIG.name}`,
-    description: `Centre d'aide et support pour ${SITE_CONFIG.name}. FAQ, guides d'utilisation, contact Discord et support technique pour la carte interactive.`,
+    key: "support",
     keywords: [
       GAME_INFO.name,
       ...SITE_CONFIG.keywords,
@@ -365,8 +386,7 @@ export const pageMetadata = {
     path: "/support",
   },
   changelog: {
-    title: `Changelog - ${SITE_CONFIG.name}`,
-    description: `Découvrez toutes les mises à jour et améliorations apportées à ${SITE_CONFIG.name}, la carte interactive Duet Night Abyss. Historique complet des versions et nouveautés.`,
+    key: "changelog",
     keywords: [
       GAME_INFO.name,
       ...SITE_CONFIG.keywords,
@@ -385,4 +405,4 @@ export const pageMetadata = {
     image: "/assets/worldview/worldview-7.webp",
     path: "/changelog",
   },
-};
+} satisfies Record<string, PageMetadataOptions>;

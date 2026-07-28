@@ -521,28 +521,40 @@
     "feature6": "Kontinuierlich aktualisiert"
   },
   "metadata": {
-    "homeTitle": "DNA Interactive - Duet Night Abyss Interaktive Karte | Gaming-Karte",
+    "homeTitle": "Duet Night Abyss Interaktive Karte",
     "homeDescription": "Die ultimative interaktive Karte für Duet Night Abyss. Erkunde die Spielwelt mit DNA Interactive: finde alle Geheimnisse, Truhen und Sammelobjekte. Ein unverzichtbares Tool für DNA-Spieler.",
-    "mapTitle": "Interaktive Karte - DNA Interactive",
+    "mapTitle": "Interaktive Karte",
     "mapDescription": "Vollständige interaktive Karte von Duet Night Abyss. Erkunde alle 6 Regionen, finde jedes Geheimnis, jede Truhe und jeden Ort von Interesse. Ein unverzichtbares Tool für Duet Night Abyss-Spieler.",
-    "itemsTitle": "Gegenstände & Demon Wedges - DNA Interactive",
+    "itemsTitle": "Gegenstände & Demon Wedges",
     "itemsDescription": "Duet Night Abyss Gegenstandsdatenbank: Demon Wedges, Waffen, Ressourcen und Schmiedepläne mit Filtern und detaillierten Übersichten.",
-    "charactersTitle": "Charaktere - DNA Interactive",
+    "charactersTitle": "Charaktere",
     "charactersDescription": "Datenbank der spielbaren Duet Night Abyss-Charaktere: Elemente, Waffen, Fraktionen, Porträts und mehrsprachige Übersetzungen.",
-    "codesTitle": "Duet Night Abyss Einlösecodes | DNA Interactive",
+    "codesTitle": "Duet Night Abyss Einlösecodes",
     "codesDescription": "Entdecke alle aktiven Einlösecodes für Duet Night Abyss. Promo-Codes, kostenlose Belohnungen und exklusive Boni. Regelmäßig mit neuen Codes aktualisiert.",
-    "aboutTitle": "Über uns - DNA Interactive",
+    "aboutTitle": "Über uns",
     "aboutDescription": "Entdecke die Geschichte und das Team hinter DNA Interactive. Ein Community-Projekt, erstellt von leidenschaftlichen Spielern für die Duet Night Abyss-Community.",
-    "contactTitle": "Kontakt - DNA Interactive",
+    "contactTitle": "Kontakt",
     "contactDescription": "Kontaktiere das DNA Interactive-Team für Fragen, Vorschläge oder Meldungen zur interaktiven Duet Night Abyss-Karte. Schnelle Antwort garantiert.",
-    "supportTitle": "Support & Hilfe - DNA Interactive",
+    "supportTitle": "Support & Hilfe",
     "supportDescription": "Hilfecenter und Support für DNA Interactive. FAQ, Nutzungsanleitungen, Discord-Kontakt und technischer Support für die interaktive Karte.",
-    "changelogTitle": "Änderungsprotokoll - DNA Interactive",
+    "changelogTitle": "Änderungsprotokoll",
     "changelogDescription": "Entdecke alle Updates und Verbesserungen von DNA Interactive, der interaktiven Duet Night Abyss-Karte. Vollständiger Versionsverlauf und neue Features.",
     "defaultDescription": "Die ultimative interaktive Karte für Duet Night Abyss. Erkunde die Spielwelt mit DNA Interactive.",
     "ogTitle": "DNA Interactive - Duet Night Abyss Interaktive Karte | Gaming-Karte",
     "ogDescription": "Die ultimative interaktive Karte für Duet Night Abyss. Erkunde die Spielwelt mit DNA Interactive: finde alle Geheimnisse, Truhen und Sammelobjekte.",
-    "twitterDescription": "Die ultimative interaktive Karte für Duet Night Abyss. Finde alle Geheimnisse und Sammelobjekte mit DNA Interactive."
+    "twitterDescription": "Die ultimative interaktive Karte für Duet Night Abyss. Finde alle Geheimnisse und Sammelobjekte mit DNA Interactive.",
+    "featuresTitle": "Funktionen",
+    "featuresDescription": "Alle Funktionen von DNA Interactive für Duet Night Abyss: interaktive Karte, Charakter- und Gegenstandsdatenbank, Build-Builder, Commissions und Einlösecodes.",
+    "commissionsTitle": "Covert Commissions — Live-Rotation",
+    "commissionsDescription": "Live-Rotation der Covert Commissions von Duet Night Abyss für jede Region: Charakter, Waffe und Demon Wedge, mit Countdown bis zur nächsten Aktualisierung.",
+    "builderTitle": "Community-Build-Builder",
+    "builderDescription": "Erstelle und veröffentliche Duet Night Abyss Community-Builds.",
+    "buildsTitle": "Community-Builds",
+    "buildsDescription": "Durchstöbere von Spielern veröffentlichte Duet Night Abyss Community-Builds.",
+    "calendarTitle": "Event-Kalender",
+    "calendarDescription": "Interaktiver Kalender der Duet Night Abyss Banner, Waffen und laufenden Events: durch die Zeit navigieren, zoomen und nach Kategorie filtern.",
+    "draftsTitle": "Schmiedepläne",
+    "draftsDescription": "Datenbank der Schmiedepläne: Rezepte, Zutaten, Herstellungszeiten und Details der Endgegenstände."
   },
   "commissions": {
     "eyebrow": "Covert Commissions",
@@ -965,5 +977,9 @@
     "officialAnnouncement": "Offizielle Ankündigung",
     "calendarHint": "Navigiere mit ◀ ▶, zoome, filtere nach Kategorie und fahre über ein Event oder wähle es für Details aus.",
     "fullScreen": "Vollbild"
+  },
+  "calendarPage": {
+    "heading": "Event-Kalender",
+    "intro": "Banner, Waffen und laufende Events von Duet Night Abyss. Blättere durch die Zeit, zoome und filtere nach Kategorie — der Zustand steht in der URL und ist damit teilbar."
   }
 }

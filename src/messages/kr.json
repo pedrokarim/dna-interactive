@@ -521,28 +521,40 @@
     "feature6": "지속적 업데이트"
   },
   "metadata": {
-    "homeTitle": "DNA Interactive - Duet Night Abyss 인터랙티브 맵 | 게임 맵",
+    "homeTitle": "Duet Night Abyss 인터랙티브 맵",
     "homeDescription": "Duet Night Abyss 최고의 인터랙티브 맵. DNA Interactive로 게임 세계를 탐험: 모든 비밀, 상자, 수집품을 찾아보세요. DNA 플레이어 필수 도구.",
-    "mapTitle": "인터랙티브 맵 - DNA Interactive",
+    "mapTitle": "인터랙티브 맵",
     "mapDescription": "Duet Night Abyss 완전 인터랙티브 맵. 6개 지역을 모두 탐험하고, 모든 비밀, 상자, 관심 지점을 발견하세요. Duet Night Abyss 플레이어 필수 도구.",
-    "itemsTitle": "아이템 & Demon Wedge - DNA Interactive",
+    "itemsTitle": "아이템 & Demon Wedge",
     "itemsDescription": "Duet Night Abyss 아이템 데이터베이스: Demon Wedge, 무기, 재료, 제작 설계도를 필터와 상세 시트로 확인.",
-    "charactersTitle": "캐릭터 - DNA Interactive",
+    "charactersTitle": "캐릭터",
     "charactersDescription": "Duet Night Abyss 플레이어블 캐릭터 데이터베이스: 속성, 무기, 세력, 초상화, 다국어 번역.",
-    "codesTitle": "Duet Night Abyss 교환 코드 | DNA Interactive",
+    "codesTitle": "Duet Night Abyss 교환 코드",
     "codesDescription": "Duet Night Abyss의 모든 활성 교환 코드를 확인하세요. 프로모 코드, 무료 보상, 독점 보너스. 새 코드로 정기 업데이트.",
-    "aboutTitle": "소개 - DNA Interactive",
+    "aboutTitle": "소개",
     "aboutDescription": "DNA Interactive의 이야기와 팀을 알아보세요. Duet Night Abyss 커뮤니티를 돕기 위해 열정적인 플레이어가 만든 커뮤니티 프로젝트.",
-    "contactTitle": "문의 - DNA Interactive",
+    "contactTitle": "문의",
     "contactDescription": "Duet Night Abyss 인터랙티브 맵에 대한 질문, 제안, 신고는 DNA Interactive 팀에게 문의하세요. 빠른 답변을 보장합니다.",
-    "supportTitle": "지원 & 도움 - DNA Interactive",
+    "supportTitle": "지원 & 도움",
     "supportDescription": "DNA Interactive 도움 센터 및 지원. FAQ, 사용 가이드, Discord 연락, 인터랙티브 맵 기술 지원.",
-    "changelogTitle": "업데이트 내역 - DNA Interactive",
+    "changelogTitle": "업데이트 내역",
     "changelogDescription": "DNA Interactive(Duet Night Abyss 인터랙티브 맵)의 모든 업데이트와 개선 사항을 확인하세요. 전체 버전 이력과 새 기능.",
     "defaultDescription": "Duet Night Abyss 최고의 인터랙티브 맵. DNA Interactive로 게임 세계를 탐험하세요.",
     "ogTitle": "DNA Interactive - Duet Night Abyss 인터랙티브 맵 | 게임 맵",
     "ogDescription": "Duet Night Abyss 최고의 인터랙티브 맵. DNA Interactive로 게임 세계를 탐험: 모든 비밀, 상자, 수집품을 찾아보세요.",
-    "twitterDescription": "Duet Night Abyss 최고의 인터랙티브 맵. DNA Interactive로 모든 비밀과 수집품을 찾아보세요."
+    "twitterDescription": "Duet Night Abyss 최고의 인터랙티브 맵. DNA Interactive로 모든 비밀과 수집품을 찾아보세요.",
+    "featuresTitle": "기능",
+    "featuresDescription": "Duet Night Abyss를 위한 DNA Interactive의 모든 기능: 인터랙티브 맵, 캐릭터 및 아이템 데이터베이스, 빌드 빌더, 커미션, 교환 코드.",
+    "commissionsTitle": "Covert Commissions — 실시간 로테이션",
+    "commissionsDescription": "지역별 Duet Night Abyss Covert Commissions 실시간 로테이션: 캐릭터, 무기, Demon Wedge. 다음 갱신까지 카운트다운 제공.",
+    "builderTitle": "커뮤니티 빌드 빌더",
+    "builderDescription": "Duet Night Abyss 커뮤니티 빌드를 만들고 공개하세요.",
+    "buildsTitle": "커뮤니티 빌드",
+    "buildsDescription": "플레이어가 공개한 Duet Night Abyss 커뮤니티 빌드를 둘러보세요.",
+    "calendarTitle": "이벤트 캘린더",
+    "calendarDescription": "Duet Night Abyss의 배너, 무기, 진행 중인 이벤트를 보여주는 인터랙티브 캘린더. 기간 이동, 확대, 카테고리 필터를 지원합니다.",
+    "draftsTitle": "제작 설계도",
+    "draftsDescription": "제작 설계도 데이터베이스: 레시피, 재료, 제작 시간 및 완성 아이템 정보."
   },
   "commissions": {
     "eyebrow": "Covert Commissions",
@@ -965,5 +977,9 @@
     "officialAnnouncement": "공식 공지",
     "calendarHint": "◀ ▶로 이동하고 확대하거나 카테고리별로 필터링한 뒤 이벤트에 마우스를 올리거나 선택해 세부 정보를 확인하세요.",
     "fullScreen": "전체 화면"
+  },
+  "calendarPage": {
+    "heading": "이벤트 캘린더",
+    "intro": "Duet Night Abyss의 배너, 무기, 진행 중인 이벤트. 기간을 이동하고 확대하며 카테고리로 필터링하세요. 상태가 URL에 담겨 공유할 수 있습니다."
   }
 }
