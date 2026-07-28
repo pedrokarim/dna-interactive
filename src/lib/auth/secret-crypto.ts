@@ -9,7 +9,7 @@ import { createCipheriv, createDecipheriv, randomBytes, scryptSync } from "node:
 function key(): Buffer {
   const secret = process.env.AUTH_SECRET || process.env.NEXTAUTH_SECRET;
   // Sans AUTH_SECRET, la clé dériverait d'une chaîne vide → les secrets OAuth
-  // stockés dans la base PARTAGÉE (Kagura) seraient déchiffrables par quiconque
+  // stockés dans la base PARTAGÉE seraient déchiffrables par quiconque
   // y a un accès lecture. On refuse de (dé)chiffrer plutôt que d'utiliser une
   // clé prévisible. (decryptSecret rattrape ce throw et retombe sur l'env.)
   if (!secret) {

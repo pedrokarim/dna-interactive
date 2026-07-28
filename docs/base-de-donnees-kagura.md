@@ -1,21 +1,24 @@
-# Base de données — serveur partagé Kagura (remplace Neon)
+# Base de données — serveur Postgres partagé (remplace Neon)
 
 Depuis le 2026-06-28, DNA n'utilise plus Neon (limites de compute atteintes
 trop vite). La base tourne maintenant sur le **serveur Postgres partagé** auto-
-hébergé sur le VPS Kagura, mutualisé entre nos projets « génériques ».
+hébergé sur notre VPS, mutualisé entre nos projets « génériques ».
+
+> Hôte, identifiants et chemins réels ne sont **jamais** écrits ici : ce dépôt
+> est public. Les valeurs ci-dessous sont des exemples ; les vraies vivent dans
+> le gestionnaire de secrets (variables Vercel + fichier secret du serveur).
 
 ## Connexion
 
 ```
-DATABASE_URL=postgresql://dna:<password>@db.ascencia.re:5432/dna?sslmode=verify-full
+DATABASE_URL=postgresql://<utilisateur>:<password>@<hote-db>:5432/<base>?sslmode=verify-full
 ```
 
-- Hôte public : `db.ascencia.re:5432` (pgbouncer, transaction pooling).
-- TLS **obligatoire** en `verify-full` : le cert Let's Encrypt de
-  `db.ascencia.re` est reconnu par les CA système — rien à embarquer côté
-  client (Node valide tout seul).
-- Le mot de passe vit dans `~/shared-db/.secrets-dna` sur le serveur et dans la
-  variable d'environnement Vercel (jamais commité).
+- Hôte public : `<hote-db>:5432` (pgbouncer, transaction pooling).
+- TLS **obligatoire** en `verify-full` : le cert Let's Encrypt de l'hôte est
+  reconnu par les CA système — rien à embarquer côté client (Node valide seul).
+- Le mot de passe vit dans le fichier secret du serveur et dans la variable
+  d'environnement Vercel (jamais commité, jamais cité dans ce dépôt).
 
 ## Driver
 
@@ -41,12 +44,12 @@ On est passé du driver Neon HTTP au driver standard **node-postgres** :
 ## Runner commissions (Raspberry Pi)
 
 Le runner qui collecte les rotations écrit dans la même base. Repointer son
-`DATABASE_URL` vers `postgresql://dna:<password>@db.ascencia.re:5432/dna?sslmode=verify-full`
+`DATABASE_URL` vers la même chaîne de connexion que ci-dessus
 puis relancer le service. La Pi ouvre une connexion **sortante** vers l'IP
 publique — aucun souci de NAT.
 
 ## Exploitation serveur
 
-Tout est dans `~/shared-db/` sur Kagura (voir `~/shared-db/README.md`) :
+Tout est dans le répertoire d'exploitation du serveur (voir son README) :
 ajout d'une base projet (`scripts/add-project-db.sh`), renouvellement TLS,
 logs pgbouncer, accès psql admin.

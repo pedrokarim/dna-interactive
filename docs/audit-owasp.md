@@ -1,16 +1,18 @@
 # Audit OWASP Top 10 (2021) — DNA Interactive
 
 > Audit réalisé le 2026-07-11. Périmètre : 25 routes API, couche auth (Auth.js v5),
-> DB (Drizzle / Postgres Kagura), emails (LWS), rendu de contenu utilisateur,
-> config Vercel. Code lu ligne par ligne.
+> DB (Drizzle / Postgres auto-hébergé), emails (SMTP mutualisé), rendu de contenu
+> utilisateur, config de l'hébergeur. Code lu ligne par ligne.
+>
+> ⚠️ Ce dépôt est public : aucun hôte, identifiant ni chemin réel ici.
 
 ## Contexte d'hébergement (rappel)
 
-- **Site** : Vercel serverless, domaine `dna.ascencia.re`.
-- **DB** : Postgres auto-hébergé « Kagura » via `db.ascencia.re:5432` (pgbouncer,
-  transaction pooling, TLS `verify-full`). **Base mutualisée entre projets.**
-- **Runner commissions** : Raspberry Pi, écrit dans la même base.
-- **SMTP** : LWS (`mail52.lwspanel.com:465`).
+- **Site** : hébergement serverless, domaine public du projet.
+- **DB** : Postgres auto-hébergé derrière pgbouncer (transaction pooling, TLS
+  `verify-full`). **Base mutualisée entre projets.**
+- **Runner commissions** : machine dédiée hors hébergeur, écrit dans la même base.
+- **SMTP** : fournisseur mutualisé, port 465 SSL.
 
 ## Verdict global
 
@@ -48,7 +50,7 @@ Vercel, invocations réparties sur des instances multiples et éphémères (rese
 cold-start). **Conséquence : toutes les protections de débit (register, reset,
 resend, votes, création de build) sont contournables** en répartissant les
 requêtes. Protection anti-abus largement illusoire.
-→ store partagé (table Postgres, déjà dispo sur Kagura).
+→ store partagé (table Postgres, déjà disponible).
 
 ---
 
@@ -76,10 +78,10 @@ requêtes. Protection anti-abus largement illusoire.
 
 - **Fallback de clé si `AUTH_SECRET` absent** (`secret-crypto.ts`,
   `vote-identity.ts`) : secrets OAuth chiffrés sous une clé dérivée de chaîne vide,
-  sel de vote → `"dna-vote-salt"` (public). Sur la **DB partagée Kagura**, tout
+  sel de vote → valeur par défaut publique. Sur la **DB mutualisée**, tout
   accès lecture permettrait de les déchiffrer / dé-anonymiser. → `throw` au
   démarrage si `AUTH_SECRET` manque.
-- **Frontière de confiance du runner Pi** (A08) : le Pi détient des identifiants
+- **Frontière de confiance du runner externe** (A08) : il détient des identifiants
   d'écriture sur le même Postgres que le site. → rôle DB dédié restreint aux
   tables commissions, distinct du rôle applicatif.
 - **`sslmode=require` dans `env.local.example`** : chiffre sans vérifier le cert.
