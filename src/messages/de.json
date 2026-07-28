@@ -1,5 +1,10 @@
 {
   "characterShowcase": {
+    "ada": {
+      "subtitle": "Der einsame Hase des Paradieses",
+      "description": "Hinter ihrem Lächeln leben zwei Erinnerungen: eine vom Krieg zerrissene Heimat und ein Paradies, das vielleicht nie existiert hat. Sie wandelt zwischen beiden, ohne je zu sagen, welche ihre ist.",
+      "camp": "Keine Fraktion"
+    },
     "flora": {
       "subtitle": "Rebellische Blüte",
       "description": "Unter onyxschwarzen Blütenblättern schwelt ein langsamer Zorn. Jeder Dorn zeichnet einen gebrochenen Schwur; jede Blüte, eine aufgeschobene Abrechnung. Die Nacht öffnet sich vor ihren Schritten wie ein Garten, den jemand zu verschließen vergaß.",
@@ -1138,7 +1143,8 @@
     "view": "Ansehen",
     "officialAnnouncement": "Offizielle Ankündigung",
     "calendarHint": "Navigiere mit ◀ ▶, zoome, filtere nach Kategorie und fahre über ein Event oder wähle es für Details aus.",
-    "fullScreen": "Vollbild"
+    "fullScreen": "Vollbild",
+    "communityResources": "Community & Ressourcen"
   },
   "calendarPage": {
     "heading": "Event-Kalender",
@@ -1341,6 +1347,21 @@
     "metaDescription": "Unheilswaffen von Duet Night Abyss verstehen: Unheilsfusion, Waffenpotenziale, Beherrschungsvoraussetzungen und Demon-Wedge-Builds."
   },
   "changelogEntries": {
+    "v2_3_0": {
+      "title": "Ada kommt in die Datenbank: Version 1.5, neue Waffen und die Seite in 7 Sprachen",
+      "description": "Alle Daten der Seite wurden aus Spielversion 1.5 neu erzeugt. Drei neue Waffen kommen samt ihrer Schmiedekomponenten hinzu, die Demon-Wedge-Datenbank wächst deutlich, und die gesamte Seite ist nun in allen 7 Sprachen übersetzt — inklusive Seitentitel und Detailseiten.",
+      "items": [
+        "🌊 **Ada** kommt in die Charakterdatenbank — Hydro, 5★, „Der einsame Hase des Paradieses“, mit Werten, Fähigkeiten und Artwork",
+        "⚔️ Drei neue Waffen: The Best Day, Sanguis Sanctus – Pistol und Obsidian Heart-Reaper, mit Artwork",
+        "🔨 Ihre Schmiedekomponenten in den Plänen ergänzt (Lauf, Rahmen, Klinge, Griff…)",
+        "💠 Die Demon-Wedge-Datenbank wächst von 738 auf 829 Einträge",
+        "🎁 Neue Ressourcen: Starglow Coin, Auswahltruhen, Paradise-Accessoire-Gutschein, Geniemon-Medaille",
+        "🐟 Übersetzungskorrektur seitens des Spiels: Der „Perlhai“ ist in Wahrheit ein „Perlrochen“",
+        "🌍 Seite vollständig in 7 Sprachen übersetzt: Seitentitel und -beschreibungen, Charakter- und Gegenstandsseiten, Karte, Oberfläche",
+        "🔤 Angezeigte Spieldaten weichen jetzt auf Englisch statt Französisch aus, wenn deine Sprache fehlt",
+        "🏷️ Das Versionsabzeichen im Menü zeigt nun 1.5"
+      ]
+    },
     "v2_2_0": {
       "title": "Neue Oberfläche: eine Startseite, die alles bündelt – klarer und lebendiger",
       "description": "Die Oberfläche der Website wurde komplett überarbeitet: lesbarer, angenehmer und schneller zu durchstöbern. Eine neue Startseite vereint alle Werkzeuge an einem Ort, ein Seitenmenü bleibt stets griffbereit, und die Seiten nutzen die volle Bildschirmbreite – am Rechner wie am Handy.",

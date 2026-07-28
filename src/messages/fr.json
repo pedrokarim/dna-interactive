@@ -1,5 +1,10 @@
 {
   "characterShowcase": {
+    "ada": {
+      "subtitle": "Lapin Solitaire du Paradis",
+      "description": "Deux mémoires cohabitent derrière son sourire : une patrie ravagée par la guerre, et un paradis qui n'a peut-être jamais existé. Elle avance entre les deux sans jamais dire laquelle est la sienne.",
+      "camp": "Sans faction"
+    },
     "flora": {
       "subtitle": "Floraison Rebelle",
       "description": "Sous les pétales d'onyx couve une fureur lente. Chaque épine raconte un serment trahi ; chaque éclosion, une vengeance différée. La nuit s'ouvre à son passage comme un jardin qu'on aurait oublié de fermer.",
@@ -1138,7 +1143,8 @@
     "view": "Voir",
     "officialAnnouncement": "Annonce officielle",
     "calendarHint": "Navigue avec ◀ ▶, zoome, filtre par catégorie, survole ou clique un événement pour le détail.",
-    "fullScreen": "Plein écran"
+    "fullScreen": "Plein écran",
+    "communityResources": "Communauté & ressources"
   },
   "calendarPage": {
     "heading": "Calendrier des événements",
@@ -1341,6 +1347,21 @@
     "metaDescription": "Comprendre les armes de calamité de Duet Night Abyss : Fusion de calamité, Potentiels d’arme, prérequis de maîtrise et builds de Demon Wedges."
   },
   "changelogEntries": {
+    "v2_3_0": {
+      "title": "Ada rejoint la base : version 1.5, nouvelles armes et site traduit en 7 langues",
+      "description": "Toutes les données du site ont été régénérées sur la version 1.5 du jeu. Trois nouvelles armes font leur entrée avec leurs composants de forge, la base de Demon Wedges s'agrandit fortement, et l'ensemble du site est désormais traduit dans les 7 langues — y compris les titres de pages et les fiches détaillées.",
+      "items": [
+        "🌊 **Ada** rejoint la base de personnages — Hydro, 5★, « Lapin Solitaire du Paradis », avec ses stats, ses compétences et ses portraits",
+        "⚔️ Trois nouvelles armes : The Best Day, Sanguis Sanctus – Pistol et Obsidian Heart-Reaper, avec leurs visuels",
+        "🔨 Leurs composants de forge ajoutés aux plans (canon, châssis, lame, poignée…)",
+        "💠 La base de Demon Wedges passe de 738 à 829 entrées",
+        "🎁 Nouvelles ressources : Starglow Coin, coffres de sélection, coupon d'accessoire Paradise, médaille Génimon",
+        "🐟 Correction de traduction côté jeu : le « Requin perligrane » est en réalité une « Raie perligrane »",
+        "🌍 Site entièrement traduit en 7 langues : titres et descriptions de pages, fiches personnage et item, carte, interface",
+        "🔤 Les données de jeu affichées basculent désormais en anglais plutôt qu'en français quand votre langue n'est pas disponible",
+        "🏷️ La pastille de version du menu affiche maintenant 1.5"
+      ]
+    },
     "v2_2_0": {
       "title": "Nouvelle interface : un accueil qui rassemble tout, plus clair et plus vivant",
       "description": "L'interface du site a été entièrement retravaillée pour être plus lisible, plus agréable et plus rapide à parcourir. Nouvelle page d'accueil qui réunit tous les outils au même endroit, un menu latéral toujours à portée de main, et des pages qui exploitent tout l'écran — sur ordinateur comme sur mobile.",

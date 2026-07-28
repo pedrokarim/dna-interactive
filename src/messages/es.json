@@ -1,5 +1,10 @@
 {
   "characterShowcase": {
+    "ada": {
+      "subtitle": "El Conejo Solitario del Paraíso",
+      "description": "Dos memorias conviven tras su sonrisa: una patria destrozada por la guerra y un paraíso que quizá nunca existió. Camina entre ambas sin decir jamás cuál le pertenece.",
+      "camp": "Sin facción"
+    },
     "flora": {
       "subtitle": "Floración Rebelde",
       "description": "Bajo pétalos de ónice arde una ira lenta. Cada espina marca un juramento roto; cada flor, un ajuste de cuentas aplazado. La noche se abre a su paso como un jardín que alguien olvidó cerrar.",
@@ -1138,7 +1143,8 @@
     "view": "Ver",
     "officialAnnouncement": "Anuncio oficial",
     "calendarHint": "Navega con ◀ ▶, amplía, filtra por categoría y pasa el cursor o selecciona un evento para ver sus detalles.",
-    "fullScreen": "Pantalla completa"
+    "fullScreen": "Pantalla completa",
+    "communityResources": "Comunidad y recursos"
   },
   "calendarPage": {
     "heading": "Calendario de eventos",
@@ -1341,6 +1347,21 @@
     "metaDescription": "Entender las armas de calamidad de Duet Night Abyss: Fusión de calamidad, Potenciales de arma, requisitos de dominio y builds de Demon Wedges."
   },
   "changelogEntries": {
+    "v2_3_0": {
+      "title": "Ada llega a la base de datos: versión 1.5, nuevas armas y el sitio traducido a 7 idiomas",
+      "description": "Todos los datos del sitio se han regenerado a partir de la versión 1.5 del juego. Llegan tres nuevas armas con sus componentes de forja, la base de Demon Wedges crece notablemente y todo el sitio está ahora traducido a los 7 idiomas, incluidos los títulos de página y las fichas detalladas.",
+      "items": [
+        "🌊 **Ada** llega a la base de personajes: Hydro, 5★, «El Conejo Solitario del Paraíso», con sus estadísticas, habilidades e ilustraciones",
+        "⚔️ Tres nuevas armas: The Best Day, Sanguis Sanctus – Pistol y Obsidian Heart-Reaper, con sus ilustraciones",
+        "🔨 Sus componentes de forja añadidos a los planos (cañón, chasis, hoja, empuñadura…)",
+        "💠 La base de Demon Wedges pasa de 738 a 829 entradas",
+        "🎁 Nuevos recursos: Starglow Coin, cofres de selección, cupón de accesorio Paradise, medalla Geniemon",
+        "🐟 Corrección de traducción del juego: el «tiburón perlado» es en realidad una «raya perlada»",
+        "🌍 Sitio totalmente traducido a 7 idiomas: títulos y descripciones de páginas, fichas de personaje y objeto, mapa, interfaz",
+        "🔤 Los datos del juego ahora recurren al inglés en lugar del francés cuando tu idioma no está disponible",
+        "🏷️ La insignia de versión del menú muestra ahora 1.5"
+      ]
+    },
     "v2_2_0": {
       "title": "Nueva interfaz: una portada que lo reúne todo, más clara y más viva",
       "description": "La interfaz del sitio se ha rehecho por completo para ser más legible, más agradable y más rápida de recorrer. Una nueva portada reúne todas las herramientas en un solo lugar, un menú lateral siempre a mano y páginas que aprovechan toda la pantalla, tanto en ordenador como en móvil.",

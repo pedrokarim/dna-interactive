@@ -117,7 +117,7 @@ export const NAVIGATION = {
  * Version du jeu couverte par le site (pastille de la topbar). À bumper à
  * chaque patch — c'est l'unique endroit où elle est écrite.
  */
-export const GAME_VERSION = "1.4";
+export const GAME_VERSION = "1.5";
 
 /** Année d'ouverture du site, pour le copyright (l'année de fin est calculée). */
 export const SITE_LAUNCH_YEAR = 2025;

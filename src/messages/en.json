@@ -1,5 +1,10 @@
 {
   "characterShowcase": {
+    "ada": {
+      "subtitle": "The Lone Bunny of Paradise",
+      "description": "Two sets of memories live behind her smile: a homeland torn apart by war, and a paradise that may never have existed. She walks between them, never saying which one is hers.",
+      "camp": "No faction"
+    },
     "flora": {
       "subtitle": "Rebel Bloom",
       "description": "Beneath petals of onyx simmers a slow wrath. Each thorn marks a broken oath; each blossom, a deferred reckoning. Night opens to her passage like a garden someone forgot to lock.",
@@ -1138,7 +1143,8 @@
     "view": "View",
     "officialAnnouncement": "Official announcement",
     "calendarHint": "Use ◀ ▶ to navigate, zoom, filter by category, then hover over or select an event for details.",
-    "fullScreen": "Full screen"
+    "fullScreen": "Full screen",
+    "communityResources": "Community & resources"
   },
   "calendarPage": {
     "heading": "Event Calendar",
@@ -1341,6 +1347,21 @@
     "metaDescription": "Understand Duet Night Abyss calamity weapons: Calamity Fusion, Weapon Potentials, mastery prerequisites and Demon Wedge builds."
   },
   "changelogEntries": {
+    "v2_3_0": {
+      "title": "Ada joins the database: version 1.5, new weapons, and the site translated into 7 languages",
+      "description": "All site data has been regenerated from game version 1.5. Three new weapons arrive with their forge components, the Demon Wedge database grows substantially, and the whole site is now translated into all 7 languages — including page titles and detail pages.",
+      "items": [
+        "🌊 **Ada** joins the character database — Hydro, 5★, “The Lone Bunny of Paradise”, with her stats, skills and artwork",
+        "⚔️ Three new weapons: The Best Day, Sanguis Sanctus – Pistol and Obsidian Heart-Reaper, with their artwork",
+        "🔨 Their forge components added to the blueprints (barrel, frame, blade, grip…)",
+        "💠 The Demon Wedge database grows from 738 to 829 entries",
+        "🎁 New resources: Starglow Coin, selection chests, Paradise Accessory Coupon, Geniemon Medal",
+        "🐟 Game-side translation fix: the “pearl shark” is in fact a “pearl ray”",
+        "🌍 Site fully translated into 7 languages: page titles and descriptions, character and item pages, map, interface",
+        "🔤 Displayed game data now falls back to English instead of French when your language is unavailable",
+        "🏷️ The version badge in the menu now reads 1.5"
+      ]
+    },
     "v2_2_0": {
       "title": "New interface: a home page that brings everything together, clearer and livelier",
       "description": "The site interface has been fully reworked to be more readable, more pleasant and faster to browse. A new home page gathers every tool in one place, a side menu stays within reach, and pages now use the full screen — on desktop and mobile alike.",
