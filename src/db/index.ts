@@ -5,8 +5,8 @@ import * as schema from "./schema";
 /**
  * Client Drizzle sur Postgres via le driver node-postgres (`pg`).
  *
- * La base est le serveur Postgres partagé (Kagura, `db.ascencia.re`) exposé
- * derrière pgbouncer en transaction pooling. On garde un seul `Pool` par
+ * La base est un serveur Postgres partagé (hôte défini par `DATABASE_URL`)
+ * exposé derrière pgbouncer en transaction pooling. On garde un seul `Pool` par
  * instance de fonction serverless (réutilisé entre les invocations chaudes) ;
  * pgbouncer assure le vrai pooling côté serveur, donc le pool applicatif
  * reste volontairement petit.

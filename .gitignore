@@ -59,3 +59,6 @@ skills-lock.json
 *storybook.log
 storybook-static
 .sb-dev.log
+
+# Notes de passation / guides de setup internes : jamais versionnes
+HANDOFF-*.md
