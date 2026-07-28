@@ -1,4 +1,5 @@
 "use client";
+import { useTranslations } from "next-intl";
 import { cn } from "./cn";
 
 export type DnaStepperProps = {
@@ -13,11 +14,13 @@ export type DnaStepperProps = {
 
 /** Incrémenteur (manche, palier…). */
 export function DnaStepper({ value, min = 0, max = 99, onChange, suffix, className }: DnaStepperProps) {
+  const t = useTranslations("common");
+
   return (
     <div className={cn("inline-flex items-center border border-line/30 bg-white/2", className)}>
       <button
         type="button"
-        aria-label="Diminuer"
+        aria-label={t("decrease")}
         onClick={() => onChange?.(Math.max(min, value - 1))}
         className="h-[38px] w-[38px] text-gold transition-colors hover:bg-gold/10 hover:text-gold-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gold/60"
       >
@@ -29,7 +32,7 @@ export function DnaStepper({ value, min = 0, max = 99, onChange, suffix, classNa
       </span>
       <button
         type="button"
-        aria-label="Augmenter"
+        aria-label={t("increase")}
         onClick={() => onChange?.(Math.min(max, value + 1))}
         className="h-[38px] w-[38px] text-gold transition-colors hover:bg-gold/10 hover:text-gold-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gold/60"
       >

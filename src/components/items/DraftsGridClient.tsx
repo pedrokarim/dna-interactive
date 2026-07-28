@@ -594,7 +594,7 @@ export default function DraftsGridClient({
                 </div>
 
                 <div className="mt-4">
-                  <p className="mb-2 text-[11px] uppercase tracking-[0.22em] text-muted">Recette</p>
+                  <p className="mb-2 text-[11px] uppercase tracking-[0.22em] text-muted">{t("recipeLabel")}</p>
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                     {ingredientSlots.map((ingredient, index) =>
                       ingredient ? (

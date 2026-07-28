@@ -6,6 +6,7 @@ import { getClientIp } from "@/lib/community-builds/vote-identity";
 import { hashPassword } from "@/lib/auth/password";
 import { consumeAuthToken } from "@/lib/auth/tokens";
 import { resetSchema } from "@/lib/auth/credentials-validation";
+import { getApiTranslator } from "@/lib/api-locale";
 
 export const dynamic = "force-dynamic";
 
@@ -13,23 +14,24 @@ export const dynamic = "force-dynamic";
 // a prouvé le contrôle de son email, on valide aussi l'email par la même
 // occasion (débloque le login natif pour les comptes non encore vérifiés).
 export async function POST(request: Request) {
+  const t = await getApiTranslator(request);
   const ip = getClientIp(request.headers);
   const rate = await checkRateLimit(`auth:reset:${ip}`, 10, 60 * 60 * 1000);
   if (!rate.ok) {
     return NextResponse.json(
-      { error: "Trop de tentatives. Réessaie plus tard." },
+      { error: t("tooManyAttempts") },
       { status: 429, headers: { "Retry-After": `${rate.retryAfter}` } },
     );
   }
 
   const parsed = resetSchema.safeParse(await request.json().catch(() => null));
   if (!parsed.success) {
-    return NextResponse.json({ error: parsed.error.issues[0]?.message ?? "Données invalides." }, { status: 400 });
+    return NextResponse.json({ error: t(parsed.error.issues[0]?.message ?? "invalidData") }, { status: 400 });
   }
 
   const userId = await consumeAuthToken(parsed.data.token, "reset_password");
   if (!userId) {
-    return NextResponse.json({ error: "Lien invalide ou expiré. Redemande une réinitialisation." }, { status: 400 });
+    return NextResponse.json({ error: t("resetLinkInvalid") }, { status: 400 });
   }
 
   const passwordHash = await hashPassword(parsed.data.password);

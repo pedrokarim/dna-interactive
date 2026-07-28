@@ -7,24 +7,26 @@ import { createAuthToken } from "@/lib/auth/tokens";
 import { requestResetSchema } from "@/lib/auth/credentials-validation";
 import { sendPasswordResetEmail, toEmailLocale } from "@/lib/email/auth-emails";
 import { getSiteUrl } from "@/lib/auth/site";
+import { getApiTranslator } from "@/lib/api-locale";
 
 export const dynamic = "force-dynamic";
 
 // Réponse 200 systématique (pas d'énumération d'emails). Un lien n'est envoyé
 // que si un compte existe pour cet email.
 export async function POST(request: Request) {
+  const t = await getApiTranslator(request);
   const ip = getClientIp(request.headers);
   const rate = await checkRateLimit(`auth:reset-request:${ip}`, 5, 60 * 60 * 1000);
   if (!rate.ok) {
     return NextResponse.json(
-      { error: "Trop de tentatives. Réessaie plus tard." },
+      { error: t("tooManyAttempts") },
       { status: 429, headers: { "Retry-After": `${rate.retryAfter}` } },
     );
   }
 
   const parsed = requestResetSchema.safeParse(await request.json().catch(() => null));
   if (!parsed.success) {
-    return NextResponse.json({ error: "Email invalide." }, { status: 400 });
+    return NextResponse.json({ error: t("emailInvalid") }, { status: 400 });
   }
   const { email, locale } = parsed.data;
 

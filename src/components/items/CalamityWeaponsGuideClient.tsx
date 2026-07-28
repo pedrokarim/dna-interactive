@@ -2,6 +2,7 @@
 
 import type { ReactNode } from "react";
 import { useMemo, useState } from "react";
+import { useTranslations } from "next-intl";
 import {
   ArrowLeft,
   BadgeInfo,
@@ -74,6 +75,8 @@ export type CalamityGuideWeapon = {
 
 type CalamityWeaponsGuideClientProps = {
   categorySlug: string;
+  /** Code langue des données de jeu (FR, EN, …) dérivé de la locale de la page. */
+  gameLang: string;
   totalWeaponCount: number;
   weapons: CalamityGuideWeapon[];
   wedgePools: {
@@ -84,59 +87,25 @@ type CalamityWeaponsGuideClientProps = {
   };
 };
 
-const FUSION_STEPS = [
-  {
-    level: 0,
-    label: "Base",
-    title: "Arme obtenue",
-    body: "L’arme est équipeable et son potentiel de base existe, mais le chemin de forge n’est pas encore monté.",
-  },
-  {
-    level: 1,
-    label: "I",
-    title: "Four de calamité I",
-    body: "Premier palier de Fusion de calamité. Les coûts commencent à utiliser le prototype de l’arme concernée.",
-  },
-  {
-    level: 2,
-    label: "II",
-    title: "Four de calamité II",
-    body: "Le chemin ajoute des potentiels ou des bonus de stats liés à l’arbre HyperWeaponSkillTree.",
-  },
-  {
-    level: 3,
-    label: "III",
-    title: "Four de calamité III",
-    body: "Les branches de potentiel avancent. Les effets restent conditionnés par l’arme de prédilection du personnage.",
-  },
-  {
-    level: 4,
-    label: "IV",
-    title: "Four de calamité IV",
-    body: "Les gros bonus de branche sont disponibles lorsque le niveau du four global suit.",
-  },
-  {
-    level: 5,
-    label: "V",
-    title: "Four de calamité V",
-    body: "Palier final actuellement exposé par les tables locales: niveau maximal de fusion 5.",
-  },
+/** Paliers de Fusion : le chiffre romain est un repère visuel, les textes viennent des messages. */
+const FUSION_LEVELS = [
+  { level: 0, label: null },
+  { level: 1, label: "I" },
+  { level: 2, label: "II" },
+  { level: 3, label: "III" },
+  { level: 4, label: "IV" },
+  { level: 5, label: "V" },
 ] as const;
 
-const ATK_TYPE_LABELS: Record<string, string> = {
-  Psionic: "Psionique",
-  Smash: "Contondant",
-  Spike: "Perçant",
-  Slash: "Tranchant",
-};
+const ATK_TYPE_KEYS = ["Psionic", "Smash", "Spike", "Slash"];
 
-function formatPercent(value: number | null, digits = 0): string {
-  if (value === null) return "N/A";
+function formatPercent(value: number | null, digits = 0, naLabel = "N/A"): string {
+  if (value === null) return naLabel;
   return `${(value * 100).toFixed(digits).replace(/\.0+$/, "")}%`;
 }
 
-function formatVersion(value: number | null): string {
-  if (value === null) return "N/A";
+function formatVersion(value: number | null, naLabel = "N/A"): string {
+  if (value === null) return naLabel;
   if (value < 10) return `v${value}`;
   return `v${Math.floor(value / 10)}.${value % 10}`;
 }
@@ -173,10 +142,12 @@ function FactCard({
 
 export default function CalamityWeaponsGuideClient({
   categorySlug,
+  gameLang,
   totalWeaponCount,
   weapons,
   wedgePools,
 }: CalamityWeaponsGuideClientProps) {
+  const t = useTranslations("calamityGuide");
   const [selectedWeaponId, setSelectedWeaponId] = useState(weapons[0]?.id ?? "");
   const [fusionLevel, setFusionLevel] = useState(0);
 
@@ -189,7 +160,13 @@ export default function CalamityWeaponsGuideClient({
     return null;
   }
 
-  const currentStep = FUSION_STEPS.find((step) => step.level === fusionLevel) ?? FUSION_STEPS[0];
+  const code = (chunks: ReactNode) => <code>{chunks}</code>;
+  const naLabel = t("naValue");
+  const currentLevel = FUSION_LEVELS.find((step) => step.level === fusionLevel) ?? FUSION_LEVELS[0];
+  // Le palier 0 porte un libellé traduit ; les suivants gardent leur chiffre romain.
+  const currentStepLabel = currentLevel.label ?? t("fusionSteps.0.label");
+  const currentStepTitle = t(`fusionSteps.${currentLevel.level}.title`);
+  const currentStepBody = t(`fusionSteps.${currentLevel.level}.body`);
   const currentForgeStep = activeWeapon.forgeSteps.find((step) => step.level === Math.max(1, fusionLevel));
   const unlockedPotentialNodes = potentialNodesUnlocked(activeWeapon.id, fusionLevel);
   return (
@@ -201,39 +178,39 @@ export default function CalamityWeaponsGuideClient({
             className="inline-flex items-center gap-2 rounded-sm border border-white/10 px-3 py-2 text-sm text-parch transition-colors hover:border-gold/45 hover:text-gold"
           >
             <ArrowLeft className="h-4 w-4" />
-            Retour aux armes
+            {t("backToWeapons")}
           </Link>
           <CalamityBadge>
             <BookOpenText className="h-3.5 w-3.5 text-crimson-bright" />
-            Guide Armes de calamité
+            {t("badge")}
           </CalamityBadge>
         </div>
 
         <div className="mt-7 grid gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
           <div>
             <p className="font-caps text-[0.68rem] uppercase tracking-[0.3em] text-crimson-bright">
-              HyperWeapon / Fusion de calamité
+              {t("eyebrow")}
             </p>
-            <h1 className="mt-3 max-w-4xl font-display text-4xl text-parch md:text-5xl">
-              Comprendre les armes de calamité
-            </h1>
+            <h1 className="mt-3 max-w-4xl font-display text-4xl text-parch md:text-5xl">{t("title")}</h1>
             <p className="mt-4 max-w-3xl text-sm leading-relaxed text-parch/85 md:text-base">
-              Dans les données du jeu, une arme de calamité est une arme dont le sous-type technique est{" "}
-              <code>Hyper</code>. Elle possède une progression de Fusion de calamité de 0 à 5, des Potentiels
-              d’arme, et une règle stricte: le Potentiel ne fonctionne que si le personnage maîtrise ce type d’arme.
+              {t.rich("intro", { c: code })}
             </p>
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div className="border border-crimson-bright/25 bg-crimson/10 p-4">
-              <p className="font-caps text-[0.62rem] uppercase tracking-[0.22em] text-muted">Catalogue</p>
+              <p className="font-caps text-[0.62rem] uppercase tracking-[0.22em] text-muted">
+                {t("catalogLabel")}
+              </p>
               <p className="mt-1 font-display text-3xl text-parch">{weapons.length}</p>
-              <p className="text-xs text-muted">armes Hyper sur {totalWeaponCount} armes locales</p>
+              <p className="text-xs text-muted">{t("catalogCount", { total: totalWeaponCount })}</p>
             </div>
             <div className="border border-gold/25 bg-gold/10 p-4">
-              <p className="font-caps text-[0.62rem] uppercase tracking-[0.22em] text-muted">Fusion</p>
+              <p className="font-caps text-[0.62rem] uppercase tracking-[0.22em] text-muted">
+                {t("fusionLabel")}
+              </p>
               <p className="mt-1 font-display text-3xl text-parch">0-5</p>
-              <p className="text-xs text-muted">paliers exposés par HyperWeaponCardLevel</p>
+              <p className="text-xs text-muted">{t("fusionTiers")}</p>
             </div>
           </div>
         </div>
@@ -241,22 +218,22 @@ export default function CalamityWeaponsGuideClient({
         <div className="mt-6 flex flex-wrap gap-2">
           <CalamityBadge>
             <Swords className="h-3.5 w-3.5 text-gold" />
-            1 arme de calamité max par personnage
+            {t("badgeOnePerCharacter")}
           </CalamityBadge>
           <CalamityBadge>
             <Target className="h-3.5 w-3.5 text-hydro" />
-            Potentiel actif seulement avec l’arme de prédilection
+            {t("badgePotentialOnly")}
           </CalamityBadge>
           <CalamityBadge>
             <Gem className="h-3.5 w-3.5 text-umbro" />
-            Builds Demon Wedges d’arme séparés
+            {t("badgeSeparateBuilds")}
           </CalamityBadge>
         </div>
       </DnaPanel>
 
       <section className="grid gap-5 xl:grid-cols-[0.95fr_1.35fr]">
         <DnaPanel className="p-4 md:p-5">
-          <DnaSectionLabel>Arsenal de calamité</DnaSectionLabel>
+          <DnaSectionLabel>{t("arsenalLabel")}</DnaSectionLabel>
           <div className="mt-4 grid gap-2">
             {weapons.map((weapon) => {
               const active = weapon.id === activeWeapon.id;
@@ -288,7 +265,7 @@ export default function CalamityWeaponsGuideClient({
                   <span className="min-w-0">
                     <span className="block truncate font-display text-lg text-parch">{weapon.name}</span>
                     <span className="mt-1 block truncate text-xs text-muted">
-                      {weapon.typeLabel} · {weapon.subtypeLabel} · {formatVersion(weapon.openVersion)}
+                      {weapon.typeLabel} · {weapon.subtypeLabel} · {formatVersion(weapon.openVersion, naLabel)}
                     </span>
                   </span>
                 </button>
@@ -300,7 +277,7 @@ export default function CalamityWeaponsGuideClient({
         <DnaPanel className="p-4 md:p-5">
           <div className="grid gap-5 lg:grid-cols-[1fr_220px]">
             <div className="min-w-0">
-              <DnaSectionLabel>Fiche active</DnaSectionLabel>
+              <DnaSectionLabel>{t("activeSheetLabel")}</DnaSectionLabel>
               <div className="mt-5 flex flex-col gap-5 sm:flex-row">
                 <div className="grid h-32 w-32 shrink-0 place-items-center border border-crimson-bright/35 bg-ink/70 p-4 shadow-[0_0_35px_rgba(181,48,42,0.16)]">
                   <DnaItemIcon
@@ -328,37 +305,43 @@ export default function CalamityWeaponsGuideClient({
                     </span>
                   </div>
                   <p className="mt-4 line-clamp-4 text-sm leading-relaxed text-parch/80">
-                    {activeWeapon.description ?? "Aucune description localisée disponible dans l’extrait actuel."}
+                    {activeWeapon.description ?? t("noDescription")}
                   </p>
                   <Link
                     href={activeWeapon.href}
                     className="mt-4 inline-flex items-center gap-2 rounded-sm border border-gold/35 bg-gold/10 px-3 py-2 text-sm font-medium text-gold transition-colors hover:bg-gold/20"
                   >
-                    Ouvrir la fiche complète
+                    {t("openFullSheet")}
                   </Link>
                 </div>
               </div>
 
               <div className="mt-5 grid gap-3 md:grid-cols-2">
                 <DnaStatRow
-                  label="ATQ"
+                  label={t("statAtk")}
                   value={
                     activeWeapon.baseAtk !== null && activeWeapon.maxAtk !== null
                       ? `${activeWeapon.baseAtk} -> ${activeWeapon.maxAtk}`
-                      : "N/A"
+                      : naLabel
                   }
                 />
                 <DnaStatRow
-                  label="Type ATQ"
-                  value={activeWeapon.atkType ? ATK_TYPE_LABELS[activeWeapon.atkType] ?? activeWeapon.atkType : "N/A"}
+                  label={t("statAtkType")}
+                  value={
+                    activeWeapon.atkType
+                      ? ATK_TYPE_KEYS.includes(activeWeapon.atkType)
+                        ? t(`atkTypes.${activeWeapon.atkType}`)
+                        : activeWeapon.atkType
+                      : naLabel
+                  }
                 />
-                <DnaStatRow label="Taux critique" value={formatPercent(activeWeapon.critRate)} />
-                <DnaStatRow label="Dégâts critiques" value={formatPercent(activeWeapon.critDamage)} />
+                <DnaStatRow label={t("statCritRate")} value={formatPercent(activeWeapon.critRate, 0, naLabel)} />
+                <DnaStatRow label={t("statCritDamage")} value={formatPercent(activeWeapon.critDamage, 0, naLabel)} />
               </div>
             </div>
 
             <div className="border border-white/10 bg-ink/55 p-4">
-              <DnaSectionLabel>Fusion</DnaSectionLabel>
+              <DnaSectionLabel>{t("fusionLabel")}</DnaSectionLabel>
               <WeaponFusionTrack
                 levels={[0, 1, 2, 3, 4, 5]}
                 value={fusionLevel}
@@ -367,14 +350,14 @@ export default function CalamityWeaponsGuideClient({
               />
               <div className="mt-4 border border-crimson-bright/25 bg-crimson/10 p-3">
                 <p className="font-caps text-[0.6rem] uppercase tracking-[0.22em] text-crimson-bright">
-                  Palier {currentStep.label}
+                  {t("tierLabel", { label: currentStepLabel })}
                 </p>
-                <p className="mt-1 text-sm font-medium text-parch">{currentStep.title}</p>
-                <p className="mt-2 text-xs leading-relaxed text-parch/75">{currentStep.body}</p>
+                <p className="mt-1 text-sm font-medium text-parch">{currentStepTitle}</p>
+                <p className="mt-2 text-xs leading-relaxed text-parch/75">{currentStepBody}</p>
                 <p className="mt-3 text-xs text-muted">
-                  Potentiels connus déverrouillés:{" "}
+                  {t("unlockedPotentials")}{" "}
                   <span className="text-parch">
-                    {unlockedPotentialNodes === null ? "non détaillé dans l’export" : unlockedPotentialNodes}
+                    {unlockedPotentialNodes === null ? t("notDetailed") : unlockedPotentialNodes}
                   </span>
                 </p>
               </div>
@@ -385,45 +368,39 @@ export default function CalamityWeaponsGuideClient({
 
       <DnaPanel className="p-4 md:p-5">
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <DnaSectionLabel>Potentiels · {activeWeapon.name}</DnaSectionLabel>
+          <DnaSectionLabel>{t("potentialsLabel", { name: activeWeapon.name })}</DnaSectionLabel>
           <span className="font-caps text-[0.6rem] uppercase tracking-[0.2em] text-muted">
-            Ajuste la piste de Fusion (palier {currentStep.label}) pour verrouiller / déverrouiller
+            {t("adjustHint", { label: currentStepLabel })}
           </span>
         </div>
         <div className="mt-5">
-          <CalamityPotentialTree weaponItemId={activeWeapon.id} lang="FR" fusionLevel={fusionLevel} />
+          <CalamityPotentialTree weaponItemId={activeWeapon.id} lang={gameLang} fusionLevel={fusionLevel} />
         </div>
       </DnaPanel>
 
       <section className="grid gap-5 lg:grid-cols-4">
-        <FactCard icon={<FlameKindling className="h-5 w-5" />} title="Fusion de calamité">
-          La Fusion de calamité augmente le niveau de fusion de l’arme. Les tables locales exposent les paliers 1 à
-          5 via <code>HyperWeaponCardLevel</code>.
+        <FactCard icon={<FlameKindling className="h-5 w-5" />} title={t("factFusionTitle")}>
+          {t.rich("factFusionBody", { c: code })}
         </FactCard>
-        <FactCard icon={<Sparkles className="h-5 w-5" />} title="Potentiels d’arme">
-          Les Potentiels sont débloqués par la fusion. Dans le texte du jeu, ils ne prennent effet que si le type de
-          l’arme correspond à l’arme de prédilection du personnage.
+        <FactCard icon={<Sparkles className="h-5 w-5" />} title={t("factPotentialTitle")}>
+          {t("factPotentialBody")}
         </FactCard>
-        <FactCard icon={<Lock className="h-5 w-5" />} title="Limite d’équipement">
-          Le texte UI indique qu’un personnage ne peut équiper qu’une seule Arme de calamité à la fois.
+        <FactCard icon={<Lock className="h-5 w-5" />} title={t("factLimitTitle")}>
+          {t("factLimitBody")}
         </FactCard>
-        <FactCard icon={<ShieldCheck className="h-5 w-5" />} title="Pas une Consonance">
-          Les armes de calamité sont les armes <code>Hyper</code>. Les clés <code>*Ultra</code> dans les Demon Wedges
-          concernent les armes de Consonance.
+        <FactCard icon={<ShieldCheck className="h-5 w-5" />} title={t("factNotConsonanceTitle")}>
+          {t.rich("factNotConsonanceBody", { c: code })}
         </FactCard>
       </section>
 
       <section className="grid gap-5 lg:grid-cols-[0.95fr_1.05fr]">
         <DnaPanel className="p-4 md:p-5">
-          <DnaSectionLabel>Coût du palier sélectionné</DnaSectionLabel>
-          <p className="mt-3 text-sm leading-relaxed text-parch/80">
-            Les coûts ci-dessous viennent de la table <code>HyperWeaponCardLevel</code>. Les armes en acier exposent
-            actuellement un coût minimal en Phoxène dans les données locales.
-          </p>
+          <DnaSectionLabel>{t("costLabel")}</DnaSectionLabel>
+          <p className="mt-3 text-sm leading-relaxed text-parch/80">{t.rich("costText", { c: code })}</p>
 
           {fusionLevel === 0 ? (
             <div className="mt-4 border border-white/10 bg-ink/55 p-4 text-sm text-muted">
-              Aucun coût de fusion pour le palier 0.
+              {t("costNoneTier0")}
             </div>
           ) : currentForgeStep ? (
             <div className="mt-4 grid gap-2 sm:grid-cols-2">
@@ -437,7 +414,7 @@ export default function CalamityWeaponsGuideClient({
                   </span>
                   <span className="min-w-0 flex-1">
                     <span className="block truncate text-sm text-parch">{material.name}</span>
-                    <span className="text-xs text-muted">ID {material.id}</span>
+                    <span className="text-xs text-muted">{t("materialId", { id: material.id })}</span>
                   </span>
                   <span className="font-caps text-sm text-gold">x{material.quantity}</span>
                 </div>
@@ -448,33 +425,37 @@ export default function CalamityWeaponsGuideClient({
             </div>
           ) : (
             <div className="mt-4 border border-white/10 bg-ink/55 p-4 text-sm text-muted">
-              Coût non exposé pour ce palier dans l’extrait actuel.
+              {t("costNotExposed")}
             </div>
           )}
         </DnaPanel>
 
         <DnaPanel className="p-4 md:p-5">
-          <DnaSectionLabel>Demon Wedges liés</DnaSectionLabel>
+          <DnaSectionLabel>{t("wedgesLabel")}</DnaSectionLabel>
           <p className="mt-3 text-sm leading-relaxed text-parch/80">
-            La fiche d’arme du site peut afficher un build de Demon Wedges canonique. Pour{" "}
-            <span className="text-parch">{activeWeapon.name}</span>, le pool compatible est{" "}
-            <code>{activeWeapon.wedgePoolKey}</code>, soit {activeWeapon.wedgePoolLabel}.
+            {t.rich("wedgesText", {
+              name: activeWeapon.name,
+              poolKey: activeWeapon.wedgePoolKey,
+              poolLabel: activeWeapon.wedgePoolLabel,
+              c: code,
+              n: (chunks) => <span className="text-parch">{chunks}</span>,
+            })}
           </p>
           <div className="mt-4 grid grid-cols-2 gap-2 text-xs sm:grid-cols-4">
             <div className="border border-white/10 bg-ink/55 p-3">
-              <p className="text-muted">Mêlée</p>
+              <p className="text-muted">{t("poolMelee")}</p>
               <p className="mt-1 font-display text-2xl text-parch">{wedgePools.melee}</p>
             </div>
             <div className="border border-white/10 bg-ink/55 p-3">
-              <p className="text-muted">Distance</p>
+              <p className="text-muted">{t("poolRanged")}</p>
               <p className="mt-1 font-display text-2xl text-parch">{wedgePools.ranged}</p>
             </div>
             <div className="border border-white/10 bg-ink/55 p-3">
-              <p className="text-muted">Consonance mêlée</p>
+              <p className="text-muted">{t("poolConsonanceMelee")}</p>
               <p className="mt-1 font-display text-2xl text-parch">{wedgePools.consonanceMelee}</p>
             </div>
             <div className="border border-white/10 bg-ink/55 p-3">
-              <p className="text-muted">Consonance distance</p>
+              <p className="text-muted">{t("poolConsonanceRanged")}</p>
               <p className="mt-1 font-display text-2xl text-parch">{wedgePools.consonanceRanged}</p>
             </div>
           </div>
@@ -499,22 +480,19 @@ export default function CalamityWeaponsGuideClient({
       </section>
 
       <DnaPanel className="p-4 md:p-5">
-        <DnaSectionLabel>Lecture des données locales</DnaSectionLabel>
+        <DnaSectionLabel>{t("dataLabel")}</DnaSectionLabel>
         <div className="mt-4 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
-          <FactCard icon={<BadgeInfo className="h-5 w-5" />} title="Weapon">
-            <code>WeaponSubType = Hyper</code> identifie les armes de calamité. C’est le signal utilisé pour cette
-            fiche.
+          <FactCard icon={<BadgeInfo className="h-5 w-5" />} title={t("dataWeaponTitle")}>
+            {t.rich("dataWeaponBody", { c: code })}
           </FactCard>
-          <FactCard icon={<Zap className="h-5 w-5" />} title="BattleWeapon">
-            Les stats de combat viennent de <code>BattleWeapon</code>: ATQ, type d’ATQ, critique et bonus liés aux
-            potentiels.
+          <FactCard icon={<Zap className="h-5 w-5" />} title={t("dataBattleWeaponTitle")}>
+            {t.rich("dataBattleWeaponBody", { c: code })}
           </FactCard>
-          <FactCard icon={<GitBranch className="h-5 w-5" />} title="SkillTree">
-            <code>HyperWeaponSkillTree</code> décrit les branches de potentiels connues pour Conflit perpétuel et
-            Requiem d’épines.
+          <FactCard icon={<GitBranch className="h-5 w-5" />} title={t("dataSkillTreeTitle")}>
+            {t.rich("dataSkillTreeBody", { c: code })}
           </FactCard>
-          <FactCard icon={<Wrench className="h-5 w-5" />} title="CardLevel">
-            <code>HyperWeaponCardLevel</code> donne les paliers de fusion, les conditions de four et les ressources.
+          <FactCard icon={<Wrench className="h-5 w-5" />} title={t("dataCardLevelTitle")}>
+            {t.rich("dataCardLevelBody", { c: code })}
           </FactCard>
         </div>
       </DnaPanel>

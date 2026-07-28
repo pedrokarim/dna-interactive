@@ -234,7 +234,7 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
             <select
               value={selectedLanguage}
               onChange={(event) => setSelectedLanguage(event.target.value)}
-              aria-label="Langue"
+              aria-label={tc("language")}
               className="bg-transparent text-sm text-parch outline-none"
             >
               {availableLanguages.map((code) => (
@@ -358,16 +358,16 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
                   <dd>{formatDuration(recipe.crafting.durationSec)}</dd>
                 </div>
                 <div className="flex items-center justify-between gap-3">
-                  <dt>Type produit</dt>
+                  <dt>{t("productTypeLabel")}</dt>
                   <dd>{recipe.productType}</dd>
                 </div>
                 <div className="flex items-center justify-between gap-3">
-                  <dt>Ingredients</dt>
+                  <dt>{t("ingredientsLabel")}</dt>
                   <dd>{recipe.ingredients.length}</dd>
                 </div>
                 {typeof recipe.product.rarity === "number" ? (
                   <div className="flex items-center justify-between gap-3">
-                    <dt>Rarete</dt>
+                    <dt>{tc("rarity")}</dt>
                     <dd>{recipe.product.rarity}</dd>
                   </div>
                 ) : null}
@@ -385,7 +385,7 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
                 ) : null}
                 {typeof collectRewardExp === "number" ? (
                   <div className="flex items-center justify-between gap-3">
-                    <dt>EXP recompense</dt>
+                    <dt>{t("expReward")}</dt>
                     <dd>{formatInteger(collectRewardExp)}</dd>
                   </div>
                 ) : null}
@@ -412,7 +412,7 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
       </section>
 
       <DnaPanel className="p-4 md:p-5">
-        <DnaSectionLabel>Composants requis</DnaSectionLabel>
+        <DnaSectionLabel>{t("requiredComponents")}</DnaSectionLabel>
         <div className="mt-3 md:mt-4 grid gap-2 md:gap-3 md:grid-cols-2">
           {recipe.ingredients.map((ingredient, index) => {
             const ingredientName = resolveDraftItemName(ingredient, selectedLanguage, availableLanguages);

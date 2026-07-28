@@ -15,6 +15,7 @@ interface ChangelogModalProps {
 export default function ChangelogModal({ isOpen, onClose }: ChangelogModalProps) {
   const t = useTranslations("changelog");
   const tCommon = useTranslations("common");
+  const tEntries = useTranslations("changelogEntries");
   const locale = useLocale();
   const reduceMotion = useReducedMotion();
   const dateFormatter = new Intl.DateTimeFormat(locale, { year: "numeric", month: "long", day: "numeric" });
@@ -45,6 +46,7 @@ export default function ChangelogModal({ isOpen, onClose }: ChangelogModalProps)
         {changelogData.map((entry, index) => {
           const config = typeConfig[entry.type];
           const IconComponent = config.icon;
+          const items = tEntries.raw(`${entry.key}.items`) as string[];
 
           return (
             <motion.div
@@ -60,11 +62,11 @@ export default function ChangelogModal({ isOpen, onClose }: ChangelogModalProps)
                 </div>
                 <div className="flex-1">
                   <div className="mb-2 flex flex-wrap items-center gap-3">
-                    <h4 className="font-display text-xl text-parch">{entry.title}</h4>
+                    <h4 className="font-display text-xl text-parch">{tEntries(`${entry.key}.title`)}</h4>
                     <span
                       className={`px-2.5 py-1 font-caps text-[0.56rem] uppercase tracking-[0.16em] ${config.bgColor} border ${config.borderColor} text-parch`}
                     >
-                      {config.label}
+                      {t(`types.${entry.type}`)}
                     </span>
                   </div>
                   <div className="mb-2 flex items-center gap-4 text-sm text-muted">
@@ -74,12 +76,14 @@ export default function ChangelogModal({ isOpen, onClose }: ChangelogModalProps)
                     <span>•</span>
                     <span>{dateFormatter.format(new Date(entry.date))}</span>
                   </div>
-                  <p className="text-sm leading-relaxed text-parch/85">{entry.description}</p>
+                  <p className="text-sm leading-relaxed text-parch/85">
+                    {tEntries(`${entry.key}.description`)}
+                  </p>
                 </div>
               </div>
 
               <div className="ml-16 space-y-1.5">
-                {entry.items.map((item, itemIndex) => (
+                {items.map((item, itemIndex) => (
                   <div key={itemIndex} className="flex items-start gap-3 text-sm text-parch/85">
                     <span className="mt-1 shrink-0 text-gold">•</span>
                     <span className="leading-relaxed">{item}</span>

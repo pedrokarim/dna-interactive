@@ -6,16 +6,18 @@ import { getClientIp } from "@/lib/community-builds/vote-identity";
 import { createAuthToken } from "@/lib/auth/tokens";
 import { sendVerificationEmail, toEmailLocale } from "@/lib/email/auth-emails";
 import { getSiteUrl } from "@/lib/auth/site";
+import { getApiTranslator } from "@/lib/api-locale";
 
 export const dynamic = "force-dynamic";
 
 // Renvoie le lien de vérification. Réponse 200 systématique (anti-énumération) ;
 // n'envoie que pour un compte natif existant, non vérifié, non banni.
 export async function POST(request: Request) {
+  const t = await getApiTranslator(request);
   const ip = getClientIp(request.headers);
   if (!(await checkRateLimit(`auth:resend:${ip}`, 5, 60 * 60 * 1000)).ok) {
     return NextResponse.json(
-      { error: "Trop de demandes. Réessaie plus tard." },
+      { error: t("tooManyRequests") },
       { status: 429 },
     );
   }

@@ -164,7 +164,7 @@ export default async function ItemsCategoriesPage() {
             <div className="mt-5 flex h-14 w-14 items-center justify-center rounded-sm border border-gold/25 bg-ink/70 p-2">
               <img
                 src="/assets/items/drafts/T_Draft_Katana_Yuli.png"
-                alt="Draft sample icon"
+                alt={tItems("draftSampleAlt")}
                 width={56}
                 height={56}
                 loading="lazy"

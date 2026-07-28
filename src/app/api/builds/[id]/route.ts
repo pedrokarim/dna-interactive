@@ -9,6 +9,7 @@ import {
   updateBuildSchema,
   validateBuildReferences,
 } from "@/lib/community-builds/validation";
+import { getApiTranslator } from "@/lib/api-locale";
 
 export const dynamic = "force-dynamic";
 
@@ -21,6 +22,7 @@ async function getEditableBuild(id: string) {
 }
 
 export async function GET(request: NextRequest, { params }: RouteContext) {
+  const t = await getApiTranslator(request);
   const user = await getCurrentUser();
   const { id } = await params;
   const db = getDb();
@@ -49,11 +51,11 @@ export async function GET(request: NextRequest, { params }: RouteContext) {
       .where(eq(schema.builds.id, id))
       .limit(1);
 
-    if (!row) return NextResponse.json({ error: "Build introuvable." }, { status: 404 });
+    if (!row) return NextResponse.json({ error: t("buildNotFound") }, { status: 404 });
 
     const editableByMe = user?.id === row.userId || user?.role === "admin";
     if (row.hidden && !editableByMe) {
-      return NextResponse.json({ error: "Build introuvable." }, { status: 404 });
+      return NextResponse.json({ error: t("buildNotFound") }, { status: 404 });
     }
 
     // Compteur de vues : on incrémente quand un visiteur (pas l'auteur/admin)
@@ -100,19 +102,20 @@ export async function GET(request: NextRequest, { params }: RouteContext) {
     });
   } catch (error) {
     if (!isMissingTableError(error)) throw error;
-    return NextResponse.json({ error: "Build introuvable." }, { status: 404 });
+    return NextResponse.json({ error: t("buildNotFound") }, { status: 404 });
   }
 }
 
 export async function PATCH(request: NextRequest, { params }: RouteContext) {
+  const t = await getApiTranslator(request);
   const user = await getCurrentUser();
-  if (!user) return NextResponse.json({ error: "Connexion requise." }, { status: 401 });
+  if (!user) return NextResponse.json({ error: t("signInRequired") }, { status: 401 });
 
   const { id } = await params;
   const build = await getEditableBuild(id);
-  if (!build) return NextResponse.json({ error: "Build introuvable." }, { status: 404 });
+  if (!build) return NextResponse.json({ error: t("buildNotFound") }, { status: 404 });
   if (build.userId !== user.id && user.role !== "admin") {
-    return NextResponse.json({ error: "Action interdite." }, { status: 403 });
+    return NextResponse.json({ error: t("actionForbidden") }, { status: 403 });
   }
 
   const parsed = updateBuildSchema.safeParse(await request.json());
@@ -147,15 +150,16 @@ export async function PATCH(request: NextRequest, { params }: RouteContext) {
   return NextResponse.json({ build: updated });
 }
 
-export async function DELETE(_request: NextRequest, { params }: RouteContext) {
+export async function DELETE(request: NextRequest, { params }: RouteContext) {
+  const t = await getApiTranslator(request);
   const user = await getCurrentUser();
-  if (!user) return NextResponse.json({ error: "Connexion requise." }, { status: 401 });
+  if (!user) return NextResponse.json({ error: t("signInRequired") }, { status: 401 });
 
   const { id } = await params;
   const build = await getEditableBuild(id);
-  if (!build) return NextResponse.json({ error: "Build introuvable." }, { status: 404 });
+  if (!build) return NextResponse.json({ error: t("buildNotFound") }, { status: 404 });
   if (build.userId !== user.id && user.role !== "admin") {
-    return NextResponse.json({ error: "Action interdite." }, { status: 403 });
+    return NextResponse.json({ error: t("actionForbidden") }, { status: 403 });
   }
 
   await getDb().delete(schema.builds).where(and(eq(schema.builds.id, id)));

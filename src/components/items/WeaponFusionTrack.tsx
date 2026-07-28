@@ -1,6 +1,7 @@
 "use client";
 
 import { Lock } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 const GOLD_HEX = "#c2a86a";
 
@@ -25,12 +26,13 @@ export function WeaponFusionTrack({
   accentHex,
   onChange,
 }: WeaponFusionTrackProps) {
+  const t = useTranslations("itemDetail");
   const accent = accentHex ?? GOLD_HEX;
   // Base (0) en haut, max en bas — sens du jeu (paliers atteints en haut, verrouillés dessous).
   const ordered = [...levels].sort((a, b) => a - b);
 
   return (
-    <div className="mt-3 flex flex-col items-center" role="group" aria-label="Niveau de fusion">
+    <div className="mt-3 flex flex-col items-center" role="group" aria-label={t("fusionLevel")}>
       {ordered.map((level, index) => {
         const reached = level <= value;
         const active = level === value;

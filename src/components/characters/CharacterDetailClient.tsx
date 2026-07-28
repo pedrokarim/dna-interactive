@@ -1522,7 +1522,7 @@ function CommunityBuildPreviewModal({
     setActionBusy(null);
 
     if (!response.ok) {
-      setActionMessage(data.error ?? "Suppression impossible.");
+      setActionMessage(data.error ?? tcb("deleteFailed"));
       return;
     }
 
@@ -2676,7 +2676,7 @@ export default function CharacterDetailClient({
               <select
                 value={selectedLanguage}
                 onChange={(event) => setSelectedLanguage(event.target.value)}
-                aria-label="Langue"
+                aria-label={tc("language")}
                 className="bg-transparent text-sm text-parch outline-none"
               >
                 {catalog.availableLanguages.map((code) => (
@@ -2777,8 +2777,8 @@ export default function CharacterDetailClient({
                     onClick={() => zoomRenderAt(1.4)}
                     className="rounded-sm border border-white/10 bg-panel/90 p-2 text-parch transition-all hover:border-gold/60 hover:bg-gold/80 hover:text-ink disabled:cursor-not-allowed disabled:opacity-40"
                     disabled={renderZoom >= 4}
-                    aria-label="Zoomer"
-                    title="Zoomer (molette)"
+                    aria-label={t("zoomLabel")}
+                    title={t("zoomTitle")}
                   >
                     <ZoomIn className="h-4 w-4" />
                   </button>
@@ -2844,7 +2844,7 @@ export default function CharacterDetailClient({
               </div>
               {/* Slider de niveau — pilote les stats, teinté par l'élément */}
               <div className="mt-2.5 flex items-center gap-2 border-b border-white/6 pb-3">
-                <span className="shrink-0 font-caps text-[0.55rem] uppercase tracking-[0.12em] text-muted-2">Niv.</span>
+                <span className="shrink-0 font-caps text-[0.55rem] uppercase tracking-[0.12em] text-muted-2">{t("levelShort")}</span>
                 <input
                   type="range"
                   min={1}
@@ -2927,13 +2927,13 @@ export default function CharacterDetailClient({
               <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-3 text-sm">
                 {translation.force && (
                   <div className="border-b border-white/6 pb-1.5">
-                    <dt className="font-caps text-[0.52rem] uppercase tracking-[0.16em] text-muted-2">Force / Organisation</dt>
+                    <dt className="font-caps text-[0.52rem] uppercase tracking-[0.16em] text-muted-2">{t("factionOrg")}</dt>
                     <dd className="text-parch">{translation.force}</dd>
                   </div>
                 )}
                 {translation.birthday && (
                   <div className="border-b border-white/6 pb-1.5">
-                    <dt className="font-caps text-[0.52rem] uppercase tracking-[0.16em] text-muted-2">Origine / Nation</dt>
+                    <dt className="font-caps text-[0.52rem] uppercase tracking-[0.16em] text-muted-2">{t("originNation")}</dt>
                     <dd className="text-parch">{translation.birthday}</dd>
                   </div>
                 )}
@@ -2947,7 +2947,7 @@ export default function CharacterDetailClient({
                 </div>
                 {character.gender !== null && (
                   <div className="border-b border-white/6 pb-1.5">
-                    <dt className="font-caps text-[0.52rem] uppercase tracking-[0.16em] text-muted-2">Genre</dt>
+                    <dt className="font-caps text-[0.52rem] uppercase tracking-[0.16em] text-muted-2">{t("gender")}</dt>
                     <dd className="text-parch">{character.gender ? "Feminin" : "Masculin"}</dd>
                   </div>
                 )}
@@ -3708,7 +3708,7 @@ export default function CharacterDetailClient({
       {activeTab === "tech" && (
         <section className="grid gap-3 md:gap-4 lg:grid-cols-2">
           <div className="border border-line/25 bg-panel/85 backdrop-blur-sm p-3 md:p-5">
-            <h2 className="text-base md:text-base md:text-lg font-semibold text-parch">Text keys</h2>
+            <h2 className="text-base md:text-base md:text-lg font-semibold text-parch">{t("textKeysTitle")}</h2>
             <dl className="mt-3 md:mt-4 space-y-2 md:space-y-3 text-sm">
               {Object.entries(character.textKeys).map(([key, value]) => (
                 <div key={key}>
@@ -3720,7 +3720,7 @@ export default function CharacterDetailClient({
           </div>
 
           <div className="border border-line/25 bg-panel/85 backdrop-blur-sm p-3 md:p-5">
-            <h2 className="text-base md:text-base md:text-lg font-semibold text-parch">Donnees techniques</h2>
+            <h2 className="text-base md:text-base md:text-lg font-semibold text-parch">{t("technicalDataTitle")}</h2>
             <dl className="mt-3 md:mt-4 space-y-2 md:space-y-3 text-sm">
               <div>
                 <dt className="text-muted">{t("characterId")}</dt>
@@ -3747,7 +3747,7 @@ export default function CharacterDetailClient({
                 <dd className="text-parch">{character.charPieceId ?? "N/A"}</dd>
               </div>
               <div>
-                <dt className="text-muted">Camp key</dt>
+                <dt className="text-muted">{t("campKey")}</dt>
                 <dd className="text-parch">{character.camp.key}</dd>
               </div>
               <div>

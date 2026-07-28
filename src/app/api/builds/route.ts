@@ -10,6 +10,7 @@ import {
   createBuildSchema,
   validateBuildReferences,
 } from "@/lib/community-builds/validation";
+import { getApiTranslator } from "@/lib/api-locale";
 
 export const dynamic = "force-dynamic";
 
@@ -133,18 +134,19 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
+  const t = await getApiTranslator(request);
   const user = await getCurrentUser();
   if (!user) {
-    return NextResponse.json({ error: "Connexion requise." }, { status: 401 });
+    return NextResponse.json({ error: t("signInRequired") }, { status: 401 });
   }
   const settings = await getAppSettings();
   if (!settings.buildCreationEnabled || settings.maintenanceMode) {
-    return NextResponse.json({ error: "La publication de builds est temporairement désactivée." }, { status: 403 });
+    return NextResponse.json({ error: t("buildsPublishDisabled") }, { status: 403 });
   }
   const rate = await checkRateLimit(`build:create:${user.id}`, 6, 60 * 60 * 1000);
   if (!rate.ok) {
     return NextResponse.json(
-      { error: "Trop de publications. Réessaie plus tard." },
+      { error: t("tooManyPublications") },
       { status: 429, headers: { "Retry-After": `${rate.retryAfter}` } },
     );
   }
@@ -187,7 +189,7 @@ export async function POST(request: NextRequest) {
   const createdRows = result.rows as Array<Record<string, unknown>>;
   if (createdRows.length === 0) {
     return NextResponse.json(
-      { error: "Limite atteinte : 3 builds publiés maximum par personnage." },
+      { error: t("buildLimitReached", { max: 3 }) },
       { status: 409 },
     );
   }

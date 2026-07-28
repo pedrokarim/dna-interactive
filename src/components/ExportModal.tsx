@@ -87,7 +87,7 @@ export default function ExportModal({ isOpen, onClose, onExport, markerCount }: 
             />
             <div className="flex-1">
               <div className="font-medium text-parch">CSV</div>
-              <div className="text-xs text-muted">Format tableur, compatible Excel</div>
+              <div className="text-xs text-muted">{t("csvHint")}</div>
             </div>
           </label>
         </div>

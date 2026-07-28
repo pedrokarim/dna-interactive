@@ -86,7 +86,7 @@ export function BuildPageClient({ build, character, characterElement, lang }: Pr
     const data = await response.json().catch(() => ({}));
     setActionBusy(null);
     if (!response.ok) {
-      setActionMessage(data.error ?? "Suppression impossible.");
+      setActionMessage(data.error ?? tcb("deleteFailed"));
       return;
     }
     router.push(NAVIGATION.builds);

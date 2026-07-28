@@ -12,6 +12,7 @@ import { DnaDivider } from "@/components/dna/Divider";
 export default function ChangelogPage() {
   const t = useTranslations("changelog");
   const tc = useTranslations("common");
+  const tEntries = useTranslations("changelogEntries");
   const locale = useLocale();
   const dateFormatter = new Intl.DateTimeFormat(locale, { year: "numeric", month: "long", day: "numeric" });
 
@@ -26,7 +27,7 @@ export default function ChangelogPage() {
         <span className="mx-auto mb-4 grid h-14 w-14 place-items-center border border-gold/30 bg-gold/10 text-gold">
           <Sparkles className="h-7 w-7" />
         </span>
-        <p className="font-caps text-[0.7rem] uppercase tracking-[0.34em] text-gold/80">Journal</p>
+        <p className="font-caps text-[0.7rem] uppercase tracking-[0.34em] text-gold/80">{t("eyebrow")}</p>
         <h1 className="mt-3 font-display text-4xl text-parch md:text-5xl">{t("title")}</h1>
         <DnaDivider className="mx-auto mt-5 max-w-[14rem]" />
         <p className="mt-5 text-lg text-parch/80">{t("description")}</p>
@@ -36,6 +37,7 @@ export default function ChangelogPage() {
         {changelogData.map((entry, index) => {
           const config = typeConfig[entry.type];
           const IconComponent = config.icon;
+          const items = tEntries.raw(`${entry.key}.items`) as string[];
 
           return (
             <motion.div
@@ -51,9 +53,9 @@ export default function ChangelogPage() {
                   </span>
                   <div className="flex-1">
                     <div className="mb-2 flex flex-wrap items-center gap-3">
-                      <h2 className="font-display text-2xl text-parch">{entry.title}</h2>
+                      <h2 className="font-display text-2xl text-parch">{tEntries(`${entry.key}.title`)}</h2>
                       <span className={`rounded-sm border px-2.5 py-0.5 font-caps text-[0.56rem] uppercase tracking-[0.16em] ${config.borderColor} ${config.bgColor} text-parch`}>
-                        {config.label}
+                        {t(`types.${entry.type}`)}
                       </span>
                     </div>
                     <div className="mb-3 flex items-center gap-3 text-sm text-muted">
@@ -61,12 +63,12 @@ export default function ChangelogPage() {
                       <span>•</span>
                       <span>{dateFormatter.format(new Date(entry.date))}</span>
                     </div>
-                    <p className="leading-relaxed text-parch/85">{entry.description}</p>
+                    <p className="leading-relaxed text-parch/85">{tEntries(`${entry.key}.description`)}</p>
                   </div>
                 </div>
 
                 <div className="ml-16 space-y-2">
-                  {entry.items.map((item, itemIndex) => (
+                  {items.map((item, itemIndex) => (
                     <div key={itemIndex} className="flex items-start gap-3 text-parch/85">
                       <span className="mt-1 shrink-0 text-gold">◇</span>
                       <span className="leading-relaxed">{item}</span>

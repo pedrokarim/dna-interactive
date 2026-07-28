@@ -82,8 +82,8 @@ function RawFieldsSection({ fieldEntries }: { fieldEntries: [string, ItemRawFiel
           <table className="min-w-full divide-y divide-white/10 text-left text-sm">
             <thead>
               <tr className="text-muted">
-                <th className="py-2 pr-4 font-medium">Field</th>
-                <th className="py-2 font-medium">Value</th>
+                <th className="py-2 pr-4 font-medium">{ti("fieldColumn")}</th>
+                <th className="py-2 font-medium">{ti("valueColumn")}</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-panel">
@@ -526,7 +526,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
             onChange={(event) => {
               setSelectedLanguage(event.target.value);
             }}
-            aria-label="Langue"
+            aria-label={tc("language")}
             className="bg-transparent text-sm text-parch outline-none"
           >
             {category.availableLanguages.map((code) => (
@@ -587,7 +587,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
                   {weaponElement.label}
                 </span>
               ) : null}
-              {item.variants?.isPremium ? <DnaTag>Premium</DnaTag> : null}
+              {item.variants?.isPremium ? <DnaTag>{tc("premium")}</DnaTag> : null}
             </div>
           </div>
 
@@ -791,7 +791,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
               </p>
             </div>
             <div className="border border-white/10 bg-ink/55 p-3">
-              <p className="font-caps text-[0.6rem] uppercase tracking-[0.22em] text-muted">Sous-type technique</p>
+              <p className="font-caps text-[0.6rem] uppercase tracking-[0.22em] text-muted">{t("technicalSubtype")}</p>
               <p className="mt-1 font-caps text-lg font-semibold" style={{ color: CALAMITY_ACCENT_HEX }}>
                 Hyper
               </p>
@@ -843,7 +843,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
       {/* Variantes (genimon) */}
       {isGenimonsCategory && variantSiblings.length > 1 ? (
         <DnaPanel className="p-3 md:p-5">
-          <DnaSectionLabel>Variantes</DnaSectionLabel>
+          <DnaSectionLabel>{t("variantsTitle")}</DnaSectionLabel>
           <div className="mt-3 md:mt-4 grid grid-cols-2 gap-2 md:gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
             {variantSiblings.map((sibling) => {
               const isCurrent = sibling.id === item.id;
@@ -865,7 +865,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
                     <p className="truncate text-sm font-medium text-parch">
                       {siblingTranslation.modName ?? `#${sibling.modId}`}
                     </p>
-                    {siblingIsPremium ? <span className="text-xs text-gold">Premium</span> : null}
+                    {siblingIsPremium ? <span className="text-xs text-gold">{tc("premium")}</span> : null}
                   </div>
                 </Link>
               );
@@ -876,7 +876,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
 
       <section className="grid gap-3 md:gap-4 lg:grid-cols-3">
         <DnaPanel className="p-4 md:p-5 lg:col-span-2">
-          <DnaSectionLabel>Description</DnaSectionLabel>
+          <DnaSectionLabel>{t("descriptionTitle")}</DnaSectionLabel>
           <p className="mt-3 whitespace-pre-wrap text-sm leading-relaxed text-parch/85">
             {translation.description
               ? renderTextWithDynamicMentions(
@@ -1002,15 +1002,15 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
         </DnaPanel>
 
         <DnaPanel className="p-4 md:p-5">
-          <DnaSectionLabel>Localized Info</DnaSectionLabel>
+          <DnaSectionLabel>{t("localizedInfoTitle")}</DnaSectionLabel>
           <dl className="mt-3 md:mt-4 space-y-2 md:space-y-3 text-sm">
             <div>
-              <dt className="text-muted">Label fonction</dt>
+              <dt className="text-muted">{t("functionLabel")}</dt>
               <dd className="text-parch">{translation.functionLabel ?? "N/A"}</dd>
             </div>
             {resourceSType ? (
               <div>
-                <dt className="text-muted">Type ressource</dt>
+                <dt className="text-muted">{t("resourceType")}</dt>
                 <dd className="text-parch">{resourceSType}</dd>
               </div>
             ) : null}
@@ -1021,7 +1021,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
                   <dd className="text-parch">{translation.archiveName ?? "N/A"}</dd>
                 </div>
                 <div>
-                  <dt className="text-muted">Affinite</dt>
+                  <dt className="text-muted">{t("affinity")}</dt>
                   <dd className="text-parch">
                     {translation.affinityName ?? "N/A"}
                     {item.affinity.char ? ` (${item.affinity.char})` : ""}
@@ -1029,7 +1029,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
                 </div>
                 {elementalAffinity ? (
                   <div>
-                    <dt className="text-muted">Affinite elementaire</dt>
+                    <dt className="text-muted">{t("elementalAffinity")}</dt>
                     <dd className="inline-flex items-center gap-2 text-parch">
                       {elementalAffinity.iconSrc ? (
                         <img
@@ -1081,13 +1081,13 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
                   <dd className="text-parch">{passiveEffectsRaw}</dd>
                 </div>
                 <div>
-                  <dt className="text-muted">Paliers ascension</dt>
+                  <dt className="text-muted">{t("ascensionTiers")}</dt>
                   <dd className="text-parch">
                     {genimonBreakLevels.length > 0 ? genimonBreakLevels.join(" / ") : "N/A"}
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-muted">Etapes ascension</dt>
+                  <dt className="text-muted">{t("ascensionSteps")}</dt>
                   <dd className="text-parch">
                     {genimonBreakEntryNums.length > 0 ? genimonBreakEntryNums.join(", ") : "N/A"}
                   </dd>
@@ -1119,7 +1119,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
 
       <section className="grid gap-3 md:gap-4 lg:grid-cols-2">
         <DnaPanel className="p-4 md:p-5">
-          <DnaSectionLabel>Text keys</DnaSectionLabel>
+          <DnaSectionLabel>{t("textKeysTitle")}</DnaSectionLabel>
           <dl className="mt-3 md:mt-4 space-y-2 md:space-y-3 text-sm">
             {textKeyRows.map((row) => (
               <div key={row.label}>
@@ -1131,7 +1131,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
         </DnaPanel>
 
         <DnaPanel className="p-4 md:p-5">
-          <DnaSectionLabel>Technical</DnaSectionLabel>
+          <DnaSectionLabel>{t("technicalTitle")}</DnaSectionLabel>
           <dl className="mt-3 md:mt-4 space-y-2 md:space-y-3 text-sm">
             <div>
               <dt className="text-muted">id</dt>
@@ -1165,7 +1165,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
 
       {relatedDrafts.length > 0 && (
         <DnaPanel className="p-4 md:p-5">
-          <DnaSectionLabel>Plans associes</DnaSectionLabel>
+          <DnaSectionLabel>{t("relatedDraftsTitle")}</DnaSectionLabel>
           <div className="mt-3 md:mt-4 space-y-2 md:space-y-3">
             {relatedDrafts.map((draft) => {
               const draftName =

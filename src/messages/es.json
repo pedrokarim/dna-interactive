@@ -108,7 +108,21 @@
     "category": "Categoría",
     "clickToEnlarge": "Haz clic para ampliar",
     "error": "Error",
-    "goToCard": "Ir a la tarjeta {index}"
+    "goToCard": "Ir a la tarjeta {index}",
+    "elements": {
+      "fire": "Fuego",
+      "water": "Agua",
+      "thunder": "Rayo",
+      "wind": "Viento",
+      "light": "Luz",
+      "dark": "Oscuridad"
+    },
+    "language": "Idioma",
+    "remove": "Quitar",
+    "decrease": "Reducir",
+    "increase": "Aumentar",
+    "notifications": "Notificaciones",
+    "premium": "Premium"
   },
   "legal": {
     "copyright": "© 2025 {siteName}. Creado por {creator} con ❤️",
@@ -246,7 +260,8 @@
     "mapAlt": "Mapa interactivo de la región {region} con todos los marcadores, cofres y puntos de interés",
     "categoryIconAlt": "Icono de {name}: categoría de marcadores del mapa interactivo",
     "markerIconAlt": "Icono de {name}: marcador del mapa interactivo",
-    "loadingMarkers": "Cargando marcadores..."
+    "loadingMarkers": "Cargando marcadores...",
+    "activeMap": "Mapa activo"
   },
   "mapInfo": {
     "title": "Información del Mapa",
@@ -283,7 +298,15 @@
   },
   "changelog": {
     "title": "Registro de cambios",
-    "description": "Historial de cambios y mejoras"
+    "description": "Historial de cambios y mejoras",
+    "eyebrow": "Diario",
+    "types": {
+      "feature": "Nueva funcionalidad",
+      "security": "Seguridad",
+      "update": "Actualización",
+      "fix": "Corrección",
+      "enhancement": "Mejora"
+    }
   },
   "about": {
     "title": "Acerca de {siteName}",
@@ -399,7 +422,7 @@
     "addToFavorites": "Añadir a favoritos"
   },
   "characterDetail": {
-    "tabStats": "Stats",
+    "tabStats": "Estadísticas",
     "tabBuild": "Build",
     "tabPortraits": "Retratos",
     "tabIntron": "Intron",
@@ -424,10 +447,10 @@
     "statDEF": "Defensa",
     "statMaxHp": "HP Máximo",
     "statMaxES": "Escudo",
-    "statMaxSp": "Lucidity",
+    "statMaxSp": "Lucidez",
     "statSkillIntensity": "Intensidad",
     "statSkillEfficiency": "Eficiencia",
-    "statSkillSustain": "Sustain",
+    "statSkillSustain": "Sostenimiento",
     "statSkillRange": "Alcance",
     "statSkillSpeed": "Velocidad de Skill",
     "statStrongValue": "Vigor",
@@ -497,7 +520,16 @@
     "statMaxSpLong": "Lucidez máx.",
     "quickBuild": "Build rápida",
     "quickBuildOf": "Build rápida — {name}",
-    "ascensionTiers": "Niveles de ascensión"
+    "ascensionTiers": "Niveles de ascensión",
+    "zoomLabel": "Ampliar",
+    "zoomTitle": "Ampliar (rueda del ratón)",
+    "levelShort": "Nv.",
+    "factionOrg": "Fuerza / Organización",
+    "originNation": "Origen / Nación",
+    "gender": "Género",
+    "textKeysTitle": "Claves de texto",
+    "technicalDataTitle": "Datos técnicos",
+    "campKey": "Clave de bando"
   },
   "items": {
     "libraryLabel": "Biblioteca de Objetos",
@@ -530,7 +562,8 @@
     "newOnly": "Solo nuevos",
     "calamityOnly": "Mostrar solo armas de calamidad",
     "calamityWeapon": "Arma de calamidad",
-    "potentialTree": "Árbol de Potencial"
+    "potentialTree": "Árbol de Potencial",
+    "draftSampleAlt": "Ejemplo de icono de plano de forja"
   },
   "itemDetail": {
     "weaponBuildTitle": "Build de Demon Wedges recomendado",
@@ -563,7 +596,20 @@
     "noResolvedAttributes": "No se detectó ningún atributo resuelto.",
     "archiveName": "Nombre de archivo",
     "maxLevelExp": "EXP del nivel máximo",
-    "totalExpToMax": "EXP total hasta el nivel máximo"
+    "totalExpToMax": "EXP total hasta el nivel máximo",
+    "fieldColumn": "Campo",
+    "valueColumn": "Valor",
+    "technicalSubtype": "Subtipo técnico",
+    "variantsTitle": "Variantes",
+    "descriptionTitle": "Descripción",
+    "localizedInfoTitle": "Información localizada",
+    "functionLabel": "Etiqueta de función",
+    "resourceType": "Tipo de recurso",
+    "ascensionTiers": "Niveles de ascensión",
+    "ascensionSteps": "Pasos de ascensión",
+    "textKeysTitle": "Claves de texto",
+    "technicalTitle": "Datos técnicos",
+    "relatedDraftsTitle": "Planos asociados"
   },
   "drafts": {
     "headerLabel": "Planos de Forja",
@@ -580,7 +626,8 @@
     "sortDurationDesc": "Tiempo descendente",
     "noResults": "Ningún plano coincide con los filtros actuales.",
     "noResultsHint": "Ajusta los filtros o la búsqueda.",
-    "zoomDraftIcon": "Ampliar icono del plano {id}"
+    "zoomDraftIcon": "Ampliar icono del plano {id}",
+    "recipeLabel": "Receta"
   },
   "draftDetail": {
     "productLabel": "Producto {type} x{quantity}",
@@ -599,7 +646,11 @@
     "weaponMaxLevel": "Nivel máx. del arma",
     "weaponValue": "Valor del arma",
     "forgeCost": "Coste de forja",
-    "noExplicitCost": "No hay coste explícito para este plano."
+    "noExplicitCost": "No hay coste explícito para este plano.",
+    "productTypeLabel": "Tipo de producto",
+    "ingredientsLabel": "Ingredientes",
+    "expReward": "EXP de recompensa",
+    "requiredComponents": "Componentes necesarios"
   },
   "gameInfo": {
     "name": "Duet Night Abyss",
@@ -661,16 +712,16 @@
     "characterOgAlt": "Personaje — DNA Interactive"
   },
   "commissions": {
-    "eyebrow": "Covert Commissions",
+    "eyebrow": "Comisiones encubiertas",
     "title": "Covert Commissions",
-    "description": "Live rotation of the regional commissions — Character, Weapon and Demon Wedge. The board updates on every refresh.",
-    "nextRefresh": "Next refresh",
-    "lastUpdated": "Updated {time}",
-    "syncing": "Syncing…",
-    "fallbackNotice": "Rotations will be available shortly.",
-    "utcNote": "Commissions rotate at the start of every hour; times shown in your local timezone.",
-    "nextAt": "at {time} your time",
-    "unavailable": "Temporarily unavailable"
+    "description": "Rotación en directo de las comisiones regionales — Personaje, Arma y Demon Wedge. El tablero se actualiza con cada recarga.",
+    "nextRefresh": "Próxima actualización",
+    "lastUpdated": "Actualizado {time}",
+    "syncing": "Sincronizando…",
+    "fallbackNotice": "Las rotaciones estarán disponibles en breve.",
+    "utcNote": "Las comisiones rotan al inicio de cada hora; horas mostradas en tu zona horaria.",
+    "nextAt": "a las {time} en tu zona",
+    "unavailable": "No disponible temporalmente"
   },
   "builder": {
     "weaponWedgesToggle": "Configurar los Demon Wedges de las armas",
@@ -858,7 +909,8 @@
     "pageLibraryTitle": "Biblioteca de builds",
     "pageLibraryDescription": "Explora los builds compartidos por la comunidad, abre su ficha completa o úsalos como punto de partida.",
     "pageCreateBuild": "Crear un build",
-    "reportReasonTooShort": "Indica un motivo un poco más concreto."
+    "reportReasonTooShort": "Indica un motivo un poco más concreto.",
+    "deleteFailed": "No se ha podido eliminar."
   },
   "account": {
     "metaTitle": "Perfil - DNA Interactive",
@@ -1095,7 +1147,8 @@
   "exportModal": {
     "title": "Exportar marcadores",
     "fileFormat": "Formato del archivo",
-    "structuredHint": "Formato estructurado, fácil de reimportar"
+    "structuredHint": "Formato estructurado, fácil de reimportar",
+    "csvHint": "Formato de hoja de cálculo, compatible con Excel"
   },
   "notFound": {
     "description": "La página que buscas no existe o ha sido movida.",
@@ -1109,5 +1162,459 @@
     "griffinDraftAlt": "Plano de forja Griffin",
     "typhonDraftAlt": "Plano de forja Typhon",
     "yuliKatanaAlt": "Katana de Yuli"
+  },
+  "itemsAbout": {
+    "guideBadge": "Guía de Demon Wedge",
+    "title": "Cómo funcionan los Demon Wedges",
+    "intro": "En el juego, los Demon Wedges también pueden aparecer con el nombre técnico <mod>MOD</mod> en algunos datos. Esta página explica los campos importantes usados en el sitio: nivel, afinidad, tolerancia, efectos dinámicos y correspondencia de recursos.",
+    "badgeLevels": "Niveles 0 → MaxLevel",
+    "badgeTolerance": "Tolerancia = Cost + Level × CostChange",
+    "badgeTranslations": "Traducciones ES/EN/…",
+    "badgeReference": "Información de referencia de juego",
+    "showcaseTitle": "Muestrario visual de Demon Wedge",
+    "showcaseDescription": "Ejemplos de iconos de Demon Wedge usados en la cuadrícula y en la página de detalle. El objetivo es reconocer un Demon Wedge de un vistazo.",
+    "showcaseIconSublabel": "Ejemplo de icono de Demon Wedge",
+    "readTitle": "Leer una ficha con 3 referencias",
+    "readStep1Title": "1) Icono principal",
+    "readStep1Text": "Permite identificar el Demon Wedge en la cuadrícula.",
+    "readStep2Title": "2) Afinidad / polaridad",
+    "readStep2Text": "El símbolo junto al nombre indica el tipo de afinidad del Demon Wedge.",
+    "readStep3Title": "3) Nivel activo",
+    "readStep3Text": "El deslizador del detalle hace variar los valores dinámicos #1, #2, #3.",
+    "structureTitle": "1) Estructura de un Demon Wedge",
+    "structureItem1": "Cada Demon Wedge tiene un nombre, una descripción, una rareza, una afinidad y un nivel máximo.",
+    "structureItem2": "El nombre mostrado en el juego es <c>Demon Wedge</c>. <c>MOD</c> sigue siendo sobre todo un término técnico usado en algunos datos internos.",
+    "structureItem3": "Los textos (nombre, descripción, efectos pasivos) cambian según el idioma seleccionado.",
+    "structureItem4": "El sitio expone esta información en JSON para poder filtrar, comparar idiomas y abrir los detalles.",
+    "affinityTitle": "Afinidades, polaridades y compatibilidades",
+    "affinityDescription": "La ficha de detalle combina varias referencias visuales: símbolo de polaridad, afinidad elemental y etiquetas de compatibilidad del tipo de personaje/arma.",
+    "polarityLabel": "Polaridad",
+    "polarityItem": "Polaridad {num}",
+    "affinityElementalLabel": "Afinidades elementales",
+    "typeCompatLabel": "Tipo compatible",
+    "typeCompat": {
+      "character": "Personaje",
+      "melee": "Cuerpo a cuerpo",
+      "ranged": "A distancia",
+      "meleeUltra": "Cuerpo a cuerpo Ultra",
+      "rangedUltra": "A distancia Ultra"
+    },
+    "levelsTitle": "2) Niveles y valores dinámicos",
+    "levelsText": "Los valores <c>#1</c>, <c>#2</c>, etc. cambian según el nivel del Demon Wedge. El deslizador de la página de detalle aplica esos valores desde la tabla de crecimiento y muestra el efecto en el nivel elegido.",
+    "levelsDefault": "Nivel por defecto = <c>0</c> (pieza sin mejorar)",
+    "levelsMax": "Nivel máximo = <c>MaxLevel</c>",
+    "toleranceTitle": "3) Tolerancia / coste",
+    "toleranceText": "La tolerancia mostrada evoluciona con el nivel. El cálculo expuesto en los datos es:",
+    "toleranceNote": "El sitio precalcula los valores por nivel y los coloca en <c>tolerance.valuesByLevel</c>.",
+    "multilangTitle": "4) Multiidioma",
+    "multilangText": "En la cuadrícula: puedes mostrar varios idiomas a la vez para comparar nombres. En el detalle: se puede elegir un único idioma y compartirlo mediante la URL.",
+    "multilangNote": "Los idiomas disponibles actualmente dependen del conjunto de datos cargado para la categoría.",
+    "displayTitle": "5) Lo que muestra el sitio",
+    "displayItem1": "Información general del Demon Wedge (nombre, rareza, función, descripción)",
+    "displayItem2": "Evolución por nivel mediante el deslizador",
+    "displayItem3": "Afinidad + icono asociado",
+    "displayItem4": "Nombres multilingües para comparar rápidamente",
+    "displayItem5": "Búsqueda, filtros, favoritos y paginación para la navegación",
+    "quickTitle": "Lectura rápida de un Demon Wedge en el sitio",
+    "quickText": "El recorrido visual es siempre el mismo: identificar el icono, comprobar la afinidad y luego ajustar el nivel para ver los efectos dinámicos.",
+    "stepLabel": "Paso {num}",
+    "step1Title": "Identificar el Demon Wedge",
+    "step1Line1": "Nombre + icono",
+    "step1Line2": "directamente en la cuadrícula",
+    "step2Title": "Comprobar afinidad y tipo",
+    "step3Title": "Ajustar el nivel",
+    "step3Line1": "#1 / #2 / #3 se actualizan",
+    "step3Line2": "según el deslizador de nivel",
+    "step3Note": "Nivel 0 = valor base sin mejorar",
+    "altPhoenixExample": "Ejemplo de Demon Wedge Phoenix",
+    "altAffinityFire": "Afinidad de Fuego",
+    "altCompatRanged": "Compatibilidad a distancia",
+    "nextTitle": "Lo que puedes hacer después",
+    "nextText": "Usa la cuadrícula para filtrar y comparar rápido, y luego abre un objeto para ver sus valores dinámicos, su tolerancia por nivel y su afinidad.",
+    "nextOpenGrid": "Abrir la cuadrícula de Demon Wedge",
+    "nextFavorites": "Ver mis favoritos",
+    "genericTitle": "Guía de {category}",
+    "genericText": "Esta categoría está lista para recibir una página explicativa detallada. El sistema ya está preparado para añadir las reglas, fórmulas y elementos visuales propios de cada nueva familia de objetos.",
+    "metaModsDescription": "Entender cómo funcionan los Demon Wedges: niveles, afinidad, tolerancia, traducciones y lectura de los efectos.",
+    "metaGenericDescription": "Entender cómo funciona {category}: niveles, afinidad, tolerancia, traducciones y lectura de los efectos.",
+    "metaFallbackTitle": "Guía de objetos",
+    "metaFallbackDescription": "Documentación de las categorías de objetos de Duet Night Abyss."
+  },
+  "calamityGuide": {
+    "backToWeapons": "Volver a las armas",
+    "badge": "Guía de Armas de calamidad",
+    "eyebrow": "HyperWeapon / Fusión de calamidad",
+    "title": "Entender las armas de calamidad",
+    "intro": "En los datos del juego, un arma de calamidad es un arma cuyo subtipo técnico es <c>Hyper</c>. Tiene una progresión de Fusión de calamidad de 0 a 5, Potenciales de arma y una regla estricta: el Potencial solo funciona si el personaje domina ese tipo de arma.",
+    "catalogLabel": "Catálogo",
+    "catalogCount": "armas Hyper de {total} armas locales",
+    "fusionLabel": "Fusión",
+    "fusionTiers": "niveles expuestos por HyperWeaponCardLevel",
+    "badgeOnePerCharacter": "1 arma de calamidad máx. por personaje",
+    "badgePotentialOnly": "Potencial activo solo con el arma predilecta",
+    "badgeSeparateBuilds": "Builds de Demon Wedges de arma separados",
+    "arsenalLabel": "Arsenal de calamidad",
+    "activeSheetLabel": "Ficha activa",
+    "noDescription": "No hay descripción localizada disponible en el extracto actual.",
+    "openFullSheet": "Abrir la ficha completa",
+    "statAtk": "ATQ",
+    "statAtkType": "Tipo de ATQ",
+    "statCritRate": "Prob. crítica",
+    "statCritDamage": "Daño crítico",
+    "tierLabel": "Nivel {label}",
+    "unlockedPotentials": "Potenciales conocidos desbloqueados:",
+    "notDetailed": "no detallado en la exportación",
+    "potentialsLabel": "Potenciales · {name}",
+    "adjustHint": "Ajusta la pista de Fusión (nivel {label}) para bloquear / desbloquear",
+    "fusionSteps": {
+      "0": {
+        "label": "Base",
+        "title": "Arma obtenida",
+        "body": "El arma se puede equipar y su potencial base existe, pero el camino de forja aún no está mejorado."
+      },
+      "1": {
+        "title": "Horno de calamidad I",
+        "body": "Primer nivel de Fusión de calamidad. Los costes empiezan a usar el prototipo del arma correspondiente."
+      },
+      "2": {
+        "title": "Horno de calamidad II",
+        "body": "El camino añade potenciales o bonificaciones de estadísticas ligadas al árbol HyperWeaponSkillTree."
+      },
+      "3": {
+        "title": "Horno de calamidad III",
+        "body": "Las ramas de potencial avanzan. Los efectos siguen condicionados por el arma predilecta del personaje."
+      },
+      "4": {
+        "title": "Horno de calamidad IV",
+        "body": "Las grandes bonificaciones de rama están disponibles cuando el nivel del horno global acompaña."
+      },
+      "5": {
+        "title": "Horno de calamidad V",
+        "body": "Nivel final expuesto actualmente por las tablas locales: nivel máximo de fusión 5."
+      }
+    },
+    "atkTypes": {
+      "Psionic": "Psiónico",
+      "Smash": "Contundente",
+      "Spike": "Perforante",
+      "Slash": "Cortante"
+    },
+    "factFusionTitle": "Fusión de calamidad",
+    "factFusionBody": "La Fusión de calamidad aumenta el nivel de fusión del arma. Las tablas locales exponen los niveles 1 a 5 mediante <c>HyperWeaponCardLevel</c>.",
+    "factPotentialTitle": "Potenciales de arma",
+    "factPotentialBody": "Los Potenciales se desbloquean con la fusión. Según el texto del juego, solo surten efecto si el tipo de arma coincide con el arma predilecta del personaje.",
+    "factLimitTitle": "Límite de equipamiento",
+    "factLimitBody": "El texto de la interfaz indica que un personaje solo puede equipar un Arma de calamidad a la vez.",
+    "factNotConsonanceTitle": "No es una Consonance",
+    "factNotConsonanceBody": "Las armas de calamidad son las armas <c>Hyper</c>. Las claves <c>*Ultra</c> de los Demon Wedges se refieren a las armas de Consonance.",
+    "costLabel": "Coste del nivel seleccionado",
+    "costText": "Los costes de abajo provienen de la tabla <c>HyperWeaponCardLevel</c>. Las armas de acero exponen actualmente un coste mínimo en Phoxene en los datos locales.",
+    "costNoneTier0": "Sin coste de fusión para el nivel 0.",
+    "costNotExposed": "Coste no expuesto para este nivel en el extracto actual.",
+    "materialId": "ID {id}",
+    "wedgesLabel": "Demon Wedges vinculados",
+    "wedgesText": "La ficha de arma del sitio puede mostrar un build de Demon Wedges canónico. Para <n>{name}</n>, el conjunto compatible es <c>{poolKey}</c>, es decir {poolLabel}.",
+    "poolMelee": "Cuerpo a cuerpo",
+    "poolRanged": "A distancia",
+    "poolConsonanceMelee": "Consonance cuerpo a cuerpo",
+    "poolConsonanceRanged": "Consonance a distancia",
+    "dataLabel": "Lectura de los datos locales",
+    "dataWeaponTitle": "Weapon",
+    "dataWeaponBody": "<c>WeaponSubType = Hyper</c> identifica las armas de calamidad. Es la señal usada para esta ficha.",
+    "dataBattleWeaponTitle": "BattleWeapon",
+    "dataBattleWeaponBody": "Las estadísticas de combate vienen de <c>BattleWeapon</c>: ATQ, tipo de ATQ, crítico y bonificaciones ligadas a los potenciales.",
+    "dataSkillTreeTitle": "SkillTree",
+    "dataSkillTreeBody": "<c>HyperWeaponSkillTree</c> describe las ramas de potenciales conocidas para Conflicto perpetuo y Réquiem de espinas.",
+    "dataCardLevelTitle": "CardLevel",
+    "dataCardLevelBody": "<c>HyperWeaponCardLevel</c> aporta los niveles de fusión, las condiciones de horno y los recursos.",
+    "naValue": "N/A",
+    "meleeWeapons": "Armas cuerpo a cuerpo",
+    "rangedWeapons": "Armas a distancia",
+    "unknownType": "Tipo desconocido",
+    "wedgePoolMelee": "Demon Wedges de arma cuerpo a cuerpo",
+    "wedgePoolRanged": "Demon Wedges de arma a distancia",
+    "fallbackResource": "Recurso #{id}",
+    "fallbackWeapon": "Arma #{id}",
+    "fallbackSlot": "Ranura {position}",
+    "phoxeneNote": "Coste mínimo expuesto actualmente para esta arma de acero en las tablas locales.",
+    "metaTitle": "Guía de Armas de calamidad",
+    "metaDescription": "Entender las armas de calamidad de Duet Night Abyss: Fusión de calamidad, Potenciales de arma, requisitos de dominio y builds de Demon Wedges."
+  },
+  "changelogEntries": {
+    "v2_2_0": {
+      "title": "Nueva interfaz: una portada que lo reúne todo, más clara y más viva",
+      "description": "La interfaz del sitio se ha rehecho por completo para ser más legible, más agradable y más rápida de recorrer. Una nueva portada reúne todas las herramientas en un solo lugar, un menú lateral siempre a mano y páginas que aprovechan toda la pantalla, tanto en ordenador como en móvil.",
+      "items": [
+        "🏠 Nueva portada «hub» que lo muestra todo de un vistazo: mapa, personajes, base de datos, builder, builds, códigos y herramientas",
+        "📋 Menú lateral siempre disponible para saltar de una sección a otra con un clic: plegable cuando quieras más espacio, y recuerda tu preferencia",
+        "🖥️ Todas las páginas rediseñadas para ocupar toda la pantalla: más aireadas, más legibles, con menos vacío",
+        "🎁 Vista previa de los códigos de regalo directamente en la portada, con copia en un clic",
+        "🗂️ Los mejores builds de la comunidad destacados ya desde la portada",
+        "📅 Un calendario de eventos para seguir lo que está en curso (vista previa)",
+        "📱 Una navegación pensada para el móvil de principio a fin",
+        "✨ Un acabado más cuidado y coherente en todo el sitio"
+      ]
+    },
+    "v2_1_0": {
+      "title": "Builder de builds comunitarios: crea, comparte y vota",
+      "description": "Nueva plataforma comunitaria: compón tus propios builds (personaje, Demon Wedges, Genimon, arma, habilidades y equipo), publícalos con tu cuenta de Discord y luego explora y vota los builds de otros jugadores. Builds de Demon Wedges para las 65 armas, compartición de tarjetas y un gran avance en accesibilidad y traducción.",
+      "items": [
+        "🛠️ Nuevo Builder: compón un build completo (Demon Wedges, Genimon, arma, habilidades, equipo de 3) y publícalo",
+        "🔐 Inicio de sesión con Discord para publicar y votar; hasta 3 builds por personaje",
+        "🌐 Hub comunitario /builds: búsqueda, filtros (personaje, elemento, etiquetas), orden y paginación",
+        "📄 Página propia y compartible para cada build (/builds/[id])",
+        "👍 Votos y clasificación de los builds de la comunidad",
+        "🏷️ Etiquetas de build: Solo, Equipo, Boss, F2P, Endgame, Principiante",
+        "👥 Selector de equipo recomendado (hasta 3 personajes con rol)",
+        "🔗 Compartir builds: enlace autocontenido + X / Facebook / Reddit + compartir nativo",
+        "🖼️ Exportación PNG de la tarjeta de build",
+        "🥇 Nivel «Oficial» diferenciado, por encima de las alternativas de la comunidad",
+        "💾 Borradores híbridos: guardado local y reconciliación con el servidor al iniciar sesión",
+        "⚔️ Builds de Demon Wedges de arma para las 65 armas, visibles en la ficha del arma e integrables en el build (interruptor)",
+        "🎴 Tooltips enriquecidos al pasar sobre los Demon Wedges (nombre, rareza, elemento)",
+        "🔗 Estado de los filtros en la URL (enlaces compartibles y navegación atrás/adelante)",
+        "♿ Accesibilidad reforzada: respeto global de «reducir animaciones», foco visible, trampas de foco en los diálogos, etiquetas ARIA",
+        "📜 Página de Privacidad / Términos y eliminación de cuenta (RGPD)"
+      ]
+    },
+    "v2_0_0": {
+      "title": "Parche 1.4 Silver Torrent, Rising Star: Flora, Hilda, Bloomfield Station y 5 mapas nuevos",
+      "description": "Integración completa del parche oficial «Silver Torrent, Rising Star»: 2 personajes nuevos (Flora y Hilda), nuevo elemento Umbro para el Phoxhunter, región steampunk Flodia Bloomfield Station, 5 mapas interactivos, 12 fondos de pantalla y un sistema de banners con caducidad automática.",
+      "items": [
+        "🎮 Reextracción completa de los datos del juego hasta el parche 1.4.153 «Silver Torrent, Rising Star»",
+        "✨ Flora (Umbro): nueva personaje destacada, domina espada y fusil de asalto",
+        "🔥 Hilda (Pyro): nueva personaje, domina hojas dobles y lanzagranadas (disponible después del 30 de junio de 2026)",
+        "🌑 Nuevo elemento Umbro desbloqueado para el Phoxhunter (protagonista jugable), vía [Capítulo Noctoyager – Silver Torrent, Rising Star]",
+        "🚂 Nueva región Flodia Bloomfield Station (con Bloomfield Station e Ironworks), la estación ferroviaria steampunk de Icelake",
+        "⚔️ +27 habilidades, +18 Demon Wedges, +157 recursos, nueva categoría Calamity Weapons, rediseño de los objetos de pesca",
+        "🗺️ 5 mapas interactivos nuevos: Bloomfield Station, Ironworks, Outer Peaks, Taixu Mausoleum, Youlai Alley",
+        "📍 Resincronización de 1589 iconos de marcadores desde boarhat.gg en los 13 mapas",
+        "🖼️ 12 nuevos fondos worldview (7 del parche 1.3, 5 del parche 1.4) añadidos al Ken Burns",
+        "⚡ Optimización de los fondos v1.3/v1.4: reducción 4K → Full HD, WebP q70 (-73 % de peso)",
+        "🌟 Carrusel de la portada reorganizado: los fondos nuevos se muestran primero",
+        "📢 Nuevo sistema de banners de anuncio con caducidad automática 4 semanas tras el lanzamiento del parche (histórico conservado en el código)",
+        "🎭 Escaparate de personajes reorganizado: Flora destacada, Su Yi y las dos formas Umbro del Phoxhunter",
+        "💾 Refactor de la cadena de extracción: almacenamiento de paks y exportaciones de FModel movidos a un disco externo para no saturar el SSD del sistema"
+      ]
+    },
+    "v1_9_0": {
+      "title": "Tarjetas de build, pestaña Habilidades y tooltips de cursor",
+      "description": "Nueva pestaña de Habilidades por personaje con deslizador de nivel, tarjetas de build exportables a PNG y un sistema de tooltips que sigue al cursor en escritorio.",
+      "items": [
+        "🎴 Nueva tarjeta de build compartible (modal + acordeón ?build=true) con retrato difuminado, disposición de Demon Wedge como en el juego y descarga PNG",
+        "🃏 Escaparate de la tarjeta de build en la portada (Psyche) con ancla #build-showcase y adelanto en el banner principal",
+        "⚔️ Pestaña de Habilidades completa: nombre, descripción, parámetros, secciones y términos de combate, en 7 idiomas",
+        "🎚️ Deslizador de nivel de habilidad (1-20) que recalcula en directo los valores dependientes del nivel mediante SkillGrow",
+        "🧩 Iconos de habilidad en línea y equipo recomendado en la tarjeta de build",
+        "🪄 Nuevo componente CursorTooltip: sigue al cursor en escritorio, alterna con clic en móvil, insertado por portal en body",
+        "🛡️ Tooltips de cursor en armas, Genimons y ranuras de Demon Wedge (centro incluido) de la tarjeta de build",
+        "🏷️ Cadena de extracción extract-skills.ts: analiza 9 archivos Lua + SkillGrow, fórmulas #N evaluadas para cada nivel"
+      ]
+    },
+    "v1_8_0": {
+      "title": "Internacionalización, escaparate de personajes y enlaces profundos al mapa",
+      "description": "Renovación importante con soporte multilingüe completo (7 idiomas), nuevo escaparate interactivo de personajes v1.3 y navegación mejorada.",
+      "items": [
+        "🌐 Internacionalización completa del sitio con next-intl: 7 idiomas (FR, EN, DE, ES, JP, KR, TC)",
+        "🔍 Detección automática del idioma del navegador con la elección guardada en una cookie",
+        "🗂️ Enrutado i18n: cada idioma tiene sus propias URLs (/fr/map, /en/characters, etc.)",
+        "🌏 Selector de idioma en todas las páginas del sitio",
+        "🎭 Nuevo escaparate interactivo de personajes v1.3 en la portada (Su Yi, Camilla, Yuming, Zhiliu)",
+        "🖼️ Ilustración a pantalla completa con selector de avatares, degradados por personaje y caracteres caligráficos decorativos",
+        "🔗 Enlaces profundos al mapa: el banner de Haojing lleva directamente al mapa correcto (?mapId=haojing)",
+        "📐 Corrección del ajuste de los enlaces en la barra lateral del mapa",
+        "🖼️ Imagen v1.3 añadida al Ken Burns del banner principal",
+        "⚡ Corrección de turbopack.root para acelerar la compilación en desarrollo",
+        "🏷️ SEO: etiquetas hreflang, metadatos localizados, sitemap multiidioma"
+      ]
+    },
+    "v1_7_0": {
+      "title": "Actualización v1.3 del juego y variantes de Genimons",
+      "description": "Reextracción completa de los datos del juego desde la versión 1.3, nuevos personajes y sistema de variantes para los Genimons.",
+      "items": [
+        "🔄 Reextracción de los 1176 archivos Lua desde los paks v1.3 del juego",
+        "👤 Añadida Su Yi (completa, con retratos y habilidades) y Flora (datos, aún sin lanzar)",
+        "🎭 Completada Camilla (estadísticas, traducciones, retratos, habilidades)",
+        "🐾 Sistema de variantes de Genimons: cada especie muestra sus variantes con navegación cruzada",
+        "✨ Insignia Premium dorada para las variantes shiny de los Genimons",
+        "🎣 Añadidos nuevos peces de la región Este (Haojing)",
+        "📦 Actualización de todos los objetos, mods y recursos con los datos v1.3",
+        "🌐 Corrección de las traducciones al español (Hyperboreano → Hiporboreo)"
+      ]
+    },
+    "v1_6_0": {
+      "title": "Nuevo mapa Haojing (Parche 1.3)",
+      "description": "Añadido el mapa Haojing con 143 marcadores y una optimización importante de la carga de los datos cartográficos.",
+      "items": [
+        "🗺️ Nuevo mapa Haojing añadido (8.ª región) con 143 marcadores y 6 categorías",
+        "⚡ Rediseño del sistema de datos: carga por mapa bajo demanda en lugar de un archivo monolítico",
+        "📦 Reducción de la carga inicial en ~75 % (54 KB de índice + 1 mapa en vez de 439 KB)",
+        "🔧 Corrección del analizador de boarhat.gg para gestionar nombres con comillas",
+        "🏠 Nuevo banner v1.3 en la portada para Haojing"
+      ]
+    },
+    "v1_5_0": {
+      "title": "Builds de personajes",
+      "description": "Sistema completo de builds recomendados para los 22 personajes jugables, con armas de consonancia y ajustes de pista.",
+      "items": [
+        "🎮 21 builds de personajes añadidos con equipo y Demon Wedges recomendados",
+        "⚔️ Extracción y visualización de las armas de consonancia desde los datos del juego",
+        "🎚️ Ajustes de pista (Track Adjustments) con interruptor e iconos",
+        "🎨 Rediseño de la pestaña Intron con círculos flotantes y prioridad de habilidades",
+        "🌈 Degradado ambiental por elemento en las páginas de detalle de personaje",
+        "🖼️ Iconos de habilidades en la pestaña de atributos",
+        "💡 Tooltips enriquecidos para el equipo de los builds"
+      ]
+    },
+    "v1_4_0": {
+      "title": "Catálogo de personajes y pesca",
+      "description": "Añadido el catálogo completo de personajes jugables con estadísticas detalladas y la categoría Pesca en los objetos.",
+      "items": [
+        "👤 Catálogo de todos los personajes jugables con ficha detallada",
+        "📊 Estadísticas por nivel con curvas de crecimiento y fórmulas",
+        "🎣 Nueva categoría Pesca con objetos extraídos de los datos del juego",
+        "🐾 Corrección de los valores dinámicos de las pasivas de los Genimons",
+        "🌐 Etiquetas de claves de texto contextualizadas por categoría de objeto"
+      ]
+    },
+    "v1_3_0": {
+      "title": "Objetos: planos de forja (Drafts) y armas",
+      "description": "Añadida una sección completa para explorar los planos de forja, sus recetas y las armas asociadas, con una navegación más clara entre categorías.",
+      "items": [
+        "🧩 Nueva categoría Drafts con cuadrícula filtrable, búsqueda y paginación",
+        "🌳 Nueva página de detalle de Draft con visualización de la receta (producto + ingredientes)",
+        "🛠️ Extracción e integración de los datos de recetas y de armas",
+        "🖼️ Añadidos los recursos de iconos (planos, armas, tipos de arma, accesorios) en el sitio",
+        "🔗 Enlaces entre Drafts y fichas de armas para facilitar la navegación",
+        "✏️ Corrección de la etiqueta de categoría: Armes / Arm → Armes / Weapons",
+        "📣 Banners de la portada (mapa + objetos) con cierre persistente",
+        "🎯 Nueva tarjeta de llamada a la acción en la portada para acceder a la página de Objetos"
+      ]
+    },
+    "v1_2_1": {
+      "title": "Nuevos marcadores y optimización SEO",
+      "description": "Añadidos marcadores que faltaban, en especial las Taixu Runes, y migración completa al alojamiento local de los recursos.",
+      "items": [
+        "🆕 Añadidos marcadores que faltaban en todos los mapas",
+        "✨ Añadidos los marcadores Taixu Runes, que estaban ausentes",
+        "🗺️ Descarga y alojamiento local de todas las imágenes de mapas",
+        "🎨 Descarga y alojamiento local de todos los iconos",
+        "🔧 Corrección automática de todas las URLs externas a rutas locales",
+        "✅ 111 URLs corregidas automáticamente en los mapas existentes",
+        "💾 Todos los recursos están ahora alojados localmente en /assets/"
+      ]
+    },
+    "v1_2_0": {
+      "title": "Formulario de contacto seguro con reCAPTCHA y Zod",
+      "description": "Implementación completa y segura del formulario de contacto con protección antispam avanzada.",
+      "items": [
+        "📧 Endpoint de API completo para el tratamiento seguro de los formularios",
+        "🔒 Integración de reCAPTCHA v3 (puntuación ≥ 0,7) como protección antibots",
+        "🛡️ Validación con Zod v4.3.5 con saneamiento automático y seguridad de tipos",
+        "📮 Configuración SMTP segura con correos HTML profesionales",
+        "⏱️ Protección DoS: tiempo de espera de 30 s + límite de 10 KB + limitación de tasa",
+        "🔐 Cabeceras de seguridad completas (XSS, framing, content-type)",
+        "✨ UX mejorada: estados de carga, mensajes de error contextuales",
+        "🧹 Saneamiento estricto: regex de nombres, validación de correo conforme a RFC",
+        "🎯 Validación por enum de los asuntos + protección contra inyecciones",
+        "📊 Registro detallado para monitorización y auditoría de seguridad"
+      ]
+    },
+    "v1_1_1": {
+      "title": "Mejora de los mapas y transparencia",
+      "description": "Añadidas imágenes para todos los mapas antiguos y nueva ventana de información.",
+      "items": [
+        "📸 Añadidas 878 imágenes descriptivas para todos los mapas antiguos",
+        "📊 Nueva ventana de información sobre los mapas con estadísticas detalladas",
+        "ℹ️ Muestra la versión, la fecha de actualización y las estadísticas globales",
+        "📋 Aviso legal añadido en la portada y dentro de la ventana",
+        "🔧 Mejora del script de actualización para detectar nuevas imágenes",
+        "✨ Interfaz mejorada con información sobre cada mapa individual"
+      ]
+    },
+    "v1_1_0": {
+      "title": "Versión 1.1: nuevo mapa Huaxu",
+      "description": "Añadido el nuevo mapa Huaxu con 371 marcadores y soporte de imágenes descriptivas.",
+      "items": [
+        "🆕 Nuevo mapa Huaxu añadido (7.ª región)",
+        "📸 Soporte de imágenes descriptivas para los marcadores",
+        "🔍 Ventana de zoom para las imágenes con zoom, rotación y descarga",
+        "🎨 Banner de actualización animado en la portada",
+        "👥 Sección Comunidad con enlaces a Velkaine (Twitch) y al Wiki",
+        "📋 Actualización de los códigos de canje con gestión de los códigos caducados",
+        "🔧 Scripts automatizados para actualizar los mapas desde boarhat.gg"
+      ]
+    },
+    "v1_0_1": {
+      "title": "Mejora de los códigos de canje",
+      "description": "Separación de los códigos activos y caducados con indicadores visuales.",
+      "items": [
+        "✅ Los nuevos códigos activos se muestran primero",
+        "⏰ Insignia de caducidad para los códigos con fecha límite",
+        "❌ Sección dedicada a los códigos caducados",
+        "🔄 Actualización periódica de los códigos",
+        "📊 Contador de códigos activos frente a caducados"
+      ]
+    },
+    "v1_0_0": {
+      "title": "Actualización de Next.js",
+      "description": "Migración a Next.js 16.0.7 para un mejor rendimiento.",
+      "items": [
+        "⚡ Next.js 16.0.7",
+        "🚀 Mejora del rendimiento"
+      ]
+    },
+    "v0_9_0": {
+      "title": "Mejoras del mapa interactivo",
+      "description": "Nuevas funcionalidades para una mejor experiencia de usuario.",
+      "items": [
+        "📁 Agrupación de las categorías en la barra lateral",
+        "📏 Redimensionado de la barra lateral",
+        "💾 Persistencia de la selección de mapa",
+        "🎨 Estilos de barra de desplazamiento personalizados",
+        "✨ Animaciones con Framer Motion"
+      ]
+    }
+  },
+  "apiErrors": {
+    "signInRequired": "Es necesario iniciar sesión.",
+    "invalidRequest": "Solicitud no válida.",
+    "invalidData": "Datos no válidos.",
+    "tooManyAttempts": "Demasiados intentos. Inténtalo más tarde.",
+    "tooManyRequests": "Demasiadas solicitudes. Inténtalo más tarde.",
+    "tooManySaves": "Demasiados guardados. Inténtalo más tarde.",
+    "tooManyMessages": "Has enviado demasiados mensajes. Inténtalo más tarde.",
+    "tooManyPublications": "Demasiadas publicaciones. Inténtalo más tarde.",
+    "tooManyVotes": "Demasiados votos. Inténtalo más tarde.",
+    "tooManyReports": "Demasiadas denuncias. Inténtalo más tarde.",
+    "characterIdRequired": "characterId es obligatorio.",
+    "buildNotFound": "Build no encontrado.",
+    "actionForbidden": "Acción no permitida.",
+    "buildLimitReached": "Límite alcanzado: máximo {max} builds publicados por personaje.",
+    "buildsPublishDisabled": "La publicación de builds está desactivada temporalmente.",
+    "cannotReportOwnBuild": "No puedes denunciar tu propio build.",
+    "signupsClosed": "Los registros están cerrados temporalmente.",
+    "emailAlreadyUsed": "Este correo ya está en uso. Inicia sesión o restablece tu contraseña.",
+    "resetLinkInvalid": "Enlace no válido o caducado. Solicita un nuevo restablecimiento.",
+    "noEmailOnAccount": "Esta cuenta no tiene dirección de correo: no se puede definir una contraseña.",
+    "cannotUnlink": "No se puede desvincular: define primero una contraseña o vincula otra cuenta.",
+    "payloadTooLarge": "Solicitud demasiado grande.",
+    "recaptchaFailed": "La verificación reCAPTCHA ha fallado.",
+    "smtpIncomplete": "Configuración SMTP incompleta.",
+    "contactSendFailed": "Error al enviar el mensaje.",
+    "contactSendSuccess": "Mensaje enviado correctamente.",
+    "nameTooShort": "El nombre debe tener al menos 2 caracteres.",
+    "nameTooLong": "El nombre no puede superar los 100 caracteres.",
+    "emailInvalid": "Dirección de correo no válida.",
+    "emailTooLong": "La dirección de correo es demasiado larga.",
+    "messageTooShort": "El mensaje debe tener al menos 10 caracteres.",
+    "messageTooLong": "El mensaje no puede superar los 5000 caracteres.",
+    "recaptchaMissing": "Falta el token de reCAPTCHA.",
+    "passwordTooShort": "Mínimo 8 caracteres.",
+    "passwordTooLong": "Contraseña demasiado larga.",
+    "tokenMissing": "Falta el token.",
+    "invalidProvider": "Proveedor no válido.",
+    "accountNotLinked": "Esta cuenta no está vinculada.",
+    "nameInvalidChars": "El nombre solo puede contener letras, espacios, apóstrofos y guiones."
   }
 }

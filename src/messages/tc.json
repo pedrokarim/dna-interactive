@@ -78,7 +78,7 @@
     "archive": "檔案",
     "withArchive": "有檔案",
     "withoutArchive": "無檔案",
-    "new": "NEW",
+    "new": "最新",
     "expired": "已過期",
     "version": "版本",
     "disclaimer": "免責聲明",
@@ -108,7 +108,21 @@
     "category": "分類",
     "clickToEnlarge": "點擊放大",
     "error": "錯誤",
-    "goToCard": "前往第 {index} 張卡片"
+    "goToCard": "前往第 {index} 張卡片",
+    "elements": {
+      "fire": "火",
+      "water": "水",
+      "thunder": "雷",
+      "wind": "風",
+      "light": "光",
+      "dark": "暗"
+    },
+    "language": "語言",
+    "remove": "移除",
+    "decrease": "減少",
+    "increase": "增加",
+    "notifications": "通知",
+    "premium": "尊享"
   },
   "legal": {
     "copyright": "© 2025 {siteName}。由 {creator} 用 ❤️ 製作",
@@ -177,7 +191,7 @@
     "newMapsV14Title": "新增 5 張地圖！",
     "newMapsV14Details": "Bloomfield Station、Ironworks、Outer Peaks、Taixu Mausoleum、Youlai Alley",
     "newMapsV14Cta": "探索 Bloomfield",
-    "badgeNew": "NEW"
+    "badgeNew": "最新"
   },
   "newCharacters": {
     "badge": "新角色",
@@ -246,7 +260,8 @@
     "mapAlt": "{region} 地區互動地圖，顯示所有標記、寶箱與景點。",
     "categoryIconAlt": "{name} 圖示 — 互動地圖標記分類",
     "markerIconAlt": "{name} 圖示 — 互動地圖標記",
-    "loadingMarkers": "正在載入標記..."
+    "loadingMarkers": "正在載入標記...",
+    "activeMap": "目前地圖"
   },
   "mapInfo": {
     "title": "地圖資訊",
@@ -283,7 +298,15 @@
   },
   "changelog": {
     "title": "更新日誌",
-    "description": "變更與改善紀錄"
+    "description": "變更與改善紀錄",
+    "eyebrow": "更新日誌",
+    "types": {
+      "feature": "新功能",
+      "security": "安全性",
+      "update": "更新",
+      "fix": "修正",
+      "enhancement": "改善"
+    }
   },
   "about": {
     "title": "關於 {siteName}",
@@ -424,7 +447,7 @@
     "statDEF": "防禦力",
     "statMaxHp": "最大 HP",
     "statMaxES": "護盾",
-    "statMaxSp": "Lucidity",
+    "statMaxSp": "清明度",
     "statSkillIntensity": "強度",
     "statSkillEfficiency": "效率",
     "statSkillSustain": "持續力",
@@ -497,7 +520,16 @@
     "statMaxSpLong": "最大清明",
     "quickBuild": "快速配裝",
     "quickBuildOf": "快速配裝 — {name}",
-    "ascensionTiers": "突破階段"
+    "ascensionTiers": "突破階段",
+    "zoomLabel": "放大",
+    "zoomTitle": "放大（滾輪）",
+    "levelShort": "Lv.",
+    "factionOrg": "勢力 / 組織",
+    "originNation": "出身 / 國家",
+    "gender": "性別",
+    "textKeysTitle": "文字鍵值",
+    "technicalDataTitle": "技術資料",
+    "campKey": "陣營鍵值"
   },
   "items": {
     "libraryLabel": "道具資料庫",
@@ -526,11 +558,12 @@
     "sortRarityAsc": "稀有度升序",
     "sortRarityDesc": "稀有度降序",
     "zoomIcon": "放大道具 {id} 的圖示",
-    "newBadge": "NEW",
+    "newBadge": "最新",
     "newOnly": "僅新項目",
     "calamityOnly": "僅顯示災厄武器",
     "calamityWeapon": "災厄武器",
-    "potentialTree": "潛能樹"
+    "potentialTree": "潛能樹",
+    "draftSampleAlt": "鍛造圖紙圖示範例"
   },
   "itemDetail": {
     "weaponBuildTitle": "推薦惡魔楔組合",
@@ -563,7 +596,20 @@
     "noResolvedAttributes": "未偵測到已解析屬性。",
     "archiveName": "封存名稱",
     "maxLevelExp": "最高等級經驗值",
-    "totalExpToMax": "至最高等級的總經驗值"
+    "totalExpToMax": "至最高等級的總經驗值",
+    "fieldColumn": "欄位",
+    "valueColumn": "數值",
+    "technicalSubtype": "技術子類型",
+    "variantsTitle": "變體",
+    "descriptionTitle": "說明",
+    "localizedInfoTitle": "在地化資訊",
+    "functionLabel": "功能標籤",
+    "resourceType": "資源類型",
+    "ascensionTiers": "突破階段",
+    "ascensionSteps": "突破步驟",
+    "textKeysTitle": "文字鍵值",
+    "technicalTitle": "技術資料",
+    "relatedDraftsTitle": "相關圖紙"
   },
   "drafts": {
     "headerLabel": "鍛造圖紙",
@@ -580,7 +626,8 @@
     "sortDurationDesc": "時間降序",
     "noResults": "沒有圖紙符合目前的篩選條件。",
     "noResultsHint": "調整篩選條件或搜尋內容。",
-    "zoomDraftIcon": "放大圖紙 {id} 的圖示"
+    "zoomDraftIcon": "放大圖紙 {id} 的圖示",
+    "recipeLabel": "配方"
   },
   "draftDetail": {
     "productLabel": "產品 {type} x{quantity}",
@@ -599,7 +646,11 @@
     "weaponMaxLevel": "武器最高等級",
     "weaponValue": "武器價值",
     "forgeCost": "鍛造費用",
-    "noExplicitCost": "此圖紙沒有明確費用。"
+    "noExplicitCost": "此圖紙沒有明確費用。",
+    "productTypeLabel": "產物類型",
+    "ingredientsLabel": "材料",
+    "expReward": "獲得 EXP",
+    "requiredComponents": "所需材料"
   },
   "gameInfo": {
     "name": "Duet Night Abyss",
@@ -661,16 +712,16 @@
     "characterOgAlt": "角色 — DNA Interactive"
   },
   "commissions": {
-    "eyebrow": "Covert Commissions",
+    "eyebrow": "密令委託",
     "title": "Covert Commissions",
-    "description": "Live rotation of the regional commissions — Character, Weapon and Demon Wedge. The board updates on every refresh.",
-    "nextRefresh": "Next refresh",
-    "lastUpdated": "Updated {time}",
-    "syncing": "Syncing…",
-    "fallbackNotice": "Rotations will be available shortly.",
-    "utcNote": "Commissions rotate at the start of every hour; times shown in your local timezone.",
-    "nextAt": "at {time} your time",
-    "unavailable": "Temporarily unavailable"
+    "description": "各地區委託任務的即時輪替 — 角色、武器與 Demon Wedge。每次重新整理都會更新看板。",
+    "nextRefresh": "下次更新",
+    "lastUpdated": "{time} 更新",
+    "syncing": "同步中…",
+    "fallbackNotice": "輪替內容即將開放。",
+    "utcNote": "委託任務於每個整點輪替，時間以你的所在時區顯示。",
+    "nextAt": "你的時間 {time}",
+    "unavailable": "暫時無法使用"
   },
   "builder": {
     "weaponWedgesToggle": "設定武器的惡魔楔",
@@ -858,7 +909,8 @@
     "pageLibraryTitle": "配裝庫",
     "pageLibraryDescription": "瀏覽社群分享的配裝，開啟完整資訊，或以此作為起點。",
     "pageCreateBuild": "建立配裝",
-    "reportReasonTooShort": "請提供更具體的理由。"
+    "reportReasonTooShort": "請提供更具體的理由。",
+    "deleteFailed": "無法刪除。"
   },
   "account": {
     "metaTitle": "個人檔案 - DNA Interactive",
@@ -1095,7 +1147,8 @@
   "exportModal": {
     "title": "匯出標記",
     "fileFormat": "檔案格式",
-    "structuredHint": "結構化格式，易於重新匯入"
+    "structuredHint": "結構化格式，易於重新匯入",
+    "csvHint": "試算表格式，相容 Excel"
   },
   "notFound": {
     "description": "您尋找的頁面不存在或已被移動。",
@@ -1109,5 +1162,459 @@
     "griffinDraftAlt": "Griffin 鍛造圖紙",
     "typhonDraftAlt": "Typhon 鍛造圖紙",
     "yuliKatanaAlt": "Yuli 的刀"
+  },
+  "itemsAbout": {
+    "guideBadge": "Demon Wedge 指南",
+    "title": "Demon Wedge 的運作方式",
+    "intro": "在遊戲中，部分資料會以技術名稱 <mod>MOD</mod> 顯示 Demon Wedge。本頁說明網站使用的重要欄位：等級、親和、容許值、動態效果與素材對應。",
+    "badgeLevels": "等級 0 → MaxLevel",
+    "badgeTolerance": "容許值 = Cost + Level × CostChange",
+    "badgeTranslations": "翻譯 TC/EN/…",
+    "badgeReference": "玩法參考資訊",
+    "showcaseTitle": "Demon Wedge 視覺一覽",
+    "showcaseDescription": "列表與詳細頁使用的 Demon Wedge 圖示範例。目標是讓你一眼就能辨識 Demon Wedge。",
+    "showcaseIconSublabel": "Demon Wedge 圖示範例",
+    "readTitle": "用 3 個線索讀懂資料卡",
+    "readStep1Title": "1) 主圖示",
+    "readStep1Text": "讓你在列表中辨識 Demon Wedge。",
+    "readStep2Title": "2) 親和 / 極性",
+    "readStep2Text": "名稱旁的符號代表 Demon Wedge 的親和類型。",
+    "readStep3Title": "3) 目前等級",
+    "readStep3Text": "詳細頁的滑桿會改變動態數值 #1、#2、#3。",
+    "structureTitle": "1) Demon Wedge 的結構",
+    "structureItem1": "每個 Demon Wedge 都有名稱、說明、稀有度、親和與最高等級。",
+    "structureItem2": "遊戲中顯示的名稱是 <c>Demon Wedge</c>。<c>MOD</c> 主要是部分內部資料使用的技術名詞。",
+    "structureItem3": "文字（名稱、說明、被動效果）會依所選語言而變化。",
+    "structureItem4": "網站以 JSON 提供這些資訊，方便篩選、比較語言與開啟詳細內容。",
+    "affinityTitle": "親和、極性與相容類型",
+    "affinityDescription": "詳細頁結合了多種視覺線索：極性符號、元素親和，以及角色／武器類型的相容標籤。",
+    "polarityLabel": "極性",
+    "polarityItem": "極性 {num}",
+    "affinityElementalLabel": "元素親和",
+    "typeCompatLabel": "相容類型",
+    "typeCompat": {
+      "character": "角色",
+      "melee": "近戰",
+      "ranged": "遠程",
+      "meleeUltra": "近戰 Ultra",
+      "rangedUltra": "遠程 Ultra"
+    },
+    "levelsTitle": "2) 等級與動態數值",
+    "levelsText": "<c>#1</c>、<c>#2</c> 等數值會隨 Demon Wedge 的等級變化。詳細頁的滑桿會從成長表套用這些數值，並顯示所選等級下的效果。",
+    "levelsDefault": "預設等級 = <c>0</c>（未強化）",
+    "levelsMax": "最高等級 = <c>MaxLevel</c>",
+    "toleranceTitle": "3) 容許值 / 消耗",
+    "toleranceText": "顯示的容許值會隨等級變化。資料中公開的計算方式為：",
+    "toleranceNote": "網站會預先計算各等級的數值，並存放於 <c>tolerance.valuesByLevel</c>。",
+    "multilangTitle": "4) 多語言",
+    "multilangText": "在列表中：你可以同時顯示多種語言以比較名稱。在詳細頁：可選擇單一語言並透過網址分享。",
+    "multilangNote": "目前可用的語言取決於該分類所載入的資料集。",
+    "displayTitle": "5) 網站顯示的內容",
+    "displayItem1": "Demon Wedge 的一般資訊（名稱、稀有度、功能、說明）",
+    "displayItem2": "透過滑桿呈現各等級的變化",
+    "displayItem3": "親和與對應圖示",
+    "displayItem4": "多語言名稱，便於快速比較",
+    "displayItem5": "搜尋、篩選、收藏與分頁瀏覽",
+    "quickTitle": "在網站上快速讀懂 Demon Wedge",
+    "quickText": "觀看順序始終相同：辨識圖示、確認親和，然後調整等級以查看動態效果。",
+    "stepLabel": "步驟 {num}",
+    "step1Title": "辨識 Demon Wedge",
+    "step1Line1": "名稱 + 圖示",
+    "step1Line2": "直接在列表上查看",
+    "step2Title": "確認親和與類型",
+    "step3Title": "調整等級",
+    "step3Line1": "#1 / #2 / #3 會更新",
+    "step3Line2": "依等級滑桿而定",
+    "step3Note": "等級 0 = 未強化的基礎值",
+    "altPhoenixExample": "Demon Wedge Phoenix 範例",
+    "altAffinityFire": "火親和",
+    "altCompatRanged": "遠程相容",
+    "nextTitle": "接下來可以做什麼",
+    "nextText": "利用列表快速篩選與比較，接著開啟道具查看其動態數值、各等級容許值與親和。",
+    "nextOpenGrid": "開啟 Demon Wedge 列表",
+    "nextFavorites": "查看我的收藏",
+    "genericTitle": "{category} 指南",
+    "genericText": "此分類已可加入詳細的說明頁面。系統已準備好為每個新的道具系列補上規則、公式與視覺內容。",
+    "metaModsDescription": "了解 Demon Wedge 的運作方式：等級、親和、容許值、翻譯與效果解讀。",
+    "metaGenericDescription": "了解 {category} 的運作方式：等級、親和、容許值、翻譯與效果解讀。",
+    "metaFallbackTitle": "道具指南",
+    "metaFallbackDescription": "Duet Night Abyss 道具分類說明文件。"
+  },
+  "calamityGuide": {
+    "backToWeapons": "返回武器列表",
+    "badge": "災厄武器指南",
+    "eyebrow": "HyperWeapon / 災厄融合",
+    "title": "認識災厄武器",
+    "intro": "在遊戲資料中，災厄武器是技術子類型為 <c>Hyper</c> 的武器。它擁有 0 到 5 的災厄融合進度與武器潛能，並有一項嚴格規則：只有當角色精通該武器類型時，潛能才會生效。",
+    "catalogLabel": "圖鑑",
+    "catalogCount": "在 {total} 把本地武器中的 Hyper 武器",
+    "fusionLabel": "融合",
+    "fusionTiers": "由 HyperWeaponCardLevel 提供的階段",
+    "badgeOnePerCharacter": "每名角色最多 1 把災厄武器",
+    "badgePotentialOnly": "潛能僅在專屬武器上生效",
+    "badgeSeparateBuilds": "武器用 Demon Wedge 配置獨立計算",
+    "arsenalLabel": "災厄武器庫",
+    "activeSheetLabel": "目前武器",
+    "noDescription": "目前的擷取資料中沒有在地化說明。",
+    "openFullSheet": "開啟完整資料頁",
+    "statAtk": "攻擊力",
+    "statAtkType": "攻擊類型",
+    "statCritRate": "暴擊率",
+    "statCritDamage": "暴擊傷害",
+    "tierLabel": "階段 {label}",
+    "unlockedPotentials": "已解鎖的已知潛能：",
+    "notDetailed": "匯出資料未詳列",
+    "potentialsLabel": "潛能 · {name}",
+    "adjustHint": "調整融合軌道（階段 {label}）以鎖定／解鎖",
+    "fusionSteps": {
+      "0": {
+        "label": "基礎",
+        "title": "取得武器",
+        "body": "武器可裝備，基礎潛能也已存在，但鍛造路徑尚未提升。"
+      },
+      "1": {
+        "title": "災厄熔爐 I",
+        "body": "災厄融合的第一階段。從此開始，消耗會使用該武器的原型。"
+      },
+      "2": {
+        "title": "災厄熔爐 II",
+        "body": "路徑會加入與 HyperWeaponSkillTree 相關的潛能或屬性加成。"
+      },
+      "3": {
+        "title": "災厄熔爐 III",
+        "body": "潛能分支持續推進。效果仍取決於角色的專屬武器。"
+      },
+      "4": {
+        "title": "災厄熔爐 IV",
+        "body": "當整體熔爐等級跟上時，即可取得大型分支加成。"
+      },
+      "5": {
+        "title": "災厄熔爐 V",
+        "body": "本地資料表目前提供的最終階段：最高融合等級 5。"
+      }
+    },
+    "atkTypes": {
+      "Psionic": "靈能",
+      "Smash": "鈍擊",
+      "Spike": "穿刺",
+      "Slash": "斬擊"
+    },
+    "factFusionTitle": "災厄融合",
+    "factFusionBody": "災厄融合會提升武器的融合等級。本地資料表透過 <c>HyperWeaponCardLevel</c> 提供第 1 至 5 階段。",
+    "factPotentialTitle": "武器潛能",
+    "factPotentialBody": "潛能透過融合解鎖。依遊戲文本，只有當武器類型與角色的專屬武器相符時才會生效。",
+    "factLimitTitle": "裝備上限",
+    "factLimitBody": "介面文字指出，角色一次只能裝備一把災厄武器。",
+    "factNotConsonanceTitle": "並非 Consonance",
+    "factNotConsonanceBody": "災厄武器即 <c>Hyper</c> 武器。Demon Wedge 中的 <c>*Ultra</c> 鍵值則對應 Consonance 武器。",
+    "costLabel": "所選階段的消耗",
+    "costText": "以下消耗來自 <c>HyperWeaponCardLevel</c> 資料表。鋼製武器在本地資料中目前僅列出最低的 Phoxene 消耗。",
+    "costNoneTier0": "階段 0 沒有融合消耗。",
+    "costNotExposed": "目前的擷取資料未提供此階段的消耗。",
+    "materialId": "ID {id}",
+    "wedgesLabel": "相關 Demon Wedge",
+    "wedgesText": "網站的武器資料頁可顯示標準的 Demon Wedge 配置。以 <n>{name}</n> 為例，相容的池為 <c>{poolKey}</c>，也就是 {poolLabel}。",
+    "poolMelee": "近戰",
+    "poolRanged": "遠程",
+    "poolConsonanceMelee": "近戰 Consonance",
+    "poolConsonanceRanged": "遠程 Consonance",
+    "dataLabel": "本地資料的判讀",
+    "dataWeaponTitle": "Weapon",
+    "dataWeaponBody": "<c>WeaponSubType = Hyper</c> 用於辨識災厄武器，也是本頁採用的判斷依據。",
+    "dataBattleWeaponTitle": "BattleWeapon",
+    "dataBattleWeaponBody": "戰鬥數值來自 <c>BattleWeapon</c>：攻擊力、攻擊類型、暴擊與潛能相關加成。",
+    "dataSkillTreeTitle": "SkillTree",
+    "dataSkillTreeBody": "<c>HyperWeaponSkillTree</c> 描述「永恆衝突」與「荊棘安魂曲」已知的潛能分支。",
+    "dataCardLevelTitle": "CardLevel",
+    "dataCardLevelBody": "<c>HyperWeaponCardLevel</c> 提供融合階段、熔爐條件與所需資源。",
+    "naValue": "N/A",
+    "meleeWeapons": "近戰武器",
+    "rangedWeapons": "遠程武器",
+    "unknownType": "未知類型",
+    "wedgePoolMelee": "近戰武器用 Demon Wedge",
+    "wedgePoolRanged": "遠程武器用 Demon Wedge",
+    "fallbackResource": "資源 #{id}",
+    "fallbackWeapon": "武器 #{id}",
+    "fallbackSlot": "槽位 {position}",
+    "phoxeneNote": "本地資料表目前為這把鋼製武器列出的最低消耗。",
+    "metaTitle": "災厄武器指南",
+    "metaDescription": "認識 Duet Night Abyss 的災厄武器：災厄融合、武器潛能、精通條件與 Demon Wedge 配置。"
+  },
+  "changelogEntries": {
+    "v2_2_0": {
+      "title": "全新介面：把一切集中起來的首頁，更清楚也更有生氣",
+      "description": "網站介面已全面重製，更好讀、更舒適，也更容易瀏覽。全新首頁把所有工具集中在同一處，側邊選單隨時可用，而且無論在電腦或手機上，頁面都會善用整個畫面。",
+      "items": [
+        "🏠 全新「樞紐」首頁，一眼掌握全部內容：地圖、角色、資料庫、配裝器、配裝、序號與各項工具",
+        "📋 側邊選單隨時可用，一鍵切換區塊 — 想要更多空間時可收合，並會記住你的偏好",
+        "🖥️ 所有頁面重新設計以善用整個畫面：更寬鬆、更好讀、留白更少",
+        "🎁 首頁直接預覽禮包序號，一鍵複製",
+        "🗂️ 社群的熱門配裝直接在首頁呈現",
+        "📅 追蹤進行中內容的活動行事曆（預覽）",
+        "📱 從頭到尾為行動裝置設計的導覽",
+        "✨ 全站更精緻、更一致的視覺呈現"
+      ]
+    },
+    "v2_1_0": {
+      "title": "社群配裝器：建立、分享與投票",
+      "description": "全新社群平台：組出自己的配裝（角色、Demon Wedge、Genimon、武器、技能與隊伍），透過 Discord 帳號發佈，接著瀏覽並為其他玩家的配裝投票。涵蓋全部 65 把武器的 Demon Wedge 配裝、卡片分享，以及在無障礙與翻譯上的大幅推進。",
+      "items": [
+        "🛠️ 全新配裝器：組出完整配裝（Demon Wedge、Genimon、武器、技能、3 人隊伍）並發佈",
+        "🔐 以 Discord 登入即可發佈與投票；每名角色最多 3 組配裝",
+        "🌐 社群樞紐 /builds：搜尋、篩選（角色、元素、標籤）、排序與分頁",
+        "📄 每組配裝都有專屬且可分享的頁面（/builds/[id]）",
+        "👍 社群配裝的投票與排行",
+        "🏷️ 配裝標籤：單人、隊伍、首領、F2P、終盤、新手",
+        "👥 推薦隊伍選擇器（最多 3 名角色並標示定位）",
+        "🔗 配裝分享：自帶內容的連結 + X / Facebook / Reddit + 系統原生分享",
+        "🖼️ 配裝卡片的 PNG 匯出",
+        "🥇 獨立的「官方」層級，置於社群方案之上",
+        "💾 混合式草稿：先存於本機，登入時再與伺服器整合",
+        "⚔️ 全部 65 把武器的武器用 Demon Wedge 配裝，可在武器頁查看並套用至配裝（開關）",
+        "🎴 滑過 Demon Wedge 時顯示更豐富的提示（名稱、稀有度、元素）",
+        "🔗 篩選狀態寫入網址（可分享連結並支援上一頁／下一頁）",
+        "♿ 強化無障礙：全域支援「減少動態效果」、可見的焦點、對話框焦點鎖定、ARIA 標籤",
+        "📜 隱私權／使用條款頁面與帳號刪除（GDPR）"
+      ]
+    },
+    "v2_0_0": {
+      "title": "1.4 版本 Silver Torrent, Rising Star：Flora、Hilda、Bloomfield Station 與 5 張新地圖",
+      "description": "完整整合官方版本「Silver Torrent, Rising Star」：2 名新角色（Flora 與 Hilda）、Phoxhunter 的新元素 Umbro、蒸汽龐克地區 Flodia Bloomfield Station、5 張互動地圖、12 張桌布，以及會自動失效的橫幅系統。",
+      "items": [
+        "🎮 完整重新擷取遊戲資料，直至 1.4.153 版「Silver Torrent, Rising Star」",
+        "✨ Flora（Umbro）— 主打新角色，使用劍與突擊步槍",
+        "🔥 Hilda（Pyro）— 新角色，使用雙刀與榴彈發射器（2026 年 6 月 30 日之後登場）",
+        "🌑 為 Phoxhunter（玩家主角）解鎖新元素 Umbro，透過［Noctoyager 章節 – Silver Torrent, Rising Star］",
+        "🚂 新地區 Flodia Bloomfield Station（包含 Bloomfield Station 與 Ironworks），Icelake 的蒸汽龐克火車站",
+        "⚔️ 技能 +27、Demon Wedge +18、資源 +157、新分類 Calamity Weapons，釣魚道具改版",
+        "🗺️ 5 張新互動地圖：Bloomfield Station、Ironworks、Outer Peaks、Taixu Mausoleum、Youlai Alley",
+        "📍 於全部 13 張地圖，自 boarhat.gg 重新同步 1589 個標記圖示",
+        "🖼️ 新增 12 張世界觀桌布（1.3 版 7 張、1.4 版 5 張）至 Ken Burns 效果",
+        "⚡ v1.3／v1.4 桌布最佳化：4K → Full HD 縮放、WebP q70（容量 -73 %）",
+        "🌟 首頁輪播重新排序：最新桌布優先顯示",
+        "📢 全新公告橫幅系統，於版本推出 4 週後自動失效（歷史紀錄保留於程式碼中）",
+        "🎭 角色展示重新編排：以 Flora 為主，加上 Su Yi 與 Phoxhunter 的兩種 Umbro 型態",
+        "💾 擷取流程重構：pak 儲存與 FModel 匯出改放外接硬碟，避免系統 SSD 被塞滿"
+      ]
+    },
+    "v1_9_0": {
+      "title": "配裝卡片、技能分頁與游標提示",
+      "description": "每名角色新增技能分頁與等級滑桿、可匯出成 PNG 的配裝卡片，以及在桌面版跟隨游標的提示系統。",
+      "items": [
+        "🎴 可分享的全新配裝卡片（對話框 + ?build=true 折疊區），含羽化人像、比照遊戲內的 Demon Wedge 版面與 PNG 下載",
+        "🃏 在首頁（Psyche）展示配裝卡片，附 #build-showcase 錨點與主視覺橫幅的預告",
+        "⚔️ 完整的技能分頁：名稱、說明、參數、區塊與戰鬥詞彙，共 7 種語言",
+        "🎚️ 技能等級滑桿（1-20），透過 SkillGrow 即時重算隨等級變動的數值",
+        "🧩 配裝卡片中的行內技能圖示與推薦隊伍",
+        "🪄 全新元件 CursorTooltip：桌面版跟隨游標、行動版點擊切換，以 portal 掛載於 body",
+        "🛡️ 配裝卡片的武器、Genimon 與 Demon Wedge 槽位（含中央）皆有游標提示",
+        "🏷️ 擷取流程 extract-skills.ts：解析 9 個 Lua 檔案與 SkillGrow，逐級計算 #N 公式"
+      ]
+    },
+    "v1_8_0": {
+      "title": "多語系、角色展示與地圖深層連結",
+      "description": "大幅改版，提供完整多語系支援（7 種語言）、全新互動式 v1.3 角色展示，以及更好的導覽。",
+      "items": [
+        "🌐 以 next-intl 完成全站多語系：7 種語言（FR、EN、DE、ES、JP、KR、TC）",
+        "🔍 自動偵測瀏覽器語言，並以 Cookie 記住選擇",
+        "🗂️ i18n 路由：每種語言都有專屬網址（/fr/map、/en/characters 等）",
+        "🌏 全站每個頁面都有語言切換器",
+        "🎭 首頁新增互動式 v1.3 角色展示（Su Yi、Camilla、Yuming、Zhiliu）",
+        "🖼️ 全螢幕美術圖，搭配頭像選擇器、各角色專屬漸層與裝飾性書法字",
+        "🔗 地圖深層連結：Haojing 橫幅直接前往對應地圖（?mapId=haojing）",
+        "📐 修正地圖側欄連結換行的問題",
+        "🖼️ 主視覺橫幅的 Ken Burns 效果加入 v1.3 圖片",
+        "⚡ 修正 turbopack.root 以加快開發時的編譯",
+        "🏷️ SEO：hreflang 標籤、在地化中繼資料、多語系網站地圖"
+      ]
+    },
+    "v1_7_0": {
+      "title": "遊戲 v1.3 更新與 Genimon 變種",
+      "description": "自 1.3 版起完整重新擷取遊戲資料，新增角色並導入 Genimon 的變種系統。",
+      "items": [
+        "🔄 自遊戲 v1.3 的 pak 重新擷取 1176 個 Lua 檔案",
+        "👤 新增 Su Yi（含人像與技能的完整資料）與 Flora（僅資料，尚未推出）",
+        "🎭 補完 Camilla（數值、翻譯、人像、技能）",
+        "🐾 Genimon 變種系統：每個種類都會顯示其變種並可相互切換",
+        "✨ Genimon 的異色變種加上金色 Premium 標章",
+        "🎣 新增東部地區（Haojing）的新魚種",
+        "📦 以 v1.3 資料更新所有道具、模組與資源",
+        "🌐 修正西班牙文翻譯（Hyperboreano → Hiporboreo）"
+      ]
+    },
+    "v1_6_0": {
+      "title": "新地圖 Haojing（1.3 版本）",
+      "description": "新增含 143 個標記的 Haojing 地圖，並大幅最佳化地圖資料的載入。",
+      "items": [
+        "🗺️ 新增 Haojing 地圖（第 8 個地區），含 143 個標記與 6 個分類",
+        "⚡ 重新設計資料機制：改為依地圖隨需載入，不再使用單一巨型檔案",
+        "📦 初始載入量減少約 75 %（由 439 KB 改為索引 54 KB + 1 張地圖）",
+        "🔧 修正 boarhat.gg 解析器，使其能處理含引號的名稱",
+        "🏠 首頁新增 Haojing 的 v1.3 橫幅"
+      ]
+    },
+    "v1_5_0": {
+      "title": "角色配裝",
+      "description": "為 22 名可操作角色提供完整的推薦配裝系統，含 Consonance 武器與軌道調整。",
+      "items": [
+        "🎮 新增 21 組角色配裝，附推薦裝備與 Demon Wedge",
+        "⚔️ 自遊戲資料擷取並顯示 Consonance 武器",
+        "🎚️ 軌道調整（Track Adjustments），附開關與圖示",
+        "🎨 重新設計 Intron 分頁，採用浮動圓形與技能優先度",
+        "🌈 角色詳細頁依元素呈現環境漸層",
+        "🖼️ 屬性分頁加入技能圖示",
+        "💡 配裝裝備的詳細提示"
+      ]
+    },
+    "v1_4_0": {
+      "title": "角色圖鑑與釣魚",
+      "description": "新增可操作角色的完整圖鑑與詳細數值，以及道具中的釣魚分類。",
+      "items": [
+        "👤 所有可操作角色的圖鑑與詳細資料頁",
+        "📊 各等級數值，含成長曲線與公式",
+        "🎣 以遊戲資料擷取道具所建立的全新釣魚分類",
+        "🐾 修正 Genimon 被動的動態數值",
+        "🌐 依道具分類調整文字鍵值標籤的語境"
+      ]
+    },
+    "v1_3_0": {
+      "title": "道具：鍛造圖紙（Drafts）與武器",
+      "description": "新增完整區塊以瀏覽鍛造圖紙、配方與相關武器，並讓分類之間的切換更清楚。",
+      "items": [
+        "🧩 全新 Drafts 分類，具備可篩選列表、搜尋與分頁",
+        "🌳 全新 Draft 詳細頁，將配方視覺化（成品 + 材料）",
+        "🛠️ 擷取並整合配方資料與武器資料",
+        "🖼️ 於網站端補上圖示素材（圖紙、武器、武器類型、配件）",
+        "🔗 在 Drafts 與武器頁之間建立連結，方便切換",
+        "✏️ 修正分類標示：Armes / Arm → Armes / Weapons",
+        "📣 首頁橫幅（地圖 + 道具）關閉後會保持關閉",
+        "🎯 首頁新增前往道具頁的行動呼籲卡片"
+      ]
+    },
+    "v1_2_1": {
+      "title": "新標記與 SEO 最佳化",
+      "description": "補上缺少的標記，特別是 Taixu Runes，並全面改為在本地託管素材。",
+      "items": [
+        "🆕 於所有地圖補上缺少的標記",
+        "✨ 補上原本缺少的 Taixu Runes 標記",
+        "🗺️ 下載所有地圖圖片並於本地託管",
+        "🎨 下載所有圖示並於本地託管",
+        "🔧 自動將所有外部網址改寫為本地路徑",
+        "✅ 於既有地圖中自動修正 111 個網址",
+        "💾 所有素材現已託管於本地的 /assets/"
+      ]
+    },
+    "v1_2_0": {
+      "title": "採用 reCAPTCHA 與 Zod 的安全聯絡表單",
+      "description": "完整且安全地實作聯絡表單，並具備進階的反垃圾訊息防護。",
+      "items": [
+        "📧 用於安全處理表單的完整 API 端點",
+        "🔒 整合 reCAPTCHA v3（分數 ≥ 0.7）以防機器人",
+        "🛡️ 以 Zod v4.3.5 驗證，具自動淨化與型別安全",
+        "📮 安全的 SMTP 設定，搭配專業的 HTML 郵件",
+        "⏱️ DoS 防護：30 秒逾時 + 10 KB 上限 + 速率限制",
+        "🔐 完整的安全標頭（XSS、框架嵌入、content-type）",
+        "✨ 更好的使用體驗：載入狀態、依情境顯示的錯誤訊息",
+        "🧹 嚴格淨化：姓名正規表示式、符合 RFC 的電子郵件驗證",
+        "🎯 主旨列舉驗證與注入攻擊防護",
+        "📊 供監控與安全稽核使用的詳細記錄"
+      ]
+    },
+    "v1_1_1": {
+      "title": "地圖改善與資訊透明",
+      "description": "為所有舊地圖補上圖片，並新增資訊視窗。",
+      "items": [
+        "📸 為所有舊地圖新增 878 張說明圖片",
+        "📊 全新地圖資訊視窗，含詳細統計",
+        "ℹ️ 顯示版本、更新日期與整體統計",
+        "📋 於首頁與視窗中加入免責聲明",
+        "🔧 改良更新腳本以偵測新圖片",
+        "✨ 改善介面，呈現每張地圖的個別資訊"
+      ]
+    },
+    "v1_1_0": {
+      "title": "1.1 版 — 新地圖 Huaxu",
+      "description": "新增含 371 個標記的 Huaxu 地圖，並支援說明圖片。",
+      "items": [
+        "🆕 新增 Huaxu 地圖（第 7 個地區）",
+        "📸 支援標記的說明圖片",
+        "🔍 圖片放大視窗，可縮放、旋轉與下載",
+        "🎨 首頁的動態更新橫幅",
+        "👥 社群區塊，含 Velkaine（Twitch）與 Wiki 連結",
+        "📋 更新兌換序號並處理已過期的序號",
+        "🔧 自 boarhat.gg 更新地圖的自動化腳本"
+      ]
+    },
+    "v1_0_1": {
+      "title": "兌換序號的改善",
+      "description": "以視覺標示區分有效與過期的序號。",
+      "items": [
+        "✅ 新的有效序號優先顯示",
+        "⏰ 為有期限的序號加上到期標章",
+        "❌ 過期序號的專屬區塊",
+        "🔄 定期更新序號",
+        "📊 有效與過期序號的計數"
+      ]
+    },
+    "v1_0_0": {
+      "title": "Next.js 更新",
+      "description": "移轉至 Next.js 16.0.7 以獲得更好的效能。",
+      "items": [
+        "⚡ Next.js 16.0.7",
+        "🚀 效能改善"
+      ]
+    },
+    "v0_9_0": {
+      "title": "互動地圖的改善",
+      "description": "為了更好的使用體驗而推出的新功能。",
+      "items": [
+        "📁 於側欄將分類分組",
+        "📏 調整側欄寬度",
+        "💾 記住所選地圖",
+        "🎨 自訂捲軸樣式",
+        "✨ 以 Framer Motion 製作動畫"
+      ]
+    }
+  },
+  "apiErrors": {
+    "signInRequired": "需要先登入。",
+    "invalidRequest": "無效的請求。",
+    "invalidData": "無效的資料。",
+    "tooManyAttempts": "嘗試次數過多，請稍後再試。",
+    "tooManyRequests": "請求次數過多，請稍後再試。",
+    "tooManySaves": "儲存次數過多，請稍後再試。",
+    "tooManyMessages": "傳送的訊息過多，請稍後再試。",
+    "tooManyPublications": "發佈次數過多，請稍後再試。",
+    "tooManyVotes": "投票次數過多，請稍後再試。",
+    "tooManyReports": "檢舉次數過多，請稍後再試。",
+    "characterIdRequired": "characterId 為必填。",
+    "buildNotFound": "找不到配裝。",
+    "actionForbidden": "不允許此操作。",
+    "buildLimitReached": "已達上限：每名角色最多可發佈 {max} 組配裝。",
+    "buildsPublishDisabled": "配裝發佈功能暫時停用。",
+    "cannotReportOwnBuild": "你不能檢舉自己的配裝。",
+    "signupsClosed": "目前暫停註冊。",
+    "emailAlreadyUsed": "此電子郵件已被使用。請登入或重設密碼。",
+    "resetLinkInvalid": "連結無效或已過期。請重新申請重設。",
+    "noEmailOnAccount": "此帳號沒有電子郵件地址，無法設定密碼。",
+    "cannotUnlink": "無法解除綁定：請先設定密碼，或綁定另一個帳號。",
+    "payloadTooLarge": "請求內容過大。",
+    "recaptchaFailed": "reCAPTCHA 驗證失敗。",
+    "smtpIncomplete": "SMTP 設定不完整。",
+    "contactSendFailed": "傳送訊息時發生錯誤。",
+    "contactSendSuccess": "訊息已成功送出。",
+    "nameTooShort": "名稱至少需要 2 個字元。",
+    "nameTooLong": "名稱不可超過 100 個字元。",
+    "emailInvalid": "電子郵件地址無效。",
+    "emailTooLong": "電子郵件地址過長。",
+    "messageTooShort": "訊息至少需要 10 個字元。",
+    "messageTooLong": "訊息不可超過 5000 個字元。",
+    "recaptchaMissing": "缺少 reCAPTCHA 權杖。",
+    "passwordTooShort": "至少 8 個字元。",
+    "passwordTooLong": "密碼過長。",
+    "tokenMissing": "缺少權杖。",
+    "invalidProvider": "無效的提供者。",
+    "accountNotLinked": "此帳號尚未綁定。",
+    "nameInvalidChars": "名稱僅能包含字母、空格、單引號與連字號。"
   }
 }

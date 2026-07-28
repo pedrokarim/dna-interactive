@@ -99,7 +99,7 @@ export function DnaPriorityList({
               <button
                 type="button"
                 onClick={() => onChange?.(items.filter((_, idx) => idx !== i))}
-                aria-label="Retirer"
+                aria-label={t("remove")}
                 className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full border border-white/20 bg-ink/80 text-[0.7rem] leading-none text-muted hover:border-crimson-bright hover:text-[#ffb3a6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson-bright/70"
               >
                 ×

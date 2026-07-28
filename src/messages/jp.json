@@ -78,7 +78,7 @@
     "archive": "アーカイブ",
     "withArchive": "アーカイブあり",
     "withoutArchive": "アーカイブなし",
-    "new": "NEW",
+    "new": "新着",
     "expired": "期限切れ",
     "version": "バージョン",
     "disclaimer": "免責事項",
@@ -108,7 +108,21 @@
     "category": "カテゴリ",
     "clickToEnlarge": "クリックで拡大",
     "error": "エラー",
-    "goToCard": "カード{index}へ移動"
+    "goToCard": "カード{index}へ移動",
+    "elements": {
+      "fire": "火",
+      "water": "水",
+      "thunder": "雷",
+      "wind": "風",
+      "light": "光",
+      "dark": "闇"
+    },
+    "language": "言語",
+    "remove": "削除",
+    "decrease": "減らす",
+    "increase": "増やす",
+    "notifications": "通知",
+    "premium": "プレミアム"
   },
   "legal": {
     "copyright": "© 2025 {siteName}. {creator}が❤️を込めて作成",
@@ -177,7 +191,7 @@
     "newMapsV14Title": "新マップ5つ追加！",
     "newMapsV14Details": "Bloomfield Station、Ironworks、Outer Peaks、Taixu Mausoleum、Youlai Alley",
     "newMapsV14Cta": "Bloomfieldを探索",
-    "badgeNew": "NEW"
+    "badgeNew": "新着"
   },
   "newCharacters": {
     "badge": "新キャラクター",
@@ -246,7 +260,8 @@
     "mapAlt": "{region}地域のインタラクティブマップ。すべてのマーカー、宝箱、注目ポイントを表示。",
     "categoryIconAlt": "{name}アイコン — インタラクティブマップのマーカーカテゴリ",
     "markerIconAlt": "{name}アイコン — インタラクティブマップのマーカー",
-    "loadingMarkers": "マーカーを読み込み中..."
+    "loadingMarkers": "マーカーを読み込み中...",
+    "activeMap": "表示中のマップ"
   },
   "mapInfo": {
     "title": "マップ情報",
@@ -283,7 +298,15 @@
   },
   "changelog": {
     "title": "更新履歴",
-    "description": "変更と改善の履歴"
+    "description": "変更と改善の履歴",
+    "eyebrow": "更新履歴",
+    "types": {
+      "feature": "新機能",
+      "security": "セキュリティ",
+      "update": "アップデート",
+      "fix": "修正",
+      "enhancement": "改善"
+    }
   },
   "about": {
     "title": "{siteName}について",
@@ -424,7 +447,7 @@
     "statDEF": "防御力",
     "statMaxHp": "最大HP",
     "statMaxES": "シールド",
-    "statMaxSp": "Lucidity",
+    "statMaxSp": "明晰度",
     "statSkillIntensity": "強度",
     "statSkillEfficiency": "効率",
     "statSkillSustain": "持続力",
@@ -497,7 +520,16 @@
     "statMaxSpLong": "最大ルシディティ",
     "quickBuild": "クイックビルド",
     "quickBuildOf": "クイックビルド — {name}",
-    "ascensionTiers": "突破段階"
+    "ascensionTiers": "突破段階",
+    "zoomLabel": "拡大",
+    "zoomTitle": "拡大（ホイール）",
+    "levelShort": "Lv.",
+    "factionOrg": "勢力 / 組織",
+    "originNation": "出身 / 国家",
+    "gender": "性別",
+    "textKeysTitle": "テキストキー",
+    "technicalDataTitle": "技術データ",
+    "campKey": "陣営キー"
   },
   "items": {
     "libraryLabel": "アイテムライブラリ",
@@ -526,11 +558,12 @@
     "sortRarityAsc": "レアリティ昇順",
     "sortRarityDesc": "レアリティ降順",
     "zoomIcon": "アイテム{id}のアイコンを拡大",
-    "newBadge": "NEW",
+    "newBadge": "新着",
     "newOnly": "新規のみ",
     "calamityOnly": "カラミティ武器のみ表示",
     "calamityWeapon": "カラミティ武器",
-    "potentialTree": "ポテンシャルツリー"
+    "potentialTree": "ポテンシャルツリー",
+    "draftSampleAlt": "鍛造設計図アイコンの例"
   },
   "itemDetail": {
     "weaponBuildTitle": "おすすめのデーモンウェッジ構成",
@@ -563,7 +596,20 @@
     "noResolvedAttributes": "解決済み属性は検出されませんでした。",
     "archiveName": "アーカイブ名",
     "maxLevelExp": "最大レベルのEXP",
-    "totalExpToMax": "最大レベルまでの総EXP"
+    "totalExpToMax": "最大レベルまでの総EXP",
+    "fieldColumn": "項目",
+    "valueColumn": "値",
+    "technicalSubtype": "技術サブタイプ",
+    "variantsTitle": "バリエーション",
+    "descriptionTitle": "説明",
+    "localizedInfoTitle": "ローカライズ情報",
+    "functionLabel": "機能ラベル",
+    "resourceType": "リソース種別",
+    "ascensionTiers": "突破段階",
+    "ascensionSteps": "突破ステップ",
+    "textKeysTitle": "テキストキー",
+    "technicalTitle": "技術データ",
+    "relatedDraftsTitle": "関連する設計図"
   },
   "drafts": {
     "headerLabel": "鍛造設計図",
@@ -580,7 +626,8 @@
     "sortDurationDesc": "時間降順",
     "noResults": "現在のフィルターに一致する設計図がありません。",
     "noResultsHint": "フィルターまたは検索を調整してください。",
-    "zoomDraftIcon": "設計図{id}のアイコンを拡大"
+    "zoomDraftIcon": "設計図{id}のアイコンを拡大",
+    "recipeLabel": "レシピ"
   },
   "draftDetail": {
     "productLabel": "製品 {type} x{quantity}",
@@ -599,7 +646,11 @@
     "weaponMaxLevel": "武器最大レベル",
     "weaponValue": "武器価値",
     "forgeCost": "鍛造コスト",
-    "noExplicitCost": "この設計図に明示的なコストはありません。"
+    "noExplicitCost": "この設計図に明示的なコストはありません。",
+    "productTypeLabel": "成果物の種類",
+    "ingredientsLabel": "材料",
+    "expReward": "獲得 EXP",
+    "requiredComponents": "必要な素材"
   },
   "gameInfo": {
     "name": "Duet Night Abyss",
@@ -661,16 +712,16 @@
     "characterOgAlt": "キャラクター — DNA Interactive"
   },
   "commissions": {
-    "eyebrow": "Covert Commissions",
+    "eyebrow": "隠密コミッション",
     "title": "Covert Commissions",
-    "description": "Live rotation of the regional commissions — Character, Weapon and Demon Wedge. The board updates on every refresh.",
-    "nextRefresh": "Next refresh",
-    "lastUpdated": "Updated {time}",
-    "syncing": "Syncing…",
-    "fallbackNotice": "Rotations will be available shortly.",
-    "utcNote": "Commissions rotate at the start of every hour; times shown in your local timezone.",
-    "nextAt": "at {time} your time",
-    "unavailable": "Temporarily unavailable"
+    "description": "地域コミッションのライブローテーション — キャラクター、武器、Demon Wedge。更新のたびにボードが最新化されます。",
+    "nextRefresh": "次の更新",
+    "lastUpdated": "{time} 更新",
+    "syncing": "同期中…",
+    "fallbackNotice": "ローテーションは間もなく利用可能になります。",
+    "utcNote": "コミッションは毎正時に切り替わります。時刻はお使いのタイムゾーンで表示されます。",
+    "nextAt": "現地時間 {time}",
+    "unavailable": "一時的に利用できません"
   },
   "builder": {
     "weaponWedgesToggle": "武器のデーモンウェッジを設定",
@@ -858,7 +909,8 @@
     "pageLibraryTitle": "ビルドライブラリ",
     "pageLibraryDescription": "コミュニティが共有したビルドを閲覧し、詳細を開いたり、出発点として使用したりできます。",
     "pageCreateBuild": "ビルドを作成",
-    "reportReasonTooShort": "もう少し具体的な理由を入力してください。"
+    "reportReasonTooShort": "もう少し具体的な理由を入力してください。",
+    "deleteFailed": "削除できませんでした。"
   },
   "account": {
     "metaTitle": "プロフィール - DNA Interactive",
@@ -1095,7 +1147,8 @@
   "exportModal": {
     "title": "マーカーをエクスポート",
     "fileFormat": "ファイル形式",
-    "structuredHint": "構造化形式で再インポートが簡単"
+    "structuredHint": "構造化形式で再インポートが簡単",
+    "csvHint": "表計算形式、Excel 対応"
   },
   "notFound": {
     "description": "お探しのページは存在しないか、移動されました。",
@@ -1109,5 +1162,459 @@
     "griffinDraftAlt": "Griffin 鍛造設計図",
     "typhonDraftAlt": "Typhon 鍛造設計図",
     "yuliKatanaAlt": "ユリの刀"
+  },
+  "itemsAbout": {
+    "guideBadge": "Demon Wedgeガイド",
+    "title": "Demon Wedgeの仕組み",
+    "intro": "ゲーム内では、一部のデータで Demon Wedge が技術名の <mod>MOD</mod> として表示されることがあります。このページでは、本サイトで使用する主要な項目（レベル、親和性、許容値、動的効果、アセットの対応）を解説します。",
+    "badgeLevels": "レベル 0 → MaxLevel",
+    "badgeTolerance": "許容値 = Cost + Level × CostChange",
+    "badgeTranslations": "翻訳 JP/EN/…",
+    "badgeReference": "ゲームプレイ参考情報",
+    "showcaseTitle": "Demon Wedge ビジュアル一覧",
+    "showcaseDescription": "一覧ページと詳細ページで使用される Demon Wedge アイコンの例です。ひと目で Demon Wedge を見分けられるようにすることが目的です。",
+    "showcaseIconSublabel": "Demon Wedge アイコンの例",
+    "readTitle": "3つの目印で読み解く",
+    "readStep1Title": "1) メインアイコン",
+    "readStep1Text": "一覧の中で Demon Wedge を識別できます。",
+    "readStep2Title": "2) 親和性 / 極性",
+    "readStep2Text": "名前の横の記号が Demon Wedge の親和性タイプを示します。",
+    "readStep3Title": "3) 有効レベル",
+    "readStep3Text": "詳細ページのスライダーで動的な値 #1、#2、#3 が変化します。",
+    "structureTitle": "1) Demon Wedge の構造",
+    "structureItem1": "各 Demon Wedge には名称、説明、レアリティ、親和性、最大レベルがあります。",
+    "structureItem2": "ゲーム内で表示される名称は <c>Demon Wedge</c> です。<c>MOD</c> は主に一部の内部データで使われる技術用語です。",
+    "structureItem3": "テキスト（名称、説明、パッシブ効果）は選択した言語に応じて変わります。",
+    "structureItem4": "本サイトはこれらの情報を JSON で公開しており、絞り込み、言語比較、詳細表示が可能です。",
+    "affinityTitle": "親和性・極性・適合タイプ",
+    "affinityDescription": "詳細ページは複数の視覚的な目印を組み合わせます。極性の記号、元素親和性、キャラクター／武器タイプの適合タグです。",
+    "polarityLabel": "極性",
+    "polarityItem": "極性 {num}",
+    "affinityElementalLabel": "元素親和性",
+    "typeCompatLabel": "適合タイプ",
+    "typeCompat": {
+      "character": "キャラクター",
+      "melee": "近接",
+      "ranged": "遠距離",
+      "meleeUltra": "近接ウルトラ",
+      "rangedUltra": "遠距離ウルトラ"
+    },
+    "levelsTitle": "2) レベルと動的な値",
+    "levelsText": "<c>#1</c>、<c>#2</c> などの値は Demon Wedge のレベルに応じて変化します。詳細ページのスライダーは成長テーブルからこれらの値を適用し、選択したレベルでの効果を表示します。",
+    "levelsDefault": "初期レベル = <c>0</c>（未強化）",
+    "levelsMax": "最大レベル = <c>MaxLevel</c>",
+    "toleranceTitle": "3) 許容値 / コスト",
+    "toleranceText": "表示される許容値はレベルとともに変化します。データ上の計算式は次のとおりです：",
+    "toleranceNote": "本サイトはレベルごとの値を事前計算し、<c>tolerance.valuesByLevel</c> に格納しています。",
+    "multilangTitle": "4) 多言語対応",
+    "multilangText": "一覧では複数の言語を同時に表示して名称を比較できます。詳細では単一の言語を選び、URL で共有できます。",
+    "multilangNote": "現在利用できる言語は、カテゴリーごとに読み込まれるデータセットに依存します。",
+    "displayTitle": "5) 本サイトの表示内容",
+    "displayItem1": "Demon Wedge の基本情報（名称、レアリティ、機能、説明）",
+    "displayItem2": "スライダーによるレベルごとの変化",
+    "displayItem3": "親和性と対応アイコン",
+    "displayItem4": "素早く比較できる多言語名称",
+    "displayItem5": "検索、フィルター、お気に入り、ページ送り",
+    "quickTitle": "サイト上で Demon Wedge を素早く読み取る",
+    "quickText": "見る順序は常に同じです。アイコンを識別し、親和性を確認し、レベルを調整して動的効果を確認します。",
+    "stepLabel": "ステップ {num}",
+    "step1Title": "Demon Wedge を識別する",
+    "step1Line1": "名称 + アイコン",
+    "step1Line2": "一覧上で直接確認",
+    "step2Title": "親和性とタイプを確認する",
+    "step3Title": "レベルを調整する",
+    "step3Line1": "#1 / #2 / #3 が更新されます",
+    "step3Line2": "レベルスライダーに応じて",
+    "step3Note": "レベル 0 = 未強化の基礎値",
+    "altPhoenixExample": "Demon Wedge Phoenix の例",
+    "altAffinityFire": "火の親和性",
+    "altCompatRanged": "遠距離適合",
+    "nextTitle": "次にできること",
+    "nextText": "一覧で素早く絞り込み・比較し、アイテムを開いて動的な値、レベルごとの許容値、親和性を確認しましょう。",
+    "nextOpenGrid": "Demon Wedge 一覧を開く",
+    "nextFavorites": "お気に入りを見る",
+    "genericTitle": "{category} ガイド",
+    "genericText": "このカテゴリーは詳細な解説ページを追加できる状態です。新しいアイテム系統ごとにルール、計算式、ビジュアルを加える仕組みはすでに整っています。",
+    "metaModsDescription": "Demon Wedge の仕組みを理解する：レベル、親和性、許容値、翻訳、効果の読み方。",
+    "metaGenericDescription": "{category} の仕組みを理解する：レベル、親和性、許容値、翻訳、効果の読み方。",
+    "metaFallbackTitle": "アイテムガイド",
+    "metaFallbackDescription": "Duet Night Abyss のアイテムカテゴリー資料。"
+  },
+  "calamityGuide": {
+    "backToWeapons": "武器一覧に戻る",
+    "badge": "災厄武器ガイド",
+    "eyebrow": "HyperWeapon / 災厄フュージョン",
+    "title": "災厄武器を理解する",
+    "intro": "ゲームデータ上、災厄武器とは技術サブタイプが <c>Hyper</c> の武器を指します。0 から 5 までの災厄フュージョン進行と武器ポテンシャルを持ち、厳密な条件があります。ポテンシャルはキャラクターがその武器種を得意とする場合にのみ機能します。",
+    "catalogLabel": "カタログ",
+    "catalogCount": "ローカル武器 {total} 件中の Hyper 武器",
+    "fusionLabel": "フュージョン",
+    "fusionTiers": "HyperWeaponCardLevel が公開する段階",
+    "badgeOnePerCharacter": "キャラクターごとに災厄武器は最大1つ",
+    "badgePotentialOnly": "ポテンシャルは得意武器でのみ有効",
+    "badgeSeparateBuilds": "武器用 Demon Wedge ビルドは別枠",
+    "arsenalLabel": "災厄アーセナル",
+    "activeSheetLabel": "選択中の武器",
+    "noDescription": "現在の抽出データにローカライズ済みの説明はありません。",
+    "openFullSheet": "詳細ページを開く",
+    "statAtk": "攻撃力",
+    "statAtkType": "攻撃タイプ",
+    "statCritRate": "会心率",
+    "statCritDamage": "会心ダメージ",
+    "tierLabel": "段階 {label}",
+    "unlockedPotentials": "解放済みの既知ポテンシャル：",
+    "notDetailed": "エクスポートに詳細なし",
+    "potentialsLabel": "ポテンシャル · {name}",
+    "adjustHint": "フュージョンのトラック（段階 {label}）を調整して解放／ロック",
+    "fusionSteps": {
+      "0": {
+        "label": "ベース",
+        "title": "武器を入手",
+        "body": "武器は装備可能で基礎ポテンシャルも存在しますが、鍛造の経路はまだ強化されていません。"
+      },
+      "1": {
+        "title": "災厄炉 I",
+        "body": "災厄フュージョンの第1段階。ここからコストに該当武器のプロトタイプが使われます。"
+      },
+      "2": {
+        "title": "災厄炉 II",
+        "body": "経路に HyperWeaponSkillTree に紐づくポテンシャルやステータス補正が加わります。"
+      },
+      "3": {
+        "title": "災厄炉 III",
+        "body": "ポテンシャルの分岐が進みます。効果はキャラクターの得意武器に依存したままです。"
+      },
+      "4": {
+        "title": "災厄炉 IV",
+        "body": "全体の炉レベルが追いつくと、大きな分岐ボーナスが利用可能になります。"
+      },
+      "5": {
+        "title": "災厄炉 V",
+        "body": "ローカルテーブルが現在公開している最終段階：最大フュージョンレベル 5。"
+      }
+    },
+    "atkTypes": {
+      "Psionic": "サイオニック",
+      "Smash": "打撃",
+      "Spike": "刺突",
+      "Slash": "斬撃"
+    },
+    "factFusionTitle": "災厄フュージョン",
+    "factFusionBody": "災厄フュージョンは武器のフュージョンレベルを上げます。ローカルテーブルは <c>HyperWeaponCardLevel</c> を通じて段階 1〜5 を公開しています。",
+    "factPotentialTitle": "武器ポテンシャル",
+    "factPotentialBody": "ポテンシャルはフュージョンで解放されます。ゲームのテキストによれば、武器種がキャラクターの得意武器と一致する場合にのみ効果を発揮します。",
+    "factLimitTitle": "装備制限",
+    "factLimitBody": "UI テキストによれば、キャラクターは一度に1つの災厄武器しか装備できません。",
+    "factNotConsonanceTitle": "Consonance ではない",
+    "factNotConsonanceBody": "災厄武器は <c>Hyper</c> 武器です。Demon Wedge の <c>*Ultra</c> キーは Consonance 武器に関するものです。",
+    "costLabel": "選択中の段階のコスト",
+    "costText": "以下のコストは <c>HyperWeaponCardLevel</c> テーブルに基づきます。鋼製武器はローカルデータ上、現在は最小限の Phoxene コストのみが公開されています。",
+    "costNoneTier0": "段階 0 にフュージョンコストはありません。",
+    "costNotExposed": "現在の抽出データにこの段階のコストはありません。",
+    "materialId": "ID {id}",
+    "wedgesLabel": "関連する Demon Wedge",
+    "wedgesText": "本サイトの武器ページでは代表的な Demon Wedge ビルドを表示できます。<n>{name}</n> の場合、対応プールは <c>{poolKey}</c>、つまり {poolLabel} です。",
+    "poolMelee": "近接",
+    "poolRanged": "遠距離",
+    "poolConsonanceMelee": "近接 Consonance",
+    "poolConsonanceRanged": "遠距離 Consonance",
+    "dataLabel": "ローカルデータの読み方",
+    "dataWeaponTitle": "Weapon",
+    "dataWeaponBody": "<c>WeaponSubType = Hyper</c> が災厄武器を示します。このページで使用している判定基準です。",
+    "dataBattleWeaponTitle": "BattleWeapon",
+    "dataBattleWeaponBody": "戦闘ステータスは <c>BattleWeapon</c> 由来です：攻撃力、攻撃タイプ、会心、ポテンシャル関連の補正。",
+    "dataSkillTreeTitle": "SkillTree",
+    "dataSkillTreeBody": "<c>HyperWeaponSkillTree</c> は「永劫の闘争」と「棘の鎮魂歌」で判明しているポテンシャルの分岐を記述します。",
+    "dataCardLevelTitle": "CardLevel",
+    "dataCardLevelBody": "<c>HyperWeaponCardLevel</c> はフュージョン段階、炉の条件、必要素材を示します。",
+    "naValue": "N/A",
+    "meleeWeapons": "近接武器",
+    "rangedWeapons": "遠距離武器",
+    "unknownType": "不明なタイプ",
+    "wedgePoolMelee": "近接武器用 Demon Wedge",
+    "wedgePoolRanged": "遠距離武器用 Demon Wedge",
+    "fallbackResource": "リソース #{id}",
+    "fallbackWeapon": "武器 #{id}",
+    "fallbackSlot": "スロット {position}",
+    "phoxeneNote": "この鋼製武器についてローカルテーブルが現在公開している最小コストです。",
+    "metaTitle": "災厄武器ガイド",
+    "metaDescription": "Duet Night Abyss の災厄武器を理解する：災厄フュージョン、武器ポテンシャル、習熟条件、Demon Wedge ビルド。"
+  },
+  "changelogEntries": {
+    "v2_2_0": {
+      "title": "新しいインターフェース：すべてをまとめた、より見やすく生き生きとしたホーム",
+      "description": "サイトのインターフェースを全面的に刷新し、より読みやすく、快適で、素早く回遊できるようにしました。すべてのツールを1か所に集めた新しいホーム、常に手の届くサイドメニュー、そしてPCでもスマートフォンでも画面全体を活かすページ構成です。",
+      "items": [
+        "🏠 すべてを一目で見渡せる新しい「ハブ」ホーム：マップ、キャラクター、データベース、ビルダー、ビルド、コード、各種ツール",
+        "📋 常に使えるサイドメニューでワンクリックでセクション移動 — 広く使いたいときは折りたためて、設定は記憶されます",
+        "🖥️ すべてのページを画面全体を使う設計に刷新：ゆとりがあり、読みやすく、無駄な余白を削減",
+        "🎁 ギフトコードのプレビューをホームに直接表示、ワンクリックでコピー",
+        "🗂️ コミュニティの人気ビルドをホームから紹介",
+        "📅 開催中の内容を追えるイベントカレンダー（プレビュー）",
+        "📱 モバイルを見据えた一貫したナビゲーション",
+        "✨ サイト全体でより丁寧で統一感のあるデザイン"
+      ]
+    },
+    "v2_1_0": {
+      "title": "コミュニティビルドのビルダー：作成・共有・投票",
+      "description": "新しいコミュニティ機能：自分のビルド（キャラクター、Demon Wedge、Genimon、武器、スキル、チーム）を組み立て、Discord アカウントで公開し、他プレイヤーのビルドを閲覧・投票できます。65種すべての武器に対応した Demon Wedge ビルド、カード共有、そしてアクセシビリティと翻訳の大幅な改善。",
+      "items": [
+        "🛠️ 新しいビルダー：完全なビルド（Demon Wedge、Genimon、武器、スキル、3人編成）を組み立てて公開",
+        "🔐 公開と投票のための Discord ログイン。キャラクターごとに最大3ビルド",
+        "🌐 コミュニティハブ /builds：検索、絞り込み（キャラクター、元素、タグ）、並べ替え、ページ送り",
+        "📄 各ビルド専用の共有可能なページ（/builds/[id]）",
+        "👍 コミュニティビルドの投票とランキング",
+        "🏷️ ビルドタグ：ソロ、チーム、ボス、F2P、エンドゲーム、初心者",
+        "👥 推奨チームの選択（ロール付きで最大3キャラクター）",
+        "🔗 ビルドの共有：自己完結型リンク + X / Facebook / Reddit + ネイティブ共有",
+        "🖼️ ビルドカードの PNG 書き出し",
+        "🥇 コミュニティの代替案より上位に置かれる独立した「公式」ティア",
+        "💾 ハイブリッド下書き：ローカル保存後、ログイン時にサーバーと統合",
+        "⚔️ 65種すべての武器の Demon Wedge ビルド。武器ページに表示され、ビルドに取り込み可能（トグル）",
+        "🎴 Demon Wedge のホバー時に詳細なツールチップ（名称、レアリティ、元素）",
+        "🔗 絞り込み状態を URL に保持（共有リンクと戻る／進むに対応）",
+        "♿ アクセシビリティ強化：「視差効果を減らす」の全体対応、フォーカスの可視化、ダイアログのフォーカストラップ、ARIA ラベル",
+        "📜 プライバシー／利用規約ページとアカウント削除（GDPR）"
+      ]
+    },
+    "v2_0_0": {
+      "title": "パッチ 1.4 Silver Torrent, Rising Star：Flora、Hilda、Bloomfield Station と5つの新マップ",
+      "description": "公式パッチ「Silver Torrent, Rising Star」を全面的に反映：新キャラクター2名（Flora と Hilda）、Phoxhunter の新元素 Umbro、スチームパンク地域 Flodia Bloomfield Station、インタラクティブマップ5枚、壁紙12点、そして自動失効するバナー機能。",
+      "items": [
+        "🎮 パッチ 1.4.153「Silver Torrent, Rising Star」までのゲームデータを全面的に再抽出",
+        "✨ Flora（Umbro）— 注目の新キャラクター。剣とアサルトライフルを使用",
+        "🔥 Hilda（Pyro）— 新キャラクター。双剣とグレネードランチャーを使用（2026年6月30日以降に登場）",
+        "🌑 Phoxhunter（プレイヤー主人公）に新元素 Umbro を解放。［Noctoyager 章 – Silver Torrent, Rising Star］より",
+        "🚂 新地域 Flodia Bloomfield Station（Bloomfield Station と Ironworks を含む）。Icelake のスチームパンク鉄道駅",
+        "⚔️ スキル +27、Demon Wedge +18、リソース +157、新カテゴリー Calamity Weapons、釣りアイテムの刷新",
+        "🗺️ 新しいインタラクティブマップ5枚：Bloomfield Station、Ironworks、Outer Peaks、Taixu Mausoleum、Youlai Alley",
+        "📍 全13マップにわたり、boarhat.gg から1589件のマーカーアイコンを再同期",
+        "🖼️ 新規ワールドビュー壁紙12点（パッチ1.3から7点、パッチ1.4から5点）を Ken Burns 演出に追加",
+        "⚡ v1.3／v1.4 壁紙の最適化：4K → フル HD へ縮小、WebP q70（容量 -73 %）",
+        "🌟 ホームのカルーセルを再構成：新しい壁紙が先に表示されます",
+        "📢 パッチ公開から4週間で自動的に失効する新しい告知バナー機能（履歴はコード内に保持）",
+        "🎭 キャラクターショーケースを再構成：Flora を中心に、Su Yi、および Phoxhunter の2つの Umbro フォーム",
+        "💾 抽出パイプラインのリファクタ：pak の保管と FModel の書き出しを外付けディスクへ移し、システム SSD の圧迫を解消"
+      ]
+    },
+    "v1_9_0": {
+      "title": "ビルドカード、スキルタブ、カーソル追従ツールチップ",
+      "description": "キャラクターごとの新しいスキルタブ（レベルスライダー付き）、PNG に書き出せるビルドカード、そしてデスクトップでカーソルに追従するツールチップ機能。",
+      "items": [
+        "🎴 共有できる新しいビルドカード（モーダル + ?build=true のアコーディオン）。ぼかし処理のポートレート、ゲーム内準拠の Demon Wedge 配置、PNG ダウンロードに対応",
+        "🃏 ホーム（Psyche）でビルドカードを紹介。アンカー #build-showcase とヒーローバナーのティザー付き",
+        "⚔️ 充実したスキルタブ：名称、説明、パラメーター、セクション、戦闘用語を7言語で表示",
+        "🎚️ スキルレベルのスライダー（1〜20）。SkillGrow によりレベル依存の数値をその場で再計算",
+        "🧩 ビルドカード内のインラインスキルアイコンと推奨チーム",
+        "🪄 新コンポーネント CursorTooltip：デスクトップではカーソル追従、モバイルではタップで切り替え、body へポータル配置",
+        "🛡️ ビルドカードの武器・Genimon・Demon Wedge スロット（中央含む）にカーソルツールチップ",
+        "🏷️ 抽出パイプライン extract-skills.ts：Lua ファイル9本と SkillGrow を解析し、#N の数式を各レベルで評価"
+      ]
+    },
+    "v1_8_0": {
+      "title": "多言語化、キャラクターショーケース、マップのディープリンク",
+      "description": "完全な多言語対応（7言語）、新しいインタラクティブな v1.3 キャラクターショーケース、ナビゲーション改善を含む大規模刷新。",
+      "items": [
+        "🌐 next-intl によるサイト全体の多言語化：7言語（FR、EN、DE、ES、JP、KR、TC）",
+        "🔍 ブラウザー言語の自動判定と、選択内容の Cookie 保存",
+        "🗂️ i18n ルーティング：言語ごとに専用 URL（/fr/map、/en/characters など）",
+        "🌏 サイトの全ページに言語切り替えを設置",
+        "🎭 ホームに新しいインタラクティブな v1.3 キャラクターショーケース（Su Yi、Camilla、Yuming、Zhiliu）",
+        "🖼️ 全画面アートワーク、アバター選択、キャラクターごとのグラデーション、装飾的な書体文字",
+        "🔗 マップのディープリンク：Haojing のバナーから該当マップへ直接遷移（?mapId=haojing）",
+        "📐 マップのサイドバーでリンクが折り返される不具合を修正",
+        "🖼️ ヒーローバナーの Ken Burns に v1.3 の画像を追加",
+        "⚡ turbopack.root を修正し、開発時のビルドを高速化",
+        "🏷️ SEO：hreflang タグ、ローカライズされたメタデータ、多言語サイトマップ"
+      ]
+    },
+    "v1_7_0": {
+      "title": "ゲーム v1.3 アップデートと Genimon の変種",
+      "description": "バージョン 1.3 からゲームデータを全面的に再抽出し、新キャラクターの追加と Genimon の変種システムを導入。",
+      "items": [
+        "🔄 ゲームの v1.3 pak から Lua ファイル1176本を再抽出",
+        "👤 Su Yi を追加（ポートレートとスキルを含む完全版）、および Flora（データのみ、未実装）",
+        "🎭 Camilla を完成（ステータス、翻訳、ポートレート、スキル）",
+        "🐾 Genimon の変種システム：各種が自身の変種を相互リンク付きで表示",
+        "✨ Genimon の色違い変種に金色のプレミアムバッジ",
+        "🎣 東部地域（Haojing）の新しい魚を追加",
+        "📦 すべてのアイテム、Mod、リソースを v1.3 データで更新",
+        "🌐 スペイン語訳を修正（Hyperboreano → Hiporboreo）"
+      ]
+    },
+    "v1_6_0": {
+      "title": "新マップ Haojing（パッチ 1.3）",
+      "description": "マーカー143件を含む Haojing マップを追加し、マップデータの読み込みを大幅に最適化しました。",
+      "items": [
+        "🗺️ 新マップ Haojing を追加（8番目の地域）。マーカー143件、カテゴリー6種",
+        "⚡ データ機構を刷新：単一の巨大ファイルではなく、マップ単位のオンデマンド読み込みへ",
+        "📦 初期読み込み量を約75 %削減（439 KB から、インデックス54 KB + マップ1枚へ）",
+        "🔧 引用符を含む名称に対応するよう boarhat.gg のパーサーを修正",
+        "🏠 ホームに Haojing 用の新しい v1.3 バナー"
+      ]
+    },
+    "v1_5_0": {
+      "title": "キャラクタービルド",
+      "description": "プレイアブルキャラクター22名向けの推奨ビルドを網羅する機能。Consonance 武器とトラック調整に対応。",
+      "items": [
+        "🎮 推奨装備と Demon Wedge を含むキャラクタービルドを21件追加",
+        "⚔️ ゲームデータから Consonance 武器を抽出して表示",
+        "🎚️ トラック調整（Track Adjustments）をトグルとアイコン付きで実装",
+        "🎨 Intron タブを刷新：浮遊する円とスキル優先度を採用",
+        "🌈 キャラクター詳細ページに元素ごとのアンビエントグラデーション",
+        "🖼️ ステータスタブにスキルアイコンを追加",
+        "💡 ビルド装備の詳細なツールチップ"
+      ]
+    },
+    "v1_4_0": {
+      "title": "キャラクター図鑑と釣り",
+      "description": "詳細なステータスを備えたプレイアブルキャラクターの完全な図鑑と、アイテムの釣りカテゴリーを追加。",
+      "items": [
+        "👤 全プレイアブルキャラクターの図鑑と詳細ページ",
+        "📊 レベル別ステータス（成長曲線と計算式付き）",
+        "🎣 ゲームデータから抽出したアイテムによる新カテゴリー「釣り」",
+        "🐾 Genimon のパッシブの動的数値を修正",
+        "🌐 アイテムカテゴリーごとにテキストキーのラベルを文脈化"
+      ]
+    },
+    "v1_3_0": {
+      "title": "アイテム：鍛造設計図（Drafts）と武器",
+      "description": "鍛造設計図とそのレシピ、関連する武器を探索できるセクションを新設し、カテゴリー間の移動をわかりやすくしました。",
+      "items": [
+        "🧩 絞り込み可能な一覧、検索、ページ送りを備えた新カテゴリー Drafts",
+        "🌳 レシピ（成果物＋素材）を可視化する Draft 詳細ページを新設",
+        "🛠️ レシピデータと武器データの抽出と統合",
+        "🖼️ アイコン素材（設計図、武器、武器種、アクセサリー）をサイト側に追加",
+        "🔗 Drafts と武器ページを相互リンクして移動しやすく",
+        "✏️ カテゴリー表記を修正：Armes / Arm → Armes / Weapons",
+        "📣 ホームのバナー（マップ＋アイテム）を閉じた状態を保持",
+        "🎯 アイテムページへ誘導する新しいカードをホームに追加"
+      ]
+    },
+    "v1_2_1": {
+      "title": "新規マーカーと SEO 最適化",
+      "description": "不足していたマーカー（特に Taixu Runes）を追加し、素材のローカルホスティングへ全面移行しました。",
+      "items": [
+        "🆕 すべてのマップで不足していたマーカーを追加",
+        "✨ 欠落していた Taixu Runes のマーカーを追加",
+        "🗺️ すべてのマップ画像をダウンロードしてローカルに配置",
+        "🎨 すべてのアイコンをダウンロードしてローカルに配置",
+        "🔧 外部 URL をローカルパスへ自動的に置換",
+        "✅ 既存マップ内の111件の URL を自動修正",
+        "💾 すべての素材を /assets/ 配下でローカルホスティング"
+      ]
+    },
+    "v1_2_0": {
+      "title": "reCAPTCHA と Zod による安全なお問い合わせフォーム",
+      "description": "高度なスパム対策を備えたお問い合わせフォームを、安全性を重視して全面的に実装しました。",
+      "items": [
+        "📧 フォームを安全に処理する完全な API エンドポイント",
+        "🔒 ボット対策として reCAPTCHA v3 を統合（スコア 0.7 以上）",
+        "🛡️ Zod v4.3.5 による検証。自動サニタイズと型安全性を確保",
+        "📮 業務品質の HTML メールに対応した安全な SMTP 設定",
+        "⏱️ DoS 対策：30 秒のタイムアウト + 10 KB 制限 + レート制限",
+        "🔐 網羅的なセキュリティヘッダー（XSS、フレーム、content-type）",
+        "✨ UX 改善：読み込み状態の表示、文脈に応じたエラーメッセージ",
+        "🧹 厳格なサニタイズ：氏名の正規表現、RFC 準拠のメール検証",
+        "🎯 件名の列挙型検証とインジェクション対策",
+        "📊 監視とセキュリティ監査のための詳細なログ"
+      ]
+    },
+    "v1_1_1": {
+      "title": "マップの改善と透明性",
+      "description": "既存のすべてのマップに画像を追加し、新しい情報モーダルを実装しました。",
+      "items": [
+        "📸 既存のすべてのマップに説明画像878点を追加",
+        "📊 詳細な統計を備えたマップ情報モーダルを新設",
+        "ℹ️ バージョン、更新日、全体統計を表示",
+        "📋 ホームとモーダルに免責事項を追加",
+        "🔧 新しい画像を検出できるよう更新スクリプトを改善",
+        "✨ 各マップの個別情報を表示できるようインターフェースを改善"
+      ]
+    },
+    "v1_1_0": {
+      "title": "バージョン 1.1 — 新マップ Huaxu",
+      "description": "マーカー371件を含む新マップ Huaxu を追加し、説明画像に対応しました。",
+      "items": [
+        "🆕 新マップ Huaxu を追加（7番目の地域）",
+        "📸 マーカーの説明画像に対応",
+        "🔍 拡大・回転・ダウンロードができる画像ズームモーダル",
+        "🎨 ホームにアニメーション付きの更新バナー",
+        "👥 Velkaine（Twitch）と Wiki へのリンクを備えたコミュニティセクション",
+        "📋 期限切れコードの扱いを含む交換コードの更新",
+        "🔧 boarhat.gg からマップを更新する自動スクリプト"
+      ]
+    },
+    "v1_0_1": {
+      "title": "交換コードの改善",
+      "description": "有効なコードと期限切れコードを、視覚的な目印付きで分離しました。",
+      "items": [
+        "✅ 新しい有効コードを先頭に表示",
+        "⏰ 期限のあるコードに有効期限バッジ",
+        "❌ 期限切れコード専用のセクション",
+        "🔄 コードの定期的な更新",
+        "📊 有効コードと期限切れコードのカウンター"
+      ]
+    },
+    "v1_0_0": {
+      "title": "Next.js の更新",
+      "description": "パフォーマンス向上のため Next.js 16.0.7 へ移行しました。",
+      "items": [
+        "⚡ Next.js 16.0.7",
+        "🚀 パフォーマンスの改善"
+      ]
+    },
+    "v0_9_0": {
+      "title": "インタラクティブマップの改善",
+      "description": "より快適に使えるようにするための新機能。",
+      "items": [
+        "📁 サイドバーでのカテゴリーのグループ化",
+        "📏 サイドバーのサイズ変更",
+        "💾 選択したマップの保持",
+        "🎨 カスタムスクロールバーのスタイル",
+        "✨ Framer Motion によるアニメーション"
+      ]
+    }
+  },
+  "apiErrors": {
+    "signInRequired": "ログインが必要です。",
+    "invalidRequest": "リクエストが不正です。",
+    "invalidData": "データが不正です。",
+    "tooManyAttempts": "試行回数が多すぎます。しばらくしてからお試しください。",
+    "tooManyRequests": "リクエストが多すぎます。しばらくしてからお試しください。",
+    "tooManySaves": "保存の回数が多すぎます。しばらくしてからお試しください。",
+    "tooManyMessages": "メッセージの送信が多すぎます。しばらくしてからお試しください。",
+    "tooManyPublications": "公開の回数が多すぎます。しばらくしてからお試しください。",
+    "tooManyVotes": "投票が多すぎます。しばらくしてからお試しください。",
+    "tooManyReports": "報告が多すぎます。しばらくしてからお試しください。",
+    "characterIdRequired": "characterId は必須です。",
+    "buildNotFound": "ビルドが見つかりません。",
+    "actionForbidden": "この操作は許可されていません。",
+    "buildLimitReached": "上限に達しました：1キャラクターにつき公開できるビルドは最大 {max} 件です。",
+    "buildsPublishDisabled": "ビルドの公開は一時的に停止しています。",
+    "cannotReportOwnBuild": "自分のビルドは報告できません。",
+    "signupsClosed": "現在、新規登録を停止しています。",
+    "emailAlreadyUsed": "このメールアドレスはすでに使用されています。ログインするか、パスワードを再設定してください。",
+    "resetLinkInvalid": "リンクが無効または期限切れです。再度リセットをリクエストしてください。",
+    "noEmailOnAccount": "このアカウントにはメールアドレスが登録されていないため、パスワードを設定できません。",
+    "cannotUnlink": "連携を解除できません。先にパスワードを設定するか、別のアカウントを連携してください。",
+    "payloadTooLarge": "リクエストのサイズが大きすぎます。",
+    "recaptchaFailed": "reCAPTCHA の検証に失敗しました。",
+    "smtpIncomplete": "SMTP の設定が不完全です。",
+    "contactSendFailed": "メッセージの送信中にエラーが発生しました。",
+    "contactSendSuccess": "メッセージを送信しました。",
+    "nameTooShort": "名前は 2 文字以上で入力してください。",
+    "nameTooLong": "名前は 100 文字以内で入力してください。",
+    "emailInvalid": "メールアドレスが正しくありません。",
+    "emailTooLong": "メールアドレスが長すぎます。",
+    "messageTooShort": "メッセージは 10 文字以上で入力してください。",
+    "messageTooLong": "メッセージは 5000 文字以内で入力してください。",
+    "recaptchaMissing": "reCAPTCHA トークンがありません。",
+    "passwordTooShort": "8 文字以上で入力してください。",
+    "passwordTooLong": "パスワードが長すぎます。",
+    "tokenMissing": "トークンがありません。",
+    "invalidProvider": "プロバイダーが不正です。",
+    "accountNotLinked": "このアカウントは連携されていません。",
+    "nameInvalidChars": "名前に使用できるのは、文字・スペース・アポストロフィ・ハイフンのみです。"
   }
 }

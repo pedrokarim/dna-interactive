@@ -4,23 +4,24 @@ import { z } from "zod";
 import { renderContactEmail } from "@/lib/email/contact-email";
 import { createEmailEvent, injectPixel } from "@/lib/email/tracking";
 import { checkRateLimit } from "@/lib/rate-limit";
+import { getApiTranslator } from "@/lib/api-locale";
 
 // Schema de validation Zod pour le formulaire de contact
 const contactFormSchema = z.object({
   name: z
     .string()
-    .min(2, "Le nom doit contenir au moins 2 caractères")
-    .max(100, "Le nom ne peut pas dépasser 100 caractères")
+    .min(2, "nameTooShort")
+    .max(100, "nameTooLong")
     .trim()
     .regex(
       /^[a-zA-ZÀ-ÿ\s'-]+$/,
-      "Le nom ne peut contenir que des lettres, espaces, apostrophes et tirets"
+      "nameInvalidChars"
     ),
 
   email: z
     .string()
-    .email("Adresse email invalide")
-    .max(254, "L'adresse email est trop longue")
+    .email("emailInvalid")
+    .max(254, "emailTooLong")
     .toLowerCase()
     .trim(),
 
@@ -28,11 +29,11 @@ const contactFormSchema = z.object({
 
   message: z
     .string()
-    .min(10, "Le message doit contenir au moins 10 caractères")
-    .max(5000, "Le message ne peut pas dépasser 5000 caractères")
+    .min(10, "messageTooShort")
+    .max(5000, "messageTooLong")
     .trim(),
 
-  recaptchaToken: z.string().min(1, "Token reCAPTCHA manquant"),
+  recaptchaToken: z.string().min(1, "recaptchaMissing"),
 });
 
 // Type inféré depuis le schema Zod
@@ -107,6 +108,8 @@ async function verifyRecaptcha(token: string): Promise<boolean> {
 }
 
 export async function POST(request: NextRequest) {
+  const t = await getApiTranslator(request);
+
   try {
     // Rate limiting par IP, partagé entre instances serverless (cf. rate-limit.ts).
     const clientIP =
@@ -116,7 +119,7 @@ export async function POST(request: NextRequest) {
     const rate = await checkRateLimit(`contact:${clientIP}`, 5, 60 * 60 * 1000);
     if (!rate.ok) {
       return NextResponse.json(
-        { error: "Trop de messages envoyés. Réessaie plus tard." },
+        { error: t("tooManyMessages") },
         { status: 429, headers: { "Retry-After": `${rate.retryAfter}` } },
       );
     }
@@ -125,7 +128,7 @@ export async function POST(request: NextRequest) {
     const contentLength = request.headers.get("content-length");
     if (contentLength && parseInt(contentLength) > 10240) {
       return NextResponse.json(
-        { error: "Requête trop volumineuse" },
+        { error: t("payloadTooLarge") },
         { status: 413 }
       );
     }
@@ -137,7 +140,7 @@ export async function POST(request: NextRequest) {
     if (!validationResult.success) {
       // Retourner la première erreur de validation
       const error = validationResult.error.issues[0];
-      return NextResponse.json({ error: error.message }, { status: 400 });
+      return NextResponse.json({ error: t(error.message) }, { status: 400 });
     }
 
     const { name, email, subject, message, recaptchaToken } =
@@ -147,7 +150,7 @@ export async function POST(request: NextRequest) {
     const isRecaptchaValid = await verifyRecaptcha(recaptchaToken);
     if (!isRecaptchaValid) {
       return NextResponse.json(
-        { error: "Vérification reCAPTCHA échouée" },
+        { error: t("recaptchaFailed") },
         { status: 400 }
       );
     }
@@ -155,7 +158,7 @@ export async function POST(request: NextRequest) {
     // Vérification de la configuration SMTP
     if (!process.env.SMTP_PASS) {
       return NextResponse.json(
-        { error: "Configuration SMTP incomplète" },
+        { error: t("smtpIncomplete") },
         { status: 500 }
       );
     }
@@ -211,7 +214,7 @@ export async function POST(request: NextRequest) {
     headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
 
     return NextResponse.json(
-      { success: true, message: "Message envoyé avec succès" },
+      { success: true, message: t("contactSendSuccess") },
       {
         status: 200,
         headers,
@@ -228,7 +231,7 @@ export async function POST(request: NextRequest) {
     headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
 
     return NextResponse.json(
-      { error: "Erreur lors de l'envoi du message" },
+      { error: t("contactSendFailed") },
       {
         status: 500,
         headers,

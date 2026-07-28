@@ -1,4 +1,5 @@
 import type { Metadata, ResolvingMetadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { notFound } from "next/navigation";
 import {
@@ -29,6 +30,10 @@ import { getWeaponBuild } from "@/lib/items/weapon-builds";
 import { isCalamityWeapon } from "@/lib/items/calamity-weapons";
 import calamityForgeCosts from "@/data/weapons/calamity-forge-costs.json";
 import { generatePageMetadata } from "@/lib/metadata";
+import { toGameDataLangCode, toLocale } from "@/i18n/config";
+
+/** Traducteur next-intl restreint à un namespace, tel que renvoyé par `getTranslations`. */
+type Translator = Awaited<ReturnType<typeof getTranslations>>;
 
 type CategoryAboutPageProps = {
   params: Promise<{ locale: string; category: string }>;
@@ -60,20 +65,20 @@ function stripGameRichText(text: string | null | undefined): string | null {
 function buildCalamityForgeSteps(
   weaponId: string,
   resourcesById: Map<number, ReturnType<typeof getItemsByCategoryId>[number]>,
+  gameLang: string,
+  t: Translator,
 ): CalamityGuideWeapon["forgeSteps"] {
   return (CALAMITY_FORGE_COSTS[weaponId] ?? []).map((step) => {
     const onlyPhoxene = step.materials.length === 1 && step.materials[0]?.id === PHOXENE_ID;
     return {
       level: step.level,
-      note: onlyPhoxene
-        ? "Coût minimal actuellement exposé pour cette arme en acier dans les tables locales."
-        : null,
+      note: onlyPhoxene ? t("phoxeneNote") : null,
       materials: step.materials.map((mat) => {
         const resource = resourcesById.get(mat.id);
-        const translated = resource ? getItemTranslation(resource, "FR", ["FR", "EN"]) : null;
+        const translated = resource ? getItemTranslation(resource, gameLang, [gameLang, "EN"]) : null;
         return {
           id: mat.id,
-          name: translated?.modName ?? `Ressource #${mat.id}`,
+          name: translated?.modName ?? t("fallbackResource", { id: mat.id }),
           icon: resource?.icon.publicPath ?? resource?.icon.placeholderPath ?? FALLBACK_ICON,
           quantity: mat.num,
         };
@@ -82,34 +87,36 @@ function buildCalamityForgeSteps(
   });
 }
 
-function buildCalamityGuideWeapons(): CalamityGuideWeapon[] {
+function buildCalamityGuideWeapons(gameLang: string, t: Translator): CalamityGuideWeapon[] {
   const resourcesById = new Map(getItemsByCategoryId("resources").map((resource) => [resource.modId, resource]));
 
   return getItemsByCategoryId("weapons")
     .filter((item) => isCalamityWeapon(item))
     .sort((a, b) => a.modId - b.modId)
     .map((item) => {
-      const translation = getItemTranslation(item, "FR", ["FR", "EN"]);
-      const english = getItemTranslation(item, "EN", ["EN", "FR"]);
+      const translation = getItemTranslation(item, gameLang, [gameLang, "EN"]);
+      const english = getItemTranslation(item, "EN", ["EN", gameLang]);
       const type = item.fields.Type === "Ranged" ? "Ranged" : "Melee";
-      const weaponBuild = getWeaponBuild(item.id, "FR");
+      const weaponBuild = getWeaponBuild(item.id, gameLang);
       const wedgePoolKey = type === "Melee" ? "UI_Armory_Meleeweapon" : "UI_Armory_Longrange";
 
       return {
         id: item.id,
         href: `/items/weapons/${item.id}`,
-        name: translation.modName ?? `Arme #${item.modId}`,
+        name: translation.modName ?? t("fallbackWeapon", { id: item.modId }),
         englishName: english.modName ?? `Weapon #${item.modId}`,
         description: stripGameRichText(translation.description),
         icon: item.icon.publicPath ?? item.icon.placeholderPath ?? FALLBACK_ICON,
         type,
-        typeLabel: translation.typeCompatibilityNames[0] ?? (type === "Melee" ? "Armes de mêlée" : "Armes à distance"),
+        typeLabel:
+          translation.typeCompatibilityNames[0] ??
+          (type === "Melee" ? t("meleeWeapons") : t("rangedWeapons")),
         subtype: stringField(item.fields.WeaponSubtype) ?? stringField(item.fields.ResourceSType) ?? "Unknown",
         subtypeLabel:
           translation.typeCompatibilityNames[1] ??
           stringField(item.fields.WeaponSubtype) ??
           stringField(item.fields.ResourceSType) ??
-          "Type inconnu",
+          t("unknownType"),
         atkType: stringField(item.fields.ATKType),
         baseAtk: numberField(item.fields.BaseATK),
         maxAtk: numberField(item.fields.ATKMax),
@@ -119,16 +126,16 @@ function buildCalamityGuideWeapons(): CalamityGuideWeapon[] {
         passiveDescription: stripGameRichText(translation.passiveEffectsDescription),
         potentialTreeKnown: item.id === "weapons-10299" || item.id === "weapons-20599",
         wedgePoolKey,
-        wedgePoolLabel: type === "Melee" ? "Demon Wedges d'arme mêlée" : "Demon Wedges d'arme à distance",
+        wedgePoolLabel: type === "Melee" ? t("wedgePoolMelee") : t("wedgePoolRanged"),
         wedgeBuildSlots:
           weaponBuild?.demonWedges.slots.map((slot) => ({
             position: slot.position,
-            name: slot.item?.name ?? `Slot ${slot.position}`,
+            name: slot.item?.name ?? t("fallbackSlot", { position: slot.position }),
             icon: slot.item?.icon ?? FALLBACK_ICON,
             href: slot.item?.href ?? null,
             track: slot.track,
           })) ?? [],
-        forgeSteps: buildCalamityForgeSteps(item.id, resourcesById),
+        forgeSteps: buildCalamityForgeSteps(item.id, resourcesById, gameLang, t),
       };
     });
 }
@@ -174,6 +181,7 @@ function GuideIconCard({
   );
 }
 
+// Noms propres de Demon Wedges : non traduits, ils portent le nom du jeu.
 const DEMON_WEDGE_EXAMPLES = [
   { src: "/assets/items/mods/T_Mod_Phoenix01.png", label: "Phoenix" },
   { src: "/assets/items/mods/T_Mod_Ifrit01.png", label: "Ifrit" },
@@ -186,23 +194,35 @@ const DEMON_WEDGE_EXAMPLES = [
 ];
 
 const AFFINITY_EXAMPLES = [
-  { src: "/assets/items/mods/T_Armory_Dark.png", label: "Dark" },
-  { src: "/assets/items/mods/T_Armory_Fire.png", label: "Fire" },
-  { src: "/assets/items/mods/T_Armory_Water.png", label: "Water" },
-  { src: "/assets/items/mods/T_Armory_Thunder.png", label: "Thunder" },
-  { src: "/assets/items/mods/T_Armory_Wind.png", label: "Wind" },
-  { src: "/assets/items/mods/T_Armory_Light.png", label: "Light" },
-];
+  { src: "/assets/items/mods/T_Armory_Dark.png", key: "dark" },
+  { src: "/assets/items/mods/T_Armory_Fire.png", key: "fire" },
+  { src: "/assets/items/mods/T_Armory_Water.png", key: "water" },
+  { src: "/assets/items/mods/T_Armory_Thunder.png", key: "thunder" },
+  { src: "/assets/items/mods/T_Armory_Wind.png", key: "wind" },
+  { src: "/assets/items/mods/T_Armory_Light.png", key: "light" },
+] as const;
 
 const TYPE_COMPAT_EXAMPLES = [
-  { src: "/assets/items/mods/T_Armory_RoleType_01.png", label: "Personnage" },
-  { src: "/assets/items/mods/T_Armory_RoleType_02.png", label: "Melee" },
-  { src: "/assets/items/mods/T_Armory_RoleType_03.png", label: "Distance" },
-  { src: "/assets/items/mods/T_Armory_RoleType_04.png", label: "Melee Ultra" },
-  { src: "/assets/items/mods/T_Armory_RoleType_05.png", label: "Distance Ultra" },
+  { src: "/assets/items/mods/T_Armory_RoleType_01.png", key: "character" },
+  { src: "/assets/items/mods/T_Armory_RoleType_02.png", key: "melee" },
+  { src: "/assets/items/mods/T_Armory_RoleType_03.png", key: "ranged" },
+  { src: "/assets/items/mods/T_Armory_RoleType_04.png", key: "meleeUltra" },
+  { src: "/assets/items/mods/T_Armory_RoleType_05.png", key: "rangedUltra" },
+] as const;
+
+const POLARITY_ICONS = [
+  "/assets/items/mods/T_Armory_Polarity01.png",
+  "/assets/items/mods/T_Armory_Polarity02.png",
+  "/assets/items/mods/T_Armory_Polarity03.png",
+  "/assets/items/mods/T_Armory_Polarity04.png",
 ];
 
-function ModsAboutContent({ categorySlug }: { categorySlug: string }) {
+async function ModsAboutContent({ categorySlug }: { categorySlug: string }) {
+  const t = await getTranslations("itemsAbout");
+  const tCommon = await getTranslations("common");
+  const tElement = await getTranslations("common.elements");
+  const code = (chunks: React.ReactNode) => <code>{chunks}</code>;
+
   return (
     <div className="space-y-8">
       <section className="border border-hydro/25 bg-panel/65 p-8 shadow-[0_24px_55px_rgba(8,47,73,0.45)] backdrop-blur-sm">
@@ -212,24 +232,23 @@ function ModsAboutContent({ categorySlug }: { categorySlug: string }) {
             className="inline-flex items-center gap-2 rounded-sm border border-white/10 px-3 py-2 text-sm text-parch transition-colors hover:border-hydro/40 hover:text-parch"
           >
             <ArrowLeft className="h-4 w-4" />
-            Retour a la liste
+            {tCommon("backToList")}
           </Link>
-          <GuideBadge icon={<BookOpenText className="h-3.5 w-3.5 text-hydro" />} label="Guide Demon Wedge" />
+          <GuideBadge icon={<BookOpenText className="h-3.5 w-3.5 text-hydro" />} label={t("guideBadge")} />
         </div>
 
-        <h1 className="mt-5 font-display text-4xl text-parch">Comment fonctionnent les Demon Wedges</h1>
+        <h1 className="mt-5 font-display text-4xl text-parch">{t("title")}</h1>
         <p className="mt-3 max-w-3xl text-parch/85">
-          Dans le jeu, les Demon Wedges peuvent aussi apparaitre sous le nom technique{" "}
-          <span className="text-hydro">MOD</span> dans certaines donnees. Cette page explique les champs
-          importants utilises sur le site: niveau, affinite, tolerance, effets dynamiques et correspondance des
-          assets.
+          {t.rich("intro", {
+            mod: (chunks) => <span className="text-hydro">{chunks}</span>,
+          })}
         </p>
 
         <div className="mt-5 flex flex-wrap gap-2">
-          <GuideBadge icon={<Layers className="h-3.5 w-3.5 text-gold" />} label="Niveaux 0 -> MaxLevel" />
-          <GuideBadge icon={<Calculator className="h-3.5 w-3.5 text-gold" />} label="Tolerance = Cost + Level * CostChange" />
-          <GuideBadge icon={<Languages className="h-3.5 w-3.5 text-anemo" />} label="Traductions FR/EN/..." />
-          <GuideBadge icon={<Database className="h-3.5 w-3.5 text-electro" />} label="Infos de reference gameplay" />
+          <GuideBadge icon={<Layers className="h-3.5 w-3.5 text-gold" />} label={t("badgeLevels")} />
+          <GuideBadge icon={<Calculator className="h-3.5 w-3.5 text-gold" />} label={t("badgeTolerance")} />
+          <GuideBadge icon={<Languages className="h-3.5 w-3.5 text-anemo" />} label={t("badgeTranslations")} />
+          <GuideBadge icon={<Database className="h-3.5 w-3.5 text-electro" />} label={t("badgeReference")} />
         </div>
       </section>
 
@@ -237,44 +256,49 @@ function ModsAboutContent({ categorySlug }: { categorySlug: string }) {
         <article className="border border-white/10 bg-panel/55 p-6 lg:col-span-2">
           <h2 className="flex items-center gap-2 font-display text-xl text-parch">
             <ImageIcon className="h-5 w-5 text-electro" />
-            Vitrine visuelle Demon Wedge
+            {t("showcaseTitle")}
           </h2>
-          <p className="mt-3 text-sm text-parch/85">
-            Exemples d&apos;icones Demon Wedge utilises dans la grille et la page detail. L&apos;objectif est de reconnaitre
-            rapidement un Demon Wedge au premier coup d&apos;oeil.
-          </p>
+          <p className="mt-3 text-sm text-parch/85">{t("showcaseDescription")}</p>
           <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
             {DEMON_WEDGE_EXAMPLES.map((entry) => (
-              <GuideIconCard key={entry.src} src={entry.src} label={entry.label} sublabel="Exemple d’icône Demon Wedge" />
+              <GuideIconCard
+                key={entry.src}
+                src={entry.src}
+                label={entry.label}
+                sublabel={t("showcaseIconSublabel")}
+              />
             ))}
           </div>
         </article>
 
         <article className="border border-white/10 bg-panel/55 p-6">
-          <h2 className="font-display text-lg text-parch">Lire une fiche en 3 repères</h2>
+          <h2 className="font-display text-lg text-parch">{t("readTitle")}</h2>
           <div className="mt-4 space-y-3 text-sm text-parch/85">
             <div className="rounded-sm border border-white/10 bg-ink/60 p-3">
-              <p className="font-medium text-parch">1) Icône principale</p>
-              <p className="mt-1 text-xs text-muted">Permet d&apos;identifier le Demon Wedge dans la grille.</p>
+              <p className="font-medium text-parch">{t("readStep1Title")}</p>
+              <p className="mt-1 text-xs text-muted">{t("readStep1Text")}</p>
             </div>
             <div className="rounded-sm border border-white/10 bg-ink/60 p-3">
-              <p className="font-medium text-parch">2) Affinite / polarite</p>
-              <p className="mt-1 text-xs text-muted">
-                Le symbole a cote du nom indique le type d&apos;affinite du Demon Wedge.
-              </p>
+              <p className="font-medium text-parch">{t("readStep2Title")}</p>
+              <p className="mt-1 text-xs text-muted">{t("readStep2Text")}</p>
             </div>
             <div className="rounded-sm border border-white/10 bg-ink/60 p-3">
-              <p className="font-medium text-parch">3) Niveau actif</p>
-              <p className="mt-1 text-xs text-muted">
-                Le slider du detail fait varier les valeurs dynamiques #1, #2, #3.
-              </p>
+              <p className="font-medium text-parch">{t("readStep3Title")}</p>
+              <p className="mt-1 text-xs text-muted">{t("readStep3Text")}</p>
             </div>
           </div>
           <div className="mt-4 grid grid-cols-4 gap-2">
-            <img src="/assets/items/mods/T_Armory_Polarity01.png" alt="Polarity 1" width={36} height={36} loading="lazy" className="h-9 w-9 rounded-sm border border-white/10 bg-ink/70 p-1 object-contain" />
-            <img src="/assets/items/mods/T_Armory_Polarity02.png" alt="Polarity 2" width={36} height={36} loading="lazy" className="h-9 w-9 rounded-sm border border-white/10 bg-ink/70 p-1 object-contain" />
-            <img src="/assets/items/mods/T_Armory_Polarity03.png" alt="Polarity 3" width={36} height={36} loading="lazy" className="h-9 w-9 rounded-sm border border-white/10 bg-ink/70 p-1 object-contain" />
-            <img src="/assets/items/mods/T_Armory_Polarity04.png" alt="Polarity 4" width={36} height={36} loading="lazy" className="h-9 w-9 rounded-sm border border-white/10 bg-ink/70 p-1 object-contain" />
+            {POLARITY_ICONS.map((src, index) => (
+              <img
+                key={src}
+                src={src}
+                alt={t("polarityItem", { num: index + 1 })}
+                width={36}
+                height={36}
+                loading="lazy"
+                className="h-9 w-9 rounded-sm border border-white/10 bg-ink/70 p-1 object-contain"
+              />
+            ))}
           </div>
         </article>
       </section>
@@ -283,79 +307,80 @@ function ModsAboutContent({ categorySlug }: { categorySlug: string }) {
         <article className="border border-white/10 bg-panel/55 p-5 lg:col-span-2">
           <h2 className="flex items-center gap-2 font-display text-xl text-parch">
             <BadgeInfo className="h-5 w-5 text-hydro" />
-            1) Structure d&apos;un Demon Wedge
+            {t("structureTitle")}
           </h2>
           <ul className="mt-4 space-y-3 text-sm text-parch/85">
-            <li>
-              Chaque Demon Wedge possede un nom, une description, une rarete, une affinite et un niveau max.
-            </li>
-            <li>
-              Le nom affiche dans le jeu est <code>Demon Wedge</code>. <code>MOD</code> reste surtout un terme
-              technique utilise dans certaines donnees internes.
-            </li>
-            <li>
-              Les textes (nom, description, effets passifs) changent selon la langue selectionnee.
-            </li>
-            <li>
-              Le site expose ces infos en JSON pour pouvoir filtrer, comparer les langues et ouvrir les details.
-            </li>
+            <li>{t("structureItem1")}</li>
+            <li>{t.rich("structureItem2", { c: code })}</li>
+            <li>{t("structureItem3")}</li>
+            <li>{t("structureItem4")}</li>
           </ul>
         </article>
 
         <article className="border border-white/10 bg-panel/55 p-5">
-          <h2 className="font-display text-lg text-parch">Affinites, polarites et compatibilites</h2>
-          <p className="mt-3 text-sm text-parch/85">
-            La fiche detail combine plusieurs reperes visuels: symbole de polarite, affinite elementaire et tags de
-            compatibilite du type de personnage/arme.
-          </p>
+          <h2 className="font-display text-lg text-parch">{t("affinityTitle")}</h2>
+          <p className="mt-3 text-sm text-parch/85">{t("affinityDescription")}</p>
 
           <div className="mt-4">
-            <p className="mb-2 font-caps text-[0.6rem] uppercase tracking-[0.22em] text-muted">Polarite</p>
+            <p className="mb-2 font-caps text-[0.6rem] uppercase tracking-[0.22em] text-muted">
+              {t("polarityLabel")}
+            </p>
             <div className="grid grid-cols-2 gap-2">
-              <div className="flex items-center gap-2 rounded-sm border border-white/10 bg-ink/60 p-2 text-xs text-parch">
-                <img src="/assets/items/mods/T_Armory_Polarity01.png" alt="Polarity 1" width={24} height={24} loading="lazy" className="h-6 w-6 object-contain" />
-                Polarity 1
-              </div>
-              <div className="flex items-center gap-2 rounded-sm border border-white/10 bg-ink/60 p-2 text-xs text-parch">
-                <img src="/assets/items/mods/T_Armory_Polarity02.png" alt="Polarity 2" width={24} height={24} loading="lazy" className="h-6 w-6 object-contain" />
-                Polarity 2
-              </div>
-              <div className="flex items-center gap-2 rounded-sm border border-white/10 bg-ink/60 p-2 text-xs text-parch">
-                <img src="/assets/items/mods/T_Armory_Polarity03.png" alt="Polarity 3" width={24} height={24} loading="lazy" className="h-6 w-6 object-contain" />
-                Polarity 3
-              </div>
-              <div className="flex items-center gap-2 rounded-sm border border-white/10 bg-ink/60 p-2 text-xs text-parch">
-                <img src="/assets/items/mods/T_Armory_Polarity04.png" alt="Polarity 4" width={24} height={24} loading="lazy" className="h-6 w-6 object-contain" />
-                Polarity 4
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-4">
-            <p className="mb-2 font-caps text-[0.6rem] uppercase tracking-[0.22em] text-muted">Affinites elementaires</p>
-            <div className="grid grid-cols-3 gap-2">
-              {AFFINITY_EXAMPLES.map((entry) => (
+              {POLARITY_ICONS.map((src, index) => (
                 <div
-                  key={entry.src}
+                  key={src}
                   className="flex items-center gap-2 rounded-sm border border-white/10 bg-ink/60 p-2 text-xs text-parch"
                 >
-                  <img src={entry.src} alt={entry.label} width={20} height={20} loading="lazy" className="h-5 w-5 object-contain" />
-                  {entry.label}
+                  <img
+                    src={src}
+                    alt={t("polarityItem", { num: index + 1 })}
+                    width={24}
+                    height={24}
+                    loading="lazy"
+                    className="h-6 w-6 object-contain"
+                  />
+                  {t("polarityItem", { num: index + 1 })}
                 </div>
               ))}
             </div>
           </div>
 
           <div className="mt-4">
-            <p className="mb-2 font-caps text-[0.6rem] uppercase tracking-[0.22em] text-muted">Type compatible</p>
+            <p className="mb-2 font-caps text-[0.6rem] uppercase tracking-[0.22em] text-muted">
+              {t("affinityElementalLabel")}
+            </p>
+            <div className="grid grid-cols-3 gap-2">
+              {AFFINITY_EXAMPLES.map((entry) => (
+                <div
+                  key={entry.src}
+                  className="flex items-center gap-2 rounded-sm border border-white/10 bg-ink/60 p-2 text-xs text-parch"
+                >
+                  <img src={entry.src} alt={tElement(entry.key)} width={20} height={20} loading="lazy" className="h-5 w-5 object-contain" />
+                  {tElement(entry.key)}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-4">
+            <p className="mb-2 font-caps text-[0.6rem] uppercase tracking-[0.22em] text-muted">
+              {t("typeCompatLabel")}
+            </p>
             <div className="grid grid-cols-2 gap-2">
               {TYPE_COMPAT_EXAMPLES.map((entry) => (
                 <div
                   key={entry.src}
                   className="flex items-center gap-2 rounded-sm border border-white/10 bg-ink/60 p-2 text-xs text-parch"
                 >
-                  <img src={entry.src} alt={entry.label} width={20} height={20} loading="lazy" className="h-5 w-5 object-contain" />
-                  {entry.label}
+                  <img
+                    src={entry.src}
+                    alt={t(`typeCompat.${entry.key}`)}
+                    width={20}
+                    height={20}
+                    loading="lazy"
+                    className="h-5 w-5 object-contain"
+                  />
+                  {t(`typeCompat.${entry.key}`)}
                 </div>
               ))}
             </div>
@@ -367,32 +392,26 @@ function ModsAboutContent({ categorySlug }: { categorySlug: string }) {
         <article className="border border-white/10 bg-panel/55 p-6">
           <h2 className="flex items-center gap-2 font-display text-xl text-parch">
             <SlidersHorizontal className="h-5 w-5 text-gold" />
-            2) Niveaux et valeurs dynamiques
+            {t("levelsTitle")}
           </h2>
-          <p className="mt-3 text-sm leading-relaxed text-parch/85">
-            Les valeurs <code>#1</code>, <code>#2</code>, etc. changent selon le niveau du Demon Wedge. Le slider dans
-            la page detail applique ces valeurs depuis la table de croissance et affiche l&apos;effet au niveau choisi.
-          </p>
+          <p className="mt-3 text-sm leading-relaxed text-parch/85">{t.rich("levelsText", { c: code })}</p>
           <div className="mt-4 rounded-sm border border-gold/25 bg-gold/10 p-4 text-sm text-gold">
-            Niveau par defaut = <code>0</code> (piece non montee)<br />
-            Niveau max = <code>MaxLevel</code>
+            {t.rich("levelsDefault", { c: code })}
+            <br />
+            {t.rich("levelsMax", { c: code })}
           </div>
         </article>
 
         <article className="border border-white/10 bg-panel/55 p-6">
           <h2 className="flex items-center gap-2 font-display text-xl text-parch">
             <Calculator className="h-5 w-5 text-gold" />
-            3) Tolerance / cout
+            {t("toleranceTitle")}
           </h2>
-          <p className="mt-3 text-sm leading-relaxed text-parch/85">
-            La tolerance affichee evolue avec le niveau. Le calcul expose dans les donnees est:
-          </p>
+          <p className="mt-3 text-sm leading-relaxed text-parch/85">{t("toleranceText")}</p>
           <div className="mt-4 rounded-sm border border-gold/25 bg-gold/10 p-4 font-mono text-sm text-gold">
             tolerance(level) = Cost + level * CostChange
           </div>
-          <p className="mt-3 text-xs text-muted">
-            Le site pre-calcule les valeurs par niveau et les place dans <code>tolerance.valuesByLevel</code>.
-          </p>
+          <p className="mt-3 text-xs text-muted">{t.rich("toleranceNote", { c: code })}</p>
         </article>
       </section>
 
@@ -400,38 +419,23 @@ function ModsAboutContent({ categorySlug }: { categorySlug: string }) {
         <article className="border border-white/10 bg-panel/55 p-6">
           <h2 className="flex items-center gap-2 font-display text-xl text-parch">
             <Languages className="h-5 w-5 text-anemo" />
-            4) Multi-langue
+            {t("multilangTitle")}
           </h2>
-          <p className="mt-3 text-sm leading-relaxed text-parch/85">
-            Sur la grille: tu peux afficher plusieurs langues en meme temps pour comparer les noms. Sur le detail:
-            une langue unique peut etre choisie et partagee via l&apos;URL.
-          </p>
-          <p className="mt-3 text-xs text-muted">
-            Les langues actuellement disponibles dependent du dataset charge pour la categorie.
-          </p>
+          <p className="mt-3 text-sm leading-relaxed text-parch/85">{t("multilangText")}</p>
+          <p className="mt-3 text-xs text-muted">{t("multilangNote")}</p>
         </article>
 
         <article className="border border-white/10 bg-panel/55 p-6">
           <h2 className="flex items-center gap-2 font-display text-xl text-parch">
             <Wrench className="h-5 w-5 text-electro" />
-            5) Ce que le site affiche
+            {t("displayTitle")}
           </h2>
           <ul className="mt-3 space-y-2 text-sm text-parch/85">
-            <li>
-              Informations generales du Demon Wedge (nom, rarete, fonction, description)
-            </li>
-            <li>
-              Evolution par niveau via le slider
-            </li>
-            <li>
-              Affinite + icone associee
-            </li>
-            <li>
-              Noms multilingues pour comparer rapidement
-            </li>
-            <li>
-              Recherche, filtres, favoris et pagination pour la navigation
-            </li>
+            <li>{t("displayItem1")}</li>
+            <li>{t("displayItem2")}</li>
+            <li>{t("displayItem3")}</li>
+            <li>{t("displayItem4")}</li>
+            <li>{t("displayItem5")}</li>
           </ul>
         </article>
       </section>
@@ -439,49 +443,52 @@ function ModsAboutContent({ categorySlug }: { categorySlug: string }) {
       <section className="border border-gold/25 bg-linear-to-r from-gold/10 via-panel/40 to-electro/10 p-6">
         <h2 className="flex items-center gap-2 font-display text-xl text-parch">
           <Zap className="h-5 w-5 text-gold" />
-          Lecture rapide d&apos;un Demon Wedge dans le site
+          {t("quickTitle")}
         </h2>
-        <p className="mt-3 text-sm text-parch">
-          Le parcours visuel est toujours le meme: identifier l&apos;icone, verifier l&apos;affinite, puis ajuster le
-          niveau pour voir les effets dynamiques.
-        </p>
+        <p className="mt-3 text-sm text-parch">{t("quickText")}</p>
         <div className="mt-5 grid gap-3 md:grid-cols-3">
           <div className="rounded-sm border border-white/10 bg-ink/60 p-4">
-            <p className="font-caps text-[0.6rem] uppercase tracking-[0.22em] text-muted">Etape 1</p>
-            <p className="mt-1 text-sm font-medium text-parch">Identifier le Demon Wedge</p>
+            <p className="font-caps text-[0.6rem] uppercase tracking-[0.22em] text-muted">
+              {t("stepLabel", { num: 1 })}
+            </p>
+            <p className="mt-1 text-sm font-medium text-parch">{t("step1Title")}</p>
             <div className="mt-3 flex items-center gap-3">
               <div className="flex h-12 w-12 items-center justify-center rounded-sm border border-white/10 bg-panel/70 p-2">
-                <img src="/assets/items/mods/T_Mod_Phoenix01.png" alt="Exemple Demon Wedge Phoenix" width={48} height={48} loading="lazy" className="max-h-full max-w-full object-contain" />
+                <img src="/assets/items/mods/T_Mod_Phoenix01.png" alt={t("altPhoenixExample")} width={48} height={48} loading="lazy" className="max-h-full max-w-full object-contain" />
               </div>
               <div className="text-xs text-muted">
-                Nom + icone
+                {t("step1Line1")}
                 <br />
-                directement sur la grille
+                {t("step1Line2")}
               </div>
             </div>
           </div>
 
           <div className="rounded-sm border border-white/10 bg-ink/60 p-4">
-            <p className="font-caps text-[0.6rem] uppercase tracking-[0.22em] text-muted">Etape 2</p>
-            <p className="mt-1 text-sm font-medium text-parch">Verifier affinite et type</p>
+            <p className="font-caps text-[0.6rem] uppercase tracking-[0.22em] text-muted">
+              {t("stepLabel", { num: 2 })}
+            </p>
+            <p className="mt-1 text-sm font-medium text-parch">{t("step2Title")}</p>
             <div className="mt-3 flex items-center gap-2">
-              <img src="/assets/items/mods/T_Armory_Fire.png" alt="Affinite Fire" width={28} height={28} loading="lazy" className="h-7 w-7 rounded-sm border border-white/10 bg-panel/70 p-1 object-contain" />
-              <img src="/assets/items/mods/T_Armory_Polarity02.png" alt="Polarity 2" width={28} height={28} loading="lazy" className="h-7 w-7 rounded-sm border border-white/10 bg-panel/70 p-1 object-contain" />
-              <img src="/assets/items/mods/T_Armory_RoleType_03.png" alt="Compatibilite Distance" width={28} height={28} loading="lazy" className="h-7 w-7 rounded-sm border border-white/10 bg-panel/70 p-1 object-contain" />
+              <img src="/assets/items/mods/T_Armory_Fire.png" alt={t("altAffinityFire")} width={28} height={28} loading="lazy" className="h-7 w-7 rounded-sm border border-white/10 bg-panel/70 p-1 object-contain" />
+              <img src="/assets/items/mods/T_Armory_Polarity02.png" alt={t("polarityItem", { num: 2 })} width={28} height={28} loading="lazy" className="h-7 w-7 rounded-sm border border-white/10 bg-panel/70 p-1 object-contain" />
+              <img src="/assets/items/mods/T_Armory_RoleType_03.png" alt={t("altCompatRanged")} width={28} height={28} loading="lazy" className="h-7 w-7 rounded-sm border border-white/10 bg-panel/70 p-1 object-contain" />
             </div>
           </div>
 
           <div className="rounded-sm border border-white/10 bg-ink/60 p-4">
-            <p className="font-caps text-[0.6rem] uppercase tracking-[0.22em] text-muted">Etape 3</p>
-            <p className="mt-1 text-sm font-medium text-parch">Ajuster le niveau</p>
+            <p className="font-caps text-[0.6rem] uppercase tracking-[0.22em] text-muted">
+              {t("stepLabel", { num: 3 })}
+            </p>
+            <p className="mt-1 text-sm font-medium text-parch">{t("step3Title")}</p>
             <div className="mt-3 rounded-sm border border-gold/30 bg-gold/10 px-3 py-2 text-xs text-gold">
-              #1 / #2 / #3 se mettent a jour
+              {t("step3Line1")}
               <br />
-              selon le slider de niveau
+              {t("step3Line2")}
             </div>
             <div className="mt-2 flex items-center gap-2 text-xs text-muted">
               <Target className="h-3.5 w-3.5 text-gold" />
-              Niveau 0 = valeur de base non montee
+              {t("step3Note")}
             </div>
           </div>
         </div>
@@ -490,24 +497,21 @@ function ModsAboutContent({ categorySlug }: { categorySlug: string }) {
       <section className="border border-hydro/25 bg-linear-to-r from-hydro/10 to-gold/10 p-6">
         <h2 className="flex items-center gap-2 font-display text-xl text-parch">
           <Sparkles className="h-5 w-5 text-hydro" />
-          Ce que tu peux faire ensuite
+          {t("nextTitle")}
         </h2>
-        <p className="mt-3 text-sm text-parch">
-          Utilise la grille pour filtrer et comparer rapidement, puis ouvre un item pour voir ses valeurs dynamiques,
-          sa tolerance par niveau et son affinite.
-        </p>
+        <p className="mt-3 text-sm text-parch">{t("nextText")}</p>
         <div className="mt-4 flex flex-wrap gap-3">
           <Link
             href={`/items/${categorySlug}`}
             className="inline-flex items-center gap-2 rounded-sm border border-hydro/35 bg-hydro/10 px-4 py-2 text-sm font-medium text-hydro transition-colors hover:bg-hydro/20"
           >
-            Ouvrir la grille Demon Wedge
+            {t("nextOpenGrid")}
           </Link>
           <Link
             href="/items/favoris"
             className="inline-flex items-center gap-2 rounded-sm border border-white/10 px-4 py-2 text-sm text-parch transition-colors hover:border-hydro/40 hover:text-parch"
           >
-            Voir mes favoris
+            {t("nextFavorites")}
           </Link>
         </div>
       </section>
@@ -515,13 +519,16 @@ function ModsAboutContent({ categorySlug }: { categorySlug: string }) {
   );
 }
 
-function GenericCategoryAboutContent({
+async function GenericCategoryAboutContent({
   categoryTitle,
   categorySlug,
 }: {
   categoryTitle: string;
   categorySlug: string;
 }) {
+  const t = await getTranslations("itemsAbout");
+  const tCommon = await getTranslations("common");
+
   return (
     <div className="space-y-8">
       <section className="border border-gold/25 bg-panel/65 p-8">
@@ -530,13 +537,12 @@ function GenericCategoryAboutContent({
           className="inline-flex items-center gap-2 rounded-sm border border-white/10 px-3 py-2 text-sm text-parch transition-colors hover:border-gold/40 hover:text-parch"
         >
           <ArrowLeft className="h-4 w-4" />
-          Retour a la liste
+          {tCommon("backToList")}
         </Link>
-        <h1 className="mt-5 font-display text-4xl text-parch">Guide {categoryTitle}</h1>
-        <p className="mt-3 max-w-3xl text-parch/85">
-          Cette categorie est prete pour recevoir une page explicative detaillee. Le systeme est deja en place pour
-          ajouter les regles, formules et visuels specifiques a chaque nouvelle famille d&apos;items.
-        </p>
+        <h1 className="mt-5 font-display text-4xl text-parch">
+          {t("genericTitle", { category: categoryTitle })}
+        </h1>
+        <p className="mt-3 max-w-3xl text-parch/85">{t("genericText")}</p>
       </section>
     </div>
   );
@@ -555,12 +561,13 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const { locale, category: categorySlug } = await params;
   const category = getItemCategoryBySlug(categorySlug);
+  const t = await getTranslations({ locale, namespace: "itemsAbout" });
 
   if (!category) {
     return generatePageMetadata(
       {
-        title: "Guide items",
-        description: "Documentation des categories d'items Duet Night Abyss.",
+        title: t("metaFallbackTitle"),
+        description: t("metaFallbackDescription"),
         path: "/items",
       },
       parent,
@@ -568,13 +575,22 @@ export async function generateMetadata(
     );
   }
 
+  const tCalamity = await getTranslations({ locale, namespace: "calamityGuide" });
+  const isWeapons = category.id === "weapons";
+  const isMods = category.id === "mods";
+
   return generatePageMetadata(
     {
-      title: category.id === "weapons" ? "Guide Armes de calamité" : `Guide ${category.title}`,
-      description:
-        category.id === "weapons"
-          ? "Comprendre les armes de calamité de Duet Night Abyss: Fusion de calamité, Potentiels d'arme, prérequis de maîtrise et builds de Demon Wedges."
-          : `Comprendre le fonctionnement de ${category.title}: niveaux, affinite, tolerance, traductions et lecture des effets.`,
+      title: isWeapons
+        ? tCalamity("metaTitle")
+        : isMods
+          ? t("guideBadge")
+          : t("genericTitle", { category: category.title }),
+      description: isWeapons
+        ? tCalamity("metaDescription")
+        : isMods
+          ? t("metaModsDescription")
+          : t("metaGenericDescription", { category: category.title }),
       path: `/items/${category.slug}/about`,
       keywords: [
         "Duet Night Abyss",
@@ -595,7 +611,7 @@ export async function generateMetadata(
 }
 
 export default async function CategoryAboutPage({ params }: CategoryAboutPageProps) {
-  const { category: categorySlug } = await params;
+  const { locale, category: categorySlug } = await params;
   const category = getItemCategoryBySlug(categorySlug);
 
   if (!category) {
@@ -607,11 +623,16 @@ export default async function CategoryAboutPage({ params }: CategoryAboutPagePro
   }
 
   if (category.id === "weapons") {
+    // Les libellés issus des données de jeu suivent la locale de la page.
+    const gameLang = toGameDataLangCode(toLocale(locale));
+    const t = await getTranslations({ locale, namespace: "calamityGuide" });
+
     return (
       <CalamityWeaponsGuideClient
         categorySlug={category.slug}
+        gameLang={gameLang}
         totalWeaponCount={getItemsByCategoryId("weapons").length}
-        weapons={buildCalamityGuideWeapons()}
+        weapons={buildCalamityGuideWeapons(gameLang, t)}
         wedgePools={getWeaponWedgePoolCounts()}
       />
     );

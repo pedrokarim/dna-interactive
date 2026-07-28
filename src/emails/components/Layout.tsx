@@ -12,8 +12,21 @@ import {
 } from "@react-email/components";
 import type { ReactNode } from "react";
 import { dna, fonts } from "../theme";
+import type { Locale } from "@/i18n/config";
 
-export type EmailLocale = "fr" | "en";
+/** Les emails couvrent les mêmes langues que le site. */
+export type EmailLocale = Locale;
+
+/** Locale du site → code BCP 47 valide pour l'attribut `lang`. */
+const htmlLang: Record<EmailLocale, string> = {
+  fr: "fr",
+  en: "en",
+  de: "de",
+  es: "es",
+  jp: "ja",
+  kr: "ko",
+  tc: "zh-Hant",
+};
 
 type Props = {
   preview: string;
@@ -32,6 +45,26 @@ const footerCopy: Record<EmailLocale, { tagline: string; fine: string }> = {
     tagline: "Duet Night Abyss companion",
     fine: "You're receiving this email because of an action on your DNA Interactive account. If you didn't request it, you can safely ignore this message.",
   },
+  de: {
+    tagline: "Begleiter für Duet Night Abyss",
+    fine: "Du erhältst diese E-Mail wegen einer Aktion in deinem DNA-Interactive-Konto. Falls du sie nicht angefordert hast, kannst du diese Nachricht ignorieren.",
+  },
+  es: {
+    tagline: "Compañero de Duet Night Abyss",
+    fine: "Recibes este correo por una acción en tu cuenta de DNA Interactive. Si no la has solicitado, puedes ignorar este mensaje.",
+  },
+  jp: {
+    tagline: "Duet Night Abyss のお供に",
+    fine: "このメールは、DNA Interactive アカウントでの操作に伴ってお送りしています。お心当たりがない場合は、そのまま破棄してください。",
+  },
+  kr: {
+    tagline: "Duet Night Abyss 동반자",
+    fine: "이 메일은 DNA Interactive 계정에서 발생한 작업으로 인해 발송되었습니다. 요청하지 않으셨다면 이 메시지를 무시하셔도 됩니다.",
+  },
+  tc: {
+    tagline: "Duet Night Abyss 夥伴",
+    fine: "你收到這封郵件，是因為你的 DNA Interactive 帳號有相關操作。若非你本人所為，可直接忽略這則訊息。",
+  },
 };
 
 /**
@@ -46,7 +79,7 @@ export function EmailLayout({
 }: Props) {
   const copy = footerCopy[locale];
   return (
-    <Html lang={locale}>
+    <Html lang={htmlLang[locale]}>
       <Head />
       <Preview>{preview}</Preview>
       <Body style={body}>

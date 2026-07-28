@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { and, eq } from "drizzle-orm";
 import { getDb, schema } from "@/db";
 import { getCurrentUser } from "@/lib/auth/session";
+import { getApiTranslator } from "@/lib/api-locale";
 
 export const dynamic = "force-dynamic";
 
@@ -12,13 +13,14 @@ type Provider = (typeof PROVIDERS)[number];
 // laisserait le compte sans aucun moyen de connexion (aucun autre provider ET
 // pas de mot de passe défini).
 export async function DELETE(request: Request) {
+  const t = await getApiTranslator(request);
   const user = await getCurrentUser();
-  if (!user) return NextResponse.json({ error: "Connexion requise." }, { status: 401 });
+  if (!user) return NextResponse.json({ error: t("signInRequired") }, { status: 401 });
 
   const body = await request.json().catch(() => null);
   const provider = body?.provider as Provider | undefined;
   if (!provider || !PROVIDERS.includes(provider)) {
-    return NextResponse.json({ error: "Provider invalide." }, { status: 400 });
+    return NextResponse.json({ error: t("invalidProvider") }, { status: 400 });
   }
 
   const db = getDb();
@@ -29,14 +31,14 @@ export async function DELETE(request: Request) {
 
   const linked = accounts.map((a) => a.provider);
   if (!linked.includes(provider)) {
-    return NextResponse.json({ error: "Ce compte n'est pas lié." }, { status: 400 });
+    return NextResponse.json({ error: t("accountNotLinked") }, { status: 400 });
   }
 
   // Méthodes de connexion restantes après déliaison.
   const remaining = linked.filter((p) => p !== provider).length + (pwRow?.passwordHash ? 1 : 0);
   if (remaining < 1) {
     return NextResponse.json(
-      { error: "Impossible de délier : définis d'abord un mot de passe ou lie un autre compte." },
+      { error: t("cannotUnlink") },
       { status: 409 },
     );
   }

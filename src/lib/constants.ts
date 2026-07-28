@@ -122,27 +122,28 @@ export const GAME_VERSION = "1.4";
 /** Année d'ouverture du site, pour le copyright (l'année de fin est calculée). */
 export const SITE_LAUNCH_YEAR = 2025;
 
-// Liens de navigation principaux
+// Liens de navigation principaux. Les libellés viennent du namespace `nav`
+// des messages : n'ajouter ici qu'une entrée dont la clé existe côté i18n.
 export const NAV_LINKS = [
-  { href: NAVIGATION.map, label: "Carte Interactive" },
-  { href: NAVIGATION.items, label: "Items" },
-  { href: NAVIGATION.characters, label: "Personnages" },
-  { href: NAVIGATION.commissions, label: "Commissions" },
-  { href: NAVIGATION.about, label: "À propos" },
+  { href: NAVIGATION.map },
+  { href: NAVIGATION.items },
+  { href: NAVIGATION.characters },
+  { href: NAVIGATION.commissions },
+  { href: NAVIGATION.about },
 ] as const;
 
-// Liens du footer
+// Liens du footer — même règle que NAV_LINKS pour les libellés.
 export const FOOTER_LINKS = [
-  { href: NAVIGATION.map, label: "Carte Interactive" },
-  { href: NAVIGATION.items, label: "Items" },
-  { href: NAVIGATION.characters, label: "Personnages" },
-  { href: NAVIGATION.builder, label: "Builder" },
-  { href: NAVIGATION.builds, label: "Builds communauté" },
-  { href: NAVIGATION.commissions, label: "Commissions" },
-  { href: NAVIGATION.codes, label: "Codes de Rédemption" },
-  { href: NAVIGATION.about, label: "À propos" },
-  { href: NAVIGATION.support, label: "Support" },
-  { href: NAVIGATION.contact, label: "Contact" },
+  { href: NAVIGATION.map },
+  { href: NAVIGATION.items },
+  { href: NAVIGATION.characters },
+  { href: NAVIGATION.builder },
+  { href: NAVIGATION.builds },
+  { href: NAVIGATION.commissions },
+  { href: NAVIGATION.codes },
+  { href: NAVIGATION.about },
+  { href: NAVIGATION.support },
+  { href: NAVIGATION.contact },
 ] as const;
 
 // Informations de support
@@ -217,20 +218,12 @@ export const FAQ_ITEMS = [
 ] as const;
 
 // Liens rapides du support
+/**
+ * Liens rapides de la page Support. `key` désigne les messages
+ * `support.quickLink<Key>` et `support.quickLink<Key>Desc`.
+ */
 export const SUPPORT_QUICK_LINKS = [
-  {
-    href: CONTACT_INFO.ascencia.url,
-    label: "Ascencia",
-    description: "Site officiel du studio",
-  },
-  {
-    href: NAVIGATION.contact,
-    label: "Contact",
-    description: "Formulaire de contact",
-  },
-  {
-    href: NAVIGATION.about,
-    label: "À propos",
-    description: "En savoir plus sur nous",
-  },
+  { href: CONTACT_INFO.ascencia.url, key: "Ascencia" },
+  { href: NAVIGATION.contact, key: "Contact" },
+  { href: NAVIGATION.about, key: "About" },
 ] as const;

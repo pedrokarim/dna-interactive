@@ -144,6 +144,7 @@ function SlotCard({
   onRemove: () => void;
   onSetBest: () => void;
 }) {
+  const t = useTranslations("common");
   const { item, rank } = entry;
   const isBest = rank === "best";
   return (
@@ -164,7 +165,7 @@ function SlotCard({
           <button
             type="button"
             onClick={onRemove}
-            aria-label="Retirer"
+            aria-label={t("remove")}
             className="flex h-4 w-4 items-center justify-center rounded-full border border-white/20 bg-ink/80 text-[0.7rem] leading-none text-muted hover:border-crimson-bright hover:text-[#ffb3a6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson-bright/70"
           >
             ×

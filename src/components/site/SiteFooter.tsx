@@ -3,8 +3,8 @@ import { getTranslations } from "next-intl/server";
 import {
   ASSETS_PATHS,
   CONTACT_INFO,
+  CREATOR_INFO,
   FOOTER_LINKS,
-  LEGAL_INFO,
   NAVIGATION,
   SITE_CONFIG,
 } from "@/lib/constants";
@@ -21,6 +21,8 @@ export default async function SiteFooter({ active }: { active?: string }) {
     [NAVIGATION.map]: tNav("map"),
     [NAVIGATION.items]: tNav("items"),
     [NAVIGATION.characters]: tNav("characters"),
+    [NAVIGATION.builder]: tNav("builder"),
+    [NAVIGATION.builds]: tNav("builds"),
     [NAVIGATION.commissions]: tNav("commissions"),
     [NAVIGATION.codes]: tNav("codes"),
     [NAVIGATION.about]: tNav("about"),
@@ -52,7 +54,7 @@ export default async function SiteFooter({ active }: { active?: string }) {
                   link.href === active ? "text-gold-bright" : "hover:text-gold"
                 }`}
               >
-                {navLabels[link.href] ?? link.label}
+                {navLabels[link.href]}
               </Link>
             ))}
           </nav>
@@ -61,16 +63,16 @@ export default async function SiteFooter({ active }: { active?: string }) {
         <DnaDivider className="mt-6 md:mt-8" />
 
         <div className="mt-6 text-center text-sm text-parch/85">
-          <p>{LEGAL_INFO.copyright}</p>
+          <p>{tLegal("copyright", { siteName: SITE_CONFIG.name, creator: CREATOR_INFO.fullName })}</p>
           <p className="mt-2">
-            {LEGAL_INFO.disclaimer}
+            {tLegal("disclaimer")}
             <a
               href={CONTACT_INFO.ascencia.url}
               target="_blank"
               rel="noopener noreferrer"
               className="ml-1 text-gold underline underline-offset-2 hover:text-gold-bright"
             >
-              {LEGAL_INFO.ascenciaCredit}
+              {tLegal("ascenciaCredit")}
             </a>
           </p>
           <p className="mx-auto mt-3 max-w-2xl text-xs italic text-parch/70">

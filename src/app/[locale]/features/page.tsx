@@ -74,6 +74,7 @@ const FEATURE_ICONS = {
 export default async function FeaturesPage() {
   const tHome = await getTranslations("home");
   const tf = await getTranslations("featuresPage");
+  const tElement = await getTranslations("common.elements");
 
   const features: Array<{ key: keyof typeof FEATURE_ICONS; title: string; desc: string }> = [
     { key: "map", title: tHome("featureMapTitle"), desc: tHome("featureMapDescription") },
@@ -144,10 +145,10 @@ export default async function FeaturesPage() {
                   <img src="/assets/optimized/home-spotlight/T_Head_Katana_Yuli.webp" alt={tf("yuliKatanaAlt")} width="48" height="48" loading="lazy" className="h-full w-full object-contain" />
                 </div>
                 <div className="absolute left-[61%] top-[70%] h-10 w-10 -rotate-12 rounded-sm border border-pyro/30 bg-ink/70 p-1.5">
-                  <img src="/assets/optimized/home-spotlight/T_Armory_Fire.webp" alt="Element Feu" width="40" height="40" loading="lazy" className="h-full w-full object-contain" />
+                  <img src="/assets/optimized/home-spotlight/T_Armory_Fire.webp" alt={tElement("fire")} width="40" height="40" loading="lazy" className="h-full w-full object-contain" />
                 </div>
                 <div className="absolute left-[76%] top-[10%] h-10 w-10 rotate-12 rounded-sm border border-hydro/30 bg-ink/70 p-1.5">
-                  <img src="/assets/optimized/home-spotlight/T_Armory_Water.webp" alt="Element Eau" width="40" height="40" loading="lazy" className="h-full w-full object-contain" />
+                  <img src="/assets/optimized/home-spotlight/T_Armory_Water.webp" alt={tElement("water")} width="40" height="40" loading="lazy" className="h-full w-full object-contain" />
                 </div>
               </div>
 

@@ -6,6 +6,7 @@ import { checkRateLimit } from "@/lib/rate-limit";
 import { createAuthToken } from "@/lib/auth/tokens";
 import { sendSetPasswordEmail, toEmailLocale } from "@/lib/email/auth-emails";
 import { getSiteUrl } from "@/lib/auth/site";
+import { getApiTranslator } from "@/lib/api-locale";
 
 export const dynamic = "force-dynamic";
 
@@ -13,13 +14,14 @@ export const dynamic = "force-dynamic";
 // un compte connecté (typiquement OAuth-only). Passe TOUJOURS par une
 // vérification email (lien reset_password) — jamais de set direct.
 export async function POST(request: Request) {
+  const t = await getApiTranslator(request);
   const user = await getCurrentUser();
-  if (!user) return NextResponse.json({ error: "Connexion requise." }, { status: 401 });
+  if (!user) return NextResponse.json({ error: t("signInRequired") }, { status: 401 });
 
   const rate = await checkRateLimit(`auth:set-password:${user.id}`, 5, 60 * 60 * 1000);
   if (!rate.ok) {
     return NextResponse.json(
-      { error: "Trop de demandes. Réessaie plus tard." },
+      { error: t("tooManyRequests") },
       { status: 429, headers: { "Retry-After": `${rate.retryAfter}` } },
     );
   }
@@ -32,7 +34,7 @@ export async function POST(request: Request) {
 
   if (!row?.email) {
     return NextResponse.json(
-      { error: "Aucune adresse email sur ce compte : impossible de définir un mot de passe." },
+      { error: t("noEmailOnAccount") },
       { status: 400 },
     );
   }

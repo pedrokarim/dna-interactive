@@ -114,8 +114,10 @@ export default async function SupportPage() {
               className="group relative border border-line/25 bg-panel/85 p-6 text-center backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-gold/40"
             >
               <DnaCornerBrackets size={12} className="opacity-0 transition-opacity group-hover:opacity-60" />
-              <h4 className="font-display text-lg text-parch transition-colors group-hover:text-gold">{link.label}</h4>
-              <p className="mt-1 text-sm text-muted">{link.description}</p>
+              <h4 className="font-display text-lg text-parch transition-colors group-hover:text-gold">
+                {tSupport(`quickLink${link.key}`)}
+              </h4>
+              <p className="mt-1 text-sm text-muted">{tSupport(`quickLink${link.key}Desc`)}</p>
             </a>
           ))}
         </div>

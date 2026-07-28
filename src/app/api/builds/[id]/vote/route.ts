@@ -3,6 +3,7 @@ import { and, eq, sql } from "drizzle-orm";
 import { getDb, schema } from "@/db";
 import { checkRateLimit } from "@/lib/rate-limit";
 import { getVoterKey } from "@/lib/community-builds/vote-identity";
+import { getApiTranslator } from "@/lib/api-locale";
 
 export const dynamic = "force-dynamic";
 
@@ -29,18 +30,19 @@ async function currentVoteCount(id: string) {
 // Vote anonyme : identité = clé dérivée de l'IP (cf. vote-identity.ts). Pas de
 // connexion requise, pas de blocage self-vote (on ne connaît plus l'auteur côté vote).
 export async function POST(request: Request, { params }: RouteContext) {
+  const t = await getApiTranslator(request);
   const voterKey = getVoterKey(request.headers);
   const rate = await checkRateLimit(`build:vote:${voterKey}`, 90, 60 * 1000);
   if (!rate.ok) {
     return NextResponse.json(
-      { error: "Trop de votes. Réessaie plus tard." },
+      { error: t("tooManyVotes") },
       { status: 429, headers: { "Retry-After": `${rate.retryAfter}` } },
     );
   }
 
   const { id } = await params;
   const build = await getPublicBuild(id);
-  if (!build || build.hidden) return NextResponse.json({ error: "Build introuvable." }, { status: 404 });
+  if (!build || build.hidden) return NextResponse.json({ error: t("buildNotFound") }, { status: 404 });
 
   const inserted = await getDb()
     .insert(schema.buildIpVotes)
@@ -59,11 +61,12 @@ export async function POST(request: Request, { params }: RouteContext) {
 }
 
 export async function DELETE(request: Request, { params }: RouteContext) {
+  const t = await getApiTranslator(request);
   const voterKey = getVoterKey(request.headers);
   const rate = await checkRateLimit(`build:vote:${voterKey}`, 90, 60 * 1000);
   if (!rate.ok) {
     return NextResponse.json(
-      { error: "Trop de votes. Réessaie plus tard." },
+      { error: t("tooManyVotes") },
       { status: 429, headers: { "Retry-After": `${rate.retryAfter}` } },
     );
   }

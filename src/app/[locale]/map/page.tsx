@@ -39,7 +39,6 @@ import {
   ASSETS_PATHS,
   CONTACT_INFO,
   CREATOR_INFO,
-  LEGAL_INFO,
   GAME_INFO,
 } from "@/lib/constants";
 
@@ -1033,7 +1032,7 @@ export default function MapPage() {
                         d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
                       />
                     </svg>
-                    <span>Changelog</span>
+                    <span>{tn("changelog")}</span>
                   </button>
 
                   <div className="h-px bg-line/20 my-1"></div>
@@ -1174,7 +1173,7 @@ export default function MapPage() {
           <div className="flex items-center space-x-4 text-sm">
             <div className="flex items-center space-x-2">
               <div className="w-2 h-2 bg-gold rounded-full"></div>
-              <span className="text-parch/85">Carte active</span>
+              <span className="text-parch/85">{t("activeMap")}</span>
             </div>
             <div className="flex items-center space-x-2">
               <svg

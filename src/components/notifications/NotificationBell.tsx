@@ -112,7 +112,7 @@ export function NotificationBell() {
 
       <div className="absolute right-0 top-full z-[90] mt-2 w-80 max-w-[calc(100vw-2rem)] overflow-hidden border border-line/25 bg-panel shadow-[0_18px_44px_rgba(0,0,0,0.65)]">
         <div className="flex items-center justify-between border-b border-line/20 px-3 py-2.5">
-          <span className="font-caps text-[0.6rem] uppercase tracking-[0.18em] text-gold">Notifications</span>
+          <span className="font-caps text-[0.6rem] uppercase tracking-[0.18em] text-gold">{tc("notifications")}</span>
           {items.length > 0 ? (
             <button
               type="button"

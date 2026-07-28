@@ -78,7 +78,7 @@
     "archive": "아카이브",
     "withArchive": "아카이브 있음",
     "withoutArchive": "아카이브 없음",
-    "new": "NEW",
+    "new": "신규",
     "expired": "만료됨",
     "version": "버전",
     "disclaimer": "면책 조항",
@@ -108,7 +108,21 @@
     "category": "카테고리",
     "clickToEnlarge": "클릭하여 확대",
     "error": "오류",
-    "goToCard": "{index}번 카드로 이동"
+    "goToCard": "{index}번 카드로 이동",
+    "elements": {
+      "fire": "화염",
+      "water": "물",
+      "thunder": "번개",
+      "wind": "바람",
+      "light": "빛",
+      "dark": "어둠"
+    },
+    "language": "언어",
+    "remove": "제거",
+    "decrease": "감소",
+    "increase": "증가",
+    "notifications": "알림",
+    "premium": "프리미엄"
   },
   "legal": {
     "copyright": "© 2025 {siteName}. {creator}가 ❤️를 담아 제작",
@@ -177,7 +191,7 @@
     "newMapsV14Title": "새 맵 5개 추가!",
     "newMapsV14Details": "Bloomfield Station, Ironworks, Outer Peaks, Taixu Mausoleum, Youlai Alley",
     "newMapsV14Cta": "Bloomfield 탐험",
-    "badgeNew": "NEW"
+    "badgeNew": "신규"
   },
   "newCharacters": {
     "badge": "새 캐릭터",
@@ -246,7 +260,8 @@
     "mapAlt": "{region} 지역 인터랙티브 맵. 모든 마커, 상자, 주요 지점 표시.",
     "categoryIconAlt": "{name} 아이콘 — 인터랙티브 맵 마커 카테고리",
     "markerIconAlt": "{name} 아이콘 — 인터랙티브 맵 마커",
-    "loadingMarkers": "마커를 불러오는 중..."
+    "loadingMarkers": "마커를 불러오는 중...",
+    "activeMap": "현재 지도"
   },
   "mapInfo": {
     "title": "맵 정보",
@@ -283,7 +298,15 @@
   },
   "changelog": {
     "title": "업데이트 내역",
-    "description": "변경 및 개선 이력"
+    "description": "변경 및 개선 이력",
+    "eyebrow": "업데이트 기록",
+    "types": {
+      "feature": "새 기능",
+      "security": "보안",
+      "update": "업데이트",
+      "fix": "수정",
+      "enhancement": "개선"
+    }
   },
   "about": {
     "title": "{siteName} 소개",
@@ -424,7 +447,7 @@
     "statDEF": "방어력",
     "statMaxHp": "최대 HP",
     "statMaxES": "실드",
-    "statMaxSp": "Lucidity",
+    "statMaxSp": "명료도",
     "statSkillIntensity": "강도",
     "statSkillEfficiency": "효율",
     "statSkillSustain": "지속력",
@@ -497,7 +520,16 @@
     "statMaxSpLong": "최대 루시디티",
     "quickBuild": "퀵 빌드",
     "quickBuildOf": "퀵 빌드 — {name}",
-    "ascensionTiers": "돌파 단계"
+    "ascensionTiers": "돌파 단계",
+    "zoomLabel": "확대",
+    "zoomTitle": "확대(휠)",
+    "levelShort": "Lv.",
+    "factionOrg": "세력 / 조직",
+    "originNation": "출신 / 국가",
+    "gender": "성별",
+    "textKeysTitle": "텍스트 키",
+    "technicalDataTitle": "기술 데이터",
+    "campKey": "진영 키"
   },
   "items": {
     "libraryLabel": "아이템 라이브러리",
@@ -526,11 +558,12 @@
     "sortRarityAsc": "레어리티 오름차순",
     "sortRarityDesc": "레어리티 내림차순",
     "zoomIcon": "아이템 {id}의 아이콘 확대",
-    "newBadge": "NEW",
+    "newBadge": "신규",
     "newOnly": "신규만",
     "calamityOnly": "재앙 무기만 표시",
     "calamityWeapon": "재앙 무기",
-    "potentialTree": "잠재력 트리"
+    "potentialTree": "잠재력 트리",
+    "draftSampleAlt": "제작 설계도 아이콘 예시"
   },
   "itemDetail": {
     "weaponBuildTitle": "추천 데몬 웻지 빌드",
@@ -563,7 +596,20 @@
     "noResolvedAttributes": "확인된 속성이 감지되지 않았습니다.",
     "archiveName": "아카이브 이름",
     "maxLevelExp": "최대 레벨 EXP",
-    "totalExpToMax": "최대 레벨까지 총 EXP"
+    "totalExpToMax": "최대 레벨까지 총 EXP",
+    "fieldColumn": "항목",
+    "valueColumn": "값",
+    "technicalSubtype": "기술 하위 유형",
+    "variantsTitle": "변종",
+    "descriptionTitle": "설명",
+    "localizedInfoTitle": "현지화 정보",
+    "functionLabel": "기능 레이블",
+    "resourceType": "자원 종류",
+    "ascensionTiers": "돌파 단계",
+    "ascensionSteps": "돌파 과정",
+    "textKeysTitle": "텍스트 키",
+    "technicalTitle": "기술 데이터",
+    "relatedDraftsTitle": "연관 설계도"
   },
   "drafts": {
     "headerLabel": "제작 설계도",
@@ -580,7 +626,8 @@
     "sortDurationDesc": "시간 내림차순",
     "noResults": "현재 필터에 맞는 설계도가 없습니다.",
     "noResultsHint": "필터 또는 검색을 조정하세요.",
-    "zoomDraftIcon": "설계도 {id}의 아이콘 확대"
+    "zoomDraftIcon": "설계도 {id}의 아이콘 확대",
+    "recipeLabel": "레시피"
   },
   "draftDetail": {
     "productLabel": "제품 {type} x{quantity}",
@@ -599,7 +646,11 @@
     "weaponMaxLevel": "무기 최대 레벨",
     "weaponValue": "무기 가치",
     "forgeCost": "제작 비용",
-    "noExplicitCost": "이 설계도에는 명시적 비용이 없습니다."
+    "noExplicitCost": "이 설계도에는 명시적 비용이 없습니다.",
+    "productTypeLabel": "결과물 종류",
+    "ingredientsLabel": "재료",
+    "expReward": "획득 EXP",
+    "requiredComponents": "필요 재료"
   },
   "gameInfo": {
     "name": "Duet Night Abyss",
@@ -661,16 +712,16 @@
     "characterOgAlt": "캐릭터 — DNA Interactive"
   },
   "commissions": {
-    "eyebrow": "Covert Commissions",
+    "eyebrow": "은밀한 커미션",
     "title": "Covert Commissions",
-    "description": "Live rotation of the regional commissions — Character, Weapon and Demon Wedge. The board updates on every refresh.",
-    "nextRefresh": "Next refresh",
-    "lastUpdated": "Updated {time}",
-    "syncing": "Syncing…",
-    "fallbackNotice": "Rotations will be available shortly.",
-    "utcNote": "Commissions rotate at the start of every hour; times shown in your local timezone.",
-    "nextAt": "at {time} your time",
-    "unavailable": "Temporarily unavailable"
+    "description": "지역 커미션의 실시간 로테이션 — 캐릭터, 무기, Demon Wedge. 새로고침할 때마다 보드가 갱신됩니다.",
+    "nextRefresh": "다음 갱신",
+    "lastUpdated": "{time} 갱신",
+    "syncing": "동기화 중…",
+    "fallbackNotice": "로테이션은 곧 제공됩니다.",
+    "utcNote": "커미션은 매시 정각에 교체되며, 시간은 현지 시간대로 표시됩니다.",
+    "nextAt": "현지 시간 {time}",
+    "unavailable": "일시적으로 이용할 수 없음"
   },
   "builder": {
     "weaponWedgesToggle": "무기의 데몬 웻지 설정",
@@ -858,7 +909,8 @@
     "pageLibraryTitle": "빌드 라이브러리",
     "pageLibraryDescription": "커뮤니티가 공유한 빌드를 둘러보고 전체 정보를 확인하거나 시작점으로 사용하세요.",
     "pageCreateBuild": "빌드 만들기",
-    "reportReasonTooShort": "조금 더 구체적인 사유를 입력해 주세요."
+    "reportReasonTooShort": "조금 더 구체적인 사유를 입력해 주세요.",
+    "deleteFailed": "삭제할 수 없습니다."
   },
   "account": {
     "metaTitle": "프로필 - DNA Interactive",
@@ -1095,7 +1147,8 @@
   "exportModal": {
     "title": "마커 내보내기",
     "fileFormat": "파일 형식",
-    "structuredHint": "구조화된 형식으로 다시 가져오기 쉬움"
+    "structuredHint": "구조화된 형식으로 다시 가져오기 쉬움",
+    "csvHint": "스프레드시트 형식, Excel 호환"
   },
   "notFound": {
     "description": "찾으시는 페이지가 존재하지 않거나 이동되었습니다.",
@@ -1109,5 +1162,459 @@
     "griffinDraftAlt": "Griffin 제작 설계도",
     "typhonDraftAlt": "Typhon 제작 설계도",
     "yuliKatanaAlt": "율리의 카타나"
+  },
+  "itemsAbout": {
+    "guideBadge": "Demon Wedge 가이드",
+    "title": "Demon Wedge 작동 방식",
+    "intro": "게임 내 일부 데이터에서는 Demon Wedge가 기술 명칭인 <mod>MOD</mod>로 표시되기도 합니다. 이 페이지에서는 사이트에서 사용하는 주요 항목(레벨, 친화성, 허용치, 동적 효과, 에셋 매핑)을 설명합니다.",
+    "badgeLevels": "레벨 0 → MaxLevel",
+    "badgeTolerance": "허용치 = Cost + Level × CostChange",
+    "badgeTranslations": "번역 KR/EN/…",
+    "badgeReference": "게임플레이 참고 정보",
+    "showcaseTitle": "Demon Wedge 비주얼 모음",
+    "showcaseDescription": "목록과 상세 페이지에서 사용되는 Demon Wedge 아이콘 예시입니다. 한눈에 Demon Wedge를 알아볼 수 있게 하는 것이 목적입니다.",
+    "showcaseIconSublabel": "Demon Wedge 아이콘 예시",
+    "readTitle": "3가지 단서로 읽기",
+    "readStep1Title": "1) 메인 아이콘",
+    "readStep1Text": "목록에서 Demon Wedge를 식별할 수 있습니다.",
+    "readStep2Title": "2) 친화성 / 극성",
+    "readStep2Text": "이름 옆의 기호가 Demon Wedge의 친화성 유형을 나타냅니다.",
+    "readStep3Title": "3) 활성 레벨",
+    "readStep3Text": "상세 페이지의 슬라이더로 동적 값 #1, #2, #3이 변합니다.",
+    "structureTitle": "1) Demon Wedge의 구조",
+    "structureItem1": "모든 Demon Wedge에는 이름, 설명, 등급, 친화성, 최대 레벨이 있습니다.",
+    "structureItem2": "게임에 표시되는 이름은 <c>Demon Wedge</c>입니다. <c>MOD</c>는 주로 일부 내부 데이터에서 쓰이는 기술 용어입니다.",
+    "structureItem3": "텍스트(이름, 설명, 패시브 효과)는 선택한 언어에 따라 달라집니다.",
+    "structureItem4": "사이트는 이 정보를 JSON으로 제공하여 필터링, 언어 비교, 상세 열람이 가능합니다.",
+    "affinityTitle": "친화성, 극성, 호환 유형",
+    "affinityDescription": "상세 페이지는 여러 시각적 단서를 조합합니다. 극성 기호, 원소 친화성, 캐릭터/무기 유형의 호환 태그입니다.",
+    "polarityLabel": "극성",
+    "polarityItem": "극성 {num}",
+    "affinityElementalLabel": "원소 친화성",
+    "typeCompatLabel": "호환 유형",
+    "typeCompat": {
+      "character": "캐릭터",
+      "melee": "근접",
+      "ranged": "원거리",
+      "meleeUltra": "근접 울트라",
+      "rangedUltra": "원거리 울트라"
+    },
+    "levelsTitle": "2) 레벨과 동적 값",
+    "levelsText": "<c>#1</c>, <c>#2</c> 등의 값은 Demon Wedge의 레벨에 따라 달라집니다. 상세 페이지의 슬라이더는 성장 테이블에서 이 값을 적용해 선택한 레벨의 효과를 표시합니다.",
+    "levelsDefault": "기본 레벨 = <c>0</c>(미강화 부품)",
+    "levelsMax": "최대 레벨 = <c>MaxLevel</c>",
+    "toleranceTitle": "3) 허용치 / 비용",
+    "toleranceText": "표시되는 허용치는 레벨에 따라 변합니다. 데이터에 공개된 계산식은 다음과 같습니다:",
+    "toleranceNote": "사이트는 레벨별 값을 미리 계산해 <c>tolerance.valuesByLevel</c>에 저장합니다.",
+    "multilangTitle": "4) 다국어",
+    "multilangText": "목록에서는 여러 언어를 동시에 표시해 이름을 비교할 수 있습니다. 상세에서는 하나의 언어를 선택해 URL로 공유할 수 있습니다.",
+    "multilangNote": "현재 사용 가능한 언어는 카테고리별로 불러온 데이터셋에 따라 달라집니다.",
+    "displayTitle": "5) 사이트가 표시하는 정보",
+    "displayItem1": "Demon Wedge 기본 정보(이름, 등급, 기능, 설명)",
+    "displayItem2": "슬라이더를 통한 레벨별 변화",
+    "displayItem3": "친화성 및 연결된 아이콘",
+    "displayItem4": "빠른 비교를 위한 다국어 이름",
+    "displayItem5": "검색, 필터, 즐겨찾기, 페이지 이동",
+    "quickTitle": "사이트에서 Demon Wedge 빠르게 읽기",
+    "quickText": "보는 순서는 항상 같습니다. 아이콘을 식별하고, 친화성을 확인한 뒤, 레벨을 조정해 동적 효과를 확인합니다.",
+    "stepLabel": "{num}단계",
+    "step1Title": "Demon Wedge 식별하기",
+    "step1Line1": "이름 + 아이콘",
+    "step1Line2": "목록에서 바로 확인",
+    "step2Title": "친화성과 유형 확인하기",
+    "step3Title": "레벨 조정하기",
+    "step3Line1": "#1 / #2 / #3이 갱신됩니다",
+    "step3Line2": "레벨 슬라이더에 따라",
+    "step3Note": "레벨 0 = 미강화 기본값",
+    "altPhoenixExample": "Demon Wedge Phoenix 예시",
+    "altAffinityFire": "화염 친화성",
+    "altCompatRanged": "원거리 호환",
+    "nextTitle": "다음에 할 수 있는 것",
+    "nextText": "목록에서 빠르게 필터링하고 비교한 뒤, 아이템을 열어 동적 값, 레벨별 허용치, 친화성을 확인해 보세요.",
+    "nextOpenGrid": "Demon Wedge 목록 열기",
+    "nextFavorites": "내 즐겨찾기 보기",
+    "genericTitle": "{category} 가이드",
+    "genericText": "이 카테고리는 상세 설명 페이지를 추가할 준비가 되어 있습니다. 새로운 아이템 계열마다 규칙, 공식, 비주얼을 더할 수 있는 구조가 이미 마련되어 있습니다.",
+    "metaModsDescription": "Demon Wedge의 작동 방식 이해하기: 레벨, 친화성, 허용치, 번역, 효과 읽는 법.",
+    "metaGenericDescription": "{category}의 작동 방식 이해하기: 레벨, 친화성, 허용치, 번역, 효과 읽는 법.",
+    "metaFallbackTitle": "아이템 가이드",
+    "metaFallbackDescription": "Duet Night Abyss 아이템 카테고리 문서."
+  },
+  "calamityGuide": {
+    "backToWeapons": "무기 목록으로 돌아가기",
+    "badge": "재앙 무기 가이드",
+    "eyebrow": "HyperWeapon / 재앙 융합",
+    "title": "재앙 무기 이해하기",
+    "intro": "게임 데이터에서 재앙 무기는 기술 하위 유형이 <c>Hyper</c>인 무기를 말합니다. 0에서 5까지의 재앙 융합 진행과 무기 잠재력을 지니며, 엄격한 규칙이 있습니다. 잠재력은 캐릭터가 해당 무기 유형을 숙련한 경우에만 작동합니다.",
+    "catalogLabel": "카탈로그",
+    "catalogCount": "로컬 무기 {total}개 중 Hyper 무기",
+    "fusionLabel": "융합",
+    "fusionTiers": "HyperWeaponCardLevel이 제공하는 단계",
+    "badgeOnePerCharacter": "캐릭터당 재앙 무기 최대 1개",
+    "badgePotentialOnly": "잠재력은 전용 무기에서만 활성화",
+    "badgeSeparateBuilds": "무기용 Demon Wedge 빌드는 별도",
+    "arsenalLabel": "재앙 무기고",
+    "activeSheetLabel": "선택된 무기",
+    "noDescription": "현재 추출 데이터에 현지화된 설명이 없습니다.",
+    "openFullSheet": "상세 페이지 열기",
+    "statAtk": "공격력",
+    "statAtkType": "공격 유형",
+    "statCritRate": "치명타 확률",
+    "statCritDamage": "치명타 피해",
+    "tierLabel": "{label} 단계",
+    "unlockedPotentials": "해금된 알려진 잠재력:",
+    "notDetailed": "내보내기에 상세 정보 없음",
+    "potentialsLabel": "잠재력 · {name}",
+    "adjustHint": "융합 트랙({label} 단계)을 조정해 잠금 / 해제",
+    "fusionSteps": {
+      "0": {
+        "label": "기본",
+        "title": "무기 획득",
+        "body": "무기를 장착할 수 있고 기본 잠재력도 존재하지만, 제작 경로는 아직 강화되지 않았습니다."
+      },
+      "1": {
+        "title": "재앙 용광로 I",
+        "body": "재앙 융합의 첫 단계입니다. 이때부터 비용에 해당 무기의 프로토타입이 사용됩니다."
+      },
+      "2": {
+        "title": "재앙 용광로 II",
+        "body": "경로에 HyperWeaponSkillTree와 연결된 잠재력이나 스탯 보너스가 추가됩니다."
+      },
+      "3": {
+        "title": "재앙 용광로 III",
+        "body": "잠재력 분기가 진행됩니다. 효과는 여전히 캐릭터의 전용 무기에 좌우됩니다."
+      },
+      "4": {
+        "title": "재앙 용광로 IV",
+        "body": "전체 용광로 레벨이 뒷받침되면 큰 분기 보너스를 사용할 수 있습니다."
+      },
+      "5": {
+        "title": "재앙 용광로 V",
+        "body": "로컬 테이블이 현재 제공하는 마지막 단계: 최대 융합 레벨 5."
+      }
+    },
+    "atkTypes": {
+      "Psionic": "사이오닉",
+      "Smash": "타격",
+      "Spike": "관통",
+      "Slash": "참격"
+    },
+    "factFusionTitle": "재앙 융합",
+    "factFusionBody": "재앙 융합은 무기의 융합 레벨을 올립니다. 로컬 테이블은 <c>HyperWeaponCardLevel</c>을 통해 1~5단계를 제공합니다.",
+    "factPotentialTitle": "무기 잠재력",
+    "factPotentialBody": "잠재력은 융합으로 해금됩니다. 게임 텍스트에 따르면 무기 유형이 캐릭터의 전용 무기와 일치할 때만 효과가 발생합니다.",
+    "factLimitTitle": "장착 제한",
+    "factLimitBody": "UI 텍스트에 따르면 캐릭터는 한 번에 하나의 재앙 무기만 장착할 수 있습니다.",
+    "factNotConsonanceTitle": "Consonance가 아님",
+    "factNotConsonanceBody": "재앙 무기는 <c>Hyper</c> 무기입니다. Demon Wedge의 <c>*Ultra</c> 키는 Consonance 무기에 해당합니다.",
+    "costLabel": "선택한 단계의 비용",
+    "costText": "아래 비용은 <c>HyperWeaponCardLevel</c> 테이블에서 가져온 것입니다. 강철 무기는 현재 로컬 데이터에서 최소한의 Phoxene 비용만 공개됩니다.",
+    "costNoneTier0": "0단계에는 융합 비용이 없습니다.",
+    "costNotExposed": "현재 추출 데이터에 이 단계의 비용이 없습니다.",
+    "materialId": "ID {id}",
+    "wedgesLabel": "연결된 Demon Wedge",
+    "wedgesText": "사이트의 무기 페이지에는 대표적인 Demon Wedge 빌드가 표시될 수 있습니다. <n>{name}</n>의 경우 호환 풀은 <c>{poolKey}</c>, 즉 {poolLabel}입니다.",
+    "poolMelee": "근접",
+    "poolRanged": "원거리",
+    "poolConsonanceMelee": "근접 Consonance",
+    "poolConsonanceRanged": "원거리 Consonance",
+    "dataLabel": "로컬 데이터 읽기",
+    "dataWeaponTitle": "Weapon",
+    "dataWeaponBody": "<c>WeaponSubType = Hyper</c>가 재앙 무기를 식별합니다. 이 페이지에서 사용하는 판별 기준입니다.",
+    "dataBattleWeaponTitle": "BattleWeapon",
+    "dataBattleWeaponBody": "전투 스탯은 <c>BattleWeapon</c>에서 옵니다: 공격력, 공격 유형, 치명타, 잠재력 관련 보너스.",
+    "dataSkillTreeTitle": "SkillTree",
+    "dataSkillTreeBody": "<c>HyperWeaponSkillTree</c>는 '영원한 분쟁'과 '가시의 진혼곡'에 대해 알려진 잠재력 분기를 설명합니다.",
+    "dataCardLevelTitle": "CardLevel",
+    "dataCardLevelBody": "<c>HyperWeaponCardLevel</c>은 융합 단계, 용광로 조건, 필요 자원을 제공합니다.",
+    "naValue": "N/A",
+    "meleeWeapons": "근접 무기",
+    "rangedWeapons": "원거리 무기",
+    "unknownType": "알 수 없는 유형",
+    "wedgePoolMelee": "근접 무기용 Demon Wedge",
+    "wedgePoolRanged": "원거리 무기용 Demon Wedge",
+    "fallbackResource": "자원 #{id}",
+    "fallbackWeapon": "무기 #{id}",
+    "fallbackSlot": "슬롯 {position}",
+    "phoxeneNote": "이 강철 무기에 대해 로컬 테이블이 현재 공개하는 최소 비용입니다.",
+    "metaTitle": "재앙 무기 가이드",
+    "metaDescription": "Duet Night Abyss의 재앙 무기 이해하기: 재앙 융합, 무기 잠재력, 숙련 조건, Demon Wedge 빌드."
+  },
+  "changelogEntries": {
+    "v2_2_0": {
+      "title": "새로운 인터페이스: 모든 것을 모은, 더 명확하고 생동감 있는 홈",
+      "description": "사이트 인터페이스를 전면 개편해 더 읽기 쉽고, 더 쾌적하며, 더 빠르게 둘러볼 수 있게 했습니다. 모든 도구를 한곳에 모은 새 홈, 언제나 손이 닿는 사이드 메뉴, 그리고 PC와 모바일 모두에서 화면 전체를 활용하는 페이지 구성입니다.",
+      "items": [
+        "🏠 한눈에 모든 것을 보여주는 새 '허브' 홈: 지도, 캐릭터, 데이터베이스, 빌더, 빌드, 코드, 도구",
+        "📋 항상 사용할 수 있는 사이드 메뉴로 한 번의 클릭에 섹션 이동 — 넓게 쓰고 싶을 때 접을 수 있고, 설정은 기억됩니다",
+        "🖥️ 모든 페이지를 화면 전체를 쓰도록 재설계: 더 여유롭고, 읽기 쉽고, 빈 공간이 줄었습니다",
+        "🎁 홈에서 바로 보이는 선물 코드 미리보기, 클릭 한 번으로 복사",
+        "🗂️ 커뮤니티의 인기 빌드를 홈에서 바로 소개",
+        "📅 진행 중인 콘텐츠를 확인하는 이벤트 캘린더(미리보기)",
+        "📱 처음부터 끝까지 모바일을 고려한 내비게이션",
+        "✨ 사이트 전체에 걸쳐 더 정돈되고 일관된 디자인"
+      ]
+    },
+    "v2_1_0": {
+      "title": "커뮤니티 빌드 빌더: 만들고, 공유하고, 투표하세요",
+      "description": "새로운 커뮤니티 기능: 나만의 빌드(캐릭터, Demon Wedge, Genimon, 무기, 스킬, 팀)를 구성하고 Discord 계정으로 공개한 뒤, 다른 플레이어의 빌드를 살펴보고 투표할 수 있습니다. 65종 무기 전체의 Demon Wedge 빌드, 카드 공유, 그리고 접근성과 번역의 대폭 개선.",
+      "items": [
+        "🛠️ 새 빌더: 완전한 빌드(Demon Wedge, Genimon, 무기, 스킬, 3인 팀)를 구성하고 공개",
+        "🔐 공개와 투표를 위한 Discord 로그인, 캐릭터당 최대 3개 빌드",
+        "🌐 커뮤니티 허브 /builds: 검색, 필터(캐릭터, 원소, 태그), 정렬, 페이지 이동",
+        "📄 빌드마다 전용 공유 페이지(/builds/[id])",
+        "👍 커뮤니티 빌드의 투표와 순위",
+        "🏷️ 빌드 태그: 솔로, 팀, 보스, F2P, 엔드게임, 초보자",
+        "👥 추천 팀 선택(역할 포함 최대 3명)",
+        "🔗 빌드 공유: 자체 완결형 링크 + X / Facebook / Reddit + 네이티브 공유",
+        "🖼️ 빌드 카드 PNG 내보내기",
+        "🥇 커뮤니티 대안보다 상위에 놓이는 별도의 '공식' 등급",
+        "💾 하이브리드 임시 저장: 로컬에 저장한 뒤 로그인 시 서버와 병합",
+        "⚔️ 65종 무기 전체의 무기용 Demon Wedge 빌드. 무기 페이지에서 확인하고 빌드에 적용 가능(토글)",
+        "🎴 Demon Wedge에 마우스를 올리면 상세 툴팁 표시(이름, 등급, 원소)",
+        "🔗 필터 상태를 URL에 유지(공유 링크와 뒤로/앞으로 이동 지원)",
+        "♿ 접근성 강화: '동작 줄이기' 전역 지원, 포커스 표시, 대화 상자의 포커스 트랩, ARIA 레이블",
+        "📜 개인정보처리방침 / 이용약관 페이지와 계정 삭제(GDPR)"
+      ]
+    },
+    "v2_0_0": {
+      "title": "패치 1.4 Silver Torrent, Rising Star: Flora, Hilda, Bloomfield Station과 새 지도 5종",
+      "description": "공식 패치 'Silver Torrent, Rising Star'를 전면 반영: 새 캐릭터 2명(Flora, Hilda), Phoxhunter의 새 원소 Umbro, 스팀펑크 지역 Flodia Bloomfield Station, 인터랙티브 지도 5종, 배경화면 12종, 그리고 자동 만료되는 배너 시스템.",
+      "items": [
+        "🎮 패치 1.4.153 'Silver Torrent, Rising Star'까지의 게임 데이터를 전면 재추출",
+        "✨ Flora(Umbro) — 새롭게 소개하는 캐릭터, 검과 돌격소총을 사용",
+        "🔥 Hilda(Pyro) — 새 캐릭터, 쌍검과 유탄발사기를 사용(2026년 6월 30일 이후 등장)",
+        "🌑 Phoxhunter(플레이어 주인공)에게 새 원소 Umbro 해금, [Noctoyager 챕터 – Silver Torrent, Rising Star]를 통해",
+        "🚂 새 지역 Flodia Bloomfield Station(Bloomfield Station과 Ironworks 포함), Icelake의 스팀펑크 기차역",
+        "⚔️ 스킬 +27, Demon Wedge +18, 자원 +157, 새 카테고리 Calamity Weapons, 낚시 아이템 개편",
+        "🗺️ 새 인터랙티브 지도 5종: Bloomfield Station, Ironworks, Outer Peaks, Taixu Mausoleum, Youlai Alley",
+        "📍 13개 지도 전체에 걸쳐 boarhat.gg에서 마커 아이콘 1589개를 재동기화",
+        "🖼️ 새 월드뷰 배경화면 12종(패치 1.3에서 7종, 패치 1.4에서 5종)을 Ken Burns 연출에 추가",
+        "⚡ v1.3/v1.4 배경화면 최적화: 4K → 풀 HD 축소, WebP q70(용량 -73 %)",
+        "🌟 홈 캐러셀 재정렬: 새 배경화면이 먼저 표시됩니다",
+        "📢 패치 출시 4주 뒤 자동으로 만료되는 새 공지 배너 시스템(기록은 코드에 보존)",
+        "🎭 캐릭터 쇼케이스 재구성: Flora를 중심으로 Su Yi, 그리고 Phoxhunter의 두 가지 Umbro 형태",
+        "💾 추출 파이프라인 리팩터링: pak 저장과 FModel 내보내기를 외장 디스크로 옮겨 시스템 SSD 포화를 해소"
+      ]
+    },
+    "v1_9_0": {
+      "title": "빌드 카드, 스킬 탭, 커서 툴팁",
+      "description": "레벨 슬라이더가 있는 캐릭터별 새 스킬 탭, PNG로 내보낼 수 있는 빌드 카드, 그리고 데스크톱에서 커서를 따라다니는 툴팁 시스템.",
+      "items": [
+        "🎴 공유 가능한 새 빌드 카드(모달 + ?build=true 아코디언). 부드럽게 흐려지는 초상, 게임 내와 같은 Demon Wedge 배치, PNG 다운로드 지원",
+        "🃏 홈(Psyche)에서 빌드 카드 소개. #build-showcase 앵커와 히어로 배너의 티저 포함",
+        "⚔️ 완성된 스킬 탭: 이름, 설명, 매개변수, 구획, 전투 용어를 7개 언어로 제공",
+        "🎚️ 스킬 레벨 슬라이더(1~20). SkillGrow를 통해 레벨에 따른 수치를 실시간 재계산",
+        "🧩 빌드 카드의 인라인 스킬 아이콘과 추천 팀",
+        "🪄 새 컴포넌트 CursorTooltip: 데스크톱에서는 커서를 따라가고, 모바일에서는 탭으로 전환하며, body에 포털로 배치",
+        "🛡️ 빌드 카드의 무기, Genimon, Demon Wedge 슬롯(중앙 포함)에 커서 툴팁",
+        "🏷️ 추출 파이프라인 extract-skills.ts: Lua 파일 9개와 SkillGrow를 분석하고 #N 수식을 레벨마다 계산"
+      ]
+    },
+    "v1_8_0": {
+      "title": "다국어화, 캐릭터 쇼케이스, 지도 딥링크",
+      "description": "완전한 다국어 지원(7개 언어), 새로운 인터랙티브 v1.3 캐릭터 쇼케이스, 개선된 내비게이션을 포함한 대규모 개편.",
+      "items": [
+        "🌐 next-intl로 사이트 전체 다국어화: 7개 언어(FR, EN, DE, ES, JP, KR, TC)",
+        "🔍 브라우저 언어 자동 감지와 쿠키를 통한 선택 유지",
+        "🗂️ i18n 라우팅: 언어마다 고유한 URL(/fr/map, /en/characters 등)",
+        "🌏 사이트의 모든 페이지에 언어 선택기 추가",
+        "🎭 홈에 새로운 인터랙티브 v1.3 캐릭터 쇼케이스(Su Yi, Camilla, Yuming, Zhiliu)",
+        "🖼️ 전체 화면 아트워크, 아바타 선택기, 캐릭터별 그러데이션, 장식용 서예 문자",
+        "🔗 지도 딥링크: Haojing 배너가 해당 지도로 바로 이동(?mapId=haojing)",
+        "📐 지도 사이드바에서 링크가 줄바꿈되던 문제 수정",
+        "🖼️ 히어로 배너의 Ken Burns에 v1.3 이미지 추가",
+        "⚡ 개발 빌드 속도를 높이기 위한 turbopack.root 수정",
+        "🏷️ SEO: hreflang 태그, 현지화된 메타데이터, 다국어 사이트맵"
+      ]
+    },
+    "v1_7_0": {
+      "title": "게임 v1.3 업데이트와 Genimon 변종",
+      "description": "버전 1.3부터 게임 데이터를 전면 재추출하고, 새 캐릭터와 Genimon 변종 시스템을 추가했습니다.",
+      "items": [
+        "🔄 게임의 v1.3 pak에서 Lua 파일 1176개를 재추출",
+        "👤 Su Yi 추가(초상과 스킬을 갖춘 완성본), Flora 추가(데이터만, 아직 미출시)",
+        "🎭 Camilla 완성(스탯, 번역, 초상, 스킬)",
+        "🐾 Genimon 변종 시스템: 각 종이 자신의 변종을 상호 연결과 함께 표시",
+        "✨ Genimon의 이로치 변종에 금색 프리미엄 배지",
+        "🎣 동부 지역(Haojing)의 새 물고기 추가",
+        "📦 모든 아이템, 모드, 자원을 v1.3 데이터로 갱신",
+        "🌐 스페인어 번역 수정(Hyperboreano → Hiporboreo)"
+      ]
+    },
+    "v1_6_0": {
+      "title": "새 지도 Haojing(패치 1.3)",
+      "description": "마커 143개가 있는 Haojing 지도를 추가하고 지도 데이터 로딩을 크게 최적화했습니다.",
+      "items": [
+        "🗺️ 새 지도 Haojing 추가(8번째 지역), 마커 143개와 카테고리 6종",
+        "⚡ 데이터 구조 개편: 하나의 거대한 파일 대신 지도별 온디맨드 로딩",
+        "📦 초기 전송량 약 75 % 감소(439 KB에서 인덱스 54 KB + 지도 1개로)",
+        "🔧 따옴표가 포함된 이름을 처리하도록 boarhat.gg 파서 수정",
+        "🏠 홈에 Haojing용 새 v1.3 배너"
+      ]
+    },
+    "v1_5_0": {
+      "title": "캐릭터 빌드",
+      "description": "플레이 가능한 22명 캐릭터를 위한 추천 빌드 체계. Consonance 무기와 트랙 조정을 포함합니다.",
+      "items": [
+        "🎮 추천 장비와 Demon Wedge를 갖춘 캐릭터 빌드 21개 추가",
+        "⚔️ 게임 데이터에서 Consonance 무기를 추출해 표시",
+        "🎚️ 트랙 조정(Track Adjustments)을 토글과 아이콘으로 제공",
+        "🎨 Intron 탭 재설계: 떠 있는 원과 스킬 우선순위 적용",
+        "🌈 캐릭터 상세 페이지에 원소별 앰비언트 그러데이션",
+        "🖼️ 속성 탭에 스킬 아이콘 추가",
+        "💡 빌드 장비에 대한 상세 툴팁"
+      ]
+    },
+    "v1_4_0": {
+      "title": "캐릭터 도감과 낚시",
+      "description": "상세한 스탯을 갖춘 플레이 가능 캐릭터 전체 도감과 아이템의 낚시 카테고리를 추가했습니다.",
+      "items": [
+        "👤 모든 플레이 가능 캐릭터의 도감과 상세 페이지",
+        "📊 레벨별 스탯(성장 곡선과 계산식 포함)",
+        "🎣 게임 데이터에서 추출한 아이템으로 구성된 새 낚시 카테고리",
+        "🐾 Genimon 패시브의 동적 수치 수정",
+        "🌐 아이템 카테고리별로 문맥에 맞춘 텍스트 키 레이블"
+      ]
+    },
+    "v1_3_0": {
+      "title": "아이템: 제작 설계도(Drafts)와 무기",
+      "description": "제작 설계도와 그 레시피, 관련 무기를 살펴볼 수 있는 섹션을 새로 만들고 카테고리 간 이동을 명확히 했습니다.",
+      "items": [
+        "🧩 필터, 검색, 페이지 이동을 갖춘 새 Drafts 카테고리",
+        "🌳 레시피(결과물 + 재료)를 시각화하는 새 Draft 상세 페이지",
+        "🛠️ 레시피 데이터와 무기 데이터의 추출 및 통합",
+        "🖼️ 아이콘 리소스(설계도, 무기, 무기 종류, 장신구)를 사이트에 추가",
+        "🔗 Drafts와 무기 페이지를 연결해 이동을 수월하게",
+        "✏️ 카테고리 표기 수정: Armes / Arm → Armes / Weapons",
+        "📣 홈 배너(지도 + 아이템)의 닫힘 상태 유지",
+        "🎯 아이템 페이지로 이동하는 새 유도 카드를 홈에 추가"
+      ]
+    },
+    "v1_2_1": {
+      "title": "새 마커 및 SEO 최적화",
+      "description": "빠져 있던 마커, 특히 Taixu Runes를 추가하고 리소스를 전면 로컬 호스팅으로 전환했습니다.",
+      "items": [
+        "🆕 모든 지도에서 누락된 마커 추가",
+        "✨ 빠져 있던 Taixu Runes 마커 추가",
+        "🗺️ 모든 지도 이미지를 내려받아 로컬에 호스팅",
+        "🎨 모든 아이콘을 내려받아 로컬에 호스팅",
+        "🔧 모든 외부 URL을 로컬 경로로 자동 변환",
+        "✅ 기존 지도에서 URL 111개를 자동 수정",
+        "💾 이제 모든 리소스는 /assets/ 아래에 로컬로 호스팅됩니다"
+      ]
+    },
+    "v1_2_0": {
+      "title": "reCAPTCHA와 Zod를 적용한 안전한 문의 양식",
+      "description": "고급 스팸 방지 기능을 갖춘 문의 양식을 안전하게 전면 구현했습니다.",
+      "items": [
+        "📧 양식을 안전하게 처리하는 완전한 API 엔드포인트",
+        "🔒 봇 방지를 위한 reCAPTCHA v3 연동(점수 0.7 이상)",
+        "🛡️ 자동 정제와 타입 안전성을 갖춘 Zod v4.3.5 검증",
+        "📮 전문적인 HTML 메일을 지원하는 안전한 SMTP 설정",
+        "⏱️ DoS 방지: 30초 제한 시간 + 10 KB 제한 + 요청 속도 제한",
+        "🔐 완전한 보안 헤더(XSS, 프레이밍, content-type)",
+        "✨ 개선된 UX: 로딩 상태, 상황에 맞는 오류 메시지",
+        "🧹 엄격한 정제: 이름 정규식, RFC를 준수하는 이메일 검증",
+        "🎯 제목 열거형 검증과 인젝션 방지",
+        "📊 모니터링과 보안 감사를 위한 상세 로그"
+      ]
+    },
+    "v1_1_1": {
+      "title": "지도 개선과 투명성",
+      "description": "기존의 모든 지도에 이미지를 추가하고 새 정보 창을 마련했습니다.",
+      "items": [
+        "📸 기존의 모든 지도에 설명 이미지 878장 추가",
+        "📊 상세 통계를 담은 새 지도 정보 창",
+        "ℹ️ 버전, 업데이트 날짜, 전체 통계 표시",
+        "📋 홈과 정보 창에 면책 조항 추가",
+        "🔧 새 이미지를 감지하도록 업데이트 스크립트 개선",
+        "✨ 개별 지도 정보를 담아 인터페이스 개선"
+      ]
+    },
+    "v1_1_0": {
+      "title": "버전 1.1 — 새 지도 Huaxu",
+      "description": "마커 371개가 있는 새 지도 Huaxu를 추가하고 설명 이미지를 지원합니다.",
+      "items": [
+        "🆕 새 지도 Huaxu 추가(7번째 지역)",
+        "📸 마커의 설명 이미지 지원",
+        "🔍 확대, 회전, 내려받기가 가능한 이미지 확대 창",
+        "🎨 홈에 애니메이션 업데이트 배너",
+        "👥 Velkaine(Twitch)와 위키 링크를 담은 커뮤니티 섹션",
+        "📋 만료된 코드 처리를 포함한 교환 코드 갱신",
+        "🔧 boarhat.gg에서 지도를 갱신하는 자동 스크립트"
+      ]
+    },
+    "v1_0_1": {
+      "title": "교환 코드 개선",
+      "description": "사용 가능한 코드와 만료된 코드를 시각적 표시와 함께 분리했습니다.",
+      "items": [
+        "✅ 새로 사용 가능한 코드를 먼저 표시",
+        "⏰ 기한이 있는 코드에 만료 배지",
+        "❌ 만료된 코드 전용 섹션",
+        "🔄 코드의 정기적인 갱신",
+        "📊 사용 가능 코드와 만료 코드 카운터"
+      ]
+    },
+    "v1_0_0": {
+      "title": "Next.js 업데이트",
+      "description": "더 나은 성능을 위해 Next.js 16.0.7로 이전했습니다.",
+      "items": [
+        "⚡ Next.js 16.0.7",
+        "🚀 성능 개선"
+      ]
+    },
+    "v0_9_0": {
+      "title": "인터랙티브 지도 개선",
+      "description": "더 나은 사용 경험을 위한 새 기능.",
+      "items": [
+        "📁 사이드바에서 카테고리 그룹화",
+        "📏 사이드바 크기 조절",
+        "💾 선택한 지도 유지",
+        "🎨 사용자 지정 스크롤바 스타일",
+        "✨ Framer Motion을 활용한 애니메이션"
+      ]
+    }
+  },
+  "apiErrors": {
+    "signInRequired": "로그인이 필요합니다.",
+    "invalidRequest": "잘못된 요청입니다.",
+    "invalidData": "잘못된 데이터입니다.",
+    "tooManyAttempts": "시도 횟수가 너무 많습니다. 잠시 후 다시 시도해 주세요.",
+    "tooManyRequests": "요청이 너무 많습니다. 잠시 후 다시 시도해 주세요.",
+    "tooManySaves": "저장 횟수가 너무 많습니다. 잠시 후 다시 시도해 주세요.",
+    "tooManyMessages": "메시지를 너무 많이 보냈습니다. 잠시 후 다시 시도해 주세요.",
+    "tooManyPublications": "게시 횟수가 너무 많습니다. 잠시 후 다시 시도해 주세요.",
+    "tooManyVotes": "투표가 너무 많습니다. 잠시 후 다시 시도해 주세요.",
+    "tooManyReports": "신고가 너무 많습니다. 잠시 후 다시 시도해 주세요.",
+    "characterIdRequired": "characterId는 필수입니다.",
+    "buildNotFound": "빌드를 찾을 수 없습니다.",
+    "actionForbidden": "허용되지 않은 작업입니다.",
+    "buildLimitReached": "한도에 도달했습니다: 캐릭터당 공개 빌드는 최대 {max}개입니다.",
+    "buildsPublishDisabled": "빌드 공개가 일시적으로 중단되었습니다.",
+    "cannotReportOwnBuild": "자신의 빌드는 신고할 수 없습니다.",
+    "signupsClosed": "현재 회원가입이 중단되었습니다.",
+    "emailAlreadyUsed": "이미 사용 중인 이메일입니다. 로그인하거나 비밀번호를 재설정해 주세요.",
+    "resetLinkInvalid": "링크가 유효하지 않거나 만료되었습니다. 재설정을 다시 요청해 주세요.",
+    "noEmailOnAccount": "이 계정에는 이메일 주소가 없어 비밀번호를 설정할 수 없습니다.",
+    "cannotUnlink": "연결을 해제할 수 없습니다. 먼저 비밀번호를 설정하거나 다른 계정을 연결해 주세요.",
+    "payloadTooLarge": "요청이 너무 큽니다.",
+    "recaptchaFailed": "reCAPTCHA 확인에 실패했습니다.",
+    "smtpIncomplete": "SMTP 설정이 완전하지 않습니다.",
+    "contactSendFailed": "메시지를 보내는 중 오류가 발생했습니다.",
+    "contactSendSuccess": "메시지를 보냈습니다.",
+    "nameTooShort": "이름은 2자 이상이어야 합니다.",
+    "nameTooLong": "이름은 100자를 넘을 수 없습니다.",
+    "emailInvalid": "이메일 주소가 올바르지 않습니다.",
+    "emailTooLong": "이메일 주소가 너무 깁니다.",
+    "messageTooShort": "메시지는 10자 이상이어야 합니다.",
+    "messageTooLong": "메시지는 5000자를 넘을 수 없습니다.",
+    "recaptchaMissing": "reCAPTCHA 토큰이 없습니다.",
+    "passwordTooShort": "8자 이상이어야 합니다.",
+    "passwordTooLong": "비밀번호가 너무 깁니다.",
+    "tokenMissing": "토큰이 없습니다.",
+    "invalidProvider": "잘못된 제공업체입니다.",
+    "accountNotLinked": "이 계정은 연결되어 있지 않습니다.",
+    "nameInvalidChars": "이름에는 문자, 공백, 아포스트로피, 하이픈만 사용할 수 있습니다."
   }
 }

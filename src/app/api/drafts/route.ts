@@ -9,17 +9,19 @@ import {
   publicElementValue,
   validateBuildReferences,
 } from "@/lib/community-builds/validation";
+import { getApiTranslator } from "@/lib/api-locale";
 
 export const dynamic = "force-dynamic";
 
 export async function GET(request: NextRequest) {
+  const t = await getApiTranslator(request);
   const user = await getCurrentUser();
-  if (!user) return NextResponse.json({ error: "Connexion requise." }, { status: 401 });
+  if (!user) return NextResponse.json({ error: t("signInRequired") }, { status: 401 });
 
   const url = new URL(request.url);
   const characterId = url.searchParams.get("characterId");
   if (!characterId) {
-    return NextResponse.json({ error: "characterId est requis." }, { status: 400 });
+    return NextResponse.json({ error: t("characterIdRequired") }, { status: 400 });
   }
   const element = draftElementKey(url.searchParams.get("element"));
 
@@ -46,12 +48,13 @@ export async function GET(request: NextRequest) {
 }
 
 export async function PUT(request: NextRequest) {
+  const t = await getApiTranslator(request);
   const user = await getCurrentUser();
-  if (!user) return NextResponse.json({ error: "Connexion requise." }, { status: 401 });
+  if (!user) return NextResponse.json({ error: t("signInRequired") }, { status: 401 });
   const rate = await checkRateLimit(`build:draft:${user.id}`, 40, 60 * 1000);
   if (!rate.ok) {
     return NextResponse.json(
-      { error: "Trop de sauvegardes. Réessaie plus tard." },
+      { error: t("tooManySaves") },
       { status: 429, headers: { "Retry-After": `${rate.retryAfter}` } },
     );
   }
@@ -94,13 +97,14 @@ export async function PUT(request: NextRequest) {
 }
 
 export async function DELETE(request: NextRequest) {
+  const t = await getApiTranslator(request);
   const user = await getCurrentUser();
-  if (!user) return NextResponse.json({ error: "Connexion requise." }, { status: 401 });
+  if (!user) return NextResponse.json({ error: t("signInRequired") }, { status: 401 });
 
   const url = new URL(request.url);
   const characterId = url.searchParams.get("characterId");
   if (!characterId) {
-    return NextResponse.json({ error: "characterId est requis." }, { status: 400 });
+    return NextResponse.json({ error: t("characterIdRequired") }, { status: 400 });
   }
   const element = draftElementKey(url.searchParams.get("element"));
 
