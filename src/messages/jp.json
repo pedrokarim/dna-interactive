@@ -89,7 +89,19 @@
     "paginationLast": "最後のページ",
     "paginationGoTo": "{page}ページへ",
     "noResults": "結果なし",
-    "descriptionUnavailable": "説明がありません。"
+    "descriptionUnavailable": "説明がありません。",
+    "perPage": "1ページあたり",
+    "search": "検索…",
+    "previousCard": "前のカード",
+    "nextCard": "次のカード",
+    "noNotifications": "通知はまだありません。",
+    "dragToReorder": "ドラッグして並べ替え",
+    "noPriorityDefined": "優先度が設定されていません。",
+    "chooseItem": "アイテムを選択",
+    "add": "追加",
+    "zoomOut": "縮小",
+    "zoomIn": "拡大",
+    "resetZoom": "ズームをリセット"
   },
   "legal": {
     "copyright": "© 2025 {siteName}. {creator}が❤️を込めて作成",
@@ -669,7 +681,12 @@
     },
     "pageCommunityBuilder": "コミュニティビルダー",
     "pageBuildsTitle": "Duet Night Abyss ビルド",
-    "accountSuspended": "アカウントが停止されています。"
+    "accountSuspended": "アカウントが停止されています。",
+    "draftIdle": "下書き",
+    "draftDirty": "未保存の変更",
+    "draftSaving": "保存中…",
+    "draftSaved": "下書きを保存しました",
+    "draftError": "保存に失敗しました"
   },
   "communityBuilds": {
     "sectionTitle": "コミュニティの代替案",

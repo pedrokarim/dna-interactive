@@ -89,7 +89,19 @@
     "paginationLast": "Derniere page",
     "paginationGoTo": "Aller a la page {page}",
     "noResults": "Aucun resultat",
-    "descriptionUnavailable": "Description indisponible."
+    "descriptionUnavailable": "Description indisponible.",
+    "perPage": "Par page",
+    "search": "Rechercher…",
+    "previousCard": "Carte précédente",
+    "nextCard": "Carte suivante",
+    "noNotifications": "Aucune notification pour l'instant.",
+    "dragToReorder": "Glisser pour réordonner",
+    "noPriorityDefined": "Aucune priorité définie.",
+    "chooseItem": "Choisir un item",
+    "add": "Ajouter",
+    "zoomOut": "Dézoomer",
+    "zoomIn": "Zoomer",
+    "resetZoom": "Réinitialiser le zoom"
   },
   "legal": {
     "copyright": "© 2025 {siteName}. Créé par {creator} avec ❤️",
@@ -669,7 +681,12 @@
     },
     "pageCommunityBuilder": "Builder communautaire",
     "pageBuildsTitle": "Builds Duet Night Abyss",
-    "accountSuspended": "Compte suspendu."
+    "accountSuspended": "Compte suspendu.",
+    "draftIdle": "Brouillon",
+    "draftDirty": "Modifications non enregistrées",
+    "draftSaving": "Enregistrement…",
+    "draftSaved": "Brouillon enregistré",
+    "draftError": "Échec de l'enregistrement"
   },
   "communityBuilds": {
     "sectionTitle": "Alternatives communauté",

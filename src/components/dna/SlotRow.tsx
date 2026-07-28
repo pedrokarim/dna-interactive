@@ -1,5 +1,6 @@
 "use client";
 import { useRef, useState, useSyncExternalStore } from "react";
+import { useTranslations } from "next-intl";
 import { createPortal } from "react-dom";
 import { cn } from "./cn";
 import { useDialogA11y } from "./useDialogA11y";
@@ -45,13 +46,14 @@ export function DnaSlotRow({
   entries,
   pool,
   max = 3,
-  label = "Choisir un item",
+  label,
   allowRanks = true,
   readOnly = false,
   pickerColumns = 4,
   onChange,
   className,
 }: DnaSlotRowProps) {
+  const t = useTranslations("common");
   // null = fermé ; -1 = ajout ; >=0 = remplacement de l'index.
   const [pickerFor, setPickerFor] = useState<number | null>(null);
   const canPortal = useSyncExternalStore(subscribeMounted, () => true, () => false);
@@ -108,13 +110,13 @@ export function DnaSlotRow({
           className="flex w-28 flex-col items-center justify-center gap-1 border border-dashed border-white/20 bg-white/2 p-2 text-muted-2 transition-colors hover:border-gold hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60"
         >
           <span aria-hidden className="text-2xl leading-none">＋</span>
-          <span className="font-caps text-[0.55rem] uppercase tracking-[0.16em]">Ajouter</span>
+          <span className="font-caps text-[0.55rem] uppercase tracking-[0.16em]">{t("add")}</span>
         </button>
       )}
 
       {pickerFor !== null && canPortal ? createPortal(
         <PickerOverlay
-          label={label}
+          label={label ?? t("chooseItem")}
           pool={pool}
           usedIds={usedIds}
           columns={pickerColumns}

@@ -1,4 +1,5 @@
 "use client";
+import { useTranslations } from "next-intl";
 import { cn } from "./cn";
 
 /**
@@ -9,12 +10,13 @@ import { cn } from "./cn";
 
 export type DraftState = "idle" | "dirty" | "saving" | "saved" | "error";
 
-const META: Record<DraftState, { glyph: string; label: string; tone: string }> = {
-  idle: { glyph: "○", label: "Brouillon", tone: "text-muted-2 border-white/15" },
-  dirty: { glyph: "•", label: "Modifications non enregistrées", tone: "text-gold border-gold/40" },
-  saving: { glyph: "⟳", label: "Enregistrement…", tone: "text-muted border-white/20" },
-  saved: { glyph: "✓", label: "Brouillon enregistré", tone: "text-anemo border-anemo/40" },
-  error: { glyph: "⚠", label: "Échec de l'enregistrement", tone: "text-[#ffb3a6] border-crimson-bright/50" },
+/** Le libellé vient des messages (`builder.draft*`) ; ici seuls glyphe et teinte. */
+const META: Record<DraftState, { glyph: string; labelKey: string; tone: string }> = {
+  idle: { glyph: "○", labelKey: "draftIdle", tone: "text-muted-2 border-white/15" },
+  dirty: { glyph: "•", labelKey: "draftDirty", tone: "text-gold border-gold/40" },
+  saving: { glyph: "⟳", labelKey: "draftSaving", tone: "text-muted border-white/20" },
+  saved: { glyph: "✓", labelKey: "draftSaved", tone: "text-anemo border-anemo/40" },
+  error: { glyph: "⚠", labelKey: "draftError", tone: "text-[#ffb3a6] border-crimson-bright/50" },
 };
 
 export type DnaDraftStatusProps = {
@@ -25,6 +27,7 @@ export type DnaDraftStatusProps = {
 };
 
 export function DnaDraftStatus({ state, savedAt, className }: DnaDraftStatusProps) {
+  const t = useTranslations("builder");
   const m = META[state];
   return (
     <span
@@ -39,7 +42,7 @@ export function DnaDraftStatus({ state, savedAt, className }: DnaDraftStatusProp
       <span aria-hidden className={cn("leading-none", state === "saving" && "animate-spin")}>
         {m.glyph}
       </span>
-      <span>{m.label}</span>
+      <span>{t(m.labelKey)}</span>
       {state === "saved" && savedAt && <span className="text-muted-2 normal-case tracking-normal">· {savedAt}</span>}
     </span>
   );

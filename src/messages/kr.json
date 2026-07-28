@@ -89,7 +89,19 @@
     "paginationLast": "마지막 페이지",
     "paginationGoTo": "{page}페이지로 이동",
     "noResults": "결과 없음",
-    "descriptionUnavailable": "설명을 사용할 수 없습니다."
+    "descriptionUnavailable": "설명을 사용할 수 없습니다.",
+    "perPage": "페이지당",
+    "search": "검색…",
+    "previousCard": "이전 카드",
+    "nextCard": "다음 카드",
+    "noNotifications": "아직 알림이 없습니다.",
+    "dragToReorder": "드래그하여 순서 변경",
+    "noPriorityDefined": "설정된 우선순위가 없습니다.",
+    "chooseItem": "아이템 선택",
+    "add": "추가",
+    "zoomOut": "축소",
+    "zoomIn": "확대",
+    "resetZoom": "확대/축소 초기화"
   },
   "legal": {
     "copyright": "© 2025 {siteName}. {creator}가 ❤️를 담아 제작",
@@ -669,7 +681,12 @@
     },
     "pageCommunityBuilder": "커뮤니티 빌더",
     "pageBuildsTitle": "Duet Night Abyss 빌드",
-    "accountSuspended": "계정이 정지되었습니다."
+    "accountSuspended": "계정이 정지되었습니다.",
+    "draftIdle": "임시 저장",
+    "draftDirty": "저장되지 않은 변경 사항",
+    "draftSaving": "저장 중…",
+    "draftSaved": "임시 저장됨",
+    "draftError": "저장 실패"
   },
   "communityBuilds": {
     "sectionTitle": "커뮤니티 대안",

@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { useSession } from "next-auth/react";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Bell, Flag, ShieldAlert, ThumbsUp, type LucideIcon } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/components/dna";
@@ -25,6 +25,7 @@ const TYPE_ICON: Record<AppNotification["type"], LucideIcon> = {
 const STORAGE_KEY = "dna:notif-last-seen";
 
 export function NotificationBell() {
+  const tc = useTranslations("common");
   const { status } = useSession();
   const authed = status === "authenticated";
   const locale = useLocale();
@@ -124,7 +125,7 @@ export function NotificationBell() {
         </div>
 
         {items.length === 0 ? (
-          <p className="px-3 py-6 text-center font-sans text-sm text-muted">Aucune notification pour l'instant.</p>
+          <p className="px-3 py-6 text-center font-sans text-sm text-muted">{tc("noNotifications")}</p>
         ) : (
           <ul className="max-h-96 overflow-y-auto custom-scrollbar">
             {items.map((n) => {

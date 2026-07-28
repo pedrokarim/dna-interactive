@@ -1,3 +1,5 @@
+import { useTranslations } from "next-intl";
+
 type ItemsSuspenseFallbackProps = {
   title: string;
   description?: string;
@@ -9,6 +11,7 @@ export default function ItemsSuspenseFallback({
   title,
   description,
 }: ItemsSuspenseFallbackProps) {
+  const t = useTranslations("common");
   return (
     <section
       aria-live="polite"
@@ -23,7 +26,7 @@ export default function ItemsSuspenseFallback({
       <div className="relative space-y-6 animate-pulse">
         <header className="flex flex-wrap items-center justify-between gap-4">
           <div className="space-y-2">
-            <p className="font-caps text-xs uppercase tracking-[0.24em] text-gold/85">Chargement</p>
+            <p className="font-caps text-xs uppercase tracking-[0.24em] text-gold/85">{t("loading")}</p>
             <p className="font-display text-2xl text-parch">{title}</p>
             {description ? (
               <p className="max-w-2xl text-sm leading-relaxed text-parch/85">{description}</p>

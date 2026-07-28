@@ -1,5 +1,6 @@
 "use client";
 import { useRef, type ReactNode } from "react";
+import { useTranslations } from "next-intl";
 import { X } from "lucide-react";
 import { cn } from "./cn";
 import { DnaButton } from "./Button";
@@ -34,6 +35,7 @@ export type DnaDialogProps = {
 };
 
 export function DnaDialog({ open, onClose, title, children, footer, danger, size = "md", className }: DnaDialogProps) {
+  const t = useTranslations("common");
   const panelRef = useRef<HTMLDivElement>(null);
   useDialogA11y(panelRef, { open, onClose });
 
@@ -59,7 +61,7 @@ export function DnaDialog({ open, onClose, title, children, footer, danger, size
           <button
             type="button"
             onClick={onClose}
-            aria-label="Fermer"
+            aria-label={t("close")}
             className="grid h-7 w-7 shrink-0 place-items-center text-muted transition-colors hover:text-parch"
           >
             <X className="h-4 w-4" aria-hidden="true" />

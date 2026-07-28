@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { cn } from "./cn";
 import { DnaChip } from "./Chip";
 
@@ -34,11 +35,12 @@ export function DnaPriorityList({
   items,
   pool,
   max,
-  addLabel = "Ajouter",
+  addLabel,
   readOnly = false,
   onChange,
   className,
 }: DnaPriorityListProps) {
+  const t = useTranslations("common");
   const [dragFrom, setDragFrom] = useState<number | null>(null);
   const [dragOver, setDragOver] = useState<number | null>(null);
   const [adding, setAdding] = useState(false);
@@ -91,7 +93,7 @@ export function DnaPriorityList({
           </div>
           {!readOnly && (
             <>
-              <span aria-hidden className="shrink-0 select-none text-muted-2" title="Glisser pour réordonner">
+              <span aria-hidden className="shrink-0 select-none text-muted-2" title={t("dragToReorder")}>
                 ⠿
               </span>
               <button
@@ -108,7 +110,7 @@ export function DnaPriorityList({
       ))}
 
       {items.length === 0 && (
-        <p className="py-3 text-center font-sans text-xs text-muted-2">Aucune priorité définie.</p>
+        <p className="py-3 text-center font-sans text-xs text-muted-2">{t("noPriorityDefined")}</p>
       )}
 
       {canAdd &&
@@ -139,7 +141,7 @@ export function DnaPriorityList({
             onClick={() => setAdding(true)}
             className="mt-0.5 flex items-center justify-center gap-1 border border-dashed border-white/20 bg-white/2 py-1.5 font-caps text-[0.55rem] uppercase tracking-[0.16em] text-muted-2 transition-colors hover:border-gold hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60"
           >
-            <span aria-hidden className="text-sm leading-none">＋</span> {addLabel}
+            <span aria-hidden className="text-sm leading-none">＋</span> {addLabel ?? t("add")}
           </button>
         ))}
     </div>

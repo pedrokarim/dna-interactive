@@ -1064,7 +1064,7 @@ export default function CharactersGridClient({
 
             <div className="flex items-center gap-2">
               <span className="text-xs uppercase tracking-[0.18em] text-muted">
-                Par page
+                {tc("perPage")}
               </span>
               <select
                 value={pageSize}
@@ -1074,7 +1074,7 @@ export default function CharactersGridClient({
                     page: 1,
                   })
                 }
-                aria-label="Par page"
+                aria-label={tc("perPage")}
                 className="rounded-sm border border-white/10 bg-panel px-2 py-1 text-xs text-parch"
               >
                 <option value={12}>12</option>

@@ -89,7 +89,19 @@
     "paginationLast": "最後一頁",
     "paginationGoTo": "前往第 {page} 頁",
     "noResults": "無結果",
-    "descriptionUnavailable": "暫無說明。"
+    "descriptionUnavailable": "暫無說明。",
+    "perPage": "每頁",
+    "search": "搜尋…",
+    "previousCard": "上一張卡片",
+    "nextCard": "下一張卡片",
+    "noNotifications": "目前沒有通知。",
+    "dragToReorder": "拖曳以重新排序",
+    "noPriorityDefined": "尚未設定優先順序。",
+    "chooseItem": "選擇道具",
+    "add": "新增",
+    "zoomOut": "縮小",
+    "zoomIn": "放大",
+    "resetZoom": "重設縮放"
   },
   "legal": {
     "copyright": "© 2025 {siteName}。由 {creator} 用 ❤️ 製作",
@@ -669,7 +681,12 @@
     },
     "pageCommunityBuilder": "社群編輯器",
     "pageBuildsTitle": "Duet Night Abyss 配裝",
-    "accountSuspended": "帳號已停權。"
+    "accountSuspended": "帳號已停權。",
+    "draftIdle": "草稿",
+    "draftDirty": "未儲存的變更",
+    "draftSaving": "儲存中…",
+    "draftSaved": "草稿已儲存",
+    "draftError": "儲存失敗"
   },
   "communityBuilds": {
     "sectionTitle": "社群替代方案",

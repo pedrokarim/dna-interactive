@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { ArrowRight, ChevronLeft, ChevronRight, FileImage, Users } from "lucide-react";
 import { ResponsiveQuickBuildCard } from "@/components/characters/QuickBuildModal";
@@ -23,6 +23,7 @@ const FEATURED_IDS = ["char-linen", "char-saiqi", "char-feina"] as const;
 
 export default function BuildShowcase() {
   const lang = useLocale().toUpperCase();
+  const t = useTranslations("common");
   const featured = FEATURED_IDS.map((id) => {
     const character = getCharacterById(id);
     const build = character ? getCharacterBuilds(character.id, lang)[0] : undefined;
@@ -142,7 +143,7 @@ export default function BuildShowcase() {
           type="button"
           onClick={() => go(active - 1)}
           disabled={active === 0}
-          aria-label="Carte précédente"
+          aria-label={t("previousCard")}
           className="absolute left-2 top-1/2 z-30 -translate-y-1/2 inline-flex items-center justify-center rounded-full border border-white/10 bg-panel/80 p-2 text-parch backdrop-blur transition hover:border-gold/60 hover:bg-panel disabled:cursor-not-allowed disabled:opacity-30 md:p-3"
         >
           <ChevronLeft className="h-5 w-5 md:h-6 md:w-6" />

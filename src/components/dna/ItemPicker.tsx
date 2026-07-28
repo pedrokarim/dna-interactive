@@ -1,5 +1,6 @@
 "use client";
 import { useMemo, useState } from "react";
+import { useTranslations } from "next-intl";
 import { cn } from "./cn";
 import { DnaField } from "./Field";
 import { DnaChip } from "./Chip";
@@ -60,12 +61,13 @@ export function DnaItemPicker({
   selectedId,
   usedIds,
   onSelect,
-  placeholder = "Rechercher…",
+  placeholder,
   columns = 4,
   minColumnWidth,
   className,
   emptyLabel = "Aucun item ne correspond.",
 }: DnaItemPickerProps) {
+  const t = useTranslations("common");
   const [query, setQuery] = useState("");
   const [rarity, setRarity] = useState<number | null>(null);
   const [element, setElement] = useState<ElementKey | null>(null);
@@ -110,7 +112,7 @@ export function DnaItemPicker({
         <DnaField
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder={placeholder}
+          placeholder={placeholder ?? t("search")}
           wrapClassName="flex-1"
         />
         <span className="shrink-0 font-caps text-[0.6rem] uppercase tracking-[0.16em] text-muted-2">
