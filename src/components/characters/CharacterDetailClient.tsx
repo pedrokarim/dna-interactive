@@ -249,11 +249,12 @@ const ATTR_LABELS: Record<string, string> = {
   MultiShootModifierRate: "Multi-tir",
 };
 
-const POSITIONING_STYLES: Record<string, { label: string; className: string }> = {
-  DPS: { label: "DPS", className: "border-crimson-bright/40 bg-crimson-bright/10 text-crimson-bright" },
-  Support: { label: "Support", className: "border-anemo/40 bg-anemo/10 text-anemo" },
-  Uweapon: { label: "Arme ultime", className: "border-hydro/40 bg-hydro/10 text-hydro" },
-  WeaponDPS: { label: "DPS Arme", className: "border-gold/40 bg-gold/10 text-gold" },
+/** Teintes seules : le libellé vient des messages (`characterDetail.position*`). */
+const POSITIONING_STYLES: Record<string, { className: string }> = {
+  DPS: { className: "border-crimson-bright/40 bg-crimson-bright/10 text-crimson-bright" },
+  Support: { className: "border-anemo/40 bg-anemo/10 text-anemo" },
+  Uweapon: { className: "border-hydro/40 bg-hydro/10 text-hydro" },
+  WeaponDPS: { className: "border-gold/40 bg-gold/10 text-gold" },
 };
 
 function formatAddonValue(attr: CharacterAddonAttr): string {
@@ -962,6 +963,7 @@ function SkillsTabContent({
   selectedLanguage: string;
   elementKey: string;
 }) {
+  const t = useTranslations("characterDetail");
   const [skillLevel, setSkillLevel] = useState(SKILL_LEVEL_MAX);
 
   if (!skillSet || skillSet.skills.length === 0) {
@@ -969,7 +971,7 @@ function SkillsTabContent({
       <section className="border border-line/25 bg-panel/85 backdrop-blur-sm p-5 md:p-8 text-center">
         <Sparkles className="mx-auto h-10 w-10 text-muted-2" />
         <p className="mt-3 text-sm text-muted">
-          Aucune competence disponible pour ce personnage.
+          {t("noSkills")}
         </p>
       </section>
     );
@@ -986,7 +988,7 @@ function SkillsTabContent({
       <section className="border border-line/25 bg-panel/85 backdrop-blur-sm p-5 md:p-8 text-center">
         <Sparkles className="mx-auto h-10 w-10 text-muted-2" />
         <p className="mt-3 text-sm text-muted">
-          Les competences de ce personnage ne sont pas encore traduites.
+          {t("skillsNotTranslated")}
         </p>
       </section>
     );
@@ -997,11 +999,13 @@ function SkillsTabContent({
       <div className="border border-line/25 bg-panel/85 backdrop-blur-sm p-3 md:p-5">
         <div className="flex items-center justify-between gap-3">
           <div>
-            <h3 className="text-sm font-medium text-parch/85">Niveau de competence</h3>
+            <h3 className="text-sm font-medium text-parch/85">{t("skillLevel")}</h3>
             <p className="mt-0.5 text-[11px] text-muted-2">
-              Les valeurs marquees
-              <span className="mx-1 inline-block rounded-sm border border-gold/30 bg-gold/10 px-1.5 py-0 align-middle text-[10px] font-medium text-gold">Lv</span>
-              varient selon le niveau de la competence.
+              {t.rich("skillLevelHint", {
+                lv: (chunks) => (
+                  <span className="mx-1 inline-block rounded-sm border border-gold/30 bg-gold/10 px-1.5 py-0 align-middle text-[10px] font-medium text-gold">{chunks}</span>
+                ),
+              })}
             </p>
           </div>
           <span className="border border-gold/30 bg-gold/10 px-3 py-1 text-lg font-bold tabular-nums text-gold">
@@ -1016,7 +1020,7 @@ function SkillsTabContent({
             max={SKILL_LEVEL_MAX}
             value={skillLevel}
             onChange={(e) => setSkillLevel(Number(e.target.value))}
-            aria-label="Niveau de competence"
+            aria-label={t("skillLevel")}
             className={RANGE_CLASS}
             style={{
               "--rng": "#c2a86a",
@@ -1166,6 +1170,7 @@ function CommunityBuildsSection({
   selectedLanguage: string;
 }) {
   const tcb = useTranslations("communityBuilds");
+  const tCommon = useTranslations("common");
   const locale = useLocale();
   const [sort, setSort] = useState<"top" | "recent">("top");
   const [page, setPage] = useState(1);
@@ -1368,7 +1373,7 @@ function CommunityBuildsSection({
 
       <div className="mt-4 flex flex-col gap-2">
         {loading ? (
-          <p className="font-sans text-sm text-muted">Chargement...</p>
+          <p className="font-sans text-sm text-muted">{tCommon("loading")}</p>
         ) : builds.length === 0 ? (
           <p className="font-sans text-sm text-muted">{tcb("emptyForElement")}</p>
         ) : (
@@ -2772,7 +2777,7 @@ export default function CharacterDetailClient({
                     onClick={() => zoomRenderAt(1 / 1.4)}
                     className="rounded-sm border border-white/10 bg-panel/90 p-2 text-parch transition-all hover:border-gold/60 hover:bg-gold/80 hover:text-ink disabled:cursor-not-allowed disabled:opacity-40"
                     disabled={renderZoom <= 1}
-                    aria-label="Dézoomer"
+                    aria-label={tc("zoomOut")}
                   >
                     <ZoomOut className="h-4 w-4" />
                   </button>
@@ -2781,8 +2786,8 @@ export default function CharacterDetailClient({
                       type="button"
                       onClick={resetRenderZoom}
                       className="rounded-sm border border-white/10 bg-panel/90 p-2 text-parch transition-all hover:border-gold/60 hover:bg-gold/80 hover:text-ink"
-                      aria-label="Réinitialiser le zoom"
-                      title="Réinitialiser"
+                      aria-label={tc("resetZoom")}
+                      title={tc("reset")}
                     >
                       <RotateCcw className="h-4 w-4" />
                     </button>
@@ -2836,7 +2841,7 @@ export default function CharacterDetailClient({
                   max={maxLevel}
                   value={level}
                   onChange={(e) => setLevel(Number(e.target.value))}
-                  aria-label="Niveau du personnage"
+                  aria-label={t("characterLevel")}
                   className={RANGE_CLASS}
                   style={{
                     "--rng": elHex,
@@ -2866,7 +2871,7 @@ export default function CharacterDetailClient({
                 onClick={() => setActiveTab("stats")}
                 className="mt-3 w-full text-center font-caps text-[0.6rem] uppercase tracking-[0.22em] text-gold transition-colors hover:text-gold-bright"
               >
-                Voir tous les attributs ▸
+                {t("viewAllAttributes")} ▸
               </button>
             </DnaPanel>
 
@@ -2923,7 +2928,7 @@ export default function CharacterDetailClient({
                   </div>
                 )}
                 <div className="border-b border-white/6 pb-1.5">
-                  <dt className="font-caps text-[0.52rem] uppercase tracking-[0.16em] text-muted-2">Nom interne</dt>
+                  <dt className="font-caps text-[0.52rem] uppercase tracking-[0.16em] text-muted-2">{t("internalName")}</dt>
                   <dd className="text-parch">{character.internalName}</dd>
                 </div>
                 <div className="border-b border-white/6 pb-1.5">
@@ -2968,7 +2973,7 @@ export default function CharacterDetailClient({
           {/* Base stats */}
           <div className="border border-line/25 bg-panel/85 backdrop-blur-sm p-3 md:p-5">
             <h3 className="relative flex items-center gap-2.5 font-caps text-[0.66rem] uppercase tracking-[0.34em] text-gold"><span aria-hidden className="text-[0.7rem] text-gold-bright">◈</span>
-              Stats de base
+              {t("baseStats")}
             </h3>
             <div className="mt-4 space-y-3">
               <StatBar
@@ -3073,11 +3078,14 @@ export default function CharacterDetailClient({
             {character.positioning.length > 0 && (
               <div className="border border-line/25 bg-panel/85 backdrop-blur-sm p-3 md:p-5">
                 <h3 className="relative flex items-center gap-2.5 font-caps text-[0.66rem] uppercase tracking-[0.34em] text-gold"><span aria-hidden className="text-[0.7rem] text-gold-bright">◈</span>
-                  Positionnement
+                  {t("positioning")}
                 </h3>
                 <div className="mt-3 flex flex-wrap gap-2">
                   {character.positioning.map((pos) => {
                     const style = POSITIONING_STYLES[pos];
+                    // `position<Pos>` n'existe que pour les rôles connus ; sinon on
+                    // retombe sur la valeur brute des données.
+                    const label = style ? t(`position${pos}`) : pos;
                     return (
                       <span
                         key={pos}
@@ -3085,7 +3093,7 @@ export default function CharacterDetailClient({
                           style?.className ?? "border-white/10 text-parch/85"
                         }`}
                       >
-                        {style?.label ?? pos}
+                        {label}
                       </span>
                     );
                   })}
@@ -3212,7 +3220,7 @@ export default function CharacterDetailClient({
       {/* ---------- Portraits tab ---------- */}
       {activeTab === "portraits" && (
         <section className="border border-line/25 bg-panel/85 backdrop-blur-sm p-3 md:p-5">
-          <h2 className="text-base md:text-base md:text-lg font-semibold text-parch">Galerie de portraits</h2>
+          <h2 className="text-base md:text-base md:text-lg font-semibold text-parch">{t("portraitGallery")}</h2>
           {availablePortraits.length > 1 ? (
             <div className="mt-3 md:mt-4 grid gap-2 md:gap-3 grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
               {availablePortraits.map((type) => {
@@ -3252,7 +3260,7 @@ export default function CharacterDetailClient({
             </div>
           ) : (
             <p className="mt-4 text-sm text-muted">
-              Aucun portrait supplementaire disponible.
+              {t("noExtraPortraits")}
             </p>
           )}
         </section>
@@ -3705,7 +3713,7 @@ export default function CharacterDetailClient({
             <h2 className="text-base md:text-base md:text-lg font-semibold text-parch">Donnees techniques</h2>
             <dl className="mt-3 md:mt-4 space-y-2 md:space-y-3 text-sm">
               <div>
-                <dt className="text-muted">ID personnage</dt>
+                <dt className="text-muted">{t("characterId")}</dt>
                 <dd className="text-parch">{character.id}</dd>
               </div>
               <div>

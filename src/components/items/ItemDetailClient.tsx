@@ -564,7 +564,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
                   style={{ borderColor: `${CALAMITY_ACCENT_HEX}88`, background: `${CALAMITY_ACCENT_HEX}22`, color: CALAMITY_ACCENT_HEX }}
                 >
                   <Flame className="h-3.5 w-3.5" />
-                  Arme de calamité
+                  {t("calamityWeapon")}
                 </span>
               ) : null}
               {elementalAffinity ? (
@@ -642,18 +642,18 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
                   {selectedLevel}
                   <small className="text-sm text-muted-2"> / {sliderMaxLevel}</small>
                 </div>
-                <div className="text-right font-caps text-[0.52rem] uppercase leading-tight tracking-[0.14em] text-muted">
-                  {isWeaponsCategory ? <>Niveau<br />de fusion</> : <>Niveau<br />actif</>}
+                <div className="whitespace-pre-line text-right font-caps text-[0.52rem] uppercase leading-tight tracking-[0.14em] text-muted">
+                  {isWeaponsCategory ? t("fusionLevelStacked") : t("activeLevelStacked")}
                 </div>
               </div>
             ) : null}
             <div className="mt-1">
               {typeof item.stats.rarity === "number" ? (
-                <DnaStatRow label="Rareté" value={<DnaStars value={item.stats.rarity} />} />
+                <DnaStatRow label={t("rarity")} value={<DnaStars value={item.stats.rarity} />} />
               ) : null}
               {hasAffinityData ? (
                 <DnaStatRow
-                  label="Affinité"
+                  label={t("affinity")}
                   value={
                     <span className="inline-flex items-center gap-1.5">
                       {affinityIconSrc ? (
@@ -667,7 +667,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
               ) : null}
               {elementalAffinity ? (
                 <DnaStatRow
-                  label="Affinité élémentaire"
+                  label={t("elementalAffinity")}
                   accent={tinted ? elHex : undefined}
                   value={
                     <span className="inline-flex items-center gap-1.5">
@@ -681,7 +681,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
               ) : null}
               {weaponElement ? (
                 <DnaStatRow
-                  label="Élément"
+                  label={t("element")}
                   accent={tinted ? elHex : undefined}
                   value={
                     <span className="inline-flex items-center gap-1.5">
@@ -706,23 +706,23 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
                 <DnaStatRow label="Taux critique" value={formatRateValue(weaponCri)} />
               ) : null}
               {weaponCrd !== null ? (
-                <DnaStatRow label="Dégâts critiques" value={formatRateValue(weaponCrd)} />
+                <DnaStatRow label={t("critDamage")} value={formatRateValue(weaponCrd)} />
               ) : null}
               {typeof item.stats.cost === "number" ? (
-                <DnaStatRow label="Coût" value={item.stats.cost} />
+                <DnaStatRow label={t("cost")} value={item.stats.cost} />
               ) : null}
               {typeof item.stats.maxLevel === "number" ? (
-                <DnaStatRow label="Niveau max" value={item.stats.maxLevel} />
+                <DnaStatRow label={t("maxLevel")} value={item.stats.maxLevel} />
               ) : null}
               {isModsCategory ? (
-                <DnaStatRow label="Tolérance" value={selectedTolerance ?? "N/A"} className="border-b-0" />
+                <DnaStatRow label={t("tolerance")} value={selectedTolerance ?? "N/A"} className="border-b-0" />
               ) : null}
             </div>
           </DnaPanel>
 
           {hasScalingData && !isWeaponsCategory ? (
             <DnaPanel className="p-4">
-              <DnaSectionLabel>Niveau de progression</DnaSectionLabel>
+              <DnaSectionLabel>{t("progressionLevel")}</DnaSectionLabel>
               <div className="mt-3 flex items-center justify-between font-caps text-xs uppercase tracking-[0.14em] text-muted">
                 <span>Lv {selectedLevel}</span>
                 <span>Max {sliderMaxLevel}</span>
@@ -756,34 +756,32 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
       {isCalamity ? (
         <DnaPanel className="border-crimson-bright/25 p-4 md:p-5">
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <DnaSectionLabel>Fusion de calamité &amp; Potentiel</DnaSectionLabel>
+            <DnaSectionLabel>{t("calamityFusionAndPotential")}</DnaSectionLabel>
             <Link
               href="/items/weapons/about"
               className="inline-flex items-center gap-2 rounded-sm border border-crimson-bright/35 bg-crimson/10 px-3 py-1.5 text-xs font-medium text-crimson-bright transition-colors hover:bg-crimson/20"
             >
               <Sparkles className="h-3.5 w-3.5" />
-              Guide des armes de calamité
+              {t("calamityGuide")}
             </Link>
           </div>
           <p className="mt-3 max-w-3xl text-sm leading-relaxed text-parch/85">
-            Les Potentiels d&apos;arme se débloquent via la Fusion de calamité (paliers 0 → 5,
-            ajustés par la piste sur la fiche). Un Potentiel ne prend effet que si le type
-            d&apos;arme correspond à l&apos;arme de prédilection du personnage.
+            {t("calamityGuideIntro")}
           </p>
 
           <div className="mt-4 grid gap-3 sm:grid-cols-3">
             <div className="border border-crimson-bright/25 bg-crimson/10 p-3">
-              <p className="font-caps text-[0.6rem] uppercase tracking-[0.22em] text-muted">Niveau de fusion</p>
+              <p className="font-caps text-[0.6rem] uppercase tracking-[0.22em] text-muted">{t("fusionLevel")}</p>
               <p className="mt-1 font-caps text-2xl font-semibold" style={{ color: CALAMITY_ACCENT_HEX }}>
                 {selectedLevel}
                 <small className="text-sm text-muted-2"> / {sliderMaxLevel}</small>
               </p>
             </div>
             <div className="border border-white/10 bg-ink/55 p-3">
-              <p className="font-caps text-[0.6rem] uppercase tracking-[0.22em] text-muted">Potentiels débloqués</p>
+              <p className="font-caps text-[0.6rem] uppercase tracking-[0.22em] text-muted">{t("unlockedPotentials")}</p>
               <p className="mt-1 font-caps text-2xl font-semibold text-parch">
                 {calamityNodesUnlocked === null ? (
-                  <span className="text-base text-muted-2">Arbre non détaillé</span>
+                  <span className="text-base text-muted-2">{t("treeNotDetailed")}</span>
                 ) : (
                   <>
                     {calamityNodesUnlocked}
@@ -803,11 +801,11 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
           <div className="mt-4 grid gap-2 sm:grid-cols-2">
             <div className="flex items-center gap-2.5 rounded-sm border border-white/10 bg-ink/55 px-3 py-2 text-sm text-parch/85">
               <Lock className="h-4 w-4 shrink-0 text-crimson-bright" />
-              1 arme de calamité max équipée par personnage
+              {t("maxOneCalamityEquipped")}
             </div>
             <div className="flex items-center gap-2.5 rounded-sm border border-white/10 bg-ink/55 px-3 py-2 text-sm text-parch/85">
               <Target className="h-4 w-4 shrink-0 text-crimson-bright" />
-              Potentiel actif seulement avec l&apos;arme de prédilection
+              {t("potentialOnlyWithPreferred")}
             </div>
           </div>
 
@@ -925,7 +923,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
                       </DnaTag>
                     ))
                   ) : (
-                    <span className="text-xs text-muted-2">Aucune variable dynamique pour ce niveau.</span>
+                    <span className="text-xs text-muted-2">{t("noDynamicVariables")}</span>
                   )}
                 </div>
               </details>
@@ -938,7 +936,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
                 Attributs resolus (niveau {selectedLevel})
               </h3>
               {selectedLevelAttributesVisible.length === 0 ? (
-                <p className="mt-2 text-sm text-muted-2">Aucun attribut scalable detecte.</p>
+                <p className="mt-2 text-sm text-muted-2">{t("noScalableAttributes")}</p>
               ) : (
                 <div className="mt-2">
                   {selectedLevelAttributesVisible.map((attribute, index) => (
@@ -966,10 +964,10 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
           {isGenimonsCategory ? (
             <div className="mt-5 border-t border-white/10 pt-4">
               <h3 className="font-caps text-[0.66rem] uppercase tracking-[0.24em] text-gold/80">
-                Attributs du trait passif
+                {t("passiveTraitAttributes")}
               </h3>
               {genimonAttributes.length === 0 ? (
-                <p className="mt-2 text-sm text-muted-2">Aucun attribut resolu detecte.</p>
+                <p className="mt-2 text-sm text-muted-2">{t("noResolvedAttributes")}</p>
               ) : (
                 <div className="mt-2">
                   {genimonAttributes.map((attribute, index) => {
@@ -1019,7 +1017,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
             {isModsCategory ? (
               <>
                 <div>
-                  <dt className="text-muted">Nom archive</dt>
+                  <dt className="text-muted">{t("archiveName")}</dt>
                   <dd className="text-parch">{translation.archiveName ?? "N/A"}</dd>
                 </div>
                 <div>
@@ -1099,11 +1097,11 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
                   <dd className="text-parch">{genimonCollectRewardExp ?? "N/A"}</dd>
                 </div>
                 <div>
-                  <dt className="text-muted">EXP max du niveau max</dt>
+                  <dt className="text-muted">{t("maxLevelExp")}</dt>
                   <dd className="text-parch">{genimonMaxLevelExp ?? "N/A"}</dd>
                 </div>
                 <div>
-                  <dt className="text-muted">EXP totale vers niveau max</dt>
+                  <dt className="text-muted">{t("totalExpToMax")}</dt>
                   <dd className="text-parch">{genimonTotalExpAtMax ?? "N/A"}</dd>
                 </div>
                 <div>
