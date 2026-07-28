@@ -62,23 +62,24 @@ const ELEMENT_ICONS: Record<string, string> = {
   Dark: "/assets/items/mods/T_Armory_Dark.png",
 };
 
-const STAT_LABELS: Record<string, string> = {
-  ATK: "ATQ",
-  DEF: "DEF",
-  HP: "PV",
-  MaxHp: "PV Max",
-  MaxES: "Bouclier",
-  MaxSp: "Lucidité",
-  SkillDmg: "DGT comp.",
-  SkillIntensity: "Intensité",
-  SkillEfficiency: "Efficacité",
-  SkillSustain: "Endurance",
-  SkillRange: "Portée",
-  SkillSpeed: "Vitesse",
-  CritRate: "Taux CRIT",
-  CritDmg: "DGT CRIT",
-  StrongValue: "Vigueur",
-  EnmityValue: "Ténacité",
+/** stat du build -> cle de message (`characterDetail.stat*`). */
+const STAT_LABEL_KEYS: Record<string, string> = {
+  ATK: "statATK",
+  DEF: "statDEF",
+  HP: "statHP",
+  MaxHp: "statMaxHp",
+  MaxES: "statMaxES",
+  MaxSp: "statMaxSp",
+  SkillDmg: "statSkillDmg",
+  SkillIntensity: "statSkillIntensity",
+  SkillEfficiency: "statSkillEfficiency",
+  SkillSustain: "statSkillSustain",
+  SkillRange: "statSkillRange",
+  SkillSpeed: "statSkillSpeed",
+  CritRate: "statWeaponCRI",
+  CritDmg: "statCritDmg",
+  StrongValue: "statStrongValue",
+  EnmityValue: "statEnmityValue",
 };
 
 // Parallelogram clips — slots lean toward the center (mirror the detail page).
@@ -91,10 +92,11 @@ const LEFT_W = 460; // portrait section logical width — the bust image extends
 
 function localized(texts: Record<string, string> | undefined, lang: string): string | null {
   if (!texts) return null;
+  // Repli : langue demandee -> EN -> FR (cf. BuildLocalizedText).
   return (
     texts[lang.toUpperCase()] ??
-    texts.FR ??
     texts.EN ??
+    texts.FR ??
     Object.values(texts)[0] ??
     null
   );
@@ -677,7 +679,7 @@ export function QuickBuildCard({
                     <CursorTooltip
                       key={`g-${i}`}
                       width={280}
-                      content={<ItemTooltipBody item={item} rank={g.rank} kindLabel="Génimon" />}
+                      content={<ItemTooltipBody item={item} rank={g.rank} kindLabel={t("genimonTitle")} />}
                     >
                       <div
                         className="relative flex aspect-square cursor-default items-center justify-center overflow-hidden rounded-lg border bg-black/40"
@@ -724,7 +726,7 @@ export function QuickBuildCard({
                       {i + 1}
                     </span>
                     <span className="text-parch/95" style={{ textShadow: "0 1px 2px rgba(0,0,0,0.5)" }}>
-                      {STAT_LABELS[stat] ?? stat}
+                      {STAT_LABEL_KEYS[stat] ? t(STAT_LABEL_KEYS[stat]) : stat}
                     </span>
                   </li>
                 ))}
@@ -948,7 +950,7 @@ export default function QuickBuildModal({
           tabIndex={-1}
           role="dialog"
           aria-modal="true"
-          aria-label="Build rapide"
+          aria-label={t("quickBuild")}
           className="max-w-md rounded-2xl border border-white/10 bg-panel/95 p-6 text-center shadow-2xl"
           onClick={(e) => e.stopPropagation()}
         >
@@ -980,14 +982,14 @@ export default function QuickBuildModal({
         tabIndex={-1}
         role="dialog"
         aria-modal="true"
-        aria-label="Build rapide"
+        aria-label={t("quickBuild")}
         className="flex max-h-[95vh] w-full max-w-[1360px] flex-col overflow-hidden rounded-2xl border border-gold/30 bg-panel/95 shadow-[0_40px_80px_rgba(2,6,23,0.8)]"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between gap-3 border-b border-white/10 px-5 py-3">
           <div className="flex min-w-0 items-center gap-3">
             <h3 className="truncate text-base font-semibold text-parch">
-              Build rapide — {resolveCharacterDisplayName(character, lang)}
+              {t("quickBuildOf", { name: resolveCharacterDisplayName(character, lang) })}
             </h3>
             {builds.length > 1 && (
               <div className="flex gap-1">

@@ -833,7 +833,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
               showTrackAdjust
             />
             {(() => {
-              const note = weaponBuild.demonWedges.note?.[selectedLanguage] ?? weaponBuild.demonWedges.note?.FR ?? weaponBuild.demonWedges.note?.EN;
+              const note = weaponBuild.demonWedges.note?.[selectedLanguage] ?? weaponBuild.demonWedges.note?.EN ?? weaponBuild.demonWedges.note?.FR;
               return note ? <p className="mx-auto mt-4 max-w-prose text-center text-xs text-muted-2">{note}</p> : null;
             })()}
           </div>

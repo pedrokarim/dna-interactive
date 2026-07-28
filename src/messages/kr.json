@@ -481,7 +481,23 @@
     "portraitGallery": "일러스트 갤러리",
     "internalName": "내부 이름",
     "characterId": "캐릭터 ID",
-    "characterLevel": "캐릭터 레벨"
+    "characterLevel": "캐릭터 레벨",
+    "tabSkills": "스킬",
+    "skillType1": "스킬 1",
+    "skillType2": "스킬 2",
+    "skillType3": "스킬 3",
+    "skillTypePassive": "패시브",
+    "skillTypeExtraPassive": "추가 패시브",
+    "skillTypeUltraPassive": "궁극 패시브",
+    "skillTypeMovement": "이동",
+    "skillTypePhantomPassive": "팬텀 패시브",
+    "statHP": "HP",
+    "statSkillDmg": "스킬 피해",
+    "statCritDmg": "치명타 피해",
+    "statMaxSpLong": "최대 루시디티",
+    "quickBuild": "퀵 빌드",
+    "quickBuildOf": "퀵 빌드 — {name}",
+    "ascensionTiers": "돌파 단계"
   },
   "items": {
     "libraryLabel": "아이템 라이브러리",
@@ -841,7 +857,8 @@
     "views": "조회수",
     "pageLibraryTitle": "빌드 라이브러리",
     "pageLibraryDescription": "커뮤니티가 공유한 빌드를 둘러보고 전체 정보를 확인하거나 시작점으로 사용하세요.",
-    "pageCreateBuild": "빌드 만들기"
+    "pageCreateBuild": "빌드 만들기",
+    "reportReasonTooShort": "조금 더 구체적인 사유를 입력해 주세요."
   },
   "account": {
     "metaTitle": "프로필 - DNA Interactive",

@@ -481,7 +481,23 @@
     "portraitGallery": "立繪圖庫",
     "internalName": "內部名稱",
     "characterId": "角色 ID",
-    "characterLevel": "角色等級"
+    "characterLevel": "角色等級",
+    "tabSkills": "技能",
+    "skillType1": "技能 1",
+    "skillType2": "技能 2",
+    "skillType3": "技能 3",
+    "skillTypePassive": "被動",
+    "skillTypeExtraPassive": "額外被動",
+    "skillTypeUltraPassive": "終極被動",
+    "skillTypeMovement": "移動",
+    "skillTypePhantomPassive": "幻影被動",
+    "statHP": "生命",
+    "statSkillDmg": "技能傷害",
+    "statCritDmg": "暴擊傷害",
+    "statMaxSpLong": "最大清明",
+    "quickBuild": "快速配裝",
+    "quickBuildOf": "快速配裝 — {name}",
+    "ascensionTiers": "突破階段"
   },
   "items": {
     "libraryLabel": "道具資料庫",
@@ -841,7 +857,8 @@
     "views": "瀏覽數",
     "pageLibraryTitle": "配裝庫",
     "pageLibraryDescription": "瀏覽社群分享的配裝，開啟完整資訊，或以此作為起點。",
-    "pageCreateBuild": "建立配裝"
+    "pageCreateBuild": "建立配裝",
+    "reportReasonTooShort": "請提供更具體的理由。"
   },
   "account": {
     "metaTitle": "個人檔案 - DNA Interactive",

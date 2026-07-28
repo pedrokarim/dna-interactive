@@ -120,7 +120,7 @@ function resolveCharacterSkills(character: CharacterRecord, locale: string): Arr
 }
 
 function characterToOption(character: CharacterRecord, locale: string): BuilderCharacterOption {
-  const translation = character.translations[locale] ?? character.translations.FR ?? character.translations.EN;
+  const translation = character.translations[locale] ?? character.translations.EN ?? character.translations.FR;
   const elements = (character.elements ?? [character.element])
     .map((element) => ({ key: asElementKey(element.key), label: element.label }))
     .filter((element): element is { key: ElementKey; label: string } => element.key !== null);

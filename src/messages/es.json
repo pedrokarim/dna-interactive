@@ -481,7 +481,23 @@
     "portraitGallery": "Galería de retratos",
     "internalName": "Nombre interno",
     "characterId": "ID de personaje",
-    "characterLevel": "Nivel del personaje"
+    "characterLevel": "Nivel del personaje",
+    "tabSkills": "Habilidades",
+    "skillType1": "Habilidad 1",
+    "skillType2": "Habilidad 2",
+    "skillType3": "Habilidad 3",
+    "skillTypePassive": "Pasiva",
+    "skillTypeExtraPassive": "Pasiva adicional",
+    "skillTypeUltraPassive": "Pasiva definitiva",
+    "skillTypeMovement": "Movimiento",
+    "skillTypePhantomPassive": "Pasiva fantasma",
+    "statHP": "PV",
+    "statSkillDmg": "DAÑO hab.",
+    "statCritDmg": "DAÑO crít.",
+    "statMaxSpLong": "Lucidez máx.",
+    "quickBuild": "Build rápida",
+    "quickBuildOf": "Build rápida — {name}",
+    "ascensionTiers": "Niveles de ascensión"
   },
   "items": {
     "libraryLabel": "Biblioteca de Objetos",
@@ -841,7 +857,8 @@
     "views": "Vistas",
     "pageLibraryTitle": "Biblioteca de builds",
     "pageLibraryDescription": "Explora los builds compartidos por la comunidad, abre su ficha completa o úsalos como punto de partida.",
-    "pageCreateBuild": "Crear un build"
+    "pageCreateBuild": "Crear un build",
+    "reportReasonTooShort": "Indica un motivo un poco más concreto."
   },
   "account": {
     "metaTitle": "Perfil - DNA Interactive",

@@ -183,13 +183,14 @@ const COMMUNITY_BUILDS_PAGE_SIZE = 6;
 
 type PortraitType = "gacha" | "head" | "icon" | "bust" | "phantom" | "charpiece";
 
-const PORTRAIT_LABELS: Record<PortraitType, string> = {
-  gacha: "Gacha",
-  head: "Portrait",
-  icon: "Icone",
-  bust: "Bust",
-  phantom: "Phantom",
-  charpiece: "Intron",
+/** Cles de message (`characterDetail.portrait*`) — pas de libelle en dur. */
+const PORTRAIT_LABEL_KEYS: Record<PortraitType, string> = {
+  gacha: "portraitGacha",
+  head: "portraitHead",
+  icon: "portraitIcon",
+  bust: "portraitBust",
+  phantom: "portraitPhantom",
+  charpiece: "portraitIntron",
 };
 
 // ---------------------------------------------------------------------------
@@ -208,45 +209,47 @@ const RANGE_CLASS =
 const TAB_IDS = ["stats", "build", "skills", "portraits", "intron", "translations", "tech"] as const;
 type TabId = (typeof TAB_IDS)[number];
 
-const TAB_CONFIG: { id: TabId; label: string; icon: ComponentType<{ className?: string }> }[] = [
-  { id: "stats", label: "Attributs", icon: BarChart3 },
-  { id: "build", label: "Build", icon: Swords },
-  { id: "skills", label: "Competences", icon: Sparkles },
-  { id: "portraits", label: "Portraits", icon: ImageIcon },
-  { id: "intron", label: "Intron", icon: Layers },
-  { id: "translations", label: "Traductions", icon: Languages },
-  { id: "tech", label: "Technique", icon: Settings },
+const TAB_CONFIG: { id: TabId; labelKey: string; icon: ComponentType<{ className?: string }> }[] = [
+  { id: "stats", labelKey: "tabStats", icon: BarChart3 },
+  { id: "build", labelKey: "tabBuild", icon: Swords },
+  { id: "skills", labelKey: "tabSkills", icon: Sparkles },
+  { id: "portraits", labelKey: "tabPortraits", icon: ImageIcon },
+  { id: "intron", labelKey: "tabIntron", icon: Layers },
+  { id: "translations", labelKey: "tabTranslations", icon: Languages },
+  { id: "tech", labelKey: "tabTechnical", icon: Settings },
 ];
 
 // ---------------------------------------------------------------------------
 // Stats labels & formatting
 // ---------------------------------------------------------------------------
 
-const ATTR_LABELS: Record<string, string> = {
-  ATK: "ATQ",
-  ATK_Fire: "ATQ Feu",
-  ATK_Water: "ATQ Eau",
-  ATK_Thunder: "ATQ Foudre",
-  ATK_Wind: "ATQ Vent",
-  ATK_Light: "ATQ Lumiere",
-  ATK_Dark: "ATQ Ombre",
-  ATK_Slash: "ATQ Tranchant",
-  ATK_Smash: "ATQ Contondant",
-  ATK_Spike: "ATQ Percant",
-  ATK_Default: "ATQ",
-  DEF: "Defense",
-  MaxHp: "PV Max",
-  MaxES: "Bouclier",
-  MaxSp: "Lucidite",
-  SkillIntensity: "Intensite",
-  SkillEfficiency: "Efficacite",
-  SkillSustain: "Endurance",
-  SkillRange: "Portee",
-  SkillSpeed: "Vitesse comp.",
-  StrongValue: "Vigueur",
-  EnmityValue: "Tenacite",
-  WeaponCRIModifierRate: "Taux critique",
-  MultiShootModifierRate: "Multi-tir",
+/** attribut du jeu -> cle de message (`characterDetail.stat*`). Les libelles
+ *  traduits vivent dans les messages, plus dans ce fichier. */
+const ATTR_LABEL_KEYS: Record<string, string> = {
+  ATK: "statATK",
+  ATK_Fire: "statATKFire",
+  ATK_Water: "statATKWater",
+  ATK_Thunder: "statATKThunder",
+  ATK_Wind: "statATKWind",
+  ATK_Light: "statATKLight",
+  ATK_Dark: "statATKDark",
+  ATK_Slash: "statATKSlash",
+  ATK_Smash: "statATKSmash",
+  ATK_Spike: "statATKSpike",
+  ATK_Default: "statATK",
+  DEF: "statDEF",
+  MaxHp: "statMaxHp",
+  MaxES: "statMaxES",
+  MaxSp: "statMaxSp",
+  SkillIntensity: "statSkillIntensity",
+  SkillEfficiency: "statSkillEfficiency",
+  SkillSustain: "statSkillSustain",
+  SkillRange: "statSkillRange",
+  SkillSpeed: "statSkillSpeed",
+  StrongValue: "statStrongValue",
+  EnmityValue: "statEnmityValue",
+  WeaponCRIModifierRate: "statWeaponCRI",
+  MultiShootModifierRate: "statMultiShoot",
 };
 
 /** Teintes seules : le libellé vient des messages (`characterDetail.position*`). */
@@ -318,10 +321,12 @@ function BuildLocalizedText({
   texts: Record<string, string>;
   lang: string;
 }) {
+  // Repli : langue demandee -> EN -> FR. L'anglais passe avant le francais :
+  // sans ca, un lecteur DE/ES/JP/KR/TC recevait du francais.
   const value =
     texts[lang.toUpperCase()] ??
-    texts.FR ??
     texts.EN ??
+    texts.FR ??
     Object.values(texts)[0] ??
     null;
   return value ? <>{value}</> : null;
@@ -755,15 +760,15 @@ export function DemonWedgeLayout({
 // Skills tab — per-skill card with name, description, stats, and combat terms
 // ---------------------------------------------------------------------------
 
-const SKILL_TYPE_LABELS: Record<string, string> = {
-  Skill1: "Competence 1",
-  Skill2: "Competence 2",
-  Skill3: "Competence 3",
-  Passive: "Passif",
-  ExtraPassive: "Passif supplementaire",
-  UltraPassive: "Passif ultime",
-  Movement: "Mouvement",
-  PhantomPassive: "Passif spectre",
+const SKILL_TYPE_KEYS: Record<string, string> = {
+  Skill1: "skillType1",
+  Skill2: "skillType2",
+  Skill3: "skillType3",
+  Passive: "skillTypePassive",
+  ExtraPassive: "skillTypeExtraPassive",
+  UltraPassive: "skillTypeUltraPassive",
+  Movement: "skillTypeMovement",
+  PhantomPassive: "skillTypePhantomPassive",
 };
 
 function getSkillLocalized<T extends { translations: Record<string, unknown> }>(
@@ -812,9 +817,14 @@ function SkillCard({
   elementKey: string;
   skillLevel: number;
 }) {
+  const t = useTranslations("characterDetail");
   const localized = getSkillLocalized(skill, selectedLanguage);
   if (!localized) return null;
-  const typeLabel = skill.skillType ? SKILL_TYPE_LABELS[skill.skillType] ?? skill.skillType : null;
+  const typeLabel = skill.skillType
+    ? SKILL_TYPE_KEYS[skill.skillType]
+      ? t(SKILL_TYPE_KEYS[skill.skillType])
+      : skill.skillType
+    : null;
   const rgb = ELEMENT_RGB[elementKey] ?? ELEMENT_RGB.Water;
 
   // Group params by section if any
@@ -1522,7 +1532,7 @@ function CommunityBuildPreviewModal({
   async function reportBuild() {
     const reason = reportReason.trim();
     if (reason.length < 3) {
-      setActionMessage("Ajoute une raison un peu plus précise.");
+      setActionMessage(tcb("reportReasonTooShort"));
       return;
     }
 
@@ -2083,7 +2093,7 @@ export function BuildTabContent({
                   {i + 1}
                 </span>
                 <span className="text-sm text-parch">
-                  {ATTR_LABELS[stat] ?? stat}
+                  {ATTR_LABEL_KEYS[stat] ? t(ATTR_LABEL_KEYS[stat]) : stat}
                 </span>
               </li>
             ))}
@@ -2556,7 +2566,7 @@ export default function CharacterDetailClient({
     };
   }, [character.baseStats, maxLevel, levelUpCurves]);
 
-  const atkLabel = `ATQ ${character.element.label}`;
+  const atkLabel = `${t("statATK")} ${character.element.label}`;
   const atkBarColor = ELEMENT_BAR_COLORS[character.element.key] ?? "from-muted-2 to-muted";
 
   // =========================================================================
@@ -2599,7 +2609,7 @@ export default function CharacterDetailClient({
                 className="inline-flex items-center gap-2 border border-gold/40 bg-gold/15 px-3 py-2 text-sm font-medium text-gold transition-colors hover:bg-gold/30"
               >
                 <FileImage className="h-4 w-4" />
-                Build rapide
+                {t("quickBuild")}
               </button>
             )}
             <button
@@ -2683,13 +2693,13 @@ export default function CharacterDetailClient({
       {/* ===== Shell Arsenal : rail d'onglets (gauche) + contenu ===== */}
       <div className="grid grid-cols-[52px_1fr] gap-3 md:grid-cols-[60px_1fr] md:gap-4">
         <nav className="flex flex-col items-center gap-1 self-start border border-line/25 bg-panel/55 p-1.5 backdrop-blur-sm">
-          {TAB_CONFIG.map(({ id, label, icon: Icon }) => (
+          {TAB_CONFIG.map(({ id, labelKey, icon: Icon }) => (
             <button
               key={id}
               type="button"
               onClick={() => setActiveTab(id)}
-              title={label}
-              aria-label={label}
+              title={t(labelKey)}
+              aria-label={t(labelKey)}
               aria-pressed={activeTab === id}
               className={`relative grid h-11 w-11 place-items-center transition-colors ${
                 activeTab === id
@@ -2750,7 +2760,7 @@ export default function CharacterDetailClient({
                 <span aria-hidden className="absolute left-1/2 top-[34%] h-[46%] w-[46%] -translate-x-1/2 -translate-y-1/2 rounded-full blur-2xl" style={{ background: `radial-gradient(circle, ${elHex}38, transparent 62%)` }} />
                 <img
                   src={activePortraitSrc}
-                  alt={`${displayName} - ${PORTRAIT_LABELS[activePortrait]}`}
+                  alt={`${displayName} - ${t(PORTRAIT_LABEL_KEYS[activePortrait])}`}
                   draggable={false}
                   width={300}
                   height={400}
@@ -2812,7 +2822,7 @@ export default function CharacterDetailClient({
                         : "border border-white/10 bg-ink/60 text-muted hover:border-gold/30 hover:text-parch"
                     }`}
                   >
-                    {PORTRAIT_LABELS[type]}
+                    {t(PORTRAIT_LABEL_KEYS[type])}
                   </button>
                 ))}
               </div>
@@ -2853,10 +2863,10 @@ export default function CharacterDetailClient({
               <div className="mt-1">
                 {[
                   { k: atkLabel, v: computedStats.atk, hl: true },
-                  { k: "PV Max", v: computedStats.maxHp },
+                  { k: t("statMaxHp"), v: computedStats.maxHp },
                   { k: "Bouclier", v: computedStats.maxES },
-                  { k: "DÉF", v: computedStats.def },
-                  { k: "Lucidité max", v: computedStats.maxSp },
+                  { k: t("statDEF"), v: computedStats.def },
+                  { k: t("statMaxSpLong"), v: computedStats.maxSp },
                 ].map((r) => (
                   <DnaStatRow
                     key={r.k}
@@ -2990,7 +3000,7 @@ export default function CharacterDetailClient({
                 barColorClass={atkBarColor}
               />
               <StatBar
-                label="PV Max"
+                label={t("statMaxHp")}
                 value={computedStats.maxHp}
                 maxValue={maxLevelStats.maxHp}
                 icon={<Heart className="h-4 w-4 text-anemo" />}
@@ -3011,7 +3021,7 @@ export default function CharacterDetailClient({
                 barColorClass="from-gold/80 to-gold/60"
               />
               <StatBar
-                label="Lucidite max"
+                label={t("statMaxSpLong")}
                 value={computedStats.maxSp}
                 maxValue={maxLevelStats.maxSp}
                 icon={<Sparkles className="h-4 w-4 text-electro" />}
@@ -3043,7 +3053,7 @@ export default function CharacterDetailClient({
                     </div>
                     <div className="min-w-0 flex-1">
                       <p className="text-sm text-parch/85">
-                        {ATTR_LABELS[attr.attrName] ?? attr.attrName}
+                        {ATTR_LABEL_KEYS[attr.attrName] ? t(ATTR_LABEL_KEYS[attr.attrName]) : attr.attrName}
                       </p>
                     </div>
                     <span className="shrink-0 text-sm font-semibold text-gold">
@@ -3068,7 +3078,7 @@ export default function CharacterDetailClient({
                       key={attr}
                       className="rounded-sm border border-white/10 bg-panel/60 px-3 py-1 text-xs text-parch"
                     >
-                      {ATTR_LABELS[attr] ?? attr}
+                      {ATTR_LABEL_KEYS[attr] ? t(ATTR_LABEL_KEYS[attr]) : attr}
                     </span>
                   ))}
                 </div>
@@ -3106,7 +3116,7 @@ export default function CharacterDetailClient({
           {character.ascensionLevels.length > 0 && (
             <div className="border border-line/25 bg-panel/85 backdrop-blur-sm p-3 md:p-5">
               <h3 className="relative flex items-center gap-2.5 font-caps text-[0.66rem] uppercase tracking-[0.34em] text-gold"><span aria-hidden className="text-[0.7rem] text-gold-bright">◈</span>
-                Paliers d&apos;ascension
+                {t("ascensionTiers")}
               </h3>
               <div className="mt-3 flex flex-wrap items-center gap-1">
                 {character.ascensionLevels.map((lvl, i) => (
@@ -3133,18 +3143,18 @@ export default function CharacterDetailClient({
             <div className="border border-line/25 bg-panel/85 backdrop-blur-sm p-3 md:p-5">
               <h2 className="flex items-center gap-2 text-base md:text-lg font-semibold text-parch">
                 <Sparkles className="h-4 w-4 text-gold/80" />
-                Competences
+                {t("tabSkills")}
               </h2>
               <div className="mt-4 flex flex-wrap gap-4">
-                {([["skill1", "Comp. 1"], ["skill2", "Comp. 2"], ["skill3", "Comp. 3"]] as const).map(([key, label]) => {
+                {([["skill1", "skillType1"], ["skill2", "skillType2"], ["skill3", "skillType3"]] as const).map(([key, labelKey]) => {
                   const icon = character.skillIcons[key].publicPath;
                   if (!icon) return null;
                   return (
                     <div key={key} className="flex flex-col items-center gap-2">
                       <div className="flex h-16 w-16 items-center justify-center rounded-full border border-white/10 bg-panel/80">
-                        <img src={icon} alt={label} width={40} height={40} className="h-10 w-10 object-contain" />
+                        <img src={icon} alt={t(labelKey)} width={40} height={40} className="h-10 w-10 object-contain" />
                       </div>
-                      <span className="text-xs text-muted">{label}</span>
+                      <span className="text-xs text-muted">{t(labelKey)}</span>
                     </div>
                   );
                 })}
@@ -3233,7 +3243,7 @@ export default function CharacterDetailClient({
                     onClick={() =>
                       setZoomedPortrait({
                         src,
-                        alt: `${displayName} - ${PORTRAIT_LABELS[type]}`,
+                        alt: `${displayName} - ${t(PORTRAIT_LABEL_KEYS[type])}`,
                       })
                     }
                     className="group overflow-hidden border border-white/10 bg-ink/60 transition-colors hover:border-gold/40"
@@ -3241,7 +3251,7 @@ export default function CharacterDetailClient({
                     <div className="relative aspect-square overflow-hidden">
                       <img
                         src={src}
-                        alt={`${PORTRAIT_LABELS[type]}`}
+                        alt={t(PORTRAIT_LABEL_KEYS[type])}
                         width={200}
                         height={200}
                         loading="lazy"
@@ -3252,7 +3262,7 @@ export default function CharacterDetailClient({
                       </div>
                     </div>
                     <p className="px-2 py-1.5 text-center text-xs text-parch/85">
-                      {PORTRAIT_LABELS[type]}
+                      {t(PORTRAIT_LABEL_KEYS[type])}
                     </p>
                   </button>
                 );

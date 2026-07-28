@@ -481,7 +481,23 @@
     "portraitGallery": "ポートレートギャラリー",
     "internalName": "内部名",
     "characterId": "キャラクターID",
-    "characterLevel": "キャラクターレベル"
+    "characterLevel": "キャラクターレベル",
+    "tabSkills": "スキル",
+    "skillType1": "スキル1",
+    "skillType2": "スキル2",
+    "skillType3": "スキル3",
+    "skillTypePassive": "パッシブ",
+    "skillTypeExtraPassive": "追加パッシブ",
+    "skillTypeUltraPassive": "アルティメットパッシブ",
+    "skillTypeMovement": "移動",
+    "skillTypePhantomPassive": "ファントムパッシブ",
+    "statHP": "HP",
+    "statSkillDmg": "スキルダメージ",
+    "statCritDmg": "会心ダメージ",
+    "statMaxSpLong": "最大ルシディティ",
+    "quickBuild": "クイックビルド",
+    "quickBuildOf": "クイックビルド — {name}",
+    "ascensionTiers": "突破段階"
   },
   "items": {
     "libraryLabel": "アイテムライブラリ",
@@ -841,7 +857,8 @@
     "views": "閲覧数",
     "pageLibraryTitle": "ビルドライブラリ",
     "pageLibraryDescription": "コミュニティが共有したビルドを閲覧し、詳細を開いたり、出発点として使用したりできます。",
-    "pageCreateBuild": "ビルドを作成"
+    "pageCreateBuild": "ビルドを作成",
+    "reportReasonTooShort": "もう少し具体的な理由を入力してください。"
   },
   "account": {
     "metaTitle": "プロフィール - DNA Interactive",

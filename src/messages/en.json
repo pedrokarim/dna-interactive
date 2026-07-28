@@ -481,7 +481,23 @@
     "portraitGallery": "Portrait gallery",
     "internalName": "Internal name",
     "characterId": "Character ID",
-    "characterLevel": "Character level"
+    "characterLevel": "Character level",
+    "tabSkills": "Skills",
+    "skillType1": "Skill 1",
+    "skillType2": "Skill 2",
+    "skillType3": "Skill 3",
+    "skillTypePassive": "Passive",
+    "skillTypeExtraPassive": "Extra passive",
+    "skillTypeUltraPassive": "Ultimate passive",
+    "skillTypeMovement": "Movement",
+    "skillTypePhantomPassive": "Phantom passive",
+    "statHP": "HP",
+    "statSkillDmg": "Skill DMG",
+    "statCritDmg": "Crit DMG",
+    "statMaxSpLong": "Max Lucidity",
+    "quickBuild": "Quick build",
+    "quickBuildOf": "Quick build — {name}",
+    "ascensionTiers": "Ascension tiers"
   },
   "items": {
     "libraryLabel": "Items Library",
@@ -841,7 +857,8 @@
     "views": "Views",
     "pageLibraryTitle": "Build library",
     "pageLibraryDescription": "Browse builds shared by the community, open their full details, or use them as a starting point.",
-    "pageCreateBuild": "Create a build"
+    "pageCreateBuild": "Create a build",
+    "reportReasonTooShort": "Please give a slightly more specific reason."
   },
   "account": {
     "metaTitle": "Profile - DNA Interactive",
