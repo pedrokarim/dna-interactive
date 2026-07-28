@@ -16,6 +16,8 @@ export type DnaCharacterCardProps = {
   portrait?: string | null;
   /** Slot en haut à droite (ex. bouton favori). */
   topRight?: ReactNode;
+  /** Slot en haut à gauche (ex. pastille « nouveau »). */
+  topLeft?: ReactNode;
   /** Overlays libres (ex. bouton zoom). */
   children?: ReactNode;
   className?: string;
@@ -25,7 +27,7 @@ export type DnaCharacterCardProps = {
  * Carte de personnage (grille) — portrait, lueur teintée par élément, badges
  * d'élément (vraies icônes du jeu, multi-élément), étoiles, tags d'armes.
  */
-export function DnaCharacterCard({ name, subtitle, element, elements, rarity = 5, weapons = [], portrait, topRight, children, className }: DnaCharacterCardProps) {
+export function DnaCharacterCard({ name, subtitle, element, elements, rarity = 5, weapons = [], portrait, topRight, topLeft, children, className }: DnaCharacterCardProps) {
   const el = ELEMENTS[element];
   const elementList = elements && elements.length > 0 ? elements : [element];
   return (
@@ -59,6 +61,7 @@ export function DnaCharacterCard({ name, subtitle, element, elements, rarity = 5
           {elementList.map((e) => (
             <DnaElementBadge key={e} element={e} size={30} />
           ))}
+          {topLeft}
         </span>
         {topRight}
       </div>

@@ -37,9 +37,11 @@ import FilterChips from "@/components/list/FilterChips";
 import ViewModeToggle from "@/components/list/ViewModeToggle";
 import { useListViewMode } from "@/components/list/useListViewMode";
 import { DnaCharacterCard } from "@/components/dna/CharacterCard";
+import { DnaNouveau } from "@/components/dna/Badges";
 import { DnaCornerBrackets } from "@/components/dna/CornerBrackets";
 import { useDialogA11y } from "@/components/dna/useDialogA11y";
 import { cn } from "@/components/dna/cn";
+import { isCharacterRecent, newCharacterRank } from "@/lib/characters/new-releases";
 import type { ElementKey } from "@/components/dna/elements";
 
 type SortMode = "default" | "name" | "element" | "rarity";
@@ -285,6 +287,14 @@ export default function CharactersGridClient({
       .map(({ character }) => character);
 
     filtered.sort((a, b) => {
+      // Les nouveautés remontent en tête, quel que soit le tri choisi — sauf
+      // si l'utilisateur a explicitement demandé un ordre (nom, élément,
+      // rareté), auquel cas son choix prime et on ne le contredit pas.
+      if (sortMode === "default") {
+        const rankA = newCharacterRank(a.charId);
+        const rankB = newCharacterRank(b.charId);
+        if (rankA !== rankB) return rankA - rankB;
+      }
       if (sortMode === "name") {
         const langCode = selectedLanguages[0] ?? "EN";
         const nameA = a.translations[langCode]?.name ?? a.internalName;
@@ -937,6 +947,11 @@ export default function CharactersGridClient({
                   element={character.element.key as ElementKey}
                   elements={(character.elements ?? [character.element]).map((e) => e.key as ElementKey)}
                   rarity={character.rarity ?? 5}
+                  topLeft={
+                    isCharacterRecent(character.charId) ? (
+                      <DnaNouveau>{tc("new")}</DnaNouveau>
+                    ) : null
+                  }
                   weapons={character.weaponTags}
                   portrait={portrait}
                   topRight={
