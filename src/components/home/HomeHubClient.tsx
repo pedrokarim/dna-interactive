@@ -29,6 +29,9 @@ import {
 import { Link } from "@/i18n/navigation";
 import { DnaCornerBrackets, DnaNouveau, DnaTag, DnaRibbon, cn } from "@/components/dna";
 import { EventCalendar } from "@/components/home/EventCalendar";
+import NewCharactersBanner from "@/components/NewCharactersBanner";
+import CommunityCards from "@/components/CommunityCards";
+import BuildShowcase from "@/components/BuildShowcase";
 import type { CalendarEvent } from "@/lib/events/calendar";
 import { useAppSettings } from "@/lib/settings/useAppSettings";
 import { CONTACT_INFO } from "@/lib/constants";
@@ -307,6 +310,14 @@ export default function HomeHubClient({ codes, builds, communityCount, stats, ca
         </div>
       </section>
 
+      {/* =============================================== NOUVEAUX PERSONNAGES */}
+      {/* Placé juste après le hero : c'est l'actualité du jeu, donc la première
+          chose à voir après la marque, avant les grilles d'outils. Le composant
+          est partagé avec /features — il porte lui-même son titre et son fond. */}
+      <section className="mt-10">
+        <NewCharactersBanner />
+      </section>
+
       {/* =============================================== BASE DE DONNÉES */}
       <section className="mt-10 flex flex-col gap-4">
         <SectionRibbon label={t("database")} index="03" />
@@ -370,37 +381,56 @@ export default function HomeHubClient({ codes, builds, communityCount, stats, ca
       </section>
 
       {/* =============================================== BUILDS DE PERSONNAGES */}
-      {builds.length > 0 ? (
-        <section className="mt-10 flex flex-col gap-4">
-          <SectionRibbon
-            label={t("characterBuilds")}
-            action={<Link href="/builds" className="font-caps text-[0.6rem] uppercase tracking-[0.16em] text-gold hover:text-gold-bright">{t("viewAll")} →</Link>}
-          />
+      {/* Une seule section, lue de haut en bas : les chiffres posent le contexte,
+          puis les builds réels, puis le showcase des cartes exportables (le plus
+          gros visuel, donc en dernier). */}
+      <section className="mt-10 flex flex-col gap-4">
+        <SectionRibbon
+          label={t("characterBuilds")}
+          action={<Link href="/builds" className="font-caps text-[0.6rem] uppercase tracking-[0.16em] text-gold hover:text-gold-bright">{t("viewAll")} →</Link>}
+        />
+
+        {/* 1. les chiffres du site */}
+        <div className="grid gap-4 sm:grid-cols-3">
+          {STATS.map((s) => {
+            const Icon = s.icon;
+            return (
+              <div key={s.label} className="relative flex items-center gap-4 rounded-sm border border-line/20 bg-panel/60 p-4">
+                <DnaCornerBrackets size={10} />
+                <span className="flex h-10 w-10 items-center justify-center rounded-sm border border-gold/30 bg-gold/8 text-gold">
+                  <Icon className="h-5 w-5" />
+                </span>
+                <span>
+                  <span className="block font-display text-2xl font-semibold tabular-nums text-parch">{s.value}</span>
+                  <span className="block font-caps text-[0.55rem] uppercase tracking-[0.2em] text-muted">{s.label}</span>
+                </span>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* 2. les builds partagés par la communauté */}
+        {builds.length > 0 ? (
           <div className="-mx-1 flex gap-4 overflow-x-auto px-1 pb-2 custom-scrollbar">
             {builds.map((b) => (
               <BuildShowcaseCard key={b.id} build={b} />
             ))}
           </div>
-        </section>
-      ) : null}
+        ) : null}
 
-      {/* =============================================== bandeau stats rapide */}
-      <section className="mt-10 grid gap-4 sm:grid-cols-3">
-        {STATS.map((s) => {
-          const Icon = s.icon;
-          return (
-            <div key={s.label} className="relative flex items-center gap-4 rounded-sm border border-line/20 bg-panel/60 p-4">
-              <DnaCornerBrackets size={10} />
-              <span className="flex h-10 w-10 items-center justify-center rounded-sm border border-gold/30 bg-gold/8 text-gold">
-                <Icon className="h-5 w-5" />
-              </span>
-              <span>
-                <span className="block font-display text-2xl font-semibold tabular-nums text-parch">{s.value}</span>
-                <span className="block font-caps text-[0.55rem] uppercase tracking-[0.2em] text-muted">{s.label}</span>
-              </span>
-            </div>
-          );
-        })}
+        {/* 3. le carrousel des cartes de build exportables (repris de /features) */}
+        <div className="-mx-4 sm:-mx-6 lg:-mx-8">
+          <BuildShowcase />
+        </div>
+      </section>
+
+      {/* =============================================== COMMUNAUTÉ & RESSOURCES */}
+      {/* Mêmes cartes que /features (streamer + wiki), mais pleine largeur :
+          le composant centrait via `mx-auto max-w-4xl`, ce qui cassait
+          l'alignement du bento. On lui passe la grille du hub à la place. */}
+      <section className="mt-10 flex flex-col gap-4">
+        <SectionRibbon label={t("communityResources")} index="00" />
+        <CommunityCards className="grid gap-4 md:grid-cols-2" />
       </section>
     </div>
   );

@@ -9,11 +9,17 @@ const PRIMARY_BTN =
 const GHOST_BTN =
   "inline-flex items-center gap-2 rounded-sm border border-white/20 bg-gradient-to-b from-panel/70 to-ink/70 px-6 py-3 text-sm font-medium text-parch transition-all duration-200 hover:-translate-y-px hover:border-white/45 hover:text-white";
 
-export default function CommunityCards() {
+/**
+ * Cartes communauté (streamer + wiki). Le conteneur est surchargeable :
+ * `/features` les veut centrées et bornées (mise en page marketing), le hub
+ * les veut pleine largeur pour s'aligner sur le bento. D'où `className` plutôt
+ * qu'un centrage codé en dur.
+ */
+export default function CommunityCards({ className }: { className?: string } = {}) {
   const t = useTranslations("community");
   const tHome = useTranslations("home");
   return (
-    <div className="mx-auto grid max-w-4xl gap-6 md:grid-cols-2">
+    <div className={className ?? "mx-auto grid max-w-4xl gap-6 md:grid-cols-2"}>
       {/* Streamer Card */}
       <motion.div
         className="group relative border border-line/25 bg-panel/85 p-8 backdrop-blur-sm transition-colors duration-300 hover:border-gold/40"
@@ -31,7 +37,7 @@ export default function CommunityCards() {
             transition={{ type: "spring", stiffness: 300 }}
           >
             <img
-              src="/assets/images/ffee63d2-5cba-4a8f-910f-7b67f97ccc96-profile_image-70x70.png"
+              src="/assets/images/13accd13-6ad2-401a-836f-12eec66e9ee4-profile_image-70x70.png"
               alt={tHome("velkaineAlt")}
               width={64}
               height={64}

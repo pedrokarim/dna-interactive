@@ -28,7 +28,7 @@ const ALL_MESSAGES: Record<Locale, typeof frMessages> = {
   tc: tcMessages as typeof frMessages,
 };
 
-type CharKey = "flora" | "hilda" | "nvzhu02" | "nanzhu02";
+type CharKey = "ada" | "hilda" | "nvzhu02" | "nanzhu02";
 
 const SHOWCASE_CHARACTERS: Array<{
   id: string;
@@ -43,7 +43,27 @@ const SHOWCASE_CHARACTERS: Array<{
   accentColor: string;
   ringColor: string;
 }> = [
-  // Hilda en vedette (position 0 = active par d\u00E9faut au chargement) \u2014 Pyro,
+  // Ada en vedette (position 0 = active par d\u00E9faut au chargement) \u2014 Hydro,
+  // sortie 28 juillet 2026 avec la 1.5 "Paradise Prelude". Obtenue gratuitement
+  // via le Th\u00E9\u00E2tre immersif ; arme signature The Best Day.
+  // ATTENTION au nom : l'interne dans Char.lua est "Eve" (d'o\u00F9 le slug
+  // char-eve), mais le jeu lui donne un nom DIFF\u00C9RENT par langue \u2014
+  // "Ada" en EN/FR, Yvaine en DE, Eve en ES. Ne pas "corriger" en Eve.
+  // Visuels d\u00E9riv\u00E9s du bust FModel (T_Bust_Eve.png) sous official-v1.5/.
+  {
+    id: "char-eve",
+    slug: "char-eve",
+    key: "ada",
+    name: "Ada",
+    decoText: "\u827E\u9EDB",
+    fullImage: "/assets/official-v1.5/image-ada.webp",
+    fullImageMobile: "/assets/official-v1.5/image-ada-mobile.webp",
+    avatar: "/assets/official-v1.5/avatar-ada.webp",
+    element: "Hydro",
+    accentColor: "cyan",
+    ringColor: "ring-hydro",
+  },
+  // Hilda \u2014 vedette de la 1.4, repli\u00E9e sous Ada. Pyro,
   // sortie 30 juin 2026 (patch 1.4 phase 2). Pas de marketing officiel : on
   // utilise le bust FModel re-encode en WebP (cf. official-v1.4/).
   {
@@ -59,25 +79,9 @@ const SHOWCASE_CHARACTERS: Array<{
     accentColor: "rose",
     ringColor: "ring-crimson-bright",
   },
-  // Flora \u2014 ancienne vedette, repli\u00E9e juste en dessous de Hilda.
-  // Pas de marketing officiel v1.4 : assets d\u00E9riv\u00E9s du bust FModel
-  // (T_Bust_Fuluo.png) re-encod\u00E9 en WebP sous official-v1.4/.
-  // L'asset official-v1.3/image-fs.webp = Fushu, pas Flora \u2014 pr\u00E9fixe fs =
-  // Fushu, et non Flora comme on a pu croire (cf. char-baiheng dans le JSON
-  // dont le nom d'affichage est Fushu).
-  {
-    id: "char-fuluo",
-    slug: "char-fuluo",
-    key: "flora",
-    name: "Flora",
-    decoText: "\u5F17\u6D1B\u62C9",
-    fullImage: "/assets/official-v1.4/image-flora.webp",
-    fullImageMobile: "/assets/official-v1.4/image-flora-mobile.webp",
-    avatar: "/assets/official-v1.4/avatar-flora.webp",
-    element: "Umbro",
-    accentColor: "indigo",
-    ringColor: "ring-gold",
-  },
+  // Flora est sortie du showcase \u00E0 l'arriv\u00E9e d'Ada (1.5) : on garde 4 entr\u00E9es,
+  // les plus r\u00E9centes. Ses visuels restent sous official-v1.4/ si on veut la
+  // remettre. NB : official-v1.3/image-fs.webp = Fushu, PAS Flora.
   // Formes Umbro du Phoxhunter (protagoniste) \u2014 d\u00E9bloqu\u00E9es via la narration
   // du patch 1.4 "Silver Torrent, Rising Star". Pas de marketing officiel
   // d\u00E9di\u00E9, on utilise les busts FModel re-encod\u00E9s en WebP (cf. official-v1.4/).
