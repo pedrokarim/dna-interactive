@@ -76,8 +76,8 @@
         "modName": "Talismanführender Wishen",
         "description": "Ein Wishen, der zerstörerische Talismane mühelos einsetzt – das eigentliche Rätsel ist allerdings, woher er sie überhaupt hervorzieht.",
         "demonWedgeName": null,
-        "functionLabel": "El daño aumenta hasta el 600% del ATQ del personaje principal",
-        "passiveEffectsDescription": "Derrota a 30 enemigos: El daño aumenta hasta el 12000% del ATQ del personaje principal.\n Derrota a 60 enemigos: Daño de Habilidad +150%.\nDerrota a 90 enemigos: Tiempo de Recarga de la Habilidad de Apoyo -50%.\nDerrota a 120 enemigos: Daño de Habilidad +90%.",
+        "functionLabel": "Damage increases to 600% of the main character's ATK",
+        "passiveEffectsDescription": "\nDefeat 30 enemies: Damage increases to 12000% of the main character's ATK.\nDefeat 60 enemies: Skill Intensity +150%.\nDefeat 90 enemies: Support Skill cooldown -50%.\nDefeat 120 enemies: Skill DMG +90%.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -258,8 +258,8 @@
         "modName": "Asketischer Wishen",
         "description": "Er wirkt ruhig und gefasst – doch wehe dem, der ihn reizt: Die Folgen könnten weit über das Erwartete hinausgehen.",
         "demonWedgeName": null,
-        "functionLabel": "El daño aumenta hasta el 400% del ATQ del personaje principal",
-        "passiveEffectsDescription": "Derrota a 30 enemigos: El daño aumenta hasta el 1000% del ATQ del personaje principal.\nDerrota a 60 enemigos: Multidisparo +75%.\nDerrota a 90 enemigos: Tiempo de Recarga de la Habilidad de Apoyo -50%.\nDerrota a 120 enemigos: Vel. de Ataque de Armas a Distancia +90%.",
+        "functionLabel": "Damage increases to 400% of the main character's ATK",
+        "passiveEffectsDescription": "\nDefeat 30 enemies: Damage increases to 1000% of the main character's ATK.\nDefeat 60 enemies: Multishot +75%.\nDefeat 90 enemies: Support Skill cooldown -50%.\nDefeat 120 enemies: Ranged Weapon Attack Speed +90%.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -440,8 +440,8 @@
         "modName": "Klingengetragener Wishen",
         "description": "Ein Meister des Schwertflugs. Seine Klingen treiben und wirbeln mit müheloser Anmut – die perfekte Kulisse für ein Foto, wenn er sie nur ausleihen würde.",
         "demonWedgeName": null,
-        "functionLabel": "Genera 3 hojas adicionales",
-        "passiveEffectsDescription": "Derrota a 30 enemigos: Genera 3 Hojas adicionales.\nDerrota a 60 enemigos: Daño de Arma +135%%.\nDerrota a 90 enemigos: Tiempo de Recarga de la Habilidad de Apoyo -50%.\nDerrota a 120 enemigos: Vel. de Ataque de Armas Cuerpo a Cuerpo +90%.",
+        "functionLabel": "Generates 3 additional blades",
+        "passiveEffectsDescription": "\nDefeat 30 enemies: Generates 3 additional blades.\nDefeat 60 enemies: Weapon DMG +135%.\nDefeat 90 enemies: Support Skill cooldown -50%.\nDefeat 120 enemies: Melee Weapon Attack Speed +90%.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -622,8 +622,8 @@
         "modName": "Wiesenwandelnder Wishen",
         "description": "Er gleitet stets mit leichter, unbeschwerter Grazie dahin, und wenn du dich niedergeschlagen fühlst, könnte eine sanfte Berührung von ihm deine Stimmung heben.",
         "demonWedgeName": null,
-        "functionLabel": "El daño aumenta hasta el 1000% del ATQ del personaje principal",
-        "passiveEffectsDescription": "Derrota a 30 enemigos: El daño aumenta hasta el 12000% del ATQ del personaje principal.\n Derrota a 60 enemigos: Rango de Habilidad +100% y Duración de Habilidad +100%.\nDerrota a 90 enemigos: Tiempo de Recarga de la Habilidad de Apoyo -50%.\nDerrota a 120 enemigos: Daño de las Invocaciones +500%.",
+        "functionLabel": "Damage increases to 1000% of the main character's ATK",
+        "passiveEffectsDescription": "\nDefeat 30 enemies: Damage increases to 12000% of the main character's ATK.\nDefeat 60 enemies: Skill Range +100%; Skill Duration +100%.\nDefeat 90 enemies: Support Skill cooldown -50%.\nDefeat 120 enemies: Damage dealt by summons +500%.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -663,7 +663,7 @@
         "description": "いつも気ままでゆったりしたムユウセイ。機嫌が悪いときは、頭をなでれば落ち着いてくれるかもしれない。",
         "demonWedgeName": null,
         "functionLabel": "ダメージがメインキャラ攻撃力の1000%までアップ",
-        "passiveEffectsDescription": "敵を30体撃破：ダメージがメインキャラ攻撃の12000%までアップ。\n 敵を60体撃破：スキル範囲が100%アップし、スキル耐久が100%アップ。\n 敵を90体撃破：支援スキルのクールダウンが50%短縮。\n 敵を120体撃破：自身の召喚物が与えるダメージが500%アップ。",
+        "passiveEffectsDescription": "敵を30体撃破：ダメージがメインキャラ攻撃の12000%までアップ。\n 敵を60体撃破：スキル範囲が100%アップし、スキル耐久が100%アップ。\n 敵を90体撃破：支援スキルのクールダウンが50%短縮。\n 敵を120体撃破：自身の召喚ユニットが与えるダメージが500%アップ。",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -826,7 +826,7 @@
         "description": "Ein Geniemon, der häufig auf Schlachtfeldern, in Ruinen oder auf Friedhöfen auftaucht und sich von Kadavern ernährt. Mit seinen Zwillingshörnern und düsteren Gewohnheiten gilt er in vielen Gegenden als böses Omen.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "El personaje principal y sus Compañeros de combate obtienen: ATQ Umbro +#1, PV Máx. +#2.",
+        "passiveEffectsDescription": "\nDie Hauptfigur und die Kampfbegleiter erhalten:\n Umbro-ANG +#1, Max. LP +#2",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -1059,7 +1059,7 @@
         "description": "Ein Geniemon, der häufig auf Schlachtfeldern, in Ruinen oder auf Friedhöfen auftaucht und sich von Kadavern ernährt. Mit seinen Zwillingshörnern und düsteren Gewohnheiten gilt er in vielen Gegenden als böses Omen.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "El personaje principal y sus Compañeros de combate obtienen: ATQ Umbro +#1, PV Máx. +#2.",
+        "passiveEffectsDescription": "\nDie Hauptfigur und die Kampfbegleiter erhalten:\n Umbro-ANG +#1, Max. LP +#2",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -1292,7 +1292,7 @@
         "description": "Ein Geniemon, der häufig auf Schlachtfeldern, in Ruinen oder auf Friedhöfen auftaucht und sich von Kadavern ernährt. Mit seinen Zwillingshörnern und düsteren Gewohnheiten gilt er in vielen Gegenden als böses Omen.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "El personaje principal y sus Compañeros de combate obtienen: ATQ Umbro +#1, PV Máx. +#2.",
+        "passiveEffectsDescription": "\nDie Hauptfigur und die Kampfbegleiter erhalten:\n Umbro-ANG +#1, Max. LP +#2",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -1526,7 +1526,7 @@
         "description": "Ein wasserliebender Geniemon, der in der Luft schwebt und seinen halbtransparenten Körper meist zusammenzieht, sodass er im Sonnenlicht kaum zu sehen ist. Erst bei Regen entfaltet er seinen Leib und blüht wie eine Blume am Himmel auf.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "El personaje principal y sus Compañeros de combate obtienen: ATQ Hydro +#1, PV Máx. +#2.",
+        "passiveEffectsDescription": "\nDie Hauptfigur und die Kampfbegleiter erhalten:\n Hydro-ANG +#1, Max. LP +#2",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -1759,7 +1759,7 @@
         "description": "Ein wasserliebender Geniemon, der in der Luft schwebt und seinen halbtransparenten Körper meist zusammenzieht, sodass er im Sonnenlicht kaum zu sehen ist. Erst bei Regen entfaltet er seinen Leib und blüht wie eine Blume am Himmel auf.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "El personaje principal y sus Compañeros de combate obtienen: ATQ Hydro +#1, PV Máx. +#2.",
+        "passiveEffectsDescription": "\nDie Hauptfigur und die Kampfbegleiter erhalten:\n Hydro-ANG +#1, Max. LP +#2",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -1992,7 +1992,7 @@
         "description": "Ein wasserliebender Geniemon, der in der Luft schwebt und seinen halbtransparenten Körper meist zusammenzieht, sodass er im Sonnenlicht kaum zu sehen ist. Erst bei Regen entfaltet er seinen Leib und blüht wie eine Blume am Himmel auf.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "El personaje principal y sus Compañeros de combate obtienen: ATQ Hydro +#1, PV Máx. +#2.",
+        "passiveEffectsDescription": "\nDie Hauptfigur und die Kampfbegleiter erhalten:\n Hydro-ANG +#1, Max. LP +#2",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -2226,7 +2226,7 @@
         "description": "Ein Geniemon, dessen Körper größtenteils aus wärmeerzeugenden Drüsen besteht; sobald er sein Maul öffnet, strömen glühende Hitzewellen aus seinem Inneren.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "El personaje principal y sus Compañeros de combate obtienen: ATQ Pyro +#1, PV Máx. +#2.",
+        "passiveEffectsDescription": "\nDie Hauptfigur und die Kampfbegleiter erhalten:\n Pyro-ANG +#1, Max. LP +#2",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -2460,7 +2460,7 @@
         "description": "Ein Geniemon, dessen Körper größtenteils aus wärmeerzeugenden Drüsen besteht; sobald er sein Maul öffnet, strömen glühende Hitzewellen aus seinem Inneren.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "El personaje principal y sus Compañeros de combate obtienen: ATQ Pyro +#1, PV Máx. +#2.",
+        "passiveEffectsDescription": "\nDie Hauptfigur und die Kampfbegleiter erhalten:\n Pyro-ANG +#1, Max. LP +#2",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -2694,7 +2694,7 @@
         "description": "Ein Geniemon, dessen Körper größtenteils aus wärmeerzeugenden Drüsen besteht; sobald er sein Maul öffnet, strömen glühende Hitzewellen aus seinem Inneren.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "El personaje principal y sus Compañeros de combate obtienen: ATQ Pyro +#1, PV Máx. +#2.",
+        "passiveEffectsDescription": "\nDie Hauptfigur und die Kampfbegleiter erhalten:\n Pyro-ANG +#1, Max. LP +#2",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -2929,7 +2929,7 @@
         "description": "Ein Geniemon, dessen Körper größtenteils aus wärmeerzeugenden Drüsen besteht; sobald er sein Maul öffnet, strömen glühende Hitzewellen aus seinem Inneren.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "El personaje principal y sus Compañeros de combate obtienen: ATQ Pyro +#1, PV Máx. +#2.",
+        "passiveEffectsDescription": "\nDie Hauptfigur und die Kampfbegleiter erhalten:\n Pyro-ANG +#1, Max. LP +#2",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -3163,7 +3163,7 @@
         "description": "Ein häufig in Hochländern entdeckter Geniemon, der wegen der hervorragenden Leitfähigkeit seines Fells einst stark von Menschen bejagt wurde. Trifft man ihn heute in der Wildnis, rollt er sich meist blitzschnell zu einer Kugel zusammen und flieht.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "El personaje principal y sus Compañeros de combate obtienen: ATQ Electro +#1, PV Máx. +#2.",
+        "passiveEffectsDescription": "\nDie Hauptfigur und die Kampfbegleiter erhalten:\n Elektro-ANG +#1, Max. LP +#2",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -3397,7 +3397,7 @@
         "description": "Ein häufig in Hochländern entdeckter Geniemon, der wegen der hervorragenden Leitfähigkeit seines Fells einst stark von Menschen bejagt wurde. Trifft man ihn heute in der Wildnis, rollt er sich meist blitzschnell zu einer Kugel zusammen und flieht.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "El personaje principal y sus Compañeros de combate obtienen: ATQ Electro +#1, PV Máx. +#2.",
+        "passiveEffectsDescription": "\nDie Hauptfigur und die Kampfbegleiter erhalten:\n Elektro-ANG +#1, Max. LP +#2",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -3631,7 +3631,7 @@
         "description": "Ein häufig in Hochländern entdeckter Geniemon, der wegen der hervorragenden Leitfähigkeit seines Fells einst stark von Menschen bejagt wurde. Trifft man ihn heute in der Wildnis, rollt er sich meist blitzschnell zu einer Kugel zusammen und flieht.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "El personaje principal y sus Compañeros de combate obtienen: ATQ Electro +#1, PV Máx. +#2.",
+        "passiveEffectsDescription": "\nDie Hauptfigur und die Kampfbegleiter erhalten:\n Elektro-ANG +#1, Max. LP +#2",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -3866,7 +3866,7 @@
         "description": "Ein häufig in Hochländern entdeckter Geniemon, der wegen der hervorragenden Leitfähigkeit seines Fells einst stark von Menschen bejagt wurde. Trifft man ihn heute in der Wildnis, rollt er sich meist blitzschnell zu einer Kugel zusammen und flieht.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "El personaje principal y sus Compañeros de combate obtienen: ATQ Electro +#1, PV Máx. +#2.",
+        "passiveEffectsDescription": "\nDie Hauptfigur und die Kampfbegleiter erhalten:\n Elektro-ANG +#1, Max. LP +#2",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -4100,7 +4100,7 @@
         "description": "Ein parasitärer Geniemon, der im Inneren von Pilzen heranwächst und allmählich die Kontrolle über seinen Wirt übernimmt. Das „Puff-Puff“-Geräusch, das er bei der Bewegung macht, entsteht, wenn Luft durch den Hohlraum zwischen seinem eigentlichen Körper und dem Pilz strömt.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "El personaje principal y sus Compañeros de combate obtienen: ATQ Anemo +#1, PV Máx. +#2.",
+        "passiveEffectsDescription": "\nDie Hauptfigur und die Kampfbegleiter erhalten:\n Anemo-ANG +#1, Max. LP +#2",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -4334,7 +4334,7 @@
         "description": "Ein parasitärer Geniemon, der im Inneren von Pilzen heranwächst und allmählich die Kontrolle über seinen Wirt übernimmt. Das „Puff-Puff“-Geräusch, das er bei der Bewegung macht, entsteht, wenn Luft durch den Hohlraum zwischen seinem eigentlichen Körper und dem Pilz strömt.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "El personaje principal y sus Compañeros de combate obtienen: ATQ Anemo +#1, PV Máx. +#2.",
+        "passiveEffectsDescription": "\nDie Hauptfigur und die Kampfbegleiter erhalten:\n Anemo-ANG +#1, Max. LP +#2",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -4568,7 +4568,7 @@
         "description": "Ein parasitärer Geniemon, der im Inneren von Pilzen heranwächst und allmählich die Kontrolle über seinen Wirt übernimmt. Das „Puff-Puff“-Geräusch, das er bei der Bewegung macht, entsteht, wenn Luft durch den Hohlraum zwischen seinem eigentlichen Körper und dem Pilz strömt.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "El personaje principal y sus Compañeros de combate obtienen: ATQ Anemo +#1, PV Máx. +#2.",
+        "passiveEffectsDescription": "\nDie Hauptfigur und die Kampfbegleiter erhalten:\n Anemo-ANG +#1, Max. LP +#2",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -4803,7 +4803,7 @@
         "description": "Ein parasitärer Geniemon, der im Inneren von Pilzen heranwächst und allmählich die Kontrolle über seinen Wirt übernimmt. Das „Puff-Puff“-Geräusch, das er bei der Bewegung macht, entsteht, wenn Luft durch den Hohlraum zwischen seinem eigentlichen Körper und dem Pilz strömt.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "El personaje principal y sus Compañeros de combate obtienen: ATQ Anemo +#1, PV Máx. +#2.",
+        "passiveEffectsDescription": "\nDie Hauptfigur und die Kampfbegleiter erhalten:\n Anemo-ANG +#1, Max. LP +#2",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -5037,7 +5037,7 @@
         "description": "Ein flinker, schelmischer und gieriger Geniemon. Wenn du ihn siehst, prüfe bitte sofort, ob dir nicht etwas Glänzendes fehlt.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "El personaje principal y sus Compañeros de combate obtienen: ATQ Lumino +#1, PV Máx. +#2.",
+        "passiveEffectsDescription": "\nDie Hauptfigur und die Kampfbegleiter erhalten:\n Lumino-ANG +#1, Max. LP +#2",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -5270,7 +5270,7 @@
         "description": "Ein flinker, schelmischer und gieriger Geniemon. Wenn du ihn siehst, prüfe bitte sofort, ob dir nicht etwas Glänzendes fehlt.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "El personaje principal y sus Compañeros de combate obtienen: ATQ Lumino +#1, PV Máx. +#2.",
+        "passiveEffectsDescription": "\nDie Hauptfigur und die Kampfbegleiter erhalten:\n Lumino-ANG +#1, Max. LP +#2",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -5503,7 +5503,7 @@
         "description": "Ein flinker, schelmischer und gieriger Geniemon. Wenn du ihn siehst, prüfe bitte sofort, ob dir nicht etwas Glänzendes fehlt.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "El personaje principal y sus Compañeros de combate obtienen: ATQ Lumino +#1, PV Máx. +#2.",
+        "passiveEffectsDescription": "\nDie Hauptfigur und die Kampfbegleiter erhalten:\n Lumino-ANG +#1, Max. LP +#2",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -5737,7 +5737,7 @@
         "description": "Ein scheuer, aasfressender Geniemon, der alles hortet, was er tragen kann: Ein Teil dient ihm als Nahrung, der Rest als Nistmaterial, mit dem er seine Kisten ausstopft.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "Rango de Recogida Automática +#3 m, EXP obtenida de enemigos derrotados +#2 y #1 de probabilidad de obtener botín adicional.",
+        "passiveEffectsDescription": "Sammelradius +#3 m, erhaltene EP durch handlungsunfähige Gegner +#2 und eine Chance von #1, dass Bonus-Beute erscheint.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -5972,7 +5972,7 @@
         "description": "Ein scheuer, aasfressender Geniemon, der alles hortet, was er tragen kann: Ein Teil dient ihm als Nahrung, der Rest als Nistmaterial, mit dem er seine Kisten ausstopft.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "Rango de Recogida Automática +#3 m, EXP obtenida de enemigos derrotados +#2 y #1 de probabilidad de obtener botín adicional.",
+        "passiveEffectsDescription": "Sammelradius +#3 m, erhaltene EP durch handlungsunfähige Gegner +#2 und eine Chance von #1, dass Bonus-Beute erscheint.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -6207,7 +6207,7 @@
         "description": "Ein scheuer, aasfressender Geniemon, der alles hortet, was er tragen kann: Ein Teil dient ihm als Nahrung, der Rest als Nistmaterial, mit dem er seine Kisten ausstopft.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "Rango de Recogida Automática +#3 m, EXP obtenida de enemigos derrotados +#2 y #1 de probabilidad de obtener botín adicional.",
+        "passiveEffectsDescription": "Sammelradius +#3 m, erhaltene EP durch handlungsunfähige Gegner +#2 und eine Chance von #1, dass Bonus-Beute erscheint.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -6443,7 +6443,7 @@
         "description": "Ein scheuer, aasfressender Geniemon, der alles hortet, was er tragen kann: Ein Teil dient ihm als Nahrung, der Rest als Nistmaterial, mit dem er seine Kisten ausstopft.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "Rango de Recogida Automática +#3 m, EXP obtenida de enemigos derrotados +#2 y #1 de probabilidad de obtener botín adicional.",
+        "passiveEffectsDescription": "Sammelradius +#3 m, erhaltene EP durch handlungsunfähige Gegner +#2 und eine Chance von #1, dass Bonus-Beute erscheint.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -6682,7 +6682,7 @@
         "description": "Ein äußerst beweglicher Geniemon, dessen riesige Ohren ihn nicht behindern, sondern ihm vielmehr eine perfekte, stromlinienförmige Gestalt fürs Rennen verleihen.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "Velocidad de Salto +#1, velocidad de Salto Espiral +#2, Fricción Deslizante -#3.",
+        "passiveEffectsDescription": "Sprung-GES +#1, Spiralsprung-GES +#2, Gleitreibung -#3.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -6918,7 +6918,7 @@
         "description": "Ein äußerst beweglicher Geniemon, dessen riesige Ohren ihn nicht behindern, sondern ihm vielmehr eine perfekte, stromlinienförmige Gestalt fürs Rennen verleihen.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "Velocidad de Salto +#1, velocidad de Salto Espiral +#2, Fricción Deslizante -#3.",
+        "passiveEffectsDescription": "Sprung-GES +#1, Spiralsprung-GES +#2, Gleitreibung -#3.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -7154,7 +7154,7 @@
         "description": "Ein äußerst beweglicher Geniemon, dessen riesige Ohren ihn nicht behindern, sondern ihm vielmehr eine perfekte, stromlinienförmige Gestalt fürs Rennen verleihen.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "Velocidad de Salto +#1, velocidad de Salto Espiral +#2, Fricción Deslizante -#3.",
+        "passiveEffectsDescription": "Sprung-GES +#1, Spiralsprung-GES +#2, Gleitreibung -#3.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -7391,7 +7391,7 @@
         "description": "Ein fauler, aber langlebiger Geniemon. Statistiken zufolge verbringt er über 98 % seines Lebens schlafend. Vielleicht ist genau das Geheimnis seiner Langlebigkeit.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "ATQ +#1, PV Máx. +#2, DEF +#3.",
+        "passiveEffectsDescription": "ANG +#1, max. LP +#2, VTD +#3.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -7627,7 +7627,7 @@
         "description": "Ein fauler, aber langlebiger Geniemon. Statistiken zufolge verbringt er über 98 % seines Lebens schlafend. Vielleicht ist genau das Geheimnis seiner Langlebigkeit.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "ATQ +#1, PV Máx. +#2, DEF +#3.",
+        "passiveEffectsDescription": "ANG +#1, max. LP +#2, VTD +#3.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -7863,7 +7863,7 @@
         "description": "Ein fauler, aber langlebiger Geniemon. Statistiken zufolge verbringt er über 98 % seines Lebens schlafend. Vielleicht ist genau das Geheimnis seiner Langlebigkeit.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "ATQ +#1, PV Máx. +#2, DEF +#3.",
+        "passiveEffectsDescription": "ANG +#1, max. LP +#2, VTD +#3.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -8096,7 +8096,7 @@
         "description": "Ein Geniemon, der häufig in verlassenen Gebäuden wie alten Burgen oder Ruinen anzutreffen ist. Aus der Ferne wirkt er wie schwebendes Irrlicht.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "Aumenta el ATQ Umbro para el personaje principal y los Compañeros de combate en #1, y las estadísticas proporcionadas por Cuñas Demoníacas con el prefijo [Fénix] en #2.",
+        "passiveEffectsDescription": "Erhöht den Umbro-ANG der Hauptfigur und der Kampfbegleiter um #1 und die durch Dämonenkeile mit dem Präfix [Phönix] bereitgestellten Attributen um #2.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -8331,7 +8331,7 @@
         "description": "Ein Geniemon, der häufig in verlassenen Gebäuden wie alten Burgen oder Ruinen anzutreffen ist. Aus der Ferne wirkt er wie schwebendes Irrlicht.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "Aumenta el ATQ Umbro para el personaje principal y los Compañeros de combate en #1, y las estadísticas proporcionadas por Cuñas Demoníacas con el prefijo [Fénix] en #2.",
+        "passiveEffectsDescription": "Erhöht den Umbro-ANG der Hauptfigur und der Kampfbegleiter um #1 und die durch Dämonenkeile mit dem Präfix [Phönix] bereitgestellten Attributen um #2.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -8566,7 +8566,7 @@
         "description": "Ein Geniemon, der häufig in verlassenen Gebäuden wie alten Burgen oder Ruinen anzutreffen ist. Aus der Ferne wirkt er wie schwebendes Irrlicht.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "Aumenta el ATQ Umbro para el personaje principal y los Compañeros de combate en #1, y las estadísticas proporcionadas por Cuñas Demoníacas con el prefijo [Fénix] en #2.",
+        "passiveEffectsDescription": "Erhöht den Umbro-ANG der Hauptfigur und der Kampfbegleiter um #1 und die durch Dämonenkeile mit dem Präfix [Phönix] bereitgestellten Attributen um #2.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -8802,7 +8802,7 @@
         "description": "Die puddingartige Weichheit und das niedliche Aussehen machten den Geniemon Zuckerschneehasen einst auf dem ganzen Kontinent Atlasia ungeheuer beliebt. Doch seit ein Gelehrter aus Aethyrie darauf hinwies, dass die zwei schwarzen Punkte keine Augen, sondern seine Eingeweide sind, hat seine Beliebtheit nie wieder das frühere Niveau erreicht.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "Aumenta el ATQ Hydro para el personaje principal y los Compañeros de combate en #1, y las estadísticas proporcionadas por Cuñas Demoníacas con el prefijo [Fénix] en #2.",
+        "passiveEffectsDescription": "Erhöht den Hydro-ANG der Hauptfigur und der Kampfbegleiter um #1 und die durch Dämonenkeile mit dem Präfix [Phönix] bereitgestellten Attributen um #2.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -8829,7 +8829,7 @@
       },
       "FR": {
         "modName": "Lapiniva mystique",
-        "description": "Aussi souple qu’un pudding et adorable à souhait, ce Géniemon — surnommé le Lapiniva — fit un temps fureur sur tout le continent.\nJusqu’au jour où un érudit d’Aethyrie révéla que ses deux petits \"yeux\" noirs... n’étaient pas des yeux, mais une partie de son système interne. Depuis, disons simplement que sa popularité n’est jamais remontée.",
+        "description": "Aussi souple qu’un pudding et adorable à souhait, ce Géniemon — surnommé le Lapiniva — fit un temps fureur sur tout le continent.\nJusqu’au jour où un érudit d’Aethyrie révéla que ses deux petits « yeux » noirs... n’étaient pas des yeux, mais une partie de son système interne. Depuis, disons simplement que sa popularité n’est jamais remontée.",
         "demonWedgeName": null,
         "functionLabel": null,
         "passiveEffectsDescription": "Augmente l’ATQ Hydro du personnage principal et des Partenaires de combat de #1.\nAugmente de #2 les statistiques fournies par les Sceaux démoniaques dont le nom se termine par [Phénix].",
@@ -9038,7 +9038,7 @@
         "description": "Die puddingartige Weichheit und das niedliche Aussehen machten den Geniemon Zuckerschneehasen einst auf dem ganzen Kontinent Atlasia ungeheuer beliebt. Doch seit ein Gelehrter aus Aethyrie darauf hinwies, dass die zwei schwarzen Punkte keine Augen, sondern seine Eingeweide sind, hat seine Beliebtheit nie wieder das frühere Niveau erreicht.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "Aumenta el ATQ Hydro para el personaje principal y los Compañeros de combate en #1, y las estadísticas proporcionadas por Cuñas Demoníacas con el prefijo [Fénix] en #2.",
+        "passiveEffectsDescription": "Erhöht den Hydro-ANG der Hauptfigur und der Kampfbegleiter um #1 und die durch Dämonenkeile mit dem Präfix [Phönix] bereitgestellten Attributen um #2.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -9065,7 +9065,7 @@
       },
       "FR": {
         "modName": "Lapiniva ardent",
-        "description": "Aussi souple qu’un pudding et adorable à souhait, ce Géniemon — surnommé le Lapiniva — fit un temps fureur sur tout le continent.\nJusqu’au jour où un érudit d’Aethyrie révéla que ses deux petits \"yeux\" noirs... n’étaient pas des yeux, mais une partie de son système interne. Depuis, disons simplement que sa popularité n’est jamais remontée.",
+        "description": "Aussi souple qu’un pudding et adorable à souhait, ce Géniemon — surnommé le Lapiniva — fit un temps fureur sur tout le continent.\nJusqu’au jour où un érudit d’Aethyrie révéla que ses deux petits « yeux » noirs... n’étaient pas des yeux, mais une partie de son système interne. Depuis, disons simplement que sa popularité n’est jamais remontée.",
         "demonWedgeName": null,
         "functionLabel": null,
         "passiveEffectsDescription": "Augmente l’ATQ Hydro du personnage principal et des Partenaires de combat de #1.\nAugmente de #2 les statistiques fournies par les Sceaux démoniaques dont le nom se termine par [Phénix].",
@@ -9274,7 +9274,7 @@
         "description": "Die puddingartige Weichheit und das niedliche Aussehen machten den Geniemon Zuckerschneehasen einst auf dem ganzen Kontinent Atlasia ungeheuer beliebt. Doch seit ein Gelehrter aus Aethyrie darauf hinwies, dass die zwei schwarzen Punkte keine Augen, sondern seine Eingeweide sind, hat seine Beliebtheit nie wieder das frühere Niveau erreicht.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "Aumenta el ATQ Hydro para el personaje principal y los Compañeros de combate en #1, y las estadísticas proporcionadas por Cuñas Demoníacas con el prefijo [Fénix] en #2.",
+        "passiveEffectsDescription": "Erhöht den Hydro-ANG der Hauptfigur und der Kampfbegleiter um #1 und die durch Dämonenkeile mit dem Präfix [Phönix] bereitgestellten Attributen um #2.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -9301,7 +9301,7 @@
       },
       "FR": {
         "modName": "Lapiniva scintillant",
-        "description": "Aussi souple qu’un pudding et adorable à souhait, ce Géniemon — surnommé le Lapiniva — fit un temps fureur sur tout le continent.\nJusqu’au jour où un érudit d’Aethyrie révéla que ses deux petits \"yeux\" noirs... n’étaient pas des yeux, mais une partie de son système interne. Depuis, disons simplement que sa popularité n’est jamais remontée.",
+        "description": "Aussi souple qu’un pudding et adorable à souhait, ce Géniemon — surnommé le Lapiniva — fit un temps fureur sur tout le continent.\nJusqu’au jour où un érudit d’Aethyrie révéla que ses deux petits « yeux » noirs... n’étaient pas des yeux, mais une partie de son système interne. Depuis, disons simplement que sa popularité n’est jamais remontée.",
         "demonWedgeName": null,
         "functionLabel": null,
         "passiveEffectsDescription": "Augmente l’ATQ Hydro du personnage principal et des Partenaires de combat de #1.\nAugmente de #2 les statistiques fournies par les Sceaux démoniaques dont le nom se termine par [Phénix].",
@@ -9511,7 +9511,7 @@
         "description": "Die puddingartige Weichheit und das niedliche Aussehen machten den Geniemon Zuckerschneehasen einst auf dem ganzen Kontinent Atlasia ungeheuer beliebt. Doch seit ein Gelehrter aus Aethyrie darauf hinwies, dass die zwei schwarzen Punkte keine Augen, sondern seine Eingeweide sind, hat seine Beliebtheit nie wieder das frühere Niveau erreicht.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "Aumenta el ATQ Hydro para el personaje principal y los Compañeros de combate en #1, y las estadísticas proporcionadas por Cuñas Demoníacas con el prefijo [Fénix] en #2.",
+        "passiveEffectsDescription": "Erhöht den Hydro-ANG der Hauptfigur und der Kampfbegleiter um #1 und die durch Dämonenkeile mit dem Präfix [Phönix] bereitgestellten Attributen um #2.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -9538,7 +9538,7 @@
       },
       "FR": {
         "modName": "Lapiniva mystique",
-        "description": "Aussi souple qu’un pudding et adorable à souhait, ce Géniemon — surnommé le Lapiniva — fit un temps fureur sur tout le continent.\nJusqu’au jour où un érudit d’Aethyrie révéla que ses deux petits \"yeux\" noirs... n’étaient pas des yeux, mais une partie de son système interne. Depuis, disons simplement que sa popularité n’est jamais remontée.",
+        "description": "Aussi souple qu’un pudding et adorable à souhait, ce Géniemon — surnommé le Lapiniva — fit un temps fureur sur tout le continent.\nJusqu’au jour où un érudit d’Aethyrie révéla que ses deux petits « yeux » noirs... n’étaient pas des yeux, mais une partie de son système interne. Depuis, disons simplement que sa popularité n’est jamais remontée.",
         "demonWedgeName": null,
         "functionLabel": null,
         "passiveEffectsDescription": "Augmente l’ATQ Hydro du personnage principal et des Partenaires de combat de #1.\nAugmente de #2 les statistiques fournies par les Sceaux démoniaques dont le nom se termine par [Phénix].",
@@ -9747,7 +9747,7 @@
         "description": "Ein von Flammen umhüllter Geniemon, der in heißen Regionen lebt. Gerade deshalb verströmt er ständig einen leichten Duft von angebratenem Fleisch.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "Aumenta el ATQ Pyro para el personaje principal y los Compañeros de combate en #1, y las estadísticas proporcionadas por Cuñas Demoníacas con el prefijo [Fénix] en #2.",
+        "passiveEffectsDescription": "Erhöht den Pyro-ANG der Hauptfigur und der Kampfbegleiter um #1 und die durch Dämonenkeile mit dem Präfix [Phönix] bereitgestellten Attributen um #2.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -9982,7 +9982,7 @@
         "description": "Ein von Flammen umhüllter Geniemon, der in heißen Regionen lebt. Gerade deshalb verströmt er ständig einen leichten Duft von angebratenem Fleisch.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "Aumenta el ATQ Pyro para el personaje principal y los Compañeros de combate en #1, y las estadísticas proporcionadas por Cuñas Demoníacas con el prefijo [Fénix] en #2.",
+        "passiveEffectsDescription": "Erhöht den Pyro-ANG der Hauptfigur und der Kampfbegleiter um #1 und die durch Dämonenkeile mit dem Präfix [Phönix] bereitgestellten Attributen um #2.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -10217,7 +10217,7 @@
         "description": "Ein von Flammen umhüllter Geniemon, der in heißen Regionen lebt. Gerade deshalb verströmt er ständig einen leichten Duft von angebratenem Fleisch.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "Aumenta el ATQ Pyro para el personaje principal y los Compañeros de combate en #1, y las estadísticas proporcionadas por Cuñas Demoníacas con el prefijo [Fénix] en #2.",
+        "passiveEffectsDescription": "Erhöht den Pyro-ANG der Hauptfigur und der Kampfbegleiter um #1 und die durch Dämonenkeile mit dem Präfix [Phönix] bereitgestellten Attributen um #2.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -10453,7 +10453,7 @@
         "description": "Ein bedauernswerter Geniemon, der wegen der Elektrizität, die seinen ganzen Körper durchzieht, von anderen gemieden wird. Niemand kennt sein wahres Aussehen. Man sieht stets nur jene einsamen Augen, die sich hinter einem kleinen Spielzeugauto verbergen.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "Aumenta el ATQ Electro para el personaje principal y los Compañeros de combate en #1, y las estadísticas proporcionadas por Cuñas Demoníacas con el prefijo [Fénix] en #2.",
+        "passiveEffectsDescription": "Erhöht den Elektro-ANG der Hauptfigur und der Kampfbegleiter um #1 und die durch Dämonenkeile mit dem Präfix [Phönix] bereitgestellten Attributen um #2.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -10688,7 +10688,7 @@
         "description": "Ein bedauernswerter Geniemon, der wegen der Elektrizität, die seinen ganzen Körper durchzieht, von anderen gemieden wird. Niemand kennt sein wahres Aussehen. Man sieht stets nur jene einsamen Augen, die sich hinter einem kleinen Spielzeugauto verbergen.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "Aumenta el ATQ Electro para el personaje principal y los Compañeros de combate en #1, y las estadísticas proporcionadas por Cuñas Demoníacas con el prefijo [Fénix] en #2.",
+        "passiveEffectsDescription": "Erhöht den Elektro-ANG der Hauptfigur und der Kampfbegleiter um #1 und die durch Dämonenkeile mit dem Präfix [Phönix] bereitgestellten Attributen um #2.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -10923,7 +10923,7 @@
         "description": "Ein bedauernswerter Geniemon, der wegen der Elektrizität, die seinen ganzen Körper durchzieht, von anderen gemieden wird. Niemand kennt sein wahres Aussehen. Man sieht stets nur jene einsamen Augen, die sich hinter einem kleinen Spielzeugauto verbergen.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "Aumenta el ATQ Electro para el personaje principal y los Compañeros de combate en #1, y las estadísticas proporcionadas por Cuñas Demoníacas con el prefijo [Fénix] en #2.",
+        "passiveEffectsDescription": "Erhöht den Elektro-ANG der Hauptfigur und der Kampfbegleiter um #1 und die durch Dämonenkeile mit dem Präfix [Phönix] bereitgestellten Attributen um #2.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -11159,7 +11159,7 @@
         "description": "Ein lebhafter, kleiner Geniemon, der niemals lange an einem Ort bleiben kann. Er klammert sich an Löwenzahnsamen und treibt umher, auf der Suche nach einem Ziel, das gar nicht existiert.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "Aumenta el ATQ Anemo para el personaje principal y los Compañeros de combate en #1, y las estadísticas proporcionadas por Cuñas Demoníacas con el prefijo [Fénix] en #2.",
+        "passiveEffectsDescription": "Erhöht den Anemo-ANG der Hauptfigur und der Kampfbegleiter um #1 und die durch Dämonenkeile mit dem Präfix [Phönix] bereitgestellten Attributen um #2.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -11394,7 +11394,7 @@
         "description": "Ein lebhafter, kleiner Geniemon, der niemals lange an einem Ort bleiben kann. Er klammert sich an Löwenzahnsamen und treibt umher, auf der Suche nach einem Ziel, das gar nicht existiert.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "Aumenta el ATQ Anemo para el personaje principal y los Compañeros de combate en #1, y las estadísticas proporcionadas por Cuñas Demoníacas con el prefijo [Fénix] en #2.",
+        "passiveEffectsDescription": "Erhöht den Anemo-ANG der Hauptfigur und der Kampfbegleiter um #1 und die durch Dämonenkeile mit dem Präfix [Phönix] bereitgestellten Attributen um #2.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -11629,7 +11629,7 @@
         "description": "Ein lebhafter, kleiner Geniemon, der niemals lange an einem Ort bleiben kann. Er klammert sich an Löwenzahnsamen und treibt umher, auf der Suche nach einem Ziel, das gar nicht existiert.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "Aumenta el ATQ Anemo para el personaje principal y los Compañeros de combate en #1, y las estadísticas proporcionadas por Cuñas Demoníacas con el prefijo [Fénix] en #2.",
+        "passiveEffectsDescription": "Erhöht den Anemo-ANG der Hauptfigur und der Kampfbegleiter um #1 und die durch Dämonenkeile mit dem Präfix [Phönix] bereitgestellten Attributen um #2.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -11865,7 +11865,7 @@
         "description": "Ein strahlend leuchtender Geniemon, der Reisenden gelegentlich als Lichtquelle und Wegweiser dient. Da er periodisch gleißende Blitze aussendet, sollte man ihn nicht zu lange anstarren.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "Aumenta el ATQ Lumino para el personaje principal y los Compañeros de combate en #1, y las estadísticas proporcionadas por Cuñas Demoníacas con el prefijo [Fénix] en #2.",
+        "passiveEffectsDescription": "Erhöht den Lumino-ANG der Hauptfigur und der Kampfbegleiter um #1 und die durch Dämonenkeile mit dem Präfix [Phönix] bereitgestellten Attributen um #2.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -12100,7 +12100,7 @@
         "description": "Ein strahlend leuchtender Geniemon, der Reisenden gelegentlich als Lichtquelle und Wegweiser dient. Da er periodisch gleißende Blitze aussendet, sollte man ihn nicht zu lange anstarren.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "Aumenta el ATQ Lumino para el personaje principal y los Compañeros de combate en #1, y las estadísticas proporcionadas por Cuñas Demoníacas con el prefijo [Fénix] en #2.",
+        "passiveEffectsDescription": "Erhöht den Lumino-ANG der Hauptfigur und der Kampfbegleiter um #1 und die durch Dämonenkeile mit dem Präfix [Phönix] bereitgestellten Attributen um #2.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -12335,7 +12335,7 @@
         "description": "Ein strahlend leuchtender Geniemon, der Reisenden gelegentlich als Lichtquelle und Wegweiser dient. Da er periodisch gleißende Blitze aussendet, sollte man ihn nicht zu lange anstarren.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "Aumenta el ATQ Lumino para el personaje principal y los Compañeros de combate en #1, y las estadísticas proporcionadas por Cuñas Demoníacas con el prefijo [Fénix] en #2.",
+        "passiveEffectsDescription": "Erhöht den Lumino-ANG der Hauptfigur und der Kampfbegleiter um #1 und die durch Dämonenkeile mit dem Präfix [Phönix] bereitgestellten Attributen um #2.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": []
@@ -12589,7 +12589,7 @@
         "description": "Ein extrem seltener Geniemon mit dem glänzenden Schimmer von Obsidian, einst für ein reines Fantasiewesen aus den Liedern der Wanderbarden gehalten.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "Aumenta el ATQ Umbro para el personaje principal y los Compañeros de combate en #1, y las estadísticas proporcionadas por las Cuñas Demoníacas Umbro con los prefijos [Grifo], [Typhon] y [Pactista] en #2.",
+        "passiveEffectsDescription": "Erhöht den Umbro-ANG der Hauptfigur und der Kampfbegleiter um #1 und die durch Umbro-Dämonenkeile mit dem Präfix [Greif], [Typhon], und [Paktierer] bereitgestellten Attributen um #2.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -12837,7 +12837,7 @@
         "description": "Ein extrem seltener Geniemon mit dem glänzenden Schimmer von Iolith, einst für ein reines Fantasiewesen aus den Liedern der Wanderbarden gehalten.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "Aumenta el ATQ Hydro para el personaje principal y los Compañeros de combate en #1, y las estadísticas proporcionadas por las Cuñas Demoníacas Hydro con los prefijos [Grifo], [Typhon] y [Pactista] en #2.",
+        "passiveEffectsDescription": "Erhöht den Hydro-ANG der Hauptfigur und der Kampfbegleiter um #1 und die durch Hydro-Dämonenkeile mit dem Präfix [Greif], [Typhon], und [Paktierer] bereitgestellten Attributen um #2.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -13085,7 +13085,7 @@
         "description": "Ein extrem seltener Geniemon mit dem glänzenden Schimmer von Karneol, einst für ein reines Fantasiewesen aus den Liedern der Wanderbarden gehalten.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "Aumenta el ATQ Pyro para el personaje principal y los Compañeros de combate en #1, y las estadísticas proporcionadas por las Cuñas Demoníacas Pyro con los prefijos [Grifo], [Typhon] y [Pactista] en #2.",
+        "passiveEffectsDescription": "Erhöht den Pyro-ANG der Hauptfigur und der Kampfbegleiter um #1 und die durch Pyro-Dämonenkeile mit dem Präfix [Greif], [Typhon], und [Paktierer] bereitgestellten Attributen um #2.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -13333,11 +13333,11 @@
         "description": "Ein extrem seltener Geniemon mit dem glänzenden Schimmer von Amethyst, einst für ein reines Fantasiewesen aus den Liedern der Wanderbarden gehalten.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "Aumenta el ATQ Electro para el personaje principal y los Compañeros de combate en #1, y las estadísticas proporcionadas por las Cuñas Demoníacas Electro con los prefijos [Grifo], [Typhon] y [Pactista] en #2.",
+        "passiveEffectsDescription": "Erhöht den Elektro-ANG der Hauptfigur und der Kampfbegleiter um #1 und die durch Elektro-Dämonenkeile mit dem Präfix [Greif], [Typhon], und [Paktierer] bereitgestellten Attributen um #2.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Electro"
+          "Elektro"
         ]
       },
       "EN": {
@@ -13581,7 +13581,7 @@
         "description": "Ein extrem seltener Geniemon mit dem glänzenden Schimmer von Smaragd, einst für ein reines Fantasiewesen aus den Liedern der Wanderbarden gehalten.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "Aumenta el ATQ Anemo para el personaje principal y los Compañeros de combate en #1, y las estadísticas proporcionadas por las Cuñas Demoníacas Anemo con los prefijos [Grifo], [Typhon] y [Pactista] en #2.",
+        "passiveEffectsDescription": "Erhöht den Anemo-ANG der Hauptfigur und der Kampfbegleiter um #1 und die durch Anemo-Dämonenkeile mit dem Präfix [Greif], [Typhon], und [Paktierer] bereitgestellten Attributen um #2.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -13829,7 +13829,7 @@
         "description": "Ein extrem seltener Geniemon mit dem glänzenden Schimmer von Opal, einst für ein reines Fantasiewesen aus den Liedern der Wanderbarden gehalten.",
         "demonWedgeName": null,
         "functionLabel": null,
-        "passiveEffectsDescription": "Aumenta el ATQ Lumino para el personaje principal y los Compañeros de combate en #1, y las estadísticas proporcionadas por las Cuñas Demoníacas Lumino con los prefijos [Grifo], [Typhon] y [Pactista] en #2.",
+        "passiveEffectsDescription": "Erhöht den Lumino-ANG der Hauptfigur und der Kampfbegleiter um #1 und die durch Lumino-Dämonenkeile mit dem Präfix [Greif], [Typhon], und [Paktierer] bereitgestellten Attributen um #2.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [

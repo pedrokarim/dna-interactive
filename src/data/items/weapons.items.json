@@ -137,12 +137,12 @@
         "modName": "Bernsteinglanz-Klinge",
         "description": "Die Waffe, die Berenica trägt. Eine Klinge mit goldenen Verzierungen. Die Klinge besteht aus einem seltenen schwarzen Metall. Dies ist eindeutig keine Waffe eines der Dorfbewohner der Purgatorio-Insel.\n ",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
-        "passiveEffectsDescription": "ATQ del personaje +<H>#1</>.",
+        "functionLabel": "Nahkampfwaffen",
+        "passiveEffectsDescription": "Figur-ANG +<H>#1</>.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Nahkampfwaffen",
           "Großschwert"
         ]
       },
@@ -163,12 +163,12 @@
         "modName": "Hoja de Ámbar Radiante",
         "description": "El arma que porta Berenica es una hoja adornada con oro. El metal negro del arma no pertenece a ningún material ordinario. Es evidente que no es un arma que los aldeanos de la Isla del Purgatorio pudieran poseer.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
+        "functionLabel": "Armas cuerpo a cuerpo",
         "passiveEffectsDescription": "ATQ del personaje +<H>#1</>.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Armas cuerpo a cuerpo",
           "Espadón"
         ]
       },
@@ -415,12 +415,12 @@
         "modName": "Fessel des Einzelwolfs",
         "description": "Mögen ausgelassene Festlichkeiten deine Einsamkeit lindern.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
-        "passiveEffectsDescription": "Probabilidad de Activación +<H>#1</>. Cuando un personaje Hydro activa un efecto extra con esta arma, los demás aliados obtienen ATQ +<H>#2</> durante <H>#3</> s.",
+        "functionLabel": "Nahkampfwaffen",
+        "passiveEffectsDescription": "Auslöserate +<H>#1</>. Wenn ein Hydro-Figur mit dieser Waffe einen Bonuseffekt auslöst, erhalten alle anderen Verbündeten +<H>#2</> ANG für <H>#3</> Sek.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Nahkampfwaffen",
           "Großschwert"
         ]
       },
@@ -441,12 +441,12 @@
         "modName": "Grillete del Lobo Solitario",
         "description": "Que una celebración sin límites pueda llenar todos los vacíos que genera tu soledad.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
+        "functionLabel": "Armas cuerpo a cuerpo",
         "passiveEffectsDescription": "Probabilidad de Activación +<H>#1</>. Cuando un personaje Hydro activa un efecto extra con esta arma, los demás aliados obtienen ATQ +<H>#2</> durante <H>#3</> s.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Armas cuerpo a cuerpo",
           "Espadón"
         ]
       },
@@ -700,12 +700,12 @@
         "modName": "Nachhall der Erinnerung",
         "description": "Ein Schwert von unbekannter Herkunft. Ein Schwert, das bereits seit Urzeiten existiert. Vielleicht wird es eines Tages zum Schlüssel für die Verbindung zwischen Vergangenheit und Gegenwart.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
-        "passiveEffectsDescription": "Rango de ATQ +<H>#1</>. Al acertar un Daño CRIT con esta arma, hay <H>#2</> de probabilidad de restaurar <H>#3</> de Cordura. Se activa como máximo cada <H>#4</> s.",
+        "functionLabel": "Nahkampfwaffen",
+        "passiveEffectsDescription": "Angriffsreichweite +<H>#1</>. Wird mit dieser Waffe ein KRIT gelandet, besteht eine Chance von <H>#2</>, <H>#3</> Punkte Geist wiederherzustellen. Kann einmal alle <H>#4</> Sek. ausgelöst werden.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Nahkampfwaffen",
           "Schwert"
         ]
       },
@@ -726,12 +726,12 @@
         "modName": "Reminiscencia Remanente",
         "description": "Una espada de una mano de origen desconocido que ha estado a tu lado desde siempre. Quizás, algún día, se convierta en la llave que una el pasado con el presente.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
+        "functionLabel": "Armas cuerpo a cuerpo",
         "passiveEffectsDescription": "Rango de ATQ +<H>#1</>. Al acertar un Daño CRIT con esta arma, hay <H>#2</> de probabilidad de restaurar <H>#3</> de Cordura. Se activa como máximo cada <H>#4</> s.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Armas cuerpo a cuerpo",
           "Espada"
         ]
       },
@@ -978,12 +978,12 @@
         "modName": "Taktik des Weisen",
         "description": "Die beste Verteidigung ist ein starker Angriff – aber vergiss nicht die Bedeutung von ausreichender Erholung.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
-        "passiveEffectsDescription": "DEF +<H>#1</>. Al infligir daño con esta arma y activar un efecto extra, hay <H>#3</> de probabilidad de reducir el escudo del objetivo en un valor equivalente al <H>#2</> de la DEF del usuario.",
+        "functionLabel": "Nahkampfwaffen",
+        "passiveEffectsDescription": "VTD +<H>#1</>. Wird mit dieser Waffe ein SCH verursacht, wird ein Bonuseffekt ausgelöst, mit einer Chance von <H>#3</>, den Schild des Ziels um <H>#2</> der VTD des Anwenders zu reduzieren.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Nahkampfwaffen",
           "Schwert"
         ]
       },
@@ -1004,12 +1004,12 @@
         "modName": "Tácticas Geniales",
         "description": "La mejor defensa es un buen ataque. Pero no olvides que descansar lo suficiente también es muy importante.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
+        "functionLabel": "Armas cuerpo a cuerpo",
         "passiveEffectsDescription": "DEF +<H>#1</>. Al infligir daño con esta arma y activar un efecto extra, hay <H>#3</> de probabilidad de reducir el escudo del objetivo en un valor equivalente al <H>#2</> de la DEF del usuario.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Armas cuerpo a cuerpo",
           "Espada"
         ]
       },
@@ -1256,12 +1256,12 @@
         "modName": "Wandernde Rose",
         "description": "Ich werde eine Reise jenseits des Sandes antreten, genau wie du.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
-        "passiveEffectsDescription": "Velocidad de Ataque +<H>#1</>. Al realizar un Ataque Cargado con esta arma, hay <H>#2</> de probabilidad de reducir el enfriamiento del apoyo de Geniemon en <H>#3</> s.",
+        "functionLabel": "Nahkampfwaffen",
+        "passiveEffectsDescription": "Angriffs-GES +<H>#1</>. Wird mit dieser Waffe ein geladener Angriff ausgeführt, besteht eine Chance von <H>#2</>, die Abk. der Resonanz-Unterstützung um <H>#3</> Sek. zu verkürzen.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Nahkampfwaffen",
           "Schwert"
         ]
       },
@@ -1282,12 +1282,12 @@
         "modName": "Rosa Errante",
         "description": "Al igual que tú, emprenderé el viaje hacia El más allá, más allá de las arenas que se deslizan.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
-        "passiveEffectsDescription": "Velocidad de Ataque +<H>#1</>. Al realizar un Ataque Cargado con esta arma, hay <H>#2</> de probabilidad de reducir el enfriamiento del apoyo de Geniemon en <H>#3</> s.",
+        "functionLabel": "Armas cuerpo a cuerpo",
+        "passiveEffectsDescription": "Velocidad de Ataque +<H>#1</>. Al realizar un Ataque Cargado con esta arma, hay <H>#2</> de probabilidad de reducir el enfriamiento del Soporte de Geniemon en <H>#3</> s.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Armas cuerpo a cuerpo",
           "Espada"
         ]
       },
@@ -1540,12 +1540,12 @@
         "modName": "Chainbreak Pinion",
         "description": "No cage can hold wings born for flight. From fury and longing, she will shape barbed plumes sharp enough to shear through iron.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
-        "passiveEffectsDescription": "Moral +<H>#1</>. Cuando un personaje Umbro inflige daño, el Daño Infligido aumenta en <H>{float4}#2</> por cada punto de combo. Tras consumir puntos de combo, la Moral aumenta en [<H>{float4}#3</>× cantidad consumida] durante <H>#4</> s.",
+        "functionLabel": "Nahkampfwaffen",
+        "passiveEffectsDescription": "Morale +<H>#1</>. When an Umbro character deals damage, Damage Dealt increases by <H>{float4}#2</> for each Combo Point. After Combo Points are consumed, Morale increases by [<H>{float4}#3</> × Combo Points consumed] for <H>#4</>s.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Nahkampfwaffen",
           "Schwert"
         ]
       },
@@ -1566,12 +1566,12 @@
         "modName": "Piñón Rompecadenas",
         "description": "Ninguna jaula puede retener alas destinadas a volar; ella forjará su rabia y su anhelo en plumas espinosas que destrocen la jaula.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
+        "functionLabel": "Armas cuerpo a cuerpo",
         "passiveEffectsDescription": "Moral +<H>#1</>. Cuando un personaje Umbro inflige daño, el Daño Infligido aumenta en <H>{float4}#2</> por cada punto de combo. Tras consumir puntos de combo, la Moral aumenta en [<H>{float4}#3</>× cantidad consumida] durante <H>#4</> s.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Armas cuerpo a cuerpo",
           "Espada"
         ]
       },
@@ -1825,12 +1825,12 @@
         "modName": "Kuss der Sirene",
         "description": "Küss mich! Knutsch mich! Bevor der morgige Tag anbricht, bevor junge Herzen altern und bevor der Tod uns scheidet.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
-        "passiveEffectsDescription": "Rango de Habilidad +<H>#1</>. Al realizar Ataque Normal con esta arma, obtienes 1 acumulación que aumenta la velocidad de ataque en <H>#2</> durante <H>#3</> s, hasta <H>#4</> acumulaciones. El efecto se elimina al cambiar de arma.",
+        "functionLabel": "Nahkampfwaffen",
+        "passiveEffectsDescription": "Fähigkeitsreichweite +<H>#1</>. Beim Treffen eines Gegners mit dieser Waffe im Standardangriff wird die Angriffs-GES um <H>#2</> für <H>#3</> Sek. erhöht (bis zu <H>#4</>-mal stapelbar). Der Effekt wird beim Waffenwechsel deaktiviert.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Nahkampfwaffen",
           "Stangenwaffe"
         ]
       },
@@ -1851,12 +1851,12 @@
         "modName": "Beso de Sirena",
         "description": "¡Bésame! ¡Bésame mucho! Antes de que llegue el mañana, antes de que la juventud se desvanezca, antes de que la muerte nos separe.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
+        "functionLabel": "Armas cuerpo a cuerpo",
         "passiveEffectsDescription": "Rango de Habilidad +<H>#1</>. Al realizar Ataque Normal con esta arma, obtienes 1 acumulación que aumenta la velocidad de ataque en <H>#2</> durante <H>#3</> s, hasta <H>#4</> acumulaciones. El efecto se elimina al cambiar de arma.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Armas cuerpo a cuerpo",
           "Arma de Asta"
         ]
       },
@@ -2097,12 +2097,12 @@
         "modName": "Frühlingsjade-Hellebarde",
         "description": "Eine Stangenwaffe, die die Sternenweber aus ihrer Heimat mitgebracht haben – Huaxu. Form und Farbe der Klinge sind von einer besonderen Pflanze in Huaxu inspiriert, die man Weide nennt. In Huaxu symbolisiert diese Pflanze normalerweise die „Heimat“. Die Sternenweber sind zwar gerade damit beschäftigt, jeden Zentimeter von Atlasia mit Sternenhimmeln zu überziehen, aber irgendwann werden sie in ihre grüne Heimat mit den üppigen Weiden zurückkehren.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
-        "passiveEffectsDescription": "Velocidad de Ataque +<H>#1</>. Al infligir daño con esta arma, aumenta el daño contra objetivos afectados por efectos extra de atributo en <H>#2</>.",
+        "functionLabel": "Nahkampfwaffen",
+        "passiveEffectsDescription": "Angriffs-GES +<H>#1</>. Verursacht +<H>#2</> SCH bei Zielen, die mit Bonuseffekten belegt sind.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Nahkampfwaffen",
           "Stangenwaffe"
         ]
       },
@@ -2123,12 +2123,12 @@
         "modName": "Alabarda de Jade Primaveral",
         "description": "Un Arma de Asta traída desde Huaxu, la tierra natal de los Tejestrellas. La forma y el color de su hoja se inspiran en una planta propia de Huaxu: el sauce, que simboliza el hogar. Aunque recorran cada rincón de Atlasia tejiendo el cielo estrellado, algún día regresarán a su frondosa tierra natal.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
+        "functionLabel": "Armas cuerpo a cuerpo",
         "passiveEffectsDescription": "Velocidad de Ataque +<H>#1</>. Al infligir daño con esta arma, aumenta el daño contra objetivos afectados por efectos extra de atributo en <H>#2</>.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Armas cuerpo a cuerpo",
           "Arma de Asta"
         ]
       },
@@ -2381,12 +2381,12 @@
         "modName": "Widerschuppen der Sünde",
         "description": "Die Jahre vergehen, und die Erdenbewohner werden immer durchschnittlicher.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
-        "passiveEffectsDescription": "Daño de Habilidad +<H>#1</>. Cuando un personaje Electro inflige daño con un Ataque Descendente usando esta arma, otorga a sí mismo y a los aliados Electro +<H>#2</> de Daño de Habilidad durante <H>#3</> s (hasta <H>5</> acumulaciones).",
+        "functionLabel": "Nahkampfwaffen",
+        "passiveEffectsDescription": "Fähigkeits-SCH +<H>#1</>. Wenn ein Elektro-Figur mit dieser Waffe einen Sturzangriff ausführt, wird Fähigkeits-SCH um <H>#2</> für <H>#3</> Sek. erhöht (bis zu <H>3</>-mal stapelbar).",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Nahkampfwaffen",
           "Stangenwaffe"
         ]
       },
@@ -2407,12 +2407,12 @@
         "modName": "Pecado Imperdonable",
         "description": "Entre el frío de la luna y el calor del sol, la vida humana se va consumiendo.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
+        "functionLabel": "Armas cuerpo a cuerpo",
         "passiveEffectsDescription": "Daño de Habilidad +<H>#1</>. Cuando un personaje Electro inflige daño con un Ataque Descendente usando esta arma, otorga a sí mismo y a los aliados Electro +<H>#2</> de Daño de Habilidad durante <H>#3</> s (hasta <H>5</> acumulaciones).",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Armas cuerpo a cuerpo",
           "Arma de Asta"
         ]
       },
@@ -2672,12 +2672,12 @@
         "modName": "Elpides im Überfluss",
         "description": "Einst vergrub ich einen Samen in der gefrorenen Erde und hoffte auf einen Erntemond, der vielleicht niemals kommen würde.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
-        "passiveEffectsDescription": "Tenacidad +<H>#1</>. Tras usar su Habilidad Definitiva, un personaje Anemo obtiene [Plegaria de los Mil Vientos]: Tenacidad +<H>#2</> y Velocidad de Ataque +<H>#3</> durante <H>#4</> s. Cada vez que inflige Daño de Habilidad o Daño de Arma a distancia, la duración se extiende <H>#5</> s.",
+        "functionLabel": "Nahkampfwaffen",
+        "passiveEffectsDescription": "Entschlossenheit +<H>#1</>. Nachdem eine Anemo-Figur ihren Ultimate eingesetzt hat, erhält sie den [Segen der Tausend Winde]: Erhöht die Entschlossenheit um <H>#2</> und die Angriffs-GES um <H>#3</> für <H>#4</> Sek. Jede Instanz von Fähigkeits-SCH oder Schaden durch Fernkampfwaffen verlängert die Dauer um <H>#5</> Sek.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Nahkampfwaffen",
           "Stangenwaffe"
         ]
       },
@@ -2698,12 +2698,12 @@
         "modName": "Abundancia de la Esperanza",
         "description": "Planté una semilla en la tierra helada, esperando una cosecha que tal vez nunca llegue.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
+        "functionLabel": "Armas cuerpo a cuerpo",
         "passiveEffectsDescription": "Tenacidad +<H>#1</>. Tras usar su Habilidad Definitiva, un personaje Anemo obtiene [Plegaria de los Mil Vientos]: Tenacidad +<H>#2</> y Velocidad de Ataque +<H>#3</> durante <H>#4</> s. Cada vez que inflige Daño de Habilidad o Daño de Arma a distancia, la duración se extiende <H>#5</> s.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Armas cuerpo a cuerpo",
           "Arma de Asta"
         ]
       },
@@ -2939,12 +2939,12 @@
         "modName": "Schwundgespenst",
         "description": "Verfall ist das Ende des Lebens; akzeptiere ihn, und du wirst in einen ewigen und friedlichen Hafen segeln.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
-        "passiveEffectsDescription": "Daño de Habilidad +<H>#1</>.",
+        "functionLabel": "Nahkampfwaffen",
+        "passiveEffectsDescription": "Fähigkeits-SCH +<H>#1</>.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Nahkampfwaffen",
           "Stangenwaffe"
         ]
       },
@@ -2965,12 +2965,12 @@
         "modName": "Alma Desvanecida",
         "description": "La podredumbre es el término de toda existencia. Acéptala, y podrás alcanzar un refugio eterno.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
+        "functionLabel": "Armas cuerpo a cuerpo",
         "passiveEffectsDescription": "Daño de Habilidad +<H>#1</>.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Armas cuerpo a cuerpo",
           "Arma de Asta"
         ]
       },
@@ -3211,12 +3211,12 @@
         "modName": "Friedenstaube",
         "description": "Eine Taube, die schwor, die Würde zu verteidigen, und jede Feder für den Frieden opfert.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
-        "passiveEffectsDescription": "Prob. CRIT +<H>#1</>. Al infligir daño usando un ataque normal con esta arma, hay una probabilidad de <H>#2</> de recargar el cargador del arma a distancia del usuario.",
+        "functionLabel": "Nahkampfwaffen",
+        "passiveEffectsDescription": "KRIT-Rate +<H>#1</>. Bei Schaden durch normale Angriffe mit dieser Waffe besteht eine Chance von <H>#2</>, das Magazin der Fernkampfwaffe nachzuladen.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Nahkampfwaffen",
           "Stangenwaffe"
         ]
       },
@@ -3237,12 +3237,12 @@
         "modName": "Paloma del Futuro",
         "description": "Una paloma blanca que lucha por defender la dignidad, jura entregar cada una de sus plumas para defender la paz.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
+        "functionLabel": "Armas cuerpo a cuerpo",
         "passiveEffectsDescription": "Prob. CRIT +<H>#1</>. Al infligir daño usando un ataque normal con esta arma, hay una probabilidad de <H>#2</> de recargar el cargador del arma a distancia del usuario.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Armas cuerpo a cuerpo",
           "Arma de Asta"
         ]
       },
@@ -3337,6 +3337,259 @@
       "CRI": 0.2,
       "CRD": 1.85,
       "PassiveEffectsDescKey": "SKILL_10208_DESC"
+    }
+  },
+  {
+    "id": "weapons-10209",
+    "categoryId": "weapons",
+    "modId": 10209,
+    "archiveId": null,
+    "stats": {
+      "rarity": 5,
+      "polarity": null,
+      "maxLevel": 80,
+      "cost": null,
+      "openVersion": 15,
+      "releaseVersion": 150
+    },
+    "textKeys": {
+      "modNameKey": "UI_WEAPON_NAME_10209",
+      "descriptionKey": "UI_WEAPON_DESC_10209",
+      "demonWedgeKey": null,
+      "functionKey": "UI_Armory_Meleeweapon",
+      "passiveEffectsDescKey": null,
+      "affinityNameKey": null,
+      "archiveNameKey": null
+    },
+    "affinity": {
+      "id": null,
+      "nameKey": null,
+      "char": null,
+      "icon": {
+        "gamePath": null,
+        "publicPath": null,
+        "placeholderPath": null,
+        "candidates": [],
+        "allMatches": []
+      }
+    },
+    "typeCompatibility": {
+      "applicationType": 102,
+      "textKeys": [
+        "UI_Armory_Meleeweapon",
+        "WeaponType_Polearm"
+      ],
+      "tags": [
+        {
+          "key": "UI_Armory_Meleeweapon",
+          "icon": {
+            "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponTypeClose_Combat.T_Armory_WeaponTypeClose_Combat",
+            "publicPath": "/assets/items/weapon-types/T_Armory_WeaponTypeClose_Combat.png",
+            "placeholderPath": null,
+            "candidates": [
+              "T_Armory_WeaponTypeClose_Combat",
+              "Armory_WeaponTypeClose_Combat"
+            ],
+            "allMatches": [
+              "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponTypeClose_Combat.png"
+            ]
+          }
+        },
+        {
+          "key": "WeaponType_Polearm",
+          "icon": {
+            "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponType_Polearm.T_Armory_WeaponType_Polearm",
+            "publicPath": "/assets/items/weapon-types/T_Armory_WeaponType_Polearm.png",
+            "placeholderPath": null,
+            "candidates": [
+              "T_Armory_WeaponType_Polearm",
+              "Armory_WeaponType_Polearm"
+            ],
+            "allMatches": [
+              "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponType_Polearm.png"
+            ]
+          }
+        }
+      ]
+    },
+    "tolerance": {
+      "baseCost": null,
+      "costChange": null,
+      "maxLevel": 0,
+      "valuesByLevel": {
+        "0": null
+      }
+    },
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Polearm_Zhuixin",
+      "publicPath": "/assets/items/weapons/T_Head_Polearm_Zhuixin.png",
+      "placeholderPath": null,
+      "candidates": [
+        "T_Head_Polearm_Zhuixin",
+        "Head_Polearm_Zhuixin"
+      ],
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Polearm_Zhuixin.png"
+      ]
+    },
+    "scaling": {
+      "defaultLevel": 0,
+      "maxLevel": 5,
+      "availableLevels": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "valuesByLevel": {
+        "0": {},
+        "1": {},
+        "2": {},
+        "3": {},
+        "4": {},
+        "5": {}
+      },
+      "attributesByLevel": {
+        "0": [],
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": []
+      }
+    },
+    "translations": {
+      "DE": {
+        "modName": "Obsidian-Herzensstecher",
+        "description": "Die blutgetränkte Klinge sticht direkt ins Herz. Ehe die sengende Lava sich verfestigt, bleibt ein kurzer Moment, den man zur Flucht nutzen kann.",
+        "demonWedgeName": null,
+        "functionLabel": "Nahkampfwaffen",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Nahkampfwaffen",
+          "Stangenwaffe"
+        ]
+      },
+      "EN": {
+        "modName": "Obsidian Heart-Reaper",
+        "description": "Its blood-soaked blade strikes straight at the heart. Before the searing lava solidifies, there remains a fleeting moment to flee.",
+        "demonWedgeName": null,
+        "functionLabel": "Melee Weapons",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Melee Weapons",
+          "Polearm"
+        ]
+      },
+      "ES": {
+        "modName": "Segador de Corazón de Obsidiana",
+        "description": "La daga ensangrentada apunta a tu corazón. Antes de que la lava se enfríe todavía tienes tiempo de huir.",
+        "demonWedgeName": null,
+        "functionLabel": "Armas cuerpo a cuerpo",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Armas cuerpo a cuerpo",
+          "Arma de Asta"
+        ]
+      },
+      "FR": {
+        "modName": "Faucheuse d’obsidienne",
+        "description": "Sa lame sanglante vise le cœur sans détour.\nTant que la lave brûlante n’a pas figé, il vous reste un instant — un seul — pour fuir votre destin.",
+        "demonWedgeName": null,
+        "functionLabel": "Armes de mêlée",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Armes de mêlée",
+          "Arme d’hast"
+        ]
+      },
+      "JP": {
+        "modName": "オブシディアンリッパー",
+        "description": "血に染まった刃先が心臓に狙いを定めているが、熱い溶岩が冷める前に、まだ逃げる時間はある。",
+        "demonWedgeName": null,
+        "functionLabel": "近接武器",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "近接武器",
+          "長柄武器"
+        ]
+      },
+      "KR": {
+        "modName": "관통의 옵시디언 낫",
+        "description": "피투성이의 날카로운 칼날은 이미 심장을 향했다. 뜨거운 용암이 식기 전이니 아직 도망칠 수 있다.",
+        "demonWedgeName": null,
+        "functionLabel": "근접 무기",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "근접 무기",
+          "장병기"
+        ]
+      },
+      "TC": {
+        "modName": "錐心黑曜鐮",
+        "description": "浴血的錐刃已經指向心臟，在滾燙的熔岩冷卻前，你還有逃亡的時間。",
+        "demonWedgeName": null,
+        "functionLabel": "近戰武器",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "近戰武器",
+          "長柄"
+        ]
+      }
+    },
+    "fields": {
+      "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Polearm_Zhuixin",
+      "CollectRewardExp": 400,
+      "DecomposeReward": 10211,
+      "GUIPathVariableName": "Zhuixin",
+      "GUIPathVariableType": "Polearm",
+      "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Polearm_Zhuixin",
+      "Icon": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Polearm_Zhuixin",
+      "ModSlot": "T.RT_1",
+      "ModSlotUnlock": "T.RT_2",
+      "OpenVersion": 15,
+      "ReleaseVersion": 150,
+      "SkinApplicationType": "T.RT_4",
+      "SortPriority": 10209,
+      "Sound": "SOUND_ITEM_WEAPON",
+      "WeaponDescribe": "UI_WEAPON_DESC_10209",
+      "WeaponId": 10209,
+      "WeaponMaxLevel": 80,
+      "WeaponName": "UI_WEAPON_NAME_10209",
+      "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
+      "WeaponToCoinType": 101,
+      "WeaponValue": 10000,
+      "Type": "Melee",
+      "ResourceSType": "Polearm",
+      "WeaponClassKey": "UI_Armory_Meleeweapon",
+      "WeaponTypeKey": "WeaponType_Polearm",
+      "SkinApplicationTypeCodes": [
+        102
+      ],
+      "WeaponClass": "Melee",
+      "WeaponSubtype": "Polearm",
+      "BaseATK": 3,
+      "ATKMax": 38,
+      "ATKType": "Slash",
+      "CRI": 0.15,
+      "CRD": 1.5
     }
   },
   {
@@ -3465,12 +3718,12 @@
         "modName": "Metalllanze",
         "description": "Eine gewöhnliche Lanze. Aus dem billigsten Metall hergestellt, also ist es nicht schlimm, wenn sie zerbricht.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
-        "passiveEffectsDescription": "Los potenciales del arma pueden desbloquearse mediante la fundición de calamidad. El potencial solo se activa cuando la <H>especialización de arma</> del personaje coincide con el tipo de esta arma.",
+        "functionLabel": "Nahkampfwaffen",
+        "passiveEffectsDescription": "Weapon Potentials can be unlocked through Calamity Smelting. A Potential only takes effect if the character's <H>weapon proficiency</> matches this weapon's type.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Nahkampfwaffen",
           "Stangenwaffe"
         ]
       },
@@ -3491,12 +3744,12 @@
         "modName": "Lucha Perpetua",
         "description": "Uno de los que recibió un arma era un guerrero al que el Padre Ask premió por su valentía. Retó sin descanso a rivales cada vez más poderosos, enviando desafíos tras desafío a tierras lejanas. Su nombre se volvió sinónimo de fuerza, pero poco a poco dejó de saber vivir sin el combate.\nEl combate nunca termina. Cayó en la guerra, esa arena sin ganadores. Los cadáveres de amigos y enemigos fueron su salvación; su propia sangre, su elegía.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
-        "passiveEffectsDescription": "Los potenciales del arma pueden desbloquearse mediante la fundición de calamidad.  Un potencial solo se activa si el tipo de arma coincide con el <H>arma preferida</> del personaje.",
+        "functionLabel": "Armas cuerpo a cuerpo",
+        "passiveEffectsDescription": "Los potenciales del arma pueden desbloquearse mediante la fusión de calamidad.  Un potencial solo se activa si el tipo de arma coincide con el <H>arma preferida</> del personaje.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Armas cuerpo a cuerpo",
           "Arma de Asta"
         ]
       },
@@ -3749,12 +4002,12 @@
         "modName": "Strafinferno",
         "description": "Brenn, brenn, brenn! Dieses läuternde Feuer wird alles Böse auf der Welt verzehren.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
-        "passiveEffectsDescription": "PV Máx. +<H>#1</>. Cuando un personaje Pyro recibe daño, obtiene 1 acumulación que aumenta la Duración de Habilidad en <H>#2</> durante <H>#3</> s, hasta <H>#4</> acumulaciones.",
+        "functionLabel": "Nahkampfwaffen",
+        "passiveEffectsDescription": "Max. LP +<H>#1</>. Wenn ein Pyro-Figur SCH erleidet, wird die Fähigkeitsdauer um <H>#2</> für <H>#3</> Sek. verlönert (bis zu <H>#4</>-mal stapelbar).",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Nahkampfwaffen",
           "Großschwert"
         ]
       },
@@ -3775,12 +4028,12 @@
         "modName": "Inferno Punitivo",
         "description": "¡Arde, arde, arde! Las llamas del juicio reducirán a cenizas toda la maldad de este mundo.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
+        "functionLabel": "Armas cuerpo a cuerpo",
         "passiveEffectsDescription": "PV Máx. +<H>#1</>. Cuando un personaje Pyro recibe daño, obtiene 1 acumulación que aumenta la Duración de Habilidad en <H>#2</> durante <H>#3</> s, hasta <H>#4</> acumulaciones.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Armas cuerpo a cuerpo",
           "Espadón"
         ]
       },
@@ -4022,12 +4275,12 @@
         "modName": "Eisenschmied",
         "description": "Nur unvergleichliche Stärke kann eiserne Gesetze schmieden.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
-        "passiveEffectsDescription": "Prob. CRIT +<H>#1</> Al infligir daño con esta arma y activar un efecto extra, hay <H>#2</> de probabilidad de aumentar el nivel del combo al máximo.",
+        "functionLabel": "Nahkampfwaffen",
+        "passiveEffectsDescription": "KRIT-Rate +<H>#1</>. Wird mit dieser Waffe ein SCH verursacht, wird ein Bonuseffekt ausgelöst, mit eine Chance von <H>#2</>, die Kombostufe auf das Maximum zu erhöhen.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Nahkampfwaffen",
           "Großschwert"
         ]
       },
@@ -4048,12 +4301,12 @@
         "modName": "Forjador de Hierro",
         "description": "Solo un poder supremo puede imponer una ley de hierro.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
+        "functionLabel": "Armas cuerpo a cuerpo",
         "passiveEffectsDescription": "Prob. CRIT +<H>#1</> Al infligir daño con esta arma y activar un efecto extra, hay <H>#2</> de probabilidad de aumentar el nivel del combo al máximo.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Armas cuerpo a cuerpo",
           "Espadón"
         ]
       },
@@ -4288,12 +4541,12 @@
         "modName": "Glutdurst",
         "description": "Eine makellose Klinge, die mit einem lautlosen Schrei durch die Luft schneidet – immer darauf wartend, mit Blut befleckt zu werden.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
-        "passiveEffectsDescription": "Duración de Habilidad +<H>#1</>.",
+        "functionLabel": "Nahkampfwaffen",
+        "passiveEffectsDescription": "Fähigkeitsdauer +<H>#1</>.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Nahkampfwaffen",
           "Großschwert"
         ]
       },
@@ -4314,12 +4567,12 @@
         "modName": "Sed Abrasadora",
         "description": "Un sable inmaculado que al cortar el aire, ansía teñirse de rojo carmesí.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
+        "functionLabel": "Armas cuerpo a cuerpo",
         "passiveEffectsDescription": "Duración de Habilidad +<H>#1</>.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Armas cuerpo a cuerpo",
           "Espadón"
         ]
       },
@@ -4572,12 +4825,12 @@
         "modName": "Ewiger Abschied",
         "description": "Durchtrenne die Echos längst vergangener Äonen; lass an ihrer Stelle den Frieden der Zeitalter aufsteigen.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
-        "passiveEffectsDescription": "Moral +<H>#1</>. Cuando un personaje Electro usa su Habilidad Definitiva, obtiene 1 acumulación que aumenta el Daño de Habilidad en <H>#2</> durante <H>#3</> s, hasta <H>#4</> acumulaciones.",
+        "functionLabel": "Nahkampfwaffen",
+        "passiveEffectsDescription": "Moral +<H>#1</>. Wenn ein Elektro-Figur den Ultimate einsetzt, wird der Fähigkeits-SCH um <H>#2</> für <H>#3</> Sek. erhöht (bis zu <H>#4</>-mal stapelbar).",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Nahkampfwaffen",
           "Großschwert"
         ]
       },
@@ -4598,12 +4851,12 @@
         "modName": "Despedida Eterna",
         "description": "Que se quiebren los ecos del pasado, y se inaugure la paz para todas las generaciones.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
+        "functionLabel": "Armas cuerpo a cuerpo",
         "passiveEffectsDescription": "Moral +<H>#1</>. Cuando un personaje Electro usa su Habilidad Definitiva, obtiene 1 acumulación que aumenta el Daño de Habilidad en <H>#2</> durante <H>#3</> s, hasta <H>#4</> acumulaciones.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Armas cuerpo a cuerpo",
           "Espadón"
         ]
       },
@@ -4845,12 +5098,12 @@
         "modName": "Aureate Drift",
         "description": "A clear note fades beyond the clouds, a frosted robe bathed in the moonlight.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
+        "functionLabel": "Nahkampfwaffen",
         "passiveEffectsDescription": "Trigger Probability +<H>#1</>. When damage dealt with this weapon triggers a bonus effect, there is a <H>#2</> chance to restore <H>5</> rounds of ammo.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Nahkampfwaffen",
           "Großschwert"
         ]
       },
@@ -4871,12 +5124,12 @@
         "modName": "Deriva Áurea",
         "description": "Una nota clara se desvanece entre las nubes, mientras una túnica escarchada se baña en la luz de la luna.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
+        "functionLabel": "Armas cuerpo a cuerpo",
         "passiveEffectsDescription": "Probabilidad de activación +<H>#1</>. Cuando el daño infligido con esta arma activa un efecto adicional, hay una probabilidad de <H>#2</> de recuperar <H>5</> municiones.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Armas cuerpo a cuerpo",
           "Espadón"
         ]
       },
@@ -4983,8 +5236,8 @@
       "polarity": null,
       "maxLevel": 80,
       "cost": null,
-      "openVersion": 16,
-      "releaseVersion": 160
+      "openVersion": 15,
+      "releaseVersion": 150
     },
     "textKeys": {
       "modNameKey": "UI_WEAPON_NAME_10399",
@@ -5056,13 +5309,15 @@
     },
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Claymore_Yemei",
-      "publicPath": null,
+      "publicPath": "/assets/items/weapons/T_Head_Claymore_Yemei.png",
       "placeholderPath": null,
       "candidates": [
         "T_Head_Claymore_Yemei",
         "Head_Claymore_Yemei"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Claymore_Yemei.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -5097,18 +5352,18 @@
         "modName": "Metall-Großschwert",
         "description": "Gewöhnliches Großschwert. Aus dem billigsten Metall hergestellt, also ist es nicht schlimm, wenn es zerbricht.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
+        "functionLabel": "Nahkampfwaffen",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Nahkampfwaffen",
           "Großschwert"
         ]
       },
       "EN": {
-        "modName": "Metal Greatsword",
-        "description": "Ordinary greatsword. Crafted from the cheapest metal, so there's no shame if it breaks.",
+        "modName": "Sovereign Ember",
+        "description": "UI_WEAPON_DESC_10399",
         "demonWedgeName": null,
         "functionLabel": "Melee Weapons",
         "passiveEffectsDescription": null,
@@ -5123,18 +5378,18 @@
         "modName": "Mandoble Metálico",
         "description": "Un mandoble común, forjado en metal barato, incluso si se rompe no representa una gran pérdida.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
+        "functionLabel": "Armas cuerpo a cuerpo",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Armas cuerpo a cuerpo",
           "Espadón"
         ]
       },
       "FR": {
-        "modName": "Espadon en acier",
-        "description": "Un espadon ordinaire, forgé dans un métal bon marché. Même s’il venait à se briser, nul n’en éprouverait le moindre regret.",
+        "modName": "Braise souveraine",
+        "description": "L’un des porteurs de cette arme était un roi. Le Dieu-Père récompensa son ambition. Le peuple se tenait derrière lui, acclamant son nom et célébrant ses conquêtes.\nIl ne cessa jamais d’avancer sur la voie de la conquête, convaincu que toujours plus de gens se rallieraient à lui. Mais ses ennemis, eux, ne firent que se multiplier. Il finit encerclé sur son trône, embrasa un grand feu et se réduisit en cendres avec sa gloire.",
         "demonWedgeName": null,
         "functionLabel": "Armes de mêlée",
         "passiveEffectsDescription": null,
@@ -5146,8 +5401,8 @@
         ]
       },
       "JP": {
-        "modName": "金属の大剣",
-        "description": "ありふれた大剣。安価な金属で作られているので、壊れても惜しくない。",
+        "modName": "陰りし業火",
+        "description": "武器を手にした者の一人は、君王であった。父なる神はその野心を称えた。人々は彼の背後に立ち、その威名に歓呼し、その征服を讃えた。\n王は征服の歩みを止めず、さらに多くの者が自分に付き従うと固く信じていた。だが、彼の敵はますます増えていった。最後には玉座の上で包囲され、烈火を燃やし、自らと栄光を灰へと焼き尽くした。",
         "demonWedgeName": null,
         "functionLabel": "近接武器",
         "passiveEffectsDescription": null,
@@ -5159,8 +5414,8 @@
         ]
       },
       "KR": {
-        "modName": "금속 대검",
-        "description": "흔히 볼 수 있는 대검. 가장 저렴한 금속으로 제작되어, 망가져도 전혀 아깝지 않다.",
+        "modName": "쇠락한 권세",
+        "description": "이 무기를 손에 넣은 자 중 한 명은 왕이었고, 아버지 신은 그의 야망을 치하했다. 사람들은 그의 뒤에 서서 그의 위명을 환호하고, 그의 정복을 찬양했다.\n그는 정복의 발걸음을 멈추지 않았고, 더 많은 추종자를 얻을 것이라 굳게 믿었지만, 적은 점점 더 늘어만 갔다. 결국 그는 왕좌 위에서 포위당했고, 타오르는 불길 속에서 자신과 영광을 함께 재로 태워버렸다.",
         "demonWedgeName": null,
         "functionLabel": "근접 무기",
         "passiveEffectsDescription": null,
@@ -5172,8 +5427,8 @@
         ]
       },
       "TC": {
-        "modName": "金屬重劍",
-        "description": "尋常的大劍。用最廉價的金屬製作而成，即使用壞也不心疼。",
+        "modName": "權火將熄",
+        "description": "獲得武器的其中一人是名君王，父神嘉獎他的野心。人們站在他的身後，歡呼他的威名，歌頌他的征服。\n他沒有停下征服的腳步，他堅信自己會擁有更多的簇擁，但他的敵人卻越來越多。最終他被包圍在王座之上，燃起烈火，將自己和榮耀一起焚成灰燼。",
         "demonWedgeName": null,
         "functionLabel": "近戰武器",
         "passiveEffectsDescription": null,
@@ -5195,8 +5450,8 @@
       "Icon": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Claymore_Yemei",
       "ModSlot": "T.RT_1",
       "ModSlotUnlock": "T.RT_2",
-      "OpenVersion": 16,
-      "ReleaseVersion": 160,
+      "OpenVersion": 15,
+      "ReleaseVersion": 150,
       "SkinApplicationType": "T.RT_5",
       "SortPriority": 10399,
       "Sound": "SOUND_ITEM_WEAPON",
@@ -5374,12 +5629,12 @@
         "modName": "Heimlose Reißzähne",
         "description": "Ein einsamer Wolfshund hat nur seine Zähne. Vor ihm liegt das Labyrinth des Schicksals, unter ihm der verbrannte Boden seiner Heimat.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
-        "passiveEffectsDescription": "Velocidad de Ataque +<H>#1</>. Al infligir daño con esta arma y activar un efecto extra, si los PV del usuario están por debajo del 25%, hay <H>#2</> de probabilidad de restaurar <H>#3</> de sus PV Máx.",
+        "functionLabel": "Nahkampfwaffen",
+        "passiveEffectsDescription": "Angriffs-GES +<H>#1</>. Wird mit dieser Waffe ein SCH verursacht, wird ein Bonuseffekt ausgelöst – wenn die LP des Trägers unter 25 % liegen, besteht eine Chance von <H>#2</>, <H>#3</> der max. LP wiederherzustellen.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Nahkampfwaffen",
           "Doppelklingen"
         ]
       },
@@ -5400,12 +5655,12 @@
         "modName": "Colmillos Exiliados",
         "description": "Un lobo solitario que no tiene nada más que sus colmillos. Frente a él se extiende el camino perdido del destino, bajo sus patas, las cenizas de su tierra natal.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
+        "functionLabel": "Armas cuerpo a cuerpo",
         "passiveEffectsDescription": "Velocidad de Ataque +<H>#1</>. Al infligir daño con esta arma y activar un efecto extra, si los PV del usuario están por debajo del 25%, hay <H>#2</> de probabilidad de restaurar <H>#3</> de sus PV Máx.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Armas cuerpo a cuerpo",
           "Hojas Dobles"
         ]
       },
@@ -5646,12 +5901,12 @@
         "modName": "Goldene Vergangenheit",
         "description": "Als die dunkle Flut heranrollte, reckte der Träger diese goldenen Klingen als Opfergabe empor – ein letztes Gebet an einen stillen Gott, der keine Antwort gab.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
-        "passiveEffectsDescription": "Daño CRIT +<H>#1</>. Los Ataques Deslizantes con esta arma obtienen Prob. CRIT +<H>#2</>.",
+        "functionLabel": "Nahkampfwaffen",
+        "passiveEffectsDescription": "KRIT-SCH +<H>#1</>. Gleitangriffe mit dieser Waffe erhalten +<H>#2</> KRIT-Rate.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Nahkampfwaffen",
           "Doppelklingen"
         ]
       },
@@ -5672,12 +5927,12 @@
         "modName": "Antaño Aureo",
         "description": "Cuando se hundió en las oscuras olas del mar, el portador de las hojas dobles alzó su posesión más preciada en ofrenda a los dioses… sin embargo estos no le concedieron misericordia.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
+        "functionLabel": "Armas cuerpo a cuerpo",
         "passiveEffectsDescription": "Daño CRIT +<H>#1</>. Los Ataques Deslizantes con esta arma obtienen Prob. CRIT +<H>#2</>.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Armas cuerpo a cuerpo",
           "Hojas Dobles"
         ]
       },
@@ -5912,12 +6167,12 @@
         "modName": "Tiefenloser Haiblick",
         "description": "Im Moment bist du das Raubtier – in der Tiefe lauernd, auf den Angriff wartend.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
-        "passiveEffectsDescription": "Rango de Habilidad +<H>#1</>.",
+        "functionLabel": "Nahkampfwaffen",
+        "passiveEffectsDescription": "Fähigkeitsreichweite +<H>#1</>.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Nahkampfwaffen",
           "Doppelklingen"
         ]
       },
@@ -5938,12 +6193,12 @@
         "modName": "Mirada de Tiburón Insondable",
         "description": "Ahora, eres el cazador de las profundidades.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
+        "functionLabel": "Armas cuerpo a cuerpo",
         "passiveEffectsDescription": "Rango de Habilidad +<H>#1</>.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Armas cuerpo a cuerpo",
           "Hojas Dobles"
         ]
       },
@@ -6184,12 +6439,12 @@
         "modName": "Skyfall Duality",
         "description": "Raging tides shatter the blackened frost; as winds converge, a cold gleam is drawn.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
-        "passiveEffectsDescription": "Rango de Ataque +<H>#1</>. Al realizar un Ataque Cargado con esta arma, hay un <H>#2</> de probabilidad de no consumir Puntos de Combo.",
+        "functionLabel": "Nahkampfwaffen",
+        "passiveEffectsDescription": "ATK Range +<H>#1</>. Charged Attacks with this weapon have a <H>#2</> chance not to consume Combo Points.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Nahkampfwaffen",
           "Doppelklingen"
         ]
       },
@@ -6207,15 +6462,15 @@
         ]
       },
       "ES": {
-        "modName": "Dualidad celestial",
+        "modName": "Dualidad Celestial",
         "description": "Mareas furiosas que quiebran la escarcha; entre el rugir del viento, destella el filo helado.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
+        "functionLabel": "Armas cuerpo a cuerpo",
         "passiveEffectsDescription": "Rango de Ataque +<H>#1</>. Al realizar un Ataque Cargado con esta arma, hay un <H>#2</> de probabilidad de no consumir Puntos de Combo.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Armas cuerpo a cuerpo",
           "Hojas Dobles"
         ]
       },
@@ -6468,12 +6723,12 @@
         "modName": "Unsterbliche Oneiros",
         "description": "Ein alter Traum mit Blick auf die Zukunft.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
-        "passiveEffectsDescription": "PV Máx. +<H>#1</>. Al infligir daño con esta arma y activar un efecto extra, obtienes 1 acumulación que aumenta los PV Máx. en <H>#2</> durante <H>#3</> s, hasta <H>#4</> acumulaciones.",
+        "functionLabel": "Nahkampfwaffen",
+        "passiveEffectsDescription": "Max. LP +<H>#1</>. Wenn diese Waffe bei einem Treffer einen Bonuseffekt auslöst, werden die max. LP um <H>#2</> für <H>#3</> Sek. erhöht (bis zu <H>#4</>-mal stapelbar).",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Nahkampfwaffen",
           "Peitschenschwert"
         ]
       },
@@ -6494,12 +6749,12 @@
         "modName": "Oneiros Inmortal",
         "description": "Un sueño del pasado que mira hacia el futuro.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
+        "functionLabel": "Armas cuerpo a cuerpo",
         "passiveEffectsDescription": "PV Máx. +<H>#1</>. Al infligir daño con esta arma y activar un efecto extra, obtienes 1 acumulación que aumenta los PV Máx. en <H>#2</> durante <H>#3</> s, hasta <H>#4</> acumulaciones.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Armas cuerpo a cuerpo",
           "Espada Látigo"
         ]
       },
@@ -6746,12 +7001,12 @@
         "modName": "Friedvoller Gnadenfall",
         "description": "Der Himmel gewährt allem, was wächst, seine Gnade; der Regen spendet Barmherzigkeit, wo das Leben noch fließt.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
-        "passiveEffectsDescription": "Daño de Habilidad +<H>#1</>. Cuando un personaje Hydro inflige Daño CRIT con esta arma, aplica a los aliados Daño de Habilidad +<H>#2</> durante <H>#3</> s.",
+        "functionLabel": "Nahkampfwaffen",
+        "passiveEffectsDescription": "Fähigkeits-SCH +<H>#1</>. Wenn ein Hydro-Figur mit dieser Waffe einen KRIT-SCH verursacht, erhöht sich der Fähigkeits-SCH für Verbündete um <H>#2</> für <H>#3</> Sek.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Nahkampfwaffen",
           "Peitschenschwert"
         ]
       },
@@ -6772,12 +7027,12 @@
         "modName": "Llovizna Serena",
         "description": "El cielo se compadece de toda vida, y su lluvia benévola da amparo a todos los seres.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
+        "functionLabel": "Armas cuerpo a cuerpo",
         "passiveEffectsDescription": "Daño de Habilidad +<H>#1</>. Cuando un personaje Hydro inflige Daño CRIT con esta arma, aplica a los aliados Daño de Habilidad +<H>#2</> durante <H>#3</> s.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Armas cuerpo a cuerpo",
           "Espada Látigo"
         ]
       },
@@ -7013,12 +7268,12 @@
         "modName": "Fesselpeitsche",
         "description": "Es sind nicht nur Gefühle, die das menschliche Herz fesseln. Diese sich windende Peitschenklinge ist fesselnder als Worte und schneidet tiefer als Vertrauen.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
-        "passiveEffectsDescription": "Duración de Habilidad +<H>#1</>.",
+        "functionLabel": "Nahkampfwaffen",
+        "passiveEffectsDescription": "Fähigkeitsdauer +<H>#1</>.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Nahkampfwaffen",
           "Peitschenschwert"
         ]
       },
@@ -7039,12 +7294,12 @@
         "modName": "Látigo de Cadenas",
         "description": "No son solo los sentimientos conectan a las personas. La espada látigo, al retorcerse y entrelazarse, también permite que los corazones se abran profundamente entre sí.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
+        "functionLabel": "Armas cuerpo a cuerpo",
         "passiveEffectsDescription": "Duración de Habilidad +<H>#1</>.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Armas cuerpo a cuerpo",
           "Espada Látigo"
         ]
       },
@@ -7291,12 +7546,12 @@
         "modName": "Smaragdriffe",
         "description": "Ausgetrocknete Korallen liegen verstreut am stillen Ufer – Fragmente, in denen sich die zerbrochenen Träume des Meeres wiegen.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
-        "passiveEffectsDescription": "Probabilidad de Activación +<H>#1</>. Al realizar un Ataque Cargado con esta arma, obtienes Velocidad de Ataque +<H>#2</> durante <H>#3</> s. El efecto se elimina al cambiar de arma.",
+        "functionLabel": "Nahkampfwaffen",
+        "passiveEffectsDescription": "Auslöserate +<H>#1</>. Geladene Angriffe mit dieser Waffe gewähren +<H>#2</> Angriffs-GES für <H>#3</> Sek. Der Effekt wird beim Waffenwechsel deaktiviert.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Nahkampfwaffen",
           "Peitschenschwert"
         ]
       },
@@ -7314,15 +7569,15 @@
         ]
       },
       "ES": {
-        "modName": "Arrecifes Esmeralda",
+        "modName": "Arrecife Espectral",
         "description": "Restos de coral que yacen marchitos sobre la playa, donde se condensan los fragmentos de sueños del mar infinito.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
+        "functionLabel": "Armas cuerpo a cuerpo",
         "passiveEffectsDescription": "Probabilidad de Activación +<H>#1</>. Al realizar un Ataque Cargado con esta arma, obtienes Velocidad de Ataque +<H>#2</> durante <H>#3</> s. El efecto se elimina al cambiar de arma.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Armas cuerpo a cuerpo",
           "Espada Látigo"
         ]
       },
@@ -7563,12 +7818,12 @@
         "modName": "Momiji Itteki",
         "description": "Eine einzigartig geformte Klinge aus der bekannten Tragödie Momiji: Eine Chronik der Rebellion. Ihr blutrot gefärbter Griff soll das Blut eines Königs in sich tragen – erschlagen von genau der Hand, die ihn zu beschützen geschworen hatte.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
-        "passiveEffectsDescription": "Daño CRIT +<H>#1</>. Al infligir daño con esta arma, el daño infligido aumenta en <H>#2</> y, por cada nivel de combo, aumenta otros <H>#2</>.",
+        "functionLabel": "Nahkampfwaffen",
+        "passiveEffectsDescription": "KRIT-SCH +<H>#1</>. Wenn mit dieser Waffe Schaden verursacht wird, erhöht sich der verursachte SCH um <H>#2</>, zusätzlich um <H>#2</> pro Kombostufe.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Nahkampfwaffen",
           "Katana"
         ]
       },
@@ -7589,12 +7844,12 @@
         "modName": "Momiji Itteki",
         "description": "Un sable de diseño poco común que aparece en la célebre tragedia <I>Momiji: Crónica de la rebelión</>. Algunos dicen que la mancha roja en su empuñadura es la sangre derramada cuando su primer dueño mató a su propio rey.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
+        "functionLabel": "Armas cuerpo a cuerpo",
         "passiveEffectsDescription": "Daño CRIT +<H>#1</>. Al infligir daño con esta arma, el daño infligido aumenta en <H>#2</> y, por cada nivel de combo, aumenta otros <H>#2</>.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Armas cuerpo a cuerpo",
           "Katana"
         ]
       },
@@ -7829,12 +8084,12 @@
         "modName": "Verwelkenschatten",
         "description": "In den Augen des Sterbenden sinkt ein einzelnes purpurrotes Blütenblatt herab – schwerelos, lautlos und endgültig.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
-        "passiveEffectsDescription": "Rango de Habilidad +<H>#1</>.",
+        "functionLabel": "Nahkampfwaffen",
+        "passiveEffectsDescription": "Fähigkeitsreichweite +<H>#1</>.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Nahkampfwaffen",
           "Katana"
         ]
       },
@@ -7855,12 +8110,12 @@
         "modName": "Sombra Marchita",
         "description": "En los ojos de quien va a morir se refleja una flor de cerezo carmesí que desciende desde la rama.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
+        "functionLabel": "Armas cuerpo a cuerpo",
         "passiveEffectsDescription": "Rango de Habilidad +<H>#1</>.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Armas cuerpo a cuerpo",
           "Katana"
         ]
       },
@@ -8107,12 +8362,12 @@
         "modName": "Heilige Gunst",
         "description": "Eingraviert in den Griff in verwitterter Schrift: „Gelobt sei die Elysische Kirche.“ Möge die heilige Gnade der Großen Neun auf den unglückseligen Boden von Yashnia herniedersinken.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
-        "passiveEffectsDescription": "ATQ del personaje +<H>#1</>. Al realizar un Ataque Cargado con esta arma, obtienes daño CRIT +<H>#2</> durante <H>#3</> s. El efecto se elimina al cambiar de arma.",
+        "functionLabel": "Nahkampfwaffen",
+        "passiveEffectsDescription": "Figur-ANG +<H>#1</>. Geladene Angriffe mit dieser Waffe gewähren +<H>#2</> KRIT-SCH für <H>#3</> Sek. Der Effekt wird beim Waffenwechsel deaktiviert.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Nahkampfwaffen",
           "Katana"
         ]
       },
@@ -8133,12 +8388,12 @@
         "modName": "Fervor Sagrado",
         "description": "En la empuñadura se distingue una inscripción apenas legible: \"Alabada sea la Iglesia Elysiana\". Gracias por llevar la sagrada bendición de los Nueve Dioses al Principado de Yashnia, tierra de pecadores.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
+        "functionLabel": "Armas cuerpo a cuerpo",
         "passiveEffectsDescription": "ATQ del personaje +<H>#1</>. Al realizar un Ataque Cargado con esta arma, obtienes daño CRIT +<H>#2</> durante <H>#3</> s. El efecto se elimina al cambiar de arma.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Armas cuerpo a cuerpo",
           "Katana"
         ]
       },
@@ -8391,12 +8646,12 @@
         "modName": "Sanguis Sanctus – Katana",
         "description": "Blood runs dry. Conviction does not.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
-        "passiveEffectsDescription": "Rango de ataque +<H>#1</>. Al aumentar el nivel de combo, obtienes 1 acumulación que otorga +#2 de Daño de Ataque Normal durante #3 s, hasta un máximo de #4 acumulaciones. Este efecto se elimina al cambiar de arma.",
+        "functionLabel": "Nahkampfwaffen",
+        "passiveEffectsDescription": "ATK Range +<H>#1</>. When Combo Level increases, grants 1 stack of +<H>#2</> Normal Attack DMG for <H>#3</>s, up to <H>#4</>  stacks. This effect is removed when switching weapons.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Nahkampfwaffen",
           "Katana"
         ]
       },
@@ -8417,12 +8672,12 @@
         "modName": "Sangre sagrada – Katana",
         "description": "La sangre ardiente puede secarse, pero la convicción nunca se apaga.",
         "demonWedgeName": null,
-        "functionLabel": "Arma cuerpo a cuerpo",
+        "functionLabel": "Armas cuerpo a cuerpo",
         "passiveEffectsDescription": "Rango de ataque +<H>#1</>. Al aumentar el nivel de combo, obtienes 1 acumulación que otorga +<H>#2</> de Daño de Ataque Normal durante <H>#3</> s, hasta un máximo de <H>#4</> acumulaciones. Este efecto se elimina al cambiar de arma.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma cuerpo a cuerpo",
+          "Armas cuerpo a cuerpo",
           "Katana"
         ]
       },
@@ -8663,12 +8918,12 @@
         "modName": "Entropische Singularität",
         "description": "Durch die Kugel der Wahrheit enthüllt sich die Realität.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
-        "passiveEffectsDescription": "Probabilidad de Activación +<H>#1</>. Cada disparo con esta arma tiene una probabilidad (según su Probabilidad de Activación de Arma) de disparar un proyectil adicional sin consumir munición, que inflige daño de área igual al <H>#2</> del ATQ de esta arma.",
+        "functionLabel": "Fernkampfwaffen",
+        "passiveEffectsDescription": "Auslöserate +<H>#1</>. Jeder Schuss mit dieser Waffe hat eine Chance (basierend auf der Waffen-Auslöserate), ein zusätzliches Geschoss ohne Munitionskosten abzufeuern, das Flächenschaden in Höhe von <H>#2</> seines ANG verursacht.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Fernkampfwaffen",
           "Pistole"
         ]
       },
@@ -8689,12 +8944,12 @@
         "modName": "Singularidad Entrópica",
         "description": "Reconstruir el mundo a través de la verdad.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
-        "passiveEffectsDescription": "Probabilidad de Activación +<H>#1</>. Cada disparo con esta arma tiene una probabilidad (según su Probabilidad de Activación de Arma) de disparar un proyectil adicional sin consumir munición, que inflige daño de área igual al <H>#2</> del ATQ de esta arma.",
+        "functionLabel": "Armas a distancia",
+        "passiveEffectsDescription": "Probabilidad de Activación +<H>#1</>. Cada disparo con esta arma tiene una probabilidad (según su Probabilidad de activación del arma) de disparar un proyectil adicional sin consumir munición, que inflige daño de área igual al <H>#2</> del ATQ de esta arma.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Armas a distancia",
           "Pistola"
         ]
       },
@@ -8929,12 +9184,12 @@
         "modName": "Schinder",
         "description": "Ein Trugschluss, herausgerissen aus dem Strudel des Todes – eine Wahrheit, die nie hätte sein dürfen.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
-        "passiveEffectsDescription": "ATQ del personaje +<H>#1</>.",
+        "functionLabel": "Fernkampfwaffen",
+        "passiveEffectsDescription": "Figur-ANG +<H>#1</>.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Fernkampfwaffen",
           "Pistole"
         ]
       },
@@ -8955,12 +9210,12 @@
         "modName": "Desgarrador",
         "description": "Un error que se abre paso desde la espiral de muertes acumuladas.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
+        "functionLabel": "Armas a distancia",
         "passiveEffectsDescription": "ATQ del personaje +<H>#1</>.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Armas a distancia",
           "Pistola"
         ]
       },
@@ -9207,12 +9462,12 @@
         "modName": "Heiliges Dekret",
         "description": "Das Grollen göttlicher Orakel soll durch die Schädel aller Ketzer hallen.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
-        "passiveEffectsDescription": "Multidisparo +<H>#1</>. Al infligir daño con esta arma y activar un efecto extra, aumenta el daño de las Armas cuerpo a cuerpo en <H>#2</> durante #3 s.",
+        "functionLabel": "Fernkampfwaffen",
+        "passiveEffectsDescription": "Mehrfachschussrate +<H>#1</>. Wenn diese Waffe bei einem Treffer einen Bonuseffekt auslöst, erhöht sich der Nahkampfwaffen-SCH um <H>#2</> für #3 Sek.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Fernkampfwaffen",
           "Pistole"
         ]
       },
@@ -9233,12 +9488,12 @@
         "modName": "Decreto Sacrosanto",
         "description": "El estruendo del oráculo resonará en las cabezas de todos los herejes.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
+        "functionLabel": "Armas a distancia",
         "passiveEffectsDescription": "Multidisparo +<H>#1</>. Al infligir daño con esta arma y activar un efecto extra, aumenta el daño de las Armas cuerpo a cuerpo en <H>#2</> durante #3 s.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Armas a distancia",
           "Pistola"
         ]
       },
@@ -9333,6 +9588,259 @@
       "CRI": 0.25,
       "CRD": 2.05,
       "PassiveEffectsDescKey": "SKILL_20103_DESC"
+    }
+  },
+  {
+    "id": "weapons-20104",
+    "categoryId": "weapons",
+    "modId": 20104,
+    "archiveId": null,
+    "stats": {
+      "rarity": 5,
+      "polarity": null,
+      "maxLevel": 80,
+      "cost": null,
+      "openVersion": 15,
+      "releaseVersion": 150
+    },
+    "textKeys": {
+      "modNameKey": "UI_WEAPON_NAME_20104",
+      "descriptionKey": "UI_WEAPON_DESC_20104",
+      "demonWedgeKey": null,
+      "functionKey": "UI_Armory_Longrange",
+      "passiveEffectsDescKey": null,
+      "affinityNameKey": null,
+      "archiveNameKey": null
+    },
+    "affinity": {
+      "id": null,
+      "nameKey": null,
+      "char": null,
+      "icon": {
+        "gamePath": null,
+        "publicPath": null,
+        "placeholderPath": null,
+        "candidates": [],
+        "allMatches": []
+      }
+    },
+    "typeCompatibility": {
+      "applicationType": 201,
+      "textKeys": [
+        "UI_Armory_Longrange",
+        "WeaponType_Pistol"
+      ],
+      "tags": [
+        {
+          "key": "UI_Armory_Longrange",
+          "icon": {
+            "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponTypeLongRange.T_Armory_WeaponTypeLongRange",
+            "publicPath": "/assets/items/weapon-types/T_Armory_WeaponTypeLongRange.png",
+            "placeholderPath": null,
+            "candidates": [
+              "T_Armory_WeaponTypeLongRange",
+              "Armory_WeaponTypeLongRange"
+            ],
+            "allMatches": [
+              "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponTypeLongRange.png"
+            ]
+          }
+        },
+        {
+          "key": "WeaponType_Pistol",
+          "icon": {
+            "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponType_Pistol.T_Armory_WeaponType_Pistol",
+            "publicPath": "/assets/items/weapon-types/T_Armory_WeaponType_Pistol.png",
+            "placeholderPath": null,
+            "candidates": [
+              "T_Armory_WeaponType_Pistol",
+              "Armory_WeaponType_Pistol"
+            ],
+            "allMatches": [
+              "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponType_Pistol.png"
+            ]
+          }
+        }
+      ]
+    },
+    "tolerance": {
+      "baseCost": null,
+      "costChange": null,
+      "maxLevel": 0,
+      "valuesByLevel": {
+        "0": null
+      }
+    },
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Pistol_Shengxue",
+      "publicPath": "/assets/items/weapons/T_Head_Pistol_Shengxue.png",
+      "placeholderPath": null,
+      "candidates": [
+        "T_Head_Pistol_Shengxue",
+        "Head_Pistol_Shengxue"
+      ],
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Pistol_Shengxue.png"
+      ]
+    },
+    "scaling": {
+      "defaultLevel": 0,
+      "maxLevel": 5,
+      "availableLevels": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "valuesByLevel": {
+        "0": {},
+        "1": {},
+        "2": {},
+        "3": {},
+        "4": {},
+        "5": {}
+      },
+      "attributesByLevel": {
+        "0": [],
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": []
+      }
+    },
+    "translations": {
+      "DE": {
+        "modName": "Sanguis Sanctus – Pistol",
+        "description": "Blood runs dry. Conviction does not.",
+        "demonWedgeName": null,
+        "functionLabel": "Fernkampfwaffen",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Fernkampfwaffen",
+          "Pistole"
+        ]
+      },
+      "EN": {
+        "modName": "Sanguis Sanctus – Pistol",
+        "description": "Blood runs dry. Conviction does not.",
+        "demonWedgeName": null,
+        "functionLabel": "Ranged Weapons",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Ranged Weapons",
+          "Pistol"
+        ]
+      },
+      "ES": {
+        "modName": "Sanguis Sanctus – Pistol",
+        "description": "Blood runs dry. Conviction does not.",
+        "demonWedgeName": null,
+        "functionLabel": "Armas a distancia",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Armas a distancia",
+          "Pistola"
+        ]
+      },
+      "FR": {
+        "modName": "Sanguis Sanctus – Pistolet",
+        "description": "Le sang ardent finira par se tarir, mais la foi ne s’éteindra jamais.",
+        "demonWedgeName": null,
+        "functionLabel": "Armes à distance",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Armes à distance",
+          "Pistolet"
+        ]
+      },
+      "JP": {
+        "modName": "【聖血】ピストル",
+        "description": "熱き血はいずれ涸れる。だが、信念は決して消えない。",
+        "demonWedgeName": null,
+        "functionLabel": "遠隔武器",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "遠隔武器",
+          "ピストル"
+        ]
+      },
+      "KR": {
+        "modName": "성스러운 피·권총",
+        "description": "끓어올랐던 피는 언젠가 말라붙지만, 신념은 결코 사라지지 않는다.",
+        "demonWedgeName": null,
+        "functionLabel": "원거리 무기",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "원거리 무기",
+          "권총"
+        ]
+      },
+      "TC": {
+        "modName": "聖血·手槍",
+        "description": "熱血終會乾涸，信念永不磨滅。",
+        "demonWedgeName": null,
+        "functionLabel": "遠端武器",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "遠端武器",
+          "手槍"
+        ]
+      }
+    },
+    "fields": {
+      "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Pistol_Shengxue",
+      "CollectRewardExp": 400,
+      "DecomposeReward": 20111,
+      "GUIPathVariableName": "Shengxue",
+      "GUIPathVariableType": "Pistol",
+      "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Pistol_Shengxue",
+      "Icon": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Pistol_Shengxue",
+      "ModSlot": "T.RT_1",
+      "ModSlotUnlock": "T.RT_2",
+      "OpenVersion": 15,
+      "ReleaseVersion": 150,
+      "SkinApplicationType": "T.RT_9",
+      "SortPriority": 20104,
+      "Sound": "SOUND_ITEM_WEAPON",
+      "WeaponDescribe": "UI_WEAPON_DESC_20104",
+      "WeaponId": 20104,
+      "WeaponMaxLevel": 80,
+      "WeaponName": "UI_WEAPON_NAME_20104",
+      "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
+      "WeaponToCoinType": 101,
+      "WeaponValue": 10000,
+      "Type": "Ranged",
+      "ResourceSType": "Pistol",
+      "WeaponClassKey": "UI_Armory_Longrange",
+      "WeaponTypeKey": "WeaponType_Pistol",
+      "SkinApplicationTypeCodes": [
+        201
+      ],
+      "WeaponClass": "Ranged",
+      "WeaponSubtype": "Pistol",
+      "BaseATK": 15,
+      "ATKMax": 188,
+      "ATKType": "Smash",
+      "CRI": 0.25,
+      "CRD": 2.3
     }
   },
   {
@@ -9473,12 +9981,12 @@
         "modName": "Überwucherung",
         "description": "In den sich windenden Ebenen des Todes zieht jeder Fehler den nächsten nach sich – und dann noch einen.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
-        "passiveEffectsDescription": "Daño de Habilidad +<H>#1</>.",
+        "functionLabel": "Fernkampfwaffen",
+        "passiveEffectsDescription": "Fähigkeits-SCH +<H>#1</>.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Fernkampfwaffen",
           "Doppelpistolen"
         ]
       },
@@ -9499,12 +10007,12 @@
         "modName": "Excresencia",
         "description": "Dentro de la espiral de muertes acumuladas, los errores no hacen más que multiplicarse.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
+        "functionLabel": "Armas a distancia",
         "passiveEffectsDescription": "Daño de Habilidad +<H>#1</>.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Armas a distancia",
           "Pistolas Dobles"
         ]
       },
@@ -9751,12 +10259,12 @@
         "modName": "Blaustrom-Impuls",
         "description": "Die endlose Weite des Ozeans pulsiert unaufhörlich im Rhythmus des Lebens – üppig, überschwänglich und unerschütterlich.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
-        "passiveEffectsDescription": "Duración de Habilidad +<H>#1</>. Al impactar a enemigos o al entorno, los proyectiles rebotan una vez. Al infligir daño con esta arma, aumenta el daño de las Pistolas Dobles en <H>#2</> durante <H>#3</> s.",
+        "functionLabel": "Fernkampfwaffen",
+        "passiveEffectsDescription": "Fähigkeitsdauer +<H>#1</>. Wenn die Geschosse Gegner oder die Umgebung treffen, prallen sie einmal ab. Wird mit dieser Waffe Schaden verursacht, erhöht sich der Doppelpistolen-SCH um <H>#2</> für <H>#3</> Sek.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Fernkampfwaffen",
           "Doppelpistolen"
         ]
       },
@@ -9777,12 +10285,12 @@
         "modName": "Pulsación Azulada",
         "description": "El mar infinito late sin cesar con el pulso de la vida, abundante, vibrante, y a la vez interminable.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
+        "functionLabel": "Armas a distancia",
         "passiveEffectsDescription": "Duración de Habilidad +<H>#1</>. Al impactar a enemigos o al entorno, los proyectiles rebotan una vez. Al infligir daño con esta arma, aumenta el daño de las Pistolas Dobles en <H>#2</> durante <H>#3</> s.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Armas a distancia",
           "Pistolas Dobles"
         ]
       },
@@ -10035,12 +10543,12 @@
         "modName": "Heiliger Chor",
         "description": "Das Grollen göttlicher Orakel soll durch die Schädel aller Ketzer hallen.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
-        "passiveEffectsDescription": "Prob. CRIT +<H>#1</> Al infligir Daño CRIT con esta arma, obtienes 1 acumulación que aumenta el multidisparo en <H>#2</> durante <H>#3</> s, hasta <H>#4</> acumulaciones. El efecto se elimina al cambiar de arma.",
+        "functionLabel": "Fernkampfwaffen",
+        "passiveEffectsDescription": "KRIT-Rate +<H>#1</>. Wird mit dieser Waffe ein KRIT-SCH verursacht, wird Mehrfachschussrate um <H>#2</> für <H>#3</> Sek. erhöht (bis zu <H>#4</>-mal stapelbar). Der Effekt wird beim Waffenwechsel deaktiviert.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Fernkampfwaffen",
           "Doppelpistolen"
         ]
       },
@@ -10061,12 +10569,12 @@
         "modName": "Coro Sagrado",
         "description": "El estruendo del oráculo resonará en las cabezas de todos los herejes.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
+        "functionLabel": "Armas a distancia",
         "passiveEffectsDescription": "Prob. CRIT +<H>#1</> Al infligir Daño CRIT con esta arma, obtienes 1 acumulación que aumenta el multidisparo en <H>#2</> durante <H>#3</> s, hasta <H>#4</> acumulaciones. El efecto se elimina al cambiar de arma.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Armas a distancia",
           "Pistolas Dobles"
         ]
       },
@@ -10164,6 +10672,259 @@
     }
   },
   {
+    "id": "weapons-20207",
+    "categoryId": "weapons",
+    "modId": 20207,
+    "archiveId": null,
+    "stats": {
+      "rarity": 5,
+      "polarity": null,
+      "maxLevel": 80,
+      "cost": null,
+      "openVersion": 15,
+      "releaseVersion": 150
+    },
+    "textKeys": {
+      "modNameKey": "UI_WEAPON_NAME_20207",
+      "descriptionKey": "UI_WEAPON_DESC_20207",
+      "demonWedgeKey": null,
+      "functionKey": "UI_Armory_Longrange",
+      "passiveEffectsDescKey": null,
+      "affinityNameKey": null,
+      "archiveNameKey": null
+    },
+    "affinity": {
+      "id": null,
+      "nameKey": null,
+      "char": null,
+      "icon": {
+        "gamePath": null,
+        "publicPath": null,
+        "placeholderPath": null,
+        "candidates": [],
+        "allMatches": []
+      }
+    },
+    "typeCompatibility": {
+      "applicationType": 202,
+      "textKeys": [
+        "UI_Armory_Longrange",
+        "WeaponType_Crossbow"
+      ],
+      "tags": [
+        {
+          "key": "UI_Armory_Longrange",
+          "icon": {
+            "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponTypeLongRange.T_Armory_WeaponTypeLongRange",
+            "publicPath": "/assets/items/weapon-types/T_Armory_WeaponTypeLongRange.png",
+            "placeholderPath": null,
+            "candidates": [
+              "T_Armory_WeaponTypeLongRange",
+              "Armory_WeaponTypeLongRange"
+            ],
+            "allMatches": [
+              "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponTypeLongRange.png"
+            ]
+          }
+        },
+        {
+          "key": "WeaponType_Crossbow",
+          "icon": {
+            "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponType_Crossbow.T_Armory_WeaponType_Crossbow",
+            "publicPath": "/assets/items/weapon-types/T_Armory_WeaponType_Crossbow.png",
+            "placeholderPath": null,
+            "candidates": [
+              "T_Armory_WeaponType_Crossbow",
+              "Armory_WeaponType_Crossbow"
+            ],
+            "allMatches": [
+              "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponType_Crossbow.png"
+            ]
+          }
+        }
+      ]
+    },
+    "tolerance": {
+      "baseCost": null,
+      "costChange": null,
+      "maxLevel": 0,
+      "valuesByLevel": {
+        "0": null
+      }
+    },
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Crossbow_Leyuan",
+      "publicPath": "/assets/items/weapons/T_Head_Crossbow_Leyuan.png",
+      "placeholderPath": null,
+      "candidates": [
+        "T_Head_Crossbow_Leyuan",
+        "Head_Crossbow_Leyuan"
+      ],
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Crossbow_Leyuan.png"
+      ]
+    },
+    "scaling": {
+      "defaultLevel": 0,
+      "maxLevel": 5,
+      "availableLevels": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "valuesByLevel": {
+        "0": {},
+        "1": {},
+        "2": {},
+        "3": {},
+        "4": {},
+        "5": {}
+      },
+      "attributesByLevel": {
+        "0": [],
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": []
+      }
+    },
+    "translations": {
+      "DE": {
+        "modName": "The Best Day",
+        "description": "May every day we greet with a smile be one of the best days of our lives.",
+        "demonWedgeName": null,
+        "functionLabel": "Fernkampfwaffen",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Fernkampfwaffen",
+          "Doppelpistolen"
+        ]
+      },
+      "EN": {
+        "modName": "The Best Day",
+        "description": "May every day we greet with a smile be one of the best days of our lives.",
+        "demonWedgeName": null,
+        "functionLabel": "Ranged Weapons",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Ranged Weapons",
+          "Dual Pistols"
+        ]
+      },
+      "ES": {
+        "modName": "The Best Day",
+        "description": "May every day we greet with a smile be one of the best days of our lives.",
+        "demonWedgeName": null,
+        "functionLabel": "Armas a distancia",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Armas a distancia",
+          "Pistolas Dobles"
+        ]
+      },
+      "FR": {
+        "modName": "Le plus beau jour",
+        "description": "Puisse chaque jour où nous sourions être le plus beau de notre vie.",
+        "demonWedgeName": null,
+        "functionLabel": "Armes à distance",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Armes à distance",
+          "Doubles pistolets"
+        ]
+      },
+      "JP": {
+        "modName": "ベストデイ",
+        "description": "笑い合える今日という日が、これから先の人生の中で、いつだって最高の一日でありますように。",
+        "demonWedgeName": null,
+        "functionLabel": "遠隔武器",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "遠隔武器",
+          "デュアルガン"
+        ]
+      },
+      "KR": {
+        "modName": "최고의 하루",
+        "description": "우리가 함께 웃을 수 있는 모든 오늘이, 너와 나의 삶에서 가장 아름다운 날이 되기를.",
+        "demonWedgeName": null,
+        "functionLabel": "원거리 무기",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "원거리 무기",
+          "쌍권총"
+        ]
+      },
+      "TC": {
+        "modName": "最好的一天",
+        "description": "願我們每一個歡笑的今天，都是一生中最美好的一天。",
+        "demonWedgeName": null,
+        "functionLabel": "遠端武器",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "遠端武器",
+          "雙槍"
+        ]
+      }
+    },
+    "fields": {
+      "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Crossbow_Leyuan",
+      "CollectRewardExp": 400,
+      "DecomposeReward": 20211,
+      "GUIPathVariableName": "Leyuan",
+      "GUIPathVariableType": "Crossbow",
+      "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Crossbow_Leyuan",
+      "Icon": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Crossbow_Leyuan",
+      "ModSlot": "T.RT_1",
+      "ModSlotUnlock": "T.RT_2",
+      "OpenVersion": 15,
+      "ReleaseVersion": 150,
+      "SkinApplicationType": "T.RT_10",
+      "SortPriority": 20207,
+      "Sound": "SOUND_ITEM_WEAPON",
+      "WeaponDescribe": "UI_WEAPON_DESC_20207",
+      "WeaponId": 20207,
+      "WeaponMaxLevel": 80,
+      "WeaponName": "UI_WEAPON_NAME_20207",
+      "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
+      "WeaponToCoinType": 101,
+      "WeaponValue": 10000,
+      "Type": "Ranged",
+      "ResourceSType": "Crossbow",
+      "WeaponClassKey": "UI_Armory_Longrange",
+      "WeaponTypeKey": "WeaponType_Crossbow",
+      "SkinApplicationTypeCodes": [
+        202
+      ],
+      "WeaponClass": "Ranged",
+      "WeaponSubtype": "Crossbow",
+      "BaseATK": 6,
+      "ATKMax": 75,
+      "ATKType": "Spike",
+      "CRI": 0.2,
+      "CRD": 2
+    }
+  },
+  {
     "id": "weapons-20298",
     "categoryId": "weapons",
     "modId": 20298,
@@ -10173,8 +10934,8 @@
       "polarity": null,
       "maxLevel": 80,
       "cost": null,
-      "openVersion": 15,
-      "releaseVersion": 150
+      "openVersion": 99,
+      "releaseVersion": 990
     },
     "textKeys": {
       "modNameKey": "UI_WEAPON_NAME_20298",
@@ -10289,12 +11050,12 @@
         "modName": "Metall-Doppelpistolen",
         "description": "Gewöhnliche Doppelpistolen. Aus dem billigsten Metall hergestellt, also ist es nicht schlimm, wenn es zerbricht.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
+        "functionLabel": "Fernkampfwaffen",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Fernkampfwaffen",
           "Doppelpistolen"
         ]
       },
@@ -10315,12 +11076,12 @@
         "modName": "Pistolas Dobles Metálicas",
         "description": "Pistolas Dobles comunes, forjadas en metal barato, incluso si se rompen no representan una gran pérdida.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
+        "functionLabel": "Armas a distancia",
         "passiveEffectsDescription": null,
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Armas a distancia",
           "Pistolas Dobles"
         ]
       },
@@ -10387,8 +11148,8 @@
       "Icon": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Crossbow_Yemei",
       "ModSlot": "T.RT_1",
       "ModSlotUnlock": "T.RT_2",
-      "OpenVersion": 15,
-      "ReleaseVersion": 150,
+      "OpenVersion": 99,
+      "ReleaseVersion": 990,
       "SkinApplicationType": "T.RT_10",
       "SortPriority": 20298,
       "Sound": "SOUND_ITEM_WEAPON",
@@ -10572,12 +11333,12 @@
         "modName": "Stellares Endurteil",
         "description": "Die Bußfertigen sollen nicht länger zu den Sternen aufblicken – der Himmel schenkt ihnen kein Gehör, und die Sterne gewähren ihnen keine Absolution.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
-        "passiveEffectsDescription": "Alcance de Explosión +<H>#1</>. Al explotar, los proyectiles se dividen en 6 proyectiles adicionales que explotan e infligen daño. Al derrotar a un objetivo con esta arma, obtienes 1 acumulación que aumenta el daño CRIT en <H>#2</> durante <H>#3</> s, hasta <H>#4</> acumulaciones. El efecto se elimina al cambiar de arma.",
+        "functionLabel": "Fernkampfwaffen",
+        "passiveEffectsDescription": "Explosionsbereich +<H>#1</>. Wenn die Geschosse explodieren, teilen sie sich in 6 Zusätzliche Geschosse auf, die wiederum explodieren und Schaden verursachen. Beim Besiegen eines Ziels mit dieser Waffe gewährt 1 Stapelung von KRIT-SCH +<H>#2</> für <H>#3</> Sek., bis zu <H>#4</>-mal stapelbar. Der Effekt wird beim Waffenwechsel deaktiviert.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Fernkampfwaffen",
           "Granatwerfer"
         ]
       },
@@ -10598,12 +11359,12 @@
         "modName": "Finalidad Estelar",
         "description": "Que el penitente no mire al cielo, las innumerables estrellas jamás escuchan las plegarias de los pecadores.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
+        "functionLabel": "Armas a distancia",
         "passiveEffectsDescription": "Alcance de Explosión +<H>#1</>. Al explotar, los proyectiles se dividen en 6 proyectiles adicionales que explotan e infligen daño. Al derrotar a un objetivo con esta arma, obtienes 1 acumulación que aumenta el daño CRIT en <H>#2</> durante <H>#3</> s, hasta <H>#4</> acumulaciones. El efecto se elimina al cambiar de arma.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Armas a distancia",
           "Lanzagranadas"
         ]
       },
@@ -10856,12 +11617,12 @@
         "modName": "Feuerwaffenfest",
         "description": "Abenddämmerung, rote Tanzschuhe und Tau auf Rosen; ein Luftzug streift die Schläfen, das entrüstete Kreischen schneller Schüsse und der Geruch von Schießpulver ... Alle bezeugen ein Fest der Projektile.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
-        "passiveEffectsDescription": "Multidisparo +<H>#1</>. Cuando un personaje Pyro realiza una esquiva, obtiene 1 acumulación que otorga +<H>#2</> de Daño de Habilidad y +<H>#2</> de Multidisparo durante <H>#3</> s, hasta un máximo de <H>#4</> acumulaciones.",
+        "functionLabel": "Fernkampfwaffen",
+        "passiveEffectsDescription": "Mehrfachschussrate +<H>#1</>. Wenn ein Pyro-Figur ein Ausweichen ausführt, wird 1 Stapelung gewährt, die den Fähigkeits-SCH und den Fernkampfwaffe-SCH um <H>#2</> für <H>#3</> Sek. erhöht, bis zu <H>#4</>-mal stapelbar.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Fernkampfwaffen",
           "Granatwerfer"
         ]
       },
@@ -10882,12 +11643,12 @@
         "modName": "Banquete Incandescente",
         "description": "Bajo el telón de la noche, se ven zapatos rojos, las rosas cubiertas de rocío, fuegos artificiales, la pólvora flota en el aire, sí, esto es un gran festín.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
+        "functionLabel": "Armas a distancia",
         "passiveEffectsDescription": "Multidisparo +<H>#1</>. Cuando un personaje Pyro realiza una esquiva, obtiene 1 acumulación que otorga +<H>#2</> de Daño de Habilidad y +<H>#2</> de Multidisparo durante <H>#3</> s, hasta un máximo de <H>#4</> acumulaciones.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Armas a distancia",
           "Lanzagranadas"
         ]
       },
@@ -10922,7 +11683,7 @@
         "description": "밤의 장막, 붉은 댄스화, 장미에 맺힌 이슬. 내뱉은 숨결이 머리칼을 스치고 다급한 총소리가 울려 퍼지며, 사방에 자욱한 연기로 물든다. 이보다 성대한 연회는 없을 것이다.",
         "demonWedgeName": null,
         "functionLabel": "원거리 무기",
-        "passiveEffectsDescription": "다중 사격+<H>#1</>. 불 속성 캐릭터가 회피 시, 스킬 대미지 및 다중 사격 상승 <H>#2</> 효과를 1단계 획득한다. 지속 시간 <H>#3</>초, 최대 <H>#4</>단계 중첩.",
+        "passiveEffectsDescription": "다중 사격+<H>#1</>. 불 속성 캐릭터가 회피 시, 스킬 대미지 및 다중 사격 <H>#2</> 상승 효과를 1단계 획득한다. 지속 시간 <H>#3</>초, 최대 <H>#4</>단계 중첩.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -11123,12 +11884,12 @@
         "modName": "Desintegration",
         "description": "Die wahrhaftigste Rückkehr zur Natur besteht darin, zu Asche zu zerfallen und in der wartenden Erde zu versinken.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
-        "passiveEffectsDescription": "Rango de Habilidad +<H>#1</>.",
+        "functionLabel": "Fernkampfwaffen",
+        "passiveEffectsDescription": "Fähigkeitsreichweite +<H>#1</>.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Fernkampfwaffen",
           "Granatwerfer"
         ]
       },
@@ -11149,12 +11910,12 @@
         "modName": "Destrucción",
         "description": "Para volver a la naturaleza es necesario fundirse con las cenizas y perderse en la tierra.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
+        "functionLabel": "Armas a distancia",
         "passiveEffectsDescription": "Rango de Habilidad +<H>#1</>.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Armas a distancia",
           "Lanzagranadas"
         ]
       },
@@ -11395,12 +12156,12 @@
         "modName": "Guixu-Ratsche",
         "description": "Bronze härtet den stählernen Rahmen; inmitten von Dornen, eine Seele, geschmiedet für den Anspruch auf Heldentum.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
-        "passiveEffectsDescription": "Daño CRIT +<H>#1</>. Cuando los proyectiles impactan a enemigos o al entorno, se dividen en 2 proyectiles adicionales que continúan su trayectoria. Tras cambiar a esta arma, aumenta el multidisparo hasta un máximo de <H>#2</>, que disminuye con el tiempo. Este efecto se activa como máximo una vez cada 10 s y desaparece al cambiar de arma.",
+        "functionLabel": "Fernkampfwaffen",
+        "passiveEffectsDescription": "KRIT-SCH +<H>#1</>. Wenn die Geschosse auf Gegner oder die Umgebung treffen, teilen sie sich in 2 weitere Geschosse auf, die ihre Flugbahn fortsetzen. Nach dem Wechsel zu dieser Waffe erhöht sich die Mehrfachschussrate um <H>#2</>, und anschließend sinkt sie wieder im Laufe der Zeit. Dieser Effekt kann nur einmal alle 10 Sek. ausgelöst werden und wird beim Wechsel zu einer anderen Waffe deaktiviert.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Fernkampfwaffen",
           "Granatwerfer"
         ]
       },
@@ -11421,12 +12182,12 @@
         "modName": "Trinquete de Guixu",
         "description": "Huesos mecánicos templados en bronce, espinas que regresan de la ruina, y forjan un alma heroica.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
+        "functionLabel": "Armas a distancia",
         "passiveEffectsDescription": "Daño CRIT +<H>#1</>. Cuando los proyectiles impactan a enemigos o al entorno, se dividen en 2 proyectiles adicionales que continúan su trayectoria. Tras cambiar a esta arma, aumenta el multidisparo hasta un máximo de <H>#2</>, que disminuye con el tiempo. Este efecto se activa como máximo una vez cada 10 s y desaparece al cambiar de arma.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Armas a distancia",
           "Lanzagranadas"
         ]
       },
@@ -11679,12 +12440,12 @@
         "modName": "Silberweißes Edikt",
         "description": "Hellfire reitet auf eintausend silbernen Geschossen, die auf den Boden herabregnen, das Edikt der Götter in die Herzen aller Ketzer einätzend.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
-        "passiveEffectsDescription": "Velocidad de Ataque +<H>#1</>. Al atacar con esta arma y activar un efecto extra, obtienes 1 acumulación que aumenta la Velocidad de Ataque en <H>#2</> durante <H>#3</> s, hasta <H>#4</> acumulaciones. El efecto se elimina al cambiar de arma.",
+        "functionLabel": "Fernkampfwaffen",
+        "passiveEffectsDescription": "Angriffs-GES +<H>#1</>. Wenn diese Waffe bei einem Treffer einen Bonuseffekt auslöst, werden Angriffs-GES um <H>#2</> für <H>#3</> Sek. erhöht (bis zu <H>#4</>-mal stapelbar). Der Effekt wird beim Waffenwechsel deaktiviert.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Fernkampfwaffen",
           "Granatwerfer"
         ]
       },
@@ -11705,12 +12466,12 @@
         "modName": "Edicto Plateado",
         "description": "El fuego de la justicia cabalga sobre miles de proyectiles de plata mientras caen al suelo, grabando el edicto de los dioses en los corazones de cada hereje.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
+        "functionLabel": "Armas a distancia",
         "passiveEffectsDescription": "Velocidad de Ataque +<H>#1</>. Al atacar con esta arma y activar un efecto extra, obtienes 1 acumulación que aumenta la Velocidad de Ataque en <H>#2</> durante <H>#3</> s, hasta <H>#4</> acumulaciones. El efecto se elimina al cambiar de arma.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Armas a distancia",
           "Lanzagranadas"
         ]
       },
@@ -11945,12 +12706,12 @@
         "modName": "Schreisalve",
         "description": "Erst wenn der letzte Schrei verklungen ist ... kann wieder Ruhe in die Welt einkehren.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
-        "passiveEffectsDescription": "Duración de Habilidad +<H>#1</>.",
+        "functionLabel": "Fernkampfwaffen",
+        "passiveEffectsDescription": "Fähigkeitsdauer +<H>#1</>.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Fernkampfwaffen",
           "Schrotflinte"
         ]
       },
@@ -11971,12 +12732,12 @@
         "modName": "Chirrido",
         "description": "Solo después del lamento, el mundo regresa al silencio.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
+        "functionLabel": "Armas a distancia",
         "passiveEffectsDescription": "Duración de Habilidad +<H>#1</>.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Armas a distancia",
           "Escopeta"
         ]
       },
@@ -12211,12 +12972,12 @@
         "modName": "Stiller Sämann",
         "description": "Stecke Blumensamen in den Körper, damit die Zerstörung von innen heraus erblühen kann.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
-        "passiveEffectsDescription": "Prob. CRIT +<H>#1</> Los proyectiles se adhieren al objetivo y explotan tras 3 s de demora. Los proyectiles unidos en la misma posición se acumulan y aumentan el daño y el alcance de la explosión. Con 1/2/3 acumulaciones, inflige <H>#2</>/<H>#3</>/<H>#4</> del daño original.",
+        "functionLabel": "Fernkampfwaffen",
+        "passiveEffectsDescription": "KRIT-Rate +<H>#1</>. Das abgefeuerte Geschoss haftet sich an das Ziel und explodiert nach 3 Sek. Geschosse, die an derselben Position hängen, stapeln sich und erhöhen den SCH und die Reichweite der nachfolgenden Explosion. Wenn sich 1/2/3 Geschosse stapeln, wird <H>#2</>/<H>#3</>/<H>#4</> des ursprünglichen SCH verursacht.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Fernkampfwaffen",
           "Schrotflinte"
         ]
       },
@@ -12237,12 +12998,12 @@
         "modName": "Sembrador Silencioso",
         "description": "Sembrar flores en la piel para que desde dentro brote la destrucción.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
+        "functionLabel": "Armas a distancia",
         "passiveEffectsDescription": "Prob. CRIT +<H>#1</> Los proyectiles se adhieren al objetivo y explotan tras 3 s de demora. Los proyectiles unidos en la misma posición se acumulan y aumentan el daño y el alcance de la explosión. Con 1/2/3 acumulaciones, inflige <H>#2</>/<H>#3</>/<H>#4</> del daño original.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Armas a distancia",
           "Escopeta"
         ]
       },
@@ -12483,12 +13244,12 @@
         "modName": "Tag des heiligen Urteils",
         "description": "Eine Feuerwaffe, die vom Ritterorden der Heiligen Iris der Elysischen Kirche eingesetzt wird. Heilige Erhebung! Wir geloben, die Botschaft der Großen Neun in ganz Atlasia zu verbreiten.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
-        "passiveEffectsDescription": "Daño CRIT +<H>#1</>. Los proyectiles disparados siguen la dirección de la mira. Al infligir daño con esta arma, cuanto más lejos esté el objetivo, mayor será el daño, hasta un aumento máximo de <H>#2</>.",
+        "functionLabel": "Fernkampfwaffen",
+        "passiveEffectsDescription": "KRIT-SCH +<H>#1</>. Abgefeuerte Projektile folgen dem Fadenkreuz. Wird mit dieser Waffe Schaden verursacht, erhöht sich der SCH mit der Entfernung des Ziels, bis zu einer maximalen Erhöhung von <H>#2</>.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Fernkampfwaffen",
           "Schrotflinte"
         ]
       },
@@ -12509,12 +13270,12 @@
         "modName": "Día del Veredicto Sagrado",
         "description": "Un arma de fuego empleada por los Caballeros del Iris Sagrado de la Iglesia Elysiana. ¡Exaltación divina! Juramos que el mensaje de los Nueve Dioses resonará en cada rincón de Atlasia.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
+        "functionLabel": "Armas a distancia",
         "passiveEffectsDescription": "Daño CRIT +<H>#1</>. Los proyectiles disparados siguen la dirección de la mira. Al infligir daño con esta arma, cuanto más lejos esté el objetivo, mayor será el daño, hasta un aumento máximo de <H>#2</>.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Armas a distancia",
           "Escopeta"
         ]
       },
@@ -12761,12 +13522,12 @@
         "modName": "Sprengkunst",
         "description": "– Hmm? Das Ende von Atlasia? So sei es. Es gibt schlimmere Schicksale, als in Flammen und Feuerwerk unterzugehen.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
-        "passiveEffectsDescription": "ATQ del personaje +<H>#1</>. Al cargar, dispara un proyectil especial que avanza lentamente y explota tras un breve retraso, lo que inflige daño de área. Los disparos pueden detonar ese proyectil al impactarlo de forma anticipada. Cuando un personaje Umbro usa su Habilidad Definitiva, obtiene eficiencia de habilidad +<H>#2</> durante <H>#3</> s.",
+        "functionLabel": "Fernkampfwaffen",
+        "passiveEffectsDescription": "Figur-ANG +<H>#1</>. Aufladen feuert eine spezielle Kugel ab, die sich langsam bewegt, nach einer kurzen Verzögerung explodiert und Flächenschaden verursacht. Trifft eine durch Tippen abgefeuerte Kugel eine spezielle Kugel, wird diese sofort zur Explosion gebracht. Wenn ein Umbro-Figur seinen Ultimate einsetzt, wird Fähigkeitseffizienz um <H>#2</> für <H>#3</> Sek. erhöht.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Fernkampfwaffen",
           "Schrotflinte"
         ]
       },
@@ -12787,12 +13548,12 @@
         "modName": "Arte Explosivo",
         "description": "¿Ah, sí? ¿Atlasia va a ser destruida? Me da igual, que se destruya todo.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
+        "functionLabel": "Armas a distancia",
         "passiveEffectsDescription": "ATQ del personaje +<H>#1</>. Al cargar, dispara un proyectil especial que avanza lentamente y explota tras un breve retraso, lo que inflige daño de área. Los disparos pueden detonar ese proyectil al impactarlo de forma anticipada. Cuando un personaje Umbro usa su Habilidad Definitiva, obtiene eficiencia de habilidad +<H>#2</> durante <H>#3</> s.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Armas a distancia",
           "Escopeta"
         ]
       },
@@ -13034,12 +13795,12 @@
         "modName": "Jagged Growl",
         "description": "Some flee from explosive shells. Others, from the jagged growl of steel teeth.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
+        "functionLabel": "Fernkampfwaffen",
         "passiveEffectsDescription": "CRIT Damage +<H>#1</>. When dealing damage with this weapon, increases Damage Dealt by <H>#2</> if the current weapon is a melee weapon.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Fernkampfwaffen",
           "Schrotflinte"
         ]
       },
@@ -13060,12 +13821,12 @@
         "modName": "Engranaje Cortante",
         "description": "Unos huyen de los proyectiles explosivos. Otros, del rugido dentado del acero.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
+        "functionLabel": "Armas a distancia",
         "passiveEffectsDescription": "Daño CRIT +<H>#1</>. Al infligir daño con esta arma, si el arma actual del personaje es Arma Cuerpo a Cuerpo, aumenta el daño infligido en <H>#2</>.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Armas a distancia",
           "Escopeta"
         ]
       },
@@ -13312,12 +14073,12 @@
         "modName": "Fledgling's Gleam",
         "description": "A solitary figure, separated from the flock, turns the pivot of destiny; beyond the mountains, a feather traces across the vast sky.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
+        "functionLabel": "Fernkampfwaffen",
         "passiveEffectsDescription": "Max Ammo +<H>#1</>. When a Lumino character uses their Combat Skill or Ultimate Skill and consumes Sanity, grants <H>{float4}+#2</> Skill Intensity per Sanity spent for <H>#4</>s, up to <H>#3</>.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Fernkampfwaffen",
           "Schrotflinte"
         ]
       },
@@ -13338,12 +14099,12 @@
         "modName": "Destello en la Copa",
         "description": "Una figura solitaria, apartada de la bandada, hace girar el pivote del destino; más allá de las montañas, una pluma surca el inmenso cielo.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
+        "functionLabel": "Armas a distancia",
         "passiveEffectsDescription": "Munición máxima +<H>#1</>. Cuando un personaje Lumino usa una habilidad de combate o definitiva y consume cordura, obtiene Daño de Habilidad +<H>{float4}#2</> por cada punto de cordura consumido, hasta <H>#3</>, durante <H>#4</> s.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Armas a distancia",
           "Escopeta"
         ]
       },
@@ -13579,12 +14340,12 @@
         "modName": "Knochenbrecher",
         "description": "Wenn Kugeln durch Fleisch pflügen und die Seele versengen, wie lange können Güte, Integrität und Tapferkeit bestehen?",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
-        "passiveEffectsDescription": "Duración de Habilidad +<H>#1</>.",
+        "functionLabel": "Fernkampfwaffen",
+        "passiveEffectsDescription": "Fähigkeitsdauer +<H>#1</>.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Fernkampfwaffen",
           "Sturmgewehr"
         ]
       },
@@ -13605,12 +14366,12 @@
         "modName": "Rompehuesos",
         "description": "Ante el brutal dolor que provocan las balas, capaz de desgarrar la piel, los huesos y el alma... ¿cuánto tiempo podrán resistir la bondad, la firmeza y el valor?",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
+        "functionLabel": "Armas a distancia",
         "passiveEffectsDescription": "Duración de Habilidad +<H>#1</>.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Armas a distancia",
           "Rifle de Asalto"
         ]
       },
@@ -13857,12 +14618,12 @@
         "modName": "Verbannter Donnerdrache",
         "description": "Eine Waffe, die vom „Raben“ der Verlassenen benutzt wird. Vernimm den Zorn der Verbannten! Die Totenglocke des Imperiums läutet!",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
-        "passiveEffectsDescription": "Probabilidad de Activación +<H>#1</>. Dispara un rayo que, tras impactar a un enemigo, rebota y alcanza hasta 4 enemigos cercanos. Cuando un personaje Electro activa un efecto extra al infligir daño con esta arma, el usuario obtiene daño de arma +<H>#2</> durante <H>#3</> s.",
+        "functionLabel": "Fernkampfwaffen",
+        "passiveEffectsDescription": "Auslöserate +<H>#1</>. Feuert einen Strahlangriff ab, der vom Ziel abprallt und bis zu 4 Gegner innerhalb der Reichweite trifft. Wenn ein Elektro-Figur Bonuseffekte mit dieser Waffe auslöst, wird der Waffen-SCH des Trägers um <H>#2</> für <H>#3</> Sek. erhöht.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Fernkampfwaffen",
           "Sturmgewehr"
         ]
       },
@@ -13883,12 +14644,12 @@
         "modName": "Hidra del Trueno Desterrada",
         "description": "El arma utilizada por \"El Cuervo\" de Los Abandonados. ¡Escucha! ¡Esta es la furia de los exiliados! ¡Son las campanas que resuenan por la caída del Imperio!",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
+        "functionLabel": "Armas a distancia",
         "passiveEffectsDescription": "Probabilidad de Activación +<H>#1</>. Dispara un rayo que, tras impactar a un enemigo, rebota y alcanza hasta 4 enemigos cercanos. Cuando un personaje Electro activa un efecto extra al infligir daño con esta arma, el usuario obtiene daño de arma +<H>#2</> durante <H>#3</> s.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Armas a distancia",
           "Rifle de Asalto"
         ]
       },
@@ -14130,12 +14891,12 @@
         "modName": "Läuterungsflamme",
         "description": "Ein Flammenwerfer, die vom Ritterorden der Heiligen Iris der Elysischen Kirche eingesetzt wird. Heilige Erhebung! Möge das heilige Feuer uns umhüllen. In deinem Namen schwören wir, alles Böse zu verbrennen.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
-        "passiveEffectsDescription": "Probabilidad de Activación +<H>#1</>. Al infligir daño con esta arma y activar un efecto extra, hay <H>#2</> de probabilidad de recargar 1 proyectil.",
+        "functionLabel": "Fernkampfwaffen",
+        "passiveEffectsDescription": "Auslöserate +<H>#1</>. Wenn diese Waffe bei einem Treffer einen Bonuseffekt auslöst, besteht eine Chance von <H>#2</>, 1 Geschoss nachzuladen.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Fernkampfwaffen",
           "Sturmgewehr"
         ]
       },
@@ -14156,12 +14917,12 @@
         "modName": "Llama de Purificación",
         "description": "Un lanzallamas empleado por los Caballeros del Iris Sagrado de la Iglesia Elysiana. ¡Exaltación divina! Que el fuego sagrado descienda sobre nosotros, en tu nombre, juramos reducir a cenizas toda corrupción.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
+        "functionLabel": "Armas a distancia",
         "passiveEffectsDescription": "Probabilidad de Activación +<H>#1</>. Al infligir daño con esta arma y activar un efecto extra, hay <H>#2</> de probabilidad de recargar 1 proyectil.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Armas a distancia",
           "Rifle de Asalto"
         ]
       },
@@ -14402,12 +15163,12 @@
         "modName": "Hymne der Morgendämmerung",
         "description": "Ein Maschinengewehr, das vom Ritterorden der Heiligen Iris der Elysischen Kirche geführt wird. „Heilige Erhebung!“ Sollten wir nur den ersten Schimmer der Morgendämmerung erblicken, auch wenn unser Weg mit Dornen übersät ist, werden wir ihn als süße Wohltat begrüßen.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
-        "passiveEffectsDescription": "Multidisparo +<H>#1</>. Al infligir daño con esta arma, cuanto menor sea el porcentaje de munición restante en el cargador, mayor será el daño, hasta un máximo de <H>#2</>. Al estar por debajo de <H>#3</> de munición, se alcanza el máximo.",
+        "functionLabel": "Fernkampfwaffen",
+        "passiveEffectsDescription": "Mehrfachschussrate +<H>#1</>. Wenn mit dieser Waffe Schaden verursacht wird, erhöht sich der verursachte SCH mit sinkendem restlichen Munitionsprozentsatz, bis zu einer maximalen Erhöhung von <H>#2</>, mit der vollen Wirkung, wenn die Munitionsanzahl unter <H>#3</> liegt.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Fernkampfwaffen",
           "Sturmgewehr"
         ]
       },
@@ -14428,12 +15189,12 @@
         "modName": "Himno del Amanecer",
         "description": "Una ametralladora empuñada por los Caballeros del Iris Sagrado de la Iglesia Elysiana. \"¡Santa exaltación! Si tan solo contemplamos el primer rayo del amanecer, aunque nuestro camino esté sembrado de espinas, lo acogeremos como un dulce socorro.\"",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
+        "functionLabel": "Armas a distancia",
         "passiveEffectsDescription": "Multidisparo +<H>#1</>. Al infligir daño con esta arma, cuanto menor sea el porcentaje de munición restante en el cargador, mayor será el daño, hasta un máximo de <H>#2</>. Al estar por debajo de <H>#3</> de munición, se alcanza el máximo.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Armas a distancia",
           "Rifle de Asalto"
         ]
       },
@@ -14680,12 +15441,12 @@
         "modName": "Trigon Muse",
         "description": "From threefold geometry, the goddess bestowed her praise, entrusting beauty itself to be honed into lethal edge.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
-        "passiveEffectsDescription": "Capacidad del cargador +<H>#1</>. Al consumir 10 balas con esta arma, se gastan todas las balas restantes del cargador para disparar un proyectil especial que inflige Daño en Área. Por cada bala consumida, el daño de este disparo aumenta en <H>#2</>, hasta un máximo de <H>#3</>. Al derrotar enemigos con esta arma, hay un <H>#4</> de probabilidad de obtener 1 bala.",
+        "functionLabel": "Fernkampfwaffen",
+        "passiveEffectsDescription": "Mag Capacity +<H>#1</>. After firing 10 rounds, the weapon consumes all remaining rounds in the magazine to fire a special round that deals AoE DMG. For each round consumed, this damage increases by <H>#2</>, up to <H>#3</>. Defeating an enemy with this weapon has a <H>#4</> chance to restore 1 round.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Fernkampfwaffen",
           "Sturmgewehr"
         ]
       },
@@ -14703,15 +15464,15 @@
         ]
       },
       "ES": {
-        "modName": "Musa trígona",
+        "modName": "Musa Trígona",
         "description": "La perfección del triángulo, bendecida por la diosa; donde el arte de la belleza se forja en un filo letal.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
+        "functionLabel": "Armas a distancia",
         "passiveEffectsDescription": "Capacidad del cargador +<H>#1</>. Al consumir 10 balas con esta arma, se gastan todas las balas restantes del cargador para disparar un proyectil especial que inflige Daño en Área. Por cada bala consumida, el daño de este disparo aumenta en <H>#2</>, hasta un máximo de <H>#3</>. Al derrotar enemigos con esta arma, hay un <H>#4</> de probabilidad de obtener 1 bala.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Armas a distancia",
           "Rifle de Asalto"
         ]
       },
@@ -14964,12 +15725,12 @@
         "modName": "Wolkenhauch Entfaltung",
         "description": "Durch die sich teilenden Wolken nimmt ein gemalter Flug seine Form an, wo sich Pfauen auf Seide treffen, um sich gegenseitig mit ihrer Anmut zu umwerben.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
-        "passiveEffectsDescription": "Capacidad del Cargador +<H>#1</>. Al infligir Daño CRIT con esta arma, obtienes 1 acumulación que aumenta la Velocidad de Ataque en <H>#2</> durante <H>#3</> s, hasta <H>#4</> acumulaciones. El efecto se elimina al cambiar de arma.",
+        "functionLabel": "Fernkampfwaffen",
+        "passiveEffectsDescription": "Angriffs-GES +<H>#1</>. Wenn ein Angriff mit dieser Waffe kritisch trifft, wird die Angriffs-GES dieser Figur um <H>#2</> für <H>#3</> Sek. erhöht, bis zu <H>#4</>-mal stapelbar. Der Effekt wird beim Waffenwechsel deaktiviert.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Fernkampfwaffen",
           "Sturmgewehr"
         ]
       },
@@ -14990,12 +15751,12 @@
         "modName": "Danza del Velo Celeste",
         "description": "Las nubes se apartan, dejando que dos pavos reales se lancen al vuelo; sobre una alfombra de brocado florido, una bailarina esboza sus pasos gráciles.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
+        "functionLabel": "Armas a distancia",
         "passiveEffectsDescription": "Capacidad del Cargador +<H>#1</>. Al infligir Daño CRIT con esta arma, obtienes 1 acumulación que aumenta la Velocidad de Ataque en <H>#2</> durante <H>#3</> s, hasta <H>#4</> acumulaciones. El efecto se elimina al cambiar de arma.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Armas a distancia",
           "Rifle de Asalto"
         ]
       },
@@ -15236,12 +15997,12 @@
         "modName": "Versunkene Serenade",
         "description": "Der junge Seemann, immer zu sehr damit beschäftigt, den Mast vor dem Sturm zu sichern, nahm die versteckten Liebesbotschaften unter den Wellen niemals wahr – nicht ahnend, dass jedes Lied der Meerjungfrau eine nur für ihn bestimmte Serenade war.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
-        "passiveEffectsDescription": "Daño CRIT +<H>#1</>. Los proyectiles que impactan el entorno o recorren cierta distancia regresan a la posición del usuario y aumentan la munición en 1. Cada aumento de la munición máxima de esta arma, el daño infligido aumenta en <H>#2</>, hasta <H>#3</>.",
+        "functionLabel": "Fernkampfwaffen",
+        "passiveEffectsDescription": "KRIT-SCH +<H>#1</>. Geschosse, die die Umgebung treffen oder eine bestimmte Strecke zurücklegen, kehren zum Standort des Trägers zurück und erhöhen die Munitionsanzahl um 1. Für jede zusätzlich erhaltene Munition erhöht sich der von dieser Waffe verursachte SCH um <H>#2</>, bis zu einer maximalen Erhöhung von <H>#3</>.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Fernkampfwaffen",
           "Sturmgewehr"
         ]
       },
@@ -15262,12 +16023,12 @@
         "modName": "Serenata Sumergida",
         "description": "El joven marinero, siempre demasiado preocupado por guardar el mástil antes de la tempestad, nunca contabilizó las notas de amor ocultas bajo las olas, sin saber que cada una de las canciones de la sirena era una serenata destinada sólo a él.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
+        "functionLabel": "Armas a distancia",
         "passiveEffectsDescription": "Daño CRIT +<H>#1</>. Los proyectiles que impactan el entorno o recorren cierta distancia regresan a la posición del usuario y aumentan la munición en 1. Cada aumento de la munición máxima de esta arma, el daño infligido aumenta en <H>#2</>, hasta <H>#3</>.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Armas a distancia",
           "Rifle de Asalto"
         ]
       },
@@ -15526,12 +16287,12 @@
         "modName": "Traumweber-Feder",
         "description": "Aus einer schneebedeckten Feder flocht ich einen schmalen Käfig und schloss die wilde Welt darin ein.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
-        "passiveEffectsDescription": "Rango de Habilidad +<H>#1</>. Cuando un personaje Lumino inflige daño adicional, hay <H>#2</> de probabilidad de aplicar a los aliados 1 acumulación que aumenta el ATQ en <H>#3</> durante <H>#4</> s, hasta <H>#5</> acumulaciones.",
+        "functionLabel": "Fernkampfwaffen",
+        "passiveEffectsDescription": "Fähigkeitsreichweite +<H>#1</>. Wenn ein Lumino-Figur einen Bonus-SCH verursacht, besteht eine Chance von <H>#2</>, ANG der Verbündeten um <H>#3</> für <H>#4</> Sek. zu erhöhen (bis zu <H>#5</>-mal stapelbar).",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Fernkampfwaffen",
           "Sturmgewehr"
         ]
       },
@@ -15549,15 +16310,15 @@
         ]
       },
       "ES": {
-        "modName": "Pluma Tejedora de Sueños",
+        "modName": "Pluma de Sueños",
         "description": "Con una pluma de nieve tejí una jaula delgada, sellando el mundo salvaje en su interior.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
+        "functionLabel": "Armas a distancia",
         "passiveEffectsDescription": "Rango de Habilidad +<H>#1</>. Cuando un personaje Lumino inflige daño adicional, hay <H>#2</> de probabilidad de aplicar a los aliados 1 acumulación que aumenta el ATQ en <H>#3</> durante <H>#4</> s, hasta <H>#5</> acumulaciones.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Armas a distancia",
           "Rifle de Asalto"
         ]
       },
@@ -15811,12 +16572,12 @@
         "modName": "Vergängliches Licht",
         "description": "Mein Schwert wirbelte den silbernen Mond auf, sich widerspiegelnd in einem Strom von Träumen; in der Stille der Zeit, ein weiterer Herbst verblasste unter seinem silbernen Schimmer.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
-        "passiveEffectsDescription": "Duración de Habilidad +<H>#1</>. Los proyectiles que impactan el entorno o recorren cierta distancia regresan a la posición del usuario y aumentan la munición en 1. Cuando un personaje Lumino activa un efecto extra al infligir daño, obtiene 1 acumulación que aumenta el ATQ en <H>#2</> durante <H>#3</> s, hasta <H>#4</> acumulaciones. Al usar una Habilidad Definitiva, restablece la duración de todas las acumulaciones a <H>#3</> s.",
+        "functionLabel": "Fernkampfwaffen",
+        "passiveEffectsDescription": "Fähigkeitsdauer +<H>#1</>. Geschosse, die die Umgebung treffen oder eine bestimmte Strecke zurücklegen, kehren zum Standort des Trägers zurück und erhöhen die Munitionsanzahl um 1. Wenn ein Lumino-Figur einen Bonuseffekt auslöst, wird den ANG um <H>#2</> für <H>#3</> Sek. erhöht, bis zu <H>#4</>-mal stapelbar. Der Einsatz eines Ultimates aktualisiert die Dauer aller Stapelungen auf <H>#3</> Sek.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Fernkampfwaffen",
           "Sturmgewehr"
         ]
       },
@@ -15837,12 +16598,12 @@
         "modName": "Luminiscencia Efímera",
         "description": "Mi espada agitó la luna plateada reflejada en un río de sueños; en el silencio del tiempo, otro otoño se desvanecía bajo su brillo plateado.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
+        "functionLabel": "Armas a distancia",
         "passiveEffectsDescription": "Duración de Habilidad +<H>#1</>. Los proyectiles que impactan el entorno o recorren cierta distancia regresan a la posición del usuario y aumentan la munición en 1. Cuando un personaje Lumino activa un efecto extra al infligir daño, obtiene 1 acumulación que aumenta el ATQ en <H>#2</> durante <H>#3</> s, hasta <H>#4</> acumulaciones. Al usar una Habilidad Definitiva, restablece la duración de todas las acumulaciones a <H>#3</> s.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Armas a distancia",
           "Rifle de Asalto"
         ]
       },
@@ -16090,12 +16851,12 @@
         "modName": "Gloam Oath",
         "description": "In blood is engraved the oath of dusk.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
-        "passiveEffectsDescription": "Velocidad de recarga +<H>#1</>. Tras recargar, la vel. de ataque aumenta en <H>#2</> durante <H>#3</> segundos. Este efecto se elimina al cambiar de arma.",
+        "functionLabel": "Fernkampfwaffen",
+        "passiveEffectsDescription": "Reload Speed +<H>#1</>. After reloading, ATK Speed increases by <H>#2</> for <H>#3</>s. This effect is removed when switching weapons.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Fernkampfwaffen",
           "Sturmgewehr"
         ]
       },
@@ -16116,12 +16877,12 @@
         "modName": "Pacto Crepuscular",
         "description": "Con sangre, se graba el juramento del crepúsculo.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
+        "functionLabel": "Armas a distancia",
         "passiveEffectsDescription": "Velocidad de recarga +<H>#1</>. Tras recargar, la vel. de ataque aumenta en <H>#2</> durante <H>#3</> segundos. Este efecto se elimina al cambiar de arma.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Armas a distancia",
           "Rifle de Asalto"
         ]
       },
@@ -16374,12 +17135,12 @@
         "modName": "Dregs of Glimmer",
         "description": "Amber light caught between waking and dreaming, the last warmth of a dying hearth.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
+        "functionLabel": "Fernkampfwaffen",
         "passiveEffectsDescription": "Multishot +<H>#1</>. When a Pyro character deals Skill DMG, grants 1 stack of +<H>#2</> Skill DMG for <H>#3</>s, up to <H>#4</> stacks.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Fernkampfwaffen",
           "Sturmgewehr"
         ]
       },
@@ -16400,12 +17161,12 @@
         "modName": "Rescoldo en la Copa",
         "description": "Luz ámbar atrapada entre la vigilia y el sueño, el último calor de un hogar que se apaga.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
+        "functionLabel": "Armas a distancia",
         "passiveEffectsDescription": "Multidisparo +<H>#1</>. Cuando un personaje Pyro inflige Daño de Habilidad, obtiene 1 acumulación de Daño de Habilidad +<H>#2</> durante <H>#3</> s, hasta <H>#4</> acumulaciones.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Armas a distancia",
           "Rifle de Asalto"
         ]
       },
@@ -16629,12 +17390,12 @@
         "modName": "Metall-Sturmgewehr",
         "description": "Ein Maschinengewehr, gefertigt unter Verwendung der neuesten Schmelz- und Vergoldungstechniken. Dieses Modell ist eine klare Empfehlung von Schmiedemeistern. Die perfekte Balance zwischen Qualität und Erschwinglichkeit macht es zu einer beliebten Wahl bei Reisenden in ganz Atlasia.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
-        "passiveEffectsDescription": "Los potenciales del arma pueden desbloquearse mediante la fundición de calamidad. El potencial solo se activa cuando la <H>especialización de arma</> del personaje coincide con el tipo de esta arma.",
+        "functionLabel": "Fernkampfwaffen",
+        "passiveEffectsDescription": "Weapon Potentials can be unlocked through Calamity Smelting. A Potential only takes effect if the character's <H>weapon proficiency</> matches this weapon's type.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Fernkampfwaffen",
           "Sturmgewehr"
         ]
       },
@@ -16655,12 +17416,12 @@
         "modName": "Réquiem de Espinas",
         "description": "Una de las que recibió un arma era una gran sanadora a quien el Padre Ask premió por su compasión. Resonaba con las cuerdas emocionales de la gente y usaba el ritmo de su música para calmar los corazones agitados.\nPero el mundo seguía lleno de sufrimientos que brotaban como espinas, así que elaboró venenos para purgar el mundo de la carne de la que nacía tal dolor.\nAl final, las frágiles cuerdas se rompieron al no poder soportar más. Fue obligada a beber el veneno que ella misma había preparado, y se hundió en una larga noche en la que no podía ni dormir ni despertar.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
-        "passiveEffectsDescription": "Los potenciales del arma pueden desbloquearse mediante la fundición de calamidad.  Un potencial solo se activa si el tipo de arma coincide con el <H>arma preferida</> del personaje.",
+        "functionLabel": "Armas a distancia",
+        "passiveEffectsDescription": "Los potenciales del arma pueden desbloquearse mediante la fusión de calamidad.  Un potencial solo se activa si el tipo de arma coincide con el <H>arma preferida</> del personaje.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Armas a distancia",
           "Rifle de Asalto"
         ]
       },
@@ -16901,12 +17662,12 @@
         "modName": "Sengendes Sandflüstern",
         "description": "Du, eine einsame Seele, stehst inmitten der lodernden Flamme und wirst doch bereitwillig zu einem Sandkorn, das vom Wind der Veränderung hinweggefegt wird. So beginnt deine Wiedergeburt, und die Wiedererlangung deines Schicksals.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
-        "passiveEffectsDescription": "Velocidad de Ataque +<H>#1</>. Cada enemigo golpeado por una flecha aumenta su daño en <H>#2</>, hasta un máximo de <H>#3</>.",
+        "functionLabel": "Fernkampfwaffen",
+        "passiveEffectsDescription": "Angriffs-GES +<H>#1</>. Jeder von einem einzelnen Pfeil getroffene Gegner erhöht den SCH des Pfeils um <H>#2</>, bis zu einer maximalen Erhöhung von <H>#3</>.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Fernkampfwaffen",
           "Bogen"
         ]
       },
@@ -16927,12 +17688,12 @@
         "modName": "Suspiro del Desierto",
         "description": "Tú, alma solitaria, te encuentras en el corazón de la llama ardiente, pero voluntariamente te conviertes en un grano de arena, arrastrado por los vientos del cambio. Así comienza tu renacimiento y la reivindicación de tu destino de nuevo.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
+        "functionLabel": "Armas a distancia",
         "passiveEffectsDescription": "Velocidad de Ataque +<H>#1</>. Cada enemigo golpeado por una flecha aumenta su daño en <H>#2</>, hasta un máximo de <H>#3</>.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Armas a distancia",
           "Arco"
         ]
       },
@@ -17197,12 +17958,12 @@
         "modName": "Bogenlicht-Apokalypsen",
         "description": "Die Bogensehne summt, ein Zeichen dafür, dass die Feinde in Reichweite sind. Bleib ruhig, mein Freund – dein Gegner hat nicht den Hauch einer Chance.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
-        "passiveEffectsDescription": "Duración de Habilidad +<H>#1</>. Al infligir Daño CRIT con esta arma, aplica aleatoriamente a los aliados durante <H>#2</> s uno de los siguientes efectos: ATQ +<H>#3</>, DEF +<H>#4</>, Daño de Habilidad +<H>#5</> o Duración de Habilidad +<H>#6</>.",
+        "functionLabel": "Fernkampfwaffen",
+        "passiveEffectsDescription": "Fähigkeitsdauer +<H>#1</>. Wenn mit dieser Waffe ein KRIT-Treffer verursacht wird, erhalten andere Verbündeten für <H>#2</> Sekunden zufälling eines der Folgenden: +<H>#3</> ANG, +<H>#4</> VTD, +<H>#5</> Fähigkeits-SCH oder +<H>#6</> Fähigkeitsdauer.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Fernkampfwaffen",
           "Bogen"
         ]
       },
@@ -17223,12 +17984,12 @@
         "modName": "Arco de Luz Apocalíptico",
         "description": "La cuerda del arco zumba, indicando que los enemigos están a tiro. Mantén la calma, amigo mío: tu enemigo no tiene ni una mínima oportunidad.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
+        "functionLabel": "Armas a distancia",
         "passiveEffectsDescription": "Duración de Habilidad +<H>#1</>. Al infligir Daño CRIT con esta arma, aplica aleatoriamente a los aliados durante <H>#2</> s uno de los siguientes efectos: ATQ +<H>#3</>, DEF +<H>#4</>, Daño de Habilidad +<H>#5</> o Duración de Habilidad +<H>#6</>.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Armas a distancia",
           "Arco"
         ]
       },
@@ -17475,12 +18236,12 @@
         "modName": "Embla-Infloreszenz",
         "description": "Keine lebende Seele weiß, was jenseits des Nebelmeeres liegt. Vielleicht wagt es in diesem urzeitlichen Chaos noch eine einzige unsichtbare Blume, ihre Blüte zu entfalten.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
-        "passiveEffectsDescription": "Rango de Habilidad +<H>#1</>. Al cargar, fija gradualmente a los enemigos dentro del rango; al soltar, dispara flechas de localización a los objetivos fijados. Cuando un personaje Lumino inflige Daño de Habilidad, obtiene Daño de Habilidad +<H>#2</> durante <H>#3</> s.",
+        "functionLabel": "Fernkampfwaffen",
+        "passiveEffectsDescription": "Fähigkeitsreichweite +<H>#1</>. Beim Aufladen visiert die Waffe nach und nach Gegner in der Nähe an. Verschießt die zielsuchende Pfeile beim Loslassen auf alle anvisierten Ziele. Wenn ein Lumino-Figur SCH durch Fähigkeiten verursacht, wird Fähigkeits-SCH um <H>#2</> für <H>#3</> Sek. erhöht.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Fernkampfwaffen",
           "Bogen"
         ]
       },
@@ -17501,12 +18262,12 @@
         "modName": "Inflorescencia de Embla",
         "description": "Ningún ser viviente sabe qué hay más allá del Mar Nebuloso. Quizás, en ese caos primordial, una sola flor invisible aún se atreva a florecer.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
+        "functionLabel": "Armas a distancia",
         "passiveEffectsDescription": "Rango de Habilidad +<H>#1</>. Al cargar, fija gradualmente a los enemigos dentro del rango; al soltar, dispara flechas de localización a los objetivos fijados. Cuando un personaje Lumino inflige Daño de Habilidad, obtiene Daño de Habilidad +<H>#2</> durante <H>#3</> s.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Armas a distancia",
           "Arco"
         ]
       },
@@ -17742,12 +18503,12 @@
         "modName": "Seelenreißer",
         "description": "Ein Klang von Leben und Tod, ein seelenzerfetzendes Klagelied.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
-        "passiveEffectsDescription": "Rango de Habilidad +<H>#1</>.",
+        "functionLabel": "Fernkampfwaffen",
+        "passiveEffectsDescription": "Fähigkeitsreichweite +<H>#1</>.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Fernkampfwaffen",
           "Bogen"
         ]
       },
@@ -17768,12 +18529,12 @@
         "modName": "Desgarralmas",
         "description": "Un sonido de vida y muerte, un lamento desgarrador.",
         "demonWedgeName": null,
-        "functionLabel": "Arma a distancia",
+        "functionLabel": "Armas a distancia",
         "passiveEffectsDescription": "Rango de Habilidad +<H>#1</>.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
-          "Arma a distancia",
+          "Armas a distancia",
           "Arco"
         ]
       },

@@ -3,8 +3,8 @@
     "DE": {
       "packNameCharTrack": "Truhe „Figuren-Spurwechsel“",
       "packNameWeaponTrack": "Truhe „Waffen-Spurwechsel“",
-      "trackAdjustment": "Modificación de afinidad",
-      "toleranceTrack": "Tolerancia/Afinidad"
+      "trackAdjustment": "Spuranpassung",
+      "toleranceTrack": "Toleranz/Spur"
     },
     "EN": {
       "packNameCharTrack": "Character Track-Shift Chest",
@@ -256,7 +256,7 @@
         }
       },
       "fields": {
-        "AccessKey": "T.RT_32",
+        "AccessKey": "T.RT_33",
         "DetailDes": "RESOURCE_DESC_30001",
         "ExcludeCollect": true,
         "ExcludeCollectServer": true,
@@ -333,7 +333,7 @@
         }
       },
       "fields": {
-        "AccessKey": "T.RT_32",
+        "AccessKey": "T.RT_33",
         "DetailDes": "RESOURCE_DESC_30002",
         "ExcludeCollect": true,
         "ExcludeCollectServer": true,

@@ -305,7 +305,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_33",
+      "AccessKey": "T.RT_34",
       "DetailDes": "RESOURCE_DESC_3015",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -468,7 +468,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5011010",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -631,7 +631,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5011010",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -794,7 +794,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5011020",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -957,7 +957,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5011020",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -1120,7 +1120,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5011030",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -1283,7 +1283,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5011030",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -1446,7 +1446,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5012010",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -1609,7 +1609,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5012010",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -1772,7 +1772,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5012020",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -1935,7 +1935,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5012020",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -2098,7 +2098,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5012030",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -2261,7 +2261,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5012030",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -2424,7 +2424,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5013010",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -2587,7 +2587,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5013010",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -2750,7 +2750,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5013020",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -2913,7 +2913,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5013020",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -3076,7 +3076,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5013030",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -3239,7 +3239,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5013030",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -3402,7 +3402,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5021010",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -3565,7 +3565,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5021010",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -3728,7 +3728,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5021020",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -3891,7 +3891,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5021020",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -4054,7 +4054,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5021030",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -4217,7 +4217,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5021030",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -4380,7 +4380,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5021040",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -4543,7 +4543,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5021040",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -4706,7 +4706,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5021050",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -4869,7 +4869,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5021050",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -4991,8 +4991,8 @@
         "typeCompatibilityNames": []
       },
       "FR": {
-        "modName": "Requin perligrane",
-        "description": "Trésor des eaux de Huaxu, il est surnommé la « chauve-souris des mers ». Tapissant son dos, de petites perles blanches confèrent à sa peau une texture recherchée pour l’ornement des armes de luxe.",
+        "modName": "Raie perligrane",
+        "description": "Trésor des eaux de Huaxu, elle est surnommée la « chauve-souris des mers ». Tapissant son dos, de petites perles blanches confèrent à sa peau une texture recherchée pour l’ornement des armes de luxe.",
         "demonWedgeName": null,
         "functionLabel": "Poisson d’eau salée. Peut être vendu contre des Jetons de Grande Pêche.",
         "passiveEffectsDescription": null,
@@ -5032,7 +5032,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5022010",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -5154,8 +5154,8 @@
         "typeCompatibilityNames": []
       },
       "FR": {
-        "modName": "Requin perligrane variant",
-        "description": "Trésor des eaux de Huaxu, il est surnommé la « chauve-souris des mers ». Tapissant son dos, de petites perles blanches confèrent à sa peau une texture recherchée pour l’ornement des armes de luxe.",
+        "modName": "Raie perligrane variante",
+        "description": "Trésor des eaux de Huaxu, elle est surnommée la « chauve-souris des mers ». Tapissant son dos, de petites perles blanches confèrent à sa peau une texture recherchée pour l’ornement des armes de luxe.",
         "demonWedgeName": null,
         "functionLabel": "Poisson d’eau salée. Peut être vendu contre des Jetons de Grande Pêche.",
         "passiveEffectsDescription": null,
@@ -5195,7 +5195,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5022010",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -5358,7 +5358,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5022020",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -5521,7 +5521,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5022020",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -5684,7 +5684,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5022030",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -5847,7 +5847,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5022030",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -6010,7 +6010,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5022040",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -6173,7 +6173,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5022040",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -6336,7 +6336,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5022050",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -6499,7 +6499,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5022050",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -6662,7 +6662,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5023010",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -6825,7 +6825,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5023010",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -6948,7 +6948,7 @@
       },
       "FR": {
         "modName": "Dame du Lac",
-        "description": "Ce poisson aux couleurs chatoyantes se déplace comme un ruban de soie porté par le courant. Ses nageoires translucides flottent autour d’elle telles des voiles. Malgré sa grâce, un seul \"baiser\" empoisonné peut terrasser une proie massive — mais jamais un humain.",
+        "description": "Ce poisson aux couleurs chatoyantes se déplace comme un ruban de soie porté par le courant. Ses nageoires translucides flottent autour d’elle telles des voiles. Malgré sa grâce, un seul « baiser » empoisonné peut terrasser une proie massive — mais jamais un humain.",
         "demonWedgeName": null,
         "functionLabel": "Poisson d’eau douce. Peut être vendu contre des Jetons de Grande Pêche.",
         "passiveEffectsDescription": null,
@@ -6988,7 +6988,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5023020",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -7111,7 +7111,7 @@
       },
       "FR": {
         "modName": "Dame du Lac variante",
-        "description": "Ce poisson aux couleurs chatoyantes se déplace comme un ruban de soie porté par le courant. Ses nageoires translucides flottent autour d’elle telles des voiles. Malgré sa grâce, un seul \"baiser\" empoisonné peut terrasser une proie massive — mais jamais un humain.",
+        "description": "Ce poisson aux couleurs chatoyantes se déplace comme un ruban de soie porté par le courant. Ses nageoires translucides flottent autour d’elle telles des voiles. Malgré sa grâce, un seul « baiser » empoisonné peut terrasser une proie massive — mais jamais un humain.",
         "demonWedgeName": null,
         "functionLabel": "Poisson d’eau douce. Peut être vendu contre des Jetons de Grande Pêche.",
         "passiveEffectsDescription": null,
@@ -7151,7 +7151,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5023020",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -7314,7 +7314,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5023030",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -7477,7 +7477,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5023030",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -7640,7 +7640,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5023040",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -7803,7 +7803,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5023040",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -7966,7 +7966,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5023050",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -8129,7 +8129,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5023050",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -8292,7 +8292,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5024010",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -8455,7 +8455,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5024010",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -8618,7 +8618,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5024020",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -8781,7 +8781,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5024020",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -8944,7 +8944,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5024030",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -9107,7 +9107,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5024030",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -9270,7 +9270,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5024040",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -9433,7 +9433,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5024040",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -9596,7 +9596,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5024050",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -9759,7 +9759,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5024050",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -9922,7 +9922,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5025010",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -10085,7 +10085,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5025010",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -10248,7 +10248,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5025020",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -10411,7 +10411,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5025020",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -10574,7 +10574,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5025030",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -10737,7 +10737,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5025030",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -10900,7 +10900,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5025040",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -11063,7 +11063,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5025040",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -11226,7 +11226,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5025050",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -11389,7 +11389,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5025050",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -11552,7 +11552,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5026010",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -11715,7 +11715,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5026010",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -11878,7 +11878,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5026020",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -12041,7 +12041,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5026020",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -12204,7 +12204,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5026030",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -12367,7 +12367,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5026030",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -12530,7 +12530,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5026040",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -12693,7 +12693,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5026040",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -12856,7 +12856,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5026050",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -13019,7 +13019,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5026050",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -13172,7 +13172,7 @@
       },
       "TC": {
         "modName": "刀魚",
-        "description": "以鮮美著稱的河魚，形似小刀。據說古時候曾經有刺客將匕首混在一道白煮刀魚中，當他的仇敵沉醉在即將大快朵頤的喜悅中時，抽出匕首來完成刺殺。足以證明刀魚真的很像刀，而味道真的很好。",
+        "description": "以鮮美著稱的河魚，形似小刀。據說古時候曾經有刺客將匕首混在一道白煮刀魚中，當他的仇敵沉醉在即將大快朵頤的喜悅中時，抽出匕首來完成刺殺。足以證明刀魚真的很像刀，而味道真的很好。\n",
         "demonWedgeName": null,
         "functionLabel": "一種淡水魚，可出售換取豐漁之證",
         "passiveEffectsDescription": null,
@@ -13182,7 +13182,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5027010",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -13335,7 +13335,7 @@
       },
       "TC": {
         "modName": "刀魚·異種",
-        "description": "以鮮美著稱的河魚，形似小刀。據說古時候曾經有刺客將匕首混在一道白煮刀魚中，當他的仇敵沉醉在即將大快朵頤的喜悅中時，抽出匕首來完成刺殺。足以證明刀魚真的很像刀，而味道真的很好。",
+        "description": "以鮮美著稱的河魚，形似小刀。據說古時候曾經有刺客將匕首混在一道白煮刀魚中，當他的仇敵沉醉在即將大快朵頤的喜悅中時，抽出匕首來完成刺殺。足以證明刀魚真的很像刀，而味道真的很好。\n",
         "demonWedgeName": null,
         "functionLabel": "一種淡水魚，可出售換取豐漁之證",
         "passiveEffectsDescription": null,
@@ -13345,7 +13345,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5027010",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -13508,7 +13508,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5027020",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -13671,7 +13671,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5027020",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -13834,7 +13834,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5027030",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -13997,7 +13997,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5027030",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -14160,7 +14160,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5027040",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -14323,7 +14323,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5027040",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -14486,7 +14486,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5027050",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -14649,7 +14649,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5027050",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -14812,7 +14812,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5028010",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -14975,7 +14975,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5028010",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -15138,7 +15138,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5028020",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -15301,7 +15301,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5028020",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -15464,7 +15464,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5028030",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -15627,7 +15627,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5028030",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -15790,7 +15790,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5028040",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -15953,7 +15953,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5028040",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -16116,7 +16116,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5028050",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -16279,7 +16279,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5028050",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -16442,7 +16442,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5029010",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -16605,7 +16605,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5029010",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -16768,7 +16768,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5029020",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -16931,7 +16931,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5029020",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -17094,7 +17094,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5029030",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -17257,7 +17257,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5029030",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -17420,7 +17420,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5029040",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -17583,7 +17583,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5029040",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -17746,7 +17746,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5029050",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -17909,7 +17909,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5029050",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -18072,7 +18072,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5030010",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -18235,7 +18235,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5030010",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -18398,7 +18398,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5030020",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -18561,7 +18561,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5030020",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -18724,7 +18724,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5030030",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -18887,7 +18887,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5030030",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -19050,7 +19050,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5030040",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -19213,7 +19213,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5030040",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -19376,7 +19376,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5030050",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -19539,7 +19539,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5030050",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -19702,7 +19702,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5031010",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -19865,7 +19865,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5031010",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -20028,7 +20028,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5031020",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -20191,7 +20191,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5031020",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -20354,7 +20354,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5031030",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -20517,7 +20517,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5031030",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -20680,7 +20680,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5031040",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -20843,7 +20843,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5031040",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -21006,7 +21006,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5031050",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -21169,7 +21169,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5031050",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -21237,12 +21237,14 @@
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_Chapter03_1",
       "publicPath": "/assets/items/fishing/T_Fish_FreshWater_Chapter03_1.png",
-      "placeholderPath": "/assets/items/fishing/T_Fish_FreshWater_Chapter03_1.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Fish_FreshWater_Chapter03_1",
         "Fish_FreshWater_Chapter03_1"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_Chapter03_1.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -21330,7 +21332,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5032010",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -21398,12 +21400,14 @@
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_Chapter03_1_1",
       "publicPath": "/assets/items/fishing/T_Fish_FreshWater_Chapter03_1_1.png",
-      "placeholderPath": "/assets/items/fishing/T_Fish_FreshWater_Chapter03_1_1.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Fish_FreshWater_Chapter03_1_1",
         "Fish_FreshWater_Chapter03_1_1"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_Chapter03_1_1.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -21491,7 +21495,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5032010",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -21559,12 +21563,14 @@
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_Chapter03_2",
       "publicPath": "/assets/items/fishing/T_Fish_FreshWater_Chapter03_2.png",
-      "placeholderPath": "/assets/items/fishing/T_Fish_FreshWater_Chapter03_2.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Fish_FreshWater_Chapter03_2",
         "Fish_FreshWater_Chapter03_2"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_Chapter03_2.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -21652,7 +21658,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5032020",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -21720,12 +21726,14 @@
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_Chapter03_2_1",
       "publicPath": "/assets/items/fishing/T_Fish_FreshWater_Chapter03_2_1.png",
-      "placeholderPath": "/assets/items/fishing/T_Fish_FreshWater_Chapter03_2_1.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Fish_FreshWater_Chapter03_2_1",
         "Fish_FreshWater_Chapter03_2_1"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_Chapter03_2_1.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -21813,7 +21821,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5032020",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -21881,12 +21889,14 @@
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_Chapter03_3",
       "publicPath": "/assets/items/fishing/T_Fish_FreshWater_Chapter03_3.png",
-      "placeholderPath": "/assets/items/fishing/T_Fish_FreshWater_Chapter03_3.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Fish_FreshWater_Chapter03_3",
         "Fish_FreshWater_Chapter03_3"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_Chapter03_3.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -21974,7 +21984,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5032030",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -22042,12 +22052,14 @@
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_Chapter03_3_1",
       "publicPath": "/assets/items/fishing/T_Fish_FreshWater_Chapter03_3_1.png",
-      "placeholderPath": "/assets/items/fishing/T_Fish_FreshWater_Chapter03_3_1.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Fish_FreshWater_Chapter03_3_1",
         "Fish_FreshWater_Chapter03_3_1"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_Chapter03_3_1.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -22135,7 +22147,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5032030",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -22203,12 +22215,14 @@
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_Chapter03_4",
       "publicPath": "/assets/items/fishing/T_Fish_FreshWater_Chapter03_4.png",
-      "placeholderPath": "/assets/items/fishing/T_Fish_FreshWater_Chapter03_4.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Fish_FreshWater_Chapter03_4",
         "Fish_FreshWater_Chapter03_4"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_Chapter03_4.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -22296,7 +22310,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5032040",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -22364,12 +22378,14 @@
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_Chapter03_4_1",
       "publicPath": "/assets/items/fishing/T_Fish_FreshWater_Chapter03_4_1.png",
-      "placeholderPath": "/assets/items/fishing/T_Fish_FreshWater_Chapter03_4_1.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Fish_FreshWater_Chapter03_4_1",
         "Fish_FreshWater_Chapter03_4_1"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_Chapter03_4_1.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -22457,7 +22473,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5032040",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -22525,12 +22541,14 @@
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_Chapter03_5",
       "publicPath": "/assets/items/fishing/T_Fish_FreshWater_Chapter03_5.png",
-      "placeholderPath": "/assets/items/fishing/T_Fish_FreshWater_Chapter03_5.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Fish_FreshWater_Chapter03_5",
         "Fish_FreshWater_Chapter03_5"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_Chapter03_5.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -22618,7 +22636,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5032050",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -22686,12 +22704,14 @@
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_Chapter03_5_1",
       "publicPath": "/assets/items/fishing/T_Fish_FreshWater_Chapter03_5_1.png",
-      "placeholderPath": "/assets/items/fishing/T_Fish_FreshWater_Chapter03_5_1.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Fish_FreshWater_Chapter03_5_1",
         "Fish_FreshWater_Chapter03_5_1"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_Chapter03_5_1.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -22779,7 +22799,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_49",
+      "AccessKey": "T.RT_50",
       "DetailDes": "RESOURCE_DESC_5032050",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -22942,7 +22962,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_33",
+      "AccessKey": "T.RT_34",
       "DetailDes": "RESOURCE_DESC_5110100",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -23105,7 +23125,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_33",
+      "AccessKey": "T.RT_34",
       "DetailDes": "RESOURCE_DESC_5110200",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -23268,7 +23288,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_33",
+      "AccessKey": "T.RT_34",
       "DetailDes": "RESOURCE_DESC_5110300",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -23431,7 +23451,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_33",
+      "AccessKey": "T.RT_34",
       "DetailDes": "RESOURCE_DESC_5110400",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -23594,7 +23614,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_33",
+      "AccessKey": "T.RT_34",
       "DetailDes": "RESOURCE_DESC_5110500",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -23757,7 +23777,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_33",
+      "AccessKey": "T.RT_34",
       "DetailDes": "RESOURCE_DESC_5110601",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -23920,7 +23940,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_33",
+      "AccessKey": "T.RT_34",
       "DetailDes": "RESOURCE_DESC_5110602",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -24083,7 +24103,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_33",
+      "AccessKey": "T.RT_34",
       "DetailDes": "RESOURCE_DESC_5210100",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -24246,7 +24266,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_33",
+      "AccessKey": "T.RT_34",
       "DetailDes": "RESOURCE_DESC_5210200",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -24409,7 +24429,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_33",
+      "AccessKey": "T.RT_34",
       "DetailDes": "RESOURCE_DESC_5210300",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -24572,7 +24592,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_33",
+      "AccessKey": "T.RT_34",
       "DetailDes": "RESOURCE_DESC_5210400",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
