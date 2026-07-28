@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState, type ReactNode } from "react";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { ChevronLeft, ChevronRight, CalendarDays, ExternalLink } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { DnaCornerBrackets, cn } from "@/components/dna";
@@ -24,7 +24,13 @@ import {
   type EventCategory,
 } from "@/lib/events/calendar";
 
-const ZOOM_LABEL: Record<CalendarZoom, string> = { 14: "2 sem.", 30: "1 mois", 60: "2 mois" };
+const CATEGORY_KEY: Record<EventCategory, "categoryBanner" | "categoryWeapon" | "categoryEvent" | "categoryTrial" | "categoryReward"> = {
+  Bannière: "categoryBanner",
+  Arme: "categoryWeapon",
+  Événement: "categoryEvent",
+  Épreuve: "categoryTrial",
+  Récompense: "categoryReward",
+};
 
 /* ------------------------------------------------------------------ couleur */
 
@@ -175,6 +181,7 @@ export function CalendarView({
   headerRight,
 }: CalendarViewProps) {
   const locale = useLocale();
+  const t = useTranslations("homeHub");
   // timeZone UTC : nos dates ISO sont en UTC-minuit → même jour affiché partout.
   const dayFmt = useMemo(() => new Intl.DateTimeFormat(locale, { day: "numeric", month: "short", timeZone: "UTC" }), [locale]);
   const pillFmt = useMemo(() => new Intl.DateTimeFormat(locale, { day: "2-digit", month: "2-digit", timeZone: "UTC" }), [locale]);
@@ -199,11 +206,11 @@ export function CalendarView({
   const detailInfo = (row: CalendarRow) => {
     if (row.status === "upcoming") {
       const d = diffDays(ref, row.start);
-      return { label: "À venir", note: d > 0 ? `démarre dans ${d} j` : "démarre aujourd'hui", tone: "text-hydro" };
+      return { label: t("upcoming"), note: d > 0 ? t("startsInDays", { days: d }) : t("startsToday"), tone: "text-hydro" };
     }
-    if (row.status === "past") return { label: "Terminé", note: "", tone: "text-muted" };
+    if (row.status === "past") return { label: t("finished"), note: "", tone: "text-muted" };
     const d = diffDays(ref, row.end);
-    return { label: "En cours", note: d > 0 ? `se termine dans ${d} j` : "dernier jour", tone: "text-anemo" };
+    return { label: t("live"), note: d > 0 ? t("endsInDays", { days: d }) : t("lastDay"), tone: "text-anemo" };
   };
 
   const full = variant === "full";
@@ -219,7 +226,7 @@ export function CalendarView({
 
       {/* barre d'outils : navigation + zoom */}
       <div className="mb-3 flex flex-wrap items-center gap-2">
-        <button type="button" aria-label="Période précédente" onClick={() => onShift(-step)} className={ctrlBtn}>
+        <button type="button" aria-label={t("previousPeriod")} onClick={() => onShift(-step)} className={ctrlBtn}>
           <ChevronLeft className="h-4 w-4" />
         </button>
         <button
@@ -228,9 +235,9 @@ export function CalendarView({
           className="flex items-center gap-1.5 rounded-sm border border-line/25 px-3 py-1.5 font-caps text-[0.58rem] uppercase tracking-[0.14em] text-parch/80 transition-colors hover:border-gold hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60"
         >
           <CalendarDays className="h-3.5 w-3.5" />
-          Aujourd&apos;hui
+          {t("today")}
         </button>
-        <button type="button" aria-label="Période suivante" onClick={() => onShift(step)} className={ctrlBtn}>
+        <button type="button" aria-label={t("nextPeriod")} onClick={() => onShift(step)} className={ctrlBtn}>
           <ChevronRight className="h-4 w-4" />
         </button>
         <span className="ml-1 font-mono text-[0.68rem] text-muted">{range(windowStart, windowEnd)}</span>
@@ -246,7 +253,7 @@ export function CalendarView({
                 span === z ? "border-gold/50 bg-gold/12 text-gold-bright" : "border-line/25 text-muted hover:border-gold/40 hover:text-gold",
               )}
             >
-              {ZOOM_LABEL[z]}
+              {t(z === 14 ? "twoWeeks" : z === 30 ? "oneMonth" : "twoMonths")}
             </button>
           ))}
           {headerRight}
@@ -271,7 +278,7 @@ export function CalendarView({
               style={{ borderColor: on ? tint : "var(--color-line)", background: on ? `${tint}1f` : "transparent" }}
             >
               <span className="h-1.5 w-1.5 rounded-full" style={{ background: tint }} />
-              {cat}
+              {t(CATEGORY_KEY[cat])}
             </button>
           );
         })}
@@ -293,14 +300,14 @@ export function CalendarView({
                 className="absolute -bottom-1 -translate-x-1/2 font-caps text-[0.5rem] uppercase tracking-[0.14em] text-gold-bright"
                 style={{ left: `${today}%` }}
               >
-                ▾ Auj.
+                ▾ {t("todayShort")}
               </span>
             ) : null}
           </div>
 
           {/* lignes */}
           {rows.length === 0 ? (
-            <p className="py-8 text-center font-mono text-[0.7rem] text-muted-2">Aucun événement sur cette période.</p>
+            <p className="py-8 text-center font-mono text-[0.7rem] text-muted-2">{t("noEvents")}</p>
           ) : (
             <div className={cn("relative flex flex-col", rowGap)}>
               {/* repère « aujourd'hui » traversant toutes les lignes */}
@@ -349,7 +356,7 @@ export function CalendarView({
                 href={selected.href}
                 className="ml-auto inline-flex items-center gap-1 font-caps text-[0.58rem] uppercase tracking-[0.14em] text-gold hover:text-gold-bright"
               >
-                Voir <ExternalLink className="h-3 w-3" />
+                {t("view")} <ExternalLink className="h-3 w-3" />
               </Link>
             ) : null}
             {selected.description ? (
@@ -362,14 +369,14 @@ export function CalendarView({
                 rel="noreferrer noopener"
                 className="inline-flex items-center gap-1 font-caps text-[0.55rem] uppercase tracking-[0.14em] text-muted hover:text-gold"
               >
-                Annonce officielle <ExternalLink className="h-2.5 w-2.5" />
+                {t("officialAnnouncement")} <ExternalLink className="h-2.5 w-2.5" />
               </a>
             ) : null}
           </div>
         </div>
       ) : (
         <p className="mt-3 font-mono text-[0.6rem] text-muted-2">
-          Navigue avec ◀ ▶, zoome, filtre par catégorie, survole ou clique un événement pour le détail.
+          {t("calendarHint")}
         </p>
       )}
 
@@ -415,6 +422,7 @@ export function CalendarView({
 
 /** Calendrier de la home — état local. */
 export function EventCalendar({ events, refToday }: { events?: CalendarEvent[]; refToday?: string }) {
+  const t = useTranslations("homeHub");
   const [span, setSpan] = useState<CalendarZoom>(DEFAULT_ZOOM);
   const [windowStart, setWindowStart] = useState<string>(() => defaultWindowStart(DEFAULT_ZOOM, refToday));
   const [active, setActive] = useState<Set<EventCategory>>(() => new Set(CATEGORIES));
@@ -450,7 +458,7 @@ export function EventCalendar({ events, refToday }: { events?: CalendarEvent[]; 
           href="/calendar"
           className="rounded-sm border border-line/25 px-2.5 py-1 font-caps text-[0.55rem] uppercase tracking-[0.14em] text-gold hover:border-gold hover:text-gold-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60"
         >
-          Plein écran →
+          {t("fullScreen")} →
         </Link>
       }
     />

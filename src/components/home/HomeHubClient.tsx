@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
+import { useTranslations } from "next-intl";
 import {
   ArrowRight,
   Bot,
@@ -65,7 +66,7 @@ const CTA_GHOST = cn(
   "border border-white/20 bg-gradient-to-b from-panel/70 to-ink/70 text-parch hover:-translate-y-px hover:border-white/45 hover:text-white",
 );
 
-/* ------------------------------------------------------------------ données statiques (cartes outils) */
+/* ------------------------------------------------------------------ cartes outils */
 
 type ToolCard = {
   href: string;
@@ -78,25 +79,6 @@ type ToolCard = {
   tint?: string;
   external?: boolean;
 };
-
-const DATABASE_CARDS: ToolCard[] = [
-  { href: "/characters", title: "Personnages", mono: "//ROSTER.DATABASE", desc: "Stats, courbes, skills et compatibilités d'armes.", icon: Users, bg: "/assets/worldview/worldview-3.webp", tint: "var(--color-gold)" },
-  { href: "/items", title: "Items & Mods", mono: "//GEAR.INDEX", desc: "Mods, Demon Wedges, ressources et pêche.", icon: Boxes, bg: "/assets/worldview/worldview-5.webp", tint: "var(--color-anemo)" },
-  { href: "/items/weapons", title: "Armes de calamité", mono: "//HYPER.ARSENAL", desc: "Armes Hyper, arbres de potentiels et passifs.", icon: Swords, badge: "Nouveau", bg: "/assets/worldview/worldview-8.webp", tint: "var(--color-pyro)" },
-  { href: "/items/genimons", title: "Génimons", mono: "//COMPANION.PODEX", desc: "Compagnons équipables niveau 60 et leurs stats.", icon: Gem, bg: "/assets/worldview/worldview-9.webp", tint: "var(--color-hydro)" },
-];
-
-const TOOL_CARDS: ToolCard[] = [
-  { href: "/builder", title: "Builder de builds", mono: "//BUILD.FORGE", desc: "Compose armes, Demon Wedges et consonances.", icon: Hammer, badge: "Nouveau", bg: "/assets/worldview/worldview-10.webp", tint: "var(--color-electro)" },
-  { href: "/map", title: "Carte interactive", mono: "//REGION.SURVEY.MAP", desc: "Marqueurs, filtres et zones du monde.", icon: MapIcon, bg: "/assets/worldview/worldview-6.webp", tint: "var(--color-hydro)" },
-  { href: "/items/drafts", title: "Plans de forge", mono: "//CRAFT.BLUEPRINTS", desc: "Recettes et coûts de fabrication des objets.", icon: FileStack, bg: "/assets/worldview/worldview-11.webp", tint: "var(--color-gold)" },
-  { href: "/changelog", title: "Changelog", mono: "//PATCH.NOTES", desc: "Suivi des mises à jour du site et du jeu.", icon: Wrench, bg: "/assets/official-v1.3/bg.webp", tint: "var(--color-umbro)" },
-];
-
-const COMMUNITY_CARDS: ToolCard[] = [
-  { href: "/commissions", title: "Commissions", mono: "//COVERT.OPS.LIVE", desc: "Rotation en temps réel des commissions.", icon: ScrollText, bg: "/assets/worldview/worldview-4.webp", tint: "var(--color-pyro)" },
-  { href: CONTACT_INFO.discord.url, title: "Discord", mono: "//COMMUNITY.HALL", desc: "Rejoins la communauté et les créateurs.", icon: Bot, bg: "/assets/worldview/worldview-1.webp", tint: "var(--color-electro)", external: true },
-];
 
 /* --------------------------------------------------------------- primitives */
 
@@ -157,6 +139,7 @@ function SectionRibbon({ label, index, action }: { label: string; index?: string
 }
 
 function CodeCard({ code, reward }: HomeCode) {
+  const t = useTranslations("homeHub");
   const [copied, setCopied] = useState(false);
   const copy = () => {
     try {
@@ -177,11 +160,11 @@ function CodeCard({ code, reward }: HomeCode) {
       <button
         type="button"
         onClick={copy}
-        aria-label={`Copier le code ${code}`}
+        aria-label={t("copyCodeAria", { code })}
         className="flex shrink-0 items-center gap-1.5 rounded-sm border border-gold/40 bg-gold/8 px-3 py-1.5 font-caps text-[0.6rem] uppercase tracking-[0.14em] text-gold transition-colors hover:border-gold hover:text-gold-bright"
       >
         {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
-        {copied ? "Copié" : "Copier"}
+        {copied ? t("copied") : t("copy")}
       </button>
     </div>
   );
@@ -189,6 +172,7 @@ function CodeCard({ code, reward }: HomeCode) {
 
 
 function BuildShowcaseCard({ build }: { build: HomeBuildCard }) {
+  const t = useTranslations("homeHub");
   const bg = build.portrait ?? "/assets/worldview/worldview-2.webp";
   return (
     <Link
@@ -199,7 +183,7 @@ function BuildShowcaseCard({ build }: { build: HomeBuildCard }) {
         <span aria-hidden className="absolute inset-0 bg-cover bg-[position:center_18%] opacity-80 transition-transform duration-500 group-hover:scale-105" style={{ backgroundImage: `url(${bg})` }} />
         <span aria-hidden className="absolute inset-0 bg-gradient-to-t from-panel via-panel/20 to-transparent" />
         <span aria-hidden className="absolute inset-x-0 bottom-0 h-px" style={{ background: `linear-gradient(90deg, ${build.tint}, transparent)` }} />
-        <span className="absolute right-2 top-2"><DnaTag>Communauté</DnaTag></span>
+        <span className="absolute right-2 top-2"><DnaTag>{t("community")}</DnaTag></span>
       </div>
       <div className="flex flex-1 flex-col gap-1.5 p-3">
         <div className="line-clamp-2 font-display text-base leading-tight text-parch group-hover:text-gold-bright">{build.title}</div>
@@ -226,12 +210,31 @@ function BuildShowcaseCard({ build }: { build: HomeBuildCard }) {
 /* ---------------------------------------------------------------- page (POC) */
 
 export default function HomeHubClient({ codes, builds, communityCount, stats, calendarEvents, calendarToday }: HomeHubClientProps) {
+  const t = useTranslations("homeHub");
   const { commissionsVisible } = useAppSettings();
-  const communityCards = commissionsVisible ? COMMUNITY_CARDS : COMMUNITY_CARDS.filter((c) => c.href !== "/commissions");
+  const databaseCards: ToolCard[] = [
+    { href: "/characters", title: t("charactersTitle"), mono: "//ROSTER.DATABASE", desc: t("charactersDescription"), icon: Users, bg: "/assets/worldview/worldview-3.webp", tint: "var(--color-gold)" },
+    { href: "/items", title: t("itemsTitle"), mono: "//GEAR.INDEX", desc: t("itemsDescription"), icon: Boxes, bg: "/assets/worldview/worldview-5.webp", tint: "var(--color-anemo)" },
+    { href: "/items/weapons", title: t("weaponsTitle"), mono: "//HYPER.ARSENAL", desc: t("weaponsDescription"), icon: Swords, badge: t("new"), bg: "/assets/worldview/worldview-8.webp", tint: "var(--color-pyro)" },
+    { href: "/items/genimons", title: t("genimonsTitle"), mono: "//COMPANION.PODEX", desc: t("genimonsDescription"), icon: Gem, bg: "/assets/worldview/worldview-9.webp", tint: "var(--color-hydro)" },
+  ];
+  const toolCards: ToolCard[] = [
+    { href: "/builder", title: t("buildBuilderTitle"), mono: "//BUILD.FORGE", desc: t("buildBuilderDescription"), icon: Hammer, badge: t("new"), bg: "/assets/worldview/worldview-10.webp", tint: "var(--color-electro)" },
+    { href: "/map", title: t("mapTitle"), mono: "//REGION.SURVEY.MAP", desc: t("mapShortDescription"), icon: MapIcon, bg: "/assets/worldview/worldview-6.webp", tint: "var(--color-hydro)" },
+    { href: "/items/drafts", title: t("draftsTitle"), mono: "//CRAFT.BLUEPRINTS", desc: t("draftsDescription"), icon: FileStack, bg: "/assets/worldview/worldview-11.webp", tint: "var(--color-gold)" },
+    { href: "/changelog", title: t("changelogTitle"), mono: "//PATCH.NOTES", desc: t("changelogDescription"), icon: Wrench, bg: "/assets/official-v1.3/bg.webp", tint: "var(--color-umbro)" },
+  ];
+  const communityCards: ToolCard[] = [
+    { href: "/commissions", title: t("commissionsTitle"), mono: "//COVERT.OPS.LIVE", desc: t("commissionsDescription"), icon: ScrollText, bg: "/assets/worldview/worldview-4.webp", tint: "var(--color-pyro)" },
+    { href: CONTACT_INFO.discord.url, title: "Discord", mono: "//COMMUNITY.HALL", desc: t("discordDescription"), icon: Bot, bg: "/assets/worldview/worldview-1.webp", tint: "var(--color-electro)", external: true },
+  ];
+  const visibleCommunityCards = commissionsVisible
+    ? communityCards
+    : communityCards.filter((card) => card.href !== "/commissions");
   const STATS = [
-    { icon: Users, value: stats.characters, label: "Personnages" },
-    { icon: Database, value: stats.items, label: "Items indexés" },
-    { icon: Layers, value: stats.builds, label: "Builds partagés" },
+    { icon: Users, value: stats.characters, label: t("charactersStat") },
+    { icon: Database, value: stats.items, label: t("itemsStat") },
+    { icon: Layers, value: stats.builds, label: t("buildsStat") },
   ];
   return (
     <div className="mx-auto w-full max-w-[1720px] px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
@@ -251,16 +254,16 @@ export default function HomeHubClient({ codes, builds, communityCount, stats, ca
                 <span key={i} className={cn("h-2.5 w-2.5 rotate-45 border", i < 3 ? "border-gold bg-gold-bright" : "border-line/30")} />
               ))}
             </div>
-            <p className="max-w-sm text-sm leading-relaxed text-parch/75">Le hub communautaire pour Duet Night Abyss : carte, base de données, builder et outils, réunis au même endroit.</p>
+            <p className="max-w-sm text-sm leading-relaxed text-parch/75">{t("heroDescription")}</p>
             <div className="flex flex-wrap gap-2.5">
-              <Link href="/map" className={CTA_GOLD}><Compass className="h-4 w-4" />Explorer les outils</Link>
+              <Link href="/map" className={CTA_GOLD}><Compass className="h-4 w-4" />{t("exploreTools")}</Link>
               <a href={CONTACT_INFO.discord.url} target="_blank" rel="noopener noreferrer" className={CTA_GHOST}><Bot className="h-4 w-4" />Discord</a>
             </div>
             <div className="relative mt-2 flex items-center gap-4 rounded-sm border border-line/20 bg-ink/50 p-4">
               <DnaCornerBrackets size={10} color="var(--color-gold-deep)" />
               <Search className="h-5 w-5 shrink-0 text-gold" />
               <span className="min-w-0">
-                <span className="block font-caps text-[0.55rem] uppercase tracking-[0.22em] text-muted">Communauté · builds partagés</span>
+                <span className="block font-caps text-[0.55rem] uppercase tracking-[0.22em] text-muted">{t("sharedBuilds")}</span>
                 <span className="block font-display text-3xl font-semibold tabular-nums text-gold-bright">{communityCount}</span>
               </span>
             </div>
@@ -270,10 +273,10 @@ export default function HomeHubClient({ codes, builds, communityCount, stats, ca
         <div className="flex flex-col gap-4">
           <div className="flex items-end justify-between gap-3">
             <div>
-              <h2 className="font-display text-2xl text-parch">Sélection</h2>
-              <span className="font-mono text-[0.7rem] text-muted">//FEATURED.THIS.WEEK</span>
+              <h2 className="font-display text-2xl text-parch">{t("featuredSelection")}</h2>
+              <span className="font-mono text-[0.7rem] text-muted">{"//FEATURED.THIS.WEEK"}</span>
             </div>
-            <Link href="/changelog" className={cn(CTA_GHOST, "px-4 py-2 text-xs")}><Sparkles className="h-4 w-4" />Nouveautés</Link>
+            <Link href="/changelog" className={cn(CTA_GHOST, "px-4 py-2 text-xs")}><Sparkles className="h-4 w-4" />{t("whatsNew")}</Link>
           </div>
 
           <Link href="/map" className="group relative flex min-h-[230px] flex-col justify-between overflow-hidden rounded-sm border border-gold/70 bg-panel/70 p-6 shadow-[0_0_40px_-8px_rgba(194,168,106,0.45)] transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-[0_0_60px_-6px_rgba(194,168,106,0.6)]">
@@ -282,23 +285,23 @@ export default function HomeHubClient({ codes, builds, communityCount, stats, ca
             <span aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-ink to-transparent" />
             <DnaCornerBrackets size={20} color="var(--color-gold-bright)" />
             <div className="relative flex items-center gap-2">
-              <DnaTag>À la une</DnaTag>
-              <span className="rounded-sm border border-hydro/40 bg-hydro/10 px-1.5 py-0.5 font-caps text-[0.5rem] uppercase tracking-[0.16em] text-hydro">Bêta</span>
+              <DnaTag>{t("featured")}</DnaTag>
+              <span className="rounded-sm border border-hydro/40 bg-hydro/10 px-1.5 py-0.5 font-caps text-[0.5rem] uppercase tracking-[0.16em] text-hydro">{t("beta")}</span>
             </div>
             <div className="relative">
-              <h3 className="font-display text-3xl text-parch group-hover:text-gold-bright sm:text-4xl">Carte interactive</h3>
-              <span className="font-mono text-xs text-muted">//REGION.SURVEY.MAP</span>
+              <h3 className="font-display text-3xl text-parch group-hover:text-gold-bright sm:text-4xl">{t("mapTitle")}</h3>
+              <span className="font-mono text-xs text-muted">{"//REGION.SURVEY.MAP"}</span>
             </div>
             <div className="relative flex items-center justify-between gap-3">
-              <p className="max-w-sm text-sm text-parch/75">Marqueurs, filtres et zones — toute la carte du monde annotée par la communauté.</p>
-              <span className="flex shrink-0 items-center gap-2 rounded-sm border border-gold bg-gradient-to-b from-gold-deep/40 to-ink/70 px-4 py-2 font-caps text-xs uppercase tracking-[0.14em] text-gold-bright dna-shine">Ouvrir <ArrowRight className="h-4 w-4" /></span>
+              <p className="max-w-sm text-sm text-parch/75">{t("mapDescription")}</p>
+              <span className="flex shrink-0 items-center gap-2 rounded-sm border border-gold bg-gradient-to-b from-gold-deep/40 to-ink/70 px-4 py-2 font-caps text-xs uppercase tracking-[0.14em] text-gold-bright dna-shine">{t("open")} <ArrowRight className="h-4 w-4" /></span>
             </div>
           </Link>
 
           <div className="grid gap-4 sm:grid-cols-2">
-            <ToolTile card={{ href: "/builder", title: "Builder", mono: "//BUILD.FORGE", desc: "Armes, Demon Wedges et consonances.", icon: Hammer, badge: "Nouveau", bg: "/assets/worldview/worldview-2.webp", tint: "var(--color-electro)" }} />
+            <ToolTile card={{ href: "/builder", title: "Builder", mono: "//BUILD.FORGE", desc: t("builderDescription"), icon: Hammer, badge: t("new"), bg: "/assets/worldview/worldview-2.webp", tint: "var(--color-electro)" }} />
             {commissionsVisible ? (
-              <ToolTile card={{ href: "/commissions", title: "Commissions", mono: "//COVERT.OPS.LIVE", desc: "Rotation en temps réel des commissions.", icon: ScrollText, bg: "/assets/worldview/worldview-4.webp", tint: "var(--color-pyro)" }} />
+              <ToolTile card={{ href: "/commissions", title: t("commissionsTitle"), mono: "//COVERT.OPS.LIVE", desc: t("commissionsDescription"), icon: ScrollText, bg: "/assets/worldview/worldview-4.webp", tint: "var(--color-pyro)" }} />
             ) : null}
           </div>
         </div>
@@ -306,9 +309,9 @@ export default function HomeHubClient({ codes, builds, communityCount, stats, ca
 
       {/* =============================================== BASE DE DONNÉES */}
       <section className="mt-10 flex flex-col gap-4">
-        <SectionRibbon label="Base de données" index="03" />
+        <SectionRibbon label={t("database")} index="03" />
         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-          {DATABASE_CARDS.map((c) => (
+          {databaseCards.map((c) => (
             <ToolTile key={c.href} card={c} />
           ))}
         </div>
@@ -316,9 +319,9 @@ export default function HomeHubClient({ codes, builds, communityCount, stats, ca
 
       {/* =============================================== OUTILS */}
       <section className="mt-10 flex flex-col gap-4">
-        <SectionRibbon label="Outils" index="02" />
+        <SectionRibbon label={t("tools")} index="02" />
         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-          {TOOL_CARDS.map((c) => (
+          {toolCards.map((c) => (
             <ToolTile key={c.href} card={c} />
           ))}
         </div>
@@ -326,13 +329,13 @@ export default function HomeHubClient({ codes, builds, communityCount, stats, ca
 
       {/* =============================================== COMMUNAUTÉ */}
       <section className="mt-10 flex flex-col gap-4">
-        <SectionRibbon label="Communauté" index="01" />
+        <SectionRibbon label={t("community")} index="01" />
         <ToolTile
           className="min-h-[104px]"
-          card={{ href: "/builds", title: "Builds communauté", mono: "//SHARED.LOADOUTS", desc: "Explore, vote et classe les builds partagés par les joueurs.", icon: Layers, badge: "Nouveau", bg: "/assets/worldview/worldview-7.webp", tint: "var(--color-anemo)" }}
+          card={{ href: "/builds", title: t("communityBuildsTitle"), mono: "//SHARED.LOADOUTS", desc: t("communityBuildsDescription"), icon: Layers, badge: t("new"), bg: "/assets/worldview/worldview-7.webp", tint: "var(--color-anemo)" }}
         />
         <div className="grid gap-4 sm:grid-cols-2">
-          {communityCards.map((c) => (
+          {visibleCommunityCards.map((c) => (
             <ToolTile key={c.href} card={c} />
           ))}
         </div>
@@ -342,8 +345,8 @@ export default function HomeHubClient({ codes, builds, communityCount, stats, ca
       {codes.length > 0 ? (
         <section className="mt-10 flex flex-col gap-4">
           <SectionRibbon
-            label="Codes cadeaux"
-            action={<Link href="/codes" className="font-caps text-[0.6rem] uppercase tracking-[0.16em] text-gold hover:text-gold-bright">Tous les codes →</Link>}
+            label={t("giftCodes")}
+            action={<Link href="/codes" className="font-caps text-[0.6rem] uppercase tracking-[0.16em] text-gold hover:text-gold-bright">{t("allCodes")} →</Link>}
           />
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
             {codes.map((c) => (
@@ -356,10 +359,10 @@ export default function HomeHubClient({ codes, builds, communityCount, stats, ca
       {/* =============================================== CALENDRIER DES ÉVÉNEMENTS */}
       <section className="mt-10 flex flex-col gap-4">
         <SectionRibbon
-          label="Calendrier des événements"
+          label={t("eventCalendar")}
           action={
             <span className="inline-flex items-center gap-1.5 font-caps text-[0.6rem] uppercase tracking-[0.16em] text-muted">
-              <Calendar className="h-3.5 w-3.5" />En cours
+              <Calendar className="h-3.5 w-3.5" />{t("live")}
             </span>
           }
         />
@@ -370,8 +373,8 @@ export default function HomeHubClient({ codes, builds, communityCount, stats, ca
       {builds.length > 0 ? (
         <section className="mt-10 flex flex-col gap-4">
           <SectionRibbon
-            label="Builds de personnages"
-            action={<Link href="/builds" className="font-caps text-[0.6rem] uppercase tracking-[0.16em] text-gold hover:text-gold-bright">Voir tout →</Link>}
+            label={t("characterBuilds")}
+            action={<Link href="/builds" className="font-caps text-[0.6rem] uppercase tracking-[0.16em] text-gold hover:text-gold-bright">{t("viewAll")} →</Link>}
           />
           <div className="-mx-1 flex gap-4 overflow-x-auto px-1 pb-2 custom-scrollbar">
             {builds.map((b) => (
