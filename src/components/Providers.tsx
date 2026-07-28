@@ -3,7 +3,6 @@
 import { Provider } from 'jotai';
 import { ReactNode } from 'react';
 import { SessionProvider } from 'next-auth/react';
-import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 import { NuqsAdapter } from 'nuqs/adapters/next/app';
 import { MotionConfig } from 'framer-motion';
 import { ConfirmProvider } from '@/components/dna';
@@ -14,23 +13,16 @@ interface ProvidersProps {
 
 export function Providers({ children }: ProvidersProps) {
   return (
+    // reCAPTCHA n'est PAS monté ici : il ne concerne que le formulaire de
+    // contact et vit dans `src/app/[locale]/contact/layout.tsx`. Le remonter
+    // à la racine rechargerait le script Google sur toutes les pages.
     <SessionProvider>
       <NuqsAdapter>
-        <GoogleReCaptchaProvider
-          reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ''}
-          scriptProps={{
-            async: false,
-            defer: false,
-            appendTo: 'head',
-            nonce: undefined,
-          }}
-        >
-          <Provider>
-            <MotionConfig reducedMotion="user">
-              <ConfirmProvider>{children}</ConfirmProvider>
-            </MotionConfig>
-          </Provider>
-        </GoogleReCaptchaProvider>
+        <Provider>
+          <MotionConfig reducedMotion="user">
+            <ConfirmProvider>{children}</ConfirmProvider>
+          </MotionConfig>
+        </Provider>
       </NuqsAdapter>
     </SessionProvider>
   );
