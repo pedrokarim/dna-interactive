@@ -79,17 +79,10 @@ export function NotificationBell() {
     }
   };
 
-  // Déconnecté : simple cloche inactive.
-  if (!authed) {
-    return (
-      <span
-        aria-hidden
-        className="flex h-9 w-9 items-center justify-center rounded-sm border border-line/25 text-parch/40"
-      >
-        <Bell className="h-4 w-4" />
-      </span>
-    );
-  }
+  // Déconnecté : on n'affiche rien du tout. Une cloche inerte n'apporte aucune
+  // information et laisse croire à une fonctionnalité disponible.
+  // NB : le return est APRÈS tous les hooks — ne pas le remonter.
+  if (!authed) return null;
 
   return (
     <details

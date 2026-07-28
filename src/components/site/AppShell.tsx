@@ -17,8 +17,8 @@ import {
   Mail,
   Map as MapIcon,
   Menu,
-  PanelLeftClose,
-  PanelLeftOpen,
+  ChevronsLeft,
+  ChevronsRight,
   ScrollText,
   Sparkles,
   Ticket,
@@ -406,8 +406,8 @@ export function AppShell({ children, badges = {}, copyrightYears = "2025" }: App
           >
             {/* Les deux icônes sont rendues, CSS choisit : pas de clignotement
                 avant hydratation, contrairement à un rendu conditionnel React. */}
-            <PanelLeftOpen aria-hidden className="dna-when-collapsed h-4 w-4" />
-            <PanelLeftClose aria-hidden className="dna-when-expanded h-4 w-4" />
+            <ChevronsRight aria-hidden className="dna-when-collapsed h-4 w-4" />
+            <ChevronsLeft aria-hidden className="dna-when-expanded h-4 w-4" />
           </button>
 
           <div className="flex min-w-0 items-baseline gap-3">
