@@ -15,7 +15,7 @@ import {
 export const runtime = "nodejs";
 export const size = OG_SIZE;
 export const contentType = OG_CONTENT_TYPE;
-export const alt = "Personnage — DNA Interactive";
+export const alt = "Character — DNA Interactive";
 
 export default async function CharacterOgImage({
   params,

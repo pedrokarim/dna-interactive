@@ -101,7 +101,14 @@
     "add": "新增",
     "zoomOut": "縮小",
     "zoomIn": "放大",
-    "resetZoom": "重設縮放"
+    "resetZoom": "重設縮放",
+    "calamity": "災厄",
+    "series": "系列",
+    "compatibility": "相容性",
+    "category": "分類",
+    "clickToEnlarge": "點擊放大",
+    "error": "錯誤",
+    "goToCard": "前往第 {index} 張卡片"
   },
   "legal": {
     "copyright": "© 2025 {siteName}。由 {creator} 用 ❤️ 製作",
@@ -147,7 +154,15 @@
     "featureUpdatesTitle": "定期更新",
     "featureUpdatesDescription": "根據玩家回饋定期更新。",
     "exploreMap": "探索地圖",
-    "exploreItems": "瀏覽道具"
+    "exploreItems": "瀏覽道具",
+    "buildCardsBadge": "新功能 · 配裝卡",
+    "buildCardsExample": "以 Psyche 為例",
+    "buildCardsExampleAria": "檢視配裝卡範例（Psyche）",
+    "showcaseTitle": "以風格分享你的配裝",
+    "showcaseDescription": "可從每個角色頁面匯出 PNG 的配裝卡。武器、Demon Wedge、Genimon、數值優先順序與推薦隊伍，全部收於一張圖。",
+    "viewAllCharacters": "檢視所有角色",
+    "velkaineAlt": "Velkaine — Duet Night Abyss 實況主與內容創作者",
+    "viewBuildOf": "檢視 {name} 的配裝"
   },
   "banner": {
     "newMapTitle": "新地圖已上線！",
@@ -221,7 +236,17 @@
     "categoryOthers": "其他",
     "importSuccess": "匯入成功：已匯入 {imported} 個標記。{ignored} 個舊格式已忽略，需重新標記。",
     "importInvalidFormat": "無效的檔案格式",
-    "importError": "匯入錯誤：無效檔案"
+    "importError": "匯入錯誤：無效檔案",
+    "exportMarkers": "匯出標記",
+    "importMarkers": "匯入標記",
+    "mapInfoButton": "地圖資訊",
+    "resetAllMarkers": "重設所有標記",
+    "resetPanelSize": "重設面板大小",
+    "zoomGuideAlt": "Duet Night Abyss 互動地圖標記詳細圖解",
+    "mapAlt": "{region} 地區互動地圖，顯示所有標記、寶箱與景點。",
+    "categoryIconAlt": "{name} 圖示 — 互動地圖標記分類",
+    "markerIconAlt": "{name} 圖示 — 互動地圖標記",
+    "loadingMarkers": "正在載入標記..."
   },
   "mapInfo": {
     "title": "地圖資訊",
@@ -486,7 +511,10 @@
     "sortRarityDesc": "稀有度降序",
     "zoomIcon": "放大道具 {id} 的圖示",
     "newBadge": "NEW",
-    "newOnly": "僅新項目"
+    "newOnly": "僅新項目",
+    "calamityOnly": "僅顯示災厄武器",
+    "calamityWeapon": "災厄武器",
+    "potentialTree": "潛能樹"
   },
   "itemDetail": {
     "weaponBuildTitle": "推薦惡魔楔組合",
@@ -551,7 +579,11 @@
     "sourceResource": "資源",
     "sourceWeapon": "武器",
     "sourceAccessory": "飾品",
-    "sourceUnknown": "未知"
+    "sourceUnknown": "未知",
+    "weaponMaxLevel": "武器最高等級",
+    "weaponValue": "武器價值",
+    "forgeCost": "鍛造費用",
+    "noExplicitCost": "此圖紙沒有明確費用。"
   },
   "gameInfo": {
     "name": "Duet Night Abyss",
@@ -605,7 +637,12 @@
     "calendarTitle": "活動行事曆",
     "calendarDescription": "Duet Night Abyss 卡池、武器與進行中活動的互動行事曆：可切換時間、縮放並依分類篩選。",
     "draftsTitle": "鍛造圖紙",
-    "draftsDescription": "鍛造圖紙資料庫：配方、材料、製作時間與成品詳情。"
+    "draftsDescription": "鍛造圖紙資料庫：配方、材料、製作時間與成品詳情。",
+    "characterNotFoundTitle": "找不到角色",
+    "characterNotFoundDescription": "資料庫中沒有此角色。",
+    "draftDetailTitle": "鍛造圖紙詳情",
+    "draftNotFoundDescription": "找不到鍛造圖紙。",
+    "characterOgAlt": "角色 — DNA Interactive"
   },
   "commissions": {
     "eyebrow": "Covert Commissions",
@@ -1037,5 +1074,23 @@
   "calendarPage": {
     "heading": "活動行事曆",
     "intro": "Duet Night Abyss 的卡池、武器與進行中活動。可切換時間、縮放並依分類篩選——狀態儲存於網址，可直接分享。"
+  },
+  "exportModal": {
+    "title": "匯出標記",
+    "fileFormat": "檔案格式",
+    "structuredHint": "結構化格式，易於重新匯入"
+  },
+  "notFound": {
+    "description": "您尋找的頁面不存在或已被移動。",
+    "title": "找不到頁面",
+    "interactiveMap": "互動地圖"
+  },
+  "featuresPage": {
+    "itemsPreviewAlt": "道具區塊視覺預覽",
+    "charactersPreviewAlt": "角色區塊視覺預覽",
+    "builderPreviewAlt": "社群配裝產生器視覺預覽",
+    "griffinDraftAlt": "Griffin 鍛造圖紙",
+    "typhonDraftAlt": "Typhon 鍛造圖紙",
+    "yuliKatanaAlt": "Yuli 的刀"
   }
 }

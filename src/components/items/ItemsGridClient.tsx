@@ -842,14 +842,14 @@ export default function ItemsGridClient({
             <div className="rounded-sm border border-white/10 bg-ink/60 p-2">
               <div className="mb-1 flex items-center gap-2 text-xs text-muted">
                 <SlidersHorizontal className="h-3.5 w-3.5 text-gold/80" />
-                Série
+                {tc("series")}
               </div>
               <select
                 value={seriesFilter}
                 onChange={(event) => {
                   updateQueryFilters({ series: event.target.value, page: 1 });
                 }}
-                aria-label="Série"
+                aria-label={tc("series")}
                 className="w-full rounded-sm border border-white/10 bg-panel px-2 py-1.5 text-sm text-parch"
               >
                 <option value="all">{tc('allFeminine')}</option>
@@ -866,14 +866,14 @@ export default function ItemsGridClient({
             <div className="rounded-sm border border-white/10 bg-ink/60 p-2">
               <div className="mb-1 flex items-center gap-2 text-xs text-muted">
                 <SlidersHorizontal className="h-3.5 w-3.5 text-gold/80" />
-                Compatibilité
+                {tc("compatibility")}
               </div>
               <select
                 value={compatFilter}
                 onChange={(event) => {
                   updateQueryFilters({ compat: event.target.value, page: 1 });
                 }}
-                aria-label="Compatibilité"
+                aria-label={tc("compatibility")}
                 className="w-full rounded-sm border border-white/10 bg-panel px-2 py-1.5 text-sm text-parch"
               >
                 <option value="all">{tc('all')}</option>
@@ -1041,7 +1041,7 @@ export default function ItemsGridClient({
                 {calamityFilter === "calamityOnly" ? <X className="h-3 w-3 text-ink" /> : null}
               </span>
               <Flame className="h-4 w-4" />
-              Afficher uniquement les armes de calamité
+              {t("calamityOnly")}
             </button>
           ) : null}
           {rarityOptions.length > 0 ? (
@@ -1230,7 +1230,7 @@ export default function ItemsGridClient({
                       {isCalamity ? (
                         <span className="inline-flex items-center gap-1 rounded-sm bg-crimson/15 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-crimson-bright ring-1 ring-crimson-bright/40">
                           <Flame className="h-3 w-3" />
-                          Calamité
+                          {tc("calamity")}
                         </span>
                       ) : null}
                     </div>
@@ -1420,7 +1420,7 @@ export default function ItemsGridClient({
                       {isCalamity ? (
                         <span className="inline-flex items-center gap-1 rounded-sm border border-crimson-bright/40 bg-crimson/10 px-2 py-0.5 font-semibold uppercase tracking-wider text-crimson-bright">
                           <Flame className="h-3 w-3" />
-                          Calamité
+                          {tc("calamity")}
                         </span>
                       ) : null}
                       {elementalAffinity ? (
@@ -1527,10 +1527,10 @@ export default function ItemsGridClient({
                   {isCalamity ? (
                     <span
                       className="absolute left-0 bottom-0 inline-flex items-center gap-1 rounded-sm border border-crimson-bright/45 bg-ink/80 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-crimson-bright backdrop-blur-sm"
-                      title="Arme de calamité"
+                      title={t("calamityWeapon")}
                     >
                       <Flame className="h-2.5 w-2.5" />
-                      Calamité
+                      {tc("calamity")}
                     </span>
                   ) : null}
                   <button

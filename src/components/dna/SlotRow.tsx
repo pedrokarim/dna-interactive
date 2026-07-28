@@ -214,6 +214,7 @@ function PickerOverlay({
   onSelect: (item: DnaPickerItem) => void;
   onClose: () => void;
 }) {
+  const t = useTranslations("common");
   const panelRef = useRef<HTMLDivElement>(null);
   useDialogA11y(panelRef, { onClose });
 
@@ -234,7 +235,7 @@ function PickerOverlay({
         <div className="mb-3 flex items-center justify-between gap-3">
           <h3 className="font-caps text-xs uppercase tracking-[0.18em] text-gold">{label}</h3>
           <DnaButton onClick={onClose} className="px-3 py-1.5 text-xs">
-            Fermer
+            {t("close")}
           </DnaButton>
         </div>
         <div className="min-h-0 overflow-y-auto overscroll-contain pr-1">

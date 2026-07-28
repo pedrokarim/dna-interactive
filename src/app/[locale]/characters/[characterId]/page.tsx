@@ -35,10 +35,11 @@ export async function generateMetadata(
   const character = getCharacterById(characterId);
 
   if (!character) {
+    const tMeta = await getTranslations({ locale, namespace: "metadata" });
     return generatePageMetadata(
       {
-        title: "Personnage introuvable",
-        description: "Ce personnage n'existe pas dans la base de donnees.",
+        title: tMeta("characterNotFoundTitle"),
+        description: tMeta("characterNotFoundDescription"),
         path: "/characters",
       },
       parent,

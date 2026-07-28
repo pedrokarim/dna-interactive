@@ -101,7 +101,14 @@
     "add": "추가",
     "zoomOut": "축소",
     "zoomIn": "확대",
-    "resetZoom": "확대/축소 초기화"
+    "resetZoom": "확대/축소 초기화",
+    "calamity": "재앙",
+    "series": "시리즈",
+    "compatibility": "호환성",
+    "category": "카테고리",
+    "clickToEnlarge": "클릭하여 확대",
+    "error": "오류",
+    "goToCard": "{index}번 카드로 이동"
   },
   "legal": {
     "copyright": "© 2025 {siteName}. {creator}가 ❤️를 담아 제작",
@@ -147,7 +154,15 @@
     "featureUpdatesTitle": "정기 업데이트",
     "featureUpdatesDescription": "여러분의 피드백에 기반한 정기 업데이트.",
     "exploreMap": "맵 탐험하기",
-    "exploreItems": "아이템 보기"
+    "exploreItems": "아이템 보기",
+    "buildCardsBadge": "신규 · 빌드 카드",
+    "buildCardsExample": "Psyche 예시",
+    "buildCardsExampleAria": "빌드 카드 예시 보기 (Psyche)",
+    "showcaseTitle": "빌드를 멋지게 공유하세요",
+    "showcaseDescription": "각 캐릭터 페이지에서 PNG로 내보낼 수 있는 빌드 카드. 무기, Demon Wedge, 제니몬, 스탯 우선순위, 추천 팀을 하나의 이미지에.",
+    "viewAllCharacters": "모든 캐릭터 보기",
+    "velkaineAlt": "Velkaine — Duet Night Abyss 스트리머 겸 콘텐츠 크리에이터",
+    "viewBuildOf": "{name}의 빌드 보기"
   },
   "banner": {
     "newMapTitle": "새 맵 공개!",
@@ -221,7 +236,17 @@
     "categoryOthers": "기타",
     "importSuccess": "가져오기 성공: {imported}개의 마커를 가져왔습니다. {ignored}개의 이전 형식은 무시되었으며 다시 마킹해야 합니다.",
     "importInvalidFormat": "잘못된 파일 형식",
-    "importError": "가져오기 오류: 잘못된 파일"
+    "importError": "가져오기 오류: 잘못된 파일",
+    "exportMarkers": "마커 내보내기",
+    "importMarkers": "마커 가져오기",
+    "mapInfoButton": "맵 정보",
+    "resetAllMarkers": "모든 마커 초기화",
+    "resetPanelSize": "패널 크기 초기화",
+    "zoomGuideAlt": "Duet Night Abyss 인터랙티브 맵 마커 상세 가이드",
+    "mapAlt": "{region} 지역 인터랙티브 맵. 모든 마커, 상자, 주요 지점 표시.",
+    "categoryIconAlt": "{name} 아이콘 — 인터랙티브 맵 마커 카테고리",
+    "markerIconAlt": "{name} 아이콘 — 인터랙티브 맵 마커",
+    "loadingMarkers": "마커를 불러오는 중..."
   },
   "mapInfo": {
     "title": "맵 정보",
@@ -486,7 +511,10 @@
     "sortRarityDesc": "레어리티 내림차순",
     "zoomIcon": "아이템 {id}의 아이콘 확대",
     "newBadge": "NEW",
-    "newOnly": "신규만"
+    "newOnly": "신규만",
+    "calamityOnly": "재앙 무기만 표시",
+    "calamityWeapon": "재앙 무기",
+    "potentialTree": "잠재력 트리"
   },
   "itemDetail": {
     "weaponBuildTitle": "추천 데몬 웻지 빌드",
@@ -551,7 +579,11 @@
     "sourceResource": "재료",
     "sourceWeapon": "무기",
     "sourceAccessory": "악세사리",
-    "sourceUnknown": "알 수 없음"
+    "sourceUnknown": "알 수 없음",
+    "weaponMaxLevel": "무기 최대 레벨",
+    "weaponValue": "무기 가치",
+    "forgeCost": "제작 비용",
+    "noExplicitCost": "이 설계도에는 명시적 비용이 없습니다."
   },
   "gameInfo": {
     "name": "Duet Night Abyss",
@@ -605,7 +637,12 @@
     "calendarTitle": "이벤트 캘린더",
     "calendarDescription": "Duet Night Abyss의 배너, 무기, 진행 중인 이벤트를 보여주는 인터랙티브 캘린더. 기간 이동, 확대, 카테고리 필터를 지원합니다.",
     "draftsTitle": "제작 설계도",
-    "draftsDescription": "제작 설계도 데이터베이스: 레시피, 재료, 제작 시간 및 완성 아이템 정보."
+    "draftsDescription": "제작 설계도 데이터베이스: 레시피, 재료, 제작 시간 및 완성 아이템 정보.",
+    "characterNotFoundTitle": "캐릭터를 찾을 수 없습니다",
+    "characterNotFoundDescription": "이 캐릭터는 데이터베이스에 없습니다.",
+    "draftDetailTitle": "제작 설계도 상세",
+    "draftNotFoundDescription": "제작 설계도를 찾을 수 없습니다.",
+    "characterOgAlt": "캐릭터 — DNA Interactive"
   },
   "commissions": {
     "eyebrow": "Covert Commissions",
@@ -1037,5 +1074,23 @@
   "calendarPage": {
     "heading": "이벤트 캘린더",
     "intro": "Duet Night Abyss의 배너, 무기, 진행 중인 이벤트. 기간을 이동하고 확대하며 카테고리로 필터링하세요. 상태가 URL에 담겨 공유할 수 있습니다."
+  },
+  "exportModal": {
+    "title": "마커 내보내기",
+    "fileFormat": "파일 형식",
+    "structuredHint": "구조화된 형식으로 다시 가져오기 쉬움"
+  },
+  "notFound": {
+    "description": "찾으시는 페이지가 존재하지 않거나 이동되었습니다.",
+    "title": "페이지를 찾을 수 없습니다",
+    "interactiveMap": "인터랙티브 맵"
+  },
+  "featuresPage": {
+    "itemsPreviewAlt": "아이템 섹션 미리보기",
+    "charactersPreviewAlt": "캐릭터 섹션 미리보기",
+    "builderPreviewAlt": "커뮤니티 빌더 미리보기",
+    "griffinDraftAlt": "Griffin 제작 설계도",
+    "typhonDraftAlt": "Typhon 제작 설계도",
+    "yuliKatanaAlt": "율리의 카타나"
   }
 }

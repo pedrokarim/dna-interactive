@@ -101,7 +101,14 @@
     "add": "Add",
     "zoomOut": "Zoom out",
     "zoomIn": "Zoom in",
-    "resetZoom": "Reset zoom"
+    "resetZoom": "Reset zoom",
+    "calamity": "Calamity",
+    "series": "Series",
+    "compatibility": "Compatibility",
+    "category": "Category",
+    "clickToEnlarge": "Click to enlarge",
+    "error": "Error",
+    "goToCard": "Go to card {index}"
   },
   "legal": {
     "copyright": "© 2025 {siteName}. Created by {creator} with ❤️",
@@ -147,7 +154,15 @@
     "featureUpdatesTitle": "Regular Updates",
     "featureUpdatesDescription": "Regular updates based on your feedback.",
     "exploreMap": "Explore the Map",
-    "exploreItems": "Browse Items"
+    "exploreItems": "Browse Items",
+    "buildCardsBadge": "New · Build cards",
+    "buildCardsExample": "Example with Psyche",
+    "buildCardsExampleAria": "View a build card example (Psyche)",
+    "showcaseTitle": "Share your builds in style",
+    "showcaseDescription": "Build cards exportable as PNG, right from every character page. Weapons, Demon Wedges, Genimons, stat priorities and recommended team — all in one visual.",
+    "viewAllCharacters": "View all characters",
+    "velkaineAlt": "Velkaine — Duet Night Abyss streamer and content creator",
+    "viewBuildOf": "View {name}'s build"
   },
   "banner": {
     "newMapTitle": "New map available!",
@@ -221,7 +236,17 @@
     "categoryOthers": "Others",
     "importSuccess": "Import successful: {imported} marker(s) imported. {ignored} old format(s) ignored and need to be re-marked.",
     "importInvalidFormat": "Invalid file format",
-    "importError": "Import error: invalid file"
+    "importError": "Import error: invalid file",
+    "exportMarkers": "Export markers",
+    "importMarkers": "Import markers",
+    "mapInfoButton": "Map information",
+    "resetAllMarkers": "Reset all markers",
+    "resetPanelSize": "Reset panel size",
+    "zoomGuideAlt": "Detailed visual guide for the marker on the Duet Night Abyss interactive map",
+    "mapAlt": "Interactive map of the {region} region showing all markers, chests and points of interest",
+    "categoryIconAlt": "{name} icon — marker category on the interactive map",
+    "markerIconAlt": "{name} icon — marker on the interactive map",
+    "loadingMarkers": "Loading markers..."
   },
   "mapInfo": {
     "title": "Map Information",
@@ -486,7 +511,10 @@
     "sortRarityDesc": "Rarity descending",
     "zoomIcon": "Enlarge icon for item {id}",
     "newBadge": "NEW",
-    "newOnly": "New only"
+    "newOnly": "New only",
+    "calamityOnly": "Show calamity weapons only",
+    "calamityWeapon": "Calamity weapon",
+    "potentialTree": "Potential tree"
   },
   "itemDetail": {
     "weaponBuildTitle": "Recommended Demon Wedge build",
@@ -551,7 +579,11 @@
     "sourceResource": "Resource",
     "sourceWeapon": "Weapon",
     "sourceAccessory": "Accessory",
-    "sourceUnknown": "Unknown"
+    "sourceUnknown": "Unknown",
+    "weaponMaxLevel": "Weapon max level",
+    "weaponValue": "Weapon value",
+    "forgeCost": "Forge cost",
+    "noExplicitCost": "No explicit cost for this blueprint."
   },
   "gameInfo": {
     "name": "Duet Night Abyss",
@@ -605,7 +637,12 @@
     "calendarTitle": "Event Calendar",
     "calendarDescription": "Interactive calendar of Duet Night Abyss banners, weapons and ongoing events: move through time, zoom and filter by category.",
     "draftsTitle": "Forge Blueprints",
-    "draftsDescription": "Database of forge blueprints: recipes, ingredients, crafting times and final item details."
+    "draftsDescription": "Database of forge blueprints: recipes, ingredients, crafting times and final item details.",
+    "characterNotFoundTitle": "Character not found",
+    "characterNotFoundDescription": "This character does not exist in the database.",
+    "draftDetailTitle": "Forge blueprint details",
+    "draftNotFoundDescription": "Forge blueprint not found.",
+    "characterOgAlt": "Character — DNA Interactive"
   },
   "commissions": {
     "eyebrow": "Covert Commissions",
@@ -1037,5 +1074,23 @@
   "calendarPage": {
     "heading": "Event Calendar",
     "intro": "Duet Night Abyss banners, weapons and ongoing events. Move through time, zoom and filter by category — the state lives in the URL, so it is shareable."
+  },
+  "exportModal": {
+    "title": "Export markers",
+    "fileFormat": "File format",
+    "structuredHint": "Structured format, easy to re-import"
+  },
+  "notFound": {
+    "description": "The page you are looking for does not exist or has been moved.",
+    "title": "Page not found",
+    "interactiveMap": "Interactive map"
+  },
+  "featuresPage": {
+    "itemsPreviewAlt": "Visual preview of the Items section",
+    "charactersPreviewAlt": "Visual preview of the Characters section",
+    "builderPreviewAlt": "Visual preview of the community builder",
+    "griffinDraftAlt": "Griffin forge blueprint",
+    "typhonDraftAlt": "Typhon forge blueprint",
+    "yuliKatanaAlt": "Yuli's katana"
   }
 }

@@ -101,7 +101,14 @@
     "add": "Ajouter",
     "zoomOut": "Dézoomer",
     "zoomIn": "Zoomer",
-    "resetZoom": "Réinitialiser le zoom"
+    "resetZoom": "Réinitialiser le zoom",
+    "calamity": "Calamité",
+    "series": "Série",
+    "compatibility": "Compatibilité",
+    "category": "Catégorie",
+    "clickToEnlarge": "Cliquez pour agrandir",
+    "error": "Erreur",
+    "goToCard": "Aller à la carte {index}"
   },
   "legal": {
     "copyright": "© 2025 {siteName}. Créé par {creator} avec ❤️",
@@ -147,7 +154,15 @@
     "featureUpdatesTitle": "Mises à Jour Régulières",
     "featureUpdatesDescription": "Mises à jour régulières selon vos retours.",
     "exploreMap": "Explorer la Carte",
-    "exploreItems": "Explorer les Items"
+    "exploreItems": "Explorer les Items",
+    "buildCardsBadge": "Nouveau · Cartes de build",
+    "buildCardsExample": "Exemple avec Psyche",
+    "buildCardsExampleAria": "Voir un exemple de carte de build (Psyche)",
+    "showcaseTitle": "Partagez vos builds avec style",
+    "showcaseDescription": "Des cartes de build exportables en PNG, directement sur chaque fiche personnage. Armes, Demon Wedge, Génimons, priorités stats et équipe recommandée — tout en un visuel.",
+    "viewAllCharacters": "Voir tous les personnages",
+    "velkaineAlt": "Velkaine — streameur et créateur de contenu Duet Night Abyss",
+    "viewBuildOf": "Voir le build de {name}"
   },
   "banner": {
     "newMapTitle": "Nouvelle map disponible !",
@@ -221,7 +236,17 @@
     "categoryOthers": "Autres",
     "importSuccess": "Import réussi : {imported} marqueur(s) importé(s). {ignored} ancien(s) format(s) ignoré(s) et nécessitent d'être re-marqué(s).",
     "importInvalidFormat": "Format de fichier invalide",
-    "importError": "Erreur lors de l'import : fichier invalide"
+    "importError": "Erreur lors de l'import : fichier invalide",
+    "exportMarkers": "Exporter les marqueurs",
+    "importMarkers": "Importer les marqueurs",
+    "mapInfoButton": "Informations sur la map",
+    "resetAllMarkers": "Réinitialiser tous les marqueurs",
+    "resetPanelSize": "Réinitialiser la taille du panneau",
+    "zoomGuideAlt": "Guide visuel détaillé du marqueur sur la carte interactive Duet Night Abyss",
+    "mapAlt": "Carte interactive de la région {region} montrant tous les marqueurs, coffres et points d'intérêt",
+    "categoryIconAlt": "Icône {name} — catégorie de marqueurs de la carte interactive",
+    "markerIconAlt": "Icône {name} — marqueur de la carte interactive",
+    "loadingMarkers": "Chargement des marqueurs..."
   },
   "mapInfo": {
     "title": "Informations sur les Maps",
@@ -486,7 +511,10 @@
     "sortRarityDesc": "Rarete decroissante",
     "zoomIcon": "Agrandir l'icone de l'item {id}",
     "newBadge": "NOUVEAU",
-    "newOnly": "Nouveautés"
+    "newOnly": "Nouveautés",
+    "calamityOnly": "Afficher uniquement les armes de calamité",
+    "calamityWeapon": "Arme de calamité",
+    "potentialTree": "Arbre de Potentiel"
   },
   "itemDetail": {
     "weaponBuildTitle": "Build de Demon Wedges recommandé",
@@ -551,7 +579,11 @@
     "sourceResource": "Ressource",
     "sourceWeapon": "Arme",
     "sourceAccessory": "Accessoire",
-    "sourceUnknown": "Inconnu"
+    "sourceUnknown": "Inconnu",
+    "weaponMaxLevel": "Niveau max arme",
+    "weaponValue": "Valeur arme",
+    "forgeCost": "Coût de forge",
+    "noExplicitCost": "Aucun coût explicite pour ce plan."
   },
   "gameInfo": {
     "name": "Duet Night Abyss",
@@ -605,7 +637,12 @@
     "calendarTitle": "Calendrier des événements",
     "calendarDescription": "Calendrier interactif des bannières, armes et événements en cours de Duet Night Abyss : navigue dans le temps, zoome et filtre par catégorie.",
     "draftsTitle": "Plans de forge",
-    "draftsDescription": "Base de données des plans de forge : recettes, ingrédients, temps de fabrication et détails des objets finaux."
+    "draftsDescription": "Base de données des plans de forge : recettes, ingrédients, temps de fabrication et détails des objets finaux.",
+    "characterNotFoundTitle": "Personnage introuvable",
+    "characterNotFoundDescription": "Ce personnage n'existe pas dans la base de données.",
+    "draftDetailTitle": "Détail du plan de forge",
+    "draftNotFoundDescription": "Plan de forge introuvable.",
+    "characterOgAlt": "Personnage — DNA Interactive"
   },
   "commissions": {
     "eyebrow": "Mandats scellés",
@@ -1037,5 +1074,23 @@
   "calendarPage": {
     "heading": "Calendrier des événements",
     "intro": "Bannières, armes et événements en cours de Duet Night Abyss. Navigue dans le temps, zoome et filtre par catégorie — l'état est dans l'URL, donc partageable."
+  },
+  "exportModal": {
+    "title": "Exporter les marqueurs",
+    "fileFormat": "Format du fichier",
+    "structuredHint": "Format structuré, facile à réimporter"
+  },
+  "notFound": {
+    "description": "La page que vous cherchez n'existe pas ou a été déplacée.",
+    "title": "Page introuvable",
+    "interactiveMap": "Carte interactive"
+  },
+  "featuresPage": {
+    "itemsPreviewAlt": "Aperçu visuel de la section Items",
+    "charactersPreviewAlt": "Aperçu visuel de la section Personnages",
+    "builderPreviewAlt": "Aperçu visuel du builder communautaire",
+    "griffinDraftAlt": "Plan de forge Griffin",
+    "typhonDraftAlt": "Plan de forge Typhon",
+    "yuliKatanaAlt": "Katana de Yuli"
   }
 }

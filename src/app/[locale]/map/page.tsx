@@ -44,13 +44,20 @@ import {
 } from "@/lib/constants";
 
 // Import dynamique pour éviter les erreurs SSR avec Leaflet
+/** Fallback du chargement dynamique : hors composant, il lit la traduction
+ *  via son propre petit composant pour rester localise. */
+function MapLoadingFallback() {
+  const t = useTranslations("map");
+  return (
+    <div className="w-full h-full bg-ink">
+      <Loading mode="box" message={t("loadingMap")} size={48} />
+    </div>
+  );
+}
+
 const MapComponent = dynamic(() => import("@/components/MapComponent"), {
   ssr: false,
-  loading: () => (
-    <div className="w-full h-full bg-ink">
-      <Loading mode="box" message="Chargement de la carte..." size={48} />
-    </div>
-  ),
+  loading: () => <MapLoadingFallback />,
 });
 
 export default function MapPage() {
@@ -620,7 +627,7 @@ export default function MapPage() {
                 <img
                   key={imagePath}
                   src={imagePath}
-                  alt={`Carte interactive de la région ${selectedMap?.name || 'Duet Night Abyss'} montrant tous les marqueurs, coffres et points d'intérêt pour ${SITE_CONFIG.name}`}
+                  alt={t("mapAlt", { region: selectedMap?.name || "Duet Night Abyss" })}
                   className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
                     index === currentBgImage ? "opacity-100" : "opacity-0"
                   }`}
@@ -680,7 +687,7 @@ export default function MapPage() {
                           <div className="w-8 h-8 border border-line/30 bg-white/5 flex items-center justify-center">
                             <img
                               src={group.icon}
-                              alt={`Icône ${group.name} - Catégorie de marqueurs pour la carte interactive Duet Night Abyss`}
+                              alt={t("categoryIconAlt", { name: group.name })}
                               className="max-w-full max-h-full object-contain"
                               onError={(e) => {
                                 e.currentTarget.style.display = "none";
@@ -794,7 +801,7 @@ export default function MapPage() {
                                   <div className="w-10 h-10 overflow-hidden border border-line/25 mb-1 flex items-center justify-center bg-white/5">
                                     <img
                                       src={item.icon}
-                                      alt={`Icône ${item.name} - Marqueur pour la carte interactive Duet Night Abyss`}
+                                      alt={t("markerIconAlt", { name: item.name })}
                                       className="max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-110"
                                       onError={(e) => {
                                         e.currentTarget.style.display = "none";
@@ -976,7 +983,7 @@ export default function MapPage() {
                         d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                       />
                     </svg>
-                    <span>Exporter les marqueurs</span>
+                    <span>{t("exportMarkers")}</span>
                   </button>
 
                   {/* Importer */}
@@ -1000,7 +1007,7 @@ export default function MapPage() {
                         d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
                       />
                     </svg>
-                    <span>Importer les marqueurs</span>
+                    <span>{t("importMarkers")}</span>
                   </button>
 
                   <div className="h-px bg-line/20 my-1"></div>
@@ -1052,7 +1059,7 @@ export default function MapPage() {
                         d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                       />
                     </svg>
-                    <span>Informations sur la map</span>
+                    <span>{t("mapInfoButton")}</span>
                   </button>
 
                   <div className="h-px bg-line/20 my-1"></div>
@@ -1079,7 +1086,7 @@ export default function MapPage() {
                       />
                     </svg>
                     <span className="text-crimson-bright">
-                      Réinitialiser tous les marqueurs
+                      {t("resetAllMarkers")}
                     </span>
                   </button>
 
@@ -1107,7 +1114,7 @@ export default function MapPage() {
                       />
                     </svg>
                     <span className="text-hydro">
-                      Réinitialiser la taille du panneau
+                      {t("resetPanelSize")}
                     </span>
                   </button>
                 </div>
@@ -1124,7 +1131,7 @@ export default function MapPage() {
         onConfirm={() => {
           resetAllMarkers();
         }}
-        title="Réinitialiser tous les marqueurs"
+        title={t("resetAllMarkers")}
         message="Êtes-vous sûr de vouloir réinitialiser tous les marqueurs ? Cette action supprimera tous les marqueurs que vous avez marqués comme vus."
         confirmText="Réinitialiser"
         cancelText="Annuler"

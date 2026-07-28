@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { DnaButton, DnaDialog } from "@/components/dna";
 
 interface ExportModalProps {
@@ -11,6 +12,8 @@ interface ExportModalProps {
 }
 
 export default function ExportModal({ isOpen, onClose, onExport, markerCount }: ExportModalProps) {
+  const t = useTranslations("exportModal");
+  const tc = useTranslations("common");
   const [selectedFormat, setSelectedFormat] = useState<"json" | "csv">("json");
 
   const handleExport = () => {
@@ -22,11 +25,11 @@ export default function ExportModal({ isOpen, onClose, onExport, markerCount }: 
     <DnaDialog
       open={isOpen}
       onClose={onClose}
-      title="Exporter les marqueurs"
+      title={t("title")}
       footer={
         <>
           <DnaButton variant="ghost" onClick={onClose} className="px-4 py-2">
-            Annuler
+            {tc("cancel")}
           </DnaButton>
           <DnaButton
             variant="gold"
@@ -55,7 +58,7 @@ export default function ExportModal({ isOpen, onClose, onExport, markerCount }: 
 
       <div className="mb-1">
         <label className="mb-3 block font-caps text-[0.6rem] uppercase tracking-[0.18em] text-gold/80">
-          Format du fichier
+          {t("fileFormat")}
         </label>
         <div className="space-y-2">
           <label className="flex cursor-pointer items-center border border-line/25 bg-panel/50 p-3 transition-colors hover:border-gold/40 hover:bg-white/10">
@@ -69,7 +72,7 @@ export default function ExportModal({ isOpen, onClose, onExport, markerCount }: 
             />
             <div className="flex-1">
               <div className="font-medium text-parch">JSON</div>
-              <div className="text-xs text-muted">Format structuré, facile à réimporter</div>
+              <div className="text-xs text-muted">{t("structuredHint")}</div>
             </div>
           </label>
 

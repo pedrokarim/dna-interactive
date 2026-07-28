@@ -11,6 +11,7 @@ const GHOST_BTN =
 
 export default function CommunityCards() {
   const t = useTranslations("community");
+  const tHome = useTranslations("home");
   return (
     <div className="mx-auto grid max-w-4xl gap-6 md:grid-cols-2">
       {/* Streamer Card */}
@@ -31,7 +32,7 @@ export default function CommunityCards() {
           >
             <img
               src="/assets/images/ffee63d2-5cba-4a8f-910f-7b67f97ccc96-profile_image-70x70.png"
-              alt="Velkaine - Streamer et créateur de contenu pour Duet Night Abyss"
+              alt={tHome("velkaineAlt")}
               width={64}
               height={64}
               loading="lazy"

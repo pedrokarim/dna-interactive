@@ -24,6 +24,7 @@ const FEATURED_IDS = ["char-linen", "char-saiqi", "char-feina"] as const;
 export default function BuildShowcase() {
   const lang = useLocale().toUpperCase();
   const t = useTranslations("common");
+  const tHome = useTranslations("home");
   const featured = FEATURED_IDS.map((id) => {
     const character = getCharacterById(id);
     const build = character ? getCharacterBuilds(character.id, lang)[0] : undefined;
@@ -52,15 +53,13 @@ export default function BuildShowcase() {
         <div className="mx-auto max-w-6xl text-center">
           <span className="inline-flex items-center gap-1.5 border border-gold/40 bg-gold/15 px-3 py-1 font-caps text-[0.58rem] uppercase tracking-[0.22em] text-gold">
             <FileImage className="h-3.5 w-3.5" />
-            Nouveau
+            {t("new")}
           </span>
           <h2 className="mt-4 font-display text-4xl text-parch md:text-5xl">
-            Partagez vos builds avec style
+            {tHome("showcaseTitle")}
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-parch/85 md:text-base">
-            Des cartes de build exportables en PNG, directement sur chaque fiche
-            personnage. Armes, Demon Wedge, Génimons, priorités stats et équipe
-            recommandée — tout en un visuel.
+            {tHome("showcaseDescription")}
           </p>
         </div>
 
@@ -114,7 +113,7 @@ export default function BuildShowcase() {
                 aria-label={
                   isActive
                     ? undefined
-                    : `Voir le build de ${resolveCharacterDisplayName(entry.character, lang)}`
+                    : tHome("viewBuildOf", { name: resolveCharacterDisplayName(entry.character, lang) })
                 }
                 tabIndex={isActive ? -1 : 0}
                 disabled={isActive}
@@ -152,7 +151,7 @@ export default function BuildShowcase() {
           type="button"
           onClick={() => go(active + 1)}
           disabled={active === featured.length - 1}
-          aria-label="Carte suivante"
+          aria-label={t("nextCard")}
           className="absolute right-2 top-1/2 z-30 -translate-y-1/2 inline-flex items-center justify-center rounded-full border border-white/10 bg-panel/80 p-2 text-parch backdrop-blur transition hover:border-gold/60 hover:bg-panel disabled:cursor-not-allowed disabled:opacity-30 md:p-3"
         >
           <ChevronRight className="h-5 w-5 md:h-6 md:w-6" />
@@ -165,7 +164,7 @@ export default function BuildShowcase() {
               key={entry.character.id}
               type="button"
               onClick={() => go(i)}
-              aria-label={`Aller à la carte ${i + 1}`}
+              aria-label={t("goToCard", { index: i + 1 })}
               aria-current={i === active ? "true" : undefined}
               className={`h-2 rounded-full transition-all duration-300 ${
                 i === active
@@ -193,7 +192,7 @@ export default function BuildShowcase() {
             className="inline-flex items-center justify-center gap-2 rounded-sm border border-white/20 bg-gradient-to-b from-panel/70 to-ink/70 px-6 py-3 text-sm font-medium text-parch transition-all duration-200 hover:-translate-y-px hover:border-white/45 hover:text-white"
           >
             <Users className="h-4 w-4" />
-            Voir tous les personnages
+            {tHome("viewAllCharacters")}
           </Link>
         </div>
       </div>

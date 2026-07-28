@@ -373,13 +373,13 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
                 ) : null}
                 {typeof weaponMaxLevel === "number" ? (
                   <div className="flex items-center justify-between gap-3">
-                    <dt>Niveau max arme</dt>
+                    <dt>{t("weaponMaxLevel")}</dt>
                     <dd>{weaponMaxLevel}</dd>
                   </div>
                 ) : null}
                 {typeof weaponValue === "number" ? (
                   <div className="flex items-center justify-between gap-3">
-                    <dt>Valeur arme</dt>
+                    <dt>{t("weaponValue")}</dt>
                     <dd>{formatInteger(weaponValue)}</dd>
                   </div>
                 ) : null}
@@ -393,7 +393,7 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
             </div>
 
             <div className="rounded-sm border border-white/10 bg-ink/60 p-3">
-              <h2 className="font-caps text-[0.6rem] uppercase tracking-[0.2em] text-muted">Cout de forge</h2>
+              <h2 className="font-caps text-[0.6rem] uppercase tracking-[0.2em] text-muted">{t("forgeCost")}</h2>
               {coinCostEntries.length > 0 ? (
                 <dl className="mt-2 space-y-1.5 text-parch">
                   {coinCostEntries.map(([coinType, value]) => (
@@ -404,7 +404,7 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
                   ))}
                 </dl>
               ) : (
-                <p className="mt-2 text-sm text-muted-2">Aucun cout explicite pour ce plan.</p>
+                <p className="mt-2 text-sm text-muted-2">{t("noExplicitCost")}</p>
               )}
             </div>
           </div>

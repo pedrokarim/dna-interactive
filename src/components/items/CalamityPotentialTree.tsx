@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useTranslations } from "next-intl";
 import { Lock } from "lucide-react";
 import { DnaItemIcon } from "@/components/dna/ItemIcon";
 import { cn } from "@/components/dna/cn";
@@ -39,6 +40,7 @@ type CalamityPotentialTreeProps = {
 };
 
 export function CalamityPotentialTree({ weaponItemId, lang, fusionLevel, className }: CalamityPotentialTreeProps) {
+  const t = useTranslations("items");
   const nodes = useMemo(() => DATA[weaponItemId]?.nodes ?? [], [weaponItemId]);
 
   const byLevel = useMemo(() => {
@@ -72,7 +74,7 @@ export function CalamityPotentialTree({ weaponItemId, lang, fusionLevel, classNa
       <div>
         <div className="mb-3 flex items-center justify-between">
           <p className="font-caps text-[0.62rem] uppercase tracking-[0.24em] text-muted">
-            Arbre de Potentiel
+            {t("potentialTree")}
           </p>
           <span
             className="rounded-sm border px-2 py-0.5 font-caps text-[0.62rem] uppercase tracking-[0.18em]"

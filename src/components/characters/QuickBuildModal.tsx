@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 import { toPng } from "html-to-image";
 import { Download, Sparkles, Swords, Target, X } from "lucide-react";
 import {
@@ -435,6 +436,7 @@ export function QuickBuildCard({
   lang: string;
   cardRef?: React.Ref<HTMLDivElement> | null;
 }) {
+  const t = useTranslations("characterDetail");
   const elementKey = character.element.key;
   const rgb = ELEMENT_RGB[elementKey] ?? ELEMENT_RGB.Water;
   const cardBg = CARD_BG[elementKey] ?? CARD_BG.Water;
@@ -608,11 +610,11 @@ export function QuickBuildCard({
                       style={{ color: accent, textShadow: "0 1px 3px rgba(0,0,0,0.6)" }}
                     >
                       <Swords className="h-3.5 w-3.5" />
-                      Mêlée
+                      {t("weaponMelee")}
                     </p>
                     <div className="space-y-1.5">
                       {meleeList.map((w, i) => (
-                        <WeaponCell key={`m-${i}`} weapon={w} size={meleeCellSize} kindLabel="Mêlée" />
+                        <WeaponCell key={`m-${i}`} weapon={w} size={meleeCellSize} kindLabel={t("weaponMelee")} />
                       ))}
                     </div>
                   </div>
@@ -664,7 +666,7 @@ export function QuickBuildCard({
                 style={{ color: accent, textShadow: "0 1px 3px rgba(0,0,0,0.6)" }}
               >
                 <Sparkles className="h-3.5 w-3.5" />
-                Génimons
+                {t("genimonTitle")}
               </p>
               <div className="grid grid-cols-3 gap-1.5">
                 {build.genimon.slice(0, 3).map((g, i) => {
@@ -703,7 +705,7 @@ export function QuickBuildCard({
                 className="mb-2 text-[11px] font-semibold uppercase tracking-wider"
                 style={{ color: accent, textShadow: "0 1px 3px rgba(0,0,0,0.6)" }}
               >
-                Priorité stats
+                {t("statsPriorityTitle")}
               </p>
               <ol className="space-y-1 text-xs">
                 {build.statsPriority.slice(0, 5).map((stat, i) => (
@@ -755,7 +757,7 @@ export function QuickBuildCard({
                   className="mb-2 text-[11px] font-semibold uppercase tracking-wider"
                   style={{ color: accent, textShadow: "0 1px 3px rgba(0,0,0,0.6)" }}
                 >
-                  Priorité compétences
+                  {t("skillPriorityTitle")}
                 </p>
                 <div className="flex items-center gap-2">
                   {items.map(({ iconSrc }, i) => (
@@ -798,7 +800,7 @@ export function QuickBuildCard({
                 className="mb-2 text-[11px] font-semibold uppercase tracking-wider"
                 style={{ color: accent, textShadow: "0 1px 3px rgba(0,0,0,0.6)" }}
               >
-                Équipe recommandée
+                {t("teamTitle")}
               </p>
               <div className="flex gap-2">
                 {build.team.slice(0, 3).map((t, i) => {
@@ -904,6 +906,8 @@ export default function QuickBuildModal({
   open: boolean;
   onClose: () => void;
 }) {
+  const t = useTranslations("characterDetail");
+  const tc = useTranslations("common");
   const [activeBuildIndex, setActiveBuildIndex] = useState(0);
   const [downloading, setDownloading] = useState(false);
   const cardRef = useRef<HTMLDivElement | null>(null);
@@ -950,14 +954,14 @@ export default function QuickBuildModal({
         >
           <Sparkles className="mx-auto h-10 w-10 text-muted-2" />
           <p className="mt-3 text-sm text-parch/85">
-            Aucun build disponible pour ce personnage.
+            {t("noBuildAvailable")}
           </p>
           <button
             type="button"
             onClick={onClose}
             className="mt-4 rounded-lg border border-white/10 bg-panel/80 px-4 py-2 text-sm text-parch hover:bg-white/10"
           >
-            Fermer
+            {tc("close")}
           </button>
         </div>
       </div>
@@ -1021,7 +1025,7 @@ export default function QuickBuildModal({
               type="button"
               onClick={onClose}
               className="rounded-full p-1.5 text-parch/85 transition-colors hover:bg-panel hover:text-parch"
-              aria-label="Fermer"
+              aria-label={tc("close")}
             >
               <X className="h-4 w-4" />
             </button>

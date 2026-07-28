@@ -73,6 +73,7 @@ const FEATURE_ICONS = {
 
 export default async function FeaturesPage() {
   const tHome = await getTranslations("home");
+  const tf = await getTranslations("featuresPage");
 
   const features: Array<{ key: keyof typeof FEATURE_ICONS; title: string; desc: string }> = [
     { key: "map", title: tHome("featureMapTitle"), desc: tHome("featureMapDescription") },
@@ -114,7 +115,7 @@ export default async function FeaturesPage() {
             <article className="group relative overflow-hidden border border-gold/35 bg-ink/70 shadow-[0_32px_80px_rgba(0,0,0,0.55)]">
               <img
                 src="/assets/worldview/worldview-8.webp"
-                alt="Apercu visuel de la section Items"
+                alt={tf("itemsPreviewAlt")}
                 width={400}
                 height={400}
                 loading="lazy"
@@ -131,16 +132,16 @@ export default async function FeaturesPage() {
                   <img src="/assets/optimized/home-spotlight/T_Mod_Typhon01_Blue.webp" alt="Demon Wedge Typhon" width="56" height="56" loading="lazy" className="h-full w-full object-contain" />
                 </div>
                 <div className="absolute left-[73%] top-[22%] h-12 w-12 -rotate-6 rounded-sm border border-crimson-bright/30 bg-ink/70 p-2">
-                  <img src="/assets/optimized/home-spotlight/T_Draft_Mod_Griffin01_Red.webp" alt="Plan de forge Griffin" width="48" height="48" loading="lazy" className="h-full w-full object-contain" />
+                  <img src="/assets/optimized/home-spotlight/T_Draft_Mod_Griffin01_Red.webp" alt={tf("griffinDraftAlt")} width="48" height="48" loading="lazy" className="h-full w-full object-contain" />
                 </div>
                 <div className="absolute left-[79%] top-[48%] h-12 w-12 rotate-12 rounded-sm border border-gold/30 bg-ink/70 p-2">
-                  <img src="/assets/optimized/home-spotlight/T_Draft_Mod_Typhon01_Orange.webp" alt="Plan de forge Typhon" width="48" height="48" loading="lazy" className="h-full w-full object-contain" />
+                  <img src="/assets/optimized/home-spotlight/T_Draft_Mod_Typhon01_Orange.webp" alt={tf("typhonDraftAlt")} width="48" height="48" loading="lazy" className="h-full w-full object-contain" />
                 </div>
                 <div className="absolute left-[69%] top-[64%] h-11 w-11 -rotate-3 rounded-sm border border-electro/30 bg-ink/70 p-2">
                   <img src="/assets/optimized/home-spotlight/T_Armory_WeaponType_Katana.webp" alt="Katana" width="44" height="44" loading="lazy" className="h-full w-full object-contain" />
                 </div>
                 <div className="absolute left-[83%] top-[70%] h-12 w-12 rotate-6 rounded-sm border border-hydro/30 bg-ink/70 p-2">
-                  <img src="/assets/optimized/home-spotlight/T_Head_Katana_Yuli.webp" alt="Katana de Yuli" width="48" height="48" loading="lazy" className="h-full w-full object-contain" />
+                  <img src="/assets/optimized/home-spotlight/T_Head_Katana_Yuli.webp" alt={tf("yuliKatanaAlt")} width="48" height="48" loading="lazy" className="h-full w-full object-contain" />
                 </div>
                 <div className="absolute left-[61%] top-[70%] h-10 w-10 -rotate-12 rounded-sm border border-pyro/30 bg-ink/70 p-1.5">
                   <img src="/assets/optimized/home-spotlight/T_Armory_Fire.webp" alt="Element Feu" width="40" height="40" loading="lazy" className="h-full w-full object-contain" />
@@ -184,7 +185,7 @@ export default async function FeaturesPage() {
             <article className="group relative overflow-hidden border border-electro/35 bg-ink/70 shadow-[0_32px_80px_rgba(0,0,0,0.55)]">
               <img
                 src="/assets/worldview/worldview-9.webp"
-                alt="Apercu visuel de la section Personnages"
+                alt={tf("charactersPreviewAlt")}
                 width={400}
                 height={400}
                 loading="lazy"
@@ -228,7 +229,7 @@ export default async function FeaturesPage() {
             <article className="group relative overflow-hidden border border-hydro/35 bg-ink/70 shadow-[0_32px_80px_rgba(0,0,0,0.55)]">
               <img
                 src="/assets/worldview/worldview-1-4-2.webp"
-                alt="Apercu visuel du builder communautaire"
+                alt={tf("builderPreviewAlt")}
                 width={400}
                 height={400}
                 loading="lazy"

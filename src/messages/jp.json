@@ -101,7 +101,14 @@
     "add": "追加",
     "zoomOut": "縮小",
     "zoomIn": "拡大",
-    "resetZoom": "ズームをリセット"
+    "resetZoom": "ズームをリセット",
+    "calamity": "カラミティ",
+    "series": "シリーズ",
+    "compatibility": "適合性",
+    "category": "カテゴリ",
+    "clickToEnlarge": "クリックで拡大",
+    "error": "エラー",
+    "goToCard": "カード{index}へ移動"
   },
   "legal": {
     "copyright": "© 2025 {siteName}. {creator}が❤️を込めて作成",
@@ -147,7 +154,15 @@
     "featureUpdatesTitle": "定期アップデート",
     "featureUpdatesDescription": "皆さんのフィードバックに基づく定期的な更新。",
     "exploreMap": "マップを探索",
-    "exploreItems": "アイテムを見る"
+    "exploreItems": "アイテムを見る",
+    "buildCardsBadge": "新機能・ビルドカード",
+    "buildCardsExample": "Psycheの例",
+    "buildCardsExampleAria": "ビルドカードの例を見る（Psyche）",
+    "showcaseTitle": "ビルドをスタイリッシュに共有",
+    "showcaseDescription": "各キャラクターページからPNGでエクスポートできるビルドカード。武器、Demon Wedge、ジェニモン、ステータス優先度、推奨編成をひとつのビジュアルに。",
+    "viewAllCharacters": "すべてのキャラクターを見る",
+    "velkaineAlt": "Velkaine — Duet Night Abyssのストリーマー兼コンテンツクリエイター",
+    "viewBuildOf": "{name}のビルドを見る"
   },
   "banner": {
     "newMapTitle": "新マップ公開！",
@@ -221,7 +236,17 @@
     "categoryOthers": "その他",
     "importSuccess": "インポート成功：{imported}個のマーカーをインポートしました。{ignored}個の旧フォーマットは無視され、再マークが必要です。",
     "importInvalidFormat": "無効なファイル形式",
-    "importError": "インポートエラー：無効なファイル"
+    "importError": "インポートエラー：無効なファイル",
+    "exportMarkers": "マーカーをエクスポート",
+    "importMarkers": "マーカーをインポート",
+    "mapInfoButton": "マップ情報",
+    "resetAllMarkers": "すべてのマーカーをリセット",
+    "resetPanelSize": "パネルサイズをリセット",
+    "zoomGuideAlt": "Duet Night Abyssインタラクティブマップのマーカー詳細ガイド",
+    "mapAlt": "{region}地域のインタラクティブマップ。すべてのマーカー、宝箱、注目ポイントを表示。",
+    "categoryIconAlt": "{name}アイコン — インタラクティブマップのマーカーカテゴリ",
+    "markerIconAlt": "{name}アイコン — インタラクティブマップのマーカー",
+    "loadingMarkers": "マーカーを読み込み中..."
   },
   "mapInfo": {
     "title": "マップ情報",
@@ -486,7 +511,10 @@
     "sortRarityDesc": "レアリティ降順",
     "zoomIcon": "アイテム{id}のアイコンを拡大",
     "newBadge": "NEW",
-    "newOnly": "新規のみ"
+    "newOnly": "新規のみ",
+    "calamityOnly": "カラミティ武器のみ表示",
+    "calamityWeapon": "カラミティ武器",
+    "potentialTree": "ポテンシャルツリー"
   },
   "itemDetail": {
     "weaponBuildTitle": "おすすめのデーモンウェッジ構成",
@@ -551,7 +579,11 @@
     "sourceResource": "素材",
     "sourceWeapon": "武器",
     "sourceAccessory": "アクセサリー",
-    "sourceUnknown": "不明"
+    "sourceUnknown": "不明",
+    "weaponMaxLevel": "武器最大レベル",
+    "weaponValue": "武器価値",
+    "forgeCost": "鍛造コスト",
+    "noExplicitCost": "この設計図に明示的なコストはありません。"
   },
   "gameInfo": {
     "name": "Duet Night Abyss",
@@ -605,7 +637,12 @@
     "calendarTitle": "イベントカレンダー",
     "calendarDescription": "Duet Night Abyssのバナー・武器・開催中イベントのインタラクティブカレンダー。時間軸の移動、ズーム、カテゴリ絞り込みに対応。",
     "draftsTitle": "鍛造設計図",
-    "draftsDescription": "鍛造設計図のデータベース：レシピ、素材、製作時間、完成アイテムの詳細。"
+    "draftsDescription": "鍛造設計図のデータベース：レシピ、素材、製作時間、完成アイテムの詳細。",
+    "characterNotFoundTitle": "キャラクターが見つかりません",
+    "characterNotFoundDescription": "このキャラクターはデータベースに存在しません。",
+    "draftDetailTitle": "鍛造設計図の詳細",
+    "draftNotFoundDescription": "鍛造設計図が見つかりません。",
+    "characterOgAlt": "キャラクター — DNA Interactive"
   },
   "commissions": {
     "eyebrow": "Covert Commissions",
@@ -1037,5 +1074,23 @@
   "calendarPage": {
     "heading": "イベントカレンダー",
     "intro": "Duet Night Abyssのバナー・武器・開催中イベント。時間軸を移動し、ズームし、カテゴリで絞り込めます。状態はURLに保存されるため共有できます。"
+  },
+  "exportModal": {
+    "title": "マーカーをエクスポート",
+    "fileFormat": "ファイル形式",
+    "structuredHint": "構造化形式で再インポートが簡単"
+  },
+  "notFound": {
+    "description": "お探しのページは存在しないか、移動されました。",
+    "title": "ページが見つかりません",
+    "interactiveMap": "インタラクティブマップ"
+  },
+  "featuresPage": {
+    "itemsPreviewAlt": "アイテムセクションのビジュアルプレビュー",
+    "charactersPreviewAlt": "キャラクターセクションのビジュアルプレビュー",
+    "builderPreviewAlt": "コミュニティビルダーのビジュアルプレビュー",
+    "griffinDraftAlt": "Griffin 鍛造設計図",
+    "typhonDraftAlt": "Typhon 鍛造設計図",
+    "yuliKatanaAlt": "ユリの刀"
   }
 }

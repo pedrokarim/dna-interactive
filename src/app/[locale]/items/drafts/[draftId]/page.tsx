@@ -25,10 +25,11 @@ export async function generateMetadata(
   const recipe = getDraftRecipeById(draftId);
 
   if (!recipe) {
+    const tMeta = await getTranslations({ locale, namespace: "metadata" });
     return generatePageMetadata(
       {
-        title: "Detail plan de forge",
-        description: "Plan de forge introuvable.",
+        title: tMeta("draftDetailTitle"),
+        description: tMeta("draftNotFoundDescription"),
         path: "/items/drafts",
       },
       parent,

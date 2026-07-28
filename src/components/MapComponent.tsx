@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { useTranslations } from "next-intl";
 import {
   MapContainer,
   ImageOverlay,
@@ -166,6 +167,8 @@ export default function MapComponent({
   isSidebarOpen = true,
   sidebarWidth = 320,
 }: MapComponentProps) {
+  const tc = useTranslations("common");
+  const tMap = useTranslations("map");
   const [isClient, setIsClient] = useState(false);
   const [markers, setMarkers] = useState<React.JSX.Element[]>([]);
   const [loading, setLoading] = useState(true);
@@ -256,7 +259,7 @@ export default function MapComponent({
                   <div className="flex h-11 w-11 shrink-0 items-center justify-center border border-line/30 bg-white/5">
                     <img
                       src={data.category.icon}
-                      alt={`Icône ${data.category.name} - Catégorie de marqueurs sur la carte interactive Duet Night Abyss`}
+                      alt={tMap("categoryIconAlt", { name: data.category.name })}
                       width={44}
                       height={44}
                       loading="lazy"
@@ -268,7 +271,7 @@ export default function MapComponent({
                   </div>
                   <div className="min-w-0">
                     <div className="font-caps text-[0.52rem] uppercase tracking-[0.28em] text-gold/70">
-                      Catégorie
+                      {tc("category")}
                     </div>
                     <h3 className="truncate font-display text-lg leading-tight text-parch">
                       {data.category.name}
@@ -283,7 +286,7 @@ export default function MapComponent({
                   <div className="flex h-9 w-9 shrink-0 items-center justify-center border border-line/30 bg-white/5">
                     <img
                       src={data.marker.icon}
-                      alt={`Icône ${data.marker.name} - Marqueur sur la carte interactive Duet Night Abyss`}
+                      alt={tMap("markerIconAlt", { name: data.marker.name })}
                       width={36}
                       height={36}
                       loading="lazy"
@@ -324,7 +327,7 @@ export default function MapComponent({
                       }}
                     />
                     <p className="px-2 py-1 text-center font-caps text-[0.5rem] uppercase tracking-[0.18em] text-muted-2">
-                      Cliquez pour agrandir
+                      {tc("clickToEnlarge")}
                     </p>
                   </div>
                 )}
@@ -363,7 +366,7 @@ export default function MapComponent({
   if (!isClient || !selectedMap) {
     return (
       <div className="w-full h-screen bg-ink">
-        <Loading mode="box" message="Chargement de la carte..." size={48} />
+        <Loading mode="box" message={tMap("loadingMap")} size={48} />
       </div>
     );
   }
@@ -379,7 +382,7 @@ export default function MapComponent({
         <div className="absolute bottom-3 right-20 z-[90]">
           <Loading
             mode="withMessage"
-            message="Chargement des marqueurs..."
+            message={tMap("loadingMarkers")}
             size={20}
             className="text-parch"
           />

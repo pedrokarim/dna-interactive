@@ -132,7 +132,7 @@ export function DnaPriorityList({
               onClick={() => setAdding(false)}
               className="rounded-sm font-caps text-[0.55rem] uppercase tracking-[0.16em] text-muted-2 hover:text-parch focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60"
             >
-              Fermer
+              {t("close")}
             </button>
           </div>
         ) : (

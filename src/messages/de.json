@@ -101,7 +101,14 @@
     "add": "Hinzufügen",
     "zoomOut": "Verkleinern",
     "zoomIn": "Vergrößern",
-    "resetZoom": "Zoom zurücksetzen"
+    "resetZoom": "Zoom zurücksetzen",
+    "calamity": "Unheil",
+    "series": "Serie",
+    "compatibility": "Kompatibilität",
+    "category": "Kategorie",
+    "clickToEnlarge": "Zum Vergrößern klicken",
+    "error": "Fehler",
+    "goToCard": "Zu Karte {index} springen"
   },
   "legal": {
     "copyright": "© 2025 {siteName}. Erstellt von {creator} mit ❤️",
@@ -147,7 +154,15 @@
     "featureUpdatesTitle": "Regelmäßige Updates",
     "featureUpdatesDescription": "Regelmäßige Aktualisierungen basierend auf eurem Feedback.",
     "exploreMap": "Karte erkunden",
-    "exploreItems": "Gegenstände durchstöbern"
+    "exploreItems": "Gegenstände durchstöbern",
+    "buildCardsBadge": "Neu · Build-Karten",
+    "buildCardsExample": "Beispiel mit Psyche",
+    "buildCardsExampleAria": "Beispiel einer Build-Karte ansehen (Psyche)",
+    "showcaseTitle": "Teile deine Builds mit Stil",
+    "showcaseDescription": "Als PNG exportierbare Build-Karten, direkt auf jeder Charakterseite. Waffen, Demon Wedges, Genimons, Statusprioritäten und empfohlenes Team — alles in einem Bild.",
+    "viewAllCharacters": "Alle Charaktere ansehen",
+    "velkaineAlt": "Velkaine — Duet Night Abyss Streamer und Content Creator",
+    "viewBuildOf": "Build von {name} ansehen"
   },
   "banner": {
     "newMapTitle": "Neue Karte verfügbar!",
@@ -221,7 +236,17 @@
     "categoryOthers": "Sonstiges",
     "importSuccess": "Import erfolgreich: {imported} Markierung(en) importiert. {ignored} altes Format(e) ignoriert und muss neu markiert werden.",
     "importInvalidFormat": "Ungültiges Dateiformat",
-    "importError": "Importfehler: ungültige Datei"
+    "importError": "Importfehler: ungültige Datei",
+    "exportMarkers": "Marker exportieren",
+    "importMarkers": "Marker importieren",
+    "mapInfoButton": "Karteninformationen",
+    "resetAllMarkers": "Alle Marker zurücksetzen",
+    "resetPanelSize": "Panelgröße zurücksetzen",
+    "zoomGuideAlt": "Detaillierte visuelle Anleitung zum Marker auf der interaktiven Karte von Duet Night Abyss",
+    "mapAlt": "Interaktive Karte der Region {region} mit allen Markern, Truhen und Sehenswürdigkeiten",
+    "categoryIconAlt": "{name}-Symbol — Markerkategorie der interaktiven Karte",
+    "markerIconAlt": "{name}-Symbol — Marker der interaktiven Karte",
+    "loadingMarkers": "Marker werden geladen..."
   },
   "mapInfo": {
     "title": "Karteninformationen",
@@ -486,7 +511,10 @@
     "sortRarityDesc": "Seltenheit absteigend",
     "zoomIcon": "Icon für Gegenstand {id} vergrößern",
     "newBadge": "NEU",
-    "newOnly": "Nur neue"
+    "newOnly": "Nur neue",
+    "calamityOnly": "Nur Unheilswaffen anzeigen",
+    "calamityWeapon": "Unheilswaffe",
+    "potentialTree": "Potenzialbaum"
   },
   "itemDetail": {
     "weaponBuildTitle": "Empfohlener Demon-Wedge-Build",
@@ -551,7 +579,11 @@
     "sourceResource": "Ressource",
     "sourceWeapon": "Waffe",
     "sourceAccessory": "Accessoire",
-    "sourceUnknown": "Unbekannt"
+    "sourceUnknown": "Unbekannt",
+    "weaponMaxLevel": "Max. Waffenstufe",
+    "weaponValue": "Waffenwert",
+    "forgeCost": "Schmiedekosten",
+    "noExplicitCost": "Keine expliziten Kosten für diesen Plan."
   },
   "gameInfo": {
     "name": "Duet Night Abyss",
@@ -605,7 +637,12 @@
     "calendarTitle": "Event-Kalender",
     "calendarDescription": "Interaktiver Kalender der Duet Night Abyss Banner, Waffen und laufenden Events: durch die Zeit navigieren, zoomen und nach Kategorie filtern.",
     "draftsTitle": "Schmiedepläne",
-    "draftsDescription": "Datenbank der Schmiedepläne: Rezepte, Zutaten, Herstellungszeiten und Details der Endgegenstände."
+    "draftsDescription": "Datenbank der Schmiedepläne: Rezepte, Zutaten, Herstellungszeiten und Details der Endgegenstände.",
+    "characterNotFoundTitle": "Charakter nicht gefunden",
+    "characterNotFoundDescription": "Dieser Charakter existiert nicht in der Datenbank.",
+    "draftDetailTitle": "Details des Schmiedeplans",
+    "draftNotFoundDescription": "Schmiedeplan nicht gefunden.",
+    "characterOgAlt": "Charakter — DNA Interactive"
   },
   "commissions": {
     "eyebrow": "Covert Commissions",
@@ -1037,5 +1074,23 @@
   "calendarPage": {
     "heading": "Event-Kalender",
     "intro": "Banner, Waffen und laufende Events von Duet Night Abyss. Blättere durch die Zeit, zoome und filtere nach Kategorie — der Zustand steht in der URL und ist damit teilbar."
+  },
+  "exportModal": {
+    "title": "Marker exportieren",
+    "fileFormat": "Dateiformat",
+    "structuredHint": "Strukturiertes Format, leicht wieder importierbar"
+  },
+  "notFound": {
+    "description": "Die gesuchte Seite existiert nicht oder wurde verschoben.",
+    "title": "Seite nicht gefunden",
+    "interactiveMap": "Interaktive Karte"
+  },
+  "featuresPage": {
+    "itemsPreviewAlt": "Visuelle Vorschau des Gegenstände-Bereichs",
+    "charactersPreviewAlt": "Visuelle Vorschau des Charakter-Bereichs",
+    "builderPreviewAlt": "Visuelle Vorschau des Community-Builders",
+    "griffinDraftAlt": "Griffin-Schmiedeplan",
+    "typhonDraftAlt": "Typhon-Schmiedeplan",
+    "yuliKatanaAlt": "Yulis Katana"
   }
 }

@@ -15,6 +15,7 @@ export default function ImageZoomModal({
   onClose,
 }: ImageZoomModalProps) {
   const t = useTranslations("imageZoom");
+  const tMap = useTranslations("map");
   const [zoom, setZoom] = useState(1);
   const [rotation, setRotation] = useState(0);
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -196,7 +197,7 @@ export default function ImageZoomModal({
         <img
           ref={imageRef}
           src={imageUrl}
-          alt="Guide visuel détaillé du marqueur sur la carte interactive Duet Night Abyss"
+          alt={tMap("zoomGuideAlt")}
           width={800}
           height={450}
           className="max-w-full max-h-[90vh] object-contain select-none"
