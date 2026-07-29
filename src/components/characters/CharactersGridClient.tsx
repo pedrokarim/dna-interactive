@@ -1,12 +1,11 @@
 "use client";
 
 import { Link } from "@/i18n/navigation";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
   ChevronRight,
   Heart,
-  Languages,
   Search,
   SlidersHorizontal,
   X,
@@ -14,17 +13,15 @@ import {
 } from "lucide-react";
 import { useAtom } from "jotai";
 import {
-  parseAsArrayOf,
   parseAsInteger,
   parseAsString,
   parseAsStringLiteral,
   useQueryStates,
 } from "nuqs";
+import { toGameDataLangCode, toLocale } from "@/i18n/config";
 import {
   getCharacterSlug,
   getCharacterTranslation,
-  getLanguageLabel,
-  normalizeLanguageCodes,
 } from "@/lib/characters/catalog";
 import type { CharacterRecord, CharactersCatalog } from "@/lib/characters/types";
 import { resolveCharacterDisplayName } from "@/lib/characters/catalog";
@@ -85,14 +82,6 @@ function isAllowedPageSize(value: number): value is (typeof PAGE_SIZE_VALUES)[nu
   return PAGE_SIZE_VALUES.includes(value as (typeof PAGE_SIZE_VALUES)[number]);
 }
 
-function sameStringArray(a: string[] | undefined, b: string[]): boolean {
-  if (!a || a.length !== b.length) return false;
-  for (let i = 0; i < a.length; i += 1) {
-    if (a[i] !== b[i]) return false;
-  }
-  return true;
-}
-
 function buildPaginationItems(currentPage: number, totalPages: number): Array<number | "..."> {
   if (totalPages <= 7) {
     return Array.from({ length: totalPages }, (_, index) => index + 1);
@@ -147,20 +136,20 @@ export default function CharactersGridClient({
 }: CharactersGridClientProps) {
   const t = useTranslations('characters');
   const tc = useTranslations('common');
+  const locale = useLocale();
   const [persistedFilters, setPersistedFilters] = useAtom(charactersFiltersStorageAtom);
   const [favoriteChars] = useAtom(charactersFavoritesAtom);
   const [, toggleFavorite] = useAtom(toggleCharacterFavoriteAtom);
   const [viewMode, setViewMode] = useListViewMode("characters", "simplified");
 
-  const defaultLanguages = normalizeLanguageCodes(
-    catalog.defaultGridLanguages,
-    catalog.availableLanguages,
-    ["FR", "EN"],
-  );
+  // Les fiches personnage suivent la langue du site, avec repli sur l'anglais.
+  // Pas de sélecteur de langues ici : ce mécanisme reste propre aux Demon Wedges,
+  // où comparer les libellés entre langues a un intérêt.
+  const gameLang = toGameDataLangCode(toLocale(locale));
+  const nameFallbacks = useMemo(() => [gameLang, "EN"], [gameLang]);
 
   const [queryFilters, setQueryFilters] = useQueryStates({
     q: parseAsString,
-    langs: parseAsArrayOf(parseAsString),
     element: parseAsString,
     weapon: parseAsString,
     camp: parseAsString,
@@ -171,7 +160,6 @@ export default function CharactersGridClient({
 
   const hasUrlFilters =
     queryFilters.q !== null ||
-    queryFilters.langs !== null ||
     queryFilters.element !== null ||
     queryFilters.weapon !== null ||
     queryFilters.camp !== null ||
@@ -180,12 +168,6 @@ export default function CharactersGridClient({
     queryFilters.page !== null;
 
   const search = queryFilters.q ?? (hasUrlFilters ? "" : persistedFilters.search ?? "");
-  const selectedLanguages = normalizeLanguageCodes(
-    queryFilters.langs ??
-      (hasUrlFilters ? defaultLanguages : persistedFilters.selectedLanguages?.length ? persistedFilters.selectedLanguages : defaultLanguages),
-    catalog.availableLanguages,
-    defaultLanguages,
-  );
   const elementFilter =
     queryFilters.element ?? (hasUrlFilters ? "all" : persistedFilters.elementFilter ?? "all");
   const weaponFilter =
@@ -215,7 +197,6 @@ export default function CharactersGridClient({
 
   const updateQueryFilters = (overrides: {
     q?: string;
-    langs?: string[];
     element?: string;
     weapon?: string;
     camp?: string;
@@ -225,7 +206,6 @@ export default function CharactersGridClient({
   }): void => {
     const next = {
       q: search,
-      langs: selectedLanguages,
       element: elementFilter,
       weapon: weaponFilter,
       camp: campFilter,
@@ -236,7 +216,6 @@ export default function CharactersGridClient({
     };
     void setQueryFilters({
       q: next.q,
-      langs: next.langs,
       element: next.element,
       weapon: next.weapon,
       camp: next.camp,
@@ -296,10 +275,11 @@ export default function CharactersGridClient({
         if (rankA !== rankB) return rankA - rankB;
       }
       if (sortMode === "name") {
-        const langCode = selectedLanguages[0] ?? "EN";
-        const nameA = a.translations[langCode]?.name ?? a.internalName;
-        const nameB = b.translations[langCode]?.name ?? b.internalName;
-        return nameA.localeCompare(nameB);
+        const nameA =
+          a.translations[gameLang]?.name ?? a.translations.EN?.name ?? a.internalName;
+        const nameB =
+          b.translations[gameLang]?.name ?? b.translations.EN?.name ?? b.internalName;
+        return nameA.localeCompare(nameB, locale);
       }
       if (sortMode === "element") {
         const cmp = a.element.key.localeCompare(b.element.key);
@@ -316,11 +296,7 @@ export default function CharactersGridClient({
     });
 
     return filtered;
-  }, [search, elementFilter, weaponFilter, campFilter, sortMode, searchable, selectedLanguages]);
-
-  const unselectedLanguages = catalog.availableLanguages.filter(
-    (code) => !selectedLanguages.includes(code),
-  );
+  }, [search, elementFilter, weaponFilter, campFilter, sortMode, searchable, gameLang, locale]);
 
   const totalPages = Math.max(1, Math.ceil(filteredCharacters.length / pageSize));
   const safeCurrentPage = Math.min(currentPage, totalPages);
@@ -339,7 +315,6 @@ export default function CharactersGridClient({
       elementFilter,
       weaponFilter,
       campFilter,
-      selectedLanguages,
       sortMode,
       pageSize,
       currentPage: safeCurrentPage,
@@ -352,8 +327,7 @@ export default function CharactersGridClient({
         prev.campFilter === next.campFilter &&
         prev.sortMode === next.sortMode &&
         prev.pageSize === next.pageSize &&
-        prev.currentPage === next.currentPage &&
-        sameStringArray(prev.selectedLanguages, next.selectedLanguages);
+        prev.currentPage === next.currentPage;
       if (isSame) return prev;
       return next;
     });
@@ -362,7 +336,6 @@ export default function CharactersGridClient({
     elementFilter,
     weaponFilter,
     campFilter,
-    selectedLanguages,
     sortMode,
     pageSize,
     safeCurrentPage,
@@ -377,28 +350,9 @@ export default function CharactersGridClient({
     }
   }, [currentPage, totalPages, setQueryFilters]);
 
-  const addLanguage = (code: string) => {
-    if (!code) return;
-    const next = selectedLanguages.includes(code)
-      ? selectedLanguages
-      : normalizeLanguageCodes(
-          [...selectedLanguages, code],
-          catalog.availableLanguages,
-          selectedLanguages,
-        );
-    updateQueryFilters({ langs: next, page: 1 });
-  };
-
-  const removeLanguage = (code: string) => {
-    if (selectedLanguages.length <= 1) return;
-    const next = selectedLanguages.filter((lang) => lang !== code);
-    updateQueryFilters({ langs: next, page: 1 });
-  };
-
   const resetFilters = () => {
     updateQueryFilters({
       q: "",
-      langs: defaultLanguages,
       element: "all",
       weapon: "all",
       camp: "all",
@@ -459,8 +413,8 @@ export default function CharactersGridClient({
           </div>
         </div>
 
-        {/* Search + languages */}
-        <div className="mt-4 md:mt-6 grid gap-3 md:gap-4 lg:grid-cols-2">
+        {/* Recherche */}
+        <div className="mt-4 md:mt-6">
           <label className="flex items-center gap-3 rounded-sm border border-white/10 bg-ink/60 px-3 py-2">
             <Search className="h-4 w-4 text-gold/80" />
             <input
@@ -472,46 +426,6 @@ export default function CharactersGridClient({
               placeholder={t('searchPlaceholder')}
             />
           </label>
-
-          <div className="rounded-sm border border-white/10 bg-ink/60 p-3">
-            <div className="mb-2 flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-muted">
-              <Languages className="h-4 w-4 text-gold/80" />
-              {tc('displayedLanguages')}
-            </div>
-            <div className="flex flex-wrap items-center gap-2">
-              {selectedLanguages.map((code) => (
-                <span
-                  key={code}
-                  className="inline-flex items-center gap-2 rounded-sm border border-gold/35 bg-gold/10 px-3 py-1 text-xs text-gold"
-                >
-                  {getLanguageLabel(code)}
-                  {selectedLanguages.length > 1 && (
-                    <button
-                      type="button"
-                      onClick={() => removeLanguage(code)}
-                      className="rounded-full p-0.5 text-gold/80 transition-colors hover:bg-gold/20 hover:text-parch"
-                      aria-label={`Supprimer la langue ${code}`}
-                    >
-                      <X className="h-3 w-3" />
-                    </button>
-                  )}
-                </span>
-              ))}
-              <select
-                value=""
-                onChange={(event) => addLanguage(event.target.value)}
-                aria-label={tc('addLanguage')}
-                className="rounded-sm border border-white/10 bg-panel px-2 py-1 text-xs text-parch outline-none"
-              >
-                <option value="">{tc('addLanguage')}</option>
-                {unselectedLanguages.map((code) => (
-                  <option key={code} value={code}>
-                    {getLanguageLabel(code)}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
         </div>
 
         {/* Filter chips */}
@@ -597,11 +511,7 @@ export default function CharactersGridClient({
         viewMode === "detailed" ? (
         <section className="grid gap-3 md:gap-4 grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
           {paginatedCharacters.map((character) => {
-            const lead = getCharacterTranslation(
-              character,
-              selectedLanguages[0],
-              catalog.availableLanguages,
-            );
+            const lead = getCharacterTranslation(character, gameLang, nameFallbacks);
             const headSrc = character.portraits.head.publicPath;
             const iconSrc = character.portraits.icon.publicPath;
             const isFavorite = favoriteChars.has(character.id);
@@ -725,30 +635,8 @@ export default function CharactersGridClient({
                     </button>
                   </div>
 
-                  {selectedLanguages.length > 0 && (
-                    <div className="mt-2 space-y-1.5">
-                      {selectedLanguages.map((langCode) => {
-                        const translation = character.translations[langCode];
-                        return (
-                          <div
-                            key={`${character.id}-${langCode}`}
-                            className="rounded-sm border border-white/10 bg-ink/55 px-2.5 py-1.5"
-                          >
-                            <p className="text-[10px] uppercase tracking-[0.18em] text-muted">
-                              {getLanguageLabel(langCode)}
-                            </p>
-                            <p className="truncate text-sm font-medium text-parch">
-                              {translation?.name ?? "N/A"}
-                            </p>
-                            {translation?.subtitle && (
-                              <p className="truncate text-xs text-muted">
-                                {translation.subtitle}
-                              </p>
-                            )}
-                          </div>
-                        );
-                      })}
-                    </div>
+                  {lead.subtitle && (
+                    <p className="mt-2 truncate text-xs text-muted">{lead.subtitle}</p>
                   )}
 
                   <div className="mt-2 flex flex-wrap gap-1.5 text-[11px]">
@@ -767,11 +655,7 @@ export default function CharactersGridClient({
         ) : viewMode === "list" ? (
         <ul className="space-y-2">
           {paginatedCharacters.map((character) => {
-            const lead = getCharacterTranslation(
-              character,
-              selectedLanguages[0],
-              catalog.availableLanguages,
-            );
+            const lead = getCharacterTranslation(character, gameLang, nameFallbacks);
             const headSrc = character.portraits.head.publicPath;
             const iconSrc = character.portraits.icon.publicPath;
             const thumbSrc = headSrc ?? iconSrc;
@@ -923,11 +807,7 @@ export default function CharactersGridClient({
         ) : (
         <section className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 md:gap-4 xl:grid-cols-5 2xl:grid-cols-6">
           {paginatedCharacters.map((character) => {
-            const lead = getCharacterTranslation(
-              character,
-              selectedLanguages[0],
-              catalog.availableLanguages,
-            );
+            const lead = getCharacterTranslation(character, gameLang, nameFallbacks);
             const headSrc = character.portraits.head.publicPath;
             const iconSrc = character.portraits.icon.publicPath;
             const portrait = character.portraits.gacha.publicPath ?? headSrc ?? iconSrc;

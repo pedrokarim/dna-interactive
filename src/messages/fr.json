@@ -3,7 +3,8 @@
     "ada": {
       "subtitle": "Lapin Solitaire du Paradis",
       "description": "Deux mémoires cohabitent derrière son sourire : une patrie ravagée par la guerre, et un paradis qui n'a peut-être jamais existé. Elle avance entre les deux sans jamais dire laquelle est la sienne.",
-      "camp": "Sans faction"
+      "camp": "Sans faction",
+      "name": "Ada"
     },
     "flora": {
       "subtitle": "Floraison Rebelle",
@@ -13,17 +14,20 @@
     "hilda": {
       "subtitle": "Tablier Écarlate",
       "description": "Sous le linge impeccable d'une servante au service d'une noble maison sommeillent les outils d'une fidélité plus tranchante que la pierre. Quand le silence tombe, ce sont ses lames qui parlent.",
-      "camp": "Empire Hyperboréen"
+      "camp": "Empire Hyperboréen",
+      "name": "Hilda"
     },
     "nvzhu02": {
       "subtitle": "Reflet d'Ombre",
       "description": "L'autre versant du destin : là où la lumière s'éteint, une autre voix se lève. Elle traverse l'abysse avec le même visage, mais d'autres serments — et choisit cette fois de ne plus se retourner.",
-      "camp": "Aucun"
+      "camp": "Aucun",
+      "name": "Protagoniste Féminine"
     },
     "nanzhu02": {
       "subtitle": "Écho d'Encre",
       "description": "Ce qu'on croit avoir laissé derrière soi revient parfois habillé de soi-même. Sous le manteau d'ombre veillent des promesses non tenues, et un pas calme qui ne demande plus pardon.",
-      "camp": "Aucun"
+      "camp": "Aucun",
+      "name": "Protagoniste Masculin"
     }
   },
   "site": {

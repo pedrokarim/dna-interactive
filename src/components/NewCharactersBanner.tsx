@@ -1,32 +1,11 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, ArrowRight, Globe, Check, Swords } from "lucide-react";
-import { useLocale, useTranslations } from "next-intl";
-import { locales, LANGUAGE_LABELS } from "@/i18n/config";
-import type { Locale } from "@/i18n/config";
-
-// Import statique des 7 fichiers de messages pour permettre le switch local
-import frMessages from "@/messages/fr.json";
-import enMessages from "@/messages/en.json";
-import deMessages from "@/messages/de.json";
-import esMessages from "@/messages/es.json";
-import jpMessages from "@/messages/jp.json";
-import krMessages from "@/messages/kr.json";
-import tcMessages from "@/messages/tc.json";
-
-const ALL_MESSAGES: Record<Locale, typeof frMessages> = {
-  fr: frMessages,
-  en: enMessages,
-  de: deMessages as typeof frMessages,
-  es: esMessages as typeof frMessages,
-  jp: jpMessages as typeof frMessages,
-  kr: krMessages as typeof frMessages,
-  tc: tcMessages as typeof frMessages,
-};
+import { Sparkles, ArrowRight, Swords } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 type CharKey = "ada" | "hilda" | "nvzhu02" | "nanzhu02";
 
@@ -85,12 +64,13 @@ const SHOWCASE_CHARACTERS: Array<{
   // Formes Umbro du Phoxhunter (protagoniste) \u2014 d\u00E9bloqu\u00E9es via la narration
   // du patch 1.4 "Silver Torrent, Rising Star". Pas de marketing officiel
   // d\u00E9di\u00E9, on utilise les busts FModel re-encod\u00E9s en WebP (cf. official-v1.4/).
-  // Le nom interne dans Char.lua est Nvzhu02 (f\u00E9minin) / Nanzhu02 (masculin).
+  // Le nom interne dans Char.lua est Nvzhu02 (f\u00E9minin) / Nanzhu02 (masculin) ;
+  // les libell\u00E9s affich\u00E9s reprennent ceux du jeu, via `characterShowcase.*.name`.
   {
     id: "char-nvzhu02",
     slug: "char-nvzhu02",
     key: "nvzhu02",
-    name: "Phoxhunter (Umbro) \u2640",
+    name: "Female Protagonist",
     decoText: "\u5973\u4E3B\u00B7\u6697",
     fullImage: "/assets/official-v1.4/image-nvzhu02.webp",
     fullImageMobile: "/assets/official-v1.4/image-nvzhu02-mobile.webp",
@@ -103,7 +83,7 @@ const SHOWCASE_CHARACTERS: Array<{
     id: "char-nanzhu02",
     slug: "char-nanzhu02",
     key: "nanzhu02",
-    name: "Phoxhunter (Umbro) \u2642",
+    name: "Male Protagonist",
     decoText: "\u7537\u4E3B\u00B7\u6697",
     fullImage: "/assets/official-v1.4/image-nanzhu02.webp",
     fullImageMobile: "/assets/official-v1.4/image-nanzhu02-mobile.webp",
@@ -124,25 +104,15 @@ const ACCENT_STYLES: Record<string, { text: string; border: string; subtitleText
 
 export default function NewCharactersBanner() {
   const tc = useTranslations("newCharacters");
-  const siteLocale = useLocale() as Locale;
+  const tShowcase = useTranslations("characterShowcase");
   const [activeIndex, setActiveIndex] = useState(0);
-  const [displayLocale, setDisplayLocale] = useState<Locale>(siteLocale);
-  const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
-  const langMenuRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    function handleClickOutside(e: MouseEvent) {
-      if (langMenuRef.current && !langMenuRef.current.contains(e.target as Node)) {
-        setIsLangMenuOpen(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
 
   const active = SHOWCASE_CHARACTERS[activeIndex];
   const styles = ACCENT_STYLES[active.accentColor];
-  const charData = ALL_MESSAGES[displayLocale].characterShowcase[active.key];
+  // Nom, sous-titre, description et faction suivent la langue du site. Le nom
+  // varie d'une langue à l'autre dans le jeu (Ada en FR/EN, Yvaine en DE,
+  // Eve en ES) : la constante `name` ne sert plus que de repli.
+  const activeName = tShowcase(`${active.key}.name`) || active.name;
 
   const badgeRow = (
     <div className="flex items-center gap-3">
@@ -151,37 +121,6 @@ export default function NewCharactersBanner() {
         <span className="text-xs font-semibold text-parch/70 uppercase tracking-widest">
           {tc("badge")}
         </span>
-      </div>
-      <div ref={langMenuRef} className="relative">
-        <button
-          onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-          className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/15 rounded-full transition-colors duration-200"
-        >
-          <Globe className="w-3.5 h-3.5 text-parch/70" />
-          <span className="text-xs font-semibold text-parch/70 uppercase">{displayLocale}</span>
-        </button>
-        {isLangMenuOpen && (
-          <div className="absolute left-0 top-full mt-2 bg-panel border border-white/15 rounded-lg shadow-xl overflow-hidden z-50 min-w-[160px]">
-            {locales.map((l) => (
-              <button
-                key={l}
-                onClick={() => {
-                  setDisplayLocale(l);
-                  setIsLangMenuOpen(false);
-                }}
-                className={`w-full flex items-center gap-2 px-3 py-2 text-xs transition-colors ${
-                  l === displayLocale
-                    ? "bg-white/10 text-parch font-medium"
-                    : "text-parch/85 hover:bg-white/5 hover:text-parch"
-                }`}
-              >
-                <span className="uppercase font-mono w-5">{l}</span>
-                <span className="flex-1 text-left">{LANGUAGE_LABELS[l.toUpperCase()]}</span>
-                {l === displayLocale && <Check className="w-3 h-3" />}
-              </button>
-            ))}
-          </div>
-        )}
       </div>
     </div>
   );
@@ -235,7 +174,7 @@ export default function NewCharactersBanner() {
           >
             <Image
               src={active.fullImage}
-              alt={active.name}
+              alt={activeName}
               fill
               className="object-contain object-center"
               priority
@@ -278,18 +217,18 @@ export default function NewCharactersBanner() {
               className="max-w-lg"
             >
               <h2 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-parch mb-2 tracking-tight leading-none">
-                {active.name}
+                {activeName}
               </h2>
               <p className={`text-lg md:text-xl font-semibold ${styles.subtitleText} mb-2`}>
-                {charData.subtitle}
+                {tShowcase(`${active.key}.subtitle`)}
               </p>
               <div className="flex items-center gap-3 text-sm text-parch/40 mb-6">
                 <span>{active.element}</span>
                 <span className="w-1 h-1 rounded-full bg-white/30" />
-                <span>{charData.camp}</span>
+                <span>{tShowcase(`${active.key}.camp`)}</span>
               </div>
               <p className="text-sm md:text-base text-muted leading-relaxed italic max-w-md">
-                &ldquo;{charData.description}&rdquo;
+                &ldquo;{tShowcase(`${active.key}.description`)}&rdquo;
               </p>
               <div className="flex flex-wrap items-center gap-3 mt-8">
                 <Link
@@ -358,7 +297,7 @@ export default function NewCharactersBanner() {
               >
                 <Image
                   src={active.fullImageMobile}
-                  alt={active.name}
+                  alt={activeName}
                   fill
                   className="object-contain object-center"
                   sizes="100vw"
@@ -379,18 +318,18 @@ export default function NewCharactersBanner() {
               className="text-center w-full max-w-md flex-shrink-0"
             >
               <h2 className="text-4xl font-extrabold text-parch mb-1 tracking-tight leading-none">
-                {active.name}
+                {activeName}
               </h2>
               <p className={`text-base font-semibold ${styles.subtitleText} mb-1`}>
-                {charData.subtitle}
+                {tShowcase(`${active.key}.subtitle`)}
               </p>
               <div className="flex items-center justify-center gap-2 text-xs text-parch/40 mb-3">
                 <span>{active.element}</span>
                 <span className="w-1 h-1 rounded-full bg-white/30" />
-                <span>{charData.camp}</span>
+                <span>{tShowcase(`${active.key}.camp`)}</span>
               </div>
               <p className="text-sm text-muted leading-relaxed italic px-2">
-                &ldquo;{charData.description}&rdquo;
+                &ldquo;{tShowcase(`${active.key}.description`)}&rdquo;
               </p>
               <Link
                 href={`/characters/${active.slug}`}

@@ -3,7 +3,8 @@
     "ada": {
       "subtitle": "El Conejo Solitario del Paraíso",
       "description": "Dos memorias conviven tras su sonrisa: una patria destrozada por la guerra y un paraíso que quizá nunca existió. Camina entre ambas sin decir jamás cuál le pertenece.",
-      "camp": "Sin facción"
+      "camp": "Sin facción",
+      "name": "Eve"
     },
     "flora": {
       "subtitle": "Floración Rebelde",
@@ -13,17 +14,20 @@
     "hilda": {
       "subtitle": "Delantal Carmesí",
       "description": "Bajo el lino impecable de una doncella al servicio de una casa noble duermen las herramientas de una fidelidad más afilada que la piedra. Cuando cae el silencio, hablan sus hojas.",
-      "camp": "Imperio Hiperbóreo"
+      "camp": "Imperio Hiperbóreo",
+      "name": "Hilda"
     },
     "nvzhu02": {
       "subtitle": "Reflejo de Sombra",
       "description": "El otro lado del destino: donde la luz se apaga, otra voz se alza. Camina el abismo con el mismo rostro, pero juramentos distintos — y esta vez elige no volver atrás.",
-      "camp": "Ninguno"
+      "camp": "Ninguno",
+      "name": "Protagonista Femenina"
     },
     "nanzhu02": {
       "subtitle": "Eco de Tinta",
       "description": "Lo que crees haber dejado atrás a veces regresa vestido de ti mismo. Bajo el manto de sombra descansan promesas incumplidas, y un paso sereno que ya no pide perdón.",
-      "camp": "Ninguno"
+      "camp": "Ninguno",
+      "name": "Protagonista Masculino"
     }
   },
   "site": {

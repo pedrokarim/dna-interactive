@@ -257,7 +257,6 @@ export type PersistedCharactersFilters = {
   elementFilter: string;
   weaponFilter: string;
   campFilter: string;
-  selectedLanguages: string[];
   sortMode: string;
   pageSize: number;
   currentPage: number;
@@ -269,7 +268,6 @@ export const charactersFiltersStorageAtom =
     elementFilter: "all",
     weaponFilter: "all",
     campFilter: "all",
-    selectedLanguages: [],
     sortMode: "default",
     pageSize: 24,
     currentPage: 1,

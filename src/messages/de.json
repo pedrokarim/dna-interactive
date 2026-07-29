@@ -3,7 +3,8 @@
     "ada": {
       "subtitle": "Der einsame Hase des Paradieses",
       "description": "Hinter ihrem Lächeln leben zwei Erinnerungen: eine vom Krieg zerrissene Heimat und ein Paradies, das vielleicht nie existiert hat. Sie wandelt zwischen beiden, ohne je zu sagen, welche ihre ist.",
-      "camp": "Keine Fraktion"
+      "camp": "Keine Fraktion",
+      "name": "Yvaine"
     },
     "flora": {
       "subtitle": "Rebellische Blüte",
@@ -13,17 +14,20 @@
     "hilda": {
       "subtitle": "Scharlachrote Schürze",
       "description": "Unter den makellosen Tüchern eines Dienstmädchens im Dienst eines Adelshauses schlummern die Werkzeuge einer Treue, schärfer als Stein. Wenn Stille einkehrt, sprechen ihre Klingen.",
-      "camp": "Hyperboreisches Imperium"
+      "camp": "Hyperboreisches Imperium",
+      "name": "Hilda"
     },
     "nvzhu02": {
       "subtitle": "Spiegelbild des Schattens",
       "description": "Die andere Seite des Schicksals: wo das Licht erlischt, erhebt sich eine andere Stimme. Mit demselben Gesicht, doch anderen Eiden durchquert sie den Abgrund – und entscheidet diesmal, sich nicht umzuwenden.",
-      "camp": "Keine"
+      "camp": "Keine",
+      "name": "Protagonistin"
     },
     "nanzhu02": {
       "subtitle": "Echo aus Tinte",
       "description": "Was man zurückgelassen zu haben glaubt, kehrt zuweilen zurück, gekleidet wie man selbst. Unter dem Mantel des Schattens ruhen ungehaltene Versprechen und ein leiser Schritt, der nicht mehr um Vergebung bittet.",
-      "camp": "Keine"
+      "camp": "Keine",
+      "name": "Protagonist"
     }
   },
   "site": {
