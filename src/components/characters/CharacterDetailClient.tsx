@@ -2114,9 +2114,12 @@ export function BuildTabContent({
                 ? ELEMENT_COLORS[tm.character.element.key] ?? ELEMENT_COLORS.Water
                 : ELEMENT_COLORS.Water;
               return (
+                // `min-w-0` : une piste de grille vaut `minmax(auto, …)` par défaut,
+                // donc elle s'élargit au contenu. Les libellés sont en `truncate`
+                // (nowrap) et poussaient la carte au-delà du viewport en mobile.
                 <div
                   key={i}
-                  className={`border ${ec.border} ${ec.bg} p-3`}
+                  className={`min-w-0 border ${ec.border} ${ec.bg} p-3`}
                 >
                   {tm.character ? (
                     <Link
