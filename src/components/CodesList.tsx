@@ -13,6 +13,7 @@ import { useTranslations } from "next-intl";
 import { DnaPanel } from "@/components/dna/Panel";
 import { DnaDivider } from "@/components/dna/Divider";
 import { useConfirm } from "@/components/dna/ConfirmProvider";
+import { captureAnalytics } from "@/lib/analytics";
 
 export default function CodesList() {
   const t = useTranslations("codes");
@@ -24,10 +25,11 @@ export default function CodesList() {
   const [, resetAllCodes] = useAtom(resetAllCodesAtom);
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
 
-  const copyToClipboard = async (code: string) => {
+  const copyToClipboard = async (code: string, status: "active" | "expired") => {
     try {
       await navigator.clipboard.writeText(code);
       setCopiedCode(code);
+      captureAnalytics("code_copied", { status });
       setTimeout(() => setCopiedCode(null), 2000);
     } catch (err) {
       console.error("Failed to copy code:", err);
@@ -142,7 +144,7 @@ export default function CodesList() {
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
-                      copyToClipboard(gameCode.code);
+                      copyToClipboard(gameCode.code, "active");
                     }}
                     className={`grid h-9 w-9 place-items-center rounded-sm transition-colors ${
                       isUsed ? "bg-panel text-muted hover:text-parch" : "border border-gold/50 bg-gold/15 text-gold hover:bg-gold/25"
@@ -212,7 +214,7 @@ export default function CodesList() {
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
-                          copyToClipboard(gameCode.code);
+                          copyToClipboard(gameCode.code, "expired");
                         }}
                         className="grid h-9 w-9 place-items-center rounded-sm border border-crimson-bright/40 bg-crimson/15 text-crimson-bright transition-colors hover:bg-crimson/25"
                         title={t("copyCodeExpired")}

@@ -15,6 +15,7 @@ import "leaflet/dist/leaflet.css";
 import Loading from "@/components/Loading";
 import ImageZoomModal from "@/components/ImageZoomModal";
 import { cn, DnaCornerBrackets } from "@/components/dna";
+import { captureAnalytics } from "@/lib/analytics";
 
 // Cache global des icônes (DivIcon synchrones, par URL + état trouvé/non trouvé).
 // On utilise des DivIcon (HTML+CSS) au lieu d'un canvas->toDataURL asynchrone :
@@ -247,6 +248,13 @@ export default function MapComponent({
             position={data.position}
             icon={customIcon}
             opacity={isMarked ? 0.9 : 1}
+            eventHandlers={{
+              popupopen: () =>
+                captureAnalytics("map_marker_opened", {
+                  map: selectedMap.id,
+                  category: String(data.category.type ?? "unknown"),
+                }),
+            }}
           >
             <Popup>
               {/* Cadre du marqueur — design system DNA (coins nets, liseré or,

@@ -13,6 +13,7 @@ import {
 } from "@/components/characters/CharacterDetailClient";
 import type { CharacterRecord } from "@/lib/characters/types";
 import { NAVIGATION } from "@/lib/constants";
+import { captureAnalytics } from "@/lib/analytics";
 
 type Props = {
   build: CommunityBuildListItem & { views: number };
@@ -59,12 +60,14 @@ export function BuildPageClient({ build, character, characterElement, lang }: Pr
     const data = await response.json().catch(() => null);
     setVoted(data?.voted ?? next);
     setVoteCount(data?.voteCount ?? voteCount + (next ? 1 : -1));
+    captureAnalytics("build_voted", { action: next ? "added" : "removed", source: "detail" });
   }
 
   async function copyLink() {
     try {
       await navigator.clipboard.writeText(window.location.href);
       setActionMessage(tcb("linkCopied"));
+      captureAnalytics("build_shared", { source: "detail", method: "copy" });
     } catch {
       setActionMessage(window.location.href);
     }

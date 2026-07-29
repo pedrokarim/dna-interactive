@@ -35,6 +35,11 @@ export default async function ConfidentialitePage() {
           </DnaPanel>
 
           <DnaPanel className="p-5">
+            <DnaSectionLabel>{t("analyticsTitle")}</DnaSectionLabel>
+            <p className="mt-3 font-sans text-sm leading-relaxed text-parch/85">{t("analyticsText")}</p>
+          </DnaPanel>
+
+          <DnaPanel className="p-5">
             <DnaSectionLabel>{t("rightsTitle")}</DnaSectionLabel>
             <p className="mt-3 font-sans text-sm leading-relaxed text-parch/85">
               {t.rich("rightsText", {

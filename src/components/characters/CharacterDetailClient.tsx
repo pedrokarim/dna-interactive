@@ -67,6 +67,7 @@ import { DnaCommunityBuildCard } from "@/components/dna/CommunityBuildCard";
 import { DnaSegmented } from "@/components/dna/Segmented";
 import { useDialogA11y } from "@/components/dna/useDialogA11y";
 import { NAVIGATION } from "@/lib/constants";
+import { captureAnalytics } from "@/lib/analytics";
 import type {
   CharacterBuild,
   BuildDemonWedgeSlot,
@@ -1345,6 +1346,7 @@ function CommunityBuildsSection({
           : item,
       ),
     );
+    captureAnalytics("build_voted", { action: next ? "added" : "removed", source: "character" });
   }
 
   return (
@@ -1500,6 +1502,7 @@ function CommunityBuildPreviewModal({
     try {
       await navigator.clipboard.writeText(url.toString());
       setActionMessage(tcb("linkCopied"));
+      captureAnalytics("build_shared", { source: "character", method: "copy" });
     } catch {
       setActionMessage(url.toString());
     }

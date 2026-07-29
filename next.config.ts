@@ -41,11 +41,11 @@ const nextConfig: NextConfig = {
     // Next injecte des scripts/styles inline (upgrade nonce-based = suivi).
     const cspReportOnly = [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com",
+      "script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com https://sarutobi.ascencia.re",
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: blob: https:",
       "font-src 'self' data:",
-      "connect-src 'self' https://www.google.com https://www.gstatic.com",
+      "connect-src 'self' https://www.google.com https://www.gstatic.com https://sarutobi.ascencia.re",
       "frame-src https://www.google.com",
       "object-src 'none'",
       "base-uri 'self'",

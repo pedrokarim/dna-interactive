@@ -19,6 +19,7 @@ import type { BuilderCharacterOption, BuilderOptions } from "@/lib/community-bui
 import type { CommunityBuildPayload } from "@/lib/community-builds/validation";
 import { BUILD_TAGS } from "@/lib/community-builds/validation";
 import { cn } from "@/components/dna/cn";
+import { captureAnalytics } from "@/lib/analytics";
 
 const PAGE_SIZE = 12;
 const DATE_LOCALE: Record<string, string> = { en: "en", fr: "fr", de: "de", es: "es", jp: "ja", kr: "ko", tc: "zh-TW" };
@@ -217,6 +218,7 @@ export function CommunityBuildsHubClient({ options, locale }: CommunityBuildsHub
           : item,
       ),
     );
+    captureAnalytics("build_voted", { action: next ? "added" : "removed", source: "list" });
   }
 
   return (

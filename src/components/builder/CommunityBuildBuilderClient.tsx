@@ -36,6 +36,7 @@ import { isCenterDemonWedgeItemId } from "@/lib/community-builds/center-wedges";
 import type { BuilderOptions } from "@/lib/community-builds/options";
 import type { CommunityBuildPayload } from "@/lib/community-builds/validation";
 import { BUILD_TAGS, type BuildTag } from "@/lib/community-builds/validation";
+import { captureAnalytics } from "@/lib/analytics";
 
 const STAT_IDS = ["ATK", "CritRate", "CritDmg", "SkillDmg", "ElementDmg", "HP", "DEF"] as const;
 
@@ -661,28 +662,43 @@ export function CommunityBuildBuilderClient({
     try {
       await navigator.clipboard.writeText(url);
       setMessage(t("shareLinkCopied"));
+      captureAnalytics("build_shared", { source: "builder", method: "copy" });
     } catch {
       setMessage(url);
     }
   }
 
-  function openShare(href: string) {
+  function openShare(href: string, method: "x" | "facebook" | "reddit") {
+    // Avec `noopener`, les navigateurs peuvent retourner `null` même lorsque
+    // la fenêtre est bien ouverte : la valeur de retour ne permet donc pas de
+    // distinguer un partage réussi d'un popup bloqué.
     window.open(href, "_blank", "noopener,noreferrer");
+    captureAnalytics("build_shared", { source: "builder", method });
   }
 
   function shareToX() {
     const url = shareUrlValue();
-    if (url) openShare(`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareMessage())}&url=${encodeURIComponent(url)}`);
+    if (url) {
+      openShare(
+        `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareMessage())}&url=${encodeURIComponent(url)}`,
+        "x",
+      );
+    }
   }
 
   function shareToFacebook() {
     const url = shareUrlValue();
-    if (url) openShare(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
+    if (url) openShare(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, "facebook");
   }
 
   function shareToReddit() {
     const url = shareUrlValue();
-    if (url) openShare(`https://www.reddit.com/submit?url=${encodeURIComponent(url)}&title=${encodeURIComponent(shareMessage())}`);
+    if (url) {
+      openShare(
+        `https://www.reddit.com/submit?url=${encodeURIComponent(url)}&title=${encodeURIComponent(shareMessage())}`,
+        "reddit",
+      );
+    }
   }
 
   async function shareNative() {
@@ -690,6 +706,7 @@ export function CommunityBuildBuilderClient({
     if (!url) return;
     try {
       await navigator.share({ title: shareMessage(), text: shareMessage(), url });
+      captureAnalytics("build_shared", { source: "builder", method: "native" });
     } catch {
       /* annulé par l'utilisateur */
     }
@@ -840,6 +857,7 @@ export function CommunityBuildBuilderClient({
     }
     setStatus("saved");
     setMessage(isUpdating ? t("buildUpdated") : t("buildPublished"));
+    if (!isUpdating) captureAnalytics("build_published", { source: "builder" });
   }
 
   function currentExport() {

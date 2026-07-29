@@ -168,6 +168,8 @@ bun run analyze      # Analyse du bundle (si configuré)
    ```bash
    # Créez un fichier .env.local
    NEXT_PUBLIC_SITE_URL=https://dna.ascencia.re
+   NEXT_PUBLIC_SARUTOBI_PROJECT_TOKEN=st_live_...
+   NEXT_PUBLIC_SARUTOBI_HOST=https://sarutobi.ascencia.re
    ```
 
 2. **Build de production**
@@ -215,14 +217,39 @@ Les contributions sont les bienvenues ! Voici comment participer :
 
 ## 📊 Métriques & Analytics
 
-Le projet utilise des métriques anonymes pour améliorer l'expérience utilisateur. Aucune donnée personnelle n'est collectée.
+DNA Interactive utilise l'instance auto-hébergée Sarutobi. Tant que les
+packages npm ne sont pas publiés, le client autonome est chargé depuis
+`https://sarutobi.ascencia.re/s.js` par
+`src/components/analytics/SarutobiAnalytics.tsx`.
+
+Le token `st_live_...` est une clé publique limitée aux domaines déclarés dans
+Sarutobi. Sans `NEXT_PUBLIC_SARUTOBI_PROJECT_TOKEN`, aucun script analytics
+n'est rendu et l'application continue de fonctionner normalement.
+
+La collecte automatique couvre les pages, parcours, sources, appareils, Web
+Vitals et erreurs JavaScript expurgées. Les événements métier actuellement
+instrumentés sont :
+
+- `build_published` ;
+- `build_shared` ;
+- `build_voted` ;
+- `code_copied` ;
+- `map_marker_opened`.
+
+Pour vérifier localement, définir temporairement
+`NEXT_PUBLIC_SARUTOBI_ENABLE_LOCAL=true` et
+`NEXT_PUBLIC_SARUTOBI_DEBUG=true`, puis contrôler qu'un POST vers
+`https://sarutobi.ascencia.re/api/collect` reçoit `202`. Le domaine local ou de
+preview doit être autorisé côté Sarutobi.
 
 ## 🔒 Sécurité & Confidentialité
 
-- **Aucune donnée utilisateur** stockée côté serveur
-- **Préférences** sauvegardées localement uniquement
-- **Cookies fonctionnels** uniquement (thème, préférences)
-- **Respect RGPD** et des normes de confidentialité
+- les valeurs de formulaires, mots de passe, emails, pseudos et contenus de
+  builds ne sont jamais envoyés à Sarutobi ;
+- un compte connecté est rapproché uniquement par son identifiant interne et
+  son rôle ;
+- la politique complète et localisée est disponible sur la page
+  **Confidentialité**.
 
 ## 📈 Roadmap
 

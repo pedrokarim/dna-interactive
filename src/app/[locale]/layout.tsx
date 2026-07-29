@@ -7,6 +7,7 @@ import { routing } from "@/i18n/routing";
 import { Providers } from "@/components/Providers";
 import StructuredData from "@/components/StructuredData";
 import { AppShell } from "@/components/site/AppShell";
+import { SarutobiAnalytics } from "@/components/analytics/SarutobiAnalytics";
 import { resolveShellBadges } from "@/lib/shell";
 import {
   SITE_CONFIG,
@@ -206,6 +207,7 @@ export default async function LocaleLayout({
       <body
         className={`${cinzel.variable} ${cormorant.variable} ${jost.variable} ${jetbrainsMono.variable} antialiased`}
       >
+        <SarutobiAnalytics />
         <NextIntlClientProvider messages={messages}>
           <Providers>
             <AppShell badges={resolveShellBadges(now)} copyrightYears={copyrightYears}>
