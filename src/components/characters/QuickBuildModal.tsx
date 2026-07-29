@@ -240,6 +240,8 @@ const WEDGE_DIMS: Record<WedgeScale, {
   badgeSize: string; badgePos: string;
   trackBoxSize: string; trackIconSize: string;
   gapSlots: string; gapRows: string; gapCols: string;
+  /** Libellé sous le slot : taille de police et hauteur réservée (2 lignes). */
+  nameSize: string; nameH: number;
 }> = {
   lg: {
     slotH: 108, slotW: 82, iconSize: "h-16 w-16",
@@ -247,6 +249,7 @@ const WEDGE_DIMS: Record<WedgeScale, {
     badgeSize: "h-4 w-4", badgePos: "top-1",
     trackBoxSize: "h-5 w-5", trackIconSize: "h-3.5 w-3.5",
     gapSlots: "gap-2", gapRows: "gap-3", gapCols: "gap-4",
+    nameSize: "text-[10px] leading-[1.15]", nameH: 24,
   },
   md: {
     slotH: 88, slotW: 66, iconSize: "h-[3.25rem] w-[3.25rem]",
@@ -254,6 +257,7 @@ const WEDGE_DIMS: Record<WedgeScale, {
     badgeSize: "h-3.5 w-3.5", badgePos: "top-0.5",
     trackBoxSize: "h-4 w-4", trackIconSize: "h-3 w-3",
     gapSlots: "gap-1.5", gapRows: "gap-2.5", gapCols: "gap-3",
+    nameSize: "text-[9px] leading-[1.15]", nameH: 22,
   },
   sm: {
     slotH: 72, slotW: 56, iconSize: "h-11 w-11",
@@ -261,6 +265,7 @@ const WEDGE_DIMS: Record<WedgeScale, {
     badgeSize: "h-3 w-3", badgePos: "top-0.5",
     trackBoxSize: "h-4 w-4", trackIconSize: "h-3 w-3",
     gapSlots: "gap-1.5", gapRows: "gap-2", gapCols: "gap-3",
+    nameSize: "text-[8px] leading-[1.15]", nameH: 20,
   },
 };
 
@@ -318,14 +323,39 @@ function WedgeSlot({
       )}
     </div>
   );
-  if (!slot.item) return inner;
+
+  // Le libellé vit hors du bloc clippé (le clipPath le rognerait) et n'affiche
+  // que la pièce : l'icône porte déjà la famille de Demon Wedge. Il reste aussi
+  // hors du CursorTooltip — celui-ci ne se déclenche qu'au survol du wedge.
+  //
+  // Les slots sont des parallélogrammes penchés : en bas, CLIP_LEFT couvre
+  // 0→80 % de la largeur (centre réel à 40 %) et CLIP_RIGHT 20→100 % (centre à
+  // 60 %). Un texte centré à 50 % paraît donc décalé vers l'intérieur ; on le
+  // ramène de 10 % vers le bord correspondant pour l'aligner sur la base du wedge.
+  const nameShift = side === "left" ? "-10%" : "10%";
   return (
-    <CursorTooltip
-      width={280}
-      content={<ItemTooltipBody item={slot.item} kindLabel={`Slot ${slot.position}`} />}
-    >
-      {inner}
-    </CursorTooltip>
+    <div className="flex shrink-0 flex-col items-center" style={{ width: d.slotW }}>
+      {slot.item ? (
+        <CursorTooltip
+          width={280}
+          content={<ItemTooltipBody item={slot.item} kindLabel={`Slot ${slot.position}`} />}
+        >
+          {inner}
+        </CursorTooltip>
+      ) : (
+        inner
+      )}
+      <p
+        className={`mt-1 line-clamp-2 w-full overflow-hidden text-center font-medium text-parch/90 ${d.nameSize}`}
+        style={{
+          height: d.nameH,
+          textShadow: "0 1px 3px rgba(0,0,0,0.8)",
+          transform: `translateX(${nameShift})`,
+        }}
+      >
+        {slot.item?.shortName ?? ""}
+      </p>
+    </div>
   );
 }
 
@@ -354,14 +384,28 @@ function WedgeCenter({
       {icon && <img src={icon} alt="" width={64} height={64} className={`${d.centerIcon} object-contain drop-shadow-lg`} />}
     </div>
   );
-  if (!item) return circle;
+
+  // Même règle que les slots : le libellé est affiché en permanence sous le
+  // wedge et reste hors du CursorTooltip.
   return (
-    <CursorTooltip
-      width={280}
-      content={<ItemTooltipBody item={item} kindLabel="Demon Wedge central" />}
-    >
-      {circle}
-    </CursorTooltip>
+    <div className="flex shrink-0 flex-col items-center" style={{ width: d.centerH }}>
+      {item ? (
+        <CursorTooltip
+          width={280}
+          content={<ItemTooltipBody item={item} kindLabel="Demon Wedge central" />}
+        >
+          {circle}
+        </CursorTooltip>
+      ) : (
+        circle
+      )}
+      <p
+        className={`mt-1 line-clamp-2 w-full overflow-hidden text-center font-medium text-parch/90 ${d.nameSize}`}
+        style={{ height: d.nameH, textShadow: "0 1px 3px rgba(0,0,0,0.8)" }}
+      >
+        {item?.shortName ?? ""}
+      </p>
+    </div>
   );
 }
 

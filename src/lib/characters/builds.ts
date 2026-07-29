@@ -87,6 +87,12 @@ export interface ResolvedItemRef {
   itemId: string;
   modId: number;
   name: string;
+  /**
+   * Nom de la pièce seule, sans la famille de Demon Wedge : « Ardeur » là où
+   * `name` vaut « Ardeur du Phénix ». Pour les affichages contraints (carte de
+   * build) où l'icône porte déjà l'identité de la famille.
+   */
+  shortName: string;
   description: string | null;
   icon: string;
   href: string;
@@ -217,16 +223,24 @@ export function resolveBuildItemRef(
   if (!item) return null;
 
   const translation = getItemTranslation(item, lang, FALLBACK_LANGS);
-  const name = translation.modName
+  // 11 mods sur 829 n'ont pas de libellé traduit et sortent la clé brute
+  // (« MOD_NAME_2801 ») : on retombe alors sur l'identifiant numérique.
+  const rawModName =
+    translation.modName && !/^MOD_(NAME|DES)_\d+$/.test(translation.modName)
+      ? translation.modName
+      : null;
+  const shortName = rawModName ?? `#${item.modId}`;
+  const name = rawModName
     ? translation.demonWedgeName
-      ? `${translation.modName} ${translation.demonWedgeName}`
-      : translation.modName
+      ? `${rawModName} ${translation.demonWedgeName}`
+      : rawModName
     : `#${item.modId}`;
 
   return {
     itemId: item.id,
     modId: item.modId,
     name,
+    shortName,
     description: formatEffectDescription(
       item,
       translation.passiveEffectsDescription ?? translation.description,
