@@ -538,7 +538,8 @@
     "gender": "Gender",
     "textKeysTitle": "Text keys",
     "technicalDataTitle": "Technical data",
-    "campKey": "Camp key"
+    "campKey": "Camp key",
+    "maxLevelShort": "Max Lv. {level}"
   },
   "items": {
     "libraryLabel": "Items Library",
@@ -919,7 +920,8 @@
     "pageLibraryDescription": "Browse builds shared by the community, open their full details, or use them as a starting point.",
     "pageCreateBuild": "Create a build",
     "reportReasonTooShort": "Please give a slightly more specific reason.",
-    "deleteFailed": "Couldn't delete."
+    "deleteFailed": "Couldn't delete.",
+    "chooseBuild": "{count} builds available"
   },
   "account": {
     "metaTitle": "Profile - DNA Interactive",

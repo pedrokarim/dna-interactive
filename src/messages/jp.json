@@ -538,7 +538,8 @@
     "gender": "性別",
     "textKeysTitle": "テキストキー",
     "technicalDataTitle": "技術データ",
-    "campKey": "陣営キー"
+    "campKey": "陣営キー",
+    "maxLevelShort": "最大Lv.{level}"
   },
   "items": {
     "libraryLabel": "アイテムライブラリ",
@@ -919,7 +920,8 @@
     "pageLibraryDescription": "コミュニティが共有したビルドを閲覧し、詳細を開いたり、出発点として使用したりできます。",
     "pageCreateBuild": "ビルドを作成",
     "reportReasonTooShort": "もう少し具体的な理由を入力してください。",
-    "deleteFailed": "削除できませんでした。"
+    "deleteFailed": "削除できませんでした。",
+    "chooseBuild": "{count}種のビルド"
   },
   "account": {
     "metaTitle": "プロフィール - DNA Interactive",

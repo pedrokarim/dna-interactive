@@ -538,7 +538,8 @@
     "gender": "성별",
     "textKeysTitle": "텍스트 키",
     "technicalDataTitle": "기술 데이터",
-    "campKey": "진영 키"
+    "campKey": "진영 키",
+    "maxLevelShort": "최대 Lv.{level}"
   },
   "items": {
     "libraryLabel": "아이템 라이브러리",
@@ -919,7 +920,8 @@
     "pageLibraryDescription": "커뮤니티가 공유한 빌드를 둘러보고 전체 정보를 확인하거나 시작점으로 사용하세요.",
     "pageCreateBuild": "빌드 만들기",
     "reportReasonTooShort": "조금 더 구체적인 사유를 입력해 주세요.",
-    "deleteFailed": "삭제할 수 없습니다."
+    "deleteFailed": "삭제할 수 없습니다.",
+    "chooseBuild": "{count}가지 빌드"
   },
   "account": {
     "metaTitle": "프로필 - DNA Interactive",

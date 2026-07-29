@@ -538,7 +538,8 @@
     "gender": "性別",
     "textKeysTitle": "文字鍵值",
     "technicalDataTitle": "技術資料",
-    "campKey": "陣營鍵值"
+    "campKey": "陣營鍵值",
+    "maxLevelShort": "最高 Lv.{level}"
   },
   "items": {
     "libraryLabel": "道具資料庫",
@@ -919,7 +920,8 @@
     "pageLibraryDescription": "瀏覽社群分享的配裝，開啟完整資訊，或以此作為起點。",
     "pageCreateBuild": "建立配裝",
     "reportReasonTooShort": "請提供更具體的理由。",
-    "deleteFailed": "無法刪除。"
+    "deleteFailed": "無法刪除。",
+    "chooseBuild": "{count} 種配裝"
   },
   "account": {
     "metaTitle": "個人檔案 - DNA Interactive",

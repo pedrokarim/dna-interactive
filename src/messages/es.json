@@ -538,7 +538,8 @@
     "gender": "Género",
     "textKeysTitle": "Claves de texto",
     "technicalDataTitle": "Datos técnicos",
-    "campKey": "Clave de bando"
+    "campKey": "Clave de bando",
+    "maxLevelShort": "Nv. máx. {level}"
   },
   "items": {
     "libraryLabel": "Biblioteca de Objetos",
@@ -919,7 +920,8 @@
     "pageLibraryDescription": "Explora los builds compartidos por la comunidad, abre su ficha completa o úsalos como punto de partida.",
     "pageCreateBuild": "Crear un build",
     "reportReasonTooShort": "Indica un motivo un poco más concreto.",
-    "deleteFailed": "No se ha podido eliminar."
+    "deleteFailed": "No se ha podido eliminar.",
+    "chooseBuild": "{count} builds disponibles"
   },
   "account": {
     "metaTitle": "Perfil - DNA Interactive",

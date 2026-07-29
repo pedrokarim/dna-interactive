@@ -538,7 +538,8 @@
     "gender": "Genre",
     "textKeysTitle": "Clés de texte",
     "technicalDataTitle": "Données techniques",
-    "campKey": "Clé de camp"
+    "campKey": "Clé de camp",
+    "maxLevelShort": "Niv. max {level}"
   },
   "items": {
     "libraryLabel": "Bibliotheque Items",
@@ -919,7 +920,8 @@
     "pageLibraryDescription": "Retrouve les builds proposés par la communauté, ouvre leur fiche complète ou utilise-les comme point de départ.",
     "pageCreateBuild": "Créer un build",
     "reportReasonTooShort": "Ajoute une raison un peu plus précise.",
-    "deleteFailed": "Suppression impossible."
+    "deleteFailed": "Suppression impossible.",
+    "chooseBuild": "{count} builds proposés"
   },
   "account": {
     "metaTitle": "Profil - DNA Interactive",

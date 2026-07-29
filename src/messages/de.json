@@ -538,7 +538,8 @@
     "gender": "Geschlecht",
     "textKeysTitle": "Textschlüssel",
     "technicalDataTitle": "Technische Daten",
-    "campKey": "Lager-Schlüssel"
+    "campKey": "Lager-Schlüssel",
+    "maxLevelShort": "Max. Stufe {level}"
   },
   "items": {
     "libraryLabel": "Gegenstände-Bibliothek",
@@ -919,7 +920,8 @@
     "pageLibraryDescription": "Durchstöbere von der Community geteilte Builds, öffne ihre vollständigen Details oder nutze sie als Ausgangspunkt.",
     "pageCreateBuild": "Build erstellen",
     "reportReasonTooShort": "Bitte gib einen etwas genaueren Grund an.",
-    "deleteFailed": "Löschen nicht möglich."
+    "deleteFailed": "Löschen nicht möglich.",
+    "chooseBuild": "{count} Builds verfügbar"
   },
   "account": {
     "metaTitle": "Profil - DNA Interactive",

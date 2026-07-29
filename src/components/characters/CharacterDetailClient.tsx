@@ -58,6 +58,7 @@ import type {
 } from "@/lib/characters/types";
 import { SKILL_LEVEL_MAX, SKILL_LEVEL_MIN } from "@/lib/characters/types";
 import { ELEMENTS, type ElementKey } from "@/components/dna/elements";
+import { cn } from "@/components/dna/cn";
 import { DnaPanel } from "@/components/dna/Panel";
 import { DnaSectionLabel } from "@/components/dna/SectionLabel";
 import { DnaStatRow } from "@/components/dna/StatRow";
@@ -1058,7 +1059,8 @@ function SkillsTabContent({
 }
 
 // ---------------------------------------------------------------------------
-// Quick build card accordion — collapsed by default, shareable via ?build=open.
+// Carte de build partageable — OUVERTE par defaut (c'est le premier element
+// de l'onglet Build), repliable et partageable via ?build=false.
 // If the URL lands with the param set to "open", we auto-scroll to it once.
 // ---------------------------------------------------------------------------
 
@@ -1078,17 +1080,29 @@ function QuickBuildAccordion({
   collapsible?: boolean;
 }) {
   const tcb = useTranslations("communityBuilds");
+  // Ouvert par DÉFAUT : la carte est ce qu'on vient voir en premier sur l'onglet
+  // Build. Fermée, on n'apercevait qu'une barre repliée et il fallait deviner
+  // qu'il y avait une carte derrière. `?build=false` permet de la replier et de
+  // partager ce choix.
   const [open, setOpen] = useQueryState(
     "build",
-    parseAsBoolean.withDefault(false).withOptions({ clearOnDefault: true }),
+    parseAsBoolean.withDefault(true).withOptions({ clearOnDefault: true }),
   );
   const isOpen = collapsible ? open : true;
   const cardRef = useRef<HTMLDivElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [downloading, setDownloading] = useState(false);
   const scrolledRef = useRef(false);
+  // Au premier rendu la carte est déjà ouverte : il ne faut PAS scroller dessus,
+  // sinon la page saute toute seule à l'arrivée. On ne scrolle que sur une
+  // ouverture déclenchée par l'utilisateur.
+  const mountedRef = useRef(false);
 
   useEffect(() => {
+    if (!mountedRef.current) {
+      mountedRef.current = true;
+      return;
+    }
     if (open && !scrolledRef.current && containerRef.current) {
       containerRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
       scrolledRef.current = true;
@@ -1787,37 +1801,8 @@ export function BuildTabContent({
 
   return (
     <div className="space-y-3 md:space-y-5">
-      {/* Tier « Officiel » — distingue le build curé des alternatives communauté. */}
-      {officialHeader ? (
-        <div className="flex items-center gap-2 border-l-2 border-gold/60 bg-gold/5 px-3 py-2">
-          <span className="inline-flex items-center rounded-sm border border-gold/50 bg-gold/15 px-2 py-0.5 font-caps text-[0.55rem] uppercase tracking-[0.16em] text-gold">
-            {tcb("officialTier")}
-          </span>
-          <span className="font-sans text-xs text-muted">{tcb("officialDesc")}</span>
-        </div>
-      ) : null}
-
-      {/* Build selector (if multiple) */}
-      {builds.length > 1 && (
-        <div className="flex flex-wrap gap-2">
-          {builds.map((b, i) => (
-            <button
-              key={i}
-              type="button"
-              onClick={() => setActiveBuildIndex(i)}
-              className={`px-4 py-2 text-sm font-medium transition-colors ${
-                i === activeBuildIndex
-                  ? "border border-gold/40 bg-gold/20 text-gold"
-                  : "border border-transparent text-muted hover:bg-panel/60 hover:text-parch"
-              }`}
-            >
-              <BuildLocalizedText texts={b.buildName} lang={selectedLanguage} />
-            </button>
-          ))}
-        </div>
-      )}
-
-      {/* Quick build card accordion — shareable via ?build=open */}
+      {/* La carte partageable EN PREMIER : c'est ce qu'on vient voir. Le choix
+          du build et le detail (armes, wedges, equipe...) suivent en dessous. */}
       {showQuickBuildCard ? (
         <QuickBuildAccordion
           character={character}
@@ -1825,6 +1810,40 @@ export function BuildTabContent({
           lang={selectedLanguage}
           collapsible={quickBuildCollapsible}
         />
+      ) : null}
+
+      {/* En-tête unique du build : le tier « Officiel » ET le choix du build.
+          Avant, c'étaient deux blocs empilés et le sélecteur était fait de
+          boutons sans bordure — invisible tant qu'on ne le survolait pas. On
+          regroupe, et on passe par DnaSegmented dont le cadre montre qu'il y a
+          bien plusieurs options. */}
+      {officialHeader || builds.length > 1 ? (
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-2 border-l-2 border-gold/60 bg-gold/5 px-3 py-2">
+          {officialHeader ? (
+            <span className="inline-flex items-center rounded-sm border border-gold/50 bg-gold/15 px-2 py-0.5 font-caps text-[0.55rem] uppercase tracking-[0.16em] text-gold">
+              {tcb("officialTier")}
+            </span>
+          ) : null}
+
+          {builds.length > 1 ? (
+            <>
+              <span className="font-caps text-[0.55rem] uppercase tracking-[0.16em] text-muted">
+                {tcb("chooseBuild", { count: builds.length })}
+              </span>
+              <DnaSegmented
+                ariaLabel={tcb("chooseBuild", { count: builds.length })}
+                value={String(activeBuildIndex)}
+                onChange={(v) => setActiveBuildIndex(Number(v))}
+                options={builds.map((b, i) => ({
+                  value: String(i),
+                  label: <BuildLocalizedText texts={b.buildName} lang={selectedLanguage} />,
+                }))}
+              />
+            </>
+          ) : officialHeader ? (
+            <span className="font-sans text-xs text-muted">{tcb("officialDesc")}</span>
+          ) : null}
+        </div>
       ) : null}
 
       {/* --- Weapons --- */}
@@ -2201,97 +2220,90 @@ export function BuildTabContent({
       )}
 
       {/* --- Skill priority --- */}
+      {/* Priorite de competences — le rang doit se lire d'un coup d'oeil.
+          Avant : une « vine » verticale decorative et des items decales, qui
+          donnait une ligne traversant les competences sans rien dire de l'ordre.
+          Maintenant : un numero de rang en gros, et une emphase decroissante
+          (liseré or + fond teinte sur le 1er, de plus en plus sobre ensuite). */}
       {hasSkills && (() => {
         const rgb = ELEMENT_RGB[characterElement] ?? ELEMENT_RGB.Water;
         const sorted = build.skillPriority.slice().sort((a, b) => b.priority - a.priority);
         return (
-          <section className="relative py-6">
-            <h2 className="mb-8 text-base md:text-lg font-semibold text-parch">{t('skillPriorityTitle')}</h2>
+          <section className="border border-line/25 bg-panel/85 p-3 backdrop-blur-sm md:p-5">
+            <h2 className="text-base font-semibold text-parch md:text-lg">{t('skillPriorityTitle')}</h2>
 
-            <div className="relative ml-4 md:ml-8">
-              {/* Vertical connecting vine */}
-              <div
-                className="absolute left-7 top-0 bottom-0 w-px"
-                style={{ background: `linear-gradient(to bottom, rgba(${rgb}, 0.4), rgba(${rgb}, 0.08) 80%, transparent)` }}
-              />
-
-              <div className="flex flex-col gap-10">
-                {sorted.map((s, i) => {
-                  const idx = s.skillIndex;
-                  const iconKey = idx === 1 ? "skill1" : idx === 2 ? "skill2" : idx === 3 ? "skill3" : null;
-                  const iconSrc = iconKey ? skillIcons?.[iconKey]?.publicPath : null;
-                  const isTop = i === 0;
-
-                  return (
-                    <div
-                      key={i}
-                      className="relative flex items-center gap-5"
-                      style={{ paddingLeft: `${i * 20}px` }}
+            <ol className="mt-4 flex flex-col gap-2">
+              {sorted.map((s, i) => {
+                const iconKey =
+                  s.skillIndex === 1 ? "skill1" : s.skillIndex === 2 ? "skill2" : s.skillIndex === 3 ? "skill3" : null;
+                const iconSrc = iconKey ? skillIcons?.[iconKey]?.publicPath : null;
+                const isTop = i === 0;
+                return (
+                  <li
+                    key={i}
+                    className={cn(
+                      "flex items-center gap-3 rounded-sm border-l-2 p-3 md:gap-4",
+                      isTop ? "border-l-gold bg-gold/8" : "border-l-line/30 bg-ink/30",
+                    )}
+                  >
+                    {/* le rang : seul repere d'ordre, en gros */}
+                    <span
+                      className={cn(
+                        "w-7 shrink-0 text-center font-display leading-none tabular-nums md:w-9",
+                        isTop
+                          ? "text-3xl text-gold-bright md:text-4xl"
+                          : i === 1
+                            ? "text-2xl text-parch/70 md:text-3xl"
+                            : "text-xl text-muted-2 md:text-2xl",
+                      )}
                     >
-                      {/* Floating circle */}
-                      <div
-                        className="relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-full"
-                        style={{
-                          border: `2px solid rgba(${rgb}, ${isTop ? 0.6 : 0.2})`,
-                          boxShadow: isTop ? `0 0 20px rgba(${rgb}, 0.25), inset 0 0 12px rgba(${rgb}, 0.1)` : "none",
-                          background: isTop
-                            ? `radial-gradient(circle at center, rgba(${rgb}, 0.12), rgba(15, 23, 42, 0.9))`
-                            : "rgba(15, 23, 42, 0.6)",
-                        }}
-                      >
-                        {iconSrc ? (
-                          <img
-                            src={iconSrc}
-                            alt=""
-                            width={32}
-                            height={32}
-                            className="h-8 w-8 object-contain drop-shadow-lg"
-                            style={isTop ? { filter: `drop-shadow(0 0 6px rgba(${rgb}, 0.5))` } : undefined}
-                          />
-                        ) : (
-                          <span className={`text-xl font-bold ${isTop ? "text-parch" : "text-muted-2"}`}>
-                            {i + 1}
-                          </span>
+                      {i + 1}
+                    </span>
+
+                    {/* icone de la competence, cerclee de la teinte d'element */}
+                    <span
+                      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full md:h-12 md:w-12"
+                      style={{
+                        border: `1px solid rgba(${rgb}, ${isTop ? 0.55 : 0.22})`,
+                        background: isTop
+                          ? `radial-gradient(circle at center, rgba(${rgb}, 0.14), rgba(8,8,9,0.85))`
+                          : "rgba(8,8,9,0.55)",
+                      }}
+                    >
+                      {iconSrc ? (
+                        <img src={iconSrc} alt="" width={28} height={28} className="h-7 w-7 object-contain" />
+                      ) : (
+                        <Sparkles className="h-4 w-4 text-muted-2" />
+                      )}
+                    </span>
+
+                    {/* nom, etoiles, note */}
+                    <span className="min-w-0 flex-1">
+                      <span
+                        className={cn(
+                          "block font-display leading-tight",
+                          isTop ? "text-base text-parch md:text-lg" : "text-sm text-parch/85",
                         )}
-
-                        {/* Priority rank badge */}
-                        <div
-                          className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full text-[10px] font-bold"
-                          style={{
-                            background: isTop ? `rgba(${rgb}, 0.8)` : "rgba(71, 85, 105, 0.8)",
-                            color: isTop ? "#0f172a" : "#cbd5e1",
-                          }}
-                        >
-                          {i + 1}
-                        </div>
-                      </div>
-
-                      {/* Skill info floating to the right */}
-                      <div className="min-w-0 flex-1">
-                        <p className={`font-medium ${isTop ? "text-base text-parch" : "text-sm text-parch/85"}`}>
-                          <BuildLocalizedText texts={s.skillName} lang={selectedLanguage} />
-                        </p>
-                        <div className="mt-1 flex flex-wrap items-center gap-2">
-                          <div className="flex gap-0.5">
-                            {Array.from({ length: 5 }, (_, j) => (
-                              <span
-                                key={j}
-                                className={`text-[10px] ${j < s.priority ? "text-gold" : "text-muted-2"}`}
-                              >
-                                ★
-                              </span>
-                            ))}
-                          </div>
-                          <p className="truncate text-xs text-muted-2">
-                            <BuildLocalizedText texts={s.note} lang={selectedLanguage} />
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
+                      >
+                        <BuildLocalizedText texts={s.skillName} lang={selectedLanguage} />
+                      </span>
+                      <span className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1">
+                        <span className="flex gap-0.5" aria-label={`${s.priority}/5`}>
+                          {Array.from({ length: 5 }, (_, j) => (
+                            <span key={j} className={cn("text-[10px]", j < s.priority ? "text-gold" : "text-muted-2/50")}>
+                              ★
+                            </span>
+                          ))}
+                        </span>
+                        <span className="min-w-0 truncate text-xs text-muted">
+                          <BuildLocalizedText texts={s.note} lang={selectedLanguage} />
+                        </span>
+                      </span>
+                    </span>
+                  </li>
+                );
+              })}
+            </ol>
           </section>
         );
       })()}
@@ -2365,6 +2377,18 @@ export default function CharacterDetailClient({
     () => getCharacterSkills(character.charId) ?? skillSet ?? null,
     [character.charId, skillSet],
   );
+  // Les 3 emplacements d'icones du personnage correspondent aux competences
+  // ACTIVES du kit, dans cet ordre. Aucun personnage ne porte de `Skill3` :
+  // la 3e est un `Passive`. On resout donc par ordre, pas par nom de type.
+  const MAIN_SKILL_TYPES = ["Skill1", "Skill2", "Skill3", "Passive", "ExtraPassive", "UltraPassive"] as const;
+  const mainSkills = useMemo(
+    () =>
+      MAIN_SKILL_TYPES.map((type) =>
+        activeSkillSet?.skills.find((sk) => sk.skillType === type),
+      ).filter((sk): sk is NonNullable<typeof sk> => Boolean(sk)),
+    [activeSkillSet],
+  );
+
 
   // Builds tagged with an element are shown only for that element; untagged
   // builds apply to every element (single-element characters).
@@ -3134,7 +3158,7 @@ export default function CharacterDetailClient({
                           : "border-white/10 bg-panel/50 text-muted"
                       }`}
                     >
-                      Nv. {lvl}
+                      {t("levelShort")} {lvl}
                     </span>
                     {i < character.ascensionLevels.length - 1 && (
                       <ChevronRight className="h-3 w-3 text-muted-2" />
@@ -3151,20 +3175,52 @@ export default function CharacterDetailClient({
                 <Sparkles className="h-4 w-4 text-gold/80" />
                 {t("tabSkills")}
               </h2>
-              <div className="mt-4 flex flex-wrap gap-4">
-                {([["skill1", "skillType1"], ["skill2", "skillType2"], ["skill3", "skillType3"]] as const).map(([key, labelKey]) => {
-                  const icon = character.skillIcons[key].publicPath;
-                  if (!icon) return null;
-                  return (
-                    <div key={key} className="flex flex-col items-center gap-2">
-                      <div className="flex h-16 w-16 items-center justify-center rounded-full border border-white/10 bg-panel/80">
-                        <img src={icon} alt={t(labelKey)} width={40} height={40} className="h-10 w-10 object-contain" />
+              {/* Avant, ce bloc n'affichait qu'une icône et un libellé generique
+                  (« Compétence 1/2/3 ») : aucune information exploitable. On
+                  résout le vrai nom et le début de la description depuis le kit,
+                  et on renvoie vers l'onglet Compétences pour le détail complet. */}
+              {/* AUCUN personnage n'a de `Skill3` dans son kit : la 3e icône
+                  correspond en réalité au `Passive`. On n'associe donc pas
+                  l'icône N au type `SkillN`, on prend les compétences du kit
+                  dans leur ordre d'affichage et on les apparie aux icônes. */}
+              <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                {([["skill1", "skillType1"], ["skill2", "skillType2"], ["skill3", "skillType3"]] as const).map(
+                  ([key, labelKey], slotIndex) => {
+                    const icon = character.skillIcons[key].publicPath;
+                    if (!icon) return null;
+                    const kit = mainSkills[slotIndex];
+                    const localized = kit ? getSkillLocalized(kit, selectedLanguage) : null;
+                    const name = localized?.name ?? t(labelKey);
+                    const desc = localized?.description ?? null;
+                    return (
+                      <div
+                        key={key}
+                        className="flex items-start gap-3 rounded-sm border border-line/20 bg-ink/30 p-3"
+                      >
+                        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/10 bg-panel/80">
+                          <img src={icon} alt={name} width={32} height={32} className="h-8 w-8 object-contain" />
+                        </div>
+                        <div className="min-w-0">
+                          <div className="font-caps text-[0.5rem] uppercase tracking-[0.16em] text-muted-2">
+                            {t(labelKey)}
+                          </div>
+                          <div className="truncate font-display text-sm text-parch">{name}</div>
+                          {desc ? (
+                            <p className="mt-1 line-clamp-2 text-[0.72rem] leading-snug text-parch/70">{desc}</p>
+                          ) : null}
+                        </div>
                       </div>
-                      <span className="text-xs text-muted">{t(labelKey)}</span>
-                    </div>
-                  );
-                })}
+                    );
+                  },
+                )}
               </div>
+              <button
+                type="button"
+                onClick={() => setActiveTab("skills")}
+                className="mt-3 inline-flex items-center gap-1 font-caps text-[0.58rem] uppercase tracking-[0.14em] text-gold transition-colors hover:text-gold-bright"
+              >
+                {t("tabSkills")} <ChevronRight className="h-3 w-3" />
+              </button>
             </div>
           )}
 
@@ -3194,7 +3250,7 @@ export default function CharacterDetailClient({
                             {cw.rarity}★
                           </span>
                           <span className="rounded-sm border border-white/10 px-2 py-0.5 text-parch/85">
-                            Nv. max 80
+                            {t("maxLevelShort", { level: character.maxLevel ?? 80 })}
                           </span>
                           <span className="rounded-sm border border-white/10 px-2 py-0.5 text-parch/85">
                             ID {cw.weaponId}
