@@ -27,6 +27,7 @@ import charXier from "./char-xier.json";
 // Protagonistes multi-éléments : chaque entrée de build porte un champ
 // `element` ("Dark", "Light"…) ; la fiche n'affiche que les builds de
 // l'élément actif (cf. activeBuilds dans CharacterDetailClient).
+import charEve from "./char-eve.json";
 import charProtagonistFemale from "./char-protagonist-female.json";
 import charProtagonistMale from "./char-protagonist-male.json";
 
@@ -61,6 +62,7 @@ export const allBuilds = [
   ...charKami,
   ...charFuluo,
   ...charXier,
+  ...charEve,
   ...charProtagonistFemale,
   ...charProtagonistMale,
 ];
