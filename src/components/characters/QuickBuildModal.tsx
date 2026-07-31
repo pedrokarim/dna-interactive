@@ -658,7 +658,7 @@ export function QuickBuildCard({
                       <Swords className="h-3.5 w-3.5" />
                       {t("weaponMelee")}
                     </p>
-                    <div className="space-y-1.5">
+                    <div className="flex flex-col gap-1.5">
                       {meleeList.map((w, i) => (
                         <WeaponCell key={`m-${i}`} weapon={w} size={meleeCellSize} kindLabel={t("weaponMelee")} />
                       ))}
@@ -670,11 +670,11 @@ export function QuickBuildCard({
                       style={{ color: accent, textShadow: "0 1px 3px rgba(0,0,0,0.6)" }}
                     >
                       <Target className="h-3.5 w-3.5" />
-                      Distance
+                      {t("weaponRanged")}
                     </p>
-                    <div className="space-y-1.5">
+                    <div className="flex flex-col gap-1.5">
                       {rangedList.map((w, i) => (
-                        <WeaponCell key={`r-${i}`} weapon={w} size={rangedCellSize} kindLabel="Distance" />
+                        <WeaponCell key={`r-${i}`} weapon={w} size={rangedCellSize} kindLabel={t("weaponRanged")} />
                       ))}
                     </div>
                   </div>
