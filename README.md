@@ -217,24 +217,43 @@ Les contributions sont les bienvenues ! Voici comment participer :
 
 ## 📊 Métriques & Analytics
 
-DNA Interactive utilise l'instance auto-hébergée Sarutobi. Tant que les
-packages npm ne sont pas publiés, le client autonome est chargé depuis
-`https://sarutobi.ascencia.re/s.js` par
-`src/components/analytics/SarutobiAnalytics.tsx`.
+DNA Interactive utilise l'instance auto-hébergée Sarutobi, via le paquet
+`@ascencia/sarutobi-react` épinglé dans `package.json`. Le site chargeait
+auparavant `https://sarutobi.ascencia.re/s.js` par une balise `<script>` — cette
+voie existe pour les sites sans bundler, et elle privait celui-ci de
+`environment` et de `beforeSend`, qui manquaient tous les deux.
 
-Le token `st_live_...` est une clé publique limitée aux domaines déclarés dans
-Sarutobi. Sans `NEXT_PUBLIC_SARUTOBI_PROJECT_TOKEN`, aucun script analytics
-n'est rendu et l'application continue de fonctionner normalement.
+L'initialisation vit dans `src/lib/analytics.ts` ; `SarutobiAnalytics.tsx` ne
+fait que l'appeler depuis la racine cliente.
+
+La clé `st_live_...` est publique et limitée aux domaines déclarés dans
+Sarutobi. Sans `NEXT_PUBLIC_SARUTOBI_PROJECT_TOKEN`, rien n'est initialisé,
+aucune requête n'est émise et l'application fonctionne normalement.
+
+Deux réglages méritent d'être connus :
+
+- **`/admin`, `/reset-password` et `/verify-email` ne sont jamais collectés**,
+  toutes locales confondues.
+- **Le préfixe de locale est retiré du chemin mesuré.** `localePrefix: 'always'`
+  faisait compter une même page sous sept chemins ; la langue voyage désormais
+  en contexte de lot, donc elle reste lisible sur tous les événements.
 
 La collecte automatique couvre les pages, parcours, sources, appareils, Web
-Vitals et erreurs JavaScript expurgées. Les événements métier actuellement
-instrumentés sont :
+Vitals et erreurs JavaScript expurgées. Les événements métier instrumentés :
 
-- `build_published` ;
-- `build_shared` ;
-- `build_voted` ;
-- `code_copied` ;
-- `map_marker_opened`.
+| Événement | Où |
+| --- | --- |
+| `build_started`, `build_published`, `build_publish_failed` | constructeur |
+| `build_shared`, `build_voted` | constructeur, fiche perso, hub, détail |
+| `favorite_toggled` | objets et personnages |
+| `list_filtered` | grilles objets et personnages |
+| `signup_completed`, `signup_failed` | inscription |
+| `login_completed`, `login_failed` | connexion |
+| `code_copied` | codes |
+| `map_marker_opened` | carte |
+
+Aucun terme de recherche n'est transmis : `list_filtered` porte le fait qu'une
+recherche a eu lieu et le nombre de résultats, pas ce qui a été tapé.
 
 Pour vérifier localement, définir temporairement
 `NEXT_PUBLIC_SARUTOBI_ENABLE_LOCAL=true` et

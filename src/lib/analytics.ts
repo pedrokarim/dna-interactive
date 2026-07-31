@@ -27,14 +27,21 @@ export type AnalyticsPrimitive = string | number | boolean | null;
 export type AnalyticsProperties = Record<string, AnalyticsPrimitive>;
 
 /**
- * Clé publique du site, sous le nom que l'écran d'installation donne à copier.
+ * Clé publique du site.
  *
- * `NEXT_PUBLIC_SARUTOBI_PROJECT_TOKEN` reste lue : l'ancien nom est encore posé
- * sur l'environnement déployé, et une variable renommée ne doit pas couper la
- * mesure entre le commit et la mise à jour de la configuration.
+ * **`NEXT_PUBLIC_SARUTOBI_PROJECT_TOKEN` est le nom en service** : c'est lui
+ * qui est posé sur Vercel, et c'est donc lui que documentent `env.local.example`
+ * et le README. `NEXT_PUBLIC_SARUTOBI_SITE_ID` est accepté parce que c'est le
+ * nom que l'écran d'installation de Sarutobi donne à copier — quelqu'un qui
+ * repart de cet écran ne doit pas tomber sur une variable ignorée.
+ *
+ * Les deux désignent la même valeur ; le second gagne quand les deux sont
+ * posés. Rien à migrer tant que le déploiement porte le premier.
  *
  * Next.js remplace `process.env.NEXT_PUBLIC_*` littéralement à la compilation :
- * l'accès s'écrit en toutes lettres, un accès calculé ne serait pas substitué.
+ * l'accès s'écrit en toutes lettres, un accès calculé ne serait pas substitué,
+ * et une variable absente devient `undefined` — ce qui fait bien tomber le `||`
+ * sur la branche suivante.
  */
 function siteId(): string | undefined {
   return (
