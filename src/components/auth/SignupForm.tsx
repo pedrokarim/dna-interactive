@@ -6,6 +6,8 @@ import { Loader2, Lock, Mail, UserRound } from "lucide-react";
 import { DnaButton } from "@/components/dna";
 import { AuthDivider, AuthField, AuthMessage, OAuthButtons } from "./AuthPrimitives";
 
+import { captureAnalytics } from "@/lib/analytics";
+
 export function SignupForm({ googleEnabled, callbackUrl }: { googleEnabled: boolean; callbackUrl: string }) {
   const t = useTranslations("auth");
   const locale = useLocale();
@@ -44,9 +46,14 @@ export function SignupForm({ googleEnabled, callbackUrl }: { googleEnabled: bool
     const data = await res.json().catch(() => ({}));
     setBusy(false);
     if (!res.ok) {
+      // L'échec compte autant que la réussite : c'est lui qui dit si le
+      // formulaire bloque les gens. Le motif vient du serveur et fait partie
+      // d'un ensemble fermé ; ni l'email ni le mot de passe ne sortent d'ici.
+      captureAnalytics("signup_failed", { reason: typeof data.error === "string" ? data.error : "unknown" });
       setError(data.error ?? t("genericError"));
       return;
     }
+    captureAnalytics("signup_completed", { method: "credentials" });
     setDone(true);
   }
 

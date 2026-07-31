@@ -33,6 +33,8 @@ import { DnaCornerBrackets } from "@/components/dna/CornerBrackets";
 import { DnaItemIcon, ITEM_FALLBACK_ICON } from "@/components/dna/ItemIcon";
 import { useDialogA11y } from "@/components/dna/useDialogA11y";
 
+import { useFilterAnalytics } from "@/lib/use-filter-analytics";
+
 type ArchiveFilter = "all" | "withArchive" | "withoutArchive";
 type NewFilter = "all" | "newOnly";
 type CalamityFilter = "all" | "calamityOnly";
@@ -558,6 +560,21 @@ export default function ItemsGridClient({
 
   const unselectedLanguages = category.availableLanguages.filter(
     (code) => !selectedLanguages.includes(code),
+  );
+
+  // Comme pour les personnages : le terme saisi reste dans le navigateur.
+  useFilterAnalytics(
+    "items",
+    {
+      search: search.trim().length > 0,
+      rarity: rarityFilter,
+      polarity: polarityFilter,
+      archive: archiveFilter,
+      new: newFilter,
+      calamity: calamityFilter,
+      sort: sortMode,
+    },
+    filteredItems.length,
   );
 
   const totalPages = Math.max(1, Math.ceil(filteredItems.length / pageSize));

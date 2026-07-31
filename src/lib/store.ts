@@ -1,6 +1,8 @@
 import { atom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
 
+import { captureAnalytics } from "@/lib/analytics";
+
 // Atome de stockage pour les marqueurs sous forme de tableau
 const markedMarkersStorageAtom = atomWithStorage<string[]>(
   "marked-markers",
@@ -231,19 +233,33 @@ export const itemsFavoritesAtom = atom(
   }
 );
 
+/**
+ * Mesuré ici et non sur les quatre boutons qui l'appellent : la grille, la
+ * fiche et les deux vues compactes basculent le même favori, et quatre points
+ * d'appel sont quatre occasions d'en oublier un au prochain écran.
+ *
+ * `itemKey` est un identifiant de donnée de jeu, pas une saisie du visiteur.
+ */
 export const toggleItemFavoriteAtom = atom(
   null,
   (get, set, itemKey: string) => {
     const currentFavorites = get(itemsFavoritesAtom);
     const nextFavorites = new Set(currentFavorites);
+    const retire = nextFavorites.has(itemKey);
 
-    if (nextFavorites.has(itemKey)) {
+    if (retire) {
       nextFavorites.delete(itemKey);
     } else {
       nextFavorites.add(itemKey);
     }
 
     set(itemsFavoritesAtom, nextFavorites);
+    captureAnalytics("favorite_toggled", {
+      kind: "item",
+      action: retire ? "removed" : "added",
+      key: itemKey,
+      total: nextFavorites.size,
+    });
   }
 );
 
@@ -294,14 +310,21 @@ export const toggleCharacterFavoriteAtom = atom(
   (get, set, characterKey: string) => {
     const currentFavorites = get(charactersFavoritesAtom);
     const nextFavorites = new Set(currentFavorites);
+    const retire = nextFavorites.has(characterKey);
 
-    if (nextFavorites.has(characterKey)) {
+    if (retire) {
       nextFavorites.delete(characterKey);
     } else {
       nextFavorites.add(characterKey);
     }
 
     set(charactersFavoritesAtom, nextFavorites);
+    captureAnalytics("favorite_toggled", {
+      kind: "character",
+      action: retire ? "removed" : "added",
+      key: characterKey,
+      total: nextFavorites.size,
+    });
   },
 );
 

@@ -5,6 +5,7 @@
     "": {
       "name": "dna-test",
       "dependencies": {
+        "@ascencia/sarutobi-react": "^0.1.0-rc.4",
         "@auth/drizzle-adapter": "^1.11.2",
         "@react-email/components": "^1.0.12",
         "@react-email/render": "^2.1.0",
@@ -63,6 +64,10 @@
     "@adobe/css-tools": ["@adobe/css-tools@4.5.0", "", {}, "sha512-6OzddxPio9UiWTCemp4N8cYLV2ZN1ncRnV1cVGtve7dhPOtRkleRyx32GQCYSwDYgaHU3USMm84tNsvKzRCa1Q=="],
 
     "@alloc/quick-lru": ["@alloc/quick-lru@5.2.0", "", {}, "sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw=="],
+
+    "@ascencia/sarutobi-js": ["@ascencia/sarutobi-js@0.1.0-rc.4", "", {}, "sha512-p4d+QR2VHJ8UA4LJBOwEqMKtp69C5yLXoh61U/tqCRwRwVzvfkLN7wIfwnFlpanxU7HRaFHkR8JXXKlQKZVqHg=="],
+
+    "@ascencia/sarutobi-react": ["@ascencia/sarutobi-react@0.1.0-rc.4", "", { "dependencies": { "@ascencia/sarutobi-js": "0.1.0-rc.4" }, "peerDependencies": { "react": "^18 || ^19" } }, "sha512-nhBEb5Do6mSKYttODPGsR5e+HMlC5OtMLgHP04820CfSZKl3r1aHvjWlKrRK1s7iiC4Mu84IXpyuMfr+0u2pTw=="],
 
     "@auth/core": ["@auth/core@0.41.2", "", { "dependencies": { "@panva/hkdf": "^1.2.1", "jose": "^6.0.6", "oauth4webapi": "^3.3.0", "preact": "10.24.3", "preact-render-to-string": "6.5.11" }, "peerDependencies": { "@simplewebauthn/browser": "^9.0.1", "@simplewebauthn/server": "^9.0.2", "nodemailer": "^7.0.7" }, "optionalPeers": ["@simplewebauthn/browser", "@simplewebauthn/server", "nodemailer"] }, "sha512-Hx5MNBxN2fJTbJKGUKAA0wca43D0Akl3TvufY54Gn8lop7F+34vU1zA1pn0vQfIoVuLIrpfc2nkyjwIaPJMW7w=="],
 

@@ -207,8 +207,10 @@ export default async function LocaleLayout({
       <body
         className={`${cinzel.variable} ${cormorant.variable} ${jost.variable} ${jetbrainsMono.variable} antialiased`}
       >
-        <SarutobiAnalytics />
         <NextIntlClientProvider messages={messages}>
+          {/* Sous le provider intl : la mesure lit la locale courante pour la
+              poser en contexte de lot, et `useLocale` n'existe pas au-dessus. */}
+          <SarutobiAnalytics />
           <Providers>
             <AppShell badges={resolveShellBadges(now)} copyrightYears={copyrightYears}>
               {children}

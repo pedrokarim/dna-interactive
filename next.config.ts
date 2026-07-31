@@ -41,7 +41,10 @@ const nextConfig: NextConfig = {
     // Next injecte des scripts/styles inline (upgrade nonce-based = suivi).
     const cspReportOnly = [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com https://sarutobi.ascencia.re",
+      // `sarutobi.ascencia.re` retiré de `script-src` : le SDK est passé du
+      // `<script src>` distant au paquet npm, il est servi par ce site.
+      // `connect-src` le garde — c'est là que partent les événements.
+      "script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com",
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: blob: https:",
       "font-src 'self' data:",

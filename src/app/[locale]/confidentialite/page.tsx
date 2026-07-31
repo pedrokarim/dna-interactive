@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { DnaPanel, DnaSectionLabel } from "@/components/dna";
+import { AnalyticsOptOut } from "@/components/analytics/AnalyticsOptOut";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("privacy");
@@ -37,6 +38,12 @@ export default async function ConfidentialitePage() {
           <DnaPanel className="p-5">
             <DnaSectionLabel>{t("analyticsTitle")}</DnaSectionLabel>
             <p className="mt-3 font-sans text-sm leading-relaxed text-parch/85">{t("analyticsText")}</p>
+          </DnaPanel>
+
+          {/* Juste après la description de la mesure : c'est là qu'on vient de
+              lire à quoi on consent, donc c'est là qu'on cherche à s'y opposer. */}
+          <DnaPanel className="p-5">
+            <AnalyticsOptOut />
           </DnaPanel>
 
           <DnaPanel className="p-5">

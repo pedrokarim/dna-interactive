@@ -1,27 +1,32 @@
 "use client";
 
-import Script from "next/script";
+import { useEffect } from "react";
+import { useLocale } from "next-intl";
 
-import { activateSarutobi } from "@/lib/analytics";
+import { demarrerAnalytics, suivreLocale } from "@/lib/analytics";
 
-const projectToken = process.env.NEXT_PUBLIC_SARUTOBI_PROJECT_TOKEN?.trim();
-const host = (process.env.NEXT_PUBLIC_SARUTOBI_HOST?.trim() || "https://sarutobi.ascencia.re").replace(/\/+$/, "");
-const enableLocal = process.env.NEXT_PUBLIC_SARUTOBI_ENABLE_LOCAL === "true";
-const debug = process.env.NEXT_PUBLIC_SARUTOBI_DEBUG === "true";
-
+/**
+ * Démarre la mesure d'audience.
+ *
+ * Ne rend rien. Ce composant posait auparavant une balise `<script>` vers
+ * `/s.js` ; le SDK est maintenant dans le bundle et s'initialise ici — voir
+ * `@/lib/analytics` pour ce que la bascule a débloqué.
+ *
+ * `demarrerAnalytics` se garde elle-même contre un second appel, ce qui rend le
+ * composant sûr sous le double montage du mode strict.
+ */
 export function SarutobiAnalytics() {
-  if (!projectToken) return null;
+  const locale = useLocale();
 
-  return (
-    <Script
-      id="sarutobi-analytics"
-      src={`${host}/s.js`}
-      strategy="afterInteractive"
-      data-site={projectToken}
-      data-host={host}
-      data-enabled={enableLocal ? "true" : undefined}
-      data-debug={debug ? "true" : undefined}
-      onReady={activateSarutobi}
-    />
-  );
+  useEffect(() => {
+    demarrerAnalytics(locale);
+  }, [locale]);
+
+  // Séparé de l'initialisation : changer de langue en cours de visite ne
+  // réinitialise pas le SDK, ça ne fait que déplacer le contexte du lot.
+  useEffect(() => {
+    suivreLocale(locale);
+  }, [locale]);
+
+  return null;
 }

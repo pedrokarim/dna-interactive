@@ -41,6 +41,8 @@ import { cn } from "@/components/dna/cn";
 import { isCharacterRecent, newCharacterRank } from "@/lib/characters/new-releases";
 import type { ElementKey } from "@/components/dna/elements";
 
+import { useFilterAnalytics } from "@/lib/use-filter-analytics";
+
 type SortMode = "default" | "name" | "element" | "rarity";
 const SORT_MODE_VALUES = ["default", "name", "element", "rarity"] as const;
 const PAGE_SIZE_VALUES = [12, 24, 48] as const;
@@ -297,6 +299,19 @@ export default function CharactersGridClient({
 
     return filtered;
   }, [search, elementFilter, weaponFilter, campFilter, sortMode, searchable, gameLang, locale]);
+
+  // Le terme cherché ne part pas : seulement le fait qu'il y en ait un.
+  useFilterAnalytics(
+    "characters",
+    {
+      search: search.trim().length > 0,
+      element: elementFilter,
+      weapon: weaponFilter,
+      camp: campFilter,
+      sort: sortMode,
+    },
+    filteredCharacters.length,
+  );
 
   const totalPages = Math.max(1, Math.ceil(filteredCharacters.length / pageSize));
   const safeCurrentPage = Math.min(currentPage, totalPages);

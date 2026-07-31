@@ -278,11 +278,23 @@ export function CommunityBuildBuilderClient({
     [options.mods],
   );
 
+  /**
+   * Choisir un personnage est le premier geste réel du constructeur : avant
+   * lui, la page est ouverte mais rien n'est commencé.
+   *
+   * Sans ce repère, `build_published` est un nombre sans dénominateur — sur
+   * sept jours, treize visites du constructeur et aucune publication, sans
+   * moyen de dire si personne n'essaie ou si tout le monde abandonne en route.
+   */
   function selectCharacter(nextCharacterId: string) {
     const nextCharacter = options.characters.find((character) => character.id === nextCharacterId);
     setEditingBuildId(null);
     setCharacterId(nextCharacterId);
     setElement(nextCharacter?.elements[0]?.key ?? null);
+    captureAnalytics("build_started", {
+      character: nextCharacterId,
+      element: nextCharacter?.elements[0]?.key ?? null,
+    });
   }
 
   useEffect(() => {
@@ -845,6 +857,13 @@ export function CommunityBuildBuilderClient({
     setPublishing(false);
 
     if (!response.ok) {
+      // Une publication refusée est la fin la plus coûteuse du parcours : tout
+      // le travail est fait et rien n'est enregistré. Le motif vient du serveur
+      // et n'est pas du texte saisi.
+      captureAnalytics("build_publish_failed", {
+        reason: typeof data.error === "string" ? data.error : "unknown",
+        updating: isUpdating,
+      });
       setMessage(data.error ?? t("publishFailed"));
       return;
     }

@@ -8,6 +8,8 @@ import { Loader2, Lock, Mail } from "lucide-react";
 import { DnaButton } from "@/components/dna";
 import { AuthDivider, AuthField, AuthMessage, OAuthButtons } from "./AuthPrimitives";
 
+import { captureAnalytics } from "@/lib/analytics";
+
 export function LoginForm({ googleEnabled, callbackUrl }: { googleEnabled: boolean; callbackUrl: string }) {
   const t = useTranslations("auth");
   const locale = useLocale();
@@ -36,6 +38,9 @@ export function LoginForm({ googleEnabled, callbackUrl }: { googleEnabled: boole
         .then((r) => r.json())
         .catch(() => ({ needsVerification: false }));
       setBusy(false);
+      captureAnalytics("login_failed", {
+        reason: status?.needsVerification ? "unverified" : "bad_credentials",
+      });
       if (status?.needsVerification) {
         setNeedsVerify(true);
         setError(t("loginErrorUnverified"));
@@ -44,6 +49,9 @@ export function LoginForm({ googleEnabled, callbackUrl }: { googleEnabled: boole
       }
       return;
     }
+    // Avant la navigation dure : `window.location.assign` quitte la page, et
+    // le SDK vide sa file au `pagehide`, donc l'événement part quand même.
+    captureAnalytics("login_completed", { method: "credentials" });
     window.location.assign(callbackUrl);
   }
 
