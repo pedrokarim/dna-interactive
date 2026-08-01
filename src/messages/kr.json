@@ -317,6 +317,43 @@
       "enhancement": "개선"
     }
   },
+  "otherProjects": {
+    "title": "다른 프로젝트",
+    "subtitle": "{siteName}는 더 큰 프로젝트 모음의 일부입니다. 저희가 만들고 있는 다른 서비스를 소개합니다.",
+    "discover": "둘러보기",
+    "new": "신규",
+    "hubLink": "{hubName}에서 모든 프로젝트 보기",
+    "items": {
+      "sarutobi": {
+        "description": "셀프 호스팅 제품 분석 도구. 이벤트, 퍼널, Web Vitals, 오류를 데이터 주권을 지키며 측정합니다.",
+        "tag": "분석"
+      },
+      "watchme": {
+        "description": "나만의 영화 서재. 영화와 드라마를 기록하고 평가하며 공유하고, 랭킹과 에피소드 캘린더, 토론까지 즐기세요.",
+        "tag": "영화·드라마"
+      },
+      "mcinfo": {
+        "description": "마인크래프트 인텔리전스 플랫폼. 실시간 서버 상태, 3D 스킨 뷰어, 플레이어 통계, 공개 API를 제공합니다.",
+        "tag": "마인크래프트"
+      },
+      "cardmyanime": {
+        "description": "좋아하는 애니 플랫폼용 세련된 동적 프로필 카드를 만들어 보세요. 랭킹과 상세 통계를 함께 제공합니다.",
+        "tag": "애니메이션"
+      },
+      "just-tools": {
+        "description": "무료 개발자 도구 모음. Base64 변환, 코드 포매터, 팔레트 생성기, JSON 검증기 등 다양한 도구를 갖췄습니다.",
+        "tag": "개발 도구"
+      },
+      "sharex-manager": {
+        "description": "ShareX 업로드를 쉽고 안전하게 관리하세요. 기록, 갤러리, 통계, 부가 도구를 제공합니다.",
+        "tag": "유틸리티"
+      },
+      "portfolio": {
+        "description": "개인 포트폴리오. 웹 개발 프로젝트와 역량, 결과물을 소개합니다.",
+        "tag": "포트폴리오"
+      }
+    }
+  },
   "about": {
     "title": "{siteName} 소개",
     "mission": "우리의 미션: {gameName} 탐험을 더 쉽게",

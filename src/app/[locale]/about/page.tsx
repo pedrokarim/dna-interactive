@@ -11,6 +11,7 @@ import { generatePageMetadata, pageMetadata } from "@/lib/metadata";
 import { DnaPanel } from "@/components/dna/Panel";
 import { DnaDivider } from "@/components/dna/Divider";
 import { DnaCornerBrackets } from "@/components/dna/CornerBrackets";
+import { OtherProjects } from "@/components/OtherProjects";
 
 export async function generateMetadata(
   { params }: { params: Promise<{ locale: string }> },
@@ -218,6 +219,10 @@ export default async function AboutPage() {
               </Link>
             </div>
           </div>
+
+          {/* Promotion croisée — en dernier, après l'appel à l'action, pour ne
+              pas passer devant Discord/Contact qui restent l'action première. */}
+          <OtherProjects />
         </div>
       </div>
     </div>

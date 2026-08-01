@@ -317,6 +317,43 @@
       "enhancement": "Amélioration"
     }
   },
+  "otherProjects": {
+    "title": "Nos autres projets",
+    "subtitle": "{siteName} fait partie d'un ensemble plus large. Voici le reste de ce que nous construisons.",
+    "discover": "Découvrir",
+    "new": "Nouveau",
+    "hubLink": "Tous nos projets sur {hubName}",
+    "items": {
+      "sarutobi": {
+        "description": "Product Analytics auto-hébergé : événements, funnels, Web Vitals et erreurs, avec vos données qui restent chez vous.",
+        "tag": "Analytics"
+      },
+      "watchme": {
+        "description": "Ta cinémathèque personnelle : suis, note et partage tes films et séries, avec classements, calendrier des épisodes et discussions.",
+        "tag": "Films & séries"
+      },
+      "mcinfo": {
+        "description": "Plateforme Minecraft Intelligence : statut des serveurs en temps réel, viewer de skins 3D, statistiques joueurs et API ouverte.",
+        "tag": "Minecraft"
+      },
+      "cardmyanime": {
+        "description": "Créez des cartes de profil dynamiques et élégantes pour vos plateformes d'anime préférées, avec classements et statistiques détaillées.",
+        "tag": "Anime"
+      },
+      "just-tools": {
+        "description": "Suite d'outils de développement gratuits : convertisseur Base64, formateur de code, générateur de palette, validateur JSON et bien plus.",
+        "tag": "Outils dev"
+      },
+      "sharex-manager": {
+        "description": "Gérez vos uploads ShareX facilement et en toute sécurité : historique, galerie, statistiques et outils bonus.",
+        "tag": "Utilitaire"
+      },
+      "portfolio": {
+        "description": "Portfolio personnel : projets, compétences et réalisations en développement web.",
+        "tag": "Portfolio"
+      }
+    }
+  },
   "about": {
     "title": "À propos de {siteName}",
     "mission": "Notre mission : faciliter l'exploration de {gameName}",

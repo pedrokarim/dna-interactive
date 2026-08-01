@@ -317,6 +317,43 @@
       "enhancement": "Enhancement"
     }
   },
+  "otherProjects": {
+    "title": "Our other projects",
+    "subtitle": "{siteName} is part of a bigger picture. Here's the rest of what we build.",
+    "discover": "Discover",
+    "new": "New",
+    "hubLink": "All our projects on {hubName}",
+    "items": {
+      "sarutobi": {
+        "description": "Self-hosted product analytics: events, funnels, Web Vitals and errors, with your data staying yours.",
+        "tag": "Analytics"
+      },
+      "watchme": {
+        "description": "Your personal film library: track, rate and share your movies and shows, with rankings, an episode calendar and discussions.",
+        "tag": "Film & TV"
+      },
+      "mcinfo": {
+        "description": "Minecraft intelligence platform: real-time server status, 3D skin viewer, player stats and an open API.",
+        "tag": "Minecraft"
+      },
+      "cardmyanime": {
+        "description": "Create sleek, dynamic profile cards for your favourite anime platforms, with rankings and detailed stats.",
+        "tag": "Anime"
+      },
+      "just-tools": {
+        "description": "A free developer toolbox: Base64 converter, code formatter, palette generator, JSON validator and much more.",
+        "tag": "Dev tools"
+      },
+      "sharex-manager": {
+        "description": "Manage your ShareX uploads easily and securely: history, gallery, stats and bonus tools.",
+        "tag": "Utility"
+      },
+      "portfolio": {
+        "description": "A personal portfolio: projects, skills and work in web development.",
+        "tag": "Portfolio"
+      }
+    }
+  },
   "about": {
     "title": "About {siteName}",
     "mission": "Our mission: make exploring {gameName} easier",

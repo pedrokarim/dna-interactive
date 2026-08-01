@@ -317,6 +317,43 @@
       "enhancement": "改善"
     }
   },
+  "otherProjects": {
+    "title": "その他のプロジェクト",
+    "subtitle": "{siteName} はより大きなプロジェクト群の一部です。私たちが手がけている他のサービスをご紹介します。",
+    "discover": "見てみる",
+    "new": "新着",
+    "hubLink": "{hubName} ですべてのプロジェクトを見る",
+    "items": {
+      "sarutobi": {
+        "description": "セルフホスト型のプロダクト分析。イベント、ファネル、Web Vitals、エラーを、データを手元に置いたまま計測できます。",
+        "tag": "分析"
+      },
+      "watchme": {
+        "description": "あなただけのシネマライブラリ。映画やドラマを記録・評価・共有でき、ランキングや放送カレンダー、感想の交換も。",
+        "tag": "映画・ドラマ"
+      },
+      "mcinfo": {
+        "description": "Minecraft インテリジェンス基盤。サーバー状況のリアルタイム表示、3Dスキンビューア、プレイヤー統計、オープンAPI。",
+        "tag": "Minecraft"
+      },
+      "cardmyanime": {
+        "description": "お気に入りのアニメサービス向けに、洗練された動的プロフィールカードを作成。ランキングや詳細な統計つき。",
+        "tag": "アニメ"
+      },
+      "just-tools": {
+        "description": "無料の開発者ツール集。Base64変換、コード整形、カラーパレット生成、JSON検証など多数を収録。",
+        "tag": "開発ツール"
+      },
+      "sharex-manager": {
+        "description": "ShareX のアップロードを手軽かつ安全に管理。履歴、ギャラリー、統計、便利ツールを備えています。",
+        "tag": "ユーティリティ"
+      },
+      "portfolio": {
+        "description": "個人ポートフォリオ。ウェブ開発のプロジェクト、スキル、実績を紹介しています。",
+        "tag": "ポートフォリオ"
+      }
+    }
+  },
   "about": {
     "title": "{siteName}について",
     "mission": "私たちのミッション：{gameName}の探索をもっと簡単に",
