@@ -1,21 +1,10 @@
 import { computeRotationMeta } from "./meta";
-import { getLatestRotation, getRotationMeta } from "./repository";
-import {
-  CATEGORIES,
-  REGIONS,
-  type Category,
-  type RotationMeta,
-  type RotationState,
-} from "./types";
+import { emptyRegions, getLatestRotation, getRotationMeta } from "./repository";
+import { type RotationMeta, type RotationState } from "./types";
 
 /** État vide (structure complète, objectifs vides) — avant toute donnée en base. */
 function emptyState(): RotationState {
-  const regions = {} as RotationState["regions"];
-  for (const region of REGIONS) {
-    regions[region] = {} as Record<Category, string[]>;
-    for (const category of CATEGORIES) regions[region][category] = [];
-  }
-  return { contentHash: "", updatedAt: "", regions };
+  return { contentHash: "", updatedAt: "", regions: emptyRegions() };
 }
 
 /**

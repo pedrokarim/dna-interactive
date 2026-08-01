@@ -106,7 +106,7 @@ export function RegionCard({
   locale,
 }: {
   region: Region;
-  data: Record<Category, string[]>;
+  data: Record<Category, string[]> | undefined;
   locale: string;
 }) {
   const t = useTranslations("commissions");
@@ -115,14 +115,17 @@ export function RegionCard({
   // source, qui contient un message d'erreur quand le bot échoue à lire une
   // région. Si rien de valide n'arrive pour toute la région, on affiche un état
   // « indisponible » plutôt que de rendre le texte d'erreur comme un objectif.
+  // `data` peut être absent malgré le typage : l'état vient d'une réponse
+  // réseau, et un rendu ne doit pas planter parce qu'une région y manque.
+  const src = data ?? ({} as Partial<Record<Category, string[]>>);
   const known: Record<Category, string[]> = {} as Record<Category, string[]>;
   let hasAnyKnown = false;
   for (const cat of CATEGORIES) {
-    const filtered = (data[cat] ?? []).filter(isKnownObjective);
+    const filtered = (src[cat] ?? []).filter(isKnownObjective);
     known[cat] = filtered;
     if (filtered.length > 0) hasAnyKnown = true;
   }
-  const hasRawEntries = CATEGORIES.some((cat) => (data[cat] ?? []).length > 0);
+  const hasRawEntries = CATEGORIES.some((cat) => (src[cat] ?? []).length > 0);
   const unavailable = !hasAnyKnown && hasRawEntries;
 
   return (
