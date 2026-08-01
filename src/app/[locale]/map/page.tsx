@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { useQueryState, parseAsString } from "nuqs";
@@ -115,7 +116,14 @@ export default function MapPage() {
   };
   const [hideFoundMarkers, setHideFoundMarkers] = useState(false);
   const [isMenuCollapsed, setIsMenuCollapsed] = useState(false);
-  const [currentBgImage, setCurrentBgImage] = useState(0);
+  // Diaporama de fond de la sidebar. On ne mémorise que deux index — l'image
+  // affichée et celle qui termine son fondu — afin de ne monter que 2 à 3 <img>
+  // au lieu des 23 de `worldview` : elles étaient toutes rendues en `eager`,
+  // soit 3,4 Mo téléchargés au premier rendu dont 22 images invisibles.
+  const [bgImage, setBgImage] = useState<{
+    current: number;
+    previous: number | null;
+  }>({ current: 0, previous: null });
   const [searchQuery, setSearchQuery] = useState("");
   const [isActionMenuOpen, setIsActionMenuOpen] = useState(false);
   const [isResizing, setIsResizing] = useState(false);
@@ -393,13 +401,25 @@ export default function MapPage() {
     reader.readAsText(file);
   };
 
-  // Effet pour changer l'image de fond toutes les 2 secondes
+  // Rotation des images de fond. Le démarrage est différé : tant que la carte
+  // télécharge son image (plusieurs Mo), le diaporama ne lui dispute pas la
+  // bande passante. Même parti pris que HeroSection sur la home.
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentBgImage((prev) => (prev + 1) % ASSETS_PATHS.worldview.length);
-    }, 2000);
+    let interval: ReturnType<typeof setInterval> | undefined;
 
-    return () => clearInterval(interval);
+    const start = setTimeout(() => {
+      interval = setInterval(() => {
+        setBgImage((bg) => ({
+          current: (bg.current + 1) % ASSETS_PATHS.worldview.length,
+          previous: bg.current,
+        }));
+      }, 2000);
+    }, 4000);
+
+    return () => {
+      clearTimeout(start);
+      if (interval) clearInterval(interval);
+    };
   }, []);
 
   // Charger la carte persistée au montage du composant
@@ -462,42 +482,34 @@ export default function MapPage() {
     }
   }, [selectedMap, setVisibleCategories]); // Retiré visibleCategories des dépendances pour éviter les boucles
 
-  // Masquer le badge reCAPTCHA sur la page de la carte
-  useEffect(() => {
-    const hideRecaptchaBadge = () => {
-      const badge = document.querySelector('.grecaptcha-badge') as HTMLElement;
-      if (badge) {
-        badge.style.visibility = 'hidden';
-        badge.style.opacity = '0';
-        badge.style.display = 'none';
-      }
-    };
+  // Images de fond réellement montées : celle qui termine son fondu, celle
+  // affichée, et la suivante (préchargée à opacité nulle pour que le prochain
+  // fondu ne démarre pas sur du vide). Les index sont distincts — `worldview`
+  // compte bien plus de deux entrées — donc utilisables comme clés React :
+  // c'est ce qui fait persister les éléments d'un rendu à l'autre, et donc
+  // jouer la transition d'opacité plutôt que de remonter un nœud neuf.
+  const bgSlots = (() => {
+    const total = ASSETS_PATHS.worldview.length;
+    const next = (bgImage.current + 1) % total;
+    const slots: Array<{ index: number; visible: boolean }> = [];
 
-    // Masquer immédiatement
-    hideRecaptchaBadge();
+    if (bgImage.previous !== null && bgImage.previous !== bgImage.current) {
+      slots.push({ index: bgImage.previous, visible: false });
+    }
+    slots.push({ index: bgImage.current, visible: true });
+    if (next !== bgImage.current && next !== bgImage.previous) {
+      slots.push({ index: next, visible: false });
+    }
 
-    // Observer les changements du DOM au cas où le badge serait ajouté plus tard
-    const observer = new MutationObserver(hideRecaptchaBadge);
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true,
-    });
+    return slots;
+  })();
 
-    // Vérifier périodiquement (au cas où)
-    const interval = setInterval(hideRecaptchaBadge, 1000);
-
-    return () => {
-      observer.disconnect();
-      clearInterval(interval);
-      // Restaurer le badge quand on quitte la page (optionnel)
-      const badge = document.querySelector('.grecaptcha-badge') as HTMLElement;
-      if (badge) {
-        badge.style.visibility = '';
-        badge.style.opacity = '';
-        badge.style.display = '';
-      }
-    };
-  }, []);
+  // Le masquage du badge reCAPTCHA est assuré en CSS par la règle
+  // `body:has(.map-page) .grecaptcha-badge` (globals.css). Le MutationObserver
+  // qui faisait la même chose en JS a été retiré : branché sur tout <body> en
+  // `subtree`, il se rejouait à CHAQUE mutation du DOM — donc en continu pendant
+  // les pans/zooms de Leaflet, au détriment de l'INP. La règle CSS couvre aussi
+  // la restauration du badge : `.map-page` disparaît en quittant la page.
 
   return (
     <div className="h-screen w-screen relative overflow-hidden map-page">
@@ -622,18 +634,20 @@ export default function MapPage() {
           <div className="relative p-2 border-b border-line/20 flex-1 overflow-y-auto custom-scrollbar">
             {/* Arrière-plan avec effet Ken Burns */}
             <div className="absolute inset-0 overflow-hidden">
-              {ASSETS_PATHS.worldview.map((imagePath, index) => (
-                <img
-                  key={imagePath}
-                  src={imagePath}
+              {bgSlots.map((slot) => (
+                <Image
+                  key={slot.index}
+                  src={ASSETS_PATHS.worldview[slot.index]}
                   alt={t("mapAlt", { region: selectedMap?.name || "Duet Night Abyss" })}
-                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-                    index === currentBgImage ? "opacity-100" : "opacity-0"
+                  fill
+                  sizes="(max-width: 640px) 90vw, 400px"
+                  quality={70}
+                  className={`object-cover transition-opacity duration-1000 ${
+                    slot.visible ? "opacity-100" : "opacity-0"
                   }`}
                   style={{
                     animation: "kenBurns 12s ease-out infinite",
                   }}
-                  loading="eager"
                 />
               ))}
               {/* Dégradé depuis le bas */}

@@ -127,29 +127,22 @@ function ImageOverlayWrapper({
   const map = useMap();
   const [isReady, setIsReady] = useState(false);
 
+  // Leaflet expose `whenReady` : le callback part dès que la carte a une vue,
+  // ou IMMÉDIATEMENT si elle en a déjà une — ce qui est le cas ici, react-leaflet
+  // ne montant ses enfants qu'une fois la carte construite.
+  // Remplace un sondage du DOM toutes les 10 ms (`setTimeout` en boucle) qui
+  // retardait d'autant le démarrage du téléchargement de l'image de fond.
   useEffect(() => {
-    if (map) {
-      // Attendre que le conteneur DOM de la carte soit prêt
-      const checkReady = () => {
-        try {
-          const container = map.getContainer();
-          // Vérifier que le conteneur existe et a été initialisé par Leaflet
-          if (container && container.querySelector(".leaflet-pane")) {
-            setIsReady(true);
-          } else {
-            // Réessayer au prochain cycle
-            setTimeout(checkReady, 10);
-          }
-        } catch (error) {
-          // Si erreur, réessayer
-          setTimeout(checkReady, 10);
-        }
-      };
+    if (!map) return;
 
-      // Attendre un cycle pour que la carte soit montée
-      const timer = setTimeout(checkReady, 0);
-      return () => clearTimeout(timer);
-    }
+    let cancelled = false;
+    map.whenReady(() => {
+      if (!cancelled) setIsReady(true);
+    });
+
+    return () => {
+      cancelled = true;
+    };
   }, [map]);
 
   if (!isReady) {
