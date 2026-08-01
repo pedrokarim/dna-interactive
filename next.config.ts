@@ -15,6 +15,13 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'herobox-img.yingxiong.com',
       },
+      {
+        // Logos des autres projets de l'écosystème (section « Nos autres
+        // projets » de /about). Chaque projet héberge le sien, d'où le
+        // joker de sous-domaine : sarutobi, watchme, cma, sxm, just-tools…
+        protocol: 'https',
+        hostname: '**.ascencia.re',
+      },
     ],
   },
   // Optimisation SEO

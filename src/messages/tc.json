@@ -317,6 +317,43 @@
       "enhancement": "改善"
     }
   },
+  "otherProjects": {
+    "title": "我們的其他專案",
+    "subtitle": "{siteName} 是更大專案群的一部分。以下是我們正在打造的其他作品。",
+    "discover": "前往了解",
+    "new": "新推出",
+    "hubLink": "在 {hubName} 查看所有專案",
+    "items": {
+      "sarutobi": {
+        "description": "自架式產品分析：事件、漏斗、Web Vitals 與錯誤追蹤，資料完全由你掌握。",
+        "tag": "數據分析"
+      },
+      "watchme": {
+        "description": "你的個人影音庫：追蹤、評分並分享電影與影集，附排行榜、劇集行事曆與討論。",
+        "tag": "影劇"
+      },
+      "mcinfo": {
+        "description": "Minecraft 情報平台：即時伺服器狀態、3D 造型檢視器、玩家統計與開放 API。",
+        "tag": "Minecraft"
+      },
+      "cardmyanime": {
+        "description": "為你喜愛的動畫平台打造動態且精緻的個人卡片，附排行榜與詳細統計。",
+        "tag": "動畫"
+      },
+      "just-tools": {
+        "description": "免費的開發者工具箱：Base64 轉換、程式碼格式化、色票產生器、JSON 驗證等多種工具。",
+        "tag": "開發工具"
+      },
+      "sharex-manager": {
+        "description": "輕鬆又安全地管理 ShareX 上傳：歷史紀錄、圖庫、統計與額外工具。",
+        "tag": "工具"
+      },
+      "portfolio": {
+        "description": "個人作品集：網頁開發的專案、技能與成果。",
+        "tag": "作品集"
+      }
+    }
+  },
   "about": {
     "title": "關於 {siteName}",
     "mission": "我們的使命：讓探索 {gameName} 更加輕鬆",
