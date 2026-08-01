@@ -2894,14 +2894,18 @@ export default function CharacterDetailClient({
                 {[
                   { k: atkLabel, v: computedStats.atk, hl: true },
                   { k: t("statMaxHp"), v: computedStats.maxHp },
-                  { k: "Bouclier", v: computedStats.maxES },
+                  { k: t("statMaxES"), v: computedStats.maxES },
                   { k: t("statDEF"), v: computedStats.def },
                   { k: t("statMaxSpLong"), v: computedStats.maxSp },
                 ].map((r) => (
                   <DnaStatRow
                     key={r.k}
                     label={r.k}
-                    value={Math.round(r.v).toLocaleString(undefined)}
+                    // Locale EXPLICITE : `toLocaleString(undefined)` prend la
+                    // locale de l'environnement, différente au SSR (ICU de Node)
+                    // et à l'hydratation (navigateur) → mismatch React #418 dès
+                    // qu'une stat atteint 4 chiffres (PV, bouclier).
+                    value={Math.round(r.v).toLocaleString(DATE_LOCALE[locale] ?? locale)}
                     accent={r.hl ? elHex : undefined}
                   />
                 ))}
