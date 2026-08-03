@@ -125,8 +125,8 @@ les variables héritées alimentent les classes suivantes :
 
 | Classe | Effet |
 | --- | --- |
-| `.dna-rarity-slot` | Case d'objet : lueur qui monte du bas, discrète au repos, pleine au survol du `.group` parent. Reproduit `T_Item_Hover_N`. |
-| `.dna-rarity-tile` | Même lueur sur une vignette pleine carte (mode Simplifié), qui porte elle-même le survol. |
+| `.dna-rarity-slot` | Case d'objet : **texture `T_Item_Hover_N` du jeu** en fond, discrète au repos, pleine au survol du `.group` parent. |
+| `.dna-rarity-tile` | Même texture sur une vignette pleine carte (mode Simplifié), qui porte elle-même le survol. |
 | `.dna-rarity-name` | Nom teinté (`T_Com_TipsTextColor_N`). |
 | `.dna-rarity-line` | Filet séparateur vif → transparent (`T_Com_TipsLineColor_N`). |
 | `.dna-rarity-chip` | Pastille de rareté. |
@@ -135,8 +135,14 @@ L'intensité de la lueur passe par `--rarity-a`, déclarée en `@property` pour
 être interpolable (sans ça la transition serait un saut sec). `prefers-reduced-motion`
 la neutralise via la règle globale.
 
-Rien n'importe les PNG du jeu : tout est reproduit en CSS. Le grain des textures
-est trop discret pour justifier une image, et les tailles seraient inadaptées.
+**Le fond de case est la texture du jeu**, importée telle quelle dans
+`public/assets/rarity/T_Item_Hover_{1..6,NoQuality}.png` (7 fichiers, 756 Ko) et
+référencée par `--rarity-bg`. Seul ce jeu d'assets est repris ; tout le reste
+(bordures, nom, filet, pastille) sont des couleurs plates échantillonnées.
+
+L'intensité du fond est modulée par un voile encre superposé **par-dessus** la
+texture, dont l'alpha suit `--rarity-a` : l'opacité d'un `background-image` ne
+s'anime pas, alors qu'un dégradé plat superposé, si.
 
 ### Surfaces câblées
 
@@ -151,8 +157,8 @@ est trop discret pour justifier une image, et les tailles seraient inadaptées.
 ## Reste à faire
 
 - **Filigrane papillon** (`T_Com_QualityTag_*`) en fond du hero de la fiche à
-  partir de la rareté 3 : seul élément non reproductible en CSS, il faudrait
-  importer les 4 PNG dans `public/`.
+  partir de la rareté 3 : non reproductible en CSS, il faudrait importer les
+  4 PNG (~800 Ko) dans `public/assets/rarity/`.
 - **Légende de rareté** dans les listes — non fait volontairement : le code
   couleur vient du jeu, les joueurs le connaissent déjà, et une légende
   demanderait 6 libellés × 7 locales.

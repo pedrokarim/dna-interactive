@@ -208,19 +208,20 @@ body:has(.map-page) .grecaptcha-badge {
    DNA UI — code couleur de rareté
 
    Le niveau est porté par `data-rarity="1".."6"` (ou `"none"`), posé via
-   `rarityAttr()` de src/components/dna/rarity.ts. Il alimente trois variables
-   héritées, consommées par les classes .dna-rarity-* :
+   `rarityAttr()` de src/components/dna/rarity.ts. Il alimente les variables
+   héritées consommées par les classes .dna-rarity-* :
 
-     --rarity-rgb       teinte identitaire (cœur du dégradé de survol du jeu)
-     --rarity-glow-rgb  extrémité claire du dégradé (le jeu monte au blanc)
-     --rarity-text      couleur du nom de l'objet
-     --rarity-line      couleur du filet séparateur
+     --rarity-bg    fond de case du jeu (public/assets/rarity/T_Item_Hover_N.png)
+     --rarity-rgb   teinte identitaire, pour les bordures et pastilles
+     --rarity-text  couleur du nom de l'objet
+     --rarity-line  couleur du filet séparateur
 
-   Valeurs échantillonnées sur T_Item_Hover_N / T_Com_TipsTextColor_N /
-   T_Com_TipsLineColor_N — cf. docs/rarete-couleurs-jeu.md.
+   Le fond de case est la texture du jeu telle quelle. Les couleurs plates sont
+   échantillonnées dessus et sur T_Com_TipsTextColor_N / T_Com_TipsLineColor_N
+   — cf. docs/rarete-couleurs-jeu.md.
    =========================================================================== */
 
-/* `--rarity-a` (intensité de la lueur) est déclarée en <number> pour être
+/* `--rarity-a` (intensité du fond) est déclarée en <number> pour être
    interpolable : sans @property, la transition serait un saut sec. */
 @property --rarity-a {
   syntax: "<number>";
@@ -229,59 +230,60 @@ body:has(.map-page) .grecaptcha-badge {
 }
 
 [data-rarity] {
-  /* Défaut = NoQuality (objet sans rareté). La lueur reprend le gris très
-     sombre de T_Item_Hover_NoQuality, mais le nom reste en parchemin : le gris
+  /* Défaut = NoQuality (objet sans rareté). Le nom reste en parchemin : le gris
      du jeu (#9b9b9b) assombrirait les libellés par rapport à l'existant. */
+  --rarity-bg: url("/assets/rarity/T_Item_Hover_NoQuality.png");
   --rarity-rgb: 70 68 67;
-  --rarity-glow-rgb: 112 112 112;
   --rarity-text: #ece4d2;
   --rarity-line: #4a4a4a;
 }
-[data-rarity="1"] { --rarity-rgb: 147 147 147; --rarity-glow-rgb: 239 239 239; --rarity-text: #bac1c3; --rarity-line: #8c8d8c; }
-[data-rarity="2"] { --rarity-rgb: 124 172 124; --rarity-glow-rgb: 239 246 233; --rarity-text: #a1edd1; --rarity-line: #4f876b; }
-[data-rarity="3"] { --rarity-rgb: 133 155 206; --rarity-glow-rgb: 242 247 252; --rarity-text: #b2dfff; --rarity-line: #555587; }
-[data-rarity="4"] { --rarity-rgb: 168 120 174; --rarity-glow-rgb: 241 232 246; --rarity-text: #db74c6; --rarity-line: #84517b; }
-[data-rarity="5"] { --rarity-rgb: 186 152 105; --rarity-glow-rgb: 249 248 227; --rarity-text: #ffe4a0; --rarity-line: #c0965b; }
-[data-rarity="6"] { --rarity-rgb: 214 97 107; --rarity-glow-rgb: 254 243 238; --rarity-text: #d96068; --rarity-line: #a4545a; }
+[data-rarity="1"] { --rarity-bg: url("/assets/rarity/T_Item_Hover_1.png"); --rarity-rgb: 147 147 147; --rarity-text: #bac1c3; --rarity-line: #8c8d8c; }
+[data-rarity="2"] { --rarity-bg: url("/assets/rarity/T_Item_Hover_2.png"); --rarity-rgb: 124 172 124; --rarity-text: #a1edd1; --rarity-line: #4f876b; }
+[data-rarity="3"] { --rarity-bg: url("/assets/rarity/T_Item_Hover_3.png"); --rarity-rgb: 133 155 206; --rarity-text: #b2dfff; --rarity-line: #555587; }
+[data-rarity="4"] { --rarity-bg: url("/assets/rarity/T_Item_Hover_4.png"); --rarity-rgb: 168 120 174; --rarity-text: #db74c6; --rarity-line: #84517b; }
+[data-rarity="5"] { --rarity-bg: url("/assets/rarity/T_Item_Hover_5.png"); --rarity-rgb: 186 152 105; --rarity-text: #ffe4a0; --rarity-line: #c0965b; }
+[data-rarity="6"] { --rarity-bg: url("/assets/rarity/T_Item_Hover_6.png"); --rarity-rgb: 214 97 107; --rarity-text: #d96068; --rarity-line: #a4545a; }
 
-/* Case d'objet : lueur qui monte du bas, comme T_Item_Hover_N. Discrète au
-   repos (la rareté reste lisible sans interaction), pleine au survol.
-   Le dégradé est posé en background-image et non en pseudo-élément : les
-   enfants de la case restent au-dessus sans avoir à être positionnés. */
+/* Case d'objet : la texture du jeu en fond, étirée sur la case (elle monte du
+   sombre vers le blanc, la lueur est donc en bas comme en jeu). Discrète au
+   repos, pleine au survol.
+
+   L'intensité est modulée par un voile encre posé PAR-DESSUS la texture, dont
+   l'alpha suit --rarity-a : une opacité de background-image ne s'anime pas,
+   alors qu'un dégradé plat superposé, si. Le tout reste en background-image et
+   non en pseudo-élément, pour que les enfants de la case restent au-dessus
+   sans avoir à être positionnés. */
 .dna-rarity-slot {
-  --rarity-a: 0.34;
+  --rarity-a: 0.3;
   border-color: rgb(var(--rarity-rgb) / calc(0.2 + var(--rarity-a) * 0.45));
-  background-image: linear-gradient(
-    to top,
-    rgb(var(--rarity-glow-rgb) / calc(var(--rarity-a) * 0.4)) 0%,
-    rgb(var(--rarity-rgb) / calc(var(--rarity-a) * 0.62)) 26%,
-    rgb(var(--rarity-rgb) / calc(var(--rarity-a) * 0.2)) 60%,
-    rgb(var(--rarity-rgb) / 0) 88%
-  );
-  transition: --rarity-a 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+  background-image:
+    linear-gradient(rgb(10 10 11 / calc(1 - var(--rarity-a))), rgb(10 10 11 / calc(1 - var(--rarity-a)))),
+    var(--rarity-bg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  transition: --rarity-a 0.22s ease, border-color 0.22s ease;
 }
 .group:hover .dna-rarity-slot,
 .dna-rarity-slot:hover,
 .group:focus-visible .dna-rarity-slot {
-  --rarity-a: 1;
-  box-shadow: inset 0 -10px 18px -12px rgb(var(--rarity-rgb) / 0.9);
+  --rarity-a: 0.85;
 }
 
-/* Même lueur appliquée à une vignette pleine carte (mode Simplifié). */
+/* Même fond sur une vignette pleine carte (mode Simplifié), qui porte
+   elle-même le survol. Plus discret : l'icône occupe toute la vignette. */
 .dna-rarity-tile {
-  --rarity-a: 0.22;
+  --rarity-a: 0.2;
   border-color: rgb(var(--rarity-rgb) / calc(0.22 + var(--rarity-a) * 0.4));
-  background-image: linear-gradient(
-    to top,
-    rgb(var(--rarity-glow-rgb) / calc(var(--rarity-a) * 0.3)) 0%,
-    rgb(var(--rarity-rgb) / calc(var(--rarity-a) * 0.5)) 30%,
-    rgb(var(--rarity-rgb) / 0) 82%
-  );
+  background-image:
+    linear-gradient(rgb(10 10 11 / calc(1 - var(--rarity-a))), rgb(10 10 11 / calc(1 - var(--rarity-a)))),
+    var(--rarity-bg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
   transition: --rarity-a 0.22s ease, border-color 0.22s ease, transform 0.2s ease;
 }
 .dna-rarity-tile:hover,
 .dna-rarity-tile:focus-visible {
-  --rarity-a: 1;
+  --rarity-a: 0.7;
 }
 
 /* Nom de l'objet teinté par sa rareté (comme T_Com_TipsTextColor_N). */
