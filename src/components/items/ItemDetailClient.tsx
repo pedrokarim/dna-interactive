@@ -859,15 +859,18 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
                 <Link
                   key={sibling.id}
                   href={`/items/${category.slug}/${sibling.id}`}
-                  className={`flex items-center gap-3 rounded-sm border px-3 py-2 transition-colors ${
+                  data-rarity={rarityAttr(resolveItemRarity(sibling))}
+                  className={`group flex items-center gap-3 rounded-sm border px-3 py-2 transition-colors ${
                     isCurrent
                       ? "border-gold/50 bg-gold/10"
                       : "border-white/10 bg-ink/55 hover:border-gold/40"
                   } ${siblingIsPremium ? "ring-1 ring-gold/30" : ""}`}
                 >
-                  <DnaItemIcon src={siblingIcon} alt="" width={40} height={40} loading="lazy" className="h-10 w-10 shrink-0 object-contain" />
+                  <span className="dna-rarity-slot grid h-10 w-10 shrink-0 place-items-center rounded-sm border p-1">
+                    <DnaItemIcon src={siblingIcon} alt="" width={40} height={40} loading="lazy" className="h-full w-full object-contain" />
+                  </span>
                   <div className="min-w-0">
-                    <p className="truncate text-sm font-medium text-parch">
+                    <p className="dna-rarity-name truncate text-sm font-medium">
                       {siblingTranslation.modName ?? `#${sibling.modId}`}
                     </p>
                     {siblingIsPremium ? <span className="text-xs text-gold">{tc("premium")}</span> : null}

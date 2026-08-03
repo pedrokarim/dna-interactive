@@ -144,6 +144,20 @@ L'intensité du fond est modulée par un voile encre superposé **par-dessus** l
 texture, dont l'alpha suit `--rarity-a` : l'opacité d'un `background-image` ne
 s'anime pas, alors qu'un dégradé plat superposé, si.
 
+### Règle : quand poser une case de rareté
+
+La rareté ne se pose **que** là où l'objet est présenté comme un objet qu'on
+possède ou qu'on va obtenir : case d'inventaire, ingrédient, résultat de craft,
+nœud d'arbre de forge, item équipé dans un build, entrée de picker.
+
+Elle ne se pose **pas** quand l'icône sert d'élément d'interface. Le cas type,
+ce sont les **boards de Demon Wedges** (`_wedge.tsx`, `DemonWedgeEditor`,
+`ConsonanceEditor`, les slots en parallélogramme de la fiche personnage) : la
+forme reproduit l'écran du jeu, l'icône y est un composant d'UI, pas un objet
+listé. Même chose pour les icônes de compétence, les Introns, les nœuds de
+l'arbre de Potentiel, les marqueurs de carte et les visuels décoratifs des
+pages marketing.
+
 ### Surfaces câblées
 
 - Liste d'objets (`ItemsGridClient`) — les **trois** modes Simplifié / Liste /
@@ -152,6 +166,12 @@ s'anime pas, alors qu'un dégradé plat superposé, si.
   médaillon et le stage restent teintés par l'**élément** : c'est un axe
   d'information différent, les mélanger brouillerait les deux.
 - Builder — `DnaItemPicker` et `DnaSlotRow` : case + nom teintés.
+- Liste des plans (`DraftsGridClient`) — les 3 modes : produit, nom, pastille,
+  et **chaque case d'ingrédient** de la recette.
+- Fiche d'un plan (`DraftDetailClient`) — nœuds de l'arbre de forge (produit et
+  ingrédients), panneau Résultat, lignes « Composants requis ».
+- Fiche personnage (`CharacterDetailClient`) — armes et génimons du build,
+  armes de consonance. **Pas** les boards de Demon Wedges.
 - Storybook — `DNA/Fondations/Rareté` (échelle complète + cases survolables).
 
 ## Reste à faire
@@ -159,6 +179,16 @@ s'anime pas, alors qu'un dégradé plat superposé, si.
 - **Filigrane papillon** (`T_Com_QualityTag_*`) en fond du hero de la fiche à
   partir de la rareté 3 : non reproductible en CSS, il faudrait importer les
   4 PNG (~800 Ko) dans `public/assets/rarity/`.
+- **Cases où la rareté n'est pas dans le scope** — il faut la remonter côté
+  données avant de pouvoir styler : « Plans liés » de la fiche objet
+  (`RelatedDraft`, `src/lib/items/drafts.ts`), matériaux de forge et slots de
+  wedges du guide calamité (`items/[category]/about/page.tsx` drope `rarity` au
+  mapping), aperçus d'items des cartes de build communautaires (`IconRef` dans
+  `CommunityBuildCard` / `CommunityBuildBannerCard`), modales de zoom d'icône
+  (`previewIcon` ne transporte que `{src, alt, id}`).
+- **`QuickBuildModal`** (carte de build exportée en PNG via `html-to-image`) —
+  non câblé volontairement : la lib doit inliner les `background-image`, et un
+  échec casserait l'export. À tester avant de s'y risquer.
 - **Légende de rareté** dans les listes — non fait volontairement : le code
   couleur vient du jeu, les joueurs le connaissent déjà, et une légende
   demanderait 6 libellés × 7 locales.

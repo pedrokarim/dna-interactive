@@ -22,6 +22,7 @@ import ViewModeToggle from "@/components/list/ViewModeToggle";
 import { useListViewMode } from "@/components/list/useListViewMode";
 import { DnaPanel } from "@/components/dna/Panel";
 import { DnaItemIcon, ITEM_FALLBACK_ICON } from "@/components/dna/ItemIcon";
+import { rarityAttr, toRarityLevel } from "@/components/dna/rarity";
 import { useDialogA11y } from "@/components/dna/useDialogA11y";
 
 const SORT_VALUES = ["id", "rarityDesc", "rarityAsc", "durationAsc", "durationDesc"] as const;
@@ -527,10 +528,11 @@ export default function DraftsGridClient({
               <Link
                 key={recipe.id}
                 href={`/items/drafts/${recipe.draftId}`}
+                data-rarity={rarityAttr(toRarityLevel(recipe.rarity))}
                 className="group relative border border-line/25 bg-panel/85 p-3 md:p-4 backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-gold/40 hover:bg-panel/95"
               >
                 <div className="flex items-start gap-3">
-                  <div className="flex h-14 w-14 md:h-16 md:w-16 shrink-0 items-center justify-center rounded-sm border border-gold/25 bg-ink/80 p-2">
+                  <div className="dna-rarity-slot flex h-14 w-14 md:h-16 md:w-16 shrink-0 items-center justify-center rounded-sm border bg-ink/80 p-2">
                     <div className="relative h-full w-full">
                       <div className="h-full w-full overflow-hidden rounded-sm">
                         <DnaItemIcon
@@ -565,7 +567,7 @@ export default function DraftsGridClient({
                     <p className="text-xs uppercase tracking-[0.22em] text-gold/90">
                       DRAFT #{recipe.draftId}
                     </p>
-                    <h2 className="truncate text-lg font-semibold text-parch transition-colors group-hover:text-gold">
+                    <h2 className="dna-rarity-name truncate text-lg font-semibold transition-[filter] duration-200 group-hover:brightness-110">
                       {productNameLead}
                     </h2>
                     <p className="truncate text-xs text-muted">
@@ -600,7 +602,8 @@ export default function DraftsGridClient({
                       ingredient ? (
                         <div
                           key={`${recipe.id}-ingredient-${ingredient.id}-${index}`}
-                          className="relative rounded-sm border border-white/10 bg-ink/70 p-2"
+                          data-rarity={rarityAttr(toRarityLevel(ingredient.rarity))}
+                          className="dna-rarity-slot relative rounded-sm border p-2"
                         >
                           <DnaItemIcon
                             src={ingredient.icon.publicPath ?? ingredient.icon.placeholderPath ?? ITEM_FALLBACK_ICON}
@@ -664,9 +667,10 @@ export default function DraftsGridClient({
               <li key={recipe.id}>
                 <Link
                   href={`/items/drafts/${recipe.draftId}`}
+                  data-rarity={rarityAttr(toRarityLevel(recipe.rarity))}
                   className="group relative flex items-center gap-4 border border-line/25 bg-panel/85 p-3 backdrop-blur-sm transition-all duration-200 hover:border-gold/40 hover:bg-panel/95"
                 >
-                  <div className="relative flex h-16 w-16 shrink-0 items-center justify-center rounded-sm border border-gold/25 bg-ink/80 p-2">
+                  <div className="dna-rarity-slot relative flex h-16 w-16 shrink-0 items-center justify-center rounded-sm border bg-ink/80 p-2">
                     <DnaItemIcon
                       src={recipeIconSrc}
                       alt={productNameLead}
@@ -697,7 +701,7 @@ export default function DraftsGridClient({
                     <p className="text-xs uppercase tracking-[0.22em] text-gold/90">
                       DRAFT #{recipe.draftId}
                     </p>
-                    <h2 className="truncate text-base font-semibold text-parch transition-colors group-hover:text-gold">
+                    <h2 className="dna-rarity-name truncate text-base font-semibold transition-[filter] duration-200 group-hover:brightness-110">
                       {productNameLead}
                     </h2>
                     <div className="mt-1 flex flex-wrap items-center gap-1.5 text-[11px]">
@@ -706,7 +710,7 @@ export default function DraftsGridClient({
                         {recipe.productType}
                       </span>
                       {typeof recipe.rarity === "number" ? (
-                        <span className="rounded-sm border border-white/10 px-2 py-0.5 text-parch/85">
+                        <span className="dna-rarity-chip rounded-sm border px-2 py-0.5">
                           {td('rarityLabel', { rarity: recipe.rarity })}
                         </span>
                       ) : null}
@@ -721,7 +725,8 @@ export default function DraftsGridClient({
                     {recipe.ingredients.slice(0, 4).map((ingredient, index) => (
                       <div
                         key={`${recipe.id}-ingredient-${ingredient.id}-${index}`}
-                        className="relative h-10 w-10 rounded-sm border border-white/10 bg-ink/70 p-1"
+                        data-rarity={rarityAttr(toRarityLevel(ingredient.rarity))}
+                        className="dna-rarity-slot relative h-10 w-10 rounded-sm border p-1"
                       >
                         <DnaItemIcon
                           src={ingredient.icon.publicPath ?? ingredient.icon.placeholderPath ?? ITEM_FALLBACK_ICON}
@@ -764,7 +769,8 @@ export default function DraftsGridClient({
                 key={recipe.id}
                 href={`/items/drafts/${recipe.draftId}`}
                 title={productNameLead}
-                className="group relative flex aspect-square flex-col overflow-hidden rounded-sm border border-white/10 bg-ink/80 p-2 transition-all duration-200 hover:-translate-y-0.5 hover:border-gold/40"
+                data-rarity={rarityAttr(toRarityLevel(recipe.rarity))}
+                className="dna-rarity-tile group relative flex aspect-square flex-col overflow-hidden rounded-sm border bg-ink/80 p-2 hover:-translate-y-0.5"
               >
                 <div className="relative flex flex-1 items-center justify-center overflow-hidden">
                   <DnaItemIcon
@@ -798,7 +804,7 @@ export default function DraftsGridClient({
                   </button>
                 </div>
                 <div className="mt-1">
-                  <p className="truncate text-xs font-semibold text-parch">{productNameLead}</p>
+                  <p className="dna-rarity-name truncate text-xs font-semibold">{productNameLead}</p>
                   <p className="flex items-center gap-1 text-[10px] text-muted">
                     <Clock3 className="h-3 w-3 text-gold/90" />
                     {formatDuration(recipe.durationSec)}

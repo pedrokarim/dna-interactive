@@ -58,6 +58,7 @@ import type {
 } from "@/lib/characters/types";
 import { SKILL_LEVEL_MAX, SKILL_LEVEL_MIN } from "@/lib/characters/types";
 import { ELEMENTS, type ElementKey } from "@/components/dna/elements";
+import { rarityAttr, toRarityLevel } from "@/components/dna/rarity";
 import { cn } from "@/components/dna/cn";
 import { DnaPanel } from "@/components/dna/Panel";
 import { DnaSectionLabel } from "@/components/dna/SectionLabel";
@@ -1864,22 +1865,24 @@ export function BuildTabContent({
                   </h3>
                   <div className="space-y-2">
                     {weapons.map((w, i) => (
-                      <div key={i} className="border border-white/10 bg-ink/55">
-                        <div className="flex items-center gap-3 px-4 py-3">
+                      <div key={i} className="border border-white/10 bg-ink/55" data-rarity={rarityAttr(toRarityLevel(w.item?.rarity))}>
+                        <div className="group flex items-center gap-3 px-4 py-3">
                           {w.item ? (
                             <Link
                               href={w.item.href}
-                              className="flex min-w-0 flex-1 items-center gap-3 transition-colors hover:text-gold"
+                              className="flex min-w-0 flex-1 items-center gap-3"
                             >
-                              <img
-                                src={w.item.icon}
-                                alt=""
-                                width={40}
-                                height={40}
-                                className="h-10 w-10 shrink-0 object-contain"
-                              />
+                              <span className="dna-rarity-slot grid h-10 w-10 shrink-0 place-items-center rounded-sm border p-1">
+                                <img
+                                  src={w.item.icon}
+                                  alt=""
+                                  width={40}
+                                  height={40}
+                                  className="h-full w-full object-contain"
+                                />
+                              </span>
                               <div className="min-w-0 flex-1">
-                                <p className="truncate text-sm font-medium text-parch">
+                                <p className="dna-rarity-name truncate text-sm font-medium">
                                   {w.item.name}
                                 </p>
                                 <p className="truncate text-xs text-muted">
@@ -2185,21 +2188,24 @@ export function BuildTabContent({
             {build.genimon.map((g, i) => (
               <div
                 key={i}
-                className="flex items-center gap-3 border border-white/10 bg-ink/55 px-4 py-3"
+                data-rarity={rarityAttr(toRarityLevel(g.item?.rarity))}
+                className="group flex items-center gap-3 border border-white/10 bg-ink/55 px-4 py-3"
               >
                 {g.item ? (
                   <Link
                     href={g.item.href}
-                    className="flex min-w-0 flex-1 items-center gap-3 transition-colors hover:text-gold"
+                    className="flex min-w-0 flex-1 items-center gap-3"
                   >
-                    <img
-                      src={g.item.icon}
-                      alt=""
-                      width={40}
-                      height={40}
-                      className="h-10 w-10 shrink-0 object-contain"
-                    />
-                    <p className="truncate text-sm font-medium text-parch">{g.item.name}</p>
+                    <span className="dna-rarity-slot grid h-10 w-10 shrink-0 place-items-center rounded-sm border p-1">
+                      <img
+                        src={g.item.icon}
+                        alt=""
+                        width={40}
+                        height={40}
+                        className="h-full w-full object-contain"
+                      />
+                    </span>
+                    <p className="dna-rarity-name truncate text-sm font-medium">{g.item.name}</p>
                   </Link>
                 ) : (
                   <p className="text-sm text-muted-2">{t('genimonNotFound')}</p>
@@ -3243,9 +3249,11 @@ export default function CharacterDetailClient({
                     cw.translations.FR?.name ??
                     `#${cw.weaponId}`;
                   return (
-                    <div key={cw.weaponId} className="flex items-center gap-4">
+                    <div key={cw.weaponId} className="group flex items-center gap-4" data-rarity={rarityAttr(toRarityLevel(cw.rarity))}>
                       {cw.icon.publicPath && (
-                        <img src={cw.icon.publicPath} alt={cwName} width={64} height={64} className="h-16 w-16 shrink-0 object-contain drop-shadow-lg" />
+                        <span className="dna-rarity-slot grid h-16 w-16 shrink-0 place-items-center rounded-sm border p-1.5">
+                          <img src={cw.icon.publicPath} alt={cwName} width={64} height={64} className="h-full w-full object-contain drop-shadow-lg" />
+                        </span>
                       )}
                       <div>
                         <p className="text-sm font-medium text-electro">{cwName}</p>
