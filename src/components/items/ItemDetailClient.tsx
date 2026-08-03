@@ -28,6 +28,8 @@ import {
   potentialNodesUnlocked,
   potentialNodesTotal,
 } from "@/lib/items/calamity-weapons";
+import { rarityAttr } from "@/components/dna/rarity";
+import { resolveItemRarity } from "@/lib/items/rarity";
 import { ELEMENTS, type ElementKey } from "@/components/dna/elements";
 import { DemonWedgeLayout } from "@/components/characters/CharacterDetailClient";
 import { WeaponFusionTrack } from "@/components/items/WeaponFusionTrack";
@@ -483,6 +485,8 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
   const tinted = elHex !== GOLD_HEX;
   const calamityNodesUnlocked = isCalamity ? potentialNodesUnlocked(item.id, selectedLevel) : null;
   const calamityNodesTotal = isCalamity ? potentialNodesTotal(item.id) : null;
+  // Code couleur de rareté (nom, filet, médaillon) — cf. docs/rarete-couleurs-jeu.md.
+  const rarity = resolveItemRarity(item);
   // Élément utilisé pour teinter le board de Demon Wedges de l'arme.
   const wedgeElementKey =
     weaponBuild?.demonWedges.affinity ??
@@ -494,7 +498,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
     : translation.functionLabel ?? (isModsCategory ? "Demon Wedge" : category.displayName);
 
   return (
-    <div className="space-y-4 md:space-y-8">
+    <div className="space-y-4 md:space-y-8" data-rarity={rarityAttr(rarity)}>
       {/* Top bar */}
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex flex-wrap items-center gap-2">
@@ -550,10 +554,11 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
             <p className="font-caps text-[0.6rem] uppercase tracking-[0.22em] text-gold">
               {category.technicalName} #{item.modId}
             </p>
-            <h1 className="mt-0.5 font-display text-4xl text-parch md:text-5xl [text-shadow:0_2px_24px_rgba(0,0,0,0.85)]">
+            <h1 className="dna-rarity-name mt-0.5 font-display text-4xl md:text-5xl [text-shadow:0_2px_24px_rgba(0,0,0,0.85)]">
               {displayName}
             </h1>
-            <p className="mt-0.5 font-display text-lg italic text-muted">{subtitle}</p>
+            <div aria-hidden className="dna-rarity-line mt-1 w-40 max-w-full" />
+            <p className="mt-1 font-display text-lg italic text-muted">{subtitle}</p>
             {typeof item.stats.rarity === "number" ? (
               <DnaStars value={item.stats.rarity} className="mt-1.5 text-sm" />
             ) : null}
@@ -854,15 +859,18 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
                 <Link
                   key={sibling.id}
                   href={`/items/${category.slug}/${sibling.id}`}
-                  className={`flex items-center gap-3 rounded-sm border px-3 py-2 transition-colors ${
+                  data-rarity={rarityAttr(resolveItemRarity(sibling))}
+                  className={`group flex items-center gap-3 rounded-sm border px-3 py-2 transition-colors ${
                     isCurrent
                       ? "border-gold/50 bg-gold/10"
                       : "border-white/10 bg-ink/55 hover:border-gold/40"
                   } ${siblingIsPremium ? "ring-1 ring-gold/30" : ""}`}
                 >
-                  <DnaItemIcon src={siblingIcon} alt="" width={40} height={40} loading="lazy" className="h-10 w-10 shrink-0 object-contain" />
+                  <span className="dna-rarity-slot grid h-10 w-10 shrink-0 place-items-center rounded-sm border p-1">
+                    <DnaItemIcon src={siblingIcon} alt="" width={40} height={40} loading="lazy" className="h-full w-full object-contain" />
+                  </span>
                   <div className="min-w-0">
-                    <p className="truncate text-sm font-medium text-parch">
+                    <p className="dna-rarity-name truncate text-sm font-medium">
                       {siblingTranslation.modName ?? `#${sibling.modId}`}
                     </p>
                     {siblingIsPremium ? <span className="text-xs text-gold">{tc("premium")}</span> : null}

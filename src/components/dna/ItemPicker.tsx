@@ -6,6 +6,7 @@ import { DnaField } from "./Field";
 import { DnaChip } from "./Chip";
 import { DnaStars } from "./RarityStars";
 import { ELEMENTS, type ElementKey } from "./elements";
+import { rarityAttr, toRarityLevel } from "./rarity";
 
 /**
  * Forme « résolue » légère d'un item, miroir de ce que produit
@@ -201,6 +202,7 @@ function ItemCell({
       type="button"
       onClick={() => onSelect?.(item)}
       title={item.name}
+      data-rarity={rarityAttr(toRarityLevel(item.rarity))}
       className={cn(
         "group relative flex flex-col items-center gap-1.5 overflow-hidden border bg-gradient-to-b from-[rgba(34,29,21,0.55)] to-[rgba(14,12,9,0.8)] p-2.5 text-center transition-[transform,border-color,box-shadow] hover:-translate-y-0.5 hover:border-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60",
         selected ? "border-gold shadow-[0_0_0_1px_var(--color-gold,#c2a86a)]" : "border-white/8",
@@ -220,7 +222,7 @@ function ItemCell({
           </span>
         )}
       </div>
-      <span className="relative grid aspect-square w-full place-items-center bg-black/25">
+      <span className="dna-rarity-slot relative grid aspect-square w-full place-items-center bg-black/25">
         {item.icon ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img src={item.icon} alt={item.name} width={96} height={96} className="h-[82%] w-[82%] object-contain" loading="lazy" />
@@ -228,7 +230,7 @@ function ItemCell({
           <span className="font-display text-2xl text-muted-2">◇</span>
         )}
       </span>
-      <span className="line-clamp-2 min-h-[2.1em] font-sans text-[0.72rem] leading-tight text-parch group-hover:text-gold-bright">
+      <span className="dna-rarity-name line-clamp-2 min-h-[2.1em] font-sans text-[0.72rem] leading-tight transition-[filter] group-hover:brightness-110">
         {item.name}
       </span>
       {item.rarity != null && <DnaStars value={item.rarity} />}

@@ -19,6 +19,8 @@ import {
 } from "@/lib/items/catalog";
 import { isModReleaseVersionRecent } from "@/lib/items/new-releases";
 import { isCalamityWeapon } from "@/lib/items/calamity-weapons";
+import { resolveItemRarity } from "@/lib/items/rarity";
+import { rarityAttr } from "@/components/dna/rarity";
 import type { ItemCategory, ItemRecord } from "@/lib/items/types";
 import {
   itemsFavoritesAtom,
@@ -1192,11 +1194,13 @@ export default function ItemsGridClient({
             const isFavorite = favoriteItems.has(favoriteKey);
             const isNew = isModsCategory && isModReleaseVersionRecent(item.stats.releaseVersion);
             const isCalamity = isCalamityWeapon(item);
+            const rarity = resolveItemRarity(item);
 
             return (
               <Link
                 key={item.id}
                 href={`/items/${category.slug}/${item.id}`}
+                data-rarity={rarityAttr(rarity)}
                 className={`group relative border bg-panel/85 p-3 md:p-4 backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-panel/95 ${
                   isCalamity
                     ? "border-crimson-bright/40 hover:border-crimson-bright/60"
@@ -1204,7 +1208,7 @@ export default function ItemsGridClient({
                 }`}
               >
                 <div className="flex items-start gap-3">
-                  <div className="flex h-14 w-14 md:h-16 md:w-16 shrink-0 items-center justify-center rounded-sm border border-gold/20 bg-ink/80 p-2">
+                  <div className="dna-rarity-slot flex h-14 w-14 md:h-16 md:w-16 shrink-0 items-center justify-center rounded-sm border bg-ink/80 p-2">
                     <div className="relative h-full w-full">
                       <div className="h-full w-full overflow-hidden rounded-sm">
                         <DnaItemIcon
@@ -1256,7 +1260,7 @@ export default function ItemsGridClient({
                         ? lead.demonWedgeName ? `${lead.modName} ${lead.demonWedgeName}` : lead.modName
                         : `${category.displayName} ${item.modId}`;
                       return (
-                        <h3 className="font-display text-xl text-parch transition-colors group-hover:text-gold">
+                        <h3 className="dna-rarity-name font-display text-xl transition-[filter] duration-200 group-hover:brightness-110">
                           <span className="flex min-w-0 items-center gap-2">
                             {elementalAffinity?.iconSrc ? (
                               <img
@@ -1338,7 +1342,7 @@ export default function ItemsGridClient({
                     </span>
                   ) : null}
                   {typeof item.stats.rarity === "number" && (
-                  <span className="rounded-sm border border-white/10 px-2 py-0.5 text-parch/85">
+                  <span className="dna-rarity-chip rounded-sm border px-2 py-0.5">
                     Rarete {item.stats.rarity}
                   </span>
                   )}
@@ -1380,18 +1384,20 @@ export default function ItemsGridClient({
                 : lead.modName
               : `${category.displayName} ${item.modId}`;
             const isCalamity = isCalamityWeapon(item);
+            const rarity = resolveItemRarity(item);
 
             return (
               <li key={item.id}>
                 <Link
                   href={`/items/${category.slug}/${item.id}`}
+                  data-rarity={rarityAttr(rarity)}
                   className={`group relative flex items-center gap-4 border bg-panel/85 p-3 backdrop-blur-sm transition-all duration-200 hover:bg-panel/95 ${
                     isCalamity
                       ? "border-crimson-bright/40 hover:border-crimson-bright/60"
                       : "border-line/25 hover:border-gold/40"
                   }`}
                 >
-                  <div className="relative flex h-16 w-16 shrink-0 items-center justify-center rounded-sm border border-gold/20 bg-ink/80 p-2">
+                  <div className="dna-rarity-slot relative flex h-16 w-16 shrink-0 items-center justify-center rounded-sm border bg-ink/80 p-2">
                     <DnaItemIcon
                       src={iconSrc}
                       alt={displayName}
@@ -1418,7 +1424,7 @@ export default function ItemsGridClient({
                     <p className="font-caps text-[0.6rem] uppercase tracking-[0.22em] text-gold/80">
                       {category.technicalName} #{item.modId}
                     </p>
-                    <h3 className="flex items-center gap-2 truncate font-display text-lg text-parch transition-colors group-hover:text-gold">
+                    <h3 className="dna-rarity-name flex items-center gap-2 truncate font-display text-lg transition-[filter] duration-200 group-hover:brightness-110">
                       {elementalAffinity?.iconSrc ? (
                         <img
                           src={elementalAffinity.iconSrc}
@@ -1455,7 +1461,7 @@ export default function ItemsGridClient({
                         </span>
                       ) : null}
                       {typeof item.stats.rarity === "number" ? (
-                        <span className="rounded-sm border border-white/10 px-2 py-0.5 text-parch/85">
+                        <span className="dna-rarity-chip rounded-sm border px-2 py-0.5">
                           Rarete {item.stats.rarity}
                         </span>
                       ) : null}
@@ -1509,17 +1515,15 @@ export default function ItemsGridClient({
                 : lead.modName
               : `${category.displayName} ${item.modId}`;
             const isCalamity = isCalamityWeapon(item);
+            const rarity = resolveItemRarity(item);
 
             return (
               <Link
                 key={item.id}
                 href={`/items/${category.slug}/${item.id}`}
                 title={displayName}
-                className={`group relative flex aspect-square flex-col overflow-hidden rounded-sm border bg-ink/80 p-2 transition-all duration-200 hover:-translate-y-0.5 ${
-                  isCalamity
-                    ? "border-crimson-bright/45 hover:border-crimson-bright/65"
-                    : "border-white/10 hover:border-gold/40"
-                }`}
+                data-rarity={rarityAttr(rarity)}
+                className="dna-rarity-tile group relative flex aspect-square flex-col overflow-hidden rounded-sm border bg-ink/80 p-2 hover:-translate-y-0.5"
               >
                 <div className="relative flex flex-1 items-center justify-center overflow-hidden">
                   <DnaItemIcon
@@ -1580,7 +1584,7 @@ export default function ItemsGridClient({
                   </button>
                 </div>
                 <div className="mt-1">
-                  <p className="truncate text-xs font-semibold text-parch">{displayName}</p>
+                  <p className="dna-rarity-name truncate text-xs font-semibold">{displayName}</p>
                   <p className="truncate text-[10px] text-muted">
                     {category.technicalName} #{item.modId}
                   </p>

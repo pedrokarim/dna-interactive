@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 import { cn } from "./cn";
 import { useDialogA11y } from "./useDialogA11y";
 import { ELEMENTS } from "./elements";
+import { rarityAttr, toRarityLevel } from "./rarity";
 import { DnaStars } from "./RarityStars";
 import { DnaTag } from "./Tag";
 import { DnaButton } from "./Button";
@@ -149,8 +150,9 @@ function SlotCard({
   const isBest = rank === "best";
   return (
     <div
+      data-rarity={rarityAttr(toRarityLevel(item.rarity))}
       className={cn(
-        "relative flex w-28 flex-col items-center gap-1.5 border bg-gradient-to-b from-[rgba(34,29,21,0.55)] to-[rgba(14,12,9,0.8)] p-2.5 text-center",
+        "group relative flex w-28 flex-col items-center gap-1.5 border bg-gradient-to-b from-[rgba(34,29,21,0.55)] to-[rgba(14,12,9,0.8)] p-2.5 text-center",
         isBest ? "border-gold/60" : "border-white/8",
       )}
     >
@@ -176,7 +178,7 @@ function SlotCard({
         type="button"
         onClick={readOnly ? undefined : onReplace}
         aria-label={readOnly ? item.name : `${item.name} — remplacer`}
-        className={cn("grid aspect-square w-full place-items-center bg-black/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gold/60", readOnly ? "cursor-default" : "cursor-pointer")}
+        className={cn("dna-rarity-slot grid aspect-square w-full place-items-center bg-black/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gold/60", readOnly ? "cursor-default" : "cursor-pointer")}
         title={readOnly ? item.name : `${item.name} — cliquer pour remplacer`}
       >
         {item.icon ? (
@@ -186,7 +188,7 @@ function SlotCard({
           <span className="font-display text-2xl text-muted-2">◇</span>
         )}
       </button>
-      <span className="line-clamp-2 min-h-[2.1em] font-sans text-[0.72rem] leading-tight text-parch">{item.name}</span>
+      <span className="dna-rarity-name line-clamp-2 min-h-[2.1em] font-sans text-[0.72rem] leading-tight">{item.name}</span>
       {item.rarity != null && <DnaStars value={item.rarity} />}
       {allowRanks &&
         (readOnly ? (

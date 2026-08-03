@@ -11,6 +11,7 @@ import { resolveDraftItemDescription, resolveDraftItemName } from "@/lib/items/d
 import { DnaPanel } from "@/components/dna/Panel";
 import { DnaSectionLabel } from "@/components/dna/SectionLabel";
 import { DnaItemIcon } from "@/components/dna/ItemIcon";
+import { rarityAttr, toRarityLevel } from "@/components/dna/rarity";
 
 type DraftDetailClientProps = {
   recipe: DraftRecipeRecord;
@@ -105,11 +106,12 @@ function RecipeNode({ item, selectedLanguage, fallbackLanguages, primary = false
 
   const nodeBody = (
     <div
+      data-rarity={rarityAttr(toRarityLevel(item.rarity))}
       className={`relative rounded-sm border ${
         primary ? "border-gold/55 bg-gold/10" : "border-white/10 bg-ink/80"
       } p-2 shadow-[0_6px_18px_rgba(2,6,23,0.35)] transition-colors group-hover:border-gold/65`}
     >
-      <div className="flex h-16 w-16 items-center justify-center rounded-sm border border-white/10 bg-panel/80 p-2">
+      <div className="dna-rarity-slot flex h-16 w-16 items-center justify-center rounded-sm border bg-panel/80 p-2">
         <DnaItemIcon src={iconSrc} alt={name} width={64} height={64} className="max-h-full max-w-full object-contain" />
       </div>
       <span className="absolute bottom-1 right-1 rounded-sm bg-panel/95 px-1.5 py-0.5 text-[11px] font-medium text-gold">
@@ -308,15 +310,15 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
           </div>
         </article>
 
-        <article className="border border-white/10 bg-panel/65 p-3 md:p-5">
+        <article className="border border-white/10 bg-panel/65 p-3 md:p-5" data-rarity={rarityAttr(toRarityLevel(recipe.product.rarity))}>
           <div className="rounded-sm border border-gold/30 bg-ink/60 p-3 md:p-4">
-            <div className="flex items-start gap-3">
-              <div className="flex h-14 w-14 md:h-16 md:w-16 shrink-0 items-center justify-center rounded-sm border border-gold/30 bg-ink/80 p-2">
+            <div className="group flex items-start gap-3">
+              <div className="dna-rarity-slot flex h-14 w-14 md:h-16 md:w-16 shrink-0 items-center justify-center rounded-sm border bg-ink/80 p-2">
                 <DnaItemIcon src={recipeIcon} alt={productName} width={64} height={64} className="max-h-full max-w-full object-contain" />
               </div>
               <div className="min-w-0">
                 <p className="font-caps text-[0.6rem] uppercase tracking-[0.22em] text-gold/90">{t('resultLabel')}</p>
-                <h1 className="mt-1 font-display text-xl text-parch">{productName}</h1>
+                <h1 className="dna-rarity-name mt-1 font-display text-xl">{productName}</h1>
                 <p className="text-xs text-muted">
                   {recipe.product.type} x{recipe.productQuantity}
                 </p>
@@ -427,17 +429,18 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
             return (
               <article
                 key={`${ingredient.id}-${index}`}
-                className="rounded-sm border border-white/10 bg-ink/60 p-3"
+                data-rarity={rarityAttr(toRarityLevel(ingredient.rarity))}
+                className="group rounded-sm border border-white/10 bg-ink/60 p-3"
               >
                 <div className="flex items-start gap-3">
-                  <div className="relative flex h-14 w-14 items-center justify-center rounded-sm border border-white/10 bg-panel/70 p-2">
+                  <div className="dna-rarity-slot relative flex h-14 w-14 items-center justify-center rounded-sm border bg-panel/70 p-2">
                     <DnaItemIcon src={ingredientIcon} alt={ingredientName} width={56} height={56} loading="lazy" className="max-h-full max-w-full object-contain" />
                     <span className="absolute bottom-0 right-0 translate-x-1/4 translate-y-1/4 rounded-sm bg-panel/95 px-1.5 py-0.5 text-[11px] font-medium text-gold">
                       x{ingredient.quantity}
                     </span>
                   </div>
                   <div className="min-w-0 flex-1">
-                    <p className="text-sm font-medium text-parch">{ingredientName}</p>
+                    <p className="dna-rarity-name text-sm font-medium">{ingredientName}</p>
                     <div className="mt-1 flex flex-wrap gap-1.5 text-[11px]">
                       <span
                         className={`rounded-sm border px-2 py-0.5 ${nodeAccentClasses(ingredient.sourceCategory)}`}
@@ -448,7 +451,7 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
                         {ingredient.type}
                       </span>
                       {typeof ingredient.rarity === "number" ? (
-                        <span className="rounded-sm border border-white/10 px-2 py-0.5 text-parch/85">
+                        <span className="dna-rarity-chip rounded-sm border px-2 py-0.5">
                           {t('rarityLabel', { rarity: ingredient.rarity })}
                         </span>
                       ) : null}
