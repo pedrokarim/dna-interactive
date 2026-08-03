@@ -1,6 +1,7 @@
 // Design system DNA — barrel. Importez depuis "@/components/dna".
 export { cn } from "./cn";
 export * from "./elements";
+export * from "./rarity";
 
 // Contrôles
 export { DnaButton } from "./Button";
