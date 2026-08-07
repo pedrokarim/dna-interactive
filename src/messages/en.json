@@ -1194,13 +1194,13 @@
     "noEvents": "No events during this period.",
     "view": "View",
     "officialAnnouncement": "Official announcement",
-    "calendarHint": "Use ◀ ▶ to navigate, zoom, filter by category, then hover over or select an event for details.",
+    "calendarHint": "Scroll the timeline into the past or the future, zoom, filter by category, then hover over or select an event for details.",
     "fullScreen": "Full screen",
     "communityResources": "Community & resources"
   },
   "calendarPage": {
     "heading": "Event Calendar",
-    "intro": "Duet Night Abyss banners, weapons and ongoing events. Move through time, zoom and filter by category — the state lives in the URL, so it is shareable."
+    "intro": "Duet Night Abyss banners, weapons and events. Scroll the timeline as far into the past or the future as you like — the golden marker is today, and the period you are viewing stays in the URL, so it is shareable."
   },
   "exportModal": {
     "title": "Export markers",

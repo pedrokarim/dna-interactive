@@ -20,7 +20,11 @@ export type AppSettings = {
   commissionsVisible: boolean;
   /** Connexion Google proposée. */
   googleAuthEnabled: boolean;
-  /** Date de référence du calendrier (ISO AAAA-MM-JJ ; "" = défaut du code). */
+  /**
+   * Forçage de la date de référence du calendrier (ISO AAAA-MM-JJ).
+   * `""` = comportement normal : le curseur suit l'horloge locale du visiteur.
+   * Une valeur ici **fige** la frise pour tout le monde (test / capture).
+   */
   calendarToday: string;
 };
 

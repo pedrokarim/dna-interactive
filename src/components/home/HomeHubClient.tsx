@@ -53,7 +53,13 @@ export type HomeHubClientProps = {
   builds: HomeBuildCard[];
   communityCount: string;
   stats: { characters: string; items: string; builds: string };
-  calendarEvents?: CalendarEvent[];
+  calendarEvents: CalendarEvent[];
+  /** Bornes de la fenêtre d'événements pré-chargée (la frise charge la suite au défilement). */
+  calendarFrom: string;
+  calendarTo: string;
+  /** Date du jour côté serveur — premier rendu seulement. */
+  serverToday: string;
+  /** Forçage admin de la date de référence (vide = horloge du visiteur). */
   calendarToday?: string;
 };
 
@@ -212,7 +218,17 @@ function BuildShowcaseCard({ build }: { build: HomeBuildCard }) {
 
 /* ---------------------------------------------------------------- page (POC) */
 
-export default function HomeHubClient({ codes, builds, communityCount, stats, calendarEvents, calendarToday }: HomeHubClientProps) {
+export default function HomeHubClient({
+  codes,
+  builds,
+  communityCount,
+  stats,
+  calendarEvents,
+  calendarFrom,
+  calendarTo,
+  serverToday,
+  calendarToday,
+}: HomeHubClientProps) {
   const t = useTranslations("homeHub");
   const { commissionsVisible } = useAppSettings();
   const databaseCards: ToolCard[] = [
@@ -377,7 +393,13 @@ export default function HomeHubClient({ codes, builds, communityCount, stats, ca
             </span>
           }
         />
-        <EventCalendar events={calendarEvents} refToday={calendarToday} />
+        <EventCalendar
+          events={calendarEvents}
+          initialFrom={calendarFrom}
+          initialTo={calendarTo}
+          serverToday={serverToday}
+          overrideToday={calendarToday}
+        />
       </section>
 
       {/* =============================================== BUILDS DE PERSONNAGES */}

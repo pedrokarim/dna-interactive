@@ -1194,13 +1194,13 @@
     "noEvents": "이 기간에는 이벤트가 없습니다.",
     "view": "보기",
     "officialAnnouncement": "공식 공지",
-    "calendarHint": "◀ ▶로 이동하고 확대하거나 카테고리별로 필터링한 뒤 이벤트에 마우스를 올리거나 선택해 세부 정보를 확인하세요.",
+    "calendarHint": "타임라인을 과거나 미래로 스크롤하고 확대하거나 카테고리별로 필터링한 뒤 이벤트에 마우스를 올리거나 선택해 세부 정보를 확인하세요.",
     "fullScreen": "전체 화면",
     "communityResources": "커뮤니티 & 리소스"
   },
   "calendarPage": {
     "heading": "이벤트 캘린더",
-    "intro": "Duet Night Abyss의 배너, 무기, 진행 중인 이벤트. 기간을 이동하고 확대하며 카테고리로 필터링하세요. 상태가 URL에 담겨 공유할 수 있습니다."
+    "intro": "Duet Night Abyss의 배너, 무기, 이벤트. 타임라인을 과거나 미래로 제한 없이 스크롤하세요. 금색 표시가 오늘이며, 보고 있는 기간이 URL에 담겨 공유할 수 있습니다."
   },
   "exportModal": {
     "title": "마커 내보내기",

@@ -148,9 +148,12 @@ export function SettingsAdminClient() {
         <DnaPanel className="p-5">
           <DnaSectionLabel>Calendrier</DnaSectionLabel>
           <div className="mt-3">
-            <label className="mb-1 block font-caps text-[0.55rem] uppercase tracking-[0.16em] text-muted">Date de référence (« aujourd'hui »)</label>
+            <label className="mb-1 block font-caps text-[0.55rem] uppercase tracking-[0.16em] text-muted">Forcer la date de référence (« aujourd&apos;hui »)</label>
             <input type="date" className={inputClass} value={s.calendarToday} onChange={(e) => set("calendarToday", e.target.value)} />
-            <p className="mt-1.5 font-sans text-xs text-muted">Vide = date par défaut du code. À caler sur le patch courant.</p>
+            <p className="mt-1.5 font-sans text-xs text-muted">
+              Laisser vide : le curseur suit l&apos;horloge de chaque visiteur. Ne remplir que pour figer la frise (test, capture) — le repère
+              ne bougera plus pour personne.
+            </p>
           </div>
         </DnaPanel>
       </div>

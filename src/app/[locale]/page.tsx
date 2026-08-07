@@ -5,8 +5,14 @@ import { GAME_CODES } from "@/lib/store";
 import { getAllCharacters, getCharacterById, resolveCharacterDisplayName } from "@/lib/characters/catalog";
 import { getItemCatalog } from "@/lib/items/catalog";
 import { getTopBuilds, getBuildsTotal } from "@/lib/community-builds/list";
-import { getCalendarEvents } from "@/lib/events/db";
+import { getCalendarEventsInRange } from "@/lib/events/db";
 import { getAppSettings } from "@/lib/settings/db";
+import {
+  INITIAL_WINDOW_AFTER,
+  INITIAL_WINDOW_BEFORE,
+  addDaysIso,
+  localTodayIso,
+} from "@/lib/events/calendar";
 
 export const dynamic = "force-dynamic";
 
@@ -38,10 +44,17 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   const catalog = getItemCatalog();
   const itemsTotal = catalog.categories.reduce((sum, c) => sum + (c.itemCount ?? 0), 0);
 
+  // Fenêtre d'événements pré-chargée autour du jour courant ; la frise charge la
+  // suite au défilement. `serverToday` ne sert qu'au premier rendu — le client
+  // repasse aussitôt sur l'horloge du visiteur.
+  const serverToday = localTodayIso();
+  const calendarFrom = addDaysIso(serverToday, -INITIAL_WINDOW_BEFORE);
+  const calendarTo = addDaysIso(serverToday, INITIAL_WINDOW_AFTER);
+
   const [topBuilds, buildsTotal, calendarEvents, settings] = await Promise.all([
     getTopBuilds(8),
     getBuildsTotal(),
-    getCalendarEvents(),
+    getCalendarEventsInRange(calendarFrom, calendarTo),
     getAppSettings(),
   ]);
 
@@ -79,6 +92,9 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         builds: fmt.format(buildsTotal),
       }}
       calendarEvents={calendarEvents}
+      calendarFrom={calendarFrom}
+      calendarTo={calendarTo}
+      serverToday={serverToday}
       calendarToday={settings.calendarToday || undefined}
     />
   );

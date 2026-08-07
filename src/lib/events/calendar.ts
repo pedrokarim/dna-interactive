@@ -5,9 +5,14 @@
  * patch 1.5 « Paradise Prelude », juillet-septembre 2026), à rafraîchir à chaque
  * version. Aucune source tierce n'est créditée au front.
  *
- * Tout est déterministe (pas de `Date.now()`) : le calendrier se déplace/zoome via
- * des fenêtres (start ISO + span en jours), sûr en SSR. « Aujourd'hui » = date de
- * référence du monde du jeu (`CALENDAR_TODAY`), pas l'horloge système.
+ * Le calendrier est une **frise défilable sans borne** : une plage rendue
+ * (`rangeStart` + nombre de jours) qui s'étend à la volée quand on atteint un
+ * bord, une échelle en pixels/jour pilotée par le zoom, et les événements
+ * chargés par fenêtre autour de ce qu'on regarde.
+ *
+ * « Aujourd'hui » = **l'horloge locale du visiteur** (`localTodayIso`), rafraîchie
+ * côté client. Les fonctions de ce module restent pures : la date du jour est
+ * toujours passée en paramètre, jamais lue ici (SSR sûr, testable).
  */
 
 export type EventCategory = "Bannière" | "Arme" | "Événement" | "Épreuve" | "Récompense";
@@ -52,10 +57,7 @@ export const CATEGORY_TINT: Record<EventCategory, string> = {
   Récompense: "var(--color-hydro)",
 };
 
-/** « Aujourd'hui » dans le monde du jeu (contexte applicatif). */
-export const CALENDAR_TODAY = "2026-07-28";
-
-/** Zooms disponibles (span en jours). */
+/** Zooms disponibles = nombre de jours tenant dans la largeur visible. */
 export const CALENDAR_ZOOMS = [14, 30, 60] as const;
 export type CalendarZoom = (typeof CALENDAR_ZOOMS)[number];
 export const DEFAULT_ZOOM: CalendarZoom = 30;
@@ -85,7 +87,9 @@ export const CALENDAR_EVENTS: CalendarEvent[] = [
   { id: "oceans-distant-rhythm", title: "Ocean's Distant Rhythm — rerun skin Fushu", category: "Bannière", start: "2026-07-28", end: "2026-09-07", image: "/assets/worldview/worldview-1-3-6.webp", description: "Rerun limité de la bannière Myriad du skin de Fushu.", sourceUrl: SRC_V15 },
   { id: "bloomfield-tales-untold", title: "Bloomfield Station : Tales Untold", category: "Événement", start: "2026-07-28", end: "2026-09-07", image: "/assets/worldview/worldview-1-4-2.webp", description: "Chapitre d'histoire de la version 1.5 autour de la gare de Flodia Bloomfield.", sourceUrl: SRC_V15 },
   { id: "white-bunnies-invitation", title: "White Bunnies' Invitation — connexion", category: "Récompense", start: "2026-07-28", end: "2026-09-07", image: "/assets/worldview/worldview-1-3-3.webp", description: "Cumule tes connexions jusqu'au 7 septembre pour 10 Sabliers immaculés.", sourceUrl: SRC_V15 },
-  { id: "treasure-hunt-trials", title: "Treasure Hunt Trials", category: "Épreuve", start: "2026-07-28", end: "2026-09-08", image: "/assets/worldview/worldview-1-3-8.webp", description: "Simulation calquée sur l'Incense Proving de Huaxu : franchis les paliers pour des récompenses.", sourceUrl: SRC_V15 },
+  { id: "treasure-hunt-trials", title: "Treasure Hunt Trials", category: "Épreuve", start: "2026-07-28", end: "2026-09-07", image: "/assets/worldview/worldview-1-3-8.webp", description: "Simulation calquée sur l'Incense Proving de Huaxu : franchis les paliers pour des récompenses.", sourceUrl: SRC_V15 },
+  { id: "snowveil-fairytale", title: "Snowveil Fairytale — essai du skin d'Ada", category: "Événement", start: "2026-07-28", end: "2026-09-07", image: "/assets/official-v1.5/image-ada.webp", description: "Essaie la tenue hivernale d'Ada pendant toute la durée de la version 1.5." },
+  { id: "bards-tome-summer-beat", title: "Bard's Tome : Summer Beat", category: "Récompense", start: "2026-07-28", end: "2026-09-07", image: "/assets/worldview/worldview-8.webp", description: "Passe saisonnier : accomplis les quêtes du Grimoire du barde pour monter les paliers de vers et récolter les récompenses." },
   { id: "great-chaos-mechapuppets", title: "Great Chaos of Mechapuppets", category: "Événement", start: "2026-07-30", end: "2026-09-07", image: "/assets/official-v1.5/image-mechapuppets.webp", description: "Événement de stratégie : déploie les pantins mécaniques et laisse le plateau trancher.", sourceUrl: SRC_V15 },
   { id: "bountiful-day-v15-p1", title: "Bountiful Day — Partie 1 (1.5)", category: "Événement", start: "2026-07-30", end: "2026-08-06", image: "/assets/worldview/worldview-1-4-3.webp", description: "Taux de drop de Demon Wedge augmentés pendant une semaine.", sourceUrl: SRC_V15 },
   { id: "immersive-theatre-ensemble-v15", title: "Immersive Theatre : Ensemble Act (1.5)", category: "Événement", start: "2026-08-06", end: "2026-09-07", image: "/assets/worldview/worldview-1-4-5.webp", description: "Finale du théâtre immersif : mène la représentation jusqu'à son dénouement.", sourceUrl: SRC_V15 },
@@ -102,6 +106,8 @@ export const CALENDAR_EVENTS: CalendarEvent[] = [
 
 const DAY_MS = 86_400_000;
 
+/** Une date ISO `AAAA-MM-JJ` est lue comme minuit **UTC** : tous les calculs de
+ *  décalage se font en jours entiers, sans piège de fuseau ni d'heure d'été. */
 export function addDaysIso(iso: string, days: number): string {
   return new Date(Date.parse(iso) + days * DAY_MS).toISOString().slice(0, 10);
 }
@@ -110,26 +116,91 @@ export function diffDays(fromIso: string, toIso: string): number {
   return Math.round((Date.parse(toIso) - Date.parse(fromIso)) / DAY_MS);
 }
 
-function clamp(value: number, min: number, max: number): number {
-  return Math.min(Math.max(value, min), max);
-}
-
-/** Fenêtre par défaut (centrée sur la date de référence pour un span donné). */
-export function defaultWindowStart(spanDays: number, refIso: string = CALENDAR_TODAY): string {
-  return addDaysIso(refIso, -Math.round(spanDays * 0.45));
+/**
+ * Date du jour **dans le fuseau de celui qui regarde** (`AAAA-MM-JJ`).
+ *
+ * On lit les champs locaux (pas `toISOString`, qui renverrait la date UTC et
+ * décalerait d'un jour une bonne partie du globe en soirée/matinée).
+ */
+export function localTodayIso(now: Date = new Date()): string {
+  const y = now.getFullYear();
+  const m = String(now.getMonth() + 1).padStart(2, "0");
+  const d = String(now.getDate()).padStart(2, "0");
+  return `${y}-${m}-${d}`;
 }
 
 export type EventStatus = "past" | "ongoing" | "upcoming";
 
-export function eventStatus(ev: CalendarEvent, refIso: string = CALENDAR_TODAY): EventStatus {
-  if (Date.parse(refIso) < Date.parse(ev.start)) return "upcoming";
-  if (Date.parse(refIso) > Date.parse(ev.end)) return "past";
+export function eventStatus(ev: CalendarEvent, todayIso: string): EventStatus {
+  if (Date.parse(todayIso) < Date.parse(ev.start)) return "upcoming";
+  if (Date.parse(todayIso) > Date.parse(ev.end)) return "past";
   return "ongoing";
 }
 
-/* --------------------------------------------------------------- calculs fenêtre */
+/* --------------------------------------------------------------- frise : plage */
 
-export type CalendarRow = {
+/** Jours ajoutés de chaque côté au premier rendu (la frise démarre déjà large). */
+export const RANGE_PAD_DAYS = 540;
+/** Jours ajoutés à chaque fois qu'on atteint un bord — navigation sans borne. */
+export const RANGE_EXTEND_DAYS = 365;
+/** Marge de préchargement autour de ce qui est visible (en jours). */
+export const FETCH_BUFFER_DAYS = 45;
+/** Fenêtre d'événements rendue côté serveur au premier affichage (jours avant/après). */
+export const INITIAL_WINDOW_BEFORE = 120;
+export const INITIAL_WINDOW_AFTER = 240;
+/** Largeur mini d'une barre pour rester lisible (px) — sert aussi au calage des voies. */
+export const MIN_BAR_PX = 168;
+
+/** Pas de graduation adapté à l'échelle (en jours). */
+export function tickStepForScale(pxPerDay: number): number {
+  if (pxPerDay >= 46) return 1;
+  if (pxPerDay >= 22) return 2;
+  if (pxPerDay >= 9) return 7;
+  return 14;
+}
+
+export type CalendarTick = { iso: string; offsetDays: number };
+
+/**
+ * Graduations entre deux décalages (en jours depuis `rangeStartIso`), alignées
+ * sur des multiples absolus de `step` **ancrés au lundi** — les repères ne
+ * bougent donc pas quand la plage rendue s'étend vers le passé.
+ */
+export function dayTicks(rangeStartIso: string, fromOffset: number, toOffset: number, step: number): CalendarTick[] {
+  const startEpochDay = Math.round(Date.parse(rangeStartIso) / DAY_MS);
+  // 1970-01-01 = jeudi ; +4 jours pour ancrer les multiples sur un lundi.
+  const align = (epochDay: number) => Math.ceil((epochDay - 4) / step) * step + 4;
+  const ticks: CalendarTick[] = [];
+  for (let e = align(startEpochDay + fromOffset); e <= startEpochDay + toOffset; e += step) {
+    ticks.push({ iso: new Date(e * DAY_MS).toISOString().slice(0, 10), offsetDays: e - startEpochDay });
+  }
+  return ticks;
+}
+
+export type MonthBand = { iso: string; offsetDays: number; days: number };
+
+/** Bandeaux de mois couvrant la plage rendue (le premier est rogné à gauche). */
+export function monthBands(rangeStartIso: string, totalDays: number): MonthBand[] {
+  const startMs = Date.parse(rangeStartIso);
+  const endMs = startMs + totalDays * DAY_MS;
+  const first = new Date(startMs);
+  let cursor = Date.UTC(first.getUTCFullYear(), first.getUTCMonth(), 1);
+  const bands: MonthBand[] = [];
+  while (cursor < endMs) {
+    const c = new Date(cursor);
+    const next = Date.UTC(c.getUTCFullYear(), c.getUTCMonth() + 1, 1);
+    const rawOffset = Math.round((cursor - startMs) / DAY_MS);
+    const rawDays = Math.round((next - cursor) / DAY_MS);
+    const offsetDays = Math.max(0, rawOffset);
+    bands.push({ iso: new Date(cursor).toISOString().slice(0, 10), offsetDays, days: rawDays + Math.min(0, rawOffset) });
+    cursor = next;
+  }
+  return bands;
+}
+
+/* --------------------------------------------------------------- frise : voies */
+
+export type CalendarBar = {
   id: string;
   title: string;
   category: EventCategory;
@@ -141,32 +212,38 @@ export type CalendarRow = {
   description?: string;
   sourceUrl?: string;
   status: EventStatus;
-  leftPct: number;
-  widthPct: number;
-  overflowLeft: boolean;
-  overflowRight: boolean;
+  /** Décalage en jours depuis `rangeStartIso` (peut être négatif si l'événement déborde). */
+  offsetDays: number;
+  /** Durée en jours, bornes incluses (≥ 1). */
+  lengthDays: number;
+  /** Voie horizontale attribuée par le calage (0 = ligne du haut). */
+  lane: number;
 };
 
-/** Barres visibles dans la fenêtre [windowStart, windowStart+spanDays], filtrées par catégorie. */
-export function computeRows(
-  windowStartIso: string,
-  spanDays: number,
-  categories?: EventCategory[],
-  refIso: string = CALENDAR_TODAY,
-  sourceEvents: CalendarEvent[] = CALENDAR_EVENTS,
-): CalendarRow[] {
-  const windowEndIso = addDaysIso(windowStartIso, spanDays);
-  const catSet = categories && categories.length > 0 ? new Set(categories) : null;
+/**
+ * Range les événements en **voies** : chacun prend la première voie libre à sa
+ * date de début (calage glouton type Gantt). Un événement occupe au minimum
+ * `minSpanDays` pour que deux barres courtes ne se chevauchent pas à l'écran.
+ *
+ * Le tri est total (début puis id) → même entrée, même sortie : les barres ne
+ * sautent pas de voie au hasard quand un lot d'événements arrive.
+ */
+export function layoutBars(
+  events: CalendarEvent[],
+  rangeStartIso: string,
+  todayIso: string,
+  minSpanDays: number,
+): CalendarBar[] {
+  const sorted = [...events].sort((a, b) => (a.start === b.start ? a.id.localeCompare(b.id) : a.start < b.start ? -1 : 1));
+  const laneEndOffset: number[] = [];
 
-  return sourceEvents.filter((ev) => {
-    if (catSet && !catSet.has(ev.category)) return false;
-    // garder ce qui chevauche la fenêtre
-    return Date.parse(ev.end) >= Date.parse(windowStartIso) && Date.parse(ev.start) <= Date.parse(windowEndIso);
-  }).map((ev) => {
-    const startOff = diffDays(windowStartIso, ev.start);
-    const endOff = diffDays(windowStartIso, ev.end);
-    const left = clamp(startOff, 0, spanDays);
-    const right = clamp(endOff, 0, spanDays);
+  return sorted.map((ev) => {
+    const offsetDays = diffDays(rangeStartIso, ev.start);
+    const lengthDays = Math.max(1, diffDays(ev.start, ev.end) + 1);
+    const occupied = Math.max(lengthDays, minSpanDays);
+    let lane = laneEndOffset.findIndex((end) => end <= offsetDays);
+    if (lane === -1) lane = laneEndOffset.length;
+    laneEndOffset[lane] = offsetDays + occupied;
     return {
       id: ev.id,
       title: ev.title,
@@ -178,30 +255,17 @@ export function computeRows(
       image: ev.image,
       description: ev.description,
       sourceUrl: ev.sourceUrl,
-      status: eventStatus(ev, refIso),
-      leftPct: (left / spanDays) * 100,
-      widthPct: Math.max(1.5, ((right - left) / spanDays) * 100),
-      overflowLeft: startOff < 0,
-      overflowRight: endOff > spanDays,
+      status: eventStatus(ev, todayIso),
+      offsetDays,
+      lengthDays,
+      lane,
     };
   });
 }
 
-export type CalendarTick = { iso: string; pct: number };
-
-/** Graduations réparties dans la fenêtre (pas adapté au zoom). */
-export function generateTicks(windowStartIso: string, spanDays: number): CalendarTick[] {
-  const step = spanDays <= 14 ? 3 : spanDays <= 30 ? 7 : 14;
-  const ticks: CalendarTick[] = [];
-  for (let d = 0; d <= spanDays; d += step) {
-    ticks.push({ iso: addDaysIso(windowStartIso, d), pct: (d / spanDays) * 100 });
-  }
-  return ticks;
-}
-
-/** Position en % d'une date dans la fenêtre (ou null si hors fenêtre). */
-export function markerPct(iso: string, windowStartIso: string, spanDays: number): number | null {
-  const off = diffDays(windowStartIso, iso);
-  if (off < 0 || off > spanDays) return null;
-  return (off / spanDays) * 100;
+/** Événements chevauchant `[fromIso, toIso]` (bornes incluses). */
+export function eventsInRange(events: CalendarEvent[], fromIso: string, toIso: string): CalendarEvent[] {
+  const from = Date.parse(fromIso);
+  const to = Date.parse(toIso);
+  return events.filter((ev) => Date.parse(ev.end) >= from && Date.parse(ev.start) <= to);
 }

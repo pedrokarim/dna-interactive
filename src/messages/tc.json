@@ -1194,13 +1194,13 @@
     "noEvents": "此期間沒有活動。",
     "view": "查看",
     "officialAnnouncement": "官方公告",
-    "calendarHint": "使用 ◀ ▶ 瀏覽、縮放並依類別篩選；將游標移至活動上或選取活動即可查看詳細資訊。",
+    "calendarHint": "將時間軸捲動至過去或未來、縮放並依類別篩選；將游標移至活動上或選取活動即可查看詳細資訊。",
     "fullScreen": "全螢幕",
     "communityResources": "社群與資源"
   },
   "calendarPage": {
     "heading": "活動行事曆",
-    "intro": "Duet Night Abyss 的卡池、武器與進行中活動。可切換時間、縮放並依分類篩選——狀態儲存於網址，可直接分享。"
+    "intro": "Duet Night Abyss 的卡池、武器與活動。時間軸可無限制地捲動至過去或未來——金色標記代表今天，目前檢視的期間會保存於網址，可直接分享。"
   },
   "exportModal": {
     "title": "匯出標記",

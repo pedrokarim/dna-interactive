@@ -1194,13 +1194,13 @@
     "noEvents": "Aucun événement sur cette période.",
     "view": "Voir",
     "officialAnnouncement": "Annonce officielle",
-    "calendarHint": "Navigue avec ◀ ▶, zoome, filtre par catégorie, survole ou clique un événement pour le détail.",
+    "calendarHint": "Fais défiler la frise vers le passé ou le futur, zoome, filtre par catégorie, survole ou clique un événement pour le détail.",
     "fullScreen": "Plein écran",
     "communityResources": "Communauté & ressources"
   },
   "calendarPage": {
     "heading": "Calendrier des événements",
-    "intro": "Bannières, armes et événements en cours de Duet Night Abyss. Navigue dans le temps, zoome et filtre par catégorie — l'état est dans l'URL, donc partageable."
+    "intro": "Bannières, armes et événements de Duet Night Abyss. Fais défiler la frise sans limite vers le passé ou le futur — le repère doré marque aujourd'hui, et la période regardée reste dans l'URL, donc partageable."
   },
   "exportModal": {
     "title": "Exporter les marqueurs",

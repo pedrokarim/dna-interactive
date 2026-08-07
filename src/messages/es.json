@@ -1194,13 +1194,13 @@
     "noEvents": "No hay eventos durante este periodo.",
     "view": "Ver",
     "officialAnnouncement": "Anuncio oficial",
-    "calendarHint": "Navega con ◀ ▶, amplía, filtra por categoría y pasa el cursor o selecciona un evento para ver sus detalles.",
+    "calendarHint": "Desplaza la línea de tiempo hacia el pasado o el futuro, amplía, filtra por categoría y pasa el cursor o selecciona un evento para ver sus detalles.",
     "fullScreen": "Pantalla completa",
     "communityResources": "Comunidad y recursos"
   },
   "calendarPage": {
     "heading": "Calendario de eventos",
-    "intro": "Banners, armas y eventos en curso de Duet Night Abyss. Navega en el tiempo, amplía y filtra por categoría: el estado está en la URL, así que se puede compartir."
+    "intro": "Banners, armas y eventos de Duet Night Abyss. Desplaza la línea de tiempo sin límite hacia el pasado o el futuro: la marca dorada es hoy y el periodo que estás viendo queda en la URL, así que se puede compartir."
   },
   "exportModal": {
     "title": "Exportar marcadores",
