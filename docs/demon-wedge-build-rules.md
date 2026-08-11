@@ -43,21 +43,82 @@ Les positions extérieures sont **1 à 8**. Une position ne doit pas être dupli
 
 Le slot central n'accepte **pas n'importe quel Demon Wedge**.
 
-Le centre sert d'ancre/condition de build. Les centres autorisés dans le builder sont les Wedges de type Quetzalcoatl comme `Décision de Quetzalcoatl`, `Vigueur de Quetzalcoatl`, `Ténacité de Quetzalcoatl` ou `Éternité de Quetzalcoatl`.
+Le centre sert d'ancre/condition de build. Ce sont les Wedges de type Quetzalcoatl
+(`Feathered Serpent's`), et il en existe **deux tiers, tous deux valides** :
 
-Plusieurs descriptions de ces Wedges centraux activent un effet seulement si une condition est remplie, par exemple :
+- **3★ génériques** (`mods-315xx`) : sans élément — Vigilance, Essor, Soutien, Esquive,
+  Tumulte, Vrille, Rupture, Inflexible, Guérison, Roc, Ignition. Ce sont ceux que les
+  guides publics recommandent sur les builds de progression, et plusieurs personnages les
+  gardent en endgame.
+- **4★/5★ élémentaires** : chaque élément expose **exactement deux** centres, un par
+  polarité. Voir la table dans `src/lib/community-builds/center-wedges.ts`.
+
+Plusieurs descriptions de ces Wedges centraux activent un effet seulement si une condition
+est remplie, par exemple :
 
 - avoir au moins 4 Demon Wedges d'une certaine affinité/polarité ;
 - ou avoir tous les Demon Wedges équipés différents.
 
+⚠️ Ces conditions ne sont **pas exposées dans nos données** (`passiveEffectsDescription`
+est vide pour tous les centres) : elles viennent de l'observation en jeu. Ne pas les
+affirmer comme certaines dans une note de build.
+
 **Conséquence pratique :**
 
 - Un Wedge extérieur de stat ou d'effet classique ne doit jamais être importé, exporté ou publié comme centre.
-- Les entrées appelées `Pouvoir` ne sont pas des centres valides dans notre builder, même si leur asset ressemble aux autres Quetzalcoatl.
 - Le builder filtre le picker du centre sur les IDs autorisés.
 - La validation serveur refuse aussi un `centerItemId` qui n'est pas dans cette liste.
 
-Liste technique actuelle : `CENTER_DEMON_WEDGE_ITEM_IDS` dans `src/lib/community-builds/center-wedges.ts`.
+Liste technique actuelle : `CENTER_DEMON_WEDGE_ITEM_IDS` dans `src/lib/community-builds/center-wedges.ts` — **35 IDs** (11 génériques + 24 élémentaires).
+
+> **Correction du 2026-08-11.** Ce mémo affirmait que les entrées `Pouvoir` n'étaient pas
+> des centres valides. C'était faux : `Pouvoir` (EN « Spectrum ») est simplement le second
+> centre de Fire et de Thunder, au même titre qu'`Éternité` ou `Vigueur` ailleurs. La liste
+> ne contenait que 20 IDs et **refusait des builds légitimes**, y compris des builds livrés
+> dans l'app. Les 4 `Pouvoir` et les 11 génériques 3★ ont été ajoutés.
+
+## 3 bis. Règle de cumul : une seule famille est empilable
+
+**On ne peut pas équiper deux fois le même Demon Wedge**, sauf s'il porte explicitement
+cette clause dans `translations.<lang>.passiveEffectsDescription` :
+
+> « Once upgraded to +#1, this Demon Wedge can be equipped in multiples. »
+> (FR : « Une fois amélioré à +#1, ce Sceau démoniaque peut être équipé en plusieurs exemplaires. »)
+
+Dans le catalogue actuel : **64 mods sur 829** portent cette clause, et ils appartiennent
+**tous à la famille `Covenanter's`**. Toutes les autres familles — Typhon's, Griffin's,
+Siren's, Bahamut's, Ifrit's, Summanus's, Hastur's, Helios's, Arbiter's, Phoenix's,
+Sphinx's, Changeling's, Feathered Serpent's — sont **unique-only**.
+
+Le doublon suppose la pièce montée **+5**. Un build qui empile doit donc le signaler.
+
+**Wedges d'arme : aucun n'est empilable.** 0 des 288 wedges d'arme (Cerberus's, Lilith's,
+Eldritch *, Fenrir's, Fafnir's, Pan's, Barbatos's) ne porte la clause. Deux fois la même
+pièce sur une arme est donc **toujours** illégal.
+
+Comment vérifier la liste :
+
+```bash
+node -e "
+const m=require('./src/data/items/mods.items.json');
+const s=m.filter(x=>/equipped in multiples/i.test(x.translations?.EN?.passiveEffectsDescription||''));
+console.log(s.length, [...new Set(s.map(x=>x.translations.EN.demonWedgeName))]);
+"
+```
+
+⚠️ **Limite actuelle de la validation** : `validateBuildReferences` ne vérifie que
+l'unicité des **positions**, pas celle des `itemId`. Un doublon illégal passe donc encore
+la validation serveur.
+
+## 3 ter. Piège d'affichage : les icônes ne distinguent pas les Wedges
+
+**828 mods sur 829 partagent leur icône** — 56 fichiers seulement pour tout le catalogue
+(`T_Mod_Phoenix01.png` sert à 136 mods différents). Deux Wedges d'une même famille sont
+donc **visuellement identiques** dans le builder.
+
+Conséquence : un build qui « a l'air » de contenir deux fois la même pièce contient
+probablement deux pièces différentes de la même famille. Toujours vérifier par `itemId`,
+jamais à l'œil.
 
 Cette liste doit être mise à jour si le catalogue révèle de nouveaux Wedges centraux valides.
 
