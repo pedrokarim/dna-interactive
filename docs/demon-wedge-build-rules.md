@@ -12,7 +12,40 @@ Les Demon Wedges sont des équipements de build qui donnent des bonus aux person
 
 Un build sérieux doit donc toujours vérifier que le Wedge choisi correspond bien au support ciblé. Un Wedge prévu pour arme ne doit pas être traité comme un Wedge de personnage, et inversement.
 
-Source : Game8 indique que les Demon Wedges sont séparés entre personnage et arme, et que seuls les Wedges du bon type peuvent être équipés.
+### La règle d'éligibilité : `typeCompatibility.applicationType`
+
+Un seul champ décide de ce sur quoi une pièce peut se poser :
+
+| Type | Nb | Support autorisé |
+| --- | --- | --- |
+| `1` | 302 | **Personnage**, tous éléments (universel) |
+| `11`–`16` | 238 | **Personnage d'un seul élément** — 11 Ombre · 12 Eau · 13 Feu · 14 Foudre · 15 Vent · 16 Lumière |
+| `2`, `21`–`23`, `101`–`106` | 96 | **Arme de mêlée** |
+| `3`, `31`–`35` | 91 | **Arme à distance** |
+| `4`, `41`–`43` | 47 | Arme de mêlée **de consonance** (Ultra) |
+| `5`, `51`–`53` | 41 | Arme à distance **de consonance** (Ultra) |
+| = un `charId` | 1 | **Un personnage précis et lui seul** |
+
+⚠️ Le dernier cas est un vrai piège : quand `applicationType` vaut un `charId`, la pièce est
+**exclusive à ce personnage**. Aujourd'hui il n'y en a qu'une —
+`Fengshi Type Ⅲ・Tracking Mode` (`mods-150401`), `applicationType = 1504` = **Su Yi**.
+Tout personnage à pièce signature suivra ce schéma : ne jamais la proposer ailleurs.
+
+### Combien de pièces, selon le support
+
+| | Personnage | Arme normale | Arme de consonance |
+| --- | --- | --- | --- |
+| Emplacements | **8 + 1 centre** | **8**, pas de centre | **4**, pas de centre |
+| Ouverts au départ | 4 | 4 | les 4 |
+| Ouverture du reste | ascensions 1, 3, 4, 5 — centre à 2 | paliers 1, 2, 3, 4 | — |
+| Piste imposée par la case | non (`-1`) | non (`-1`) | non (`-1`) |
+| Cumul possible | `Covenanter's` à +5 | aucun | aucun |
+
+Sources : `ModSlot` / `ModSlotUnlock` dans `Char_decompiled.lua` (9 entrées, identique pour
+les 33 personnages), `Weapon_decompiled.lua` (8 entrées, 68 armes) et
+`UWeapon_decompiled.lua` (4 entrées, 14 armes de consonance).
+
+**Le centre n'existe que sur le personnage.** Un build d'arme n'a jamais de `centerItemId`.
 
 ## 2. Anatomie d'un build Demon Wedge
 
@@ -149,10 +182,18 @@ Un build dont les `track` sont laissés à `null` sera presque toujours hors lim
 - `ModSlotUnlock = [0,0,0,0,1,3,4,5,2]` : 9 emplacements (8 + centre) ; 4 disponibles
   d'emblée, les autres s'ouvrent aux ascensions 1, 3, 4, 5, et le centre à l'ascension 2.
 
-⚠️ **Ces trois données ne sont pas encore dans `src/data/`** : ni la limite `ModVolume`, ni
-`ModSlot`/`ModSlotUnlock`. `characters.json` n'expose que atk/def/hp/es/sp. Tant qu'elles
-ne sont pas extraites, aucune vérification automatique de tolérance n'est possible côté
-app — il faut la calculer à la main depuis les Lua.
+**Décision (2026-08-11) : on n'extrait PAS ces données.** La limite de tolérance est
+dynamique — elle dépend du niveau du personnage — et le site expose déjà un sélecteur de
+niveau côté lecteur (`CharacterDetailClient`, `ItemDetailClient`, via `levelup-curves`).
+Un build est une **proposition** : c'est au joueur d'ajuster son niveau, pas à nous de
+figer un plafond dans la donnée de build. `characters.json` n'expose donc que
+atk/def/hp/es/sp, et c'est volontaire.
+
+Ce qu'il faut retenir en pratique quand on écrit un build :
+
+- se caler sur la limite du **niveau 80 (= 100)**, qui est le cas de référence ;
+- **toujours renseigner les `track`** : un slot laissé à `null` coûte le prix brut au lieu
+  de la moitié, et suffit à faire passer un build de ~90 à ~160.
 
 Note : les références `T.RT_n` des Lua sont stockées **non résolues** dans nos JSON (ex.
 `fields.ApplySlot: "T.RT_2"`). Elles restent utilisables comme discriminant, mais leur
