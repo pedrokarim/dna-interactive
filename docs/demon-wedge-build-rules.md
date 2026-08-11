@@ -122,17 +122,42 @@ jamais à l'œil.
 
 Cette liste doit être mise à jour si le catalogue révèle de nouveaux Wedges centraux valides.
 
-## 4. Tolérance
+## 4. Tolérance — chiffres réels
 
-Chaque Demon Wedge a une valeur de **Tolerance**. Chaque personnage ou arme a une **Tolerance Limit**.
+Chaque Demon Wedge a un coût (`tolerance.valuesByLevel`, +1 par niveau d'amélioration).
+Chaque personnage a une **limite** : l'attribut `ModVolume`.
 
-Règle de build :
+**Valeurs extraites de `LevelUp_decompiled.lua`** (courbe par niveau) :
 
-- additionner le coût de tolérance des Wedges équipés ;
-- ne pas dépasser la limite du personnage ou de l'arme ;
-- tenir compte de l'évolution du personnage/arme, car les slots et la limite progressent avec les niveaux/ascensions.
+> **limite = 19 + niveau** → **100 au niveau 80** (niveau max des personnages).
 
-Notre builder ne calcule pas encore la tolérance complète. Donc, pour un build généré automatiquement, il faut au minimum éviter les choix absurdes et garder une note de vérification manuelle si la donnée de tolérance n'est pas disponible côté catalogue.
+C'est ce qui explique le « /100 » affiché par les guides publics.
+
+**Formule de coût** (validée : un build public annoncé à « 126/100 » se recalcule
+exactement à 126 avec ce modèle) :
+
+- piste du slot **alignée** sur la polarité de la pièce → coût **÷ 2** (arrondi au sup.) ;
+- piste **non alignée** → coût **× 1,5** ;
+- piste non renseignée → coût brut.
+
+L'alignement des pistes n'est donc pas un détail : il fait passer un build de ~160 à ~90.
+Un build dont les `track` sont laissés à `null` sera presque toujours hors limite.
+
+**Disposition des cases** (`Char_decompiled.lua`) — identique pour les 33 personnages :
+
+- `ModSlot = [-1 ×9]` : **aucune piste n'est imposée par la case**, le joueur est libre.
+- `ModSlotUnlock = [0,0,0,0,1,3,4,5,2]` : 9 emplacements (8 + centre) ; 4 disponibles
+  d'emblée, les autres s'ouvrent aux ascensions 1, 3, 4, 5, et le centre à l'ascension 2.
+
+⚠️ **Ces trois données ne sont pas encore dans `src/data/`** : ni la limite `ModVolume`, ni
+`ModSlot`/`ModSlotUnlock`. `characters.json` n'expose que atk/def/hp/es/sp. Tant qu'elles
+ne sont pas extraites, aucune vérification automatique de tolérance n'est possible côté
+app — il faut la calculer à la main depuis les Lua.
+
+Note : les références `T.RT_n` des Lua sont stockées **non résolues** dans nos JSON (ex.
+`fields.ApplySlot: "T.RT_2"`). Elles restent utilisables comme discriminant, mais leur
+valeur réelle est un tableau qu'il faut aller lire dans le fichier Lua d'origine — et la
+table `T` est **locale à chaque fichier** (le `T.RT_2` de `Char` n'est pas celui de `Mod`).
 
 ## 5. Track / polarité
 
