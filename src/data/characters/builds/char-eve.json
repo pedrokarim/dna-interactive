@@ -80,7 +80,7 @@
         },
         {
           "position": 6,
-          "itemId": "mods-51722",
+          "itemId": "mods-51728",
           "track": null
         },
         {
@@ -96,7 +96,7 @@
       ],
       "centerItemId": "mods-51725",
       "affinity": {
-        "FR": "Eveil de Quetzalcoatl",
+        "FR": "Éveil de Quetzalcoatl",
         "EN": "Feathered Serpent's Awakening"
       },
       "note": {
@@ -239,33 +239,33 @@
         },
         {
           "position": 5,
-          "itemId": "mods-51727",
-          "track": null
-        },
-        {
-          "position": 6,
           "itemId": "mods-51421",
           "track": null
         },
         {
+          "position": 6,
+          "itemId": "mods-51727",
+          "track": null
+        },
+        {
           "position": 7,
-          "itemId": "mods-51724",
+          "itemId": "mods-51727",
           "track": null
         },
         {
           "position": 8,
-          "itemId": "mods-51722",
+          "itemId": "mods-51723",
           "track": null
         }
       ],
-      "centerItemId": "mods-41725",
+      "centerItemId": "mods-31512",
       "affinity": {
-        "FR": "Eveil de Quetzalcoatl",
-        "EN": "Feathered Serpent's Awakening"
+        "FR": "Essor de Quetzalcoatl",
+        "EN": "Feathered Serpent's Prance"
       },
       "note": {
-        "FR": "Centre 4 etoiles en attendant la version 5 etoiles. Remplacer un Blaze・Inspo par un Siren's Wings・Inspo des qu'il est disponible.",
-        "EN": "4-star core until the 5-star version drops. Swap one Blaze・Inspo for a Siren's Wings・Inspo as soon as it becomes available."
+        "FR": "Centre 3 etoiles generique, accessible tres tot : on bascule sur Eveil de Quetzalcoatl 5 etoiles une fois le rang d'epreuve 60 atteint. On triple le Covenanter's Volition – Awakening en attendant les pieces manquantes.",
+        "EN": "Generic 3-star core, available very early: switch to the 5-star Feathered Serpent's Awakening once Trial Rank 60 is reached. Triple up on Covenanter's Volition – Awakening until the missing pieces drop."
       }
     },
     "statsPriority": [

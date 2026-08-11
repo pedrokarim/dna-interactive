@@ -55,27 +55,27 @@
       "slots": [
         {
           "position": 1,
-          "itemId": "mods-51911",
+          "itemId": "mods-56112",
           "track": 4
         },
         {
           "position": 2,
-          "itemId": "mods-51331",
+          "itemId": "mods-51411",
           "track": 3
         },
         {
           "position": 3,
-          "itemId": "mods-51411",
+          "itemId": "mods-51911",
           "track": 1
         },
         {
           "position": 4,
-          "itemId": "mods-51301",
+          "itemId": "mods-51331",
           "track": null
         },
         {
           "position": 5,
-          "itemId": "mods-51712",
+          "itemId": "mods-51713",
           "track": null
         },
         {
@@ -85,19 +85,19 @@
         },
         {
           "position": 7,
-          "itemId": "mods-51711",
+          "itemId": "mods-51712",
           "track": null
         },
         {
           "position": 8,
-          "itemId": "mods-51711",
+          "itemId": "mods-51313",
           "track": null
         }
       ],
       "centerItemId": "mods-51716",
       "affinity": {
-        "FR": "Pouvoir de Quetzalcoatl",
-        "EN": "Feathered Serpent's Power"
+        "FR": "Vigueur de Quetzalcoatl",
+        "EN": "Feathered Serpent's Morale"
       },
       "note": {
         "FR": "Focus Degats + Morale. 3x Scorch.",
