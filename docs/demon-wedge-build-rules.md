@@ -211,9 +211,38 @@ Règle observée :
 - des **Track-Shift Modules** permettent de modifier la piste d'un Demon Wedge ;
 - les modules de personnage et d'arme ne sont pas interchangeables.
 
-Dans nos builds, `track` représente la piste réellement utilisée sur le slot.
+### Ce que `track` veut dire exactement
 
-⚠️ **`track` doit toujours être égal à la polarité du Wedge posé** (`affinity.id`).
+`track` ne décrit **pas** la piste du slot. Il signale qu'un **Track-Shift Module est posé
+sur cette case**, et donne la piste obtenue.
+
+| Valeur | Sens | Coût pour le joueur |
+| --- | --- | --- |
+| `null` | **aucun module posé** — la pièce n'a pas besoin d'être ajustée | rien |
+| = polarité du Wedge | un module ramène la piste sur la polarité | 1 module, coût de tolérance ÷ 2 |
+| ≠ polarité du Wedge | **erreur de saisie** | 1 module gaspillé, coût × 1,5 |
+
+⚠️ **`null` est une information, pas une donnée manquante.** Ne JAMAIS « compléter » les
+`track` à null en y recopiant la polarité : ça reviendrait à déclarer un module posé sur
+chaque case, donc à rendre le build bien plus cher qu'il ne l'est. Aujourd'hui 205 slots
+de personnage et 462 slots d'arme sont à `null`, et c'est correct.
+
+**Le nombre de `track` non nuls d'un build = le nombre de Track-Shift Modules qu'il
+exige.** Vérifié contre trois fiches publiques, exact à chaque fois :
+
+| Build | Publié | Nos données |
+| --- | --- | --- |
+| Su Yi | « Track-Shift Module Required: 5 » | 5 pistes |
+| Randy | 4 | 4 pistes |
+| Punitive Inferno (arme) | « requires 2 Track-Shift Modules » | 2 pistes |
+
+Les guides marquent d'un ✖︎ les cases sans besoin d'ajustement : c'est notre `null`.
+
+L'affichage suit la même logique — la carte porte la polarité du Wedge en haut à droite
+(toujours), et la piste ajustée en bas à gauche **seulement si `track` est renseigné**
+(`QuickBuildModal`, `trackAdjustIcon`).
+
+⚠️ **Quand `track` est renseigné, il doit être égal à la polarité du Wedge posé** (`affinity.id`).
 Un `track` qui diffère n'est pas « un build qui suppose un ajustement » : c'est une
 configuration strictement perdante, puisque le coût passe de **÷ 2** à **× 1,5**. Le
 Track-Shift Module sert justement à ramener la piste sur la polarité de la pièce, pas
