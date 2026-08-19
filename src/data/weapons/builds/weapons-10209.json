@@ -1,0 +1,53 @@
+{
+  "weaponId": "weapons-10209",
+  "demonWedges": {
+    "slots": [
+      {
+        "position": 1,
+        "itemId": "mods-202003",
+        "track": null
+      },
+      {
+        "position": 2,
+        "itemId": "mods-52004",
+        "track": null
+      },
+      {
+        "position": 3,
+        "itemId": "mods-52007",
+        "track": null
+      },
+      {
+        "position": 4,
+        "itemId": "mods-52001",
+        "track": null
+      },
+      {
+        "position": 5,
+        "itemId": "mods-52101",
+        "track": null
+      },
+      {
+        "position": 6,
+        "itemId": "mods-52102",
+        "track": null
+      },
+      {
+        "position": 7,
+        "itemId": "mods-42311",
+        "track": null
+      },
+      {
+        "position": 8,
+        "itemId": "mods-42003",
+        "track": null
+      }
+    ],
+    "affinity": null,
+    "note": {
+      "FR": "Passif orienté critique : Tranchant et Pénétration alimentent les cumuls de DGT CRIT, Poussée impérieuse reste la pièce de lance.",
+      "EN": "Crit-oriented passive: Edge and Penetration feed the CRIT Damage stacks, with Commanding Thrust as the polearm staple."
+    }
+  },
+  "note": {}
+}

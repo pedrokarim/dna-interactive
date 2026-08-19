@@ -1,0 +1,53 @@
+{
+  "weaponId": "weapons-20104",
+  "demonWedges": {
+    "slots": [
+      {
+        "position": 1,
+        "itemId": "mods-53004",
+        "track": null
+      },
+      {
+        "position": 2,
+        "itemId": "mods-53005",
+        "track": null
+      },
+      {
+        "position": 3,
+        "itemId": "mods-53007",
+        "track": null
+      },
+      {
+        "position": 4,
+        "itemId": "mods-53008",
+        "track": null
+      },
+      {
+        "position": 5,
+        "itemId": "mods-53001",
+        "track": null
+      },
+      {
+        "position": 6,
+        "itemId": "mods-53101",
+        "track": null
+      },
+      {
+        "position": 7,
+        "itemId": "mods-43002",
+        "track": null
+      },
+      {
+        "position": 8,
+        "itemId": "mods-43003",
+        "track": null
+      }
+    ],
+    "affinity": null,
+    "note": {
+      "FR": "Le passif convertit les éliminations en Taux CRIT : on garde la trame pistolet et on ajoute Tranchant pour amorcer les cumuls.",
+      "EN": "The passive turns kills into CRIT Chance: keep the pistol core and add Edge to prime the stacks."
+    }
+  },
+  "note": {}
+}

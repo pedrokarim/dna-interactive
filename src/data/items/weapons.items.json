@@ -3357,7 +3357,7 @@
       "descriptionKey": "UI_WEAPON_DESC_10209",
       "demonWedgeKey": null,
       "functionKey": "UI_Armory_Meleeweapon",
-      "passiveEffectsDescKey": null,
+      "passiveEffectsDescKey": "SKILL_10209_DESC",
       "affinityNameKey": null,
       "archiveNameKey": null
     },
@@ -3479,7 +3479,7 @@
         "description": "Its blood-soaked blade strikes straight at the heart. Before the searing lava solidifies, there remains a fleeting moment to flee.",
         "demonWedgeName": null,
         "functionLabel": "Melee Weapons",
-        "passiveEffectsDescription": null,
+        "passiveEffectsDescription": "CRIT Chance +<H>#1</>. Dealing CRIT Damage with this weapon has a <H>#2</> chance to grant 1 stack of +<H>#3</> CRIT Damage for <H>#4</>s, up to <H>#5</> stacks. This effect is removed when switching weapons.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -3505,7 +3505,7 @@
         "description": "Sa lame sanglante vise le cœur sans détour.\nTant que la lave brûlante n’a pas figé, il vous reste un instant — un seul — pour fuir votre destin.",
         "demonWedgeName": null,
         "functionLabel": "Armes de mêlée",
-        "passiveEffectsDescription": null,
+        "passiveEffectsDescription": "Taux CRIT +<H>#1</>. Lorsqu’un coup critique est infligé avec cette arme, il y a <H>#2</> de chances d’augmenter les DGT CRIT de <H>#3</> pendant <H>#4</> s. Cumulable jusqu’à <H>#5</> fois. L’effet est annulé lors du changement d’arme.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -3518,7 +3518,7 @@
         "description": "血に染まった刃先が心臓に狙いを定めているが、熱い溶岩が冷める前に、まだ逃げる時間はある。",
         "demonWedgeName": null,
         "functionLabel": "近接武器",
-        "passiveEffectsDescription": null,
+        "passiveEffectsDescription": "クリティカル率+<H>#1</>。この武器で与えたダメージがクリティカルした際、<H>#2</>の確率で<H>#4</>秒間クリティカルダメージが<H>#3</>アップする（最大<H>#5</>スタックまで重ねがけ可）。他の武器に切り替えると、この効果は消える。",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -3531,7 +3531,7 @@
         "description": "피투성이의 날카로운 칼날은 이미 심장을 향했다. 뜨거운 용암이 식기 전이니 아직 도망칠 수 있다.",
         "demonWedgeName": null,
         "functionLabel": "근접 무기",
-        "passiveEffectsDescription": null,
+        "passiveEffectsDescription": "크리티컬 확률+<H>#1</>. 해당 무기로 입힌 대미지가 크리티컬 발동 시, <H>#2</> 확률로 크리티컬 대미지가 <H>#3</> 상승한다. 지속 시간 <H>#4</>초, 최대 <H>#5</> 단계 중첩. 다른 무기로 전환 시 효과가 사라진다.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -3544,7 +3544,7 @@
         "description": "浴血的錐刃已經指向心臟，在滾燙的熔岩冷卻前，你還有逃亡的時間。",
         "demonWedgeName": null,
         "functionLabel": "近戰武器",
-        "passiveEffectsDescription": null,
+        "passiveEffectsDescription": "暴擊率+<H>#1</>。使用此武器造成的傷害暴擊時，有<H>#2</>概率提升<H>#3</>暴擊傷害，持續<H>#4</>秒，最多疊加<H>#5</>層。切換至其他武器時，失去效果。",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -9608,7 +9608,7 @@
       "descriptionKey": "UI_WEAPON_DESC_20104",
       "demonWedgeKey": null,
       "functionKey": "UI_Armory_Longrange",
-      "passiveEffectsDescKey": null,
+      "passiveEffectsDescKey": "SKILL_20104_DESC",
       "affinityNameKey": null,
       "archiveNameKey": null
     },
@@ -9730,7 +9730,7 @@
         "description": "Blood runs dry. Conviction does not.",
         "demonWedgeName": null,
         "functionLabel": "Ranged Weapons",
-        "passiveEffectsDescription": null,
+        "passiveEffectsDescription": "CRIT Damage +<H>#1</>. Defeating a target with this weapon grants 1 stack of +<H>#2</> CRIT Chance for <H>#3</>s, up to <H>#4</> stacks. This effect is removed when switching weapons.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -9743,7 +9743,7 @@
         "description": "Blood runs dry. Conviction does not.",
         "demonWedgeName": null,
         "functionLabel": "Armas a distancia",
-        "passiveEffectsDescription": null,
+        "passiveEffectsDescription": "Daño CRIT +<H>#1</>. Al derrotar a un objetivo con esta arma, obtienes 1 acumulación de Prob. CRIT +<H>#2</> durante <H>#3</> s, hasta un máximo de <H>#4</> acumulaciones. Al cambiar a otra arma, pierdes el efecto.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -9756,7 +9756,7 @@
         "description": "Le sang ardent finira par se tarir, mais la foi ne s’éteindra jamais.",
         "demonWedgeName": null,
         "functionLabel": "Armes à distance",
-        "passiveEffectsDescription": null,
+        "passiveEffectsDescription": "DGT CRIT +<H>#1</>. Lorsqu’un ennemi est vaincu avec cette arme, obtient 1 cumul augmentant le Taux CRIT de <H>#2</> pendant <H>#3</> s, jusqu’à <H>#4</> cumuls. L’effet est annulé lors du changement d’arme.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -9769,7 +9769,7 @@
         "description": "熱き血はいずれ涸れる。だが、信念は決して消えない。",
         "demonWedgeName": null,
         "functionLabel": "遠隔武器",
-        "passiveEffectsDescription": null,
+        "passiveEffectsDescription": "クリティカルダメージ+<H>#1</>。この武器で目標を倒すと、<H>#3</>秒間クリティカル率が<H>#2</>アップする（最大<H>#4</>スタックまで重ねがけ可）。他の武器に切り替えると、この効果は消える。",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -9782,7 +9782,7 @@
         "description": "끓어올랐던 피는 언젠가 말라붙지만, 신념은 결코 사라지지 않는다.",
         "demonWedgeName": null,
         "functionLabel": "원거리 무기",
-        "passiveEffectsDescription": null,
+        "passiveEffectsDescription": "크리티컬 대미지+<H>#1</>. 해당 대상 처치 시 자신이 1단계의 크리티컬 확률 <H>#2</> 상승 효과를 획득한다. 지속 시간 <H>#3</>초, 최대 <H>#4</>단계 중첩. 다른 무기로 전환 시 효과가 사라진다.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -9795,7 +9795,7 @@
         "description": "熱血終會乾涸，信念永不磨滅。",
         "demonWedgeName": null,
         "functionLabel": "遠端武器",
-        "passiveEffectsDescription": null,
+        "passiveEffectsDescription": "暴擊傷害+<H>#1</>。使用此武器擊敗目標時，獲得1層暴擊率提高<H>#2</>，持續<H>#3</>秒，最多疊加<H>#4</>層。切換至其他武器時，失去效果。",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -10689,7 +10689,7 @@
       "descriptionKey": "UI_WEAPON_DESC_20207",
       "demonWedgeKey": null,
       "functionKey": "UI_Armory_Longrange",
-      "passiveEffectsDescKey": null,
+      "passiveEffectsDescKey": "SKILL_20207_DESC",
       "affinityNameKey": null,
       "archiveNameKey": null
     },
@@ -10811,7 +10811,7 @@
         "description": "May every day we greet with a smile be one of the best days of our lives.",
         "demonWedgeName": null,
         "functionLabel": "Ranged Weapons",
-        "passiveEffectsDescription": null,
+        "passiveEffectsDescription": "Morale +<H>#1</>. When a Hydro character summons a unit, they gain 1 stack of +<H>#2</> Damage Dealt by Summons for <H>#3</>s. Max <H>#4</> stacks.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -10837,7 +10837,7 @@
         "description": "Puisse chaque jour où nous sourions être le plus beau de notre vie.",
         "demonWedgeName": null,
         "functionLabel": "Armes à distance",
-        "passiveEffectsDescription": null,
+        "passiveEffectsDescription": "Vigueur +<H>#1</>. Lorsqu’un personnage Hydro effectue une invocation, obtient 1 cumul augmentant les dégâts infligés par ses propres invocations de <H>#2</> pendant <H>#3</> s, jusqu’à <H>#4</> cumuls.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -10850,7 +10850,7 @@
         "description": "笑い合える今日という日が、これから先の人生の中で、いつだって最高の一日でありますように。",
         "demonWedgeName": null,
         "functionLabel": "遠隔武器",
-        "passiveEffectsDescription": null,
+        "passiveEffectsDescription": "高揚+<H>#1</>。水属性キャラクターが召喚ユニットを召喚した時、自身の召喚ユニットが与えるダメージが<H>#2</>上昇する効果を1スタック獲得する。持続時間<H>#3</>秒、最大<H>#4</>スタックまで重ねがけ可能。",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -10863,7 +10863,7 @@
         "description": "우리가 함께 웃을 수 있는 모든 오늘이, 너와 나의 삶에서 가장 아름다운 날이 되기를.",
         "demonWedgeName": null,
         "functionLabel": "원거리 무기",
-        "passiveEffectsDescription": null,
+        "passiveEffectsDescription": "격양+<H>#1</>. 물 속성 캐릭터가 소환물 소환 시 자신의 소환물이 입히는 대미지 <H>#2</> 상승 효과를 1단계 획득한다. 지속 시간 <H>#3</>초, 최대 <H>#4</>단계 중첩.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -10876,7 +10876,7 @@
         "description": "願我們每一個歡笑的今天，都是一生中最美好的一天。",
         "demonWedgeName": null,
         "functionLabel": "遠端武器",
-        "passiveEffectsDescription": null,
+        "passiveEffectsDescription": "昂揚+<H>#1</>。水屬性角色召喚召喚物時，獲得1層自身召喚物造成的傷害提高<H>#2</>，持續<H>#3</>秒，最多疊加<H>#4</>層。",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
