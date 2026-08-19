@@ -211,7 +211,30 @@ Règle observée :
 - des **Track-Shift Modules** permettent de modifier la piste d'un Demon Wedge ;
 - les modules de personnage et d'arme ne sont pas interchangeables.
 
-Dans nos builds, `track` représente la piste réellement utilisée sur le slot. Quand `track` diffère de la polarité naturelle de l'item, il faut considérer que le build suppose un ajustement.
+Dans nos builds, `track` représente la piste réellement utilisée sur le slot.
+
+⚠️ **`track` doit toujours être égal à la polarité du Wedge posé** (`affinity.id`).
+Un `track` qui diffère n'est pas « un build qui suppose un ajustement » : c'est une
+configuration strictement perdante, puisque le coût passe de **÷ 2** à **× 1,5**. Le
+Track-Shift Module sert justement à ramener la piste sur la polarité de la pièce, pas
+à l'en écarter. Un désalignement est donc toujours une erreur de saisie.
+
+Piège observé : en remplaçant la pièce d'un slot sans recalculer son `track`, on laisse
+la piste de l'ancienne pièce — les deux badges affichés sur la carte (polarité en haut
+à droite, piste ajustée en bas à gauche) ne correspondent alors plus. C'est visible à
+l'œil sur la fiche.
+
+Contrôle :
+
+```bash
+node -e "
+const fs=require('fs'),M=new Map(require('./src/data/items/mods.items.json').map(m=>[m.id,m]));
+for(const f of fs.readdirSync('src/data/characters/builds').filter(x=>x.endsWith('.json')))
+ for(const b of JSON.parse(fs.readFileSync('src/data/characters/builds/'+f,'utf8')))
+  for(const s of b.demonWedges.slots)
+   if(s.track!=null && s.track!==M.get(s.itemId)?.affinity?.id) console.log(f,'p'+s.position);
+"
+```
 
 ## 6. Méthode pour créer un build cohérent
 

@@ -56,7 +56,7 @@
         {
           "position": 1,
           "itemId": "mods-56112",
-          "track": 4
+          "track": 2
         },
         {
           "position": 2,
@@ -66,12 +66,12 @@
         {
           "position": 3,
           "itemId": "mods-51911",
-          "track": 3
+          "track": 4
         },
         {
           "position": 4,
           "itemId": "mods-51331",
-          "track": 2
+          "track": 3
         },
         {
           "position": 5,
@@ -86,12 +86,12 @@
         {
           "position": 7,
           "itemId": "mods-51712",
-          "track": 1
+          "track": 2
         },
         {
           "position": 8,
           "itemId": "mods-51717",
-          "track": 1
+          "track": 4
         }
       ],
       "centerItemId": "mods-51716",
