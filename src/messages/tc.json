@@ -185,7 +185,9 @@
     "showcaseDescription": "可從每個角色頁面匯出 PNG 的配裝卡。武器、Demon Wedge、Genimon、數值優先順序與推薦隊伍，全部收於一張圖。",
     "viewAllCharacters": "檢視所有角色",
     "velkaineAlt": "Velkaine — Duet Night Abyss 實況主與內容創作者",
-    "viewBuildOf": "檢視 {name} 的配裝"
+    "viewBuildOf": "檢視 {name} 的配裝",
+    "openBuildOf": "開啟 {name} 的配裝",
+    "openBuildsOf": "開啟 {name} 的 {count} 套配裝"
   },
   "banner": {
     "newMapTitle": "新地圖已上線！",

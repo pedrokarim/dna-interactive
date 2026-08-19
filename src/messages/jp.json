@@ -185,7 +185,9 @@
     "showcaseDescription": "各キャラクターページからPNGでエクスポートできるビルドカード。武器、Demon Wedge、ジェニモン、ステータス優先度、推奨編成をひとつのビジュアルに。",
     "viewAllCharacters": "すべてのキャラクターを見る",
     "velkaineAlt": "Velkaine — Duet Night Abyssのストリーマー兼コンテンツクリエイター",
-    "viewBuildOf": "{name}のビルドを見る"
+    "viewBuildOf": "{name}のビルドを見る",
+    "openBuildOf": "{name}のビルドを開く",
+    "openBuildsOf": "{name}の{count}件のビルドを開く"
   },
   "banner": {
     "newMapTitle": "新マップ公開！",

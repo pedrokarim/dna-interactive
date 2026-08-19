@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { Suspense } from "react";
 import ItemDetailClient from "@/components/items/ItemDetailClient";
-import { getWeaponBuild } from "@/lib/items/weapon-builds";
+import { getWeaponBuilds } from "@/lib/items/weapon-builds";
 import ItemsSuspenseFallback from "@/components/items/ItemsSuspenseFallback";
 import {
   getItemByCategoryAndId,
@@ -91,7 +91,7 @@ export default async function ItemDetailPage({ params }: ItemDetailPageProps) {
   }
 
   const t = await getTranslations("common");
-  const weaponBuild = category.id === "weapons" ? getWeaponBuild(item.id, locale.toUpperCase()) : null;
+  const weaponBuilds = category.id === "weapons" ? getWeaponBuilds(item.id, locale.toUpperCase()) : [];
 
   return (
     <Suspense
@@ -101,7 +101,7 @@ export default async function ItemDetailPage({ params }: ItemDetailPageProps) {
         category={category}
         item={item}
         relatedDrafts={getDraftRecipesForItem(category.id, item.modId)}
-        weaponBuild={weaponBuild}
+        weaponBuilds={weaponBuilds}
       />
     </Suspense>
   );

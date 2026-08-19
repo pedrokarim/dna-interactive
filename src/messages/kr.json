@@ -185,7 +185,9 @@
     "showcaseDescription": "각 캐릭터 페이지에서 PNG로 내보낼 수 있는 빌드 카드. 무기, Demon Wedge, 제니몬, 스탯 우선순위, 추천 팀을 하나의 이미지에.",
     "viewAllCharacters": "모든 캐릭터 보기",
     "velkaineAlt": "Velkaine — Duet Night Abyss 스트리머 겸 콘텐츠 크리에이터",
-    "viewBuildOf": "{name}의 빌드 보기"
+    "viewBuildOf": "{name}의 빌드 보기",
+    "openBuildOf": "{name}의 빌드 열기",
+    "openBuildsOf": "{name}의 빌드 {count}개 열기"
   },
   "banner": {
     "newMapTitle": "새 맵 공개!",

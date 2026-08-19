@@ -185,7 +185,9 @@
     "showcaseDescription": "Des cartes de build exportables en PNG, directement sur chaque fiche personnage. Armes, Demon Wedge, Génimons, priorités stats et équipe recommandée — tout en un visuel.",
     "viewAllCharacters": "Voir tous les personnages",
     "velkaineAlt": "Velkaine — streameur et créateur de contenu Duet Night Abyss",
-    "viewBuildOf": "Voir le build de {name}"
+    "viewBuildOf": "Voir le build de {name}",
+    "openBuildOf": "Ouvrir le build de {name}",
+    "openBuildsOf": "Ouvrir les {count} builds de {name}"
   },
   "banner": {
     "newMapTitle": "Nouvelle map disponible !",

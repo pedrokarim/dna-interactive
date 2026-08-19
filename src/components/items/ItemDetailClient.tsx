@@ -17,6 +17,7 @@ import type { RelatedDraftRecipe } from "@/lib/items/drafts";
 import { resolveDraftTextByLanguage } from "@/lib/items/drafts";
 import { itemsFavoritesAtom, toggleItemFavoriteAtom } from "@/lib/store";
 import { DnaPanel } from "@/components/dna/Panel";
+import { DnaSegmented } from "@/components/dna/Segmented";
 import { DnaSectionLabel } from "@/components/dna/SectionLabel";
 import { DnaStatRow } from "@/components/dna/StatRow";
 import { DnaStars } from "@/components/dna/RarityStars";
@@ -50,7 +51,8 @@ type ItemDetailClientProps = {
   item: ItemRecord;
   relatedDrafts?: RelatedDraftRecipe[];
   /** Build de Demon Wedges canonique de l'arme (armes uniquement). */
-  weaponBuild?: WeaponBuild | null;
+  /** Builds de Demon Wedges de l'arme. Une arme peut en porter plusieurs. */
+  weaponBuilds?: WeaponBuild[];
 };
 
 function formatRawFieldValue(value: ItemRawField): string {
@@ -284,7 +286,9 @@ function parseBattlePetAttributes(value: ItemRawField | undefined): ParsedBattle
   return attributes;
 }
 
-export default function ItemDetailClient({ category, item, relatedDrafts = [], weaponBuild = null }: ItemDetailClientProps) {
+export default function ItemDetailClient({ category, item, relatedDrafts = [], weaponBuilds = [] }: ItemDetailClientProps) {
+  const [activeWeaponBuildIndex, setActiveWeaponBuildIndex] = useState(0);
+  const weaponBuild = weaponBuilds[activeWeaponBuildIndex] ?? weaponBuilds[0] ?? null;
   const t = useTranslations('itemDetail');
   const tc = useTranslations('common');
   const [favoriteItems] = useAtom(itemsFavoritesAtom);
@@ -828,6 +832,23 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
       {isWeaponsCategory && weaponBuild && weaponBuild.demonWedges.slots.length > 0 ? (
         <DnaPanel className="p-4 md:p-5">
           <DnaSectionLabel>{t("weaponBuildTitle")}</DnaSectionLabel>
+          {weaponBuilds.length > 1 ? (
+            <div className="mt-3 flex justify-center">
+              <DnaSegmented
+                ariaLabel={t("weaponBuildTitle")}
+                value={String(activeWeaponBuildIndex)}
+                onChange={(v: string) => setActiveWeaponBuildIndex(Number(v))}
+                options={weaponBuilds.map((b, i) => ({
+                  value: String(i),
+                  label:
+                    b.buildName?.[selectedLanguage] ??
+                    b.buildName?.EN ??
+                    b.buildName?.FR ??
+                    `#${i + 1}`,
+                }))}
+              />
+            </div>
+          ) : null}
           <div className="mt-5">
             <DemonWedgeLayout
               slots={weaponBuild.demonWedges.slots}

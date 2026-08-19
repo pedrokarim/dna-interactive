@@ -4,9 +4,15 @@ import { resolveBuildItemRef, type ResolvedItemRef } from "@/lib/characters/buil
 import type { ItemRecord } from "@/lib/items/types";
 
 // ---------------------------------------------------------------------------
-// Builds de Demon Wedges d'ARME (canoniques, 1 par arme).
-// Cf. docs/cadrage-builds-armes.md. Structure = 8 slots + une affinité (élément),
-// PAS de centre item (le centre d'arme = sélecteur d'affinité, pas un wedge).
+// Builds de Demon Wedges d'ARME. Cf. docs/cadrage-builds-armes.md.
+// Structure = 8 slots + une affinité (élément), PAS de centre item (le centre
+// d'arme est un sélecteur d'affinité, pas un wedge).
+//
+// Une arme peut porter PLUSIEURS builds : `allWeaponBuilds` est une liste plate
+// et la résolution se fait par `weaponId`, donc il suffit d'ajouter un fichier
+// supplémentaire avec le même `weaponId` et un `buildName` distinct. Aucune
+// migration des 68 fichiers existants n'est nécessaire — ils restent valides
+// comme build unique et sans nom.
 // ---------------------------------------------------------------------------
 
 interface RawLocalizedText {
@@ -21,6 +27,8 @@ interface RawWeaponWedgeSlot {
 
 export interface RawWeaponBuild {
   weaponId: string;
+  /** Nom du build, requis seulement quand une arme en porte plusieurs. */
+  buildName?: RawLocalizedText;
   demonWedges: {
     slots: RawWeaponWedgeSlot[];
     /** Affinité du build (clé d'élément : "Fire"|"Water"|… ) — le « centre » de l'arme. */
@@ -38,6 +46,7 @@ export interface WeaponBuildSlot {
 
 export interface WeaponBuild {
   weaponId: string;
+  buildName: RawLocalizedText;
   demonWedges: {
     slots: WeaponBuildSlot[];
     affinity: string | null;
@@ -48,12 +57,10 @@ export interface WeaponBuild {
 
 const rawWeaponBuilds = allWeaponBuilds as unknown as RawWeaponBuild[];
 
-/** Build de Demon Wedges canonique d'une arme (résolu), ou null si absent. */
-export function getWeaponBuild(weaponId: string, lang: string = "FR"): WeaponBuild | null {
-  const raw = rawWeaponBuilds.find((b) => b.weaponId === weaponId);
-  if (!raw) return null;
+function resolveWeaponBuild(raw: RawWeaponBuild, lang: string): WeaponBuild {
   return {
     weaponId: raw.weaponId,
+    buildName: raw.buildName ?? {},
     demonWedges: {
       slots: (raw.demonWedges?.slots ?? []).map((s) => ({
         position: s.position,
@@ -65,6 +72,17 @@ export function getWeaponBuild(weaponId: string, lang: string = "FR"): WeaponBui
     },
     note: raw.note ?? {},
   };
+}
+
+/** Tous les builds de Demon Wedges d'une arme, dans l'ordre du catalogue. */
+export function getWeaponBuilds(weaponId: string, lang: string = "FR"): WeaponBuild[] {
+  return rawWeaponBuilds.filter((b) => b.weaponId === weaponId).map((raw) => resolveWeaponBuild(raw, lang));
+}
+
+/** Premier build d'une arme, ou null. Raccourci pour les vues qui n'en montrent qu'un. */
+export function getWeaponBuild(weaponId: string, lang: string = "FR"): WeaponBuild | null {
+  const raw = rawWeaponBuilds.find((b) => b.weaponId === weaponId);
+  return raw ? resolveWeaponBuild(raw, lang) : null;
 }
 
 // ---------------------------------------------------------------------------

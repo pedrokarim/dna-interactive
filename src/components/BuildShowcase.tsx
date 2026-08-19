@@ -18,21 +18,30 @@ import { getCharacterBuilds } from "@/lib/characters/builds";
 // Clicking a peek card (or an arrow / nav button) promotes it to active.
 // ---------------------------------------------------------------------------
 
-// Visual order: left | middle (hero / default active) | right
-const FEATURED_IDS = ["char-linen", "char-saiqi", "char-feina"] as const;
+// Visual order: left | middle (hero / default active) | right.
+// `buildIndex` choisit EXPLICITEMENT le build mis en vitrine quand le
+// personnage en porte plusieurs (Psyche a un build endgame et un milieu de
+// jeu). Sans lui on retombait sur builds[0], donc sur l'ordre du fichier JSON :
+// réordonner les entrées changeait la vitrine sans que personne le décide.
+const FEATURED: ReadonlyArray<{ id: string; buildIndex?: number }> = [
+  { id: "char-linen" },
+  { id: "char-saiqi", buildIndex: 0 },
+  { id: "char-feina" },
+];
 
 export default function BuildShowcase() {
   const lang = useLocale().toUpperCase();
   const t = useTranslations("common");
   const tHome = useTranslations("home");
-  const featured = FEATURED_IDS.map((id) => {
+  const featured = FEATURED.map(({ id, buildIndex = 0 }) => {
     const character = getCharacterById(id);
-    const build = character ? getCharacterBuilds(character.id, lang)[0] : undefined;
+    const builds = character ? getCharacterBuilds(character.id, lang) : [];
+    const build = builds[buildIndex] ?? builds[0];
     if (!character || !build) return null;
-    return { character, build };
+    return { character, build, buildCount: builds.length };
   }).filter((x): x is NonNullable<typeof x> => x !== null);
 
-  const [active, setActive] = useState(Math.floor(FEATURED_IDS.length / 2));
+  const [active, setActive] = useState(Math.floor(FEATURED.length / 2));
 
   if (featured.length === 0) return null;
 
@@ -184,7 +193,9 @@ export default function BuildShowcase() {
             className="dna-shine group inline-flex items-center justify-center gap-2 rounded-sm border border-gold bg-gradient-to-b from-gold-deep/40 to-ink/70 px-6 py-3 text-sm font-medium text-gold-bright transition-all duration-200 hover:-translate-y-px hover:border-gold-bright hover:text-[#fff6e6]"
           >
             <FileImage className="h-4 w-4" />
-            Ouvrir le build de {activeName}
+            {activeEntry.buildCount > 1
+              ? tHome("openBuildsOf", { name: activeName, count: activeEntry.buildCount })
+              : tHome("openBuildOf", { name: activeName })}
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
           </Link>
           <Link
