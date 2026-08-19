@@ -8,37 +8,37 @@
     "weapons": {
       "melee": [
         {
-          "itemId": "weapons-10301",
+          "itemId": "weapons-10501",
           "rank": "best",
           "note": {
-            "FR": "Arme signature. Duree + buff degats Pyro.",
-            "EN": "Signature weapon. Duration + Pyro damage buff."
+            "FR": "Meilleur choix malgre l'arme signature : PV max +100%, et ses degats montent avec les PV.",
+            "EN": "Better than her own signature: Max HP +100%, and her damage scales off HP."
           }
         },
         {
-          "itemId": "weapons-10501",
+          "itemId": "weapons-10301",
           "rank": "alternative",
           "note": {
-            "FR": "PV max +100%. Ameliore le scaling PV.",
-            "EN": "Max HP +100%. Enhances HP scaling."
+            "FR": "Arme signature (Fureur incandescente) : duree de competence et buff de degats Pyro, mais en retrait.",
+            "EN": "Signature weapon (Punitive Inferno): skill duration and a Pyro damage buff, but it falls behind."
           }
         }
       ],
       "ranged": [
         {
-          "itemId": "weapons-20201",
+          "itemId": "weapons-20302",
           "rank": "best",
           "note": {
-            "FR": "Degats de competence +48%.",
-            "EN": "Skill Damage +48%."
+            "FR": "Canon : degats de competence sur la duree, le meilleur relais a distance pour son scaling PV.",
+            "EN": "Cannon: sustained Skill Damage, the best ranged partner for her HP scaling."
           }
         },
         {
           "itemId": "weapons-20301",
           "rank": "alternative",
           "note": {
-            "FR": "Option lance-grenades. Stats offensives.",
-            "EN": "Grenade launcher option. Offensive stats."
+            "FR": "Option lance-grenades, stats offensives.",
+            "EN": "Grenade launcher option, offensive stats."
           }
         }
       ]
@@ -184,37 +184,37 @@
     "weapons": {
       "melee": [
         {
-          "itemId": "weapons-10301",
+          "itemId": "weapons-10501",
           "rank": "best",
           "note": {
-            "FR": "Arme signature. Duree + buff degats Pyro.",
-            "EN": "Signature weapon. Duration + Pyro damage buff."
+            "FR": "Meilleur choix malgre l'arme signature : PV max +100%, et ses degats montent avec les PV.",
+            "EN": "Better than her own signature: Max HP +100%, and her damage scales off HP."
           }
         },
         {
-          "itemId": "weapons-10501",
+          "itemId": "weapons-10301",
           "rank": "alternative",
           "note": {
-            "FR": "PV max +100%. Ameliore le scaling PV.",
-            "EN": "Max HP +100%. Enhances HP scaling."
+            "FR": "Arme signature (Fureur incandescente) : duree de competence et buff de degats Pyro, mais en retrait.",
+            "EN": "Signature weapon (Punitive Inferno): skill duration and a Pyro damage buff, but it falls behind."
           }
         }
       ],
       "ranged": [
         {
-          "itemId": "weapons-20201",
+          "itemId": "weapons-20302",
           "rank": "best",
           "note": {
-            "FR": "Degats de competence +48%.",
-            "EN": "Skill Damage +48%."
+            "FR": "Canon : degats de competence sur la duree, le meilleur relais a distance pour son scaling PV.",
+            "EN": "Cannon: sustained Skill Damage, the best ranged partner for her HP scaling."
           }
         },
         {
           "itemId": "weapons-20301",
           "rank": "alternative",
           "note": {
-            "FR": "Option lance-grenades. Stats offensives.",
-            "EN": "Grenade launcher option. Offensive stats."
+            "FR": "Option lance-grenades, stats offensives.",
+            "EN": "Grenade launcher option, offensive stats."
           }
         }
       ]
