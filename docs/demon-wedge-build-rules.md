@@ -166,8 +166,26 @@ Chaque personnage a une **limite** : l'attribut `ModVolume`.
 
 C'est ce qui explique le « /100 » affiché par les guides publics.
 
-**Formule de coût** (validée : un build public annoncé à « 126/100 » se recalcule
-exactement à 126 avec ce modèle) :
+**Formule de coût — hypothèse NON validée.** Les rapports ÷2 / ×1,5 viennent des guides,
+mais aucun modèle testé ne reproduit les totaux publiés :
+
+| Build | Publié | Notre somme brute | Après ajustements |
+| --- | --- | --- | --- |
+| Su Yi | 149 | 129 | 84 |
+| Randy | 152 | 134 | 92 |
+| Camilla | 126 | 104 | 58 |
+| Punitive Inferno (arme) | 98 | 90 | 68 |
+
+> **Correction.** Ce mémo affirmait la formule « validée » parce qu'un build se recalculait
+> à 126. C'était une erreur d'attribution : le 126 publié est celui de **Camilla** (dont la
+> somme brute vaut 104), et le 126 que j'avais calculé était celui d'un brouillon **Hilda**.
+> Deux builds différents, coïncidence de chiffres.
+
+Piste non explorée : le centre monte le plafond (« Sidestep +5 increases the character's
+max Tolerance »), donc la limite n'est pas figée à 100 et le total affiché ne se lit
+peut-être pas comme une simple somme. Ne pas présenter un coût calculé comme certain.
+
+Rapports retenus (à confirmer) :
 
 - piste du slot **alignée** sur la polarité de la pièce → coût **÷ 2** (arrondi au sup.) ;
 - piste **non alignée** → coût **× 1,5** ;
@@ -222,13 +240,19 @@ sur cette case**, et donne la piste obtenue.
 | = polarité du Wedge | un module ramène la piste sur la polarité | 1 module, coût de tolérance ÷ 2 |
 | ≠ polarité du Wedge | **erreur de saisie** | 1 module gaspillé, coût × 1,5 |
 
-⚠️ **`null` est une information, pas une donnée manquante.** Ne JAMAIS « compléter » les
-`track` à null en y recopiant la polarité : ça reviendrait à déclarer un module posé sur
-chaque case, donc à rendre le build bien plus cher qu'il ne l'est. Aujourd'hui 205 slots
-de personnage et 462 slots d'arme sont à `null`, et c'est correct.
+⚠️ **Ne JAMAIS « compléter » les `track` à null en y recopiant la polarité** : ça
+déclarerait un module posé sur chaque case et rendrait le build bien plus cher qu'il ne
+l'est.
 
-**Le nombre de `track` non nuls d'un build = le nombre de Track-Shift Modules qu'il
-exige.** Vérifié contre trois fiches publiques, exact à chaque fois :
+⚠️ **Mais `null` est ambigu chez nous** : il vaut soit « aucun module nécessaire », soit
+« non documenté ». On ne peut pas distinguer les deux. Contrôle : la source annonce **8**
+modules pour le build endgame de Rebecca, notre fiche n'en porte que **2** ; même écart sur
+Fushu. Sur 37 builds, **17 n'ont aucune piste renseignée** — ce n'est pas crédible comme
+« aucun n'en a besoin ». Ne pas affirmer qu'un build sans piste n'exige aucun module.
+
+**Quand les pistes sont documentées, leur nombre = le nombre de Track-Shift Modules
+exigés.** Exact sur les trois builds vérifiés — mais l'échantillon est partiel, et deux
+autres builds montrent au contraire un sous-comptage (voir plus bas) :
 
 | Build | Publié | Nos données |
 | --- | --- | --- |
