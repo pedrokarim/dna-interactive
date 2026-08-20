@@ -11,24 +11,24 @@
           "itemId": "weapons-10107",
           "rank": "best",
           "note": {
-            "FR": "Chainbreak Pinion - arme signature (Epee, v1.4). Augmente la Morale et accorde des buffs de degats par Combo Point. Meilleure arme melee de Flora.",
-            "EN": "Chainbreak Pinion - signature weapon (Sword, v1.4). Increases Morale and grants damage buffs per Combo Point. Flora's best melee weapon."
+            "FR": "Plume affranchie : Moral et degats Ombre par Points de Combo, taille pour son kit.",
+            "EN": "Chainbreak Pinion: Morale and Umbro damage per Combo Point, tailor-made for her kit."
+          }
+        },
+        {
+          "itemId": "weapons-10604",
+          "rank": "alternative",
+          "note": {
+            "FR": "Katana : portee d'ATQ et degats d'attaque normale.",
+            "EN": "Katana: ATK Range and Normal ATK damage."
           }
         },
         {
           "itemId": "weapons-10402",
           "rank": "alternative",
           "note": {
-            "FR": "Aureate Yore - CRIT DMG +125%, les Sliding Attacks gagnent +150% CRIT Chance. Solide alternative a la signature.",
-            "EN": "Aureate Yore - CRIT DMG +125%, Sliding Attacks gain +150% CRIT Chance. Solid alternative to the signature."
-          }
-        },
-        {
-          "itemId": "weapons-10601",
-          "rank": "alternative",
-          "note": {
-            "FR": "Momiji Itteki - CRIT DMG +125%, Degats infliges +18% plus +18% par Combo Level. Bonne seconde alternative.",
-            "EN": "Momiji Itteki - CRIT DMG +125%, Damage Dealt +18% plus +18% per Combo Level. Solid second alternative."
+            "FR": "Troisieme choix de la fiche.",
+            "EN": "Third pick on the sheet."
           }
         }
       ],
@@ -56,22 +56,22 @@
         {
           "position": 1,
           "itemId": "mods-56112",
-          "track": null
+          "track": 2
         },
         {
           "position": 2,
           "itemId": "mods-51413",
-          "track": null
+          "track": 1
         },
         {
           "position": 3,
           "itemId": "mods-51911",
-          "track": null
+          "track": 4
         },
         {
           "position": 4,
           "itemId": "mods-51321",
-          "track": null
+          "track": 3
         },
         {
           "position": 5,
@@ -81,7 +81,7 @@
         {
           "position": 6,
           "itemId": "mods-51711",
-          "track": null
+          "track": 1
         },
         {
           "position": 7,
