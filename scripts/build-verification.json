@@ -41,6 +41,16 @@
       "source": "560794",
       "note": "pistes posees depuis le tableau HTML"
     },
+    "char-heitao": {
+      "verifiedAt": "2026-08-20",
+      "source": "560808",
+      "note": "3 modules (1,2,3) ; composition verifiee case par case dans le HTML"
+    },
+    "char-kami": {
+      "verifiedAt": "2026-08-20",
+      "source": "570658",
+      "note": "7 modules (tout sauf la case 5) ; composition verifiee case par case"
+    },
     "char-kezhou": {
       "verifiedAt": "2026-08-20",
       "source": "567201",

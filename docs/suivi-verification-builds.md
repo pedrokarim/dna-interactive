@@ -1,6 +1,6 @@
 # Suivi de vérification des builds
 
-**Avancement : 25 / 27 personnages vérifiés.**
+**Avancement : 27 / 27 personnages vérifiés.**
 Première vérification : 2026-08-20 · dernière : 2026-08-20.
 
 Généré par `node scripts/verif-build.mjs --mark <id> <source>`. Ne pas éditer à la main.
@@ -29,9 +29,9 @@ plus ancien.
 | 15 | Zhiliu | Electro | — | ✅ 2026-08-20 | 567185 | arme distance -> Rendhusk ; arme signature : 1 Track-Shift case 1 |
 | 16 | Sibylle | Electro | — | ✅ 2026-08-20 | 560801 | pistes posees depuis le tableau HTML |
 | 17 | Tabethe | Hydro | — | ✅ 2026-08-20 | 560790 | pistes posees depuis le tableau HTML |
-| 18 | Berenica | Umbro | — | ⬜ à faire |  |  |
+| 18 | Berenica | Umbro | — | ✅ 2026-08-20 | 560808 | 3 modules (1,2,3) ; composition verifiee case par case dans le HTML |
 | 19 | Phantasio | Umbro | — | ✅ 2026-08-20 | 560807 | pistes posees depuis le tableau HTML |
-| 20 | Camilla | Pyro | — | ⬜ à faire |  |  |
+| 20 | Camilla | Pyro | — | ✅ 2026-08-20 | 570658 | 7 modules (tout sauf la case 5) ; composition verifiee case par case |
 | 21 | Margie | Pyro | — | ✅ 2026-08-20 | 560796 | pistes posees depuis le tableau HTML |
 | 22 | Hellfire | Pyro | — | ✅ 2026-08-20 | 560794 | pistes posees depuis le tableau HTML |
 | 23 | Yale and Oliver | Pyro | — | ✅ 2026-08-20 | 560795 | pistes posees depuis le tableau HTML |
@@ -40,4 +40,4 @@ plus ancien.
 | 26 | Rhythm | Electro | — | ✅ 2026-08-20 | 560803 | pistes posees depuis le tableau HTML |
 | 27 | Randy | Electro | — | ✅ 2026-08-20 | 560802 | pistes posees depuis le tableau HTML |
 
-➡ **Suivant :** Berenica (`char-heitao`)
+🎉 **Tous les personnages sont vérifiés.**
