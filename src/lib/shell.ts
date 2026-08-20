@@ -33,7 +33,6 @@ export const SHELL_NAV_PRIMARY: ShellNavEntry[] = [
   { key: "builder", href: NAVIGATION.builder, badge: "new", badgeUntil: "2026-10-01" },
   { key: "builds", href: NAVIGATION.builds },
   { key: "commissions", href: NAVIGATION.commissions, badge: "beta", badgeUntil: "2026-12-31" },
-  { key: "codes", href: NAVIGATION.codes },
 ];
 
 /** Pages « à propos du site ». */
@@ -68,31 +67,42 @@ export function resolveShellBadges(now: Date): Record<string, ShellBadge> {
 
 /* ------------------------------------------------------------ fil d'Ariane */
 
-/** Fil d'Ariane mono de la topbar, par préfixe de route (correspondance la plus longue). */
+/**
+ * Fil d'Ariane de la topbar, par préfixe de route (correspondance la plus
+ * longue). Rendu par `DnaSectionMark` : losange + capitales romaines.
+ *
+ * Vocabulaire relevé dans les données du jeu (Hall, Sceau, Tome, Chronique,
+ * Atlasia…) plutôt qu'un chemin de fichier en monospace : les anciens libellés
+ * `//OPERATOR.DATABASE` venaient d'une maquette faite pour Arknights Endfield,
+ * dont « Operator » est d'ailleurs le mot maison. Termes latins ou musicaux, à
+ * dessein : ils tiennent tels quels dans les 7 locales.
+ */
 const SHELL_BREADCRUMBS: Record<string, string> = {
-  "/": "//COMMUNITY.HUB",
-  "/about": "//ABOUT.PROJECT",
-  "/admin/calendar": "//ADMIN.CALENDAR",
-  "/builder": "//BUILD.FORGE",
-  "/builds": "//SHARED.LOADOUTS",
-  "/calendar": "//EVENT.CALENDAR",
-  "/changelog": "//PATCH.NOTES",
-  "/characters": "//OPERATOR.DATABASE",
-  "/codes": "//REDEEM.CODES",
-  "/commissions": "//COVERT.OPS.LIVE",
-  "/confidentialite": "//PRIVACY.POLICY",
-  "/contact": "//CONTACT.CHANNEL",
-  "/forgot-password": "//ACCOUNT.RESET",
-  "/items": "//GEAR.DATABASE",
-  "/login": "//ACCOUNT.LOGIN",
-  "/profile": "//ACCOUNT.PROFILE",
-  "/reset-password": "//ACCOUNT.RESET",
-  "/signup": "//ACCOUNT.SIGNUP",
-  "/support": "//SUPPORT.DESK",
-  "/verify-email": "//ACCOUNT.VERIFY",
+  "/": "Le Grand Hall",
+  "/about": "Colophon",
+  "/admin/calendar": "Éphémérides · Intendance",
+  "/builder": "La Forge",
+  "/builds": "Partitions",
+  "/calendar": "Éphémérides",
+  "/changelog": "Le Registre",
+  "/characters": "Le Chœur",
+  "/commissions": "Commissions",
+  "/confidentialite": "Confidentialité",
+  "/contact": "Missive",
+  "/forgot-password": "Le Seuil",
+  "/items": "Le Reliquaire",
+  "/items/drafts": "Hall de l'Ouvrage",
+  "/items/genimons": "Genimons",
+  "/items/weapons": "Arsenal",
+  "/login": "Le Seuil",
+  "/profile": "Votre Sceau",
+  "/reset-password": "Le Seuil",
+  "/signup": "Le Pacte",
+  "/support": "Mécénat",
+  "/verify-email": "Le Seuil",
 };
 
-const DEFAULT_BREADCRUMB = "//COMMUNITY.HUB";
+const DEFAULT_BREADCRUMB = "Le Grand Hall";
 
 /** `pathname` sans préfixe de locale → fil d'Ariane de la topbar. */
 export function resolveBreadcrumb(pathname: string): string {

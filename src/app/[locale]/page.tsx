@@ -1,7 +1,6 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import { generatePageMetadata, pageMetadata } from "@/lib/metadata";
-import HomeHubClient, { type HomeBuildCard, type HomeCode } from "@/components/home/HomeHubClient";
-import { GAME_CODES } from "@/lib/store";
+import HomeHubClient, { type HomeBuildCard } from "@/components/home/HomeHubClient";
 import { getAllCharacters, getCharacterById, resolveCharacterDisplayName } from "@/lib/characters/catalog";
 import { getItemCatalog } from "@/lib/items/catalog";
 import { getTopBuilds, getBuildsTotal } from "@/lib/community-builds/list";
@@ -77,13 +76,8 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
     };
   });
 
-  const codes: HomeCode[] = GAME_CODES.filter((c) => !c.expired)
-    .slice(0, 3)
-    .map((c) => ({ code: c.code, reward: c.rewards.join(" · ") }));
-
   return (
     <HomeHubClient
-      codes={codes}
       builds={builds}
       communityCount={fmt.format(buildsTotal)}
       stats={{

@@ -1,15 +1,13 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import {
   ArrowRight,
   Bot,
   Boxes,
   Calendar,
-  Check,
   Compass,
-  Copy,
   Database,
   Eye,
   FileStack,
@@ -27,7 +25,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { Link } from "@/i18n/navigation";
-import { DnaCornerBrackets, DnaNouveau, DnaTag, DnaRibbon, cn } from "@/components/dna";
+import { DnaCornerBrackets, DnaNouveau, DnaTag, DnaRibbon, DnaSectionMark, cn } from "@/components/dna";
 import { EventCalendar } from "@/components/home/EventCalendar";
 import NewCharactersBanner from "@/components/NewCharactersBanner";
 import CommunityCards from "@/components/CommunityCards";
@@ -36,7 +34,6 @@ import type { CalendarEvent } from "@/lib/events/calendar";
 import { useAppSettings } from "@/lib/settings/useAppSettings";
 import { CONTACT_INFO } from "@/lib/constants";
 
-export type HomeCode = { code: string; reward: string };
 export type HomeBuildCard = {
   id: string;
   title: string;
@@ -49,7 +46,6 @@ export type HomeBuildCard = {
   tint: string;
 };
 export type HomeHubClientProps = {
-  codes: HomeCode[];
   builds: HomeBuildCard[];
   communityCount: string;
   stats: { characters: string; items: string; builds: string };
@@ -80,7 +76,8 @@ const CTA_GHOST = cn(
 type ToolCard = {
   href: string;
   title: string;
-  mono: string;
+  /** Repère de section — losange + capitales, cf. `DnaSectionMark`. */
+  mark: string;
   desc: string;
   icon: LucideIcon;
   badge?: string;
@@ -113,7 +110,7 @@ function ToolTile({ card, className }: { card: ToolCard; className?: string }) {
           <span className="font-display text-lg text-parch group-hover:text-gold-bright">{card.title}</span>
           {card.badge ? <DnaNouveau className="ml-1">{card.badge}</DnaNouveau> : null}
         </div>
-        <span className="font-mono text-[0.62rem] tracking-wide text-muted">{card.mono}</span>
+        <DnaSectionMark size="sm">{card.mark}</DnaSectionMark>
         <span className="mt-auto max-w-[88%] text-[0.8rem] leading-snug text-parch/75">{card.desc}</span>
       </div>
     </>
@@ -146,39 +143,6 @@ function SectionRibbon({ label, index, action }: { label: string; index?: string
     </div>
   );
 }
-
-function CodeCard({ code, reward }: HomeCode) {
-  const t = useTranslations("homeHub");
-  const [copied, setCopied] = useState(false);
-  const copy = () => {
-    try {
-      void navigator.clipboard?.writeText(code);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1500);
-    } catch {
-      /* clipboard indisponible */
-    }
-  };
-  return (
-    <div className="relative flex items-center justify-between gap-4 overflow-hidden rounded-sm border border-line/20 bg-panel/70 p-4">
-      <DnaCornerBrackets size={10} className="opacity-40" />
-      <div className="min-w-0">
-        <div className="font-mono text-lg font-semibold tracking-wide text-gold-bright">{code}</div>
-        <div className="mt-0.5 truncate text-[0.78rem] text-parch/70">{reward}</div>
-      </div>
-      <button
-        type="button"
-        onClick={copy}
-        aria-label={t("copyCodeAria", { code })}
-        className="flex shrink-0 items-center gap-1.5 rounded-sm border border-gold/40 bg-gold/8 px-3 py-1.5 font-caps text-[0.6rem] uppercase tracking-[0.14em] text-gold transition-colors hover:border-gold hover:text-gold-bright"
-      >
-        {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
-        {copied ? t("copied") : t("copy")}
-      </button>
-    </div>
-  );
-}
-
 
 function BuildShowcaseCard({ build }: { build: HomeBuildCard }) {
   const t = useTranslations("homeHub");
@@ -219,7 +183,6 @@ function BuildShowcaseCard({ build }: { build: HomeBuildCard }) {
 /* ---------------------------------------------------------------- page (POC) */
 
 export default function HomeHubClient({
-  codes,
   builds,
   communityCount,
   stats,
@@ -232,20 +195,20 @@ export default function HomeHubClient({
   const t = useTranslations("homeHub");
   const { commissionsVisible } = useAppSettings();
   const databaseCards: ToolCard[] = [
-    { href: "/characters", title: t("charactersTitle"), mono: "//ROSTER.DATABASE", desc: t("charactersDescription"), icon: Users, bg: "/assets/worldview/worldview-3.webp", tint: "var(--color-gold)" },
-    { href: "/items", title: t("itemsTitle"), mono: "//GEAR.INDEX", desc: t("itemsDescription"), icon: Boxes, bg: "/assets/worldview/worldview-5.webp", tint: "var(--color-anemo)" },
-    { href: "/items/weapons", title: t("weaponsTitle"), mono: "//HYPER.ARSENAL", desc: t("weaponsDescription"), icon: Swords, badge: t("new"), bg: "/assets/worldview/worldview-8.webp", tint: "var(--color-pyro)" },
-    { href: "/items/genimons", title: t("genimonsTitle"), mono: "//COMPANION.PODEX", desc: t("genimonsDescription"), icon: Gem, bg: "/assets/worldview/worldview-9.webp", tint: "var(--color-hydro)" },
+    { href: "/characters", title: t("charactersTitle"), mark: "Le Chœur", desc: t("charactersDescription"), icon: Users, bg: "/assets/worldview/worldview-3.webp", tint: "var(--color-gold)" },
+    { href: "/items", title: t("itemsTitle"), mark: "Le Reliquaire", desc: t("itemsDescription"), icon: Boxes, bg: "/assets/worldview/worldview-5.webp", tint: "var(--color-anemo)" },
+    { href: "/items/weapons", title: t("weaponsTitle"), mark: "Arsenal", desc: t("weaponsDescription"), icon: Swords, badge: t("new"), bg: "/assets/worldview/worldview-8.webp", tint: "var(--color-pyro)" },
+    { href: "/items/genimons", title: t("genimonsTitle"), mark: "Genimons", desc: t("genimonsDescription"), icon: Gem, bg: "/assets/worldview/worldview-9.webp", tint: "var(--color-hydro)" },
   ];
   const toolCards: ToolCard[] = [
-    { href: "/builder", title: t("buildBuilderTitle"), mono: "//BUILD.FORGE", desc: t("buildBuilderDescription"), icon: Hammer, badge: t("new"), bg: "/assets/worldview/worldview-10.webp", tint: "var(--color-electro)" },
-    { href: "/map", title: t("mapTitle"), mono: "//REGION.SURVEY.MAP", desc: t("mapShortDescription"), icon: MapIcon, bg: "/assets/worldview/worldview-6.webp", tint: "var(--color-hydro)" },
-    { href: "/items/drafts", title: t("draftsTitle"), mono: "//CRAFT.BLUEPRINTS", desc: t("draftsDescription"), icon: FileStack, bg: "/assets/worldview/worldview-11.webp", tint: "var(--color-gold)" },
-    { href: "/changelog", title: t("changelogTitle"), mono: "//PATCH.NOTES", desc: t("changelogDescription"), icon: Wrench, bg: "/assets/official-v1.3/bg.webp", tint: "var(--color-umbro)" },
+    { href: "/builder", title: t("buildBuilderTitle"), mark: "La Forge", desc: t("buildBuilderDescription"), icon: Hammer, badge: t("new"), bg: "/assets/worldview/worldview-10.webp", tint: "var(--color-electro)" },
+    { href: "/map", title: t("mapTitle"), mark: "Atlas d'Atlasia", desc: t("mapShortDescription"), icon: MapIcon, bg: "/assets/worldview/worldview-6.webp", tint: "var(--color-hydro)" },
+    { href: "/items/drafts", title: t("draftsTitle"), mark: "Hall de l'Ouvrage", desc: t("draftsDescription"), icon: FileStack, bg: "/assets/worldview/worldview-11.webp", tint: "var(--color-gold)" },
+    { href: "/changelog", title: t("changelogTitle"), mark: "Le Registre", desc: t("changelogDescription"), icon: Wrench, bg: "/assets/official-v1.3/bg.webp", tint: "var(--color-umbro)" },
   ];
   const communityCards: ToolCard[] = [
-    { href: "/commissions", title: t("commissionsTitle"), mono: "//COVERT.OPS.LIVE", desc: t("commissionsDescription"), icon: ScrollText, bg: "/assets/worldview/worldview-4.webp", tint: "var(--color-pyro)" },
-    { href: CONTACT_INFO.discord.url, title: "Discord", mono: "//COMMUNITY.HALL", desc: t("discordDescription"), icon: Bot, bg: "/assets/worldview/worldview-1.webp", tint: "var(--color-electro)", external: true },
+    { href: "/commissions", title: t("commissionsTitle"), mark: "Commissions", desc: t("commissionsDescription"), icon: ScrollText, bg: "/assets/worldview/worldview-4.webp", tint: "var(--color-pyro)" },
+    { href: CONTACT_INFO.discord.url, title: "Discord", mark: "Le Grand Hall", desc: t("discordDescription"), icon: Bot, bg: "/assets/worldview/worldview-1.webp", tint: "var(--color-electro)", external: true },
   ];
   const visibleCommunityCards = commissionsVisible
     ? communityCards
@@ -293,7 +256,7 @@ export default function HomeHubClient({
           <div className="flex items-end justify-between gap-3">
             <div>
               <h2 className="font-display text-2xl text-parch">{t("featuredSelection")}</h2>
-              <span className="font-mono text-[0.7rem] text-muted">{"//FEATURED.THIS.WEEK"}</span>
+              <DnaSectionMark size="sm">{t("featuredThisWeek")}</DnaSectionMark>
             </div>
             <Link href="/changelog" className={cn(CTA_GHOST, "px-4 py-2 text-xs")}><Sparkles className="h-4 w-4" />{t("whatsNew")}</Link>
           </div>
@@ -309,7 +272,7 @@ export default function HomeHubClient({
             </div>
             <div className="relative">
               <h3 className="font-display text-3xl text-parch group-hover:text-gold-bright sm:text-4xl">{t("mapTitle")}</h3>
-              <span className="font-mono text-xs text-muted">{"//REGION.SURVEY.MAP"}</span>
+              <DnaSectionMark size="sm">{"Atlas d'Atlasia"}</DnaSectionMark>
             </div>
             <div className="relative flex items-center justify-between gap-3">
               <p className="max-w-sm text-sm text-parch/75">{t("mapDescription")}</p>
@@ -318,9 +281,9 @@ export default function HomeHubClient({
           </Link>
 
           <div className="grid gap-4 sm:grid-cols-2">
-            <ToolTile card={{ href: "/builder", title: "Builder", mono: "//BUILD.FORGE", desc: t("builderDescription"), icon: Hammer, badge: t("new"), bg: "/assets/worldview/worldview-2.webp", tint: "var(--color-electro)" }} />
+            <ToolTile card={{ href: "/builder", title: "Builder", mark: "La Forge", desc: t("builderDescription"), icon: Hammer, badge: t("new"), bg: "/assets/worldview/worldview-2.webp", tint: "var(--color-electro)" }} />
             {commissionsVisible ? (
-              <ToolTile card={{ href: "/commissions", title: t("commissionsTitle"), mono: "//COVERT.OPS.LIVE", desc: t("commissionsDescription"), icon: ScrollText, bg: "/assets/worldview/worldview-4.webp", tint: "var(--color-pyro)" }} />
+              <ToolTile card={{ href: "/commissions", title: t("commissionsTitle"), mark: "Commissions", desc: t("commissionsDescription"), icon: ScrollText, bg: "/assets/worldview/worldview-4.webp", tint: "var(--color-pyro)" }} />
             ) : null}
           </div>
         </div>
@@ -359,7 +322,7 @@ export default function HomeHubClient({
         <SectionRibbon label={t("community")} index="01" />
         <ToolTile
           className="min-h-[104px]"
-          card={{ href: "/builds", title: t("communityBuildsTitle"), mono: "//SHARED.LOADOUTS", desc: t("communityBuildsDescription"), icon: Layers, badge: t("new"), bg: "/assets/worldview/worldview-7.webp", tint: "var(--color-anemo)" }}
+          card={{ href: "/builds", title: t("communityBuildsTitle"), mark: "Partitions", desc: t("communityBuildsDescription"), icon: Layers, badge: t("new"), bg: "/assets/worldview/worldview-7.webp", tint: "var(--color-anemo)" }}
         />
         <div className="grid gap-4 sm:grid-cols-2">
           {visibleCommunityCards.map((c) => (
@@ -368,20 +331,6 @@ export default function HomeHubClient({
         </div>
       </section>
 
-      {/* =============================================== CODES CADEAUX */}
-      {codes.length > 0 ? (
-        <section className="mt-10 flex flex-col gap-4">
-          <SectionRibbon
-            label={t("giftCodes")}
-            action={<Link href="/codes" className="font-caps text-[0.6rem] uppercase tracking-[0.16em] text-gold hover:text-gold-bright">{t("allCodes")} →</Link>}
-          />
-          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-            {codes.map((c) => (
-              <CodeCard key={c.code} code={c.code} reward={c.reward} />
-            ))}
-          </div>
-        </section>
-      ) : null}
 
       {/* =============================================== CALENDRIER DES ÉVÉNEMENTS */}
       <section className="mt-10 flex flex-col gap-4">

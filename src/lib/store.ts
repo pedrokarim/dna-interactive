@@ -10,122 +10,6 @@ const markedMarkersStorageAtom = atomWithStorage<string[]>(
 );
 
 
-export interface GameCode {
-  id: string;
-  code: string;
-  rewards: string[];
-  isNew?: boolean;
-  expired?: boolean;
-  expiresAt?: string;
-}
-
-// Liste des codes disponibles (triés: nouveaux en premier, puis actifs, puis expirés)
-export const GAME_CODES: GameCode[] = [
-  // Nouveaux codes actifs (décembre 2025) - TOUJOURS EN HAUT
-  {
-    id: "icxfap",
-    code: "ICXFAP",
-    rewards: ["Récompenses à confirmer"], // Luno's Gift - Eternal Merriment | Winter's Invitation
-    isNew: true,
-  },
-  {
-    id: "dnagift",
-    code: "DNAGIFT",
-    rewards: ["100 Carmine Globule", "20,000 Coins", "5 Combat Melody I"],
-    isNew: true,
-  },
-  {
-    id: "dnabyssgift",
-    code: "DNABYSSGIFT",
-    rewards: ["20 Phoxene", "20,000 Coins", "10 Combat Melody I"],
-    isNew: true,
-  },
-  {
-    id: "dnallaunch",
-    code: "DNALAUNCH",
-    rewards: ["30,000 Coins", "10 Weapon Manual I", "10 Combat Melody I"],
-    isNew: true,
-  },
-  {
-    id: "epicgamesdna",
-    code: "EPICGAMESDNA",
-    rewards: [
-      "10,000 Coins",
-      "5 Combat Melody I",
-      "1 Basic Weapon Component: Grip",
-    ],
-    isNew: true,
-  },
-  {
-    id: "denaabiniiji",
-    code: "DENAABINIJI",
-    rewards: [
-      "200 Carmine Globule",
-      "20,000 Coins",
-      "2 Commission Manual: Volume I",
-    ],
-    isNew: true,
-  },
-  {
-    id: "dnaglobal",
-    code: "DNAGLOBAL",
-    rewards: ["20 Phoxene", "20,000 Coins", "10 Combat Melody I"],
-    isNew: true,
-  },
-  {
-    id: "dnalive",
-    code: "DNALIVE",
-    rewards: [
-      "10,000 Coins",
-      "2 Combat Manual: Volume I",
-      "1 Basic Weapon Component: Blade",
-    ],
-    isNew: true,
-  },
-
-  // Codes du livestream "The Wind Awakening" (expirent le 24 décembre 2025 à 23:59 UTC+8)
-  {
-    id: "huaxuawaits",
-    code: "HUAXUAWAITS",
-    rewards: ["100 Phoxene", "3 Combat Melody III", "100 Carmine Globule"],
-    isNew: true,
-    expiresAt: "24 décembre 2025",
-  },
-  {
-    id: "thewindawakening",
-    code: "THEWINDAWAKENING",
-    rewards: ["100 Phoxene", "3 Weapon Manual III", "100 Carmine Globule"],
-    isNew: true,
-    expiresAt: "24 décembre 2025",
-  },
-  {
-    id: "dna20251223",
-    code: "DNA20251223",
-    rewards: ["100 Phoxene", "30,000 Coins", "100 Carmine Globule"],
-    isNew: true,
-    expiresAt: "24 décembre 2025",
-  },
-
-  // Codes expirés
-  {
-    id: "dnarelease",
-    code: "DNARELEASE",
-    rewards: ["100 Phoxene", "3 Combat Melody III", "100 Carmine Globule"],
-    expired: true,
-  },
-  {
-    id: "dnafreeplay",
-    code: "DNAFREEPLAY",
-    rewards: ["100 Phoxene", "3 Weapon Manual III", "100 Carmine Globule"],
-    expired: true,
-  },
-  {
-    id: "dna1028",
-    code: "DNA1028",
-    rewards: ["100 Phoxene", "30,000 Coins", "100 Carmine Globule"],
-    expired: true,
-  },
-];
 
 // Atoms avec persistance
 // Atome pour la carte sélectionnée (sans persistance automatique pour éviter les conflits)
@@ -328,20 +212,6 @@ export const toggleCharacterFavoriteAtom = atom(
   },
 );
 
-// Atome de stockage pour les codes utilisés
-const usedCodesStorageAtom = atomWithStorage<string[]>("used-codes", []);
-
-// Atome dérivé pour convertir entre Set et Array pour les codes utilisés
-export const usedCodesAtom = atom(
-  (get) => {
-    const stored = get(usedCodesStorageAtom);
-    return new Set(Array.isArray(stored) ? stored : []);
-  },
-  (get, set, newValue: Set<string>) => {
-    set(usedCodesStorageAtom, Array.from(newValue));
-  }
-);
-
 // Atome dérivé pour convertir entre Set et Array
 export const markedMarkersAtom = atom(
   (get) => {
@@ -386,20 +256,3 @@ export const resetAllMarkersAtom = atom(null, (get, set) => {
   set(markedMarkersAtom, new Set());
 });
 
-// Actions pour les codes
-export const toggleCodeUsedAtom = atom(null, (get, set, codeId: string) => {
-  const currentUsed = get(usedCodesAtom);
-  const newUsed = new Set(currentUsed);
-
-  if (newUsed.has(codeId)) {
-    newUsed.delete(codeId);
-  } else {
-    newUsed.add(codeId);
-  }
-
-  set(usedCodesAtom, newUsed);
-});
-
-export const resetAllCodesAtom = atom(null, (get, set) => {
-  set(usedCodesAtom, new Set());
-});

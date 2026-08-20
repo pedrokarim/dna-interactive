@@ -28,7 +28,6 @@ export type MetadataKey =
   | "items"
   | "characters"
   | "commissions"
-  | "codes"
   | "about"
   | "contact"
   | "support"
@@ -302,27 +301,6 @@ export const pageMetadata = {
     ],
     image: "/assets/worldview/worldview-5.webp",
     path: "/commissions",
-  },
-  codes: {
-    key: "codes",
-    keywords: [
-      "codes de rédemption",
-      "codes promo",
-      "Duet Night Abyss",
-      "DNA codes",
-      "récompenses gratuites",
-      "bonus jeu",
-      "codes actifs",
-      "rédeem codes",
-      "Duet Night Abyss codes",
-      "DNA Interactive codes",
-      "promotion",
-      "bonus exclusifs",
-      "mise à jour codes",
-      "récompenses jeu",
-    ],
-    image: "/assets/worldview/worldview-3.webp",
-    path: "/codes",
   },
   about: {
     key: "about",

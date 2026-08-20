@@ -24,7 +24,6 @@ export default async function SiteFooter({ active }: { active?: string }) {
     [NAVIGATION.builder]: tNav("builder"),
     [NAVIGATION.builds]: tNav("builds"),
     [NAVIGATION.commissions]: tNav("commissions"),
-    [NAVIGATION.codes]: tNav("codes"),
     [NAVIGATION.about]: tNav("about"),
     [NAVIGATION.support]: tNav("support"),
     [NAVIGATION.contact]: tNav("contact"),

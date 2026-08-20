@@ -21,13 +21,12 @@ import {
   ChevronsRight,
   ScrollText,
   Sparkles,
-  Ticket,
   Users,
   X,
   type LucideIcon,
 } from "lucide-react";
 import { Link, usePathname } from "@/i18n/navigation";
-import { DnaNouveau, DnaPill, cn, useDialogA11y } from "@/components/dna";
+import { DnaNouveau, DnaPill, DnaSectionMark, cn, useDialogA11y } from "@/components/dna";
 import { SidebarProfile, TopbarAccount } from "@/components/auth/AccountControls";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { NotificationBell } from "@/components/notifications/NotificationBell";
@@ -59,7 +58,6 @@ const NAV_ICONS: Record<string, LucideIcon> = {
   builder: Hammer,
   builds: Layers,
   commissions: ScrollText,
-  codes: Ticket,
   features: LayoutGrid,
   changelog: Sparkles,
   about: Info,
@@ -414,9 +412,9 @@ export function AppShell({ children, badges = {}, copyrightYears = "2025" }: App
             <span className="font-caps text-sm uppercase tracking-[0.28em] text-gold-bright">DNA</span>
             {/* Repère décoratif : un `aria-label` sur un span sans rôle n'étant
                 pas exposé, on le laisse en simple texte. */}
-            <span className="hidden truncate font-mono text-[0.7rem] text-muted sm:inline">
+            <DnaSectionMark size="sm" className="hidden max-w-[16rem] sm:inline-flex">
               {resolveBreadcrumb(pathname)}
-            </span>
+            </DnaSectionMark>
           </div>
 
           <div className="ml-auto flex items-center gap-2 sm:gap-3">

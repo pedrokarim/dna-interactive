@@ -26,18 +26,18 @@
 | Guide catégorie | `/items/[category]/about` | ✅ | Hérite `AppShell`. Pas de `<main>` propre. |
 | Plans de forge | `/items/drafts` (+ `[draftId]`) | ✅ | Hérite `AppShell`. |
 | Favoris | `/items/favoris` | ✅ | Hérite `AppShell` ; `ItemsGridClient` (en-tête déjà en gabarit). |
-| Builder | `/builder` | ✅ | `page.tsx` → `AppShell` (//BUILD.FORGE), pleine largeur. |
-| Builds communauté | `/builds` | ✅ | `page.tsx` → `AppShell` (//SHARED.LOADOUTS), pleine largeur. En-tête `DnaSectionLabel` conservé (à harmoniser en gabarit plus tard). |
-| Build (fiche) | `/builds/[id]` | ✅ | `page.tsx` → `AppShell` (//SHARED.LOADOUTS), pleine largeur. |
-| Commissions | `/commissions` | ✅ | `page.tsx` → `AppShell` (//COVERT.OPS.LIVE), pleine largeur. |
-| Codes | `/codes` | ✅ | `page.tsx` → `AppShell` (//REDEEM.CODES), pleine largeur. |
-| Changelog | `/changelog` | ✅ | `changelog/layout.tsx` → `AppShell` (//PATCH.NOTES). Contenu centré lisible conservé. |
-| À propos | `/about` | ✅ | `page.tsx` → `AppShell` (//ABOUT.PROJECT). |
-| Support | `/support` | ✅ | `page.tsx` → `AppShell` (//SUPPORT.DESK). |
-| Contact | `/contact` | ✅ | `contact/layout.tsx` → `AppShell` (//CONTACT.CHANNEL). |
-| Profil | `/profile` | ✅ | `page.tsx` → `AppShell` (//ACCOUNT.PROFILE). |
+| Builder | `/builder` | ✅ | `page.tsx` → `AppShell` (repère de section), pleine largeur. |
+| Builds communauté | `/builds` | ✅ | `page.tsx` → `AppShell` (repère de section), pleine largeur. En-tête `DnaSectionLabel` conservé (à harmoniser en gabarit plus tard). |
+| Build (fiche) | `/builds/[id]` | ✅ | `page.tsx` → `AppShell` (repère de section), pleine largeur. |
+| Commissions | `/commissions` | ✅ | `page.tsx` → `AppShell` (repère de section), pleine largeur. |
+| ~~Codes~~ | ~~`/codes`~~ | ❌ | Fonctionnalité **supprimée** (août 2026) : page, composant, store jotai, nav, sitemap, métadonnées et traductions retirés ; `/{locale}/codes` redirige en 301 vers l'accueil. |
+| Changelog | `/changelog` | ✅ | `changelog/layout.tsx` → `AppShell` (repère de section). Contenu centré lisible conservé. |
+| À propos | `/about` | ✅ | `page.tsx` → `AppShell` (repère de section). |
+| Support | `/support` | ✅ | `page.tsx` → `AppShell` (repère de section). |
+| Contact | `/contact` | ✅ | `contact/layout.tsx` → `AppShell` (repère de section). |
+| Profil | `/profile` | ✅ | `page.tsx` → `AppShell` (repère de section). |
 | Admin | `/admin` | ➖ | Back-office gated (404 pour non-admin), chrome propre `AdminDashboardClient` — laissé standalone comme la carte (hors nav publique). À basculer si souhaité. |
-| Confidentialité | `/confidentialite` | ✅ | `page.tsx` → `AppShell` (//PRIVACY.POLICY). |
+| Confidentialité | `/confidentialite` | ✅ | `page.tsx` → `AppShell` (repère de section). |
 
 ## Systèmes fonctionnels à câbler (front prêt, backend plus tard)
 
@@ -112,3 +112,7 @@ adossés au système de connexion (auth Discord déjà en place, cf. builder com
 3. Reskiner l'en-tête en gabarit : eyebrow `font-mono` `// LABEL`, titre `font-display` XL, soulignement `bg-gold`, compteur en `DnaCornerBrackets` haut-droite. Ne PAS toucher la logique (filtres, tri, pagination, data).
 4. Élargir les grilles (`2xl:grid-cols-*`) pour exploiter l'espace.
 5. i18n : réutiliser les clés existantes, ne pas coder de FR en dur.
+
+> **Note (août 2026)** — les repères `//MACHIN.TRUC` en monospace, hérités d'une maquette
+> faite pour Arknights Endfield, ont été remplacés par `DnaSectionMark` (losange + capitales
+> Cinzel) et un lexique tiré des données du jeu. Le lexique vit dans `src/lib/shell.ts`.

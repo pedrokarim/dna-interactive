@@ -27,6 +27,18 @@ const nextConfig: NextConfig = {
   // Optimisation SEO
   compress: true,
   poweredByHeader: false,
+  async redirects() {
+    return [
+      {
+        // `/codes` (codes de rédemption) a été retiré du site. La page était
+        // indexée : on renvoie vers l'accueil de la locale plutôt que de
+        // servir un 404 aux visiteurs qui arrivent encore par la recherche.
+        source: '/:locale(fr|en|de|es|jp|kr|tc)/codes',
+        destination: '/:locale',
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     // CSP "enforcée" : uniquement les directives qui NE restreignent PAS le
     // chargement des scripts/styles/images → aucun risque de casser le rendu
