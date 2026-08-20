@@ -1,0 +1,15 @@
+{
+  "_comment": "Suivi de vérification des builds contre leur fiche publique. Écrit par scripts/verif-build.mjs.",
+  "characters": {
+    "char-eve": {
+      "verifiedAt": "2026-08-20",
+      "source": "606756",
+      "note": "personnage + arme signature (2 builds d'arme)"
+    },
+    "char-zhiliu": {
+      "verifiedAt": "2026-08-20",
+      "source": "567185",
+      "note": "arme distance -> Rendhusk ; arme signature : 1 Track-Shift case 1"
+    }
+  }
+}
