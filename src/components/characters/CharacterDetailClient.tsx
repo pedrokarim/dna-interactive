@@ -3,6 +3,7 @@
 import { Link } from "@/i18n/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { useConfirm } from "@/components/dna/ConfirmProvider";
+import CursorTooltip from "@/components/CursorTooltip";
 import { type ComponentType, type CSSProperties, type PointerEvent as ReactPointerEvent, Fragment, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { toPng } from "html-to-image";
@@ -561,8 +562,11 @@ function DemonWedgeSlotCard({
     </div>
   );
 
+  // Infobulle portalisee dans le body. En `absolute`, elle se faisait decouper par
+  // les conteneurs `overflow-hidden` de la page : sur la fiche d'arme elle etait
+  // coupee net au bord du panneau.
   const tooltip = slot.item ? (
-    <div className="pointer-events-none absolute left-1/2 top-full z-50 mt-2 hidden w-64 -translate-x-1/2 border border-white/10 bg-ink/95 p-3 text-sm shadow-[0_20px_40px_rgba(0,0,0,0.65)] group-hover:block">
+    <>
       <p className="font-medium text-parch">{name}</p>
       <div className="mt-1.5 flex flex-wrap gap-1 text-[11px]">
         <span className="rounded-sm border border-white/10 px-2 py-0.5 text-parch">
@@ -582,20 +586,27 @@ function DemonWedgeSlotCard({
       {slot.item.description && (
         <p className="mt-2 text-xs leading-relaxed text-muted">{slot.item.description}</p>
       )}
-    </div>
+    </>
   ) : null;
 
+  const trigger = href ? (
+    <Link href={href} className="block transition-transform duration-150 hover:scale-105">
+      {card}
+    </Link>
+  ) : (
+    card
+  );
+
   return (
-    <div className="group relative flex flex-col items-center gap-1.5 hover:z-50">
-      {href ? (
-        <Link href={href} className="block transition-transform duration-150 hover:scale-105">
-          {card}
-        </Link>
+    <div className="relative flex flex-col items-center gap-1.5">
+      {tooltip ? (
+        <CursorTooltip as="block" width={256} content={tooltip}>
+          {trigger}
+        </CursorTooltip>
       ) : (
-        card
+        trigger
       )}
       <p className="max-w-[8rem] truncate text-center text-xs text-parch/85">{name}</p>
-      {tooltip}
     </div>
   );
 }
@@ -624,36 +635,45 @@ function DemonWedgeCenterSlot({
     </div>
   );
 
+  const centerTooltip = centerItem ? (
+    <>
+      <p className="font-medium text-parch">{name}</p>
+      <div className="mt-1.5 flex flex-wrap gap-1 text-[11px]">
+        <span className="rounded-sm border border-white/10 px-2 py-0.5 text-parch">
+          #{centerItem.modId}
+        </span>
+        {centerItem.rarity !== null && (
+          <span className="rounded-sm border border-gold/40 bg-gold/10 px-2 py-0.5 text-gold">
+            {centerItem.rarity}★
+          </span>
+        )}
+      </div>
+      {centerItem.description && (
+        <p className="mt-2 text-xs leading-relaxed text-muted">{centerItem.description}</p>
+      )}
+    </>
+  ) : null;
+
+  const centerTrigger = href ? (
+    <Link href={href} className="block transition-transform duration-150 hover:scale-105">
+      {circle}
+    </Link>
+  ) : (
+    circle
+  );
+
   return (
-    <div className="group relative flex flex-col items-center gap-2 px-2 hover:z-50">
-      {href ? (
-        <Link href={href} className="block transition-transform duration-150 hover:scale-105">
-          {circle}
-        </Link>
+    <div className="relative flex flex-col items-center gap-2 px-2">
+      {centerTooltip ? (
+        <CursorTooltip as="block" width={256} content={centerTooltip}>
+          {centerTrigger}
+        </CursorTooltip>
       ) : (
-        circle
+        centerTrigger
       )}
       <p className="max-w-[8rem] text-center text-xs font-medium text-parch/85">
         {name ?? <BuildLocalizedText texts={affinity} lang={lang} />}
       </p>
-      {centerItem && (
-        <div className="pointer-events-none absolute left-1/2 top-full z-50 mt-2 hidden w-64 -translate-x-1/2 border border-white/10 bg-ink/95 p-3 text-sm shadow-[0_20px_40px_rgba(0,0,0,0.65)] group-hover:block">
-          <p className="font-medium text-parch">{name}</p>
-          <div className="mt-1.5 flex flex-wrap gap-1 text-[11px]">
-            <span className="rounded-sm border border-white/10 px-2 py-0.5 text-parch">
-              #{centerItem.modId}
-            </span>
-            {centerItem.rarity !== null && (
-              <span className="rounded-sm border border-gold/40 bg-gold/10 px-2 py-0.5 text-gold">
-                {centerItem.rarity}★
-              </span>
-            )}
-          </div>
-          {centerItem.description && (
-            <p className="mt-2 text-xs leading-relaxed text-muted">{centerItem.description}</p>
-          )}
-        </div>
-      )}
     </div>
   );
 }
