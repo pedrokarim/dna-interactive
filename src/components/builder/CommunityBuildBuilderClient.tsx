@@ -387,7 +387,7 @@ export function CommunityBuildBuilderClient({
       const slots = emptyWedgeSlots(8).map((slot) => {
         const found = entry.demonWedges!.slots.find((s) => s.position === slot.position);
         const item = itemById(options.mods, found?.itemId);
-        return found && item ? { position: slot.position, item, track: normalizeTrack(found.track ?? item.polarity) } : slot;
+        return found && item ? { position: slot.position, item, track: normalizeTrack(found.track) } : slot;
       });
       nextWeaponWedges[entry.itemId] = { slots, affinity: asElementKey(entry.demonWedges.affinity) };
     }
@@ -404,7 +404,7 @@ export function CommunityBuildBuilderClient({
       emptyWedgeSlots(8).map((slot) => {
         const found = next.demonWedges.slots.find((entry) => entry.position === slot.position);
         const item = itemById(options.mods, found?.itemId);
-        return found && item ? { position: slot.position, item, track: normalizeTrack(found.track ?? item.polarity) } : slot;
+        return found && item ? { position: slot.position, item, track: normalizeTrack(found.track) } : slot;
       }),
     );
     const nextCenterItem = itemById(options.mods, next.demonWedges.centerItemId);
