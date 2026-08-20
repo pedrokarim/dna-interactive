@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Repères de section — sortir du dialecte Endfield</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Jost:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap">
+
+<style>
+  :root{
+    --ink:#0a0a0b; --ink-2:#161513; --panel:#141310;
+    --gold:#c2a86a; --gold-bright:#e3cd95; --gold-deep:#897240;
+    --crimson:#8e1813; --crimson-bright:#b5302a;
+    --parch:#ece4d2; --muted:#9a907c; --muted-2:#6a6150;
+    --line:rgba(194,168,106,.22); --line-strong:rgba(194,168,106,.45);
+    --caps:"Cinzel",serif;
+    --display:"Cormorant Garamond",Georgia,serif;
+    --sans:"Jost",system-ui,sans-serif;
+    --mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background-color:var(--ink);
+    background-image:
+      radial-gradient(120% 90% at 82% 2%, rgba(142,24,19,.16), transparent 55%),
+      radial-gradient(130% 100% at 8% 98%, rgba(36,78,86,.16), transparent 60%),
+      linear-gradient(175deg,#0d0b08 0%,#0a0a0b 48%,#08110f 100%);
+    background-attachment:fixed;
+    color:var(--parch);
+    font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1020px;margin:0 auto;padding:clamp(2.5rem,6vw,4.5rem) clamp(1.1rem,4vw,2.5rem) 6rem}
+
+  .kicker{font-family:var(--caps);font-size:.62rem;font-weight:600;text-transform:uppercase;
+    letter-spacing:.34em;color:var(--gold);display:flex;align-items:center;gap:.7rem}
+  .kicker::after{content:"";height:1px;flex:1;background:linear-gradient(to right,var(--line),transparent)}
+
+  h1{font-family:var(--caps);font-weight:700;font-size:clamp(1.9rem,5.2vw,3.2rem);line-height:1.07;
+    margin:1.3rem 0 0;color:var(--gold-bright);text-wrap:balance}
+  .lede{font-family:var(--display);font-size:clamp(1.08rem,2.2vw,1.32rem);line-height:1.55;
+    color:var(--muted);margin:1rem 0 0;max-width:62ch}
+  .lede em{color:var(--parch);font-style:italic}
+
+  h2{font-family:var(--caps);font-weight:600;font-size:clamp(1.15rem,2.6vw,1.5rem);
+    color:var(--parch);margin:0;letter-spacing:.04em;text-wrap:balance}
+  h3{font-family:var(--caps);font-weight:600;font-size:1rem;color:var(--gold-bright);margin:0;letter-spacing:.06em}
+  p{margin:0;max-width:70ch}
+  p+p{margin-top:.85rem}
+  strong{color:var(--parch);font-weight:500}
+  code{font-family:var(--mono);font-size:.82em;color:var(--gold-bright);
+    background:rgba(194,168,106,.09);padding:.1em .38em;border-radius:2px}
+
+  section{margin-top:clamp(3rem,6.5vw,4.5rem);display:flex;flex-direction:column;gap:1.4rem}
+  .sec-head{display:flex;flex-direction:column;gap:.5rem}
+  .sec-head .num{font-family:var(--caps);font-size:.6rem;letter-spacing:.3em;color:var(--gold-deep);text-transform:uppercase}
+
+  .panel{background:linear-gradient(180deg,rgba(22,21,19,.9),rgba(16,15,13,.9));
+    border:1px solid var(--line);padding:clamp(1.1rem,3vw,1.7rem);position:relative}
+  .panel::before,.panel::after{content:"";position:absolute;width:9px;height:9px;border:1px solid var(--line-strong)}
+  .panel::before{top:-1px;left:-1px;border-right:0;border-bottom:0}
+  .panel::after{bottom:-1px;right:-1px;border-left:0;border-top:0}
+
+  .diag{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+  .diag .cell{border-left:2px solid var(--crimson);padding:.15rem 0 .15rem 1rem}
+  .diag .cell h4{font-family:var(--caps);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--crimson-bright);margin:0 0 .4rem;font-weight:600}
+  .diag .cell p{font-size:.9rem;color:var(--muted)}
+
+  /* deux registres du monde */
+  .registers{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+  .reg{border:1px solid var(--line);padding:1.1rem 1.2rem;display:flex;flex-direction:column;gap:.6rem}
+  .reg.faith{background:radial-gradient(130% 120% at 0% 0%,rgba(227,205,149,.09),transparent 60%)}
+  .reg.machine{background:radial-gradient(130% 120% at 100% 0%,rgba(95,168,255,.07),transparent 60%)}
+  .reg h4{font-family:var(--caps);font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--gold);margin:0;font-weight:600}
+  .reg p{font-size:.88rem;color:var(--muted)}
+  .words{display:flex;flex-wrap:wrap;gap:.35rem}
+  .w{font-family:var(--caps);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--gold-bright);border:1px solid var(--line);padding:.24rem .5rem;background:rgba(10,10,11,.5)}
+  .w small{color:var(--muted-2);font-family:var(--mono);letter-spacing:0;margin-left:.35rem;font-size:.9em}
+
+  /* spécimens */
+  .spec+.spec{margin-top:1.5rem}
+  .spec-head{display:flex;align-items:baseline;gap:.9rem;flex-wrap:wrap;
+    padding-bottom:.7rem;border-bottom:1px solid var(--line);margin-bottom:1.1rem}
+  .spec-head .tag{font-family:var(--caps);font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-deep)}
+  .spec-head .why{font-family:var(--display);font-style:italic;color:var(--muted);font-size:1.02rem}
+  .spec-grid{display:grid;gap:.9rem;grid-template-columns:1fr}
+  @media (min-width:760px){.spec-grid{grid-template-columns:1.12fr .88fr}}
+  .spec .verdict-line{margin-top:1.05rem;font-size:.88rem;color:var(--muted)}
+
+  .topbar{display:flex;align-items:center;gap:1rem;background:rgba(10,10,11,.75);
+    border:1px solid var(--line);padding:.75rem 1rem;min-height:52px;overflow-x:auto}
+  .topbar .brand{font-family:var(--caps);font-size:.8rem;font-weight:700;letter-spacing:.28em;color:var(--gold-bright);flex:none}
+  .topbar .sep{width:1px;align-self:stretch;background:var(--line);flex:none}
+
+  .tile{border:1px solid var(--line);padding:1rem 1.1rem 1.15rem;
+    background:linear-gradient(180deg,rgba(20,19,16,.35),rgba(10,10,11,.94)),
+      radial-gradient(120% 130% at 85% 0%,rgba(194,168,106,.18),transparent 60%);
+    display:flex;flex-direction:column;gap:.45rem;min-height:120px;justify-content:flex-end}
+  .tile .title{font-family:var(--caps);font-size:1.02rem;font-weight:600;color:var(--parch);letter-spacing:.03em}
+  .tile .desc{font-size:.82rem;color:var(--muted-2);line-height:1.45}
+
+  .caption{font-family:var(--caps);font-size:.55rem;letter-spacing:.26em;text-transform:uppercase;
+    color:var(--muted-2);margin-bottom:.45rem}
+  .stack{display:flex;flex-direction:column}
+  .mark{display:inline-flex;align-items:center;gap:.6rem;min-width:0}
+
+  /* --- repères --- */
+  .m-now{font-family:var(--mono);font-size:.7rem;color:var(--muted);white-space:nowrap}
+
+  .m-seal{font-family:var(--caps);font-size:.66rem;font-weight:600;text-transform:uppercase;
+    letter-spacing:.3em;color:var(--gold);white-space:nowrap}
+  .lozenge{width:7px;height:7px;flex:none;transform:rotate(45deg);
+    border:1px solid var(--gold-bright);background:rgba(227,205,149,.25)}
+  .lozenge.sm{width:5px;height:5px}
+
+  .m-score{display:inline-flex;align-items:center;gap:.55rem;white-space:nowrap}
+  .barline{display:inline-flex;gap:2px;align-items:center;flex:none;height:12px}
+  .barline i{display:block;width:1px;height:100%;background:var(--gold-deep)}
+  .barline i:last-child{width:2px;background:var(--gold)}
+  .m-score .num{font-family:var(--caps);font-size:.68rem;font-weight:700;color:var(--gold-bright);letter-spacing:.12em}
+  .m-score .name{font-family:var(--caps);font-size:.66rem;text-transform:uppercase;letter-spacing:.3em;color:var(--gold)}
+
+  .m-plate{display:inline-flex;align-items:center;gap:.55rem;white-space:nowrap}
+  .m-plate .stamp{font-family:var(--caps);font-size:.58rem;font-weight:700;letter-spacing:.16em;
+    color:var(--gold-deep);border:1px solid var(--line-strong);padding:.14rem .42rem;
+    background:linear-gradient(180deg,rgba(194,168,106,.14),rgba(194,168,106,.03));line-height:1.1}
+  .m-plate .name{font-family:var(--caps);font-size:.66rem;font-weight:600;text-transform:uppercase;
+    letter-spacing:.28em;color:var(--gold)}
+
+  .m-tome{display:inline-flex;align-items:center;gap:.6rem;white-space:nowrap}
+  .m-tome .chap{font-family:var(--caps);font-size:.58rem;font-weight:600;text-transform:uppercase;
+    letter-spacing:.26em;color:var(--gold-deep)}
+  .m-tome .rule{width:20px;height:1px;background:var(--line-strong);flex:none}
+  .m-tome .name{font-family:var(--display);font-style:italic;font-size:1.02rem;color:var(--gold-bright)}
+
+  /* table */
+  .table-scroll{overflow-x:auto;border:1px solid var(--line)}
+  table{border-collapse:collapse;width:100%;min-width:680px;font-size:.86rem}
+  th{font-family:var(--caps);font-size:.58rem;font-weight:600;text-transform:uppercase;letter-spacing:.22em;
+    color:var(--gold-deep);text-align:left;padding:.85rem 1rem;border-bottom:1px solid var(--line);
+    background:rgba(22,21,19,.6);white-space:nowrap}
+  td{padding:.6rem 1rem;border-bottom:1px solid rgba(194,168,106,.09);vertical-align:top}
+  tr:last-child td{border-bottom:0}
+  td.route{font-family:var(--mono);font-size:.75rem;color:var(--muted);white-space:nowrap}
+  td.old{font-family:var(--mono);font-size:.72rem;color:var(--muted-2);white-space:nowrap;
+    text-decoration:line-through;text-decoration-color:rgba(142,24,19,.75)}
+  td.new{font-family:var(--caps);font-size:.72rem;font-weight:600;letter-spacing:.16em;
+    color:var(--gold-bright);text-transform:uppercase;white-space:nowrap}
+  td.note{font-size:.8rem;color:var(--muted)}
+  tr.flag td.old{color:var(--crimson-bright)}
+
+  .notes{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+  .note-card{border:1px solid var(--line);padding:1.05rem 1.15rem;display:flex;flex-direction:column;
+    gap:.5rem;background:rgba(16,15,13,.6)}
+  .note-card h4{font-family:var(--caps);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--gold);margin:0;font-weight:600}
+  .note-card p{font-size:.85rem;color:var(--muted)}
+
+  .verdict{border:1px solid var(--line-strong);padding:clamp(1.2rem,3vw,1.8rem);
+    background:linear-gradient(120deg,rgba(142,24,19,.13),rgba(22,21,19,.8) 55%);
+    display:flex;flex-direction:column;gap:.9rem}
+  .verdict .head{font-family:var(--caps);font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--crimson-bright);font-weight:600}
+  .verdict p{font-family:var(--display);font-size:1.12rem;line-height:1.55;color:var(--parch);max-width:64ch}
+
+  ul{margin:0;padding-left:1.1rem;color:var(--muted);font-size:.9rem;display:flex;flex-direction:column;gap:.4rem}
+  li::marker{color:var(--gold-deep)}
+
+  footer{margin-top:4rem;padding-top:1.4rem;border-top:1px solid var(--line);
+    font-family:var(--caps);font-size:.58rem;letter-spacing:.26em;text-transform:uppercase;
+    color:var(--muted-2);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="kicker">DNA Interactive · direction artistique</div>
+    <h1>Sortir du dialecte Endfield</h1>
+    <p class="lede">Les repères <code>//MACHIN.TRUC</code> ne viennent pas de Duet Night Abyss : ils viennent du terminal industriel d'Arknights Endfield. Quatre pistes pour les remplacer par un repère qui parle la langue d'Atlasia — <em>le sceau, la partition, la plaque, le tome</em>.</p>
+  </header>
+
+  <!-- ============================================================ 1. constat -->
+  <section>
+    <div class="sec-head"><span class="num">Constat</span><h2>Pourquoi ça sonne faux</h2></div>
+    <p>Le problème n'est pas le glyphe <code>//</code> tout seul : c'est un système cohérent — mais cohérent avec <strong>un autre jeu</strong>. Trois couches à défaire.</p>
+    <div class="diag">
+      <div class="cell">
+        <h4>La typo</h4>
+        <p>JetBrains Mono. Le monospace dit « terminal, télémétrie, station industrielle ». Le site écrit en Cinzel et Cormorant : capitales romaines et garaldes. Le repère mono est le seul élément sci-fi d'une page gothique.</p>
+      </div>
+      <div class="cell">
+        <h4>La syntaxe</h4>
+        <p><code>//</code> + segments <code>POINT.SÉPARÉS</code> = un chemin de fichier, une commande shell. Une convention d'ingénieur logiciel. Endfield joue justement l'usine et la console ; DNA joue la cathédrale et l'alchimie.</p>
+      </div>
+      <div class="cell">
+        <h4>Le vocabulaire</h4>
+        <p><code>//OPERATOR.DATABASE</code>. « Operator » est <strong>littéralement le mot d'Arknights</strong> pour ses personnages — DNA ne l'emploie jamais. Idem pour DATABASE, GEAR, LOADOUTS, PATCH.NOTES, SURVEY.</p>
+      </div>
+    </div>
+    <p>Et le vocabulaire pèse plus lourd que le glyphe : <code>◈ OPERATOR.DATABASE</code> resterait de l'Endfield avec un joli losange. Les pistes ci-dessous changent donc les deux.</p>
+  </section>
+
+  <!-- ======================================================== 2. le monde -->
+  <section>
+    <div class="sec-head"><span class="num">Le monde</span><h2>De quoi parle réellement DNA</h2></div>
+    <p>Atlasia : un continent coupé en deux entre <strong>la foi et la machine</strong>. Des Heaventrees cristallins irradient le <strong>Phoxene</strong>, minerai divin qui alimente aussi bien la magie que les moteurs. L'Église elysienne le vénère, l'Empire hyperboréen l'exploite en machinerie alchimique. Ciel noirci « à la fois de lumière sainte et de fumée industrielle ».</p>
+    <p><strong>Nuance importante :</strong> le registre technique n'est donc pas interdit — il est même au cœur du jeu. Ce qui cloche, c'est <em>la mauvaise machine</em> : on a mis une console de terminal là où il fallait du laiton gravé, de l'estampe et de l'alchimie.</p>
+
+    <div class="registers">
+      <div class="reg faith">
+        <h4>Registre I — la foi, l'opéra</h4>
+        <p>Le jeu s'appelle <em>Duet</em>. Sa langue est liturgique et musicale, et ce n'est pas de la théorie : ce sont des relevés dans le TextMap du jeu.</p>
+        <div class="words">
+          <span class="w">Sceau / Sigil<small>193</small></span>
+          <span class="w">Requiem<small>26</small></span>
+          <span class="w">Nocturne<small>25</small></span>
+          <span class="w">Consonance<small>24</small></span>
+          <span class="w">Covenant<small>29</small></span>
+          <span class="w">Rite<small>43</small></span>
+          <span class="w">Chronicle<small>17</small></span>
+          <span class="w">Tome<small>39</small></span>
+          <span class="w">Hall<small>186</small></span>
+        </div>
+        <p style="font-size:.84rem;color:var(--muted-2)">Titres réels : « Stage Score: Overture », « Ⅰ. Overture », « Nocturne in White », « Requiem for the Nameless », « Fanfare Cadence », « Soul Refrain », « Bard's Tome », « Chronicle of Images », « Hall of Craft ». Le jeu numérote déjà ses actes en chiffres romains.</p>
+      </div>
+      <div class="reg machine">
+        <h4>Registre II — la machine alchimique</h4>
+        <p>L'autre moitié du monde. Noms propres présents dans les données, donc utilisables sans rien inventer.</p>
+        <div class="words">
+          <span class="w">Huaxu<small>524</small></span>
+          <span class="w">Phoxene<small>161</small></span>
+          <span class="w">Hyperborean<small>160</small></span>
+          <span class="w">Elysian<small>109</small></span>
+          <span class="w">Atlasia<small>99</small></span>
+          <span class="w">Luca<small>41</small></span>
+          <span class="w">Heaventree<small>31</small></span>
+        </div>
+        <p style="font-size:.84rem;color:var(--muted-2)">À l'inverse, « Heaventree Choir » / « Luminar Guild » circulent sur les sites de fans mais n'apparaissent quasiment pas dans les données du jeu (Choir : 1 occurrence, Luminar : 0). À éviter comme source.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= 3. spécimens -->
+  <section>
+    <div class="sec-head"><span class="num">Spécimens</span><h2>Quatre pistes de remplacement</h2></div>
+
+    <!-- actuel -->
+    <div class="panel spec">
+      <div class="spec-head"><span class="tag">Aujourd'hui</span><h3>Le terminal</h3><span class="why">« la station Endfield »</span></div>
+      <div class="spec-grid">
+        <div class="stack"><div class="caption">Topbar</div>
+          <div class="topbar"><span class="brand">DNA</span><span class="sep"></span><span class="m-now">//HYPER.ARSENAL</span></div>
+        </div>
+        <div class="stack"><div class="caption">Tuile du hub</div>
+          <div class="tile"><span class="m-now">//OPERATOR.DATABASE</span>
+            <span class="title">Personnages</span><span class="desc">Fiches, stats, compétences et builds.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- A -->
+    <div class="panel spec">
+      <div class="spec-head"><span class="tag">Piste A</span><h3>Le sceau</h3><span class="why">« le losange que vous avez déjà »</span></div>
+      <div class="spec-grid">
+        <div class="stack"><div class="caption">Topbar</div>
+          <div class="topbar"><span class="brand">DNA</span><span class="sep"></span>
+            <span class="mark"><span class="lozenge"></span><span class="m-seal">Arsenal</span></span></div>
+        </div>
+        <div class="stack"><div class="caption">Tuile du hub</div>
+          <div class="tile"><span class="mark"><span class="lozenge sm"></span><span class="m-seal">Le Chœur</span></span>
+            <span class="title">Personnages</span><span class="desc">Fiches, stats, compétences et builds.</span></div>
+        </div>
+      </div>
+      <p class="verdict-line">Le losange est <strong>déjà dans le design system</strong> : <code>DnaSectionLabel</code> l'utilise pour toutes les têtes de section. L'adopter dans la topbar et les tuiles fusionne trois repères aujourd'hui divergents en un seul, et Cinzel évacue la dernière fonte hors palette. Coût minimal, risque nul — mais ça reste discret, ça ne « signe » pas.</p>
+    </div>
+
+    <!-- B -->
+    <div class="panel spec">
+      <div class="spec-head"><span class="tag">Piste B</span><h3>La partition</h3><span class="why">« Stage Score: Overture »</span></div>
+      <div class="spec-grid">
+        <div class="stack"><div class="caption">Topbar</div>
+          <div class="topbar"><span class="brand">DNA</span><span class="sep"></span>
+            <span class="m-score"><span class="barline"><i></i><i></i></span><span class="num">IV</span><span class="name">Arsenal</span></span></div>
+        </div>
+        <div class="stack"><div class="caption">Tuile du hub</div>
+          <div class="tile"><span class="m-score"><span class="barline"><i></i><i></i></span><span class="num">II</span><span class="name">Le Chœur</span></span>
+            <span class="title">Personnages</span><span class="desc">Fiches, stats, compétences et builds.</span></div>
+        </div>
+      </div>
+      <p class="verdict-line">Barre de mesure + chiffre romain : le site devient une partition dont chaque section est un mouvement. C'est la piste la plus <strong>signée</strong>, et elle recycle une convention que le jeu emploie déjà. Condition : la numérotation doit être <strong>vraie</strong> (l'ordre de la sidebar), pas décorative. Faiblesse : elle se casse dès qu'on descend d'un niveau — quel numéro pour la fiche de Hilda ?</p>
+    </div>
+
+    <!-- D (plaque) placée en 3e : c'est la réponse directe au « je veux garder un repère technique » -->
+    <div class="panel spec">
+      <div class="spec-head"><span class="tag">Piste C</span><h3>La plaque mécaniste</h3><span class="why">« la bonne machine »</span></div>
+      <div class="spec-grid">
+        <div class="stack"><div class="caption">Topbar</div>
+          <div class="topbar"><span class="brand">DNA</span><span class="sep"></span>
+            <span class="m-plate"><span class="stamp">ATL·IV</span><span class="name">Arsenal</span></span></div>
+        </div>
+        <div class="stack"><div class="caption">Tuile du hub</div>
+          <div class="tile"><span class="m-plate"><span class="stamp">ATL·II</span><span class="name">Le Chœur</span></span>
+            <span class="title">Personnages</span><span class="desc">Fiches, stats, compétences et builds.</span></div>
+        </div>
+      </div>
+      <p class="verdict-line">Garde exactement ce que le <code>//</code> apportait — un repère technique, un cachet de catalogue, la sensation « base de données » — mais en <strong>laiton estampé plutôt qu'en console</strong>. C'est le registre hyperboréen : machinerie alchimique, pas terminal Rhodes Island. Le préfixe peut être un vrai marqueur du monde (<code>ATL</code> pour Atlasia, ou le sigle de la section) au lieu d'un chemin de fichier.</p>
+    </div>
+
+    <!-- C (tome) -->
+    <div class="panel spec">
+      <div class="spec-head"><span class="tag">Piste D</span><h3>Le tome</h3><span class="why">« Bard's Tome », « Chronicle of Images »</span></div>
+      <div class="spec-grid">
+        <div class="stack"><div class="caption">Topbar</div>
+          <div class="topbar"><span class="brand">DNA</span><span class="sep"></span>
+            <span class="m-tome"><span class="chap">Tome IV</span><span class="rule"></span><span class="name">Arsenal</span></span></div>
+        </div>
+        <div class="stack"><div class="caption">Tuile du hub</div>
+          <div class="tile"><span class="m-tome"><span class="chap">Tome II</span><span class="rule"></span><span class="name">Le Chœur</span></span>
+            <span class="title">Personnages</span><span class="desc">Fiches, stats, compétences et builds.</span></div>
+        </div>
+      </div>
+      <p class="verdict-line">L'italique Cormorant amène de la chaleur et pose enfin la troisième fonte du système. Superbe en tête de grande page, mais <strong>trop bavard pour un fil d'Ariane</strong> : à 0,7 rem l'italique perd en lisibilité et le repère finit plus long que le titre qu'il annonce.</p>
+    </div>
+  </section>
+
+  <!-- ========================================================== 4. verdict -->
+  <section>
+    <div class="verdict">
+      <span class="head">Recommandation</span>
+      <p><strong>Piste C (la plaque) pour la chrome.</strong> C'est la seule qui conserve la fonction du <code>//</code> — signaler « ici, c'est de la donnée » — tout en la rhabillant dans le bon monde. Elle tient sur les sous-pages, contrairement à la partition, et elle donne au site une signature que le simple losange n'apporte pas.</p>
+      <p><strong>Piste A (le sceau) en repli</strong> si on veut zéro risque : elle unifie ce qui existe déjà. <strong>Piste D (le tome)</strong> réservée aux têtes de grandes pages, jamais à la topbar.</p>
+      <p style="font-family:var(--sans);font-size:.9rem;color:var(--muted);max-width:70ch">Dans les quatre cas, le vrai chantier est la <strong>colonne « proposé » du tableau ci-dessous</strong> : c'est le vocabulaire, pas le glyphe, qui trahit l'origine.</p>
+    </div>
+  </section>
+
+  <!-- ======================================================== 5. le lexique -->
+  <section>
+    <div class="sec-head"><span class="num">Lexique</span><h2>Le remplacement, route par route</h2></div>
+    <p>Les titres restent fonctionnels (« Personnages », « Objets ») — c'est un wiki, il doit rester trouvable. Le repère porte le ton. Termes choisis <strong>latins, musicaux ou empruntés au lore</strong> : ils tiennent tels quels dans les 7 locales, comme les libellés actuels qui sont déjà en anglais partout.</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Route</th><th>Actuel</th><th>Proposé</th><th>Origine</th></tr></thead>
+        <tbody>
+          <tr><td class="route">/</td><td class="old">//COMMUNITY.HUB</td><td class="new">Le Grand Hall</td><td class="note">« Hall of Craft » — 186 occurrences, le lieu type du jeu.</td></tr>
+          <tr class="flag"><td class="route">/characters</td><td class="old">//OPERATOR.DATABASE</td><td class="new">Le Chœur</td><td class="note">Le mot Arknights à évacuer en priorité. Chœur : l'ensemble des voix, et le duo du titre.</td></tr>
+          <tr><td class="route">/items</td><td class="old">//GEAR.DATABASE</td><td class="new">Le Reliquaire</td><td class="note">Un objet de DNA est une relique, pas du « gear ».</td></tr>
+          <tr><td class="route">/items/weapons</td><td class="old">//HYPER.ARSENAL</td><td class="new">Arsenal</td><td class="note">Déjà bon — juste débarrassé du préfixe.</td></tr>
+          <tr><td class="route">/items/genimons</td><td class="old">//COMPANION.PODEX</td><td class="new">Genimons</td><td class="note">« Podex » est une invention ; le jeu dit Genimon.</td></tr>
+          <tr><td class="route">/items/drafts</td><td class="old">//CRAFT.BLUEPRINTS</td><td class="new">Hall de l'Ouvrage</td><td class="note">Calque direct de « Hall of Craft ».</td></tr>
+          <tr><td class="route">/builder</td><td class="old">//BUILD.FORGE</td><td class="new">La Forge</td><td class="note">Garde l'image, perd la syntaxe machine.</td></tr>
+          <tr><td class="route">/builds</td><td class="old">//SHARED.LOADOUTS</td><td class="new">Partitions</td><td class="note">Un build est une partition qu'on rejoue. « Loadout » est du FPS.</td></tr>
+          <tr><td class="route">/calendar</td><td class="old">//EVENT.CALENDAR</td><td class="new">Éphémérides</td><td class="note">Registre daté, ton de chronique.</td></tr>
+          <tr><td class="route">/map</td><td class="old">//REGION.SURVEY.MAP</td><td class="new">Atlas d'Atlasia</td><td class="note">« Survey » = relevé topographique militaire : très Endfield. Atlasia est le nom du continent.</td></tr>
+          <tr><td class="route">/commissions</td><td class="old">//COVERT.OPS.LIVE</td><td class="new">Commissions</td><td class="note">« Covert Commissions » est le vrai nom dans le jeu — le raccourci « ops » est de trop.</td></tr>
+          <tr><td class="route">/codes</td><td class="old">//REDEEM.CODES</td><td class="new">Sceaux d'Échange</td><td class="note">Sigil / Sceau : 193 occurrences en FR, le terme le plus dense du jeu.</td></tr>
+          <tr><td class="route">/changelog</td><td class="old">//PATCH.NOTES</td><td class="new">Le Registre</td><td class="note">Ledger / Chronicle.</td></tr>
+          <tr><td class="route">/about</td><td class="old">//ABOUT.PROJECT</td><td class="new">Colophon</td><td class="note">Le terme exact du livre pour « qui a fait ceci ».</td></tr>
+          <tr><td class="route">/contact</td><td class="old">//CONTACT.CHANNEL</td><td class="new">Missive</td><td class="note">« Channel » est du Discord / de la radio.</td></tr>
+          <tr><td class="route">/support</td><td class="old">//SUPPORT.DESK</td><td class="new">Mécénat</td><td class="note">« Desk » = guichet d'entreprise.</td></tr>
+          <tr><td class="route">/profile</td><td class="old">//ACCOUNT.PROFILE</td><td class="new">Votre Sceau</td><td class="note">Le sceau personnel, marque d'identité.</td></tr>
+          <tr><td class="route">/signup</td><td class="old">//ACCOUNT.SIGNUP</td><td class="new">Le Pacte</td><td class="note">Covenant : s'inscrire, c'est signer.</td></tr>
+          <tr><td class="route">/login</td><td class="old">//ACCOUNT.LOGIN</td><td class="new">Le Seuil</td><td class="note">Franchir, plutôt que s'authentifier.</td></tr>
+          <tr><td class="route">/confidentialite</td><td class="old">//PRIVACY.POLICY</td><td class="new">Confidentialité</td><td class="note">Les pages légales restent littérales. On ne poétise pas le RGPD.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ========================================================== 6. chantier -->
+  <section>
+    <div class="sec-head"><span class="num">Chantier</span><h2>Ce que ça touche, et les pièges</h2></div>
+    <div class="notes">
+      <div class="note-card">
+        <h4>Trois points d'entrée</h4>
+        <p><code>src/lib/shell.ts</code> (les 20 fils d'Ariane), <code>HomeHubClient.tsx</code> (les champs <code>mono</code> des tuiles), <code>DnaSectionLabel.tsx</code> (déjà en losange). Une trentaine de chaînes en tout.</p>
+      </div>
+      <div class="note-card">
+        <h4>Le glyphe doit être dessiné</h4>
+        <p>Cinzel ne couvre ni ◈ ni les chiffres romains Unicode : ils tombent en fonte système et se décalent. Losange = carré pivoté en CSS, barre de mesure = deux <code>&lt;i&gt;</code>, chiffres romains tapés en lettres. Tout survit alors aux images OG, où les glyphes hors-fonte ont déjà cassé une fois.</p>
+      </div>
+      <div class="note-card">
+        <h4>7 locales, libellés en anglais</h4>
+        <p>Les repères actuels sont codés en dur en anglais alors que les titres sont traduits. Le lexique latin / musical garde cette liberté ; si on veut traduire, il faut passer les 20 clés dans <code>next-intl</code> — décision à prendre avant, pas après.</p>
+      </div>
+      <div class="note-card">
+        <h4>Un seul repère à la fois</h4>
+        <p>Topbar, tuiles et têtes de section utilisent aujourd'hui trois traitements différents. Le gain vient surtout de leur fusion : si on n'en change qu'un, autant ne rien changer.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>DNA Interactive · repères de section</span>
+    <span>Sources : TextMap_ContentEN / FR · Wikipedia · Steam</span>
+  </footer>
+
+</div>
+</body>
+</html>
