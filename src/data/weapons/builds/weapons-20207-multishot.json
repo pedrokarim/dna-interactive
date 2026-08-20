@@ -1,56 +1,56 @@
 {
   "weaponId": "weapons-20207",
   "buildName": {
-    "FR": "Degats generalistes",
-    "EN": "General Damage"
+    "FR": "Multishot — Intron 4 d'Ada",
+    "EN": "Multishot — Ada Intron 4"
   },
   "demonWedges": {
     "slots": [
       {
         "position": 1,
-        "itemId": "mods-53005",
-        "track": 4
-      },
-      {
-        "position": 2,
-        "itemId": "mods-53007",
-        "track": null
-      },
-      {
-        "position": 3,
-        "itemId": "mods-53008",
-        "track": 2
-      },
-      {
-        "position": 4,
-        "itemId": "mods-53001",
-        "track": 1
-      },
-      {
-        "position": 5,
         "itemId": "mods-53011",
         "track": 4
       },
       {
+        "position": 2,
+        "itemId": "mods-33331",
+        "track": null
+      },
+      {
+        "position": 3,
+        "itemId": "mods-43604",
+        "track": 2
+      },
+      {
+        "position": 4,
+        "itemId": "mods-53005",
+        "track": 4
+      },
+      {
+        "position": 5,
+        "itemId": "mods-53012",
+        "track": 4
+      },
+      {
         "position": 6,
-        "itemId": "mods-43002",
+        "itemId": "mods-43301",
         "track": null
       },
       {
         "position": 7,
-        "itemId": "mods-43003",
-        "track": 1
+        "itemId": "mods-43602",
+        "track": 4
       },
       {
         "position": 8,
-        "itemId": "mods-43703",
+        "itemId": "mods-53004",
         "track": null
       }
     ],
     "affinity": null,
     "note": {
-      "FR": "Equilibre entre Taux CRIT, DGT CRIT, ATQ et Multishot.",
-      "EN": "Balanced around CRIT Chance, CRIT Damage, ATK and Multishot."
+      "FR": "Empile Multishot et vitesse d'attaque : les introns 2 et 4 d'Ada les reportent sur ses invocations.",
+      "EN": "Stacks Multishot and ATK Speed: Ada's Introns 2 and 4 pass both on to her summons."
     }
   },
   "note": {}
