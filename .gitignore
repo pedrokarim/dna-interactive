@@ -62,3 +62,6 @@ storybook-static
 
 # Notes de passation / guides de setup internes : jamais versionnes
 HANDOFF-*.md
+
+# Maquettes HTML de travail : jamais versionnees (n'auraient jamais du l'etre)
+design-lab/
