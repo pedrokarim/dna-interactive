@@ -1,6 +1,11 @@
 {
   "_comment": "Suivi de vérification des builds contre leur fiche publique. Écrit par scripts/verif-build.mjs.",
   "characters": {
+    "char-baonu": {
+      "verifiedAt": "2026-08-20",
+      "source": "561246",
+      "note": "5 Track-Shift ; 3e arme ajoutee des deux cotes ; ordre du loadout de consonance recale"
+    },
     "char-eve": {
       "verifiedAt": "2026-08-20",
       "source": "606756",

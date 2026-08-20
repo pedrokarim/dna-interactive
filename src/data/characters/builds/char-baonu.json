@@ -11,16 +11,24 @@
           "itemId": "weapons-10206",
           "rank": "best",
           "note": {
-            "FR": "Maximise les degats de Samael pendant l'activation.",
-            "EN": "Maximizes Samael damage during uptime."
+            "FR": "Degats de competence +48%.",
+            "EN": "Skill Damage +48%."
           }
         },
         {
           "itemId": "weapons-10101",
           "rank": "alternative",
           "note": {
-            "FR": "Option pour augmenter l'ATK de base.",
-            "EN": "Option to increase base ATK."
+            "FR": "ATQ du personnage +120%.",
+            "EN": "Character ATK +120%."
+          }
+        },
+        {
+          "itemId": "weapons-10603",
+          "rank": "alternative",
+          "note": {
+            "FR": "ATQ et DGT CRIT.",
+            "EN": "ATK and CRIT Damage."
           }
         }
       ],
@@ -29,16 +37,24 @@
           "itemId": "weapons-20201",
           "rank": "best",
           "note": {
-            "FR": "Meilleure arme a distance. Degats de competence +48%.",
-            "EN": "Best ranged weapon. Skill Damage +48%."
+            "FR": "Degats de competence +48%.",
+            "EN": "Skill Damage +48%."
           }
         },
         {
           "itemId": "weapons-20304",
           "rank": "alternative",
           "note": {
-            "FR": "Alternative polyvalente pour le combat a distance.",
-            "EN": "Versatile alternative for ranged combat."
+            "FR": "DGT CRIT et division des projectiles.",
+            "EN": "CRIT Damage and projectile splitting."
+          }
+        },
+        {
+          "itemId": "weapons-20603",
+          "rank": "alternative",
+          "note": {
+            "FR": "Portee et Puissance de competence.",
+            "EN": "Skill Range and Skill Intensity."
           }
         }
       ]
@@ -48,27 +64,27 @@
         {
           "position": 1,
           "itemId": "mods-56162",
-          "track": null
+          "track": 2
         },
         {
           "position": 2,
           "itemId": "mods-51461",
-          "track": null
+          "track": 1
         },
         {
           "position": 3,
           "itemId": "mods-51336",
-          "track": null
+          "track": 3
         },
         {
           "position": 4,
           "itemId": "mods-51764",
-          "track": null
+          "track": 4
         },
         {
           "position": 5,
           "itemId": "mods-51764",
-          "track": null
+          "track": 4
         },
         {
           "position": 6,
@@ -177,9 +193,9 @@
       "icon": "/assets/weapons/consonance/T_Head_Baonu_WP.png",
       "slots": [
         "mods-54103",
-        "mods-54002",
+        "mods-54004",
         "mods-54001",
-        "mods-54004"
+        "mods-54002"
       ]
     },
     "notes": {
