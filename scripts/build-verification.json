@@ -11,6 +11,11 @@
       "source": "602498",
       "note": "5 Track-Shift (cases 1-4 et 6) ; Sanguis Sanctus Katana ajoute en 2e melee"
     },
+    "char-suyi": {
+      "verifiedAt": "2026-08-20",
+      "source": "570654",
+      "note": "DW et 5 Track-Shift deja conformes ; arme signature Fledgling's Gleam ajoutee (aucun 1er choix a distance)"
+    },
     "char-xier": {
       "verifiedAt": "2026-08-20",
       "source": "562612",

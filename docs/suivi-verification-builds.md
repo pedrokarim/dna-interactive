@@ -1,6 +1,6 @@
 # Suivi de vérification des builds
 
-**Avancement : 4 / 27 personnages vérifiés.**
+**Avancement : 5 / 27 personnages vérifiés.**
 Première vérification : 2026-08-20 · dernière : 2026-08-20.
 
 Généré par `node scripts/verif-build.mjs --mark <id> <source>`. Ne pas éditer à la main.
@@ -15,7 +15,7 @@ plus ancien.
 | 1 | "Ada" | Hydro | 2026-07-28 | ✅ 2026-08-20 | 606756 | personnage + arme signature (2 builds d'arme) |
 | 2 | Hilda | Pyro | 2026-06-30 | ✅ 2026-08-20 | 562612 | 8 Track-Shift ajoutes ; arme distance inversee (Firearm Feast 1er) ; melee completee |
 | 3 | Flora | Umbro | 2026-06-02 | ✅ 2026-08-20 | 602498 | 5 Track-Shift (cases 1-4 et 6) ; Sanguis Sanctus Katana ajoute en 2e melee |
-| 4 | Su Yi | Lumino | — | ⬜ à faire |  |  |
+| 4 | Su Yi | Lumino | — | ✅ 2026-08-20 | 570654 | DW et 5 Track-Shift deja conformes ; arme signature Fledgling's Gleam ajoutee (aucun 1er choix a distance) |
 | 5 | Kezhou | Lumino | — | ⬜ à faire |  |  |
 | 6 | Lady Nifle | Lumino | — | ⬜ à faire |  |  |
 | 7 | Lisbell | Lumino | — | ⬜ à faire |  |  |
@@ -40,4 +40,4 @@ plus ancien.
 | 26 | Rhythm | Electro | — | ⬜ à faire |  |  |
 | 27 | Randy | Electro | — | ⬜ à faire |  |  |
 
-➡ **Suivant :** Su Yi (`char-suyi`)
+➡ **Suivant :** Kezhou (`char-kezhou`)

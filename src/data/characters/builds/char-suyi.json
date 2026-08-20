@@ -42,19 +42,27 @@
       ],
       "ranged": [
         {
+          "itemId": "weapons-20407",
+          "rank": "best",
+          "note": {
+            "FR": "Arme signature (fusil a pompe, dans sa maitrise) : Munitions max +180%.",
+            "EN": "Signature weapon (shotgun, within her proficiency): Max Ammo +180%."
+          }
+        },
+        {
           "itemId": "weapons-20603",
           "rank": "alternative",
           "note": {
-            "FR": "Embla Inflorescence - Portee de competence +60%. Premiere alternative en attendant l'import de Fledgling's Gleam (BIS, Max Ammo +180%) non encore en base.",
-            "EN": "Embla Inflorescence - Skill Range +60%. First alternative while Fledgling's Gleam (BIS, Max Ammo +180%) is not yet in the database."
+            "FR": "Portee de competence.",
+            "EN": "Skill Range."
           }
         },
         {
           "itemId": "weapons-20201",
           "rank": "alternative",
           "note": {
-            "FR": "Excresduo - Degats de competence +48%.",
-            "EN": "Excresduo - Skill Damage +48%."
+            "FR": "Puissance de competence.",
+            "EN": "Skill Intensity."
           }
         }
       ]
