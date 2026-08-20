@@ -11,24 +11,24 @@
           "itemId": "weapons-10602",
           "rank": "best",
           "note": {
-            "FR": "Portee de competence +72%. Arme signature pour maximiser la conversion Portee → Degats.",
-            "EN": "Skill Range +72%. Signature weapon to maximize Range-to-Damage conversion."
-          }
-        },
-        {
-          "itemId": "weapons-10403",
-          "rank": "alternative",
-          "note": {
-            "FR": "Portee de competence +72%. Alternative viable.",
-            "EN": "Skill Range +72%. Viable alternative."
+            "FR": "Portee de competence +72%.",
+            "EN": "Skill Range +72%."
           }
         },
         {
           "itemId": "weapons-10206",
           "rank": "alternative",
           "note": {
-            "FR": "Degats de competence +48%. Option budget.",
-            "EN": "Skill Damage +48%. Budget option."
+            "FR": "Degats de competence +48%.",
+            "EN": "Skill Damage +48%."
+          }
+        },
+        {
+          "itemId": "weapons-10403",
+          "rank": "alternative",
+          "note": {
+            "FR": "Portee de competence +72%.",
+            "EN": "Skill Range +72%."
           }
         }
       ],
@@ -37,16 +37,24 @@
           "itemId": "weapons-20603",
           "rank": "best",
           "note": {
-            "FR": "Augmente la Portee et fournit des fleches traqueuses avec buff d'Intensite.",
-            "EN": "Boosts Skill Range and provides tracking arrows with Skill Intensity buff."
+            "FR": "Portee de competence et fleches a tete chercheuse.",
+            "EN": "Skill Range and tracking arrows."
           }
         },
         {
           "itemId": "weapons-20101",
           "rank": "alternative",
           "note": {
-            "FR": "Probabilite de declenchement +150%. Projectiles supplementaires.",
-            "EN": "Trigger Probability +150%. Extra projectiles."
+            "FR": "Probabilite d'effet pour des projectiles bonus.",
+            "EN": "Trigger probability for bonus projectiles."
+          }
+        },
+        {
+          "itemId": "weapons-20503",
+          "rank": "alternative",
+          "note": {
+            "FR": "Probabilite d'effet et chance de recharge.",
+            "EN": "Trigger probability with reload chance."
           }
         }
       ]
@@ -71,12 +79,12 @@
         {
           "position": 4,
           "itemId": "mods-51761",
-          "track": 1
+          "track": null
         },
         {
           "position": 5,
           "itemId": "mods-51761",
-          "track": 1
+          "track": null
         },
         {
           "position": 6,
