@@ -34,11 +34,19 @@
       ],
       "ranged": [
         {
-          "itemId": "weapons-20205",
+          "itemId": "weapons-20102",
           "rank": "best",
           "note": {
-            "FR": "Meilleure option distance, aucune autre arme ne s'en approche. Degats de competence +48%.",
-            "EN": "Best ranged option, no other weapon comes close. Skill Damage +48%."
+            "FR": "ATQ +120% : stat brute, efficace meme hors maitrise (c'est un pistolet, pas une arbalete).",
+            "EN": "ATK +120%: raw stat, effective even outside his proficiency (it is a pistol, not a crossbow)."
+          }
+        },
+        {
+          "itemId": "weapons-20205",
+          "rank": "alternative",
+          "note": {
+            "FR": "Arbalete, donc dans sa maitrise. A preferer si l'ATQ brute n'est pas le point faible du build.",
+            "EN": "Crossbow, so within his proficiency. Prefer it when raw ATK is not the build's bottleneck."
           }
         }
       ]
