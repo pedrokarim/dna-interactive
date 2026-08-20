@@ -878,7 +878,9 @@
     "draftDirty": "저장되지 않은 변경 사항",
     "draftSaving": "저장 중…",
     "draftSaved": "임시 저장됨",
-    "draftError": "저장 실패"
+    "draftError": "저장 실패",
+    "trackShiftToggle": "트랙 시프트: 이 칸의 모듈 장착/해제",
+    "trackShiftCount": "트랙 시프트 {count}개 필요"
   },
   "communityBuilds": {
     "sectionTitle": "커뮤니티 대안",

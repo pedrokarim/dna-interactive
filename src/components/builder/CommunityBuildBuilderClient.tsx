@@ -122,11 +122,23 @@ function emptyWedgeSlots(max: number): WedgeSlotData[] {
   return Array.from({ length: max }, (_, index) => ({ position: index + 1, item: null, track: null }));
 }
 
-// La polarité d'un mod peut être universelle (-1) : ce n'est pas une track
-// valide (1-4). On la normalise en null pour ne jamais stocker/publier un
-// track hors bornes (sinon la validation rejette « number >= 1 »).
+// `track` renseigné = un Track-Shift Module est posé sur cette case ; null = aucun.
+// La VALEUR n'est jamais choisie par l'utilisateur : c'est toujours la polarité du
+// Wedge posé, sinon le module est gaspillé (coût ×1,5 au lieu de ÷2). Le toggle ne
+// décide que de la présence de l'ajustement.
+// La polarité d'un mod peut être universelle (-1) : ce n'est pas une track valide
+// (1-4). On la normalise en null pour ne jamais stocker/publier un track hors bornes.
 function normalizeTrack(value: number | null | undefined): number | null {
   return typeof value === "number" && value >= 1 && value <= 4 ? value : null;
+}
+
+/** Bascule le Track-Shift d'une case. On ne choisit jamais la valeur : elle vaut
+ *  toujours la polarité du Wedge posé, donc un désalignement est impossible. */
+function toggleSlotTrack(slots: WedgeSlotData[], position: number): WedgeSlotData[] {
+  return slots.map((slot) => {
+    if (slot.position !== position || !slot.item) return slot;
+    return { ...slot, track: slot.track == null ? normalizeTrack(slot.item.polarity) : null };
+  });
 }
 
 function draftKey(characterId: string, element: string | null): string {
@@ -148,7 +160,7 @@ function weaponPayloadEntry(entry: SlotEntry, config: WeaponWedgeConfig | undefi
         .map((slot) => ({
           position: slot.position,
           itemId: slot.item!.id,
-          track: normalizeTrack(slot.track ?? slot.item!.polarity),
+          track: normalizeTrack(slot.track),
         })),
       affinity: config.affinity,
     },
@@ -317,7 +329,7 @@ export function CommunityBuildBuilderClient({
           .map((slot) => ({
             position: slot.position,
             itemId: slot.item!.id,
-            track: normalizeTrack(slot.track ?? slot.item!.polarity),
+            track: normalizeTrack(slot.track),
           })),
         centerItemId: centerItem?.id ?? null,
         affinity: activeElement,
@@ -401,7 +413,7 @@ export function CommunityBuildBuilderClient({
       emptyWedgeSlots(4).map((slot) => {
         const id = next.consonanceWeapon?.slots[slot.position - 1];
         const item = itemById(options.mods, id);
-        return item ? { position: slot.position, item, track: normalizeTrack(item.polarity) } : slot;
+        return item ? { position: slot.position, item, track: null } : slot;
       }),
     );
     setStatsPriority(
@@ -744,13 +756,13 @@ export function CommunityBuildBuilderClient({
     } else if (editing.kind === "demon") {
       setDemonSlots((slots) =>
         slots.map((slot) =>
-          slot.position === editing.position ? { ...slot, item, track: normalizeTrack(item.polarity) } : slot,
+          slot.position === editing.position ? { ...slot, item, track: slot.track == null ? null : normalizeTrack(item.polarity) } : slot,
         ),
       );
     } else if (editing.kind === "consonance") {
       setConsonanceSlots((slots) =>
         slots.map((slot) =>
-          slot.position === editing.position ? { ...slot, item, track: normalizeTrack(item.polarity) } : slot,
+          slot.position === editing.position ? { ...slot, item, track: slot.track == null ? null : normalizeTrack(item.polarity) } : slot,
         ),
       );
     } else if (editing.kind === "weaponWedge") {
@@ -762,7 +774,7 @@ export function CommunityBuildBuilderClient({
           [target.weaponId]: {
             ...current,
             slots: current.slots.map((slot) =>
-              slot.position === target.position ? { ...slot, item, track: normalizeTrack(item.polarity) } : slot,
+              slot.position === target.position ? { ...slot, item, track: slot.track == null ? null : normalizeTrack(item.polarity) } : slot,
             ),
           },
         };
@@ -1158,6 +1170,13 @@ export function CommunityBuildBuilderClient({
                                 }))
                               }
                               onSlotClick={(position) => setEditing({ kind: "weaponWedge", weaponId: e.item.id, weaponClass, position })}
+                              onToggleTrack={(position) =>
+                                setWeaponWedges((prev) => {
+                                  const cur = prev[e.item.id] ?? { slots: emptyWedgeSlots(8), affinity: null };
+                                  return { ...prev, [e.item.id]: { ...cur, slots: toggleSlotTrack(cur.slots, position) } };
+                                })
+                              }
+                              trackLabel={t("trackShiftToggle")}
                               onCenterClick={() => setEditing({ kind: "weaponAffinity", weaponId: e.item.id })}
                             />
                           </div>
@@ -1172,7 +1191,12 @@ export function CommunityBuildBuilderClient({
         </DnaPanel>
 
         <DnaPanel className="p-5 md:p-6">
-          <DnaSectionLabel>{t("demonWedges")}</DnaSectionLabel>
+          <div className="flex flex-wrap items-baseline justify-between gap-2">
+            <DnaSectionLabel>{t("demonWedges")}</DnaSectionLabel>
+            <span className="font-caps text-[0.58rem] uppercase tracking-[0.16em] text-muted">
+              {t("trackShiftCount", { count: demonSlots.filter((slot) => slot.track != null).length })}
+            </span>
+          </div>
           <div className="mt-5 overflow-x-auto pb-3 pt-1">
             <DnaDemonWedgeEditor
               slots={demonSlots}
@@ -1182,6 +1206,8 @@ export function CommunityBuildBuilderClient({
               className="min-w-[34rem]"
               onChange={setDemonSlots}
               onSlotClick={(position) => setEditing({ kind: "demon", position })}
+              onToggleTrack={(position) => setDemonSlots((slots) => toggleSlotTrack(slots, position))}
+              trackLabel={t("trackShiftToggle")}
               onCenterClick={() => setEditing({ kind: "center" })}
             />
           </div>

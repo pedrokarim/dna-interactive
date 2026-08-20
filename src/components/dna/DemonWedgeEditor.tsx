@@ -44,6 +44,10 @@ export type DnaDemonWedgeEditorProps = {
   onChange?: (slots: WedgeSlotData[]) => void;
   /** Clic sur une case extérieure (édition du MOD de cet emplacement). */
   onSlotClick?: (position: number) => void;
+  /** Bascule le Track-Shift d'une case. La VALEUR n'est jamais choisie : elle est
+   *  toujours la polarité du Wedge posé. Le toggle ne décide que de sa présence. */
+  onToggleTrack?: (position: number) => void;
+  trackLabel?: string;
   /** Clic sur le centre (changement du MOD central — il reste fixe). */
   onCenterClick?: () => void;
   className?: string;
@@ -57,6 +61,8 @@ export function DnaDemonWedgeEditor({
   readOnly = false,
   onChange,
   onSlotClick,
+  onToggleTrack,
+  trackLabel,
   onCenterClick,
   className,
 }: DnaDemonWedgeEditorProps) {
@@ -77,6 +83,8 @@ export function DnaDemonWedgeEditor({
           isDragging={dragFrom === pos}
           isOver={dragOver === pos && dragFrom !== pos}
           onPick={() => onSlotClick?.(pos)}
+          onToggleTrack={readOnly || !onToggleTrack ? undefined : () => onToggleTrack(pos)}
+          trackLabel={trackLabel}
           onDragStart={() => setDragFrom(pos)}
           onDragEnter={() => setDragOver(pos)}
           onDrop={() => { if (dragFrom != null) swap(dragFrom, pos); reset(); }}

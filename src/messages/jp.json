@@ -878,7 +878,9 @@
     "draftDirty": "未保存の変更",
     "draftSaving": "保存中…",
     "draftSaved": "下書きを保存しました",
-    "draftError": "保存に失敗しました"
+    "draftError": "保存に失敗しました",
+    "trackShiftToggle": "トラックシフト：このマスのモジュールを着脱",
+    "trackShiftCount": "トラックシフト {count} 個必要"
   },
   "communityBuilds": {
     "sectionTitle": "コミュニティの代替案",

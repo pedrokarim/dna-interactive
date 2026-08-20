@@ -878,7 +878,9 @@
     "draftDirty": "Nicht gespeicherte Änderungen",
     "draftSaving": "Speichern…",
     "draftSaved": "Entwurf gespeichert",
-    "draftError": "Speichern fehlgeschlagen"
+    "draftError": "Speichern fehlgeschlagen",
+    "trackShiftToggle": "Spurwechsel: Modul auf diesem Feld setzen oder entfernen",
+    "trackShiftCount": "{count} Spurwechsel nötig"
   },
   "communityBuilds": {
     "sectionTitle": "Community-Alternativen",

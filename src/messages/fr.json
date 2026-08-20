@@ -878,7 +878,9 @@
     "draftDirty": "Modifications non enregistrées",
     "draftSaving": "Enregistrement…",
     "draftSaved": "Brouillon enregistré",
-    "draftError": "Échec de l'enregistrement"
+    "draftError": "Échec de l'enregistrement",
+    "trackShiftToggle": "Track-Shift : poser ou retirer un module sur cette case",
+    "trackShiftCount": "{count} Track-Shift requis"
   },
   "communityBuilds": {
     "sectionTitle": "Alternatives communauté",

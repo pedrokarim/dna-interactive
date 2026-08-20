@@ -878,7 +878,9 @@
     "draftDirty": "Cambios sin guardar",
     "draftSaving": "Guardando…",
     "draftSaved": "Borrador guardado",
-    "draftError": "Error al guardar"
+    "draftError": "Error al guardar",
+    "trackShiftToggle": "Cambio de afinidad: poner o quitar un módulo en esta casilla",
+    "trackShiftCount": "{count} cambios de afinidad necesarios"
   },
   "communityBuilds": {
     "sectionTitle": "Alternativas de la comunidad",

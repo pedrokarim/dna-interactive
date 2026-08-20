@@ -79,6 +79,8 @@ export function WedgeSlotCell({
   isOver,
   kindLabel = "Demon Wedge",
   onPick,
+  onToggleTrack,
+  trackLabel,
   onDragStart,
   onDragEnter,
   onDrop,
@@ -93,6 +95,9 @@ export function WedgeSlotCell({
   isOver: boolean;
   kindLabel?: string;
   onPick: () => void;
+  /** Bascule le Track-Shift de cette case. Absent = pas de controle (lecture seule). */
+  onToggleTrack?: () => void;
+  trackLabel?: string;
   onDragStart: () => void;
   onDragEnter: () => void;
   onDrop: () => void;
@@ -103,7 +108,14 @@ export function WedgeSlotCell({
   const icon = slot.item?.icon;
   const draggable = !readOnly && Boolean(slot.item);
 
+  // Un Track-Shift n'a de sens que sur une piece a polarite reelle (1-4) : les
+  // pieces universelles n'ont pas de piste a ajuster.
+  const polarity = slot.item?.polarity ?? null;
+  const canShift = Boolean(onToggleTrack && slot.item && polarity != null && polarity >= 1 && polarity <= 4);
+  const badgeSide = side === "left" ? "left-1" : "right-1";
+
   return (
+    <div className="relative shrink-0" style={{ height: dims.slotH, width: dims.slotW }}>
     <button
       type="button"
       draggable={draggable}
@@ -145,11 +157,29 @@ export function WedgeSlotCell({
           style={{ backgroundColor: ELEMENTS[slot.item.element].hex }}
         />
       )}
-      {slot.track != null && (
-        <span className={cn("absolute bottom-0.5 flex h-4 w-4 items-center justify-center rounded border border-gold/70 bg-black/70 text-[0.55rem] leading-none text-gold", side === "left" ? "left-1" : "right-1")}>
+    </button>
+      {canShift ? (
+        <button
+          type="button"
+          onClick={(e) => { e.stopPropagation(); onToggleTrack!(); }}
+          aria-pressed={slot.track != null}
+          aria-label={trackLabel ?? `Track-Shift ${slot.position}`}
+          title={trackLabel}
+          className={cn(
+            "absolute bottom-0.5 z-10 flex h-4 w-4 items-center justify-center rounded border text-[0.55rem] leading-none transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60",
+            badgeSide,
+            slot.track != null
+              ? "border-gold/70 bg-black/70 text-gold"
+              : "border-white/25 bg-black/50 text-muted-2 hover:border-gold/50 hover:text-gold/70",
+          )}
+        >
+          {slot.track ?? polarity}
+        </button>
+      ) : slot.track != null ? (
+        <span className={cn("absolute bottom-0.5 z-10 flex h-4 w-4 items-center justify-center rounded border border-gold/70 bg-black/70 text-[0.55rem] leading-none text-gold", badgeSide)}>
           {slot.track}
         </span>
-      )}
-    </button>
+      ) : null}
+    </div>
   );
 }

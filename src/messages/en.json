@@ -878,7 +878,9 @@
     "draftDirty": "Unsaved changes",
     "draftSaving": "Saving…",
     "draftSaved": "Draft saved",
-    "draftError": "Save failed"
+    "draftError": "Save failed",
+    "trackShiftToggle": "Track-Shift: add or remove a module on this slot",
+    "trackShiftCount": "{count} Track-Shift required"
   },
   "communityBuilds": {
     "sectionTitle": "Community alternatives",
