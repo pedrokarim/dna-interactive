@@ -1,6 +1,6 @@
 # Suivi de vérification des builds
 
-**Avancement : 8 / 27 personnages vérifiés.**
+**Avancement : 9 / 27 personnages vérifiés.**
 Première vérification : 2026-08-20 · dernière : 2026-08-20.
 
 Généré par `node scripts/verif-build.mjs --mark <id> <source>`. Ne pas éditer à la main.
@@ -20,7 +20,7 @@ plus ancien.
 | 6 | Lady Nifle | Lumino | — | ✅ 2026-08-20 | 560805 | 3 Track-Shift (etait 5) ; melee reordonnee ; Flamme De Epuration ajoutee |
 | 7 | Lisbell | Lumino | — | ✅ 2026-08-20 | 561246 | 5 Track-Shift ; 3e arme ajoutee des deux cotes ; ordre du loadout de consonance recale |
 | 8 | Fina | Lumino | — | ⬜ à faire |  |  |
-| 9 | Psyche | Anemo | — | ⬜ à faire |  |  |
+| 9 | Psyche | Anemo | — | ✅ 2026-08-20 | 560797 | endgame 3 TS deja bons ; midgame 4 TS ajoutes ; Thorned Requiem en 1er a distance |
 | 10 | Fushu | Hydro | — | ⬜ à faire |  |  |
 | 11 | Truffle and Filbert | Anemo | — | ⬜ à faire |  |  |
 | 12 | Rebecca | Hydro | — | ⬜ à faire |  |  |

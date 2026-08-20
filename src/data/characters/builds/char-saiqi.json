@@ -26,19 +26,19 @@
       ],
       "ranged": [
         {
-          "itemId": "weapons-20201",
+          "itemId": "weapons-20599",
           "rank": "best",
           "note": {
-            "FR": "Meilleure arme a distance. Synergie avec le spam d'attaques en Flamboyance.",
-            "EN": "Best ranged weapon. Synergizes with attack spam during Flamboyance."
+            "FR": "Arme de calamite : Puissance de competence, PEN et bonus de degats Anemo.",
+            "EN": "Calamity weapon: Skill Intensity, PEN and Anemo damage bonuses."
           }
         },
         {
-          "itemId": "weapons-20501",
+          "itemId": "weapons-20201",
           "rank": "alternative",
           "note": {
-            "FR": "Alternative solide si Excresduo indisponible.",
-            "EN": "Solid alternative if Excresduo unavailable."
+            "FR": "Puissance de competence.",
+            "EN": "Skill Intensity."
           }
         }
       ]
@@ -216,19 +216,19 @@
       ],
       "ranged": [
         {
-          "itemId": "weapons-20201",
+          "itemId": "weapons-20599",
           "rank": "best",
           "note": {
-            "FR": "Meilleure arme a distance. Synergie avec le spam d'attaques en Flamboyance.",
-            "EN": "Best ranged weapon. Synergizes with attack spam during Flamboyance."
+            "FR": "Arme de calamite : Puissance de competence, PEN et bonus de degats Anemo.",
+            "EN": "Calamity weapon: Skill Intensity, PEN and Anemo damage bonuses."
           }
         },
         {
-          "itemId": "weapons-20501",
+          "itemId": "weapons-20201",
           "rank": "alternative",
           "note": {
-            "FR": "Alternative solide si Excresduo indisponible.",
-            "EN": "Solid alternative if Excresduo unavailable."
+            "FR": "Puissance de competence.",
+            "EN": "Skill Intensity."
           }
         }
       ]
@@ -238,22 +238,22 @@
         {
           "position": 1,
           "itemId": "mods-51452",
-          "track": null
+          "track": 1
         },
         {
           "position": 2,
           "itemId": "mods-51951",
-          "track": null
+          "track": 4
         },
         {
           "position": 3,
           "itemId": "mods-51325",
-          "track": null
+          "track": 3
         },
         {
           "position": 4,
           "itemId": "mods-51753",
-          "track": null
+          "track": 3
         },
         {
           "position": 5,
