@@ -1,6 +1,6 @@
 # Suivi de vérification des builds
 
-**Avancement : 2 / 27 personnages vérifiés.**
+**Avancement : 3 / 27 personnages vérifiés.**
 Première vérification : 2026-08-20 · dernière : 2026-08-20.
 
 Généré par `node scripts/verif-build.mjs --mark <id> <source>`. Ne pas éditer à la main.
@@ -13,7 +13,7 @@ plus ancien.
 | # | Personnage | Élément | Sortie | Vérifié le | Source | Note |
 | --- | --- | --- | --- | --- | --- | --- |
 | 1 | "Ada" | Hydro | 2026-07-28 | ✅ 2026-08-20 | 606756 | personnage + arme signature (2 builds d'arme) |
-| 2 | Hilda | Pyro | 2026-06-30 | ⬜ à faire |  |  |
+| 2 | Hilda | Pyro | 2026-06-30 | ✅ 2026-08-20 | 562612 | 8 Track-Shift ajoutes ; arme distance inversee (Firearm Feast 1er) ; melee completee |
 | 3 | Flora | Umbro | 2026-06-02 | ⬜ à faire |  |  |
 | 4 | Su Yi | Lumino | — | ⬜ à faire |  |  |
 | 5 | Kezhou | Lumino | — | ⬜ à faire |  |  |
@@ -40,4 +40,4 @@ plus ancien.
 | 26 | Rhythm | Electro | — | ⬜ à faire |  |  |
 | 27 | Randy | Electro | — | ⬜ à faire |  |  |
 
-➡ **Suivant :** Hilda (`char-xier`)
+➡ **Suivant :** Flora (`char-fuluo`)

@@ -11,34 +11,42 @@
           "itemId": "weapons-10204",
           "rank": "best",
           "note": {
-            "FR": "Elpides Abound - Resolve +10%. Apres l'Ultime d'un personnage Anemo, accorde la Benediction des Mille Vents. Meilleur choix en endgame ou Resolve depasse Morale.",
-            "EN": "Elpides Abound - Resolve +10%. After an Anemo character uses their Ultimate, grants Thousand Winds Blessing. Best in endgame where Resolve outperforms Morale."
+            "FR": "Meilleure arme de melee de la fiche, malgre le type lance hors de ses maitrises.",
+            "EN": "Top melee pick on the sheet, despite being a polearm and outside her proficiencies."
           }
         },
         {
-          "itemId": "weapons-10206",
+          "itemId": "weapons-10107",
           "rank": "alternative",
           "note": {
-            "FR": "Wanewraith - Degats de Competence +48%. Polyvalente : augmente la Skill Intensity et donc les degats des lasers. Solide en usage general.",
-            "EN": "Wanewraith - Skill Damage +48%. General-purpose: raises Skill Intensity and therefore laser damage. Solid all-rounder."
+            "FR": "Epee : Moral par Points de Combo.",
+            "EN": "Sword: Morale from Combo Points."
+          }
+        },
+        {
+          "itemId": "weapons-10304",
+          "rank": "alternative",
+          "note": {
+            "FR": "Espadon : Moral et Puissance de competence apres un ultime Electro.",
+            "EN": "Claymore: Morale and Skill Intensity after an Electro ultimate."
           }
         }
       ],
       "ranged": [
         {
-          "itemId": "weapons-20512",
+          "itemId": "weapons-20302",
           "rank": "best",
           "note": {
-            "FR": "Dregs of Glimmer - Multishot +75%. Quand un personnage Pyro inflige des degats de competence, gagne 1 stack de +5% Skill DMG. Meilleur Skill DMG de la categorie.",
-            "EN": "Dregs of Glimmer - Multishot +75%. When a Pyro character deals Skill DMG, grants 1 stack of +5% Skill DMG. Highest Skill DMG of the slot."
+            "FR": "Canon, donc dans ses maitrises. Degats de competence sur la duree.",
+            "EN": "Cannon, so within her proficiencies. Sustained Skill Damage."
           }
         },
         {
-          "itemId": "weapons-20302",
+          "itemId": "weapons-20512",
           "rank": "alternative",
           "note": {
-            "FR": "Firearm Feast - Multishot +75%. Quand un personnage Pyro esquive, gagne 1 stack de +16% Skill DMG. Plus de Multishot, bonne synergie malgre un Skill DMG plus faible.",
-            "EN": "Firearm Feast - Multishot +75%. When a Pyro character dodges, grants 1 stack of +16% Skill DMG. More Multishot, good synergy despite lower Skill DMG."
+            "FR": "Mitrailleuse, hors maitrise : a garder si le canon n'est pas disponible.",
+            "EN": "Machinegun, outside her proficiencies: keep it if the cannon is unavailable."
           }
         }
       ]
@@ -48,42 +56,42 @@
         {
           "position": 1,
           "itemId": "mods-51432",
-          "track": null
+          "track": 1
         },
         {
           "position": 2,
           "itemId": "mods-51333",
-          "track": null
+          "track": 3
         },
         {
           "position": 3,
           "itemId": "mods-51931",
-          "track": null
+          "track": 4
         },
         {
           "position": 4,
           "itemId": "mods-51737",
-          "track": null
+          "track": 4
         },
         {
           "position": 5,
           "itemId": "mods-51737",
-          "track": null
+          "track": 4
         },
         {
           "position": 6,
           "itemId": "mods-51737",
-          "track": null
+          "track": 4
         },
         {
           "position": 7,
           "itemId": "mods-51737",
-          "track": null
+          "track": 4
         },
         {
           "position": 8,
           "itemId": "mods-51732",
-          "track": null
+          "track": 2
         }
       ],
       "centerItemId": "mods-31524",
@@ -188,34 +196,42 @@
           "itemId": "weapons-10204",
           "rank": "best",
           "note": {
-            "FR": "Elpides Abound - Resolve +10%. Apres l'Ultime d'un personnage Anemo, accorde la Benediction des Mille Vents. Meilleur choix en endgame ou Resolve depasse Morale.",
-            "EN": "Elpides Abound - Resolve +10%. After an Anemo character uses their Ultimate, grants Thousand Winds Blessing. Best in endgame where Resolve outperforms Morale."
+            "FR": "Meilleure arme de melee de la fiche, malgre le type lance hors de ses maitrises.",
+            "EN": "Top melee pick on the sheet, despite being a polearm and outside her proficiencies."
           }
         },
         {
-          "itemId": "weapons-10206",
+          "itemId": "weapons-10107",
           "rank": "alternative",
           "note": {
-            "FR": "Wanewraith - Degats de Competence +48%. Polyvalente : augmente la Skill Intensity et donc les degats des lasers. Solide en usage general.",
-            "EN": "Wanewraith - Skill Damage +48%. General-purpose: raises Skill Intensity and therefore laser damage. Solid all-rounder."
+            "FR": "Epee : Moral par Points de Combo.",
+            "EN": "Sword: Morale from Combo Points."
+          }
+        },
+        {
+          "itemId": "weapons-10304",
+          "rank": "alternative",
+          "note": {
+            "FR": "Espadon : Moral et Puissance de competence apres un ultime Electro.",
+            "EN": "Claymore: Morale and Skill Intensity after an Electro ultimate."
           }
         }
       ],
       "ranged": [
         {
-          "itemId": "weapons-20512",
+          "itemId": "weapons-20302",
           "rank": "best",
           "note": {
-            "FR": "Dregs of Glimmer - Multishot +75%. Quand un personnage Pyro inflige des degats de competence, gagne 1 stack de +5% Skill DMG. Meilleur Skill DMG de la categorie.",
-            "EN": "Dregs of Glimmer - Multishot +75%. When a Pyro character deals Skill DMG, grants 1 stack of +5% Skill DMG. Highest Skill DMG of the slot."
+            "FR": "Canon, donc dans ses maitrises. Degats de competence sur la duree.",
+            "EN": "Cannon, so within her proficiencies. Sustained Skill Damage."
           }
         },
         {
-          "itemId": "weapons-20302",
+          "itemId": "weapons-20512",
           "rank": "alternative",
           "note": {
-            "FR": "Firearm Feast - Multishot +75%. Quand un personnage Pyro esquive, gagne 1 stack de +16% Skill DMG. Plus de Multishot, bonne synergie malgre un Skill DMG plus faible.",
-            "EN": "Firearm Feast - Multishot +75%. When a Pyro character dodges, grants 1 stack of +16% Skill DMG. More Multishot, good synergy despite lower Skill DMG."
+            "FR": "Mitrailleuse, hors maitrise : a garder si le canon n'est pas disponible.",
+            "EN": "Machinegun, outside her proficiencies: keep it if the cannon is unavailable."
           }
         }
       ]
@@ -225,42 +241,42 @@
         {
           "position": 1,
           "itemId": "mods-51431",
-          "track": null
+          "track": 1
         },
         {
           "position": 2,
           "itemId": "mods-51333",
-          "track": null
+          "track": 3
         },
         {
           "position": 3,
           "itemId": "mods-51931",
-          "track": null
+          "track": 4
         },
         {
           "position": 4,
           "itemId": "mods-51737",
-          "track": null
+          "track": 4
         },
         {
           "position": 5,
           "itemId": "mods-51737",
-          "track": null
+          "track": 4
         },
         {
           "position": 6,
           "itemId": "mods-51737",
-          "track": null
+          "track": 4
         },
         {
           "position": 7,
           "itemId": "mods-51737",
-          "track": null
+          "track": 4
         },
         {
           "position": 8,
           "itemId": "mods-51732",
-          "track": null
+          "track": 2
         }
       ],
       "centerItemId": "mods-31524",
