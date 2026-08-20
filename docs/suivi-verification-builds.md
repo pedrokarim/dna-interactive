@@ -1,6 +1,6 @@
 # Suivi de vérification des builds
 
-**Avancement : 10 / 27 personnages vérifiés.**
+**Avancement : 11 / 27 personnages vérifiés.**
 Première vérification : 2026-08-20 · dernière : 2026-08-20.
 
 Généré par `node scripts/verif-build.mjs --mark <id> <source>`. Ne pas éditer à la main.
@@ -21,7 +21,7 @@ plus ancien.
 | 7 | Lisbell | Lumino | — | ✅ 2026-08-20 | 561246 | 5 Track-Shift ; 3e arme ajoutee des deux cotes ; ordre du loadout de consonance recale |
 | 8 | Fina | Lumino | — | ⬜ à faire |  |  |
 | 9 | Psyche | Anemo | — | ✅ 2026-08-20 | 560797 | endgame 3 TS deja bons ; midgame 4 TS ajoutes ; Thorned Requiem en 1er a distance |
-| 10 | Fushu | Hydro | — | ⬜ à faire |  |  |
+| 10 | Fushu | Hydro | — | ✅ 2026-08-20 | 562197 | tableaux parses en HTML brut : early 2 modules (1,2), endgame 6 (1,2,3,4,6,8) |
 | 11 | Truffle and Filbert | Anemo | — | ✅ 2026-08-20 | 560798 | deja conforme : 8 pieces, centre, 3 Track-Shift (1,2,4) et armes |
 | 12 | Rebecca | Hydro | — | ⬜ à faire |  |  |
 | 13 | Lynn | Pyro | — | ⬜ à faire |  |  |

@@ -1,6 +1,11 @@
 {
   "_comment": "Suivi de vérification des builds contre leur fiche publique. Écrit par scripts/verif-build.mjs.",
   "characters": {
+    "char-baiheng": {
+      "verifiedAt": "2026-08-20",
+      "source": "562197",
+      "note": "tableaux parses en HTML brut : early 2 modules (1,2), endgame 6 (1,2,3,4,6,8)"
+    },
     "char-baonu": {
       "verifiedAt": "2026-08-20",
       "source": "561246",
