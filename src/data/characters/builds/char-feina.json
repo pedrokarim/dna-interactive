@@ -64,22 +64,22 @@
         {
           "position": 1,
           "itemId": "mods-56164",
-          "track": null
+          "track": 2
         },
         {
           "position": 2,
           "itemId": "mods-51961",
-          "track": null
+          "track": 4
         },
         {
           "position": 3,
           "itemId": "mods-51336",
-          "track": null
+          "track": 3
         },
         {
           "position": 4,
           "itemId": "mods-51465",
-          "track": null
+          "track": 1
         },
         {
           "position": 5,
@@ -89,7 +89,7 @@
         {
           "position": 6,
           "itemId": "mods-51767",
-          "track": null
+          "track": 3
         },
         {
           "position": 7,
@@ -99,7 +99,7 @@
         {
           "position": 8,
           "itemId": "mods-51761",
-          "track": null
+          "track": 1
         }
       ],
       "affinity": {
@@ -284,8 +284,8 @@
         "EN": "Feathered Serpent's Steadfast"
       },
       "note": {
-        "FR": "Version courte : cinq emplacements seulement, centre generique Roc. Pan's Eternite-Abnegation remplace le coeur Covenanter's.",
-        "EN": "Short version: five slots only, generic Steadfast core. Pan's Eternity-Abnegation replaces the Covenanter's core."
+        "FR": "Composition a reverifier : le tableau de pistes de la fiche ne correspond pas a ces pieces (case 4 attendue en polarite 3). Aucune piste posee tant que ce n est pas tranche.",
+        "EN": "Composition to re-check: the sheet track table does not match these pieces (slot 4 expected at polarity 3). No tracks set until this is settled."
       },
       "centerItemId": "mods-31526"
     },

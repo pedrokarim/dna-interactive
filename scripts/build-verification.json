@@ -16,6 +16,11 @@
       "source": "606756",
       "note": "personnage + arme signature (2 builds d'arme)"
     },
+    "char-feina": {
+      "verifiedAt": "2026-08-20",
+      "source": "561245",
+      "note": "Support Vigueur : 6 pistes (1,2,3,4,6,8) ; build Roc sans piste, composition a reverifier"
+    },
     "char-fuluo": {
       "verifiedAt": "2026-08-20",
       "source": "602498",
