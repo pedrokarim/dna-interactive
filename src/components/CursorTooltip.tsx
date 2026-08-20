@@ -36,6 +36,15 @@ export default function CursorTooltip({ content, children, width = 260, as = "in
   const [pos, setPos] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
   const triggerRef = useRef<HTMLDivElement | null>(null);
   const hasHoverRef = useRef(true);
+  // Hauteur réelle de la bulle, mesurée au montage. Sans ça on retombe sur une
+  // estimation en dur : trop basse, la bulle déborde sous le pli au lieu de se
+  // retourner au-dessus du curseur.
+  const [bubbleH, setBubbleH] = useState(240);
+  const measureRef = (node: HTMLDivElement | null) => {
+    if (!node) return;
+    const h = node.getBoundingClientRect().height;
+    if (h > 0 && Math.abs(h - bubbleH) > 1) setBubbleH(h);
+  };
 
   useEffect(() => {
     setMounted(true);
@@ -98,16 +107,17 @@ export default function CursorTooltip({ content, children, width = 260, as = "in
     let top = pos.y + 14;
     // Flip to the left if it would overflow right edge.
     if (left + width + pad > vw) left = Math.max(pad, pos.x - width - 14);
-    // Approximate tooltip height for overflow clamp — use 240 as a safe default
-    // (content is narrow, always fits in ~240px).
-    const approxH = 240;
-    if (top + approxH + pad > vh) top = Math.max(pad, pos.y - approxH - 14);
+    if (top + bubbleH + pad > vh) top = Math.max(pad, pos.y - bubbleH - 14);
     return {
       position: "fixed" as const,
       left,
       top,
       width,
-      zIndex: 100,
+      // Au-dessus de tout le contenu de page : les panneaux portent
+      // `backdrop-blur`, qui crée un contexte d'empilement et masquait la bulle
+      // à z-100. Doit aussi dépasser les pickers du builder (z-500) puisque la
+      // bulle y est utilisée. Reste sous la visionneuse d'image (99999).
+      zIndex: 9000,
       pointerEvents: "none" as const,
     };
   })();
@@ -128,6 +138,7 @@ export default function CursorTooltip({ content, children, width = 260, as = "in
       </Trigger>
       {mounted && show && createPortal(
         <div
+          ref={measureRef}
           style={tooltipStyle}
           className="border border-line/25 bg-panel/95 p-3 text-sm shadow-[0_20px_40px_rgba(0,0,0,0.7)] backdrop-blur"
           role="tooltip"
