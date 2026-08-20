@@ -11,34 +11,50 @@
           "itemId": "weapons-10601",
           "rank": "best",
           "note": {
-            "FR": "Meilleure arme melee. Synergie avec le gameplay rapide.",
-            "EN": "Best melee weapon. Synergy with fast-paced gameplay."
+            "FR": "Premier choix de la fiche.",
+            "EN": "Top pick on the sheet."
+          }
+        },
+        {
+          "itemId": "weapons-10604",
+          "rank": "alternative",
+          "note": {
+            "FR": "Portee d'ATQ et degats d'attaque normale.",
+            "EN": "ATK Range and Normal ATK damage."
           }
         },
         {
           "itemId": "weapons-10202",
           "rank": "alternative",
           "note": {
-            "FR": "Alternative solide. Bonus ATQ.",
-            "EN": "Solid alternative. ATK bonus."
+            "FR": "Troisieme choix.",
+            "EN": "Third pick."
           }
         }
       ],
       "ranged": [
         {
-          "itemId": "weapons-20510",
+          "itemId": "weapons-20599",
           "rank": "best",
           "note": {
-            "FR": "Arme signature. Maximise les degats a distance et la synergie Phanosword.",
-            "EN": "Signature weapon. Maximizes ranged damage and Phanosword synergy."
+            "FR": "Arme de calamite : Points de Combo et DGT d'arme de melee. Sa maitrise Almighty accepte tout type.",
+            "EN": "Calamity weapon: Combo Points and melee weapon damage. His Almighty proficiency accepts any type."
+          }
+        },
+        {
+          "itemId": "weapons-20510",
+          "rank": "alternative",
+          "note": {
+            "FR": "Deuxieme choix de la fiche.",
+            "EN": "Second pick on the sheet."
           }
         },
         {
           "itemId": "weapons-20205",
           "rank": "alternative",
           "note": {
-            "FR": "Alternative viable a distance.",
-            "EN": "Viable ranged alternative."
+            "FR": "Troisieme choix.",
+            "EN": "Third pick."
           }
         }
       ]
@@ -48,27 +64,27 @@
         {
           "position": 1,
           "itemId": "mods-56162",
-          "track": null
+          "track": 2
         },
         {
           "position": 2,
           "itemId": "mods-51962",
-          "track": null
+          "track": 4
         },
         {
           "position": 3,
           "itemId": "mods-51461",
-          "track": null
+          "track": 1
         },
         {
           "position": 4,
           "itemId": "mods-51326",
-          "track": null
+          "track": 3
         },
         {
           "position": 5,
           "itemId": "mods-51761",
-          "track": null
+          "track": 1
         },
         {
           "position": 6,

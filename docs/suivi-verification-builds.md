@@ -1,6 +1,6 @@
 # Suivi de vérification des builds
 
-**Avancement : 5 / 27 personnages vérifiés.**
+**Avancement : 6 / 27 personnages vérifiés.**
 Première vérification : 2026-08-20 · dernière : 2026-08-20.
 
 Généré par `node scripts/verif-build.mjs --mark <id> <source>`. Ne pas éditer à la main.
@@ -16,7 +16,7 @@ plus ancien.
 | 2 | Hilda | Pyro | 2026-06-30 | ✅ 2026-08-20 | 562612 | 8 Track-Shift ajoutes ; arme distance inversee (Firearm Feast 1er) ; melee completee |
 | 3 | Flora | Umbro | 2026-06-02 | ✅ 2026-08-20 | 602498 | 5 Track-Shift (cases 1-4 et 6) ; Sanguis Sanctus Katana ajoute en 2e melee |
 | 4 | Su Yi | Lumino | — | ✅ 2026-08-20 | 570654 | DW et 5 Track-Shift deja conformes ; arme signature Fledgling's Gleam ajoutee (aucun 1er choix a distance) |
-| 5 | Kezhou | Lumino | — | ⬜ à faire |  |  |
+| 5 | Kezhou | Lumino | — | ✅ 2026-08-20 | 567201 | 5 Track-Shift (cases 1-5) ; Thorned Requiem en 1er a distance ; Sanguis Sanctus Katana ajoute |
 | 6 | Lady Nifle | Lumino | — | ⬜ à faire |  |  |
 | 7 | Lisbell | Lumino | — | ⬜ à faire |  |  |
 | 8 | Fina | Lumino | — | ⬜ à faire |  |  |
@@ -40,4 +40,4 @@ plus ancien.
 | 26 | Rhythm | Electro | — | ⬜ à faire |  |  |
 | 27 | Randy | Electro | — | ⬜ à faire |  |  |
 
-➡ **Suivant :** Kezhou (`char-kezhou`)
+➡ **Suivant :** Lady Nifle (`char-nifu`)
