@@ -1,6 +1,11 @@
 {
   "_comment": "Suivi de vérification des builds contre leur fiche publique. Écrit par scripts/verif-build.mjs.",
   "characters": {
+    "char-aote": {
+      "verifiedAt": "2026-08-20",
+      "source": "560800",
+      "note": "pistes posees depuis le tableau HTML"
+    },
     "char-baiheng": {
       "verifiedAt": "2026-08-20",
       "source": "562197",
@@ -10,6 +15,11 @@
       "verifiedAt": "2026-08-20",
       "source": "561246",
       "note": "5 Track-Shift ; 3e arme ajoutee des deux cotes ; ordre du loadout de consonance recale"
+    },
+    "char-dafu": {
+      "verifiedAt": "2026-08-20",
+      "source": "560799",
+      "note": "pistes posees depuis le tableau HTML"
     },
     "char-eve": {
       "verifiedAt": "2026-08-20",
@@ -26,10 +36,35 @@
       "source": "602498",
       "note": "5 Track-Shift (cases 1-4 et 6) ; Sanguis Sanctus Katana ajoute en 2e melee"
     },
+    "char-haier": {
+      "verifiedAt": "2026-08-20",
+      "source": "560794",
+      "note": "pistes posees depuis le tableau HTML"
+    },
     "char-kezhou": {
       "verifiedAt": "2026-08-20",
       "source": "567201",
       "note": "5 Track-Shift (cases 1-5) ; Thorned Requiem en 1er a distance ; Sanguis Sanctus Katana ajoute"
+    },
+    "char-landi": {
+      "verifiedAt": "2026-08-20",
+      "source": "560802",
+      "note": "pistes posees depuis le tableau HTML"
+    },
+    "char-linen": {
+      "verifiedAt": "2026-08-20",
+      "source": "560793",
+      "note": "pistes posees depuis le tableau HTML"
+    },
+    "char-lise": {
+      "verifiedAt": "2026-08-20",
+      "source": "560803",
+      "note": "pistes posees depuis le tableau HTML"
+    },
+    "char-maer": {
+      "verifiedAt": "2026-08-20",
+      "source": "560796",
+      "note": "pistes posees depuis le tableau HTML"
     },
     "char-nifu": {
       "verifiedAt": "2026-08-20",
@@ -41,6 +76,11 @@
       "source": "560797",
       "note": "endgame 3 TS deja bons ; midgame 4 TS ajoutes ; Thorned Requiem en 1er a distance"
     },
+    "char-shuimu": {
+      "verifiedAt": "2026-08-20",
+      "source": "560789",
+      "note": "pistes posees depuis le tableau HTML"
+    },
     "char-songlu": {
       "verifiedAt": "2026-08-20",
       "source": "560798",
@@ -51,10 +91,35 @@
       "source": "570654",
       "note": "DW et 5 Track-Shift deja conformes ; arme signature Fledgling's Gleam ajoutee (aucun 1er choix a distance)"
     },
+    "char-tuosi": {
+      "verifiedAt": "2026-08-20",
+      "source": "560807",
+      "note": "pistes posees depuis le tableau HTML"
+    },
+    "char-xibi": {
+      "verifiedAt": "2026-08-20",
+      "source": "560801",
+      "note": "pistes posees depuis le tableau HTML"
+    },
     "char-xier": {
       "verifiedAt": "2026-08-20",
       "source": "562612",
       "note": "8 Track-Shift ajoutes ; arme distance inversee (Firearm Feast 1er) ; melee completee"
+    },
+    "char-yeer": {
+      "verifiedAt": "2026-08-20",
+      "source": "560795",
+      "note": "pistes posees depuis le tableau HTML"
+    },
+    "char-yuming": {
+      "verifiedAt": "2026-08-20",
+      "source": "561640",
+      "note": "pistes posees depuis le tableau HTML"
+    },
+    "char-zhangyu": {
+      "verifiedAt": "2026-08-20",
+      "source": "560790",
+      "note": "pistes posees depuis le tableau HTML"
     },
     "char-zhiliu": {
       "verifiedAt": "2026-08-20",

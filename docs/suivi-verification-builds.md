@@ -1,6 +1,6 @@
 # Suivi de vérification des builds
 
-**Avancement : 12 / 27 personnages vérifiés.**
+**Avancement : 25 / 27 personnages vérifiés.**
 Première vérification : 2026-08-20 · dernière : 2026-08-20.
 
 Généré par `node scripts/verif-build.mjs --mark <id> <source>`. Ne pas éditer à la main.
@@ -23,21 +23,21 @@ plus ancien.
 | 9 | Psyche | Anemo | — | ✅ 2026-08-20 | 560797 | endgame 3 TS deja bons ; midgame 4 TS ajoutes ; Thorned Requiem en 1er a distance |
 | 10 | Fushu | Hydro | — | ✅ 2026-08-20 | 562197 | tableaux parses en HTML brut : early 2 modules (1,2), endgame 6 (1,2,3,4,6,8) |
 | 11 | Truffle and Filbert | Anemo | — | ✅ 2026-08-20 | 560798 | deja conforme : 8 pieces, centre, 3 Track-Shift (1,2,4) et armes |
-| 12 | Rebecca | Hydro | — | ⬜ à faire |  |  |
-| 13 | Lynn | Pyro | — | ⬜ à faire |  |  |
-| 14 | Yuming | Electro | — | ⬜ à faire |  |  |
+| 12 | Rebecca | Hydro | — | ✅ 2026-08-20 | 560789 | pistes posees depuis le tableau HTML |
+| 13 | Lynn | Pyro | — | ✅ 2026-08-20 | 560793 | pistes posees depuis le tableau HTML |
+| 14 | Yuming | Electro | — | ✅ 2026-08-20 | 561640 | pistes posees depuis le tableau HTML |
 | 15 | Zhiliu | Electro | — | ✅ 2026-08-20 | 567185 | arme distance -> Rendhusk ; arme signature : 1 Track-Shift case 1 |
-| 16 | Sibylle | Electro | — | ⬜ à faire |  |  |
-| 17 | Tabethe | Hydro | — | ⬜ à faire |  |  |
+| 16 | Sibylle | Electro | — | ✅ 2026-08-20 | 560801 | pistes posees depuis le tableau HTML |
+| 17 | Tabethe | Hydro | — | ✅ 2026-08-20 | 560790 | pistes posees depuis le tableau HTML |
 | 18 | Berenica | Umbro | — | ⬜ à faire |  |  |
-| 19 | Phantasio | Umbro | — | ⬜ à faire |  |  |
+| 19 | Phantasio | Umbro | — | ✅ 2026-08-20 | 560807 | pistes posees depuis le tableau HTML |
 | 20 | Camilla | Pyro | — | ⬜ à faire |  |  |
-| 21 | Margie | Pyro | — | ⬜ à faire |  |  |
-| 22 | Hellfire | Pyro | — | ⬜ à faire |  |  |
-| 23 | Yale and Oliver | Pyro | — | ⬜ à faire |  |  |
-| 24 | Outsider | Anemo | — | ⬜ à faire |  |  |
-| 25 | Daphne | Anemo | — | ⬜ à faire |  |  |
-| 26 | Rhythm | Electro | — | ⬜ à faire |  |  |
-| 27 | Randy | Electro | — | ⬜ à faire |  |  |
+| 21 | Margie | Pyro | — | ✅ 2026-08-20 | 560796 | pistes posees depuis le tableau HTML |
+| 22 | Hellfire | Pyro | — | ✅ 2026-08-20 | 560794 | pistes posees depuis le tableau HTML |
+| 23 | Yale and Oliver | Pyro | — | ✅ 2026-08-20 | 560795 | pistes posees depuis le tableau HTML |
+| 24 | Outsider | Anemo | — | ✅ 2026-08-20 | 560800 | pistes posees depuis le tableau HTML |
+| 25 | Daphne | Anemo | — | ✅ 2026-08-20 | 560799 | pistes posees depuis le tableau HTML |
+| 26 | Rhythm | Electro | — | ✅ 2026-08-20 | 560803 | pistes posees depuis le tableau HTML |
+| 27 | Randy | Electro | — | ✅ 2026-08-20 | 560802 | pistes posees depuis le tableau HTML |
 
-➡ **Suivant :** Rebecca (`char-shuimu`)
+➡ **Suivant :** Berenica (`char-heitao`)
