@@ -1,6 +1,6 @@
 # Suivi de vérification des builds
 
-**Avancement : 9 / 27 personnages vérifiés.**
+**Avancement : 10 / 27 personnages vérifiés.**
 Première vérification : 2026-08-20 · dernière : 2026-08-20.
 
 Généré par `node scripts/verif-build.mjs --mark <id> <source>`. Ne pas éditer à la main.
@@ -22,7 +22,7 @@ plus ancien.
 | 8 | Fina | Lumino | — | ⬜ à faire |  |  |
 | 9 | Psyche | Anemo | — | ✅ 2026-08-20 | 560797 | endgame 3 TS deja bons ; midgame 4 TS ajoutes ; Thorned Requiem en 1er a distance |
 | 10 | Fushu | Hydro | — | ⬜ à faire |  |  |
-| 11 | Truffle and Filbert | Anemo | — | ⬜ à faire |  |  |
+| 11 | Truffle and Filbert | Anemo | — | ✅ 2026-08-20 | 560798 | deja conforme : 8 pieces, centre, 3 Track-Shift (1,2,4) et armes |
 | 12 | Rebecca | Hydro | — | ⬜ à faire |  |  |
 | 13 | Lynn | Pyro | — | ⬜ à faire |  |  |
 | 14 | Yuming | Electro | — | ⬜ à faire |  |  |
