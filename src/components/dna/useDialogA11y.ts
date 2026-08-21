@@ -9,6 +9,27 @@ import { useEffect, type RefObject } from "react";
  *
  * Le panneau référencé doit être focusable en repli (`tabIndex={-1}`).
  */
+// Verrou de scroll a compteur. Deux modales peuvent etre ouvertes en meme temps
+// (le selecteur de piece s'ouvre PAR-DESSUS la modale de configuration d'arme).
+// En sauvegardant `document.body.style.overflow` a chaque ouverture, la seconde
+// enregistrait « hidden » et le restaurait en se fermant : la page restait
+// bloquee. On ne restaure donc qu'au tout dernier verrou libere.
+let scrollLocks = 0;
+let overflowBeforeFirstLock = "";
+
+function lockScroll() {
+  if (scrollLocks === 0) {
+    overflowBeforeFirstLock = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+  }
+  scrollLocks += 1;
+}
+
+function unlockScroll() {
+  scrollLocks = Math.max(0, scrollLocks - 1);
+  if (scrollLocks === 0) document.body.style.overflow = overflowBeforeFirstLock;
+}
+
 export function useDialogA11y(
   panelRef: RefObject<HTMLElement | null>,
   options: { open?: boolean; onClose: () => void },
@@ -52,11 +73,10 @@ export function useDialogA11y(
     };
 
     document.addEventListener("keydown", onKey);
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+    lockScroll();
     return () => {
       document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = previousOverflow;
+      unlockScroll();
       previouslyFocused?.focus?.();
     };
   }, [open, onClose, panelRef]);
