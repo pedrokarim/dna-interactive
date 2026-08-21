@@ -1134,23 +1134,11 @@ export function CommunityBuildBuilderClient({
           <div className="mt-3 grid gap-4 xl:grid-cols-2">
             <div>
               <p className="mb-2 font-caps text-[0.62rem] uppercase tracking-[0.16em] text-muted">{t("melee")}</p>
-              <DnaSlotRow entries={meleeWeapons} pool={meleePool} max={3} label={t("pickMeleeWeapon")} onChange={setMeleeWeapons}
-                onConfigure={(id) => {
-                  setWeaponWedges((prev) => (prev[id] ? prev : { ...prev, [id]: { slots: emptyWedgeSlots(8), affinity: null } }));
-                  setWedgeModalWeapon(id);
-                }}
-                configureLabel={t("weaponWedgesConfigure")}
-              />
+              <DnaSlotRow entries={meleeWeapons} pool={meleePool} max={3} label={t("pickMeleeWeapon")} onChange={setMeleeWeapons} />
             </div>
             <div>
               <p className="mb-2 font-caps text-[0.62rem] uppercase tracking-[0.16em] text-muted">{t("ranged")}</p>
-              <DnaSlotRow entries={rangedWeapons} pool={rangedPool} max={3} label={t("pickRangedWeapon")} onChange={setRangedWeapons}
-                onConfigure={(id) => {
-                  setWeaponWedges((prev) => (prev[id] ? prev : { ...prev, [id]: { slots: emptyWedgeSlots(8), affinity: null } }));
-                  setWedgeModalWeapon(id);
-                }}
-                configureLabel={t("weaponWedgesConfigure")}
-              />
+              <DnaSlotRow entries={rangedWeapons} pool={rangedPool} max={3} label={t("pickRangedWeapon")} onChange={setRangedWeapons} />
             </div>
           </div>
           {(() => {

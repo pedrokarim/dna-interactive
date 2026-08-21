@@ -2,7 +2,6 @@
 import { useRef, useState, useSyncExternalStore } from "react";
 import { useTranslations } from "next-intl";
 import { createPortal } from "react-dom";
-import { SlidersHorizontal } from "lucide-react";
 import { cn } from "./cn";
 import { useDialogA11y } from "./useDialogA11y";
 import { ELEMENTS } from "./elements";
@@ -37,9 +36,6 @@ export type DnaSlotRowProps = {
   readOnly?: boolean;
   pickerColumns?: number;
   onChange?: (entries: SlotEntry[]) => void;
-  /** Action secondaire par entrée : affiche un bouton flottant sur la carte. */
-  onConfigure?: (itemId: string) => void;
-  configureLabel?: string;
   className?: string;
 };
 
@@ -56,8 +52,6 @@ export function DnaSlotRow({
   readOnly = false,
   pickerColumns = 4,
   onChange,
-  onConfigure,
-  configureLabel,
   className,
 }: DnaSlotRowProps) {
   const t = useTranslations("common");
@@ -106,8 +100,6 @@ export function DnaSlotRow({
           readOnly={readOnly}
           onReplace={() => setPickerFor(i)}
           onRemove={() => remove(i)}
-          onConfigure={onConfigure}
-          configureLabel={configureLabel}
           onSetBest={() => setBest(i)}
         />
       ))}
@@ -144,8 +136,6 @@ function SlotCard({
   readOnly,
   onReplace,
   onRemove,
-  onConfigure,
-  configureLabel,
   onSetBest,
 }: {
   entry: SlotEntry;
@@ -153,8 +143,6 @@ function SlotCard({
   readOnly: boolean;
   onReplace: () => void;
   onRemove: () => void;
-  onConfigure?: (itemId: string) => void;
-  configureLabel?: string;
   onSetBest: () => void;
 }) {
   const t = useTranslations("common");
@@ -210,17 +198,6 @@ function SlotCard({
             <DnaTag tone={isBest ? "gold" : "crimson"}>{isBest ? "Best" : "Alt"}</DnaTag>
           </button>
         ))}
-      {onConfigure && !readOnly ? (
-        <button
-          type="button"
-          onClick={(e) => { e.stopPropagation(); onConfigure(item.id); }}
-          aria-label={configureLabel ? `${configureLabel} — ${item.name}` : item.name}
-          title={configureLabel}
-          className="absolute bottom-1 left-1 z-[3] flex h-5 w-5 items-center justify-center rounded-sm border border-white/20 bg-ink/85 text-muted opacity-0 transition-opacity hover:border-gold hover:text-gold focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60 group-hover:opacity-100 md:opacity-60"
-        >
-          <SlidersHorizontal className="h-3 w-3" />
-        </button>
-      ) : null}
     </div>
   );
 }
