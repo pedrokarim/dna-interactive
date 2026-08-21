@@ -115,7 +115,10 @@ export function WedgeSlotCell({
   const badgeSide = side === "left" ? "left-1" : "right-1";
 
   return (
-    <div className="relative shrink-0" style={{ height: dims.slotH, width: dims.slotW }}>
+    // Colonne : la case elle-meme, puis son nom. Sans le nom on ne sait pas quelle
+    // piece est posee — 828 mods sur 829 partagent leur icone.
+    <div className="flex shrink-0 flex-col items-center gap-1" style={{ width: dims.slotW }}>
+    <div className="relative" style={{ height: dims.slotH, width: dims.slotW }}>
     <button
       type="button"
       draggable={draggable}
@@ -180,6 +183,13 @@ export function WedgeSlotCell({
           {slot.track}
         </span>
       ) : null}
+    </div>
+      <p
+        className="w-full truncate text-center text-[0.62rem] leading-tight text-parch/85"
+        title={slot.item?.name ?? undefined}
+      >
+        {slot.item?.name ?? " "}
+      </p>
     </div>
   );
 }

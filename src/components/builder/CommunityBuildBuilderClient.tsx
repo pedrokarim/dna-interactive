@@ -7,6 +7,7 @@ import { createPortal } from "react-dom";
 import { Download, Upload, Link2, Share2 } from "lucide-react";
 import { BuilderCharacterPicker } from "@/components/builder/CharacterPicker";
 import { DnaButton } from "@/components/dna/Button";
+import { DnaDialog } from "@/components/dna/Dialog";
 import { DnaChip } from "@/components/dna/Chip";
 import { DnaConsonanceEditor } from "@/components/dna/ConsonanceEditor";
 import { DnaDemonWedgeEditor } from "@/components/dna/DemonWedgeEditor";
@@ -254,6 +255,8 @@ export function CommunityBuildBuilderClient({
   const [meleeWeapons, setMeleeWeapons] = useState<SlotEntry[]>([]);
   // DW configurés par arme (toggle opt-in → éditeur propre au build).
   const [weaponWedges, setWeaponWedges] = useState<Record<string, WeaponWedgeConfig>>({});
+  /** Arme dont on configure les Demon Wedges dans la modale (null = fermee). */
+  const [wedgeModalWeapon, setWedgeModalWeapon] = useState<string | null>(null);
   const [rangedWeapons, setRangedWeapons] = useState<SlotEntry[]>([]);
   const [genimons, setGenimons] = useState<SlotEntry[]>([]);
   const [demonSlots, setDemonSlots] = useState<WedgeSlotData[]>(() => emptyWedgeSlots(8));
@@ -1133,54 +1136,52 @@ export function CommunityBuildBuilderClient({
             if (selected.length === 0) return null;
             return (
               <div className="mt-5 border-t border-white/8 pt-4">
-                <p className="mb-2 font-caps text-[0.62rem] uppercase tracking-[0.16em] text-muted">{t("weaponWedgesToggle")}</p>
-                <div className="flex flex-col gap-3">
+                <p className="mb-3 max-w-prose text-xs leading-relaxed text-muted">
+                  {t("weaponWedgesHelp")}
+                </p>
+                <div className="flex flex-col gap-2">
                   {selected.map((e) => {
-                    const weaponClass = (e.item.weaponClass ?? "melee") as "melee" | "ranged";
                     const config = weaponWedges[e.item.id];
+                    const placed = config ? config.slots.filter((sl) => sl.item).length : 0;
                     return (
-                      <div key={e.item.id} className="border border-white/8 bg-black/15 p-3">
-                        <div className="flex items-center justify-between gap-3 text-sm text-parch">
-                          <span className="min-w-0 truncate">{e.item.name}</span>
-                          <DnaSwitch
-                            checked={Boolean(config)}
-                            aria-label={e.item.name}
-                            onChange={(on) =>
-                              setWeaponWedges((prev) => {
-                                const next = { ...prev };
-                                if (on) next[e.item.id] = next[e.item.id] ?? { slots: emptyWedgeSlots(8), affinity: null };
-                                else delete next[e.item.id];
-                                return next;
-                              })
-                            }
-                          />
+                      <div
+                        key={e.item.id}
+                        className="flex flex-wrap items-center justify-between gap-2 border border-white/8 bg-black/15 px-3 py-2"
+                      >
+                        <div className="flex min-w-0 items-baseline gap-2">
+                          <span className="min-w-0 truncate text-sm text-parch">{e.item.name}</span>
+                          <span className="shrink-0 font-caps text-[0.55rem] uppercase tracking-[0.16em] text-muted">
+                            {t(e.rank === "best" ? "rankBest" : "rankAlternative")}
+                          </span>
                         </div>
-                        {config ? (
-                          <div className="mt-3 overflow-x-auto pb-2">
-                            <DnaDemonWedgeEditor
-                              slots={config.slots}
-                              centerItem={affinityCenterItem(config.affinity)}
-                              accentHex={config.affinity ? ELEMENTS[config.affinity].hex : accentHex}
-                              scale="lg"
-                              className="min-w-[30rem]"
-                              onChange={(slots) =>
-                                setWeaponWedges((prev) => ({
-                                  ...prev,
-                                  [e.item.id]: { ...(prev[e.item.id] ?? { slots: emptyWedgeSlots(8), affinity: null }), slots },
-                                }))
-                              }
-                              onSlotClick={(position) => setEditing({ kind: "weaponWedge", weaponId: e.item.id, weaponClass, position })}
-                              onToggleTrack={(position) =>
+                        <div className="flex shrink-0 items-center gap-2">
+                          {config ? (
+                            <button
+                              type="button"
+                              onClick={() =>
                                 setWeaponWedges((prev) => {
-                                  const cur = prev[e.item.id] ?? { slots: emptyWedgeSlots(8), affinity: null };
-                                  return { ...prev, [e.item.id]: { ...cur, slots: toggleSlotTrack(cur.slots, position) } };
+                                  const next = { ...prev };
+                                  delete next[e.item.id];
+                                  return next;
                                 })
                               }
-                              trackLabel={t("trackShiftToggle")}
-                              onCenterClick={() => setEditing({ kind: "weaponAffinity", weaponId: e.item.id })}
-                            />
-                          </div>
-                        ) : null}
+                              className="font-caps text-[0.55rem] uppercase tracking-[0.16em] text-muted underline-offset-2 hover:text-crimson-bright hover:underline"
+                            >
+                              {t("weaponWedgesClear")}
+                            </button>
+                          ) : null}
+                          <DnaButton
+                            variant={config ? "ghost" : "gold"}
+                            onClick={() => {
+                              setWeaponWedges((prev) =>
+                                prev[e.item.id] ? prev : { ...prev, [e.item.id]: { slots: emptyWedgeSlots(8), affinity: null } },
+                              );
+                              setWedgeModalWeapon(e.item.id);
+                            }}
+                          >
+                            {config ? t("weaponWedgesCount", { count: placed }) : t("weaponWedgesConfigure")}
+                          </DnaButton>
+                        </div>
                       </div>
                     );
                   })}
@@ -1452,6 +1453,37 @@ export function CommunityBuildBuilderClient({
         </div>,
         document.body,
       ) : null}
+      {(() => {
+        const id = wedgeModalWeapon;
+        if (!id) return null;
+        const entry = [...meleeWeapons, ...rangedWeapons].find((e) => e.item.id === id);
+        const config = weaponWedges[id];
+        if (!entry || !config) return null;
+        const weaponClass = (entry.item.weaponClass ?? "melee") as "melee" | "ranged";
+        return (
+          <DnaDialog open onClose={() => setWedgeModalWeapon(null)} title={entry.item.name} size="3xl">
+            <div className="p-5">
+              <p className="mb-4 max-w-prose text-xs leading-relaxed text-muted">{t("weaponWedgesModalHelp")}</p>
+              <div className="overflow-x-auto pb-2">
+                <DnaDemonWedgeEditor
+                  slots={config.slots}
+                  centerItem={affinityCenterItem(config.affinity)}
+                  accentHex={config.affinity ? ELEMENTS[config.affinity].hex : accentHex}
+                  scale="lg"
+                  className="min-w-[30rem]"
+                  onChange={(slots) => setWeaponWedges((prev) => ({ ...prev, [id]: { ...prev[id], slots } }))}
+                  onSlotClick={(position) => setEditing({ kind: "weaponWedge", weaponId: id, weaponClass, position })}
+                  onToggleTrack={(position) =>
+                    setWeaponWedges((prev) => ({ ...prev, [id]: { ...prev[id], slots: toggleSlotTrack(prev[id].slots, position) } }))
+                  }
+                  trackLabel={t("trackShiftToggle")}
+                  onCenterClick={() => setEditing({ kind: "weaponAffinity", weaponId: id })}
+                />
+              </div>
+            </div>
+          </DnaDialog>
+        );
+      })()}
     </div>
   );
 }

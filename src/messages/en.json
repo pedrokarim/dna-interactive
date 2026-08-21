@@ -858,7 +858,14 @@
     "draftSaved": "Draft saved",
     "draftError": "Save failed",
     "trackShiftToggle": "Track-Shift: add or remove a module on this slot",
-    "trackShiftCount": "{count} Track-Shift required"
+    "trackShiftCount": "{count} Track-Shift required",
+    "weaponWedgesHelp": "Each weapon can carry its own Demon Wedges, separate from the character's. Click a weapon's button to open its board and place pieces.",
+    "weaponWedgesModalHelp": "Click a slot to pick its piece, the centre for the affinity. The badge at the bottom of each slot adds or removes a Track-Shift.",
+    "weaponWedgesConfigure": "Configure Demon Wedges",
+    "weaponWedgesCount": "{count} piece(s) placed",
+    "weaponWedgesClear": "Remove",
+    "rankBest": "Recommended",
+    "rankAlternative": "Alternative"
   },
   "communityBuilds": {
     "sectionTitle": "Community alternatives",

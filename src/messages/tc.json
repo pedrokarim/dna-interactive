@@ -858,7 +858,14 @@
     "draftSaved": "草稿已儲存",
     "draftError": "儲存失敗",
     "trackShiftToggle": "軌道轉換：在此格加上或移除模組",
-    "trackShiftCount": "需要 {count} 個軌道轉換"
+    "trackShiftCount": "需要 {count} 個軌道轉換",
+    "weaponWedgesHelp": "每把武器可裝備獨立於角色的惡魔楔。點擊按鈕開啟該武器的配置盤。",
+    "weaponWedgesModalHelp": "點擊格子選擇部件，點擊中央選擇親和。下方徽章可加上或移除軌道轉換。",
+    "weaponWedgesConfigure": "設定惡魔楔",
+    "weaponWedgesCount": "已放置 {count} 件",
+    "weaponWedgesClear": "移除",
+    "rankBest": "推薦",
+    "rankAlternative": "替代"
   },
   "communityBuilds": {
     "sectionTitle": "社群替代方案",

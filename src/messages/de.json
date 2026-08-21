@@ -858,7 +858,14 @@
     "draftSaved": "Entwurf gespeichert",
     "draftError": "Speichern fehlgeschlagen",
     "trackShiftToggle": "Spurwechsel: Modul auf diesem Feld setzen oder entfernen",
-    "trackShiftCount": "{count} Spurwechsel nötig"
+    "trackShiftCount": "{count} Spurwechsel nötig",
+    "weaponWedgesHelp": "Jede Waffe kann eigene Dämonenkeile tragen, unabhängig von denen der Figur. Klicke auf die Schaltfläche einer Waffe, um ihr Feld zu öffnen.",
+    "weaponWedgesModalHelp": "Klicke ein Feld für das Teil, die Mitte für die Affinität. Das Abzeichen unten setzt oder entfernt einen Spurwechsel.",
+    "weaponWedgesConfigure": "Dämonenkeile einrichten",
+    "weaponWedgesCount": "{count} Teil(e) gesetzt",
+    "weaponWedgesClear": "Entfernen",
+    "rankBest": "Empfohlen",
+    "rankAlternative": "Alternative"
   },
   "communityBuilds": {
     "sectionTitle": "Community-Alternativen",

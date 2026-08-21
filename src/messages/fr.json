@@ -858,7 +858,14 @@
     "draftSaved": "Brouillon enregistré",
     "draftError": "Échec de l'enregistrement",
     "trackShiftToggle": "Track-Shift : poser ou retirer un module sur cette case",
-    "trackShiftCount": "{count} Track-Shift requis"
+    "trackShiftCount": "{count} Track-Shift requis",
+    "weaponWedgesHelp": "Chaque arme peut porter ses propres Demon Wedges, indépendants de ceux du personnage. Cliquez sur le bouton d'une arme pour ouvrir son plateau et y poser des pièces.",
+    "weaponWedgesModalHelp": "Cliquez une case pour choisir la pièce, le centre pour l'affinité. Le badge en bas de chaque case pose ou retire un Track-Shift.",
+    "weaponWedgesConfigure": "Configurer les Demon Wedges",
+    "weaponWedgesCount": "{count} pièce(s) posée(s)",
+    "weaponWedgesClear": "Retirer",
+    "rankBest": "Recommandée",
+    "rankAlternative": "Alternative"
   },
   "communityBuilds": {
     "sectionTitle": "Alternatives communauté",

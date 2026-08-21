@@ -858,7 +858,14 @@
     "draftSaved": "임시 저장됨",
     "draftError": "저장 실패",
     "trackShiftToggle": "트랙 시프트: 이 칸의 모듈 장착/해제",
-    "trackShiftCount": "트랙 시프트 {count}개 필요"
+    "trackShiftCount": "트랙 시프트 {count}개 필요",
+    "weaponWedgesHelp": "무기마다 캐릭터와 별개의 데몬 웨지를 장착할 수 있습니다. 버튼을 눌러 보드를 여세요.",
+    "weaponWedgesModalHelp": "칸을 눌러 부품을, 중앙을 눌러 친화를 선택합니다. 아래 배지로 트랙 시프트를 장착·해제합니다.",
+    "weaponWedgesConfigure": "데몬 웨지 설정",
+    "weaponWedgesCount": "{count}개 장착",
+    "weaponWedgesClear": "해제",
+    "rankBest": "추천",
+    "rankAlternative": "대체"
   },
   "communityBuilds": {
     "sectionTitle": "커뮤니티 대안",

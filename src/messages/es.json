@@ -858,7 +858,14 @@
     "draftSaved": "Borrador guardado",
     "draftError": "Error al guardar",
     "trackShiftToggle": "Cambio de afinidad: poner o quitar un módulo en esta casilla",
-    "trackShiftCount": "{count} cambios de afinidad necesarios"
+    "trackShiftCount": "{count} cambios de afinidad necesarios",
+    "weaponWedgesHelp": "Cada arma puede llevar sus propias cuñas demoníacas, independientes de las del personaje. Pulsa el botón de un arma para abrir su tablero.",
+    "weaponWedgesModalHelp": "Pulsa una casilla para elegir la pieza, el centro para la afinidad. La insignia inferior añade o quita un cambio de afinidad.",
+    "weaponWedgesConfigure": "Configurar cuñas demoníacas",
+    "weaponWedgesCount": "{count} pieza(s) colocada(s)",
+    "weaponWedgesClear": "Quitar",
+    "rankBest": "Recomendada",
+    "rankAlternative": "Alternativa"
   },
   "communityBuilds": {
     "sectionTitle": "Alternativas de la comunidad",

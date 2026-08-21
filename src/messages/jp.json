@@ -858,7 +858,14 @@
     "draftSaved": "下書きを保存しました",
     "draftError": "保存に失敗しました",
     "trackShiftToggle": "トラックシフト：このマスのモジュールを着脱",
-    "trackShiftCount": "トラックシフト {count} 個必要"
+    "trackShiftCount": "トラックシフト {count} 個必要",
+    "weaponWedgesHelp": "武器ごとにキャラクターとは別のデーモンウェッジを装備できます。ボタンを押して盤面を開いてください。",
+    "weaponWedgesModalHelp": "マスを押すと部品、中央を押すと親和性を選べます。下部のバッジでトラックシフトを着脱します。",
+    "weaponWedgesConfigure": "デーモンウェッジを設定",
+    "weaponWedgesCount": "{count} 個装備",
+    "weaponWedgesClear": "解除",
+    "rankBest": "推奨",
+    "rankAlternative": "代替"
   },
   "communityBuilds": {
     "sectionTitle": "コミュニティの代替案",
