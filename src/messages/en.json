@@ -865,7 +865,11 @@
     "weaponWedgesCount": "{count} piece(s) placed",
     "weaponWedgesClear": "Remove",
     "rankBest": "Recommended",
-    "rankAlternative": "Alternative"
+    "rankAlternative": "Alternative",
+    "publishCtaTitle": "Ready to publish?",
+    "publishCtaHint": "Your build will be visible to the community on the character page. You can edit it afterwards.",
+    "publishOverlayTitle": "Checking your build…",
+    "publishOverlayHint": "We are validating the pieces, weapons and team. You will be taken to your build as soon as it passes."
   },
   "communityBuilds": {
     "sectionTitle": "Community alternatives",

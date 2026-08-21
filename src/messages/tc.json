@@ -865,7 +865,11 @@
     "weaponWedgesCount": "已放置 {count} 件",
     "weaponWedgesClear": "移除",
     "rankBest": "推薦",
-    "rankAlternative": "替代"
+    "rankAlternative": "替代",
+    "publishCtaTitle": "準備好發布了嗎？",
+    "publishCtaHint": "你的配裝將顯示在角色頁面上，之後仍可修改。",
+    "publishOverlayTitle": "正在檢查你的配裝…",
+    "publishOverlayHint": "我們正在驗證部件、武器與隊伍，完成後將帶你前往配裝頁面。"
   },
   "communityBuilds": {
     "sectionTitle": "社群替代方案",

@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState, useSyncExternalStore, type ChangeEvent } from "react";
 import { useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
+import { useRouter } from "@/i18n/navigation";
 import { createPortal } from "react-dom";
 import { Download, Upload, Link2, Share2 } from "lucide-react";
 import { BuilderCharacterPicker } from "@/components/builder/CharacterPicker";
@@ -272,6 +273,7 @@ export function CommunityBuildBuilderClient({
   const [savedAt, setSavedAt] = useState<string | undefined>();
   const [reconcile, setReconcile] = useState<ReconcileState>(null);
   const [message, setMessage] = useState<string | null>(null);
+  const router = useRouter();
   const [publishing, setPublishing] = useState(false);
   const [editingBuildId, setEditingBuildId] = useState<string | null>(null);
   const canPortal = useSyncExternalStore(subscribeMounted, () => true, () => false);
@@ -869,9 +871,9 @@ export function CommunityBuildBuilderClient({
       ),
     });
     const data = await response.json().catch(() => ({}));
-    setPublishing(false);
 
     if (!response.ok) {
+      setPublishing(false);
       // Une publication refusée est la fin la plus coûteuse du parcours : tout
       // le travail est fait et rien n'est enregistré. Le motif vient du serveur
       // et n'est pas du texte saisi.
@@ -892,6 +894,14 @@ export function CommunityBuildBuilderClient({
     setStatus("saved");
     setMessage(isUpdating ? t("buildUpdated") : t("buildPublished"));
     if (!isUpdating) captureAnalytics("build_published", { source: "builder" });
+
+    // On emmene l'auteur sur son build : rester sur le formulaire apres une
+    // publication reussie donnait l'impression que rien ne s'etait passe.
+    const createdId = (data as { build?: { id?: string } }).build?.id ?? editingBuildId;
+    if (createdId) {
+      setPublishing(true);            // garde le voile jusqu'a la navigation
+      router.push(`/builds/${createdId}`);
+    }
   }
 
   function currentExport() {
@@ -1312,6 +1322,20 @@ export function CommunityBuildBuilderClient({
             ) : null}
           </div>
         </DnaPanel>
+
+        {isAuthenticated ? (
+          <DnaPanel className="border-gold/45 bg-gold/5 p-5">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div className="min-w-0">
+                <p className="font-display text-lg leading-tight text-parch">{t("publishCtaTitle")}</p>
+                <p className="mt-1 max-w-prose text-xs leading-relaxed text-muted">{t("publishCtaHint")}</p>
+              </div>
+              <DnaButton variant="gold" disabled={publishing || title.trim().length < 3} onClick={publishBuild}>
+                {publishing ? (editingBuildId ? t("updating") : t("publishing")) : editingBuildId ? t("update") : t("publish")}
+              </DnaButton>
+            </div>
+          </DnaPanel>
+        ) : null}
       </div>
 
       <aside className="grid min-w-0 gap-4 md:grid-cols-2 2xl:flex 2xl:flex-col">
@@ -1393,7 +1417,7 @@ export function CommunityBuildBuilderClient({
           </div>
         </DnaPanel>
 
-        <DnaPanel className="p-4">
+        <DnaPanel className="border-gold/45 bg-gold/5 p-4">
           <DnaSectionLabel>{t("publication")}</DnaSectionLabel>
           <div className="mt-3 flex flex-col gap-2">
             {isAuthenticated ? (
@@ -1496,6 +1520,22 @@ export function CommunityBuildBuilderClient({
           </DnaDialog>
         );
       })()}
+      {publishing ? (
+        // Voile plein ecran : sans lui, publier ne produisait aucun signal visible
+        // et l'auteur restait sur son formulaire sans savoir si ca avait marche.
+        <div
+          role="status"
+          aria-live="polite"
+          className="fixed inset-0 z-[600] flex flex-col items-center justify-center gap-4 bg-black/80 backdrop-blur-sm p-6 text-center"
+        >
+          <span
+            aria-hidden
+            className="h-10 w-10 animate-spin rounded-full border-2 border-gold/25 border-t-gold motion-reduce:animate-none"
+          />
+          <p className="font-display text-xl text-parch">{t("publishOverlayTitle")}</p>
+          <p className="max-w-sm text-xs leading-relaxed text-muted">{t("publishOverlayHint")}</p>
+        </div>
+      ) : null}
     </div>
   );
 }

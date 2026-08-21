@@ -865,7 +865,11 @@
     "weaponWedgesCount": "{count}개 장착",
     "weaponWedgesClear": "해제",
     "rankBest": "추천",
-    "rankAlternative": "대체"
+    "rankAlternative": "대체",
+    "publishCtaTitle": "게시할 준비가 되셨나요?",
+    "publishCtaHint": "빌드는 캐릭터 페이지에 공개됩니다. 나중에 수정할 수 있습니다.",
+    "publishOverlayTitle": "빌드를 확인하는 중…",
+    "publishOverlayHint": "부품, 무기, 팀을 검증하고 있습니다. 완료되면 빌드 페이지로 이동합니다."
   },
   "communityBuilds": {
     "sectionTitle": "커뮤니티 대안",

@@ -865,7 +865,11 @@
     "weaponWedgesCount": "{count} 個装備",
     "weaponWedgesClear": "解除",
     "rankBest": "推奨",
-    "rankAlternative": "代替"
+    "rankAlternative": "代替",
+    "publishCtaTitle": "公開しますか？",
+    "publishCtaHint": "ビルドはキャラクターページで公開されます。あとから編集できます。",
+    "publishOverlayTitle": "ビルドを確認しています…",
+    "publishOverlayHint": "部品・武器・編成を検証しています。完了後、ビルドのページへ移動します。"
   },
   "communityBuilds": {
     "sectionTitle": "コミュニティの代替案",
