@@ -3,7 +3,9 @@
  *
  * Données réelles curées (fin du patch 1.4 « Silver Torrent, Rising Star » et
  * patch 1.5 « Paradise Prelude », juillet-septembre 2026), à rafraîchir à chaque
- * version. Aucune source tierce n'est créditée au front.
+ * version. Dates recoupées le 22 août 2026 sur les annonces officielles ; la
+ * version 1.6 n’est pas encore annoncée à cette date. Aucune source tierce
+ * n'est créditée au front.
  *
  * Le calendrier est une **frise défilable sans borne** : une plage rendue
  * (`rangeStart` + nombre de jours) qui s'étend à la volée quand on atteint un
@@ -49,6 +51,10 @@ const SRC_V15_PV = "https://www.youtube.com/watch?v=c8di9Y1wV8E";
 /* Annonces d'événement publiées sur le compte officiel du jeu. */
 const SRC_V15_ENSEMBLE = "https://x.com/DNAbyss_EN/status/2084927398106255537";
 const SRC_V15_DERBY = "https://x.com/DNAbyss_EN/status/2084489506036875471";
+const SRC_V15_EDGE = "https://x.com/DNAbyss_EN/status/2087388611805397497";
+const SRC_V15_SOJOURN = "https://x.com/DNAbyss_EN/status/2089562936113279405";
+const SRC_V15_GLEANINGS = "https://x.com/DNAbyss_EN/status/2089925328202326067";
+const SRC_V15_BOUNTIFUL = "https://x.com/DNAbyss_EN/status/2089910242180034671";
 
 export const CATEGORIES: EventCategory[] = ["Bannière", "Arme", "Événement", "Épreuve", "Récompense"];
 
@@ -97,12 +103,12 @@ export const CALENDAR_EVENTS: CalendarEvent[] = [
   { id: "bountiful-day-v15-p1", title: "Bountiful Day — Partie 1 (1.5)", category: "Événement", start: "2026-07-30", end: "2026-08-06", image: "/assets/worldview/worldview-1-4-3.webp", description: "Taux de drop de Demon Wedge augmentés pendant une semaine.", sourceUrl: SRC_V15 },
   { id: "immersive-theatre-ensemble-v15", title: "Immersive Theatre : Ensemble Act (1.5)", category: "Événement", start: "2026-08-06", end: "2026-09-06", image: "/assets/worldview/worldview-1-4-5.webp", description: "Co-op du théâtre immersif : prends le rôle de Lead, abats les boss en équipe et récolte les ressources de progression.", sourceUrl: SRC_V15_ENSEMBLE },
   { id: "golden-journey-derby", title: "Golden Journey : Genimon Derby", category: "Événement", start: "2026-08-06", end: "2026-08-18", image: "/assets/worldview/worldview-1-3-4.webp", description: "Courses de génimons : mise, entraîne et empoche les gains (fin le 18 août à 05:00 UTC+8).", sourceUrl: SRC_V15_DERBY },
-  { id: "edge-of-trial", title: "Edge of Trial", category: "Épreuve", start: "2026-08-13", end: "2026-09-01", image: "/assets/worldview/worldview-1-4-4.webp", description: "Épreuve de combat compétitive : croise le fer et affûte ta lame (rang d'épreuve Lv. 50).", sourceUrl: SRC_V15 },
+  { id: "edge-of-trial", title: "Edge of Trial", category: "Épreuve", start: "2026-08-13", end: "2026-09-01", image: "/assets/worldview/worldview-1-4-4.webp", description: "Épreuve de combat compétitive : croise le fer et affûte ta lame (rang d'épreuve Lv. 50, fin le 1ᵉʳ septembre à 05:00 UTC+8).", sourceUrl: SRC_V15_EDGE },
   { id: "crimson-mirage", title: "Crimson Mirage — skins Camilla & Hilda", category: "Bannière", start: "2026-08-18", end: "2026-09-29", image: "/assets/official-v1.5/image-crimson.webp", description: "Bannière de skins limitée : tenues « Nightfall Enchantress » pour Camilla et Hilda.", sourceUrl: SRC_V15 },
-  { id: "starry-sojourn-v15", title: "Starry Sojourn — co-op (1.5)", category: "Événement", start: "2026-08-20", end: "2026-09-01", image: "/assets/worldview/worldview-7.webp", description: "Récompenses selon le temps passé en coop régionale pendant l'événement.", sourceUrl: SRC_V15 },
-  { id: "starry-gleanings-2", title: "Starry Gleanings II — commissions", category: "Événement", start: "2026-08-20", end: "2026-09-01", image: "/assets/worldview/worldview-1-3-5.webp", description: "Retour des commissions : objectifs à accumuler pour des récompenses.", sourceUrl: SRC_V15 },
-  { id: "bountiful-day-v15-p2", title: "Bountiful Day — Partie 2 (1.5)", category: "Événement", start: "2026-08-20", end: "2026-08-27", image: "/assets/worldview/worldview-1-4-3.webp", description: "Deuxième fenêtre de taux de drop de Demon Wedge augmentés.", sourceUrl: SRC_V15 },
-  { id: "phoxhunter-summit", title: "Phoxhunter Summit", category: "Épreuve", start: "2026-08-26", end: "2026-09-05", image: "/assets/worldview/worldview-1.webp", description: "Épreuve compétitive de fin de version (rang d'épreuve requis).", sourceUrl: SRC_V15 },
+  { id: "starry-sojourn-v15", title: "Starry Sojourn — co-op (1.5)", category: "Événement", start: "2026-08-20", end: "2026-09-01", image: "/assets/worldview/worldview-7.webp", description: "Cumule du temps de jeu en zone coopérative pour réclamer les récompenses de l’événement.", sourceUrl: SRC_V15_SOJOURN },
+  { id: "starry-gleanings-2", title: "Starry Gleanings II — commissions", category: "Événement", start: "2026-08-20", end: "2026-09-01", image: "/assets/worldview/worldview-1-3-5.webp", description: "Retour des commissions : accomplis-les pendant l’événement pour ouvrir les cadeaux Starglow.", sourceUrl: SRC_V15_GLEANINGS },
+  { id: "bountiful-day-v15-p2", title: "Bountiful Day — Partie 2 (1.5)", category: "Événement", start: "2026-08-20", end: "2026-08-27", image: "/assets/worldview/worldview-1-4-3.webp", description: "Deuxième fenêtre de bonus : les commissions du Manuel du Noctoyager rapportent davantage de Demon Wedges.", sourceUrl: SRC_V15_BOUNTIFUL },
+  { id: "phoxhunter-summit", title: "Phoxhunter Summit", category: "Épreuve", start: "2026-08-26", end: "2026-09-05", image: "/assets/worldview/worldview-1.webp", description: "Épreuve compétitive de fin de version en deux temps : phase de groupes, puis classement Apex pour des Phoxcoins à dépenser en boutique.", sourceUrl: SRC_V15 },
 ];
 
 /* --------------------------------------------------------------- helpers date */
