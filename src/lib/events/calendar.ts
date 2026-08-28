@@ -3,9 +3,13 @@
  *
  * Données réelles curées (fin du patch 1.4 « Silver Torrent, Rising Star » et
  * patch 1.5 « Paradise Prelude », juillet-septembre 2026), à rafraîchir à chaque
- * version. Dates recoupées le 22 août 2026 sur les annonces officielles ; la
- * version 1.6 n’est pas encore annoncée à cette date. Aucune source tierce
- * n'est créditée au front.
+ * version. Dates recoupées le 28 août 2026 sur les annonces officielles.
+ *
+ * La version 1.6 « Paradise's 22nd White Bunny » a été dévoilée par un PV le
+ * 28 août 2026, mais **sans date de sortie ni programme d'événements publiés** :
+ * rien n'est donc inscrit ici pour elle. Les événements 1.5 s'arrêtant le
+ * 7 septembre, c'est là qu'il faudra repasser. Aucune source tierce n'est
+ * créditée au front.
  *
  * Le calendrier est une **frise défilable sans borne** : une plage rendue
  * (`rangeStart` + nombre de jours) qui s'étend à la volée quand on atteint un
@@ -55,6 +59,7 @@ const SRC_V15_EDGE = "https://x.com/DNAbyss_EN/status/2087388611805397497";
 const SRC_V15_SOJOURN = "https://x.com/DNAbyss_EN/status/2089562936113279405";
 const SRC_V15_GLEANINGS = "https://x.com/DNAbyss_EN/status/2089925328202326067";
 const SRC_V15_BOUNTIFUL = "https://x.com/DNAbyss_EN/status/2089910242180034671";
+const SRC_V15_PHOXHUNTER = "https://x.com/DNAbyss_EN/status/2091737265458586108";
 
 export const CATEGORIES: EventCategory[] = ["Bannière", "Arme", "Événement", "Épreuve", "Récompense"];
 
@@ -108,7 +113,7 @@ export const CALENDAR_EVENTS: CalendarEvent[] = [
   { id: "starry-sojourn-v15", title: "Starry Sojourn — co-op (1.5)", category: "Événement", start: "2026-08-20", end: "2026-09-01", image: "/assets/worldview/worldview-7.webp", description: "Cumule du temps de jeu en zone coopérative pour réclamer les récompenses de l’événement.", sourceUrl: SRC_V15_SOJOURN },
   { id: "starry-gleanings-2", title: "Starry Gleanings II — commissions", category: "Événement", start: "2026-08-20", end: "2026-09-01", image: "/assets/worldview/worldview-1-3-5.webp", description: "Retour des commissions : accomplis-les pendant l’événement pour ouvrir les cadeaux Starglow.", sourceUrl: SRC_V15_GLEANINGS },
   { id: "bountiful-day-v15-p2", title: "Bountiful Day — Partie 2 (1.5)", category: "Événement", start: "2026-08-20", end: "2026-08-27", image: "/assets/worldview/worldview-1-4-3.webp", description: "Deuxième fenêtre de bonus : les commissions du Manuel du Noctoyager rapportent davantage de Demon Wedges.", sourceUrl: SRC_V15_BOUNTIFUL },
-  { id: "phoxhunter-summit", title: "Phoxhunter Summit", category: "Épreuve", start: "2026-08-26", end: "2026-09-05", image: "/assets/worldview/worldview-1.webp", description: "Épreuve compétitive de fin de version en deux temps : phase de groupes, puis classement Apex pour des Phoxcoins à dépenser en boutique.", sourceUrl: SRC_V15 },
+  { id: "phoxhunter-summit", title: "Phoxhunter Summit", category: "Épreuve", start: "2026-08-26", end: "2026-09-04", image: "/assets/worldview/worldview-1.webp", description: "Épreuve compétitive de fin de version en deux temps : phase de groupes, puis classement Apex pour des Phoxcoins à dépenser en boutique. Tous les ennemis sont faibles à l’Hydro ; clôture le 5 septembre à 00:00 UTC+8.", sourceUrl: SRC_V15_PHOXHUNTER },
 ];
 
 /* --------------------------------------------------------------- helpers date */
