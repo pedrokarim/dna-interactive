@@ -3,13 +3,23 @@
  *
  * Données réelles curées (fin du patch 1.4 « Silver Torrent, Rising Star » et
  * patch 1.5 « Paradise Prelude », juillet-septembre 2026), à rafraîchir à chaque
- * version. Dates recoupées le 28 août 2026 sur les annonces officielles.
+ * version. Dates recoupées le 1ᵉʳ septembre 2026 sur les notes de version
+ * officielles et les annonces du compte officiel du jeu.
  *
- * La version 1.6 « Paradise's 22nd White Bunny » a été dévoilée par un PV le
- * 28 août 2026, mais **sans date de sortie ni programme d'événements publiés** :
- * rien n'est donc inscrit ici pour elle. Les événements 1.5 s'arrêtant le
- * 7 septembre, c'est là qu'il faudra repasser. Aucune source tierce n'est
- * créditée au front.
+ * **Convention de dates** : `start`/`end` sont des jours **inclus**. Les
+ * événements ferment à une heure précise (UTC+8, fuseau serveur) : une clôture
+ * le 1ᵉʳ septembre à 05:00 laisse donc `end` au 1ᵉʳ septembre (l'événement est
+ * encore ouvert ce jour-là), tandis qu'une clôture le 5 septembre à 00:00 met
+ * `end` au 4 septembre. L'heure exacte est rappelée dans `description` dès
+ * qu'elle risque d'induire en erreur.
+ *
+ * La version 1.6 « Paradise's 22nd White Bunny » sort le **8 septembre 2026**
+ * et courra jusqu'au 20 octobre. Seuls les éléments déjà datés officiellement
+ * y figurent (passe saisonnier, boutique de skins) : ni le nom de la bannière
+ * Myriad de Falsi ni les périodes des événements annoncés (Capriccio of Whimsy,
+ * Better Luno than Never, Way of the Penitent, Parade Itinerary) ne sont
+ * publiés à ce jour — à compléter dès les notes de version. Aucune source
+ * tierce n'est créditée au front.
  *
  * Le calendrier est une **frise défilable sans borne** : une plage rendue
  * (`rangeStart` + nombre de jours) qui s'étend à la volée quand on atteint un
@@ -60,6 +70,9 @@ const SRC_V15_SOJOURN = "https://x.com/DNAbyss_EN/status/2089562936113279405";
 const SRC_V15_GLEANINGS = "https://x.com/DNAbyss_EN/status/2089925328202326067";
 const SRC_V15_BOUNTIFUL = "https://x.com/DNAbyss_EN/status/2089910242180034671";
 const SRC_V15_PHOXHUNTER = "https://x.com/DNAbyss_EN/status/2091737265458586108";
+/* Annonces de la version 1.6 « Paradise's 22nd White Bunny » (sortie le 8 septembre 2026). */
+const SRC_V16_BARDS_TOME = "https://x.com/DNAbyss_EN/status/2094349488383197537";
+const SRC_V16_CIVIC = "https://x.com/DNAbyss_EN/status/2094666568365953062";
 
 export const CATEGORIES: EventCategory[] = ["Bannière", "Arme", "Événement", "Épreuve", "Récompense"];
 
@@ -96,12 +109,12 @@ export const CALENDAR_EVENTS: CalendarEvent[] = [
   { id: "paradise-prelude", title: "Paradise Prelude — événement web", category: "Récompense", start: "2026-07-23", end: "2026-09-03", image: "/assets/official-v1.5/banner-paradise-prelude.webp", description: "Événement web de la version 1.5 : Ada offerte et récompenses à réclamer.", sourceUrl: SRC_V15_EVENT },
   { id: "atlasian-hunt", title: "Atlasian Hunt — quiz", category: "Événement", start: "2026-07-27", end: "2026-08-07", image: "/assets/worldview/worldview-1-3-2.webp", description: "Chasse aux réponses sur le lore d'Atlasia, récompenses quotidiennes." },
   { id: "nocturne-in-white", title: "Nocturne in White", category: "Bannière", start: "2026-07-28", end: "2026-09-07", image: "/assets/official-v1.5/image-snowlight.webp", description: "Bannière Myriad limitée de la version 1.5 — inclut le skin « Snowlight Chase » d'Ada.", sourceUrl: SRC_V15 },
-  { id: "the-best-day", title: "The Best Day — arme signature d'Ada", category: "Arme", start: "2026-07-28", end: "2026-09-07", image: "/assets/official-v1.5/image-icelake.webp", description: "Bannière d'arme (Secret Letters) : les doubles pistolets d'Ada remplacent Firearm Feast.", sourceUrl: SRC_V15 },
-  { id: "immersive-theatre-ada", title: "Immersive Theatre : « Ada »", category: "Événement", start: "2026-07-28", end: "2026-08-24", image: "/assets/official-v1.5/key-art-ada.webp", description: "Rotation de 28 jours du théâtre immersif : récupère les Secret Letters d'Ada et de « The Best Day » avant la bascule du 25 août.", sourceUrl: SRC_V15 },
+  { id: "the-best-day", title: "The Best Day — arme signature d'Ada", category: "Arme", start: "2026-07-28", end: "2026-08-18", image: "/assets/official-v1.5/image-icelake.webp", description: "Secret Letters des doubles pistolets d'Ada, en vente au Memento pendant la rotation « Ada » du théâtre immersif (jusqu'au 18 août à 10:00 UTC+8).", sourceUrl: SRC_V15 },
+  { id: "immersive-theatre-ada", title: "Immersive Theatre : « Ada »", category: "Événement", start: "2026-07-28", end: "2026-08-18", image: "/assets/official-v1.5/key-art-ada.webp", description: "Rotation du théâtre immersif : récupère les Secret Letters d'Ada et de « The Best Day » au Memento avant la bascule du 18 août à 10:00 UTC+8.", sourceUrl: SRC_V15 },
   { id: "oceans-distant-rhythm", title: "Ocean's Distant Rhythm — rerun skin Fushu", category: "Bannière", start: "2026-07-28", end: "2026-09-07", image: "/assets/worldview/worldview-1-3-6.webp", description: "Rerun limité de la bannière Myriad du skin de Fushu.", sourceUrl: SRC_V15 },
   { id: "bloomfield-tales-untold", title: "Bloomfield Station : Tales Untold", category: "Événement", start: "2026-07-28", end: "2026-09-07", image: "/assets/worldview/worldview-1-4-2.webp", description: "Chapitre d'histoire de la version 1.5 autour de la gare de Flodia Bloomfield.", sourceUrl: SRC_V15 },
   { id: "white-bunnies-invitation", title: "White Bunnies' Invitation — connexion", category: "Récompense", start: "2026-07-28", end: "2026-09-07", image: "/assets/worldview/worldview-1-3-3.webp", description: "Cumule tes connexions jusqu'au 7 septembre pour 10 Sabliers immaculés.", sourceUrl: SRC_V15 },
-  { id: "treasure-hunt-trials", title: "Treasure Hunt Trials", category: "Épreuve", start: "2026-07-28", end: "2026-09-07", image: "/assets/worldview/worldview-1-3-8.webp", description: "Simulation calquée sur l'Incense Proving de Huaxu : franchis les paliers pour des récompenses.", sourceUrl: SRC_V15 },
+  { id: "treasure-hunt-trials", title: "Treasure Hunt Trials", category: "Épreuve", start: "2026-07-28", end: "2026-09-08", image: "/assets/worldview/worldview-1-3-8.webp", description: "Simulation calquée sur l'Incense Proving de Huaxu : franchis les paliers pour des récompenses (clôture le 8 septembre à 05:00 UTC+8).", sourceUrl: SRC_V15 },
   { id: "snowveil-fairytale", title: "Snowveil Fairytale — essai du skin d'Ada", category: "Événement", start: "2026-07-28", end: "2026-09-07", image: "/assets/official-v1.5/image-ada.webp", description: "Essaie la tenue hivernale d'Ada pendant toute la durée de la version 1.5." },
   { id: "bards-tome-summer-beat", title: "Bard's Tome : Summer Beat", category: "Récompense", start: "2026-07-28", end: "2026-09-07", image: "/assets/worldview/worldview-8.webp", description: "Passe saisonnier : accomplis les quêtes du Grimoire du barde pour monter les paliers de vers et récolter les récompenses." },
   { id: "great-chaos-mechapuppets", title: "Great Chaos of Mechapuppets", category: "Événement", start: "2026-07-30", end: "2026-09-07", image: "/assets/official-v1.5/image-mechapuppets.webp", description: "Événement de stratégie : déploie les pantins mécaniques et laisse le plateau trancher.", sourceUrl: SRC_V15 },
@@ -114,6 +127,12 @@ export const CALENDAR_EVENTS: CalendarEvent[] = [
   { id: "starry-gleanings-2", title: "Starry Gleanings II — commissions", category: "Événement", start: "2026-08-20", end: "2026-09-01", image: "/assets/worldview/worldview-1-3-5.webp", description: "Retour des commissions : accomplis-les pendant l’événement pour ouvrir les cadeaux Starglow.", sourceUrl: SRC_V15_GLEANINGS },
   { id: "bountiful-day-v15-p2", title: "Bountiful Day — Partie 2 (1.5)", category: "Événement", start: "2026-08-20", end: "2026-08-27", image: "/assets/worldview/worldview-1-4-3.webp", description: "Deuxième fenêtre de bonus : les commissions du Manuel du Noctoyager rapportent davantage de Demon Wedges.", sourceUrl: SRC_V15_BOUNTIFUL },
   { id: "phoxhunter-summit", title: "Phoxhunter Summit", category: "Épreuve", start: "2026-08-26", end: "2026-09-04", image: "/assets/worldview/worldview-1.webp", description: "Épreuve compétitive de fin de version en deux temps : phase de groupes, puis classement Apex pour des Phoxcoins à dépenser en boutique. Tous les ennemis sont faibles à l’Hydro ; clôture le 5 septembre à 00:00 UTC+8.", sourceUrl: SRC_V15_PHOXHUNTER },
+
+  /* ------------------------------------- patch 1.6 « Paradise's 22nd White Bunny » */
+  /* Sortie le 8 septembre 2026, jusqu'au 20 octobre. Seuls les éléments déjà datés
+     par le compte officiel figurent ici ; le reste du programme n'est pas publié. */
+  { id: "bards-tome-rimeveil-nocturne", title: "Bard's Tome : Rimeveil Nocturne", category: "Récompense", start: "2026-09-08", end: "2026-10-20", image: "/assets/events/bards-tome-rimeveil-nocturne.webp", description: "Passe saisonnier de la version 1.6 : monte les paliers du Grimoire du barde pour la posture « Crystal Heart » et le skin d'arme « Emberfrost ».", sourceUrl: SRC_V16_BARDS_TOME },
+  { id: "civic-ordinance", title: "Civic Ordinance — skins thématiques", category: "Événement", start: "2026-09-08", end: "2026-10-19", image: "/assets/events/civic-ordinance.webp", description: "Remise à durée limitée en boutique sur la gamme de skins « Civic Ordinance » : première vague de neuf personnages, à échanger contre des Plumules.", sourceUrl: SRC_V16_CIVIC },
 ];
 
 /* --------------------------------------------------------------- helpers date */
