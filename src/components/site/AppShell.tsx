@@ -23,6 +23,7 @@ import {
   X,
   type LucideIcon,
 } from "lucide-react";
+import Image from "next/image";
 import { Link, usePathname } from "@/i18n/navigation";
 import { DnaAmbientBackdrop, DnaNouveau, DnaPill, DnaSectionMark, cn, useDialogA11y } from "@/components/dna";
 import { SidebarProfile, TopbarAccount } from "@/components/auth/AccountControls";
@@ -31,7 +32,7 @@ import { ThemeSwitcher } from "@/components/site/ThemeSwitcher";
 import { NotificationBell } from "@/components/notifications/NotificationBell";
 import { SiteBanner } from "@/components/site/SiteBanner";
 import { useAppSettings } from "@/lib/settings/useAppSettings";
-import { GAME_VERSION, NAVIGATION } from "@/lib/constants";
+import { ASSETS_PATHS, GAME_INFO, GAME_VERSION, NAVIGATION, SITE_CONFIG } from "@/lib/constants";
 import { DISCORD_BUTTON_CLASS, DiscordIcon, X_BUTTON_CLASS, XIcon } from "@/components/icons/BrandIcons";
 import {
   SHELL_NAV_EXTERNAL,
@@ -144,6 +145,41 @@ function useSidebarCollapsed() {
 function isActive(pathname: string, href: string) {
   if (href === NAVIGATION.home) return pathname === NAVIGATION.home;
   return pathname === href || pathname.startsWith(`${href}/`);
+}
+
+/**
+ * Marque, en tête de la barre latérale.
+ *
+ * Le nom passe par `dna-sidebar-label` : en mode replié il est masqué
+ * VISUELLEMENT mais reste dans l'arbre d'accessibilité, sinon le lien vers
+ * l'accueil se retrouverait sans nom (le logo est décoratif, `alt=""`).
+ */
+function SidebarBrand() {
+  const t = useTranslations("shell");
+  return (
+    <Link
+      href={NAVIGATION.home}
+      className="dna-sidebar-brand group flex items-center gap-3 rounded-sm px-1 py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gold/60"
+      title={t("backHome")}
+    >
+      <Image
+        src={ASSETS_PATHS.logo}
+        alt=""
+        width={36}
+        height={36}
+        priority
+        className="h-9 w-9 shrink-0 rounded-sm object-contain"
+      />
+      <span className="dna-sidebar-label flex min-w-0 flex-col">
+        <span className="truncate font-display text-lg leading-tight text-parch transition-colors group-hover:text-gold-bright">
+          {SITE_CONFIG.name}
+        </span>
+        <span className="truncate font-caps text-[0.5rem] uppercase tracking-[0.22em] text-muted">
+          {GAME_INFO.name}
+        </span>
+      </span>
+    </Link>
+  );
 }
 
 function SidebarBadge({ kind, label }: { kind: ShellBadge; label: string }) {
@@ -288,12 +324,16 @@ function Sidebar({
 
   return (
     <div className="custom-scrollbar flex h-full flex-col gap-4 overflow-y-auto overscroll-contain px-3 py-4">
-      <SidebarProfile />
+      <SidebarBrand />
       {renderGroup(primaryNav, t("navSections"))}
       {separator}
       {renderGroup(SHELL_NAV_SECONDARY, t("navSite"))}
       {separator}
+      {/* `mt-auto` sur les liens communautaires pousse tout ce qui suit en bas
+          de la barre : le compte ferme la colonne, sous la dernière séparation. */}
       {renderGroup(SHELL_NAV_EXTERNAL, t("navCommunity"), "mt-auto")}
+      {separator}
+      <SidebarProfile />
     </div>
   );
 }
@@ -443,8 +483,17 @@ export function AppShell({ children, badges = {}, copyrightYears = "2025" }: App
           <div className="flex min-w-0 items-baseline gap-3">
             <span className="font-caps text-sm uppercase tracking-[0.28em] text-gold-bright">DNA</span>
             {/* Repère décoratif : un `aria-label` sur un span sans rôle n'étant
-                pas exposé, on le laisse en simple texte. */}
-            <DnaSectionMark size="sm" className="hidden max-w-[16rem] sm:inline-flex">
+                pas exposé, on le laisse en simple texte.
+
+                `top-[1.5px]` — correction optique, mesurée sur le rendu réel
+                (Playwright, zoom ×8, fond aplati) : le centre d'encre des
+                capitales du repère tombait 1,44 px AU-DESSUS de celui de
+                « DNA ». L'écart vient du couple de tailles (14 px contre
+                9,6 px), pas de l'alignement du conteneur — passer en
+                `items-center` ne change rien, c'est vérifié. Il est donc en px
+                et local à la topbar : il ne vaut que pour ce couple, et le
+                repère est correct partout ailleurs. */}
+            <DnaSectionMark size="sm" className="relative top-[1.5px] hidden max-w-[16rem] sm:inline-flex">
               {resolveBreadcrumb(pathname)}
             </DnaSectionMark>
           </div>

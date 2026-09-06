@@ -25,7 +25,7 @@ export function DnaChip({ children, selected, color, onClick, className }: DnaCh
         selected
           ? isEl
             ? "border-current bg-white/6 text-white shadow-[0_0_10px_-2px_currentColor]"
-            : "border-gold bg-gradient-to-b from-gold-bright to-gold font-medium text-[#1a1206]"
+            : "border-gold bg-gradient-to-b from-gold-bright to-gold font-medium text-on-gold"
           : "border-white/15 bg-white/2 text-muted hover:border-white/30 hover:text-parch",
         className,
       )}

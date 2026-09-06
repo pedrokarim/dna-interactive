@@ -14,7 +14,7 @@ export function DnaTag({ children, tone = "gold", className }: DnaTagProps) {
       className={cn(
         "inline-flex items-center gap-1 rounded-sm border px-2.5 py-1 font-caps text-[0.58rem] uppercase tracking-[0.16em]",
         tone === "crimson"
-          ? "border-crimson-bright/50 bg-crimson/15 text-[#ffb3a6]"
+          ? "border-crimson-bright/50 bg-crimson/15 text-crimson-soft"
           : "border-line/30 bg-gold/6 text-gold",
         className,
       )}

@@ -507,7 +507,9 @@ export function QuickBuildCard({
   return (
     <div
       ref={cardRef ?? undefined}
-      className="relative overflow-hidden rounded-2xl"
+      // `dna-force-dark` : la carte est exportée en image et son fond est peint
+      // en dur — elle reste sombre même quand le site est en thème clair.
+      className="dna-force-dark relative overflow-hidden rounded-2xl"
       style={{ width: CARD_W, height: CARD_H, background: cardBg }}
     >
       {/* Layer 1 — subtle darker band across the right side so text reads.

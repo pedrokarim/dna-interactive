@@ -59,7 +59,7 @@ export function UpcomingCharacterStrip({ character }: { character: UpcomingChara
         className="pointer-events-none absolute inset-0 opacity-[0.04]"
         style={{
           backgroundImage: "repeating-linear-gradient(135deg, currentColor 0 1px, transparent 1px 10px)",
-          color: element.hex,
+          color: element.color,
         }}
       />
       <DnaCornerBrackets size={14} />
@@ -71,7 +71,7 @@ export function UpcomingCharacterStrip({ character }: { character: UpcomingChara
           className="grid h-16 w-16 shrink-0 place-items-center rounded-sm border"
           style={{ borderColor: `${element.hex}55`, background: `${element.hex}14` }}
         >
-          <span className="font-display text-4xl leading-none opacity-70" style={{ color: element.hex }}>
+          <span className="font-display text-4xl leading-none opacity-70" style={{ color: element.color }}>
             {character.name.charAt(0)}
           </span>
         </span>

@@ -14,7 +14,7 @@ export function SiteBanner() {
   if (s.maintenanceMode) {
     return (
       <div className="border-b border-crimson-bright/40 bg-crimson/15 px-4 py-2.5 text-center sm:px-6">
-        <p className="inline-flex items-center gap-2 font-sans text-sm text-[#ffb3a6]">
+        <p className="inline-flex items-center gap-2 font-sans text-sm text-crimson-soft">
           <AlertTriangle className="h-4 w-4 shrink-0" />
           {s.maintenanceMessage || "Site en maintenance — certaines actions sont temporairement désactivées."}
         </p>

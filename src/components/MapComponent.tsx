@@ -339,8 +339,8 @@ export default function MapComponent({
                   className={cn(
                     "dna-shine inline-flex w-full items-center justify-center gap-2 rounded-md px-4 py-2.5 font-sans text-sm tracking-wide transition-all duration-200",
                     isMarked
-                      ? "border border-crimson-bright bg-gradient-to-b from-crimson/40 to-ink/70 text-[#ffb3a6] hover:-translate-y-px hover:border-crimson-bright hover:text-[#ffd2c8]"
-                      : "border border-gold bg-gradient-to-b from-gold-deep/40 to-ink/70 text-gold-bright shadow-[inset_0_1px_0_rgba(227,205,149,0.22)] hover:-translate-y-px hover:border-gold-bright hover:text-[#fff6e6]",
+                      ? "border border-crimson-bright bg-gradient-to-b from-crimson/40 to-ink/70 text-crimson-soft hover:-translate-y-px hover:border-crimson-bright hover:text-[#ffd2c8]"
+                      : "border border-gold bg-gradient-to-b from-gold-deep/40 to-ink/70 text-gold-bright shadow-[inset_0_1px_0_rgba(227,205,149,0.22)] hover:-translate-y-px hover:border-gold-bright hover:text-gold-hover",
                   )}
                 >
                   {isMarked ? "Marquer comme non-vu" : "Marquer comme vu"}

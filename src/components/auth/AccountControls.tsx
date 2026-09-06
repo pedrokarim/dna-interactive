@@ -104,7 +104,7 @@ export function TopbarAccount() {
     return (
       <Link
         href={NAVIGATION.login}
-        className="dna-shine inline-flex items-center gap-2 rounded-sm border border-gold bg-gradient-to-b from-gold-deep/40 to-ink/70 px-3 py-1.5 font-caps text-[0.6rem] uppercase tracking-[0.14em] text-gold-bright transition-colors hover:border-gold-bright hover:text-[#fff6e6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60"
+        className="dna-shine inline-flex items-center gap-2 rounded-sm border border-gold bg-gradient-to-b from-gold-deep/40 to-ink/70 px-3 py-1.5 font-caps text-[0.6rem] uppercase tracking-[0.14em] text-gold-bright transition-colors hover:border-gold-bright hover:text-gold-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60"
       >
         <LogIn aria-hidden className="h-4 w-4" />
         <span className="hidden sm:inline">{t("signIn")}</span>
@@ -171,7 +171,7 @@ export function SidebarProfile() {
           <p className="mb-2 font-caps text-[0.55rem] uppercase tracking-[0.2em] text-muted">{t("guest")}</p>
           <Link
             href={NAVIGATION.login}
-            className="dna-shine flex w-full items-center justify-center gap-2 rounded-sm border border-gold bg-gradient-to-b from-gold-deep/40 to-ink/70 px-3 py-2.5 font-caps text-[0.62rem] uppercase tracking-[0.14em] text-gold-bright transition-colors hover:border-gold-bright hover:text-[#fff6e6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60"
+            className="dna-shine flex w-full items-center justify-center gap-2 rounded-sm border border-gold bg-gradient-to-b from-gold-deep/40 to-ink/70 px-3 py-2.5 font-caps text-[0.62rem] uppercase tracking-[0.14em] text-gold-bright transition-colors hover:border-gold-bright hover:text-gold-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60"
           >
             <LogIn aria-hidden className="h-4 w-4" />
             {t("signIn")}
@@ -235,7 +235,7 @@ export function SidebarProfile() {
             type="button"
             onClick={() => signOut()}
             title={t("signOut")}
-            className="flex items-center justify-center rounded-sm border border-line/20 px-2.5 py-1.5 text-parch/80 transition-colors hover:border-crimson-bright/50 hover:text-[#ffb3a6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60"
+            className="flex items-center justify-center rounded-sm border border-line/20 px-2.5 py-1.5 text-parch/80 transition-colors hover:border-crimson-bright/50 hover:text-crimson-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60"
           >
             <LogOut aria-hidden className="h-3.5 w-3.5" />
             <span className="sr-only">{t("signOut")}</span>
@@ -303,7 +303,7 @@ function AccountMenuPanel({
           type="button"
          
           onClick={() => signOut()}
-          className={cn(itemClass, "hover:bg-crimson-bright/10 hover:text-[#ffb3a6]")}
+          className={cn(itemClass, "hover:bg-crimson-bright/10 hover:text-crimson-soft")}
         >
           <LogOut aria-hidden className="h-4 w-4 text-crimson-bright" />
           {t("signOut")}

@@ -16,7 +16,7 @@ const META: Record<DraftState, { glyph: string; labelKey: string; tone: string }
   dirty: { glyph: "•", labelKey: "draftDirty", tone: "text-gold border-gold/40" },
   saving: { glyph: "⟳", labelKey: "draftSaving", tone: "text-muted border-white/20" },
   saved: { glyph: "✓", labelKey: "draftSaved", tone: "text-anemo border-anemo/40" },
-  error: { glyph: "⚠", labelKey: "draftError", tone: "text-[#ffb3a6] border-crimson-bright/50" },
+  error: { glyph: "⚠", labelKey: "draftError", tone: "text-crimson-soft border-crimson-bright/50" },
 };
 
 export type DnaDraftStatusProps = {

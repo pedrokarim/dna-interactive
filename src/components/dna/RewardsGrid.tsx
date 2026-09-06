@@ -19,7 +19,7 @@ export function DnaReward({ sym, qty, rare, bonus, className }: DnaRewardItem & 
       )}
     >
       {bonus ? (
-        <span className="absolute -top-2 left-1/2 -translate-x-1/2 whitespace-nowrap bg-gradient-to-b from-gold-bright to-gold px-1.5 py-0.5 font-caps text-[0.45rem] uppercase tracking-[0.1em] text-[#241a08]">
+        <span className="absolute -top-2 left-1/2 -translate-x-1/2 whitespace-nowrap bg-gradient-to-b from-gold-bright to-gold px-1.5 py-0.5 font-caps text-[0.45rem] uppercase tracking-[0.1em] text-on-gold">
           Bonus
         </span>
       ) : null}

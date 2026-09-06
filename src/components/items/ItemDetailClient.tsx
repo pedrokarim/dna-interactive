@@ -917,7 +917,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
           </p>
           {showPassiveDescription ? (
             <div className="mt-5 border-t border-white/10 pt-4">
-              <h3 className="font-caps text-[0.66rem] uppercase tracking-[0.24em] text-gold/80">
+              <h3 className="font-caps text-[0.66rem] uppercase tracking-[0.24em] text-gold">
                 {isModsCategory
                   ? `Description effet passif (niveau ${selectedLevel})`
                   : isWeaponsCategory
@@ -961,7 +961,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
 
           {isModsCategory ? (
             <div className="mt-5 border-t border-white/10 pt-4">
-              <h3 className="font-caps text-[0.66rem] uppercase tracking-[0.24em] text-gold/80">
+              <h3 className="font-caps text-[0.66rem] uppercase tracking-[0.24em] text-gold">
                 Attributs resolus (niveau {selectedLevel})
               </h3>
               {selectedLevelAttributesVisible.length === 0 ? (
@@ -992,7 +992,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
 
           {isGenimonsCategory ? (
             <div className="mt-5 border-t border-white/10 pt-4">
-              <h3 className="font-caps text-[0.66rem] uppercase tracking-[0.24em] text-gold/80">
+              <h3 className="font-caps text-[0.66rem] uppercase tracking-[0.24em] text-gold">
                 {t("passiveTraitAttributes")}
               </h3>
               {genimonAttributes.length === 0 ? (

@@ -232,7 +232,7 @@ export function ChangelogAdminClient() {
   return (
     <div className="flex flex-col gap-4">
       {message ? (
-        <p className={cn("font-sans text-[0.8rem]", message.tone === "ok" ? "text-gold" : "text-[#ffb3a6]")}>
+        <p className={cn("font-sans text-[0.8rem]", message.tone === "ok" ? "text-gold" : "text-crimson-soft")}>
           {message.text}
         </p>
       ) : null}

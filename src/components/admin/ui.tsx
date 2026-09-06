@@ -36,7 +36,7 @@ export type AdminIconButtonTone = "default" | "danger" | "active";
 const TONE_CLASS: Record<AdminIconButtonTone, string> = {
   default: "border-white/12 text-parch/70 hover:border-gold/50 hover:bg-gold/10 hover:text-gold-bright",
   active: "border-gold/45 bg-gold/12 text-gold-bright hover:border-gold hover:bg-gold/20",
-  danger: "border-white/12 text-parch/60 hover:border-crimson-bright/60 hover:bg-crimson/15 hover:text-[#ffb3a6]",
+  danger: "border-white/12 text-parch/60 hover:border-crimson-bright/60 hover:bg-crimson/15 hover:text-crimson-soft",
 };
 
 /**
@@ -146,7 +146,7 @@ const STATUS_DOT: Record<AdminStatusTone, string> = {
 const STATUS_TEXT: Record<AdminStatusTone, string> = {
   ok: "text-parch/80",
   warn: "text-gold-bright",
-  danger: "text-[#ffb3a6]",
+  danger: "text-crimson-soft",
   neutral: "text-muted",
   info: "text-hydro",
 };
@@ -173,7 +173,7 @@ export function AdminChip({ children, tone = "neutral" }: { children: ReactNode;
         tone === "gold"
           ? "border-gold/35 bg-gold/8 text-gold"
           : tone === "danger"
-            ? "border-crimson-bright/40 bg-crimson/12 text-[#ffb3a6]"
+            ? "border-crimson-bright/40 bg-crimson/12 text-crimson-soft"
             : "border-white/12 bg-white/[0.03] text-muted",
       )}
     >

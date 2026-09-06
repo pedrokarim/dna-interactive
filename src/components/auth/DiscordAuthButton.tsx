@@ -86,7 +86,7 @@ export async function DiscordAuthButton({
           <form action={signOutCurrentUser}>
             <button
               type="submit"
-              className="flex w-full items-center gap-2 rounded-sm px-3 py-2 font-sans text-sm text-parch/85 transition-colors hover:bg-crimson-bright/10 hover:text-[#ffb3a6]"
+              className="flex w-full items-center gap-2 rounded-sm px-3 py-2 font-sans text-sm text-parch/85 transition-colors hover:bg-crimson-bright/10 hover:text-crimson-soft"
             >
               <LogOut className="h-4 w-4 text-crimson-bright" />
               {t("signOut")}

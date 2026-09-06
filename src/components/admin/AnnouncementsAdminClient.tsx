@@ -281,7 +281,7 @@ export function AnnouncementsAdminClient() {
 
       <div className="flex items-center gap-3">
         {message ? (
-          <p className={cn("font-sans text-[0.8rem]", message.tone === "ok" ? "text-gold" : "text-[#ffb3a6]")}>
+          <p className={cn("font-sans text-[0.8rem]", message.tone === "ok" ? "text-gold" : "text-crimson-soft")}>
             {message.text}
           </p>
         ) : null}

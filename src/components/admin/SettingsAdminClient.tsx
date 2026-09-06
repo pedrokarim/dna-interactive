@@ -224,7 +224,7 @@ export function SettingsAdminClient() {
             />
             <p className="mt-2 font-sans text-[0.72rem] text-muted">
               Vide : le curseur suit l&apos;horloge de chaque visiteur. Une valeur ici fige la frise{" "}
-              <strong className="font-normal text-[#ffb3a6]">pour tout le monde</strong> – à réserver aux tests et aux
+              <strong className="font-normal text-crimson-soft">pour tout le monde</strong> – à réserver aux tests et aux
               captures.
             </p>
           </div>
@@ -237,7 +237,7 @@ export function SettingsAdminClient() {
       {dirty || error || saved ? (
         <div className="sticky bottom-0 z-20 -mx-4 flex items-center gap-3 border-t border-white/10 bg-[#07090d]/95 px-4 py-2.5 backdrop-blur-md md:-mx-5 md:px-5">
           {error ? (
-            <span className="font-sans text-[0.78rem] text-[#ffb3a6]">{error}</span>
+            <span className="font-sans text-[0.78rem] text-crimson-soft">{error}</span>
           ) : saved ? (
             <span className="inline-flex items-center gap-1.5 font-sans text-[0.78rem] text-gold">
               <Check className="h-3.5 w-3.5" />

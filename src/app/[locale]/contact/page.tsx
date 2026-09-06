@@ -83,7 +83,7 @@ export default function ContactPage() {
   return (
     <div className="mx-auto max-w-4xl">
       <div className="mb-12 text-center">
-        <p className="font-caps text-[0.7rem] uppercase tracking-[0.34em] text-gold/80">{t("title")}</p>
+        <p className="font-caps text-[0.7rem] uppercase tracking-[0.34em] text-gold">{t("title")}</p>
         <h1 className="mt-3 font-display text-4xl text-parch md:text-5xl">{t("title")}</h1>
         <DnaDivider className="mx-auto mt-5 max-w-[14rem]" />
         <p className="mt-5 text-lg text-parch/80">{t("subtitle")}</p>
@@ -194,7 +194,7 @@ export default function ContactPage() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="dna-shine inline-flex w-full items-center justify-center gap-2 rounded-sm border border-gold bg-gradient-to-b from-gold-deep/40 to-ink/70 px-6 py-3 font-medium text-gold-bright transition-all duration-200 hover:-translate-y-px hover:border-gold-bright hover:text-[#fff6e6] disabled:cursor-not-allowed disabled:opacity-60"
+              className="dna-shine inline-flex w-full items-center justify-center gap-2 rounded-sm border border-gold bg-gradient-to-b from-gold-deep/40 to-ink/70 px-6 py-3 font-medium text-gold-bright transition-all duration-200 hover:-translate-y-px hover:border-gold-bright hover:text-gold-hover disabled:cursor-not-allowed disabled:opacity-60"
             >
               {isSubmitting ? (
                 <>

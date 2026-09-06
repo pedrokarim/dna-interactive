@@ -30,14 +30,14 @@ export default async function NotFound() {
         <p className="mb-2 bg-linear-to-r from-gold via-electro to-gold bg-clip-text font-display text-7xl font-semibold text-transparent md:text-9xl">
           404
         </p>
-        <p className="font-caps text-[0.7rem] uppercase tracking-[0.34em] text-gold/80">{tc("error")}</p>
+        <p className="font-caps text-[0.7rem] uppercase tracking-[0.34em] text-gold">{tc("error")}</p>
         <h1 className="mt-2 font-display text-3xl text-parch md:text-4xl">{t("title")}</h1>
         <DnaDivider className="mx-auto mt-5 max-w-[12rem]" />
         <p className="mt-5 text-lg text-parch/85">{t("description")}</p>
         <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
           <Link
             href="/"
-            className="dna-shine inline-flex items-center justify-center gap-2 rounded-sm border border-gold bg-gradient-to-b from-gold-deep/40 to-ink/70 px-6 py-3 font-medium text-gold-bright transition-all duration-200 hover:-translate-y-px hover:border-gold-bright hover:text-[#fff6e6]"
+            className="dna-shine inline-flex items-center justify-center gap-2 rounded-sm border border-gold bg-gradient-to-b from-gold-deep/40 to-ink/70 px-6 py-3 font-medium text-gold-bright transition-all duration-200 hover:-translate-y-px hover:border-gold-bright hover:text-gold-hover"
           >
             <Home className="h-5 w-5" />
             {tc("backToHome")}

@@ -7,7 +7,7 @@ export function DnaNouveau({ children = "Nouveau", className }: { children?: Rea
   return (
     <span
       className={cn(
-        "dna-clip-nouveau inline-block bg-gradient-to-b from-gold-bright to-gold px-2 py-0.5 font-caps text-[0.5rem] uppercase tracking-[0.16em] text-[#241a08] shadow-[0_2px_6px_rgba(0,0,0,0.4)]",
+        "dna-clip-nouveau inline-block bg-gradient-to-b from-gold-bright to-gold px-2 py-0.5 font-caps text-[0.5rem] uppercase tracking-[0.16em] text-on-gold shadow-[0_2px_6px_rgba(0,0,0,0.4)]",
         className,
       )}
     >

@@ -34,7 +34,7 @@ function SectionHeading({
 }) {
   return (
     <div className="mx-auto mb-12 max-w-2xl text-center md:mb-16">
-      <p className="font-caps text-[0.7rem] uppercase tracking-[0.34em] text-gold/80">{eyebrow}</p>
+      <p className="font-caps text-[0.7rem] uppercase tracking-[0.34em] text-gold">{eyebrow}</p>
       <h2 className="mt-3 font-display text-4xl text-parch md:text-5xl">{title}</h2>
       <DnaDivider className="mx-auto mt-5 max-w-[14rem]" />
       {description ? <p className="mt-5 text-base text-parch/80 md:text-lg">{description}</p> : null}
@@ -166,7 +166,7 @@ export default async function FeaturesPage() {
                 <div className="mt-7 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
                   <Link
                     href="/items"
-                    className="dna-shine inline-flex items-center gap-2 rounded-sm border border-gold bg-gradient-to-b from-gold-deep/40 to-ink/70 px-5 py-3 text-sm font-medium text-gold-bright transition-all duration-200 hover:-translate-y-px hover:border-gold-bright hover:text-[#fff6e6]"
+                    className="dna-shine inline-flex items-center gap-2 rounded-sm border border-gold bg-gradient-to-b from-gold-deep/40 to-ink/70 px-5 py-3 text-sm font-medium text-gold-bright transition-all duration-200 hover:-translate-y-px hover:border-gold-bright hover:text-gold-hover"
                   >
                     {tHome("itemsSpotlightCta")}
                     <ArrowRight className="h-4 w-4" />
@@ -209,7 +209,7 @@ export default async function FeaturesPage() {
                 <div className="mt-7 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
                   <Link
                     href="/characters"
-                    className="dna-shine inline-flex items-center gap-2 rounded-sm border border-gold bg-gradient-to-b from-gold-deep/40 to-ink/70 px-5 py-3 text-sm font-medium text-gold-bright transition-all duration-200 hover:-translate-y-px hover:border-gold-bright hover:text-[#fff6e6]"
+                    className="dna-shine inline-flex items-center gap-2 rounded-sm border border-gold bg-gradient-to-b from-gold-deep/40 to-ink/70 px-5 py-3 text-sm font-medium text-gold-bright transition-all duration-200 hover:-translate-y-px hover:border-gold-bright hover:text-gold-hover"
                   >
                     <Users className="h-4 w-4" />
                     {tHome("charactersSpotlightCta")}
@@ -274,7 +274,7 @@ export default async function FeaturesPage() {
                 <div className="mt-7 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
                   <Link
                     href="/builder"
-                    className="dna-shine inline-flex items-center gap-2 rounded-sm border border-gold bg-gradient-to-b from-gold-deep/40 to-ink/70 px-5 py-3 text-sm font-medium text-gold-bright transition-all duration-200 hover:-translate-y-px hover:border-gold-bright hover:text-[#fff6e6]"
+                    className="dna-shine inline-flex items-center gap-2 rounded-sm border border-gold bg-gradient-to-b from-gold-deep/40 to-ink/70 px-5 py-3 text-sm font-medium text-gold-bright transition-all duration-200 hover:-translate-y-px hover:border-gold-bright hover:text-gold-hover"
                   >
                     <Hammer className="h-4 w-4" />
                     {tHome("builderSpotlightCta")}
@@ -322,7 +322,7 @@ export default async function FeaturesPage() {
             <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
                 href="/map"
-                className="dna-shine inline-flex items-center justify-center gap-2 rounded-sm border border-gold bg-gradient-to-b from-gold-deep/40 to-ink/70 px-8 py-4 font-medium text-gold-bright transition-all duration-200 hover:-translate-y-px hover:border-gold-bright hover:text-[#fff6e6]"
+                className="dna-shine inline-flex items-center justify-center gap-2 rounded-sm border border-gold bg-gradient-to-b from-gold-deep/40 to-ink/70 px-8 py-4 font-medium text-gold-bright transition-all duration-200 hover:-translate-y-px hover:border-gold-bright hover:text-gold-hover"
               >
                 <Map className="h-5 w-5" />
                 {tHome("exploreMap")}

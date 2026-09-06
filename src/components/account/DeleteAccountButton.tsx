@@ -44,7 +44,7 @@ export function DeleteAccountButton() {
       <DnaButton variant="danger" icon={<Trash2 className="h-4 w-4" />} onClick={handleClick} disabled={busy}>
         {busy ? t("deleting") : t("deleteAccount")}
       </DnaButton>
-      {error ? <p className="font-sans text-xs text-[#ffb3a6]">{error}</p> : null}
+      {error ? <p className="font-sans text-xs text-crimson-soft">{error}</p> : null}
     </div>
   );
 }

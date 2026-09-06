@@ -190,7 +190,7 @@ export default function BuildShowcase() {
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-3 md:flex-row md:gap-4">
           <Link
             href={`/characters/${getCharacterSlug(activeEntry.character)}?tab=build&build=true#quick-build`}
-            className="dna-shine group inline-flex items-center justify-center gap-2 rounded-sm border border-gold bg-gradient-to-b from-gold-deep/40 to-ink/70 px-6 py-3 text-sm font-medium text-gold-bright transition-all duration-200 hover:-translate-y-px hover:border-gold-bright hover:text-[#fff6e6]"
+            className="dna-shine group inline-flex items-center justify-center gap-2 rounded-sm border border-gold bg-gradient-to-b from-gold-deep/40 to-ink/70 px-6 py-3 text-sm font-medium text-gold-bright transition-all duration-200 hover:-translate-y-px hover:border-gold-bright hover:text-gold-hover"
           >
             <FileImage className="h-4 w-4" />
             {activeEntry.buildCount > 1

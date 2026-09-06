@@ -206,7 +206,7 @@ function EventBar({
           </span>
         </span>
         <span className="min-w-0">
-          <span className="block truncate font-display text-[0.82rem] leading-tight text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]">
+          <span className="block truncate font-display text-[0.82rem] leading-tight text-[#fff] drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]">
             {bar.title}
           </span>
           <span

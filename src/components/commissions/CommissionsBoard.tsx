@@ -101,7 +101,7 @@ export function CommissionsBoard({
   return (
     <div className="mx-auto max-w-6xl">
       <header className="mb-8 text-center">
-        <p className="font-caps text-[0.7rem] uppercase tracking-[0.34em] text-gold/80">
+        <p className="font-caps text-[0.7rem] uppercase tracking-[0.34em] text-gold">
           {t("eyebrow")}
         </p>
         <h1 className="mt-3 font-display text-4xl text-parch md:text-5xl">{t("title")}</h1>

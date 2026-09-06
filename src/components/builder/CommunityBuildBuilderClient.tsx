@@ -1267,7 +1267,7 @@ export function CommunityBuildBuilderClient({
                   type="button"
                   onClick={() => setTeam((current) => current.filter((_, i) => i !== index))}
                   aria-label={t("close")}
-                  className="absolute right-1 top-1 z-[3] flex h-4 w-4 items-center justify-center rounded-full border border-white/20 bg-ink/80 text-[0.7rem] leading-none text-muted hover:border-crimson-bright hover:text-[#ffb3a6]"
+                  className="absolute right-1 top-1 z-[3] flex h-4 w-4 items-center justify-center rounded-full border border-white/20 bg-ink/80 text-[0.7rem] leading-none text-muted hover:border-crimson-bright hover:text-crimson-soft"
                 >
                   ×
                 </button>

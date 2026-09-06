@@ -271,7 +271,7 @@ export function AdminDashboardClient({ currentUser }: { currentUser: CurrentAdmi
                 <span
                   className={cn(
                     "hidden font-sans text-[0.72rem] md:inline",
-                    message.tone === "ok" ? "text-gold" : "text-[#ffb3a6]",
+                    message.tone === "ok" ? "text-gold" : "text-crimson-soft",
                   )}
                 >
                   {message.text}
@@ -305,7 +305,7 @@ export function AdminDashboardClient({ currentUser }: { currentUser: CurrentAdmi
           {activeView === "overview" ? <AdminMetrics stats={stats} onView={setActiveView} /> : null}
 
           {message ? (
-            <p className={cn("font-sans text-[0.78rem] md:hidden", message.tone === "ok" ? "text-gold" : "text-[#ffb3a6]")}>
+            <p className={cn("font-sans text-[0.78rem] md:hidden", message.tone === "ok" ? "text-gold" : "text-crimson-soft")}>
               {message.text}
             </p>
           ) : null}
@@ -482,7 +482,7 @@ function AdminNavButton({
       <Icon className="h-3.5 w-3.5 shrink-0" />
       <span className="whitespace-nowrap">{item.label}</span>
       {badge > 0 ? (
-        <span className="ml-auto grid h-4 min-w-4 place-items-center rounded-full bg-crimson-bright px-1 font-mono text-[0.58rem] leading-none text-white tabular-nums">
+        <span className="ml-auto grid h-4 min-w-4 place-items-center rounded-full bg-crimson-bright px-1 font-mono text-[0.58rem] leading-none text-[#fff] tabular-nums">
           <span className="dna-optical-num">{badge}</span>
         </span>
       ) : null}
@@ -526,7 +526,7 @@ function AdminMetrics({ stats, onView }: { stats: AdminStats; onView: (view: Adm
         >
           <span className="font-caps text-[0.54rem] uppercase tracking-[0.16em] text-muted-2">{cell.label}</span>
           <span
-            className={cn("font-display text-3xl leading-none tabular-nums", cell.alert ? "text-[#ffb3a6]" : "text-gold-bright")}
+            className={cn("font-display text-3xl leading-none tabular-nums", cell.alert ? "text-crimson-soft" : "text-gold-bright")}
           >
             {cell.value}
           </span>

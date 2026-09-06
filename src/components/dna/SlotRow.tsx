@@ -168,7 +168,7 @@ function SlotCard({
             type="button"
             onClick={onRemove}
             aria-label={t("remove")}
-            className="flex h-4 w-4 items-center justify-center rounded-full border border-white/20 bg-ink/80 text-[0.7rem] leading-none text-muted hover:border-crimson-bright hover:text-[#ffb3a6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson-bright/70"
+            className="flex h-4 w-4 items-center justify-center rounded-full border border-white/20 bg-ink/80 text-[0.7rem] leading-none text-muted hover:border-crimson-bright hover:text-crimson-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson-bright/70"
           >
             ×
           </button>

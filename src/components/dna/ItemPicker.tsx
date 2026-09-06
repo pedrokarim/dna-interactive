@@ -217,7 +217,7 @@ function ItemCell({
           <span aria-hidden className="h-2 w-2" />
         )}
         {used && (
-          <span className="flex h-4 w-4 items-center justify-center rounded-full bg-gold text-[0.6rem] leading-none text-[#1a1206]">
+          <span className="flex h-4 w-4 items-center justify-center rounded-full bg-gold text-[0.6rem] leading-none text-on-gold">
             ✓
           </span>
         )}

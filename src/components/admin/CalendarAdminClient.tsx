@@ -190,7 +190,7 @@ export function CalendarAdminClient() {
   return (
     <div className="flex flex-col gap-4">
       {migrationPending ? (
-        <p className="border border-crimson-bright/40 bg-crimson/10 px-3 py-2 font-sans text-[0.8rem] text-[#ffb3a6]">
+        <p className="border border-crimson-bright/40 bg-crimson/10 px-3 py-2 font-sans text-[0.8rem] text-crimson-soft">
           Table <code className="font-mono">calendar_events</code> absente. Crée-la en SQL ciblé
           (<code className="font-mono">drizzle-kit push</code> est inutilisable sur cette base), puis recharge. En
           attendant, le calendrier public affiche la liste curée.
@@ -342,7 +342,7 @@ export function CalendarAdminClient() {
               <span className="font-sans text-[0.82rem] text-parch/85">Masqué — retiré du calendrier public</span>
             </label>
 
-            {error ? <p className="sm:col-span-2 font-sans text-[0.8rem] text-[#ffb3a6]">{error}</p> : null}
+            {error ? <p className="sm:col-span-2 font-sans text-[0.8rem] text-crimson-soft">{error}</p> : null}
 
             <div className="flex items-center gap-2 sm:col-span-2">
               <button

@@ -56,7 +56,7 @@ function Column({
         <span
           className={cn(
             "whitespace-nowrap font-caps text-[0.6rem] uppercase leading-tight tracking-[0.1em]",
-            isWedge ? "text-[#ffb3a6]" : "text-gold",
+            isWedge ? "text-crimson-soft" : "text-gold",
           )}
         >
           {categoryLabel(category, locale)}

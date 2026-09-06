@@ -38,7 +38,7 @@ export default async function CommunityBuildsPage({ params }: { params: Promise<
         </div>
         <Link
           href={NAVIGATION.builder}
-          className="dna-shine inline-flex items-center justify-center gap-2 border border-gold bg-gold/15 px-4 py-2.5 font-caps text-[0.62rem] uppercase tracking-[0.16em] text-gold-bright transition-colors hover:border-gold-bright hover:text-[#fff6e6]"
+          className="dna-shine inline-flex items-center justify-center gap-2 border border-gold bg-gold/15 px-4 py-2.5 font-caps text-[0.62rem] uppercase tracking-[0.16em] text-gold-bright transition-colors hover:border-gold-bright hover:text-gold-hover"
         >
           <Hammer className="h-4 w-4" />
           {t("pageCreateBuild")}

@@ -6,7 +6,7 @@ export function DnaPill({ children, className }: { children: ReactNode; classNam
   return (
     <span
       className={cn(
-        "dna-clip-pill inline-block whitespace-nowrap bg-gradient-to-b from-gold-bright to-gold px-2 py-1 font-caps text-[0.56rem] tracking-[0.12em] text-[#2a1f0c] shadow-[0_1px_5px_rgba(0,0,0,0.4)]",
+        "dna-clip-pill inline-block whitespace-nowrap bg-gradient-to-b from-gold-bright to-gold px-2 py-1 font-caps text-[0.56rem] tracking-[0.12em] text-on-gold shadow-[0_1px_5px_rgba(0,0,0,0.4)]",
         className,
       )}
     >

@@ -31,7 +31,7 @@ export function AuthMessage({ tone, children }: { tone: "error" | "success"; chi
       role={tone === "error" ? "alert" : "status"}
       className={`flex items-start gap-2 border px-3 py-2.5 font-sans text-sm ${
         tone === "error"
-          ? "border-crimson-bright/40 bg-crimson/10 text-[#ffb3a6]"
+          ? "border-crimson-bright/40 bg-crimson/10 text-crimson-soft"
           : "border-gold/40 bg-gold/10 text-gold-bright"
       }`}
     >

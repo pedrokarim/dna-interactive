@@ -71,7 +71,7 @@ const CTA_BASE =
   "dna-shine inline-flex items-center justify-center gap-2 rounded-md px-5 py-2.5 font-sans text-sm tracking-wide transition-[transform,color,border-color] duration-200";
 const CTA_GOLD = cn(
   CTA_BASE,
-  "border border-gold bg-gradient-to-b from-gold-deep/40 to-ink/70 text-gold-bright hover:-translate-y-px hover:border-gold-bright hover:text-[#fff6e6]",
+  "border border-gold bg-gradient-to-b from-gold-deep/40 to-ink/70 text-gold-bright hover:-translate-y-px hover:border-gold-bright hover:text-gold-hover",
 );
 const CTA_GHOST = cn(
   CTA_BASE,
@@ -81,7 +81,7 @@ const CTA_GHOST = cn(
 // Portrait décoratif de la carte d'accueil. À la sortie d'un nouveau personnage,
 // seule cette source doit changer après génération depuis son avatar officiel.
 const HOME_FEATURED_AVATAR = {
-  src: "/assets/home/featured-avatar-ada.png",
+  src: "/assets/home/featured-avatar-ada-v6.png",
   width: 1254,
   height: 1254,
 } as const;
@@ -111,7 +111,7 @@ function ToolTile({ card, className }: { card: ToolCard; className?: string }) {
   const inner = (
     <>
       {card.bg ? (
-        <span aria-hidden className="pointer-events-none absolute inset-0 bg-cover bg-right opacity-30 transition-[opacity,transform] duration-500 group-hover:scale-[1.04] group-hover:opacity-45" style={{ backgroundImage: `url(${card.bg})` }} />
+        <span aria-hidden className="dna-card-art pointer-events-none absolute inset-0 bg-cover bg-right opacity-30 transition-[opacity,transform] duration-500 group-hover:scale-[1.04] group-hover:opacity-45" style={{ backgroundImage: `url(${card.bg})` }} />
       ) : null}
       <span aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-r from-panel via-panel/85 to-transparent" />
       <span aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-ink/75 to-transparent" />
@@ -295,7 +295,7 @@ export default function HomeHubClient({
           </div>
 
           <Link href="/map" className="group relative flex min-h-[230px] flex-col justify-between overflow-hidden rounded-sm border border-gold/70 bg-panel/70 p-6 shadow-[0_0_40px_-8px_rgba(194,168,106,0.45)] transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-[0_0_60px_-6px_rgba(194,168,106,0.6)]">
-            <span aria-hidden className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-45 transition-transform duration-700 group-hover:scale-[1.05]" style={{ backgroundImage: "url(/assets/worldview/worldview-6.webp)" }} />
+            <span aria-hidden className="dna-card-art pointer-events-none absolute inset-0 bg-cover bg-center opacity-45 transition-transform duration-700 group-hover:scale-[1.05]" style={{ backgroundImage: "url(/assets/worldview/worldview-6.webp)" }} />
             <span aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-r from-ink via-ink/70 to-transparent" />
             <span aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-ink to-transparent" />
             <DnaCornerBrackets size={20} color="var(--color-gold-bright)" />

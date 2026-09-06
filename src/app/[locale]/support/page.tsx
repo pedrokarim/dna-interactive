@@ -23,7 +23,7 @@ export default async function SupportPage() {
     <div className="container mx-auto px-4 py-12 md:px-6 md:py-20">
       <div className="mx-auto max-w-4xl">
         <div className="mb-12 text-center">
-          <p className="font-caps text-[0.7rem] uppercase tracking-[0.34em] text-gold/80">{tNav("support")}</p>
+          <p className="font-caps text-[0.7rem] uppercase tracking-[0.34em] text-gold">{tNav("support")}</p>
           <h1 className="mt-3 font-display text-4xl text-parch md:text-5xl">{tSupport("title")}</h1>
           <DnaDivider className="mx-auto mt-5 max-w-[14rem]" />
           <p className="mt-5 text-lg text-parch/80">{tSupport("subtitle")}</p>

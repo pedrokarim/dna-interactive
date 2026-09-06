@@ -66,7 +66,7 @@ export function NotificationBell() {
       >
         <Bell className="h-4 w-4" />
         {unread > 0 ? (
-          <span className="absolute -right-1 -top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-crimson-bright px-1 font-sans text-[0.6rem] font-semibold leading-none text-white shadow-[0_0_6px_rgba(181,48,42,0.8)]">
+          <span className="absolute -right-1 -top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-crimson-bright px-1 font-sans text-[0.6rem] font-semibold leading-none text-[#fff] shadow-[0_0_6px_rgba(181,48,42,0.8)]">
             <span className="dna-optical-num">{unread > 9 ? "9+" : unread}</span>
           </span>
         ) : null}

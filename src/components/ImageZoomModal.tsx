@@ -173,7 +173,7 @@ export default function ImageZoomModal({
         <div className="w-px h-6 bg-line/30" />
         <button
           onClick={onClose}
-          className="p-2 border border-crimson-bright/50 bg-crimson/15 text-[#ffb3a6] transition-colors hover:bg-crimson/30 hover:border-crimson-bright hover:text-[#ffd2c8]"
+          className="p-2 border border-crimson-bright/50 bg-crimson/15 text-crimson-soft transition-colors hover:bg-crimson/30 hover:border-crimson-bright hover:text-[#ffd2c8]"
           aria-label={t("closeEsc")}
           title={t("closeEsc")}
         >

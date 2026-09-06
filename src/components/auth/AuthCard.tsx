@@ -34,7 +34,7 @@ export function AuthLinkButton({ href, children }: { href: string; children: Rea
   return (
     <Link
       href={href}
-      className="dna-shine inline-flex items-center justify-center gap-2 rounded-md border border-gold bg-gradient-to-b from-gold-deep/40 to-ink/70 px-6 py-2.5 font-sans text-sm tracking-wide text-gold-bright shadow-[inset_0_1px_0_rgba(227,205,149,0.22)] transition-colors hover:border-gold-bright hover:text-[#fff6e6]"
+      className="dna-shine inline-flex items-center justify-center gap-2 rounded-md border border-gold bg-gradient-to-b from-gold-deep/40 to-ink/70 px-6 py-2.5 font-sans text-sm tracking-wide text-gold-bright shadow-[inset_0_1px_0_rgba(227,205,149,0.22)] transition-colors hover:border-gold-bright hover:text-gold-hover"
     >
       {children}
     </Link>

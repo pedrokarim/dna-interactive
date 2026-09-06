@@ -97,7 +97,7 @@ export default function HeroSection() {
             >
               <Link
                 href="/map"
-                className="dna-shine inline-flex items-center justify-center gap-2 rounded-sm border border-gold bg-gradient-to-b from-gold-deep/40 to-ink/70 px-8 py-4 font-medium text-gold-bright transition-all duration-200 hover:border-gold-bright hover:text-[#fff6e6]"
+                className="dna-shine inline-flex items-center justify-center gap-2 rounded-sm border border-gold bg-gradient-to-b from-gold-deep/40 to-ink/70 px-8 py-4 font-medium text-gold-bright transition-all duration-200 hover:border-gold-bright hover:text-gold-hover"
               >
                 <Map className="w-5 h-5" />
                 {t("heroCta")}

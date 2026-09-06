@@ -106,7 +106,7 @@ export function AccountConnections({
                         type="button"
                         onClick={() => void doUnlink(provider)}
                         disabled={unlinkBusy}
-                        className="border border-crimson-bright/50 bg-crimson/15 px-2.5 py-1 font-caps text-[0.54rem] uppercase tracking-[0.12em] text-[#ffb3a6] transition-colors hover:border-crimson-bright disabled:opacity-50"
+                        className="border border-crimson-bright/50 bg-crimson/15 px-2.5 py-1 font-caps text-[0.54rem] uppercase tracking-[0.12em] text-crimson-soft transition-colors hover:border-crimson-bright disabled:opacity-50"
                       >
                         {t("connUnlinkConfirm")}
                       </button>
@@ -122,7 +122,7 @@ export function AccountConnections({
                     <button
                       type="button"
                       onClick={() => setConfirmUnlink(provider)}
-                      className="inline-flex items-center gap-1 font-caps text-[0.54rem] uppercase tracking-[0.12em] text-muted transition-colors hover:text-[#ffb3a6]"
+                      className="inline-flex items-center gap-1 font-caps text-[0.54rem] uppercase tracking-[0.12em] text-muted transition-colors hover:text-crimson-soft"
                     >
                       <Unlink className="h-3 w-3" />
                       {t("connUnlink")}
@@ -164,7 +164,7 @@ export function AccountConnections({
         ) : (
           <div className="mt-2">
             {pwError ? (
-              <p className="mb-2 font-sans text-xs text-[#ffb3a6]">{pwError}</p>
+              <p className="mb-2 font-sans text-xs text-crimson-soft">{pwError}</p>
             ) : null}
             <DnaButton variant="ghost" onClick={requestPassword} disabled={pwBusy} className="px-4 py-1.5 text-xs">
               {pwBusy ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : null}

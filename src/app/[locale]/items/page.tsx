@@ -49,7 +49,7 @@ export default async function ItemsCategoriesPage() {
             <Link href={`/items/${category.slug}`} className="block">
               <div className="flex items-start justify-between gap-3">
                 <div className="space-y-2">
-                  <p className="font-caps text-[0.62rem] uppercase tracking-[0.24em] text-gold/80">
+                  <p className="font-caps text-[0.62rem] uppercase tracking-[0.24em] text-gold">
                     {category.id === "mods" ? "DEMON WEDGE" : category.technicalName}
                   </p>
                   <h2 className="font-display text-2xl text-parch">{category.title}</h2>

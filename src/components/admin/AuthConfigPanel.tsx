@@ -142,7 +142,7 @@ export function AuthConfigPanel() {
           variables d&apos;environnement.
         </p>
 
-        {error ? <p className="font-sans text-[0.78rem] text-[#ffb3a6] sm:col-span-2">{error}</p> : null}
+        {error ? <p className="font-sans text-[0.78rem] text-crimson-soft sm:col-span-2">{error}</p> : null}
 
         <div className="flex items-center gap-3 sm:col-span-2">
           <AdminFormButton variant="primary" onClick={() => void save()} disabled={saving}>

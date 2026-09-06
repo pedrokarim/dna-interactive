@@ -82,7 +82,7 @@ export default async function AboutPage() {
       <div className="mx-auto max-w-4xl">
         {/* Hero */}
         <div className="mb-12 text-center">
-          <p className="font-caps text-[0.7rem] uppercase tracking-[0.34em] text-gold/80">
+          <p className="font-caps text-[0.7rem] uppercase tracking-[0.34em] text-gold">
             {SITE_CONFIG.name}
           </p>
           <h1 className="mt-3 font-display text-4xl text-parch md:text-5xl">

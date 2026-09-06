@@ -246,7 +246,7 @@ export function CommunityBuildsHubClient({ options, locale }: CommunityBuildsHub
             />
             <Link
               href={NAVIGATION.builder}
-              className="dna-shine inline-flex items-center justify-center border border-gold bg-gold/15 px-4 py-2 font-caps text-[0.62rem] uppercase tracking-[0.16em] text-gold-bright transition-colors hover:border-gold-bright hover:text-[#fff6e6]"
+              className="dna-shine inline-flex items-center justify-center border border-gold bg-gold/15 px-4 py-2 font-caps text-[0.62rem] uppercase tracking-[0.16em] text-gold-bright transition-colors hover:border-gold-bright hover:text-gold-hover"
             >
               {tcb("proposeBuild")}
             </Link>

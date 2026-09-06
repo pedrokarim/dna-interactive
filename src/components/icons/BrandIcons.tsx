@@ -7,7 +7,7 @@ type IconProps = SVGProps<SVGSVGElement> & { size?: number };
 
 /** Couleurs officielles Discord, partagées par tous les CTA de la marque. */
 export const DISCORD_BUTTON_CLASS =
-  "border-[#5865F2] bg-[#5865F2] bg-none text-white shadow-[0_8px_24px_-12px_rgba(88,101,242,0.9)] hover:border-[#4752C4] hover:bg-[#4752C4] hover:text-white focus-visible:ring-[#5865F2]/70";
+  "border-[#5865F2] bg-[#5865F2] bg-none text-[#fff] shadow-[0_8px_24px_-12px_rgba(88,101,242,0.9)] hover:border-[#4752C4] hover:bg-[#4752C4] hover:text-[#fff] focus-visible:ring-[#5865F2]/70";
 
 /** X n'emploie que le noir et le blanc dans son kit de marque. */
 export const X_BUTTON_CLASS =

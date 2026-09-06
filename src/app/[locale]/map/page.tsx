@@ -741,7 +741,7 @@ export default function MapPage() {
                                   e.stopPropagation();
                                   deselectAllInGroup(group);
                                 }}
-                                className="text-xs px-2 py-1 border border-crimson-bright/50 bg-crimson/15 hover:bg-crimson/30 text-[#ffb3a6] transition-colors"
+                                className="text-xs px-2 py-1 border border-crimson-bright/50 bg-crimson/15 hover:bg-crimson/30 text-crimson-soft transition-colors"
                                 title={t('deselectAll')}
                               >
                                 ✗

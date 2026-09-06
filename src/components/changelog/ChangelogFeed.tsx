@@ -147,7 +147,7 @@ export function ChangelogFeed({
           <button
             type="button"
             onClick={() => void loadMore()}
-            className="border border-crimson-bright/40 px-4 py-2 font-sans text-sm text-[#ffb3a6] transition-colors hover:border-crimson-bright"
+            className="border border-crimson-bright/40 px-4 py-2 font-sans text-sm text-crimson-soft transition-colors hover:border-crimson-bright"
           >
             {t("loadFailed")}
           </button>

@@ -20,6 +20,17 @@
   --color-gold-deep:      #897240;
   --color-crimson:        #8e1813;
   --color-crimson-bright: #b5302a;
+  /* Texte sur fond cramoisi (étiquettes, alertes, boutons de danger). Était
+     écrit `text-[#ffb3a6]` dans 24 fichiers avant d'être promu en token : sur
+     un fond clair, ce saumon devient illisible. */
+  --color-crimson-soft:   #ffb3a6;
+  /* Texte posé sur un APLAT doré plein (pastille, onglet « Nouveau », chip
+     actif, bouton voté). En thème sombre l'or est clair, donc l'encre est
+     sombre — en thème clair l'or devient foncé et cette encre s'inverse. */
+  --color-on-gold:        #241a08;
+  /* Accent de texte au survol, sur les surfaces dorées translucides : la
+     couleur la plus contrastée de la gamme. */
+  --color-gold-hover:     #fff6e6;
   --color-parch:          #ece4d2;
   --color-muted:          #9a907c;
   --color-muted-2:        #6a6150;
@@ -93,38 +104,56 @@ body {
 :root[data-theme="light"] {
   color-scheme: light;
 
-  --background: #eee7d9;
+  --background: #e6dcc6;
   --foreground: #241d13;
+
+  /* `border-white/10`, `bg-white/5`, `bg-black/25` : ~440 occurrences dans le
+     projet, qui désignent en réalité « un voile plus clair / plus sombre que
+     la surface ». Sur de l'ivoire, un voile blanc est invisible et un voile
+     noir fait une tache. On inverse donc les deux couleurs plutôt que de
+     réécrire chaque classe — un composant qui les emploie devient juste dans
+     les deux thèmes sans être modifié.
+
+     Les rares `text-white` posés sur un fond QUI NE BASCULE PAS (badge
+     cramoisi, bouton Discord, barre du calendrier) sont écrits `text-[#fff]`
+     en littéral pour rester blancs. */
+  --color-white: #241d13;
+  --color-black: #faf7ef;
 
   /* Surfaces — ivoire chaud, jamais de blanc pur : c'est lui qui « casse les
      yeux » sur un écran, et il jurerait avec l'or laiton de la marque. */
-  --color-ink:            #eee7d9;
-  --color-ink-2:          #e4dbc9;
-  --color-panel:          #f7f2e7;
+  --color-ink:            #e6dcc6;
+  --color-ink-2:          #dcd0b5;
+  --color-panel:          #faf7ef;
 
-  /* Or laiton — assombri pour tenir sur un fond clair. */
-  --color-line:           #9c8341;
-  --color-gold:           #8c7333;
-  --color-gold-bright:    #6d5518; /* accent le plus lisible : ~7:1 sur panel */
+  /* Or laiton — assombri pour tenir sur un fond clair. `line` est plus foncé
+     que `gold` : les filets sont presque toujours posés à faible opacité
+     (`border-line/20`), et un or clair y disparaîtrait complètement. */
+  --color-line:           #7a6224;
+  --color-gold:           #75601f;        /* 5,2:1 sur panel — `text-gold` est du texte */
+  --color-gold-bright:    #5a4512;        /* accent le plus lisible : ~8:1 */
   --color-gold-deep:      #d8c384; /* le plus discret : fonds de dégradés */
 
   --color-crimson:        #8e1813;
   --color-crimson-bright: #a82a22;
+  --color-crimson-soft:   #8c1a12;
+  --color-on-gold:        #faf7ef;   /* ivoire SUR l'or foncé du thème clair */
+  --color-gold-hover:     #241d13;
 
   /* Textes */
   --color-parch:          #241d13;
   --color-muted:          #6a6152;
-  --color-muted-2:        #7d7364;
+  --color-muted-2:        #6b6253;
 
   /* Éléments — mêmes teintes identitaires, ramenées à un contraste lisible.
      Les valeurs du thème sombre sont pensées pour briller sur du noir ; telles
      quelles sur de l'ivoire, hydro et anemo tombent sous 2:1. */
-  --color-electro: #6a4fa2;
-  --color-pyro:    #b5442a;
-  --color-hydro:   #2166b8;
-  --color-anemo:   #1c855f;
-  --color-lumino:  #8a6a22;
-  --color-umbro:   #5348c4;
+  --color-electro: #5a4189;
+  --color-pyro:    #9c3418;
+  --color-hydro:   #14487f;
+  --color-anemo:   #16704f;
+  --color-lumino:  #75591b;
+  --color-umbro:   #453ba6;
 
   /* Rareté */
   --color-rarity-1: #6f6f6f;
@@ -143,7 +172,7 @@ body {
   background-image:
     radial-gradient(120% 90% at 80% 4%, rgba(142, 24, 19, 0.07), transparent 55%),
     radial-gradient(130% 100% at 10% 98%, rgba(36, 78, 86, 0.08), transparent 60%),
-    linear-gradient(175deg, #f3ecdd 0%, #eee7d9 48%, #e9e6dc 100%);
+    linear-gradient(175deg, #ece3d0 0%, #e6dcc6 48%, #e2ded0 100%);
 }
 
 :root[data-theme="light"] ::selection { background: rgba(140, 115, 51, 0.24); color: #1a140c; }
@@ -167,7 +196,7 @@ body {
 /* Cases d'objet : la texture de rareté du jeu est peinte pour du sombre. On
    n'y touche pas — on inverse le voile posé dessus, et on assombrit le nom. */
 :root[data-theme="light"] [data-rarity] {
-  --rarity-veil: 247 242 231;
+  --rarity-veil: 250 247 239;
   --rarity-text: #3a3128;
 }
 :root[data-theme="light"] [data-rarity="1"] { --rarity-text: #4a4f51; --rarity-line: #6f7170; }
@@ -194,8 +223,8 @@ body {
 
 :root[data-theme="light"] .dna-ambient-veil {
   background-image:
-    linear-gradient(180deg, rgb(238 231 217 / 0.72) 0%, rgb(238 231 217 / 0.55) 42%, rgb(238 231 217 / 0.82) 100%),
-    radial-gradient(120% 85% at 50% 45%, transparent 28%, rgb(238 231 217 / 0.66) 100%);
+    linear-gradient(180deg, rgb(230 220 198 / 0.72) 0%, rgb(230 220 198 / 0.55) 42%, rgb(230 220 198 / 0.82) 100%),
+    radial-gradient(120% 85% at 50% 45%, transparent 28%, rgb(230 220 198 / 0.66) 100%);
 }
 
 /* Nappes teintées : mêmes couleurs, moitié moins appuyées. */
@@ -207,6 +236,54 @@ body {
 }
 :root[data-theme="light"] .dna-ambient-flow-layer[data-tint="gold"] {
   background-image: radial-gradient(34% 30% at 58% 84%, rgb(140 115 51 / 0.22), transparent 70%);
+}
+
+/* Îlot sombre — une zone qui reste en thème sombre quel que soit celui du site.
+   Pour les visuels destinés à SORTIR du site : la carte de build exportée en
+   image doit être identique pour tout le monde. Son fond est peint en dur
+   (dégradés bleu nuit) ; sans ça, seul son TEXTE basculerait, et on lirait du
+   sombre sur du sombre.
+
+   Les custom properties héritent : il suffit de les redéclarer ici pour que
+   tous les utilitaires Tailwind du sous-arbre les suivent. */
+:root[data-theme="light"] .dna-force-dark {
+  color-scheme: dark;
+  --color-ink:            #0a0a0b;
+  --color-ink-2:          #161513;
+  --color-panel:          #141310;
+  --color-line:           #c2a86a;
+  --color-gold:           #c2a86a;
+  --color-gold-bright:    #e3cd95;
+  --color-gold-deep:      #897240;
+  --color-crimson:        #8e1813;
+  --color-crimson-bright: #b5302a;
+  --color-crimson-soft:   #ffb3a6;
+  --color-on-gold:        #241a08;
+  --color-gold-hover:     #fff6e6;
+  --color-parch:          #ece4d2;
+  --color-muted:          #9a907c;
+  --color-muted-2:        #6a6150;
+  --color-electro: #a48ed0;
+  --color-pyro:    #e2664a;
+  --color-hydro:   #5fa8ff;
+  --color-anemo:   #57d6a6;
+  --color-lumino:  #e3cd95;
+  --color-umbro:   #8e84ff;
+  --color-white: #fff;
+  --color-black: #000;
+}
+
+/* Vignettes de carte. En thème sombre, le voile posé par-dessus ASSOMBRIT
+   l'illustration : elle reste visible par contraste avec le fond noir. En
+   clair, ce même voile l'ÉCLAIRCIT et la fait disparaître dans l'ivoire. On
+   remonte donc l'illustration au lieu de toucher au voile, qui est ce qui
+   garantit le contraste du texte posé dessus. */
+:root[data-theme="light"] .dna-card-art {
+  opacity: 0.52;
+  filter: saturate(1.2) contrast(1.08);
+}
+:root[data-theme="light"] .group:hover .dna-card-art {
+  opacity: 0.66;
 }
 
 /* Le grain en `overlay` éclaircit sur fond clair : il vire au voile laiteux.
@@ -270,6 +347,26 @@ body:has(.map-page) .grecaptcha-badge {
 /* Blocs alternatifs : un seul des deux est rendu selon l'état de la barre. */
 .dna-when-collapsed { display: none; }
 
+/* Correction optique du libellé des liens, en `em`.
+   Même cause que le losange de `DnaSectionMark` : dans une boîte de ligne,
+   Cinzel place l'encre de ses capitales plus haut que le milieu, parce que sa
+   descendante est bien plus profonde que ce que les capitales occupent. Le
+   lien est en `items-center`, donc l'ICÔNE tombe juste (mesurée à 0,03 px du
+   centre) mais le TEXTE remonte.
+
+   Mesuré au pixel sur le rendu réel (Playwright, zoom ×8, fond aplati) : le
+   centre d'encre des capitales tombait 1,00 px au-dessus du centre du lien, à
+   10,88 px de fonte — soit 0,092 em. En `em` parce que l'écart ne dépend que
+   des métriques de la fonte : il suit la taille.
+
+   Ne vise que les liens : la marque, en tête de barre, est en Cormorant et n'a
+   pas le même décalage. */
+.dna-sidebar-link .dna-sidebar-label {
+  position: relative;
+  top: 0.092em;
+}
+
+
 /* Même principe pour le thème : les deux icônes du sélecteur sont rendues, le
    CSS n'en montre qu'une. Le bouton est donc juste dès la première peinture,
    alors que le serveur ne peut pas connaître le thème du visiteur. */
@@ -282,6 +379,12 @@ body:has(.map-page) .grecaptcha-badge {
 
   :root[data-sidebar="collapsed"] .dna-when-expanded { display: none; }
   :root[data-sidebar="collapsed"] .dna-when-collapsed { display: flex; }
+
+  /* Marque : le nom disparaît, le logo se centre. */
+  :root[data-sidebar="collapsed"] .dna-sidebar-brand {
+    justify-content: center;
+    gap: 0;
+  }
 
   /* Liens : pastille carrée centrée sur l'icône. */
   :root[data-sidebar="collapsed"] .dna-sidebar-link {

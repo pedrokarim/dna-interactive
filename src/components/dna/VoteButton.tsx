@@ -50,12 +50,12 @@ export function DnaVoteButton({
         "inline-flex flex-col items-center justify-center gap-0.5 rounded-md border font-caps leading-none transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60",
         pad,
         voted
-          ? "border-gold bg-gradient-to-b from-gold-bright to-gold text-[#1a1206]"
+          ? "border-gold bg-gradient-to-b from-gold-bright to-gold text-on-gold"
           : "border-white/20 bg-gradient-to-b from-panel/70 to-ink/70 text-parch",
         interactive ? "hover:border-gold hover:text-gold-bright" : "cursor-default",
         disabled && "opacity-50",
         // Quand voté, le hover ne doit pas re-teinter le texte sombre.
-        voted && interactive && "hover:text-[#1a1206]",
+        voted && interactive && "hover:text-on-gold",
         className,
       )}
     >

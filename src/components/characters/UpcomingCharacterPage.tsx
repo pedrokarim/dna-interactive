@@ -396,7 +396,7 @@ function CrestPlaceholder({ character }: { character: UpcomingCharacter }) {
         style={{
           backgroundImage:
             "repeating-linear-gradient(135deg, currentColor 0 1px, transparent 1px 9px)",
-          color: element.hex,
+          color: element.color,
         }}
       />
       <DnaCornerBrackets />
@@ -404,7 +404,7 @@ function CrestPlaceholder({ character }: { character: UpcomingCharacter }) {
       <div className="relative flex h-full flex-col items-center justify-center gap-4 p-6 text-center">
         <span
           className="font-display text-[7rem] leading-none opacity-25"
-          style={{ color: element.hex }}
+          style={{ color: element.color }}
           aria-hidden
         >
           {character.name.charAt(0)}
