@@ -170,7 +170,11 @@ function BuildShowcaseCard({ build }: { build: HomeBuildCard }) {
       className="group relative flex h-full w-64 shrink-0 flex-col overflow-hidden rounded-sm border border-line/20 bg-panel/70 transition-[transform,border-color] hover:-translate-y-0.5 hover:border-gold/70"
     >
       <div className="relative h-44 overflow-hidden">
-        <span aria-hidden className="absolute inset-0 bg-cover bg-[position:center_18%] opacity-80 transition-transform duration-500 group-hover:scale-105" style={{ backgroundImage: `url(${bg})` }} />
+        {/* Avatar carré dans une vignette paysage : `cover` en montre 69 %, calés
+            en HAUT. C'est la seule position qui ne rogne jamais le sommet de la
+            tête — vérifié sur les 31 avatars, coiffes et couvre-chefs compris.
+            `origin-top` pour que le zoom au survol parte du haut lui aussi. */}
+        <span aria-hidden className="absolute inset-0 origin-top bg-cover bg-top opacity-80 transition-transform duration-500 group-hover:scale-105" style={{ backgroundImage: `url(${bg})` }} />
         <span aria-hidden className="absolute inset-0 bg-gradient-to-t from-panel via-panel/20 to-transparent" />
         <span aria-hidden className="absolute inset-x-0 bottom-0 h-px" style={{ background: `linear-gradient(90deg, ${build.tint}, transparent)` }} />
         <span className="absolute right-2 top-2"><DnaTag>{t("community")}</DnaTag></span>
