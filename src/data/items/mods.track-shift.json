@@ -256,7 +256,7 @@
         }
       },
       "fields": {
-        "AccessKey": "T.RT_33",
+        "AccessKey": "T.RT_34",
         "DetailDes": "RESOURCE_DESC_30001",
         "ExcludeCollect": true,
         "ExcludeCollectServer": true,
@@ -333,7 +333,7 @@
         }
       },
       "fields": {
-        "AccessKey": "T.RT_33",
+        "AccessKey": "T.RT_34",
         "DetailDes": "RESOURCE_DESC_30002",
         "ExcludeCollect": true,
         "ExcludeCollectServer": true,

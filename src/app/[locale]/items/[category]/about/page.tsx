@@ -17,140 +17,17 @@ import {
   Zap,
   Wrench,
 } from "lucide-react";
-import CalamityWeaponsGuideClient, {
-  type CalamityGuideWeapon,
-} from "@/components/items/CalamityWeaponsGuideClient";
+import { CalamityWeaponsGuide } from "@/components/items/CalamityWeaponsGuide";
 import {
   getItemCatalog,
   getItemCategoryBySlug,
-  getItemTranslation,
-  getItemsByCategoryId,
 } from "@/lib/items/catalog";
-import { getWeaponBuild } from "@/lib/items/weapon-builds";
-import { isCalamityWeapon } from "@/lib/items/calamity-weapons";
-import calamityForgeCosts from "@/data/weapons/calamity-forge-costs.json";
 import { generatePageMetadata } from "@/lib/metadata";
 import { toGameDataLangCode, toLocale } from "@/i18n/config";
-
-/** Traducteur next-intl restreint à un namespace, tel que renvoyé par `getTranslations`. */
-type Translator = Awaited<ReturnType<typeof getTranslations>>;
 
 type CategoryAboutPageProps = {
   params: Promise<{ locale: string; category: string }>;
 };
-
-const FALLBACK_ICON = "/item-fallback.svg";
-/** Ressource « Phoxène » — les armes en acier n'exposent que ce coût minimal dans les tables locales. */
-const PHOXENE_ID = 100;
-
-// Coûts de Fusion de calamité extraits de HyperWeaponCardLevel (résolus par
-// research_data/gen-calamity-forge-costs.mjs → src/data/weapons/calamity-forge-costs.json).
-type ForgeCostStep = { level: number; materials: { id: number; num: number }[] };
-const CALAMITY_FORGE_COSTS = calamityForgeCosts as Record<string, ForgeCostStep[]>;
-
-function stringField(value: unknown): string | null {
-  return typeof value === "string" && value.trim().length > 0 ? value : null;
-}
-
-function numberField(value: unknown): number | null {
-  return typeof value === "number" && Number.isFinite(value) ? value : null;
-}
-
-function stripGameRichText(text: string | null | undefined): string | null {
-  if (!text) return null;
-  const stripped = text.replace(/<\/?[A-Za-z][^>]*>|<\/>/g, "").trim();
-  return stripped.length > 0 ? stripped : null;
-}
-
-function buildCalamityForgeSteps(
-  weaponId: string,
-  resourcesById: Map<number, ReturnType<typeof getItemsByCategoryId>[number]>,
-  gameLang: string,
-  t: Translator,
-): CalamityGuideWeapon["forgeSteps"] {
-  return (CALAMITY_FORGE_COSTS[weaponId] ?? []).map((step) => {
-    const onlyPhoxene = step.materials.length === 1 && step.materials[0]?.id === PHOXENE_ID;
-    return {
-      level: step.level,
-      note: onlyPhoxene ? t("phoxeneNote") : null,
-      materials: step.materials.map((mat) => {
-        const resource = resourcesById.get(mat.id);
-        const translated = resource ? getItemTranslation(resource, gameLang, [gameLang, "EN"]) : null;
-        return {
-          id: mat.id,
-          name: translated?.modName ?? t("fallbackResource", { id: mat.id }),
-          icon: resource?.icon.publicPath ?? resource?.icon.placeholderPath ?? FALLBACK_ICON,
-          quantity: mat.num,
-        };
-      }),
-    };
-  });
-}
-
-function buildCalamityGuideWeapons(gameLang: string, t: Translator): CalamityGuideWeapon[] {
-  const resourcesById = new Map(getItemsByCategoryId("resources").map((resource) => [resource.modId, resource]));
-
-  return getItemsByCategoryId("weapons")
-    .filter((item) => isCalamityWeapon(item))
-    .sort((a, b) => a.modId - b.modId)
-    .map((item) => {
-      const translation = getItemTranslation(item, gameLang, [gameLang, "EN"]);
-      const english = getItemTranslation(item, "EN", ["EN", gameLang]);
-      const type = item.fields.Type === "Ranged" ? "Ranged" : "Melee";
-      const weaponBuild = getWeaponBuild(item.id, gameLang);
-      const wedgePoolKey = type === "Melee" ? "UI_Armory_Meleeweapon" : "UI_Armory_Longrange";
-
-      return {
-        id: item.id,
-        href: `/items/weapons/${item.id}`,
-        name: translation.modName ?? t("fallbackWeapon", { id: item.modId }),
-        englishName: english.modName ?? `Weapon #${item.modId}`,
-        description: stripGameRichText(translation.description),
-        icon: item.icon.publicPath ?? item.icon.placeholderPath ?? FALLBACK_ICON,
-        type,
-        typeLabel:
-          translation.typeCompatibilityNames[0] ??
-          (type === "Melee" ? t("meleeWeapons") : t("rangedWeapons")),
-        subtype: stringField(item.fields.WeaponSubtype) ?? stringField(item.fields.ResourceSType) ?? "Unknown",
-        subtypeLabel:
-          translation.typeCompatibilityNames[1] ??
-          stringField(item.fields.WeaponSubtype) ??
-          stringField(item.fields.ResourceSType) ??
-          t("unknownType"),
-        atkType: stringField(item.fields.ATKType),
-        baseAtk: numberField(item.fields.BaseATK),
-        maxAtk: numberField(item.fields.ATKMax),
-        critRate: numberField(item.fields.CRI),
-        critDamage: numberField(item.fields.CRD),
-        openVersion: numberField(item.fields.OpenVersion),
-        passiveDescription: stripGameRichText(translation.passiveEffectsDescription),
-        potentialTreeKnown: item.id === "weapons-10299" || item.id === "weapons-20599",
-        wedgePoolKey,
-        wedgePoolLabel: type === "Melee" ? t("wedgePoolMelee") : t("wedgePoolRanged"),
-        wedgeBuildSlots:
-          weaponBuild?.demonWedges.slots.map((slot) => ({
-            position: slot.position,
-            name: slot.item?.name ?? t("fallbackSlot", { position: slot.position }),
-            icon: slot.item?.icon ?? FALLBACK_ICON,
-            href: slot.item?.href ?? null,
-            track: slot.track,
-          })) ?? [],
-        forgeSteps: buildCalamityForgeSteps(item.id, resourcesById, gameLang, t),
-      };
-    });
-}
-
-function getWeaponWedgePoolCounts() {
-  const mods = getItemsByCategoryId("mods");
-  const count = (key: string) => mods.filter((mod) => mod.typeCompatibility.textKeys.includes(key)).length;
-
-  return {
-    melee: count("UI_Armory_Meleeweapon"),
-    ranged: count("UI_Armory_Longrange"),
-    consonanceMelee: count("UI_Armory_MeleeweaponUltra"),
-    consonanceRanged: count("UI_Armory_LongrangeUltra"),
-  };
-}
 
 function GuideBadge({ icon, label }: { icon: React.ReactNode; label: string }) {
   return (
@@ -624,16 +501,11 @@ export default async function CategoryAboutPage({ params }: CategoryAboutPagePro
 
   if (category.id === "weapons") {
     // Les libellés issus des données de jeu suivent la locale de la page.
-    const gameLang = toGameDataLangCode(toLocale(locale));
-    const t = await getTranslations({ locale, namespace: "calamityGuide" });
-
     return (
-      <CalamityWeaponsGuideClient
+      <CalamityWeaponsGuide
         categorySlug={category.slug}
-        gameLang={gameLang}
-        totalWeaponCount={getItemsByCategoryId("weapons").length}
-        weapons={buildCalamityGuideWeapons(gameLang, t)}
-        wedgePools={getWeaponWedgePoolCounts()}
+        gameLang={toGameDataLangCode(toLocale(locale))}
+        locale={locale}
       />
     );
   }

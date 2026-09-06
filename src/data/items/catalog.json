@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-28T21:14:26.035Z",
+  "generatedAt": "2026-09-06T15:43:30.338Z",
   "categories": [
     {
       "id": "mods",
@@ -80,32 +80,6 @@
       "sampleIconPath": "/assets/items/weapons/T_Head_Sword_Zhuiyi.png"
     },
     {
-      "id": "resources",
-      "slug": "resources",
-      "title": "Ressources / Items",
-      "technicalName": "RESOURCE",
-      "displayName": "Items",
-      "description": "Liste des ressources avec noms multilingues, descriptions et icones extraites du jeu.",
-      "itemCount": 779,
-      "availableLanguages": [
-        "DE",
-        "EN",
-        "ES",
-        "FR",
-        "JP",
-        "KR",
-        "TC"
-      ],
-      "defaultGridLanguages": [
-        "FR",
-        "EN"
-      ],
-      "defaultDetailLanguage": "FR",
-      "datasetFile": "resources.items.json",
-      "iconDirectory": "/assets/items/resources",
-      "sampleIconPath": "/assets/items/resources/T_Coin_Main_Lv1.png"
-    },
-    {
       "id": "fishing",
       "slug": "fishing",
       "title": "Peche / Fishing",
@@ -130,6 +104,32 @@
       "datasetFile": "fishing.items.json",
       "iconDirectory": "/assets/items/fishing",
       "sampleIconPath": "/assets/items/fishing/T_Coin_Other_Fishing.png"
+    },
+    {
+      "id": "resources",
+      "slug": "resources",
+      "title": "Ressources / Items",
+      "technicalName": "RESOURCE",
+      "displayName": "Items",
+      "description": "Liste des ressources avec noms multilingues, descriptions et icones extraites du jeu.",
+      "itemCount": 785,
+      "availableLanguages": [
+        "DE",
+        "EN",
+        "ES",
+        "FR",
+        "JP",
+        "KR",
+        "TC"
+      ],
+      "defaultGridLanguages": [
+        "FR",
+        "EN"
+      ],
+      "defaultDetailLanguage": "FR",
+      "datasetFile": "resources.items.json",
+      "iconDirectory": "/assets/items/resources",
+      "sampleIconPath": "/assets/items/resources/T_Coin_Main_Lv1.png"
     }
   ]
 }

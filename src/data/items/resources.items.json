@@ -3890,7 +3890,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_31",
+      "AccessKey": "T.RT_32",
       "DetailDes": "RESOURCE_DESC_214",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -4373,7 +4373,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_32",
+      "AccessKey": "T.RT_33",
       "DetailDes": "RESOURCE_TEXT_218",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -4534,7 +4534,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_32",
+      "AccessKey": "T.RT_33",
       "DetailDes": "RESOURCE_TEXT_218",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -4860,7 +4860,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_31",
+      "AccessKey": "T.RT_32",
       "DetailDes": "RESOURCE_DESC_222",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -6809,7 +6809,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_26",
+      "AccessKey": "T.RT_27",
       "DetailDes": "RESOURCE_DESC_2001",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -6975,7 +6975,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_26",
+      "AccessKey": "T.RT_27",
       "DetailDes": "RESOURCE_DESC_2001",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -9125,7 +9125,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_29",
+      "AccessKey": "T.RT_30",
       "DetailDes": "RESOURCE_DESC_2015",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -9289,7 +9289,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_29",
+      "AccessKey": "T.RT_30",
       "DetailDes": "RESOURCE_DESC_2016",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -22217,7 +22217,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12001",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -22380,7 +22380,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12002",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -22543,7 +22543,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12003",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -22706,7 +22706,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12004",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -22869,7 +22869,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12005",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -23032,7 +23032,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12006",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -23195,7 +23195,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12007",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -23358,7 +23358,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12008",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -23521,7 +23521,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12009",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -23684,7 +23684,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12010",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -23847,7 +23847,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12011",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -24010,7 +24010,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12012",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -24173,7 +24173,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12013",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -24336,7 +24336,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12014",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -24499,7 +24499,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12015",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -24662,7 +24662,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12016",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -24825,7 +24825,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12017",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -24988,7 +24988,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12018",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -25151,7 +25151,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12019",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -25314,7 +25314,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12020",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -25477,7 +25477,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12021",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -25640,7 +25640,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12022",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -25803,7 +25803,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12023",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -25966,7 +25966,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12024",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -26129,7 +26129,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12025",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -26292,7 +26292,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12026",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -26455,7 +26455,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12027",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -26618,7 +26618,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12028",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -26781,7 +26781,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12029",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -26944,7 +26944,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12030",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -27107,7 +27107,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12031",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -27270,7 +27270,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12032",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -27433,7 +27433,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12033",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -27596,7 +27596,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12034",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -27759,7 +27759,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12035",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -27922,7 +27922,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12036",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -28085,7 +28085,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12037",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -28248,7 +28248,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12038",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -28411,7 +28411,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12039",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -28574,7 +28574,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12040",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -28737,7 +28737,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12041",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -28900,7 +28900,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12042",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -29063,7 +29063,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12043",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -29226,7 +29226,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12044",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -29328,7 +29328,7 @@
         "typeCompatibilityNames": []
       },
       "EN": {
-        "modName": "Exiled Fangs: Left Blade",
+        "modName": "Exiled Fangs: Blade (Left)",
         "description": "Crafted with precision from the blueprint of Exiled Fangs. Whether the blade is curved or straight, light or heavy, its edge is honed exclusively for battle.",
         "demonWedgeName": null,
         "functionLabel": "Weapon component, used for forging weapons",
@@ -29389,7 +29389,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12045",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -29491,7 +29491,7 @@
         "typeCompatibilityNames": []
       },
       "EN": {
-        "modName": "Exiled Fangs: Right Blade",
+        "modName": "Exiled Fangs: Blade (Right)",
         "description": "Crafted with precision from the blueprint of Exiled Fangs. Whether the blade is curved or straight, light or heavy, its edge is honed exclusively for battle.",
         "demonWedgeName": null,
         "functionLabel": "Weapon component, used for forging weapons",
@@ -29552,7 +29552,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12046",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -29715,7 +29715,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12047",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -29878,7 +29878,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12048",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -30041,7 +30041,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12049",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -30204,7 +30204,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12050",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -30367,7 +30367,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12051",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -30530,7 +30530,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12052",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -30693,7 +30693,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12053",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -30856,7 +30856,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12054",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -31019,7 +31019,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12055",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -31182,7 +31182,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12056",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -31345,7 +31345,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12057",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -31508,7 +31508,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12058",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -31671,7 +31671,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12059",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -31834,7 +31834,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12060",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -31997,7 +31997,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12061",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -32160,7 +32160,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12062",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -32323,7 +32323,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12063",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -32486,7 +32486,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12064",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -32649,7 +32649,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12065",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -32812,7 +32812,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12066",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -32975,7 +32975,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12067",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -33138,7 +33138,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12068",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -33301,7 +33301,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12069",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -33464,7 +33464,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12070",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -33627,7 +33627,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12071",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -33790,7 +33790,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12072",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -33953,7 +33953,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12073",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -34116,7 +34116,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12074",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -34279,7 +34279,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12075",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -34442,7 +34442,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12076",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -34605,7 +34605,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12077",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -34768,7 +34768,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12078",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -34931,7 +34931,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12079",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -35094,7 +35094,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12080",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -35257,7 +35257,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12081",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -35420,7 +35420,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12082",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -35583,7 +35583,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12083",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -35746,7 +35746,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12084",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -35909,7 +35909,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12085",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -36072,7 +36072,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12086",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -36235,7 +36235,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12087",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -36398,7 +36398,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12088",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -36561,7 +36561,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12089",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -36724,7 +36724,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12090",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -36887,7 +36887,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12091",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -37050,7 +37050,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12092",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -37213,7 +37213,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12093",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -37376,7 +37376,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12094",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -37539,7 +37539,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12095",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -37702,7 +37702,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12096",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -37865,7 +37865,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12097",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -38028,7 +38028,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12098",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -38191,7 +38191,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12099",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -38354,7 +38354,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12100",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -38517,7 +38517,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12101",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -38680,7 +38680,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12102",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -38843,7 +38843,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12103",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -39006,7 +39006,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12104",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -39169,7 +39169,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12105",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -39332,7 +39332,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12106",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -39495,7 +39495,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12107",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -39658,7 +39658,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12108",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -39821,7 +39821,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12109",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -39984,7 +39984,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12110",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -40147,7 +40147,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12111",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -40310,7 +40310,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12112",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -40473,7 +40473,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12113",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -40636,7 +40636,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12114",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -40799,7 +40799,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12115",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -40962,7 +40962,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12116",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -41125,7 +41125,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12117",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -41288,7 +41288,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12118",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -41451,7 +41451,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12119",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -41614,7 +41614,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12120",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -41777,7 +41777,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12121",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -41940,7 +41940,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12122",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -42103,7 +42103,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12123",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -42266,7 +42266,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12124",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -42429,7 +42429,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12125",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -42592,7 +42592,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12126",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -42755,7 +42755,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12127",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -42918,7 +42918,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12128",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -43081,7 +43081,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12129",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -43244,7 +43244,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12130",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -43407,7 +43407,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12131",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -43570,7 +43570,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12132",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -43733,7 +43733,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12133",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -43896,7 +43896,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12134",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -44059,7 +44059,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12135",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -44222,7 +44222,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12136",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -44385,7 +44385,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12137",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -44548,7 +44548,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12138",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -44711,7 +44711,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12139",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -44874,7 +44874,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12140",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -45037,7 +45037,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12141",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -45200,7 +45200,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12142",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -45363,7 +45363,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12143",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -45526,7 +45526,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12144",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -45689,7 +45689,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12145",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -45852,7 +45852,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12146",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -46015,7 +46015,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12147",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -46178,7 +46178,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12148",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -46341,7 +46341,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12149",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -46504,7 +46504,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12150",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -46667,7 +46667,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12151",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -46830,7 +46830,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12152",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -46993,7 +46993,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12153",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -47156,7 +47156,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12154",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -47319,7 +47319,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12155",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -47482,7 +47482,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12156",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -47645,7 +47645,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12157",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -47808,7 +47808,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12158",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -47971,7 +47971,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12159",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -48134,7 +48134,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12160",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -48297,7 +48297,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12161",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -48460,7 +48460,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12162",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -48623,7 +48623,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12163",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -48786,7 +48786,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12164",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -48949,7 +48949,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12165",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -49112,7 +49112,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12166",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -49275,7 +49275,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12167",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -49438,7 +49438,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12168",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -49601,7 +49601,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12169",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -49764,7 +49764,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_21",
+      "AccessKey": "T.RT_22",
       "DetailDes": "RESOURCE_DESC_HYPERWEAPONPROTOTYPE",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -49929,7 +49929,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_21",
+      "AccessKey": "T.RT_22",
       "DetailDes": "RESOURCE_DESC_HYPERWEAPONPROTOTYPE",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -50094,7 +50094,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_21",
+      "AccessKey": "T.RT_22",
       "DetailDes": "RESOURCE_DESC_HYPERWEAPONPROTOTYPE",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -50238,7 +50238,7 @@
         "typeCompatibilityNames": []
       },
       "KR": {
-        "modName": "피로 물든 날개옷의 원형",
+        "modName": "피로 물든 깃털의 원형",
         "description": "전설 속 재앙 무기의 원형 중 하나이다.\n그의 마지막은 쑥처럼 쓰고, 양날의 검처럼 날카로웠다.\n특수한 경로를 통해 획득하며, 재앙 무기 용해에 사용할 수 있다.",
         "demonWedgeName": null,
         "functionLabel": "재앙 무기의 제작과 육성에 사용",
@@ -50259,7 +50259,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_21",
+      "AccessKey": "T.RT_22",
       "DetailDes": "RESOURCE_DESC_HYPERWEAPONPROTOTYPE",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -50422,7 +50422,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_21",
+      "AccessKey": "T.RT_22",
       "DetailDes": "RESOURCE_DESC_HYPERWEAPONPROTOTYPE",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -50587,7 +50587,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_21",
+      "AccessKey": "T.RT_22",
       "DetailDes": "RESOURCE_DESC_HYPERWEAPONPROTOTYPE",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -50750,7 +50750,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_21",
+      "AccessKey": "T.RT_22",
       "DetailDes": "RESOURCE_DESC_HYPERWEAPONPROTOTYPE",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -50913,7 +50913,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_21",
+      "AccessKey": "T.RT_22",
       "DetailDes": "RESOURCE_DESC_HYPERWEAPONPROTOTYPE",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -51076,7 +51076,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_21",
+      "AccessKey": "T.RT_22",
       "DetailDes": "RESOURCE_DESC_HYPERWEAPONPROTOTYPE",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -51239,7 +51239,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_21",
+      "AccessKey": "T.RT_22",
       "DetailDes": "RESOURCE_DESC_HYPERWEAPONPROTOTYPE",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -51402,7 +51402,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_21",
+      "AccessKey": "T.RT_22",
       "DetailDes": "RESOURCE_DESC_HYPERWEAPONPROTOTYPE",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -51565,7 +51565,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_21",
+      "AccessKey": "T.RT_22",
       "DetailDes": "RESOURCE_DESC_HYPERWEAPONPROTOTYPE",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -51728,7 +51728,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_21",
+      "AccessKey": "T.RT_22",
       "DetailDes": "RESOURCE_DESC_HYPERWEAPONPROTOTYPE",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -51893,7 +51893,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_22",
+      "AccessKey": "T.RT_23",
       "DetailDes": "RESOURCE_DESC_WEAPONPIECE",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -52058,7 +52058,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_22",
+      "AccessKey": "T.RT_23",
       "DetailDes": "RESOURCE_DESC_WEAPONPIECE",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -52223,7 +52223,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_22",
+      "AccessKey": "T.RT_23",
       "DetailDes": "RESOURCE_DESC_WEAPONPIECE",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -52388,7 +52388,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_22",
+      "AccessKey": "T.RT_23",
       "DetailDes": "RESOURCE_DESC_WEAPONPIECE",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -52553,7 +52553,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_22",
+      "AccessKey": "T.RT_23",
       "DetailDes": "RESOURCE_DESC_WEAPONPIECE",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -52718,7 +52718,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_22",
+      "AccessKey": "T.RT_23",
       "DetailDes": "RESOURCE_DESC_WEAPONPIECE",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -52883,7 +52883,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_22",
+      "AccessKey": "T.RT_23",
       "DetailDes": "RESOURCE_DESC_WEAPONPIECE",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -53048,7 +53048,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_22",
+      "AccessKey": "T.RT_23",
       "DetailDes": "RESOURCE_DESC_WEAPONPIECE",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -53213,7 +53213,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_22",
+      "AccessKey": "T.RT_23",
       "DetailDes": "RESOURCE_DESC_WEAPONPIECE",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -53378,7 +53378,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_22",
+      "AccessKey": "T.RT_23",
       "DetailDes": "RESOURCE_DESC_WEAPONPIECE",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -53543,7 +53543,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_22",
+      "AccessKey": "T.RT_23",
       "DetailDes": "RESOURCE_DESC_WEAPONPIECE",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -53708,7 +53708,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_22",
+      "AccessKey": "T.RT_23",
       "DetailDes": "RESOURCE_DESC_WEAPONPIECE",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -54708,7 +54708,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_23",
+      "AccessKey": "T.RT_24",
       "DetailDes": "RESOURCE_DESC_ATTRITEM_Water",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -54873,7 +54873,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_23",
+      "AccessKey": "T.RT_24",
       "DetailDes": "RESOURCE_DESC_ATTRITEM_Fire",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -55038,7 +55038,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_23",
+      "AccessKey": "T.RT_24",
       "DetailDes": "RESOURCE_DESC_ATTRITEM_Wind",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -55203,7 +55203,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_23",
+      "AccessKey": "T.RT_24",
       "DetailDes": "RESOURCE_DESC_ATTRITEM_Thunder",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -55368,7 +55368,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_23",
+      "AccessKey": "T.RT_24",
       "DetailDes": "RESOURCE_DESC_ATTRITEM_Light",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -55533,7 +55533,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_23",
+      "AccessKey": "T.RT_24",
       "DetailDes": "RESOURCE_DESC_ATTRITEM_Dark",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -55698,7 +55698,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_23",
+      "AccessKey": "T.RT_24",
       "DetailDes": "RESOURCE_DESC_ATTRITEMRARE",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -55863,7 +55863,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_23",
+      "AccessKey": "T.RT_24",
       "DetailDes": "RESOURCE_DESC_TICKET",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -56030,7 +56030,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_24",
+      "AccessKey": "T.RT_25",
       "DetailDes": "RESOURCE_DESC_TICKETPIECE",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -56195,7 +56195,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_24",
+      "AccessKey": "T.RT_25",
       "DetailDes": "RESOURCE_DESC_TICKETPIECE",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -56358,7 +56358,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_27",
+      "AccessKey": "T.RT_28",
       "DetailDes": "RESOURCE_DESC_20001",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -56522,7 +56522,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_27",
+      "AccessKey": "T.RT_28",
       "DetailDes": "RESOURCE_DESC_20002",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -56686,7 +56686,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_27",
+      "AccessKey": "T.RT_28",
       "DetailDes": "RESOURCE_DESC_20003",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -56850,7 +56850,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_27",
+      "AccessKey": "T.RT_28",
       "DetailDes": "RESOURCE_DESC_20004",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -57014,7 +57014,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_27",
+      "AccessKey": "T.RT_28",
       "DetailDes": "RESOURCE_DESC_20005",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -57178,7 +57178,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_27",
+      "AccessKey": "T.RT_28",
       "DetailDes": "RESOURCE_DESC_20006",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -57342,7 +57342,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_27",
+      "AccessKey": "T.RT_28",
       "DetailDes": "RESOURCE_DESC_20007",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -57506,7 +57506,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_28",
+      "AccessKey": "T.RT_29",
       "DetailDes": "RESOURCE_DESC_20008",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -57670,7 +57670,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_27",
+      "AccessKey": "T.RT_28",
       "DetailDes": "RESOURCE_DESC_20009",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -57834,7 +57834,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_27",
+      "AccessKey": "T.RT_28",
       "DetailDes": "RESOURCE_DESC_20010",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -57998,7 +57998,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_27",
+      "AccessKey": "T.RT_28",
       "DetailDes": "RESOURCE_DESC_20011",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -58162,7 +58162,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_27",
+      "AccessKey": "T.RT_28",
       "DetailDes": "RESOURCE_DESC_20012",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -58490,7 +58490,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_27",
+      "AccessKey": "T.RT_28",
       "DetailDes": "RESOURCE_DESC_20014",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -58654,7 +58654,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_27",
+      "AccessKey": "T.RT_28",
       "DetailDes": "RESOURCE_DESC_20015",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -58818,7 +58818,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_27",
+      "AccessKey": "T.RT_28",
       "DetailDes": "RESOURCE_DESC_20016",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -58982,7 +58982,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_27",
+      "AccessKey": "T.RT_28",
       "DetailDes": "RESOURCE_DESC_20017",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -59146,7 +59146,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_27",
+      "AccessKey": "T.RT_28",
       "DetailDes": "RESOURCE_DESC_20018",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -59310,7 +59310,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_27",
+      "AccessKey": "T.RT_28",
       "DetailDes": "RESOURCE_DESC_20019",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -59474,7 +59474,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_27",
+      "AccessKey": "T.RT_28",
       "DetailDes": "RESOURCE_DESC_20020",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -59802,7 +59802,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_27",
+      "AccessKey": "T.RT_28",
       "DetailDes": "RESOURCE_DESC_20022",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -59966,7 +59966,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_28",
+      "AccessKey": "T.RT_29",
       "DetailDes": "RESOURCE_DESC_20023",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -60294,7 +60294,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_27",
+      "AccessKey": "T.RT_28",
       "DetailDes": "RESOURCE_DESC_20025",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -60458,7 +60458,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_27",
+      "AccessKey": "T.RT_28",
       "DetailDes": "RESOURCE_DESC_20026",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -60622,7 +60622,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_28",
+      "AccessKey": "T.RT_29",
       "DetailDes": "RESOURCE_DESC_20027",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -60786,7 +60786,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_28",
+      "AccessKey": "T.RT_29",
       "DetailDes": "RESOURCE_DESC_20028",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -60950,7 +60950,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_28",
+      "AccessKey": "T.RT_29",
       "DetailDes": "RESOURCE_DESC_20029",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -61114,7 +61114,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_28",
+      "AccessKey": "T.RT_29",
       "DetailDes": "RESOURCE_DESC_20030",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -61278,7 +61278,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_28",
+      "AccessKey": "T.RT_29",
       "DetailDes": "RESOURCE_DESC_20031",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -61442,7 +61442,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_28",
+      "AccessKey": "T.RT_29",
       "DetailDes": "RESOURCE_DESC_20032",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -67746,7 +67746,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_33",
+      "AccessKey": "T.RT_34",
       "DetailDes": "RESOURCE_DESC_30001",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -67910,7 +67910,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_33",
+      "AccessKey": "T.RT_34",
       "DetailDes": "RESOURCE_DESC_30002",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -71228,10 +71228,10 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_28",
+      "AccessKey": "T.RT_29",
       "BattleItemLimit": 5,
-      "CombatConditionID": "T.RT_35",
-      "CombatConditionToast": "T.RT_36",
+      "CombatConditionID": "T.RT_36",
+      "CombatConditionToast": "T.RT_37",
       "DetailDes": "RESOURCE_DESC_40001",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -71394,10 +71394,10 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_28",
+      "AccessKey": "T.RT_29",
       "BattleItemLimit": 10,
-      "CombatConditionID": "T.RT_35",
-      "CombatConditionToast": "T.RT_36",
+      "CombatConditionID": "T.RT_36",
+      "CombatConditionToast": "T.RT_37",
       "DetailDes": "RESOURCE_DESC_40001",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -71560,10 +71560,10 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_28",
+      "AccessKey": "T.RT_29",
       "BattleItemLimit": 10,
-      "CombatConditionID": "T.RT_35",
-      "CombatConditionToast": "T.RT_36",
+      "CombatConditionID": "T.RT_36",
+      "CombatConditionToast": "T.RT_37",
       "DetailDes": "RESOURCE_DESC_40003",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -71726,10 +71726,10 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_28",
+      "AccessKey": "T.RT_29",
       "BattleItemLimit": 5,
-      "CombatConditionID": "T.RT_35",
-      "CombatConditionToast": "T.RT_36",
+      "CombatConditionID": "T.RT_36",
+      "CombatConditionToast": "T.RT_37",
       "DetailDes": "RESOURCE_DESC_40001",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -71892,10 +71892,10 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_28",
+      "AccessKey": "T.RT_29",
       "BattleItemLimit": 10,
-      "CombatConditionID": "T.RT_35",
-      "CombatConditionToast": "T.RT_36",
+      "CombatConditionID": "T.RT_36",
+      "CombatConditionToast": "T.RT_37",
       "DetailDes": "RESOURCE_DESC_40001",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -72058,10 +72058,10 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_28",
+      "AccessKey": "T.RT_29",
       "BattleItemLimit": 10,
-      "CombatConditionID": "T.RT_35",
-      "CombatConditionToast": "T.RT_36",
+      "CombatConditionID": "T.RT_36",
+      "CombatConditionToast": "T.RT_37",
       "DetailDes": "RESOURCE_DESC_40003",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -72224,10 +72224,10 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_37",
+      "AccessKey": "T.RT_38",
       "BattleItemLimit": 3,
-      "CombatConditionID": "T.RT_38",
-      "CombatConditionToast": "T.RT_36",
+      "CombatConditionID": "T.RT_39",
+      "CombatConditionToast": "T.RT_37",
       "DetailDes": "RESOURCE_DESC_40014",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -72390,10 +72390,10 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_37",
+      "AccessKey": "T.RT_38",
       "BattleItemLimit": 3,
-      "CombatConditionID": "T.RT_38",
-      "CombatConditionToast": "T.RT_36",
+      "CombatConditionID": "T.RT_39",
+      "CombatConditionToast": "T.RT_37",
       "DetailDes": "RESOURCE_DESC_40014",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -72556,8 +72556,8 @@
       }
     },
     "fields": {
-      "CombatConditionID": "T.RT_47",
-      "CombatConditionToast": "T.RT_36",
+      "CombatConditionID": "T.RT_48",
+      "CombatConditionToast": "T.RT_37",
       "DetailDes": "RESOURCE_DESC_42001",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -72720,8 +72720,8 @@
       }
     },
     "fields": {
-      "CombatConditionID": "T.RT_47",
-      "CombatConditionToast": "T.RT_36",
+      "CombatConditionID": "T.RT_48",
+      "CombatConditionToast": "T.RT_37",
       "DetailDes": "RESOURCE_DESC_42002",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -80386,7 +80386,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_19",
+      "AccessKey": "T.RT_20",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
       "FunctionDes": "RESOURCE_FUNCTION_110061",
@@ -80400,6 +80400,984 @@
       "Type": "Rare",
       "UseEffectType": "SelectResource",
       "UseParam": 350025
+    }
+  },
+  {
+    "id": "resources-110062",
+    "categoryId": "resources",
+    "modId": 110062,
+    "archiveId": null,
+    "stats": {
+      "rarity": 5,
+      "polarity": null,
+      "maxLevel": null,
+      "cost": null,
+      "openVersion": null,
+      "releaseVersion": null
+    },
+    "textKeys": {
+      "modNameKey": "RESOURCE_NAME_110062",
+      "descriptionKey": null,
+      "demonWedgeKey": null,
+      "functionKey": "RESOURCE_FUNCTION_110045",
+      "passiveEffectsDescKey": null,
+      "affinityNameKey": null,
+      "archiveNameKey": null
+    },
+    "affinity": {
+      "id": null,
+      "nameKey": null,
+      "char": null,
+      "icon": {
+        "gamePath": null,
+        "publicPath": null,
+        "placeholderPath": null,
+        "candidates": [],
+        "allMatches": []
+      }
+    },
+    "typeCompatibility": {
+      "applicationType": null,
+      "textKeys": [],
+      "tags": []
+    },
+    "tolerance": {
+      "baseCost": null,
+      "costChange": null,
+      "maxLevel": 0,
+      "valuesByLevel": {
+        "0": null
+      }
+    },
+    "icon": {
+      "gamePath": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_RandomMod_11.T_Pack_RandomMod_11'",
+      "publicPath": "/assets/items/resources/T_Pack_RandomMod_11.png",
+      "placeholderPath": null,
+      "candidates": [
+        "T_Pack_RandomMod_11",
+        "Pack_RandomMod_11",
+        "T_Pack_RandomMod_11'",
+        "Pack_RandomMod_11'"
+      ],
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_RandomMod_11.png"
+      ]
+    },
+    "scaling": {
+      "defaultLevel": 0,
+      "maxLevel": 0,
+      "availableLevels": [
+        0
+      ],
+      "valuesByLevel": {
+        "0": {}
+      },
+      "attributesByLevel": {
+        "0": []
+      }
+    },
+    "translations": {
+      "DE": {
+        "modName": "Covenanter Demon Wedge: Anemo",
+        "description": null,
+        "demonWedgeName": null,
+        "functionLabel": "Use to obtain a random Purple-tier Anemo Covenanter Demon Wedge or a small amount of Carmine Globules, with a rare chance to obtain a Blueprint: Blaze – Tempered",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "EN": {
+        "modName": "Covenanter Demon Wedge: Anemo",
+        "description": null,
+        "demonWedgeName": null,
+        "functionLabel": "Use to obtain a random Purple-tier Anemo Covenanter Demon Wedge or a small amount of Carmine Globules, with a rare chance to obtain a Blueprint: Blaze – Tempered",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "ES": {
+        "modName": "Covenanter Demon Wedge: Anemo",
+        "description": null,
+        "demonWedgeName": null,
+        "functionLabel": "Al usarlo, obtienes al azar una Cuña Demoníaca de Pactista Anemo de rareza Morada o una pequeña cantidad de Glóbulos carmín, también existe una probabilidad muy baja de obtener un plano: Tenacidad · Voluntad",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "FR": {
+        "modName": "Sceau démoniaque — Pactisant Anémo",
+        "description": null,
+        "demonWedgeName": null,
+        "functionLabel": "Permet d’obtenir aléatoirement un Sceau démoniaque épique de Pactisant Anémo ou une petite quantité de Globules cramoisis. Possède également une très faible probabilité de contenir un Plan de fabrication : Ardeur · Trempe",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "JP": {
+        "modName": "カヴェナンターの魔の楔·風",
+        "description": null,
+        "demonWedgeName": null,
+        "functionLabel": "使用すると、ランダムでレジェンドの風属性カヴェナンターの魔の楔1個または少量の深紅のビーズを獲得する。極低確率で「設計図‐灼熱・研鑽」x1を獲得可能！",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "KR": {
+        "modName": "메피스토 악마의 쐐기·바람",
+        "description": null,
+        "demonWedgeName": null,
+        "functionLabel": "사용 시 보라색 바람 속성 메피스토 악마의 쐐기 1개 또는 소량의 진홍 구슬을 랜덤으로 획득할 수 있다. 또한 매우 낮은 확률로 설계도: 작열·연마 1개를 획득할 수 있다.",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "TC": {
+        "modName": "契約者魔之楔·風",
+        "description": null,
+        "demonWedgeName": null,
+        "functionLabel": "使用後可隨機獲得1個紫色風屬性契約者魔之楔或少量深紅凝珠，也有極低概率獲得1張設計稿：熾灼·磨礪",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      }
+    },
+    "fields": {
+      "AccessKey": "T.RT_20",
+      "ExcludeCollect": true,
+      "ExcludeCollectServer": true,
+      "FunctionDes": "RESOURCE_FUNCTION_110045",
+      "Icon": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_RandomMod_11.T_Pack_RandomMod_11'",
+      "MaterialClassify": 7,
+      "Rarity": 5,
+      "ResourceId": 110062,
+      "ResourceName": "RESOURCE_NAME_110062",
+      "ResourceValue": -1,
+      "Sound": "SOUND_ITEM_NORMAL",
+      "Type": "Rare",
+      "UseEffectType": "RandomSelectPack",
+      "UseParam": 350031
+    }
+  },
+  {
+    "id": "resources-110063",
+    "categoryId": "resources",
+    "modId": 110063,
+    "archiveId": null,
+    "stats": {
+      "rarity": 5,
+      "polarity": null,
+      "maxLevel": null,
+      "cost": null,
+      "openVersion": null,
+      "releaseVersion": null
+    },
+    "textKeys": {
+      "modNameKey": "RESOURCE_NAME_110063",
+      "descriptionKey": null,
+      "demonWedgeKey": null,
+      "functionKey": "RESOURCE_FUNCTION_110046",
+      "passiveEffectsDescKey": null,
+      "affinityNameKey": null,
+      "archiveNameKey": null
+    },
+    "affinity": {
+      "id": null,
+      "nameKey": null,
+      "char": null,
+      "icon": {
+        "gamePath": null,
+        "publicPath": null,
+        "placeholderPath": null,
+        "candidates": [],
+        "allMatches": []
+      }
+    },
+    "typeCompatibility": {
+      "applicationType": null,
+      "textKeys": [],
+      "tags": []
+    },
+    "tolerance": {
+      "baseCost": null,
+      "costChange": null,
+      "maxLevel": 0,
+      "valuesByLevel": {
+        "0": null
+      }
+    },
+    "icon": {
+      "gamePath": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_RandomMod_16.T_Pack_RandomMod_16'",
+      "publicPath": "/assets/items/resources/T_Pack_RandomMod_16.png",
+      "placeholderPath": null,
+      "candidates": [
+        "T_Pack_RandomMod_16",
+        "Pack_RandomMod_16",
+        "T_Pack_RandomMod_16'",
+        "Pack_RandomMod_16'"
+      ],
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_RandomMod_16.png"
+      ]
+    },
+    "scaling": {
+      "defaultLevel": 0,
+      "maxLevel": 0,
+      "availableLevels": [
+        0
+      ],
+      "valuesByLevel": {
+        "0": {}
+      },
+      "attributesByLevel": {
+        "0": []
+      }
+    },
+    "translations": {
+      "DE": {
+        "modName": "Covenanter Demon Wedge: Pyro",
+        "description": null,
+        "demonWedgeName": null,
+        "functionLabel": "Use to obtain a random Purple-tier Pyro Covenanter Demon Wedge or a small amount of Carmine Globules, with a rare chance to obtain a Blueprint: Volition",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "EN": {
+        "modName": "Covenanter Demon Wedge: Pyro",
+        "description": null,
+        "demonWedgeName": null,
+        "functionLabel": "Use to obtain a random Purple-tier Pyro Covenanter Demon Wedge or a small amount of Carmine Globules, with a rare chance to obtain a Blueprint: Volition",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "ES": {
+        "modName": "Covenanter Demon Wedge: Pyro",
+        "description": null,
+        "demonWedgeName": null,
+        "functionLabel": "Al usarlo, obtienes al azar una Cuña Demoníaca de Pactista Pyro de rareza Morada o una pequeña cantidad de Glóbulos carmín, también existe una probabilidad muy baja de obtener un plano: Voluntad",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "FR": {
+        "modName": "Sceau démoniaque — Pactisant Pyro",
+        "description": null,
+        "demonWedgeName": null,
+        "functionLabel": "Permet d’obtenir aléatoirement un Sceau démoniaque épique de Pactisant Pyro ou une petite quantité de Globules cramoisis. Possède également une très faible probabilité de contenir un Plan de fabrication : Décision",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "JP": {
+        "modName": "カヴェナンターの魔の楔·火",
+        "description": null,
+        "demonWedgeName": null,
+        "functionLabel": "使用すると、ランダムでレジェンドの火属性カヴェナンターの魔の楔1個または少量の深紅のビーズを獲得する。極低確率で「設計図‐断決」x1を獲得可能！",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "KR": {
+        "modName": "메피스토 악마의 쐐기·불",
+        "description": null,
+        "demonWedgeName": null,
+        "functionLabel": "사용 시 보라색 불 속성 메피스토 악마의 쐐기 1개 또는 소량의 진홍 구슬을 랜덤으로 획득할 수 있다. 또한 매우 낮은 확률로 설계도: 결단 1개를 획득할 수 있다.",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "TC": {
+        "modName": "契約者魔之楔·火",
+        "description": null,
+        "demonWedgeName": null,
+        "functionLabel": "使用後可隨機獲得1個紫色火屬性契約者魔之楔或少量深紅凝珠，也有極低概率獲得1張設計稿：決斷",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      }
+    },
+    "fields": {
+      "AccessKey": "T.RT_20",
+      "ExcludeCollect": true,
+      "ExcludeCollectServer": true,
+      "FunctionDes": "RESOURCE_FUNCTION_110046",
+      "Icon": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_RandomMod_16.T_Pack_RandomMod_16'",
+      "MaterialClassify": 7,
+      "Rarity": 5,
+      "ResourceId": 110063,
+      "ResourceName": "RESOURCE_NAME_110063",
+      "ResourceValue": -1,
+      "Sound": "SOUND_ITEM_NORMAL",
+      "Type": "Rare",
+      "UseEffectType": "RandomSelectPack",
+      "UseParam": 350032
+    }
+  },
+  {
+    "id": "resources-110064",
+    "categoryId": "resources",
+    "modId": 110064,
+    "archiveId": null,
+    "stats": {
+      "rarity": 5,
+      "polarity": null,
+      "maxLevel": null,
+      "cost": null,
+      "openVersion": null,
+      "releaseVersion": null
+    },
+    "textKeys": {
+      "modNameKey": "RESOURCE_NAME_110064",
+      "descriptionKey": null,
+      "demonWedgeKey": null,
+      "functionKey": "RESOURCE_FUNCTION_110047",
+      "passiveEffectsDescKey": null,
+      "affinityNameKey": null,
+      "archiveNameKey": null
+    },
+    "affinity": {
+      "id": null,
+      "nameKey": null,
+      "char": null,
+      "icon": {
+        "gamePath": null,
+        "publicPath": null,
+        "placeholderPath": null,
+        "candidates": [],
+        "allMatches": []
+      }
+    },
+    "typeCompatibility": {
+      "applicationType": null,
+      "textKeys": [],
+      "tags": []
+    },
+    "tolerance": {
+      "baseCost": null,
+      "costChange": null,
+      "maxLevel": 0,
+      "valuesByLevel": {
+        "0": null
+      }
+    },
+    "icon": {
+      "gamePath": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_RandomMod_12.T_Pack_RandomMod_12'",
+      "publicPath": "/assets/items/resources/T_Pack_RandomMod_12.png",
+      "placeholderPath": null,
+      "candidates": [
+        "T_Pack_RandomMod_12",
+        "Pack_RandomMod_12",
+        "T_Pack_RandomMod_12'",
+        "Pack_RandomMod_12'"
+      ],
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_RandomMod_12.png"
+      ]
+    },
+    "scaling": {
+      "defaultLevel": 0,
+      "maxLevel": 0,
+      "availableLevels": [
+        0
+      ],
+      "valuesByLevel": {
+        "0": {}
+      },
+      "attributesByLevel": {
+        "0": []
+      }
+    },
+    "translations": {
+      "DE": {
+        "modName": "Covenanter Demon Wedge: Electro",
+        "description": null,
+        "demonWedgeName": null,
+        "functionLabel": "Use to obtain a random Purple-tier Electro Covenanter Demon Wedge or a small amount of Carmine Globules, with a rare chance to obtain a Blueprint: Morale·Refinement",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "EN": {
+        "modName": "Covenanter Demon Wedge: Electro",
+        "description": null,
+        "demonWedgeName": null,
+        "functionLabel": "Use to obtain a random Purple-tier Electro Covenanter Demon Wedge or a small amount of Carmine Globules, with a rare chance to obtain a Blueprint: Morale·Refinement",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "ES": {
+        "modName": "Covenanter Demon Wedge: Electro",
+        "description": null,
+        "demonWedgeName": null,
+        "functionLabel": "Al usarlo, obtienes al azar una Cuña Demoníaca de Pactista Electro de rareza Morada o una pequeña cantidad de Glóbulos carmín, también existe una probabilidad muy baja de obtener un plano: Moral · Refinamiento",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "FR": {
+        "modName": "Sceau démoniaque — Pactisant Électro",
+        "description": null,
+        "demonWedgeName": null,
+        "functionLabel": "Permet d’obtenir aléatoirement un Sceau démoniaque épique de Pactisant Électro ou une petite quantité de Globules cramoisis. Possède également une très faible probabilité de contenir un Plan de fabrication : Vigueur · Raffinement",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "JP": {
+        "modName": "カヴェナンターの魔の楔·雷",
+        "description": null,
+        "demonWedgeName": null,
+        "functionLabel": "使用すると、ランダムでレジェンドの雷属性カヴェナンターの魔の楔1個または少量の深紅のビーズを獲得する。極低確率で「設計図‐高揚・精錬」x1を獲得可能！",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "KR": {
+        "modName": "메피스토 악마의 쐐기·번개",
+        "description": null,
+        "demonWedgeName": null,
+        "functionLabel": "사용 시 보라색 번개 속성 메피스토 악마의 쐐기 1개 또는 소량의 진홍 구슬을 랜덤으로 획득할 수 있다. 또한 매우 낮은 확률로 설계도: 격양·정련 1개를 획득할 수 있다.",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "TC": {
+        "modName": "契約者魔之楔·雷",
+        "description": null,
+        "demonWedgeName": null,
+        "functionLabel": "使用後可隨機獲得1個紫色雷屬性契約者魔之楔或少量深紅凝珠，也有極低概率獲得1張設計稿：昂揚·精煉",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      }
+    },
+    "fields": {
+      "AccessKey": "T.RT_20",
+      "ExcludeCollect": true,
+      "ExcludeCollectServer": true,
+      "FunctionDes": "RESOURCE_FUNCTION_110047",
+      "Icon": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_RandomMod_12.T_Pack_RandomMod_12'",
+      "MaterialClassify": 7,
+      "Rarity": 5,
+      "ResourceId": 110064,
+      "ResourceName": "RESOURCE_NAME_110064",
+      "ResourceValue": -1,
+      "Sound": "SOUND_ITEM_NORMAL",
+      "Type": "Rare",
+      "UseEffectType": "RandomSelectPack",
+      "UseParam": 350033
+    }
+  },
+  {
+    "id": "resources-110065",
+    "categoryId": "resources",
+    "modId": 110065,
+    "archiveId": null,
+    "stats": {
+      "rarity": 5,
+      "polarity": null,
+      "maxLevel": null,
+      "cost": null,
+      "openVersion": null,
+      "releaseVersion": null
+    },
+    "textKeys": {
+      "modNameKey": "RESOURCE_NAME_110065",
+      "descriptionKey": null,
+      "demonWedgeKey": null,
+      "functionKey": "RESOURCE_FUNCTION_110048",
+      "passiveEffectsDescKey": null,
+      "affinityNameKey": null,
+      "archiveNameKey": null
+    },
+    "affinity": {
+      "id": null,
+      "nameKey": null,
+      "char": null,
+      "icon": {
+        "gamePath": null,
+        "publicPath": null,
+        "placeholderPath": null,
+        "candidates": [],
+        "allMatches": []
+      }
+    },
+    "typeCompatibility": {
+      "applicationType": null,
+      "textKeys": [],
+      "tags": []
+    },
+    "tolerance": {
+      "baseCost": null,
+      "costChange": null,
+      "maxLevel": 0,
+      "valuesByLevel": {
+        "0": null
+      }
+    },
+    "icon": {
+      "gamePath": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_RandomMod_13.T_Pack_RandomMod_13'",
+      "publicPath": "/assets/items/resources/T_Pack_RandomMod_13.png",
+      "placeholderPath": null,
+      "candidates": [
+        "T_Pack_RandomMod_13",
+        "Pack_RandomMod_13",
+        "T_Pack_RandomMod_13'",
+        "Pack_RandomMod_13'"
+      ],
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_RandomMod_13.png"
+      ]
+    },
+    "scaling": {
+      "defaultLevel": 0,
+      "maxLevel": 0,
+      "availableLevels": [
+        0
+      ],
+      "valuesByLevel": {
+        "0": {}
+      },
+      "attributesByLevel": {
+        "0": []
+      }
+    },
+    "translations": {
+      "DE": {
+        "modName": "Covenanter Demon Wedge: Hydro",
+        "description": null,
+        "demonWedgeName": null,
+        "functionLabel": "Use to obtain a random Purple-tier Hydro Covenanter Demon Wedge or a small amount of Carmine Globules, with a rare chance to obtain a Blueprint: Blaze – Morale",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "EN": {
+        "modName": "Covenanter Demon Wedge: Hydro",
+        "description": null,
+        "demonWedgeName": null,
+        "functionLabel": "Use to obtain a random Purple-tier Hydro Covenanter Demon Wedge or a small amount of Carmine Globules, with a rare chance to obtain a Blueprint: Blaze – Morale",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "ES": {
+        "modName": "Covenanter Demon Wedge: Hydro",
+        "description": null,
+        "demonWedgeName": null,
+        "functionLabel": "Al usarlo, obtienes al azar una Cuña Demoníaca de Pactista Hydro de rareza Morada o una pequeña cantidad de Glóbulos carmín, también existe una probabilidad muy baja de obtener un plano: Voluntad · Despertar",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "FR": {
+        "modName": "Sceau démoniaque — Pactisant Hydro",
+        "description": null,
+        "demonWedgeName": null,
+        "functionLabel": "Permet d’obtenir aléatoirement un Sceau démoniaque épique de Pactisant Hydro ou une petite quantité de Globules cramoisis. Possède également une très faible probabilité de contenir un Plan de fabrication : Ardeur · Vigueur",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "JP": {
+        "modName": "カヴェナンターの魔の楔·水",
+        "description": null,
+        "demonWedgeName": null,
+        "functionLabel": "使用すると、ランダムでレジェンドの水属性カヴェナンターの魔の楔1個または少量の深紅のビーズを獲得する。極低確率で「設計図‐灼熱・高揚」x1を獲得可能！",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "KR": {
+        "modName": "메피스토 악마의 쐐기·물",
+        "description": null,
+        "demonWedgeName": null,
+        "functionLabel": "사용 시 보라색 물 속성 메피스토 악마의 쐐기 1개 또는 소량의 진홍 구슬을 랜덤으로 획득할 수 있다. 또한 매우 낮은 확률로 설계도: 작열·격양 1개를 획득할 수 있다.",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "TC": {
+        "modName": "契約者魔之楔·水",
+        "description": null,
+        "demonWedgeName": null,
+        "functionLabel": "使用後可隨機獲得1個紫色水屬性契約者魔之楔或少量深紅凝珠，也有極低概率獲得1張設計稿：熾灼·昂揚",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      }
+    },
+    "fields": {
+      "AccessKey": "T.RT_20",
+      "ExcludeCollect": true,
+      "ExcludeCollectServer": true,
+      "FunctionDes": "RESOURCE_FUNCTION_110048",
+      "Icon": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_RandomMod_13.T_Pack_RandomMod_13'",
+      "MaterialClassify": 7,
+      "Rarity": 5,
+      "ResourceId": 110065,
+      "ResourceName": "RESOURCE_NAME_110065",
+      "ResourceValue": -1,
+      "Sound": "SOUND_ITEM_NORMAL",
+      "Type": "Rare",
+      "UseEffectType": "RandomSelectPack",
+      "UseParam": 350034
+    }
+  },
+  {
+    "id": "resources-110066",
+    "categoryId": "resources",
+    "modId": 110066,
+    "archiveId": null,
+    "stats": {
+      "rarity": 5,
+      "polarity": null,
+      "maxLevel": null,
+      "cost": null,
+      "openVersion": null,
+      "releaseVersion": null
+    },
+    "textKeys": {
+      "modNameKey": "RESOURCE_NAME_110066",
+      "descriptionKey": null,
+      "demonWedgeKey": null,
+      "functionKey": "RESOURCE_FUNCTION_110049",
+      "passiveEffectsDescKey": null,
+      "affinityNameKey": null,
+      "archiveNameKey": null
+    },
+    "affinity": {
+      "id": null,
+      "nameKey": null,
+      "char": null,
+      "icon": {
+        "gamePath": null,
+        "publicPath": null,
+        "placeholderPath": null,
+        "candidates": [],
+        "allMatches": []
+      }
+    },
+    "typeCompatibility": {
+      "applicationType": null,
+      "textKeys": [],
+      "tags": []
+    },
+    "tolerance": {
+      "baseCost": null,
+      "costChange": null,
+      "maxLevel": 0,
+      "valuesByLevel": {
+        "0": null
+      }
+    },
+    "icon": {
+      "gamePath": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_RandomMod_14.T_Pack_RandomMod_14'",
+      "publicPath": "/assets/items/resources/T_Pack_RandomMod_14.png",
+      "placeholderPath": null,
+      "candidates": [
+        "T_Pack_RandomMod_14",
+        "Pack_RandomMod_14",
+        "T_Pack_RandomMod_14'",
+        "Pack_RandomMod_14'"
+      ],
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_RandomMod_14.png"
+      ]
+    },
+    "scaling": {
+      "defaultLevel": 0,
+      "maxLevel": 0,
+      "availableLevels": [
+        0
+      ],
+      "valuesByLevel": {
+        "0": {}
+      },
+      "attributesByLevel": {
+        "0": []
+      }
+    },
+    "translations": {
+      "DE": {
+        "modName": "Covenanter Demon Wedge: Lumino",
+        "description": null,
+        "demonWedgeName": null,
+        "functionLabel": "Use to obtain a random Purple-tier Lumino Covenanter Demon Wedge or a small amount of Carmine Globules, with a rare chance to obtain a Blueprint: Volition·Refinement",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "EN": {
+        "modName": "Covenanter Demon Wedge: Lumino",
+        "description": null,
+        "demonWedgeName": null,
+        "functionLabel": "Use to obtain a random Purple-tier Lumino Covenanter Demon Wedge or a small amount of Carmine Globules, with a rare chance to obtain a Blueprint: Volition·Refinement",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "ES": {
+        "modName": "Covenanter Demon Wedge: Lumino",
+        "description": null,
+        "demonWedgeName": null,
+        "functionLabel": "Al usarlo, obtienes al azar una Cuña Demoníaca de Pactista Lumino de rareza Morada o una pequeña cantidad de Glóbulos carmín, también existe una probabilidad muy baja de obtener un plano: Voluntad · Refinamiento",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "FR": {
+        "modName": "Sceau démoniaque — Pactisant Lumino",
+        "description": null,
+        "demonWedgeName": null,
+        "functionLabel": "Permet d’obtenir aléatoirement un Sceau démoniaque épique de Pactisant Lumino ou une petite quantité de Globules cramoisis. Possède également une très faible probabilité de contenir un Plan de fabrication : Décision · Raffinement",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "JP": {
+        "modName": "カヴェナンターの魔の楔·光",
+        "description": null,
+        "demonWedgeName": null,
+        "functionLabel": "使用すると、ランダムでレジェンドの光属性カヴェナンターの魔の楔1個または少量の深紅のビーズを獲得する。極低確率で「設計図‐断決・精錬」x1を獲得可能！",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "KR": {
+        "modName": "메피스토 악마의 쐐기·빛",
+        "description": null,
+        "demonWedgeName": null,
+        "functionLabel": "사용 시 보라색 빛 속성 메피스토 악마의 쐐기 1개 또는 소량의 진홍 구슬을 랜덤으로 획득할 수 있다. 또한 매우 낮은 확률로 설계도: 결단·정련 1개를 획득할 수 있다.",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "TC": {
+        "modName": "契約者魔之楔·光",
+        "description": null,
+        "demonWedgeName": null,
+        "functionLabel": "使用後可隨機獲得1個紫色光屬性契約者魔之楔或少量深紅凝珠，也有極低概率獲得1張設計稿：決斷·精煉",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      }
+    },
+    "fields": {
+      "AccessKey": "T.RT_20",
+      "ExcludeCollect": true,
+      "ExcludeCollectServer": true,
+      "FunctionDes": "RESOURCE_FUNCTION_110049",
+      "Icon": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_RandomMod_14.T_Pack_RandomMod_14'",
+      "MaterialClassify": 7,
+      "Rarity": 5,
+      "ResourceId": 110066,
+      "ResourceName": "RESOURCE_NAME_110066",
+      "ResourceValue": -1,
+      "Sound": "SOUND_ITEM_NORMAL",
+      "Type": "Rare",
+      "UseEffectType": "RandomSelectPack",
+      "UseParam": 350035
+    }
+  },
+  {
+    "id": "resources-110067",
+    "categoryId": "resources",
+    "modId": 110067,
+    "archiveId": null,
+    "stats": {
+      "rarity": 5,
+      "polarity": null,
+      "maxLevel": null,
+      "cost": null,
+      "openVersion": null,
+      "releaseVersion": null
+    },
+    "textKeys": {
+      "modNameKey": "RESOURCE_NAME_110067",
+      "descriptionKey": null,
+      "demonWedgeKey": null,
+      "functionKey": "RESOURCE_FUNCTION_110050",
+      "passiveEffectsDescKey": null,
+      "affinityNameKey": null,
+      "archiveNameKey": null
+    },
+    "affinity": {
+      "id": null,
+      "nameKey": null,
+      "char": null,
+      "icon": {
+        "gamePath": null,
+        "publicPath": null,
+        "placeholderPath": null,
+        "candidates": [],
+        "allMatches": []
+      }
+    },
+    "typeCompatibility": {
+      "applicationType": null,
+      "textKeys": [],
+      "tags": []
+    },
+    "tolerance": {
+      "baseCost": null,
+      "costChange": null,
+      "maxLevel": 0,
+      "valuesByLevel": {
+        "0": null
+      }
+    },
+    "icon": {
+      "gamePath": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_RandomMod_15.T_Pack_RandomMod_15'",
+      "publicPath": "/assets/items/resources/T_Pack_RandomMod_15.png",
+      "placeholderPath": null,
+      "candidates": [
+        "T_Pack_RandomMod_15",
+        "Pack_RandomMod_15",
+        "T_Pack_RandomMod_15'",
+        "Pack_RandomMod_15'"
+      ],
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_RandomMod_15.png"
+      ]
+    },
+    "scaling": {
+      "defaultLevel": 0,
+      "maxLevel": 0,
+      "availableLevels": [
+        0
+      ],
+      "valuesByLevel": {
+        "0": {}
+      },
+      "attributesByLevel": {
+        "0": []
+      }
+    },
+    "translations": {
+      "DE": {
+        "modName": "Covenanter Demon Wedge: Umbro",
+        "description": null,
+        "demonWedgeName": null,
+        "functionLabel": "Use to obtain a random Purple-tier Umbro Covenanter Demon Wedge or a small amount of Carmine Globules, with a rare chance to obtain a Blueprint: Morale·Volition",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "EN": {
+        "modName": "Covenanter Demon Wedge: Umbro",
+        "description": null,
+        "demonWedgeName": null,
+        "functionLabel": "Use to obtain a random Purple-tier Umbro Covenanter Demon Wedge or a small amount of Carmine Globules, with a rare chance to obtain a Blueprint: Morale·Volition",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "ES": {
+        "modName": "Covenanter Demon Wedge: Umbro",
+        "description": null,
+        "demonWedgeName": null,
+        "functionLabel": "Al usarlo, obtienes al azar una Cuña Demoníaca de Pactista Umbro de rareza Morada o una pequeña cantidad de Glóbulos carmín, también existe una probabilidad muy baja de obtener un plano: Moral· Voluntad",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "FR": {
+        "modName": "Sceau démoniaque — Pactisant Umbro",
+        "description": null,
+        "demonWedgeName": null,
+        "functionLabel": "Permet d’obtenir aléatoirement un Sceau démoniaque épique de Pactisant Umbro ou une petite quantité de Globules cramoisis. Possède également une très faible probabilité de contenir un Plan de fabrication : Vigueur · Décision",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "JP": {
+        "modName": "カヴェナンターの魔の楔·闇",
+        "description": null,
+        "demonWedgeName": null,
+        "functionLabel": "使用すると、ランダムでレジェンドの闇属性カヴェナンターの魔の楔1個または少量の深紅のビーズを獲得する。極低確率で「設計図‐高揚・断決」x1を獲得可能！",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "KR": {
+        "modName": "메피스토 악마의 쐐기·어둠",
+        "description": null,
+        "demonWedgeName": null,
+        "functionLabel": "사용 시 보라색 어둠 속성 메피스토 악마의 쐐기 1개 또는 소량의 진홍 구슬을 랜덤으로 획득할 수 있다. 또한 매우 낮은 확률로 설계도: 격양·결단 1개를 획득할 수 있다.",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "TC": {
+        "modName": "契約者魔之楔·暗",
+        "description": null,
+        "demonWedgeName": null,
+        "functionLabel": "使用後可隨機獲得1個紫色暗屬性契約者魔之楔或少量深紅凝珠，也有極低概率獲得1張設計稿：昂揚·決斷",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      }
+    },
+    "fields": {
+      "AccessKey": "T.RT_20",
+      "ExcludeCollect": true,
+      "ExcludeCollectServer": true,
+      "FunctionDes": "RESOURCE_FUNCTION_110050",
+      "Icon": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_RandomMod_15.T_Pack_RandomMod_15'",
+      "MaterialClassify": 7,
+      "Rarity": 5,
+      "ResourceId": 110067,
+      "ResourceName": "RESOURCE_NAME_110067",
+      "ResourceValue": -1,
+      "Sound": "SOUND_ITEM_NORMAL",
+      "Type": "Rare",
+      "UseEffectType": "RandomSelectPack",
+      "UseParam": 350036
     }
   },
   {
@@ -104002,7 +104980,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12079",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -104164,7 +105142,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12080",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -104326,7 +105304,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_20",
+      "AccessKey": "T.RT_21",
       "DetailDes": "RESOURCE_DESC_12081",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -104488,7 +105466,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_28",
+      "AccessKey": "T.RT_29",
       "DetailDes": "RESOURCE_DESC_20023",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -104650,7 +105628,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_27",
+      "AccessKey": "T.RT_28",
       "DetailDes": "RESOURCE_DESC_20010",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -105953,7 +106931,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_39",
+      "AccessKey": "T.RT_40",
       "DetailDes": "RESOURCE_DESC_4010007",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -106116,7 +107094,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_40",
+      "AccessKey": "T.RT_41",
       "DetailDes": "RESOURCE_DESC_4010008",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -107265,7 +108243,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_41",
+      "AccessKey": "T.RT_42",
       "DetailDes": "RESOURCE_DESC_4010015",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -107764,7 +108742,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_42",
+      "AccessKey": "T.RT_43",
       "DetailDes": "RESOURCE_DESC_4010018",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -108094,7 +109072,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_41",
+      "AccessKey": "T.RT_42",
       "DetailDes": "RESOURCE_DESC_4010020",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -108257,7 +109235,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_39",
+      "AccessKey": "T.RT_40",
       "DetailDes": "RESOURCE_DESC_4020001",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -108420,7 +109398,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_39",
+      "AccessKey": "T.RT_40",
       "DetailDes": "RESOURCE_DESC_4020002",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -108583,7 +109561,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_43",
+      "AccessKey": "T.RT_44",
       "DetailDes": "RESOURCE_DESC_4020003",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -108746,7 +109724,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_43",
+      "AccessKey": "T.RT_44",
       "DetailDes": "RESOURCE_DESC_4020004",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -108909,7 +109887,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_40",
+      "AccessKey": "T.RT_41",
       "DetailDes": "RESOURCE_DESC_4020005",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -109076,7 +110054,7 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_42",
+      "AccessKey": "T.RT_43",
       "DetailDes": "RESOURCE_DESC_4020006",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
@@ -110554,7 +111532,7 @@
     },
     "fields": {
       "CombatConditionID": "{\n      [1] = 12,\n      [2] = 500\n    }",
-      "CombatConditionToast": "T.RT_45",
+      "CombatConditionToast": "T.RT_46",
       "DetailDes": "RESOURCE_DESC_6000002",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,

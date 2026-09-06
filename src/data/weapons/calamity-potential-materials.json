@@ -1,0 +1,223 @@
+{
+  "100": {
+    "itemId": "resources-100",
+    "icon": "/assets/items/resources/T_Coin_Main_Lv2.png",
+    "name": {
+      "DE": "Phoxene",
+      "EN": "Phoxene",
+      "ES": "Phoxene",
+      "FR": "Phoxène",
+      "JP": "月ノ石",
+      "KR": "월석",
+      "TC": "月石"
+    }
+  },
+  "202": {
+    "itemId": "resources-202",
+    "icon": "/assets/items/resources/T_Resource_PolarityAura.png",
+    "name": {
+      "DE": "Waffen-Spurwechselmodul",
+      "EN": "Weapon Track-Shift Module",
+      "ES": "Módulo de cambio de afinidad de arma",
+      "FR": "Module de transfert d’affinité d’arme",
+      "JP": "武器移転モジュール",
+      "KR": "무기 페이즈 시프트 모듈",
+      "TC": "武器移轉模組"
+    }
+  },
+  "1006": {
+    "itemId": "resources-1006",
+    "icon": "/assets/items/resources/T_Resource_GeneralWeaponCard.png",
+    "name": {
+      "DE": "Schmelzform",
+      "EN": "Recasting Mould",
+      "ES": "Molde de fusión",
+      "FR": "Moule de fusion",
+      "JP": "製錬モールド",
+      "KR": "용해 몰드",
+      "TC": "熔煉模具"
+    }
+  },
+  "15002": {
+    "itemId": "resources-15002",
+    "icon": "/assets/items/resources/T_Weapon_Polearm_Zaie.png",
+    "name": {
+      "DE": "Prototype: Perpetual Strife",
+      "EN": "Prototype: Perpetual Strife",
+      "ES": "Prototipo: Lucha Perpetua",
+      "FR": "Prototype : Conflit perpétuel",
+      "JP": "終わりなき果ての原型",
+      "KR": "끝없는 투쟁의 원형",
+      "TC": "無止無休的原型"
+    }
+  },
+  "15003": {
+    "itemId": "resources-15003",
+    "icon": "/assets/items/resources/T_Weapon_Machinegun_Zaie.png",
+    "name": {
+      "DE": "Prototype: Thorned Requiem",
+      "EN": "Prototype: Thorned Requiem",
+      "ES": "Prototipo: Réquiem de Espinas",
+      "FR": "Prototype : Requiem d’épines",
+      "JP": "荊棘のレクイエムの原型",
+      "KR": "가시 돋친 절규의 원형",
+      "TC": "棘刺絕響的原型"
+    }
+  },
+  "15006": {
+    "itemId": "resources-15006",
+    "icon": "/assets/items/resources/T_Weapon_Claymore_Zaie.png",
+    "name": {
+      "DE": "Prototype: Sovereign Ember",
+      "EN": "Prototype: Sovereign Ember",
+      "ES": "Prototipo: Ascua Soberana",
+      "FR": "Prototype : Braise souveraine",
+      "JP": "陰りし業火の原型",
+      "KR": "쇠락한 권세의 원형",
+      "TC": "權火將熄的原型"
+    }
+  },
+  "15026": {
+    "itemId": "resources-15026",
+    "icon": "/assets/items/resources/T_Resource_ZaieBadge_03.png",
+    "name": {
+      "DE": "Emblem of Strength",
+      "EN": "Emblem of Strength",
+      "ES": "Emblema de la Fuerza",
+      "FR": "Insigne de force",
+      "JP": "力の勲章",
+      "KR": "힘의 문장",
+      "TC": "力量的飾章"
+    }
+  },
+  "15027": {
+    "itemId": "resources-15027",
+    "icon": "/assets/items/resources/T_Resource_ZaieBadge_05.png",
+    "name": {
+      "DE": "Emblem of Faith",
+      "EN": "Emblem of Faith",
+      "ES": "Emblema de la Fe",
+      "FR": "Insigne de foi",
+      "JP": "信仰の勲章",
+      "KR": "신앙의 문장",
+      "TC": "信仰的飾章"
+    }
+  },
+  "15028": {
+    "itemId": "resources-15028",
+    "icon": "/assets/items/resources/T_Resource_ZaieBadge_04.png",
+    "name": {
+      "DE": "Emblem of Harmony",
+      "EN": "Emblem of Harmony",
+      "ES": "Emblema de la Armonía",
+      "FR": "Insigne d’harmonie",
+      "JP": "調和の勲章",
+      "KR": "조화의 문장",
+      "TC": "諧和的飾章"
+    }
+  },
+  "15029": {
+    "itemId": "resources-15029",
+    "icon": "/assets/items/resources/T_Resource_ZaieBadge_02.png",
+    "name": {
+      "DE": "Emblem of Corruption",
+      "EN": "Emblem of Corruption",
+      "ES": "Emblema de la Impureza",
+      "FR": "Insigne de corruption",
+      "JP": "穢蝕の勲章",
+      "KR": "혼탁의 문장",
+      "TC": "穢濁的飾章"
+    }
+  },
+  "15030": {
+    "itemId": "resources-15030",
+    "icon": "/assets/items/resources/T_Resource_ZaieBadge_01.png",
+    "name": {
+      "DE": "Emblem of Rebellion",
+      "EN": "Emblem of Rebellion",
+      "ES": "Emblema de lo Inquebrantable",
+      "FR": "Insigne d’inflexibilité",
+      "JP": "不屈の勲章",
+      "KR": "불굴의 문장",
+      "TC": "不屈的飾章"
+    }
+  },
+  "15031": {
+    "itemId": "resources-15031",
+    "icon": "/assets/items/resources/T_Resource_Zaie_Ice.png",
+    "name": {
+      "DE": "Hydro Crystal",
+      "EN": "Hydro Crystal",
+      "ES": "Cristal Hydro",
+      "FR": "Cristal Hydro",
+      "JP": "水の晶塊",
+      "KR": "물의 결정",
+      "TC": "水之晶塊"
+    }
+  },
+  "15035": {
+    "itemId": "resources-15035",
+    "icon": "/assets/items/resources/T_Resource_Zaie_Light.png",
+    "name": {
+      "DE": "Lumino Crystal",
+      "EN": "Lumino Crystal",
+      "ES": "Cristal Lumino",
+      "FR": "Cristal Lumino",
+      "JP": "光の晶塊",
+      "KR": "빛의 결정",
+      "TC": "光之晶塊"
+    }
+  },
+  "15036": {
+    "itemId": "resources-15036",
+    "icon": "/assets/items/resources/T_Resource_Zaie_Dark.png",
+    "name": {
+      "DE": "Umbro Crystal",
+      "EN": "Umbro Crystal",
+      "ES": "Cristal Umbro",
+      "FR": "Cristal Umbro",
+      "JP": "闇の晶塊",
+      "KR": "어둠의 결정",
+      "TC": "暗之晶塊"
+    }
+  },
+  "15037": {
+    "itemId": "resources-15037",
+    "icon": "/assets/items/resources/T_Resource_Zaie_Rainbow.png",
+    "name": {
+      "DE": "Radiant Crystal",
+      "EN": "Radiant Crystal",
+      "ES": "Cristal Radiante",
+      "FR": "Cristal radieux",
+      "JP": "燦爛たる晶塊",
+      "KR": "찬란한 결정",
+      "TC": "璀璨晶塊"
+    }
+  },
+  "20027": {
+    "itemId": "resources-20027",
+    "icon": "/assets/items/resources/T_Resource_Forge_Product01.png",
+    "name": {
+      "DE": "Schärfungstrank",
+      "EN": "Sharpening Potion",
+      "ES": "Elixir de afilado",
+      "FR": "Élixir d’aiguisage",
+      "JP": "鋭刃の薬剤",
+      "KR": "날카로움 포션",
+      "TC": "利刃藥劑"
+    }
+  },
+  "20028": {
+    "itemId": "resources-20028",
+    "icon": "/assets/items/resources/T_Resource_Forge_Product02.png",
+    "name": {
+      "DE": "Bombe",
+      "EN": "Projectile",
+      "ES": "Bomba",
+      "FR": "Projectile explosif",
+      "JP": "拡散弾",
+      "KR": "폭탄",
+      "TC": "爆彈"
+    }
+  }
+}
