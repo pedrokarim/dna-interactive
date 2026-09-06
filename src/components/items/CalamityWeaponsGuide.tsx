@@ -21,6 +21,7 @@ import {
   CALAMITY_ACCENT_HEX,
   formatOpenVersion,
   isCalamityWeapon,
+  isUnscheduledVersion,
   potentialNodesTotal,
 } from "@/lib/items/calamity-weapons";
 import forgeCostsData from "@/data/weapons/calamity-forge-costs.json";
@@ -91,6 +92,9 @@ export async function CalamityWeaponsGuide({
           translation.typeCompatibilityNames[1] ??
           (typeof item.fields.ResourceSType === "string" ? item.fields.ResourceSType : null),
         version: formatOpenVersion(item.stats.openVersion),
+        // Une arme non programmée porte encore des libellés de travail : son nom
+        // vient parfois d'une autre entrée recyclée. À signaler, pas à masquer.
+        provisional: isUnscheduledVersion(item.stats.openVersion),
         nodes: potentialNodesTotal(item.id),
         steps: isPlaceholderCost(FORGE_COSTS[item.id] ?? []) ? [] : (FORGE_COSTS[item.id] ?? []),
       };
@@ -333,6 +337,12 @@ export async function CalamityWeaponsGuide({
                   {t("openSheet")}
                 </Link>
               </div>
+
+              {weapon.provisional ? (
+                <p className="mt-3 border-l-2 border-crimson-bright/40 pl-3 text-sm text-muted">
+                  {t("provisionalNotice")}
+                </p>
+              ) : null}
 
               {weapon.steps.length === 0 ? (
                 <p className="mt-4 text-sm text-muted-2">{t("costUnavailable")}</p>

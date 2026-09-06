@@ -1392,7 +1392,8 @@
     "compassBody": "La Brújula abisal se elige al lanzar: cuanto mayor es su nivel, mejores son las recompensas. Sube encadenando rondas y, en equipo, solo el líder gasta una.",
     "emblemsBody": "Cada emblema cae de los enemigos de una facción concreta, en una misión concreta. El farmeo es dirigido: no esperes un emblema de armonía fuera de los enemigos de Huaxu.",
     "crystalsBody": "Los cristales se apuntan en la pantalla de lanzamiento. Eliges la recompensa rara deseada y el atributo de los enemigos, lo que hace previsible farmear un cristal elemental concreto.",
-    "imageZoomHint": "Clic para ampliar"
+    "imageZoomHint": "Clic para ampliar",
+    "provisionalNotice": "Arma sin fecha: su nombre y su tipo mostrado todavía provienen de una entrada de trabajo en los datos del juego y cambiarán al salir. Sus ilustraciones, en cambio, ya vienen incluidas."
   },
   "changelogEntries": {
     "v2_4_0": {

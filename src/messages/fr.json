@@ -1392,7 +1392,8 @@
     "compassBody": "Le Compas abyssal se sélectionne au lancement : plus son niveau est élevé, plus les récompenses le sont. Il monte en enchaînant les manches, et en équipe seul le chef en dépense un.",
     "emblemsBody": "Chaque insigne tombe sur les ennemis d'une faction précise, dans une mission précise. C'est du farm dirigé : inutile d'espérer un insigne d'harmonie ailleurs que sur les ennemis de Huaxu.",
     "crystalsBody": "Les cristaux se ciblent à l'entrée de la mission. On choisit la récompense rare visée et l'attribut des ennemis, ce qui rend le farm d'un cristal d'élément précis prévisible.",
-    "imageZoomHint": "Cliquer pour agrandir"
+    "imageZoomHint": "Cliquer pour agrandir",
+    "provisionalNotice": "Arme non programmée : son nom et son type d'affichage viennent encore d'une entrée de travail dans les données du jeu, et changeront à la sortie. Ses illustrations, elles, sont déjà livrées."
   },
   "changelogEntries": {
     "v2_4_0": {

@@ -1392,7 +1392,8 @@
     "compassBody": "The Abyssal Compass is picked at launch: the higher its level, the better the rewards. It levels up by clearing more rounds, and in a party only the leader spends one.",
     "emblemsBody": "Each emblem drops from one specific faction's enemies, in one specific mission. Farming is targeted: there is no point hoping for an Emblem of Harmony anywhere but on Huaxu enemies.",
     "crystalsBody": "Crystals are targeted at the mission's launch screen. You pick the rare reward you want and the enemies' attribute, which makes farming a specific elemental crystal predictable.",
-    "imageZoomHint": "Click to enlarge"
+    "imageZoomHint": "Click to enlarge",
+    "provisionalNotice": "Unscheduled weapon: its name and displayed type still come from a work-in-progress entry in the game data and will change at release. Its art, however, already ships with the game."
   },
   "changelogEntries": {
     "v2_4_0": {

@@ -1392,7 +1392,8 @@
     "compassBody": "Der Abgrundkompass wird beim Start gewählt: je höher seine Stufe, desto besser die Belohnungen. Er steigt durch weitere Runden, und in der Gruppe verbraucht nur die Leitung einen.",
     "emblemsBody": "Jedes Emblem fällt bei den Gegnern einer bestimmten Fraktion, in einer bestimmten Mission. Das Farmen ist gezielt: ein Emblem der Harmonie gibt es nur bei Huaxu-Gegnern.",
     "crystalsBody": "Kristalle werden im Startbildschirm der Mission anvisiert. Man wählt die gewünschte seltene Belohnung und das Attribut der Gegner – so wird das Farmen eines bestimmten Elementkristalls planbar.",
-    "imageZoomHint": "Zum Vergrößern klicken"
+    "imageZoomHint": "Zum Vergrößern klicken",
+    "provisionalNotice": "Nicht terminierte Waffe: Name und angezeigter Typ stammen noch aus einem Arbeitseintrag in den Spieldaten und ändern sich zum Release. Die Grafiken sind dagegen bereits ausgeliefert."
   },
   "changelogEntries": {
     "v2_4_0": {
