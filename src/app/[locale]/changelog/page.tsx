@@ -9,6 +9,27 @@ import { typeConfig } from "@/lib/changelogConfig";
 import { DnaPanel } from "@/components/dna/Panel";
 import { DnaDivider } from "@/components/dna/Divider";
 
+/**
+ * Rend les passages `**en gras**` d'une entrée.
+ *
+ * Les textes du changelog portent ce balisage depuis le début, mais il était
+ * affiché tel quel : les astérisques se voyaient à l'écran. On ne traite que le
+ * gras — c'est le seul balisage utilisé, et faire passer ces chaînes par un
+ * moteur Markdown complet serait disproportionné (et ouvrirait la porte à de
+ * l'HTML dans des textes de traduction).
+ */
+function renderBold(text: string) {
+  return text.split(/(\*\*[^*]+\*\*)/g).map((part, index) =>
+    part.startsWith("**") && part.endsWith("**") && part.length > 4 ? (
+      <strong key={index} className="font-medium text-parch">
+        {part.slice(2, -2)}
+      </strong>
+    ) : (
+      part
+    ),
+  );
+}
+
 export default function ChangelogPage() {
   const t = useTranslations("changelog");
   const tc = useTranslations("common");
@@ -71,7 +92,7 @@ export default function ChangelogPage() {
                   {items.map((item, itemIndex) => (
                     <div key={itemIndex} className="flex items-start gap-3 text-parch/85">
                       <span className="mt-1 shrink-0 text-gold">◇</span>
-                      <span className="leading-relaxed">{item}</span>
+                      <span className="leading-relaxed">{renderBold(item)}</span>
                     </div>
                   ))}
                 </div>

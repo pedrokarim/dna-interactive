@@ -1390,6 +1390,20 @@
     "metaDescription": "Understand Duet Night Abyss calamity weapons: Calamity Fusion, Weapon Potentials, mastery prerequisites and Demon Wedge builds."
   },
   "changelogEntries": {
+    "v2_4_0": {
+      "title": "Notifications, and Falsi on the way",
+      "description": "The site can now reach you. A bell that works even without an account, a page that keeps the full history, and browser notifications if you turn them on. Meanwhile, Falsi's page is already live — ahead of her September 8 release.",
+      "items": [
+        "🔔 A notification bell that works for everyone, with or without an account",
+        "📄 A **Notifications** page that keeps the history, even after the badge clears",
+        "🌐 Optional browser notifications: nothing is sent without your consent, and one click turns them off",
+        "🔥 **Falsi**, the 5★ Pyro of version 1.6: her page is live ahead of release",
+        "🏷️ Every detail on her page states how reliable it is: confirmed, announced, or unverified",
+        "⏳ A countdown to her release, on the home page and on her own page",
+        "📅 Her banner added to the event calendar",
+        "✨ Display tweaks: input fields sized sensibly, badges and labels better centred"
+      ]
+    },
     "v2_3_0": {
       "title": "Ada joins the database: version 1.5, new weapons, and the site translated into 7 languages",
       "description": "All site data has been regenerated from game version 1.5. Three new weapons arrive with their forge components, the Demon Wedge database grows substantially, and the whole site is now translated into all 7 languages — including page titles and detail pages.",

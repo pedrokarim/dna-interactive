@@ -1390,6 +1390,20 @@
     "metaDescription": "Entender las armas de calamidad de Duet Night Abyss: Fusión de calamidad, Potenciales de arma, requisitos de dominio y builds de Demon Wedges."
   },
   "changelogEntries": {
+    "v2_4_0": {
+      "title": "Notificaciones, y Falsi en camino",
+      "description": "El sitio ya puede avisarte. Una campana que funciona incluso sin cuenta, una página que conserva todo el historial y notificaciones del navegador si las activas. En paralelo, la ficha de Falsi ya está en línea, antes de su lanzamiento del 8 de septiembre.",
+      "items": [
+        "🔔 Una campana de notificaciones que funciona para todos, con o sin cuenta",
+        "📄 Una página de **Notificaciones** que conserva el historial, incluso cuando el indicador se apaga",
+        "🌐 Notificaciones del navegador opcionales: no se envía nada sin tu consentimiento y se desactivan con un clic",
+        "🔥 **Falsi**, la 5★ Pyro de la versión 1.6: su ficha está en línea antes del lanzamiento",
+        "🏷️ Cada dato de su ficha indica su fiabilidad: confirmado, anunciado o por confirmar",
+        "⏳ Una cuenta atrás hasta su lanzamiento, en el inicio y en su propia ficha",
+        "📅 Su banner añadido al calendario de eventos",
+        "✨ Ajustes de presentación: campos de texto con tamaños coherentes, insignias y etiquetas mejor centradas"
+      ]
+    },
     "v2_3_0": {
       "title": "Ada llega a la base de datos: versión 1.5, nuevas armas y el sitio traducido a 7 idiomas",
       "description": "Todos los datos del sitio se han regenerado a partir de la versión 1.5 del juego. Llegan tres nuevas armas con sus componentes de forja, la base de Demon Wedges crece notablemente y todo el sitio está ahora traducido a los 7 idiomas, incluidos los títulos de página y las fichas detalladas.",

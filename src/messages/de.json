@@ -1390,6 +1390,20 @@
     "metaDescription": "Unheilswaffen von Duet Night Abyss verstehen: Unheilsfusion, Waffenpotenziale, Beherrschungsvoraussetzungen und Demon-Wedge-Builds."
   },
   "changelogEntries": {
+    "v2_4_0": {
+      "title": "Benachrichtigungen und Falsi in Sicht",
+      "description": "Die Seite kann dich jetzt benachrichtigen. Eine Glocke, die auch ohne Konto funktioniert, eine Seite mit dem gesamten Verlauf und Browser-Benachrichtigungen, wenn du sie aktivierst. Parallel dazu ist Falsis Seite bereits online — vor ihrem Erscheinen am 8. September.",
+      "items": [
+        "🔔 Eine Benachrichtigungsglocke für alle, mit oder ohne Konto",
+        "📄 Eine **Benachrichtigungsseite**, die den Verlauf behält, auch wenn die Markierung erlischt",
+        "🌐 Browser-Benachrichtigungen als Option: ohne deine Zustimmung wird nichts gesendet, ein Klick schaltet sie ab",
+        "🔥 **Falsi**, die 5★ Pyro aus Version 1.6: ihre Seite ist schon vor dem Erscheinen online",
+        "🏷️ Jede Angabe auf ihrer Seite zeigt, wie gesichert sie ist: bestätigt, angekündigt oder unbestätigt",
+        "⏳ Ein Countdown bis zum Erscheinen, auf der Startseite und auf ihrer Seite",
+        "📅 Ihr Banner im Veranstaltungskalender ergänzt",
+        "✨ Anzeige-Feinschliff: sinnvoll bemessene Eingabefelder, besser zentrierte Abzeichen und Beschriftungen"
+      ]
+    },
     "v2_3_0": {
       "title": "Ada kommt in die Datenbank: Version 1.5, neue Waffen und die Seite in 7 Sprachen",
       "description": "Alle Daten der Seite wurden aus Spielversion 1.5 neu erzeugt. Drei neue Waffen kommen samt ihrer Schmiedekomponenten hinzu, die Demon-Wedge-Datenbank wächst deutlich, und die gesamte Seite ist nun in allen 7 Sprachen übersetzt — inklusive Seitentitel und Detailseiten.",
