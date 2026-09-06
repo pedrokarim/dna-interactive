@@ -14,6 +14,8 @@ import {
   getLevelUpCurves,
 } from "@/lib/characters/catalog";
 import { getCharacterBuilds } from "@/lib/characters/builds";
+import { getUpcomingCharacter } from "@/lib/characters/upcoming";
+import { UpcomingCharacterPage } from "@/components/characters/UpcomingCharacterPage";
 import { generatePageMetadata } from "@/lib/metadata";
 
 type CharacterDetailPageProps = {
@@ -33,6 +35,28 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const { locale, characterId } = await params;
   const character = getCharacterById(characterId);
+
+  // Personnage annonce mais pas encore extractible : meme URL, metadonnees
+  // dediees. Des qu'il entre dans characters.json, ce cas ne se declenche plus.
+  const upcoming = character ? null : getUpcomingCharacter(characterId);
+  if (upcoming) {
+    return generatePageMetadata(
+      {
+        title: `${upcoming.name} - ${ELEMENT_LABEL[upcoming.element] ?? upcoming.element} a venir en ${upcoming.version}`,
+        description: `Tout ce que l'on sait de ${upcoming.name} dans Duet Night Abyss avant sa sortie : element, armes, statistiques de base, kit et role dans l'histoire.`,
+        path: `/characters/${upcoming.slug}`,
+        keywords: [
+          "Duet Night Abyss",
+          upcoming.name,
+          upcoming.internalName,
+          `version ${upcoming.version}`,
+          ...upcoming.weaponTags,
+        ],
+      },
+      parent,
+      locale,
+    );
+  }
 
   if (!character) {
     const tMeta = await getTranslations({ locale, namespace: "metadata" });
@@ -79,6 +103,15 @@ export async function generateMetadata(
   );
 }
 
+const ELEMENT_LABEL: Record<string, string> = {
+  Fire: "Pyro",
+  Water: "Hydro",
+  Thunder: "Electro",
+  Wind: "Anemo",
+  Light: "Lumino",
+  Dark: "Umbro",
+};
+
 const ELEMENT_AMBIENT: Record<string, string> = {
   Fire: "rgba(239, 68, 68, 0.08)",
   Water: "rgba(96, 165, 250, 0.08)",
@@ -95,6 +128,12 @@ export default async function CharacterDetailPage({
   const character = getCharacterById(characterId);
 
   if (!character) {
+    // Avant le 404 : le personnage est-il simplement annonce mais pas encore
+    // livre par le jeu ? La fiche "a venir" occupe alors l'URL definitive.
+    const upcoming = getUpcomingCharacter(characterId);
+    if (upcoming) {
+      return <UpcomingCharacterPage character={upcoming} curves={getLevelUpCurves().curves} />;
+    }
     notFound();
   }
 

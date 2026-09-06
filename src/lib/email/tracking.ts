@@ -4,7 +4,7 @@ import { eq, sql } from "drizzle-orm";
 import { getDb, schema } from "@/db";
 import { getSiteUrl } from "@/lib/auth/site";
 
-export type EmailKind = "verify_email" | "reset_password" | "set_password" | "welcome" | "contact";
+export type EmailKind = "verify_email" | "reset_password" | "set_password" | "welcome" | "contact" | "announcement";
 
 // PNG 1×1 transparent servi par la route de suivi.
 export const TRACKING_PNG = Buffer.from(

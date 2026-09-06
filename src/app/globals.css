@@ -153,6 +153,29 @@ body:has(.map-page) .grecaptcha-badge {
 }
 
 /* ===========================================================================
+   Centrage optique du texte
+
+   Une capitale n'a pas de jambage, un chiffre non plus. La boîte de ligne, elle,
+   réserve toujours la place des descendantes : l'encre se retrouve donc au-dessus
+   du centre de sa boîte, et le libellé paraît « collé en haut » dans son cadre —
+   décalé par rapport à l'icône qui l'accompagne, elle parfaitement centrée.
+
+   On redescend le texte d'une fraction de sa propre taille (valeurs mesurées à
+   l'écran sur Cinzel et Jost). `position: relative` plutôt qu'un `transform` :
+   aucun effet sur la mise en page, et pas de contexte d'empilement créé.
+
+   La règle générale ne vise QUE les éléments purement textuels
+   (`:not(:has(*))`). Sur un conteneur qui porte aussi une icône — un lien de
+   barre latérale, par exemple — elle décalerait l'icône avec le texte.
+   =========================================================================== */
+
+.font-caps.uppercase:not(:has(*)),
+.dna-optical-caps { position: relative; top: 0.1em; }
+
+/* Chiffres seuls dans une pastille ronde (compteurs de notifications). */
+.dna-optical-num { position: relative; top: 0.07em; }
+
+/* ===========================================================================
    DNA UI — primitives ornementales (clip-paths, animations, frise, watermark)
    que Tailwind ne fournit pas. Consommées par les composants src/components/dna.
    =========================================================================== */
@@ -202,6 +225,135 @@ body:has(.map-page) .grecaptcha-badge {
 .dna-ping::after {
   content: ""; position: absolute; left: 50%; top: 50%; width: 24px; height: 24px;
   border-radius: 50%; border: 1px solid currentColor; animation: dnaPing 2.4s ease-out infinite;
+}
+
+/* ===========================================================================
+   Fond atmosphérique (`DnaAmbientBackdrop`)
+
+   Monté une seule fois par l'AppShell, sous le contenu : il survit aux
+   navigations au lieu d'être remonté page par page.
+
+   Deux mouvements distincts. Les visuels dérivent dans le TEMPS (Ken Burns +
+   fondu enchaîné), les nappes teintées dérivent avec le DÉFILEMENT. Le
+   composant n'écrit que des variables — `--dna-scroll` (0 → 1 sur la hauteur
+   défilable), `--dna-drift` (parallaxe des visuels) et `--dna-flow-N` (poids
+   de chaque nappe) ; tout le reste est déclaratif, donc composité par le GPU.
+
+   Le contenu de la coquille passe en `relative z-10` : sans ça, un enfant
+   `position: fixed` est peint APRÈS les blocs en flux et masquerait la page.
+   =========================================================================== */
+
+.dna-ambient {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  contain: layout paint style;
+  --dna-scroll: 0;
+  --dna-drift: 0px;
+  --dna-ambient-max: 0.5;
+}
+
+/* Opacité maximale d'un visuel : le fond doit rester un fond. */
+.dna-ambient[data-intensity="subtle"] { --dna-ambient-max: 0.32; }
+.dna-ambient[data-intensity="normal"] { --dna-ambient-max: 0.5; }
+.dna-ambient[data-intensity="bold"]   { --dna-ambient-max: 0.68; }
+
+/* Débord volontaire : ni la parallaxe ni le Ken Burns ne doivent découvrir un
+   bord. */
+.dna-ambient-frame {
+  position: absolute;
+  inset: -6vh -3vw;
+  opacity: 0;
+  /* Fondu enchaîné long : deux visuels se recouvrent le temps du passage. */
+  transition: opacity 2.4s ease-in-out;
+  transform: translate3d(0, var(--dna-drift), 0);
+  will-change: transform, opacity;
+}
+
+.dna-ambient-frame[data-active] { opacity: var(--dna-ambient-max); }
+
+.dna-ambient-image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  /* Les visuels sont peints sur papier ivoire : tels quels, ils éclairciraient
+     toute la page. On les ramène au niveau de l'encre du site, en gardant les
+     encres cobalt / safran / cramoisi lisibles. */
+  filter: brightness(0.34) saturate(1.25) contrast(1.12) blur(1.5px);
+  transform: scale(1.06);
+}
+
+/* Ken Burns : la course ne démarre qu'à l'activation du visuel, donc chaque
+   passage repart d'un mouvement neuf. Direction et amplitude viennent du
+   composant (`--dna-kb-*`), une variante par visuel. */
+.dna-ambient-frame[data-active] .dna-ambient-image {
+  animation: dnaKenBurns 34s ease-out both;
+}
+
+@keyframes dnaKenBurns {
+  from { transform: scale(1.06) translate3d(0, 0, 0); }
+  to   { transform: scale(var(--dna-kb-scale, 1.16)) translate3d(var(--dna-kb-x, -2%), var(--dna-kb-y, -2%), 0); }
+}
+
+/* Nappes teintées, reprises du fond global du site. */
+.dna-ambient-flow {
+  position: absolute;
+  inset: -25%;
+  transform: translate3d(0, calc(var(--dna-scroll) * -18vh), 0);
+  will-change: transform;
+}
+
+.dna-ambient-flow-layer {
+  position: absolute;
+  inset: 0;
+  filter: blur(30px);
+  will-change: transform, opacity;
+}
+
+/* Cramoisi en haut de page, teal au milieu, or en bas : la dominante suit la
+   descente. Les poids sont écrits par le composant. */
+.dna-ambient-flow-layer[data-tint="crimson"] {
+  opacity: var(--dna-flow-0, 1);
+  background-image: radial-gradient(40% 34% at 24% 18%, rgb(142 24 19 / 0.6), transparent 70%);
+  animation: dnaAmbientBreath 38s ease-in-out infinite alternate;
+}
+
+.dna-ambient-flow-layer[data-tint="teal"] {
+  opacity: var(--dna-flow-1, 0.12);
+  background-image: radial-gradient(46% 40% at 76% 70%, rgb(36 78 86 / 0.62), transparent 70%);
+  animation: dnaAmbientBreath 46s ease-in-out infinite alternate-reverse;
+}
+
+.dna-ambient-flow-layer[data-tint="gold"] {
+  opacity: var(--dna-flow-2, 0.12);
+  background-image: radial-gradient(34% 30% at 58% 84%, rgb(194 168 106 / 0.34), transparent 70%);
+  animation: dnaAmbientBreath 54s ease-in-out infinite alternate;
+}
+
+/* Respiration lente : le fond vit même quand la page ne défile pas. */
+@keyframes dnaAmbientBreath {
+  from { transform: translate3d(-2%, 1%, 0) scale(1); }
+  to   { transform: translate3d(2%, -2%, 0) scale(1.12); }
+}
+
+/* Voile + vignette : garantit la lisibilité quel que soit le visuel dessous. */
+.dna-ambient-veil {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(180deg, rgb(10 10 11 / 0.6) 0%, rgb(10 10 11 / 0.34) 42%, rgb(10 10 11 / 0.74) 100%),
+    radial-gradient(120% 85% at 50% 45%, transparent 28%, rgb(10 10 11 / 0.6) 100%);
+}
+
+/* Grain fin : casse les aplats des dégradés (banding sur écran sombre). */
+.dna-ambient-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 /* ===========================================================================

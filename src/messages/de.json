@@ -50,7 +50,7 @@
     "builds": "Community-Builds",
     "calendar": "Kalender",
     "discord": "Discord",
-    "twitter": "Twitter / X"
+    "twitter": "X"
   },
   "common": {
     "close": "Schließen",
@@ -1121,6 +1121,8 @@
   "homeHub": {
     "heroDescription": "Der Community-Hub für Duet Night Abyss: Karte, Datenbank, Build-Editor und Werkzeuge an einem Ort.",
     "exploreTools": "Werkzeuge entdecken",
+    "yourProfile": "Ihr Profil",
+    "signIn": "Anmelden",
     "sharedBuilds": "Community · geteilte Builds",
     "featuredSelection": "Auswahl",
     "featuredThisWeek": "Diese Woche",
@@ -1678,5 +1680,33 @@
     "invalidProvider": "Ungültiger Anbieter.",
     "accountNotLinked": "Dieses Konto ist nicht verknüpft.",
     "nameInvalidChars": "Der Name darf nur Buchstaben, Leerzeichen, Apostrophe und Bindestriche enthalten."
+  },
+  "notificationsPanel": {
+    "ariaWithUnread": "Benachrichtigungen ({count} ungelesen)",
+    "markAllRead": "Alle als gelesen",
+    "seeAll": "Alle ansehen",
+    "pushEnable": "Push aktivieren",
+    "pushOn": "Push aktiv",
+    "pushBlocked": "Push blockiert"
+  },
+  "notificationsPage": {
+    "heading": "Benachrichtigungen",
+    "intro": "Ankündigungen, Versionsveröffentlichungen und Neuigkeiten zu deinen Builds. Alles bleibt hier archiviert, auch wenn die Markierung erlischt.",
+    "loading": "Feed wird geladen…",
+    "empty": "Derzeit nichts Neues.",
+    "emptyUnread": "Alles gelesen.",
+    "filterLabel": "Benachrichtigungen filtern",
+    "filterAll": "Alle",
+    "filterUnread": "Ungelesen",
+    "pinned": "Angeheftet",
+    "localOnlyNotice": "Ohne Konto bleibt der Lesestatus auf diesem Gerät. Melde dich an, um ihn überall zu behalten.",
+    "pushOffTitle": "Browser-Benachrichtigungen",
+    "pushOffHelp": "Erhalte wichtige Ankündigungen, auch wenn die Seite geschlossen ist. Ohne deine Zustimmung wird nichts gesendet, und du kannst jederzeit abschalten.",
+    "pushOnTitle": "Browser-Benachrichtigungen aktiv",
+    "pushOnHelp": "Dieses Gerät erhält Ankündigungen. Ein Klick schaltet sie ab.",
+    "pushDeniedTitle": "Benachrichtigungen vom Browser blockiert",
+    "pushDeniedHelp": "Die Berechtigung wurde verweigert. Sie lässt sich nur in den Website-Einstellungen des Browsers wiederherstellen, nicht auf dieser Seite.",
+    "pushEnable": "Aktivieren",
+    "pushDisable": "Deaktivieren"
   }
 }

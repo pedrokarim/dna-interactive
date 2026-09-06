@@ -34,6 +34,7 @@ export { DnaSectionMark, DnaLozenge } from "./SectionMark";
 export { DnaDivider } from "./Divider";
 export { DnaSeal } from "./Seal";
 export { DnaTile } from "./Tile";
+export { DnaAmbientBackdrop, type DnaAmbientBackdropProps } from "./AmbientBackdrop";
 
 // Builder
 export { DnaItemPicker, type DnaPickerItem } from "./ItemPicker";

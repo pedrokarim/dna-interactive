@@ -40,6 +40,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# Originaux des fonds d'écran (PNG ~3 Mo pièce) : seules les versions WebP
+# nettoyées de public/assets/wallpapers sont versionnées.
+assets/wallpapers-originaux/
+
 research_data/
 .references/
 CONTACT_SETUP.md

@@ -1,10 +1,10 @@
 "use client";
 
 import type { ReactNode } from "react";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import {
   ArrowRight,
-  Bot,
   Boxes,
   Calendar,
   Compass,
@@ -14,6 +14,7 @@ import {
   Gem,
   Hammer,
   Layers,
+  LogIn,
   Map as MapIcon,
   ScrollText,
   Search,
@@ -21,6 +22,7 @@ import {
   Swords,
   ThumbsUp,
   Users,
+  UserRound,
   Wrench,
   type LucideIcon,
 } from "lucide-react";
@@ -28,11 +30,14 @@ import { Link } from "@/i18n/navigation";
 import { DnaCornerBrackets, DnaNouveau, DnaTag, DnaRibbon, DnaSectionMark, cn } from "@/components/dna";
 import { EventCalendar } from "@/components/home/EventCalendar";
 import NewCharactersBanner from "@/components/NewCharactersBanner";
+import { UpcomingCharacterStrip } from "@/components/characters/UpcomingCharacterStrip";
+import { UPCOMING_CHARACTERS } from "@/lib/characters/upcoming";
 import CommunityCards from "@/components/CommunityCards";
 import BuildShowcase from "@/components/BuildShowcase";
 import type { CalendarEvent } from "@/lib/events/calendar";
 import { useAppSettings } from "@/lib/settings/useAppSettings";
 import { CONTACT_INFO } from "@/lib/constants";
+import { DISCORD_BUTTON_CLASS, DiscordIcon } from "@/components/icons/BrandIcons";
 
 export type HomeBuildCard = {
   id: string;
@@ -57,6 +62,8 @@ export type HomeHubClientProps = {
   serverToday: string;
   /** Forçage admin de la date de référence (vide = horloge du visiteur). */
   calendarToday?: string;
+  /** Permet d'afficher le bon accès au compte sans charger la session côté client. */
+  isAuthenticated: boolean;
 };
 
 /* CTA façon design system, appliqués directement sur un Link/anchor. */
@@ -71,6 +78,14 @@ const CTA_GHOST = cn(
   "border border-white/20 bg-gradient-to-b from-panel/70 to-ink/70 text-parch hover:-translate-y-px hover:border-white/45 hover:text-white",
 );
 
+// Portrait décoratif de la carte d'accueil. À la sortie d'un nouveau personnage,
+// seule cette source doit changer après génération depuis son avatar officiel.
+const HOME_FEATURED_AVATAR = {
+  src: "/assets/home/featured-avatar-ada.png",
+  width: 1254,
+  height: 1254,
+} as const;
+
 /* ------------------------------------------------------------------ cartes outils */
 
 type ToolCard = {
@@ -79,11 +94,12 @@ type ToolCard = {
   /** Repère de section — losange + capitales, cf. `DnaSectionMark`. */
   mark: string;
   desc: string;
-  icon: LucideIcon;
+  icon: LucideIcon | typeof DiscordIcon;
   badge?: string;
   bg?: string;
   tint?: string;
   external?: boolean;
+  brand?: "discord";
 };
 
 /* --------------------------------------------------------------- primitives */
@@ -117,6 +133,7 @@ function ToolTile({ card, className }: { card: ToolCard; className?: string }) {
   );
   const classes = cn(
     "group relative flex min-h-[124px] items-stretch overflow-hidden rounded-sm border border-line/20 bg-panel/70 transition-[transform,border-color] hover:-translate-y-0.5 hover:border-gold/70",
+    card.brand === "discord" && "border-[#5865F2]/60 bg-[#5865F2]/10 hover:border-[#5865F2]",
     className,
   );
   if (card.external) {
@@ -191,9 +208,13 @@ export default function HomeHubClient({
   calendarTo,
   serverToday,
   calendarToday,
+  isAuthenticated,
 }: HomeHubClientProps) {
   const t = useTranslations("homeHub");
   const { commissionsVisible } = useAppSettings();
+  // Liste curee : elle se vide toute seule quand le personnage sort et rejoint
+  // `characters.json` (cf. src/lib/characters/upcoming.ts).
+  const upcoming = UPCOMING_CHARACTERS;
   const databaseCards: ToolCard[] = [
     { href: "/characters", title: t("charactersTitle"), mark: "Le Chœur", desc: t("charactersDescription"), icon: Users, bg: "/assets/worldview/worldview-3.webp", tint: "var(--color-gold)" },
     { href: "/items", title: t("itemsTitle"), mark: "Le Reliquaire", desc: t("itemsDescription"), icon: Boxes, bg: "/assets/worldview/worldview-5.webp", tint: "var(--color-anemo)" },
@@ -208,7 +229,7 @@ export default function HomeHubClient({
   ];
   const communityCards: ToolCard[] = [
     { href: "/commissions", title: t("commissionsTitle"), mark: "Commissions", desc: t("commissionsDescription"), icon: ScrollText, bg: "/assets/worldview/worldview-4.webp", tint: "var(--color-pyro)" },
-    { href: CONTACT_INFO.discord.url, title: "Discord", mark: "Le Grand Hall", desc: t("discordDescription"), icon: Bot, bg: "/assets/worldview/worldview-1.webp", tint: "var(--color-electro)", external: true },
+    { href: CONTACT_INFO.discord.url, title: "Discord", mark: "Le Grand Hall", desc: t("discordDescription"), icon: DiscordIcon, bg: "/assets/worldview/worldview-1.webp", tint: "#5865F2", external: true, brand: "discord" },
   ];
   const visibleCommunityCards = commissionsVisible
     ? communityCards
@@ -223,12 +244,20 @@ export default function HomeHubClient({
       {/* =============================================== HERO (marque + sélection) */}
       <section className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.75fr)]">
         <div className="relative flex flex-col overflow-hidden rounded-sm border border-line/25 bg-panel/70 p-6">
-          <span aria-hidden className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-20" style={{ backgroundImage: "url(/assets/worldview/worldview-2.webp)" }} />
+          <Image
+            aria-hidden
+            alt=""
+            src={HOME_FEATURED_AVATAR.src}
+            width={HOME_FEATURED_AVATAR.width}
+            height={HOME_FEATURED_AVATAR.height}
+            className="pointer-events-none absolute -bottom-[9%] -right-[18%] h-[118%] w-auto max-w-none select-none object-contain object-right opacity-40 sm:-right-[12%] sm:h-[122%] lg:-right-[20%] lg:h-[120%]"
+            sizes="(min-width: 1024px) 30vw, (min-width: 640px) 62vw, 110vw"
+          />
           <span aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink via-panel/80 to-transparent" />
           <DnaCornerBrackets size={18} />
           <span aria-hidden className="dna-watermark absolute -right-6 bottom-2 text-7xl">DNA</span>
 
-          <div className="relative flex flex-col gap-4">
+          <div className="relative flex h-full flex-1 flex-col gap-4">
             <span className="font-caps text-[0.6rem] uppercase tracking-[0.34em] text-muted">Duet Night Abyss</span>
             <h1 className="bg-gradient-to-b from-[#f4ecd8] to-gold bg-clip-text font-display text-4xl font-semibold leading-[0.95] text-transparent sm:text-5xl">DNA Interactive</h1>
             <div className="flex items-center gap-1.5" aria-hidden>
@@ -239,9 +268,13 @@ export default function HomeHubClient({
             <p className="max-w-sm text-sm leading-relaxed text-parch/75">{t("heroDescription")}</p>
             <div className="flex flex-wrap gap-2.5">
               <Link href="/map" className={CTA_GOLD}><Compass className="h-4 w-4" />{t("exploreTools")}</Link>
-              <a href={CONTACT_INFO.discord.url} target="_blank" rel="noopener noreferrer" className={CTA_GHOST}><Bot className="h-4 w-4" />Discord</a>
+              <a href={CONTACT_INFO.discord.url} target="_blank" rel="noopener noreferrer" className={cn(CTA_BASE, DISCORD_BUTTON_CLASS)}><DiscordIcon className="h-4 w-4" />Discord</a>
+              <Link href={isAuthenticated ? "/profile" : "/login"} className={CTA_GHOST}>
+                {isAuthenticated ? <UserRound className="h-4 w-4" /> : <LogIn className="h-4 w-4" />}
+                {isAuthenticated ? t("yourProfile") : t("signIn")}
+              </Link>
             </div>
-            <div className="relative mt-2 flex items-center gap-4 rounded-sm border border-line/20 bg-ink/50 p-4">
+            <div className="relative mt-auto flex items-center gap-4 rounded-sm border border-line/20 bg-ink/50 p-4">
               <DnaCornerBrackets size={10} color="var(--color-gold-deep)" />
               <Search className="h-5 w-5 shrink-0 text-gold" />
               <span className="min-w-0">
@@ -288,6 +321,19 @@ export default function HomeHubClient({
           </div>
         </div>
       </section>
+
+      {/* =============================================== PROCHAINEMENT */}
+      {/* Personnages annonces mais pas encore livres par le jeu : ils n'ont
+          aucune illustration, donc aucune place dans le showcase ci-dessous,
+          qui est entierement pilote par des images. La bande les annonce sans
+          visuel et disparait d'elle-meme le jour de la sortie. */}
+      {upcoming.length > 0 ? (
+        <section className="mt-10 flex flex-col gap-3">
+          {upcoming.map((character) => (
+            <UpcomingCharacterStrip key={character.slug} character={character} />
+          ))}
+        </section>
+      ) : null}
 
       {/* =============================================== NOUVEAUX PERSONNAGES */}
       {/* Placé juste après le hero : c'est l'actualité du jeu, donc la première

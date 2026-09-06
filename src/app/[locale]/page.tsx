@@ -12,6 +12,7 @@ import {
   addDaysIso,
   localTodayIso,
 } from "@/lib/events/calendar";
+import { getCurrentUser } from "@/lib/auth/session";
 
 export const dynamic = "force-dynamic";
 
@@ -50,11 +51,12 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   const calendarFrom = addDaysIso(serverToday, -INITIAL_WINDOW_BEFORE);
   const calendarTo = addDaysIso(serverToday, INITIAL_WINDOW_AFTER);
 
-  const [topBuilds, buildsTotal, calendarEvents, settings] = await Promise.all([
+  const [topBuilds, buildsTotal, calendarEvents, settings, user] = await Promise.all([
     getTopBuilds(8),
     getBuildsTotal(),
     getCalendarEventsInRange(calendarFrom, calendarTo),
     getAppSettings(),
+    getCurrentUser(),
   ]);
 
   const builds: HomeBuildCard[] = topBuilds.map((b) => {
@@ -90,6 +92,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       calendarTo={calendarTo}
       serverToday={serverToday}
       calendarToday={settings.calendarToday || undefined}
+      isAuthenticated={Boolean(user)}
     />
   );
 }

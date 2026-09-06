@@ -50,7 +50,7 @@
     "builds": "Builds de la comunidad",
     "calendar": "Calendario",
     "discord": "Discord",
-    "twitter": "Twitter / X"
+    "twitter": "X"
   },
   "common": {
     "close": "Cerrar",
@@ -1121,6 +1121,8 @@
   "homeHub": {
     "heroDescription": "El centro comunitario de Duet Night Abyss: mapa, base de datos, creador de builds y herramientas, todo en un mismo lugar.",
     "exploreTools": "Explorar herramientas",
+    "yourProfile": "Tu perfil",
+    "signIn": "Iniciar sesión",
     "sharedBuilds": "Comunidad · builds compartidas",
     "featuredSelection": "Selección",
     "featuredThisWeek": "Esta semana",
@@ -1678,5 +1680,33 @@
     "invalidProvider": "Proveedor no válido.",
     "accountNotLinked": "Esta cuenta no está vinculada.",
     "nameInvalidChars": "El nombre solo puede contener letras, espacios, apóstrofos y guiones."
+  },
+  "notificationsPanel": {
+    "ariaWithUnread": "Notificaciones ({count} sin leer)",
+    "markAllRead": "Marcar todo leído",
+    "seeAll": "Ver todo",
+    "pushEnable": "Activar push",
+    "pushOn": "Push activo",
+    "pushBlocked": "Push bloqueado"
+  },
+  "notificationsPage": {
+    "heading": "Notificaciones",
+    "intro": "Anuncios del sitio, lanzamientos de versión y novedades sobre tus builds. Todo queda archivado aquí, incluso cuando el indicador se apaga.",
+    "loading": "Cargando el feed…",
+    "empty": "Nada que señalar por ahora.",
+    "emptyUnread": "Todo leído.",
+    "filterLabel": "Filtrar notificaciones",
+    "filterAll": "Todo",
+    "filterUnread": "Sin leer",
+    "pinned": "Fijado",
+    "localOnlyNotice": "Sin cuenta, el estado de lectura se queda en este dispositivo. Inicia sesión para conservarlo en todos.",
+    "pushOffTitle": "Notificaciones del navegador",
+    "pushOffHelp": "Recibe los anuncios importantes aunque el sitio esté cerrado. No se envía nada sin tu consentimiento y puedes desactivarlo cuando quieras.",
+    "pushOnTitle": "Notificaciones del navegador activadas",
+    "pushOnHelp": "Este dispositivo recibe los anuncios. Un clic los desactiva.",
+    "pushDeniedTitle": "Notificaciones bloqueadas por el navegador",
+    "pushDeniedHelp": "El permiso fue denegado. Solo se restablece desde los ajustes del sitio en tu navegador, no desde esta página.",
+    "pushEnable": "Activar",
+    "pushDisable": "Desactivar"
   }
 }

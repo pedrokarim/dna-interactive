@@ -29,7 +29,7 @@ export const CONTACT_INFO = {
   twitter: {
     url: "https://x.com/ascencia64",
     handle: "@ascencia64",
-    label: "X / Twitter",
+    label: "X",
   },
 } as const;
 

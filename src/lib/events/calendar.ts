@@ -15,10 +15,11 @@
  *
  * La version 1.6 « Paradise's 22nd White Bunny » sort le **8 septembre 2026**
  * et courra jusqu'au 20 octobre. Seuls les éléments déjà datés officiellement
- * y figurent (passe saisonnier, boutique de skins) : ni le nom de la bannière
- * Myriad de Falsi ni les périodes des événements annoncés (Capriccio of Whimsy,
- * Better Luno than Never, Way of the Penitent, Parade Itinerary) ne sont
- * publiés à ce jour — à compléter dès les notes de version. Aucune source
+ * y figurent (passe saisonnier, boutique de skins, bannière Myriad « Where the
+ * Long Road Leads » de Falsi, annoncée pour le 8 septembre). Les périodes des
+ * événements annoncés (Capriccio of Whimsy, Better Luno than Never, Way of the
+ * Penitent, Parade Itinerary) et la date de clôture des bannières ne sont pas
+ * publiées à ce jour — à compléter dès les notes de version. Aucune source
  * tierce n'est créditée au front.
  *
  * Le calendrier est une **frise défilable sans borne** : une plage rendue
@@ -73,6 +74,10 @@ const SRC_V15_PHOXHUNTER = "https://x.com/DNAbyss_EN/status/2091737265458586108"
 /* Annonces de la version 1.6 « Paradise's 22nd White Bunny » (sortie le 8 septembre 2026). */
 const SRC_V16_BARDS_TOME = "https://x.com/DNAbyss_EN/status/2094349488383197537";
 const SRC_V16_CIVIC = "https://x.com/DNAbyss_EN/status/2094666568365953062";
+/* Bande-annonce de personnage « Where the Long Road Leads | Falsi ». Le studio a
+   annoncé la date d'ouverture (8 septembre) mais pas encore la date de clôture :
+   la borne de fin reprend celle de la version, à recouper aux notes de version. */
+const SRC_V16_FALSI = "https://x.com/DNAbyss_EN";
 
 export const CATEGORIES: EventCategory[] = ["Bannière", "Arme", "Événement", "Épreuve", "Récompense"];
 
@@ -132,6 +137,7 @@ export const CALENDAR_EVENTS: CalendarEvent[] = [
   /* Sortie le 8 septembre 2026, jusqu'au 20 octobre. Seuls les éléments déjà datés
      par le compte officiel figurent ici ; le reste du programme n'est pas publié. */
   { id: "bards-tome-rimeveil-nocturne", title: "Bard's Tome : Rimeveil Nocturne", category: "Récompense", start: "2026-09-08", end: "2026-10-20", image: "/assets/events/bards-tome-rimeveil-nocturne.webp", description: "Passe saisonnier de la version 1.6 : monte les paliers du Grimoire du barde pour la posture « Crystal Heart » et le skin d'arme « Emberfrost ».", sourceUrl: SRC_V16_BARDS_TOME },
+  { id: "where-long-road-leads", title: "Where the Long Road Leads — Falsi", category: "Bannière", start: "2026-09-08", end: "2026-10-20", href: "/characters/falsi", description: "Bannière Myriad limitée de la version 1.6 : première apparition de Falsi (Pyro, 5 étoiles, doubles lames) et de son skin « Stalking Silence ». Date de clôture non publiée à ce jour — la fin affichée reprend celle de la version.", sourceUrl: SRC_V16_FALSI },
   { id: "civic-ordinance", title: "Civic Ordinance — skins thématiques", category: "Événement", start: "2026-09-08", end: "2026-10-19", image: "/assets/events/civic-ordinance.webp", description: "Remise à durée limitée en boutique sur la gamme de skins « Civic Ordinance » : première vague de neuf personnages, à échanger contre des Plumules.", sourceUrl: SRC_V16_CIVIC },
 ];
 

@@ -5,7 +5,7 @@ import { signIn } from "next-auth/react";
 import { AlertCircle, CheckCircle2 } from "lucide-react";
 import { DnaField } from "@/components/dna";
 import type { DnaFieldProps } from "@/components/dna/Field";
-import { DiscordIcon, GoogleIcon } from "@/components/icons/BrandIcons";
+import { DISCORD_BUTTON_CLASS, DiscordIcon, GoogleIcon } from "@/components/icons/BrandIcons";
 
 /** Champ avec libellé au-dessus, calé sur DnaField. */
 export function AuthField({
@@ -60,7 +60,7 @@ export function OAuthButtons({
       <button
         type="button"
         onClick={() => void signIn("discord", { callbackUrl })}
-        className={`${base} border-[#5865F2] bg-[#5865F2] text-white hover:bg-[#4752c4] hover:border-[#4752c4]`}
+        className={`${base} ${DISCORD_BUTTON_CLASS}`}
       >
         <DiscordIcon size={17} />
         {discordLabel}

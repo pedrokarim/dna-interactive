@@ -6,7 +6,7 @@ import { signIn } from "next-auth/react";
 import { Check, KeyRound, Link2, Loader2, Unlink } from "lucide-react";
 import { DnaButton } from "@/components/dna";
 import { AuthMessage } from "@/components/auth/AuthPrimitives";
-import { BrandIcon } from "@/components/icons/BrandIcons";
+import { BrandIcon, DISCORD_BUTTON_CLASS } from "@/components/icons/BrandIcons";
 
 type Provider = "discord" | "google";
 
@@ -136,11 +136,11 @@ export function AccountConnections({
                 onClick={() => void signIn(provider, { callbackUrl })}
                 className={`inline-flex items-center gap-1.5 border px-3 py-1.5 font-caps text-[0.56rem] uppercase tracking-[0.14em] transition-colors ${
                   provider === "discord"
-                    ? "border-[#5865F2] bg-[#5865F2] text-white hover:bg-[#4752c4] hover:border-[#4752c4]"
+                    ? DISCORD_BUTTON_CLASS
                     : "border-gold/50 bg-gold/10 text-gold-bright hover:border-gold hover:bg-gold/20"
                 }`}
               >
-                <Link2 className="h-3.5 w-3.5" />
+                {provider === "discord" ? <BrandIcon brand="discord" size={14} /> : <Link2 className="h-3.5 w-3.5" />}
                 {t("connLink")}
               </button>
             )}

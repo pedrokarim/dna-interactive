@@ -14,7 +14,9 @@
     "extract:genimons:site": "bun run research_data/extract-genimons.ts",
     "extract:skills:site": "bun run research_data/extract-skills.ts",
     "db:push": "drizzle-kit push",
+    "db:migrate:notifications": "node scripts/migrate-notifications.mjs",
     "seed:calendar": "bun run scripts/seed-calendar-events.ts",
+    "seed:announcement:falsi": "bun run scripts/seed-announcement-falsi.ts",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
@@ -42,6 +44,7 @@
     "react-dom": "19.2.0",
     "react-google-recaptcha-v3": "^1.11.0",
     "react-leaflet": "^5.0.0",
+    "web-push": "^3.6.7",
     "zod": "^4.3.5"
   },
   "devDependencies": {
@@ -56,6 +59,7 @@
     "@types/pg": "^8.20.0",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/web-push": "^3.6.4",
     "@vitest/browser-playwright": "^4.1.8",
     "@vitest/coverage-v8": "^4.1.8",
     "dotenv": "^17.4.2",

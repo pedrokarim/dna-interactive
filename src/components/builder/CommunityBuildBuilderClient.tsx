@@ -39,6 +39,7 @@ import type { BuilderOptions } from "@/lib/community-builds/options";
 import type { CommunityBuildPayload } from "@/lib/community-builds/validation";
 import { BUILD_TAGS, type BuildTag } from "@/lib/community-builds/validation";
 import { captureAnalytics } from "@/lib/analytics";
+import { X_BUTTON_CLASS, XIcon } from "@/components/icons/BrandIcons";
 
 const STAT_IDS = ["ATK", "CritRate", "CritDmg", "SkillDmg", "ElementDmg", "HP", "DEF"] as const;
 
@@ -1393,7 +1394,14 @@ export function CommunityBuildBuilderClient({
               {t("shareCopyLink")}
             </DnaButton>
             <div className="grid grid-cols-3 gap-2">
-              <DnaButton variant="ghost" className="px-2 text-xs" onClick={shareToX}>X</DnaButton>
+              <DnaButton
+                variant="ghost"
+                className={`${X_BUTTON_CLASS} px-2 text-xs`}
+                icon={<XIcon className="h-3.5 w-3.5" />}
+                onClick={shareToX}
+              >
+                X
+              </DnaButton>
               <DnaButton variant="ghost" className="px-2 text-xs" onClick={shareToFacebook}>Facebook</DnaButton>
               <DnaButton variant="ghost" className="px-2 text-xs" onClick={shareToReddit}>Reddit</DnaButton>
             </div>

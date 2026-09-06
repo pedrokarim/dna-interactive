@@ -4,6 +4,7 @@ import { Link } from "@/i18n/navigation";
 import { ChevronDown, LogOut, Shield, UserRound } from "lucide-react";
 import { DnaAvatar, DnaButton } from "@/components/dna";
 import { getCurrentUser } from "@/lib/auth/session";
+import { DISCORD_BUTTON_CLASS, DiscordIcon } from "@/components/icons/BrandIcons";
 
 async function signInWithDiscord() {
   "use server";
@@ -30,7 +31,11 @@ export async function DiscordAuthButton({
   if (!user) {
     return (
       <form action={signInWithDiscord}>
-        <DnaButton variant="gold" className={compact ? "whitespace-nowrap px-3 py-1.5 text-xs" : undefined}>
+        <DnaButton
+          variant="ghost"
+          icon={<DiscordIcon className="h-4 w-4" />}
+          className={`${DISCORD_BUTTON_CLASS} ${compact ? "whitespace-nowrap px-3 py-1.5 text-xs" : ""}`}
+        >
           {t("signIn")}
         </DnaButton>
       </form>

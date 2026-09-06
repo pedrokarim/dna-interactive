@@ -50,7 +50,7 @@
     "builds": "コミュニティビルド",
     "calendar": "カレンダー",
     "discord": "Discord",
-    "twitter": "Twitter / X"
+    "twitter": "X"
   },
   "common": {
     "close": "閉じる",
@@ -1121,6 +1121,8 @@
   "homeHub": {
     "heroDescription": "Duet Night Abyssのコミュニティハブ。マップ、データベース、ビルド作成、各種ツールを一か所に。",
     "exploreTools": "ツールを見る",
+    "yourProfile": "プロフィール",
+    "signIn": "ログイン",
     "sharedBuilds": "コミュニティ · 共有ビルド",
     "featuredSelection": "おすすめ",
     "featuredThisWeek": "今週",
@@ -1678,5 +1680,33 @@
     "invalidProvider": "プロバイダーが不正です。",
     "accountNotLinked": "このアカウントは連携されていません。",
     "nameInvalidChars": "名前に使用できるのは、文字・スペース・アポストロフィ・ハイフンのみです。"
+  },
+  "notificationsPanel": {
+    "ariaWithUnread": "通知（未読 {count} 件）",
+    "markAllRead": "すべて既読",
+    "seeAll": "すべて見る",
+    "pushEnable": "プッシュを有効化",
+    "pushOn": "プッシュ有効",
+    "pushBlocked": "プッシュ拒否"
+  },
+  "notificationsPage": {
+    "heading": "通知",
+    "intro": "サイトのお知らせ、バージョン情報、ビルドの更新。バッジが消えたあともここに残ります。",
+    "loading": "読み込み中…",
+    "empty": "現在お知らせはありません。",
+    "emptyUnread": "未読はありません。",
+    "filterLabel": "通知を絞り込む",
+    "filterAll": "すべて",
+    "filterUnread": "未読",
+    "pinned": "固定",
+    "localOnlyNotice": "アカウントがない場合、既読状態はこの端末にのみ残ります。ログインすると共有されます。",
+    "pushOffTitle": "ブラウザ通知",
+    "pushOffHelp": "サイトを閉じていても重要なお知らせを受け取れます。許可なしに送信されることはなく、いつでも解除できます。",
+    "pushOnTitle": "ブラウザ通知は有効です",
+    "pushOnHelp": "この端末はお知らせを受け取ります。クリックで解除できます。",
+    "pushDeniedTitle": "ブラウザが通知をブロックしています",
+    "pushDeniedHelp": "許可が拒否されました。このページではなく、ブラウザのサイト設定から解除してください。",
+    "pushEnable": "有効にする",
+    "pushDisable": "無効にする"
   }
 }

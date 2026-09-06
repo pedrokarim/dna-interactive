@@ -50,7 +50,7 @@
     "builds": "커뮤니티 빌드",
     "calendar": "캘린더",
     "discord": "Discord",
-    "twitter": "Twitter / X"
+    "twitter": "X"
   },
   "common": {
     "close": "닫기",
@@ -1121,6 +1121,8 @@
   "homeHub": {
     "heroDescription": "Duet Night Abyss 커뮤니티 허브: 지도, 데이터베이스, 빌드 제작기와 도구를 한곳에서 만나보세요.",
     "exploreTools": "도구 둘러보기",
+    "yourProfile": "내 프로필",
+    "signIn": "로그인",
     "sharedBuilds": "커뮤니티 · 공유 빌드",
     "featuredSelection": "추천",
     "featuredThisWeek": "이번 주",
@@ -1678,5 +1680,33 @@
     "invalidProvider": "잘못된 제공업체입니다.",
     "accountNotLinked": "이 계정은 연결되어 있지 않습니다.",
     "nameInvalidChars": "이름에는 문자, 공백, 아포스트로피, 하이픈만 사용할 수 있습니다."
+  },
+  "notificationsPanel": {
+    "ariaWithUnread": "알림 (읽지 않음 {count}건)",
+    "markAllRead": "모두 읽음",
+    "seeAll": "전체 보기",
+    "pushEnable": "푸시 켜기",
+    "pushOn": "푸시 켜짐",
+    "pushBlocked": "푸시 차단됨"
+  },
+  "notificationsPage": {
+    "heading": "알림",
+    "intro": "사이트 공지, 버전 출시, 빌드 소식. 배지가 사라진 뒤에도 여기에 남습니다.",
+    "loading": "불러오는 중…",
+    "empty": "지금은 알릴 내용이 없습니다.",
+    "emptyUnread": "모두 읽었습니다.",
+    "filterLabel": "알림 필터",
+    "filterAll": "전체",
+    "filterUnread": "읽지 않음",
+    "pinned": "고정됨",
+    "localOnlyNotice": "계정이 없으면 읽음 상태는 이 기기에만 남습니다. 로그인하면 어디서나 유지됩니다.",
+    "pushOffTitle": "브라우저 알림",
+    "pushOffHelp": "사이트를 닫아도 중요한 공지를 받을 수 있습니다. 동의 없이는 발송되지 않으며 언제든 끌 수 있습니다.",
+    "pushOnTitle": "브라우저 알림이 켜져 있습니다",
+    "pushOnHelp": "이 기기는 공지를 받습니다. 클릭 한 번으로 끌 수 있습니다.",
+    "pushDeniedTitle": "브라우저가 알림을 차단했습니다",
+    "pushDeniedHelp": "권한이 거부되었습니다. 이 페이지가 아니라 브라우저의 사이트 설정에서만 복구할 수 있습니다.",
+    "pushEnable": "켜기",
+    "pushDisable": "끄기"
   }
 }

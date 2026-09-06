@@ -1,0 +1,39 @@
+# Base Postgres de développement — à lancer depuis WSL (Ubuntu-24.04).
+#
+# L'accès à la base de production est fermé depuis l'extérieur : le
+# développement local tourne donc sur cette base jetable, vide de toute donnée
+# réelle. Les identifiants ci-dessous n'ont aucune valeur de secret — le
+# conteneur n'écoute que sur la boucle locale de la machine.
+#
+#   wsl -d Ubuntu-24.04 -- bash -lc "cd /mnt/c/…/dna-test && docker compose -f docker-compose.dev.yml up -d"
+#
+# Cf. docs/base-de-donnees-locale.md
+services:
+  db:
+    image: postgres:18-alpine
+    container_name: dna-dev-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: dna
+      POSTGRES_PASSWORD: dna_dev_local
+      POSTGRES_DB: dna
+    ports:
+      # 5433 côté hôte : le 5432 de WSL est déjà pris par un autre projet.
+      # WSL2 relaie ce port sur le `localhost` de Windows — le serveur Next
+      # tourne donc sur Windows sans rien avoir à migrer.
+      - "5433:5432"
+    volumes:
+      # Postgres 18 déplace le répertoire de données : le volume se monte sur
+      # `/var/lib/postgresql`, plus sur `/var/lib/postgresql/data`.
+      - dna-dev-pgdata:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U dna -d dna"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  dna-dev-pgdata:
+    # Volume créé à la main lors de la mise en place : on le réutilise tel quel
+    # pour ne pas repartir d'une base vide.
+    external: true

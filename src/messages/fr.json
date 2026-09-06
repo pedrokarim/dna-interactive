@@ -50,7 +50,7 @@
     "builds": "Builds communauté",
     "calendar": "Calendrier",
     "discord": "Discord",
-    "twitter": "Twitter / X"
+    "twitter": "X"
   },
   "common": {
     "close": "Fermer",
@@ -1121,6 +1121,8 @@
   "homeHub": {
     "heroDescription": "Le hub communautaire pour Duet Night Abyss : carte, base de données, builder et outils, réunis au même endroit.",
     "exploreTools": "Explorer les outils",
+    "yourProfile": "Votre profil",
+    "signIn": "Se connecter",
     "sharedBuilds": "Communauté · builds partagés",
     "featuredSelection": "Sélection",
     "featuredThisWeek": "Cette semaine",
@@ -1678,5 +1680,33 @@
     "invalidProvider": "Fournisseur invalide.",
     "accountNotLinked": "Ce compte n'est pas lié.",
     "nameInvalidChars": "Le nom ne peut contenir que des lettres, espaces, apostrophes et tirets."
+  },
+  "notificationsPanel": {
+    "ariaWithUnread": "Notifications ({count} non lues)",
+    "markAllRead": "Tout marquer lu",
+    "seeAll": "Tout voir",
+    "pushEnable": "Activer le push",
+    "pushOn": "Push activé",
+    "pushBlocked": "Push bloqué"
+  },
+  "notificationsPage": {
+    "heading": "Notifications",
+    "intro": "Annonces du site, sorties de version et suivi de tes builds. Tout est archivé ici, même une fois la pastille éteinte.",
+    "loading": "Chargement du fil…",
+    "empty": "Rien à signaler pour le moment.",
+    "emptyUnread": "Tout est lu.",
+    "filterLabel": "Filtrer les notifications",
+    "filterAll": "Tout",
+    "filterUnread": "Non lues",
+    "pinned": "Épinglé",
+    "localOnlyNotice": "Sans compte, l'état « lu » reste sur cet appareil. Connecte-toi pour le retrouver partout.",
+    "pushOffTitle": "Notifications du navigateur",
+    "pushOffHelp": "Reçois les annonces importantes même quand le site est fermé. Aucune notification n'est envoyée sans ton accord, et tu peux couper à tout moment.",
+    "pushOnTitle": "Notifications du navigateur activées",
+    "pushOnHelp": "Cet appareil reçoit les annonces. Tu peux les couper d'un clic.",
+    "pushDeniedTitle": "Notifications bloquées par le navigateur",
+    "pushDeniedHelp": "L'autorisation a été refusée. Elle se rétablit depuis les réglages de site de ton navigateur, pas depuis cette page.",
+    "pushEnable": "Activer",
+    "pushDisable": "Désactiver"
   }
 }

@@ -2,28 +2,24 @@ import "server-only";
 import { and, desc, eq, inArray } from "drizzle-orm";
 import { getDb, schema } from "@/db";
 import { isMissingTableError } from "@/lib/db-errors";
-
-export type NotificationType = "build_moderated" | "report_new";
-
-export type AppNotification = {
-  id: string;
-  type: NotificationType;
-  title: string;
-  body?: string;
-  href?: string;
-  createdAt: string; // ISO
-};
+import type { AppNotification } from "./types";
 
 /**
  * Notifications DÉRIVÉES des tables existantes (aucune table dédiée) :
  * - modération de mes builds (adminActions)
  * - signalements ouverts (admins)
- * Sûr si une table est absente. L'état lu/non-lu est géré côté client (localStorage).
  *
- * NB : les votes étant désormais anonymes (par IP), on ne peut plus notifier
- * "X a aimé ton build" — cette source a été retirée.
+ * Elles complètent les annonces poussées par l'administration : ce sont les
+ * seules notifications qui dépendent du compte qui regarde. Sûr si une table
+ * est absente.
+ *
+ * NB : les votes étant anonymes (par IP), on ne peut plus notifier « X a aimé
+ * ton build » – cette source a été retirée.
  */
-export async function getNotifications(user: { id: string; role: "user" | "admin" }): Promise<AppNotification[]> {
+export async function getDerivedNotifications(user: {
+  id: string;
+  role: "user" | "admin";
+}): Promise<AppNotification[]> {
   const db = getDb();
   const out: AppNotification[] = [];
 
@@ -42,7 +38,12 @@ export async function getNotifications(user: { id: string; role: "user" | "admin
           targetId: schema.adminActions.targetId,
         })
         .from(schema.adminActions)
-        .where(and(eq(schema.adminActions.targetType, "build"), inArray(schema.adminActions.targetId, [...titleById.keys()])))
+        .where(
+          and(
+            eq(schema.adminActions.targetType, "build"),
+            inArray(schema.adminActions.targetId, [...titleById.keys()]),
+          ),
+        )
         .orderBy(desc(schema.adminActions.createdAt))
         .limit(10);
       for (const a of acts) {
@@ -56,7 +57,8 @@ export async function getNotifications(user: { id: string; role: "user" | "admin
         const iso = new Date(a.createdAt).toISOString();
         out.push({
           id: `mod-${a.targetId}-${Date.parse(iso)}`,
-          type: "build_moderated",
+          source: "derived",
+          kind: "moderation",
           title: `Ton build a été ${verb}`,
           body: a.targetId ? titleById.get(a.targetId) : undefined,
           href: "/profile",
@@ -78,10 +80,13 @@ export async function getNotifications(user: { id: string; role: "user" | "admin
         .orderBy(desc(schema.buildReports.createdAt));
       if (reports.length > 0) {
         out.push({
-          id: "reports-open",
-          type: "report_new",
+          // L'identifiant intègre le nombre de signalements : traiter la pile
+          // puis en recevoir un nouveau redonne bien une notification non lue.
+          id: `reports-open-${reports.length}`,
+          source: "derived",
+          kind: "report",
           title: `${reports.length} signalement${reports.length > 1 ? "s" : ""} à traiter`,
-          href: "/admin",
+          href: "/admin?vue=reports",
           createdAt: new Date(reports[0].createdAt).toISOString(),
         });
       }
@@ -90,6 +95,5 @@ export async function getNotifications(user: { id: string; role: "user" | "admin
     }
   }
 
-  out.sort((a, b) => Date.parse(b.createdAt) - Date.parse(a.createdAt));
-  return out.slice(0, 20);
+  return out;
 }

@@ -50,7 +50,7 @@
     "builds": "社群配裝",
     "calendar": "行事曆",
     "discord": "Discord",
-    "twitter": "Twitter / X"
+    "twitter": "X"
   },
   "common": {
     "close": "關閉",
@@ -1121,6 +1121,8 @@
   "homeHub": {
     "heroDescription": "Duet Night Abyss 社群中心：地圖、資料庫、配裝建立器與工具，全部集中在同一處。",
     "exploreTools": "探索工具",
+    "yourProfile": "您的個人檔案",
+    "signIn": "登入",
     "sharedBuilds": "社群 · 分享配裝",
     "featuredSelection": "精選",
     "featuredThisWeek": "本週",
@@ -1678,5 +1680,33 @@
     "invalidProvider": "無效的提供者。",
     "accountNotLinked": "此帳號尚未綁定。",
     "nameInvalidChars": "名稱僅能包含字母、空格、單引號與連字號。"
+  },
+  "notificationsPanel": {
+    "ariaWithUnread": "通知（{count} 則未讀）",
+    "markAllRead": "全部標為已讀",
+    "seeAll": "查看全部",
+    "pushEnable": "啟用推播",
+    "pushOn": "推播已啟用",
+    "pushBlocked": "推播已封鎖"
+  },
+  "notificationsPage": {
+    "heading": "通知",
+    "intro": "網站公告、版本更新與你的配裝動態。即使標記消失，內容仍會保留在這裡。",
+    "loading": "載入中…",
+    "empty": "目前沒有新消息。",
+    "emptyUnread": "全部已讀。",
+    "filterLabel": "篩選通知",
+    "filterAll": "全部",
+    "filterUnread": "未讀",
+    "pinned": "已置頂",
+    "localOnlyNotice": "未登入時，已讀狀態只會留在這台裝置。登入後即可跨裝置保留。",
+    "pushOffTitle": "瀏覽器通知",
+    "pushOffHelp": "即使關閉網站也能收到重要公告。未經同意不會發送，且隨時可以關閉。",
+    "pushOnTitle": "瀏覽器通知已啟用",
+    "pushOnHelp": "這台裝置會收到公告，點一下即可關閉。",
+    "pushDeniedTitle": "瀏覽器已封鎖通知",
+    "pushDeniedHelp": "權限遭到拒絕。只能從瀏覽器的網站設定恢復，無法在此頁面處理。",
+    "pushEnable": "啟用",
+    "pushDisable": "關閉"
   }
 }

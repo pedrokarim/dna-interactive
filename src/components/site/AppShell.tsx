@@ -4,8 +4,6 @@ import { useCallback, useRef, useState, useSyncExternalStore, type ReactNode } f
 import { useTranslations } from "next-intl";
 import {
   ArrowUpRight,
-  AtSign,
-  Bot,
   Boxes,
   CalendarDays,
   Hammer,
@@ -26,13 +24,14 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { Link, usePathname } from "@/i18n/navigation";
-import { DnaNouveau, DnaPill, DnaSectionMark, cn, useDialogA11y } from "@/components/dna";
+import { DnaAmbientBackdrop, DnaNouveau, DnaPill, DnaSectionMark, cn, useDialogA11y } from "@/components/dna";
 import { SidebarProfile, TopbarAccount } from "@/components/auth/AccountControls";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { NotificationBell } from "@/components/notifications/NotificationBell";
 import { SiteBanner } from "@/components/site/SiteBanner";
 import { useAppSettings } from "@/lib/settings/useAppSettings";
 import { GAME_VERSION, NAVIGATION } from "@/lib/constants";
+import { DISCORD_BUTTON_CLASS, DiscordIcon, X_BUTTON_CLASS, XIcon } from "@/components/icons/BrandIcons";
 import {
   SHELL_NAV_EXTERNAL,
   SHELL_NAV_PRIMARY,
@@ -49,7 +48,7 @@ import {
  * Icône par clé de navigation. Séparé de `lib/shell` pour que la config des
  * routes reste importable depuis le serveur sans embarquer de composant.
  */
-const NAV_ICONS: Record<string, LucideIcon> = {
+const NAV_ICONS: Record<string, LucideIcon | typeof DiscordIcon | typeof XIcon> = {
   home: Home,
   map: MapIcon,
   calendar: CalendarDays,
@@ -63,9 +62,30 @@ const NAV_ICONS: Record<string, LucideIcon> = {
   about: Info,
   support: LifeBuoy,
   contact: Mail,
-  discord: Bot,
-  twitter: AtSign,
+  discord: DiscordIcon,
+  twitter: XIcon,
 };
+
+/* ------------------------------------------------------- fond atmosphérique */
+
+/**
+ * Visuels du fond, dans leur ordre de passage.
+ *
+ * Illustrations propres au projet (cf. docs/wallpapers-fond-ambiant.md), pas
+ * des captures du jeu : le fond doit rester reconnaissable sans donner
+ * l'impression qu'on rejoue les visuels officiels en diaporama.
+ *
+ * Constante de module : la liste sert de dépendance à l'horloge du composant,
+ * elle doit garder la même identité entre deux rendus.
+ */
+const AMBIENT_FRAMES = [
+  "/assets/wallpapers/twin-eclipse.webp",
+  "/assets/wallpapers/gilded-nocturne.webp",
+  "/assets/wallpapers/abyss-cartographer.webp",
+  "/assets/wallpapers/vermilion-abyss.webp",
+  "/assets/wallpapers/astral-snow.webp",
+  "/assets/wallpapers/abyssal-carnival.webp",
+] as const;
 
 /* --------------------------------------------------- persistance état sidebar */
 
@@ -170,12 +190,16 @@ function SidebarLink({
   onNavigate?: () => void;
 }) {
   const Icon = NAV_ICONS[entry.key] ?? Info;
+  const brandButtonClass =
+    entry.key === "discord" ? DISCORD_BUTTON_CLASS : entry.key === "twitter" ? X_BUTTON_CLASS : null;
   const className = cn(
     "dna-sidebar-link group relative flex items-center gap-3 rounded-sm border px-3 py-2 font-caps text-[0.68rem] uppercase tracking-[0.14em] transition-colors",
     // Anneau `inset` : en mode replié le lien fait 40px dans un conteneur qui
     // scrolle, un anneau extérieur serait rogné.
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gold/60",
-    active
+    brandButtonClass
+      ? brandButtonClass
+      : active
       ? "border-gold/35 bg-gold/12 text-gold-bright"
       : "border-transparent text-parch/75 hover:border-line/25 hover:bg-panel/60 hover:text-gold",
   );
@@ -366,6 +390,11 @@ export function AppShell({ children, badges = {}, copyrightYears = "2025" }: App
         {t("skipToContent")}
       </a>
 
+      {/* ---------------------------------------------------------- FOND ANIMÉ */}
+      {/* Sous toute la coquille, monté une seule fois : le fond survit aux
+          navigations au lieu de repartir de zéro à chaque page. */}
+      <DnaAmbientBackdrop frames={AMBIENT_FRAMES} intensity="normal" />
+
       {/* ---------------------------------------------------------- SIDEBAR desktop */}
       <aside
         id="app-sidebar"
@@ -379,7 +408,9 @@ export function AppShell({ children, badges = {}, copyrightYears = "2025" }: App
       <MobileDrawer open={drawerOpen} onClose={closeDrawer} pathname={pathname} badges={badges} />
 
       {/* ---------------------------------------------------------- CONTENU */}
-      <div className="flex min-h-screen flex-col transition-[padding] duration-200 lg:pl-[var(--dna-sidebar-w)]">
+      {/* `relative z-10` : le fond est un enfant `position: fixed`, il serait
+          peint au-dessus d'un contenu resté dans le flux. */}
+      <div className="relative z-10 flex min-h-screen flex-col transition-[padding] duration-200 lg:pl-[var(--dna-sidebar-w)]">
         {/* -------------------------------------------------------- TOPBAR */}
         <header className="sticky top-0 z-40 flex items-center gap-3 border-b border-line/15 bg-ink/80 px-4 py-3 backdrop-blur-md sm:px-6">
           <button

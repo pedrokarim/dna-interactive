@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Check, ShieldCheck } from "lucide-react";
-import { DnaButton, DnaPanel, DnaSectionLabel, cn } from "@/components/dna";
+import { Check, Loader2 } from "lucide-react";
+import { cn } from "@/components/dna";
+import { FIELD_WIDTH, AdminFormButton, AdminPanel, AdminStatus, adminInputClass, adminLabelClass } from "./ui";
 
 type AuthConfigView = {
   discordId: string;
@@ -13,10 +14,14 @@ type AuthConfigView = {
   envGoogle: boolean;
 };
 
-const inputClass =
-  "w-full rounded-sm border border-white/10 bg-ink/60 px-3 py-2 text-sm text-parch outline-none transition-colors placeholder:text-muted-2 focus:border-gold/50";
-const labelClass = "mb-1 block font-caps text-[0.55rem] uppercase tracking-[0.16em] text-muted";
-
+/**
+ * Identifiants OAuth, surchargeables depuis l'interface.
+ *
+ * Les secrets ne reviennent jamais du serveur : le champ reste vide et son
+ * indicateur dit seulement s'il en existe un. C'est aussi pour ça que ce
+ * panneau est séparé des réglages ordinaires – on n'y écrase rien par
+ * inadvertance en enregistrant autre chose.
+ */
 export function AuthConfigPanel() {
   const [view, setView] = useState<AuthConfigView | null>(null);
   const [discordId, setDiscordId] = useState("");
@@ -27,20 +32,20 @@ export function AuthConfigPanel() {
   const [saved, setSaved] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const load = async () => {
-    const res = await fetch("/api/admin/auth-config");
-    if (!res.ok) return;
-    const json = await res.json();
-    const cfg = json.config as AuthConfigView;
-    setView(cfg);
-    setDiscordId(cfg.discordId);
-    setGoogleId(cfg.googleId);
-    setDiscordSecret("");
-    setGoogleSecret("");
-  };
-
   useEffect(() => {
-    void load();
+    let alive = true;
+    void (async () => {
+      const res = await fetch("/api/admin/auth-config").catch(() => null);
+      if (!res?.ok || !alive) return;
+      const json = await res.json();
+      const config = json.config as AuthConfigView;
+      setView(config);
+      setDiscordId(config.discordId);
+      setGoogleId(config.googleId);
+    })();
+    return () => {
+      alive = false;
+    };
   }, []);
 
   const save = async () => {
@@ -71,55 +76,125 @@ export function AuthConfigPanel() {
   };
 
   const secretPlaceholder = (has: boolean, env: boolean) =>
-    has ? "•••••••••• (défini — laisser vide pour conserver)" : env ? "(hérité de l'env — saisir pour surcharger)" : "Client Secret";
+    has
+      ? "•••••••••• — laisser vide pour conserver"
+      : env
+        ? "hérité de l'environnement — saisir pour surcharger"
+        : "Client Secret";
 
   return (
-    <DnaPanel className="p-5">
-      <div className="flex items-center gap-2">
-        <ShieldCheck className="h-4 w-4 text-gold" />
-        <DnaSectionLabel>Authentification (OAuth)</DnaSectionLabel>
+    <AdminPanel label="Authentification OAuth">
+      <div className="grid gap-3 p-3 sm:grid-cols-2">
+        <p className="font-sans text-[0.76rem] text-muted sm:col-span-2">
+          Ces valeurs surchargent les variables d&apos;environnement ; un champ vide conserve celle de
+          l&apos;environnement. Les secrets sont chiffrés en base et ne sont jamais renvoyés au navigateur.
+        </p>
+
+        <Field
+          id="auth-discord-id"
+          label="Discord — Client ID"
+          value={discordId}
+          onChange={(v) => {
+            setDiscordId(v);
+            setSaved(false);
+          }}
+          placeholder="AUTH_DISCORD_ID"
+          status={view?.envDiscord ? <AdminStatus tone="ok">env</AdminStatus> : null}
+        />
+        <Field
+          id="auth-discord-secret"
+          label="Discord — Client Secret"
+          type="password"
+          value={discordSecret}
+          onChange={(v) => {
+            setDiscordSecret(v);
+            setSaved(false);
+          }}
+          placeholder={secretPlaceholder(Boolean(view?.hasDiscordSecret), Boolean(view?.envDiscord))}
+          status={view?.hasDiscordSecret ? <AdminStatus tone="ok">défini</AdminStatus> : null}
+        />
+        <Field
+          id="auth-google-id"
+          label="Google — Client ID"
+          value={googleId}
+          onChange={(v) => {
+            setGoogleId(v);
+            setSaved(false);
+          }}
+          placeholder="AUTH_GOOGLE_ID"
+          status={view?.envGoogle ? <AdminStatus tone="ok">env</AdminStatus> : null}
+        />
+        <Field
+          id="auth-google-secret"
+          label="Google — Client Secret"
+          type="password"
+          value={googleSecret}
+          onChange={(v) => {
+            setGoogleSecret(v);
+            setSaved(false);
+          }}
+          placeholder={secretPlaceholder(Boolean(view?.hasGoogleSecret), Boolean(view?.envGoogle))}
+          status={view?.hasGoogleSecret ? <AdminStatus tone="ok">défini</AdminStatus> : null}
+        />
+
+        <p className="font-mono text-[0.64rem] text-muted-2 sm:col-span-2">
+          Prise en compte au prochain démarrage à froid. Un secret invalide provoque un retour automatique aux
+          variables d&apos;environnement.
+        </p>
+
+        {error ? <p className="font-sans text-[0.78rem] text-[#ffb3a6] sm:col-span-2">{error}</p> : null}
+
+        <div className="flex items-center gap-3 sm:col-span-2">
+          <AdminFormButton variant="primary" onClick={() => void save()} disabled={saving}>
+            {saving ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : null}
+            {saving ? "Enregistrement…" : "Enregistrer les identifiants"}
+          </AdminFormButton>
+          {saved ? (
+            <span className="inline-flex items-center gap-1.5 font-sans text-[0.78rem] text-gold">
+              <Check className="h-3.5 w-3.5" />
+              Enregistré
+            </span>
+          ) : null}
+        </div>
       </div>
-      <p className="mt-2 font-sans text-xs text-muted">
-        Surcharge les variables d'environnement. Vide = valeur de l'env conservée. Les secrets sont
-        <strong className="text-parch/85"> chiffrés</strong> et jamais renvoyés au navigateur.
-      </p>
+    </AdminPanel>
+  );
+}
 
-      <div className="mt-4 grid gap-4 sm:grid-cols-2">
-        <div>
-          <label className={labelClass}>Discord — Client ID {view?.envDiscord ? <span className="text-anemo">· env ✓</span> : null}</label>
-          <input className={inputClass} value={discordId} onChange={(e) => { setDiscordId(e.target.value); setSaved(false); }} placeholder="AUTH_DISCORD_ID" />
-        </div>
-        <div>
-          <label className={labelClass}>Discord — Client Secret {view?.hasDiscordSecret ? <span className="text-anemo">· défini ✓</span> : null}</label>
-          <input type="password" autoComplete="off" className={inputClass} value={discordSecret} onChange={(e) => { setDiscordSecret(e.target.value); setSaved(false); }} placeholder={secretPlaceholder(Boolean(view?.hasDiscordSecret), Boolean(view?.envDiscord))} />
-        </div>
-        <div>
-          <label className={labelClass}>Google — Client ID {view?.envGoogle ? <span className="text-anemo">· env ✓</span> : null}</label>
-          <input className={inputClass} value={googleId} onChange={(e) => { setGoogleId(e.target.value); setSaved(false); }} placeholder="AUTH_GOOGLE_ID" />
-        </div>
-        <div>
-          <label className={labelClass}>Google — Client Secret {view?.hasGoogleSecret ? <span className="text-anemo">· défini ✓</span> : null}</label>
-          <input type="password" autoComplete="off" className={inputClass} value={googleSecret} onChange={(e) => { setGoogleSecret(e.target.value); setSaved(false); }} placeholder={secretPlaceholder(Boolean(view?.hasGoogleSecret), Boolean(view?.envGoogle))} />
-        </div>
+function Field({
+  id,
+  label,
+  value,
+  onChange,
+  placeholder,
+  type = "text",
+  status,
+}: {
+  id: string;
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+  placeholder: string;
+  type?: "text" | "password";
+  status?: React.ReactNode;
+}) {
+  return (
+    <div>
+      <div className="mb-1 flex items-center justify-between gap-2">
+        <label className={adminLabelClass + " mb-0"} htmlFor={id}>
+          {label}
+        </label>
+        {status}
       </div>
-
-      <p className="mt-3 font-mono text-[0.6rem] text-muted-2">
-        Changement pris en compte au prochain redémarrage (cold-start). Un secret invalide ⇒ retour automatique à l'env.
-      </p>
-
-      {error ? <p className="mt-2 font-sans text-sm text-[#ffb3a6]">{error}</p> : null}
-
-      <div className="mt-4 flex items-center gap-3">
-        <DnaButton variant="gold" onClick={save} disabled={saving}>
-          {saving ? "Enregistrement…" : "Enregistrer les credentials"}
-        </DnaButton>
-        {saved ? (
-          <span className={cn("inline-flex items-center gap-1.5 font-caps text-[0.6rem] uppercase tracking-[0.14em] text-anemo")}>
-            <Check className="h-3.5 w-3.5" />
-            Enregistré
-          </span>
-        ) : null}
-      </div>
-    </DnaPanel>
+      <input
+        id={id}
+        type={type}
+        autoComplete="off"
+        className={cn(adminInputClass, FIELD_WIDTH.medium)}
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
+        placeholder={placeholder}
+      />
+    </div>
   );
 }

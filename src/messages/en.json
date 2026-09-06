@@ -50,7 +50,7 @@
     "builds": "Community Builds",
     "calendar": "Calendar",
     "discord": "Discord",
-    "twitter": "Twitter / X"
+    "twitter": "X"
   },
   "common": {
     "close": "Close",
@@ -1121,6 +1121,8 @@
   "homeHub": {
     "heroDescription": "The community hub for Duet Night Abyss: map, database, build creator and tools, all in one place.",
     "exploreTools": "Explore tools",
+    "yourProfile": "Your profile",
+    "signIn": "Sign in",
     "sharedBuilds": "Community · shared builds",
     "featuredSelection": "Featured",
     "featuredThisWeek": "This week",
@@ -1678,5 +1680,33 @@
     "invalidProvider": "Invalid provider.",
     "accountNotLinked": "This account isn't linked.",
     "nameInvalidChars": "The name can only contain letters, spaces, apostrophes and hyphens."
+  },
+  "notificationsPanel": {
+    "ariaWithUnread": "Notifications ({count} unread)",
+    "markAllRead": "Mark all read",
+    "seeAll": "See all",
+    "pushEnable": "Enable push",
+    "pushOn": "Push on",
+    "pushBlocked": "Push blocked"
+  },
+  "notificationsPage": {
+    "heading": "Notifications",
+    "intro": "Site announcements, version releases, and updates on your builds. Everything is archived here, even after the badge clears.",
+    "loading": "Loading feed…",
+    "empty": "Nothing to report right now.",
+    "emptyUnread": "All caught up.",
+    "filterLabel": "Filter notifications",
+    "filterAll": "All",
+    "filterUnread": "Unread",
+    "pinned": "Pinned",
+    "localOnlyNotice": "Without an account, read state stays on this device. Sign in to keep it everywhere.",
+    "pushOffTitle": "Browser notifications",
+    "pushOffHelp": "Get important announcements even when the site is closed. Nothing is sent without your consent, and you can turn it off any time.",
+    "pushOnTitle": "Browser notifications enabled",
+    "pushOnHelp": "This device receives announcements. One click turns them off.",
+    "pushDeniedTitle": "Notifications blocked by the browser",
+    "pushDeniedHelp": "Permission was denied. It can only be restored from your browser's site settings, not from this page.",
+    "pushEnable": "Enable",
+    "pushDisable": "Disable"
   }
 }

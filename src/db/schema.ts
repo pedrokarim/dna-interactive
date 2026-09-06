@@ -32,6 +32,12 @@ export const users = pgTable("users", {
   passwordHash: text("password_hash"),
   role: text("role", { enum: ["user", "admin"] }).notNull().default("user"),
   banned: boolean("banned").notNull().default(false),
+  /**
+   * Consentement aux annonces par email. Vrai par défaut : l'inscription vaut
+   * acceptation des messages de service, et la case se décoche depuis le profil.
+   * Seul le canal email est concerné – la cloche du site n'est jamais coupée.
+   */
+  announcementEmails: boolean("announcement_emails").notNull().default(true),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
 });
@@ -355,3 +361,112 @@ export type BuildRow = typeof builds.$inferSelect;
 export type BuildDraftRow = typeof buildDrafts.$inferSelect;
 export type BuildIpVoteRow = typeof buildIpVotes.$inferSelect;
 export type BuildReportRow = typeof buildReports.$inferSelect;
+
+// ---------------------------------------------------------------------------
+// Notifications – annonces poussées par l'administration.
+//
+// Une annonce est un message unique, rédigé une fois, distribué sur trois
+// canaux indépendants : la cloche du site (toujours), le push navigateur
+// (abonnés opt-in) et l'email (destinataires vérifiés). Les canaux réellement
+// utilisés sont choisis annonce par annonce à l'envoi.
+//
+// `audience` borne qui voit l'annonce :
+//   everyone      – tout le monde, visiteurs anonymes compris
+//   authenticated – comptes connectés uniquement
+//   admins        – équipe seulement (notes internes)
+//
+// `publishedAt` est la date de mise en ligne (peut être future : l'annonce est
+// alors programmée et reste invisible jusque-là). `expiresAt` la retire de la
+// liste sans la supprimer. `status` distingue le brouillon de la publication.
+// ---------------------------------------------------------------------------
+export const announcements = pgTable(
+  "announcements",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    title: text("title").notNull(),
+    body: text("body"),
+    href: text("href"),
+    image: text("image"),
+    /** Pastille de catégorie affichée dans la cloche. */
+    kind: text("kind", { enum: ["info", "release", "event", "maintenance", "warning"] })
+      .notNull()
+      .default("info"),
+    audience: text("audience", { enum: ["everyone", "authenticated", "admins"] })
+      .notNull()
+      .default("everyone"),
+    status: text("status", { enum: ["draft", "published"] }).notNull().default("draft"),
+    /**
+     * Une annonce « épinglée » reste en tête de liste tant qu'elle n'a pas
+     * expiré. Réservé aux rares messages structurants (maintenance, sortie).
+     */
+    pinned: boolean("pinned").notNull().default(false),
+    publishedAt: timestamp("published_at", { withTimezone: true }),
+    expiresAt: timestamp("expires_at", { withTimezone: true }),
+    /** Horodatages de distribution – `null` tant que le canal n'a pas servi. */
+    pushSentAt: timestamp("push_sent_at", { withTimezone: true }),
+    emailSentAt: timestamp("email_sent_at", { withTimezone: true }),
+    pushDeliveredCount: integer("push_delivered_count").notNull().default(0),
+    emailDeliveredCount: integer("email_delivered_count").notNull().default(0),
+    createdById: text("created_by_id").references(() => users.id, { onDelete: "set null" }),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [
+    index("idx_announcements_published").on(t.status, t.publishedAt),
+    index("idx_announcements_expires").on(t.expiresAt),
+  ],
+);
+
+/**
+ * État « lu » d'une notification pour un compte connecté.
+ *
+ * `notificationId` n'est pas une clé étrangère : il porte aussi bien l'`id`
+ * d'une annonce que celui d'une notification dérivée (`mod-…`, `reports-open`),
+ * qui n'existe dans aucune table. Les visiteurs anonymes conservent le même
+ * état côté navigateur (localStorage) – ce sont deux dépôts pour un même modèle.
+ */
+export const notificationReads = pgTable(
+  "notification_reads",
+  {
+    userId: text("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    notificationId: text("notification_id").notNull(),
+    readAt: timestamp("read_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [
+    primaryKey({ columns: [t.userId, t.notificationId] }),
+    index("idx_notification_reads_user").on(t.userId),
+  ],
+);
+
+/**
+ * Abonnement Web Push (norme Push API + VAPID).
+ *
+ * `endpoint` est l'URL unique fournie par le service de push du navigateur :
+ * c'est elle qui identifie l'abonnement, d'où la clé primaire. `p256dh` et
+ * `auth` sont les clés de chiffrement du client – sans elles, impossible de
+ * chiffrer la charge utile. `userId` est facultatif : un visiteur anonyme peut
+ * s'abonner, et un abonnement se rattache à un compte s'il se connecte ensuite.
+ *
+ * Un endpoint révoqué (410/404 renvoyé par le service de push) est supprimé à
+ * l'envoi suivant : c'est le seul mécanisme fiable de purge.
+ */
+export const pushSubscriptions = pgTable(
+  "push_subscriptions",
+  {
+    endpoint: text("endpoint").primaryKey(),
+    p256dh: text("p256dh").notNull(),
+    auth: text("auth").notNull(),
+    userId: text("user_id").references(() => users.id, { onDelete: "set null" }),
+    locale: text("locale").notNull().default("fr"),
+    userAgent: text("user_agent"),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    lastSeenAt: timestamp("last_seen_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [index("idx_push_subscriptions_user").on(t.userId)],
+);
+
+export type AnnouncementRow = typeof announcements.$inferSelect;
+export type NotificationReadRow = typeof notificationReads.$inferSelect;
+export type PushSubscriptionRow = typeof pushSubscriptions.$inferSelect;

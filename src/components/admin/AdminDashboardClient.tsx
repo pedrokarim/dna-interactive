@@ -1,12 +1,13 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useQueryState, parseAsStringLiteral } from "nuqs";
 import {
   ArrowLeft,
   Ban,
   CalendarDays,
-  CheckCircle2,
+  Check,
+  ExternalLink,
   Eye,
   EyeOff,
   FileWarning,
@@ -14,27 +15,48 @@ import {
   LayoutDashboard,
   Mail,
   MailOpen,
+  Megaphone,
   RefreshCcw,
   Settings,
   Shield,
+  ShieldCheck,
+  ShieldOff,
   Trash2,
-  UserCog,
+  Undo2,
   Users,
-  XCircle,
+  X,
+  type LucideIcon,
 } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { DnaAvatar } from "@/components/dna/Avatar";
-import { DnaButton } from "@/components/dna/Button";
-import { DnaPanel } from "@/components/dna/Panel";
-import { DnaSectionLabel } from "@/components/dna/SectionLabel";
-import { DnaTag } from "@/components/dna/Tag";
 import { useConfirm } from "@/components/dna/ConfirmProvider";
+import { cn } from "@/components/dna";
+import { AnnouncementsAdminClient } from "./AnnouncementsAdminClient";
 import { CalendarAdminClient } from "./CalendarAdminClient";
 import { SettingsAdminClient } from "./SettingsAdminClient";
+import {
+  AdminActions,
+  AdminActionsDivider,
+  AdminChip,
+  AdminEmpty,
+  AdminIconButton,
+  AdminIconLink,
+  AdminIdentity,
+  AdminPager,
+  AdminPanel,
+  AdminSearch,
+  AdminStatus,
+  AdminTable,
+  AdminTableSkeleton,
+  AdminTd,
+  AdminTh,
+  AdminTr,
+  type AdminPagination,
+} from "./ui";
 
 const ADMIN_PAGE_SIZE = 12;
 
-type AdminView = "overview" | "reports" | "builds" | "users" | "emails" | "calendar" | "settings";
+type AdminView = "overview" | "reports" | "builds" | "users" | "emails" | "announcements" | "calendar" | "settings";
 
 type EmailStats = {
   total: number;
@@ -42,13 +64,6 @@ type EmailStats = {
   openRate: number;
   byKind: Array<{ kind: string; sent: number; opened: number }>;
   recent: Array<{ recipient: string; kind: string; sentAt: string; openedAt: string | null; openCount: number }>;
-};
-
-type AdminPagination = {
-  page: number;
-  pageSize: number;
-  total: number;
-  totalPages: number;
 };
 
 type AdminBuild = {
@@ -85,44 +100,39 @@ type AdminUser = {
   createdAt: string;
 };
 
-type CurrentAdmin = {
-  name?: string | null;
-  image?: string | null;
-};
+type CurrentAdmin = { name?: string | null; image?: string | null };
 
-type AdminStats = {
-  builds: number;
-  reports: number;
-  users: number;
-  visibleBuilds: number;
-  openReports: number;
-  bannedUsers: number;
-  adminUsers: number;
-};
+const EMPTY_PAGINATION: AdminPagination = { page: 1, pageSize: ADMIN_PAGE_SIZE, total: 0, totalPages: 1 };
 
-const EMPTY_PAGINATION: AdminPagination = {
-  page: 1,
-  pageSize: ADMIN_PAGE_SIZE,
-  total: 0,
-  totalPages: 1,
-};
-
-const ADMIN_NAV: Array<{ id: AdminView; label: string; icon: typeof LayoutDashboard }> = [
+const ADMIN_NAV: Array<{ id: AdminView; label: string; icon: LucideIcon }> = [
   { id: "overview", label: "Vue d'ensemble", icon: LayoutDashboard },
   { id: "reports", label: "Signalements", icon: FileWarning },
   { id: "builds", label: "Builds", icon: Hammer },
   { id: "users", label: "Utilisateurs", icon: Users },
   { id: "emails", label: "Emails", icon: Mail },
+  { id: "announcements", label: "Annonces", icon: Megaphone },
   { id: "calendar", label: "Calendrier", icon: CalendarDays },
   { id: "settings", label: "Configuration", icon: Settings },
 ];
 
+const VIEW_IDS = ADMIN_NAV.map((item) => item.id) as [AdminView, ...AdminView[]];
+
+/**
+ * Console d'administration.
+ *
+ * Parti pris : une console, pas une page produit. Les données sont présentées
+ * en tableaux denses, chaque action tient dans une icône à infobulle, et le
+ * chrome (titres, encarts, métriques) ne mange pas la place des lignes. Les
+ * primitives vivent dans `./ui` – elles ne réutilisent volontairement pas les
+ * composants marketing du design system, dont les proportions sont faites pour
+ * convaincre un visiteur, pas pour traiter une file de modération.
+ */
 export function AdminDashboardClient({ currentUser }: { currentUser: CurrentAdmin }) {
-  // Onglet actif reflété dans l'URL (partageable, navigable).
   const [activeView, setActiveView] = useQueryState(
     "vue",
-    parseAsStringLiteral(["overview", "reports", "builds", "users", "emails", "calendar", "settings"] as const).withDefault("overview").withOptions({ history: "replace" }),
+    parseAsStringLiteral(VIEW_IDS).withDefault("overview").withOptions({ history: "replace" }),
   );
+
   const [builds, setBuilds] = useState<AdminBuild[]>([]);
   const [reports, setReports] = useState<AdminReport[]>([]);
   const [users, setUsers] = useState<AdminUser[]>([]);
@@ -134,47 +144,46 @@ export function AdminDashboardClient({ currentUser }: { currentUser: CurrentAdmi
   const [userPagination, setUserPagination] = useState<AdminPagination>(EMPTY_PAGINATION);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
-  const [message, setMessage] = useState<string | null>(null);
+  const [message, setMessage] = useState<{ tone: "ok" | "error"; text: string } | null>(null);
   const [emailStats, setEmailStats] = useState<EmailStats | null>(null);
+  const [filter, setFilter] = useState("");
 
   const load = useCallback(async () => {
-    setRefreshing(true);
-    const buildParams = new URLSearchParams({
-      buildPage: `${buildPage}`,
-      buildPageSize: `${ADMIN_PAGE_SIZE}`,
-      reportPage: `${reportPage}`,
-      reportPageSize: `${ADMIN_PAGE_SIZE}`,
-    });
-    const userParams = new URLSearchParams({
-      page: `${userPage}`,
-      pageSize: `${ADMIN_PAGE_SIZE}`,
-    });
+    try {
+      setRefreshing(true);
+      const buildParams = new URLSearchParams({
+        buildPage: `${buildPage}`,
+        buildPageSize: `${ADMIN_PAGE_SIZE}`,
+        reportPage: `${reportPage}`,
+        reportPageSize: `${ADMIN_PAGE_SIZE}`,
+      });
+      const userParams = new URLSearchParams({ page: `${userPage}`, pageSize: `${ADMIN_PAGE_SIZE}` });
 
-    const [buildsResponse, usersResponse, emailsResponse] = await Promise.all([
-      fetch(`/api/admin/builds?${buildParams.toString()}`),
-      fetch(`/api/admin/users?${userParams.toString()}`),
-      fetch(`/api/admin/emails`),
-    ]);
+      const [buildsResponse, usersResponse, emailsResponse] = await Promise.all([
+        fetch(`/api/admin/builds?${buildParams}`),
+        fetch(`/api/admin/users?${userParams}`),
+        fetch(`/api/admin/emails`),
+      ]);
 
-    if (emailsResponse.ok) setEmailStats(await emailsResponse.json().catch(() => null));
+      if (emailsResponse.ok) setEmailStats(await emailsResponse.json().catch(() => null));
+      if (!buildsResponse.ok || !usersResponse.ok) {
+        setMessage({ tone: "error", text: "Chargement impossible." });
+        return;
+      }
 
-    if (!buildsResponse.ok || !usersResponse.ok) {
-      setMessage("Chargement admin impossible.");
+      const [buildsData, usersData] = await Promise.all([buildsResponse.json(), usersResponse.json()]);
+      setBuilds(buildsData.builds ?? []);
+      setReports(buildsData.reports ?? []);
+      setUsers(usersData.users ?? []);
+      setBuildPagination(buildsData.pagination?.builds ?? EMPTY_PAGINATION);
+      setReportPagination(buildsData.pagination?.reports ?? EMPTY_PAGINATION);
+      setUserPagination(usersData.pagination ?? EMPTY_PAGINATION);
+    } catch {
+      setMessage({ tone: "error", text: "Chargement impossible." });
+    } finally {
       setLoading(false);
       setRefreshing(false);
-      return;
     }
-
-    const [buildsData, usersData] = await Promise.all([buildsResponse.json(), usersResponse.json()]);
-    setBuilds(buildsData.builds ?? []);
-    setReports(buildsData.reports ?? []);
-    setUsers(usersData.users ?? []);
-    setBuildPagination(buildsData.pagination?.builds ?? EMPTY_PAGINATION);
-    setReportPagination(buildsData.pagination?.reports ?? EMPTY_PAGINATION);
-    setUserPagination(usersData.pagination ?? EMPTY_PAGINATION);
-    setLoading(false);
-    setRefreshing(false);
-    setMessage(null);
   }, [buildPage, reportPage, userPage]);
 
   useEffect(() => {
@@ -187,8 +196,8 @@ export function AdminDashboardClient({ currentUser }: { currentUser: CurrentAdmi
       builds: buildPagination.total,
       reports: reportPagination.total,
       users: userPagination.total,
-      visibleBuilds: builds.filter((build) => !build.hidden).length,
       openReports: reports.filter((report) => report.status === "open").length,
+      hiddenBuilds: builds.filter((build) => build.hidden).length,
       bannedUsers: users.filter((user) => user.banned).length,
       adminUsers: users.filter((user) => user.role === "admin").length,
     }),
@@ -202,7 +211,7 @@ export function AdminDashboardClient({ currentUser }: { currentUser: CurrentAdmi
       body: JSON.stringify(body),
     });
     await load();
-    setMessage(response.ok ? "Action appliquee." : "Action refusee.");
+    setMessage(response.ok ? { tone: "ok", text: "Action appliquée." } : { tone: "error", text: "Action refusée." });
   }
 
   async function patchUser(body: Record<string, unknown>) {
@@ -212,157 +221,221 @@ export function AdminDashboardClient({ currentUser }: { currentUser: CurrentAdmi
       body: JSON.stringify(body),
     });
     await load();
-    setMessage(response.ok ? "Utilisateur mis a jour." : "Action refusee.");
+    setMessage(response.ok ? { tone: "ok", text: "Compte mis à jour." } : { tone: "error", text: "Action refusée." });
   }
+
+  // Filtre local à la page chargée. Le dire explicitement (cf. `hint`) évite de
+  // laisser croire à une recherche sur toute la base.
+  const needle = filter.trim().toLowerCase();
+  const filteredReports = needle
+    ? reports.filter((r) => `${r.buildTitle} ${r.reason} ${r.reporterName ?? ""}`.toLowerCase().includes(needle))
+    : reports;
+  const filteredBuilds = needle
+    ? builds.filter((b) => `${b.title} ${b.characterId} ${b.authorName ?? ""}`.toLowerCase().includes(needle))
+    : builds;
+  const filteredUsers = needle
+    ? users.filter((u) => `${u.name ?? ""} ${u.email ?? ""} ${u.discordId ?? ""}`.toLowerCase().includes(needle))
+    : users;
+
+  const activeLabel = ADMIN_NAV.find((item) => item.id === activeView)?.label ?? "";
+  const hasTable = activeView === "reports" || activeView === "builds" || activeView === "users";
 
   return (
     <div className="min-h-screen bg-[#07090d] text-parch">
-      <AdminSidebar activeView={activeView} currentUser={currentUser} onChange={setActiveView} />
+      <AdminSidebar
+        activeView={activeView}
+        currentUser={currentUser}
+        openReports={stats.openReports}
+        onChange={setActiveView}
+      />
 
-      <div className="min-h-screen lg:pl-72">
-        <header className="sticky top-0 z-30 border-b border-white/10 bg-[#07090d]/92 backdrop-blur-md">
-          <div className="flex min-h-16 flex-col gap-3 px-4 py-3 md:px-6 xl:px-8">
-            <div className="flex min-w-0 items-center justify-between gap-3">
-              <div className="min-w-0">
-                <p className="font-caps text-[0.58rem] uppercase tracking-[0.22em] text-gold/80">Back-office</p>
-                <h1 className="truncate font-display text-2xl leading-tight text-parch md:text-3xl">Administration DNA</h1>
-              </div>
-              <div className="flex shrink-0 items-center gap-2">
-                {message ? <span className="hidden font-sans text-xs text-gold md:inline">{message}</span> : null}
-                <DnaButton
-                  icon={<RefreshCcw className={refreshing ? "h-4 w-4 animate-spin" : "h-4 w-4"} />}
-                  className="px-3 py-2 text-xs"
-                  onClick={() => void load()}
-                  disabled={refreshing}
-                >
-                  Refresh
-                </DnaButton>
-              </div>
+      <div className="min-h-screen lg:pl-64">
+        {/* ------------------------------------------------------ barre supérieure */}
+        <header className="sticky top-0 z-30 border-b border-white/10 bg-[#07090d]/95 backdrop-blur-md">
+          <div className="flex min-h-14 items-center gap-3 px-4 py-2.5 md:px-5">
+            <div className="flex min-w-0 items-baseline gap-2">
+              <span className="hidden font-caps text-[0.56rem] uppercase tracking-[0.2em] text-muted-2 sm:inline">
+                Back-office
+              </span>
+              <span aria-hidden className="hidden text-muted-2 sm:inline">
+                /
+              </span>
+              <h1 className="truncate font-caps text-[0.68rem] uppercase tracking-[0.18em] text-gold">{activeLabel}</h1>
             </div>
-            <div className="flex gap-2 overflow-x-auto pb-1 lg:hidden">
-              {ADMIN_NAV.map((item) => (
-                <AdminNavButton
-                  key={item.id}
-                  item={item}
-                  active={activeView === item.id}
-                  compact
-                  onClick={() => setActiveView(item.id)}
-                />
-              ))}
+
+            <div className="ml-auto flex shrink-0 items-center gap-2">
+              {message ? (
+                <span
+                  className={cn(
+                    "hidden font-sans text-[0.72rem] md:inline",
+                    message.tone === "ok" ? "text-gold" : "text-[#ffb3a6]",
+                  )}
+                >
+                  {message.text}
+                </span>
+              ) : null}
+              <AdminIconButton
+                icon={RefreshCcw}
+                label="Recharger les données"
+                busy={refreshing}
+                onClick={() => void load()}
+              />
             </div>
           </div>
+
+          {/* Navigation repliée sur les petits écrans */}
+          <nav className="flex gap-1 overflow-x-auto px-4 pb-2 md:px-5 lg:hidden">
+            {ADMIN_NAV.map((item) => (
+              <AdminNavButton
+                key={item.id}
+                item={item}
+                active={activeView === item.id}
+                compact
+                badge={item.id === "reports" ? stats.openReports : 0}
+                onClick={() => setActiveView(item.id)}
+              />
+            ))}
+          </nav>
         </header>
 
-        <main className="px-4 py-5 md:px-6 md:py-6 xl:px-8">
-          {loading ? (
-            <AdminLoadingState />
-          ) : (
-            <div className="mx-auto flex w-full max-w-[112rem] flex-col gap-5">
-              <AdminMetrics stats={stats} />
-              {message ? <p className="font-sans text-sm text-gold md:hidden">{message}</p> : null}
+        <main className="flex flex-col gap-4 px-4 py-4 md:px-5">
+          {activeView === "overview" ? <AdminMetrics stats={stats} onView={setActiveView} /> : null}
 
-              {activeView === "overview" ? (
-                <OverviewView
-                  reports={reports}
-                  builds={builds}
-                  users={users}
-                  onView={setActiveView}
-                  onPatchBuild={patchBuild}
-                  onPatchUser={patchUser}
-                />
-              ) : null}
+          {message ? (
+            <p className={cn("font-sans text-[0.78rem] md:hidden", message.tone === "ok" ? "text-gold" : "text-[#ffb3a6]")}>
+              {message.text}
+            </p>
+          ) : null}
 
-              {activeView === "reports" ? (
-                <ReportsView
-                  reports={reports}
-                  pagination={reportPagination}
-                  onChangePage={setReportPage}
-                  onPatchBuild={patchBuild}
-                />
-              ) : null}
-
-              {activeView === "builds" ? (
-                <BuildsView
-                  builds={builds}
-                  pagination={buildPagination}
-                  onChangePage={setBuildPage}
-                  onPatchBuild={patchBuild}
-                  onPatchUser={patchUser}
-                />
-              ) : null}
-
-              {activeView === "users" ? (
-                <UsersView
-                  users={users}
-                  pagination={userPagination}
-                  onChangePage={setUserPage}
-                  onPatchUser={patchUser}
-                />
-              ) : null}
-
-              {activeView === "emails" ? <EmailsView stats={emailStats} /> : null}
-
-              {activeView === "calendar" ? <CalendarAdminClient /> : null}
-
-              {activeView === "settings" ? <SettingsAdminClient /> : null}
+          {hasTable ? (
+            <div className="max-w-md">
+              <AdminSearch
+                value={filter}
+                onChange={setFilter}
+                placeholder="Filtrer…"
+                hint="Le filtre porte sur la page affichée, pas sur toute la base."
+              />
             </div>
-          )}
+          ) : null}
+
+          {activeView === "overview" ? (
+            <OverviewView
+              loading={loading}
+              reports={reports}
+              builds={builds}
+              onView={setActiveView}
+              onPatchBuild={patchBuild}
+            />
+          ) : null}
+
+          {activeView === "reports" ? (
+            <AdminPanel
+              label="File de modération"
+              count={reportPagination.total}
+              footer={<AdminPager pagination={reportPagination} onChange={setReportPage} />}
+            >
+              {loading ? (
+                <AdminTableSkeleton columns={5} />
+              ) : (
+                <ReportsTable reports={filteredReports} onPatchBuild={patchBuild} />
+              )}
+            </AdminPanel>
+          ) : null}
+
+          {activeView === "builds" ? (
+            <AdminPanel
+              label="Builds communautaires"
+              count={buildPagination.total}
+              footer={<AdminPager pagination={buildPagination} onChange={setBuildPage} />}
+            >
+              {loading ? (
+                <AdminTableSkeleton columns={6} />
+              ) : (
+                <BuildsTable builds={filteredBuilds} onPatchBuild={patchBuild} onPatchUser={patchUser} />
+              )}
+            </AdminPanel>
+          ) : null}
+
+          {activeView === "users" ? (
+            <AdminPanel
+              label="Comptes"
+              count={userPagination.total}
+              footer={<AdminPager pagination={userPagination} onChange={setUserPage} />}
+            >
+              {loading ? <AdminTableSkeleton columns={5} /> : <UsersTable users={filteredUsers} onPatchUser={patchUser} />}
+            </AdminPanel>
+          ) : null}
+
+          {activeView === "emails" ? <EmailsView stats={emailStats} /> : null}
+          {activeView === "announcements" ? <AnnouncementsAdminClient /> : null}
+          {activeView === "calendar" ? <CalendarAdminClient /> : null}
+          {activeView === "settings" ? <SettingsAdminClient /> : null}
         </main>
       </div>
     </div>
   );
 }
 
+// ---------------------------------------------------------------------------
+// Chrome
+// ---------------------------------------------------------------------------
+
 function AdminSidebar({
   activeView,
   currentUser,
+  openReports,
   onChange,
 }: {
   activeView: AdminView;
   currentUser: CurrentAdmin;
+  openReports: number;
   onChange: (view: AdminView) => void;
 }) {
   return (
-    <aside className="fixed inset-y-0 left-0 z-40 hidden w-72 flex-col border-r border-white/10 bg-[#0b0e14] lg:flex">
-      <div className="border-b border-white/10 p-5">
-        <div className="flex items-center gap-3">
-          <div className="grid h-10 w-10 place-items-center border border-gold/45 bg-gold/10 text-gold">
-            <Shield className="h-5 w-5" />
-          </div>
-          <div className="min-w-0">
-            <p className="font-display text-xl leading-none text-parch">DNA Admin</p>
-            <p className="mt-1 font-caps text-[0.55rem] uppercase tracking-[0.18em] text-muted">Operations panel</p>
-          </div>
-        </div>
+    <aside className="fixed inset-y-0 left-0 z-40 hidden w-64 flex-col border-r border-white/10 bg-[#0b0e14] lg:flex">
+      <div className="flex items-center gap-2.5 border-b border-white/10 px-4 py-3.5">
+        <span className="grid h-8 w-8 shrink-0 place-items-center border border-gold/45 bg-gold/10 text-gold">
+          <Shield className="h-4 w-4" />
+        </span>
+        <span className="min-w-0">
+          <span className="block font-caps text-[0.7rem] uppercase tracking-[0.16em] text-parch">DNA Admin</span>
+          <span className="block font-mono text-[0.58rem] text-muted-2">operations</span>
+        </span>
       </div>
 
-      <nav className="flex-1 space-y-1 overflow-y-auto p-3">
+      <nav className="flex-1 space-y-0.5 overflow-y-auto p-2">
         {ADMIN_NAV.map((item) => (
-          <AdminNavButton key={item.id} item={item} active={activeView === item.id} onClick={() => onChange(item.id)} />
+          <AdminNavButton
+            key={item.id}
+            item={item}
+            active={activeView === item.id}
+            badge={item.id === "reports" ? openReports : 0}
+            onClick={() => onChange(item.id)}
+          />
         ))}
       </nav>
 
-      <div className="border-t border-white/10 p-4">
-        <div className="flex min-w-0 items-center gap-3 border border-white/10 bg-white/[0.03] p-3">
-          <DnaAvatar src={currentUser.image} fallback={(currentUser.name ?? "A").charAt(0).toUpperCase()} round size={38} />
-          <div className="min-w-0">
-            <p className="truncate font-sans text-sm text-parch">{currentUser.name ?? "Admin"}</p>
-            <p className="font-caps text-[0.55rem] uppercase tracking-[0.16em] text-gold">Administrateur</p>
-          </div>
+      <div className="border-t border-white/10 p-2.5">
+        <div className="flex min-w-0 items-center gap-2.5 px-1.5 py-1">
+          <DnaAvatar src={currentUser.image} fallback={(currentUser.name ?? "A").charAt(0).toUpperCase()} round size={30} />
+          <span className="min-w-0">
+            <span className="block truncate font-sans text-[0.8rem] text-parch">{currentUser.name ?? "Admin"}</span>
+            <span className="block font-mono text-[0.58rem] uppercase tracking-[0.1em] text-gold/80">administrateur</span>
+          </span>
         </div>
-        <div className="mt-3 grid grid-cols-2 gap-2">
+        <div className="mt-2 flex gap-1">
           <Link
             href="/"
-            className="inline-flex items-center justify-center gap-2 border border-white/15 bg-white/[0.03] px-3 py-2 font-sans text-xs text-parch/85 transition-colors hover:border-gold/45 hover:text-gold"
+            className="flex flex-1 items-center justify-center gap-1.5 border border-white/12 px-2 py-1.5 font-sans text-[0.72rem] text-parch/75 transition-colors hover:border-gold/45 hover:text-gold"
           >
-            <ArrowLeft className="h-3.5 w-3.5" />
+            <ArrowLeft className="h-3 w-3" />
             Site
           </Link>
           <Link
             href="/builder"
-            className="inline-flex items-center justify-center gap-2 border border-white/15 bg-white/[0.03] px-3 py-2 font-sans text-xs text-parch/85 transition-colors hover:border-gold/45 hover:text-gold"
+            className="flex flex-1 items-center justify-center gap-1.5 border border-white/12 px-2 py-1.5 font-sans text-[0.72rem] text-parch/75 transition-colors hover:border-gold/45 hover:text-gold"
           >
-            <Hammer className="h-3.5 w-3.5" />
+            <Hammer className="h-3 w-3" />
             Builder
           </Link>
         </div>
@@ -375,11 +448,13 @@ function AdminNavButton({
   item,
   active,
   compact = false,
+  badge = 0,
   onClick,
 }: {
   item: (typeof ADMIN_NAV)[number];
   active: boolean;
   compact?: boolean;
+  badge?: number;
   onClick: () => void;
 }) {
   const Icon = item.icon;
@@ -387,332 +462,208 @@ function AdminNavButton({
     <button
       type="button"
       onClick={onClick}
-      className={`flex items-center gap-3 border px-3 py-2.5 text-left font-sans text-sm transition-colors ${
-        active
-          ? "border-gold/45 bg-gold/12 text-gold-bright"
-          : "border-transparent text-parch/72 hover:border-white/10 hover:bg-white/[0.04] hover:text-parch"
-      } ${compact ? "shrink-0" : "w-full"}`}
+      aria-current={active ? "page" : undefined}
+      className={cn(
+        "flex items-center gap-2.5 px-2.5 py-2 text-left font-sans text-[0.82rem] transition-colors",
+        compact
+          ? cn("shrink-0 border-b-2", active ? "border-b-gold text-gold-bright" : "border-b-transparent text-parch/65 hover:text-parch")
+          : cn(
+              "w-full border-l-2",
+              active
+                ? "border-l-gold bg-gold/10 text-gold-bright"
+                : "border-l-transparent text-parch/65 hover:bg-white/[0.04] hover:text-parch",
+            ),
+      )}
     >
-      <Icon className="h-4 w-4 shrink-0" />
+      <Icon className="h-3.5 w-3.5 shrink-0" />
       <span className="whitespace-nowrap">{item.label}</span>
+      {badge > 0 ? (
+        <span className="ml-auto grid h-4 min-w-4 place-items-center rounded-full bg-crimson-bright px-1 font-mono text-[0.58rem] leading-none text-white tabular-nums">
+          <span className="dna-optical-num">{badge}</span>
+        </span>
+      ) : null}
     </button>
   );
 }
 
-function AdminMetrics({ stats }: { stats: AdminStats }) {
-  return (
-    <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
-      <AdminMetric icon={<Hammer className="h-5 w-5" />} label="Builds total" value={stats.builds} sublabel={`${stats.visibleBuilds} visibles sur cette page`} />
-      <AdminMetric icon={<FileWarning className="h-5 w-5" />} label="Signalements" value={stats.reports} sublabel={`${stats.openReports} ouverts sur cette page`} tone={stats.openReports > 0 ? "crimson" : "gold"} />
-      <AdminMetric icon={<Users className="h-5 w-5" />} label="Utilisateurs" value={stats.users} sublabel={`${stats.bannedUsers} bannis sur cette page`} />
-      <AdminMetric icon={<Shield className="h-5 w-5" />} label="Admins" value={stats.adminUsers} sublabel="Admins detectes sur cette page" />
-    </div>
-  );
-}
-
-function AdminMetric({
-  icon,
-  label,
-  value,
-  sublabel,
-  tone = "gold",
-}: {
-  icon: ReactNode;
-  label: string;
-  value: number;
-  sublabel: string;
-  tone?: "gold" | "crimson";
-}) {
-  return (
-    <DnaPanel className="p-4">
-      <div className="flex items-start justify-between gap-3">
-        <div>
-          <p className="font-caps text-[0.58rem] uppercase tracking-[0.18em] text-muted">{label}</p>
-          <p className={tone === "crimson" ? "mt-2 font-display text-4xl leading-none text-[#ffb3a6]" : "mt-2 font-display text-4xl leading-none text-gold-bright"}>
-            {value}
-          </p>
-        </div>
-        <div className={tone === "crimson" ? "grid h-10 w-10 place-items-center border border-crimson-bright/35 bg-crimson/15 text-[#ffb3a6]" : "grid h-10 w-10 place-items-center border border-gold/35 bg-gold/10 text-gold"}>
-          {icon}
-        </div>
-      </div>
-      <p className="mt-3 font-sans text-xs text-muted-2">{sublabel}</p>
-    </DnaPanel>
-  );
-}
-
-const EMAIL_KIND_LABELS: Record<string, string> = {
-  verify_email: "Vérification",
-  reset_password: "Reset mot de passe",
-  set_password: "Définir mot de passe",
-  welcome: "Bienvenue",
-  contact: "Contact",
+type AdminStats = {
+  builds: number;
+  reports: number;
+  users: number;
+  openReports: number;
+  hiddenBuilds: number;
+  bannedUsers: number;
+  adminUsers: number;
 };
 
-function formatEmailDate(iso: string): string {
-  const d = new Date(iso);
-  return Number.isNaN(d.getTime()) ? "—" : d.toLocaleString(undefined, { dateStyle: "short", timeStyle: "short" });
-}
-
-function EmailsView({ stats }: { stats: EmailStats | null }) {
-  if (!stats || stats.total === 0) {
-    return (
-      <DnaPanel className="p-5">
-        <DnaSectionLabel>Emails</DnaSectionLabel>
-        <p className="mt-3 font-sans text-sm text-muted">
-          Aucun email suivi pour l&apos;instant. Les envois (vérification, reset, bienvenue, contact) apparaîtront ici avec leur statut d&apos;ouverture.
-        </p>
-      </DnaPanel>
-    );
-  }
+/** Bandeau de métriques : une ligne de cellules cliquables, pas quatre cartes. */
+function AdminMetrics({ stats, onView }: { stats: AdminStats; onView: (view: AdminView) => void }) {
+  const cells: Array<{ view: AdminView; label: string; value: number; detail: string; alert?: boolean }> = [
+    {
+      view: "reports",
+      label: "Signalements ouverts",
+      value: stats.openReports,
+      detail: `${stats.reports} au total`,
+      alert: stats.openReports > 0,
+    },
+    { view: "builds", label: "Builds", value: stats.builds, detail: `${stats.hiddenBuilds} masqués sur cette page` },
+    { view: "users", label: "Comptes", value: stats.users, detail: `${stats.bannedUsers} bannis sur cette page` },
+    { view: "users", label: "Admins", value: stats.adminUsers, detail: "sur cette page" },
+  ];
 
   return (
-    <div className="flex flex-col gap-5">
-      <div className="grid gap-3 md:grid-cols-3">
-        <AdminMetric icon={<Mail className="h-5 w-5" />} label="Emails envoyés" value={stats.total} sublabel="Total historique" />
-        <AdminMetric icon={<MailOpen className="h-5 w-5" />} label="Ouverts" value={stats.opened} sublabel={`${stats.openRate}% de taux d'ouverture`} />
-        <AdminMetric icon={<Eye className="h-5 w-5" />} label="Taux d'ouverture" value={stats.openRate} sublabel="% — approximatif (proxys mail)" />
-      </div>
-
-      <DnaPanel className="p-4">
-        <DnaSectionLabel>Par type</DnaSectionLabel>
-        <div className="mt-3 overflow-x-auto">
-          <table className="w-full min-w-[28rem] text-left text-sm">
-            <thead>
-              <tr className="font-caps text-[0.56rem] uppercase tracking-[0.14em] text-muted">
-                <th className="pb-2 pr-4 font-normal">Type</th>
-                <th className="pb-2 pr-4 font-normal">Envoyés</th>
-                <th className="pb-2 pr-4 font-normal">Ouverts</th>
-                <th className="pb-2 font-normal">Taux</th>
-              </tr>
-            </thead>
-            <tbody className="text-parch/90">
-              {stats.byKind.map((k) => (
-                <tr key={k.kind} className="border-t border-white/8">
-                  <td className="py-2 pr-4">{EMAIL_KIND_LABELS[k.kind] ?? k.kind}</td>
-                  <td className="py-2 pr-4 font-mono">{k.sent}</td>
-                  <td className="py-2 pr-4 font-mono">{k.opened}</td>
-                  <td className="py-2 font-mono text-gold-bright">{k.sent > 0 ? Math.round((k.opened / k.sent) * 100) : 0}%</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </DnaPanel>
-
-      <DnaPanel className="p-4">
-        <DnaSectionLabel>Derniers emails</DnaSectionLabel>
-        <div className="mt-3 overflow-x-auto">
-          <table className="w-full min-w-[34rem] text-left text-sm">
-            <thead>
-              <tr className="font-caps text-[0.56rem] uppercase tracking-[0.14em] text-muted">
-                <th className="pb-2 pr-4 font-normal">Destinataire</th>
-                <th className="pb-2 pr-4 font-normal">Type</th>
-                <th className="pb-2 pr-4 font-normal">Envoyé</th>
-                <th className="pb-2 font-normal">Statut</th>
-              </tr>
-            </thead>
-            <tbody className="text-parch/90">
-              {stats.recent.map((e, i) => (
-                <tr key={`${e.recipient}-${e.sentAt}-${i}`} className="border-t border-white/8">
-                  <td className="max-w-[16rem] truncate py-2 pr-4">{e.recipient}</td>
-                  <td className="py-2 pr-4 text-muted">{EMAIL_KIND_LABELS[e.kind] ?? e.kind}</td>
-                  <td className="py-2 pr-4 font-mono text-xs text-muted">{formatEmailDate(e.sentAt)}</td>
-                  <td className="py-2">
-                    {e.openedAt ? (
-                      <DnaTag tone="gold">Ouvert{e.openCount > 1 ? ` ×${e.openCount}` : ""}</DnaTag>
-                    ) : (
-                      <span className="font-caps text-[0.56rem] uppercase tracking-[0.14em] text-muted-2">Non ouvert</span>
-                    )}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </DnaPanel>
-    </div>
-  );
-}
-
-function OverviewView({
-  reports,
-  builds,
-  users,
-  onView,
-  onPatchBuild,
-  onPatchUser,
-}: {
-  reports: AdminReport[];
-  builds: AdminBuild[];
-  users: AdminUser[];
-  onView: (view: AdminView) => void;
-  onPatchBuild: (body: Record<string, unknown>) => Promise<void>;
-  onPatchUser: (body: Record<string, unknown>) => Promise<void>;
-}) {
-  return (
-    <div className="grid gap-5 xl:grid-cols-[minmax(0,1.15fr)_minmax(24rem,0.85fr)]">
-      <AdminSection
-        title="File de moderation"
-        label="Signalements ouverts"
-        actionLabel="Voir tout"
-        onAction={() => onView("reports")}
-      >
-        <ReportsList reports={reports.slice(0, 5)} compact onPatchBuild={onPatchBuild} />
-      </AdminSection>
-
-      <div className="grid gap-5">
-        <AdminSection title="Activite builds" label="Derniers builds" actionLabel="Ouvrir builds" onAction={() => onView("builds")}>
-          <BuildsList builds={builds.slice(0, 5)} compact onPatchBuild={onPatchBuild} onPatchUser={onPatchUser} />
-        </AdminSection>
-        <AdminSection title="Comptes recents" label="Utilisateurs" actionLabel="Ouvrir users" onAction={() => onView("users")}>
-          <UsersList users={users.slice(0, 5)} compact onPatchUser={onPatchUser} />
-        </AdminSection>
-      </div>
-    </div>
-  );
-}
-
-function ReportsView({
-  reports,
-  pagination,
-  onChangePage,
-  onPatchBuild,
-}: {
-  reports: AdminReport[];
-  pagination: AdminPagination;
-  onChangePage: (page: number) => void;
-  onPatchBuild: (body: Record<string, unknown>) => Promise<void>;
-}) {
-  return (
-    <AdminSection title="Signalements" label="Moderation" footer={<AdminPager pagination={pagination} onChange={onChangePage} />}>
-      <ReportsList reports={reports} onPatchBuild={onPatchBuild} />
-    </AdminSection>
-  );
-}
-
-function BuildsView({
-  builds,
-  pagination,
-  onChangePage,
-  onPatchBuild,
-  onPatchUser,
-}: {
-  builds: AdminBuild[];
-  pagination: AdminPagination;
-  onChangePage: (page: number) => void;
-  onPatchBuild: (body: Record<string, unknown>) => Promise<void>;
-  onPatchUser: (body: Record<string, unknown>) => Promise<void>;
-}) {
-  return (
-    <AdminSection title="Builds communautaires" label="Publication" footer={<AdminPager pagination={pagination} onChange={onChangePage} />}>
-      <BuildsList builds={builds} onPatchBuild={onPatchBuild} onPatchUser={onPatchUser} />
-    </AdminSection>
-  );
-}
-
-function UsersView({
-  users,
-  pagination,
-  onChangePage,
-  onPatchUser,
-}: {
-  users: AdminUser[];
-  pagination: AdminPagination;
-  onChangePage: (page: number) => void;
-  onPatchUser: (body: Record<string, unknown>) => Promise<void>;
-}) {
-  return (
-    <AdminSection title="Utilisateurs" label="Comptes" footer={<AdminPager pagination={pagination} onChange={onChangePage} />}>
-      <UsersList users={users} onPatchUser={onPatchUser} />
-    </AdminSection>
-  );
-}
-
-function AdminSection({
-  title,
-  label,
-  actionLabel,
-  onAction,
-  footer,
-  children,
-}: {
-  title: string;
-  label: string;
-  actionLabel?: string;
-  onAction?: () => void;
-  footer?: ReactNode;
-  children: ReactNode;
-}) {
-  return (
-    <DnaPanel className="min-w-0 p-4 md:p-5">
-      <div className="flex flex-col gap-3 border-b border-white/10 pb-4 md:flex-row md:items-center md:justify-between">
-        <div>
-          <DnaSectionLabel>{label}</DnaSectionLabel>
-          <h2 className="mt-1 font-display text-2xl leading-tight text-parch">{title}</h2>
-        </div>
-        {actionLabel && onAction ? (
-          <button
-            type="button"
-            onClick={onAction}
-            className="inline-flex items-center justify-center gap-2 border border-white/15 bg-white/[0.03] px-3 py-2 font-sans text-xs text-parch/85 transition-colors hover:border-gold/45 hover:text-gold"
+    <div className="grid grid-cols-2 gap-px border border-white/10 bg-white/10 xl:grid-cols-4">
+      {cells.map((cell) => (
+        <button
+          key={cell.label}
+          type="button"
+          onClick={() => onView(cell.view)}
+          className="flex flex-col gap-0.5 bg-[#0c0f15] px-3.5 py-3 text-left transition-colors hover:bg-white/[0.04]"
+        >
+          <span className="font-caps text-[0.54rem] uppercase tracking-[0.16em] text-muted-2">{cell.label}</span>
+          <span
+            className={cn("font-display text-3xl leading-none tabular-nums", cell.alert ? "text-[#ffb3a6]" : "text-gold-bright")}
           >
-            <Eye className="h-3.5 w-3.5" />
-            {actionLabel}
-          </button>
-        ) : null}
-      </div>
-      <div className="mt-4">{children}</div>
-      {footer ? <div className="mt-4 border-t border-white/10 pt-4">{footer}</div> : null}
-    </DnaPanel>
-  );
-}
-
-function ReportsList({
-  reports,
-  compact = false,
-  onPatchBuild,
-}: {
-  reports: AdminReport[];
-  compact?: boolean;
-  onPatchBuild: (body: Record<string, unknown>) => Promise<void>;
-}) {
-  if (reports.length === 0) return <EmptyState icon={<CheckCircle2 className="h-5 w-5" />} text="Aucun signalement." />;
-
-  return (
-    <div className="divide-y divide-white/10">
-      {reports.map((report) => (
-        <div key={report.id} className="grid gap-3 py-3 xl:grid-cols-[minmax(0,1fr)_auto]">
-          <div className="min-w-0">
-            <div className="flex min-w-0 flex-wrap items-center gap-2">
-              <p className="min-w-0 flex-1 truncate font-sans text-sm font-medium text-parch">{report.buildTitle}</p>
-              <DnaTag tone={report.status === "open" ? "crimson" : "gold"}>{report.status}</DnaTag>
-            </div>
-            <p className={compact ? "mt-1 line-clamp-2 font-sans text-xs text-muted" : "mt-2 font-sans text-sm text-muted"}>
-              {report.reason}
-            </p>
-            <p className="mt-1 font-sans text-xs text-muted-2">Par {report.reporterName ?? "Discord"} · {formatDate(report.createdAt)}</p>
-          </div>
-          <div className="flex flex-wrap items-center gap-2 xl:justify-end">
-            <DnaButton icon={<EyeOff className="h-3.5 w-3.5" />} className="px-3 py-1.5 text-xs" onClick={() => void onPatchBuild({ buildId: report.buildId, hidden: true })}>
-              Masquer
-            </DnaButton>
-            <DnaButton icon={<CheckCircle2 className="h-3.5 w-3.5" />} className="px-3 py-1.5 text-xs" onClick={() => void onPatchBuild({ reportId: report.id, reportStatus: "resolved" })}>
-              Resoudre
-            </DnaButton>
-            {!compact ? (
-              <DnaButton icon={<XCircle className="h-3.5 w-3.5" />} className="px-3 py-1.5 text-xs" onClick={() => void onPatchBuild({ reportId: report.id, reportStatus: "dismissed" })}>
-                Rejeter
-              </DnaButton>
-            ) : null}
-          </div>
-        </div>
+            {cell.value}
+          </span>
+          <span className="font-sans text-[0.68rem] text-muted-2">{cell.detail}</span>
+        </button>
       ))}
     </div>
   );
 }
 
-function BuildsList({
+// ---------------------------------------------------------------------------
+// Vues
+// ---------------------------------------------------------------------------
+
+function OverviewView({
+  loading,
+  reports,
+  builds,
+  onView,
+  onPatchBuild,
+}: {
+  loading: boolean;
+  reports: AdminReport[];
+  builds: AdminBuild[];
+  onView: (view: AdminView) => void;
+  onPatchBuild: (body: Record<string, unknown>) => Promise<void>;
+}) {
+  const openReports = reports.filter((report) => report.status === "open");
+
+  return (
+    <div className="grid items-start gap-4 xl:grid-cols-2">
+      <AdminPanel
+        label="À traiter"
+        count={openReports.length}
+        actions={<AdminIconButton icon={ExternalLink} label="Ouvrir la modération" onClick={() => onView("reports")} />}
+      >
+        {loading ? (
+          <AdminTableSkeleton rows={4} columns={4} />
+        ) : (
+          <ReportsTable reports={openReports.slice(0, 6)} compact onPatchBuild={onPatchBuild} />
+        )}
+      </AdminPanel>
+
+      <AdminPanel
+        label="Derniers builds"
+        count={builds.length}
+        actions={<AdminIconButton icon={ExternalLink} label="Ouvrir les builds" onClick={() => onView("builds")} />}
+      >
+        {loading ? (
+          <AdminTableSkeleton rows={4} columns={4} />
+        ) : (
+          <BuildsTable builds={builds.slice(0, 6)} compact onPatchBuild={onPatchBuild} />
+        )}
+      </AdminPanel>
+    </div>
+  );
+}
+
+const REPORT_STATUS: Record<AdminReport["status"], { tone: "danger" | "ok" | "neutral"; label: string }> = {
+  open: { tone: "danger", label: "Ouvert" },
+  resolved: { tone: "ok", label: "Résolu" },
+  dismissed: { tone: "neutral", label: "Rejeté" },
+};
+
+function ReportsTable({
+  reports,
+  compact = false,
+  onPatchBuild,
+}: {
+  reports: AdminReport[];
+  compact?: boolean;
+  onPatchBuild: (body: Record<string, unknown>) => Promise<void>;
+}) {
+  if (reports.length === 0) return <AdminEmpty icon={Check} text="Aucun signalement." />;
+
+  return (
+    <AdminTable minWidth={compact ? "32rem" : "46rem"}>
+      <thead>
+        <tr>
+          <AdminTh>Build</AdminTh>
+          <AdminTh>Motif</AdminTh>
+          {!compact ? <AdminTh width="9rem">Signalé par</AdminTh> : null}
+          <AdminTh width="7rem">Statut</AdminTh>
+          <AdminTh width={compact ? "7rem" : "9.5rem"} align="right">
+            Actions
+          </AdminTh>
+        </tr>
+      </thead>
+      <tbody>
+        {reports.map((report) => {
+          const status = REPORT_STATUS[report.status];
+          return (
+            <AdminTr key={report.id} dimmed={report.status !== "open"}>
+              <AdminTd>
+                <AdminIdentity primary={report.buildTitle} secondary={formatDate(report.createdAt)} />
+              </AdminTd>
+              <AdminTd className="max-w-[22rem]">
+                <span className="line-clamp-2 text-muted">{report.reason}</span>
+              </AdminTd>
+              {!compact ? (
+                <AdminTd>
+                  <span className="truncate text-muted">{report.reporterName ?? "—"}</span>
+                </AdminTd>
+              ) : null}
+              <AdminTd>
+                <AdminStatus tone={status.tone}>{status.label}</AdminStatus>
+              </AdminTd>
+              <AdminTd align="right">
+                <AdminActions>
+                  <AdminIconLink icon={ExternalLink} label="Ouvrir le build" href={`/fr/builds/${report.buildId}`} external />
+                  <AdminIconButton
+                    icon={EyeOff}
+                    label="Masquer le build"
+                    onClick={() => void onPatchBuild({ buildId: report.buildId, hidden: true })}
+                  />
+                  <AdminActionsDivider />
+                  <AdminIconButton
+                    icon={Check}
+                    label="Marquer résolu"
+                    disabled={report.status === "resolved"}
+                    onClick={() => void onPatchBuild({ reportId: report.id, reportStatus: "resolved" })}
+                  />
+                  {!compact ? (
+                    <AdminIconButton
+                      icon={X}
+                      label="Rejeter le signalement"
+                      disabled={report.status === "dismissed"}
+                      onClick={() => void onPatchBuild({ reportId: report.id, reportStatus: "dismissed" })}
+                    />
+                  ) : null}
+                </AdminActions>
+              </AdminTd>
+            </AdminTr>
+          );
+        })}
+      </tbody>
+    </AdminTable>
+  );
+}
+
+function BuildsTable({
   builds,
   compact = false,
   onPatchBuild,
@@ -721,217 +672,326 @@ function BuildsList({
   builds: AdminBuild[];
   compact?: boolean;
   onPatchBuild: (body: Record<string, unknown>) => Promise<void>;
+  onPatchUser?: (body: Record<string, unknown>) => Promise<void>;
+}) {
+  const { confirm } = useConfirm();
+  if (builds.length === 0) return <AdminEmpty icon={Hammer} text="Aucun build." />;
+
+  return (
+    <AdminTable minWidth={compact ? "32rem" : "52rem"}>
+      <thead>
+        <tr>
+          <AdminTh>Build</AdminTh>
+          <AdminTh width="9rem">Personnage</AdminTh>
+          <AdminTh width="4.5rem" align="right">
+            Votes
+          </AdminTh>
+          {!compact ? <AdminTh width="10rem">Auteur</AdminTh> : null}
+          <AdminTh width="7rem">Statut</AdminTh>
+          <AdminTh width={compact ? "5.5rem" : "11rem"} align="right">
+            Actions
+          </AdminTh>
+        </tr>
+      </thead>
+      <tbody>
+        {builds.map((build) => (
+          <AdminTr key={build.id} dimmed={build.hidden}>
+            <AdminTd>
+              <AdminIdentity primary={build.title} secondary={formatDate(build.updatedAt)} />
+            </AdminTd>
+            <AdminTd>
+              <span className="flex items-center gap-1.5">
+                <span className="truncate font-mono text-[0.7rem] text-muted">{build.characterId}</span>
+                {build.element ? <AdminChip>{build.element}</AdminChip> : null}
+              </span>
+            </AdminTd>
+            <AdminTd align="right">
+              <span className="font-mono text-[0.78rem] text-gold-bright tabular-nums">{build.voteCount}</span>
+            </AdminTd>
+            {!compact ? (
+              <AdminTd>
+                <span className="flex items-center gap-1.5">
+                  <span className="truncate text-muted">{build.authorName ?? "—"}</span>
+                  {build.authorBanned ? <AdminChip tone="danger">banni</AdminChip> : null}
+                </span>
+              </AdminTd>
+            ) : null}
+            <AdminTd>
+              {build.hidden ? <AdminStatus tone="danger">Masqué</AdminStatus> : <AdminStatus tone="ok">Visible</AdminStatus>}
+            </AdminTd>
+            <AdminTd align="right">
+              <AdminActions>
+                <AdminIconLink icon={ExternalLink} label="Ouvrir le build" href={`/fr/builds/${build.id}`} external />
+                <AdminIconButton
+                  icon={build.hidden ? Eye : EyeOff}
+                  label={build.hidden ? "Rendre visible" : "Masquer"}
+                  tone={build.hidden ? "active" : "default"}
+                  onClick={() => void onPatchBuild({ buildId: build.id, hidden: !build.hidden })}
+                />
+                {!compact && onPatchUser ? (
+                  <>
+                    <AdminActionsDivider />
+                    <AdminIconButton
+                      icon={build.authorBanned ? Undo2 : Ban}
+                      label={build.authorBanned ? "Lever le bannissement de l'auteur" : "Bannir l'auteur"}
+                      tone={build.authorBanned ? "default" : "danger"}
+                      onClick={async () => {
+                        if (build.authorBanned) {
+                          await onPatchUser({ userId: build.authorId, banned: false });
+                          return;
+                        }
+                        if (
+                          await confirm({
+                            title: "Bannir l'auteur",
+                            message: `Bannir ${build.authorName ?? "cet utilisateur"} ? Ses sessions seront invalidées et il ne pourra plus publier.`,
+                            confirmLabel: "Bannir",
+                            cancelLabel: "Annuler",
+                            danger: true,
+                          })
+                        ) {
+                          await onPatchUser({ userId: build.authorId, banned: true });
+                        }
+                      }}
+                    />
+                    <AdminIconButton
+                      icon={Trash2}
+                      label="Supprimer le build"
+                      tone="danger"
+                      onClick={async () => {
+                        if (
+                          await confirm({
+                            title: "Supprimer le build",
+                            message: `Supprimer définitivement « ${build.title} » ? Cette action est irréversible.`,
+                            confirmLabel: "Supprimer",
+                            cancelLabel: "Annuler",
+                            danger: true,
+                          })
+                        ) {
+                          await onPatchBuild({ buildId: build.id, deleteBuild: true });
+                        }
+                      }}
+                    />
+                  </>
+                ) : null}
+              </AdminActions>
+            </AdminTd>
+          </AdminTr>
+        ))}
+      </tbody>
+    </AdminTable>
+  );
+}
+
+function UsersTable({
+  users,
+  onPatchUser,
+}: {
+  users: AdminUser[];
   onPatchUser: (body: Record<string, unknown>) => Promise<void>;
 }) {
   const { confirm } = useConfirm();
-  if (builds.length === 0) return <EmptyState icon={<Hammer className="h-5 w-5" />} text="Aucun build." />;
+  if (users.length === 0) return <AdminEmpty icon={Users} text="Aucun compte." />;
 
   return (
-    <div className="divide-y divide-white/10">
-      {builds.map((build) => (
-        <div key={build.id} className="grid gap-3 py-3 xl:grid-cols-[minmax(0,1fr)_auto]">
-          <div className="min-w-0">
-            <div className="flex min-w-0 flex-wrap items-center gap-2">
-              <p className="min-w-0 flex-1 truncate font-sans text-sm font-medium text-parch">{build.title}</p>
-              <DnaTag tone={build.hidden ? "crimson" : "gold"}>{build.hidden ? "Masque" : "Visible"}</DnaTag>
-            </div>
-            <p className="mt-1 font-sans text-xs text-muted">
-              {build.characterId} {build.element ? `(${build.element})` : ""} · {build.voteCount} votes · {build.authorName ?? "Discord"}
-            </p>
-            {!compact ? <p className="mt-1 font-sans text-xs text-muted-2">Mis a jour {formatDate(build.updatedAt)}</p> : null}
-          </div>
-          <div className="flex flex-wrap items-center gap-2 xl:justify-end">
-            <DnaButton
-              icon={build.hidden ? <Eye className="h-3.5 w-3.5" /> : <EyeOff className="h-3.5 w-3.5" />}
-              className="px-3 py-1.5 text-xs"
-              onClick={() => void onPatchBuild({ buildId: build.id, hidden: !build.hidden })}
-            >
-              {build.hidden ? "Afficher" : "Masquer"}
-            </DnaButton>
-            {!compact ? (
-              <>
-                <DnaButton
-                  icon={<Trash2 className="h-3.5 w-3.5" />}
-                  variant="danger"
-                  className="px-3 py-1.5 text-xs"
+    <AdminTable minWidth="46rem">
+      <thead>
+        <tr>
+          <AdminTh>Compte</AdminTh>
+          <AdminTh width="13rem">Email</AdminTh>
+          <AdminTh width="7.5rem">Rôle</AdminTh>
+          <AdminTh width="6.5rem">Statut</AdminTh>
+          <AdminTh width="6rem">Inscrit</AdminTh>
+          <AdminTh width="6rem" align="right">
+            Actions
+          </AdminTh>
+        </tr>
+      </thead>
+      <tbody>
+        {users.map((user) => (
+          <AdminTr key={user.id} dimmed={user.banned}>
+            <AdminTd>
+              <AdminIdentity primary={user.name ?? user.id} secondary={user.discordId ?? user.id} />
+            </AdminTd>
+            <AdminTd>
+              <span className="truncate font-mono text-[0.7rem] text-muted">{user.email ?? "—"}</span>
+            </AdminTd>
+            <AdminTd>
+              <span className="flex items-center gap-1.5">
+                <AdminChip tone={user.role === "admin" ? "gold" : "neutral"}>{user.role}</AdminChip>
+                {user.configuredAdmin ? <AdminChip tone="gold">env</AdminChip> : null}
+              </span>
+            </AdminTd>
+            <AdminTd>
+              {user.banned ? <AdminStatus tone="danger">Banni</AdminStatus> : <AdminStatus tone="ok">Actif</AdminStatus>}
+            </AdminTd>
+            <AdminTd>
+              <span className="font-mono text-[0.7rem] text-muted-2">{formatDate(user.createdAt)}</span>
+            </AdminTd>
+            <AdminTd align="right">
+              <AdminActions>
+                <AdminIconButton
+                  icon={user.role === "admin" ? ShieldOff : ShieldCheck}
+                  label={user.role === "admin" ? "Rétrograder en utilisateur" : "Promouvoir administrateur"}
+                  disabled={user.configuredAdmin && user.role === "admin"}
+                  onClick={() => void onPatchUser({ userId: user.id, role: user.role === "admin" ? "user" : "admin" })}
+                />
+                <AdminIconButton
+                  icon={user.banned ? Undo2 : Ban}
+                  label={user.banned ? "Lever le bannissement" : "Bannir le compte"}
+                  tone={user.banned ? "default" : "danger"}
+                  disabled={user.configuredAdmin && !user.banned}
                   onClick={async () => {
-                    if (
-                      await confirm({
-                        title: "Supprimer le build",
-                        message: `Supprimer définitivement « ${build.title} » ? Cette action est irréversible.`,
-                        confirmLabel: "Supprimer",
-                        cancelLabel: "Annuler",
-                        danger: true,
-                      })
-                    ) {
-                      await onPatchBuild({ buildId: build.id, deleteBuild: true });
-                    }
-                  }}
-                >
-                  Supprimer
-                </DnaButton>
-                <DnaButton
-                  icon={<Ban className="h-3.5 w-3.5" />}
-                  className="px-3 py-1.5 text-xs"
-                  onClick={async () => {
-                    if (build.authorBanned) {
-                      await onPatchUser({ userId: build.authorId, banned: false });
+                    if (user.banned) {
+                      await onPatchUser({ userId: user.id, banned: false });
                       return;
                     }
                     if (
                       await confirm({
-                        title: "Bannir l'auteur",
-                        message: `Bannir ${build.authorName ?? "cet utilisateur"} ? Ses sessions seront invalidées et il ne pourra plus publier.`,
+                        title: "Bannir le compte",
+                        message: `Bannir ${user.name ?? user.email ?? "ce compte"} ? Ses sessions seront invalidées et il ne pourra plus publier.`,
                         confirmLabel: "Bannir",
                         cancelLabel: "Annuler",
                         danger: true,
                       })
                     ) {
-                      await onPatchUser({ userId: build.authorId, banned: true });
+                      await onPatchUser({ userId: user.id, banned: true });
                     }
                   }}
-                >
-                  {build.authorBanned ? "Debannir" : "Bannir"}
-                </DnaButton>
-              </>
-            ) : null}
-          </div>
-        </div>
-      ))}
-    </div>
+                />
+              </AdminActions>
+            </AdminTd>
+          </AdminTr>
+        ))}
+      </tbody>
+    </AdminTable>
   );
 }
 
-function UsersList({
-  users,
-  compact = false,
-  onPatchUser,
-}: {
-  users: AdminUser[];
-  compact?: boolean;
-  onPatchUser: (body: Record<string, unknown>) => Promise<void>;
-}) {
-  const { confirm } = useConfirm();
-  if (users.length === 0) return <EmptyState icon={<Users className="h-5 w-5" />} text="Aucun utilisateur." />;
+// ---------------------------------------------------------------------------
+// Emails
+// ---------------------------------------------------------------------------
 
-  return (
-    <div className="divide-y divide-white/10">
-      {users.map((user) => (
-        <div key={user.id} className="grid gap-3 py-3 xl:grid-cols-[minmax(0,1fr)_auto]">
-          <div className="min-w-0">
-            <p className="truncate font-sans text-sm font-medium text-parch">{user.name ?? user.email ?? user.id}</p>
-            <p className="mt-1 font-sans text-xs text-muted-2">{user.discordId ?? "discord id inconnu"} · Depuis {formatDate(user.createdAt)}</p>
-          </div>
-          <div className="flex flex-wrap items-center gap-2 xl:justify-end">
-            <DnaTag tone={user.role === "admin" ? "gold" : "crimson"}>{user.role}</DnaTag>
-            {user.configuredAdmin ? <DnaTag tone="gold">Env</DnaTag> : null}
-            {user.banned ? <DnaTag tone="crimson">Banni</DnaTag> : null}
-            <DnaButton
-              icon={<Ban className="h-3.5 w-3.5" />}
-              className="px-3 py-1.5 text-xs"
-              disabled={user.configuredAdmin && !user.banned}
-              onClick={async () => {
-                if (user.banned) {
-                  await onPatchUser({ userId: user.id, banned: false });
-                  return;
-                }
-                if (
-                  await confirm({
-                    title: "Bannir l'utilisateur",
-                    message: `Bannir ${user.name ?? user.email ?? "cet utilisateur"} ? Ses sessions seront invalidées et il ne pourra plus publier.`,
-                    confirmLabel: "Bannir",
-                    cancelLabel: "Annuler",
-                    danger: true,
-                  })
-                ) {
-                  await onPatchUser({ userId: user.id, banned: true });
-                }
-              }}
-            >
-              {user.banned ? "Debannir" : "Bannir"}
-            </DnaButton>
-            {!compact ? (
-              <DnaButton
-                icon={<UserCog className="h-3.5 w-3.5" />}
-                className="px-3 py-1.5 text-xs"
-                disabled={user.configuredAdmin && user.role === "admin"}
-                onClick={() => void onPatchUser({ userId: user.id, role: user.role === "admin" ? "user" : "admin" })}
-              >
-                {user.role === "admin" ? "Retrograder" : "Promouvoir"}
-              </DnaButton>
-            ) : null}
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
+const EMAIL_KIND_LABELS: Record<string, string> = {
+  verify_email: "Vérification",
+  reset_password: "Réinitialisation",
+  set_password: "Définition de mot de passe",
+  welcome: "Bienvenue",
+  contact: "Contact",
+  announcement: "Annonce",
+};
 
-function AdminPager({
-  pagination,
-  onChange,
-}: {
-  pagination: AdminPagination;
-  onChange: (page: number) => void;
-}) {
-  if (pagination.totalPages <= 1) {
+function EmailsView({ stats }: { stats: EmailStats | null }) {
+  if (!stats || stats.total === 0) {
     return (
-      <p className="font-sans text-xs text-muted">
-        Page {pagination.page}/{pagination.totalPages} · {pagination.total} elements
-      </p>
+      <AdminPanel label="Emails">
+        <AdminEmpty icon={Mail} text="Aucun email suivi pour l'instant." />
+      </AdminPanel>
     );
   }
 
   return (
-    <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-      <p className="font-sans text-xs text-muted">
-        Page {pagination.page}/{pagination.totalPages} · {pagination.total} elements
-      </p>
-      <div className="flex items-center gap-2">
-        <DnaButton
-          className="px-3 py-1.5 text-xs"
-          disabled={pagination.page <= 1}
-          onClick={() => onChange(Math.max(1, pagination.page - 1))}
-        >
-          Precedent
-        </DnaButton>
-        <DnaButton
-          className="px-3 py-1.5 text-xs"
-          disabled={pagination.page >= pagination.totalPages}
-          onClick={() => onChange(Math.min(pagination.totalPages, pagination.page + 1))}
-        >
-          Suivant
-        </DnaButton>
+    <div className="flex flex-col gap-4">
+      <div className="grid grid-cols-2 gap-px border border-white/10 bg-white/10 xl:grid-cols-3">
+        <EmailMetric label="Envoyés" value={`${stats.total}`} detail="total historique" />
+        <EmailMetric label="Ouverts" value={`${stats.opened}`} detail="pixel de suivi" />
+        <EmailMetric label="Taux d'ouverture" value={`${stats.openRate}%`} detail="approximatif (proxys mail)" />
+      </div>
+
+      <div className="grid items-start gap-4 xl:grid-cols-[minmax(0,24rem)_minmax(0,1fr)]">
+        <AdminPanel label="Par type">
+          <AdminTable minWidth="20rem">
+            <thead>
+              <tr>
+                <AdminTh>Type</AdminTh>
+                <AdminTh width="4.5rem" align="right">
+                  Envoyés
+                </AdminTh>
+                <AdminTh width="4.5rem" align="right">
+                  Ouverts
+                </AdminTh>
+                <AdminTh width="4rem" align="right">
+                  Taux
+                </AdminTh>
+              </tr>
+            </thead>
+            <tbody>
+              {stats.byKind.map((kind) => (
+                <AdminTr key={kind.kind}>
+                  <AdminTd>{EMAIL_KIND_LABELS[kind.kind] ?? kind.kind}</AdminTd>
+                  <AdminTd align="right">
+                    <span className="font-mono text-[0.78rem] tabular-nums">{kind.sent}</span>
+                  </AdminTd>
+                  <AdminTd align="right">
+                    <span className="font-mono text-[0.78rem] tabular-nums">{kind.opened}</span>
+                  </AdminTd>
+                  <AdminTd align="right">
+                    <span className="font-mono text-[0.78rem] text-gold-bright tabular-nums">
+                      {kind.sent > 0 ? Math.round((kind.opened / kind.sent) * 100) : 0}%
+                    </span>
+                  </AdminTd>
+                </AdminTr>
+              ))}
+            </tbody>
+          </AdminTable>
+        </AdminPanel>
+
+        <AdminPanel label="Derniers envois" count={stats.recent.length}>
+          <AdminTable minWidth="30rem">
+            <thead>
+              <tr>
+                <AdminTh>Destinataire</AdminTh>
+                <AdminTh width="11rem">Type</AdminTh>
+                <AdminTh width="6rem">Envoyé</AdminTh>
+                <AdminTh width="8rem">Statut</AdminTh>
+              </tr>
+            </thead>
+            <tbody>
+              {stats.recent.map((email, index) => (
+                <AdminTr key={`${email.recipient}-${email.sentAt}-${index}`}>
+                  <AdminTd>
+                    <span className="truncate font-mono text-[0.72rem] text-parch/85">{email.recipient}</span>
+                  </AdminTd>
+                  <AdminTd>
+                    <span className="text-muted">{EMAIL_KIND_LABELS[email.kind] ?? email.kind}</span>
+                  </AdminTd>
+                  <AdminTd>
+                    <span className="font-mono text-[0.7rem] text-muted-2">{formatDate(email.sentAt)}</span>
+                  </AdminTd>
+                  <AdminTd>
+                    {email.openedAt ? (
+                      <AdminStatus tone="ok">Ouvert{email.openCount > 1 ? ` ×${email.openCount}` : ""}</AdminStatus>
+                    ) : (
+                      <AdminStatus tone="neutral">Non ouvert</AdminStatus>
+                    )}
+                  </AdminTd>
+                </AdminTr>
+              ))}
+            </tbody>
+          </AdminTable>
+        </AdminPanel>
       </div>
     </div>
   );
 }
 
-function EmptyState({ icon, text }: { icon: ReactNode; text: string }) {
+function EmailMetric({ label, value, detail }: { label: string; value: string; detail: string }) {
   return (
-    <div className="grid place-items-center gap-2 border border-dashed border-white/15 bg-white/[0.02] px-4 py-8 text-center text-muted">
-      {icon}
-      <p className="font-sans text-sm">{text}</p>
+    <div className="flex flex-col gap-0.5 bg-[#0c0f15] px-3.5 py-3">
+      <span className="flex items-center gap-1.5 font-caps text-[0.54rem] uppercase tracking-[0.16em] text-muted-2">
+        <MailOpen aria-hidden className="h-3 w-3" />
+        {label}
+      </span>
+      <span className="font-display text-3xl leading-none text-gold-bright tabular-nums">{value}</span>
+      <span className="font-sans text-[0.68rem] text-muted-2">{detail}</span>
     </div>
   );
 }
 
-function AdminLoadingState() {
-  return (
-    <div className="mx-auto grid w-full max-w-[112rem] gap-4 md:grid-cols-2 xl:grid-cols-4">
-      {Array.from({ length: 4 }, (_, index) => (
-        <DnaPanel key={index} className="h-32 animate-pulse bg-white/[0.03]">
-          <span aria-hidden />
-        </DnaPanel>
-      ))}
-    </div>
-  );
-}
+// ---------------------------------------------------------------------------
 
-function formatDate(value: string) {
-  return new Date(value).toLocaleDateString(undefined, {
-    day: "2-digit",
-    month: "short",
-    year: "numeric",
-  });
+/** Format compact et alignable : en colonne, la lisibilité prime sur le style. */
+function formatDate(value: string): string {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return "—";
+  return date.toLocaleDateString("fr-FR", { day: "2-digit", month: "2-digit", year: "2-digit" });
 }

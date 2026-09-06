@@ -1,8 +1,25 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { Pencil, Plus, Trash2, X } from "lucide-react";
-import { DnaButton, DnaPanel, cn, useConfirm } from "@/components/dna";
+import { CalendarDays, Pencil, Plus, Trash2, X } from "lucide-react";
+import { cn, useConfirm } from "@/components/dna";
+import {
+  FIELD_WIDTH,
+  FORM_MAX_WIDTH,
+  AdminActions,
+  AdminActionsDivider,
+  AdminChip,
+  AdminEmpty,
+  AdminIconButton,
+  AdminIdentity,
+  AdminPanel,
+  AdminStatus,
+  AdminTable,
+  AdminTableSkeleton,
+  AdminTd,
+  AdminTh,
+  AdminTr,
+} from "./ui";
 
 const CATEGORIES = ["Bannière", "Arme", "Événement", "Épreuve", "Récompense"] as const;
 type Category = (typeof CATEGORIES)[number];
@@ -49,9 +66,23 @@ const EMPTY_FORM: FormState = {
 };
 
 const inputClass =
-  "w-full rounded-sm border border-white/10 bg-ink/60 px-3 py-2 text-sm text-parch outline-none transition-colors placeholder:text-muted-2 focus:border-gold/50";
-const labelClass = "mb-1 block font-caps text-[0.55rem] uppercase tracking-[0.16em] text-muted";
+  "w-full border border-white/12 bg-black/25 px-2.5 py-1.5 font-sans text-[0.82rem] text-parch outline-none transition-colors placeholder:text-muted-2 focus:border-gold/50";
+const labelClass = "mb-1 block font-caps text-[0.54rem] uppercase tracking-[0.16em] text-muted-2";
+/**
+ * Bouton de formulaire. Ici le libellé reste visible : valider ou annuler une
+ * saisie n'est pas une action de ligne, et une icône seule y serait un piège.
+ */
+const formButtonClass =
+  "inline-flex items-center gap-1.5 border px-3 py-1.5 font-sans text-[0.78rem] transition-colors disabled:cursor-not-allowed disabled:opacity-40";
 
+/**
+ * Administration du calendrier des événements.
+ *
+ * Deux régimes assumés : une **liste** en tableau dense, où chaque action tient
+ * dans une icône, et un **formulaire** où les libellés restent écrits. Ce n'est
+ * pas une incohérence : dans une liste on répète le même geste sur des dizaines
+ * de lignes, dans un formulaire on le fait une fois et il engage une saisie.
+ */
 export function CalendarAdminClient() {
   const { confirm } = useConfirm();
   const [events, setEvents] = useState<EventRow[]>([]);
@@ -62,7 +93,6 @@ export function CalendarAdminClient() {
   const [error, setError] = useState<string | null>(null);
 
   const load = useCallback(async () => {
-    setLoading(true);
     try {
       const res = await fetch("/api/admin/calendar-events");
       const json = await res.json();
@@ -83,6 +113,7 @@ export function CalendarAdminClient() {
     setError(null);
     setForm({ ...EMPTY_FORM });
   };
+
   const startEdit = (ev: EventRow) => {
     setError(null);
     setForm({
@@ -157,163 +188,248 @@ export function CalendarAdminClient() {
   const set = <K extends keyof FormState>(key: K, value: FormState[K]) => setForm((f) => (f ? { ...f, [key]: value } : f));
 
   return (
-    <div className="space-y-5">
+    <div className="flex flex-col gap-4">
       {migrationPending ? (
-        <DnaPanel className="border-crimson/40 p-4">
-          <p className="font-sans text-sm text-[#ffb3a6]">
-            Table <code className="font-mono">calendar_events</code> absente. Lance la migration
-            (<code className="font-mono">bun run db:push</code>) puis recharge — le calendrier utilise la liste curée
-            en attendant.
-          </p>
-        </DnaPanel>
+        <p className="border border-crimson-bright/40 bg-crimson/10 px-3 py-2 font-sans text-[0.8rem] text-[#ffb3a6]">
+          Table <code className="font-mono">calendar_events</code> absente. Crée-la en SQL ciblé
+          (<code className="font-mono">drizzle-kit push</code> est inutilisable sur cette base), puis recharge. En
+          attendant, le calendrier public affiche la liste curée.
+        </p>
       ) : null}
 
-      {!form ? (
-        <div className="flex items-center justify-between">
-          <p className="font-caps text-[0.6rem] uppercase tracking-[0.18em] text-muted">
-            {loading ? "Chargement…" : `${events.length} événement${events.length > 1 ? "s" : ""}`}
-          </p>
-          <DnaButton variant="gold" icon={<Plus className="h-4 w-4" />} onClick={startCreate}>
-            Ajouter un événement
-          </DnaButton>
-        </div>
-      ) : null}
-
-      {/* Formulaire */}
       {form ? (
-        <DnaPanel className="p-5">
-          <div className="mb-4 flex items-center justify-between">
-            <h2 className="font-display text-xl text-parch">{form.id ? "Modifier l'événement" : "Nouvel événement"}</h2>
-            <button type="button" onClick={() => setForm(null)} aria-label="Fermer" className="text-parch/70 hover:text-gold">
-              <X className="h-5 w-5" />
-            </button>
-          </div>
-
-          <div className="grid gap-4 sm:grid-cols-2">
+        <AdminPanel
+          label={form.id ? "Modifier l'événement" : "Nouvel événement"}
+          className={FORM_MAX_WIDTH}
+          actions={<AdminIconButton icon={X} label="Fermer le formulaire" onClick={() => setForm(null)} />}
+        >
+          <div className="grid gap-3 p-3 sm:grid-cols-2">
             <div className="sm:col-span-2">
-              <label className={labelClass}>Titre</label>
-              <input className={inputClass} value={form.title} onChange={(e) => set("title", e.target.value)} placeholder="Nom de l'événement" />
+              <label className={labelClass} htmlFor="cal-title">
+                Titre
+              </label>
+              <input
+                id="cal-title"
+                className={cn(inputClass, FIELD_WIDTH.medium)}
+                value={form.title}
+                onChange={(e) => set("title", e.target.value)}
+                placeholder="Nom de l'événement"
+              />
             </div>
+
             <div>
-              <label className={labelClass}>Catégorie</label>
-              <select className={inputClass} value={form.category} onChange={(e) => set("category", e.target.value as Category)}>
+              <label className={labelClass} htmlFor="cal-category">
+                Catégorie
+              </label>
+              <select
+                id="cal-category"
+                className={cn(inputClass, FIELD_WIDTH.short)}
+                value={form.category}
+                onChange={(e) => set("category", e.target.value as Category)}
+              >
                 {CATEGORIES.map((c) => (
-                  <option key={c} value={c}>
+                  <option key={c} value={c} className="bg-[#0b0d12]">
                     {c}
                   </option>
                 ))}
               </select>
             </div>
+
             <div>
-              <label className={labelClass}>Ordre (tri)</label>
-              <input type="number" className={inputClass} value={form.sortOrder} onChange={(e) => set("sortOrder", Number(e.target.value))} />
+              <label className={labelClass} htmlFor="cal-order">
+                Ordre de tri
+              </label>
+              <input
+                id="cal-order"
+                type="number"
+                className={cn(inputClass, FIELD_WIDTH.num)}
+                value={form.sortOrder}
+                onChange={(e) => set("sortOrder", Number(e.target.value))}
+              />
             </div>
+
             <div>
-              <label className={labelClass}>Début</label>
-              <input type="date" className={inputClass} value={form.startDate} onChange={(e) => set("startDate", e.target.value)} />
+              <label className={labelClass} htmlFor="cal-start">
+                Début
+              </label>
+              <input
+                id="cal-start"
+                type="date"
+                className={cn(inputClass, FIELD_WIDTH.date)}
+                value={form.startDate}
+                onChange={(e) => set("startDate", e.target.value)}
+              />
             </div>
+
             <div>
-              <label className={labelClass}>Fin</label>
-              <input type="date" className={inputClass} value={form.endDate} onChange={(e) => set("endDate", e.target.value)} />
+              <label className={labelClass} htmlFor="cal-end">
+                Fin (jour inclus)
+              </label>
+              <input
+                id="cal-end"
+                type="date"
+                className={cn(inputClass, FIELD_WIDTH.date)}
+                value={form.endDate}
+                onChange={(e) => set("endDate", e.target.value)}
+              />
             </div>
+
             <div className="sm:col-span-2">
-              <label className={labelClass}>Bannière (URL ou /assets/… — paysage de préférence)</label>
-              <input className={inputClass} value={form.image} onChange={(e) => set("image", e.target.value)} placeholder="https://… ou /assets/events/…" />
+              <label className={labelClass} htmlFor="cal-image">
+                Bannière — URL ou /assets/… (paysage de préférence)
+              </label>
+              <input
+                id="cal-image"
+                className={cn(inputClass, FIELD_WIDTH.long)}
+                value={form.image}
+                onChange={(e) => set("image", e.target.value)}
+                placeholder="https://… ou /assets/events/…"
+              />
               {form.image ? (
-                <div className="mt-2 overflow-hidden rounded-sm border border-white/15">
-                  {/* Aperçu au format de la barre du calendrier : bannière large. */}
+                <div className={cn("mt-2 overflow-hidden border border-white/12", FIELD_WIDTH.long)}>
+                  {/* Aperçu au cadrage réel de la frise : bannière large. */}
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={form.image} alt="" className="h-20 w-full object-cover object-[50%_28%]" />
+                  <img src={form.image} alt="" className="h-16 w-full object-cover object-[50%_28%]" />
                 </div>
               ) : null}
             </div>
+
             <div className="sm:col-span-2">
-              <label className={labelClass}>Lien (href — clic sur l'événement)</label>
-              <input className={inputClass} value={form.href} onChange={(e) => set("href", e.target.value)} placeholder="/characters/… ou https://…" />
+              <label className={labelClass} htmlFor="cal-href">
+                Lien au clic
+              </label>
+              <input
+                id="cal-href"
+                className={cn(inputClass, FIELD_WIDTH.long)}
+                value={form.href}
+                onChange={(e) => set("href", e.target.value)}
+                placeholder="/characters/… ou https://…"
+              />
             </div>
+
             <div className="sm:col-span-2">
-              <label className={labelClass}>Infos (tooltip / détail)</label>
-              <textarea className={cn(inputClass, "min-h-20 resize-y")} value={form.description} onChange={(e) => set("description", e.target.value)} />
+              <label className={labelClass} htmlFor="cal-description">
+                Détail affiché au survol
+              </label>
+              <textarea
+                id="cal-description"
+                className={cn(inputClass, FIELD_WIDTH.text, "min-h-20 resize-y")}
+                value={form.description}
+                onChange={(e) => set("description", e.target.value)}
+              />
             </div>
+
             <div className="sm:col-span-2">
-              <label className={labelClass}>Source (non affichée au front)</label>
-              <input className={inputClass} value={form.sourceUrl} onChange={(e) => set("sourceUrl", e.target.value)} placeholder="URL de l'annonce officielle" />
+              <label className={labelClass} htmlFor="cal-source">
+                Source (jamais affichée sur le site)
+              </label>
+              <input
+                id="cal-source"
+                className={cn(inputClass, FIELD_WIDTH.long)}
+                value={form.sourceUrl}
+                onChange={(e) => set("sourceUrl", e.target.value)}
+                placeholder="URL de l'annonce officielle"
+              />
             </div>
+
             <label className="flex cursor-pointer items-center gap-2 sm:col-span-2">
-              <input type="checkbox" checked={form.hidden} onChange={(e) => set("hidden", e.target.checked)} className="accent-gold" />
-              <span className="font-sans text-sm text-parch/85">Masqué (non affiché dans le calendrier)</span>
+              <input
+                type="checkbox"
+                checked={form.hidden}
+                onChange={(e) => set("hidden", e.target.checked)}
+                className="accent-gold"
+              />
+              <span className="font-sans text-[0.82rem] text-parch/85">Masqué — retiré du calendrier public</span>
             </label>
-          </div>
 
-          {error ? <p className="mt-3 font-sans text-sm text-[#ffb3a6]">{error}</p> : null}
+            {error ? <p className="sm:col-span-2 font-sans text-[0.8rem] text-[#ffb3a6]">{error}</p> : null}
 
-          <div className="mt-4 flex items-center gap-2">
-            <DnaButton variant="gold" onClick={save} disabled={saving || !form.title || !form.startDate || !form.endDate}>
-              {saving ? "Enregistrement…" : "Enregistrer"}
-            </DnaButton>
-            <DnaButton variant="ghost" onClick={() => setForm(null)}>
-              Annuler
-            </DnaButton>
-          </div>
-        </DnaPanel>
-      ) : null}
-
-      {/* Liste */}
-      {!form && !loading ? (
-        events.length === 0 ? (
-          <DnaPanel className="p-6 text-center">
-            <p className="font-sans text-sm text-muted">Aucun événement en base. Le calendrier utilise la liste curée par défaut.</p>
-          </DnaPanel>
-        ) : (
-          <div className="space-y-2">
-            {events.map((ev) => (
-              <div
-                key={ev.id}
-                className={cn(
-                  "flex items-center gap-3 rounded-sm border border-line/20 bg-panel/60 p-3",
-                  ev.hidden && "opacity-60",
-                )}
+            <div className="flex items-center gap-2 sm:col-span-2">
+              <button
+                type="button"
+                onClick={() => void save()}
+                disabled={saving || !form.title || !form.startDate || !form.endDate}
+                className={cn(formButtonClass, "border-gold/50 bg-gold/10 text-gold-bright hover:border-gold hover:bg-gold/20")}
               >
-                {ev.image ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img src={ev.image} alt="" className="h-10 w-16 shrink-0 rounded-sm border border-white/15 object-cover object-[50%_28%]" />
-                ) : (
-                  <span className="h-10 w-16 shrink-0 rounded-sm border border-white/10 bg-ink/60" />
-                )}
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-center gap-2">
-                    <span className="truncate font-display text-sm text-parch">{ev.title}</span>
-                    {ev.hidden ? (
-                      <span className="shrink-0 rounded-sm border border-white/15 px-1.5 py-0.5 font-caps text-[0.5rem] uppercase tracking-[0.14em] text-muted">
-                        Masqué
-                      </span>
-                    ) : null}
-                  </div>
-                  <div className="mt-0.5 font-mono text-[0.62rem] text-muted">
-                    {ev.category} · {ev.startDate} → {ev.endDate}
-                  </div>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => startEdit(ev)}
-                  aria-label="Modifier"
-                  className="flex h-8 w-8 items-center justify-center rounded-sm border border-line/20 text-parch/75 transition-colors hover:border-gold hover:text-gold"
-                >
-                  <Pencil className="h-3.5 w-3.5" />
-                </button>
-                <button
-                  type="button"
-                  onClick={() => remove(ev)}
-                  aria-label="Supprimer"
-                  className="flex h-8 w-8 items-center justify-center rounded-sm border border-line/20 text-parch/75 transition-colors hover:border-crimson-bright/50 hover:text-[#ffb3a6]"
-                >
-                  <Trash2 className="h-3.5 w-3.5" />
-                </button>
-              </div>
-            ))}
+                {saving ? "Enregistrement…" : "Enregistrer"}
+              </button>
+              <button
+                type="button"
+                onClick={() => setForm(null)}
+                className={cn(formButtonClass, "border-white/12 text-parch/75 hover:border-white/30 hover:text-parch")}
+              >
+                Annuler
+              </button>
+            </div>
           </div>
-        )
+        </AdminPanel>
       ) : null}
+
+      <AdminPanel
+        label="Événements"
+        count={events.length}
+        actions={<AdminIconButton icon={Plus} label="Ajouter un événement" tone="active" onClick={startCreate} />}
+      >
+        {loading ? (
+          <AdminTableSkeleton rows={5} columns={5} />
+        ) : events.length === 0 ? (
+          <AdminEmpty icon={CalendarDays} text="Aucun événement en base — le calendrier utilise la liste curée." />
+        ) : (
+          <AdminTable minWidth="44rem">
+            <thead>
+              <tr>
+                <AdminTh width="4.5rem" />
+                <AdminTh>Événement</AdminTh>
+                <AdminTh width="8rem">Catégorie</AdminTh>
+                <AdminTh width="12rem">Période</AdminTh>
+                <AdminTh width="6.5rem">Statut</AdminTh>
+                <AdminTh width="5.5rem" align="right">
+                  Actions
+                </AdminTh>
+              </tr>
+            </thead>
+            <tbody>
+              {events.map((ev) => (
+                <AdminTr key={ev.id} dimmed={ev.hidden}>
+                  <AdminTd>
+                    {ev.image ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={ev.image}
+                        alt=""
+                        className="h-8 w-14 shrink-0 border border-white/12 object-cover object-[50%_28%]"
+                      />
+                    ) : (
+                      <span aria-hidden className="block h-8 w-14 border border-white/8 bg-white/[0.02]" />
+                    )}
+                  </AdminTd>
+                  <AdminTd>
+                    <AdminIdentity primary={ev.title} secondary={ev.href ?? undefined} />
+                  </AdminTd>
+                  <AdminTd>
+                    <AdminChip>{ev.category}</AdminChip>
+                  </AdminTd>
+                  <AdminTd>
+                    <span className="font-mono text-[0.7rem] text-muted tabular-nums">
+                      {ev.startDate} → {ev.endDate}
+                    </span>
+                  </AdminTd>
+                  <AdminTd>
+                    {ev.hidden ? <AdminStatus tone="neutral">Masqué</AdminStatus> : <AdminStatus tone="ok">Publié</AdminStatus>}
+                  </AdminTd>
+                  <AdminTd align="right">
+                    <AdminActions>
+                      <AdminIconButton icon={Pencil} label="Modifier l'événement" onClick={() => startEdit(ev)} />
+                      <AdminActionsDivider />
+                      <AdminIconButton icon={Trash2} label="Supprimer l'événement" tone="danger" onClick={() => void remove(ev)} />
+                    </AdminActions>
+                  </AdminTd>
+                </AdminTr>
+              ))}
+            </tbody>
+          </AdminTable>
+        )}
+      </AdminPanel>
     </div>
   );
 }

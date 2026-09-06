@@ -1,14 +1,20 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Check } from "lucide-react";
-import { DnaButton, DnaPanel, DnaSectionLabel, cn } from "@/components/dna";
+import { Check, Loader2 } from "lucide-react";
+import { cn } from "@/components/dna";
 import { DEFAULT_SETTINGS, type AppSettings } from "@/lib/settings";
 import { AuthConfigPanel } from "./AuthConfigPanel";
+import { FIELD_WIDTH, AdminFormButton, AdminPanel, AdminTableSkeleton, adminInputClass, adminLabelClass } from "./ui";
 
-const inputClass =
-  "w-full rounded-sm border border-white/10 bg-ink/60 px-3 py-2 text-sm text-parch outline-none transition-colors placeholder:text-muted-2 focus:border-gold/50";
-
+/**
+ * Réglages applicatifs.
+ *
+ * Un écran de configuration n'a pas de tableau : ce sont des interrupteurs et
+ * des champs. Ce qui compte ici, c'est qu'on voie immédiatement qu'une
+ * modification n'est **pas encore enregistrée** – d'où la barre collante en
+ * bas, qui n'apparaît qu'en cas de changement en attente.
+ */
 function Toggle({
   checked,
   onChange,
@@ -16,33 +22,31 @@ function Toggle({
   description,
 }: {
   checked: boolean;
-  onChange: (v: boolean) => void;
+  onChange: (value: boolean) => void;
   label: string;
   description?: string;
 }) {
   return (
-    <label className="flex cursor-pointer items-start justify-between gap-4 py-2.5">
+    <label className="flex cursor-pointer items-start justify-between gap-4 px-3 py-2.5">
       <span className="min-w-0">
-        <span className="block font-sans text-sm text-parch">{label}</span>
-        {description ? <span className="mt-0.5 block font-sans text-xs text-muted">{description}</span> : null}
+        <span className="block font-sans text-[0.84rem] text-parch">{label}</span>
+        {description ? <span className="mt-0.5 block font-sans text-[0.72rem] text-muted">{description}</span> : null}
       </span>
       <span
-        role="switch"
-        aria-checked={checked}
-        onClick={() => onChange(!checked)}
+        aria-hidden
         className={cn(
-          "relative mt-0.5 h-5 w-9 shrink-0 rounded-full border transition-colors",
-          checked ? "border-gold bg-gold/30" : "border-white/15 bg-ink/60",
+          "relative mt-0.5 h-5 w-9 shrink-0 border transition-colors",
+          checked ? "border-gold bg-gold/30" : "border-white/15 bg-black/40",
         )}
       >
         <span
           className={cn(
-            "absolute top-0.5 h-3.5 w-3.5 rounded-full transition-all",
-            checked ? "left-[1.15rem] bg-gold-bright" : "left-0.5 bg-white/40",
+            "absolute top-[3px] h-3 w-3 transition-all",
+            checked ? "left-[1.2rem] bg-gold-bright" : "left-[3px] bg-white/40",
           )}
         />
       </span>
-      <input type="checkbox" className="sr-only" checked={checked} onChange={(e) => onChange(e.target.checked)} />
+      <input type="checkbox" className="sr-only" checked={checked} onChange={(event) => onChange(event.target.checked)} />
     </label>
   );
 }
@@ -51,6 +55,7 @@ export function SettingsAdminClient() {
   const [settings, setSettings] = useState<AppSettings | null>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [dirty, setDirty] = useState(false);
   const [saved, setSaved] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -74,6 +79,7 @@ export function SettingsAdminClient() {
 
   const set = <K extends keyof AppSettings>(key: K, value: AppSettings[K]) => {
     setSaved(false);
+    setDirty(true);
     setSettings((s) => (s ? { ...s, [key]: value } : s));
   };
 
@@ -94,6 +100,7 @@ export function SettingsAdminClient() {
       }
       if (json.settings) setSettings(json.settings);
       setSaved(true);
+      setDirty(false);
     } catch {
       setError("Erreur réseau.");
     } finally {
@@ -102,77 +109,151 @@ export function SettingsAdminClient() {
   };
 
   if (loading || !settings) {
-    return <DnaPanel className="p-5"><p className="font-sans text-sm text-muted">Chargement…</p></DnaPanel>;
+    return (
+      <AdminPanel label="Configuration">
+        <AdminTableSkeleton rows={5} columns={2} />
+      </AdminPanel>
+    );
   }
 
   const s = settings;
 
   return (
-    <div className="space-y-5">
-      <div className="grid gap-5 xl:grid-cols-2">
-        {/* Annonce */}
-        <DnaPanel className="p-5">
-          <DnaSectionLabel>Bannière d'annonce</DnaSectionLabel>
-          <div className="mt-3 divide-y divide-white/10">
-            <Toggle checked={s.announcementEnabled} onChange={(v) => set("announcementEnabled", v)} label="Afficher la bannière" description="Message affiché à tous les visiteurs, en haut du site." />
+    <div className="flex flex-col gap-4 pb-16">
+      <div className="grid items-start gap-4 xl:grid-cols-2">
+        <AdminPanel label="Bannière d'annonce">
+          <div className="divide-y divide-white/[0.06]">
+            <Toggle
+              checked={s.announcementEnabled}
+              onChange={(v) => set("announcementEnabled", v)}
+              label="Afficher la bannière"
+              description="Message affiché à tous les visiteurs, en haut du site."
+            />
           </div>
-          <div className="mt-3 space-y-3">
-            <input className={inputClass} value={s.announcementText} onChange={(e) => set("announcementText", e.target.value)} placeholder="Texte de l'annonce" />
-            <input className={inputClass} value={s.announcementLink} onChange={(e) => set("announcementLink", e.target.value)} placeholder="Lien (optionnel) — /page ou https://…" />
+          <div className="flex flex-col gap-2 border-t border-white/[0.06] p-3">
+            <div>
+              <label className={adminLabelClass} htmlFor="set-announcement-text">
+                Texte
+              </label>
+              <input
+                id="set-announcement-text"
+                className={cn(adminInputClass, FIELD_WIDTH.medium)}
+                value={s.announcementText}
+                onChange={(e) => set("announcementText", e.target.value)}
+                placeholder="Texte de l'annonce"
+              />
+            </div>
+            <div>
+              <label className={adminLabelClass} htmlFor="set-announcement-link">
+                Lien (facultatif)
+              </label>
+              <input
+                id="set-announcement-link"
+                className={cn(adminInputClass, FIELD_WIDTH.long)}
+                value={s.announcementLink}
+                onChange={(e) => set("announcementLink", e.target.value)}
+                placeholder="/page ou https://…"
+              />
+            </div>
           </div>
-        </DnaPanel>
+        </AdminPanel>
 
-        {/* Maintenance */}
-        <DnaPanel className="p-5">
-          <DnaSectionLabel>Maintenance</DnaSectionLabel>
-          <div className="mt-3 divide-y divide-white/10">
-            <Toggle checked={s.maintenanceMode} onChange={(v) => set("maintenanceMode", v)} label="Mode maintenance" description="Bandeau d'alerte + blocage des créations (compte, build)." />
+        <AdminPanel label="Maintenance">
+          <div className="divide-y divide-white/[0.06]">
+            <Toggle
+              checked={s.maintenanceMode}
+              onChange={(v) => set("maintenanceMode", v)}
+              label="Mode maintenance"
+              description="Bandeau d'alerte et blocage des créations (compte, build)."
+            />
           </div>
-          <div className="mt-3">
-            <input className={inputClass} value={s.maintenanceMessage} onChange={(e) => set("maintenanceMessage", e.target.value)} placeholder="Message de maintenance" />
+          <div className="border-t border-white/[0.06] p-3">
+            <label className={adminLabelClass} htmlFor="set-maintenance-message">
+              Message
+            </label>
+            <input
+              id="set-maintenance-message"
+              className={cn(adminInputClass, FIELD_WIDTH.medium)}
+              value={s.maintenanceMessage}
+              onChange={(e) => set("maintenanceMessage", e.target.value)}
+              placeholder="Message de maintenance"
+            />
           </div>
-        </DnaPanel>
+        </AdminPanel>
 
-        {/* Fonctionnalités */}
-        <DnaPanel className="p-5">
-          <DnaSectionLabel>Fonctionnalités</DnaSectionLabel>
-          <div className="mt-2 divide-y divide-white/10">
-            <Toggle checked={s.signupEnabled} onChange={(v) => set("signupEnabled", v)} label="Création de compte" description="Autoriser les nouvelles inscriptions." />
-            <Toggle checked={s.buildCreationEnabled} onChange={(v) => set("buildCreationEnabled", v)} label="Publication de builds" description="Autoriser la création de nouveaux builds." />
-            <Toggle checked={s.commissionsVisible} onChange={(v) => set("commissionsVisible", v)} label="Afficher les commissions" description="Sur l'accueil, la page et la sidebar." />
-            <Toggle checked={s.googleAuthEnabled} onChange={(v) => set("googleAuthEnabled", v)} label="Connexion Google" description="Proposer Google en plus de Discord (selon config env)." />
+        <AdminPanel label="Fonctionnalités">
+          <div className="divide-y divide-white/[0.06]">
+            <Toggle
+              checked={s.signupEnabled}
+              onChange={(v) => set("signupEnabled", v)}
+              label="Création de compte"
+              description="Autoriser les nouvelles inscriptions."
+            />
+            <Toggle
+              checked={s.buildCreationEnabled}
+              onChange={(v) => set("buildCreationEnabled", v)}
+              label="Publication de builds"
+              description="Autoriser la création de nouveaux builds."
+            />
+            <Toggle
+              checked={s.commissionsVisible}
+              onChange={(v) => set("commissionsVisible", v)}
+              label="Afficher les commissions"
+              description="Sur l'accueil, la page dédiée et la barre latérale."
+            />
+            <Toggle
+              checked={s.googleAuthEnabled}
+              onChange={(v) => set("googleAuthEnabled", v)}
+              label="Connexion Google"
+              description="Proposer Google en plus de Discord, selon la configuration serveur."
+            />
           </div>
-        </DnaPanel>
+        </AdminPanel>
 
-        {/* Calendrier */}
-        <DnaPanel className="p-5">
-          <DnaSectionLabel>Calendrier</DnaSectionLabel>
-          <div className="mt-3">
-            <label className="mb-1 block font-caps text-[0.55rem] uppercase tracking-[0.16em] text-muted">Forcer la date de référence (« aujourd&apos;hui »)</label>
-            <input type="date" className={inputClass} value={s.calendarToday} onChange={(e) => set("calendarToday", e.target.value)} />
-            <p className="mt-1.5 font-sans text-xs text-muted">
-              Laisser vide : le curseur suit l&apos;horloge de chaque visiteur. Ne remplir que pour figer la frise (test, capture) — le repère
-              ne bougera plus pour personne.
+        <AdminPanel label="Calendrier">
+          <div className="p-3">
+            <label className={adminLabelClass} htmlFor="set-calendar-today">
+              Forcer la date de référence
+            </label>
+            <input
+              id="set-calendar-today"
+              type="date"
+              className={cn(adminInputClass, FIELD_WIDTH.date)}
+              value={s.calendarToday}
+              onChange={(e) => set("calendarToday", e.target.value)}
+            />
+            <p className="mt-2 font-sans text-[0.72rem] text-muted">
+              Vide : le curseur suit l&apos;horloge de chaque visiteur. Une valeur ici fige la frise{" "}
+              <strong className="font-normal text-[#ffb3a6]">pour tout le monde</strong> – à réserver aux tests et aux
+              captures.
             </p>
           </div>
-        </DnaPanel>
+        </AdminPanel>
       </div>
 
       <AuthConfigPanel />
 
-      {error ? <p className="font-sans text-sm text-[#ffb3a6]">{error}</p> : null}
-
-      <div className="flex items-center gap-3">
-        <DnaButton variant="gold" onClick={save} disabled={saving}>
-          {saving ? "Enregistrement…" : "Enregistrer les réglages"}
-        </DnaButton>
-        {saved ? (
-          <span className="inline-flex items-center gap-1.5 font-caps text-[0.6rem] uppercase tracking-[0.14em] text-anemo">
-            <Check className="h-3.5 w-3.5" />
-            Enregistré
+      {/* Barre d'enregistrement : n'apparaît qu'en cas de modification en attente. */}
+      {dirty || error || saved ? (
+        <div className="sticky bottom-0 z-20 -mx-4 flex items-center gap-3 border-t border-white/10 bg-[#07090d]/95 px-4 py-2.5 backdrop-blur-md md:-mx-5 md:px-5">
+          {error ? (
+            <span className="font-sans text-[0.78rem] text-[#ffb3a6]">{error}</span>
+          ) : saved ? (
+            <span className="inline-flex items-center gap-1.5 font-sans text-[0.78rem] text-gold">
+              <Check className="h-3.5 w-3.5" />
+              Réglages enregistrés.
+            </span>
+          ) : (
+            <span className="font-sans text-[0.78rem] text-muted">Modifications non enregistrées.</span>
+          )}
+          <span className="ml-auto flex items-center gap-2">
+            <AdminFormButton variant="primary" onClick={() => void save()} disabled={saving || !dirty}>
+              {saving ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : null}
+              {saving ? "Enregistrement…" : "Enregistrer"}
+            </AdminFormButton>
           </span>
-        ) : null}
-      </div>
+        </div>
+      ) : null}
     </div>
   );
 }
