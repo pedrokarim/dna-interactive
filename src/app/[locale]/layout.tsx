@@ -9,6 +9,7 @@ import StructuredData from "@/components/StructuredData";
 import { AppShell } from "@/components/site/AppShell";
 import { SarutobiAnalytics } from "@/components/analytics/SarutobiAnalytics";
 import { resolveShellBadges } from "@/lib/shell";
+import { THEME_INIT_SCRIPT } from "@/lib/theme";
 import {
   SITE_CONFIG,
   CREATOR_INFO,
@@ -190,11 +191,15 @@ export default async function LocaleLayout({
     currentYear > SITE_LAUNCH_YEAR ? `${SITE_LAUNCH_YEAR}-${currentYear}` : `${SITE_LAUNCH_YEAR}`;
 
   return (
-    <html lang={htmlLang} style={{ colorScheme: "dark" }}>
+    <html lang={htmlLang}>
       <head>
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://www.google.com" />
+        {/* Applique le thème choisi AVANT la première peinture : sans ça, la
+            page s'affiche en sombre puis saute en clair après hydratation.
+            Cf. lib/theme.ts. */}
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
         {/* Restaure l'état replié de la barre latérale AVANT la première
             peinture : sans ça, la page s'affiche déployée puis saute à 64px
             après hydratation. Cf. `--dna-sidebar-w` dans globals.css. */}

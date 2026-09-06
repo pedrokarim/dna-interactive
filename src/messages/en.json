@@ -297,7 +297,15 @@
       "update": "Update",
       "fix": "Fix",
       "enhancement": "Enhancement"
-    }
+    },
+    "loadingMore": "Loading earlier versions…",
+    "loadFailed": "Loading stopped — try again",
+    "feedEnd": "Start of the log",
+    "versionPickerButton": "Versions",
+    "versionPickerTitle": "Jump to a version",
+    "versionPickerClose": "Close the version list",
+    "backToTop": "Back to top",
+    "backToLatest": "Back to the latest versions"
   },
   "otherProjects": {
     "title": "Our other projects",
@@ -1116,7 +1124,11 @@
     "tagline": "Unofficial community companion — Duet Night Abyss",
     "copyright": "© {years}",
     "privacy": "Privacy",
-    "language": "Language: {language}"
+    "language": "Language: {language}",
+    "theme": "Theme",
+    "themeAuto": "System",
+    "themeLight": "Light",
+    "themeDark": "Dark"
   },
   "homeHub": {
     "heroDescription": "The community hub for Duet Night Abyss: map, database, build creator and tools, all in one place.",

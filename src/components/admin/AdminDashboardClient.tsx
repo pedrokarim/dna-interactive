@@ -17,6 +17,7 @@ import {
   MailOpen,
   Megaphone,
   RefreshCcw,
+  ScrollText,
   Settings,
   Shield,
   ShieldCheck,
@@ -33,6 +34,7 @@ import { useConfirm } from "@/components/dna/ConfirmProvider";
 import { cn } from "@/components/dna";
 import { AnnouncementsAdminClient } from "./AnnouncementsAdminClient";
 import { CalendarAdminClient } from "./CalendarAdminClient";
+import { ChangelogAdminClient } from "./ChangelogAdminClient";
 import { SettingsAdminClient } from "./SettingsAdminClient";
 import {
   AdminActions,
@@ -56,7 +58,7 @@ import {
 
 const ADMIN_PAGE_SIZE = 12;
 
-type AdminView = "overview" | "reports" | "builds" | "users" | "emails" | "announcements" | "calendar" | "settings";
+type AdminView = "overview" | "reports" | "builds" | "users" | "emails" | "announcements" | "changelog" | "calendar" | "settings";
 
 type EmailStats = {
   total: number;
@@ -111,6 +113,7 @@ const ADMIN_NAV: Array<{ id: AdminView; label: string; icon: LucideIcon }> = [
   { id: "users", label: "Utilisateurs", icon: Users },
   { id: "emails", label: "Emails", icon: Mail },
   { id: "announcements", label: "Annonces", icon: Megaphone },
+  { id: "changelog", label: "Changelog", icon: ScrollText },
   { id: "calendar", label: "Calendrier", icon: CalendarDays },
   { id: "settings", label: "Configuration", icon: Settings },
 ];
@@ -368,6 +371,7 @@ export function AdminDashboardClient({ currentUser }: { currentUser: CurrentAdmi
 
           {activeView === "emails" ? <EmailsView stats={emailStats} /> : null}
           {activeView === "announcements" ? <AnnouncementsAdminClient /> : null}
+          {activeView === "changelog" ? <ChangelogAdminClient /> : null}
           {activeView === "calendar" ? <CalendarAdminClient /> : null}
           {activeView === "settings" ? <SettingsAdminClient /> : null}
         </main>

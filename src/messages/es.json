@@ -297,7 +297,15 @@
       "update": "Actualización",
       "fix": "Corrección",
       "enhancement": "Mejora"
-    }
+    },
+    "loadingMore": "Cargando versiones anteriores…",
+    "loadFailed": "Carga interrumpida — reintentar",
+    "feedEnd": "Inicio del registro",
+    "versionPickerButton": "Versiones",
+    "versionPickerTitle": "Ir a una versión",
+    "versionPickerClose": "Cerrar la lista de versiones",
+    "backToTop": "Volver arriba",
+    "backToLatest": "Volver a las últimas versiones"
   },
   "otherProjects": {
     "title": "Nuestros otros proyectos",
@@ -1116,7 +1124,11 @@
     "tagline": "Companion comunitario no oficial — Duet Night Abyss",
     "copyright": "© {years}",
     "privacy": "Privacidad",
-    "language": "Idioma: {language}"
+    "language": "Idioma: {language}",
+    "theme": "Tema",
+    "themeAuto": "Sistema",
+    "themeLight": "Claro",
+    "themeDark": "Oscuro"
   },
   "homeHub": {
     "heroDescription": "El centro comunitario de Duet Night Abyss: mapa, base de datos, creador de builds y herramientas, todo en un mismo lugar.",

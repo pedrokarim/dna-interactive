@@ -297,7 +297,15 @@
       "update": "업데이트",
       "fix": "수정",
       "enhancement": "개선"
-    }
+    },
+    "loadingMore": "이전 버전을 불러오는 중…",
+    "loadFailed": "불러오기가 중단되었습니다 — 다시 시도",
+    "feedEnd": "기록의 시작",
+    "versionPickerButton": "버전",
+    "versionPickerTitle": "버전으로 이동",
+    "versionPickerClose": "버전 목록 닫기",
+    "backToTop": "맨 위로",
+    "backToLatest": "최신 버전으로 돌아가기"
   },
   "otherProjects": {
     "title": "다른 프로젝트",
@@ -1116,7 +1124,11 @@
     "tagline": "비공식 커뮤니티 정보 사이트 — Duet Night Abyss",
     "copyright": "© {years}",
     "privacy": "개인정보",
-    "language": "언어: {language}"
+    "language": "언어: {language}",
+    "theme": "테마",
+    "themeAuto": "시스템",
+    "themeLight": "라이트",
+    "themeDark": "다크"
   },
   "homeHub": {
     "heroDescription": "Duet Night Abyss 커뮤니티 허브: 지도, 데이터베이스, 빌드 제작기와 도구를 한곳에서 만나보세요.",

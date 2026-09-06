@@ -27,6 +27,7 @@ import { Link, usePathname } from "@/i18n/navigation";
 import { DnaAmbientBackdrop, DnaNouveau, DnaPill, DnaSectionMark, cn, useDialogA11y } from "@/components/dna";
 import { SidebarProfile, TopbarAccount } from "@/components/auth/AccountControls";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import { ThemeSwitcher } from "@/components/site/ThemeSwitcher";
 import { NotificationBell } from "@/components/notifications/NotificationBell";
 import { SiteBanner } from "@/components/site/SiteBanner";
 import { useAppSettings } from "@/lib/settings/useAppSettings";
@@ -450,6 +451,7 @@ export function AppShell({ children, badges = {}, copyrightYears = "2025" }: App
 
           <div className="ml-auto flex items-center gap-2 sm:gap-3">
             <DnaPill>{t("gameVersion", { version: GAME_VERSION })}</DnaPill>
+            <ThemeSwitcher />
             <LanguageSwitcher />
             <NotificationBell />
             <TopbarAccount />

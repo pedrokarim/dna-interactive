@@ -1,5 +1,5 @@
 /**
- * Création des tables du système de notifications, en SQL ciblé.
+ * Création des tables applicatives (notifications, changelog), en SQL ciblé.
  *
  * `drizzle-kit push` est inutilisable sur cette base : il détecte un écart sur
  * `email_events` et propose une troncature destructive. On crée donc les
@@ -82,6 +82,21 @@ const STATEMENTS = [
   // Colonne additive sur une table existante : jamais de DROP, jamais de
   // reecriture. `IF NOT EXISTS` rend l'instruction rejouable.
   `ALTER TABLE users ADD COLUMN IF NOT EXISTS announcement_emails boolean NOT NULL DEFAULT true`,
+
+  // Changelog editorial : les entrees vivaient en dur dans le code.
+  `CREATE TABLE IF NOT EXISTS changelog_entries (
+     id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+     version text NOT NULL UNIQUE,
+     date text NOT NULL,
+     type text NOT NULL DEFAULT 'feature',
+     translations jsonb NOT NULL,
+     hidden boolean NOT NULL DEFAULT false,
+     created_by_id text REFERENCES users(id) ON DELETE SET NULL,
+     created_at timestamptz NOT NULL DEFAULT now(),
+     updated_at timestamptz NOT NULL DEFAULT now()
+   )`,
+  `CREATE INDEX IF NOT EXISTS idx_changelog_order ON changelog_entries (date, version)`,
+  `CREATE INDEX IF NOT EXISTS idx_changelog_hidden ON changelog_entries (hidden)`,
 ];
 
 async function main() {

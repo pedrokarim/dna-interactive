@@ -259,7 +259,7 @@ export default function HomeHubClient({
 
           <div className="relative flex h-full flex-1 flex-col gap-4">
             <span className="font-caps text-[0.6rem] uppercase tracking-[0.34em] text-muted">Duet Night Abyss</span>
-            <h1 className="bg-gradient-to-b from-[#f4ecd8] to-gold bg-clip-text font-display text-4xl font-semibold leading-[0.95] text-transparent sm:text-5xl">DNA Interactive</h1>
+            <h1 className="bg-gradient-to-b from-gold-bright to-gold bg-clip-text font-display text-4xl font-semibold leading-[0.95] text-transparent sm:text-5xl">DNA Interactive</h1>
             <div className="flex items-center gap-1.5" aria-hidden>
               {[0, 1, 2, 3, 4, 5].map((i) => (
                 <span key={i} className={cn("h-2.5 w-2.5 rotate-45 border", i < 3 ? "border-gold bg-gold-bright" : "border-line/30")} />

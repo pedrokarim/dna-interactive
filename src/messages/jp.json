@@ -297,7 +297,15 @@
       "update": "アップデート",
       "fix": "修正",
       "enhancement": "改善"
-    }
+    },
+    "loadingMore": "以前のバージョンを読み込み中…",
+    "loadFailed": "読み込みが中断されました — 再試行",
+    "feedEnd": "記録の始まり",
+    "versionPickerButton": "バージョン",
+    "versionPickerTitle": "バージョンへ移動",
+    "versionPickerClose": "バージョン一覧を閉じる",
+    "backToTop": "先頭へ戻る",
+    "backToLatest": "最新バージョンに戻る"
   },
   "otherProjects": {
     "title": "その他のプロジェクト",
@@ -1116,7 +1124,11 @@
     "tagline": "非公式コミュニティ攻略サイト — Duet Night Abyss",
     "copyright": "© {years}",
     "privacy": "プライバシー",
-    "language": "言語：{language}"
+    "language": "言語：{language}",
+    "theme": "テーマ",
+    "themeAuto": "システム",
+    "themeLight": "ライト",
+    "themeDark": "ダーク"
   },
   "homeHub": {
     "heroDescription": "Duet Night Abyssのコミュニティハブ。マップ、データベース、ビルド作成、各種ツールを一か所に。",

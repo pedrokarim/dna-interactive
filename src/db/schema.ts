@@ -470,3 +470,51 @@ export const pushSubscriptions = pgTable(
 export type AnnouncementRow = typeof announcements.$inferSelect;
 export type NotificationReadRow = typeof notificationReads.$inferSelect;
 export type PushSubscriptionRow = typeof pushSubscriptions.$inferSelect;
+
+// ---------------------------------------------------------------------------
+// Changelog — journal des versions du site, pilotable via l'admin.
+//
+// Les entrées vivaient en dur : `changelogData.ts` pour les métadonnées et les
+// sept fichiers de messages pour les textes. Publier une note coûtait donc huit
+// fichiers à modifier, ce qui décourage d'en écrire.
+//
+// `translations` porte un objet par langue :
+//   { fr: { title, description, items: [] }, en: { … } }
+// Une seule langue suffit à publier ; la lecture retombe sur la langue par
+// défaut quand la traduction manque. C'est ce qui permet de garder un site
+// multilingue sans exiger sept saisies à chaque note.
+// ---------------------------------------------------------------------------
+
+export type ChangelogTranslation = {
+  title: string;
+  description: string;
+  items: string[];
+};
+
+export const changelogEntries = pgTable(
+  "changelog_entries",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    /** Numéro de version affiché, ex. « 2.4.0 ». Unique : c'est l'ancre publique. */
+    version: text("version").notNull().unique(),
+    /** Date de publication, ISO `AAAA-MM-JJ` (même convention que le calendrier). */
+    date: text("date").notNull(),
+    type: text("type", { enum: ["feature", "update", "fix", "enhancement", "security"] })
+      .notNull()
+      .default("feature"),
+    translations: jsonb("translations").$type<Record<string, ChangelogTranslation>>().notNull(),
+    /** Retire l'entrée du journal public sans la supprimer. */
+    hidden: boolean("hidden").notNull().default(false),
+    createdById: text("created_by_id").references(() => users.id, { onDelete: "set null" }),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [
+    // Le journal se lit du plus récent au plus ancien : c'est l'index qui porte
+    // la pagination par curseur du défilement infini.
+    index("idx_changelog_order").on(t.date, t.version),
+    index("idx_changelog_hidden").on(t.hidden),
+  ],
+);
+
+export type ChangelogEntryRow = typeof changelogEntries.$inferSelect;

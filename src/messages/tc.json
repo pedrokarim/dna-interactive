@@ -297,7 +297,15 @@
       "update": "更新",
       "fix": "修正",
       "enhancement": "改善"
-    }
+    },
+    "loadingMore": "正在載入較早的版本…",
+    "loadFailed": "載入中斷 — 重試",
+    "feedEnd": "紀錄的起點",
+    "versionPickerButton": "版本",
+    "versionPickerTitle": "跳至版本",
+    "versionPickerClose": "關閉版本清單",
+    "backToTop": "回到頂部",
+    "backToLatest": "回到最新版本"
   },
   "otherProjects": {
     "title": "我們的其他專案",
@@ -1116,7 +1124,11 @@
     "tagline": "非官方社群攻略網站 — Duet Night Abyss",
     "copyright": "© {years}",
     "privacy": "隱私權",
-    "language": "語言：{language}"
+    "language": "語言：{language}",
+    "theme": "主題",
+    "themeAuto": "跟隨系統",
+    "themeLight": "淺色",
+    "themeDark": "深色"
   },
   "homeHub": {
     "heroDescription": "Duet Night Abyss 社群中心：地圖、資料庫、配裝建立器與工具，全部集中在同一處。",

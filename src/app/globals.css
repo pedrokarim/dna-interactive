@@ -53,6 +53,7 @@
 :root {
   --background: #0a0a0b;
   --foreground: #ece4d2;
+  color-scheme: dark;
 }
 
 /* fond atmosphérique global DNA (sombre, lueurs cramoisi/teal, grain léger) */
@@ -69,6 +70,153 @@ body {
 }
 
 ::selection { background: rgba(194, 168, 106, 0.3); color: #fff; }
+
+/* ===========================================================================
+   DNA UI — thème clair
+
+   Le thème est porté par `data-theme="light"` sur <html>, écrit par le script
+   inline du layout AVANT la première peinture (même mécanique que
+   `data-sidebar`). Le mode « auto » est résolu en JS : l'attribut ne vaut
+   jamais que "dark" ou "light", ce qui garde UN seul sélecteur ici.
+
+   Principe : on ne redéfinit que la VALEUR des tokens, jamais leur rôle. Les
+   composants continuent d'écrire `bg-panel`, `text-parch`, `border-line/25` —
+   aucun d'eux n'a besoin de connaître le thème. Les noms restent donc ceux du
+   thème sombre d'origine : `parch` est la couleur du texte courant (ici une
+   encre brune), `ink` celle du fond de page (ici un ivoire).
+
+   Les seules inversions sont celles des paires clair/sombre : `gold-bright`
+   est l'or le plus CONTRASTÉ (donc le plus foncé sur fond clair) et
+   `gold-deep` le plus discret, pour que les dégradés gardent leur sens.
+   =========================================================================== */
+
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --background: #eee7d9;
+  --foreground: #241d13;
+
+  /* Surfaces — ivoire chaud, jamais de blanc pur : c'est lui qui « casse les
+     yeux » sur un écran, et il jurerait avec l'or laiton de la marque. */
+  --color-ink:            #eee7d9;
+  --color-ink-2:          #e4dbc9;
+  --color-panel:          #f7f2e7;
+
+  /* Or laiton — assombri pour tenir sur un fond clair. */
+  --color-line:           #9c8341;
+  --color-gold:           #8c7333;
+  --color-gold-bright:    #6d5518; /* accent le plus lisible : ~7:1 sur panel */
+  --color-gold-deep:      #d8c384; /* le plus discret : fonds de dégradés */
+
+  --color-crimson:        #8e1813;
+  --color-crimson-bright: #a82a22;
+
+  /* Textes */
+  --color-parch:          #241d13;
+  --color-muted:          #6a6152;
+  --color-muted-2:        #7d7364;
+
+  /* Éléments — mêmes teintes identitaires, ramenées à un contraste lisible.
+     Les valeurs du thème sombre sont pensées pour briller sur du noir ; telles
+     quelles sur de l'ivoire, hydro et anemo tombent sous 2:1. */
+  --color-electro: #6a4fa2;
+  --color-pyro:    #b5442a;
+  --color-hydro:   #2166b8;
+  --color-anemo:   #1c855f;
+  --color-lumino:  #8a6a22;
+  --color-umbro:   #5348c4;
+
+  /* Rareté */
+  --color-rarity-1: #6f6f6f;
+  --color-rarity-2: #4c7d4c;
+  --color-rarity-3: #4a63a0;
+  --color-rarity-4: #7b4a83;
+  --color-rarity-5: #8c6a35;
+  --color-rarity-6: #b03c48;
+}
+
+/* Fond de page : mêmes lueurs cramoisi/teal que le thème sombre, posées sur
+   ivoire et très adoucies — sur un fond clair, une lueur colorée saute
+   beaucoup plus vite aux yeux. */
+:root[data-theme="light"] body {
+  background-color: var(--color-ink);
+  background-image:
+    radial-gradient(120% 90% at 80% 4%, rgba(142, 24, 19, 0.07), transparent 55%),
+    radial-gradient(130% 100% at 10% 98%, rgba(36, 78, 86, 0.08), transparent 60%),
+    linear-gradient(175deg, #f3ecdd 0%, #eee7d9 48%, #e9e6dc 100%);
+}
+
+:root[data-theme="light"] ::selection { background: rgba(140, 115, 51, 0.24); color: #1a140c; }
+
+/* Filigrane géant : une encre très diluée, au lieu d'un blanc très dilué. */
+:root[data-theme="light"] .dna-watermark { color: rgba(36, 29, 19, 0.045); }
+
+/* Reflet des boutons : un balayage clair sur fond clair ne se voit pas. On
+   passe à un voile d'or. */
+:root[data-theme="light"] .dna-shine::after {
+  background: linear-gradient(100deg, transparent, rgba(140, 115, 51, 0.22), transparent);
+}
+
+:root[data-theme="light"] .custom-scrollbar {
+  scrollbar-color: rgb(140 115 51 / 0.45) transparent;
+}
+:root[data-theme="light"] .custom-scrollbar::-webkit-scrollbar-thumb { background: rgb(140 115 51 / 0.4); }
+:root[data-theme="light"] .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgb(140 115 51 / 0.6); }
+:root[data-theme="light"] .custom-scrollbar::-webkit-scrollbar-thumb:active { background: rgb(109 85 24 / 0.75); }
+
+/* Cases d'objet : la texture de rareté du jeu est peinte pour du sombre. On
+   n'y touche pas — on inverse le voile posé dessus, et on assombrit le nom. */
+:root[data-theme="light"] [data-rarity] {
+  --rarity-veil: 247 242 231;
+  --rarity-text: #3a3128;
+}
+:root[data-theme="light"] [data-rarity="1"] { --rarity-text: #4a4f51; --rarity-line: #6f7170; }
+:root[data-theme="light"] [data-rarity="2"] { --rarity-text: #2c6b50; --rarity-line: #3f6d55; }
+:root[data-theme="light"] [data-rarity="3"] { --rarity-text: #33557a; --rarity-line: #45457a; }
+:root[data-theme="light"] [data-rarity="4"] { --rarity-text: #7a3a68; --rarity-line: #6d4166; }
+:root[data-theme="light"] [data-rarity="5"] { --rarity-text: #7a5a1e; --rarity-line: #9c7845; }
+:root[data-theme="light"] [data-rarity="6"] { --rarity-text: #9c3a42; --rarity-line: #8a464b; }
+
+/* Fond atmosphérique : les illustrations sont peintes sur papier ivoire. En
+   thème clair elles n'ont donc presque rien à corriger — c'est le thème sombre
+   qui devait les éteindre. Le voile s'inverse avec elles. */
+:root[data-theme="light"] .dna-ambient {
+  /* Deux tiers de l'intensité du thème sombre : sur l'ivoire, le décor part du
+     même ton que la page et se lit donc beaucoup plus vite. */
+  --dna-ambient-max: 0.3;
+}
+:root[data-theme="light"] .dna-ambient[data-intensity="subtle"] { --dna-ambient-max: 0.18; }
+:root[data-theme="light"] .dna-ambient[data-intensity="bold"] { --dna-ambient-max: 0.42; }
+
+:root[data-theme="light"] .dna-ambient-image {
+  filter: brightness(1.02) saturate(0.9) contrast(0.94) blur(1.5px);
+}
+
+:root[data-theme="light"] .dna-ambient-veil {
+  background-image:
+    linear-gradient(180deg, rgb(238 231 217 / 0.72) 0%, rgb(238 231 217 / 0.55) 42%, rgb(238 231 217 / 0.82) 100%),
+    radial-gradient(120% 85% at 50% 45%, transparent 28%, rgb(238 231 217 / 0.66) 100%);
+}
+
+/* Nappes teintées : mêmes couleurs, moitié moins appuyées. */
+:root[data-theme="light"] .dna-ambient-flow-layer[data-tint="crimson"] {
+  background-image: radial-gradient(40% 34% at 24% 18%, rgb(142 24 19 / 0.26), transparent 70%);
+}
+:root[data-theme="light"] .dna-ambient-flow-layer[data-tint="teal"] {
+  background-image: radial-gradient(46% 40% at 76% 70%, rgb(36 78 86 / 0.28), transparent 70%);
+}
+:root[data-theme="light"] .dna-ambient-flow-layer[data-tint="gold"] {
+  background-image: radial-gradient(34% 30% at 58% 84%, rgb(140 115 51 / 0.22), transparent 70%);
+}
+
+/* Le grain en `overlay` éclaircit sur fond clair : il vire au voile laiteux.
+   `multiply` conserve le rôle de bruit. */
+:root[data-theme="light"] .dna-ambient-grain {
+  mix-blend-mode: multiply;
+  opacity: 0.035;
+}
+
+
 
 /* Animation Ken Burns pour les images de fond */
 @keyframes kenBurns {
@@ -121,6 +269,13 @@ body:has(.map-page) .grecaptcha-badge {
 
 /* Blocs alternatifs : un seul des deux est rendu selon l'état de la barre. */
 .dna-when-collapsed { display: none; }
+
+/* Même principe pour le thème : les deux icônes du sélecteur sont rendues, le
+   CSS n'en montre qu'une. Le bouton est donc juste dès la première peinture,
+   alors que le serveur ne peut pas connaître le thème du visiteur. */
+.dna-when-light { display: none; }
+:root[data-theme="light"] .dna-when-light { display: inline-block; }
+:root[data-theme="light"] .dna-when-dark { display: none; }
 
 @media (min-width: 1024px) {
   :root[data-sidebar="collapsed"] { --dna-sidebar-w: 4rem; }
@@ -386,6 +541,9 @@ body:has(.map-page) .grecaptcha-badge {
      du jeu (#9b9b9b) assombrirait les libellés par rapport à l'existant. */
   --rarity-bg: url("/assets/rarity/T_Item_Hover_NoQuality.png");
   --rarity-rgb: 70 68 67;
+  /* Voile posé sur la texture du jeu. Variable pour que le thème clair puisse
+     l'inverser sans toucher aux textures elles-mêmes. */
+  --rarity-veil: 10 10 11;
   --rarity-text: #ece4d2;
   --rarity-line: #4a4a4a;
 }
@@ -409,7 +567,7 @@ body:has(.map-page) .grecaptcha-badge {
   --rarity-a: 0.3;
   border-color: rgb(var(--rarity-rgb) / calc(0.2 + var(--rarity-a) * 0.45));
   background-image:
-    linear-gradient(rgb(10 10 11 / calc(1 - var(--rarity-a))), rgb(10 10 11 / calc(1 - var(--rarity-a)))),
+    linear-gradient(rgb(var(--rarity-veil) / calc(1 - var(--rarity-a))), rgb(var(--rarity-veil) / calc(1 - var(--rarity-a)))),
     var(--rarity-bg);
   background-size: 100% 100%;
   background-repeat: no-repeat;
@@ -427,7 +585,7 @@ body:has(.map-page) .grecaptcha-badge {
   --rarity-a: 0.2;
   border-color: rgb(var(--rarity-rgb) / calc(0.22 + var(--rarity-a) * 0.4));
   background-image:
-    linear-gradient(rgb(10 10 11 / calc(1 - var(--rarity-a))), rgb(10 10 11 / calc(1 - var(--rarity-a)))),
+    linear-gradient(rgb(var(--rarity-veil) / calc(1 - var(--rarity-a))), rgb(var(--rarity-veil) / calc(1 - var(--rarity-a)))),
     var(--rarity-bg);
   background-size: 100% 100%;
   background-repeat: no-repeat;
