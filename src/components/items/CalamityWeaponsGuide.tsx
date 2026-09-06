@@ -188,8 +188,13 @@ export async function CalamityWeaponsGuide({
       {/* ----------------------------------------------- fourneau & fusion */}
       <section>
         <DnaSectionLabel>{t("furnaceTitle")}</DnaSectionLabel>
-        <div className="mt-4 grid gap-5 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)]">
-          <GuideImageSlot slot="furnace" caption={t("imageFurnace")} ratio="4 / 3" />
+        <div className="mt-4 grid gap-5 lg:grid-cols-[minmax(0,34rem)_minmax(0,1fr)]">
+          <GuideImageSlot
+            slot="furnace"
+            caption={t("imageFurnace")}
+            legend={t.raw("legendFurnace") as string[]}
+            ratio="16 / 9"
+          />
           <div className="space-y-4">
             <p className="text-sm leading-relaxed text-parch/85">{t("furnaceBody")}</p>
             <p className="text-sm leading-relaxed text-parch/85">{t("furnaceGateBody")}</p>
@@ -207,7 +212,7 @@ export async function CalamityWeaponsGuide({
       {/* -------------------------------------------- arbre de Potentiel */}
       <section>
         <DnaSectionLabel>{t("potentialTitle")}</DnaSectionLabel>
-        <div className="mt-4 grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,22rem)]">
+        <div className="mt-4 grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,34rem)]">
           <div className="space-y-4">
             <p className="text-sm leading-relaxed text-parch/85">{t("potentialBody")}</p>
             <ul className="space-y-2">
@@ -220,7 +225,20 @@ export async function CalamityWeaponsGuide({
             </ul>
             <p className="text-sm text-muted">{t("potentialSeeSheet")}</p>
           </div>
-          <GuideImageSlot slot="potential" caption={t("imagePotential")} ratio="4 / 3" />
+          <GuideImageSlot slot="potential" caption={t("imagePotential")} />
+        </div>
+
+        <div className="mt-5 grid gap-5 lg:grid-cols-[minmax(0,26rem)_minmax(0,1fr)]">
+          <GuideImageSlot
+            slot="potentialCost"
+            caption={t("imagePotentialCost")}
+            legend={t.raw("legendPotentialCost") as string[]}
+            ratio="1600 / 1279"
+          />
+          <div className="space-y-3">
+            <p className="text-sm leading-relaxed text-parch/85">{t("potentialCostBody")}</p>
+            <p className="text-sm leading-relaxed text-parch/85">{t("potentialOrderBody")}</p>
+          </div>
         </div>
       </section>
 
@@ -229,26 +247,55 @@ export async function CalamityWeaponsGuide({
         <DnaSectionLabel>{t("materialsTitle")}</DnaSectionLabel>
         <p className="mt-3 max-w-3xl text-sm leading-relaxed text-parch/85">{t("materialsBody")}</p>
 
-        <h3 className="mt-6 font-caps text-[0.6rem] uppercase tracking-[0.22em] text-muted">
+        <div className="mt-5 grid gap-5 lg:grid-cols-[minmax(0,26rem)_minmax(0,1fr)]">
+          <GuideImageSlot
+            slot="missions"
+            caption={t("imageMissions")}
+            legend={t.raw("legendMissions") as string[]}
+            ratio="1600 / 1150"
+          />
+          <div className="space-y-3">
+            <p className="text-sm leading-relaxed text-parch/85">{t("missionsBody")}</p>
+            <p className="text-sm leading-relaxed text-parch/85">{t("compassBody")}</p>
+          </div>
+        </div>
+
+        {/* --- insignes : farm dirigé, une faction par insigne --- */}
+        <h3 className="mt-8 font-caps text-[0.6rem] uppercase tracking-[0.22em] text-muted">
           {t("materialsEmblems")}
         </h3>
+        <p className="mt-2 max-w-3xl text-sm leading-relaxed text-parch/85">{t("emblemsBody")}</p>
         <div className="mt-3 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
           {emblems.map((material) => (
             <MaterialCard key={material.name} {...material} />
           ))}
         </div>
+        <div className="mt-4 grid gap-5 lg:grid-cols-2">
+          <GuideImageSlot
+            slot="defense"
+            caption={t("imageDefense")}
+            legend={t.raw("legendDefense") as string[]}
+          />
+          <GuideImageSlot slot="emblemTooltip" caption={t("imageEmblemTooltip")} ratio="4 / 3" />
+        </div>
 
-        <h3 className="mt-6 font-caps text-[0.6rem] uppercase tracking-[0.22em] text-muted">
+        {/* --- cristaux : récompense ciblée d'une Mission abyssale --- */}
+        <h3 className="mt-8 font-caps text-[0.6rem] uppercase tracking-[0.22em] text-muted">
           {t("materialsCrystals")}
         </h3>
+        <p className="mt-2 max-w-3xl text-sm leading-relaxed text-parch/85">{t("crystalsBody")}</p>
         <div className="mt-3 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
           {crystals.map((material) => (
             <MaterialCard key={material.name} {...material} />
           ))}
         </div>
-
-        <div className="mt-5">
-          <GuideImageSlot slot="materials" caption={t("imageMaterials")} className="max-w-3xl" />
+        <div className="mt-4">
+          <GuideImageSlot
+            slot="expedition"
+            caption={t("imageExpedition")}
+            legend={t.raw("legendExpedition") as string[]}
+            className="max-w-3xl"
+          />
         </div>
       </section>
 
@@ -332,9 +379,6 @@ export async function CalamityWeaponsGuide({
           ))}
         </div>
 
-        <div className="mt-5">
-          <GuideImageSlot slot="forge" caption={t("imageForge")} className="max-w-3xl" />
-        </div>
       </section>
 
       {/* ------------------------------------------------------------- suite */}

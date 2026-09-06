@@ -1316,12 +1316,10 @@
     "title": "Monter une arme de calamité",
     "intro": "Une arme de calamité ne se monte pas comme les autres. Elle remplace la forge classique par la fusion de calamité, un chemin en six paliers qui ouvre des Potentiels : des effets propres à l'arme, qui ne s'activent qu'entre les mains d'un personnage dont c'est l'arme de prédilection. Ce guide couvre l'obtention, le Fourneau, l'arbre de Potentiel et les matériaux à préparer.",
     "imageSlotLabel": "Emplacement d'illustration",
-    "imageOverview": "Vue d'ensemble de l'écran de fusion de calamité, en jeu.",
+    "imageOverview": "L'écran de Fusion de calamité : l'arbre de Potentiel de l'arme, l'avancement et le plafond en cours.",
     "imageUnlock": "La quête qui débloque les armes de calamité, ou l'écran de forge.",
-    "imageFurnace": "Le Fourneau de calamité et ses missions.",
-    "imagePotential": "L'arbre de Potentiel d'une arme, tel qu'il apparaît en jeu.",
-    "imageMaterials": "Où farmer : Mission abyssale, ennemis de faction, récompenses.",
-    "imageForge": "L'écran de coût d'un palier de fusion.",
+    "imageFurnace": "Le Fourneau de calamité, commun à toutes vos armes.",
+    "imagePotential": "Un Potentiel sélectionné : son effet à droite, et le rappel de la règle d'arme de prédilection en bas.",
     "rulesTitle": "Trois règles à connaître avant de commencer",
     "ruleDamageTitle": "Une voie d'évolution à part",
     "ruleDamageBody": "Les armes de calamité ont leur propre progression et leurs propres effets. Chaque coup porté accumule des points de calamité ; une fois la jauge pleine, elle se vide d'un coup pour déclencher l'effet signature de l'arme.",
@@ -1338,7 +1336,7 @@
     "obtainStep3Body": "Les prototypes s'obtiennent ailleurs qu'à la forge : boutique d'échange du Théâtre immersif, et Missions abyssales, où les ennemis démarrent déjà très haut niveau. C'est là que se situe le vrai goulot d'étranglement.",
     "furnaceTitle": "Le Fourneau de calamité",
     "furnaceBody": "Le Fourneau est un niveau global, partagé par toutes vos armes de calamité. Il se monte en accomplissant les missions du fourneau, pas en jouant une arme en particulier.",
-    "furnaceGateBody": "Son niveau fixe la limite de niveau de fusion de l'ensemble de vos armes de calamité. Autrement dit : accumuler les matériaux ne sert à rien tant que le Fourneau n'a pas atteint le palier voulu, et une fois qu'il l'a atteint, il l'ouvre pour toutes vos armes à la fois.",
+    "furnaceGateBody": "Son niveau fixe la limite de niveau de fusion de l'ensemble de vos armes de calamité. Autrement dit : accumuler les matériaux ne sert à rien tant que le Fourneau n'a pas atteint le palier voulu, et une fois qu'il l'a atteint, il l'ouvre pour toutes vos armes à la fois. Les missions qui le font monter s'acceptent auprès de Luno, la forgeronne, au Sanctuaire.",
     "furnaceFreeNode": "Bon à savoir : une fois un niveau de fusion débloqué, le premier Potentiel choisi à ce palier ne coûte aucun matériau. Le second, lui, se paie.",
     "potentialTitle": "L'arbre de Potentiel",
     "potentialBody": "Chaque arme de calamité possède son arbre : dix Potentiels répartis sur six paliers, du niveau de fusion 0 au niveau V. Monter le niveau de fusion ouvre le palier correspondant ; à vous ensuite de choisir quoi débloquer.",
@@ -1347,9 +1345,9 @@
     "potentialRuleChain": "Un Potentiel exige que celui dont il découle soit déjà débloqué, et que le niveau de fusion requis soit atteint. On ne saute pas de palier.",
     "potentialSeeSheet": "L'arbre complet, palier par palier, avec le détail de chaque Potentiel et son coût, se trouve sur la fiche de chaque arme.",
     "materialsTitle": "Les matériaux, et où les trouver",
-    "materialsBody": "Deux familles à préparer. Les insignes tombent sur les ennemis d'une faction précise : c'est du farm dirigé, pas du hasard. Les cristaux, eux, viennent des Missions abyssales, qui demandent un Compas abyssal pour être lancées.",
+    "materialsBody": "Presque tout vient des Missions abyssales. Elles se déclinent en deux modes, tous deux étiquetés « Matériaux d'Armes de calamité », et se lancent avec un Compas abyssal.",
     "materialsEmblems": "Insignes de faction",
-    "materialsCrystals": "Cristaux de Mission abyssale",
+    "materialsCrystals": "Cristaux et prototypes",
     "costTitle": "Coût de chaque palier, arme par arme",
     "costBody": "Les coûts ci-dessous sont ceux du jeu, lus directement dans ses tables. Ils indiquent ce qu'il faut réunir pour passer d'un niveau de fusion au suivant.",
     "costLevel": "Niveau {level}",
@@ -1360,7 +1358,41 @@
     "nextTitle": "Et ensuite",
     "nextBody": "Une arme de calamité montée ne remplace pas un build : elle s'insère dedans. Les Demon Wedges de l'arme, l'affinité et la piste restent à travailler pour que les Potentiels servent réellement.",
     "nextOpenList": "Voir toutes les armes",
-    "nextOpenBuilder": "Ouvrir le builder"
+    "nextOpenBuilder": "Ouvrir le builder",
+    "imagePotentialCost": "Le coût d'un Potentiel, en possédé / requis.",
+    "imageMissions": "Les deux Missions abyssales, toutes deux étiquetées « Matériaux d'Armes de calamité ».",
+    "imageExpedition": "Le lancement d'une Exploration abyssale.",
+    "imageDefense": "Le lancement d'une Défense abyssale.",
+    "imageEmblemTooltip": "L'infobulle d'un insigne indique sa méthode d'obtention : la mission et les ennemis à viser.",
+    "legendFurnace": [
+      "Le niveau du Fourneau, partagé par toutes vos armes de calamité.",
+      "Ce que le palier ouvre : la limite de niveau de fusion.",
+      "Les missions du Fourneau, à récupérer auprès de Luno, la forgeronne, au Sanctuaire."
+    ],
+    "legendPotentialCost": [
+      "Le premier Potentiel débloqué à un palier ne coûte aucun matériau.",
+      "Le second se paie : chaque tuile indique ce que vous possédez sur ce qu'il faut."
+    ],
+    "legendMissions": [
+      "Exploration abyssale.",
+      "Défense abyssale."
+    ],
+    "legendExpedition": [
+      "La récompense rare ciblée : c'est ici que l'on vise un prototype précis.",
+      "L'attribut des ennemis, à choisir avant d'entrer.",
+      "Un Compas abyssal est nécessaire pour lancer la mission."
+    ],
+    "legendDefense": [
+      "Les paliers de difficulté, du niveau 40 au niveau 80.",
+      "Les récompenses du palier, insigne compris."
+    ],
+    "potentialCostBody": "Le panneau de droite affiche le coût du Potentiel sélectionné, en possédé sur requis. Un chiffre en rouge signale ce qui manque encore.",
+    "potentialOrderBody": "Comme le premier choix de chaque palier est gratuit, l'ordre compte : prenez d'abord celui dont les matériaux vous manquent le plus, et payez l'autre plus tard.",
+    "missionsBody": "Exploration et Défense donnent des matériaux différents. Le jeu vous dit lequel viser : l'infobulle de chaque matériau porte une ligne « Méthode d'obtention » qui nomme la mission et les ennemis concernés.",
+    "compassBody": "Le Compas abyssal se sélectionne au lancement : plus son niveau est élevé, plus les récompenses le sont. Il monte en enchaînant les manches, et en équipe seul le chef en dépense un.",
+    "emblemsBody": "Chaque insigne tombe sur les ennemis d'une faction précise, dans une mission précise. C'est du farm dirigé : inutile d'espérer un insigne d'harmonie ailleurs que sur les ennemis de Huaxu.",
+    "crystalsBody": "Les cristaux se ciblent à l'entrée de la mission. On choisit la récompense rare visée et l'attribut des ennemis, ce qui rend le farm d'un cristal d'élément précis prévisible.",
+    "imageZoomHint": "Cliquer pour agrandir"
   },
   "changelogEntries": {
     "v2_4_0": {

@@ -1316,12 +1316,10 @@
     "title": "Montar un arma de calamidad",
     "intro": "Un arma de calamidad no sube como las demás. Sustituye la fundición habitual por la fusión de calamidad, un camino de seis peldaños que abre Potenciales: efectos propios del arma que solo actúan en manos de un personaje que domina ese tipo de arma. Esta guía cubre la obtención, el Horno, el árbol de Potencial y los materiales que conviene reunir.",
     "imageSlotLabel": "Espacio para imagen",
-    "imageOverview": "Vista general de la pantalla de fusión de calamidad en el juego.",
+    "imageOverview": "La pantalla de fusión de calamidad: el árbol de Potencial del arma, tu progreso y el límite actual.",
     "imageUnlock": "La misión que desbloquea las armas de calamidad, o la pantalla de la forja.",
-    "imageFurnace": "El Horno de calamidad y sus misiones.",
-    "imagePotential": "El árbol de Potencial de un arma tal como aparece en el juego.",
-    "imageMaterials": "Dónde farmear: Expedición abisal, enemigos de facción, recompensas.",
-    "imageForge": "La pantalla de coste de un nivel de fusión.",
+    "imageFurnace": "El Horno de calamidad, común a todas tus armas.",
+    "imagePotential": "Un Potencial seleccionado: su efecto a la derecha y, abajo, el recordatorio de la regla del arma predilecta.",
     "rulesTitle": "Tres reglas antes de empezar",
     "ruleDamageTitle": "Una vía de mejora propia",
     "ruleDamageBody": "Las armas de calamidad tienen su propia progresión y sus propios efectos. Cada golpe acumula calamidad; cuando la barra se llena, se vacía de golpe y dispara el efecto característico del arma.",
@@ -1338,7 +1336,7 @@
     "obtainStep3Body": "Los prototipos vienen de fuera de la forja: la tienda de intercambio del Teatro inmersivo y las Expediciones abisales, donde los enemigos ya empiezan muy altos de nivel. Ahí está el verdadero cuello de botella.",
     "furnaceTitle": "El Horno de calamidad",
     "furnaceBody": "El Horno es un nivel global compartido por todas tus armas de calamidad. Sube al completar las misiones del horno, no al jugar con un arma concreta.",
-    "furnaceGateBody": "Su nivel fija el límite de nivel de fusión de todas tus armas de calamidad. Acumular materiales no sirve de nada mientras el Horno no llegue al peldaño deseado, y cuando llega lo abre para todas las armas a la vez.",
+    "furnaceGateBody": "Su nivel fija el límite de nivel de fusión de todas tus armas de calamidad. Acumular materiales no sirve de nada mientras el Horno no llegue al peldaño deseado, y cuando llega lo abre para todas las armas a la vez. Las misiones que lo suben se aceptan ante Luno, la herrera, en el Santuario.",
     "furnaceFreeNode": "Conviene saberlo: una vez desbloqueado un nivel de fusión, el primer Potencial que elijas en ese peldaño no cuesta materiales. El segundo sí.",
     "potentialTitle": "El árbol de Potencial",
     "potentialBody": "Cada arma de calamidad tiene su árbol: diez Potenciales repartidos en seis peldaños, del nivel de fusión 0 al nivel V. Subir el nivel de fusión abre el peldaño correspondiente; qué desbloquear dentro es cosa tuya.",
@@ -1347,9 +1345,9 @@
     "potentialRuleChain": "Un Potencial exige tener desbloqueado el que lo precede y haber alcanzado el nivel de fusión necesario. No se saltan peldaños.",
     "potentialSeeSheet": "El árbol completo, peldaño a peldaño, con el efecto y el coste de cada Potencial, está en la ficha de cada arma.",
     "materialsTitle": "Los materiales y dónde caen",
-    "materialsBody": "Dos familias. Los emblemas caen de los enemigos de una facción concreta: es farmeo dirigido, no azar. Los cristales vienen de las Expediciones abisales, que requieren una Brújula abisal para iniciarse.",
+    "materialsBody": "Casi todo viene de las Misiones abisales. Existen en dos modos, ambos etiquetados «Materiales de Armas de calamidad», y se inician con una Brújula abisal.",
     "materialsEmblems": "Emblemas de facción",
-    "materialsCrystals": "Cristales de Expedición abisal",
+    "materialsCrystals": "Cristales y prototipos",
     "costTitle": "Coste de cada peldaño, arma por arma",
     "costBody": "Los costes siguientes son los del propio juego, leídos de sus tablas. Indican qué reunir para pasar de un nivel de fusión al siguiente.",
     "costLevel": "Nivel {level}",
@@ -1360,7 +1358,41 @@
     "nextTitle": "Y después",
     "nextBody": "Un arma de calamidad montada no sustituye a un build: se integra en uno. Los Demon Wedges del arma, su afinidad y su vía siguen pendientes para que los Potenciales rindan de verdad.",
     "nextOpenList": "Ver todas las armas",
-    "nextOpenBuilder": "Abrir el builder"
+    "nextOpenBuilder": "Abrir el builder",
+    "imagePotentialCost": "El coste de un Potencial, en poseído / necesario.",
+    "imageMissions": "Las dos Misiones abisales, ambas etiquetadas «Materiales de Armas de calamidad».",
+    "imageExpedition": "El lanzamiento de una Expedición abisal.",
+    "imageDefense": "El lanzamiento de una Defensa abisal.",
+    "imageEmblemTooltip": "La descripción de un emblema indica cómo obtenerlo: qué misión y qué enemigos.",
+    "legendFurnace": [
+      "El nivel del Horno, compartido por todas tus armas de calamidad.",
+      "Lo que abre el peldaño: el límite de nivel de fusión.",
+      "Las misiones del Horno, que se aceptan ante Luno, la herrera, en el Santuario."
+    ],
+    "legendPotentialCost": [
+      "El primer Potencial desbloqueado en un peldaño no cuesta materiales.",
+      "El segundo sí: cada casilla muestra lo que tienes frente a lo que hace falta."
+    ],
+    "legendMissions": [
+      "Expedición abisal.",
+      "Defensa abisal."
+    ],
+    "legendExpedition": [
+      "La recompensa rara dirigida: aquí se apunta a un prototipo concreto.",
+      "El atributo de los enemigos, a elegir antes de entrar.",
+      "Se necesita una Brújula abisal para iniciar la misión."
+    ],
+    "legendDefense": [
+      "Los peldaños de dificultad, del nivel 40 al nivel 80.",
+      "Las recompensas del peldaño, emblema incluido."
+    ],
+    "potentialCostBody": "El panel derecho muestra el coste del Potencial seleccionado, en poseído sobre necesario. Una cifra en rojo señala lo que aún falta.",
+    "potentialOrderBody": "Como la primera elección de cada peldaño es gratis, el orden importa: coge primero aquel cuyos materiales te faltan más y paga el otro después.",
+    "missionsBody": "Expedición y Defensa sueltan materiales distintos. El juego te dice cuál correr: la descripción de cada material lleva una línea «Método de obtención» con la misión y los enemigos.",
+    "compassBody": "La Brújula abisal se elige al lanzar: cuanto mayor es su nivel, mejores son las recompensas. Sube encadenando rondas y, en equipo, solo el líder gasta una.",
+    "emblemsBody": "Cada emblema cae de los enemigos de una facción concreta, en una misión concreta. El farmeo es dirigido: no esperes un emblema de armonía fuera de los enemigos de Huaxu.",
+    "crystalsBody": "Los cristales se apuntan en la pantalla de lanzamiento. Eliges la recompensa rara deseada y el atributo de los enemigos, lo que hace previsible farmear un cristal elemental concreto.",
+    "imageZoomHint": "Clic para ampliar"
   },
   "changelogEntries": {
     "v2_4_0": {

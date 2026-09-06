@@ -1,6 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { ImagePlus } from "lucide-react";
 import { cn } from "@/components/dna/cn";
+import { GuideImageZoom } from "@/components/items/GuideImageZoom";
 import {
   expectedGuideFileName,
   resolveGuideImage,
@@ -11,6 +12,11 @@ type GuideImageSlotProps = {
   slot: CalamityGuideSlot;
   /** Légende affichée sous l'image, et texte alternatif quand elle est présente. */
   caption: string;
+  /**
+   * Explication des repères numérotés incrustés dans l'image. Les cadres rouges
+   * y sont numérotés dans l'ordre : le texte reste traduisible, l'image non.
+   */
+  legend?: string[];
   /** Rapport d'aspect réservé, pour que la mise en page ne bouge pas à l'arrivée de l'image. */
   ratio?: string;
   className?: string;
@@ -23,7 +29,13 @@ type GuideImageSlotProps = {
  * place et le chemin exact attendu. La hauteur est réservée dans les deux cas :
  * ajouter l'image ne redistribue pas la page.
  */
-export async function GuideImageSlot({ slot, caption, ratio = "16 / 9", className }: GuideImageSlotProps) {
+export async function GuideImageSlot({
+  slot,
+  caption,
+  legend,
+  ratio = "16 / 9",
+  className,
+}: GuideImageSlotProps) {
   const t = await getTranslations("calamityGuide");
   const source = resolveGuideImage(slot);
 
@@ -37,8 +49,7 @@ export async function GuideImageSlot({ slot, caption, ratio = "16 / 9", classNam
         style={{ aspectRatio: ratio }}
       >
         {source ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={source} alt={caption} loading="lazy" className="h-full w-full object-cover" />
+          <GuideImageZoom src={source} alt={caption} zoomLabel={t("imageZoomHint")} />
         ) : (
           <div className="absolute inset-0 grid place-items-center p-4 text-center">
             <div>
@@ -52,7 +63,24 @@ export async function GuideImageSlot({ slot, caption, ratio = "16 / 9", classNam
           </div>
         )}
       </div>
-      {source ? <figcaption className="mt-2 text-xs text-muted">{caption}</figcaption> : null}
+
+      {source ? (
+        <figcaption className="mt-2 text-xs leading-relaxed text-muted">
+          {caption}
+          {legend && legend.length > 0 ? (
+            <ol className="mt-2 space-y-1">
+              {legend.map((entry, index) => (
+                <li key={entry} className="flex items-start gap-2">
+                  <span className="mt-px grid h-4 w-4 shrink-0 place-items-center rounded-full bg-crimson-bright/85 font-mono text-[0.6rem] leading-none text-white">
+                    {index + 1}
+                  </span>
+                  <span className="text-parch/75">{entry}</span>
+                </li>
+              ))}
+            </ol>
+          ) : null}
+        </figcaption>
+      ) : null}
     </figure>
   );
 }

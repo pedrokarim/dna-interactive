@@ -1316,12 +1316,10 @@
     "title": "Eine Kalamitätswaffe aufbauen",
     "intro": "Eine Kalamitätswaffe steigt anders auf als jede andere. Statt der üblichen Schmelze nutzt sie die Kalamitätsschmelze, einen sechsstufigen Pfad, der Potenziale öffnet – waffeneigene Effekte, die nur in den Händen einer Figur wirken, die diesen Waffentyp beherrscht. Dieser Leitfaden behandelt Freischaltung, Ofen, Potenzialbaum und die nötigen Materialien.",
     "imageSlotLabel": "Bildplatz",
-    "imageOverview": "Übersicht des Kalamitätsschmelze-Bildschirms im Spiel.",
+    "imageOverview": "Der Kalamitätsschmelze-Bildschirm: der Potenzialbaum der Waffe, dein Fortschritt und die aktuelle Obergrenze.",
     "imageUnlock": "Die Quest, die Kalamitätswaffen freischaltet, oder der Schmiede-Bildschirm.",
-    "imageFurnace": "Der Kalamitätsofen und seine Aufgaben.",
-    "imagePotential": "Der Potenzialbaum einer Waffe, wie er im Spiel erscheint.",
-    "imageMaterials": "Wo farmen: Abgrund-Expedition, Fraktionsgegner, Belohnungen.",
-    "imageForge": "Der Kostenbildschirm einer Schmelzstufe.",
+    "imageFurnace": "Der Kalamitätsofen, gemeinsam für alle deine Waffen.",
+    "imagePotential": "Ein ausgewähltes Potenzial: seine Wirkung rechts, unten die Erinnerung an die Waffentyp-Regel.",
     "rulesTitle": "Drei Regeln vorab",
     "ruleDamageTitle": "Ein eigener Aufstiegspfad",
     "ruleDamageBody": "Kalamitätswaffen haben eigene Progression und eigene Effekte. Jeder Treffer sammelt Kalamität; ist die Leiste voll, entlädt sie sich auf einen Schlag und löst den Signatureffekt der Waffe aus.",
@@ -1338,7 +1336,7 @@
     "obtainStep3Body": "Prototypen kommen nicht aus der Schmiede: aus dem Tauschladen des Immersiven Theaters und aus Abgrund-Expeditionen, in denen Gegner bereits sehr hochstufig starten. Hier liegt der echte Engpass.",
     "furnaceTitle": "Der Kalamitätsofen",
     "furnaceBody": "Der Ofen ist eine globale Stufe, die alle deine Kalamitätswaffen teilen. Er steigt durch Ofen-Aufgaben, nicht durch das Spielen einer bestimmten Waffe.",
-    "furnaceGateBody": "Seine Stufe legt die Obergrenze der Schmelzstufe für all deine Kalamitätswaffen fest. Materialien zu horten bringt also nichts, solange der Ofen die gewünschte Stufe nicht erreicht hat – und sobald er es tut, öffnet er sie für alle Waffen gleichzeitig.",
+    "furnaceGateBody": "Seine Stufe legt die Obergrenze der Schmelzstufe für all deine Kalamitätswaffen fest. Materialien zu horten bringt also nichts, solange der Ofen die gewünschte Stufe nicht erreicht hat – und sobald er es tut, öffnet er sie für alle Waffen gleichzeitig. Die Aufgaben dafür nimmt man bei Luno, der Schmiedin, im Refugium an.",
     "furnaceFreeNode": "Gut zu wissen: Ist eine Schmelzstufe freigeschaltet, kostet das erste dort gewählte Potenzial keine Materialien. Das zweite schon.",
     "potentialTitle": "Der Potenzialbaum",
     "potentialBody": "Jede Kalamitätswaffe hat ihren eigenen Baum: zehn Potenziale auf sechs Stufen, von Schmelzstufe 0 bis Stufe V. Die Schmelzstufe zu erhöhen öffnet die zugehörige Stufe; was du darin freischaltest, entscheidest du.",
@@ -1347,9 +1345,9 @@
     "potentialRuleChain": "Ein Potenzial setzt sein Vorgänger-Potenzial und die nötige Schmelzstufe voraus. Stufen lassen sich nicht überspringen.",
     "potentialSeeSheet": "Der vollständige Baum, Stufe für Stufe, mit Wirkung und Kosten jedes Potenzials, steht auf der Seite der jeweiligen Waffe.",
     "materialsTitle": "Materialien und ihre Quellen",
-    "materialsBody": "Zwei Familien. Embleme fallen bei den Gegnern einer bestimmten Fraktion – gezieltes Farmen statt Zufall. Kristalle stammen aus Abgrund-Expeditionen, für deren Start ein Abgrundkompass nötig ist.",
+    "materialsBody": "Fast alles stammt aus Abgrund-Missionen. Sie gibt es in zwei Varianten, beide mit „Material für Kalamitätswaffen“ beschriftet, und sie starten mit einem Abgrundkompass.",
     "materialsEmblems": "Fraktionsembleme",
-    "materialsCrystals": "Kristalle der Abgrund-Expedition",
+    "materialsCrystals": "Kristalle und Prototypen",
     "costTitle": "Kosten je Stufe, Waffe für Waffe",
     "costBody": "Die Kosten unten stammen direkt aus den Tabellen des Spiels. Sie zeigen, was für den Sprung von einer Schmelzstufe zur nächsten nötig ist.",
     "costLevel": "Stufe {level}",
@@ -1360,7 +1358,41 @@
     "nextTitle": "Wie es weitergeht",
     "nextBody": "Eine ausgebaute Kalamitätswaffe ersetzt keinen Build, sie fügt sich in einen ein. Demon Wedges der Waffe, Affinität und Spur bleiben zu tun, damit die Potenziale sich wirklich auszahlen.",
     "nextOpenList": "Alle Waffen ansehen",
-    "nextOpenBuilder": "Builder öffnen"
+    "nextOpenBuilder": "Builder öffnen",
+    "imagePotentialCost": "Die Kosten eines Potenzials, als Besitz / Bedarf.",
+    "imageMissions": "Die beiden Abgrund-Missionen, beide mit „Material für Kalamitätswaffen“ beschriftet.",
+    "imageExpedition": "Der Start einer Abgrund-Expedition.",
+    "imageDefense": "Der Start einer Abgrund-Verteidigung.",
+    "imageEmblemTooltip": "Der Tooltip eines Emblems nennt die Bezugsquelle: welche Mission und welche Gegner.",
+    "legendFurnace": [
+      "Die Ofenstufe, gemeinsam für alle deine Kalamitätswaffen.",
+      "Was die Stufe öffnet: die Obergrenze der Schmelzstufe.",
+      "Die Ofen-Aufgaben, anzunehmen bei Luno, der Schmiedin, im Refugium."
+    ],
+    "legendPotentialCost": [
+      "Das erste auf einer Stufe freigeschaltete Potenzial kostet kein Material.",
+      "Das zweite schon: jede Kachel zeigt Besitz gegen Bedarf."
+    ],
+    "legendMissions": [
+      "Abgrund-Expedition.",
+      "Abgrund-Verteidigung."
+    ],
+    "legendExpedition": [
+      "Die gezielte seltene Belohnung: hier wird ein bestimmter Prototyp anvisiert.",
+      "Das Attribut der Gegner, vor dem Betreten zu wählen.",
+      "Zum Start wird ein Abgrundkompass benötigt."
+    ],
+    "legendDefense": [
+      "Die Schwierigkeitsstufen, von Stufe 40 bis Stufe 80.",
+      "Die Belohnungen der Stufe, Emblem inklusive."
+    ],
+    "potentialCostBody": "Das rechte Feld zeigt die Kosten des gewählten Potenzials, als Besitz über Bedarf. Eine rote Zahl markiert, was noch fehlt.",
+    "potentialOrderBody": "Da die erste Wahl je Stufe gratis ist, zählt die Reihenfolge: nimm zuerst das, dessen Material dir am meisten fehlt, und bezahle das andere später.",
+    "missionsBody": "Expedition und Verteidigung liefern unterschiedliche Materialien. Das Spiel sagt dir, welche du brauchst: der Tooltip jedes Materials nennt Mission und Gegner.",
+    "compassBody": "Der Abgrundkompass wird beim Start gewählt: je höher seine Stufe, desto besser die Belohnungen. Er steigt durch weitere Runden, und in der Gruppe verbraucht nur die Leitung einen.",
+    "emblemsBody": "Jedes Emblem fällt bei den Gegnern einer bestimmten Fraktion, in einer bestimmten Mission. Das Farmen ist gezielt: ein Emblem der Harmonie gibt es nur bei Huaxu-Gegnern.",
+    "crystalsBody": "Kristalle werden im Startbildschirm der Mission anvisiert. Man wählt die gewünschte seltene Belohnung und das Attribut der Gegner – so wird das Farmen eines bestimmten Elementkristalls planbar.",
+    "imageZoomHint": "Zum Vergrößern klicken"
   },
   "changelogEntries": {
     "v2_4_0": {

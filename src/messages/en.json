@@ -1316,12 +1316,10 @@
     "title": "Building a Calamity Weapon",
     "intro": "A Calamity Weapon does not level like any other. It swaps ordinary smelting for Calamity Smelting, a six-step path that opens Potentials — weapon-specific effects that only fire in the hands of a character proficient with that weapon type. This guide covers unlocking, the Furnace, the Potential tree and the materials to stockpile.",
     "imageSlotLabel": "Image slot",
-    "imageOverview": "Overview of the Calamity Smelting screen, in game.",
+    "imageOverview": "The Calamity Smelting screen: the weapon's Potential tree, your progress and the current cap.",
     "imageUnlock": "The quest that unlocks Calamity Weapons, or the forge screen.",
-    "imageFurnace": "The Calamity Furnace and its level tasks.",
-    "imagePotential": "A weapon's Potential tree as it appears in game.",
-    "imageMaterials": "Where to farm: Abyssal Expedition, faction enemies, rewards.",
-    "imageForge": "The material cost screen for one smelting level.",
+    "imageFurnace": "The Calamity Furnace, shared by every weapon you own.",
+    "imagePotential": "A selected Potential: its effect on the right, and the weapon-proficiency rule restated at the bottom.",
     "rulesTitle": "Three rules to know going in",
     "ruleDamageTitle": "An upgrade path of its own",
     "ruleDamageBody": "Calamity Weapons have their own progression and their own effects. Every hit builds Calamity; once the gauge fills, it empties at once to trigger the weapon's signature effect.",
@@ -1338,7 +1336,7 @@
     "obtainStep3Body": "Prototypes come from outside the forge: the Immersive Theatre exchange shop, and Abyssal Expeditions, where enemies already start at very high levels. This is the real bottleneck.",
     "furnaceTitle": "The Calamity Furnace",
     "furnaceBody": "The Furnace is a global level shared by every Calamity Weapon you own. It rises by completing Furnace level tasks, not by playing one particular weapon.",
-    "furnaceGateBody": "Its level sets the smelting level cap for all your Calamity Weapons. In other words: hoarding materials achieves nothing until the Furnace reaches the tier you want — and once it does, it opens that tier for every weapon at once.",
+    "furnaceGateBody": "Its level sets the smelting level cap for all your Calamity Weapons. In other words: hoarding materials achieves nothing until the Furnace reaches the tier you want — and once it does, it opens that tier for every weapon at once. The tasks that raise it are taken from Luno the blacksmith, at the Sanctuary.",
     "furnaceFreeNode": "Worth knowing: once a smelting level is unlocked, the first Potential you pick at that level costs no materials. The second one does.",
     "potentialTitle": "The Potential tree",
     "potentialBody": "Every Calamity Weapon has its own tree: ten Potentials spread across six tiers, from smelting level 0 to level V. Raising the smelting level opens the matching tier; what you unlock inside it is your call.",
@@ -1347,9 +1345,9 @@
     "potentialRuleChain": "A Potential requires its predecessor to be unlocked and the matching smelting level to be reached. Tiers cannot be skipped.",
     "potentialSeeSheet": "The full tree, tier by tier, with each Potential's effect and cost, lives on each weapon's own page.",
     "materialsTitle": "Materials, and where they drop",
-    "materialsBody": "Two families to prepare. Emblems drop from one specific faction's enemies, so farming them is targeted rather than random. Crystals come from Abyssal Expeditions, which need an Abyssal Compass to start.",
+    "materialsBody": "Almost everything comes from Abyssal missions. They come in two modes, both labelled “Calamity Weapon materials”, and start with an Abyssal Compass.",
     "materialsEmblems": "Faction emblems",
-    "materialsCrystals": "Abyssal Expedition crystals",
+    "materialsCrystals": "Crystals and prototypes",
     "costTitle": "Cost of each level, weapon by weapon",
     "costBody": "The costs below are the game's own, read straight from its tables. They show what to gather to move from one smelting level to the next.",
     "costLevel": "Level {level}",
@@ -1360,7 +1358,41 @@
     "nextTitle": "What comes next",
     "nextBody": "A finished Calamity Weapon does not replace a build, it slots into one. The weapon's Demon Wedges, its affinity and its track still need work for the Potentials to actually pay off.",
     "nextOpenList": "See all weapons",
-    "nextOpenBuilder": "Open the builder"
+    "nextOpenBuilder": "Open the builder",
+    "imagePotentialCost": "A Potential's cost, shown as owned / required.",
+    "imageMissions": "The two Abyssal missions, both labelled “Calamity Weapon materials”.",
+    "imageExpedition": "Launching an Abyssal Expedition.",
+    "imageDefense": "Launching an Abyssal Defence.",
+    "imageEmblemTooltip": "An emblem's tooltip states how to obtain it: which mission, and which enemies to target.",
+    "legendFurnace": [
+      "The Furnace level, shared by all your Calamity Weapons.",
+      "What the tier opens: the smelting level cap.",
+      "Furnace level tasks, picked up from Luno the blacksmith at the Sanctuary."
+    ],
+    "legendPotentialCost": [
+      "The first Potential unlocked at a tier costs no materials.",
+      "The second one does: each tile shows what you hold against what it needs."
+    ],
+    "legendMissions": [
+      "Abyssal Expedition.",
+      "Abyssal Defence."
+    ],
+    "legendExpedition": [
+      "The targeted rare reward: this is where you aim at a specific prototype.",
+      "The enemies' attribute, chosen before entering.",
+      "An Abyssal Compass is required to start the mission."
+    ],
+    "legendDefense": [
+      "Difficulty tiers, from level 40 to level 80.",
+      "The tier's rewards, emblem included."
+    ],
+    "potentialCostBody": "The right-hand panel shows the selected Potential's cost, as owned over required. A red figure marks what you are still short of.",
+    "potentialOrderBody": "Since the first pick at each tier is free, order matters: take the one whose materials you lack the most first, and pay for the other later.",
+    "missionsBody": "Expedition and Defence drop different materials. The game tells you which to run: every material's tooltip carries an “Obtained from” line naming the mission and the enemies.",
+    "compassBody": "The Abyssal Compass is picked at launch: the higher its level, the better the rewards. It levels up by clearing more rounds, and in a party only the leader spends one.",
+    "emblemsBody": "Each emblem drops from one specific faction's enemies, in one specific mission. Farming is targeted: there is no point hoping for an Emblem of Harmony anywhere but on Huaxu enemies.",
+    "crystalsBody": "Crystals are targeted at the mission's launch screen. You pick the rare reward you want and the enemies' attribute, which makes farming a specific elemental crystal predictable.",
+    "imageZoomHint": "Click to enlarge"
   },
   "changelogEntries": {
     "v2_4_0": {

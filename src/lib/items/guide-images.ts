@@ -16,12 +16,24 @@ const EXTENSIONS = ["webp", "png", "jpg", "jpeg"] as const;
 
 /** Identifiants des emplacements réservés dans le guide. */
 export const CALAMITY_GUIDE_SLOTS = [
+  /** Ecran de Fusion de calamite, vue d'ensemble. */
   "overview",
-  "unlock",
-  "forge",
-  "furnace",
+  /** Arbre + panneau de detail d'un Potentiel. */
   "potential",
-  "materials",
+  /** Materiaux requis d'un noeud, et la regle du premier choix gratuit. */
+  "potentialCost",
+  /** Le Fourneau de calamite et ses missions. */
+  "furnace",
+  /** Les deux Missions abyssales. */
+  "missions",
+  /** Exploration : recompense ciblee, attribut ennemi, Compas abyssal. */
+  "expedition",
+  /** Defense : paliers de difficulte et recompenses. */
+  "defense",
+  /** Infobulle d'un insigne : sa methode d'obtention. */
+  "emblemTooltip",
+  /** Quete de deblocage ou ecran de forge - pas encore capture. */
+  "unlock",
 ] as const;
 
 export type CalamityGuideSlot = (typeof CALAMITY_GUIDE_SLOTS)[number];
