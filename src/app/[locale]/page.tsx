@@ -62,8 +62,13 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   const builds: HomeBuildCard[] = topBuilds.map((b) => {
     const ch = getCharacterById(b.characterId);
     const name = ch ? resolveCharacterDisplayName(ch, langCode) ?? ch.internalName : b.characterId;
+    // `head` d'abord, et surtout PAS `gacha` : les visuels gacha sont des bandes
+    // 256 × 1024 (4 fois plus hautes que larges). Dans la vignette paysage de
+    // la carte, `cover` n'en montrait que 17 % — d'où les personnages coupés,
+    // qu'aucun `background-position` ne pouvait rattraper. L'avatar `head` est
+    // carré (256 × 256), la vignette en montre 69 %.
     const portrait =
-      ch?.portraits.gacha.publicPath ?? ch?.portraits.head.publicPath ?? ch?.portraits.icon.publicPath ?? null;
+      ch?.portraits.head.publicPath ?? ch?.portraits.icon.publicPath ?? null;
     const elementKey = b.element ?? ch?.element.key ?? null;
     return {
       id: b.id,
