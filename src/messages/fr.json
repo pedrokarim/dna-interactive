@@ -1465,7 +1465,7 @@
       "title": "Patch 1.4 Silver Torrent, Rising Star : Flora, Hilda, Bloomfield Station et 5 nouvelles maps",
       "description": "Intégration complète du patch officiel « Silver Torrent, Rising Star » : 2 nouveaux personnages (Flora et Hilda), nouvel élément Umbro pour le Phoxhunter, région steampunk Flodia Bloomfield Station, 5 cartes interactives, 12 wallpapers et système de bandeaux à expiration automatique.",
       "items": [
-        "🎮 Ré-extraction complète des données du jeu jusqu'au patch 1.4.153 « Silver Torrent, Rising Star »",
+        "🎮 Données du site mises à jour jusqu'au patch 1.4.153 « Silver Torrent, Rising Star »",
         "✨ Flora (Umbro) — nouvelle personnage en vedette, maîtrise épée et fusil d'assaut",
         "🔥 Hilda (Pyro) — nouvelle personnage, maîtrise double lame et lance-grenade (disponible après le 30 juin 2026)",
         "🌑 Nouvel élément Umbro débloqué pour le Phoxhunter (protagoniste joueur), via [Chapitre Noctoyager – Silver Torrent, Rising Star]",
@@ -1477,8 +1477,7 @@
         "⚡ Optimisation des wallpapers v1.3/v1.4 : downscale 4K → Full HD, WebP q70 (-73 % de poids)",
         "🌟 Carousel d'accueil réorganisé : les nouveaux wallpapers s'affichent en premier",
         "📢 Nouveau système de bandeaux d'annonce avec expiration automatique 4 semaines après la sortie du patch (historique préservé dans le code)",
-        "🎭 Showcase personnages réagencé : Flora en vedette, Su Yi, et les deux formes Umbro du Phoxhunter",
-        "💾 Refactor du pipeline d'extraction : stockage des paks et exports FModel déporté sur disque externe pour ne plus saturer le SSD système"
+        "🎭 Showcase personnages réagencé : Flora en vedette, Su Yi, et les deux formes Umbro du Phoxhunter"
       ]
     },
     "v1_9_0": {
@@ -1492,7 +1491,7 @@
         "🧩 Icônes de compétence en ligne et équipe recommandée dans la carte de build",
         "🪄 Nouveau composant CursorTooltip : suit le curseur sur desktop, click-to-toggle sur mobile, portalisé dans body",
         "🛡️ Tooltips curseur sur armes, Génimons et slots Demon Wedge (centre inclus) de la carte de build",
-        "🏷️ Pipeline d'extraction extract-skills.ts : parse 9 fichiers Lua + SkillGrow, formules #N évaluées pour chaque niveau"
+        "🏷️ Compétences : formules de dégâts évaluées niveau par niveau, valeurs affichées pour chaque palier"
       ]
     },
     "v1_8_0": {
@@ -1514,9 +1513,9 @@
     },
     "v1_7_0": {
       "title": "Mise à jour v1.3 du jeu et variantes Genimons",
-      "description": "Ré-extraction complète des données du jeu depuis la version 1.3, ajout de nouveaux personnages et système de variantes pour les Genimons.",
+      "description": "Données du site remises à niveau sur la version 1.3, ajout de nouveaux personnages et système de variantes pour les Genimons.",
       "items": [
-        "🔄 Ré-extraction des 1176 fichiers Lua depuis les paks v1.3 du jeu",
+        "🔄 Toutes les données du site alignées sur la version 1.3 du jeu",
         "👤 Ajout de Su Yi (complète avec portraits et compétences) et Flora (données, pas encore sortie)",
         "🎭 Complétion de Camilla (stats, traductions, portraits, compétences)",
         "🐾 Système de variantes Genimons : chaque espèce affiche ses variantes avec navigation croisée",
@@ -1542,7 +1541,7 @@
       "description": "Système complet de builds recommandés pour les 22 personnages jouables, avec armes de consonance et ajustements de piste.",
       "items": [
         "🎮 21 builds de personnages ajoutés avec équipements et Demon Wedges recommandés",
-        "⚔️ Extraction et affichage des armes de consonance depuis les données du jeu",
+        "⚔️ Ajout des armes de consonance",
         "🎚️ Ajustements de piste (Track Adjustments) avec toggle et icônes",
         "🎨 Redesign de l'onglet Intron avec cercles flottants et priorité de compétences",
         "🌈 Gradient ambiant par élément sur les pages de détail personnage",
@@ -1556,7 +1555,7 @@
       "items": [
         "👤 Catalogue de tous les personnages jouables avec fiche détaillée",
         "📊 Statistiques par niveau avec courbes de croissance et formules",
-        "🎣 Nouvelle catégorie Pêche avec items extraits des données du jeu",
+        "🎣 Nouvelle catégorie Pêche",
         "🐾 Correction des valeurs dynamiques des passifs Genimons",
         "🌐 Labels de clés de texte contextualisés par catégorie d'item"
       ]
@@ -1567,7 +1566,7 @@
       "items": [
         "🧩 Nouvelle catégorie Drafts avec grille filtrable, recherche et pagination",
         "🌳 Nouvelle page détail Draft avec visualisation de recette (produit + ingrédients)",
-        "🛠️ Extraction et intégration des données de recettes et des données armes",
+        "🛠️ Ajout des recettes d'artisanat et des données d'armes",
         "🖼️ Ajout des assets d'icônes (plans, armes, types d'armes, accessoires) côté site",
         "🔗 Liens entre Drafts et fiches armes pour faciliter la navigation",
         "✏️ Correction du libellé de catégorie : Armes / Arm → Armes / Weapons",

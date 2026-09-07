@@ -1465,7 +1465,7 @@
       "title": "1.4 版本 Silver Torrent, Rising Star：Flora、Hilda、Bloomfield Station 與 5 張新地圖",
       "description": "完整整合官方版本「Silver Torrent, Rising Star」：2 名新角色（Flora 與 Hilda）、Phoxhunter 的新元素 Umbro、蒸汽龐克地區 Flodia Bloomfield Station、5 張互動地圖、12 張桌布，以及會自動失效的橫幅系統。",
       "items": [
-        "🎮 完整重新擷取遊戲資料，直至 1.4.153 版「Silver Torrent, Rising Star」",
+        "🎮 網站資料更新至 1.4.153 版「Silver Torrent, Rising Star」",
         "✨ Flora（Umbro）— 主打新角色，使用劍與突擊步槍",
         "🔥 Hilda（Pyro）— 新角色，使用雙刀與榴彈發射器（2026 年 6 月 30 日之後登場）",
         "🌑 為 Phoxhunter（玩家主角）解鎖新元素 Umbro，透過［Noctoyager 章節 – Silver Torrent, Rising Star］",
@@ -1477,8 +1477,7 @@
         "⚡ v1.3／v1.4 桌布最佳化：4K → Full HD 縮放、WebP q70（容量 -73 %）",
         "🌟 首頁輪播重新排序：最新桌布優先顯示",
         "📢 全新公告橫幅系統，於版本推出 4 週後自動失效（歷史紀錄保留於程式碼中）",
-        "🎭 角色展示重新編排：以 Flora 為主，加上 Su Yi 與 Phoxhunter 的兩種 Umbro 型態",
-        "💾 擷取流程重構：pak 儲存與 FModel 匯出改放外接硬碟，避免系統 SSD 被塞滿"
+        "🎭 角色展示重新編排：以 Flora 為主，加上 Su Yi 與 Phoxhunter 的兩種 Umbro 型態"
       ]
     },
     "v1_9_0": {
@@ -1492,7 +1491,7 @@
         "🧩 配裝卡片中的行內技能圖示與推薦隊伍",
         "🪄 全新元件 CursorTooltip：桌面版跟隨游標、行動版點擊切換，以 portal 掛載於 body",
         "🛡️ 配裝卡片的武器、Genimon 與 Demon Wedge 槽位（含中央）皆有游標提示",
-        "🏷️ 擷取流程 extract-skills.ts：解析 9 個 Lua 檔案與 SkillGrow，逐級計算 #N 公式"
+        "🏷️ 技能：逐級計算傷害公式，並顯示每一階的數值"
       ]
     },
     "v1_8_0": {
@@ -1514,9 +1513,9 @@
     },
     "v1_7_0": {
       "title": "遊戲 v1.3 更新與 Genimon 變種",
-      "description": "自 1.3 版起完整重新擷取遊戲資料，新增角色並導入 Genimon 的變種系統。",
+      "description": "網站資料更新至遊戲 1.3 版，新增角色並導入 Genimon 的變種系統。",
       "items": [
-        "🔄 自遊戲 v1.3 的 pak 重新擷取 1176 個 Lua 檔案",
+        "🔄 網站所有資料同步至遊戲 1.3 版",
         "👤 新增 Su Yi（含人像與技能的完整資料）與 Flora（僅資料，尚未推出）",
         "🎭 補完 Camilla（數值、翻譯、人像、技能）",
         "🐾 Genimon 變種系統：每個種類都會顯示其變種並可相互切換",
@@ -1542,7 +1541,7 @@
       "description": "為 22 名可操作角色提供完整的推薦配裝系統，含 Consonance 武器與軌道調整。",
       "items": [
         "🎮 新增 21 組角色配裝，附推薦裝備與 Demon Wedge",
-        "⚔️ 自遊戲資料擷取並顯示 Consonance 武器",
+        "⚔️ 新增 Consonance 武器",
         "🎚️ 軌道調整（Track Adjustments），附開關與圖示",
         "🎨 重新設計 Intron 分頁，採用浮動圓形與技能優先度",
         "🌈 角色詳細頁依元素呈現環境漸層",
@@ -1556,7 +1555,7 @@
       "items": [
         "👤 所有可操作角色的圖鑑與詳細資料頁",
         "📊 各等級數值，含成長曲線與公式",
-        "🎣 以遊戲資料擷取道具所建立的全新釣魚分類",
+        "🎣 新增釣魚分類",
         "🐾 修正 Genimon 被動的動態數值",
         "🌐 依道具分類調整文字鍵值標籤的語境"
       ]
@@ -1567,7 +1566,7 @@
       "items": [
         "🧩 全新 Drafts 分類，具備可篩選列表、搜尋與分頁",
         "🌳 全新 Draft 詳細頁，將配方視覺化（成品 + 材料）",
-        "🛠️ 擷取並整合配方資料與武器資料",
+        "🛠️ 新增配方與武器資料",
         "🖼️ 於網站端補上圖示素材（圖紙、武器、武器類型、配件）",
         "🔗 在 Drafts 與武器頁之間建立連結，方便切換",
         "✏️ 修正分類標示：Armes / Arm → Armes / Weapons",

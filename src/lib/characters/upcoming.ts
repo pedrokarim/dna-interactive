@@ -141,8 +141,8 @@ export const UPCOMING_CHARACTERS: UpcomingCharacter[] = [
       { label: "Arme signature", value: "Stifled Howl (Théâtre immersif)", confidence: "community" },
     ],
     sources: [
-      { label: "Fichiers du jeu – Char.lua / BattleChar.lua (entrée 3104)" },
-      { label: "Fichiers du jeu – TextMap (UI_CHAR_NAME_3104, UI_CHAR_SUBTITLE_3104)" },
+      { label: "Données du jeu – fiche technique du personnage 3104" },
+      { label: "Données du jeu – textes d'interface (nom et sous-titre)" },
       { label: "Compte officiel du jeu", url: "https://x.com/DNAbyss_EN" },
     ],
   },

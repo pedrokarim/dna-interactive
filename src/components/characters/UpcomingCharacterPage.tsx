@@ -32,7 +32,7 @@ import { UpcomingCountdown } from "./UpcomingCountdown";
 
 const CONFIDENCE_META: Record<UpcomingConfidence, { label: string; className: string; icon: typeof FileSearch }> = {
   dataMined: {
-    label: "Fichiers du jeu",
+    label: "Données du jeu",
     className: "border-gold/40 bg-gold/10 text-gold-bright",
     icon: FileSearch,
   },
@@ -192,7 +192,7 @@ export function UpcomingCharacterPage({
                   ))}
                 </div>
                 <p className="mt-4 font-sans text-xs text-muted-2">
-                  Extraits reconstitués depuis les dialogues et les archives du jeu, toutes langues confondues.
+                  Recomposé à partir des dialogues et des archives du jeu, toutes langues confondues.
                 </p>
               </DnaPanel>
             </section>
@@ -309,10 +309,10 @@ export function UpcomingCharacterPage({
                       <ConfidenceBadge level={level} />
                       <span className="font-sans text-xs text-muted">
                         {level === "dataMined"
-                          ? "Lu directement dans les fichiers du jeu – sûr, mais peut encore être équilibré d'ici la sortie."
+                          ? "Vient des données du jeu – fiable, mais peut encore être équilibré d'ici la sortie."
                           : level === "announced"
                             ? "Communiqué officiellement par le studio."
-                            : "Circule dans la communauté, pas encore vérifiable dans les fichiers."}
+                            : "Circule dans la communauté, pas encore confirmé."}
                       </span>
                     </li>
                   ))}
