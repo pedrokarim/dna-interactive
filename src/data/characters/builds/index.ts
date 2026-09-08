@@ -1,3 +1,4 @@
+import charFalu from "./char-falu.json";
 import charZhiliu from "./char-zhiliu.json";
 import charLise from "./char-lise.json";
 import charXibi from "./char-xibi.json";
@@ -36,6 +37,7 @@ import charProtagonistMale from "./char-protagonist-male.json";
 // 2. Add ...charXxx to the array below
 
 export const allBuilds = [
+  ...charFalu,
   ...charZhiliu,
   ...charLise,
   ...charXibi,

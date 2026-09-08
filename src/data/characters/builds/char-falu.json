@@ -1,0 +1,145 @@
+[
+  {
+    "characterId": "char-falu",
+    "buildName": {
+      "FR": "DPS Compétence Pyro — Ténacité",
+      "EN": "Pyro Skill DPS — Resolve"
+    },
+    "weapons": {
+      "melee": [
+        {
+          "itemId": "weapons-10405",
+          "rank": "best",
+          "note": {
+            "FR": "Doubles lames, dans ses maîtrises. Traite les PV au-dessus de 80 % comme s'ils étaient à 30 %, ce qui maintient le bonus de Ténacité à plein régime sans avoir à descendre bas en vie.",
+            "EN": "Dualblade, within her proficiencies. Treats HP above 80% as if at 30%, keeping the Resolve bonus at full strength without having to sit at low health."
+          }
+        },
+        {
+          "itemId": "weapons-10301",
+          "rank": "alternative",
+          "note": {
+            "FR": "Espadon, hors maîtrise : à garder pour son bonus de PV si les doubles lames ne sont pas disponibles.",
+            "EN": "Claymore, outside her proficiencies: keep it for the HP bonus if the dualblade is unavailable."
+          }
+        },
+        {
+          "itemId": "weapons-10501",
+          "rank": "alternative",
+          "note": {
+            "FR": "Second repli orienté PV, sur le même principe.",
+            "EN": "Second HP-oriented fallback, on the same principle."
+          }
+        }
+      ],
+      "ranged": [
+        {
+          "itemId": "weapons-20599",
+          "rank": "best",
+          "note": {
+            "FR": "Arme de calamité : Puissance de compétence, Pénétration et Moral réunis sur une seule pièce.",
+            "EN": "Calamity weapon: Skill Intensity, Penetration and Morale gathered on a single piece."
+          }
+        },
+        {
+          "itemId": "weapons-20298",
+          "rank": "alternative",
+          "note": {
+            "FR": "Doubles pistolets de calamité, dans ses maîtrises. Son arbre de Potentiel n'est ouvert que depuis la 1.6 : à comparer une fois les paliers montés.",
+            "EN": "Calamity crossbow, within her proficiencies. Its Potential tree only opened in 1.6: worth comparing once the tiers are raised."
+          }
+        }
+      ]
+    },
+    "demonWedges": {
+      "slots": [
+        { "position": 1, "itemId": "mods-56132", "track": 2 },
+        { "position": 2, "itemId": "mods-51932", "track": 4 },
+        { "position": 3, "itemId": "mods-51432", "track": 1 },
+        { "position": 4, "itemId": "mods-51333", "track": 3 },
+        { "position": 5, "itemId": "mods-51738", "track": 2 },
+        { "position": 6, "itemId": "mods-51738", "track": 2 },
+        { "position": 7, "itemId": "mods-51738", "track": 2 },
+        { "position": 8, "itemId": "mods-51317", "track": 4 }
+      ],
+      "centerItemId": "mods-51735",
+      "affinity": {
+        "FR": "Ténacité de Quetzalcoatl",
+        "EN": "Feathered Serpent's Resolve"
+      },
+      "note": {
+        "FR": "Le centre Ténacité commande tout le reste : la puissance de Falsi monte avec ses PV manquants, et l'arme de mêlée signature lui offre ce bonus sans le risque. Les trois Nirvana · Décision occupent les emplacements 5 à 7 : la famille du Pactisant est la seule à accepter les doublons. Chaque pièce est posée sur la piste de sa propre polarité — désalignée, elle coûterait une fois et demie son prix au lieu de la moitié.",
+        "EN": "The Resolve core drives everything else: Falsi's power scales with missing HP, and her signature melee weapon grants that bonus without the risk. The three Nirvana – Volition fill slots 5 to 7: the Covenanter's family is the only one that accepts duplicates. Every piece sits on the track matching its own polarity — misaligned, it would cost one and a half times its price instead of half."
+      }
+    },
+    "statsPriority": [
+      "MaxHp",
+      "SkillIntensity",
+      "Morale",
+      "SkillEfficiency",
+      "SkillSustain",
+      "ATK_Fire"
+    ],
+    "team": [
+      {
+        "characterId": "char-feina",
+        "role": "Support",
+        "note": {
+          "FR": "Fina apporte de la Pénétration et des bonus de dégâts. Ses fenêtres de bonus se calent sur les phases d'exécution de Falsi.",
+          "EN": "Fina provides Penetration and damage bonuses. Her buff windows line up with Falsi's execution phases."
+        }
+      },
+      {
+        "characterId": "char-baiheng",
+        "role": "Support",
+        "note": {
+          "FR": "Fushu amplifie les dégâts de compétence et rend de la Lucidité, ce qui permet d'enchaîner Chute dans l'abîme plus souvent.",
+          "EN": "Fushu amplifies Skill damage and restores Lucidity, which lets you chain Abyss Descent more often."
+        }
+      }
+    ],
+    "genimon": [
+      { "itemId": "genimon-4231", "rank": "best" },
+      { "itemId": "genimon-4031", "rank": "alternative" },
+      { "itemId": "genimon-4131", "rank": "alternative" }
+    ],
+    "skillPriority": [
+      {
+        "skillName": { "FR": "Chute dans l'abîme", "EN": "Abyss Descent" },
+        "priority": 5,
+        "note": {
+          "FR": "Cœur du kit : marque jusqu'à cinq cibles d'exécution et fait passer Falsi en état de Bourreau.",
+          "EN": "Core of the kit: marks up to five execution targets and puts Falsi into her Executioner state."
+        }
+      },
+      {
+        "skillName": { "FR": "Infiltration nocturne", "EN": "Nightmeld" },
+        "priority": 4,
+        "note": {
+          "FR": "Passe en Embuscade et remplace la compétence par sa version percée, dont les dégâts montent avec les niveaux.",
+          "EN": "Enters Ambush and replaces the skill with its piercing version, whose damage scales with levels."
+        }
+      },
+      {
+        "skillName": { "FR": "Résurgence", "EN": "Awakening" },
+        "priority": 4,
+        "note": {
+          "FR": "Passif de conviction : renforce l'ensemble des dégâts, à monter juste après la compétence principale.",
+          "EN": "Conviction passive: strengthens overall damage, to raise right after the main skill."
+        }
+      },
+      {
+        "skillName": { "FR": "Bain de sang", "EN": "Bloodbath" },
+        "priority": 3,
+        "note": {
+          "FR": "Passif complémentaire, utile une fois les trois premiers montés.",
+          "EN": "Complementary passive, useful once the first three are raised."
+        }
+      }
+    ],
+    "notes": {
+      "FR": "Falsi joue sur ses PV manquants : plus elle est basse en vie, plus elle frappe fort. C'est toute la valeur de son arme de mêlée signature, qui lui accorde ce bonus en la faisant passer pour blessée. Ouvrir avec Chute dans l'abîme pour marquer les cibles, monter le Désordre pyro aux attaques normales, puis le consommer pendant l'état de Bourreau. Sa priorité de statistiques reste inhabituelle pour une DPS : les PV Max avant l'attaque, parce qu'ils alimentent à la fois sa survie et son bonus de Ténacité.",
+      "EN": "Falsi plays off her missing HP: the lower she sits, the harder she hits. That is the whole point of her signature melee weapon, which grants the bonus by making her count as wounded. Open with Abyss Descent to mark targets, build Pyro Disruption with normal attacks, then spend it during the Executioner state. Her stat priority stays unusual for a DPS: Max HP before attack, because it feeds both her survival and her Resolve bonus."
+    }
+  }
+]
