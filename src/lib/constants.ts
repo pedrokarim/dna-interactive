@@ -61,7 +61,12 @@ export const GAME_INFO = {
 export const ASSETS_PATHS = {
   logo: "/assets/images/logo_optimized.png",
   worldview: [
-    // Update 1.4 "Silver Torrent / Racing Stars" (2026-06) — affichés en premier
+    // Update 1.6 "Paradise's 22nd White Bunny" (2026-09) — affichés en premier.
+    // La 1.5 n'a livré aucun panoramique, d'où le saut de version.
+    "/assets/worldview/worldview-1-6-1.webp",
+    "/assets/worldview/worldview-1-6-2.webp",
+    "/assets/worldview/worldview-1-6-3.webp",
+    // Update 1.4 "Silver Torrent / Racing Stars" (2026-06)
     "/assets/worldview/worldview-1-4-1.webp",
     "/assets/worldview/worldview-1-4-2.webp",
     "/assets/worldview/worldview-1-4-3.webp",
