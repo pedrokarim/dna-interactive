@@ -2820,7 +2820,14 @@ export default function CharacterDetailClient({
                   draggable={false}
                   width={300}
                   height={400}
-                  className="relative z-[1] max-h-[500px] max-w-[84%] select-none object-contain drop-shadow-[0_18px_50px_rgba(0,0,0,0.6)]"
+                  // La hauteur est imposée, pas plafonnée. Avec `max-h` seul, la
+                  // taille restait bornée par l'attribut `width` ci-dessus : les
+                  // portraits carrés — dont le buste — s'affichaient à 300 px au
+                  // lieu des 500 px voulus, et seul le gacha, très vertical,
+                  // atteignait la hauteur réglée. La largeur suit le ratio ;
+                  // `max-h-full` empêche de déborder d'un stage plus court que
+                  // la hauteur demandée.
+                  className="relative z-[1] h-[660px] max-h-full w-auto max-w-[94%] select-none object-contain drop-shadow-[0_18px_50px_rgba(0,0,0,0.6)]"
                   style={{
                     transform: `translate(${renderPan.x}px, ${renderPan.y}px) scale(${renderZoom})`,
                     transition: dragging ? "none" : "transform 0.14s ease-out",
