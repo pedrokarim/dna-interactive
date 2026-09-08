@@ -1,5 +1,11 @@
 {
   "characterShowcase": {
+    "falsi": {
+      "subtitle": "Cœur Forgé en Lame",
+      "description": "Elle a exécuté les ordres de la XIIIᵉ Légion sans jamais laisser lire ce qu'elle en pensait. Quand il n'est plus rien resté à servir, elle est partie seule, deux lames et deux pistolets pour tout héritage.",
+      "camp": "Empire Hyperboréen",
+      "name": "Falsi"
+    },
     "ada": {
       "subtitle": "Lapin Solitaire du Paradis",
       "description": "Deux mémoires cohabitent derrière son sourire : une patrie ravagée par la guerre, et un paradis qui n'a peut-être jamais existé. Elle avance entre les deux sans jamais dire laquelle est la sienne.",

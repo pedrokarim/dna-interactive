@@ -1,5 +1,11 @@
 {
   "characterShowcase": {
+    "falsi": {
+      "subtitle": "Ein zur Klinge geschmiedetes Herz",
+      "description": "Sie führte die Befehle der Dreizehnten Legion aus, ohne je erkennen zu lassen, was sie von ihnen hielt. Als nichts mehr zu dienen blieb, ging sie allein fort, zwei Klingen und zwei Pistolen als einziges Erbe.",
+      "camp": "Hyperboreisches Imperium",
+      "name": "Falsi"
+    },
     "ada": {
       "subtitle": "Der einsame Hase des Paradieses",
       "description": "Hinter ihrem Lächeln leben zwei Erinnerungen: eine vom Krieg zerrissene Heimat und ein Paradies, das vielleicht nie existiert hat. Sie wandelt zwischen beiden, ohne je zu sagen, welche ihre ist.",

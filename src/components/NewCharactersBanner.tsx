@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles, ArrowRight, Swords } from "lucide-react";
 import { useTranslations } from "next-intl";
 
-type CharKey = "ada" | "hilda" | "nvzhu02" | "nanzhu02";
+type CharKey = "falsi" | "ada" | "nvzhu02" | "nanzhu02";
 
 const SHOWCASE_CHARACTERS: Array<{
   id: string;
@@ -22,9 +22,27 @@ const SHOWCASE_CHARACTERS: Array<{
   accentColor: string;
   ringColor: string;
 }> = [
-  // Ada en vedette (position 0 = active par d\u00E9faut au chargement) \u2014 Hydro,
-  // sortie 28 juillet 2026 avec la 1.5 "Paradise Prelude". Obtenue gratuitement
-  // via le Th\u00E9\u00E2tre immersif ; arme signature The Best Day.
+  // Falsi en vedette (position 0 = active par d\u00E9faut au chargement) \u2014 Pyro,
+  // sortie 8 septembre 2026 avec la 1.6 "Paradise's 22nd White Bunny".
+  // Ancienne offici\u00E8re de la XIII\u1D49 L\u00E9gion, adjudante de Fulvis. Obtenue via
+  // les Commissions clandestines (Th\u00E9\u00E2tre immersif jusqu'au 29 septembre).
+  // Visuels d\u00E9riv\u00E9s du bust extrait (T_Bust_Falu.png) sous official-v1.6/.
+  {
+    id: "char-falu",
+    slug: "falsi",
+    key: "falsi",
+    name: "Falsi",
+    decoText: "\u6CD5\u9732\u831C",
+    fullImage: "/assets/official-v1.6/image-falsi.webp",
+    fullImageMobile: "/assets/official-v1.6/image-falsi-mobile.webp",
+    avatar: "/assets/official-v1.6/avatar-falsi.webp",
+    element: "Pyro",
+    accentColor: "rose",
+    ringColor: "ring-crimson-bright",
+  },
+  // Ada \u2014 vedette de la 1.5, repli\u00E9e sous Falsi. Hydro, sortie
+  // 28 juillet 2026 avec "Paradise Prelude". Obtenue gratuitement via le
+  // Th\u00E9\u00E2tre immersif ; arme signature The Best Day.
   // ATTENTION au nom : l'interne dans Char.lua est "Eve" (d'o\u00F9 le slug
   // char-eve), mais le jeu lui donne un nom DIFF\u00C9RENT par langue \u2014
   // "Ada" en EN/FR, Yvaine en DE, Eve en ES. Ne pas "corriger" en Eve.
@@ -42,25 +60,10 @@ const SHOWCASE_CHARACTERS: Array<{
     accentColor: "cyan",
     ringColor: "ring-hydro",
   },
-  // Hilda \u2014 vedette de la 1.4, repli\u00E9e sous Ada. Pyro,
-  // sortie 30 juin 2026 (patch 1.4 phase 2). Pas de marketing officiel : on
-  // utilise le bust FModel re-encode en WebP (cf. official-v1.4/).
-  {
-    id: "char-xier",
-    slug: "hilda",
-    key: "hilda",
-    name: "Hilda",
-    decoText: "\u5E0C\u513F",
-    fullImage: "/assets/official-v1.4/image-hilda.webp",
-    fullImageMobile: "/assets/official-v1.4/image-hilda-mobile.webp",
-    avatar: "/assets/official-v1.4/avatar-hilda.webp",
-    element: "Pyro",
-    accentColor: "rose",
-    ringColor: "ring-crimson-bright",
-  },
-  // Flora est sortie du showcase \u00E0 l'arriv\u00E9e d'Ada (1.5) : on garde 4 entr\u00E9es,
-  // les plus r\u00E9centes. Ses visuels restent sous official-v1.4/ si on veut la
-  // remettre. NB : official-v1.3/image-fs.webp = Fushu, PAS Flora.
+  // Flora est sortie du showcase \u00E0 l'arriv\u00E9e d'Ada (1.5), Hilda \u00E0 celle de
+  // Falsi (1.6) : on garde 4 entr\u00E9es, les plus r\u00E9centes. Leurs visuels restent
+  // sous official-v1.4/ si on veut les remettre.
+  // NB : official-v1.3/image-fs.webp = Fushu, PAS Flora.
   // Formes Umbro du Phoxhunter (protagoniste) \u2014 d\u00E9bloqu\u00E9es via la narration
   // du patch 1.4 "Silver Torrent, Rising Star". Pas de marketing officiel
   // d\u00E9di\u00E9, on utilise les busts FModel re-encod\u00E9s en WebP (cf. official-v1.4/).
