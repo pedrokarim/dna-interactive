@@ -1,0 +1,599 @@
+{
+  "id": "arcanorift",
+  "name": "Arcano Rift",
+  "image": "/assets/maps/arcano_rift.png",
+  "imageSize": {
+    "width": 4096,
+    "height": 4096
+  },
+  "legend": [
+    {
+      "type": "Collectibles",
+      "label": "Collectibles",
+      "icon": "https://herobox-img.yingxiong.com/map/1749672600072455391.png",
+      "markers": [
+        {
+          "id": 33,
+          "name": "Portable Power Supply Device",
+          "icon": "https://herobox-img.yingxiong.com/map/1749556099909291238.png",
+          "markers": [
+            {
+              "id": 2892,
+              "position": {
+                "x": 1949,
+                "y": 1299.5
+              }
+            },
+            {
+              "id": 2893,
+              "position": {
+                "x": 1919.5,
+                "y": 1305
+              }
+            },
+            {
+              "id": 2905,
+              "position": {
+                "x": 1770.5,
+                "y": 2250.5
+              }
+            },
+            {
+              "id": 2906,
+              "position": {
+                "x": 1754,
+                "y": 2219
+              }
+            },
+            {
+              "id": 2925,
+              "position": {
+                "x": 1363.75,
+                "y": 2348
+              }
+            },
+            {
+              "id": 2926,
+              "position": {
+                "x": 1371.5,
+                "y": 2355.25
+              }
+            }
+          ]
+        },
+        {
+          "id": 34,
+          "name": "Bottled Lunar Sap",
+          "icon": "https://herobox-img.yingxiong.com/map/1749556572625658617.png",
+          "markers": [
+            {
+              "id": 2911,
+              "position": {
+                "x": 1344.5,
+                "y": 2276.25
+              }
+            },
+            {
+              "id": 2912,
+              "position": {
+                "x": 1332.5,
+                "y": 2276.75
+              }
+            },
+            {
+              "id": 2927,
+              "position": {
+                "x": 1375.75,
+                "y": 2383
+              }
+            },
+            {
+              "id": 2932,
+              "position": {
+                "x": 2110.5,
+                "y": 2871
+              }
+            },
+            {
+              "id": 2933,
+              "position": {
+                "x": 2139,
+                "y": 2862.5
+              }
+            },
+            {
+              "id": 2938,
+              "position": {
+                "x": 2182.75,
+                "y": 2445.25
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Landmarks",
+      "label": "Landmarks",
+      "icon": "https://herobox-img.yingxiong.com/map/1749672609569330275.png",
+      "markers": [
+        {
+          "id": 35,
+          "name": "Teleport Point",
+          "icon": "https://herobox-img.yingxiong.com/map/1749557822886359503.png",
+          "markers": [
+            {
+              "id": 2890,
+              "position": {
+                "x": 1964,
+                "y": 1271
+              }
+            },
+            {
+              "id": 2914,
+              "position": {
+                "x": 1294,
+                "y": 2262.75
+              }
+            },
+            {
+              "id": 2923,
+              "position": {
+                "x": 570,
+                "y": 2047
+              }
+            }
+          ]
+        },
+        {
+          "id": 38,
+          "name": "Fishing Spot",
+          "icon": "https://herobox-img.yingxiong.com/map/1749561882699685405.png",
+          "markers": [
+            {
+              "id": 2897,
+              "position": {
+                "x": 2155,
+                "y": 1481
+              }
+            }
+          ]
+        },
+        {
+          "id": 405,
+          "name": "Mount Arcano",
+          "icon": "https://herobox-img.yingxiong.com/map/1788762545315700292.png",
+          "markers": [
+            {
+              "id": 2952,
+              "position": {
+                "x": 2282,
+                "y": 1136.5
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Geniemon",
+      "label": "Geniemon",
+      "icon": "https://herobox-img.yingxiong.com/map/1749562159541539924.png",
+      "markers": [
+        {
+          "id": 42,
+          "name": "Geniemon Spawn Point",
+          "icon": "https://herobox-img.yingxiong.com/map/1749672734516496170.png",
+          "markers": [
+            {
+              "id": 2940,
+              "position": {
+                "x": 2116,
+                "y": 1422
+              }
+            },
+            {
+              "id": 2941,
+              "position": {
+                "x": 2012.5,
+                "y": 2184
+              }
+            },
+            {
+              "id": 2942,
+              "position": {
+                "x": 1798,
+                "y": 2237.5
+              }
+            },
+            {
+              "id": 2943,
+              "position": {
+                "x": 2160.6016029314906,
+                "y": 2512.1088894207764
+              }
+            },
+            {
+              "id": 2944,
+              "position": {
+                "x": 563,
+                "y": 2065.5
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Storage Chest",
+      "label": "Storage Chest",
+      "icon": "https://herobox-img.yingxiong.com/map/1749672743841364457.png",
+      "markers": [
+        {
+          "id": 43,
+          "name": "Storage Chest",
+          "icon": "https://herobox-img.yingxiong.com/map/1749566001012138274.png",
+          "markers": [
+            {
+              "id": 2896,
+              "position": {
+                "x": 2192.5,
+                "y": 1473.5
+              }
+            },
+            {
+              "id": 2901,
+              "position": {
+                "x": 2013.5,
+                "y": 2022.5
+              }
+            },
+            {
+              "id": 2904,
+              "position": {
+                "x": 1944,
+                "y": 2144.5
+              }
+            },
+            {
+              "id": 2908,
+              "position": {
+                "x": 1755,
+                "y": 2290.5
+              }
+            },
+            {
+              "id": 2910,
+              "position": {
+                "x": 1568,
+                "y": 2210.5
+              }
+            },
+            {
+              "id": 2915,
+              "position": {
+                "x": 1068,
+                "y": 2129
+              }
+            },
+            {
+              "id": 2917,
+              "position": {
+                "x": 1041,
+                "y": 2132.5
+              }
+            },
+            {
+              "id": 2918,
+              "position": {
+                "x": 989,
+                "y": 2203.5
+              }
+            },
+            {
+              "id": 2921,
+              "position": {
+                "x": 779,
+                "y": 2125
+              }
+            },
+            {
+              "id": 2924,
+              "position": {
+                "x": 579,
+                "y": 2027
+              }
+            },
+            {
+              "id": 2928,
+              "position": {
+                "x": 1863,
+                "y": 2660
+              }
+            },
+            {
+              "id": 2929,
+              "position": {
+                "x": 1952,
+                "y": 2817
+              }
+            },
+            {
+              "id": 2935,
+              "position": {
+                "x": 2178,
+                "y": 2473
+              }
+            }
+          ]
+        },
+        {
+          "id": 44,
+          "name": "Treasure Map Chest",
+          "icon": "https://herobox-img.yingxiong.com/map/1749560145785106563.png",
+          "markers": [
+            {
+              "id": 2939,
+              "position": {
+                "x": 2128.25,
+                "y": 2802.5
+              }
+            }
+          ]
+        },
+        {
+          "id": 60,
+          "name": "Monster Chest",
+          "icon": "https://herobox-img.yingxiong.com/map/1749565963302865436.png",
+          "markers": [
+            {
+              "id": 2895,
+              "position": {
+                "x": 2125.5,
+                "y": 1577
+              }
+            },
+            {
+              "id": 2900,
+              "position": {
+                "x": 2133.5,
+                "y": 2133
+              }
+            },
+            {
+              "id": 2909,
+              "position": {
+                "x": 1709,
+                "y": 2345.5
+              }
+            },
+            {
+              "id": 2931,
+              "position": {
+                "x": 2114.25,
+                "y": 2829.25
+              }
+            }
+          ]
+        },
+        {
+          "id": 202,
+          "name": "Mechanism Puzzle",
+          "icon": "https://herobox-img.yingxiong.com/map/1765893938085545821.png",
+          "markers": [
+            {
+              "id": 2902,
+              "position": {
+                "x": 2060.5,
+                "y": 2095
+              }
+            },
+            {
+              "id": 2934,
+              "position": {
+                "x": 2159.75,
+                "y": 2671.75
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Collectibles",
+      "label": "Collectibles",
+      "icon": "https://herobox-img.yingxiong.com/map/1749672777020326442.png",
+      "markers": [
+        {
+          "id": 50,
+          "name": "Pan Spirit",
+          "icon": "https://herobox-img.yingxiong.com/map/1749562536811567798.png",
+          "markers": [
+            {
+              "id": 2913,
+              "position": {
+                "x": 1323.5,
+                "y": 2284.5
+              }
+            },
+            {
+              "id": 2937,
+              "position": {
+                "x": 2187.25,
+                "y": 2470.75
+              }
+            }
+          ]
+        },
+        {
+          "id": 406,
+          "name": "Exploration Record · Mount Arcano",
+          "icon": "https://herobox-img.yingxiong.com/map/1788758682587366866.png",
+          "markers": [
+            {
+              "id": 2894,
+              "position": {
+                "x": 1956,
+                "y": 1404
+              }
+            },
+            {
+              "id": 2898,
+              "position": {
+                "x": 2302,
+                "y": 1717.5
+              }
+            },
+            {
+              "id": 2899,
+              "position": {
+                "x": 2321.5,
+                "y": 1986
+              }
+            },
+            {
+              "id": 2903,
+              "position": {
+                "x": 2053,
+                "y": 2166
+              }
+            },
+            {
+              "id": 2916,
+              "position": {
+                "x": 1040.75,
+                "y": 2120.75
+              }
+            },
+            {
+              "id": 2922,
+              "position": {
+                "x": 787.5,
+                "y": 2149.5
+              }
+            },
+            {
+              "id": 2930,
+              "position": {
+                "x": 2106,
+                "y": 2809
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Challenge",
+      "label": "Challenge",
+      "icon": "https://herobox-img.yingxiong.com/map/1749672639131620419.png",
+      "markers": [
+        {
+          "id": 56,
+          "name": "Parkour Challenge",
+          "icon": "https://herobox-img.yingxiong.com/map/1749672644630282670.png",
+          "markers": [
+            {
+              "id": 2907,
+              "position": {
+                "x": 1752.5,
+                "y": 2232.5
+              }
+            },
+            {
+              "id": 2919,
+              "position": {
+                "x": 933.5,
+                "y": 2169.5
+              }
+            }
+          ]
+        },
+        {
+          "id": 57,
+          "name": "Shooting Challenge",
+          "icon": "https://herobox-img.yingxiong.com/map/1749672672913484663.png",
+          "markers": [
+            {
+              "id": 2891,
+              "position": {
+                "x": 1929,
+                "y": 1269
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Others",
+      "label": "Others",
+      "icon": "https://herobox-img.yingxiong.com/map/1749672703904257929.png",
+      "markers": [
+        {
+          "id": 283,
+          "name": "Limited-Time Event Quest",
+          "icon": "https://herobox-img.yingxiong.com/map/1766206599812809105.png",
+          "markers": [
+            {
+              "id": 2951,
+              "position": {
+                "x": 1294.5,
+                "y": 2298
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Reading Material",
+      "label": "Reading Material",
+      "icon": "https://herobox-img.yingxiong.com/map/1788757480055257839.png",
+      "markers": [
+        {
+          "id": 397,
+          "name": "Arcano Town · Part 5",
+          "icon": "https://herobox-img.yingxiong.com/map/1788762834680637890.png",
+          "markers": [
+            {
+              "id": 2936,
+              "position": {
+                "x": 2196.75,
+                "y": 2472.25
+              }
+            }
+          ]
+        },
+        {
+          "id": 398,
+          "name": "Recording of a Fallen Legionnaire",
+          "icon": "https://herobox-img.yingxiong.com/map/1788762857739815436.png",
+          "markers": [
+            {
+              "id": 2920,
+              "position": {
+                "x": 906.5,
+                "y": 2133
+              }
+            }
+          ]
+        },
+        {
+          "id": 399,
+          "name": "Notes of a Canticle Soldier",
+          "icon": "https://herobox-img.yingxiong.com/map/1788762910780763102.png",
+          "markers": [
+            {
+              "id": 2889,
+              "position": {
+                "x": 2079,
+                "y": 1275
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

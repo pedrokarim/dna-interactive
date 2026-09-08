@@ -1651,6 +1651,282 @@
     }
   },
   {
+    "id": "char-falu",
+    "charId": 3104,
+    "internalName": "Falu",
+    "element": {
+      "key": "Fire",
+      "label": "Pyro"
+    },
+    "weaponTags": [
+      "Dualblade",
+      "Crossbow"
+    ],
+    "camp": {
+      "key": "Diguo",
+      "nameKey": "Camp_Name_Diguo",
+      "iconGamePath": "/Game/UI/Texture/Dynamic/Image/Camp/T_Gacha_CampIcon_Diguo.T_Gacha_CampIcon_Diguo"
+    },
+    "rarity": 5,
+    "maxLevel": 80,
+    "colorVar": "Blue",
+    "gender": true,
+    "sortPriority": 4005,
+    "charPieceId": 1003104,
+    "unlockRequiredPiece": 30,
+    "intronLevels": [
+      {
+        "cardLevel": 0,
+        "resourceId": 1003104,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 1,
+        "resourceId": 1003104,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 2,
+        "resourceId": 1003104,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 3,
+        "resourceId": 1003104,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 4,
+        "resourceId": 1003104,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 5,
+        "resourceId": 1003104,
+        "resourceNum": 30
+      }
+    ],
+    "intronDescriptionKeys": [
+      "GRADEUP_3104_01",
+      "GRADEUP_3104_02",
+      "GRADEUP_3104_03",
+      "GRADEUP_3104_04",
+      "GRADEUP_3104_05",
+      "GRADEUP_3104_06"
+    ],
+    "intronParameters": [
+      "$#PassiveEffect[310401].Vars.Grade2Rate*100$%",
+      "$#Buff[310426].AddAttrs[1].Value*100$%",
+      "$#PassiveEffect[310401].Vars.Grade6Rate*100$%"
+    ],
+    "baseStats": {
+      "atk": 16,
+      "atkGrowCurve": "ATKS",
+      "def": 355,
+      "defGrowCurve": "DEFS",
+      "maxHp": 200,
+      "maxHpGrowCurve": "MaxHpS",
+      "maxES": 0,
+      "maxESGrowCurve": "MaxESS",
+      "maxSp": 160
+    },
+    "addonAttrs": [
+      {
+        "attrId": 310401,
+        "attrName": "MaxHp",
+        "rate": 0.2,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_14.png",
+        "nameKey": "ADDONATTR_310401_NAME"
+      },
+      {
+        "attrId": 310402,
+        "attrName": "MaxHp",
+        "rate": 0.3,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_14.png",
+        "nameKey": "ADDONATTR_310402_NAME"
+      },
+      {
+        "attrId": 310403,
+        "attrName": "SkillSustain",
+        "rate": 0.06,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_11.png",
+        "nameKey": "ADDONATTR_310403_NAME"
+      },
+      {
+        "attrId": 310404,
+        "attrName": "SkillSustain",
+        "rate": 0.09,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_11.png",
+        "nameKey": "ADDONATTR_310404_NAME"
+      }
+    ],
+    "positioning": [
+      "DPS",
+      "SkillDPS"
+    ],
+    "recommendAttr": [
+      "MaxHp",
+      "SkillIntensity",
+      "SkillEfficiency",
+      "SkillSustain",
+      "HyperTriggerRate"
+    ],
+    "ascensionLevels": [
+      20,
+      30,
+      40,
+      50,
+      60,
+      70
+    ],
+    "textKeys": {
+      "nameKey": "UI_CHAR_NAME_3104",
+      "subtitleKey": "UI_CHAR_SUBTITLE_3104",
+      "birthdayKey": "UI_CHAR_BIRTH_3104",
+      "forceKey": "UI_CHAR_FORCE_3104",
+      "campNameKey": "Camp_Name_Diguo"
+    },
+    "portraits": {
+      "gacha": {
+        "publicPath": "/assets/characters/gacha/T_Gacha_AvatarFalu.png"
+      },
+      "head": {
+        "publicPath": "/assets/characters/head/T_Head_Falu.png"
+      },
+      "icon": {
+        "publicPath": "/assets/characters/icon/T_Icon_Falu.png"
+      },
+      "bust": {
+        "publicPath": "/assets/characters/bust/T_Bust_Falu.png"
+      },
+      "phantom": {
+        "publicPath": "/assets/characters/phantom/T_Phantom_Falu.png"
+      },
+      "charpiece": {
+        "publicPath": "/assets/characters/charpiece/T_CharPiece_Falu.png"
+      }
+    },
+    "consonanceWeapons": [],
+    "skillIcons": {
+      "skill1": {
+        "publicPath": "/assets/characters/skills/T_Skill_Falu01_On.png"
+      },
+      "skill2": {
+        "publicPath": "/assets/characters/skills/T_Skill_Falu02.png"
+      },
+      "skill3": {
+        "publicPath": "/assets/characters/skills/T_Skill_Falu03.png"
+      }
+    },
+    "translations": {
+      "DE": {
+        "name": "Falsi",
+        "subtitle": "A Heart Tempered into a Blade",
+        "birthday": "Hyperborean Empire",
+        "force": "The 13th Legion",
+        "campName": "Hyperboreisches Imperium",
+        "intronEffects": [
+          "While [Executioner] is active, the interval between ATK-to-Max-HP conversions is reduced by 50%.",
+          "When [Shadowstrike] is cast while only 1 [Execution Target] is present, damage dealt to that target increases by #1.",
+          "[Nightmeld] Lv. +2; [Awakening] Lv. +1.",
+          "Consuming 3 stacks of [Pyro Disruption] with [Shadowstrike] extends [Executioner]'s duration by 5s and grants #2 [Resolve] for 5s.",
+          "[Abyss Descent] Lv. +2; [Awakening] Lv. +1.",
+          "[Executioner] grants #3 PEN Stats while active."
+        ]
+      },
+      "EN": {
+        "name": "Falsi",
+        "subtitle": "A Heart Tempered into a Blade",
+        "birthday": "Hyperborean Empire",
+        "force": "The 13th Legion",
+        "campName": "The Hyperborean Empire",
+        "intronEffects": [
+          "While [Executioner] is active, the interval between ATK-to-Max-HP conversions is reduced by 50%.",
+          "When [Shadowstrike] is cast while only 1 [Execution Target] is present, damage dealt to that target increases by #1.",
+          "[Nightmeld] Lv. +2; [Awakening] Lv. +1.",
+          "Consuming 3 stacks of [Pyro Disruption] with [Shadowstrike] extends [Executioner]'s duration by 5s and grants #2 [Resolve] for 5s.",
+          "[Abyss Descent] Lv. +2; [Awakening] Lv. +1.",
+          "[Executioner] grants #3 PEN Stats while active."
+        ]
+      },
+      "ES": {
+        "name": "Falsi",
+        "subtitle": "A Heart Tempered into a Blade",
+        "birthday": "Hyperborean Empire",
+        "force": "The 13th Legion",
+        "campName": "Imperio Hiperbóreo",
+        "intronEffects": [
+          "While [Executioner] is active, the interval between ATK-to-Max-HP conversions is reduced by 50%.",
+          "When [Shadowstrike] is cast while only 1 [Execution Target] is present, damage dealt to that target increases by #1.",
+          "[Nightmeld] Lv. +2; [Awakening] Lv. +1.",
+          "Consuming 3 stacks of [Pyro Disruption] with [Shadowstrike] extends [Executioner]'s duration by 5s and grants #2 [Resolve] for 5s.",
+          "[Abyss Descent] Lv. +2; [Awakening] Lv. +1.",
+          "[Executioner] grants #3 PEN Stats while active."
+        ]
+      },
+      "FR": {
+        "name": "Falsi",
+        "subtitle": "Cœur Forgé en Lame",
+        "birthday": "Empire Hyperboréen",
+        "force": "XIIIᵉ Légion",
+        "campName": "Empire Hyperboréen",
+        "intronEffects": [
+          "En état [Exécutrice], l’intervalle entre deux conversions d’ATQ est réduit de 50 %.",
+          "Lorsque [Ruée d’ombre] est utilisée alors qu’il n’y a qu’une seule [Cible d’exécution] sur le terrain, les dégâts qui lui sont infligés augmentent de #1.",
+          "[Infiltration nocturne] niveau +2 ; [Résurgence] niveau +1.",
+          "Lorsque [Ruée d’ombre] est utilisée et consomme 3 cumuls de [Désordre Pyro], la durée de [Exécutrice] est prolongée de 5 s, et votre Ténacité augmente de #2 pendant 5 s.",
+          "[Chute dans l’abîme] niveau +2 ; [Résurgence] niveau +1.",
+          "En état [Exécutrice], vous obtenez #3 de Pénétration d’attribut."
+        ]
+      },
+      "JP": {
+        "name": "フォルス",
+        "subtitle": "燃ゆる心の刃",
+        "birthday": "ヒュペリア帝国",
+        "force": "帝国軍第十三軍団",
+        "campName": "ヒュペリア帝国",
+        "intronEffects": [
+          "【執行者】状態中、攻撃力変換の間隔が50%短縮される。",
+          "[シャドウストライク]発動時、フィールド上に[処刑対象]が1体しかいない場合、その対象へのダメージが#1アップする。",
+          "[ナイトダイブ]Lv.+2、[覚醒]Lv.+1。",
+          "[シャドウストライク]発動時、[火属性の乱調]を3スタック消費していた場合、[執行者]の持続時間を5秒延長し、さらに5秒間、背水効果が#2アップする。",
+          "[フォール・イントゥ・アビス]Lv.+2、[覚醒]Lv.+1。",
+          "[執行者]状態中、#3の属性貫通を獲得する。"
+        ]
+      },
+      "KR": {
+        "name": "펄시",
+        "subtitle": "불타는 심장의 칼날",
+        "birthday": "휘페르보레아 제국",
+        "force": "제13군단",
+        "campName": "휘페르보레아 제국",
+        "intronEffects": [
+          "[집행자] 상태에서 공격력 전환 간격이 50% 감소한다.",
+          "[그림자 급습] 발동 시, 필드에 [처형 목표]가 1명뿐이라면 해당 대미지가 #1 상승한다.",
+          "[스며드는 밤빛] 레벨+2, [각성] 레벨+1.",
+          "[그림자 급습] 발동 시 [불 속성 혼돈] 3단계를 소모했다면, [집행자]의 지속 시간이 5초 연장되며, 5초간 필사가 #2 증가한다.",
+          "[검은 심연 추락] 레벨+2, [각성] 레벨+1.",
+          "[집행자] 상태에서 속성 관통 #3 획득"
+        ]
+      },
+      "TC": {
+        "name": "法露茜",
+        "subtitle": "焚心作刃",
+        "birthday": "海伯利亞帝國",
+        "force": "第十三軍團",
+        "campName": "海伯利亞帝國",
+        "intronEffects": [
+          "[執行者]狀態中，轉化攻擊力間隔降低50%。",
+          "釋放[暗影奔襲]時，若場上僅有一名[處決目標]，對其傷害提升#1。",
+          "[潛入夜色]等級+2，[覺醒]等級+1。",
+          "釋放[暗影奔襲]時，若消耗了3層[火屬性紊亂]，延長5秒[執行者]的持續時間，且在5秒內提升#2背水。",
+          "[墜入黑淵]等級+2，[覺醒]等級+1。",
+          "[執行者]狀態下獲得#3屬性穿透。"
+        ]
+      }
+    }
+  },
+  {
     "id": "char-maer",
     "charId": 3301,
     "internalName": "Maer",
@@ -3974,7 +4250,12 @@
       "Uweapon",
       "WeaponDPS"
     ],
-    "recommendAttr": [],
+    "recommendAttr": [
+      "ATK_Fire",
+      "SkillIntensity",
+      "SkillEfficiency",
+      "SkillSustain"
+    ],
     "ascensionLevels": [
       20,
       30,
@@ -4435,7 +4716,7 @@
     "rarity": 5,
     "maxLevel": 80,
     "colorVar": "Blue",
-    "gender": null,
+    "gender": true,
     "sortPriority": 5005,
     "charPieceId": 1002102,
     "unlockRequiredPiece": 30,
@@ -4545,8 +4826,8 @@
     "textKeys": {
       "nameKey": "UI_CHAR_NAME_2102",
       "subtitleKey": "UI_CHAR_SUBTITLE_2102",
-      "birthdayKey": null,
-      "forceKey": null,
+      "birthdayKey": "UI_CHAR_BIRTH_2102",
+      "forceKey": "UI_CHAR_FORCE_2102",
       "campNameKey": "Camp_Name_None"
     },
     "portraits": {
@@ -4585,8 +4866,8 @@
       "DE": {
         "name": "Yvaine",
         "subtitle": "The Lone Bunny of Paradise",
-        "birthday": null,
-        "force": null,
+        "birthday": "Hyperborean Empire",
+        "force": "Unaffiliated",
         "campName": "Keine Zugehörigkeit",
         "intronEffects": [
           "When [Summon: Judgement] casts [Parade], there is a chance to create 1 [Summon: The Chariot]. Chance: Skill Efficiency × #1.",
@@ -4598,10 +4879,10 @@
         ]
       },
       "EN": {
-        "name": "\"Ada\"",
+        "name": "Eve",
         "subtitle": "The Lone Bunny of Paradise",
-        "birthday": null,
-        "force": null,
+        "birthday": "Hyperborean Empire",
+        "force": "Unaffiliated",
         "campName": "No Affiliation",
         "intronEffects": [
           "When [Summon: Judgement] casts [Parade], there is a chance to create 1 [Summon: The Chariot]. Chance: Skill Efficiency × #1.",
@@ -4615,8 +4896,8 @@
       "ES": {
         "name": "Eve",
         "subtitle": "The Lone Bunny of Paradise",
-        "birthday": null,
-        "force": null,
+        "birthday": "Hyperborean Empire",
+        "force": "Unaffiliated",
         "campName": "Sin afiliación",
         "intronEffects": [
           "When [Summon: Judgement] casts [Parade], there is a chance to create 1 [Summon: The Chariot]. Chance: Skill Efficiency × #1.",
@@ -4628,10 +4909,10 @@
         ]
       },
       "FR": {
-        "name": "Ada (?)",
+        "name": "Eve",
         "subtitle": "Lapin Solitaire du Paradis",
-        "birthday": null,
-        "force": null,
+        "birthday": "Empire Hyperboréen",
+        "force": "Aucune affiliation",
         "campName": "Aucune affiliation",
         "intronEffects": [
           "Lorsque [Le Jugement] utilise [Parade du Paradis], a une probabilité égale à l’Efficacité de compétence × #1 d’invoquer 1 [Le Chariot].",
@@ -4639,14 +4920,14 @@
           "[Conception du Paradis] niveau +2 ; [Bonjour, monde !] niveau +1.",
           "La part de la Vitesse d’attaque des invocations dépassant 100 % est convertie à hauteur de 100 % en bonus au multiplicateur des Dégâts de compétence.\nLa Portée de ramassage auto augmente de #3. Tant que [Le Jugement] est présent, la Vitesse d’attaque de vos invocations augmente de #2.",
           "[Que la fête commence !] niveau +2 ; [Bonjour, monde !] niveau +1.",
-          "Tant que [Le Jugement] est présent, Ada (?) et ses invocations gagnent #4 de Pénétration de tous les attributs.\nLorsque [Le Chariot] est détruit, [Le Jugement] a #5 de chances de lancer immédiatement [Parade du Paradis]. Cet effet ne peut se déclencher qu’une fois toutes les #6 s."
+          "Tant que [Le Jugement] est présent, Eve et ses invocations gagnent #4 de Pénétration de tous les attributs.\nLorsque [Le Chariot] est détruit, [Le Jugement] a #5 de chances de lancer immédiatement [Parade du Paradis]. Cet effet ne peut se déclencher qu’une fois toutes les #6 s."
         ]
       },
       "JP": {
-        "name": "エイダ（？？）",
+        "name": "イブ",
         "subtitle": "ラビット・イン・ワンダーランド",
-        "birthday": null,
-        "force": null,
+        "birthday": "ヒュペリア帝国",
+        "force": "なし",
         "campName": "無所属",
         "intronEffects": [
           "[召喚ユニット・審判]が[ワンダーランド・パレード]を発動した時、確率で[召喚ユニット・戦車]を1体生成する。確率はスキル効率×#1。",
@@ -4654,14 +4935,14 @@
           "[楽園構想]レベル+2、[ハロー・ワールド]レベル+1。",
           "自身の召喚ユニットの攻撃速度が100%を超えた分は、100%の比率でスキルダメージ倍率アップ効果に変換される。\n回収範囲が#3増加する。[召喚ユニット・審判]が存在する間、自身の召喚ユニットの攻撃速度が#2アップする。",
           "[お祭りの始まりだよ]レベル+2、[ハロー・ワールド]レベル+1。",
-          "[召喚ユニット・審判]が存在している間、エイダ（？？）および自身の召喚ユニットの全属性貫通が#4上昇する。\n [召喚ユニット・戦車]が死亡した時、[召喚ユニット・審判]が#5の確率で即座に[ワンダーランド・パレード]を1回発動する。この効果は#6秒ごとに最大1回まで発動できる。"
+          "[召喚ユニット・審判]が存在している間、イブおよび自身の召喚ユニットの全属性貫通が#4アップする。\n [召喚ユニット・戦車]が死亡した時、[召喚ユニット・審判]が#5の確率で即座に[ワンダーランド・パレード]を1回発動する。この効果は#6秒ごとに最大1回まで発動できる。"
         ]
       },
       "KR": {
-        "name": "아이다(??)",
+        "name": "이브",
         "subtitle": "낙원의 토끼",
-        "birthday": null,
-        "force": null,
+        "birthday": "휘페르보레아 제국",
+        "force": "없음",
         "campName": "무소속",
         "intronEffects": [
           "[소환물·심판]이 [낙원 퍼레이드]를 발동할 때, 스킬 효율×#1 확률로 [소환물·전차] 1개를 생성한다.",
@@ -4669,14 +4950,14 @@
           "[낙원 구상] 레벨+2, [안녕, 세계] 레벨+1",
           "자신의 소환물 공격 속도가 100%를 초과할 경우, 초과분은 100% 비율로 입히는 스킬 대미지 배율 증가 효과로 전환된다.\n습득 범위 #3 증가. [소환물·심판]이 존재하는 동안, 자신의 소환물의 공격 속도가 #2 상승한다.",
           "[축제 시작!] 레벨+2, [안녕, 세계] 레벨+1",
-          "[소환물·심판]이 존재하는 동안, 아이다(??) 및 자신의 소환물 모든 속성 관통이 #4 상승한다.\n[소환물·전차] 사망 시 [소환물·심판]이 #5 확률로 즉시 [낙원 퍼레이드]를 1회 발동한다. #6초마다 최대 1회 발동."
+          "[소환물·심판]이 존재하는 동안, 이브 및 자신의 소환물 모든 속성 관통이 #4 상승한다.\n[소환물·전차] 사망 시 [소환물·심판]이 #5 확률로 즉시 [낙원 퍼레이드]를 1회 발동한다. #6초마다 최대 1회 발동."
         ]
       },
       "TC": {
-        "name": "艾達（？？）",
+        "name": "伊薇",
         "subtitle": "樂園煢兔",
-        "birthday": null,
-        "force": null,
+        "birthday": "海伯利亞帝國",
+        "force": "無",
         "campName": "無陣營",
         "intronEffects": [
           "[召喚物·審判]釋放[樂園巡遊]時，概率生成1枚[召喚物·戰車]，概率為技能效益×#1。",
@@ -4684,7 +4965,7 @@
           "[樂園構想]等級+2，[你好，世界]等級+1。",
           "自身召喚物攻擊速度超過100%的部分，按100%比例轉化為造成的技能傷害倍率提高效果。\n拾取範圍增加#3，[召喚物·審判]存在期間，自身召喚物攻擊速度提高#2。",
           "[慶典開始嘍]等級+2，[你好，世界]等級+1。",
-          "[召喚物·審判]存在期間，艾達（？？）及自身召喚物全屬性穿透提高#4。\n[召喚物·戰車]死亡時，[召喚物·審判]#5概率立刻釋放1次[樂園巡遊]，每#6秒最多觸發1次。"
+          "[召喚物·審判]存在期間，伊薇及自身召喚物全屬性穿透提高#4。\n[召喚物·戰車]死亡時，[召喚物·審判]#5概率立刻釋放1次[樂園巡遊]，每#6秒最多觸發1次。"
         ]
       }
     }
@@ -7715,7 +7996,7 @@
           "[밤의 행차] 레벨+2, [혼의 귀환] 레벨+1.",
           "[혼의 귀환]의 [칠흑의 손] 효과 발동에 필요한 근접 기본 공격 횟수가 6회로 감소한다.",
           "[안개 바다의 기도] 레벨+2, [혼의 귀환] 레벨+1.",
-          "[혼의 귀환]의 [칠흑의 손] 효과 발동에 필요한 공격 횟수가 3회로 증가하고, 효과 발동 시 자신이 모든 속성 관통을 #5 획득한다. 지속 시간 #6초."
+          "[혼의 귀환]이 발동하는 [칠흑의 손]의 공격 횟수가 3회로 증가하고, 효과 발동 시 자신이 모든 속성 관통을 #5 획득한다. 지속 시간 #6초."
         ]
       },
       "TC": {
@@ -7979,7 +8260,7 @@
               "[밤의 행차] 레벨+2, [혼의 귀환] 레벨+1.",
               "[혼의 귀환]의 [칠흑의 손] 효과 발동에 필요한 근접 기본 공격 횟수가 6회로 감소한다.",
               "[안개 바다의 기도] 레벨+2, [혼의 귀환] 레벨+1.",
-              "[혼의 귀환]의 [칠흑의 손] 효과 발동에 필요한 공격 횟수가 3회로 증가하고, 효과 발동 시 자신이 모든 속성 관통을 #5 획득한다. 지속 시간 #6초."
+              "[혼의 귀환]이 발동하는 [칠흑의 손]의 공격 횟수가 3회로 증가하고, 효과 발동 시 자신이 모든 속성 관통을 #5 획득한다. 지속 시간 #6초."
             ]
           },
           "TC": {
@@ -8508,7 +8789,7 @@
           "[밤의 행차] 레벨+2, [혼의 귀환] 레벨+1.",
           "[혼의 귀환]의 [칠흑의 손] 효과 발동에 필요한 근접 기본 공격 횟수가 6회로 감소한다.",
           "[안개 바다의 기도] 레벨+2, [혼의 귀환] 레벨+1.",
-          "[혼의 귀환]의 [칠흑의 손] 효과 발동에 필요한 공격 횟수가 3회로 증가하고, 효과 발동 시 자신이 모든 속성 관통을 #5 획득한다. 지속 시간 #6초."
+          "[혼의 귀환]이 발동하는 [칠흑의 손]의 공격 횟수가 3회로 증가하고, 효과 발동 시 자신이 모든 속성 관통을 #5 획득한다. 지속 시간 #6초."
         ]
       },
       "TC": {
@@ -8772,7 +9053,7 @@
               "[밤의 행차] 레벨+2, [혼의 귀환] 레벨+1.",
               "[혼의 귀환]의 [칠흑의 손] 효과 발동에 필요한 근접 기본 공격 횟수가 6회로 감소한다.",
               "[안개 바다의 기도] 레벨+2, [혼의 귀환] 레벨+1.",
-              "[혼의 귀환]의 [칠흑의 손] 효과 발동에 필요한 공격 횟수가 3회로 증가하고, 효과 발동 시 자신이 모든 속성 관통을 #5 획득한다. 지속 시간 #6초."
+              "[혼의 귀환]이 발동하는 [칠흑의 손]의 공격 횟수가 3회로 증가하고, 효과 발동 시 자신이 모든 속성 관통을 #5 획득한다. 지속 시간 #6초."
             ]
           },
           "TC": {

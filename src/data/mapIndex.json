@@ -1,5 +1,598 @@
 [
   {
+    "id": "arcanorift",
+    "name": "Arcano Rift",
+    "image": "/assets/maps/arcano_rift.png",
+    "imageSize": {
+      "width": 4096,
+      "height": 4096
+    },
+    "markerCount": 58,
+    "imageCount": 0,
+    "legend": [
+      {
+        "type": "Collectibles",
+        "label": "Collectibles",
+        "icon": "https://herobox-img.yingxiong.com/map/1749672600072455391.png",
+        "markers": [
+          {
+            "id": 33,
+            "name": "Portable Power Supply Device",
+            "icon": "https://herobox-img.yingxiong.com/map/1749556099909291238.png"
+          },
+          {
+            "id": 34,
+            "name": "Bottled Lunar Sap",
+            "icon": "https://herobox-img.yingxiong.com/map/1749556572625658617.png"
+          }
+        ]
+      },
+      {
+        "type": "Landmarks",
+        "label": "Landmarks",
+        "icon": "https://herobox-img.yingxiong.com/map/1749672609569330275.png",
+        "markers": [
+          {
+            "id": 35,
+            "name": "Teleport Point",
+            "icon": "https://herobox-img.yingxiong.com/map/1749557822886359503.png"
+          },
+          {
+            "id": 38,
+            "name": "Fishing Spot",
+            "icon": "https://herobox-img.yingxiong.com/map/1749561882699685405.png"
+          },
+          {
+            "id": 405,
+            "name": "Mount Arcano",
+            "icon": "https://herobox-img.yingxiong.com/map/1788762545315700292.png"
+          }
+        ]
+      },
+      {
+        "type": "Geniemon",
+        "label": "Geniemon",
+        "icon": "https://herobox-img.yingxiong.com/map/1749562159541539924.png",
+        "markers": [
+          {
+            "id": 42,
+            "name": "Geniemon Spawn Point",
+            "icon": "https://herobox-img.yingxiong.com/map/1749672734516496170.png"
+          }
+        ]
+      },
+      {
+        "type": "Storage Chest",
+        "label": "Storage Chest",
+        "icon": "https://herobox-img.yingxiong.com/map/1749672743841364457.png",
+        "markers": [
+          {
+            "id": 43,
+            "name": "Storage Chest",
+            "icon": "https://herobox-img.yingxiong.com/map/1749566001012138274.png"
+          },
+          {
+            "id": 44,
+            "name": "Treasure Map Chest",
+            "icon": "https://herobox-img.yingxiong.com/map/1749560145785106563.png"
+          },
+          {
+            "id": 60,
+            "name": "Monster Chest",
+            "icon": "https://herobox-img.yingxiong.com/map/1749565963302865436.png"
+          },
+          {
+            "id": 202,
+            "name": "Mechanism Puzzle",
+            "icon": "https://herobox-img.yingxiong.com/map/1765893938085545821.png"
+          }
+        ]
+      },
+      {
+        "type": "Collectibles",
+        "label": "Collectibles",
+        "icon": "https://herobox-img.yingxiong.com/map/1749672777020326442.png",
+        "markers": [
+          {
+            "id": 50,
+            "name": "Pan Spirit",
+            "icon": "https://herobox-img.yingxiong.com/map/1749562536811567798.png"
+          },
+          {
+            "id": 406,
+            "name": "Exploration Record · Mount Arcano",
+            "icon": "https://herobox-img.yingxiong.com/map/1788758682587366866.png"
+          }
+        ]
+      },
+      {
+        "type": "Challenge",
+        "label": "Challenge",
+        "icon": "https://herobox-img.yingxiong.com/map/1749672639131620419.png",
+        "markers": [
+          {
+            "id": 56,
+            "name": "Parkour Challenge",
+            "icon": "https://herobox-img.yingxiong.com/map/1749672644630282670.png"
+          },
+          {
+            "id": 57,
+            "name": "Shooting Challenge",
+            "icon": "https://herobox-img.yingxiong.com/map/1749672672913484663.png"
+          }
+        ]
+      },
+      {
+        "type": "Others",
+        "label": "Others",
+        "icon": "https://herobox-img.yingxiong.com/map/1749672703904257929.png",
+        "markers": [
+          {
+            "id": 283,
+            "name": "Limited-Time Event Quest",
+            "icon": "https://herobox-img.yingxiong.com/map/1766206599812809105.png"
+          }
+        ]
+      },
+      {
+        "type": "Reading Material",
+        "label": "Reading Material",
+        "icon": "https://herobox-img.yingxiong.com/map/1788757480055257839.png",
+        "markers": [
+          {
+            "id": 397,
+            "name": "Arcano Town · Part 5",
+            "icon": "https://herobox-img.yingxiong.com/map/1788762834680637890.png"
+          },
+          {
+            "id": 398,
+            "name": "Recording of a Fallen Legionnaire",
+            "icon": "https://herobox-img.yingxiong.com/map/1788762857739815436.png"
+          },
+          {
+            "id": 399,
+            "name": "Notes of a Canticle Soldier",
+            "icon": "https://herobox-img.yingxiong.com/map/1788762910780763102.png"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "arcanoruins",
+    "name": "Arcano Ruins",
+    "image": "/assets/maps/arcano_ruins.png",
+    "imageSize": {
+      "width": 4096,
+      "height": 4096
+    },
+    "markerCount": 72,
+    "imageCount": 0,
+    "legend": [
+      {
+        "type": "Collectibles",
+        "label": "Collectibles",
+        "icon": "https://herobox-img.yingxiong.com/map/1749672600072455391.png",
+        "markers": [
+          {
+            "id": 27,
+            "name": "Dewioletr",
+            "icon": "https://herobox-img.yingxiong.com/map/1749556012460864902.png"
+          },
+          {
+            "id": 32,
+            "name": "Crackbloom",
+            "icon": "https://herobox-img.yingxiong.com/map/1749556082401623363.png"
+          }
+        ]
+      },
+      {
+        "type": "Landmarks",
+        "label": "Landmarks",
+        "icon": "https://herobox-img.yingxiong.com/map/1749672609569330275.png",
+        "markers": [
+          {
+            "id": 35,
+            "name": "Teleport Point",
+            "icon": "https://herobox-img.yingxiong.com/map/1749557822886359503.png"
+          },
+          {
+            "id": 405,
+            "name": "Mount Arcano",
+            "icon": "https://herobox-img.yingxiong.com/map/1788762545315700292.png"
+          }
+        ]
+      },
+      {
+        "type": "Geniemon",
+        "label": "Geniemon",
+        "icon": "https://herobox-img.yingxiong.com/map/1749562159541539924.png",
+        "markers": [
+          {
+            "id": 42,
+            "name": "Geniemon Spawn Point",
+            "icon": "https://herobox-img.yingxiong.com/map/1749672734516496170.png"
+          },
+          {
+            "id": 321,
+            "name": "Geniemon Spawn Point",
+            "icon": "https://herobox-img.yingxiong.com/map/1766675854455532522.png"
+          }
+        ]
+      },
+      {
+        "type": "Storage Chest",
+        "label": "Storage Chest",
+        "icon": "https://herobox-img.yingxiong.com/map/1749672743841364457.png",
+        "markers": [
+          {
+            "id": 43,
+            "name": "Storage Chest",
+            "icon": "https://herobox-img.yingxiong.com/map/1749566001012138274.png"
+          },
+          {
+            "id": 44,
+            "name": "Treasure Map Chest",
+            "icon": "https://herobox-img.yingxiong.com/map/1749560145785106563.png"
+          },
+          {
+            "id": 60,
+            "name": "Monster Chest",
+            "icon": "https://herobox-img.yingxiong.com/map/1749565963302865436.png"
+          },
+          {
+            "id": 202,
+            "name": "Mechanism Puzzle",
+            "icon": "https://herobox-img.yingxiong.com/map/1765893938085545821.png"
+          }
+        ]
+      },
+      {
+        "type": "Collectibles",
+        "label": "Collectibles",
+        "icon": "https://herobox-img.yingxiong.com/map/1749672777020326442.png",
+        "markers": [
+          {
+            "id": 50,
+            "name": "Pan Spirit",
+            "icon": "https://herobox-img.yingxiong.com/map/1749562536811567798.png"
+          },
+          {
+            "id": 406,
+            "name": "Exploration Record · Mount Arcano",
+            "icon": "https://herobox-img.yingxiong.com/map/1788758682587366866.png"
+          },
+          {
+            "id": 407,
+            "name": "Shooting Range Ticket",
+            "icon": "https://herobox-img.yingxiong.com/map/1788762594002747523.png"
+          }
+        ]
+      },
+      {
+        "type": "Unexpected Events/Dispatch",
+        "label": "Unexpected Events/Dispatch",
+        "icon": "https://herobox-img.yingxiong.com/map/1765893914674126617.png",
+        "markers": [
+          {
+            "id": 239,
+            "name": "Shadow of the Battle-Hardened",
+            "icon": "https://herobox-img.yingxiong.com/map/1766206252001108965.png"
+          },
+          {
+            "id": 408,
+            "name": "Blightbeast Cliff",
+            "icon": "https://herobox-img.yingxiong.com/map/1788836106848473648.png"
+          }
+        ]
+      },
+      {
+        "type": "Challenge",
+        "label": "Challenge",
+        "icon": "https://herobox-img.yingxiong.com/map/1749672639131620419.png",
+        "markers": [
+          {
+            "id": 56,
+            "name": "Parkour Challenge",
+            "icon": "https://herobox-img.yingxiong.com/map/1749672644630282670.png"
+          },
+          {
+            "id": 57,
+            "name": "Shooting Challenge",
+            "icon": "https://herobox-img.yingxiong.com/map/1749672672913484663.png"
+          },
+          {
+            "id": 382,
+            "name": "Mount Challenge",
+            "icon": "https://herobox-img.yingxiong.com/map/1785393174822864806.png"
+          }
+        ]
+      },
+      {
+        "type": "Others",
+        "label": "Others",
+        "icon": "https://herobox-img.yingxiong.com/map/1749672703904257929.png",
+        "markers": [
+          {
+            "id": 283,
+            "name": "Limited-Time Event Quest",
+            "icon": "https://herobox-img.yingxiong.com/map/1766206599812809105.png"
+          }
+        ]
+      },
+      {
+        "type": "Reading Material",
+        "label": "Reading Material",
+        "icon": "https://herobox-img.yingxiong.com/map/1788757480055257839.png",
+        "markers": [
+          {
+            "id": 393,
+            "name": "Arcano Town · Part 3",
+            "icon": "https://herobox-img.yingxiong.com/map/1788762615802377110.png"
+          },
+          {
+            "id": 394,
+            "name": "Arcano Town · Part 4",
+            "icon": "https://herobox-img.yingxiong.com/map/1788762624951493785.png"
+          },
+          {
+            "id": 395,
+            "name": "User Manual",
+            "icon": "https://herobox-img.yingxiong.com/map/1788762647649895859.png"
+          },
+          {
+            "id": 396,
+            "name": "Recording of an Unknown Soldier",
+            "icon": "https://herobox-img.yingxiong.com/map/1788762662926883189.png"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bloomfield-station",
+    "name": "Bloomfield Station",
+    "image": "/assets/maps/bloomfield_station.png",
+    "imageSize": {
+      "width": 4096,
+      "height": 4096
+    },
+    "markerCount": 147,
+    "imageCount": 136,
+    "legend": [
+      {
+        "type": "Collectibles",
+        "label": "Collectibles",
+        "icon": "https://herobox-img.yingxiong.com/map/1749672600072455391.png",
+        "markers": [
+          {
+            "id": 26,
+            "name": "Snowcap",
+            "icon": "https://herobox-img.yingxiong.com/map/1749555951565856688.png"
+          },
+          {
+            "id": 30,
+            "name": "Indigofly",
+            "icon": "https://herobox-img.yingxiong.com/map/1749556044734397730.png"
+          },
+          {
+            "id": 34,
+            "name": "Bottled Lunar Sap",
+            "icon": "https://herobox-img.yingxiong.com/map/1749556572625658617.png"
+          }
+        ]
+      },
+      {
+        "type": "Landmarks",
+        "label": "Landmarks",
+        "icon": "https://herobox-img.yingxiong.com/map/1749672609569330275.png",
+        "markers": [
+          {
+            "id": 35,
+            "name": "Teleport Point",
+            "icon": "https://herobox-img.yingxiong.com/map/1749557822886359503.png"
+          },
+          {
+            "id": 36,
+            "name": "Nightmare Echo",
+            "icon": "https://herobox-img.yingxiong.com/map/1749557928850108966.png"
+          },
+          {
+            "id": 38,
+            "name": "Fishing Spot",
+            "icon": "https://herobox-img.yingxiong.com/map/1749561882699685405.png"
+          },
+          {
+            "id": 359,
+            "name": "Ice Lake City Outskirts",
+            "icon": "https://herobox-img.yingxiong.com/map/1780009446832140701.jpg"
+          },
+          {
+            "id": 360,
+            "name": "Lower Ironworks",
+            "icon": "https://herobox-img.yingxiong.com/map/1780009959199454252.jpg"
+          },
+          {
+            "id": 370,
+            "name": "Underground Rail Line",
+            "icon": "https://herobox-img.yingxiong.com/map/1780012271556154795.jpg"
+          }
+        ]
+      },
+      {
+        "type": "Geniemon",
+        "label": "Geniemon",
+        "icon": "https://herobox-img.yingxiong.com/map/1749562159541539924.png",
+        "markers": [
+          {
+            "id": 42,
+            "name": "Geniemon Spawn Point",
+            "icon": "https://herobox-img.yingxiong.com/map/1749672734516496170.png"
+          }
+        ]
+      },
+      {
+        "type": "Storage Chest",
+        "label": "Storage Chest",
+        "icon": "https://herobox-img.yingxiong.com/map/1749672743841364457.png",
+        "markers": [
+          {
+            "id": 43,
+            "name": "Storage Chest",
+            "icon": "https://herobox-img.yingxiong.com/map/1749566001012138274.png"
+          },
+          {
+            "id": 44,
+            "name": "Treasure Map Chest",
+            "icon": "https://herobox-img.yingxiong.com/map/1749560145785106563.png"
+          }
+        ]
+      },
+      {
+        "type": "Collectibles",
+        "label": "Collectibles",
+        "icon": "https://herobox-img.yingxiong.com/map/1749672777020326442.png",
+        "markers": [
+          {
+            "id": 47,
+            "name": "Explorer’s Proof: Ice Lake City",
+            "icon": "https://herobox-img.yingxiong.com/map/1749560835499262022.png"
+          },
+          {
+            "id": 50,
+            "name": "Pan Spirit",
+            "icon": "https://herobox-img.yingxiong.com/map/1749562536811567798.png"
+          }
+        ]
+      },
+      {
+        "type": "NPC",
+        "label": "NPC",
+        "icon": "https://herobox-img.yingxiong.com/map/1749672792691326823.png",
+        "markers": [
+          {
+            "id": 51,
+            "name": "NPC",
+            "icon": "https://herobox-img.yingxiong.com/map/1749562234816683808.png"
+          }
+        ]
+      },
+      {
+        "type": "Unexpected Events/Dispatch",
+        "label": "Unexpected Events/Dispatch",
+        "icon": "https://herobox-img.yingxiong.com/map/1765893914674126617.png",
+        "markers": [
+          {
+            "id": 234,
+            "name": "Rescue the Demon Spirit",
+            "icon": "https://herobox-img.yingxiong.com/map/1766205804498307101.png"
+          },
+          {
+            "id": 252,
+            "name": "An Explorer's Greatest Treasure!",
+            "icon": "https://herobox-img.yingxiong.com/map/1766205590983119237.png"
+          },
+          {
+            "id": 371,
+            "name": "Memories of Baihua Station",
+            "icon": "https://herobox-img.yingxiong.com/map/1780019817551925464.png"
+          },
+          {
+            "id": 372,
+            "name": "Missing Item Notice",
+            "icon": "https://herobox-img.yingxiong.com/map/1780021176703736843.png"
+          },
+          {
+            "id": 373,
+            "name": "Track Maintenance",
+            "icon": "https://herobox-img.yingxiong.com/map/1780296981863468871.png"
+          }
+        ]
+      },
+      {
+        "type": "Challenge",
+        "label": "Challenge",
+        "icon": "https://herobox-img.yingxiong.com/map/1749672639131620419.png",
+        "markers": [
+          {
+            "id": 56,
+            "name": "Parkour Challenge",
+            "icon": "https://herobox-img.yingxiong.com/map/1749672644630282670.png"
+          },
+          {
+            "id": 57,
+            "name": "Shooting Challenge",
+            "icon": "https://herobox-img.yingxiong.com/map/1749672672913484663.png"
+          }
+        ]
+      },
+      {
+        "type": "Others",
+        "label": "Others",
+        "icon": "https://herobox-img.yingxiong.com/map/1749672703904257929.png",
+        "markers": [
+          {
+            "id": 63,
+            "name": "Impression Check",
+            "icon": "https://herobox-img.yingxiong.com/map/1766212428224753824.png"
+          },
+          {
+            "id": 282,
+            "name": "Side Quest",
+            "icon": "https://herobox-img.yingxiong.com/map/1766206498223250888.png"
+          }
+        ]
+      },
+      {
+        "type": "Reading Material",
+        "label": "Reading Material",
+        "icon": "https://herobox-img.yingxiong.com/map/1780011776440245807.png",
+        "markers": [
+          {
+            "id": 362,
+            "name": "Baihua Station: Part III",
+            "icon": "https://herobox-img.yingxiong.com/map/1780010768490970436.jpg"
+          },
+          {
+            "id": 363,
+            "name": "Baihua Station: Part IV",
+            "icon": "https://herobox-img.yingxiong.com/map/1780010727658685377.jpg"
+          },
+          {
+            "id": 364,
+            "name": "Baihua Station: Part V",
+            "icon": "https://herobox-img.yingxiong.com/map/1780010791130142866.jpg"
+          },
+          {
+            "id": 365,
+            "name": "Baihua Station Recruitment Bulletin",
+            "icon": "https://herobox-img.yingxiong.com/map/1780010324185904081.jpg"
+          },
+          {
+            "id": 366,
+            "name": "Steam Whistle Salon Code of Conduct",
+            "icon": "https://herobox-img.yingxiong.com/map/1780010874166596165.jpg"
+          },
+          {
+            "id": 367,
+            "name": "Stationmaster Eisenbahn's Daily Behavior Analysis Report",
+            "icon": "https://herobox-img.yingxiong.com/map/1780011218116493511.jpg"
+          },
+          {
+            "id": 368,
+            "name": "Sacred Records",
+            "icon": "https://herobox-img.yingxiong.com/map/1780011238838614840.jpg"
+          },
+          {
+            "id": 369,
+            "name": "The Invincible Great Train Stationmaster — Part I",
+            "icon": "https://herobox-img.yingxiong.com/map/1780011281615376951.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "galea-theater",
     "name": "Galea Theater",
     "image": "/assets/maps/galea_theater_v1.png",
@@ -1426,6 +2019,148 @@
     ]
   },
   {
+    "id": "ironworks",
+    "name": "Ironworks",
+    "image": "/assets/maps/ironworks_1.png",
+    "imageSize": {
+      "width": 4096,
+      "height": 4096
+    },
+    "markerCount": 89,
+    "imageCount": 79,
+    "legend": [
+      {
+        "type": "Collectibles",
+        "label": "Collectibles",
+        "icon": "https://herobox-img.yingxiong.com/map/1749672600072455391.png",
+        "markers": [
+          {
+            "id": 33,
+            "name": "Portable Power Supply Device",
+            "icon": "https://herobox-img.yingxiong.com/map/1749556099909291238.png"
+          },
+          {
+            "id": 34,
+            "name": "Bottled Lunar Sap",
+            "icon": "https://herobox-img.yingxiong.com/map/1749556572625658617.png"
+          }
+        ]
+      },
+      {
+        "type": "Landmarks",
+        "label": "Landmarks",
+        "icon": "https://herobox-img.yingxiong.com/map/1749672609569330275.png",
+        "markers": [
+          {
+            "id": 35,
+            "name": "Teleport Point",
+            "icon": "https://herobox-img.yingxiong.com/map/1749557822886359503.png"
+          },
+          {
+            "id": 374,
+            "name": "Station Forecourt Dome",
+            "icon": "https://herobox-img.yingxiong.com/map/1780035091884194779.jpg"
+          },
+          {
+            "id": 375,
+            "name": "Upper Ironworks",
+            "icon": "https://herobox-img.yingxiong.com/map/1780035133542268918.jpg"
+          },
+          {
+            "id": 376,
+            "name": "Station Concourse",
+            "icon": "https://herobox-img.yingxiong.com/map/1780035148516713302.jpg"
+          }
+        ]
+      },
+      {
+        "type": "Geniemon",
+        "label": "Geniemon",
+        "icon": "https://herobox-img.yingxiong.com/map/1749562159541539924.png",
+        "markers": [
+          {
+            "id": 42,
+            "name": "Geniemon Spawn Point",
+            "icon": "https://herobox-img.yingxiong.com/map/1749672734516496170.png"
+          }
+        ]
+      },
+      {
+        "type": "Storage Chest",
+        "label": "Storage Chest",
+        "icon": "https://herobox-img.yingxiong.com/map/1749672743841364457.png",
+        "markers": [
+          {
+            "id": 43,
+            "name": "Storage Chest",
+            "icon": "https://herobox-img.yingxiong.com/map/1749566001012138274.png"
+          },
+          {
+            "id": 44,
+            "name": "Treasure Map Chest",
+            "icon": "https://herobox-img.yingxiong.com/map/1749560145785106563.png"
+          }
+        ]
+      },
+      {
+        "type": "Collectibles",
+        "label": "Collectibles",
+        "icon": "https://herobox-img.yingxiong.com/map/1749672777020326442.png",
+        "markers": [
+          {
+            "id": 47,
+            "name": "Explorer’s Proof: Ice Lake City",
+            "icon": "https://herobox-img.yingxiong.com/map/1749560835499262022.png"
+          },
+          {
+            "id": 50,
+            "name": "Pan Spirit",
+            "icon": "https://herobox-img.yingxiong.com/map/1749562536811567798.png"
+          }
+        ]
+      },
+      {
+        "type": "NPC",
+        "label": "NPC",
+        "icon": "https://herobox-img.yingxiong.com/map/1749672792691326823.png",
+        "markers": [
+          {
+            "id": 51,
+            "name": "NPC",
+            "icon": "https://herobox-img.yingxiong.com/map/1749562234816683808.png"
+          }
+        ]
+      },
+      {
+        "type": "阅读物1.4",
+        "label": "阅读物1.4",
+        "icon": "https://herobox-img.yingxiong.com/map/1780011776440245807.png",
+        "markers": [
+          {
+            "id": 377,
+            "name": "Baihua Station: Part I",
+            "icon": "https://herobox-img.yingxiong.com/map/1780037360908682606.jpg"
+          },
+          {
+            "id": 378,
+            "name": "Baihua Station: Part II",
+            "icon": "https://herobox-img.yingxiong.com/map/1780037565376298798.png"
+          },
+          {
+            "id": 379,
+            "name": "The Former Owner",
+            "icon": "https://herobox-img.yingxiong.com/map/1780038316277643248.jpg"
+          },
+          {
+            "id": 380,
+            "name": "Baihua Station Workers' Menu",
+            "icon": "https://herobox-img.yingxiong.com/map/1780038356986804777.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "lonza-fortress",
     "name": "Lonza Fortress",
     "image": "/assets/maps/lonza_fortress_v1.png",
@@ -1637,6 +2372,361 @@
             "id": 57,
             "name": "Shooting Challenge",
             "icon": "/assets/icons/1749672672913484663.png"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mountarcano",
+    "name": "Mount Arcano",
+    "image": "/assets/maps/mount_arcano.png",
+    "imageSize": {
+      "width": 4096,
+      "height": 4096
+    },
+    "markerCount": 91,
+    "imageCount": 0,
+    "legend": [
+      {
+        "type": "Collectibles",
+        "label": "Collectibles",
+        "icon": "https://herobox-img.yingxiong.com/map/1749672600072455391.png",
+        "markers": [
+          {
+            "id": 25,
+            "name": "Caramel Mushroom",
+            "icon": "https://herobox-img.yingxiong.com/map/1749555938060153157.png"
+          },
+          {
+            "id": 29,
+            "name": "Bird Egg",
+            "icon": "https://herobox-img.yingxiong.com/map/1749556033266528734.png"
+          },
+          {
+            "id": 31,
+            "name": "Virifly",
+            "icon": "https://herobox-img.yingxiong.com/map/1749556059763681063.png"
+          }
+        ]
+      },
+      {
+        "type": "Landmarks",
+        "label": "Landmarks",
+        "icon": "https://herobox-img.yingxiong.com/map/1749672609569330275.png",
+        "markers": [
+          {
+            "id": 35,
+            "name": "Teleport Point",
+            "icon": "https://herobox-img.yingxiong.com/map/1749557822886359503.png"
+          },
+          {
+            "id": 38,
+            "name": "Fishing Spot",
+            "icon": "https://herobox-img.yingxiong.com/map/1749561882699685405.png"
+          },
+          {
+            "id": 400,
+            "name": "Dreamy Slumber Pool",
+            "icon": "https://herobox-img.yingxiong.com/map/1788757840245577916.png"
+          },
+          {
+            "id": 401,
+            "name": "Old Site of Arcano Town",
+            "icon": "https://herobox-img.yingxiong.com/map/1788758389884176625.png"
+          },
+          {
+            "id": 402,
+            "name": "Valley Rift",
+            "icon": "https://herobox-img.yingxiong.com/map/1788758429389251800.png"
+          },
+          {
+            "id": 403,
+            "name": "Victor's Home",
+            "icon": "https://herobox-img.yingxiong.com/map/1788758478455857115.png"
+          }
+        ]
+      },
+      {
+        "type": "Geniemon",
+        "label": "Geniemon",
+        "icon": "https://herobox-img.yingxiong.com/map/1749562159541539924.png",
+        "markers": [
+          {
+            "id": 42,
+            "name": "Geniemon Spawn Point",
+            "icon": "https://herobox-img.yingxiong.com/map/1749672734516496170.png"
+          }
+        ]
+      },
+      {
+        "type": "Storage Chest",
+        "label": "Storage Chest",
+        "icon": "https://herobox-img.yingxiong.com/map/1749672743841364457.png",
+        "markers": [
+          {
+            "id": 43,
+            "name": "Storage Chest",
+            "icon": "https://herobox-img.yingxiong.com/map/1749566001012138274.png"
+          },
+          {
+            "id": 44,
+            "name": "Treasure Map Chest",
+            "icon": "https://herobox-img.yingxiong.com/map/1749560145785106563.png"
+          },
+          {
+            "id": 60,
+            "name": "Monster Chest",
+            "icon": "https://herobox-img.yingxiong.com/map/1749565963302865436.png"
+          },
+          {
+            "id": 202,
+            "name": "Mechanism Puzzle",
+            "icon": "https://herobox-img.yingxiong.com/map/1765893938085545821.png"
+          }
+        ]
+      },
+      {
+        "type": "Collectibles",
+        "label": "Collectibles",
+        "icon": "https://herobox-img.yingxiong.com/map/1749672777020326442.png",
+        "markers": [
+          {
+            "id": 50,
+            "name": "Pan Spirit",
+            "icon": "https://herobox-img.yingxiong.com/map/1749562536811567798.png"
+          },
+          {
+            "id": 406,
+            "name": "Exploration Record · Mount Arcano",
+            "icon": "https://herobox-img.yingxiong.com/map/1788758682587366866.png"
+          }
+        ]
+      },
+      {
+        "type": "NPC",
+        "label": "NPC",
+        "icon": "https://herobox-img.yingxiong.com/map/1749672792691326823.png",
+        "markers": [
+          {
+            "id": 51,
+            "name": "NPC",
+            "icon": "https://herobox-img.yingxiong.com/map/1749562234816683808.png"
+          }
+        ]
+      },
+      {
+        "type": "Unexpected Events/Dispatch",
+        "label": "Unexpected Events/Dispatch",
+        "icon": "https://herobox-img.yingxiong.com/map/1765893914674126617.png",
+        "markers": [
+          {
+            "id": 236,
+            "name": "Surprise Supplies",
+            "icon": "https://herobox-img.yingxiong.com/map/1766234865705382466.png"
+          }
+        ]
+      },
+      {
+        "type": "Challenge",
+        "label": "Challenge",
+        "icon": "https://herobox-img.yingxiong.com/map/1749672639131620419.png",
+        "markers": [
+          {
+            "id": 57,
+            "name": "Shooting Challenge",
+            "icon": "https://herobox-img.yingxiong.com/map/1749672672913484663.png"
+          }
+        ]
+      },
+      {
+        "type": "Others",
+        "label": "Others",
+        "icon": "https://herobox-img.yingxiong.com/map/1749672703904257929.png",
+        "markers": [
+          {
+            "id": 282,
+            "name": "Side Quest",
+            "icon": "https://herobox-img.yingxiong.com/map/1766206498223250888.png"
+          },
+          {
+            "id": 283,
+            "name": "Limited-Time Event Quest",
+            "icon": "https://herobox-img.yingxiong.com/map/1766206599812809105.png"
+          },
+          {
+            "id": 284,
+            "name": "Special Side Quest",
+            "icon": "https://herobox-img.yingxiong.com/map/1766206568709565359.png"
+          }
+        ]
+      },
+      {
+        "type": "Reading Material",
+        "label": "Reading Material",
+        "icon": "https://herobox-img.yingxiong.com/map/1788757480055257839.png",
+        "markers": [
+          {
+            "id": 383,
+            "name": "Arcano Town · Part 1",
+            "icon": "https://herobox-img.yingxiong.com/map/1788758620390781204.png"
+          },
+          {
+            "id": 384,
+            "name": "Arcano Town · Part 2",
+            "icon": "https://herobox-img.yingxiong.com/map/1788758648890998679.png"
+          },
+          {
+            "id": 385,
+            "name": "The Never-Ending Tea Party",
+            "icon": "https://herobox-img.yingxiong.com/map/1788758738674830875.png"
+          },
+          {
+            "id": 386,
+            "name": "Bloodstained Distress Letter",
+            "icon": "https://herobox-img.yingxiong.com/map/1788762217769946755.png"
+          },
+          {
+            "id": 387,
+            "name": "Eric Woodville's Testimony",
+            "icon": "https://herobox-img.yingxiong.com/map/1788762264959884217.png"
+          },
+          {
+            "id": 388,
+            "name": "Temperance's Testimony",
+            "icon": "https://herobox-img.yingxiong.com/map/1788762290939534014.png"
+          },
+          {
+            "id": 389,
+            "name": "The Tower's Testimony",
+            "icon": "https://herobox-img.yingxiong.com/map/1788762308540477244.png"
+          },
+          {
+            "id": 390,
+            "name": "Tom's Testimony",
+            "icon": "https://herobox-img.yingxiong.com/map/1788762327101926275.png"
+          },
+          {
+            "id": 391,
+            "name": "Jenny Blount's Testimony",
+            "icon": "https://herobox-img.yingxiong.com/map/1788762340829207043.png"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "outer-peaks",
+    "name": "Outer Peaks",
+    "image": "/assets/maps/outer_peaks.png",
+    "imageSize": {
+      "width": 4096,
+      "height": 4096
+    },
+    "markerCount": 31,
+    "imageCount": 25,
+    "legend": [
+      {
+        "type": "Collectibles",
+        "label": "Collectibles",
+        "icon": "https://herobox-img.yingxiong.com/map/1749672600072455391.png",
+        "markers": [
+          {
+            "id": 274,
+            "name": "Broken Relic",
+            "icon": "https://herobox-img.yingxiong.com/map/1765968430918592158.png"
+          }
+        ]
+      },
+      {
+        "type": "Landmarks",
+        "label": "Landmarks",
+        "icon": "https://herobox-img.yingxiong.com/map/1749672609569330275.png",
+        "markers": [
+          {
+            "id": 35,
+            "name": "Teleport Point",
+            "icon": "https://herobox-img.yingxiong.com/map/1749557822886359503.png"
+          },
+          {
+            "id": 280,
+            "name": "Echo of the Spirit Bird",
+            "icon": "https://herobox-img.yingxiong.com/map/1766199602451464010.png"
+          }
+        ]
+      },
+      {
+        "type": "Geniemon",
+        "label": "Geniemon",
+        "icon": "https://herobox-img.yingxiong.com/map/1749562159541539924.png",
+        "markers": [
+          {
+            "id": 42,
+            "name": "Geniemon Spawn Point",
+            "icon": "https://herobox-img.yingxiong.com/map/1749672734516496170.png"
+          }
+        ]
+      },
+      {
+        "type": "Storage Chest",
+        "label": "Storage Chest",
+        "icon": "https://herobox-img.yingxiong.com/map/1749672743841364457.png",
+        "markers": [
+          {
+            "id": 43,
+            "name": "Storage Chest",
+            "icon": "https://herobox-img.yingxiong.com/map/1749566001012138274.png"
+          }
+        ]
+      },
+      {
+        "type": "Collectibles",
+        "label": "Collectibles",
+        "icon": "https://herobox-img.yingxiong.com/map/1749672777020326442.png",
+        "markers": [
+          {
+            "id": 269,
+            "name": "Explorers Certificate",
+            "icon": "https://herobox-img.yingxiong.com/map/1765894260519984691.png"
+          },
+          {
+            "id": 270,
+            "name": "Great Void Rune",
+            "icon": "https://herobox-img.yingxiong.com/map/1765894335012307828.png"
+          },
+          {
+            "id": 343,
+            "name": "Hidden Trail Wanderer",
+            "icon": "https://herobox-img.yingxiong.com/map/1775041833119161519.png"
+          }
+        ]
+      },
+      {
+        "type": "Others",
+        "label": "Others",
+        "icon": "https://herobox-img.yingxiong.com/map/1749672703904257929.png",
+        "markers": [
+          {
+            "id": 63,
+            "name": "Impression Check",
+            "icon": "https://herobox-img.yingxiong.com/map/1766212428224753824.png"
+          }
+        ]
+      },
+      {
+        "type": "阅读物 1.3",
+        "label": "阅读物 1.3",
+        "icon": "https://herobox-img.yingxiong.com/map/1775037924290944511.png",
+        "markers": [
+          {
+            "id": 333,
+            "name": "Training Ground Usage Record",
+            "icon": "https://herobox-img.yingxiong.com/map/1775041214288396334.png"
+          },
+          {
+            "id": 334,
+            "name": "Experimental Records Logbook",
+            "icon": "https://herobox-img.yingxiong.com/map/1775041226336185486.png"
           }
         ]
       }
@@ -1867,123 +2957,6 @@
     ]
   },
   {
-    "id": "outer-peaks",
-    "name": "Outer Peaks",
-    "image": "/assets/maps/outer_peaks.png",
-    "imageSize": {
-      "width": 4096,
-      "height": 4096
-    },
-    "markerCount": 31,
-    "imageCount": 25,
-    "legend": [
-      {
-        "type": "Collectibles",
-        "label": "Collectibles",
-        "icon": "https://herobox-img.yingxiong.com/map/1749672600072455391.png",
-        "markers": [
-          {
-            "id": 274,
-            "name": "Broken Relic",
-            "icon": "https://herobox-img.yingxiong.com/map/1765968430918592158.png"
-          }
-        ]
-      },
-      {
-        "type": "Landmarks",
-        "label": "Landmarks",
-        "icon": "https://herobox-img.yingxiong.com/map/1749672609569330275.png",
-        "markers": [
-          {
-            "id": 35,
-            "name": "Teleport Point",
-            "icon": "https://herobox-img.yingxiong.com/map/1749557822886359503.png"
-          },
-          {
-            "id": 280,
-            "name": "Echo of the Spirit Bird",
-            "icon": "https://herobox-img.yingxiong.com/map/1766199602451464010.png"
-          }
-        ]
-      },
-      {
-        "type": "Geniemon",
-        "label": "Geniemon",
-        "icon": "https://herobox-img.yingxiong.com/map/1749562159541539924.png",
-        "markers": [
-          {
-            "id": 42,
-            "name": "Geniemon Spawn Point",
-            "icon": "https://herobox-img.yingxiong.com/map/1749672734516496170.png"
-          }
-        ]
-      },
-      {
-        "type": "Storage Chest",
-        "label": "Storage Chest",
-        "icon": "https://herobox-img.yingxiong.com/map/1749672743841364457.png",
-        "markers": [
-          {
-            "id": 43,
-            "name": "Storage Chest",
-            "icon": "https://herobox-img.yingxiong.com/map/1749566001012138274.png"
-          }
-        ]
-      },
-      {
-        "type": "Collectibles",
-        "label": "Collectibles",
-        "icon": "https://herobox-img.yingxiong.com/map/1749672777020326442.png",
-        "markers": [
-          {
-            "id": 269,
-            "name": "Explorers Certificate",
-            "icon": "https://herobox-img.yingxiong.com/map/1765894260519984691.png"
-          },
-          {
-            "id": 270,
-            "name": "Great Void Rune",
-            "icon": "https://herobox-img.yingxiong.com/map/1765894335012307828.png"
-          },
-          {
-            "id": 343,
-            "name": "Hidden Trail Wanderer",
-            "icon": "https://herobox-img.yingxiong.com/map/1775041833119161519.png"
-          }
-        ]
-      },
-      {
-        "type": "Others",
-        "label": "Others",
-        "icon": "https://herobox-img.yingxiong.com/map/1749672703904257929.png",
-        "markers": [
-          {
-            "id": 63,
-            "name": "Impression Check",
-            "icon": "https://herobox-img.yingxiong.com/map/1766212428224753824.png"
-          }
-        ]
-      },
-      {
-        "type": "阅读物 1.3",
-        "label": "阅读物 1.3",
-        "icon": "https://herobox-img.yingxiong.com/map/1775037924290944511.png",
-        "markers": [
-          {
-            "id": 333,
-            "name": "Training Ground Usage Record",
-            "icon": "https://herobox-img.yingxiong.com/map/1775041214288396334.png"
-          },
-          {
-            "id": 334,
-            "name": "Experimental Records Logbook",
-            "icon": "https://herobox-img.yingxiong.com/map/1775041226336185486.png"
-          }
-        ]
-      }
-    ]
-  },
-  {
     "id": "taixu-mausoleum",
     "name": "Taixu Mausoleum",
     "image": "/assets/maps/taixu_mausoleum.png",
@@ -2106,391 +3079,6 @@
             "id": 63,
             "name": "Impression Check",
             "icon": "https://herobox-img.yingxiong.com/map/1766212428224753824.png"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "bloomfield-station",
-    "name": "Bloomfield Station",
-    "image": "/assets/maps/bloomfield_station.png",
-    "imageSize": {
-      "width": 4096,
-      "height": 4096
-    },
-    "markerCount": 147,
-    "imageCount": 136,
-    "legend": [
-      {
-        "type": "Collectibles",
-        "label": "Collectibles",
-        "icon": "https://herobox-img.yingxiong.com/map/1749672600072455391.png",
-        "markers": [
-          {
-            "id": 26,
-            "name": "Snowcap",
-            "icon": "https://herobox-img.yingxiong.com/map/1749555951565856688.png"
-          },
-          {
-            "id": 30,
-            "name": "Indigofly",
-            "icon": "https://herobox-img.yingxiong.com/map/1749556044734397730.png"
-          },
-          {
-            "id": 34,
-            "name": "Bottled Lunar Sap",
-            "icon": "https://herobox-img.yingxiong.com/map/1749556572625658617.png"
-          }
-        ]
-      },
-      {
-        "type": "Landmarks",
-        "label": "Landmarks",
-        "icon": "https://herobox-img.yingxiong.com/map/1749672609569330275.png",
-        "markers": [
-          {
-            "id": 35,
-            "name": "Teleport Point",
-            "icon": "https://herobox-img.yingxiong.com/map/1749557822886359503.png"
-          },
-          {
-            "id": 36,
-            "name": "Nightmare Echo",
-            "icon": "https://herobox-img.yingxiong.com/map/1749557928850108966.png"
-          },
-          {
-            "id": 38,
-            "name": "Fishing Spot",
-            "icon": "https://herobox-img.yingxiong.com/map/1749561882699685405.png"
-          },
-          {
-            "id": 359,
-            "name": "Ice Lake City Outskirts",
-            "icon": "https://herobox-img.yingxiong.com/map/1780009446832140701.jpg"
-          },
-          {
-            "id": 360,
-            "name": "Lower Ironworks",
-            "icon": "https://herobox-img.yingxiong.com/map/1780009959199454252.jpg"
-          },
-          {
-            "id": 370,
-            "name": "Underground Rail Line",
-            "icon": "https://herobox-img.yingxiong.com/map/1780012271556154795.jpg"
-          }
-        ]
-      },
-      {
-        "type": "Geniemon",
-        "label": "Geniemon",
-        "icon": "https://herobox-img.yingxiong.com/map/1749562159541539924.png",
-        "markers": [
-          {
-            "id": 42,
-            "name": "Geniemon Spawn Point",
-            "icon": "https://herobox-img.yingxiong.com/map/1749672734516496170.png"
-          }
-        ]
-      },
-      {
-        "type": "Storage Chest",
-        "label": "Storage Chest",
-        "icon": "https://herobox-img.yingxiong.com/map/1749672743841364457.png",
-        "markers": [
-          {
-            "id": 43,
-            "name": "Storage Chest",
-            "icon": "https://herobox-img.yingxiong.com/map/1749566001012138274.png"
-          },
-          {
-            "id": 44,
-            "name": "Treasure Map Chest",
-            "icon": "https://herobox-img.yingxiong.com/map/1749560145785106563.png"
-          }
-        ]
-      },
-      {
-        "type": "Collectibles",
-        "label": "Collectibles",
-        "icon": "https://herobox-img.yingxiong.com/map/1749672777020326442.png",
-        "markers": [
-          {
-            "id": 47,
-            "name": "Explorer’s Proof: Ice Lake City",
-            "icon": "https://herobox-img.yingxiong.com/map/1749560835499262022.png"
-          },
-          {
-            "id": 50,
-            "name": "Pan Spirit",
-            "icon": "https://herobox-img.yingxiong.com/map/1749562536811567798.png"
-          }
-        ]
-      },
-      {
-        "type": "NPC",
-        "label": "NPC",
-        "icon": "https://herobox-img.yingxiong.com/map/1749672792691326823.png",
-        "markers": [
-          {
-            "id": 51,
-            "name": "NPC",
-            "icon": "https://herobox-img.yingxiong.com/map/1749562234816683808.png"
-          }
-        ]
-      },
-      {
-        "type": "Unexpected Events/Dispatch",
-        "label": "Unexpected Events/Dispatch",
-        "icon": "https://herobox-img.yingxiong.com/map/1765893914674126617.png",
-        "markers": [
-          {
-            "id": 234,
-            "name": "Rescue the Demon Spirit",
-            "icon": "https://herobox-img.yingxiong.com/map/1766205804498307101.png"
-          },
-          {
-            "id": 252,
-            "name": "An Explorer's Greatest Treasure!",
-            "icon": "https://herobox-img.yingxiong.com/map/1766205590983119237.png"
-          },
-          {
-            "id": 371,
-            "name": "Memories of Baihua Station",
-            "icon": "https://herobox-img.yingxiong.com/map/1780019817551925464.png"
-          },
-          {
-            "id": 372,
-            "name": "Missing Item Notice",
-            "icon": "https://herobox-img.yingxiong.com/map/1780021176703736843.png"
-          },
-          {
-            "id": 373,
-            "name": "Track Maintenance",
-            "icon": "https://herobox-img.yingxiong.com/map/1780296981863468871.png"
-          }
-        ]
-      },
-      {
-        "type": "Challenge",
-        "label": "Challenge",
-        "icon": "https://herobox-img.yingxiong.com/map/1749672639131620419.png",
-        "markers": [
-          {
-            "id": 56,
-            "name": "Parkour Challenge",
-            "icon": "https://herobox-img.yingxiong.com/map/1749672644630282670.png"
-          },
-          {
-            "id": 57,
-            "name": "Shooting Challenge",
-            "icon": "https://herobox-img.yingxiong.com/map/1749672672913484663.png"
-          }
-        ]
-      },
-      {
-        "type": "Others",
-        "label": "Others",
-        "icon": "https://herobox-img.yingxiong.com/map/1749672703904257929.png",
-        "markers": [
-          {
-            "id": 63,
-            "name": "Impression Check",
-            "icon": "https://herobox-img.yingxiong.com/map/1766212428224753824.png"
-          },
-          {
-            "id": 282,
-            "name": "Side Quest",
-            "icon": "https://herobox-img.yingxiong.com/map/1766206498223250888.png"
-          }
-        ]
-      },
-      {
-        "type": "阅读物1.4",
-        "label": "阅读物1.4",
-        "icon": "https://herobox-img.yingxiong.com/map/1780011776440245807.png",
-        "markers": [
-          {
-            "id": 362,
-            "name": "Baihua Station: Part III",
-            "icon": "https://herobox-img.yingxiong.com/map/1780010768490970436.jpg"
-          },
-          {
-            "id": 363,
-            "name": "Baihua Station: Part IV",
-            "icon": "https://herobox-img.yingxiong.com/map/1780010727658685377.jpg"
-          },
-          {
-            "id": 364,
-            "name": "Baihua Station: Part V",
-            "icon": "https://herobox-img.yingxiong.com/map/1780010791130142866.jpg"
-          },
-          {
-            "id": 365,
-            "name": "Baihua Station Recruitment Bulletin",
-            "icon": "https://herobox-img.yingxiong.com/map/1780010324185904081.jpg"
-          },
-          {
-            "id": 366,
-            "name": "Steam Whistle Salon Code of Conduct",
-            "icon": "https://herobox-img.yingxiong.com/map/1780010874166596165.jpg"
-          },
-          {
-            "id": 367,
-            "name": "Stationmaster Eisenbahn's Daily Behavior Analysis Report",
-            "icon": "https://herobox-img.yingxiong.com/map/1780011218116493511.jpg"
-          },
-          {
-            "id": 368,
-            "name": "Sacred Records",
-            "icon": "https://herobox-img.yingxiong.com/map/1780011238838614840.jpg"
-          },
-          {
-            "id": 369,
-            "name": "The Invincible Great Train Stationmaster — Part I",
-            "icon": "https://herobox-img.yingxiong.com/map/1780011281615376951.jpg"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "ironworks",
-    "name": "Ironworks",
-    "image": "/assets/maps/ironworks_1.png",
-    "imageSize": {
-      "width": 4096,
-      "height": 4096
-    },
-    "markerCount": 89,
-    "imageCount": 79,
-    "legend": [
-      {
-        "type": "Collectibles",
-        "label": "Collectibles",
-        "icon": "https://herobox-img.yingxiong.com/map/1749672600072455391.png",
-        "markers": [
-          {
-            "id": 33,
-            "name": "Portable Power Supply Device",
-            "icon": "https://herobox-img.yingxiong.com/map/1749556099909291238.png"
-          },
-          {
-            "id": 34,
-            "name": "Bottled Lunar Sap",
-            "icon": "https://herobox-img.yingxiong.com/map/1749556572625658617.png"
-          }
-        ]
-      },
-      {
-        "type": "Landmarks",
-        "label": "Landmarks",
-        "icon": "https://herobox-img.yingxiong.com/map/1749672609569330275.png",
-        "markers": [
-          {
-            "id": 35,
-            "name": "Teleport Point",
-            "icon": "https://herobox-img.yingxiong.com/map/1749557822886359503.png"
-          },
-          {
-            "id": 374,
-            "name": "Station Forecourt Dome",
-            "icon": "https://herobox-img.yingxiong.com/map/1780035091884194779.jpg"
-          },
-          {
-            "id": 375,
-            "name": "Upper Ironworks",
-            "icon": "https://herobox-img.yingxiong.com/map/1780035133542268918.jpg"
-          },
-          {
-            "id": 376,
-            "name": "Station Concourse",
-            "icon": "https://herobox-img.yingxiong.com/map/1780035148516713302.jpg"
-          }
-        ]
-      },
-      {
-        "type": "Geniemon",
-        "label": "Geniemon",
-        "icon": "https://herobox-img.yingxiong.com/map/1749562159541539924.png",
-        "markers": [
-          {
-            "id": 42,
-            "name": "Geniemon Spawn Point",
-            "icon": "https://herobox-img.yingxiong.com/map/1749672734516496170.png"
-          }
-        ]
-      },
-      {
-        "type": "Storage Chest",
-        "label": "Storage Chest",
-        "icon": "https://herobox-img.yingxiong.com/map/1749672743841364457.png",
-        "markers": [
-          {
-            "id": 43,
-            "name": "Storage Chest",
-            "icon": "https://herobox-img.yingxiong.com/map/1749566001012138274.png"
-          },
-          {
-            "id": 44,
-            "name": "Treasure Map Chest",
-            "icon": "https://herobox-img.yingxiong.com/map/1749560145785106563.png"
-          }
-        ]
-      },
-      {
-        "type": "Collectibles",
-        "label": "Collectibles",
-        "icon": "https://herobox-img.yingxiong.com/map/1749672777020326442.png",
-        "markers": [
-          {
-            "id": 47,
-            "name": "Explorer’s Proof: Ice Lake City",
-            "icon": "https://herobox-img.yingxiong.com/map/1749560835499262022.png"
-          },
-          {
-            "id": 50,
-            "name": "Pan Spirit",
-            "icon": "https://herobox-img.yingxiong.com/map/1749562536811567798.png"
-          }
-        ]
-      },
-      {
-        "type": "NPC",
-        "label": "NPC",
-        "icon": "https://herobox-img.yingxiong.com/map/1749672792691326823.png",
-        "markers": [
-          {
-            "id": 51,
-            "name": "NPC",
-            "icon": "https://herobox-img.yingxiong.com/map/1749562234816683808.png"
-          }
-        ]
-      },
-      {
-        "type": "阅读物1.4",
-        "label": "阅读物1.4",
-        "icon": "https://herobox-img.yingxiong.com/map/1780011776440245807.png",
-        "markers": [
-          {
-            "id": 377,
-            "name": "Baihua Station: Part I",
-            "icon": "https://herobox-img.yingxiong.com/map/1780037360908682606.jpg"
-          },
-          {
-            "id": 378,
-            "name": "Baihua Station: Part II",
-            "icon": "https://herobox-img.yingxiong.com/map/1780037565376298798.png"
-          },
-          {
-            "id": 379,
-            "name": "The Former Owner",
-            "icon": "https://herobox-img.yingxiong.com/map/1780038316277643248.jpg"
-          },
-          {
-            "id": 380,
-            "name": "Baihua Station Workers' Menu",
-            "icon": "https://herobox-img.yingxiong.com/map/1780038356986804777.jpg"
           }
         ]
       }

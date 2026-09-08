@@ -6610,7 +6610,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Convert_For_WP"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": null,
@@ -6832,7 +6834,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Convert_For_WP"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": null,
@@ -7054,7 +7058,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Convert_For_WP"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": null,
@@ -7276,7 +7282,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Convert_For_WP"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": null,
@@ -7498,7 +7506,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Convert_For_WP"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": null,
@@ -7720,7 +7730,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Convert_For_WP"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": null,
@@ -7959,7 +7971,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": null,
@@ -9105,6 +9119,120 @@
       "Batch": true,
       "DraftId": 151316,
       "ProductId": 51316,
+      "ProductNum": 1,
+      "ProductType": "Mod",
+      "Rarity": 5,
+      "ReleaseVersion": 100,
+      "ResourceToCoinType": 102,
+      "ResourceValue": 50,
+      "ShowInBag": 1,
+      "ShowInDraftArchive": true,
+      "Sound": "SOUND_ITEM_PAPER",
+      "Time": 30
+    }
+  },
+  {
+    "id": "draft-151317",
+    "draftId": 151317,
+    "productType": "Mod",
+    "productId": 51317,
+    "productQuantity": 1,
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Draft/T_Draft_Mod_Sphinx01_Green.T_Draft_Mod_Sphinx01_Green",
+      "publicPath": "/assets/items/drafts/T_Draft_Mod_Sphinx01_Green.png",
+      "placeholderPath": null
+    },
+    "product": {
+      "type": "Mod",
+      "id": 51317,
+      "quantity": 1,
+      "sourceCategory": "mods",
+      "href": "/items/mods/mods-51317",
+      "rarity": 5,
+      "names": {
+        "DE": "Overflow – Finesse",
+        "EN": "Overflow – Finesse",
+        "ES": "Overflow – Finesse",
+        "FR": "Surabondance · Adresse",
+        "JP": "盈満・巧妙",
+        "KR": "오버차지·묘수",
+        "TC": "充盈·巧力"
+      },
+      "descriptions": {
+        "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+        "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+        "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+        "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+        "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+        "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+        "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+      },
+      "icon": {
+        "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Sphinx01.T_Mod_Sphinx01",
+        "publicPath": "/assets/items/mods/T_Mod_Sphinx01.png",
+        "placeholderPath": "/marker-default.svg"
+      },
+      "metadata": {}
+    },
+    "ingredients": [
+      {
+        "type": "Mod",
+        "id": 41317,
+        "quantity": 5,
+        "sourceCategory": "mods",
+        "href": "/items/mods/mods-41317",
+        "rarity": 4,
+        "names": {
+          "DE": "Overflow – Finesse",
+          "EN": "Overflow – Finesse",
+          "ES": "Overflow – Finesse",
+          "FR": "Surabondance · Adresse",
+          "JP": "盈満・巧妙",
+          "KR": "오버차지·묘수",
+          "TC": "充盈·巧力"
+        },
+        "descriptions": {
+          "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+          "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+          "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+          "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+          "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+          "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+          "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Sphinx01.T_Mod_Sphinx01",
+          "publicPath": "/assets/items/mods/T_Mod_Sphinx01.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {}
+      }
+    ],
+    "crafting": {
+      "durationSec": 30,
+      "batch": true,
+      "rarity": 5,
+      "foundryCostByCoinType": {
+        "101": 50000
+      },
+      "resourceToCoinType": 102,
+      "resourceValue": 50,
+      "accessKeys": [
+        "Shop_Main",
+        "Forging",
+        "MonsterStrong",
+        "Shop_Rouge",
+        "Walnut"
+      ],
+      "releaseVersion": 100,
+      "openVersion": null,
+      "showInBag": 1,
+      "showInDraftArchive": true
+    },
+    "fields": {
+      "Batch": true,
+      "DraftId": 151317,
+      "ProductId": 51317,
       "ProductNum": 1,
       "ProductType": "Mod",
       "Rarity": 5,
@@ -14744,11 +14872,6 @@
       "resourceToCoinType": 102,
       "resourceValue": 50,
       "accessKeys": [
-        "Shop_Main",
-        "Forging",
-        "MonsterStrong",
-        "Shop_Rouge",
-        "Walnut",
         "Dungeon_ModTab_70"
       ],
       "releaseVersion": 100,
@@ -15725,11 +15848,6 @@
       "resourceToCoinType": 102,
       "resourceValue": 50,
       "accessKeys": [
-        "Shop_Main",
-        "Forging",
-        "MonsterStrong",
-        "Shop_Rouge",
-        "Walnut",
         "Dungeon_ModTab_70"
       ],
       "releaseVersion": 100,
@@ -16210,6 +16328,302 @@
     }
   },
   {
+    "id": "draft-151735",
+    "draftId": 151735,
+    "productType": "Mod",
+    "productId": 51735,
+    "productQuantity": 1,
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Draft/T_Draft_Mod_Featheredsnake01_Red.T_Draft_Mod_Featheredsnake01_Red",
+      "publicPath": "/assets/items/drafts/T_Draft_Mod_Featheredsnake01_Red.png",
+      "placeholderPath": null
+    },
+    "product": {
+      "type": "Mod",
+      "id": 51735,
+      "quantity": 1,
+      "sourceCategory": "mods",
+      "href": "/items/mods/mods-51735",
+      "rarity": 5,
+      "names": {
+        "DE": "Willenskraft",
+        "EN": "Resolve",
+        "ES": "Voluntad",
+        "FR": "Ténacité",
+        "JP": "背水",
+        "KR": "필사",
+        "TC": "背水"
+      },
+      "descriptions": {
+        "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+        "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+        "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+        "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+        "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+        "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+        "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+      },
+      "icon": {
+        "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_FeatheredSnake01_Red.T_Mod_FeatheredSnake01_Red",
+        "publicPath": "/assets/items/mods/T_Mod_FeatheredSnake01_Red.png",
+        "placeholderPath": "/marker-default.svg"
+      },
+      "metadata": {}
+    },
+    "ingredients": [
+      {
+        "type": "Mod",
+        "id": 41735,
+        "quantity": 5,
+        "sourceCategory": "mods",
+        "href": "/items/mods/mods-41735",
+        "rarity": 4,
+        "names": {
+          "DE": "Willenskraft",
+          "EN": "Resolve",
+          "ES": "Voluntad",
+          "FR": "Ténacité",
+          "JP": "背水",
+          "KR": "필사",
+          "TC": "背水"
+        },
+        "descriptions": {
+          "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+          "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+          "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+          "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+          "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+          "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+          "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_FeatheredSnake01_Red.T_Mod_FeatheredSnake01_Red",
+          "publicPath": "/assets/items/mods/T_Mod_FeatheredSnake01_Red.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {}
+      },
+      {
+        "type": "Resource",
+        "id": 201,
+        "quantity": 2,
+        "sourceCategory": "resources",
+        "href": "/items/resources/resources-201",
+        "rarity": 5,
+        "names": {
+          "DE": "Spurwechselmodul",
+          "EN": "Track-Shift Module",
+          "ES": "Módulo de cambio de afinidad",
+          "FR": "Module de transfert d’affinité",
+          "JP": "移転モジュール",
+          "KR": "페이즈 시프트 모듈",
+          "TC": "移轉模組"
+        },
+        "descriptions": {
+          "DE": "Aus dem Hyperboreischen Imperium: ein Präzisionsgerät, das einem Werkzeugkasten ähnelt. Sobald die Zahnräder anlaufen, wird der darin platzierte Dämonenkeil so angepasst, dass er besser zum Zustand seines Trägers passt. Da es direkt am Anwender ansetzt, arbeitet dieses Modell besonders präzise, und kann nach der Anwendung die Fähigkeiten des Nutzers weiter steigern.",
+          "EN": "Produced from the Hyperborean Empire, a precision instrument very similar to a toolbox. When its gears start to move, the Demon Wedge placed inside will be modified to better suit the user's state. Because it acts directly on the user, this style has higher precision, and after use, it can further enhance the user's abilities.",
+          "ES": "Se trata de un instrumento de precisión procedente del Imperio Hiperbóreo que recuerda mucho a una caja de herramientas. Cuando sus engranajes comienzan a girar, la Cuña Demoníaca colocada en su interior se modifica para adaptarse al usuario. Al actuar directamente sobre el portador, alcanza un mayor nivel de precisión y potencia aún más las capacidades del usuario.",
+          "FR": "Dispositif de précision conçu dans l’Empire Hyperboréen, ressemblant à une boîte à outils. Lorsqu’il s’active, il ajuste un Sceau démoniaque pour mieux correspondre à son porteur. Agissant directement sur lui, il permet d’optimiser ses capacités.",
+          "JP": "ヒュペリア帝国製の精密機械。見た目はツールボックスのようだが、その内部には魔の楔が仕込まれており、歯車が稼働することで、使用者に最適な状態へと調整される。使用者に直接作用するため、非常に高い精密性を誇り、使用者の能力がさらに向上する。",
+          "KR": "휘페르보레아 제국의 정밀 기기로 공구상자와 닮았다. 톱니바퀴가 돌아가기 시작하면 악마의 쐐기가 사용자에게 적합한 상태로 바뀐다. 이런 모델은 사용자에게 직접적으로 작용하기에 더 높은 정밀도를 보유하고 있으며, 사용 시 사용자의 능력을 한 단계 더 상승시킨다.",
+          "TC": "出自海伯利亞帝國，一種與工具箱十分相像的精密儀器，當它的齒輪開始運轉，放置在裡面的魔之楔將被修改成為更適應使用者的狀態，由於直接作用於使用者本身，這種款式擁有更高的精密度，使用後可進一步提升使用者的能力。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resource_PolarityStyle.T_Resource_PolarityStyle",
+          "publicPath": "/assets/items/resources/T_Resource_PolarityStyle.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {
+          "resourceSType": "Polarization"
+        }
+      }
+    ],
+    "crafting": {
+      "durationSec": 30,
+      "batch": true,
+      "rarity": 5,
+      "foundryCostByCoinType": {
+        "101": 50000
+      },
+      "resourceToCoinType": 102,
+      "resourceValue": 50,
+      "accessKeys": [
+        "Shop_Main",
+        "Forging",
+        "MonsterStrong",
+        "Shop_Rouge",
+        "Walnut"
+      ],
+      "releaseVersion": 100,
+      "openVersion": null,
+      "showInBag": 1,
+      "showInDraftArchive": true
+    },
+    "fields": {
+      "Batch": true,
+      "DraftId": 151735,
+      "ProductId": 51735,
+      "ProductNum": 1,
+      "ProductType": "Mod",
+      "Rarity": 5,
+      "ReleaseVersion": 100,
+      "ResourceToCoinType": 102,
+      "ResourceValue": 50,
+      "ShowInBag": 1,
+      "ShowInDraftArchive": true,
+      "Sound": "SOUND_ITEM_PAPER",
+      "Time": 30
+    }
+  },
+  {
+    "id": "draft-151736",
+    "draftId": 151736,
+    "productType": "Mod",
+    "productId": 51736,
+    "productQuantity": 1,
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Draft/T_Draft_Mod_Featheredsnake01_Red.T_Draft_Mod_Featheredsnake01_Red",
+      "publicPath": "/assets/items/drafts/T_Draft_Mod_Featheredsnake01_Red.png",
+      "placeholderPath": null
+    },
+    "product": {
+      "type": "Mod",
+      "id": 51736,
+      "quantity": 1,
+      "sourceCategory": "mods",
+      "href": "/items/mods/mods-51736",
+      "rarity": 5,
+      "names": {
+        "DE": "Spektrum",
+        "EN": "Refinement",
+        "ES": "Poder",
+        "FR": "Raffinement",
+        "JP": "精錬",
+        "KR": "정련",
+        "TC": "精煉"
+      },
+      "descriptions": {
+        "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+        "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+        "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+        "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+        "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+        "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+        "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+      },
+      "icon": {
+        "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_FeatheredSnake01_Red.T_Mod_FeatheredSnake01_Red",
+        "publicPath": "/assets/items/mods/T_Mod_FeatheredSnake01_Red.png",
+        "placeholderPath": "/marker-default.svg"
+      },
+      "metadata": {}
+    },
+    "ingredients": [
+      {
+        "type": "Mod",
+        "id": 41736,
+        "quantity": 5,
+        "sourceCategory": "mods",
+        "href": "/items/mods/mods-41736",
+        "rarity": 4,
+        "names": {
+          "DE": "Spektrum",
+          "EN": "Refinement",
+          "ES": "Poder",
+          "FR": "Raffinement",
+          "JP": "精錬",
+          "KR": "정련",
+          "TC": "精煉"
+        },
+        "descriptions": {
+          "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+          "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+          "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+          "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+          "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+          "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+          "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_FeatheredSnake01_Red.T_Mod_FeatheredSnake01_Red",
+          "publicPath": "/assets/items/mods/T_Mod_FeatheredSnake01_Red.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {}
+      },
+      {
+        "type": "Resource",
+        "id": 201,
+        "quantity": 2,
+        "sourceCategory": "resources",
+        "href": "/items/resources/resources-201",
+        "rarity": 5,
+        "names": {
+          "DE": "Spurwechselmodul",
+          "EN": "Track-Shift Module",
+          "ES": "Módulo de cambio de afinidad",
+          "FR": "Module de transfert d’affinité",
+          "JP": "移転モジュール",
+          "KR": "페이즈 시프트 모듈",
+          "TC": "移轉模組"
+        },
+        "descriptions": {
+          "DE": "Aus dem Hyperboreischen Imperium: ein Präzisionsgerät, das einem Werkzeugkasten ähnelt. Sobald die Zahnräder anlaufen, wird der darin platzierte Dämonenkeil so angepasst, dass er besser zum Zustand seines Trägers passt. Da es direkt am Anwender ansetzt, arbeitet dieses Modell besonders präzise, und kann nach der Anwendung die Fähigkeiten des Nutzers weiter steigern.",
+          "EN": "Produced from the Hyperborean Empire, a precision instrument very similar to a toolbox. When its gears start to move, the Demon Wedge placed inside will be modified to better suit the user's state. Because it acts directly on the user, this style has higher precision, and after use, it can further enhance the user's abilities.",
+          "ES": "Se trata de un instrumento de precisión procedente del Imperio Hiperbóreo que recuerda mucho a una caja de herramientas. Cuando sus engranajes comienzan a girar, la Cuña Demoníaca colocada en su interior se modifica para adaptarse al usuario. Al actuar directamente sobre el portador, alcanza un mayor nivel de precisión y potencia aún más las capacidades del usuario.",
+          "FR": "Dispositif de précision conçu dans l’Empire Hyperboréen, ressemblant à une boîte à outils. Lorsqu’il s’active, il ajuste un Sceau démoniaque pour mieux correspondre à son porteur. Agissant directement sur lui, il permet d’optimiser ses capacités.",
+          "JP": "ヒュペリア帝国製の精密機械。見た目はツールボックスのようだが、その内部には魔の楔が仕込まれており、歯車が稼働することで、使用者に最適な状態へと調整される。使用者に直接作用するため、非常に高い精密性を誇り、使用者の能力がさらに向上する。",
+          "KR": "휘페르보레아 제국의 정밀 기기로 공구상자와 닮았다. 톱니바퀴가 돌아가기 시작하면 악마의 쐐기가 사용자에게 적합한 상태로 바뀐다. 이런 모델은 사용자에게 직접적으로 작용하기에 더 높은 정밀도를 보유하고 있으며, 사용 시 사용자의 능력을 한 단계 더 상승시킨다.",
+          "TC": "出自海伯利亞帝國，一種與工具箱十分相像的精密儀器，當它的齒輪開始運轉，放置在裡面的魔之楔將被修改成為更適應使用者的狀態，由於直接作用於使用者本身，這種款式擁有更高的精密度，使用後可進一步提升使用者的能力。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resource_PolarityStyle.T_Resource_PolarityStyle",
+          "publicPath": "/assets/items/resources/T_Resource_PolarityStyle.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {
+          "resourceSType": "Polarization"
+        }
+      }
+    ],
+    "crafting": {
+      "durationSec": 30,
+      "batch": true,
+      "rarity": 5,
+      "foundryCostByCoinType": {
+        "101": 50000
+      },
+      "resourceToCoinType": 102,
+      "resourceValue": 50,
+      "accessKeys": [
+        "Shop_Main",
+        "Forging",
+        "MonsterStrong",
+        "Shop_Rouge",
+        "Walnut"
+      ],
+      "releaseVersion": 100,
+      "openVersion": null,
+      "showInBag": 1,
+      "showInDraftArchive": true
+    },
+    "fields": {
+      "Batch": true,
+      "DraftId": 151736,
+      "ProductId": 51736,
+      "ProductNum": 1,
+      "ProductType": "Mod",
+      "Rarity": 5,
+      "ReleaseVersion": 100,
+      "ResourceToCoinType": 102,
+      "ResourceValue": 50,
+      "ShowInBag": 1,
+      "ShowInDraftArchive": true,
+      "Sound": "SOUND_ITEM_PAPER",
+      "Time": 30
+    }
+  },
+  {
     "id": "draft-151737",
     "draftId": 151737,
     "productType": "Mod",
@@ -16300,8 +16714,7 @@
         "Forging",
         "MonsterStrong",
         "Shop_Rouge",
-        "Walnut",
-        "Dungeon_ModTab_70"
+        "Walnut"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -16312,6 +16725,116 @@
       "Batch": true,
       "DraftId": 151737,
       "ProductId": 51737,
+      "ProductNum": 1,
+      "ProductType": "Mod",
+      "Rarity": 5,
+      "ReleaseVersion": 100,
+      "ResourceToCoinType": 102,
+      "ResourceValue": 50,
+      "ShowInBag": 1,
+      "ShowInDraftArchive": true,
+      "Sound": "SOUND_ITEM_PAPER",
+      "Time": 30
+    }
+  },
+  {
+    "id": "draft-151738",
+    "draftId": 151738,
+    "productType": "Mod",
+    "productId": 51738,
+    "productQuantity": 1,
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Draft/T_Draft_Mod_Mephisto01_Red.T_Draft_Mod_Mephisto01_Red",
+      "publicPath": "/assets/items/drafts/T_Draft_Mod_Mephisto01_Red.png",
+      "placeholderPath": null
+    },
+    "product": {
+      "type": "Mod",
+      "id": 51738,
+      "quantity": 1,
+      "sourceCategory": "mods",
+      "href": "/items/mods/mods-51738",
+      "rarity": 5,
+      "names": {
+        "DE": "Nirvana – Volition",
+        "EN": "Nirvana – Volition",
+        "ES": "Nirvana – Volition",
+        "FR": "Nirvana · Décision",
+        "JP": "涅槃・断決",
+        "KR": "환생·결단",
+        "TC": "涅槃·決斷"
+      },
+      "descriptions": {
+        "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+        "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+        "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+        "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+        "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+        "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+        "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+      },
+      "icon": {
+        "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Mephisto01_Red.T_Mod_Mephisto01_Red",
+        "publicPath": "/assets/items/mods/T_Mod_Mephisto01_Red.png",
+        "placeholderPath": "/marker-default.svg"
+      },
+      "metadata": {}
+    },
+    "ingredients": [
+      {
+        "type": "Mod",
+        "id": 41738,
+        "quantity": 5,
+        "sourceCategory": "mods",
+        "href": "/items/mods/mods-41738",
+        "rarity": 4,
+        "names": {
+          "DE": "Nirvana – Volition",
+          "EN": "Nirvana – Volition",
+          "ES": "Nirvana – Volition",
+          "FR": "Nirvana · Décision",
+          "JP": "涅槃・断決",
+          "KR": "환생·결단",
+          "TC": "涅槃·決斷"
+        },
+        "descriptions": {
+          "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+          "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+          "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+          "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+          "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+          "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+          "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Mephisto01_Red.T_Mod_Mephisto01_Red",
+          "publicPath": "/assets/items/mods/T_Mod_Mephisto01_Red.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {}
+      }
+    ],
+    "crafting": {
+      "durationSec": 30,
+      "batch": true,
+      "rarity": 5,
+      "foundryCostByCoinType": {
+        "101": 50000
+      },
+      "resourceToCoinType": 102,
+      "resourceValue": 50,
+      "accessKeys": [
+        "Dungeon_ModTab_70"
+      ],
+      "releaseVersion": 100,
+      "openVersion": null,
+      "showInBag": 1,
+      "showInDraftArchive": true
+    },
+    "fields": {
+      "Batch": true,
+      "DraftId": 151738,
+      "ProductId": 51738,
       "ProductNum": 1,
       "ProductType": "Mod",
       "Rarity": 5,
@@ -17163,11 +17686,6 @@
       "resourceToCoinType": 102,
       "resourceValue": 50,
       "accessKeys": [
-        "Shop_Main",
-        "Forging",
-        "MonsterStrong",
-        "Shop_Rouge",
-        "Walnut",
         "Dungeon_ModTab_70"
       ],
       "releaseVersion": 100,
@@ -18144,11 +18662,6 @@
       "resourceToCoinType": 102,
       "resourceValue": 50,
       "accessKeys": [
-        "Shop_Main",
-        "Forging",
-        "MonsterStrong",
-        "Shop_Rouge",
-        "Walnut",
         "Dungeon_ModTab_70"
       ],
       "releaseVersion": 100,
@@ -19015,8 +19528,7 @@
         "Forging",
         "MonsterStrong",
         "Shop_Rouge",
-        "Walnut",
-        "Dungeon_ModTab_70"
+        "Walnut"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -19027,6 +19539,116 @@
       "Batch": true,
       "DraftId": 151767,
       "ProductId": 51767,
+      "ProductNum": 1,
+      "ProductType": "Mod",
+      "Rarity": 5,
+      "ReleaseVersion": 100,
+      "ResourceToCoinType": 102,
+      "ResourceValue": 50,
+      "ShowInBag": 1,
+      "ShowInDraftArchive": true,
+      "Sound": "SOUND_ITEM_PAPER",
+      "Time": 30
+    }
+  },
+  {
+    "id": "draft-151768",
+    "draftId": 151768,
+    "productType": "Mod",
+    "productId": 51768,
+    "productQuantity": 1,
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Draft/T_Draft_Mod_Mephisto01_Orange.T_Draft_Mod_Mephisto01_Orange",
+      "publicPath": "/assets/items/drafts/T_Draft_Mod_Mephisto01_Orange.png",
+      "placeholderPath": null
+    },
+    "product": {
+      "type": "Mod",
+      "id": 51768,
+      "quantity": 1,
+      "sourceCategory": "mods",
+      "href": "/items/mods/mods-51768",
+      "rarity": 5,
+      "names": {
+        "DE": "Blaze – Volition",
+        "EN": "Blaze – Volition",
+        "ES": "Blaze – Volition",
+        "FR": "Ardeur · Décision",
+        "JP": "灼熱・断決",
+        "KR": "작열·결단",
+        "TC": "熾灼·決斷"
+      },
+      "descriptions": {
+        "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+        "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+        "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+        "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+        "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+        "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+        "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+      },
+      "icon": {
+        "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Mephisto01_Orange.T_Mod_Mephisto01_Orange",
+        "publicPath": "/assets/items/mods/T_Mod_Mephisto01_Orange.png",
+        "placeholderPath": "/marker-default.svg"
+      },
+      "metadata": {}
+    },
+    "ingredients": [
+      {
+        "type": "Mod",
+        "id": 41768,
+        "quantity": 5,
+        "sourceCategory": "mods",
+        "href": "/items/mods/mods-41768",
+        "rarity": 4,
+        "names": {
+          "DE": "Blaze – Volition",
+          "EN": "Blaze – Volition",
+          "ES": "Blaze – Volition",
+          "FR": "Ardeur · Décision",
+          "JP": "灼熱・断決",
+          "KR": "작열·결단",
+          "TC": "熾灼·決斷"
+        },
+        "descriptions": {
+          "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+          "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+          "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+          "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+          "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+          "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+          "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Mephisto01_Orange.T_Mod_Mephisto01_Orange",
+          "publicPath": "/assets/items/mods/T_Mod_Mephisto01_Orange.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {}
+      }
+    ],
+    "crafting": {
+      "durationSec": 30,
+      "batch": true,
+      "rarity": 5,
+      "foundryCostByCoinType": {
+        "101": 50000
+      },
+      "resourceToCoinType": 102,
+      "resourceValue": 50,
+      "accessKeys": [
+        "Dungeon_ModTab_70"
+      ],
+      "releaseVersion": 100,
+      "openVersion": null,
+      "showInBag": 1,
+      "showInDraftArchive": true
+    },
+    "fields": {
+      "Batch": true,
+      "DraftId": 151768,
+      "ProductId": 51768,
       "ProductNum": 1,
       "ProductType": "Mod",
       "Rarity": 5,
@@ -20864,6 +21486,120 @@
     }
   },
   {
+    "id": "draft-151932",
+    "draftId": 151932,
+    "productType": "Mod",
+    "productId": 51932,
+    "productQuantity": 1,
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Draft/T_Draft_Mod_Ifrit01_Red.T_Draft_Mod_Ifrit01_Red",
+      "publicPath": "/assets/items/drafts/T_Draft_Mod_Ifrit01_Red.png",
+      "placeholderPath": null
+    },
+    "product": {
+      "type": "Mod",
+      "id": 51932,
+      "quantity": 1,
+      "sourceCategory": "mods",
+      "href": "/items/mods/mods-51932",
+      "rarity": 5,
+      "names": {
+        "DE": "Inferno Disruption",
+        "EN": "Inferno Disruption",
+        "ES": "Inferno Disruption",
+        "FR": "Désordre infernal",
+        "JP": "烈火乱舞",
+        "KR": "화염 교란",
+        "TC": "焚炎紊亂"
+      },
+      "descriptions": {
+        "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+        "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+        "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+        "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+        "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+        "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+        "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+      },
+      "icon": {
+        "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Ifrit01.T_Mod_Ifrit01",
+        "publicPath": "/assets/items/mods/T_Mod_Ifrit01.png",
+        "placeholderPath": "/marker-default.svg"
+      },
+      "metadata": {}
+    },
+    "ingredients": [
+      {
+        "type": "Mod",
+        "id": 41932,
+        "quantity": 5,
+        "sourceCategory": "mods",
+        "href": "/items/mods/mods-41932",
+        "rarity": 4,
+        "names": {
+          "DE": "Inferno Disruption",
+          "EN": "Inferno Disruption",
+          "ES": "Inferno Disruption",
+          "FR": "Désordre infernal",
+          "JP": "烈火乱舞",
+          "KR": "화염 교란",
+          "TC": "焚炎紊亂"
+        },
+        "descriptions": {
+          "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+          "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+          "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+          "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+          "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+          "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+          "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Ifrit01.T_Mod_Ifrit01",
+          "publicPath": "/assets/items/mods/T_Mod_Ifrit01.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {}
+      }
+    ],
+    "crafting": {
+      "durationSec": 30,
+      "batch": true,
+      "rarity": 5,
+      "foundryCostByCoinType": {
+        "101": 50000
+      },
+      "resourceToCoinType": 102,
+      "resourceValue": 50,
+      "accessKeys": [
+        "Shop_Main",
+        "Forging",
+        "MonsterStrong",
+        "Shop_Rouge",
+        "Walnut"
+      ],
+      "releaseVersion": 100,
+      "openVersion": null,
+      "showInBag": 1,
+      "showInDraftArchive": true
+    },
+    "fields": {
+      "Batch": true,
+      "DraftId": 151932,
+      "ProductId": 51932,
+      "ProductNum": 1,
+      "ProductType": "Mod",
+      "Rarity": 5,
+      "ReleaseVersion": 100,
+      "ResourceToCoinType": 102,
+      "ResourceValue": 50,
+      "ShowInBag": 1,
+      "ShowInDraftArchive": true,
+      "Sound": "SOUND_ITEM_PAPER",
+      "Time": 30
+    }
+  },
+  {
     "id": "draft-151941",
     "draftId": 151941,
     "productType": "Mod",
@@ -21525,7 +22261,9 @@
         "MonsterStrong",
         "Shop_Rouge",
         "Walnut",
-        "Dungeon_ModTab_70"
+        "Dungeon_ModTab_70",
+        "Dungeon_ModTab_75",
+        "Dungeon_ModTab_80"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -21640,7 +22378,9 @@
         "MonsterStrong",
         "Shop_Rouge",
         "Walnut",
-        "Dungeon_ModTab_70"
+        "Dungeon_ModTab_70",
+        "Dungeon_ModTab_75",
+        "Dungeon_ModTab_80"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -21755,7 +22495,9 @@
         "MonsterStrong",
         "Shop_Rouge",
         "Walnut",
-        "Dungeon_ModTab_70"
+        "Dungeon_ModTab_70",
+        "Dungeon_ModTab_75",
+        "Dungeon_ModTab_80"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -21902,7 +22644,9 @@
         "MonsterStrong",
         "Shop_Rouge",
         "Walnut",
-        "Dungeon_ModTab_70"
+        "Dungeon_ModTab_70",
+        "Dungeon_ModTab_75",
+        "Dungeon_ModTab_80"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -22049,7 +22793,9 @@
         "MonsterStrong",
         "Shop_Rouge",
         "Walnut",
-        "Dungeon_ModTab_70"
+        "Dungeon_ModTab_70",
+        "Dungeon_ModTab_75",
+        "Dungeon_ModTab_80"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -22634,7 +23380,9 @@
         "MonsterStrong",
         "Shop_Rouge",
         "Walnut",
-        "Dungeon_ModTab_70"
+        "Dungeon_ModTab_70",
+        "Dungeon_ModTab_75",
+        "Dungeon_ModTab_80"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -22781,7 +23529,9 @@
         "MonsterStrong",
         "Shop_Rouge",
         "Walnut",
-        "Dungeon_ModTab_70"
+        "Dungeon_ModTab_70",
+        "Dungeon_ModTab_75",
+        "Dungeon_ModTab_80"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -22928,7 +23678,9 @@
         "MonsterStrong",
         "Shop_Rouge",
         "Walnut",
-        "Dungeon_ModTab_70"
+        "Dungeon_ModTab_70",
+        "Dungeon_ModTab_75",
+        "Dungeon_ModTab_80"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -22939,6 +23691,444 @@
       "Batch": true,
       "DraftId": 152103,
       "ProductId": 52103,
+      "ProductNum": 1,
+      "ProductType": "Mod",
+      "Rarity": 5,
+      "ReleaseVersion": 100,
+      "ResourceToCoinType": 102,
+      "ResourceValue": 50,
+      "ShowInBag": 1,
+      "ShowInDraftArchive": true,
+      "Sound": "SOUND_ITEM_PAPER",
+      "Time": 30
+    }
+  },
+  {
+    "id": "draft-152111",
+    "draftId": 152111,
+    "productType": "Mod",
+    "productId": 52111,
+    "productQuantity": 1,
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Draft/T_Draft_Mod_Cerberus01_Red.T_Draft_Mod_Cerberus01_Red",
+      "publicPath": "/assets/items/drafts/T_Draft_Mod_Cerberus01_Red.png",
+      "placeholderPath": null
+    },
+    "product": {
+      "type": "Mod",
+      "id": 52111,
+      "quantity": 1,
+      "sourceCategory": "mods",
+      "href": "/items/mods/mods-52111",
+      "rarity": 5,
+      "names": {
+        "DE": "Schneide · Fessel",
+        "EN": "Edge·Trammel",
+        "ES": "Filo · Atadura",
+        "FR": "Tranchant · Entrave",
+        "JP": "鋭利・束縛",
+        "KR": "예리·속박",
+        "TC": "鋒銳·纏縛"
+      },
+      "descriptions": {
+        "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+        "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+        "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+        "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+        "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+        "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+        "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+      },
+      "icon": {
+        "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Cerberus01.T_Mod_Cerberus01",
+        "publicPath": "/assets/items/mods/T_Mod_Cerberus01.png",
+        "placeholderPath": "/marker-default.svg"
+      },
+      "metadata": {}
+    },
+    "ingredients": [
+      {
+        "type": "Mod",
+        "id": 32101,
+        "quantity": 1,
+        "sourceCategory": "mods",
+        "href": "/items/mods/mods-32101",
+        "rarity": 3,
+        "names": {
+          "DE": "Schneide",
+          "EN": "Edge",
+          "ES": "Filo",
+          "FR": "Tranchant",
+          "JP": "鋭利",
+          "KR": "예리",
+          "TC": "鋒銳"
+        },
+        "descriptions": {
+          "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+          "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+          "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+          "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+          "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+          "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+          "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Cerberus01.T_Mod_Cerberus01",
+          "publicPath": "/assets/items/mods/T_Mod_Cerberus01.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {}
+      },
+      {
+        "type": "Mod",
+        "id": 42006,
+        "quantity": 3,
+        "sourceCategory": "mods",
+        "href": "/items/mods/mods-42006",
+        "rarity": 4,
+        "names": {
+          "DE": "Fessel",
+          "EN": "Trammel",
+          "ES": "Atadura",
+          "FR": "Entrave",
+          "JP": "束縛",
+          "KR": "속박",
+          "TC": "纏縛"
+        },
+        "descriptions": {
+          "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+          "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+          "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+          "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+          "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+          "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+          "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Cerberus01.T_Mod_Cerberus01",
+          "publicPath": "/assets/items/mods/T_Mod_Cerberus01.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {}
+      }
+    ],
+    "crafting": {
+      "durationSec": 30,
+      "batch": true,
+      "rarity": 5,
+      "foundryCostByCoinType": {
+        "101": 50000
+      },
+      "resourceToCoinType": 102,
+      "resourceValue": 50,
+      "accessKeys": [
+        "Shop_Main",
+        "Forging",
+        "MonsterStrong",
+        "Shop_Rouge",
+        "Walnut"
+      ],
+      "releaseVersion": 100,
+      "openVersion": null,
+      "showInBag": 1,
+      "showInDraftArchive": true
+    },
+    "fields": {
+      "Batch": true,
+      "DraftId": 152111,
+      "ProductId": 52111,
+      "ProductNum": 1,
+      "ProductType": "Mod",
+      "Rarity": 5,
+      "ReleaseVersion": 100,
+      "ResourceToCoinType": 102,
+      "ResourceValue": 50,
+      "ShowInBag": 1,
+      "ShowInDraftArchive": true,
+      "Sound": "SOUND_ITEM_PAPER",
+      "Time": 30
+    }
+  },
+  {
+    "id": "draft-152112",
+    "draftId": 152112,
+    "productType": "Mod",
+    "productId": 52112,
+    "productQuantity": 1,
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Draft/T_Draft_Mod_Cerberus01_Red.T_Draft_Mod_Cerberus01_Red",
+      "publicPath": "/assets/items/drafts/T_Draft_Mod_Cerberus01_Red.png",
+      "placeholderPath": null
+    },
+    "product": {
+      "type": "Mod",
+      "id": 52112,
+      "quantity": 1,
+      "sourceCategory": "mods",
+      "href": "/items/mods/mods-52112",
+      "rarity": 5,
+      "names": {
+        "DE": "Durchdringung · Fessel",
+        "EN": "Penetration·Trammel",
+        "ES": "Penetración · Atadura",
+        "FR": "Pénétration · Entrave",
+        "JP": "痛打・束縛",
+        "KR": "투과·속박",
+        "TC": "透析·纏縛"
+      },
+      "descriptions": {
+        "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+        "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+        "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+        "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+        "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+        "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+        "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+      },
+      "icon": {
+        "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Cerberus01.T_Mod_Cerberus01",
+        "publicPath": "/assets/items/mods/T_Mod_Cerberus01.png",
+        "placeholderPath": "/marker-default.svg"
+      },
+      "metadata": {}
+    },
+    "ingredients": [
+      {
+        "type": "Mod",
+        "id": 32102,
+        "quantity": 1,
+        "sourceCategory": "mods",
+        "href": "/items/mods/mods-32102",
+        "rarity": 3,
+        "names": {
+          "DE": "Durchdringung",
+          "EN": "Penetration",
+          "ES": "Penetración",
+          "FR": "Pénétration",
+          "JP": "痛打",
+          "KR": "투과",
+          "TC": "透析"
+        },
+        "descriptions": {
+          "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+          "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+          "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+          "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+          "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+          "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+          "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Cerberus01.T_Mod_Cerberus01",
+          "publicPath": "/assets/items/mods/T_Mod_Cerberus01.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {}
+      },
+      {
+        "type": "Mod",
+        "id": 42006,
+        "quantity": 3,
+        "sourceCategory": "mods",
+        "href": "/items/mods/mods-42006",
+        "rarity": 4,
+        "names": {
+          "DE": "Fessel",
+          "EN": "Trammel",
+          "ES": "Atadura",
+          "FR": "Entrave",
+          "JP": "束縛",
+          "KR": "속박",
+          "TC": "纏縛"
+        },
+        "descriptions": {
+          "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+          "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+          "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+          "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+          "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+          "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+          "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Cerberus01.T_Mod_Cerberus01",
+          "publicPath": "/assets/items/mods/T_Mod_Cerberus01.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {}
+      }
+    ],
+    "crafting": {
+      "durationSec": 30,
+      "batch": true,
+      "rarity": 5,
+      "foundryCostByCoinType": {
+        "101": 50000
+      },
+      "resourceToCoinType": 102,
+      "resourceValue": 50,
+      "accessKeys": [
+        "Shop_Main",
+        "Forging",
+        "MonsterStrong",
+        "Shop_Rouge",
+        "Walnut"
+      ],
+      "releaseVersion": 100,
+      "openVersion": null,
+      "showInBag": 1,
+      "showInDraftArchive": true
+    },
+    "fields": {
+      "Batch": true,
+      "DraftId": 152112,
+      "ProductId": 52112,
+      "ProductNum": 1,
+      "ProductType": "Mod",
+      "Rarity": 5,
+      "ReleaseVersion": 100,
+      "ResourceToCoinType": 102,
+      "ResourceValue": 50,
+      "ShowInBag": 1,
+      "ShowInDraftArchive": true,
+      "Sound": "SOUND_ITEM_PAPER",
+      "Time": 30
+    }
+  },
+  {
+    "id": "draft-152113",
+    "draftId": 152113,
+    "productType": "Mod",
+    "productId": 52113,
+    "productQuantity": 1,
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Draft/T_Draft_Mod_Cerberus01_Red.T_Draft_Mod_Cerberus01_Red",
+      "publicPath": "/assets/items/drafts/T_Draft_Mod_Cerberus01_Red.png",
+      "placeholderPath": null
+    },
+    "product": {
+      "type": "Mod",
+      "id": 52113,
+      "quantity": 1,
+      "sourceCategory": "mods",
+      "href": "/items/mods/mods-52113",
+      "rarity": 5,
+      "names": {
+        "DE": "Zermalmer · Fessel",
+        "EN": "Crusher·Trammel",
+        "ES": "Aplastamiento · Atadura",
+        "FR": "Écrasement · Entrave",
+        "JP": "重撃・束縛",
+        "KR": "중압·속박",
+        "TC": "重壓·纏縛"
+      },
+      "descriptions": {
+        "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+        "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+        "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+        "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+        "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+        "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+        "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+      },
+      "icon": {
+        "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Cerberus01.T_Mod_Cerberus01",
+        "publicPath": "/assets/items/mods/T_Mod_Cerberus01.png",
+        "placeholderPath": "/marker-default.svg"
+      },
+      "metadata": {}
+    },
+    "ingredients": [
+      {
+        "type": "Mod",
+        "id": 32103,
+        "quantity": 1,
+        "sourceCategory": "mods",
+        "href": "/items/mods/mods-32103",
+        "rarity": 3,
+        "names": {
+          "DE": "Zermalmer",
+          "EN": "Crusher",
+          "ES": "Aplastamiento",
+          "FR": "Écrasement",
+          "JP": "重撃",
+          "KR": "중압",
+          "TC": "重壓"
+        },
+        "descriptions": {
+          "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+          "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+          "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+          "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+          "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+          "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+          "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Cerberus01.T_Mod_Cerberus01",
+          "publicPath": "/assets/items/mods/T_Mod_Cerberus01.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {}
+      },
+      {
+        "type": "Mod",
+        "id": 42006,
+        "quantity": 3,
+        "sourceCategory": "mods",
+        "href": "/items/mods/mods-42006",
+        "rarity": 4,
+        "names": {
+          "DE": "Fessel",
+          "EN": "Trammel",
+          "ES": "Atadura",
+          "FR": "Entrave",
+          "JP": "束縛",
+          "KR": "속박",
+          "TC": "纏縛"
+        },
+        "descriptions": {
+          "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+          "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+          "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+          "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+          "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+          "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+          "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Cerberus01.T_Mod_Cerberus01",
+          "publicPath": "/assets/items/mods/T_Mod_Cerberus01.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {}
+      }
+    ],
+    "crafting": {
+      "durationSec": 30,
+      "batch": true,
+      "rarity": 5,
+      "foundryCostByCoinType": {
+        "101": 50000
+      },
+      "resourceToCoinType": 102,
+      "resourceValue": 50,
+      "accessKeys": [
+        "Shop_Main",
+        "Forging",
+        "MonsterStrong",
+        "Shop_Rouge",
+        "Walnut"
+      ],
+      "releaseVersion": 100,
+      "openVersion": null,
+      "showInBag": 1,
+      "showInDraftArchive": true
+    },
+    "fields": {
+      "Batch": true,
+      "DraftId": 152113,
+      "ProductId": 52113,
       "ProductNum": 1,
       "ProductType": "Mod",
       "Rarity": 5,
@@ -23244,6 +24434,120 @@
     }
   },
   {
+    "id": "draft-152801",
+    "draftId": 152801,
+    "productType": "Mod",
+    "productId": 52801,
+    "productQuantity": 1,
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Draft/T_Draft_Mod_Fenrir01_Red.T_Draft_Mod_Fenrir01_Red",
+      "publicPath": "/assets/items/drafts/T_Draft_Mod_Fenrir01_Red.png",
+      "placeholderPath": null
+    },
+    "product": {
+      "type": "Mod",
+      "id": 52801,
+      "quantity": 1,
+      "sourceCategory": "mods",
+      "href": "/items/mods/mods-52801",
+      "rarity": 5,
+      "names": {
+        "DE": "Trammel – Surplus",
+        "EN": "Trammel – Surplus",
+        "ES": "Trammel – Surplus",
+        "FR": "Entrave · Débordement",
+        "JP": "束縛・満溢",
+        "KR": "속박·풍성",
+        "TC": "纏縛·滿溢"
+      },
+      "descriptions": {
+        "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+        "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+        "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+        "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+        "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+        "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+        "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+      },
+      "icon": {
+        "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Fenrir01.T_Mod_Fenrir01",
+        "publicPath": "/assets/items/mods/T_Mod_Fenrir01.png",
+        "placeholderPath": "/marker-default.svg"
+      },
+      "metadata": {}
+    },
+    "ingredients": [
+      {
+        "type": "Mod",
+        "id": 42801,
+        "quantity": 5,
+        "sourceCategory": "mods",
+        "href": "/items/mods/mods-42801",
+        "rarity": 4,
+        "names": {
+          "DE": "Trammel – Surplus",
+          "EN": "Trammel – Surplus",
+          "ES": "Trammel – Surplus",
+          "FR": "Entrave · Débordement",
+          "JP": "束縛・満溢",
+          "KR": "속박·풍성",
+          "TC": "纏縛·滿溢"
+        },
+        "descriptions": {
+          "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+          "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+          "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+          "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+          "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+          "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+          "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Fenrir01.T_Mod_Fenrir01",
+          "publicPath": "/assets/items/mods/T_Mod_Fenrir01.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {}
+      }
+    ],
+    "crafting": {
+      "durationSec": 30,
+      "batch": true,
+      "rarity": 5,
+      "foundryCostByCoinType": {
+        "101": 50000
+      },
+      "resourceToCoinType": 102,
+      "resourceValue": 50,
+      "accessKeys": [
+        "Shop_Main",
+        "Forging",
+        "MonsterStrong",
+        "Shop_Rouge",
+        "Walnut"
+      ],
+      "releaseVersion": 100,
+      "openVersion": null,
+      "showInBag": 1,
+      "showInDraftArchive": true
+    },
+    "fields": {
+      "Batch": true,
+      "DraftId": 152801,
+      "ProductId": 52801,
+      "ProductNum": 1,
+      "ProductType": "Mod",
+      "Rarity": 5,
+      "ReleaseVersion": 100,
+      "ResourceToCoinType": 102,
+      "ResourceValue": 50,
+      "ShowInBag": 1,
+      "ShowInDraftArchive": true,
+      "Sound": "SOUND_ITEM_PAPER",
+      "Time": 30
+    }
+  },
+  {
     "id": "draft-153001",
     "draftId": 153001,
     "productType": "Mod",
@@ -23335,7 +24639,9 @@
         "MonsterStrong",
         "Shop_Rouge",
         "Walnut",
-        "Dungeon_ModTab_70"
+        "Dungeon_ModTab_70",
+        "Dungeon_ModTab_75",
+        "Dungeon_ModTab_80"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -23450,7 +24756,9 @@
         "MonsterStrong",
         "Shop_Rouge",
         "Walnut",
-        "Dungeon_ModTab_70"
+        "Dungeon_ModTab_70",
+        "Dungeon_ModTab_75",
+        "Dungeon_ModTab_80"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -23597,7 +24905,9 @@
         "MonsterStrong",
         "Shop_Rouge",
         "Walnut",
-        "Dungeon_ModTab_70"
+        "Dungeon_ModTab_70",
+        "Dungeon_ModTab_75",
+        "Dungeon_ModTab_80"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -23744,7 +25054,9 @@
         "MonsterStrong",
         "Shop_Rouge",
         "Walnut",
-        "Dungeon_ModTab_70"
+        "Dungeon_ModTab_70",
+        "Dungeon_ModTab_75",
+        "Dungeon_ModTab_80"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -23891,7 +25203,9 @@
         "MonsterStrong",
         "Shop_Rouge",
         "Walnut",
-        "Dungeon_ModTab_70"
+        "Dungeon_ModTab_70",
+        "Dungeon_ModTab_75",
+        "Dungeon_ModTab_80"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -24768,7 +26082,9 @@
         "MonsterStrong",
         "Shop_Rouge",
         "Walnut",
-        "Dungeon_ModTab_70"
+        "Dungeon_ModTab_70",
+        "Dungeon_ModTab_75",
+        "Dungeon_ModTab_80"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -24915,7 +26231,9 @@
         "MonsterStrong",
         "Shop_Rouge",
         "Walnut",
-        "Dungeon_ModTab_70"
+        "Dungeon_ModTab_70",
+        "Dungeon_ModTab_75",
+        "Dungeon_ModTab_80"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -25062,7 +26380,9 @@
         "MonsterStrong",
         "Shop_Rouge",
         "Walnut",
-        "Dungeon_ModTab_70"
+        "Dungeon_ModTab_70",
+        "Dungeon_ModTab_75",
+        "Dungeon_ModTab_80"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -25073,6 +26393,558 @@
       "Batch": true,
       "DraftId": 153103,
       "ProductId": 53103,
+      "ProductNum": 1,
+      "ProductType": "Mod",
+      "Rarity": 5,
+      "ReleaseVersion": 100,
+      "ResourceToCoinType": 102,
+      "ResourceValue": 50,
+      "ShowInBag": 1,
+      "ShowInDraftArchive": true,
+      "Sound": "SOUND_ITEM_PAPER",
+      "Time": 30
+    }
+  },
+  {
+    "id": "draft-153111",
+    "draftId": 153111,
+    "productType": "Mod",
+    "productId": 53111,
+    "productQuantity": 1,
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Draft/T_Draft_Mod_Lilith01_Red.T_Draft_Mod_Lilith01_Red",
+      "publicPath": "/assets/items/drafts/T_Draft_Mod_Lilith01_Red.png",
+      "placeholderPath": null
+    },
+    "product": {
+      "type": "Mod",
+      "id": 53111,
+      "quantity": 1,
+      "sourceCategory": "mods",
+      "href": "/items/mods/mods-53111",
+      "rarity": 5,
+      "names": {
+        "DE": "Schneide · Fessel",
+        "EN": "Edge·Trammel",
+        "ES": "Filo · Atadura",
+        "FR": "Tranchant · Entrave",
+        "JP": "鋭利・束縛",
+        "KR": "예리·속박",
+        "TC": "鋒銳·纏縛"
+      },
+      "descriptions": {
+        "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+        "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+        "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+        "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+        "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+        "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+        "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+      },
+      "icon": {
+        "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Lilith01.T_Mod_Lilith01",
+        "publicPath": "/assets/items/mods/T_Mod_Lilith01.png",
+        "placeholderPath": "/marker-default.svg"
+      },
+      "metadata": {}
+    },
+    "ingredients": [
+      {
+        "type": "Mod",
+        "id": 33101,
+        "quantity": 1,
+        "sourceCategory": "mods",
+        "href": "/items/mods/mods-33101",
+        "rarity": 3,
+        "names": {
+          "DE": "Schneide",
+          "EN": "Edge",
+          "ES": "Filo",
+          "FR": "Tranchant",
+          "JP": "鋭利",
+          "KR": "예리",
+          "TC": "鋒銳"
+        },
+        "descriptions": {
+          "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+          "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+          "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+          "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+          "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+          "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+          "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Lilith01.T_Mod_Lilith01",
+          "publicPath": "/assets/items/mods/T_Mod_Lilith01.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {}
+      },
+      {
+        "type": "Mod",
+        "id": 43006,
+        "quantity": 3,
+        "sourceCategory": "mods",
+        "href": "/items/mods/mods-43006",
+        "rarity": 4,
+        "names": {
+          "DE": "Fessel",
+          "EN": "Trammel",
+          "ES": "Atadura",
+          "FR": "Entrave",
+          "JP": "束縛",
+          "KR": "속박",
+          "TC": "纏縛"
+        },
+        "descriptions": {
+          "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+          "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+          "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+          "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+          "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+          "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+          "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Lilith01.T_Mod_Lilith01",
+          "publicPath": "/assets/items/mods/T_Mod_Lilith01.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {}
+      }
+    ],
+    "crafting": {
+      "durationSec": 30,
+      "batch": true,
+      "rarity": 5,
+      "foundryCostByCoinType": {
+        "101": 50000
+      },
+      "resourceToCoinType": 102,
+      "resourceValue": 50,
+      "accessKeys": [
+        "Shop_Main",
+        "Forging",
+        "MonsterStrong",
+        "Shop_Rouge",
+        "Walnut"
+      ],
+      "releaseVersion": 100,
+      "openVersion": null,
+      "showInBag": 1,
+      "showInDraftArchive": true
+    },
+    "fields": {
+      "Batch": true,
+      "DraftId": 153111,
+      "ProductId": 53111,
+      "ProductNum": 1,
+      "ProductType": "Mod",
+      "Rarity": 5,
+      "ReleaseVersion": 100,
+      "ResourceToCoinType": 102,
+      "ResourceValue": 50,
+      "ShowInBag": 1,
+      "ShowInDraftArchive": true,
+      "Sound": "SOUND_ITEM_PAPER",
+      "Time": 30
+    }
+  },
+  {
+    "id": "draft-153112",
+    "draftId": 153112,
+    "productType": "Mod",
+    "productId": 53112,
+    "productQuantity": 1,
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Draft/T_Draft_Mod_Lilith01_Red.T_Draft_Mod_Lilith01_Red",
+      "publicPath": "/assets/items/drafts/T_Draft_Mod_Lilith01_Red.png",
+      "placeholderPath": null
+    },
+    "product": {
+      "type": "Mod",
+      "id": 53112,
+      "quantity": 1,
+      "sourceCategory": "mods",
+      "href": "/items/mods/mods-53112",
+      "rarity": 5,
+      "names": {
+        "DE": "Durchdringung · Fessel",
+        "EN": "Penetration·Trammel",
+        "ES": "Penetración · Atadura",
+        "FR": "Pénétration · Entrave",
+        "JP": "痛打・束縛",
+        "KR": "투과·속박",
+        "TC": "透析·纏縛"
+      },
+      "descriptions": {
+        "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+        "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+        "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+        "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+        "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+        "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+        "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+      },
+      "icon": {
+        "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Lilith01.T_Mod_Lilith01",
+        "publicPath": "/assets/items/mods/T_Mod_Lilith01.png",
+        "placeholderPath": "/marker-default.svg"
+      },
+      "metadata": {}
+    },
+    "ingredients": [
+      {
+        "type": "Mod",
+        "id": 33102,
+        "quantity": 1,
+        "sourceCategory": "mods",
+        "href": "/items/mods/mods-33102",
+        "rarity": 3,
+        "names": {
+          "DE": "Durchdringung",
+          "EN": "Penetration",
+          "ES": "Penetración",
+          "FR": "Pénétration",
+          "JP": "痛打",
+          "KR": "투과",
+          "TC": "透析"
+        },
+        "descriptions": {
+          "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+          "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+          "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+          "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+          "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+          "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+          "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Lilith01.T_Mod_Lilith01",
+          "publicPath": "/assets/items/mods/T_Mod_Lilith01.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {}
+      },
+      {
+        "type": "Mod",
+        "id": 43006,
+        "quantity": 3,
+        "sourceCategory": "mods",
+        "href": "/items/mods/mods-43006",
+        "rarity": 4,
+        "names": {
+          "DE": "Fessel",
+          "EN": "Trammel",
+          "ES": "Atadura",
+          "FR": "Entrave",
+          "JP": "束縛",
+          "KR": "속박",
+          "TC": "纏縛"
+        },
+        "descriptions": {
+          "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+          "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+          "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+          "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+          "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+          "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+          "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Lilith01.T_Mod_Lilith01",
+          "publicPath": "/assets/items/mods/T_Mod_Lilith01.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {}
+      }
+    ],
+    "crafting": {
+      "durationSec": 30,
+      "batch": true,
+      "rarity": 5,
+      "foundryCostByCoinType": {
+        "101": 50000
+      },
+      "resourceToCoinType": 102,
+      "resourceValue": 50,
+      "accessKeys": [
+        "Shop_Main",
+        "Forging",
+        "MonsterStrong",
+        "Shop_Rouge",
+        "Walnut"
+      ],
+      "releaseVersion": 100,
+      "openVersion": null,
+      "showInBag": 1,
+      "showInDraftArchive": true
+    },
+    "fields": {
+      "Batch": true,
+      "DraftId": 153112,
+      "ProductId": 53112,
+      "ProductNum": 1,
+      "ProductType": "Mod",
+      "Rarity": 5,
+      "ReleaseVersion": 100,
+      "ResourceToCoinType": 102,
+      "ResourceValue": 50,
+      "ShowInBag": 1,
+      "ShowInDraftArchive": true,
+      "Sound": "SOUND_ITEM_PAPER",
+      "Time": 30
+    }
+  },
+  {
+    "id": "draft-153113",
+    "draftId": 153113,
+    "productType": "Mod",
+    "productId": 53113,
+    "productQuantity": 1,
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Draft/T_Draft_Mod_Lilith01_Red.T_Draft_Mod_Lilith01_Red",
+      "publicPath": "/assets/items/drafts/T_Draft_Mod_Lilith01_Red.png",
+      "placeholderPath": null
+    },
+    "product": {
+      "type": "Mod",
+      "id": 53113,
+      "quantity": 1,
+      "sourceCategory": "mods",
+      "href": "/items/mods/mods-53113",
+      "rarity": 5,
+      "names": {
+        "DE": "Zermalmer · Fessel",
+        "EN": "Crusher·Trammel",
+        "ES": "Aplastamiento · Atadura",
+        "FR": "Écrasement · Entrave",
+        "JP": "重撃・束縛",
+        "KR": "중압·속박",
+        "TC": "重壓·纏縛"
+      },
+      "descriptions": {
+        "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+        "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+        "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+        "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+        "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+        "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+        "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+      },
+      "icon": {
+        "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Lilith01.T_Mod_Lilith01",
+        "publicPath": "/assets/items/mods/T_Mod_Lilith01.png",
+        "placeholderPath": "/marker-default.svg"
+      },
+      "metadata": {}
+    },
+    "ingredients": [
+      {
+        "type": "Mod",
+        "id": 33103,
+        "quantity": 1,
+        "sourceCategory": "mods",
+        "href": "/items/mods/mods-33103",
+        "rarity": 3,
+        "names": {
+          "DE": "Zermalmer",
+          "EN": "Crusher",
+          "ES": "Aplastamiento",
+          "FR": "Écrasement",
+          "JP": "重撃",
+          "KR": "중압",
+          "TC": "重壓"
+        },
+        "descriptions": {
+          "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+          "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+          "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+          "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+          "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+          "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+          "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Lilith01.T_Mod_Lilith01",
+          "publicPath": "/assets/items/mods/T_Mod_Lilith01.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {}
+      },
+      {
+        "type": "Mod",
+        "id": 43006,
+        "quantity": 3,
+        "sourceCategory": "mods",
+        "href": "/items/mods/mods-43006",
+        "rarity": 4,
+        "names": {
+          "DE": "Fessel",
+          "EN": "Trammel",
+          "ES": "Atadura",
+          "FR": "Entrave",
+          "JP": "束縛",
+          "KR": "속박",
+          "TC": "纏縛"
+        },
+        "descriptions": {
+          "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+          "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+          "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+          "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+          "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+          "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+          "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Lilith01.T_Mod_Lilith01",
+          "publicPath": "/assets/items/mods/T_Mod_Lilith01.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {}
+      }
+    ],
+    "crafting": {
+      "durationSec": 30,
+      "batch": true,
+      "rarity": 5,
+      "foundryCostByCoinType": {
+        "101": 50000
+      },
+      "resourceToCoinType": 102,
+      "resourceValue": 50,
+      "accessKeys": [
+        "Shop_Main",
+        "Forging",
+        "MonsterStrong",
+        "Shop_Rouge",
+        "Walnut"
+      ],
+      "releaseVersion": 100,
+      "openVersion": null,
+      "showInBag": 1,
+      "showInDraftArchive": true
+    },
+    "fields": {
+      "Batch": true,
+      "DraftId": 153113,
+      "ProductId": 53113,
+      "ProductNum": 1,
+      "ProductType": "Mod",
+      "Rarity": 5,
+      "ReleaseVersion": 100,
+      "ResourceToCoinType": 102,
+      "ResourceValue": 50,
+      "ShowInBag": 1,
+      "ShowInDraftArchive": true,
+      "Sound": "SOUND_ITEM_PAPER",
+      "Time": 30
+    }
+  },
+  {
+    "id": "draft-153801",
+    "draftId": 153801,
+    "productType": "Mod",
+    "productId": 53801,
+    "productQuantity": 1,
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Draft/T_Draft_Mod_Fafnir01_Purple.T_Draft_Mod_Fafnir01_Purple",
+      "publicPath": "/assets/items/drafts/T_Draft_Mod_Fafnir01_Purple.png",
+      "placeholderPath": null
+    },
+    "product": {
+      "type": "Mod",
+      "id": 53801,
+      "quantity": 1,
+      "sourceCategory": "mods",
+      "href": "/items/mods/mods-53801",
+      "rarity": 5,
+      "names": {
+        "DE": "Trammel – Surplus",
+        "EN": "Trammel – Surplus",
+        "ES": "Trammel – Surplus",
+        "FR": "Entrave · Débordement",
+        "JP": "束縛・満溢",
+        "KR": "속박·풍성",
+        "TC": "纏縛·滿溢"
+      },
+      "descriptions": {
+        "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+        "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+        "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+        "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+        "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+        "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+        "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+      },
+      "icon": {
+        "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Fafnir01.T_Mod_Fafnir01",
+        "publicPath": "/assets/items/mods/T_Mod_Fafnir01.png",
+        "placeholderPath": "/marker-default.svg"
+      },
+      "metadata": {}
+    },
+    "ingredients": [
+      {
+        "type": "Mod",
+        "id": 43801,
+        "quantity": 5,
+        "sourceCategory": "mods",
+        "href": "/items/mods/mods-43801",
+        "rarity": 4,
+        "names": {
+          "DE": "Trammel – Surplus",
+          "EN": "Trammel – Surplus",
+          "ES": "Trammel – Surplus",
+          "FR": "Entrave · Débordement",
+          "JP": "束縛・満溢",
+          "KR": "속박·풍성",
+          "TC": "纏縛·滿溢"
+        },
+        "descriptions": {
+          "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+          "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+          "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+          "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+          "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+          "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+          "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Fafnir01.T_Mod_Fafnir01",
+          "publicPath": "/assets/items/mods/T_Mod_Fafnir01.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {}
+      }
+    ],
+    "crafting": {
+      "durationSec": 30,
+      "batch": true,
+      "rarity": 5,
+      "foundryCostByCoinType": {
+        "101": 50000
+      },
+      "resourceToCoinType": 102,
+      "resourceValue": 50,
+      "accessKeys": [
+        "Shop_Main",
+        "Forging",
+        "MonsterStrong",
+        "Shop_Rouge",
+        "Walnut"
+      ],
+      "releaseVersion": 100,
+      "openVersion": null,
+      "showInBag": 1,
+      "showInDraftArchive": true
+    },
+    "fields": {
+      "Batch": true,
+      "DraftId": 153801,
+      "ProductId": 53801,
       "ProductNum": 1,
       "ProductType": "Mod",
       "Rarity": 5,
@@ -29177,6 +31049,594 @@
       "Batch": true,
       "DraftId": 156124,
       "ProductId": 56124,
+      "ProductNum": 1,
+      "ProductType": "Mod",
+      "Rarity": 5,
+      "ReleaseVersion": 100,
+      "ResourceToCoinType": 102,
+      "ResourceValue": 50,
+      "ShowInBag": 1,
+      "ShowInDraftArchive": true,
+      "Sound": "SOUND_ITEM_PAPER",
+      "Time": 30
+    }
+  },
+  {
+    "id": "draft-156131",
+    "draftId": 156131,
+    "productType": "Mod",
+    "productId": 56131,
+    "productQuantity": 1,
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Draft/T_Draft_Mod_Changeling01_Red.T_Draft_Mod_Changeling01_Red",
+      "publicPath": "/assets/items/drafts/T_Draft_Mod_Changeling01_Red.png",
+      "placeholderPath": null
+    },
+    "product": {
+      "type": "Mod",
+      "id": 56131,
+      "quantity": 1,
+      "sourceCategory": "mods",
+      "href": "/items/mods/mods-56131",
+      "rarity": 5,
+      "names": {
+        "DE": "Feuerglut",
+        "EN": "Volition",
+        "ES": "Llama",
+        "FR": "Décision",
+        "JP": "断決",
+        "KR": "결단",
+        "TC": "決斷"
+      },
+      "descriptions": {
+        "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+        "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+        "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+        "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+        "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+        "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+        "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+      },
+      "icon": {
+        "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Changeling01_Red.T_Mod_Changeling01_Red",
+        "publicPath": "/assets/items/mods/T_Mod_Changeling01_Red.png",
+        "placeholderPath": "/marker-default.svg"
+      },
+      "metadata": {}
+    },
+    "ingredients": [
+      {
+        "type": "Mod",
+        "id": 41002,
+        "quantity": 10,
+        "sourceCategory": "mods",
+        "href": "/items/mods/mods-41002",
+        "rarity": 4,
+        "names": {
+          "DE": "Nirwana",
+          "EN": "Nirvana",
+          "ES": "Nirvana",
+          "FR": "Nirvana",
+          "JP": "涅槃",
+          "KR": "환생",
+          "TC": "涅槃"
+        },
+        "descriptions": {
+          "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+          "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+          "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+          "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+          "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+          "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+          "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Phoenix01.T_Mod_Phoenix01",
+          "publicPath": "/assets/items/mods/T_Mod_Phoenix01.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {}
+      }
+    ],
+    "crafting": {
+      "durationSec": 30,
+      "batch": true,
+      "rarity": 5,
+      "foundryCostByCoinType": {
+        "101": 50000
+      },
+      "resourceToCoinType": 102,
+      "resourceValue": 50,
+      "accessKeys": [
+        "Shop_Main",
+        "Forging",
+        "MonsterStrong",
+        "Shop_Rouge",
+        "Walnut"
+      ],
+      "releaseVersion": 100,
+      "openVersion": null,
+      "showInBag": 1,
+      "showInDraftArchive": true
+    },
+    "fields": {
+      "Batch": true,
+      "DraftId": 156131,
+      "ProductId": 56131,
+      "ProductNum": 1,
+      "ProductType": "Mod",
+      "Rarity": 5,
+      "ReleaseVersion": 100,
+      "ResourceToCoinType": 102,
+      "ResourceValue": 50,
+      "ShowInBag": 1,
+      "ShowInDraftArchive": true,
+      "Sound": "SOUND_ITEM_PAPER",
+      "Time": 30
+    }
+  },
+  {
+    "id": "draft-156132",
+    "draftId": 156132,
+    "productType": "Mod",
+    "productId": 56132,
+    "productQuantity": 1,
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Draft/T_Draft_Mod_Siren01_Red.T_Draft_Mod_Siren01_Red",
+      "publicPath": "/assets/items/drafts/T_Draft_Mod_Siren01_Red.png",
+      "placeholderPath": null
+    },
+    "product": {
+      "type": "Mod",
+      "id": 56132,
+      "quantity": 1,
+      "sourceCategory": "mods",
+      "href": "/items/mods/mods-56132",
+      "rarity": 5,
+      "names": {
+        "DE": "Flügel · Inspiration · Feuerglut",
+        "EN": "Wings – Inspo – Volition",
+        "ES": "Alas · Inspiración · Llama",
+        "FR": "Ailes · Inspiration · Décision",
+        "JP": "羽翼・鼓舞・断決",
+        "KR": "날개·고무·결단",
+        "TC": "羽翼·鼓舞·決斷"
+      },
+      "descriptions": {
+        "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+        "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+        "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+        "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+        "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+        "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+        "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+      },
+      "icon": {
+        "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Siren01_Red.T_Mod_Siren01_Red",
+        "publicPath": "/assets/items/mods/T_Mod_Siren01_Red.png",
+        "placeholderPath": "/marker-default.svg"
+      },
+      "metadata": {}
+    },
+    "ingredients": [
+      {
+        "type": "Mod",
+        "id": 56131,
+        "quantity": 1,
+        "sourceCategory": "mods",
+        "href": "/items/mods/mods-56131",
+        "rarity": 5,
+        "names": {
+          "DE": "Feuerglut",
+          "EN": "Volition",
+          "ES": "Llama",
+          "FR": "Décision",
+          "JP": "断決",
+          "KR": "결단",
+          "TC": "決斷"
+        },
+        "descriptions": {
+          "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+          "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+          "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+          "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+          "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+          "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+          "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Changeling01_Red.T_Mod_Changeling01_Red",
+          "publicPath": "/assets/items/mods/T_Mod_Changeling01_Red.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {}
+      },
+      {
+        "type": "Mod",
+        "id": 31301,
+        "quantity": 10,
+        "sourceCategory": "mods",
+        "href": "/items/mods/mods-31301",
+        "rarity": 3,
+        "names": {
+          "DE": "Flügel · Inspiration",
+          "EN": "Wings·Inspo",
+          "ES": "Alas · Inspiración",
+          "FR": "Ailes · Inspiration",
+          "JP": "羽翼・鼓舞",
+          "KR": "날개·고무",
+          "TC": "羽翼·鼓舞"
+        },
+        "descriptions": {
+          "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+          "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+          "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+          "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+          "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+          "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+          "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Siren01.T_Mod_Siren01",
+          "publicPath": "/assets/items/mods/T_Mod_Siren01.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {}
+      },
+      {
+        "type": "Resource",
+        "id": 20021,
+        "quantity": 20,
+        "sourceCategory": "resources",
+        "href": "/items/resources/resources-20021",
+        "rarity": 4,
+        "names": {
+          "DE": "Heilige Kerze",
+          "EN": "Sacred Candle",
+          "ES": "Vela sagrada",
+          "FR": "Bougie sacrée",
+          "JP": "聖火のロウソク",
+          "KR": "축성된 초",
+          "TC": "聖燭"
+        },
+        "descriptions": {
+          "DE": "Kerzen für Rituale der Elysischen Kirche, begleitet von Kerzenhaltern, die Handwerker in Andacht fertigten. Ihre Brenndauer ist kurz, doch ihr Licht reicht aus, das Antlitz der Gottheit zu erhellen.",
+          "EN": "Candles used in church ceremonies, accompanied by devoutly crafted candlesticks. Though their burn time is brief, their light suffices to illuminate the face of divine.",
+          "ES": "Las velas para los ritos ceremoniales en la Iglesia Elysiana, colocadas en candelabros elaborados por artesanos devotos, bastan para iluminar el rostro de las deidades, aunque su llama arda solo brevemente.",
+          "FR": "Bougie rituelle utilisée lors des cérémonies de l’Église Élysienne, souvent accompagnée de chandeliers façonnés avec dévotion. Sa lumière, bien que brève, éclaire le visage des dieux.",
+          "JP": "教会の儀式用のキャンドル。敬虔な職人によって作られた燭台とセットで取り扱われる。燃え尽きるまでの時間は短いが、神の顔を照らすには十分な光を放つ。",
+          "KR": "교회 의식에 사용되는 양초로 장인들이 정성스럽게 만든 촛대와 함께 사용되며, 연소 시간은 짧지만 그 빛은 신의 얼굴을 밝게 비추기에 충분하다.",
+          "TC": "用於傳頌會儀式的蠟燭，配以工匠們用虔誠打造的燭台，儘管燃燒的時間短暫，但燭光足以照亮神明的面容。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resource_Forge_High01.T_Resource_Forge_High01",
+          "publicPath": "/assets/items/resources/T_Resource_Forge_High01.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {
+          "resourceSType": "Material"
+        }
+      }
+    ],
+    "crafting": {
+      "durationSec": 30,
+      "batch": true,
+      "rarity": 5,
+      "foundryCostByCoinType": {
+        "101": 50000
+      },
+      "resourceToCoinType": 102,
+      "resourceValue": 50,
+      "accessKeys": [
+        "Shop_Main",
+        "Forging",
+        "MonsterStrong",
+        "Shop_Rouge",
+        "Walnut"
+      ],
+      "releaseVersion": 100,
+      "openVersion": null,
+      "showInBag": 1,
+      "showInDraftArchive": true
+    },
+    "fields": {
+      "Batch": true,
+      "DraftId": 156132,
+      "ProductId": 56132,
+      "ProductNum": 1,
+      "ProductType": "Mod",
+      "Rarity": 5,
+      "ReleaseVersion": 100,
+      "ResourceToCoinType": 102,
+      "ResourceValue": 50,
+      "ShowInBag": 1,
+      "ShowInDraftArchive": true,
+      "Sound": "SOUND_ITEM_PAPER",
+      "Time": 30
+    }
+  },
+  {
+    "id": "draft-156133",
+    "draftId": 156133,
+    "productType": "Mod",
+    "productId": 56133,
+    "productQuantity": 1,
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Draft/T_Draft_Mod_Changeling01_Red.T_Draft_Mod_Changeling01_Red",
+      "publicPath": "/assets/items/drafts/T_Draft_Mod_Changeling01_Red.png",
+      "placeholderPath": null
+    },
+    "product": {
+      "type": "Mod",
+      "id": 56133,
+      "quantity": 1,
+      "sourceCategory": "mods",
+      "href": "/items/mods/mods-56133",
+      "rarity": 5,
+      "names": {
+        "DE": "Willenskraft",
+        "EN": "Morale",
+        "ES": "Voluntad",
+        "FR": "Vigueur",
+        "JP": "高揚",
+        "KR": "격양",
+        "TC": "昂揚"
+      },
+      "descriptions": {
+        "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+        "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+        "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+        "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+        "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+        "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+        "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+      },
+      "icon": {
+        "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Changeling01_Red.T_Mod_Changeling01_Red",
+        "publicPath": "/assets/items/mods/T_Mod_Changeling01_Red.png",
+        "placeholderPath": "/marker-default.svg"
+      },
+      "metadata": {}
+    },
+    "ingredients": [
+      {
+        "type": "Mod",
+        "id": 41004,
+        "quantity": 10,
+        "sourceCategory": "mods",
+        "href": "/items/mods/mods-41004",
+        "rarity": 4,
+        "names": {
+          "DE": "Flügel",
+          "EN": "Wings",
+          "ES": "Alas",
+          "FR": "Ailes",
+          "JP": "羽翼",
+          "KR": "날개",
+          "TC": "羽翼"
+        },
+        "descriptions": {
+          "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+          "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+          "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+          "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+          "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+          "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+          "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Phoenix01.T_Mod_Phoenix01",
+          "publicPath": "/assets/items/mods/T_Mod_Phoenix01.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {}
+      }
+    ],
+    "crafting": {
+      "durationSec": 30,
+      "batch": true,
+      "rarity": 5,
+      "foundryCostByCoinType": {
+        "101": 50000
+      },
+      "resourceToCoinType": 102,
+      "resourceValue": 50,
+      "accessKeys": [
+        "Shop_Main",
+        "Forging",
+        "MonsterStrong",
+        "Shop_Rouge",
+        "Walnut"
+      ],
+      "releaseVersion": 100,
+      "openVersion": null,
+      "showInBag": 1,
+      "showInDraftArchive": true
+    },
+    "fields": {
+      "Batch": true,
+      "DraftId": 156133,
+      "ProductId": 56133,
+      "ProductNum": 1,
+      "ProductType": "Mod",
+      "Rarity": 5,
+      "ReleaseVersion": 100,
+      "ResourceToCoinType": 102,
+      "ResourceValue": 50,
+      "ShowInBag": 1,
+      "ShowInDraftArchive": true,
+      "Sound": "SOUND_ITEM_PAPER",
+      "Time": 30
+    }
+  },
+  {
+    "id": "draft-156134",
+    "draftId": 156134,
+    "productType": "Mod",
+    "productId": 56134,
+    "productQuantity": 1,
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Draft/T_Draft_Mod_Siren01_Red.T_Draft_Mod_Siren01_Red",
+      "publicPath": "/assets/items/drafts/T_Draft_Mod_Siren01_Red.png",
+      "placeholderPath": null
+    },
+    "product": {
+      "type": "Mod",
+      "id": 56134,
+      "quantity": 1,
+      "sourceCategory": "mods",
+      "href": "/items/mods/mods-56134",
+      "rarity": 5,
+      "names": {
+        "DE": "Flügel · Inspiration · Willenskraft",
+        "EN": "Wings – Inspo – Morale",
+        "ES": "Alas · Inspiración · Voluntad",
+        "FR": "Ailes · Inspiration · Vigueur",
+        "JP": "羽翼・鼓舞・高揚",
+        "KR": "날개·고무·격양",
+        "TC": "羽翼·鼓舞·昂揚"
+      },
+      "descriptions": {
+        "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+        "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+        "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+        "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+        "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+        "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+        "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+      },
+      "icon": {
+        "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Siren01_Red.T_Mod_Siren01_Red",
+        "publicPath": "/assets/items/mods/T_Mod_Siren01_Red.png",
+        "placeholderPath": "/marker-default.svg"
+      },
+      "metadata": {}
+    },
+    "ingredients": [
+      {
+        "type": "Mod",
+        "id": 56133,
+        "quantity": 1,
+        "sourceCategory": "mods",
+        "href": "/items/mods/mods-56133",
+        "rarity": 5,
+        "names": {
+          "DE": "Willenskraft",
+          "EN": "Morale",
+          "ES": "Voluntad",
+          "FR": "Vigueur",
+          "JP": "高揚",
+          "KR": "격양",
+          "TC": "昂揚"
+        },
+        "descriptions": {
+          "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+          "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+          "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+          "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+          "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+          "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+          "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Changeling01_Red.T_Mod_Changeling01_Red",
+          "publicPath": "/assets/items/mods/T_Mod_Changeling01_Red.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {}
+      },
+      {
+        "type": "Mod",
+        "id": 31301,
+        "quantity": 10,
+        "sourceCategory": "mods",
+        "href": "/items/mods/mods-31301",
+        "rarity": 3,
+        "names": {
+          "DE": "Flügel · Inspiration",
+          "EN": "Wings·Inspo",
+          "ES": "Alas · Inspiración",
+          "FR": "Ailes · Inspiration",
+          "JP": "羽翼・鼓舞",
+          "KR": "날개·고무",
+          "TC": "羽翼·鼓舞"
+        },
+        "descriptions": {
+          "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+          "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+          "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+          "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+          "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+          "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+          "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Siren01.T_Mod_Siren01",
+          "publicPath": "/assets/items/mods/T_Mod_Siren01.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {}
+      },
+      {
+        "type": "Resource",
+        "id": 20024,
+        "quantity": 20,
+        "sourceCategory": "resources",
+        "href": "/items/resources/resources-20024",
+        "rarity": 4,
+        "names": {
+          "DE": "Filthoid-Tentakel",
+          "EN": "Filthoid Tentacle",
+          "ES": "Tentáculo de Filthoid",
+          "FR": "Tentacule de Souillé",
+          "JP": "穢獣の触手",
+          "KR": "필토이드의 촉수",
+          "TC": "穢獸觸鬚"
+        },
+        "descriptions": {
+          "DE": "Eine von Filthoiden gewonnene Tentakel. Ihre Struktur ist äußerst zäh und stark haftend; manchmal wird sie als Befestigungsvorrichtung genutzt.\n Laufende Materialien gibt es überall, doch nur wenige bringen sie dazu, brav auf dem Hackblock liegenzubleiben.",
+          "EN": "RESOURCE_DESC_20024",
+          "ES": "Tentáculos extraídos de Filthoids, su estructura es extremadamente resistente y se adhiere fácilmente. En ocasiones se utilizan como material de sujeción.\nEstos materiales andantes pueden encontrarse en todas partes, pero muy pocos consiguen que se queden quietos sobre la mesa de trabajo.",
+          "FR": "Tentacule résistant et très adhésif prélevé sur un Souillé, parfois employé comme dispositif de fixation après nettoyage du mucus. Ces « matériaux vivants » sont omniprésents, mais rares sont ceux capables de les immobiliser pour les travailler.",
+          "JP": "穢獣の体に生えていた触手。使用する際は粘液を取り除かなければならない。非常に強靭で強い吸着力を持ち、時には固定具として使われることがある。\n素材はあちこちで見つけられるが、それらを安定して作業台に置ける者は少ない。",
+          "KR": "필토이드의 몸에서 얻은 촉수. 조직이 매우 단단하고 흡착력이 강해 고정 장치로 쓰이기도 한다. \n걸어다니는 재료는 어디에서나 볼 수 있지만 그들을 얌전히 작업대 위에 누워 있게 할 수 있는 사람은 많지 않다.",
+          "TC": "從穢獸身上獲得的觸鬚，需要清除黏液後方可使用，結構十分強韌，有較強的吸附力，有時會被當做固著裝置使用。\n\n行走的材料隨處可見，但能讓他們安安分分躺在砧板上的人並不多。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resource_Forge_High04.T_Resource_Forge_High04",
+          "publicPath": "/assets/items/resources/T_Resource_Forge_High04.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {
+          "resourceSType": "Material"
+        }
+      }
+    ],
+    "crafting": {
+      "durationSec": 30,
+      "batch": true,
+      "rarity": 5,
+      "foundryCostByCoinType": {
+        "101": 50000
+      },
+      "resourceToCoinType": 102,
+      "resourceValue": 50,
+      "accessKeys": [
+        "Shop_Main",
+        "Forging",
+        "MonsterStrong",
+        "Shop_Rouge",
+        "Walnut"
+      ],
+      "releaseVersion": 100,
+      "openVersion": null,
+      "showInBag": 1,
+      "showInDraftArchive": true
+    },
+    "fields": {
+      "Batch": true,
+      "DraftId": 156134,
+      "ProductId": 56134,
       "ProductNum": 1,
       "ProductType": "Mod",
       "Rarity": 5,
@@ -36748,7 +39208,7 @@
           "DE": "Auch „Erdloong“ genannt. Er sonnt sich gern auf warmen Steinen, ist aber erstaunlich wachsam: Spürt er durch den Fels die Erschütterung des Bodens, verschwindet er sofort in versteckten Spalten. Manche halten ihn sogar als Haustier. Der leuchtend blaue Schwanz soll sich überraschend angenehm anfühlen.",
           "EN": "Also known as Earth Loong, it loves basking on sun-warmed stones but is remarkably alert. The moment it senses vibrations through the rock, it vanishes into hidden crevices. Some keep them as pets, and their strikingly blue tails are said to have a surprisingly pleasing texture.",
           "ES": "También conocido como dragón terrestre, habita en superficies rocosas bañadas por el sol. Extremadamente vigilante, se oculta al instante en las grietas en cuanto percibe la más mínima vibración a través de la piedra. Algunos lo crían como mascota, y se dice que la textura de su cola, de un azul resplandeciente, resulta sorprendentemente agradable al tacto.",
-          "FR": "Également appelé dragon de terre, il affectionne les surfaces rocheuses baignées de soleil. D’une vigilance extrême, il disparaît instantanément dans les fissures dès qu’il perçoit la moindre vibration à travers la pierre.\n Certains en font des animaux de compagnie, et l’on dit que la texture de leur queue d’un bleu éclatant est étonnamment agréable au toucher.",
+          "FR": "Également appelé dragon de terre, il affectionne les surfaces rocheuses baignées de soleil. D’une vigilance extrême, il disparaît instantanément dans les fissures dès qu’il perçoit la moindre vibration à travers la pierre.\nCertains en font des animaux de compagnie, et l’on dit que la texture de leur queue d’un bleu éclatant est étonnamment agréable au toucher.",
           "JP": "別名・地竜。岩肌に腹ばいになって日向ぼっこをするのが大好きだが、驚くほど用心深く、石を伝って地面の震えを感じ取ると、たちまち岩の裂け目に潜り込んでしまう。中にはこれをペットとして飼う者もおり、澄んだ青色の尾の手触りが、意外に人気なのだとか。",
           "KR": "땅의 용이라는 별명을 지닌 생물. 바위 위에서 일광욕을 즐기다가도, 미세한 진동이 느껴지면 곧바로 틈새로 숨어 버릴 만큼 예민하다. 남색 꼬리가 의외로 매력적인 촉감을 지녀, 애완동물로 기르는 사람도 있다.",
           "TC": "又稱地龍，喜好趴在石面上曬日光浴，但異常機敏，當它們透過石塊感受到地面的震動，就會立刻消失在隱秘的縫隙里。也有人將它們當作寵物豢養，據說靚藍色尾巴的手感意外地招人喜歡。"
@@ -44379,7 +46839,7 @@
           "DE": "Auch „Erdloong“ genannt. Er sonnt sich gern auf warmen Steinen, ist aber erstaunlich wachsam: Spürt er durch den Fels die Erschütterung des Bodens, verschwindet er sofort in versteckten Spalten. Manche halten ihn sogar als Haustier. Der leuchtend blaue Schwanz soll sich überraschend angenehm anfühlen.",
           "EN": "Also known as Earth Loong, it loves basking on sun-warmed stones but is remarkably alert. The moment it senses vibrations through the rock, it vanishes into hidden crevices. Some keep them as pets, and their strikingly blue tails are said to have a surprisingly pleasing texture.",
           "ES": "También conocido como dragón terrestre, habita en superficies rocosas bañadas por el sol. Extremadamente vigilante, se oculta al instante en las grietas en cuanto percibe la más mínima vibración a través de la piedra. Algunos lo crían como mascota, y se dice que la textura de su cola, de un azul resplandeciente, resulta sorprendentemente agradable al tacto.",
-          "FR": "Également appelé dragon de terre, il affectionne les surfaces rocheuses baignées de soleil. D’une vigilance extrême, il disparaît instantanément dans les fissures dès qu’il perçoit la moindre vibration à travers la pierre.\n Certains en font des animaux de compagnie, et l’on dit que la texture de leur queue d’un bleu éclatant est étonnamment agréable au toucher.",
+          "FR": "Également appelé dragon de terre, il affectionne les surfaces rocheuses baignées de soleil. D’une vigilance extrême, il disparaît instantanément dans les fissures dès qu’il perçoit la moindre vibration à travers la pierre.\nCertains en font des animaux de compagnie, et l’on dit que la texture de leur queue d’un bleu éclatant est étonnamment agréable au toucher.",
           "JP": "別名・地竜。岩肌に腹ばいになって日向ぼっこをするのが大好きだが、驚くほど用心深く、石を伝って地面の震えを感じ取ると、たちまち岩の裂け目に潜り込んでしまう。中にはこれをペットとして飼う者もおり、澄んだ青色の尾の手触りが、意外に人気なのだとか。",
           "KR": "땅의 용이라는 별명을 지닌 생물. 바위 위에서 일광욕을 즐기다가도, 미세한 진동이 느껴지면 곧바로 틈새로 숨어 버릴 만큼 예민하다. 남색 꼬리가 의외로 매력적인 촉감을 지녀, 애완동물로 기르는 사람도 있다.",
           "TC": "又稱地龍，喜好趴在石面上曬日光浴，但異常機敏，當它們透過石塊感受到地面的震動，就會立刻消失在隱秘的縫隙里。也有人將它們當作寵物豢養，據說靚藍色尾巴的手感意外地招人喜歡。"
@@ -45427,7 +47887,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,
@@ -45631,7 +48093,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,
@@ -45835,7 +48299,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,
@@ -46039,7 +48505,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,
@@ -46243,7 +48711,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,
@@ -46447,7 +48917,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 140,
       "openVersion": null,
       "showInBag": 1,
@@ -46651,7 +49123,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,
@@ -46855,7 +49329,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,
@@ -47059,7 +49535,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 120,
       "openVersion": null,
       "showInBag": 1,
@@ -47263,7 +49741,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,
@@ -47467,7 +49947,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,
@@ -47671,7 +50153,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 110,
       "openVersion": null,
       "showInBag": 1,
@@ -47875,7 +50359,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 150,
       "openVersion": null,
       "showInBag": 1,
@@ -48045,7 +50531,10 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut",
+        "Shop_Abyss"
+      ],
       "releaseVersion": 140,
       "openVersion": null,
       "showInBag": 1,
@@ -48249,7 +50738,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,
@@ -48453,7 +50944,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,
@@ -48657,7 +51150,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,
@@ -48861,7 +51356,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 120,
       "openVersion": null,
       "showInBag": 1,
@@ -49065,7 +51562,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 130,
       "openVersion": null,
       "showInBag": 1,
@@ -49235,7 +51734,10 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut",
+        "Shop_Abyss"
+      ],
       "releaseVersion": 150,
       "openVersion": null,
       "showInBag": 1,
@@ -49473,7 +51975,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,
@@ -49711,7 +52215,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,
@@ -49949,7 +52455,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,
@@ -50187,7 +52695,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 120,
       "openVersion": null,
       "showInBag": 1,
@@ -50200,6 +52710,246 @@
       "ProductType": "Weapon",
       "Rarity": 5,
       "ReleaseVersion": 120,
+      "ResourceValue": -1,
+      "ShowInBag": 1,
+      "ShowInDraftArchive": true,
+      "Sound": "SOUND_ITEM_PAPER",
+      "Time": 180
+    }
+  },
+  {
+    "id": "draft-910405",
+    "draftId": 910405,
+    "productType": "Weapon",
+    "productId": 10405,
+    "productQuantity": 1,
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Draft/T_Draft_Dualblade_Wusheng.T_Draft_Dualblade_Wusheng",
+      "publicPath": null,
+      "placeholderPath": "/marker-default.svg"
+    },
+    "product": {
+      "type": "Weapon",
+      "id": 10405,
+      "quantity": 1,
+      "sourceCategory": "weapons",
+      "href": "/items/weapons/weapons-10405",
+      "rarity": 5,
+      "names": {
+        "DE": "Stifled Howl",
+        "EN": "Stifled Howl",
+        "ES": "Stifled Howl",
+        "FR": "Hurlement muet",
+        "JP": "声なき叫び",
+        "KR": "무언의 포효",
+        "TC": "無聲的嘶吼"
+      },
+      "descriptions": {
+        "DE": "In silence, madness; in silence, death.",
+        "EN": "In silence, madness; in silence, death.",
+        "ES": "In silence, madness; in silence, death.",
+        "FR": "Dans le silence, sombrer dans la folie ; dans le silence, périr.",
+        "JP": "沈黙の中で狂い、沈黙の中で滅びる。",
+        "KR": "침묵 속에 미쳐 가고, 침묵 속에 스러진다.",
+        "TC": "於沉默中瘋狂，於沉默中消亡。"
+      },
+      "icon": {
+        "gamePath": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Dualblade_Wusheng",
+        "publicPath": null,
+        "placeholderPath": "/marker-default.svg"
+      },
+      "metadata": {
+        "classType": "Melee",
+        "classTextKey": "UI_Armory_Meleeweapon",
+        "classIconGamePath": "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponTypeClose_Combat.T_Armory_WeaponTypeClose_Combat",
+        "classIconPublicPath": "/assets/items/weapon-types/T_Armory_WeaponTypeClose_Combat.png",
+        "classLabelEn": "Melee Weapons",
+        "subtype": "Dualblade",
+        "subtypeNormalized": "Dualblade",
+        "subtypeTextKey": "WeaponType_Dualblade",
+        "subtypeIconGamePath": "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponType_Dualblade.T_Armory_WeaponType_Dualblade",
+        "subtypeIconPublicPath": "/assets/items/weapon-types/T_Armory_WeaponType_Dualblade.png",
+        "subtypeLabelEn": "Dual Blades",
+        "guiPathVariableName": "Wusheng",
+        "weaponMaxLevel": 80,
+        "weaponToCoinType": 101,
+        "weaponValue": 10000,
+        "collectRewardExp": 400,
+        "decomposeReward": 10411,
+        "sortPriority": 10405,
+        "skinApplicationTypes": [
+          104
+        ],
+        "bigIconGamePath": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Dualblade_Wusheng",
+        "bigIconPublicPath": null,
+        "gachaIconGamePath": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Dualblade_Wusheng",
+        "gachaIconPublicPath": null,
+        "releaseVersion": 160,
+        "openVersion": 16
+      }
+    },
+    "ingredients": [
+      {
+        "type": "Resource",
+        "id": 20027,
+        "quantity": 2,
+        "sourceCategory": "resources",
+        "href": "/items/resources/resources-20027",
+        "rarity": 5,
+        "names": {
+          "DE": "Schärfungstrank",
+          "EN": "Sharpening Potion",
+          "ES": "Elixir de afilado",
+          "FR": "Élixir d’aiguisage",
+          "JP": "鋭刃の薬剤",
+          "KR": "날카로움 포션",
+          "TC": "利刃藥劑"
+        },
+        "descriptions": {
+          "DE": "Aus der Elysischen Kirche: eine honigartige, ölige Flüssigkeit. Sie schärft Blankwaffen und dient zugleich der Pflege von Schusswaffen. Fast jeder Soldat der Kirche trägt mehrere Fläschchen bei sich. In den Pausen sieht man sie, wie sie das Mittel sorgfältig auf ihre Waffen auftragen und leise Gebete zum Zurückdrängen der Feinde murmeln.",
+          "EN": "Produced from the Elysian Church, a honey-like oily liquid that increases the sharpness of cold weapons and also maintains firearms. Almost every soldier of the assembly carries a few bottles with them, and during breaks, they can be seen carefully applying the potion to their weapons and silently reciting prayers for repelling enemies.",
+          "ES": "Líquido aceitoso procedente de la Iglesia Elysiana. Tiene un aspecto similar a la miel, y se usa para afilar las armas y aceitar las armas de fuego. Casi todos los soldados de la Iglesia llevan consigo varias botellas. Durante los descansos, es común verlos aplicar cuidadosamente el ungüento sobre sus armas mientras murmuran en silencio plegarias para alejar a los enemigos.",
+          "FR": "Huile visqueuse produite par l’Église Élysienne, capable d’aiguiser les armes blanches et d’entretenir les armes à feu. Presque tous les soldats en transportent quelques flacons et, durant les pauses, ils l’appliquent avec soin tout en récitant des prières de victoire.",
+          "JP": "エリュシオン礼賛会が製造した、蜂蜜のような油状の液体。刃物の鋭さを高めるだけでなく、銃器の手入れにも有効。礼賛会の兵士のほとんどが携帯しており、休憩の合間に武器に塗りつける姿がよく見られる。その際、彼らは敵を撃退するための祈祷を静かに唱えている。",
+          "KR": "엘리시안 교회에서 사용하는 벌꿀 같이 보이는 기름 형태의 액체. 냉병기의 예리함을 상승시키고 총기 유지 보수로도 쓰인다. 거의 모든 교회 병사가 몇 병 씩 가지고 다니며, 쉴 때 무기에 꼼꼼히 바르며 적을 격퇴하는 것과 관련된 기도문을 조용히 외우는 모습을 볼 수 있다.",
+          "TC": "出自艾利西安傳頌會，狀如蜂蜜的油狀液體，能夠提升冷兵器的鋒利度，也能起到保養槍械的作用，幾乎所有傳頌會士兵都會隨身攜帶幾瓶，在休息的間隔，可以看到他們仔細地將藥劑塗抹在武器上，並默默念誦與擊退敵人相關的禱文。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resource_Forge_Product01.T_Resource_Forge_Product01",
+          "publicPath": "/assets/items/resources/T_Resource_Forge_Product01.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {
+          "resourceSType": "DraftConsume"
+        }
+      },
+      {
+        "type": "Resource",
+        "id": 12170,
+        "quantity": 1,
+        "sourceCategory": "resources",
+        "href": "/items/resources/resources-12170",
+        "rarity": 5,
+        "names": {
+          "DE": "Stifled Howl: Grip",
+          "EN": "Stifled Howl: Grip",
+          "ES": "Stifled Howl: Grip",
+          "FR": "Hurlement muet : Poignée",
+          "JP": "声なき叫びの柄",
+          "KR": "무언의 포효 손잡이",
+          "TC": "無聲的嘶吼的握柄"
+        },
+        "descriptions": {
+          "DE": "Crafted with precision from the blueprint of Stifled Howl. As the component closest to the wielder, the essence of its design is to ensure optimal handling.",
+          "EN": "Crafted with precision from the blueprint of Stifled Howl. As the component closest to the wielder, the essence of its design is to ensure optimal handling.",
+          "ES": "Crafted with precision from the blueprint of Stifled Howl. As the component closest to the wielder, the essence of its design is to ensure optimal handling.",
+          "FR": "Conçue selon les plans de Hurlement muet, cette poignée a été pensée pour ne faire qu’un avec son porteur — dans le creux de la main, le silence devient une prise stable, précise et instinctive.",
+          "JP": "設計図に基づき製造された「声なき叫び」のパーツ。使用者が一番よく触れる部分で、「使いやすさ」を最優先に設計されている。",
+          "KR": "도면대로 정확히 제작한 무언의 포효 부품. 사용자의 편의성을 위해 실질적인 설계 목적을 갖고 만들어졌다.",
+          "TC": "嚴格按照圖紙打造的無聲的嘶吼部件。冷兵器上最貼近使用者的部分，「趁手」，是它最實際的設計目的。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Melee_Weapon_Part01.T_Melee_Weapon_Part01",
+          "publicPath": "/assets/items/resources/T_Melee_Weapon_Part01.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {
+          "resourceSType": "Material"
+        }
+      },
+      {
+        "type": "Resource",
+        "id": 12171,
+        "quantity": 1,
+        "sourceCategory": "resources",
+        "href": "/items/resources/resources-12171",
+        "rarity": 5,
+        "names": {
+          "DE": "Stifled Howl: Blade (Left)",
+          "EN": "Stifled Howl: Blade (Left)",
+          "ES": "Stifled Howl: Blade (Left)",
+          "FR": "Hurlement muet : Lame gauche",
+          "JP": "声なき叫びの左刃",
+          "KR": "무언의 포효 왼쪽 칼날",
+          "TC": "無聲的嘶吼的左刀刃"
+        },
+        "descriptions": {
+          "DE": "Crafted with precision from the blueprint of Stifled Howl. Whether the blade is curved or straight, light or heavy, its edge is honed exclusively for battle.",
+          "EN": "Crafted with precision from the blueprint of Stifled Howl. Whether the blade is curved or straight, light or heavy, its edge is honed exclusively for battle.",
+          "ES": "Crafted with precision from the blueprint of Stifled Howl. Whether the blade is curved or straight, light or heavy, its edge is honed exclusively for battle.",
+          "FR": "Forgée selon les plans de Hurlement muet, cette lame n’a qu’une vocation : frapper. Peu importe sa forme ou son poids, son fil demeure tendu vers l’instant où le silence se brise.",
+          "JP": "設計図に基づき製造された「声なき叫び」のパーツ。まっすぐであろうと、弧を描いていようと、重かろうが軽かろうが、すべての鋭い刃は戦いのために生まれた。",
+          "KR": "도면대로 정확히 제작한 무언의 포효 낫 부품. 칼날의 휘어진 정도나 무게는 신경 쓰지 않고, 전투를 위한 서슬 퍼런 칼날을 만들었다.",
+          "TC": "嚴格按照圖紙打造的無聲的嘶吼部件。無論刀刃是曲是直，是輕是重，它的鋒芒都只為戰鬥而生。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Melee_Weapon_Part02.T_Melee_Weapon_Part02",
+          "publicPath": "/assets/items/resources/T_Melee_Weapon_Part02.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {
+          "resourceSType": "Material"
+        }
+      },
+      {
+        "type": "Resource",
+        "id": 12172,
+        "quantity": 1,
+        "sourceCategory": "resources",
+        "href": "/items/resources/resources-12172",
+        "rarity": 5,
+        "names": {
+          "DE": "Stifled Howl: Blade (Right)",
+          "EN": "Stifled Howl: Blade (Right)",
+          "ES": "Stifled Howl: Blade (Right)",
+          "FR": "Hurlement muet : Lame droite",
+          "JP": "声なき叫びの右刃",
+          "KR": "무언의 포효 오른쪽 칼날",
+          "TC": "無聲的嘶吼的右刀刃"
+        },
+        "descriptions": {
+          "DE": "Crafted with precision from the blueprint of Stifled Howl. Whether the blade is curved or straight, light or heavy, its edge is honed exclusively for battle.",
+          "EN": "Crafted with precision from the blueprint of Stifled Howl. Whether the blade is curved or straight, light or heavy, its edge is honed exclusively for battle.",
+          "ES": "Crafted with precision from the blueprint of Stifled Howl. Whether the blade is curved or straight, light or heavy, its edge is honed exclusively for battle.",
+          "FR": "Forgée selon les plans de Hurlement muet, cette lame n’a qu’une vocation : frapper. Peu importe sa forme ou son poids, son fil demeure tendu vers l’instant où le silence se brise.",
+          "JP": "設計図に基づき製造された「声なき叫び」のパーツ。まっすぐであろうと、弧を描いていようと、重かろうが軽かろうが、すべての鋭い刃は戦いのために生まれた。",
+          "KR": "도면대로 정확히 제작한 무언의 포효 낫 부품. 칼날의 휘어진 정도나 무게는 신경 쓰지 않고, 전투를 위한 서슬 퍼런 칼날을 만들었다.",
+          "TC": "嚴格按照圖紙打造的無聲的嘶吼部件。無論刀刃是曲是直，是輕是重，它的鋒芒都只為戰鬥而生。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Melee_Weapon_Part02.T_Melee_Weapon_Part02",
+          "publicPath": "/assets/items/resources/T_Melee_Weapon_Part02.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {
+          "resourceSType": "Material"
+        }
+      }
+    ],
+    "crafting": {
+      "durationSec": 180,
+      "batch": false,
+      "rarity": 5,
+      "foundryCostByCoinType": {
+        "101": 280000
+      },
+      "resourceToCoinType": null,
+      "resourceValue": -1,
+      "accessKeys": [
+        "Walnut"
+      ],
+      "releaseVersion": 150,
+      "openVersion": null,
+      "showInBag": 1,
+      "showInDraftArchive": true
+    },
+    "fields": {
+      "DraftId": 910405,
+      "ProductId": 10405,
+      "ProductNum": 1,
+      "ProductType": "Weapon",
+      "Rarity": 5,
+      "ReleaseVersion": 150,
       "ResourceValue": -1,
       "ShowInBag": 1,
       "ShowInDraftArchive": true,
@@ -50391,7 +53141,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,
@@ -50595,7 +53347,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 110,
       "openVersion": null,
       "showInBag": 1,
@@ -50733,7 +53487,7 @@
           "EN": "Tetherlash: Grip",
           "ES": "Látigo de Cadenas: Empuñadura",
           "FR": "Étreinte brisée : Poignée",
-          "JP": "纏縛ノ鎖の柄",
+          "JP": "固結びの柄",
           "KR": "뒤엉킨 매듭 손잡이",
           "TC": "纏結的握柄"
         },
@@ -50742,7 +53496,7 @@
           "EN": "Crafted with precision from the blueprint of Tetherlash. As the part closest to the wielder, the essence of its design is to ensure optimal \"handiness.\"",
           "ES": "Componente de Látigo de Cadenas fabricado con precisión según los planos. Como la parte del arma más cercana al portador, su diseño está pensado para garantizar un manejo cómodo y eficiente.",
           "FR": "Conçu selon les plans de l’Étreinte brisée, ce manche noueux enserre la main comme une étreinte végétale — subtile, mais impossible à contourner.",
-          "JP": "設計図どおりに精密に造られた纏縛ノ鎖の部品。使用者が一番よく触れる部分で、「使いやすさ」を最優先に設計されている。",
+          "JP": "設計図どおりに精密に造られた固結びの部品。使用者が一番よく触れる部分で、「使いやすさ」を最優先に設計されている。",
           "KR": "도면대로 정확히 제작한 뒤엉킨 매듭 부품. 사용자의 편의성을 위해 실질적인 설계 목적을 갖고 만들어졌다.",
           "TC": "嚴格按照圖紙打造的纏結部件。冷兵器上最貼近使用者的部分，「趁手」，是它最實際的設計目的。"
         },
@@ -50767,7 +53521,7 @@
           "EN": "Tetherlash: Blade",
           "ES": "Látigo de Cadenas: Hoja",
           "FR": "Étreinte brisée : Lame",
-          "JP": "纏縛ノ鎖の刃",
+          "JP": "固結びの刃",
           "KR": "뒤엉킨 매듭 칼날",
           "TC": "纏結的刀刃"
         },
@@ -50776,7 +53530,7 @@
           "EN": "Crafted with precision from the blueprint of Tetherlash. Whether the blade is curved or straight, light or heavy, its edge is honed exclusively for battle.",
           "ES": "Componente de Látigo de Cadenas fabricado con precisión según los planos. No importa si su hoja es curva o recta, ligera o pesada, su filo solo existe para el combate.",
           "FR": "Forgée selon les plans de l’Étreinte brisée, la lame suit une trajectoire sinueuse — un coup qui saisit, enroule et tranche en un même geste.",
-          "JP": "設計図どおりに精密に造られた纏縛ノ鎖の部品。まっすぐであろうと、弧を描いていようと、重かろうが軽かろうが、すべての鋭い刃は戦いのために生まれた。",
+          "JP": "設計図どおりに精密に造られた固結びの部品。まっすぐであろうと、弧を描いていようと、重かろうが軽かろうが、すべての鋭い刃は戦いのために生まれた。",
           "KR": "도면대로 정확히 제작한 뒤엉킨 매듭 부품. 칼날의 휘어진 정도나 무게는 신경 쓰지 않고, 전투를 위한 서슬 퍼런 칼날을 만들었다.",
           "TC": "嚴格按照圖紙打造的纏結部件。無論刀刃是曲是直，是輕是重，它的鋒芒都只為戰鬥而生。"
         },
@@ -50799,7 +53553,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,
@@ -51003,7 +53759,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,
@@ -51016,6 +53774,212 @@
       "ProductType": "Weapon",
       "Rarity": 5,
       "ReleaseVersion": 100,
+      "ResourceValue": -1,
+      "ShowInBag": 1,
+      "ShowInDraftArchive": true,
+      "Sound": "SOUND_ITEM_PAPER",
+      "Time": 180
+    }
+  },
+  {
+    "id": "draft-910505",
+    "draftId": 910505,
+    "productType": "Weapon",
+    "productId": 10505,
+    "productQuantity": 1,
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Draft/T_Draft_Swordwhip_Shengxue.T_Draft_Swordwhip_Shengxue",
+      "publicPath": null,
+      "placeholderPath": "/marker-default.svg"
+    },
+    "product": {
+      "type": "Weapon",
+      "id": 10505,
+      "quantity": 1,
+      "sourceCategory": "weapons",
+      "href": "/items/weapons/weapons-10505",
+      "rarity": 5,
+      "names": {
+        "DE": "Sanguis Sanctus – Whipblade",
+        "EN": "Sanguis Sanctus – Whipblade",
+        "ES": "Sanguis Sanctus – Whipblade",
+        "FR": "Sanguis Sanctus – Épée-fouet",
+        "JP": "【聖血】ウィップブレード",
+        "KR": "성스러운 피·칼날 채찍",
+        "TC": "聖血·鞭刃"
+      },
+      "descriptions": {
+        "DE": "Blood runs dry. Conviction does not.",
+        "EN": "Blood runs dry. Conviction does not.",
+        "ES": "Blood runs dry. Conviction does not.",
+        "FR": "Le sang ardent finira par se tarir, mais la foi ne s’éteindra jamais.",
+        "JP": "熱き血はいずれ涸れる。だが、信念は決して消えない。",
+        "KR": "끓어올랐던 피는 언젠가 말라붙지만, 신념은 결코 사라지지 않는다.",
+        "TC": "熱血終會幹涸，信念永不磨滅。"
+      },
+      "icon": {
+        "gamePath": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Swordwhip_Shengxue",
+        "publicPath": "/assets/items/weapons/T_Head_Swordwhip_Shengxue.png",
+        "placeholderPath": null
+      },
+      "metadata": {
+        "classType": "Melee",
+        "classTextKey": "UI_Armory_Meleeweapon",
+        "classIconGamePath": "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponTypeClose_Combat.T_Armory_WeaponTypeClose_Combat",
+        "classIconPublicPath": "/assets/items/weapon-types/T_Armory_WeaponTypeClose_Combat.png",
+        "classLabelEn": "Melee Weapons",
+        "subtype": "Swordwhip",
+        "subtypeNormalized": "Swordwhip",
+        "subtypeTextKey": "WeaponType_Swordwhip",
+        "subtypeIconGamePath": "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponType_Swordwhip.T_Armory_WeaponType_Swordwhip",
+        "subtypeIconPublicPath": "/assets/items/weapon-types/T_Armory_WeaponType_Swordwhip.png",
+        "subtypeLabelEn": "Whipblade",
+        "guiPathVariableName": "Shengxue",
+        "weaponMaxLevel": 80,
+        "weaponToCoinType": 101,
+        "weaponValue": 10000,
+        "collectRewardExp": 400,
+        "decomposeReward": 10511,
+        "sortPriority": 10505,
+        "skinApplicationTypes": [
+          105
+        ],
+        "bigIconGamePath": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Swordwhip_Shengxue",
+        "bigIconPublicPath": "/assets/items/weapons/T_Bust_Swordwhip_Shengxue.png",
+        "gachaIconGamePath": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Swordwhip_Shengxue",
+        "gachaIconPublicPath": "/assets/items/weapons/T_Gacha_Swordwhip_Shengxue.png",
+        "releaseVersion": 100,
+        "openVersion": 10
+      }
+    },
+    "ingredients": [
+      {
+        "type": "Resource",
+        "id": 20027,
+        "quantity": 2,
+        "sourceCategory": "resources",
+        "href": "/items/resources/resources-20027",
+        "rarity": 5,
+        "names": {
+          "DE": "Schärfungstrank",
+          "EN": "Sharpening Potion",
+          "ES": "Elixir de afilado",
+          "FR": "Élixir d’aiguisage",
+          "JP": "鋭刃の薬剤",
+          "KR": "날카로움 포션",
+          "TC": "利刃藥劑"
+        },
+        "descriptions": {
+          "DE": "Aus der Elysischen Kirche: eine honigartige, ölige Flüssigkeit. Sie schärft Blankwaffen und dient zugleich der Pflege von Schusswaffen. Fast jeder Soldat der Kirche trägt mehrere Fläschchen bei sich. In den Pausen sieht man sie, wie sie das Mittel sorgfältig auf ihre Waffen auftragen und leise Gebete zum Zurückdrängen der Feinde murmeln.",
+          "EN": "Produced from the Elysian Church, a honey-like oily liquid that increases the sharpness of cold weapons and also maintains firearms. Almost every soldier of the assembly carries a few bottles with them, and during breaks, they can be seen carefully applying the potion to their weapons and silently reciting prayers for repelling enemies.",
+          "ES": "Líquido aceitoso procedente de la Iglesia Elysiana. Tiene un aspecto similar a la miel, y se usa para afilar las armas y aceitar las armas de fuego. Casi todos los soldados de la Iglesia llevan consigo varias botellas. Durante los descansos, es común verlos aplicar cuidadosamente el ungüento sobre sus armas mientras murmuran en silencio plegarias para alejar a los enemigos.",
+          "FR": "Huile visqueuse produite par l’Église Élysienne, capable d’aiguiser les armes blanches et d’entretenir les armes à feu. Presque tous les soldats en transportent quelques flacons et, durant les pauses, ils l’appliquent avec soin tout en récitant des prières de victoire.",
+          "JP": "エリュシオン礼賛会が製造した、蜂蜜のような油状の液体。刃物の鋭さを高めるだけでなく、銃器の手入れにも有効。礼賛会の兵士のほとんどが携帯しており、休憩の合間に武器に塗りつける姿がよく見られる。その際、彼らは敵を撃退するための祈祷を静かに唱えている。",
+          "KR": "엘리시안 교회에서 사용하는 벌꿀 같이 보이는 기름 형태의 액체. 냉병기의 예리함을 상승시키고 총기 유지 보수로도 쓰인다. 거의 모든 교회 병사가 몇 병 씩 가지고 다니며, 쉴 때 무기에 꼼꼼히 바르며 적을 격퇴하는 것과 관련된 기도문을 조용히 외우는 모습을 볼 수 있다.",
+          "TC": "出自艾利西安傳頌會，狀如蜂蜜的油狀液體，能夠提升冷兵器的鋒利度，也能起到保養槍械的作用，幾乎所有傳頌會士兵都會隨身攜帶幾瓶，在休息的間隔，可以看到他們仔細地將藥劑塗抹在武器上，並默默念誦與擊退敵人相關的禱文。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resource_Forge_Product01.T_Resource_Forge_Product01",
+          "publicPath": "/assets/items/resources/T_Resource_Forge_Product01.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {
+          "resourceSType": "DraftConsume"
+        }
+      },
+      {
+        "type": "Resource",
+        "id": 12176,
+        "quantity": 1,
+        "sourceCategory": "resources",
+        "href": "/items/resources/resources-12176",
+        "rarity": 5,
+        "names": {
+          "DE": "Sanguis Sanctus – Whipblade: Grip",
+          "EN": "Sanguis Sanctus – Whipblade: Grip",
+          "ES": "Sanguis Sanctus – Whipblade: Grip",
+          "FR": "Sanguis Sanctus – Épée-fouet : Poignée",
+          "JP": "【聖血】ウィップブレードの柄",
+          "KR": "성스러운 피·칼날 채찍 손잡이",
+          "TC": "聖血·鞭刃的握柄"
+        },
+        "descriptions": {
+          "DE": "Crafted with precision from the blueprint of Sanguis Sanctus – Whipblade. As the component closest to the wielder, the essence of its design is to ensure optimal handling.",
+          "EN": "Crafted with precision from the blueprint of Sanguis Sanctus – Whipblade. As the component closest to the wielder, the essence of its design is to ensure optimal handling.",
+          "ES": "Crafted with precision from the blueprint of Sanguis Sanctus – Whipblade. As the component closest to the wielder, the essence of its design is to ensure optimal handling.",
+          "FR": "Conçue selon les plans de Sanguis Sanctus – Épée-fouet, cette poignée a été pensée pour offrir une prise ferme et naturelle — assez proche du porteur pour transmettre le moindre battement du combat.",
+          "JP": "設計図に基づき製造された「【聖血】ウィップブレード」のパーツ。使用者が一番よく触れる部分で、「使いやすさ」を最優先に設計されている。",
+          "KR": "도면대로 정확히 제작한 성스러운 피·칼날 채찍 부품. 사용자의 편의성을 위해 실질적인 설계 목적을 갖고 만들어졌다.",
+          "TC": "嚴格按照圖紙打造的聖血·鞭刃部件。冷兵器上最貼近使用者的部分，「趁手」，是它最實際的設計目的。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Melee_Weapon_Part01.T_Melee_Weapon_Part01",
+          "publicPath": "/assets/items/resources/T_Melee_Weapon_Part01.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {
+          "resourceSType": "Material"
+        }
+      },
+      {
+        "type": "Resource",
+        "id": 12177,
+        "quantity": 1,
+        "sourceCategory": "resources",
+        "href": "/items/resources/resources-12177",
+        "rarity": 5,
+        "names": {
+          "DE": "Sanguis Sanctus – Whipblade: Blade",
+          "EN": "Sanguis Sanctus – Whipblade: Blade",
+          "ES": "Sanguis Sanctus – Whipblade: Blade",
+          "FR": "Sanguis Sanctus – Épée-fouet : Lame",
+          "JP": "【聖血】ウィップブレードの刃",
+          "KR": "성스러운 피·칼날 채찍 칼날",
+          "TC": "聖血·鞭刃的刀刃"
+        },
+        "descriptions": {
+          "DE": "Crafted with precision from the blueprint of Sanguis Sanctus – Whipblade. Whether the blade is curved or straight, light or heavy, its edge is honed exclusively for battle.",
+          "EN": "Crafted with precision from the blueprint of Sanguis Sanctus – Whipblade. Whether the blade is curved or straight, light or heavy, its edge is honed exclusively for battle.",
+          "ES": "Crafted with precision from the blueprint of Sanguis Sanctus – Whipblade. Whether the blade is curved or straight, light or heavy, its edge is honed exclusively for battle.",
+          "FR": "Forgée selon les plans de Sanguis Sanctus – Épée-fouet, cette lame existe pour le champ de bataille — droite ou courbe, légère ou pesante, son éclat semble suivre la trace d’un sang que la foi refuse de laisser sécher.",
+          "JP": "設計図に基づき製造された「【聖血】ウィップブレード」のパーツ。まっすぐであろうと、弧を描いていようと、重かろうが軽かろうが、すべての鋭い刃は戦いのために生まれた。",
+          "KR": "도면대로 정확히 제작한 성스러운 피·칼날 채찍 부품. 칼날의 휘어진 정도나 무게는 신경 쓰지 않고, 전투를 위한 서슬 퍼런 칼날을 만들었다.",
+          "TC": "嚴格按照圖紙打造的聖血·鞭刃部件。無論刀刃是曲是直，是輕是重，它的鋒芒都只為戰鬥而生。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Melee_Weapon_Part02.T_Melee_Weapon_Part02",
+          "publicPath": "/assets/items/resources/T_Melee_Weapon_Part02.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {
+          "resourceSType": "Material"
+        }
+      }
+    ],
+    "crafting": {
+      "durationSec": 180,
+      "batch": false,
+      "rarity": 5,
+      "foundryCostByCoinType": {
+        "101": 280000
+      },
+      "resourceToCoinType": null,
+      "resourceValue": -1,
+      "accessKeys": [
+        "Walnut"
+      ],
+      "releaseVersion": 150,
+      "openVersion": null,
+      "showInBag": 1,
+      "showInDraftArchive": true
+    },
+    "fields": {
+      "DraftId": 910505,
+      "ProductId": 10505,
+      "ProductNum": 1,
+      "ProductType": "Weapon",
+      "Rarity": 5,
+      "ReleaseVersion": 150,
       "ResourceValue": -1,
       "ShowInBag": 1,
       "ShowInDraftArchive": true,
@@ -51241,7 +54205,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,
@@ -51479,7 +54445,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,
@@ -51717,7 +54685,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,
@@ -51955,7 +54925,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 140,
       "openVersion": null,
       "showInBag": 1,
@@ -52193,7 +55165,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,
@@ -52431,7 +55405,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,
@@ -52669,7 +55645,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,
@@ -52907,7 +55885,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 150,
       "openVersion": null,
       "showInBag": 1,
@@ -53111,7 +56091,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,
@@ -53315,7 +56297,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,
@@ -53519,7 +56503,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,
@@ -53723,7 +56709,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 150,
       "openVersion": null,
       "showInBag": 1,
@@ -53732,6 +56720,179 @@
     "fields": {
       "DraftId": 920207,
       "ProductId": 20207,
+      "ProductNum": 1,
+      "ProductType": "Weapon",
+      "Rarity": 5,
+      "ReleaseVersion": 150,
+      "ResourceValue": -1,
+      "ShowInBag": 1,
+      "ShowInDraftArchive": true,
+      "Sound": "SOUND_ITEM_PAPER",
+      "Time": 180
+    }
+  },
+  {
+    "id": "draft-920298",
+    "draftId": 920298,
+    "productType": "Weapon",
+    "productId": 20298,
+    "productQuantity": 1,
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Draft/T_Draft_Crossbow_Yemei.T_Draft_Crossbow_Yemei",
+      "publicPath": "/assets/items/drafts/T_Draft_Crossbow_Yemei.png",
+      "placeholderPath": null
+    },
+    "product": {
+      "type": "Weapon",
+      "id": 20298,
+      "quantity": 1,
+      "sourceCategory": "weapons",
+      "href": "/items/weapons/weapons-20298",
+      "rarity": 5,
+      "names": {
+        "DE": "Metall-Doppelpistolen",
+        "EN": "Sanguine Plume",
+        "ES": "Pistolas Dobles Metálicas",
+        "FR": "Plume sanguine",
+        "JP": "ブラッディレイヴン",
+        "KR": "피로 물든 깃털",
+        "TC": "血染織羽"
+      },
+      "descriptions": {
+        "DE": "Gewöhnliche Doppelpistolen. Aus dem billigsten Metall hergestellt, also ist es nicht schlimm, wenn es zerbricht.",
+        "EN": "One who bore this weapon was a weaver, granted it by Father Ask in honour of his ingenuity. The garments he wove shimmered like morning dew upon flowers and seafoam upon rolling waves. He brought beauty into the world and watched people commit every manner of folly in pursuit of it.\nIn time, he grew bored. He held a banquet and unveiled a feathered robe of unrivalled splendour, declaring that only the last guest standing could claim it.\nAnd so the guests turned on one another, slashing and hacking until the hall ran red — and before dawn, the weaver too was swallowed by the bloodshed.",
+        "ES": "Pistolas Dobles comunes, forjadas en metal barato, incluso si se rompen no representan una gran pérdida.",
+        "FR": "L’un des porteurs de cette arme était un tisserand, loué par le Père Ask pour son talent et son imagination. Les vêtements qu’il tissait évoquaient la rosée du matin posée sur les fleurs, ou l’écume soulevée par les plis des vagues. Il partageait la beauté avec le monde, observant les folies auxquelles les hommes se livraient pour la poursuivre.\nMais peu à peu, tout cela l’ennuya. Il organisa alors un banquet et y présenta un somptueux vêtement de plumes, unique au monde, qu’il réserverait au seul invité encore en vie.\nAlors les convives s’empoignèrent, se déchirèrent et s’entaillèrent jusqu’à ce que le sang l’engloutisse lui aussi, jusqu’à l’aube.",
+        "JP": "武器を手にした者の一人は名高い織工であり、その才知を父なる神に称えられた。彼が織り上げる衣は、花に宿る朝露と、波がひだを描く時に生まれる泡でできていた。彼はその美を世に分け与え、人々が美を求めて愚かな行いに走る姿を眺めた。\n しかし次第に退屈を覚えた彼は宴を催し、唯一無二の華麗な羽衣を披露した。ただし、それを与えるのは最後まで生き残った一人だけだった。\n 人々は互いに引き裂き、斬りつけ合い、ついには彼自身も鮮血に呑まれた。夜が明ける、その時まで。",
+        "KR": "무기를 손에 넣은 이들 중 한 명은 직조공이었다. 아버지 신은 그의 재능을 치하했다. 그가 지어낸 옷은 꽃잎에 맺힌 아침 이슬이자, 일렁이는 파도의 물거품이었으며, 그는 세상에 아름다움을 나누고, 미를 추구한 이들이 벌이는 어리석은 짓을 지켜보았다.\n그러나 점차 무료함을 느낀 그는 성대한 연회를 열고, 오직 최후에 살아남은 단 한 명의 손님에게만 주어질, 세상에 둘도 없이 화려한 날개옷 한 벌을 선보였다.\n그리하여 사람들은 서로를 찢어발기고 도륙하기 시작했다. 선혈이 연회의 주인이자 직조공인 그마저 집어삼키고, 날이 밝아올 때까지.",
+        "TC": "獲得武器的其中一人是名織匠，父神嘉獎他的才思。他織就的衣衫是花朵上沾染的晨露與海浪泛起褶皺時湧起的泡沫，他將美分享給世人，看他們為了追求美而行荒唐事。\n可他逐漸覺得無趣，於是他舉辦了宴會，推出一件絕無僅有的華美羽衣，但只供給唯一存活的來賓。\n於是人們互相撕扯，劈砍，直至鮮血將他一同淹沒，直至天明。"
+      },
+      "icon": {
+        "gamePath": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Crossbow_Yemei",
+        "publicPath": "/assets/items/weapons/T_Head_Crossbow_Yemei.png",
+        "placeholderPath": null
+      },
+      "metadata": {
+        "classType": "Ranged",
+        "classTextKey": "UI_Armory_Longrange",
+        "classIconGamePath": "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponTypeLongRange.T_Armory_WeaponTypeLongRange",
+        "classIconPublicPath": "/assets/items/weapon-types/T_Armory_WeaponTypeLongRange.png",
+        "classLabelEn": "Ranged Weapons",
+        "subtype": "Crossbow",
+        "subtypeNormalized": "Crossbow",
+        "subtypeTextKey": "WeaponType_Crossbow",
+        "subtypeIconGamePath": "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponType_Crossbow.T_Armory_WeaponType_Crossbow",
+        "subtypeIconPublicPath": "/assets/items/weapon-types/T_Armory_WeaponType_Crossbow.png",
+        "subtypeLabelEn": "Dual Pistols",
+        "guiPathVariableName": "Yemei",
+        "weaponMaxLevel": 80,
+        "weaponToCoinType": 101,
+        "weaponValue": 10000,
+        "collectRewardExp": 400,
+        "decomposeReward": -1,
+        "sortPriority": 20298,
+        "skinApplicationTypes": [
+          202
+        ],
+        "bigIconGamePath": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Crossbow_Yemei",
+        "bigIconPublicPath": "/assets/items/weapons/T_Bust_Crossbow_Yemei.png",
+        "gachaIconGamePath": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Crossbow_Yemei",
+        "gachaIconPublicPath": "/assets/items/weapons/T_Gacha_Crossbow_Yemei.png",
+        "releaseVersion": 160,
+        "openVersion": 16
+      }
+    },
+    "ingredients": [
+      {
+        "type": "Resource",
+        "id": 15016,
+        "quantity": 5,
+        "sourceCategory": "resources",
+        "href": "/items/resources/resources-15016",
+        "rarity": 5,
+        "names": {
+          "DE": "Forging Insight: Dual Pistols",
+          "EN": "Forging Insight: Dual Pistols",
+          "ES": "Perspicacia Forjada: Pistolas Dobles",
+          "FR": "Éveil de forge : Doubles pistolets",
+          "JP": "溶鋳・デュアルガンの悟り",
+          "KR": "쌍권총 용해의 깨달음",
+          "TC": "熔鑄雙槍的領悟"
+        },
+        "descriptions": {
+          "DE": "RESOURCE_DESC_WEAPONPIECE",
+          "EN": "RESOURCE_DESC_WEAPONPIECE",
+          "ES": "El poder siempre tiene el mismo origen, ya sea en una herramienta o en un arma. Así como la hoz nació para el trabajo, las armas de fuego para los fuegos artificiales.\nSe obtiene por medios especiales y puede usarse como material de fusión para Armas de calamidad.",
+          "FR": "Toute puissance procède d’une même source, qu’elle prenne la forme d’un outil ou d’une arme. La faux était destinée au labeur ; les armes à feu, aux feux d’artifice.\nObtenu par des moyens spéciaux. Peut servir à la fusion des Armes de calamité.",
+          "JP": "力はもとより同じ源に帰する。道具もそうであり、武器もまたそうだ。鎌は本来、労働のためのもの。銃も本来は、ひとときの花火であるはずだった。\n 特殊な手段で入手でき、カラミティアームズの製錬に使用できる。",
+          "KR": "힘이란 본래 같은 근원에서 나온다. 도구도, 병기도 마찬가지다. 낫은 본래 노동을 위한 것이고, 총은 본래 불꽃놀이여야 한다.\n특수한 경로를 통해 획득하며, 재앙 무기 용해에 사용할 수 있다.",
+          "TC": "力量本歸同源，工具是，兵器亦是。正如鐮刀本該用於勞作，槍枝本應是場煙花。\n透過特殊途徑獲取，可用於災厄武器熔煉。"
+        },
+        "icon": {
+          "gamePath": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Weapon_Piece_Crossbow_Zaie.T_Weapon_Piece_Crossbow_Zaie'",
+          "publicPath": "/assets/items/resources/T_Weapon_Piece_Crossbow_Zaie.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {
+          "resourceSType": "Material"
+        }
+      },
+      {
+        "type": "Resource",
+        "id": 15004,
+        "quantity": 50,
+        "sourceCategory": "resources",
+        "href": "/items/resources/resources-15004",
+        "rarity": 5,
+        "names": {
+          "DE": "Prototype: Sanguine Plume",
+          "EN": "Prototype: Sanguine Plume",
+          "ES": "Prototipo: Pluma Sanguínea",
+          "FR": "Prototype : Plume sanguine",
+          "JP": "ブラッディレイヴンの原型",
+          "KR": "피로 물든 깃털의 원형",
+          "TC": "血染織羽的原型"
+        },
+        "descriptions": {
+          "DE": "RESOURCE_DESC_HYPERWEAPONPROTOTYPE",
+          "EN": "RESOURCE_DESC_HYPERWEAPONPROTOTYPE",
+          "ES": "Uno de los prototipos legendarios de Arma de calamidad.\nSu destino fue amargo como el ajenjo, afilado como una espada de dos filos.\nSe obtiene por medios especiales y puede usarse como material de fusión para Armas de calamidad.",
+          "FR": "L’un des prototypes légendaires à l’origine des Armes de calamité.\nSon destin fut amer comme l’absinthe, acéré comme une épée à double tranchant.\nObtenu par des moyens spéciaux. Peut servir à la fusion des Armes de calamité.",
+          "JP": "伝説に語られるカラミティアームズの原型。その一つ。\n その結末は苦く、両刃の剣のように鋭い。\n 特殊な方法で入手でき、カラミティアームズの製錬に使用できる。",
+          "KR": "전설 속 재앙 무기의 원형 중 하나이다.\n그의 마지막은 쑥처럼 쓰고, 양날의 검처럼 날카로웠다.\n특수한 경로를 통해 획득하며, 재앙 무기 용해에 사용할 수 있다.",
+          "TC": "傳說中災厄武器的原型，此為其中之一。\n他的結局苦如茵陳，利如兩刃的劍。\n透過特殊途徑獲取，可用於災厄武器熔煉。"
+        },
+        "icon": {
+          "gamePath": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Weapon_Crossbow_Zaie.T_Weapon_Crossbow_Zaie'",
+          "publicPath": "/assets/items/resources/T_Weapon_Crossbow_Zaie.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {
+          "resourceSType": "Material"
+        }
+      }
+    ],
+    "crafting": {
+      "durationSec": 180,
+      "batch": false,
+      "rarity": 5,
+      "foundryCostByCoinType": {
+        "101": 500000
+      },
+      "resourceToCoinType": null,
+      "resourceValue": -1,
+      "accessKeys": [
+        "Walnut",
+        "Shop_Abyss"
+      ],
+      "releaseVersion": 150,
+      "openVersion": null,
+      "showInBag": 1,
+      "showInDraftArchive": true
+    },
+    "fields": {
+      "DraftId": 920298,
+      "ProductId": 20298,
       "ProductNum": 1,
       "ProductType": "Weapon",
       "Rarity": 5,
@@ -53961,7 +57122,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,
@@ -54199,7 +57362,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 140,
       "openVersion": null,
       "showInBag": 1,
@@ -54437,7 +57602,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,
@@ -54641,7 +57808,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,
@@ -54879,7 +58048,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,
@@ -55117,7 +58288,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,
@@ -55355,7 +58528,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,
@@ -55593,7 +58768,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,
@@ -55831,7 +59008,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,
@@ -56069,7 +59248,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 130,
       "openVersion": null,
       "showInBag": 1,
@@ -56307,7 +59488,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 130,
       "openVersion": null,
       "showInBag": 1,
@@ -56545,7 +59728,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,
@@ -56783,7 +59968,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,
@@ -57021,7 +60208,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,
@@ -57259,7 +60448,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,
@@ -57497,7 +60688,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 120,
       "openVersion": null,
       "showInBag": 1,
@@ -57735,7 +60928,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 110,
       "openVersion": null,
       "showInBag": 1,
@@ -57973,7 +61168,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,
@@ -58211,7 +61408,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,
@@ -58449,7 +61648,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 110,
       "openVersion": null,
       "showInBag": 1,
@@ -58687,7 +61888,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 140,
       "openVersion": null,
       "showInBag": 1,
@@ -58925,7 +62128,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 130,
       "openVersion": null,
       "showInBag": 1,
@@ -59095,7 +62300,10 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut",
+        "Shop_Abyss"
+      ],
       "releaseVersion": 140,
       "openVersion": null,
       "showInBag": 1,
@@ -59333,7 +62541,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,
@@ -59571,7 +62781,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,
@@ -59809,7 +63021,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,
@@ -60047,7 +63261,9 @@
       },
       "resourceToCoinType": null,
       "resourceValue": -1,
-      "accessKeys": [],
+      "accessKeys": [
+        "Walnut"
+      ],
       "releaseVersion": 100,
       "openVersion": null,
       "showInBag": 1,

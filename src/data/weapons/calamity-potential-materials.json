@@ -1,17 +1,4 @@
 {
-  "100": {
-    "itemId": "resources-100",
-    "icon": "/assets/items/resources/T_Coin_Main_Lv2.png",
-    "name": {
-      "DE": "Phoxene",
-      "EN": "Phoxene",
-      "ES": "Phoxene",
-      "FR": "Phoxène",
-      "JP": "月ノ石",
-      "KR": "월석",
-      "TC": "月石"
-    }
-  },
   "202": {
     "itemId": "resources-202",
     "icon": "/assets/items/resources/T_Resource_PolarityAura.png",
@@ -62,6 +49,19 @@
       "JP": "荊棘のレクイエムの原型",
       "KR": "가시 돋친 절규의 원형",
       "TC": "棘刺絕響的原型"
+    }
+  },
+  "15004": {
+    "itemId": "resources-15004",
+    "icon": "/assets/items/resources/T_Weapon_Crossbow_Zaie.png",
+    "name": {
+      "DE": "Prototype: Sanguine Plume",
+      "EN": "Prototype: Sanguine Plume",
+      "ES": "Prototipo: Pluma Sanguínea",
+      "FR": "Prototype : Plume sanguine",
+      "JP": "ブラッディレイヴンの原型",
+      "KR": "피로 물든 깃털의 원형",
+      "TC": "血染織羽的原型"
     }
   },
   "15006": {
@@ -153,6 +153,19 @@
       "JP": "水の晶塊",
       "KR": "물의 결정",
       "TC": "水之晶塊"
+    }
+  },
+  "15032": {
+    "itemId": "resources-15032",
+    "icon": "/assets/items/resources/T_Resource_Zaie_Fire.png",
+    "name": {
+      "DE": "Pyro Crystal",
+      "EN": "Pyro Crystal",
+      "ES": "Cristal Pyro",
+      "FR": "Cristal Pyro",
+      "JP": "火の晶塊",
+      "KR": "불의 결정",
+      "TC": "火之晶塊"
     }
   },
   "15035": {

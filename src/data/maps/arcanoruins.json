@@ -1,0 +1,739 @@
+{
+  "id": "arcanoruins",
+  "name": "Arcano Ruins",
+  "image": "/assets/maps/arcano_ruins.png",
+  "imageSize": {
+    "width": 4096,
+    "height": 4096
+  },
+  "legend": [
+    {
+      "type": "Collectibles",
+      "label": "Collectibles",
+      "icon": "https://herobox-img.yingxiong.com/map/1749672600072455391.png",
+      "markers": [
+        {
+          "id": 27,
+          "name": "Dewioletr",
+          "icon": "https://herobox-img.yingxiong.com/map/1749556012460864902.png",
+          "markers": [
+            {
+              "id": 2806,
+              "position": {
+                "x": 2395.75,
+                "y": 2074.75
+              }
+            },
+            {
+              "id": 2808,
+              "position": {
+                "x": 2377.75,
+                "y": 2144.75
+              }
+            },
+            {
+              "id": 2814,
+              "position": {
+                "x": 2316.5,
+                "y": 2172.75
+              }
+            },
+            {
+              "id": 2826,
+              "position": {
+                "x": 2236.75,
+                "y": 2189.25
+              }
+            },
+            {
+              "id": 2829,
+              "position": {
+                "x": 2255.25,
+                "y": 2090.75
+              }
+            },
+            {
+              "id": 2836,
+              "position": {
+                "x": 2159.25,
+                "y": 2108.5
+              }
+            },
+            {
+              "id": 2837,
+              "position": {
+                "x": 2152.25,
+                "y": 2149.75
+              }
+            },
+            {
+              "id": 2838,
+              "position": {
+                "x": 2203,
+                "y": 2251.5
+              }
+            },
+            {
+              "id": 2839,
+              "position": {
+                "x": 2232.5,
+                "y": 2267.5
+              }
+            },
+            {
+              "id": 2857,
+              "position": {
+                "x": 1762.5,
+                "y": 1696
+              }
+            },
+            {
+              "id": 2859,
+              "position": {
+                "x": 1938.5,
+                "y": 1723.5
+              }
+            }
+          ]
+        },
+        {
+          "id": 32,
+          "name": "Crackbloom",
+          "icon": "https://herobox-img.yingxiong.com/map/1749556082401623363.png",
+          "markers": [
+            {
+              "id": 2804,
+              "position": {
+                "x": 2396.25,
+                "y": 2110.25
+              }
+            },
+            {
+              "id": 2813,
+              "position": {
+                "x": 2351.5,
+                "y": 2173.75
+              }
+            },
+            {
+              "id": 2815,
+              "position": {
+                "x": 2376.5,
+                "y": 2208
+              }
+            },
+            {
+              "id": 2816,
+              "position": {
+                "x": 2310,
+                "y": 2264.5
+              }
+            },
+            {
+              "id": 2819,
+              "position": {
+                "x": 2276.75,
+                "y": 2148.5
+              }
+            },
+            {
+              "id": 2825,
+              "position": {
+                "x": 2234.82702201014,
+                "y": 2179.8666093532033
+              }
+            },
+            {
+              "id": 2831,
+              "position": {
+                "x": 2270.25,
+                "y": 2018.25
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Landmarks",
+      "label": "Landmarks",
+      "icon": "https://herobox-img.yingxiong.com/map/1749672609569330275.png",
+      "markers": [
+        {
+          "id": 35,
+          "name": "Teleport Point",
+          "icon": "https://herobox-img.yingxiong.com/map/1749557822886359503.png",
+          "markers": [
+            {
+              "id": 2803,
+              "position": {
+                "x": 2458.75,
+                "y": 2097.75
+              }
+            },
+            {
+              "id": 2845,
+              "position": {
+                "x": 1902,
+                "y": 2272.5
+              }
+            },
+            {
+              "id": 2858,
+              "position": {
+                "x": 1972.9762900266337,
+                "y": 1738.007409366677
+              }
+            }
+          ]
+        },
+        {
+          "id": 405,
+          "name": "Mount Arcano",
+          "icon": "https://herobox-img.yingxiong.com/map/1788762545315700292.png",
+          "markers": [
+            {
+              "id": 2802,
+              "position": {
+                "x": 2487,
+                "y": 2049
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Geniemon",
+      "label": "Geniemon",
+      "icon": "https://herobox-img.yingxiong.com/map/1749562159541539924.png",
+      "markers": [
+        {
+          "id": 42,
+          "name": "Geniemon Spawn Point",
+          "icon": "https://herobox-img.yingxiong.com/map/1749672734516496170.png",
+          "markers": [
+            {
+              "id": 2874,
+              "position": {
+                "x": 2282,
+                "y": 2033.75
+              }
+            },
+            {
+              "id": 2877,
+              "position": {
+                "x": 2207.5,
+                "y": 2276.75
+              }
+            },
+            {
+              "id": 2878,
+              "position": {
+                "x": 1754.5,
+                "y": 2448.5
+              }
+            }
+          ]
+        },
+        {
+          "id": 321,
+          "name": "Geniemon Spawn Point",
+          "icon": "https://herobox-img.yingxiong.com/map/1766675854455532522.png",
+          "markers": [
+            {
+              "id": 2872,
+              "position": {
+                "x": 1659.5,
+                "y": 1670
+              }
+            },
+            {
+              "id": 2873,
+              "position": {
+                "x": 1792.5,
+                "y": 1812
+              }
+            },
+            {
+              "id": 2875,
+              "position": {
+                "x": 2369.25,
+                "y": 2056.75
+              }
+            },
+            {
+              "id": 2876,
+              "position": {
+                "x": 2283,
+                "y": 2256.75
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Storage Chest",
+      "label": "Storage Chest",
+      "icon": "https://herobox-img.yingxiong.com/map/1749672743841364457.png",
+      "markers": [
+        {
+          "id": 43,
+          "name": "Storage Chest",
+          "icon": "https://herobox-img.yingxiong.com/map/1749566001012138274.png",
+          "markers": [
+            {
+              "id": 2805,
+              "position": {
+                "x": 2388.5,
+                "y": 2089.5
+              }
+            },
+            {
+              "id": 2807,
+              "position": {
+                "x": 2387.75,
+                "y": 2153.5
+              }
+            },
+            {
+              "id": 2818,
+              "position": {
+                "x": 2268.5,
+                "y": 2176.25
+              }
+            },
+            {
+              "id": 2820,
+              "position": {
+                "x": 2225.25,
+                "y": 2143.25
+              }
+            },
+            {
+              "id": 2822,
+              "position": {
+                "x": 2243.5,
+                "y": 2105
+              }
+            },
+            {
+              "id": 2835,
+              "position": {
+                "x": 2329.5,
+                "y": 2029.5
+              }
+            },
+            {
+              "id": 2840,
+              "position": {
+                "x": 2191.5,
+                "y": 2333.5
+              }
+            },
+            {
+              "id": 2841,
+              "position": {
+                "x": 2167,
+                "y": 2310
+              }
+            },
+            {
+              "id": 2844,
+              "position": {
+                "x": 1967.503066722376,
+                "y": 2220.0023451406405
+              }
+            },
+            {
+              "id": 2847,
+              "position": {
+                "x": 1606,
+                "y": 2319.5
+              }
+            },
+            {
+              "id": 2850,
+              "position": {
+                "x": 1577.5,
+                "y": 2603
+              }
+            }
+          ]
+        },
+        {
+          "id": 44,
+          "name": "Treasure Map Chest",
+          "icon": "https://herobox-img.yingxiong.com/map/1749560145785106563.png",
+          "markers": [
+            {
+              "id": 2830,
+              "position": {
+                "x": 2272.5,
+                "y": 2061.25
+              }
+            },
+            {
+              "id": 2954,
+              "position": {
+                "x": 1727.6205632704355,
+                "y": 1696.4924318406672
+              }
+            }
+          ]
+        },
+        {
+          "id": 60,
+          "name": "Monster Chest",
+          "icon": "https://herobox-img.yingxiong.com/map/1749565963302865436.png",
+          "markers": [
+            {
+              "id": 2834,
+              "position": {
+                "x": 2218.5,
+                "y": 1965.75
+              }
+            },
+            {
+              "id": 2842,
+              "position": {
+                "x": 2152,
+                "y": 2365
+              }
+            },
+            {
+              "id": 2854,
+              "position": {
+                "x": 1590,
+                "y": 1661
+              }
+            }
+          ]
+        },
+        {
+          "id": 202,
+          "name": "Mechanism Puzzle",
+          "icon": "https://herobox-img.yingxiong.com/map/1765893938085545821.png",
+          "markers": [
+            {
+              "id": 2856,
+              "position": {
+                "x": 1720.5,
+                "y": 1633
+              }
+            },
+            {
+              "id": 2869,
+              "position": {
+                "x": 2260,
+                "y": 2055
+              }
+            },
+            {
+              "id": 2870,
+              "position": {
+                "x": 2265.75,
+                "y": 2113
+              }
+            },
+            {
+              "id": 2871,
+              "position": {
+                "x": 2310.75,
+                "y": 2212.75
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Collectibles",
+      "label": "Collectibles",
+      "icon": "https://herobox-img.yingxiong.com/map/1749672777020326442.png",
+      "markers": [
+        {
+          "id": 50,
+          "name": "Pan Spirit",
+          "icon": "https://herobox-img.yingxiong.com/map/1749562536811567798.png",
+          "markers": [
+            {
+              "id": 2821,
+              "position": {
+                "x": 2246.5,
+                "y": 2122.5
+              }
+            }
+          ]
+        },
+        {
+          "id": 406,
+          "name": "Exploration Record · Mount Arcano",
+          "icon": "https://herobox-img.yingxiong.com/map/1788758682587366866.png",
+          "markers": [
+            {
+              "id": 2811,
+              "position": {
+                "x": 2320.75,
+                "y": 2111.25
+              }
+            },
+            {
+              "id": 2817,
+              "position": {
+                "x": 2266.75,
+                "y": 2206.75
+              }
+            },
+            {
+              "id": 2823,
+              "position": {
+                "x": 2242,
+                "y": 2127
+              }
+            },
+            {
+              "id": 2828,
+              "position": {
+                "x": 2215.75,
+                "y": 2081
+              }
+            },
+            {
+              "id": 2843,
+              "position": {
+                "x": 2024,
+                "y": 2121.5
+              }
+            },
+            {
+              "id": 2849,
+              "position": {
+                "x": 1735,
+                "y": 2509
+              }
+            },
+            {
+              "id": 2851,
+              "position": {
+                "x": 1376.5,
+                "y": 2455.5
+              }
+            },
+            {
+              "id": 2852,
+              "position": {
+                "x": 1781,
+                "y": 1994.5
+              }
+            },
+            {
+              "id": 2855,
+              "position": {
+                "x": 1709,
+                "y": 1662
+              }
+            }
+          ]
+        },
+        {
+          "id": 407,
+          "name": "Shooting Range Ticket",
+          "icon": "https://herobox-img.yingxiong.com/map/1788762594002747523.png",
+          "markers": [
+            {
+              "id": 2824,
+              "position": {
+                "x": 2239.07702201014,
+                "y": 2136.1166093532033
+              }
+            },
+            {
+              "id": 2827,
+              "position": {
+                "x": 2262.75,
+                "y": 2096.75
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Unexpected Events/Dispatch",
+      "label": "Unexpected Events/Dispatch",
+      "icon": "https://herobox-img.yingxiong.com/map/1765893914674126617.png",
+      "markers": [
+        {
+          "id": 239,
+          "name": "Shadow of the Battle-Hardened",
+          "icon": "https://herobox-img.yingxiong.com/map/1766206252001108965.png",
+          "markers": [
+            {
+              "id": 2848,
+              "position": {
+                "x": 1551.5,
+                "y": 2427
+              }
+            }
+          ]
+        },
+        {
+          "id": 408,
+          "name": "Blightbeast Cliff",
+          "icon": "https://herobox-img.yingxiong.com/map/1788836106848473648.png",
+          "markers": [
+            {
+              "id": 2846,
+              "position": {
+                "x": 1730.5,
+                "y": 2334.5
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Challenge",
+      "label": "Challenge",
+      "icon": "https://herobox-img.yingxiong.com/map/1749672639131620419.png",
+      "markers": [
+        {
+          "id": 56,
+          "name": "Parkour Challenge",
+          "icon": "https://herobox-img.yingxiong.com/map/1749672644630282670.png",
+          "markers": [
+            {
+              "id": 2832,
+              "position": {
+                "x": 2287,
+                "y": 2058
+              }
+            }
+          ]
+        },
+        {
+          "id": 57,
+          "name": "Shooting Challenge",
+          "icon": "https://herobox-img.yingxiong.com/map/1749672672913484663.png",
+          "markers": [
+            {
+              "id": 2809,
+              "position": {
+                "x": 2364.25,
+                "y": 2155.5
+              }
+            }
+          ]
+        },
+        {
+          "id": 382,
+          "name": "Mount Challenge",
+          "icon": "https://herobox-img.yingxiong.com/map/1785393174822864806.png",
+          "markers": [
+            {
+              "id": 2833,
+              "position": {
+                "x": 2256.25,
+                "y": 2052.25
+              }
+            },
+            {
+              "id": 2860,
+              "position": {
+                "x": 1862.5,
+                "y": 1728
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Others",
+      "label": "Others",
+      "icon": "https://herobox-img.yingxiong.com/map/1749672703904257929.png",
+      "markers": [
+        {
+          "id": 283,
+          "name": "Limited-Time Event Quest",
+          "icon": "https://herobox-img.yingxiong.com/map/1766206599812809105.png",
+          "markers": [
+            {
+              "id": 2948,
+              "position": {
+                "x": 2386.75,
+                "y": 2109.25
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Reading Material",
+      "label": "Reading Material",
+      "icon": "https://herobox-img.yingxiong.com/map/1788757480055257839.png",
+      "markers": [
+        {
+          "id": 393,
+          "name": "Arcano Town · Part 3",
+          "icon": "https://herobox-img.yingxiong.com/map/1788762615802377110.png",
+          "markers": [
+            {
+              "id": 2812,
+              "position": {
+                "x": 2330.5,
+                "y": 2113.25
+              }
+            }
+          ]
+        },
+        {
+          "id": 394,
+          "name": "Arcano Town · Part 4",
+          "icon": "https://herobox-img.yingxiong.com/map/1788762624951493785.png",
+          "markers": [
+            {
+              "id": 2953,
+              "position": {
+                "x": 1925.25,
+                "y": 1722.5
+              }
+            }
+          ]
+        },
+        {
+          "id": 395,
+          "name": "User Manual",
+          "icon": "https://herobox-img.yingxiong.com/map/1788762647649895859.png",
+          "markers": [
+            {
+              "id": 2810,
+              "position": {
+                "x": 2347.25,
+                "y": 2138.75
+              }
+            }
+          ]
+        },
+        {
+          "id": 396,
+          "name": "Recording of an Unknown Soldier",
+          "icon": "https://herobox-img.yingxiong.com/map/1788762662926883189.png",
+          "markers": [
+            {
+              "id": 2853,
+              "position": {
+                "x": 1791.5,
+                "y": 1998
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

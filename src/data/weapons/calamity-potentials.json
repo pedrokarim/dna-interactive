@@ -12,15 +12,13 @@
         "name": {
           "EN": "Ceaseless – Expedition",
           "FR": "Perpétuel – Départ",
-          "ES": "Interminable – Expedición",
           "JP": "エンドレス・マーチ",
           "KR": "끝없는 출정",
           "TC": "無止·出征"
         },
         "desc": {
-          "EN": "Dealing damage with this weapon grants 1 Calamity. When a Plunging Attack or Sliding Attack deals damage, gain 1 additional Calamity. Calamity is capped at 100.\nWhen Calamity reaches its cap, all Calamity is consumed to trigger [Parting Requiem] once, dealing 1000% Calamity damage to enemies within 10 m. This counts as Melee Weapon DMG.",
+          "EN": "Dealing damage with this weapon grants 1 Calamity. When a Plunging Attack or Sliding Attack deals damage, gain 1 additional Calamity. Calamity is capped at 100.\r\nWhen Calamity reaches its cap, all Calamity is consumed to trigger [Parting Requiem] once, dealing 1000% Calamity damage to enemies within 10 m. This counts as Melee Weapon DMG.",
           "FR": "Lorsque cette arme inflige des dégâts, elle confère 1 points de calamité. Lorsqu’une Attaque plongeante ou une Attaque en glissade inflige des dégâts, confère 1 points de calamité supplémentaires. Le maximum de calamité est de 100.\nLorsque le maximum est atteint, tous les points de calamité sont consommés pour déclencher une fois [Requiem d’adieu] : inflige 1000% dégâts de calamité aux ennemis dans un rayon de 10 m. Ces dégâts sont considérés comme des DGT d’arme de mêlée.",
-          "ES": "Al infligir daño con esta arma, obtienes 1 de calamidad. Cuando un Ataque Descendente o un Ataque Deslizante inflige daño, obtienes 1 adicional de calamidad. El límite de calamidad es 100.\nAl alcanzar el límite de calamidad, se consume toda la calamidad acumulada y se activa [Elegía de despedida] 1 vez: Inflige 1000% de daño de calamidad a los enemigos dentro de un radio de 10 metros. Se considera daño de arma cuerpo a cuerpo.",
           "JP": "この武器でダメージを与えるとき、1の災厄値を獲得する。この武器による落下攻撃またはスライディング攻撃でダメージを与えた場合、さらに1の災厄値を獲得する。災厄値は最大100まで保持でき、上限に達するとすべての災厄値を消費して1回の【見送りの挽歌】を発動する。【見送りの挽歌】半径10メートル内の敵に1000%の災厄ダメージを与える。このダメージは近接武器ダメージと見なされる",
           "KR": "해당 무기로 대미지를 입힐 때, 재앙도를 1 획득한다. 해당 무기로 낙하 공격 또는 슬라이드 공격 시, 재앙도를 1 추가로 획득한다. 재앙도는 최대 100까지 보유 가능.\n재앙도가 최대치에 도달하면 모든 재앙도를 소모하여 [환송의 엘레지]를 1회 발동한다.\n[환송의 엘레지]: 반경 10m 내의 적에게 재앙 대미지를 1000% 입힌다. 근접 무기 대미지로 간주된다.",
           "TC": "使用此武器造成傷害時，獲得1點災厄值，使用此武器造成下落攻擊或滑行攻擊傷害時，額外獲得1點災厄值，災厄值上限為100點。\n災厄值達到上限時，消耗全部災厄值，觸發1次[送行輓歌]：對半徑10米內的敵人造成1000%災厄傷害，視為近戰武器傷害。"
@@ -64,7 +62,6 @@
         "name": {
           "EN": "Ceaseless – Triumph",
           "FR": "Perpétuel – Triomphe",
-          "ES": "Interminable – Triunfo",
           "JP": "エンドレス・トライアンフ",
           "KR": "끝없는 개선",
           "TC": "無止·凱旋"
@@ -72,7 +69,6 @@
         "desc": {
           "EN": "Gain 80 Calamity each time a Summon is brought onto the field.",
           "FR": "Chaque invocation d’un familier confère 80 points de calamité.",
-          "ES": "Al realizar una invocación, obtienes 80 de calamidad.",
           "JP": "召喚ユニットを召喚時、80の災厄値を獲得する",
           "KR": "소환물을 소환할 시, 자신이 재앙도를 80 획득한다.",
           "TC": "召喚召喚物時，自身獲得80點災厄值。"
@@ -116,7 +112,6 @@
         "name": {
           "EN": "Ceaseless – Crush",
           "FR": "Perpétuel – Déroute",
-          "ES": "Interminable – Derrota",
           "JP": "エンドレス・ルイン",
           "KR": "끝없는 궤멸",
           "TC": "無止·潰敗"
@@ -124,7 +119,6 @@
         "desc": {
           "EN": "Gain 1 Calamity when a Summon deals damage.",
           "FR": "Lorsque les familiers infligent des dégâts, confère 1 points de calamité.",
-          "ES": "Cuando tu invocación inflige daño, obtienes 1 de calamidad.",
           "JP": "召喚ユニットがダメージを与えた時、1の災厄値を獲得する",
           "KR": "소환물이 대미지를 입힐 시, 자신이 재앙도를 1 획득한다.",
           "TC": "召喚物造成傷害時，自身獲得1點災厄值。"
@@ -168,7 +162,6 @@
         "name": {
           "EN": "Relentless – Intensity",
           "FR": "Incessant – Intensité",
-          "ES": "Incansable – Intensidad",
           "JP": "インフィニティ・フォース",
           "KR": "쉼없는 강세",
           "TC": "無休·強度"
@@ -220,7 +213,6 @@
         "name": {
           "EN": "Relentless – Assault",
           "FR": "Incessant – Assaut",
-          "ES": "Incansable – Asalto",
           "JP": "インフィニティ・ストライク",
           "KR": "쉼없는 공격",
           "TC": "無休·攻擊"
@@ -278,7 +270,6 @@
         "name": {
           "EN": "Ceaseless – Stalemate",
           "FR": "Perpétuel – Impasse",
-          "ES": "Interminable – Punto muerto",
           "JP": "エンドレス・デッドロック",
           "KR": "끝없는 교착",
           "TC": "無止·僵局"
@@ -286,7 +277,6 @@
         "desc": {
           "EN": "Gain 1 stack of [Invocation] for 10s each time a Summon is brought onto the field, up to 20 stacks. The remaining time of the effect is refreshed with each new stack gained. Each stack of [Invocation] increases Summon Attack Speed by 2%.",
           "FR": "Chaque invocation d’un familier confère 1 cumul de [Invocation] pendant 10 s, cumulable jusqu’à 20 fois. Chaque nouveau cumul réinitialise la durée restante.\nChaque cumul de [Invocation] augmente la Vitesse d’attaque des familiers de 2%.",
-          "ES": "Al realizar una invocación, obtienes 1 acumulación de [Evocación] durante 10 segundos, con un máximo de 20 acumulaciones. Cada nueva acumulación reinicia la duración restante del efecto. Cada acumulación de [Evocación] aumenta la vel. de ataque de las invocaciones en 2%.",
           "JP": "召喚ユニットを召喚時、10秒間自身に【降霊】を1スタック獲得する。最大20スタックまで重ねがけ可能。重ねがけすると残り時間がリセットされる。【降霊】1スタックごとに召喚ユニットの攻撃速度が2%アップする。",
           "KR": "소환물을 소환할 시, 자신이 [강령] 1단계를 획득한다. 지속 시간 2초, 최대 20단계 중첩. 중첩 시 남은 시간이 리셋된다. [강령] 단계당 소환물의 공격 속도가 2% 상승한다.",
           "TC": "召喚召喚物時，自身獲得1層[降靈]，持續10秒，最多疊加203層，疊加時刷新剩餘時間。每層[降靈]使召喚物攻擊速度提高2%。"
@@ -330,7 +320,6 @@
         "name": {
           "EN": "Ceaseless – Exhaustion",
           "FR": "Perpétuel – Épuisement",
-          "ES": "Interminable – Agotamiento",
           "JP": "エンドレス・エグゾースト",
           "KR": "끝없는 소진",
           "TC": "無止·雙竭"
@@ -338,7 +327,6 @@
         "desc": {
           "EN": "For every 100 Calamity consumed, gain 1 stack of [Invocation] for 10s, up to 20 stacks. The remaining time of the effect is refreshed with each new stack gained. Each stack of [Invocation] increases Summon Attack Speed by 2%. At the start of battle, gain 20 stacks of [Invocation] for 20s.",
           "FR": "Tous les 100 points de calamité consommés, confère 1 cumul de [Invocation] pendant 10 s, cumulable jusqu’à 20 fois. Chaque nouveau cumul réinitialise la durée restante.\nChaque cumul de [Invocation] augmente la Vitesse d’attaque des familiers de 2%.\nAu début du combat, confère 20 cumuls de [Invocation] pendant 20 s.",
-          "ES": "Por cada 100 de calamidad consumida, obtienes 1 acumulación de [Evocación] durante 10 segundos, con un máximo de 20 acumulaciones. Cada nueva acumulación reinicia la duración restante del efecto. Cada acumulación de [Evocación] aumenta la vel. de ataque de las invocaciones en 2%.\nAl comenzar la batalla, obtienes 20 acumulaciones de [Evocación] durante 20 segundos.",
           "JP": "災厄値を100消費するたびに、10秒間【降霊】を1スタック獲得する。最大20スタックまで重ねがけ可能。重ねがけすると残り時間がリセットされる。【降霊】1スタックごとに召喚ユニットの攻撃速度が2%アップする。\n戦闘開始時に、20秒間自身に【降霊】を20スタック獲得する。",
           "KR": "재앙도를 100 소모할 때마다 [강령]을 1단계 획득한다. 지속 시간 10초, 최대 20단계 중첩, 중첩 시 남은 시간 리셋. [강령] 단계당 소환물의 공격 속도가 2% 상승한다.\n전투 시작 시, 자신이 [강령] 20단계를 획득한다. 지속 시간 20초.",
           "TC": "每消耗100點災厄值，獲得1層[降靈]，持續10秒，最多疊加20層，疊加時刷新剩餘時間。每層[降靈]使召喚物攻擊速度提高2%。\n戰鬥開始時，自身獲得20層[降靈]，持續20秒。"
@@ -382,7 +370,6 @@
         "name": {
           "EN": "Relentless – Range",
           "FR": "Incessant – Portée",
-          "ES": "Incansable – Alcance",
           "JP": "インフィニティ・ドメイン",
           "KR": "쉼없는 범위",
           "TC": "無休·范圍"
@@ -434,7 +421,6 @@
         "name": {
           "EN": "Relentless – Morale",
           "FR": "Incessant – Vigueur",
-          "ES": "Incansable – Moral",
           "JP": "インフィニティ・ハイスピリット",
           "KR": "쉼없는 격양",
           "TC": "無休·昂揚"
@@ -462,15 +448,13 @@
         "name": {
           "EN": "Ceaseless – Lingering Clash",
           "FR": "Perpétuel – Enlisement",
-          "ES": "Interminable – Batalla prolongada",
           "JP": "エンドレス・エクスペディション",
           "KR": "끝없는 격전",
           "TC": "無止·長鏖"
         },
         "desc": {
-          "EN": "Increases max [Invocation] stacks to 30. Each stack increases your Summons' inherited attribute percentage by 0.25%.\nAt 30 stacks of [Invocation], additionally gain [Awakening]: Weapon Trigger Probability increases by 100%, [Parting Requiem]'s damage multiplier increases by 700%, and when a Summon dies, an additional [Parting Requiem] is triggered without consuming Calamity.",
+          "EN": "Increases max [Invocation] stacks to 30. Each stack increases your Summons' inherited attribute percentage by 0.25%.\r\nAt 30 stacks of [Invocation], additionally gain [Awakening]: Weapon Trigger Probability increases by 100%, [Parting Requiem]'s damage multiplier increases by 700%, and when a Summon dies, an additional [Parting Requiem] is triggered without consuming Calamity.",
           "FR": "Le nombre maximal de cumuls de [Invocation] augmente jusqu’à 30. Chaque cumul augmente de 0.25% le pourcentage d’attributs hérités par les familiers invoqués.\nLorsque [Invocation] atteint 30 cumuls, confère également [Éveil] : la probabilité de déclenchement de l’arme augmente de 100%, le multiplicateur de dégâts de [Requiem d’adieu] augmente de 700% et, lorsqu’un familier meurt, un [Requiem d’adieu] supplémentaire est déclenché sans consommer de points de calamité.",
-          "ES": "El máximo de acumulaciones de [Evocación] aumenta a 30. Cada acumulación aumenta en 0.25% el porcentaje de atributos heredados por las invocaciones.\nCon 30 acumulaciones de [Evocación], obtienes además [Despertar]: La probabilidad de activación del arma aumenta en 100%, el multiplicador de daño de [Elegía de despedida] aumenta en 700% y, cuando una invocación muere, se activa [Elegía de despedida] 1 vez adicional sin consumir calamidad.",
           "JP": "【降霊】は最大30スタックまで重ねがけでき、さらに1スタックごとに召喚ユニットの属性値継承率が0.25%アップする。30スタックに達すると、【覚醒】を獲得し、武器の発動確率が100%アップする。【見送りの挽歌】のダメージ倍率が700%アップし、さらに召喚ユニットが死亡した時、災厄値を消費しない【見送りの挽歌】を追加で1回発動する。",
           "KR": "[강령]을 최대 30단계까지 중첩이 가능하다. [강령] 1단계당, 자신이 소환물을 소환할 시 소환물 속성 계승 비율이 0.25% 상승한다.\n[강령]을 30단계 보유하면 [각성]을 획득하여 무기 발동 확률이 100% 상승하고, [환송의 엘레지]의 대미지 배율이 700% 증가한다. 또한, 소환물 사망 시, 재앙도를 소모하지 않는 [환송의 엘레지]를 추가로 1회 발동한다.",
           "TC": "[降靈]最多疊加層數提高至30層，每層[降靈]使自身召喚召喚物時，召喚物屬性繼承比例提高0.25%。\n帶有30層[降靈]時，額外獲得[喚醒]：武器觸發概率提高100%，[送行輓歌]的傷害倍率增加700%，召喚物死亡時，額外觸發1次不消耗災厄值的[送行輓歌]。"
@@ -497,7 +481,7 @@
           "TC": "權火·引燃"
         },
         "desc": {
-          "EN": "Dealing damage with this weapon grants 2 Calamity. Calamity caps at 100.\nWhen Calamity reaches its cap, all Calamity is consumed to trigger [Flame-Wreathed]: Weapon DMG +50% for 5s.",
+          "EN": "Dealing damage with this weapon grants 2 Calamity. Calamity caps at 100.\r\nWhen Calamity reaches its cap, all Calamity is consumed to trigger [Flame-Wreathed]: Weapon DMG +50% for 5s.",
           "FR": "Lorsque cette arme inflige des dégâts, elle confère 2 points de calamité. Le maximum de calamité est de 100.\nLorsque le maximum est atteint, tous les points de calamité sont consommés et vous obtenez l’effet [Flammes dévorantes] : les DGT d’arme augmentent de 50% pendant 5 s.",
           "JP": "この武器でダメージを与えた時、災厄値を2獲得する。災厄値の上限は100。\n 災厄値が上限に達すると、災厄値をすべて消費し、自身に[炎に身を捧げる]効果を付与する：武器ダメージが50%アップし、5秒間持続する。",
           "KR": "이 무기로 대미지를 입힐 시 재앙도를 2 획득한다(최대치 100).\n재앙도가 최대치에 도달하면, 모든 재앙도를 소모해 자신에게 [파멸의 불꽃] 효과를 부여해, 5초간 무기 대미지가 50% 상승한다.",
@@ -647,7 +631,14 @@
           "TC": "權火·威力"
         },
         "desc": null,
-        "attrs": null
+        "attrs": [
+          {
+            "attrName": "SkillIntensity",
+            "rate": 0.45,
+            "value": null,
+            "rateZone": null
+          }
+        ]
       },
       {
         "id": 10399005,
@@ -691,13 +682,20 @@
           "TC": "將熄·攻擊"
         },
         "desc": {
-          "EN": "Character ATK +?%",
-          "FR": "ATQ du personnage +?%",
-          "JP": "キャラ攻撃力+?%",
-          "KR": "캐릭터 공격+?%",
-          "TC": "角色攻擊+?%"
+          "EN": "Character ATK +90%",
+          "FR": "ATQ du personnage +90%",
+          "JP": "キャラ攻撃力+90%",
+          "KR": "캐릭터 공격+90%",
+          "TC": "角色攻擊+90%"
         },
-        "attrs": null
+        "attrs": [
+          {
+            "attrName": "ATK",
+            "rate": 0.9,
+            "value": null,
+            "rateZone": null
+          }
+        ]
       },
       {
         "id": 10399006,
@@ -927,6 +925,471 @@
       }
     ]
   },
+  "weapons-20298": {
+    "weaponId": 20298,
+    "nodes": [
+      {
+        "id": 20299001,
+        "level": 0,
+        "branch": 1,
+        "unlock": [],
+        "cost": null,
+        "icon": "/assets/items/potentials/T_Rouge_Talent_Crossbow_Zaie.png",
+        "name": {
+          "EN": "Bloodstain: Metamorphosis",
+          "FR": "Sanguine – Métamorphose",
+          "JP": "ブラッディ・メタモルフ",
+          "KR": "핏빛·변모",
+          "TC": "血染·蛻變"
+        },
+        "desc": {
+          "EN": "Dealing damage with this weapon grants 1 Calamity, up to 200. When Calamity reaches 100 or higher, 100 Calamity is automatically consumed, granting 1 stacks of [Eclosion], up to 10 stacks.\r\nWhen bullets fired by this weapon deal damage, 1 stack of [Eclosion] is consumed to deal an additional 500% Calamity damage to the target. This counts as Ranged Weapon DMG.",
+          "FR": "Lorsque cette arme inflige des dégâts, elle confère 1 points de calamité. Le maximum de calamité est de 200 points.\nLorsque vos points de calamité atteignent 100 ou plus, 100 points de calamité sont consommés pour obtenir 1 cumuls d’[Éclosion], jusqu’à 10 cumuls.\nLorsque les balles de cette arme infligent des dégâts, 1 cumul d’[Éclosion] est consommé pour infliger à la cible 500% dégâts de calamité supplémentaires, considérés comme des DGT d’arme à distance.",
+          "JP": "この武器でダメージを与えると、1の災厄値を獲得する。災厄値の上限は200。災厄値が100以上になると、100の災厄値を消費して【羽化】を1スタック獲得する。最大10スタックまで重ねがけできる。\nこの武器の弾丸でダメージを与えると、【羽化】を1スタック消費し、対象に追加で500%の災厄ダメージを与える。これは遠隔武器ダメージとして扱われる。",
+          "KR": "해당 무기로 대미지를 입힐 때, 재앙도를 1 획득한다. 재앙도는 최대 200까지 보유 가능. 재앙도가 100에 도달하면 재앙도를 100 소모하여 [우화]를 1단계 획득한다. 최대 10단계 중첩.\n해당 무기의 탄환으로 대미지를 입힐 때, [우화]를 1단계 소모하여 대상에게 재앙 대미지를 500% 추가로 입힌다. 원거리 무기 대미지로 간주된다.",
+          "TC": "使用此武器造成傷害時，獲得1點災厄值，災厄值上限為200點。災厄值達到100或以上時，消耗100點災厄值，獲得1層[羽化]，最多疊加10層。\n此武器子彈造成傷害時，消耗1層[羽化]，對目標額外造成500%災厄傷害，視為遠端武器傷害。"
+        },
+        "attrs": null
+      },
+      {
+        "id": 20299002,
+        "level": 1,
+        "branch": 1,
+        "unlock": [
+          20299001
+        ],
+        "cost": [
+          {
+            "id": 15004,
+            "num": 30
+          },
+          {
+            "id": 15032,
+            "num": 90
+          },
+          {
+            "id": 15037,
+            "num": 15
+          },
+          {
+            "id": 202,
+            "num": 2
+          },
+          {
+            "id": 15030,
+            "num": 50
+          },
+          {
+            "id": 15029,
+            "num": 50
+          }
+        ],
+        "icon": "/assets/items/potentials/T_Rouge_Talent_Crossbow_Zaie.png",
+        "name": {
+          "EN": "Bloodstain: Unfurling",
+          "FR": "Sanguine – Fil tiré",
+          "JP": "ブラッディ・アンフォールディング",
+          "KR": "핏빛·방적",
+          "TC": "血染·抽絲"
+        },
+        "desc": {
+          "EN": "At the start of combat, gain 1 stacks of [Eclosion]. Triggering Element Disruption grants 4 Calamity.",
+          "FR": "Au début du combat, vous obtenez 1 cumuls d’[Éclosion]. Lorsque vous consommez du Désordre élémentaire, vous obtenez nombre de cumuls consommés × 4 points de calamité.",
+          "JP": "戦闘開始時、1スタックの[羽化]を獲得する。属性乱調を消費した時、消費したスタック数×4の災厄値を獲得する。",
+          "KR": "전투 시작 시 [우화]를 1단계 획득한다. 속성 혼돈 소모 시 소모한 단계×4의 재앙도를 획득한다.",
+          "TC": "戰鬥開始時，獲得1層[羽化]。消耗屬性紊亂時，獲得消耗層數×4點災厄值。"
+        },
+        "attrs": null
+      },
+      {
+        "id": 20299003,
+        "level": 1,
+        "branch": 2,
+        "unlock": [
+          20299001
+        ],
+        "cost": [
+          {
+            "id": 15004,
+            "num": 30
+          },
+          {
+            "id": 15032,
+            "num": 90
+          },
+          {
+            "id": 15037,
+            "num": 15
+          },
+          {
+            "id": 202,
+            "num": 2
+          },
+          {
+            "id": 15030,
+            "num": 50
+          },
+          {
+            "id": 15029,
+            "num": 50
+          }
+        ],
+        "icon": "/assets/items/potentials/T_Rouge_Talent_Crossbow_Zaie.png",
+        "name": {
+          "EN": "Plume: Unravelling",
+          "FR": "Plume – Cocon brisé",
+          "JP": "レイヴン・アンラヴェリング",
+          "KR": "편익·파각",
+          "TC": "織羽·剝繭"
+        },
+        "desc": {
+          "EN": "For every 0.5% of Max HP lost, gain 5 Calamity. Damage dealt by [Eclosion] is increased by an amount equal to 80% of Max HP.",
+          "FR": "Chaque fois que vous perdez des PV, chaque tranche de 0.5% de PV max perdue est convertie en 5 points de calamité. L’effet [Éclosion] inflige en plus des dégâts de calamité équivalents à 80% de vos PV max.",
+          "JP": "HPを失うたび、失ったHPが最大HPの0.5%に達するごとに、災厄値を5獲得する。【羽化】効果のダメージ倍率に、自身の最大HPの80%に相当する災厄ダメージが追加される。",
+          "KR": "HP를 잃을 때마다, 최대 HP 0.5% 손실당 5 재앙도로 전환된다. [우화] 효과 발동 시, 기존 대미지 배율에 더해 자신의 최대 HP의 80%에 해당하는 재앙 대미지를 추가로 부여한다.",
+          "TC": "每次損失生命時，每0.5%最大生命損失轉化為5點災厄值。[羽化]效果的傷害倍率額外附加自身最大生命值80%的災厄傷害。"
+        },
+        "attrs": null
+      },
+      {
+        "id": 20299004,
+        "level": 2,
+        "branch": 1,
+        "unlock": [
+          20299002
+        ],
+        "cost": [
+          {
+            "id": 15004,
+            "num": 30
+          },
+          {
+            "id": 15032,
+            "num": 90
+          },
+          {
+            "id": 15037,
+            "num": 15
+          },
+          {
+            "id": 20028,
+            "num": 4
+          },
+          {
+            "id": 15030,
+            "num": 50
+          },
+          {
+            "id": 15029,
+            "num": 50
+          }
+        ],
+        "icon": "/assets/items/potentials/T_Rouge_Talent_Qiege.png",
+        "name": {
+          "EN": "Bloodstain: Trigger",
+          "FR": "Sanguine – Déclenchement",
+          "JP": "ブラッディ・トリガー",
+          "KR": "핏빛·발동",
+          "TC": "血染·觸發"
+        },
+        "desc": null,
+        "attrs": [
+          {
+            "attrName": "TriggerProbability",
+            "rate": 1.8,
+            "value": null,
+            "rateZone": null
+          }
+        ]
+      },
+      {
+        "id": 20299005,
+        "level": 2,
+        "branch": 2,
+        "unlock": [
+          20299003
+        ],
+        "cost": [
+          {
+            "id": 15004,
+            "num": 30
+          },
+          {
+            "id": 15032,
+            "num": 90
+          },
+          {
+            "id": 15037,
+            "num": 15
+          },
+          {
+            "id": 20028,
+            "num": 4
+          },
+          {
+            "id": 15030,
+            "num": 50
+          },
+          {
+            "id": 15029,
+            "num": 50
+          }
+        ],
+        "icon": "/assets/items/potentials/T_Rouge_Talent_DamageUp.png",
+        "name": {
+          "EN": "Plume: Refinement",
+          "FR": "Plume – Raffinement",
+          "JP": "レイヴン・リファイン",
+          "KR": "편익·정련",
+          "TC": "織羽·精錬"
+        },
+        "desc": null,
+        "attrs": [
+          {
+            "attrName": "DamageRate",
+            "rate": null,
+            "value": 0.45,
+            "rateZone": "Normal"
+          }
+        ]
+      },
+      {
+        "id": 20299006,
+        "level": 3,
+        "branch": 1,
+        "unlock": [
+          20299004
+        ],
+        "cost": [
+          {
+            "id": 15004,
+            "num": 30
+          },
+          {
+            "id": 15032,
+            "num": 90
+          },
+          {
+            "id": 15037,
+            "num": 15
+          },
+          {
+            "id": 202,
+            "num": 2
+          },
+          {
+            "id": 15030,
+            "num": 50
+          },
+          {
+            "id": 15029,
+            "num": 50
+          }
+        ],
+        "icon": "/assets/items/potentials/T_Rouge_Talent_Crossbow_Zaie.png",
+        "name": {
+          "EN": "Bloodstain: Strings",
+          "FR": "Sanguine – Fil de soie",
+          "JP": "ブラッディ・ストリングス",
+          "KR": "핏빛·견사",
+          "TC": "血染·牽絲"
+        },
+        "desc": {
+          "EN": "Consuming Element Disruption matching the character's element grants 20% Skill Speed for 10s. Stacks up to 3 times.",
+          "FR": "Lorsque vous consommez du Désordre élémentaire, votre Vitesse de compétence augmente de 20% pendant 10 s, jusqu’à 3 cumuls.",
+          "JP": "属性乱調を消費した時、スキル速度が20%アップする効果を獲得する。持続時間10秒、最大3スタックまで重ねがけできる。",
+          "KR": "속성 혼돈 소모 시 스킬 속도 스킬 속도 20% 상승 효과를 획득한다. 지속 시간 10초, 최대 3단계 중첩.",
+          "TC": "消耗屬性紊亂時，獲得技能速度提高20%效果，持續10秒，最多疊加3層。"
+        },
+        "attrs": null
+      },
+      {
+        "id": 20299007,
+        "level": 3,
+        "branch": 2,
+        "unlock": [
+          20299005
+        ],
+        "cost": [
+          {
+            "id": 15004,
+            "num": 30
+          },
+          {
+            "id": 15032,
+            "num": 90
+          },
+          {
+            "id": 15037,
+            "num": 15
+          },
+          {
+            "id": 202,
+            "num": 2
+          },
+          {
+            "id": 15030,
+            "num": 50
+          },
+          {
+            "id": 15029,
+            "num": 50
+          }
+        ],
+        "icon": "/assets/items/potentials/T_Rouge_Talent_Crossbow_Zaie.png",
+        "name": {
+          "EN": "Plume: Threads",
+          "FR": "Plume – Fil d’amorce",
+          "JP": "レイヴン・スレッズ",
+          "KR": "편익·도선",
+          "TC": "織羽·引線"
+        },
+        "desc": {
+          "EN": "Consuming [Eclosion] grants 30% Damage Increase for 10s, stacking up to 3 times.",
+          "FR": "Consommer [Éclosion] augmente les dégâts infligés de 30% pendant 10 s, jusqu’à 3 cumuls.",
+          "JP": "【羽化】を消費すると、ダメージが30%アップする。効果は10秒間持続し、最大3スタックまで重ねがけできる。",
+          "KR": "[우화] 소모 시 입히는 대미지 30% 상승 효과를 획득한다. 지속 시간 10초, 최대 3단계 중첩.",
+          "TC": "消耗[羽化]時，獲得傷害提高30%效果，持續10秒，最多疊加3層。"
+        },
+        "attrs": null
+      },
+      {
+        "id": 20299008,
+        "level": 4,
+        "branch": 1,
+        "unlock": [
+          20299006
+        ],
+        "cost": [
+          {
+            "id": 15004,
+            "num": 30
+          },
+          {
+            "id": 15032,
+            "num": 90
+          },
+          {
+            "id": 15037,
+            "num": 15
+          },
+          {
+            "id": 20028,
+            "num": 4
+          },
+          {
+            "id": 15030,
+            "num": 50
+          },
+          {
+            "id": 15029,
+            "num": 50
+          }
+        ],
+        "icon": "/assets/items/potentials/T_Rouge_Talent_AttrPenetration.png",
+        "name": {
+          "EN": "Bloodstain: Piercing",
+          "FR": "Sanguine – Pénétration",
+          "JP": "ブラッディ・ペネトレーション",
+          "KR": "핏빛·관통",
+          "TC": "血染·穿透"
+        },
+        "desc": null,
+        "attrs": [
+          {
+            "attrName": "DamageRate",
+            "rate": null,
+            "value": 0.35,
+            "rateZone": "Almighty"
+          }
+        ]
+      },
+      {
+        "id": 20299009,
+        "level": 4,
+        "branch": 2,
+        "unlock": [
+          20299007
+        ],
+        "cost": [
+          {
+            "id": 15004,
+            "num": 30
+          },
+          {
+            "id": 15032,
+            "num": 90
+          },
+          {
+            "id": 15037,
+            "num": 15
+          },
+          {
+            "id": 20028,
+            "num": 4
+          },
+          {
+            "id": 15030,
+            "num": 50
+          },
+          {
+            "id": 15029,
+            "num": 50
+          }
+        ],
+        "icon": "/assets/items/potentials/T_Rouge_Talent_Berserker.png",
+        "name": {
+          "EN": "Plume: Resolve",
+          "FR": "Plume – Ténacité",
+          "JP": "レイヴン・リゾルヴ",
+          "KR": "편익·필사",
+          "TC": "織羽·背水"
+        },
+        "desc": null,
+        "attrs": [
+          {
+            "attrName": "EnmityValue",
+            "rate": null,
+            "value": 0.2,
+            "rateZone": null
+          }
+        ]
+      },
+      {
+        "id": 20299010,
+        "level": 5,
+        "branch": 1,
+        "unlock": [
+          20299008,
+          20299009
+        ],
+        "cost": null,
+        "icon": "/assets/items/potentials/T_Rouge_Talent_Crossbow_Zaie.png",
+        "name": {
+          "EN": "Bloodstain: Lightward",
+          "FR": "Sanguine – Vers la lumière",
+          "JP": "ブラッディ・フォトタクシス",
+          "KR": "핏빛·주광",
+          "TC": "血染·趨光"
+        },
+        "desc": {
+          "EN": "Max HP +300%. Damage dealt by [Eclosion] is treated as Overflow Damage.\r\nConsuming Element Disruption matching the character's element causes 3 extra bullets to be fired at the target for each stack consumed, at no Ammo cost. Minimum trigger interval per stack consumed: 0.9s.",
+          "FR": "PV max +300%. Les dégâts infligés par l’effet [Éclosion] sont considérés comme des Dégâts de Surabondance.\nLorsque vous consommez du Désordre élémentaire, l’arme tire nombre de cumuls consommés × 3 projectiles supplémentaires vers la cible, sans consommer de munitions en réserve. Intervalle de déclenchement minimum : nombre de cumuls consommés × 0.9 s.",
+          "JP": "最大HPが300%アップする。【羽化】効果によるダメージはチャージダメージと見なされる。\n属性乱調を消費すると、対象に消費したスタック数×3発の追加弾を発射する。予備弾薬は消費せず、最短発動間隔は消費した重複数×0.9秒。",
+          "KR": "최대 HP가 300% 상승한다. [우화] 효과가 입히는 대미지는 오버차지 대미지로 간주된다.\n속성 혼돈 소모 시, 대상을 향해 추가 탄환을 소모한 단계×3발 발사한다. 기존 탄환은 소모하지 않으며, 소모한 단계×0.9초의 최소 발동 간격을 갖는다.",
+          "TC": "最大生命提高300%。[羽化]效果造成的傷害視為充盈傷害。\n消耗屬性紊亂時，朝目標發射消耗層數×3發額外子彈，不消耗備彈，最短觸發間隔為消耗層數×0.9秒。"
+        },
+        "attrs": [
+          {
+            "attrName": "MaxHp",
+            "rate": 3,
+            "value": null,
+            "rateZone": null
+          }
+        ]
+      }
+    ]
+  },
   "weapons-20599": {
     "weaponId": 20599,
     "nodes": [
@@ -940,15 +1403,13 @@
         "name": {
           "EN": "Thorn – First Bloom",
           "FR": "Épines – Première floraison",
-          "ES": "Espinas – Primer florecimiento",
           "JP": "ソーン・プリマブルーム",
           "KR": "가시의 개화",
           "TC": "荊刺·初綻"
         },
         "desc": {
-          "EN": "Dealing damage with this weapon grants 2 Calamity. Calamity is capped at 100.\nWhen Calamity reaches its cap, all Calamity is consumed to trigger [Oblivion] once, dealing 1000% Calamity damage to enemies within 3 m and pulling hit enemies towards its center. This counts as Ranged Weapon DMG.",
+          "EN": "Dealing damage with this weapon grants 2 Calamity. Calamity is capped at 100.\r\nWhen Calamity reaches its cap, all Calamity is consumed to trigger [Oblivion] once, dealing 1000% Calamity damage to enemies within 3 m and pulling hit enemies towards its center. This counts as Ranged Weapon DMG.",
           "FR": "Lorsque cette arme inflige des dégâts, elle confère 2 points de calamité. Le maximum de calamité est de 100.\nLorsque le maximum est atteint, tous les points de calamité sont consommés pour déclencher [Extinction].\n[Extinction] : inflige 1000% dégâts de calamité aux ennemis dans un rayon de 3 m, ces dégâts sont considérés comme des DGT d’arme à distance et attirent les cibles vers le centre de la zone.",
-          "ES": "Al infligir daño con esta arma, obtienes 2 de calamidad. El límite de calamidad es 100.\nAl alcanzar el límite, se consume toda la calamidad y se activa una vez [Extinción]. Inflige 1000% de daño de calamidad a los enemigos en un radio de 3 metros, considerado daño de arma a distancia, y los atrae hacia el centro del área.",
           "JP": "この武器でダメージを与えるとき、2の災厄値を獲得する。災厄値は最大100まで保持でき、上限に達するとすべての災厄値を消費して1回の【寂滅】を発動する。【見送りの挽歌】半径3メートル内の敵に1000%の災厄ダメージを与える。このダメージは遠隔武器ダメージと見なされ、命中した敵を範囲中心に引き寄せる。",
           "KR": "해당 무기로 대미지를 입힐 때, 재앙도를 2 획득한다. 재앙도는 최대 100까지 보유 가능.\n재앙도가 최대치에 도달하면 모든 재앙도를 소모하여 [사멸]을 1회 발동한다.\n[사멸]: 반경 3m 내의 적에게 재앙 대미지를 1000% 입힌다. 원거리 무기 대미지로 간주되며, 대미지 목표를 범위 가운데로 끌어당긴다.",
           "TC": "使用此武器造成傷害時，獲得2點災厄值，災厄值上限為100點。\n災厄值達到上限時，消耗全部災厄值，觸發1次[寂滅]：對半徑3米內的敵人造成1000%災厄傷害，視為遠端武器傷害，並將傷害目標拉向範圍中心。"
@@ -992,7 +1453,6 @@
         "name": {
           "EN": "Thorn – Full Bloom",
           "FR": "Épines – Pleine floraison",
-          "ES": "Espinas – Plena floración",
           "JP": "ソーン・フルブルーム",
           "KR": "가시의 만개",
           "TC": "荊刺·盛放"
@@ -1000,7 +1460,6 @@
         "desc": {
           "EN": "Gain 80 Calamity at the start of battle. Each time Combo Points are consumed, gain [60%×Combo Points consumed] Calamity.",
           "FR": "Au début du combat, obtient 80 points de calamité. Après avoir consommé des points de Combo, obtient [60% × quantité consommée] points de calamité.",
-          "ES": "Al comenzar la batalla, obtienes 80 de calamidad. Al consumir puntos de combo, obtienes [60% × puntos de combo consumidos] de calamidad.",
           "JP": "戦闘開始時に災厄値を80獲得する。コンボポイントを消費すると、[60%×消費量]の災厄値を獲得する。",
           "KR": "전투 시작 시 재앙도를 80 획득한다. 콤보 포인트를 소모할 때마다 [60%x소모량]만큼 재앙도로 전환된다.",
           "TC": "戰鬥開始時，獲得80點災厄值。消耗連擊點數後，獲得[60%×消耗量]點災厄值。"
@@ -1044,7 +1503,6 @@
         "name": {
           "EN": "Thorn – Floral Rivalry",
           "FR": "Épines – Rivalité florale",
-          "ES": "Espinas – Rivalidad floral",
           "JP": "ソーン・フロリッシュ",
           "KR": "가시의 경연",
           "TC": "荊刺·爭妍"
@@ -1052,7 +1510,6 @@
         "desc": {
           "EN": "Dealing damage with a melee weapon grants 2 Calamity. If this instance of damage is critical, grants an additional 4 Calamity.",
           "FR": "Infliger des dégâts avec une arme de mêlée confère 2 points de calamité. En cas de coup critique avec une arme de mêlée, confère 4 points de calamité supplémentaires.",
-          "ES": "Al infligir daño con un arma cuerpo a cuerpo, obtienes 2 de calamidad; si el golpe es crítico, obtienes 4 de calamidad adicionales.",
           "JP": "近接武器でダメージを与えると2の災厄値を獲得し、クリティカル時はさらに4の災厄値を獲得する。",
           "KR": "근접 무기로 대미지를 입힐 시 재앙도를 2 획득하며, 해당 대미지가 크리티컬 발동 시 추가로 재앙도를 4 획득한다.",
           "TC": "使用近戰武器造成傷害時獲得2點災厄值，如果該傷害暴擊，額外獲得4點災厄值。"
@@ -1096,7 +1553,6 @@
         "name": {
           "EN": "Requiem – Intensity",
           "FR": "Requiem – Intensité",
-          "ES": "Réquiem – Intensidad",
           "JP": "レクイエム・フォース",
           "KR": "스러진 강세",
           "TC": "絕響·強度"
@@ -1148,7 +1604,6 @@
         "name": {
           "EN": "Requiem – Penetration",
           "FR": "Requiem – Perforation",
-          "ES": "Réquiem – Perforación",
           "JP": "レクイエム・ペネトレーション",
           "KR": "스러진 관통",
           "TC": "絕響·穿透"
@@ -1200,7 +1655,6 @@
         "name": {
           "EN": "Thorn – Decay",
           "FR": "Épines – Déclin",
-          "ES": "Espinas – Decadencia",
           "JP": "ソーン・ディケイ",
           "KR": "가시의 쇠퇴",
           "TC": "荊刺·衰敗"
@@ -1208,7 +1662,6 @@
         "desc": {
           "EN": "For every 120 Combo Points consumed, the damage multiplier of the next [Oblivion] increases by 600%, and melee weapon damage increases by 30% for 3s.",
           "FR": "Tous les 120 points de Combo consommés, le multiplicateur de dégâts de la prochaine activation d’[Extinction] augmente de 600%. Les dégâts des armes de mêlée augmentent également de 30% pendant 3 s.",
-          "ES": "Por cada 120 puntos de combo consumidos acumulados, el multiplicador de daño del siguiente [Extinción] aumenta en 600% y el daño de arma cuerpo a cuerpo aumenta en 30% durante 3 s.",
           "JP": "コンボポイントを累計120消費するごとに、次の【寂滅】のダメージ倍率が600%上昇し、さらに3秒間、近接武器ダメージが30%アップする。",
           "KR": "콤보 포인트를 누적 120 소모할 때마다 다음 [사멸]의 대미지 배율이 600% 상승하며, 근접 무기 대미지가 30% 상승한다. 지속 시간 3초.",
           "TC": "每累計消耗120點連擊點數後，下次[寂滅]的傷害倍率增加600%，並獲得近戰武器傷害提高30%效果，持續3秒。"
@@ -1252,7 +1705,6 @@
         "name": {
           "EN": "Thorn – Withering",
           "FR": "Épines – Flétrissure",
-          "ES": "Espinas – Marchitez",
           "JP": "ソーン・ウィザリング",
           "KR": "가시의 조령",
           "TC": "荊刺·凋零"
@@ -1260,7 +1712,6 @@
         "desc": {
           "EN": "Increases [Oblivion] radius by 6 m and its damage is guaranteed to trigger bonus effects.",
           "FR": "La portée d’[Extinction] est augmentée à 6 m et ses dégâts déclenchent systématiquement des effets supplémentaires.",
-          "ES": "El radio de [Extinción] aumenta en 6 metros y su daño activa el efecto extra de forma garantizada.",
           "JP": "【寂滅】の範囲が6メートルまで拡大し、ダメージを与えた場合、必ず追加効果を発動する。",
           "KR": "[사멸]의 대미지 범위가 6까지 상승하며, 대미지에 항상 추가 효과가 발동된다.",
           "TC": "[寂滅]範圍提高至6米，傷害必定觸發額外效果。"
@@ -1304,7 +1755,6 @@
         "name": {
           "EN": "Requiem – Huntdown",
           "FR": "Requiem – Poursuite",
-          "ES": "Réquiem – Persecución",
           "JP": "レクイエム・パシュート",
           "KR": "스러진 추격",
           "TC": "絕響·追襲"
@@ -1312,7 +1762,6 @@
         "desc": {
           "EN": "The character's own element deals +35% additional damage.",
           "FR": "Dégâts supplémentaires de l’attribut élémentaire +35%.",
-          "ES": "Daño adicional de atributo propio +35%.",
           "JP": "自属性追加ダメージ+35%。",
           "KR": "자체 속성 추가 대미지+35%",
           "TC": "自屬性追加傷害+35%。"
@@ -1356,7 +1805,6 @@
         "name": {
           "EN": "Requiem – Morale",
           "FR": "Requiem – Vigueur",
-          "ES": "Réquiem – Moral",
           "JP": "レクイエム・ハイスピリット",
           "KR": "스러진 격양",
           "TC": "絕響·昂揚"
@@ -1384,15 +1832,13 @@
         "name": {
           "EN": "Thorn – Wilt",
           "FR": "Épines – Putréfaction",
-          "ES": "Espinas – Putrefacción",
           "JP": "ソーン・ディコンポーズ",
           "KR": "가시의 부패",
           "TC": "荊刺·腐朽"
         },
         "desc": {
-          "EN": "Melee Weapon Charged Attacks deal 300% more damage.\nWhen Combo Points are at max, the excess is stored as the same stacks of [Doom Sigils], up to 360. Each time [Oblivion] is triggered, gain 20 stacks of [Doom Sigil].\nWhen using a Charged Attack, if Combo Points are below max, consume an equal number of [Doom Sigils] to raise Combo Points to the max.",
+          "EN": "Melee Weapon Charged Attacks deal 300% more damage.\r\nWhen Combo Points are at max, the excess is stored as the same stacks of [Doom Sigils], up to 360. Each time [Oblivion] is triggered, gain 20 stacks of [Doom Sigil].\r\nWhen using a Charged Attack, if Combo Points are below max, consume an equal number of [Doom Sigils] to raise Combo Points to the max.",
           "FR": "Les dégâts des Attaques chargées des armes de mêlée augmentent de 300%. Lorsque des points de Combo sont obtenus, si la jauge est déjà pleine, l’excédent est converti en un nombre équivalent de cumuls de [Marques de fatalité] permanentes, cumulables jusqu’à 360.\nChaque déclenchement d’[Extinction] confère 20 cumuls de [Marques de fatalité]. Lorsqu’une Attaque chargée est utilisée, si les points de Combo sont insuffisants, les [Marques de fatalité] sont immédiatement consommées pour restaurer le nombre de points de Combo manquants.",
-          "ES": "Los Ataques Cargado de arma cuerpo a cuerpo infligen 300% más de daño.\nAl obtener Puntos de combo, si ya están al máximo, el valor sobrante se convierte en acumulaciones permanentes de [Sigilos de perdición]. Máximo 360 acumulaciones. Cada vez que se activa [Extinción], se obtienen 20 acumulaciones de [Sigilos de perdición].\nAl ejecutar un Ataque Cargado, si los puntos de combo no están al máximo, puedes consumir de inmediato las acumulaciones de [Sigilos de perdición] para completarlos con la cantidad correspondiente.",
           "JP": "近接武器の溜め攻撃ダメージが300%アップする。\n コンボポイント獲得時、コンボポイントが上限に達した場合、超えた分と同量の永続の[厄運の痕]を獲得する。最大360まで獲得できる。【寂滅】が発動するたびに20スタックの[厄運の痕]を獲得する。\n 溜め攻撃時、コンボポイントが上限に満たない場合は、[厄運の痕]を消費して対応する数のコンボポイントを獲得する。",
           "KR": "근접 무기 차지 공격 대미지가 300% 상승한다.\n콤보 포인트 획득 시, 콤보 포인트가 이미 최대치라면 초과한 양과 같은 단계의 [불운의 흔적]을 획득한다(영구 지속). 최대 360단계까지 중첩 가능. [사멸] 발동 시마다 [불운의 흔적]을 20단계 획득한다.\n차지 공격 시, 콤보 포인트가 최대치가 아니라면, [불운의 흔적]을 즉시 소모하여 해당 수량의 콤보 포인트를 보충할 수 있다.",
           "TC": "近戰武器蓄力攻擊傷害提高300%。\n獲得連擊點數時，如果連擊點數已滿，獲得和溢出值等量層數永續的[厄運之痕]，最多疊加360層。每次觸發[寂滅]獲得20層[厄運之痕]。\n執行蓄力攻擊時，如果連擊點數不滿，可立即消耗[厄運之痕]獲得對應數量的連擊點數進行補充。"

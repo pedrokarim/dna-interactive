@@ -1,0 +1,935 @@
+{
+  "id": "mountarcano",
+  "name": "Mount Arcano",
+  "image": "/assets/maps/mount_arcano.png",
+  "imageSize": {
+    "width": 4096,
+    "height": 4096
+  },
+  "legend": [
+    {
+      "type": "Collectibles",
+      "label": "Collectibles",
+      "icon": "https://herobox-img.yingxiong.com/map/1749672600072455391.png",
+      "markers": [
+        {
+          "id": 25,
+          "name": "Caramel Mushroom",
+          "icon": "https://herobox-img.yingxiong.com/map/1749555938060153157.png",
+          "markers": [
+            {
+              "id": 2731,
+              "position": {
+                "x": 1942,
+                "y": 1349
+              }
+            },
+            {
+              "id": 2732,
+              "position": {
+                "x": 2004,
+                "y": 1411.75
+              }
+            },
+            {
+              "id": 2784,
+              "position": {
+                "x": 2192.75,
+                "y": 2347
+              }
+            },
+            {
+              "id": 2785,
+              "position": {
+                "x": 2170.75,
+                "y": 2344.25
+              }
+            },
+            {
+              "id": 2786,
+              "position": {
+                "x": 2112.5,
+                "y": 2314.25
+              }
+            },
+            {
+              "id": 2790,
+              "position": {
+                "x": 2207.5,
+                "y": 2296.25
+              }
+            },
+            {
+              "id": 2791,
+              "position": {
+                "x": 2368,
+                "y": 2195.5
+              }
+            }
+          ]
+        },
+        {
+          "id": 29,
+          "name": "Bird Egg",
+          "icon": "https://herobox-img.yingxiong.com/map/1749556033266528734.png",
+          "markers": [
+            {
+              "id": 2730,
+              "position": {
+                "x": 1856,
+                "y": 1360.75
+              }
+            },
+            {
+              "id": 2734,
+              "position": {
+                "x": 1990.5,
+                "y": 1483.25
+              }
+            },
+            {
+              "id": 2740,
+              "position": {
+                "x": 1879.75,
+                "y": 1557.5
+              }
+            },
+            {
+              "id": 2742,
+              "position": {
+                "x": 1798.75,
+                "y": 1485
+              }
+            },
+            {
+              "id": 2744,
+              "position": {
+                "x": 1716.5,
+                "y": 1515.25
+              }
+            },
+            {
+              "id": 2745,
+              "position": {
+                "x": 1938,
+                "y": 1624.75
+              }
+            },
+            {
+              "id": 2748,
+              "position": {
+                "x": 2121,
+                "y": 1473.25
+              }
+            }
+          ]
+        },
+        {
+          "id": 31,
+          "name": "Virifly",
+          "icon": "https://herobox-img.yingxiong.com/map/1749556059763681063.png",
+          "markers": [
+            {
+              "id": 2767,
+              "position": {
+                "x": 1836,
+                "y": 1603.75
+              }
+            },
+            {
+              "id": 2768,
+              "position": {
+                "x": 1752.75,
+                "y": 1744.5
+              }
+            },
+            {
+              "id": 2775,
+              "position": {
+                "x": 2151.25,
+                "y": 2488.5
+              }
+            },
+            {
+              "id": 2788,
+              "position": {
+                "x": 2264.5,
+                "y": 2342.25
+              }
+            },
+            {
+              "id": 2795,
+              "position": {
+                "x": 2339,
+                "y": 2173
+              }
+            },
+            {
+              "id": 2799,
+              "position": {
+                "x": 2034.75,
+                "y": 2305
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Landmarks",
+      "label": "Landmarks",
+      "icon": "https://herobox-img.yingxiong.com/map/1749672609569330275.png",
+      "markers": [
+        {
+          "id": 35,
+          "name": "Teleport Point",
+          "icon": "https://herobox-img.yingxiong.com/map/1749557822886359503.png",
+          "markers": [
+            {
+              "id": 2738,
+              "position": {
+                "x": 1862.75,
+                "y": 1527
+              }
+            },
+            {
+              "id": 2771,
+              "position": {
+                "x": 2303,
+                "y": 2722.5
+              }
+            },
+            {
+              "id": 2792,
+              "position": {
+                "x": 2354.5,
+                "y": 2139.5
+              }
+            }
+          ]
+        },
+        {
+          "id": 38,
+          "name": "Fishing Spot",
+          "icon": "https://herobox-img.yingxiong.com/map/1749561882699685405.png",
+          "markers": [
+            {
+              "id": 2754,
+              "position": {
+                "x": 1656,
+                "y": 1602
+              }
+            }
+          ]
+        },
+        {
+          "id": 400,
+          "name": "Dreamy Slumber Pool",
+          "icon": "https://herobox-img.yingxiong.com/map/1788757840245577916.png",
+          "markers": [
+            {
+              "id": 2729,
+              "position": {
+                "x": 1878.25,
+                "y": 1334.75
+              }
+            }
+          ]
+        },
+        {
+          "id": 401,
+          "name": "Old Site of Arcano Town",
+          "icon": "https://herobox-img.yingxiong.com/map/1788758389884176625.png",
+          "markers": [
+            {
+              "id": 2770,
+              "position": {
+                "x": 1720.75,
+                "y": 1818
+              }
+            },
+            {
+              "id": 2800,
+              "position": {
+                "x": 2041.75,
+                "y": 2312.5
+              }
+            }
+          ]
+        },
+        {
+          "id": 402,
+          "name": "Valley Rift",
+          "icon": "https://herobox-img.yingxiong.com/map/1788758429389251800.png",
+          "markers": [
+            {
+              "id": 2750,
+              "position": {
+                "x": 1873.75,
+                "y": 1702.5
+              }
+            }
+          ]
+        },
+        {
+          "id": 403,
+          "name": "Victor's Home",
+          "icon": "https://herobox-img.yingxiong.com/map/1788758478455857115.png",
+          "markers": [
+            {
+              "id": 2747,
+              "position": {
+                "x": 2114.75,
+                "y": 1543
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Geniemon",
+      "label": "Geniemon",
+      "icon": "https://herobox-img.yingxiong.com/map/1749562159541539924.png",
+      "markers": [
+        {
+          "id": 42,
+          "name": "Geniemon Spawn Point",
+          "icon": "https://herobox-img.yingxiong.com/map/1749672734516496170.png",
+          "markers": [
+            {
+              "id": 2879,
+              "position": {
+                "x": 2029,
+                "y": 1350.25
+              }
+            },
+            {
+              "id": 2880,
+              "position": {
+                "x": 1911.5,
+                "y": 1408.25
+              }
+            },
+            {
+              "id": 2881,
+              "position": {
+                "x": 2072.5,
+                "y": 1523
+              }
+            },
+            {
+              "id": 2882,
+              "position": {
+                "x": 2026,
+                "y": 1614.75
+              }
+            },
+            {
+              "id": 2883,
+              "position": {
+                "x": 1929.25,
+                "y": 1654.5
+              }
+            },
+            {
+              "id": 2884,
+              "position": {
+                "x": 1650.5,
+                "y": 1436.25
+              }
+            },
+            {
+              "id": 2885,
+              "position": {
+                "x": 2398,
+                "y": 2197.5
+              }
+            },
+            {
+              "id": 2886,
+              "position": {
+                "x": 2312,
+                "y": 2299
+              }
+            },
+            {
+              "id": 2887,
+              "position": {
+                "x": 2158,
+                "y": 2391.75
+              }
+            },
+            {
+              "id": 2888,
+              "position": {
+                "x": 2159.25,
+                "y": 2463.75
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Storage Chest",
+      "label": "Storage Chest",
+      "icon": "https://herobox-img.yingxiong.com/map/1749672743841364457.png",
+      "markers": [
+        {
+          "id": 43,
+          "name": "Storage Chest",
+          "icon": "https://herobox-img.yingxiong.com/map/1749566001012138274.png",
+          "markers": [
+            {
+              "id": 2755,
+              "position": {
+                "x": 2040.5,
+                "y": 1639
+              }
+            },
+            {
+              "id": 2756,
+              "position": {
+                "x": 2059.25,
+                "y": 1536.5
+              }
+            },
+            {
+              "id": 2757,
+              "position": {
+                "x": 2058.5,
+                "y": 1569.5
+              }
+            },
+            {
+              "id": 2758,
+              "position": {
+                "x": 1998,
+                "y": 1699.25
+              }
+            },
+            {
+              "id": 2759,
+              "position": {
+                "x": 1908.446569384929,
+                "y": 1661.8742744492056
+              }
+            },
+            {
+              "id": 2760,
+              "position": {
+                "x": 1864,
+                "y": 1539.75
+              }
+            },
+            {
+              "id": 2762,
+              "position": {
+                "x": 1919.3326847476546,
+                "y": 1497.5093294358262
+              }
+            },
+            {
+              "id": 2763,
+              "position": {
+                "x": 1767,
+                "y": 1391
+              }
+            },
+            {
+              "id": 2764,
+              "position": {
+                "x": 1775.75,
+                "y": 1416
+              }
+            },
+            {
+              "id": 2765,
+              "position": {
+                "x": 1722.75,
+                "y": 1547
+              }
+            },
+            {
+              "id": 2787,
+              "position": {
+                "x": 2077.25,
+                "y": 2413.25
+              }
+            },
+            {
+              "id": 2796,
+              "position": {
+                "x": 2221,
+                "y": 2074
+              }
+            },
+            {
+              "id": 2801,
+              "position": {
+                "x": 2290,
+                "y": 2129.5
+              }
+            }
+          ]
+        },
+        {
+          "id": 44,
+          "name": "Treasure Map Chest",
+          "icon": "https://herobox-img.yingxiong.com/map/1749560145785106563.png",
+          "markers": [
+            {
+              "id": 2761,
+              "position": {
+                "x": 1896.3326847476546,
+                "y": 1495.5093294358262
+              }
+            },
+            {
+              "id": 2863,
+              "position": {
+                "x": 2146.5,
+                "y": 2399.5
+              }
+            }
+          ]
+        },
+        {
+          "id": 60,
+          "name": "Monster Chest",
+          "icon": "https://herobox-img.yingxiong.com/map/1749565963302865436.png",
+          "markers": [
+            {
+              "id": 2753,
+              "position": {
+                "x": 2034.25,
+                "y": 1373
+              }
+            },
+            {
+              "id": 2781,
+              "position": {
+                "x": 2268.75,
+                "y": 2397
+              }
+            },
+            {
+              "id": 2783,
+              "position": {
+                "x": 2187.75,
+                "y": 2408
+              }
+            },
+            {
+              "id": 2866,
+              "position": {
+                "x": 1713.5,
+                "y": 1599.5
+              }
+            }
+          ]
+        },
+        {
+          "id": 202,
+          "name": "Mechanism Puzzle",
+          "icon": "https://herobox-img.yingxiong.com/map/1765893938085545821.png",
+          "markers": [
+            {
+              "id": 2793,
+              "position": {
+                "x": 2313.5,
+                "y": 2220
+              }
+            },
+            {
+              "id": 2864,
+              "position": {
+                "x": 1926.5,
+                "y": 1306.5
+              }
+            },
+            {
+              "id": 2867,
+              "position": {
+                "x": 1730,
+                "y": 1494.5
+              }
+            },
+            {
+              "id": 2868,
+              "position": {
+                "x": 1998,
+                "y": 1658.5
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Collectibles",
+      "label": "Collectibles",
+      "icon": "https://herobox-img.yingxiong.com/map/1749672777020326442.png",
+      "markers": [
+        {
+          "id": 50,
+          "name": "Pan Spirit",
+          "icon": "https://herobox-img.yingxiong.com/map/1749562536811567798.png",
+          "markers": [
+            {
+              "id": 2865,
+              "position": {
+                "x": 1715.5,
+                "y": 1395.5
+              }
+            }
+          ]
+        },
+        {
+          "id": 406,
+          "name": "Exploration Record · Mount Arcano",
+          "icon": "https://herobox-img.yingxiong.com/map/1788758682587366866.png",
+          "markers": [
+            {
+              "id": 2733,
+              "position": {
+                "x": 1986.25,
+                "y": 1463.25
+              }
+            },
+            {
+              "id": 2737,
+              "position": {
+                "x": 1902.25,
+                "y": 1492.75
+              }
+            },
+            {
+              "id": 2741,
+              "position": {
+                "x": 1918,
+                "y": 1577.5
+              }
+            },
+            {
+              "id": 2743,
+              "position": {
+                "x": 1703.5,
+                "y": 1485.5
+              }
+            },
+            {
+              "id": 2749,
+              "position": {
+                "x": 2057.5,
+                "y": 1645.75
+              }
+            },
+            {
+              "id": 2772,
+              "position": {
+                "x": 2251.75,
+                "y": 2632.5
+              }
+            },
+            {
+              "id": 2782,
+              "position": {
+                "x": 2192.75,
+                "y": 2361.25
+              }
+            },
+            {
+              "id": 2789,
+              "position": {
+                "x": 2213.25,
+                "y": 2297.5
+              }
+            },
+            {
+              "id": 2794,
+              "position": {
+                "x": 2353,
+                "y": 2037.5
+              }
+            },
+            {
+              "id": 2798,
+              "position": {
+                "x": 2084.75,
+                "y": 2295
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "NPC",
+      "label": "NPC",
+      "icon": "https://herobox-img.yingxiong.com/map/1749672792691326823.png",
+      "markers": [
+        {
+          "id": 51,
+          "name": "NPC",
+          "icon": "https://herobox-img.yingxiong.com/map/1749562234816683808.png",
+          "markers": [
+            {
+              "id": 2777,
+              "position": {
+                "x": 2164,
+                "y": 2463.25
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Unexpected Events/Dispatch",
+      "label": "Unexpected Events/Dispatch",
+      "icon": "https://herobox-img.yingxiong.com/map/1765893914674126617.png",
+      "markers": [
+        {
+          "id": 236,
+          "name": "Surprise Supplies",
+          "icon": "https://herobox-img.yingxiong.com/map/1766234865705382466.png",
+          "markers": [
+            {
+              "id": 2797,
+              "position": {
+                "x": 2145.25,
+                "y": 2331.25
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Challenge",
+      "label": "Challenge",
+      "icon": "https://herobox-img.yingxiong.com/map/1749672639131620419.png",
+      "markers": [
+        {
+          "id": 57,
+          "name": "Shooting Challenge",
+          "icon": "https://herobox-img.yingxiong.com/map/1749672672913484663.png",
+          "markers": [
+            {
+              "id": 2752,
+              "position": {
+                "x": 2071.5,
+                "y": 1448.75
+              }
+            },
+            {
+              "id": 2766,
+              "position": {
+                "x": 1817.25,
+                "y": 1577.75
+              }
+            },
+            {
+              "id": 2776,
+              "position": {
+                "x": 2148.5,
+                "y": 2472.5
+              }
+            },
+            {
+              "id": 2861,
+              "position": {
+                "x": 2278,
+                "y": 2251.5
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Others",
+      "label": "Others",
+      "icon": "https://herobox-img.yingxiong.com/map/1749672703904257929.png",
+      "markers": [
+        {
+          "id": 282,
+          "name": "Side Quest",
+          "icon": "https://herobox-img.yingxiong.com/map/1766206498223250888.png",
+          "markers": [
+            {
+              "id": 2751,
+              "position": {
+                "x": 1884.25,
+                "y": 1325
+              }
+            }
+          ]
+        },
+        {
+          "id": 283,
+          "name": "Limited-Time Event Quest",
+          "icon": "https://herobox-img.yingxiong.com/map/1766206599812809105.png",
+          "markers": [
+            {
+              "id": 2949,
+              "position": {
+                "x": 1866.75,
+                "y": 1527.5
+              }
+            }
+          ]
+        },
+        {
+          "id": 284,
+          "name": "Special Side Quest",
+          "icon": "https://herobox-img.yingxiong.com/map/1766206568709565359.png",
+          "markers": [
+            {
+              "id": 2950,
+              "position": {
+                "x": 2033.25,
+                "y": 1528.5
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Reading Material",
+      "label": "Reading Material",
+      "icon": "https://herobox-img.yingxiong.com/map/1788757480055257839.png",
+      "markers": [
+        {
+          "id": 383,
+          "name": "Arcano Town · Part 1",
+          "icon": "https://herobox-img.yingxiong.com/map/1788758620390781204.png",
+          "markers": [
+            {
+              "id": 2736,
+              "position": {
+                "x": 2052.75,
+                "y": 1639.25
+              }
+            }
+          ]
+        },
+        {
+          "id": 384,
+          "name": "Arcano Town · Part 2",
+          "icon": "https://herobox-img.yingxiong.com/map/1788758648890998679.png",
+          "markers": [
+            {
+              "id": 2862,
+              "position": {
+                "x": 2223,
+                "y": 2272
+              }
+            }
+          ]
+        },
+        {
+          "id": 385,
+          "name": "The Never-Ending Tea Party",
+          "icon": "https://herobox-img.yingxiong.com/map/1788758738674830875.png",
+          "markers": [
+            {
+              "id": 2735,
+              "position": {
+                "x": 1894,
+                "y": 1510
+              }
+            }
+          ]
+        },
+        {
+          "id": 386,
+          "name": "Bloodstained Distress Letter",
+          "icon": "https://herobox-img.yingxiong.com/map/1788762217769946755.png",
+          "markers": [
+            {
+              "id": 2769,
+              "position": {
+                "x": 1760.25,
+                "y": 1760.5
+              }
+            }
+          ]
+        },
+        {
+          "id": 387,
+          "name": "Eric Woodville's Testimony",
+          "icon": "https://herobox-img.yingxiong.com/map/1788762264959884217.png",
+          "markers": [
+            {
+              "id": 2778,
+              "position": {
+                "x": 2151.25,
+                "y": 2458.75
+              }
+            }
+          ]
+        },
+        {
+          "id": 388,
+          "name": "Temperance's Testimony",
+          "icon": "https://herobox-img.yingxiong.com/map/1788762290939534014.png",
+          "markers": [
+            {
+              "id": 2779,
+              "position": {
+                "x": 2158.25,
+                "y": 2452.5
+              }
+            }
+          ]
+        },
+        {
+          "id": 389,
+          "name": "The Tower's Testimony",
+          "icon": "https://herobox-img.yingxiong.com/map/1788762308540477244.png",
+          "markers": [
+            {
+              "id": 2780,
+              "position": {
+                "x": 2164,
+                "y": 2451.75
+              }
+            }
+          ]
+        },
+        {
+          "id": 390,
+          "name": "Tom's Testimony",
+          "icon": "https://herobox-img.yingxiong.com/map/1788762327101926275.png",
+          "markers": [
+            {
+              "id": 2773,
+              "position": {
+                "x": 2182.5,
+                "y": 2489.75
+              }
+            }
+          ]
+        },
+        {
+          "id": 391,
+          "name": "Jenny Blount's Testimony",
+          "icon": "https://herobox-img.yingxiong.com/map/1788762340829207043.png",
+          "markers": [
+            {
+              "id": 2774,
+              "position": {
+                "x": 2166.25,
+                "y": 2495.5
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

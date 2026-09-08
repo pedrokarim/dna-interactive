@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-06T15:43:30.338Z",
+  "generatedAt": "2026-09-08T18:03:11.166Z",
   "categories": [
     {
       "id": "mods",
@@ -8,7 +8,7 @@
       "technicalName": "MOD",
       "displayName": "Demon Wedge",
       "description": "Liste des MOD (Demon Wedges) avec noms multilingues, descriptions et informations d'archives.",
-      "itemCount": 829,
+      "itemCount": 764,
       "availableLanguages": [
         "DE",
         "EN",
@@ -80,39 +80,13 @@
       "sampleIconPath": "/assets/items/weapons/T_Head_Sword_Zhuiyi.png"
     },
     {
-      "id": "fishing",
-      "slug": "fishing",
-      "title": "Peche / Fishing",
-      "technicalName": "FISHING",
-      "displayName": "Peche",
-      "description": "Poissons, cannes, leurres et monnaie lies a la peche.",
-      "itemCount": 151,
-      "availableLanguages": [
-        "DE",
-        "EN",
-        "ES",
-        "FR",
-        "JP",
-        "KR",
-        "TC"
-      ],
-      "defaultGridLanguages": [
-        "FR",
-        "EN"
-      ],
-      "defaultDetailLanguage": "FR",
-      "datasetFile": "fishing.items.json",
-      "iconDirectory": "/assets/items/fishing",
-      "sampleIconPath": "/assets/items/fishing/T_Coin_Other_Fishing.png"
-    },
-    {
       "id": "resources",
       "slug": "resources",
       "title": "Ressources / Items",
       "technicalName": "RESOURCE",
       "displayName": "Items",
       "description": "Liste des ressources avec noms multilingues, descriptions et icones extraites du jeu.",
-      "itemCount": 785,
+      "itemCount": 841,
       "availableLanguages": [
         "DE",
         "EN",
@@ -130,6 +104,32 @@
       "datasetFile": "resources.items.json",
       "iconDirectory": "/assets/items/resources",
       "sampleIconPath": "/assets/items/resources/T_Coin_Main_Lv1.png"
+    },
+    {
+      "id": "fishing",
+      "slug": "fishing",
+      "title": "Peche / Fishing",
+      "technicalName": "FISHING",
+      "displayName": "Peche",
+      "description": "Poissons, cannes, leurres et monnaie lies a la peche.",
+      "itemCount": 171,
+      "availableLanguages": [
+        "DE",
+        "EN",
+        "ES",
+        "FR",
+        "JP",
+        "KR",
+        "TC"
+      ],
+      "defaultGridLanguages": [
+        "FR",
+        "EN"
+      ],
+      "defaultDetailLanguage": "FR",
+      "datasetFile": "fishing.items.json",
+      "iconDirectory": "/assets/items/fishing",
+      "sampleIconPath": "/assets/items/fishing/T_Coin_Other_Fishing.png"
     }
   ]
 }

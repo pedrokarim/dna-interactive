@@ -78,75 +78,10 @@ export type UpcomingCharacter = {
   sources: { label: string; url?: string }[];
 };
 
-export const UPCOMING_CHARACTERS: UpcomingCharacter[] = [
-  {
-    slug: "falsi",
-    name: "Falsi",
-    internalName: "Falu",
-    charId: 3104,
-    subtitle: "Cœur forgé en lame",
-    subtitleEn: "A Heart Tempered into a Blade",
-    element: "Fire",
-    rarity: 5,
-    maxLevel: 80,
-    campKey: "Diguo",
-    campLabel: "Empire Hyperboréen",
-    weaponTags: ["Dualblade", "Cannon"],
-    positioning: ["DPS", "SkillDPS"],
-    recommendAttr: ["ATK_Fire", "SkillIntensity", "SkillEfficiency", "SkillSustain"],
-    baseStats: { atk: 21, def: 288, maxHp: 96, maxEs: 96, maxSp: 180 },
-    growthCurves: { atk: "ATKS", def: "DEFS", maxHp: "MaxHpS", maxEs: "MaxESS" },
-    version: "1.6",
-    versionName: "Paradise's 22nd White Bunny",
-    releaseDate: "2026-09-08",
-    bannerName: "Where the Long Road Leads",
-    skinCount: 2,
-    skinNames: ["Stalking Silence"],
-    voiceActorEn: "Rae Lim",
-    ascensionItems: { thought: "Thought: Falsi", sigil: "Sigil: Falsi" },
-    skillIds: [310401, 310402, 310403, 310404],
-    skills: [
-      {
-        name: "Nightmeld",
-        slot: "Skill1",
-        description:
-          "Entre en état d'Embuscade en consommant de la Santé mentale. Tant que l'état tient, la compétence est remplacée par Shadowpierce.",
-        confidence: "community",
-      },
-      {
-        name: "Abyss Descent",
-        slot: "Skill2",
-        description:
-          "Marque jusqu'à cinq ennemis comme Cibles d'exécution et fait passer Falsi en état de Bourreau.",
-        confidence: "community",
-      },
-      {
-        name: "Executioner",
-        slot: "Passive",
-        description:
-          "Augmente la Résolution, convertit l'ATQ en PV max, et consomme des PV max pour ajouter des dégâts sur les attaques portées aux doubles lames.",
-        confidence: "community",
-      },
-    ],
-    lore: [
-      "Falsi sert l'Empire Hyperboréen comme adjudante de Fulvis, à la tête d'une unité des Narvals. Les archives du jeu la désignent tantôt « Capitaine », tantôt « Officier » selon les témoignages.",
-      "Elle apparaît au cœur de l'affaire de haute trahison Lonza : c'est elle qui s'empare de l'enregistrement laissé par Avar, pièce maîtresse du dossier, récupéré dans la salle de commande centrale peu avant l'explosion.",
-      "D'après le témoignage du soldat Calem, elle a été vue pour la dernière fois hors de la forteresse. Son pistolet, taché de sang, a été retrouvé sur la rive.",
-    ],
-    facts: [
-      { label: "Identifiant interne", value: "Falu (3104)", confidence: "dataMined" },
-      { label: "Éléments d'ascension", value: "Fragment de pensée · Emblème", confidence: "dataMined" },
-      { label: "Fragments pour débloquer", value: "30", confidence: "dataMined" },
-      { label: "Chapitre", value: "Chapitre 7 – Ada et Falsi, région d'Arcano", confidence: "community" },
-      { label: "Arme signature", value: "Stifled Howl (Théâtre immersif)", confidence: "community" },
-    ],
-    sources: [
-      { label: "Données du jeu – fiche technique du personnage 3104" },
-      { label: "Données du jeu – textes d'interface (nom et sous-titre)" },
-      { label: "Compte officiel du jeu", url: "https://x.com/DNAbyss_EN" },
-    ],
-  },
-];
+// Vide entre deux annonces, et c'est l'état normal : Falsi y a vécu jusqu'à la
+// 1.6, où le jeu a livré son nom et ses portraits. Sa vraie fiche a pris le
+// relais sur la même URL, sans rien changer d'autre.
+export const UPCOMING_CHARACTERS: UpcomingCharacter[] = [];
 
 const bySlug = new Map(UPCOMING_CHARACTERS.map((c) => [c.slug, c] as const));
 
