@@ -3,6 +3,7 @@
 import { useCallback, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { toPng } from "html-to-image";
+import { toBustCardSrc } from "@/lib/characters/bust-card";
 import { Download, Sparkles, Swords, Target, X } from "lucide-react";
 import {
   getTrackIcon,
@@ -491,11 +492,15 @@ export function QuickBuildCard({
 
   const name = resolveCharacterDisplayName(character, lang);
   const subtitle = character.translations?.[lang.toUpperCase()]?.subtitle ?? "";
-  const bust =
+  // ==Variante allegee==. Le buste d'origine fait 2048x2048 en PNG, jusqu'a
+  // 4,8 Mo, pour un affichage en 300x400 exporte au double. L'accueil montrant
+  // trois cartes, il chargeait 12 Mo a ce seul titre. Cf. `lib/characters/bust-card`.
+  const bust = toBustCardSrc(
     character.portraits.bust?.publicPath ??
-    character.portraits.gacha?.publicPath ??
-    character.portraits.head?.publicPath ??
-    null;
+      character.portraits.gacha?.publicPath ??
+      character.portraits.head?.publicPath ??
+      null,
+  );
 
   const meleeBest = build.weapons.melee.filter((w) => w.rank === "best");
   const meleeAlt = build.weapons.melee.filter((w) => w.rank === "alternative");
