@@ -69,3 +69,7 @@ HANDOFF-*.md
 
 # Maquettes HTML de travail : jamais versionnees (n'auraient jamais du l'etre)
 design-lab/
+
+# Dossier de travail local : audits, plans en cours, rapports HTML.
+# Jamais versionne, chaque poste a le sien.
+docs/local/
