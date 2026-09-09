@@ -150,7 +150,8 @@ export async function generateMetadata(
         ja: `${baseUrl}/jp`,
         ko: `${baseUrl}/kr`,
         "zh-Hant": `${baseUrl}/tc`,
-        "x-default": `${baseUrl}/fr`,
+        // Anglais et non français : cf. `lib/metadata.ts` pour le pourquoi.
+        "x-default": `${baseUrl}/en`,
       },
     },
     manifest: "/manifest.json",
