@@ -2,6 +2,7 @@ import { MetadataRoute } from "next";
 import { NAVIGATION } from "@/lib/constants";
 import { getAllCharacters, getCharacterSlug } from "@/lib/characters/catalog";
 import { getItemCatalog } from "@/lib/items/catalog";
+import { getAllRegions } from "@/lib/map/regions";
 import { locales } from "@/i18n/config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -24,7 +25,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       ...Object.fromEntries(
         locales.map((l) => [localeToHreflang[l] ?? l, `${baseUrl}/${l}${path}`])
       ),
-      "x-default": `${baseUrl}/fr${path}`,
+      // Anglais et non français : cf. `lib/metadata.ts` pour le pourquoi.
+      "x-default": `${baseUrl}/en${path}`,
     },
   });
 
@@ -53,6 +55,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
         changeFrequency: route.changeFrequency,
         priority: route.priority,
         alternates: alternatesForPath(route.path),
+      });
+    }
+  }
+
+  // Pages région de la carte : une URL par zone, la raison d'être de ces
+  // pages. Priorité 0.85, juste sous `/map` : ce sont elles qui portent le
+  // détail des marqueurs et visent les requêtes de longue traîne.
+  for (const region of getAllRegions()) {
+    const path = `${NAVIGATION.map}/${region.slug}`;
+    for (const locale of locales) {
+      entries.push({
+        url: `${baseUrl}/${locale}${path}`,
+        lastModified: now,
+        changeFrequency: "weekly",
+        priority: 0.85,
+        alternates: alternatesForPath(path),
       });
     }
   }

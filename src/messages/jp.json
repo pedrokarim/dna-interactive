@@ -258,7 +258,32 @@
     "categoryIconAlt": "{name}アイコン — インタラクティブマップのマーカーカテゴリ",
     "markerIconAlt": "{name}アイコン — インタラクティブマップのマーカー",
     "loadingMarkers": "マーカーを読み込み中...",
-    "activeMap": "表示中のマップ"
+    "activeMap": "表示中のマップ",
+    "pageTitle": "Duet Night Abyss インタラクティブマップ",
+    "regionGuides": "地域別ガイド",
+    "regionGuidesLead": "エリアごとに1ページ、マーカーの内訳付き。",
+    "pageIntro": "コミュニティが記録したDuet Night Abyssの全16地域。宝箱、ジーニモン、収集品、ワープポイント、注目スポットを掲載。カテゴリーで絞り込み、見つけたものにチェックを入れれば、進捗はブラウザに保存されます。"
+  },
+  "mapRegion": {
+    "breadcrumbMap": "インタラクティブマップ",
+    "title": "{region}のインタラクティブマップ",
+    "metaTitle": "{region}のマップ",
+    "metaDescription": "Duet Night Abyssの{region}インタラクティブマップ。{categories}カテゴリー、{points}個のマーカー。宝箱、ジーニモン、収集品、ワープポイントを掲載。",
+    "lead": "{region}にはコミュニティが記録した{points}個のマーカーがあり、{categories}カテゴリー・{types}種類に分かれています。探索に出る前に、宝箱、ジーニモン、収集品、ワープポイントの位置を確認しましょう。",
+    "openInMap": "インタラクティブマップで開く",
+    "previewAlt": "{region}のマッププレビュー",
+    "statCategories": "カテゴリー",
+    "statTypes": "マーカー種類",
+    "statPoints": "配置マーカー",
+    "whatToFind": "{region}で見つかるもの",
+    "categoryMeta": "{types}種類 · {points}個",
+    "markerPoints": "{count}個",
+    "howToUse": "このマップの使い方",
+    "howToUseBody": "インタラクティブマップを開き、左パネルでカテゴリーを絞り込み、見つけたマーカーにチェックを入れていきます。進捗はブラウザに保存され、アカウント登録は不要です。",
+    "allRegions": "ほかの地域",
+    "allRegionsLead": "Duet Night Abyssの各エリアに専用ページがあり、マーカーの内訳を掲載しています。",
+    "regionCardMeta": "{categories}カテゴリー · {types}種類",
+    "backToMap": "全体マップを見る"
   },
   "mapInfo": {
     "title": "マップ情報",

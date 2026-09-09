@@ -258,7 +258,32 @@
     "categoryIconAlt": "{name} 아이콘 — 인터랙티브 맵 마커 카테고리",
     "markerIconAlt": "{name} 아이콘 — 인터랙티브 맵 마커",
     "loadingMarkers": "마커를 불러오는 중...",
-    "activeMap": "현재 지도"
+    "activeMap": "현재 지도",
+    "pageTitle": "Duet Night Abyss 인터랙티브 맵",
+    "regionGuides": "지역별 가이드",
+    "regionGuidesLead": "구역마다 한 페이지, 마커 내역 포함.",
+    "pageIntro": "커뮤니티가 기록한 Duet Night Abyss의 16개 지역 전체. 상자, 지니몬, 수집품, 순간이동 지점과 주요 장소를 수록했습니다. 카테고리로 필터링하고 찾은 항목을 체크하면 진행 상황이 브라우저에 저장됩니다."
+  },
+  "mapRegion": {
+    "breadcrumbMap": "인터랙티브 맵",
+    "title": "{region} 인터랙티브 맵",
+    "metaTitle": "{region} 맵",
+    "metaDescription": "Duet Night Abyss {region} 인터랙티브 맵. {categories}개 카테고리, {points}개 마커. 상자, 지니몬, 수집품, 순간이동 지점 수록.",
+    "lead": "{region}에는 커뮤니티가 기록한 마커가 {points}개 있으며, {categories}개 카테고리와 {types}종으로 나뉩니다. 탐험을 떠나기 전에 상자, 지니몬, 수집품, 순간이동 지점을 확인하세요.",
+    "openInMap": "인터랙티브 맵에서 열기",
+    "previewAlt": "{region} 맵 미리보기",
+    "statCategories": "카테고리",
+    "statTypes": "마커 종류",
+    "statPoints": "배치된 마커",
+    "whatToFind": "{region}에서 찾을 수 있는 것",
+    "categoryMeta": "{types}종 · {points}개",
+    "markerPoints": "{count}개",
+    "howToUse": "이 맵 사용법",
+    "howToUseBody": "인터랙티브 맵을 열고 왼쪽 패널에서 카테고리를 필터링한 뒤, 찾은 마커를 하나씩 체크하세요. 진행 상황은 브라우저에 저장되며 계정은 필요하지 않습니다.",
+    "allRegions": "다른 지역",
+    "allRegionsLead": "Duet Night Abyss의 모든 구역에 전용 페이지가 있으며 마커 내역을 제공합니다.",
+    "regionCardMeta": "{categories}개 카테고리 · {types}종",
+    "backToMap": "전체 맵 보기"
   },
   "mapInfo": {
     "title": "맵 정보",

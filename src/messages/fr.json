@@ -258,7 +258,32 @@
     "categoryIconAlt": "Icône {name} — catégorie de marqueurs de la carte interactive",
     "markerIconAlt": "Icône {name} — marqueur de la carte interactive",
     "loadingMarkers": "Chargement des marqueurs...",
-    "activeMap": "Carte active"
+    "activeMap": "Carte active",
+    "pageTitle": "Carte interactive de Duet Night Abyss",
+    "regionGuides": "Guides par région",
+    "regionGuidesLead": "Une page par zone, avec le détail des marqueurs.",
+    "pageIntro": "Les seize régions de Duet Night Abyss, annotées par la communauté : coffres, Geniemons, collectibles, points de téléportation et lieux d'intérêt. Filtrez par catégorie, cochez ce que vous avez trouvé, votre progression reste dans votre navigateur."
+  },
+  "mapRegion": {
+    "breadcrumbMap": "Carte interactive",
+    "title": "Carte interactive de {region}",
+    "metaTitle": "Carte de {region}",
+    "metaDescription": "Carte interactive de {region} dans Duet Night Abyss : {points} marqueurs répartis en {categories} catégories. Coffres, Geniemons, collectibles et points de téléportation.",
+    "lead": "{region} compte {points} marqueurs relevés par la communauté, répartis en {categories} catégories et {types} types de marqueurs. Repérez les coffres, les Geniemons, les collectibles et les points de téléportation avant de partir explorer.",
+    "openInMap": "Ouvrir dans la carte interactive",
+    "previewAlt": "Aperçu de la carte de {region}",
+    "statCategories": "Catégories",
+    "statTypes": "Types de marqueurs",
+    "statPoints": "Marqueurs placés",
+    "whatToFind": "Ce que l'on trouve à {region}",
+    "categoryMeta": "{types} types · {points} marqueurs",
+    "markerPoints": "{count} marqueurs",
+    "howToUse": "Comment utiliser cette carte",
+    "howToUseBody": "Ouvrez la carte interactive, filtrez par catégorie dans le panneau de gauche, puis cochez chaque marqueur au fur et à mesure. Votre progression est enregistrée dans le navigateur, sans compte ni inscription.",
+    "allRegions": "Les autres régions",
+    "allRegionsLead": "Chaque zone de Duet Night Abyss a sa page, avec le détail de ses marqueurs.",
+    "regionCardMeta": "{categories} catégories · {types} types",
+    "backToMap": "Voir la carte complète"
   },
   "mapInfo": {
     "title": "Informations sur les Maps",

@@ -93,7 +93,13 @@ export async function generatePageMetadata(
   for (const l of locales) {
     languages[localeToHreflang[l] ?? l] = `${BASE_URL}/${l}${path}`;
   }
-  languages["x-default"] = `${BASE_URL}/fr${path}`;
+  // ==`x-default` pointe vers l'anglais==, pas vers le français. C'est la
+  // version servie à un visiteur dont la langue ne correspond à aucune locale
+  // déclarée. Le public de Duet Night Abyss cherche en anglais, et la
+  // concurrence indexée (Game8, GameWith, Fandom) est anglophone : envoyer ce
+  // visiteur sur le français lui donnait une page qu'il ne lit pas.
+  // Sans effet sur la langue par défaut du site, qui reste `fr` (cf. i18n/config).
+  languages["x-default"] = `${BASE_URL}/en${path}`;
 
   // Hériter des métadonnées parentes si elles existent
   const parentMetadata = parent ? await parent : null;
