@@ -66,7 +66,7 @@ import { DnaSectionLabel } from "@/components/dna/SectionLabel";
 import { DnaStatRow } from "@/components/dna/StatRow";
 import { DnaTag } from "@/components/dna/Tag";
 import { DnaButton } from "@/components/dna/Button";
-import { DnaCommunityBuildCard } from "@/components/dna/CommunityBuildCard";
+import { DnaCommunityBuildCard, DnaCommunityBuildCardSkeleton } from "@/components/dna/CommunityBuildCard";
 import { DnaSegmented } from "@/components/dna/Segmented";
 import { useDialogA11y } from "@/components/dna/useDialogA11y";
 import { NAVIGATION } from "@/lib/constants";
@@ -1420,7 +1420,11 @@ function CommunityBuildsSection({
 
       <div className="mt-4 flex flex-col gap-2">
         {loading ? (
-          <p className="font-sans text-sm text-muted">{tCommon("loading")}</p>
+          // Un gabarit de carte, et non une ligne de texte : la section passait
+          // d'une vingtaine de pixels a plusieurs centaines une fois les builds
+          // recuperes, en poussant tout le contenu en dessous. Cf. le CLS des
+          // fiches personnages, mesure a 0,187 sur le terrain.
+          <DnaCommunityBuildCardSkeleton />
         ) : builds.length === 0 ? (
           <p className="font-sans text-sm text-muted">{tcb("emptyForElement")}</p>
         ) : (

@@ -150,6 +150,55 @@ export function DnaCommunityBuildCard({
   );
 }
 
+/**
+ * Gabarit d'attente de `DnaCommunityBuildCard`.
+ *
+ * La liste des builds d'une fiche personnage est recuperee cote client, apres
+ * hydratation. Elle affichait une simple ligne de texte pendant le chargement,
+ * puis les cartes : la section passait d'une vingtaine de pixels a plusieurs
+ * centaines, et poussait tout le contenu en dessous.
+ *
+ * Invisible en labo, parce que le CLS de Lighthouse ne compte que les
+ * decalages visibles dans la fenetre initiale et que cette section est sous la
+ * ligne de flottaison. Bien visible sur le terrain, ou les gens font defiler la
+ * page : CLS p75 mesure a 0,187 sur les fiches personnages, contre 0 partout
+ * ailleurs (Sarutobi, 30 jours au 9 septembre 2026).
+ *
+ * Le gabarit reprend la structure et les espacements de la vraie carte plutot
+ * qu'une hauteur en dur, pour que sa hauteur suive celle-ci si elle evolue.
+ */
+export function DnaCommunityBuildCardSkeleton({ className }: { className?: string }) {
+  return (
+    <DnaPanel className={cn("relative overflow-hidden", className)} aria-hidden>
+      <span className="absolute inset-y-0 left-0 w-1 bg-white/8" />
+
+      <div className="flex items-stretch gap-3 p-3 pl-4">
+        <div className="flex min-w-0 flex-1 flex-col gap-2">
+          {/* Ligne titre + etiquette */}
+          <div className="flex items-center gap-2">
+            <span className="h-5 w-1/2 rounded-sm bg-white/8" />
+            <span className="ml-auto h-5 w-16 rounded-sm bg-white/8" />
+          </div>
+
+          {/* Ligne auteur + date */}
+          <div className="flex items-center gap-2">
+            <span className="h-[22px] w-[22px] rounded-full bg-white/8" />
+            <span className="h-3 w-24 rounded-sm bg-white/8" />
+            <span className="ml-auto h-4 w-20 rounded-sm bg-white/8" />
+          </div>
+
+          {/* Apercu d'items */}
+          <div className="flex flex-wrap items-center gap-1.5">
+            {[0, 1, 2, 3].map((i) => (
+              <span key={i} className="h-7 w-7 border border-white/8 bg-black/25" />
+            ))}
+          </div>
+        </div>
+      </div>
+    </DnaPanel>
+  );
+}
+
 function IconChip({ item }: { item: IconRef }) {
   return (
     <span
