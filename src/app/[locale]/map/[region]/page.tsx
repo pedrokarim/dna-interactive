@@ -174,13 +174,18 @@ export default async function RegionPage({
               <DnaPanel key={category.label} className="p-5">
                 <div className="mb-4 flex items-center gap-3">
                   <span className="grid h-9 w-9 shrink-0 place-items-center border border-gold/30 bg-gold/10">
-                    {/* Icônes distantes et de 20 px : une balise `img` suffit,
-                        `next/image` n'apporterait rien ici. */}
-                    <img
+                    {/* ==Passer par `next/image`, meme pour une icone de 20 px==.
+                        Ces icones viennent du CDN du jeu, en PNG bruts et non
+                        redimensionnes : l'une d'elles pese 1,4 Mo pour un rendu
+                        en 20 px, et la page en affiche des dizaines. Servies via
+                        l'optimiseur, elles tombent a quelques kilo-octets et en
+                        AVIF. L'hote est deja autorise dans `next.config.ts`. */}
+                    <Image
                       src={category.icon}
                       alt=""
                       aria-hidden="true"
-                      loading="lazy"
+                      width={40}
+                      height={40}
                       className="max-h-5 max-w-5 object-contain"
                     />
                   </span>
@@ -203,11 +208,12 @@ export default async function RegionPage({
                       key={markerType.id}
                       className="flex items-center gap-2 border border-line/25 bg-panel/40 px-3 py-1.5"
                     >
-                      <img
+                      <Image
                         src={markerType.icon}
                         alt=""
                         aria-hidden="true"
-                        loading="lazy"
+                        width={32}
+                        height={32}
                         className="h-4 w-4 object-contain"
                       />
                       <span className="font-sans text-sm text-parch/90">
