@@ -8,6 +8,7 @@ import { useQueryState, parseAsString } from "nuqs";
 import { useAtom } from "jotai";
 import dynamic from "next/dynamic";
 import mapIndex from "@/data/mapIndex.json";
+import { getRegionSlug } from "@/lib/map/slugs";
 import { useMapData } from "@/hooks/useMapData";
 import Loading from "@/components/Loading";
 import ConfirmDialog from "@/components/ConfirmDialog";
@@ -558,7 +559,10 @@ export default function MapPage() {
                     <div className="font-display text-xl text-parch flex items-center gap-2">
                       {SITE_CONFIG.name}
                     </div>
-                    <p className="font-caps text-[0.55rem] uppercase tracking-[0.28em] text-gold/70">{t('interactiveMap')}</p>
+                    {/* Vrai `h1` : la page n'en servait aucun, elle ne
+                        pouvait donc se positionner sur aucune requête. Le
+                        libellé porte le nom du jeu, pas seulement « carte ». */}
+                    <h1 className="font-caps text-[0.55rem] uppercase tracking-[0.28em] text-gold/70">{t('pageTitle')}</h1>
                   </div>
                 </div>
 
@@ -839,6 +843,39 @@ export default function MapPage() {
                     </div>
                   );
                 })}
+              </div>
+
+              {/* Guides par région.
+                  Le `<select>` plus haut change de carte sans quitter la page,
+                  mais un `<select>` n'est pas explorable : aucune des seize
+                  zones n'avait d'URL. Ces liens mènent aux pages
+                  `/map/[region]`, qui portent le texte que cette vue plein
+                  écran ne peut pas accueillir.
+                  Placé DANS la zone défilante des catégories, et non dans le
+                  pied : le pied est hors du `flex-1`, y ajouter du contenu
+                  écrasait la liste des catégories. */}
+              <div className="mt-6 pt-4 border-t border-line/20">
+                <h2 className="font-caps text-[0.6rem] uppercase tracking-[0.18em] text-gold/80">
+                  {t('regionGuides')}
+                </h2>
+                <p className="mt-1 font-sans text-xs text-muted-2 leading-relaxed">
+                  {t('regionGuidesLead')}
+                </p>
+                <ul className="mt-2 flex flex-wrap gap-x-3 gap-y-1">
+                  {mapIndex.map((map) => (
+                    <li key={map.id}>
+                      <Link
+                        href={`/map/${getRegionSlug(map.id)}`}
+                        className="text-xs text-muted-2 hover:text-gold transition-colors"
+                      >
+                        {map.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-3 font-sans text-xs text-muted-2 leading-relaxed">
+                  {t('pageIntro')}
+                </p>
               </div>
             </div>
           </div>

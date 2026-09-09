@@ -258,7 +258,32 @@
     "categoryIconAlt": "{name} icon — marker category on the interactive map",
     "markerIconAlt": "{name} icon — marker on the interactive map",
     "loadingMarkers": "Loading markers...",
-    "activeMap": "Active map"
+    "activeMap": "Active map",
+    "pageTitle": "Duet Night Abyss Interactive Map",
+    "regionGuides": "Region guides",
+    "regionGuidesLead": "One page per zone, with the full marker breakdown.",
+    "pageIntro": "All sixteen regions of Duet Night Abyss, annotated by the community: chests, Geniemons, collectibles, teleport points and points of interest. Filter by category, tick off what you have found, your progress stays in your browser."
+  },
+  "mapRegion": {
+    "breadcrumbMap": "Interactive map",
+    "title": "{region} Interactive Map",
+    "metaTitle": "{region} Map",
+    "metaDescription": "Interactive map of {region} in Duet Night Abyss: {points} markers across {categories} categories. Chests, Geniemons, collectibles and teleport points.",
+    "lead": "{region} holds {points} community-mapped markers, spread across {categories} categories and {types} marker types. Find the chests, Geniemons, collectibles and teleport points before you head out.",
+    "openInMap": "Open in the interactive map",
+    "previewAlt": "Map preview of {region}",
+    "statCategories": "Categories",
+    "statTypes": "Marker types",
+    "statPoints": "Placed markers",
+    "whatToFind": "What you'll find in {region}",
+    "categoryMeta": "{types} types · {points} markers",
+    "markerPoints": "{count} markers",
+    "howToUse": "How to use this map",
+    "howToUseBody": "Open the interactive map, filter by category in the left panel, then tick off each marker as you go. Your progress is saved in your browser, with no account needed.",
+    "allRegions": "Other regions",
+    "allRegionsLead": "Every zone in Duet Night Abyss has its own page, with a full marker breakdown.",
+    "regionCardMeta": "{categories} categories · {types} types",
+    "backToMap": "View the full map"
   },
   "mapInfo": {
     "title": "Map Information",

@@ -258,7 +258,32 @@
     "categoryIconAlt": "{name}-Symbol — Markerkategorie der interaktiven Karte",
     "markerIconAlt": "{name}-Symbol — Marker der interaktiven Karte",
     "loadingMarkers": "Marker werden geladen...",
-    "activeMap": "Aktive Karte"
+    "activeMap": "Aktive Karte",
+    "pageTitle": "Interaktive Karte zu Duet Night Abyss",
+    "regionGuides": "Regionen-Guides",
+    "regionGuidesLead": "Eine Seite pro Zone, mit allen Markern.",
+    "pageIntro": "Alle sechzehn Regionen von Duet Night Abyss, von der Community erfasst: Truhen, Geniemons, Sammelobjekte, Teleportpunkte und Orte von Interesse. Nach Kategorie filtern, Gefundenes abhaken, dein Fortschritt bleibt im Browser."
+  },
+  "mapRegion": {
+    "breadcrumbMap": "Interaktive Karte",
+    "title": "Interaktive Karte von {region}",
+    "metaTitle": "Karte von {region}",
+    "metaDescription": "Interaktive Karte von {region} in Duet Night Abyss: {points} Marker in {categories} Kategorien. Truhen, Geniemons, Sammelobjekte und Teleportpunkte.",
+    "lead": "{region} umfasst {points} von der Community erfasste Marker, verteilt auf {categories} Kategorien und {types} Markertypen. Finde Truhen, Geniemons, Sammelobjekte und Teleportpunkte, bevor du losziehst.",
+    "openInMap": "In der interaktiven Karte öffnen",
+    "previewAlt": "Kartenvorschau von {region}",
+    "statCategories": "Kategorien",
+    "statTypes": "Markertypen",
+    "statPoints": "Gesetzte Marker",
+    "whatToFind": "Das findest du in {region}",
+    "categoryMeta": "{types} Typen · {points} Marker",
+    "markerPoints": "{count} Marker",
+    "howToUse": "So nutzt du diese Karte",
+    "howToUseBody": "Öffne die interaktive Karte, filtere links nach Kategorie und hake jeden Marker ab, sobald du ihn gefunden hast. Dein Fortschritt wird im Browser gespeichert, ganz ohne Konto.",
+    "allRegions": "Weitere Regionen",
+    "allRegionsLead": "Jede Zone in Duet Night Abyss hat ihre eigene Seite mit allen Markern.",
+    "regionCardMeta": "{categories} Kategorien · {types} Typen",
+    "backToMap": "Vollständige Karte ansehen"
   },
   "mapInfo": {
     "title": "Karteninformationen",

@@ -258,7 +258,32 @@
     "categoryIconAlt": "{name} 圖示 — 互動地圖標記分類",
     "markerIconAlt": "{name} 圖示 — 互動地圖標記",
     "loadingMarkers": "正在載入標記...",
-    "activeMap": "目前地圖"
+    "activeMap": "目前地圖",
+    "pageTitle": "Duet Night Abyss 互動地圖",
+    "regionGuides": "區域指南",
+    "regionGuidesLead": "每個區域一個頁面，附標記明細。",
+    "pageIntro": "由社群標註的 Duet Night Abyss 全部十六個區域，收錄寶箱、精靈獸、收集品、傳送點與重要地點。依分類篩選、勾選已找到的項目，進度會保留在你的瀏覽器中。"
+  },
+  "mapRegion": {
+    "breadcrumbMap": "互動地圖",
+    "title": "{region}互動地圖",
+    "metaTitle": "{region}地圖",
+    "metaDescription": "Duet Night Abyss《{region}》互動地圖：{categories}個分類、{points}個標記。收錄寶箱、精靈獸、收集品與傳送點。",
+    "lead": "{region}共有社群記錄的{points}個標記，分為{categories}個分類與{types}種標記類型。出發探索前，先確認寶箱、精靈獸、收集品與傳送點的位置。",
+    "openInMap": "在互動地圖中開啟",
+    "previewAlt": "{region}地圖預覽",
+    "statCategories": "分類",
+    "statTypes": "標記類型",
+    "statPoints": "已標記數量",
+    "whatToFind": "在{region}可以找到什麼",
+    "categoryMeta": "{types}種 · {points}個",
+    "markerPoints": "{count}個",
+    "howToUse": "如何使用這張地圖",
+    "howToUseBody": "開啟互動地圖，在左側面板依分類篩選，找到後逐一勾選標記。進度會儲存在瀏覽器中，無須註冊帳號。",
+    "allRegions": "其他區域",
+    "allRegionsLead": "Duet Night Abyss 的每個區域都有專屬頁面，並附上標記明細。",
+    "regionCardMeta": "{categories}個分類 · {types}種",
+    "backToMap": "查看完整地圖"
   },
   "mapInfo": {
     "title": "地圖資訊",

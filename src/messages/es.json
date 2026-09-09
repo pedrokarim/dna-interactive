@@ -258,7 +258,32 @@
     "categoryIconAlt": "Icono de {name}: categoría de marcadores del mapa interactivo",
     "markerIconAlt": "Icono de {name}: marcador del mapa interactivo",
     "loadingMarkers": "Cargando marcadores...",
-    "activeMap": "Mapa activo"
+    "activeMap": "Mapa activo",
+    "pageTitle": "Mapa interactivo de Duet Night Abyss",
+    "regionGuides": "Guías por región",
+    "regionGuidesLead": "Una página por zona, con el detalle de los marcadores.",
+    "pageIntro": "Las dieciséis regiones de Duet Night Abyss, anotadas por la comunidad: cofres, Geniemons, coleccionables, puntos de teletransporte y lugares de interés. Filtra por categoría, marca lo que ya has encontrado, tu progreso se queda en tu navegador."
+  },
+  "mapRegion": {
+    "breadcrumbMap": "Mapa interactivo",
+    "title": "Mapa interactivo de {region}",
+    "metaTitle": "Mapa de {region}",
+    "metaDescription": "Mapa interactivo de {region} en Duet Night Abyss: {points} marcadores en {categories} categorías. Cofres, Geniemons, coleccionables y puntos de teletransporte.",
+    "lead": "{region} reúne {points} marcadores registrados por la comunidad, repartidos en {categories} categorías y {types} tipos de marcador. Localiza los cofres, los Geniemons, los coleccionables y los puntos de teletransporte antes de salir a explorar.",
+    "openInMap": "Abrir en el mapa interactivo",
+    "previewAlt": "Vista previa del mapa de {region}",
+    "statCategories": "Categorías",
+    "statTypes": "Tipos de marcador",
+    "statPoints": "Marcadores colocados",
+    "whatToFind": "Qué encontrarás en {region}",
+    "categoryMeta": "{types} tipos · {points} marcadores",
+    "markerPoints": "{count} marcadores",
+    "howToUse": "Cómo usar este mapa",
+    "howToUseBody": "Abre el mapa interactivo, filtra por categoría en el panel izquierdo y marca cada punto a medida que lo encuentres. Tu progreso se guarda en el navegador, sin necesidad de cuenta.",
+    "allRegions": "Otras regiones",
+    "allRegionsLead": "Cada zona de Duet Night Abyss tiene su propia página, con el detalle de sus marcadores.",
+    "regionCardMeta": "{categories} categorías · {types} tipos",
+    "backToMap": "Ver el mapa completo"
   },
   "mapInfo": {
     "title": "Información del Mapa",
