@@ -5,9 +5,20 @@ import { getItemCatalog } from "@/lib/items/catalog";
 import { getAllRegions } from "@/lib/map/regions";
 import { locales } from "@/i18n/config";
 
+/**
+ * ==Pas de `lastmod`==. Il y en avait un, mais il valait `new Date()` pour les
+ * 476 entrees : a chaque lecture, le sitemap annoncait que l'integralite du
+ * site venait de changer. Google se sert de `lastmod` pour prioriser ses
+ * re-explorations, et seulement tant qu'il le juge fiable ; une valeur toujours
+ * egale a maintenant ne lui apprend rien et le pousse a ignorer le champ.
+ * Omettre vaut mieux qu'annoncer faux.
+ *
+ * Pour le remettre un jour, il faudra une date reellement verifiable par
+ * section (date de sortie de version pour les cartes, derniere modification
+ * reelle pour les fiches), pas un horodatage de build.
+ */
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://dna.ascencia.re";
-  const now = new Date();
 
   // Map locale codes to valid BCP 47 hreflang tags
   const localeToHreflang: Record<string, string> = {
@@ -51,7 +62,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const locale of locales) {
       entries.push({
         url: `${baseUrl}/${locale}${route.path}`,
-        lastModified: now,
         changeFrequency: route.changeFrequency,
         priority: route.priority,
         alternates: alternatesForPath(route.path),
@@ -67,7 +77,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const locale of locales) {
       entries.push({
         url: `${baseUrl}/${locale}${path}`,
-        lastModified: now,
         changeFrequency: "weekly",
         priority: 0.85,
         alternates: alternatesForPath(path),
@@ -86,7 +95,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       for (const locale of locales) {
         entries.push({
           url: `${baseUrl}/${locale}${route.path}`,
-          lastModified: now,
           changeFrequency: "weekly",
           priority: route.priority,
           alternates: alternatesForPath(route.path),
@@ -100,7 +108,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const locale of locales) {
     entries.push({
       url: `${baseUrl}/${locale}${NAVIGATION.characters}`,
-      lastModified: now,
       changeFrequency: "weekly",
       priority: 0.9,
       alternates: alternatesForPath(NAVIGATION.characters),
@@ -111,7 +118,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const locale of locales) {
       entries.push({
         url: `${baseUrl}/${locale}${path}`,
-        lastModified: now,
         changeFrequency: "monthly",
         priority: 0.8,
         alternates: alternatesForPath(path),
