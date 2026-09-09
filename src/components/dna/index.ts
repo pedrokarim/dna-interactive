@@ -43,7 +43,7 @@ export { DnaConsonanceEditor } from "./ConsonanceEditor";
 export { DnaSlotRow, type SlotEntry } from "./SlotRow";
 export { DnaPriorityList, type PriorityItem } from "./PriorityList";
 export { DnaVoteButton } from "./VoteButton";
-export { DnaCommunityBuildCard } from "./CommunityBuildCard";
+export { DnaCommunityBuildCard, DnaCommunityBuildCardSkeleton } from "./CommunityBuildCard";
 export { DnaCommunityBuildBannerCard } from "./CommunityBuildBannerCard";
 export { DnaDraftStatus, type DraftState } from "./DraftStatus";
 
