@@ -194,6 +194,12 @@ export interface CharacterSkillSet {
   charName: string | null;
   skillList: number[];
   upgradeSkillExtraLevel: Array<{ grade: number; skillId: number; extraLv: number }>;
+  /**
+   * Valeurs des jetons « #N » des textes d'intron, par langue et dans l'ordre
+   * des formules `intronParameters` (« #1 » = index 0). `null` = formule que
+   * l'extraction n'a pas su évaluer : le jeton reste alors affiché tel quel.
+   */
+  intronParamValues?: Record<string, (string | null)[]>;
   skills: CharacterSkill[];
 }
 

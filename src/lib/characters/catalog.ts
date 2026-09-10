@@ -4,6 +4,7 @@ import levelUpCurvesJson from "@/data/characters/levelup-curves.json";
 import skillsJson from "@/data/characters/skills.json";
 import type {
   CharacterElement,
+  CharacterIntronLevel,
   CharacterLocalizedContent,
   CharacterRecord,
   CharacterSkillSet,
@@ -22,10 +23,73 @@ const LANGUAGE_LABELS: Record<string, string> = {
 };
 
 const catalog = catalogJson as CharactersCatalog;
-const characters = charactersJson as unknown as CharacterRecord[];
 const levelUpCurves = levelUpCurvesJson as unknown as LevelUpCurves;
 const skills = skillsJson as unknown as CharacterSkillSet[];
 const skillsByCharId = new Map(skills.map((s) => [s.charId, s]));
+// Les compétences doivent être indexées avant : elles complètent les introns.
+const characters = (charactersJson as unknown as CharacterRecord[]).map(withResolvedIntrons);
+
+/** Remplace les jetons « #N » (base 1) ; un jeton sans valeur connue reste tel quel. */
+function fillPlaceholders(text: string | null, values: (string | null)[] | undefined): string | null {
+  if (!text || !values?.length) return text;
+  return text.replace(/#(\d+)/g, (full, n: string) => values[Number(n) - 1] ?? full);
+}
+
+type IntronBearer = {
+  charId: number;
+  intronLevels: CharacterIntronLevel[];
+  translations: Record<string, CharacterLocalizedContent>;
+};
+
+/**
+ * Complète les introns d'un personnage à partir des compétences extraites.
+ *
+ * `characters.json` ne peut pas le faire seul, pour deux raisons :
+ *  - les textes d'intron portent des jetons « #N » dont les valeurs sortent de
+ *    formules que seul `extract-skills` sait évaluer ;
+ *  - le 7ᵉ intron n'est pas une clé `GRADEUP` : le jeu le range comme une
+ *    compétence de type `UltraPassive` rattachée au personnage. Il suffit
+ *    qu'elle existe pour que le 7ᵉ niveau existe — plus rien à écrire à la main
+ *    quand le jeu en ajoute (Rebecca et Hellfire en 1.3 ; Berenica, Camilla et
+ *    Lisbell en 1.6). Son coût n'est déclaré nulle part : il reprend celui du
+ *    niveau précédent, comme tous les autres (30 Pensées).
+ */
+function withResolvedIntronsFor<T extends IntronBearer>(entry: T): T {
+  const set = skillsByCharId.get(entry.charId);
+  if (!set) return entry;
+  const ultra = set.skills.find((s) => s.skillType === "UltraPassive");
+  const last = entry.intronLevels[entry.intronLevels.length - 1];
+  const addSeventh = Boolean(ultra) && entry.intronLevels.length === 6 && Boolean(last);
+  const intronLevels = addSeventh
+    ? [...entry.intronLevels, { ...last, cardLevel: last.cardLevel + 1 }]
+    : entry.intronLevels;
+
+  const translations: Record<string, CharacterLocalizedContent> = {};
+  for (const [code, t] of Object.entries(entry.translations)) {
+    const values = set.intronParamValues?.[code] ?? set.intronParamValues?.EN;
+    const effects = (t.intronEffects ?? []).map((e) => fillPlaceholders(e, values));
+    if (addSeventh && ultra) {
+      const loc = ultra.translations[code] ?? ultra.translations.EN;
+      // Valeurs au niveau max : celles du 7ᵉ intron ne varient pas avec le niveau.
+      const maxValues = (loc?.params ?? []).map((p) => {
+        const levels = Object.keys(p.valuesByLevel).map(Number);
+        return levels.length ? (p.valuesByLevel[String(Math.max(...levels))] ?? null) : null;
+      });
+      effects.push(fillPlaceholders(loc?.description ?? null, maxValues));
+    }
+    translations[code] = { ...t, intronEffects: effects };
+  }
+  return { ...entry, intronLevels, translations };
+}
+
+function withResolvedIntrons(character: CharacterRecord): CharacterRecord {
+  const base = withResolvedIntronsFor(character);
+  if (!character.variants) return base;
+  const variants = Object.fromEntries(
+    Object.entries(character.variants).map(([key, variant]) => [key, withResolvedIntronsFor(variant)]),
+  ) as typeof character.variants;
+  return { ...base, variants };
+}
 
 function slugifyEnglishName(name: string | null | undefined): string | null {
   if (!name) return null;
