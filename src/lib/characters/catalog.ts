@@ -82,11 +82,37 @@ function withResolvedIntronsFor<T extends IntronBearer>(entry: T): T {
   return { ...entry, intronLevels, translations };
 }
 
+type SkillIconBearer = { charId: number; skillIcons: CharacterRecord["skillIcons"] };
+
+/**
+ * Complète les icônes de compétence manquantes avec celles du kit. La fiche les
+ * cherche sous le nom interne du personnage, alors que certains kits portent un
+ * autre nom d'icône (Mors : `ExShuiZhu`, Vita : `AnZhu`).
+ */
+function withSkillIconsFor<T extends SkillIconBearer>(entry: T): T {
+  const set = skillsByCharId.get(entry.charId);
+  if (!set) return entry;
+  const iconOf = (type: string) => set.skills.find((skill) => skill.skillType === type)?.iconPublicPath ?? null;
+  const pick = (current: { publicPath: string | null }, type: string) =>
+    current.publicPath ? current : { ...current, publicPath: iconOf(type) };
+  return {
+    ...entry,
+    skillIcons: {
+      skill1: pick(entry.skillIcons.skill1, "Skill1"),
+      skill2: pick(entry.skillIcons.skill2, "Skill2"),
+      skill3: pick(entry.skillIcons.skill3, "Passive"),
+    },
+  };
+}
+
 function withResolvedIntrons(character: CharacterRecord): CharacterRecord {
-  const base = withResolvedIntronsFor(character);
+  const base = withSkillIconsFor(withResolvedIntronsFor(character));
   if (!character.variants) return base;
   const variants = Object.fromEntries(
-    Object.entries(character.variants).map(([key, variant]) => [key, withResolvedIntronsFor(variant)]),
+    Object.entries(character.variants).map(([key, variant]) => [
+      key,
+      withSkillIconsFor(withResolvedIntronsFor(variant)),
+    ]),
   ) as typeof character.variants;
   return { ...base, variants };
 }

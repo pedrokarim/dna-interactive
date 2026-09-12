@@ -1,0 +1,115 @@
+[
+  {
+    "characterId": "char-weitam",
+    "buildName": {
+      "FR": "Soutien Invocations Hydro — Éveil",
+      "EN": "Hydro Summon Support — Awakening"
+    },
+    "weapons": {
+      "melee": [
+        {
+          "itemId": "weapons-10102",
+          "rank": "best",
+          "note": {
+            "FR": "Arme de soutien : quand un personnage Hydro déclenche son effet bonus, les autres alliés gagnent +66 % d'ATQ pendant 6 s.",
+            "EN": "Support weapon: when a Hydro character triggers its bonus effect, other allies gain +66% ATK for 6s."
+          }
+        }
+      ],
+      "ranged": [
+        {
+          "itemId": "weapons-20602",
+          "rank": "best",
+          "note": {
+            "FR": "Apporte la Durée de compétence dont l'état Ordre de bataille a besoin, et un coup critique donne aux alliés un bonus aléatoire (ATQ, DÉF, Puissance ou Durée de compétence).",
+            "EN": "Provides the Skill Duration that the Battle Order state needs, and a critical hit grants allies a random buff (ATK, DEF, Skill Intensity or Skill Duration)."
+          }
+        }
+      ]
+    },
+    "demonWedges": {
+      "slots": [
+        { "position": 1, "itemId": "mods-51922", "track": 4 },
+        { "position": 2, "itemId": "mods-51322", "track": 3 },
+        { "position": 3, "itemId": "mods-51425", "track": 1 },
+        { "position": 4, "itemId": "mods-56124", "track": 2 },
+        { "position": 5, "itemId": "mods-51727", "track": 1 },
+        { "position": 6, "itemId": "mods-51728", "track": 4 },
+        { "position": 7, "itemId": "mods-41728", "track": 4 },
+        { "position": 8, "itemId": "mods-41727", "track": 1 }
+      ],
+      "centerItemId": "mods-51725",
+      "affinity": {
+        "FR": "Éveil de Quetzalcoatl",
+        "EN": "Feathered Serpent's Awakening"
+      },
+      "note": {
+        "FR": "Le centre Éveil n'agit que si toutes les pièces équipées sont différentes : il donne alors +110 % aux dégâts d'invocation et +55 au plafond de tolérance. C'est pour ça que les emplacements 7 et 8 reprennent Ardeur · Vigueur et Décision · Éveil en version 4★, qui sont d'autres pièces que leurs versions 5★. Si Fushu est dans l'équipe et porte déjà Torrent glacé, Apogée · Exaltation et Ailes · Inspiration · Vigueur, remplacez-les par Ardeur · Pouvoir, Apogée · Vigueur et Ailes · Inspiration · Éveil : ces effets ne se cumulent pas entre partenaires.",
+        "EN": "The Awakening core only works if every equipped piece is different: it then grants +110% summon damage and +55 to the tolerance cap. That is why slots 7 and 8 use the 4★ versions of Blaze · Morale and Volition · Awakening, which are different pieces from their 5★ versions. If Fushu is on the team and already holds Frosty Torrent, Prime · Uplift and Wings · Inspo · Morale, swap them for Blaze · Spectrum, Prime · Morale and Wings · Inspo · Awakening: these effects do not stack between partners."
+      }
+    },
+    "statsPriority": [
+      "SkillIntensity",
+      "SkillSustain",
+      "SkillEfficiency",
+      "Morale",
+      "ATK_Water"
+    ],
+    "team": [
+      {
+        "characterId": "char-eve",
+        "role": "DPS",
+        "note": {
+          "FR": "Eve, la DPS d'invocation Hydro : les Étendards de Mors déclenchent régulièrement son passif, et ses invocations profitent des bonus de dégâts et de vitesse d'attaque de Formation de combat de la Légion.",
+          "EN": "Eve, the Hydro summon DPS: Mors's Standards regularly trigger her passive, and her summons benefit from Legion Formation's damage and attack speed buffs."
+        }
+      },
+      {
+        "characterId": "char-baiheng",
+        "role": "Support",
+        "note": {
+          "FR": "Fushu complète le soutien. Si elle porte les mêmes pièces que Mors, appliquez la variante indiquée dans la note des Demon Wedges.",
+          "EN": "Fushu rounds out the support. If she holds the same pieces as Mors, use the variant described in the Demon Wedges note."
+        }
+      }
+    ],
+    "genimon": [
+      { "itemId": "genimon-4221", "rank": "best" },
+      { "itemId": "genimon-4121", "rank": "alternative" },
+      { "itemId": "genimon-4021", "rank": "alternative" }
+    ],
+    "skillPriority": [
+      {
+        "skillName": { "FR": "Formation de combat de la Légion", "EN": "Legion Formation" },
+        "skillIndex": 2,
+        "priority": 5,
+        "note": {
+          "FR": "Le cœur du soutien : Efficacité de compétence pour l'équipe, dégâts et vitesse d'attaque pour les invocations.",
+          "EN": "The heart of the support: Skill Efficiency for the team, damage and attack speed for summons."
+        }
+      },
+      {
+        "skillName": { "FR": "Élégie pâle", "EN": "The Pale Elegy" },
+        "skillIndex": 3,
+        "priority": 4,
+        "note": {
+          "FR": "Rend les ennemis plus vulnérables aux dégâts Hydro.",
+          "EN": "Makes enemies more vulnerable to Hydro damage."
+        }
+      },
+      {
+        "skillName": { "FR": "Opération décapitation", "EN": "Operation Decapitation" },
+        "skillIndex": 1,
+        "priority": 2,
+        "note": {
+          "FR": "Surtout des dégâts personnels : à monter après les deux autres.",
+          "EN": "Mostly personal damage: raise it after the other two."
+        }
+      }
+    ],
+    "notes": {
+      "FR": "Mors est un soutien pour les équipes d'invocation Hydro, pas une DPS : on le joue pour renforcer l'invocatrice principale. Garder l'état Ordre de bataille actif le plus longtemps possible, puisqu'il porte les bonus d'équipe et consomme de la Lucidité en continu ; l'intron I est précieux pour cela, car chaque invocation rend de la Lucidité. La Puissance de compétence passe en tête : Ailes · Inspiration · Vigueur ne donne son Moral qu'au-delà de 350 %. Son soutien reste en deçà de celui de Fina ou de Fushu, mais il s'intègre naturellement autour d'Eve.",
+      "EN": "Mors is a support for Hydro summon teams, not a DPS: you play him to strengthen the main summoner. Keep the Battle Order state up as long as possible, since it carries the team buffs and drains Lucidity continuously; Intron I is valuable for this, as each summon restores Lucidity. Skill Intensity comes first: Wings · Inspo · Morale only grants its Morale above 350%. His support stays below Fina's or Fushu's, but he fits naturally around Eve."
+    }
+  }
+]

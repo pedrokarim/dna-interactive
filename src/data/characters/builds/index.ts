@@ -1,4 +1,6 @@
 import charFalu from "./char-falu.json";
+import charWeitaf from "./char-weitaf.json";
+import charWeitam from "./char-weitam.json";
 import charZhiliu from "./char-zhiliu.json";
 import charLise from "./char-lise.json";
 import charXibi from "./char-xibi.json";
@@ -38,6 +40,8 @@ import charProtagonistMale from "./char-protagonist-male.json";
 
 export const allBuilds = [
   ...charFalu,
+  ...charWeitaf,
+  ...charWeitam,
   ...charZhiliu,
   ...charLise,
   ...charXibi,

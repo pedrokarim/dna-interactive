@@ -92434,7 +92434,7 @@
       {
         "skillId": 220101,
         "skillType": "Skill1",
-        "iconPublicPath": null,
+        "iconPublicPath": "/assets/characters/skills/T_Skill_ExShuiZhu01.png",
         "iconName": "Skill_ExShuiZhu01",
         "explanationIds": [
           "Term_2201_Summon"
@@ -93750,7 +93750,7 @@
       {
         "skillId": 220102,
         "skillType": "Skill2",
-        "iconPublicPath": null,
+        "iconPublicPath": "/assets/characters/skills/T_Skill_ExShuiZhu02_On.png",
         "iconName": "Skill_ExShuiZhu02_On",
         "explanationIds": [
           "Term_2201_Skill02_01"
@@ -95462,7 +95462,7 @@
       {
         "skillId": 220103,
         "skillType": "Passive",
-        "iconPublicPath": null,
+        "iconPublicPath": "/assets/characters/skills/T_Skill_ExShuiZhu03.png",
         "iconName": "Skill_ExShuiZhu03",
         "explanationIds": [
           "Term_2201_PassiveBuff"
@@ -101319,7 +101319,7 @@
       {
         "skillId": 220101,
         "skillType": "Skill1",
-        "iconPublicPath": null,
+        "iconPublicPath": "/assets/characters/skills/T_Skill_ExShuiZhu01.png",
         "iconName": "Skill_ExShuiZhu01",
         "explanationIds": [
           "Term_2201_Summon"
@@ -102635,7 +102635,7 @@
       {
         "skillId": 220102,
         "skillType": "Skill2",
-        "iconPublicPath": null,
+        "iconPublicPath": "/assets/characters/skills/T_Skill_ExShuiZhu02_On.png",
         "iconName": "Skill_ExShuiZhu02_On",
         "explanationIds": [
           "Term_2201_Skill02_01"
@@ -104347,7 +104347,7 @@
       {
         "skillId": 220103,
         "skillType": "Passive",
-        "iconPublicPath": null,
+        "iconPublicPath": "/assets/characters/skills/T_Skill_ExShuiZhu03.png",
         "iconName": "Skill_ExShuiZhu03",
         "explanationIds": [
           "Term_2201_PassiveBuff"

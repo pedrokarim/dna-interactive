@@ -66,6 +66,12 @@ const ELEMENT_ICONS: Record<string, string> = {
 /** stat du build -> cle de message (`characterDetail.stat*`). */
 const STAT_LABEL_KEYS: Record<string, string> = {
   ATK: "statATK",
+  ATK_Fire: "statATKFire",
+  ATK_Water: "statATKWater",
+  ATK_Thunder: "statATKThunder",
+  ATK_Wind: "statATKWind",
+  ATK_Light: "statATKLight",
+  ATK_Dark: "statATKDark",
   DEF: "statDEF",
   HP: "statHP",
   MaxHp: "statMaxHp",
