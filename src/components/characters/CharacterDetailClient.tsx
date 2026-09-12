@@ -2835,6 +2835,20 @@ export default function CharacterDetailClient({
                   style={{
                     transform: `translate(${renderPan.x}px, ${renderPan.y}px) scale(${renderZoom})`,
                     transition: dragging ? "none" : "transform 0.14s ease-out",
+                    // Le portrait gacha est une bande étroite au fond opaque : ses
+                    // bords verticaux tranchaient net sur le décor. Un fondu sur
+                    // les côtés et en bas l'intègre, comme les bustes. C'est
+                    // l'image principale des fiches sans buste (Mors).
+                    ...(activePortrait === "gacha"
+                      ? {
+                          maskImage:
+                            "linear-gradient(to right, transparent, #000 18%, #000 82%, transparent), linear-gradient(to bottom, #000 80%, transparent)",
+                          maskComposite: "intersect",
+                          WebkitMaskImage:
+                            "linear-gradient(to right, transparent, #000 18%, #000 82%, transparent), linear-gradient(to bottom, #000 80%, transparent)",
+                          WebkitMaskComposite: "source-in",
+                        }
+                      : {}),
                   }}
                 />
                 {/* Contrôles de zoom — façon carte */}
