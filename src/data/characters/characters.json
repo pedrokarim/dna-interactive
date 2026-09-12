@@ -5781,6 +5781,276 @@
     }
   },
   {
+    "id": "char-weitaf",
+    "charId": 2201,
+    "internalName": "WeitaF",
+    "element": {
+      "key": "Water",
+      "label": "Hydro"
+    },
+    "weaponTags": [
+      "Sword",
+      "Machinegun"
+    ],
+    "camp": {
+      "key": "Diguo",
+      "nameKey": "Camp_Name_Diguo",
+      "iconGamePath": "/Game/UI/Texture/Dynamic/Image/Camp/T_Gacha_CampIcon_Diguo.T_Gacha_CampIcon_Diguo"
+    },
+    "rarity": 5,
+    "maxLevel": 80,
+    "colorVar": null,
+    "gender": null,
+    "sortPriority": 5008,
+    "charPieceId": 1002201,
+    "unlockRequiredPiece": 30,
+    "intronLevels": [
+      {
+        "cardLevel": 0,
+        "resourceId": 1002201,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 1,
+        "resourceId": 1002201,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 2,
+        "resourceId": 1002201,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 3,
+        "resourceId": 1002201,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 4,
+        "resourceId": 1002201,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 5,
+        "resourceId": 1002201,
+        "resourceNum": 30
+      }
+    ],
+    "intronDescriptionKeys": [
+      "GRADEUP_2201_01",
+      "GRADEUP_2201_02",
+      "GRADEUP_2201_03",
+      "GRADEUP_2201_04",
+      "GRADEUP_2201_05",
+      "GRADEUP_2201_06"
+    ],
+    "intronParameters": [
+      "$#PassiveEffect[220101].Vars.AddSp$",
+      "$#Buff[220122].MaxLayer$",
+      "$#Buff[220141].AddAttrs[1].Value*100$%"
+    ],
+    "baseStats": {
+      "atk": 20,
+      "atkGrowCurve": "ATKA",
+      "def": 300,
+      "defGrowCurve": "DEFA",
+      "maxHp": 100,
+      "maxHpGrowCurve": "MaxHpA",
+      "maxES": 100,
+      "maxESGrowCurve": "MaxESA",
+      "maxSp": 150
+    },
+    "addonAttrs": [
+      {
+        "attrId": 220101,
+        "attrName": "ATK",
+        "rate": 0.2,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_08.png",
+        "nameKey": "ADDONATTR_220101_NAME"
+      },
+      {
+        "attrId": 220102,
+        "attrName": "ATK",
+        "rate": 0.3,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_08.png",
+        "nameKey": "ADDONATTR_220102_NAME"
+      },
+      {
+        "attrId": 220103,
+        "attrName": "SkillEfficiency",
+        "rate": 0.05,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_13.png",
+        "nameKey": "ADDONATTR_220103_NAME"
+      },
+      {
+        "attrId": 220104,
+        "attrName": "SkillEfficiency",
+        "rate": 0.075,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_13.png",
+        "nameKey": "ADDONATTR_220104_NAME"
+      }
+    ],
+    "positioning": [
+      "Support",
+      "Minion"
+    ],
+    "recommendAttr": [],
+    "ascensionLevels": [
+      20,
+      30,
+      40,
+      50,
+      60,
+      70
+    ],
+    "textKeys": {
+      "nameKey": "UI_CHAR_NAME_2201",
+      "subtitleKey": "UI_CHAR_SUBTITLE_2201",
+      "birthdayKey": null,
+      "forceKey": null,
+      "campNameKey": "Camp_Name_Diguo"
+    },
+    "portraits": {
+      "gacha": {
+        "publicPath": "/assets/characters/gacha/T_Gacha_AvatarWeitaF.png"
+      },
+      "head": {
+        "publicPath": "/assets/characters/head/T_Head_WeitaF.png"
+      },
+      "icon": {
+        "publicPath": null
+      },
+      "bust": {
+        "publicPath": null
+      },
+      "phantom": {
+        "publicPath": "/assets/characters/phantom/T_Phantom_WeitaF.png"
+      },
+      "charpiece": {
+        "publicPath": null
+      }
+    },
+    "consonanceWeapons": [],
+    "skillIcons": {
+      "skill1": {
+        "publicPath": null
+      },
+      "skill2": {
+        "publicPath": null
+      },
+      "skill3": {
+        "publicPath": null
+      }
+    },
+    "translations": {
+      "DE": {
+        "name": "Mors ♀",
+        "subtitle": null,
+        "birthday": null,
+        "force": null,
+        "campName": "Hyperboreisches Imperium",
+        "intronEffects": [
+          "Summoning a unit restores #1 Sanity.",
+          "[Dread] can stack up to #2 times.",
+          "[Operation Decapitation] Lv. +2; [The Pale Elegy] Lv. +1.",
+          "When a [Summon: Legion Standard] leaves the field, it deals 1 additional instance of its on-summon damage.",
+          "[Legion Formation] Lv. +2; [The Pale Elegy] Lv. +1.",
+          "[Summon: Legion Standard] units gain #3 PEN Stats."
+        ]
+      },
+      "EN": {
+        "name": "Mors ♀",
+        "subtitle": null,
+        "birthday": null,
+        "force": null,
+        "campName": "The Hyperborean Empire",
+        "intronEffects": [
+          "Summoning a unit restores #1 Sanity.",
+          "[Dread] can stack up to #2 times.",
+          "[Operation Decapitation] Lv. +2; [The Pale Elegy] Lv. +1.",
+          "When a [Summon: Legion Standard] leaves the field, it deals 1 additional instance of its on-summon damage.",
+          "[Legion Formation] Lv. +2; [The Pale Elegy] Lv. +1.",
+          "[Summon: Legion Standard] units gain #3 PEN Stats."
+        ]
+      },
+      "ES": {
+        "name": "Mors ♀",
+        "subtitle": null,
+        "birthday": null,
+        "force": null,
+        "campName": "Imperio Hiperbóreo",
+        "intronEffects": [
+          "Summoning a unit restores #1 Sanity.",
+          "[Dread] can stack up to #2 times.",
+          "[Operation Decapitation] Lv. +2; [The Pale Elegy] Lv. +1.",
+          "When a [Summon: Legion Standard] leaves the field, it deals 1 additional instance of its on-summon damage.",
+          "[Legion Formation] Lv. +2; [The Pale Elegy] Lv. +1.",
+          "[Summon: Legion Standard] units gain #3 PEN Stats."
+        ]
+      },
+      "FR": {
+        "name": "Mors ♀",
+        "subtitle": null,
+        "birthday": null,
+        "force": null,
+        "campName": "Empire Hyperboréen",
+        "intronEffects": [
+          "Lorsque vous effectuez une invocation, vous récupérez #1 de Lucidité.",
+          "[Frisson] peut se cumuler jusqu’à #2 fois.",
+          "[Opération décapitation] niveau +2 ; [Élégie pâle] niveau +1.",
+          "Lorsqu’un [Étendard] quitte le terrain, il inflige 1 instance supplémentaire de dégâts d’invocation.",
+          "[Formation de combat de la Légion] niveau +2 ; [Élégie pâle] niveau +1.",
+          "[Étendard] obtient #3 de Pénétration de tous les attributs."
+        ]
+      },
+      "JP": {
+        "name": "モルス ♀",
+        "subtitle": null,
+        "birthday": null,
+        "force": null,
+        "campName": "ヒュペリア帝国",
+        "intronEffects": [
+          "召喚を行うたび、自身のSPを#1回復する。",
+          "[戦慄]は最大#2スタックまで累積できる。",
+          "[斬首作戦]Lv.+2、[蒼白の挽歌]Lv.+1。",
+          "[召喚ユニット・戦旗]が退場する際、追加で召喚ダメージを1回与える。",
+          "[帝国軍戦陣]Lv.+2、[蒼白の挽歌]Lv.+1。",
+          "[召喚ユニット・戦旗]が#3の全属性貫通を獲得する。"
+        ]
+      },
+      "KR": {
+        "name": "모스 ♀",
+        "subtitle": null,
+        "birthday": null,
+        "force": null,
+        "campName": "휘페르보레아 제국",
+        "intronEffects": [
+          "소환 시, 자신의 정신력을 #1 회복한다.",
+          "[공포]를 최대 #2단계 중첩 가능",
+          "[참수 작전] 레벨+2, [창백한 만가] 레벨+1",
+          "[소환물·깃발] 퇴장 시 소환 대미지 추가로 1회 입힌다.",
+          "[군단 진형] 레벨+2, [창백한 만가] 레벨+1",
+          "[소환물·깃발]이 모든 속성 관통 #3 획득"
+        ]
+      },
+      "TC": {
+        "name": "墨斯 ♀",
+        "subtitle": null,
+        "birthday": null,
+        "force": null,
+        "campName": "海伯利亞帝國",
+        "intronEffects": [
+          "進行召喚時，自身回復#1點神智。",
+          "[戰慄]最多可疊加#2層。",
+          "[斬首行動]等級+2，[蒼白輓歌]等級+1。",
+          "[召喚物·戰旗]退場時，會額外造成一次召喚傷害。",
+          "[軍團戰陣]等級+2，[蒼白輓歌]等級+1。",
+          "[召喚物·戰旗]獲得#3的全屬性穿透。"
+        ]
+      }
+    }
+  },
+  {
     "id": "char-saiqi",
     "charId": 5301,
     "internalName": "Saiqi",
@@ -6058,6 +6328,276 @@
           "「破繭」狀態中自身獲得「羽化」：受到傷害時不會產生僵直，受到的傷害降低#5，拾取范圍增加15。",
           "「腐草為螢」等級+2，「螢燭微光」等級+1。",
           "「破繭」狀態中自身全屬性穿透提高#6。"
+        ]
+      }
+    }
+  },
+  {
+    "id": "char-weitam",
+    "charId": 220101,
+    "internalName": "WeitaM",
+    "element": {
+      "key": "Water",
+      "label": "Hydro"
+    },
+    "weaponTags": [
+      "Sword",
+      "Machinegun"
+    ],
+    "camp": {
+      "key": "Diguo",
+      "nameKey": "Camp_Name_Diguo",
+      "iconGamePath": "/Game/UI/Texture/Dynamic/Image/Camp/T_Gacha_CampIcon_Diguo.T_Gacha_CampIcon_Diguo"
+    },
+    "rarity": 5,
+    "maxLevel": 80,
+    "colorVar": null,
+    "gender": null,
+    "sortPriority": 5008,
+    "charPieceId": 1002201,
+    "unlockRequiredPiece": 30,
+    "intronLevels": [
+      {
+        "cardLevel": 0,
+        "resourceId": 1002201,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 1,
+        "resourceId": 1002201,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 2,
+        "resourceId": 1002201,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 3,
+        "resourceId": 1002201,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 4,
+        "resourceId": 1002201,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 5,
+        "resourceId": 1002201,
+        "resourceNum": 30
+      }
+    ],
+    "intronDescriptionKeys": [
+      "GRADEUP_2201_01",
+      "GRADEUP_2201_02",
+      "GRADEUP_2201_03",
+      "GRADEUP_2201_04",
+      "GRADEUP_2201_05",
+      "GRADEUP_2201_06"
+    ],
+    "intronParameters": [
+      "$#PassiveEffect[220101].Vars.AddSp$",
+      "$#Buff[220122].MaxLayer$",
+      "$#Buff[220141].AddAttrs[1].Value*100$%"
+    ],
+    "baseStats": {
+      "atk": 20,
+      "atkGrowCurve": "ATKA",
+      "def": 300,
+      "defGrowCurve": "DEFA",
+      "maxHp": 100,
+      "maxHpGrowCurve": "MaxHpA",
+      "maxES": 100,
+      "maxESGrowCurve": "MaxESA",
+      "maxSp": 150
+    },
+    "addonAttrs": [
+      {
+        "attrId": 220101,
+        "attrName": "ATK",
+        "rate": 0.2,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_08.png",
+        "nameKey": "ADDONATTR_220101_NAME"
+      },
+      {
+        "attrId": 220102,
+        "attrName": "ATK",
+        "rate": 0.3,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_08.png",
+        "nameKey": "ADDONATTR_220102_NAME"
+      },
+      {
+        "attrId": 220103,
+        "attrName": "SkillEfficiency",
+        "rate": 0.05,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_13.png",
+        "nameKey": "ADDONATTR_220103_NAME"
+      },
+      {
+        "attrId": 220104,
+        "attrName": "SkillEfficiency",
+        "rate": 0.075,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_13.png",
+        "nameKey": "ADDONATTR_220104_NAME"
+      }
+    ],
+    "positioning": [
+      "Support",
+      "Minion"
+    ],
+    "recommendAttr": [],
+    "ascensionLevels": [
+      20,
+      30,
+      40,
+      50,
+      60,
+      70
+    ],
+    "textKeys": {
+      "nameKey": "UI_CHAR_NAME_220101",
+      "subtitleKey": "UI_CHAR_SUBTITLE_220101",
+      "birthdayKey": null,
+      "forceKey": null,
+      "campNameKey": "Camp_Name_Diguo"
+    },
+    "portraits": {
+      "gacha": {
+        "publicPath": "/assets/characters/gacha/T_Gacha_AvatarWeitaM.png"
+      },
+      "head": {
+        "publicPath": "/assets/characters/head/T_Head_WeitaM.png"
+      },
+      "icon": {
+        "publicPath": null
+      },
+      "bust": {
+        "publicPath": null
+      },
+      "phantom": {
+        "publicPath": "/assets/characters/phantom/T_Phantom_WeitaM.png"
+      },
+      "charpiece": {
+        "publicPath": null
+      }
+    },
+    "consonanceWeapons": [],
+    "skillIcons": {
+      "skill1": {
+        "publicPath": null
+      },
+      "skill2": {
+        "publicPath": null
+      },
+      "skill3": {
+        "publicPath": null
+      }
+    },
+    "translations": {
+      "DE": {
+        "name": "Mors ♂",
+        "subtitle": null,
+        "birthday": null,
+        "force": null,
+        "campName": "Hyperboreisches Imperium",
+        "intronEffects": [
+          "Summoning a unit restores #1 Sanity.",
+          "[Dread] can stack up to #2 times.",
+          "[Operation Decapitation] Lv. +2; [The Pale Elegy] Lv. +1.",
+          "When a [Summon: Legion Standard] leaves the field, it deals 1 additional instance of its on-summon damage.",
+          "[Legion Formation] Lv. +2; [The Pale Elegy] Lv. +1.",
+          "[Summon: Legion Standard] units gain #3 PEN Stats."
+        ]
+      },
+      "EN": {
+        "name": "Mors ♂",
+        "subtitle": null,
+        "birthday": null,
+        "force": null,
+        "campName": "The Hyperborean Empire",
+        "intronEffects": [
+          "Summoning a unit restores #1 Sanity.",
+          "[Dread] can stack up to #2 times.",
+          "[Operation Decapitation] Lv. +2; [The Pale Elegy] Lv. +1.",
+          "When a [Summon: Legion Standard] leaves the field, it deals 1 additional instance of its on-summon damage.",
+          "[Legion Formation] Lv. +2; [The Pale Elegy] Lv. +1.",
+          "[Summon: Legion Standard] units gain #3 PEN Stats."
+        ]
+      },
+      "ES": {
+        "name": "Mors ♂",
+        "subtitle": null,
+        "birthday": null,
+        "force": null,
+        "campName": "Imperio Hiperbóreo",
+        "intronEffects": [
+          "Summoning a unit restores #1 Sanity.",
+          "[Dread] can stack up to #2 times.",
+          "[Operation Decapitation] Lv. +2; [The Pale Elegy] Lv. +1.",
+          "When a [Summon: Legion Standard] leaves the field, it deals 1 additional instance of its on-summon damage.",
+          "[Legion Formation] Lv. +2; [The Pale Elegy] Lv. +1.",
+          "[Summon: Legion Standard] units gain #3 PEN Stats."
+        ]
+      },
+      "FR": {
+        "name": "Mors ♂",
+        "subtitle": null,
+        "birthday": null,
+        "force": null,
+        "campName": "Empire Hyperboréen",
+        "intronEffects": [
+          "Lorsque vous effectuez une invocation, vous récupérez #1 de Lucidité.",
+          "[Frisson] peut se cumuler jusqu’à #2 fois.",
+          "[Opération décapitation] niveau +2 ; [Élégie pâle] niveau +1.",
+          "Lorsqu’un [Étendard] quitte le terrain, il inflige 1 instance supplémentaire de dégâts d’invocation.",
+          "[Formation de combat de la Légion] niveau +2 ; [Élégie pâle] niveau +1.",
+          "[Étendard] obtient #3 de Pénétration de tous les attributs."
+        ]
+      },
+      "JP": {
+        "name": "モルス ♂",
+        "subtitle": null,
+        "birthday": null,
+        "force": null,
+        "campName": "ヒュペリア帝国",
+        "intronEffects": [
+          "召喚を行うたび、自身のSPを#1回復する。",
+          "[戦慄]は最大#2スタックまで累積できる。",
+          "[斬首作戦]Lv.+2、[蒼白の挽歌]Lv.+1。",
+          "[召喚ユニット・戦旗]が退場する際、追加で召喚ダメージを1回与える。",
+          "[帝国軍戦陣]Lv.+2、[蒼白の挽歌]Lv.+1。",
+          "[召喚ユニット・戦旗]が#3の全属性貫通を獲得する。"
+        ]
+      },
+      "KR": {
+        "name": "모스 ♂",
+        "subtitle": null,
+        "birthday": null,
+        "force": null,
+        "campName": "휘페르보레아 제국",
+        "intronEffects": [
+          "소환 시, 자신의 정신력을 #1 회복한다.",
+          "[공포]를 최대 #2단계 중첩 가능",
+          "[참수 작전] 레벨+2, [창백한 만가] 레벨+1",
+          "[소환물·깃발] 퇴장 시 소환 대미지 추가로 1회 입힌다.",
+          "[군단 진형] 레벨+2, [창백한 만가] 레벨+1",
+          "[소환물·깃발]이 모든 속성 관통 #3 획득"
+        ]
+      },
+      "TC": {
+        "name": "墨斯 ♂",
+        "subtitle": null,
+        "birthday": null,
+        "force": null,
+        "campName": "海伯利亞帝國",
+        "intronEffects": [
+          "進行召喚時，自身回復#1點神智。",
+          "[戰慄]最多可疊加#2層。",
+          "[斬首行動]等級+2，[蒼白輓歌]等級+1。",
+          "[召喚物·戰旗]退場時，會額外造成一次召喚傷害。",
+          "[軍團戰陣]等級+2，[蒼白輓歌]等級+1。",
+          "[召喚物·戰旗]獲得#3的全屬性穿透。"
         ]
       }
     }

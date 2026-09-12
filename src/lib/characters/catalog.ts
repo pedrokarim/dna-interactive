@@ -99,6 +99,11 @@ function slugifyEnglishName(name: string | null | undefined): string | null {
   // → fallback sur character.id pour ces cas.
   if (/^\{[^}]+\}$/.test(name.trim())) return null;
   const slug = name
+    // Les deux versions de Mors portent le même nom : le symbole de genre est
+    // leur seule différence, il doit survivre au slug (`mors-female` /
+    // `mors-male`), faute de quoi elles se disputeraient la même adresse.
+    .replace(/♀/g, " female ")
+    .replace(/♂/g, " male ")
     .normalize("NFKD")
     .replace(/[̀-ͯ]/g, "")
     .toLowerCase()
