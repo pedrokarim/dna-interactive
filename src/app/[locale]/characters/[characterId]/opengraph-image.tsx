@@ -30,7 +30,8 @@ export default async function CharacterOgImage({
   const name = character ? resolveCharacterDisplayName(character, locale) : "Personnage introuvable";
   const title = truncate(name, 40);
   const portraitPath =
-    character?.portraits.bust?.publicPath ??
+    // Un buste généré n'a pas sa place ici : l'image partagée ne porte pas la mention.
+    (character?.portraits.bust?.generated ? null : character?.portraits.bust?.publicPath) ??
     character?.portraits.charpiece?.publicPath ??
     character?.portraits.gacha?.publicPath ??
     null;

@@ -2889,9 +2889,10 @@ export default function CharacterDetailClient({
               <span className="text-6xl font-bold text-muted-2">{character.internalName[0]}</span>
             )}
 
-            {/* Switch de portraits */}
-            {availablePortraits.length > 1 && (
-              <div className="absolute bottom-3 left-4 z-10 flex flex-wrap gap-1.5 md:left-6">
+            {/* Switch de portraits, suivi de la mention d'un visuel qui n'est pas
+                du jeu : texte du site, traduit, jamais incrusté dans l'image. */}
+            {(availablePortraits.length > 1 || character.portraits[activePortrait]?.generated) && (
+              <div className="absolute bottom-3 left-4 right-16 z-10 flex flex-wrap items-center gap-1.5 md:left-6">
                 {availablePortraits.map((type) => (
                   <button
                     key={type}
@@ -2906,6 +2907,11 @@ export default function CharacterDetailClient({
                     {t(PORTRAIT_LABEL_KEYS[type])}
                   </button>
                 ))}
+                {character.portraits[activePortrait]?.generated ? (
+                  <span className="border border-white/10 bg-ink/75 px-2 py-1 font-sans text-[0.6rem] italic leading-tight text-muted">
+                    {t("generatedPortraitNotice")}
+                  </span>
+                ) : null}
               </div>
             )}
           </div>
@@ -3382,6 +3388,11 @@ export default function CharacterDetailClient({
                     </div>
                     <p className="px-2 py-1.5 text-center text-xs text-parch/85">
                       {t(PORTRAIT_LABEL_KEYS[type])}
+                      {character.portraits[type].generated ? (
+                        <span className="mt-0.5 block text-[0.6rem] italic leading-tight text-muted">
+                          {t("generatedPortraitNotice")}
+                        </span>
+                      ) : null}
                     </p>
                   </button>
                 );
@@ -3436,6 +3447,11 @@ export default function CharacterDetailClient({
                   />
                 </div>
               )}
+              {bustSrc && character.portraits.bust.generated ? (
+                <p className="absolute bottom-3 left-4 z-[2] hidden max-w-[45%] text-[0.62rem] italic leading-tight text-muted md:block">
+                  {t("generatedPortraitNotice")}
+                </p>
+              ) : null}
 
               {/* z-[1]: Element color ambient glow */}
               <div
@@ -3932,6 +3948,11 @@ export default function CharacterDetailClient({
                 className="max-h-[75vh] max-w-full object-contain"
               />
             </div>
+            {character.portraits.bust.generated && zoomedPortrait.src === character.portraits.bust.publicPath ? (
+              <p className="border-t border-white/10 px-4 py-2 text-[0.65rem] italic text-muted">
+                {t("generatedPortraitNotice")}
+              </p>
+            ) : null}
           </div>
         </div>
       )}

@@ -499,6 +499,7 @@
     "portraitHead": "Retrato",
     "portraitIcon": "Icono",
     "portraitBust": "Busto",
+    "generatedPortraitNotice": "Ilustración generada para el sitio, no procede del juego",
     "portraitPhantom": "Phantom",
     "portraitIntron": "Intron",
     "statATK": "ATQ",

@@ -26,6 +26,17 @@ const catalog = catalogJson as CharactersCatalog;
 const levelUpCurves = levelUpCurvesJson as unknown as LevelUpCurves;
 const skills = skillsJson as unknown as CharacterSkillSet[];
 const skillsByCharId = new Map(skills.map((s) => [s.charId, s]));
+
+/**
+ * Bustes illustrés par nous pour les personnages que le jeu livre sans buste.
+ * Ce ne sont pas des visuels du jeu : `generated` le fait savoir à l'affichage.
+ * Déclarés ici plutôt que dans `characters.json`, que l'extraction réécrit.
+ */
+const GENERATED_BUSTS: Record<number, string> = {
+  2201: "/assets/characters/bust/Generated_Bust_MorsF.png",
+  220101: "/assets/characters/bust/Generated_Bust_MorsM.png",
+};
+
 // Les compétences doivent être indexées avant : elles complètent les introns.
 const characters = (charactersJson as unknown as CharacterRecord[]).map(withResolvedIntrons);
 
@@ -105,8 +116,14 @@ function withSkillIconsFor<T extends SkillIconBearer>(entry: T): T {
   };
 }
 
+function withGeneratedBustFor<T extends { charId: number; portraits: CharacterRecord["portraits"] }>(entry: T): T {
+  const bust = GENERATED_BUSTS[entry.charId];
+  if (!bust || entry.portraits.bust.publicPath) return entry;
+  return { ...entry, portraits: { ...entry.portraits, bust: { publicPath: bust, generated: true } } };
+}
+
 function withResolvedIntrons(character: CharacterRecord): CharacterRecord {
-  const base = withSkillIconsFor(withResolvedIntronsFor(character));
+  const base = withGeneratedBustFor(withSkillIconsFor(withResolvedIntronsFor(character)));
   if (!character.variants) return base;
   const variants = Object.fromEntries(
     Object.entries(character.variants).map(([key, variant]) => [

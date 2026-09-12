@@ -643,6 +643,11 @@ export function QuickBuildCard({
             {buildName}
           </span>
         )}
+        {character.portraits.bust?.generated ? (
+          <p className="mt-2 text-[9px] italic leading-tight text-parch/60" style={{ textShadow: "0 1px 3px rgba(0,0,0,0.7)" }}>
+            {t("generatedPortraitNotice")}
+          </p>
+        ) : null}
       </div>
 
       {/* Layer 7 — middle + right content panel.

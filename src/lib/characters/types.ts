@@ -5,6 +5,8 @@ export interface CharacterElement {
 
 export interface CharacterPortrait {
   publicPath: string | null;
+  /** Illustration faite par nous, absente du jeu : le site doit le signaler. */
+  generated?: boolean;
 }
 
 export interface CharacterPortraits {

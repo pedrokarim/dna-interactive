@@ -499,6 +499,7 @@
     "portraitHead": "초상화",
     "portraitIcon": "아이콘",
     "portraitBust": "반신상",
+    "generatedPortraitNotice": "사이트용으로 생성한 일러스트이며, 게임 이미지가 아닙니다",
     "portraitPhantom": "팬텀",
     "portraitIntron": "Intron",
     "statATK": "공격력",

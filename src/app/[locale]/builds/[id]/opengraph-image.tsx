@@ -83,7 +83,8 @@ export default async function BuildOgImage({
   // bust = illustration carrée 2048² bien cadrée. Le gacha (256×1024) zoome sur
   // le haut en cover et coupe le visage → priorité au bust.
   const portraitPath =
-    character?.portraits.bust?.publicPath ??
+    // Un buste généré n'a pas sa place ici : l'image partagée ne porte pas la mention.
+    (character?.portraits.bust?.generated ? null : character?.portraits.bust?.publicPath) ??
     character?.portraits.charpiece?.publicPath ??
     character?.portraits.gacha?.publicPath ??
     character?.portraits.head?.publicPath ??
