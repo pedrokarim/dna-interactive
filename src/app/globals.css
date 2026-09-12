@@ -35,6 +35,17 @@
   --color-muted:          #9a907c;
   --color-muted-2:        #6a6150;
 
+  /* Statut « tout va bien » (pastilles du back-office, champ rempli). */
+  --color-ok:             #7bbf7b;
+
+  /* Back-office — surfaces propres à la console : un noir bleuté, plus froid
+     que celui du site, pour qu'on sache d'un coup d'œil qu'on n'est plus sur
+     le site public. Étaient écrites en hexadécimal dans les composants, donc
+     restaient noires en thème clair sous un texte devenu brun. */
+  --color-admin-canvas:   #07090d; /* fond de page et barre supérieure */
+  --color-admin-rail:     #0b0e14; /* barre latérale */
+  --color-admin-surface:  #0c0f15; /* panneaux, cellules de métriques, options */
+
   /* éléments */
   --color-electro: #a48ed0;
   --color-pyro:    #e2664a;
@@ -144,6 +155,15 @@ body {
   --color-parch:          #241d13;
   --color-muted:          #6a6152;
   --color-muted-2:        #6b6253;
+
+  --color-ok:             #2f6b3a;
+
+  /* Back-office — même hiérarchie qu'en sombre : la page au fond, la barre
+     latérale un cran au-dessus, les panneaux en surface la plus claire. */
+  /* Un cran plus clair que `ink` : `muted-2` n'y tenait que 4,44:1. */
+  --color-admin-canvas:   #e9e0cc;
+  --color-admin-rail:     #efe8d8;
+  --color-admin-surface:  #faf7ef;
 
   /* Éléments — mêmes teintes identitaires, ramenées à un contraste lisible.
      Les valeurs du thème sombre sont pensées pour briller sur du noir ; telles
@@ -269,6 +289,10 @@ body {
   --color-anemo:   #57d6a6;
   --color-lumino:  #e3cd95;
   --color-umbro:   #8e84ff;
+  --color-ok:             #7bbf7b;
+  --color-admin-canvas:   #07090d;
+  --color-admin-rail:     #0b0e14;
+  --color-admin-surface:  #0c0f15;
   --color-white: #fff;
   --color-black: #000;
 }

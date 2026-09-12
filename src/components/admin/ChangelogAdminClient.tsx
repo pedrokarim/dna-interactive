@@ -279,7 +279,7 @@ export function ChangelogAdminClient() {
                 onChange={(e) => setDraft((d) => (d ? { ...d, type: e.target.value as ChangelogType } : d))}
               >
                 {CHANGELOG_TYPES.map((type) => (
-                  <option key={type} value={type} className="bg-[#0b0d12]">
+                  <option key={type} value={type} className="bg-admin-surface">
                     {TYPE_LABELS[type]}
                   </option>
                 ))}
@@ -307,7 +307,7 @@ export function ChangelogAdminClient() {
                     >
                       {locale}
                       {locale === defaultLocale ? <span className="text-[0.58rem] text-gold">*</span> : null}
-                      {filled ? <span aria-hidden className="h-1 w-1 rounded-full bg-[#7bbf7b]" /> : null}
+                      {filled ? <span aria-hidden className="h-1 w-1 rounded-full bg-ok" /> : null}
                     </button>
                   );
                 })}

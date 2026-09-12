@@ -235,7 +235,7 @@ export function SettingsAdminClient() {
 
       {/* Barre d'enregistrement : n'apparaît qu'en cas de modification en attente. */}
       {dirty || error || saved ? (
-        <div className="sticky bottom-0 z-20 -mx-4 flex items-center gap-3 border-t border-white/10 bg-[#07090d]/95 px-4 py-2.5 backdrop-blur-md md:-mx-5 md:px-5">
+        <div className="sticky bottom-0 z-20 -mx-4 flex items-center gap-3 border-t border-white/10 bg-admin-canvas/95 px-4 py-2.5 backdrop-blur-md md:-mx-5 md:px-5">
           {error ? (
             <span className="font-sans text-[0.78rem] text-crimson-soft">{error}</span>
           ) : saved ? (

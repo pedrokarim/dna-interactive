@@ -192,7 +192,11 @@ export default async function LocaleLayout({
     currentYear > SITE_LAUNCH_YEAR ? `${SITE_LAUNCH_YEAR}-${currentYear}` : `${SITE_LAUNCH_YEAR}`;
 
   return (
-    <html lang={htmlLang}>
+    // `data-theme` et `data-sidebar` sont posés par les scripts inline avant
+    // l'hydratation : le HTML serveur ne peut pas les connaître. Sans ce
+    // drapeau, React signale un écart sur <html> à chaque page en thème clair.
+    // Il ne couvre que les attributs de cette balise, pas ses enfants.
+    <html lang={htmlLang} suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.gstatic.com" crossOrigin="anonymous" />

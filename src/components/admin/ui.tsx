@@ -136,7 +136,7 @@ export function AdminActionsDivider() {
 export type AdminStatusTone = "ok" | "warn" | "danger" | "neutral" | "info";
 
 const STATUS_DOT: Record<AdminStatusTone, string> = {
-  ok: "bg-[#7bbf7b]",
+  ok: "bg-ok",
   warn: "bg-gold-bright",
   danger: "bg-crimson-bright",
   neutral: "bg-muted-2",
@@ -207,7 +207,7 @@ export function AdminPanel({
   className?: string;
 }) {
   return (
-    <section className={cn("min-w-0 border border-white/10 bg-[#0c0f15]", className)}>
+    <section className={cn("min-w-0 border border-white/10 bg-admin-surface", className)}>
       <header className="flex items-center justify-between gap-3 border-b border-white/10 px-3 py-2">
         <div className="flex min-w-0 items-baseline gap-2">
           <h2 className="truncate font-caps text-[0.62rem] uppercase tracking-[0.2em] text-gold">{label}</h2>

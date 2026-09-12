@@ -21,7 +21,7 @@ export default async function AdminPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#07090d] text-parch">
+    <main className="min-h-screen bg-admin-canvas text-parch">
       <AdminDashboardClient currentUser={{ name: user.name, image: user.image }} />
     </main>
   );

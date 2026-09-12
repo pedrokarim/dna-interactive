@@ -32,6 +32,7 @@ import { Link } from "@/i18n/navigation";
 import { DnaAvatar } from "@/components/dna/Avatar";
 import { useConfirm } from "@/components/dna/ConfirmProvider";
 import { cn } from "@/components/dna";
+import { ThemeSwitcher } from "@/components/site/ThemeSwitcher";
 import { AnnouncementsAdminClient } from "./AnnouncementsAdminClient";
 import { CalendarAdminClient } from "./CalendarAdminClient";
 import { ChangelogAdminClient } from "./ChangelogAdminClient";
@@ -244,7 +245,7 @@ export function AdminDashboardClient({ currentUser }: { currentUser: CurrentAdmi
   const hasTable = activeView === "reports" || activeView === "builds" || activeView === "users";
 
   return (
-    <div className="min-h-screen bg-[#07090d] text-parch">
+    <div className="min-h-screen bg-admin-canvas text-parch">
       <AdminSidebar
         activeView={activeView}
         currentUser={currentUser}
@@ -254,7 +255,7 @@ export function AdminDashboardClient({ currentUser }: { currentUser: CurrentAdmi
 
       <div className="min-h-screen lg:pl-64">
         {/* ------------------------------------------------------ barre supérieure */}
-        <header className="sticky top-0 z-30 border-b border-white/10 bg-[#07090d]/95 backdrop-blur-md">
+        <header className="sticky top-0 z-30 border-b border-white/10 bg-admin-canvas/95 backdrop-blur-md">
           <div className="flex min-h-14 items-center gap-3 px-4 py-2.5 md:px-5">
             <div className="flex min-w-0 items-baseline gap-2">
               <span className="hidden font-caps text-[0.56rem] uppercase tracking-[0.2em] text-muted-2 sm:inline">
@@ -283,6 +284,9 @@ export function AdminDashboardClient({ currentUser }: { currentUser: CurrentAdmi
                 busy={refreshing}
                 onClick={() => void load()}
               />
+              {/* L'admin est servi sans la coquille du site : sans ce bouton, on
+                  ne pourrait pas changer de thème depuis la console. */}
+              <ThemeSwitcher />
             </div>
           </div>
 
@@ -396,7 +400,7 @@ function AdminSidebar({
   onChange: (view: AdminView) => void;
 }) {
   return (
-    <aside className="fixed inset-y-0 left-0 z-40 hidden w-64 flex-col border-r border-white/10 bg-[#0b0e14] lg:flex">
+    <aside className="fixed inset-y-0 left-0 z-40 hidden w-64 flex-col border-r border-white/10 bg-admin-rail lg:flex">
       <div className="flex items-center gap-2.5 border-b border-white/10 px-4 py-3.5">
         <span className="grid h-8 w-8 shrink-0 place-items-center border border-gold/45 bg-gold/10 text-gold">
           <Shield className="h-4 w-4" />
@@ -424,7 +428,7 @@ function AdminSidebar({
           <DnaAvatar src={currentUser.image} fallback={(currentUser.name ?? "A").charAt(0).toUpperCase()} round size={30} />
           <span className="min-w-0">
             <span className="block truncate font-sans text-[0.8rem] text-parch">{currentUser.name ?? "Admin"}</span>
-            <span className="block font-mono text-[0.58rem] uppercase tracking-[0.1em] text-gold/80">administrateur</span>
+            <span className="block font-mono text-[0.58rem] uppercase tracking-[0.1em] text-gold">administrateur</span>
           </span>
         </div>
         <div className="mt-2 flex gap-1">
@@ -522,7 +526,7 @@ function AdminMetrics({ stats, onView }: { stats: AdminStats; onView: (view: Adm
           key={cell.label}
           type="button"
           onClick={() => onView(cell.view)}
-          className="flex flex-col gap-0.5 bg-[#0c0f15] px-3.5 py-3 text-left transition-colors hover:bg-white/[0.04]"
+          className="flex flex-col gap-0.5 bg-admin-surface px-3.5 py-3 text-left transition-colors hover:bg-white/[0.04]"
         >
           <span className="font-caps text-[0.54rem] uppercase tracking-[0.16em] text-muted-2">{cell.label}</span>
           <span
@@ -980,7 +984,7 @@ function EmailsView({ stats }: { stats: EmailStats | null }) {
 
 function EmailMetric({ label, value, detail }: { label: string; value: string; detail: string }) {
   return (
-    <div className="flex flex-col gap-0.5 bg-[#0c0f15] px-3.5 py-3">
+    <div className="flex flex-col gap-0.5 bg-admin-surface px-3.5 py-3">
       <span className="flex items-center gap-1.5 font-caps text-[0.54rem] uppercase tracking-[0.16em] text-muted-2">
         <MailOpen aria-hidden className="h-3 w-3" />
         {label}

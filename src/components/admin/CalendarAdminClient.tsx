@@ -228,7 +228,7 @@ export function CalendarAdminClient() {
                 onChange={(e) => set("category", e.target.value as Category)}
               >
                 {CATEGORIES.map((c) => (
-                  <option key={c} value={c} className="bg-[#0b0d12]">
+                  <option key={c} value={c} className="bg-admin-surface">
                     {c}
                   </option>
                 ))}

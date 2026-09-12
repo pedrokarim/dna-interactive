@@ -543,7 +543,7 @@ function ChannelCell({
   detail: string;
 }) {
   return (
-    <div className="flex items-center gap-2.5 bg-[#0c0f15] px-3.5 py-2.5">
+    <div className="flex items-center gap-2.5 bg-admin-surface px-3.5 py-2.5">
       <span
         className={cn(
           "grid h-7 w-7 shrink-0 place-items-center border",
@@ -617,7 +617,7 @@ function SelectField({
       </label>
       <select id={id} className={cn(adminInputClass, FIELD_WIDTH[width])} value={value} onChange={(event) => onChange(event.target.value)}>
         {options.map((option) => (
-          <option key={option.value} value={option.value} className="bg-[#0b0d12]">
+          <option key={option.value} value={option.value} className="bg-admin-surface">
             {option.label}
           </option>
         ))}

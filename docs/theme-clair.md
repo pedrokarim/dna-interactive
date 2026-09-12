@@ -186,6 +186,37 @@ elles ressortent bien plus, puisqu'elles partent du même ton que la page. Leur
 opacité maximale descend donc de `0.5` à `0.3`, et le voile s'inverse avec
 elles.
 
+## Le back-office
+
+La console d'administration (`/admin`) a été oubliée au premier passage, pour
+deux raisons qui valent pour toute page servie **hors de la coquille du site**
+(`AppShell`) :
+
+- **pas de sélecteur de thème** : il vit dans la barre du haut de la coquille.
+  La console a donc le sien, dans sa propre barre supérieure ;
+- **des fonds en hexadécimal** (`bg-[#07090d]`, `bg-[#0c0f15]`…) : les textes,
+  écrits en tokens, passaient à l'encre brune pendant que les fonds restaient
+  noirs. Résultat : du brun sur du noir, illisible.
+
+Les surfaces de la console ont maintenant leurs propres tokens. Leurs valeurs
+sombres sont exactement les anciennes : un noir bleuté, plus froid que celui du
+site, pour qu'on sache d'un coup d'œil qu'on a quitté le site public.
+
+| Token | Rôle | Sombre | Clair |
+|---|---|---|---|
+| `admin-canvas` | fond de page, barre supérieure | `#07090d` | `#e9e0cc` |
+| `admin-rail` | barre latérale | `#0b0e14` | `#efe8d8` |
+| `admin-surface` | panneaux, métriques, options de liste | `#0c0f15` | `#faf7ef` |
+| `ok` | pastille « tout va bien » | `#7bbf7b` | `#2f6b3a` |
+
+`admin-canvas` est un cran plus clair que `ink` : sur `ink`, `muted-2` ne tenait
+que 4,44:1. Mesuré sur les 9 vues de la console en clair : aucun texte sous
+4,5:1 (minimum 4,57:1).
+
+**Leçon** : un changement de thème se vérifie route par route, **y compris
+celles qui ne passent pas par la coquille** (console, pages plein écran).
+Chercher les couleurs en dur avec `#[0-9a-fA-F]{3,8}` dans leurs dossiers.
+
 ## Ajouter un composant
 
 Rien de spécial : utiliser les tokens. Les deux pièges à éviter sont
