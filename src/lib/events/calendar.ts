@@ -1,10 +1,11 @@
 /**
  * Calendrier des événements Duet Night Abyss — données + logique pure paramétrique.
  *
- * Données réelles curées (fin du patch 1.4 « Silver Torrent, Rising Star » et
- * patch 1.5 « Paradise Prelude », juillet-septembre 2026), à rafraîchir à chaque
- * version. Dates recoupées le 1ᵉʳ septembre 2026 sur les notes de version
- * officielles et les annonces du compte officiel du jeu.
+ * Données réelles curées (patch 1.5 « Paradise Prelude » et patch 1.6
+ * « Paradise's 22nd White Bunny », juillet-novembre 2026), à rafraîchir à chaque
+ * version. Dates recoupées le 12 septembre 2026 sur les notes de version
+ * officielles et les annonces du compte officiel du jeu. Les événements de la
+ * 1.4, terminés le 27 juillet, ont quitté cette liste (ils restent en base).
  *
  * **Convention de dates** : `start`/`end` sont des jours **inclus**. Les
  * événements ferment à une heure précise (UTC+8, fuseau serveur) : une clôture
@@ -13,14 +14,12 @@
  * `end` au 4 septembre. L'heure exacte est rappelée dans `description` dès
  * qu'elle risque d'induire en erreur.
  *
- * La version 1.6 « Paradise's 22nd White Bunny » sort le **8 septembre 2026**
- * et courra jusqu'au 20 octobre. Seuls les éléments déjà datés officiellement
- * y figurent (passe saisonnier, boutique de skins, bannière Myriad « Where the
- * Long Road Leads » de Falsi, annoncée pour le 8 septembre). Les périodes des
- * événements annoncés (Capriccio of Whimsy, Better Luno than Never, Way of the
- * Penitent, Parade Itinerary) et la date de clôture des bannières ne sont pas
- * publiées à ce jour — à compléter dès les notes de version. Aucune source
- * tierce n'est créditée au front.
+ * La version 1.6 « Paradise's 22nd White Bunny » est sortie le **8 septembre
+ * 2026**. Ses périodes viennent toutes des notes de version officielles. Falsi
+ * n'a **pas** de bannière Myriad : elle s'obtient via ses Secret Letters au
+ * théâtre immersif (jusqu'au 29 septembre à 10:00 UTC+8) ou en boutique. Une
+ * entrée « Where the Long Road Leads » la présentait à tort comme une bannière :
+ * elle a été retirée. Aucune source tierce n'est créditée au front.
  *
  * Le calendrier est une **frise défilable sans borne** : une plage rendue
  * (`rangeStart` + nombre de jours) qui s'étend à la volée quand on atteint un
@@ -58,7 +57,6 @@ export type CalendarEvent = {
 };
 
 /* Annonces officielles réutilisées par plusieurs événements. */
-const SRC_V14 = "https://store.steampowered.com/news/app/3950020/view/1833968530898688";
 /** Notes de version officielles 1.5 « Paradise Prelude » (source de toutes les dates 1.5). */
 const SRC_V15 = "https://store.steampowered.com/news/app/3950020/view/1839041357036785";
 const SRC_V15_EVENT = "https://duetnightabyss.dna-panstudio.com/dna-event/en/";
@@ -74,10 +72,8 @@ const SRC_V15_PHOXHUNTER = "https://x.com/DNAbyss_EN/status/2091737265458586108"
 /* Annonces de la version 1.6 « Paradise's 22nd White Bunny » (sortie le 8 septembre 2026). */
 const SRC_V16_BARDS_TOME = "https://x.com/DNAbyss_EN/status/2094349488383197537";
 const SRC_V16_CIVIC = "https://x.com/DNAbyss_EN/status/2094666568365953062";
-/* Bande-annonce de personnage « Where the Long Road Leads | Falsi ». Le studio a
-   annoncé la date d'ouverture (8 septembre) mais pas encore la date de clôture :
-   la borne de fin reprend celle de la version, à recouper aux notes de version. */
-const SRC_V16_FALSI = "https://x.com/DNAbyss_EN";
+/** Notes de version officielles 1.6 (source de toutes les périodes 1.6). */
+const SRC_V16 = "https://steamcommunity.com/games/3950020/announcements/detail/676256891013171560";
 
 export const CATEGORIES: EventCategory[] = ["Bannière", "Arme", "Événement", "Épreuve", "Récompense"];
 
@@ -95,20 +91,6 @@ export type CalendarZoom = (typeof CALENDAR_ZOOMS)[number];
 export const DEFAULT_ZOOM: CalendarZoom = 30;
 
 export const CALENDAR_EVENTS: CalendarEvent[] = [
-  { id: "grace-benign-night", title: "Grace Upon the Benign Night", category: "Bannière", start: "2026-06-02", end: "2026-07-27", image: "/assets/official-v1.4/image-flora.webp", description: "Bannière Myriad limitée — inclut les skins de Flora et Rebecca.", sourceUrl: SRC_V14 },
-  { id: "summer-dreams", title: "Summer Dreams Aflutter", category: "Bannière", start: "2026-06-02", end: "2026-07-27", image: "/assets/worldview/worldview-8.webp", description: "Bannière Myriad limitée de la saison estivale.", sourceUrl: SRC_V14 },
-  { id: "firearm-feast", title: "Firearm Feast — arme signature de Hilda", category: "Arme", start: "2026-06-30", end: "2026-07-27", image: "/assets/worldview/worldview-10.webp", description: "Bannière d'arme (Secret Letters) — l'arme signature de Hilda.", sourceUrl: SRC_V14 },
-  { id: "silver-torrent", title: "Silver Torrent, Rising Star — récompense", category: "Récompense", start: "2026-06-02", end: "2026-07-27", image: "/assets/worldview/worldview-6.webp", description: "Récompense de sélection : un personnage et une arme offerts.", sourceUrl: SRC_V14 },
-  { id: "immersive-theatre", title: "Immersive Theatre : Ensemble Act (1.4)", category: "Événement", start: "2026-06-18", end: "2026-07-27", image: "/assets/worldview/worldview-3.webp", description: "Défi coopératif : battre le boss en équipe.", sourceUrl: SRC_V14 },
-  { id: "starry-gleanings", title: "Starry Gleanings — commissions", category: "Événement", start: "2026-06-25", end: "2026-07-13", image: "/assets/worldview/worldview-4.webp", description: "Événement commissions : récompenses à accumuler.", sourceUrl: SRC_V14 },
-  { id: "resonant-orisons", title: "Resonant Orisons — skins Lynn & Lady Nifle", category: "Événement", start: "2026-06-30", end: "2026-07-27", image: "/assets/worldview/worldview-9.webp", description: "Événement à durée limitée — nouveaux skins pour Lynn et Lady Nifle.", sourceUrl: SRC_V14 },
-  { id: "days-tranquility", title: "Days of Tranquility — connexion", category: "Récompense", start: "2026-06-30", end: "2026-07-27", image: "/assets/worldview/worldview-5.webp", description: "Connexion sur 7 jours pour des Sabliers immaculés.", sourceUrl: SRC_V14 },
-  { id: "traces-sand", title: "Traces in the Sand — essai de Hilda", category: "Épreuve", start: "2026-06-30", end: "2026-07-27", image: "/assets/worldview/worldview-11.webp", description: "Essai de personnage : teste Hilda gratuitement.", sourceUrl: SRC_V14 },
-  { id: "starry-sojourn", title: "Starry Sojourn — co-op (1.4)", category: "Événement", start: "2026-07-09", end: "2026-07-27", image: "/assets/worldview/worldview-7.webp", description: "Récompenses de temps de jeu en coopération.", sourceUrl: SRC_V14 },
-  { id: "bountiful-day-2", title: "Bountiful Day — Partie 2 (1.4)", category: "Événement", start: "2026-07-10", end: "2026-07-17", image: "/assets/worldview/worldview-2.webp", description: "Retour d'événement : taux de drop de Demon Wedge augmentés.", sourceUrl: SRC_V14 },
-  { id: "atlasia-calling", title: "Atlasia Calling — parrainage", category: "Récompense", start: "2026-06-02", end: "2026-07-27", image: "/assets/worldview/worldview-1-3-1.webp", description: "Invite des joueurs et récupère les paliers de récompenses de parrainage.", sourceUrl: SRC_V14 },
-  { id: "lunos-rail-rumpus", title: "Luno's Rail Rumpus", category: "Événement", start: "2026-06-04", end: "2026-07-25", image: "/assets/worldview/worldview-1-4-1.webp", description: "Événement coopératif ferroviaire de la saison Bloomfield.", sourceUrl: SRC_V14 },
-
   /* ------------------------------------------------ patch 1.5 « Paradise Prelude » */
   { id: "rabbit-in-wonderland", title: "Rabbit in Wonderland — connexion", category: "Récompense", start: "2026-07-23", end: "2026-08-04", image: "/assets/official-v1.5/key-art-ada.webp", description: "Connexion quotidienne d'ouverture de la version Paradise Prelude.", sourceUrl: SRC_V15_PV },
   { id: "paradise-prelude", title: "Paradise Prelude — événement web", category: "Récompense", start: "2026-07-23", end: "2026-09-03", image: "/assets/official-v1.5/banner-paradise-prelude.webp", description: "Événement web de la version 1.5 : Ada offerte et récompenses à réclamer.", sourceUrl: SRC_V15_EVENT },
@@ -134,11 +116,29 @@ export const CALENDAR_EVENTS: CalendarEvent[] = [
   { id: "phoxhunter-summit", title: "Phoxhunter Summit", category: "Épreuve", start: "2026-08-26", end: "2026-09-04", image: "/assets/worldview/worldview-1.webp", description: "Épreuve compétitive de fin de version en deux temps : phase de groupes, puis classement Apex pour des Phoxcoins à dépenser en boutique. Tous les ennemis sont faibles à l’Hydro ; clôture le 5 septembre à 00:00 UTC+8.", sourceUrl: SRC_V15_PHOXHUNTER },
 
   /* ------------------------------------- patch 1.6 « Paradise's 22nd White Bunny » */
-  /* Sortie le 8 septembre 2026, jusqu'au 20 octobre. Seuls les éléments déjà datés
-     par le compte officiel figurent ici ; le reste du programme n'est pas publié. */
-  { id: "bards-tome-rimeveil-nocturne", title: "Bard's Tome : Rimeveil Nocturne", category: "Récompense", start: "2026-09-08", end: "2026-10-20", image: "/assets/events/bards-tome-rimeveil-nocturne.webp", description: "Passe saisonnier de la version 1.6 : monte les paliers du Grimoire du barde pour la posture « Crystal Heart » et le skin d'arme « Emberfrost ».", sourceUrl: SRC_V16_BARDS_TOME },
-  { id: "where-long-road-leads", title: "Where the Long Road Leads — Falsi", category: "Bannière", start: "2026-09-08", end: "2026-10-20", href: "/characters/falsi", description: "Bannière Myriad limitée de la version 1.6 : première apparition de Falsi (Pyro, 5 étoiles, doubles lames) et de son skin « Stalking Silence ». Date de clôture non publiée à ce jour — la fin affichée reprend celle de la version.", sourceUrl: SRC_V16_FALSI },
+  /* Sortie le 8 septembre 2026. Toutes les périodes viennent des notes de version
+     officielles (SRC_V16). Falsi n'a PAS de bannière Myriad : elle s'obtient via ses
+     Secret Letters au théâtre immersif, ou en boutique. */
+  { id: "bards-tome-rimeveil-nocturne", title: "Bard's Tome : Rimeveil Nocturne", category: "Récompense", start: "2026-09-08", end: "2026-10-19", image: "/assets/events/bards-tome-rimeveil-nocturne.webp", description: "Passe saisonnier de la version 1.6 : monte les paliers du Grimoire du barde pour la posture « Crystal Heart » et le skin d'arme « Emberfrost » (clôture le 19 octobre à 17:00 UTC+8).", sourceUrl: SRC_V16_BARDS_TOME },
   { id: "civic-ordinance", title: "Civic Ordinance — skins thématiques", category: "Événement", start: "2026-09-08", end: "2026-10-19", image: "/assets/events/civic-ordinance.webp", description: "Remise à durée limitée en boutique sur la gamme de skins « Civic Ordinance » : première vague de neuf personnages, à échanger contre des Plumules.", sourceUrl: SRC_V16_CIVIC },
+  { id: "parade-itinerary", title: "Parade Itinerary", category: "Événement", start: "2026-09-08", end: "2026-10-19", image: "/assets/events/parade-itinerary.webp", description: "Événement principal de la version 1.6 : à travers monts et forêts, une ville étrange t'accueille dans un paradis de rêve (fin le 19 octobre à 17:00 UTC+8).", sourceUrl: SRC_V16 },
+  { id: "immersive-theatre-falsi", title: "Immersive Theatre : « Falsi »", category: "Événement", start: "2026-09-08", end: "2026-09-29", href: "/characters/falsi", image: "/assets/worldview/worldview-1-6-1.webp", description: "Rotation du théâtre immersif : récupère les Secret Letters de Falsi et de « Stifled Howl » au Memento avant la bascule du 29 septembre à 10:00 UTC+8. Falsi s'achète aussi en boutique.", sourceUrl: SRC_V16 },
+  { id: "stifled-howl", title: "Stifled Howl – arme de Falsi", category: "Arme", start: "2026-09-08", end: "2026-09-29", href: "/items/weapons/weapons-10405", image: "/assets/worldview/worldview-10.webp", description: "Secret Letters des doubles lames de Falsi, en vente au Memento pendant la rotation « Falsi » du théâtre immersif (jusqu'au 29 septembre à 10:00 UTC+8).", sourceUrl: SRC_V16 },
+  { id: "way-of-the-penitent", title: "Way of the Penitent – connexion", category: "Récompense", start: "2026-09-08", end: "2026-10-19", image: "/assets/worldview/worldview-1-6-3.webp", description: "Connexion cumulée de la version 1.6 (fin le 19 octobre à 17:00 UTC+8).", sourceUrl: SRC_V16 },
+  { id: "treasure-hunt-trials-v16", title: "Treasure Hunt Trials (1.6)", category: "Épreuve", start: "2026-09-08", end: "2026-10-20", image: "/assets/worldview/worldview-1-3-8.webp", description: "Simulation calquée sur l'Incense Proving de Huaxu : franchis les paliers pour des récompenses (clôture le 20 octobre à 05:00 UTC+8).", sourceUrl: SRC_V16 },
+  { id: "opulent-rebate", title: "Opulent Rebate", category: "Récompense", start: "2026-09-08", end: "2026-10-19", image: "/assets/worldview/worldview-5.webp", description: "Événement de remboursement à durée limitée (fin le 19 octobre à 17:00 UTC+8).", sourceUrl: SRC_V16 },
+  { id: "better-luno-than-never", title: "Better Luno than Never", category: "Épreuve", start: "2026-09-08", end: "2026-09-29", image: "/assets/worldview/worldview-1-4-1.webp", description: "Défi à durée limitée : Lulu Lunoloot se rend, ses Phoxenes à la main, et implore ta clémence. À toi de trancher (fin le 29 septembre à 05:00 UTC+8).", sourceUrl: SRC_V16 },
+  { id: "vibrant-strokes", title: "Vibrant Strokes", category: "Événement", start: "2026-09-08", end: "2026-10-19", image: "/assets/worldview/worldview-9.webp", description: "Événement à durée limitée de la version 1.6 (fin le 19 octobre à 17:00 UTC+8).", sourceUrl: SRC_V16 },
+  { id: "moments-in-frames", title: "Moments in Frames", category: "Événement", start: "2026-09-10", end: "2026-09-29", image: "/assets/worldview/worldview-3.webp", description: "Un photographe itinérant, près du Sanctuaire, te fait découvrir les Notes d'image : une autre façon de garder trace de ton voyage (fin le 29 septembre à 05:00 UTC+8).", sourceUrl: SRC_V16 },
+  { id: "bountiful-day-v16-p1", title: "Bountiful Day – Partie 1 (1.6)", category: "Événement", start: "2026-09-10", end: "2026-09-17", image: "/assets/worldview/worldview-1-4-3.webp", description: "Les commissions du Manuel du Noctoyager rapportent davantage de Demon Wedges (fin le 17 septembre à 05:00 UTC+8).", sourceUrl: SRC_V16 },
+  { id: "starry-sojourn-v16", title: "Starry Sojourn – co-op (1.6)", category: "Événement", start: "2026-09-17", end: "2026-09-30", image: "/assets/worldview/worldview-7.webp", description: "Cumule du temps de jeu en coopération pour réclamer les récompenses de l'événement (fin le 30 septembre à 05:00 UTC+8).", sourceUrl: SRC_V16 },
+  { id: "immersive-theatre-ensemble-v16", title: "Immersive Theatre : Ensemble Act (1.6)", category: "Événement", start: "2026-09-17", end: "2026-10-18", image: "/assets/worldview/worldview-1-4-5.webp", description: "Co-op du théâtre immersif : abats les boss en équipe. Jusqu'à 3 salles gratuites par semaine avec multiplicateur de récompenses fixe, remise à zéro le vendredi (fin le 18 octobre à 17:00 UTC+8).", sourceUrl: SRC_V16 },
+  { id: "starry-gleanings-v16", title: "Starry Gleanings – commissions (1.6)", category: "Événement", start: "2026-09-24", end: "2026-10-12", image: "/assets/worldview/worldview-4.webp", description: "Accomplis des commissions pendant l'événement pour ouvrir les cadeaux (fin le 12 octobre à 05:00 UTC+8).", sourceUrl: SRC_V16 },
+  { id: "sanguine-plume", title: "Sanguine Plume – arme de calamité", category: "Arme", start: "2026-09-29", end: "2026-10-19", href: "/items/weapons/weapons-20298", image: "/assets/worldview/worldview-1-3-6.webp", description: "Rotation « Blueprint : Sanguine Plume » du théâtre immersif. Dès le 29 septembre à 10:00 UTC+8, le Blueprint et le Prototype de ces doubles pistolets de calamité entrent définitivement au Memento.", sourceUrl: SRC_V16 },
+  { id: "capriccio-of-whimsy", title: "Capriccio of Whimsy – skins Berenica & Psyche", category: "Bannière", start: "2026-09-29", end: "2026-11-09", image: "/assets/worldview/worldview-8.webp", description: "Nouveaux skins pour Berenica et Psyche : « la danseuse tourne sans fin, et le bal ne s'éteint jamais » (fin le 9 novembre à 17:00 UTC+8).", sourceUrl: SRC_V16 },
+  { id: "bountiful-day-v16-p2", title: "Bountiful Day – Partie 2 (1.6)", category: "Événement", start: "2026-10-01", end: "2026-10-08", image: "/assets/worldview/worldview-1-4-3.webp", description: "Deuxième fenêtre de bonus de Demon Wedges sur les commissions du Manuel du Noctoyager (fin le 8 octobre à 05:00 UTC+8).", sourceUrl: SRC_V16 },
+  { id: "treasured-remnants", title: "Treasured Remnants", category: "Événement", start: "2026-10-01", end: "2026-10-13", image: "/assets/worldview/worldview-1-4-2.webp", description: "De vieux objets patinés par le temps, qui ne retrouvent leur éclat qu'entre les mains de ceux qui en ont besoin (fin le 13 octobre à 05:00 UTC+8).", sourceUrl: SRC_V16 },
+  { id: "phoxhunter-summit-v16", title: "Phoxhunter Summit (1.6)", category: "Épreuve", start: "2026-10-07", end: "2026-10-16", image: "/assets/worldview/worldview-1.webp", description: "Épreuve compétitive de fin de version. Les contres élémentaires ont été retirés pour cette édition (clôture le 17 octobre à 00:00 UTC+8).", sourceUrl: SRC_V16 },
 ];
 
 /* --------------------------------------------------------------- helpers date */
