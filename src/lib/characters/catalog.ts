@@ -99,11 +99,6 @@ function slugifyEnglishName(name: string | null | undefined): string | null {
   // → fallback sur character.id pour ces cas.
   if (/^\{[^}]+\}$/.test(name.trim())) return null;
   const slug = name
-    // Les deux versions de Mors portent le même nom : le symbole de genre est
-    // leur seule différence, il doit survivre au slug (`mors-female` /
-    // `mors-male`), faute de quoi elles se disputeraient la même adresse.
-    .replace(/♀/g, " female ")
-    .replace(/♂/g, " male ")
     .normalize("NFKD")
     .replace(/[̀-ͯ]/g, "")
     .toLowerCase()
@@ -112,8 +107,24 @@ function slugifyEnglishName(name: string | null | undefined): string | null {
   return slug.length > 0 ? slug : null;
 }
 
+/**
+ * Adresses fixées à la main. Les deux protagonistes existent chacun en femme et
+ * en homme sous le même titre (« Vita », « Mors ») : l'adresse tirée du nom
+ * serait la même pour les deux fiches. Le genre est donc écrit dans l'adresse.
+ */
+const SLUG_OVERRIDES: Record<number, string> = {
+  1201: "vita-female",
+  120101: "vita-male",
+  2201: "mors-female",
+  220101: "mors-male",
+};
+
 export function getCharacterSlug(character: CharacterRecord): string {
-  return slugifyEnglishName(character.translations?.EN?.name) ?? character.id;
+  return (
+    SLUG_OVERRIDES[character.charId] ??
+    slugifyEnglishName(character.translations?.EN?.name) ??
+    character.id
+  );
 }
 
 // Certains personnages (notamment les formes alternatives du Phoxhunter)
@@ -168,7 +179,7 @@ export function resolveDisplayName(
 
 const slugToCharacter = new Map<string, CharacterRecord>();
 for (const character of characters) {
-  const slug = slugifyEnglishName(character.translations?.EN?.name);
+  const slug = getCharacterSlug(character);
   if (slug && !slugToCharacter.has(slug)) {
     slugToCharacter.set(slug, character);
   }
@@ -188,6 +199,9 @@ const LEGACY_ID_ALIASES: Record<string, string> = {
   "char-nanzhu02": "char-protagonist-male",
   nanzhu: "char-protagonist-male",
   "160101": "char-protagonist-male",
+  // Adresses d'avant le renommage en « Vita » (septembre 2026).
+  "female-protagonist": "char-protagonist-female",
+  "male-protagonist": "char-protagonist-male",
 };
 
 // ---------------------------------------------------------------------------

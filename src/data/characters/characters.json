@@ -5944,8 +5944,8 @@
     },
     "translations": {
       "DE": {
-        "name": "Mors ♀",
-        "subtitle": null,
+        "name": "Mors",
+        "subtitle": "Traum-Protagonistin",
         "birthday": null,
         "force": null,
         "campName": "Hyperboreisches Imperium",
@@ -5959,8 +5959,8 @@
         ]
       },
       "EN": {
-        "name": "Mors ♀",
-        "subtitle": null,
+        "name": "Mors",
+        "subtitle": "Female Dream Protagonist",
         "birthday": null,
         "force": null,
         "campName": "The Hyperborean Empire",
@@ -5974,8 +5974,8 @@
         ]
       },
       "ES": {
-        "name": "Mors ♀",
-        "subtitle": null,
+        "name": "Mors",
+        "subtitle": "Protagonista femenina del sueño",
         "birthday": null,
         "force": null,
         "campName": "Imperio Hiperbóreo",
@@ -5989,8 +5989,8 @@
         ]
       },
       "FR": {
-        "name": "Mors ♀",
-        "subtitle": null,
+        "name": "Mors",
+        "subtitle": "Protagoniste féminine du rêve",
         "birthday": null,
         "force": null,
         "campName": "Empire Hyperboréen",
@@ -6004,8 +6004,8 @@
         ]
       },
       "JP": {
-        "name": "モルス ♀",
-        "subtitle": null,
+        "name": "モルス",
+        "subtitle": "夢の女性主人公",
         "birthday": null,
         "force": null,
         "campName": "ヒュペリア帝国",
@@ -6019,8 +6019,8 @@
         ]
       },
       "KR": {
-        "name": "모스 ♀",
-        "subtitle": null,
+        "name": "모스",
+        "subtitle": "꿈의 여성 주인공",
         "birthday": null,
         "force": null,
         "campName": "휘페르보레아 제국",
@@ -6034,8 +6034,8 @@
         ]
       },
       "TC": {
-        "name": "墨斯 ♀",
-        "subtitle": null,
+        "name": "墨斯",
+        "subtitle": "夢中的女主角",
         "birthday": null,
         "force": null,
         "campName": "海伯利亞帝國",
@@ -6496,8 +6496,8 @@
     },
     "translations": {
       "DE": {
-        "name": "Mors ♂",
-        "subtitle": null,
+        "name": "Mors",
+        "subtitle": "Traum-Protagonist",
         "birthday": null,
         "force": null,
         "campName": "Hyperboreisches Imperium",
@@ -6511,8 +6511,8 @@
         ]
       },
       "EN": {
-        "name": "Mors ♂",
-        "subtitle": null,
+        "name": "Mors",
+        "subtitle": "Male Dream Protagonist",
         "birthday": null,
         "force": null,
         "campName": "The Hyperborean Empire",
@@ -6526,8 +6526,8 @@
         ]
       },
       "ES": {
-        "name": "Mors ♂",
-        "subtitle": null,
+        "name": "Mors",
+        "subtitle": "Protagonista masculino del sueño",
         "birthday": null,
         "force": null,
         "campName": "Imperio Hiperbóreo",
@@ -6541,8 +6541,8 @@
         ]
       },
       "FR": {
-        "name": "Mors ♂",
-        "subtitle": null,
+        "name": "Mors",
+        "subtitle": "Protagoniste masculin du rêve",
         "birthday": null,
         "force": null,
         "campName": "Empire Hyperboréen",
@@ -6556,8 +6556,8 @@
         ]
       },
       "JP": {
-        "name": "モルス ♂",
-        "subtitle": null,
+        "name": "モルス",
+        "subtitle": "夢の男性主人公",
         "birthday": null,
         "force": null,
         "campName": "ヒュペリア帝国",
@@ -6571,8 +6571,8 @@
         ]
       },
       "KR": {
-        "name": "모스 ♂",
-        "subtitle": null,
+        "name": "모스",
+        "subtitle": "꿈의 남성 주인공",
         "birthday": null,
         "force": null,
         "campName": "휘페르보레아 제국",
@@ -6586,8 +6586,8 @@
         ]
       },
       "TC": {
-        "name": "墨斯 ♂",
-        "subtitle": null,
+        "name": "墨斯",
+        "subtitle": "夢中的男主角",
         "birthday": null,
         "force": null,
         "campName": "海伯利亞帝國",
@@ -8424,8 +8424,8 @@
     },
     "translations": {
       "DE": {
-        "name": "Protagonistin",
-        "subtitle": "Vita / Mors",
+        "name": "Vita",
+        "subtitle": "Protagonistin",
         "birthday": null,
         "force": null,
         "campName": "Keine Zugehörigkeit",
@@ -8439,8 +8439,8 @@
         ]
       },
       "EN": {
-        "name": "Female Protagonist",
-        "subtitle": "Vita / Mors",
+        "name": "Vita",
+        "subtitle": "Female Protagonist",
         "birthday": null,
         "force": null,
         "campName": "No Affiliation",
@@ -8454,8 +8454,8 @@
         ]
       },
       "ES": {
-        "name": "Protagonista Femenina",
-        "subtitle": "Vita / Mors",
+        "name": "Vita",
+        "subtitle": "Protagonista femenina",
         "birthday": null,
         "force": null,
         "campName": "Sin afiliación",
@@ -8469,8 +8469,8 @@
         ]
       },
       "FR": {
-        "name": "Protagoniste Feminine",
-        "subtitle": "Vita / Mors",
+        "name": "Vita",
+        "subtitle": "Protagoniste féminine",
         "birthday": null,
         "force": null,
         "campName": "Aucune affiliation",
@@ -8484,8 +8484,8 @@
         ]
       },
       "JP": {
-        "name": "女性主人公",
-        "subtitle": "Vita / Mors",
+        "name": "ヴィータ",
+        "subtitle": "女性主人公",
         "birthday": null,
         "force": null,
         "campName": "無所属",
@@ -8499,8 +8499,8 @@
         ]
       },
       "KR": {
-        "name": "여성 주인공",
-        "subtitle": "Vita / Mors",
+        "name": "비타",
+        "subtitle": "여성 주인공",
         "birthday": null,
         "force": null,
         "campName": "무소속",
@@ -8514,8 +8514,8 @@
         ]
       },
       "TC": {
-        "name": "女主角",
-        "subtitle": "Vita / Mors",
+        "name": "維塔",
+        "subtitle": "女主角",
         "birthday": null,
         "force": null,
         "campName": "無陣營",
@@ -8942,8 +8942,8 @@
         "consonanceWeapons": [],
         "translations": {
           "DE": {
-            "name": "Protagonistin",
-            "subtitle": "Vita / Mors",
+            "name": "Vita",
+            "subtitle": "Protagonistin",
             "birthday": null,
             "force": null,
             "campName": "Keine Zugehörigkeit",
@@ -8957,8 +8957,8 @@
             ]
           },
           "EN": {
-            "name": "Female Protagonist",
-            "subtitle": "Vita / Mors",
+            "name": "Vita",
+            "subtitle": "Female Protagonist",
             "birthday": null,
             "force": null,
             "campName": "No Affiliation",
@@ -8972,8 +8972,8 @@
             ]
           },
           "ES": {
-            "name": "Protagonista Femenina",
-            "subtitle": "Vita / Mors",
+            "name": "Vita",
+            "subtitle": "Protagonista femenina",
             "birthday": null,
             "force": null,
             "campName": "Sin afiliación",
@@ -8987,8 +8987,8 @@
             ]
           },
           "FR": {
-            "name": "Protagoniste Feminine",
-            "subtitle": "Vita / Mors",
+            "name": "Vita",
+            "subtitle": "Protagoniste féminine",
             "birthday": null,
             "force": null,
             "campName": "Aucune affiliation",
@@ -9002,8 +9002,8 @@
             ]
           },
           "JP": {
-            "name": "女性主人公",
-            "subtitle": "Vita / Mors",
+            "name": "ヴィータ",
+            "subtitle": "女性主人公",
             "birthday": null,
             "force": null,
             "campName": "無所属",
@@ -9017,8 +9017,8 @@
             ]
           },
           "KR": {
-            "name": "여성 주인공",
-            "subtitle": "Vita / Mors",
+            "name": "비타",
+            "subtitle": "여성 주인공",
             "birthday": null,
             "force": null,
             "campName": "무소속",
@@ -9032,8 +9032,8 @@
             ]
           },
           "TC": {
-            "name": "女主角",
-            "subtitle": "Vita / Mors",
+            "name": "維塔",
+            "subtitle": "女主角",
             "birthday": null,
             "force": null,
             "campName": "無陣營",
@@ -9217,8 +9217,8 @@
     },
     "translations": {
       "DE": {
-        "name": "Protagonist",
-        "subtitle": "Vita / Mors",
+        "name": "Vita",
+        "subtitle": "Protagonist",
         "birthday": null,
         "force": null,
         "campName": "Keine Zugehörigkeit",
@@ -9232,8 +9232,8 @@
         ]
       },
       "EN": {
-        "name": "Male Protagonist",
-        "subtitle": "Vita / Mors",
+        "name": "Vita",
+        "subtitle": "Male Protagonist",
         "birthday": null,
         "force": null,
         "campName": "No Affiliation",
@@ -9247,8 +9247,8 @@
         ]
       },
       "ES": {
-        "name": "Protagonista Masculino",
-        "subtitle": "Vita / Mors",
+        "name": "Vita",
+        "subtitle": "Protagonista masculino",
         "birthday": null,
         "force": null,
         "campName": "Sin afiliación",
@@ -9262,8 +9262,8 @@
         ]
       },
       "FR": {
-        "name": "Protagoniste Masculin",
-        "subtitle": "Vita / Mors",
+        "name": "Vita",
+        "subtitle": "Protagoniste masculin",
         "birthday": null,
         "force": null,
         "campName": "Aucune affiliation",
@@ -9277,8 +9277,8 @@
         ]
       },
       "JP": {
-        "name": "男性主人公",
-        "subtitle": "Vita / Mors",
+        "name": "ヴィータ",
+        "subtitle": "男性主人公",
         "birthday": null,
         "force": null,
         "campName": "無所属",
@@ -9292,8 +9292,8 @@
         ]
       },
       "KR": {
-        "name": "남성 주인공",
-        "subtitle": "Vita / Mors",
+        "name": "비타",
+        "subtitle": "남성 주인공",
         "birthday": null,
         "force": null,
         "campName": "무소속",
@@ -9307,8 +9307,8 @@
         ]
       },
       "TC": {
-        "name": "男主角",
-        "subtitle": "Vita / Mors",
+        "name": "維塔",
+        "subtitle": "男主角",
         "birthday": null,
         "force": null,
         "campName": "無陣營",
@@ -9735,8 +9735,8 @@
         "consonanceWeapons": [],
         "translations": {
           "DE": {
-            "name": "Protagonist",
-            "subtitle": "Vita / Mors",
+            "name": "Vita",
+            "subtitle": "Protagonist",
             "birthday": null,
             "force": null,
             "campName": "Keine Zugehörigkeit",
@@ -9750,8 +9750,8 @@
             ]
           },
           "EN": {
-            "name": "Male Protagonist",
-            "subtitle": "Vita / Mors",
+            "name": "Vita",
+            "subtitle": "Male Protagonist",
             "birthday": null,
             "force": null,
             "campName": "No Affiliation",
@@ -9765,8 +9765,8 @@
             ]
           },
           "ES": {
-            "name": "Protagonista Masculino",
-            "subtitle": "Vita / Mors",
+            "name": "Vita",
+            "subtitle": "Protagonista masculino",
             "birthday": null,
             "force": null,
             "campName": "Sin afiliación",
@@ -9780,8 +9780,8 @@
             ]
           },
           "FR": {
-            "name": "Protagoniste Masculin",
-            "subtitle": "Vita / Mors",
+            "name": "Vita",
+            "subtitle": "Protagoniste masculin",
             "birthday": null,
             "force": null,
             "campName": "Aucune affiliation",
@@ -9795,8 +9795,8 @@
             ]
           },
           "JP": {
-            "name": "男性主人公",
-            "subtitle": "Vita / Mors",
+            "name": "ヴィータ",
+            "subtitle": "男性主人公",
             "birthday": null,
             "force": null,
             "campName": "無所属",
@@ -9810,8 +9810,8 @@
             ]
           },
           "KR": {
-            "name": "남성 주인공",
-            "subtitle": "Vita / Mors",
+            "name": "비타",
+            "subtitle": "남성 주인공",
             "birthday": null,
             "force": null,
             "campName": "무소속",
@@ -9825,8 +9825,8 @@
             ]
           },
           "TC": {
-            "name": "男主角",
-            "subtitle": "Vita / Mors",
+            "name": "維塔",
+            "subtitle": "男主角",
             "birthday": null,
             "force": null,
             "campName": "無陣營",
