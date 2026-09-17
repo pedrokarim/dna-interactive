@@ -55,6 +55,7 @@ https___dna.ascencia.re_*
 
 # skills
 .agents/
+.cursor/
 skills-lock.json
 
 # dev server log (design system migration)
