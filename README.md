@@ -6,15 +6,13 @@
 
 **Carte interactive et ressources communautaires pour Duet Night Abyss**
 
-[![Next.js](https://img.shields.io/badge/Next.js-15.5.0-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
-
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
-
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.0.0-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
-
-[![Bun](https://img.shields.io/badge/Bun-1.0-orange?style=for-the-badge&logo=bun)](https://bun.sh/)
-
-[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge&logo=license)](LICENSE)
+<p align="center">
+  <a href="https://nextjs.org/"><img alt="Next.js" src="https://img.shields.io/badge/Next.js-16.2.2-black?style=for-the-badge&logo=next.js"></a>
+  <a href="https://www.typescriptlang.org/"><img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-5-blue?style=for-the-badge&logo=typescript"></a>
+  <a href="https://tailwindcss.com/"><img alt="Tailwind CSS" src="https://img.shields.io/badge/Tailwind_CSS-4-38B2AC?style=for-the-badge&logo=tailwind-css"></a>
+  <a href="https://bun.sh/"><img alt="Bun" src="https://img.shields.io/badge/Bun-1.2+-orange?style=for-the-badge&logo=bun"></a>
+  <a href="LICENSE"><img alt="Licence MIT" src="https://img.shields.io/badge/Licence-MIT-green?style=for-the-badge"></a>
+</p>
 
 ## 🌟 À propos du projet
 
