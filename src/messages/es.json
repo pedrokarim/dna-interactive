@@ -599,7 +599,10 @@
     "technicalDataTitle": "Datos técnicos",
     "campKey": "Clave de bando",
     "maxLevelShort": "Nv. máx. {level}",
-    "statDamageRate": "Daño"
+    "statDamageRate": "Daño",
+    "calamityPathTitle": "Ruta de Potencial recomendada",
+    "calamityPathIntro": "Los números indican el orden de inversión. Las dos ramas convergen y acabas tomándolo todo: lo que eliges es el orden.",
+    "calamityPathUnknown": "El orden recomendado aún no está documentado para este build. El árbol sigue consultable."
   },
   "items": {
     "libraryLabel": "Biblioteca de Objetos",

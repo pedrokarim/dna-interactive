@@ -599,7 +599,10 @@
     "technicalDataTitle": "技術資料",
     "campKey": "陣營鍵值",
     "maxLevelShort": "最高 Lv.{level}",
-    "statDamageRate": "傷害"
+    "statDamageRate": "傷害",
+    "calamityPathTitle": "建議潛能路線",
+    "calamityPathIntro": "數字代表投資順序。兩條分支會匯合，最終全部取得，所以要選的是順序。",
+    "calamityPathUnknown": "此配裝的建議順序尚未整理，但樹狀圖仍可瀏覽。"
   },
   "items": {
     "libraryLabel": "道具資料庫",

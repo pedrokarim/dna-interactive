@@ -599,7 +599,10 @@
     "technicalDataTitle": "Technical data",
     "campKey": "Camp key",
     "maxLevelShort": "Max Lv. {level}",
-    "statDamageRate": "DMG"
+    "statDamageRate": "DMG",
+    "calamityPathTitle": "Recommended Potential path",
+    "calamityPathIntro": "The numbers give the order to invest in. Both branches converge and you end up taking everything: what you choose is the order.",
+    "calamityPathUnknown": "The recommended order is not documented yet for this build. The tree is still browsable."
   },
   "items": {
     "libraryLabel": "Items Library",

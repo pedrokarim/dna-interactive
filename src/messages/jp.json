@@ -599,7 +599,10 @@
     "technicalDataTitle": "技術データ",
     "campKey": "陣営キー",
     "maxLevelShort": "最大Lv.{level}",
-    "statDamageRate": "ダメージ"
+    "statDamageRate": "ダメージ",
+    "calamityPathTitle": "推奨ポテンシャル順",
+    "calamityPathIntro": "数字は投資する順番です。2つの分岐は合流し最終的にすべて取得するため、選ぶのは順番です。",
+    "calamityPathUnknown": "このビルドの推奨順はまだ記載されていません。ツリーは閲覧できます。"
   },
   "items": {
     "libraryLabel": "アイテムライブラリ",

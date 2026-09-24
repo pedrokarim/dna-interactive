@@ -599,7 +599,10 @@
     "technicalDataTitle": "Technische Daten",
     "campKey": "Lager-Schlüssel",
     "maxLevelShort": "Max. Stufe {level}",
-    "statDamageRate": "SCH"
+    "statDamageRate": "SCH",
+    "calamityPathTitle": "Empfohlener Potenzialpfad",
+    "calamityPathIntro": "Die Zahlen geben die Reihenfolge der Investition an. Beide Zweige laufen zusammen und am Ende nimmt man alles: gewählt wird die Reihenfolge.",
+    "calamityPathUnknown": "Die empfohlene Reihenfolge ist für diesen Build noch nicht dokumentiert. Der Baum bleibt einsehbar."
   },
   "items": {
     "libraryLabel": "Gegenstände-Bibliothek",

@@ -44,6 +44,11 @@ export function potentialNodesUnlocked(weaponId: string, level: number): number 
   return total;
 }
 
+/** L'arme a-t-elle un arbre de Potentiel connu ? Sert à décider d'afficher l'arbre. */
+export function hasCalamityPotentialTree(weaponItemId: string): boolean {
+  return POTENTIAL_NODE_COUNTS_BY_LEVEL[weaponItemId] !== undefined;
+}
+
 /** Total de Potentiels de l'arme (tous paliers), ou null si l'arbre est inconnu. */
 export function potentialNodesTotal(weaponId: string): number | null {
   const counts = POTENTIAL_NODE_COUNTS_BY_LEVEL[weaponId];

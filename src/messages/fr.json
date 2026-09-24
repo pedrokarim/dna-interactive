@@ -599,7 +599,10 @@
     "technicalDataTitle": "Données techniques",
     "campKey": "Clé de camp",
     "maxLevelShort": "Niv. max {level}",
-    "statDamageRate": "Dégâts"
+    "statDamageRate": "Dégâts",
+    "calamityPathTitle": "Chemin de Potentiel conseillé",
+    "calamityPathIntro": "Les numéros donnent l'ordre dans lequel investir. Les deux branches convergent, on finit par tout prendre : ce qui se choisit, c'est l'ordre.",
+    "calamityPathUnknown": "L'ordre conseillé n'est pas encore documenté pour ce build. L'arbre reste consultable."
   },
   "items": {
     "libraryLabel": "Bibliotheque Items",

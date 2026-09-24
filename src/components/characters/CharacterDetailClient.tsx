@@ -69,6 +69,8 @@ import { DnaButton } from "@/components/dna/Button";
 import { DnaCommunityBuildCard, DnaCommunityBuildCardSkeleton } from "@/components/dna/CommunityBuildCard";
 import { DnaSegmented } from "@/components/dna/Segmented";
 import { useDialogA11y } from "@/components/dna/useDialogA11y";
+import { CalamityPotentialTree } from "@/components/items/CalamityPotentialTree";
+import { hasCalamityPotentialTree } from "@/lib/items/calamity-weapons";
 import { NAVIGATION } from "@/lib/constants";
 import { captureAnalytics } from "@/lib/analytics";
 import type {
@@ -213,6 +215,9 @@ const RANGE_CLASS =
 
 const TAB_IDS = ["stats", "build", "skills", "portraits", "intron", "translations", "tech"] as const;
 type TabId = (typeof TAB_IDS)[number];
+
+/** Sur une fiche personnage l'arbre est un guide : aucun palier n'est verrouillé. */
+const CALAMITY_MAX_FUSION_LEVEL = 5;
 
 const TAB_CONFIG: { id: TabId; labelKey: string; icon: ComponentType<{ className?: string }> }[] = [
   { id: "stats", labelKey: "tabStats", icon: BarChart3 },
@@ -1956,6 +1961,28 @@ export function BuildTabContent({
                             {w.rank === "best" ? t('weaponBest') : t('weaponAlt')}
                           </span>
                         </div>
+                        {/* Arme de calamité : son arbre de Potentiel, avec l'ordre
+                            d'investissement conseillé pour CE personnage. L'arbre
+                            n'est pas un embranchement — les deux branches convergent,
+                            donc ce qui se choisit est l'ordre. */}
+                        {w.item && hasCalamityPotentialTree(w.item.itemId) ? (
+                          <details className="border-t border-white/8 px-4 py-3">
+                            <summary className="cursor-pointer font-caps text-[0.62rem] uppercase tracking-[0.16em] text-crimson-bright/90">
+                              {t('calamityPathTitle')}
+                            </summary>
+                            <p className="mt-2 text-xs text-muted">
+                              {w.potentialOrder ? t('calamityPathIntro') : t('calamityPathUnknown')}
+                            </p>
+                            <div className="mt-3">
+                              <CalamityPotentialTree
+                                weaponItemId={w.item.itemId}
+                                lang={selectedLanguage}
+                                fusionLevel={CALAMITY_MAX_FUSION_LEVEL}
+                                recommendedOrder={w.potentialOrder}
+                              />
+                            </div>
+                          </details>
+                        ) : null}
                         {w.demonWedges && w.demonWedges.slots.length > 0 ? (
                           <details className="border-t border-white/8 px-4 py-3">
                             <summary className="cursor-pointer font-caps text-[0.62rem] uppercase tracking-[0.16em] text-gold/85">
