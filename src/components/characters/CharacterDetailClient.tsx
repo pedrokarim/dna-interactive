@@ -81,7 +81,7 @@ import {
   getArmoryCircle,
   getElementIcon,
   getTrackIcon,
-  TRACK_SHIFT_MODULE_ICON,
+  TRACK_SHIFT_ICON,
   ARMORY_DEFAULT_ICON,
   ARMORY_MOD_GLOW,
   resolveBuildCharacterRef,
@@ -518,7 +518,7 @@ function DemonWedgeSlotCard({
   const clip = side === "left" ? CLIP_LEFT : CLIP_RIGHT;
   const polarityIconSrc = getTrackIcon(slot.item?.polarity ?? null);
   // Badge d'ajustement : l'icône du module posé, pas la polarité (cf. builds.ts).
-  const trackAdjustIconSrc = slot.track !== null ? TRACK_SHIFT_MODULE_ICON : null;
+  const trackAdjustIconSrc = slot.track !== null ? TRACK_SHIFT_ICON : null;
   const topSide = side === "left" ? "right-1.5" : "left-1.5";
   const bottomSide = side === "left" ? "left-1.5" : "right-1.5";
 

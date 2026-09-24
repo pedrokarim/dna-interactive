@@ -284,17 +284,27 @@ La carte porte la polarité du Wedge en haut à droite (toujours), et **l'icône
 Track-Shift Module** en bas à gauche, seulement si `track` est renseigné
 (`QuickBuildModal`, `CharacterDetailClient`, `_wedge`).
 
-Cette seconde icône est celle de l'objet du jeu, pas une forme de polarité :
+Ce marqueur est le **cinquième symbole** du jeu d'icônes de pistes
+(`/assets/ui/tracks/`), aux côtés des quatre polarités — même plaque arrondie,
+mêmes 220 px. Constante : `TRACK_SHIFT_ICON` (`src/lib/characters/builds.ts`).
 
-| Portée | Objet | Asset |
-| --- | --- | --- |
-| Personnage | `resources-201` Track-Shift Module | `/assets/items/resources/T_Resource_PolarityStyle.png` |
-| Arme | `resources-202` Weapon Track-Shift Module | `/assets/items/resources/T_Resource_PolarityAura.png` |
+| Fichier | Rôle |
+| --- | --- |
+| `track-assault.png` · `track-healing.png` · `track-ability.png` · `track-specialisation.png` | les 4 polarités, 1 à 4 |
+| `track-shift.png` | un module est posé sur la case |
 
-Constantes : `TRACK_SHIFT_MODULE_ICON` et `WEAPON_TRACK_SHIFT_MODULE_ICON`
-(`src/lib/characters/builds.ts`). **Ne pas réutiliser `getTrackIcon(slot.track)` pour ce
-badge** : comme un `track` renseigné vaut toujours la polarité de la pièce, la carte
-afficherait deux fois le même glyphe et n'apprendrait rien au lecteur.
+⚠️ **Deux pièges d'asset, tous deux commis :**
+
+1. **Ne pas réutiliser `getTrackIcon(slot.track)` pour ce badge.** Comme un `track`
+   renseigné vaut toujours la polarité de la pièce, la carte afficherait deux fois le
+   même glyphe.
+2. **Ne pas prendre l'icône d'inventaire de l'objet** `resources-201`
+   (`T_Resource_PolarityStyle.png`). C'est bien le Track-Shift Module, mais c'est une
+   illustration isométrique — à 12 px elle n'est qu'une tache brune.
+
+⚠️ **`T_Armory_Polarity01-04` ne sont pas les icônes de polarité des Wedges.** Ce sont
+des glyphes runiques (R, Λ, Y, double chevron) qui relèvent d'un autre affichage. Les
+symboles justes sont bien ceux de `/assets/ui/tracks/`.
 
 ⚠️ **Quand `track` est renseigné, il doit être égal à la polarité du Wedge posé** (`affinity.id`).
 Un `track` qui diffère n'est pas « un build qui suppose un ajustement » : c'est une

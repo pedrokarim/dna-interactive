@@ -12,11 +12,12 @@ import type { DnaPickerItem } from "./ItemPicker";
  */
 
 /**
- * Icône du Track-Shift Module posé sur une case (objet `resources-201` du jeu).
- * Chemin dupliqué à dessein : cette primitive du design system ne dépend pas
- * de `lib/characters/builds`, où se trouve la définition canonique.
+ * Marqueur « un Track-Shift Module est posé sur cette case » — cinquième
+ * symbole du jeu d'icônes de pistes. Chemin dupliqué à dessein : cette
+ * primitive du design system ne dépend pas de `lib/characters/builds`, où se
+ * trouve la définition canonique.
  */
-const TRACK_SHIFT_MODULE_ICON = "/assets/items/resources/T_Resource_PolarityStyle.png";
+const TRACK_SHIFT_ICON = "/assets/ui/tracks/track-shift.png";
 
 export type WedgeSlotData = {
   position: number;
@@ -185,7 +186,7 @@ export function WedgeSlotCell({
         >
           {/* Posé = module net ; non posé = même icône estompée, qui sert d'invite. */}
           <img
-            src={TRACK_SHIFT_MODULE_ICON}
+            src={TRACK_SHIFT_ICON}
             alt=""
             width={12}
             height={12}
@@ -194,7 +195,7 @@ export function WedgeSlotCell({
         </button>
       ) : slot.track != null ? (
         <span className={cn("absolute bottom-0.5 z-10 flex h-4 w-4 items-center justify-center rounded border border-gold/70 bg-black/70", badgeSide)}>
-          <img src={TRACK_SHIFT_MODULE_ICON} alt="" width={12} height={12} className="h-3 w-3 object-contain" />
+          <img src={TRACK_SHIFT_ICON} alt="" width={12} height={12} className="h-3 w-3 object-contain" />
         </span>
       ) : null}
     </div>
