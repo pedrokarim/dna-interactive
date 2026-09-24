@@ -276,21 +276,35 @@ change la lecture :
 Dans le format couronne la lecture est binaire. Dans le format polarités, la forme
 renseigne en plus la piste obtenue.
 
-⚠️ **Le centre ne reçoit JAMAIS de Track-Shift Module.** Le glyphe affiché dans sa case
-est sa **propre polarité**, pour information — vérifié sur deux cas : Rhythm (centre
-`mods-51746`, polarité 2, croissant affiché) et Ada (centre `mods-31512` Cabriole,
-polarité 3, losange affiché). `centerItemId` n'a donc pas besoin de champ `track`, et
-il ne faut pas en ajouter un.
+### Le centre EST ajustable (établi en jeu le 2026-09-24)
 
-⚠️ **Le compteur n'est pas fiable**, de deux façons :
+**Le centre reçoit un Track-Shift Module comme n'importe quelle autre case.** C'est le
+**slot 09** dans l'écran d'armurerie, et le jeu y propose « Module de transfert
+d'affinité → Appliquer » exactement comme sur les huit autres.
 
-- il **additionne la case du centre** quand elle porte un glyphe, d'où un +1 sur les
-  pages au format polarités ;
-- il se trompe aussi sans cela : sur Lisbell (format couronne, centre à ✖︎) il annonce
-  6 alors que le tableau ne porte que 5 couronnes.
+Lecture du badge en jeu, sur chaque case centre compris :
 
-**C'est le tableau qui fait foi**, lu case par case sur une capture, centre exclu du
-compte. Le compteur ne sert qu'à éveiller le soupçon quand il diverge.
+| Élément du badge | Sens |
+| --- | --- |
+| Nombre | coût de tolérance de la case |
+| Glyphe | la piste courante (flamme 1, croissant 2, losange 3, cercle 4) |
+| **Couronne** | **un module est appliqué** |
+| Badge vert | coût réduit, donc piste alignée |
+| Badge blanc | coût plein, donc pas de module |
+
+**Erreur à ne pas refaire.** On a un temps conclu l'inverse, en montrant que le glyphe
+du centre égale la polarité de sa pièce et en en déduisant qu'il était purement
+informatif. Le raisonnement ne tient pas : un `track` vaut **toujours** la polarité de
+la pièce, donc un centre ajusté affiche exactement le même glyphe qu'un centre
+informatif. Le test ne pouvait pas départager les deux hypothèses.
+
+Conséquence : sur les tableaux publics au format polarités, **un glyphe dans la case du
+centre signale bien un module**, et le compteur a raison de l'additionner.
+
+⚠️ **Le compteur reste faillible** : sur Lisbell (format couronne, centre à ✖︎) il
+annonce 6 alors que le tableau ne porte que 5 couronnes. **C'est le tableau qui fait
+foi**, lu case par case sur une capture. Le compteur sert à éveiller le soupçon quand
+il diverge.
 
 ⚠️ **La lecture automatique du DOM rate des cases**, et le tableau peut être replié
 dans un accordéon dont l'intitulé varie (« Track Adjustment Slots » ou « Track

@@ -382,6 +382,9 @@ function resolveCommunityWeaponEntry(
     rank: weapon.rank,
     note: {},
     withWedges: weapon.withWedges ?? false,
+    // Les builds communautaires ne portent pas de chemin de Potentiel : c'est
+    // de la curation, pas une saisie ouverte au lecteur.
+    potentialOrder: null,
     demonWedges:
       wedges && wedges.slots.length > 0
         ? {
@@ -423,6 +426,10 @@ export function communityBuildToDisplayBuild(
       centerItem: payload.demonWedges.centerItemId
         ? resolveBuildItemRef("mods", payload.demonWedges.centerItemId, lang)
         : null,
+      // Le centre est ajustable en jeu (slot 09), mais le payload communautaire
+      // ne le capture pas encore : l'éditeur verrouille le centre. À ouvrir dans
+      // le builder avant de pouvoir le remonter ici.
+      centerTrack: null,
       affinity: buildText(payload.demonWedges.affinity ?? build.element, lang),
       note: {},
     },
@@ -615,14 +622,19 @@ function DemonWedgeSlotCard({
 
 function DemonWedgeCenterSlot({
   centerItem,
+  centerTrack = null,
   affinity,
   elementKey,
   lang,
+  showTrackAdjust = false,
 }: {
   centerItem: import("@/lib/characters/builds").ResolvedItemRef | null;
+  /** Piste du centre : le slot 09 s'ajuste comme les huit autres. */
+  centerTrack?: number | null;
   affinity: Record<string, string>;
   elementKey: string;
   lang: string;
+  showTrackAdjust?: boolean;
 }) {
   const circleSrc = getArmoryCircle(elementKey);
   const icon = centerItem?.icon ?? ARMORY_DEFAULT_ICON;
@@ -634,6 +646,11 @@ function DemonWedgeCenterSlot({
       <img src={circleSrc} alt="" width={128} height={128} className="absolute inset-0 h-full w-full object-contain opacity-60" />
       <img src={ARMORY_MOD_GLOW} alt="" width={128} height={128} className="absolute inset-0 h-full w-full object-contain opacity-30" />
       <img src={icon} alt={name ?? ""} width={96} height={96} className="absolute inset-[12%] h-[76%] w-[76%] object-contain drop-shadow-lg" />
+      {showTrackAdjust && centerTrack !== null ? (
+        <span className="absolute bottom-0 right-0 flex h-5 w-5 items-center justify-center rounded border border-gold/70 bg-black/70 sm:h-6 sm:w-6">
+          <img src={TRACK_SHIFT_ICON} alt="" width={14} height={14} className="h-3.5 w-3.5 object-contain sm:h-4 sm:w-4" />
+        </span>
+      ) : null}
     </div>
   );
 
@@ -683,6 +700,7 @@ function DemonWedgeCenterSlot({
 export function DemonWedgeLayout({
   slots,
   centerItem,
+  centerTrack = null,
   affinity,
   elementKey,
   lang,
@@ -690,6 +708,7 @@ export function DemonWedgeLayout({
 }: {
   slots: BuildDemonWedgeSlot[];
   centerItem: import("@/lib/characters/builds").ResolvedItemRef | null;
+  centerTrack?: number | null;
   affinity: Record<string, string>;
   elementKey: string;
   lang: string;
@@ -719,7 +738,7 @@ export function DemonWedgeLayout({
         </div>
 
         {/* Center — actual demon wedge in a circle */}
-        <DemonWedgeCenterSlot centerItem={centerItem} affinity={affinity} elementKey={elementKey} lang={lang} />
+        <DemonWedgeCenterSlot centerItem={centerItem} centerTrack={centerTrack} affinity={affinity} elementKey={elementKey} lang={lang} showTrackAdjust={showTrackAdjust} />
 
         {/* Right column — parallelograms lean left (mirrored) */}
         <div className="flex flex-col items-center gap-4">
@@ -758,7 +777,7 @@ export function DemonWedgeLayout({
           ))}
         </div>
 
-        <DemonWedgeCenterSlot centerItem={centerItem} affinity={affinity} elementKey={elementKey} lang={lang} />
+        <DemonWedgeCenterSlot centerItem={centerItem} centerTrack={centerTrack} affinity={affinity} elementKey={elementKey} lang={lang} showTrackAdjust={showTrackAdjust} />
 
         <div className="grid grid-cols-2 place-items-center gap-3">
           {[0, 1].map((i) => (
@@ -1996,6 +2015,7 @@ export function BuildTabContent({
             <DemonWedgeLayout
               slots={build.demonWedges.slots}
               centerItem={build.demonWedges.centerItem}
+              centerTrack={build.demonWedges.centerTrack}
               affinity={build.demonWedges.affinity}
               elementKey={characterElement}
               lang={selectedLanguage}

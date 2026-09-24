@@ -23,6 +23,16 @@ interface RawWeaponEntry {
   note?: RawLocalizedText;
   /** Inclure/afficher le build de Demon Wedges canonique de cette arme. */
   withWedges?: boolean;
+  /**
+   * Armes de calamité seulement : ordre d'investissement conseillé dans l'arbre
+   * de Potentiel, par identifiants de nœuds.
+   *
+   * Ce n'est **pas** un embranchement : les deux branches convergent, le nœud du
+   * palier 5 exigeant les deux nœuds du palier 4. On finit donc par tout prendre,
+   * et ce qui se choisit est l'ordre — chaque nœud ayant son propre coût en
+   * matériaux. Cf. `docs/demon-wedge-build-rules.md` et l'arbre de la fiche d'arme.
+   */
+  potentialOrder?: number[];
 }
 
 interface RawDemonWedgeSlot {
@@ -34,6 +44,12 @@ interface RawDemonWedgeSlot {
 interface RawDemonWedgesConfig {
   slots: RawDemonWedgeSlot[];
   centerItemId?: string;
+  /**
+   * Piste du **centre**, qui est le slot 09 de l'armurerie et s'ajuste comme
+   * les huit autres. Même règle que `track` sur un slot : la valeur vaut la
+   * polarité de la pièce centrale, et `null` signifie « aucun module posé ».
+   */
+  centerTrack?: number | null;
   affinity?: RawLocalizedText;
   note?: RawLocalizedText;
 }
@@ -119,6 +135,8 @@ export interface BuildWeaponEntry {
    * résolus pour l'affichage. Indépendant du build canonique de la fiche arme.
    */
   demonWedges?: { slots: BuildDemonWedgeSlot[]; affinityElement: string | null } | null;
+  /** Ordre d'investissement conseillé dans l'arbre de Potentiel (armes de calamité). */
+  potentialOrder: number[] | null;
 }
 
 export interface BuildDemonWedgeSlot {
@@ -130,6 +148,8 @@ export interface BuildDemonWedgeSlot {
 export interface BuildDemonWedgesConfig {
   slots: BuildDemonWedgeSlot[];
   centerItem: ResolvedItemRef | null;
+  /** Piste du centre (slot 09) : polarité de la pièce, ou `null` sans module. */
+  centerTrack: number | null;
   affinity: RawLocalizedText;
   note: RawLocalizedText;
 }
@@ -308,12 +328,14 @@ export function getCharacterBuilds(
           rank: w.rank,
           note: w.note ?? {},
           withWedges: w.withWedges ?? false,
+          potentialOrder: w.potentialOrder ?? null,
         })),
         ranged: (raw.weapons?.ranged ?? []).map((w) => ({
           item: resolveBuildItemRef("weapons", w.itemId, lang),
           rank: w.rank,
           note: w.note ?? {},
           withWedges: w.withWedges ?? false,
+          potentialOrder: w.potentialOrder ?? null,
         })),
       },
       demonWedges: {
@@ -325,6 +347,7 @@ export function getCharacterBuilds(
         centerItem: raw.demonWedges?.centerItemId
           ? resolveBuildItemRef("mods", raw.demonWedges.centerItemId, lang)
           : null,
+        centerTrack: raw.demonWedges?.centerTrack ?? null,
         affinity: raw.demonWedges?.affinity ?? {},
         note: raw.demonWedges?.note ?? {},
       },
