@@ -843,8 +843,22 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
                           : "border-white/10 bg-ink/55 text-parch/85 hover:border-crimson/40",
                       )}
                     >
-                      <span className="block font-medium">{usage.name}</span>
-                      <span className="block text-muted">{usage.buildName}</span>
+                      <span className="flex items-center gap-2">
+                        {usage.portrait ? (
+                          <img
+                            src={usage.portrait}
+                            alt=""
+                            width={36}
+                            height={36}
+                            loading="lazy"
+                            className="h-9 w-9 shrink-0 rounded-full border border-white/10 object-cover"
+                          />
+                        ) : null}
+                        <span className="min-w-0">
+                          <span className="block truncate font-medium">{usage.name}</span>
+                          <span className="block truncate text-muted">{usage.buildName}</span>
+                        </span>
+                      </span>
                       {!usage.hasProficiency ? (
                         <span className="mt-1 block text-[0.68rem] text-crimson-bright">
                           {t("charactersNoProficiency")}
@@ -919,12 +933,24 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
             {weaponUsage.map((usage, index) => (
               <li key={`${usage.characterId}-${usage.buildName}-${index}`}>
                 <Link
-                  href={`/characters/${usage.slug}?tab=build`}
+                  href={`${usage.href}?tab=build`}
                   className="flex items-center justify-between gap-3 rounded-sm border border-white/10 bg-ink/55 px-3 py-2 transition-colors hover:border-gold/40"
                 >
-                  <span className="min-w-0">
-                    <span className="block truncate text-sm text-parch">{usage.name}</span>
-                    <span className="block truncate text-xs text-muted">{usage.buildName}</span>
+                  <span className="flex min-w-0 items-center gap-3">
+                    {usage.portrait ? (
+                      <img
+                        src={usage.portrait}
+                        alt=""
+                        width={40}
+                        height={40}
+                        loading="lazy"
+                        className="h-10 w-10 shrink-0 rounded-full border border-white/10 object-cover"
+                      />
+                    ) : null}
+                    <span className="min-w-0">
+                      <span className="block truncate text-sm text-parch">{usage.name}</span>
+                      <span className="block truncate text-xs text-muted">{usage.buildName}</span>
+                    </span>
                   </span>
                   <span
                     className={cn(

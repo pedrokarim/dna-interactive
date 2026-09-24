@@ -1,9 +1,6 @@
 import { allBuilds } from "@/data/characters/builds";
-import {
-  getCharacterById,
-  getCharacterSlug,
-  resolveCharacterDisplayName,
-} from "@/lib/characters/catalog";
+import { getCharacterById } from "@/lib/characters/catalog";
+import { resolveBuildCharacterRef } from "@/lib/characters/builds";
 
 // ---------------------------------------------------------------------------
 // Index inverse ARME → PERSONNAGES.
@@ -28,9 +25,11 @@ export type WeaponUsageRank = "best" | "alternative";
 export interface WeaponUsage {
   characterId: string;
   /** Adresse de la fiche du personnage. */
-  slug: string;
+  href: string;
   /** Nom affiché, déjà résolu dans la langue demandée. */
   name: string;
+  /** Avatar du personnage (portrait « head »), pour que la liste se lise d'un coup d'œil. */
+  portrait: string | null;
   /** Nom du build qui recommande cette arme, dans la langue demandée. */
   buildName: string;
   slot: "melee" | "ranged";
@@ -99,11 +98,16 @@ export function getWeaponUsage(
         if (entry.itemId !== weaponItemId) continue;
         const character = getCharacterById(build.characterId);
         if (!character) continue;
+        // Même résolution que les coéquipiers d'un build : nom, avatar, lien
+        // et élément viennent d'une seule source.
+        const ref = resolveBuildCharacterRef(build.characterId, lang);
+        if (!ref) continue;
         const tags = character.weaponTags ?? [];
         usages.push({
           characterId: build.characterId,
-          slug: getCharacterSlug(character),
-          name: resolveCharacterDisplayName(character, lang),
+          href: ref.href,
+          name: ref.name,
+          portrait: ref.portrait,
           buildName: localized(build.buildName, lang),
           slot,
           rank: entry.rank === "best" ? "best" : "alternative",
