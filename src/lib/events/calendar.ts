@@ -3,7 +3,7 @@
  *
  * Données réelles curées (patch 1.5 « Paradise Prelude » et patch 1.6
  * « Paradise's 22nd White Bunny », juillet-novembre 2026), à rafraîchir à chaque
- * version. Dates recoupées le 12 septembre 2026 sur les notes de version
+ * version. Dates recoupées le 24 septembre 2026 sur les notes de version
  * officielles et les annonces du compte officiel du jeu. Les événements de la
  * 1.4, terminés le 27 juillet, ont quitté cette liste (ils restent en base).
  *
@@ -16,10 +16,12 @@
  *
  * La version 1.6 « Paradise's 22nd White Bunny » est sortie le **8 septembre
  * 2026**. Ses périodes viennent toutes des notes de version officielles. Falsi
- * n'a **pas** de bannière Myriad : elle s'obtient via ses Secret Letters au
- * théâtre immersif (jusqu'au 29 septembre à 10:00 UTC+8) ou en boutique. Une
- * entrée « Where the Long Road Leads » la présentait à tort comme une bannière :
- * elle a été retirée. Aucune source tierce n'est créditée au front.
+ * n'a **pas** de bannière de personnage : elle s'obtient via ses Secret Letters
+ * au théâtre immersif (jusqu'au 29 septembre à 10:00 UTC+8) ou en boutique.
+ * « Where the Long Road Leads » est bien une bannière Myriad, mais de **skin** :
+ * elle met en jeu « Stalking Silence », la tenue limitée de Falsi. Retirée le
+ * 12 septembre par confusion avec une bannière de personnage, elle est rétablie
+ * le 24 septembre. Aucune source tierce n'est créditée au front.
  *
  * Le calendrier est une **frise défilable sans borne** : une plage rendue
  * (`rangeStart` + nombre de jours) qui s'étend à la volée quand on atteint un
@@ -72,6 +74,8 @@ const SRC_V15_PHOXHUNTER = "https://x.com/DNAbyss_EN/status/2091737265458586108"
 /* Annonces de la version 1.6 « Paradise's 22nd White Bunny » (sortie le 8 septembre 2026). */
 const SRC_V16_BARDS_TOME = "https://x.com/DNAbyss_EN/status/2094349488383197537";
 const SRC_V16_CIVIC = "https://x.com/DNAbyss_EN/status/2094666568365953062";
+/** Vitrine officielle en jeu de la bannière de skin « Where the Long Road Leads ». */
+const SRC_V16_LONG_ROAD = "https://www.youtube.com/watch?v=bX2MtRcyaJQ";
 /** Notes de version officielles 1.6 (source de toutes les périodes 1.6). */
 const SRC_V16 = "https://steamcommunity.com/games/3950020/announcements/detail/676256891013171560";
 
@@ -122,6 +126,7 @@ export const CALENDAR_EVENTS: CalendarEvent[] = [
   { id: "bards-tome-rimeveil-nocturne", title: "Bard's Tome : Rimeveil Nocturne", category: "Récompense", start: "2026-09-08", end: "2026-10-19", image: "/assets/events/bards-tome-rimeveil-nocturne.webp", description: "Passe saisonnier de la version 1.6 : monte les paliers du Grimoire du barde pour la posture « Crystal Heart » et le skin d'arme « Emberfrost » (clôture le 19 octobre à 17:00 UTC+8).", sourceUrl: SRC_V16_BARDS_TOME },
   { id: "civic-ordinance", title: "Civic Ordinance — skins thématiques", category: "Événement", start: "2026-09-08", end: "2026-10-19", image: "/assets/events/civic-ordinance.webp", description: "Remise à durée limitée en boutique sur la gamme de skins « Civic Ordinance » : première vague de neuf personnages, à échanger contre des Plumules.", sourceUrl: SRC_V16_CIVIC },
   { id: "parade-itinerary", title: "Parade Itinerary", category: "Événement", start: "2026-09-08", end: "2026-10-19", image: "/assets/events/parade-itinerary.webp", description: "Événement principal de la version 1.6 : à travers monts et forêts, une ville étrange t'accueille dans un paradis de rêve (fin le 19 octobre à 17:00 UTC+8).", sourceUrl: SRC_V16 },
+  { id: "where-the-long-road-leads", title: "Where the Long Road Leads – skin de Falsi", category: "Bannière", start: "2026-09-08", end: "2026-10-08", href: "/characters/falsi", image: "/assets/worldview/worldview-1-6-2.webp", description: "Bannière Myriad de la version 1.6. Elle ne donne pas Falsi, mais sa tenue limitée « Stalking Silence » : le personnage, lui, s'obtient au théâtre immersif ou en boutique.", sourceUrl: SRC_V16_LONG_ROAD },
   { id: "immersive-theatre-falsi", title: "Immersive Theatre : « Falsi »", category: "Événement", start: "2026-09-08", end: "2026-09-29", href: "/characters/falsi", image: "/assets/worldview/worldview-1-6-1.webp", description: "Rotation du théâtre immersif : récupère les Secret Letters de Falsi et de « Stifled Howl » au Memento avant la bascule du 29 septembre à 10:00 UTC+8. Falsi s'achète aussi en boutique.", sourceUrl: SRC_V16 },
   { id: "stifled-howl", title: "Stifled Howl – arme de Falsi", category: "Arme", start: "2026-09-08", end: "2026-09-29", href: "/items/weapons/weapons-10405", image: "/assets/worldview/worldview-10.webp", description: "Secret Letters des doubles lames de Falsi, en vente au Memento pendant la rotation « Falsi » du théâtre immersif (jusqu'au 29 septembre à 10:00 UTC+8).", sourceUrl: SRC_V16 },
   { id: "way-of-the-penitent", title: "Way of the Penitent – connexion", category: "Récompense", start: "2026-09-08", end: "2026-10-19", image: "/assets/worldview/worldview-1-6-3.webp", description: "Connexion cumulée de la version 1.6 (fin le 19 octobre à 17:00 UTC+8).", sourceUrl: SRC_V16 },
