@@ -261,10 +261,40 @@ autres builds montrent au contraire un sous-comptage (voir plus bas) :
 | Punitive Inferno (arme) | « requires 2 Track-Shift Modules » | 2 pistes |
 
 Les guides marquent d'un ✖︎ les cases sans besoin d'ajustement : c'est notre `null`.
+La case du centre porte toujours un ✖︎ : le centre n'a pas de piste.
 
-L'affichage suit la même logique — la carte porte la polarité du Wedge en haut à droite
-(toujours), et la piste ajustée en bas à gauche **seulement si `track` est renseigné**
-(`QuickBuildModal`, `trackAdjustIcon`).
+### Le marquage public a changé (relevé le 2026-09-24)
+
+Le symbole posé sur une case **n'encode plus la polarité**. C'est un marqueur unique,
+identique pour toutes les pièces : la lecture est binaire, module posé ou non. Relevé
+sur 8 tableaux (Hilda, Lynn, Camilla, Hellfire, deux builds chacun) où des pièces de
+polarités 1, 2, 3 et 4 portent le même glyphe.
+
+Conséquence sur le compte : sur ces 8 tableaux, le compteur annoncé égale **exactement**
+le nombre de cases marquées. Le sous-comptage relevé plus haut (Fushu) est antérieur à
+ce changement. Le compteur redevient donc un **contrôle** de lecture valable – sans
+remplacer la lecture du tableau lui-même.
+
+Piège de lecture : les colonnes ne suivent pas l'ordre des slots, mais
+`Slot 1 | Slot 3 | Core | Slot 4 | Slot 2` puis `Slot 5 | Slot 7 | Slot 8 | Slot 6`.
+
+### Affichage chez nous
+
+La carte porte la polarité du Wedge en haut à droite (toujours), et **l'icône du
+Track-Shift Module** en bas à gauche, seulement si `track` est renseigné
+(`QuickBuildModal`, `CharacterDetailClient`, `_wedge`).
+
+Cette seconde icône est celle de l'objet du jeu, pas une forme de polarité :
+
+| Portée | Objet | Asset |
+| --- | --- | --- |
+| Personnage | `resources-201` Track-Shift Module | `/assets/items/resources/T_Resource_PolarityStyle.png` |
+| Arme | `resources-202` Weapon Track-Shift Module | `/assets/items/resources/T_Resource_PolarityAura.png` |
+
+Constantes : `TRACK_SHIFT_MODULE_ICON` et `WEAPON_TRACK_SHIFT_MODULE_ICON`
+(`src/lib/characters/builds.ts`). **Ne pas réutiliser `getTrackIcon(slot.track)` pour ce
+badge** : comme un `track` renseigné vaut toujours la polarité de la pièce, la carte
+afficherait deux fois le même glyphe et n'apprendrait rien au lecteur.
 
 ⚠️ **Quand `track` est renseigné, il doit être égal à la polarité du Wedge posé** (`affinity.id`).
 Un `track` qui diffère n'est pas « un build qui suppose un ajustement » : c'est une

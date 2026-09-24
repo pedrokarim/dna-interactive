@@ -7,6 +7,7 @@ import { toBustCardSrc } from "@/lib/characters/bust-card";
 import { Download, Sparkles, Swords, Target, X } from "lucide-react";
 import {
   getTrackIcon,
+  TRACK_SHIFT_MODULE_ICON,
   type BuildDemonWedgeSlot,
   type CharacterBuild,
   type ResolvedItemRef,
@@ -290,7 +291,8 @@ function WedgeSlot({
   const clip = side === "left" ? CLIP_LEFT : CLIP_RIGHT;
   const icon = slot.item?.icon;
   const polarityIcon = getTrackIcon(slot.item?.polarity ?? null);
-  const trackAdjustIcon = slot.track !== null ? getTrackIcon(slot.track) : null;
+  // Badge d'ajustement : l'icône du module posé, pas la polarité (cf. builds.ts).
+  const trackAdjustIcon = slot.track !== null ? TRACK_SHIFT_MODULE_ICON : null;
   const topSide = side === "left" ? "right-1" : "left-1";
   const bottomSide = side === "left" ? "left-1" : "right-1";
   const d = WEDGE_DIMS[scale];

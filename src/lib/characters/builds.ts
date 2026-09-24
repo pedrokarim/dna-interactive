@@ -427,3 +427,20 @@ export function getTrackIcon(polarity: number | null): string | null {
   if (polarity === null || polarity < 1) return null;
   return TRACK_ICON_MAP[polarity] ?? null;
 }
+
+/**
+ * Icône du **Track-Shift Module** posé sur une case.
+ *
+ * À ne pas confondre avec {@link getTrackIcon}, qui rend la piste/polarité
+ * elle-même. Comme un `track` renseigné vaut toujours la polarité de la pièce,
+ * réutiliser l'icône de polarité pour le badge d'ajustement afficherait deux
+ * fois le même glyphe sur la carte, sans rien apprendre au lecteur. Le module
+ * est un objet à part dans le jeu (`resources-201`, et `resources-202` pour les
+ * armes) : c'est son icône qui signale « ici, un module est posé ».
+ */
+export const TRACK_SHIFT_MODULE_ICON = "/assets/items/resources/T_Resource_PolarityStyle.png";
+export const WEAPON_TRACK_SHIFT_MODULE_ICON = "/assets/items/resources/T_Resource_PolarityAura.png";
+
+export function getTrackShiftModuleIcon(scope: "character" | "weapon" = "character"): string {
+  return scope === "weapon" ? WEAPON_TRACK_SHIFT_MODULE_ICON : TRACK_SHIFT_MODULE_ICON;
+}

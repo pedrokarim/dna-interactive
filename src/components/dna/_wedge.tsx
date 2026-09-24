@@ -11,6 +11,13 @@ import type { DnaPickerItem } from "./ItemPicker";
  * barrel — détail d'implémentation.
  */
 
+/**
+ * Icône du Track-Shift Module posé sur une case (objet `resources-201` du jeu).
+ * Chemin dupliqué à dessein : cette primitive du design system ne dépend pas
+ * de `lib/characters/builds`, où se trouve la définition canonique.
+ */
+const TRACK_SHIFT_MODULE_ICON = "/assets/items/resources/T_Resource_PolarityStyle.png";
+
 export type WedgeSlotData = {
   position: number;
   item: DnaPickerItem | null;
@@ -172,15 +179,22 @@ export function WedgeSlotCell({
             "absolute bottom-0.5 z-10 flex h-4 w-4 items-center justify-center rounded border text-[0.55rem] leading-none transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60",
             badgeSide,
             slot.track != null
-              ? "border-gold/70 bg-black/70 text-gold"
-              : "border-white/25 bg-black/50 text-muted-2 hover:border-gold/50 hover:text-gold/70",
+              ? "border-gold/70 bg-black/70"
+              : "border-white/25 bg-black/50 hover:border-gold/50",
           )}
         >
-          {slot.track ?? polarity}
+          {/* Posé = module net ; non posé = même icône estompée, qui sert d'invite. */}
+          <img
+            src={TRACK_SHIFT_MODULE_ICON}
+            alt=""
+            width={12}
+            height={12}
+            className={cn("h-3 w-3 object-contain", slot.track != null ? "opacity-100" : "opacity-40")}
+          />
         </button>
       ) : slot.track != null ? (
-        <span className={cn("absolute bottom-0.5 z-10 flex h-4 w-4 items-center justify-center rounded border border-gold/70 bg-black/70 text-[0.55rem] leading-none text-gold", badgeSide)}>
-          {slot.track}
+        <span className={cn("absolute bottom-0.5 z-10 flex h-4 w-4 items-center justify-center rounded border border-gold/70 bg-black/70", badgeSide)}>
+          <img src={TRACK_SHIFT_MODULE_ICON} alt="" width={12} height={12} className="h-3 w-3 object-contain" />
         </span>
       ) : null}
     </div>
