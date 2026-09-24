@@ -684,7 +684,14 @@
     "ascensionSteps": "突破ステップ",
     "textKeysTitle": "テキストキー",
     "technicalTitle": "技術データ",
-    "relatedDraftsTitle": "関連する設計図"
+    "relatedDraftsTitle": "関連する設計図",
+    "charactersTitle": "この武器を使うキャラクター",
+    "charactersIntro": "推奨ビルドでこの武器を使用するキャラクター。",
+    "charactersPathIntro": "キャラクターを選ぶと、ツリーの推奨投資順が表示されます。",
+    "charactersNoProficiency": "得意武器外：ポテンシャルは発動しません。",
+    "charactersPathUnknown": "このビルドの推奨順はまだ記載されていません。",
+    "charactersRankBest": "推奨",
+    "charactersRankAlternative": "代替"
   },
   "drafts": {
     "headerLabel": "鍛造設計図",

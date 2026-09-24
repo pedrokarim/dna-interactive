@@ -149,12 +149,32 @@ type CalamityPotentialTreeProps = {
   lang: string;
   /** Niveau de fusion courant (0→5) : verrouille les paliers au-dessus. */
   fusionLevel: number;
+  /**
+   * Ordre d'investissement conseillé, par identifiants de nœuds. Les deux
+   * branches convergent — le nœud du palier 5 exige les deux nœuds du palier 4 —
+   * donc on finit par tout prendre : ce qui se choisit est l'ordre, chaque nœud
+   * ayant son propre coût en matériaux. Les nœuds listés portent leur rang.
+   */
+  recommendedOrder?: number[] | null;
   className?: string;
 };
 
-export function CalamityPotentialTree({ weaponItemId, lang, fusionLevel, className }: CalamityPotentialTreeProps) {
+export function CalamityPotentialTree({
+  weaponItemId,
+  lang,
+  fusionLevel,
+  recommendedOrder = null,
+  className,
+}: CalamityPotentialTreeProps) {
   const t = useTranslations("items");
   const nodes = useMemo(() => DATA[weaponItemId]?.nodes ?? [], [weaponItemId]);
+
+  /** id de nœud → rang affiché (1, 2, 3…), vide si aucun ordre n'est fourni. */
+  const orderRank = useMemo(() => {
+    const map = new Map<number, number>();
+    (recommendedOrder ?? []).forEach((id, index) => map.set(id, index + 1));
+    return map;
+  }, [recommendedOrder]);
 
   const byLevel = useMemo(() => {
     const map = new Map<number, PotentialNode[]>();
@@ -286,6 +306,14 @@ export function CalamityPotentialTree({ weaponItemId, lang, fusionLevel, classNa
                   {locked ? (
                     <span className="absolute -bottom-1 -left-1 grid h-4 w-4 place-items-center rounded-full border border-white/15 bg-ink">
                       <Lock className="h-2.5 w-2.5 text-muted-2" />
+                    </span>
+                  ) : null}
+                  {orderRank.has(node.id) ? (
+                    <span
+                      className="absolute -right-1 -top-1 grid h-4 w-4 place-items-center rounded-full text-[0.6rem] font-semibold leading-none text-on-gold"
+                      style={{ background: CALAMITY_ACCENT_HEX }}
+                    >
+                      {orderRank.get(node.id)}
                     </span>
                   ) : null}
                 </button>

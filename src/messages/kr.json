@@ -684,7 +684,14 @@
     "ascensionSteps": "돌파 과정",
     "textKeysTitle": "텍스트 키",
     "technicalTitle": "기술 데이터",
-    "relatedDraftsTitle": "연관 설계도"
+    "relatedDraftsTitle": "연관 설계도",
+    "charactersTitle": "이 무기를 사용하는 캐릭터",
+    "charactersIntro": "추천 빌드에서 이 무기를 사용하는 캐릭터입니다.",
+    "charactersPathIntro": "캐릭터를 선택하면 트리의 추천 투자 순서가 표시됩니다.",
+    "charactersNoProficiency": "숙련 외: 포텐셜이 적용되지 않습니다.",
+    "charactersPathUnknown": "이 빌드의 추천 순서는 아직 정리되지 않았습니다.",
+    "charactersRankBest": "추천",
+    "charactersRankAlternative": "대안"
   },
   "drafts": {
     "headerLabel": "제작 설계도",

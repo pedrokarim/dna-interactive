@@ -16,7 +16,9 @@ import type { ItemCategory, ItemRawField, ItemRecord, ItemResolvedAttribute } fr
 import type { RelatedDraftRecipe } from "@/lib/items/drafts";
 import { resolveDraftTextByLanguage } from "@/lib/items/drafts";
 import { itemsFavoritesAtom, toggleItemFavoriteAtom } from "@/lib/store";
+import { cn } from "@/components/dna/cn";
 import { DnaPanel } from "@/components/dna/Panel";
+import type { WeaponUsage } from "@/lib/items/weapon-usage";
 import { DnaSegmented } from "@/components/dna/Segmented";
 import { DnaSectionLabel } from "@/components/dna/SectionLabel";
 import { DnaStatRow } from "@/components/dna/StatRow";
@@ -53,6 +55,8 @@ type ItemDetailClientProps = {
   /** Build de Demon Wedges canonique de l'arme (armes uniquement). */
   /** Builds de Demon Wedges de l'arme. Une arme peut en porter plusieurs. */
   weaponBuilds?: WeaponBuild[];
+  /** Personnages dont un build curé recommande cette arme. */
+  weaponUsage?: WeaponUsage[];
 };
 
 function formatRawFieldValue(value: ItemRawField): string {
@@ -286,8 +290,10 @@ function parseBattlePetAttributes(value: ItemRawField | undefined): ParsedBattle
   return attributes;
 }
 
-export default function ItemDetailClient({ category, item, relatedDrafts = [], weaponBuilds = [] }: ItemDetailClientProps) {
+export default function ItemDetailClient({ category, item, relatedDrafts = [], weaponBuilds = [], weaponUsage = [] }: ItemDetailClientProps) {
   const [activeWeaponBuildIndex, setActiveWeaponBuildIndex] = useState(0);
+  // Personnage sélectionné pour l'arbre de Potentiel : son build porte l'ordre conseillé.
+  const [activeUsageIndex, setActiveUsageIndex] = useState(0);
   const weaponBuild = weaponBuilds[activeWeaponBuildIndex] ?? weaponBuilds[0] ?? null;
   const t = useTranslations('itemDetail');
   const tc = useTranslations('common');
@@ -818,11 +824,48 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
             </div>
           </div>
 
+          {weaponUsage.length > 0 ? (
+            <div className="mt-5 border-t border-white/10 pt-5">
+              <p className="text-sm text-parch/85">{t("charactersPathIntro")}</p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {weaponUsage.map((usage, index) => {
+                  const active = index === activeUsageIndex;
+                  return (
+                    <button
+                      key={`${usage.characterId}-${usage.buildName}-${index}`}
+                      type="button"
+                      onClick={() => setActiveUsageIndex(index)}
+                      aria-pressed={active}
+                      className={cn(
+                        "rounded-sm border px-3 py-1.5 text-left text-xs transition-colors",
+                        active
+                          ? "border-crimson/60 bg-crimson/10 text-parch"
+                          : "border-white/10 bg-ink/55 text-parch/85 hover:border-crimson/40",
+                      )}
+                    >
+                      <span className="block font-medium">{usage.name}</span>
+                      <span className="block text-muted">{usage.buildName}</span>
+                      {!usage.hasProficiency ? (
+                        <span className="mt-1 block text-[0.68rem] text-crimson-bright">
+                          {t("charactersNoProficiency")}
+                        </span>
+                      ) : null}
+                    </button>
+                  );
+                })}
+              </div>
+              {weaponUsage[activeUsageIndex] && !weaponUsage[activeUsageIndex].potentialOrder ? (
+                <p className="mt-3 text-xs text-muted">{t("charactersPathUnknown")}</p>
+              ) : null}
+            </div>
+          ) : null}
+
           <div className="mt-5 border-t border-white/10 pt-5">
             <CalamityPotentialTree
               weaponItemId={item.id}
               lang={selectedLanguage}
               fusionLevel={selectedLevel}
+              recommendedOrder={weaponUsage[activeUsageIndex]?.potentialOrder ?? null}
             />
           </div>
         </DnaPanel>
@@ -863,6 +906,40 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
               return note ? <p className="mx-auto mt-4 max-w-prose text-center text-xs text-muted-2">{note}</p> : null;
             })()}
           </div>
+        </DnaPanel>
+      ) : null}
+
+      {/* Personnages qui utilisent cette arme. Sur une arme de calamité la liste
+          est déjà rendue, sélectionnable, au-dessus de l'arbre de Potentiel. */}
+      {isWeaponsCategory && !isCalamity && weaponUsage.length > 0 ? (
+        <DnaPanel className="p-4 md:p-5">
+          <DnaSectionLabel>{t("charactersTitle")}</DnaSectionLabel>
+          <p className="mt-2 text-sm text-parch/85">{t("charactersIntro")}</p>
+          <ul className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+            {weaponUsage.map((usage, index) => (
+              <li key={`${usage.characterId}-${usage.buildName}-${index}`}>
+                <Link
+                  href={`/characters/${usage.slug}?tab=build`}
+                  className="flex items-center justify-between gap-3 rounded-sm border border-white/10 bg-ink/55 px-3 py-2 transition-colors hover:border-gold/40"
+                >
+                  <span className="min-w-0">
+                    <span className="block truncate text-sm text-parch">{usage.name}</span>
+                    <span className="block truncate text-xs text-muted">{usage.buildName}</span>
+                  </span>
+                  <span
+                    className={cn(
+                      "shrink-0 rounded-sm border px-2 py-0.5 text-[0.68rem]",
+                      usage.rank === "best"
+                        ? "border-gold/40 bg-gold/10 text-gold"
+                        : "border-white/10 text-muted",
+                    )}
+                  >
+                    {usage.rank === "best" ? t("charactersRankBest") : t("charactersRankAlternative")}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </DnaPanel>
       ) : null}
 

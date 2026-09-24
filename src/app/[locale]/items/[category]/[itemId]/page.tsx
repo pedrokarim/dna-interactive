@@ -4,6 +4,7 @@ import { getTranslations } from "next-intl/server";
 import { Suspense } from "react";
 import ItemDetailClient from "@/components/items/ItemDetailClient";
 import { getWeaponBuilds } from "@/lib/items/weapon-builds";
+import { getWeaponUsage } from "@/lib/items/weapon-usage";
 import ItemsSuspenseFallback from "@/components/items/ItemsSuspenseFallback";
 import {
   getItemByCategoryAndId,
@@ -92,6 +93,17 @@ export default async function ItemDetailPage({ params }: ItemDetailPageProps) {
 
   const t = await getTranslations("common");
   const weaponBuilds = category.id === "weapons" ? getWeaponBuilds(item.id, locale.toUpperCase()) : [];
+  // Personnages dont un build curé recommande cette arme. Le type vient de
+  // l'objet : il sert à savoir si le personnage a la maîtrise, ce qui
+  // conditionne l'effet des Potentiels de calamité.
+  const weaponUsage =
+    category.id === "weapons"
+      ? getWeaponUsage(
+          item.id,
+          (item.fields?.GUIPathVariableType as string | undefined) ?? null,
+          locale.toUpperCase(),
+        )
+      : [];
 
   return (
     <Suspense
@@ -102,6 +114,7 @@ export default async function ItemDetailPage({ params }: ItemDetailPageProps) {
         item={item}
         relatedDrafts={getDraftRecipesForItem(category.id, item.modId)}
         weaponBuilds={weaponBuilds}
+        weaponUsage={weaponUsage}
       />
     </Suspense>
   );

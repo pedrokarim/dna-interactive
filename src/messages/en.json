@@ -684,7 +684,14 @@
     "ascensionSteps": "Ascension steps",
     "textKeysTitle": "Text keys",
     "technicalTitle": "Technical data",
-    "relatedDraftsTitle": "Related drafts"
+    "relatedDraftsTitle": "Related drafts",
+    "charactersTitle": "Characters who use it",
+    "charactersIntro": "Characters whose recommended build uses this weapon.",
+    "charactersPathIntro": "Pick a character to see the recommended investment order in the tree.",
+    "charactersNoProficiency": "Outside proficiency: Potentials do not apply.",
+    "charactersPathUnknown": "The recommended order is not documented yet for this build.",
+    "charactersRankBest": "Recommended",
+    "charactersRankAlternative": "Alternative"
   },
   "drafts": {
     "headerLabel": "Forge Drafts",

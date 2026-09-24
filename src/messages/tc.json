@@ -684,7 +684,14 @@
     "ascensionSteps": "突破步驟",
     "textKeysTitle": "文字鍵值",
     "technicalTitle": "技術資料",
-    "relatedDraftsTitle": "相關圖紙"
+    "relatedDraftsTitle": "相關圖紙",
+    "charactersTitle": "使用此武器的角色",
+    "charactersIntro": "推薦配裝中使用此武器的角色。",
+    "charactersPathIntro": "選擇角色即可查看樹狀圖的建議投資順序。",
+    "charactersNoProficiency": "非擅長武器：潛能不會生效。",
+    "charactersPathUnknown": "此配裝的建議順序尚未整理。",
+    "charactersRankBest": "推薦",
+    "charactersRankAlternative": "替代"
   },
   "drafts": {
     "headerLabel": "鍛造圖紙",

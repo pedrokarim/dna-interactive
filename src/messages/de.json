@@ -684,7 +684,14 @@
     "ascensionSteps": "Aufstiegsschritte",
     "textKeysTitle": "Textschlüssel",
     "technicalTitle": "Technische Daten",
-    "relatedDraftsTitle": "Zugehörige Entwürfe"
+    "relatedDraftsTitle": "Zugehörige Entwürfe",
+    "charactersTitle": "Charaktere, die sie nutzen",
+    "charactersIntro": "Charaktere, deren empfohlener Build diese Waffe verwendet.",
+    "charactersPathIntro": "Wähle einen Charakter, um die empfohlene Reihenfolge im Baum zu sehen.",
+    "charactersNoProficiency": "Außerhalb der Waffenkunde: Potenziale wirken nicht.",
+    "charactersPathUnknown": "Die empfohlene Reihenfolge ist für diesen Build noch nicht dokumentiert.",
+    "charactersRankBest": "Empfohlen",
+    "charactersRankAlternative": "Alternative"
   },
   "drafts": {
     "headerLabel": "Schmiedeentwürfe",

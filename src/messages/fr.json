@@ -684,7 +684,14 @@
     "ascensionSteps": "Étapes d'ascension",
     "textKeysTitle": "Clés de texte",
     "technicalTitle": "Données techniques",
-    "relatedDraftsTitle": "Plans associés"
+    "relatedDraftsTitle": "Plans associés",
+    "charactersTitle": "Personnages qui l'utilisent",
+    "charactersIntro": "Personnages dont un build recommandé emploie cette arme.",
+    "charactersPathIntro": "Choisis un personnage pour voir l'ordre d'investissement conseillé dans l'arbre.",
+    "charactersNoProficiency": "Hors maîtrise : les Potentiels ne s'appliquent pas.",
+    "charactersPathUnknown": "L'ordre conseillé n'est pas encore documenté pour ce build.",
+    "charactersRankBest": "Recommandée",
+    "charactersRankAlternative": "Alternative"
   },
   "drafts": {
     "headerLabel": "Plans de forge",
