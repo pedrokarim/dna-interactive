@@ -214,6 +214,14 @@
         {
           "itemId": "weapons-10399",
           "rank": "best",
+          "potentialOrder": [
+            10399001,
+            10399002,
+            10399004,
+            10399007,
+            10399009,
+            10399010
+          ],
           "note": {
             "FR": "Arme de calamité : bonus taillés pour les porteuses d'arme de consonance en mêlée.",
             "EN": "Calamity weapon: buffs tailored to melee consonance weapon users."

@@ -28,6 +28,14 @@
         {
           "itemId": "weapons-20599",
           "rank": "best",
+          "potentialOrder": [
+            20599001,
+            20599002,
+            20599004,
+            20599007,
+            20599008,
+            20599010
+          ],
           "note": {
             "FR": "Arme de calamite : Puissance de competence, PEN et bonus de degats Anemo.",
             "EN": "Calamity weapon: Skill Intensity, PEN and Anemo damage bonuses."
@@ -218,6 +226,14 @@
         {
           "itemId": "weapons-20599",
           "rank": "best",
+          "potentialOrder": [
+            20599001,
+            20599002,
+            20599004,
+            20599007,
+            20599008,
+            20599010
+          ],
           "note": {
             "FR": "Arme de calamite : Puissance de competence, PEN et bonus de degats Anemo.",
             "EN": "Calamity weapon: Skill Intensity, PEN and Anemo damage bonuses."

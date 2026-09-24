@@ -52,6 +52,14 @@
         {
           "itemId": "weapons-20298",
           "rank": "alternative",
+          "potentialOrder": [
+            20299001,
+            20299003,
+            20299005,
+            20299007,
+            20299008,
+            20299010
+          ],
           "note": {
             "FR": "Arme de calamité taillée pour Falsi, attendue dans la seconde moitié de la 1.6. Deux options : monter le Requiem d'épines, ou l'attendre.",
             "EN": "Calamity weapon tailor-made for Falsi, due in the second half of 1.6. Two options: build Thorned Requiem, or wait for it."
@@ -61,14 +69,46 @@
     },
     "demonWedges": {
       "slots": [
-        { "position": 1, "itemId": "mods-56132", "track": 2 },
-        { "position": 2, "itemId": "mods-51932", "track": 4 },
-        { "position": 3, "itemId": "mods-51432", "track": 1 },
-        { "position": 4, "itemId": "mods-51333", "track": 3 },
-        { "position": 5, "itemId": "mods-51738", "track": 2 },
-        { "position": 6, "itemId": "mods-51317", "track": 4 },
-        { "position": 7, "itemId": "mods-51738", "track": 2 },
-        { "position": 8, "itemId": "mods-51738", "track": 2 }
+        {
+          "position": 1,
+          "itemId": "mods-56132",
+          "track": 2
+        },
+        {
+          "position": 2,
+          "itemId": "mods-51932",
+          "track": 4
+        },
+        {
+          "position": 3,
+          "itemId": "mods-51432",
+          "track": 1
+        },
+        {
+          "position": 4,
+          "itemId": "mods-51333",
+          "track": 3
+        },
+        {
+          "position": 5,
+          "itemId": "mods-51738",
+          "track": 2
+        },
+        {
+          "position": 6,
+          "itemId": "mods-51317",
+          "track": 4
+        },
+        {
+          "position": 7,
+          "itemId": "mods-51738",
+          "track": 2
+        },
+        {
+          "position": 8,
+          "itemId": "mods-51738",
+          "track": 2
+        }
       ],
       "centerItemId": "mods-51735",
       "affinity": {
@@ -107,13 +147,25 @@
       }
     ],
     "genimon": [
-      { "itemId": "genimon-4231", "rank": "best" },
-      { "itemId": "genimon-4031", "rank": "alternative" },
-      { "itemId": "genimon-4131", "rank": "alternative" }
+      {
+        "itemId": "genimon-4231",
+        "rank": "best"
+      },
+      {
+        "itemId": "genimon-4031",
+        "rank": "alternative"
+      },
+      {
+        "itemId": "genimon-4131",
+        "rank": "alternative"
+      }
     ],
     "skillPriority": [
       {
-        "skillName": { "FR": "Chute dans l'abîme", "EN": "Abyss Descent" },
+        "skillName": {
+          "FR": "Chute dans l'abîme",
+          "EN": "Abyss Descent"
+        },
         "priority": 5,
         "note": {
           "FR": "Le cœur de son kit : indispensable à ses dégâts comme à la gestion de ses PV.",
@@ -121,7 +173,10 @@
         }
       },
       {
-        "skillName": { "FR": "Infiltration nocturne", "EN": "Nightmeld" },
+        "skillName": {
+          "FR": "Infiltration nocturne",
+          "EN": "Nightmeld"
+        },
         "priority": 4,
         "note": {
           "FR": "Monter cette compétence augmente les dégâts de Frappe d'ombre, au centre de sa rotation.",
@@ -129,7 +184,10 @@
         }
       },
       {
-        "skillName": { "FR": "Résurgence", "EN": "Awakening" },
+        "skillName": {
+          "FR": "Résurgence",
+          "EN": "Awakening"
+        },
         "priority": 4,
         "note": {
           "FR": "Augmente aussi les dégâts de Frappe d'ombre : à monter en parallèle d'Infiltration nocturne.",

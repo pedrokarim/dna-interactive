@@ -10,6 +10,14 @@
         {
           "itemId": "weapons-10299",
           "rank": "best",
+          "potentialOrder": [
+            10299001,
+            10299002,
+            10299004,
+            10299006,
+            10299008,
+            10299010
+          ],
           "note": {
             "FR": "Meilleure arme. Buffs d'ATQ et de vitesse d'attaque centres sur les invocations.",
             "EN": "Best-in-slot. ATK and ATK Speed buffs built around Summons."
@@ -358,6 +366,14 @@
         {
           "itemId": "weapons-10299",
           "rank": "best",
+          "potentialOrder": [
+            10299001,
+            10299002,
+            10299004,
+            10299006,
+            10299008,
+            10299010
+          ],
           "note": {
             "FR": "Arme de calamité, meilleure mêlée du build.",
             "EN": "Calamity weapon, top melee of the build."

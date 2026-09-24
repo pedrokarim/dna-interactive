@@ -209,6 +209,14 @@
         {
           "itemId": "weapons-10399",
           "rank": "best",
+          "potentialOrder": [
+            10399001,
+            10399002,
+            10399004,
+            10399007,
+            10399009,
+            10399010
+          ],
           "note": {
             "FR": "Arme de calamité : le pic de dégâts du build de fin de version.",
             "EN": "Calamity weapon: the damage ceiling of the endgame build."

@@ -44,6 +44,14 @@
         {
           "itemId": "weapons-20599",
           "rank": "alternative",
+          "potentialOrder": [
+            20599001,
+            20599002,
+            20599004,
+            20599007,
+            20599008,
+            20599010
+          ],
           "note": {
             "FR": "Arme de calamite, a preferer sur une Fina orientee degats.",
             "EN": "Calamity weapon, better on a damage-oriented Fina."
@@ -236,6 +244,14 @@
         {
           "itemId": "weapons-20599",
           "rank": "alternative",
+          "potentialOrder": [
+            20599001,
+            20599002,
+            20599004,
+            20599007,
+            20599008,
+            20599010
+          ],
           "note": {
             "FR": "Arme de calamite, a preferer sur une Fina orientee degats.",
             "EN": "Calamity weapon, better on a damage-oriented Fina."

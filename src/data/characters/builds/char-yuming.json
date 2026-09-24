@@ -185,6 +185,14 @@
         {
           "itemId": "weapons-10299",
           "rank": "alternative",
+          "potentialOrder": [
+            10299001,
+            10299002,
+            10299004,
+            10299007,
+            10299008,
+            10299010
+          ],
           "note": {
             "FR": "Arme de calamité, repli haut de gamme.",
             "EN": "Calamity weapon, high-end fallback."
@@ -195,6 +203,14 @@
         {
           "itemId": "weapons-20599",
           "rank": "best",
+          "potentialOrder": [
+            20599001,
+            20599002,
+            20599004,
+            20599007,
+            20599008,
+            20599010
+          ],
           "note": {
             "FR": "Meilleure arme à distance du build.",
             "EN": "Top ranged of the build."

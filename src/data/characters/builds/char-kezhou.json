@@ -36,6 +36,14 @@
         {
           "itemId": "weapons-20599",
           "rank": "best",
+          "potentialOrder": [
+            20599001,
+            20599003,
+            20599005,
+            20599007,
+            20599009,
+            20599010
+          ],
           "note": {
             "FR": "Arme de calamite : Points de Combo et DGT d'arme de melee. Sa maitrise Almighty accepte tout type.",
             "EN": "Calamity weapon: Combo Points and melee weapon damage. His Almighty proficiency accepts any type."

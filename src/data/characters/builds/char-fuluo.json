@@ -36,6 +36,14 @@
         {
           "itemId": "weapons-20599",
           "rank": "best",
+          "potentialOrder": [
+            20599001,
+            20599003,
+            20599005,
+            20599007,
+            20599008,
+            20599010
+          ],
           "note": {
             "FR": "Thorned Requiem - arme de Calamite (Mitrailleuse, v1.4). Bonus de Skill Intensity et de Degats Umbro. Meilleure arme distance de Flora.",
             "EN": "Thorned Requiem - Calamity weapon (Machinegun, v1.4). Skill Intensity and Umbro DMG bonuses. Flora's best ranged weapon."
