@@ -641,7 +641,8 @@
     "potentialLockedHint": "필요한 융합 레벨이 해금되지 않았습니다",
     "potentialMaterials": "필요 재료",
     "potentialNoMaterial": "필요한 재료 없음",
-    "potentialTreeUnavailable": "이 무기의 잠재력 트리는 아직 제공되지 않습니다."
+    "potentialTreeUnavailable": "이 무기의 잠재력 트리는 아직 제공되지 않습니다.",
+    "calamityWeaponGuide": "재앙 무기 가이드"
   },
   "itemDetail": {
     "weaponBuildTitle": "추천 데몬 웻지 빌드",

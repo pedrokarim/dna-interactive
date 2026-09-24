@@ -641,7 +641,8 @@
     "potentialLockedHint": "必要な融合レベルが未解放です",
     "potentialMaterials": "必要素材",
     "potentialNoMaterial": "必要な素材はありません",
-    "potentialTreeUnavailable": "この武器のポテンシャルツリーはまだ利用できません。"
+    "potentialTreeUnavailable": "この武器のポテンシャルツリーはまだ利用できません。",
+    "calamityWeaponGuide": "カラミティ武器ガイド"
   },
   "itemDetail": {
     "weaponBuildTitle": "おすすめのデーモンウェッジ構成",

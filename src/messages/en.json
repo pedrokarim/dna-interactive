@@ -641,7 +641,8 @@
     "potentialLockedHint": "Required smelting level not unlocked",
     "potentialMaterials": "Required materials",
     "potentialNoMaterial": "No material required",
-    "potentialTreeUnavailable": "The potential tree for this weapon is not available yet."
+    "potentialTreeUnavailable": "The potential tree for this weapon is not available yet.",
+    "calamityWeaponGuide": "Calamity Weapons Guide"
   },
   "itemDetail": {
     "weaponBuildTitle": "Recommended Demon Wedge build",

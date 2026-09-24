@@ -641,7 +641,8 @@
     "potentialLockedHint": "尚未解鎖所需的融合等級",
     "potentialMaterials": "所需材料",
     "potentialNoMaterial": "不需要材料",
-    "potentialTreeUnavailable": "此武器的潛能樹尚未提供。"
+    "potentialTreeUnavailable": "此武器的潛能樹尚未提供。",
+    "calamityWeaponGuide": "災厄武器指南"
   },
   "itemDetail": {
     "weaponBuildTitle": "推薦惡魔楔組合",

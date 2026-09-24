@@ -110,7 +110,7 @@ export default async function ItemsCategoriesPage() {
                   }`}
                 >
                   <BookOpenText className="h-4 w-4" />
-                  {category.id === "weapons" ? "Guide armes de calamité" : tItems('demonWedgeGuide')}
+                  {category.id === "weapons" ? tItems('calamityWeaponGuide') : tItems('demonWedgeGuide')}
                 </Link>
               </div>
             )}

@@ -641,7 +641,8 @@
     "potentialLockedHint": "Erforderliche Schmelzstufe nicht freigeschaltet",
     "potentialMaterials": "Benötigte Materialien",
     "potentialNoMaterial": "Kein Material erforderlich",
-    "potentialTreeUnavailable": "Der Potenzialbaum dieser Waffe ist noch nicht verfügbar."
+    "potentialTreeUnavailable": "Der Potenzialbaum dieser Waffe ist noch nicht verfügbar.",
+    "calamityWeaponGuide": "Leitfaden Kalamitätswaffen"
   },
   "itemDetail": {
     "weaponBuildTitle": "Empfohlener Demon-Wedge-Build",

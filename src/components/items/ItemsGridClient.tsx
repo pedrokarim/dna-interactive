@@ -1,9 +1,10 @@
 "use client";
 
 import { Link } from "@/i18n/navigation";
+import { cn } from "@/components/dna/cn";
 import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ChevronRight, Flame, Heart, Languages, Search, SlidersHorizontal, X, ZoomIn } from "lucide-react";
+import { BookOpenText, ChevronRight, Flame, Heart, Languages, Search, SlidersHorizontal, X, ZoomIn } from "lucide-react";
 import { useAtom } from "jotai";
 import {
   parseAsArrayOf,
@@ -715,6 +716,22 @@ export default function ItemsGridClient({
           </h1>
           <span aria-hidden className="mt-2 block h-0.5 w-16 bg-gold" />
           <p className="mt-3 max-w-2xl text-sm text-parch/75">{category.description}</p>
+          {/* Le guide n'était atteignable que depuis la page des catégories :
+              depuis la liste elle-même, rien n'y menait. */}
+          {(category.id === "mods" || category.id === "weapons") && !favoritesOnly ? (
+            <Link
+              href={`/items/${category.slug}/about`}
+              className={cn(
+                "mt-4 inline-flex items-center gap-2 rounded-sm border px-3 py-2 text-sm font-medium transition-colors",
+                category.id === "weapons"
+                  ? "border-crimson-bright/35 bg-crimson/10 text-crimson-bright hover:bg-crimson/20"
+                  : "border-hydro/35 bg-hydro/10 text-hydro hover:bg-hydro/20",
+              )}
+            >
+              <BookOpenText className="h-4 w-4" />
+              {category.id === "weapons" ? t("calamityWeaponGuide") : t("demonWedgeGuide")}
+            </Link>
+          ) : null}
         </div>
         <div className="relative shrink-0 px-5 py-3">
           <DnaCornerBrackets size={16} />

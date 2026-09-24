@@ -641,7 +641,8 @@
     "potentialLockedHint": "Nivel de fusión requerido no desbloqueado",
     "potentialMaterials": "Materiales necesarios",
     "potentialNoMaterial": "No requiere materiales",
-    "potentialTreeUnavailable": "El árbol de potencial de esta arma aún no está disponible."
+    "potentialTreeUnavailable": "El árbol de potencial de esta arma aún no está disponible.",
+    "calamityWeaponGuide": "Guía de armas de calamidad"
   },
   "itemDetail": {
     "weaponBuildTitle": "Build de Demon Wedges recomendado",
