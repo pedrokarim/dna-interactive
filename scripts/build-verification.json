@@ -28,8 +28,8 @@
     },
     "char-falu": {
       "verifiedAt": "2026-09-24",
-      "source": "auto",
-      "note": "Balayage 1.6 : fiche inchangee, aucune piece des 12 nouveaux Demon Wedges Pyro, rien a ajouter."
+      "source": "606751",
+      "note": "Balayage 1.6 : fiche identique a notre build (pieces, centre Tenacite, armes). Utilise deja les pieces 1.6, rien a ajouter."
     },
     "char-feina": {
       "verifiedAt": "2026-08-20",
@@ -78,8 +78,8 @@
     },
     "char-maer": {
       "verifiedAt": "2026-09-24",
-      "source": "auto",
-      "note": "Balayage 1.6 : fiche inchangee, aucune piece des 12 nouveaux Demon Wedges Pyro, rien a ajouter."
+      "source": "560796",
+      "note": "Balayage 1.6 : DPS et Support conformes, aucune des 12 nouvelles pieces Pyro sur sa fiche."
     },
     "char-nifu": {
       "verifiedAt": "2026-08-20",
@@ -111,6 +111,16 @@
       "source": "560807",
       "note": "pistes posees depuis le tableau HTML"
     },
+    "char-weitaf": {
+      "verifiedAt": "2026-09-24",
+      "source": "617590",
+      "note": "Conforme case par case : 8 pieces, centre Eveil, 8 Track-Shift, armes identiques. Un seul build sur la fiche. Hydro : non concerne par les nouvelles pieces Pyro de la 1.6."
+    },
+    "char-weitam": {
+      "verifiedAt": "2026-09-24",
+      "source": "617590",
+      "note": "Conforme case par case : 8 pieces, centre Eveil, 8 Track-Shift, armes identiques. Un seul build sur la fiche. Hydro : non concerne par les nouvelles pieces Pyro de la 1.6."
+    },
     "char-xibi": {
       "verifiedAt": "2026-08-20",
       "source": "560801",
@@ -123,8 +133,8 @@
     },
     "char-yeer": {
       "verifiedAt": "2026-09-24",
-      "source": "auto",
-      "note": "Balayage 1.6 : fiche inchangee, aucune piece des 12 nouveaux Demon Wedges Pyro, rien a ajouter."
+      "source": "560795",
+      "note": "Balayage 1.6 : build conforme, aucune des 12 nouvelles pieces Pyro. Ecarts limites aux alternatives (Withershade, Dregs of Glimmer)."
     },
     "char-yuming": {
       "verifiedAt": "2026-08-20",
