@@ -601,7 +601,7 @@
     "maxLevelShort": "最大Lv.{level}",
     "statDamageRate": "ダメージ",
     "calamityPathTitle": "推奨ポテンシャル順",
-    "calamityPathIntro": "数字は投資する順番です。2つの分岐は合流し最終的にすべて取得するため、選ぶのは順番です。",
+    "calamityPathIntro": "階層IからIVでは、最初に選んだポテンシャルが無料です。もう一方も解放できますが素材が必要です。数字は取得する順番を示します。",
     "calamityPathUnknown": "このビルドの推奨順はまだ記載されていません。ツリーは閲覧できます。"
   },
   "items": {
@@ -690,7 +690,7 @@
     "relatedDraftsTitle": "関連する設計図",
     "charactersTitle": "この武器を使うキャラクター",
     "charactersIntro": "推奨ビルドでこの武器を使用するキャラクター。",
-    "charactersPathIntro": "キャラクターを選ぶと、ツリーの推奨投資順が表示されます。",
+    "charactersPathIntro": "キャラクターを選ぶと推奨順が表示されます。階層I〜IVでは最初に取るポテンシャルが無料で、もう一方は素材が必要です。",
     "charactersNoProficiency": "得意武器外：ポテンシャルは発動しません。",
     "charactersPathUnknown": "このビルドの推奨順はまだ記載されていません。",
     "charactersRankBest": "推奨",

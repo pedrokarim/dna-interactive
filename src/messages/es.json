@@ -601,7 +601,7 @@
     "maxLevelShort": "Nv. máx. {level}",
     "statDamageRate": "Daño",
     "calamityPathTitle": "Ruta de Potencial recomendada",
-    "calamityPathIntro": "Los números indican el orden de inversión. Las dos ramas convergen y acabas tomándolo todo: lo que eliges es el orden.",
+    "calamityPathIntro": "En cada nivel de I a IV, el primer Potencial que eliges es gratuito; el otro sigue disponible pero cuesta materiales. Los números indican en qué orden tomarlos.",
     "calamityPathUnknown": "El orden recomendado aún no está documentado para este build. El árbol sigue consultable."
   },
   "items": {
@@ -690,7 +690,7 @@
     "relatedDraftsTitle": "Planos asociados",
     "charactersTitle": "Personajes que la usan",
     "charactersIntro": "Personajes cuyo build recomendado emplea esta arma.",
-    "charactersPathIntro": "Elige un personaje para ver el orden de inversión recomendado en el árbol.",
+    "charactersPathIntro": "Elige un personaje para ver el orden recomendado. En cada nivel de I a IV, el primer Potencial tomado es gratuito; el otro cuesta materiales.",
     "charactersNoProficiency": "Fuera de competencia: los Potenciales no se aplican.",
     "charactersPathUnknown": "El orden recomendado aún no está documentado para este build.",
     "charactersRankBest": "Recomendada",

@@ -601,7 +601,7 @@
     "maxLevelShort": "Niv. max {level}",
     "statDamageRate": "Dégâts",
     "calamityPathTitle": "Chemin de Potentiel conseillé",
-    "calamityPathIntro": "Les numéros donnent l'ordre dans lequel investir. Les deux branches convergent, on finit par tout prendre : ce qui se choisit, c'est l'ordre.",
+    "calamityPathIntro": "À chaque palier de I à IV, le premier Potentiel choisi est gratuit ; l'autre reste accessible mais coûte des matériaux. Les numéros donnent donc l'ordre dans lequel les prendre.",
     "calamityPathUnknown": "L'ordre conseillé n'est pas encore documenté pour ce build. L'arbre reste consultable."
   },
   "items": {
@@ -690,7 +690,7 @@
     "relatedDraftsTitle": "Plans associés",
     "charactersTitle": "Personnages qui l'utilisent",
     "charactersIntro": "Personnages dont un build recommandé emploie cette arme.",
-    "charactersPathIntro": "Choisis un personnage pour voir l'ordre d'investissement conseillé dans l'arbre.",
+    "charactersPathIntro": "Choisis un personnage pour voir l'ordre conseillé. À chaque palier de I à IV, le premier Potentiel pris est gratuit ; l'autre coûte des matériaux.",
     "charactersNoProficiency": "Hors maîtrise : les Potentiels ne s'appliquent pas.",
     "charactersPathUnknown": "L'ordre conseillé n'est pas encore documenté pour ce build.",
     "charactersRankBest": "Recommandée",

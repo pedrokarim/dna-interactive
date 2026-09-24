@@ -601,7 +601,7 @@
     "maxLevelShort": "最高 Lv.{level}",
     "statDamageRate": "傷害",
     "calamityPathTitle": "建議潛能路線",
-    "calamityPathIntro": "數字代表投資順序。兩條分支會匯合，最終全部取得，所以要選的是順序。",
+    "calamityPathIntro": "在第I至IV階，先選的潛能免費，另一個仍可解鎖但需要材料。數字代表取得的順序。",
     "calamityPathUnknown": "此配裝的建議順序尚未整理，但樹狀圖仍可瀏覽。"
   },
   "items": {
@@ -690,7 +690,7 @@
     "relatedDraftsTitle": "相關圖紙",
     "charactersTitle": "使用此武器的角色",
     "charactersIntro": "推薦配裝中使用此武器的角色。",
-    "charactersPathIntro": "選擇角色即可查看樹狀圖的建議投資順序。",
+    "charactersPathIntro": "選擇角色即可查看建議順序。第I至IV階中，先取得的潛能免費，另一個需要材料。",
     "charactersNoProficiency": "非擅長武器：潛能不會生效。",
     "charactersPathUnknown": "此配裝的建議順序尚未整理。",
     "charactersRankBest": "推薦",

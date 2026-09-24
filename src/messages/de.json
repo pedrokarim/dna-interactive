@@ -601,7 +601,7 @@
     "maxLevelShort": "Max. Stufe {level}",
     "statDamageRate": "SCH",
     "calamityPathTitle": "Empfohlener Potenzialpfad",
-    "calamityPathIntro": "Die Zahlen geben die Reihenfolge der Investition an. Beide Zweige laufen zusammen und am Ende nimmt man alles: gewählt wird die Reihenfolge.",
+    "calamityPathIntro": "Auf jeder Stufe von I bis IV ist das zuerst gewählte Potenzial kostenlos; das andere bleibt verfügbar, kostet aber Material. Die Zahlen geben die Reihenfolge an.",
     "calamityPathUnknown": "Die empfohlene Reihenfolge ist für diesen Build noch nicht dokumentiert. Der Baum bleibt einsehbar."
   },
   "items": {
@@ -690,7 +690,7 @@
     "relatedDraftsTitle": "Zugehörige Entwürfe",
     "charactersTitle": "Charaktere, die sie nutzen",
     "charactersIntro": "Charaktere, deren empfohlener Build diese Waffe verwendet.",
-    "charactersPathIntro": "Wähle einen Charakter, um die empfohlene Reihenfolge im Baum zu sehen.",
+    "charactersPathIntro": "Wähle einen Charakter für die empfohlene Reihenfolge. Auf jeder Stufe I bis IV ist das zuerst genommene Potenzial kostenlos; das andere kostet Material.",
     "charactersNoProficiency": "Außerhalb der Waffenkunde: Potenziale wirken nicht.",
     "charactersPathUnknown": "Die empfohlene Reihenfolge ist für diesen Build noch nicht dokumentiert.",
     "charactersRankBest": "Empfohlen",

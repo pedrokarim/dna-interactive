@@ -601,7 +601,7 @@
     "maxLevelShort": "Max Lv. {level}",
     "statDamageRate": "DMG",
     "calamityPathTitle": "Recommended Potential path",
-    "calamityPathIntro": "The numbers give the order to invest in. Both branches converge and you end up taking everything: what you choose is the order.",
+    "calamityPathIntro": "At each tier from I to IV, the first Potential you pick is free; the other stays available but costs materials. The numbers give the order to take them in.",
     "calamityPathUnknown": "The recommended order is not documented yet for this build. The tree is still browsable."
   },
   "items": {
@@ -690,7 +690,7 @@
     "relatedDraftsTitle": "Related drafts",
     "charactersTitle": "Characters who use it",
     "charactersIntro": "Characters whose recommended build uses this weapon.",
-    "charactersPathIntro": "Pick a character to see the recommended investment order in the tree.",
+    "charactersPathIntro": "Pick a character to see the recommended order. At each tier from I to IV, the first Potential taken is free; the other costs materials.",
     "charactersNoProficiency": "Outside proficiency: Potentials do not apply.",
     "charactersPathUnknown": "The recommended order is not documented yet for this build.",
     "charactersRankBest": "Recommended",

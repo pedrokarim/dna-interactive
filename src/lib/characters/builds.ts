@@ -27,10 +27,11 @@ interface RawWeaponEntry {
    * Armes de calamité seulement : ordre d'investissement conseillé dans l'arbre
    * de Potentiel, par identifiants de nœuds.
    *
-   * Ce n'est **pas** un embranchement : les deux branches convergent, le nœud du
-   * palier 5 exigeant les deux nœuds du palier 4. On finit donc par tout prendre,
-   * et ce qui se choisit est l'ordre — chaque nœud ayant son propre coût en
-   * matériaux. Cf. `docs/demon-wedge-build-rules.md` et l'arbre de la fiche d'arme.
+   * Ce n'est **pas** un embranchement définitif : le nœud du palier 5 exige les
+   * deux nœuds du palier 4, donc tout finit par être pris. Ce qui se choisit est
+   * l'ordre, et il a un prix — **à chaque palier de I à IV, le premier Potentiel
+   * choisi est gratuit, l'autre coûte des matériaux**. Un chemin conseillé dit
+   * donc lequel prendre gratuitement à chaque palier.
    */
   potentialOrder?: number[];
 }
