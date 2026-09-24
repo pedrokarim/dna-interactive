@@ -268,19 +268,29 @@ La case du centre porte toujours un ✖︎ : le centre n'a pas de piste.
 Les fiches publiques n'affichent pas toutes le même marqueur, et la différence
 change la lecture :
 
-| Format | Marqueur | Case du centre | Exemples |
+| Format | Marqueur sur les 8 cases | Case du centre | Exemples |
 | --- | --- | --- | --- |
-| **Couronne** | un symbole unique, identique quelle que soit la pièce | ✖︎, ne compte pas | Hilda, Lynn, Camilla, Hellfire, Lisbell |
-| **Polarités** | le glyphe de la piste obtenue (flamme, croissant, losange, cercle) | **porte un glyphe et compte** | Ada, Rhythm |
+| **Couronne** | un symbole unique, identique quelle que soit la pièce | ✖︎ | Hilda, Lynn, Camilla, Hellfire, Lisbell |
+| **Polarités** | le glyphe de la piste obtenue (flamme, croissant, losange, cercle) | le glyphe **de la polarité du centre** | Ada, Rhythm |
 
 Dans le format couronne la lecture est binaire. Dans le format polarités, la forme
-renseigne en plus la piste obtenue, et **le centre consomme un module** — ce que notre
-schéma ne sait pas exprimer, `centerItemId` n'ayant pas de champ `track`.
+renseigne en plus la piste obtenue.
 
-⚠️ **Le compteur n'est pas fiable.** Sur Lisbell (format couronne) il annonce 6 alors
-que le tableau ne porte que 5 couronnes, centre exclu. Il tombe juste ailleurs, mais
-l'écart existe : **c'est le tableau qui fait foi**, lu case par case sur une capture.
-Le compteur ne sert qu'à éveiller le soupçon quand il diverge.
+⚠️ **Le centre ne reçoit JAMAIS de Track-Shift Module.** Le glyphe affiché dans sa case
+est sa **propre polarité**, pour information — vérifié sur deux cas : Rhythm (centre
+`mods-51746`, polarité 2, croissant affiché) et Ada (centre `mods-31512` Cabriole,
+polarité 3, losange affiché). `centerItemId` n'a donc pas besoin de champ `track`, et
+il ne faut pas en ajouter un.
+
+⚠️ **Le compteur n'est pas fiable**, de deux façons :
+
+- il **additionne la case du centre** quand elle porte un glyphe, d'où un +1 sur les
+  pages au format polarités ;
+- il se trompe aussi sans cela : sur Lisbell (format couronne, centre à ✖︎) il annonce
+  6 alors que le tableau ne porte que 5 couronnes.
+
+**C'est le tableau qui fait foi**, lu case par case sur une capture, centre exclu du
+compte. Le compteur ne sert qu'à éveiller le soupçon quand il diverge.
 
 ⚠️ **La lecture automatique du DOM rate des cases**, et le tableau peut être replié
 dans un accordéon dont l'intitulé varie (« Track Adjustment Slots » ou « Track
