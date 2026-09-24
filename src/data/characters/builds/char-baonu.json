@@ -202,5 +202,185 @@
       "FR": "Lisbell est centree sur l'Arme de Consonance Samael. Activez 'C'est fini !' pour equiper Samael, puis maintenez l'attaque pour charger des coups puissants. Le Niveau de Combo (C→S) ameliore la portee et les degats. Gerez la Lucidite car Samael en consomme.",
       "EN": "Lisbell centers on the Consonance Weapon Samael. Activate 'That's It!' to equip Samael, then hold attack to charge powerful strikes. Combo Level (C→S) enhances range and damage. Manage Sanity as Samael consumes it."
     }
+  },
+  {
+    "characterId": "char-baonu",
+    "buildName": {
+      "FR": "DPS arme de consonance — intron VII",
+      "EN": "Consonance Weapon DPS — I7"
+    },
+    "weapons": {
+      "melee": [
+        {
+          "itemId": "weapons-10399",
+          "rank": "best",
+          "note": {
+            "FR": "Arme de calamité : bonus taillés pour les porteuses d'arme de consonance en mêlée.",
+            "EN": "Calamity weapon: buffs tailored to melee consonance weapon users."
+          }
+        },
+        {
+          "itemId": "weapons-10206",
+          "rank": "alternative",
+          "note": {
+            "FR": "Repli accessible.",
+            "EN": "Accessible fallback."
+          }
+        }
+      ],
+      "ranged": [
+        {
+          "itemId": "weapons-20304",
+          "rank": "best",
+          "note": {
+            "FR": "Monte le niveau de combo au maximum très vite.",
+            "EN": "Gets the Combo Level to max very quickly."
+          }
+        }
+      ]
+    },
+    "demonWedges": {
+      "slots": [
+        {
+          "position": 1,
+          "itemId": "mods-51768",
+          "track": 1
+        },
+        {
+          "position": 2,
+          "itemId": "mods-51768",
+          "track": 1
+        },
+        {
+          "position": 3,
+          "itemId": "mods-51768",
+          "track": 1
+        },
+        {
+          "position": 4,
+          "itemId": "mods-51768",
+          "track": null
+        },
+        {
+          "position": 5,
+          "itemId": "mods-51768",
+          "track": null
+        },
+        {
+          "position": 6,
+          "itemId": "mods-51768",
+          "track": null
+        },
+        {
+          "position": 7,
+          "itemId": "mods-51461",
+          "track": 1
+        },
+        {
+          "position": 8,
+          "itemId": "mods-51336",
+          "track": 3
+        }
+      ],
+      "centerItemId": "mods-51765",
+      "affinity": {
+        "FR": "Vigueur de Quetzalcoatl",
+        "EN": "Feathered Serpent's Morale"
+      },
+      "note": {
+        "FR": "Build d'intron VII : Ardeur · Décision ×6, l'une des deux pièces Lumino apportées par la 1.6. Seule la famille Pactisant est empilable. Modules sur 1-3, 7 et 8 ; cases 4 à 6 sans module.",
+        "EN": "I7 build: Blaze - Volition x6, one of the two Lumino pieces added in 1.6. Covenanter's is the only stackable family. Modules on 1-3, 7 and 8; slots 4 to 6 carry none."
+      }
+    },
+    "statsPriority": [
+      "SkillIntensity",
+      "ATK",
+      "SkillSustain",
+      "SkillEfficiency"
+    ],
+    "team": [
+      {
+        "characterId": "char-feina",
+        "role": "Support",
+        "note": {
+          "FR": "Augmente les degats d'arme de toute l'equipe. Synergie ideale avec Samael.",
+          "EN": "Boosts team-wide weapon damage. Ideal synergy with Samael."
+        }
+      },
+      {
+        "characterId": "char-baiheng",
+        "role": "Support",
+        "note": {
+          "FR": "Soins, recuperation de Lucidite et buff de Degats de competence.",
+          "EN": "Healing, Sanity recovery, and Skill DMG buff."
+        }
+      }
+    ],
+    "genimon": [
+      {
+        "itemId": "genimon-4261",
+        "rank": "best"
+      },
+      {
+        "itemId": "genimon-4163",
+        "rank": "alternative"
+      },
+      {
+        "itemId": "genimon-4063",
+        "rank": "alternative"
+      }
+    ],
+    "skillPriority": [
+      {
+        "skillName": {
+          "FR": "C'est fini !",
+          "EN": "That's It!"
+        },
+        "priority": 5,
+        "note": {
+          "FR": "Active l'Arme de Consonance Samael. Source principale de degats.",
+          "EN": "Activates Consonance Weapon Samael. Main damage source."
+        }
+      },
+      {
+        "skillName": {
+          "FR": "Hmph !!",
+          "EN": "Hmph!!"
+        },
+        "priority": 4,
+        "note": {
+          "FR": "Ameliore Samael selon le Niveau de Combo (C/B/A/S).",
+          "EN": "Enhances Samael based on Combo Level (C/B/A/S)."
+        }
+      },
+      {
+        "skillName": {
+          "FR": "Au nom de la patience",
+          "EN": "In the Name of Patience"
+        },
+        "priority": 3,
+        "note": {
+          "FR": "Degats Lumino en zone. Correct mais gourmand en ressources.",
+          "EN": "Lumino AoE damage. Decent but resource-intensive."
+        }
+      }
+    ],
+    "consonanceWeapon": {
+      "name": {
+        "FR": "Samael",
+        "EN": "Samael"
+      },
+      "icon": "/assets/weapons/consonance/T_Head_Baonu_WP.png",
+      "slots": [
+        "mods-54103",
+        "mods-54004",
+        "mods-54001",
+        "mods-54002"
+      ]
+    },
+    "notes": {
+      "FR": "Lisbell est centree sur l'Arme de Consonance Samael. Activez 'C'est fini !' pour equiper Samael, puis maintenez l'attaque pour charger des coups puissants. Le Niveau de Combo (C→S) ameliore la portee et les degats. Gerez la Lucidite car Samael en consomme.",
+      "EN": "Lisbell centers on the Consonance Weapon Samael. Activate 'That's It!' to equip Samael, then hold attack to charge powerful strikes. Combo Level (C→S) enhances range and damage. Manage Sanity as Samael consumes it."
+    }
   }
 ]

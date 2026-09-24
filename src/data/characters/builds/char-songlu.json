@@ -174,5 +174,165 @@
       "FR": "Truffle et Filbert est un support Anemo axe sur les soins et les buffs de Tenacite via les PV max. Gardez Filbert invoque en permanence pour soigner l'equipe. Le passif Poids Lourd s'accumule en se deplacant, augmentant les degats et la resistance. Synergie optimale avec des DPS Anemo (Psyche, Outsider). A Intron 1, les soins sont considerablement ameliores.",
       "EN": "Truffle and Filbert is an Anemo support focused on healing and Resolve buffs through Max HP scaling. Keep Filbert summoned at all times to heal the team. The Heavyweight passive stacks while moving, increasing damage and resistance. Optimal synergy with Anemo DPS (Psyche, Outsider). At Intron 1, healing is significantly improved."
     }
+  },
+  {
+    "characterId": "char-songlu",
+    "buildName": {
+      "FR": "Soutien Anemo — Ténacité",
+      "EN": "Anemo Support — Resolve"
+    },
+    "weapons": {
+      "melee": [
+        {
+          "itemId": "weapons-10301",
+          "rank": "best",
+          "note": {
+            "FR": "PV max +100 % et Durée de compétence quand un allié Pyro encaisse.",
+            "EN": "Max HP +100% and Skill Duration when a Pyro ally takes damage."
+          }
+        }
+      ],
+      "ranged": [
+        {
+          "itemId": "weapons-20201",
+          "rank": "best",
+          "note": {
+            "FR": "Durée de compétence, dans la logique du build.",
+            "EN": "Skill Duration, in line with the build."
+          }
+        }
+      ]
+    },
+    "demonWedges": {
+      "slots": [
+        {
+          "position": 1,
+          "itemId": "mods-510101",
+          "track": 4
+        },
+        {
+          "position": 2,
+          "itemId": "mods-56154",
+          "track": 2
+        },
+        {
+          "position": 3,
+          "itemId": "mods-51757",
+          "track": 2
+        },
+        {
+          "position": 4,
+          "itemId": "mods-51757",
+          "track": 2
+        },
+        {
+          "position": 5,
+          "itemId": "mods-51757",
+          "track": 2
+        },
+        {
+          "position": 6,
+          "itemId": "mods-51757",
+          "track": null
+        },
+        {
+          "position": 7,
+          "itemId": "mods-51757",
+          "track": null
+        },
+        {
+          "position": 8,
+          "itemId": "mods-51455",
+          "track": 1
+        }
+      ],
+      "centerItemId": "mods-51755",
+      "affinity": {
+        "FR": "Ténacité de Quetzalcoatl",
+        "EN": "Feathered Serpent's Resolve"
+      },
+      "note": {
+        "FR": "Variante Ténacité : Boum-Badaboum ! en tête, pièce générique apportée par la 1.6. Ténacité · Décision ×5, famille Pactisant donc empilable. Modules sur 1-5 et 8.",
+        "EN": "Resolve variant: Bumpity-Bump! up front, a generic piece added in 1.6. Resolve - Volition x5, Covenanter's so stackable. Modules on 1-5 and 8."
+      }
+    },
+    "statsPriority": [
+      "MaxHp",
+      "MaxSp",
+      "SkillSustain",
+      "SkillEfficiency",
+      "ATK"
+    ],
+    "team": [
+      {
+        "characterId": "char-saiqi",
+        "role": "DPS",
+        "note": {
+          "FR": "DPS principal Anemo. Profite pleinement des buffs de Tenacite et des soins de Truffle.",
+          "EN": "Main Anemo DPS. Fully benefits from Truffle's Resolve buffs and healing."
+        }
+      },
+      {
+        "characterId": "char-feina",
+        "role": "Support",
+        "note": {
+          "FR": "Second support avec buffs offensifs et restauration de Lucidite.",
+          "EN": "Second support with offensive buffs and Sanity restoration."
+        }
+      }
+    ],
+    "genimon": [
+      {
+        "itemId": "genimon-4251",
+        "rank": "best"
+      },
+      {
+        "itemId": "genimon-4051",
+        "rank": "alternative"
+      },
+      {
+        "itemId": "genimon-4151",
+        "rank": "alternative"
+      }
+    ],
+    "skillPriority": [
+      {
+        "skillName": {
+          "FR": "Pas de panique, c'est Filbert !",
+          "EN": "Trotters Trot-Trot"
+        },
+        "priority": 5,
+        "note": {
+          "FR": "Competence principale. Invoque Filbert pour infliger des degats Anemo et soigner les allies.",
+          "EN": "Primary skill. Summons Filbert to deal Anemo damage and heal allies."
+        }
+      },
+      {
+        "skillName": {
+          "FR": "Depechez-vous, les rations !",
+          "EN": "Chop-Chop, Commissaries!"
+        },
+        "priority": 4,
+        "note": {
+          "FR": "Passif Poids Lourd. Augmente les degats infliges et reduit les degats subis.",
+          "EN": "Heavyweight passive. Increases damage dealt and reduces damage taken."
+        }
+      },
+      {
+        "skillName": {
+          "FR": "A plein regime",
+          "EN": "Tummy Full, Hands Full"
+        },
+        "priority": 2,
+        "note": {
+          "FR": "Monte sur Filbert pour infliger des degats de zone. Moins critique pour le role support.",
+          "EN": "Mounts Filbert for AoE damage. Less critical for support role."
+        }
+      }
+    ],
+    "notes": {
+      "FR": "Truffle et Filbert est un support Anemo axe sur les soins et les buffs de Tenacite via les PV max. Gardez Filbert invoque en permanence pour soigner l'equipe. Le passif Poids Lourd s'accumule en se deplacant, augmentant les degats et la resistance. Synergie optimale avec des DPS Anemo (Psyche, Outsider). A Intron 1, les soins sont considerablement ameliores.",
+      "EN": "Truffle and Filbert is an Anemo support focused on healing and Resolve buffs through Max HP scaling. Keep Filbert summoned at all times to heal the team. The Heavyweight passive stacks while moving, increasing damage and resistance. Optimal synergy with Anemo DPS (Psyche, Outsider). At Intron 1, healing is significantly improved."
+    }
   }
 ]

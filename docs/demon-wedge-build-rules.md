@@ -263,17 +263,28 @@ autres builds montrent au contraire un sous-comptage (voir plus bas) :
 Les guides marquent d'un ✖︎ les cases sans besoin d'ajustement : c'est notre `null`.
 La case du centre porte toujours un ✖︎ : le centre n'a pas de piste.
 
-### Le marquage public a changé (relevé le 2026-09-24)
+### Deux formats de tableau coexistent (relevé le 2026-09-24)
 
-Le symbole posé sur une case **n'encode plus la polarité**. C'est un marqueur unique,
-identique pour toutes les pièces : la lecture est binaire, module posé ou non. Relevé
-sur 8 tableaux (Hilda, Lynn, Camilla, Hellfire, deux builds chacun) où des pièces de
-polarités 1, 2, 3 et 4 portent le même glyphe.
+Les fiches publiques n'affichent pas toutes le même marqueur, et la différence
+change la lecture :
 
-Conséquence sur le compte : sur ces 8 tableaux, le compteur annoncé égale **exactement**
-le nombre de cases marquées. Le sous-comptage relevé plus haut (Fushu) est antérieur à
-ce changement. Le compteur redevient donc un **contrôle** de lecture valable – sans
-remplacer la lecture du tableau lui-même.
+| Format | Marqueur | Case du centre | Exemples |
+| --- | --- | --- | --- |
+| **Couronne** | un symbole unique, identique quelle que soit la pièce | ✖︎, ne compte pas | Hilda, Lynn, Camilla, Hellfire, Lisbell |
+| **Polarités** | le glyphe de la piste obtenue (flamme, croissant, losange, cercle) | **porte un glyphe et compte** | Ada, Rhythm |
+
+Dans le format couronne la lecture est binaire. Dans le format polarités, la forme
+renseigne en plus la piste obtenue, et **le centre consomme un module** — ce que notre
+schéma ne sait pas exprimer, `centerItemId` n'ayant pas de champ `track`.
+
+⚠️ **Le compteur n'est pas fiable.** Sur Lisbell (format couronne) il annonce 6 alors
+que le tableau ne porte que 5 couronnes, centre exclu. Il tombe juste ailleurs, mais
+l'écart existe : **c'est le tableau qui fait foi**, lu case par case sur une capture.
+Le compteur ne sert qu'à éveiller le soupçon quand il diverge.
+
+⚠️ **La lecture automatique du DOM rate des cases**, et le tableau peut être replié
+dans un accordéon dont l'intitulé varie (« Track Adjustment Slots » ou « Track
+Adjustments for Demon Wedge Slots »).
 
 Piège de lecture : les colonnes ne suivent pas l'ordre des slots, mais
 `Slot 1 | Slot 3 | Core | Slot 4 | Slot 2` puis `Slot 5 | Slot 7 | Slot 8 | Slot 6`.

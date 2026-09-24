@@ -21,18 +21,18 @@ plus ancien.
 | 7 | Su Yi | Lumino | — | ✅ 2026-08-20 | 570654 | DW et 5 Track-Shift deja conformes ; arme signature Fledgling's Gleam ajoutee (aucun 1er choix a distance) |
 | 8 | Kezhou | Lumino | — | ✅ 2026-08-20 | 567201 | 5 Track-Shift (cases 1-5) ; Thorned Requiem en 1er a distance ; Sanguis Sanctus Katana ajoute |
 | 9 | Lady Nifle | Lumino | — | ✅ 2026-08-20 | 560805 | 3 Track-Shift (etait 5) ; melee reordonnee ; Flamme De Epuration ajoutee |
-| 10 | Lisbell | Lumino | — | ✅ 2026-08-20 | 561246 | 5 Track-Shift ; 3e arme ajoutee des deux cotes ; ordre du loadout de consonance recale |
+| 10 | Lisbell | Lumino | — | ✅ 2026-09-24 | 561246 | Ajout du build d'intron VII (Ardeur-Decision x6, piece Lumino de la 1.6). Compteur de la fiche errone : il annonce 6 modules pour 5 couronnes, lecture visuelle retenue. |
 | 11 | Fina | Lumino | — | ✅ 2026-08-20 | 561245 | Support Vigueur : 6 pistes (1,2,3,4,6,8) ; build Roc sans piste, composition a reverifier |
 | 12 | Psyche | Anemo | — | ✅ 2026-08-20 | 560797 | endgame 3 TS deja bons ; midgame 4 TS ajoutes ; Thorned Requiem en 1er a distance |
 | 13 | Fushu | Hydro | — | ✅ 2026-08-20 | 562197 | tableaux parses en HTML brut : early 2 modules (1,2), endgame 6 (1,2,3,4,6,8) |
-| 14 | Truffle and Filbert | Anemo | — | ✅ 2026-08-20 | 560798 | deja conforme : 8 pieces, centre, 3 Track-Shift (1,2,4) et armes |
+| 14 | Truffle and Filbert | Anemo | — | ✅ 2026-09-24 | 560798 | Ajout de la variante Tenacite (Boum-Badaboum, generique 1.6). |
 | 15 | Rebecca | Hydro | — | ✅ 2026-08-20 | 560789 | pistes posees depuis le tableau HTML |
 | 16 | Lynn | Pyro | — | ✅ 2026-09-24 | 560793 | Ajout du build endgame 1.6 (centre Raffinement, Ailes-Inspiration-Vigueur). Fiche publique erronee : Blaze-Volition recommande sur 3 cases des 2 builds alors qu'il est Lumino/Anemo/Electro, pas Pyro — remplace par Ardeur-Eternite. |
 | 17 | Yuming | Electro | — | ✅ 2026-08-20 | 561640 | pistes posees depuis le tableau HTML |
 | 18 | Zhiliu | Electro | — | ✅ 2026-08-20 | 567185 | arme distance -> Rendhusk ; arme signature : 1 Track-Shift case 1 |
 | 19 | Sibylle | Electro | — | ✅ 2026-08-20 | 560801 | pistes posees depuis le tableau HTML |
 | 20 | Tabethe | Hydro | — | ✅ 2026-08-20 | 560790 | pistes posees depuis le tableau HTML |
-| 21 | Berenica | Umbro | — | ✅ 2026-08-20 | 560808 | 3 modules (1,2,3) ; composition verifiee case par case dans le HTML |
+| 21 | Berenica | Umbro | — | ✅ 2026-09-24 | 560808 | Ajout du build d'intron VII (Debordement-Finesse, generique 1.6). |
 | 22 | Phantasio | Umbro | — | ✅ 2026-08-20 | 560807 | pistes posees depuis le tableau HTML |
 | 23 | Camilla | Pyro | — | ✅ 2026-09-24 | 570658 | Ajout du build d'intron VII (centre Raffinement, Debordement-Finesse case 6 sans module). |
 | 24 | Margie | Pyro | — | ✅ 2026-09-24 | 560796 | Balayage 1.6 : DPS et Support conformes, aucune des 12 nouvelles pieces Pyro sur sa fiche. |
