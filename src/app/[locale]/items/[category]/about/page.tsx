@@ -18,6 +18,7 @@ import {
   Wrench,
 } from "lucide-react";
 import { CalamityWeaponsGuide } from "@/components/items/CalamityWeaponsGuide";
+import { GuideImageSlot } from "@/components/items/GuideImageSlot";
 import {
   getItemCatalog,
   getItemCategoryBySlug,
@@ -368,6 +369,66 @@ async function ModsAboutContent({ categorySlug }: { categorySlug: string }) {
               {t("step3Note")}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Les trois sujets qui manquaient au guide, et qui sont exactement ceux
+          sur lesquels on s'est trompé : les pistes, le centre, l'empilement. */}
+      <section className="border border-white/10 bg-panel/55 p-6">
+        <h2 className="flex items-center gap-2 font-display text-xl text-parch">
+          <SlidersHorizontal className="h-5 w-5 text-gold" />
+          {t("trackTitle")}
+        </h2>
+        <p className="mt-3 max-w-3xl text-sm text-parch/85">{t("trackIntro")}</p>
+
+        <div className="mt-5 grid gap-5 lg:grid-cols-2">
+          <div>
+            <h3 className="text-sm font-medium text-parch">{t("trackBadgeTitle")}</h3>
+            <ul className="mt-2 space-y-1.5 text-sm text-parch/85">
+              <li>{t("trackBadgeCost")}</li>
+              <li>{t("trackBadgeGlyph")}</li>
+              <li>{t("trackBadgeCrown")}</li>
+              <li>{t("trackBadgeGreen")}</li>
+            </ul>
+            <p className="mt-4 border-l-2 border-gold/50 pl-3 text-sm text-parch/85">{t("trackRule")}</p>
+            <p className="mt-3 text-sm text-muted">{t("trackCostRule")}</p>
+          </div>
+          <GuideImageSlot slot="trackBadge" family="mods" caption={t("captionBadge")} ratio="4 / 3" />
+        </div>
+
+        <div className="mt-5 grid gap-5 lg:grid-cols-2">
+          <GuideImageSlot slot="board" family="mods" caption={t("captionBoard")} />
+          <GuideImageSlot slot="trackShiftApply" family="mods" caption={t("captionApply")} />
+        </div>
+      </section>
+
+      <section className="border border-white/10 bg-panel/55 p-6">
+        <h2 className="flex items-center gap-2 font-display text-xl text-parch">
+          <Target className="h-5 w-5 text-electro" />
+          {t("centerTitle")}
+        </h2>
+        <div className="mt-3 grid gap-5 lg:grid-cols-2">
+          <div className="space-y-3 text-sm text-parch/85">
+            <p>{t("centerIntro")}</p>
+            <p>{t("centerAffinity")}</p>
+            <p>{t("centerTiers")}</p>
+          </div>
+          <GuideImageSlot slot="center" family="mods" caption={t("captionCenter")} ratio="4 / 3" />
+        </div>
+      </section>
+
+      <section className="border border-white/10 bg-panel/55 p-6">
+        <h2 className="flex items-center gap-2 font-display text-xl text-parch">
+          <Layers className="h-5 w-5 text-anemo" />
+          {t("stackTitle")}
+        </h2>
+        <div className="mt-3 grid gap-5 lg:grid-cols-2">
+          <div className="space-y-3 text-sm text-parch/85">
+            <p>{t("stackIntro")}</p>
+            <p className="border-l-2 border-anemo/50 pl-3">{t("stackRule")}</p>
+            <p className="text-muted">{t("stackTrap")}</p>
+          </div>
+          <GuideImageSlot slot="stacking" family="mods" caption={t("captionStacking")} ratio="4 / 3" />
         </div>
       </section>
 

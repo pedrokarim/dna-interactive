@@ -39,18 +39,52 @@ export const CALAMITY_GUIDE_SLOTS = [
 export type CalamityGuideSlot = (typeof CALAMITY_GUIDE_SLOTS)[number];
 
 /**
+ * Emplacements du guide des **Demon Wedges**.
+ *
+ * Même principe et même dossier-frère : `public/assets/guides/mods/<id>.<ext>`.
+ * Ces six-là couvrent précisément ce qui n'était écrit nulle part et qui nous a
+ * fait nous tromper — les pistes, le centre et l'empilement.
+ */
+export const MODS_GUIDE_SLOTS = [
+  /** L'écran d'armurerie complet : huit cases, le centre, la jauge de tolérance. */
+  "board",
+  /** Zoom sur un badge de case : coût, glyphe de piste, couronne du module. */
+  "trackBadge",
+  /** Le bandeau « Module de transfert d'affinité → Appliquer ». */
+  "trackShiftApply",
+  /** Le centre, slot 09, et son badge. */
+  "center",
+  /** Infobulle d'une pièce empilable : la mention « +5 ». */
+  "stacking",
+  /** La jauge de tolérance et son plafond. */
+  "tolerance",
+] as const;
+
+export type ModsGuideSlot = (typeof MODS_GUIDE_SLOTS)[number];
+
+/** Famille de guide : chaque famille a son dossier d'illustrations. */
+export type GuideFamily = "calamity" | "mods";
+
+export type GuideSlot = CalamityGuideSlot | ModsGuideSlot;
+
+const FAMILY_DIRS: Record<GuideFamily, string> = {
+  calamity: GUIDE_IMAGE_DIR,
+  mods: "/assets/guides/mods",
+};
+
+/**
  * Chemin public de l'illustration si elle a été déposée, `null` sinon.
  * Lecture disque : réservé aux composants serveur.
  */
-export function resolveGuideImage(slot: CalamityGuideSlot): string | null {
+export function resolveGuideImage(slot: GuideSlot, family: GuideFamily = "calamity"): string | null {
   for (const extension of EXTENSIONS) {
-    const relative = `${GUIDE_IMAGE_DIR}/${slot}.${extension}`;
+    const relative = `${FAMILY_DIRS[family]}/${slot}.${extension}`;
     if (existsSync(join(process.cwd(), "public", relative))) return relative;
   }
   return null;
 }
 
 /** Nom de fichier attendu, affiché dans le cadre vide pour lever toute ambiguïté. */
-export function expectedGuideFileName(slot: CalamityGuideSlot): string {
-  return `public${GUIDE_IMAGE_DIR}/${slot}.webp`;
+export function expectedGuideFileName(slot: GuideSlot, family: GuideFamily = "calamity"): string {
+  return `public${FAMILY_DIRS[family]}/${slot}.webp`;
 }

@@ -5,11 +5,14 @@ import { GuideImageZoom } from "@/components/items/GuideImageZoom";
 import {
   expectedGuideFileName,
   resolveGuideImage,
-  type CalamityGuideSlot,
+  type GuideFamily,
+  type GuideSlot,
 } from "@/lib/items/guide-images";
 
 type GuideImageSlotProps = {
-  slot: CalamityGuideSlot;
+  slot: GuideSlot;
+  /** Famille de guide : décide du dossier d'illustrations. */
+  family?: GuideFamily;
   /** Légende affichée sous l'image, et texte alternatif quand elle est présente. */
   caption: string;
   /**
@@ -31,13 +34,14 @@ type GuideImageSlotProps = {
  */
 export async function GuideImageSlot({
   slot,
+  family = "calamity",
   caption,
   legend,
   ratio = "16 / 9",
   className,
 }: GuideImageSlotProps) {
   const t = await getTranslations("calamityGuide");
-  const source = resolveGuideImage(slot);
+  const source = resolveGuideImage(slot, family);
 
   return (
     <figure className={cn("min-w-0", className)}>
@@ -58,7 +62,7 @@ export async function GuideImageSlot({
                 {t("imageSlotLabel")}
               </p>
               <p className="mt-1 max-w-[26rem] text-sm text-parch/70">{caption}</p>
-              <p className="mt-2 font-mono text-[0.68rem] text-muted-2">{expectedGuideFileName(slot)}</p>
+              <p className="mt-2 font-mono text-[0.68rem] text-muted-2">{expectedGuideFileName(slot, family)}</p>
             </div>
           </div>
         )}
