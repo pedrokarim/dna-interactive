@@ -176,6 +176,8 @@ export function CalamityPotentialTree({
     return map;
   }, [recommendedOrder]);
 
+  const pathIds = useMemo(() => new Set(recommendedOrder ?? []), [recommendedOrder]);
+
   const byLevel = useMemo(() => {
     const map = new Map<number, PotentialNode[]>();
     for (const node of nodes) {
@@ -234,7 +236,7 @@ export function CalamityPotentialTree({
         </div>
 
         <div className="relative mx-auto w-full max-w-[22rem]" style={{ aspectRatio: `${VIEW.w} / ${VIEW.h}` }}>
-          <TreeConnectors byLevel={byLevel} centers={centers} fusionLevel={fusionLevel} />
+          <TreeConnectors byLevel={byLevel} centers={centers} fusionLevel={fusionLevel} pathIds={pathIds} />
 
           {/* Pastilles de palier, posées sur l'arc */}
           {LEVELS.map((level) => {
@@ -271,6 +273,10 @@ export function CalamityPotentialTree({
               const center = centers.get(node.id)!;
               const locked = node.level > fusionLevel;
               const active = node.id === selectedId;
+              // Trois états, pas deux : le nœud cliqué garde le rouge vif, ceux du
+              // chemin conseillé prennent un rouge sourd qui les distingue sans
+              // rivaliser avec la sélection, les autres restent neutres.
+              const onPath = orderRank.has(node.id);
               const position = pct(center.x, center.y);
               return (
                 <button
@@ -283,14 +289,23 @@ export function CalamityPotentialTree({
                     "absolute -translate-x-1/2 -translate-y-1/2 rounded-full border-2",
                     "transition-[border-color,box-shadow,transform] hover:scale-105",
                     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold",
-                    active ? "border-crimson-bright" : locked ? "border-white/12" : "border-gold/45",
+                    active ? "border-crimson-bright" : onPath ? "" : locked ? "border-white/12" : "border-gold/45",
                   )}
                   style={{
                     ...position,
                     width: `${((NODE_R * 2) / VIEW.w) * 100}%`,
                     aspectRatio: "1",
-                    background: active ? `${CALAMITY_ACCENT_HEX}26` : "rgba(12,15,21,0.92)",
-                    boxShadow: active ? `0 0 14px -2px ${CALAMITY_ACCENT_HEX}` : undefined,
+                    borderColor: !active && onPath ? `${CALAMITY_ACCENT_HEX}b0` : undefined,
+                    background: active
+                      ? `${CALAMITY_ACCENT_HEX}26`
+                      : onPath
+                        ? `${CALAMITY_ACCENT_HEX}12`
+                        : "rgba(12,15,21,0.92)",
+                    boxShadow: active
+                      ? `0 0 14px -2px ${CALAMITY_ACCENT_HEX}`
+                      : onPath
+                        ? `0 0 9px -5px ${CALAMITY_ACCENT_HEX}`
+                        : undefined,
                   }}
                 >
                   {/* Dimensionné en pourcentage du bouton : la taille du bouton est
@@ -338,10 +353,13 @@ function TreeConnectors({
   byLevel,
   centers,
   fusionLevel,
+  pathIds,
 }: {
   byLevel: Map<number, PotentialNode[]>;
   centers: Map<number, { x: number; y: number }>;
   fusionLevel: number;
+  /** Nœuds du chemin conseillé : leurs liaisons sont tracées en rouge sourd. */
+  pathIds: Set<number>;
 }) {
   const dim = "rgba(255,255,255,0.10)";
   const lit = `${CALAMITY_ACCENT_HEX}99`;
@@ -400,6 +418,9 @@ function TreeConnectors({
           const to = centers.get(node.id);
           if (!from || !to) return null;
           const active = node.level <= fusionLevel;
+          // Une liaison appartient au chemin quand ses deux extrémités en font
+          // partie : la suite de nœuds conseillés se lit alors d'un trait.
+          const onPath = pathIds.has(requiredId) && pathIds.has(node.id);
           return (
             <line
               key={`${requiredId}-${node.id}`}
@@ -407,8 +428,8 @@ function TreeConnectors({
               y1={from.y + NODE_R}
               x2={to.x}
               y2={to.y - NODE_R}
-              stroke={active ? `${CALAMITY_ACCENT_HEX}77` : dim}
-              strokeWidth={1.25}
+              stroke={onPath ? `${CALAMITY_ACCENT_HEX}cc` : active ? `${CALAMITY_ACCENT_HEX}77` : dim}
+              strokeWidth={onPath ? 2.25 : 1.25}
             />
           );
         }),
