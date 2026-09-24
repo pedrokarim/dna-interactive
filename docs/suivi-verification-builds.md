@@ -1,6 +1,6 @@
 # Suivi de vérification des builds
 
-**Avancement : 27 / 30 personnages vérifiés.**
+**Avancement : 28 / 30 personnages vérifiés.**
 Première vérification : 2026-08-20 · dernière : 2026-09-24.
 
 Généré par `node scripts/verif-build.mjs --mark <id> <source>`. Ne pas éditer à la main.
@@ -14,9 +14,9 @@ plus ancien.
 | --- | --- | --- | --- | --- | --- | --- |
 | 1 | Mors | Hydro | 2026-09-08 | ⬜ à faire |  |  |
 | 2 | Mors | Hydro | 2026-09-08 | ⬜ à faire |  |  |
-| 3 | Falsi | Pyro | 2026-09-08 | ⬜ à faire |  |  |
+| 3 | Falsi | Pyro | 2026-09-08 | ✅ 2026-09-24 | auto | Balayage 1.6 : fiche inchangee, aucune piece des 12 nouveaux Demon Wedges Pyro, rien a ajouter. |
 | 4 | Eve | Hydro | 2026-07-28 | ✅ 2026-08-20 | 606756 | personnage + arme signature (2 builds d'arme) |
-| 5 | Hilda | Pyro | 2026-06-30 | ✅ 2026-08-20 | 562612 | 8 Track-Shift ajoutes ; arme distance inversee (Firearm Feast 1er) ; melee completee |
+| 5 | Hilda | Pyro | 2026-06-30 | ✅ 2026-09-24 | 562612 | Ajout des 2 variantes 1.6 (centre Raffinement, Ailes-Inspiration-Vigueur case 4). Les builds d'origine, centre Vigilance, sont conserves. |
 | 6 | Flora | Umbro | 2026-06-02 | ✅ 2026-08-20 | 602498 | 5 Track-Shift (cases 1-4 et 6) ; Sanguis Sanctus Katana ajoute en 2e melee |
 | 7 | Su Yi | Lumino | — | ✅ 2026-08-20 | 570654 | DW et 5 Track-Shift deja conformes ; arme signature Fledgling's Gleam ajoutee (aucun 1er choix a distance) |
 | 8 | Kezhou | Lumino | — | ✅ 2026-08-20 | 567201 | 5 Track-Shift (cases 1-5) ; Thorned Requiem en 1er a distance ; Sanguis Sanctus Katana ajoute |
@@ -34,10 +34,10 @@ plus ancien.
 | 20 | Tabethe | Hydro | — | ✅ 2026-08-20 | 560790 | pistes posees depuis le tableau HTML |
 | 21 | Berenica | Umbro | — | ✅ 2026-08-20 | 560808 | 3 modules (1,2,3) ; composition verifiee case par case dans le HTML |
 | 22 | Phantasio | Umbro | — | ✅ 2026-08-20 | 560807 | pistes posees depuis le tableau HTML |
-| 23 | Camilla | Pyro | — | ✅ 2026-08-20 | 570658 | 7 modules (tout sauf la case 5) ; composition verifiee case par case |
-| 24 | Margie | Pyro | — | ✅ 2026-08-20 | 560796 | pistes posees depuis le tableau HTML |
-| 25 | Hellfire | Pyro | — | ✅ 2026-08-20 | 560794 | pistes posees depuis le tableau HTML |
-| 26 | Yale and Oliver | Pyro | — | ✅ 2026-08-20 | 560795 | pistes posees depuis le tableau HTML |
+| 23 | Camilla | Pyro | — | ✅ 2026-09-24 | 570658 | Ajout du build d'intron VII (centre Raffinement, Debordement-Finesse case 6 sans module). |
+| 24 | Margie | Pyro | — | ✅ 2026-09-24 | auto | Balayage 1.6 : fiche inchangee, aucune piece des 12 nouveaux Demon Wedges Pyro, rien a ajouter. |
+| 25 | Hellfire | Pyro | — | ✅ 2026-09-24 | 560794 | Ajout du build endgame intron VII (centre Raffinement, Nirvana-Decision x2). Tank midgame inchange. |
+| 26 | Yale and Oliver | Pyro | — | ✅ 2026-09-24 | auto | Balayage 1.6 : fiche inchangee, aucune piece des 12 nouveaux Demon Wedges Pyro, rien a ajouter. |
 | 27 | Outsider | Anemo | — | ✅ 2026-08-20 | 560800 | pistes posees depuis le tableau HTML |
 | 28 | Daphne | Anemo | — | ✅ 2026-08-20 | 560799 | pistes posees depuis le tableau HTML |
 | 29 | Rhythm | Electro | — | ✅ 2026-08-20 | 560803 | pistes posees depuis le tableau HTML |

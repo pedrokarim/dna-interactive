@@ -26,6 +26,11 @@
       "source": "606756",
       "note": "personnage + arme signature (2 builds d'arme)"
     },
+    "char-falu": {
+      "verifiedAt": "2026-09-24",
+      "source": "auto",
+      "note": "Balayage 1.6 : fiche inchangee, aucune piece des 12 nouveaux Demon Wedges Pyro, rien a ajouter."
+    },
     "char-feina": {
       "verifiedAt": "2026-08-20",
       "source": "561245",
@@ -37,9 +42,9 @@
       "note": "5 Track-Shift (cases 1-4 et 6) ; Sanguis Sanctus Katana ajoute en 2e melee"
     },
     "char-haier": {
-      "verifiedAt": "2026-08-20",
+      "verifiedAt": "2026-09-24",
       "source": "560794",
-      "note": "pistes posees depuis le tableau HTML"
+      "note": "Ajout du build endgame intron VII (centre Raffinement, Nirvana-Decision x2). Tank midgame inchange."
     },
     "char-heitao": {
       "verifiedAt": "2026-08-20",
@@ -47,9 +52,9 @@
       "note": "3 modules (1,2,3) ; composition verifiee case par case dans le HTML"
     },
     "char-kami": {
-      "verifiedAt": "2026-08-20",
+      "verifiedAt": "2026-09-24",
       "source": "570658",
-      "note": "7 modules (tout sauf la case 5) ; composition verifiee case par case"
+      "note": "Ajout du build d'intron VII (centre Raffinement, Debordement-Finesse case 6 sans module)."
     },
     "char-kezhou": {
       "verifiedAt": "2026-08-20",
@@ -72,9 +77,9 @@
       "note": "pistes posees depuis le tableau HTML"
     },
     "char-maer": {
-      "verifiedAt": "2026-08-20",
-      "source": "560796",
-      "note": "pistes posees depuis le tableau HTML"
+      "verifiedAt": "2026-09-24",
+      "source": "auto",
+      "note": "Balayage 1.6 : fiche inchangee, aucune piece des 12 nouveaux Demon Wedges Pyro, rien a ajouter."
     },
     "char-nifu": {
       "verifiedAt": "2026-08-20",
@@ -112,14 +117,14 @@
       "note": "pistes posees depuis le tableau HTML"
     },
     "char-xier": {
-      "verifiedAt": "2026-08-20",
+      "verifiedAt": "2026-09-24",
       "source": "562612",
-      "note": "8 Track-Shift ajoutes ; arme distance inversee (Firearm Feast 1er) ; melee completee"
+      "note": "Ajout des 2 variantes 1.6 (centre Raffinement, Ailes-Inspiration-Vigueur case 4). Les builds d'origine, centre Vigilance, sont conserves."
     },
     "char-yeer": {
-      "verifiedAt": "2026-08-20",
-      "source": "560795",
-      "note": "pistes posees depuis le tableau HTML"
+      "verifiedAt": "2026-09-24",
+      "source": "auto",
+      "note": "Balayage 1.6 : fiche inchangee, aucune piece des 12 nouveaux Demon Wedges Pyro, rien a ajouter."
     },
     "char-yuming": {
       "verifiedAt": "2026-08-20",
