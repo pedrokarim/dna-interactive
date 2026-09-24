@@ -157,5 +157,346 @@
       "FR": "Yuming est un Sub-DPS Electro qui excelle en debuff et burst. Utilisez Grimscales pour debuffer les ennemis puis enchainez avec Precipitous Thunderfall pour le burst.",
       "EN": "Yuming is an Electro Sub-DPS who excels at debuffing and burst. Use Grimscales to debuff enemies then follow up with Precipitous Thunderfall for burst damage."
     }
+  },
+  {
+    "characterId": "char-yuming",
+    "buildName": {
+      "FR": "DPS Electro",
+      "EN": "Electro DPS"
+    },
+    "weapons": {
+      "melee": [
+        {
+          "itemId": "weapons-10603",
+          "rank": "best",
+          "note": {
+            "FR": "Meilleure mêlée du build.",
+            "EN": "Top melee of the build."
+          }
+        },
+        {
+          "itemId": "weapons-10203",
+          "rank": "alternative",
+          "note": {
+            "FR": "Repli.",
+            "EN": "Fallback."
+          }
+        },
+        {
+          "itemId": "weapons-10299",
+          "rank": "alternative",
+          "note": {
+            "FR": "Arme de calamité, repli haut de gamme.",
+            "EN": "Calamity weapon, high-end fallback."
+          }
+        }
+      ],
+      "ranged": [
+        {
+          "itemId": "weapons-20599",
+          "rank": "best",
+          "note": {
+            "FR": "Meilleure arme à distance du build.",
+            "EN": "Top ranged of the build."
+          }
+        },
+        {
+          "itemId": "weapons-20102",
+          "rank": "alternative",
+          "note": {
+            "FR": "Pour l'ATQ.",
+            "EN": "For ATK."
+          }
+        },
+        {
+          "itemId": "weapons-20201",
+          "rank": "alternative",
+          "note": {
+            "FR": "Pour l'Intensité de compétence.",
+            "EN": "For Skill Intensity."
+          }
+        }
+      ]
+    },
+    "demonWedges": {
+      "slots": [
+        {
+          "position": 1,
+          "itemId": "mods-51941",
+          "track": 4
+        },
+        {
+          "position": 2,
+          "itemId": "mods-51441",
+          "track": 1
+        },
+        {
+          "position": 3,
+          "itemId": "mods-51324",
+          "track": 3
+        },
+        {
+          "position": 4,
+          "itemId": "mods-56142",
+          "track": 2
+        },
+        {
+          "position": 5,
+          "itemId": "mods-51742",
+          "track": 2
+        },
+        {
+          "position": 6,
+          "itemId": "mods-51742",
+          "track": null
+        },
+        {
+          "position": 7,
+          "itemId": "mods-51742",
+          "track": null
+        },
+        {
+          "position": 8,
+          "itemId": "mods-51742",
+          "track": null
+        }
+      ],
+      "centerItemId": "mods-51746",
+      "affinity": {
+        "FR": "Décision de Quetzalcoatl",
+        "EN": "Feathered Serpent's Volition"
+      },
+      "note": {
+        "FR": "Ardeur · Vigueur ×4 : famille Pactisant, la seule empilable. Modules sur 1 à 5.",
+        "EN": "Blaze - Morale x4: Covenanter's, the only stackable family. Modules on 1 to 5."
+      }
+    },
+    "statsPriority": [
+      "SkillIntensity",
+      "Morale",
+      "ATK",
+      "SkillRange"
+    ],
+    "team": [
+      {
+        "characterId": "char-baiheng",
+        "role": "Support",
+        "note": {
+          "FR": "Intensite de competence, soins et Lucidite.",
+          "EN": "Skill Intensity, healing and Sanity recovery."
+        }
+      },
+      {
+        "characterId": "char-feina",
+        "role": "Support",
+        "note": {
+          "FR": "Buffs degats d'arme et penetration.",
+          "EN": "Weapon DMG and PEN buffs."
+        }
+      }
+    ],
+    "genimon": [
+      {
+        "itemId": "genimon-4241",
+        "rank": "best"
+      },
+      {
+        "itemId": "genimon-4121",
+        "rank": "alternative"
+      },
+      {
+        "itemId": "genimon-4141",
+        "rank": "alternative"
+      }
+    ],
+    "skillPriority": [
+      {
+        "skillName": {
+          "FR": "Chute de Tonnerre",
+          "EN": "Precipitous Thunderfall"
+        },
+        "priority": 5,
+        "note": {
+          "FR": "Source principale de degats.",
+          "EN": "Primary damage source."
+        }
+      },
+      {
+        "skillName": {
+          "FR": "Ecailles Sinistres",
+          "EN": "Grimscales"
+        },
+        "priority": 4,
+        "note": {
+          "FR": "Debuffs ennemis, potentiel complet.",
+          "EN": "Enemy debuffs, unlocks full potential."
+        }
+      },
+      {
+        "skillName": {
+          "FR": "Ascension Celeste",
+          "EN": "Soaring Sky-High"
+        },
+        "priority": 3,
+        "note": {
+          "FR": "Buff de degats pour toute l'equipe.",
+          "EN": "Party-wide damage buff."
+        }
+      }
+    ],
+    "notes": {
+      "FR": "Yuming est un Sub-DPS Electro qui excelle en debuff et burst. Utilisez Grimscales pour debuffer les ennemis puis enchainez avec Precipitous Thunderfall pour le burst.",
+      "EN": "Yuming is an Electro Sub-DPS who excels at debuffing and burst. Use Grimscales to debuff enemies then follow up with Precipitous Thunderfall for burst damage."
+    }
+  },
+  {
+    "characterId": "char-yuming",
+    "buildName": {
+      "FR": "Soutien et Sub-DPS",
+      "EN": "Support and Sub-DPS"
+    },
+    "weapons": {
+      "melee": [
+        {
+          "itemId": "weapons-10203",
+          "rank": "best",
+          "note": {
+            "FR": "Meilleure mêlée du build.",
+            "EN": "Top melee of the build."
+          }
+        }
+      ],
+      "ranged": []
+    },
+    "demonWedges": {
+      "slots": [
+        {
+          "position": 1,
+          "itemId": "mods-51941",
+          "track": 4
+        },
+        {
+          "position": 2,
+          "itemId": "mods-51445",
+          "track": 1
+        },
+        {
+          "position": 3,
+          "itemId": "mods-51324",
+          "track": 3
+        },
+        {
+          "position": 4,
+          "itemId": "mods-56144",
+          "track": 2
+        },
+        {
+          "position": 5,
+          "itemId": "mods-51742",
+          "track": 2
+        },
+        {
+          "position": 6,
+          "itemId": "mods-51742",
+          "track": null
+        },
+        {
+          "position": 7,
+          "itemId": "mods-51743",
+          "track": null
+        },
+        {
+          "position": 8,
+          "itemId": "mods-51743",
+          "track": null
+        }
+      ],
+      "centerItemId": "mods-51746",
+      "affinity": {
+        "FR": "Décision de Quetzalcoatl",
+        "EN": "Feathered Serpent's Volition"
+      },
+      "note": {
+        "FR": "Orientation soutien : Apogée · Essor en case 2. La fiche ne recommande pas d'arme à distance pour ce build. Modules sur 1 à 5.",
+        "EN": "Support orientation: Prime - Uplift in slot 2. The sheet gives no ranged pick for this build. Modules on 1 to 5."
+      }
+    },
+    "statsPriority": [
+      "SkillIntensity",
+      "Morale",
+      "ATK",
+      "SkillRange"
+    ],
+    "team": [
+      {
+        "characterId": "char-baiheng",
+        "role": "Support",
+        "note": {
+          "FR": "Intensite de competence, soins et Lucidite.",
+          "EN": "Skill Intensity, healing and Sanity recovery."
+        }
+      },
+      {
+        "characterId": "char-feina",
+        "role": "Support",
+        "note": {
+          "FR": "Buffs degats d'arme et penetration.",
+          "EN": "Weapon DMG and PEN buffs."
+        }
+      }
+    ],
+    "genimon": [
+      {
+        "itemId": "genimon-4241",
+        "rank": "best"
+      },
+      {
+        "itemId": "genimon-4121",
+        "rank": "alternative"
+      },
+      {
+        "itemId": "genimon-4141",
+        "rank": "alternative"
+      }
+    ],
+    "skillPriority": [
+      {
+        "skillName": {
+          "FR": "Chute de Tonnerre",
+          "EN": "Precipitous Thunderfall"
+        },
+        "priority": 5,
+        "note": {
+          "FR": "Source principale de degats.",
+          "EN": "Primary damage source."
+        }
+      },
+      {
+        "skillName": {
+          "FR": "Ecailles Sinistres",
+          "EN": "Grimscales"
+        },
+        "priority": 4,
+        "note": {
+          "FR": "Debuffs ennemis, potentiel complet.",
+          "EN": "Enemy debuffs, unlocks full potential."
+        }
+      },
+      {
+        "skillName": {
+          "FR": "Ascension Celeste",
+          "EN": "Soaring Sky-High"
+        },
+        "priority": 3,
+        "note": {
+          "FR": "Buff de degats pour toute l'equipe.",
+          "EN": "Party-wide damage buff."
+        }
+      }
+    ],
+    "notes": {
+      "FR": "Yuming est un Sub-DPS Electro qui excelle en debuff et burst. Utilisez Grimscales pour debuffer les ennemis puis enchainez avec Precipitous Thunderfall pour le burst.",
+      "EN": "Yuming is an Electro Sub-DPS who excels at debuffing and burst. Use Grimscales to debuff enemies then follow up with Precipitous Thunderfall for burst damage."
+    }
   }
 ]

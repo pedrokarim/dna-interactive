@@ -22,9 +22,9 @@
       "note": "pistes posees depuis le tableau HTML"
     },
     "char-eve": {
-      "verifiedAt": "2026-08-20",
+      "verifiedAt": "2026-09-24",
       "source": "606756",
-      "note": "personnage + arme signature (2 builds d'arme)"
+      "note": "Ajout des 2 builds de la fiche (Endgame, Debut-milieu). Tableau au format polarites : chaque glyphe correspond a la polarite de sa piece."
     },
     "char-falu": {
       "verifiedAt": "2026-09-24",
@@ -72,9 +72,9 @@
       "note": "Ajout du build endgame 1.6 (centre Raffinement, Ailes-Inspiration-Vigueur). Fiche publique erronee : Blaze-Volition recommande sur 3 cases des 2 builds alors qu'il est Lumino/Anemo/Electro, pas Pyro — remplace par Ardeur-Eternite."
     },
     "char-lise": {
-      "verifiedAt": "2026-08-20",
+      "verifiedAt": "2026-09-24",
       "source": "560803",
-      "note": "pistes posees depuis le tableau HTML"
+      "note": "Ajout de Farming et DPS endgame. Le Midgame existant etait deja conforme."
     },
     "char-maer": {
       "verifiedAt": "2026-09-24",
@@ -137,9 +137,9 @@
       "note": "Balayage 1.6 : build conforme, aucune des 12 nouvelles pieces Pyro. Ecarts limites aux alternatives (Withershade, Dregs of Glimmer)."
     },
     "char-yuming": {
-      "verifiedAt": "2026-08-20",
+      "verifiedAt": "2026-09-24",
       "source": "561640",
-      "note": "pistes posees depuis le tableau HTML"
+      "note": "Ajout des 2 builds de la fiche (DPS, Soutien et Sub-DPS). Pas d'arme a distance recommandee pour le second."
     },
     "char-zhangyu": {
       "verifiedAt": "2026-08-20",
