@@ -67,24 +67,45 @@ export type GuideFamily = "calamity" | "mods";
 
 export type GuideSlot = CalamityGuideSlot | ModsGuideSlot;
 
-const FAMILY_DIRS: Record<GuideFamily, string> = {
-  calamity: GUIDE_IMAGE_DIR,
-  mods: "/assets/guides/mods",
-};
+export const MODS_GUIDE_IMAGE_DIR = "/assets/guides/mods";
+
+/**
+ * ⚠️ **Un seul préfixe littéral par fonction, et surtout pas de ternaire.**
+ *
+ * Le traceur de fichiers de Next doit pouvoir résoudre le dossier à la
+ * compilation. Dès qu'il ne le peut plus — une table `FAMILY_DIRS[family]`,
+ * ou même un ternaire entre deux littéraux — il élargit au préfixe commun et
+ * embarque tout `public/assets/**` : 3 501 fichiers, 373 Mo, et la fonction
+ * dépasse la limite de 250 Mo au déploiement. D'où ces deux fonctions
+ * presque identiques, dont la duplication est volontaire.
+ */
+function resolveCalamityImage(slot: string): string | null {
+  for (const extension of EXTENSIONS) {
+    const relative = `/assets/guides/calamity/${slot}.${extension}`;
+    if (existsSync(join(process.cwd(), "public", relative))) return relative;
+  }
+  return null;
+}
+
+function resolveModsImage(slot: string): string | null {
+  for (const extension of EXTENSIONS) {
+    const relative = `/assets/guides/mods/${slot}.${extension}`;
+    if (existsSync(join(process.cwd(), "public", relative))) return relative;
+  }
+  return null;
+}
 
 /**
  * Chemin public de l'illustration si elle a été déposée, `null` sinon.
  * Lecture disque : réservé aux composants serveur.
  */
 export function resolveGuideImage(slot: GuideSlot, family: GuideFamily = "calamity"): string | null {
-  for (const extension of EXTENSIONS) {
-    const relative = `${FAMILY_DIRS[family]}/${slot}.${extension}`;
-    if (existsSync(join(process.cwd(), "public", relative))) return relative;
-  }
-  return null;
+  return family === "mods" ? resolveModsImage(slot) : resolveCalamityImage(slot);
 }
 
 /** Nom de fichier attendu, affiché dans le cadre vide pour lever toute ambiguïté. */
 export function expectedGuideFileName(slot: GuideSlot, family: GuideFamily = "calamity"): string {
-  return `public${FAMILY_DIRS[family]}/${slot}.webp`;
+  return family === "mods"
+    ? `public${MODS_GUIDE_IMAGE_DIR}/${slot}.webp`
+    : `public${GUIDE_IMAGE_DIR}/${slot}.webp`;
 }
