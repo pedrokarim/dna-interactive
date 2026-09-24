@@ -7,9 +7,9 @@
       "note": "pistes posees depuis le tableau HTML"
     },
     "char-baiheng": {
-      "verifiedAt": "2026-08-20",
+      "verifiedAt": "2026-09-24",
       "source": "562197",
-      "note": "tableaux parses en HTML brut : early 2 modules (1,2), endgame 6 (1,2,3,4,6,8)"
+      "note": "Balayage du 24/09 : les 2 builds conformes a la fiche, aucun ecart. Aucune piece Hydro ajoutee par la 1.6."
     },
     "char-baonu": {
       "verifiedAt": "2026-09-24",
@@ -92,9 +92,9 @@
       "note": "endgame 3 TS deja bons ; midgame 4 TS ajoutes ; Thorned Requiem en 1er a distance"
     },
     "char-shuimu": {
-      "verifiedAt": "2026-08-20",
+      "verifiedAt": "2026-09-24",
       "source": "560789",
-      "note": "pistes posees depuis le tableau HTML"
+      "note": "Balayage du 24/09 : les 2 builds conformes a la fiche, aucun ecart. Aucune piece Hydro ajoutee par la 1.6."
     },
     "char-songlu": {
       "verifiedAt": "2026-09-24",
@@ -142,9 +142,9 @@
       "note": "Ajout des 2 builds de la fiche (DPS, Soutien et Sub-DPS). Pas d'arme a distance recommandee pour le second."
     },
     "char-zhangyu": {
-      "verifiedAt": "2026-08-20",
+      "verifiedAt": "2026-09-24",
       "source": "560790",
-      "note": "pistes posees depuis le tableau HTML"
+      "note": "Balayage du 24/09 : les 2 builds conformes a la fiche, aucun ecart. Aucune piece Hydro ajoutee par la 1.6."
     },
     "char-zhiliu": {
       "verifiedAt": "2026-08-20",
