@@ -1457,7 +1457,22 @@
     "emblemsBody": "Jedes Emblem fällt bei den Gegnern einer bestimmten Fraktion, in einer bestimmten Mission. Das Farmen ist gezielt: ein Emblem der Harmonie gibt es nur bei Huaxu-Gegnern.",
     "crystalsBody": "Kristalle werden im Startbildschirm der Mission anvisiert. Man wählt die gewünschte seltene Belohnung und das Attribut der Gegner – so wird das Farmen eines bestimmten Elementkristalls planbar.",
     "imageZoomHint": "Zum Vergrößern klicken",
-    "provisionalNotice": "Nicht terminierte Waffe: Name und angezeigter Typ stammen noch aus einem Arbeitseintrag in den Spieldaten und ändern sich zum Release. Die Grafiken sind dagegen bereits ausgeliefert."
+    "provisionalNotice": "Nicht terminierte Waffe: Name und angezeigter Typ stammen noch aus einem Arbeitseintrag in den Spieldaten und ändern sich zum Release. Die Grafiken sind dagegen bereits ausgeliefert.",
+    "pathTitle": "Den Pfad wählen",
+    "pathBody": "Da das erste Potenzial jeder Stufe kostenlos ist, lautet die Frage nicht „welcher Zweig“, sondern „welches nehme ich viermal gratis“. Die Stufen sind nicht gleichwertig: Die erste entscheidet alles, der Rest folgt dem Spielstil.",
+    "pathTiers": [
+      "Stufe I — die Kalamitätsquelle. Die entscheidende Wahl: Eine Quelle, die der Charakter nie auslöst, ist ein totes Potenzial.",
+      "Stufe II — ein roher Wert. Fertigkeitsintensität, wenn der Schaden aus Fertigkeiten kommt, ANG, wenn er aus der Waffe kommt.",
+      "Stufe III — ein bedingter Verstärker. Aufgeladene gegen normale Angriffe, Beschwörung gegen Verbrauch: Nimm die Bedingung, die du erfüllst.",
+      "Stufe IV — der zweite Wert. Gleiche Lesart wie Stufe II, mit dem Rest."
+    ],
+    "pathWeapons": [
+      "Ewiger Zwist baut auf Beschwörungen: Vertraute erzeugen Kalamität und erben deine Attribute.",
+      "Souveräne Glut verstärkt die Nahkampf-Konsonanzwaffe, von aufgeladenen Angriffen bis zur Krit-Rate.",
+      "Blutfeder dreht sich um LP und Elementare Unordnung und endet bei Max-LP +300 %.",
+      "Dornenrequiem wandelt Combo-Punkte in [Auslöschung] um, immer stärker."
+    ],
+    "pathSeeCharacter": "Die empfohlene Reihenfolge für einen Charakter steht auf seiner Seite, unter der Waffe, direkt am Baum."
   },
   "changelogEntries": {
     "v2_4_0": {

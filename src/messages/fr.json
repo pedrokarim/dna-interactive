@@ -1457,7 +1457,22 @@
     "emblemsBody": "Chaque insigne tombe sur les ennemis d'une faction précise, dans une mission précise. C'est du farm dirigé : inutile d'espérer un insigne d'harmonie ailleurs que sur les ennemis de Huaxu.",
     "crystalsBody": "Les cristaux se ciblent à l'entrée de la mission. On choisit la récompense rare visée et l'attribut des ennemis, ce qui rend le farm d'un cristal d'élément précis prévisible.",
     "imageZoomHint": "Cliquer pour agrandir",
-    "provisionalNotice": "Arme non programmée : son nom et son type d'affichage viennent encore d'une entrée de travail dans les données du jeu, et changeront à la sortie. Ses illustrations, elles, sont déjà livrées."
+    "provisionalNotice": "Arme non programmée : son nom et son type d'affichage viennent encore d'une entrée de travail dans les données du jeu, et changeront à la sortie. Ses illustrations, elles, sont déjà livrées.",
+    "pathTitle": "Choisir son chemin",
+    "pathBody": "Comme le premier Potentiel de chaque palier est gratuit, la question n'est pas « quelle branche » mais « lequel prendre gratuitement, quatre fois ». Les paliers ne se valent pas : le premier décide de tout, les autres suivent le style de jeu.",
+    "pathTiers": [
+      "Palier I — la source de calamité. C'est le choix décisif : une source que le personnage ne déclenche jamais est un Potentiel mort.",
+      "Palier II — une statistique brute. Intensité de compétence si les dégâts viennent des compétences, ATQ s'ils viennent de l'arme.",
+      "Palier III — un amplificateur conditionnel. Attaques chargées contre normales, invocation contre consommation : prenez la condition que vous remplissez.",
+      "Palier IV — la seconde statistique. Même lecture qu'au palier II, avec ce qui reste."
+    ],
+    "pathWeapons": [
+      "Conflit perpétuel est bâtie sur les invocations : ses familiers génèrent la calamité et héritent de vos attributs.",
+      "Braise souveraine amplifie l'arme de consonance de mêlée, des attaques chargées jusqu'au taux critique.",
+      "Plume sanguine tourne autour des PV et du Désordre élémentaire, et finit sur PV max +300 %.",
+      "Requiem d'épines convertit les points de Combo en [Extinction], de plus en plus fort."
+    ],
+    "pathSeeCharacter": "L'ordre conseillé pour un personnage donné s'affiche sur sa fiche, sous l'arme, directement sur l'arbre."
   },
   "changelogEntries": {
     "v2_4_0": {

@@ -1457,7 +1457,22 @@
     "emblemsBody": "Each emblem drops from one specific faction's enemies, in one specific mission. Farming is targeted: there is no point hoping for an Emblem of Harmony anywhere but on Huaxu enemies.",
     "crystalsBody": "Crystals are targeted at the mission's launch screen. You pick the rare reward you want and the enemies' attribute, which makes farming a specific elemental crystal predictable.",
     "imageZoomHint": "Click to enlarge",
-    "provisionalNotice": "Unscheduled weapon: its name and displayed type still come from a work-in-progress entry in the game data and will change at release. Its art, however, already ships with the game."
+    "provisionalNotice": "Unscheduled weapon: its name and displayed type still come from a work-in-progress entry in the game data and will change at release. Its art, however, already ships with the game.",
+    "pathTitle": "Choosing your path",
+    "pathBody": "Since the first Potential at each tier is free, the question is not “which branch” but “which one do I take for free, four times”. The tiers are not equal: the first decides everything, the rest follow your playstyle.",
+    "pathTiers": [
+      "Tier I — the calamity source. The decisive pick: a source the character never triggers is a dead Potential.",
+      "Tier II — a raw stat. Skill Intensity if the damage comes from skills, ATK if it comes from the weapon.",
+      "Tier III — a conditional amplifier. Charged versus normal attacks, summoning versus consuming: take the condition you meet.",
+      "Tier IV — the second stat. Same reading as tier II, with what is left."
+    ],
+    "pathWeapons": [
+      "Perpetual Strife is built on summons: familiars generate calamity and inherit your attributes.",
+      "Sovereign Ember amplifies the melee consonance weapon, from charged attacks to crit rate.",
+      "Sanguine Plume revolves around HP and Elemental Disorder, ending on Max HP +300%.",
+      "Thorned Requiem turns Combo points into [Extinction], harder and harder."
+    ],
+    "pathSeeCharacter": "The recommended order for a given character is shown on their page, under the weapon, right on the tree."
   },
   "changelogEntries": {
     "v2_4_0": {

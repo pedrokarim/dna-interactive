@@ -1457,7 +1457,22 @@
     "emblemsBody": "Cada emblema cae de los enemigos de una facción concreta, en una misión concreta. El farmeo es dirigido: no esperes un emblema de armonía fuera de los enemigos de Huaxu.",
     "crystalsBody": "Los cristales se apuntan en la pantalla de lanzamiento. Eliges la recompensa rara deseada y el atributo de los enemigos, lo que hace previsible farmear un cristal elemental concreto.",
     "imageZoomHint": "Clic para ampliar",
-    "provisionalNotice": "Arma sin fecha: su nombre y su tipo mostrado todavía provienen de una entrada de trabajo en los datos del juego y cambiarán al salir. Sus ilustraciones, en cambio, ya vienen incluidas."
+    "provisionalNotice": "Arma sin fecha: su nombre y su tipo mostrado todavía provienen de una entrada de trabajo en los datos del juego y cambiarán al salir. Sus ilustraciones, en cambio, ya vienen incluidas.",
+    "pathTitle": "Elegir tu ruta",
+    "pathBody": "Como el primer Potencial de cada nivel es gratuito, la pregunta no es «qué rama» sino «cuál tomo gratis, cuatro veces». Los niveles no son iguales: el primero lo decide todo, el resto sigue tu estilo de juego.",
+    "pathTiers": [
+      "Nivel I — la fuente de calamidad. La elección decisiva: una fuente que el personaje nunca activa es un Potencial muerto.",
+      "Nivel II — una estadística bruta. Intensidad de habilidad si el daño viene de las habilidades, ATQ si viene del arma.",
+      "Nivel III — un amplificador condicional. Ataques cargados frente a normales, invocación frente a consumo: toma la condición que cumples.",
+      "Nivel IV — la segunda estadística. Misma lectura que el nivel II, con lo que queda."
+    ],
+    "pathWeapons": [
+      "Conflicto perpetuo se basa en las invocaciones: los familiares generan calamidad y heredan tus atributos.",
+      "Ascua soberana amplifica el arma de consonancia cuerpo a cuerpo, de los ataques cargados a la tasa crítica.",
+      "Pluma sanguina gira en torno a los PV y el Desorden elemental, y acaba en PV máx. +300 %.",
+      "Réquiem de espinas convierte los puntos de Combo en [Extinción], cada vez más fuerte."
+    ],
+    "pathSeeCharacter": "El orden recomendado para un personaje aparece en su ficha, bajo el arma, directamente en el árbol."
   },
   "changelogEntries": {
     "v2_4_0": {

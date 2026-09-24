@@ -246,6 +246,32 @@ export async function CalamityWeaponsGuide({
         </div>
       </section>
 
+      {/* ------------------------------------------- choisir son chemin */}
+      <section>
+        <DnaSectionLabel>{t("pathTitle")}</DnaSectionLabel>
+        <p className="mt-3 max-w-3xl text-sm leading-relaxed text-parch/85">{t("pathBody")}</p>
+
+        <div className="mt-5 grid gap-5 lg:grid-cols-2">
+          <ul className="space-y-2">
+            {(t.raw("pathTiers") as string[]).map((line, i) => (
+              <li key={i} className="flex items-start gap-2.5 border border-white/10 bg-ink/55 px-3 py-2">
+                <ArrowRight className="mt-0.5 h-3.5 w-3.5 shrink-0" style={{ color: CALAMITY_ACCENT_HEX }} />
+                <span className="text-sm text-parch/85">{line}</span>
+              </li>
+            ))}
+          </ul>
+          <ul className="space-y-2">
+            {(t.raw("pathWeapons") as string[]).map((line, i) => (
+              <li key={i} className="border-l-2 px-3 py-1.5 text-sm text-parch/85" style={{ borderColor: CALAMITY_ACCENT_HEX }}>
+                {line}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <p className="mt-4 text-sm text-muted">{t("pathSeeCharacter")}</p>
+      </section>
+
       {/* --------------------------------------------------- où farmer */}
       <section>
         <DnaSectionLabel>{t("materialsTitle")}</DnaSectionLabel>
