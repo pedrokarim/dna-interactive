@@ -1,4 +1,5 @@
 import { CONTACT_INFO, NAVIGATION } from "@/lib/constants";
+import { resolveFeatureBadges, type FeatureBadge } from "@/config/feature-badges";
 
 /**
  * Configuration de la coquille applicative (`AppShell`) : navigation de la
@@ -10,16 +11,13 @@ import { CONTACT_INFO, NAVIGATION } from "@/lib/constants";
  * `key`, pour que ce fichier reste sérialisable.
  */
 
-export type ShellBadge = "new" | "beta";
+/** Badges « Nouveau » / « Bêta » : déclarés dans `src/config/feature-badges.ts`, nulle part ailleurs. */
+export type ShellBadge = FeatureBadge;
 
 export type ShellNavEntry = {
   /** Clé de traduction dans le namespace `nav`. */
   key: string;
   href: string;
-  /** Pastille affichée à droite du libellé, tant que `badgeUntil` n'est pas passé. */
-  badge?: ShellBadge;
-  /** Date ISO (incluse) après laquelle la pastille disparaît d'elle-même. */
-  badgeUntil?: string;
   external?: boolean;
 };
 
@@ -30,9 +28,9 @@ export const SHELL_NAV_PRIMARY: ShellNavEntry[] = [
   { key: "calendar", href: NAVIGATION.calendar },
   { key: "characters", href: NAVIGATION.characters },
   { key: "items", href: NAVIGATION.items },
-  { key: "builder", href: NAVIGATION.builder, badge: "new", badgeUntil: "2026-10-01" },
+  { key: "builder", href: NAVIGATION.builder },
   { key: "builds", href: NAVIGATION.builds },
-  { key: "commissions", href: NAVIGATION.commissions, badge: "beta", badgeUntil: "2026-12-31" },
+  { key: "commissions", href: NAVIGATION.commissions },
 ];
 
 /** Pages « à propos du site ». */
@@ -56,13 +54,8 @@ export const SHELL_NAV_EXTERNAL: ShellNavEntry[] = [
  * rendu client, sinon serveur et client peuvent diverger à l'hydratation.
  */
 export function resolveShellBadges(now: Date): Record<string, ShellBadge> {
-  const badges: Record<string, ShellBadge> = {};
-  for (const entry of [...SHELL_NAV_PRIMARY, ...SHELL_NAV_SECONDARY, ...SHELL_NAV_EXTERNAL]) {
-    if (!entry.badge) continue;
-    if (entry.badgeUntil && now > new Date(`${entry.badgeUntil}T23:59:59Z`)) continue;
-    badges[entry.key] = entry.badge;
-  }
-  return badges;
+  // Les clés de navigation sont les clés de fonctionnalité de feature-badges.
+  return resolveFeatureBadges(now) as Record<string, ShellBadge>;
 }
 
 /* ------------------------------------------------------------ fil d'Ariane */

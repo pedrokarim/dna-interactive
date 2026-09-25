@@ -13,6 +13,7 @@ import {
   localTodayIso,
 } from "@/lib/events/calendar";
 import { getCurrentUser } from "@/lib/auth/session";
+import { resolveFeatureBadges } from "@/config/feature-badges";
 
 export const dynamic = "force-dynamic";
 
@@ -98,6 +99,8 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       serverToday={serverToday}
       calendarToday={settings.calendarToday || undefined}
       isAuthenticated={Boolean(user)}
+      // Badges « Nouveau » / « Bêta » : src/config/feature-badges.ts, résolus ici (serveur).
+      badges={resolveFeatureBadges(new Date())}
     />
   );
 }

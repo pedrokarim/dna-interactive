@@ -1,6 +1,6 @@
 "use client";
 
-import type { ReactNode } from "react";
+import { createContext, useContext, type ReactNode } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import {
@@ -37,6 +37,7 @@ import BuildShowcase from "@/components/BuildShowcase";
 import type { CalendarEvent } from "@/lib/events/calendar";
 import { useAppSettings } from "@/lib/settings/useAppSettings";
 import { CONTACT_INFO } from "@/lib/constants";
+import type { FeatureBadge, FeatureKey } from "@/config/feature-badges";
 import { DISCORD_BUTTON_CLASS, DiscordIcon } from "@/components/icons/BrandIcons";
 
 export type HomeBuildCard = {
@@ -64,6 +65,8 @@ export type HomeHubClientProps = {
   calendarToday?: string;
   /** Permet d'afficher le bon accès au compte sans charger la session côté client. */
   isAuthenticated: boolean;
+  /** Badges encore valides, résolus côté serveur (src/config/feature-badges.ts). */
+  badges: Partial<Record<FeatureKey, FeatureBadge>>;
 };
 
 /* CTA façon design system, appliqués directement sur un Link/anchor. */
@@ -95,7 +98,8 @@ type ToolCard = {
   mark: string;
   desc: string;
   icon: LucideIcon | typeof DiscordIcon;
-  badge?: string;
+  /** Fonctionnalité dont le badge (Nouveau / Bêta) s'affiche sur la carte, cf. feature-badges. */
+  feature?: FeatureKey;
   bg?: string;
   tint?: string;
   external?: boolean;
@@ -124,7 +128,7 @@ function ToolTile({ card, className }: { card: ToolCard; className?: string }) {
             <Icon aria-hidden className="h-4 w-4" />
           </span>
           <span className="font-display text-lg text-parch group-hover:text-gold-bright">{card.title}</span>
-          {card.badge ? <DnaNouveau className="ml-1">{card.badge}</DnaNouveau> : null}
+          <FeatureBadgeTag feature={card.feature} className="ml-1" />
         </div>
         <DnaSectionMark size="sm">{card.mark}</DnaSectionMark>
         <span className="mt-auto max-w-[88%] text-[0.8rem] leading-snug text-parch/75">{card.desc}</span>
@@ -203,7 +207,33 @@ function BuildShowcaseCard({ build }: { build: HomeBuildCard }) {
 
 /* ---------------------------------------------------------------- page (POC) */
 
-export default function HomeHubClient({
+/** Badges résolus côté serveur, lus par les cartes sans passer par chaque prop. */
+const FeatureBadgesContext = createContext<Partial<Record<FeatureKey, FeatureBadge>>>({});
+
+/** Badge d'une fonctionnalité (Nouveau / Bêta), selon src/config/feature-badges.ts. */
+function FeatureBadgeTag({ feature, className }: { feature?: FeatureKey; className?: string }) {
+  const t = useTranslations("homeHub");
+  const badges = useContext(FeatureBadgesContext);
+  const badge = feature ? badges[feature] : undefined;
+  if (badge === "new") return <DnaNouveau className={className}>{t("new")}</DnaNouveau>;
+  if (badge === "beta")
+    return (
+      <span className={cn("rounded-sm border border-hydro/40 bg-hydro/10 px-1.5 py-0.5 font-caps text-[0.5rem] uppercase tracking-[0.16em] text-hydro", className)}>
+        {t("beta")}
+      </span>
+    );
+  return null;
+}
+
+export default function HomeHubClient(props: HomeHubClientProps) {
+  return (
+    <FeatureBadgesContext.Provider value={props.badges}>
+      <HomeHub {...props} />
+    </FeatureBadgesContext.Provider>
+  );
+}
+
+function HomeHub({
   builds,
   communityCount,
   stats,
@@ -220,19 +250,19 @@ export default function HomeHubClient({
   // `characters.json` (cf. src/lib/characters/upcoming.ts).
   const upcoming = UPCOMING_CHARACTERS;
   const databaseCards: ToolCard[] = [
-    { href: "/characters", title: t("charactersTitle"), mark: "Le Chœur", desc: t("charactersDescription"), icon: Users, bg: "/assets/worldview/worldview-3.webp", tint: "var(--color-gold)" },
-    { href: "/items", title: t("itemsTitle"), mark: "Le Reliquaire", desc: t("itemsDescription"), icon: Boxes, bg: "/assets/worldview/worldview-5.webp", tint: "var(--color-anemo)" },
-    { href: "/items/weapons", title: t("weaponsTitle"), mark: "Arsenal", desc: t("weaponsDescription"), icon: Swords, badge: t("new"), bg: "/assets/worldview/worldview-8.webp", tint: "var(--color-pyro)" },
-    { href: "/items/genimons", title: t("genimonsTitle"), mark: "Genimons", desc: t("genimonsDescription"), icon: Gem, bg: "/assets/worldview/worldview-9.webp", tint: "var(--color-hydro)" },
+    { href: "/characters", title: t("charactersTitle"), feature: "characters", mark: "Le Chœur", desc: t("charactersDescription"), icon: Users, bg: "/assets/worldview/worldview-3.webp", tint: "var(--color-gold)" },
+    { href: "/items", title: t("itemsTitle"), feature: "items", mark: "Le Reliquaire", desc: t("itemsDescription"), icon: Boxes, bg: "/assets/worldview/worldview-5.webp", tint: "var(--color-anemo)" },
+    { href: "/items/weapons", title: t("weaponsTitle"), feature: "weapons", mark: "Arsenal", desc: t("weaponsDescription"), icon: Swords, bg: "/assets/worldview/worldview-8.webp", tint: "var(--color-pyro)" },
+    { href: "/items/genimons", title: t("genimonsTitle"), feature: "genimons", mark: "Genimons", desc: t("genimonsDescription"), icon: Gem, bg: "/assets/worldview/worldview-9.webp", tint: "var(--color-hydro)" },
   ];
   const toolCards: ToolCard[] = [
-    { href: "/builder", title: t("buildBuilderTitle"), mark: "La Forge", desc: t("buildBuilderDescription"), icon: Hammer, badge: t("new"), bg: "/assets/worldview/worldview-10.webp", tint: "var(--color-electro)" },
-    { href: "/map", title: t("mapTitle"), mark: "Atlas d'Atlasia", desc: t("mapShortDescription"), icon: MapIcon, bg: "/assets/worldview/worldview-6.webp", tint: "var(--color-hydro)" },
-    { href: "/items/drafts", title: t("draftsTitle"), mark: "Hall de l'Ouvrage", desc: t("draftsDescription"), icon: FileStack, bg: "/assets/worldview/worldview-11.webp", tint: "var(--color-gold)" },
+    { href: "/builder", title: t("buildBuilderTitle"), feature: "builder", mark: "La Forge", desc: t("buildBuilderDescription"), icon: Hammer, bg: "/assets/worldview/worldview-10.webp", tint: "var(--color-electro)" },
+    { href: "/map", title: t("mapTitle"), feature: "map", mark: "Atlas d'Atlasia", desc: t("mapShortDescription"), icon: MapIcon, bg: "/assets/worldview/worldview-6.webp", tint: "var(--color-hydro)" },
+    { href: "/items/drafts", title: t("draftsTitle"), feature: "drafts", mark: "Hall de l'Ouvrage", desc: t("draftsDescription"), icon: FileStack, bg: "/assets/worldview/worldview-11.webp", tint: "var(--color-gold)" },
     { href: "/changelog", title: t("changelogTitle"), mark: "Le Registre", desc: t("changelogDescription"), icon: Wrench, bg: "/assets/official-v1.3/bg.webp", tint: "var(--color-umbro)" },
   ];
   const communityCards: ToolCard[] = [
-    { href: "/commissions", title: t("commissionsTitle"), mark: "Commissions", desc: t("commissionsDescription"), icon: ScrollText, bg: "/assets/worldview/worldview-4.webp", tint: "var(--color-pyro)" },
+    { href: "/commissions", title: t("commissionsTitle"), feature: "commissions", mark: "Commissions", desc: t("commissionsDescription"), icon: ScrollText, bg: "/assets/worldview/worldview-4.webp", tint: "var(--color-pyro)" },
     { href: CONTACT_INFO.discord.url, title: "Discord", mark: "Le Grand Hall", desc: t("discordDescription"), icon: DiscordIcon, bg: "/assets/worldview/worldview-1.webp", tint: "#5865F2", external: true, brand: "discord" },
   ];
   const visibleCommunityCards = commissionsVisible
@@ -305,7 +335,7 @@ export default function HomeHubClient({
             <DnaCornerBrackets size={20} color="var(--color-gold-bright)" />
             <div className="relative flex items-center gap-2">
               <DnaTag>{t("featured")}</DnaTag>
-              <span className="rounded-sm border border-hydro/40 bg-hydro/10 px-1.5 py-0.5 font-caps text-[0.5rem] uppercase tracking-[0.16em] text-hydro">{t("beta")}</span>
+              <FeatureBadgeTag feature="map" />
             </div>
             <div className="relative">
               <h3 className="font-display text-3xl text-parch group-hover:text-gold-bright sm:text-4xl">{t("mapTitle")}</h3>
@@ -318,9 +348,9 @@ export default function HomeHubClient({
           </Link>
 
           <div className="grid gap-4 sm:grid-cols-2">
-            <ToolTile card={{ href: "/builder", title: "Builder", mark: "La Forge", desc: t("builderDescription"), icon: Hammer, badge: t("new"), bg: "/assets/worldview/worldview-2.webp", tint: "var(--color-electro)" }} />
+            <ToolTile card={{ href: "/builder", title: "Builder", feature: "builder", mark: "La Forge", desc: t("builderDescription"), icon: Hammer, bg: "/assets/worldview/worldview-2.webp", tint: "var(--color-electro)" }} />
             {commissionsVisible ? (
-              <ToolTile card={{ href: "/commissions", title: t("commissionsTitle"), mark: "Commissions", desc: t("commissionsDescription"), icon: ScrollText, bg: "/assets/worldview/worldview-4.webp", tint: "var(--color-pyro)" }} />
+              <ToolTile card={{ href: "/commissions", title: t("commissionsTitle"), feature: "commissions", mark: "Commissions", desc: t("commissionsDescription"), icon: ScrollText, bg: "/assets/worldview/worldview-4.webp", tint: "var(--color-pyro)" }} />
             ) : null}
           </div>
         </div>
@@ -372,7 +402,7 @@ export default function HomeHubClient({
         <SectionRibbon label={t("community")} index="01" />
         <ToolTile
           className="min-h-[104px]"
-          card={{ href: "/builds", title: t("communityBuildsTitle"), mark: "Partitions", desc: t("communityBuildsDescription"), icon: Layers, badge: t("new"), bg: "/assets/worldview/worldview-7.webp", tint: "var(--color-anemo)" }}
+          card={{ href: "/builds", title: t("communityBuildsTitle"), feature: "builds", mark: "Partitions", desc: t("communityBuildsDescription"), icon: Layers, bg: "/assets/worldview/worldview-7.webp", tint: "var(--color-anemo)" }}
         />
         <div className="grid gap-4 sm:grid-cols-2">
           {visibleCommunityCards.map((c) => (
