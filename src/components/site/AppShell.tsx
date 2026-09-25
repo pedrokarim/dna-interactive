@@ -500,8 +500,8 @@ export function AppShell({ children, badges = {}, copyrightYears = "2025" }: App
 
           <div className="ml-auto flex items-center gap-2 sm:gap-3">
             <DnaPill>{t("gameVersion", { version: GAME_VERSION })}</DnaPill>
-            <ThemeSwitcher />
             <LanguageSwitcher />
+            <ThemeSwitcher />
             <NotificationBell />
             <TopbarAccount />
           </div>
