@@ -1,4 +1,5 @@
 import type { Metadata, ResolvingMetadata } from "next";
+import { inciseDash } from "@/lib/typography";
 import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
@@ -58,7 +59,7 @@ export async function generateMetadata(
 
   return generatePageMetadata(
     {
-      title: `${t(found.chapter.titleKey)} — ${t("title")}`,
+      title: `${t(found.chapter.titleKey)}${inciseDash(locale)}${t("title")}`,
       description: t(found.chapter.blurbKey),
       path: `/items/${found.category.slug}/about/${chapterSlug}`,
       keywords: ["Duet Night Abyss", t("title"), t(found.chapter.titleKey), found.category.title],

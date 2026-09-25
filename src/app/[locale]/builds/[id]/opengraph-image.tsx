@@ -19,7 +19,7 @@ export const dynamic = "force-dynamic";
 
 export const size = OG_SIZE;
 export const contentType = OG_CONTENT_TYPE;
-export const alt = "Build communautaire — DNA Interactive";
+export const alt = "Build communautaire – DNA Interactive";
 
 type OgBuild = {
   title: string;

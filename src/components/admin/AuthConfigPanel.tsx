@@ -77,9 +77,9 @@ export function AuthConfigPanel() {
 
   const secretPlaceholder = (has: boolean, env: boolean) =>
     has
-      ? "•••••••••• — laisser vide pour conserver"
+      ? "•••••••••• – laisser vide pour conserver"
       : env
-        ? "hérité de l'environnement — saisir pour surcharger"
+        ? "hérité de l'environnement – saisir pour surcharger"
         : "Client Secret";
 
   return (
@@ -92,7 +92,7 @@ export function AuthConfigPanel() {
 
         <Field
           id="auth-discord-id"
-          label="Discord — Client ID"
+          label="Discord – Client ID"
           value={discordId}
           onChange={(v) => {
             setDiscordId(v);
@@ -103,7 +103,7 @@ export function AuthConfigPanel() {
         />
         <Field
           id="auth-discord-secret"
-          label="Discord — Client Secret"
+          label="Discord – Client Secret"
           type="password"
           value={discordSecret}
           onChange={(v) => {
@@ -115,7 +115,7 @@ export function AuthConfigPanel() {
         />
         <Field
           id="auth-google-id"
-          label="Google — Client ID"
+          label="Google – Client ID"
           value={googleId}
           onChange={(v) => {
             setGoogleId(v);
@@ -126,7 +126,7 @@ export function AuthConfigPanel() {
         />
         <Field
           id="auth-google-secret"
-          label="Google — Client Secret"
+          label="Google – Client Secret"
           type="password"
           value={googleSecret}
           onChange={(v) => {

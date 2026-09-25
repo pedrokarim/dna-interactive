@@ -370,7 +370,7 @@ export function ChangelogAdminClient() {
                 onChange={(e) => setDraft((d) => (d ? { ...d, hidden: e.target.checked } : d))}
                 className="accent-gold"
               />
-              <span className="font-sans text-[0.82rem] text-parch/85">Masquée — retirée du journal public</span>
+              <span className="font-sans text-[0.82rem] text-parch/85">Masquée – retirée du journal public</span>
             </label>
 
             <div className="flex flex-wrap items-center gap-2 sm:col-span-3">
@@ -394,7 +394,7 @@ export function ChangelogAdminClient() {
         {loading ? (
           <AdminTableSkeleton rows={5} columns={5} />
         ) : entries.length === 0 ? (
-          <AdminEmpty icon={ScrollText} text="Aucune entrée — le journal public affiche la liste écrite en dur." />
+          <AdminEmpty icon={ScrollText} text="Aucune entrée – le journal public affiche la liste écrite en dur." />
         ) : (
           <AdminTable minWidth="46rem">
             <thead>

@@ -10,6 +10,7 @@ import {
   type ReactNode,
 } from "react";
 import { useLocale, useTranslations } from "next-intl";
+import { inciseDash } from "@/lib/typography";
 import { ChevronLeft, ChevronRight, CalendarDays, ExternalLink, Loader2 } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { DnaCornerBrackets, cn } from "@/components/dna";
@@ -134,6 +135,7 @@ function EventBar({
   onLeave,
 }: EventBarProps) {
   const t = useTranslations("homeHub");
+  const locale = useLocale();
   const dominant = useDominantColor(bar.image);
   // Couleur dominante de l'image → sinon teinte de catégorie.
   const accent = dominant ?? bar.tint;
@@ -145,7 +147,7 @@ function EventBar({
       onClick={onSelect}
       onMouseMove={onHover}
       onMouseLeave={onLeave}
-      aria-label={`${bar.title} — ${rangeLabel}`}
+      aria-label={`${bar.title}${inciseDash(locale)}${rangeLabel}`}
       aria-current={selected ? "true" : undefined}
       className={cn(
         "group absolute overflow-hidden rounded-[4px] border text-left transition-[box-shadow,filter] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gold/70",

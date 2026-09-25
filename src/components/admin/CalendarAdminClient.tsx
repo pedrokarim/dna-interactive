@@ -339,7 +339,7 @@ export function CalendarAdminClient() {
                 onChange={(e) => set("hidden", e.target.checked)}
                 className="accent-gold"
               />
-              <span className="font-sans text-[0.82rem] text-parch/85">Masqué — retiré du calendrier public</span>
+              <span className="font-sans text-[0.82rem] text-parch/85">Masqué – retiré du calendrier public</span>
             </label>
 
             {error ? <p className="sm:col-span-2 font-sans text-[0.8rem] text-crimson-soft">{error}</p> : null}
@@ -373,7 +373,7 @@ export function CalendarAdminClient() {
         {loading ? (
           <AdminTableSkeleton rows={5} columns={5} />
         ) : events.length === 0 ? (
-          <AdminEmpty icon={CalendarDays} text="Aucun événement en base — le calendrier utilise la liste curée." />
+          <AdminEmpty icon={CalendarDays} text="Aucun événement en base – le calendrier utilise la liste curée." />
         ) : (
           <AdminTable minWidth="44rem">
             <thead>
