@@ -31,7 +31,7 @@ export async function GuideLobby({
   const border = `color-mix(in srgb, ${accent} 28%, transparent)`;
 
   return (
-    <div className="space-y-8">
+    <div className="max-w-5xl space-y-8">
       <section className="border bg-panel/65 p-6 md:p-8" style={{ borderColor: border }}>
         <div className="flex flex-wrap items-center justify-between gap-3">
           <Link

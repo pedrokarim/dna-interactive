@@ -80,7 +80,7 @@ export default async function GuideChapterPage({ params }: ChapterPageProps) {
   const neighbours = getChapterNeighbours(category.id, chapterSlug)!;
 
   return (
-    <article className="space-y-6">
+    <article className="max-w-5xl space-y-6">
       <header className="border-b border-white/10 pb-5">
         <Link
           href={`/items/${category.slug}/about`}

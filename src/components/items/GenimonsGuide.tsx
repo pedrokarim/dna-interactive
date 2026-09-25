@@ -323,8 +323,8 @@ export async function GenimonsGuideChapter({
     case "raise":
       return (
         <div>
-          <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,32rem)]">
-            <div className="space-y-3">
+          <div className="space-y-4">
+            <div className="max-w-3xl space-y-3">
               <p className="text-sm leading-relaxed text-parch/85">{t("raiseBody")}</p>
               <ul className="space-y-2">
                 {(t.raw("raiseSteps") as string[]).map((line, i) => (
@@ -335,7 +335,7 @@ export async function GenimonsGuideChapter({
                 ))}
               </ul>
             </div>
-            <GuideImageSlot slot="levelUp" family="genimons" caption={t("imageLevelUp")} ratio="4 / 3" />
+            <GuideImageSlot slot="levelUp" family="genimons" caption={t("imageLevelUp")} ratio="16 / 9" className="max-w-4xl" />
           </div>
 
           <div className="mt-5 space-y-4">
@@ -345,7 +345,7 @@ export async function GenimonsGuideChapter({
                 {t("ascensionOpensSlots")}
               </p>
             </div>
-            <GuideImageSlot slot="ascension" family="genimons" caption={t("imageAscension")} ratio="5 / 3" />
+            <GuideImageSlot slot="ascension" family="genimons" caption={t("imageAscension")} ratio="5 / 3" className="max-w-4xl" />
           </div>
         </div>
       );
@@ -397,7 +397,7 @@ export async function GenimonsGuideChapter({
               {t("trainingLevel")}
             </p>
           </div>
-          <GuideImageSlot slot="training" family="genimons" caption={t("imageTraining")} ratio="2 / 1" />
+          <GuideImageSlot slot="training" family="genimons" caption={t("imageTraining")} ratio="2 / 1" className="max-w-4xl" />
         </div>
       );
 
@@ -423,7 +423,7 @@ export async function GenimonsGuideChapter({
             <p className="text-sm leading-relaxed text-parch/85">{t("goldOnlyNote")}</p>
           </div>
           {/* Un écran entier dans une demi-colonne devient illisible. */}
-          <GuideImageSlot slot="fusion" family="genimons" caption={t("imageFusion")} ratio="16 / 9" />
+          <GuideImageSlot slot="fusion" family="genimons" caption={t("imageFusion")} ratio="16 / 9" className="max-w-4xl" />
         </div>
       );
 
@@ -453,8 +453,8 @@ export async function GenimonsGuideChapter({
           </ol>
 
           <div className="mt-5 space-y-5">
-            <GuideImageSlot slot="shopPath" family="genimons" caption={t("imageShopPath")} ratio="3 / 2" />
-            <GuideImageSlot slot="shopChests" family="genimons" caption={t("imageShopChests")} ratio="16 / 9" />
+            <GuideImageSlot slot="shopPath" family="genimons" caption={t("imageShopPath")} ratio="3 / 2" className="max-w-4xl" />
+            <GuideImageSlot slot="shopChests" family="genimons" caption={t("imageShopChests")} ratio="16 / 9" className="max-w-4xl" />
           </div>
 
           <div className="mt-5 space-y-4">
@@ -464,7 +464,7 @@ export async function GenimonsGuideChapter({
             >
               {t("shopGoldTraits")}
             </p>
-            <GuideImageSlot slot="shopSelection" family="genimons" caption={t("imageShopSelection")} ratio="16 / 9" />
+            <GuideImageSlot slot="shopSelection" family="genimons" caption={t("imageShopSelection")} ratio="16 / 9" className="max-w-4xl" />
           </div>
         </div>
       );
