@@ -1877,6 +1877,13 @@
     "shopGoldTraits": "This is where the seven gold Traits come from. The Inactive Geniemon Selection Chest lets you take a Geniemon carrying Tenacious, Deft, At Peace, Disciplined, Desirous, Fleeing or Veteran — exactly the seven that merging cannot reach.",
     "imageShopPath": "The exchange opens from Bounty Commissions.",
     "imageShopChests": "The four chests, and the currency each one asks for.",
-    "imageShopSelection": "A selection chest states what it lets you choose."
+    "imageShopSelection": "A selection chest states what it lets you choose.",
+    "chapterBlurb_raise": "From level 1 to level 60, and the ascensions that open Trait slots.",
+    "chapterBlurb_passive": "The bonus each species carries, and what really separates a shining variant from an ordinary one.",
+    "chapterBlurb_traits": "What a Trait is, and why a Geniemon you never field is not a useless Geniemon.",
+    "chapterBlurb_training": "Passing a Trait from one Geniemon to another, raising its level, locking a slot.",
+    "chapterBlurb_fusion": "Three identical Traits make one of the rarity above: the exact count, and the seven exceptions.",
+    "chapterBlurb_shop": "The Bounty Commissions exchange, its two stacked currencies, and what you can choose there.",
+    "chapterBlurb_list": "All 29 Traits, sorted into the game's own four categories, with their effect and rarities."
   }
 }

@@ -1877,6 +1877,13 @@
     "shopGoldTraits": "De ahí salen los siete Rasgos dorados. El Cofre de selección de Geniemon inactivo permite llevarse uno que porte alguno de ellos, justo los siete que la fusión no alcanza.",
     "imageShopPath": "El intercambio se abre desde los Encargos de recompensa.",
     "imageShopChests": "Los cuatro cofres y la moneda que pide cada uno.",
-    "imageShopSelection": "Un cofre de selección indica lo que deja elegir."
+    "imageShopSelection": "Un cofre de selección indica lo que deja elegir.",
+    "chapterBlurb_raise": "Del nivel 1 al 60, y las ascensiones que abren las ranuras de Rasgo.",
+    "chapterBlurb_passive": "El bono de cada especie, y lo que de verdad separa una variante reluciente de una corriente.",
+    "chapterBlurb_traits": "Qué es un Rasgo, y por qué un Geniemon que nunca juegas no es un Geniemon inútil.",
+    "chapterBlurb_training": "Pasar un Rasgo de un Geniemon a otro, subir su nivel, bloquear una ranura.",
+    "chapterBlurb_fusion": "Tres Rasgos iguales dan uno de la rareza superior: la cuenta exacta y las siete excepciones.",
+    "chapterBlurb_shop": "El intercambio de los Encargos de recompensa, sus dos monedas encadenadas y lo que puedes elegir.",
+    "chapterBlurb_list": "Los 29 Rasgos, ordenados en las cuatro categorías del juego, con su efecto y sus rarezas."
   }
 }

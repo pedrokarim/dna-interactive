@@ -1,7 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { ArrowLeft, ArrowRight, BookOpenText, Layers, Sparkles, Swords, TrendingUp } from "lucide-react";
-import { DnaSectionLabel } from "@/components/dna/SectionLabel";
+import { ArrowRight, Layers, Sparkles, Swords, TrendingUp } from "lucide-react";
 import { GuideImageSlot } from "@/components/items/GuideImageSlot";
 import { getItemTranslation, getItemsByCategoryId } from "@/lib/items/catalog";
 import {
@@ -277,110 +276,113 @@ async function TraitTable({ category, gameLang, locale }: { category: TraitCateg
   );
 }
 
-export async function GenimonsGuide({
+/**
+ * Les repères du chapô : ce que le guide couvre, et une première image.
+ * Rendu par le sommaire, sous l'introduction.
+ */
+export async function GenimonsGuideIntro({ locale }: { locale: string }) {
+  const t = await getTranslations({ locale, namespace: "genimonGuide" });
+  const total = countTraitsByCategory().reduce((sum, c) => sum + c.count, 0);
+
+  return (
+    <>
+      <div className="mt-5 flex flex-wrap gap-2">
+        <Badge icon={<TrendingUp className="h-3.5 w-3.5 text-gold" />} label={t("badgeLevels")} />
+        <Badge icon={<Layers className="h-3.5 w-3.5 text-gold" />} label={t("badgeTraits", { count: total })} />
+        <Badge icon={<Sparkles className="h-3.5 w-3.5 text-anemo" />} label={t("badgeFusion")} />
+      </div>
+      <div className="mt-6">
+        <GuideImageSlot slot="overview" family="genimons" caption={t("imageOverview")} className="max-w-3xl" />
+      </div>
+    </>
+  );
+}
+
+/**
+ * Un chapitre du guide.
+ *
+ * Le titre n'est pas posé ici : la page de chapitre le rend en `h1`, pour que
+ * chaque adresse porte un vrai titre plutôt qu'un intertitre perdu dans un mur.
+ */
+export async function GenimonsGuideChapter({
+  chapter,
   categorySlug,
   gameLang,
   locale,
 }: {
+  chapter: string;
   categorySlug: string;
   /** Code langue des données de jeu (EN, FR, JP…). */
   gameLang: string;
   locale: string;
 }) {
   const t = await getTranslations({ locale, namespace: "genimonGuide" });
-  const tCommon = await getTranslations({ locale, namespace: "common" });
-  const counts = countTraitsByCategory();
-  const total = counts.reduce((sum, c) => sum + c.count, 0);
 
-  return (
-    <div className="space-y-8">
-      {/* ------------------------------------------------------------ chapô */}
-      <section className="border border-anemo/25 bg-panel/65 p-6 md:p-8">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <Link
-            href={`/items/${categorySlug}`}
-            className="inline-flex items-center gap-2 rounded-sm border border-white/10 px-3 py-2 text-sm text-parch transition-colors hover:border-anemo/40"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            {tCommon("backToList")}
-          </Link>
-          <Badge icon={<BookOpenText className="h-3.5 w-3.5 text-anemo" />} label={t("badge")} />
-        </div>
-
-        <h1 className="mt-5 font-display text-4xl text-parch md:text-5xl">{t("title")}</h1>
-        <p className="mt-4 max-w-3xl text-lg leading-relaxed text-parch/85">{t("intro")}</p>
-
-        <div className="mt-5 flex flex-wrap gap-2">
-          <Badge icon={<TrendingUp className="h-3.5 w-3.5 text-gold" />} label={t("badgeLevels")} />
-          <Badge icon={<Layers className="h-3.5 w-3.5 text-gold" />} label={t("badgeTraits", { count: total })} />
-          <Badge icon={<Sparkles className="h-3.5 w-3.5 text-anemo" />} label={t("badgeFusion")} />
-        </div>
-
-        <div className="mt-6">
-          <GuideImageSlot slot="overview" family="genimons" caption={t("imageOverview")} className="max-w-3xl" />
-        </div>
-      </section>
-
-      {/* -------------------------------------------------------- élevage */}
-      <section>
-        <DnaSectionLabel>{t("raiseTitle")}</DnaSectionLabel>
-        <div className="mt-4 grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,32rem)]">
-          <div className="space-y-3">
-            <p className="text-sm leading-relaxed text-parch/85">{t("raiseBody")}</p>
-            <ul className="space-y-2">
-              {(t.raw("raiseSteps") as string[]).map((line, i) => (
-                <li key={i} className="flex items-start gap-2.5 border border-white/10 bg-ink/55 px-3 py-2">
-                  <ArrowRight className="mt-0.5 h-3.5 w-3.5 shrink-0" style={{ color: GENIMON_ACCENT }} />
-                  <span className="text-sm text-parch/85">{line}</span>
-                </li>
-              ))}
-            </ul>
+  switch (chapter) {
+    // ──────────────────────────────────────────────────────────── élevage
+    case "raise":
+      return (
+        <div>
+          <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,32rem)]">
+            <div className="space-y-3">
+              <p className="text-sm leading-relaxed text-parch/85">{t("raiseBody")}</p>
+              <ul className="space-y-2">
+                {(t.raw("raiseSteps") as string[]).map((line, i) => (
+                  <li key={i} className="flex items-start gap-2.5 border border-white/10 bg-ink/55 px-3 py-2">
+                    <ArrowRight className="mt-0.5 h-3.5 w-3.5 shrink-0" style={{ color: GENIMON_ACCENT }} />
+                    <span className="text-sm text-parch/85">{line}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <GuideImageSlot slot="levelUp" family="genimons" caption={t("imageLevelUp")} ratio="4 / 3" />
           </div>
-          <GuideImageSlot slot="levelUp" family="genimons" caption={t("imageLevelUp")} ratio="4 / 3" />
-        </div>
 
-        <div className="mt-5 grid gap-5 lg:grid-cols-[minmax(0,26rem)_minmax(0,1fr)]">
-          <GuideImageSlot slot="ascension" family="genimons" caption={t("imageAscension")} ratio="4 / 3" />
-          <div className="space-y-3">
-            <p className="text-sm leading-relaxed text-parch/85">{t("ascensionBody")}</p>
-            <p className="border-l-2 pl-3 text-sm text-parch/85" style={{ borderColor: GENIMON_ACCENT }}>
-              {t("ascensionOpensSlots")}
-            </p>
+          <div className="mt-5 grid gap-5 lg:grid-cols-[minmax(0,26rem)_minmax(0,1fr)]">
+            <GuideImageSlot slot="ascension" family="genimons" caption={t("imageAscension")} ratio="4 / 3" />
+            <div className="space-y-3">
+              <p className="text-sm leading-relaxed text-parch/85">{t("ascensionBody")}</p>
+              <p className="border-l-2 pl-3 text-sm text-parch/85" style={{ borderColor: GENIMON_ACCENT }}>
+                {t("ascensionOpensSlots")}
+              </p>
+            </div>
           </div>
         </div>
-      </section>
+      );
 
-      {/* --------------------------------------------------- passif propre */}
-      <section>
-        <DnaSectionLabel>{t("passiveTitle")}</DnaSectionLabel>
-        <div className="mt-4 space-y-3">
+    // ────────────────────────────────────────────────────── passif propre
+    case "passive":
+      return (
+        <div className="space-y-3">
           <p className="max-w-3xl text-sm leading-relaxed text-parch/85">{t("passiveBody")}</p>
           <p className="max-w-3xl border-l-2 pl-3 text-sm text-parch/85" style={{ borderColor: GENIMON_ACCENT }}>
             {t("passiveShiny")}
           </p>
           <VariantCompare gameLang={gameLang} locale={locale} />
         </div>
-      </section>
+      );
 
-      {/* ------------------------------------------------ traits : principe */}
-      <section>
-        <DnaSectionLabel>{t("traitsTitle")}</DnaSectionLabel>
-        <div className="mt-4 grid gap-5 lg:grid-cols-2">
-          <div className="space-y-3">
-            <p className="text-sm leading-relaxed text-parch/85">{t("traitsBody")}</p>
-            <p className="text-sm leading-relaxed text-parch/85">{t("traitsActiveInactive")}</p>
+    // ────────────────────────────────────────────────── traits : principe
+    case "traits":
+      return (
+        <div>
+          <div className="grid gap-5 lg:grid-cols-2">
+            <div className="space-y-3">
+              <p className="text-sm leading-relaxed text-parch/85">{t("traitsBody")}</p>
+              <p className="text-sm leading-relaxed text-parch/85">{t("traitsActiveInactive")}</p>
+            </div>
+            <GuideImageSlot slot="traitSlots" family="genimons" caption={t("imageTraitSlots")} ratio="4 / 3" />
           </div>
-          <GuideImageSlot slot="traitSlots" family="genimons" caption={t("imageTraitSlots")} ratio="4 / 3" />
+          <div className="mt-5">
+            <TraitFlowDiagram gameLang={gameLang} locale={locale} />
+          </div>
         </div>
-        <div className="mt-5">
-          <TraitFlowDiagram gameLang={gameLang} locale={locale} />
-        </div>
-      </section>
+      );
 
-      {/* --------------------------------------- l'Entraînement de Géniemon */}
-      <section>
-        <DnaSectionLabel>{t("trainingTitle")}</DnaSectionLabel>
-        <div className="mt-4 grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)]">
+    // ─────────────────────────────────────── l'Entraînement de Géniemon
+    case "training":
+      return (
+        <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)]">
           <div className="space-y-3">
             <p className="text-sm leading-relaxed text-parch/85">{t("trainingBody")}</p>
             <p className="border-l-2 pl-3 text-sm text-parch/85" style={{ borderColor: GENIMON_ACCENT }}>
@@ -389,12 +391,12 @@ export async function GenimonsGuide({
           </div>
           <GuideImageSlot slot="training" family="genimons" caption={t("imageTraining")} ratio="4 / 3" />
         </div>
-      </section>
+      );
 
-      {/* -------------------------------------------------- fusion, rareté */}
-      <section>
-        <DnaSectionLabel>{t("fusionTitle")}</DnaSectionLabel>
-        <div className="mt-4 grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)]">
+    // ──────────────────────────────────────────────────── fusion, rareté
+    case "fusion":
+      return (
+        <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)]">
           <div className="space-y-3">
             <p className="text-sm leading-relaxed text-parch/85">{t("fusionBody")}</p>
             {/*
@@ -414,72 +416,81 @@ export async function GenimonsGuide({
           </div>
           <GuideImageSlot slot="fusion" family="genimons" caption={t("imageFusion")} ratio="4 / 3" />
         </div>
-      </section>
+      );
 
-      {/* ------------------------------------------------------- la boutique */}
-      <section>
-        <DnaSectionLabel>{t("shopTitle")}</DnaSectionLabel>
-        <p className="mt-3 max-w-3xl text-sm leading-relaxed text-parch/85">{t("shopBody")}</p>
+    // ─────────────────────────────────────────────────────── la boutique
+    case "shop":
+      return (
+        <div>
+          <p className="max-w-3xl text-sm leading-relaxed text-parch/85">{t("shopBody")}</p>
 
-        {/*
-          La boucle en trois temps. Les deux monnaies se ressemblent à l'écran,
-          et c'est l'ordre qui les distingue : l'une vient des missions, l'autre
-          ne s'obtient qu'en ouvrant ce que la première a payé.
-        */}
-        <ol className="mt-4 grid gap-3 md:grid-cols-3">
-          {(t.raw("shopSteps") as string[]).map((step, i) => (
-            <li key={i} className="flex items-start gap-3 border border-white/10 bg-ink/55 px-3 py-3">
-              <span
-                className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center border text-xs"
-                style={{ borderColor: GENIMON_ACCENT, color: GENIMON_ACCENT }}
-              >
-                {i + 1}
-              </span>
-              <span className="text-sm leading-relaxed text-parch/85">{step}</span>
-            </li>
-          ))}
-        </ol>
+          {/*
+            La boucle en trois temps. Les deux monnaies se ressemblent à l'écran,
+            et c'est l'ordre qui les distingue : l'une vient des missions, l'autre
+            ne s'obtient qu'en ouvrant ce que la première a payé.
+          */}
+          <ol className="mt-4 grid gap-3 md:grid-cols-3">
+            {(t.raw("shopSteps") as string[]).map((step, i) => (
+              <li key={i} className="flex items-start gap-3 border border-white/10 bg-ink/55 px-3 py-3">
+                <span
+                  className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center border text-xs"
+                  style={{ borderColor: GENIMON_ACCENT, color: GENIMON_ACCENT }}
+                >
+                  {i + 1}
+                </span>
+                <span className="text-sm leading-relaxed text-parch/85">{step}</span>
+              </li>
+            ))}
+          </ol>
 
-        <div className="mt-5 grid gap-5 lg:grid-cols-2">
-          <GuideImageSlot slot="shopPath" family="genimons" caption={t("imageShopPath")} ratio="4 / 3" />
-          <GuideImageSlot slot="shopChests" family="genimons" caption={t("imageShopChests")} ratio="16 / 9" />
+          <div className="mt-5 grid gap-5 lg:grid-cols-2">
+            <GuideImageSlot slot="shopPath" family="genimons" caption={t("imageShopPath")} ratio="4 / 3" />
+            <GuideImageSlot slot="shopChests" family="genimons" caption={t("imageShopChests")} ratio="16 / 9" />
+          </div>
+
+          <div className="mt-5 grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)]">
+            <p
+              className="self-center border-l-2 pl-3 text-sm leading-relaxed text-parch/85"
+              style={{ borderColor: GENIMON_ACCENT }}
+            >
+              {t("shopGoldTraits")}
+            </p>
+            <GuideImageSlot slot="shopSelection" family="genimons" caption={t("imageShopSelection")} ratio="16 / 9" />
+          </div>
         </div>
+      );
 
-        <div className="mt-5 grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)]">
-          <p className="self-center border-l-2 pl-3 text-sm leading-relaxed text-parch/85" style={{ borderColor: GENIMON_ACCENT }}>
-            {t("shopGoldTraits")}
-          </p>
-          <GuideImageSlot slot="shopSelection" family="genimons" caption={t("imageShopSelection")} ratio="16 / 9" />
+    // ──────────────────────────────────────────────── la liste complète
+    case "list":
+      return (
+        <div>
+          <p className="max-w-3xl text-sm leading-relaxed text-parch/85">{t("listBody")}</p>
+          <p className="mt-2 max-w-3xl text-xs text-muted-2">{t("listValueNote")}</p>
+          <div className="mt-5 space-y-5">
+            {TRAIT_CATEGORIES.map((category) => (
+              <TraitTable key={category} category={category} gameLang={gameLang} locale={locale} />
+            ))}
+          </div>
+
+          {/* Dernier chapitre : on referme le guide au lieu de laisser le lecteur en suspens. */}
+          <section className="mt-8 border border-anemo/25 bg-linear-to-r from-anemo/10 to-gold/10 p-6">
+            <h2 className="flex items-center gap-2 font-display text-xl text-parch">
+              <Swords className="h-5 w-5 text-anemo" />
+              {t("nextTitle")}
+            </h2>
+            <p className="mt-3 max-w-3xl text-sm text-parch/85">{t("nextBody")}</p>
+            <Link
+              href={`/items/${categorySlug}`}
+              className="mt-4 inline-flex items-center gap-2 rounded-sm border border-anemo/35 bg-anemo/10 px-3 py-2 text-sm font-medium text-anemo transition-colors hover:bg-anemo/20"
+            >
+              {t("nextLink")}
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </section>
         </div>
-      </section>
+      );
 
-      {/* ----------------------------------------------- la liste complète */}
-      <section>
-        <DnaSectionLabel>{t("listTitle")}</DnaSectionLabel>
-        <p className="mt-3 max-w-3xl text-sm leading-relaxed text-parch/85">{t("listBody")}</p>
-        <p className="mt-2 max-w-3xl text-xs text-muted-2">{t("listValueNote")}</p>
-        <div className="mt-5 space-y-5">
-          {TRAIT_CATEGORIES.map((category) => (
-            <TraitTable key={category} category={category} gameLang={gameLang} locale={locale} />
-          ))}
-        </div>
-      </section>
-
-      {/* ------------------------------------------------------------ suite */}
-      <section className="border border-anemo/25 bg-linear-to-r from-anemo/10 to-gold/10 p-6">
-        <h2 className="flex items-center gap-2 font-display text-xl text-parch">
-          <Swords className="h-5 w-5 text-anemo" />
-          {t("nextTitle")}
-        </h2>
-        <p className="mt-3 max-w-3xl text-sm text-parch/85">{t("nextBody")}</p>
-        <Link
-          href={`/items/${categorySlug}`}
-          className="mt-4 inline-flex items-center gap-2 rounded-sm border border-anemo/35 bg-anemo/10 px-3 py-2 text-sm font-medium text-anemo transition-colors hover:bg-anemo/20"
-        >
-          {t("nextLink")}
-          <ArrowRight className="h-4 w-4" />
-        </Link>
-      </section>
-    </div>
-  );
+    default:
+      return null;
+  }
 }

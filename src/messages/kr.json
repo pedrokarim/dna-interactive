@@ -1877,6 +1877,13 @@
     "shopGoldTraits": "금색 특성 일곱 가지가 여기서 나옵니다. 비활성 마령 선택 패키지에서는 완강, 능수, 느긋, 자제, 갈구, 도망, 노련 중 하나를 지닌 개체를 고를 수 있습니다. 합성으로는 닿지 못하는 바로 그 일곱입니다.",
     "imageShopPath": "교환소는 현상금 의뢰에서 열립니다.",
     "imageShopChests": "네 가지 패키지와 각각이 요구하는 화폐.",
-    "imageShopSelection": "선택 패키지는 무엇을 고를 수 있는지 알려 줍니다."
+    "imageShopSelection": "선택 패키지는 무엇을 고를 수 있는지 알려 줍니다.",
+    "chapterBlurb_raise": "1레벨에서 60레벨까지, 그리고 특성 칸을 여는 돌파.",
+    "chapterBlurb_passive": "종마다 지닌 효과와, 빛나는 변종과 일반 변종을 실제로 가르는 것.",
+    "chapterBlurb_traits": "특성이란 무엇인가, 그리고 전투에 내보내지 않는 지니몬이 쓸모없지 않은 이유.",
+    "chapterBlurb_training": "특성을 다른 개체로 옮기기, 레벨 올리기, 칸 잠그기.",
+    "chapterBlurb_fusion": "같은 특성 셋이면 한 단계 위로. 정확한 개수와 일곱 가지 예외.",
+    "chapterBlurb_shop": "현상금 의뢰의 교환소, 차례로 이어지는 두 화폐, 그리고 직접 고를 수 있는 것.",
+    "chapterBlurb_list": "29가지 특성을 게임의 네 분류에 따라, 효과와 희귀도와 함께."
   }
 }

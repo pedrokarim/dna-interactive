@@ -1877,6 +1877,13 @@
     "shopGoldTraits": "七個金色特性就出自這裡。失活魔靈自選禮箱可讓你挑一隻帶有頑強、巧手、悠閑、自律、渴求、遁逃或老道的吉尼蒙，正是合成無法取得的那七個。",
     "imageShopPath": "兌換處由懸賞委託進入。",
     "imageShopChests": "四種禮箱，以及各自索取的貨幣。",
-    "imageShopSelection": "自選禮箱會寫明它讓你挑什麼。"
+    "imageShopSelection": "自選禮箱會寫明它讓你挑什麼。",
+    "chapterBlurb_raise": "從1級到60級，以及開啟特性欄位的突破。",
+    "chapterBlurb_passive": "每個物種自帶的效果，以及閃耀變種與普通變種真正的分別。",
+    "chapterBlurb_traits": "特性是什麼，以及為何從不上場的吉尼蒙並非無用。",
+    "chapterBlurb_training": "把特性移到另一隻身上、提升它的等級、鎖住欄位。",
+    "chapterBlurb_fusion": "三個相同特性換一個高一階的：確切數量，以及七個例外。",
+    "chapterBlurb_shop": "懸賞委託的兌換處、前後相接的兩種貨幣，以及你能自選的東西。",
+    "chapterBlurb_list": "全部29種特性，依遊戲本身的四個類別排列，附效果與稀有度。"
   }
 }

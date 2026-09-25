@@ -18,7 +18,9 @@ import {
   Wrench,
 } from "lucide-react";
 import { CalamityWeaponsGuide } from "@/components/items/CalamityWeaponsGuide";
-import { GenimonsGuide } from "@/components/items/GenimonsGuide";
+import { GenimonsGuideIntro } from "@/components/items/GenimonsGuide";
+import { GuideLobby } from "@/components/items/GuideLobby";
+import { getGuideOutline, hasGuideOutline } from "@/lib/items/guide-chapters";
 import { GuideImageSlot } from "@/components/items/GuideImageSlot";
 import {
   getItemCatalog,
@@ -518,6 +520,23 @@ export async function generateMetadata(
   const isWeapons = category.id === "weapons";
   const isMods = category.id === "mods";
 
+  // Un guide découpé porte son propre titre : sans cela, son sommaire hériterait
+  // du libellé générique « À propos de … », qui ne dit rien de son contenu.
+  const outline = getGuideOutline(category.id);
+  if (outline) {
+    const tGuide = await getTranslations({ locale, namespace: outline.namespace });
+    return generatePageMetadata(
+      {
+        title: tGuide("title"),
+        description: tGuide("intro"),
+        path: `/items/${category.slug}/about`,
+        keywords: ["Duet Night Abyss", tGuide("title"), category.title],
+      },
+      parent,
+      locale,
+    );
+  }
+
   return generatePageMetadata(
     {
       title: isWeapons
@@ -561,13 +580,13 @@ export default async function CategoryAboutPage({ params }: CategoryAboutPagePro
     return <ModsAboutContent categorySlug={category.slug} />;
   }
 
-  if (category.id === "genimons") {
+  // Les guides découpés en chapitres servent ici leur sommaire ; le contenu
+  // vit sous `about/<chapitre>`. Voir `lib/items/guide-chapters.ts`.
+  if (hasGuideOutline(category.id)) {
     return (
-      <GenimonsGuide
-        categorySlug={category.slug}
-        gameLang={toGameDataLangCode(toLocale(locale))}
-        locale={locale}
-      />
+      <GuideLobby categoryId={category.id} categorySlug={category.slug} locale={locale}>
+        {category.id === "genimons" ? <GenimonsGuideIntro locale={locale} /> : null}
+      </GuideLobby>
     );
   }
 

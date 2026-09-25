@@ -1877,6 +1877,13 @@
     "shopGoldTraits": "C'est de là que viennent les sept Traits or. Le Coffret de sélection de Géniemon inactif laisse prendre un Géniemon portant Tenace, Habile, Sérénité, Discipliné, Avide, Fugitif ou Vétéran – exactement les sept que la fusion ne permet pas d'atteindre.",
     "imageShopPath": "L'échange s'ouvre depuis les Missions à prime.",
     "imageShopChests": "Les quatre coffrets, et la monnaie que chacun réclame.",
-    "imageShopSelection": "Un coffret de sélection annonce ce qu'il laisse choisir."
+    "imageShopSelection": "Un coffret de sélection annonce ce qu'il laisse choisir.",
+    "chapterBlurb_raise": "Du niveau 1 au niveau 60, et les ascensions qui ouvrent les emplacements de Trait.",
+    "chapterBlurb_passive": "Le bonus que porte chaque espèce, et ce qui sépare vraiment une variante scintillante d'une ordinaire.",
+    "chapterBlurb_traits": "Ce qu'est un Trait, et pourquoi un Géniemon qu'on ne joue jamais n'est pas un Géniemon inutile.",
+    "chapterBlurb_training": "Transmettre un Trait d'un Géniemon à un autre, monter son niveau, verrouiller un emplacement.",
+    "chapterBlurb_fusion": "Trois Traits identiques en donnent un de la rareté au-dessus : le compte exact, et les sept exceptions.",
+    "chapterBlurb_shop": "L'échange des Missions à prime, ses deux monnaies qui se suivent, et ce qu'on peut y choisir.",
+    "chapterBlurb_list": "Les 29 Traits du jeu, rangés dans les quatre catégories du jeu, avec leur effet et leurs raretés."
   }
 }

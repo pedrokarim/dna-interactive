@@ -1877,6 +1877,13 @@
     "shopGoldTraits": "Daher stammen die sieben goldenen Traits. Die Auswahltruhe für inaktive Geniemons lässt eines mitnehmen, das einen davon trägt – genau die sieben, die sich nicht erfusionieren lassen.",
     "imageShopPath": "Der Tauschhandel öffnet sich aus den Kopfgeld-Missionen.",
     "imageShopChests": "Die vier Truhen und die Währung, die jede verlangt.",
-    "imageShopSelection": "Eine Auswahltruhe nennt, was sie zur Wahl stellt."
+    "imageShopSelection": "Eine Auswahltruhe nennt, was sie zur Wahl stellt.",
+    "chapterBlurb_raise": "Von Stufe 1 bis 60, und die Aufstiege, die Trait-Plätze öffnen.",
+    "chapterBlurb_passive": "Der Bonus jeder Art – und was eine schimmernde Variante wirklich von einer gewöhnlichen trennt.",
+    "chapterBlurb_traits": "Was ein Trait ist, und warum ein nie eingesetztes Geniemon kein nutzloses Geniemon ist.",
+    "chapterBlurb_training": "Einen Trait von einem Geniemon auf ein anderes übertragen, seine Stufe heben, einen Platz sperren.",
+    "chapterBlurb_fusion": "Drei gleiche Traits ergeben einen der nächsthöheren Seltenheit: die genaue Rechnung und die sieben Ausnahmen.",
+    "chapterBlurb_shop": "Der Tauschhandel der Kopfgeld-Missionen, seine zwei aufeinander aufbauenden Währungen und die freie Wahl.",
+    "chapterBlurb_list": "Alle 29 Traits, nach den vier Kategorien des Spiels geordnet, mit Wirkung und Seltenheiten."
   }
 }
