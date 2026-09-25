@@ -1833,7 +1833,6 @@
     "imageFusion": "Fusión de tres Rasgos idénticos.",
     "imageLevelUp": "La pantalla de subida de nivel y lo que se puede dar.",
     "imageOverview": "La ficha de un Geniemon: nivel, rareza y pasiva.",
-    "imageReroll": "El relanzamiento de un Rasgo y sus probabilidades.",
     "imageTraitSlots": "Ranuras de Rasgo, abiertas por las ascensiones.",
     "intro": "Un Geniemon equipado otorga un bono pasivo a todo el equipo, más hasta cuatro Rasgos encima. Criarlo son, por tanto, dos tareas: la criatura y los Rasgos que lleva.",
     "listBody": "Las cuatro categorías siguientes son las del juego, cada una con su glifo. El color indica la rareza: azul, morado y dorado. Los glifos que preceden a cada Rasgo son las rarezas en las que existe.",
@@ -1851,8 +1850,6 @@
       "El nivel se topa en cada paso de ascensión. Sin ascender, la experiencia acumulada no sirve."
     ],
     "raiseTitle": "Subir de nivel",
-    "rerollBody": "Una ranura también puede relanzarse a cambio de recursos. No garantiza nada: saca una nueva rareza, y las probabilidades se inclinan claramente hacia los Rasgos azules.",
-    "rerollNote": "Siete Rasgos solo existen en dorado y no se obtienen por fusión: hay que encontrarlos tal cual.",
     "title": "Criar un Geniemon",
     "traitCount": "{count} Rasgos",
     "traitsActiveInactive": "Los Rasgos se recogen de los Geniemons inactivos, los que no mandas al combate. Un Geniemon inactivo nunca es inútil: es una reserva de Rasgos para los que sí juegas.",
@@ -1861,6 +1858,11 @@
     "flowActive": "Activo",
     "flowInactive": "Inactivos",
     "flowCaption": "Un Geniemon inactivo sirve de reserva: sus Rasgos pasan al que llevas al combate. La cuarta ranura solo existe en una variante reluciente.",
-    "listValueNote": "Los puntos suspensivos sustituyen a un valor numérico: sube con la rareza del Rasgo, y el juego solo lo muestra en la pieza misma."
+    "listValueNote": "Los puntos suspensivos sustituyen a un valor numérico: sube con la rareza del Rasgo, y el juego solo lo muestra en la pieza misma.",
+    "trainingTitle": "El Entrenamiento de Geniemon",
+    "trainingBody": "Un Rasgo no se sortea: se transmite. El Entrenamiento de Geniemon toma un Rasgo que lleva un Geniemon inactivo y se lo da a uno activo, y el Rasgo elegido sustituye al que ocupaba la ranura. Para eso sirven los inactivos, los que nunca llevas al combate.",
+    "trainingLevel": "El nivel de un Rasgo sube aparte, mediante Mejorar. Una ranura también puede bloquearse para no sobrescribirla por error, y el Compendio de Rasgos lo hace solo con los Rasgos que le señales.",
+    "imageTraining": "El Entrenamiento de Geniemon: pasar un Rasgo de un inactivo a uno activo.",
+    "goldOnlyNote": "Siete Rasgos solo existen en dorado y no se consiguen fusionando: hay que encontrarlos tal cual."
   }
 }

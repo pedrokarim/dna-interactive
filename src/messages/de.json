@@ -1833,7 +1833,6 @@
     "imageFusion": "Drei gleiche Traits verschmelzen.",
     "imageLevelUp": "Der Aufstufungsbildschirm und was gefüttert werden kann.",
     "imageOverview": "Die Seite eines Geniemons: Stufe, Seltenheit und Passiv.",
-    "imageReroll": "Einen Trait neu auswürfeln und seine Chancen.",
     "imageTraitSlots": "Trait-Plätze, durch Aufstiege geöffnet.",
     "intro": "Ein ausgerüsteter Geniemon gibt der ganzen Gruppe einen passiven Bonus, dazu bis zu vier Traits obendrauf. Ihn aufzuziehen sind daher zwei Aufgaben: das Wesen selbst und die Traits, die es trägt.",
     "listBody": "Die vier Kategorien unten stammen aus dem Spiel, jede mit ihrem eigenen Symbol. Die Farbe steht für die Seltenheit: Blau, Violett, Gold. Die Symbole vor einem Trait zeigen, in welchen Seltenheiten es ihn gibt.",
@@ -1851,8 +1850,6 @@
       "Die Stufe ist bei jedem Aufstiegsschritt gedeckelt. Ohne Aufstieg verpufft gesammelte Erfahrung."
     ],
     "raiseTitle": "Aufstufen",
-    "rerollBody": "Ein Platz lässt sich gegen Ressourcen neu auswürfeln. Das garantiert nichts: es zieht eine neue Seltenheit, und die Chancen neigen stark zu blauen Traits.",
-    "rerollNote": "Sieben Traits gibt es nur in Gold und nicht durch Verschmelzen: sie müssen so gefunden werden.",
     "title": "Einen Geniemon aufziehen",
     "traitCount": "{count} Traits",
     "traitsActiveInactive": "Traits stammen von inaktiven Geniemons, denen, die du nicht in den Kampf schickst. Ein inaktiver Geniemon ist also nie nutzlos: er ist ein Trait-Vorrat für die, die du wirklich spielst.",
@@ -1861,6 +1858,11 @@
     "flowActive": "Aktiv",
     "flowInactive": "Inaktiv",
     "flowCaption": "Ein inaktives Geniemon dient als Reservoir: Seine Traits gehen an das, welches du in den Kampf mitnimmst. Den vierten Platz gibt es nur bei einer schimmernden Variante.",
-    "listValueNote": "Die Auslassungspunkte stehen für einen Zahlenwert: Er steigt mit der Seltenheit des Traits, und das Spiel zeigt ihn nur am Teil selbst."
+    "listValueNote": "Die Auslassungspunkte stehen für einen Zahlenwert: Er steigt mit der Seltenheit des Traits, und das Spiel zeigt ihn nur am Teil selbst.",
+    "trainingTitle": "Geniemon-Training",
+    "trainingBody": "Ein Trait wird nicht ausgewürfelt, sondern weitergegeben. Das Geniemon-Training nimmt einen Trait von einem inaktiven Geniemon und überträgt ihn auf ein aktives; der gewählte Trait ersetzt den, der den Platz belegte. Genau dafür sind die inaktiven da, die nie in den Kampf ziehen.",
+    "trainingLevel": "Die Stufe eines Traits steigt getrennt davon über Aufwerten. Ein Platz lässt sich außerdem sperren, damit er nicht versehentlich überschrieben wird – das Trait-Kompendium tut das automatisch für die von dir markierten Traits.",
+    "imageTraining": "Geniemon-Training: einen Trait von einem inaktiven auf ein aktives Geniemon übertragen.",
+    "goldOnlyNote": "Sieben Traits gibt es nur in Gold und sie lassen sich daher nicht erfusionieren: Man muss sie so finden."
   }
 }

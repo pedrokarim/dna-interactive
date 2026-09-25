@@ -78,8 +78,8 @@ export const GENIMONS_GUIDE_SLOTS = [
   "traitSlots",
   /** La fusion de trois Traits identiques en un de rareté supérieure. */
   "fusion",
-  /** La relance d'un Trait, avec ses probabilités affichées. */
-  "reroll",
+  /** L'Entraînement de Géniemon : transmettre un Trait d'un inactif à un actif. */
+  "training",
 ] as const;
 
 export type GenimonsGuideSlot = (typeof GENIMONS_GUIDE_SLOTS)[number];

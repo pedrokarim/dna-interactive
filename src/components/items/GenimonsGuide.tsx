@@ -298,6 +298,20 @@ export async function GenimonsGuide({
         </div>
       </section>
 
+      {/* --------------------------------------- l'Entraînement de Géniemon */}
+      <section>
+        <DnaSectionLabel>{t("trainingTitle")}</DnaSectionLabel>
+        <div className="mt-4 grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)]">
+          <div className="space-y-3">
+            <p className="text-sm leading-relaxed text-parch/85">{t("trainingBody")}</p>
+            <p className="border-l-2 pl-3 text-sm text-parch/85" style={{ borderColor: GENIMON_ACCENT }}>
+              {t("trainingLevel")}
+            </p>
+          </div>
+          <GuideImageSlot slot="training" family="genimons" caption={t("imageTraining")} ratio="4 / 3" />
+        </div>
+      </section>
+
       {/* -------------------------------------------------- fusion, rareté */}
       <section>
         <DnaSectionLabel>{t("fusionTitle")}</DnaSectionLabel>
@@ -317,13 +331,9 @@ export async function GenimonsGuide({
               <TraitGlyph category="battle" rarity={5} size={30} />
               <span className="ml-2 text-xs text-muted-2">{t("fusionChainNote")}</span>
             </div>
-            <p className="text-sm leading-relaxed text-parch/85">{t("rerollBody")}</p>
+            <p className="text-sm leading-relaxed text-parch/85">{t("goldOnlyNote")}</p>
           </div>
           <GuideImageSlot slot="fusion" family="genimons" caption={t("imageFusion")} ratio="4 / 3" />
-        </div>
-        <div className="mt-5 grid gap-5 lg:grid-cols-2">
-          <GuideImageSlot slot="reroll" family="genimons" caption={t("imageReroll")} ratio="16 / 9" />
-          <p className="self-center text-sm text-muted">{t("rerollNote")}</p>
         </div>
       </section>
 

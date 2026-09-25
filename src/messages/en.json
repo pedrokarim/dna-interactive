@@ -1833,7 +1833,6 @@
     "imageFusion": "Fusing three identical Traits.",
     "imageLevelUp": "The levelling screen and what can be fed.",
     "imageOverview": "A Geniemon's page: level, rarity and passive.",
-    "imageReroll": "Rerolling a Trait and its odds.",
     "imageTraitSlots": "Trait slots, opened by ascensions.",
     "intro": "An equipped Geniemon grants a passive bonus to the whole party, plus up to four Traits stacked on top. Raising one is therefore two jobs: the creature itself, and the Traits it carries.",
     "listBody": "The four categories below are the game's own, each with its glyph. The colour carries the rarity: blue, purple, gold. The glyphs in front of a Trait are the rarities it comes in.",
@@ -1851,8 +1850,6 @@
       "The level is capped at each ascension step. Without ascending, gathered experience goes nowhere."
     ],
     "raiseTitle": "Levelling up",
-    "rerollBody": "A slot can also be rerolled for resources. A reroll guarantees nothing: it draws a new rarity, and the odds lean heavily towards blue Traits.",
-    "rerollNote": "Seven Traits exist only in gold and cannot be obtained by fusion: they must be found as they are.",
     "title": "Raising a Geniemon",
     "traitCount": "{count} Traits",
     "traitsActiveInactive": "Traits are harvested from inactive Geniemons, the ones you do not send into battle. An inactive Geniemon is therefore never useless: it is a reserve of Traits for the ones you actually play.",
@@ -1861,6 +1858,11 @@
     "flowActive": "Active",
     "flowInactive": "Inactive",
     "flowCaption": "An inactive Geniemon is a reservoir: its Traits go to the one you take into battle. The fourth slot exists only on a shining variant.",
-    "listValueNote": "The ellipsis stands in for a number: it rises with the Trait's rarity, and the game only shows it on the piece itself."
+    "listValueNote": "The ellipsis stands in for a number: it rises with the Trait's rarity, and the game only shows it on the piece itself.",
+    "trainingTitle": "Geniemon Training",
+    "trainingBody": "A Trait is not rolled, it is passed on. Geniemon Training takes a Trait held by an inactive Geniemon and gives it to an active one, and the Trait you pick replaces whatever occupied the slot. That is what inactive Geniemons are for, the ones you never take into battle.",
+    "trainingLevel": "A Trait's level is raised separately, through Raise. A slot can also be locked so it is not overwritten by mistake, and the Trait Compendium does this automatically for the Traits you mark.",
+    "imageTraining": "Geniemon Training: passing a Trait from an inactive Geniemon to an active one.",
+    "goldOnlyNote": "Seven Traits exist only in gold and therefore cannot be reached by merging: they have to be found as they are."
   }
 }
