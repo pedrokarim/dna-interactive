@@ -49,6 +49,19 @@ export function pickTraitText(text: Record<string, string>, lang: string): strin
   return text[upper] ?? text.EN ?? text.FR ?? Object.values(text)[0] ?? "";
 }
 
+/**
+ * Effet d'un Trait, prêt à afficher.
+ *
+ * Les descriptions portent un jeton `#1` à la place du chiffre : la valeur n'est
+ * pas dans les données de jeu lisibles, elle est résolue ailleurs, et elle varie
+ * de toute façon d'une rareté à l'autre. Laissé tel quel, `+#1` ressemble à un
+ * gabarit non substitué ; les points de suspension se lisent comme ce qu'ils
+ * sont, une valeur qui dépend de la rareté.
+ */
+export function formatTraitEffect(text: string): string {
+  return text.replace(/#\d+/g, "…");
+}
+
 /** Tous les traits d'une catégorie, triés par nom dans la langue demandée. */
 export function getTraitsByCategory(category: TraitCategory, lang: string): GenimonTrait[] {
   return ALL.filter((t) => t.category === category).sort((a, b) =>

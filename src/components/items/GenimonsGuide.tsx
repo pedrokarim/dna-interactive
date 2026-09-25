@@ -8,6 +8,7 @@ import {
   TRAIT_CATEGORIES,
   categoryIconSrc,
   countTraitsByCategory,
+  formatTraitEffect,
   fusionCostFromLowest,
   getTraitsByCategory,
   pickTraitText,
@@ -182,7 +183,7 @@ async function TraitTable({ category, gameLang, locale }: { category: TraitCateg
                 {rarities.map((r) => <TraitGlyph key={r} category={trait.category} rarity={r} />)}
               </span>
               <span className="min-w-[7rem] text-sm font-medium text-parch">{pickTraitText(trait.name, gameLang)}</span>
-              <span className="flex-1 text-sm text-parch/85">{pickTraitText(trait.effect, gameLang)}</span>
+              <span className="flex-1 text-sm text-parch/85">{formatTraitEffect(pickTraitText(trait.effect, gameLang))}</span>
               {trait.goldOnly ? (
                 <span className="shrink-0 rounded-sm border border-gold/35 px-2 py-0.5 text-[0.62rem] text-gold">
                   {t("goldOnly")}
@@ -330,6 +331,7 @@ export async function GenimonsGuide({
       <section>
         <DnaSectionLabel>{t("listTitle")}</DnaSectionLabel>
         <p className="mt-3 max-w-3xl text-sm leading-relaxed text-parch/85">{t("listBody")}</p>
+        <p className="mt-2 max-w-3xl text-xs text-muted-2">{t("listValueNote")}</p>
         <div className="mt-5 space-y-5">
           {TRAIT_CATEGORIES.map((category) => (
             <TraitTable key={category} category={category} gameLang={gameLang} locale={locale} />

@@ -1860,6 +1860,7 @@
     "traitsTitle": "Les Traits",
     "flowActive": "Actif",
     "flowInactive": "Inactifs",
-    "flowCaption": "Un Géniemon inactif sert de réservoir : ses Traits vont à celui qu'on emmène au combat. Le quatrième emplacement n'existe que sur une variante scintillante."
+    "flowCaption": "Un Géniemon inactif sert de réservoir : ses Traits vont à celui qu'on emmène au combat. Le quatrième emplacement n'existe que sur une variante scintillante.",
+    "listValueNote": "Les points de suspension remplacent une valeur chiffrée : elle monte avec la rareté du Trait, et le jeu ne l'affiche que sur la pièce elle-même."
   }
 }

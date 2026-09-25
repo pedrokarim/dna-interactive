@@ -1860,6 +1860,7 @@
     "traitsTitle": "Traits",
     "flowActive": "Active",
     "flowInactive": "Inactive",
-    "flowCaption": "An inactive Geniemon is a reservoir: its Traits go to the one you take into battle. The fourth slot exists only on a shining variant."
+    "flowCaption": "An inactive Geniemon is a reservoir: its Traits go to the one you take into battle. The fourth slot exists only on a shining variant.",
+    "listValueNote": "The ellipsis stands in for a number: it rises with the Trait's rarity, and the game only shows it on the piece itself."
   }
 }

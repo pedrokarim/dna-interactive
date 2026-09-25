@@ -1860,6 +1860,7 @@
     "traitsTitle": "Los Rasgos",
     "flowActive": "Activo",
     "flowInactive": "Inactivos",
-    "flowCaption": "Un Geniemon inactivo sirve de reserva: sus Rasgos pasan al que llevas al combate. La cuarta ranura solo existe en una variante reluciente."
+    "flowCaption": "Un Geniemon inactivo sirve de reserva: sus Rasgos pasan al que llevas al combate. La cuarta ranura solo existe en una variante reluciente.",
+    "listValueNote": "Los puntos suspensivos sustituyen a un valor numérico: sube con la rareza del Rasgo, y el juego solo lo muestra en la pieza misma."
   }
 }

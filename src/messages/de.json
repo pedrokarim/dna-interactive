@@ -1860,6 +1860,7 @@
     "traitsTitle": "Traits",
     "flowActive": "Aktiv",
     "flowInactive": "Inaktiv",
-    "flowCaption": "Ein inaktives Geniemon dient als Reservoir: Seine Traits gehen an das, welches du in den Kampf mitnimmst. Den vierten Platz gibt es nur bei einer schimmernden Variante."
+    "flowCaption": "Ein inaktives Geniemon dient als Reservoir: Seine Traits gehen an das, welches du in den Kampf mitnimmst. Den vierten Platz gibt es nur bei einer schimmernden Variante.",
+    "listValueNote": "Die Auslassungspunkte stehen für einen Zahlenwert: Er steigt mit der Seltenheit des Traits, und das Spiel zeigt ihn nur am Teil selbst."
   }
 }
