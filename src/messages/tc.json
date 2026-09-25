@@ -1293,7 +1293,7 @@
     "readStep2Text": "名稱旁的符號代表 Demon Wedge 的親和類型。",
     "readStep3Title": "3) 目前等級",
     "readStep3Text": "詳細頁的滑桿會改變動態數值 #1、#2、#3。",
-    "structureTitle": "1) Demon Wedge 的結構",
+    "structureTitle": "Demon Wedge 的結構",
     "structureItem1": "每個 Demon Wedge 都有名稱、說明、稀有度、親和與最高等級。",
     "structureItem2": "遊戲中顯示的名稱是 <c>Demon Wedge</c>。<c>MOD</c> 主要是部分內部資料使用的技術名詞。",
     "structureItem3": "文字（名稱、說明、被動效果）會依所選語言而變化。",
@@ -1311,17 +1311,17 @@
       "meleeUltra": "近戰 Ultra",
       "rangedUltra": "遠程 Ultra"
     },
-    "levelsTitle": "2) 等級與動態數值",
+    "levelsTitle": "等級與動態數值",
     "levelsText": "<c>#1</c>、<c>#2</c> 等數值會隨 Demon Wedge 的等級變化。詳細頁的滑桿會從成長表套用這些數值，並顯示所選等級下的效果。",
     "levelsDefault": "預設等級 = <c>0</c>（未強化）",
     "levelsMax": "最高等級 = <c>MaxLevel</c>",
-    "toleranceTitle": "3) 容許值 / 消耗",
+    "toleranceTitle": "容許值 / 消耗",
     "toleranceText": "顯示的容許值會隨等級變化。資料中公開的計算方式為：",
     "toleranceNote": "網站會預先計算各等級的數值，並存放於 <c>tolerance.valuesByLevel</c>。",
-    "multilangTitle": "4) 多語言",
+    "multilangTitle": "多語言",
     "multilangText": "在列表中：你可以同時顯示多種語言以比較名稱。在詳細頁：可選擇單一語言並透過網址分享。",
     "multilangNote": "目前可用的語言取決於該分類所載入的資料集。",
-    "displayTitle": "5) 網站顯示的內容",
+    "displayTitle": "網站顯示的內容",
     "displayItem1": "Demon Wedge 的一般資訊（名稱、稀有度、功能、說明）",
     "displayItem2": "透過滑桿呈現各等級的變化",
     "displayItem3": "親和與對應圖示",
@@ -1372,7 +1372,15 @@
     "metaModsDescription": "了解 Demon Wedge 的運作方式：等級、親和、容許值、翻譯與效果解讀。",
     "metaGenericDescription": "了解 {category} 的運作方式：等級、親和、容許值、翻譯與效果解讀。",
     "metaFallbackTitle": "道具指南",
-    "metaFallbackDescription": "Duet Night Abyss 道具分類說明文件。"
+    "metaFallbackDescription": "Duet Night Abyss 道具分類說明文件。",
+    "numbersTitle": "等級、數值與容許值",
+    "chapterBlurb_structure": "一個部件由什麼構成，以及讀懂它的三個要點。",
+    "chapterBlurb_affinity": "極性、屬性與適性：三類圖示，以及各自的限制。",
+    "chapterBlurb_numbers": "等級如何改變數值，以及部件消耗多少容許值。",
+    "chapterBlurb_tracks": "部件的軌道、它決定的成本，以及移動軌道的模組。",
+    "chapterBlurb_center": "中央格，遵循與其餘八格不同的規則。",
+    "chapterBlurb_stacking": "哪些部件可疊加、哪些不行，以及共用圖示的陷阱。",
+    "chapterBlurb_reading": "在站上分三步讀懂一個部件，以及各頁顯示什麼。"
   },
   "calamityGuide": {
     "metaTitle": "災厄武器指南",
@@ -1474,7 +1482,14 @@
       "血羽圍繞生命值與元素失序，最後以生命值上限+300%收尾。",
       "荊棘安魂曲把連段點數轉化為[消滅]，愈來愈強。"
     ],
-    "pathSeeCharacter": "特定角色的建議順序會顯示在該角色頁面的武器下方，直接標在樹狀圖上。"
+    "pathSeeCharacter": "特定角色的建議順序會顯示在該角色頁面的武器下方，直接標在樹狀圖上。",
+    "chapterBlurb_rules": "在投入任何資源之前：災厄武器與一般武器的差別。",
+    "chapterBlurb_obtain": "解鎖第一把的三個步驟，以及各自的條件。",
+    "chapterBlurb_furnace": "熔爐取代鍛造：融合如何運作，又免費開啟了什麼。",
+    "chapterBlurb_potential": "樹的形狀、每階免費的第一個選擇，以及第二個的代價。",
+    "chapterBlurb_path": "依武器與持有的角色，該走哪一條分支。",
+    "chapterBlurb_materials": "徽記與結晶：各素材在哪裡farm、出自哪個任務。",
+    "chapterBlurb_cost": "逐階、逐把武器的完整清單，依遊戲所載。"
   },
   "changelogEntries": {
     "v2_4_0": {

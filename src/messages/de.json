@@ -1293,7 +1293,7 @@
     "readStep2Text": "Das Symbol neben dem Namen zeigt den Affinitätstyp des Demon Wedge.",
     "readStep3Title": "3) Aktive Stufe",
     "readStep3Text": "Der Regler im Detail verändert die dynamischen Werte #1, #2, #3.",
-    "structureTitle": "1) Aufbau eines Demon Wedge",
+    "structureTitle": "Aufbau eines Demon Wedge",
     "structureItem1": "Jeder Demon Wedge hat einen Namen, eine Beschreibung, eine Seltenheit, eine Affinität und eine Maximalstufe.",
     "structureItem2": "Der im Spiel angezeigte Name ist <c>Demon Wedge</c>. <c>MOD</c> bleibt vor allem ein technischer Begriff in manchen internen Daten.",
     "structureItem3": "Die Texte (Name, Beschreibung, passive Effekte) ändern sich mit der gewählten Sprache.",
@@ -1311,17 +1311,17 @@
       "meleeUltra": "Nahkampf Ultra",
       "rangedUltra": "Fernkampf Ultra"
     },
-    "levelsTitle": "2) Stufen und dynamische Werte",
+    "levelsTitle": "Stufen und dynamische Werte",
     "levelsText": "Die Werte <c>#1</c>, <c>#2</c> usw. ändern sich mit der Stufe des Demon Wedge. Der Regler auf der Detailseite übernimmt diese Werte aus der Wachstumstabelle und zeigt den Effekt auf der gewählten Stufe.",
     "levelsDefault": "Standardstufe = <c>0</c> (Teil nicht ausgebaut)",
     "levelsMax": "Maximalstufe = <c>MaxLevel</c>",
-    "toleranceTitle": "3) Toleranz / Kosten",
+    "toleranceTitle": "Toleranz / Kosten",
     "toleranceText": "Die angezeigte Toleranz wächst mit der Stufe. Die in den Daten hinterlegte Berechnung lautet:",
     "toleranceNote": "Die Website berechnet die Werte pro Stufe vor und legt sie in <c>tolerance.valuesByLevel</c> ab.",
-    "multilangTitle": "4) Mehrsprachigkeit",
+    "multilangTitle": "Mehrsprachigkeit",
     "multilangText": "Im Raster: Du kannst mehrere Sprachen gleichzeitig einblenden, um Namen zu vergleichen. Im Detail: Eine einzelne Sprache lässt sich wählen und über die URL teilen.",
     "multilangNote": "Die aktuell verfügbaren Sprachen hängen vom geladenen Datensatz der Kategorie ab.",
-    "displayTitle": "5) Was die Website anzeigt",
+    "displayTitle": "Was die Website anzeigt",
     "displayItem1": "Allgemeine Demon-Wedge-Infos (Name, Seltenheit, Funktion, Beschreibung)",
     "displayItem2": "Entwicklung pro Stufe über den Regler",
     "displayItem3": "Affinität + zugehöriges Symbol",
@@ -1372,7 +1372,15 @@
     "metaModsDescription": "Verstehen, wie Demon Wedges funktionieren: Stufen, Affinität, Toleranz, Übersetzungen und das Lesen der Effekte.",
     "metaGenericDescription": "Verstehen, wie {category} funktioniert: Stufen, Affinität, Toleranz, Übersetzungen und das Lesen der Effekte.",
     "metaFallbackTitle": "Gegenstände-Guide",
-    "metaFallbackDescription": "Dokumentation der Gegenstandskategorien von Duet Night Abyss."
+    "metaFallbackDescription": "Dokumentation der Gegenstandskategorien von Duet Night Abyss.",
+    "numbersTitle": "Stufen, Werte und Toleranz",
+    "chapterBlurb_structure": "Woraus ein Teil besteht, und die drei Anhaltspunkte zum Lesen seines Datenblatts.",
+    "chapterBlurb_affinity": "Polaritäten, Elemente und Kompatibilitäten: die drei Symbolfamilien und was sie vorgeben.",
+    "chapterBlurb_numbers": "Was eine Stufe an den Werten ändert, und was das Teil an Toleranz kostet.",
+    "chapterBlurb_tracks": "Die Spur eines Teils, der Preis, den sie bestimmt, und das Modul, das sie verschiebt.",
+    "chapterBlurb_center": "Der mittlere Platz, für den andere Regeln gelten als für die übrigen acht.",
+    "chapterBlurb_stacking": "Welche Teile sich stapeln lassen, welche nicht, und die Falle der geteilten Symbole.",
+    "chapterBlurb_reading": "Ein Teil auf der Seite in drei Schritten lesen, und was die Datenblätter zeigen."
   },
   "calamityGuide": {
     "metaTitle": "Leitfaden zu Kalamitätswaffen",
@@ -1474,7 +1482,14 @@
       "Blutfeder dreht sich um LP und Elementare Unordnung und endet bei Max-LP +300 %.",
       "Dornenrequiem wandelt Combo-Punkte in [Auslöschung] um, immer stärker."
     ],
-    "pathSeeCharacter": "Die empfohlene Reihenfolge für einen Charakter steht auf seiner Seite, unter der Waffe, direkt am Baum."
+    "pathSeeCharacter": "Die empfohlene Reihenfolge für einen Charakter steht auf seiner Seite, unter der Waffe, direkt am Baum.",
+    "chapterBlurb_rules": "Was eine Unheilswaffe von einer gewöhnlichen unterscheidet, bevor man etwas in sie steckt.",
+    "chapterBlurb_obtain": "Die drei Schritte zur ersten Waffe, und was jeder davon verlangt.",
+    "chapterBlurb_furnace": "Der Ofen ersetzt die Schmiede: wie die Fusion funktioniert und was sie kostenlos öffnet.",
+    "chapterBlurb_potential": "Die Form des Baums, die erste freie Wahl je Stufe und der Preis der zweiten.",
+    "chapterBlurb_path": "Welchem Zweig man folgt, je nach Waffe und der Figur, die sie trägt.",
+    "chapterBlurb_materials": "Embleme und Kristalle: wo jedes Material zu farmen ist und aus welcher Mission.",
+    "chapterBlurb_cost": "Die vollständige Aufstellung, Stufe für Stufe und Waffe für Waffe, wie das Spiel sie nennt."
   },
   "changelogEntries": {
     "v2_4_0": {

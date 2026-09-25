@@ -43,12 +43,18 @@ export async function GuideLobby({
           </Link>
           <span className="inline-flex items-center gap-2 rounded-sm border border-white/10 bg-ink/60 px-3 py-1 text-xs text-parch">
             <BookOpenText className="h-3.5 w-3.5" style={{ color: accent }} />
-            {t("badge")}
+            {t(outline.badgeKey ?? "badge")}
           </span>
         </div>
 
         <h1 className="mt-5 font-display text-4xl text-parch md:text-5xl">{t("title")}</h1>
-        <p className="mt-4 max-w-3xl text-lg leading-relaxed text-parch/85">{t("intro")}</p>
+        {/*
+          Rendu riche : l'introduction des Demon Wedges porte une balise <mod>.
+          Fournir le gestionnaire ne gêne pas les guides qui n'en ont pas.
+        */}
+        <p className="mt-4 max-w-3xl text-lg leading-relaxed text-parch/85">
+          {t.rich("intro", { mod: (chunks) => <span style={{ color: accent }}>{chunks}</span> })}
+        </p>
 
         {children}
       </section>

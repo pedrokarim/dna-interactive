@@ -1293,7 +1293,7 @@
     "readStep2Text": "이름 옆의 기호가 Demon Wedge의 친화성 유형을 나타냅니다.",
     "readStep3Title": "3) 활성 레벨",
     "readStep3Text": "상세 페이지의 슬라이더로 동적 값 #1, #2, #3이 변합니다.",
-    "structureTitle": "1) Demon Wedge의 구조",
+    "structureTitle": "Demon Wedge의 구조",
     "structureItem1": "모든 Demon Wedge에는 이름, 설명, 등급, 친화성, 최대 레벨이 있습니다.",
     "structureItem2": "게임에 표시되는 이름은 <c>Demon Wedge</c>입니다. <c>MOD</c>는 주로 일부 내부 데이터에서 쓰이는 기술 용어입니다.",
     "structureItem3": "텍스트(이름, 설명, 패시브 효과)는 선택한 언어에 따라 달라집니다.",
@@ -1311,17 +1311,17 @@
       "meleeUltra": "근접 울트라",
       "rangedUltra": "원거리 울트라"
     },
-    "levelsTitle": "2) 레벨과 동적 값",
+    "levelsTitle": "레벨과 동적 값",
     "levelsText": "<c>#1</c>, <c>#2</c> 등의 값은 Demon Wedge의 레벨에 따라 달라집니다. 상세 페이지의 슬라이더는 성장 테이블에서 이 값을 적용해 선택한 레벨의 효과를 표시합니다.",
     "levelsDefault": "기본 레벨 = <c>0</c>(미강화 부품)",
     "levelsMax": "최대 레벨 = <c>MaxLevel</c>",
-    "toleranceTitle": "3) 허용치 / 비용",
+    "toleranceTitle": "허용치 / 비용",
     "toleranceText": "표시되는 허용치는 레벨에 따라 변합니다. 데이터에 공개된 계산식은 다음과 같습니다:",
     "toleranceNote": "사이트는 레벨별 값을 미리 계산해 <c>tolerance.valuesByLevel</c>에 저장합니다.",
-    "multilangTitle": "4) 다국어",
+    "multilangTitle": "다국어",
     "multilangText": "목록에서는 여러 언어를 동시에 표시해 이름을 비교할 수 있습니다. 상세에서는 하나의 언어를 선택해 URL로 공유할 수 있습니다.",
     "multilangNote": "현재 사용 가능한 언어는 카테고리별로 불러온 데이터셋에 따라 달라집니다.",
-    "displayTitle": "5) 사이트가 표시하는 정보",
+    "displayTitle": "사이트가 표시하는 정보",
     "displayItem1": "Demon Wedge 기본 정보(이름, 등급, 기능, 설명)",
     "displayItem2": "슬라이더를 통한 레벨별 변화",
     "displayItem3": "친화성 및 연결된 아이콘",
@@ -1372,7 +1372,15 @@
     "metaModsDescription": "Demon Wedge의 작동 방식 이해하기: 레벨, 친화성, 허용치, 번역, 효과 읽는 법.",
     "metaGenericDescription": "{category}의 작동 방식 이해하기: 레벨, 친화성, 허용치, 번역, 효과 읽는 법.",
     "metaFallbackTitle": "아이템 가이드",
-    "metaFallbackDescription": "Duet Night Abyss 아이템 카테고리 문서."
+    "metaFallbackDescription": "Duet Night Abyss 아이템 카테고리 문서.",
+    "numbersTitle": "레벨, 수치, 허용치",
+    "chapterBlurb_structure": "부품이 무엇으로 이루어졌는지, 그리고 정보를 읽는 세 가지 단서.",
+    "chapterBlurb_affinity": "극성, 속성, 적합성. 세 가지 아이콘 계열과 각각이 요구하는 것.",
+    "chapterBlurb_numbers": "레벨이 수치에 주는 변화와, 부품이 소모하는 허용치.",
+    "chapterBlurb_tracks": "부품의 트랙, 그것이 정하는 비용, 그리고 트랙을 옮기는 모듈.",
+    "chapterBlurb_center": "가운데 칸. 나머지 여덟 칸과 다른 규칙을 따릅니다.",
+    "chapterBlurb_stacking": "겹치는 부품과 겹치지 않는 부품, 그리고 공유 아이콘이라는 함정.",
+    "chapterBlurb_reading": "사이트에서 부품을 세 단계로 읽는 법과, 각 페이지가 보여 주는 것."
   },
   "calamityGuide": {
     "metaTitle": "재앙 무기 가이드",
@@ -1474,7 +1482,14 @@
       "핏빛 깃털은 HP와 원소 무질서를 중심으로 돌며 최대 HP +300%로 마무리됩니다.",
       "가시의 진혼곡은 콤보 포인트를 [소멸]로 바꾸며 점점 강해집니다."
     ],
-    "pathSeeCharacter": "특정 캐릭터의 추천 순서는 해당 캐릭터 페이지의 무기 아래, 트리 위에 표시됩니다."
+    "pathSeeCharacter": "특정 캐릭터의 추천 순서는 해당 캐릭터 페이지의 무기 아래, 트리 위에 표시됩니다.",
+    "chapterBlurb_rules": "투자하기 전에. 재앙 무기가 일반 무기와 무엇이 다른가.",
+    "chapterBlurb_obtain": "첫 무기를 여는 세 단계와, 각 단계가 요구하는 것.",
+    "chapterBlurb_furnace": "화로가 대장간을 대신합니다. 융합의 작동 방식과 무료로 열리는 것.",
+    "chapterBlurb_potential": "트리의 모양, 각 단계에서 무료인 첫 선택, 그리고 두 번째의 비용.",
+    "chapterBlurb_path": "무기와 그것을 드는 캐릭터에 따라 어느 가지를 따라갈 것인가.",
+    "chapterBlurb_materials": "문장과 결정. 각 재료를 어디서, 어떤 임무로 파밍하는가.",
+    "chapterBlurb_cost": "단계별·무기별 전체 내역을, 게임이 적은 그대로."
   },
   "changelogEntries": {
     "v2_4_0": {

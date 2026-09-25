@@ -1293,7 +1293,7 @@
     "readStep2Text": "El símbolo junto al nombre indica el tipo de afinidad del Demon Wedge.",
     "readStep3Title": "3) Nivel activo",
     "readStep3Text": "El deslizador del detalle hace variar los valores dinámicos #1, #2, #3.",
-    "structureTitle": "1) Estructura de un Demon Wedge",
+    "structureTitle": "Estructura de un Demon Wedge",
     "structureItem1": "Cada Demon Wedge tiene un nombre, una descripción, una rareza, una afinidad y un nivel máximo.",
     "structureItem2": "El nombre mostrado en el juego es <c>Demon Wedge</c>. <c>MOD</c> sigue siendo sobre todo un término técnico usado en algunos datos internos.",
     "structureItem3": "Los textos (nombre, descripción, efectos pasivos) cambian según el idioma seleccionado.",
@@ -1311,17 +1311,17 @@
       "meleeUltra": "Cuerpo a cuerpo Ultra",
       "rangedUltra": "A distancia Ultra"
     },
-    "levelsTitle": "2) Niveles y valores dinámicos",
+    "levelsTitle": "Niveles y valores dinámicos",
     "levelsText": "Los valores <c>#1</c>, <c>#2</c>, etc. cambian según el nivel del Demon Wedge. El deslizador de la página de detalle aplica esos valores desde la tabla de crecimiento y muestra el efecto en el nivel elegido.",
     "levelsDefault": "Nivel por defecto = <c>0</c> (pieza sin mejorar)",
     "levelsMax": "Nivel máximo = <c>MaxLevel</c>",
-    "toleranceTitle": "3) Tolerancia / coste",
+    "toleranceTitle": "Tolerancia / coste",
     "toleranceText": "La tolerancia mostrada evoluciona con el nivel. El cálculo expuesto en los datos es:",
     "toleranceNote": "El sitio precalcula los valores por nivel y los coloca en <c>tolerance.valuesByLevel</c>.",
-    "multilangTitle": "4) Multiidioma",
+    "multilangTitle": "Multiidioma",
     "multilangText": "En la cuadrícula: puedes mostrar varios idiomas a la vez para comparar nombres. En el detalle: se puede elegir un único idioma y compartirlo mediante la URL.",
     "multilangNote": "Los idiomas disponibles actualmente dependen del conjunto de datos cargado para la categoría.",
-    "displayTitle": "5) Lo que muestra el sitio",
+    "displayTitle": "Lo que muestra el sitio",
     "displayItem1": "Información general del Demon Wedge (nombre, rareza, función, descripción)",
     "displayItem2": "Evolución por nivel mediante el deslizador",
     "displayItem3": "Afinidad + icono asociado",
@@ -1372,7 +1372,15 @@
     "metaModsDescription": "Entender cómo funcionan los Demon Wedges: niveles, afinidad, tolerancia, traducciones y lectura de los efectos.",
     "metaGenericDescription": "Entender cómo funciona {category}: niveles, afinidad, tolerancia, traducciones y lectura de los efectos.",
     "metaFallbackTitle": "Guía de objetos",
-    "metaFallbackDescription": "Documentación de las categorías de objetos de Duet Night Abyss."
+    "metaFallbackDescription": "Documentación de las categorías de objetos de Duet Night Abyss.",
+    "numbersTitle": "Niveles, valores y tolerancia",
+    "chapterBlurb_structure": "De qué se compone una pieza, y las tres referencias para leer su ficha.",
+    "chapterBlurb_affinity": "Polaridades, elementos y compatibilidades: las tres familias de iconos y lo que imponen.",
+    "chapterBlurb_numbers": "Lo que un nivel cambia en los valores, y lo que la pieza cuesta en tolerancia.",
+    "chapterBlurb_tracks": "La vía de una pieza, el coste que decide, y el módulo que la desplaza.",
+    "chapterBlurb_center": "La casilla central, que sigue reglas distintas de las otras ocho.",
+    "chapterBlurb_stacking": "Qué piezas se acumulan, cuáles no, y la trampa de los iconos compartidos.",
+    "chapterBlurb_reading": "Leer una pieza en el sitio en tres pasos, y lo que muestran las fichas."
   },
   "calamityGuide": {
     "metaTitle": "Guía de armas de calamidad",
@@ -1474,7 +1482,14 @@
       "Pluma sanguina gira en torno a los PV y el Desorden elemental, y acaba en PV máx. +300 %.",
       "Réquiem de espinas convierte los puntos de Combo en [Extinción], cada vez más fuerte."
     ],
-    "pathSeeCharacter": "El orden recomendado para un personaje aparece en su ficha, bajo el arma, directamente en el árbol."
+    "pathSeeCharacter": "El orden recomendado para un personaje aparece en su ficha, bajo el arma, directamente en el árbol.",
+    "chapterBlurb_rules": "Lo que distingue un arma de calamidad de una corriente, antes de invertir nada en ella.",
+    "chapterBlurb_obtain": "Los tres pasos para desbloquear la primera, y lo que pide cada uno.",
+    "chapterBlurb_furnace": "El Horno sustituye a la forja: cómo funciona la fusión y qué abre gratis.",
+    "chapterBlurb_potential": "La forma del árbol, la primera elección gratuita de cada nivel y lo que cuesta la segunda.",
+    "chapterBlurb_path": "Qué rama seguir según el arma y el personaje que la lleva.",
+    "chapterBlurb_materials": "Emblemas y cristales: dónde se farmea cada material y en qué misión.",
+    "chapterBlurb_cost": "El desglose completo, nivel a nivel y arma a arma, tal como lo indica el juego."
   },
   "changelogEntries": {
     "v2_4_0": {

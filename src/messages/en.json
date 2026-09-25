@@ -1293,7 +1293,7 @@
     "readStep2Text": "The symbol next to the name shows the Demon Wedge affinity type.",
     "readStep3Title": "3) Active level",
     "readStep3Text": "The detail slider changes the dynamic values #1, #2, #3.",
-    "structureTitle": "1) Structure of a Demon Wedge",
+    "structureTitle": "Structure of a Demon Wedge",
     "structureItem1": "Every Demon Wedge has a name, a description, a rarity, an affinity and a max level.",
     "structureItem2": "The name shown in game is <c>Demon Wedge</c>. <c>MOD</c> remains mostly a technical term used in some internal data.",
     "structureItem3": "Texts (name, description, passive effects) change with the selected language.",
@@ -1311,17 +1311,17 @@
       "meleeUltra": "Melee Ultra",
       "rangedUltra": "Ranged Ultra"
     },
-    "levelsTitle": "2) Levels and dynamic values",
+    "levelsTitle": "Levels and dynamic values",
     "levelsText": "The values <c>#1</c>, <c>#2</c>, etc. change with the Demon Wedge level. The slider on the detail page applies those values from the growth table and shows the effect at the chosen level.",
     "levelsDefault": "Default level = <c>0</c> (piece not upgraded)",
     "levelsMax": "Max level = <c>MaxLevel</c>",
-    "toleranceTitle": "3) Tolerance / cost",
+    "toleranceTitle": "Tolerance / cost",
     "toleranceText": "The displayed tolerance scales with level. The formula exposed in the data is:",
     "toleranceNote": "The site pre-computes per-level values and stores them in <c>tolerance.valuesByLevel</c>.",
-    "multilangTitle": "4) Multi-language",
+    "multilangTitle": "Multi-language",
     "multilangText": "On the grid: you can show several languages at once to compare names. On the detail: a single language can be picked and shared through the URL.",
     "multilangNote": "The languages currently available depend on the dataset loaded for the category.",
-    "displayTitle": "5) What the site displays",
+    "displayTitle": "What the site displays",
     "displayItem1": "General Demon Wedge info (name, rarity, function, description)",
     "displayItem2": "Per-level progression via the slider",
     "displayItem3": "Affinity + matching icon",
@@ -1372,7 +1372,15 @@
     "metaModsDescription": "Understand how Demon Wedges work: levels, affinity, tolerance, translations and reading the effects.",
     "metaGenericDescription": "Understand how {category} works: levels, affinity, tolerance, translations and reading the effects.",
     "metaFallbackTitle": "Items guide",
-    "metaFallbackDescription": "Documentation of the Duet Night Abyss item categories."
+    "metaFallbackDescription": "Documentation of the Duet Night Abyss item categories.",
+    "numbersTitle": "Levels, values and tolerance",
+    "chapterBlurb_structure": "What a piece is made of, and the three markers for reading its sheet.",
+    "chapterBlurb_affinity": "Polarities, elements and compatibilities: the three icon families, and what they impose.",
+    "chapterBlurb_numbers": "What a level changes in the values, and what the piece costs in tolerance.",
+    "chapterBlurb_tracks": "A piece's track, the cost it decides, and the module that moves it.",
+    "chapterBlurb_center": "The centre slot, which follows different rules from the other eight.",
+    "chapterBlurb_stacking": "Which pieces stack, which do not, and the trap of shared icons.",
+    "chapterBlurb_reading": "Reading a piece on the site in three steps, and what the sheets show."
   },
   "calamityGuide": {
     "metaTitle": "Calamity Weapons guide",
@@ -1474,7 +1482,14 @@
       "Sanguine Plume revolves around HP and Elemental Disorder, ending on Max HP +300%.",
       "Thorned Requiem turns Combo points into [Extinction], harder and harder."
     ],
-    "pathSeeCharacter": "The recommended order for a given character is shown on their page, under the weapon, right on the tree."
+    "pathSeeCharacter": "The recommended order for a given character is shown on their page, under the weapon, right on the tree.",
+    "chapterBlurb_rules": "What sets a calamity weapon apart from an ordinary one, before you invest anything in it.",
+    "chapterBlurb_obtain": "The three steps to unlock your first one, and what each of them asks for.",
+    "chapterBlurb_furnace": "The Furnace replaces the forge: how fusion works, and what it opens for free.",
+    "chapterBlurb_potential": "The shape of the tree, the first pick offered at each tier, and what the second one costs.",
+    "chapterBlurb_path": "Which branch to follow, depending on the weapon and the character carrying it.",
+    "chapterBlurb_materials": "Emblems and crystals: where each material is farmed, and from which mission.",
+    "chapterBlurb_cost": "The full breakdown, tier by tier and weapon by weapon, as the game states it."
   },
   "changelogEntries": {
     "v2_4_0": {

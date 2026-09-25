@@ -1293,7 +1293,7 @@
     "readStep2Text": "名前の横の記号が Demon Wedge の親和性タイプを示します。",
     "readStep3Title": "3) 有効レベル",
     "readStep3Text": "詳細ページのスライダーで動的な値 #1、#2、#3 が変化します。",
-    "structureTitle": "1) Demon Wedge の構造",
+    "structureTitle": "Demon Wedge の構造",
     "structureItem1": "各 Demon Wedge には名称、説明、レアリティ、親和性、最大レベルがあります。",
     "structureItem2": "ゲーム内で表示される名称は <c>Demon Wedge</c> です。<c>MOD</c> は主に一部の内部データで使われる技術用語です。",
     "structureItem3": "テキスト（名称、説明、パッシブ効果）は選択した言語に応じて変わります。",
@@ -1311,17 +1311,17 @@
       "meleeUltra": "近接ウルトラ",
       "rangedUltra": "遠距離ウルトラ"
     },
-    "levelsTitle": "2) レベルと動的な値",
+    "levelsTitle": "レベルと動的な値",
     "levelsText": "<c>#1</c>、<c>#2</c> などの値は Demon Wedge のレベルに応じて変化します。詳細ページのスライダーは成長テーブルからこれらの値を適用し、選択したレベルでの効果を表示します。",
     "levelsDefault": "初期レベル = <c>0</c>（未強化）",
     "levelsMax": "最大レベル = <c>MaxLevel</c>",
-    "toleranceTitle": "3) 許容値 / コスト",
+    "toleranceTitle": "許容値 / コスト",
     "toleranceText": "表示される許容値はレベルとともに変化します。データ上の計算式は次のとおりです：",
     "toleranceNote": "本サイトはレベルごとの値を事前計算し、<c>tolerance.valuesByLevel</c> に格納しています。",
-    "multilangTitle": "4) 多言語対応",
+    "multilangTitle": "多言語対応",
     "multilangText": "一覧では複数の言語を同時に表示して名称を比較できます。詳細では単一の言語を選び、URL で共有できます。",
     "multilangNote": "現在利用できる言語は、カテゴリーごとに読み込まれるデータセットに依存します。",
-    "displayTitle": "5) 本サイトの表示内容",
+    "displayTitle": "本サイトの表示内容",
     "displayItem1": "Demon Wedge の基本情報（名称、レアリティ、機能、説明）",
     "displayItem2": "スライダーによるレベルごとの変化",
     "displayItem3": "親和性と対応アイコン",
@@ -1372,7 +1372,15 @@
     "metaModsDescription": "Demon Wedge の仕組みを理解する：レベル、親和性、許容値、翻訳、効果の読み方。",
     "metaGenericDescription": "{category} の仕組みを理解する：レベル、親和性、許容値、翻訳、効果の読み方。",
     "metaFallbackTitle": "アイテムガイド",
-    "metaFallbackDescription": "Duet Night Abyss のアイテムカテゴリー資料。"
+    "metaFallbackDescription": "Duet Night Abyss のアイテムカテゴリー資料。",
+    "numbersTitle": "レベル・数値・許容値",
+    "chapterBlurb_structure": "パーツが何でできているか、そして詳細を読む3つの手がかり。",
+    "chapterBlurb_affinity": "極性・属性・適性。3種のアイコンと、それぞれが課す条件。",
+    "chapterBlurb_numbers": "レベルが数値に与える変化と、パーツが消費する許容値。",
+    "chapterBlurb_tracks": "パーツのトラック、それが決める費用、そしてトラックを動かすモジュール。",
+    "chapterBlurb_center": "中央のマス。ほかの8つとは別の規則に従います。",
+    "chapterBlurb_stacking": "重ねられるパーツとそうでないパーツ、そして共有アイコンという落とし穴。",
+    "chapterBlurb_reading": "サイト上でパーツを3段階で読む方法と、各ページの表示内容。"
   },
   "calamityGuide": {
     "metaTitle": "災厄武器ガイド",
@@ -1474,7 +1482,14 @@
       "血の羽根はHPと元素ディスオーダーが軸で、最大HP+300%で締めます。",
       "棘の鎮魂歌はコンボポイントを[消滅]に変え、次第に強化します。"
     ],
-    "pathSeeCharacter": "特定のキャラクターの推奨順は、そのページの武器の下、ツリー上に表示されます。"
+    "pathSeeCharacter": "特定のキャラクターの推奨順は、そのページの武器の下、ツリー上に表示されます。",
+    "chapterBlurb_rules": "投資する前に。災厄武器が通常の武器と何が違うのか。",
+    "chapterBlurb_obtain": "最初の1本を解放する3つの手順と、それぞれに必要なもの。",
+    "chapterBlurb_furnace": "炉が鍛冶を置き換えます。融合の仕組みと、無償で開く分について。",
+    "chapterBlurb_potential": "ツリーの形、各段階で無償になる最初の選択、そして2つ目の費用。",
+    "chapterBlurb_path": "武器と、それを持つキャラクターに応じてどの枝を伸ばすか。",
+    "chapterBlurb_materials": "紋章と結晶。各素材がどこで、どの任務から手に入るか。",
+    "chapterBlurb_cost": "段階ごと・武器ごとの内訳を、ゲームの表記どおりに。"
   },
   "changelogEntries": {
     "v2_4_0": {

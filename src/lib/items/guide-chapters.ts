@@ -25,6 +25,13 @@ export interface GuideOutline {
   namespace: string;
   /** Couleur d'accent, alignée sur la catégorie. */
   accent: string;
+  /** Clé du libellé « Guide », qui n'a pas le même nom partout. */
+  badgeKey?: string;
+  /**
+   * Clé de la description des métadonnées. Par défaut l'introduction – mais
+   * celle des Demon Wedges porte une balise riche, illisible en texte simple.
+   */
+  descriptionKey?: string;
   chapters: GuideChapter[];
 }
 
@@ -45,6 +52,38 @@ const OUTLINES: Record<string, GuideOutline> = {
       chapter("fusion", "fusionTitle"),
       chapter("shop", "shopTitle"),
       chapter("list", "listTitle"),
+    ],
+  },
+
+  weapons: {
+    namespace: "calamityGuide",
+    accent: "var(--color-crimson-bright)",
+    descriptionKey: "metaDescription",
+    chapters: [
+      chapter("rules", "rulesTitle"),
+      chapter("obtain", "obtainTitle"),
+      chapter("furnace", "furnaceTitle"),
+      chapter("potential", "potentialTitle"),
+      chapter("path", "pathTitle"),
+      chapter("materials", "materialsTitle"),
+      chapter("cost", "costTitle"),
+    ],
+  },
+
+  mods: {
+    namespace: "itemsAbout",
+    accent: "var(--color-hydro)",
+    badgeKey: "guideBadge",
+    descriptionKey: "metaModsDescription",
+    chapters: [
+      chapter("structure", "structureTitle"),
+      chapter("affinity", "affinityTitle"),
+      // Niveaux et tolérance vont ensemble : l'un ne se comprend pas sans l'autre.
+      chapter("numbers", "numbersTitle"),
+      chapter("tracks", "trackTitle"),
+      chapter("center", "centerTitle"),
+      chapter("stacking", "stackTitle"),
+      chapter("reading", "quickTitle"),
     ],
   },
 };

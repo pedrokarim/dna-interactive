@@ -3,7 +3,9 @@ import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "@/i18n/navigation";
+import { CalamityWeaponsGuideChapter } from "@/components/items/CalamityWeaponsGuide";
 import { GenimonsGuideChapter } from "@/components/items/GenimonsGuide";
+import { ModsGuideChapter } from "@/components/items/ModsGuide";
 import { GuideChapterNav } from "@/components/items/GuideChapterNav";
 import { getItemCategoryBySlug } from "@/lib/items/catalog";
 import {
@@ -102,6 +104,15 @@ export default async function GuideChapterPage({ params }: ChapterPageProps) {
           gameLang={toGameDataLangCode(toLocale(locale))}
           locale={locale}
         />
+      ) : category.id === "weapons" ? (
+        <CalamityWeaponsGuideChapter
+          chapter={chapter.slug}
+          categorySlug={category.slug}
+          gameLang={toGameDataLangCode(toLocale(locale))}
+          locale={locale}
+        />
+      ) : category.id === "mods" ? (
+        <ModsGuideChapter chapter={chapter.slug} categorySlug={category.slug} locale={locale} />
       ) : null}
 
       <GuideChapterNav
