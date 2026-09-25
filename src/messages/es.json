@@ -167,7 +167,7 @@
     "builderSpotlightDescription": "Elige un personaje, combina armas, Demon Wedges, genimons y prioridades, y publica tus configuraciones para la comunidad.",
     "builderSpotlightCta": "Abrir builder",
     "builderSpotlightExploreCta": "Ver builds",
-    "builderSpotlightCategories": "Personajes • Armas • Demon Wedges • Genimons",
+    "builderSpotlightCategories": "Personajes • Armas • Demon Wedges • Geniemons",
     "featuresTitle": "Características",
     "featureMapTitle": "Mapa Interactivo Completo",
     "featureMapDescription": "Mapa completo que cubre las 8 regiones del juego.",
@@ -187,7 +187,7 @@
     "buildCardsExample": "Ejemplo con Psyche",
     "buildCardsExampleAria": "Ver un ejemplo de tarjeta de build (Psyche)",
     "showcaseTitle": "Comparte tus builds con estilo",
-    "showcaseDescription": "Tarjetas de build exportables en PNG, directamente en cada ficha de personaje. Armas, Demon Wedges, Genimons, prioridades de estadísticas y equipo recomendado, todo en un visual.",
+    "showcaseDescription": "Tarjetas de build exportables en PNG, directamente en cada ficha de personaje. Armas, Demon Wedges, Geniemons, prioridades de estadísticas y equipo recomendado, todo en un visual.",
     "viewAllCharacters": "Ver todos los personajes",
     "velkaineAlt": "Velkaine — streamer y creador de contenido de Duet Night Abyss",
     "viewBuildOf": "Ver la build de {name}",
@@ -650,8 +650,8 @@
     "statsPriorityTitle": "Prioridad de stats",
     "teamTitle": "Composición de equipo",
     "teamCharNotFound": "Personaje no encontrado",
-    "genimonTitle": "Genimon",
-    "genimonNotFound": "Genimon no encontrado",
+    "genimonTitle": "Geniemon",
+    "genimonNotFound": "Geniemon no encontrado",
     "skillPriorityTitle": "Prioridad de skills",
     "notesTitle": "Notas",
     "previousCharacter": "Personaje anterior: {name}",
@@ -933,7 +933,7 @@
     "pickRangedWeapon": "Elegir un arma a distancia",
     "demonWedges": "Demon Wedges",
     "consonance": "Consonancia",
-    "genimons": "Genimons",
+    "genimons": "Geniemons",
     "pickGenimon": "Elegir un genimon",
     "priorities": "Prioridades",
     "stats": "Estadísticas",
@@ -1329,7 +1329,7 @@
     "itemsDescription": "Mods, Demon Wedges, recursos y pesca.",
     "weaponsTitle": "Armas de calamidad",
     "weaponsDescription": "Armas Hyper, árboles de potenciales y pasivas.",
-    "genimonsTitle": "Genimons",
+    "genimonsTitle": "Geniemons",
     "genimonsDescription": "Compañeros equipables de nivel 60 y sus estadísticas.",
     "buildBuilderTitle": "Creador de builds",
     "buildBuilderDescription": "Combina armas, Demon Wedges y consonancias.",
@@ -1659,9 +1659,9 @@
     },
     "v2_1_0": {
       "title": "Builder de builds comunitarios: crea, comparte y vota",
-      "description": "Nueva plataforma comunitaria: compón tus propios builds (personaje, Demon Wedges, Genimon, arma, habilidades y equipo), publícalos con tu cuenta de Discord y luego explora y vota los builds de otros jugadores. Builds de Demon Wedges para las 65 armas, compartición de tarjetas y un gran avance en accesibilidad y traducción.",
+      "description": "Nueva plataforma comunitaria: compón tus propios builds (personaje, Demon Wedges, Geniemon, arma, habilidades y equipo), publícalos con tu cuenta de Discord y luego explora y vota los builds de otros jugadores. Builds de Demon Wedges para las 65 armas, compartición de tarjetas y un gran avance en accesibilidad y traducción.",
       "items": [
-        "🛠️ Nuevo Builder: compón un build completo (Demon Wedges, Genimon, arma, habilidades, equipo de 3) y publícalo",
+        "🛠️ Nuevo Builder: compón un build completo (Demon Wedges, Geniemon, arma, habilidades, equipo de 3) y publícalo",
         "🔐 Inicio de sesión con Discord para publicar y votar; hasta 3 builds por personaje",
         "🌐 Hub comunitario /builds: búsqueda, filtros (personaje, elemento, etiquetas), orden y paginación",
         "📄 Página propia y compartible para cada build (/builds/[id])",
@@ -1708,7 +1708,7 @@
         "🎚️ Deslizador de nivel de habilidad (1-20) que recalcula en directo los valores dependientes del nivel mediante SkillGrow",
         "🧩 Iconos de habilidad en línea y equipo recomendado en la tarjeta de build",
         "🪄 Nuevo componente CursorTooltip: sigue al cursor en escritorio, alterna con clic en móvil, insertado por portal en body",
-        "🛡️ Tooltips de cursor en armas, Genimons y ranuras de Demon Wedge (centro incluido) de la tarjeta de build",
+        "🛡️ Tooltips de cursor en armas, Geniemons y ranuras de Demon Wedge (centro incluido) de la tarjeta de build",
         "🏷️ Habilidades: fórmulas de daño evaluadas nivel por nivel, valores mostrados en cada rango"
       ]
     },
@@ -1730,14 +1730,14 @@
       ]
     },
     "v1_7_0": {
-      "title": "Actualización v1.3 del juego y variantes de Genimons",
-      "description": "Datos del sitio actualizados a la versión 1.3 del juego, nuevos personajes y sistema de variantes para los Genimons.",
+      "title": "Actualización v1.3 del juego y variantes de Geniemons",
+      "description": "Datos del sitio actualizados a la versión 1.3 del juego, nuevos personajes y sistema de variantes para los Geniemons.",
       "items": [
         "🔄 Todos los datos del sitio alineados con la versión 1.3 del juego",
         "👤 Añadida Su Yi (completa, con retratos y habilidades) y Flora (datos, aún sin lanzar)",
         "🎭 Completada Camilla (estadísticas, traducciones, retratos, habilidades)",
-        "🐾 Sistema de variantes de Genimons: cada especie muestra sus variantes con navegación cruzada",
-        "✨ Insignia Premium dorada para las variantes shiny de los Genimons",
+        "🐾 Sistema de variantes de Geniemons: cada especie muestra sus variantes con navegación cruzada",
+        "✨ Insignia Premium dorada para las variantes shiny de los Geniemons",
         "🎣 Añadidos nuevos peces de la región Este (Haojing)",
         "📦 Actualización de todos los objetos, mods y recursos con los datos v1.3",
         "🌐 Corrección de las traducciones al español (Hyperboreano → Hiporboreo)"
@@ -1774,7 +1774,7 @@
         "👤 Catálogo de todos los personajes jugables con ficha detallada",
         "📊 Estadísticas por nivel con curvas de crecimiento y fórmulas",
         "🎣 Nueva categoría Pesca",
-        "🐾 Corrección de los valores dinámicos de las pasivas de los Genimons",
+        "🐾 Corrección de los valores dinámicos de las pasivas de los Geniemons",
         "🌐 Etiquetas de claves de texto contextualizadas por categoría de objeto"
       ]
     },
