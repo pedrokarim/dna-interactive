@@ -1,0 +1,1237 @@
+{
+  "traits": [
+    {
+      "key": "UI_PetEntry_Title03",
+      "category": "battle",
+      "battlePetId": 1003,
+      "attributes": [
+        "ExpRate"
+      ],
+      "name": {
+        "FR": "Sage",
+        "EN": "Wise",
+        "DE": "Weise",
+        "ES": "Sabio",
+        "JP": "聡明",
+        "KR": "총명",
+        "TC": "聰慧"
+      },
+      "effect": {
+        "FR": "EXP obtenue en vainquant des ennemis +#1",
+        "EN": "EXP gained by defeating enemies +#1",
+        "DE": "Erhaltene EP durch das Besiegen von Gegnern +#1",
+        "ES": "EXP obtenida al derrotar enemigos +#1",
+        "JP": "敵撃破による経験値+#1",
+        "KR": "적 처치 시 획득하는 경험치+#1",
+        "TC": "擊倒敵人獲得的經驗+#1"
+      },
+      "tiers": [
+        {
+          "rarity": 3,
+          "entryId": 10031,
+          "fuseCount": 3,
+          "fuseInto": 10032
+        },
+        {
+          "rarity": 4,
+          "entryId": 10032,
+          "fuseCount": 3,
+          "fuseInto": 10033
+        },
+        {
+          "rarity": 5,
+          "entryId": 10033,
+          "fuseCount": null,
+          "fuseInto": null
+        }
+      ],
+      "goldOnly": false
+    },
+    {
+      "key": "UI_PetEntry_Title04",
+      "category": "battle",
+      "battlePetId": 1004,
+      "attributes": [
+        "AdditionalRecoverTime"
+      ],
+      "name": {
+        "FR": "Tenace",
+        "EN": "Tenacious",
+        "DE": "Zäh",
+        "ES": "Tenaz",
+        "JP": "不屈",
+        "KR": "완강",
+        "TC": "頑強"
+      },
+      "effect": {
+        "FR": "Tentatives de réanimation +#1",
+        "EN": "Revival Attempt +#1",
+        "DE": "Wiederbelebungsversuch +#1",
+        "ES": "Intento de Resurrección +#1",
+        "JP": "復活回数+#1",
+        "KR": "부활 횟수+#1",
+        "TC": "復蘇次數+#1"
+      },
+      "tiers": [
+        {
+          "rarity": 5,
+          "entryId": 10041,
+          "fuseCount": null,
+          "fuseInto": null
+        }
+      ],
+      "goldOnly": true
+    },
+    {
+      "key": "UI_PetEntry_Title14",
+      "category": "battle",
+      "battlePetId": 1014,
+      "attributes": [
+        "SupportSkillCD"
+      ],
+      "name": {
+        "FR": "Perspicace",
+        "EN": "Keen",
+        "DE": "Scharfsinnig",
+        "ES": "Perspicaz",
+        "JP": "鋭敏",
+        "KR": "예민",
+        "TC": "敏銳"
+      },
+      "effect": {
+        "FR": "Temps de recharge des compétences de soutien -#1",
+        "EN": "Support Skill CD -#1",
+        "DE": "Abk. der Unterstützungsfähigkeit -#1",
+        "ES": "Tiempo de Recarga de Habilidad de Apoyo -#1",
+        "JP": "支援スキルのクールダウン#1減少",
+        "KR": "지원 스킬 쿨타임 시간 감소 #1",
+        "TC": "支援技能冷卻時間減少#1"
+      },
+      "tiers": [
+        {
+          "rarity": 3,
+          "entryId": 10141,
+          "fuseCount": 3,
+          "fuseInto": 10142
+        },
+        {
+          "rarity": 4,
+          "entryId": 10142,
+          "fuseCount": 3,
+          "fuseInto": 10143
+        },
+        {
+          "rarity": 5,
+          "entryId": 10143,
+          "fuseCount": null,
+          "fuseInto": null
+        }
+      ],
+      "goldOnly": false
+    },
+    {
+      "key": "UI_PetEntry_Title18",
+      "category": "battle",
+      "battlePetId": 1018,
+      "attributes": [],
+      "name": {
+        "FR": "Discipliné",
+        "EN": "Disciplined",
+        "ES": "Disciplinado",
+        "JP": "自制心",
+        "KR": "자제",
+        "TC": "勤奮"
+      },
+      "effect": {
+        "FR": "Le Soutien de Géniemon est automatiquement déclenché dès qu’il est disponible.",
+        "EN": "Automatically casts Geniemon Support when it is off cooldown",
+        "ES": "Lanza automáticamente Soporte de Geniemon cuando esté disponible tras el enfriamiento.",
+        "JP": "クールダウン終了時、自動的にジェネモン支援を発動する",
+        "KR": "마령 지원은 쿨타임 종료 시 자동으로 발동할 수 있습니다.",
+        "TC": "魔靈支援在冷卻可用時自動釋放"
+      },
+      "tiers": [
+        {
+          "rarity": 5,
+          "entryId": 10181,
+          "fuseCount": null,
+          "fuseInto": null
+        }
+      ],
+      "goldOnly": true
+    },
+    {
+      "key": "UI_PetEntry_Title19",
+      "category": "battle",
+      "battlePetId": 1019,
+      "attributes": [
+        "SkillIntensity"
+      ],
+      "name": {
+        "FR": "Brutal",
+        "EN": "Brutal",
+        "ES": "Brutal",
+        "JP": "乱暴",
+        "KR": "난폭",
+        "TC": "蠻橫"
+      },
+      "effect": {
+        "FR": "Puissance de compétence +#1",
+        "EN": "Skill Intensity +#1",
+        "ES": "Daño de Habilidad +#1",
+        "JP": "スキル威力+#1",
+        "KR": "스킬 위력+#1",
+        "TC": "技能威力+#1"
+      },
+      "tiers": [
+        {
+          "rarity": 3,
+          "entryId": 10191,
+          "fuseCount": 3,
+          "fuseInto": 10192
+        },
+        {
+          "rarity": 4,
+          "entryId": 10192,
+          "fuseCount": 3,
+          "fuseInto": 10193
+        },
+        {
+          "rarity": 5,
+          "entryId": 10193,
+          "fuseCount": null,
+          "fuseInto": null
+        }
+      ],
+      "goldOnly": false
+    },
+    {
+      "key": "UI_PetEntry_Title20",
+      "category": "battle",
+      "battlePetId": 1020,
+      "attributes": [
+        "SkillRange"
+      ],
+      "name": {
+        "FR": "Cupide",
+        "EN": "Greedy",
+        "ES": "Codicioso",
+        "JP": "強欲",
+        "KR": "욕심",
+        "TC": "貪心"
+      },
+      "effect": {
+        "FR": "Portée de compétence +#1",
+        "EN": "Skill Range +#1",
+        "ES": "Rango de Habilidad +#1",
+        "JP": "スキル範囲+#1",
+        "KR": "스킬 범위+#1",
+        "TC": "技能範圍+#1"
+      },
+      "tiers": [
+        {
+          "rarity": 3,
+          "entryId": 10201,
+          "fuseCount": 3,
+          "fuseInto": 10202
+        },
+        {
+          "rarity": 4,
+          "entryId": 10202,
+          "fuseCount": 3,
+          "fuseInto": 10203
+        },
+        {
+          "rarity": 5,
+          "entryId": 10203,
+          "fuseCount": null,
+          "fuseInto": null
+        }
+      ],
+      "goldOnly": false
+    },
+    {
+      "key": "UI_PetEntry_Title21",
+      "category": "battle",
+      "battlePetId": 1021,
+      "attributes": [
+        "SkillSustain"
+      ],
+      "name": {
+        "FR": "Endurant",
+        "EN": "Enduring",
+        "ES": "Resistente",
+        "JP": "努力家",
+        "KR": "인내",
+        "TC": "耐勞"
+      },
+      "effect": {
+        "FR": "Durée de compétence +#1",
+        "EN": "Skill Duration +#1",
+        "ES": "Duración de habilidad +#1",
+        "JP": "スキル耐久+#1",
+        "KR": "스킬 지속+#1",
+        "TC": "技能耐久+#1"
+      },
+      "tiers": [
+        {
+          "rarity": 3,
+          "entryId": 10211,
+          "fuseCount": 3,
+          "fuseInto": 10212
+        },
+        {
+          "rarity": 4,
+          "entryId": 10212,
+          "fuseCount": 3,
+          "fuseInto": 10213
+        },
+        {
+          "rarity": 5,
+          "entryId": 10213,
+          "fuseCount": null,
+          "fuseInto": null
+        }
+      ],
+      "goldOnly": false
+    },
+    {
+      "key": "UI_PetEntry_Title22",
+      "category": "battle",
+      "battlePetId": 1022,
+      "attributes": [
+        "SkillEfficiency"
+      ],
+      "name": {
+        "FR": "Efficace",
+        "EN": "Efficient",
+        "ES": "Eficiencia",
+        "JP": "高効率",
+        "KR": "고효율",
+        "TC": "高效"
+      },
+      "effect": {
+        "FR": "Efficacité de compétence +#1",
+        "EN": "Skill Efficiency +#1",
+        "ES": "Eficiencia de habilidad +#1",
+        "JP": "スキル効率+#1",
+        "KR": "스킬 효율+#1",
+        "TC": "技能效益+#1"
+      },
+      "tiers": [
+        {
+          "rarity": 3,
+          "entryId": 10221,
+          "fuseCount": 3,
+          "fuseInto": 10222
+        },
+        {
+          "rarity": 4,
+          "entryId": 10222,
+          "fuseCount": 3,
+          "fuseInto": 10223
+        },
+        {
+          "rarity": 5,
+          "entryId": 10223,
+          "fuseCount": null,
+          "fuseInto": null
+        }
+      ],
+      "goldOnly": false
+    },
+    {
+      "key": "UI_PetEntry_Title23",
+      "category": "battle",
+      "battlePetId": 1023,
+      "attributes": [
+        "StrongValue"
+      ],
+      "name": {
+        "FR": "Exalté",
+        "EN": "Passionate",
+        "ES": "Apasionado",
+        "JP": "情熱",
+        "KR": "고조",
+        "TC": "激昂"
+      },
+      "effect": {
+        "FR": "Vigueur +#1",
+        "EN": "Morale +#1",
+        "ES": "Moral +#1",
+        "JP": "高揚+#1",
+        "KR": "격양+#1",
+        "TC": "昂揚+#1"
+      },
+      "tiers": [
+        {
+          "rarity": 3,
+          "entryId": 10231,
+          "fuseCount": 3,
+          "fuseInto": 10232
+        },
+        {
+          "rarity": 4,
+          "entryId": 10232,
+          "fuseCount": 3,
+          "fuseInto": 10233
+        },
+        {
+          "rarity": 5,
+          "entryId": 10233,
+          "fuseCount": null,
+          "fuseInto": null
+        }
+      ],
+      "goldOnly": false
+    },
+    {
+      "key": "UI_PetEntry_Title24",
+      "category": "battle",
+      "battlePetId": 1024,
+      "attributes": [
+        "EnmityValue"
+      ],
+      "name": {
+        "FR": "Obstiné",
+        "EN": "Stubborn",
+        "ES": "Terco",
+        "JP": "頑固",
+        "KR": "고집",
+        "TC": "倔強"
+      },
+      "effect": {
+        "FR": "Ténacité +#1",
+        "EN": "Resolve +#1",
+        "ES": "Tenacidad +#1",
+        "JP": "背水+#1",
+        "KR": "필사+#1",
+        "TC": "背水+#1"
+      },
+      "tiers": [
+        {
+          "rarity": 3,
+          "entryId": 10241,
+          "fuseCount": 3,
+          "fuseInto": 10242
+        },
+        {
+          "rarity": 4,
+          "entryId": 10242,
+          "fuseCount": 3,
+          "fuseInto": 10243
+        },
+        {
+          "rarity": 5,
+          "entryId": 10243,
+          "fuseCount": null,
+          "fuseInto": null
+        }
+      ],
+      "goldOnly": false
+    },
+    {
+      "key": "UI_PetEntry_Title25",
+      "category": "battle",
+      "battlePetId": 1025,
+      "attributes": [
+        "WeaponCRIModifierRate"
+      ],
+      "name": {
+        "FR": "Téméraire",
+        "EN": "Aggressive",
+        "ES": "Agresivo",
+        "JP": "急進",
+        "KR": "과격",
+        "TC": "激進"
+      },
+      "effect": {
+        "FR": "Taux CRIT +#1",
+        "EN": "CRIT Chance +#1",
+        "ES": "Prob. CRIT +#1",
+        "JP": "クリティカル率+#1",
+        "KR": "크리티컬 확률+#1",
+        "TC": "暴擊率+#1"
+      },
+      "tiers": [
+        {
+          "rarity": 3,
+          "entryId": 10251,
+          "fuseCount": 3,
+          "fuseInto": 10252
+        },
+        {
+          "rarity": 4,
+          "entryId": 10252,
+          "fuseCount": 3,
+          "fuseInto": 10253
+        },
+        {
+          "rarity": 5,
+          "entryId": 10253,
+          "fuseCount": null,
+          "fuseInto": null
+        }
+      ],
+      "goldOnly": false
+    },
+    {
+      "key": "UI_PetEntry_Title26",
+      "category": "battle",
+      "battlePetId": 1026,
+      "attributes": [
+        "WeaponCRDModifierRate"
+      ],
+      "name": {
+        "FR": "Revigoré",
+        "EN": "Energised",
+        "ES": "Enérgico",
+        "JP": "奮起",
+        "KR": "격려",
+        "TC": "振奮"
+      },
+      "effect": {
+        "FR": "DGT CRIT +#1",
+        "EN": "CRIT Damage +#1",
+        "ES": "Daño CRIT +#1",
+        "JP": "クリティカルダメージ+#1",
+        "KR": "크리티컬 대미지+#1",
+        "TC": "暴擊傷害+#1"
+      },
+      "tiers": [
+        {
+          "rarity": 3,
+          "entryId": 10261,
+          "fuseCount": 3,
+          "fuseInto": 10262
+        },
+        {
+          "rarity": 4,
+          "entryId": 10262,
+          "fuseCount": 3,
+          "fuseInto": 10263
+        },
+        {
+          "rarity": 5,
+          "entryId": 10263,
+          "fuseCount": null,
+          "fuseInto": null
+        }
+      ],
+      "goldOnly": false
+    },
+    {
+      "key": "UI_PetEntry_Title27",
+      "category": "battle",
+      "battlePetId": 1027,
+      "attributes": [
+        "MultiShootModifierRate"
+      ],
+      "name": {
+        "FR": "Fantomatique",
+        "EN": "Phantom",
+        "ES": "Fantasma",
+        "JP": "幻影",
+        "KR": "환영",
+        "TC": "幻影"
+      },
+      "effect": {
+        "FR": "Tir multiple +#1",
+        "EN": "Multishot +#1",
+        "ES": "Multidisparo +#1",
+        "JP": "多重射撃+#1",
+        "KR": "다중 사격+#1",
+        "TC": "多重射擊+#1"
+      },
+      "tiers": [
+        {
+          "rarity": 3,
+          "entryId": 10271,
+          "fuseCount": 3,
+          "fuseInto": 10272
+        },
+        {
+          "rarity": 4,
+          "entryId": 10272,
+          "fuseCount": 3,
+          "fuseInto": 10273
+        },
+        {
+          "rarity": 5,
+          "entryId": 10273,
+          "fuseCount": null,
+          "fuseInto": null
+        }
+      ],
+      "goldOnly": false
+    },
+    {
+      "key": "UI_PetEntry_Title28",
+      "category": "battle",
+      "battlePetId": 1028,
+      "attributes": [],
+      "name": {
+        "FR": "Avide",
+        "EN": "Desirous",
+        "ES": "Deseoso",
+        "JP": "渇望",
+        "KR": "갈구",
+        "TC": "渴求"
+      },
+      "effect": {
+        "FR": "Après avoir déclenché un Soutien de Géniemon, vous récupérez tous les objets au sol dans un rayon de 100 mètres autour de vous.",
+        "EN": "After using Geniemon Support, auto-collects all loot within 100 metres.",
+        "ES": "Tras usar Soporte de Geniemon, recoge automáticamente todo el botín en un radio de 100 metros.",
+        "JP": "ジェネモン支援を発動後、自身の周囲100メートル以内にあるすべてのドロップアイテムを回収する",
+        "KR": "마령 지원 스킬 시전 시, 자신의 주변 100m 이내에 드롭된 모든 아이템을 자동으로 수집한다.",
+        "TC": "釋放魔靈支援後，拾取自身周圍100米範圍內的所有掉落物"
+      },
+      "tiers": [
+        {
+          "rarity": 5,
+          "entryId": 10281,
+          "fuseCount": null,
+          "fuseInto": null
+        }
+      ],
+      "goldOnly": true
+    },
+    {
+      "key": "UI_PetEntry_Title29",
+      "category": "battle",
+      "battlePetId": 1029,
+      "attributes": [],
+      "name": {
+        "FR": "Fugitif",
+        "EN": "Fleeing",
+        "ES": "Huidizo",
+        "JP": "遁走",
+        "KR": "도망",
+        "TC": "遁逃"
+      },
+      "effect": {
+        "FR": "Après avoir déclenché un Soutien de Géniemon, si un point d’évacuation de mission est actif, vous y êtes téléporté.",
+        "EN": "After using Geniemon Support, you will teleport to the current Commission's evacuation point if it is active.",
+        "ES": "Tras usar Soporte de Geniemon, te teletransportas al punto de evacuación del Encargo actual si ya está activo.",
+        "JP": "ジェネモン支援を発動後、依頼の撤退ポイントがすでに開放されている場合、撤退ポイントへ伝送する",
+        "KR": "마령 지원 스킬 시전 시, 이미 활성화된 철수 포인트가 존재한다면, 그곳으로 전송된다.",
+        "TC": "釋放魔靈支援後，如果已經開啟委託的撤離點，傳送至撤離點"
+      },
+      "tiers": [
+        {
+          "rarity": 5,
+          "entryId": 10291,
+          "fuseCount": null,
+          "fuseInto": null
+        }
+      ],
+      "goldOnly": true
+    },
+    {
+      "key": "UI_PetEntry_Title30",
+      "category": "battle",
+      "battlePetId": 1030,
+      "attributes": [],
+      "name": {
+        "FR": "Vétéran",
+        "EN": "Veteran",
+        "ES": "Veterano",
+        "JP": "ベテラン",
+        "KR": "노련",
+        "TC": "老道"
+      },
+      "effect": {
+        "FR": "Niveau de Soutien de Géniemon et des passifs +1",
+        "EN": "Geniemon Support and Passive Skill Level +1",
+        "ES": "Nivel de Soporte de Geniemon y pasiva +1",
+        "JP": "ジェネモン支援とパッシブレベル+1",
+        "KR": "마령 지원 및 패시브 레벨+1",
+        "TC": "魔靈支援和被動等級+1"
+      },
+      "tiers": [
+        {
+          "rarity": 5,
+          "entryId": 10301,
+          "fuseCount": null,
+          "fuseInto": null
+        }
+      ],
+      "goldOnly": true
+    },
+    {
+      "key": "UI_PetEntry_Title10",
+      "category": "base",
+      "battlePetId": 1010,
+      "attributes": [],
+      "name": {
+        "FR": "Féroce",
+        "EN": "Fierce",
+        "DE": "Wild",
+        "ES": "Feroz",
+        "JP": "獰猛",
+        "KR": "흉맹",
+        "TC": "兇猛"
+      },
+      "effect": {
+        "FR": "ATQ +#1",
+        "EN": "ATK +#1",
+        "DE": "ANG +#1",
+        "ES": "ATQ +#1",
+        "JP": "攻撃力+#1",
+        "KR": "공격+#1",
+        "TC": "攻擊+#1"
+      },
+      "tiers": [
+        {
+          "rarity": 3,
+          "entryId": 10101,
+          "fuseCount": 3,
+          "fuseInto": 10102
+        },
+        {
+          "rarity": 4,
+          "entryId": 10102,
+          "fuseCount": 3,
+          "fuseInto": 10103
+        },
+        {
+          "rarity": 5,
+          "entryId": 10103,
+          "fuseCount": null,
+          "fuseInto": null
+        }
+      ],
+      "goldOnly": false
+    },
+    {
+      "key": "UI_PetEntry_Title11",
+      "category": "base",
+      "battlePetId": 1011,
+      "attributes": [
+        "Def"
+      ],
+      "name": {
+        "FR": "Cuirassé",
+        "EN": "Ironclad",
+        "DE": "Stahlhart",
+        "ES": "Blindado",
+        "JP": "甲冑",
+        "KR": "갑주",
+        "TC": "甲冑"
+      },
+      "effect": {
+        "FR": "DÉF +#1",
+        "EN": "DEF +#1",
+        "DE": "VTD +#1",
+        "ES": "DEF +#1",
+        "JP": "防御力+#1",
+        "KR": "방어력+#1",
+        "TC": "防禦+#1"
+      },
+      "tiers": [
+        {
+          "rarity": 3,
+          "entryId": 10111,
+          "fuseCount": 3,
+          "fuseInto": 10112
+        },
+        {
+          "rarity": 4,
+          "entryId": 10112,
+          "fuseCount": 3,
+          "fuseInto": 10113
+        },
+        {
+          "rarity": 5,
+          "entryId": 10113,
+          "fuseCount": null,
+          "fuseInto": null
+        }
+      ],
+      "goldOnly": false
+    },
+    {
+      "key": "UI_PetEntry_Title12",
+      "category": "base",
+      "battlePetId": 1012,
+      "attributes": [
+        "MaxHp"
+      ],
+      "name": {
+        "FR": "Robuste",
+        "EN": "Beefy",
+        "DE": "Kräftig",
+        "ES": "Forzudo",
+        "JP": "頑健",
+        "KR": "튼실",
+        "TC": "壯實"
+      },
+      "effect": {
+        "FR": "PV max +#1",
+        "EN": "Max HP +#1",
+        "DE": "Max. LP +#1",
+        "ES": "PV Máx. +#1",
+        "JP": "最大HP+#1",
+        "KR": "최대 HP+#1",
+        "TC": "最大生命+#1"
+      },
+      "tiers": [
+        {
+          "rarity": 3,
+          "entryId": 10121,
+          "fuseCount": 3,
+          "fuseInto": 10122
+        },
+        {
+          "rarity": 4,
+          "entryId": 10122,
+          "fuseCount": 3,
+          "fuseInto": 10123
+        },
+        {
+          "rarity": 5,
+          "entryId": 10123,
+          "fuseCount": null,
+          "fuseInto": null
+        }
+      ],
+      "goldOnly": false
+    },
+    {
+      "key": "UI_PetEntry_Title13",
+      "category": "base",
+      "battlePetId": 1013,
+      "attributes": [
+        "MaxES"
+      ],
+      "name": {
+        "FR": "Timide",
+        "EN": "Timid",
+        "DE": "Schüchtern",
+        "ES": "Tímido",
+        "JP": "臆病",
+        "KR": "소심",
+        "TC": "膽小"
+      },
+      "effect": {
+        "FR": "Bouclier max +#1",
+        "EN": "Max Shield +#1",
+        "DE": "Max. Schild +#1",
+        "ES": "Escudo Máx. +#1",
+        "JP": "最大シールド+#1",
+        "KR": "최대 실드+#1",
+        "TC": "最大護盾+#1"
+      },
+      "tiers": [
+        {
+          "rarity": 3,
+          "entryId": 10131,
+          "fuseCount": 3,
+          "fuseInto": 10132
+        },
+        {
+          "rarity": 4,
+          "entryId": 10132,
+          "fuseCount": 3,
+          "fuseInto": 10133
+        },
+        {
+          "rarity": 5,
+          "entryId": 10133,
+          "fuseCount": null,
+          "fuseInto": null
+        }
+      ],
+      "goldOnly": false
+    },
+    {
+      "key": "UI_PetEntry_Title06",
+      "category": "speed",
+      "battlePetId": 1006,
+      "attributes": [],
+      "name": {
+        "FR": "Impulsif",
+        "EN": "Impatient",
+        "DE": "Ungeduldig",
+        "ES": "Impaciente",
+        "JP": "短気",
+        "KR": "조급",
+        "TC": "急躁"
+      },
+      "effect": {
+        "FR": "Vitesse de saut +#1",
+        "EN": "Jump Speed +#1",
+        "DE": "Sprung-GES +#1",
+        "ES": "Velocidad de Salto +#1",
+        "JP": "ジャンプ速度+#1",
+        "KR": "점프 속도+#1",
+        "TC": "跳躍速度+#1"
+      },
+      "tiers": [
+        {
+          "rarity": 3,
+          "entryId": 10061,
+          "fuseCount": 3,
+          "fuseInto": 10062
+        },
+        {
+          "rarity": 4,
+          "entryId": 10062,
+          "fuseCount": 3,
+          "fuseInto": 10063
+        },
+        {
+          "rarity": 5,
+          "entryId": 10063,
+          "fuseCount": null,
+          "fuseInto": null
+        }
+      ],
+      "goldOnly": false
+    },
+    {
+      "key": "UI_PetEntry_Title07",
+      "category": "speed",
+      "battlePetId": 1007,
+      "attributes": [
+        "BulletJumpVelocityModifier"
+      ],
+      "name": {
+        "FR": "Rapide",
+        "EN": "Swift",
+        "DE": "Flink",
+        "ES": "Rápido",
+        "JP": "神速",
+        "KR": "신행",
+        "TC": "神行"
+      },
+      "effect": {
+        "FR": "Vitesse de bond cyclonique +#1",
+        "EN": "Helix Leap Speed +#1",
+        "DE": "Spiralsprung-GES +#1",
+        "ES": "Vel. de Salto Espiral +#1",
+        "JP": "スピンジャンプ速度+#1",
+        "KR": "스파이럴 점프 속도+#1",
+        "TC": "螺旋飛躍速度+#1"
+      },
+      "tiers": [
+        {
+          "rarity": 3,
+          "entryId": 10071,
+          "fuseCount": 3,
+          "fuseInto": 10072
+        },
+        {
+          "rarity": 4,
+          "entryId": 10072,
+          "fuseCount": 3,
+          "fuseInto": 10073
+        },
+        {
+          "rarity": 5,
+          "entryId": 10073,
+          "fuseCount": null,
+          "fuseInto": null
+        }
+      ],
+      "goldOnly": false
+    },
+    {
+      "key": "UI_PetEntry_Title08",
+      "category": "speed",
+      "battlePetId": 1008,
+      "attributes": [
+        "SlideFrictionModifier"
+      ],
+      "name": {
+        "FR": "Dodu",
+        "EN": "Chubby",
+        "DE": "Pummelig",
+        "ES": "Regordete",
+        "JP": "円満",
+        "KR": "윤택",
+        "TC": "圓潤"
+      },
+      "effect": {
+        "FR": "Vitesse de glissade +#1",
+        "EN": "Slide Speed +#1",
+        "DE": "Gleitungs-GES +#1",
+        "ES": "Velocidad de Deslizamiento +#1",
+        "JP": "スライディング速度+#1",
+        "KR": "슬라이딩 속도+#1",
+        "TC": "滑行速度+#1"
+      },
+      "tiers": [
+        {
+          "rarity": 3,
+          "entryId": 10081,
+          "fuseCount": 3,
+          "fuseInto": 10082
+        },
+        {
+          "rarity": 4,
+          "entryId": 10082,
+          "fuseCount": 3,
+          "fuseInto": 10083
+        },
+        {
+          "rarity": 5,
+          "entryId": 10083,
+          "fuseCount": null,
+          "fuseInto": null
+        }
+      ],
+      "goldOnly": false
+    },
+    {
+      "key": "UI_PetEntry_Title09",
+      "category": "speed",
+      "battlePetId": 1009,
+      "attributes": [
+        "AvoidChargeCd"
+      ],
+      "name": {
+        "FR": "Vigilant",
+        "EN": "Vigilant",
+        "DE": "Wachsam",
+        "ES": "Vigilante",
+        "JP": "警戒心",
+        "KR": "경계",
+        "TC": "警惕"
+      },
+      "effect": {
+        "FR": "Temps de recharge d’esquive -#1",
+        "EN": "Dodge CD -#1",
+        "DE": "Ausweichen-Abk. -#1",
+        "ES": "Tiempo de Recarga de Esquiva -#1",
+        "JP": "回避のクールダウン#1減少",
+        "KR": "회피 쿨타임 시간 감소 #1",
+        "TC": "閃避冷卻時間減少#1"
+      },
+      "tiers": [
+        {
+          "rarity": 3,
+          "entryId": 10091,
+          "fuseCount": 3,
+          "fuseInto": 10092
+        },
+        {
+          "rarity": 4,
+          "entryId": 10092,
+          "fuseCount": 3,
+          "fuseInto": 10093
+        },
+        {
+          "rarity": 5,
+          "entryId": 10093,
+          "fuseCount": null,
+          "fuseInto": null
+        }
+      ],
+      "goldOnly": false
+    },
+    {
+      "key": "UI_PetEntry_Title01",
+      "category": "world",
+      "battlePetId": 1001,
+      "attributes": [
+        "DropDistance"
+      ],
+      "name": {
+        "FR": "Gourmand",
+        "EN": "Gluttonous",
+        "DE": "Gefräßig",
+        "ES": "Glotón",
+        "JP": "大食い",
+        "KR": "탐식",
+        "TC": "貪吃"
+      },
+      "effect": {
+        "FR": "Portée ramassage auto +#1 m",
+        "EN": "Auto-Pickup Range +#1m",
+        "DE": "Sammelradius +#1 m",
+        "ES": "Rango de recogida automática +#1 m",
+        "JP": "回収範囲+#1メートル",
+        "KR": "습득 범위+#1m",
+        "TC": "拾取範圍+#1米"
+      },
+      "tiers": [
+        {
+          "rarity": 3,
+          "entryId": 10011,
+          "fuseCount": 3,
+          "fuseInto": 10012
+        },
+        {
+          "rarity": 4,
+          "entryId": 10012,
+          "fuseCount": 3,
+          "fuseInto": 10013
+        },
+        {
+          "rarity": 5,
+          "entryId": 10013,
+          "fuseCount": null,
+          "fuseInto": null
+        }
+      ],
+      "goldOnly": false
+    },
+    {
+      "key": "UI_PetEntry_Title02",
+      "category": "world",
+      "battlePetId": 1002,
+      "attributes": [],
+      "name": {
+        "FR": "Économe",
+        "EN": "Frugal",
+        "DE": "Sparsam",
+        "ES": "Frugal",
+        "JP": "倹約家",
+        "KR": "절검",
+        "TC": "節儉"
+      },
+      "effect": {
+        "FR": "Taux de butin augmenté de #1",
+        "EN": "Increases loot drop rate by #1",
+        "DE": "Erhöht Beute-Droprate um #1",
+        "ES": "Aumenta la tasa de obtención de botín en #1",
+        "JP": "アイテムドロップ率#1アップ",
+        "KR": "아이템 드롭 확률 #1 상승",
+        "TC": "物品掉落率提高#1"
+      },
+      "tiers": [
+        {
+          "rarity": 3,
+          "entryId": 10021,
+          "fuseCount": 3,
+          "fuseInto": 10022
+        },
+        {
+          "rarity": 4,
+          "entryId": 10022,
+          "fuseCount": 3,
+          "fuseInto": 10023
+        },
+        {
+          "rarity": 5,
+          "entryId": 10023,
+          "fuseCount": null,
+          "fuseInto": null
+        }
+      ],
+      "goldOnly": false
+    },
+    {
+      "key": "UI_PetEntry_Title15",
+      "category": "world",
+      "battlePetId": 1015,
+      "attributes": [],
+      "name": {
+        "FR": "Érudit",
+        "EN": "Erudite",
+        "DE": "Gelehrt",
+        "ES": "Erudito",
+        "JP": "博識",
+        "KR": "해박",
+        "TC": "淵博"
+      },
+      "effect": {
+        "FR": "EXP octroyée lorsqu’utilisé comme matériau +#1",
+        "EN": "Grants an additional #1 EXP when used as material",
+        "DE": "Gewährt bei der Verwendung als Material zusätzlich #1 Punkte EP",
+        "ES": "Otorga #1 EXP adicional al usarse como material",
+        "JP": "素材として提供する経験値#1アップ",
+        "KR": "재료로 제공되는 경험치 #1 상승",
+        "TC": "作為素材提供的經驗值提高#1"
+      },
+      "tiers": [
+        {
+          "rarity": 3,
+          "entryId": 10151,
+          "fuseCount": 3,
+          "fuseInto": 10152
+        },
+        {
+          "rarity": 4,
+          "entryId": 10152,
+          "fuseCount": 3,
+          "fuseInto": 10153
+        },
+        {
+          "rarity": 5,
+          "entryId": 10153,
+          "fuseCount": null,
+          "fuseInto": null
+        }
+      ],
+      "goldOnly": false
+    },
+    {
+      "key": "UI_PetEntry_Title16",
+      "category": "world",
+      "battlePetId": 1016,
+      "attributes": [],
+      "name": {
+        "FR": "Habile",
+        "EN": "Deft",
+        "DE": "Gewandt",
+        "ES": "Diestro",
+        "JP": "器用",
+        "KR": "능수",
+        "TC": "巧手"
+      },
+      "effect": {
+        "FR": "Permet de décrypter rapidement des mécanismes.",
+        "EN": "Quick Crack Mechanism",
+        "DE": "Schnellbruch-Mechanismus",
+        "ES": "Descifrar mecanismo rápida",
+        "JP": "速やかにトラップを解除できる",
+        "KR": "빠르게 장치 해제 가능",
+        "TC": "可快速破解機關"
+      },
+      "tiers": [
+        {
+          "rarity": 5,
+          "entryId": 10161,
+          "fuseCount": null,
+          "fuseInto": null
+        }
+      ],
+      "goldOnly": true
+    },
+    {
+      "key": "UI_PetEntry_Title17",
+      "category": "world",
+      "battlePetId": 1017,
+      "attributes": [],
+      "name": {
+        "FR": "Sérénité",
+        "EN": "At peace",
+        "DE": "Gelassen",
+        "ES": "En paz",
+        "JP": "のんびり",
+        "KR": "느긋",
+        "TC": "悠閑"
+      },
+      "effect": {
+        "FR": "Récupération automatique en pêche",
+        "EN": "Auto reel-in enabled",
+        "DE": "Automatisches Einholen aktiviert",
+        "ES": "Recogida automática habilitada",
+        "JP": "自動で釣り上げを行うことができる",
+        "KR": "낚시대로 자동 낚시 가능",
+        "TC": "可自動進行釣魚收杆"
+      },
+      "tiers": [
+        {
+          "rarity": 5,
+          "entryId": 10171,
+          "fuseCount": null,
+          "fuseInto": null
+        }
+      ],
+      "goldOnly": true
+    }
+  ]
+}
