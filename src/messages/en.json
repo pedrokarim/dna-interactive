@@ -801,7 +801,9 @@
     "charactersNoProficiency": "Outside proficiency: Potentials do not apply.",
     "charactersPathUnknown": "The recommended order is not documented yet for this build.",
     "charactersRankBest": "Recommended",
-    "charactersRankAlternative": "Alternative"
+    "charactersRankAlternative": "Alternative",
+    "genimonCharactersIntro": "Characters whose recommended build takes this Geniemon, and the Traits they aim for on it.",
+    "genimonRankBest": "Best pick"
   },
   "drafts": {
     "headerLabel": "Forge Drafts",

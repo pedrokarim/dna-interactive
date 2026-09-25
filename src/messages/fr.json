@@ -801,7 +801,9 @@
     "charactersNoProficiency": "Hors maîtrise : les Potentiels ne s'appliquent pas.",
     "charactersPathUnknown": "L'ordre conseillé n'est pas encore documenté pour ce build.",
     "charactersRankBest": "Recommandée",
-    "charactersRankAlternative": "Alternative"
+    "charactersRankAlternative": "Alternative",
+    "genimonCharactersIntro": "Personnages dont un build recommandé emmène ce Géniemon, et les Traits qu'ils y visent.",
+    "genimonRankBest": "Meilleur choix"
   },
   "drafts": {
     "headerLabel": "Plans de forge",

@@ -801,7 +801,9 @@
     "charactersNoProficiency": "Außerhalb der Waffenkunde: Potenziale wirken nicht.",
     "charactersPathUnknown": "Die empfohlene Reihenfolge ist für diesen Build noch nicht dokumentiert.",
     "charactersRankBest": "Empfohlen",
-    "charactersRankAlternative": "Alternative"
+    "charactersRankAlternative": "Alternative",
+    "genimonCharactersIntro": "Figuren, deren empfohlener Build dieses Geniemon mitnimmt, und die Traits, die sie darauf anstreben.",
+    "genimonRankBest": "Beste Wahl"
   },
   "drafts": {
     "headerLabel": "Schmiedeentwürfe",

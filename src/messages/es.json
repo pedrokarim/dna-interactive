@@ -801,7 +801,9 @@
     "charactersNoProficiency": "Fuera de competencia: los Potenciales no se aplican.",
     "charactersPathUnknown": "El orden recomendado aún no está documentado para este build.",
     "charactersRankBest": "Recomendada",
-    "charactersRankAlternative": "Alternativa"
+    "charactersRankAlternative": "Alternativa",
+    "genimonCharactersIntro": "Personajes cuyo build recomendado lleva este Geniemon, y los Rasgos que buscan en él.",
+    "genimonRankBest": "Mejor opción"
   },
   "drafts": {
     "headerLabel": "Planos de Forja",

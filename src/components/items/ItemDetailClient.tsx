@@ -20,6 +20,7 @@ import { itemsFavoritesAtom, toggleItemFavoriteAtom } from "@/lib/store";
 import { cn } from "@/components/dna/cn";
 import { DnaPanel } from "@/components/dna/Panel";
 import type { WeaponUsage } from "@/lib/items/weapon-usage";
+import type { GenimonUsage } from "@/lib/items/genimon-usage";
 import { DnaSegmented } from "@/components/dna/Segmented";
 import { DnaSectionLabel } from "@/components/dna/SectionLabel";
 import { DnaStatRow } from "@/components/dna/StatRow";
@@ -58,6 +59,7 @@ type ItemDetailClientProps = {
   weaponBuilds?: WeaponBuild[];
   /** Personnages dont un build curé recommande cette arme. */
   weaponUsage?: WeaponUsage[];
+  genimonUsage?: GenimonUsage[];
 };
 
 function formatRawFieldValue(value: ItemRawField): string {
@@ -291,7 +293,7 @@ function parseBattlePetAttributes(value: ItemRawField | undefined): ParsedBattle
   return attributes;
 }
 
-export default function ItemDetailClient({ category, item, relatedDrafts = [], weaponBuilds = [], weaponUsage = [] }: ItemDetailClientProps) {
+export default function ItemDetailClient({ category, item, relatedDrafts = [], weaponBuilds = [], weaponUsage = [], genimonUsage = [] }: ItemDetailClientProps) {
   const [activeWeaponBuildIndex, setActiveWeaponBuildIndex] = useState(0);
   // Personnage sélectionné pour l'arbre de Potentiel : son build porte l'ordre conseillé.
   const [activeUsageIndex, setActiveUsageIndex] = useState(0);
@@ -965,6 +967,77 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
                   >
                     {usage.rank === "best" ? t("charactersRankBest") : t("charactersRankAlternative")}
                   </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </DnaPanel>
+      ) : null}
+
+      {/* Personnages qui emmènent ce Géniemon, et ce qu'ils y greffent. */}
+      {isGenimonsCategory && genimonUsage.length > 0 ? (
+        <DnaPanel className="p-4 md:p-5">
+          <DnaSectionLabel>{t("charactersTitle")}</DnaSectionLabel>
+          <p className="mt-2 text-sm text-parch/85">{t("genimonCharactersIntro")}</p>
+          <ul className="mt-4 grid gap-2 lg:grid-cols-2">
+            {genimonUsage.map((usage, index) => (
+              <li key={`${usage.characterId}-${usage.buildName}-${index}`}>
+                <Link
+                  href={`${usage.href}?tab=build`}
+                  className="flex h-full flex-col gap-2 rounded-sm border border-white/10 bg-ink/55 px-3 py-2 transition-colors hover:border-anemo/40"
+                >
+                  <span className="flex items-center justify-between gap-3">
+                    <span className="flex min-w-0 items-center gap-3">
+                      {usage.portrait ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          src={usage.portrait}
+                          alt=""
+                          width={40}
+                          height={40}
+                          loading="lazy"
+                          className="h-10 w-10 shrink-0 rounded-full border border-white/10 object-cover"
+                        />
+                      ) : null}
+                      <span className="min-w-0">
+                        <span className="block truncate text-sm text-parch">{usage.name}</span>
+                        <span className="block truncate text-xs text-muted">{usage.buildName}</span>
+                      </span>
+                    </span>
+                    <span
+                      className={cn(
+                        "shrink-0 rounded-sm border px-2 py-0.5 text-[0.68rem]",
+                        usage.rank === "best"
+                          ? "border-gold/40 bg-gold/10 text-gold"
+                          : "border-white/10 text-muted",
+                      )}
+                    >
+                      {usage.rank === "best" ? t("genimonRankBest") : t("charactersRankAlternative")}
+                    </span>
+                  </span>
+
+                  {/*
+                    Les Traits visés : c'est souvent ce qu'on vient chercher ici.
+                    Tant qu'aucun build n'en cure, la ligne reste absente plutôt
+                    que d'afficher un vide qui ressemblerait à une donnée perdue.
+                  */}
+                  {usage.traits.length > 0 ? (
+                    <span className="flex flex-wrap items-center gap-1.5 border-t border-white/8 pt-2">
+                      {usage.traits.map((trait) => (
+                        <span
+                          key={trait.key}
+                          title={trait.effect}
+                          className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-panel/45 py-0.5 pl-1 pr-2"
+                        >
+                          {trait.icon ? (
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <img src={trait.icon} alt="" width={18} height={18} loading="lazy" className="h-[18px] w-[18px]" />
+                          ) : null}
+                          <span className="text-[0.7rem] text-parch/85">{trait.name}</span>
+                        </span>
+                      ))}
+                    </span>
+                  ) : null}
                 </Link>
               </li>
             ))}

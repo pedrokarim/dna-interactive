@@ -4,6 +4,7 @@ import { getTranslations } from "next-intl/server";
 import { Suspense } from "react";
 import ItemDetailClient from "@/components/items/ItemDetailClient";
 import { getWeaponBuilds } from "@/lib/items/weapon-builds";
+import { getGenimonUsage } from "@/lib/items/genimon-usage";
 import { getWeaponUsage } from "@/lib/items/weapon-usage";
 import ItemsSuspenseFallback from "@/components/items/ItemsSuspenseFallback";
 import {
@@ -106,6 +107,8 @@ export default async function ItemDetailPage({ params }: ItemDetailPageProps) {
           locale.toUpperCase(),
         )
       : [];
+  // Même index inverse pour les Géniemons : qui les emmène, et ce qu'on y greffe.
+  const genimonUsage = category.id === "genimons" ? getGenimonUsage(item.id, locale.toUpperCase()) : [];
 
   return (
     <Suspense
@@ -117,6 +120,7 @@ export default async function ItemDetailPage({ params }: ItemDetailPageProps) {
         relatedDrafts={getDraftRecipesForItem(category.id, item.modId)}
         weaponBuilds={weaponBuilds}
         weaponUsage={weaponUsage}
+        genimonUsage={genimonUsage}
       />
     </Suspense>
   );
