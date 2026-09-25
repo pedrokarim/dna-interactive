@@ -1833,7 +1833,7 @@
     "imageFusion": "Drei gleiche Traits verschmelzen.",
     "imageLevelUp": "Der Aufstufungsbildschirm und was gefüttert werden kann.",
     "imageOverview": "Die Seite eines Geniemons: Stufe, Seltenheit und Passiv.",
-    "imageTraitSlots": "Trait-Plätze, durch Aufstiege geöffnet.",
+    "imageTraitSlots": "Die Sphären sind die Plätze. Eine volle trägt einen Trait, eine leere wartet, eine gesperrte verlangt einen Aufstieg.",
     "intro": "Ein ausgerüsteter Geniemon gibt der ganzen Gruppe einen passiven Bonus, dazu bis zu vier Traits obendrauf. Ihn aufzuziehen sind daher zwei Aufgaben: das Wesen selbst und die Traits, die es trägt.",
     "listBody": "Die vier Kategorien unten stammen aus dem Spiel, jede mit ihrem eigenen Symbol. Die Farbe steht für die Seltenheit: Blau, Violett, Gold. Die Symbole vor einem Trait zeigen, in welchen Seltenheiten es ihn gibt.",
     "listTitle": "Traits, Kategorie für Kategorie",
@@ -1884,6 +1884,8 @@
     "chapterBlurb_training": "Einen Trait von einem Geniemon auf ein anderes übertragen, seine Stufe heben, einen Platz sperren.",
     "chapterBlurb_fusion": "Drei gleiche Traits ergeben einen der nächsthöheren Seltenheit: die genaue Rechnung und die sieben Ausnahmen.",
     "chapterBlurb_shop": "Der Tauschhandel der Kopfgeld-Missionen, seine zwei aufeinander aufbauenden Währungen und die freie Wahl.",
-    "chapterBlurb_list": "Alle 29 Traits, nach den vier Kategorien des Spiels geordnet, mit Wirkung und Seltenheiten."
+    "chapterBlurb_list": "Alle 29 Traits, nach den vier Kategorien des Spiels geordnet, mit Wirkung und Seltenheiten.",
+    "imageVariantOrdinary": "Eine gewöhnliche Variante: drei Sphären, eine davon noch gesperrt.",
+    "imageVariantShiny": "Dieselbe Art als schimmernde: vier Sphären, und eine Aura, die sie verrät."
   }
 }

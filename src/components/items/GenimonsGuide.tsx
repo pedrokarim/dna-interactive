@@ -338,14 +338,14 @@ export async function GenimonsGuideChapter({
             <GuideImageSlot slot="levelUp" family="genimons" caption={t("imageLevelUp")} ratio="4 / 3" />
           </div>
 
-          <div className="mt-5 grid gap-5 lg:grid-cols-[minmax(0,26rem)_minmax(0,1fr)]">
-            <GuideImageSlot slot="ascension" family="genimons" caption={t("imageAscension")} ratio="4 / 3" />
-            <div className="space-y-3">
+          <div className="mt-5 space-y-4">
+            <div className="max-w-3xl space-y-3">
               <p className="text-sm leading-relaxed text-parch/85">{t("ascensionBody")}</p>
               <p className="border-l-2 pl-3 text-sm text-parch/85" style={{ borderColor: GENIMON_ACCENT }}>
                 {t("ascensionOpensSlots")}
               </p>
             </div>
+            <GuideImageSlot slot="ascension" family="genimons" caption={t("imageAscension")} ratio="5 / 3" />
           </div>
         </div>
       );
@@ -353,11 +353,19 @@ export async function GenimonsGuideChapter({
     // ────────────────────────────────────────────────────── passif propre
     case "passive":
       return (
-        <div className="space-y-3">
+        <div className="space-y-4">
           <p className="max-w-3xl text-sm leading-relaxed text-parch/85">{t("passiveBody")}</p>
           <p className="max-w-3xl border-l-2 pl-3 text-sm text-parch/85" style={{ borderColor: GENIMON_ACCENT }}>
             {t("passiveShiny")}
           </p>
+          {/*
+            Les deux captures portent exactement le même cadrage : la comparaison
+            doit sauter aux yeux sur le nombre de sphères, pas sur le cadre.
+          */}
+          <div className="grid gap-5 lg:grid-cols-2">
+            <GuideImageSlot slot="variantOrdinary" family="genimons" caption={t("imageVariantOrdinary")} ratio="3 / 2" />
+            <GuideImageSlot slot="variantShiny" family="genimons" caption={t("imageVariantShiny")} ratio="3 / 2" />
+          </div>
           <VariantCompare gameLang={gameLang} locale={locale} />
         </div>
       );
@@ -371,7 +379,7 @@ export async function GenimonsGuideChapter({
               <p className="text-sm leading-relaxed text-parch/85">{t("traitsBody")}</p>
               <p className="text-sm leading-relaxed text-parch/85">{t("traitsActiveInactive")}</p>
             </div>
-            <GuideImageSlot slot="traitSlots" family="genimons" caption={t("imageTraitSlots")} ratio="4 / 3" />
+            <GuideImageSlot slot="traitSlots" family="genimons" caption={t("imageTraitSlots")} ratio="3 / 2" />
           </div>
           <div className="mt-5">
             <TraitFlowDiagram gameLang={gameLang} locale={locale} />
@@ -382,22 +390,22 @@ export async function GenimonsGuideChapter({
     // ─────────────────────────────────────── l'Entraînement de Géniemon
     case "training":
       return (
-        <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)]">
-          <div className="space-y-3">
+        <div className="space-y-5">
+          <div className="max-w-3xl space-y-3">
             <p className="text-sm leading-relaxed text-parch/85">{t("trainingBody")}</p>
             <p className="border-l-2 pl-3 text-sm text-parch/85" style={{ borderColor: GENIMON_ACCENT }}>
               {t("trainingLevel")}
             </p>
           </div>
-          <GuideImageSlot slot="training" family="genimons" caption={t("imageTraining")} ratio="4 / 3" />
+          <GuideImageSlot slot="training" family="genimons" caption={t("imageTraining")} ratio="2 / 1" />
         </div>
       );
 
     // ──────────────────────────────────────────────────── fusion, rareté
     case "fusion":
       return (
-        <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)]">
-          <div className="space-y-3">
+        <div className="space-y-5">
+          <div className="max-w-3xl space-y-3">
             <p className="text-sm leading-relaxed text-parch/85">{t("fusionBody")}</p>
             {/*
               La chaîne garde la même catégorie d'un bout à l'autre : la fusion
@@ -414,7 +422,8 @@ export async function GenimonsGuideChapter({
             </div>
             <p className="text-sm leading-relaxed text-parch/85">{t("goldOnlyNote")}</p>
           </div>
-          <GuideImageSlot slot="fusion" family="genimons" caption={t("imageFusion")} ratio="4 / 3" />
+          {/* Un écran entier dans une demi-colonne devient illisible. */}
+          <GuideImageSlot slot="fusion" family="genimons" caption={t("imageFusion")} ratio="16 / 9" />
         </div>
       );
 
@@ -443,14 +452,14 @@ export async function GenimonsGuideChapter({
             ))}
           </ol>
 
-          <div className="mt-5 grid gap-5 lg:grid-cols-2">
-            <GuideImageSlot slot="shopPath" family="genimons" caption={t("imageShopPath")} ratio="4 / 3" />
+          <div className="mt-5 space-y-5">
+            <GuideImageSlot slot="shopPath" family="genimons" caption={t("imageShopPath")} ratio="3 / 2" />
             <GuideImageSlot slot="shopChests" family="genimons" caption={t("imageShopChests")} ratio="16 / 9" />
           </div>
 
-          <div className="mt-5 grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)]">
+          <div className="mt-5 space-y-4">
             <p
-              className="self-center border-l-2 pl-3 text-sm leading-relaxed text-parch/85"
+              className="max-w-3xl border-l-2 pl-3 text-sm leading-relaxed text-parch/85"
               style={{ borderColor: GENIMON_ACCENT }}
             >
               {t("shopGoldTraits")}

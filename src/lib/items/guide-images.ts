@@ -76,6 +76,10 @@ export const GENIMONS_GUIDE_SLOTS = [
   "ascension",
   /** Les emplacements de Trait, ouverts par l'ascension. */
   "traitSlots",
+  /** Une variante ordinaire et ses trois emplacements. */
+  "variantOrdinary",
+  /** La même espèce en scintillante, et son quatrième emplacement. */
+  "variantShiny",
   /** La fusion de trois Traits identiques en un de rareté supérieure. */
   "fusion",
   /** L'Entraînement de Géniemon : transmettre un Trait d'un inactif à un actif. */

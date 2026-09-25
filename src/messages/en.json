@@ -1833,7 +1833,7 @@
     "imageFusion": "Fusing three identical Traits.",
     "imageLevelUp": "The levelling screen and what can be fed.",
     "imageOverview": "A Geniemon's page: level, rarity and passive.",
-    "imageTraitSlots": "Trait slots, opened by ascensions.",
+    "imageTraitSlots": "The spheres are the slots. A full one holds a Trait, an empty one waits, a locked one needs an ascension.",
     "intro": "An equipped Geniemon grants a passive bonus to the whole party, plus up to four Traits stacked on top. Raising one is therefore two jobs: the creature itself, and the Traits it carries.",
     "listBody": "The four categories below are the game's own, each with its glyph. The colour carries the rarity: blue, purple, gold. The glyphs in front of a Trait are the rarities it comes in.",
     "listTitle": "Traits, category by category",
@@ -1884,6 +1884,8 @@
     "chapterBlurb_training": "Passing a Trait from one Geniemon to another, raising its level, locking a slot.",
     "chapterBlurb_fusion": "Three identical Traits make one of the rarity above: the exact count, and the seven exceptions.",
     "chapterBlurb_shop": "The Bounty Commissions exchange, its two stacked currencies, and what you can choose there.",
-    "chapterBlurb_list": "All 29 Traits, sorted into the game's own four categories, with their effect and rarities."
+    "chapterBlurb_list": "All 29 Traits, sorted into the game's own four categories, with their effect and rarities.",
+    "imageVariantOrdinary": "An ordinary variant: three spheres around it, one still locked.",
+    "imageVariantShiny": "The same species, shining: four spheres, and an aura that gives it away."
   }
 }

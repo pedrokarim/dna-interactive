@@ -1833,7 +1833,7 @@
     "imageFusion": "Fusión de tres Rasgos idénticos.",
     "imageLevelUp": "La pantalla de subida de nivel y lo que se puede dar.",
     "imageOverview": "La ficha de un Geniemon: nivel, rareza y pasiva.",
-    "imageTraitSlots": "Ranuras de Rasgo, abiertas por las ascensiones.",
+    "imageTraitSlots": "Las esferas son las ranuras. Una llena lleva un Rasgo, una vacía espera, una bloqueada pide una ascensión.",
     "intro": "Un Geniemon equipado otorga un bono pasivo a todo el equipo, más hasta cuatro Rasgos encima. Criarlo son, por tanto, dos tareas: la criatura y los Rasgos que lleva.",
     "listBody": "Las cuatro categorías siguientes son las del juego, cada una con su glifo. El color indica la rareza: azul, morado y dorado. Los glifos que preceden a cada Rasgo son las rarezas en las que existe.",
     "listTitle": "Los Rasgos, categoría por categoría",
@@ -1884,6 +1884,8 @@
     "chapterBlurb_training": "Pasar un Rasgo de un Geniemon a otro, subir su nivel, bloquear una ranura.",
     "chapterBlurb_fusion": "Tres Rasgos iguales dan uno de la rareza superior: la cuenta exacta y las siete excepciones.",
     "chapterBlurb_shop": "El intercambio de los Encargos de recompensa, sus dos monedas encadenadas y lo que puedes elegir.",
-    "chapterBlurb_list": "Los 29 Rasgos, ordenados en las cuatro categorías del juego, con su efecto y sus rarezas."
+    "chapterBlurb_list": "Los 29 Rasgos, ordenados en las cuatro categorías del juego, con su efecto y sus rarezas.",
+    "imageVariantOrdinary": "Una variante corriente: tres esferas a su alrededor, una todavía bloqueada.",
+    "imageVariantShiny": "La misma especie en reluciente: cuatro esferas, y un aura que la delata."
   }
 }

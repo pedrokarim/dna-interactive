@@ -1833,7 +1833,7 @@
     "imageFusion": "La fusion de trois Traits identiques.",
     "imageLevelUp": "L'écran de montée de niveau, et ce qu'on peut donner.",
     "imageOverview": "La fiche d'un Géniemon : son niveau, sa rareté et son passif.",
-    "imageTraitSlots": "Les emplacements de Trait, ouverts par les ascensions.",
+    "imageTraitSlots": "Les sphères sont les emplacements. Une pleine porte un Trait, une vide attend, une verrouillée demande une ascension.",
     "intro": "Un Géniemon équipé apporte un bonus passif à toute l'équipe, et jusqu'à quatre Traits qui s'ajoutent par-dessus. Monter un Géniemon, c'est donc deux chantiers : la créature elle-même, et les Traits qu'elle porte.",
     "listBody": "Les quatre catégories ci-dessous sont celles du jeu, chacune avec son glyphe. La couleur du glyphe donne la rareté : bleu, violet, or. Devant chaque Trait figurent les raretés auxquelles il existe.",
     "listTitle": "Les Traits, catégorie par catégorie",
@@ -1884,6 +1884,8 @@
     "chapterBlurb_training": "Transmettre un Trait d'un Géniemon à un autre, monter son niveau, verrouiller un emplacement.",
     "chapterBlurb_fusion": "Trois Traits identiques en donnent un de la rareté au-dessus : le compte exact, et les sept exceptions.",
     "chapterBlurb_shop": "L'échange des Missions à prime, ses deux monnaies qui se suivent, et ce qu'on peut y choisir.",
-    "chapterBlurb_list": "Les 29 Traits du jeu, rangés dans les quatre catégories du jeu, avec leur effet et leurs raretés."
+    "chapterBlurb_list": "Les 29 Traits du jeu, rangés dans les quatre catégories du jeu, avec leur effet et leurs raretés.",
+    "imageVariantOrdinary": "Une variante ordinaire : trois sphères autour d'elle, dont une encore verrouillée.",
+    "imageVariantShiny": "La même espèce en scintillante : quatre sphères, et une aura qui la signale."
   }
 }
