@@ -192,7 +192,10 @@
     "velkaineAlt": "Velkaine — streamer y creador de contenido de Duet Night Abyss",
     "viewBuildOf": "Ver la build de {name}",
     "openBuildOf": "Abrir la build de {name}",
-    "openBuildsOf": "Abrir las {count} builds de {name}"
+    "openBuildsOf": "Abrir las {count} builds de {name}",
+    "showcaseLatest": "Últimos lanzamientos",
+    "showcasePause": "Pausar el desplazamiento",
+    "showcasePlay": "Reanudar el desplazamiento"
   },
   "banner": {
     "newMapTitle": "¡Nuevo mapa disponible!",
@@ -1030,7 +1033,6 @@
     "publishCtaHint": "Tu build será visible en la ficha del personaje. Podrás editarlo después.",
     "publishOverlayTitle": "Comprobando tu build…",
     "publishOverlayHint": "Validamos las piezas, las armas y el equipo. Te llevaremos a tu build en cuanto pase.",
-    "genimonNoTrait": "Sin Rasgo",
     "genimonEditTraits": "Rasgos ({count}/{max})",
     "genimonTraitCount": "{count} de {max} ranuras",
     "genimonTraitFull": "Todas las ranuras están ocupadas: una elección nueva sustituye a la más antigua.",

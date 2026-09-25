@@ -192,7 +192,10 @@
     "velkaineAlt": "Velkaine — Duet Night Abyss streamer and content creator",
     "viewBuildOf": "View {name}'s build",
     "openBuildOf": "Open {name}'s build",
-    "openBuildsOf": "Open {name}'s {count} builds"
+    "openBuildsOf": "Open {name}'s {count} builds",
+    "showcaseLatest": "Latest releases",
+    "showcasePause": "Pause autoplay",
+    "showcasePlay": "Resume autoplay"
   },
   "banner": {
     "newMapTitle": "New map available!",
@@ -1030,7 +1033,6 @@
     "publishCtaHint": "Your build will be visible to the community on the character page. You can edit it afterwards.",
     "publishOverlayTitle": "Checking your build…",
     "publishOverlayHint": "We are validating the pieces, weapons and team. You will be taken to your build as soon as it passes.",
-    "genimonNoTrait": "No Trait",
     "genimonEditTraits": "Traits ({count}/{max})",
     "genimonTraitCount": "{count} of {max} slots",
     "genimonTraitFull": "Every slot is taken: a new pick replaces the oldest one.",

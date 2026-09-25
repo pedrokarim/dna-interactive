@@ -187,12 +187,15 @@
     "buildCardsExample": "Beispiel mit Psyche",
     "buildCardsExampleAria": "Beispiel einer Build-Karte ansehen (Psyche)",
     "showcaseTitle": "Teile deine Builds mit Stil",
-    "showcaseDescription": "Als PNG exportierbare Build-Karten, direkt auf jeder Charakterseite. Waffen, Demon Wedges, Genimons, Statusprioritäten und empfohlenes Team — alles in einem Bild.",
+    "showcaseDescription": "Als PNG exportierbare Build-Karten, direkt auf jeder Charakterseite. Waffen, Demon Wedges, Genimons, Statusprioritäten und empfohlenes Team – alles in einem Bild.",
     "viewAllCharacters": "Alle Charaktere ansehen",
-    "velkaineAlt": "Velkaine — Duet Night Abyss Streamer und Content Creator",
+    "velkaineAlt": "Velkaine – Duet Night Abyss Streamer und Content Creator",
     "viewBuildOf": "Build von {name} ansehen",
     "openBuildOf": "Build von {name} öffnen",
-    "openBuildsOf": "{count} Builds von {name} öffnen"
+    "openBuildsOf": "{count} Builds von {name} öffnen",
+    "showcaseLatest": "Neueste Charaktere",
+    "showcasePause": "Automatisches Blättern pausieren",
+    "showcasePlay": "Automatisches Blättern fortsetzen"
   },
   "banner": {
     "newMapTitle": "Neue Karte verfügbar!",
@@ -432,7 +435,7 @@
       "enhancement": "Verbesserung"
     },
     "loadingMore": "Frühere Versionen werden geladen…",
-    "loadFailed": "Laden abgebrochen — erneut versuchen",
+    "loadFailed": "Laden abgebrochen – erneut versuchen",
     "feedEnd": "Anfang des Protokolls",
     "versionPickerButton": "Versionen",
     "versionPickerTitle": "Zu einer Version springen",
@@ -643,7 +646,7 @@
     "demonWedgeTrackTooltip": "Mit Track-Anpassungen kannst du die Polarität eines Demon Wedge-Slots mithilfe von Track-Shift-Modulen ändern. Die goldenen Symbole unten an jedem Slot zeigen den empfohlenen Track an.",
     "demonWedgeEmpty": "Leer",
     "consonanceTitle": "Consonance-Waffe",
-    "consonanceTooltip": "Consonance-Waffe — klicke für Details im Stats-Tab.",
+    "consonanceTooltip": "Consonance-Waffe – klicke für Details im Stats-Tab.",
     "statsPriorityTitle": "Stat-Priorität",
     "teamTitle": "Teamzusammenstellung",
     "teamCharNotFound": "Charakter nicht gefunden",
@@ -689,7 +692,7 @@
     "statCritDmg": "Krit. SCH",
     "statMaxSpLong": "Max. Luzidität",
     "quickBuild": "Schnell-Build",
-    "quickBuildOf": "Schnell-Build — {name}",
+    "quickBuildOf": "Schnell-Build – {name}",
     "ascensionTiers": "Aufstiegsstufen",
     "zoomLabel": "Vergrößern",
     "zoomTitle": "Vergrößern (Mausrad)",
@@ -882,7 +885,7 @@
     "twitterDescription": "Die ultimative interaktive Karte für Duet Night Abyss. Finde alle Geheimnisse und Sammelobjekte mit DNA Interactive.",
     "featuresTitle": "Funktionen",
     "featuresDescription": "Alle Funktionen von DNA Interactive für Duet Night Abyss: interaktive Karte, Charakter- und Gegenstandsdatenbank, Build-Builder und Commissions.",
-    "commissionsTitle": "Covert Commissions — Live-Rotation",
+    "commissionsTitle": "Covert Commissions – Live-Rotation",
     "commissionsDescription": "Live-Rotation der Covert Commissions von Duet Night Abyss für jede Region: Charakter, Waffe und Demon Wedge, mit Countdown bis zur nächsten Aktualisierung.",
     "builderTitle": "Community-Build-Builder",
     "builderDescription": "Erstelle und veröffentliche Duet Night Abyss Community-Builds.",
@@ -896,12 +899,12 @@
     "characterNotFoundDescription": "Dieser Charakter existiert nicht in der Datenbank.",
     "draftDetailTitle": "Details des Schmiedeplans",
     "draftNotFoundDescription": "Schmiedeplan nicht gefunden.",
-    "characterOgAlt": "Charakter — DNA Interactive"
+    "characterOgAlt": "Charakter – DNA Interactive"
   },
   "commissions": {
     "eyebrow": "Verdeckte Aufträge",
     "title": "Covert Commissions",
-    "description": "Live-Rotation der regionalen Aufträge — Charakter, Waffe und Demon Wedge. Die Übersicht aktualisiert sich bei jedem Neuladen.",
+    "description": "Live-Rotation der regionalen Aufträge – Charakter, Waffe und Demon Wedge. Die Übersicht aktualisiert sich bei jedem Neuladen.",
     "nextRefresh": "Nächste Aktualisierung",
     "lastUpdated": "Aktualisiert {time}",
     "syncing": "Synchronisierung…",
@@ -1030,7 +1033,6 @@
     "publishCtaHint": "Dein Build wird auf der Figurenseite sichtbar. Du kannst ihn später bearbeiten.",
     "publishOverlayTitle": "Build wird geprüft…",
     "publishOverlayHint": "Teile, Waffen und Team werden geprüft. Danach geht es direkt zu deinem Build.",
-    "genimonNoTrait": "Kein Trait",
     "genimonEditTraits": "Traits ({count}/{max})",
     "genimonTraitCount": "{count} von {max} Plätzen",
     "genimonTraitFull": "Alle Plätze sind belegt: Eine neue Wahl ersetzt die älteste.",
@@ -1248,7 +1250,7 @@
     "loginLink": "Anmelden",
     "passwordMismatch": "Die Passwörter stimmen nicht überein.",
     "genericError": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
-    "verifySent": "Fast fertig — wir haben einen Bestätigungslink an {email} gesendet. Klicke darauf, um dein Konto zu aktivieren.",
+    "verifySent": "Fast fertig – wir haben einen Bestätigungslink an {email} gesendet. Klicke darauf, um dein Konto zu aktivieren.",
     "forgotTitle": "Passwort vergessen",
     "forgotKicker": "Konto",
     "forgotSubtitle": "Gib deine E-Mail ein und wir senden dir einen Link zum Zurücksetzen.",
@@ -1289,7 +1291,7 @@
     "badgeBeta": "Beta",
     "newTab": "(öffnet in neuem Tab)",
     "gameVersion": "DNA v{version}",
-    "tagline": "Inoffizieller Community-Begleiter — Duet Night Abyss",
+    "tagline": "Inoffizieller Community-Begleiter – Duet Night Abyss",
     "copyright": "© {years}",
     "privacy": "Datenschutz",
     "language": "Sprache: {language}",
@@ -1331,7 +1333,7 @@
     "buildBuilderDescription": "Kombiniere Waffen, Demon Wedges und Konsonanzen.",
     "mapTitle": "Interaktive Karte",
     "mapShortDescription": "Markierungen, Filter und Weltgebiete.",
-    "mapDescription": "Markierungen, Filter und Gebiete — die gesamte Weltkarte, von der Community kommentiert.",
+    "mapDescription": "Markierungen, Filter und Gebiete – die gesamte Weltkarte, von der Community kommentiert.",
     "draftsTitle": "Baupläne",
     "draftsDescription": "Rezepte und Herstellungskosten von Gegenständen.",
     "changelogTitle": "Änderungsprotokoll",
@@ -1372,7 +1374,7 @@
   },
   "calendarPage": {
     "heading": "Event-Kalender",
-    "intro": "Banner, Waffen und Events von Duet Night Abyss. Scrolle die Zeitleiste beliebig weit in die Vergangenheit oder Zukunft — die goldene Markierung ist heute, und der betrachtete Zeitraum steht in der URL und ist damit teilbar."
+    "intro": "Banner, Waffen und Events von Duet Night Abyss. Scrolle die Zeitleiste beliebig weit in die Vergangenheit oder Zukunft – die goldene Markierung ist heute, und der betrachtete Zeitraum steht in der URL und ist damit teilbar."
   },
   "exportModal": {
     "title": "Marker exportieren",
@@ -1469,19 +1471,19 @@
     "trackIntro": "Jeder Platz trägt eine Spur. Ein Affinitätstransfer-Modul richtet diese Spur auf die Polarität des dort liegenden Teils aus und halbiert seine Toleranzkosten.",
     "trackBadgeTitle": "Das Abzeichen eines Platzes lesen",
     "trackBadgeCost": "Die Zahl: die Toleranzkosten des Platzes.",
-    "trackBadgeGlyph": "Das Zeichen: die aktuelle Spur — Flamme 1, Sichel 2, Raute 3, Kreis 4.",
+    "trackBadgeGlyph": "Das Zeichen: die aktuelle Spur – Flamme 1, Sichel 2, Raute 3, Kreis 4.",
     "trackBadgeCrown": "Die Krone: auf diesem Platz liegt ein Modul.",
     "trackBadgeGreen": "Ein grünes Abzeichen bedeutet reduzierte Kosten, also eine ausgerichtete Spur. Weiß heißt voller Preis.",
     "trackRule": "Eine gesetzte Spur entspricht immer der Polarität ihres Teils. Eine Fehlausrichtung ist nie eine taktische Wahl: Sie hebt die Kosten von der Hälfte auf das Anderthalbfache.",
     "trackCostRule": "Ausgerichtet: Kosten ÷ 2. Fehlausgerichtet: Kosten × 1,5. Kein Modul: volle Kosten.",
     "centerTitle": "Der Kern",
-    "centerIntro": "Der Kern ist ein Platz wie jeder andere — die Rüstkammer nummeriert ihn mit 09 — und nimmt ein Transfermodul genau wie die acht ringsum.",
+    "centerIntro": "Der Kern ist ein Platz wie jeder andere – die Rüstkammer nummeriert ihn mit 09 – und nimmt ein Transfermodul genau wie die acht ringsum.",
     "centerAffinity": "Er gibt dem Build seine Affinität: Die angezeigte Bezeichnung leitet sich immer daraus ab und wird nie getrennt gewählt.",
     "centerTiers": "Zwei Kernfamilien bestehen nebeneinander, und beide sind legitim: die generischen 3★ ohne Element, oft bis ins Endgame behalten, und die elementaren 4★ und 5★.",
     "stackTitle": "Stapeln",
     "stackIntro": "Grundsätzlich ein Teil pro Familie auf dem ganzen Rad.",
     "stackRule": "Nur eine Familie entzieht sich dieser Regel, Pakthalter: Ihre Teile stapeln sich, sobald sie auf +5 gebracht wurden.",
-    "stackTrap": "Eine Falle: 828 von 829 Teilen teilen dasselbe Symbol. Zwei optisch gleiche Plätze sind nicht zwangsläufig Duplikate — vergleiche die Namen.",
+    "stackTrap": "Eine Falle: 828 von 829 Teilen teilen dasselbe Symbol. Zwei optisch gleiche Plätze sind nicht zwangsläufig Duplikate – vergleiche die Namen.",
     "captionBoard": "Der Rüstkammer-Bildschirm: acht Plätze um den Kern, oben die Toleranzanzeige.",
     "captionBadge": "Das Abzeichen eines Platzes, vergrößert.",
     "captionApply": "Das Spiel bietet an, ein Modul auf den gewählten Platz anzuwenden.",
@@ -1589,10 +1591,10 @@
     "pathTitle": "Den Pfad wählen",
     "pathBody": "Da das erste Potenzial jeder Stufe kostenlos ist, lautet die Frage nicht „welcher Zweig“, sondern „welches nehme ich viermal gratis“. Die Stufen sind nicht gleichwertig: Die erste entscheidet alles, der Rest folgt dem Spielstil.",
     "pathTiers": [
-      "Stufe I — die Kalamitätsquelle. Die entscheidende Wahl: Eine Quelle, die der Charakter nie auslöst, ist ein totes Potenzial.",
-      "Stufe II — ein roher Wert. Fertigkeitsintensität, wenn der Schaden aus Fertigkeiten kommt, ANG, wenn er aus der Waffe kommt.",
-      "Stufe III — ein bedingter Verstärker. Aufgeladene gegen normale Angriffe, Beschwörung gegen Verbrauch: Nimm die Bedingung, die du erfüllst.",
-      "Stufe IV — der zweite Wert. Gleiche Lesart wie Stufe II, mit dem Rest."
+      "Stufe I – die Kalamitätsquelle. Die entscheidende Wahl: Eine Quelle, die der Charakter nie auslöst, ist ein totes Potenzial.",
+      "Stufe II – ein roher Wert. Fertigkeitsintensität, wenn der Schaden aus Fertigkeiten kommt, ANG, wenn er aus der Waffe kommt.",
+      "Stufe III – ein bedingter Verstärker. Aufgeladene gegen normale Angriffe, Beschwörung gegen Verbrauch: Nimm die Bedingung, die du erfüllst.",
+      "Stufe IV – der zweite Wert. Gleiche Lesart wie Stufe II, mit dem Rest."
     ],
     "pathWeapons": [
       "Ewiger Zwist baut auf Beschwörungen: Vertraute erzeugen Kalamität und erben deine Attribute.",
@@ -1612,7 +1614,7 @@
   "changelogEntries": {
     "v2_4_0": {
       "title": "Benachrichtigungen und Falsi in Sicht",
-      "description": "Die Seite kann dich jetzt benachrichtigen. Eine Glocke, die auch ohne Konto funktioniert, eine Seite mit dem gesamten Verlauf und Browser-Benachrichtigungen, wenn du sie aktivierst. Parallel dazu ist Falsis Seite bereits online — vor ihrem Erscheinen am 8. September.",
+      "description": "Die Seite kann dich jetzt benachrichtigen. Eine Glocke, die auch ohne Konto funktioniert, eine Seite mit dem gesamten Verlauf und Browser-Benachrichtigungen, wenn du sie aktivierst. Parallel dazu ist Falsis Seite bereits online – vor ihrem Erscheinen am 8. September.",
       "items": [
         "🔔 Eine Benachrichtigungsglocke für alle, mit oder ohne Konto",
         "📄 Eine **Benachrichtigungsseite**, die den Verlauf behält, auch wenn die Markierung erlischt",
@@ -1626,9 +1628,9 @@
     },
     "v2_3_0": {
       "title": "Ada kommt in die Datenbank: Version 1.5, neue Waffen und die Seite in 7 Sprachen",
-      "description": "Alle Daten der Seite wurden aus Spielversion 1.5 neu erzeugt. Drei neue Waffen kommen samt ihrer Schmiedekomponenten hinzu, die Demon-Wedge-Datenbank wächst deutlich, und die gesamte Seite ist nun in allen 7 Sprachen übersetzt — inklusive Seitentitel und Detailseiten.",
+      "description": "Alle Daten der Seite wurden aus Spielversion 1.5 neu erzeugt. Drei neue Waffen kommen samt ihrer Schmiedekomponenten hinzu, die Demon-Wedge-Datenbank wächst deutlich, und die gesamte Seite ist nun in allen 7 Sprachen übersetzt – inklusive Seitentitel und Detailseiten.",
       "items": [
-        "🌊 **Ada** kommt in die Charakterdatenbank — Hydro, 5★, „Der einsame Hase des Paradieses“, mit Werten, Fähigkeiten und Artwork",
+        "🌊 **Ada** kommt in die Charakterdatenbank – Hydro, 5★, „Der einsame Hase des Paradieses“, mit Werten, Fähigkeiten und Artwork",
         "⚔️ Drei neue Waffen: The Best Day, Sanguis Sanctus – Pistol und Obsidian Heart-Reaper, mit Artwork",
         "🔨 Ihre Schmiedekomponenten in den Plänen ergänzt (Lauf, Rahmen, Klinge, Griff…)",
         "💠 Die Demon-Wedge-Datenbank wächst von 738 auf 829 Einträge",
@@ -1946,7 +1948,7 @@
     "pushDisable": "Deaktivieren"
   },
   "genimonGuide": {
-    "ascensionBody": "Der Aufstieg erfolgt auf Stufe 20, 40 und 60, danach ein weiteres Mal ohne Stufenvoraussetzung. Jeder verlangt einen Geniemon derselben Art — irgendeine seiner Varianten — und eine Yum-Yum-Milch.",
+    "ascensionBody": "Der Aufstieg erfolgt auf Stufe 20, 40 und 60, danach ein weiteres Mal ohne Stufenvoraussetzung. Jeder verlangt einen Geniemon derselben Art – irgendeine seiner Varianten – und eine Yum-Yum-Milch.",
     "ascensionOpensSlots": "Jeder Aufstieg öffnet einen Trait-Platz. Nur so bekommt man welche: eine gewöhnliche Variante endet bei drei, eine schimmernde bei vier.",
     "badge": "Guide",
     "badgeFusion": "Drei zu eins verschmelzen",
@@ -1960,7 +1962,7 @@
     "category_battle": "Kampf",
     "category_speed": "Bewegung",
     "category_world": "Erkundung",
-    "fusionBody": "Ein Trait existiert in drei Seltenheiten. Drei gleiche einer Stufe ergeben einen der Stufe darüber — neun blaue Traits für einen goldenen.",
+    "fusionBody": "Ein Trait existiert in drei Seltenheiten. Drei gleiche einer Stufe ergeben einen der Stufe darüber – neun blaue Traits für einen goldenen.",
     "fusionChainNote": "drei je Schritt, also neun blaue für ein goldenes",
     "fusionFromLowest": "{count} für ein Gold",
     "fusionTitle": "Verschmelzen für höhere Seltenheit",
@@ -1977,9 +1979,9 @@
     "nextLink": "Alle Geniemons ansehen",
     "nextTitle": "Wie weiter",
     "passiveBody": "Jede Art trägt ihr eigenes Passiv, das Hauptfigur wie Kampfpartnern zugutekommt. Die meisten erhöhen den ANG eines Elements; die selteneren verstärken zusätzlich Werte bestimmter Dämonenkeile oder wirken auf Erkundung und Bewegung.",
-    "passiveShiny": "Varianten derselben Art teilen exakt dasselbe Passiv und dieselben Werte. Sie unterscheiden sich in der Zahl der Trait-Plätze — dort liegt der wirkliche Unterschied.",
+    "passiveShiny": "Varianten derselben Art teilen exakt dasselbe Passiv und dieselben Werte. Sie unterscheiden sich in der Zahl der Trait-Plätze – dort liegt der wirkliche Unterschied.",
     "passiveTitle": "Das eigene Passiv des Geniemons",
-    "raiseBody": "Ein Geniemon steigt bis Stufe 60. Füttere ihn mit Yum-, Yum-Yum- und Yum-Yum-Yum-Cremes oder mit anderen Geniemons als Material — ein verbrauchter Geniemon gibt die Erfahrung zurück, die er selbst gesammelt hat.",
+    "raiseBody": "Ein Geniemon steigt bis Stufe 60. Füttere ihn mit Yum-, Yum-Yum- und Yum-Yum-Yum-Cremes oder mit anderen Geniemons als Material – ein verbrauchter Geniemon gibt die Erfahrung zurück, die er selbst gesammelt hat.",
     "raiseSteps": [
       "Yum-, Yum-Yum- und Yum-Yum-Yum-Cremes geben Erfahrung, von der geringsten zur größten.",
       "Ein als Material genutzter Geniemon gibt seine Erfahrung zurück: Was du nie ausrüstest, ist nie verloren.",

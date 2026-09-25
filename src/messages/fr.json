@@ -25,7 +25,7 @@
     },
     "nvzhu02": {
       "subtitle": "Reflet d'Ombre",
-      "description": "L'autre versant du destin : là où la lumière s'éteint, une autre voix se lève. Elle traverse l'abysse avec le même visage, mais d'autres serments — et choisit cette fois de ne plus se retourner.",
+      "description": "L'autre versant du destin : là où la lumière s'éteint, une autre voix se lève. Elle traverse l'abysse avec le même visage, mais d'autres serments – et choisit cette fois de ne plus se retourner.",
       "camp": "Aucun",
       "name": "Protagoniste Féminine"
     },
@@ -187,12 +187,15 @@
     "buildCardsExample": "Exemple avec Psyche",
     "buildCardsExampleAria": "Voir un exemple de carte de build (Psyche)",
     "showcaseTitle": "Partagez vos builds avec style",
-    "showcaseDescription": "Des cartes de build exportables en PNG, directement sur chaque fiche personnage. Armes, Demon Wedge, Génimons, priorités stats et équipe recommandée — tout en un visuel.",
+    "showcaseDescription": "Des cartes de build exportables en PNG, directement sur chaque fiche personnage. Armes, Demon Wedge, Génimons, priorités stats et équipe recommandée – tout en un visuel.",
     "viewAllCharacters": "Voir tous les personnages",
-    "velkaineAlt": "Velkaine — streameur et créateur de contenu Duet Night Abyss",
+    "velkaineAlt": "Velkaine – streameur et créateur de contenu Duet Night Abyss",
     "viewBuildOf": "Voir le build de {name}",
     "openBuildOf": "Ouvrir le build de {name}",
-    "openBuildsOf": "Ouvrir les {count} builds de {name}"
+    "openBuildsOf": "Ouvrir les {count} builds de {name}",
+    "showcaseLatest": "Dernières sorties",
+    "showcasePause": "Mettre en pause le défilement",
+    "showcasePlay": "Relancer le défilement"
   },
   "banner": {
     "newMapTitle": "Nouvelle map disponible !",
@@ -432,7 +435,7 @@
       "enhancement": "Amélioration"
     },
     "loadingMore": "Chargement des versions précédentes…",
-    "loadFailed": "Chargement interrompu — réessayer",
+    "loadFailed": "Chargement interrompu – réessayer",
     "feedEnd": "Début du journal",
     "versionPickerButton": "Versions",
     "versionPickerTitle": "Aller à une version",
@@ -643,7 +646,7 @@
     "demonWedgeTrackTooltip": "Les ajustements de piste permettent de modifier la polarité d'un emplacement de Demon Wedge à l'aide de Modules de décalage de piste. Les icônes dorées en bas de chaque emplacement indiquent la piste recommandée.",
     "demonWedgeEmpty": "Vide",
     "consonanceTitle": "Arme de Consonance",
-    "consonanceTooltip": "Arme de Consonance — cliquez pour voir les détails dans l'onglet Attributs.",
+    "consonanceTooltip": "Arme de Consonance – cliquez pour voir les détails dans l'onglet Attributs.",
     "statsPriorityTitle": "Priorité de stats",
     "teamTitle": "Composition d'équipe",
     "teamCharNotFound": "Personnage non trouve",
@@ -689,7 +692,7 @@
     "statCritDmg": "DGT CRIT",
     "statMaxSpLong": "Lucidité max",
     "quickBuild": "Build rapide",
-    "quickBuildOf": "Build rapide — {name}",
+    "quickBuildOf": "Build rapide – {name}",
     "ascensionTiers": "Paliers d'ascension",
     "zoomLabel": "Zoomer",
     "zoomTitle": "Zoomer (molette)",
@@ -882,7 +885,7 @@
     "twitterDescription": "Carte interactive ultime pour Duet Night Abyss. Trouvez tous les secrets et collectibles avec DNA Interactive.",
     "featuresTitle": "Fonctionnalités",
     "featuresDescription": "Toutes les fonctionnalités de DNA Interactive pour Duet Night Abyss : carte interactive, base de données personnages et items, builder de builds et commissions.",
-    "commissionsTitle": "Covert Commissions — Rotation en direct",
+    "commissionsTitle": "Covert Commissions – Rotation en direct",
     "commissionsDescription": "Rotation en direct des Covert Commissions de Duet Night Abyss pour chaque région : Personnage, Arme et Demon Wedge, avec compte à rebours jusqu'à la prochaine actualisation.",
     "builderTitle": "Builder de builds communautaires",
     "builderDescription": "Créer et publier des builds communautaires Duet Night Abyss.",
@@ -896,12 +899,12 @@
     "characterNotFoundDescription": "Ce personnage n'existe pas dans la base de données.",
     "draftDetailTitle": "Détail du plan de forge",
     "draftNotFoundDescription": "Plan de forge introuvable.",
-    "characterOgAlt": "Personnage — DNA Interactive"
+    "characterOgAlt": "Personnage – DNA Interactive"
   },
   "commissions": {
     "eyebrow": "Mandats scellés",
     "title": "Covert Commissions",
-    "description": "Rotation en direct des commissions par région — Personnage, Arme et Sceau démoniaque. Le tableau se met à jour à chaque actualisation.",
+    "description": "Rotation en direct des commissions par région – Personnage, Arme et Sceau démoniaque. Le tableau se met à jour à chaque actualisation.",
     "nextRefresh": "Prochaine actualisation",
     "lastUpdated": "MAJ {time}",
     "syncing": "Synchronisation…",
@@ -1030,7 +1033,6 @@
     "publishCtaHint": "Votre build sera visible par la communauté sur la fiche du personnage. Vous pourrez le modifier ensuite.",
     "publishOverlayTitle": "Vérification de votre build…",
     "publishOverlayHint": "On contrôle les pièces, les armes et l'équipe. Vous serez redirigé vers votre build dès que c'est bon.",
-    "genimonNoTrait": "Aucun Trait",
     "genimonEditTraits": "Traits ({count}/{max})",
     "genimonTraitCount": "{count} sur {max} emplacements",
     "genimonTraitFull": "Tous les emplacements sont pris : un nouveau choix remplace le plus ancien.",
@@ -1248,7 +1250,7 @@
     "loginLink": "Se connecter",
     "passwordMismatch": "Les mots de passe ne correspondent pas.",
     "genericError": "Une erreur est survenue. Réessaie.",
-    "verifySent": "Presque fini — on a envoyé un lien de confirmation à {email}. Clique dessus pour activer ton compte.",
+    "verifySent": "Presque fini – on a envoyé un lien de confirmation à {email}. Clique dessus pour activer ton compte.",
     "forgotTitle": "Mot de passe oublié",
     "forgotKicker": "Compte",
     "forgotSubtitle": "Saisis ton email et on t'envoie un lien de réinitialisation.",
@@ -1289,7 +1291,7 @@
     "badgeBeta": "Bêta",
     "newTab": "(nouvel onglet)",
     "gameVersion": "DNA v{version}",
-    "tagline": "Companion communautaire non officiel — Duet Night Abyss",
+    "tagline": "Companion communautaire non officiel – Duet Night Abyss",
     "copyright": "© {years}",
     "privacy": "Confidentialité",
     "language": "Langue : {language}",
@@ -1331,7 +1333,7 @@
     "buildBuilderDescription": "Compose armes, Demon Wedges et consonances.",
     "mapTitle": "Carte interactive",
     "mapShortDescription": "Marqueurs, filtres et zones du monde.",
-    "mapDescription": "Marqueurs, filtres et zones — toute la carte du monde annotée par la communauté.",
+    "mapDescription": "Marqueurs, filtres et zones – toute la carte du monde annotée par la communauté.",
     "draftsTitle": "Plans de forge",
     "draftsDescription": "Recettes et coûts de fabrication des objets.",
     "changelogTitle": "Changelog",
@@ -1372,7 +1374,7 @@
   },
   "calendarPage": {
     "heading": "Calendrier des événements",
-    "intro": "Bannières, armes et événements de Duet Night Abyss. Fais défiler la frise sans limite vers le passé ou le futur — le repère doré marque aujourd'hui, et la période regardée reste dans l'URL, donc partageable."
+    "intro": "Bannières, armes et événements de Duet Night Abyss. Fais défiler la frise sans limite vers le passé ou le futur – le repère doré marque aujourd'hui, et la période regardée reste dans l'URL, donc partageable."
   },
   "exportModal": {
     "title": "Exporter les marqueurs",
@@ -1589,10 +1591,10 @@
     "pathTitle": "Choisir son chemin",
     "pathBody": "Comme le premier Potentiel de chaque palier est gratuit, la question n'est pas « quelle branche » mais « lequel prendre gratuitement, quatre fois ». Les paliers ne se valent pas : le premier décide de tout, les autres suivent le style de jeu.",
     "pathTiers": [
-      "Palier I — la source de calamité. C'est le choix décisif : une source que le personnage ne déclenche jamais est un Potentiel mort.",
-      "Palier II — une statistique brute. Intensité de compétence si les dégâts viennent des compétences, ATQ s'ils viennent de l'arme.",
-      "Palier III — un amplificateur conditionnel. Attaques chargées contre normales, invocation contre consommation : prenez la condition que vous remplissez.",
-      "Palier IV — la seconde statistique. Même lecture qu'au palier II, avec ce qui reste."
+      "Palier I – la source de calamité. C'est le choix décisif : une source que le personnage ne déclenche jamais est un Potentiel mort.",
+      "Palier II – une statistique brute. Intensité de compétence si les dégâts viennent des compétences, ATQ s'ils viennent de l'arme.",
+      "Palier III – un amplificateur conditionnel. Attaques chargées contre normales, invocation contre consommation : prenez la condition que vous remplissez.",
+      "Palier IV – la seconde statistique. Même lecture qu'au palier II, avec ce qui reste."
     ],
     "pathWeapons": [
       "Conflit perpétuel est bâtie sur les invocations : ses familiers génèrent la calamité et héritent de vos attributs.",
@@ -1626,9 +1628,9 @@
     },
     "v2_3_0": {
       "title": "Ada rejoint la base : version 1.5, nouvelles armes et site traduit en 7 langues",
-      "description": "Toutes les données du site ont été régénérées sur la version 1.5 du jeu. Trois nouvelles armes font leur entrée avec leurs composants de forge, la base de Demon Wedges s'agrandit fortement, et l'ensemble du site est désormais traduit dans les 7 langues — y compris les titres de pages et les fiches détaillées.",
+      "description": "Toutes les données du site ont été régénérées sur la version 1.5 du jeu. Trois nouvelles armes font leur entrée avec leurs composants de forge, la base de Demon Wedges s'agrandit fortement, et l'ensemble du site est désormais traduit dans les 7 langues – y compris les titres de pages et les fiches détaillées.",
       "items": [
-        "🌊 **Ada** rejoint la base de personnages — Hydro, 5★, « Lapin Solitaire du Paradis », avec ses stats, ses compétences et ses portraits",
+        "🌊 **Ada** rejoint la base de personnages – Hydro, 5★, « Lapin Solitaire du Paradis », avec ses stats, ses compétences et ses portraits",
         "⚔️ Trois nouvelles armes : The Best Day, Sanguis Sanctus – Pistol et Obsidian Heart-Reaper, avec leurs visuels",
         "🔨 Leurs composants de forge ajoutés aux plans (canon, châssis, lame, poignée…)",
         "💠 La base de Demon Wedges passe de 738 à 829 entrées",
@@ -1641,10 +1643,10 @@
     },
     "v2_2_0": {
       "title": "Nouvelle interface : un accueil qui rassemble tout, plus clair et plus vivant",
-      "description": "L'interface du site a été entièrement retravaillée pour être plus lisible, plus agréable et plus rapide à parcourir. Nouvelle page d'accueil qui réunit tous les outils au même endroit, un menu latéral toujours à portée de main, et des pages qui exploitent tout l'écran — sur ordinateur comme sur mobile.",
+      "description": "L'interface du site a été entièrement retravaillée pour être plus lisible, plus agréable et plus rapide à parcourir. Nouvelle page d'accueil qui réunit tous les outils au même endroit, un menu latéral toujours à portée de main, et des pages qui exploitent tout l'écran – sur ordinateur comme sur mobile.",
       "items": [
         "🏠 Nouvel accueil « hub » qui rassemble tout d'un coup d'œil : carte, personnages, base de données, builder, builds, codes et outils",
-        "📋 Menu latéral toujours accessible pour passer d'une section à l'autre en un clic — repliable quand vous voulez plus de place, et il garde votre préférence",
+        "📋 Menu latéral toujours accessible pour passer d'une section à l'autre en un clic – repliable quand vous voulez plus de place, et il garde votre préférence",
         "🖥️ Toutes les pages repensées pour occuper tout l'écran : plus aéré, plus lisible, moins de vide",
         "🎁 Aperçu des codes cadeaux directement sur l'accueil, avec copie en un clic",
         "🗂️ Les meilleurs builds de la communauté mis en avant dès l'accueil",
@@ -1680,8 +1682,8 @@
       "description": "Intégration complète du patch officiel « Silver Torrent, Rising Star » : 2 nouveaux personnages (Flora et Hilda), nouvel élément Umbro pour le Phoxhunter, région steampunk Flodia Bloomfield Station, 5 cartes interactives, 12 wallpapers et système de bandeaux à expiration automatique.",
       "items": [
         "🎮 Données du site mises à jour jusqu'au patch 1.4.153 « Silver Torrent, Rising Star »",
-        "✨ Flora (Umbro) — nouvelle personnage en vedette, maîtrise épée et fusil d'assaut",
-        "🔥 Hilda (Pyro) — nouvelle personnage, maîtrise double lame et lance-grenade (disponible après le 30 juin 2026)",
+        "✨ Flora (Umbro) – nouvelle personnage en vedette, maîtrise épée et fusil d'assaut",
+        "🔥 Hilda (Pyro) – nouvelle personnage, maîtrise double lame et lance-grenade (disponible après le 30 juin 2026)",
         "🌑 Nouvel élément Umbro débloqué pour le Phoxhunter (protagoniste joueur), via [Chapitre Noctoyager – Silver Torrent, Rising Star]",
         "🚂 Nouvelle région Flodia Bloomfield Station (incluant Bloomfield Station et Ironworks), gare ferroviaire steampunk d'Icelake",
         "⚔️ +27 compétences, +18 Demon Wedges, +157 ressources, nouvelle catégorie Calamity Weapons, refonte des items de pêche",
@@ -1830,7 +1832,7 @@
       ]
     },
     "v1_1_0": {
-      "title": "Version 1.1 — nouvelle map Huaxu",
+      "title": "Version 1.1 – nouvelle map Huaxu",
       "description": "Ajout de la nouvelle map Huaxu avec 371 marqueurs et support des images descriptives.",
       "items": [
         "🆕 Nouvelle map Huaxu ajoutée (7e région)",
