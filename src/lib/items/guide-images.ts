@@ -62,12 +62,35 @@ export const MODS_GUIDE_SLOTS = [
 
 export type ModsGuideSlot = (typeof MODS_GUIDE_SLOTS)[number];
 
-/** Famille de guide : chaque famille a son dossier d'illustrations. */
-export type GuideFamily = "calamity" | "mods";
+/**
+ * Emplacements du guide des **Géniemons** : `public/assets/guides/genimons/`.
+ * Ils couvrent les deux moitiés du sujet — élever la créature, puis greffer et
+ * fusionner ses Traits.
+ */
+export const GENIMONS_GUIDE_SLOTS = [
+  /** La fiche d'un Géniemon : niveau, rareté, passif. */
+  "overview",
+  /** L'écran de montée de niveau, et ce qu'on lui donne. */
+  "levelUp",
+  /** L'ascension, et le palier qu'elle ouvre. */
+  "ascension",
+  /** Les emplacements de Trait, ouverts par l'ascension. */
+  "traitSlots",
+  /** La fusion de trois Traits identiques en un de rareté supérieure. */
+  "fusion",
+  /** La relance d'un Trait, avec ses probabilités affichées. */
+  "reroll",
+] as const;
 
-export type GuideSlot = CalamityGuideSlot | ModsGuideSlot;
+export type GenimonsGuideSlot = (typeof GENIMONS_GUIDE_SLOTS)[number];
+
+/** Famille de guide : chaque famille a son dossier d'illustrations. */
+export type GuideFamily = "calamity" | "mods" | "genimons";
+
+export type GuideSlot = CalamityGuideSlot | ModsGuideSlot | GenimonsGuideSlot;
 
 export const MODS_GUIDE_IMAGE_DIR = "/assets/guides/mods";
+export const GENIMONS_GUIDE_IMAGE_DIR = "/assets/guides/genimons";
 
 /**
  * ⚠️ **Un seul préfixe littéral par fonction, et surtout pas de ternaire.**
@@ -95,17 +118,27 @@ function resolveModsImage(slot: string): string | null {
   return null;
 }
 
+function resolveGenimonsImage(slot: string): string | null {
+  for (const extension of EXTENSIONS) {
+    const relative = `/assets/guides/genimons/${slot}.${extension}`;
+    if (existsSync(join(process.cwd(), "public", relative))) return relative;
+  }
+  return null;
+}
+
 /**
  * Chemin public de l'illustration si elle a été déposée, `null` sinon.
  * Lecture disque : réservé aux composants serveur.
  */
 export function resolveGuideImage(slot: GuideSlot, family: GuideFamily = "calamity"): string | null {
-  return family === "mods" ? resolveModsImage(slot) : resolveCalamityImage(slot);
+  if (family === "mods") return resolveModsImage(slot);
+  if (family === "genimons") return resolveGenimonsImage(slot);
+  return resolveCalamityImage(slot);
 }
 
 /** Nom de fichier attendu, affiché dans le cadre vide pour lever toute ambiguïté. */
 export function expectedGuideFileName(slot: GuideSlot, family: GuideFamily = "calamity"): string {
-  return family === "mods"
-    ? `public${MODS_GUIDE_IMAGE_DIR}/${slot}.webp`
-    : `public${GUIDE_IMAGE_DIR}/${slot}.webp`;
+  if (family === "mods") return `public${MODS_GUIDE_IMAGE_DIR}/${slot}.webp`;
+  if (family === "genimons") return `public${GENIMONS_GUIDE_IMAGE_DIR}/${slot}.webp`;
+  return `public${GUIDE_IMAGE_DIR}/${slot}.webp`;
 }

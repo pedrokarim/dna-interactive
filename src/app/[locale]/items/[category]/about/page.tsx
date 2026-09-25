@@ -18,6 +18,7 @@ import {
   Wrench,
 } from "lucide-react";
 import { CalamityWeaponsGuide } from "@/components/items/CalamityWeaponsGuide";
+import { GenimonsGuide } from "@/components/items/GenimonsGuide";
 import { GuideImageSlot } from "@/components/items/GuideImageSlot";
 import {
   getItemCatalog,
@@ -558,6 +559,16 @@ export default async function CategoryAboutPage({ params }: CategoryAboutPagePro
 
   if (category.id === "mods") {
     return <ModsAboutContent categorySlug={category.slug} />;
+  }
+
+  if (category.id === "genimons") {
+    return (
+      <GenimonsGuide
+        categorySlug={category.slug}
+        gameLang={toGameDataLangCode(toLocale(locale))}
+        locale={locale}
+      />
+    );
   }
 
   if (category.id === "weapons") {

@@ -99,18 +99,20 @@ export default async function ItemsCategoriesPage() {
               )}
             </Link>
 
-            {(category.id === "mods" || category.id === "weapons") && (
+            {(category.id === "mods" || category.id === "weapons" || category.id === "genimons") && (
               <div className="mt-5 border-t border-white/10 pt-4">
                 <Link
                   href={`/items/${category.slug}/about`}
                   className={`inline-flex items-center gap-2 rounded-sm border px-3 py-2 text-sm font-medium transition-colors ${
                     category.id === "weapons"
                       ? "border-crimson-bright/35 bg-crimson/10 text-crimson-bright hover:bg-crimson/20"
-                      : "border-hydro/35 bg-hydro/10 text-hydro hover:bg-hydro/20"
+                      : category.id === "genimons"
+                        ? "border-anemo/35 bg-anemo/10 text-anemo hover:bg-anemo/20"
+                        : "border-hydro/35 bg-hydro/10 text-hydro hover:bg-hydro/20"
                   }`}
                 >
                   <BookOpenText className="h-4 w-4" />
-                  {category.id === "weapons" ? tItems('calamityWeaponGuide') : tItems('demonWedgeGuide')}
+                  {category.id === "weapons" ? tItems('calamityWeaponGuide') : category.id === "genimons" ? tItems('genimonGuide') : tItems('demonWedgeGuide')}
                 </Link>
               </div>
             )}

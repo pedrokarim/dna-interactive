@@ -718,18 +718,24 @@ export default function ItemsGridClient({
           <p className="mt-3 max-w-2xl text-sm text-parch/75">{category.description}</p>
           {/* Le guide n'était atteignable que depuis la page des catégories :
               depuis la liste elle-même, rien n'y menait. */}
-          {(category.id === "mods" || category.id === "weapons") && !favoritesOnly ? (
+          {(category.id === "mods" || category.id === "weapons" || category.id === "genimons") && !favoritesOnly ? (
             <Link
               href={`/items/${category.slug}/about`}
               className={cn(
                 "mt-4 inline-flex items-center gap-2 rounded-sm border px-3 py-2 text-sm font-medium transition-colors",
                 category.id === "weapons"
                   ? "border-crimson-bright/35 bg-crimson/10 text-crimson-bright hover:bg-crimson/20"
-                  : "border-hydro/35 bg-hydro/10 text-hydro hover:bg-hydro/20",
+                  : category.id === "genimons"
+                    ? "border-anemo/35 bg-anemo/10 text-anemo hover:bg-anemo/20"
+                    : "border-hydro/35 bg-hydro/10 text-hydro hover:bg-hydro/20",
               )}
             >
               <BookOpenText className="h-4 w-4" />
-              {category.id === "weapons" ? t("calamityWeaponGuide") : t("demonWedgeGuide")}
+              {category.id === "weapons"
+                ? t("calamityWeaponGuide")
+                : category.id === "genimons"
+                  ? t("genimonGuide")
+                  : t("demonWedgeGuide")}
             </Link>
           ) : null}
         </div>
