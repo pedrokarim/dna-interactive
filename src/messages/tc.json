@@ -1034,7 +1034,8 @@
     "genimonEditTraits": "特性（{count}/{max}）",
     "genimonTraitCount": "{max} 個欄位中的 {count} 個",
     "genimonTraitFull": "欄位已滿：再選一個會取代最舊的那個。",
-    "genimonTraitsModalHelp": "挑選你想在這隻吉尼蒙身上取得的特性。欄位數量依個體而定：普通變種三個，閃耀變種四個。順序代表farm的優先度，而非它會進到哪個欄位。"
+    "genimonTraitsModalHelp": "挑選你想在這隻吉尼蒙身上取得的特性。欄位數量依個體而定：普通變種三個，閃耀變種四個。順序代表farm的優先度，而非它會進到哪個欄位。",
+    "genimonEmptySlot": "空欄位"
   },
   "communityBuilds": {
     "sectionTitle": "社群替代方案",

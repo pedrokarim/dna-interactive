@@ -1034,7 +1034,8 @@
     "genimonEditTraits": "Rasgos ({count}/{max})",
     "genimonTraitCount": "{count} de {max} ranuras",
     "genimonTraitFull": "Todas las ranuras están ocupadas: una elección nueva sustituye a la más antigua.",
-    "genimonTraitsModalHelp": "Elige los Rasgos que quieres conseguir en este Geniemon. El número de ranuras depende de la criatura: tres en una variante corriente, cuatro en una reluciente. El orden es una prioridad de farmeo, no una ranura."
+    "genimonTraitsModalHelp": "Elige los Rasgos que quieres conseguir en este Geniemon. El número de ranuras depende de la criatura: tres en una variante corriente, cuatro en una reluciente. El orden es una prioridad de farmeo, no una ranura.",
+    "genimonEmptySlot": "Ranura libre"
   },
   "communityBuilds": {
     "sectionTitle": "Alternativas de la comunidad",

@@ -1034,7 +1034,8 @@
     "genimonEditTraits": "Traits ({count}/{max})",
     "genimonTraitCount": "{count} of {max} slots",
     "genimonTraitFull": "Every slot is taken: a new pick replaces the oldest one.",
-    "genimonTraitsModalHelp": "Pick the Traits to aim for on this Geniemon. The number of slots depends on the creature: three for an ordinary variant, four for a shining one. The order reads as a farming priority, not as a slot."
+    "genimonTraitsModalHelp": "Pick the Traits to aim for on this Geniemon. The number of slots depends on the creature: three for an ordinary variant, four for a shining one. The order reads as a farming priority, not as a slot.",
+    "genimonEmptySlot": "Empty slot"
   },
   "communityBuilds": {
     "sectionTitle": "Community alternatives",

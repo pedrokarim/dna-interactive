@@ -1034,7 +1034,8 @@
     "genimonEditTraits": "Traits ({count}/{max})",
     "genimonTraitCount": "{count} sur {max} emplacements",
     "genimonTraitFull": "Tous les emplacements sont pris : un nouveau choix remplace le plus ancien.",
-    "genimonTraitsModalHelp": "Choisissez les Traits à viser sur ce Géniemon. Le nombre d'emplacements dépend de la créature : trois pour une variante ordinaire, quatre pour une scintillante. L'ordre se lit comme une priorité de farm, pas comme un emplacement."
+    "genimonTraitsModalHelp": "Choisissez les Traits à viser sur ce Géniemon. Le nombre d'emplacements dépend de la créature : trois pour une variante ordinaire, quatre pour une scintillante. L'ordre se lit comme une priorité de farm, pas comme un emplacement.",
+    "genimonEmptySlot": "Emplacement libre"
   },
   "communityBuilds": {
     "sectionTitle": "Alternatives communauté",

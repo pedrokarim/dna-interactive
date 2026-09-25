@@ -1291,61 +1291,37 @@ export function CommunityBuildBuilderClient({
               label={t("pickGenimon")}
               allowRanks={false}
               onChange={setGenimons}
+              renderFooter={(entry) => {
+                // Le jeu montre les emplacements comme des sphères autour de la
+                // créature : on reprend sa forme plutôt que d'inventer la nôtre.
+                const slots = genimonTraitSlots(entry.item.id);
+                const keys = sanitizeTraitKeys(entry.item.id, genimonTraits[entry.item.id]);
+                return (
+                  <button
+                    type="button"
+                    onClick={() => setTraitModalGenimon(entry.item.id)}
+                    title={t("genimonEditTraits", { count: keys.length, max: slots })}
+                    aria-label={t("genimonEditTraits", { count: keys.length, max: slots })}
+                    className="mt-0.5 flex items-center justify-center gap-1 rounded-full border border-white/10 bg-ink/60 px-2 py-1 transition-colors hover:border-gold/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60"
+                  >
+                    {Array.from({ length: slots }, (_, i) => {
+                      const trait = keys[i] ? traitByKey.get(keys[i]) : null;
+                      return trait?.icon ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img key={i} src={trait.icon} alt="" width={16} height={16} className="h-4 w-4 rounded-full" />
+                      ) : (
+                        <span
+                          key={i}
+                          aria-hidden
+                          className="h-4 w-4 rounded-full border border-dashed border-white/25"
+                        />
+                      );
+                    })}
+                  </button>
+                );
+              }}
             />
           </div>
-
-          {/*
-            Les Traits se choisissent par créature, une fois celle-ci retenue :
-            leur nombre dépend d'elle, et la liste n'a aucun sens hors d'elle.
-          */}
-          {genimons.length > 0 ? (
-            <ul className="mt-3 space-y-2">
-              {genimons.map((entry) => {
-                const keys = sanitizeTraitKeys(entry.item.id, genimonTraits[entry.item.id]);
-                const slots = genimonTraitSlots(entry.item.id);
-                return (
-                  <li
-                    key={entry.item.id}
-                    className="flex flex-wrap items-center gap-x-3 gap-y-2 border border-white/10 bg-ink/45 px-3 py-2"
-                  >
-                    <span className="min-w-0 flex-1 truncate text-sm text-parch">{entry.item.name}</span>
-                    <span className="flex items-center gap-1.5">
-                      {keys.length === 0 ? (
-                        <span className="text-xs text-muted-2">{t("genimonNoTrait")}</span>
-                      ) : (
-                        keys.map((key) => {
-                          const trait = traitByKey.get(key);
-                          return trait?.icon ? (
-                            // eslint-disable-next-line @next/next/no-img-element
-                            <img
-                              key={key}
-                              src={trait.icon}
-                              alt={trait.name}
-                              title={trait.name}
-                              width={22}
-                              height={22}
-                              className="h-[22px] w-[22px]"
-                            />
-                          ) : (
-                            <span key={key} className="text-xs text-parch/80">
-                              {trait?.name ?? key}
-                            </span>
-                          );
-                        })
-                      )}
-                    </span>
-                    <button
-                      type="button"
-                      onClick={() => setTraitModalGenimon(entry.item.id)}
-                      className="rounded-sm border border-white/15 px-2.5 py-1 text-xs text-parch transition-colors hover:border-gold/40 hover:text-gold"
-                    >
-                      {t("genimonEditTraits", { count: keys.length, max: slots })}
-                    </button>
-                  </li>
-                );
-              })}
-            </ul>
-          ) : null}
         </DnaPanel>
 
         <DnaPanel className="p-4">
@@ -1413,29 +1389,6 @@ export function CommunityBuildBuilderClient({
                 <p className="mt-1 max-w-prose text-xs leading-relaxed text-muted">{t("publishCtaHint")}</p>
               </div>
               <DnaButton variant="gold" disabled={publishing || title.trim().length < 3} onClick={publishBuild}>
-                {(() => {
-        const id = traitModalGenimon;
-        if (!id) return null;
-        const entry = genimons.find((e) => e.item.id === id);
-        if (!entry) return null;
-        const slots = genimonTraitSlots(id);
-        const selected = sanitizeTraitKeys(id, genimonTraits[id]);
-        return (
-          <DnaDialog open onClose={() => setTraitModalGenimon(null)} title={entry.item.name} size="3xl">
-            <div className="p-5">
-              <p className="mb-4 max-w-prose text-xs leading-relaxed text-muted">{t("genimonTraitsModalHelp")}</p>
-              <DnaGenimonTraitEditor
-                groups={traitGroups}
-                selected={selected}
-                max={slots}
-                countLabel={t("genimonTraitCount", { count: selected.length, max: slots })}
-                fullHint={t("genimonTraitFull")}
-                onChange={(keys) => setGenimonTraits((prev) => ({ ...prev, [id]: keys }))}
-              />
-            </div>
-          </DnaDialog>
-        );
-      })()}
       {publishing ? (editingBuildId ? t("updating") : t("publishing")) : editingBuildId ? t("update") : t("publish")}
               </DnaButton>
             </div>
@@ -1628,6 +1581,31 @@ export function CommunityBuildBuilderClient({
                   onCenterClick={() => setEditing({ kind: "weaponAffinity", weaponId: id })}
                 />
               </div>
+            </div>
+          </DnaDialog>
+        );
+      })()}
+      {(() => {
+        const id = traitModalGenimon;
+        if (!id) return null;
+        const entry = genimons.find((e) => e.item.id === id);
+        if (!entry) return null;
+        const slots = genimonTraitSlots(id);
+        const selected = sanitizeTraitKeys(id, genimonTraits[id]);
+        return (
+          <DnaDialog open onClose={() => setTraitModalGenimon(null)} title={entry.item.name} size="2xl">
+            <div className="p-5">
+              <p className="mb-5 max-w-prose text-xs leading-relaxed text-muted">{t("genimonTraitsModalHelp")}</p>
+              <DnaGenimonTraitEditor
+                groups={traitGroups}
+                selected={selected}
+                max={slots}
+                portrait={{ name: entry.item.name, icon: entry.item.icon ?? null }}
+                countLabel={t("genimonTraitCount", { count: selected.length, max: slots })}
+                fullHint={t("genimonTraitFull")}
+                emptySlotLabel={t("genimonEmptySlot")}
+                onChange={(keys) => setGenimonTraits((prev) => ({ ...prev, [id]: keys }))}
+              />
             </div>
           </DnaDialog>
         );

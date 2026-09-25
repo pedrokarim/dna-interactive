@@ -11,7 +11,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Choix des Traits greffés sur un Géniemon. Le nombre d'emplacements vient de la créature — trois pour une variante ordinaire, quatre pour une scintillante — et n'est donc pas une constante. La pastille chiffrée donne l'ordre de sélection, qui se lit comme une priorité de farm et non comme un emplacement. Une fois la limite atteinte, un nouveau choix remplace le plus ancien plutôt que d'être refusé en silence.",
+          "Choix des Traits greffés sur un Géniemon, disposés en couronne autour d'elle comme le fait le jeu. Le nombre d'emplacements vient de la créature — trois pour une variante ordinaire, quatre pour une scintillante — et n'est donc pas une constante. La pastille chiffrée donne l'ordre de sélection, qui se lit comme une priorité de farm et non comme un emplacement. Une fois la limite atteinte, un nouveau choix remplace le plus ancien plutôt que d'être refusé en silence.",
       },
     },
   },
@@ -72,8 +72,10 @@ function Demo({ max, initial }: { max: number; initial: string[] }) {
       selected={selected}
       max={max}
       onChange={setSelected}
+      portrait={{ name: "Piquero", icon: "/assets/items/genimons/T_Head_Pet_Dahuo03.png" }}
       countLabel={`${selected.length} sur ${max} emplacements`}
       fullHint="Tous les emplacements sont pris : un nouveau choix remplace le plus ancien."
+      emptySlotLabel="Emplacement libre"
     />
   );
 }

@@ -1034,7 +1034,8 @@
     "genimonEditTraits": "特性（{count}/{max}）",
     "genimonTraitCount": "{max} 枠中 {count} 個",
     "genimonTraitFull": "枠がすべて埋まっています。新たに選ぶと、いちばん古いものと入れ替わります。",
-    "genimonTraitsModalHelp": "このジーニモンで狙う特性を選びます。枠の数は個体によって変わり、通常の変種は3つ、輝く変種は4つです。並び順は育成の優先度であって、どの枠に入るかではありません。"
+    "genimonTraitsModalHelp": "このジーニモンで狙う特性を選びます。枠の数は個体によって変わり、通常の変種は3つ、輝く変種は4つです。並び順は育成の優先度であって、どの枠に入るかではありません。",
+    "genimonEmptySlot": "空きスロット"
   },
   "communityBuilds": {
     "sectionTitle": "コミュニティの代替案",

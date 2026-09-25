@@ -1034,7 +1034,8 @@
     "genimonEditTraits": "특성 ({count}/{max})",
     "genimonTraitCount": "{max}칸 중 {count}개",
     "genimonTraitFull": "칸이 모두 찼습니다. 새로 고르면 가장 오래된 것과 교체됩니다.",
-    "genimonTraitsModalHelp": "이 지니몬에서 노릴 특성을 고르세요. 칸 수는 개체에 따라 다르며, 일반 변종은 3개, 빛나는 변종은 4개입니다. 순서는 파밍 우선순위이지 어느 칸에 들어가는지가 아닙니다."
+    "genimonTraitsModalHelp": "이 지니몬에서 노릴 특성을 고르세요. 칸 수는 개체에 따라 다르며, 일반 변종은 3개, 빛나는 변종은 4개입니다. 순서는 파밍 우선순위이지 어느 칸에 들어가는지가 아닙니다.",
+    "genimonEmptySlot": "빈 칸"
   },
   "communityBuilds": {
     "sectionTitle": "커뮤니티 대안",

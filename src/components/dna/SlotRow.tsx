@@ -36,6 +36,11 @@ export type DnaSlotRowProps = {
   readOnly?: boolean;
   pickerColumns?: number;
   onChange?: (entries: SlotEntry[]) => void;
+  /**
+   * Pied optionnel rendu dans la carte, sous le nom. Sert aux Géniemons, dont
+   * les emplacements de Trait se règlent depuis la vignette elle-même.
+   */
+  renderFooter?: (entry: SlotEntry, index: number) => React.ReactNode;
   className?: string;
 };
 
@@ -52,6 +57,7 @@ export function DnaSlotRow({
   readOnly = false,
   pickerColumns = 4,
   onChange,
+  renderFooter,
   className,
 }: DnaSlotRowProps) {
   const t = useTranslations("common");
@@ -101,6 +107,7 @@ export function DnaSlotRow({
           onReplace={() => setPickerFor(i)}
           onRemove={() => remove(i)}
           onSetBest={() => setBest(i)}
+          footer={renderFooter?.(e, i)}
         />
       ))}
 
@@ -137,6 +144,7 @@ function SlotCard({
   onReplace,
   onRemove,
   onSetBest,
+  footer,
 }: {
   entry: SlotEntry;
   allowRanks: boolean;
@@ -144,6 +152,7 @@ function SlotCard({
   onReplace: () => void;
   onRemove: () => void;
   onSetBest: () => void;
+  footer?: React.ReactNode;
 }) {
   const t = useTranslations("common");
   const { item, rank } = entry;
@@ -198,6 +207,7 @@ function SlotCard({
             <DnaTag tone={isBest ? "gold" : "crimson"}>{isBest ? "Best" : "Alt"}</DnaTag>
           </button>
         ))}
+      {footer}
     </div>
   );
 }

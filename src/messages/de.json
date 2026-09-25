@@ -1034,7 +1034,8 @@
     "genimonEditTraits": "Traits ({count}/{max})",
     "genimonTraitCount": "{count} von {max} Plätzen",
     "genimonTraitFull": "Alle Plätze sind belegt: Eine neue Wahl ersetzt die älteste.",
-    "genimonTraitsModalHelp": "Wähle die Traits, die du auf diesem Geniemon anstrebst. Die Zahl der Plätze hängt von der Kreatur ab: drei bei einer gewöhnlichen Variante, vier bei einer schimmernden. Die Reihenfolge ist eine Farm-Priorität, kein Platz."
+    "genimonTraitsModalHelp": "Wähle die Traits, die du auf diesem Geniemon anstrebst. Die Zahl der Plätze hängt von der Kreatur ab: drei bei einer gewöhnlichen Variante, vier bei einer schimmernden. Die Reihenfolge ist eine Farm-Priorität, kein Platz.",
+    "genimonEmptySlot": "Freier Platz"
   },
   "communityBuilds": {
     "sectionTitle": "Community-Alternativen",
