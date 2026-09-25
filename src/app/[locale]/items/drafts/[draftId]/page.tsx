@@ -38,8 +38,9 @@ export async function generateMetadata(
   }
 
   const languages = getDraftAvailableLanguages();
-  const productName = resolveDraftItemName(recipe.product, "FR", languages);
-  const productDescription = resolveDraftItemDescription(recipe.product, "FR", languages);
+  const language = locale.toUpperCase();
+  const productName = resolveDraftItemName(recipe.product, language, languages);
+  const productDescription = resolveDraftItemDescription(recipe.product, language, languages);
 
   return generatePageMetadata(
     {

@@ -1,7 +1,7 @@
 "use client";
 
 import { Link } from "@/i18n/navigation";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useMemo, useState, type ReactNode } from "react";
 import { ArrowLeft, ChevronDown, Flame, Heart, Languages, Lock, Sparkles, Target } from "lucide-react";
 import { useAtom } from "jotai";
@@ -304,8 +304,10 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
   const isWeaponsCategory = category.id === "weapons";
   // Passif dont les valeurs varient avec le niveau du slider (mods = niveau, armes = niveau de fusion/doublon).
   const hasLeveledPassive = isModsCategory || isWeaponsCategory;
+  // Langue de la page par défaut, pour que le rendu serveur soit dans la langue de l'URL.
+  const locale = useLocale();
   const preferredLanguage = normalizeLanguageCodes(
-    [category.defaultDetailLanguage],
+    [locale, category.defaultDetailLanguage],
     category.availableLanguages,
     ["FR", "EN"],
   )[0];

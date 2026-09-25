@@ -49,10 +49,12 @@ export async function generateMetadata(
     );
   }
 
+  // La langue de l'URL d'abord : sinon /en, /de… servaient le nom français et
+  // Google voyait 7 copies identiques de la même fiche.
   const localized = getItemTranslation(
     item,
-    category.defaultDetailLanguage,
-    category.availableLanguages,
+    locale.toUpperCase(),
+    [category.defaultDetailLanguage, ...category.availableLanguages],
   );
   const modName = localized.modName ?? `${category.displayName} #${item.modId}`;
 

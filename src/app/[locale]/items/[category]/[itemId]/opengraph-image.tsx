@@ -23,14 +23,14 @@ export default async function ItemOgImage({
 }: {
   params: Promise<{ locale: string; category: string; itemId: string }>;
 }) {
-  const { category: categorySlug, itemId } = await params;
+  const { locale, category: categorySlug, itemId } = await params;
   const [fonts, origin] = await Promise.all([loadOgFonts(), resolveOrigin()]);
 
   const category = getItemCategoryBySlug(categorySlug);
   const item = category ? getItemByCategoryAndId(category.id, itemId) : null;
   const localized =
     item && category
-      ? getItemTranslation(item, category.defaultDetailLanguage, category.availableLanguages)
+      ? getItemTranslation(item, locale.toUpperCase(), [category.defaultDetailLanguage, ...category.availableLanguages])
       : null;
 
   const hex = rarityHex(item?.stats.rarity) ?? FALLBACK_HEX;

@@ -1,5 +1,5 @@
 import type { Metadata, ResolvingMetadata } from "next";
-import { notFound, redirect } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { Suspense } from "react";
 import CharacterDetailClient from "@/components/characters/CharacterDetailClient";
@@ -74,8 +74,8 @@ export async function generateMetadata(
   const catalog = getCharactersCatalog();
   const localized = getCharacterTranslation(
     character,
-    catalog.defaultDetailLanguage,
-    catalog.availableLanguages,
+    locale.toUpperCase(),
+    [catalog.defaultDetailLanguage, ...catalog.availableLanguages],
   );
   const charName = localized.name ?? character.internalName;
   const slug = getCharacterSlug(character);
@@ -139,7 +139,9 @@ export default async function CharacterDetailPage({
 
   const canonicalSlug = getCharacterSlug(character);
   if (characterId !== canonicalSlug) {
-    redirect(`/${locale}/characters/${canonicalSlug}`);
+    // Ancien slug (`char-xxx`) : redirection permanente (308), pour que Google
+    // abandonne l'ancienne adresse au lieu de continuer à l'explorer.
+    permanentRedirect(`/${locale}/characters/${canonicalSlug}`);
   }
 
   const catalog = getCharactersCatalog();

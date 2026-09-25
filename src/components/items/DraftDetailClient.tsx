@@ -1,7 +1,7 @@
 "use client";
 
 import { Link } from "@/i18n/navigation";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useMemo } from "react";
 import { ArrowLeft, Clock3, ExternalLink, Languages } from "lucide-react";
 import { parseAsStringLiteral, useQueryState } from "nuqs";
@@ -184,7 +184,9 @@ function RecipeNode({ item, selectedLanguage, fallbackLanguages, primary = false
 export default function DraftDetailClient({ recipe, availableLanguages }: DraftDetailClientProps) {
   const t = useTranslations('draftDetail');
   const tc = useTranslations('common');
-  const preferredLanguage = normalizeLanguageCodes(["FR"], availableLanguages, ["FR", "EN"])[0];
+  // Langue de la page par défaut, pour que le rendu serveur soit dans la langue de l'URL.
+  const locale = useLocale();
+  const preferredLanguage = normalizeLanguageCodes([locale, "FR"], availableLanguages, ["FR", "EN"])[0];
   const selectedLanguageParser = useMemo(
     () =>
       parseAsStringLiteral(availableLanguages)
