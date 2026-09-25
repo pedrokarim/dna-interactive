@@ -1836,7 +1836,7 @@
     "imageReroll": "Einen Trait neu auswürfeln und seine Chancen.",
     "imageTraitSlots": "Trait-Plätze, durch Aufstiege geöffnet.",
     "intro": "Ein ausgerüsteter Geniemon gibt der ganzen Gruppe einen passiven Bonus, dazu bis zu vier Traits obendrauf. Ihn aufzuziehen sind daher zwei Aufgaben: das Wesen selbst und die Traits, die es trägt.",
-    "listBody": "Die vier Kategorien unten stammen aus dem Spiel und sind am Symbol jedes Traits ablesbar. Die Punkte zeigen die vorhandenen Seltenheiten.",
+    "listBody": "Die vier Kategorien unten stammen aus dem Spiel, jede mit ihrem eigenen Symbol. Die Farbe steht für die Seltenheit: Blau, Violett, Gold. Die Symbole vor einem Trait zeigen, in welchen Seltenheiten es ihn gibt.",
     "listTitle": "Traits, Kategorie für Kategorie",
     "nextBody": "Die Einzelseiten zeigen jeden Geniemon im Detail: Passiv, Werte und Varianten.",
     "nextLink": "Alle Geniemons ansehen",
@@ -1857,6 +1857,9 @@
     "traitCount": "{count} Traits",
     "traitsActiveInactive": "Traits stammen von inaktiven Geniemons, denen, die du nicht in den Kampf schickst. Ein inaktiver Geniemon ist also nie nutzlos: er ist ein Trait-Vorrat für die, die du wirklich spielst.",
     "traitsBody": "Ein Trait ist ein Bonus, der in einen durch Aufstieg geöffneten Platz gesetzt wird. Er ergänzt das Art-Passiv, statt es zu ersetzen: ein Geniemon kann sein Passiv und bis zu vier Traits stapeln.",
-    "traitsTitle": "Traits"
+    "traitsTitle": "Traits",
+    "flowActive": "Aktiv",
+    "flowInactive": "Inaktiv",
+    "flowCaption": "Ein inaktives Geniemon dient als Reservoir: Seine Traits gehen an das, welches du in den Kampf mitnimmst. Den vierten Platz gibt es nur bei einer schimmernden Variante."
   }
 }

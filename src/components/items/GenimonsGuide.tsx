@@ -3,12 +3,15 @@ import { Link } from "@/i18n/navigation";
 import { ArrowLeft, ArrowRight, BookOpenText, Layers, Sparkles, Swords, TrendingUp } from "lucide-react";
 import { DnaSectionLabel } from "@/components/dna/SectionLabel";
 import { GuideImageSlot } from "@/components/items/GuideImageSlot";
+import { getItemTranslation, getItemsByCategoryId } from "@/lib/items/catalog";
 import {
   TRAIT_CATEGORIES,
+  categoryIconSrc,
   countTraitsByCategory,
   fusionCostFromLowest,
   getTraitsByCategory,
   pickTraitText,
+  traitIconSrc,
   traitRarities,
   type TraitCategory,
 } from "@/lib/genimons/traits";
@@ -37,16 +40,118 @@ function Badge({ icon, label }: { icon: React.ReactNode; label: string }) {
   );
 }
 
-/** Pastille de rareté : la couleur est celle du jeu, pas une invention. */
-function RarityDot({ rarity }: { rarity: number }) {
-  const tone =
-    rarity >= 5 ? "border-gold/50 bg-gold/15 text-gold"
-      : rarity === 4 ? "border-[#a78bfa]/50 bg-[#a78bfa]/15 text-[#c4b5fd]"
-        : "border-hydro/50 bg-hydro/15 text-hydro";
+/**
+ * Glyphe d'un Trait : celui du jeu, dans la couleur de sa rareté.
+ *
+ * Le texte alternatif porte la rareté plutôt qu'un intitulé, parce que c'est la
+ * seule chose que l'image ajoute au nom du Trait écrit juste à côté.
+ */
+function TraitGlyph({ category, rarity, size = 26 }: { category: TraitCategory | "unknown"; rarity: number; size?: number }) {
+  const src = traitIconSrc(category, rarity);
+  if (!src) return null;
   return (
-    <span className={`inline-flex h-5 w-5 items-center justify-center rounded-sm border text-[0.62rem] font-semibold ${tone}`}>
-      {rarity}
-    </span>
+    // eslint-disable-next-line @next/next/no-img-element
+    <img src={src} alt={`${rarity}★`} width={size} height={size} loading="lazy" className="shrink-0" style={{ width: size, height: size }} />
+  );
+}
+
+/** Glyphe neutre d'une catégorie. Décoratif : le titre à côté dit déjà laquelle. */
+function CategoryGlyph({ category }: { category: TraitCategory }) {
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img src={categoryIconSrc(category)} alt="" width={28} height={28} className="h-7 w-7 shrink-0 opacity-90" />
+  );
+}
+
+/** Nombre d'emplacements qu'un Géniemon peut ouvrir, la quatrième ascension comprise. */
+const MAX_TRAIT_SLOTS = 4;
+
+/**
+ * Trois Géniemons équipables, pris dans les données plutôt que cités en dur :
+ * le schéma illustre un principe, pas une espèce en particulier, et figer des
+ * identifiants le ferait mentir à la première mise à jour.
+ */
+function pickShowcaseGenimons(gameLang: string) {
+  const seen = new Set<number>();
+  const out: { id: string; name: string; icon: string }[] = [];
+  for (const item of getItemsByCategoryId("genimons")) {
+    const species = item.variants?.speciesId;
+    const icon = item.icon?.publicPath;
+    // Une seule variante par espèce : deux visuels identiques côte à côte
+    // laisseraient croire qu'il faut des doublons.
+    if (item.stats?.maxLevel !== 60 || !icon || !species || seen.has(species)) continue;
+    seen.add(species);
+    out.push({ id: item.id, name: getItemTranslation(item, gameLang, ["EN"]).modName ?? "", icon });
+    if (out.length === 4) break;
+  }
+  return out;
+}
+
+/**
+ * Actif / inactif : d'où viennent les Traits et où ils vont.
+ *
+ * Dessiné avec les vrais visuels du jeu – têtes de Géniemon et glyphes de Trait –
+ * plutôt qu'avec des formes inventées, pour que le lecteur reconnaisse à l'écran
+ * ce qu'il a sous les yeux dans le jeu.
+ */
+async function TraitFlowDiagram({ gameLang, locale }: { gameLang: string; locale: string }) {
+  const t = await getTranslations({ locale, namespace: "genimonGuide" });
+  const showcase = pickShowcaseGenimons(gameLang);
+  if (showcase.length < MAX_TRAIT_SLOTS) return null;
+
+  const donors = showcase.slice(0, 3);
+  const host = showcase[3]!;
+  const donorCategories: TraitCategory[] = ["battle", "speed", "world"];
+
+  return (
+    <div className="border border-white/10 bg-ink/45 p-4 md:p-5">
+      <div className="flex flex-col items-center gap-4 md:flex-row md:justify-center md:gap-6">
+        {/* ------------------------------------------------ les inactifs */}
+        <div className="flex flex-col items-center gap-2">
+          <span className="font-caps text-[0.6rem] uppercase tracking-[0.2em] text-muted-2">{t("flowInactive")}</span>
+          <div className="flex gap-2">
+            {donors.map((genimon, i) => (
+              <div key={genimon.id} className="flex w-20 flex-col items-center gap-1 border border-white/10 bg-panel/40 px-2 py-2">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={genimon.icon}
+                  alt={genimon.name}
+                  width={44}
+                  height={44}
+                  loading="lazy"
+                  className="h-11 w-11 opacity-45 grayscale"
+                />
+                <TraitGlyph category={donorCategories[i]!} rarity={4} size={22} />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <ArrowRight className="h-5 w-5 shrink-0 rotate-90 md:rotate-0" style={{ color: GENIMON_ACCENT }} aria-hidden />
+
+        {/* --------------------------------------------------- l'actif */}
+        <div className="flex flex-col items-center gap-2">
+          <span className="font-caps text-[0.6rem] uppercase tracking-[0.2em]" style={{ color: GENIMON_ACCENT }}>
+            {t("flowActive")}
+          </span>
+          <div className="flex w-36 flex-col items-center gap-2 border border-anemo/30 bg-panel/60 px-3 py-3">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={host.icon} alt={host.name} width={60} height={60} loading="lazy" className="h-15 w-15" />
+            <div className="flex gap-1.5">
+              {Array.from({ length: MAX_TRAIT_SLOTS }, (_, i) =>
+                donorCategories[i] ? (
+                  <TraitGlyph key={i} category={donorCategories[i]!} rarity={4} size={22} />
+                ) : (
+                  // Le quatrième reste vide : seule une variante scintillante l'ouvre.
+                  <span key={i} className="h-[22px] w-[22px] border border-dashed border-white/25" />
+                ),
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+      <p className="mt-4 text-center text-xs text-muted">{t("flowCaption")}</p>
+    </div>
   );
 }
 
@@ -57,8 +162,11 @@ async function TraitTable({ category, gameLang, locale }: { category: TraitCateg
 
   return (
     <div className="border border-white/10 bg-panel/55">
-      <div className="flex items-baseline justify-between gap-3 border-b border-white/10 px-4 py-3">
-        <h3 className="font-display text-lg text-parch">{t(`category_${category}`)}</h3>
+      <div className="flex items-center justify-between gap-3 border-b border-white/10 px-4 py-3">
+        <h3 className="flex items-center gap-2.5 font-display text-lg text-parch">
+          <CategoryGlyph category={category} />
+          {t(`category_${category}`)}
+        </h3>
         <span className="font-caps text-[0.6rem] uppercase tracking-[0.2em] text-muted">
           {t("traitCount", { count: traits.length })}
         </span>
@@ -69,9 +177,9 @@ async function TraitTable({ category, gameLang, locale }: { category: TraitCateg
           const rarities = traitRarities(trait);
           const fusion = fusionCostFromLowest(trait);
           return (
-            <li key={trait.key} className="flex flex-wrap items-baseline gap-x-3 gap-y-1 px-4 py-3">
-              <span className="flex shrink-0 items-center gap-1">
-                {rarities.map((r) => <RarityDot key={r} rarity={r} />)}
+            <li key={trait.key} className="flex flex-wrap items-center gap-x-3 gap-y-1 px-4 py-3">
+              <span className="flex w-[5.4rem] shrink-0 items-center gap-1">
+                {rarities.map((r) => <TraitGlyph key={r} category={trait.category} rarity={r} />)}
               </span>
               <span className="min-w-[7rem] text-sm font-medium text-parch">{pickTraitText(trait.name, gameLang)}</span>
               <span className="flex-1 text-sm text-parch/85">{pickTraitText(trait.effect, gameLang)}</span>
@@ -184,6 +292,9 @@ export async function GenimonsGuide({
           </div>
           <GuideImageSlot slot="traitSlots" family="genimons" caption={t("imageTraitSlots")} ratio="4 / 3" />
         </div>
+        <div className="mt-5">
+          <TraitFlowDiagram gameLang={gameLang} locale={locale} />
+        </div>
       </section>
 
       {/* -------------------------------------------------- fusion, rareté */}
@@ -192,12 +303,17 @@ export async function GenimonsGuide({
         <div className="mt-4 grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)]">
           <div className="space-y-3">
             <p className="text-sm leading-relaxed text-parch/85">{t("fusionBody")}</p>
+            {/*
+              La chaîne garde la même catégorie d'un bout à l'autre : la fusion
+              ne change pas le Trait, seulement sa rareté. Montrer trois glyphes
+              différents laisserait croire le contraire.
+            */}
             <div className="flex flex-wrap items-center gap-2 border border-white/10 bg-ink/55 px-3 py-3 text-sm text-parch/85">
-              <RarityDot rarity={3} /> <span className="text-muted">×3</span>
-              <ArrowRight className="h-3.5 w-3.5" style={{ color: GENIMON_ACCENT }} />
-              <RarityDot rarity={4} /> <span className="text-muted">×3</span>
-              <ArrowRight className="h-3.5 w-3.5" style={{ color: GENIMON_ACCENT }} />
-              <RarityDot rarity={5} />
+              <TraitGlyph category="battle" rarity={3} size={30} /> <span className="text-muted">×3</span>
+              <ArrowRight className="h-4 w-4" style={{ color: GENIMON_ACCENT }} />
+              <TraitGlyph category="battle" rarity={4} size={30} /> <span className="text-muted">×3</span>
+              <ArrowRight className="h-4 w-4" style={{ color: GENIMON_ACCENT }} />
+              <TraitGlyph category="battle" rarity={5} size={30} />
               <span className="ml-2 text-xs text-muted-2">{t("fusionChainNote")}</span>
             </div>
             <p className="text-sm leading-relaxed text-parch/85">{t("rerollBody")}</p>

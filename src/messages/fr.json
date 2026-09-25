@@ -1810,7 +1810,7 @@
     "pushDisable": "Désactiver"
   },
   "genimonGuide": {
-    "ascensionBody": "L'ascension se fait aux niveaux 20, 40 et 60, puis une dernière fois sans condition de niveau. Chacune demande un Géniemon de la même espèce — n'importe laquelle de ses variantes — et un Lait Yum-Yum.",
+    "ascensionBody": "L'ascension se fait aux niveaux 20, 40 et 60, puis une dernière fois sans condition de niveau. Chacune demande un Géniemon de la même espèce – n'importe laquelle de ses variantes – et un Lait Yum-Yum.",
     "ascensionOpensSlots": "Chaque ascension ouvre un emplacement de Trait. C'est la seule façon d'en obtenir : une variante ordinaire en compte trois au bout du chemin, une variante scintillante quatre.",
     "badge": "Guide",
     "badgeFusion": "Fusion par trois",
@@ -1836,15 +1836,15 @@
     "imageReroll": "La relance d'un Trait et ses probabilités.",
     "imageTraitSlots": "Les emplacements de Trait, ouverts par les ascensions.",
     "intro": "Un Géniemon équipé apporte un bonus passif à toute l'équipe, et jusqu'à quatre Traits qui s'ajoutent par-dessus. Monter un Géniemon, c'est donc deux chantiers : la créature elle-même, et les Traits qu'elle porte.",
-    "listBody": "Les quatre catégories ci-dessous sont celles du jeu, reconnaissables à l'icône de chaque Trait. Les pastilles indiquent les raretés existantes pour ce Trait.",
+    "listBody": "Les quatre catégories ci-dessous sont celles du jeu, chacune avec son glyphe. La couleur du glyphe donne la rareté : bleu, violet, or. Devant chaque Trait figurent les raretés auxquelles il existe.",
     "listTitle": "Les Traits, catégorie par catégorie",
     "nextBody": "Les fiches donnent le détail de chaque Géniemon : son passif, ses valeurs et ses variantes.",
     "nextLink": "Voir tous les Géniemons",
     "nextTitle": "Et ensuite",
     "passiveBody": "Chaque espèce porte son propre passif, qui profite au personnage principal comme aux Partenaires de combat. La plupart augmentent l'ATQ d'un élément ; les plus rares renforcent en plus les statistiques que donnent certains Demon Wedges, ou touchent à l'exploration et au déplacement.",
-    "passiveShiny": "Les variantes d'une même espèce partagent exactement le même passif et les mêmes valeurs. Ce qui les sépare, c'est le nombre d'emplacements de Trait — et c'est là que se joue l'écart réel.",
+    "passiveShiny": "Les variantes d'une même espèce partagent exactement le même passif et les mêmes valeurs. Ce qui les sépare, c'est le nombre d'emplacements de Trait – et c'est là que se joue l'écart réel.",
     "passiveTitle": "Le passif du Géniemon",
-    "raiseBody": "Un Géniemon monte jusqu'au niveau 60. On le nourrit de Crèmes Yum, Yum-Yum et Yum-Yum-Yum, ou d'autres Géniemons donnés en matériau — un Géniemon consommé rend l'expérience qu'il a lui-même accumulée.",
+    "raiseBody": "Un Géniemon monte jusqu'au niveau 60. On le nourrit de Crèmes Yum, Yum-Yum et Yum-Yum-Yum, ou d'autres Géniemons donnés en matériau – un Géniemon consommé rend l'expérience qu'il a lui-même accumulée.",
     "raiseSteps": [
       "Les Crèmes Yum, Yum-Yum et Yum-Yum-Yum donnent de l'expérience, de la moins généreuse à la plus généreuse.",
       "Un Géniemon donné en matériau rend son expérience : ceux qu'on ne compte pas équiper ne sont jamais perdus.",
@@ -1857,6 +1857,9 @@
     "traitCount": "{count} Traits",
     "traitsActiveInactive": "Les Traits se récupèrent sur les Géniemons inactifs, ceux qu'on ne met pas au combat. Un Géniemon inactif n'est donc jamais inutile : il sert de réservoir de Traits pour ceux qu'on joue vraiment.",
     "traitsBody": "Un Trait est un bonus greffé dans un emplacement ouvert par l'ascension. Il s'ajoute au passif de l'espèce, sans le remplacer. Un même Géniemon peut donc cumuler son passif et jusqu'à quatre Traits.",
-    "traitsTitle": "Les Traits"
+    "traitsTitle": "Les Traits",
+    "flowActive": "Actif",
+    "flowInactive": "Inactifs",
+    "flowCaption": "Un Géniemon inactif sert de réservoir : ses Traits vont à celui qu'on emmène au combat. Le quatrième emplacement n'existe que sur une variante scintillante."
   }
 }

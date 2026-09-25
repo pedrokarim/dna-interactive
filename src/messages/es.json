@@ -1836,7 +1836,7 @@
     "imageReroll": "El relanzamiento de un Rasgo y sus probabilidades.",
     "imageTraitSlots": "Ranuras de Rasgo, abiertas por las ascensiones.",
     "intro": "Un Geniemon equipado otorga un bono pasivo a todo el equipo, más hasta cuatro Rasgos encima. Criarlo son, por tanto, dos tareas: la criatura y los Rasgos que lleva.",
-    "listBody": "Las cuatro categorías siguientes son las del juego, legibles en el icono de cada Rasgo. Los puntos muestran las rarezas existentes.",
+    "listBody": "Las cuatro categorías siguientes son las del juego, cada una con su glifo. El color indica la rareza: azul, morado y dorado. Los glifos que preceden a cada Rasgo son las rarezas en las que existe.",
     "listTitle": "Los Rasgos, categoría por categoría",
     "nextBody": "Las fichas detallan cada Geniemon: su pasiva, sus valores y sus variantes.",
     "nextLink": "Ver todos los Geniemons",
@@ -1854,9 +1854,12 @@
     "rerollBody": "Una ranura también puede relanzarse a cambio de recursos. No garantiza nada: saca una nueva rareza, y las probabilidades se inclinan claramente hacia los Rasgos azules.",
     "rerollNote": "Siete Rasgos solo existen en dorado y no se obtienen por fusión: hay que encontrarlos tal cual.",
     "title": "Criar un Geniemon",
-    "traitCount": "{count} Traits",
+    "traitCount": "{count} Rasgos",
     "traitsActiveInactive": "Los Rasgos se recogen de los Geniemons inactivos, los que no mandas al combate. Un Geniemon inactivo nunca es inútil: es una reserva de Rasgos para los que sí juegas.",
     "traitsBody": "Un Rasgo es un bono injertado en una ranura abierta por la ascensión. Se suma a la pasiva de la especie en lugar de sustituirla: un Geniemon puede acumular su pasiva y hasta cuatro Rasgos.",
-    "traitsTitle": "Los Rasgos"
+    "traitsTitle": "Los Rasgos",
+    "flowActive": "Activo",
+    "flowInactive": "Inactivos",
+    "flowCaption": "Un Geniemon inactivo sirve de reserva: sus Rasgos pasan al que llevas al combate. La cuarta ranura solo existe en una variante reluciente."
   }
 }

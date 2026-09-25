@@ -75,6 +75,32 @@ export function fusionCostFromLowest(trait: GenimonTrait): number | null {
   return steps.reduce((total, step) => total * (step.fuseCount ?? 1), 1);
 }
 
+// ---------------------------------------------------------------------------
+// Icônes.
+//
+// Le jeu dessine un glyphe par catégorie, décliné dans la couleur de la rareté.
+// La correspondance rareté → couleur est **relevée dans les données**, pas
+// choisie : 3 = bleu, 4 = violet, 5 = or. Les fichiers sont donc nommés sur la
+// rareté, qui est ce que porte `TraitTier`, et non sur la couleur.
+//
+// Le jeu livre aussi un gris et un vert, qu'aucun trait n'utilise : ils ne sont
+// pas embarqués.
+// ---------------------------------------------------------------------------
+
+const ICON_DIR = "/assets/genimons/traits";
+const ICON_RARITIES = new Set([3, 4, 5]);
+
+/** Glyphe neutre d'une catégorie, pour un titre de section. */
+export function categoryIconSrc(category: TraitCategory): string {
+  return `${ICON_DIR}/${category}.png`;
+}
+
+/** Glyphe d'un trait à une rareté donnée. `null` hors des raretés connues. */
+export function traitIconSrc(category: TraitCategory | "unknown", rarity: number): string | null {
+  if (category === "unknown" || !ICON_RARITIES.has(rarity)) return null;
+  return `${ICON_DIR}/${category}-${rarity}.png`;
+}
+
 export interface TraitCategoryCount {
   category: TraitCategory;
   count: number;

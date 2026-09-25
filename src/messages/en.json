@@ -1836,7 +1836,7 @@
     "imageReroll": "Rerolling a Trait and its odds.",
     "imageTraitSlots": "Trait slots, opened by ascensions.",
     "intro": "An equipped Geniemon grants a passive bonus to the whole party, plus up to four Traits stacked on top. Raising one is therefore two jobs: the creature itself, and the Traits it carries.",
-    "listBody": "The four categories below are the game's own, readable from each Trait's icon. The dots show which rarities that Trait has.",
+    "listBody": "The four categories below are the game's own, each with its glyph. The colour carries the rarity: blue, purple, gold. The glyphs in front of a Trait are the rarities it comes in.",
     "listTitle": "Traits, category by category",
     "nextBody": "The individual pages give each Geniemon in detail: its passive, its values and its variants.",
     "nextLink": "See every Geniemon",
@@ -1857,6 +1857,9 @@
     "traitCount": "{count} Traits",
     "traitsActiveInactive": "Traits are harvested from inactive Geniemons, the ones you do not send into battle. An inactive Geniemon is therefore never useless: it is a reserve of Traits for the ones you actually play.",
     "traitsBody": "A Trait is a bonus grafted into a slot opened by ascension. It adds to the species passive rather than replacing it, so a single Geniemon can stack its passive and up to four Traits.",
-    "traitsTitle": "Traits"
+    "traitsTitle": "Traits",
+    "flowActive": "Active",
+    "flowInactive": "Inactive",
+    "flowCaption": "An inactive Geniemon is a reservoir: its Traits go to the one you take into battle. The fourth slot exists only on a shining variant."
   }
 }
