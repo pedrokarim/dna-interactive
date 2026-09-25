@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
-import { ArrowLeft, ArrowRight, BookOpenText } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import { GlyphIcons } from "@/components/icons/GameGlyph";
 import { Link } from "@/i18n/navigation";
 import { getGuideOutline } from "@/lib/items/guide-chapters";
 
@@ -42,7 +43,7 @@ export async function GuideLobby({
             {tCommon("backToList")}
           </Link>
           <span className="inline-flex items-center gap-2 rounded-sm border border-white/10 bg-ink/60 px-3 py-1 text-xs text-parch">
-            <BookOpenText className="h-3.5 w-3.5" style={{ color: accent }} />
+            <GlyphIcons.reading className="h-3.5 w-3.5" style={{ color: accent }} />
             {t(outline.badgeKey ?? "badge")}
           </span>
         </div>

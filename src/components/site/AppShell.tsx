@@ -2,27 +2,7 @@
 
 import { useCallback, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import {
-  ArrowUpRight,
-  Boxes,
-  CalendarDays,
-  Hammer,
-  Home,
-  Info,
-  Layers,
-  LayoutGrid,
-  LifeBuoy,
-  Mail,
-  Map as MapIcon,
-  Menu,
-  ChevronsLeft,
-  ChevronsRight,
-  ScrollText,
-  Sparkles,
-  Users,
-  X,
-  type LucideIcon,
-} from "lucide-react";
+import { ArrowUpRight, ChevronsLeft, ChevronsRight, Info, Menu, X, type LucideIcon } from "lucide-react";
 import Image from "next/image";
 import { Link, usePathname } from "@/i18n/navigation";
 import { DnaAmbientBackdrop, DnaNouveau, DnaPill, DnaSectionMark, cn, useDialogA11y } from "@/components/dna";
@@ -34,6 +14,7 @@ import { SiteBanner } from "@/components/site/SiteBanner";
 import { useAppSettings } from "@/lib/settings/useAppSettings";
 import { ASSETS_PATHS, GAME_INFO, GAME_VERSION, NAVIGATION, SITE_CONFIG } from "@/lib/constants";
 import { DISCORD_BUTTON_CLASS, DiscordIcon, X_BUTTON_CLASS, XIcon } from "@/components/icons/BrandIcons";
+import { GameGlyph, isGameGlyph } from "@/components/icons/GameGlyph";
 import {
   SHELL_NAV_EXTERNAL,
   SHELL_NAV_PRIMARY,
@@ -51,22 +32,14 @@ import {
  * routes reste importable depuis le serveur sans embarquer de composant.
  */
 const NAV_ICONS: Record<string, LucideIcon | typeof DiscordIcon | typeof XIcon> = {
-  home: Home,
-  map: MapIcon,
-  calendar: CalendarDays,
-  characters: Users,
-  items: Boxes,
-  builder: Hammer,
-  builds: Layers,
-  commissions: ScrollText,
-  features: LayoutGrid,
-  changelog: Sparkles,
-  about: Info,
-  support: LifeBuoy,
-  contact: Mail,
   discord: DiscordIcon,
   twitter: XIcon,
 };
+
+/**
+ * Les entrées internes prennent le glyphe du jeu du même nom que leur clé
+ * (`GameGlyph`) ; les liens de marque (Discord, X) gardent leur logo.
+ */
 
 /* ------------------------------------------------------- fond atmosphérique */
 
@@ -227,6 +200,7 @@ function SidebarLink({
   onNavigate?: () => void;
 }) {
   const Icon = NAV_ICONS[entry.key] ?? Info;
+  const glyph = !entry.external && isGameGlyph(entry.key) ? entry.key : null;
   const brandButtonClass =
     entry.key === "discord" ? DISCORD_BUTTON_CLASS : entry.key === "twitter" ? X_BUTTON_CLASS : null;
   const className = cn(
@@ -242,7 +216,12 @@ function SidebarLink({
   );
   const inner = (
     <>
-      <Icon aria-hidden className="h-4 w-4 shrink-0 opacity-90" />
+      {glyph ? (
+        // Glyphe du jeu : un peu plus grand qu'une icône au trait, sa silhouette pleine paraît sinon plus petite.
+        <GameGlyph name={glyph} className="h-[18px] w-[18px] opacity-90" />
+      ) : (
+        <Icon aria-hidden className="h-4 w-4 shrink-0 opacity-90" />
+      )}
       <span className="dna-sidebar-label min-w-0 flex-1 truncate">{label}</span>
       {entry.external ? (
         <>

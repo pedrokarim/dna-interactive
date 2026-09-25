@@ -5,7 +5,8 @@ import { useTranslations } from "next-intl";
 import { useSession } from "next-auth/react";
 import { useAtom, useSetAtom } from "jotai";
 import { AnimatePresence, motion } from "framer-motion";
-import { Check, Eye, EyeOff, Flag, Heart, Link2, Lock, PencilLine, Trash2, Undo2, X } from "lucide-react";
+import { Check, Eye, EyeOff, Flag, Heart, Link2, Undo2, X } from "lucide-react";
+import { GlyphIcons } from "@/components/icons/GameGlyph";
 import { Link } from "@/i18n/navigation";
 import { cn, DnaCornerBrackets, DnaSwitch, useConfirm } from "@/components/dna";
 import type { NormalizedMap } from "@/lib/map/taxonomy";
@@ -225,7 +226,7 @@ export function RoutesPanel({
           onClick={() => setDrawing([])}
           className="flex h-8 w-full items-center justify-center gap-2 border border-gold/50 bg-gold/15 font-sans text-[0.8rem] text-gold-bright hover:bg-gold/25"
         >
-          <PencilLine className="h-3.5 w-3.5" aria-hidden />
+          <GlyphIcons.edit className="h-3.5 w-3.5" aria-hidden />
           {t("routeDraw")}
         </button>
       ) : (
@@ -305,7 +306,7 @@ export function RoutesPanel({
                       {/* Le titre cadre la carte sur l'itinéraire (et l'affiche). */}
                       <button type="button" onClick={() => focusRoute(route.id)} className="min-w-0 flex-1 text-left">
                         <span className="flex items-center gap-1.5 font-sans text-[0.82rem] text-parch hover:text-gold-bright">
-                          {route.visibility === "private" && <Lock className="h-3 w-3 shrink-0 text-muted" aria-label={t("routePrivate")} />}
+                          {route.visibility === "private" && <GlyphIcons.lock className="h-3 w-3 shrink-0 text-muted" aria-label={t("routePrivate")} />}
                           <span className="truncate">{route.title}</span>
                         </span>
                         <span className="block truncate font-sans text-[0.66rem] text-muted">
@@ -345,10 +346,10 @@ export function RoutesPanel({
                       {route.isMine ? (
                         <>
                           <RowAction label={t("routeEdit")} onClick={() => setDraft({ points: route.points, editing: route })}>
-                            <PencilLine className="h-3.5 w-3.5" />
+                            <GlyphIcons.edit className="h-3.5 w-3.5" />
                           </RowAction>
                           <RowAction label={t("routeDelete")} danger onClick={() => void remove(route)}>
-                            <Trash2 className="h-3.5 w-3.5" />
+                            <GlyphIcons.delete className="h-3.5 w-3.5" />
                           </RowAction>
                         </>
                       ) : (

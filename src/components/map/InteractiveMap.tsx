@@ -6,7 +6,8 @@ import { useTranslations } from "next-intl";
 import { useAtom, useSetAtom } from "jotai";
 import { parseAsString, useQueryState } from "nuqs";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronLeft, House, MapPinPlus, Route } from "lucide-react";
+import { ChevronLeft, House, Route } from "lucide-react";
+import { GlyphIcons } from "@/components/icons/GameGlyph";
 import { Link } from "@/i18n/navigation";
 import Loading from "@/components/Loading";
 import ExportModal from "@/components/ExportModal";
@@ -303,7 +304,7 @@ export default function InteractiveMap() {
           extra={
             <>
               <ToolButton label={t("addPersonalMarker")} active={placing} onClick={() => setPlacing((p) => !p)}>
-                <MapPinPlus className="h-[18px] w-[18px]" />
+                <GlyphIcons.pin className="h-[18px] w-[18px]" />
               </ToolButton>
               <ToolButton label={t("routes")} active={routesOpen} onClick={() => setRoutesOpen((o) => !o)}>
                 <Route className="h-[18px] w-[18px]" />

@@ -1,6 +1,7 @@
 import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
-import { BookOpenText, ChevronRight, Clock3, Grid3X3, Languages, Wrench } from "lucide-react";
+import { ChevronRight, Clock3, Grid3X3, Wrench } from "lucide-react";
+import { GlyphIcons } from "@/components/icons/GameGlyph";
 import { getItemCatalog, getLanguageLabel } from "@/lib/items/catalog";
 import { getDraftAvailableLanguages, getDraftRecipeSummaries } from "@/lib/items/drafts";
 import { DnaCornerBrackets } from "@/components/dna/CornerBrackets";
@@ -64,7 +65,7 @@ export default async function ItemsCategoriesPage() {
                   {tItems('itemCount', { count: category.itemCount })}
                 </span>
                 <span className="inline-flex items-center gap-1 rounded-sm border border-white/10 px-2.5 py-1 text-parch/85">
-                  <Languages className="h-3.5 w-3.5 text-gold/80" />
+                  <GlyphIcons.language className="h-3.5 w-3.5 text-gold/80" />
                   {tItems('languageCount', { count: category.availableLanguages.length })}
                 </span>
               </div>
@@ -111,7 +112,7 @@ export default async function ItemsCategoriesPage() {
                         : "border-hydro/35 bg-hydro/10 text-hydro hover:bg-hydro/20"
                   }`}
                 >
-                  <BookOpenText className="h-4 w-4" />
+                  <GlyphIcons.reading className="h-4 w-4" />
                   {category.id === "weapons" ? tItems('calamityWeaponGuide') : category.id === "genimons" ? tItems('genimonGuide') : tItems('demonWedgeGuide')}
                 </Link>
               </div>
@@ -138,7 +139,7 @@ export default async function ItemsCategoriesPage() {
                 {tItems('draftPlansCount', { count: draftRecipes.length })}
               </span>
               <span className="inline-flex items-center gap-1 rounded-sm border border-white/10 px-2.5 py-1 text-parch/85">
-                <Languages className="h-3.5 w-3.5 text-gold/90" />
+                <GlyphIcons.language className="h-3.5 w-3.5 text-gold/90" />
                 {tItems('languageCount', { count: draftLanguages.length })}
               </span>
               <span className="inline-flex items-center gap-1 rounded-sm border border-white/10 px-2.5 py-1 text-parch/85">

@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { Loader2, Mail } from "lucide-react";
+import { Loader2 } from "lucide-react";
+import { GlyphIcons } from "@/components/icons/GameGlyph";
 import { DnaButton } from "@/components/dna";
 import { AuthField, AuthMessage } from "./AuthPrimitives";
 
@@ -34,7 +35,7 @@ export function ForgotPasswordForm() {
     <form onSubmit={submit} className="grid gap-3">
       <AuthField
         label={t("email")}
-        icon={<Mail className="h-4 w-4" />}
+        icon={<GlyphIcons.contact className="h-4 w-4" />}
         type="email"
         autoComplete="email"
         required

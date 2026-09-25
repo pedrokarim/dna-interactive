@@ -3,7 +3,8 @@
 import { Link } from "@/i18n/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { useMemo, useState, type ReactNode } from "react";
-import { ArrowLeft, ChevronDown, Flame, Heart, Languages, Lock, Sparkles, Target } from "lucide-react";
+import { ArrowLeft, ChevronDown, Flame, Heart, Sparkles, Target } from "lucide-react";
+import { GlyphIcons } from "@/components/icons/GameGlyph";
 import { useAtom } from "jotai";
 import { parseAsInteger, parseAsStringLiteral, useQueryState } from "nuqs";
 import {
@@ -536,7 +537,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
         </div>
 
         <div className="flex items-center gap-2 border border-line/25 bg-panel/55 px-3 py-2 backdrop-blur-sm">
-          <Languages className="h-4 w-4 text-gold/80" />
+          <GlyphIcons.language className="h-4 w-4 text-gold/80" />
           <select
             value={selectedLanguage}
             onChange={(event) => {
@@ -817,7 +818,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
 
           <div className="mt-4 grid gap-2 sm:grid-cols-2">
             <div className="flex items-center gap-2.5 rounded-sm border border-white/10 bg-ink/55 px-3 py-2 text-sm text-parch/85">
-              <Lock className="h-4 w-4 shrink-0 text-crimson-bright" />
+              <GlyphIcons.lock className="h-4 w-4 shrink-0 text-crimson-bright" />
               {t("maxOneCalamityEquipped")}
             </div>
             <div className="flex items-center gap-2.5 rounded-sm border border-white/10 bg-ink/55 px-3 py-2 text-sm text-parch/85">

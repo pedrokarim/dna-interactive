@@ -1,8 +1,8 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { GlyphIcons } from "@/components/icons/GameGlyph";
 import { useTranslations } from "next-intl";
-import { Lock } from "lucide-react";
 import { DnaItemIcon } from "@/components/dna/ItemIcon";
 import { cn } from "@/components/dna/cn";
 import { CALAMITY_ACCENT_HEX } from "@/lib/items/calamity-weapons";
@@ -320,7 +320,7 @@ export function CalamityPotentialTree({
                   />
                   {locked ? (
                     <span className="absolute -bottom-1 -left-1 grid h-4 w-4 place-items-center rounded-full border border-white/15 bg-ink">
-                      <Lock className="h-2.5 w-2.5 text-muted-2" />
+                      <GlyphIcons.lock className="h-2.5 w-2.5 text-muted-2" />
                     </span>
                   ) : null}
                   {orderRank.has(node.id) ? (
@@ -461,7 +461,7 @@ function NodeDetail({ node, lang, locked }: { node: PotentialNode; lang: string;
           <p className="mt-0.5 font-display text-xl text-parch">{pick(node.name, lang)}</p>
           {locked ? (
             <p className="mt-1 inline-flex items-center gap-1.5 font-sans text-[0.72rem] text-muted-2">
-              <Lock className="h-3 w-3" />
+              <GlyphIcons.lock className="h-3 w-3" />
               {t("potentialLockedHint")}
             </p>
           ) : null}

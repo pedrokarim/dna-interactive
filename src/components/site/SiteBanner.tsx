@@ -1,7 +1,8 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { AlertTriangle, Megaphone } from "lucide-react";
+import { AlertTriangle } from "lucide-react";
+import { GlyphIcons } from "@/components/icons/GameGlyph";
 import { Link } from "@/i18n/navigation";
 import { useAppSettings } from "@/lib/settings/useAppSettings";
 
@@ -25,7 +26,7 @@ export function SiteBanner() {
   if (s.announcementEnabled && s.announcementText.trim()) {
     const content: ReactNode = (
       <span className="inline-flex items-center gap-2 font-sans text-sm text-gold-bright">
-        <Megaphone className="h-4 w-4 shrink-0" />
+        <GlyphIcons.changelog className="h-4 w-4 shrink-0" />
         {s.announcementText}
       </span>
     );

@@ -4,7 +4,8 @@ import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { signIn } from "next-auth/react";
 import { Link } from "@/i18n/navigation";
-import { Loader2, Lock, Mail } from "lucide-react";
+import { Loader2 } from "lucide-react";
+import { GlyphIcons } from "@/components/icons/GameGlyph";
 import { DnaButton } from "@/components/dna";
 import { AuthDivider, AuthField, AuthMessage, OAuthButtons } from "./AuthPrimitives";
 
@@ -91,7 +92,7 @@ export function LoginForm({ googleEnabled, callbackUrl }: { googleEnabled: boole
         ) : null}
         <AuthField
           label={t("email")}
-          icon={<Mail className="h-4 w-4" />}
+          icon={<GlyphIcons.contact className="h-4 w-4" />}
           type="email"
           autoComplete="email"
           required
@@ -101,7 +102,7 @@ export function LoginForm({ googleEnabled, callbackUrl }: { googleEnabled: boole
         <div>
           <AuthField
             label={t("password")}
-            icon={<Lock className="h-4 w-4" />}
+            icon={<GlyphIcons.lock className="h-4 w-4" />}
             type="password"
             autoComplete="current-password"
             required

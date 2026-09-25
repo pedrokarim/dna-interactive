@@ -3,7 +3,8 @@
 import { useTranslations } from "next-intl";
 import { AnimatePresence, motion } from "framer-motion";
 import { MAP_EASE } from "./ActiveTypesRail";
-import { ArrowLeftRight, ChevronLeft, Cloud, CloudOff, ListChecks, LoaderCircle, RotateCcw, Search, X } from "lucide-react";
+import { ArrowLeftRight, ChevronLeft, Cloud, CloudOff, ListChecks, LoaderCircle, RotateCcw, X } from "lucide-react";
+import { GlyphIcons } from "@/components/icons/GameGlyph";
 import { Link } from "@/i18n/navigation";
 import { ASSETS_PATHS } from "@/lib/constants";
 import { cn, DnaCornerBrackets } from "@/components/dna";
@@ -133,7 +134,7 @@ export function MapPanel({
             onClick={() => onViewChange("search")}
             className="flex h-8 min-w-0 flex-1 items-center gap-2 border border-line/25 bg-ink-2/80 px-2.5 text-left font-sans text-[0.8rem] text-muted-2 transition-colors hover:border-gold/50"
           >
-            <Search className="h-3.5 w-3.5 shrink-0" aria-hidden />
+            <GlyphIcons.search className="h-3.5 w-3.5 shrink-0" aria-hidden />
             <span className="truncate">{t("searchPlaceholder")}</span>
           </button>
           <button

@@ -4,7 +4,8 @@ import { useTranslations } from "next-intl";
 import { useAtom } from "jotai";
 import { AnimatePresence, motion } from "framer-motion";
 import { MAP_EASE } from "./ActiveTypesRail";
-import { Trash2, X } from "lucide-react";
+import { X } from "lucide-react";
+import { GlyphIcons } from "@/components/icons/GameGlyph";
 import { cn, DnaCornerBrackets } from "@/components/dna";
 import {
   PERSONAL_COLORS,
@@ -124,7 +125,7 @@ function EditorCard() {
           }}
           className="flex items-center gap-1.5 px-2 py-1 font-sans text-[0.75rem] text-crimson-soft hover:bg-crimson/20"
         >
-          <Trash2 className="h-3.5 w-3.5" aria-hidden />
+          <GlyphIcons.delete className="h-3.5 w-3.5" aria-hidden />
           {t("delete")}
         </button>
       </div>

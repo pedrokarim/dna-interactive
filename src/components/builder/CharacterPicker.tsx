@@ -1,6 +1,7 @@
 "use client";
 
-import { Check, Search } from "lucide-react";
+import { Check } from "lucide-react";
+import { GlyphIcons } from "@/components/icons/GameGlyph";
 import { useDeferredValue, useMemo, useState, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import { DnaElementBadge } from "@/components/dna/ElementBadge";
@@ -55,7 +56,7 @@ export function BuilderCharacterPicker({
         <div className="flex min-w-0 flex-col justify-between gap-3">
           <div className="flex min-w-0 flex-col gap-2 sm:flex-row sm:items-center">
             <DnaField
-              icon={<Search className="h-4 w-4" />}
+              icon={<GlyphIcons.search className="h-4 w-4" />}
               value={query}
               onChange={(event) => setQuery(event.target.value)}
               placeholder={t("searchCharacter")}

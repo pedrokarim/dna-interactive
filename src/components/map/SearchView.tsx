@@ -3,7 +3,8 @@
 import { useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
 import { useAtom } from "jotai";
-import { ArrowLeft, History, MapPin, Search, X } from "lucide-react";
+import { ArrowLeft, History, X } from "lucide-react";
+import { GlyphIcons } from "@/components/icons/GameGlyph";
 import { SEARCH_HISTORY_MAX, searchHistoryAtom } from "@/lib/map/state";
 import type { NormalizedMap } from "@/lib/map/taxonomy";
 import { typeProgress } from "@/lib/map/progress";
@@ -81,7 +82,7 @@ export function SearchView({
           <ArrowLeft className="h-4 w-4" />
         </button>
         <label className="flex h-8 min-w-0 flex-1 items-center gap-2 border border-line/25 bg-ink-2/80 px-2.5 focus-within:border-gold/60">
-          <Search className="h-3.5 w-3.5 shrink-0 text-muted" aria-hidden />
+          <GlyphIcons.search className="h-3.5 w-3.5 shrink-0 text-muted" aria-hidden />
           <input
             autoFocus
             type="text"
@@ -176,7 +177,7 @@ export function SearchView({
                           // eslint-disable-next-line @next/next/no-img-element
                           <img src={p.icon} alt="" className="h-5 w-5 shrink-0 object-contain" />
                         ) : (
-                          <MapPin className="h-4 w-5 shrink-0 text-gold/70" aria-hidden />
+                          <GlyphIcons.pin className="h-4 w-5 shrink-0 text-gold/70" aria-hidden />
                         )}
                         <span className="min-w-0 flex-1 truncate font-sans text-[0.8rem] text-parch/90">{p.title}</span>
                         {marked.has(p.key) && <span className="shrink-0 font-caps text-[0.5rem] uppercase tracking-[0.14em] text-ok">{t("found")}</span>}

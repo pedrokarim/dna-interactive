@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { Loader2, Lock } from "lucide-react";
+import { Loader2 } from "lucide-react";
+import { GlyphIcons } from "@/components/icons/GameGlyph";
 import { DnaButton } from "@/components/dna";
 import { AuthField, AuthMessage } from "./AuthPrimitives";
 
@@ -58,7 +59,7 @@ export function ResetPasswordForm({ token }: { token: string }) {
       {error ? <AuthMessage tone="error">{error}</AuthMessage> : null}
       <AuthField
         label={t("newPassword")}
-        icon={<Lock className="h-4 w-4" />}
+        icon={<GlyphIcons.lock className="h-4 w-4" />}
         type="password"
         autoComplete="new-password"
         required
@@ -68,7 +69,7 @@ export function ResetPasswordForm({ token }: { token: string }) {
       />
       <AuthField
         label={t("passwordConfirm")}
-        icon={<Lock className="h-4 w-4" />}
+        icon={<GlyphIcons.lock className="h-4 w-4" />}
         type="password"
         autoComplete="new-password"
         required

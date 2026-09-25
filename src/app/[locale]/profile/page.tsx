@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import { eq } from "drizzle-orm";
 import { Link } from "@/i18n/navigation";
-import { Boxes, CalendarDays, Hammer, Shield, Star } from "lucide-react";
+import { Shield, Star } from "lucide-react";
+import { GlyphIcons } from "@/components/icons/GameGlyph";
 import { AuthLinkButton } from "@/components/auth/AuthCard";
 import { DeleteAccountButton } from "@/components/account/DeleteAccountButton";
 import { AccountConnections } from "@/components/account/AccountConnections";
@@ -89,7 +90,7 @@ export default async function ProfilePage({ searchParams }: Props) {
               <div className="mt-3 flex flex-wrap items-center gap-3">
                 {joinedOn ? (
                   <span className="inline-flex items-center gap-1.5 font-sans text-sm text-muted">
-                    <CalendarDays className="h-4 w-4 text-gold/70" />
+                    <GlyphIcons.calendar className="h-4 w-4 text-gold/70" />
                     {t("joinedOn", { date: joinedOn })}
                   </span>
                 ) : null}
@@ -105,7 +106,7 @@ export default async function ProfilePage({ searchParams }: Props) {
             {/* Accès rapide */}
             <div className="mt-5 flex flex-wrap gap-2">
               <Link href="/builder" className={chipClass}>
-                <Hammer className="h-3.5 w-3.5 text-gold" />
+                <GlyphIcons.builder className="h-3.5 w-3.5 text-gold" />
                 {t("navBuilder")}
               </Link>
               <Link href="/builds" className={chipClass}>
@@ -113,7 +114,7 @@ export default async function ProfilePage({ searchParams }: Props) {
                 {t("navBuilds")}
               </Link>
               <Link href="/items" className={chipClass}>
-                <Boxes className="h-3.5 w-3.5 text-gold" />
+                <GlyphIcons.items className="h-3.5 w-3.5 text-gold" />
                 {t("navItems")}
               </Link>
               {user.role === "admin" ? (

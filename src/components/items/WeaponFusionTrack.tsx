@@ -1,7 +1,7 @@
 "use client";
 
-import { Lock } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { GlyphIcons } from "@/components/icons/GameGlyph";
 
 const GOLD_HEX = "#c2a86a";
 
@@ -92,7 +92,7 @@ export function WeaponFusionTrack({
                   style={{ color: active ? "#0c0b0a" : reached ? accent : "rgba(255,255,255,0.5)" }}
                 >
                   {locked ? (
-                    <Lock className="h-3 w-3" style={{ color: "rgba(255,255,255,0.45)" }} />
+                    <GlyphIcons.lock className="h-3 w-3" style={{ color: "rgba(255,255,255,0.45)" }} />
                   ) : (
                     level
                   )}

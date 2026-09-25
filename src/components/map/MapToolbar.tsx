@@ -5,7 +5,8 @@ import { useTranslations } from "next-intl";
 import { AnimatePresence, motion } from "framer-motion";
 import { MAP_EASE } from "./ActiveTypesRail";
 import { useAtom } from "jotai";
-import { Download, Info, MoreHorizontal, RotateCcw, Settings, Sparkles, Upload } from "lucide-react";
+import { Download, Info, MoreHorizontal, RotateCcw, Sparkles, Upload } from "lucide-react";
+import { GlyphIcons } from "@/components/icons/GameGlyph";
 import { cn, DnaSegmented, DnaSwitch } from "@/components/dna";
 import { mapSettingsAtom, type MapSettings } from "@/lib/map/state";
 
@@ -42,7 +43,7 @@ export function MapToolbar({ onAction, extra }: { onAction: (action: ToolbarActi
     <div ref={rootRef} className="pointer-events-auto flex flex-col gap-1.5">
       <div className="relative">
         <ToolButton label={t("settings")} active={open === "settings"} onClick={() => setOpen(open === "settings" ? null : "settings")}>
-          <Settings className="h-[18px] w-[18px]" />
+          <GlyphIcons.settings className="h-[18px] w-[18px]" />
         </ToolButton>
         <AnimatePresence>
         {open === "settings" && (

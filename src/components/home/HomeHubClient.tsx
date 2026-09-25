@@ -5,27 +5,13 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import {
   ArrowRight,
-  Boxes,
-  Calendar,
-  Compass,
-  Database,
   Eye,
-  FileStack,
-  Gem,
-  Hammer,
-  Layers,
   LogIn,
-  Map as MapIcon,
-  ScrollText,
-  Search,
-  Sparkles,
-  Swords,
   ThumbsUp,
-  Users,
   UserRound,
-  Wrench,
   type LucideIcon,
 } from "lucide-react";
+import { GlyphIcons } from "@/components/icons/GameGlyph";
 import { Link } from "@/i18n/navigation";
 import { DnaCornerBrackets, DnaNouveau, DnaTag, DnaRibbon, DnaSectionMark, cn } from "@/components/dna";
 import { EventCalendar } from "@/components/home/EventCalendar";
@@ -250,28 +236,28 @@ function HomeHub({
   // `characters.json` (cf. src/lib/characters/upcoming.ts).
   const upcoming = UPCOMING_CHARACTERS;
   const databaseCards: ToolCard[] = [
-    { href: "/characters", title: t("charactersTitle"), feature: "characters", mark: "Le Chœur", desc: t("charactersDescription"), icon: Users, bg: "/assets/worldview/worldview-3.webp", tint: "var(--color-gold)" },
-    { href: "/items", title: t("itemsTitle"), feature: "items", mark: "Le Reliquaire", desc: t("itemsDescription"), icon: Boxes, bg: "/assets/worldview/worldview-5.webp", tint: "var(--color-anemo)" },
-    { href: "/items/weapons", title: t("weaponsTitle"), feature: "weapons", mark: "Arsenal", desc: t("weaponsDescription"), icon: Swords, bg: "/assets/worldview/worldview-8.webp", tint: "var(--color-pyro)" },
-    { href: "/items/genimons", title: t("genimonsTitle"), feature: "genimons", mark: "Genimons", desc: t("genimonsDescription"), icon: Gem, bg: "/assets/worldview/worldview-9.webp", tint: "var(--color-hydro)" },
+    { href: "/characters", title: t("charactersTitle"), feature: "characters", mark: "Le Chœur", desc: t("charactersDescription"), icon: GlyphIcons.characters, bg: "/assets/worldview/worldview-3.webp", tint: "var(--color-gold)" },
+    { href: "/items", title: t("itemsTitle"), feature: "items", mark: "Le Reliquaire", desc: t("itemsDescription"), icon: GlyphIcons.items, bg: "/assets/worldview/worldview-5.webp", tint: "var(--color-anemo)" },
+    { href: "/items/weapons", title: t("weaponsTitle"), feature: "weapons", mark: "Arsenal", desc: t("weaponsDescription"), icon: GlyphIcons.weapons, bg: "/assets/worldview/worldview-8.webp", tint: "var(--color-pyro)" },
+    { href: "/items/genimons", title: t("genimonsTitle"), feature: "genimons", mark: "Genimons", desc: t("genimonsDescription"), icon: GlyphIcons.geniemons, bg: "/assets/worldview/worldview-9.webp", tint: "var(--color-hydro)" },
   ];
   const toolCards: ToolCard[] = [
-    { href: "/builder", title: t("buildBuilderTitle"), feature: "builder", mark: "La Forge", desc: t("buildBuilderDescription"), icon: Hammer, bg: "/assets/worldview/worldview-10.webp", tint: "var(--color-electro)" },
-    { href: "/map", title: t("mapTitle"), feature: "map", mark: "Atlas d'Atlasia", desc: t("mapShortDescription"), icon: MapIcon, bg: "/assets/worldview/worldview-6.webp", tint: "var(--color-hydro)" },
-    { href: "/items/drafts", title: t("draftsTitle"), feature: "drafts", mark: "Hall de l'Ouvrage", desc: t("draftsDescription"), icon: FileStack, bg: "/assets/worldview/worldview-11.webp", tint: "var(--color-gold)" },
-    { href: "/changelog", title: t("changelogTitle"), mark: "Le Registre", desc: t("changelogDescription"), icon: Wrench, bg: "/assets/official-v1.3/bg.webp", tint: "var(--color-umbro)" },
+    { href: "/builder", title: t("buildBuilderTitle"), feature: "builder", mark: "La Forge", desc: t("buildBuilderDescription"), icon: GlyphIcons.builder, bg: "/assets/worldview/worldview-10.webp", tint: "var(--color-electro)" },
+    { href: "/map", title: t("mapTitle"), feature: "map", mark: "Atlas d'Atlasia", desc: t("mapShortDescription"), icon: GlyphIcons.map, bg: "/assets/worldview/worldview-6.webp", tint: "var(--color-hydro)" },
+    { href: "/items/drafts", title: t("draftsTitle"), feature: "drafts", mark: "Hall de l'Ouvrage", desc: t("draftsDescription"), icon: GlyphIcons.drafts, bg: "/assets/worldview/worldview-11.webp", tint: "var(--color-gold)" },
+    { href: "/changelog", title: t("changelogTitle"), mark: "Le Registre", desc: t("changelogDescription"), icon: GlyphIcons.changelog, bg: "/assets/official-v1.3/bg.webp", tint: "var(--color-umbro)" },
   ];
   const communityCards: ToolCard[] = [
-    { href: "/commissions", title: t("commissionsTitle"), feature: "commissions", mark: "Commissions", desc: t("commissionsDescription"), icon: ScrollText, bg: "/assets/worldview/worldview-4.webp", tint: "var(--color-pyro)" },
+    { href: "/commissions", title: t("commissionsTitle"), feature: "commissions", mark: "Commissions", desc: t("commissionsDescription"), icon: GlyphIcons.commissions, bg: "/assets/worldview/worldview-4.webp", tint: "var(--color-pyro)" },
     { href: CONTACT_INFO.discord.url, title: "Discord", mark: "Le Grand Hall", desc: t("discordDescription"), icon: DiscordIcon, bg: "/assets/worldview/worldview-1.webp", tint: "#5865F2", external: true, brand: "discord" },
   ];
   const visibleCommunityCards = commissionsVisible
     ? communityCards
     : communityCards.filter((card) => card.href !== "/commissions");
   const STATS = [
-    { icon: Users, value: stats.characters, label: t("charactersStat") },
-    { icon: Database, value: stats.items, label: t("itemsStat") },
-    { icon: Layers, value: stats.builds, label: t("buildsStat") },
+    { icon: GlyphIcons.characters, value: stats.characters, label: t("charactersStat") },
+    { icon: GlyphIcons.items, value: stats.items, label: t("itemsStat") },
+    { icon: GlyphIcons.builds, value: stats.builds, label: t("buildsStat") },
   ];
   return (
     <div className="mx-auto w-full max-w-[1720px] px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
@@ -301,7 +287,7 @@ function HomeHub({
             </div>
             <p className="max-w-sm text-sm leading-relaxed text-parch/75">{t("heroDescription")}</p>
             <div className="flex flex-wrap gap-2.5">
-              <Link href="/map" className={CTA_GOLD}><Compass className="h-4 w-4" />{t("exploreTools")}</Link>
+              <Link href="/map" className={CTA_GOLD}><GlyphIcons.map className="h-4 w-4" />{t("exploreTools")}</Link>
               <a href={CONTACT_INFO.discord.url} target="_blank" rel="noopener noreferrer" className={cn(CTA_BASE, DISCORD_BUTTON_CLASS)}><DiscordIcon className="h-4 w-4" />Discord</a>
               <Link href={isAuthenticated ? "/profile" : "/login"} className={CTA_GHOST}>
                 {isAuthenticated ? <UserRound className="h-4 w-4" /> : <LogIn className="h-4 w-4" />}
@@ -310,7 +296,7 @@ function HomeHub({
             </div>
             <div className="relative mt-auto flex items-center gap-4 rounded-sm border border-line/20 bg-ink/50 p-4">
               <DnaCornerBrackets size={10} color="var(--color-gold-deep)" />
-              <Search className="h-5 w-5 shrink-0 text-gold" />
+              <GlyphIcons.search className="h-5 w-5 shrink-0 text-gold" />
               <span className="min-w-0">
                 <span className="block font-caps text-[0.55rem] uppercase tracking-[0.22em] text-muted">{t("sharedBuilds")}</span>
                 <span className="block font-display text-3xl font-semibold tabular-nums text-gold-bright">{communityCount}</span>
@@ -325,7 +311,7 @@ function HomeHub({
               <h2 className="font-display text-2xl text-parch">{t("featuredSelection")}</h2>
               <DnaSectionMark size="sm">{t("featuredThisWeek")}</DnaSectionMark>
             </div>
-            <Link href="/changelog" className={cn(CTA_GHOST, "px-4 py-2 text-xs")}><Sparkles className="h-4 w-4" />{t("whatsNew")}</Link>
+            <Link href="/changelog" className={cn(CTA_GHOST, "px-4 py-2 text-xs")}><GlyphIcons.changelog className="h-4 w-4" />{t("whatsNew")}</Link>
           </div>
 
           <Link href="/map" className="group relative flex min-h-[230px] flex-col justify-between overflow-hidden rounded-sm border border-gold/70 bg-panel/70 p-6 shadow-[0_0_40px_-8px_rgba(194,168,106,0.45)] transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-[0_0_60px_-6px_rgba(194,168,106,0.6)]">
@@ -348,9 +334,9 @@ function HomeHub({
           </Link>
 
           <div className="grid gap-4 sm:grid-cols-2">
-            <ToolTile card={{ href: "/builder", title: "Builder", feature: "builder", mark: "La Forge", desc: t("builderDescription"), icon: Hammer, bg: "/assets/worldview/worldview-2.webp", tint: "var(--color-electro)" }} />
+            <ToolTile card={{ href: "/builder", title: "Builder", feature: "builder", mark: "La Forge", desc: t("builderDescription"), icon: GlyphIcons.builder, bg: "/assets/worldview/worldview-2.webp", tint: "var(--color-electro)" }} />
             {commissionsVisible ? (
-              <ToolTile card={{ href: "/commissions", title: t("commissionsTitle"), feature: "commissions", mark: "Commissions", desc: t("commissionsDescription"), icon: ScrollText, bg: "/assets/worldview/worldview-4.webp", tint: "var(--color-pyro)" }} />
+              <ToolTile card={{ href: "/commissions", title: t("commissionsTitle"), feature: "commissions", mark: "Commissions", desc: t("commissionsDescription"), icon: GlyphIcons.commissions, bg: "/assets/worldview/worldview-4.webp", tint: "var(--color-pyro)" }} />
             ) : null}
           </div>
         </div>
@@ -402,7 +388,7 @@ function HomeHub({
         <SectionRibbon label={t("community")} index="01" />
         <ToolTile
           className="min-h-[104px]"
-          card={{ href: "/builds", title: t("communityBuildsTitle"), feature: "builds", mark: "Partitions", desc: t("communityBuildsDescription"), icon: Layers, bg: "/assets/worldview/worldview-7.webp", tint: "var(--color-anemo)" }}
+          card={{ href: "/builds", title: t("communityBuildsTitle"), feature: "builds", mark: "Partitions", desc: t("communityBuildsDescription"), icon: GlyphIcons.builds, bg: "/assets/worldview/worldview-7.webp", tint: "var(--color-anemo)" }}
         />
         <div className="grid gap-4 sm:grid-cols-2">
           {visibleCommunityCards.map((c) => (
@@ -418,7 +404,7 @@ function HomeHub({
           label={t("eventCalendar")}
           action={
             <span className="inline-flex items-center gap-1.5 font-caps text-[0.6rem] uppercase tracking-[0.16em] text-muted">
-              <Calendar className="h-3.5 w-3.5" />{t("live")}
+              <GlyphIcons.calendar className="h-3.5 w-3.5" />{t("live")}
             </span>
           }
         />

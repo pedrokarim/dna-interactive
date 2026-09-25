@@ -3,7 +3,8 @@
 import { useDeferredValue, useEffect, useMemo, useState } from "react";
 import { useQueryState, parseAsString, parseAsInteger, parseAsStringLiteral } from "nuqs";
 import { useTranslations } from "next-intl";
-import { ChevronLeft, ChevronRight, GitFork, Search, Users } from "lucide-react";
+import { ChevronLeft, ChevronRight, GitFork, Users } from "lucide-react";
+import { GlyphIcons } from "@/components/icons/GameGlyph";
 import { Link, useRouter } from "@/i18n/navigation";
 import { DnaButton } from "@/components/dna/Button";
 import { DnaChip } from "@/components/dna/Chip";
@@ -267,7 +268,7 @@ export function CommunityBuildsHubClient({ options, locale }: CommunityBuildsHub
             </div>
 
             <DnaField
-              icon={<Search className="h-4 w-4" />}
+              icon={<GlyphIcons.search className="h-4 w-4" />}
               value={query}
               onChange={(event) => setQuery(event.target.value)}
               placeholder={tcb("searchCharacter")}

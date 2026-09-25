@@ -4,7 +4,8 @@ import { Link } from "@/i18n/navigation";
 import { cn } from "@/components/dna/cn";
 import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { BookOpenText, ChevronRight, Flame, Heart, Languages, Search, SlidersHorizontal, X, ZoomIn } from "lucide-react";
+import { ChevronRight, Flame, Heart, X, ZoomIn } from "lucide-react";
+import { GlyphIcons } from "@/components/icons/GameGlyph";
 import { useAtom } from "jotai";
 import {
   parseAsArrayOf,
@@ -730,7 +731,7 @@ export default function ItemsGridClient({
                     : "border-hydro/35 bg-hydro/10 text-hydro hover:bg-hydro/20",
               )}
             >
-              <BookOpenText className="h-4 w-4" />
+              <GlyphIcons.reading className="h-4 w-4" />
               {category.id === "weapons"
                 ? t("calamityWeaponGuide")
                 : category.id === "genimons"
@@ -797,7 +798,7 @@ export default function ItemsGridClient({
 
         <div className="mt-4 md:mt-6 grid gap-3 md:gap-4 lg:grid-cols-2">
           <label className="flex items-center gap-3 rounded-sm border border-white/10 bg-ink/60 px-3 py-2">
-            <Search className="h-4 w-4 text-gold/80" />
+            <GlyphIcons.search className="h-4 w-4 text-gold/80" />
             <input
               value={search}
               onChange={(event) => {
@@ -815,7 +816,7 @@ export default function ItemsGridClient({
 
           <div className="rounded-sm border border-white/10 bg-ink/60 p-3">
             <div className="mb-2 flex items-center gap-2 font-caps text-[0.62rem] uppercase tracking-[0.25em] text-muted">
-              <Languages className="h-4 w-4 text-gold/80" />
+              <GlyphIcons.language className="h-4 w-4 text-gold/80" />
               {tc('displayedLanguages')}
             </div>
             <div className="flex flex-wrap items-center gap-2">
@@ -859,7 +860,7 @@ export default function ItemsGridClient({
           {rarityOptions.length > 0 && (
             <div className="rounded-sm border border-white/10 bg-ink/60 p-2">
               <div className="mb-1 flex items-center gap-2 text-xs text-muted">
-                <SlidersHorizontal className="h-3.5 w-3.5 text-gold/80" />
+                <GlyphIcons.filter className="h-3.5 w-3.5 text-gold/80" />
                 {tc('rarity')}
               </div>
               <select
@@ -883,7 +884,7 @@ export default function ItemsGridClient({
           {seriesOptions.length > 0 && (
             <div className="rounded-sm border border-white/10 bg-ink/60 p-2">
               <div className="mb-1 flex items-center gap-2 text-xs text-muted">
-                <SlidersHorizontal className="h-3.5 w-3.5 text-gold/80" />
+                <GlyphIcons.filter className="h-3.5 w-3.5 text-gold/80" />
                 {tc("series")}
               </div>
               <select
@@ -907,7 +908,7 @@ export default function ItemsGridClient({
           {compatOptions.length > 0 && (
             <div className="rounded-sm border border-white/10 bg-ink/60 p-2">
               <div className="mb-1 flex items-center gap-2 text-xs text-muted">
-                <SlidersHorizontal className="h-3.5 w-3.5 text-gold/80" />
+                <GlyphIcons.filter className="h-3.5 w-3.5 text-gold/80" />
                 {tc("compatibility")}
               </div>
               <select
@@ -931,7 +932,7 @@ export default function ItemsGridClient({
           {polarityOptions.length > 0 && (
             <div className="rounded-sm border border-white/10 bg-ink/60 p-2">
               <div className="mb-1 flex items-center gap-2 text-xs text-muted">
-                <SlidersHorizontal className="h-3.5 w-3.5 text-gold/80" />
+                <GlyphIcons.filter className="h-3.5 w-3.5 text-gold/80" />
                 {tc('polarity')}
               </div>
               <select
@@ -1089,7 +1090,7 @@ export default function ItemsGridClient({
           {rarityOptions.length > 0 ? (
             <FilterChips
               label={tc('rarity')}
-              icon={<SlidersHorizontal className="h-3.5 w-3.5 text-gold/80" />}
+              icon={<GlyphIcons.filter className="h-3.5 w-3.5 text-gold/80" />}
               options={rarityOptions.map((value) => ({ value: String(value), label: String(value) }))}
               value={rarityFilter}
               onChange={(value) => updateQueryFilters({ rarity: value, page: 1 })}
@@ -1099,7 +1100,7 @@ export default function ItemsGridClient({
           {polarityOptions.length > 0 ? (
             <FilterChips
               label={tc('polarity')}
-              icon={<SlidersHorizontal className="h-3.5 w-3.5 text-gold/80" />}
+              icon={<GlyphIcons.filter className="h-3.5 w-3.5 text-gold/80" />}
               options={polarityOptions.map((value) => ({
                 value: String(value),
                 label: String(value),
@@ -1116,7 +1117,7 @@ export default function ItemsGridClient({
           {itemTypeOptions.length > 0 ? (
             <FilterChips
               label={tc('type')}
-              icon={<SlidersHorizontal className="h-3.5 w-3.5 text-gold/80" />}
+              icon={<GlyphIcons.filter className="h-3.5 w-3.5 text-gold/80" />}
               options={itemTypeOptions.map((value) => ({ value, label: value }))}
               value={itemTypeFilter}
               onChange={(value) => updateQueryFilters({ itype: value, page: 1 })}
@@ -1126,7 +1127,7 @@ export default function ItemsGridClient({
           {itemSubTypeOptions.length > 0 ? (
             <FilterChips
               label={tc('subType')}
-              icon={<SlidersHorizontal className="h-3.5 w-3.5 text-gold/80" />}
+              icon={<GlyphIcons.filter className="h-3.5 w-3.5 text-gold/80" />}
               options={itemSubTypeOptions.map((value) => ({ value, label: value }))}
               value={itemSubTypeFilter}
               onChange={(value) => updateQueryFilters({ isub: value, page: 1 })}

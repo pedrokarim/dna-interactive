@@ -3,7 +3,8 @@
 import { Link } from "@/i18n/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { useMemo } from "react";
-import { ArrowLeft, Clock3, ExternalLink, Languages } from "lucide-react";
+import { ArrowLeft, Clock3, ExternalLink } from "lucide-react";
+import { GlyphIcons } from "@/components/icons/GameGlyph";
 import { parseAsStringLiteral, useQueryState } from "nuqs";
 import { getLanguageLabel, normalizeLanguageCodes } from "@/lib/items/catalog";
 import type { DraftItemReference, DraftRecipeRecord } from "@/lib/items/drafts";
@@ -234,7 +235,7 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
           </div>
 
           <div className="flex items-center gap-2 rounded-sm border border-white/10 bg-ink/60 px-3 py-2">
-            <Languages className="h-4 w-4 text-gold/90" />
+            <GlyphIcons.language className="h-4 w-4 text-gold/90" />
             <select
               value={selectedLanguage}
               onChange={(event) => setSelectedLanguage(event.target.value)}

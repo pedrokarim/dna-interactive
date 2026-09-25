@@ -1,7 +1,8 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { ArrowLeft, Copy, Flag, GitFork, Heart, Pencil, Trash2 } from "lucide-react";
+import { ArrowLeft, Copy, Flag, GitFork, Heart } from "lucide-react";
+import { GlyphIcons } from "@/components/icons/GameGlyph";
 import { Link, useRouter } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { useConfirm } from "@/components/dna/ConfirmProvider";
@@ -173,7 +174,7 @@ export function BuildPageClient({ build, character, characterElement, lang }: Pr
           {build.editableByMe ? (
             <>
               <Link href={builderEditHref} className={actionButtonClass}>
-                <Pencil className="h-3.5 w-3.5" />
+                <GlyphIcons.edit className="h-3.5 w-3.5" />
                 {tcb("edit")}
               </Link>
               <button
@@ -182,7 +183,7 @@ export function BuildPageClient({ build, character, characterElement, lang }: Pr
                 disabled={actionBusy === "delete"}
                 className="inline-flex items-center justify-center gap-1.5 border border-crimson-bright/35 bg-crimson-bright/10 px-3 py-2 font-caps text-[0.58rem] uppercase tracking-[0.14em] text-crimson-bright transition-colors hover:border-crimson-bright hover:bg-crimson-bright/18 disabled:cursor-not-allowed disabled:opacity-50"
               >
-                <Trash2 className="h-3.5 w-3.5" />
+                <GlyphIcons.delete className="h-3.5 w-3.5" />
                 {actionBusy === "delete" ? tcb("deleting") : tcb("delete")}
               </button>
             </>

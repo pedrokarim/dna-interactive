@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
-import { Map, Home, Search } from "lucide-react";
+import { Home } from "lucide-react";
+import { GlyphIcons } from "@/components/icons/GameGlyph";
 import { ASSETS_PATHS, SITE_CONFIG } from "@/lib/constants";
 import { DnaDivider } from "@/components/dna/Divider";
 import { DnaCornerBrackets } from "@/components/dna/CornerBrackets";
@@ -46,14 +47,14 @@ export default async function NotFound() {
             href="/map"
             className="inline-flex items-center justify-center gap-2 rounded-sm border border-white/20 bg-gradient-to-b from-panel/70 to-ink/70 px-6 py-3 font-medium text-parch transition-all duration-200 hover:-translate-y-px hover:border-white/45 hover:text-white"
           >
-            <Map className="h-5 w-5" />
+            <GlyphIcons.map className="h-5 w-5" />
             {t("interactiveMap")}
           </Link>
           <Link
             href="/items"
             className="inline-flex items-center justify-center gap-2 rounded-sm border border-white/20 bg-gradient-to-b from-panel/70 to-ink/70 px-6 py-3 font-medium text-parch transition-all duration-200 hover:-translate-y-px hover:border-white/45 hover:text-white"
           >
-            <Search className="h-5 w-5" />
+            <GlyphIcons.search className="h-5 w-5" />
             Items
           </Link>
         </div>
