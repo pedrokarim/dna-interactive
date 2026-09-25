@@ -1029,7 +1029,12 @@
     "publishCtaTitle": "Prêt à publier ?",
     "publishCtaHint": "Votre build sera visible par la communauté sur la fiche du personnage. Vous pourrez le modifier ensuite.",
     "publishOverlayTitle": "Vérification de votre build…",
-    "publishOverlayHint": "On contrôle les pièces, les armes et l'équipe. Vous serez redirigé vers votre build dès que c'est bon."
+    "publishOverlayHint": "On contrôle les pièces, les armes et l'équipe. Vous serez redirigé vers votre build dès que c'est bon.",
+    "genimonNoTrait": "Aucun Trait",
+    "genimonEditTraits": "Traits ({count}/{max})",
+    "genimonTraitCount": "{count} sur {max} emplacements",
+    "genimonTraitFull": "Tous les emplacements sont pris : un nouveau choix remplace le plus ancien.",
+    "genimonTraitsModalHelp": "Choisissez les Traits à viser sur ce Géniemon. Le nombre d'emplacements dépend de la créature : trois pour une variante ordinaire, quatre pour une scintillante. L'ordre se lit comme une priorité de farm, pas comme un emplacement."
   },
   "communityBuilds": {
     "sectionTitle": "Alternatives communauté",

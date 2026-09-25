@@ -57,6 +57,12 @@ import type {
   CharactersCatalog,
   LevelUpCurves,
 } from "@/lib/characters/types";
+import {
+  genimonTraitSlots,
+  resolveBuildTrait,
+  sanitizeTraitKeys,
+  type BuildGenimonTrait,
+} from "@/lib/genimons/build-traits";
 import { SKILL_LEVEL_MAX, SKILL_LEVEL_MIN } from "@/lib/characters/types";
 import { ELEMENTS, type ElementKey } from "@/components/dna/elements";
 import { rarityAttr, toRarityLevel } from "@/components/dna/rarity";
@@ -444,9 +450,15 @@ export function communityBuildToDisplayBuild(
       role: teammate.role,
       note: {},
     })),
+    // Contrairement au chemin de Potentiel, les Traits d'un Géniemon sont bien
+    // une saisie du lecteur : c'est ce qu'il a greffé sur sa créature.
     genimon: payload.genimon.map((genimon) => ({
       item: resolveBuildItemRef("genimons", genimon.itemId, lang),
       rank: genimon.rank,
+      traitSlots: genimonTraitSlots(genimon.itemId),
+      traits: sanitizeTraitKeys(genimon.itemId, genimon.traits)
+        .map((key) => resolveBuildTrait(key, lang))
+        .filter((t): t is BuildGenimonTrait => t !== null),
     })),
     skillPriority: payload.skillPriority.map((skill) => {
       const realName = skill.skillIndex ? skillNameByIndex[skill.skillIndex] : undefined;
@@ -2262,7 +2274,7 @@ export function BuildTabContent({
               <div
                 key={i}
                 data-rarity={rarityAttr(toRarityLevel(g.item?.rarity))}
-                className="group flex items-center gap-3 border border-white/10 bg-ink/55 px-4 py-3"
+                className="group flex flex-wrap items-center gap-x-3 gap-y-2 border border-white/10 bg-ink/55 px-4 py-3"
               >
                 {g.item ? (
                   <Link
@@ -2292,6 +2304,28 @@ export function BuildTabContent({
                 >
                   {g.rank === "best" ? "Best" : "Alt"}
                 </span>
+
+                {/*
+                  Les Traits visés, s'il y en a. En base de ligne pour ne pas
+                  concurrencer la créature : ce sont des objectifs de farm, pas
+                  une seconde pièce d'équipement.
+                */}
+                {g.traits.length > 0 ? (
+                  <ul className="flex w-full flex-wrap items-center gap-1.5 border-t border-white/8 pt-2">
+                    {g.traits.map((trait) => (
+                      <li
+                        key={trait.key}
+                        title={trait.effect}
+                        className="inline-flex items-center gap-1.5 border border-white/10 bg-panel/45 px-2 py-0.5"
+                      >
+                        {trait.icon ? (
+                          <img src={trait.icon} alt="" width={18} height={18} loading="lazy" className="h-[18px] w-[18px]" />
+                        ) : null}
+                        <span className="text-[0.72rem] text-parch/85">{trait.name}</span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
               </div>
             ))}
           </div>

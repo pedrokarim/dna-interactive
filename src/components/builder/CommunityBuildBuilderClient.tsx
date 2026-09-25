@@ -2,7 +2,11 @@
 
 import { useEffect, useMemo, useRef, useState, useSyncExternalStore, type ChangeEvent } from "react";
 import { useSearchParams } from "next/navigation";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import { toGameDataLangCode, toLocale } from "@/i18n/config";
+import { DnaGenimonTraitEditor, type DnaTraitCategoryGroup } from "@/components/dna/GenimonTraitEditor";
+import { genimonTraitSlots, resolveBuildTrait, sanitizeTraitKeys } from "@/lib/genimons/build-traits";
+import { TRAIT_CATEGORIES, categoryIconSrc, getTraitsByCategory } from "@/lib/genimons/traits";
 import { useRouter } from "@/i18n/navigation";
 import { createPortal } from "react-dom";
 import { Download, Upload, Link2, Share2 } from "lucide-react";
@@ -148,10 +152,6 @@ function draftKey(characterId: string, element: string | null): string {
   return `dna:builder:draft:${characterId}:${element ?? "default"}`;
 }
 
-function entriesToPayload(entries: SlotEntry[]) {
-  return entries.map((entry) => ({ itemId: entry.item.id, rank: entry.rank }));
-}
-
 function weaponPayloadEntry(entry: SlotEntry, config: WeaponWedgeConfig | undefined) {
   const base = { itemId: entry.item.id, rank: entry.rank };
   if (!config) return base;
@@ -206,6 +206,10 @@ export function CommunityBuildBuilderClient({
 }) {
   const searchParams = useSearchParams();
   const t = useTranslations("builder");
+  // Les libellés de Traits viennent des données de jeu : ils suivent la locale
+  // de la page, comme partout ailleurs sur le site.
+  const gameLang = toGameDataLangCode(toLocale(useLocale()));
+  const tTrait = useTranslations("genimonGuide");
   const STATS_POOL = useMemo<PriorityItem[]>(
     () => STAT_IDS.map((id) => ({ id, label: t(`statLabels.${id}`) })),
     [t],
@@ -261,6 +265,31 @@ export function CommunityBuildBuilderClient({
   const [wedgeModalWeapon, setWedgeModalWeapon] = useState<string | null>(null);
   const [rangedWeapons, setRangedWeapons] = useState<SlotEntry[]>([]);
   const [genimons, setGenimons] = useState<SlotEntry[]>([]);
+  /**
+   * Les 29 Traits, groupés par catégorie du jeu. Construit une fois : la liste
+   * ne dépend que de la langue, jamais de la créature retenue.
+   */
+  const traitGroups = useMemo<DnaTraitCategoryGroup[]>(
+    () =>
+      TRAIT_CATEGORIES.map((category) => ({
+        category,
+        label: tTrait(`category_${category}`),
+        icon: categoryIconSrc(category),
+        traits: getTraitsByCategory(category, gameLang)
+          .map((trait) => resolveBuildTrait(trait.key, gameLang))
+          .filter((trait): trait is NonNullable<typeof trait> => trait !== null),
+      })).filter((group) => group.traits.length > 0),
+    [gameLang, tTrait],
+  );
+  const traitByKey = useMemo(
+    () => new Map(traitGroups.flatMap((group) => group.traits).map((trait) => [trait.key, trait])),
+    [traitGroups],
+  );
+
+  /** Traits choisis par géniemon (clé = itemId), sur le modèle de `weaponWedges`. */
+  const [genimonTraits, setGenimonTraits] = useState<Record<string, string[]>>({});
+  /** Géniemon dont on choisit les Traits dans la modale (null = fermée). */
+  const [traitModalGenimon, setTraitModalGenimon] = useState<string | null>(null);
   const [demonSlots, setDemonSlots] = useState<WedgeSlotData[]>(() => emptyWedgeSlots(8));
   const [centerItem, setCenterItem] = useState<DnaPickerItem | null>(null);
   const [consonanceSlots, setConsonanceSlots] = useState<WedgeSlotData[]>(() => emptyWedgeSlots(4));
@@ -340,7 +369,13 @@ export function CommunityBuildBuilderClient({
         centerItemId: centerItem?.id ?? null,
         affinity: activeElement,
       },
-      genimon: entriesToPayload(genimons),
+      genimon: genimons.map((entry) => ({
+        itemId: entry.item.id,
+        rank: entry.rank,
+        // Nettoyé ici aussi : le serveur revérifie, mais un brouillon peut
+        // traîner des clés d'une créature qu'on a changée depuis.
+        traits: sanitizeTraitKeys(entry.item.id, genimonTraits[entry.item.id]),
+      })),
       consonanceWeapon: consonanceWeapon
         ? { slots: consonanceSlots.filter((slot) => slot.item).map((slot) => slot.item!.id) }
         : null,
@@ -357,6 +392,7 @@ export function CommunityBuildBuilderClient({
       activeElement,
       centerItem,
       consonanceSlots,
+      genimonTraits,
       consonanceWeapon,
       demonSlots,
       genimons,
@@ -406,6 +442,9 @@ export function CommunityBuildBuilderClient({
         })
         .filter((entry): entry is SlotEntry => entry !== null),
     );
+    setGenimonTraits(
+      Object.fromEntries(next.genimon.map((entry) => [entry.itemId, sanitizeTraitKeys(entry.itemId, entry.traits)])),
+    );
     setDemonSlots(
       emptyWedgeSlots(8).map((slot) => {
         const found = next.demonWedges.slots.find((entry) => entry.position === slot.position);
@@ -452,6 +491,7 @@ export function CommunityBuildBuilderClient({
     setRangedWeapons([]);
     setWeaponWedges({});
     setGenimons([]);
+    setGenimonTraits({});
     setDemonSlots(emptyWedgeSlots(8));
     setCenterItem(null);
     setConsonanceSlots(emptyWedgeSlots(4));
@@ -1253,6 +1293,59 @@ export function CommunityBuildBuilderClient({
               onChange={setGenimons}
             />
           </div>
+
+          {/*
+            Les Traits se choisissent par créature, une fois celle-ci retenue :
+            leur nombre dépend d'elle, et la liste n'a aucun sens hors d'elle.
+          */}
+          {genimons.length > 0 ? (
+            <ul className="mt-3 space-y-2">
+              {genimons.map((entry) => {
+                const keys = sanitizeTraitKeys(entry.item.id, genimonTraits[entry.item.id]);
+                const slots = genimonTraitSlots(entry.item.id);
+                return (
+                  <li
+                    key={entry.item.id}
+                    className="flex flex-wrap items-center gap-x-3 gap-y-2 border border-white/10 bg-ink/45 px-3 py-2"
+                  >
+                    <span className="min-w-0 flex-1 truncate text-sm text-parch">{entry.item.name}</span>
+                    <span className="flex items-center gap-1.5">
+                      {keys.length === 0 ? (
+                        <span className="text-xs text-muted-2">{t("genimonNoTrait")}</span>
+                      ) : (
+                        keys.map((key) => {
+                          const trait = traitByKey.get(key);
+                          return trait?.icon ? (
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <img
+                              key={key}
+                              src={trait.icon}
+                              alt={trait.name}
+                              title={trait.name}
+                              width={22}
+                              height={22}
+                              className="h-[22px] w-[22px]"
+                            />
+                          ) : (
+                            <span key={key} className="text-xs text-parch/80">
+                              {trait?.name ?? key}
+                            </span>
+                          );
+                        })
+                      )}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => setTraitModalGenimon(entry.item.id)}
+                      className="rounded-sm border border-white/15 px-2.5 py-1 text-xs text-parch transition-colors hover:border-gold/40 hover:text-gold"
+                    >
+                      {t("genimonEditTraits", { count: keys.length, max: slots })}
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+          ) : null}
         </DnaPanel>
 
         <DnaPanel className="p-4">
@@ -1320,7 +1413,30 @@ export function CommunityBuildBuilderClient({
                 <p className="mt-1 max-w-prose text-xs leading-relaxed text-muted">{t("publishCtaHint")}</p>
               </div>
               <DnaButton variant="gold" disabled={publishing || title.trim().length < 3} onClick={publishBuild}>
-                {publishing ? (editingBuildId ? t("updating") : t("publishing")) : editingBuildId ? t("update") : t("publish")}
+                {(() => {
+        const id = traitModalGenimon;
+        if (!id) return null;
+        const entry = genimons.find((e) => e.item.id === id);
+        if (!entry) return null;
+        const slots = genimonTraitSlots(id);
+        const selected = sanitizeTraitKeys(id, genimonTraits[id]);
+        return (
+          <DnaDialog open onClose={() => setTraitModalGenimon(null)} title={entry.item.name} size="3xl">
+            <div className="p-5">
+              <p className="mb-4 max-w-prose text-xs leading-relaxed text-muted">{t("genimonTraitsModalHelp")}</p>
+              <DnaGenimonTraitEditor
+                groups={traitGroups}
+                selected={selected}
+                max={slots}
+                countLabel={t("genimonTraitCount", { count: selected.length, max: slots })}
+                fullHint={t("genimonTraitFull")}
+                onChange={(keys) => setGenimonTraits((prev) => ({ ...prev, [id]: keys }))}
+              />
+            </div>
+          </DnaDialog>
+        );
+      })()}
+      {publishing ? (editingBuildId ? t("updating") : t("publishing")) : editingBuildId ? t("update") : t("publish")}
               </DnaButton>
             </div>
           </DnaPanel>

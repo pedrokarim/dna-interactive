@@ -6,6 +6,12 @@ import {
   getCharacterTranslation,
   resolveDisplayName,
 } from "@/lib/characters/catalog";
+import {
+  genimonTraitSlots,
+  resolveBuildTrait,
+  sanitizeTraitKeys,
+  type BuildGenimonTrait,
+} from "@/lib/genimons/build-traits";
 import type { ItemRecord } from "@/lib/items/types";
 import type { CharacterRecord } from "@/lib/characters/types";
 
@@ -64,6 +70,14 @@ interface RawTeamEntry {
 interface RawGenimonEntry {
   itemId: string;
   rank: "best" | "alternative";
+  /**
+   * Traits à viser sur ce Géniemon, par clé (`data/genimons/traits.json`).
+   *
+   * L'ordre est une **priorité de farm**, pas un emplacement : le jeu ne fixe
+   * pas quel Trait va dans quelle sphère. Le nombre admis se lit sur la
+   * créature – trois pour une variante ordinaire, quatre pour une scintillante.
+   */
+  traits?: string[];
 }
 
 interface RawSkillPriority {
@@ -164,6 +178,10 @@ export interface BuildTeamEntry {
 export interface BuildGenimonEntry {
   item: ResolvedItemRef | null;
   rank: "best" | "alternative";
+  /** Traits visés, déjà traduits et nettoyés de l'inconnu. */
+  traits: BuildGenimonTrait[];
+  /** Emplacements qu'ouvre cette créature : 4 pour une scintillante, 3 sinon. */
+  traitSlots: number;
 }
 
 export interface BuildSkillPriority {
@@ -361,6 +379,12 @@ export function getCharacterBuilds(
       genimon: (raw.genimon ?? []).map((g) => ({
         item: resolveBuildItemRef("genimons", g.itemId, lang),
         rank: g.rank,
+        traitSlots: genimonTraitSlots(g.itemId),
+        // `sanitize` avant de résoudre : un build peut venir d'une version où
+        // un Trait existait encore, ou porter plus de clés que d'emplacements.
+        traits: sanitizeTraitKeys(g.itemId, g.traits)
+          .map((key) => resolveBuildTrait(key, lang))
+          .filter((t): t is BuildGenimonTrait => t !== null),
       })),
       skillPriority: (raw.skillPriority ?? []).map((s) => ({
         skillName: s.skillName ?? {},

@@ -1029,7 +1029,12 @@
     "publishCtaTitle": "¿Listo para publicar?",
     "publishCtaHint": "Tu build será visible en la ficha del personaje. Podrás editarlo después.",
     "publishOverlayTitle": "Comprobando tu build…",
-    "publishOverlayHint": "Validamos las piezas, las armas y el equipo. Te llevaremos a tu build en cuanto pase."
+    "publishOverlayHint": "Validamos las piezas, las armas y el equipo. Te llevaremos a tu build en cuanto pase.",
+    "genimonNoTrait": "Sin Rasgo",
+    "genimonEditTraits": "Rasgos ({count}/{max})",
+    "genimonTraitCount": "{count} de {max} ranuras",
+    "genimonTraitFull": "Todas las ranuras están ocupadas: una elección nueva sustituye a la más antigua.",
+    "genimonTraitsModalHelp": "Elige los Rasgos que quieres conseguir en este Geniemon. El número de ranuras depende de la criatura: tres en una variante corriente, cuatro en una reluciente. El orden es una prioridad de farmeo, no una ranura."
   },
   "communityBuilds": {
     "sectionTitle": "Alternativas de la comunidad",

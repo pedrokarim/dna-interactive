@@ -1,5 +1,10 @@
 import { z } from "zod";
 import { getCharacterById, getCharacterElements } from "@/lib/characters/catalog";
+import {
+  MAX_GENIMON_TRAITS,
+  genimonTraitSlots,
+  isKnownTraitKey,
+} from "@/lib/genimons/build-traits";
 import { getItemByCategoryAndId } from "@/lib/items/catalog";
 import { isWeaponWedge, type WeaponWedgeClass } from "@/lib/items/weapon-builds";
 import { isCenterDemonWedgeItemId } from "./center-wedges";
@@ -82,7 +87,18 @@ export const buildPayloadSchema = z.object({
       affinity: elementKeySchema.nullable().optional(),
     })
     .default({ slots: [] }),
-  genimon: z.array(z.object({ itemId: itemIdSchema, rank: rankSchema })).max(3).default([]),
+  genimon: z
+    .array(
+      z.object({
+        itemId: itemIdSchema,
+        rank: rankSchema,
+        // Borne haute ici ; le nombre réel dépend de la créature et se vérifie
+        // au contrôle référentiel, qui seul sait si elle est scintillante.
+        traits: z.array(z.string().min(1).max(64)).max(MAX_GENIMON_TRAITS).default([]),
+      }),
+    )
+    .max(3)
+    .default([]),
   consonanceWeapon: z
     .object({
       slots: z.array(itemIdSchema).max(4).default([]),
@@ -234,6 +250,23 @@ export function validateBuildReferences(input: CreateBuildInput | DraftInput): s
     } else if (item.stats.maxLevel !== 60) {
       // maxLevel 1 = pet d'événement (Monster Rush/Wishen) ou drone non équipable.
       errors.push(`Génimon non équipable : ${genimon.itemId}.`);
+    } else {
+      // Le nombre d'emplacements se lit sur la créature : trois pour une
+      // variante ordinaire, quatre pour une scintillante. Le serveur ne fait
+      // pas confiance au client là-dessus.
+      const slots = genimonTraitSlots(genimon.itemId);
+      if (genimon.traits.length > slots) {
+        errors.push(`Trop de Traits pour ${genimon.itemId} : ${genimon.traits.length} pour ${slots} emplacements.`);
+      }
+      const seen = new Set<string>();
+      for (const key of genimon.traits) {
+        if (!isKnownTraitKey(key)) {
+          errors.push(`Trait inconnu : ${key}.`);
+        } else if (seen.has(key)) {
+          errors.push(`Trait en double sur ${genimon.itemId} : ${key}.`);
+        }
+        seen.add(key);
+      }
     }
   }
   for (const slot of input.payload.demonWedges.slots) checkItem("mods", slot.itemId, "Demon Wedge");

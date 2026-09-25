@@ -1,3 +1,4 @@
+import { MAX_GENIMON_TRAITS, isKnownTraitKey } from "@/lib/genimons/build-traits";
 import { z } from "zod";
 
 import type { BuilderOptions } from "./options";
@@ -64,7 +65,18 @@ const buildPayloadIoSchema = z
         affinity: elementSchema.nullable().optional(),
       })
       .strict(),
-    genimon: z.array(z.object({ itemId: itemIdSchema, rank: rankSchema }).strict()).max(3),
+    genimon: z
+      .array(
+        z
+          .object({
+            itemId: itemIdSchema,
+            rank: rankSchema,
+            // Défaut vide : un fichier exporté avant les Traits reste importable.
+            traits: z.array(z.string().min(1).max(64)).max(MAX_GENIMON_TRAITS).default([]),
+          })
+          .strict(),
+      )
+      .max(3),
     consonanceWeapon: z.object({ slots: z.array(itemIdSchema).max(4) }).strict().nullable(),
     statsPriority: z.array(z.enum(STAT_KEYS)).max(12),
     skillPriority: z
@@ -194,6 +206,10 @@ function validateAgainstOptions(data: CommunityBuildExport, options: BuilderOpti
   for (const genimon of data.payload.genimon) {
     if (!genimonIds.has(genimon.itemId)) {
       errors.push("Un Geniemon exporte n'existe pas dans le catalogue local.");
+      continue;
+    }
+    for (const key of genimon.traits) {
+      if (!isKnownTraitKey(key)) errors.push(`Trait inconnu dans le fichier : ${key}.`);
     }
   }
 

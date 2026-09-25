@@ -1029,7 +1029,12 @@
     "publishCtaTitle": "Ready to publish?",
     "publishCtaHint": "Your build will be visible to the community on the character page. You can edit it afterwards.",
     "publishOverlayTitle": "Checking your build…",
-    "publishOverlayHint": "We are validating the pieces, weapons and team. You will be taken to your build as soon as it passes."
+    "publishOverlayHint": "We are validating the pieces, weapons and team. You will be taken to your build as soon as it passes.",
+    "genimonNoTrait": "No Trait",
+    "genimonEditTraits": "Traits ({count}/{max})",
+    "genimonTraitCount": "{count} of {max} slots",
+    "genimonTraitFull": "Every slot is taken: a new pick replaces the oldest one.",
+    "genimonTraitsModalHelp": "Pick the Traits to aim for on this Geniemon. The number of slots depends on the creature: three for an ordinary variant, four for a shining one. The order reads as a farming priority, not as a slot."
   },
   "communityBuilds": {
     "sectionTitle": "Community alternatives",

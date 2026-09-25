@@ -1029,7 +1029,12 @@
     "publishCtaTitle": "Bereit zum Veröffentlichen?",
     "publishCtaHint": "Dein Build wird auf der Figurenseite sichtbar. Du kannst ihn später bearbeiten.",
     "publishOverlayTitle": "Build wird geprüft…",
-    "publishOverlayHint": "Teile, Waffen und Team werden geprüft. Danach geht es direkt zu deinem Build."
+    "publishOverlayHint": "Teile, Waffen und Team werden geprüft. Danach geht es direkt zu deinem Build.",
+    "genimonNoTrait": "Kein Trait",
+    "genimonEditTraits": "Traits ({count}/{max})",
+    "genimonTraitCount": "{count} von {max} Plätzen",
+    "genimonTraitFull": "Alle Plätze sind belegt: Eine neue Wahl ersetzt die älteste.",
+    "genimonTraitsModalHelp": "Wähle die Traits, die du auf diesem Geniemon anstrebst. Die Zahl der Plätze hängt von der Kreatur ab: drei bei einer gewöhnlichen Variante, vier bei einer schimmernden. Die Reihenfolge ist eine Farm-Priorität, kein Platz."
   },
   "communityBuilds": {
     "sectionTitle": "Community-Alternativen",
