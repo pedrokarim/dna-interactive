@@ -1863,6 +1863,20 @@
     "trainingBody": "Un Rasgo no se sortea: se transmite. El Entrenamiento de Geniemon toma un Rasgo que lleva un Geniemon inactivo y se lo da a uno activo, y el Rasgo elegido sustituye al que ocupaba la ranura. Para eso sirven los inactivos, los que nunca llevas al combate.",
     "trainingLevel": "El nivel de un Rasgo sube aparte, mediante Mejorar. Una ranura también puede bloquearse para no sobrescribirla por error, y el Compendio de Rasgos lo hace solo con los Rasgos que le señales.",
     "imageTraining": "El Entrenamiento de Geniemon: pasar un Rasgo de un inactivo a uno activo.",
-    "goldOnlyNote": "Siete Rasgos solo existen en dorado y no se consiguen fusionando: hay que encontrarlos tal cual."
+    "goldOnlyNote": "Siete Rasgos solo existen en dorado y no se consiguen fusionando: hay que encontrarlos tal cual.",
+    "variantOrdinary": "Variante corriente",
+    "variantShiny": "Variante reluciente",
+    "variantShinyTell": "Misma especie, mismo pasivo, mismos valores. La reluciente se reconoce por su aura y abre una cuarta ranura de Rasgo: esa es toda la diferencia, y es enorme.",
+    "shopTitle": "La tienda de Geniemon",
+    "shopBody": "Los Encargos de recompensa tienen ahora su propio intercambio, las Recompensas de cacería, con una pestaña de Geniemon. Allí se encadenan dos monedas: la primera se gana en los encargos, la segunda solo sale de lo que la primera ha pagado.",
+    "shopSteps": [
+      "Los encargos de Persecución y de Enfrentamiento entregan la primera moneda, la Balada de los Geniemon Ⅰ.",
+      "La primera moneda compra Cofres sorpresa: un Geniemon al azar, activo o inactivo, y la Balada de los Geniemon Ⅱ.",
+      "La segunda moneda compra los Cofres de selección, donde eliges tú. Uno por periodo, repuesto cada tres semanas aproximadamente."
+    ],
+    "shopGoldTraits": "De ahí salen los siete Rasgos dorados. El Cofre de selección de Geniemon inactivo permite llevarse uno que porte alguno de ellos, justo los siete que la fusión no alcanza.",
+    "imageShopPath": "El intercambio se abre desde los Encargos de recompensa.",
+    "imageShopChests": "Los cuatro cofres y la moneda que pide cada uno.",
+    "imageShopSelection": "Un cofre de selección indica lo que deja elegir."
   }
 }

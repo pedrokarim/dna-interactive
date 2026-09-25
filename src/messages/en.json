@@ -1863,6 +1863,20 @@
     "trainingBody": "A Trait is not rolled, it is passed on. Geniemon Training takes a Trait held by an inactive Geniemon and gives it to an active one, and the Trait you pick replaces whatever occupied the slot. That is what inactive Geniemons are for, the ones you never take into battle.",
     "trainingLevel": "A Trait's level is raised separately, through Raise. A slot can also be locked so it is not overwritten by mistake, and the Trait Compendium does this automatically for the Traits you mark.",
     "imageTraining": "Geniemon Training: passing a Trait from an inactive Geniemon to an active one.",
-    "goldOnlyNote": "Seven Traits exist only in gold and therefore cannot be reached by merging: they have to be found as they are."
+    "goldOnlyNote": "Seven Traits exist only in gold and therefore cannot be reached by merging: they have to be found as they are.",
+    "variantOrdinary": "Ordinary variant",
+    "variantShiny": "Shining variant",
+    "variantShinyTell": "Same species, same passive, same values. The shining one is known by its aura and opens a fourth Trait slot: that is the whole difference, and it is a large one.",
+    "shopTitle": "The Geniemon shop",
+    "shopBody": "Bounty Commissions now have their own exchange, Bounty Rewards, with a Geniemon tab. Two currencies follow one another there: the first is earned on commissions, the second only comes out of what the first paid for.",
+    "shopSteps": [
+      "Chase and Showdown commissions pay out A Geniemon's Ballad Ⅰ.",
+      "Ballad Ⅰ buys Surprise Chests: one random Geniemon, active or inactive, plus A Geniemon's Ballad Ⅱ.",
+      "Ballad Ⅱ buys the Selection Chests, where you choose for yourself. One per period, restocked roughly every three weeks."
+    ],
+    "shopGoldTraits": "This is where the seven gold Traits come from. The Inactive Geniemon Selection Chest lets you take a Geniemon carrying Tenacious, Deft, At Peace, Disciplined, Desirous, Fleeing or Veteran — exactly the seven that merging cannot reach.",
+    "imageShopPath": "The exchange opens from Bounty Commissions.",
+    "imageShopChests": "The four chests, and the currency each one asks for.",
+    "imageShopSelection": "A selection chest states what it lets you choose."
   }
 }

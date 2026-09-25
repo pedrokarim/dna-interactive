@@ -1863,6 +1863,20 @@
     "trainingBody": "Ein Trait wird nicht ausgewürfelt, sondern weitergegeben. Das Geniemon-Training nimmt einen Trait von einem inaktiven Geniemon und überträgt ihn auf ein aktives; der gewählte Trait ersetzt den, der den Platz belegte. Genau dafür sind die inaktiven da, die nie in den Kampf ziehen.",
     "trainingLevel": "Die Stufe eines Traits steigt getrennt davon über Aufwerten. Ein Platz lässt sich außerdem sperren, damit er nicht versehentlich überschrieben wird – das Trait-Kompendium tut das automatisch für die von dir markierten Traits.",
     "imageTraining": "Geniemon-Training: einen Trait von einem inaktiven auf ein aktives Geniemon übertragen.",
-    "goldOnlyNote": "Sieben Traits gibt es nur in Gold und sie lassen sich daher nicht erfusionieren: Man muss sie so finden."
+    "goldOnlyNote": "Sieben Traits gibt es nur in Gold und sie lassen sich daher nicht erfusionieren: Man muss sie so finden.",
+    "variantOrdinary": "Gewöhnliche Variante",
+    "variantShiny": "Schimmernde Variante",
+    "variantShinyTell": "Gleiche Art, gleicher Passiveffekt, gleiche Werte. Die schimmernde erkennt man an ihrer Aura, und sie öffnet einen vierten Trait-Platz: Das ist der ganze Unterschied – und er ist groß.",
+    "shopTitle": "Der Geniemon-Laden",
+    "shopBody": "Die Kopfgeld-Missionen haben nun ihren eigenen Tauschhandel, die Kopfgeldbelohnungen, mit einem Geniemon-Reiter. Zwei Währungen bauen dort aufeinander auf: Die erste verdient man in den Missionen, die zweite fällt nur aus dem an, was die erste bezahlt hat.",
+    "shopSteps": [
+      "Jagd- und Duell-Missionen zahlen die erste Währung aus, die Ballade der Geniemons Ⅰ.",
+      "Die erste Währung kauft Überraschungstruhen: ein zufälliges Geniemon, aktiv oder inaktiv, dazu die Ballade der Geniemons Ⅱ.",
+      "Die zweite Währung kauft die Auswahltruhen, bei denen man selbst wählt. Eine pro Zeitraum, etwa alle drei Wochen wieder verfügbar."
+    ],
+    "shopGoldTraits": "Daher stammen die sieben goldenen Traits. Die Auswahltruhe für inaktive Geniemons lässt eines mitnehmen, das einen davon trägt – genau die sieben, die sich nicht erfusionieren lassen.",
+    "imageShopPath": "Der Tauschhandel öffnet sich aus den Kopfgeld-Missionen.",
+    "imageShopChests": "Die vier Truhen und die Währung, die jede verlangt.",
+    "imageShopSelection": "Eine Auswahltruhe nennt, was sie zur Wahl stellt."
   }
 }

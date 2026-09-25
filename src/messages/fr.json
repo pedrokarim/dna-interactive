@@ -1863,6 +1863,20 @@
     "trainingBody": "Un Trait ne se tire pas au sort : il se transmet. L'Entraînement de Géniemon prend un Trait porté par un Géniemon inactif et le donne à un actif, et le Trait choisi remplace celui qui occupait l'emplacement. C'est la raison d'être des inactifs, qu'on ne mène jamais au combat.",
     "trainingLevel": "Le niveau d'un Trait se monte à part, par Monter en grade. Un emplacement peut aussi être verrouillé pour éviter de le remplacer par mégarde, et le Compendium des Traits le fait automatiquement sur les Traits qu'on lui a désignés.",
     "imageTraining": "L'Entraînement de Géniemon : transmettre un Trait d'un inactif à un actif.",
-    "goldOnlyNote": "Sept Traits n'existent qu'en or et ne s'obtiennent donc pas par fusion : il faut les trouver tels quels."
+    "goldOnlyNote": "Sept Traits n'existent qu'en or et ne s'obtiennent donc pas par fusion : il faut les trouver tels quels.",
+    "variantOrdinary": "Variante ordinaire",
+    "variantShiny": "Variante scintillante",
+    "variantShinyTell": "Même espèce, même passif, mêmes valeurs. La scintillante se reconnaît à son aura et ouvre un quatrième emplacement de Trait : c'est tout l'écart, et il est considérable.",
+    "shopTitle": "La boutique des Géniemons",
+    "shopBody": "Les Missions à prime ont reçu leur propre échange, les Récompenses de prime, avec un onglet Géniemon. Deux monnaies s'y suivent : la première se gagne sur les missions, la seconde ne sort que de ce que la première a payé.",
+    "shopSteps": [
+      "Les missions de Traque et d'Affrontement versent du Chant des Géniemon I.",
+      "Le Chant I achète des Coffrets surprise : un Géniemon au hasard, actif ou inactif, et du Chant des Géniemon II.",
+      "Le Chant II achète les Coffrets de sélection, où l'on choisit soi-même. Un seul par période, renouvelé toutes les trois semaines environ."
+    ],
+    "shopGoldTraits": "C'est de là que viennent les sept Traits or. Le Coffret de sélection de Géniemon inactif laisse prendre un Géniemon portant Tenace, Habile, Sérénité, Discipliné, Avide, Fugitif ou Vétéran – exactement les sept que la fusion ne permet pas d'atteindre.",
+    "imageShopPath": "L'échange s'ouvre depuis les Missions à prime.",
+    "imageShopChests": "Les quatre coffrets, et la monnaie que chacun réclame.",
+    "imageShopSelection": "Un coffret de sélection annonce ce qu'il laisse choisir."
   }
 }

@@ -80,6 +80,12 @@ export const GENIMONS_GUIDE_SLOTS = [
   "fusion",
   /** L'Entraînement de Géniemon : transmettre un Trait d'un inactif à un actif. */
   "training",
+  /** Où trouver l'échange, depuis les Missions à prime. */
+  "shopPath",
+  /** Les quatre coffrets de la boutique et leurs deux monnaies. */
+  "shopChests",
+  /** Le coffret de sélection, et ce qu'il laisse choisir. */
+  "shopSelection",
 ] as const;
 
 export type GenimonsGuideSlot = (typeof GENIMONS_GUIDE_SLOTS)[number];

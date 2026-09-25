@@ -156,6 +156,84 @@ async function TraitFlowDiagram({ gameLang, locale }: { gameLang: string; locale
   );
 }
 
+/**
+ * Une espèce et sa variante scintillante, prises dans les données.
+ *
+ * Les deux partagent le passif et ses valeurs : seul le nombre d'emplacements
+ * de Trait les sépare. Le couple se lit dans `variants` (`isPremium`,
+ * `premiumGuid`) plutôt que d'être cité en dur.
+ */
+function pickVariantPair(gameLang: string) {
+  const all = getItemsByCategoryId("genimons");
+  for (const premium of all) {
+    if (!premium.variants?.isPremium || premium.stats?.maxLevel !== 60 || !premium.icon?.publicPath) continue;
+    const ordinary = all.find(
+      (i) => i.variants?.premiumGuid === premium.variants?.guid && !i.variants?.isPremium && i.icon?.publicPath,
+    );
+    if (!ordinary) continue;
+    const name = (item: typeof premium) => getItemTranslation(item, gameLang, ["EN"]).modName ?? "";
+    return {
+      ordinary: { name: name(ordinary), icon: ordinary.icon!.publicPath! },
+      premium: { name: name(premium), icon: premium.icon!.publicPath! },
+    };
+  }
+  return null;
+}
+
+/** Une carte du comparatif : la créature, son nom, sa rangée d'emplacements. */
+function VariantCard({
+  icon,
+  name,
+  label,
+  slots,
+  accent,
+}: {
+  icon: string;
+  name: string;
+  label: string;
+  slots: number;
+  accent: boolean;
+}) {
+  return (
+    <div className={`flex flex-1 flex-col items-center gap-2 border px-4 py-4 ${accent ? "border-anemo/30 bg-panel/60" : "border-white/10 bg-panel/35"}`}>
+      <span className="font-caps text-[0.6rem] uppercase tracking-[0.2em]" style={accent ? { color: GENIMON_ACCENT } : undefined}>
+        {label}
+      </span>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={icon} alt={name} width={64} height={64} loading="lazy" className="h-16 w-16" />
+      <span className="text-center text-sm text-parch">{name}</span>
+      <div className="mt-1 flex gap-1.5">
+        {Array.from({ length: 4 }, (_, i) =>
+          i < slots ? (
+            <span key={i} className="h-5 w-5 border border-white/35 bg-white/10" />
+          ) : (
+            // Le quatrième carré reste vide sur l'ordinaire : c'est tout l'écart.
+            <span key={i} className="h-5 w-5 border border-dashed border-white/15" />
+          ),
+        )}
+      </div>
+      <span className="font-caps text-[0.62rem] tracking-[0.15em] text-muted">{slots} / 4</span>
+    </div>
+  );
+}
+
+/** Ordinaire contre scintillante : le même passif, un emplacement de plus. */
+async function VariantCompare({ gameLang, locale }: { gameLang: string; locale: string }) {
+  const t = await getTranslations({ locale, namespace: "genimonGuide" });
+  const pair = pickVariantPair(gameLang);
+  if (!pair) return null;
+
+  return (
+    <div className="border border-white/10 bg-ink/45 p-4 md:p-5">
+      <div className="flex flex-col gap-3 sm:flex-row">
+        <VariantCard icon={pair.ordinary.icon} name={pair.ordinary.name} label={t("variantOrdinary")} slots={3} accent={false} />
+        <VariantCard icon={pair.premium.icon} name={pair.premium.name} label={t("variantShiny")} slots={4} accent />
+      </div>
+      <p className="mt-4 text-center text-xs text-muted">{t("variantShinyTell")}</p>
+    </div>
+  );
+}
+
 async function TraitTable({ category, gameLang, locale }: { category: TraitCategory; gameLang: string; locale: string }) {
   const t = await getTranslations({ locale, namespace: "genimonGuide" });
   const traits = getTraitsByCategory(category, gameLang);
@@ -280,6 +358,7 @@ export async function GenimonsGuide({
           <p className="max-w-3xl border-l-2 pl-3 text-sm text-parch/85" style={{ borderColor: GENIMON_ACCENT }}>
             {t("passiveShiny")}
           </p>
+          <VariantCompare gameLang={gameLang} locale={locale} />
         </div>
       </section>
 
@@ -334,6 +413,43 @@ export async function GenimonsGuide({
             <p className="text-sm leading-relaxed text-parch/85">{t("goldOnlyNote")}</p>
           </div>
           <GuideImageSlot slot="fusion" family="genimons" caption={t("imageFusion")} ratio="4 / 3" />
+        </div>
+      </section>
+
+      {/* ------------------------------------------------------- la boutique */}
+      <section>
+        <DnaSectionLabel>{t("shopTitle")}</DnaSectionLabel>
+        <p className="mt-3 max-w-3xl text-sm leading-relaxed text-parch/85">{t("shopBody")}</p>
+
+        {/*
+          La boucle en trois temps. Les deux monnaies se ressemblent à l'écran,
+          et c'est l'ordre qui les distingue : l'une vient des missions, l'autre
+          ne s'obtient qu'en ouvrant ce que la première a payé.
+        */}
+        <ol className="mt-4 grid gap-3 md:grid-cols-3">
+          {(t.raw("shopSteps") as string[]).map((step, i) => (
+            <li key={i} className="flex items-start gap-3 border border-white/10 bg-ink/55 px-3 py-3">
+              <span
+                className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center border text-xs"
+                style={{ borderColor: GENIMON_ACCENT, color: GENIMON_ACCENT }}
+              >
+                {i + 1}
+              </span>
+              <span className="text-sm leading-relaxed text-parch/85">{step}</span>
+            </li>
+          ))}
+        </ol>
+
+        <div className="mt-5 grid gap-5 lg:grid-cols-2">
+          <GuideImageSlot slot="shopPath" family="genimons" caption={t("imageShopPath")} ratio="4 / 3" />
+          <GuideImageSlot slot="shopChests" family="genimons" caption={t("imageShopChests")} ratio="16 / 9" />
+        </div>
+
+        <div className="mt-5 grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)]">
+          <p className="self-center border-l-2 pl-3 text-sm leading-relaxed text-parch/85" style={{ borderColor: GENIMON_ACCENT }}>
+            {t("shopGoldTraits")}
+          </p>
+          <GuideImageSlot slot="shopSelection" family="genimons" caption={t("imageShopSelection")} ratio="16 / 9" />
         </div>
       </section>
 
