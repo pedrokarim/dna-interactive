@@ -751,3 +751,13 @@ body:has(.map-page) .grecaptcha-badge {
     scroll-behavior: auto !important;
   }
 }
+
+/* Barre de progression qui se remplit à l'affichage (carte, profil). */
+@keyframes dna-bar-grow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+.dna-bar-grow {
+  transform-origin: left center;
+  animation: dna-bar-grow 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}

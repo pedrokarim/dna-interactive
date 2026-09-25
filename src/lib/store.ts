@@ -3,43 +3,15 @@ import { atomWithStorage } from "jotai/utils";
 
 import { captureAnalytics } from "@/lib/analytics";
 
-// Atome de stockage pour les marqueurs sous forme de tableau
+// Points trouvés de la carte interactive (clés `mapId-type-markerId-instanceId`).
+// Même clé localStorage depuis l'origine : la progression des visiteurs en dépend.
+// Le reste de l'état de la carte vit dans `@/lib/map/state`.
 const markedMarkersStorageAtom = atomWithStorage<string[]>(
   "marked-markers",
   []
 );
 
-
-
-// Atoms avec persistance
-// Atome pour la carte sélectionnée (sans persistance automatique pour éviter les conflits)
-export const selectedMapIdAtom = atom<string | null>(null);
-
-// Atome dérivé pour gérer la persistance manuellement
-export const selectedMapIdWithPersistenceAtom = atom(
-  (get) => get(selectedMapIdAtom),
-  (get, set, newValue: string | null) => {
-    set(selectedMapIdAtom, newValue);
-    // Sauvegarder manuellement dans localStorage
-    if (typeof window !== "undefined") {
-      if (newValue) {
-        localStorage.setItem("selected-map", newValue);
-      } else {
-        localStorage.removeItem("selected-map");
-      }
-    }
-  }
-);
 export const isMenuOpenAtom = atomWithStorage<boolean>("menu-open", false);
-export const visibleCategoriesAtom = atomWithStorage<Record<string, boolean>>(
-  "visible-categories",
-  {}
-);
-export const expandedCategoriesAtom = atomWithStorage<Record<string, boolean>>(
-  "expanded-categories",
-  {}
-);
-export const sidebarWidthAtom = atomWithStorage<number>("sidebar-width", 320);
 
 // Mode d'affichage des listes : 3 modes sélectionnables partout (Simplifié = images en
 // grand plan, Liste = lignes, Détaillé = cartes avec traductions). Le défaut dépend de la
@@ -239,20 +211,4 @@ export const toggleMarkerMarkedAtom = atom(
     set(markedMarkersAtom, newMarked);
   }
 );
-
-export const toggleCategoryVisibilityAtom = atom(
-  null,
-  (get, set, categoryId: string) => {
-    const currentVisible = get(visibleCategoriesAtom);
-    const isCurrentlyVisible = currentVisible[categoryId] !== false; // undefined ou true = visible
-    set(visibleCategoriesAtom, {
-      ...currentVisible,
-      [categoryId]: !isCurrentlyVisible, // Si visible, devient invisible (false), si invisible, devient visible (true)
-    });
-  }
-);
-
-export const resetAllMarkersAtom = atom(null, (get, set) => {
-  set(markedMarkersAtom, new Set());
-});
 

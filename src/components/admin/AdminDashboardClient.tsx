@@ -16,6 +16,7 @@ import {
   Mail,
   MailOpen,
   Megaphone,
+  Route,
   RefreshCcw,
   ScrollText,
   Settings,
@@ -36,6 +37,7 @@ import { ThemeSwitcher } from "@/components/site/ThemeSwitcher";
 import { AnnouncementsAdminClient } from "./AnnouncementsAdminClient";
 import { CalendarAdminClient } from "./CalendarAdminClient";
 import { ChangelogAdminClient } from "./ChangelogAdminClient";
+import { RoutesAdminClient } from "./RoutesAdminClient";
 import { SettingsAdminClient } from "./SettingsAdminClient";
 import {
   AdminActions,
@@ -59,7 +61,7 @@ import {
 
 const ADMIN_PAGE_SIZE = 12;
 
-type AdminView = "overview" | "reports" | "builds" | "users" | "emails" | "announcements" | "changelog" | "calendar" | "settings";
+type AdminView = "overview" | "reports" | "builds" | "routes" | "users" | "emails" | "announcements" | "changelog" | "calendar" | "settings";
 
 type EmailStats = {
   total: number;
@@ -111,6 +113,7 @@ const ADMIN_NAV: Array<{ id: AdminView; label: string; icon: LucideIcon }> = [
   { id: "overview", label: "Vue d'ensemble", icon: LayoutDashboard },
   { id: "reports", label: "Signalements", icon: FileWarning },
   { id: "builds", label: "Builds", icon: Hammer },
+  { id: "routes", label: "Itinéraires", icon: Route },
   { id: "users", label: "Utilisateurs", icon: Users },
   { id: "emails", label: "Emails", icon: Mail },
   { id: "announcements", label: "Annonces", icon: Megaphone },
@@ -373,6 +376,7 @@ export function AdminDashboardClient({ currentUser }: { currentUser: CurrentAdmi
             </AdminPanel>
           ) : null}
 
+          {activeView === "routes" ? <RoutesAdminClient /> : null}
           {activeView === "emails" ? <EmailsView stats={emailStats} /> : null}
           {activeView === "announcements" ? <AnnouncementsAdminClient /> : null}
           {activeView === "changelog" ? <ChangelogAdminClient /> : null}

@@ -1,0 +1,830 @@
+{
+  "generatedFrom": "Datas_merged_1.6 : WorldMap, RegionMap, Region, TextMap",
+  "nations": [
+    {
+      "id": "hyperborean-empire",
+      "name": {
+        "en": "Hyperborean Empire",
+        "fr": "Empire Hyperboréen",
+        "de": "Hyperboreisches Imperium",
+        "es": "Imperio Hiperbóreo",
+        "jp": "ヒュペリア帝国",
+        "kr": "휘페르보레아 제국",
+        "tc": "海伯利亞帝國"
+      },
+      "areas": [
+        {
+          "id": "world-3",
+          "name": {
+            "en": "Lonza Fortress",
+            "fr": "Forteresse de Lonza",
+            "de": "Lonza-Festung",
+            "es": "Fortaleza de Lonza",
+            "jp": "ロンザ要塞",
+            "kr": "론샤 요새",
+            "tc": "龍莎要塞"
+          },
+          "twilight": true,
+          "maps": [
+            {
+              "id": "lonza-fortress",
+              "gameMapId": 300,
+              "main": false,
+              "name": {
+                "en": "Lonza Fortress",
+                "fr": "Forteresse de Lonza",
+                "de": "Lonza-Festung",
+                "es": "Fortaleza de Lonza",
+                "jp": "ロンザ要塞",
+                "kr": "론샤 요새",
+                "tc": "龍莎要塞"
+              }
+            }
+          ]
+        },
+        {
+          "id": "world-2",
+          "name": {
+            "en": "Icelake Environs",
+            "fr": "Environs de Givrelac",
+            "de": "Umgebung von Icelake",
+            "es": "Alrededores de Lago Glacial",
+            "jp": "アイスレイク城外周",
+            "kr": "아이스레이크 시티 주변",
+            "tc": "冰湖城周圍"
+          },
+          "twilight": false,
+          "maps": [
+            {
+              "id": "icelake",
+              "gameMapId": 200,
+              "main": true,
+              "name": {
+                "en": "Eastern District, Icelake",
+                "fr": "Quartier Est de Givrelac",
+                "de": "Östlicher Bezirk, Icelake",
+                "es": "Distrito Este, Lago Glacial",
+                "jp": "アイスレイク城東区",
+                "kr": "아이스레이크 시티 동부",
+                "tc": "冰湖城東區"
+              }
+            },
+            {
+              "id": "icelake-sewer",
+              "gameMapId": 201,
+              "main": false,
+              "name": {
+                "en": "Icelake Sewers",
+                "fr": "Égouts de Givrelac",
+                "de": "Icelake-Kanalisation",
+                "es": "Alcantarilla del Lago Glacial",
+                "jp": "アイスレイク城‐下水道",
+                "kr": "아이스레이크 시티 하수도",
+                "tc": "冰湖城下水道"
+              }
+            },
+            {
+              "id": "glevum-pit",
+              "gameMapId": 202,
+              "main": false,
+              "name": {
+                "en": "Glevum Pit",
+                "fr": "Fosse de Glevum",
+                "de": "Glevum-Grube",
+                "es": "Mina de Glevum",
+                "jp": "グルビューム廃坑",
+                "kr": "글로스터 폐광",
+                "tc": "格雷姆廢礦"
+              }
+            },
+            {
+              "id": "galea-theater",
+              "gameMapId": 204,
+              "main": false,
+              "name": {
+                "en": "Galea Theatre",
+                "fr": "Théâtre Galea",
+                "de": "Galea-Theater",
+                "es": "Teatro Galea",
+                "jp": "ガレア劇場",
+                "kr": "갈레아 극장",
+                "tc": "蓋雷亞劇院"
+              }
+            },
+            {
+              "id": "bloomfield-station",
+              "gameMapId": 205,
+              "main": false,
+              "name": {
+                "en": "Bloomfield Station",
+                "fr": "Gare des Cent-Fleurs",
+                "de": "Bloomfield Station",
+                "es": "La Estación de las Cien Flores",
+                "jp": "フラワー駅",
+                "kr": "블룸필드역",
+                "tc": "百花車站"
+              }
+            },
+            {
+              "id": "ironworks",
+              "gameMapId": 206,
+              "main": false,
+              "name": {
+                "en": "Ironworks",
+                "fr": "Installations de forge",
+                "de": "Ironworks",
+                "es": "Instalaciones de forja",
+                "jp": "鍛鉄工場",
+                "kr": "제철소",
+                "tc": "鍛鐵廠"
+              }
+            }
+          ]
+        },
+        {
+          "id": "world-6",
+          "name": {
+            "en": "Mount Arcano",
+            "fr": "Montagnes d’Arcano",
+            "de": "Mount Arcano",
+            "es": "Mount Arcano",
+            "jp": "アルカノ山",
+            "kr": "아르카노 산",
+            "tc": "阿爾卡諾山"
+          },
+          "twilight": true,
+          "maps": [
+            {
+              "id": "mountarcano",
+              "gameMapId": 600,
+              "main": true,
+              "name": {
+                "en": "Mount Arcano",
+                "fr": "Montagnes d’Arcano",
+                "de": "Mount Arcano",
+                "es": "Mount Arcano",
+                "jp": "アルカノ山",
+                "kr": "아르카노 산",
+                "tc": "阿爾卡諾山"
+              }
+            },
+            {
+              "id": "arcanoruins",
+              "gameMapId": 601,
+              "main": false,
+              "name": {
+                "en": "Arcano Ruins",
+                "fr": "Ruines d’Arcano",
+                "de": "Arcano Ruins",
+                "es": "Arcano Ruins",
+                "jp": "アルカノの町の廃墟",
+                "kr": "아르카노 마을 폐허",
+                "tc": "阿爾卡諾鎮舊址"
+              }
+            },
+            {
+              "id": "arcanorift",
+              "gameMapId": 602,
+              "main": false,
+              "name": {
+                "en": "Arcano Rift",
+                "fr": "Faille de la vallée",
+                "de": "Arcano Rift",
+                "es": "Arcano Rift",
+                "jp": "渓谷の裂け目",
+                "kr": "골짜기의 균열",
+                "tc": "山谷裂隙"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "huaxu",
+      "name": {
+        "en": "Huaxu",
+        "fr": "Huaxu",
+        "de": "Huaxu",
+        "es": "Huaxu",
+        "jp": "華胥",
+        "kr": "화서",
+        "tc": "華胥"
+      },
+      "areas": [
+        {
+          "id": "world-4",
+          "name": {
+            "en": "Mistwharf",
+            "fr": "Port-des-Brumes",
+            "de": "Nebelkai",
+            "es": "Puerto de las Brumas",
+            "jp": "煙津渡",
+            "kr": "연진 나루터",
+            "tc": "華胥"
+          },
+          "twilight": false,
+          "maps": [
+            {
+              "id": "huaxu",
+              "gameMapId": 400,
+              "main": true,
+              "name": {
+                "en": "Mistwharf",
+                "fr": "Port-des-Brumes",
+                "de": "Nebelkai",
+                "es": "Puerto de las Brumas",
+                "jp": "煙津渡",
+                "kr": "연진 나루터",
+                "tc": "煙津渡"
+              }
+            }
+          ]
+        },
+        {
+          "id": "world-5",
+          "name": {
+            "en": "Haojing",
+            "fr": "Haojing",
+            "de": "Haojing",
+            "es": "Haojing",
+            "jp": "皓京",
+            "kr": "호경",
+            "tc": "皓京"
+          },
+          "twilight": false,
+          "maps": [
+            {
+              "id": "haojing",
+              "gameMapId": 500,
+              "main": true,
+              "name": {
+                "en": "Haojing",
+                "fr": "Haojing",
+                "de": "Haojing",
+                "es": "Haojing",
+                "jp": "皓京",
+                "kr": "호경",
+                "tc": "皓京"
+              }
+            },
+            {
+              "id": "outer-peaks",
+              "gameMapId": 501,
+              "main": false,
+              "name": {
+                "en": "Outer Peaks",
+                "fr": "Les Pics Extérieurs",
+                "de": "Außenberge",
+                "es": "Picos exteriores",
+                "jp": "山外山",
+                "kr": "산외산",
+                "tc": "山外山"
+              }
+            },
+            {
+              "id": "taixu-mausoleum",
+              "gameMapId": 502,
+              "main": false,
+              "name": {
+                "en": "Taixu Mausoleum",
+                "fr": "Mausolée de Taixu",
+                "de": "Taixu-Mausoleum",
+                "es": "Mausoleo Taixu",
+                "jp": "太虚陵",
+                "kr": "태허릉",
+                "tc": "太虛陵"
+              }
+            },
+            {
+              "id": "youlai_alley",
+              "gameMapId": 503,
+              "main": false,
+              "name": {
+                "en": "Youlai Alley",
+                "fr": "Ruelle Youlai",
+                "de": "Youlai-Gasse",
+                "es": "Callejón Youlai",
+                "jp": "由来の里",
+                "kr": "유래골",
+                "tc": "由來巷"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "elysian-church",
+      "name": {
+        "en": "The Elysian Church",
+        "fr": "Église Élyséenne",
+        "de": "Die Elysische Kirche",
+        "es": "Iglesia Elysiana",
+        "jp": "エリュシオン礼賛会",
+        "kr": "엘리시안 교회",
+        "tc": "艾利西安傳頌會"
+      },
+      "areas": [
+        {
+          "id": "world-1",
+          "name": {
+            "en": "Purgatorio Island",
+            "fr": "Île du Purgatoire",
+            "de": "Purgatorio-Insel",
+            "es": "Isla del Purgatorio",
+            "jp": "パーガトリー島",
+            "kr": "연옥도",
+            "tc": "淨界島"
+          },
+          "twilight": false,
+          "maps": [
+            {
+              "id": "purgatorio-island",
+              "gameMapId": 100,
+              "main": true,
+              "name": {
+                "en": "Purgatorio Island",
+                "fr": "Île du Purgatoire",
+                "de": "Purgatorio-Insel",
+                "es": "Isla del Purgatorio",
+                "jp": "パーガトリー島",
+                "kr": "연옥도",
+                "tc": "淨界島"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "resources": {
+    "4010001": {
+      "name": {
+        "en": "Virifly",
+        "fr": "Vertigalis",
+        "de": "Grünfliege",
+        "es": "Viróptero",
+        "jp": "碧の蝶",
+        "kr": "비취 나비",
+        "tc": "翠息蝶"
+      },
+      "icon": "/assets/items/resources/T_Pickup_Butterfly01.png"
+    },
+    "4010002": {
+      "name": {
+        "en": "Indigofly",
+        "fr": "Indigalis",
+        "de": "Indigofliege",
+        "es": "Indigóptero",
+        "jp": "碧の蝶",
+        "kr": "쪽빛 나비",
+        "tc": "靛息蝶"
+      },
+      "icon": "/assets/items/resources/T_Pickup_Butterfly02.png"
+    },
+    "4010003": {
+      "name": {
+        "en": "Spring Water",
+        "fr": "Source cristalline",
+        "de": "Quellwasser",
+        "es": "Manantial cristalino",
+        "jp": "泉の水",
+        "kr": "맑은 샘",
+        "tc": "清泉"
+      },
+      "icon": "/assets/items/resources/T_Pickup_Spring.png"
+    },
+    "4010004": {
+      "name": {
+        "en": "Snowcap",
+        "fr": "Bonnet de neige",
+        "de": "Schneemütze",
+        "es": "Gorro de nieve",
+        "jp": "スノーハット",
+        "kr": "눈모자",
+        "tc": "小雪帽"
+      },
+      "icon": "/assets/items/resources/T_Pickup_Mushroom.png"
+    },
+    "4010005": {
+      "name": {
+        "en": "Phoxichor Canister",
+        "fr": "Bidon de Phoxichor",
+        "de": "Phoxichor-Behälter",
+        "es": "Bidón de Phoxichor",
+        "jp": "缶詰のイコル液",
+        "kr": "액체 폭시코르 캔",
+        "tc": "罐裝月髓液"
+      },
+      "icon": "/assets/items/resources/T_Pickup_Marrow.png"
+    },
+    "4010006": {
+      "name": {
+        "en": "Dewiolet",
+        "fr": "Rosée pourpre",
+        "de": "Tauveilchen",
+        "es": "Rocío púrpura",
+        "jp": "ムラサキツユクサ",
+        "kr": "보라이슬꽃",
+        "tc": "紫露花"
+      },
+      "icon": "/assets/items/resources/T_Pickup_Grass02.png"
+    },
+    "4010007": {
+      "name": {
+        "en": "Seashell",
+        "fr": "Coquillage",
+        "de": "Muschel",
+        "es": "Concha",
+        "jp": "貝殻",
+        "kr": "조개껍질",
+        "tc": "貝殼"
+      },
+      "icon": "/assets/items/resources/T_Pickup_Shell.png"
+    },
+    "4010008": {
+      "name": {
+        "en": "Eclipta Grass",
+        "fr": "Lotus d’hiver",
+        "de": "Ecliptakraut",
+        "es": "Loto de invierno",
+        "jp": "蓮草",
+        "kr": "로터스",
+        "tc": "蓮草"
+      },
+      "icon": "/assets/items/resources/T_Pickup_Grass01.png"
+    },
+    "4010009": {
+      "name": {
+        "en": "Portable Power Unit",
+        "fr": "Unité d’alimentation portative",
+        "de": "Tragbare Energieeinheit",
+        "es": "Dispositivo portátil de energía",
+        "jp": "ポータブルエネルギー装置",
+        "kr": "휴대용 에너지 장치",
+        "tc": "便攜供能裝置"
+      },
+      "icon": "/assets/items/resources/T_Pickup_Battery.png"
+    },
+    "4010010": {
+      "name": {
+        "en": "Crackbloom",
+        "fr": "Fleur-des-Fissures",
+        "de": "Rissblüte",
+        "es": "Grietaflor",
+        "jp": "隙間で咲く花",
+        "kr": "틈새의 꽃",
+        "tc": "隙中花"
+      },
+      "icon": "/assets/items/resources/T_Pickup_Blueflower.png"
+    },
+    "4010011": {
+      "name": {
+        "en": "Sacral Bellflower",
+        "fr": "Sacraline",
+        "de": "Sakrale Glockenblume",
+        "es": "Campanilla sagrada",
+        "jp": "聖音スズラン",
+        "kr": "성음 은방울꽃",
+        "tc": "聖音鈴蘭"
+      },
+      "icon": "/assets/items/resources/T_Pickup_Redflower.png"
+    },
+    "4010012": {
+      "name": {
+        "en": "Bird Egg",
+        "fr": "Œuf d’oiseau",
+        "de": "Vogelei",
+        "es": "Huevo de ave",
+        "jp": "鳥の卵",
+        "kr": "새알",
+        "tc": "鳥蛋"
+      },
+      "icon": "/assets/items/resources/T_Pickup_Egg.png"
+    },
+    "4010013": {
+      "name": {
+        "en": "Caramellus",
+        "fr": "Caramellus",
+        "de": "Karamellus",
+        "es": "Hongo caramelizado",
+        "jp": "キャラメルキノコ",
+        "kr": "캐러멜 버섯",
+        "tc": "焦糖菇"
+      },
+      "icon": "/assets/items/resources/T_Pickup_Mushroom02.png"
+    },
+    "4010014": {
+      "name": {
+        "en": "Skylily",
+        "fr": "Lys céleste",
+        "de": "Skylilie",
+        "es": "Lirio celeste",
+        "jp": "吿蒼の花",
+        "kr": "고창",
+        "tc": "告蒼"
+      },
+      "icon": "/assets/items/resources/T_Pickup_05.png"
+    },
+    "4010015": {
+      "name": {
+        "en": "Waywardstone",
+        "fr": "Pierre rétive",
+        "de": "Wegstein",
+        "es": "Piedra reacia",
+        "jp": "匪石",
+        "kr": "부석",
+        "tc": "匪石"
+      },
+      "icon": "/assets/items/resources/T_Pickup_02.png"
+    },
+    "4010016": {
+      "name": {
+        "en": "Broken Relic",
+        "fr": "Relique brisée",
+        "de": "Zerbrochenes Relikt",
+        "es": "Reliquia rota",
+        "jp": "残器",
+        "kr": "부서진 무기",
+        "tc": "殘器"
+      },
+      "icon": "/assets/items/resources/T_Pickup_04.png"
+    },
+    "4010017": {
+      "name": {
+        "en": "Loomhopper",
+        "fr": "Grillon du métier",
+        "de": "Webspringer",
+        "es": "Grillo tejedor",
+        "jp": "コオロギさん",
+        "kr": "베짱이",
+        "tc": "織機娘"
+      },
+      "icon": "/assets/items/resources/T_Pickup_01.png"
+    },
+    "4010018": {
+      "name": {
+        "en": "Skink",
+        "fr": "Scinque de pierre",
+        "de": "Skink",
+        "es": "Escinco de piedra",
+        "jp": "トカゲ",
+        "kr": "도마뱀",
+        "tc": "石龍子"
+      },
+      "icon": "/assets/items/resources/T_Pickup_Skink.png"
+    },
+    "4010019": {
+      "name": {
+        "en": "Rainseer Frog",
+        "fr": "Grenouille guette-pluie",
+        "de": "Regenseher-Frosch",
+        "es": "Rana vigía",
+        "jp": "アメカエル",
+        "kr": "비봄구리",
+        "tc": "觀雨蛙"
+      },
+      "icon": "/assets/items/resources/T_Pickup_RainFrog.png"
+    },
+    "4010020": {
+      "name": {
+        "en": "Gritfly",
+        "fr": "Cendralis",
+        "de": "Sandfliege",
+        "es": "Aereopollis",
+        "jp": "アッシュチョウ",
+        "kr": "낙진숨나비",
+        "tc": "塵息蝶"
+      },
+      "icon": "/assets/items/resources/T_Pickup_Butterfly03.png"
+    },
+    "4020001": {
+      "name": {
+        "en": "Ironshell Nut",
+        "fr": "Noix à coque de fer",
+        "de": "Eisenschalennuss",
+        "es": "Nuez de cáscara de hierro",
+        "jp": "アイアンナッツ",
+        "kr": "견고한 열매",
+        "tc": "堅殼果"
+      },
+      "icon": "/assets/items/resources/T_Pickup_Nut01.png"
+    },
+    "4020002": {
+      "name": {
+        "en": "Goldshell Nut",
+        "fr": "Noix à coque dorée",
+        "de": "Goldschalennuss",
+        "es": "Nuez de cáscara dorada",
+        "jp": "ゴールドナッツ",
+        "kr": "골드넛",
+        "tc": "金殼果"
+      },
+      "icon": "/assets/items/resources/T_Pickup_Nut02.png"
+    },
+    "4020003": {
+      "name": {
+        "en": "Silverite",
+        "fr": "Argentite",
+        "de": "Silberit",
+        "es": "Argentita",
+        "jp": "銀輝石",
+        "kr": "실버라이트",
+        "tc": "銀輝石"
+      },
+      "icon": "/assets/items/resources/T_Pickup_Stone01.png"
+    },
+    "4020004": {
+      "name": {
+        "en": "Lumite",
+        "fr": "Lumite",
+        "de": "Lumit",
+        "es": "Luminita",
+        "jp": "銀輝石",
+        "kr": "퓨처라이트",
+        "tc": "明輝石"
+      },
+      "icon": "/assets/items/resources/T_Pickup_Stone02.png"
+    },
+    "4020005": {
+      "name": {
+        "en": "Plop Plop Stone",
+        "fr": "Pierre Plop Plop",
+        "de": "Ploppstein",
+        "es": "Piedra Plop Plop",
+        "jp": "ピョンピョン石",
+        "kr": "통통돌",
+        "tc": "咚咚石"
+      },
+      "icon": "/assets/items/resources/T_Pickup_Stomach.png"
+    },
+    "4020006": {
+      "name": {
+        "en": "Coralstone",
+        "fr": "Coralithe",
+        "de": "Korallenstein",
+        "es": "Piedracoral",
+        "jp": "山瑚",
+        "kr": "뫼산호",
+        "tc": "山瑚"
+      },
+      "icon": "/assets/items/resources/T_Pickup_03.png"
+    }
+  },
+  "places": {
+    "Ice Lake City Outskirts": {
+      "en": "Icelake Suburb",
+      "fr": "Faubourgs de Givrelac",
+      "de": "Icelake-Vorstadt",
+      "es": "Suburbio del Lago Glacial",
+      "jp": "アイスレイク城外周",
+      "kr": "아이스레이크 시티 외곽",
+      "tc": "冰湖城週邊"
+    },
+    "Lower Ironworks": {
+      "en": "Lower Ironworks",
+      "fr": "Niveau inférieur des installations de forge",
+      "de": "Lower Ironworks",
+      "es": "Nivel inferior de las instalaciones de forja",
+      "jp": "鍛鉄工場下層",
+      "kr": "제철소 아래층",
+      "tc": "鍛鐵廠下層"
+    },
+    "Upper Ironworks": {
+      "en": "Upper Ironworks",
+      "fr": "Niveau supérieur des installations de forge",
+      "de": "Upper Ironworks",
+      "es": "Nivel superior de las instalaciones de forja",
+      "jp": "鍛鉄工場上層",
+      "kr": "제철소 위층",
+      "tc": "鍛鐵廠上層"
+    },
+    "Underground Rail Line": {
+      "en": "Underground Tracks",
+      "fr": "Voies souterraines",
+      "de": "Underground Tracks",
+      "es": "Vías subterráneas",
+      "jp": "地下の線路",
+      "kr": "지하 선로",
+      "tc": "地下軌道"
+    },
+    "Station Forecourt Dome": {
+      "en": "Forecourt Rotunda",
+      "fr": "Dôme d’entrée",
+      "de": "Forecourt Rotunda",
+      "es": "Cúpula de entrada",
+      "jp": "駅前のドーム",
+      "kr": "역전 아트리움",
+      "tc": "站前穹頂"
+    },
+    "Station Concourse": {
+      "en": "Concourse",
+      "fr": "Hall de la gare",
+      "de": "Concourse",
+      "es": "Vestíbulo de la estación",
+      "jp": "駅ホール",
+      "kr": "대합실",
+      "tc": "站廳"
+    },
+    "Inner City": {
+      "en": "Inner City",
+      "fr": "Cité intérieure",
+      "de": "Inner City",
+      "es": "Ciudad Interior",
+      "jp": "内城区",
+      "kr": "내성",
+      "tc": "內城"
+    },
+    "Galeia Opera House": {
+      "en": "Galea Theatre",
+      "fr": "Théâtre Galea",
+      "de": "Galea-Theater",
+      "es": "Teatro Galea",
+      "jp": "ガレア劇場",
+      "kr": "갈레아 극장",
+      "tc": "蓋雷亞劇院"
+    },
+    "Legion Hospital": {
+      "en": "Legion Medical Centre",
+      "fr": "Hôpital de la Légion",
+      "de": "Medizinisches Zentrum der Legion",
+      "es": "Centro Médico de la Legión",
+      "jp": "軍立病院",
+      "kr": "군단 병원",
+      "tc": "軍團醫院"
+    },
+    "Taixu Mausoleum": {
+      "en": "Taixu Mausoleum",
+      "fr": "Mausolée de Taixu",
+      "de": "Taixu-Mausoleum",
+      "es": "Mausoleo Taixu",
+      "jp": "太虚陵",
+      "kr": "태허릉",
+      "tc": "太虛陵"
+    },
+    "Hidden Dragon's Dwelling": {
+      "en": "The Hidden Loong",
+      "fr": "Demeure du Dragon Caché",
+      "de": "Der verborgene Loong",
+      "es": "Morada del Dragón Oculto",
+      "jp": "潜龍居",
+      "kr": "잠든 용의 거처",
+      "tc": "潛龍居"
+    },
+    "Zhuyin Altar": {
+      "en": "Zhuyin Altar",
+      "fr": "Autel de Zhuyin",
+      "de": "Zhuyin-Altar",
+      "es": "Altar de Zhuyin",
+      "jp": "燭陰祭壇",
+      "kr": "촉룡 제단",
+      "tc": "燭陰祭壇"
+    },
+    "Dreamy Slumber Pool": {
+      "en": "Pond of Slumber",
+      "fr": "Étang du Repos",
+      "de": "Pond of Slumber",
+      "es": "Pond of Slumber",
+      "jp": "うつつ池",
+      "kr": "꿈의 연못",
+      "tc": "酣夢池"
+    },
+    "Old Site of Arcano Town": {
+      "en": "Arcano Ruins",
+      "fr": "Ruines d’Arcano",
+      "de": "Arcano Ruins",
+      "es": "Arcano Ruins",
+      "jp": "アルカノの町の廃墟",
+      "kr": "아르카노 마을 폐허",
+      "tc": "阿爾卡諾鎮舊址"
+    },
+    "Valley Rift": {
+      "en": "Arcano Rift",
+      "fr": "Faille de la vallée",
+      "de": "Arcano Rift",
+      "es": "Arcano Rift",
+      "jp": "渓谷の裂け目",
+      "kr": "골짜기의 균열",
+      "tc": "山谷裂隙"
+    },
+    "Victor's Home": {
+      "en": "Victor's Home",
+      "fr": "Maison de Victor",
+      "de": "Victor's Home",
+      "es": "Victor's Home",
+      "jp": "ヴィクターの家",
+      "kr": "빅토르의 집",
+      "tc": "維克托的家"
+    },
+    "Mount Arcano": {
+      "en": "Mount Arcano",
+      "fr": "Montagnes d’Arcano",
+      "de": "Mount Arcano",
+      "es": "Mount Arcano",
+      "jp": "アルカノ山",
+      "kr": "아르카노 산",
+      "tc": "阿爾卡諾山"
+    }
+  }
+}

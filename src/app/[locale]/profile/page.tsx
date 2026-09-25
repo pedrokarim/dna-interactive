@@ -6,6 +6,7 @@ import { Boxes, CalendarDays, Hammer, Shield, Star } from "lucide-react";
 import { AuthLinkButton } from "@/components/auth/AuthCard";
 import { DeleteAccountButton } from "@/components/account/DeleteAccountButton";
 import { AccountConnections } from "@/components/account/AccountConnections";
+import { MapExplorationSection } from "@/components/account/MapExplorationSection";
 import { DnaAvatar, DnaPanel, DnaSectionLabel, DnaTag } from "@/components/dna";
 import { getDb, schema } from "@/db";
 import { getCurrentUser } from "@/lib/auth/session";
@@ -157,6 +158,9 @@ export default async function ProfilePage({ searchParams }: Props) {
                 </DnaPanel>
               </section>
             ) : null}
+
+            {/* Carte interactive */}
+            <MapExplorationSection userId={user.id} />
 
             {/* Connexions */}
             <section className="mt-8">

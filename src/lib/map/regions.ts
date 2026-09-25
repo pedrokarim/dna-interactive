@@ -11,11 +11,16 @@
  * `mountarcano`), on ne les met pas tels quels dans une URL : `REGION_SLUGS`
  * fait la traduction slug <-> id. Le slug est public et stable, l'id reste
  * celui attendu par `mapLoaders` et par `?mapId=`.
+ *
+ * Le contenu suit la même taxonomie que la carte (`taxonomy.ts`) : mêmes
+ * catégories, mêmes types fusionnés, noms officiels du jeu pour les zones.
  */
 
 import mapLoaders from "@/data/maps";
 import mapIndex from "@/data/mapIndex.json";
 import type { GameMap, GameMapSummary } from "@/types/map";
+import { MAP_CATEGORY_IDS, normalizeMap, type MapCategoryId, type MapTypeGroup } from "./taxonomy";
+import { getMapLocation, type LocalizedName } from "./world";
 import { REGION_ID_BY_SLUG, getRegionSlug } from "./slugs";
 
 export { getRegionSlug };
@@ -25,20 +30,21 @@ export interface RegionSummary {
   slug: string;
   /** Identifiant du jeu, celui de `?mapId=`, ex. `mountarcano`. */
   id: string;
-  name: string;
+  /** Nom officiel en 7 langues (tables du jeu). */
+  names: LocalizedName;
+  /** Nation de rattachement, en 7 langues. */
+  nationNames: LocalizedName;
   image: string;
   imageSize: { width: number; height: number };
   categoryCount: number;
-  /** Nombre de types de marqueurs (« Snowcap », « Teleport Point »…). */
+  /** Nombre de types de marqueurs (après regroupement de la taxonomie). */
   markerTypeCount: number;
 }
 
 export interface RegionCategory {
-  type: string;
-  label: string;
-  icon: string;
-  /** Types de marqueurs de la catégorie, avec le nombre de points relevés. */
-  markerTypes: { id: number; name: string; icon: string; pointCount: number }[];
+  id: MapCategoryId;
+  /** Types de la catégorie, avec le nombre de points relevés. */
+  markerTypes: (Pick<MapTypeGroup, "id" | "icon" | "messageKey" | "resourceIds" | "rawName"> & { pointCount: number })[];
   pointCount: number;
 }
 
@@ -50,27 +56,47 @@ export interface RegionDetail extends RegionSummary {
 
 const summaries = mapIndex as GameMapSummary[];
 
+function categoriesOf(map: GameMap): RegionCategory[] {
+  const normalized = normalizeMap(map);
+  return MAP_CATEGORY_IDS.map((id) => {
+    const markerTypes = normalized.types
+      .filter((g) => g.category === id)
+      .map((g) => ({
+        id: g.id,
+        icon: g.icon,
+        messageKey: g.messageKey,
+        resourceIds: g.resourceIds,
+        rawName: g.rawName,
+        pointCount: g.points.length,
+      }));
+    return { id, markerTypes, pointCount: markerTypes.reduce((t, m) => t + m.pointCount, 0) };
+  }).filter((c) => c.markerTypes.length > 0);
+}
+
 /**
  * Résumé de toutes les régions, dans l'ordre de `mapIndex.json`.
  *
- * Lit l'index et non les fichiers de carte complets : suffisant pour lister,
- * et sans charger les milliers de coordonnées dont une liste n'a que faire.
+ * Lit l'index et non les fichiers de carte complets : suffisant pour lister
+ * (la légende de l'index porte les types, sans les points), et sans charger
+ * les milliers de coordonnées dont une liste n'a que faire.
  */
 export function getAllRegions(): RegionSummary[] {
   return summaries
-    .filter((map) => map.id in mapLoaders)
-    .map((map) => ({
-      slug: getRegionSlug(map.id),
-      id: map.id,
-      name: map.name,
-      image: map.image,
-      imageSize: map.imageSize,
-      categoryCount: map.legend.length,
-      markerTypeCount: map.legend.reduce(
-        (total, category) => total + category.markers.length,
-        0,
-      ),
-    }));
+    .filter((map) => map.id in mapLoaders && getMapLocation(map.id))
+    .map((map) => {
+      const categories = categoriesOf(map as unknown as GameMap);
+      const location = getMapLocation(map.id)!;
+      return {
+        slug: getRegionSlug(map.id),
+        id: map.id,
+        names: location.map.name,
+        nationNames: location.nation.name,
+        image: map.image,
+        imageSize: map.imageSize,
+        categoryCount: categories.length,
+        markerTypeCount: categories.reduce((t, c) => t + c.markerTypes.length, 0),
+      };
+    });
 }
 
 /**
@@ -80,70 +106,21 @@ export function getAllRegions(): RegionSummary[] {
  * les marqueurs placés. Les décomptes affichés doivent être les vrais, pas une
  * estimation tirée de la légende.
  */
-export async function getRegionBySlug(
-  slug: string,
-): Promise<RegionDetail | null> {
+export async function getRegionBySlug(slug: string): Promise<RegionDetail | null> {
   const id = REGION_ID_BY_SLUG[slug];
   if (!id) return null;
-
+  const summary = getAllRegions().find((r) => r.id === id);
   const loader = mapLoaders[id];
-  const summary = summaries.find((map) => map.id === id);
   if (!loader || !summary) return null;
 
   const data = (await loader()).default as GameMap;
-
-  // ==Fusion par libellé==. Plusieurs cartes déclarent deux fois la même
-  // catégorie (Bloomfield Station a deux blocs « Collectibles »). Les laisser
-  // séparées donnait deux sections identiques sur la page, et deux `h3` de même
-  // texte : mauvais pour le lecteur comme pour un moteur. On regroupe, les
-  // décomptes deviennent ceux de la catégorie entière.
-  const byLabel = new Map<string, RegionCategory>();
-
-  for (const category of data.legend) {
-    const markerTypes = category.markers.map((markerType) => ({
-      id: markerType.id,
-      name: markerType.name,
-      icon: markerType.icon,
-      pointCount: markerType.markers?.length ?? 0,
-    }));
-
-    const existing = byLabel.get(category.label);
-    if (existing) {
-      existing.markerTypes.push(...markerTypes);
-    } else {
-      byLabel.set(category.label, {
-        type: category.type,
-        label: category.label,
-        icon: category.icon,
-        markerTypes,
-        pointCount: 0,
-      });
-    }
-  }
-
-  const categories: RegionCategory[] = [...byLabel.values()].map((category) => ({
-    ...category,
-    pointCount: category.markerTypes.reduce(
-      (total, markerType) => total + markerType.pointCount,
-      0,
-    ),
-  }));
+  const categories = categoriesOf(data);
 
   return {
-    slug,
-    id,
-    name: data.name,
-    image: data.image,
-    imageSize: data.imageSize,
+    ...summary,
     categoryCount: categories.length,
-    markerTypeCount: categories.reduce(
-      (total, category) => total + category.markerTypes.length,
-      0,
-    ),
-    pointCount: categories.reduce(
-      (total, category) => total + category.pointCount,
-      0,
-    ),
+    markerTypeCount: categories.reduce((t, c) => t + c.markerTypes.length, 0),
+    pointCount: categories.reduce((t, c) => t + c.pointCount, 0),
     categories,
   };
 }

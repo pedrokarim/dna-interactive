@@ -11,6 +11,8 @@ import {
   getRegionBySlug,
 } from "@/lib/map/regions";
 import { NAVIGATION, SITE_CONFIG } from "@/lib/constants";
+import { resourceName } from "@/lib/map/taxonomy";
+import { localized } from "@/lib/map/world";
 
 /**
  * Page d'une région de la carte.
@@ -42,15 +44,16 @@ export async function generateMetadata({
   if (!region) return {};
 
   const t = await getTranslations({ locale, namespace: "mapRegion" });
+  const regionName = localized(region.names, locale);
   const baseUrl = "https://dna.ascencia.re";
   const path = `${NAVIGATION.map}/${region.slug}`;
 
   // Le template `%s | DNA Interactive` de la racine ne s'applique qu'aux
   // segments enfants, et `map/layout.tsx` l'a déjà consommé pour son propre
   // titre. On suffixe donc à la main, comme le fait `generatePageMetadata`.
-  const brandedTitle = `${t("metaTitle", { region: region.name })} | ${SITE_CONFIG.name}`;
+  const brandedTitle = `${t("metaTitle", { region: regionName })} | ${SITE_CONFIG.name}`;
   const description = t("metaDescription", {
-    region: region.name,
+    region: regionName,
     points: region.pointCount,
     categories: region.categoryCount,
   });
@@ -97,11 +100,21 @@ export default async function RegionPage({
 }: {
   params: Promise<{ locale: string; region: string }>;
 }) {
-  const { region: slug } = await params;
+  const { locale, region: slug } = await params;
   const region = await getRegionBySlug(slug);
   if (!region) notFound();
 
   const t = await getTranslations("mapRegion");
+  const tCategories = await getTranslations("mapCategories");
+  const tTypes = await getTranslations("mapTypes");
+  const regionName = localized(region.names, locale);
+  // Même résolution de nom que la carte : ressource officielle, type traduit, sinon nom relevé.
+  const typeName = (m: (typeof region.categories)[number]["markerTypes"][number]) =>
+    m.resourceIds?.length
+      ? resourceName(m.resourceIds, locale)
+      : m.messageKey && tTypes.has(m.messageKey)
+        ? tTypes(m.messageKey)
+        : m.rawName;
   const others = getOtherRegions(slug);
   const mapHref = `${NAVIGATION.map}?mapId=${region.id}`;
 
@@ -114,16 +127,16 @@ export default async function RegionPage({
             {t("breadcrumbMap")}
           </Link>
           <span className="mx-2 text-gold/40">/</span>
-          <span className="text-parch/80">{region.name}</span>
+          <span className="text-parch/80">{regionName}</span>
         </nav>
 
         <header className="mb-10">
           <h1 className="font-display text-3xl text-parch md:text-4xl">
-            {t("title", { region: region.name })}
+            {t("title", { region: regionName })}
           </h1>
           <p className="mt-4 font-sans text-parch/80 leading-relaxed">
             {t("lead", {
-              region: region.name,
+              region: regionName,
               points: region.pointCount,
               categories: region.categoryCount,
               types: region.markerTypeCount,
@@ -146,7 +159,7 @@ export default async function RegionPage({
           <DnaCornerBrackets size={16} />
           <Image
             src={region.image}
-            alt={t("previewAlt", { region: region.name })}
+            alt={t("previewAlt", { region: regionName })}
             width={region.imageSize.width}
             height={region.imageSize.height}
             sizes="(max-width: 768px) 100vw, 768px"
@@ -166,12 +179,12 @@ export default async function RegionPage({
 
         <section className="mt-12">
           <h2 className="font-display text-2xl text-parch">
-            {t("whatToFind", { region: region.name })}
+            {t("whatToFind", { region: regionName })}
           </h2>
 
           <div className="mt-6 space-y-4">
             {region.categories.map((category) => (
-              <DnaPanel key={category.label} className="p-5">
+              <DnaPanel key={category.id} className="p-5">
                 <div className="mb-4 flex items-center gap-3">
                   <span className="grid h-9 w-9 shrink-0 place-items-center border border-gold/30 bg-gold/10">
                     {/* ==Passer par `next/image`, meme pour une icone de 20 px==.
@@ -181,7 +194,7 @@ export default async function RegionPage({
                         l'optimiseur, elles tombent a quelques kilo-octets et en
                         AVIF. L'hote est deja autorise dans `next.config.ts`. */}
                     <Image
-                      src={category.icon}
+                      src={category.markerTypes[0].icon}
                       alt=""
                       aria-hidden="true"
                       width={40}
@@ -191,7 +204,7 @@ export default async function RegionPage({
                   </span>
                   <div>
                     <h3 className="font-display text-lg text-parch">
-                      {category.label}
+                      {tCategories(category.id)}
                     </h3>
                     <p className="font-caps text-[0.55rem] uppercase tracking-[0.18em] text-gold/70">
                       {t("categoryMeta", {
@@ -217,7 +230,7 @@ export default async function RegionPage({
                         className="h-4 w-4 object-contain"
                       />
                       <span className="font-sans text-sm text-parch/90">
-                        {markerType.name}
+                        {typeName(markerType)}
                       </span>
                       <span className="font-mono text-xs text-gold/70">
                         {markerType.pointCount}
@@ -258,7 +271,7 @@ export default async function RegionPage({
                   className="block border border-line/25 bg-panel/30 px-4 py-3 transition-colors hover:border-gold/40 hover:bg-gold/5"
                 >
                   <span className="block font-display text-base text-parch">
-                    {other.name}
+                    {localized(other.names, locale)}
                   </span>
                   <span className="font-caps text-[0.55rem] uppercase tracking-[0.18em] text-parch/55">
                     {t("regionCardMeta", {

@@ -17,6 +17,8 @@
     "db:migrate:notifications": "node scripts/migrate-notifications.mjs",
     "seed:calendar": "bun run scripts/seed-calendar-events.ts",
     "seed:announcement:falsi": "bun run scripts/seed-announcement-falsi.ts",
+    "map:check": "bun run scripts/check-map-taxonomy.ts",
+    "db:migrate:map": "node scripts/migrate-map.mjs",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },

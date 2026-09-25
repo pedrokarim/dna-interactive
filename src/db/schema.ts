@@ -518,3 +518,104 @@ export const changelogEntries = pgTable(
 );
 
 export type ChangelogEntryRow = typeof changelogEntries.$inferSelect;
+
+// ---------------------------------------------------------------------------
+// Carte interactive
+// ---------------------------------------------------------------------------
+
+/** Marqueur personnel tel que stocké (miroir de `PersonalMarker`, `src/lib/map/personal.ts`). */
+export type StoredPersonalMarker = {
+  id: string;
+  mapId: string;
+  x: number;
+  y: number;
+  label: string;
+  note: string;
+  icon: string;
+  color: string;
+  createdAt: number;
+};
+
+/**
+ * Progression de la carte d'un compte : points trouvés (clés
+ * `mapId-type-markerId-instanceId`) et marqueurs personnels. Une ligne par
+ * compte, réécrite en entier à chaque synchronisation : quelques milliers de
+ * clés au plus, inutile de les éclater en lignes.
+ */
+export const mapProgress = pgTable("map_progress", {
+  userId: text("user_id")
+    .primaryKey()
+    .references(() => users.id, { onDelete: "cascade" }),
+  foundKeys: jsonb("found_keys").$type<string[]>().notNull().default([]),
+  personalMarkers: jsonb("personal_markers").$type<StoredPersonalMarker[]>().notNull().default([]),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
+/**
+ * Itinéraire de farm tracé sur une carte. `points` = sommets de la polyligne
+ * dans le repère de l'image ; `typeIds` = types canoniques ciblés (ressources,
+ * géniemons…), validés contre la taxonomie côté serveur.
+ */
+export const farmRoutes = pgTable(
+  "farm_routes",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    userId: text("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    mapId: text("map_id").notNull(),
+    title: text("title").notNull(),
+    description: text("description"),
+    points: jsonb("points").$type<[number, number][]>().notNull(),
+    typeIds: jsonb("type_ids").$type<string[]>().notNull().default([]),
+    visibility: text("visibility", { enum: ["public", "private"] }).notNull().default("public"),
+    voteCount: integer("vote_count").notNull().default(0),
+    hidden: boolean("hidden").notNull().default(false),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [
+    index("idx_farm_routes_map").on(t.mapId, t.visibility, t.hidden),
+    index("idx_farm_routes_user").on(t.userId),
+  ],
+);
+
+/** Votes anonymes sur les itinéraires : même principe que `build_ip_votes`. */
+export const farmRouteIpVotes = pgTable(
+  "farm_route_ip_votes",
+  {
+    routeId: uuid("route_id")
+      .notNull()
+      .references(() => farmRoutes.id, { onDelete: "cascade" }),
+    voterKey: text("voter_key").notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [primaryKey({ columns: [t.routeId, t.voterKey] }), index("idx_farm_route_votes_route").on(t.routeId)],
+);
+
+export type FarmRouteRow = typeof farmRoutes.$inferSelect;
+
+/** Signalements d'itinéraires (même cycle que `build_reports`). */
+export const farmRouteReports = pgTable(
+  "farm_route_reports",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    routeId: uuid("route_id")
+      .notNull()
+      .references(() => farmRoutes.id, { onDelete: "cascade" }),
+    reporterId: text("reporter_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    reason: text("reason").notNull(),
+    status: text("status", { enum: ["open", "resolved", "dismissed"] }).notNull().default("open"),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    resolvedAt: timestamp("resolved_at", { withTimezone: true }),
+    resolvedById: text("resolved_by_id").references(() => users.id, { onDelete: "set null" }),
+  },
+  (t) => [
+    index("idx_farm_route_reports_route").on(t.routeId),
+    index("idx_farm_route_reports_status").on(t.status),
+    // Un compte ne signale qu'une fois le même itinéraire.
+    uniqueIndex("uidx_farm_route_reports_reporter").on(t.routeId, t.reporterId),
+  ],
+);

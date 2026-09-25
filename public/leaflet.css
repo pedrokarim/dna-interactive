@@ -70,3 +70,225 @@
 .leaflet-control-container .leaflet-control {
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.45) !important;
 }
+
+/* Aucune mention d'attribution sur la carte (désactivée aussi côté JS). */
+.leaflet-control-attribution {
+  display: none !important;
+}
+
+/* --- Pastilles de points (MapCanvas) : médaillon + pointe, ancré en bas --- */
+.dna-marker {
+  background: none;
+  border: 0;
+}
+.dna-pin {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--pin);
+  height: var(--pin);
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 32%, rgba(46, 38, 24, 0.97), rgba(13, 11, 8, 0.98));
+  border: 1.5px solid #c2a86a;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.55), 0 1px 3px rgba(0, 0, 0, 0.6), 0 0 8px -2px rgba(194, 168, 106, 0.5);
+  transition: transform 0.12s ease;
+}
+/* pointe sous le médaillon */
+.dna-pin::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  transform: translateX(-50%);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid #c2a86a;
+}
+.dna-pin img {
+  object-fit: contain;
+  pointer-events: none;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.7));
+}
+.leaflet-marker-icon:hover .dna-pin {
+  transform: scale(1.12);
+}
+/* trouvé : éteint, liseré vert, coche */
+.dna-pin.is-found {
+  border-color: #7bbf7b;
+  filter: saturate(0.25) brightness(0.8);
+  opacity: 0.8;
+}
+.dna-pin.is-found::after {
+  border-top-color: #7bbf7b;
+}
+.dna-pin-check {
+  position: absolute;
+  right: -3px;
+  top: -3px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #7bbf7b
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230a0a0b' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E")
+    center / 8px no-repeat;
+}
+
+/* --- Étiquettes de sous-zones --- */
+.dna-place-wrap {
+  background: none;
+  border: 0;
+}
+.dna-place {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #ece4d2;
+  text-shadow: 0 0 3px #000, 0 0 8px #000, 0 1px 2px #000;
+  pointer-events: none;
+}
+.dna-place.is-linked {
+  color: #e3cd95;
+  pointer-events: auto;
+  cursor: pointer;
+  text-decoration: underline dotted rgba(227, 205, 149, 0.6);
+  text-underline-offset: 3px;
+}
+.dna-place.is-linked:hover {
+  color: #fff6e6;
+}
+
+/* --- Glissière de zoom verticale --- */
+.dna-zoom-range {
+  writing-mode: vertical-lr;
+  direction: rtl;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+.dna-zoom-range::-webkit-slider-runnable-track {
+  width: 3px;
+  background: rgba(194, 168, 106, 0.3);
+}
+.dna-zoom-range::-moz-range-track {
+  width: 3px;
+  background: rgba(194, 168, 106, 0.3);
+}
+.dna-zoom-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  margin-left: -4.5px;
+  transform: rotate(45deg);
+  background: #c2a86a;
+  border: 1px solid #e3cd95;
+}
+.dna-zoom-range::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  border-radius: 0;
+  transform: rotate(45deg);
+  background: #c2a86a;
+  border: 1px solid #e3cd95;
+}
+
+/* --- Marqueurs personnels : même médaillon, liseré à la couleur choisie --- */
+.dna-pin.is-personal {
+  border-color: var(--pin-color);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.55), 0 1px 3px rgba(0, 0, 0, 0.6), 0 0 10px -2px var(--pin-color);
+}
+.dna-pin.is-personal::after {
+  border-top-color: var(--pin-color);
+}
+.dna-pin.is-personal svg {
+  pointer-events: none;
+}
+.leaflet-container.dna-placing,
+.leaflet-container.dna-placing .leaflet-interactive {
+  cursor: crosshair !important;
+}
+.dna-pin.is-personal.is-selected {
+  transform: scale(1.18);
+  box-shadow: 0 0 0 2px rgba(10, 10, 11, 0.9), 0 0 0 3.5px var(--pin-color), 0 0 16px var(--pin-color);
+}
+
+/* --- Itinéraires de farm --- */
+.dna-route-arrow {
+  display: block;
+  width: 12px;
+  height: 12px;
+  transform: rotate(var(--a));
+}
+.dna-route-arrow::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 1px;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 8px solid var(--c);
+  filter: drop-shadow(0 0 1px #000) drop-shadow(0 0 1px #000);
+}
+.dna-route-end {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+.dna-route-end.is-start {
+  border-radius: 50%;
+  background: #0a0a0b;
+  border: 3px solid var(--c);
+  box-shadow: 0 0 6px var(--c);
+}
+.dna-route-end.is-end::before {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  transform: rotate(45deg);
+  background: var(--c);
+  border: 2px solid #0a0a0b;
+  box-shadow: 0 0 6px var(--c);
+}
+.leaflet-container.dna-drawing,
+.leaflet-container.dna-drawing .leaflet-interactive {
+  cursor: crosshair !important;
+}
+.leaflet-container.dna-drawing .dna-marker {
+  pointer-events: none !important;
+}
+
+/* --- Animations (coupées par la règle globale prefers-reduced-motion) --- */
+@keyframes dna-pin-in {
+  from { opacity: 0; transform: translateY(-6px) scale(0.6); }
+  to { opacity: 1; transform: none; }
+}
+/* Apparition depuis la pointe : les pastilles « tombent » en place quand on
+   active un type, et rebondissent quand on les coche (l'icône est remplacée). */
+.dna-pin {
+  transform-origin: 50% 100%;
+  animation: dna-pin-in 0.28s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+.dna-pin.is-found { animation-duration: 0.35s; }
+
+@keyframes dna-popup-in {
+  from { opacity: 0; transform: translateY(6px) scale(0.97); }
+  to { opacity: 1; transform: none; }
+}
+.leaflet-popup-content-wrapper {
+  transform-origin: 50% 100%;
+  animation: dna-popup-in 0.18s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+@keyframes dna-fade-in { from { opacity: 0; } to { opacity: 1; } }
+.dna-place,
+.dna-route-arrow,
+.dna-route-end {
+  animation: dna-fade-in 0.4s ease-out both;
+}
+.leaflet-overlay-pane path {
+  animation: dna-fade-in 0.3s ease-out both;
+}
