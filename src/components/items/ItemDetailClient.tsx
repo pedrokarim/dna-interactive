@@ -21,6 +21,7 @@ import { cn } from "@/components/dna/cn";
 import { DnaPanel } from "@/components/dna/Panel";
 import type { WeaponUsage } from "@/lib/items/weapon-usage";
 import type { GenimonUsage } from "@/lib/items/genimon-usage";
+import { TraitTooltip } from "@/components/genimons/TraitTooltip";
 import { DnaSegmented } from "@/components/dna/Segmented";
 import { DnaSectionLabel } from "@/components/dna/SectionLabel";
 import { DnaStatRow } from "@/components/dna/StatRow";
@@ -1024,17 +1025,15 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
                   {usage.traits.length > 0 ? (
                     <span className="flex flex-wrap items-center gap-1.5 border-t border-white/8 pt-2">
                       {usage.traits.map((trait) => (
-                        <span
-                          key={trait.key}
-                          title={trait.effect}
-                          className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-panel/45 py-0.5 pl-1 pr-2"
-                        >
-                          {trait.icon ? (
-                            // eslint-disable-next-line @next/next/no-img-element
-                            <img src={trait.icon} alt="" width={18} height={18} loading="lazy" className="h-[18px] w-[18px]" />
-                          ) : null}
-                          <span className="text-[0.7rem] text-parch/85">{trait.name}</span>
-                        </span>
+                        <TraitTooltip key={trait.key} trait={trait}>
+                          <span className="inline-flex cursor-help items-center gap-1.5 rounded-full border border-white/10 bg-panel/45 py-0.5 pl-1 pr-2">
+                            {trait.icon ? (
+                              // eslint-disable-next-line @next/next/no-img-element
+                              <img src={trait.icon} alt="" width={18} height={18} loading="lazy" className="h-[18px] w-[18px]" />
+                            ) : null}
+                            <span className="text-[0.7rem] text-parch/85">{trait.name}</span>
+                          </span>
+                        </TraitTooltip>
                       ))}
                     </span>
                   ) : null}

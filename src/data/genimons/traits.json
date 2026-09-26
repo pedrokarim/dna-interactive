@@ -7,6 +7,12 @@
       "attributes": [
         "ExpRate"
       ],
+      "formats": {
+        "1": {
+          "multiply": 100,
+          "suffix": "%"
+        }
+      },
       "name": {
         "FR": "Sage",
         "EN": "Wise",
@@ -29,18 +35,30 @@
         {
           "rarity": 3,
           "entryId": 10031,
+          "level": 1,
+          "values": {
+            "1": 0.05
+          },
           "fuseCount": 3,
           "fuseInto": 10032
         },
         {
           "rarity": 4,
           "entryId": 10032,
+          "level": 2,
+          "values": {
+            "1": 0.1
+          },
           "fuseCount": 3,
           "fuseInto": 10033
         },
         {
           "rarity": 5,
           "entryId": 10033,
+          "level": 3,
+          "values": {
+            "1": 0.15
+          },
           "fuseCount": null,
           "fuseInto": null
         }
@@ -54,6 +72,12 @@
       "attributes": [
         "AdditionalRecoverTime"
       ],
+      "formats": {
+        "1": {
+          "multiply": 1,
+          "suffix": ""
+        }
+      },
       "name": {
         "FR": "Tenace",
         "EN": "Tenacious",
@@ -76,6 +100,10 @@
         {
           "rarity": 5,
           "entryId": 10041,
+          "level": 1,
+          "values": {
+            "1": 1
+          },
           "fuseCount": null,
           "fuseInto": null
         }
@@ -89,6 +117,12 @@
       "attributes": [
         "SupportSkillCD"
       ],
+      "formats": {
+        "1": {
+          "multiply": 100,
+          "suffix": "%"
+        }
+      },
       "name": {
         "FR": "Perspicace",
         "EN": "Keen",
@@ -111,18 +145,30 @@
         {
           "rarity": 3,
           "entryId": 10141,
+          "level": 1,
+          "values": {
+            "1": -0.08
+          },
           "fuseCount": 3,
           "fuseInto": 10142
         },
         {
           "rarity": 4,
           "entryId": 10142,
+          "level": 2,
+          "values": {
+            "1": -0.16
+          },
           "fuseCount": 3,
           "fuseInto": 10143
         },
         {
           "rarity": 5,
           "entryId": 10143,
+          "level": 3,
+          "values": {
+            "1": -0.24
+          },
           "fuseCount": null,
           "fuseInto": null
         }
@@ -134,6 +180,7 @@
       "category": "battle",
       "battlePetId": 1018,
       "attributes": [],
+      "formats": {},
       "name": {
         "FR": "Discipliné",
         "EN": "Disciplined",
@@ -154,6 +201,8 @@
         {
           "rarity": 5,
           "entryId": 10181,
+          "level": 1,
+          "values": {},
           "fuseCount": null,
           "fuseInto": null
         }
@@ -167,6 +216,12 @@
       "attributes": [
         "SkillIntensity"
       ],
+      "formats": {
+        "1": {
+          "multiply": 100,
+          "suffix": "%"
+        }
+      },
       "name": {
         "FR": "Brutal",
         "EN": "Brutal",
@@ -187,18 +242,30 @@
         {
           "rarity": 3,
           "entryId": 10191,
+          "level": 1,
+          "values": {
+            "1": 0.032
+          },
           "fuseCount": 3,
           "fuseInto": 10192
         },
         {
           "rarity": 4,
           "entryId": 10192,
+          "level": 2,
+          "values": {
+            "1": 0.064
+          },
           "fuseCount": 3,
           "fuseInto": 10193
         },
         {
           "rarity": 5,
           "entryId": 10193,
+          "level": 3,
+          "values": {
+            "1": 0.096
+          },
           "fuseCount": null,
           "fuseInto": null
         }
@@ -212,6 +279,12 @@
       "attributes": [
         "SkillRange"
       ],
+      "formats": {
+        "1": {
+          "multiply": 100,
+          "suffix": "%"
+        }
+      },
       "name": {
         "FR": "Cupide",
         "EN": "Greedy",
@@ -232,18 +305,30 @@
         {
           "rarity": 3,
           "entryId": 10201,
+          "level": 1,
+          "values": {
+            "1": 0.048
+          },
           "fuseCount": 3,
           "fuseInto": 10202
         },
         {
           "rarity": 4,
           "entryId": 10202,
+          "level": 2,
+          "values": {
+            "1": 0.096
+          },
           "fuseCount": 3,
           "fuseInto": 10203
         },
         {
           "rarity": 5,
           "entryId": 10203,
+          "level": 3,
+          "values": {
+            "1": 0.144
+          },
           "fuseCount": null,
           "fuseInto": null
         }
@@ -257,6 +342,12 @@
       "attributes": [
         "SkillSustain"
       ],
+      "formats": {
+        "1": {
+          "multiply": 100,
+          "suffix": "%"
+        }
+      },
       "name": {
         "FR": "Endurant",
         "EN": "Enduring",
@@ -277,18 +368,30 @@
         {
           "rarity": 3,
           "entryId": 10211,
+          "level": 1,
+          "values": {
+            "1": 0.024
+          },
           "fuseCount": 3,
           "fuseInto": 10212
         },
         {
           "rarity": 4,
           "entryId": 10212,
+          "level": 2,
+          "values": {
+            "1": 0.048
+          },
           "fuseCount": 3,
           "fuseInto": 10213
         },
         {
           "rarity": 5,
           "entryId": 10213,
+          "level": 3,
+          "values": {
+            "1": 0.072
+          },
           "fuseCount": null,
           "fuseInto": null
         }
@@ -302,6 +405,12 @@
       "attributes": [
         "SkillEfficiency"
       ],
+      "formats": {
+        "1": {
+          "multiply": 100,
+          "suffix": "%"
+        }
+      },
       "name": {
         "FR": "Efficace",
         "EN": "Efficient",
@@ -322,18 +431,30 @@
         {
           "rarity": 3,
           "entryId": 10221,
+          "level": 1,
+          "values": {
+            "1": 0.02
+          },
           "fuseCount": 3,
           "fuseInto": 10222
         },
         {
           "rarity": 4,
           "entryId": 10222,
+          "level": 2,
+          "values": {
+            "1": 0.04
+          },
           "fuseCount": 3,
           "fuseInto": 10223
         },
         {
           "rarity": 5,
           "entryId": 10223,
+          "level": 3,
+          "values": {
+            "1": 0.06
+          },
           "fuseCount": null,
           "fuseInto": null
         }
@@ -347,6 +468,12 @@
       "attributes": [
         "StrongValue"
       ],
+      "formats": {
+        "1": {
+          "multiply": 100,
+          "suffix": "%"
+        }
+      },
       "name": {
         "FR": "Exalté",
         "EN": "Passionate",
@@ -367,18 +494,30 @@
         {
           "rarity": 3,
           "entryId": 10231,
+          "level": 1,
+          "values": {
+            "1": 0.024
+          },
           "fuseCount": 3,
           "fuseInto": 10232
         },
         {
           "rarity": 4,
           "entryId": 10232,
+          "level": 2,
+          "values": {
+            "1": 0.048
+          },
           "fuseCount": 3,
           "fuseInto": 10233
         },
         {
           "rarity": 5,
           "entryId": 10233,
+          "level": 3,
+          "values": {
+            "1": 0.072
+          },
           "fuseCount": null,
           "fuseInto": null
         }
@@ -392,6 +531,12 @@
       "attributes": [
         "EnmityValue"
       ],
+      "formats": {
+        "1": {
+          "multiply": 100,
+          "suffix": "%"
+        }
+      },
       "name": {
         "FR": "Obstiné",
         "EN": "Stubborn",
@@ -412,18 +557,30 @@
         {
           "rarity": 3,
           "entryId": 10241,
+          "level": 1,
+          "values": {
+            "1": 0.008
+          },
           "fuseCount": 3,
           "fuseInto": 10242
         },
         {
           "rarity": 4,
           "entryId": 10242,
+          "level": 2,
+          "values": {
+            "1": 0.016
+          },
           "fuseCount": 3,
           "fuseInto": 10243
         },
         {
           "rarity": 5,
           "entryId": 10243,
+          "level": 3,
+          "values": {
+            "1": 0.024
+          },
           "fuseCount": null,
           "fuseInto": null
         }
@@ -437,6 +594,12 @@
       "attributes": [
         "WeaponCRIModifierRate"
       ],
+      "formats": {
+        "1": {
+          "multiply": 100,
+          "suffix": "%"
+        }
+      },
       "name": {
         "FR": "Téméraire",
         "EN": "Aggressive",
@@ -457,18 +620,30 @@
         {
           "rarity": 3,
           "entryId": 10251,
+          "level": 1,
+          "values": {
+            "1": 0.08
+          },
           "fuseCount": 3,
           "fuseInto": 10252
         },
         {
           "rarity": 4,
           "entryId": 10252,
+          "level": 2,
+          "values": {
+            "1": 0.16
+          },
           "fuseCount": 3,
           "fuseInto": 10253
         },
         {
           "rarity": 5,
           "entryId": 10253,
+          "level": 3,
+          "values": {
+            "1": 0.24
+          },
           "fuseCount": null,
           "fuseInto": null
         }
@@ -482,6 +657,12 @@
       "attributes": [
         "WeaponCRDModifierRate"
       ],
+      "formats": {
+        "1": {
+          "multiply": 100,
+          "suffix": "%"
+        }
+      },
       "name": {
         "FR": "Revigoré",
         "EN": "Energised",
@@ -502,18 +683,30 @@
         {
           "rarity": 3,
           "entryId": 10261,
+          "level": 1,
+          "values": {
+            "1": 0.1
+          },
           "fuseCount": 3,
           "fuseInto": 10262
         },
         {
           "rarity": 4,
           "entryId": 10262,
+          "level": 2,
+          "values": {
+            "1": 0.2
+          },
           "fuseCount": 3,
           "fuseInto": 10263
         },
         {
           "rarity": 5,
           "entryId": 10263,
+          "level": 3,
+          "values": {
+            "1": 0.3
+          },
           "fuseCount": null,
           "fuseInto": null
         }
@@ -527,6 +720,12 @@
       "attributes": [
         "MultiShootModifierRate"
       ],
+      "formats": {
+        "1": {
+          "multiply": 100,
+          "suffix": "%"
+        }
+      },
       "name": {
         "FR": "Fantomatique",
         "EN": "Phantom",
@@ -547,18 +746,30 @@
         {
           "rarity": 3,
           "entryId": 10271,
+          "level": 1,
+          "values": {
+            "1": 0.06
+          },
           "fuseCount": 3,
           "fuseInto": 10272
         },
         {
           "rarity": 4,
           "entryId": 10272,
+          "level": 2,
+          "values": {
+            "1": 0.12
+          },
           "fuseCount": 3,
           "fuseInto": 10273
         },
         {
           "rarity": 5,
           "entryId": 10273,
+          "level": 3,
+          "values": {
+            "1": 0.18
+          },
           "fuseCount": null,
           "fuseInto": null
         }
@@ -570,6 +781,7 @@
       "category": "battle",
       "battlePetId": 1028,
       "attributes": [],
+      "formats": {},
       "name": {
         "FR": "Avide",
         "EN": "Desirous",
@@ -590,6 +802,8 @@
         {
           "rarity": 5,
           "entryId": 10281,
+          "level": 1,
+          "values": {},
           "fuseCount": null,
           "fuseInto": null
         }
@@ -601,6 +815,7 @@
       "category": "battle",
       "battlePetId": 1029,
       "attributes": [],
+      "formats": {},
       "name": {
         "FR": "Fugitif",
         "EN": "Fleeing",
@@ -621,6 +836,8 @@
         {
           "rarity": 5,
           "entryId": 10291,
+          "level": 1,
+          "values": {},
           "fuseCount": null,
           "fuseInto": null
         }
@@ -632,6 +849,7 @@
       "category": "battle",
       "battlePetId": 1030,
       "attributes": [],
+      "formats": {},
       "name": {
         "FR": "Vétéran",
         "EN": "Veteran",
@@ -652,6 +870,8 @@
         {
           "rarity": 5,
           "entryId": 10301,
+          "level": 1,
+          "values": {},
           "fuseCount": null,
           "fuseInto": null
         }
@@ -663,6 +883,12 @@
       "category": "base",
       "battlePetId": 1010,
       "attributes": [],
+      "formats": {
+        "1": {
+          "multiply": 100,
+          "suffix": "%"
+        }
+      },
       "name": {
         "FR": "Féroce",
         "EN": "Fierce",
@@ -685,18 +911,30 @@
         {
           "rarity": 3,
           "entryId": 10101,
+          "level": 1,
+          "values": {
+            "1": 0.08
+          },
           "fuseCount": 3,
           "fuseInto": 10102
         },
         {
           "rarity": 4,
           "entryId": 10102,
+          "level": 2,
+          "values": {
+            "1": 0.16
+          },
           "fuseCount": 3,
           "fuseInto": 10103
         },
         {
           "rarity": 5,
           "entryId": 10103,
+          "level": 3,
+          "values": {
+            "1": 0.24
+          },
           "fuseCount": null,
           "fuseInto": null
         }
@@ -710,6 +948,12 @@
       "attributes": [
         "Def"
       ],
+      "formats": {
+        "1": {
+          "multiply": 100,
+          "suffix": "%"
+        }
+      },
       "name": {
         "FR": "Cuirassé",
         "EN": "Ironclad",
@@ -732,18 +976,30 @@
         {
           "rarity": 3,
           "entryId": 10111,
+          "level": 1,
+          "values": {
+            "1": 0.08
+          },
           "fuseCount": 3,
           "fuseInto": 10112
         },
         {
           "rarity": 4,
           "entryId": 10112,
+          "level": 2,
+          "values": {
+            "1": 0.16
+          },
           "fuseCount": 3,
           "fuseInto": 10113
         },
         {
           "rarity": 5,
           "entryId": 10113,
+          "level": 3,
+          "values": {
+            "1": 0.24
+          },
           "fuseCount": null,
           "fuseInto": null
         }
@@ -757,6 +1013,12 @@
       "attributes": [
         "MaxHp"
       ],
+      "formats": {
+        "1": {
+          "multiply": 100,
+          "suffix": "%"
+        }
+      },
       "name": {
         "FR": "Robuste",
         "EN": "Beefy",
@@ -779,18 +1041,30 @@
         {
           "rarity": 3,
           "entryId": 10121,
+          "level": 1,
+          "values": {
+            "1": 0.08
+          },
           "fuseCount": 3,
           "fuseInto": 10122
         },
         {
           "rarity": 4,
           "entryId": 10122,
+          "level": 2,
+          "values": {
+            "1": 0.16
+          },
           "fuseCount": 3,
           "fuseInto": 10123
         },
         {
           "rarity": 5,
           "entryId": 10123,
+          "level": 3,
+          "values": {
+            "1": 0.24
+          },
           "fuseCount": null,
           "fuseInto": null
         }
@@ -804,6 +1078,12 @@
       "attributes": [
         "MaxES"
       ],
+      "formats": {
+        "1": {
+          "multiply": 100,
+          "suffix": "%"
+        }
+      },
       "name": {
         "FR": "Timide",
         "EN": "Timid",
@@ -826,18 +1106,30 @@
         {
           "rarity": 3,
           "entryId": 10131,
+          "level": 1,
+          "values": {
+            "1": 0.08
+          },
           "fuseCount": 3,
           "fuseInto": 10132
         },
         {
           "rarity": 4,
           "entryId": 10132,
+          "level": 2,
+          "values": {
+            "1": 0.16
+          },
           "fuseCount": 3,
           "fuseInto": 10133
         },
         {
           "rarity": 5,
           "entryId": 10133,
+          "level": 3,
+          "values": {
+            "1": 0.24
+          },
           "fuseCount": null,
           "fuseInto": null
         }
@@ -849,6 +1141,12 @@
       "category": "speed",
       "battlePetId": 1006,
       "attributes": [],
+      "formats": {
+        "1": {
+          "multiply": 100,
+          "suffix": "%"
+        }
+      },
       "name": {
         "FR": "Impulsif",
         "EN": "Impatient",
@@ -871,18 +1169,30 @@
         {
           "rarity": 3,
           "entryId": 10061,
+          "level": 1,
+          "values": {
+            "1": 0.02
+          },
           "fuseCount": 3,
           "fuseInto": 10062
         },
         {
           "rarity": 4,
           "entryId": 10062,
+          "level": 2,
+          "values": {
+            "1": 0.04
+          },
           "fuseCount": 3,
           "fuseInto": 10063
         },
         {
           "rarity": 5,
           "entryId": 10063,
+          "level": 3,
+          "values": {
+            "1": 0.06
+          },
           "fuseCount": null,
           "fuseInto": null
         }
@@ -896,6 +1206,12 @@
       "attributes": [
         "BulletJumpVelocityModifier"
       ],
+      "formats": {
+        "1": {
+          "multiply": 100,
+          "suffix": "%"
+        }
+      },
       "name": {
         "FR": "Rapide",
         "EN": "Swift",
@@ -918,18 +1234,30 @@
         {
           "rarity": 3,
           "entryId": 10071,
+          "level": 1,
+          "values": {
+            "1": 0.02
+          },
           "fuseCount": 3,
           "fuseInto": 10072
         },
         {
           "rarity": 4,
           "entryId": 10072,
+          "level": 2,
+          "values": {
+            "1": 0.04
+          },
           "fuseCount": 3,
           "fuseInto": 10073
         },
         {
           "rarity": 5,
           "entryId": 10073,
+          "level": 3,
+          "values": {
+            "1": 0.06
+          },
           "fuseCount": null,
           "fuseInto": null
         }
@@ -943,6 +1271,12 @@
       "attributes": [
         "SlideFrictionModifier"
       ],
+      "formats": {
+        "1": {
+          "multiply": 100,
+          "suffix": "%"
+        }
+      },
       "name": {
         "FR": "Dodu",
         "EN": "Chubby",
@@ -965,18 +1299,30 @@
         {
           "rarity": 3,
           "entryId": 10081,
+          "level": 1,
+          "values": {
+            "1": -0.04
+          },
           "fuseCount": 3,
           "fuseInto": 10082
         },
         {
           "rarity": 4,
           "entryId": 10082,
+          "level": 2,
+          "values": {
+            "1": -0.08
+          },
           "fuseCount": 3,
           "fuseInto": 10083
         },
         {
           "rarity": 5,
           "entryId": 10083,
+          "level": 3,
+          "values": {
+            "1": -0.12
+          },
           "fuseCount": null,
           "fuseInto": null
         }
@@ -990,6 +1336,12 @@
       "attributes": [
         "AvoidChargeCd"
       ],
+      "formats": {
+        "1": {
+          "multiply": 100,
+          "suffix": "%"
+        }
+      },
       "name": {
         "FR": "Vigilant",
         "EN": "Vigilant",
@@ -1012,18 +1364,30 @@
         {
           "rarity": 3,
           "entryId": 10091,
+          "level": 1,
+          "values": {
+            "1": -0.05
+          },
           "fuseCount": 3,
           "fuseInto": 10092
         },
         {
           "rarity": 4,
           "entryId": 10092,
+          "level": 2,
+          "values": {
+            "1": -0.1
+          },
           "fuseCount": 3,
           "fuseInto": 10093
         },
         {
           "rarity": 5,
           "entryId": 10093,
+          "level": 3,
+          "values": {
+            "1": -0.15
+          },
           "fuseCount": null,
           "fuseInto": null
         }
@@ -1037,6 +1401,12 @@
       "attributes": [
         "DropDistance"
       ],
+      "formats": {
+        "1": {
+          "multiply": 1,
+          "suffix": ""
+        }
+      },
       "name": {
         "FR": "Gourmand",
         "EN": "Gluttonous",
@@ -1059,18 +1429,30 @@
         {
           "rarity": 3,
           "entryId": 10011,
+          "level": 1,
+          "values": {
+            "1": 200
+          },
           "fuseCount": 3,
           "fuseInto": 10012
         },
         {
           "rarity": 4,
           "entryId": 10012,
+          "level": 2,
+          "values": {
+            "1": 400
+          },
           "fuseCount": 3,
           "fuseInto": 10013
         },
         {
           "rarity": 5,
           "entryId": 10013,
+          "level": 3,
+          "values": {
+            "1": 600
+          },
           "fuseCount": null,
           "fuseInto": null
         }
@@ -1082,6 +1464,12 @@
       "category": "world",
       "battlePetId": 1002,
       "attributes": [],
+      "formats": {
+        "1": {
+          "multiply": 100,
+          "suffix": "%"
+        }
+      },
       "name": {
         "FR": "Économe",
         "EN": "Frugal",
@@ -1104,18 +1492,30 @@
         {
           "rarity": 3,
           "entryId": 10021,
+          "level": 1,
+          "values": {
+            "1": 0.05
+          },
           "fuseCount": 3,
           "fuseInto": 10022
         },
         {
           "rarity": 4,
           "entryId": 10022,
+          "level": 2,
+          "values": {
+            "1": 0.1
+          },
           "fuseCount": 3,
           "fuseInto": 10023
         },
         {
           "rarity": 5,
           "entryId": 10023,
+          "level": 3,
+          "values": {
+            "1": 0.15
+          },
           "fuseCount": null,
           "fuseInto": null
         }
@@ -1127,6 +1527,12 @@
       "category": "world",
       "battlePetId": 1015,
       "attributes": [],
+      "formats": {
+        "1": {
+          "multiply": 100,
+          "suffix": "%"
+        }
+      },
       "name": {
         "FR": "Érudit",
         "EN": "Erudite",
@@ -1149,18 +1555,30 @@
         {
           "rarity": 3,
           "entryId": 10151,
+          "level": 1,
+          "values": {
+            "1": 0.2
+          },
           "fuseCount": 3,
           "fuseInto": 10152
         },
         {
           "rarity": 4,
           "entryId": 10152,
+          "level": 2,
+          "values": {
+            "1": 0.4
+          },
           "fuseCount": 3,
           "fuseInto": 10153
         },
         {
           "rarity": 5,
           "entryId": 10153,
+          "level": 3,
+          "values": {
+            "1": 0.6
+          },
           "fuseCount": null,
           "fuseInto": null
         }
@@ -1172,6 +1590,7 @@
       "category": "world",
       "battlePetId": 1016,
       "attributes": [],
+      "formats": {},
       "name": {
         "FR": "Habile",
         "EN": "Deft",
@@ -1194,6 +1613,8 @@
         {
           "rarity": 5,
           "entryId": 10161,
+          "level": 1,
+          "values": {},
           "fuseCount": null,
           "fuseInto": null
         }
@@ -1205,6 +1626,7 @@
       "category": "world",
       "battlePetId": 1017,
       "attributes": [],
+      "formats": {},
       "name": {
         "FR": "Sérénité",
         "EN": "At peace",
@@ -1227,6 +1649,8 @@
         {
           "rarity": 5,
           "entryId": 10171,
+          "level": 1,
+          "values": {},
           "fuseCount": null,
           "fuseInto": null
         }

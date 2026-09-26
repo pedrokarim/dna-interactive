@@ -11,6 +11,7 @@ import {
   fusionCostFromLowest,
   getTraitsByCategory,
   pickTraitText,
+  topRarity,
   traitIconSrc,
   traitRarities,
   type TraitCategory,
@@ -260,7 +261,7 @@ async function TraitTable({ category, gameLang, locale }: { category: TraitCateg
                 {rarities.map((r) => <TraitGlyph key={r} category={trait.category} rarity={r} />)}
               </span>
               <span className="min-w-[7rem] text-sm font-medium text-parch">{pickTraitText(trait.name, gameLang)}</span>
-              <span className="flex-1 text-sm text-parch/85">{formatTraitEffect(pickTraitText(trait.effect, gameLang))}</span>
+              <span className="flex-1 text-sm text-parch/85">{formatTraitEffect(pickTraitText(trait.effect, gameLang), trait, topRarity(trait), locale)}</span>
               {trait.goldOnly ? (
                 <span className="shrink-0 rounded-sm border border-gold/35 px-2 py-0.5 text-[0.62rem] text-gold">
                   {t("goldOnly")}

@@ -4,6 +4,7 @@ import { Link } from "@/i18n/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { useConfirm } from "@/components/dna/ConfirmProvider";
 import CursorTooltip from "@/components/CursorTooltip";
+import { TraitTooltip } from "@/components/genimons/TraitTooltip";
 import { type ComponentType, type CSSProperties, type ReactNode, type PointerEvent as ReactPointerEvent, Fragment, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { toPng } from "html-to-image";
@@ -2334,17 +2335,17 @@ export function BuildTabContent({
                     {Array.from({ length: g.traitSlots }, (_, slot) => {
                       const trait = g.traits[slot];
                       return trait ? (
-                        <span
-                          key={slot}
-                          title={`${trait.name} — ${trait.effect}`}
-                          className="grid h-7 w-7 place-items-center rounded-full border border-gold/40 bg-gold/10"
-                        >
-                          {trait.icon ? (
-                            <img src={trait.icon} alt={trait.name} width={18} height={18} className="h-[18px] w-[18px]" />
-                          ) : (
-                            <span className="text-[0.55rem] text-parch">{trait.name.slice(0, 2)}</span>
-                          )}
-                        </span>
+                        // Infobulle plutôt qu'un `title` : celui-ci n'affichait
+                        // ni glyphe ni valeur, et le mobile ne le montre jamais.
+                        <TraitTooltip key={slot} trait={trait}>
+                          <span className="grid h-7 w-7 cursor-help place-items-center rounded-full border border-gold/40 bg-gold/10">
+                            {trait.icon ? (
+                              <img src={trait.icon} alt={trait.name} width={18} height={18} className="h-[18px] w-[18px]" />
+                            ) : (
+                              <span className="text-[0.55rem] text-parch">{trait.name.slice(0, 2)}</span>
+                            )}
+                          </span>
+                        </TraitTooltip>
                       ) : (
                         <span
                           key={slot}

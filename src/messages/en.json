@@ -2001,7 +2001,7 @@
     "flowActive": "Active",
     "flowInactive": "Inactive",
     "flowCaption": "An inactive Geniemon is a reservoir: its Traits go to the one you take into battle. The fourth slot exists only on a shining variant.",
-    "listValueNote": "The ellipsis stands in for a number: it rises with the Trait's rarity, and the game only shows it on the piece itself.",
+    "listValueNote": "The values shown are those of each Trait's highest tier. At lower rarities they are smaller: roughly a third at the first tier, two thirds at the second.",
     "trainingTitle": "Geniemon Training",
     "trainingBody": "A Trait is not rolled, it is passed on. Geniemon Training takes a Trait held by an inactive Geniemon and gives it to an active one, and the Trait you pick replaces whatever occupied the slot. That is what inactive Geniemons are for, the ones you never take into battle.",
     "trainingLevel": "A Trait's level is raised separately, through Raise. A slot can also be locked so it is not overwritten by mistake, and the Trait Compendium does this automatically for the Traits you mark.",
@@ -2029,7 +2029,8 @@
     "chapterBlurb_shop": "The Bounty Commissions exchange, its two stacked currencies, and what you can choose there.",
     "chapterBlurb_list": "All 29 Traits, sorted into the game's own four categories, with their effect and rarities.",
     "imageVariantOrdinary": "An ordinary variant: three spheres around it, one still locked.",
-    "imageVariantShiny": "The same species, shining: four spheres, and an aura that gives it away."
+    "imageVariantShiny": "The same species, shining: four spheres, and an aura that gives it away.",
+    "tooltipRarityNote": "Value at tier {rarity}★, this Trait's highest."
   },
   "mapCategories": {
     "waypoints": "Waypoints",

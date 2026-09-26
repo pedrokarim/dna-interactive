@@ -17,6 +17,10 @@ export type TraitCategory = (typeof TRAIT_CATEGORIES)[number];
 export interface TraitTier {
   rarity: number;
   entryId: number;
+  /** Niveau du palier dans les tables du jeu : rareté 3/4/5 → 1/2/3. */
+  level: number;
+  /** Valeurs chiffrées du palier, par index de jeton `#N`. */
+  values: Record<string, number>;
   /** Nombre d'exemplaires à fusionner pour obtenir `fuseInto`. */
   fuseCount: number | null;
   fuseInto: number | null;
@@ -28,6 +32,8 @@ export interface GenimonTrait {
   battlePetId: number;
   /** Attribut du jeu touché (`ATK`, `DropDistance`…), utile pour recouper. */
   attributes: string[];
+  /** Facteur et unité voulus par le jeu, par index de jeton. */
+  formats: Record<string, { multiply: number; suffix: string }>;
   name: Record<string, string>;
   effect: Record<string, string>;
   tiers: TraitTier[];
@@ -50,16 +56,39 @@ export function pickTraitText(text: Record<string, string>, lang: string): strin
 }
 
 /**
- * Effet d'un Trait, prêt à afficher.
+ * Effet d'un Trait à une rareté donnée, jetons `#N` remplacés par leur valeur.
  *
- * Les descriptions portent un jeton `#1` à la place du chiffre : la valeur n'est
- * pas dans les données de jeu lisibles, elle est résolue ailleurs, et elle varie
- * de toute façon d'une rareté à l'autre. Laissé tel quel, `+#1` ressemble à un
- * gabarit non substitué ; les points de suspension se lisent comme ce qu'ils
- * sont, une valeur qui dépend de la rareté.
+ * Les nombres viennent de `SkillGrow`, par palier – ce que `BattlePet` masquait
+ * derrière « #1 ». Le facteur et l'unité (× 100, « % ») sont ceux qu'écrit la
+ * formule du jeu, pas une convention de notre cru.
+ *
+ * La valeur est prise **en valeur absolue** : le texte porte déjà son signe
+ * (« Temps de recharge -#1 »), et le jeu stocke une réduction en négatif. Les
+ * additionner donnerait « -−24 % ».
+ *
+ * Sans valeur connue, le jeton devient des points de suspension plutôt qu'un
+ * gabarit brut : six Traits n'ont aucun nombre à afficher.
  */
-export function formatTraitEffect(text: string): string {
-  return text.replace(/#\d+/g, "…");
+export function formatTraitEffect(
+  text: string,
+  trait?: GenimonTrait | null,
+  rarity?: number,
+  locale: string = "fr",
+): string {
+  const tier = trait?.tiers.find((t) => t.rarity === rarity) ?? null;
+  return text.replace(/#(\d+)/g, (token, index: string) => {
+    const raw = tier?.values?.[index];
+    if (raw === undefined) return "…";
+    const format = trait?.formats?.[index] ?? { multiply: 1, suffix: "" };
+    const value = Math.abs(raw * format.multiply);
+    const shown = new Intl.NumberFormat(locale, { maximumFractionDigits: 2 }).format(value);
+    return `${shown}${format.suffix}`;
+  });
+}
+
+/** La rareté la plus haute à laquelle un Trait existe : celle qu'on vise. */
+export function topRarity(trait: GenimonTrait): number {
+  return Math.max(...trait.tiers.map((t) => t.rarity));
 }
 
 /** Tous les traits d'une catégorie, triés par nom dans la langue demandée. */

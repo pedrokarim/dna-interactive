@@ -1,5 +1,12 @@
 import { getItemByCategoryAndId } from "@/lib/items/catalog";
-import { getAllTraits, pickTraitText, traitIconSrc, type GenimonTrait, type TraitCategory } from "@/lib/genimons/traits";
+import {
+  formatTraitEffect,
+  getAllTraits,
+  pickTraitText,
+  traitIconSrc,
+  type GenimonTrait,
+  type TraitCategory,
+} from "@/lib/genimons/traits";
 
 // ---------------------------------------------------------------------------
 // Les Traits portés par un Géniemon **dans un build**.
@@ -54,14 +61,20 @@ export interface BuildGenimonTrait {
   icon: string | null;
 }
 
-export function resolveBuildTrait(key: string, lang: string = "FR"): BuildGenimonTrait | null {
+export function resolveBuildTrait(
+  key: string,
+  lang: string = "FR",
+  /** Locale de la page, pour la mise en forme des nombres. */
+  locale: string = "fr",
+): BuildGenimonTrait | null {
   const trait = BY_KEY.get(key);
   if (!trait) return null;
   const rarity = Math.max(...trait.tiers.map((t) => t.rarity));
   return {
     key: trait.key,
     name: pickTraitText(trait.name, lang),
-    effect: pickTraitText(trait.effect, lang),
+    // Résolu à la rareté visée : c'est l'or qu'un build cherche à atteindre.
+    effect: formatTraitEffect(pickTraitText(trait.effect, lang), trait, rarity, locale),
     category: trait.category,
     rarity,
     icon: traitIconSrc(trait.category, rarity),

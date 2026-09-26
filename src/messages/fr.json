@@ -2001,7 +2001,7 @@
     "flowActive": "Actif",
     "flowInactive": "Inactifs",
     "flowCaption": "Un Géniemon inactif sert de réservoir : ses Traits vont à celui qu'on emmène au combat. Le quatrième emplacement n'existe que sur une variante scintillante.",
-    "listValueNote": "Les points de suspension remplacent une valeur chiffrée : elle monte avec la rareté du Trait, et le jeu ne l'affiche que sur la pièce elle-même.",
+    "listValueNote": "Les valeurs indiquées sont celles du palier le plus haut de chaque Trait. Aux raretés inférieures, elles sont plus basses : un tiers environ au premier palier, deux tiers au deuxième.",
     "trainingTitle": "L'Entraînement de Géniemon",
     "trainingBody": "Un Trait ne se tire pas au sort : il se transmet. L'Entraînement de Géniemon prend un Trait porté par un Géniemon inactif et le donne à un actif, et le Trait choisi remplace celui qui occupait l'emplacement. C'est la raison d'être des inactifs, qu'on ne mène jamais au combat.",
     "trainingLevel": "Le niveau d'un Trait se monte à part, par Monter en grade. Un emplacement peut aussi être verrouillé pour éviter de le remplacer par mégarde, et le Compendium des Traits le fait automatiquement sur les Traits qu'on lui a désignés.",
@@ -2029,7 +2029,8 @@
     "chapterBlurb_shop": "L'échange des Missions à prime, ses deux monnaies qui se suivent, et ce qu'on peut y choisir.",
     "chapterBlurb_list": "Les 29 Traits du jeu, rangés dans les quatre catégories du jeu, avec leur effet et leurs raretés.",
     "imageVariantOrdinary": "Une variante ordinaire : trois sphères autour d'elle, dont une encore verrouillée.",
-    "imageVariantShiny": "La même espèce en scintillante : quatre sphères, et une aura qui la signale."
+    "imageVariantShiny": "La même espèce en scintillante : quatre sphères, et une aura qui la signale.",
+    "tooltipRarityNote": "Valeur au palier {rarity}★, le plus haut de ce Trait."
   },
   "mapCategories": {
     "waypoints": "Repères",
