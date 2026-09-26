@@ -1516,7 +1516,7 @@
     "intro": "Un arma de calamidad no sube como las demás. Sustituye la fundición habitual por la fusión de calamidad, un camino de seis peldaños que abre Potenciales: efectos propios del arma que solo actúan en manos de un personaje que domina ese tipo de arma. Esta guía cubre la obtención, el Horno, el árbol de Potencial y los materiales que conviene reunir.",
     "imageSlotLabel": "Espacio para imagen",
     "imageOverview": "La pantalla de fusión de calamidad: el árbol de Potencial del arma, tu progreso y el límite actual.",
-    "imageUnlock": "La misión que desbloquea las armas de calamidad, o la pantalla de la forja.",
+    "imageUnlock": "La cadena de misiones que abre el sistema, entre las misiones secundarias especiales: cada paso exige un nivel de fusión mayor.",
     "imageFurnace": "El Horno de calamidad, común a todas tus armas.",
     "imagePotential": "Un Potencial seleccionado: su efecto a la derecha y, abajo, el recordatorio de la regla del arma predilecta.",
     "rulesTitle": "Tres reglas antes de empezar",
@@ -1614,7 +1614,8 @@
     "chapterBlurb_potential": "La forma del árbol, la primera elección gratuita de cada nivel y lo que cuesta la segunda.",
     "chapterBlurb_path": "Qué rama seguir según el arma y el personaje que la lleva.",
     "chapterBlurb_materials": "Emblemas y cristales: dónde se farmea cada material y en qué misión.",
-    "chapterBlurb_cost": "El desglose completo, nivel a nivel y arma a arma, tal como lo indica el juego."
+    "chapterBlurb_cost": "El desglose completo, nivel a nivel y arma a arma, tal como lo indica el juego.",
+    "imageForge": "El arma se fabrica en la forja, con sus prototipos, su coste y sus horas de espera."
   },
   "changelogEntries": {
     "v2_4_0": {

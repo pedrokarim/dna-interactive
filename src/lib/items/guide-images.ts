@@ -32,8 +32,10 @@ export const CALAMITY_GUIDE_SLOTS = [
   "defense",
   /** Infobulle d'un insigne : sa methode d'obtention. */
   "emblemTooltip",
-  /** Quete de deblocage ou ecran de forge - pas encore capture. */
+  /** La quete qui debloque le systeme, dans les quetes secondaires speciales. */
   "unlock",
+  /** L'ecran de forge : l'arme, ses materiaux et sa duree de fabrication. */
+  "forge",
 ] as const;
 
 export type CalamityGuideSlot = (typeof CALAMITY_GUIDE_SLOTS)[number];

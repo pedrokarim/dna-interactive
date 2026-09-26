@@ -131,7 +131,13 @@ export async function CalamityWeaponsGuideChapter({
               ))}
             </ol>
           </DnaPanel>
-          <GuideImageSlot slot="unlock" caption={t("imageUnlock")} ratio="4 / 3" className="max-w-4xl" />
+          {/*
+            Une image par étape : la quête ouvre le système, la forge fabrique
+            l'arme. Les réunir en une seule aurait obligé à chercher laquelle
+            illustre quoi.
+          */}
+          <GuideImageSlot slot="unlock" caption={t("imageUnlock")} ratio="16 / 9" className="max-w-4xl" />
+          <GuideImageSlot slot="forge" caption={t("imageForge")} ratio="16 / 9" className="max-w-4xl" />
         </div>
       );
 

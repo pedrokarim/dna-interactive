@@ -1516,7 +1516,7 @@
     "intro": "災厄武器的養成方式與其他武器不同。它以災厄融合取代一般精煉，透過六個階級開啟潛能——武器專屬的效果，只有在擅長該武器類型的角色手中才會生效。本指南涵蓋取得方式、熔爐、潛能樹與所需材料。",
     "imageSlotLabel": "圖片位置",
     "imageOverview": "災厄融合畫面：武器的潛能樹、進度與目前上限。",
-    "imageUnlock": "解鎖災厄武器的任務，或鍛造畫面。",
+    "imageUnlock": "開啟此系統的任務系列，列在特殊支線任務中：每一階都要求更高的融合等級。",
     "imageFurnace": "災厄熔爐，所有武器共用。",
     "imagePotential": "選取中的潛能：右側是效果，下方重申擅長武器的條件。",
     "rulesTitle": "開始前要知道的三件事",
@@ -1614,7 +1614,8 @@
     "chapterBlurb_potential": "樹的形狀、每階免費的第一個選擇，以及第二個的代價。",
     "chapterBlurb_path": "依武器與持有的角色，該走哪一條分支。",
     "chapterBlurb_materials": "徽記與結晶：各素材在哪裡farm、出自哪個任務。",
-    "chapterBlurb_cost": "逐階、逐把武器的完整清單，依遊戲所載。"
+    "chapterBlurb_cost": "逐階、逐把武器的完整清單，依遊戲所載。",
+    "imageForge": "武器在鍛造處製作，連同其原型、費用與等待時數。"
   },
   "changelogEntries": {
     "v2_4_0": {

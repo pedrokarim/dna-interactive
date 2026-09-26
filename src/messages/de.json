@@ -1516,7 +1516,7 @@
     "intro": "Eine Kalamitätswaffe steigt anders auf als jede andere. Statt der üblichen Schmelze nutzt sie die Kalamitätsschmelze, einen sechsstufigen Pfad, der Potenziale öffnet – waffeneigene Effekte, die nur in den Händen einer Figur wirken, die diesen Waffentyp beherrscht. Dieser Leitfaden behandelt Freischaltung, Ofen, Potenzialbaum und die nötigen Materialien.",
     "imageSlotLabel": "Bildplatz",
     "imageOverview": "Der Kalamitätsschmelze-Bildschirm: der Potenzialbaum der Waffe, dein Fortschritt und die aktuelle Obergrenze.",
-    "imageUnlock": "Die Quest, die Kalamitätswaffen freischaltet, oder der Schmiede-Bildschirm.",
+    "imageUnlock": "Die Questreihe, die das System freischaltet, unter den besonderen Nebenquests: Jede Stufe verlangt eine höhere Fusionsstufe.",
     "imageFurnace": "Der Kalamitätsofen, gemeinsam für alle deine Waffen.",
     "imagePotential": "Ein ausgewähltes Potenzial: seine Wirkung rechts, unten die Erinnerung an die Waffentyp-Regel.",
     "rulesTitle": "Drei Regeln vorab",
@@ -1614,7 +1614,8 @@
     "chapterBlurb_potential": "Die Form des Baums, die erste freie Wahl je Stufe und der Preis der zweiten.",
     "chapterBlurb_path": "Welchem Zweig man folgt, je nach Waffe und der Figur, die sie trägt.",
     "chapterBlurb_materials": "Embleme und Kristalle: wo jedes Material zu farmen ist und aus welcher Mission.",
-    "chapterBlurb_cost": "Die vollständige Aufstellung, Stufe für Stufe und Waffe für Waffe, wie das Spiel sie nennt."
+    "chapterBlurb_cost": "Die vollständige Aufstellung, Stufe für Stufe und Waffe für Waffe, wie das Spiel sie nennt.",
+    "imageForge": "Die Waffe entsteht in der Schmiede – mit ihren Prototypen, ihren Kosten und ihrer Wartezeit."
   },
   "changelogEntries": {
     "v2_4_0": {

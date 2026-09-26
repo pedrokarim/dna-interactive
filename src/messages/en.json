@@ -1516,7 +1516,7 @@
     "intro": "A Calamity Weapon does not level like any other. It swaps ordinary smelting for Calamity Smelting, a six-step path that opens Potentials — weapon-specific effects that only fire in the hands of a character proficient with that weapon type. This guide covers unlocking, the Furnace, the Potential tree and the materials to stockpile.",
     "imageSlotLabel": "Image slot",
     "imageOverview": "The Calamity Smelting screen: the weapon's Potential tree, your progress and the current cap.",
-    "imageUnlock": "The quest that unlocks Calamity Weapons, or the forge screen.",
+    "imageUnlock": "The quest chain that opens the system, filed under special side quests: each step asks for a higher fusion level.",
     "imageFurnace": "The Calamity Furnace, shared by every weapon you own.",
     "imagePotential": "A selected Potential: its effect on the right, and the weapon-proficiency rule restated at the bottom.",
     "rulesTitle": "Three rules to know going in",
@@ -1614,7 +1614,8 @@
     "chapterBlurb_potential": "The shape of the tree, the first pick offered at each tier, and what the second one costs.",
     "chapterBlurb_path": "Which branch to follow, depending on the weapon and the character carrying it.",
     "chapterBlurb_materials": "Emblems and crystals: where each material is farmed, and from which mission.",
-    "chapterBlurb_cost": "The full breakdown, tier by tier and weapon by weapon, as the game states it."
+    "chapterBlurb_cost": "The full breakdown, tier by tier and weapon by weapon, as the game states it.",
+    "imageForge": "The weapon is crafted at the forge, with its prototypes, its cost and its hours of waiting."
   },
   "changelogEntries": {
     "v2_4_0": {

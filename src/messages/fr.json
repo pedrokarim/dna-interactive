@@ -1516,7 +1516,7 @@
     "intro": "Une arme de calamité ne se monte pas comme les autres. Elle remplace la forge classique par la fusion de calamité, un chemin en six paliers qui ouvre des Potentiels : des effets propres à l'arme, qui ne s'activent qu'entre les mains d'un personnage dont c'est l'arme de prédilection. Ce guide couvre l'obtention, le Fourneau, l'arbre de Potentiel et les matériaux à préparer.",
     "imageSlotLabel": "Emplacement d'illustration",
     "imageOverview": "L'écran de Fusion de calamité : l'arbre de Potentiel de l'arme, l'avancement et le plafond en cours.",
-    "imageUnlock": "La quête qui débloque les armes de calamité, ou l'écran de forge.",
+    "imageUnlock": "La chaîne de quêtes qui ouvre le système, rangée dans les quêtes secondaires spéciales : chaque palier demande une arme de fusion plus élevée.",
     "imageFurnace": "Le Fourneau de calamité, commun à toutes vos armes.",
     "imagePotential": "Un Potentiel sélectionné : son effet à droite, et le rappel de la règle d'arme de prédilection en bas.",
     "rulesTitle": "Trois règles à connaître avant de commencer",
@@ -1614,7 +1614,8 @@
     "chapterBlurb_potential": "La forme de l'arbre, le premier choix offert à chaque palier, et le coût du second.",
     "chapterBlurb_path": "Quelle branche suivre selon l'arme et le personnage qui la porte.",
     "chapterBlurb_materials": "Insignes, cristaux : où chaque matériau se farme, et par quelle mission.",
-    "chapterBlurb_cost": "Le détail palier par palier, arme par arme, tel qu'il figure dans le jeu."
+    "chapterBlurb_cost": "Le détail palier par palier, arme par arme, tel qu'il figure dans le jeu.",
+    "imageForge": "L'arme se fabrique à la forge, avec ses prototypes, son coût et ses heures d'attente."
   },
   "changelogEntries": {
     "v2_4_0": {
