@@ -132,15 +132,30 @@
     "genimon": [
       {
         "itemId": "genimon-4241",
-        "rank": "best"
+        "rank": "best",
+        "traits": [
+          "UI_PetEntry_Title10",
+          "UI_PetEntry_Title22",
+          "UI_PetEntry_Title12"
+        ]
       },
       {
         "itemId": "genimon-4221",
-        "rank": "alternative"
+        "rank": "alternative",
+        "traits": [
+          "UI_PetEntry_Title10",
+          "UI_PetEntry_Title22",
+          "UI_PetEntry_Title12"
+        ]
       },
       {
         "itemId": "genimon-4261",
-        "rank": "alternative"
+        "rank": "alternative",
+        "traits": [
+          "UI_PetEntry_Title10",
+          "UI_PetEntry_Title22",
+          "UI_PetEntry_Title12"
+        ]
       }
     ],
     "skillPriority": [
@@ -316,15 +331,30 @@
     "genimon": [
       {
         "itemId": "genimon-4241",
-        "rank": "best"
+        "rank": "best",
+        "traits": [
+          "UI_PetEntry_Title10",
+          "UI_PetEntry_Title22",
+          "UI_PetEntry_Title12"
+        ]
       },
       {
         "itemId": "genimon-4221",
-        "rank": "alternative"
+        "rank": "alternative",
+        "traits": [
+          "UI_PetEntry_Title10",
+          "UI_PetEntry_Title22",
+          "UI_PetEntry_Title12"
+        ]
       },
       {
         "itemId": "genimon-4261",
-        "rank": "alternative"
+        "rank": "alternative",
+        "traits": [
+          "UI_PetEntry_Title10",
+          "UI_PetEntry_Title22",
+          "UI_PetEntry_Title12"
+        ]
       }
     ],
     "skillPriority": [

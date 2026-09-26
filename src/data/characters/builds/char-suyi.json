@@ -146,15 +146,30 @@
     "genimon": [
       {
         "itemId": "genimon-4261",
-        "rank": "best"
+        "rank": "best",
+        "traits": [
+          "UI_PetEntry_Title19",
+          "UI_PetEntry_Title23",
+          "UI_PetEntry_Title10"
+        ]
       },
       {
         "itemId": "genimon-4161",
-        "rank": "alternative"
+        "rank": "alternative",
+        "traits": [
+          "UI_PetEntry_Title19",
+          "UI_PetEntry_Title23",
+          "UI_PetEntry_Title10"
+        ]
       },
       {
         "itemId": "genimon-4021",
-        "rank": "alternative"
+        "rank": "alternative",
+        "traits": [
+          "UI_PetEntry_Title19",
+          "UI_PetEntry_Title23",
+          "UI_PetEntry_Title10"
+        ]
       }
     ],
     "skillPriority": [
