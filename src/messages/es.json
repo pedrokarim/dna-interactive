@@ -707,7 +707,10 @@
     "statDamageRate": "Daño",
     "calamityPathTitle": "Ruta de Potencial recomendada",
     "calamityPathIntro": "En cada nivel de I a IV, el primer Potencial que eliges es gratuito; el otro sigue disponible pero cuesta materiales. Los números indican en qué orden tomarlos.",
-    "calamityPathUnknown": "El orden recomendado aún no está documentado para este build. El árbol sigue consultable."
+    "calamityPathUnknown": "El orden recomendado aún no está documentado para este build. El árbol sigue consultable.",
+    "genimonPassiveLevel": "Pasivo niv. {level}",
+    "genimonTraitsLabel": "Rasgos",
+    "genimonTraitsPending": "por definir"
   },
   "items": {
     "libraryLabel": "Biblioteca de Objetos",

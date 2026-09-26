@@ -707,7 +707,10 @@
     "statDamageRate": "Dégâts",
     "calamityPathTitle": "Chemin de Potentiel conseillé",
     "calamityPathIntro": "À chaque palier de I à IV, le premier Potentiel choisi est gratuit ; l'autre reste accessible mais coûte des matériaux. Les numéros donnent donc l'ordre dans lequel les prendre.",
-    "calamityPathUnknown": "L'ordre conseillé n'est pas encore documenté pour ce build. L'arbre reste consultable."
+    "calamityPathUnknown": "L'ordre conseillé n'est pas encore documenté pour ce build. L'arbre reste consultable.",
+    "genimonPassiveLevel": "Passif niv. {level}",
+    "genimonTraitsLabel": "Traits",
+    "genimonTraitsPending": "à définir"
   },
   "items": {
     "libraryLabel": "Bibliotheque Items",

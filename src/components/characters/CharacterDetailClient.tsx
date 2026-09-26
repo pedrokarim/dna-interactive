@@ -4,7 +4,7 @@ import { Link } from "@/i18n/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { useConfirm } from "@/components/dna/ConfirmProvider";
 import CursorTooltip from "@/components/CursorTooltip";
-import { type ComponentType, type CSSProperties, type PointerEvent as ReactPointerEvent, Fragment, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { type ComponentType, type CSSProperties, type ReactNode, type PointerEvent as ReactPointerEvent, Fragment, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { toPng } from "html-to-image";
 import {
@@ -57,6 +57,7 @@ import type {
   CharactersCatalog,
   LevelUpCurves,
 } from "@/lib/characters/types";
+import { getGenimonPassive, type GenimonPassive } from "@/lib/genimons/passive";
 import {
   genimonTraitSlots,
   resolveBuildTrait,
@@ -456,6 +457,7 @@ export function communityBuildToDisplayBuild(
       item: resolveBuildItemRef("genimons", genimon.itemId, lang),
       rank: genimon.rank,
       traitSlots: genimonTraitSlots(genimon.itemId),
+      passive: getGenimonPassive(genimon.itemId, lang),
       traits: sanitizeTraitKeys(genimon.itemId, genimon.traits)
         .map((key) => resolveBuildTrait(key, lang))
         .filter((t): t is BuildGenimonTrait => t !== null),
@@ -1818,6 +1820,8 @@ export function BuildTabContent({
   /** Affiche l'en-tête de tier « Officiel » au-dessus du build curé (fiche perso). */
   officialHeader?: boolean;
 }) {
+  // La locale de la page : les taux du passif se formatent avec elle.
+  const locale = useLocale();
   const t = useTranslations('characterDetail');
   const tcb = useTranslations('communityBuilds');
   const [activeBuildIndex, setActiveBuildIndex] = useState(0);
@@ -2269,64 +2273,92 @@ export function BuildTabContent({
       {hasGenimon && (
         <section className="border border-line/25 bg-panel/85 backdrop-blur-sm p-3 md:p-5">
           <h2 className="text-base md:text-lg font-semibold text-parch">{t('genimonTitle')}</h2>
-          <div className="mt-4 space-y-2">
+          <div className="mt-4 grid gap-3 lg:grid-cols-2">
             {build.genimon.map((g, i) => (
-              <div
+              <article
                 key={i}
                 data-rarity={rarityAttr(toRarityLevel(g.item?.rarity))}
-                className="group flex flex-wrap items-center gap-x-3 gap-y-2 border border-white/10 bg-ink/55 px-4 py-3"
+                className="flex flex-col gap-3 border border-white/10 bg-ink/55 p-3"
               >
-                {g.item ? (
-                  <Link
-                    href={g.item.href}
-                    className="flex min-w-0 flex-1 items-center gap-3"
+                {/* Identité : médaillon rond, nom, et le rang du choix. */}
+                <div className="flex items-center gap-3">
+                  {g.item ? (
+                    <Link href={g.item.href} className="flex min-w-0 flex-1 items-center gap-3">
+                      <span className="dna-rarity-slot grid h-14 w-14 shrink-0 place-items-center rounded-full border p-1.5">
+                        <img src={g.item.icon} alt="" width={56} height={56} className="h-full w-full object-contain" />
+                      </span>
+                      <span className="min-w-0">
+                        <span className="dna-rarity-name block truncate text-sm font-medium">{g.item.name}</span>
+                        {g.passive ? (
+                          <span className="block text-[0.65rem] uppercase tracking-[0.18em] text-muted-2">
+                            {t('genimonPassiveLevel', { level: g.passive.level })}
+                          </span>
+                        ) : null}
+                      </span>
+                    </Link>
+                  ) : (
+                    <p className="flex-1 text-sm text-muted-2">{t('genimonNotFound')}</p>
+                  )}
+                  <span
+                    className={`shrink-0 rounded-full px-2.5 py-0.5 text-xs font-medium ${
+                      g.rank === "best"
+                        ? "border border-gold/40 bg-gold/15 text-gold"
+                        : "border border-white/10 bg-panel/40 text-parch/85"
+                    }`}
                   >
-                    <span className="dna-rarity-slot grid h-10 w-10 shrink-0 place-items-center rounded-sm border p-1">
-                      <img
-                        src={g.item.icon}
-                        alt=""
-                        width={40}
-                        height={40}
-                        className="h-full w-full object-contain"
-                      />
-                    </span>
-                    <p className="dna-rarity-name truncate text-sm font-medium">{g.item.name}</p>
-                  </Link>
-                ) : (
-                  <p className="text-sm text-muted-2">{t('genimonNotFound')}</p>
-                )}
-                <span
-                  className={`shrink-0 rounded-sm px-2.5 py-0.5 text-xs font-medium ${
-                    g.rank === "best"
-                      ? "border border-gold/40 bg-gold/15 text-gold"
-                      : "border border-white/10 bg-panel/40 text-parch/85"
-                  }`}
-                >
-                  {g.rank === "best" ? "Best" : "Alt"}
-                </span>
+                    {g.rank === "best" ? "Best" : "Alt"}
+                  </span>
+                </div>
 
                 {/*
-                  Les Traits visés, s'il y en a. En base de ligne pour ne pas
-                  concurrencer la créature : ce sont des objectifs de farm, pas
-                  une seconde pièce d'équipement.
+                  Le passif : c'est pour lui qu'on choisit une créature. Affiché
+                  à son palier maximal, valeurs résolues — le texte du jeu porte
+                  des jetons `#1` qui, seuls, ne disent rien.
                 */}
-                {g.traits.length > 0 ? (
-                  <ul className="flex w-full flex-wrap items-center gap-1.5 border-t border-white/8 pt-2">
-                    {g.traits.map((trait) => (
-                      <li
-                        key={trait.key}
-                        title={trait.effect}
-                        className="inline-flex items-center gap-1.5 border border-white/10 bg-panel/45 px-2 py-0.5"
-                      >
-                        {trait.icon ? (
-                          <img src={trait.icon} alt="" width={18} height={18} loading="lazy" className="h-[18px] w-[18px]" />
-                        ) : null}
-                        <span className="text-[0.72rem] text-parch/85">{trait.name}</span>
-                      </li>
-                    ))}
-                  </ul>
+                {g.passive ? (
+                  <p className="whitespace-pre-line text-xs leading-relaxed text-parch/80">
+                    {renderPassive(g.passive, locale)}
+                  </p>
                 ) : null}
-              </div>
+
+                {/*
+                  Les emplacements de Trait, en sphères comme dans le jeu. Vides
+                  tant que le build n'en cure aucun : la place reste visible,
+                  pour qu'on sache qu'il y a quelque chose à y mettre.
+                */}
+                <div className="flex items-center gap-2 border-t border-white/8 pt-2.5">
+                  <span className="font-caps text-[0.55rem] uppercase tracking-[0.18em] text-muted-2">
+                    {t('genimonTraitsLabel')}
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    {Array.from({ length: g.traitSlots }, (_, slot) => {
+                      const trait = g.traits[slot];
+                      return trait ? (
+                        <span
+                          key={slot}
+                          title={`${trait.name} — ${trait.effect}`}
+                          className="grid h-7 w-7 place-items-center rounded-full border border-gold/40 bg-gold/10"
+                        >
+                          {trait.icon ? (
+                            <img src={trait.icon} alt={trait.name} width={18} height={18} className="h-[18px] w-[18px]" />
+                          ) : (
+                            <span className="text-[0.55rem] text-parch">{trait.name.slice(0, 2)}</span>
+                          )}
+                        </span>
+                      ) : (
+                        <span
+                          key={slot}
+                          aria-hidden
+                          className="h-7 w-7 rounded-full border border-dashed border-white/20"
+                        />
+                      );
+                    })}
+                  </span>
+                  {g.traits.length === 0 ? (
+                    <span className="text-[0.68rem] text-muted-2">{t('genimonTraitsPending')}</span>
+                  ) : null}
+                </div>
+              </article>
             ))}
           </div>
         </section>
@@ -2445,6 +2477,38 @@ export function BuildTabContent({
 // ---------------------------------------------------------------------------
 // Main component
 // ---------------------------------------------------------------------------
+
+/**
+ * Passif d'un Géniemon, jetons `#N` remplacés par leurs valeurs.
+ *
+ * Ce sont des taux – relevé sur les 56 créatures équipables, aucune valeur
+ * n'atteint 1 – donc un pourcentage. Le formatage passe par `Intl` avec la
+ * locale de la page : la virgule décimale n'est pas la même partout.
+ */
+function renderPassive(passive: GenimonPassive, locale: string): ReactNode[] {
+  const percent = new Intl.NumberFormat(locale, { style: "percent", maximumFractionDigits: 1 });
+  const parts: ReactNode[] = [];
+  const regex = /#(\d+)/g;
+  let last = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = regex.exec(passive.template)) !== null) {
+    if (match.index > last) parts.push(passive.template.slice(last, match.index));
+    const value = passive.values[match[1]];
+    parts.push(
+      value === undefined ? (
+        match[0]
+      ) : (
+        <span key={`${match.index}-${match[1]}`} className="font-medium text-gold">
+          {percent.format(value)}
+        </span>
+      ),
+    );
+    last = match.index + match[0].length;
+  }
+  if (last < passive.template.length) parts.push(passive.template.slice(last));
+  return parts;
+}
 
 export default function CharacterDetailClient({
   catalog,

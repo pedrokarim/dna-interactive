@@ -707,7 +707,10 @@
     "statDamageRate": "DMG",
     "calamityPathTitle": "Recommended Potential path",
     "calamityPathIntro": "At each tier from I to IV, the first Potential you pick is free; the other stays available but costs materials. The numbers give the order to take them in.",
-    "calamityPathUnknown": "The recommended order is not documented yet for this build. The tree is still browsable."
+    "calamityPathUnknown": "The recommended order is not documented yet for this build. The tree is still browsable.",
+    "genimonPassiveLevel": "Passive Lv. {level}",
+    "genimonTraitsLabel": "Traits",
+    "genimonTraitsPending": "to be set"
   },
   "items": {
     "libraryLabel": "Items Library",

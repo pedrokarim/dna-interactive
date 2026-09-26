@@ -6,6 +6,7 @@ import {
   getCharacterTranslation,
   resolveDisplayName,
 } from "@/lib/characters/catalog";
+import { getGenimonPassive, type GenimonPassive } from "@/lib/genimons/passive";
 import {
   genimonTraitSlots,
   resolveBuildTrait,
@@ -182,6 +183,8 @@ export interface BuildGenimonEntry {
   traits: BuildGenimonTrait[];
   /** Emplacements qu'ouvre cette créature : 4 pour une scintillante, 3 sinon. */
   traitSlots: number;
+  /** Son passif au palier maximal : la raison pour laquelle on la choisit. */
+  passive: GenimonPassive | null;
 }
 
 export interface BuildSkillPriority {
@@ -380,6 +383,7 @@ export function getCharacterBuilds(
         item: resolveBuildItemRef("genimons", g.itemId, lang),
         rank: g.rank,
         traitSlots: genimonTraitSlots(g.itemId),
+        passive: getGenimonPassive(g.itemId, lang),
         // `sanitize` avant de résoudre : un build peut venir d'une version où
         // un Trait existait encore, ou porter plus de clés que d'emplacements.
         traits: sanitizeTraitKeys(g.itemId, g.traits)
