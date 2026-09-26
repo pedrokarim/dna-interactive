@@ -58,8 +58,6 @@ export const MODS_GUIDE_SLOTS = [
   "center",
   /** Infobulle d'une pièce empilable : la mention « +5 ». */
   "stacking",
-  /** La jauge de tolérance et son plafond. */
-  "tolerance",
 ] as const;
 
 export type ModsGuideSlot = (typeof MODS_GUIDE_SLOTS)[number];
