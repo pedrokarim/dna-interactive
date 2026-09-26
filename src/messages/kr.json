@@ -1493,7 +1493,7 @@
     "captionBadge": "칸 배지 확대.",
     "captionApply": "칸은 01부터 08까지 번호가 매겨지며, 게임이 선택한 칸에 모듈을 적용할지 묻습니다.",
     "captionCenter": "캐릭터의 중앙 칸. 어엿한 한 조각이며, 자체 비용 배지를 가집니다.",
-    "captionStacking": "서약자 부품에 표시된 중첩 안내.",
+    "captionStacking": "게임이 분명히 적어 둡니다. +5가 되면 이 부품은 여러 개를 동시에 장착할 수 있습니다. 아래에는 같은 「Ardeur · Pouvoir」가 둘, 그리고 똑같은 아이콘의 「Embrasement」가 셋.",
     "metaModsDescription": "Demon Wedge의 작동 방식 이해하기: 레벨, 친화성, 허용치, 번역, 효과 읽는 법.",
     "metaGenericDescription": "{category}의 작동 방식 이해하기: 레벨, 친화성, 허용치, 번역, 효과 읽는 법.",
     "metaFallbackTitle": "아이템 가이드",

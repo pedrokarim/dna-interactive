@@ -1493,7 +1493,7 @@
     "captionBadge": "Le badge d'une case, agrandi.",
     "captionApply": "Les cases sont numérotées 01 à 08 ; le jeu propose d'appliquer un module sur celle qu'on a choisie.",
     "captionCenter": "Le centre d'un personnage : une pièce à part entière, avec son badge de coût.",
-    "captionStacking": "La mention d'empilement sur une pièce Pactisant.",
+    "captionStacking": "Le jeu l'écrit noir sur blanc : une fois à +5, la pièce s'équipe en plusieurs exemplaires. En bas, deux « Ardeur · Pouvoir » côte à côte – et trois « Embrasement » qui portent exactement la même icône.",
     "metaModsDescription": "Comprendre le fonctionnement des Demon Wedges : niveaux, affinité, tolérance, traductions et lecture des effets.",
     "metaGenericDescription": "Comprendre le fonctionnement de {category} : niveaux, affinité, tolérance, traductions et lecture des effets.",
     "metaFallbackTitle": "Guide items",

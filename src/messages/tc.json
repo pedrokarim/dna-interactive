@@ -1493,7 +1493,7 @@
     "captionBadge": "放大的欄位徽記。",
     "captionApply": "格位編號 01 至 08；遊戲會詢問是否將模組套用到所選的那一格。",
     "captionCenter": "角色的中央格：一件完整的部件，也有自己的花費徽章。",
-    "captionStacking": "契約者零件上的疊加說明。",
+    "captionStacking": "遊戲寫得明明白白：升到 +5 後，這個部件可以同時裝備多個。下方有兩個「Ardeur · Pouvoir」並排，還有三個圖示完全相同的「Embrasement」。",
     "metaModsDescription": "了解 Demon Wedge 的運作方式：等級、親和、容許值、翻譯與效果解讀。",
     "metaGenericDescription": "了解 {category} 的運作方式：等級、親和、容許值、翻譯與效果解讀。",
     "metaFallbackTitle": "道具指南",

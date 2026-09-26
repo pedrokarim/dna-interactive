@@ -314,7 +314,8 @@ export async function ModsGuideChapter({
             <p className="border-l-2 border-anemo/50 pl-3">{t("stackRule")}</p>
             <p className="text-muted">{t("stackTrap")}</p>
           </div>
-          <GuideImageSlot slot="stacking" family="mods" caption={t("captionStacking")} ratio="4 / 3" />
+          {/* Portrait : c'est une infobulle, un cadre 4/3 en couperait le texte. */}
+          <GuideImageSlot slot="stacking" family="mods" caption={t("captionStacking")} ratio="867 / 1384" />
         </div>
       );
 

@@ -1493,7 +1493,7 @@
     "captionBadge": "スロットのバッジの拡大。",
     "captionApply": "枠は 01 から 08 まで番号が振られ、選んだ枠にモジュールを適用するか尋ねられます。",
     "captionCenter": "キャラクターの中央枠。れっきとした一枚で、コストのバッジも持ちます。",
-    "captionStacking": "誓約者のパーツに表示される重ね掛けの記載。",
+    "captionStacking": "ゲームがはっきり書いています。+5 にすれば、この部品は複数同時に装備できます。下段には同じ「Ardeur · Pouvoir」が二つ、そしてまったく同じアイコンの「Embrasement」が三つ。",
     "metaModsDescription": "Demon Wedge の仕組みを理解する：レベル、親和性、許容値、翻訳、効果の読み方。",
     "metaGenericDescription": "{category} の仕組みを理解する：レベル、親和性、許容値、翻訳、効果の読み方。",
     "metaFallbackTitle": "アイテムガイド",
