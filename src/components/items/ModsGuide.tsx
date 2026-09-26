@@ -281,9 +281,13 @@ export async function ModsGuideChapter({
             <GuideImageSlot slot="trackBadge" family="mods" caption={t("captionBadge")} ratio="4 / 3" />
           </div>
 
-          <div className="mt-5 grid gap-5 lg:grid-cols-2">
-            <GuideImageSlot slot="board" family="mods" caption={t("captionBoard")} />
-            <GuideImageSlot slot="trackShiftApply" family="mods" caption={t("captionApply")} />
+          {/*
+            Deux écrans entiers : côte à côte ils tombent sous 500 px et
+            deviennent illisibles. Empilés et bornés, on y lit les badges.
+          */}
+          <div className="mt-5 space-y-5">
+            <GuideImageSlot slot="board" family="mods" caption={t("captionBoard")} className="max-w-4xl" />
+            <GuideImageSlot slot="trackShiftApply" family="mods" caption={t("captionApply")} className="max-w-4xl" />
           </div>
         </div>
       );
