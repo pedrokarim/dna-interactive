@@ -65,22 +65,34 @@ function withAlpha(hex: string, alpha: number): string {
 
 /* ------------------------------------------------------------------ horloge */
 
+/** Part de la journée locale déjà écoulée (0 à minuit, 0,5 à midi). */
+function dayFractionOf(now: Date): number {
+  return (now.getHours() * 60 + now.getMinutes()) / 1440;
+}
+
 /**
- * Date du jour **du visiteur**, resynchronisée quand la page revient au premier
- * plan (onglet réveillé, retour sur le site) et une fois par minute pour passer
- * minuit sans rechargement.
+ * Date du jour **du visiteur** et heure dans cette journée, resynchronisées
+ * quand la page revient au premier plan (onglet réveillé, retour sur le site)
+ * et une fois par minute pour passer minuit sans rechargement.
  *
- * Le premier rendu utilise la valeur calculée côté serveur : identique au HTML
- * envoyé, donc pas d'écart d'hydratation ; l'effet corrige juste après avec le
- * fuseau réel du navigateur.
+ * L'heure sert au curseur « Aujourd'hui » : posé au début du jour, il tombait
+ * sur le trait qui sépare hier d'aujourd'hui, presque une journée en retard le
+ * soir. Il avance maintenant dans la colonne du jour.
+ *
+ * Le premier rendu utilise la valeur calculée côté serveur (et midi pour
+ * l'heure) : identique au HTML envoyé, donc pas d'écart d'hydratation ;
+ * l'effet corrige juste après avec le fuseau réel du navigateur.
  */
-function useToday(serverToday: string, override?: string): string {
-  const [today, setToday] = useState(override || serverToday);
+function useToday(serverToday: string, override?: string): { today: string; dayFraction: number } {
+  const [clock, setClock] = useState({ today: override || serverToday, dayFraction: 0.5 });
 
   useEffect(() => {
     // Forçage admin : la valeur d'init suffit, rien à resynchroniser.
     if (override) return;
-    const sync = () => setToday(localTodayIso());
+    const sync = () => {
+      const now = new Date();
+      setClock({ today: localTodayIso(now), dayFraction: dayFractionOf(now) });
+    };
     sync();
     const timer = window.setInterval(sync, 60_000);
     const onWake = () => sync();
@@ -93,7 +105,7 @@ function useToday(serverToday: string, override?: string): string {
     };
   }, [override]);
 
-  return today;
+  return clock;
 }
 
 /* ------------------------------------------------------------------ barre */
@@ -285,7 +297,7 @@ export function CalendarTimeline({
     [locale],
   );
 
-  const today = useToday(serverToday, overrideToday);
+  const { today, dayFraction } = useToday(serverToday, overrideToday);
 
   /* ------------------------------------------------------------ plage rendue */
 
@@ -514,7 +526,8 @@ export function CalendarTimeline({
     [rangeStart, tickFrom, tickTo, tickStep, pxPerDay],
   );
 
-  const todayLeft = diffDays(rangeStart, today) * pxPerDay;
+  // Curseur à l'heure actuelle, dans la colonne du jour (et non sur son bord gauche).
+  const todayLeft = (diffDays(rangeStart, today) + dayFraction) * pxPerDay;
   const todayOffScreen: -1 | 0 | 1 = !pxPerDay || !viewportW
     ? 0
     : todayLeft < scrollLeft
@@ -650,13 +663,15 @@ export function CalendarTimeline({
               ))}
             </div>
 
-            {/* graduations du jour */}
+            {/* graduations du jour : le libellé est centré sur la colonne de SON
+                jour. Posé sur le trait de début, « 30 sept. » coiffait la fin du
+                29 : une barre qui s'arrête le 29 semblait aller jusqu'au 30. */}
             <div className="absolute inset-x-0 z-[1]" style={{ top: 22, height: HEADER_H - 22 }}>
               {ticks.map((tick) => (
                 <span
                   key={tick.iso}
                   className="absolute top-0 -translate-x-1/2 font-mono text-[0.58rem] text-muted-2"
-                  style={{ left: tick.offsetDays * pxPerDay }}
+                  style={{ left: (tick.offsetDays + 0.5) * pxPerDay }}
                 >
                   {tickStep === 1 ? dayNumFmt.format(new Date(tick.iso)) : dayFmt.format(new Date(tick.iso))}
                 </span>

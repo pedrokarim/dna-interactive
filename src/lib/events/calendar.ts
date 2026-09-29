@@ -195,10 +195,16 @@ export const INITIAL_WINDOW_AFTER = 240;
 /** Largeur mini d'une barre pour rester lisible (px) — sert aussi au calage des voies. */
 export const MIN_BAR_PX = 168;
 
-/** Pas de graduation adapté à l'échelle (en jours). */
+/**
+ * Pas de graduation adapté à l'échelle (en jours).
+ *
+ * Un jour sur un dès que le numéro seul tient (≈ 20 px) : le mois est déjà
+ * écrit dans le bandeau du dessus. L'ancien pas de 2 jours, au zoom par défaut,
+ * laissait un jour sur deux sans libellé : une barre qui s'arrête le 29 venait
+ * buter contre « 30 sept. », faute de « 29 » où finir.
+ */
 export function tickStepForScale(pxPerDay: number): number {
-  if (pxPerDay >= 46) return 1;
-  if (pxPerDay >= 22) return 2;
+  if (pxPerDay >= 20) return 1;
   if (pxPerDay >= 9) return 7;
   return 14;
 }
