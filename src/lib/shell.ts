@@ -91,6 +91,7 @@ const SHELL_BREADCRUMBS: Record<string, string> = {
   "/items/genimons": "Genimons",
   "/items/weapons": "Arsenal",
   "/login": "Le Seuil",
+  "/notifications": "La Chronique",
   "/profile": "Votre Sceau",
   "/reset-password": "Le Seuil",
   "/signup": "Le Pacte",

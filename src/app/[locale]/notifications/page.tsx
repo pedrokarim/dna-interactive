@@ -1,3 +1,5 @@
+import { resolveBreadcrumb } from "@/lib/shell";
+import { DnaPageMark } from "@/components/dna/PageMark";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { NotificationsPageClient } from "@/components/notifications/NotificationsPageClient";
@@ -26,7 +28,7 @@ export default async function NotificationsPage({ params }: { params: Promise<{ 
   return (
     <div className="mx-auto w-full max-w-[1100px] px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
       <div className="mb-5">
-        <p className="font-mono text-[0.72rem] uppercase tracking-[0.28em] text-gold">{"// SIGNAL.FEED"}</p>
+        <DnaPageMark>{resolveBreadcrumb("/notifications")}</DnaPageMark>
         <h1 className="mt-1 font-display text-4xl font-semibold text-parch md:text-5xl">{t("heading")}</h1>
         <span aria-hidden className="mt-2 block h-0.5 w-16 bg-gold" />
         <p className="mt-3 max-w-2xl text-sm text-parch/75">{t("intro")}</p>

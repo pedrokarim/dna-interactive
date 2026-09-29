@@ -1,5 +1,6 @@
 "use client";
 
+import { DnaPageMark } from "@/components/dna/PageMark";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/components/dna/cn";
 import { useTranslations } from "next-intl";
@@ -709,9 +710,7 @@ export default function ItemsGridClient({
       {/* En-tête gabarit — eyebrow mono + titre + compteur en équerres */}
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div className="min-w-0">
-          <p className="font-mono text-[0.72rem] uppercase tracking-[0.28em] text-gold">
-            {`// ${favoritesOnly ? tc('favorites') : t('categoryLabel')}`}
-          </p>
+          <DnaPageMark>{favoritesOnly ? tc('favorites') : t('categoryLabel')}</DnaPageMark>
           <h1 className="mt-1 font-display text-4xl font-semibold text-parch md:text-5xl">
             {favoritesOnly ? `Favoris ${category.title}` : category.title}
           </h1>

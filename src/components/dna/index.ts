@@ -31,6 +31,7 @@ export { DnaRibbon } from "./Ribbon";
 export { DnaAccordion } from "./Accordion";
 export { DnaSectionLabel } from "./SectionLabel";
 export { DnaSectionMark, DnaLozenge } from "./SectionMark";
+export { DnaPageMark, DnaStar } from "./PageMark";
 export { DnaDivider } from "./Divider";
 export { DnaSeal } from "./Seal";
 export { DnaTile } from "./Tile";

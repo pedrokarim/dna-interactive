@@ -1,3 +1,4 @@
+import { DnaPageMark } from "@/components/dna/PageMark";
 import type { Metadata, ResolvingMetadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
@@ -27,11 +28,8 @@ export default async function BannersPage({ params }: { params: Promise<{ locale
     <div className="space-y-8">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div className="min-w-0">
-          <Link
-            href="/cosmetics"
-            className="font-mono text-[0.72rem] uppercase tracking-[0.28em] text-gold transition-colors hover:text-gold-bright"
-          >
-            {`// ${t("headerLabel")}`}
+          <Link href="/cosmetics" className="inline-flex transition-opacity hover:opacity-80">
+            <DnaPageMark>{t("headerLabel")}</DnaPageMark>
           </Link>
           <h1 className="mt-1 font-display text-4xl font-semibold text-parch md:text-5xl">{t("bannersTitle")}</h1>
           <span aria-hidden className="mt-2 block h-0.5 w-16 bg-gold" />

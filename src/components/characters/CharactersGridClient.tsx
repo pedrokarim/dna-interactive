@@ -1,5 +1,6 @@
 "use client";
 
+import { DnaPageMark } from "@/components/dna/PageMark";
 import { Link } from "@/i18n/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -382,9 +383,7 @@ export default function CharactersGridClient({
       {/* En-tête gabarit — eyebrow mono + titre + compteur en équerres */}
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div className="min-w-0">
-          <p className="font-mono text-[0.72rem] uppercase tracking-[0.28em] text-gold">
-            {`// ${t('headerLabel')}`}
-          </p>
+          <DnaPageMark>{t('headerLabel')}</DnaPageMark>
           <h1 className="mt-1 font-display text-4xl font-semibold text-parch md:text-5xl">
             {t('title')}
           </h1>

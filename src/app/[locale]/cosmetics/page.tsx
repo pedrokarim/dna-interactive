@@ -1,3 +1,4 @@
+import { DnaPageMark } from "@/components/dna/PageMark";
 import { getTranslations } from "next-intl/server";
 import { ChevronRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
@@ -20,7 +21,7 @@ export default async function CosmeticsHubPage({ params }: { params: Promise<{ l
     <div className="space-y-8 md:space-y-10">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div className="min-w-0">
-          <p className="font-mono text-[0.72rem] uppercase tracking-[0.28em] text-gold">{`// ${t("headerLabel")}`}</p>
+          <DnaPageMark>{t("headerLabel")}</DnaPageMark>
           <h1 className="mt-1 font-display text-4xl font-semibold text-parch md:text-5xl">{t("title")}</h1>
           <span aria-hidden className="mt-2 block h-0.5 w-16 bg-gold" />
           <p className="mt-3 max-w-2xl text-sm text-parch/75">{t("description")}</p>

@@ -182,7 +182,7 @@ export function UpcomingCharacterPage({
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,22rem)]">
           <div className="flex flex-col gap-6">
             <section>
-              <DnaSectionMark>PROFILE.DOSSIER</DnaSectionMark>
+              <DnaSectionMark>Dossier</DnaSectionMark>
               <DnaPanel className="mt-3 p-5">
                 <div className="flex flex-col gap-3">
                   {character.lore.map((paragraph, index) => (
@@ -198,7 +198,7 @@ export function UpcomingCharacterPage({
             </section>
 
             <section>
-              <DnaSectionMark>KIT.PREVIEW</DnaSectionMark>
+              <DnaSectionMark>Compétences annoncées</DnaSectionMark>
               <DnaPanel className="mt-3 p-5">
                 <p className="font-sans text-sm text-muted">
                   Le jeu déclare {character.skillIds.length} compétences ({character.skillIds.join(", ")}), mais leurs
@@ -223,7 +223,7 @@ export function UpcomingCharacterPage({
             </section>
 
             <section>
-              <DnaSectionMark>STATS.BASELINE</DnaSectionMark>
+              <DnaSectionMark>Statistiques de base</DnaSectionMark>
               <DnaPanel className="mt-3 p-5">
                 <p className="font-sans text-sm text-muted">
                   Valeurs lues dans <code className="font-mono text-[0.72rem] text-gold/80">BattleChar</code>, projetées

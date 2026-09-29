@@ -1,3 +1,5 @@
+import { resolveBreadcrumb } from "@/lib/shell";
+import { DnaPageMark } from "@/components/dna/PageMark";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CalendarAdminClient } from "@/components/admin/CalendarAdminClient";
@@ -18,7 +20,7 @@ export default async function AdminCalendarPage() {
   return (
     <div className="mx-auto w-full max-w-[1100px] px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
       <div className="mb-5">
-        <p className="font-mono text-[0.72rem] uppercase tracking-[0.28em] text-gold">{"// ADMIN.CALENDAR"}</p>
+        <DnaPageMark>{resolveBreadcrumb("/admin/calendar")}</DnaPageMark>
         <h1 className="mt-1 font-display text-3xl font-semibold text-parch md:text-4xl">Calendrier – administration</h1>
         <span aria-hidden className="mt-2 block h-0.5 w-16 bg-gold" />
         <p className="mt-3 max-w-2xl text-sm text-parch/75">

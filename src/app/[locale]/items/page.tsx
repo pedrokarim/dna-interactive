@@ -1,3 +1,4 @@
+import { DnaPageMark } from "@/components/dna/PageMark";
 import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
 import { ChevronRight, Clock3, Grid3X3, Wrench } from "lucide-react";
@@ -17,9 +18,7 @@ export default async function ItemsCategoriesPage() {
     <div className="space-y-8">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div className="min-w-0">
-          <p className="font-mono text-[0.72rem] uppercase tracking-[0.28em] text-gold">
-            {`// ${tItems('libraryLabel')}`}
-          </p>
+          <DnaPageMark>{tItems('libraryLabel')}</DnaPageMark>
           <h1 className="mt-1 font-display text-4xl font-semibold text-parch md:text-5xl">
             {tItems('categoriesTitle')}
           </h1>

@@ -457,6 +457,18 @@ body:has(.map-page) .grecaptcha-badge {
 /* Chiffres seuls dans une pastille ronde (compteurs de notifications). */
 .dna-optical-num { position: relative; top: 0.07em; }
 
+/* Étoile du sur-titre de page (`DnaPageMark`), centrée sur l'encre du libellé.
+   Mesuré au pixel (Playwright, fond aplati, libellé ramené à « HHH » pour ne
+   garder que la hauteur des capitales) : −0,0353 em sur Cinzel. Les idéogrammes
+   et kana ont leur encre plus haute que les capitales : 0,33 à 0,45 px de plus
+   à 11,5 px, soit −0,0673 em au total.
+   `transform` et non `top` : Chrome arrondit au pixel entier le décalage d'une
+   boîte qui contient du SVG, et un écart de 0,4 px disparaissait. */
+.dna-page-star { transform: translateY(-0.0353em); }
+:lang(ja) .dna-page-star,
+:lang(ko) .dna-page-star,
+:lang(zh) .dna-page-star { transform: translateY(-0.0673em); }
+
 /* ===========================================================================
    DNA UI — primitives ornementales (clip-paths, animations, frise, watermark)
    que Tailwind ne fournit pas. Consommées par les composants src/components/dna.
