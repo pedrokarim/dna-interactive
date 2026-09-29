@@ -29,6 +29,7 @@ export type FeatureKey =
   | "calendar"
   | "characters"
   | "items"
+  | "cosmetics"
   | "weapons"
   | "genimons"
   | "drafts"
@@ -58,6 +59,9 @@ export const FEATURE_BADGES: Partial<Record<FeatureKey, FeatureBadgeRule>> = {
 
   // Commissions : fonction encore en rodage.
   commissions: { badge: "beta", until: "2026-12-31" },
+
+  // Cosmétiques et bannières de la Myriade, sortis le 29/09/2026.
+  cosmetics: { badge: "new", until: monthsAfter("2026-09-29", 2) },
 
   // Sans badge pour l'instant — décommenter pour en afficher un :
   // calendar: { badge: "new", until: monthsAfter("2026-09-25", 2) },

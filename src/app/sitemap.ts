@@ -2,6 +2,7 @@ import { MetadataRoute } from "next";
 import { NAVIGATION } from "@/lib/constants";
 import { getAllCharacters, getCharacterSlug } from "@/lib/characters/catalog";
 import { getItemCatalog } from "@/lib/items/catalog";
+import { getAllCosmetics, getBanners, getCosmeticsCatalog } from "@/lib/cosmetics/catalog";
 import { getAllRegions } from "@/lib/map/regions";
 import { locales } from "@/i18n/config";
 
@@ -100,6 +101,37 @@ export default function sitemap(): MetadataRoute.Sitemap {
           alternates: alternatesForPath(route.path),
         });
       }
+    }
+  }
+
+  // Cosmétiques : accueil, catégories, bannières, puis une fiche par objet.
+  const cosmeticPaths = [
+    { path: NAVIGATION.cosmetics, priority: 0.85, changeFrequency: "weekly" as const },
+    { path: `${NAVIGATION.cosmetics}/banners`, priority: 0.8, changeFrequency: "weekly" as const },
+    ...getCosmeticsCatalog().categories.map((category) => ({
+      path: `${NAVIGATION.cosmetics}/${category.slug}`,
+      priority: 0.8,
+      changeFrequency: "weekly" as const,
+    })),
+    ...getBanners().map((banner) => ({
+      path: `${NAVIGATION.cosmetics}/banners/${banner.id}`,
+      priority: 0.7,
+      changeFrequency: "monthly" as const,
+    })),
+    ...getAllCosmetics().map((item) => ({
+      path: `${NAVIGATION.cosmetics}/${item.category}/${item.id}`,
+      priority: 0.6,
+      changeFrequency: "monthly" as const,
+    })),
+  ];
+  for (const route of cosmeticPaths) {
+    for (const locale of locales) {
+      entries.push({
+        url: `${baseUrl}/${locale}${route.path}`,
+        changeFrequency: route.changeFrequency,
+        priority: route.priority,
+        alternates: alternatesForPath(route.path),
+      });
     }
   }
 

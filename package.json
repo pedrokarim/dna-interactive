@@ -13,6 +13,7 @@
     "extract:characters:site": "bun run research_data/extract-characters.ts",
     "extract:genimons:site": "bun run research_data/extract-genimons.ts",
     "extract:skills:site": "bun run research_data/extract-skills.ts",
+    "extract:cosmetics:site": "bun run research_data/extract-cosmetics.ts",
     "db:push": "drizzle-kit push",
     "db:migrate:notifications": "node scripts/migrate-notifications.mjs",
     "seed:calendar": "bun run scripts/seed-calendar-events.ts",
@@ -76,6 +77,7 @@
     "tailwindcss": "^4",
     "typescript": "^5",
     "vite": "^8.0.16",
-    "vitest": "^4.1.8"
+    "vitest": "^4.1.8",
+    "wasmoon": "^1.16.0"
   }
 }

@@ -56,7 +56,8 @@
     "builds": "Builds communauté",
     "calendar": "Calendrier",
     "discord": "Discord",
-    "twitter": "X"
+    "twitter": "X",
+    "cosmetics": "Cosmétiques"
   },
   "common": {
     "close": "Fermer",
@@ -904,7 +905,11 @@
     "characterNotFoundDescription": "Ce personnage n'existe pas dans la base de données.",
     "draftDetailTitle": "Détail du plan de forge",
     "draftNotFoundDescription": "Plan de forge introuvable.",
-    "characterOgAlt": "Personnage – DNA Interactive"
+    "characterOgAlt": "Personnage – DNA Interactive",
+    "cosmeticsTitle": "Cosmétiques – tenues, accessoires et skins",
+    "cosmeticsDescription": "Tous les cosmétiques de Duet Night Abyss : tenues, coiffures, accessoires, effets, skins d’armes, montures et postures, avec visuels, obtention et prix.",
+    "bannersTitle": "Bannières de la Myriade",
+    "bannersDescription": "Les bannières de la Myriade de Duet Night Abyss : tenues vedettes, taux, garantie, contenu complet, paliers cumulés et échange de prismes."
   },
   "commissions": {
     "eyebrow": "Mandats scellés",
@@ -2074,5 +2079,172 @@
     "dynamicEvent": "Événement imprévu",
     "npc": "PNJ",
     "readable": "Document à lire"
+  },
+  "cosmetics": {
+    "headerLabel": "Garde-robe",
+    "title": "Cosmétiques",
+    "description": "Tenues, coiffures, accessoires, effets, skins d’armes, montures et postures : tous les cosmétiques de Duet Night Abyss, classés comme dans la garde-robe du jeu.",
+    "countLabel": "Cosmétiques",
+    "count": "{filtered} / {total} cosmétiques",
+    "itemCount": "{count, plural, one {# cosmétique} other {# cosmétiques}}",
+    "categories": {
+      "outfits": {
+        "title": "Tenues",
+        "description": "Tenues de base, tenues uniques et collections que plusieurs personnages peuvent porter."
+      },
+      "hairstyles": {
+        "title": "Coiffures",
+        "description": "Coiffures et couvre-chefs communs à tous les personnages."
+      },
+      "accessories": {
+        "title": "Accessoires",
+        "description": "Chapeaux, ornements de tête, de visage, de dos et de taille, classés par emplacement."
+      },
+      "effects": {
+        "title": "Effets visuels",
+        "description": "Auras, traces de pas, téléportation, attaque plongeante, Bond Cyclonique et défaite."
+      },
+      "victory-poses": {
+        "title": "Animations de victoire",
+        "description": "Les poses jouées à la fin d’un combat."
+      },
+      "weapon-skins": {
+        "title": "Skins d’armes",
+        "description": "Apparences des armes de mêlée et à distance, classées par type d’arme."
+      },
+      "weapon-ornaments": {
+        "title": "Ornements d’armes",
+        "description": "Breloques et pendentifs accrochés aux armes."
+      },
+      "weapon-stances": {
+        "title": "Effets de compétence",
+        "description": "Variantes visuelles des attaques en course et des attaques chargées."
+      },
+      "mounts": {
+        "title": "Montures",
+        "description": "Toutes les montures du jeu."
+      },
+      "gestures": {
+        "title": "Postures",
+        "description": "Gestes et poses à jouer en jeu."
+      },
+      "dyes": {
+        "title": "Teintures",
+        "description": "Teintures de base et avancées pour recolorer les tenues."
+      }
+    },
+    "subcategories": {
+      "outfits": {
+        "default": "Tenues de base",
+        "signature": "Tenues uniques",
+        "series": "Collections"
+      },
+      "weapon-skins": {
+        "universal": "Toutes armes"
+      },
+      "weapon-stances": {
+        "run-attack": "Attaque en course",
+        "heavy-attack": "Attaque chargée"
+      }
+    },
+    "obtain": {
+      "banner": "Myriade",
+      "prismExchange": "Échange de prismes",
+      "shop": "Boutique",
+      "event": "Événement",
+      "impressionShop": "Boutique d’Impressions",
+      "battlePass": "Ballade du Ménestrel",
+      "starterPack": "Coffret de départ",
+      "quest": "Missions",
+      "reputation": "Réputation",
+      "default": "Tenue de base"
+    },
+    "filterSubcategory": "Emplacement",
+    "filterObtain": "Obtention",
+    "filterCharacter": "Personnage",
+    "hiddenFilter": "Secrets",
+    "searchPlaceholder": "Rechercher un cosmétique…",
+    "sortDefault": "Par défaut",
+    "sortName": "Par nom",
+    "sortRarity": "Par rareté",
+    "noResults": "Aucun cosmétique ne correspond à ces filtres.",
+    "noResultsHint": "Élargissez la recherche ou réinitialisez les filtres.",
+    "addToFavorites": "Ajouter aux favoris",
+    "removeFromFavorites": "Retirer des favoris",
+    "hiddenBadge": "Secret",
+    "hiddenHint": "Masqué dans la garde-robe du jeu tant qu’il n’est pas obtenu.",
+    "variantsCount": "{count} coloris",
+    "characterCount": "{count, plural, one {# personnage} other {# personnages}}",
+    "categoryMetaTitle": "{category} – {count} cosmétiques",
+    "detailMetaTitle": "{name} – {category}",
+    "detailMetaDescription": "{name} : cosmétique de Duet Night Abyss ({category}), avec ses visuels, son obtention, son prix et ses coloris.",
+    "visuals": {
+      "icon": "Icône",
+      "portrait": "Portrait",
+      "bust": "Illustration",
+      "wide": "Aperçu",
+      "model3d": "3D"
+    },
+    "soon": "bientôt",
+    "model3dTitle": "Visionneuse 3D",
+    "model3dSoon": "La visionneuse 3D arrive bientôt sur cette fiche.",
+    "info": "Informations",
+    "slot": "Emplacement",
+    "refund": "Doublon converti en",
+    "gameId": "ID du jeu",
+    "obtainTitle": "Obtention",
+    "purchaseLimit": "Limite : {count}",
+    "descriptionTitle": "Description",
+    "charactersTitle": "Personnages ({count})",
+    "charactersHint": "Choisissez un personnage pour afficher sa déclinaison de la tenue.",
+    "charactersHintShared": "Personnages qui peuvent porter cette tenue. Le visuel est le même pour tous.",
+    "viewCharacter": "Voir la fiche de {name}",
+    "characterTitle": "Personnage",
+    "variantsTitle": "Coloris ({count})",
+    "bannersTitle": "Bannières d’invocation",
+    "bannerPeriod": "du {start} au {end}",
+    "bannerStatus": {
+      "current": "En cours",
+      "upcoming": "À venir",
+      "ended": "Terminée",
+      "permanent": "Permanente"
+    },
+    "endsIn": "Se termine dans {time}",
+    "startsIn": "Commence dans {time}",
+    "bannersSection": "La Myriade du moment",
+    "viewAllBanners": "Toutes les bannières",
+    "categoriesSection": "Catégories",
+    "dataVersion": "À jour pour la version {version} du jeu.",
+    "bannersDescription": "Les bannières de la Myriade, des plus récentes aux plus anciennes : tenue vedette, taux, contenu complet, paliers cumulés et échange de prismes.",
+    "bannersCountLabel": "Bannières",
+    "bannerTypes": {
+      "limited": "Myriade limitée",
+      "rerun": "Retour limité",
+      "standard": "Myriade permanente"
+    },
+    "percent": "{value} %",
+    "viewFeatured": "Voir « {name} »",
+    "ratesTitle": "Taux",
+    "rateStar5": "Objet 5★",
+    "rateStar4": "Objet 4★",
+    "pityLabel": "Garantie 5★",
+    "pityValue": "{count} tirages au plus",
+    "tenPullLabel": "Tous les 10 tirages",
+    "tenPullValue": "4★ ou mieux",
+    "periodTitle": "Période",
+    "periodStart": "Début",
+    "periodEnd": "Fin",
+    "costLabel": "Tirages avec :",
+    "poolStar5": "Objets 5★",
+    "poolStar5HintLimited": "Quand un tirage donne un objet 5★, c’est l’un de ceux-ci, avec la probabilité indiquée.",
+    "poolStar5HintStandard": "Quand un tirage donne un objet 5★, c’est l’une de ces apparences, avec la probabilité indiquée.",
+    "poolStar4": "Objets 4★",
+    "poolStar3": "Objets 3★",
+    "cumulativeTitle": "Récompenses cumulées",
+    "pullsCount": "{count} tirages",
+    "exchangeTitle": "Échange de prismes",
+    "exchangeHint": "Objets proposés contre des Prismes iridescents pendant la bannière.",
+    "bannerMetaTitle": "{name} – {type}",
+    "bannerMetaDescription": "Bannière « {name} » de Duet Night Abyss : {featured}, taux, garantie, contenu complet et échange de prismes."
   }
 }

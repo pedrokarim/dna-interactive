@@ -29,6 +29,8 @@ export const GAME_GLYPHS = [
   "geniemons",
   "drafts",
   "mods",
+  "cosmetics",
+  "banners",
   "reading",
   "language",
   "settings",

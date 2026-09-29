@@ -1,0 +1,732 @@
+{
+ "generatedAt": "2026-09-29T17:05:19.298Z",
+ "gameVersion": 160,
+ "categories": [
+  {
+   "kind": "outfit",
+   "slug": "outfits",
+   "count": 58,
+   "tabIcon": "/assets/cosmetics/tab/T_Tab_Fashion_Clothing.png",
+   "sample": "/assets/cosmetics/outfit/T_Head_WeitaF.png",
+   "subcategories": [
+    {
+     "id": "series",
+     "count": 8,
+     "label": null
+    },
+    {
+     "id": "signature",
+     "count": 18,
+     "label": null
+    },
+    {
+     "id": "default",
+     "count": 32,
+     "label": null
+    }
+   ]
+  },
+  {
+   "kind": "hairstyle",
+   "slug": "hairstyles",
+   "count": 45,
+   "tabIcon": "/assets/cosmetics/tab/T_Tab_Fashion_Hair.png",
+   "sample": "/assets/cosmetics/hairstyle/T_Icon_Shuimu.png",
+   "subcategories": []
+  },
+  {
+   "kind": "accessory",
+   "slug": "accessories",
+   "count": 495,
+   "tabIcon": "/assets/cosmetics/tab/T_Tab_Accessory.png",
+   "sample": "/assets/cosmetics/accessory/T_Fashion_Waist15.png",
+   "subcategories": [
+    {
+     "id": "hat",
+     "count": 36,
+     "label": {
+      "FR": "Accessoire de chapeau",
+      "EN": "Hatpiece",
+      "ES": "Sombrero",
+      "JP": "ハット",
+      "KR": "모자",
+      "TC": "帽子裝飾",
+      "DE": "Hatpiece"
+     }
+    },
+    {
+     "id": "head",
+     "count": 153,
+     "label": {
+      "FR": "Tête",
+      "EN": "Head",
+      "DE": "Kopf",
+      "ES": "Cabeza",
+      "JP": "ヘッド",
+      "KR": "머리 장식",
+      "TC": "頭部裝飾"
+     }
+    },
+    {
+     "id": "face",
+     "count": 94,
+     "label": {
+      "FR": "Visage",
+      "EN": "Face",
+      "DE": "Gesicht",
+      "ES": "Cara",
+      "JP": "フェイス",
+      "KR": "얼굴 장식",
+      "TC": "臉部裝飾"
+     }
+    },
+    {
+     "id": "back",
+     "count": 63,
+     "label": {
+      "FR": "Accessoire dorsal – Haut",
+      "EN": "Upper-Backpiece",
+      "DE": "Rückenzubehör",
+      "ES": "Placa dorsal superior",
+      "JP": "バック・上",
+      "KR": "등 장식·위",
+      "TC": "背部裝飾·上"
+     }
+    },
+    {
+     "id": "tail",
+     "count": 73,
+     "label": {
+      "FR": "Accessoire dorsal – Bas",
+      "EN": "Lower-Backpiece",
+      "ES": "Placa dorsal inferior",
+      "JP": "バック·下",
+      "KR": "등 장식·아래",
+      "TC": "背部裝飾·下",
+      "DE": "Lower-Backpiece"
+     }
+    },
+    {
+     "id": "waist",
+     "count": 66,
+     "label": {
+      "FR": "Taille",
+      "EN": "Waist",
+      "DE": "Taille",
+      "ES": "Cintura",
+      "JP": "ウエスト",
+      "KR": "허리 장식",
+      "TC": "腰部裝飾"
+     }
+    },
+    {
+     "id": "hair",
+     "count": 10,
+     "label": {
+      "FR": "Coiffure",
+      "EN": "Hairstyle",
+      "ES": "Peinado",
+      "JP": "ヘアスタイル",
+      "KR": "헤어",
+      "TC": "髮型",
+      "DE": "Hairstyle"
+     }
+    }
+   ]
+  },
+  {
+   "kind": "effect",
+   "slug": "effects",
+   "count": 89,
+   "tabIcon": "/assets/cosmetics/tab/T_Tab_Fashion_Fx.png",
+   "sample": "/assets/cosmetics/effect/T_Fashion_Fx08_01.png",
+   "subcategories": [
+    {
+     "id": "teleport",
+     "count": 3,
+     "label": {
+      "FR": "Effets de téléportation",
+      "EN": "Teleport Effects",
+      "DE": "Teleport-Effekte",
+      "ES": "Efectos de teletransporte",
+      "JP": "伝送エフェクト",
+      "KR": "전송 이펙트",
+      "TC": "傳送特效"
+     }
+    },
+    {
+     "id": "footprint",
+     "count": 31,
+     "label": {
+      "FR": "Effets de pas",
+      "EN": "Footprint Effects",
+      "DE": "Fußspuren-Effekt",
+      "ES": "Efectos de pisada",
+      "JP": "足跡エフェクト",
+      "KR": "발자취 이펙트",
+      "TC": "足跡特效"
+     }
+    },
+    {
+     "id": "aura",
+     "count": 31,
+     "label": {
+      "FR": "Aura",
+      "EN": "Aura",
+      "DE": "Aura",
+      "ES": "Aura",
+      "JP": "ヘイロー",
+      "KR": "오라",
+      "TC": "光暈"
+     }
+    },
+    {
+     "id": "plunging-attack",
+     "count": 8,
+     "label": {
+      "FR": "Effet d’attaque plongeante",
+      "EN": "Plunging Attack Effect",
+      "DE": "Sturzangriff-Effekt",
+      "ES": "Efecto de Ataque Descendente",
+      "JP": "落下攻撃エフェクト",
+      "KR": "낙하 공격 이펙트",
+      "TC": "下落攻擊特效"
+     }
+    },
+    {
+     "id": "helix-leap",
+     "count": 13,
+     "label": {
+      "FR": "Effet de Bond Cyclonique",
+      "EN": "Helix Leap Effect",
+      "DE": "Spiralsprung-Effekt",
+      "ES": "Efecto de Salto Espiral",
+      "JP": "スピンジャンプエフェクト",
+      "KR": "스파이럴 점프 이펙트",
+      "TC": "螺旋飛躍特效"
+     }
+    },
+    {
+     "id": "fallen",
+     "count": 3,
+     "label": {
+      "FR": "Effets de défaite",
+      "EN": "Fallen Effects",
+      "DE": "Todes-Effekte",
+      "ES": "Efectos de derrota",
+      "JP": "戦闘不能エフェクト",
+      "KR": "사망 이펙트",
+      "TC": "陣亡特效"
+     }
+    }
+   ]
+  },
+  {
+   "kind": "victoryPose",
+   "slug": "victory-poses",
+   "count": 7,
+   "tabIcon": "/assets/cosmetics/tab/T_Tab_Fashion_MVP.png",
+   "sample": "/assets/cosmetics/victoryPose/T_Fashion_SettlementAction_01.png",
+   "subcategories": []
+  },
+  {
+   "kind": "weaponSkin",
+   "slug": "weapon-skins",
+   "count": 73,
+   "tabIcon": "/assets/cosmetics/tab/T_Tab_CloseIn_Weapons.png",
+   "sample": "/assets/cosmetics/weaponSkin/T_Head_Claymore_Qunxing.png",
+   "subcategories": [
+    {
+     "id": "sword",
+     "count": 7,
+     "label": {
+      "FR": "Épée",
+      "EN": "Sword",
+      "DE": "Schwert",
+      "ES": "Espada",
+      "JP": "片手剣",
+      "KR": "한손검",
+      "TC": "單手劍"
+     }
+    },
+    {
+     "id": "polearm",
+     "count": 9,
+     "label": {
+      "FR": "Arme d’hast",
+      "EN": "Polearm",
+      "DE": "Stangenwaffe",
+      "ES": "Arma de Asta",
+      "JP": "長柄武器",
+      "KR": "장병기",
+      "TC": "長柄"
+     }
+    },
+    {
+     "id": "claymore",
+     "count": 9,
+     "label": {
+      "FR": "Espadon",
+      "EN": "Greatsword",
+      "DE": "Großschwert",
+      "ES": "Espadón",
+      "JP": "大剣",
+      "KR": "대검",
+      "TC": "重劍"
+     }
+    },
+    {
+     "id": "dualblade",
+     "count": 6,
+     "label": {
+      "FR": "Doubles lames",
+      "EN": "Dual Blades",
+      "DE": "Doppelklingen",
+      "ES": "Hojas Dobles",
+      "JP": "双剣",
+      "KR": "쌍도",
+      "TC": "雙刀"
+     }
+    },
+    {
+     "id": "swordwhip",
+     "count": 7,
+     "label": {
+      "FR": "Épée-fouet",
+      "EN": "Whipblade",
+      "DE": "Peitschenschwert",
+      "ES": "Espada Látigo",
+      "JP": "ウィップブレード",
+      "KR": "칼날 채찍",
+      "TC": "鞭刃"
+     }
+    },
+    {
+     "id": "katana",
+     "count": 8,
+     "label": {
+      "FR": "Katana",
+      "EN": "Katana",
+      "DE": "Katana",
+      "ES": "Katana",
+      "JP": "太刀",
+      "KR": "대도",
+      "TC": "太刀"
+     }
+    },
+    {
+     "id": "pistol",
+     "count": 2,
+     "label": {
+      "FR": "Pistolet",
+      "EN": "Pistol",
+      "DE": "Pistole",
+      "ES": "Pistola",
+      "JP": "ピストル",
+      "KR": "권총",
+      "TC": "手槍"
+     }
+    },
+    {
+     "id": "crossbow",
+     "count": 4,
+     "label": {
+      "FR": "Doubles pistolets",
+      "EN": "Dual Pistols",
+      "DE": "Doppelpistolen",
+      "ES": "Pistolas Dobles",
+      "JP": "デュアルガン",
+      "KR": "쌍권총",
+      "TC": "雙槍"
+     }
+    },
+    {
+     "id": "cannon",
+     "count": 3,
+     "label": {
+      "FR": "Lance-grenades",
+      "EN": "Grenade Launcher",
+      "DE": "Granatwerfer",
+      "ES": "Lanzagranadas",
+      "JP": "ランチャー",
+      "KR": "핸드 캐논",
+      "TC": "榴炮"
+     }
+    },
+    {
+     "id": "shotgun",
+     "count": 4,
+     "label": {
+      "FR": "Fusil à pompe",
+      "EN": "Shotgun",
+      "DE": "Schrotflinte",
+      "ES": "Escopeta",
+      "JP": "ショットガン",
+      "KR": "산탄총",
+      "TC": "霰彈槍"
+     }
+    },
+    {
+     "id": "machinegun",
+     "count": 5,
+     "label": {
+      "FR": "Fusil d’assaut",
+      "EN": "Assault Rifle",
+      "DE": "Sturmgewehr",
+      "ES": "Rifle de Asalto",
+      "JP": "ライフル",
+      "KR": "돌격소총",
+      "TC": "突擊槍"
+     }
+    },
+    {
+     "id": "bow01",
+     "count": 3,
+     "label": {
+      "FR": "Arc court",
+      "EN": "Shortbow",
+      "DE": "Kurzbogen",
+      "ES": "Arco Corto",
+      "JP": "弓（短弓）",
+      "KR": "단궁",
+      "TC": "弓（短弓）"
+     }
+    },
+    {
+     "id": "bow02",
+     "count": 3,
+     "label": {
+      "FR": "Arc long",
+      "EN": "Longbow",
+      "DE": "Langbogen",
+      "ES": "Arco Largo",
+      "JP": "弓（長弓）",
+      "KR": "장궁",
+      "TC": "弓（長弓）"
+     }
+    },
+    {
+     "id": "universal",
+     "count": 3,
+     "label": null
+    }
+   ]
+  },
+  {
+   "kind": "weaponOrnament",
+   "slug": "weapon-ornaments",
+   "count": 61,
+   "tabIcon": "/assets/cosmetics/tab/T_Tab_Fashion_Weapon.png",
+   "sample": "/assets/cosmetics/weaponOrnament/T_Fashion_Weapon22.png",
+   "subcategories": []
+  },
+  {
+   "kind": "weaponStance",
+   "slug": "weapon-stances",
+   "count": 4,
+   "tabIcon": "/assets/cosmetics/tab/T_Tab_Fashion_Fx.png",
+   "sample": "/assets/cosmetics/weaponStance/T_Fashion_Fx20.png",
+   "subcategories": [
+    {
+     "id": "run-attack",
+     "count": 2,
+     "label": null
+    },
+    {
+     "id": "heavy-attack",
+     "count": 2,
+     "label": null
+    }
+   ]
+  },
+  {
+   "kind": "mount",
+   "slug": "mounts",
+   "count": 15,
+   "tabIcon": "/assets/cosmetics/tab/T_Tab_Mounts.png",
+   "sample": "/assets/cosmetics/mount/T_Icon_Mounts_0001.png",
+   "subcategories": []
+  },
+  {
+   "kind": "gesture",
+   "slug": "gestures",
+   "count": 70,
+   "tabIcon": "/assets/cosmetics/tab/T_Tab_Action.png",
+   "sample": "/assets/cosmetics/gesture/T_Resource_Gesture_CarBlack.png",
+   "subcategories": []
+  },
+  {
+   "kind": "dye",
+   "slug": "dyes",
+   "count": 24,
+   "tabIcon": "/assets/cosmetics/tab/T_Tab_Fashion_Palette.png",
+   "sample": "/assets/cosmetics/dye/T_Dye_01.png",
+   "subcategories": []
+  }
+ ],
+ "currencies": {
+  "99": {
+   "name": {
+    "FR": "Gemme de Phoxène",
+    "EN": "Phoxene Plumule",
+    "DE": "Phoxenekeim",
+    "ES": "Gema de Phoxene",
+    "JP": "月ノ核",
+    "KR": "월석의 싹",
+    "TC": "月石晶胚"
+   },
+   "icon": "/assets/cosmetics/currency/T_Coin_Main_Lv1.png"
+  },
+  "100": {
+   "name": {
+    "FR": "Phoxène",
+    "EN": "Phoxene",
+    "DE": "Phoxene",
+    "ES": "Phoxene",
+    "JP": "月ノ石",
+    "KR": "월석",
+    "TC": "月石"
+   },
+   "icon": "/assets/cosmetics/currency/T_Coin_Main_Lv2.png"
+  },
+  "110": {
+   "name": {
+    "FR": "Prisme azuré",
+    "EN": "Lucent Prism",
+    "DE": "Transparentes Prisma",
+    "ES": "Prisma lúcido",
+    "JP": "水色のプリズム",
+    "KR": "물빛 프리즘",
+    "TC": "水色稜鏡"
+   },
+   "icon": "/assets/cosmetics/currency/T_Gacha_Coin01.png"
+  },
+  "111": {
+   "name": {
+    "FR": "Prisme iridescent",
+    "EN": "Iridescent Prism",
+    "DE": "Schillerndes Prisma",
+    "ES": "Prisma iridiscente",
+    "JP": "虹色のプリズム",
+    "KR": "무지개빛 프리즘",
+    "TC": "虹色稜鏡"
+   },
+   "icon": "/assets/cosmetics/currency/T_Gacha_Coin02.png"
+  },
+  "112": {
+   "name": {
+    "FR": "Éclat astral",
+    "EN": "Starglint",
+    "ES": "Destellos de estrellas",
+    "JP": "シャイニースターライト",
+    "KR": "반짝이는 별빛",
+    "TC": "閃爍星芒",
+    "DE": "Starglint"
+   },
+   "icon": "/assets/cosmetics/currency/T_Coin_SkinCollect02.png"
+  },
+  "210": {
+   "name": {
+    "FR": "Jeton de Grande Pêche",
+    "EN": "Angler's Token",
+    "DE": "Angler-Token",
+    "ES": "Fichas de Gran Pesca",
+    "JP": "大漁の証",
+    "KR": "월척의 증표",
+    "TC": "豐漁之證"
+   },
+   "icon": "/assets/cosmetics/currency/T_Coin_Other_Fishing.png"
+  },
+  "219": {
+   "name": {
+    "FR": "Engrenage",
+    "EN": "Cog",
+    "ES": "Engranaje",
+    "JP": "ギア",
+    "KR": "톱니바퀴",
+    "TC": "齒輪",
+    "DE": "Cog"
+   },
+   "icon": "/assets/cosmetics/currency/T_Activity_Autochess_Coin01.png"
+  },
+  "225": {
+   "name": {
+    "FR": "Engrenage",
+    "EN": "Cog",
+    "ES": "Engranaje",
+    "JP": "ギア",
+    "KR": "톱니바퀴",
+    "TC": "齒輪",
+    "DE": "Cog"
+   },
+   "icon": "/assets/cosmetics/currency/T_Activity_Autochess_Coin01.png"
+  },
+  "1001": {
+   "name": {
+    "FR": "Sablier immaculé",
+    "EN": "Pristine Hourglass",
+    "DE": "Makellose Sanduhr",
+    "ES": "Reloj de arena inmaculado",
+    "JP": "純白の砂時計",
+    "KR": "순백의 모래시계",
+    "TC": "純白沙漏"
+   },
+   "icon": "/assets/cosmetics/currency/T_Resource_GachaTicket_01.png"
+  },
+  "1003": {
+   "name": {
+    "FR": "Sablier prismatique",
+    "EN": "Prismatic Hourglass",
+    "DE": "Prismatische Sanduhr",
+    "ES": "Reloj de arena prismático",
+    "JP": "彩りの砂時計",
+    "KR": "영롱한 모래시계",
+    "TC": "華彩沙漏"
+   },
+   "icon": "/assets/cosmetics/currency/T_Resource_GachaTicket_02.png"
+  },
+  "1004": {
+   "name": {
+    "FR": "Sablier prismatique (temporaire)",
+    "EN": "Prismatic Hourglass (Limited-Time)",
+    "DE": "Prismatische Sanduhr (Zeitlich begrenzt)",
+    "ES": "Reloj de arena prismático (Tiempo limitado)",
+    "JP": "彩りの砂時計・期間限定",
+    "KR": "영롱한 모래시계·한정",
+    "TC": "華彩沙漏·限時"
+   },
+   "icon": "/assets/cosmetics/currency/T_Resource_GachaTicket_03.png"
+  },
+  "4006": {
+   "name": {
+    "FR": "Médaille de guilde",
+    "EN": "Guild Commendations",
+    "ES": "Medalla del gremio",
+    "JP": "協会勲章",
+    "KR": "길드 훈장",
+    "TC": "協會獎章",
+    "DE": "Guild Commendations"
+   },
+   "icon": "/assets/cosmetics/currency/T_Guild_IconMedal.png"
+  },
+  "29004": {
+   "name": {
+    "FR": "Sphère d’exploration — Port-des-Brumes",
+    "EN": "Advensphere: Mistwharf",
+    "DE": "Advensphäre: Nebelkai",
+    "ES": "Esfera de exploración: Puerto de las Brumas",
+    "JP": "探検の証・煙津渡",
+    "KR": "탐험의 증표·연진 나루터",
+    "TC": "探險之證·煙津渡"
+   },
+   "icon": "/assets/cosmetics/currency/T_ExploreBadge_Beibao_East.png"
+  },
+  "29005": {
+   "name": {
+    "FR": "Rune de Taixu",
+    "EN": "Taixu Rune",
+    "DE": "Taixu-Rune",
+    "ES": "Runa de Taixu",
+    "JP": "太虚符文",
+    "KR": "태허 문자",
+    "TC": "太虛符文"
+   },
+   "icon": "/assets/cosmetics/currency/T_Icon_CrystalDust.png"
+  },
+  "6000004": {
+   "name": {
+    "FR": "Jetons stratégiques et martiaux",
+    "EN": "Civil & Martial Tokens",
+    "ES": "Fichas civiles y marciales",
+    "JP": "文武得点",
+    "KR": "문무 막대",
+    "TC": "文武籌",
+    "DE": "Civil & Martial Tokens"
+   },
+   "icon": "/assets/cosmetics/currency/T_Activity_SoloTreasure_24.png"
+  }
+ },
+ "obtainLabels": {
+  "banner": {
+   "FR": "Disponible via la Myriade",
+   "EN": "Available through Myriad",
+   "DE": "Über Myriade erhältlich",
+   "ES": "Disponible mediante Myriad",
+   "JP": "万華で獲得",
+   "KR": "광채에서 획득",
+   "TC": "通過萬華獲得"
+  },
+  "prismExchange": {
+   "FR": "Disponible via l’échange de Prismes",
+   "EN": "Available through Prism Exchange",
+   "DE": "Über Prismatausch erhältlich",
+   "ES": "Disponible mediante Prisma",
+   "JP": "プリズムの交換で獲得",
+   "KR": "프리즘 교환으로 획득",
+   "TC": "通過稜鏡兌換獲得"
+  },
+  "shop": {
+   "FR": "Disponible dans la boutique",
+   "EN": "Available at Shop",
+   "DE": "Im Shop erhältlich",
+   "ES": "Disponible en la Tienda",
+   "JP": "ショップで獲得",
+   "KR": "상점을 통해 획득",
+   "TC": "通過商店獲得"
+  },
+  "event": {
+   "FR": "Disponible via les événements",
+   "EN": "Available from events",
+   "ES": "Obtenido a través de eventos",
+   "JP": "イベントで入手",
+   "KR": "이벤트를 통해 획득",
+   "TC": "透過活動獲得",
+   "DE": "Available from events"
+  },
+  "impressionShop": {
+   "FR": "Disponible dans la Boutique d’Impressions de Lunoeggy",
+   "EN": "Available at Lunoeggy's Impression Shop",
+   "DE": "Im Lunoeggys Eindrucks-Shop erhältlich",
+   "ES": "Disponible en la Tienda de Impresiones de Lunoeggy",
+   "JP": "ルーナエッグのフィーリングショップで獲得可能",
+   "KR": "달걀 루나의 인상 상점을 통해 획득",
+   "TC": "通過蛋皎的印象商店獲得"
+  },
+  "quest": {
+   "FR": "Disponible via les missions",
+   "EN": "Obtainable from Quests",
+   "DE": "Durch Aufträge erhältlich",
+   "ES": "Disponible en Misiones",
+   "JP": "クエストで獲得",
+   "KR": "퀘스트를 통해 획득",
+   "TC": "通過任務獲得"
+  },
+  "reputation": {
+   "FR": "Disponible via les récompenses de niveau de réputation",
+   "EN": "Available through Reputation Level-up rewards",
+   "ES": "Available through reputación Nivel-up recompensas",
+   "JP": "名声レベルアップ報酬から獲得",
+   "KR": "명성 레벨업 보상을 통해 획득",
+   "TC": "透過聲名升級獎勵獲得",
+   "DE": "Available through Reputation Level-up rewards"
+  },
+  "battlePass": {
+   "FR": "Ballade du Ménestrel",
+   "EN": "Bard's Tome",
+   "DE": "Bards Buch",
+   "ES": "Tomo del bardo",
+   "JP": "詩歌集",
+   "KR": "음유 시집",
+   "TC": "吟遊詩集"
+  }
+ },
+ "sectionLabel": {
+  "FR": "Cosmétique",
+  "EN": "Cosmetics",
+  "DE": "Outfits",
+  "ES": "Cosméticos",
+  "JP": "外見",
+  "KR": "외형",
+  "TC": "外觀"
+ }
+}

@@ -145,6 +145,53 @@ export const charactersFiltersStorageAtom =
     currentPage: 1,
   });
 
+// Persistance des filtres de la section Cosmétiques (par catégorie)
+export type PersistedCosmeticsFilters = Record<
+  string,
+  {
+    search: string;
+    subcategoryFilter: string;
+    rarityFilter: string;
+    obtainFilter: string;
+    characterFilter: string;
+    sortMode: string;
+    pageSize: number;
+    currentPage: number;
+  }
+>;
+
+export const cosmeticsFiltersStorageAtom = atomWithStorage<PersistedCosmeticsFilters>(
+  "cosmetics-filters",
+  {},
+);
+
+// Favoris des cosmétiques (clé `catégorie/id`)
+const cosmeticsFavoritesStorageAtom = atomWithStorage<string[]>("cosmetics-favorites", []);
+
+export const cosmeticsFavoritesAtom = atom(
+  (get) => {
+    const stored = get(cosmeticsFavoritesStorageAtom);
+    return new Set(Array.isArray(stored) ? stored : []);
+  },
+  (_get, set, newValue: Set<string>) => {
+    set(cosmeticsFavoritesStorageAtom, Array.from(newValue));
+  },
+);
+
+export const toggleCosmeticFavoriteAtom = atom(null, (get, set, cosmeticKey: string) => {
+  const nextFavorites = new Set(get(cosmeticsFavoritesAtom));
+  const retire = nextFavorites.has(cosmeticKey);
+  if (retire) nextFavorites.delete(cosmeticKey);
+  else nextFavorites.add(cosmeticKey);
+  set(cosmeticsFavoritesAtom, nextFavorites);
+  captureAnalytics("favorite_toggled", {
+    kind: "cosmetic",
+    action: retire ? "removed" : "added",
+    key: cosmeticKey,
+    total: nextFavorites.size,
+  });
+});
+
 // Atome de stockage pour les favoris de personnages
 const charactersFavoritesStorageAtom = atomWithStorage<string[]>(
   "characters-favorites",

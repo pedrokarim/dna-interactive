@@ -56,7 +56,8 @@
     "builds": "コミュニティビルド",
     "calendar": "カレンダー",
     "discord": "Discord",
-    "twitter": "X"
+    "twitter": "X",
+    "cosmetics": "外見"
   },
   "common": {
     "close": "閉じる",
@@ -904,7 +905,11 @@
     "characterNotFoundDescription": "このキャラクターはデータベースに存在しません。",
     "draftDetailTitle": "鍛造設計図の詳細",
     "draftNotFoundDescription": "鍛造設計図が見つかりません。",
-    "characterOgAlt": "キャラクター — DNA Interactive"
+    "characterOgAlt": "キャラクター — DNA Interactive",
+    "cosmeticsTitle": "外見アイテム：スキン・装飾・武器スキン",
+    "cosmeticsDescription": "Duet Night Abyssの外見アイテムを網羅。スキン、ヘアスタイル、装飾、エフェクト、武器スキン、乗り物、ジェスチャーを画像・入手方法・価格つきで掲載。",
+    "bannersTitle": "万華バナー",
+    "bannersDescription": "Duet Night Abyssの万華バナー一覧。ピックアップ、提供割合、天井、全排出内容、累計報酬、プリズムの交換。"
   },
   "commissions": {
     "eyebrow": "隠密コミッション",
@@ -2074,5 +2079,172 @@
     "dynamicEvent": "突発イベント",
     "npc": "NPC",
     "readable": "文献"
+  },
+  "cosmetics": {
+    "headerLabel": "ワードローブ",
+    "title": "外見",
+    "description": "スキン、ヘアスタイル、装飾、エフェクト、武器スキン、乗り物、ジェスチャー。Duet Night Abyssの外見アイテムを、ゲーム内のワードローブと同じ分類で掲載。",
+    "countLabel": "アイテム",
+    "count": "{filtered} / {total} 件",
+    "itemCount": "{count} 件",
+    "categories": {
+      "outfits": {
+        "title": "スキン",
+        "description": "初期スキン、専用スキン、複数キャラクターが着られるコレクション。"
+      },
+      "hairstyles": {
+        "title": "ヘアスタイル",
+        "description": "全キャラクター共通のヘアスタイルとかぶり物。"
+      },
+      "accessories": {
+        "title": "装飾",
+        "description": "ハット、ヘッド、フェイス、バック、ウエストの装飾を部位別に。"
+      },
+      "effects": {
+        "title": "エフェクト",
+        "description": "ヘイロー、足跡、伝送、落下攻撃、スピンジャンプ、戦闘不能のエフェクト。"
+      },
+      "victory-poses": {
+        "title": "勝利ポーズ",
+        "description": "戦闘終了時のポーズ。"
+      },
+      "weapon-skins": {
+        "title": "武器スキン",
+        "description": "近接武器と遠隔武器の外見を武器種別に。"
+      },
+      "weapon-ornaments": {
+        "title": "武器装飾",
+        "description": "武器に付けるチャームやペンダント。"
+      },
+      "weapon-stances": {
+        "title": "攻撃エフェクト",
+        "description": "ダッシュ攻撃と溜め攻撃の見た目のバリエーション。"
+      },
+      "mounts": {
+        "title": "乗り物",
+        "description": "ゲーム内のすべての乗り物。"
+      },
+      "gestures": {
+        "title": "ジェスチャー",
+        "description": "ゲーム内で使えるジェスチャーとポーズ。"
+      },
+      "dyes": {
+        "title": "染料",
+        "description": "スキンの色を変える通常染料と上級染料。"
+      }
+    },
+    "subcategories": {
+      "outfits": {
+        "default": "初期スキン",
+        "signature": "専用スキン",
+        "series": "コレクション"
+      },
+      "weapon-skins": {
+        "universal": "全武器"
+      },
+      "weapon-stances": {
+        "run-attack": "ダッシュ攻撃",
+        "heavy-attack": "溜め攻撃"
+      }
+    },
+    "obtain": {
+      "banner": "万華",
+      "prismExchange": "プリズムの交換",
+      "shop": "ショップ",
+      "event": "イベント",
+      "impressionShop": "フィーリングショップ",
+      "battlePass": "詩歌集",
+      "starterPack": "スタートギフト",
+      "quest": "クエスト",
+      "reputation": "名声",
+      "default": "初期スキン"
+    },
+    "filterSubcategory": "部位",
+    "filterObtain": "入手方法",
+    "filterCharacter": "キャラクター",
+    "hiddenFilter": "シークレット",
+    "searchPlaceholder": "外見アイテムを検索…",
+    "sortDefault": "標準",
+    "sortName": "名前順",
+    "sortRarity": "レアリティ順",
+    "noResults": "条件に合うアイテムがありません。",
+    "noResultsHint": "検索条件を広げるか、フィルターをリセットしてください。",
+    "addToFavorites": "お気に入りに追加",
+    "removeFromFavorites": "お気に入りから削除",
+    "hiddenBadge": "シークレット",
+    "hiddenHint": "入手するまでゲーム内のワードローブに表示されません。",
+    "variantsCount": "{count} 色",
+    "characterCount": "{count} キャラクター",
+    "categoryMetaTitle": "{category}（{count} 件）",
+    "detailMetaTitle": "{name}｜{category}",
+    "detailMetaDescription": "{name}：Duet Night Abyssの外見アイテム（{category}）。画像、入手方法、価格、カラーバリエーション。",
+    "visuals": {
+      "icon": "アイコン",
+      "portrait": "立ち絵",
+      "bust": "イラスト",
+      "wide": "プレビュー",
+      "model3d": "3D"
+    },
+    "soon": "近日",
+    "model3dTitle": "3Dビューア",
+    "model3dSoon": "3Dビューアは近日このページに追加されます。",
+    "info": "情報",
+    "slot": "部位",
+    "refund": "重複時の変換",
+    "gameId": "ゲーム内ID",
+    "obtainTitle": "入手方法",
+    "purchaseLimit": "上限：{count}",
+    "descriptionTitle": "説明",
+    "charactersTitle": "キャラクター（{count}）",
+    "charactersHint": "キャラクターを選ぶと、そのキャラクター版のスキンを表示します。",
+    "charactersHintShared": "このスキンを着られるキャラクター。画像は全員共通です。",
+    "viewCharacter": "{name}のページを見る",
+    "characterTitle": "キャラクター",
+    "variantsTitle": "カラー（{count}）",
+    "bannersTitle": "召喚バナー",
+    "bannerPeriod": "{start}〜{end}",
+    "bannerStatus": {
+      "current": "開催中",
+      "upcoming": "開催予定",
+      "ended": "終了",
+      "permanent": "常設"
+    },
+    "endsIn": "終了まで {time}",
+    "startsIn": "開始まで {time}",
+    "bannersSection": "開催中の万華",
+    "viewAllBanners": "すべてのバナー",
+    "categoriesSection": "カテゴリー",
+    "dataVersion": "ゲームバージョン {version} に対応。",
+    "bannersDescription": "万華のバナーを新しい順に。ピックアップ、提供割合、全排出内容、累計報酬、プリズムの交換。",
+    "bannersCountLabel": "バナー",
+    "bannerTypes": {
+      "limited": "イベント限定",
+      "rerun": "期間限定復刻",
+      "standard": "常設"
+    },
+    "percent": "{value}%",
+    "viewFeatured": "「{name}」を見る",
+    "ratesTitle": "提供割合",
+    "rateStar5": "★5アイテム",
+    "rateStar4": "★4アイテム",
+    "pityLabel": "★5確定",
+    "pityValue": "最大 {count} 回",
+    "tenPullLabel": "10回ごと",
+    "tenPullValue": "★4以上確定",
+    "periodTitle": "期間",
+    "periodStart": "開始",
+    "periodEnd": "終了",
+    "costLabel": "召喚に使用：",
+    "poolStar5": "★5アイテム",
+    "poolStar5HintLimited": "★5アイテムが出た場合、以下のいずれかが表示の確率で排出されます。",
+    "poolStar5HintStandard": "★5アイテムが出た場合、以下の外見のいずれかが表示の確率で排出されます。",
+    "poolStar4": "★4アイテム",
+    "poolStar3": "★3アイテム",
+    "cumulativeTitle": "累計報酬",
+    "pullsCount": "{count} 回",
+    "exchangeTitle": "プリズムの交換",
+    "exchangeHint": "バナー開催中に虹色のプリズムと交換できるアイテム。",
+    "bannerMetaTitle": "{name}｜{type}",
+    "bannerMetaDescription": "Duet Night Abyssのバナー「{name}」：{featured}、提供割合、天井、全排出内容、プリズムの交換。"
   }
 }

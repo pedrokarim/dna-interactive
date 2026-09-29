@@ -56,7 +56,8 @@
     "builds": "社群配裝",
     "calendar": "行事曆",
     "discord": "Discord",
-    "twitter": "X"
+    "twitter": "X",
+    "cosmetics": "外觀"
   },
   "common": {
     "close": "關閉",
@@ -904,7 +905,11 @@
     "characterNotFoundDescription": "資料庫中沒有此角色。",
     "draftDetailTitle": "鍛造圖紙詳情",
     "draftNotFoundDescription": "找不到鍛造圖紙。",
-    "characterOgAlt": "角色 — DNA Interactive"
+    "characterOgAlt": "角色 — DNA Interactive",
+    "cosmeticsTitle": "外觀：時裝、裝飾與武器外觀",
+    "cosmeticsDescription": "Duet Night Abyss 的所有外觀道具：時裝、髮型、裝飾、特效、武器外觀、坐騎與動作，附圖片、獲得方式與價格。",
+    "bannersTitle": "萬華卡池",
+    "bannersDescription": "Duet Night Abyss 的所有萬華卡池：主打時裝、機率、保底、完整內容、累計獎勵與稜鏡兌換。"
   },
   "commissions": {
     "eyebrow": "密令委託",
@@ -2074,5 +2079,172 @@
     "dynamicEvent": "突發事件",
     "npc": "NPC",
     "readable": "讀物"
+  },
+  "cosmetics": {
+    "headerLabel": "衣櫥",
+    "title": "外觀",
+    "description": "時裝、髮型、裝飾、特效、武器外觀、坐騎與動作：Duet Night Abyss 的所有外觀道具，依遊戲衣櫥的分類整理。",
+    "countLabel": "外觀",
+    "count": "{filtered} / {total} 件",
+    "itemCount": "{count} 件",
+    "categories": {
+      "outfits": {
+        "title": "時裝",
+        "description": "初始時裝、專屬時裝，以及多名角色都能穿的系列時裝。"
+      },
+      "hairstyles": {
+        "title": "髮型",
+        "description": "所有角色通用的髮型與頭飾。"
+      },
+      "accessories": {
+        "title": "裝飾",
+        "description": "帽子、頭部、臉部、背部與腰部裝飾，依部位整理。"
+      },
+      "effects": {
+        "title": "特效",
+        "description": "光環、足跡、傳送、下落攻擊、螺旋飛躍與倒地特效。"
+      },
+      "victory-poses": {
+        "title": "勝利動作",
+        "description": "戰鬥結束時播放的動作。"
+      },
+      "weapon-skins": {
+        "title": "武器外觀",
+        "description": "近戰與遠程武器的外觀，依武器類型整理。"
+      },
+      "weapon-ornaments": {
+        "title": "武器掛飾",
+        "description": "掛在武器上的吊飾與墜飾。"
+      },
+      "weapon-stances": {
+        "title": "攻擊特效",
+        "description": "衝刺攻擊與蓄力攻擊的外觀變化。"
+      },
+      "mounts": {
+        "title": "坐騎",
+        "description": "遊戲中的所有坐騎。"
+      },
+      "gestures": {
+        "title": "動作",
+        "description": "可在遊戲中使用的動作與姿勢。"
+      },
+      "dyes": {
+        "title": "染料",
+        "description": "用來改變時裝顏色的普通與高級染料。"
+      }
+    },
+    "subcategories": {
+      "outfits": {
+        "default": "初始時裝",
+        "signature": "專屬時裝",
+        "series": "系列時裝"
+      },
+      "weapon-skins": {
+        "universal": "所有武器"
+      },
+      "weapon-stances": {
+        "run-attack": "衝刺攻擊",
+        "heavy-attack": "蓄力攻擊"
+      }
+    },
+    "obtain": {
+      "banner": "萬華",
+      "prismExchange": "稜鏡兌換",
+      "shop": "商店",
+      "event": "活動",
+      "impressionShop": "印象商店",
+      "battlePass": "吟遊詩集",
+      "starterPack": "新手禮箱",
+      "quest": "任務",
+      "reputation": "聲名",
+      "default": "初始時裝"
+    },
+    "filterSubcategory": "部位",
+    "filterObtain": "獲得方式",
+    "filterCharacter": "角色",
+    "hiddenFilter": "隱藏",
+    "searchPlaceholder": "搜尋外觀…",
+    "sortDefault": "預設",
+    "sortName": "依名稱",
+    "sortRarity": "依稀有度",
+    "noResults": "沒有符合條件的外觀。",
+    "noResultsHint": "請放寬搜尋條件或重設篩選。",
+    "addToFavorites": "加入收藏",
+    "removeFromFavorites": "取消收藏",
+    "hiddenBadge": "隱藏",
+    "hiddenHint": "獲得之前不會出現在遊戲衣櫥中。",
+    "variantsCount": "{count} 種顏色",
+    "characterCount": "{count} 名角色",
+    "categoryMetaTitle": "{category}（{count} 件）",
+    "detailMetaTitle": "{name}｜{category}",
+    "detailMetaDescription": "{name}：Duet Night Abyss 外觀道具（{category}），附圖片、獲得方式、價格與配色。",
+    "visuals": {
+      "icon": "圖示",
+      "portrait": "立繪",
+      "bust": "插畫",
+      "wide": "預覽",
+      "model3d": "3D"
+    },
+    "soon": "即將推出",
+    "model3dTitle": "3D 檢視器",
+    "model3dSoon": "3D 檢視器即將加入本頁。",
+    "info": "資訊",
+    "slot": "部位",
+    "refund": "重複時轉換為",
+    "gameId": "遊戲 ID",
+    "obtainTitle": "獲得方式",
+    "purchaseLimit": "限購：{count}",
+    "descriptionTitle": "說明",
+    "charactersTitle": "角色（{count}）",
+    "charactersHint": "選擇角色即可查看該角色版本的時裝。",
+    "charactersHintShared": "可以穿這套時裝的角色。所有角色的圖片相同。",
+    "viewCharacter": "查看{name}的頁面",
+    "characterTitle": "角色",
+    "variantsTitle": "配色（{count}）",
+    "bannersTitle": "召喚卡池",
+    "bannerPeriod": "{start} 至 {end}",
+    "bannerStatus": {
+      "current": "進行中",
+      "upcoming": "即將開始",
+      "ended": "已結束",
+      "permanent": "常駐"
+    },
+    "endsIn": "剩餘 {time}",
+    "startsIn": "{time} 後開始",
+    "bannersSection": "目前的萬華",
+    "viewAllBanners": "所有卡池",
+    "categoriesSection": "分類",
+    "dataVersion": "對應遊戲版本 {version}。",
+    "bannersDescription": "萬華卡池，由新到舊：主打時裝、機率、完整內容、累計獎勵與稜鏡兌換。",
+    "bannersCountLabel": "卡池",
+    "bannerTypes": {
+      "limited": "活動限定",
+      "rerun": "限時復刻",
+      "standard": "常駐"
+    },
+    "percent": "{value}%",
+    "viewFeatured": "查看「{name}」",
+    "ratesTitle": "機率",
+    "rateStar5": "5★ 道具",
+    "rateStar4": "4★ 道具",
+    "pityLabel": "5★ 保底",
+    "pityValue": "最多 {count} 抽",
+    "tenPullLabel": "每 10 抽",
+    "tenPullValue": "必得 4★ 以上",
+    "periodTitle": "期間",
+    "periodStart": "開始",
+    "periodEnd": "結束",
+    "costLabel": "召喚消耗：",
+    "poolStar5": "5★ 道具",
+    "poolStar5HintLimited": "抽到 5★ 道具時，會依標示的機率獲得以下其中之一。",
+    "poolStar5HintStandard": "抽到 5★ 道具時，會依標示的機率獲得以下外觀其中之一。",
+    "poolStar4": "4★ 道具",
+    "poolStar3": "3★ 道具",
+    "cumulativeTitle": "累計獎勵",
+    "pullsCount": "{count} 抽",
+    "exchangeTitle": "稜鏡兌換",
+    "exchangeHint": "卡池期間可用虹色稜鏡兌換的道具。",
+    "bannerMetaTitle": "{name}｜{type}",
+    "bannerMetaDescription": "Duet Night Abyss 卡池「{name}」：{featured}、機率、保底、完整內容與稜鏡兌換。"
   }
 }

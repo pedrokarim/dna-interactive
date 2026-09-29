@@ -56,7 +56,8 @@
     "builds": "Community Builds",
     "calendar": "Calendar",
     "discord": "Discord",
-    "twitter": "X"
+    "twitter": "X",
+    "cosmetics": "Cosmetics"
   },
   "common": {
     "close": "Close",
@@ -904,7 +905,11 @@
     "characterNotFoundDescription": "This character does not exist in the database.",
     "draftDetailTitle": "Forge blueprint details",
     "draftNotFoundDescription": "Forge blueprint not found.",
-    "characterOgAlt": "Character — DNA Interactive"
+    "characterOgAlt": "Character — DNA Interactive",
+    "cosmeticsTitle": "Cosmetics — Outfits, Accessories & Skins",
+    "cosmeticsDescription": "Every Duet Night Abyss cosmetic: outfits, hairstyles, accessories, effects, weapon skins, mounts and postures, with visuals, sources and prices.",
+    "bannersTitle": "Myriad Banners",
+    "bannersDescription": "Every Duet Night Abyss Myriad banner: featured outfits, rates, pity, full contents, cumulative rewards and Prism Exchange."
   },
   "commissions": {
     "eyebrow": "Covert Commissions",
@@ -2074,5 +2079,172 @@
     "dynamicEvent": "Unexpected event",
     "npc": "NPC",
     "readable": "Readable"
+  },
+  "cosmetics": {
+    "headerLabel": "Wardrobe",
+    "title": "Cosmetics",
+    "description": "Outfits, hairstyles, accessories, effects, weapon skins, mounts and postures: every cosmetic in Duet Night Abyss, sorted the way the in-game wardrobe does it.",
+    "countLabel": "Cosmetics",
+    "count": "{filtered} / {total} cosmetics",
+    "itemCount": "{count, plural, one {# cosmetic} other {# cosmetics}}",
+    "categories": {
+      "outfits": {
+        "title": "Outfits",
+        "description": "Base outfits, signature outfits and collections several characters can wear."
+      },
+      "hairstyles": {
+        "title": "Hairstyles",
+        "description": "Hairstyles and headwear shared by every character."
+      },
+      "accessories": {
+        "title": "Accessories",
+        "description": "Hatpieces, head, face, back and waist accessories, sorted by slot."
+      },
+      "effects": {
+        "title": "Visual Effects",
+        "description": "Auras, footprints, teleport, plunging attack, Helix Leap and fallen effects."
+      },
+      "victory-poses": {
+        "title": "Victory Postures",
+        "description": "The poses played at the end of a fight."
+      },
+      "weapon-skins": {
+        "title": "Weapon Skins",
+        "description": "Melee and ranged weapon appearances, sorted by weapon type."
+      },
+      "weapon-ornaments": {
+        "title": "Weapon Ornaments",
+        "description": "Charms and pendants hanging from weapons."
+      },
+      "weapon-stances": {
+        "title": "Move-Variants",
+        "description": "Visual variants for running and charged attacks."
+      },
+      "mounts": {
+        "title": "Mounts",
+        "description": "Every mount in the game."
+      },
+      "gestures": {
+        "title": "Postures",
+        "description": "Gestures and poses to play in-game."
+      },
+      "dyes": {
+        "title": "Dyes",
+        "description": "Standard and premium dyes to recolour outfits."
+      }
+    },
+    "subcategories": {
+      "outfits": {
+        "default": "Base Outfits",
+        "signature": "Signature Outfits",
+        "series": "Collections"
+      },
+      "weapon-skins": {
+        "universal": "All Weapons"
+      },
+      "weapon-stances": {
+        "run-attack": "Running Attack",
+        "heavy-attack": "Charged Attack"
+      }
+    },
+    "obtain": {
+      "banner": "Myriad",
+      "prismExchange": "Prism Exchange",
+      "shop": "Shop",
+      "event": "Event",
+      "impressionShop": "Impression Shop",
+      "battlePass": "Bard's Tome",
+      "starterPack": "Starter Gift Chest",
+      "quest": "Quests",
+      "reputation": "Reputation",
+      "default": "Base Outfit"
+    },
+    "filterSubcategory": "Slot",
+    "filterObtain": "Source",
+    "filterCharacter": "Character",
+    "hiddenFilter": "Secret",
+    "searchPlaceholder": "Search for a cosmetic…",
+    "sortDefault": "Default",
+    "sortName": "By name",
+    "sortRarity": "By rarity",
+    "noResults": "No cosmetic matches these filters.",
+    "noResultsHint": "Broaden your search or reset the filters.",
+    "addToFavorites": "Add to favorites",
+    "removeFromFavorites": "Remove from favorites",
+    "hiddenBadge": "Secret",
+    "hiddenHint": "Hidden from the in-game wardrobe until you own it.",
+    "variantsCount": "{count, plural, one {# colour} other {# colours}}",
+    "characterCount": "{count, plural, one {# character} other {# characters}}",
+    "categoryMetaTitle": "{category} — {count} cosmetics",
+    "detailMetaTitle": "{name} — {category}",
+    "detailMetaDescription": "{name}: Duet Night Abyss cosmetic ({category}) with its visuals, source, price and colour variants.",
+    "visuals": {
+      "icon": "Icon",
+      "portrait": "Portrait",
+      "bust": "Artwork",
+      "wide": "Preview",
+      "model3d": "3D"
+    },
+    "soon": "soon",
+    "model3dTitle": "3D Viewer",
+    "model3dSoon": "A 3D viewer is coming to this page soon.",
+    "info": "Details",
+    "slot": "Slot",
+    "refund": "Duplicate converts to",
+    "gameId": "Game ID",
+    "obtainTitle": "How to get",
+    "purchaseLimit": "Limit: {count}",
+    "descriptionTitle": "Description",
+    "charactersTitle": "Characters ({count})",
+    "charactersHint": "Pick a character to see their version of the outfit.",
+    "charactersHintShared": "Characters who can wear this outfit. The artwork is the same for all of them.",
+    "viewCharacter": "Open {name}'s page",
+    "characterTitle": "Character",
+    "variantsTitle": "Colours ({count})",
+    "bannersTitle": "Summon Banners",
+    "bannerPeriod": "{start} to {end}",
+    "bannerStatus": {
+      "current": "Live",
+      "upcoming": "Upcoming",
+      "ended": "Ended",
+      "permanent": "Permanent"
+    },
+    "endsIn": "Ends in {time}",
+    "startsIn": "Starts in {time}",
+    "bannersSection": "Current Myriad",
+    "viewAllBanners": "All banners",
+    "categoriesSection": "Categories",
+    "dataVersion": "Up to date for game version {version}.",
+    "bannersDescription": "Every Myriad banner, newest first: featured outfit, rates, full contents, cumulative rewards and Prism Exchange.",
+    "bannersCountLabel": "Banners",
+    "bannerTypes": {
+      "limited": "Event-Exclusive",
+      "rerun": "Limited-Time Rerun",
+      "standard": "Standard"
+    },
+    "percent": "{value}%",
+    "viewFeatured": "View \"{name}\"",
+    "ratesTitle": "Rates",
+    "rateStar5": "5★ item",
+    "rateStar4": "4★ item",
+    "pityLabel": "5★ pity",
+    "pityValue": "within {count} pulls",
+    "tenPullLabel": "Every 10 pulls",
+    "tenPullValue": "4★ or better",
+    "periodTitle": "Period",
+    "periodStart": "Start",
+    "periodEnd": "End",
+    "costLabel": "Pulls use:",
+    "poolStar5": "5★ items",
+    "poolStar5HintLimited": "When a pull lands a 5★ item, it is one of these, at the listed odds.",
+    "poolStar5HintStandard": "When a pull lands a 5★ item, it is one of these appearances, at the listed odds.",
+    "poolStar4": "4★ items",
+    "poolStar3": "3★ items",
+    "cumulativeTitle": "Cumulative Rewards",
+    "pullsCount": "{count} pulls",
+    "exchangeTitle": "Prism Exchange",
+    "exchangeHint": "Items offered for Iridescent Prisms while the banner runs.",
+    "bannerMetaTitle": "{name} — {type}",
+    "bannerMetaDescription": "Duet Night Abyss banner \"{name}\": {featured}, rates, pity, full contents and Prism Exchange."
   }
 }

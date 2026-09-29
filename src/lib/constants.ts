@@ -103,6 +103,7 @@ export const NAVIGATION = {
   calendar: "/calendar",
   items: "/items",
   characters: "/characters",
+  cosmetics: "/cosmetics",
   builder: "/builder",
   builds: "/builds",
   commissions: "/commissions",

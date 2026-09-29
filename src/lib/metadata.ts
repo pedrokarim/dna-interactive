@@ -27,6 +27,8 @@ export type MetadataKey =
   | "map"
   | "items"
   | "characters"
+  | "cosmetics"
+  | "banners"
   | "commissions"
   | "about"
   | "contact"
@@ -290,6 +292,44 @@ export const pageMetadata = {
     ],
     image: "/assets/worldview/worldview-9.webp",
     path: "/characters",
+  },
+  cosmetics: {
+    key: "cosmetics",
+    keywords: [
+      GAME_INFO.name,
+      "cosmetics",
+      "cosmétiques",
+      "skins",
+      "tenues",
+      "outfits",
+      "accessoires",
+      "accessories",
+      "weapon skins",
+      "montures",
+      "mounts",
+      "Myriade",
+      SITE_CONFIG.name,
+    ],
+    image: "/assets/worldview/worldview-9.webp",
+    path: "/cosmetics",
+  },
+  banners: {
+    key: "banners",
+    keywords: [
+      GAME_INFO.name,
+      "banners",
+      "bannières",
+      "Myriade",
+      "Myriad",
+      "gacha",
+      "skins",
+      "pity",
+      "taux",
+      "rates",
+      SITE_CONFIG.name,
+    ],
+    image: "/assets/worldview/worldview-9.webp",
+    path: "/cosmetics/banners",
   },
   commissions: {
     key: "commissions",

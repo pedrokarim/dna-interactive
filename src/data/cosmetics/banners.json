@@ -1,0 +1,2786 @@
+[
+ {
+  "id": 9001,
+  "type": "standard",
+  "typeLabel": {
+   "FR": "Myriade permanente",
+   "EN": "Standard",
+   "DE": "Standard",
+   "ES": "Estándar",
+   "JP": "常設",
+   "KR": "상시",
+   "TC": "常駐"
+  },
+  "name": {
+   "FR": "Rhapsodie stellaire",
+   "EN": "Starlight Rondo",
+   "DE": "Sternenlicht-Rondo",
+   "ES": "Rondó estelar",
+   "JP": "星の煌きは輪舞を描く歌",
+   "KR": "별빛의 노래",
+   "TC": "星光回旋曲"
+  },
+  "start": null,
+  "end": null,
+  "sequence": 1,
+  "tabImage": "/assets/cosmetics/banner/T_Gacha_PoolBanner_Normal01.webp",
+  "featured": "weapon-skins/3010402",
+  "rates": {
+   "star5": 0.3,
+   "star4": 5.1,
+   "pity": 90
+  },
+  "pools": {
+   "star5": [
+    {
+     "ref": "weapon-skins/3010402",
+     "table": "WeaponSkin",
+     "gameId": 3010402,
+     "count": 1,
+     "probability": 30
+    },
+    {
+     "ref": "weapon-skins/3010301",
+     "table": "WeaponSkin",
+     "gameId": 3010301,
+     "count": 1,
+     "probability": 30
+    },
+    {
+     "ref": "outfits/210102",
+     "table": "Skin",
+     "gameId": 210102,
+     "count": 1,
+     "probability": 20
+    },
+    {
+     "ref": "outfits/510101",
+     "table": "Skin",
+     "gameId": 510101,
+     "count": 1,
+     "probability": 20
+    }
+   ],
+   "star4": [
+    {
+     "ref": "accessories/10001",
+     "table": "CharAccessory",
+     "gameId": 10001,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10002",
+     "table": "CharAccessory",
+     "gameId": 10002,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10003",
+     "table": "CharAccessory",
+     "gameId": 10003,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10004",
+     "table": "CharAccessory",
+     "gameId": 10004,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10023",
+     "table": "CharAccessory",
+     "gameId": 10023,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10022",
+     "table": "CharAccessory",
+     "gameId": 10022,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10021",
+     "table": "CharAccessory",
+     "gameId": 10021,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10032",
+     "table": "CharAccessory",
+     "gameId": 10032,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20012",
+     "table": "CharAccessory",
+     "gameId": 20012,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20013",
+     "table": "CharAccessory",
+     "gameId": 20013,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20014",
+     "table": "CharAccessory",
+     "gameId": 20014,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20015",
+     "table": "CharAccessory",
+     "gameId": 20015,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20008",
+     "table": "CharAccessory",
+     "gameId": 20008,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20009",
+     "table": "CharAccessory",
+     "gameId": 20009,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20010",
+     "table": "CharAccessory",
+     "gameId": 20010,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20011",
+     "table": "CharAccessory",
+     "gameId": 20011,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20002",
+     "table": "CharAccessory",
+     "gameId": 20002,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20003",
+     "table": "CharAccessory",
+     "gameId": 20003,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20004",
+     "table": "CharAccessory",
+     "gameId": 20004,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20024",
+     "table": "CharAccessory",
+     "gameId": 20024,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20023",
+     "table": "CharAccessory",
+     "gameId": 20023,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20022",
+     "table": "CharAccessory",
+     "gameId": 20022,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20021",
+     "table": "CharAccessory",
+     "gameId": 20021,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20035",
+     "table": "CharAccessory",
+     "gameId": 20035,
+     "count": 1,
+     "probability": null
+    }
+   ],
+   "star3": [
+    {
+     "ref": "accessories/30004",
+     "table": "CharAccessory",
+     "gameId": 30004,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10005",
+     "table": "CharAccessory",
+     "gameId": 10005,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10006",
+     "table": "CharAccessory",
+     "gameId": 10006,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10007",
+     "table": "CharAccessory",
+     "gameId": 10007,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10008",
+     "table": "CharAccessory",
+     "gameId": 10008,
+     "count": 1,
+     "probability": null
+    }
+   ]
+  },
+  "cumulative": [],
+  "exchange": [],
+  "costCurrencyIds": [
+   1001
+  ]
+ },
+ {
+  "id": 9004,
+  "type": "rerun",
+  "typeLabel": {
+   "FR": "Retour limité",
+   "EN": "Limited-Time Rerun",
+   "ES": "Reedición por tiempo limitado",
+   "JP": "期間限定復刻",
+   "KR": "기간 한정 복각",
+   "TC": "限時復刻",
+   "DE": "Limited-Time Rerun"
+  },
+  "name": {
+   "FR": "Veillée des confidences",
+   "EN": "Nocturnal Narration",
+   "ES": "Narración nocturna",
+   "JP": "語り尽くせぬ夜の宴",
+   "KR": "밤의 연회, 끝없는 이야기",
+   "TC": "宴夜訴平生",
+   "DE": "Nocturnal Narration"
+  },
+  "start": "2026-09-07T02:00:00.000Z",
+  "end": "2026-10-19T09:00:00.000Z",
+  "sequence": 4,
+  "tabImage": "/assets/cosmetics/banner/T_Gacha_PoolBanner_Zhiliu01.webp",
+  "featured": "outfits/410201",
+  "rates": {
+   "star5": 0.3,
+   "star4": 5.1,
+   "pity": 90
+  },
+  "pools": {
+   "star5": [
+    {
+     "ref": "outfits/410201",
+     "table": "Skin",
+     "gameId": 410201,
+     "count": 1,
+     "probability": 45
+    },
+    {
+     "ref": null,
+     "table": "Resource",
+     "gameId": 111,
+     "count": 25,
+     "probability": 45
+    },
+    {
+     "ref": null,
+     "table": "Resource",
+     "gameId": 111,
+     "count": 50,
+     "probability": 10
+    }
+   ],
+   "star4": [
+    {
+     "ref": "accessories/10001",
+     "table": "CharAccessory",
+     "gameId": 10001,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10002",
+     "table": "CharAccessory",
+     "gameId": 10002,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10003",
+     "table": "CharAccessory",
+     "gameId": 10003,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10004",
+     "table": "CharAccessory",
+     "gameId": 10004,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10023",
+     "table": "CharAccessory",
+     "gameId": 10023,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10022",
+     "table": "CharAccessory",
+     "gameId": 10022,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10021",
+     "table": "CharAccessory",
+     "gameId": 10021,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10032",
+     "table": "CharAccessory",
+     "gameId": 10032,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20012",
+     "table": "CharAccessory",
+     "gameId": 20012,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20013",
+     "table": "CharAccessory",
+     "gameId": 20013,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20014",
+     "table": "CharAccessory",
+     "gameId": 20014,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20015",
+     "table": "CharAccessory",
+     "gameId": 20015,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20008",
+     "table": "CharAccessory",
+     "gameId": 20008,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20009",
+     "table": "CharAccessory",
+     "gameId": 20009,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20010",
+     "table": "CharAccessory",
+     "gameId": 20010,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20011",
+     "table": "CharAccessory",
+     "gameId": 20011,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20002",
+     "table": "CharAccessory",
+     "gameId": 20002,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20003",
+     "table": "CharAccessory",
+     "gameId": 20003,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20004",
+     "table": "CharAccessory",
+     "gameId": 20004,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20024",
+     "table": "CharAccessory",
+     "gameId": 20024,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20023",
+     "table": "CharAccessory",
+     "gameId": 20023,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20022",
+     "table": "CharAccessory",
+     "gameId": 20022,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20021",
+     "table": "CharAccessory",
+     "gameId": 20021,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20035",
+     "table": "CharAccessory",
+     "gameId": 20035,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "effects/50003",
+     "table": "CharAccessory",
+     "gameId": 50003,
+     "count": 1,
+     "probability": null
+    }
+   ],
+   "star3": [
+    {
+     "ref": "accessories/30004",
+     "table": "CharAccessory",
+     "gameId": 30004,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10005",
+     "table": "CharAccessory",
+     "gameId": 10005,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10006",
+     "table": "CharAccessory",
+     "gameId": 10006,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10007",
+     "table": "CharAccessory",
+     "gameId": 10007,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10008",
+     "table": "CharAccessory",
+     "gameId": 10008,
+     "count": 1,
+     "probability": null
+    }
+   ]
+  },
+  "cumulative": [
+   {
+    "pulls": 20,
+    "rewards": [
+     {
+      "table": "Resource",
+      "gameId": 1004,
+      "count": 5,
+      "ref": null
+     }
+    ]
+   },
+   {
+    "pulls": 40,
+    "rewards": [
+     {
+      "table": "Resource",
+      "gameId": 1004,
+      "count": 5,
+      "ref": null
+     }
+    ]
+   },
+   {
+    "pulls": 60,
+    "rewards": [
+     {
+      "table": "Resource",
+      "gameId": 1004,
+      "count": 5,
+      "ref": null
+     }
+    ]
+   },
+   {
+    "pulls": 80,
+    "rewards": [
+     {
+      "table": "Resource",
+      "gameId": 1004,
+      "count": 5,
+      "ref": null
+     }
+    ]
+   },
+   {
+    "pulls": 100,
+    "rewards": [
+     {
+      "table": "Resource",
+      "gameId": 1004,
+      "count": 10,
+      "ref": null
+     }
+    ]
+   }
+  ],
+  "exchange": [
+   {
+    "ref": "mounts/1001",
+    "table": "Mount",
+    "gameId": 1001,
+    "price": 60,
+    "currencyId": 111,
+    "limit": 1
+   },
+   {
+    "ref": "gestures/41032",
+    "table": "Resource",
+    "gameId": 41032,
+    "price": 50,
+    "currencyId": 111,
+    "limit": 1
+   },
+   {
+    "ref": "gestures/41040",
+    "table": "Resource",
+    "gameId": 41040,
+    "price": 50,
+    "currencyId": 111,
+    "limit": 1
+   },
+   {
+    "ref": "gestures/41041",
+    "table": "Resource",
+    "gameId": 41041,
+    "price": 50,
+    "currencyId": 111,
+    "limit": 1
+   }
+  ],
+  "costCurrencyIds": [
+   1004,
+   1003
+  ]
+ },
+ {
+  "id": 9008,
+  "type": "limited",
+  "typeLabel": {
+   "FR": "Myriade limitée",
+   "EN": "Event-Exclusive",
+   "DE": "Aktion-exklusiv",
+   "ES": "Exclusivo de evento",
+   "JP": "イベント限定",
+   "KR": "이벤트 한정",
+   "TC": "活動限定"
+  },
+  "name": {
+   "FR": "Où mène la longue route",
+   "EN": "Where the Long Road Leads",
+   "JP": "長き道の行く先",
+   "KR": "머나먼 길의 끝",
+   "TC": "長路何所向",
+   "DE": "Where the Long Road Leads",
+   "ES": "Where the Long Road Leads"
+  },
+  "start": "2026-09-07T02:00:00.000Z",
+  "end": "2026-10-19T09:00:00.000Z",
+  "sequence": 8,
+  "tabImage": "/assets/cosmetics/banner/T_Gacha_PoolBanner_Falu01.webp",
+  "featured": "outfits/310401",
+  "rates": {
+   "star5": 0.3,
+   "star4": 5.1,
+   "pity": 90
+  },
+  "pools": {
+   "star5": [
+    {
+     "ref": "outfits/310401",
+     "table": "Skin",
+     "gameId": 310401,
+     "count": 1,
+     "probability": 45
+    },
+    {
+     "ref": null,
+     "table": "Resource",
+     "gameId": 111,
+     "count": 25,
+     "probability": 45
+    },
+    {
+     "ref": null,
+     "table": "Resource",
+     "gameId": 111,
+     "count": 50,
+     "probability": 10
+    }
+   ],
+   "star4": [
+    {
+     "ref": "accessories/10001",
+     "table": "CharAccessory",
+     "gameId": 10001,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10002",
+     "table": "CharAccessory",
+     "gameId": 10002,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10003",
+     "table": "CharAccessory",
+     "gameId": 10003,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10004",
+     "table": "CharAccessory",
+     "gameId": 10004,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10023",
+     "table": "CharAccessory",
+     "gameId": 10023,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10022",
+     "table": "CharAccessory",
+     "gameId": 10022,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10021",
+     "table": "CharAccessory",
+     "gameId": 10021,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10032",
+     "table": "CharAccessory",
+     "gameId": 10032,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20012",
+     "table": "CharAccessory",
+     "gameId": 20012,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20013",
+     "table": "CharAccessory",
+     "gameId": 20013,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20014",
+     "table": "CharAccessory",
+     "gameId": 20014,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20015",
+     "table": "CharAccessory",
+     "gameId": 20015,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20008",
+     "table": "CharAccessory",
+     "gameId": 20008,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20009",
+     "table": "CharAccessory",
+     "gameId": 20009,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20010",
+     "table": "CharAccessory",
+     "gameId": 20010,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20011",
+     "table": "CharAccessory",
+     "gameId": 20011,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20002",
+     "table": "CharAccessory",
+     "gameId": 20002,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20003",
+     "table": "CharAccessory",
+     "gameId": 20003,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20004",
+     "table": "CharAccessory",
+     "gameId": 20004,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20024",
+     "table": "CharAccessory",
+     "gameId": 20024,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20023",
+     "table": "CharAccessory",
+     "gameId": 20023,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20022",
+     "table": "CharAccessory",
+     "gameId": 20022,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20021",
+     "table": "CharAccessory",
+     "gameId": 20021,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20035",
+     "table": "CharAccessory",
+     "gameId": 20035,
+     "count": 1,
+     "probability": null
+    }
+   ],
+   "star3": [
+    {
+     "ref": "accessories/30004",
+     "table": "CharAccessory",
+     "gameId": 30004,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10005",
+     "table": "CharAccessory",
+     "gameId": 10005,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10006",
+     "table": "CharAccessory",
+     "gameId": 10006,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10007",
+     "table": "CharAccessory",
+     "gameId": 10007,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10008",
+     "table": "CharAccessory",
+     "gameId": 10008,
+     "count": 1,
+     "probability": null
+    }
+   ]
+  },
+  "cumulative": [
+   {
+    "pulls": 20,
+    "rewards": [
+     {
+      "table": "Resource",
+      "gameId": 1004,
+      "count": 5,
+      "ref": null
+     }
+    ]
+   },
+   {
+    "pulls": 40,
+    "rewards": [
+     {
+      "table": "Resource",
+      "gameId": 1004,
+      "count": 5,
+      "ref": null
+     }
+    ]
+   },
+   {
+    "pulls": 60,
+    "rewards": [
+     {
+      "table": "Resource",
+      "gameId": 1004,
+      "count": 5,
+      "ref": null
+     }
+    ]
+   },
+   {
+    "pulls": 80,
+    "rewards": [
+     {
+      "table": "Resource",
+      "gameId": 1004,
+      "count": 5,
+      "ref": null
+     }
+    ]
+   },
+   {
+    "pulls": 100,
+    "rewards": [
+     {
+      "table": "Resource",
+      "gameId": 1004,
+      "count": 10,
+      "ref": null
+     }
+    ]
+   }
+  ],
+  "exchange": [
+   {
+    "ref": "mounts/1014",
+    "table": "Mount",
+    "gameId": 1014,
+    "price": 60,
+    "currencyId": 111,
+    "limit": 1
+   },
+   {
+    "ref": "gestures/41069",
+    "table": "Resource",
+    "gameId": 41069,
+    "price": 50,
+    "currencyId": 111,
+    "limit": 1
+   },
+   {
+    "ref": "gestures/41070",
+    "table": "Resource",
+    "gameId": 41070,
+    "price": 50,
+    "currencyId": 111,
+    "limit": 1
+   },
+   {
+    "ref": "gestures/41071",
+    "table": "Resource",
+    "gameId": 41071,
+    "price": 50,
+    "currencyId": 111,
+    "limit": 1
+   }
+  ],
+  "costCurrencyIds": [
+   1004,
+   1003
+  ]
+ },
+ {
+  "id": 9003,
+  "type": "rerun",
+  "typeLabel": {
+   "FR": "Retour limité",
+   "EN": "Limited-Time Rerun",
+   "ES": "Reedición por tiempo limitado",
+   "JP": "期間限定復刻",
+   "KR": "기간 한정 복각",
+   "TC": "限時復刻",
+   "DE": "Limited-Time Rerun"
+  },
+  "name": {
+   "FR": "Rythme lointain de l’océan",
+   "EN": "Ocean's Distant Rhythm",
+   "DE": "Ozeansferne Melodie",
+   "ES": "Ritmo distante del océano",
+   "JP": "水平線と潮騒",
+   "KR": "파도의 메아리",
+   "TC": "潮音起天末"
+  },
+  "start": "2026-07-27T02:00:00.000Z",
+  "end": "2026-09-07T09:00:00.000Z",
+  "sequence": 3,
+  "tabImage": "/assets/cosmetics/banner/T_Gacha_PoolBanner_Baiheng01.webp",
+  "featured": "outfits/240101",
+  "rates": {
+   "star5": 0.3,
+   "star4": 5.1,
+   "pity": 90
+  },
+  "pools": {
+   "star5": [
+    {
+     "ref": "outfits/240101",
+     "table": "Skin",
+     "gameId": 240101,
+     "count": 1,
+     "probability": 45
+    },
+    {
+     "ref": null,
+     "table": "Resource",
+     "gameId": 111,
+     "count": 25,
+     "probability": 45
+    },
+    {
+     "ref": null,
+     "table": "Resource",
+     "gameId": 111,
+     "count": 50,
+     "probability": 10
+    }
+   ],
+   "star4": [
+    {
+     "ref": "accessories/10001",
+     "table": "CharAccessory",
+     "gameId": 10001,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10002",
+     "table": "CharAccessory",
+     "gameId": 10002,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10003",
+     "table": "CharAccessory",
+     "gameId": 10003,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10004",
+     "table": "CharAccessory",
+     "gameId": 10004,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10023",
+     "table": "CharAccessory",
+     "gameId": 10023,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10022",
+     "table": "CharAccessory",
+     "gameId": 10022,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10021",
+     "table": "CharAccessory",
+     "gameId": 10021,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10032",
+     "table": "CharAccessory",
+     "gameId": 10032,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20012",
+     "table": "CharAccessory",
+     "gameId": 20012,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20013",
+     "table": "CharAccessory",
+     "gameId": 20013,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20014",
+     "table": "CharAccessory",
+     "gameId": 20014,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20015",
+     "table": "CharAccessory",
+     "gameId": 20015,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20008",
+     "table": "CharAccessory",
+     "gameId": 20008,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20009",
+     "table": "CharAccessory",
+     "gameId": 20009,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20010",
+     "table": "CharAccessory",
+     "gameId": 20010,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20011",
+     "table": "CharAccessory",
+     "gameId": 20011,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20002",
+     "table": "CharAccessory",
+     "gameId": 20002,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20003",
+     "table": "CharAccessory",
+     "gameId": 20003,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20004",
+     "table": "CharAccessory",
+     "gameId": 20004,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20024",
+     "table": "CharAccessory",
+     "gameId": 20024,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20023",
+     "table": "CharAccessory",
+     "gameId": 20023,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20022",
+     "table": "CharAccessory",
+     "gameId": 20022,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20021",
+     "table": "CharAccessory",
+     "gameId": 20021,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20035",
+     "table": "CharAccessory",
+     "gameId": 20035,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "effects/60002",
+     "table": "CharAccessory",
+     "gameId": 60002,
+     "count": 1,
+     "probability": null
+    }
+   ],
+   "star3": [
+    {
+     "ref": "accessories/30004",
+     "table": "CharAccessory",
+     "gameId": 30004,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10005",
+     "table": "CharAccessory",
+     "gameId": 10005,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10006",
+     "table": "CharAccessory",
+     "gameId": 10006,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10007",
+     "table": "CharAccessory",
+     "gameId": 10007,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10008",
+     "table": "CharAccessory",
+     "gameId": 10008,
+     "count": 1,
+     "probability": null
+    }
+   ]
+  },
+  "cumulative": [
+   {
+    "pulls": 20,
+    "rewards": [
+     {
+      "table": "Resource",
+      "gameId": 1004,
+      "count": 5,
+      "ref": null
+     }
+    ]
+   },
+   {
+    "pulls": 40,
+    "rewards": [
+     {
+      "table": "Resource",
+      "gameId": 1004,
+      "count": 5,
+      "ref": null
+     }
+    ]
+   },
+   {
+    "pulls": 60,
+    "rewards": [
+     {
+      "table": "Resource",
+      "gameId": 1004,
+      "count": 5,
+      "ref": null
+     }
+    ]
+   },
+   {
+    "pulls": 80,
+    "rewards": [
+     {
+      "table": "Resource",
+      "gameId": 1004,
+      "count": 5,
+      "ref": null
+     }
+    ]
+   },
+   {
+    "pulls": 100,
+    "rewards": [
+     {
+      "table": "Resource",
+      "gameId": 1004,
+      "count": 10,
+      "ref": null
+     }
+    ]
+   }
+  ],
+  "exchange": [
+   {
+    "ref": "gestures/41020",
+    "table": "Resource",
+    "gameId": 41020,
+    "price": 50,
+    "currencyId": 111,
+    "limit": 1
+   },
+   {
+    "ref": "gestures/41021",
+    "table": "Resource",
+    "gameId": 41021,
+    "price": 50,
+    "currencyId": 111,
+    "limit": 1
+   },
+   {
+    "ref": "gestures/41022",
+    "table": "Resource",
+    "gameId": 41022,
+    "price": 50,
+    "currencyId": 111,
+    "limit": 1
+   }
+  ],
+  "costCurrencyIds": [
+   1004,
+   1003
+  ]
+ },
+ {
+  "id": 9007,
+  "type": "limited",
+  "typeLabel": {
+   "FR": "Myriade limitée",
+   "EN": "Event-Exclusive",
+   "DE": "Aktion-exklusiv",
+   "ES": "Exclusivo de evento",
+   "JP": "イベント限定",
+   "KR": "이벤트 한정",
+   "TC": "活動限定"
+  },
+  "name": {
+   "FR": "Entre nuit et neige",
+   "EN": "Nocturne in White",
+   "JP": "ノクターンスノー",
+   "KR": "밤과 눈의 빛",
+   "TC": "夜色與雪色",
+   "DE": "Nocturne in White",
+   "ES": "Nocturne in White"
+  },
+  "start": "2026-07-27T02:00:00.000Z",
+  "end": "2026-09-07T09:00:00.000Z",
+  "sequence": 7,
+  "tabImage": "/assets/cosmetics/banner/T_Gacha_PoolBanner_Eve01.webp",
+  "featured": "outfits/210201",
+  "rates": {
+   "star5": 0.3,
+   "star4": 5.1,
+   "pity": 90
+  },
+  "pools": {
+   "star5": [
+    {
+     "ref": "outfits/210201",
+     "table": "Skin",
+     "gameId": 210201,
+     "count": 1,
+     "probability": 45
+    },
+    {
+     "ref": null,
+     "table": "Resource",
+     "gameId": 111,
+     "count": 25,
+     "probability": 45
+    },
+    {
+     "ref": null,
+     "table": "Resource",
+     "gameId": 111,
+     "count": 50,
+     "probability": 10
+    }
+   ],
+   "star4": [
+    {
+     "ref": "accessories/10001",
+     "table": "CharAccessory",
+     "gameId": 10001,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10002",
+     "table": "CharAccessory",
+     "gameId": 10002,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10003",
+     "table": "CharAccessory",
+     "gameId": 10003,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10004",
+     "table": "CharAccessory",
+     "gameId": 10004,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10023",
+     "table": "CharAccessory",
+     "gameId": 10023,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10022",
+     "table": "CharAccessory",
+     "gameId": 10022,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10021",
+     "table": "CharAccessory",
+     "gameId": 10021,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10032",
+     "table": "CharAccessory",
+     "gameId": 10032,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20012",
+     "table": "CharAccessory",
+     "gameId": 20012,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20013",
+     "table": "CharAccessory",
+     "gameId": 20013,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20014",
+     "table": "CharAccessory",
+     "gameId": 20014,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20015",
+     "table": "CharAccessory",
+     "gameId": 20015,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20008",
+     "table": "CharAccessory",
+     "gameId": 20008,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20009",
+     "table": "CharAccessory",
+     "gameId": 20009,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20010",
+     "table": "CharAccessory",
+     "gameId": 20010,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20011",
+     "table": "CharAccessory",
+     "gameId": 20011,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20002",
+     "table": "CharAccessory",
+     "gameId": 20002,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20003",
+     "table": "CharAccessory",
+     "gameId": 20003,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20004",
+     "table": "CharAccessory",
+     "gameId": 20004,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20024",
+     "table": "CharAccessory",
+     "gameId": 20024,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20023",
+     "table": "CharAccessory",
+     "gameId": 20023,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20022",
+     "table": "CharAccessory",
+     "gameId": 20022,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20021",
+     "table": "CharAccessory",
+     "gameId": 20021,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20035",
+     "table": "CharAccessory",
+     "gameId": 20035,
+     "count": 1,
+     "probability": null
+    }
+   ],
+   "star3": [
+    {
+     "ref": "accessories/30004",
+     "table": "CharAccessory",
+     "gameId": 30004,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10005",
+     "table": "CharAccessory",
+     "gameId": 10005,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10006",
+     "table": "CharAccessory",
+     "gameId": 10006,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10007",
+     "table": "CharAccessory",
+     "gameId": 10007,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10008",
+     "table": "CharAccessory",
+     "gameId": 10008,
+     "count": 1,
+     "probability": null
+    }
+   ]
+  },
+  "cumulative": [
+   {
+    "pulls": 20,
+    "rewards": [
+     {
+      "table": "Resource",
+      "gameId": 1004,
+      "count": 5,
+      "ref": null
+     }
+    ]
+   },
+   {
+    "pulls": 40,
+    "rewards": [
+     {
+      "table": "Resource",
+      "gameId": 1004,
+      "count": 5,
+      "ref": null
+     }
+    ]
+   },
+   {
+    "pulls": 60,
+    "rewards": [
+     {
+      "table": "Resource",
+      "gameId": 1004,
+      "count": 5,
+      "ref": null
+     }
+    ]
+   },
+   {
+    "pulls": 80,
+    "rewards": [
+     {
+      "table": "Resource",
+      "gameId": 1004,
+      "count": 5,
+      "ref": null
+     }
+    ]
+   },
+   {
+    "pulls": 100,
+    "rewards": [
+     {
+      "table": "Resource",
+      "gameId": 1004,
+      "count": 10,
+      "ref": null
+     }
+    ]
+   }
+  ],
+  "exchange": [
+   {
+    "ref": "gestures/41064",
+    "table": "Resource",
+    "gameId": 41064,
+    "price": 50,
+    "currencyId": 111,
+    "limit": 1
+   },
+   {
+    "ref": "gestures/41067",
+    "table": "Resource",
+    "gameId": 41067,
+    "price": 50,
+    "currencyId": 111,
+    "limit": 1
+   },
+   {
+    "ref": "gestures/41068",
+    "table": "Resource",
+    "gameId": 41068,
+    "price": 50,
+    "currencyId": 111,
+    "limit": 1
+   }
+  ],
+  "costCurrencyIds": [
+   1004,
+   1003
+  ]
+ },
+ {
+  "id": 9002,
+  "type": "rerun",
+  "typeLabel": {
+   "FR": "Retour limité",
+   "EN": "Limited-Time Rerun",
+   "ES": "Reedición por tiempo limitado",
+   "JP": "期間限定復刻",
+   "KR": "기간 한정 복각",
+   "TC": "限時復刻",
+   "DE": "Limited-Time Rerun"
+  },
+  "name": {
+   "FR": "Songes d’été",
+   "EN": "Summer Dreams Aflutter",
+   "DE": "Sommerträume im Flug",
+   "ES": "Sueños de verano",
+   "JP": "真夏の夜の夢",
+   "KR": "한여름 밤의 비상",
+   "TC": "夏夢紛飛集"
+  },
+  "start": "2026-06-01T02:00:00.000Z",
+  "end": "2026-07-27T09:00:00.000Z",
+  "sequence": 2,
+  "tabImage": "/assets/cosmetics/banner/T_Gacha_PoolBanner_Saiqi01.webp",
+  "featured": "outfits/530101",
+  "rates": {
+   "star5": 0.3,
+   "star4": 5.1,
+   "pity": 90
+  },
+  "pools": {
+   "star5": [
+    {
+     "ref": "outfits/530101",
+     "table": "Skin",
+     "gameId": 530101,
+     "count": 1,
+     "probability": 45
+    },
+    {
+     "ref": null,
+     "table": "Resource",
+     "gameId": 111,
+     "count": 25,
+     "probability": 45
+    },
+    {
+     "ref": null,
+     "table": "Resource",
+     "gameId": 111,
+     "count": 50,
+     "probability": 10
+    }
+   ],
+   "star4": [
+    {
+     "ref": "accessories/10001",
+     "table": "CharAccessory",
+     "gameId": 10001,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10002",
+     "table": "CharAccessory",
+     "gameId": 10002,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10003",
+     "table": "CharAccessory",
+     "gameId": 10003,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10004",
+     "table": "CharAccessory",
+     "gameId": 10004,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10023",
+     "table": "CharAccessory",
+     "gameId": 10023,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10022",
+     "table": "CharAccessory",
+     "gameId": 10022,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10021",
+     "table": "CharAccessory",
+     "gameId": 10021,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10032",
+     "table": "CharAccessory",
+     "gameId": 10032,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20012",
+     "table": "CharAccessory",
+     "gameId": 20012,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20013",
+     "table": "CharAccessory",
+     "gameId": 20013,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20014",
+     "table": "CharAccessory",
+     "gameId": 20014,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20015",
+     "table": "CharAccessory",
+     "gameId": 20015,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20008",
+     "table": "CharAccessory",
+     "gameId": 20008,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20009",
+     "table": "CharAccessory",
+     "gameId": 20009,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20010",
+     "table": "CharAccessory",
+     "gameId": 20010,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20011",
+     "table": "CharAccessory",
+     "gameId": 20011,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20002",
+     "table": "CharAccessory",
+     "gameId": 20002,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20003",
+     "table": "CharAccessory",
+     "gameId": 20003,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20004",
+     "table": "CharAccessory",
+     "gameId": 20004,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20024",
+     "table": "CharAccessory",
+     "gameId": 20024,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20023",
+     "table": "CharAccessory",
+     "gameId": 20023,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20022",
+     "table": "CharAccessory",
+     "gameId": 20022,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20021",
+     "table": "CharAccessory",
+     "gameId": 20021,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20035",
+     "table": "CharAccessory",
+     "gameId": 20035,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "effects/50002",
+     "table": "CharAccessory",
+     "gameId": 50002,
+     "count": 1,
+     "probability": null
+    }
+   ],
+   "star3": [
+    {
+     "ref": "accessories/30004",
+     "table": "CharAccessory",
+     "gameId": 30004,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10005",
+     "table": "CharAccessory",
+     "gameId": 10005,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10006",
+     "table": "CharAccessory",
+     "gameId": 10006,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10007",
+     "table": "CharAccessory",
+     "gameId": 10007,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10008",
+     "table": "CharAccessory",
+     "gameId": 10008,
+     "count": 1,
+     "probability": null
+    }
+   ]
+  },
+  "cumulative": [
+   {
+    "pulls": 20,
+    "rewards": [
+     {
+      "table": "Resource",
+      "gameId": 1004,
+      "count": 5,
+      "ref": null
+     }
+    ]
+   },
+   {
+    "pulls": 40,
+    "rewards": [
+     {
+      "table": "Resource",
+      "gameId": 1004,
+      "count": 5,
+      "ref": null
+     }
+    ]
+   },
+   {
+    "pulls": 60,
+    "rewards": [
+     {
+      "table": "Resource",
+      "gameId": 1004,
+      "count": 5,
+      "ref": null
+     }
+    ]
+   },
+   {
+    "pulls": 80,
+    "rewards": [
+     {
+      "table": "Resource",
+      "gameId": 1004,
+      "count": 5,
+      "ref": null
+     }
+    ]
+   },
+   {
+    "pulls": 100,
+    "rewards": [
+     {
+      "table": "Resource",
+      "gameId": 1004,
+      "count": 10,
+      "ref": null
+     }
+    ]
+   }
+  ],
+  "exchange": [
+   {
+    "ref": "gestures/41014",
+    "table": "Resource",
+    "gameId": 41014,
+    "price": 50,
+    "currencyId": 111,
+    "limit": 1
+   },
+   {
+    "ref": "gestures/41017",
+    "table": "Resource",
+    "gameId": 41017,
+    "price": 50,
+    "currencyId": 111,
+    "limit": 1
+   },
+   {
+    "ref": "gestures/41018",
+    "table": "Resource",
+    "gameId": 41018,
+    "price": 50,
+    "currencyId": 111,
+    "limit": 1
+   }
+  ],
+  "costCurrencyIds": [
+   1004,
+   1003
+  ]
+ },
+ {
+  "id": 90021,
+  "type": "limited",
+  "typeLabel": {
+   "FR": "Myriade limitée",
+   "EN": "Event-Exclusive",
+   "DE": "Aktion-exklusiv",
+   "ES": "Exclusivo de evento",
+   "JP": "イベント限定",
+   "KR": "이벤트 한정",
+   "TC": "活動限定"
+  },
+  "name": {
+   "FR": "Grâce à cette douce nuit",
+   "EN": "Grace Upon the Benign Night",
+   "ES": "Clemencia en la noche serena",
+   "JP": "穏やかな夜を赦す",
+   "KR": "이 밤을 용서하라",
+   "TC": "寬赦這良夜",
+   "DE": "Grace Upon the Benign Night"
+  },
+  "start": "2026-06-01T02:00:00.000Z",
+  "end": "2026-07-27T09:00:00.000Z",
+  "sequence": 6,
+  "tabImage": "/assets/cosmetics/banner/T_Gacha_PoolBanner_Fuluo01.webp",
+  "featured": "outfits/110201",
+  "rates": {
+   "star5": 0.3,
+   "star4": 5.1,
+   "pity": 90
+  },
+  "pools": {
+   "star5": [
+    {
+     "ref": "outfits/110201",
+     "table": "Skin",
+     "gameId": 110201,
+     "count": 1,
+     "probability": 45
+    },
+    {
+     "ref": null,
+     "table": "Resource",
+     "gameId": 111,
+     "count": 25,
+     "probability": 45
+    },
+    {
+     "ref": null,
+     "table": "Resource",
+     "gameId": 111,
+     "count": 50,
+     "probability": 10
+    }
+   ],
+   "star4": [
+    {
+     "ref": "accessories/10001",
+     "table": "CharAccessory",
+     "gameId": 10001,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10002",
+     "table": "CharAccessory",
+     "gameId": 10002,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10003",
+     "table": "CharAccessory",
+     "gameId": 10003,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10004",
+     "table": "CharAccessory",
+     "gameId": 10004,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10023",
+     "table": "CharAccessory",
+     "gameId": 10023,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10022",
+     "table": "CharAccessory",
+     "gameId": 10022,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10021",
+     "table": "CharAccessory",
+     "gameId": 10021,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10032",
+     "table": "CharAccessory",
+     "gameId": 10032,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20012",
+     "table": "CharAccessory",
+     "gameId": 20012,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20013",
+     "table": "CharAccessory",
+     "gameId": 20013,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20014",
+     "table": "CharAccessory",
+     "gameId": 20014,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20015",
+     "table": "CharAccessory",
+     "gameId": 20015,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20008",
+     "table": "CharAccessory",
+     "gameId": 20008,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20009",
+     "table": "CharAccessory",
+     "gameId": 20009,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20010",
+     "table": "CharAccessory",
+     "gameId": 20010,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20011",
+     "table": "CharAccessory",
+     "gameId": 20011,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20002",
+     "table": "CharAccessory",
+     "gameId": 20002,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20003",
+     "table": "CharAccessory",
+     "gameId": 20003,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20004",
+     "table": "CharAccessory",
+     "gameId": 20004,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20024",
+     "table": "CharAccessory",
+     "gameId": 20024,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20023",
+     "table": "CharAccessory",
+     "gameId": 20023,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20022",
+     "table": "CharAccessory",
+     "gameId": 20022,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20021",
+     "table": "CharAccessory",
+     "gameId": 20021,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20035",
+     "table": "CharAccessory",
+     "gameId": 20035,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "effects/50004",
+     "table": "CharAccessory",
+     "gameId": 50004,
+     "count": 1,
+     "probability": null
+    }
+   ],
+   "star3": [
+    {
+     "ref": "accessories/30004",
+     "table": "CharAccessory",
+     "gameId": 30004,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10005",
+     "table": "CharAccessory",
+     "gameId": 10005,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10006",
+     "table": "CharAccessory",
+     "gameId": 10006,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10007",
+     "table": "CharAccessory",
+     "gameId": 10007,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10008",
+     "table": "CharAccessory",
+     "gameId": 10008,
+     "count": 1,
+     "probability": null
+    }
+   ]
+  },
+  "cumulative": [
+   {
+    "pulls": 20,
+    "rewards": [
+     {
+      "table": "Resource",
+      "gameId": 1004,
+      "count": 5,
+      "ref": null
+     }
+    ]
+   },
+   {
+    "pulls": 40,
+    "rewards": [
+     {
+      "table": "Resource",
+      "gameId": 1004,
+      "count": 5,
+      "ref": null
+     }
+    ]
+   },
+   {
+    "pulls": 60,
+    "rewards": [
+     {
+      "table": "Resource",
+      "gameId": 1004,
+      "count": 5,
+      "ref": null
+     }
+    ]
+   },
+   {
+    "pulls": 80,
+    "rewards": [
+     {
+      "table": "Resource",
+      "gameId": 1004,
+      "count": 5,
+      "ref": null
+     }
+    ]
+   },
+   {
+    "pulls": 100,
+    "rewards": [
+     {
+      "table": "Resource",
+      "gameId": 1004,
+      "count": 10,
+      "ref": null
+     }
+    ]
+   }
+  ],
+  "exchange": [
+   {
+    "ref": "gestures/41058",
+    "table": "Resource",
+    "gameId": 41058,
+    "price": 50,
+    "currencyId": 111,
+    "limit": 1
+   },
+   {
+    "ref": "gestures/41062",
+    "table": "Resource",
+    "gameId": 41062,
+    "price": 50,
+    "currencyId": 111,
+    "limit": 1
+   },
+   {
+    "ref": "gestures/41063",
+    "table": "Resource",
+    "gameId": 41063,
+    "price": 50,
+    "currencyId": 111,
+    "limit": 1
+   }
+  ],
+  "costCurrencyIds": [
+   1004,
+   1003
+  ]
+ },
+ {
+  "id": 9005,
+  "type": "limited",
+  "typeLabel": {
+   "FR": "Myriade limitée",
+   "EN": "Event-Exclusive",
+   "DE": "Aktion-exklusiv",
+   "ES": "Exclusivo de evento",
+   "JP": "イベント限定",
+   "KR": "이벤트 한정",
+   "TC": "活動限定"
+  },
+  "name": {
+   "FR": "L’Envol vers l’azur",
+   "EN": "Will beneath the Wings",
+   "JP": "青空へ羽ばたく",
+   "KR": "비상의 날개",
+   "TC": "執羽叩青空",
+   "DE": "Will beneath the Wings",
+   "ES": "Will beneath the Wings"
+  },
+  "start": "2026-04-06T02:00:00.000Z",
+  "end": "2026-06-01T09:00:00.000Z",
+  "sequence": 5,
+  "tabImage": "/assets/cosmetics/banner/T_Gacha_PoolBanner_Suyi01.webp",
+  "featured": "outfits/150401",
+  "rates": {
+   "star5": 0.3,
+   "star4": 5.1,
+   "pity": 90
+  },
+  "pools": {
+   "star5": [
+    {
+     "ref": "outfits/150401",
+     "table": "Skin",
+     "gameId": 150401,
+     "count": 1,
+     "probability": 45
+    },
+    {
+     "ref": null,
+     "table": "Resource",
+     "gameId": 111,
+     "count": 25,
+     "probability": 45
+    },
+    {
+     "ref": null,
+     "table": "Resource",
+     "gameId": 111,
+     "count": 50,
+     "probability": 10
+    }
+   ],
+   "star4": [
+    {
+     "ref": "accessories/10001",
+     "table": "CharAccessory",
+     "gameId": 10001,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10002",
+     "table": "CharAccessory",
+     "gameId": 10002,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10003",
+     "table": "CharAccessory",
+     "gameId": 10003,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10004",
+     "table": "CharAccessory",
+     "gameId": 10004,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10023",
+     "table": "CharAccessory",
+     "gameId": 10023,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10022",
+     "table": "CharAccessory",
+     "gameId": 10022,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10021",
+     "table": "CharAccessory",
+     "gameId": 10021,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10032",
+     "table": "CharAccessory",
+     "gameId": 10032,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20012",
+     "table": "CharAccessory",
+     "gameId": 20012,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20013",
+     "table": "CharAccessory",
+     "gameId": 20013,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20014",
+     "table": "CharAccessory",
+     "gameId": 20014,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20015",
+     "table": "CharAccessory",
+     "gameId": 20015,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20008",
+     "table": "CharAccessory",
+     "gameId": 20008,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20009",
+     "table": "CharAccessory",
+     "gameId": 20009,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20010",
+     "table": "CharAccessory",
+     "gameId": 20010,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20011",
+     "table": "CharAccessory",
+     "gameId": 20011,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20002",
+     "table": "CharAccessory",
+     "gameId": 20002,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20003",
+     "table": "CharAccessory",
+     "gameId": 20003,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20004",
+     "table": "CharAccessory",
+     "gameId": 20004,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20024",
+     "table": "CharAccessory",
+     "gameId": 20024,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20023",
+     "table": "CharAccessory",
+     "gameId": 20023,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20022",
+     "table": "CharAccessory",
+     "gameId": 20022,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20021",
+     "table": "CharAccessory",
+     "gameId": 20021,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/20035",
+     "table": "CharAccessory",
+     "gameId": 20035,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "effects/60003",
+     "table": "CharAccessory",
+     "gameId": 60003,
+     "count": 1,
+     "probability": null
+    }
+   ],
+   "star3": [
+    {
+     "ref": "accessories/30004",
+     "table": "CharAccessory",
+     "gameId": 30004,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10005",
+     "table": "CharAccessory",
+     "gameId": 10005,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10006",
+     "table": "CharAccessory",
+     "gameId": 10006,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10007",
+     "table": "CharAccessory",
+     "gameId": 10007,
+     "count": 1,
+     "probability": null
+    },
+    {
+     "ref": "accessories/10008",
+     "table": "CharAccessory",
+     "gameId": 10008,
+     "count": 1,
+     "probability": null
+    }
+   ]
+  },
+  "cumulative": [
+   {
+    "pulls": 20,
+    "rewards": [
+     {
+      "table": "Resource",
+      "gameId": 1004,
+      "count": 5,
+      "ref": null
+     }
+    ]
+   },
+   {
+    "pulls": 40,
+    "rewards": [
+     {
+      "table": "Resource",
+      "gameId": 1004,
+      "count": 5,
+      "ref": null
+     }
+    ]
+   },
+   {
+    "pulls": 60,
+    "rewards": [
+     {
+      "table": "Resource",
+      "gameId": 1004,
+      "count": 5,
+      "ref": null
+     }
+    ]
+   },
+   {
+    "pulls": 80,
+    "rewards": [
+     {
+      "table": "Resource",
+      "gameId": 1004,
+      "count": 5,
+      "ref": null
+     }
+    ]
+   },
+   {
+    "pulls": 100,
+    "rewards": [
+     {
+      "table": "Resource",
+      "gameId": 1004,
+      "count": 10,
+      "ref": null
+     }
+    ]
+   }
+  ],
+  "exchange": [
+   {
+    "ref": "gestures/41051",
+    "table": "Resource",
+    "gameId": 41051,
+    "price": 50,
+    "currencyId": 111,
+    "limit": 1
+   },
+   {
+    "ref": "gestures/41054",
+    "table": "Resource",
+    "gameId": 41054,
+    "price": 50,
+    "currencyId": 111,
+    "limit": 1
+   },
+   {
+    "ref": "gestures/41055",
+    "table": "Resource",
+    "gameId": 41055,
+    "price": 50,
+    "currencyId": 111,
+    "limit": 1
+   }
+  ],
+  "costCurrencyIds": [
+   1004,
+   1003
+  ]
+ }
+]

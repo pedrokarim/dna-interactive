@@ -56,7 +56,8 @@
     "builds": "커뮤니티 빌드",
     "calendar": "캘린더",
     "discord": "Discord",
-    "twitter": "X"
+    "twitter": "X",
+    "cosmetics": "외형"
   },
   "common": {
     "close": "닫기",
@@ -904,7 +905,11 @@
     "characterNotFoundDescription": "이 캐릭터는 데이터베이스에 없습니다.",
     "draftDetailTitle": "제작 설계도 상세",
     "draftNotFoundDescription": "제작 설계도를 찾을 수 없습니다.",
-    "characterOgAlt": "캐릭터 — DNA Interactive"
+    "characterOgAlt": "캐릭터 — DNA Interactive",
+    "cosmeticsTitle": "외형: 스킨, 장식, 무기 스킨",
+    "cosmeticsDescription": "Duet Night Abyss의 모든 외형 아이템. 스킨, 헤어스타일, 장식, 이펙트, 무기 스킨, 탈것, 제스처를 이미지, 획득 방법, 가격과 함께 정리했습니다.",
+    "bannersTitle": "광채 배너",
+    "bannersDescription": "Duet Night Abyss의 광채 배너 전체. 픽업 스킨, 확률, 천장, 전체 구성, 누적 보상, 프리즘 교환."
   },
   "commissions": {
     "eyebrow": "은밀한 커미션",
@@ -2074,5 +2079,172 @@
     "dynamicEvent": "돌발 이벤트",
     "npc": "NPC",
     "readable": "문서"
+  },
+  "cosmetics": {
+    "headerLabel": "옷장",
+    "title": "외형",
+    "description": "스킨, 헤어스타일, 장식, 이펙트, 무기 스킨, 탈것, 제스처. Duet Night Abyss의 모든 외형 아이템을 게임 옷장과 같은 분류로 정리했습니다.",
+    "countLabel": "아이템",
+    "count": "{filtered} / {total}개",
+    "itemCount": "{count}개",
+    "categories": {
+      "outfits": {
+        "title": "스킨",
+        "description": "기본 스킨, 전용 스킨, 여러 캐릭터가 입을 수 있는 컬렉션."
+      },
+      "hairstyles": {
+        "title": "헤어스타일",
+        "description": "모든 캐릭터가 쓸 수 있는 헤어스타일과 머리 장식."
+      },
+      "accessories": {
+        "title": "장식",
+        "description": "모자, 머리, 얼굴, 등, 허리 장식을 부위별로 정리."
+      },
+      "effects": {
+        "title": "이펙트",
+        "description": "후광, 발자국, 전송, 낙하 공격, 나선 도약, 전투 불능 이펙트."
+      },
+      "victory-poses": {
+        "title": "승리 포즈",
+        "description": "전투가 끝날 때 나오는 포즈."
+      },
+      "weapon-skins": {
+        "title": "무기 스킨",
+        "description": "근거리·원거리 무기의 외형을 무기 종류별로 정리."
+      },
+      "weapon-ornaments": {
+        "title": "무기 장식",
+        "description": "무기에 다는 참과 펜던트."
+      },
+      "weapon-stances": {
+        "title": "공격 이펙트",
+        "description": "달리기 공격과 차지 공격의 외형 변형."
+      },
+      "mounts": {
+        "title": "탈것",
+        "description": "게임의 모든 탈것."
+      },
+      "gestures": {
+        "title": "제스처",
+        "description": "게임에서 사용할 수 있는 제스처와 포즈."
+      },
+      "dyes": {
+        "title": "염료",
+        "description": "스킨 색을 바꾸는 일반 염료와 고급 염료."
+      }
+    },
+    "subcategories": {
+      "outfits": {
+        "default": "기본 스킨",
+        "signature": "전용 스킨",
+        "series": "컬렉션"
+      },
+      "weapon-skins": {
+        "universal": "모든 무기"
+      },
+      "weapon-stances": {
+        "run-attack": "달리기 공격",
+        "heavy-attack": "차지 공격"
+      }
+    },
+    "obtain": {
+      "banner": "광채",
+      "prismExchange": "프리즘 교환",
+      "shop": "상점",
+      "event": "이벤트",
+      "impressionShop": "인상 상점",
+      "battlePass": "음유 시집",
+      "starterPack": "시작 선물 상자",
+      "quest": "퀘스트",
+      "reputation": "명성",
+      "default": "기본 스킨"
+    },
+    "filterSubcategory": "부위",
+    "filterObtain": "획득 방법",
+    "filterCharacter": "캐릭터",
+    "hiddenFilter": "비밀",
+    "searchPlaceholder": "외형 아이템 검색…",
+    "sortDefault": "기본",
+    "sortName": "이름순",
+    "sortRarity": "희귀도순",
+    "noResults": "조건에 맞는 아이템이 없습니다.",
+    "noResultsHint": "검색 범위를 넓히거나 필터를 초기화하세요.",
+    "addToFavorites": "즐겨찾기에 추가",
+    "removeFromFavorites": "즐겨찾기에서 삭제",
+    "hiddenBadge": "비밀",
+    "hiddenHint": "획득하기 전까지 게임 옷장에 표시되지 않습니다.",
+    "variantsCount": "{count}가지 색상",
+    "characterCount": "캐릭터 {count}명",
+    "categoryMetaTitle": "{category} ({count}개)",
+    "detailMetaTitle": "{name} | {category}",
+    "detailMetaDescription": "{name}: Duet Night Abyss 외형 아이템({category}). 이미지, 획득 방법, 가격, 색상 변형.",
+    "visuals": {
+      "icon": "아이콘",
+      "portrait": "초상",
+      "bust": "일러스트",
+      "wide": "미리보기",
+      "model3d": "3D"
+    },
+    "soon": "곧 추가",
+    "model3dTitle": "3D 뷰어",
+    "model3dSoon": "3D 뷰어가 곧 이 페이지에 추가됩니다.",
+    "info": "정보",
+    "slot": "부위",
+    "refund": "중복 시 전환",
+    "gameId": "게임 ID",
+    "obtainTitle": "획득 방법",
+    "purchaseLimit": "한도: {count}",
+    "descriptionTitle": "설명",
+    "charactersTitle": "캐릭터 ({count})",
+    "charactersHint": "캐릭터를 선택하면 해당 캐릭터 버전의 스킨을 볼 수 있습니다.",
+    "charactersHintShared": "이 스킨을 입을 수 있는 캐릭터. 이미지는 모두 같습니다.",
+    "viewCharacter": "{name} 페이지 보기",
+    "characterTitle": "캐릭터",
+    "variantsTitle": "색상 ({count})",
+    "bannersTitle": "소환 배너",
+    "bannerPeriod": "{start} ~ {end}",
+    "bannerStatus": {
+      "current": "진행 중",
+      "upcoming": "예정",
+      "ended": "종료",
+      "permanent": "상시"
+    },
+    "endsIn": "종료까지 {time}",
+    "startsIn": "시작까지 {time}",
+    "bannersSection": "진행 중인 광채",
+    "viewAllBanners": "모든 배너",
+    "categoriesSection": "카테고리",
+    "dataVersion": "게임 버전 {version} 기준.",
+    "bannersDescription": "최신순으로 정리한 광채 배너. 픽업 스킨, 확률, 전체 구성, 누적 보상, 프리즘 교환.",
+    "bannersCountLabel": "배너",
+    "bannerTypes": {
+      "limited": "이벤트 한정",
+      "rerun": "기간 한정 복각",
+      "standard": "상시"
+    },
+    "percent": "{value}%",
+    "viewFeatured": "“{name}” 보기",
+    "ratesTitle": "확률",
+    "rateStar5": "5★ 아이템",
+    "rateStar4": "4★ 아이템",
+    "pityLabel": "5★ 확정",
+    "pityValue": "최대 {count}회",
+    "tenPullLabel": "10회마다",
+    "tenPullValue": "4★ 이상 확정",
+    "periodTitle": "기간",
+    "periodStart": "시작",
+    "periodEnd": "종료",
+    "costLabel": "소환 재화:",
+    "poolStar5": "5★ 아이템",
+    "poolStar5HintLimited": "5★ 아이템이 나오면 아래 중 하나가 표시된 확률로 나옵니다.",
+    "poolStar5HintStandard": "5★ 아이템이 나오면 아래 외형 중 하나가 표시된 확률로 나옵니다.",
+    "poolStar4": "4★ 아이템",
+    "poolStar3": "3★ 아이템",
+    "cumulativeTitle": "누적 보상",
+    "pullsCount": "{count}회",
+    "exchangeTitle": "프리즘 교환",
+    "exchangeHint": "배너 기간 동안 무지개빛 프리즘으로 교환할 수 있는 아이템.",
+    "bannerMetaTitle": "{name} | {type}",
+    "bannerMetaDescription": "Duet Night Abyss 배너 “{name}”: {featured}, 확률, 천장, 전체 구성, 프리즘 교환."
   }
 }
