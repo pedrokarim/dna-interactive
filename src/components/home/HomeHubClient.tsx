@@ -25,6 +25,8 @@ import { useAppSettings } from "@/lib/settings/useAppSettings";
 import { CONTACT_INFO } from "@/lib/constants";
 import type { FeatureBadge, FeatureKey } from "@/config/feature-badges";
 import { DISCORD_BUTTON_CLASS, DiscordIcon } from "@/components/icons/BrandIcons";
+import BannersShowcase from "@/components/cosmetics/BannersShowcase";
+import type { BannerSummaryView } from "@/lib/cosmetics/banners";
 
 export type HomeBuildCard = {
   id: string;
@@ -53,6 +55,8 @@ export type HomeHubClientProps = {
   isAuthenticated: boolean;
   /** Badges encore valides, résolus côté serveur (src/config/feature-badges.ts). */
   badges: Partial<Record<FeatureKey, FeatureBadge>>;
+  /** Bannières de la Myriade, résumées côté serveur (le statut se calcule sur l'horloge du visiteur). */
+  banners: BannerSummaryView[];
 };
 
 /* CTA façon design system, appliqués directement sur un Link/anchor. */
@@ -229,8 +233,10 @@ function HomeHub({
   serverToday,
   calendarToday,
   isAuthenticated,
+  banners,
 }: HomeHubClientProps) {
   const t = useTranslations("homeHub");
+  const tCosmetics = useTranslations("cosmetics");
   const { commissionsVisible } = useAppSettings();
   // Liste curee : elle se vide toute seule quand le personnage sort et rejoint
   // `characters.json` (cf. src/lib/characters/upcoming.ts).
@@ -240,6 +246,7 @@ function HomeHub({
     { href: "/items", title: t("itemsTitle"), feature: "items", mark: "Le Reliquaire", desc: t("itemsDescription"), icon: GlyphIcons.items, bg: "/assets/worldview/worldview-5.webp", tint: "var(--color-anemo)" },
     { href: "/items/weapons", title: t("weaponsTitle"), feature: "weapons", mark: "Arsenal", desc: t("weaponsDescription"), icon: GlyphIcons.weapons, bg: "/assets/worldview/worldview-8.webp", tint: "var(--color-pyro)" },
     { href: "/items/genimons", title: t("genimonsTitle"), feature: "genimons", mark: "Genimons", desc: t("genimonsDescription"), icon: GlyphIcons.geniemons, bg: "/assets/worldview/worldview-9.webp", tint: "var(--color-hydro)" },
+    { href: "/cosmetics", title: t("cosmeticsTitle"), feature: "cosmetics", mark: "La Garde-robe", desc: t("cosmeticsDescription"), icon: GlyphIcons.cosmetics, bg: "/assets/cosmetics/bust/T_Bust_Falu01.webp", tint: "var(--color-lumino)" },
   ];
   const toolCards: ToolCard[] = [
     { href: "/builder", title: t("buildBuilderTitle"), feature: "builder", mark: "La Forge", desc: t("buildBuilderDescription"), icon: GlyphIcons.builder, bg: "/assets/worldview/worldview-10.webp", tint: "var(--color-electro)" },
@@ -363,12 +370,33 @@ function HomeHub({
         <NewCharactersBanner />
       </section>
 
+      {/* =============================================== LA MYRIADE DU MOMENT */}
+      {/* Bannières de skins en cours, compte à rebours compris : de l'actualité
+          qui change toutes les six semaines, d'où sa place juste après les
+          nouveaux personnages. Même composant que l'accueil des cosmétiques. */}
+      {banners.length > 0 ? (
+        <section className="mt-10 flex flex-col gap-4">
+          <SectionRibbon
+            label={tCosmetics("bannersSection")}
+            action={<Link href="/cosmetics/banners" className="font-caps text-[0.6rem] uppercase tracking-[0.16em] text-gold hover:text-gold-bright">{tCosmetics("viewAllBanners")} →</Link>}
+          />
+          <BannersShowcase banners={banners} />
+        </section>
+      ) : null}
+
       {/* =============================================== BASE DE DONNÉES */}
       <section className="mt-10 flex flex-col gap-4">
         <SectionRibbon label={t("database")} index="03" />
-        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-          {databaseCards.map((c) => (
-            <ToolTile key={c.href} card={c} />
+        {/* Cinq tuiles : 2 colonnes, puis 3, puis toutes sur une ligne. */}
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5">
+          {databaseCards.map((c, index) => (
+            <ToolTile
+              key={c.href}
+              card={c}
+              // La 5ᵉ tuile finit seule sa rangée en 2 et en 3 colonnes : elle en prend deux
+              // pour ne pas laisser de trou, et redevient simple quand les cinq tiennent sur une ligne.
+              className={index === 4 ? "sm:col-span-2 lg:col-span-2 2xl:col-span-1" : undefined}
+            />
           ))}
         </div>
       </section>

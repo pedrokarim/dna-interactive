@@ -1339,6 +1339,8 @@
     "weaponsDescription": "Hyper武器、ポテンシャルツリー、パッシブ。",
     "genimonsTitle": "Genimon",
     "genimonsDescription": "レベル60で装備可能な仲間とそのステータス。",
+    "cosmeticsTitle": "外見",
+    "cosmeticsDescription": "スキン、装飾、武器スキン、バナー。",
     "buildBuilderTitle": "ビルド作成",
     "buildBuilderDescription": "武器、Demon Wedge、コンソナンスを組み合わせます。",
     "mapTitle": "インタラクティブマップ",
