@@ -255,7 +255,13 @@ function Poster({ rotation, status, showYear, posterRef }: {
       >
         <FeaturedImage
           sources={[featured.poster, featured.icon]}
-          className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.03]"
+          // Un portrait remplit l'affiche et se cadre sur le visage, en haut. Une
+          // arme, elle, flotte au milieu de sa bande : on la montre en entier et
+          // centrée, sinon le cadrage haut n'en garde que la pointe ou le vide.
+          className={cn(
+            "h-full w-full transition-transform duration-300 group-hover:scale-[1.03]",
+            featured.kind === "weapon" ? "object-contain object-center p-3" : "object-cover object-top",
+          )}
         />
         <span aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black/90 to-transparent" />
         <StatusTag status={status} />
