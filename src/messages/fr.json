@@ -57,7 +57,8 @@
     "calendar": "Calendrier",
     "discord": "Discord",
     "twitter": "X",
-    "cosmetics": "Cosmétiques"
+    "cosmetics": "Cosmétiques",
+    "theatre": "Théâtre immersif"
   },
   "common": {
     "close": "Fermer",
@@ -909,7 +910,9 @@
     "cosmeticsTitle": "Cosmétiques – tenues, accessoires et skins",
     "cosmeticsDescription": "Tous les cosmétiques de Duet Night Abyss : tenues, coiffures, accessoires, effets, skins d’armes, montures et postures, avec visuels, obtention et prix.",
     "bannersTitle": "Bannières de la Myriade",
-    "bannersDescription": "Les bannières de la Myriade de Duet Night Abyss : tenues vedettes, taux, garantie, contenu complet, paliers cumulés et échange de prismes."
+    "bannersDescription": "Les bannières de la Myriade de Duet Night Abyss : tenues vedettes, taux, garantie, contenu complet, paliers cumulés et échange de prismes.",
+    "theatreTitle": "Théâtre immersif – rotations",
+    "theatreDescription": "Suivi des rotations du Théâtre immersif de Duet Night Abyss : le personnage ou l’arme de calamité à l’affiche, la bascule à venir et tout l’historique."
   },
   "commissions": {
     "eyebrow": "Mandats scellés",
@@ -2248,5 +2251,34 @@
     "exchangeHint": "Objets proposés contre des Prismes iridescents pendant la bannière.",
     "bannerMetaTitle": "{name} – {type}",
     "bannerMetaDescription": "Bannière « {name} » de Duet Night Abyss : {featured}, taux, garantie, contenu complet et échange de prismes."
+  },
+  "theatre": {
+    "heading": "Théâtre immersif",
+    "intro": "Le théâtre change d’affiche toutes les quelques semaines : un personnage, puis une arme de calamité. Retrouve ici ce qui joue en ce moment, ce qui précédait et ce qui vient.",
+    "homeLabel": "Théâtre immersif",
+    "openTracker": "Toutes les rotations",
+    "now": "À l’affiche",
+    "previous": "Précédente",
+    "next": "Prochaine",
+    "none": "Aucune",
+    "kindCharacter": "Personnage",
+    "kindWeapon": "Arme de calamité",
+    "statusCurrent": "En cours",
+    "statusUpcoming": "À venir",
+    "switchIn": "Bascule dans",
+    "startsIn": "Prochaine rotation dans {duration}.",
+    "closed": "Le théâtre est entre deux rotations.",
+    "notAnnounced": "Non annoncée",
+    "notAnnouncedHint": "Bascule prévue le {date}.",
+    "fromDate": "À partir du {date}",
+    "lengthDays": "{days, plural, one {# jour} other {# jours}}",
+    "progressLabel": "Avancement de la rotation",
+    "viewSheet": "Voir la fiche",
+    "history": "Toutes les rotations",
+    "historyHint": "De la première rotation à la prochaine : fais défiler pour remonter le temps.",
+    "scrollBack": "Rotations précédentes",
+    "scrollForward": "Rotations suivantes",
+    "backToNow": "Maintenant",
+    "localTime": "Dates et heures affichées dans ton fuseau horaire."
   }
 }

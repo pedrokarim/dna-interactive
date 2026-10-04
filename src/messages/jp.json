@@ -57,7 +57,8 @@
     "calendar": "カレンダー",
     "discord": "Discord",
     "twitter": "X",
-    "cosmetics": "外見"
+    "cosmetics": "外見",
+    "theatre": "体験型劇場"
   },
   "common": {
     "close": "閉じる",
@@ -909,7 +910,9 @@
     "cosmeticsTitle": "外見アイテム：スキン・装飾・武器スキン",
     "cosmeticsDescription": "Duet Night Abyssの外見アイテムを網羅。スキン、ヘアスタイル、装飾、エフェクト、武器スキン、乗り物、ジェスチャーを画像・入手方法・価格つきで掲載。",
     "bannersTitle": "万華バナー",
-    "bannersDescription": "Duet Night Abyssの万華バナー一覧。ピックアップ、提供割合、天井、全排出内容、累計報酬、プリズムの交換。"
+    "bannersDescription": "Duet Night Abyssの万華バナー一覧。ピックアップ、提供割合、天井、全排出内容、累計報酬、プリズムの交換。",
+    "theatreTitle": "体験型劇場 – ローテーション",
+    "theatreDescription": "Duet Night Abyss の体験型劇場ローテーション一覧。現在のキャラクターまたはカラミティ武器、次回の切り替え、これまでの履歴を確認できます。"
   },
   "commissions": {
     "eyebrow": "隠密コミッション",
@@ -2248,5 +2251,34 @@
     "exchangeHint": "バナー開催中に虹色のプリズムと交換できるアイテム。",
     "bannerMetaTitle": "{name}｜{type}",
     "bannerMetaDescription": "Duet Night Abyssのバナー「{name}」：{featured}、提供割合、天井、全排出内容、プリズムの交換。"
+  },
+  "theatre": {
+    "heading": "体験型劇場",
+    "intro": "劇場の演目は数週間ごとに切り替わります。キャラクター、続いてカラミティ武器。現在の演目、前回、次回をここで確認できます。",
+    "homeLabel": "体験型劇場",
+    "openTracker": "すべてのローテーション",
+    "now": "上演中",
+    "previous": "前回",
+    "next": "次回",
+    "none": "なし",
+    "kindCharacter": "キャラクター",
+    "kindWeapon": "カラミティ武器",
+    "statusCurrent": "開催中",
+    "statusUpcoming": "近日開始",
+    "switchIn": "切り替えまで",
+    "startsIn": "次のローテーションまで {duration}。",
+    "closed": "劇場は現在、ローテーションの合間です。",
+    "notAnnounced": "未発表",
+    "notAnnouncedHint": "切り替え予定：{date}",
+    "fromDate": "{date} から",
+    "lengthDays": "{days}日間",
+    "progressLabel": "ローテーションの進行状況",
+    "viewSheet": "詳細を見る",
+    "history": "すべてのローテーション",
+    "historyHint": "最初のローテーションから次回まで。スクロールして過去をさかのぼれます。",
+    "scrollBack": "以前のローテーション",
+    "scrollForward": "以降のローテーション",
+    "backToNow": "現在",
+    "localTime": "日時はお使いのタイムゾーンで表示しています。"
   }
 }

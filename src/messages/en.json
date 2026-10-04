@@ -57,7 +57,8 @@
     "calendar": "Calendar",
     "discord": "Discord",
     "twitter": "X",
-    "cosmetics": "Cosmetics"
+    "cosmetics": "Cosmetics",
+    "theatre": "Immersive Theatre"
   },
   "common": {
     "close": "Close",
@@ -909,7 +910,9 @@
     "cosmeticsTitle": "Cosmetics — Outfits, Accessories & Skins",
     "cosmeticsDescription": "Every Duet Night Abyss cosmetic: outfits, hairstyles, accessories, effects, weapon skins, mounts and postures, with visuals, sources and prices.",
     "bannersTitle": "Myriad Banners",
-    "bannersDescription": "Every Duet Night Abyss Myriad banner: featured outfits, rates, pity, full contents, cumulative rewards and Prism Exchange."
+    "bannersDescription": "Every Duet Night Abyss Myriad banner: featured outfits, rates, pity, full contents, cumulative rewards and Prism Exchange.",
+    "theatreTitle": "Immersive Theatre – rotations",
+    "theatreDescription": "Track the Immersive Theatre rotations in Duet Night Abyss: the featured character or calamity weapon, the next switch and the full history."
   },
   "commissions": {
     "eyebrow": "Covert Commissions",
@@ -2248,5 +2251,34 @@
     "exchangeHint": "Items offered for Iridescent Prisms while the banner runs.",
     "bannerMetaTitle": "{name} — {type}",
     "bannerMetaDescription": "Duet Night Abyss banner \"{name}\": {featured}, rates, pity, full contents and Prism Exchange."
+  },
+  "theatre": {
+    "heading": "Immersive Theatre",
+    "intro": "The theatre changes its bill every few weeks: a character, then a calamity weapon. See what is playing now, what came before and what comes next.",
+    "homeLabel": "Immersive Theatre",
+    "openTracker": "All rotations",
+    "now": "Now playing",
+    "previous": "Previous",
+    "next": "Next",
+    "none": "None",
+    "kindCharacter": "Character",
+    "kindWeapon": "Calamity weapon",
+    "statusCurrent": "Live",
+    "statusUpcoming": "Upcoming",
+    "switchIn": "Switches in",
+    "startsIn": "Next rotation in {duration}.",
+    "closed": "The theatre is between two rotations.",
+    "notAnnounced": "Not announced",
+    "notAnnouncedHint": "Switch expected on {date}.",
+    "fromDate": "From {date}",
+    "lengthDays": "{days, plural, one {# day} other {# days}}",
+    "progressLabel": "Rotation progress",
+    "viewSheet": "View details",
+    "history": "All rotations",
+    "historyHint": "From the first rotation to the next one: scroll to go back in time.",
+    "scrollBack": "Earlier rotations",
+    "scrollForward": "Later rotations",
+    "backToNow": "Now",
+    "localTime": "Dates and times are shown in your time zone."
   }
 }

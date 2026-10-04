@@ -15,6 +15,8 @@ import { GlyphIcons } from "@/components/icons/GameGlyph";
 import { Link } from "@/i18n/navigation";
 import { DnaCornerBrackets, DnaNouveau, DnaTag, DnaRibbon, DnaSectionMark, cn } from "@/components/dna";
 import { EventCalendar } from "@/components/home/EventCalendar";
+import { TheatreNow } from "@/components/theatre/TheatreTracker";
+import type { TheatreRotationView } from "@/lib/theatre/featured";
 import NewCharactersBanner from "@/components/NewCharactersBanner";
 import { UpcomingCharacterStrip } from "@/components/characters/UpcomingCharacterStrip";
 import { UPCOMING_CHARACTERS } from "@/lib/characters/upcoming";
@@ -57,6 +59,10 @@ export type HomeHubClientProps = {
   badges: Partial<Record<FeatureKey, FeatureBadge>>;
   /** Bannières de la Myriade, résumées côté serveur (le statut se calcule sur l'horloge du visiteur). */
   banners: BannerSummaryView[];
+  /** Rotations du théâtre immersif, noms et visuels résolus côté serveur. */
+  theatreRotations: TheatreRotationView[];
+  /** Horloge du serveur au rendu — premier affichage du théâtre seulement. */
+  serverNow: number;
 };
 
 /* CTA façon design system, appliqués directement sur un Link/anchor. */
@@ -234,8 +240,11 @@ function HomeHub({
   calendarToday,
   isAuthenticated,
   banners,
+  theatreRotations,
+  serverNow,
 }: HomeHubClientProps) {
   const t = useTranslations("homeHub");
+  const tTheatre = useTranslations("theatre");
   const tCosmetics = useTranslations("cosmetics");
   const { commissionsVisible } = useAppSettings();
   // Liste curee : elle se vide toute seule quand le personnage sort et rejoint
@@ -444,6 +453,17 @@ function HomeHub({
           overrideToday={calendarToday}
         />
       </section>
+
+      {/* =============================================== THÉÂTRE IMMERSIF */}
+      {theatreRotations.length > 0 ? (
+        <section className="mt-10 flex flex-col gap-4">
+          <SectionRibbon
+            label={tTheatre("homeLabel")}
+            action={<Link href="/theatre" className="font-caps text-[0.6rem] uppercase tracking-[0.16em] text-gold hover:text-gold-bright">{tTheatre("openTracker")} →</Link>}
+          />
+          <TheatreNow rotations={theatreRotations} serverNow={serverNow} />
+        </section>
+      ) : null}
 
       {/* =============================================== BUILDS DE PERSONNAGES */}
       {/* Une seule section, lue de haut en bas : les chiffres posent le contexte,

@@ -101,6 +101,7 @@ export const NAVIGATION = {
   home: "/",
   map: "/map",
   calendar: "/calendar",
+  theatre: "/theatre",
   items: "/items",
   characters: "/characters",
   cosmetics: "/cosmetics",

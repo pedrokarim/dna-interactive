@@ -323,6 +323,35 @@ export const calendarEvents = pgTable(
 );
 
 // ---------------------------------------------------------------------------
+// Rotations du théâtre immersif. Chaque ligne est une tranche : un début, une
+// fin (instants exacts, pas des jours), et ce qu'elle met en avant — un
+// personnage (`char-…`) ou une arme de calamité (`weapons-…`). `seasonId` est
+// le numéro de saison du jeu : c'est la clé d'upsert du seed, vide pour une
+// rotation saisie à la main (une prochaine tranche annoncée, par exemple).
+// ---------------------------------------------------------------------------
+export const theatreRotations = pgTable(
+  "theatre_rotations",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    seasonId: integer("season_id"),
+    startsAt: timestamp("starts_at", { withTimezone: true }).notNull(),
+    endsAt: timestamp("ends_at", { withTimezone: true }).notNull(),
+    featuredKind: text("featured_kind").notNull(),
+    featuredId: text("featured_id").notNull(),
+    note: text("note"),
+    sourceUrl: text("source_url"),
+    hidden: boolean("hidden").notNull().default(false),
+    createdById: text("created_by_id").references(() => users.id, { onDelete: "set null" }),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [
+    uniqueIndex("uidx_theatre_rotations_season").on(t.seasonId),
+    index("idx_theatre_rotations_dates").on(t.startsAt, t.endsAt),
+  ],
+);
+
+// ---------------------------------------------------------------------------
 // Réglages applicatifs pilotables via l'admin — 1 ligne (key = "config"),
 // valeur = objet JSON des réglages (cf. src/lib/settings).
 // ---------------------------------------------------------------------------

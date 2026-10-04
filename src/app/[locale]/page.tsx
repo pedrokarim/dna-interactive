@@ -1,3 +1,4 @@
+import { getTheatreSnapshot } from "@/lib/theatre/db";
 import type { Metadata, ResolvingMetadata } from "next";
 import { generatePageMetadata, pageMetadata } from "@/lib/metadata";
 import HomeHubClient, { type HomeBuildCard } from "@/components/home/HomeHubClient";
@@ -53,12 +54,13 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   const calendarFrom = addDaysIso(serverToday, -INITIAL_WINDOW_BEFORE);
   const calendarTo = addDaysIso(serverToday, INITIAL_WINDOW_AFTER);
 
-  const [topBuilds, buildsTotal, calendarEvents, settings, user] = await Promise.all([
+  const [topBuilds, buildsTotal, calendarEvents, settings, user, theatre] = await Promise.all([
     getTopBuilds(8),
     getBuildsTotal(),
     getCalendarEventsInRange(calendarFrom, calendarTo),
     getAppSettings(),
     getCurrentUser(),
+    getTheatreSnapshot(locale),
   ]);
 
   const builds: HomeBuildCard[] = topBuilds.map((b) => {
@@ -103,6 +105,8 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       // Badges « Nouveau » / « Bêta » : src/config/feature-badges.ts, résolus ici (serveur).
       badges={resolveFeatureBadges(new Date())}
       banners={getBannerSummaries(langCode)}
+      theatreRotations={theatre.rotations}
+      serverNow={theatre.serverNow}
     />
   );
 }

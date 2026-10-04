@@ -57,7 +57,8 @@
     "calendar": "行事曆",
     "discord": "Discord",
     "twitter": "X",
-    "cosmetics": "外觀"
+    "cosmetics": "外觀",
+    "theatre": "沉浸式戲劇"
   },
   "common": {
     "close": "關閉",
@@ -909,7 +910,9 @@
     "cosmeticsTitle": "外觀：時裝、裝飾與武器外觀",
     "cosmeticsDescription": "Duet Night Abyss 的所有外觀道具：時裝、髮型、裝飾、特效、武器外觀、坐騎與動作，附圖片、獲得方式與價格。",
     "bannersTitle": "萬華卡池",
-    "bannersDescription": "Duet Night Abyss 的所有萬華卡池：主打時裝、機率、保底、完整內容、累計獎勵與稜鏡兌換。"
+    "bannersDescription": "Duet Night Abyss 的所有萬華卡池：主打時裝、機率、保底、完整內容、累計獎勵與稜鏡兌換。",
+    "theatreTitle": "沉浸式戲劇 – 輪替",
+    "theatreDescription": "Duet Night Abyss 沉浸式戲劇輪替追蹤：目前的角色或災厄武器、下次切換時間與完整歷史。"
   },
   "commissions": {
     "eyebrow": "密令委託",
@@ -2248,5 +2251,34 @@
     "exchangeHint": "卡池期間可用虹色稜鏡兌換的道具。",
     "bannerMetaTitle": "{name}｜{type}",
     "bannerMetaDescription": "Duet Night Abyss 卡池「{name}」：{featured}、機率、保底、完整內容與稜鏡兌換。"
+  },
+  "theatre": {
+    "heading": "沉浸式戲劇",
+    "intro": "劇場每隔數週更換劇目：先是角色，接著是災厄武器。在這裡查看目前上演、上一期與下一期。",
+    "homeLabel": "沉浸式戲劇",
+    "openTracker": "所有輪替",
+    "now": "正在上演",
+    "previous": "上一期",
+    "next": "下一期",
+    "none": "無",
+    "kindCharacter": "角色",
+    "kindWeapon": "災厄武器",
+    "statusCurrent": "進行中",
+    "statusUpcoming": "即將開始",
+    "switchIn": "距離切換",
+    "startsIn": "距離下一期還有 {duration}。",
+    "closed": "劇場目前處於兩期輪替之間。",
+    "notAnnounced": "尚未公布",
+    "notAnnouncedHint": "預計於 {date} 切換。",
+    "fromDate": "自 {date} 起",
+    "lengthDays": "{days} 天",
+    "progressLabel": "輪替進度",
+    "viewSheet": "查看詳情",
+    "history": "所有輪替",
+    "historyHint": "從第一期到下一期：捲動即可回顧過往。",
+    "scrollBack": "較早的輪替",
+    "scrollForward": "較晚的輪替",
+    "backToNow": "現在",
+    "localTime": "日期與時間以你的時區顯示。"
   }
 }

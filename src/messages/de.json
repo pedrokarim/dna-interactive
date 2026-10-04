@@ -57,7 +57,8 @@
     "calendar": "Kalender",
     "discord": "Discord",
     "twitter": "X",
-    "cosmetics": "Kosmetik"
+    "cosmetics": "Kosmetik",
+    "theatre": "Immersives Theater"
   },
   "common": {
     "close": "Schließen",
@@ -909,7 +910,9 @@
     "cosmeticsTitle": "Kosmetik – Outfits, Accessoires und Skins",
     "cosmeticsDescription": "Alle kosmetischen Gegenstände aus Duet Night Abyss: Outfits, Frisuren, Accessoires, Effekte, Waffen-Skins, Reittiere und Posen, mit Bildern, Quellen und Preisen.",
     "bannersTitle": "Myriade-Banner",
-    "bannersDescription": "Alle Myriade-Banner aus Duet Night Abyss: Haupt-Outfits, Raten, Garantie, vollständiger Inhalt, kumulierte Belohnungen und Prismatausch."
+    "bannersDescription": "Alle Myriade-Banner aus Duet Night Abyss: Haupt-Outfits, Raten, Garantie, vollständiger Inhalt, kumulierte Belohnungen und Prismatausch.",
+    "theatreTitle": "Immersives Theater – Rotationen",
+    "theatreDescription": "Die Rotationen des Immersiven Theaters in Duet Night Abyss: aktueller Charakter oder Unheilswaffe, nächster Wechsel und der gesamte Verlauf."
   },
   "commissions": {
     "eyebrow": "Verdeckte Aufträge",
@@ -2248,5 +2251,34 @@
     "exchangeHint": "Gegenstände, die während des Banners gegen Schillernde Prismen angeboten werden.",
     "bannerMetaTitle": "{name} – {type}",
     "bannerMetaDescription": "Banner „{name}“ aus Duet Night Abyss: {featured}, Raten, Garantie, vollständiger Inhalt und Prismatausch."
+  },
+  "theatre": {
+    "heading": "Immersives Theater",
+    "intro": "Das Theater wechselt alle paar Wochen sein Programm: erst ein Charakter, dann eine Unheilswaffe. Hier siehst du, was gerade läuft, was davor lief und was als Nächstes kommt.",
+    "homeLabel": "Immersives Theater",
+    "openTracker": "Alle Rotationen",
+    "now": "Aktuell im Programm",
+    "previous": "Vorherige",
+    "next": "Nächste",
+    "none": "Keine",
+    "kindCharacter": "Charakter",
+    "kindWeapon": "Unheilswaffe",
+    "statusCurrent": "Läuft",
+    "statusUpcoming": "Demnächst",
+    "switchIn": "Wechsel in",
+    "startsIn": "Nächste Rotation in {duration}.",
+    "closed": "Das Theater befindet sich zwischen zwei Rotationen.",
+    "notAnnounced": "Nicht angekündigt",
+    "notAnnouncedHint": "Wechsel voraussichtlich am {date}.",
+    "fromDate": "Ab {date}",
+    "lengthDays": "{days, plural, one {# Tag} other {# Tage}}",
+    "progressLabel": "Fortschritt der Rotation",
+    "viewSheet": "Details ansehen",
+    "history": "Alle Rotationen",
+    "historyHint": "Von der ersten Rotation bis zur nächsten: scrolle, um in der Zeit zurückzugehen.",
+    "scrollBack": "Frühere Rotationen",
+    "scrollForward": "Spätere Rotationen",
+    "backToNow": "Jetzt",
+    "localTime": "Daten und Uhrzeiten werden in deiner Zeitzone angezeigt."
   }
 }

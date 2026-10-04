@@ -26,6 +26,7 @@ export const SHELL_NAV_PRIMARY: ShellNavEntry[] = [
   { key: "home", href: NAVIGATION.home },
   { key: "map", href: NAVIGATION.map },
   { key: "calendar", href: NAVIGATION.calendar },
+  { key: "theatre", href: NAVIGATION.theatre },
   { key: "characters", href: NAVIGATION.characters },
   { key: "items", href: NAVIGATION.items },
   { key: "cosmetics", href: NAVIGATION.cosmetics },
@@ -75,6 +76,7 @@ const SHELL_BREADCRUMBS: Record<string, string> = {
   "/": "Le Grand Hall",
   "/about": "Colophon",
   "/admin/calendar": "Éphémérides · Intendance",
+  "/admin/theatre": "Le Théâtre · Intendance",
   "/builder": "La Forge",
   "/builds": "Partitions",
   "/calendar": "Éphémérides",
@@ -96,6 +98,7 @@ const SHELL_BREADCRUMBS: Record<string, string> = {
   "/reset-password": "Le Seuil",
   "/signup": "Le Pacte",
   "/support": "Mécénat",
+  "/theatre": "Le Théâtre",
   "/verify-email": "Le Seuil",
 };
 
@@ -124,7 +127,7 @@ export function resolveBreadcrumb(pathname: string): string {
 const SHELL_EXCLUDED_PREFIXES = ["/map", "/features", "/admin"];
 
 /** Sous-routes qui rattrapent une exclusion ci-dessus. */
-const SHELL_INCLUDED_PREFIXES = ["/admin/calendar"];
+const SHELL_INCLUDED_PREFIXES = ["/admin/calendar", "/admin/theatre"];
 
 /** La coquille (barre latérale + topbar + pied de page) s'applique-t-elle ici ? */
 export function shellAppliesTo(pathname: string): boolean {

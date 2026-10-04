@@ -57,7 +57,8 @@
     "calendar": "캘린더",
     "discord": "Discord",
     "twitter": "X",
-    "cosmetics": "외형"
+    "cosmetics": "외형",
+    "theatre": "몰입형 연극"
   },
   "common": {
     "close": "닫기",
@@ -909,7 +910,9 @@
     "cosmeticsTitle": "외형: 스킨, 장식, 무기 스킨",
     "cosmeticsDescription": "Duet Night Abyss의 모든 외형 아이템. 스킨, 헤어스타일, 장식, 이펙트, 무기 스킨, 탈것, 제스처를 이미지, 획득 방법, 가격과 함께 정리했습니다.",
     "bannersTitle": "광채 배너",
-    "bannersDescription": "Duet Night Abyss의 광채 배너 전체. 픽업 스킨, 확률, 천장, 전체 구성, 누적 보상, 프리즘 교환."
+    "bannersDescription": "Duet Night Abyss의 광채 배너 전체. 픽업 스킨, 확률, 천장, 전체 구성, 누적 보상, 프리즘 교환.",
+    "theatreTitle": "몰입형 연극 – 로테이션",
+    "theatreDescription": "Duet Night Abyss 몰입형 연극 로테이션 추적: 현재 캐릭터 또는 재앙 무기, 다음 교체 시점, 전체 기록."
   },
   "commissions": {
     "eyebrow": "은밀한 커미션",
@@ -2248,5 +2251,34 @@
     "exchangeHint": "배너 기간 동안 무지개빛 프리즘으로 교환할 수 있는 아이템.",
     "bannerMetaTitle": "{name} | {type}",
     "bannerMetaDescription": "Duet Night Abyss 배너 “{name}”: {featured}, 확률, 천장, 전체 구성, 프리즘 교환."
+  },
+  "theatre": {
+    "heading": "몰입형 연극",
+    "intro": "극장의 상연작은 몇 주마다 바뀝니다. 캐릭터, 그다음 재앙 무기 순입니다. 지금 상연 중인 것, 이전, 다음을 여기서 확인하세요.",
+    "homeLabel": "몰입형 연극",
+    "openTracker": "모든 로테이션",
+    "now": "상연 중",
+    "previous": "이전",
+    "next": "다음",
+    "none": "없음",
+    "kindCharacter": "캐릭터",
+    "kindWeapon": "재앙 무기",
+    "statusCurrent": "진행 중",
+    "statusUpcoming": "예정",
+    "switchIn": "교체까지",
+    "startsIn": "다음 로테이션까지 {duration}.",
+    "closed": "극장은 지금 로테이션 사이에 있습니다.",
+    "notAnnounced": "미발표",
+    "notAnnouncedHint": "교체 예정: {date}",
+    "fromDate": "{date}부터",
+    "lengthDays": "{days}일",
+    "progressLabel": "로테이션 진행도",
+    "viewSheet": "상세 보기",
+    "history": "모든 로테이션",
+    "historyHint": "첫 로테이션부터 다음까지: 스크롤하여 과거를 살펴보세요.",
+    "scrollBack": "이전 로테이션",
+    "scrollForward": "이후 로테이션",
+    "backToNow": "현재",
+    "localTime": "날짜와 시간은 사용자의 시간대로 표시됩니다."
   }
 }
