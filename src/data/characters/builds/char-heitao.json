@@ -42,6 +42,14 @@
           }
         },
         {
+          "itemId": "weapons-20298",
+          "rank": "alternative",
+          "note": {
+            "FR": "Arme de calamité, très forte sur Berenica : c'est le meilleur choix si tu la joues sur la Ténacité. Un personnage ne porte qu'une seule arme de calamité : à l'intron VII, cette place revient plutôt à Braise souveraine.",
+            "EN": "Calamity weapon, very strong on Berenica: the best pick if you play her around Resolve. A character can only equip one Calamity Weapon: at Intron VII, that slot is better spent on Sovereign Ember."
+          }
+        },
+        {
           "itemId": "weapons-20405",
           "rank": "alternative",
           "note": {
