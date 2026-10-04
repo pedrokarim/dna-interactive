@@ -4,7 +4,9 @@
  * Données réelles curées (patch 1.5 « Paradise Prelude » et patch 1.6
  * « Paradise's 22nd White Bunny », juillet-novembre 2026), à rafraîchir à chaque
  * version. Dates recoupées le 24 septembre 2026 sur les notes de version
- * officielles et les annonces du compte officiel du jeu. Les événements de la
+ * officielles et les annonces du compte officiel du jeu, puis de nouveau le
+ * 4 octobre 2026 (aucune période modifiée, aucune annonce de la version suivante
+ * à cette date). Les événements de la
  * 1.4, terminés le 27 juillet, ont quitté cette liste (ils restent en base).
  *
  * **Convention de dates** : `start`/`end` sont des jours **inclus**. Les
@@ -76,6 +78,10 @@ const SRC_V16_BARDS_TOME = "https://x.com/DNAbyss_EN/status/2094349488383197537"
 const SRC_V16_CIVIC = "https://x.com/DNAbyss_EN/status/2094666568365953062";
 /** Vitrine officielle en jeu de la bannière de skin « Where the Long Road Leads ». */
 const SRC_V16_LONG_ROAD = "https://www.youtube.com/watch?v=bX2MtRcyaJQ";
+/* Annonces de la seconde moitié de la 1.6, publiées sur le compte officiel du jeu. */
+const SRC_V16_CAPRICCIO = "https://x.com/DNAbyss_EN/status/2104420841698340888";
+const SRC_V16_REMNANTS = "https://x.com/DNAbyss_EN/status/2105145615558795491";
+const SRC_V16_BOUNTIFUL = "https://x.com/DNAbyss_EN/status/2105508007857525103";
 /** Notes de version officielles 1.6 (source de toutes les périodes 1.6). */
 const SRC_V16 = "https://steamcommunity.com/games/3950020/announcements/detail/676256891013171560";
 
@@ -135,14 +141,14 @@ export const CALENDAR_EVENTS: CalendarEvent[] = [
   { id: "better-luno-than-never", title: "Better Luno than Never", category: "Épreuve", start: "2026-09-08", end: "2026-09-29", image: "/assets/worldview/worldview-1-4-1.webp", description: "Défi à durée limitée : Lulu Lunoloot se rend, ses Phoxenes à la main, et implore ta clémence. À toi de trancher (fin le 29 septembre à 05:00 UTC+8).", sourceUrl: SRC_V16 },
   { id: "vibrant-strokes", title: "Vibrant Strokes", category: "Événement", start: "2026-09-08", end: "2026-10-19", image: "/assets/worldview/worldview-9.webp", description: "Événement à durée limitée de la version 1.6 (fin le 19 octobre à 17:00 UTC+8).", sourceUrl: SRC_V16 },
   { id: "moments-in-frames", title: "Moments in Frames", category: "Événement", start: "2026-09-10", end: "2026-09-29", image: "/assets/worldview/worldview-3.webp", description: "Un photographe itinérant, près du Sanctuaire, te fait découvrir les Notes d'image : une autre façon de garder trace de ton voyage (fin le 29 septembre à 05:00 UTC+8).", sourceUrl: SRC_V16 },
-  { id: "bountiful-day-v16-p1", title: "Bountiful Day – Partie 1 (1.6)", category: "Événement", start: "2026-09-10", end: "2026-09-17", image: "/assets/worldview/worldview-1-4-3.webp", description: "Les commissions du Manuel du Noctoyager rapportent davantage de Demon Wedges (fin le 17 septembre à 05:00 UTC+8).", sourceUrl: SRC_V16 },
+  { id: "bountiful-day-v16-p1", title: "Bountiful Day – Partie 1 (1.6)", category: "Événement", start: "2026-09-10", end: "2026-09-17", image: "/assets/events/bountiful-day.webp", description: "Les commissions du Manuel du Noctoyager rapportent davantage de Demon Wedges (fin le 17 septembre à 05:00 UTC+8).", sourceUrl: SRC_V16 },
   { id: "starry-sojourn-v16", title: "Starry Sojourn – co-op (1.6)", category: "Événement", start: "2026-09-17", end: "2026-09-30", image: "/assets/worldview/worldview-7.webp", description: "Cumule du temps de jeu en coopération pour réclamer les récompenses de l'événement (fin le 30 septembre à 05:00 UTC+8).", sourceUrl: SRC_V16 },
   { id: "immersive-theatre-ensemble-v16", title: "Immersive Theatre : Ensemble Act (1.6)", category: "Événement", start: "2026-09-17", end: "2026-10-18", image: "/assets/worldview/worldview-1-4-5.webp", description: "Co-op du théâtre immersif : abats les boss en équipe. Jusqu'à 3 salles gratuites par semaine avec multiplicateur de récompenses fixe, remise à zéro le vendredi (fin le 18 octobre à 17:00 UTC+8).", sourceUrl: SRC_V16 },
   { id: "starry-gleanings-v16", title: "Starry Gleanings – commissions (1.6)", category: "Événement", start: "2026-09-24", end: "2026-10-12", image: "/assets/worldview/worldview-4.webp", description: "Accomplis des commissions pendant l'événement pour ouvrir les cadeaux (fin le 12 octobre à 05:00 UTC+8).", sourceUrl: SRC_V16 },
   { id: "sanguine-plume", title: "Sanguine Plume – arme de calamité", category: "Arme", start: "2026-09-29", end: "2026-10-19", href: "/items/weapons/weapons-20298", image: "/assets/worldview/worldview-1-3-6.webp", description: "Rotation « Blueprint : Sanguine Plume » du théâtre immersif. Dès le 29 septembre à 10:00 UTC+8, le Blueprint et le Prototype de ces doubles pistolets de calamité entrent définitivement au Memento.", sourceUrl: SRC_V16 },
-  { id: "capriccio-of-whimsy", title: "Capriccio of Whimsy – skins Berenica & Psyche", category: "Bannière", start: "2026-09-29", end: "2026-11-09", image: "/assets/worldview/worldview-8.webp", description: "Nouveaux skins pour Berenica et Psyche : « la danseuse tourne sans fin, et le bal ne s'éteint jamais » (fin le 9 novembre à 17:00 UTC+8).", sourceUrl: SRC_V16 },
-  { id: "bountiful-day-v16-p2", title: "Bountiful Day – Partie 2 (1.6)", category: "Événement", start: "2026-10-01", end: "2026-10-08", image: "/assets/worldview/worldview-1-4-3.webp", description: "Deuxième fenêtre de bonus de Demon Wedges sur les commissions du Manuel du Noctoyager (fin le 8 octobre à 05:00 UTC+8).", sourceUrl: SRC_V16 },
-  { id: "treasured-remnants", title: "Treasured Remnants", category: "Événement", start: "2026-10-01", end: "2026-10-13", image: "/assets/worldview/worldview-1-4-2.webp", description: "De vieux objets patinés par le temps, qui ne retrouvent leur éclat qu'entre les mains de ceux qui en ont besoin (fin le 13 octobre à 05:00 UTC+8).", sourceUrl: SRC_V16 },
+  { id: "capriccio-of-whimsy", title: "Capriccio of Whimsy – skins Berenica & Psyche", category: "Bannière", start: "2026-09-29", end: "2026-11-09", image: "/assets/events/capriccio-of-whimsy.webp", description: "Nouveaux skins pour Berenica et Psyche : « la danseuse tourne sans fin, et le bal ne s'éteint jamais » (fin le 9 novembre à 17:00 UTC+8).", sourceUrl: SRC_V16_CAPRICCIO },
+  { id: "bountiful-day-v16-p2", title: "Bountiful Day – Partie 2 (1.6)", category: "Événement", start: "2026-10-01", end: "2026-10-08", image: "/assets/events/bountiful-day.webp", description: "Deuxième fenêtre de bonus sur les commissions du Manuel du Noctoyager : le bonus de Demon Wedges se cumule jusqu'à six fois par jour (fin le 8 octobre à 05:00 UTC+8).", sourceUrl: SRC_V16_BOUNTIFUL },
+  { id: "treasured-remnants", title: "Treasured Remnants", category: "Événement", start: "2026-10-01", end: "2026-10-13", image: "/assets/events/treasured-remnants.webp", description: "De vieux objets patinés par le temps, qui ne retrouvent leur éclat qu'entre les mains de ceux qui en ont besoin (fin le 13 octobre à 05:00 UTC+8).", sourceUrl: SRC_V16_REMNANTS },
   { id: "phoxhunter-summit-v16", title: "Phoxhunter Summit (1.6)", category: "Épreuve", start: "2026-10-07", end: "2026-10-16", image: "/assets/worldview/worldview-1.webp", description: "Épreuve compétitive de fin de version. Les contres élémentaires ont été retirés pour cette édition (clôture le 17 octobre à 00:00 UTC+8).", sourceUrl: SRC_V16 },
 ];
 
