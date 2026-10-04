@@ -1,8 +1,8 @@
 {
   "weaponId": "weapons-20298",
   "buildName": {
-    "FR": "Probabilité d’effet",
-    "EN": "Trigger Probability"
+    "FR": "Berenica – Ténacité",
+    "EN": "Berenica – Resolve"
   },
   "demonWedges": {
     "slots": [
@@ -13,7 +13,7 @@
       },
       {
         "position": 2,
-        "itemId": "mods-53007",
+        "itemId": "mods-53011",
         "track": 5
       },
       {
@@ -38,19 +38,19 @@
       },
       {
         "position": 7,
-        "itemId": "mods-43006",
-        "track": null
+        "itemId": "mods-53012",
+        "track": 5
       },
       {
         "position": 8,
-        "itemId": "mods-43002",
-        "track": null
+        "itemId": "mods-43343",
+        "track": 5
       }
     ],
     "affinity": null,
     "note": {
-      "FR": "Pousse la Probabilité d’effet : avec Entrave · Débordement, tout ce qui dépasse 100 % est converti en Surabondance. Le reste va au Taux CRIT et aux DGT CRIT. Les cinq premières cases reçoivent une Affinité universelle.",
-      "EN": "Maximises Trigger Probability: with Trammel · Surplus, anything beyond 100% is converted into Overflow. The rest goes to CRIT Chance and CRIT Damage. The first five slots take a Universal Track."
+      "FR": "Pour une Berenica jouée sur la Ténacité : Déchéance fait perdre des PV à chaque tir, que l’arme convertit en points de calamité. Suppose un tir continu, d’où la vitesse d’attaque, le chargeur et le Multishot. Toutes les cases sauf la sixième reçoivent une Affinité universelle.",
+      "EN": "For a Resolve Berenica: Decay drains HP on every shot, which the weapon turns into Calamity. Assumes constant shooting, hence ATK Speed, Mag Capacity and Multishot. Every slot but the sixth takes a Universal Track."
     }
   },
   "note": {}
