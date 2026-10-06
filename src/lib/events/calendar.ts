@@ -5,8 +5,8 @@
  * « Paradise's 22nd White Bunny », juillet-novembre 2026), à rafraîchir à chaque
  * version. Dates recoupées le 24 septembre 2026 sur les notes de version
  * officielles et les annonces du compte officiel du jeu, puis de nouveau le
- * 4 octobre 2026 (aucune période modifiée, aucune annonce de la version suivante
- * à cette date). Les événements de la
+ * 4 et le 6 octobre 2026 (aucune période modifiée, aucune annonce de la version
+ * suivante à ces dates). Les événements de la
  * 1.4, terminés le 27 juillet, ont quitté cette liste (ils restent en base).
  *
  * **Convention de dates** : `start`/`end` sont des jours **inclus**. Les
@@ -82,6 +82,7 @@ const SRC_V16_LONG_ROAD = "https://www.youtube.com/watch?v=bX2MtRcyaJQ";
 const SRC_V16_CAPRICCIO = "https://x.com/DNAbyss_EN/status/2104420841698340888";
 const SRC_V16_REMNANTS = "https://x.com/DNAbyss_EN/status/2105145615558795491";
 const SRC_V16_BOUNTIFUL = "https://x.com/DNAbyss_EN/status/2105508007857525103";
+const SRC_V16_PHOXHUNTER = "https://x.com/DNAbyss_EN/status/2107319942966325636";
 /** Notes de version officielles 1.6 (source de toutes les périodes 1.6). */
 const SRC_V16 = "https://steamcommunity.com/games/3950020/announcements/detail/676256891013171560";
 
@@ -149,7 +150,7 @@ export const CALENDAR_EVENTS: CalendarEvent[] = [
   { id: "capriccio-of-whimsy", title: "Capriccio of Whimsy – skins Berenica & Psyche", category: "Bannière", start: "2026-09-29", end: "2026-11-09", image: "/assets/events/capriccio-of-whimsy.webp", description: "Nouveaux skins pour Berenica et Psyche : « la danseuse tourne sans fin, et le bal ne s'éteint jamais » (fin le 9 novembre à 17:00 UTC+8).", sourceUrl: SRC_V16_CAPRICCIO },
   { id: "bountiful-day-v16-p2", title: "Bountiful Day – Partie 2 (1.6)", category: "Événement", start: "2026-10-01", end: "2026-10-08", image: "/assets/events/bountiful-day.webp", description: "Deuxième fenêtre de bonus sur les commissions du Manuel du Noctoyager : le bonus de Demon Wedges se cumule jusqu'à six fois par jour (fin le 8 octobre à 05:00 UTC+8).", sourceUrl: SRC_V16_BOUNTIFUL },
   { id: "treasured-remnants", title: "Treasured Remnants", category: "Événement", start: "2026-10-01", end: "2026-10-13", image: "/assets/events/treasured-remnants.webp", description: "De vieux objets patinés par le temps, qui ne retrouvent leur éclat qu'entre les mains de ceux qui en ont besoin (fin le 13 octobre à 05:00 UTC+8).", sourceUrl: SRC_V16_REMNANTS },
-  { id: "phoxhunter-summit-v16", title: "Phoxhunter Summit (1.6)", category: "Épreuve", start: "2026-10-07", end: "2026-10-16", image: "/assets/worldview/worldview-1.webp", description: "Épreuve compétitive de fin de version. Les contres élémentaires ont été retirés pour cette édition (clôture le 17 octobre à 00:00 UTC+8).", sourceUrl: SRC_V16 },
+  { id: "phoxhunter-summit-v16", title: "Phoxhunter Summit (1.6)", category: "Épreuve", start: "2026-10-07", end: "2026-10-16", image: "/assets/events/phoxhunter-summit.webp", description: "Épreuve compétitive de fin de version. Les contres élémentaires ont été retirés pour cette édition (clôture le 17 octobre à 00:00 UTC+8).", sourceUrl: SRC_V16_PHOXHUNTER },
 ];
 
 /* --------------------------------------------------------------- helpers date */
