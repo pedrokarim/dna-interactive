@@ -2272,7 +2272,7 @@
     "notAnnouncedHint": "Bascule prévue le {date}.",
     "fromDate": "À partir du {date}",
     "lengthDays": "{days, plural, one {# jour} other {# jours}}",
-    "progressLabel": "Avancement de la rotation",
+    "progressLabel": "Temps restant avant la bascule",
     "viewSheet": "Voir la fiche",
     "history": "Toutes les rotations",
     "historyHint": "De la première rotation à la prochaine : fais défiler pour remonter le temps.",

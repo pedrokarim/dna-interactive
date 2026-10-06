@@ -2272,7 +2272,7 @@
     "notAnnouncedHint": "Wechsel voraussichtlich am {date}.",
     "fromDate": "Ab {date}",
     "lengthDays": "{days, plural, one {# Tag} other {# Tage}}",
-    "progressLabel": "Fortschritt der Rotation",
+    "progressLabel": "Verbleibende Zeit bis zum Wechsel",
     "viewSheet": "Details ansehen",
     "history": "Alle Rotationen",
     "historyHint": "Von der ersten Rotation bis zur nächsten: scrolle, um in der Zeit zurückzugehen.",

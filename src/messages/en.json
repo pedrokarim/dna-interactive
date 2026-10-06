@@ -2272,7 +2272,7 @@
     "notAnnouncedHint": "Switch expected on {date}.",
     "fromDate": "From {date}",
     "lengthDays": "{days, plural, one {# day} other {# days}}",
-    "progressLabel": "Rotation progress",
+    "progressLabel": "Time left before the switch",
     "viewSheet": "View details",
     "history": "All rotations",
     "historyHint": "From the first rotation to the next one: scroll to go back in time.",

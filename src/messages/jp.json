@@ -2272,7 +2272,7 @@
     "notAnnouncedHint": "切り替え予定：{date}",
     "fromDate": "{date} から",
     "lengthDays": "{days}日間",
-    "progressLabel": "ローテーションの進行状況",
+    "progressLabel": "切り替えまでの残り時間",
     "viewSheet": "詳細を見る",
     "history": "すべてのローテーション",
     "historyHint": "最初のローテーションから次回まで。スクロールして過去をさかのぼれます。",

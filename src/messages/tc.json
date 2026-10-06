@@ -2272,7 +2272,7 @@
     "notAnnouncedHint": "預計於 {date} 切換。",
     "fromDate": "自 {date} 起",
     "lengthDays": "{days} 天",
-    "progressLabel": "輪替進度",
+    "progressLabel": "距離切換的剩餘時間",
     "viewSheet": "查看詳情",
     "history": "所有輪替",
     "historyHint": "從第一期到下一期：捲動即可回顧過往。",

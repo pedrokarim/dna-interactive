@@ -2272,7 +2272,7 @@
     "notAnnouncedHint": "교체 예정: {date}",
     "fromDate": "{date}부터",
     "lengthDays": "{days}일",
-    "progressLabel": "로테이션 진행도",
+    "progressLabel": "교체까지 남은 시간",
     "viewSheet": "상세 보기",
     "history": "모든 로테이션",
     "historyHint": "첫 로테이션부터 다음까지: 스크롤하여 과거를 살펴보세요.",

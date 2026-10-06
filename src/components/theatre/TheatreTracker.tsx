@@ -78,12 +78,70 @@ function SheetLink({ href, className, children }: { href: string | null; classNa
 
 /* ---------------------------------------------------------- rotation en cours */
 
+/**
+ * Décompte jusqu'à la bascule, à la seconde, et barre du temps restant.
+ *
+ * Une rotation dure trois ou quatre semaines : à l'échelle de la barre, une
+ * journée ne déplace le trait que de quelques pixels, et un décompte en heures
+ * ne change qu'une fois par heure. On avait l'impression que rien ne bougeait.
+ * Les secondes défilent donc sous les yeux, et la barre **se vide** : elle
+ * montre ce qui reste, pas ce qui est passé.
+ *
+ * L'horloge à la seconde vit ici, dans le plus petit composant possible, pour
+ * que le reste de la page ne se redessine pas à chaque tic.
+ */
+function RotationCountdown({ rotation, now }: { rotation: TheatreRotationView; now: Date }) {
+  const t = useTranslations("theatre");
+  const locale = useLocale();
+  const [tick, setTick] = useState<number | null>(null);
+
+  useEffect(() => {
+    const id = setInterval(() => setTick(Date.now()), 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  // Avant le premier tic (rendu serveur, hydratation) : l'instant de la page.
+  const nowMs = tick ?? now.getTime();
+  const remainingMs = Math.max(0, Date.parse(rotation.endsAt) - nowMs);
+  const remainingShare = 1 - rotationProgress(rotation, nowMs);
+
+  const text = useMemo(() => {
+    const intl = toIntlLocale(locale);
+    // Le format « narrow » retombe sur « 19d » en japonais, coréen et chinois.
+    const unitDisplay = ["ja", "ko", "zh-Hant"].includes(intl) ? "short" : "narrow";
+    const unit = (value: number, name: "day" | "hour" | "minute" | "second", digits: number) =>
+      new Intl.NumberFormat(intl, { style: "unit", unit: name, unitDisplay, minimumIntegerDigits: digits }).format(value);
+    const seconds = Math.floor(remainingMs / 1000);
+    return [
+      unit(Math.floor(seconds / 86_400), "day", 1),
+      unit(Math.floor((seconds % 86_400) / 3600), "hour", 2),
+      unit(Math.floor((seconds % 3600) / 60), "minute", 2),
+      unit(seconds % 60, "second", 2),
+    ].join(" ");
+  }, [locale, remainingMs]);
+
+  const percent = useMemo(
+    () => new Intl.NumberFormat(toIntlLocale(locale), { style: "percent", maximumFractionDigits: 1, minimumFractionDigits: 1 }),
+    [locale],
+  );
+
+  return (
+    <>
+      <p className="flex items-baseline justify-between gap-3 font-caps text-[0.6rem] uppercase tracking-[0.16em] text-muted">
+        <span>{t("switchIn")}</span>
+        <span className="tabular-nums">{percent.format(remainingShare)}</span>
+      </p>
+      <p className="font-display text-2xl font-semibold text-gold-bright tabular-nums">{text}</p>
+      <DnaProgress className="mt-2" value={Math.round(remainingShare * 10_000) / 100} label={t("progressLabel")} />
+    </>
+  );
+}
+
 function CurrentRotation({ rotation, now }: { rotation: TheatreRotationView; now: Date }) {
   const t = useTranslations("theatre");
   const fmt = useTheatreFormats();
   const kindLabel = useKindLabel();
   const featured = rotation.featuredView;
-  const progress = rotationProgress(rotation, now.getTime());
 
   return (
     <DnaPanel className="relative isolate flex min-h-[19rem] flex-col justify-between overflow-hidden p-5 sm:p-6">
@@ -106,11 +164,7 @@ function CurrentRotation({ rotation, now }: { rotation: TheatreRotationView; now
       </div>
 
       <div className="mt-6 sm:max-w-[54%]">
-        <p className="font-caps text-[0.6rem] uppercase tracking-[0.16em] text-muted">{t("switchIn")}</p>
-        <p className="font-display text-2xl font-semibold text-gold-bright tabular-nums">
-          {formatRemaining(rotation.endsAt, now, fmt.locale)}
-        </p>
-        <DnaProgress className="mt-2" value={Math.round(progress * 100)} label={t("progressLabel")} />
+        <RotationCountdown rotation={rotation} now={now} />
         <p className="mt-2 flex justify-between gap-3 font-sans text-xs text-muted tabular-nums">
           <span>{fmt.instant(rotation.startsAt)}</span>
           <span>{fmt.instant(rotation.endsAt)}</span>
