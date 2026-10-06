@@ -31,20 +31,30 @@ function useTheatreNow(serverNow: number): Date {
 
 function useTheatreFormats() {
   const locale = useLocale();
+  // `useNow` ne rend rien côté serveur ni pendant l'hydratation : c'est le signal
+  // que le fuseau du visiteur n'est pas encore connu.
+  const hydrated = useNow() !== null;
   return useMemo(() => {
     const intl = toIntlLocale(locale);
-    // Aucun `timeZone` : la bascule s'affiche à l'heure du visiteur, c'est celle
-    // à laquelle il pourra se connecter.
-    const instant = new Intl.DateTimeFormat(intl, { day: "numeric", month: "long", hour: "2-digit", minute: "2-digit" });
-    const day = new Intl.DateTimeFormat(intl, { day: "numeric", month: "short" });
-    const year = new Intl.DateTimeFormat(intl, { year: "numeric" });
+    /*
+     * La bascule s'affiche à l'heure du visiteur, c'est celle à laquelle il
+     * pourra se connecter. Mais le serveur ne connaît pas son fuseau : formatées
+     * sans précaution, les dates sortaient en UTC côté serveur et en heure
+     * locale côté navigateur, et React signalait un texte différent à
+     * l'hydratation. Le premier rendu est donc en UTC des deux côtés, puis le
+     * navigateur repasse dans son fuseau.
+     */
+    const timeZone = hydrated ? undefined : "UTC";
+    const instant = new Intl.DateTimeFormat(intl, { day: "numeric", month: "long", hour: "2-digit", minute: "2-digit", timeZone });
+    const day = new Intl.DateTimeFormat(intl, { day: "numeric", month: "short", timeZone });
+    const year = new Intl.DateTimeFormat(intl, { year: "numeric", timeZone });
     return {
       locale,
       instant: (iso: string) => instant.format(new Date(iso)),
       day: (iso: string) => day.format(new Date(iso)),
       year: (iso: string) => year.format(new Date(iso)),
     };
-  }, [locale]);
+  }, [locale, hydrated]);
 }
 
 /* ------------------------------------------------------------- petits blocs */
