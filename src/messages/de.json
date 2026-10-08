@@ -712,7 +712,9 @@
     "calamityPathUnknown": "Die empfohlene Reihenfolge ist für diesen Build noch nicht dokumentiert. Der Baum bleibt einsehbar.",
     "genimonPassiveLevel": "Passiv Stufe {level}",
     "genimonTraitsLabel": "Traits",
-    "genimonTraitsPending": "noch offen"
+    "genimonTraitsPending": "noch offen",
+    "buildUpdatedOn": "Aktualisiert am {date}",
+    "buildVerifiedOn": "Geprüft am {date}"
   },
   "items": {
     "libraryLabel": "Gegenstände-Bibliothek",

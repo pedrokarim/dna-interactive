@@ -712,7 +712,9 @@
     "calamityPathUnknown": "El orden recomendado aún no está documentado para este build. El árbol sigue consultable.",
     "genimonPassiveLevel": "Pasivo niv. {level}",
     "genimonTraitsLabel": "Rasgos",
-    "genimonTraitsPending": "por definir"
+    "genimonTraitsPending": "por definir",
+    "buildUpdatedOn": "Actualizado el {date}",
+    "buildVerifiedOn": "Revisado el {date}"
   },
   "items": {
     "libraryLabel": "Biblioteca de Objetos",

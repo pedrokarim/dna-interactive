@@ -1,5 +1,7 @@
 "use client";
 
+import BUILD_DATES from "@/data/characters/build-dates.json";
+import { toIntlLocale } from "@/lib/cosmetics/format";
 import { Link } from "@/i18n/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { useConfirm } from "@/components/dna/ConfirmProvider";
@@ -1796,6 +1798,11 @@ function relocalizeCuratedBuild(build: CharacterBuild, lang: string): CharacterB
   };
 }
 
+/** Date ISO `AAAA-MM-JJ` lue en UTC : même rendu côté serveur et côté navigateur. */
+function formatBuildDate(iso: string, locale: string): string {
+  return new Intl.DateTimeFormat(toIntlLocale(locale), { dateStyle: "medium", timeZone: "UTC" }).format(new Date(`${iso}T00:00:00Z`));
+}
+
 export function BuildTabContent({
   builds,
   character,
@@ -1827,6 +1834,8 @@ export function BuildTabContent({
   const tcb = useTranslations('communityBuilds');
   const [activeBuildIndex, setActiveBuildIndex] = useState(0);
   const [showTrackAdjust, setShowTrackAdjust] = useState(true);
+  // Dates des builds maison uniquement : un build communautaire porte les siennes.
+  const buildDates = officialHeader ? (BUILD_DATES as Record<string, { updatedAt: string | null; verifiedAt: string | null }>)[character.id] ?? null : null;
 
   // Re-localise les noms d'items du build actif selon la langue choisie
   // (?lang=) — le build prop est résolu côté serveur dans la locale de route.
@@ -1887,6 +1896,18 @@ export function BuildTabContent({
           bien plusieurs options. */}
       {officialHeader || builds.length > 1 ? (
         <div className="flex flex-wrap items-center gap-x-3 gap-y-2 border-l-2 border-gold/60 bg-gold/5 px-3 py-2">
+          {/* Sans ces dates, impossible de savoir si un build a bougé depuis la
+              dernière visite, ou s'il a été relu sans rien changer. */}
+          {buildDates && (buildDates.updatedAt || buildDates.verifiedAt) ? (
+            <span className="order-last ml-auto font-sans text-xs text-muted tabular-nums">
+              {[
+                buildDates.updatedAt ? t("buildUpdatedOn", { date: formatBuildDate(buildDates.updatedAt, locale) }) : null,
+                buildDates.verifiedAt ? t("buildVerifiedOn", { date: formatBuildDate(buildDates.verifiedAt, locale) }) : null,
+              ]
+                .filter(Boolean)
+                .join(" · ")}
+            </span>
+          ) : null}
           {officialHeader ? (
             <span className="inline-flex items-center rounded-sm border border-gold/50 bg-gold/15 px-2 py-0.5 font-caps text-[0.55rem] uppercase tracking-[0.16em] text-gold">
               {tcb("officialTier")}

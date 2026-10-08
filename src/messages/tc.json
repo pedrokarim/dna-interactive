@@ -712,7 +712,9 @@
     "calamityPathUnknown": "此配裝的建議順序尚未整理，但樹狀圖仍可瀏覽。",
     "genimonPassiveLevel": "被動 Lv.{level}",
     "genimonTraitsLabel": "特性",
-    "genimonTraitsPending": "待定"
+    "genimonTraitsPending": "待定",
+    "buildUpdatedOn": "更新於 {date}",
+    "buildVerifiedOn": "確認於 {date}"
   },
   "items": {
     "libraryLabel": "道具資料庫",

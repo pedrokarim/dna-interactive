@@ -13,11 +13,13 @@
  */
 import fs from "node:fs";
 import path from "node:path";
+import { execFileSync } from "node:child_process";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
 const rd = (p) => JSON.parse(fs.readFileSync(path.join(ROOT, p), "utf8"));
 const STATE = "scripts/build-verification.json";
 const MD = "docs/suivi-verification-builds.md";
+const DATES = "src/data/characters/build-dates.json";
 
 const chars = rd("src/data/characters/characters.json");
 const mods = new Map(rd("src/data/items/mods.items.json").map((m) => [m.id, m]));
@@ -137,6 +139,33 @@ function writeMarkdown() {
   console.log(`   suivi régénéré : ${MD}`);
 }
 
+/**
+ * Dates affichées sur les fiches : dernière modification du fichier de builds,
+ * et dernière vérification contre la fiche publique.
+ *
+ * Sans elles, un visiteur ne peut pas savoir si un build a bougé depuis sa
+ * dernière visite, ni s'il a été relu récemment sans rien changer. Le fichier
+ * est distinct du suivi : celui-ci porte des notes de travail et des
+ * identifiants de source qui n'ont rien à faire dans le site.
+ *
+ * La date de modification vient de git. Un fichier modifié mais pas encore
+ * commité compte pour aujourd'hui : c'est le cas au moment où on marque.
+ */
+function writeDates() {
+  const today = new Date().toISOString().slice(0, 10);
+  const git = (...args) => execFileSync("git", args, { cwd: ROOT, encoding: "utf8" }).trim();
+  const out = {};
+  for (const c of [...chars].sort((x, y) => x.id.localeCompare(y.id))) {
+    if (!hasBuild(c.id)) continue;
+    const file = buildFile(c.id);
+    const dirty = git("status", "--porcelain", "--", file) !== "";
+    const updatedAt = dirty ? today : git("log", "-1", "--format=%cs", "--", file) || null;
+    out[c.id] = { updatedAt, verifiedAt: state.characters[c.id]?.verifiedAt ?? null };
+  }
+  fs.writeFileSync(path.join(ROOT, DATES), JSON.stringify(out, null, 2) + "\n");
+  console.log(`   dates régénérées : ${DATES}`);
+}
+
 function mark(id, source, note) {
   const c = chars.find((x) => x.id === id);
   if (!c) return console.error(`Personnage introuvable : ${id}`), process.exit(1);
@@ -149,10 +178,12 @@ function mark(id, source, note) {
   );
   console.log(`✅ ${displayName(c)} marqué vérifié le ${today}${source ? ` (source ${source})` : ""}`);
   writeMarkdown();
+  writeDates();
 }
 
 const [a, b, c] = process.argv.slice(2);
 if (a === "--md") writeMarkdown();
+else if (a === "--dates") writeDates();
 else if (a === "--mark") mark(b, c, process.argv[5]);
 else if (a) detail(a);
 else queue();
