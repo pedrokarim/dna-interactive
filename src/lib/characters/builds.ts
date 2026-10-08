@@ -90,6 +90,8 @@ interface RawSkillPriority {
 
 interface RawCharacterBuild {
   characterId: string;
+  /** Build que la recommandation actuelle a remplacé : conservé, mais signalé et rangé en dernier. */
+  legacy?: boolean;
   // Élément du build pour les persos multi-éléments (clé : "Dark", "Light"…).
   // Absent = build valable pour tous les éléments (persos mono-élément).
   element?: string;
@@ -196,6 +198,8 @@ export interface BuildSkillPriority {
 
 export interface CharacterBuild {
   characterId: string;
+  /** Vrai pour un build que la recommandation actuelle a remplacé. */
+  legacy: boolean;
   element: string | null;
   buildName: RawLocalizedText;
   weapons: {
@@ -342,6 +346,7 @@ export function getCharacterBuilds(
     .filter((b) => b.characterId === characterId)
     .map((raw) => ({
       characterId: raw.characterId,
+      legacy: raw.legacy === true,
       element: raw.element ?? null,
       buildName: raw.buildName ?? {},
       weapons: {
@@ -406,7 +411,10 @@ export function getCharacterBuilds(
           }
         : null,
       notes: raw.notes ?? {},
-    }));
+    }))
+    // Les anciens builds restent consultables, mais après les recommandations
+    // actuelles : c'est le premier de la liste qui s'ouvre par défaut.
+    .sort((a, b) => Number(a.legacy) - Number(b.legacy));
 }
 
 // ---------------------------------------------------------------------------

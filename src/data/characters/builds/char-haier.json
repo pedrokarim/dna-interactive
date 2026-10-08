@@ -193,6 +193,7 @@
   },
   {
     "characterId": "char-haier",
+    "legacy": true,
     "buildName": {
       "FR": "DPS endgame",
       "EN": "Endgame DPS"

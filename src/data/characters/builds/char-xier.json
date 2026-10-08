@@ -1,6 +1,7 @@
 [
   {
     "characterId": "char-xier",
+    "legacy": true,
     "buildName": {
       "FR": "DPS Compétence Pyro — Ténacité",
       "EN": "Pyro Skill DPS — Resolve"
@@ -202,6 +203,7 @@
   },
   {
     "characterId": "char-xier",
+    "legacy": true,
     "buildName": {
       "FR": "DPS Compétence Pyro — Morale",
       "EN": "Pyro Skill DPS — Morale"

@@ -714,7 +714,9 @@
     "genimonTraitsLabel": "Rasgos",
     "genimonTraitsPending": "por definir",
     "buildUpdatedOn": "Actualizado el {date}",
-    "buildVerifiedOn": "Revisado el {date}"
+    "buildVerifiedOn": "Revisado el {date}",
+    "legacyBuildTag": "anterior",
+    "legacyBuildNotice": "Build anterior: ya no forma parte de las recomendaciones actuales. Se conserva aquí para quienes ya lo montaron."
   },
   "items": {
     "libraryLabel": "Biblioteca de Objetos",

@@ -1,6 +1,7 @@
 [
   {
     "characterId": "char-eve",
+    "legacy": true,
     "buildName": {
       "FR": "DPS Invocations Hydro",
       "EN": "Hydro Summon DPS"
@@ -212,6 +213,7 @@
   },
   {
     "characterId": "char-eve",
+    "legacy": true,
     "buildName": {
       "FR": "Progression (avant rang d'epreuve 60)",
       "EN": "Progression (before Trial Rank 60)"

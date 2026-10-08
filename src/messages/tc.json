@@ -714,7 +714,9 @@
     "genimonTraitsLabel": "特性",
     "genimonTraitsPending": "待定",
     "buildUpdatedOn": "更新於 {date}",
-    "buildVerifiedOn": "確認於 {date}"
+    "buildVerifiedOn": "確認於 {date}",
+    "legacyBuildTag": "舊",
+    "legacyBuildNotice": "舊配置：已不在目前的推薦之列，保留給已經配好的玩家參考。"
   },
   "items": {
     "libraryLabel": "道具資料庫",

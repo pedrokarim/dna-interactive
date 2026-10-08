@@ -1,6 +1,7 @@
 [
   {
     "characterId": "char-baonu",
+    "legacy": true,
     "buildName": {
       "FR": "DPS Arme de Consonance",
       "EN": "Consonance Weapon DPS"

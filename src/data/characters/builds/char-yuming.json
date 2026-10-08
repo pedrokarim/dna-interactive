@@ -1,6 +1,7 @@
 [
   {
     "characterId": "char-yuming",
+    "legacy": true,
     "buildName": {
       "FR": "Sub-DPS Electro",
       "EN": "Electro Sub-DPS"

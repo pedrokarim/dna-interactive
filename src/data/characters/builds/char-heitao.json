@@ -1,6 +1,7 @@
 [
   {
     "characterId": "char-heitao",
+    "legacy": true,
     "buildName": {
       "FR": "DPS Umbro",
       "EN": "Umbro DPS"

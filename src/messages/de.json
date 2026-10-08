@@ -714,7 +714,9 @@
     "genimonTraitsLabel": "Traits",
     "genimonTraitsPending": "noch offen",
     "buildUpdatedOn": "Aktualisiert am {date}",
-    "buildVerifiedOn": "Geprüft am {date}"
+    "buildVerifiedOn": "Geprüft am {date}",
+    "legacyBuildTag": "früher",
+    "legacyBuildNotice": "Früherer Build: Er gehört nicht mehr zu den aktuellen Empfehlungen. Er bleibt hier für alle, die ihn bereits gebaut haben."
   },
   "items": {
     "libraryLabel": "Gegenstände-Bibliothek",

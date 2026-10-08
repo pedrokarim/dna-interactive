@@ -714,7 +714,9 @@
     "genimonTraitsLabel": "特性",
     "genimonTraitsPending": "未設定",
     "buildUpdatedOn": "更新日：{date}",
-    "buildVerifiedOn": "確認日：{date}"
+    "buildVerifiedOn": "確認日：{date}",
+    "legacyBuildTag": "旧",
+    "legacyBuildNotice": "旧ビルド：現在のおすすめには含まれていません。すでに組んだ方のために残しています。"
   },
   "items": {
     "libraryLabel": "アイテムライブラリ",

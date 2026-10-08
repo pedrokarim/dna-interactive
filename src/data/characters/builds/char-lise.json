@@ -1,6 +1,7 @@
 [
   {
     "characterId": "char-lise",
+    "legacy": true,
     "buildName": {
       "FR": "DPS Compétence — endgame",
       "EN": "Skill DPS — endgame"

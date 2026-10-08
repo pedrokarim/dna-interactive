@@ -426,6 +426,7 @@ export function communityBuildToDisplayBuild(
 
   return {
     characterId: build.characterId,
+    legacy: false,
     element: build.element ?? null,
     buildName,
     weapons: {
@@ -1896,6 +1897,11 @@ export function BuildTabContent({
           bien plusieurs options. */}
       {officialHeader || builds.length > 1 ? (
         <div className="flex flex-wrap items-center gap-x-3 gap-y-2 border-l-2 border-gold/60 bg-gold/5 px-3 py-2">
+          {/* Un build que la recommandation actuelle a remplacé reste consultable :
+              on le dit, pour qu'il ne passe pas pour le conseil du moment. */}
+          {activeBuild?.legacy ? (
+            <p className="order-[10000] basis-full font-sans text-xs text-muted">{t("legacyBuildNotice")}</p>
+          ) : null}
           {/* Sans ces dates, impossible de savoir si un build a bougé depuis la
               dernière visite, ou s'il a été relu sans rien changer. */}
           {buildDates && (buildDates.updatedAt || buildDates.verifiedAt) ? (
@@ -1921,11 +1927,19 @@ export function BuildTabContent({
               </span>
               <DnaSegmented
                 ariaLabel={tcb("chooseBuild", { count: builds.length })}
+                // Sur un écran étroit, quatre noms de build côte à côte se chevauchent :
+                // le sélecteur passe en colonne, un build par ligne.
+                className="max-sm:flex max-sm:w-full max-sm:flex-col max-sm:[&>button]:justify-start max-sm:[&>button]:border-l-0 max-sm:[&>button]:text-left max-sm:[&>button+button]:border-t max-sm:[&>button+button]:border-white/10"
                 value={String(activeBuildIndex)}
                 onChange={(v) => setActiveBuildIndex(Number(v))}
                 options={builds.map((b, i) => ({
                   value: String(i),
-                  label: <BuildLocalizedText texts={b.buildName} lang={selectedLanguage} />,
+                  label: (
+                    <>
+                      <BuildLocalizedText texts={b.buildName} lang={selectedLanguage} />
+                      {b.legacy ? <span className="text-[0.85em] text-muted-2">{t("legacyBuildTag")}</span> : null}
+                    </>
+                  ),
                 }))}
               />
             </>

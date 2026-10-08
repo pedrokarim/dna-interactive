@@ -714,7 +714,9 @@
     "genimonTraitsLabel": "특성",
     "genimonTraitsPending": "미정",
     "buildUpdatedOn": "업데이트: {date}",
-    "buildVerifiedOn": "확인: {date}"
+    "buildVerifiedOn": "확인: {date}",
+    "legacyBuildTag": "이전",
+    "legacyBuildNotice": "이전 빌드: 현재 추천에는 포함되지 않습니다. 이미 구성한 분들을 위해 남겨 둡니다."
   },
   "items": {
     "libraryLabel": "아이템 라이브러리",
