@@ -43,16 +43,16 @@
           "itemId": "weapons-10403",
           "rank": "alternative",
           "note": {
-            "FR": "Alternative conseillée.",
-            "EN": "Recommended alternative."
+            "FR": "Portée de compétence.",
+            "EN": "Skill Range."
           }
         },
         {
           "itemId": "weapons-10602",
           "rank": "alternative",
           "note": {
-            "FR": "Alternative conseillée.",
-            "EN": "Recommended alternative."
+            "FR": "Portée de compétence.",
+            "EN": "Skill Range."
           }
         }
       ],
@@ -61,8 +61,8 @@
           "itemId": "weapons-20207",
           "rank": "best",
           "note": {
-            "FR": "Premier choix.",
-            "EN": "Top pick."
+            "FR": "Premier choix. Vigueur, et dégâts des invocations pour un personnage Hydro.",
+            "EN": "Top pick. Morale, plus Summon damage for a Hydro character."
           }
         },
         {
@@ -85,16 +85,16 @@
           "itemId": "weapons-20604",
           "rank": "alternative",
           "note": {
-            "FR": "Alternative conseillée.",
-            "EN": "Recommended alternative."
+            "FR": "Portée de compétence.",
+            "EN": "Skill Range."
           }
         },
         {
           "itemId": "weapons-20603",
           "rank": "alternative",
           "note": {
-            "FR": "Alternative conseillée.",
-            "EN": "Recommended alternative."
+            "FR": "Portée de compétence, flèches à tête chercheuse.",
+            "EN": "Skill Range, homing arrows."
           }
         }
       ]
@@ -284,8 +284,8 @@
           "itemId": "weapons-20207",
           "rank": "best",
           "note": {
-            "FR": "Premier choix.",
-            "EN": "Top pick."
+            "FR": "Premier choix. Vigueur, et dégâts des invocations pour un personnage Hydro.",
+            "EN": "Top pick. Morale, plus Summon damage for a Hydro character."
           }
         },
         {

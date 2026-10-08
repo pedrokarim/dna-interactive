@@ -27,8 +27,8 @@
           "itemId": "weapons-10602",
           "rank": "alternative",
           "note": {
-            "FR": "Alternative conseillée.",
-            "EN": "Recommended alternative."
+            "FR": "Portée de compétence.",
+            "EN": "Skill Range."
           }
         }
       ],
@@ -53,8 +53,8 @@
           "itemId": "weapons-20512",
           "rank": "alternative",
           "note": {
-            "FR": "Alternative conseillée.",
-            "EN": "Recommended alternative."
+            "FR": "Multishot, et dégâts de compétence cumulables pour un personnage Pyro.",
+            "EN": "Multishot, plus stacking Skill DMG for a Pyro character."
           }
         }
       ]

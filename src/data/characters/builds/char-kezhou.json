@@ -11,8 +11,8 @@
           "itemId": "weapons-10603",
           "rank": "best",
           "note": {
-            "FR": "Premier choix.",
-            "EN": "Top pick."
+            "FR": "Premier choix. ATQ du personnage, et DGT CRIT sur attaque chargée.",
+            "EN": "Top pick. Character ATK, plus CRIT Damage on Charged Attacks."
           }
         },
         {
@@ -43,8 +43,8 @@
           "itemId": "weapons-10402",
           "rank": "alternative",
           "note": {
-            "FR": "Quatrième choix.",
-            "EN": "Fourth pick."
+            "FR": "DGT CRIT, et Taux CRIT sur attaque en glissade.",
+            "EN": "CRIT Damage, plus CRIT Chance on Sliding Attacks."
           }
         },
         {
@@ -260,8 +260,8 @@
           "itemId": "weapons-10603",
           "rank": "best",
           "note": {
-            "FR": "Premier choix.",
-            "EN": "Top pick."
+            "FR": "Premier choix. ATQ du personnage, et DGT CRIT sur attaque chargée.",
+            "EN": "Top pick. Character ATK, plus CRIT Damage on Charged Attacks."
           }
         },
         {
@@ -292,8 +292,8 @@
           "itemId": "weapons-10402",
           "rank": "alternative",
           "note": {
-            "FR": "Quatrième choix.",
-            "EN": "Fourth pick."
+            "FR": "DGT CRIT, et Taux CRIT sur attaque en glissade.",
+            "EN": "CRIT Damage, plus CRIT Chance on Sliding Attacks."
           }
         },
         {

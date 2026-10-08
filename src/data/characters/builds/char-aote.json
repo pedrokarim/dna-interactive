@@ -35,16 +35,16 @@
           "itemId": "weapons-10604",
           "rank": "alternative",
           "note": {
-            "FR": "Alternative conseillée.",
-            "EN": "Recommended alternative."
+            "FR": "Portée d'ATQ et dégâts d'attaque normale.",
+            "EN": "ATK Range and Normal Attack damage."
           }
         },
         {
           "itemId": "weapons-10401",
           "rank": "alternative",
           "note": {
-            "FR": "Alternative conseillée.",
-            "EN": "Recommended alternative."
+            "FR": "Vitesse d'attaque.",
+            "EN": "ATK Speed."
           }
         }
       ],
@@ -77,8 +77,8 @@
           "itemId": "weapons-20205",
           "rank": "alternative",
           "note": {
-            "FR": "Alternative conseillée.",
-            "EN": "Recommended alternative."
+            "FR": "Taux CRIT, et du Multishot sur coup critique.",
+            "EN": "CRIT Chance, plus Multishot on critical hits."
           }
         }
       ]

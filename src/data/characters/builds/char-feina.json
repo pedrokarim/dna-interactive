@@ -288,7 +288,7 @@
         {
           "position": 1,
           "itemId": "mods-56164",
-          "track": null
+          "track": 2
         },
         {
           "position": 2,
@@ -303,7 +303,7 @@
         {
           "position": 4,
           "itemId": "mods-51465",
-          "track": null
+          "track": 1
         },
         {
           "position": 5,
@@ -316,8 +316,8 @@
         "EN": "Feathered Serpent's Steadfast"
       },
       "note": {
-        "FR": "Composition a reverifier : le tableau de pistes de la fiche ne correspond pas a ces pieces (case 4 attendue en polarite 3). Aucune piste posee tant que ce n est pas tranche.",
-        "EN": "Composition to re-check: the sheet track table does not match these pieces (slot 4 expected at polarity 3). No tracks set until this is settled."
+        "FR": "Ailes · Inspiration · Concentration, Prisme spectral, Aurore · Soleil de minuit, Apogée · Exaltation, Éternité · Abnégation. Deux modules, cases 1 et 4.",
+        "EN": "Wings · Inspo · Focus, Prismatic Neon, Skylume · Midnight Sun, Prime · Uplift, Eternity · Abnegation. Two modules, slots 1 and 4."
       },
       "centerItemId": "mods-31526"
     },
@@ -552,50 +552,44 @@
     ],
     "team": [
       {
-        "characterId": "char-linen",
-        "role": "DPS",
+        "characterId": "char-songlu",
+        "role": "Support",
         "note": {
-          "FR": "DPS principal. Specialiste Degats d'arme qui profite pleinement des buffs de Fina.",
-          "EN": "Main DPS. Weapon DMG specialist who fully benefits from Fina's buffs."
+          "FR": "Soins et bonus de dégâts.",
+          "EN": "Healing and damage buffs."
         }
       },
       {
-        "characterId": "char-baiheng",
+        "characterId": "char-protagonist-female",
         "role": "Support",
         "note": {
-          "FR": "Soins et recuperation de Lucidite. Compense l'absence de buffs defensifs.",
-          "EN": "Healing and Sanity recovery. Compensates for lack of defensive buffs."
+          "FR": "Soutien de l'équipe.",
+          "EN": "Team support."
         }
       }
     ],
     "genimon": [
       {
-        "itemId": "genimon-4231",
+        "itemId": "genimon-4261",
         "rank": "best",
         "traits": [
-          "UI_PetEntry_Title21",
           "UI_PetEntry_Title10",
-          "UI_PetEntry_Title20",
-          "UI_PetEntry_Title22"
+          "UI_PetEntry_Title22",
+          "UI_PetEntry_Title12"
         ]
       },
       {
-        "itemId": "genimon-4031",
+        "itemId": "genimon-4161",
         "rank": "alternative",
         "traits": [
-          "UI_PetEntry_Title21",
-          "UI_PetEntry_Title10",
-          "UI_PetEntry_Title20"
+          "UI_PetEntry_Title19",
+          "UI_PetEntry_Title23",
+          "UI_PetEntry_Title10"
         ]
       },
       {
-        "itemId": "genimon-4131",
-        "rank": "alternative",
-        "traits": [
-          "UI_PetEntry_Title21",
-          "UI_PetEntry_Title10",
-          "UI_PetEntry_Title20"
-        ]
+        "itemId": "genimon-4061",
+        "rank": "alternative"
       }
     ],
     "skillPriority": [
@@ -634,8 +628,8 @@
       }
     ],
     "notes": {
-      "FR": "Fina est un support Lumino axe sur les buffs de Degats d'arme. Maintenez le champ Tea Party actif pour les buffs elementaires. Fonctionne mieux avec des DPS Degats d'arme (Lynn, Psyche, Lisbell, Outsider, Berenica) — evitez les specialistes Degats de competence. N'apporte aucun buff defensif. A Intron 6, devient viable en DPS principal.",
-      "EN": "Fina is a Lumino support focused on Weapon DMG buffs. Maintain active Tea Party field for team elemental damage buffs. Synergizes best with Weapon DMG DPS (Lynn, Psyche, Lisbell, Outsider, Berenica) — avoid Skill DMG specialists. No defensive buffs. At Intron 6, becomes viable as primary DPS."
+      "FR": "Fina jouée en dégâts plutôt qu'en soutien : Ailes · Inspiration · Vigueur, Apogée · Poursuite et cinq Ardeur · Décision. Truffle et Filbert et un second soutien l'accompagnent dans ce rôle.",
+      "EN": "Fina played for damage instead of support: Wings · Inspo · Morale, Prime · Huntdown and five Blaze · Volition. Truffle and Filbert and a second support back her up in this role."
     }
   }
 ]

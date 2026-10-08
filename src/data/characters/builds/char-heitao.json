@@ -239,24 +239,24 @@
           "itemId": "weapons-10304",
           "rank": "alternative",
           "note": {
-            "FR": "Alternative conseillée.",
-            "EN": "Recommended alternative."
+            "FR": "Vigueur. Son second effet est réservé aux personnages Electro.",
+            "EN": "Morale. Its second effect is reserved for Electro characters."
           }
         },
         {
           "itemId": "weapons-10107",
           "rank": "alternative",
           "note": {
-            "FR": "Alternative conseillée.",
-            "EN": "Recommended alternative."
+            "FR": "Vigueur, et dégâts infligés par Point de Combo pour un personnage Umbro.",
+            "EN": "Morale, plus Damage Dealt per Combo Point for an Umbro character."
           }
         },
         {
           "itemId": "weapons-10206",
           "rank": "alternative",
           "note": {
-            "FR": "Alternative conseillée.",
-            "EN": "Recommended alternative."
+            "FR": "Puissance de compétence.",
+            "EN": "Skill Intensity."
           }
         }
       ],
@@ -273,16 +273,16 @@
           "itemId": "weapons-20207",
           "rank": "alternative",
           "note": {
-            "FR": "Alternative conseillée.",
-            "EN": "Recommended alternative."
+            "FR": "Vigueur, et dégâts des invocations pour un personnage Hydro.",
+            "EN": "Morale, plus Summon damage for a Hydro character."
           }
         },
         {
           "itemId": "weapons-20102",
           "rank": "alternative",
           "note": {
-            "FR": "Alternative conseillée.",
-            "EN": "Recommended alternative."
+            "FR": "ATQ du personnage.",
+            "EN": "Character ATK."
           }
         }
       ]
@@ -467,16 +467,16 @@
           "itemId": "weapons-10107",
           "rank": "alternative",
           "note": {
-            "FR": "Alternative conseillée.",
-            "EN": "Recommended alternative."
+            "FR": "Vigueur, et dégâts infligés par Point de Combo pour un personnage Umbro.",
+            "EN": "Morale, plus Damage Dealt per Combo Point for an Umbro character."
           }
         },
         {
           "itemId": "weapons-10206",
           "rank": "alternative",
           "note": {
-            "FR": "Alternative conseillée.",
-            "EN": "Recommended alternative."
+            "FR": "Puissance de compétence.",
+            "EN": "Skill Intensity."
           }
         }
       ],
@@ -493,24 +493,24 @@
           "itemId": "weapons-20201",
           "rank": "alternative",
           "note": {
-            "FR": "Alternative conseillée.",
-            "EN": "Recommended alternative."
+            "FR": "Puissance de compétence.",
+            "EN": "Skill Intensity."
           }
         },
         {
           "itemId": "weapons-20207",
           "rank": "alternative",
           "note": {
-            "FR": "Alternative conseillée.",
-            "EN": "Recommended alternative."
+            "FR": "Vigueur, et dégâts des invocations pour un personnage Hydro.",
+            "EN": "Morale, plus Summon damage for a Hydro character."
           }
         },
         {
           "itemId": "weapons-20102",
           "rank": "alternative",
           "note": {
-            "FR": "Alternative conseillée.",
-            "EN": "Recommended alternative."
+            "FR": "ATQ du personnage.",
+            "EN": "Character ATK."
           }
         }
       ]
@@ -578,19 +578,19 @@
     ],
     "team": [
       {
-        "characterId": "char-feina",
+        "characterId": "char-songlu",
         "role": "Support",
         "note": {
-          "FR": "Support polyvalent.",
-          "EN": "Versatile support."
+          "FR": "Soins, et des pièces de soutien à la Ténacité.",
+          "EN": "Healing, plus Resolve support wedges."
         }
       },
       {
-        "characterId": "char-maer",
-        "role": "Sub-DPS",
+        "characterId": "char-feina",
+        "role": "Support",
         "note": {
-          "FR": "Option F2P. DPS secondaire.",
-          "EN": "F2P option. Secondary DPS."
+          "FR": "Gros bonus de dégâts.",
+          "EN": "Large damage buffs."
         }
       }
     ],
@@ -599,8 +599,9 @@
         "itemId": "genimon-4211",
         "rank": "best",
         "traits": [
+          "UI_PetEntry_Title23",
+          "UI_PetEntry_Title26",
           "UI_PetEntry_Title10",
-          "UI_PetEntry_Title22",
           "UI_PetEntry_Title25"
         ]
       },
@@ -608,18 +609,18 @@
         "itemId": "genimon-4111",
         "rank": "alternative",
         "traits": [
-          "UI_PetEntry_Title10",
-          "UI_PetEntry_Title22",
-          "UI_PetEntry_Title25"
+          "UI_PetEntry_Title23",
+          "UI_PetEntry_Title26",
+          "UI_PetEntry_Title10"
         ]
       },
       {
         "itemId": "genimon-4011",
         "rank": "alternative",
         "traits": [
-          "UI_PetEntry_Title10",
-          "UI_PetEntry_Title22",
-          "UI_PetEntry_Title25"
+          "UI_PetEntry_Title23",
+          "UI_PetEntry_Title26",
+          "UI_PetEntry_Title10"
         ]
       }
     ],
@@ -672,8 +673,8 @@
       ]
     },
     "notes": {
-      "FR": "Berenica est une DPS Umbro mono-cible via Flammes Infernales. Priorisez Degats de competence et ATQ. Lueur Pale pour mobilite, Recuperation pour Lucidite.",
-      "EN": "Berenica is an Umbro single-target DPS through Netherflames. Prioritize Skill DMG and ATK. Faintlight for mobility, Recuperation for Sanity."
+      "FR": "Variante Ténacité de l'intron VII : l'essentiel des dégâts vient de Plume sanguine, que Berenica alimente en perdant ses propres PV. Truffle et Filbert assurent les soins.",
+      "EN": "Resolve variant for Intron VII: most of the damage comes from Sanguine Plume, which Berenica feeds by losing her own HP. Truffle and Filbert handle the healing."
     }
   }
 ]

@@ -61,16 +61,16 @@
           "itemId": "weapons-20405",
           "rank": "alternative",
           "note": {
-            "FR": "Alternative conseillée.",
-            "EN": "Recommended alternative."
+            "FR": "ATQ du personnage.",
+            "EN": "Character ATK."
           }
         },
         {
           "itemId": "weapons-20201",
           "rank": "alternative",
           "note": {
-            "FR": "Alternative conseillée.",
-            "EN": "Recommended alternative."
+            "FR": "Puissance de compétence.",
+            "EN": "Skill Intensity."
           }
         }
       ]

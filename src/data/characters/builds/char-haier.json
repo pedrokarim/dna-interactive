@@ -403,8 +403,8 @@
           "itemId": "weapons-10301",
           "rank": "alternative",
           "note": {
-            "FR": "Alternative conseillée.",
-            "EN": "Recommended alternative."
+            "FR": "PV Max, et Durée de compétence quand un personnage Pyro subit des dégâts.",
+            "EN": "Max HP, plus Skill Duration when a Pyro character takes damage."
           }
         },
         {
@@ -429,24 +429,24 @@
           "itemId": "weapons-20512",
           "rank": "alternative",
           "note": {
-            "FR": "Alternative conseillée.",
-            "EN": "Recommended alternative."
+            "FR": "Multishot, et dégâts de compétence cumulables pour un personnage Pyro.",
+            "EN": "Multishot, plus stacking Skill DMG for a Pyro character."
           }
         },
         {
           "itemId": "weapons-20302",
           "rank": "alternative",
           "note": {
-            "FR": "Alternative conseillée.",
-            "EN": "Recommended alternative."
+            "FR": "Multishot, et dégâts de compétence sur esquive pour un personnage Pyro.",
+            "EN": "Multishot, plus Skill DMG on Dodge for a Pyro character."
           }
         },
         {
           "itemId": "weapons-20201",
           "rank": "alternative",
           "note": {
-            "FR": "Alternative conseillée.",
-            "EN": "Recommended alternative."
+            "FR": "Puissance de compétence.",
+            "EN": "Skill Intensity."
           }
         }
       ]

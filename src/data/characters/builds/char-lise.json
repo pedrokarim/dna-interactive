@@ -597,24 +597,24 @@
           "itemId": "weapons-10206",
           "rank": "alternative",
           "note": {
-            "FR": "Alternative conseillée.",
-            "EN": "Recommended alternative."
+            "FR": "Puissance de compétence.",
+            "EN": "Skill Intensity."
           }
         },
         {
           "itemId": "weapons-10603",
           "rank": "alternative",
           "note": {
-            "FR": "Alternative conseillée.",
-            "EN": "Recommended alternative."
+            "FR": "ATQ du personnage, et DGT CRIT sur attaque chargée.",
+            "EN": "Character ATK, plus CRIT Damage on Charged Attacks."
           }
         },
         {
           "itemId": "weapons-10203",
           "rank": "alternative",
           "note": {
-            "FR": "Alternative conseillée.",
-            "EN": "Recommended alternative."
+            "FR": "Puissance de compétence, et un bonus d'équipe Electro sur attaque plongeante.",
+            "EN": "Skill Intensity, plus an Electro team buff on Plunging Attacks."
           }
         }
       ],
@@ -639,8 +639,8 @@
           "itemId": "weapons-20201",
           "rank": "alternative",
           "note": {
-            "FR": "Alternative conseillée.",
-            "EN": "Recommended alternative."
+            "FR": "Puissance de compétence.",
+            "EN": "Skill Intensity."
           }
         }
       ]

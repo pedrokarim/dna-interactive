@@ -35,8 +35,8 @@
           "itemId": "weapons-10603",
           "rank": "alternative",
           "note": {
-            "FR": "Alternative conseillée.",
-            "EN": "Recommended alternative."
+            "FR": "ATQ du personnage, et DGT CRIT sur attaque chargée.",
+            "EN": "Character ATK, plus CRIT Damage on Charged Attacks."
           }
         }
       ],
@@ -341,19 +341,19 @@
     ],
     "team": [
       {
-        "characterId": "char-kezhou",
-        "role": "DPS",
-        "note": {
-          "FR": "DPS principal. Profite des buffs Anemo et des soins de Daphne.",
-          "EN": "Main DPS. Benefits from Daphne's Anemo buffs and healing."
-        }
-      },
-      {
         "characterId": "char-feina",
         "role": "Support",
         "note": {
-          "FR": "Second support. Buffs Degats d'arme complementaires aux buffs Anemo de Daphne.",
-          "EN": "Second support. Weapon DMG buffs complement Daphne's Anemo buffs."
+          "FR": "Gros bonus de dégâts.",
+          "EN": "Large damage buffs."
+        }
+      },
+      {
+        "characterId": "char-baiheng",
+        "role": "Support",
+        "note": {
+          "FR": "Soutien de l'équipe.",
+          "EN": "Team support."
         }
       }
     ],
@@ -362,24 +362,28 @@
         "itemId": "genimon-4251",
         "rank": "best",
         "traits": [
-          "UI_PetEntry_Title21",
-          "UI_PetEntry_Title10"
+          "UI_PetEntry_Title10",
+          "UI_PetEntry_Title25",
+          "UI_PetEntry_Title26",
+          "UI_PetEntry_Title22"
         ]
       },
       {
         "itemId": "genimon-4051",
         "rank": "alternative",
         "traits": [
-          "UI_PetEntry_Title21",
-          "UI_PetEntry_Title10"
+          "UI_PetEntry_Title10",
+          "UI_PetEntry_Title25",
+          "UI_PetEntry_Title26"
         ]
       },
       {
         "itemId": "genimon-4151",
         "rank": "alternative",
         "traits": [
-          "UI_PetEntry_Title21",
-          "UI_PetEntry_Title10"
+          "UI_PetEntry_Title10",
+          "UI_PetEntry_Title25",
+          "UI_PetEntry_Title26"
         ]
       }
     ],
@@ -419,8 +423,8 @@
       }
     ],
     "notes": {
-      "FR": "Daphne est un support Anemo polyvalent offrant soins et buffs de degats. Deployez le champ de soins (Effusion d'Emeraude) pour restaurer les PV des allies et ralentir les ennemis. Utilisez Synthese Repulsive pour appliquer la Formule de Purification (buff Degats Anemo) tout en debuffant les ennemis. Collectez les Projectiles d'Azoth — chaque stack augmente l'effet bonus de l'arme a distance, appliquant un DoT (Formule de Decomposition). Priorisez la Duree de competence et la Lucidite max pour maintenir les buffs en permanence. Gratuite via l'evenement Marcher sous la Pluie.",
-      "EN": "Daphne is a versatile Anemo support providing healing and damage buffs. Deploy healing field (Emerald Effusion) to restore ally HP and slow enemies. Use Repulsion Synthesis to apply Purification Formula (Anemo DMG buff) while debuffing enemies. Collect Azoth Projectiles — each stack increases ranged weapon bonus trigger probability, applying DoT (Decay Formula). Prioritize Skill Duration and Max Sanity for permanent buff uptime. Free via Step into the Rainveil event."
+      "FR": "Daphne jouée en dégâts plutôt qu'en soin : cinq Ardeur · Trempe et un centre Ténacité, avec Fina et Fushu en soutien.",
+      "EN": "Daphne played for damage instead of healing: five Blaze · Tempered and a Resolve core, with Fina and Fushu in support."
     }
   }
 ]

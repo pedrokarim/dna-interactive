@@ -35,8 +35,8 @@
           "itemId": "weapons-10206",
           "rank": "alternative",
           "note": {
-            "FR": "Alternative conseillée.",
-            "EN": "Recommended alternative."
+            "FR": "Puissance de compétence.",
+            "EN": "Skill Intensity."
           }
         }
       ],
@@ -235,16 +235,16 @@
           "itemId": "weapons-10206",
           "rank": "alternative",
           "note": {
-            "FR": "Alternative conseillée.",
-            "EN": "Recommended alternative."
+            "FR": "Puissance de compétence.",
+            "EN": "Skill Intensity."
           }
         },
         {
           "itemId": "weapons-10501",
           "rank": "alternative",
           "note": {
-            "FR": "Alternative conseillée.",
-            "EN": "Recommended alternative."
+            "FR": "PV Max, cumulables sur effet bonus.",
+            "EN": "Max HP, stacking on bonus effects."
           }
         }
       ],
