@@ -34,8 +34,16 @@
       ],
       "ranged": [
         {
-          "itemId": "weapons-20102",
+          "itemId": "weapons-20298",
           "rank": "best",
+          "note": {
+            "FR": "Arme de calamité, premier choix à distance.",
+            "EN": "Calamity weapon, top ranged pick."
+          }
+        },
+        {
+          "itemId": "weapons-20102",
+          "rank": "alternative",
           "note": {
             "FR": "ATQ +120% : stat brute, efficace meme hors maitrise (c'est un pistolet, pas une arbalete).",
             "EN": "ATK +120%: raw stat, effective even outside his proficiency (it is a pistol, not a crossbow)."
@@ -48,6 +56,22 @@
             "FR": "Arbalete, donc dans sa maitrise. A preferer si l'ATQ brute n'est pas le point faible du build.",
             "EN": "Crossbow, so within his proficiency. Prefer it when raw ATK is not the build's bottleneck."
           }
+        },
+        {
+          "itemId": "weapons-20405",
+          "rank": "alternative",
+          "note": {
+            "FR": "Alternative conseillée.",
+            "EN": "Recommended alternative."
+          }
+        },
+        {
+          "itemId": "weapons-20201",
+          "rank": "alternative",
+          "note": {
+            "FR": "Alternative conseillée.",
+            "EN": "Recommended alternative."
+          }
         }
       ]
     },
@@ -55,13 +79,13 @@
       "slots": [
         {
           "position": 1,
-          "itemId": "mods-51941",
-          "track": 4
+          "itemId": "mods-56142",
+          "track": 2
         },
         {
           "position": 2,
-          "itemId": "mods-51441",
-          "track": 1
+          "itemId": "mods-51941",
+          "track": 4
         },
         {
           "position": 3,
@@ -70,13 +94,13 @@
         },
         {
           "position": 4,
-          "itemId": "mods-56142",
-          "track": 2
+          "itemId": "mods-51441",
+          "track": 1
         },
         {
           "position": 5,
-          "itemId": "mods-51742",
-          "track": null
+          "itemId": "mods-51743",
+          "track": 3
         },
         {
           "position": 6,
@@ -85,12 +109,12 @@
         },
         {
           "position": 7,
-          "itemId": "mods-51742",
+          "itemId": "mods-51743",
           "track": null
         },
         {
           "position": 8,
-          "itemId": "mods-51743",
+          "itemId": "mods-51742",
           "track": null
         }
       ],

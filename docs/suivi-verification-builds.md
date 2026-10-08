@@ -29,11 +29,11 @@ plus ancien.
 | 15 | Rebecca | Hydro | — | ✅ 2026-10-08 | 560789 | Fiche du 05/10 : fin de jeu a 6 Track-Shift (cases 1-6) + centre ajuste, Perpetual Strife et The Best Day 1ers choix ; debut-milieu reordonne, 8 Track-Shift. |
 | 16 | Lynn | Pyro | — | ✅ 2026-10-08 | 560793 | Fiche du 05/10 : 8 Track-Shift sur les 2 builds ; Excresduo 1er choix distance en debut-milieu. Cases 6-8 non retouchees : la fiche les nomme Blaze Volition, nom absent du catalogue Pyro. |
 | 17 | Yuming | Electro | — | ✅ 2026-10-08 | 561640 | Fiche du 05/10 : builds DPS et Soutien conformes case par case (5 Track-Shift), armes identiques. |
-| 18 | Zhiliu | Electro | — | ✅ 2026-08-20 | 567185 | arme distance -> Rendhusk ; arme signature : 1 Track-Shift case 1 |
-| 19 | Sibylle | Electro | — | ✅ 2026-08-20 | 560801 | pistes posees depuis le tableau HTML |
-| 20 | Tabethe | Hydro | — | ✅ 2026-09-24 | 560790 | Balayage du 24/09 : les 2 builds conformes a la fiche, aucun ecart. Aucune piece Hydro ajoutee par la 1.6. |
-| 21 | Berenica | Umbro | — | ✅ 2026-09-24 | 560808 | Ajout du build d'intron VII (Debordement-Finesse, generique 1.6). |
-| 22 | Phantasio | Umbro | — | ✅ 2026-08-20 | 560807 | pistes posees depuis le tableau HTML |
+| 18 | Zhiliu | Electro | — | ✅ 2026-10-08 | 567185 | Fiche du 05/10 : pieces reordonnees (2 Volition, 2 Raffinement), 5 Track-Shift ; Sanguine Plume 1er choix distance. |
+| 19 | Sibylle | Electro | — | ✅ 2026-10-08 | 560801 | Fiche du 05/10 : conforme case par case (4 Track-Shift) ; Wanewraith ajoutee. |
+| 20 | Tabethe | Hydro | — | ✅ 2026-10-08 | 560790 | Fiche du 05/10 : les 2 builds conformes case par case (7 et 6 Track-Shift), armes identiques. |
+| 21 | Berenica | Umbro | — | ✅ 2026-10-08 | 560808 | Fiche du 05/10 : build I7 Vigueur conforme ; build I7 Tenacite ajoute (5 Track-Shift + centre ajuste, Sanguine Plume). Le build hors I7 n est plus sur la fiche, conserve. |
+| 22 | Phantasio | Umbro | — | ✅ 2026-10-08 | 560807 | Fiche du 05/10 : build DPS conforme ; milieu de jeu reordonne, 6 modules lus sur le tableau (le compteur de la fiche annonce 5). |
 | 23 | Camilla | Pyro | — | ✅ 2026-09-24 | 570658 | Ajout du build d'intron VII (centre Raffinement, Debordement-Finesse case 6 sans module). |
 | 24 | Margie | Pyro | — | ✅ 2026-09-24 | 560796 | Balayage 1.6 : DPS et Support conformes, aucune des 12 nouvelles pieces Pyro sur sa fiche. |
 | 25 | Hellfire | Pyro | — | ✅ 2026-09-24 | 560794 | Ajout du build endgame intron VII (centre Raffinement, Nirvana-Decision x2). Tank midgame inchange. |

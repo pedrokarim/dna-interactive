@@ -30,6 +30,14 @@
             "FR": "Intensite de competence +40%. Focus sur l'intensite plutot que les PV.",
             "EN": "Skill Intensity +40%. Focuses on intensity rather than HP."
           }
+        },
+        {
+          "itemId": "weapons-10206",
+          "rank": "alternative",
+          "note": {
+            "FR": "Alternative conseillée.",
+            "EN": "Recommended alternative."
+          }
         }
       ],
       "ranged": [
