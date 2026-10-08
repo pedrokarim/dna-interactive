@@ -19,11 +19,11 @@ plus ancien.
 | 5 | Hilda | Pyro | 2026-06-30 | ✅ 2026-10-08 | 562612 | Fiche du 05/10 : les 2 builds Raffinement conformes (7 Track-Shift) ; Dregs of Glimmer et Elpides Abound ajoutees. La fiche ne montre plus les builds Vigilance, conserves sur le site. |
 | 6 | Flora | Umbro | 2026-06-02 | ✅ 2026-10-08 | 602498 | Fiche du 29/09 : conforme (5 Track-Shift) ; Momiji Itteki ajoutee en 4e melee. |
 | 7 | Su Yi | Lumino | — | ✅ 2026-10-08 | 570654 | Fiche du 05/10 : conforme case par case (pieces, centre, 5 Track-Shift, armes). |
-| 8 | Kezhou | Lumino | — | ✅ 2026-08-20 | 567201 | 5 Track-Shift (cases 1-5) ; Thorned Requiem en 1er a distance ; Sanguis Sanctus Katana ajoute |
-| 9 | Lady Nifle | Lumino | — | ✅ 2026-08-20 | 560805 | 3 Track-Shift (etait 5) ; melee reordonnee ; Flamme De Epuration ajoutee |
-| 10 | Lisbell | Lumino | — | ✅ 2026-09-24 | 561246 | Ajout du build d'intron VII (Ardeur-Decision x6, piece Lumino de la 1.6). Compteur de la fiche errone : il annonce 6 modules pour 5 couronnes, lecture visuelle retenue. |
-| 11 | Fina | Lumino | — | ✅ 2026-08-20 | 561245 | Support Vigueur : 6 pistes (1,2,3,4,6,8) ; build Roc sans piste, composition a reverifier |
-| 12 | Psyche | Anemo | — | ✅ 2026-08-20 | 560797 | endgame 3 TS deja bons ; midgame 4 TS ajoutes ; Thorned Requiem en 1er a distance |
+| 8 | Kezhou | Lumino | — | ✅ 2026-10-08 | 567201 | Fiche du 05/10 : 2 builds (Vigueur, Tenacite). Apogee Poursuite en case 3, case 2 sans module (4 Track-Shift). Sacred Favour 1er choix melee ; build Tenacite ajoute. |
+| 9 | Lady Nifle | Lumino | — | ✅ 2026-10-08 | 560805 | Fiche du 05/10 : build milieu de jeu conforme ; build fin de jeu ajoute (6 Track-Shift, Perpetual Strife). |
+| 10 | Lisbell | Lumino | — | ✅ 2026-10-08 | 561246 | Fiche du 05/10 : build I7 conforme case par case (5 Track-Shift). La fiche ne liste plus d armes. |
+| 11 | Fina | Lumino | — | ✅ 2026-10-08 | 561245 | Fiche du 06/10 : soutien Vigueur a 5 Track-Shift (cases 1-5) ; build DPS ajoute (7 Track-Shift). Soutien de base laisse sans piste : pieces non listees sur la fiche. |
+| 12 | Psyche | Anemo | — | ✅ 2026-10-08 | 560797 | Fiche du 05/10 : fin de jeu reecrit (6 pieces, 7 Track-Shift) ; milieu de jeu a 4 Track-Shift (cases 1-4), Excresduo 1er choix distance. |
 | 13 | Fushu | Hydro | — | ✅ 2026-09-24 | 562197 | Balayage du 24/09 : les 2 builds conformes a la fiche, aucun ecart. Aucune piece Hydro ajoutee par la 1.6. |
 | 14 | Truffle and Filbert | Anemo | — | ✅ 2026-09-24 | 560798 | Ajout de la variante Tenacite (Boum-Badaboum, generique 1.6). |
 | 15 | Rebecca | Hydro | — | ✅ 2026-09-24 | 560789 | Balayage du 24/09 : les 2 builds conformes a la fiche, aucun ecart. Aucune piece Hydro ajoutee par la 1.6. |

@@ -92,12 +92,12 @@
         {
           "position": 5,
           "itemId": "mods-51763",
-          "track": null
+          "track": 3
         },
         {
           "position": 6,
           "itemId": "mods-51767",
-          "track": 3
+          "track": null
         },
         {
           "position": 7,
@@ -107,7 +107,7 @@
         {
           "position": 8,
           "itemId": "mods-51761",
-          "track": 1
+          "track": null
         }
       ],
       "affinity": {
@@ -320,6 +320,230 @@
         "EN": "Composition to re-check: the sheet track table does not match these pieces (slot 4 expected at polarity 3). No tracks set until this is settled."
       },
       "centerItemId": "mods-31526"
+    },
+    "statsPriority": [
+      "SkillSustain",
+      "ATK",
+      "SkillDmg",
+      "SkillRange",
+      "SkillEfficiency"
+    ],
+    "team": [
+      {
+        "characterId": "char-linen",
+        "role": "DPS",
+        "note": {
+          "FR": "DPS principal. Specialiste Degats d'arme qui profite pleinement des buffs de Fina.",
+          "EN": "Main DPS. Weapon DMG specialist who fully benefits from Fina's buffs."
+        }
+      },
+      {
+        "characterId": "char-baiheng",
+        "role": "Support",
+        "note": {
+          "FR": "Soins et recuperation de Lucidite. Compense l'absence de buffs defensifs.",
+          "EN": "Healing and Sanity recovery. Compensates for lack of defensive buffs."
+        }
+      }
+    ],
+    "genimon": [
+      {
+        "itemId": "genimon-4231",
+        "rank": "best",
+        "traits": [
+          "UI_PetEntry_Title21",
+          "UI_PetEntry_Title10",
+          "UI_PetEntry_Title20",
+          "UI_PetEntry_Title22"
+        ]
+      },
+      {
+        "itemId": "genimon-4031",
+        "rank": "alternative",
+        "traits": [
+          "UI_PetEntry_Title21",
+          "UI_PetEntry_Title10",
+          "UI_PetEntry_Title20"
+        ]
+      },
+      {
+        "itemId": "genimon-4131",
+        "rank": "alternative",
+        "traits": [
+          "UI_PetEntry_Title21",
+          "UI_PetEntry_Title10",
+          "UI_PetEntry_Title20"
+        ]
+      }
+    ],
+    "skillPriority": [
+      {
+        "skillName": {
+          "FR": "Que le the commence !",
+          "EN": "Let the Tea Party Begin!"
+        },
+        "priority": 5,
+        "note": {
+          "FR": "Ultime principal. Cree un champ elementaire qui accorde des bonus de degats aux allies.",
+          "EN": "Main ultimate. Creates an elemental field granting damage bonuses to allies."
+        }
+      },
+      {
+        "skillName": {
+          "FR": "Les mechants sorciers detestent le soleil !",
+          "EN": "Bad Sorcerers Hate Sunlight!"
+        },
+        "priority": 5,
+        "note": {
+          "FR": "Passif de stacks. Augmente les Degats Lumino (30 stacks, 45 a Intron 2).",
+          "EN": "Stack passive. Increases Lumino Damage (30 stacks, 45 at Intron 2)."
+        }
+      },
+      {
+        "skillName": {
+          "FR": "Par un doux apres-midi",
+          "EN": "On a Warm Afternoon"
+        },
+        "priority": 3,
+        "note": {
+          "FR": "AoE Lumino. Utile mais moins critique.",
+          "EN": "AoE Lumino damage. Useful but less critical."
+        }
+      }
+    ],
+    "notes": {
+      "FR": "Fina est un support Lumino axe sur les buffs de Degats d'arme. Maintenez le champ Tea Party actif pour les buffs elementaires. Fonctionne mieux avec des DPS Degats d'arme (Lynn, Psyche, Lisbell, Outsider, Berenica) — evitez les specialistes Degats de competence. N'apporte aucun buff defensif. A Intron 6, devient viable en DPS principal.",
+      "EN": "Fina is a Lumino support focused on Weapon DMG buffs. Maintain active Tea Party field for team elemental damage buffs. Synergizes best with Weapon DMG DPS (Lynn, Psyche, Lisbell, Outsider, Berenica) — avoid Skill DMG specialists. No defensive buffs. At Intron 6, becomes viable as primary DPS."
+    }
+  },
+  {
+    "characterId": "char-feina",
+    "buildName": {
+      "FR": "DPS Lumino",
+      "EN": "Lumino DPS"
+    },
+    "weapons": {
+      "melee": [
+        {
+          "itemId": "weapons-10603",
+          "rank": "best",
+          "note": {
+            "FR": "Premier choix du build de dégâts.",
+            "EN": "Top pick for the damage build."
+          }
+        },
+        {
+          "itemId": "weapons-10103",
+          "rank": "alternative",
+          "note": {
+            "FR": "Arme signature. 66% de chance de restaurer 3 Lucidite sur un CRIT, maintient l'uptime permanent des buffs.",
+            "EN": "Signature weapon. 66% chance to restore 3 Sanity on CRIT, sustains permanent buff uptime."
+          }
+        },
+        {
+          "itemId": "weapons-10503",
+          "rank": "alternative",
+          "note": {
+            "FR": "Duree de competence +36%. Prolonge les buffs de Fina.",
+            "EN": "Skill Duration +36%. Extends Fina's team buffs."
+          }
+        },
+        {
+          "itemId": "weapons-10303",
+          "rank": "alternative",
+          "note": {
+            "FR": "Duree de competence +36%. Alternative equivalente.",
+            "EN": "Skill Duration +36%. Equivalent alternative."
+          }
+        }
+      ],
+      "ranged": [
+        {
+          "itemId": "weapons-20599",
+          "rank": "best",
+          "potentialOrder": [
+            20599001,
+            20599002,
+            20599004,
+            20599007,
+            20599008,
+            20599010
+          ],
+          "note": {
+            "FR": "Arme de calamite, a preferer sur une Fina orientee degats.",
+            "EN": "Calamity weapon, better on a damage-oriented Fina."
+          }
+        },
+        {
+          "itemId": "weapons-20509",
+          "rank": "alternative",
+          "note": {
+            "FR": "Donne +18% d'ATQ aux allies pendant 15 s.",
+            "EN": "Grants allies +18% ATK for 15s."
+          }
+        },
+        {
+          "itemId": "weapons-20602",
+          "rank": "alternative",
+          "note": {
+            "FR": "Buffs aleatoires aux allies.",
+            "EN": "Random buffs to allies."
+          }
+        }
+      ]
+    },
+    "demonWedges": {
+      "slots": [
+        {
+          "position": 1,
+          "itemId": "mods-56162",
+          "track": 2
+        },
+        {
+          "position": 2,
+          "itemId": "mods-51326",
+          "track": 3
+        },
+        {
+          "position": 3,
+          "itemId": "mods-51463",
+          "track": 1
+        },
+        {
+          "position": 4,
+          "itemId": "mods-51768",
+          "track": 1
+        },
+        {
+          "position": 5,
+          "itemId": "mods-51768",
+          "track": 1
+        },
+        {
+          "position": 6,
+          "itemId": "mods-51768",
+          "track": 1
+        },
+        {
+          "position": 7,
+          "itemId": "mods-51768",
+          "track": 1
+        },
+        {
+          "position": 8,
+          "itemId": "mods-51768",
+          "track": null
+        }
+      ],
+      "affinity": {
+        "FR": "Vigueur de Quetzalcoatl",
+        "EN": "Feathered Serpent's Morale"
+      },
+      "note": {
+        "FR": "Ailes · Inspiration · Vigueur, Aurore · Conflagration, Apogée · Poursuite, 5× Ardeur · Décision.",
+        "EN": "Wings · Inspo · Morale, Skylume · Wildfire, Prime · Huntdown, 5× Blaze · Volition."
+      },
+      "centerItemId": "mods-51765"
     },
     "statsPriority": [
       "SkillSustain",

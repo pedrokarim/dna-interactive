@@ -61,37 +61,37 @@
         {
           "position": 2,
           "itemId": "mods-51325",
-          "track": null
+          "track": 3
         },
         {
           "position": 3,
-          "itemId": "mods-51452",
+          "itemId": "mods-51453",
           "track": 1
         },
         {
           "position": 4,
-          "itemId": "mods-56154",
+          "itemId": "mods-56152",
           "track": 2
         },
         {
           "position": 5,
-          "itemId": "mods-51754",
+          "itemId": "mods-51757",
           "track": null
         },
         {
           "position": 6,
-          "itemId": "mods-51753",
-          "track": null
+          "itemId": "mods-51758",
+          "track": 3
         },
         {
           "position": 7,
-          "itemId": "mods-51753",
-          "track": null
+          "itemId": "mods-51758",
+          "track": 3
         },
         {
           "position": 8,
-          "itemId": "mods-51753",
-          "track": null
+          "itemId": "mods-51758",
+          "track": 3
         }
       ],
       "centerItemId": "mods-51755",
@@ -100,8 +100,8 @@
         "EN": "Feathered Serpent's Resolve"
       },
       "note": {
-        "FR": "Focus piste Tenacite (Pouvoir). Tolerance augmente au niv. +5.",
-        "EN": "Focus Resolve (Ability) track. Tolerance increases at core +5."
+        "FR": "Souffle du zéphir, Rafale · Conflagration, Apogée · Poursuite, Ailes · Inspiration · Décision, Ténacité · Décision, 3× Ardeur · Trempe.",
+        "EN": "Whispering Zephyr, Squall · Wildfire, Prime · Huntdown, Wings · Inspo · Volition, Resolve · Volition, 3× Blaze · Tempered."
       }
     },
     "statsPriority": [
@@ -241,7 +241,7 @@
       "ranged": [
         {
           "itemId": "weapons-20599",
-          "rank": "best",
+          "rank": "alternative",
           "potentialOrder": [
             20599001,
             20599002,
@@ -257,7 +257,7 @@
         },
         {
           "itemId": "weapons-20201",
-          "rank": "alternative",
+          "rank": "best",
           "note": {
             "FR": "Puissance de competence.",
             "EN": "Skill Intensity."
@@ -270,22 +270,22 @@
         {
           "position": 1,
           "itemId": "mods-51452",
-          "track": null
+          "track": 1
         },
         {
           "position": 2,
           "itemId": "mods-51951",
-          "track": null
+          "track": 4
         },
         {
           "position": 3,
           "itemId": "mods-51325",
-          "track": null
+          "track": 3
         },
         {
           "position": 4,
           "itemId": "mods-51753",
-          "track": null
+          "track": 3
         },
         {
           "position": 5,
