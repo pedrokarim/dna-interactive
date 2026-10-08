@@ -22,6 +22,14 @@
             "FR": "Epee compatible. Bonus d'intensite.",
             "EN": "Sword type match. Intensity bonus."
           }
+        },
+        {
+          "itemId": "weapons-10602",
+          "rank": "alternative",
+          "note": {
+            "FR": "Alternative conseillée.",
+            "EN": "Recommended alternative."
+          }
         }
       ],
       "ranged": [
@@ -39,6 +47,14 @@
           "note": {
             "FR": "Fusil a pompe compatible. Stats offensives.",
             "EN": "Shotgun type match. Offensive stats."
+          }
+        },
+        {
+          "itemId": "weapons-20512",
+          "rank": "alternative",
+          "note": {
+            "FR": "Alternative conseillée.",
+            "EN": "Recommended alternative."
           }
         }
       ]

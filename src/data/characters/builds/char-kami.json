@@ -18,11 +18,27 @@
       ],
       "ranged": [
         {
+          "itemId": "weapons-20512",
+          "rank": "best",
+          "note": {
+            "FR": "Premier choix.",
+            "EN": "Top pick."
+          }
+        },
+        {
           "itemId": "weapons-20201",
           "rank": "alternative",
           "note": {
             "FR": "Excresduo - Degats de competence +48%. Premiere alternative en attendant l'import de Dregs of Glimmer (BIS, Multishot +75%, Skill DMG +5% par cast jusqu'a 30 stacks) non encore en base.",
             "EN": "Excresduo - Skill Damage +48%. First alternative while Dregs of Glimmer (BIS, Multishot +75%, Skill DMG +5% per cast up to 30 stacks) is not yet in the database."
+          }
+        },
+        {
+          "itemId": "weapons-20599",
+          "rank": "alternative",
+          "note": {
+            "FR": "Arme de calamité : un personnage n'en porte qu'une seule.",
+            "EN": "Calamity weapon: a character can equip a single one."
           }
         }
       ]

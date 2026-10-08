@@ -2,9 +2,9 @@
   "_comment": "Suivi de vérification des builds contre leur fiche publique. Écrit par scripts/verif-build.mjs.",
   "characters": {
     "char-aote": {
-      "verifiedAt": "2026-08-20",
+      "verifiedAt": "2026-10-08",
       "source": "560800",
-      "note": "pistes posees depuis le tableau HTML"
+      "note": "Fiche du 05/10 : 5 Ardeur Trempe en cases 3-6 et 8, 7 Track-Shift (le site n en avait aucun) ; Thorned Requiem 1er choix distance."
     },
     "char-baiheng": {
       "verifiedAt": "2026-10-08",
@@ -42,9 +42,9 @@
       "note": "Fiche du 29/09 : conforme (5 Track-Shift) ; Momiji Itteki ajoutee en 4e melee."
     },
     "char-haier": {
-      "verifiedAt": "2026-09-24",
+      "verifiedAt": "2026-10-08",
       "source": "560794",
-      "note": "Ajout du build endgame intron VII (centre Raffinement, Nirvana-Decision x2). Tank midgame inchange."
+      "note": "Fiche du 05/10 : builds I7 et Tank conformes (7 et 6 Track-Shift) ; alternatives ajoutees. Le build fin de jeu hors I7 n est plus sur la fiche, conserve."
     },
     "char-heitao": {
       "verifiedAt": "2026-10-08",
@@ -52,9 +52,9 @@
       "note": "Fiche du 05/10 : build I7 Vigueur conforme ; build I7 Tenacite ajoute (5 Track-Shift + centre ajuste, Sanguine Plume). Le build hors I7 n est plus sur la fiche, conserve."
     },
     "char-kami": {
-      "verifiedAt": "2026-09-24",
+      "verifiedAt": "2026-10-08",
       "source": "570658",
-      "note": "Ajout du build d'intron VII (centre Raffinement, Debordement-Finesse case 6 sans module)."
+      "note": "Fiche du 05/10 : les 2 builds conformes case par case (7 Track-Shift) ; Dregs of Glimmer 1er choix distance en debut-milieu."
     },
     "char-kezhou": {
       "verifiedAt": "2026-10-08",
@@ -77,9 +77,9 @@
       "note": "Ajout de Farming et DPS endgame. Le Midgame existant etait deja conforme."
     },
     "char-maer": {
-      "verifiedAt": "2026-09-24",
+      "verifiedAt": "2026-10-08",
       "source": "560796",
-      "note": "Balayage 1.6 : DPS et Support conformes, aucune des 12 nouvelles pieces Pyro sur sa fiche."
+      "note": "Fiche du 05/10 : les 2 builds conformes (5 Track-Shift) ; Arclight Apocalypses 1er choix distance du build soutien."
     },
     "char-nifu": {
       "verifiedAt": "2026-10-08",
@@ -132,9 +132,9 @@
       "note": "Fiche du 05/10 : les 2 builds Raffinement conformes (7 Track-Shift) ; Dregs of Glimmer et Elpides Abound ajoutees. La fiche ne montre plus les builds Vigilance, conserves sur le site."
     },
     "char-yeer": {
-      "verifiedAt": "2026-09-24",
+      "verifiedAt": "2026-10-08",
       "source": "560795",
-      "note": "Balayage 1.6 : build conforme, aucune des 12 nouvelles pieces Pyro. Ecarts limites aux alternatives (Withershade, Dregs of Glimmer)."
+      "note": "Fiche du 05/10 : conforme case par case (6 Track-Shift) ; Withershade et Dregs of Glimmer ajoutees."
     },
     "char-yuming": {
       "verifiedAt": "2026-10-08",

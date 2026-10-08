@@ -34,11 +34,11 @@ plus ancien.
 | 20 | Tabethe | Hydro | — | ✅ 2026-10-08 | 560790 | Fiche du 05/10 : les 2 builds conformes case par case (7 et 6 Track-Shift), armes identiques. |
 | 21 | Berenica | Umbro | — | ✅ 2026-10-08 | 560808 | Fiche du 05/10 : build I7 Vigueur conforme ; build I7 Tenacite ajoute (5 Track-Shift + centre ajuste, Sanguine Plume). Le build hors I7 n est plus sur la fiche, conserve. |
 | 22 | Phantasio | Umbro | — | ✅ 2026-10-08 | 560807 | Fiche du 05/10 : build DPS conforme ; milieu de jeu reordonne, 6 modules lus sur le tableau (le compteur de la fiche annonce 5). |
-| 23 | Camilla | Pyro | — | ✅ 2026-09-24 | 570658 | Ajout du build d'intron VII (centre Raffinement, Debordement-Finesse case 6 sans module). |
-| 24 | Margie | Pyro | — | ✅ 2026-09-24 | 560796 | Balayage 1.6 : DPS et Support conformes, aucune des 12 nouvelles pieces Pyro sur sa fiche. |
-| 25 | Hellfire | Pyro | — | ✅ 2026-09-24 | 560794 | Ajout du build endgame intron VII (centre Raffinement, Nirvana-Decision x2). Tank midgame inchange. |
-| 26 | Yale and Oliver | Pyro | — | ✅ 2026-09-24 | 560795 | Balayage 1.6 : build conforme, aucune des 12 nouvelles pieces Pyro. Ecarts limites aux alternatives (Withershade, Dregs of Glimmer). |
-| 27 | Outsider | Anemo | — | ✅ 2026-08-20 | 560800 | pistes posees depuis le tableau HTML |
+| 23 | Camilla | Pyro | — | ✅ 2026-10-08 | 570658 | Fiche du 05/10 : les 2 builds conformes case par case (7 Track-Shift) ; Dregs of Glimmer 1er choix distance en debut-milieu. |
+| 24 | Margie | Pyro | — | ✅ 2026-10-08 | 560796 | Fiche du 05/10 : les 2 builds conformes (5 Track-Shift) ; Arclight Apocalypses 1er choix distance du build soutien. |
+| 25 | Hellfire | Pyro | — | ✅ 2026-10-08 | 560794 | Fiche du 05/10 : builds I7 et Tank conformes (7 et 6 Track-Shift) ; alternatives ajoutees. Le build fin de jeu hors I7 n est plus sur la fiche, conserve. |
+| 26 | Yale and Oliver | Pyro | — | ✅ 2026-10-08 | 560795 | Fiche du 05/10 : conforme case par case (6 Track-Shift) ; Withershade et Dregs of Glimmer ajoutees. |
+| 27 | Outsider | Anemo | — | ✅ 2026-10-08 | 560800 | Fiche du 05/10 : 5 Ardeur Trempe en cases 3-6 et 8, 7 Track-Shift (le site n en avait aucun) ; Thorned Requiem 1er choix distance. |
 | 28 | Daphne | Anemo | — | ✅ 2026-08-20 | 560799 | pistes posees depuis le tableau HTML |
 | 29 | Rhythm | Electro | — | ✅ 2026-09-24 | 560803 | Ajout de Farming et DPS endgame. Le Midgame existant etait deja conforme. |
 | 30 | Randy | Electro | — | ✅ 2026-08-20 | 560802 | pistes posees depuis le tableau HTML |

@@ -32,6 +32,14 @@
             "FR": "Buffs allies. Utile en role hybride support.",
             "EN": "Ally buffs. Useful in hybrid support role."
           }
+        },
+        {
+          "itemId": "weapons-20512",
+          "rank": "alternative",
+          "note": {
+            "FR": "Alternative conseillée.",
+            "EN": "Recommended alternative."
+          }
         }
       ]
     },
@@ -201,7 +209,7 @@
       "ranged": [
         {
           "itemId": "weapons-20201",
-          "rank": "best",
+          "rank": "alternative",
           "note": {
             "FR": "Degats de competence +48%. DPS principal.",
             "EN": "Skill Damage +48%. Primary DPS."
@@ -209,10 +217,18 @@
         },
         {
           "itemId": "weapons-20602",
-          "rank": "alternative",
+          "rank": "best",
           "note": {
             "FR": "Buffs allies. Utile en role hybride support.",
             "EN": "Ally buffs. Useful in hybrid support role."
+          }
+        },
+        {
+          "itemId": "weapons-20512",
+          "rank": "alternative",
+          "note": {
+            "FR": "Alternative conseillée.",
+            "EN": "Recommended alternative."
           }
         }
       ]

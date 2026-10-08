@@ -398,6 +398,22 @@
             "FR": "Inchangée : reste la meilleure option.",
             "EN": "Unchanged: still the top pick."
           }
+        },
+        {
+          "itemId": "weapons-10301",
+          "rank": "alternative",
+          "note": {
+            "FR": "Alternative conseillée.",
+            "EN": "Recommended alternative."
+          }
+        },
+        {
+          "itemId": "weapons-10399",
+          "rank": "alternative",
+          "note": {
+            "FR": "Arme de calamité : un personnage n'en porte qu'une seule.",
+            "EN": "Calamity weapon: a character can equip a single one."
+          }
         }
       ],
       "ranged": [
@@ -407,6 +423,30 @@
           "note": {
             "FR": "Remplace Festin d'armes sur ce build.",
             "EN": "Replaces Firearm Feast on this build."
+          }
+        },
+        {
+          "itemId": "weapons-20512",
+          "rank": "alternative",
+          "note": {
+            "FR": "Alternative conseillée.",
+            "EN": "Recommended alternative."
+          }
+        },
+        {
+          "itemId": "weapons-20302",
+          "rank": "alternative",
+          "note": {
+            "FR": "Alternative conseillée.",
+            "EN": "Recommended alternative."
+          }
+        },
+        {
+          "itemId": "weapons-20201",
+          "rank": "alternative",
+          "note": {
+            "FR": "Alternative conseillée.",
+            "EN": "Recommended alternative."
           }
         }
       ]

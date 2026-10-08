@@ -30,12 +30,36 @@
             "FR": "Option polyvalente.",
             "EN": "Versatile option."
           }
+        },
+        {
+          "itemId": "weapons-10604",
+          "rank": "alternative",
+          "note": {
+            "FR": "Alternative conseillée.",
+            "EN": "Recommended alternative."
+          }
+        },
+        {
+          "itemId": "weapons-10401",
+          "rank": "alternative",
+          "note": {
+            "FR": "Alternative conseillée.",
+            "EN": "Recommended alternative."
+          }
         }
       ],
       "ranged": [
         {
-          "itemId": "weapons-20102",
+          "itemId": "weapons-20599",
           "rank": "best",
+          "note": {
+            "FR": "Arme de calamité, premier choix à distance.",
+            "EN": "Calamity weapon, top ranged pick."
+          }
+        },
+        {
+          "itemId": "weapons-20102",
+          "rank": "alternative",
           "note": {
             "FR": "Meilleure arme a distance pour Outsider.",
             "EN": "Best ranged weapon for Outsider."
@@ -48,6 +72,14 @@
             "FR": "Bonne alternative.",
             "EN": "Good alternative."
           }
+        },
+        {
+          "itemId": "weapons-20205",
+          "rank": "alternative",
+          "note": {
+            "FR": "Alternative conseillée.",
+            "EN": "Recommended alternative."
+          }
         }
       ]
     },
@@ -56,32 +88,32 @@
         {
           "position": 1,
           "itemId": "mods-51335",
-          "track": null
+          "track": 3
         },
         {
           "position": 2,
           "itemId": "mods-51453",
-          "track": null
+          "track": 1
         },
         {
           "position": 3,
-          "itemId": "mods-51753",
-          "track": null
+          "itemId": "mods-51758",
+          "track": 3
         },
         {
           "position": 4,
-          "itemId": "mods-51753",
-          "track": null
+          "itemId": "mods-51758",
+          "track": 3
         },
         {
           "position": 5,
-          "itemId": "mods-51752",
-          "track": null
+          "itemId": "mods-51758",
+          "track": 3
         },
         {
           "position": 6,
-          "itemId": "mods-51752",
-          "track": null
+          "itemId": "mods-51758",
+          "track": 3
         },
         {
           "position": 7,
@@ -90,8 +122,8 @@
         },
         {
           "position": 8,
-          "itemId": "mods-51752",
-          "track": null
+          "itemId": "mods-51758",
+          "track": 3
         }
       ],
       "centerItemId": "mods-51755",
@@ -100,8 +132,8 @@
         "EN": "Feathered Serpent's Resolve"
       },
       "note": {
-        "FR": "Focus degats Anemo via Tenacite et Volonte. 4x Blaze Resolve.",
-        "EN": "Focus Anemo damage via Resolve and Volition. 4x Blaze Resolve."
+        "FR": "Rafale · Soleil de minuit, Apogée · Poursuite, 5× Ardeur · Trempe, Ardeur · Ténacité.",
+        "EN": "Squall · Midnight Sun, Prime · Huntdown, 5× Blaze · Tempered, Blaze · Resolve."
       }
     },
     "statsPriority": [
