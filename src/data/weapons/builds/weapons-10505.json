@@ -1,0 +1,53 @@
+{
+  "weaponId": "weapons-10505",
+  "demonWedges": {
+    "slots": [
+      {
+        "position": 1,
+        "itemId": "mods-52010",
+        "track": 1
+      },
+      {
+        "position": 2,
+        "itemId": "mods-52007",
+        "track": 1
+      },
+      {
+        "position": 3,
+        "itemId": "mods-52011",
+        "track": 2
+      },
+      {
+        "position": 4,
+        "itemId": "mods-52008",
+        "track": null
+      },
+      {
+        "position": 5,
+        "itemId": "mods-105001",
+        "track": 3
+      },
+      {
+        "position": 6,
+        "itemId": "mods-42412",
+        "track": 4
+      },
+      {
+        "position": 7,
+        "itemId": "mods-52111",
+        "track": 1
+      },
+      {
+        "position": 8,
+        "itemId": "mods-52801",
+        "track": 2
+      }
+    ],
+    "affinity": null,
+    "note": {
+      "FR": "Build de Demon Wedges recommandé pour Sanguis Sanctus – Épée-fouet.",
+      "EN": "Recommended Demon Wedge build for Sanguis Sanctus – Whipblade."
+    }
+  },
+  "note": {}
+}
