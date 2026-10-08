@@ -48,6 +48,14 @@
             "FR": "Duree de competence +36%. Option distance alternative.",
             "EN": "Skill Duration +36%. Alternative ranged option."
           }
+        },
+        {
+          "itemId": "weapons-20401",
+          "rank": "alternative",
+          "note": {
+            "FR": "Alternative conseillée.",
+            "EN": "Recommended alternative."
+          }
         }
       ]
     },
@@ -81,7 +89,7 @@
         {
           "position": 6,
           "itemId": "mods-51744",
-          "track": null
+          "track": 4
         },
         {
           "position": 7,

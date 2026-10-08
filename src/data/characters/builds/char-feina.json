@@ -546,11 +546,9 @@
       "centerItemId": "mods-51765"
     },
     "statsPriority": [
-      "SkillSustain",
-      "ATK",
       "SkillDmg",
-      "SkillRange",
-      "SkillEfficiency"
+      "ATK",
+      "SkillRange"
     ],
     "team": [
       {

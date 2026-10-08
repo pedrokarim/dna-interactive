@@ -1,7 +1,7 @@
 # Suivi de vérification des builds
 
 **Avancement : 30 / 30 personnages vérifiés.**
-Première vérification : 2026-08-20 · dernière : 2026-10-08.
+Première vérification : 2026-10-08 · dernière : 2026-10-08.
 
 Généré par `node scripts/verif-build.mjs --mark <id> <source>`. Ne pas éditer à la main.
 
@@ -39,8 +39,8 @@ plus ancien.
 | 25 | Hellfire | Pyro | — | ✅ 2026-10-08 | 560794 | Fiche du 05/10 : builds I7 et Tank conformes (7 et 6 Track-Shift) ; alternatives ajoutees. Le build fin de jeu hors I7 n est plus sur la fiche, conserve. |
 | 26 | Yale and Oliver | Pyro | — | ✅ 2026-10-08 | 560795 | Fiche du 05/10 : conforme case par case (6 Track-Shift) ; Withershade et Dregs of Glimmer ajoutees. |
 | 27 | Outsider | Anemo | — | ✅ 2026-10-08 | 560800 | Fiche du 05/10 : 5 Ardeur Trempe en cases 3-6 et 8, 7 Track-Shift (le site n en avait aucun) ; Thorned Requiem 1er choix distance. |
-| 28 | Daphne | Anemo | — | ✅ 2026-08-20 | 560799 | pistes posees depuis le tableau HTML |
-| 29 | Rhythm | Electro | — | ✅ 2026-09-24 | 560803 | Ajout de Farming et DPS endgame. Le Midgame existant etait deja conforme. |
-| 30 | Randy | Electro | — | ✅ 2026-08-20 | 560802 | pistes posees depuis le tableau HTML |
+| 28 | Daphne | Anemo | — | ✅ 2026-10-08 | 560799 | Fiche du 06/10 : build soigneur a 4 Track-Shift (cases 1-4) + centre ajuste ; build DPS ajoute (8 Track-Shift, centre Tenacite). |
+| 29 | Rhythm | Electro | — | ✅ 2026-10-08 | 560803 | Fiche du 05/10 : farm = case 5 ajustee, centre sans module ; DPS conforme ; milieu de jeu = case 4 en version violette, Wanewraith 1er choix. |
+| 30 | Randy | Electro | — | ✅ 2026-10-08 | 560802 | Fiche du 05/10 : pieces conformes, 5 Track-Shift (case 6 ajoutee) ; Screamshot ajoutee. |
 
 🎉 **Tous les personnages sont vérifiés.**

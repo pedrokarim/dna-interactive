@@ -30,6 +30,14 @@
             "FR": "Bonus d'ATQ% pour ameliorer les soins.",
             "EN": "ATK% bonus to enhance healing output."
           }
+        },
+        {
+          "itemId": "weapons-10603",
+          "rank": "alternative",
+          "note": {
+            "FR": "Alternative conseillée.",
+            "EN": "Recommended alternative."
+          }
         }
       ],
       "ranged": [
@@ -47,6 +55,14 @@
           "note": {
             "FR": "Duree de competence +36%. Option solide a distance.",
             "EN": "Skill Duration +36%. Solid ranged option."
+          }
+        },
+        {
+          "itemId": "weapons-20599",
+          "rank": "alternative",
+          "note": {
+            "FR": "Arme de calamité : un personnage n'en porte qu'une seule.",
+            "EN": "Calamity weapon: a character can equip a single one."
           }
         }
       ]
@@ -71,7 +87,7 @@
         {
           "position": 4,
           "itemId": "mods-51454",
-          "track": null
+          "track": 1
         },
         {
           "position": 5,
@@ -95,6 +111,7 @@
         }
       ],
       "centerItemId": "mods-51756",
+      "centerTrack": 4,
       "affinity": {
         "FR": "Éternité de Quetzalcoatl",
         "EN": "Feathered Serpent's Eternity"
@@ -109,6 +126,218 @@
       "MaxSp",
       "ATK",
       "SkillDmg"
+    ],
+    "team": [
+      {
+        "characterId": "char-kezhou",
+        "role": "DPS",
+        "note": {
+          "FR": "DPS principal. Profite des buffs Anemo et des soins de Daphne.",
+          "EN": "Main DPS. Benefits from Daphne's Anemo buffs and healing."
+        }
+      },
+      {
+        "characterId": "char-feina",
+        "role": "Support",
+        "note": {
+          "FR": "Second support. Buffs Degats d'arme complementaires aux buffs Anemo de Daphne.",
+          "EN": "Second support. Weapon DMG buffs complement Daphne's Anemo buffs."
+        }
+      }
+    ],
+    "genimon": [
+      {
+        "itemId": "genimon-4251",
+        "rank": "best",
+        "traits": [
+          "UI_PetEntry_Title21",
+          "UI_PetEntry_Title10"
+        ]
+      },
+      {
+        "itemId": "genimon-4051",
+        "rank": "alternative",
+        "traits": [
+          "UI_PetEntry_Title21",
+          "UI_PetEntry_Title10"
+        ]
+      },
+      {
+        "itemId": "genimon-4151",
+        "rank": "alternative",
+        "traits": [
+          "UI_PetEntry_Title21",
+          "UI_PetEntry_Title10"
+        ]
+      }
+    ],
+    "skillPriority": [
+      {
+        "skillName": {
+          "FR": "Synthese Repulsive",
+          "EN": "Repulsion Synthesis"
+        },
+        "priority": 5,
+        "note": {
+          "FR": "Source principale de buff. Soigne les allies et applique la Formule de Purification (buff Degats Anemo).",
+          "EN": "Primary buff source. Heals allies and applies Purification Formula (Anemo DMG buff)."
+        }
+      },
+      {
+        "skillName": {
+          "FR": "Effusion d'Emeraude",
+          "EN": "Emerald Effusion"
+        },
+        "priority": 4,
+        "note": {
+          "FR": "Soins de zone continus et ralentissement des ennemis.",
+          "EN": "Continuous AoE healing and enemy slow."
+        }
+      },
+      {
+        "skillName": {
+          "FR": "Projectile d'Azoth",
+          "EN": "Azoth Projectile"
+        },
+        "priority": 3,
+        "note": {
+          "FR": "Source de degats. Chaque stack augmente la probabilite d'effet bonus de l'arme a distance.",
+          "EN": "Damage source. Each stack increases ranged weapon bonus trigger probability."
+        }
+      }
+    ],
+    "notes": {
+      "FR": "Daphne est un support Anemo polyvalent offrant soins et buffs de degats. Deployez le champ de soins (Effusion d'Emeraude) pour restaurer les PV des allies et ralentir les ennemis. Utilisez Synthese Repulsive pour appliquer la Formule de Purification (buff Degats Anemo) tout en debuffant les ennemis. Collectez les Projectiles d'Azoth — chaque stack augmente l'effet bonus de l'arme a distance, appliquant un DoT (Formule de Decomposition). Priorisez la Duree de competence et la Lucidite max pour maintenir les buffs en permanence. Gratuite via l'evenement Marcher sous la Pluie.",
+      "EN": "Daphne is a versatile Anemo support providing healing and damage buffs. Deploy healing field (Emerald Effusion) to restore ally HP and slow enemies. Use Repulsion Synthesis to apply Purification Formula (Anemo DMG buff) while debuffing enemies. Collect Azoth Projectiles — each stack increases ranged weapon bonus trigger probability, applying DoT (Decay Formula). Prioritize Skill Duration and Max Sanity for permanent buff uptime. Free via Step into the Rainveil event."
+    }
+  },
+  {
+    "characterId": "char-dafu",
+    "buildName": {
+      "FR": "DPS Anemo",
+      "EN": "Anemo DPS"
+    },
+    "weapons": {
+      "melee": [
+        {
+          "itemId": "weapons-10603",
+          "rank": "best",
+          "note": {
+            "FR": "Premier choix du build de dégâts.",
+            "EN": "Top pick for the damage build."
+          }
+        },
+        {
+          "itemId": "weapons-10503",
+          "rank": "alternative",
+          "note": {
+            "FR": "Duree de competence +36%. Maximise l'uptime des buffs et soins.",
+            "EN": "Skill Duration +36%. Maximizes buff and healing uptime."
+          }
+        },
+        {
+          "itemId": "weapons-10303",
+          "rank": "alternative",
+          "note": {
+            "FR": "Duree de competence +36%. Alternative equivalente.",
+            "EN": "Skill Duration +36%. Equivalent alternative."
+          }
+        },
+        {
+          "itemId": "weapons-10101",
+          "rank": "alternative",
+          "note": {
+            "FR": "Bonus d'ATQ% pour ameliorer les soins.",
+            "EN": "ATK% bonus to enhance healing output."
+          }
+        }
+      ],
+      "ranged": [
+        {
+          "itemId": "weapons-20599",
+          "rank": "best",
+          "note": {
+            "FR": "Arme de calamité, premier choix à distance.",
+            "EN": "Calamity weapon, top ranged pick."
+          }
+        },
+        {
+          "itemId": "weapons-20602",
+          "rank": "alternative",
+          "note": {
+            "FR": "Duree de competence +30%, accorde des buffs aleatoires (ATQ, DEF, Degats de competence ou Duree de competence) aux allies sur CRIT.",
+            "EN": "Skill Duration +30%, grants random buffs (ATK, DEF, Skill DMG or Skill Duration) to allies on CRIT."
+          }
+        },
+        {
+          "itemId": "weapons-20501",
+          "rank": "alternative",
+          "note": {
+            "FR": "Duree de competence +36%. Option solide a distance.",
+            "EN": "Skill Duration +36%. Solid ranged option."
+          }
+        }
+      ]
+    },
+    "demonWedges": {
+      "slots": [
+        {
+          "position": 1,
+          "itemId": "mods-51452",
+          "track": 1
+        },
+        {
+          "position": 2,
+          "itemId": "mods-51335",
+          "track": 3
+        },
+        {
+          "position": 3,
+          "itemId": "mods-56154",
+          "track": 2
+        },
+        {
+          "position": 4,
+          "itemId": "mods-51758",
+          "track": 3
+        },
+        {
+          "position": 5,
+          "itemId": "mods-51758",
+          "track": 3
+        },
+        {
+          "position": 6,
+          "itemId": "mods-51758",
+          "track": 3
+        },
+        {
+          "position": 7,
+          "itemId": "mods-51758",
+          "track": 3
+        },
+        {
+          "position": 8,
+          "itemId": "mods-51758",
+          "track": 3
+        }
+      ],
+      "centerItemId": "mods-51755",
+      "affinity": {
+        "FR": "Ténacité de Quetzalcoatl",
+        "EN": "Feathered Serpent's Resolve"
+      },
+      "note": {
+        "FR": "Apogée · Ténacité, Rafale · Soleil de minuit, Ailes · Inspiration · Ténacité, 5× Ardeur · Trempe.",
+        "EN": "Prime · Resolve, Squall · Midnight Sun, Wings · Inspo · Resolve, 5× Blaze · Tempered."
+      }
+    },
+    "statsPriority": [
+      "ATK",
+      "SkillDmg",
+      "CritRate",
+      "CritDmg",
+      "SkillEfficiency"
     ],
     "team": [
       {
