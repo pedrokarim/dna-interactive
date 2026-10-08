@@ -488,6 +488,26 @@ export function communityBuildToDisplayBuild(
   };
 }
 
+/**
+ * Un build communautaire n'est affichable que si son contenu a la forme attendue.
+ *
+ * Le serveur valide tout ce qu'il enregistre, mais une ligne écrite à la main en
+ * base (jeu d'essai, vieille migration) peut arriver avec un contenu vide : la
+ * liste lisait alors `payload.weapons.melee` sur rien, et toute la fiche du
+ * personnage tombait avec elle. On écarte ces lignes au lieu de planter.
+ */
+function isDisplayableCommunityBuild(build: CommunityBuildListItem): boolean {
+  const payload = build.payload as Partial<CommunityBuildListItem["payload"]> | null | undefined;
+  return (
+    Array.isArray(payload?.weapons?.melee) &&
+    Array.isArray(payload?.weapons?.ranged) &&
+    Array.isArray(payload?.demonWedges?.slots) &&
+    Array.isArray(payload?.team) &&
+    Array.isArray(payload?.genimon) &&
+    Array.isArray(payload?.skillPriority)
+  );
+}
+
 function getCommunityBuildPreviewItems(build: CommunityBuildListItem, lang: string) {
   const weaponRefs = [
     ...build.payload.weapons.melee,
@@ -1299,7 +1319,7 @@ function CommunityBuildsSection({
           total: rows.length,
           totalPages: 1,
         }) as CommunityBuildPagination;
-        setBuilds(rows);
+        setBuilds(rows.filter(isDisplayableCommunityBuild));
         setPagination(nextPagination);
         if (nextPagination.page !== page) setPage(nextPagination.page);
         setMessage(null);

@@ -75,12 +75,12 @@ function buildCharacterHref(_character: BuilderCharacterOption | undefined, buil
 }
 
 function getPreviewItems(build: CommunityBuildListItem, lang: string) {
-  const weapons = [...build.payload.weapons.melee, ...build.payload.weapons.ranged]
+  const weapons = [...(build.payload?.weapons?.melee ?? []), ...(build.payload?.weapons?.ranged ?? [])]
     .slice(0, 3)
     .map((entry) => resolveBuildItemRef(entry.itemId, "weapons", lang))
     .filter(isPresent);
 
-  const genimons = build.payload.genimon
+  const genimons = (build.payload?.genimon ?? [])
     .slice(0, 2)
     .map((entry) => resolveBuildItemRef(entry.itemId, "genimons", lang))
     .filter(isPresent);
@@ -346,7 +346,7 @@ export function CommunityBuildsHubClient({ options, locale }: CommunityBuildsHub
             const href = buildCharacterHref(character, build.id);
             const lineup = [
               ...(character ? [{ avatar: character.avatar, name: character.name }] : []),
-              ...build.payload.team.map((member) => {
+              ...(build.payload?.team ?? []).map((member) => {
                 const teammate = characterById.get(member.characterId);
                 return { avatar: teammate?.avatar ?? null, name: teammate?.name ?? member.characterId };
               }),
@@ -367,7 +367,7 @@ export function CommunityBuildsHubClient({ options, locale }: CommunityBuildsHub
                 characterName={character?.name ?? build.characterId}
                 lineup={lineup}
                 mainWeapon={preview.weapons[0]}
-                tags={(build.payload.tags ?? []).map((buildTag) => tcb(`tagLabels.${buildTag}`))}
+                tags={(build.payload?.tags ?? []).map((buildTag) => tcb(`tagLabels.${buildTag}`))}
                 views={build.views}
                 viewsLabel={tcb("views")}
                 communityLabel={tcb("community")}
