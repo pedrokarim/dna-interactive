@@ -411,6 +411,30 @@
             "FR": "Repli, et meilleure option du build de progression.",
             "EN": "Fallback, and top pick of the progression build."
           }
+        },
+        {
+          "itemId": "weapons-10403",
+          "rank": "alternative",
+          "note": {
+            "FR": "Autre arme à Portée de compétence.",
+            "EN": "Another Skill Range weapon."
+          }
+        },
+        {
+          "itemId": "weapons-10602",
+          "rank": "alternative",
+          "note": {
+            "FR": "Autre arme à Portée de compétence.",
+            "EN": "Another Skill Range weapon."
+          }
+        },
+        {
+          "itemId": "weapons-10206",
+          "rank": "alternative",
+          "note": {
+            "FR": "Dégâts de compétence. À associer à une arme à distance qui apporte de la Portée de compétence.",
+            "EN": "Skill DMG. Pair it with a ranged weapon that brings Skill Range."
+          }
         }
       ],
       "ranged": [
@@ -428,6 +452,30 @@
           "note": {
             "FR": "Repli à distance.",
             "EN": "Ranged fallback."
+          }
+        },
+        {
+          "itemId": "weapons-20303",
+          "rank": "alternative",
+          "note": {
+            "FR": "Portée de compétence : à prendre si l'arme de mêlée n'en apporte pas.",
+            "EN": "Skill Range: take it when the melee weapon brings none."
+          }
+        },
+        {
+          "itemId": "weapons-20603",
+          "rank": "alternative",
+          "note": {
+            "FR": "Portée de compétence : à prendre si l'arme de mêlée n'en apporte pas.",
+            "EN": "Skill Range: take it when the melee weapon brings none."
+          }
+        },
+        {
+          "itemId": "weapons-20201",
+          "rank": "alternative",
+          "note": {
+            "FR": "Puissance de compétence : à prendre si l'arme de mêlée apporte déjà la Portée de compétence.",
+            "EN": "Skill Intensity: take it when the melee weapon already brings Skill Range."
           }
         }
       ]
@@ -466,7 +514,7 @@
         },
         {
           "position": 7,
-          "itemId": "mods-51728",
+          "itemId": "mods-41728",
           "track": 4
         },
         {

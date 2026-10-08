@@ -12,13 +12,13 @@ plus ancien.
 
 | # | Personnage | Élément | Sortie | Vérifié le | Source | Note |
 | --- | --- | --- | --- | --- | --- | --- |
-| 1 | Mors | Hydro | 2026-09-08 | ✅ 2026-09-24 | 617590 | Conforme case par case : 8 pieces, centre Eveil, 8 Track-Shift, armes identiques. Un seul build sur la fiche. Hydro : non concerne par les nouvelles pieces Pyro de la 1.6. |
-| 2 | Mors | Hydro | 2026-09-08 | ✅ 2026-09-24 | 617590 | Conforme case par case : 8 pieces, centre Eveil, 8 Track-Shift, armes identiques. Un seul build sur la fiche. Hydro : non concerne par les nouvelles pieces Pyro de la 1.6. |
+| 1 | Mors | Hydro | 2026-09-08 | ✅ 2026-10-08 | 617590 | Fiche du 05/10 : conforme case par case (8 pieces, raretes, centre Eveil, 8 Track-Shift, armes). |
+| 2 | Mors | Hydro | 2026-09-08 | ✅ 2026-10-08 | 617590 | Fiche du 05/10 : conforme case par case (8 pieces, raretes, centre Eveil, 8 Track-Shift, armes). |
 | 3 | Falsi | Pyro | 2026-09-08 | ✅ 2026-10-08 | 606751 | Fiche du 07/10 : Prime·Morale en case 3, Covenanter's Volition en case 5, case 6 sans module (7 Track-Shift), Excresduo et The Best Day en distance. Arme signature 617513 ajoutée. |
-| 4 | Eve | Hydro | 2026-07-28 | ✅ 2026-09-24 | 606756 | Ajout des 2 builds de la fiche (Endgame, Debut-milieu). Tableau au format polarites : chaque glyphe correspond a la polarite de sa piece. |
-| 5 | Hilda | Pyro | 2026-06-30 | ✅ 2026-09-24 | 562612 | Ajout des 2 variantes 1.6 (centre Raffinement, Ailes-Inspiration-Vigueur case 4). Les builds d'origine, centre Vigilance, sont conserves. |
-| 6 | Flora | Umbro | 2026-06-02 | ✅ 2026-08-20 | 602498 | 5 Track-Shift (cases 1-4 et 6) ; Sanguis Sanctus Katana ajoute en 2e melee |
-| 7 | Su Yi | Lumino | — | ✅ 2026-08-20 | 570654 | DW et 5 Track-Shift deja conformes ; arme signature Fledgling's Gleam ajoutee (aucun 1er choix a distance) |
+| 4 | Eve | Hydro | 2026-07-28 | ✅ 2026-10-08 | 606756 | Fiche du 07/10 : case 7 du build de fin de jeu en version violette ; armes de la fiche ajoutees en alternatives. Pistes et centres conformes (centre ajuste sur le build debut-milieu). |
+| 5 | Hilda | Pyro | 2026-06-30 | ✅ 2026-10-08 | 562612 | Fiche du 05/10 : les 2 builds Raffinement conformes (7 Track-Shift) ; Dregs of Glimmer et Elpides Abound ajoutees. La fiche ne montre plus les builds Vigilance, conserves sur le site. |
+| 6 | Flora | Umbro | 2026-06-02 | ✅ 2026-10-08 | 602498 | Fiche du 29/09 : conforme (5 Track-Shift) ; Momiji Itteki ajoutee en 4e melee. |
+| 7 | Su Yi | Lumino | — | ✅ 2026-10-08 | 570654 | Fiche du 05/10 : conforme case par case (pieces, centre, 5 Track-Shift, armes). |
 | 8 | Kezhou | Lumino | — | ✅ 2026-08-20 | 567201 | 5 Track-Shift (cases 1-5) ; Thorned Requiem en 1er a distance ; Sanguis Sanctus Katana ajoute |
 | 9 | Lady Nifle | Lumino | — | ✅ 2026-08-20 | 560805 | 3 Track-Shift (etait 5) ; melee reordonnee ; Flamme De Epuration ajoutee |
 | 10 | Lisbell | Lumino | — | ✅ 2026-09-24 | 561246 | Ajout du build d'intron VII (Ardeur-Decision x6, piece Lumino de la 1.6). Compteur de la fiche errone : il annonce 6 modules pour 5 couronnes, lecture visuelle retenue. |

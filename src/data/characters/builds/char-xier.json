@@ -434,6 +434,14 @@
             "FR": "Inchangée par rapport au build d'origine.",
             "EN": "Unchanged from the original build."
           }
+        },
+        {
+          "itemId": "weapons-20512",
+          "rank": "alternative",
+          "note": {
+            "FR": "Multishot et Puissance de compétence, un cran sous son arme signature.",
+            "EN": "Multishot and Skill Intensity, a step below her signature weapon."
+          }
         }
       ]
     },
@@ -601,6 +609,14 @@
             "FR": "Lame de la 1.6, meilleure option de la fiche.",
             "EN": "1.6 blade, top pick on the sheet."
           }
+        },
+        {
+          "itemId": "weapons-10204",
+          "rank": "alternative",
+          "note": {
+            "FR": "Reste un excellent choix pour un build Ténacité.",
+            "EN": "Remains an excellent pick for a Resolve build."
+          }
         }
       ],
       "ranged": [
@@ -610,6 +626,14 @@
           "note": {
             "FR": "Inchangée par rapport au build d'origine.",
             "EN": "Unchanged from the original build."
+          }
+        },
+        {
+          "itemId": "weapons-20512",
+          "rank": "alternative",
+          "note": {
+            "FR": "Multishot et Puissance de compétence, un cran sous son arme signature.",
+            "EN": "Multishot and Skill Intensity, a step below her signature weapon."
           }
         }
       ]

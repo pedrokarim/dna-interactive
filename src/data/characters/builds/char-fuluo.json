@@ -30,6 +30,14 @@
             "FR": "Troisieme choix de la fiche.",
             "EN": "Third pick on the sheet."
           }
+        },
+        {
+          "itemId": "weapons-10601",
+          "rank": "alternative",
+          "note": {
+            "FR": "DGT CRIT, comme le troisième choix. En retrait de son arme signature.",
+            "EN": "CRIT DMG, like the third pick. Below her signature weapon."
+          }
         }
       ],
       "ranged": [

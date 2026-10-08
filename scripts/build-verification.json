@@ -22,9 +22,9 @@
       "note": "pistes posees depuis le tableau HTML"
     },
     "char-eve": {
-      "verifiedAt": "2026-09-24",
+      "verifiedAt": "2026-10-08",
       "source": "606756",
-      "note": "Ajout des 2 builds de la fiche (Endgame, Debut-milieu). Tableau au format polarites : chaque glyphe correspond a la polarite de sa piece."
+      "note": "Fiche du 07/10 : case 7 du build de fin de jeu en version violette ; armes de la fiche ajoutees en alternatives. Pistes et centres conformes (centre ajuste sur le build debut-milieu)."
     },
     "char-falu": {
       "verifiedAt": "2026-10-08",
@@ -37,9 +37,9 @@
       "note": "Support Vigueur : 6 pistes (1,2,3,4,6,8) ; build Roc sans piste, composition a reverifier"
     },
     "char-fuluo": {
-      "verifiedAt": "2026-08-20",
+      "verifiedAt": "2026-10-08",
       "source": "602498",
-      "note": "5 Track-Shift (cases 1-4 et 6) ; Sanguis Sanctus Katana ajoute en 2e melee"
+      "note": "Fiche du 29/09 : conforme (5 Track-Shift) ; Momiji Itteki ajoutee en 4e melee."
     },
     "char-haier": {
       "verifiedAt": "2026-09-24",
@@ -102,9 +102,9 @@
       "note": "Ajout de la variante Tenacite (Boum-Badaboum, generique 1.6)."
     },
     "char-suyi": {
-      "verifiedAt": "2026-08-20",
+      "verifiedAt": "2026-10-08",
       "source": "570654",
-      "note": "DW et 5 Track-Shift deja conformes ; arme signature Fledgling's Gleam ajoutee (aucun 1er choix a distance)"
+      "note": "Fiche du 05/10 : conforme case par case (pieces, centre, 5 Track-Shift, armes)."
     },
     "char-tuosi": {
       "verifiedAt": "2026-08-20",
@@ -112,14 +112,14 @@
       "note": "pistes posees depuis le tableau HTML"
     },
     "char-weitaf": {
-      "verifiedAt": "2026-09-24",
+      "verifiedAt": "2026-10-08",
       "source": "617590",
-      "note": "Conforme case par case : 8 pieces, centre Eveil, 8 Track-Shift, armes identiques. Un seul build sur la fiche. Hydro : non concerne par les nouvelles pieces Pyro de la 1.6."
+      "note": "Fiche du 05/10 : conforme case par case (8 pieces, raretes, centre Eveil, 8 Track-Shift, armes)."
     },
     "char-weitam": {
-      "verifiedAt": "2026-09-24",
+      "verifiedAt": "2026-10-08",
       "source": "617590",
-      "note": "Conforme case par case : 8 pieces, centre Eveil, 8 Track-Shift, armes identiques. Un seul build sur la fiche. Hydro : non concerne par les nouvelles pieces Pyro de la 1.6."
+      "note": "Fiche du 05/10 : conforme case par case (8 pieces, raretes, centre Eveil, 8 Track-Shift, armes)."
     },
     "char-xibi": {
       "verifiedAt": "2026-08-20",
@@ -127,9 +127,9 @@
       "note": "pistes posees depuis le tableau HTML"
     },
     "char-xier": {
-      "verifiedAt": "2026-09-24",
+      "verifiedAt": "2026-10-08",
       "source": "562612",
-      "note": "Ajout des 2 variantes 1.6 (centre Raffinement, Ailes-Inspiration-Vigueur case 4). Les builds d'origine, centre Vigilance, sont conserves."
+      "note": "Fiche du 05/10 : les 2 builds Raffinement conformes (7 Track-Shift) ; Dregs of Glimmer et Elpides Abound ajoutees. La fiche ne montre plus les builds Vigilance, conserves sur le site."
     },
     "char-yeer": {
       "verifiedAt": "2026-09-24",
