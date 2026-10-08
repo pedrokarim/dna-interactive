@@ -1,7 +1,7 @@
 # Suivi de vérification des builds
 
 **Avancement : 30 / 30 personnages vérifiés.**
-Première vérification : 2026-08-20 · dernière : 2026-09-24.
+Première vérification : 2026-08-20 · dernière : 2026-10-08.
 
 Généré par `node scripts/verif-build.mjs --mark <id> <source>`. Ne pas éditer à la main.
 
@@ -14,7 +14,7 @@ plus ancien.
 | --- | --- | --- | --- | --- | --- | --- |
 | 1 | Mors | Hydro | 2026-09-08 | ✅ 2026-09-24 | 617590 | Conforme case par case : 8 pieces, centre Eveil, 8 Track-Shift, armes identiques. Un seul build sur la fiche. Hydro : non concerne par les nouvelles pieces Pyro de la 1.6. |
 | 2 | Mors | Hydro | 2026-09-08 | ✅ 2026-09-24 | 617590 | Conforme case par case : 8 pieces, centre Eveil, 8 Track-Shift, armes identiques. Un seul build sur la fiche. Hydro : non concerne par les nouvelles pieces Pyro de la 1.6. |
-| 3 | Falsi | Pyro | 2026-09-08 | ✅ 2026-09-24 | 606751 | Balayage 1.6 : fiche identique a notre build (pieces, centre Tenacite, armes). Utilise deja les pieces 1.6, rien a ajouter. |
+| 3 | Falsi | Pyro | 2026-09-08 | ✅ 2026-10-08 | 606751 | Fiche du 07/10 : Prime·Morale en case 3, Covenanter's Volition en case 5, case 6 sans module (7 Track-Shift), Excresduo et The Best Day en distance. Arme signature 617513 ajoutée. |
 | 4 | Eve | Hydro | 2026-07-28 | ✅ 2026-09-24 | 606756 | Ajout des 2 builds de la fiche (Endgame, Debut-milieu). Tableau au format polarites : chaque glyphe correspond a la polarite de sa piece. |
 | 5 | Hilda | Pyro | 2026-06-30 | ✅ 2026-09-24 | 562612 | Ajout des 2 variantes 1.6 (centre Raffinement, Ailes-Inspiration-Vigueur case 4). Les builds d'origine, centre Vigilance, sont conserves. |
 | 6 | Flora | Umbro | 2026-06-02 | ✅ 2026-08-20 | 602498 | 5 Track-Shift (cases 1-4 et 6) ; Sanguis Sanctus Katana ajoute en 2e melee |

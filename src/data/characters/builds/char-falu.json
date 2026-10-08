@@ -64,6 +64,22 @@
             "FR": "Le second choix : Puissance de compétence, Pénétration et Moral sur une seule pièce. Penser à ouvrir l'emplacement Fusil d'assaut dans les maîtrises supplémentaires, sans quoi ses effets ne se déclenchent pas.",
             "EN": "The next best pick: Skill Intensity, Penetration and Morale on a single piece. Remember to unlock the Assault Rifle slot in Additional Proficiency, or its effects will not trigger."
           }
+        },
+        {
+          "itemId": "weapons-20201",
+          "rank": "alternative",
+          "note": {
+            "FR": "Le meilleur choix économique : sa Puissance de compétence profite à toutes ses attaques.",
+            "EN": "The best budget option: its Skill Intensity feeds all of her attacks."
+          }
+        },
+        {
+          "itemId": "weapons-20207",
+          "rank": "alternative",
+          "note": {
+            "FR": "Apporte de la Vigueur. Dans ce cas, remplacer Apogée · Vigueur par Apogée · Ténacité dans les Demon Wedges.",
+            "EN": "Provides Morale. In that case, swap Prime·Morale for Prime·Resolve in the Demon Wedges."
+          }
         }
       ]
     },
@@ -81,7 +97,7 @@
         },
         {
           "position": 3,
-          "itemId": "mods-51432",
+          "itemId": "mods-51431",
           "track": 1
         },
         {
@@ -91,13 +107,13 @@
         },
         {
           "position": 5,
-          "itemId": "mods-51738",
-          "track": 2
+          "itemId": "mods-51737",
+          "track": 4
         },
         {
           "position": 6,
           "itemId": "mods-51317",
-          "track": 4
+          "track": null
         },
         {
           "position": 7,

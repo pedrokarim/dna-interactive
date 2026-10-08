@@ -27,9 +27,9 @@
       "note": "Ajout des 2 builds de la fiche (Endgame, Debut-milieu). Tableau au format polarites : chaque glyphe correspond a la polarite de sa piece."
     },
     "char-falu": {
-      "verifiedAt": "2026-09-24",
+      "verifiedAt": "2026-10-08",
       "source": "606751",
-      "note": "Balayage 1.6 : fiche identique a notre build (pieces, centre Tenacite, armes). Utilise deja les pieces 1.6, rien a ajouter."
+      "note": "Fiche du 07/10 : Prime·Morale en case 3, Covenanter's Volition en case 5, case 6 sans module (7 Track-Shift), Excresduo et The Best Day en distance. Arme signature 617513 ajoutée."
     },
     "char-feina": {
       "verifiedAt": "2026-08-20",

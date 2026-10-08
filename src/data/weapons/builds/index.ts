@@ -24,6 +24,7 @@ import weapons10401 from "./weapons-10401.json";
 import weapons10402 from "./weapons-10402.json";
 import weapons10403 from "./weapons-10403.json";
 import weapons10404 from "./weapons-10404.json";
+import weapons10405 from "./weapons-10405.json";
 import weapons10501 from "./weapons-10501.json";
 import weapons10502 from "./weapons-10502.json";
 import weapons10503 from "./weapons-10503.json";
@@ -71,4 +72,4 @@ import weapons20602 from "./weapons-20602.json";
 import weapons20603 from "./weapons-20603.json";
 import weapons20604 from "./weapons-20604.json";
 
-export const allWeaponBuilds = [weapons10101, weapons10102, weapons10103, weapons10104, weapons10105, weapons10107, weapons10201, weapons10202, weapons10203, weapons10204, weapons10206, weapons10208, weapons10209, weapons10299, weapons10301, weapons10302, weapons10303, weapons10304, weapons10305, weapons10399, weapons10401, weapons10402, weapons10403, weapons10404, weapons10501, weapons10502, weapons10503, weapons10504, weapons10601, weapons10602, weapons10603, weapons10604, weapons20101, weapons20102, weapons20103, weapons20104, weapons20201, weapons20203, weapons20205, weapons20207, weapons20207Multishot, weapons20298, weapons20298Berenica, weapons20301, weapons20302, weapons20303, weapons20304, weapons20305, weapons20401, weapons20402, weapons20403, weapons20405, weapons20406, weapons20407, weapons20501, weapons20502, weapons20503, weapons20504, weapons20505, weapons20506, weapons20507, weapons20509, weapons20510, weapons20511, weapons20512, weapons20599, weapons20601, weapons20602, weapons20603, weapons20604];
+export const allWeaponBuilds = [weapons10101, weapons10102, weapons10103, weapons10104, weapons10105, weapons10107, weapons10201, weapons10202, weapons10203, weapons10204, weapons10206, weapons10208, weapons10209, weapons10299, weapons10301, weapons10302, weapons10303, weapons10304, weapons10305, weapons10399, weapons10401, weapons10402, weapons10403, weapons10404, weapons10405, weapons10501, weapons10502, weapons10503, weapons10504, weapons10601, weapons10602, weapons10603, weapons10604, weapons20101, weapons20102, weapons20103, weapons20104, weapons20201, weapons20203, weapons20205, weapons20207, weapons20207Multishot, weapons20298, weapons20298Berenica, weapons20301, weapons20302, weapons20303, weapons20304, weapons20305, weapons20401, weapons20402, weapons20403, weapons20405, weapons20406, weapons20407, weapons20501, weapons20502, weapons20503, weapons20504, weapons20505, weapons20506, weapons20507, weapons20509, weapons20510, weapons20511, weapons20512, weapons20599, weapons20601, weapons20602, weapons20603, weapons20604];
