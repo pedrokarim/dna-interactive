@@ -24,11 +24,11 @@ plus ancien.
 | 10 | Lisbell | Lumino | — | ✅ 2026-10-08 | 561246 | Fiche du 05/10 : build I7 conforme case par case (5 Track-Shift). La fiche ne liste plus d armes. |
 | 11 | Fina | Lumino | — | ✅ 2026-10-08 | 561245 | Fiche du 06/10 : soutien Vigueur a 5 Track-Shift (cases 1-5) ; build DPS ajoute (7 Track-Shift). Soutien de base laisse sans piste : pieces non listees sur la fiche. |
 | 12 | Psyche | Anemo | — | ✅ 2026-10-08 | 560797 | Fiche du 05/10 : fin de jeu reecrit (6 pieces, 7 Track-Shift) ; milieu de jeu a 4 Track-Shift (cases 1-4), Excresduo 1er choix distance. |
-| 13 | Fushu | Hydro | — | ✅ 2026-09-24 | 562197 | Balayage du 24/09 : les 2 builds conformes a la fiche, aucun ecart. Aucune piece Hydro ajoutee par la 1.6. |
-| 14 | Truffle and Filbert | Anemo | — | ✅ 2026-09-24 | 560798 | Ajout de la variante Tenacite (Boum-Badaboum, generique 1.6). |
-| 15 | Rebecca | Hydro | — | ✅ 2026-09-24 | 560789 | Balayage du 24/09 : les 2 builds conformes a la fiche, aucun ecart. Aucune piece Hydro ajoutee par la 1.6. |
-| 16 | Lynn | Pyro | — | ✅ 2026-09-24 | 560793 | Ajout du build endgame 1.6 (centre Raffinement, Ailes-Inspiration-Vigueur). Fiche publique erronee : Blaze-Volition recommande sur 3 cases des 2 builds alors qu'il est Lumino/Anemo/Electro, pas Pyro — remplace par Ardeur-Eternite. |
-| 17 | Yuming | Electro | — | ✅ 2026-09-24 | 561640 | Ajout des 2 builds de la fiche (DPS, Soutien et Sub-DPS). Pas d'arme a distance recommandee pour le second. |
+| 13 | Fushu | Hydro | — | ✅ 2026-10-08 | 562197 | Fiche du 05/10 : fin de jeu, case 7 = Blaze Morale avec module (7 Track-Shift) ; debut-milieu conforme. |
+| 14 | Truffle and Filbert | Anemo | — | ✅ 2026-10-08 | 560798 | Fiche du 05/10 : pieces et pistes conformes sur les 2 builds ; Perpetual Strife 1er choix melee, Wanewraith ajoutee. |
+| 15 | Rebecca | Hydro | — | ✅ 2026-10-08 | 560789 | Fiche du 05/10 : fin de jeu a 6 Track-Shift (cases 1-6) + centre ajuste, Perpetual Strife et The Best Day 1ers choix ; debut-milieu reordonne, 8 Track-Shift. |
+| 16 | Lynn | Pyro | — | ✅ 2026-10-08 | 560793 | Fiche du 05/10 : 8 Track-Shift sur les 2 builds ; Excresduo 1er choix distance en debut-milieu. Cases 6-8 non retouchees : la fiche les nomme Blaze Volition, nom absent du catalogue Pyro. |
+| 17 | Yuming | Electro | — | ✅ 2026-10-08 | 561640 | Fiche du 05/10 : builds DPS et Soutien conformes case par case (5 Track-Shift), armes identiques. |
 | 18 | Zhiliu | Electro | — | ✅ 2026-08-20 | 567185 | arme distance -> Rendhusk ; arme signature : 1 Track-Shift case 1 |
 | 19 | Sibylle | Electro | — | ✅ 2026-08-20 | 560801 | pistes posees depuis le tableau HTML |
 | 20 | Tabethe | Hydro | — | ✅ 2026-09-24 | 560790 | Balayage du 24/09 : les 2 builds conformes a la fiche, aucun ecart. Aucune piece Hydro ajoutee par la 1.6. |

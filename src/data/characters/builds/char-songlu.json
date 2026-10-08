@@ -8,8 +8,16 @@
     "weapons": {
       "melee": [
         {
-          "itemId": "weapons-10501",
+          "itemId": "weapons-10299",
           "rank": "best",
+          "note": {
+            "FR": "Arme de calamité, premier choix.",
+            "EN": "Calamity weapon, top pick."
+          }
+        },
+        {
+          "itemId": "weapons-10501",
+          "rank": "alternative",
           "note": {
             "FR": "Arme signature. PV max +100%, synergie parfaite avec le scaling PV de Truffle.",
             "EN": "Signature weapon. Max HP +100%, perfect synergy with Truffle's HP scaling."
@@ -21,6 +29,14 @@
           "note": {
             "FR": "Bonus de PV et duree de competence. Bonne alternative.",
             "EN": "HP bonus and Skill Duration. Good alternative."
+          }
+        },
+        {
+          "itemId": "weapons-10206",
+          "rank": "alternative",
+          "note": {
+            "FR": "Alternative conseillée.",
+            "EN": "Recommended alternative."
           }
         }
       ],
@@ -200,11 +216,35 @@
     "weapons": {
       "melee": [
         {
-          "itemId": "weapons-10301",
+          "itemId": "weapons-10299",
           "rank": "best",
+          "note": {
+            "FR": "Arme de calamité, premier choix.",
+            "EN": "Calamity weapon, top pick."
+          }
+        },
+        {
+          "itemId": "weapons-10301",
+          "rank": "alternative",
           "note": {
             "FR": "PV max +100 % et Durée de compétence quand un allié Pyro encaisse.",
             "EN": "Max HP +100% and Skill Duration when a Pyro ally takes damage."
+          }
+        },
+        {
+          "itemId": "weapons-10206",
+          "rank": "alternative",
+          "note": {
+            "FR": "Alternative conseillée.",
+            "EN": "Recommended alternative."
+          }
+        },
+        {
+          "itemId": "weapons-10501",
+          "rank": "alternative",
+          "note": {
+            "FR": "Alternative conseillée.",
+            "EN": "Recommended alternative."
           }
         }
       ],

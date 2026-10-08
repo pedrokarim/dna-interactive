@@ -27,7 +27,7 @@
       "ranged": [
         {
           "itemId": "weapons-20203",
-          "rank": "best",
+          "rank": "alternative",
           "note": {
             "FR": "Arme signature. Duree + buff degats pistolets (90%).",
             "EN": "Signature weapon. Duration + dual pistol damage buff (90%)."
@@ -35,7 +35,7 @@
         },
         {
           "itemId": "weapons-20201",
-          "rank": "alternative",
+          "rank": "best",
           "note": {
             "FR": "Degats de competence +48%.",
             "EN": "Skill Damage +48%."
@@ -91,7 +91,7 @@
         {
           "position": 8,
           "itemId": "mods-51732",
-          "track": null
+          "track": 2
         }
       ],
       "centerItemId": "mods-31531",
@@ -263,6 +263,14 @@
             "FR": "Repli correct si la première n'est pas obtenue.",
             "EN": "Fine fallback if the first one is not obtained."
           }
+        },
+        {
+          "itemId": "weapons-20203",
+          "rank": "alternative",
+          "note": {
+            "FR": "Alternative conseillée.",
+            "EN": "Recommended alternative."
+          }
         }
       ]
     },
@@ -306,7 +314,7 @@
         {
           "position": 8,
           "itemId": "mods-51732",
-          "track": null
+          "track": 2
         }
       ],
       "centerItemId": "mods-51736",

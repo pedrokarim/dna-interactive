@@ -7,9 +7,9 @@
       "note": "pistes posees depuis le tableau HTML"
     },
     "char-baiheng": {
-      "verifiedAt": "2026-09-24",
+      "verifiedAt": "2026-10-08",
       "source": "562197",
-      "note": "Balayage du 24/09 : les 2 builds conformes a la fiche, aucun ecart. Aucune piece Hydro ajoutee par la 1.6."
+      "note": "Fiche du 05/10 : fin de jeu, case 7 = Blaze Morale avec module (7 Track-Shift) ; debut-milieu conforme."
     },
     "char-baonu": {
       "verifiedAt": "2026-10-08",
@@ -67,9 +67,9 @@
       "note": "pistes posees depuis le tableau HTML"
     },
     "char-linen": {
-      "verifiedAt": "2026-09-24",
+      "verifiedAt": "2026-10-08",
       "source": "560793",
-      "note": "Ajout du build endgame 1.6 (centre Raffinement, Ailes-Inspiration-Vigueur). Fiche publique erronee : Blaze-Volition recommande sur 3 cases des 2 builds alors qu'il est Lumino/Anemo/Electro, pas Pyro — remplace par Ardeur-Eternite."
+      "note": "Fiche du 05/10 : 8 Track-Shift sur les 2 builds ; Excresduo 1er choix distance en debut-milieu. Cases 6-8 non retouchees : la fiche les nomme Blaze Volition, nom absent du catalogue Pyro."
     },
     "char-lise": {
       "verifiedAt": "2026-09-24",
@@ -92,14 +92,14 @@
       "note": "Fiche du 05/10 : fin de jeu reecrit (6 pieces, 7 Track-Shift) ; milieu de jeu a 4 Track-Shift (cases 1-4), Excresduo 1er choix distance."
     },
     "char-shuimu": {
-      "verifiedAt": "2026-09-24",
+      "verifiedAt": "2026-10-08",
       "source": "560789",
-      "note": "Balayage du 24/09 : les 2 builds conformes a la fiche, aucun ecart. Aucune piece Hydro ajoutee par la 1.6."
+      "note": "Fiche du 05/10 : fin de jeu a 6 Track-Shift (cases 1-6) + centre ajuste, Perpetual Strife et The Best Day 1ers choix ; debut-milieu reordonne, 8 Track-Shift."
     },
     "char-songlu": {
-      "verifiedAt": "2026-09-24",
+      "verifiedAt": "2026-10-08",
       "source": "560798",
-      "note": "Ajout de la variante Tenacite (Boum-Badaboum, generique 1.6)."
+      "note": "Fiche du 05/10 : pieces et pistes conformes sur les 2 builds ; Perpetual Strife 1er choix melee, Wanewraith ajoutee."
     },
     "char-suyi": {
       "verifiedAt": "2026-10-08",
@@ -137,9 +137,9 @@
       "note": "Balayage 1.6 : build conforme, aucune des 12 nouvelles pieces Pyro. Ecarts limites aux alternatives (Withershade, Dregs of Glimmer)."
     },
     "char-yuming": {
-      "verifiedAt": "2026-09-24",
+      "verifiedAt": "2026-10-08",
       "source": "561640",
-      "note": "Ajout des 2 builds de la fiche (DPS, Soutien et Sub-DPS). Pas d'arme a distance recommandee pour le second."
+      "note": "Fiche du 05/10 : builds DPS et Soutien conformes case par case (5 Track-Shift), armes identiques."
     },
     "char-zhangyu": {
       "verifiedAt": "2026-09-24",
