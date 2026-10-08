@@ -5,17 +5,17 @@
       {
         "position": 1,
         "itemId": "mods-52011",
-        "track": 5
+        "track": 2
       },
       {
         "position": 2,
         "itemId": "mods-52008",
-        "track": 5
+        "track": 2
       },
       {
         "position": 3,
         "itemId": "mods-52010",
-        "track": 5
+        "track": 1
       },
       {
         "position": 4,
@@ -25,12 +25,12 @@
       {
         "position": 5,
         "itemId": "mods-52007",
-        "track": 5
+        "track": 1
       },
       {
         "position": 6,
         "itemId": "mods-52203",
-        "track": 5
+        "track": 4
       },
       {
         "position": 7,
@@ -40,13 +40,13 @@
       {
         "position": 8,
         "itemId": "mods-42002",
-        "track": 5
+        "track": 1
       }
     ],
     "affinity": null,
     "note": {
-      "FR": "Build de Demon Wedges recommandé pour Braise souveraine au palier 5 : il empile Taux CRIT, DGT CRIT et Probabilité d’effet, dont un quart est reporté sur l’arme de consonance de mêlée du porteur. Toutes les cases sauf la quatrième et la septième reçoivent une Affinité universelle.",
-      "EN": "Recommended Demon Wedge build for Sovereign Ember at S5: it stacks CRIT Chance, CRIT Damage and Trigger Probability, a quarter of which carries over to the wielder’s melee Consonance Weapon. Every slot but the fourth and seventh takes a Universal Track."
+      "FR": "Build de Demon Wedges recommandé pour Braise souveraine au palier 5 : il empile Taux CRIT, DGT CRIT et Probabilité d’effet, dont un quart est reporté sur l’arme de consonance de mêlée du porteur.",
+      "EN": "Recommended Demon Wedge build for Sovereign Ember at S5: it stacks CRIT Chance, CRIT Damage and Trigger Probability, a quarter of which carries over to the wielder’s melee Consonance Weapon."
     }
   },
   "note": {}

@@ -5,48 +5,48 @@
       {
         "position": 1,
         "itemId": "mods-52011",
-        "track": 5
+        "track": 2
       },
       {
         "position": 2,
         "itemId": "mods-52012",
-        "track": 5
+        "track": 2
       },
       {
         "position": 3,
         "itemId": "mods-52010",
-        "track": 5
+        "track": 1
       },
       {
         "position": 4,
         "itemId": "mods-52007",
-        "track": 5
+        "track": 1
       },
       {
         "position": 5,
         "itemId": "mods-52004",
-        "track": 5
+        "track": 4
       },
       {
         "position": 6,
         "itemId": "mods-202002",
-        "track": 5
+        "track": 3
       },
       {
         "position": 7,
         "itemId": "mods-42003",
-        "track": 5
+        "track": 1
       },
       {
         "position": 8,
         "itemId": "mods-42002",
-        "track": 5
+        "track": 1
       }
     ],
     "affinity": null,
     "note": {
-      "FR": "Build de Demon Wedges recommandé pour Conflit perpétuel : il maximise les dégâts d’attaque plongeante, qui rapportent un point de calamité de plus. Les huit cases reçoivent une Affinité universelle.",
-      "EN": "Recommended Demon Wedge build for Perpetual Strife: it maximises Plunging Attack damage, which grants one extra Calamity. All eight slots take a Universal Track."
+      "FR": "Build de Demon Wedges recommandé pour Conflit perpétuel : il maximise les dégâts d’attaque plongeante, qui rapportent un point de calamité de plus.",
+      "EN": "Recommended Demon Wedge build for Perpetual Strife: it maximises Plunging Attack damage, which grants one extra Calamity."
     }
   },
   "note": {}

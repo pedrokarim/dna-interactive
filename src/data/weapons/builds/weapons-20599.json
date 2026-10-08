@@ -5,12 +5,12 @@
       {
         "position": 1,
         "itemId": "mods-53010",
-        "track": 5
+        "track": 2
       },
       {
         "position": 2,
         "itemId": "mods-53004",
-        "track": 5
+        "track": 4
       },
       {
         "position": 3,
@@ -20,12 +20,12 @@
       {
         "position": 4,
         "itemId": "mods-53008",
-        "track": 5
+        "track": 2
       },
       {
         "position": 5,
         "itemId": "mods-53009",
-        "track": 5
+        "track": 1
       },
       {
         "position": 6,
@@ -35,18 +35,18 @@
       {
         "position": 7,
         "itemId": "mods-43002",
-        "track": 5
+        "track": 1
       },
       {
         "position": 8,
         "itemId": "mods-43342",
-        "track": 5
+        "track": 3
       }
     ],
     "affinity": null,
     "note": {
-      "FR": "Build de Demon Wedges recommandé pour Requiem d’épines : Taux CRIT et DGT CRIT, avec Renversement, qui transforme les tirs en bonus de DGT d’arme de mêlée. Toutes les cases sauf la troisième et la sixième reçoivent une Affinité universelle.",
-      "EN": "Recommended Demon Wedge build for Thorned Requiem: CRIT Chance and CRIT Damage, with Reversal turning shots into a Melee Weapon DMG bonus. Every slot but the third and sixth takes a Universal Track."
+      "FR": "Build de Demon Wedges recommandé pour Requiem d’épines : Taux CRIT et DGT CRIT, avec Renversement, qui transforme les tirs en bonus de DGT d’arme de mêlée.",
+      "EN": "Recommended Demon Wedge build for Thorned Requiem: CRIT Chance and CRIT Damage, with Reversal turning shots into a Melee Weapon DMG bonus."
     }
   },
   "note": {}

@@ -9,27 +9,27 @@
       {
         "position": 1,
         "itemId": "mods-53009",
-        "track": 5
+        "track": 1
       },
       {
         "position": 2,
         "itemId": "mods-53007",
-        "track": 5
+        "track": 1
       },
       {
         "position": 3,
         "itemId": "mods-53010",
-        "track": 5
+        "track": 2
       },
       {
         "position": 4,
         "itemId": "mods-53801",
-        "track": 5
+        "track": 2
       },
       {
         "position": 5,
         "itemId": "mods-53008",
-        "track": 5
+        "track": 2
       },
       {
         "position": 6,
@@ -49,8 +49,8 @@
     ],
     "affinity": null,
     "note": {
-      "FR": "Pousse la Probabilité d’effet : avec Entrave · Débordement, tout ce qui dépasse 100 % est converti en Surabondance. Le reste va au Taux CRIT et aux DGT CRIT. Les cinq premières cases reçoivent une Affinité universelle.",
-      "EN": "Maximises Trigger Probability: with Trammel · Surplus, anything beyond 100% is converted into Overflow. The rest goes to CRIT Chance and CRIT Damage. The first five slots take a Universal Track."
+      "FR": "Pousse la Probabilité d’effet : avec Entrave · Débordement, tout ce qui dépasse 100 % est converti en Surabondance. Le reste va au Taux CRIT et aux DGT CRIT.",
+      "EN": "Maximises Trigger Probability: with Trammel · Surplus, anything beyond 100% is converted into Overflow. The rest goes to CRIT Chance and CRIT Damage."
     }
   },
   "note": {}
