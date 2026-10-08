@@ -1,5 +1,9 @@
 {
-  "weaponId": "weapons-20507",
+  "weaponId": "weapons-20302",
+  "buildName": {
+    "FR": "Build Ténacité",
+    "EN": "Resolve build"
+  },
   "demonWedges": {
     "slots": [
       {
@@ -9,13 +13,13 @@
       },
       {
         "position": 2,
-        "itemId": "mods-53009",
-        "track": 1
+        "itemId": "mods-43343",
+        "track": null
       },
       {
         "position": 3,
         "itemId": "mods-53010",
-        "track": null
+        "track": 2
       },
       {
         "position": 4,
@@ -34,19 +38,19 @@
       },
       {
         "position": 7,
-        "itemId": "mods-53007",
-        "track": 1
+        "itemId": "mods-53008",
+        "track": 2
       },
       {
         "position": 8,
-        "itemId": "mods-53008",
-        "track": 2
+        "itemId": "mods-43604",
+        "track": null
       }
     ],
     "affinity": null,
     "note": {
-      "FR": "Build de Demon Wedges recommandé pour Submerged Serenade.",
-      "EN": "Recommended Demon Wedge build for Submerged Serenade."
+      "FR": "Variante pour un porteur joué sur la Ténacité : Déchéance fait perdre des PV à chaque tir.",
+      "EN": "Variant for a Resolve wielder: Decay drains HP on every shot."
     }
   },
   "note": {}

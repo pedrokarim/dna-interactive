@@ -4,43 +4,43 @@
     "slots": [
       {
         "position": 1,
-        "itemId": "mods-53004",
-        "track": null
+        "itemId": "mods-53012",
+        "track": 4
       },
       {
         "position": 2,
-        "itemId": "mods-53001",
+        "itemId": "mods-53009",
         "track": 1
       },
       {
         "position": 3,
-        "itemId": "mods-53102",
+        "itemId": "mods-53010",
         "track": null
       },
       {
         "position": 4,
-        "itemId": "mods-53007",
-        "track": null
+        "itemId": "mods-53011",
+        "track": 4
       },
       {
         "position": 5,
-        "itemId": "mods-43002",
-        "track": 1
+        "itemId": "mods-53004",
+        "track": 4
       },
       {
         "position": 6,
-        "itemId": "mods-43008",
-        "track": null
+        "itemId": "mods-53005",
+        "track": 4
       },
       {
         "position": 7,
-        "itemId": "mods-43604",
-        "track": null
+        "itemId": "mods-53007",
+        "track": 1
       },
       {
         "position": 8,
-        "itemId": "mods-53005",
-        "track": null
+        "itemId": "mods-43008",
+        "track": 2
       }
     ],
     "affinity": null,

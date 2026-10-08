@@ -4,23 +4,23 @@
     "slots": [
       {
         "position": 1,
-        "itemId": "mods-103001",
-        "track": null
+        "itemId": "mods-52004",
+        "track": 4
       },
       {
         "position": 2,
-        "itemId": "mods-52004",
-        "track": null
+        "itemId": "mods-52007",
+        "track": 1
       },
       {
         "position": 3,
-        "itemId": "mods-52007",
-        "track": null
+        "itemId": "mods-52008",
+        "track": 2
       },
       {
         "position": 4,
         "itemId": "mods-52001",
-        "track": null
+        "track": 1
       },
       {
         "position": 5,
@@ -34,19 +34,19 @@
       },
       {
         "position": 7,
-        "itemId": "mods-42311",
+        "itemId": "mods-42003",
         "track": null
       },
       {
         "position": 8,
-        "itemId": "mods-42003",
+        "itemId": "mods-42002",
         "track": null
       }
     ],
     "affinity": null,
     "note": {
-      "FR": "Build de Demon Wedges optimisé pour Aureate Drift.",
-      "EN": "Optimized Demon Wedge build for Aureate Drift."
+      "FR": "Build de Demon Wedges recommandé pour Aureate Drift.",
+      "EN": "Recommended Demon Wedge build for Aureate Drift."
     }
   },
   "note": {}

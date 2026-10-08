@@ -13,23 +13,23 @@
       },
       {
         "position": 2,
-        "itemId": "mods-53007",
-        "track": null
-      },
-      {
-        "position": 3,
-        "itemId": "mods-53008",
-        "track": 2
-      },
-      {
-        "position": 4,
         "itemId": "mods-53001",
         "track": 1
       },
       {
+        "position": 3,
+        "itemId": "mods-53008",
+        "track": null
+      },
+      {
+        "position": 4,
+        "itemId": "mods-53007",
+        "track": null
+      },
+      {
         "position": 5,
         "itemId": "mods-53011",
-        "track": 4
+        "track": null
       },
       {
         "position": 6,
@@ -39,7 +39,7 @@
       {
         "position": 7,
         "itemId": "mods-43003",
-        "track": 1
+        "track": null
       },
       {
         "position": 8,
