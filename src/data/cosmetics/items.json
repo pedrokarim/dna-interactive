@@ -341,10 +341,20 @@
    "ES": "Peace in our precinct."
   },
   "obtain": {
-   "methods": [],
+   "methods": [
+    "shop"
+   ],
    "label": null
   },
-  "shop": [],
+  "shop": [
+   {
+    "price": 1280,
+    "currencyId": 99,
+    "limit": 1,
+    "start": "2026-09-07T02:00:00.000Z",
+    "end": "2026-10-19T09:00:00.000Z"
+   }
+  ],
   "duplicateRefund": {
    "currencyId": 110,
    "amount": 30

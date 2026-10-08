@@ -5252,14 +5252,16 @@
     "icon": {
       "gamePath": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resource_PetboxIconPro.T_Resource_PetboxIconPro'",
       "publicPath": "/assets/items/resources/T_Resource_PetboxIconPro.png",
-      "placeholderPath": "/assets/items/resources/T_Resource_PetboxIconPro.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Resource_PetboxIconPro",
         "Resource_PetboxIconPro",
         "T_Resource_PetboxIconPro'",
         "Resource_PetboxIconPro'"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resource_PetboxIconPro.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -5413,14 +5415,16 @@
     "icon": {
       "gamePath": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resource_PetboxIcon.T_Resource_PetboxIcon'",
       "publicPath": "/assets/items/resources/T_Resource_PetboxIcon.png",
-      "placeholderPath": "/assets/items/resources/T_Resource_PetboxIcon.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Resource_PetboxIcon",
         "Resource_PetboxIcon",
         "T_Resource_PetboxIcon'",
         "Resource_PetboxIcon'"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resource_PetboxIcon.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -63444,12 +63448,14 @@
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resource_ShootingItem.T_Resource_ShootingItem",
       "publicPath": "/assets/items/resources/T_Resource_ShootingItem.png",
-      "placeholderPath": "/assets/items/resources/T_Resource_ShootingItem.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Resource_ShootingItem",
         "Resource_ShootingItem"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resource_ShootingItem.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -70231,12 +70237,14 @@
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_ExploreBadge_Beibao_EXChapter02.T_ExploreBadge_Beibao_EXChapter02",
       "publicPath": "/assets/items/resources/T_ExploreBadge_Beibao_EXChapter02.png",
-      "placeholderPath": "/assets/items/resources/T_ExploreBadge_Beibao_EXChapter02.png",
+      "placeholderPath": null,
       "candidates": [
         "T_ExploreBadge_Beibao_EXChapter02",
         "ExploreBadge_Beibao_EXChapter02"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Prop/Item/T_ExploreBadge_Beibao_EXChapter02.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -73871,14 +73879,16 @@
     "icon": {
       "gamePath": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Dye_19.T_Dye_19'",
       "publicPath": "/assets/items/resources/T_Dye_19.png",
-      "placeholderPath": "/assets/items/resources/T_Dye_19.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Dye_19",
         "Dye_19",
         "T_Dye_19'",
         "Dye_19'"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Prop/Item/T_Dye_19.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -74035,14 +74045,16 @@
     "icon": {
       "gamePath": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Dye_21.T_Dye_21'",
       "publicPath": "/assets/items/resources/T_Dye_21.png",
-      "placeholderPath": "/assets/items/resources/T_Dye_21.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Dye_21",
         "Dye_21",
         "T_Dye_21'",
         "Dye_21'"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Prop/Item/T_Dye_21.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -74199,14 +74211,16 @@
     "icon": {
       "gamePath": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Dye_20.T_Dye_20'",
       "publicPath": "/assets/items/resources/T_Dye_20.png",
-      "placeholderPath": "/assets/items/resources/T_Dye_20.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Dye_20",
         "Dye_20",
         "T_Dye_20'",
         "Dye_20'"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Prop/Item/T_Dye_20.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -74363,14 +74377,16 @@
     "icon": {
       "gamePath": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Dye_22.T_Dye_22'",
       "publicPath": "/assets/items/resources/T_Dye_22.png",
-      "placeholderPath": "/assets/items/resources/T_Dye_22.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Dye_22",
         "Dye_22",
         "T_Dye_22'",
         "Dye_22'"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Prop/Item/T_Dye_22.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -74527,14 +74543,16 @@
     "icon": {
       "gamePath": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Dye_18.T_Dye_18'",
       "publicPath": "/assets/items/resources/T_Dye_18.png",
-      "placeholderPath": "/assets/items/resources/T_Dye_18.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Dye_18",
         "Dye_18",
         "T_Dye_18'",
         "Dye_18'"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Prop/Item/T_Dye_18.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -80910,14 +80928,16 @@
     "icon": {
       "gamePath": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_PetBox01.T_Pack_PetBox01'",
       "publicPath": "/assets/items/resources/T_Pack_PetBox01.png",
-      "placeholderPath": "/assets/items/resources/T_Pack_PetBox01.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Pack_PetBox01",
         "Pack_PetBox01",
         "T_Pack_PetBox01'",
         "Pack_PetBox01'"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_PetBox01.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -81070,14 +81090,16 @@
     "icon": {
       "gamePath": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_PetBox02.T_Pack_PetBox02'",
       "publicPath": "/assets/items/resources/T_Pack_PetBox02.png",
-      "placeholderPath": "/assets/items/resources/T_Pack_PetBox02.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Pack_PetBox02",
         "Pack_PetBox02",
         "T_Pack_PetBox02'",
         "Pack_PetBox02'"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_PetBox02.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -81829,7 +81851,7 @@
       "Sound": "SOUND_ITEM_NORMAL",
       "Type": "Rare",
       "UseEffectType": "RandomSelectPack",
-      "UseParam": 350031
+      "UseParam": 350020
     }
   },
   {
@@ -82318,7 +82340,7 @@
       "Sound": "SOUND_ITEM_NORMAL",
       "Type": "Rare",
       "UseEffectType": "RandomSelectPack",
-      "UseParam": 350032
+      "UseParam": 350023
     }
   },
   {
@@ -85634,14 +85656,16 @@
     "icon": {
       "gamePath": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_Fame.T_Pack_Fame'",
       "publicPath": "/assets/items/resources/T_Pack_Fame.png",
-      "placeholderPath": "/assets/items/resources/T_Pack_Fame.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Pack_Fame",
         "Pack_Fame",
         "T_Pack_Fame'",
         "Pack_Fame'"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_Fame.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -85795,14 +85819,16 @@
     "icon": {
       "gamePath": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_ChoosePetBox01.T_Pack_ChoosePetBox01'",
       "publicPath": "/assets/items/resources/T_Pack_ChoosePetBox01.png",
-      "placeholderPath": "/assets/items/resources/T_Pack_ChoosePetBox01.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Pack_ChoosePetBox01",
         "Pack_ChoosePetBox01",
         "T_Pack_ChoosePetBox01'",
         "Pack_ChoosePetBox01'"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_ChoosePetBox01.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -85956,14 +85982,16 @@
     "icon": {
       "gamePath": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_ChoosePetBox02.T_Pack_ChoosePetBox02'",
       "publicPath": "/assets/items/resources/T_Pack_ChoosePetBox02.png",
-      "placeholderPath": "/assets/items/resources/T_Pack_ChoosePetBox02.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Pack_ChoosePetBox02",
         "Pack_ChoosePetBox02",
         "T_Pack_ChoosePetBox02'",
         "Pack_ChoosePetBox02'"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_ChoosePetBox02.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -86117,14 +86145,16 @@
     "icon": {
       "gamePath": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_ZaieRes02.T_Pack_ZaieRes02'",
       "publicPath": "/assets/items/resources/T_Pack_ZaieRes02.png",
-      "placeholderPath": "/assets/items/resources/T_Pack_ZaieRes02.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Pack_ZaieRes02",
         "Pack_ZaieRes02",
         "T_Pack_ZaieRes02'",
         "Pack_ZaieRes02'"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_ZaieRes02.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -86278,14 +86308,16 @@
     "icon": {
       "gamePath": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_Police.T_Pack_Police'",
       "publicPath": "/assets/items/resources/T_Pack_Police.png",
-      "placeholderPath": "/assets/items/resources/T_Pack_Police.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Pack_Police",
         "Pack_Police",
         "T_Pack_Police'",
         "Pack_Police'"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_Police.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,

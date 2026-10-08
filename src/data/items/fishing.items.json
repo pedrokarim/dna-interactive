@@ -22867,12 +22867,14 @@
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_EX02_1",
       "publicPath": "/assets/items/fishing/T_Fish_FreshWater_EX02_1.png",
-      "placeholderPath": "/assets/items/fishing/T_Fish_FreshWater_EX02_1.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Fish_FreshWater_EX02_1",
         "Fish_FreshWater_EX02_1"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_EX02_1.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -23028,12 +23030,14 @@
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_EX02_1_1",
       "publicPath": "/assets/items/fishing/T_Fish_FreshWater_EX02_1_1.png",
-      "placeholderPath": "/assets/items/fishing/T_Fish_FreshWater_EX02_1_1.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Fish_FreshWater_EX02_1_1",
         "Fish_FreshWater_EX02_1_1"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_EX02_1_1.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -23189,12 +23193,14 @@
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_EX02_2",
       "publicPath": "/assets/items/fishing/T_Fish_FreshWater_EX02_2.png",
-      "placeholderPath": "/assets/items/fishing/T_Fish_FreshWater_EX02_2.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Fish_FreshWater_EX02_2",
         "Fish_FreshWater_EX02_2"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_EX02_2.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -23350,12 +23356,14 @@
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_EX02_2_1",
       "publicPath": "/assets/items/fishing/T_Fish_FreshWater_EX02_2_1.png",
-      "placeholderPath": "/assets/items/fishing/T_Fish_FreshWater_EX02_2_1.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Fish_FreshWater_EX02_2_1",
         "Fish_FreshWater_EX02_2_1"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_EX02_2_1.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -23511,12 +23519,14 @@
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_EX02_3",
       "publicPath": "/assets/items/fishing/T_Fish_FreshWater_EX02_3.png",
-      "placeholderPath": "/assets/items/fishing/T_Fish_FreshWater_EX02_3.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Fish_FreshWater_EX02_3",
         "Fish_FreshWater_EX02_3"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_EX02_3.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -23672,12 +23682,14 @@
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_EX02_3_1",
       "publicPath": "/assets/items/fishing/T_Fish_FreshWater_EX02_3_1.png",
-      "placeholderPath": "/assets/items/fishing/T_Fish_FreshWater_EX02_3_1.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Fish_FreshWater_EX02_3_1",
         "Fish_FreshWater_EX02_3_1"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_EX02_3_1.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -23833,12 +23845,14 @@
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_EX02_4",
       "publicPath": "/assets/items/fishing/T_Fish_FreshWater_EX02_4.png",
-      "placeholderPath": "/assets/items/fishing/T_Fish_FreshWater_EX02_4.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Fish_FreshWater_EX02_4",
         "Fish_FreshWater_EX02_4"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_EX02_4.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -23994,12 +24008,14 @@
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_EX02_4_1",
       "publicPath": "/assets/items/fishing/T_Fish_FreshWater_EX02_4_1.png",
-      "placeholderPath": "/assets/items/fishing/T_Fish_FreshWater_EX02_4_1.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Fish_FreshWater_EX02_4_1",
         "Fish_FreshWater_EX02_4_1"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_EX02_4_1.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -24155,12 +24171,14 @@
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_EX02_5",
       "publicPath": "/assets/items/fishing/T_Fish_FreshWater_EX02_5.png",
-      "placeholderPath": "/assets/items/fishing/T_Fish_FreshWater_EX02_5.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Fish_FreshWater_EX02_5",
         "Fish_FreshWater_EX02_5"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_EX02_5.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -24316,12 +24334,14 @@
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_EX02_5_1",
       "publicPath": "/assets/items/fishing/T_Fish_FreshWater_EX02_5_1.png",
-      "placeholderPath": "/assets/items/fishing/T_Fish_FreshWater_EX02_5_1.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Fish_FreshWater_EX02_5_1",
         "Fish_FreshWater_EX02_5_1"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_EX02_5_1.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -24477,12 +24497,14 @@
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_EX02_1",
       "publicPath": "/assets/items/fishing/T_Fish_DirtyWater_EX02_1.png",
-      "placeholderPath": "/assets/items/fishing/T_Fish_DirtyWater_EX02_1.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Fish_DirtyWater_EX02_1",
         "Fish_DirtyWater_EX02_1"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_EX02_1.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -24638,12 +24660,14 @@
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_EX02_1_1",
       "publicPath": "/assets/items/fishing/T_Fish_DirtyWater_EX02_1_1.png",
-      "placeholderPath": "/assets/items/fishing/T_Fish_DirtyWater_EX02_1_1.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Fish_DirtyWater_EX02_1_1",
         "Fish_DirtyWater_EX02_1_1"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_EX02_1_1.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -24799,12 +24823,14 @@
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_EX02_2",
       "publicPath": "/assets/items/fishing/T_Fish_DirtyWater_EX02_2.png",
-      "placeholderPath": "/assets/items/fishing/T_Fish_DirtyWater_EX02_2.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Fish_DirtyWater_EX02_2",
         "Fish_DirtyWater_EX02_2"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_EX02_2.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -24960,12 +24986,14 @@
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_EX02_2_1",
       "publicPath": "/assets/items/fishing/T_Fish_DirtyWater_EX02_2_1.png",
-      "placeholderPath": "/assets/items/fishing/T_Fish_DirtyWater_EX02_2_1.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Fish_DirtyWater_EX02_2_1",
         "Fish_DirtyWater_EX02_2_1"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_EX02_2_1.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -25121,12 +25149,14 @@
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_EX02_3",
       "publicPath": "/assets/items/fishing/T_Fish_DirtyWater_EX02_3.png",
-      "placeholderPath": "/assets/items/fishing/T_Fish_DirtyWater_EX02_3.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Fish_DirtyWater_EX02_3",
         "Fish_DirtyWater_EX02_3"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_EX02_3.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -25282,12 +25312,14 @@
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_EX02_3_1",
       "publicPath": "/assets/items/fishing/T_Fish_DirtyWater_EX02_3_1.png",
-      "placeholderPath": "/assets/items/fishing/T_Fish_DirtyWater_EX02_3_1.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Fish_DirtyWater_EX02_3_1",
         "Fish_DirtyWater_EX02_3_1"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_EX02_3_1.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -25443,12 +25475,14 @@
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_EX02_4",
       "publicPath": "/assets/items/fishing/T_Fish_DirtyWater_EX02_4.png",
-      "placeholderPath": "/assets/items/fishing/T_Fish_DirtyWater_EX02_4.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Fish_DirtyWater_EX02_4",
         "Fish_DirtyWater_EX02_4"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_EX02_4.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -25604,12 +25638,14 @@
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_EX02_4_1",
       "publicPath": "/assets/items/fishing/T_Fish_DirtyWater_EX02_4_1.png",
-      "placeholderPath": "/assets/items/fishing/T_Fish_DirtyWater_EX02_4_1.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Fish_DirtyWater_EX02_4_1",
         "Fish_DirtyWater_EX02_4_1"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_EX02_4_1.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -25765,12 +25801,14 @@
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_EX02_5",
       "publicPath": "/assets/items/fishing/T_Fish_DirtyWater_EX02_5.png",
-      "placeholderPath": "/assets/items/fishing/T_Fish_DirtyWater_EX02_5.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Fish_DirtyWater_EX02_5",
         "Fish_DirtyWater_EX02_5"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_EX02_5.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -25926,12 +25964,14 @@
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_EX02_5_1",
       "publicPath": "/assets/items/fishing/T_Fish_DirtyWater_EX02_5_1.png",
-      "placeholderPath": "/assets/items/fishing/T_Fish_DirtyWater_EX02_5_1.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Fish_DirtyWater_EX02_5_1",
         "Fish_DirtyWater_EX02_5_1"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_EX02_5_1.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
