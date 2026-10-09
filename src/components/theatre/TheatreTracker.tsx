@@ -159,7 +159,14 @@ function CurrentRotation({ rotation, now }: { rotation: TheatreRotationView; now
       <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 -z-10 w-[58%] opacity-35 sm:w-[44%] sm:opacity-100">
         <FeaturedImage
           sources={[featured.bust, featured.icon]}
-          className="h-full w-full object-cover object-top [mask-image:linear-gradient(to_right,transparent,black_40%)]"
+          // Un personnage se recadre par le haut sans rien perdre ; une arme coupée ne se
+          // reconnaît plus : elle se montre entière, centrée, sans fondu qui la ronge.
+          className={cn(
+            "h-full w-full",
+            featured.kind === "weapon"
+              ? "object-contain object-center p-2 sm:p-3"
+              : "object-cover object-top [mask-image:linear-gradient(to_right,transparent,black_40%)]",
+          )}
         />
       </div>
 
