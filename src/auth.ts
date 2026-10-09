@@ -1,15 +1,34 @@
-import NextAuth, { type NextAuthConfig } from "next-auth";
+import NextAuth, { type NextAuthConfig, type Profile } from "next-auth";
 import Discord from "next-auth/providers/discord";
 import Google from "next-auth/providers/google";
 import Credentials from "next-auth/providers/credentials";
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
-import { eq, sql } from "drizzle-orm";
+import { and, eq, isNotNull, isNull, sql } from "drizzle-orm";
 import { createHash } from "node:crypto";
 import { getDb, schema } from "@/db";
 import { isConfiguredAdminDiscordId } from "@/lib/auth/admins";
 import { verifyPassword } from "@/lib/auth/password";
 import { loadAuthOverrides } from "@/lib/auth/config-store";
 import { checkRateLimit } from "@/lib/rate-limit";
+import { OAUTH_EMAIL_UNVERIFIED_ERROR } from "@/lib/auth/oauth-errors";
+
+// Longueur maximale d'une adresse email (RFC 5321). Au-delà, ce n'est pas un
+// compte : on refuse avant de s'en servir comme clé de limitation de débit.
+const EMAIL_MAX_LENGTH = 254;
+
+/**
+ * Le fournisseur atteste-t-il que l'email du profil appartient à la personne ?
+ *
+ * `allowDangerousEmailAccountLinking` rattache une connexion OAuth au compte
+ * existant qui porte le même email. Ce n'est sûr que si le fournisseur a
+ * vérifié l'adresse : Discord renvoie aussi l'email d'un compte non vérifié
+ * (`verified: false`), que le provider Auth.js recopie sans le regarder.
+ */
+function providerAttestsEmail(provider: string, profile: Profile | undefined): boolean {
+  if (provider === "discord") return profile?.verified === true;
+  if (provider === "google") return profile?.email_verified === true;
+  return false;
+}
 
 // Credentials OAuth pilotables via l'admin (BDD), avec fallback env. Lus au
 // démarrage (cold-start). Sûr : si la BDD est absente/KO → env uniquement.
@@ -34,12 +53,15 @@ const providers: NextAuthConfig["providers"] = [
     authorize: async (credentials, request) => {
       const email = String(credentials?.email ?? "").trim().toLowerCase();
       const password = String(credentials?.password ?? "");
-      if (!email || !password) return null;
+      if (!email || !password || email.length > EMAIL_MAX_LENGTH) return null;
 
       // Anti-brute-force : plafond de tentatives par (IP + email), partagé entre
       // instances via Postgres. Clé combinée pour ne pas verrouiller un compte
       // légitime derrière une IP mutualisée (NAT/mobile). Dépassement → on
       // renvoie null (indistinct d'un mauvais mot de passe côté attaquant).
+      // Un second plafond, par IP seule et volontairement large, borne le
+      // bourrage d'identifiants : sans lui, une IP essaie 10 mots de passe sur
+      // autant d'adresses qu'elle veut.
       const ip =
         request?.headers?.get("x-forwarded-for")?.split(",")[0]?.trim() ||
         request?.headers?.get("x-real-ip") ||
@@ -48,8 +70,9 @@ const providers: NextAuthConfig["providers"] = [
       // haché, jamais l'adresse). Va dans les logs Vercel → détection brute-force.
       const emailHash = createHash("sha256").update(email).digest("hex").slice(0, 12);
 
+      const ipRate = await checkRateLimit(`auth:login-ip:${ip}`, 60, 15 * 60 * 1000);
       const rate = await checkRateLimit(`auth:login:${ip}:${email}`, 10, 15 * 60 * 1000);
-      if (!rate.ok) {
+      if (!ipRate.ok || !rate.ok) {
         console.warn("[auth] login rate-limited", { emailHash, ip });
         return null;
       }
@@ -98,7 +121,32 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   session: { strategy: "jwt" },
   providers,
   callbacks: {
-    async signIn({ user }) {
+    async signIn({ user, account, profile }) {
+      // Email non attesté par le fournisseur : on n'accepte que si ce compte
+      // Discord/Google est DÉJÀ rattaché (aucune liaison par email n'a alors
+      // lieu). Sinon on refuse, ce qui bloque à la fois le rattachement à un
+      // compte existant et la création d'un compte sur une adresse non prouvée.
+      if (account && account.type !== "credentials" && !providerAttestsEmail(account.provider, profile)) {
+        const [linked] = await getDb()
+          .select({ userId: schema.accounts.userId })
+          .from(schema.accounts)
+          .where(
+            and(
+              eq(schema.accounts.provider, account.provider),
+              eq(schema.accounts.providerAccountId, account.providerAccountId),
+            ),
+          )
+          .limit(1);
+        if (!linked) {
+          console.warn("[auth] connexion OAuth refusée (email non vérifié par le fournisseur)", {
+            provider: account.provider,
+          });
+          // Une chaîne vaut redirection : la page de login affiche le motif
+          // dans la langue du visiteur (le middleware ajoute la locale).
+          return `/login?error=${OAUTH_EMAIL_UNVERIFIED_ERROR}`;
+        }
+      }
+
       if (!user.id) return true;
 
       const [dbUser] = await getDb()
@@ -160,7 +208,31 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   },
   events: {
     async linkAccount({ user, account }) {
-      if (account.provider !== "discord" || !user.id) return;
+      if (!user.id) return;
+
+      // Compte natif jamais vérifié : son mot de passe a été posé par quelqu'un
+      // qui n'a pas prouvé le contrôle de l'adresse. On l'efface au moment où
+      // le vrai titulaire arrive par OAuth, avec les liens de vérification en
+      // attente, pour que l'auteur de l'inscription ne garde aucun accès.
+      const cleared = await getDb()
+        .update(schema.users)
+        .set({ passwordHash: null, updatedAt: new Date() })
+        .where(
+          and(
+            eq(schema.users.id, user.id),
+            isNull(schema.users.emailVerified),
+            isNotNull(schema.users.passwordHash),
+          ),
+        )
+        .returning({ id: schema.users.id });
+      if (cleared.length > 0) {
+        await getDb()
+          .delete(schema.authTokens)
+          .where(and(eq(schema.authTokens.userId, user.id), eq(schema.authTokens.kind, "verify_email")));
+        console.warn("[auth] mot de passe non vérifié effacé à la liaison OAuth", { userId: user.id });
+      }
+
+      if (account.provider !== "discord") return;
       const isConfiguredAdmin = isConfiguredAdminDiscordId(account.providerAccountId);
 
       await getDb()

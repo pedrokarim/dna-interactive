@@ -1316,6 +1316,10 @@
     "verifyFailBody": "この確認リンクは無効か、有効期限が切れています。",
     "verifyFailCta": "アカウント作成",
     "loginErrorUnverified": "メールが未確認です。受信箱を確認するか、リンクを再送してください。",
+    "verifyConfirmTitle": "メールアドレスを確認",
+    "verifyConfirmBody": "ボタンを押してアカウントを有効にしてください。",
+    "verifyConfirmCta": "アドレスを確認する",
+    "loginErrorOauthUnverified": "このDiscordまたはGoogleアカウントのメールアドレスは未確認です。先にそちらで確認してから、もう一度お試しください。",
     "resendVerification": "確認リンクを再送する",
     "resendSent": "確認リンクを再送しました。受信箱をご確認ください。"
   },
@@ -1966,6 +1970,7 @@
     "signupsClosed": "現在、新規登録を停止しています。",
     "emailAlreadyUsed": "このメールアドレスはすでに使用されています。ログインするか、パスワードを再設定してください。",
     "resetLinkInvalid": "リンクが無効または期限切れです。再度リセットをリクエストしてください。",
+    "verifyLinkInvalid": "この確認リンクは無効か、有効期限が切れています。",
     "noEmailOnAccount": "このアカウントにはメールアドレスが登録されていないため、パスワードを設定できません。",
     "cannotUnlink": "連携を解除できません。先にパスワードを設定するか、別のアカウントを連携してください。",
     "payloadTooLarge": "リクエストのサイズが大きすぎます。",

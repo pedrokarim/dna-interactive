@@ -1316,6 +1316,10 @@
     "verifyFailBody": "이 확인 링크가 유효하지 않거나 만료되었습니다.",
     "verifyFailCta": "계정 만들기",
     "loginErrorUnverified": "이메일이 미인증 상태입니다. 받은편지함을 확인하거나 링크를 다시 보내세요.",
+    "verifyConfirmTitle": "이메일 주소 확인",
+    "verifyConfirmBody": "버튼을 눌러 계정을 활성화하세요.",
+    "verifyConfirmCta": "주소 확인하기",
+    "loginErrorOauthUnverified": "이 Discord 또는 Google 계정의 이메일 주소가 미인증 상태입니다. 해당 서비스에서 인증한 뒤 다시 시도해 주세요.",
     "resendVerification": "인증 링크 다시 보내기",
     "resendSent": "인증 링크를 다시 보냈습니다. 받은편지함을 확인하세요."
   },
@@ -1966,6 +1970,7 @@
     "signupsClosed": "현재 회원가입이 중단되었습니다.",
     "emailAlreadyUsed": "이미 사용 중인 이메일입니다. 로그인하거나 비밀번호를 재설정해 주세요.",
     "resetLinkInvalid": "링크가 유효하지 않거나 만료되었습니다. 재설정을 다시 요청해 주세요.",
+    "verifyLinkInvalid": "이 확인 링크가 유효하지 않거나 만료되었습니다.",
     "noEmailOnAccount": "이 계정에는 이메일 주소가 없어 비밀번호를 설정할 수 없습니다.",
     "cannotUnlink": "연결을 해제할 수 없습니다. 먼저 비밀번호를 설정하거나 다른 계정을 연결해 주세요.",
     "payloadTooLarge": "요청이 너무 큽니다.",

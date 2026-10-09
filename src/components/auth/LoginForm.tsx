@@ -11,13 +11,24 @@ import { AuthDivider, AuthField, AuthMessage, OAuthButtons } from "./AuthPrimiti
 
 import { captureAnalytics } from "@/lib/analytics";
 
-export function LoginForm({ googleEnabled, callbackUrl }: { googleEnabled: boolean; callbackUrl: string }) {
+export function LoginForm({
+  googleEnabled,
+  callbackUrl,
+  oauthEmailUnverified = false,
+}: {
+  googleEnabled: boolean;
+  callbackUrl: string;
+  /** Retour d'une connexion Discord/Google refusée : email non vérifié chez eux. */
+  oauthEmailUnverified?: boolean;
+}) {
   const t = useTranslations("auth");
   const locale = useLocale();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(
+    oauthEmailUnverified ? t("loginErrorOauthUnverified") : null,
+  );
   const [needsVerify, setNeedsVerify] = useState(false);
   const [resent, setResent] = useState(false);
 

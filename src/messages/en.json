@@ -1316,6 +1316,10 @@
     "verifyFailBody": "This confirmation link is invalid or has expired.",
     "verifyFailCta": "Create an account",
     "loginErrorUnverified": "Email not verified. Check your inbox or resend the link.",
+    "verifyConfirmTitle": "Confirm your email address",
+    "verifyConfirmBody": "Click the button to activate your account.",
+    "verifyConfirmCta": "Confirm my address",
+    "loginErrorOauthUnverified": "The email address of this Discord or Google account is not verified. Verify it with them, then try again.",
     "resendVerification": "Resend verification link",
     "resendSent": "Verification link resent. Check your inbox."
   },
@@ -1966,6 +1970,7 @@
     "signupsClosed": "Sign-ups are temporarily closed.",
     "emailAlreadyUsed": "This email is already in use. Sign in or reset your password.",
     "resetLinkInvalid": "Invalid or expired link. Request a new reset.",
+    "verifyLinkInvalid": "This confirmation link is invalid or has expired.",
     "noEmailOnAccount": "No email address on this account: a password can't be set.",
     "cannotUnlink": "Can't unlink: set a password first, or link another account.",
     "payloadTooLarge": "Request too large.",

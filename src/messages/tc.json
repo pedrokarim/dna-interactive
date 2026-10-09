@@ -1316,6 +1316,10 @@
     "verifyFailBody": "此確認連結無效或已過期。",
     "verifyFailCta": "建立帳號",
     "loginErrorUnverified": "電子郵件尚未驗證。請查看收件匣或重新寄送連結。",
+    "verifyConfirmTitle": "確認你的電子郵件",
+    "verifyConfirmBody": "點擊按鈕以啟用帳號。",
+    "verifyConfirmCta": "確認我的電子郵件",
+    "loginErrorOauthUnverified": "此 Discord 或 Google 帳號的電子郵件尚未驗證。請先在該服務完成驗證，然後再試一次。",
     "resendVerification": "重新寄送驗證連結",
     "resendSent": "已重新寄送驗證連結，請查看收件匣。"
   },
@@ -1966,6 +1970,7 @@
     "signupsClosed": "目前暫停註冊。",
     "emailAlreadyUsed": "此電子郵件已被使用。請登入或重設密碼。",
     "resetLinkInvalid": "連結無效或已過期。請重新申請重設。",
+    "verifyLinkInvalid": "此確認連結無效或已過期。",
     "noEmailOnAccount": "此帳號沒有電子郵件地址，無法設定密碼。",
     "cannotUnlink": "無法解除綁定：請先設定密碼，或綁定另一個帳號。",
     "payloadTooLarge": "請求內容過大。",

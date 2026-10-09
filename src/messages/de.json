@@ -1316,6 +1316,10 @@
     "verifyFailBody": "Dieser Bestätigungslink ist ungültig oder abgelaufen.",
     "verifyFailCta": "Konto erstellen",
     "loginErrorUnverified": "E-Mail nicht bestätigt. Prüfe dein Postfach oder sende den Link erneut.",
+    "verifyConfirmTitle": "Bestätige deine E-Mail-Adresse",
+    "verifyConfirmBody": "Klicke auf die Schaltfläche, um dein Konto zu aktivieren.",
+    "verifyConfirmCta": "Adresse bestätigen",
+    "loginErrorOauthUnverified": "Die E-Mail-Adresse dieses Discord- oder Google-Kontos ist nicht bestätigt. Bestätige sie dort und versuche es erneut.",
     "resendVerification": "Bestätigungslink erneut senden",
     "resendSent": "Bestätigungslink erneut gesendet. Prüfe dein Postfach."
   },
@@ -1966,6 +1970,7 @@
     "signupsClosed": "Registrierungen sind vorübergehend geschlossen.",
     "emailAlreadyUsed": "Diese E-Mail-Adresse wird bereits verwendet. Melde dich an oder setze dein Passwort zurück.",
     "resetLinkInvalid": "Ungültiger oder abgelaufener Link. Fordere eine neue Zurücksetzung an.",
+    "verifyLinkInvalid": "Dieser Bestätigungslink ist ungültig oder abgelaufen.",
     "noEmailOnAccount": "Für dieses Konto ist keine E-Mail-Adresse hinterlegt: Es kann kein Passwort festgelegt werden.",
     "cannotUnlink": "Trennen nicht möglich: Lege zuerst ein Passwort fest oder verknüpfe ein weiteres Konto.",
     "payloadTooLarge": "Anfrage zu groß.",

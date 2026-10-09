@@ -1316,6 +1316,10 @@
     "verifyFailBody": "Este enlace de confirmación no es válido o ha caducado.",
     "verifyFailCta": "Crear una cuenta",
     "loginErrorUnverified": "Correo sin verificar. Revisa tu bandeja o reenvía el enlace.",
+    "verifyConfirmTitle": "Confirma tu correo",
+    "verifyConfirmBody": "Haz clic en el botón para activar tu cuenta.",
+    "verifyConfirmCta": "Confirmar mi correo",
+    "loginErrorOauthUnverified": "El correo de esta cuenta de Discord o Google no está verificado. Verifícalo allí y vuelve a intentarlo.",
     "resendVerification": "Reenviar enlace de verificación",
     "resendSent": "Enlace de verificación reenviado. Revisa tu bandeja."
   },
@@ -1966,6 +1970,7 @@
     "signupsClosed": "Los registros están cerrados temporalmente.",
     "emailAlreadyUsed": "Este correo ya está en uso. Inicia sesión o restablece tu contraseña.",
     "resetLinkInvalid": "Enlace no válido o caducado. Solicita un nuevo restablecimiento.",
+    "verifyLinkInvalid": "Este enlace de confirmación no es válido o ha caducado.",
     "noEmailOnAccount": "Esta cuenta no tiene dirección de correo: no se puede definir una contraseña.",
     "cannotUnlink": "No se puede desvincular: define primero una contraseña o vincula otra cuenta.",
     "payloadTooLarge": "Solicitud demasiado grande.",

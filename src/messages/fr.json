@@ -1316,6 +1316,10 @@
     "verifyFailBody": "Ce lien de confirmation est invalide ou a expiré.",
     "verifyFailCta": "Créer un compte",
     "loginErrorUnverified": "Email non vérifié. Vérifie ta boîte ou renvoie le lien.",
+    "verifyConfirmTitle": "Confirme ton adresse email",
+    "verifyConfirmBody": "Clique sur le bouton pour activer ton compte.",
+    "verifyConfirmCta": "Confirmer mon adresse",
+    "loginErrorOauthUnverified": "L'adresse email de ce compte Discord ou Google n'est pas vérifiée. Vérifie-la chez eux, puis réessaie.",
     "resendVerification": "Renvoyer le lien de vérification",
     "resendSent": "Lien de vérification renvoyé. Vérifie ta boîte."
   },
@@ -1966,6 +1970,7 @@
     "signupsClosed": "Les inscriptions sont temporairement fermées.",
     "emailAlreadyUsed": "Cet email est déjà utilisé. Connecte-toi ou réinitialise ton mot de passe.",
     "resetLinkInvalid": "Lien invalide ou expiré. Redemande une réinitialisation.",
+    "verifyLinkInvalid": "Ce lien de confirmation est invalide ou a expiré.",
     "noEmailOnAccount": "Aucune adresse email sur ce compte : impossible de définir un mot de passe.",
     "cannotUnlink": "Impossible de délier : définis d'abord un mot de passe ou lie un autre compte.",
     "payloadTooLarge": "Requête trop volumineuse.",
