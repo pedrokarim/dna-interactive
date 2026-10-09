@@ -18,7 +18,7 @@ import { DnaSectionLabel } from "@/components/dna/SectionLabel";
 import { GuideImageSlot } from "@/components/items/GuideImageSlot";
 import { getItemsByCategoryId, getItemTranslation } from "@/lib/items/catalog";
 import { WeaponTypeChip } from "@/components/characters/WeaponTypeChip";
-import { toIntlLocale } from "@/lib/cosmetics/format";
+import { toIntlLocale } from "@/lib/intl-locale";
 import { resolveBuildItemRef } from "@/lib/characters/builds";
 import { getAllCharacters, getCharacterSlug, getCharacterTranslation } from "@/lib/characters/catalog";
 import {

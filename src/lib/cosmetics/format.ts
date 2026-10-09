@@ -1,16 +1,14 @@
 import { useMemo, useSyncExternalStore } from "react";
+import { toIntlLocale } from "@/lib/intl-locale";
 
 /**
  * Utilitaires d'affichage des cosmétiques, sûrs côté client : aucun import de
  * données ici (les JSON restent côté serveur).
  */
 
-const INTL_LOCALES: Record<string, string> = { jp: "ja", kr: "ko", tc: "zh-Hant" };
-
-/** Locale du site (`jp`, `kr`, `tc`…) → balise BCP 47 comprise par `Intl`. */
-export function toIntlLocale(locale: string): string {
-  return INTL_LOCALES[locale] ?? locale;
-}
+// Vit dans un module neutre pour rester importable d'un composant serveur ;
+// réexporté ici pour ceux qui le prennent déjà à cette adresse.
+export { toIntlLocale };
 
 export function formatDate(iso: string | null, locale: string): string | null {
   if (!iso) return null;

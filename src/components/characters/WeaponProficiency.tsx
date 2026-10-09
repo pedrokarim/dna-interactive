@@ -9,7 +9,7 @@ import { DnaPanel } from "@/components/dna/Panel";
 import { DnaSectionLabel } from "@/components/dna/SectionLabel";
 import { WeaponTypeChip } from "@/components/characters/WeaponTypeChip";
 import { resolveBuildItemRef } from "@/lib/characters/builds";
-import { toIntlLocale } from "@/lib/cosmetics/format";
+import { toIntlLocale } from "@/lib/intl-locale";
 import {
   PROFICIENCY_ATTACK_BONUS,
   allWeaponTypesName,
