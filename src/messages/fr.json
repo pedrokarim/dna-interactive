@@ -658,7 +658,7 @@
     "positionUweapon": "Arme ultime",
     "positionWeaponDPS": "DPS Arme",
     "noBuildAvailable": "Aucun build recommande disponible pour le moment.",
-    "weaponsTitle": "Armes recommandees",
+    "weaponsTitle": "Armes recommandées",
     "weaponMelee": "Mêlée",
     "weaponRanged": "Distance",
     "weaponItemNotFound": "Item non trouve",
@@ -1661,6 +1661,14 @@
     "proficiencyCostBody": "Le coût est le même pour tous les types, seul l’Éveil de forge change : il faut celui du type visé. On l’obtient en démontant une arme 5★ de ce type.",
     "proficiencyWhereTitle": "Où ça se passe en jeu",
     "proficiencyWhereBody": "Dans l’Armurerie, sur le personnage : la roue des armes de prédilection affiche les deux types d’origine et un troisième emplacement, « Maîtrise supplémentaire ».",
+    "imageProficiency": "L’écran des armes de prédilection, dans l’Armurerie : ici celui de Falsi.",
+    "legendProficiency": [
+      "Les deux prédilections d’origine du personnage.",
+      "Le troisième emplacement : la maîtrise supplémentaire, vide tant qu’aucun type n’est activé.",
+      "Les quatre types que ce personnage peut débloquer. Celui qui est sélectionné est entouré.",
+      "Les matériaux demandés pour le type sélectionné, avec ce que vous possédez.",
+      "Le bouton de déblocage, grisé tant qu’il manque un matériau. Une fois le type débloqué, il sert à l’activer."
+    ],
     "proficiencyTableTitle": "Les prédilections de chaque personnage",
     "proficiencyTableCharacter": "Personnage",
     "proficiencyTableBase": "D’origine",

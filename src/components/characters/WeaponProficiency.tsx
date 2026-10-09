@@ -28,13 +28,13 @@ function UnlockCost({ type, lang }: { type: WeaponTypeInfo; lang: string }) {
   // code invalide retombe sur la locale de la machine, différente entre serveur et navigateur.
   const numberLocale = toIntlLocale(useLocale());
   return (
-    <ul className="flex flex-wrap gap-x-3 gap-y-1.5">
+    <ul className="flex flex-col gap-2">
       {type.unlockCost.map((cost, index) => {
         const item = resolveBuildItemRef("resources", cost.itemId, lang);
         if (!item) return null;
         return (
-          <li key={cost.itemId} className="flex items-center gap-1.5 text-xs text-parch/85">
-            <DnaItemIcon src={item.icon} alt="" width={20} height={20} className="h-5 w-5 object-contain" />
+          <li key={cost.itemId} className="flex items-center gap-2 text-sm text-parch/85">
+            <DnaItemIcon src={item.icon} alt="" width={36} height={36} className="h-9 w-9 object-contain" />
             <span className="tabular-nums">{cost.amount.toLocaleString(numberLocale)}</span>
             {/* Le dernier matériau change avec le type visé : on tait le type, le coût vaut pour les quatre. */}
             <span className="text-muted">
@@ -88,7 +88,7 @@ export function WeaponProficiencyPanel({
 
           <h3 className="mt-5 font-caps text-[0.6rem] uppercase tracking-[0.2em] text-gold">{t("extraLabel")}</h3>
           <p className="mt-1 text-xs leading-relaxed text-muted">{t("extraHint")}</p>
-          <div className="mt-2.5 grid grid-cols-2 gap-x-3 gap-y-2">
+          <div className="mt-2.5 grid grid-cols-2 gap-x-3 gap-y-2.5">
             {proficiency.extra.map((type) => (
               <WeaponTypeChip key={type.tag} type={type} name={weaponTypeName(type, lang)} tone="extra" size="sm" />
             ))}

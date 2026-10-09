@@ -122,12 +122,13 @@ export async function CalamityWeaponsGuideChapter({
     case "proficiency": {
       const percent = Math.round(PROFICIENCY_ATTACK_BONUS * 100);
       // Vita et Mors ont une fiche par genre, aux prédilections identiques : une ligne suffit.
-      const rows = new Map<string, { name: string; slug: string; proficiency: NonNullable<ReturnType<typeof getCharacterProficiency>> }>();
+      const rows = new Map<string, { name: string; slug: string; avatar: string | null; proficiency: NonNullable<ReturnType<typeof getCharacterProficiency>> }>();
       for (const character of getAllCharacters()) {
         const proficiency = getCharacterProficiency(character.charId);
         const name = getCharacterTranslation(character, gameLang, ["EN", "FR"]).name;
         if (!proficiency || !name || rows.has(name)) continue;
-        rows.set(name, { name, slug: getCharacterSlug(character), proficiency });
+        const avatar = character.portraits.head?.publicPath ?? character.portraits.icon?.publicPath ?? null;
+        rows.set(name, { name, slug: getCharacterSlug(character), avatar, proficiency });
       }
       const sorted = [...rows.values()].sort((a, b) => a.name.localeCompare(b.name, locale));
       const sampleCost = sorted.find((row) => row.proficiency.extra.length > 0)?.proficiency.extra[0]?.unlockCost ?? [];
@@ -140,18 +141,26 @@ export async function CalamityWeaponsGuideChapter({
             <RuleCard icon={<Target className="h-5 w-5" />} title={t("proficiencyExtraTitle")} body={t("proficiencyExtraBody")} />
           </div>
 
+          <GuideImageSlot
+            slot="proficiency"
+            caption={t("imageProficiency")}
+            legend={t.raw("legendProficiency") as string[]}
+            ratio="16 / 9"
+            className="max-w-5xl"
+          />
+
           <div className="grid gap-4 md:grid-cols-2">
             <DnaPanel className="p-5">
               <DnaSectionLabel>{t("proficiencyCostTitle")}</DnaSectionLabel>
-              <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-2">
+              <ul className="mt-3 flex flex-wrap gap-x-7 gap-y-3">
                 {sampleCost.map((cost, index) => {
                   const item = resolveBuildItemRef("resources", cost.itemId, gameLang);
                   if (!item) return null;
                   // Le dernier matériau dépend du type : on montre son icône, pas le nom d'un type précis.
                   const typed = index === sampleCost.length - 1;
                   return (
-                    <li key={cost.itemId} className="flex items-center gap-2 text-sm text-parch">
-                      <DnaItemIcon src={item.icon} alt="" width={28} height={28} className="h-7 w-7 object-contain" />
+                    <li key={cost.itemId} className="flex items-center gap-3 text-base text-parch">
+                      <DnaItemIcon src={item.icon} alt="" width={56} height={56} className="h-14 w-14 object-contain" />
                       <span className="tabular-nums">{cost.amount.toLocaleString(toIntlLocale(locale))}</span>
                       <span className="text-parch/75">{typed ? item.name.split(/\s*[:：]\s*/)[0] : item.name}</span>
                     </li>
@@ -180,10 +189,22 @@ export async function CalamityWeaponsGuideChapter({
                 </thead>
                 <tbody className="max-md:block">
                   {sorted.map((row) => (
-                    <tr key={row.name} className="border-b border-white/6 align-top last:border-b-0 max-md:flex max-md:flex-col max-md:gap-2 max-md:py-3">
+                    <tr key={row.name} className="border-b border-white/6 align-middle last:border-b-0 max-md:flex max-md:flex-col max-md:gap-2 max-md:py-3">
                       <th scope="row" className="py-2.5 pr-4 font-normal max-md:p-0 max-md:font-semibold">
-                        <Link href={`/characters/${row.slug}`} className="text-parch underline-offset-4 hover:text-gold-bright hover:underline">
-                          {row.name}
+                        <Link href={`/characters/${row.slug}`} className="group inline-flex items-center gap-3 text-parch hover:text-gold-bright">
+                          {row.avatar ? (
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <img
+                              src={row.avatar}
+                              alt=""
+                              aria-hidden="true"
+                              width={96}
+                              height={96}
+                              loading="lazy"
+                              className="h-12 w-12 shrink-0 rounded-full border border-line/40 bg-ink/60 object-cover"
+                            />
+                          ) : null}
+                          <span className="underline-offset-4 group-hover:underline">{row.name}</span>
                         </Link>
                       </th>
                       {row.proficiency.allTypes ? (

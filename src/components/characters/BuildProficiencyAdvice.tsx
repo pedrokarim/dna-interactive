@@ -44,7 +44,7 @@ export function BuildProficiencyAdvice({
           <span className="text-sm text-parch">{allWeaponTypesName(lang)}</span>
         ) : (
           proficiency.base.map((type) => (
-            <WeaponTypeChip key={type.tag} type={type} name={weaponTypeName(type, lang)} size="sm" />
+            <WeaponTypeChip key={type.tag} type={type} name={weaponTypeName(type, lang)} />
           ))
         )}
       </div>
@@ -58,21 +58,21 @@ export function BuildProficiencyAdvice({
           <p className="mt-4 font-caps text-[0.6rem] uppercase tracking-[0.2em] text-gold">
             {t("adviceTitle", { count: suggestions.length })}
           </p>
-          <ul className="mt-2 space-y-2.5">
+          <ul className="mt-3 space-y-3.5">
             {suggestions.map((suggestion, index) => {
               const weaponNames = suggestion.weapons.map((weapon) => weapon.name);
               const calamityNames = suggestion.weapons.filter((weapon) => weapon.calamity).map((weapon) => weapon.name);
               return (
-                <li key={suggestion.type.tag} className="flex items-start gap-3">
+                <li key={suggestion.type.tag} className="flex items-center gap-3.5">
                   <WeaponTypeChip type={suggestion.type} tone={index === 0 ? "suggested" : "extra"} className="shrink-0" />
                   <div className="min-w-0">
-                    <p className="text-sm text-parch">
+                    <p className="text-base text-parch">
                       <span className="font-semibold">{weaponTypeName(suggestion.type, lang)}</span>
                       <span className="ml-2 font-caps text-[0.55rem] uppercase tracking-[0.16em] text-muted">
                         {index === 0 ? t("adviceFirst") : t("adviceOther")}
                       </span>
                     </p>
-                    <p className="mt-0.5 text-xs leading-relaxed text-parch/80">
+                    <p className="mt-0.5 text-sm leading-relaxed text-parch/80">
                       {t("reasonAttack", { percent: BONUS_PERCENT, weapons: weaponNames.join(", ") })}
                       {calamityNames.length > 0 ? ` ${t("reasonPotentials", { weapons: calamityNames.join(", ") })}` : null}
                     </p>

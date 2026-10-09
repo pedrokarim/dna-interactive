@@ -2003,12 +2003,12 @@ export function BuildTabContent({
                               href={w.item.href}
                               className="flex min-w-0 flex-1 items-center gap-3"
                             >
-                              <span className="dna-rarity-slot grid h-10 w-10 shrink-0 place-items-center rounded-sm border p-1">
+                              <span className="dna-rarity-slot grid h-14 w-14 shrink-0 place-items-center rounded-sm border p-1">
                                 <img
                                   src={w.item.icon}
                                   alt=""
-                                  width={40}
-                                  height={40}
+                                  width={56}
+                                  height={56}
                                   className="h-full w-full object-contain"
                                 />
                               </span>

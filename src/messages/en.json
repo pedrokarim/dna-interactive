@@ -1661,6 +1661,14 @@
     "proficiencyCostBody": "The cost is the same for every type; only the Forging Insight changes: you need the one for the type you want. You get it by dismantling a 5★ weapon of that type.",
     "proficiencyWhereTitle": "Where it is in game",
     "proficiencyWhereBody": "In the Armoury, on the character: the Weapon Proficiency wheel shows the two default types and a third slot, “Additional Proficiency”.",
+    "imageProficiency": "The Weapon Proficiency screen in the Armoury: this one is Falsi's.",
+    "legendProficiency": [
+      "The character's two default proficiencies.",
+      "The third slot: Additional Proficiency, empty until a type is activated.",
+      "The four types this character can unlock. The selected one is circled.",
+      "The materials required for the selected type, next to what you own.",
+      "The unlock button, greyed out while a material is missing. Once the type is unlocked, it activates it."
+    ],
     "proficiencyTableTitle": "Every character's proficiencies",
     "proficiencyTableCharacter": "Character",
     "proficiencyTableBase": "Default",

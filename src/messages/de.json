@@ -1661,6 +1661,14 @@
     "proficiencyCostBody": "Die Kosten sind für alle Typen gleich, nur das „Forging Insight“ wechselt: Man braucht das des gewünschten Typs. Man erhält es durch das Zerlegen einer 5★-Waffe dieses Typs.",
     "proficiencyWhereTitle": "Wo es im Spiel zu finden ist",
     "proficiencyWhereBody": "In der Waffenkammer, beim Charakter: Das Rad der Waffenbeherrschung zeigt die beiden ursprünglichen Typen und einen dritten Platz für die zusätzliche Beherrschung.",
+    "imageProficiency": "Der Bildschirm der Waffenbeherrschung in der Waffenkammer: hier der von Falsi.",
+    "legendProficiency": [
+      "Die beiden ursprünglichen Beherrschungen des Charakters.",
+      "Der dritte Platz: die zusätzliche Beherrschung, leer, solange kein Typ aktiviert ist.",
+      "Die vier Typen, die dieser Charakter freischalten kann. Der ausgewählte ist eingekreist.",
+      "Die für den ausgewählten Typ benötigten Materialien, neben dem eigenen Bestand.",
+      "Die Schaltfläche zum Freischalten, ausgegraut, solange ein Material fehlt. Nach dem Freischalten aktiviert sie den Typ."
+    ],
     "proficiencyTableTitle": "Die Beherrschungen aller Charaktere",
     "proficiencyTableCharacter": "Charakter",
     "proficiencyTableBase": "Ursprünglich",

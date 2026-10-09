@@ -1661,6 +1661,14 @@
     "proficiencyCostBody": "El coste es el mismo para todos los tipos; solo cambia la Perspicacia Forjada: hace falta la del tipo elegido. Se obtiene al desmontar un arma 5★ de ese tipo.",
     "proficiencyWhereTitle": "Dónde está en el juego",
     "proficiencyWhereBody": "En la Armería, en el personaje: la rueda de pericia de arma muestra los dos tipos de origen y un tercer hueco para la pericia adicional.",
+    "imageProficiency": "La pantalla de pericia de arma en la Armería: aquí la de Falsi.",
+    "legendProficiency": [
+      "Las dos pericias de origen del personaje.",
+      "El tercer hueco: la pericia adicional, vacío mientras no se active ningún tipo.",
+      "Los cuatro tipos que este personaje puede desbloquear. El seleccionado aparece rodeado.",
+      "Los materiales requeridos para el tipo seleccionado, junto a lo que posees.",
+      "El botón de desbloqueo, atenuado mientras falte un material. Una vez desbloqueado el tipo, sirve para activarlo."
+    ],
     "proficiencyTableTitle": "Las pericias de cada personaje",
     "proficiencyTableCharacter": "Personaje",
     "proficiencyTableBase": "De origen",

@@ -31,11 +31,11 @@ export function WeaponTypeChip({
   className?: string;
 }) {
   return (
-    <span className={cn("inline-flex min-w-0 items-center gap-2", className)}>
+    <span className={cn("inline-flex min-w-0 items-center gap-2.5", className)}>
       <span
         className={cn(
           "grid shrink-0 place-items-center rounded-full border bg-[#14110d]",
-          size === "sm" ? "h-7 w-7" : "h-10 w-10",
+          size === "sm" ? "h-10 w-10" : "h-14 w-14",
           DISC_TONE[tone],
         )}
       >
@@ -47,11 +47,11 @@ export function WeaponTypeChip({
           width={64}
           height={64}
           loading="lazy"
-          className={cn("object-contain", size === "sm" ? "h-4 w-4" : "h-6 w-6", tone === "extra" && "opacity-75")}
+          className={cn("object-contain", size === "sm" ? "h-7 w-7" : "h-10 w-10", tone === "extra" && "opacity-80")}
         />
       </span>
       {name ? (
-        <span className={cn("min-w-0 leading-tight", size === "sm" ? "text-xs" : "text-sm", tone === "extra" ? "text-parch/80" : "text-parch")}>
+        <span className={cn("min-w-0 leading-tight", size === "sm" ? "text-sm" : "text-base", tone === "extra" ? "text-parch/80" : "text-parch")}>
           {name}
         </span>
       ) : null}

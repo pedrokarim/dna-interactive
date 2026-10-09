@@ -36,6 +36,8 @@ export const CALAMITY_GUIDE_SLOTS = [
   "unlock",
   /** L'ecran de forge : l'arme, ses materiaux et sa duree de fabrication. */
   "forge",
+  /** L'ecran des armes de predilection : les deux d'origine, l'emplacement supplementaire, son cout. */
+  "proficiency",
 ] as const;
 
 export type CalamityGuideSlot = (typeof CALAMITY_GUIDE_SLOTS)[number];

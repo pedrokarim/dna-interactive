@@ -1661,6 +1661,14 @@
     "proficiencyCostBody": "各類型的費用相同，只有鍛造材料依類型而異。分解該類型的 5★ 武器即可取得。",
     "proficiencyWhereTitle": "遊戲中的位置",
     "proficiencyWhereBody": "在武器庫選擇角色後，精通武器畫面會顯示兩種初始類型，以及第三個欄位「額外精通」。",
+    "imageProficiency": "武器庫中的精通武器畫面（此為法露茜的畫面）。",
+    "legendProficiency": [
+      "角色的兩種初始精通。",
+      "第三個欄位：額外精通，在啟用任何類型之前是空的。",
+      "此角色可解鎖的四種類型。選中的類型會被圈起。",
+      "選中類型所需的材料，以及你持有的數量。",
+      "解鎖按鈕，材料不足時會變灰。解鎖後，它會變成啟用該類型的按鈕。"
+    ],
     "proficiencyTableTitle": "各角色的精通武器",
     "proficiencyTableCharacter": "角色",
     "proficiencyTableBase": "初始",
