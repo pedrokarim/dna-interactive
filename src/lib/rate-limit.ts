@@ -3,6 +3,9 @@ import { getDb } from "@/db";
 
 export type RateLimitResult = { ok: true } | { ok: false; retryAfter: number };
 
+/** Un appel sur N purge les lignes expirées (voir `checkRateLimit`). */
+const PURGE_ONE_IN = 200;
+
 /**
  * Rate-limit à fenêtre fixe, **partagé entre toutes les instances serverless**
  * via Postgres (table `rate_limits`).
@@ -19,6 +22,10 @@ export type RateLimitResult = { ok: true } | { ok: false; retryAfter: number };
  *
  * Fail-open : si la base est indisponible, on autorise (les endpoints protégés
  * dépendent de toute façon de la base — inutile d'ajouter un point de panne).
+ *
+ * Purge : les lignes expirées ne servent plus à rien mais restaient en base
+ * pour toujours. Aucun cron n'existe sur ce projet, donc un appel sur
+ * `PURGE_ONE_IN` les supprime au passage (index sur `reset_at`).
  */
 export async function checkRateLimit(
   key: string,
@@ -38,6 +45,13 @@ export async function checkRateLimit(
                         ELSE rate_limits.reset_at END
       RETURNING count, extract(epoch from (reset_at - now())) AS retry_after
     `);
+
+    if (Math.random() < 1 / PURGE_ONE_IN) {
+      // Échec sans conséquence : la purge sera retentée par un appel suivant.
+      await getDb()
+        .execute(sql`DELETE FROM rate_limits WHERE reset_at < now()`)
+        .catch((err) => console.error("[rate-limit] purge échouée:", err));
+    }
 
     const row = (res as unknown as {
       rows: Array<{ count: number | string; retry_after: number | string }>;

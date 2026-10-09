@@ -73,7 +73,6 @@ export async function GET(request: NextRequest) {
         updatedAt: schema.builds.updatedAt,
         authorName: schema.users.name,
         authorImage: schema.users.image,
-        authorDiscordId: schema.users.discordId,
       })
       .from(schema.builds)
       .innerJoin(schema.users, eq(schema.users.id, schema.builds.userId))

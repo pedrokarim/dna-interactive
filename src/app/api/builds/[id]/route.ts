@@ -44,7 +44,6 @@ export async function GET(request: NextRequest, { params }: RouteContext) {
         updatedAt: schema.builds.updatedAt,
         authorName: schema.users.name,
         authorImage: schema.users.image,
-        authorDiscordId: schema.users.discordId,
       })
       .from(schema.builds)
       .innerJoin(schema.users, eq(schema.users.id, schema.builds.userId))
@@ -95,7 +94,6 @@ export async function GET(request: NextRequest, { params }: RouteContext) {
         updatedAt: row.updatedAt,
         authorName: row.authorName,
         authorImage: row.authorImage,
-        authorDiscordId: row.authorDiscordId,
         votedByMe,
         editableByMe,
       },

@@ -72,7 +72,8 @@ async function verifyRecaptcha(token: string): Promise<boolean> {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: `secret=${secretKey}&response=${token}`,
+        // Encodé : un jeton contenant `&` ne doit pas pouvoir ajouter de paramètre.
+        body: new URLSearchParams({ secret: secretKey, response: token }).toString(),
       }
     );
 
