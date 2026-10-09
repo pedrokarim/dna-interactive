@@ -119,6 +119,8 @@
     "zoomIn": "Vergrößern",
     "resetZoom": "Zoom zurücksetzen",
     "calamity": "Unheil",
+    "upcomingBadge": "Demnächst · v{version}",
+    "upcomingNotice": "Geplant für Version {version}. Noch nicht im Spiel verfügbar: Diese Angaben können sich bis zur Veröffentlichung ändern.",
     "series": "Serie",
     "compatibility": "Kompatibilität",
     "category": "Kategorie",

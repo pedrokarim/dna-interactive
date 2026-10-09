@@ -119,6 +119,8 @@
     "zoomIn": "Zoomer",
     "resetZoom": "Réinitialiser le zoom",
     "calamity": "Calamité",
+    "upcomingBadge": "À venir · v{version}",
+    "upcomingNotice": "Prévu pour la version {version}. Pas encore disponible en jeu : ces informations peuvent changer d'ici sa sortie.",
     "series": "Série",
     "compatibility": "Compatibilité",
     "category": "Catégorie",

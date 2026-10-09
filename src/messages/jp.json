@@ -119,6 +119,8 @@
     "zoomIn": "拡大",
     "resetZoom": "ズームをリセット",
     "calamity": "カラミティ",
+    "upcomingBadge": "実装予定 · v{version}",
+    "upcomingNotice": "バージョン{version}で実装予定。まだゲーム内では入手できません。実装までに内容が変更される場合があります。",
     "series": "シリーズ",
     "compatibility": "適合性",
     "category": "カテゴリ",

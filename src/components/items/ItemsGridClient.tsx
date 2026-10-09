@@ -5,7 +5,7 @@ import { Link } from "@/i18n/navigation";
 import { cn } from "@/components/dna/cn";
 import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ChevronRight, Flame, Heart, X, ZoomIn } from "lucide-react";
+import { ChevronRight, Clock, Flame, Heart, X, ZoomIn } from "lucide-react";
 import { GlyphIcons } from "@/components/icons/GameGlyph";
 import { useAtom } from "jotai";
 import {
@@ -22,6 +22,7 @@ import {
 } from "@/lib/items/catalog";
 import { isModReleaseVersionRecent } from "@/lib/items/new-releases";
 import { isCalamityWeapon } from "@/lib/items/calamity-weapons";
+import { getUpcomingVersion } from "@/lib/items/upcoming";
 import { resolveItemRarity } from "@/lib/items/rarity";
 import { rarityAttr } from "@/components/dna/rarity";
 import type { ItemCategory, ItemRecord } from "@/lib/items/types";
@@ -1217,6 +1218,7 @@ export default function ItemsGridClient({
             const isFavorite = favoriteItems.has(favoriteKey);
             const isNew = isModsCategory && isModReleaseVersionRecent(item.stats.releaseVersion);
             const isCalamity = isCalamityWeapon(item);
+            const upcomingVersion = getUpcomingVersion(item.stats.releaseVersion);
             const rarity = resolveItemRarity(item);
 
             return (
@@ -1266,6 +1268,15 @@ export default function ItemsGridClient({
                       <p className="font-caps text-[0.6rem] uppercase tracking-[0.22em] text-gold/80">
                         {category.technicalName} #{item.modId}
                       </p>
+                      {upcomingVersion ? (
+                        <span
+                          className="inline-flex items-center gap-1 whitespace-nowrap rounded-sm bg-hydro/10 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-hydro ring-1 ring-hydro/40"
+                          title={tc("upcomingNotice", { version: upcomingVersion })}
+                        >
+                          <Clock className="h-3 w-3" />
+                          {tc("upcomingBadge", { version: upcomingVersion })}
+                        </span>
+                      ) : null}
                       {isNew ? (
                         <span className="rounded-sm bg-gold/15 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-gold ring-1 ring-gold/40">
                           {t('newBadge')}
@@ -1407,6 +1418,7 @@ export default function ItemsGridClient({
                 : lead.modName
               : `${category.displayName} ${item.modId}`;
             const isCalamity = isCalamityWeapon(item);
+            const upcomingVersion = getUpcomingVersion(item.stats.releaseVersion);
             const rarity = resolveItemRarity(item);
 
             return (
@@ -1463,6 +1475,15 @@ export default function ItemsGridClient({
                       </span>
                     </h3>
                     <div className="mt-1 flex flex-wrap items-center gap-1.5 text-[11px]">
+                      {upcomingVersion ? (
+                        <span
+                          className="inline-flex items-center gap-1 rounded-sm border border-hydro/40 bg-hydro/10 px-2 py-0.5 font-semibold uppercase tracking-wider text-hydro"
+                          title={tc("upcomingNotice", { version: upcomingVersion })}
+                        >
+                          <Clock className="h-3 w-3" />
+                          {tc("upcomingBadge", { version: upcomingVersion })}
+                        </span>
+                      ) : null}
                       {isCalamity ? (
                         <span className="inline-flex items-center gap-1 rounded-sm border border-crimson-bright/40 bg-crimson/10 px-2 py-0.5 font-semibold uppercase tracking-wider text-crimson-bright">
                           <Flame className="h-3 w-3" />
@@ -1538,6 +1559,7 @@ export default function ItemsGridClient({
                 : lead.modName
               : `${category.displayName} ${item.modId}`;
             const isCalamity = isCalamityWeapon(item);
+            const upcomingVersion = getUpcomingVersion(item.stats.releaseVersion);
             const rarity = resolveItemRarity(item);
 
             return (
@@ -1566,6 +1588,15 @@ export default function ItemsGridClient({
                         height={20}
                         className="h-5 w-5 object-contain"
                       />
+                    </span>
+                  ) : null}
+                  {upcomingVersion && !isCalamity ? (
+                    <span
+                      className="absolute left-0 bottom-0 inline-flex items-center gap-1 rounded-sm border border-hydro/45 bg-ink/80 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-hydro backdrop-blur-sm"
+                      title={tc("upcomingNotice", { version: upcomingVersion })}
+                    >
+                      <Clock className="h-2.5 w-2.5" />
+                      {tc("upcomingBadge", { version: upcomingVersion })}
                     </span>
                   ) : null}
                   {isCalamity ? (

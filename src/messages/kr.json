@@ -119,6 +119,8 @@
     "zoomIn": "확대",
     "resetZoom": "확대/축소 초기화",
     "calamity": "재앙",
+    "upcomingBadge": "출시 예정 · v{version}",
+    "upcomingNotice": "버전 {version}에 출시 예정입니다. 아직 게임에서 획득할 수 없으며, 출시 전까지 정보가 바뀔 수 있습니다.",
     "series": "시리즈",
     "compatibility": "호환성",
     "category": "카테고리",

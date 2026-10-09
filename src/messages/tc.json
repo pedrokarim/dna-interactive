@@ -119,6 +119,8 @@
     "zoomIn": "放大",
     "resetZoom": "重設縮放",
     "calamity": "災厄",
+    "upcomingBadge": "即將推出 · v{version}",
+    "upcomingNotice": "預計於 {version} 版本推出。目前尚未在遊戲中開放，推出前內容可能有所變動。",
     "series": "系列",
     "compatibility": "相容性",
     "category": "分類",

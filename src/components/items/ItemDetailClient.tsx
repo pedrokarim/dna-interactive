@@ -2,8 +2,9 @@
 
 import { Link } from "@/i18n/navigation";
 import { useLocale, useTranslations } from "next-intl";
+import { getUpcomingVersion } from "@/lib/items/upcoming";
 import { useMemo, useState, type ReactNode } from "react";
-import { ArrowLeft, ChevronDown, Flame, Heart, Sparkles, Target } from "lucide-react";
+import { ArrowLeft, ChevronDown, Clock, Flame, Heart, Sparkles, Target } from "lucide-react";
 import { GlyphIcons } from "@/components/icons/GameGlyph";
 import { useAtom } from "jotai";
 import { parseAsInteger, parseAsStringLiteral, useQueryState } from "nuqs";
@@ -496,6 +497,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
 
   // Arme de calamité (WeaponSubType = Hyper) : accent cramoisi + libellés dédiés.
   const isCalamity = isWeaponsCategory && isCalamityWeapon(item);
+  const upcomingVersion = getUpcomingVersion(item.stats.releaseVersion);
   const baseElHex = weaponElement?.hex ?? elementHexFromKey(elementalAffinity?.key);
   const elHex = isCalamity ? CALAMITY_ACCENT_HEX : baseElHex;
   const tinted = elHex !== GOLD_HEX;
@@ -579,6 +581,12 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
               <DnaStars value={item.stats.rarity} className="mt-1.5 text-sm" />
             ) : null}
             <div className="mt-2 flex flex-wrap items-center gap-1.5">
+              {upcomingVersion ? (
+                <span className="inline-flex items-center gap-1.5 border border-hydro/50 bg-hydro/10 px-2.5 py-1 font-caps text-[0.58rem] uppercase tracking-[0.14em] text-hydro">
+                  <Clock className="h-3.5 w-3.5" />
+                  {tc("upcomingBadge", { version: upcomingVersion })}
+                </span>
+              ) : null}
               {isCalamity ? (
                 <span
                   className="inline-flex items-center gap-1.5 border px-2.5 py-1 font-caps text-[0.58rem] uppercase tracking-[0.14em]"
@@ -772,6 +780,13 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
           ) : null}
         </aside>
       </div>
+
+      {upcomingVersion ? (
+        <DnaPanel className="flex items-start gap-3 p-4 text-sm text-hydro">
+          <Clock className="mt-0.5 h-4 w-4 shrink-0" />
+          <p>{tc("upcomingNotice", { version: upcomingVersion })}</p>
+        </DnaPanel>
+      ) : null}
 
       {/* Fusion de calamité & Potentiel (armes Hyper) */}
       {isCalamity ? (
