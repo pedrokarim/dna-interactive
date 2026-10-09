@@ -1,0 +1,783 @@
+{
+  "positioning": {
+    "Control": {
+      "icon": "/assets/characters/roles/T_Armory_RoleType_13.png",
+      "names": {
+        "FR": "Contrôle",
+        "EN": "Crowd Control",
+        "DE": "Kontrolle",
+        "ES": "Control",
+        "JP": "行動制限",
+        "KR": "제어",
+        "TC": "控製"
+      }
+    },
+    "DEF": {
+      "icon": "/assets/characters/roles/T_Armory_RoleType_09.png",
+      "names": {
+        "FR": "DÉF",
+        "EN": "DEF",
+        "DE": "Verteidigung",
+        "ES": "DEF",
+        "JP": "防御",
+        "KR": "방어",
+        "TC": "防禦"
+      }
+    },
+    "DPS": {
+      "icon": "/assets/characters/roles/T_Armory_RoleType_02.png",
+      "names": {
+        "FR": "DPS",
+        "EN": "DPS",
+        "DE": "DPS",
+        "ES": "DPS",
+        "JP": "ダメージ",
+        "KR": "딜러",
+        "TC": "輸出"
+      }
+    },
+    "ES": {
+      "icon": "/assets/characters/roles/T_Armory_RoleType_11.png",
+      "names": {
+        "FR": "Bouclier",
+        "EN": "Shielding",
+        "DE": "Schild",
+        "ES": "Escudo",
+        "JP": "シールド",
+        "KR": "실드",
+        "TC": "護盾"
+      }
+    },
+    "HP": {
+      "icon": "/assets/characters/roles/T_Armory_RoleType_08.png",
+      "names": {
+        "FR": "PV max",
+        "EN": "Max HP",
+        "DE": "Max. LP",
+        "ES": "PV Máx.",
+        "JP": "最大HP",
+        "KR": "최대 HP",
+        "TC": "最大生命"
+      }
+    },
+    "Heal": {
+      "icon": "/assets/characters/roles/T_Armory_RoleType_06.png",
+      "names": {
+        "FR": "Soin",
+        "EN": "Healing",
+        "DE": "Heilung",
+        "ES": "Curación",
+        "JP": "回復",
+        "KR": "치료",
+        "TC": "治療"
+      }
+    },
+    "MaxSP": {
+      "icon": "/assets/characters/roles/T_Armory_RoleType_07.png",
+      "names": {
+        "FR": "Lucidité max",
+        "EN": "Max Sanity",
+        "DE": "Max. Geist",
+        "ES": "Cordura Máx.",
+        "JP": "最大SP",
+        "KR": "최대 정신력",
+        "TC": "最大神智"
+      }
+    },
+    "Minion": {
+      "icon": "/assets/characters/roles/T_Armory_RoleType_05.png",
+      "names": {
+        "FR": "Invocation",
+        "EN": "Summon",
+        "DE": "Beschworenes Objekt",
+        "ES": "Invocación",
+        "JP": "召喚ユニット",
+        "KR": "소환물",
+        "TC": "召喚物"
+      }
+    },
+    "SPRecover": {
+      "icon": "/assets/characters/roles/T_Armory_RoleType_01.png",
+      "names": {
+        "FR": "Régénération de Lucidité",
+        "EN": "Sanity Recovery",
+        "DE": "Geisteswiederherstellung",
+        "ES": "Recuperación de Cordura",
+        "JP": "SP回復",
+        "KR": "정신력 회복",
+        "TC": "神智回復"
+      }
+    },
+    "SkillDPS": {
+      "icon": "/assets/characters/roles/T_Armory_RoleType_12.png",
+      "names": {
+        "FR": "Dégâts de compétence",
+        "EN": "Skill DMG",
+        "DE": "Fähigkeits-SCH",
+        "ES": "Daño de Habilidad",
+        "JP": "スキルダメージ",
+        "KR": "스킬 대미지",
+        "TC": "技能傷害"
+      }
+    },
+    "Support": {
+      "icon": "/assets/characters/roles/T_Armory_RoleType_10.png",
+      "names": {
+        "FR": "Soutien",
+        "EN": "Support",
+        "DE": "Unterstützung",
+        "ES": "Soporte",
+        "JP": "サポート",
+        "KR": "서포터",
+        "TC": "輔助"
+      }
+    },
+    "Uweapon": {
+      "icon": "/assets/characters/roles/T_Armory_RoleType_03.png",
+      "names": {
+        "FR": "Arme de Consonance",
+        "EN": "Consonance Weapon",
+        "DE": "Resonanzwaffe",
+        "ES": "Arma de Consonancia",
+        "JP": "同調武器",
+        "KR": "동조 무기",
+        "TC": "同律武器"
+      }
+    },
+    "WeaponDPS": {
+      "icon": "/assets/characters/roles/T_Armory_RoleType_04.png",
+      "names": {
+        "FR": "DGT d’arme",
+        "EN": "Weapon DMG",
+        "DE": "Waffen-SCH",
+        "ES": "Daño de Arma",
+        "JP": "武器ダメージ",
+        "KR": "무기 대미지",
+        "TC": "武器傷害"
+      }
+    }
+  },
+  "attributes": {
+    "ATK": {
+      "FR": "ATQ",
+      "EN": "ATK",
+      "DE": "ANG",
+      "ES": "ATQ",
+      "JP": "攻撃力",
+      "KR": "공격",
+      "TC": "攻擊"
+    },
+    "ATK_Dark": {
+      "FR": "ATQ Umbro",
+      "EN": "Umbro ATK",
+      "DE": "Umbro-ANG",
+      "ES": "ATQ Umbro",
+      "JP": "闇属性攻撃",
+      "KR": "어둠 속성 공격",
+      "TC": "暗屬性攻擊"
+    },
+    "ATK_Fire": {
+      "FR": "ATQ Pyro",
+      "EN": "Pyro ATK",
+      "DE": "Pyro-ANG",
+      "ES": "ATQ Pyro",
+      "JP": "火属性攻撃",
+      "KR": "불 속성 공격",
+      "TC": "火屬性攻擊"
+    },
+    "ATK_Light": {
+      "FR": "ATQ Lumino",
+      "EN": "Lumino ATK",
+      "DE": "Lumino-ANG",
+      "ES": "ATQ Lumino",
+      "JP": "光属性攻撃",
+      "KR": "빛 속성 공격",
+      "TC": "光屬性攻擊"
+    },
+    "ATK_Psionic": {
+      "FR": "Attaque de calamité",
+      "EN": "Calamity Attack",
+      "DE": null,
+      "ES": "Ataque de calamidad",
+      "JP": "災厄攻撃",
+      "KR": "재앙 공격",
+      "TC": "災厄攻擊"
+    },
+    "ATK_Slash": {
+      "FR": "ATQ tranchante",
+      "EN": "Slash ATK",
+      "DE": "Hieb-ANG",
+      "ES": "ATQ Cortante",
+      "JP": "切断攻撃力",
+      "KR": "베기 공격",
+      "TC": "切割攻擊"
+    },
+    "ATK_Smash": {
+      "FR": "ATQ contondante",
+      "EN": "Smash ATK",
+      "DE": "Erschütterungs-ANG",
+      "ES": "ATQ Contundente",
+      "JP": "衝撃攻撃力",
+      "KR": "진동 공격",
+      "TC": "震盪攻擊"
+    },
+    "ATK_Spike": {
+      "FR": "ATQ perforante",
+      "EN": "Spike ATK",
+      "DE": "Durchdringungs-ANG",
+      "ES": "ATQ Perforante",
+      "JP": "貫通攻撃力",
+      "KR": "관통 공격",
+      "TC": "貫穿攻擊"
+    },
+    "ATK_Thunder": {
+      "FR": "ATQ Électro",
+      "EN": "Electro ATK",
+      "DE": "Elektro-ANG",
+      "ES": "ATQ Electro",
+      "JP": "雷属性攻撃",
+      "KR": "번개 속성 공격",
+      "TC": "雷屬性攻擊"
+    },
+    "ATK_Water": {
+      "FR": "ATQ Hydro",
+      "EN": "Hydro ATK",
+      "DE": "Hydro-ANG",
+      "ES": "ATQ Hydro",
+      "JP": "水属性攻撃",
+      "KR": "물 속성 공격",
+      "TC": "水屬性攻擊"
+    },
+    "ATK_Wind": {
+      "FR": "ATQ Anémo",
+      "EN": "Anemo ATK",
+      "DE": "Anemo-ANG",
+      "ES": "ATQ Anemo",
+      "JP": "風属性攻撃",
+      "KR": "바람 속성 공격",
+      "TC": "風屬性攻擊"
+    },
+    "AttackRange_Bullet": {
+      "FR": "Portée d’explosion de projectile",
+      "EN": "Projectile Explosion Range",
+      "DE": "Projektil-Explosionsradius",
+      "ES": "Rango de Explosión de Proyectil",
+      "JP": "弾丸炸裂範囲",
+      "KR": "탄환 폭발 범위",
+      "TC": "子彈爆炸範圍"
+    },
+    "AttackRange_Normal": {
+      "FR": "Portée d’attaque",
+      "EN": "ATK Range",
+      "DE": "Angriffsreichweite",
+      "ES": "Rango de Ataque",
+      "JP": "攻撃範囲",
+      "KR": "공격 범위",
+      "TC": "攻擊範圍"
+    },
+    "AttackSpeed_FallAttack": {
+      "FR": "Vitesse d’attaque plongeante",
+      "EN": "Plunging ATK Speed",
+      "DE": "Sturzangriff-GES",
+      "ES": "Vel. de Ataque Descendente",
+      "JP": "落下攻撃速度",
+      "KR": "낙하 공격 속도",
+      "TC": "下落攻擊速度"
+    },
+    "AttackSpeed_HeavyAttack": {
+      "FR": "Vitesse d’attaque chargée",
+      "EN": "Charged ATK Speed",
+      "DE": "GES des geladenen Angriffs",
+      "ES": "Vel. de Ataque Cargado",
+      "JP": "溜め攻撃速度",
+      "KR": "차지 공격 속도",
+      "TC": "蓄力攻擊速度"
+    },
+    "AttackSpeed_Normal": {
+      "FR": "Vitesse d’attaque",
+      "EN": "ATK Speed",
+      "DE": "Angriffs-GES",
+      "ES": "Vel. de Ataque",
+      "JP": "攻撃速度",
+      "KR": "공격 속도",
+      "TC": "攻擊速度"
+    },
+    "AttackSpeed_Reload": {
+      "FR": "Vitesse de rechargement",
+      "EN": "Reload Speed",
+      "DE": "Nachlade-GES",
+      "ES": "Vel. de Recarga",
+      "JP": "リロード速度",
+      "KR": "탄환 장전 속도",
+      "TC": "子彈裝填速度"
+    },
+    "AttackSpeed_SlideAttack": {
+      "FR": "Vitesse d’attaque en glissade",
+      "EN": "Sliding Attack SPD",
+      "DE": "Gleitangriff-GES",
+      "ES": "Vel. de Ataque Deslizante",
+      "JP": "スライディング攻撃速度",
+      "KR": "슬라이드 공격 속도",
+      "TC": "滑行攻擊速度"
+    },
+    "BulletConver": {
+      "FR": "Conversion de munitions",
+      "EN": "Ammo Conversion Rate",
+      "DE": "Munitions-Umwandlungsrate",
+      "ES": "Tasa de Conversión de Munición",
+      "JP": "弾薬変換率",
+      "KR": "탄약 전환율",
+      "TC": "彈藥轉化率"
+    },
+    "BulletJumpVelocityModifier": {
+      "FR": "Vitesse de bond cyclonique",
+      "EN": "Helix Leap Speed",
+      "DE": "Spiralsprung-GES",
+      "ES": "Vel. de Salto Espiral",
+      "JP": "スピンジャンプ速度",
+      "KR": "스파이럴 점프 속도",
+      "TC": "螺旋飛躍速度"
+    },
+    "BulletMax": {
+      "FR": "Munitions max",
+      "EN": "Max Ammo",
+      "DE": "Max. Munition",
+      "ES": "Munición Máx.",
+      "JP": "最大弾薬",
+      "KR": "최대 탄약",
+      "TC": "最大彈藥"
+    },
+    "BulletSpeed": {
+      "FR": "Vitesse des projectiles",
+      "EN": "Projectile SPD",
+      "DE": "Projektil-GES",
+      "ES": "Vel. de los Proyectiles",
+      "JP": "弾速",
+      "KR": "탄환 속도",
+      "TC": "子彈速度"
+    },
+    "CRD": {
+      "FR": "DGT CRIT",
+      "EN": "CRIT Damage",
+      "DE": "KRIT-SCH",
+      "ES": "Daño CRIT",
+      "JP": "クリティカルダメージ",
+      "KR": "크리티컬 대미지",
+      "TC": "暴擊傷害"
+    },
+    "CRI": {
+      "FR": "Taux CRIT",
+      "EN": "CRIT Chance",
+      "DE": "KRIT-Rate",
+      "ES": "Prob. CRIT",
+      "JP": "クリティカル率",
+      "KR": "크리티컬 확률",
+      "TC": "暴擊率"
+    },
+    "ComboHoldTime": {
+      "FR": "Durée du combo",
+      "EN": "Combo Duration",
+      "DE": "Kombodauer",
+      "ES": "Duración del Combo",
+      "JP": "コンボ持続時間",
+      "KR": "콤보 유지 시간",
+      "TC": "連擊持續時間"
+    },
+    "DEF": {
+      "FR": "DÉF",
+      "EN": "DEF",
+      "DE": "VTD",
+      "ES": "DEF",
+      "JP": "防御力",
+      "KR": "방어",
+      "TC": "防禦"
+    },
+    "DamageRate": {
+      "FR": "Dégâts infligés",
+      "EN": "Damage Dealt",
+      "DE": "Verursachter SCH",
+      "ES": "Daño Infligido",
+      "JP": "与ダメージ",
+      "KR": "입힌 대미지",
+      "TC": "造成的傷害"
+    },
+    "DamageRate_Almighty": {
+      "FR": "Pénétration de tous les attributs",
+      "EN": "PEN Stats",
+      "DE": null,
+      "ES": "Atributos de Penetración",
+      "JP": "全属性貫通",
+      "KR": "모든 속성 관통",
+      "TC": "全屬性穿透"
+    },
+    "DamageRate_Skill_Almighty": {
+      "FR": "Pénétration de compétence",
+      "EN": "Skill DMG PEN",
+      "DE": null,
+      "ES": "Penetración de Daño de Habilidad",
+      "JP": "スキル貫通",
+      "KR": "스킬 관통",
+      "TC": "技能穿透"
+    },
+    "DamageRate_Skill_Normal": {
+      "FR": "Dégâts de compétence infligés",
+      "EN": "Skill DMG Dealt",
+      "DE": null,
+      "ES": "Daño de Habilidad Infligido",
+      "JP": "スキルダメージを与える",
+      "KR": "입히는 스킬 대미지",
+      "TC": "造成技能傷害"
+    },
+    "DamagedRate": {
+      "FR": "Dégâts subis",
+      "EN": "Damage Received",
+      "DE": "Erlittener SCH",
+      "ES": "Daño Recibido",
+      "JP": "被ダメージ",
+      "KR": "받는 대미지",
+      "TC": "受到的傷害"
+    },
+    "DropDistance": {
+      "FR": "Portée ramassage auto",
+      "EN": "Auto-Pickup Range",
+      "DE": "Sammelradius",
+      "ES": "Rango de Recogida Automática",
+      "JP": "回収範囲",
+      "KR": "습득 범위",
+      "TC": "拾取範圍"
+    },
+    "EnmityValue": {
+      "FR": "Ténacité",
+      "EN": "Resolve",
+      "DE": "Entschlossenheit",
+      "ES": "Tenacidad",
+      "JP": "背水",
+      "KR": "필사",
+      "TC": "背水"
+    },
+    "ExcelWeaponTag": {
+      "FR": "Armes",
+      "EN": "Weapon",
+      "DE": "Waffenbeherrschung",
+      "ES": "Arma",
+      "JP": "武器熟練",
+      "KR": "무기 마스터리",
+      "TC": "武器精通"
+    },
+    "FallAttackRate": {
+      "FR": "Dégâts d’attaque plongeante",
+      "EN": "Plunge DMG",
+      "DE": "Sturzangriff-SCH",
+      "ES": "Daño de Ataque Descendente",
+      "JP": "落下攻撃ダメージ",
+      "KR": "낙하 공격 대미지",
+      "TC": "下落攻擊傷害"
+    },
+    "HeavyAttackRate": {
+      "FR": "Dégâts d’attaque chargée",
+      "EN": "Charged Attack DMG",
+      "DE": null,
+      "ES": "Daño de Ataque Cargado",
+      "JP": "溜め攻撃ダメージ",
+      "KR": "차지 공격 대미지",
+      "TC": "蓄力攻擊傷害"
+    },
+    "HitMontageRate": {
+      "FR": "Vitesse de récupération après coup reçu",
+      "EN": "Damage Taken Rate",
+      "DE": "Erholungs-GES nach erlittenem Treffer",
+      "ES": "Tasa de Daño Recibido",
+      "JP": "のけ反り時間短縮",
+      "KR": "피격 시간 가속",
+      "TC": "受擊時間加速"
+    },
+    "HyperTriggerConvertRate": {
+      "FR": "Conversion de Surabondance",
+      "EN": "Overflow Conversion",
+      "DE": null,
+      "ES": null,
+      "JP": "チャージ変換",
+      "KR": "오버차지 전환",
+      "TC": "充盈轉化"
+    },
+    "HyperTriggerRate": {
+      "FR": "Puissance de Surabondance",
+      "EN": "Overflow Intensity",
+      "DE": null,
+      "ES": null,
+      "JP": "チャージ威力",
+      "KR": "오버차지 위력",
+      "TC": "充盈威力"
+    },
+    "JumpVelocityModifier": {
+      "FR": "Vitesse de saut",
+      "EN": "Jump Speed",
+      "DE": "Sprung-GES",
+      "ES": "Vel. de Salto",
+      "JP": "ジャンプ速度",
+      "KR": "점프 속도",
+      "TC": "跳躍速度"
+    },
+    "LevelLimit": {
+      "FR": "Niveau max",
+      "EN": "Level Cap",
+      "DE": "Stufe-Obergrenze",
+      "ES": "Nivel Máx.",
+      "JP": "レベル上限",
+      "KR": "최고 레벨",
+      "TC": "等級上限"
+    },
+    "MagazineCapacity": {
+      "FR": "Capacité du chargeur",
+      "EN": "Mag Capacity",
+      "DE": "Magazinkapazität",
+      "ES": "Capacidad del Cargador",
+      "JP": "弾倉容量",
+      "KR": "탄창 용량",
+      "TC": "彈匣容量"
+    },
+    "MaxAvoidExecuteTimes": {
+      "FR": "Nombre d’esquives",
+      "EN": "Dodge Attempts",
+      "DE": "Ausweichversuche",
+      "ES": "Intentos de Esquiva",
+      "JP": "回避回数",
+      "KR": "회피 횟수",
+      "TC": "閃避次數"
+    },
+    "MaxES": {
+      "FR": "Bouclier",
+      "EN": "Shield",
+      "DE": "Schild",
+      "ES": "Escudo",
+      "JP": "シールド",
+      "KR": "실드",
+      "TC": "護盾"
+    },
+    "MaxHp": {
+      "FR": "PV",
+      "EN": "HP",
+      "DE": "LP",
+      "ES": "PV",
+      "JP": "HP",
+      "KR": "HP",
+      "TC": "生命"
+    },
+    "MaxSp": {
+      "FR": "Lucidité max",
+      "EN": "Max Sanity",
+      "DE": "Max. Geist",
+      "ES": "Cordura Máx.",
+      "JP": "最大SP",
+      "KR": "최대 정신력",
+      "TC": "最大神智"
+    },
+    "ModSlotNum": {
+      "FR": "Emplacement de Sceau démoniaque",
+      "EN": "Demon Wedge Slot",
+      "DE": "Dämonenkeil-Platz",
+      "ES": "Espacio de Cuña Demoníaca",
+      "JP": "魔の楔スロット",
+      "KR": "악마의 쐐기 슬롯",
+      "TC": "魔之楔槽位"
+    },
+    "ModVolume": {
+      "FR": "Tolérance",
+      "EN": "Demon Wedge Tolerance",
+      "DE": "Dämonenkeil-Toleranz",
+      "ES": "Tolerancia de Cuña Demoníaca",
+      "JP": "魔の楔コスト",
+      "KR": "악마의 쐐기 내성",
+      "TC": "魔之楔耐受值"
+    },
+    "MultiShoot": {
+      "FR": "Tir multiple",
+      "EN": "Multishot",
+      "DE": "Mehrfachschussrate",
+      "ES": "Multidisparo",
+      "JP": "多重射撃",
+      "KR": "다중 사격",
+      "TC": "多重射擊"
+    },
+    "MultiShootModifierRate": {
+      "FR": "Tir multiple (Arme)",
+      "EN": "Weapon Multishot",
+      "DE": "Mehrfachschussrate der Waffen",
+      "ES": "Multidisparo de Arma",
+      "JP": "武器多重射撃",
+      "KR": "무기 다중 사격",
+      "TC": "武器多重射擊"
+    },
+    "NormalAttackRate": {
+      "FR": "Dégâts d’attaque normale",
+      "EN": "Normal Attack DMG",
+      "DE": null,
+      "ES": "Daño de Ataque Normal",
+      "JP": "通常攻撃ダメージ",
+      "KR": "기본 공격 대미지",
+      "TC": "普通攻擊傷害"
+    },
+    "OnceDamagedPercent": {
+      "FR": "Dégâts max reçus par coup (% des PV max)",
+      "EN": "Max damage taken per hit (% of Max HP)",
+      "DE": "Maximaler Schaden pro Treffer (% der max. LP)",
+      "ES": "Daño máximo recibido por golpe (% de los PV máximos)",
+      "JP": "1回の攻撃で受ける最大ダメージの割合",
+      "KR": "한 번에 받는 최대 대미지 비율",
+      "TC": "單次受到最大傷害百分比"
+    },
+    "Positioning": {
+      "FR": "Rôle",
+      "EN": "Features",
+      "DE": "Funktionen",
+      "ES": "Rol",
+      "JP": "ポジション",
+      "KR": "포지션",
+      "TC": "定位"
+    },
+    "RayLength": {
+      "FR": "Longueur du rayon",
+      "EN": "Beam Length",
+      "DE": "Strahlenlänge",
+      "ES": "Longitud del Rayo",
+      "JP": "射線の長さ",
+      "KR": "광선 길이",
+      "TC": "射線長度"
+    },
+    "ReloadBulletNoLoss": {
+      "FR": "Probabilité de rechargement sans consommer de munitions",
+      "EN": "Chance to reload without consuming Ammo",
+      "DE": "Die Wahrscheinlichkeit, beim Nachladen keine Munition zu verbrauchen",
+      "ES": "Probabilidad de recarga sin consumir municiones",
+      "JP": "リロード時に弾薬を消費しない確率",
+      "KR": "재장전 시 탄환 비소모 확률",
+      "TC": "換彈不消耗備彈概率"
+    },
+    "SkillEfficiency": {
+      "FR": "Efficacité de compétence",
+      "EN": "Skill Efficiency",
+      "DE": "Fähigkeitseffizienz",
+      "ES": "Eficiencia de Habilidad",
+      "JP": "スキル効率",
+      "KR": "스킬 효율",
+      "TC": "技能效益"
+    },
+    "SkillIntensity": {
+      "FR": "Puissance de compétence",
+      "EN": "Skill Intensity",
+      "DE": "Fähigkeits-SCH",
+      "ES": "Daño de Habilidad",
+      "JP": "スキル威力",
+      "KR": "스킬 위력",
+      "TC": "技能威力"
+    },
+    "SkillRange": {
+      "FR": "Portée de compétence",
+      "EN": "Skill Range",
+      "DE": "Fähigkeitsreichweite",
+      "ES": "Rango de Habilidad",
+      "JP": "スキル範囲",
+      "KR": "스킬 범위",
+      "TC": "技能範圍"
+    },
+    "SkillSustain": {
+      "FR": "Durée de compétence",
+      "EN": "Skill Duration",
+      "DE": "Fähigkeitsdauer",
+      "ES": "Duración de Habilidad",
+      "JP": "スキル耐久",
+      "KR": "스킬 지속",
+      "TC": "技能耐久"
+    },
+    "SlideAttackRate": {
+      "FR": "Dégâts d’attaque en glissade",
+      "EN": "Sliding Attack DMG",
+      "DE": "Gleitangriff-SCH",
+      "ES": "Daño de Ataque Deslizante",
+      "JP": "スライディング攻撃ダメージ",
+      "KR": "슬라이드 공격 대미지",
+      "TC": "滑行攻擊傷害"
+    },
+    "SlideFrictionModifier": {
+      "FR": "Friction de glissade",
+      "EN": "Sliding Friction",
+      "DE": "Gleitreibung",
+      "ES": "Fricción Deslizante",
+      "JP": "スライディング摩擦",
+      "KR": "슬라이딩 마찰",
+      "TC": "滑行摩擦"
+    },
+    "SpRecoverValue": {
+      "FR": "Vitesse naturelle de régén. de Lucidité",
+      "EN": "Natural Sanity Recovery Rate",
+      "DE": "Natürliche Wiederherstellungs-GES des Geists",
+      "ES": "Velocidad natural de regeneración de Cordura",
+      "JP": "SP自然回復速度",
+      "KR": "정신력 자동 회복 속도",
+      "TC": "神智自然回復速度"
+    },
+    "StrongValue": {
+      "FR": "Vigueur",
+      "EN": "Morale",
+      "DE": "Moral",
+      "ES": "Moral",
+      "JP": "高揚",
+      "KR": "격양",
+      "TC": "昂揚"
+    },
+    "TriggerEsRate": {
+      "FR": "Dégâts infligés aux boucliers lors d’un Effet supplémentaire : Tranchant",
+      "EN": "Shield Reduce on Bonus Effect: Slash",
+      "DE": "Schaden am Schild bei Auslösung des Bonuseffekts: Hieb",
+      "ES": "Daños infligidos a los escudos durante un Efecto adicional: Cortante",
+      "JP": "切断追加効果発動時のシールドへの与ダメージ",
+      "KR": "베기 추가 효과 발동 시 실드에 대한 대미지",
+      "TC": "觸發切割額外效果時對護盾傷害"
+    },
+    "TriggerHpRate": {
+      "FR": "Dégâts infligés aux PV lors d’un Effet supplémentaire : Perforant",
+      "EN": "HP Reduce on Bonus Effect: Spike",
+      "DE": "Schaden an LP bei Auslösung des Bonuseffekts: Durchdringung",
+      "ES": "Daños infligidos a los PV durante un Efecto adicional: Perforante",
+      "JP": "貫通追加効果発動時のHPへの与ダメージ",
+      "KR": "관통 추가 효과 발동 시 HP에 대한 대미지",
+      "TC": "觸發貫穿額外效果時對生命傷害"
+    },
+    "TriggerProbModifierValue": {
+      "FR": "Chance de déclenchement d’arme",
+      "EN": "Weapon Trigger Probability",
+      "DE": "Waffen-Auslöserate",
+      "ES": "Probabilidad de activación del arma",
+      "JP": "武器の発動確率",
+      "KR": "무기 발동 확률",
+      "TC": "武器觸發機率"
+    },
+    "TriggerProbability": {
+      "FR": "Chance de déclenchement",
+      "EN": "Trigger Probability",
+      "DE": "Auslöserate",
+      "ES": "Probabilidad de Activación",
+      "JP": "発動確率",
+      "KR": "발동 확률",
+      "TC": "觸發機率"
+    },
+    "WeaponCRIModifierRate": {
+      "FR": "Taux CRIT (Arme)",
+      "EN": "Weapon CRIT Chance",
+      "DE": "KRIT-Rate der Waffen",
+      "ES": "Prob. CRIT de Arma",
+      "JP": "武器クリティカル率",
+      "KR": "무기 크리티컬 확률",
+      "TC": "武器暴擊率"
+    },
+    "WeaponType": {
+      "FR": "Type d’arme",
+      "EN": "Weapon Type",
+      "DE": "Waffentyp",
+      "ES": "Tipo de arma",
+      "JP": "武器タイプ",
+      "KR": "무기 유형",
+      "TC": "武器類型"
+    }
+  }
+}

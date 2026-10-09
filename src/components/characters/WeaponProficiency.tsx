@@ -69,53 +69,60 @@ export function WeaponProficiencyPanel({
   return (
     <DnaPanel className="p-4 md:p-5">
       <DnaSectionLabel>{t("title")}</DnaSectionLabel>
-      <p className="mt-2 text-xs leading-relaxed text-muted">{t("bonus", { percent: BONUS_PERCENT })}</p>
+      <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted">{t("bonus", { percent: BONUS_PERCENT })}</p>
 
       {proficiency.allTypes ? (
-        <p className="mt-3 text-sm text-parch">
+        <p className="mt-4 text-base text-parch">
           <span className="font-semibold text-gold-bright">{allWeaponTypesName(lang)}</span>
           {" – "}
           {t("allTypes")}
         </p>
       ) : (
-        <>
-          <h3 className="mt-4 font-caps text-[0.6rem] uppercase tracking-[0.2em] text-gold">{t("baseLabel")}</h3>
-          <div className="mt-2 flex flex-wrap gap-x-5 gap-y-2">
-            {proficiency.base.map((type) => (
-              <WeaponTypeChip key={type.tag} type={type} name={weaponTypeName(type, lang)} />
-            ))}
+        // En largeur : d'origine, supplémentaire, coût. Sur un écran étroit, les trois s'empilent.
+        <div className="mt-5 grid gap-x-8 gap-y-6 lg:grid-cols-[auto_minmax(0,1fr)_auto]">
+          <div>
+            <h3 className="font-caps text-[0.6rem] uppercase tracking-[0.2em] text-gold">{t("baseLabel")}</h3>
+            <div className="mt-3 flex flex-wrap gap-x-6 gap-y-3 lg:flex-col">
+              {proficiency.base.map((type) => (
+                <WeaponTypeChip key={type.tag} type={type} name={weaponTypeName(type, lang)} />
+              ))}
+            </div>
           </div>
 
-          <h3 className="mt-5 font-caps text-[0.6rem] uppercase tracking-[0.2em] text-gold">{t("extraLabel")}</h3>
-          <p className="mt-1 text-xs leading-relaxed text-muted">{t("extraHint")}</p>
-          <div className="mt-2.5 grid grid-cols-2 gap-x-3 gap-y-2.5">
-            {proficiency.extra.map((type) => (
-              <WeaponTypeChip key={type.tag} type={type} name={weaponTypeName(type, lang)} tone="extra" size="sm" />
-            ))}
+          <div className="lg:border-l lg:border-white/8 lg:pl-8">
+            <h3 className="font-caps text-[0.6rem] uppercase tracking-[0.2em] text-gold">{t("extraLabel")}</h3>
+            <div className="mt-3 grid grid-cols-2 gap-x-6 gap-y-3">
+              {proficiency.extra.map((type) => (
+                <WeaponTypeChip key={type.tag} type={type} name={weaponTypeName(type, lang)} tone="extra" size="sm" />
+              ))}
+            </div>
+            <p className="mt-3 max-w-xl text-xs leading-relaxed text-muted">{t("extraHint")}</p>
           </div>
 
           {proficiency.extra[0] ? (
-            <div className="mt-4 border-t border-white/8 pt-3">
-              <p className="mb-2 text-xs text-muted">{t("costLabel")}</p>
-              <UnlockCost type={proficiency.extra[0]} lang={lang} />
-              <p className="mt-2 text-xs leading-relaxed text-muted">{t("costHint")}</p>
+            <div className="lg:max-w-[19rem] lg:border-l lg:border-white/8 lg:pl-8">
+              <h3 className="font-caps text-[0.6rem] uppercase tracking-[0.2em] text-gold">{t("costLabel")}</h3>
+              <div className="mt-3">
+                <UnlockCost type={proficiency.extra[0]} lang={lang} />
+              </div>
+              <p className="mt-3 text-xs leading-relaxed text-muted">{t("costHint")}</p>
             </div>
           ) : null}
-        </>
+        </div>
       )}
 
-      <div className="mt-4 flex flex-col gap-2">
+      <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-white/8 pt-4">
         {onOpenBuild && !proficiency.allTypes ? (
           <button
             type="button"
             onClick={onOpenBuild}
-            className="inline-flex items-center justify-center gap-2 border border-gold/45 bg-gold/10 px-3 py-2 font-caps text-[0.62rem] uppercase tracking-[0.18em] text-gold-bright transition-colors hover:bg-gold/20"
+            className="inline-flex items-center justify-center gap-2 border border-gold/45 bg-gold/10 px-4 py-2 font-caps text-[0.62rem] uppercase tracking-[0.18em] text-gold-bright transition-colors hover:bg-gold/20"
           >
             {t("seeBuild")}
             <ArrowRight className="h-3.5 w-3.5" />
           </button>
         ) : null}
-        <Link href={PROFICIENCY_GUIDE_HREF} className="text-center text-xs text-muted underline-offset-4 hover:text-parch hover:underline">
+        <Link href={PROFICIENCY_GUIDE_HREF} className="text-xs text-muted underline-offset-4 hover:text-parch hover:underline">
           {t("guideLink")}
         </Link>
       </div>

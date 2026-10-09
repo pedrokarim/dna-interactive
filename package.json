@@ -21,6 +21,7 @@
     "db:migrate:theatre": "node scripts/migrate-theatre.mjs",
     "extract:theatre:site": "node research_data/extract-theatre-rotations.mjs",
     "extract:proficiency:site": "node research_data/extract-weapon-proficiency.mjs",
+    "extract:roles:site": "node research_data/extract-character-roles.mjs",
     "seed:announcement:falsi": "bun run scripts/seed-announcement-falsi.ts",
     "map:check": "bun run scripts/check-map-taxonomy.ts",
     "db:migrate:map": "node scripts/migrate-map.mjs",

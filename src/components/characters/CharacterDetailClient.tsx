@@ -76,6 +76,8 @@ import { BuildProficiencyAdvice } from "@/components/characters/BuildProficiency
 import { WeaponProficiencyPanel } from "@/components/characters/WeaponProficiency";
 import { suggestExtraProficiencies } from "@/lib/characters/weapon-proficiency-build";
 import { getWeaponType, weaponTypeName } from "@/lib/characters/weapon-proficiency";
+import { attributeIcon, attributeName, positioningMeta } from "@/lib/characters/attribute-meta";
+import { GameGlyph } from "@/components/characters/GameGlyph";
 import { DnaSectionLabel } from "@/components/dna/SectionLabel";
 import { DnaStatRow } from "@/components/dna/StatRow";
 import { DnaTag } from "@/components/dna/Tag";
@@ -277,13 +279,6 @@ const ATTR_LABEL_KEYS: Record<string, string> = {
 };
 
 /** Teintes seules : le libellé vient des messages (`characterDetail.position*`). */
-const POSITIONING_STYLES: Record<string, { className: string }> = {
-  DPS: { className: "border-crimson-bright/40 bg-crimson-bright/10 text-crimson-bright" },
-  Support: { className: "border-anemo/40 bg-anemo/10 text-anemo" },
-  Uweapon: { className: "border-hydro/40 bg-hydro/10 text-hydro" },
-  WeaponDPS: { className: "border-gold/40 bg-gold/10 text-gold" },
-};
-
 function formatAddonValue(attr: CharacterAddonAttr): string {
   if (attr.rate !== undefined) {
     const pct = attr.rate * 100;
@@ -304,30 +299,26 @@ function StatBar({
   value,
   maxValue,
   icon,
-  barColorClass,
+  barColorClass = "from-gold-deep to-gold-bright",
 }: {
   label: string;
   value: number;
   maxValue: number;
-  icon: React.ReactNode;
-  barColorClass: string;
+  /** Icône du jeu ; `null` quand le jeu n'en fournit pas pour cet attribut. */
+  icon: string | null;
+  barColorClass?: string;
 }) {
   const percent = maxValue > 0 ? Math.min((value / maxValue) * 100, 100) : 100;
   return (
-    <div className="flex items-center gap-3">
-      <div className="flex h-9 w-9 shrink-0 items-center justify-center border border-white/10 bg-panel/80">
-        {icon}
-      </div>
+    <div className="flex items-center gap-3.5">
+      {icon ? <GameGlyph src={icon} /> : <span aria-hidden className="h-11 w-11 shrink-0" />}
       <div className="min-w-0 flex-1">
         <div className="flex items-baseline justify-between gap-2">
           <span className="text-sm text-parch/85">{label}</span>
-          <span className="text-sm font-semibold tabular-nums text-parch">{value}</span>
+          <span className="text-base font-semibold tabular-nums text-parch">{value}</span>
         </div>
-        <div className="mt-1 h-1.5 overflow-hidden rounded-full bg-panel">
-          <div
-            className={`h-full rounded-full bg-gradient-to-r transition-all duration-300 ${barColorClass}`}
-            style={{ width: `${percent}%` }}
-          />
+        <div className="mt-1.5 h-1 overflow-hidden bg-white/8">
+          <div className={`h-full bg-gradient-to-r transition-all duration-300 ${barColorClass}`} style={{ width: `${percent}%` }} />
         </div>
       </div>
     </div>
@@ -3196,12 +3187,6 @@ export default function CharacterDetailClient({
               </button>
             </DnaPanel>
 
-            <WeaponProficiencyPanel
-              charId={character.charId}
-              lang={selectedLanguage}
-              onOpenBuild={() => setActiveTab("build")}
-            />
-
             <DnaPanel className="p-4 md:p-5">
               <div className="flex flex-wrap gap-1.5">
                 {character.rarity ? (
@@ -3291,171 +3276,45 @@ export default function CharacterDetailClient({
         </div>
               {/* — attributs détaillés (suite de l'onglet Attributs) — */}
               <section className="space-y-3 md:space-y-5">
+          {/* Armes de prédilection : sous l'illustration, pas à côté, pour ne pas étirer la colonne. */}
+          <WeaponProficiencyPanel
+            charId={character.charId}
+            lang={selectedLanguage}
+            onOpenBuild={() => setActiveTab("build")}
+          />
+
           {/* Base stats */}
-          <div className="border border-line/25 bg-panel/85 backdrop-blur-sm p-3 md:p-5">
-            <h3 className="relative flex items-center gap-2.5 font-caps text-[0.66rem] uppercase tracking-[0.34em] text-gold"><span aria-hidden className="text-[0.7rem] text-gold-bright">◈</span>
-              {t("baseStats")}
-            </h3>
-            <div className="mt-4 space-y-3">
+          <DnaPanel className="p-4 md:p-5">
+            <DnaSectionLabel>{t("baseStats")}</DnaSectionLabel>
+            <div className="mt-4 grid gap-x-10 gap-y-4 md:grid-cols-2">
               <StatBar
                 label={atkLabel}
                 value={computedStats.atk}
                 maxValue={maxLevelStats.atk}
-                icon={
-                  elementIcon ? (
-                    <img src={elementIcon} alt="" width={20} height={20} className="h-5 w-5 object-contain" />
-                  ) : (
-                    <Swords className="h-4 w-4 text-muted" />
-                  )
-                }
+                icon={elementIcon ?? attributeIcon("ATK")}
                 barColorClass={atkBarColor}
               />
+              <StatBar label={t("statMaxHp")} value={computedStats.maxHp} maxValue={maxLevelStats.maxHp} icon={attributeIcon("MaxHp")} />
               <StatBar
-                label={t("statMaxHp")}
-                value={computedStats.maxHp}
-                maxValue={maxLevelStats.maxHp}
-                icon={<Heart className="h-4 w-4 text-anemo" />}
-                barColorClass="from-anemo/80 to-anemo/60"
-              />
-              <StatBar
-                label="Bouclier"
+                label={attributeName("MaxES", selectedLanguage) ?? "Bouclier"}
                 value={computedStats.maxES}
                 maxValue={maxLevelStats.maxES}
-                icon={<Shield className="h-4 w-4 text-hydro" />}
-                barColorClass="from-hydro/80 to-hydro/60"
+                icon={attributeIcon("MaxES")}
               />
               <StatBar
-                label="DEF"
+                label={attributeName("DEF", selectedLanguage) ?? "DEF"}
                 value={computedStats.def}
                 maxValue={maxLevelStats.def}
-                icon={<Shield className="h-4 w-4 text-gold" />}
-                barColorClass="from-gold/80 to-gold/60"
+                icon={attributeIcon("DEF")}
               />
-              <StatBar
-                label={t("statMaxSpLong")}
-                value={computedStats.maxSp}
-                maxValue={maxLevelStats.maxSp}
-                icon={<Sparkles className="h-4 w-4 text-electro" />}
-                barColorClass="from-electro/80 to-electro/60"
-              />
+              <StatBar label={t("statMaxSpLong")} value={computedStats.maxSp} maxValue={maxLevelStats.maxSp} icon={attributeIcon("MaxSp")} />
             </div>
-          </div>
+          </DnaPanel>
 
-          {/* Addon attrs (ascension bonuses) */}
-          {character.addonAttrs.length > 0 && (
-            <div className="border border-line/25 bg-panel/85 backdrop-blur-sm p-3 md:p-5">
-              <h3 className="relative flex items-center gap-2.5 font-caps text-[0.66rem] uppercase tracking-[0.34em] text-gold"><span aria-hidden className="text-[0.7rem] text-gold-bright">◈</span>
-                Bonus d&apos;ascension
-              </h3>
-              <div className="mt-4 grid gap-2 sm:grid-cols-2">
-                {character.addonAttrs.map((attr) => (
-                  <div
-                    key={attr.attrId}
-                    className="flex items-center gap-3 border border-white/10 bg-ink/50 px-3 py-2.5"
-                  >
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center border border-white/10 bg-panel/80">
-                      <img
-                        src={attr.iconPath}
-                        alt=""
-                        width={20}
-                        height={20}
-                        className="h-5 w-5 object-contain brightness-0 invert"
-                      />
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <p className="text-sm text-parch/85">
-                        {ATTR_LABEL_KEYS[attr.attrName] ? t(ATTR_LABEL_KEYS[attr.attrName]) : attr.attrName}
-                      </p>
-                    </div>
-                    <span className="shrink-0 text-sm font-semibold text-gold">
-                      {formatAddonValue(attr)}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Recommended attrs + Positioning */}
-          <div className="grid gap-3 md:gap-5 lg:grid-cols-2">
-            {character.recommendAttr.length > 0 && (
-              <div className="border border-line/25 bg-panel/85 backdrop-blur-sm p-3 md:p-5">
-                <h3 className="relative flex items-center gap-2.5 font-caps text-[0.66rem] uppercase tracking-[0.34em] text-gold"><span aria-hidden className="text-[0.7rem] text-gold-bright">◈</span>
-                  Attributs recommandes
-                </h3>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {character.recommendAttr.map((attr) => (
-                    <span
-                      key={attr}
-                      className="rounded-sm border border-white/10 bg-panel/60 px-3 py-1 text-xs text-parch"
-                    >
-                      {ATTR_LABEL_KEYS[attr] ? t(ATTR_LABEL_KEYS[attr]) : attr}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {character.positioning.length > 0 && (
-              <div className="border border-line/25 bg-panel/85 backdrop-blur-sm p-3 md:p-5">
-                <h3 className="relative flex items-center gap-2.5 font-caps text-[0.66rem] uppercase tracking-[0.34em] text-gold"><span aria-hidden className="text-[0.7rem] text-gold-bright">◈</span>
-                  {t("positioning")}
-                </h3>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {character.positioning.map((pos) => {
-                    const style = POSITIONING_STYLES[pos];
-                    // `position<Pos>` n'existe que pour les rôles connus ; sinon on
-                    // retombe sur la valeur brute des données.
-                    const label = style ? t(`position${pos}`) : pos;
-                    return (
-                      <span
-                        key={pos}
-                        className={`rounded-sm border px-3 py-1 text-xs font-medium ${
-                          style?.className ?? "border-white/10 text-parch/85"
-                        }`}
-                      >
-                        {label}
-                      </span>
-                    );
-                  })}
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Ascension levels */}
-          {character.ascensionLevels.length > 0 && (
-            <div className="border border-line/25 bg-panel/85 backdrop-blur-sm p-3 md:p-5">
-              <h3 className="relative flex items-center gap-2.5 font-caps text-[0.66rem] uppercase tracking-[0.34em] text-gold"><span aria-hidden className="text-[0.7rem] text-gold-bright">◈</span>
-                {t("ascensionTiers")}
-              </h3>
-              <div className="mt-3 flex flex-wrap items-center gap-1">
-                {character.ascensionLevels.map((lvl, i) => (
-                  <div key={lvl} className="flex items-center gap-1">
-                    <span
-                      className={`border px-3 py-1.5 text-xs font-medium tabular-nums ${
-                        level >= lvl
-                          ? "border-gold/40 bg-gold/15 text-gold"
-                          : "border-white/10 bg-panel/50 text-muted"
-                      }`}
-                    >
-                      {t("levelShort")} {lvl}
-                    </span>
-                    {i < character.ascensionLevels.length - 1 && (
-                      <ChevronRight className="h-3 w-3 text-muted-2" />
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-          {/* Skill Icons */}
+          {/* Skill Icons : avant les bonus et les paliers d'ascension, qu'on consulte bien moins. */}
           {(character.skillIcons.skill1.publicPath || character.skillIcons.skill2.publicPath || character.skillIcons.skill3.publicPath) && (
-            <div className="border border-line/25 bg-panel/85 backdrop-blur-sm p-3 md:p-5">
-              <h2 className="flex items-center gap-2 text-base md:text-lg font-semibold text-parch">
-                <Sparkles className="h-4 w-4 text-gold/80" />
-                {t("tabSkills")}
-              </h2>
+            <DnaPanel className="p-4 md:p-5">
+              <DnaSectionLabel>{t("tabSkills")}</DnaSectionLabel>
               {/* Avant, ce bloc n'affichait qu'une icône et un libellé generique
                   (« Compétence 1/2/3 ») : aucune information exploitable. On
                   résout le vrai nom et le début de la description depuis le kit,
@@ -3478,7 +3337,7 @@ export default function CharacterDetailClient({
                         key={key}
                         className="flex items-start gap-3 rounded-sm border border-line/20 bg-ink/30 p-3"
                       >
-                        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/10 bg-panel/80">
+                        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-gold/45 bg-[#14110d]">
                           <img src={icon} alt={name} width={32} height={32} className="h-8 w-8 object-contain" />
                         </div>
                         <div className="min-w-0">
@@ -3502,9 +3361,91 @@ export default function CharacterDetailClient({
               >
                 {t("tabSkills")} <ChevronRight className="h-3 w-3" />
               </button>
-            </div>
+            </DnaPanel>
           )}
 
+          {/* Addon attrs (ascension bonuses) */}
+          {character.addonAttrs.length > 0 && (
+            <DnaPanel className="p-4 md:p-5">
+              <DnaSectionLabel>Bonus d&apos;ascension</DnaSectionLabel>
+              <div className="mt-4 grid gap-2.5 sm:grid-cols-2">
+                {character.addonAttrs.map((attr) => (
+                  <div key={attr.attrId} className="flex items-center gap-3 border border-white/8 bg-ink/45 px-3 py-2.5">
+                    <GameGlyph src={attr.iconPath} />
+                    <p className="min-w-0 flex-1 text-sm text-parch/90">
+                      {attributeName(attr.attrName, selectedLanguage) ??
+                        (ATTR_LABEL_KEYS[attr.attrName] ? t(ATTR_LABEL_KEYS[attr.attrName]) : attr.attrName)}
+                    </p>
+                    <span className="shrink-0 text-base font-semibold tabular-nums text-gold-bright">{formatAddonValue(attr)}</span>
+                  </div>
+                ))}
+              </div>
+            </DnaPanel>
+          )}
+
+          {/* Recommended attrs + Positioning */}
+          <div className="grid gap-3 md:gap-5 lg:grid-cols-2">
+            {character.recommendAttr.length > 0 && (
+              <DnaPanel className="p-4 md:p-5">
+                <DnaSectionLabel>Attributs recommandés</DnaSectionLabel>
+                <div className="mt-3 flex flex-wrap gap-x-5 gap-y-3">
+                  {character.recommendAttr.map((attr) => {
+                    const icon = attributeIcon(attr);
+                    return (
+                      <span key={attr} className="inline-flex items-center gap-2.5 text-sm text-parch">
+                        {/* Pas d'icône du jeu pour cet attribut : on n'en invente pas. */}
+                        {icon ? <GameGlyph src={icon} size="sm" /> : null}
+                        {attributeName(attr, selectedLanguage) ?? (ATTR_LABEL_KEYS[attr] ? t(ATTR_LABEL_KEYS[attr]) : attr)}
+                      </span>
+                    );
+                  })}
+                </div>
+              </DnaPanel>
+            )}
+
+            {character.positioning.length > 0 && (
+              <DnaPanel className="p-4 md:p-5">
+                <DnaSectionLabel>{t("positioning")}</DnaSectionLabel>
+                <div className="mt-3 flex flex-wrap gap-x-5 gap-y-3">
+                  {character.positioning.map((pos) => {
+                    // Nom et icône officiels du rôle ; à défaut, la valeur brute des données.
+                    const role = positioningMeta(pos, selectedLanguage);
+                    return (
+                      <span key={pos} className="inline-flex items-center gap-2.5 text-sm text-parch">
+                        {role ? <GameGlyph src={role.icon} size="sm" /> : null}
+                        {role?.name ?? pos}
+                      </span>
+                    );
+                  })}
+                </div>
+              </DnaPanel>
+            )}
+          </div>
+
+          {/* Ascension levels */}
+          {character.ascensionLevels.length > 0 && (
+            <DnaPanel className="p-4 md:p-5">
+              <DnaSectionLabel>{t("ascensionTiers")}</DnaSectionLabel>
+              <div className="mt-3 flex flex-wrap items-center gap-1">
+                {character.ascensionLevels.map((lvl, i) => (
+                  <div key={lvl} className="flex items-center gap-1">
+                    <span
+                      className={`border px-3 py-1.5 text-xs font-medium tabular-nums ${
+                        level >= lvl
+                          ? "border-gold/40 bg-gold/15 text-gold"
+                          : "border-white/10 bg-panel/50 text-muted"
+                      }`}
+                    >
+                      {t("levelShort")} {lvl}
+                    </span>
+                    {i < character.ascensionLevels.length - 1 && (
+                      <ChevronRight className="h-3 w-3 text-muted-2" />
+                    )}
+                  </div>
+                ))}
+              </div>
+            </DnaPanel>
+          )}
           {/* Consonance Weapon info box */}
           {character.consonanceWeapons?.length > 0 && (
             <div className="border border-electro/30 bg-electro/5 p-3 md:p-5">
