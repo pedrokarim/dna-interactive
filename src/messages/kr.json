@@ -832,6 +832,11 @@
     "charactersPathUnknown": "이 빌드의 추천 순서는 아직 정리되지 않았습니다.",
     "charactersRankBest": "추천",
     "charactersRankAlternative": "대안",
+    "genimonBuildTitle": "빌드: 노릴 특성",
+    "genimonBuildIntro": "이 마령을 데려가는 사이트 내 빌드 {count}개를 기준으로 합니다. 특성은 {slots}개까지 가질 수 있으며, 가장 많이 선택된 순서로 정렬했습니다.",
+    "genimonBuildShare": "빌드 {total}개 중 {count}개",
+    "genimonBuildFirst": "빌드 {count}개에서 최우선",
+    "genimonBuildOthers": "그 밖의 특성",
     "genimonCharactersIntro": "이 마령을 데려가는 추천 빌드의 캐릭터와, 거기서 노리는 특성.",
     "genimonRankBest": "최적"
   },

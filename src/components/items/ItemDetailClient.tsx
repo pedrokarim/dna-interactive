@@ -21,7 +21,7 @@ import { itemsFavoritesAtom, toggleItemFavoriteAtom } from "@/lib/store";
 import { cn } from "@/components/dna/cn";
 import { DnaPanel } from "@/components/dna/Panel";
 import type { WeaponUsage } from "@/lib/items/weapon-usage";
-import type { GenimonUsage } from "@/lib/items/genimon-usage";
+import type { GenimonTraitBuild, GenimonTraitTally, GenimonUsage } from "@/lib/items/genimon-usage";
 import { TraitTooltip } from "@/components/genimons/TraitTooltip";
 import { DnaSegmented } from "@/components/dna/Segmented";
 import { DnaSectionLabel } from "@/components/dna/SectionLabel";
@@ -62,6 +62,8 @@ type ItemDetailClientProps = {
   /** Personnages dont un build curé recommande cette arme. */
   weaponUsage?: WeaponUsage[];
   genimonUsage?: GenimonUsage[];
+  /** Traits les plus visés sur cette créature, d'après les builds du site. */
+  genimonTraitBuild?: GenimonTraitBuild | null;
 };
 
 function formatRawFieldValue(value: ItemRawField): string {
@@ -295,7 +297,23 @@ function parseBattlePetAttributes(value: ItemRawField | undefined): ParsedBattle
   return attributes;
 }
 
-export default function ItemDetailClient({ category, item, relatedDrafts = [], weaponBuilds = [], weaponUsage = [], genimonUsage = [] }: ItemDetailClientProps) {
+/** Part des builds qui visent un Trait : une jauge, le décompte, et les fois où il passe en premier. */
+function GenimonTraitShare({ row, total }: { row: GenimonTraitTally; total: number }) {
+  const t = useTranslations("itemDetail");
+  return (
+    <span className="mt-2 block">
+      <span className="block h-1 overflow-hidden bg-white/8">
+        <span className="block h-full bg-gradient-to-r from-gold-deep to-gold-bright" style={{ width: `${(row.builds / total) * 100}%` }} />
+      </span>
+      <span className="mt-1 block text-xs tabular-nums text-muted">
+        {t("genimonBuildShare", { count: row.builds, total })}
+        {row.first > 0 ? ` · ${t("genimonBuildFirst", { count: row.first })}` : null}
+      </span>
+    </span>
+  );
+}
+
+export default function ItemDetailClient({ category, item, relatedDrafts = [], weaponBuilds = [], weaponUsage = [], genimonUsage = [], genimonTraitBuild = null }: ItemDetailClientProps) {
   const [activeWeaponBuildIndex, setActiveWeaponBuildIndex] = useState(0);
   // Personnage sélectionné pour l'arbre de Potentiel : son build porte l'ordre conseillé.
   const [activeUsageIndex, setActiveUsageIndex] = useState(0);
@@ -952,7 +970,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
           <p className="mt-2 text-sm text-parch/85">{t("charactersIntro")}</p>
           <ul className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
             {weaponUsage.map((usage, index) => (
-              <li key={`${usage.characterId}-${usage.buildName}-${index}`}>
+              <li key={`${usage.characterId}-${usage.buildName}-${index}`} className="min-w-0">
                 <Link
                   href={`${usage.href}?tab=build`}
                   className="flex items-center justify-between gap-3 rounded-sm border border-white/10 bg-ink/55 px-3 py-2 transition-colors hover:border-gold/40"
@@ -990,6 +1008,63 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
         </DnaPanel>
       ) : null}
 
+      {/* Le build de la créature : les Traits que les builds du site y visent le plus. */}
+      {isGenimonsCategory && genimonTraitBuild ? (
+        <DnaPanel className="p-4 md:p-5">
+          <DnaSectionLabel>{t("genimonBuildTitle")}</DnaSectionLabel>
+          <p className="mt-2 max-w-3xl text-sm text-parch/85">
+            {t("genimonBuildIntro", { count: genimonTraitBuild.totalBuilds, slots: genimonTraitBuild.slots })}
+          </p>
+
+          <ol className="mt-4 grid gap-2.5 sm:grid-cols-2 xl:grid-cols-4">
+            {genimonTraitBuild.recommended.map((row, index) => (
+              <li key={row.trait.key} className="flex gap-3 border border-gold/30 bg-gold/6 p-3">
+                <span className="relative shrink-0 self-start">
+                  {row.trait.icon ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={row.trait.icon} alt="" width={56} height={56} loading="lazy" className="h-14 w-14 object-contain" />
+                  ) : (
+                    <span className="block h-14 w-14" />
+                  )}
+                  <span className="absolute -left-1.5 -top-1.5 grid h-5 w-5 place-items-center rounded-full bg-gold font-caps text-[0.62rem] leading-none text-ink">
+                    {index + 1}
+                  </span>
+                </span>
+                <span className="min-w-0 flex-1">
+                  <span className="block font-display text-lg leading-tight text-parch">{row.trait.name}</span>
+                  <span className="mt-1 block text-xs leading-relaxed text-parch/75">{row.trait.effect}</span>
+                  <GenimonTraitShare row={row} total={genimonTraitBuild.totalBuilds} />
+                </span>
+              </li>
+            ))}
+          </ol>
+
+          {genimonTraitBuild.others.length > 0 ? (
+            <>
+              <h3 className="mt-5 font-caps text-[0.6rem] uppercase tracking-[0.2em] text-gold">{t("genimonBuildOthers")}</h3>
+              <ul className="mt-3 grid gap-x-8 gap-y-3 sm:grid-cols-2">
+                {genimonTraitBuild.others.map((row) => (
+                  <li key={row.trait.key} className="flex items-center gap-3">
+                    <TraitTooltip trait={row.trait}>
+                      <span className="flex w-40 shrink-0 cursor-help items-center gap-3">
+                        {row.trait.icon ? (
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <img src={row.trait.icon} alt="" width={40} height={40} loading="lazy" className="h-10 w-10 shrink-0 object-contain" />
+                        ) : null}
+                        <span className="text-sm text-parch">{row.trait.name}</span>
+                      </span>
+                    </TraitTooltip>
+                    <span className="min-w-0 flex-1">
+                      <GenimonTraitShare row={row} total={genimonTraitBuild.totalBuilds} />
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ) : null}
+        </DnaPanel>
+      ) : null}
+
       {/* Personnages qui emmènent ce Géniemon, et ce qu'ils y greffent. */}
       {isGenimonsCategory && genimonUsage.length > 0 ? (
         <DnaPanel className="p-4 md:p-5">
@@ -997,7 +1072,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
           <p className="mt-2 text-sm text-parch/85">{t("genimonCharactersIntro")}</p>
           <ul className="mt-4 grid gap-2 lg:grid-cols-2">
             {genimonUsage.map((usage, index) => (
-              <li key={`${usage.characterId}-${usage.buildName}-${index}`}>
+              <li key={`${usage.characterId}-${usage.buildName}-${index}`} className="min-w-0">
                 <Link
                   href={`${usage.href}?tab=build`}
                   className="flex h-full flex-col gap-2 rounded-sm border border-white/10 bg-ink/55 px-3 py-2 transition-colors hover:border-anemo/40"

@@ -832,6 +832,11 @@
     "charactersPathUnknown": "El orden recomendado aún no está documentado para este build.",
     "charactersRankBest": "Recomendada",
     "charactersRankAlternative": "Alternativa",
+    "genimonBuildTitle": "Build: los Rasgos a buscar",
+    "genimonBuildIntro": "{count, plural, one {Según el único build del sitio que lleva este Geniemon.} other {Según los # builds del sitio que llevan este Geniemon.}} Lleva {slots} Rasgos: estos son los que más se repiten, los más pedidos primero.",
+    "genimonBuildShare": "{count, plural, one {# build de {total}} other {# builds de {total}}}",
+    "genimonBuildFirst": "{count, plural, one {prioridad principal en # build} other {prioridad principal en # builds}}",
+    "genimonBuildOthers": "Otros Rasgos encontrados",
     "genimonCharactersIntro": "Personajes cuyo build recomendado lleva este Geniemon, y los Rasgos que buscan en él.",
     "genimonRankBest": "Mejor opción"
   },

@@ -1,6 +1,7 @@
 import { allBuilds } from "@/data/characters/builds";
 import { resolveBuildCharacterRef } from "@/lib/characters/builds";
-import { resolveBuildTrait, sanitizeTraitKeys, type BuildGenimonTrait } from "@/lib/genimons/build-traits";
+import { genimonTraitSlots, resolveBuildTrait, sanitizeTraitKeys, type BuildGenimonTrait } from "@/lib/genimons/build-traits";
+import { getItemByCategoryAndId } from "@/lib/items/catalog";
 
 // ---------------------------------------------------------------------------
 // Index inverse GÉNIEMON → PERSONNAGES.
@@ -83,4 +84,67 @@ export function getGenimonUsage(genimonItemId: string, lang: string = "EN"): Gen
     if (a.rank !== b.rank) return a.rank === "best" ? -1 : 1;
     return a.name.localeCompare(b.name) || a.buildName.localeCompare(b.buildName);
   });
+}
+
+/** Un Trait, et la place qu'il tient dans les builds qui emmènent la créature. */
+export interface GenimonTraitTally {
+  trait: BuildGenimonTrait;
+  /** Nombre de builds qui le visent sur cette créature. */
+  builds: number;
+  /** Parmi eux, ceux qui le placent en première priorité. */
+  first: number;
+}
+
+export interface GenimonTraitBuild {
+  /** Builds pris en compte : ceux qui emmènent la créature et y curent des Traits. */
+  totalBuilds: number;
+  /** Combien de Traits cette variante peut porter (3, ou 4 pour une scintillante). */
+  slots: number;
+  /** Les Traits à viser : autant que d'emplacements, les plus demandés d'abord. */
+  recommended: GenimonTraitTally[];
+  /** Les autres Traits rencontrés, dans le même ordre. */
+  others: GenimonTraitTally[];
+}
+
+/**
+ * Le « build » d'un Géniemon : les Traits que les builds du site y visent le
+ * plus souvent.
+ *
+ * Le décompte porte sur l'espèce entière. Les builds désignent presque toujours
+ * la variante ordinaire : sans cela, la fiche d'une scintillante resterait vide
+ * alors qu'elle se monte de la même façon, avec un emplacement de plus.
+ */
+export function getGenimonTraitBuild(genimonItemId: string, lang: string = "EN", locale: string = "en"): GenimonTraitBuild | null {
+  const item = getItemByCategoryAndId("genimons", genimonItemId);
+  if (!item) return null;
+  const species = new Set(item.variants?.siblingIds?.length ? item.variants.siblingIds : [genimonItemId]);
+  const slots = genimonTraitSlots(genimonItemId);
+
+  let totalBuilds = 0;
+  const tally = new Map<string, { builds: number; first: number; rankSum: number }>();
+  for (const build of allBuilds as unknown as RawBuild[]) {
+    // Un build peut citer deux variantes de la même espèce : il ne compte qu'une fois.
+    const entry = (build.genimon ?? []).find((candidate) => species.has(candidate.itemId) && (candidate.traits?.length ?? 0) > 0);
+    if (!entry) continue;
+    totalBuilds++;
+    sanitizeTraitKeys(entry.itemId, entry.traits).forEach((key, index) => {
+      const row = tally.get(key) ?? { builds: 0, first: 0, rankSum: 0 };
+      row.builds++;
+      row.rankSum += index;
+      if (index === 0) row.first++;
+      tally.set(key, row);
+    });
+  }
+  if (totalBuilds === 0) return null;
+
+  const ranked = [...tally.entries()]
+    // Le plus demandé d'abord ; à égalité, celui que les builds placent le plus haut.
+    .sort(([, a], [, b]) => b.builds - a.builds || a.rankSum / a.builds - b.rankSum / b.builds)
+    .map(([key, row]) => {
+      const trait = resolveBuildTrait(key, lang, locale);
+      return trait ? { trait, builds: row.builds, first: row.first } : null;
+    })
+    .filter((row): row is GenimonTraitTally => row !== null);
+
+  return { totalBuilds, slots, recommended: ranked.slice(0, slots), others: ranked.slice(slots) };
 }

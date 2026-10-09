@@ -4,7 +4,7 @@ import { getTranslations } from "next-intl/server";
 import { Suspense } from "react";
 import ItemDetailClient from "@/components/items/ItemDetailClient";
 import { getWeaponBuilds } from "@/lib/items/weapon-builds";
-import { getGenimonUsage } from "@/lib/items/genimon-usage";
+import { getGenimonUsage, getGenimonTraitBuild } from "@/lib/items/genimon-usage";
 import { getWeaponUsage } from "@/lib/items/weapon-usage";
 import ItemsSuspenseFallback from "@/components/items/ItemsSuspenseFallback";
 import {
@@ -109,6 +109,8 @@ export default async function ItemDetailPage({ params }: ItemDetailPageProps) {
       : [];
   // Même index inverse pour les Géniemons : qui les emmène, et ce qu'on y greffe.
   const genimonUsage = category.id === "genimons" ? getGenimonUsage(item.id, locale.toUpperCase()) : [];
+  // Et la synthèse : les Traits que ces builds visent le plus souvent sur la créature.
+  const genimonTraitBuild = category.id === "genimons" ? getGenimonTraitBuild(item.id, locale.toUpperCase(), locale) : null;
 
   return (
     <Suspense
@@ -121,6 +123,7 @@ export default async function ItemDetailPage({ params }: ItemDetailPageProps) {
         weaponBuilds={weaponBuilds}
         weaponUsage={weaponUsage}
         genimonUsage={genimonUsage}
+        genimonTraitBuild={genimonTraitBuild}
       />
     </Suspense>
   );

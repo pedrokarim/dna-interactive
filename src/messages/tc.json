@@ -832,6 +832,11 @@
     "charactersPathUnknown": "此配裝的建議順序尚未整理。",
     "charactersRankBest": "推薦",
     "charactersRankAlternative": "替代",
+    "genimonBuildTitle": "配置：值得追求的特性",
+    "genimonBuildIntro": "依據本站帶上這隻魔靈的 {count} 套配置。牠可攜帶 {slots} 個特性，以下依出現次數由多到少排列。",
+    "genimonBuildShare": "{total} 套配置中的 {count} 套",
+    "genimonBuildFirst": "在 {count} 套配置中列為最優先",
+    "genimonBuildOthers": "其他出現過的特性",
     "genimonCharactersIntro": "推薦配置會帶上這隻魔靈的角色，以及他們在牠身上所求的特性。",
     "genimonRankBest": "最佳選擇"
   },

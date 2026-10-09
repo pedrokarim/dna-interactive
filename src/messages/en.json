@@ -832,6 +832,11 @@
     "charactersPathUnknown": "The recommended order is not documented yet for this build.",
     "charactersRankBest": "Recommended",
     "charactersRankAlternative": "Alternative",
+    "genimonBuildTitle": "Build: the Traits to aim for",
+    "genimonBuildIntro": "{count, plural, one {Based on the only build on the site that takes this Geniemon.} other {Based on the # builds on the site that take this Geniemon.}} It holds {slots} Traits: these come up most often, the most requested first.",
+    "genimonBuildShare": "{count, plural, one {# build out of {total}} other {# builds out of {total}}}",
+    "genimonBuildFirst": "{count, plural, one {top priority in # build} other {top priority in # builds}}",
+    "genimonBuildOthers": "Other Traits seen",
     "genimonCharactersIntro": "Characters whose recommended build takes this Geniemon, and the Traits they aim for on it.",
     "genimonRankBest": "Best pick"
   },

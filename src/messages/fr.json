@@ -832,6 +832,11 @@
     "charactersPathUnknown": "L'ordre conseillé n'est pas encore documenté pour ce build.",
     "charactersRankBest": "Recommandée",
     "charactersRankAlternative": "Alternative",
+    "genimonBuildTitle": "Build : les Traits à viser",
+    "genimonBuildIntro": "{count, plural, one {D’après le seul build du site qui emmène ce Géniemon.} other {D’après les # builds du site qui emmènent ce Géniemon.}} Il porte {slots} Traits : voici ceux qui reviennent le plus souvent, les plus demandés d’abord.",
+    "genimonBuildShare": "{count, plural, one {# build sur {total}} other {# builds sur {total}}}",
+    "genimonBuildFirst": "{count, plural, one {en priorité dans # build} other {en priorité dans # builds}}",
+    "genimonBuildOthers": "Autres Traits rencontrés",
     "genimonCharactersIntro": "Personnages dont un build recommandé emmène ce Géniemon, et les Traits qu'ils y visent.",
     "genimonRankBest": "Meilleur choix"
   },

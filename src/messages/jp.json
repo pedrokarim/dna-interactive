@@ -832,6 +832,11 @@
     "charactersPathUnknown": "このビルドの推奨順はまだ記載されていません。",
     "charactersRankBest": "推奨",
     "charactersRankAlternative": "代替",
+    "genimonBuildTitle": "ビルド：狙う特性",
+    "genimonBuildIntro": "このジェネモンを連れていくサイト内の{count}件のビルドに基づきます。特性は{slots}つまで持てます。よく選ばれている順に並べています。",
+    "genimonBuildShare": "{total}件中{count}件のビルド",
+    "genimonBuildFirst": "{count}件のビルドで最優先",
+    "genimonBuildOthers": "そのほかの特性",
     "genimonCharactersIntro": "このジェネモンを連れていく推奨ビルドのキャラクターと、そこで狙う特性。",
     "genimonRankBest": "最適"
   },
