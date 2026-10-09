@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { ArrowRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { DnaItemIcon } from "@/components/dna/ItemIcon";
@@ -9,6 +9,7 @@ import { DnaPanel } from "@/components/dna/Panel";
 import { DnaSectionLabel } from "@/components/dna/SectionLabel";
 import { WeaponTypeChip } from "@/components/characters/WeaponTypeChip";
 import { resolveBuildItemRef } from "@/lib/characters/builds";
+import { toIntlLocale } from "@/lib/cosmetics/format";
 import {
   PROFICIENCY_ATTACK_BONUS,
   allWeaponTypesName,
@@ -23,6 +24,9 @@ const PROFICIENCY_GUIDE_HREF = "/items/weapons/about/proficiency";
 
 /** Coût de déblocage d'un type : icône et quantité de chaque matériau. */
 function UnlockCost({ type, lang }: { type: WeaponTypeInfo; lang: string }) {
+  // La locale de la page, pas le code langue du jeu : « jp » n'est pas une locale valide, et un
+  // code invalide retombe sur la locale de la machine, différente entre serveur et navigateur.
+  const numberLocale = toIntlLocale(useLocale());
   return (
     <ul className="flex flex-wrap gap-x-3 gap-y-1.5">
       {type.unlockCost.map((cost, index) => {
@@ -31,7 +35,7 @@ function UnlockCost({ type, lang }: { type: WeaponTypeInfo; lang: string }) {
         return (
           <li key={cost.itemId} className="flex items-center gap-1.5 text-xs text-parch/85">
             <DnaItemIcon src={item.icon} alt="" width={20} height={20} className="h-5 w-5 object-contain" />
-            <span className="tabular-nums">{cost.amount.toLocaleString(lang.toLowerCase())}</span>
+            <span className="tabular-nums">{cost.amount.toLocaleString(numberLocale)}</span>
             {/* Le dernier matériau change avec le type visé : on tait le type, le coût vaut pour les quatre. */}
             <span className="text-muted">
               {index === type.unlockCost.length - 1 ? item.name.split(/\s*[:：]\s*/)[0] : item.name}

@@ -18,6 +18,7 @@ import { DnaSectionLabel } from "@/components/dna/SectionLabel";
 import { GuideImageSlot } from "@/components/items/GuideImageSlot";
 import { getItemsByCategoryId, getItemTranslation } from "@/lib/items/catalog";
 import { WeaponTypeChip } from "@/components/characters/WeaponTypeChip";
+import { toIntlLocale } from "@/lib/cosmetics/format";
 import { resolveBuildItemRef } from "@/lib/characters/builds";
 import { getAllCharacters, getCharacterSlug, getCharacterTranslation } from "@/lib/characters/catalog";
 import {
@@ -151,7 +152,7 @@ export async function CalamityWeaponsGuideChapter({
                   return (
                     <li key={cost.itemId} className="flex items-center gap-2 text-sm text-parch">
                       <DnaItemIcon src={item.icon} alt="" width={28} height={28} className="h-7 w-7 object-contain" />
-                      <span className="tabular-nums">{cost.amount.toLocaleString(locale)}</span>
+                      <span className="tabular-nums">{cost.amount.toLocaleString(toIntlLocale(locale))}</span>
                       <span className="text-parch/75">{typed ? item.name.split(/\s*[:：]\s*/)[0] : item.name}</span>
                     </li>
                   );

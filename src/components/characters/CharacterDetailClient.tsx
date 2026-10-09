@@ -2551,7 +2551,9 @@ export function BuildTabContent({
  * locale de la page : la virgule décimale n'est pas la même partout.
  */
 function renderPassive(passive: GenimonPassive, locale: string): ReactNode[] {
-  const percent = new Intl.NumberFormat(locale, { style: "percent", maximumFractionDigits: 1 });
+  // `toIntlLocale` : « jp », « kr » et « tc » ne sont pas des locales valides pour `Intl`, qui
+  // retombe alors sur celle de la machine – pas la même côté serveur et côté navigateur.
+  const percent = new Intl.NumberFormat(toIntlLocale(locale), { style: "percent", maximumFractionDigits: 1 });
   const parts: ReactNode[] = [];
   const regex = /#(\d+)/g;
   let last = 0;
