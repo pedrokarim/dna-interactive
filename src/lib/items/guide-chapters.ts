@@ -61,6 +61,7 @@ const OUTLINES: Record<string, GuideOutline> = {
     descriptionKey: "metaDescription",
     chapters: [
       chapter("rules", "rulesTitle"),
+      chapter("proficiency", "proficiencyTitle"),
       chapter("obtain", "obtainTitle"),
       chapter("furnace", "furnaceTitle"),
       chapter("potential", "potentialTitle"),

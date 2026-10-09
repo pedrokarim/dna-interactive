@@ -26,6 +26,8 @@ export type DnaPickerItem = {
   weaponType?: string | null;
   /** Classe d'arme (mêlée/distance) — armes uniquement. */
   weaponClass?: "melee" | "ranged" | null;
+  /** Arme de calamité : ses Potentiels dépendent de la prédilection du porteur. */
+  calamity?: boolean;
 };
 
 /** Libellés de track de polarité (MOD). Réf data : Polarity_<n>_Name. */

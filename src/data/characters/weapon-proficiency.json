@@ -1,0 +1,731 @@
+{
+  "attackBonus": 0.2,
+  "allTypesTag": "Almighty",
+  "allTypesNames": {
+    "FR": "Tous types",
+    "EN": "All Types",
+    "DE": "Alle Typen",
+    "ES": "Todos tipos",
+    "JP": "全タイプ",
+    "KR": "모든 유형",
+    "TC": "全部類型"
+  },
+  "types": {
+    "Bow": {
+      "range": "ranged",
+      "icon": "/assets/items/weapon-types/T_Armory_WeaponType_Bow.png",
+      "names": {
+        "FR": "Arc",
+        "EN": "Bow",
+        "DE": "Bogen",
+        "ES": "Arco",
+        "JP": "弓",
+        "KR": "활",
+        "TC": "弓"
+      },
+      "unlockCost": [
+        {
+          "itemId": "resources-101",
+          "amount": 500000
+        },
+        {
+          "itemId": "resources-202",
+          "amount": 6
+        },
+        {
+          "itemId": "resources-15023",
+          "amount": 2
+        }
+      ],
+      "insightFromRarity": 5
+    },
+    "Cannon": {
+      "range": "ranged",
+      "icon": "/assets/items/weapon-types/T_Armory_WeaponType_Cannon.png",
+      "names": {
+        "FR": "Lance-grenades",
+        "EN": "Grenade Launcher",
+        "DE": "Granatwerfer",
+        "ES": "Lanzagranadas",
+        "JP": "ランチャー",
+        "KR": "핸드 캐논",
+        "TC": "榴炮"
+      },
+      "unlockCost": [
+        {
+          "itemId": "resources-101",
+          "amount": 500000
+        },
+        {
+          "itemId": "resources-202",
+          "amount": 6
+        },
+        {
+          "itemId": "resources-15021",
+          "amount": 2
+        }
+      ],
+      "insightFromRarity": 5
+    },
+    "Claymore": {
+      "range": "melee",
+      "icon": "/assets/items/weapon-types/T_Armory_WeaponType_Claymore.png",
+      "names": {
+        "FR": "Espadon",
+        "EN": "Greatsword",
+        "DE": "Großschwert",
+        "ES": "Espadón",
+        "JP": "大剣",
+        "KR": "대검",
+        "TC": "重劍"
+      },
+      "unlockCost": [
+        {
+          "itemId": "resources-101",
+          "amount": 500000
+        },
+        {
+          "itemId": "resources-202",
+          "amount": 6
+        },
+        {
+          "itemId": "resources-15018",
+          "amount": 2
+        }
+      ],
+      "insightFromRarity": 5
+    },
+    "Crossbow": {
+      "range": "ranged",
+      "icon": "/assets/items/weapon-types/T_Armory_WeaponType_Crossbow.png",
+      "names": {
+        "FR": "Doubles pistolets",
+        "EN": "Dual Pistols",
+        "DE": "Doppelpistolen",
+        "ES": "Pistolas Dobles",
+        "JP": "デュアルガン",
+        "KR": "쌍권총",
+        "TC": "雙槍"
+      },
+      "unlockCost": [
+        {
+          "itemId": "resources-101",
+          "amount": 500000
+        },
+        {
+          "itemId": "resources-202",
+          "amount": 6
+        },
+        {
+          "itemId": "resources-15016",
+          "amount": 2
+        }
+      ],
+      "insightFromRarity": 5
+    },
+    "Dualblade": {
+      "range": "melee",
+      "icon": "/assets/items/weapon-types/T_Armory_WeaponType_Dualblade.png",
+      "names": {
+        "FR": "Doubles lames",
+        "EN": "Dual Blades",
+        "DE": "Doppelklingen",
+        "ES": "Hojas Dobles",
+        "JP": "双剣",
+        "KR": "쌍도",
+        "TC": "雙刀"
+      },
+      "unlockCost": [
+        {
+          "itemId": "resources-101",
+          "amount": 500000
+        },
+        {
+          "itemId": "resources-202",
+          "amount": 6
+        },
+        {
+          "itemId": "resources-15024",
+          "amount": 2
+        }
+      ],
+      "insightFromRarity": 5
+    },
+    "Katana": {
+      "range": "melee",
+      "icon": "/assets/items/weapon-types/T_Armory_WeaponType_Katana.png",
+      "names": {
+        "FR": "Katana",
+        "EN": "Katana",
+        "DE": "Katana",
+        "ES": "Katana",
+        "JP": "太刀",
+        "KR": "대도",
+        "TC": "太刀"
+      },
+      "unlockCost": [
+        {
+          "itemId": "resources-101",
+          "amount": 500000
+        },
+        {
+          "itemId": "resources-202",
+          "amount": 6
+        },
+        {
+          "itemId": "resources-15020",
+          "amount": 2
+        }
+      ],
+      "insightFromRarity": 5
+    },
+    "Machinegun": {
+      "range": "ranged",
+      "icon": "/assets/items/weapon-types/T_Armory_WeaponType_Machinegun.png",
+      "names": {
+        "FR": "Fusil d’assaut",
+        "EN": "Assault Rifle",
+        "DE": "Sturmgewehr",
+        "ES": "Rifle de Asalto",
+        "JP": "ライフル",
+        "KR": "돌격소총",
+        "TC": "突擊槍"
+      },
+      "unlockCost": [
+        {
+          "itemId": "resources-101",
+          "amount": 500000
+        },
+        {
+          "itemId": "resources-202",
+          "amount": 6
+        },
+        {
+          "itemId": "resources-15015",
+          "amount": 2
+        }
+      ],
+      "insightFromRarity": 5
+    },
+    "Pistol": {
+      "range": "ranged",
+      "icon": "/assets/items/weapon-types/T_Armory_WeaponType_Pistol.png",
+      "names": {
+        "FR": "Pistolet",
+        "EN": "Pistol",
+        "DE": "Pistole",
+        "ES": "Pistola",
+        "JP": "ピストル",
+        "KR": "권총",
+        "TC": "手槍"
+      },
+      "unlockCost": [
+        {
+          "itemId": "resources-101",
+          "amount": 500000
+        },
+        {
+          "itemId": "resources-202",
+          "amount": 6
+        },
+        {
+          "itemId": "resources-15025",
+          "amount": 2
+        }
+      ],
+      "insightFromRarity": 5
+    },
+    "Polearm": {
+      "range": "melee",
+      "icon": "/assets/items/weapon-types/T_Armory_WeaponType_Polearm.png",
+      "names": {
+        "FR": "Arme d’hast",
+        "EN": "Polearm",
+        "DE": "Stangenwaffe",
+        "ES": "Arma de Asta",
+        "JP": "長柄武器",
+        "KR": "장병기",
+        "TC": "長柄"
+      },
+      "unlockCost": [
+        {
+          "itemId": "resources-101",
+          "amount": 500000
+        },
+        {
+          "itemId": "resources-202",
+          "amount": 6
+        },
+        {
+          "itemId": "resources-15014",
+          "amount": 2
+        }
+      ],
+      "insightFromRarity": 5
+    },
+    "Shotgun": {
+      "range": "ranged",
+      "icon": "/assets/items/weapon-types/T_Armory_WeaponType_Shotgun.png",
+      "names": {
+        "FR": "Fusil à pompe",
+        "EN": "Shotgun",
+        "DE": "Schrotflinte",
+        "ES": "Escopeta",
+        "JP": "ショットガン",
+        "KR": "산탄총",
+        "TC": "霰彈槍"
+      },
+      "unlockCost": [
+        {
+          "itemId": "resources-101",
+          "amount": 500000
+        },
+        {
+          "itemId": "resources-202",
+          "amount": 6
+        },
+        {
+          "itemId": "resources-15022",
+          "amount": 2
+        }
+      ],
+      "insightFromRarity": 5
+    },
+    "Sword": {
+      "range": "melee",
+      "icon": "/assets/items/weapon-types/T_Armory_WeaponType_Sword.png",
+      "names": {
+        "FR": "Épée",
+        "EN": "Sword",
+        "DE": "Schwert",
+        "ES": "Espada",
+        "JP": "片手剣",
+        "KR": "한손검",
+        "TC": "單手劍"
+      },
+      "unlockCost": [
+        {
+          "itemId": "resources-101",
+          "amount": 500000
+        },
+        {
+          "itemId": "resources-202",
+          "amount": 6
+        },
+        {
+          "itemId": "resources-15017",
+          "amount": 2
+        }
+      ],
+      "insightFromRarity": 5
+    },
+    "Swordwhip": {
+      "range": "melee",
+      "icon": "/assets/items/weapon-types/T_Armory_WeaponType_Swordwhip.png",
+      "names": {
+        "FR": "Épée-fouet",
+        "EN": "Whipblade",
+        "DE": "Peitschenschwert",
+        "ES": "Espada Látigo",
+        "JP": "ウィップブレード",
+        "KR": "칼날 채찍",
+        "TC": "鞭刃"
+      },
+      "unlockCost": [
+        {
+          "itemId": "resources-101",
+          "amount": 500000
+        },
+        {
+          "itemId": "resources-202",
+          "amount": 6
+        },
+        {
+          "itemId": "resources-15019",
+          "amount": 2
+        }
+      ],
+      "insightFromRarity": 5
+    }
+  },
+  "characters": {
+    "1101": {
+      "base": [
+        "Sword",
+        "Crossbow"
+      ],
+      "extra": [
+        "Polearm",
+        "Claymore",
+        "Dualblade",
+        "Katana"
+      ]
+    },
+    "1102": {
+      "base": [
+        "Sword",
+        "Machinegun"
+      ],
+      "extra": [
+        "Pistol",
+        "Crossbow",
+        "Cannon",
+        "Shotgun"
+      ]
+    },
+    "1103": {
+      "base": [
+        "Claymore",
+        "Shotgun"
+      ],
+      "extra": [
+        "Sword",
+        "Polearm",
+        "Dualblade",
+        "Katana"
+      ]
+    },
+    "1201": {
+      "base": [
+        "Sword",
+        "Machinegun"
+      ],
+      "extra": [
+        "Polearm",
+        "Claymore",
+        "Crossbow",
+        "Shotgun"
+      ]
+    },
+    "1501": {
+      "base": [
+        "Claymore",
+        "Shotgun"
+      ],
+      "extra": [
+        "Sword",
+        "Polearm",
+        "Dualblade",
+        "Katana"
+      ]
+    },
+    "1502": {
+      "base": [
+        "Katana",
+        "Pistol"
+      ],
+      "extra": [
+        "Sword",
+        "Polearm",
+        "Claymore",
+        "Swordwhip"
+      ]
+    },
+    "1503": {
+      "base": [
+        "Almighty"
+      ],
+      "extra": []
+    },
+    "1504": {
+      "base": [
+        "Polearm",
+        "Shotgun"
+      ],
+      "extra": [
+        "Sword",
+        "Claymore",
+        "Swordwhip",
+        "Katana"
+      ]
+    },
+    "1801": {
+      "base": [
+        "Sword",
+        "Machinegun"
+      ],
+      "extra": [
+        "Polearm",
+        "Claymore",
+        "Swordwhip",
+        "Katana"
+      ]
+    },
+    "2101": {
+      "base": [
+        "Polearm",
+        "Cannon"
+      ],
+      "extra": [
+        "Pistol",
+        "Crossbow",
+        "Shotgun",
+        "Bow"
+      ]
+    },
+    "2102": {
+      "base": [
+        "Polearm",
+        "Crossbow"
+      ],
+      "extra": [
+        "Sword",
+        "Claymore",
+        "Dualblade",
+        "Swordwhip"
+      ]
+    },
+    "2201": {
+      "base": [
+        "Sword",
+        "Machinegun"
+      ],
+      "extra": [
+        "Polearm",
+        "Claymore",
+        "Crossbow",
+        "Shotgun"
+      ]
+    },
+    "2301": {
+      "base": [
+        "Sword",
+        "Bow"
+      ],
+      "extra": [
+        "Pistol",
+        "Crossbow",
+        "Shotgun",
+        "Machinegun"
+      ]
+    },
+    "2401": {
+      "base": [
+        "Swordwhip",
+        "Bow"
+      ],
+      "extra": [
+        "Pistol",
+        "Crossbow",
+        "Shotgun",
+        "Machinegun"
+      ]
+    },
+    "3101": {
+      "base": [
+        "Claymore",
+        "Crossbow"
+      ],
+      "extra": [
+        "Sword",
+        "Polearm",
+        "Dualblade",
+        "Katana"
+      ]
+    },
+    "3102": {
+      "base": [
+        "Dualblade",
+        "Cannon"
+      ],
+      "extra": [
+        "Polearm",
+        "Claymore",
+        "Swordwhip",
+        "Katana"
+      ]
+    },
+    "3103": {
+      "base": [
+        "Sword",
+        "Shotgun"
+      ],
+      "extra": [
+        "Pistol",
+        "Crossbow",
+        "Cannon",
+        "Bow"
+      ]
+    },
+    "3104": {
+      "base": [
+        "Dualblade",
+        "Crossbow"
+      ],
+      "extra": [
+        "Pistol",
+        "Cannon",
+        "Shotgun",
+        "Machinegun"
+      ]
+    },
+    "3201": {
+      "base": [
+        "Claymore",
+        "Cannon"
+      ],
+      "extra": [
+        "Pistol",
+        "Crossbow",
+        "Shotgun",
+        "Machinegun"
+      ]
+    },
+    "3202": {
+      "base": [
+        "Swordwhip",
+        "Machinegun"
+      ],
+      "extra": [
+        "Sword",
+        "Polearm",
+        "Dualblade",
+        "Katana"
+      ]
+    },
+    "3301": {
+      "base": [
+        "Polearm",
+        "Shotgun"
+      ],
+      "extra": [
+        "Pistol",
+        "Crossbow",
+        "Machinegun",
+        "Bow"
+      ]
+    },
+    "4101": {
+      "base": [
+        "Katana",
+        "Machinegun"
+      ],
+      "extra": [
+        "Sword",
+        "Claymore",
+        "Dualblade",
+        "Swordwhip"
+      ]
+    },
+    "4102": {
+      "base": [
+        "Claymore",
+        "Crossbow"
+      ],
+      "extra": [
+        "Pistol",
+        "Cannon",
+        "Machinegun",
+        "Bow"
+      ]
+    },
+    "4201": {
+      "base": [
+        "Polearm",
+        "Machinegun"
+      ],
+      "extra": [
+        "Pistol",
+        "Cannon",
+        "Shotgun",
+        "Bow"
+      ]
+    },
+    "4202": {
+      "base": [
+        "Sword",
+        "Pistol"
+      ],
+      "extra": [
+        "Crossbow",
+        "Cannon",
+        "Machinegun",
+        "Bow"
+      ]
+    },
+    "4301": {
+      "base": [
+        "Swordwhip",
+        "Pistol"
+      ],
+      "extra": [
+        "Cannon",
+        "Shotgun",
+        "Machinegun",
+        "Bow"
+      ]
+    },
+    "5101": {
+      "base": [
+        "Polearm",
+        "Bow"
+      ],
+      "extra": [
+        "Sword",
+        "Claymore",
+        "Dualblade",
+        "Swordwhip"
+      ]
+    },
+    "5102": {
+      "base": [
+        "Dualblade",
+        "Crossbow"
+      ],
+      "extra": [
+        "Pistol",
+        "Cannon",
+        "Shotgun",
+        "Machinegun"
+      ]
+    },
+    "5301": {
+      "base": [
+        "Polearm",
+        "Machinegun"
+      ],
+      "extra": [
+        "Pistol",
+        "Cannon",
+        "Shotgun",
+        "Bow"
+      ]
+    },
+    "5401": {
+      "base": [
+        "Swordwhip",
+        "Machinegun"
+      ],
+      "extra": [
+        "Sword",
+        "Polearm",
+        "Dualblade",
+        "Katana"
+      ]
+    },
+    "120101": {
+      "base": [
+        "Sword",
+        "Machinegun"
+      ],
+      "extra": [
+        "Polearm",
+        "Claymore",
+        "Crossbow",
+        "Shotgun"
+      ]
+    },
+    "220101": {
+      "base": [
+        "Sword",
+        "Machinegun"
+      ],
+      "extra": [
+        "Polearm",
+        "Claymore",
+        "Crossbow",
+        "Shotgun"
+      ]
+    }
+  }
+}

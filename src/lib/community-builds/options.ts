@@ -1,3 +1,4 @@
+import { isCalamityWeapon } from "@/lib/items/calamity-weapons";
 import { getAllCharacters, getActiveCharacterView, getCharacterSlug, resolveCharacterDisplayName, getCharacterSkills } from "@/lib/characters/catalog";
 import { getItemTranslation, getItemsByCategoryId } from "@/lib/items/catalog";
 import type { CharacterRecord } from "@/lib/characters/types";
@@ -11,6 +12,8 @@ const ELEMENT_KEYS = new Set(["Fire", "Water", "Thunder", "Wind", "Light", "Dark
 
 export type BuilderCharacterOption = {
   id: string;
+  /** Identifiant du jeu : la clé des armes de prédilection. */
+  charId: number;
   slug: string;
   name: string;
   subtitle: string | null;
@@ -68,6 +71,7 @@ function itemToPickerItem(item: ItemRecord, locale: string): DnaPickerItem {
     const typeKey = keys.find((k) => k.startsWith("WeaponType_"));
     base.weaponType = typeKey ? typeKey.replace("WeaponType_", "") : null;
     base.weaponClass = keys.includes("UI_Armory_Meleeweapon") ? "melee" : "ranged";
+    base.calamity = isCalamityWeapon(item);
   }
 
   return base;
@@ -157,6 +161,7 @@ function characterToOption(character: CharacterRecord, locale: string): BuilderC
     skills: resolveCharacterSkills(character, locale),
     element: asElementKey(character.element.key),
     elements,
+    charId: character.charId,
     weapons: character.weaponTags,
     rarity: character.rarity,
     searchText,

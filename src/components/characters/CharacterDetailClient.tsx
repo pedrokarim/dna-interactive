@@ -72,6 +72,10 @@ import { ELEMENTS, type ElementKey } from "@/components/dna/elements";
 import { rarityAttr, toRarityLevel } from "@/components/dna/rarity";
 import { cn } from "@/components/dna/cn";
 import { DnaPanel } from "@/components/dna/Panel";
+import { BuildProficiencyAdvice } from "@/components/characters/BuildProficiencyAdvice";
+import { WeaponProficiencyPanel } from "@/components/characters/WeaponProficiency";
+import { suggestExtraProficiencies } from "@/lib/characters/weapon-proficiency-build";
+import { getWeaponType, weaponTypeName } from "@/lib/characters/weapon-proficiency";
 import { DnaSectionLabel } from "@/components/dna/SectionLabel";
 import { DnaStatRow } from "@/components/dna/StatRow";
 import { DnaTag } from "@/components/dna/Tag";
@@ -1976,6 +1980,11 @@ export function BuildTabContent({
             <Swords className="h-4 w-4 text-gold/80" />
             {t('weaponsTitle')}
           </h2>
+          <BuildProficiencyAdvice
+            charId={character.charId}
+            suggestions={suggestExtraProficiencies(character.charId, build)}
+            lang={selectedLanguage}
+          />
           <div className="mt-4 space-y-4">
             {(["melee", "ranged"] as const).map((type) => {
               const weapons = build.weapons[type];
@@ -3129,7 +3138,13 @@ export default function CharacterDetailClient({
                   <small className="text-sm text-muted-2"> / {character.maxLevel ?? 80}</small>
                 </div>
                 <div className="text-right font-caps text-[0.52rem] uppercase leading-tight tracking-[0.14em] text-muted">
-                  Armes<br />{character.weaponTags.join(" · ")}
+                  Armes<br />
+                  {character.weaponTags
+                    .map((tag) => {
+                      const type = getWeaponType(tag);
+                      return type ? weaponTypeName(type, selectedLanguage) : tag;
+                    })
+                    .join(" · ")}
                 </div>
               </div>
               {/* Slider de niveau — pilote les stats, teinté par l'élément */}
@@ -3179,6 +3194,12 @@ export default function CharacterDetailClient({
               </button>
             </DnaPanel>
 
+            <WeaponProficiencyPanel
+              charId={character.charId}
+              lang={selectedLanguage}
+              onOpenBuild={() => setActiveTab("build")}
+            />
+
             <DnaPanel className="p-4 md:p-5">
               <div className="flex flex-wrap gap-1.5">
                 {character.rarity ? (
@@ -3186,12 +3207,6 @@ export default function CharacterDetailClient({
                     {"★".repeat(character.rarity)} {character.rarity} étoiles
                   </DnaTag>
                 ) : null}
-                {character.weaponTags.map((wt) => (
-                  <DnaTag key={wt}>
-                    <Swords className="h-3 w-3" />
-                    {wt}
-                  </DnaTag>
-                ))}
                 {character.consonanceWeapons?.length > 0 &&
                   character.consonanceWeapons.map((cw) => {
                     const cwName =

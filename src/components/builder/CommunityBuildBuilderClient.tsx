@@ -43,6 +43,8 @@ import type { BuilderOptions } from "@/lib/community-builds/options";
 import type { CommunityBuildPayload } from "@/lib/community-builds/validation";
 import { BUILD_TAGS, type BuildTag } from "@/lib/community-builds/validation";
 import { captureAnalytics } from "@/lib/analytics";
+import { BuildProficiencyAdvice } from "@/components/characters/BuildProficiencyAdvice";
+import { suggestProficienciesFor } from "@/lib/characters/weapon-proficiency";
 import { X_BUTTON_CLASS, XIcon } from "@/components/icons/BrandIcons";
 
 const STAT_IDS = ["ATK", "CritRate", "CritDmg", "SkillDmg", "ElementDmg", "HP", "DEF"] as const;
@@ -1182,6 +1184,23 @@ export function CommunityBuildBuilderClient({
               <DnaSlotRow entries={rangedWeapons} pool={rangedPool} max={3} label={t("pickRangedWeapon")} onChange={setRangedWeapons} />
             </div>
           </div>
+          {/* Les armes choisies disent d'elles-mêmes quelle maîtrise supplémentaire débloquer. */}
+          {selectedCharacter && meleeWeapons.length + rangedWeapons.length > 0 ? (
+            <BuildProficiencyAdvice
+              charId={selectedCharacter.charId}
+              suggestions={suggestProficienciesFor(
+                selectedCharacter.charId,
+                [...meleeWeapons, ...rangedWeapons].map((entry) => ({
+                  itemId: entry.item.id,
+                  name: entry.item.name,
+                  rank: entry.rank,
+                  tag: entry.item.weaponType ?? null,
+                  calamity: entry.item.calamity ?? false,
+                })),
+              )}
+              lang={gameLang}
+            />
+          ) : null}
           {(() => {
             const selected = [...meleeWeapons, ...rangedWeapons];
             if (selected.length === 0) return null;

@@ -17,6 +17,14 @@ import { DnaPanel } from "@/components/dna/Panel";
 import { DnaSectionLabel } from "@/components/dna/SectionLabel";
 import { GuideImageSlot } from "@/components/items/GuideImageSlot";
 import { getItemsByCategoryId, getItemTranslation } from "@/lib/items/catalog";
+import { WeaponTypeChip } from "@/components/characters/WeaponTypeChip";
+import { resolveBuildItemRef } from "@/lib/characters/builds";
+import { getAllCharacters, getCharacterSlug, getCharacterTranslation } from "@/lib/characters/catalog";
+import {
+  PROFICIENCY_ATTACK_BONUS,
+  getCharacterProficiency,
+  weaponTypeName,
+} from "@/lib/characters/weapon-proficiency";
 import {
   CALAMITY_ACCENT_HEX,
   formatOpenVersion,
@@ -108,6 +116,105 @@ export async function CalamityWeaponsGuideChapter({
           <RuleCard icon={<Target className="h-5 w-5" />} title={t("ruleProficiencyTitle")} body={t("ruleProficiencyBody")} />
         </div>
       );
+
+    // ───────────────────────────────────────── armes de prédilection
+    case "proficiency": {
+      const percent = Math.round(PROFICIENCY_ATTACK_BONUS * 100);
+      // Vita et Mors ont une fiche par genre, aux prédilections identiques : une ligne suffit.
+      const rows = new Map<string, { name: string; slug: string; proficiency: NonNullable<ReturnType<typeof getCharacterProficiency>> }>();
+      for (const character of getAllCharacters()) {
+        const proficiency = getCharacterProficiency(character.charId);
+        const name = getCharacterTranslation(character, gameLang, ["EN", "FR"]).name;
+        if (!proficiency || !name || rows.has(name)) continue;
+        rows.set(name, { name, slug: getCharacterSlug(character), proficiency });
+      }
+      const sorted = [...rows.values()].sort((a, b) => a.name.localeCompare(b.name, locale));
+      const sampleCost = sorted.find((row) => row.proficiency.extra.length > 0)?.proficiency.extra[0]?.unlockCost ?? [];
+
+      return (
+        <div className="space-y-5">
+          <div className="grid gap-4 md:grid-cols-3">
+            <RuleCard icon={<Swords className="h-5 w-5" />} title={t("proficiencyBaseTitle")} body={t("proficiencyBaseBody", { percent })} />
+            <RuleCard icon={<Sparkles className="h-5 w-5" />} title={t("proficiencyCalamityTitle")} body={t("proficiencyCalamityBody")} />
+            <RuleCard icon={<Target className="h-5 w-5" />} title={t("proficiencyExtraTitle")} body={t("proficiencyExtraBody")} />
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-2">
+            <DnaPanel className="p-5">
+              <DnaSectionLabel>{t("proficiencyCostTitle")}</DnaSectionLabel>
+              <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-2">
+                {sampleCost.map((cost, index) => {
+                  const item = resolveBuildItemRef("resources", cost.itemId, gameLang);
+                  if (!item) return null;
+                  // Le dernier matériau dépend du type : on montre son icône, pas le nom d'un type précis.
+                  const typed = index === sampleCost.length - 1;
+                  return (
+                    <li key={cost.itemId} className="flex items-center gap-2 text-sm text-parch">
+                      <DnaItemIcon src={item.icon} alt="" width={28} height={28} className="h-7 w-7 object-contain" />
+                      <span className="tabular-nums">{cost.amount.toLocaleString(locale)}</span>
+                      <span className="text-parch/75">{typed ? item.name.split(/\s*[:：]\s*/)[0] : item.name}</span>
+                    </li>
+                  );
+                })}
+              </ul>
+              <p className="mt-3 text-sm leading-relaxed text-parch/80">{t("proficiencyCostBody")}</p>
+            </DnaPanel>
+            <DnaPanel className="p-5">
+              <DnaSectionLabel>{t("proficiencyWhereTitle")}</DnaSectionLabel>
+              <p className="mt-3 text-sm leading-relaxed text-parch/80">{t("proficiencyWhereBody")}</p>
+            </DnaPanel>
+          </div>
+
+          <DnaPanel className="p-5">
+            <DnaSectionLabel>{t("proficiencyTableTitle")}</DnaSectionLabel>
+            {/* Sur mobile, trois colonnes ne tiennent pas : chaque personnage devient un bloc empilé. */}
+            <div className="mt-3">
+              <table className="w-full border-collapse text-left text-sm max-md:block">
+                <thead className="max-md:hidden">
+                  <tr className="border-b border-white/10 font-caps text-[0.6rem] uppercase tracking-[0.18em] text-gold">
+                    <th scope="col" className="py-2 pr-4 font-normal">{t("proficiencyTableCharacter")}</th>
+                    <th scope="col" className="py-2 pr-4 font-normal">{t("proficiencyTableBase")}</th>
+                    <th scope="col" className="py-2 font-normal">{t("proficiencyTableExtra")}</th>
+                  </tr>
+                </thead>
+                <tbody className="max-md:block">
+                  {sorted.map((row) => (
+                    <tr key={row.name} className="border-b border-white/6 align-top last:border-b-0 max-md:flex max-md:flex-col max-md:gap-2 max-md:py-3">
+                      <th scope="row" className="py-2.5 pr-4 font-normal max-md:p-0 max-md:font-semibold">
+                        <Link href={`/characters/${row.slug}`} className="text-parch underline-offset-4 hover:text-gold-bright hover:underline">
+                          {row.name}
+                        </Link>
+                      </th>
+                      {row.proficiency.allTypes ? (
+                        <td colSpan={2} className="py-2.5 text-parch/80 max-md:p-0">{t("proficiencyAllTypes")}</td>
+                      ) : (
+                        <>
+                          <td className="py-2.5 pr-4 max-md:p-0">
+                            <div className="flex flex-wrap gap-x-4 gap-y-1.5">
+                              {row.proficiency.base.map((type) => (
+                                <WeaponTypeChip key={type.tag} type={type} name={weaponTypeName(type, gameLang)} size="sm" />
+                              ))}
+                            </div>
+                          </td>
+                          <td className="py-2.5 max-md:p-0">
+                            <p className="mb-1.5 text-xs text-muted md:hidden">{t("proficiencyTableExtra")}</p>
+                            <div className="flex flex-wrap gap-x-4 gap-y-1.5">
+                              {row.proficiency.extra.map((type) => (
+                                <WeaponTypeChip key={type.tag} type={type} name={weaponTypeName(type, gameLang)} tone="extra" size="sm" />
+                              ))}
+                            </div>
+                          </td>
+                        </>
+                      )}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </DnaPanel>
+        </div>
+      );
+    }
 
     // ─────────────────────────────────────────────────────────── obtention
     case "obtain":
