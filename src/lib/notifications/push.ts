@@ -4,6 +4,7 @@ import webpush from "web-push";
 import { getDb, schema } from "@/db";
 import { isMissingTableError } from "@/lib/db-errors";
 import type { AnnouncementRecord } from "./announcements";
+import { isAllowedPushEndpoint } from "./push-endpoint";
 
 /**
  * Web Push (Push API + VAPID).
@@ -32,6 +33,13 @@ export function isPushConfigured(): boolean {
   configured = true;
   return true;
 }
+
+/**
+ * Délai maximal d'un envoi. `web-push` n'en pose aucun par défaut : un seul
+ * endpoint muet retenait son lot jusqu'à la coupure de la fonction, et les
+ * lots suivants ne partaient jamais.
+ */
+const SEND_TIMEOUT_MS = 8_000;
 
 export type PushPayload = {
   title: string;
@@ -90,11 +98,18 @@ export async function broadcastPush(
     const batch = subscriptions.slice(i, i + BATCH);
     await Promise.all(
       batch.map(async (sub) => {
+        // Abonnement enregistré avant la liste blanche, vers un hôte inconnu :
+        // on ne l'appelle pas. Il n'est pas supprimé pour autant, au cas où la
+        // liste aurait oublié un service de push légitime.
+        if (!isAllowedPushEndpoint(sub.endpoint)) {
+          failed += 1;
+          return;
+        }
         try {
           await webpush.sendNotification(
             { endpoint: sub.endpoint, keys: { p256dh: sub.p256dh, auth: sub.auth } },
             body,
-            { TTL: 60 * 60 * 24 },
+            { TTL: 60 * 60 * 24, timeout: SEND_TIMEOUT_MS },
           );
           sent += 1;
         } catch (error) {

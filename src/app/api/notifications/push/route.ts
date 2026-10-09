@@ -5,6 +5,7 @@ import { getDb, schema } from "@/db";
 import { getCurrentUser } from "@/lib/auth/session";
 import { isMissingTableError } from "@/lib/db-errors";
 import { isPushConfigured } from "@/lib/notifications/push";
+import { isAllowedPushEndpoint } from "@/lib/notifications/push-endpoint";
 import { checkRateLimit } from "@/lib/rate-limit";
 import { getClientIp } from "@/lib/community-builds/vote-identity";
 import { locales } from "@/i18n/config";
@@ -29,7 +30,9 @@ export async function GET() {
 }
 
 const subscriptionSchema = z.object({
-  endpoint: z.string().url().max(1000),
+  // Seuls les services de push reconnus : le serveur appelle cette URL à
+  // chaque diffusion, elle ne peut pas être laissée libre.
+  endpoint: z.string().url().max(1000).refine(isAllowedPushEndpoint),
   keys: z.object({
     p256dh: z.string().min(1).max(500),
     auth: z.string().min(1).max(500),
