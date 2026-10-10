@@ -2887,7 +2887,7 @@ export default function CharacterDetailClient({
             </button>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
             {prevCharacter && (
               <Link
                 href={`/characters/${getCharacterSlug(prevCharacter)}`}

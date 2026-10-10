@@ -86,6 +86,16 @@
       "source": "560805",
       "note": "Fiche du 05/10 : build milieu de jeu conforme ; build fin de jeu ajoute (6 Track-Shift, Perpetual Strife)."
     },
+    "char-protagonist-female": {
+      "verifiedAt": "2026-10-10",
+      "source": "602606",
+      "note": "Créés le 10/10 : Sub-DPS Umbro (602606) et Soutien Lumino (560806). Umbro : 4 modules lus au tableau (cases 1, 2, 4, 7), le compteur en annonce 5."
+    },
+    "char-protagonist-male": {
+      "verifiedAt": "2026-10-10",
+      "source": "602606",
+      "note": "Mêmes builds que la version féminine."
+    },
     "char-saiqi": {
       "verifiedAt": "2026-10-08",
       "source": "560797",
