@@ -1,5 +1,6 @@
 "use client";
 
+import { toIntlLocale } from "@/lib/intl-locale";
 import { useMemo } from "react";
 import { useLocale } from "next-intl";
 import { CalendarDays } from "lucide-react";
@@ -25,7 +26,7 @@ export function UpcomingCountdown({
 
   const dateLabel = useMemo(
     () =>
-      new Intl.DateTimeFormat(locale, { dateStyle: "long", timeZone: "UTC" }).format(
+      new Intl.DateTimeFormat(toIntlLocale(locale), { dateStyle: "long", timeZone: "UTC" }).format(
         new Date(`${releaseDate}T12:00:00Z`),
       ),
     [locale, releaseDate],

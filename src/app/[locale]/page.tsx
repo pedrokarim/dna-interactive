@@ -1,3 +1,4 @@
+import { toIntlLocale } from "@/lib/intl-locale";
 import { getTheatreSnapshot } from "@/lib/theatre/db";
 import type { Metadata, ResolvingMetadata } from "next";
 import { generatePageMetadata, pageMetadata } from "@/lib/metadata";
@@ -41,7 +42,7 @@ const ELEMENT_TINT: Record<string, string> = {
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const langCode = locale.toUpperCase();
-  const fmt = new Intl.NumberFormat(locale);
+  const fmt = new Intl.NumberFormat(toIntlLocale(locale));
 
   const characters = getAllCharacters();
   const catalog = getItemCatalog();

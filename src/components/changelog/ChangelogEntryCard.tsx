@@ -1,5 +1,6 @@
 "use client";
 
+import { toIntlLocale } from "@/lib/intl-locale";
 import { useMemo } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { DnaPanel } from "@/components/dna/Panel";
@@ -39,7 +40,7 @@ export function ChangelogEntryCard({ entry }: { entry: ChangelogPublicEntry }) {
 
   const dateLabel = useMemo(
     () =>
-      new Intl.DateTimeFormat(locale, { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" }).format(
+      new Intl.DateTimeFormat(toIntlLocale(locale), { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" }).format(
         new Date(`${entry.date}T12:00:00Z`),
       ),
     [locale, entry.date],

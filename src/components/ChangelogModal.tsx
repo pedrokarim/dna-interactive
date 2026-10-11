@@ -1,5 +1,6 @@
 "use client";
 
+import { toIntlLocale } from "@/lib/intl-locale";
 import { motion, useReducedMotion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import { changelogData } from "@/lib/changelogData";
@@ -18,7 +19,7 @@ export default function ChangelogModal({ isOpen, onClose }: ChangelogModalProps)
   const tEntries = useTranslations("changelogEntries");
   const locale = useLocale();
   const reduceMotion = useReducedMotion();
-  const dateFormatter = new Intl.DateTimeFormat(locale, { year: "numeric", month: "long", day: "numeric" });
+  const dateFormatter = new Intl.DateTimeFormat(toIntlLocale(locale), { year: "numeric", month: "long", day: "numeric" });
 
   return (
     <DnaDialog

@@ -1,5 +1,6 @@
 "use client";
 
+import { toIntlLocale } from "@/lib/intl-locale";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Bell, BellOff, Check, Settings2 } from "lucide-react";
@@ -26,7 +27,7 @@ export function NotificationBell() {
 
   const relative = useMemo(() => new Intl.RelativeTimeFormat(locale, { numeric: "auto" }), [locale]);
   const absolute = useMemo(
-    () => new Intl.DateTimeFormat(locale, { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }),
+    () => new Intl.DateTimeFormat(toIntlLocale(locale), { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }),
     [locale],
   );
 

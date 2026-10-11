@@ -1,5 +1,6 @@
 "use client";
 
+import { toIntlLocale } from "@/lib/intl-locale";
 import {
   useCallback,
   useEffect,
@@ -288,12 +289,12 @@ export function CalendarTimeline({
   const full = variant === "full";
 
   // timeZone UTC : nos dates ISO sont en UTC-minuit → même jour affiché partout.
-  const dayFmt = useMemo(() => new Intl.DateTimeFormat(locale, { day: "numeric", month: "short", timeZone: "UTC" }), [locale]);
-  const dayNumFmt = useMemo(() => new Intl.DateTimeFormat(locale, { day: "numeric", timeZone: "UTC" }), [locale]);
-  const monthFmt = useMemo(() => new Intl.DateTimeFormat(locale, { month: "long", year: "numeric", timeZone: "UTC" }), [locale]);
-  const pillFmt = useMemo(() => new Intl.DateTimeFormat(locale, { day: "2-digit", month: "2-digit", timeZone: "UTC" }), [locale]);
+  const dayFmt = useMemo(() => new Intl.DateTimeFormat(toIntlLocale(locale), { day: "numeric", month: "short", timeZone: "UTC" }), [locale]);
+  const dayNumFmt = useMemo(() => new Intl.DateTimeFormat(toIntlLocale(locale), { day: "numeric", timeZone: "UTC" }), [locale]);
+  const monthFmt = useMemo(() => new Intl.DateTimeFormat(toIntlLocale(locale), { month: "long", year: "numeric", timeZone: "UTC" }), [locale]);
+  const pillFmt = useMemo(() => new Intl.DateTimeFormat(toIntlLocale(locale), { day: "2-digit", month: "2-digit", timeZone: "UTC" }), [locale]);
   const longFmt = useMemo(
-    () => new Intl.DateTimeFormat(locale, { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }),
+    () => new Intl.DateTimeFormat(toIntlLocale(locale), { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }),
     [locale],
   );
 

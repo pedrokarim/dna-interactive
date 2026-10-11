@@ -1,3 +1,4 @@
+import { toIntlLocale } from "@/lib/intl-locale";
 import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import { eq } from "drizzle-orm";
@@ -49,7 +50,7 @@ export default async function ProfilePage({ searchParams }: Props) {
     .filter((p): p is "discord" | "google" => p === "discord" || p === "google");
   const hasPassword = Boolean(userRows[0]?.passwordHash);
   const joinedOn = userRows[0]?.createdAt
-    ? new Intl.DateTimeFormat(locale, { dateStyle: "long" }).format(new Date(userRows[0].createdAt))
+    ? new Intl.DateTimeFormat(toIntlLocale(locale), { dateStyle: "long" }).format(new Date(userRows[0].createdAt))
     : null;
 
   return (

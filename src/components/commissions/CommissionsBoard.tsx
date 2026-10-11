@@ -1,5 +1,6 @@
 "use client";
 
+import { toIntlLocale } from "@/lib/intl-locale";
 import { Clock, Loader2 } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
@@ -43,9 +44,9 @@ export function CommissionsBoard({
       minute: "2-digit",
       timeZoneName: "short",
     };
-    setNextLabel(new Date(meta.nextRefreshAt).toLocaleTimeString(locale, opts));
+    setNextLabel(new Date(meta.nextRefreshAt).toLocaleTimeString(toIntlLocale(locale), opts));
     setUpdatedLabel(
-      meta.updatedAt ? new Date(meta.updatedAt).toLocaleTimeString(locale, opts) : null,
+      meta.updatedAt ? new Date(meta.updatedAt).toLocaleTimeString(toIntlLocale(locale), opts) : null,
     );
   }, [meta.nextRefreshAt, meta.updatedAt, locale]);
 

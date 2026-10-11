@@ -1,5 +1,6 @@
 "use client";
 
+import { toIntlLocale } from "@/lib/intl-locale";
 import mapIndex from "@/data/mapIndex.json";
 import type { GameMapSummary } from "@/types/map";
 import { useLocale, useTranslations } from "next-intl";
@@ -27,7 +28,7 @@ export default function MapInfoModal({ isOpen, onClose, selectedMapId }: MapInfo
   const selectedMapImages = selectedMap?.imageCount ?? 0;
   const selectedMapCategories = selectedMap?.legend.length ?? 0;
 
-  const lastUpdateDate = new Intl.DateTimeFormat(locale, {
+  const lastUpdateDate = new Intl.DateTimeFormat(toIntlLocale(locale), {
     year: "numeric",
     month: "long",
     day: "numeric",

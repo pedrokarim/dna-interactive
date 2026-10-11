@@ -1,5 +1,6 @@
 "use client";
 
+import { toIntlLocale } from "@/lib/intl-locale";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { ChevronUp, History, Loader2, X } from "lucide-react";
@@ -264,7 +265,7 @@ function VersionPicker({
                     <span className={cn("h-1.5 w-1.5 shrink-0 rounded-full", config.bgColor)} aria-hidden />
                     <span className="font-caps text-[0.72rem] text-gold">v{version.version}</span>
                     <span className="ml-auto font-mono text-[0.62rem] text-muted-2">
-                      {new Intl.DateTimeFormat(locale, { month: "short", day: "numeric", timeZone: "UTC" }).format(
+                      {new Intl.DateTimeFormat(toIntlLocale(locale), { month: "short", day: "numeric", timeZone: "UTC" }).format(
                         new Date(`${version.date}T12:00:00Z`),
                       )}
                     </span>

@@ -1,3 +1,4 @@
+import { toIntlLocale } from "@/lib/intl-locale";
 import traitsData from "@/data/genimons/traits.json";
 
 // ---------------------------------------------------------------------------
@@ -81,7 +82,7 @@ export function formatTraitEffect(
     if (raw === undefined) return "…";
     const format = trait?.formats?.[index] ?? { multiply: 1, suffix: "" };
     const value = Math.abs(raw * format.multiply);
-    const shown = new Intl.NumberFormat(locale, { maximumFractionDigits: 2 }).format(value);
+    const shown = new Intl.NumberFormat(toIntlLocale(locale), { maximumFractionDigits: 2 }).format(value);
     return `${shown}${format.suffix}`;
   });
 }

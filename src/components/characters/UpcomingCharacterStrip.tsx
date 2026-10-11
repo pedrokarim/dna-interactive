@@ -1,5 +1,6 @@
 "use client";
 
+import { toIntlLocale } from "@/lib/intl-locale";
 import { useMemo } from "react";
 import { useLocale } from "next-intl";
 import { ArrowRight } from "lucide-react";
@@ -29,7 +30,7 @@ export function UpcomingCharacterStrip({ character }: { character: UpcomingChara
   const dateLabel = useMemo(
     () =>
       character.releaseDate
-        ? new Intl.DateTimeFormat(locale, { day: "numeric", month: "long", timeZone: "UTC" }).format(
+        ? new Intl.DateTimeFormat(toIntlLocale(locale), { day: "numeric", month: "long", timeZone: "UTC" }).format(
             new Date(`${character.releaseDate}T12:00:00Z`),
           )
         : null,

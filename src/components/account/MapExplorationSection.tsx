@@ -1,3 +1,4 @@
+import { toIntlLocale } from "@/lib/intl-locale";
 import { getLocale, getTranslations } from "next-intl/server";
 import { desc, eq } from "drizzle-orm";
 import { BookOpen, Compass, EyeOff, Heart, Package, Puzzle, Route, ScrollText, Signpost, type LucideIcon } from "lucide-react";
@@ -85,7 +86,7 @@ export async function MapExplorationSection({ userId }: { userId: string }) {
     ([a], [b]) => Object.keys(CATEGORY_ICONS).indexOf(a) - Object.keys(CATEGORY_ICONS).indexOf(b),
   );
   const updated = row?.updatedAt
-    ? new Intl.DateTimeFormat(locale, { dateStyle: "medium", timeStyle: "short" }).format(row.updatedAt)
+    ? new Intl.DateTimeFormat(toIntlLocale(locale), { dateStyle: "medium", timeStyle: "short" }).format(row.updatedAt)
     : null;
 
   return (
