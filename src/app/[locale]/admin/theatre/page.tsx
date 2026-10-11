@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { resolveBreadcrumb } from "@/lib/shell";
 import { DnaPageMark } from "@/components/dna/PageMark";
 import type { Metadata } from "next";
@@ -20,7 +21,7 @@ export default async function AdminTheatrePage() {
   return (
     <div className="mx-auto w-full max-w-[1100px] px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
       <div className="mb-5">
-        <DnaPageMark>{resolveBreadcrumb("/admin/theatre")}</DnaPageMark>
+        <DnaPageMark>{(await getTranslations("shell"))(`breadcrumbs.${resolveBreadcrumb("/admin/theatre")}`)}</DnaPageMark>
         <h1 className="mt-1 font-display text-3xl font-semibold text-parch md:text-4xl">Théâtre immersif – administration</h1>
         <p className="mt-3 max-w-2xl text-sm text-parch/75">
           Les rotations du théâtre, de la plus récente à la plus ancienne. Ajoute ici la prochaine dès qu’elle est

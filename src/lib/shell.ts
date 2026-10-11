@@ -69,43 +69,73 @@ export function resolveShellBadges(now: Date): Record<string, ShellBadge> {
  * Vocabulaire relevé dans les données du jeu (Hall, Sceau, Tome, Chronique,
  * Atlasia…) plutôt qu'un chemin de fichier en monospace : les anciens libellés
  * `//OPERATOR.DATABASE` venaient d'une maquette faite pour Arknights Endfield,
- * dont « Operator » est d'ailleurs le mot maison. Termes latins ou musicaux, à
- * dessein : ils tiennent tels quels dans les 7 locales.
+ * dont « Operator » est d'ailleurs le mot maison.
+ *
+ * Les valeurs sont des clés `shell.breadcrumbs.<clé>` : les libellés étaient
+ * en français dans les 7 langues, ils sont maintenant traduits.
  */
-const SHELL_BREADCRUMBS: Record<string, string> = {
-  "/": "Le Grand Hall",
-  "/about": "Colophon",
-  "/admin/calendar": "Éphémérides · Intendance",
-  "/admin/theatre": "Le Théâtre · Intendance",
-  "/builder": "La Forge",
-  "/builds": "Partitions",
-  "/calendar": "Éphémérides",
-  "/changelog": "Le Registre",
-  "/characters": "Le Chœur",
-  "/commissions": "Commissions",
-  "/confidentialite": "Confidentialité",
-  "/contact": "Missive",
-  "/cosmetics": "La Garde-robe",
-  "/cosmetics/banners": "La Myriade",
-  "/forgot-password": "Le Seuil",
-  "/items": "Le Reliquaire",
-  "/items/drafts": "Hall de l'Ouvrage",
-  "/items/genimons": "Genimons",
-  "/items/weapons": "Arsenal",
-  "/login": "Le Seuil",
-  "/notifications": "La Chronique",
-  "/profile": "Votre Sceau",
-  "/reset-password": "Le Seuil",
-  "/signup": "Le Pacte",
-  "/support": "Mécénat",
-  "/theatre": "Le Théâtre",
-  "/verify-email": "Le Seuil",
+const SHELL_BREADCRUMBS: Record<string, BreadcrumbKey> = {
+  "/": "hall",
+  "/about": "colophon",
+  "/admin/calendar": "almanacStewardship",
+  "/admin/theatre": "theaterStewardship",
+  "/builder": "forge",
+  "/builds": "scores",
+  "/calendar": "almanac",
+  "/changelog": "register",
+  "/characters": "choir",
+  "/commissions": "commissions",
+  "/confidentialite": "privacy",
+  "/contact": "missive",
+  "/cosmetics": "wardrobe",
+  "/cosmetics/banners": "myriad",
+  "/forgot-password": "threshold",
+  "/items": "reliquary",
+  "/items/drafts": "workHall",
+  "/items/genimons": "genimons",
+  "/items/weapons": "arsenal",
+  "/login": "threshold",
+  "/notifications": "chronicle",
+  "/profile": "seal",
+  "/reset-password": "threshold",
+  "/signup": "pact",
+  "/support": "patronage",
+  "/theatre": "theater",
+  "/verify-email": "threshold",
 };
 
-const DEFAULT_BREADCRUMB = "Le Grand Hall";
+/** Clé de message `shell.breadcrumbs.<clé>` d'un repère de section. */
+export type BreadcrumbKey =
+  | "hall"
+  | "colophon"
+  | "almanacStewardship"
+  | "theaterStewardship"
+  | "forge"
+  | "scores"
+  | "almanac"
+  | "register"
+  | "choir"
+  | "commissions"
+  | "privacy"
+  | "missive"
+  | "wardrobe"
+  | "myriad"
+  | "threshold"
+  | "reliquary"
+  | "workHall"
+  | "genimons"
+  | "arsenal"
+  | "chronicle"
+  | "seal"
+  | "pact"
+  | "patronage"
+  | "theater"
+  | "atlas";
 
-/** `pathname` sans préfixe de locale → fil d'Ariane de la topbar. */
-export function resolveBreadcrumb(pathname: string): string {
+const DEFAULT_BREADCRUMB: BreadcrumbKey = "hall";
+
+/** `pathname` sans préfixe de locale → clé du fil d'Ariane de la topbar. */
+export function resolveBreadcrumb(pathname: string): BreadcrumbKey {
   let best = DEFAULT_BREADCRUMB;
   let bestLength = -1;
   for (const [prefix, label] of Object.entries(SHELL_BREADCRUMBS)) {

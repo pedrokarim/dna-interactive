@@ -475,7 +475,7 @@ export function AppShell({ children, badges = {}, copyrightYears = "2025" }: App
                 et local à la topbar : il ne vaut que pour ce couple, et le
                 repère est correct partout ailleurs. */}
             <DnaSectionMark size="sm" className="relative top-[1.5px] hidden max-w-[16rem] sm:inline-flex">
-              {resolveBreadcrumb(pathname)}
+              {t(`breadcrumbs.${resolveBreadcrumb(pathname)}`)}
             </DnaSectionMark>
           </div>
 

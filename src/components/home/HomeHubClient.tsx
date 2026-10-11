@@ -244,6 +244,7 @@ function HomeHub({
   serverNow,
 }: HomeHubClientProps) {
   const t = useTranslations("homeHub");
+  const tShell = useTranslations("shell");
   const tTheatre = useTranslations("theatre");
   const tCosmetics = useTranslations("cosmetics");
   const { commissionsVisible } = useAppSettings();
@@ -251,21 +252,21 @@ function HomeHub({
   // `characters.json` (cf. src/lib/characters/upcoming.ts).
   const upcoming = UPCOMING_CHARACTERS;
   const databaseCards: ToolCard[] = [
-    { href: "/characters", title: t("charactersTitle"), feature: "characters", mark: "Le Chœur", desc: t("charactersDescription"), icon: GlyphIcons.characters, bg: "/assets/worldview/worldview-3.webp", tint: "var(--color-gold)" },
-    { href: "/items", title: t("itemsTitle"), feature: "items", mark: "Le Reliquaire", desc: t("itemsDescription"), icon: GlyphIcons.items, bg: "/assets/worldview/worldview-5.webp", tint: "var(--color-anemo)" },
-    { href: "/items/weapons", title: t("weaponsTitle"), feature: "weapons", mark: "Arsenal", desc: t("weaponsDescription"), icon: GlyphIcons.weapons, bg: "/assets/worldview/worldview-8.webp", tint: "var(--color-pyro)" },
-    { href: "/items/genimons", title: t("genimonsTitle"), feature: "genimons", mark: "Genimons", desc: t("genimonsDescription"), icon: GlyphIcons.geniemons, bg: "/assets/worldview/worldview-9.webp", tint: "var(--color-hydro)" },
-    { href: "/cosmetics", title: t("cosmeticsTitle"), feature: "cosmetics", mark: "La Garde-robe", desc: t("cosmeticsDescription"), icon: GlyphIcons.cosmetics, bg: "/assets/cosmetics/bust/T_Bust_Falu01.webp", tint: "var(--color-lumino)" },
+    { href: "/characters", title: t("charactersTitle"), feature: "characters", mark: tShell("breadcrumbs.choir"), desc: t("charactersDescription"), icon: GlyphIcons.characters, bg: "/assets/worldview/worldview-3.webp", tint: "var(--color-gold)" },
+    { href: "/items", title: t("itemsTitle"), feature: "items", mark: tShell("breadcrumbs.reliquary"), desc: t("itemsDescription"), icon: GlyphIcons.items, bg: "/assets/worldview/worldview-5.webp", tint: "var(--color-anemo)" },
+    { href: "/items/weapons", title: t("weaponsTitle"), feature: "weapons", mark: tShell("breadcrumbs.arsenal"), desc: t("weaponsDescription"), icon: GlyphIcons.weapons, bg: "/assets/worldview/worldview-8.webp", tint: "var(--color-pyro)" },
+    { href: "/items/genimons", title: t("genimonsTitle"), feature: "genimons", mark: tShell("breadcrumbs.genimons"), desc: t("genimonsDescription"), icon: GlyphIcons.geniemons, bg: "/assets/worldview/worldview-9.webp", tint: "var(--color-hydro)" },
+    { href: "/cosmetics", title: t("cosmeticsTitle"), feature: "cosmetics", mark: tShell("breadcrumbs.wardrobe"), desc: t("cosmeticsDescription"), icon: GlyphIcons.cosmetics, bg: "/assets/cosmetics/bust/T_Bust_Falu01.webp", tint: "var(--color-lumino)" },
   ];
   const toolCards: ToolCard[] = [
-    { href: "/builder", title: t("buildBuilderTitle"), feature: "builder", mark: "La Forge", desc: t("buildBuilderDescription"), icon: GlyphIcons.builder, bg: "/assets/worldview/worldview-10.webp", tint: "var(--color-electro)" },
-    { href: "/map", title: t("mapTitle"), feature: "map", mark: "Atlas d'Atlasia", desc: t("mapShortDescription"), icon: GlyphIcons.map, bg: "/assets/worldview/worldview-6.webp", tint: "var(--color-hydro)" },
-    { href: "/items/drafts", title: t("draftsTitle"), feature: "drafts", mark: "Hall de l'Ouvrage", desc: t("draftsDescription"), icon: GlyphIcons.drafts, bg: "/assets/worldview/worldview-11.webp", tint: "var(--color-gold)" },
-    { href: "/changelog", title: t("changelogTitle"), mark: "Le Registre", desc: t("changelogDescription"), icon: GlyphIcons.changelog, bg: "/assets/official-v1.3/bg.webp", tint: "var(--color-umbro)" },
+    { href: "/builder", title: t("buildBuilderTitle"), feature: "builder", mark: tShell("breadcrumbs.forge"), desc: t("buildBuilderDescription"), icon: GlyphIcons.builder, bg: "/assets/worldview/worldview-10.webp", tint: "var(--color-electro)" },
+    { href: "/map", title: t("mapTitle"), feature: "map", mark: tShell("breadcrumbs.atlas"), desc: t("mapShortDescription"), icon: GlyphIcons.map, bg: "/assets/worldview/worldview-6.webp", tint: "var(--color-hydro)" },
+    { href: "/items/drafts", title: t("draftsTitle"), feature: "drafts", mark: tShell("breadcrumbs.workHall"), desc: t("draftsDescription"), icon: GlyphIcons.drafts, bg: "/assets/worldview/worldview-11.webp", tint: "var(--color-gold)" },
+    { href: "/changelog", title: t("changelogTitle"), mark: tShell("breadcrumbs.register"), desc: t("changelogDescription"), icon: GlyphIcons.changelog, bg: "/assets/official-v1.3/bg.webp", tint: "var(--color-umbro)" },
   ];
   const communityCards: ToolCard[] = [
-    { href: "/commissions", title: t("commissionsTitle"), feature: "commissions", mark: "Commissions", desc: t("commissionsDescription"), icon: GlyphIcons.commissions, bg: "/assets/worldview/worldview-4.webp", tint: "var(--color-pyro)" },
-    { href: CONTACT_INFO.discord.url, title: "Discord", mark: "Le Grand Hall", desc: t("discordDescription"), icon: DiscordIcon, bg: "/assets/worldview/worldview-1.webp", tint: "#5865F2", external: true, brand: "discord" },
+    { href: "/commissions", title: t("commissionsTitle"), feature: "commissions", mark: tShell("breadcrumbs.commissions"), desc: t("commissionsDescription"), icon: GlyphIcons.commissions, bg: "/assets/worldview/worldview-4.webp", tint: "var(--color-pyro)" },
+    { href: CONTACT_INFO.discord.url, title: "Discord", mark: tShell("breadcrumbs.hall"), desc: t("discordDescription"), icon: DiscordIcon, bg: "/assets/worldview/worldview-1.webp", tint: "#5865F2", external: true, brand: "discord" },
   ];
   const visibleCommunityCards = commissionsVisible
     ? communityCards
@@ -350,9 +351,9 @@ function HomeHub({
           </Link>
 
           <div className="grid gap-4 sm:grid-cols-2">
-            <ToolTile card={{ href: "/builder", title: "Builder", feature: "builder", mark: "La Forge", desc: t("builderDescription"), icon: GlyphIcons.builder, bg: "/assets/worldview/worldview-2.webp", tint: "var(--color-electro)" }} />
+            <ToolTile card={{ href: "/builder", title: "Builder", feature: "builder", mark: tShell("breadcrumbs.forge"), desc: t("builderDescription"), icon: GlyphIcons.builder, bg: "/assets/worldview/worldview-2.webp", tint: "var(--color-electro)" }} />
             {commissionsVisible ? (
-              <ToolTile card={{ href: "/commissions", title: t("commissionsTitle"), feature: "commissions", mark: "Commissions", desc: t("commissionsDescription"), icon: GlyphIcons.commissions, bg: "/assets/worldview/worldview-4.webp", tint: "var(--color-pyro)" }} />
+              <ToolTile card={{ href: "/commissions", title: t("commissionsTitle"), feature: "commissions", mark: tShell("breadcrumbs.commissions"), desc: t("commissionsDescription"), icon: GlyphIcons.commissions, bg: "/assets/worldview/worldview-4.webp", tint: "var(--color-pyro)" }} />
             ) : null}
           </div>
         </div>

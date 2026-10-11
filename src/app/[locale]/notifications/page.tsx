@@ -28,7 +28,7 @@ export default async function NotificationsPage({ params }: { params: Promise<{ 
   return (
     <div className="mx-auto w-full max-w-[1100px] px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
       <div className="mb-5">
-        <DnaPageMark>{resolveBreadcrumb("/notifications")}</DnaPageMark>
+        <DnaPageMark>{(await getTranslations("shell"))(`breadcrumbs.${resolveBreadcrumb("/notifications")}`)}</DnaPageMark>
         <h1 className="mt-1 font-display text-4xl font-semibold text-parch md:text-5xl">{t("heading")}</h1>
         <span aria-hidden className="mt-2 block h-0.5 w-16 bg-gold" />
         <p className="mt-3 max-w-2xl text-sm text-parch/75">{t("intro")}</p>

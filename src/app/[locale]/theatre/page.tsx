@@ -28,7 +28,7 @@ export default async function TheatrePage({ params }: { params: Promise<{ locale
   return (
     <div className="mx-auto w-full max-w-[1720px] px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
       <div className="mb-6">
-        <DnaPageMark>{resolveBreadcrumb("/theatre")}</DnaPageMark>
+        <DnaPageMark>{(await getTranslations("shell"))(`breadcrumbs.${resolveBreadcrumb("/theatre")}`)}</DnaPageMark>
         <h1 className="mt-1 font-display text-4xl font-semibold text-parch md:text-5xl">{t("heading")}</h1>
         <p className="mt-3 max-w-2xl text-sm text-parch/75">{t("intro")}</p>
       </div>
