@@ -8,9 +8,8 @@ import { DnaDivider } from "@/components/dna/Divider";
 import { DnaCornerBrackets } from "@/components/dna/CornerBrackets";
 
 export const metadata: Metadata = {
-  title: "Page introuvable - 404 | DNA Interactive",
-  description:
-    "La page que vous cherchez n'existe pas ou a été déplacée. Retour à la carte interactive Duet Night Abyss.",
+  title: "Page not found - 404 | DNA Interactive",
+  description: "The page you are looking for does not exist or has been moved.",
   robots: { index: false, follow: true },
 };
 

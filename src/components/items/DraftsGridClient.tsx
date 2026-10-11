@@ -1,7 +1,7 @@
 "use client";
 
 import { Link } from "@/i18n/navigation";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useMemo, useRef, useState } from "react";
 import {
   ChevronRight,
@@ -14,7 +14,7 @@ import {
   ZoomIn,
 } from "lucide-react";
 import { parseAsArrayOf, parseAsInteger, parseAsString, parseAsStringLiteral, useQueryStates } from "nuqs";
-import { getLanguageLabel, normalizeLanguageCodes } from "@/lib/items/catalog";
+import { getLanguageLabel, normalizeLanguageCodes, visitorGridLanguages } from "@/lib/items/catalog";
 import type { DraftRecipeSummary } from "@/lib/items/drafts";
 import { resolveDraftItemName } from "@/lib/items/drafts";
 import FilterChips from "@/components/list/FilterChips";
@@ -140,10 +140,12 @@ export default function DraftsGridClient({
   const t = useTranslations('drafts');
   const td = useTranslations('draftDetail');
   const tc = useTranslations('common');
+  const locale = useLocale();
+  // La langue du visiteur prime ; la valeur passée par la page sert de repli.
   const normalizedDefaultLanguages = normalizeLanguageCodes(
-    defaultLanguages,
+    visitorGridLanguages(locale),
     availableLanguages,
-    ["FR", "EN"],
+    defaultLanguages,
   );
 
   const [viewMode, setViewMode] = useListViewMode("drafts", "simplified");

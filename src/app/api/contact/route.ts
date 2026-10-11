@@ -140,8 +140,10 @@ export async function POST(request: NextRequest) {
 
     if (!validationResult.success) {
       // Retourner la première erreur de validation
-      const error = validationResult.error.issues[0];
-      return NextResponse.json({ error: t(error.message) }, { status: 400 });
+      // Les messages du schéma sont des clés `apiErrors` ; un champ absent ou du
+      // mauvais type produit le message anglais de Zod, qui n'en est pas une.
+      const key = validationResult.error.issues[0]?.message ?? "";
+      return NextResponse.json({ error: t.has(key) ? t(key) : t("invalidData") }, { status: 400 });
     }
 
     const { name, email, subject, message, recaptchaToken } =

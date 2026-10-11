@@ -79,16 +79,16 @@ export async function generateMetadata(
   );
   const charName = localized.name ?? character.internalName;
   const slug = getCharacterSlug(character);
+  const tMeta = await getTranslations({ locale, namespace: "metadata" });
 
   return generatePageMetadata(
     {
       title: `${charName} - ${character.element.label} ${character.weaponTags[0] ?? ""}`,
-      description: `Fiche complete de ${charName} dans Duet Night Abyss : element ${character.element.label}, armes, faction, portraits et traductions multilingues.`,
+      description: tMeta("characterDescription", { name: charName, element: character.element.label }),
       path: `/characters/${slug}`,
       dynamicOgImage: true, // image OG fournie par opengraph-image.tsx
       keywords: [
         "Duet Night Abyss",
-        "personnage",
         "character",
         charName,
         character.internalName,

@@ -1,5 +1,6 @@
 import "server-only";
 import { and, desc, eq, inArray } from "drizzle-orm";
+import { getTranslations } from "next-intl/server";
 import { getDb, schema } from "@/db";
 import { isMissingTableError } from "@/lib/db-errors";
 import type { AppNotification } from "./types";
@@ -16,11 +17,15 @@ import type { AppNotification } from "./types";
  * NB : les votes étant anonymes (par IP), on ne peut plus notifier « X a aimé
  * ton build » – cette source a été retirée.
  */
-export async function getDerivedNotifications(user: {
-  id: string;
-  role: "user" | "admin";
-}): Promise<AppNotification[]> {
+export async function getDerivedNotifications(
+  user: {
+    id: string;
+    role: "user" | "admin";
+  },
+  locale: string,
+): Promise<AppNotification[]> {
   const db = getDb();
+  const t = await getTranslations({ locale, namespace: "notificationsPanel" });
   const out: AppNotification[] = [];
 
   // Modération de mes builds
@@ -47,19 +52,20 @@ export async function getDerivedNotifications(user: {
         .orderBy(desc(schema.adminActions.createdAt))
         .limit(10);
       for (const a of acts) {
-        const verb = /hide|masqu/i.test(a.action)
-          ? "masqué"
-          : /remove|delete|retir/i.test(a.action)
-            ? "retiré"
-            : /unhide|restore|rétabl/i.test(a.action)
-              ? "rétabli"
-              : "modéré";
+        // `unhide` contient `hide` : il est testé en premier.
+        const titleKey = /unhide|restore|rétabl/i.test(a.action)
+          ? "moderationRestored"
+          : /hide|masqu/i.test(a.action)
+            ? "moderationHidden"
+            : /remove|delete|retir/i.test(a.action)
+              ? "moderationRemoved"
+              : "moderationOther";
         const iso = new Date(a.createdAt).toISOString();
         out.push({
           id: `mod-${a.targetId}-${Date.parse(iso)}`,
           source: "derived",
           kind: "moderation",
-          title: `Ton build a été ${verb}`,
+          title: t(titleKey),
           body: a.targetId ? titleById.get(a.targetId) : undefined,
           href: "/profile",
           createdAt: iso,

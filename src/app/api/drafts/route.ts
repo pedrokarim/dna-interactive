@@ -61,12 +61,12 @@ export async function PUT(request: NextRequest) {
 
   const parsed = draftSchema.safeParse(await request.json());
   if (!parsed.success) {
-    return NextResponse.json({ error: parsed.error.issues[0]?.message ?? "Brouillon invalide." }, { status: 400 });
+    return NextResponse.json({ error: t("buildInvalid"), details: parsed.error.issues.map((issue) => issue.message) }, { status: 400 });
   }
 
   const referenceErrors = validateBuildReferences(parsed.data);
   if (referenceErrors.length > 0) {
-    return NextResponse.json({ error: referenceErrors[0], details: referenceErrors }, { status: 400 });
+    return NextResponse.json({ error: t("buildInvalid"), details: referenceErrors }, { status: 400 });
   }
 
   const element = draftElementKey(parsed.data.element);

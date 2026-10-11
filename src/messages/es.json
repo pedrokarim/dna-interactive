@@ -737,7 +737,12 @@
     "buildUpdatedOn": "Actualizado el {date}",
     "buildVerifiedOn": "Revisado el {date}",
     "legacyBuildTag": "anterior",
-    "legacyBuildNotice": "Build anterior: ya no forma parte de las recomendaciones actuales. Se conserva aquí para quienes ya lo montaron."
+    "legacyBuildNotice": "Build anterior: ya no forma parte de las recomendaciones actuales. Se conserva aquí para quienes ya lo montaron.",
+    "rarityStars": "{count, plural, one {# estrella} other {# estrellas}}",
+    "recommendedAttributes": "Atributos recomendados",
+    "ascensionBonus": "Bonificaciones de ascensión",
+    "intronPieceCount": "Fragmento de intrón ×{count}",
+    "intronLevelsHint": "{count, plural, one {# nivel} other {# niveles}} · ver la pestaña Intron ▸"
   },
   "items": {
     "libraryLabel": "Biblioteca de Objetos",
@@ -778,7 +783,12 @@
     "potentialNoMaterial": "No requiere materiales",
     "potentialTreeUnavailable": "El árbol de potencial de esta arma aún no está disponible.",
     "calamityWeaponGuide": "Guía de armas de calamidad",
-    "genimonGuide": "Guía de Geniemons"
+    "genimonGuide": "Guía de Geniemons",
+    "compatCharacter": "Personaje",
+    "compatMelee": "Arma cuerpo a cuerpo",
+    "compatRanged": "Arma a distancia",
+    "compatMeleeConsonance": "Consonancia cuerpo a cuerpo",
+    "compatRangedConsonance": "Consonancia a distancia"
   },
   "itemDetail": {
     "weaponBuildTitle": "Build de Demon Wedges recomendado",
@@ -838,7 +848,11 @@
     "genimonBuildFirst": "{count, plural, one {prioridad principal en # build} other {prioridad principal en # builds}}",
     "genimonBuildOthers": "Otros Rasgos encontrados",
     "genimonCharactersIntro": "Personajes cuyo build recomendado lleva este Geniemon, y los Rasgos que buscan en él.",
-    "genimonRankBest": "Mejor opción"
+    "genimonRankBest": "Mejor opción",
+    "resolvedAttributes": "Atributos al nivel {level}",
+    "polarityFallback": "Polaridad {value}",
+    "calamityAttack": "ATQ de calamidad",
+    "critRate": "Prob. Crítico"
   },
   "drafts": {
     "headerLabel": "Planos de Forja",
@@ -942,7 +956,12 @@
     "bannersTitle": "Banners de Myriad",
     "bannersDescription": "Todos los banners de Myriad de Duet Night Abyss: atuendos destacados, probabilidades, garantía, contenido completo, recompensas acumuladas e intercambio de prismas.",
     "theatreTitle": "Teatro inmersivo – rotaciones",
-    "theatreDescription": "Seguimiento de las rotaciones del Teatro inmersivo de Duet Night Abyss: el personaje o arma de calamidad en cartel, el próximo cambio y todo el historial."
+    "theatreDescription": "Seguimiento de las rotaciones del Teatro inmersivo de Duet Night Abyss: el personaje o arma de calamidad en cartel, el próximo cambio y todo el historial.",
+    "characterDescription": "Ficha completa de {name} en Duet Night Abyss: elemento {element}, armas, facción, retratos y nombres en 7 idiomas.",
+    "favoritesTitle": "Demon Wedges favoritos",
+    "favoritesDescription": "Encuentra tus Demon Wedges favoritos, guardados en tu navegador, con filtros e idiomas a elegir.",
+    "itemCategorySearch": "Busca, filtra y compara los nombres en {count} idiomas.",
+    "itemDetailFallback": "{category}: ficha de {name} en {count} idiomas."
   },
   "commissions": {
     "eyebrow": "Comisiones encubiertas",
@@ -1080,7 +1099,9 @@
     "genimonTraitCount": "{count} de {max} ranuras",
     "genimonTraitFull": "Todas las ranuras están ocupadas: una elección nueva sustituye a la más antigua.",
     "genimonTraitsModalHelp": "Elige los Rasgos que quieres conseguir en este Geniemon. El número de ranuras depende de la criatura: tres en una variante corriente, cuatro en una reluciente. El orden es una prioridad de farmeo, no una ranura.",
-    "genimonEmptySlot": "Ranura libre"
+    "genimonEmptySlot": "Ranura libre",
+    "buildImported": "Build importado.",
+    "importInvalid": "Este archivo no es un build válido de DNA Interactive o contiene elementos que el sitio no reconoce."
   },
   "communityBuilds": {
     "sectionTitle": "Alternativas de la comunidad",
@@ -1993,7 +2014,8 @@
     "nameInvalidChars": "El nombre solo puede contener letras, espacios, apóstrofos y guiones.",
     "routeNotFound": "Ruta no encontrada.",
     "routeLimitReached": "Límite de rutas alcanzado: elimina una para crear otra.",
-    "cannotReportOwnRoute": "No puedes denunciar tu propia ruta."
+    "cannotReportOwnRoute": "No puedes denunciar tu propia ruta.",
+    "buildInvalid": "Este build contiene datos no válidos."
   },
   "notificationsPanel": {
     "ariaWithUnread": "Notificaciones ({count} sin leer)",
@@ -2001,7 +2023,13 @@
     "seeAll": "Ver todo",
     "pushEnable": "Activar push",
     "pushOn": "Push activo",
-    "pushBlocked": "Push bloqueado"
+    "pushBlocked": "Push bloqueado",
+    "pushEnableFailed": "No se pudieron activar las notificaciones.",
+    "pushDisableFailed": "No se pudieron desactivar las notificaciones.",
+    "moderationHidden": "Tu build ha sido ocultado",
+    "moderationRemoved": "Tu build ha sido retirado",
+    "moderationRestored": "Tu build ha sido restablecido",
+    "moderationOther": "Tu build ha sido moderado"
   },
   "notificationsPage": {
     "heading": "Notificaciones",
@@ -2340,5 +2368,39 @@
     "scrollForward": "Rotaciones posteriores",
     "backToNow": "Ahora",
     "localTime": "Las fechas y horas se muestran en tu zona horaria."
+  },
+  "og": {
+    "viewCount": "{count, plural, one {# visita} other {# visitas}}",
+    "character": "Personaje",
+    "characterNotFound": "Personaje no encontrado",
+    "itemNotFound": "Objeto no encontrado",
+    "buildNotFound": "Build no encontrado"
+  },
+  "itemCategories": {
+    "mods": {
+      "title": "Demon Wedges",
+      "name": "Demon Wedge",
+      "description": "Todos los Demon Wedges, con nombres en 7 idiomas, efectos y compatibilidad."
+    },
+    "genimons": {
+      "title": "Geniemons",
+      "name": "Geniemon",
+      "description": "Los compañeros Geniemon, con sus variantes, Rasgos y efectos pasivos."
+    },
+    "weapons": {
+      "title": "Armas",
+      "name": "Arma",
+      "description": "Todas las armas cuerpo a cuerpo y a distancia, con tipo, estadísticas e iconos."
+    },
+    "resources": {
+      "title": "Recursos",
+      "name": "Recurso",
+      "description": "Materiales, consumibles y objetos del juego, con descripciones e iconos."
+    },
+    "fishing": {
+      "title": "Pesca",
+      "name": "Pesca",
+      "description": "Peces, cañas, señuelos y moneda de pesca."
+    }
   }
 }

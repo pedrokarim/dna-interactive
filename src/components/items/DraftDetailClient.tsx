@@ -2,6 +2,7 @@
 
 import { Link } from "@/i18n/navigation";
 import { useLocale, useTranslations } from "next-intl";
+import { toIntlLocale } from "@/lib/intl-locale";
 import { useMemo } from "react";
 import { ArrowLeft, Clock3, ExternalLink } from "lucide-react";
 import { GlyphIcons } from "@/components/icons/GameGlyph";
@@ -28,8 +29,8 @@ function formatDuration(seconds: number | null): string {
   return `${mins}:${secs.toString().padStart(2, "0")}`;
 }
 
-function formatInteger(value: number): string {
-  return Intl.NumberFormat("fr-FR", { maximumFractionDigits: 0 }).format(value);
+function formatInteger(value: number, locale: string): string {
+  return Intl.NumberFormat(toIntlLocale(locale), { maximumFractionDigits: 0 }).format(value);
 }
 
 function slotPositionsForIngredients(count: number): number[] {
@@ -187,7 +188,7 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
   const tc = useTranslations('common');
   // Langue de la page par défaut, pour que le rendu serveur soit dans la langue de l'URL.
   const locale = useLocale();
-  const preferredLanguage = normalizeLanguageCodes([locale, "FR"], availableLanguages, ["FR", "EN"])[0];
+  const preferredLanguage = normalizeLanguageCodes([locale, "EN"], availableLanguages, ["EN", "FR"])[0];
   const selectedLanguageParser = useMemo(
     () =>
       parseAsStringLiteral(availableLanguages)
@@ -385,13 +386,13 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
                 {typeof weaponValue === "number" ? (
                   <div className="flex items-center justify-between gap-3">
                     <dt>{t("weaponValue")}</dt>
-                    <dd>{formatInteger(weaponValue)}</dd>
+                    <dd>{formatInteger(weaponValue, locale)}</dd>
                   </div>
                 ) : null}
                 {typeof collectRewardExp === "number" ? (
                   <div className="flex items-center justify-between gap-3">
                     <dt>{t("expReward")}</dt>
-                    <dd>{formatInteger(collectRewardExp)}</dd>
+                    <dd>{formatInteger(collectRewardExp, locale)}</dd>
                   </div>
                 ) : null}
               </dl>
@@ -404,7 +405,7 @@ export default function DraftDetailClient({ recipe, availableLanguages }: DraftD
                   {coinCostEntries.map(([coinType, value]) => (
                     <div key={coinType} className="flex items-center justify-between gap-3">
                       <dt>CoinType {coinType}</dt>
-                      <dd>{formatInteger(value)}</dd>
+                      <dd>{formatInteger(value, locale)}</dd>
                     </div>
                   ))}
                 </dl>

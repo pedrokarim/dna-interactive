@@ -85,13 +85,13 @@ export default async function SupportPage() {
         <DnaPanel className="mt-12 p-7 md:p-8">
           <h2 className="mb-8 text-center font-display text-2xl text-parch">{tSupport("faqTitle")}</h2>
           <div className="grid gap-x-8 gap-y-6 sm:grid-cols-2">
-            {FAQ_ITEMS.map((faq, index) => (
-              <div key={index}>
+            {FAQ_ITEMS.map((faq) => (
+              <div key={faq}>
                 <h4 className="mb-2 flex items-start gap-2 font-medium text-parch">
                   <span className="mt-0.5 text-gold">◈</span>
-                  {faq.question}
+                  {tSupport(`${faq}Question`)}
                 </h4>
-                <p className="text-sm leading-relaxed text-muted">{faq.answer}</p>
+                <p className="text-sm leading-relaxed text-muted">{tSupport(`${faq}Answer`)}</p>
               </div>
             ))}
           </div>

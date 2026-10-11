@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 /** Conversion base64url → Uint8Array, format attendu par `applicationServerKey`. */
 function urlBase64ToUint8Array(base64: string): Uint8Array {
@@ -32,6 +32,7 @@ export type PushState =
  */
 export function usePushNotifications() {
   const locale = useLocale();
+  const t = useTranslations("notificationsPanel");
   const [state, setState] = useState<PushState>("unsupported");
   const [error, setError] = useState<string | null>(null);
 
@@ -75,7 +76,7 @@ export function usePushNotifications() {
     setState("subscribing");
     try {
       const config = await fetch("/api/notifications/push").then((r) => r.json());
-      if (!config?.publicKey) throw new Error("Service de push indisponible.");
+      if (!config?.publicKey) throw new Error("push: clé VAPID absente");
 
       const permission = await Notification.requestPermission();
       if (permission !== "granted") {
@@ -102,13 +103,14 @@ export function usePushNotifications() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ endpoint: json.endpoint, keys: json.keys, locale }),
       });
-      if (!response.ok) throw new Error("Enregistrement refusé par le serveur.");
+      if (!response.ok) throw new Error(`push: enregistrement refusé (${response.status})`);
       setState("subscribed");
     } catch (cause) {
-      setError(cause instanceof Error ? cause.message : "Activation impossible.");
+      console.warn("[push] activation impossible :", cause);
+      setError(t("pushEnableFailed"));
       setState("idle");
     }
-  }, [locale]);
+  }, [locale, t]);
 
   const disable = useCallback(async () => {
     setError(null);
@@ -124,10 +126,11 @@ export function usePushNotifications() {
         await subscription.unsubscribe();
       }
       setState("idle");
-    } catch {
-      setError("Désactivation impossible.");
+    } catch (cause) {
+      console.warn("[push] désactivation impossible :", cause);
+      setError(t("pushDisableFailed"));
     }
-  }, []);
+  }, [t]);
 
   return { state, error, enable, disable };
 }

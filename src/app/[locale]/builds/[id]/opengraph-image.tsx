@@ -1,8 +1,10 @@
 import { ImageResponse } from "next/og";
+import { getTranslations } from "next-intl/server";
 import { eq } from "drizzle-orm";
 import { getDb, schema } from "@/db";
 import { isMissingTableError } from "@/lib/db-errors";
 import { getCharacterById, resolveCharacterDisplayName } from "@/lib/characters/catalog";
+import { toIntlLocale } from "@/lib/intl-locale";
 import { loadOgFonts, OG_SIZE, OG_CONTENT_TYPE } from "@/app/_og/fonts";
 import {
   OgRoot,
@@ -19,7 +21,7 @@ export const dynamic = "force-dynamic";
 
 export const size = OG_SIZE;
 export const contentType = OG_CONTENT_TYPE;
-export const alt = "Build communautaire – DNA Interactive";
+export const alt = "Community build — DNA Interactive";
 
 type OgBuild = {
   title: string;
@@ -73,13 +75,19 @@ export default async function BuildOgImage({
   params: Promise<{ locale: string; id: string }>;
 }) {
   const { locale, id } = await params;
-  const [fonts, build, origin] = await Promise.all([loadOgFonts(), loadBuildForOg(id), resolveOrigin()]);
+  const [fonts, build, origin, t, tcb] = await Promise.all([
+    loadOgFonts(),
+    loadBuildForOg(id),
+    resolveOrigin(),
+    getTranslations({ locale, namespace: "og" }),
+    getTranslations({ locale, namespace: "communityBuilds" }),
+  ]);
 
   const character = build ? getCharacterById(build.characterId) : null;
   const element = getElement(build?.element ?? character?.element.key);
 
   const charName = character ? resolveCharacterDisplayName(character, locale) : null;
-  const title = truncate(build?.title ?? "Build introuvable", 64);
+  const title = truncate(build?.title ?? t("buildNotFound"), 64);
   // bust = illustration carrée 2048² bien cadrée. Le gacha (256×1024) zoome sur
   // le haut en cover et coupe le visage → priorité au bust.
   const portraitPath =
@@ -89,7 +97,7 @@ export default async function BuildOgImage({
     character?.portraits.gacha?.publicPath ??
     character?.portraits.head?.publicPath ??
     null;
-  const fmt = (n: number) => new Intl.NumberFormat("en-US").format(n);
+  const fmt = (n: number) => new Intl.NumberFormat(toIntlLocale(locale)).format(n);
 
   return new ImageResponse(
     (
@@ -115,10 +123,12 @@ export default async function BuildOgImage({
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: 12, color: "#8a8395" }}>
               <div style={{ display: "flex", width: 16, height: 16, borderRadius: 16, border: "3px solid #6b6477" }} />
-              <span>{fmt(build?.views ?? 0)} vues</span>
+              <span>{t("viewCount", { count: build?.views ?? 0 })}</span>
             </div>
             {build?.authorName ? (
-              <div style={{ display: "flex", color: "#8a8395" }}>par {truncate(build.authorName, 22)}</div>
+              <div style={{ display: "flex", color: "#8a8395" }}>
+                {tcb("byAuthor", { author: truncate(build.authorName, 22) })}
+              </div>
             ) : null}
           </div>
         </div>

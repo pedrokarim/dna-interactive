@@ -737,7 +737,12 @@
     "buildUpdatedOn": "更新日：{date}",
     "buildVerifiedOn": "確認日：{date}",
     "legacyBuildTag": "旧",
-    "legacyBuildNotice": "旧ビルド：現在のおすすめには含まれていません。すでに組んだ方のために残しています。"
+    "legacyBuildNotice": "旧ビルド：現在のおすすめには含まれていません。すでに組んだ方のために残しています。",
+    "rarityStars": "星{count}",
+    "recommendedAttributes": "おすすめステータス",
+    "ascensionBonus": "突破ボーナス",
+    "intronPieceCount": "イントロンの欠片 ×{count}",
+    "intronLevelsHint": "{count}レベル · Intronタブを見る ▸"
   },
   "items": {
     "libraryLabel": "アイテムライブラリ",
@@ -778,7 +783,12 @@
     "potentialNoMaterial": "必要な素材はありません",
     "potentialTreeUnavailable": "この武器のポテンシャルツリーはまだ利用できません。",
     "calamityWeaponGuide": "カラミティ武器ガイド",
-    "genimonGuide": "ジェネモンガイド"
+    "genimonGuide": "ジェネモンガイド",
+    "compatCharacter": "キャラクター",
+    "compatMelee": "近接武器",
+    "compatRanged": "遠距離武器",
+    "compatMeleeConsonance": "近接コンソナンス",
+    "compatRangedConsonance": "遠距離コンソナンス"
   },
   "itemDetail": {
     "weaponBuildTitle": "おすすめのデーモンウェッジ構成",
@@ -838,7 +848,11 @@
     "genimonBuildFirst": "{count}件のビルドで最優先",
     "genimonBuildOthers": "そのほかの特性",
     "genimonCharactersIntro": "このジェネモンを連れていく推奨ビルドのキャラクターと、そこで狙う特性。",
-    "genimonRankBest": "最適"
+    "genimonRankBest": "最適",
+    "resolvedAttributes": "レベル{level}のステータス",
+    "polarityFallback": "極性 {value}",
+    "calamityAttack": "カラミティ攻撃力",
+    "critRate": "クリティカル率"
   },
   "drafts": {
     "headerLabel": "鍛造設計図",
@@ -942,7 +956,12 @@
     "bannersTitle": "万華バナー",
     "bannersDescription": "Duet Night Abyssの万華バナー一覧。ピックアップ、提供割合、天井、全排出内容、累計報酬、プリズムの交換。",
     "theatreTitle": "体験型劇場 – ローテーション",
-    "theatreDescription": "Duet Night Abyss の体験型劇場ローテーション一覧。現在のキャラクターまたはカラミティ武器、次回の切り替え、これまでの履歴を確認できます。"
+    "theatreDescription": "Duet Night Abyss の体験型劇場ローテーション一覧。現在のキャラクターまたはカラミティ武器、次回の切り替え、これまでの履歴を確認できます。",
+    "characterDescription": "Duet Night Abyssの{name}の完全データ：{element}属性、武器、陣営、立ち絵、7言語の名称。",
+    "favoritesTitle": "お気に入りのDemon Wedge",
+    "favoritesDescription": "ブラウザに保存したお気に入りのDemon Wedgeを、フィルターと表示言語の切り替えで確認できます。",
+    "itemCategorySearch": "{count}言語の名称を検索・絞り込み・比較できます。",
+    "itemDetailFallback": "{category}：{name}の詳細（{count}言語）。"
   },
   "commissions": {
     "eyebrow": "隠密コミッション",
@@ -1080,7 +1099,9 @@
     "genimonTraitCount": "{max} 枠中 {count} 個",
     "genimonTraitFull": "枠がすべて埋まっています。新たに選ぶと、いちばん古いものと入れ替わります。",
     "genimonTraitsModalHelp": "このジェネモンで狙う特性を選びます。枠の数は個体によって変わり、通常の変種は3つ、輝く変種は4つです。並び順は育成の優先度であって、どの枠に入るかではありません。",
-    "genimonEmptySlot": "空きスロット"
+    "genimonEmptySlot": "空きスロット",
+    "buildImported": "ビルドを読み込みました。",
+    "importInvalid": "このファイルは有効なDNA Interactiveのビルドではないか、サイトが認識できない要素を含んでいます。"
   },
   "communityBuilds": {
     "sectionTitle": "コミュニティの代替案",
@@ -1993,7 +2014,8 @@
     "nameInvalidChars": "名前に使用できるのは、文字・スペース・アポストロフィ・ハイフンのみです。",
     "routeNotFound": "ルートが見つかりません。",
     "routeLimitReached": "ルートの上限に達しました。削除してから作成してください。",
-    "cannotReportOwnRoute": "自分のルートは報告できません。"
+    "cannotReportOwnRoute": "自分のルートは報告できません。",
+    "buildInvalid": "このビルドには無効なデータが含まれています。"
   },
   "notificationsPanel": {
     "ariaWithUnread": "通知（未読 {count} 件）",
@@ -2001,7 +2023,13 @@
     "seeAll": "すべて見る",
     "pushEnable": "プッシュを有効化",
     "pushOn": "プッシュ有効",
-    "pushBlocked": "プッシュ拒否"
+    "pushBlocked": "プッシュ拒否",
+    "pushEnableFailed": "通知をオンにできませんでした。",
+    "pushDisableFailed": "通知をオフにできませんでした。",
+    "moderationHidden": "あなたのビルドが非表示になりました",
+    "moderationRemoved": "あなたのビルドが削除されました",
+    "moderationRestored": "あなたのビルドが復元されました",
+    "moderationOther": "あなたのビルドがモデレートされました"
   },
   "notificationsPage": {
     "heading": "通知",
@@ -2340,5 +2368,39 @@
     "scrollForward": "以降のローテーション",
     "backToNow": "現在",
     "localTime": "日時はお使いのタイムゾーンで表示しています。"
+  },
+  "og": {
+    "viewCount": "閲覧数 {count}",
+    "character": "キャラクター",
+    "characterNotFound": "キャラクターが見つかりません",
+    "itemNotFound": "アイテムが見つかりません",
+    "buildNotFound": "ビルドが見つかりません"
+  },
+  "itemCategories": {
+    "mods": {
+      "title": "Demon Wedge",
+      "name": "Demon Wedge",
+      "description": "すべてのDemon Wedgeを、7言語の名称・効果・適合とともに掲載。"
+    },
+    "genimons": {
+      "title": "ジェニモン",
+      "name": "ジェニモン",
+      "description": "ジェニモンの仲間たちを、バリエーション・特性・パッシブ効果とともに掲載。"
+    },
+    "weapons": {
+      "title": "武器",
+      "name": "武器",
+      "description": "近接・遠距離のすべての武器を、種類・ステータス・アイコンとともに掲載。"
+    },
+    "resources": {
+      "title": "素材",
+      "name": "素材",
+      "description": "素材・消耗品・ゲーム内アイテムを、説明とアイコンとともに掲載。"
+    },
+    "fishing": {
+      "title": "釣り",
+      "name": "釣り",
+      "description": "魚、釣り竿、ルアー、釣り用通貨。"
+    }
   }
 }

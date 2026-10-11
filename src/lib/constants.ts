@@ -178,9 +178,6 @@ export const TEAM_INFO = {
     {
       name: CREATOR_INFO.name,
       nickname: CREATOR_INFO.nickname,
-      role: "Développeur & Créateur du projet",
-      description:
-        "Passionné de développement web et de gaming, Ahmed Karim (PedroKarim) a créé DNA Interactive pour aider la communauté des joueurs de Duet Night Abyss à mieux explorer cet univers fascinant. Le projet évolue constamment grâce aux retours et suggestions de la communauté.",
     },
   ],
 } as const;
@@ -198,29 +195,11 @@ export const PROJECT_STATS = {
   ],
 } as const;
 
-// Questions fréquentes
-export const FAQ_ITEMS = [
-  {
-    question: "Comment utiliser la carte interactive ?",
-    answer:
-      "La carte est intuitive : zoomez avec la molette, cliquez sur les marqueurs pour voir les détails. Utilisez le menu latéral pour filtrer les catégories.",
-  },
-  {
-    question: "Les données sont-elles à jour ?",
-    answer:
-      "Nous nous efforçons de maintenir les données à jour. Si vous trouvez des informations incorrectes, signalez-les via Discord ou email.",
-  },
-  {
-    question: "Puis-je contribuer au projet ?",
-    answer:
-      "Absolument ! Contactez-nous sur Discord pour discuter des contributions possibles, qu'elles soient techniques ou liées au contenu.",
-  },
-  {
-    question: "Le site fonctionne-t-il sur mobile ?",
-    answer:
-      "Oui, le site est responsive et fonctionne sur tous les appareils. Cependant, l'expérience optimale reste sur ordinateur.",
-  },
-] as const;
+/**
+ * Questions de la FAQ (page Support). Chaque entrée désigne les messages
+ * `support.<clé>Question` et `support.<clé>Answer`, traduits dans les 7 langues.
+ */
+export const FAQ_ITEMS = ["faq1", "faq2", "faq3", "faq4"] as const;
 
 // Liens rapides du support
 /**

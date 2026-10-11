@@ -4,12 +4,17 @@ import { getTranslations } from "next-intl/server";
 import { ChevronRight, Clock3, Grid3X3, Wrench } from "lucide-react";
 import { GlyphIcons } from "@/components/icons/GameGlyph";
 import { getItemCatalog, getLanguageLabel } from "@/lib/items/catalog";
+import { localizeItemCategory } from "@/lib/items/category-i18n";
 import { getDraftAvailableLanguages, getDraftRecipeSummaries } from "@/lib/items/drafts";
 import { DnaCornerBrackets } from "@/components/dna/CornerBrackets";
 
-export default async function ItemsCategoriesPage() {
+export default async function ItemsCategoriesPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   const tItems = await getTranslations('items');
-  const catalog = getItemCatalog();
+  const catalog = {
+    ...getItemCatalog(),
+    categories: await Promise.all(getItemCatalog().categories.map((c) => localizeItemCategory(c, locale))),
+  };
   const draftRecipes = getDraftRecipeSummaries();
   const draftLanguages = getDraftAvailableLanguages(draftRecipes);
   const categoryNames = catalog.categories.map((category) => category.displayName).join(", ");

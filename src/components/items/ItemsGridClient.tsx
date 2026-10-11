@@ -3,7 +3,7 @@
 import { DnaPageMark } from "@/components/dna/PageMark";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/components/dna/cn";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ChevronRight, Clock, Flame, Heart, X, ZoomIn } from "lucide-react";
 import { GlyphIcons } from "@/components/icons/GameGlyph";
@@ -19,6 +19,7 @@ import {
   getItemTranslation,
   getLanguageLabel,
   normalizeLanguageCodes,
+  visitorGridLanguages,
 } from "@/lib/items/catalog";
 import { isModReleaseVersionRecent } from "@/lib/items/new-releases";
 import { isCalamityWeapon } from "@/lib/items/calamity-weapons";
@@ -195,12 +196,13 @@ function resolveElementalAffinity(
 }
 
 // --- Filtres Demon Wedge : série (Griffin/Typhon…) + compatibilité (perso/arme) ---
-const MOD_COMPAT_LABELS: Record<string, string> = {
-  UI_Armory_Char: "Personnage",
-  UI_Armory_Meleeweapon: "Arme mêlée",
-  UI_Armory_Longrange: "Arme distance",
-  UI_Armory_MeleeweaponUltra: "Consonance mêlée",
-  UI_Armory_LongrangeUltra: "Consonance distance",
+// Clé de compatibilité du jeu → message `items.<clé>`.
+const MOD_COMPAT_LABEL_KEYS: Record<string, string> = {
+  UI_Armory_Char: "compatCharacter",
+  UI_Armory_Meleeweapon: "compatMelee",
+  UI_Armory_Longrange: "compatRanged",
+  UI_Armory_MeleeweaponUltra: "compatMeleeConsonance",
+  UI_Armory_LongrangeUltra: "compatRangedConsonance",
 };
 const MOD_COMPAT_ORDER = [
   "UI_Armory_Char",
@@ -240,10 +242,11 @@ export default function ItemsGridClient({
     isModsCategory ? "detailed" : "simplified",
   );
 
+  const locale = useLocale();
   const defaultLanguages = normalizeLanguageCodes(
-    category.defaultGridLanguages,
+    visitorGridLanguages(locale),
     category.availableLanguages,
-    ["FR", "EN"],
+    ["EN"],
   );
   const persisted = persistedItemsFilters[category.id];
 
@@ -713,7 +716,7 @@ export default function ItemsGridClient({
         <div className="min-w-0">
           <DnaPageMark>{favoritesOnly ? tc('favorites') : t('categoryLabel')}</DnaPageMark>
           <h1 className="mt-1 font-display text-4xl font-semibold text-parch md:text-5xl">
-            {favoritesOnly ? `Favoris ${category.title}` : category.title}
+            {favoritesOnly ? `${tc("favorites")} – ${category.title}` : category.title}
           </h1>
           <span aria-hidden className="mt-2 block h-0.5 w-16 bg-gold" />
           <p className="mt-3 max-w-2xl text-sm text-parch/75">{category.description}</p>
@@ -922,7 +925,7 @@ export default function ItemsGridClient({
                 <option value="all">{tc('all')}</option>
                 {compatOptions.map((value) => (
                   <option key={value} value={value}>
-                    {MOD_COMPAT_LABELS[value] ?? value}
+                    {MOD_COMPAT_LABEL_KEYS[value] ? t(MOD_COMPAT_LABEL_KEYS[value]) : value}
                   </option>
                 ))}
               </select>

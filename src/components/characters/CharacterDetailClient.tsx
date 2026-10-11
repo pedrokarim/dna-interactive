@@ -3191,7 +3191,7 @@ export default function CharacterDetailClient({
               <div className="flex flex-wrap gap-1.5">
                 {character.rarity ? (
                   <DnaTag className="text-gold-bright">
-                    {"★".repeat(character.rarity)} {character.rarity} étoiles
+                    {"★".repeat(character.rarity)} {t("rarityStars", { count: character.rarity })}
                   </DnaTag>
                 ) : null}
                 {character.consonanceWeapons?.length > 0 &&
@@ -3266,8 +3266,12 @@ export default function CharacterDetailClient({
                     )}
                   </span>
                   <span className="text-sm">
-                    <span className="block font-medium text-parch">Pièce d&apos;intron ×{character.unlockRequiredPiece}</span>
-                    <span className="block text-xs text-muted">{character.intronLevels.length} niveaux · voir l&apos;onglet Intron ▸</span>
+                    <span className="block font-medium text-parch">
+                      {t("intronPieceCount", { count: character.unlockRequiredPiece })}
+                    </span>
+                    <span className="block text-xs text-muted">
+                      {t("intronLevelsHint", { count: character.intronLevels.length })}
+                    </span>
                   </span>
                 </button>
               )}
@@ -3367,7 +3371,7 @@ export default function CharacterDetailClient({
           {/* Addon attrs (ascension bonuses) */}
           {character.addonAttrs.length > 0 && (
             <DnaPanel className="p-4 md:p-5">
-              <DnaSectionLabel>Bonus d&apos;ascension</DnaSectionLabel>
+              <DnaSectionLabel>{t("ascensionBonus")}</DnaSectionLabel>
               <div className="mt-4 grid gap-2.5 sm:grid-cols-2">
                 {character.addonAttrs.map((attr) => (
                   <div key={attr.attrId} className="flex items-center gap-3 border border-white/8 bg-ink/45 px-3 py-2.5">
@@ -3387,7 +3391,7 @@ export default function CharacterDetailClient({
           <div className="grid gap-3 md:gap-5 lg:grid-cols-2">
             {character.recommendAttr.length > 0 && (
               <DnaPanel className="p-4 md:p-5">
-                <DnaSectionLabel>Attributs recommandés</DnaSectionLabel>
+                <DnaSectionLabel>{t("recommendedAttributes")}</DnaSectionLabel>
                 <div className="mt-3 flex flex-wrap gap-x-5 gap-y-3">
                   {character.recommendAttr.map((attr) => {
                     const icon = attributeIcon(attr);

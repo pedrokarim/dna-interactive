@@ -4,6 +4,7 @@ import genimonsItemsJson from "@/data/items/genimons.items.json";
 import modsItemsJson from "@/data/items/mods.items.json";
 import resourcesItemsJson from "@/data/items/resources.items.json";
 import weaponsItemsJson from "@/data/items/weapons.items.json";
+import { LANGUAGE_LABELS } from "@/i18n/config";
 import type {
   ItemCatalog,
   ItemCategory,
@@ -11,15 +12,6 @@ import type {
   ItemRecord,
 } from "@/lib/items/types";
 
-const LANGUAGE_LABELS: Record<string, string> = {
-  DE: "Deutsch",
-  EN: "English",
-  ES: "Espanol",
-  FR: "Francais",
-  JP: "Japanese",
-  KR: "Korean",
-  TC: "Traditional Chinese",
-};
 
 const catalog = catalogJson as ItemCatalog;
 const rawFishingItems = fishingItemsJson as unknown as ItemRecord[];
@@ -127,6 +119,15 @@ export function getItemByCategoryAndId(
     }
   }
   return null;
+}
+
+/**
+ * Colonnes de noms affichées par défaut dans les grilles : la langue du
+ * visiteur, puis l'anglais pour comparer. Les grilles partaient toutes de
+ * français + anglais, quelle que soit la langue de la page.
+ */
+export function visitorGridLanguages(locale: string): string[] {
+  return [...new Set([locale.toUpperCase(), "EN"])];
 }
 
 export function normalizeLanguageCodes(

@@ -42,7 +42,7 @@ export default async function DraftsPage() {
       <DraftsGridClient
         recipes={recipes}
         availableLanguages={availableLanguages}
-        defaultLanguages={["FR", "EN"]}
+        defaultLanguages={["EN"]}
       />
     </Suspense>
   );

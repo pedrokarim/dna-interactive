@@ -46,6 +46,7 @@ import { captureAnalytics } from "@/lib/analytics";
 import { BuildProficiencyAdvice } from "@/components/characters/BuildProficiencyAdvice";
 import { suggestProficienciesFor } from "@/lib/characters/weapon-proficiency";
 import { X_BUTTON_CLASS, XIcon } from "@/components/icons/BrandIcons";
+import { toIntlLocale } from "@/lib/intl-locale";
 
 const STAT_IDS = ["ATK", "CritRate", "CritDmg", "SkillDmg", "ElementDmg", "HP", "DEF"] as const;
 
@@ -113,8 +114,9 @@ function sameDraftContent(
   );
 }
 
-function fmtDraftTime(value: string): string {
-  return new Date(value).toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
+/** Heure d'enregistrement d'un brouillon, dans la langue de la page. */
+function fmtDraftTime(value: string, locale: string): string {
+  return new Date(value).toLocaleTimeString(toIntlLocale(locale), { hour: "2-digit", minute: "2-digit" });
 }
 
 type LoadedCommunityBuild = {
@@ -208,9 +210,10 @@ export function CommunityBuildBuilderClient({
 }) {
   const searchParams = useSearchParams();
   const t = useTranslations("builder");
+  const locale = useLocale();
   // Les libellés de Traits viennent des données de jeu : ils suivent la locale
   // de la page, comme partout ailleurs sur le site.
-  const gameLang = toGameDataLangCode(toLocale(useLocale()));
+  const gameLang = toGameDataLangCode(toLocale(locale));
   const tTrait = useTranslations("genimonGuide");
   const STATS_POOL = useMemo<PriorityItem[]>(
     () => STAT_IDS.map((id) => ({ id, label: t(`statLabels.${id}`) })),
@@ -515,7 +518,7 @@ export function CommunityBuildBuilderClient({
           setNote(stored.note ?? "");
           applyPayload(stored.payload);
           setStatus("saved");
-          setSavedAt(new Date(stored.updatedAt).toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" }));
+          setSavedAt(fmtDraftTime(stored.updatedAt, locale));
         } catch {
           setStatus("error");
         }
@@ -590,7 +593,7 @@ export function CommunityBuildBuilderClient({
     fetch(`/api/builds/${buildId}`)
       .then(async (response) => {
         const data = await response.json().catch(() => ({}));
-        if (!response.ok) throw new Error(data.error ?? "Build introuvable.");
+        if (!response.ok) throw new Error(data.error ?? t("loadFailed"));
         return data.build as LoadedCommunityBuild;
       })
       .then((build) => {
@@ -625,7 +628,7 @@ export function CommunityBuildBuilderClient({
         setNote(build.note ?? "");
         applyPayload(build.payload);
         setStatus("saved");
-        setSavedAt(new Date(updatedAt).toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" }));
+        setSavedAt(fmtDraftTime(updatedAt, locale));
         window.setTimeout(() => {
           if (cancelled) return;
           hydratedRef.current = true;
@@ -652,7 +655,7 @@ export function CommunityBuildBuilderClient({
 
       if (!isAuthenticated) {
         setStatus("saved");
-        setSavedAt(new Date(updatedAt).toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" }));
+        setSavedAt(fmtDraftTime(updatedAt, locale));
         return;
       }
 
@@ -671,12 +674,12 @@ export function CommunityBuildBuilderClient({
 
       setStatus(response.ok ? "saved" : "error");
       if (response.ok) {
-        setSavedAt(new Date(updatedAt).toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" }));
+        setSavedAt(fmtDraftTime(updatedAt, locale));
       }
     }, 850);
 
     return () => window.clearTimeout(handle);
-  }, [activeElement, isAuthenticated, key, note, payload, selectedCharacter, title]);
+  }, [activeElement, isAuthenticated, key, locale, note, payload, selectedCharacter, title]);
 
   useEffect(() => {
     setCanShareNative(typeof navigator !== "undefined" && typeof navigator.share === "function");
@@ -848,7 +851,7 @@ export function CommunityBuildBuilderClient({
     setNote(draft.note ?? "");
     applyPayload(draft.payload);
     setStatus("saved");
-    setSavedAt(fmtDraftTime(draft.updatedAt));
+    setSavedAt(fmtDraftTime(draft.updatedAt, locale));
     window.setTimeout(() => {
       hydratedRef.current = true;
     }, 0);
@@ -1005,7 +1008,10 @@ export function CommunityBuildBuilderClient({
       format === "json" ? parseBuildJsonText(text, options) : parseBuildXmlText(text, options);
 
     if (!parsed.ok) {
-      setMessage(parsed.errors.slice(0, 3).join(" "));
+      // Le détail technique (en français, côté code) part en console ; le
+      // visiteur reçoit un message dans sa langue.
+      console.warn("[builder] import refusé :", parsed.errors);
+      setMessage(t("importInvalid"));
       return;
     }
 
@@ -1027,8 +1033,8 @@ export function CommunityBuildBuilderClient({
     setNote(imported.note ?? "");
     applyPayload(imported.payload);
     setStatus("saved");
-    setSavedAt(new Date(updatedAt).toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" }));
-    setMessage("Build importe.");
+    setSavedAt(fmtDraftTime(updatedAt, locale));
+    setMessage(t("buildImported"));
     window.setTimeout(() => {
       hydratedRef.current = true;
     }, 0);
@@ -1083,7 +1089,7 @@ export function CommunityBuildBuilderClient({
                       setReconcile(null);
                     }}
                   >
-                    {t("accountVersion", { time: fmtDraftTime(reconcile.server.updatedAt) })}
+                    {t("accountVersion", { time: fmtDraftTime(reconcile.server.updatedAt, locale) })}
                   </DnaButton>
                   <DnaButton
                     variant="ghost"
@@ -1092,7 +1098,7 @@ export function CommunityBuildBuilderClient({
                       setReconcile(null);
                     }}
                   >
-                    {t("thisDevice", { time: fmtDraftTime(reconcile.local.updatedAt) })}
+                    {t("thisDevice", { time: fmtDraftTime(reconcile.local.updatedAt, locale) })}
                   </DnaButton>
                 </div>
               </div>

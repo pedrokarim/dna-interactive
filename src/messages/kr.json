@@ -737,7 +737,12 @@
     "buildUpdatedOn": "업데이트: {date}",
     "buildVerifiedOn": "확인: {date}",
     "legacyBuildTag": "이전",
-    "legacyBuildNotice": "이전 빌드: 현재 추천에는 포함되지 않습니다. 이미 구성한 분들을 위해 남겨 둡니다."
+    "legacyBuildNotice": "이전 빌드: 현재 추천에는 포함되지 않습니다. 이미 구성한 분들을 위해 남겨 둡니다.",
+    "rarityStars": "{count}성",
+    "recommendedAttributes": "추천 속성치",
+    "ascensionBonus": "돌파 보너스",
+    "intronPieceCount": "인트론 조각 ×{count}",
+    "intronLevelsHint": "{count}레벨 · Intron 탭 보기 ▸"
   },
   "items": {
     "libraryLabel": "아이템 라이브러리",
@@ -778,7 +783,12 @@
     "potentialNoMaterial": "필요한 재료 없음",
     "potentialTreeUnavailable": "이 무기의 잠재력 트리는 아직 제공되지 않습니다.",
     "calamityWeaponGuide": "재앙 무기 가이드",
-    "genimonGuide": "마령 가이드"
+    "genimonGuide": "마령 가이드",
+    "compatCharacter": "캐릭터",
+    "compatMelee": "근접 무기",
+    "compatRanged": "원거리 무기",
+    "compatMeleeConsonance": "근접 컨소넌스",
+    "compatRangedConsonance": "원거리 컨소넌스"
   },
   "itemDetail": {
     "weaponBuildTitle": "추천 데몬 웻지 빌드",
@@ -838,7 +848,11 @@
     "genimonBuildFirst": "빌드 {count}개에서 최우선",
     "genimonBuildOthers": "그 밖의 특성",
     "genimonCharactersIntro": "이 마령을 데려가는 추천 빌드의 캐릭터와, 거기서 노리는 특성.",
-    "genimonRankBest": "최적"
+    "genimonRankBest": "최적",
+    "resolvedAttributes": "레벨 {level} 속성치",
+    "polarityFallback": "극성 {value}",
+    "calamityAttack": "재앙 공격력",
+    "critRate": "크리티컬 확률"
   },
   "drafts": {
     "headerLabel": "제작 설계도",
@@ -942,7 +956,12 @@
     "bannersTitle": "광채 배너",
     "bannersDescription": "Duet Night Abyss의 광채 배너 전체. 픽업 스킨, 확률, 천장, 전체 구성, 누적 보상, 프리즘 교환.",
     "theatreTitle": "몰입형 연극 – 로테이션",
-    "theatreDescription": "Duet Night Abyss 몰입형 연극 로테이션 추적: 현재 캐릭터 또는 재앙 무기, 다음 교체 시점, 전체 기록."
+    "theatreDescription": "Duet Night Abyss 몰입형 연극 로테이션 추적: 현재 캐릭터 또는 재앙 무기, 다음 교체 시점, 전체 기록.",
+    "characterDescription": "Duet Night Abyss {name}의 전체 정보: {element} 속성, 무기, 진영, 초상화, 7개 언어 이름.",
+    "favoritesTitle": "즐겨찾기한 Demon Wedge",
+    "favoritesDescription": "브라우저에 저장된 즐겨찾기 Demon Wedge를 필터와 언어 선택으로 확인하세요.",
+    "itemCategorySearch": "{count}개 언어의 이름을 검색, 필터링, 비교할 수 있습니다.",
+    "itemDetailFallback": "{category}: {name} 상세 정보 ({count}개 언어)."
   },
   "commissions": {
     "eyebrow": "은밀한 커미션",
@@ -1080,7 +1099,9 @@
     "genimonTraitCount": "{max}칸 중 {count}개",
     "genimonTraitFull": "칸이 모두 찼습니다. 새로 고르면 가장 오래된 것과 교체됩니다.",
     "genimonTraitsModalHelp": "이 마령에서 노릴 특성을 고르세요. 칸 수는 개체에 따라 다르며, 일반 변종은 3개, 빛나는 변종은 4개입니다. 순서는 파밍 우선순위이지 어느 칸에 들어가는지가 아닙니다.",
-    "genimonEmptySlot": "빈 칸"
+    "genimonEmptySlot": "빈 칸",
+    "buildImported": "빌드를 가져왔습니다.",
+    "importInvalid": "이 파일은 올바른 DNA Interactive 빌드가 아니거나 사이트에서 인식할 수 없는 요소를 포함하고 있습니다."
   },
   "communityBuilds": {
     "sectionTitle": "커뮤니티 대안",
@@ -1993,7 +2014,8 @@
     "nameInvalidChars": "이름에는 문자, 공백, 아포스트로피, 하이픈만 사용할 수 있습니다.",
     "routeNotFound": "경로를 찾을 수 없습니다.",
     "routeLimitReached": "경로 한도에 도달했습니다. 하나를 삭제한 뒤 만드세요.",
-    "cannotReportOwnRoute": "자신의 경로는 신고할 수 없습니다."
+    "cannotReportOwnRoute": "자신의 경로는 신고할 수 없습니다.",
+    "buildInvalid": "이 빌드에 잘못된 데이터가 포함되어 있습니다."
   },
   "notificationsPanel": {
     "ariaWithUnread": "알림 (읽지 않음 {count}건)",
@@ -2001,7 +2023,13 @@
     "seeAll": "전체 보기",
     "pushEnable": "푸시 켜기",
     "pushOn": "푸시 켜짐",
-    "pushBlocked": "푸시 차단됨"
+    "pushBlocked": "푸시 차단됨",
+    "pushEnableFailed": "알림을 켤 수 없습니다.",
+    "pushDisableFailed": "알림을 끌 수 없습니다.",
+    "moderationHidden": "내 빌드가 숨김 처리되었습니다",
+    "moderationRemoved": "내 빌드가 삭제되었습니다",
+    "moderationRestored": "내 빌드가 복원되었습니다",
+    "moderationOther": "내 빌드가 관리자에 의해 조정되었습니다"
   },
   "notificationsPage": {
     "heading": "알림",
@@ -2340,5 +2368,39 @@
     "scrollForward": "이후 로테이션",
     "backToNow": "현재",
     "localTime": "날짜와 시간은 사용자의 시간대로 표시됩니다."
+  },
+  "og": {
+    "viewCount": "조회수 {count}",
+    "character": "캐릭터",
+    "characterNotFound": "캐릭터를 찾을 수 없습니다",
+    "itemNotFound": "아이템을 찾을 수 없습니다",
+    "buildNotFound": "빌드를 찾을 수 없습니다"
+  },
+  "itemCategories": {
+    "mods": {
+      "title": "Demon Wedge",
+      "name": "Demon Wedge",
+      "description": "모든 Demon Wedge를 7개 언어 이름, 효과, 호환 정보와 함께 확인하세요."
+    },
+    "genimons": {
+      "title": "제니몬",
+      "name": "제니몬",
+      "description": "제니몬 동료들의 변형, 특성, 패시브 효과를 확인하세요."
+    },
+    "weapons": {
+      "title": "무기",
+      "name": "무기",
+      "description": "모든 근접·원거리 무기를 유형, 능력치, 아이콘과 함께 확인하세요."
+    },
+    "resources": {
+      "title": "자원",
+      "name": "자원",
+      "description": "재료, 소모품, 게임 아이템을 설명과 아이콘과 함께 확인하세요."
+    },
+    "fishing": {
+      "title": "낚시",
+      "name": "낚시",
+      "description": "물고기, 낚싯대, 미끼, 낚시 화폐."
+    }
   }
 }

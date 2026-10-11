@@ -9,6 +9,7 @@ import { ModsGuideIntro } from "@/components/items/ModsGuide";
 import { GuideLobby } from "@/components/items/GuideLobby";
 import { getGuideOutline, hasGuideOutline } from "@/lib/items/guide-chapters";
 import { getItemCatalog, getItemCategoryBySlug } from "@/lib/items/catalog";
+import { localizeItemCategory } from "@/lib/items/category-i18n";
 import { generatePageMetadata } from "@/lib/metadata";
 
 type CategoryAboutPageProps = {
@@ -56,7 +57,8 @@ export async function generateMetadata(
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const { locale, category: categorySlug } = await params;
-  const category = getItemCategoryBySlug(categorySlug);
+  const rawCategory = getItemCategoryBySlug(categorySlug);
+  const category = rawCategory ? await localizeItemCategory(rawCategory, locale) : null;
   const t = await getTranslations({ locale, namespace: "itemsAbout" });
 
   if (!category) {
@@ -110,8 +112,6 @@ export async function generateMetadata(
         "items guide",
         "demon wedge",
         "calamity weapons",
-        "armes de calamité",
-        "fusion de calamité",
         "mods",
         "affinite",
         "tolerance",
@@ -145,5 +145,6 @@ export default async function CategoryAboutPage({ params }: CategoryAboutPagePro
   }
 
   // Une catégorie sans guide garde sa page « à propos » d'une seule pièce.
-  return <GenericCategoryAboutContent categoryTitle={category.title} categorySlug={category.slug} />;
+  const localizedCategory = await localizeItemCategory(category, locale);
+  return <GenericCategoryAboutContent categoryTitle={localizedCategory.title} categorySlug={category.slug} />;
 }

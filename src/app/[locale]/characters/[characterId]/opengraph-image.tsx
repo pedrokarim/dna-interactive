@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { getTranslations } from "next-intl/server";
 import { getCharacterById, resolveCharacterDisplayName } from "@/lib/characters/catalog";
 import { loadOgFonts, OG_SIZE, OG_CONTENT_TYPE } from "@/app/_og/fonts";
 import {
@@ -27,7 +28,8 @@ export default async function CharacterOgImage({
   const character = getCharacterById(characterId);
 
   const element = getElement(character?.element.key);
-  const name = character ? resolveCharacterDisplayName(character, locale) : "Personnage introuvable";
+  const t = await getTranslations({ locale, namespace: "og" });
+  const name = character ? resolveCharacterDisplayName(character, locale) : t("characterNotFound");
   const title = truncate(name, 40);
   const portraitPath =
     // Un buste généré n'a pas sa place ici : l'image partagée ne porte pas la mention.
@@ -52,7 +54,7 @@ export default async function CharacterOgImage({
             height: "100%",
           }}
         >
-          <Eyebrow hex={element.hex} iconUrl={element.icon ? `${origin}${element.icon}` : null} label={element.label ?? "Personnage"} />
+          <Eyebrow hex={element.hex} iconUrl={element.icon ? `${origin}${element.icon}` : null} label={element.label ?? t("character")} />
           <Title text={title} hex={element.hex} size={title.length > 24 ? 72 : 84} />
           <div style={{ display: "flex", alignItems: "center", gap: 28, fontSize: 26, color: "#cfc7d6" }}>
             <RarityRow rarity={character?.rarity} hex={element.hex} />

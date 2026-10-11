@@ -737,7 +737,12 @@
     "buildUpdatedOn": "Updated {date}",
     "buildVerifiedOn": "Checked {date}",
     "legacyBuildTag": "former",
-    "legacyBuildNotice": "Former build: it is no longer part of the current recommendations. It stays here for those who already built it."
+    "legacyBuildNotice": "Former build: it is no longer part of the current recommendations. It stays here for those who already built it.",
+    "rarityStars": "{count, plural, one {# star} other {# stars}}",
+    "recommendedAttributes": "Recommended attributes",
+    "ascensionBonus": "Ascension bonuses",
+    "intronPieceCount": "Intron piece ×{count}",
+    "intronLevelsHint": "{count, plural, one {# level} other {# levels}} · see the Intron tab ▸"
   },
   "items": {
     "libraryLabel": "Items Library",
@@ -778,7 +783,12 @@
     "potentialNoMaterial": "No material required",
     "potentialTreeUnavailable": "The potential tree for this weapon is not available yet.",
     "calamityWeaponGuide": "Calamity Weapons Guide",
-    "genimonGuide": "Geniemon Guide"
+    "genimonGuide": "Geniemon Guide",
+    "compatCharacter": "Character",
+    "compatMelee": "Melee weapon",
+    "compatRanged": "Ranged weapon",
+    "compatMeleeConsonance": "Melee Consonance",
+    "compatRangedConsonance": "Ranged Consonance"
   },
   "itemDetail": {
     "weaponBuildTitle": "Recommended Demon Wedge build",
@@ -838,7 +848,11 @@
     "genimonBuildFirst": "{count, plural, one {top priority in # build} other {top priority in # builds}}",
     "genimonBuildOthers": "Other Traits seen",
     "genimonCharactersIntro": "Characters whose recommended build takes this Geniemon, and the Traits they aim for on it.",
-    "genimonRankBest": "Best pick"
+    "genimonRankBest": "Best pick",
+    "resolvedAttributes": "Attributes at level {level}",
+    "polarityFallback": "Polarity {value}",
+    "calamityAttack": "Calamity ATK",
+    "critRate": "Crit Rate"
   },
   "drafts": {
     "headerLabel": "Forge Drafts",
@@ -942,7 +956,12 @@
     "bannersTitle": "Myriad Banners",
     "bannersDescription": "Every Duet Night Abyss Myriad banner: featured outfits, rates, pity, full contents, cumulative rewards and Prism Exchange.",
     "theatreTitle": "Immersive Theatre – rotations",
-    "theatreDescription": "Track the Immersive Theatre rotations in Duet Night Abyss: the featured character or calamity weapon, the next switch and the full history."
+    "theatreDescription": "Track the Immersive Theatre rotations in Duet Night Abyss: the featured character or calamity weapon, the next switch and the full history.",
+    "characterDescription": "Complete profile of {name} in Duet Night Abyss: {element} element, weapons, faction, portraits and names in 7 languages.",
+    "favoritesTitle": "Favorite Demon Wedges",
+    "favoritesDescription": "Find your favorite Demon Wedges, saved in your browser, with filters and your choice of languages.",
+    "itemCategorySearch": "Search, filter and compare names across {count} languages.",
+    "itemDetailFallback": "{category}: {name} details in {count} languages."
   },
   "commissions": {
     "eyebrow": "Covert Commissions",
@@ -1080,7 +1099,9 @@
     "genimonTraitCount": "{count} of {max} slots",
     "genimonTraitFull": "Every slot is taken: a new pick replaces the oldest one.",
     "genimonTraitsModalHelp": "Pick the Traits to aim for on this Geniemon. The number of slots depends on the creature: three for an ordinary variant, four for a shining one. The order reads as a farming priority, not as a slot.",
-    "genimonEmptySlot": "Empty slot"
+    "genimonEmptySlot": "Empty slot",
+    "buildImported": "Build imported.",
+    "importInvalid": "This file isn't a valid DNA Interactive build, or it contains items the site doesn't know."
   },
   "communityBuilds": {
     "sectionTitle": "Community alternatives",
@@ -1993,7 +2014,8 @@
     "nameInvalidChars": "The name can only contain letters, spaces, apostrophes and hyphens.",
     "routeNotFound": "Route not found.",
     "routeLimitReached": "Route limit reached — delete one to create another.",
-    "cannotReportOwnRoute": "You can’t report your own route."
+    "cannotReportOwnRoute": "You can’t report your own route.",
+    "buildInvalid": "This build contains invalid data."
   },
   "notificationsPanel": {
     "ariaWithUnread": "Notifications ({count} unread)",
@@ -2001,7 +2023,13 @@
     "seeAll": "See all",
     "pushEnable": "Enable push",
     "pushOn": "Push on",
-    "pushBlocked": "Push blocked"
+    "pushBlocked": "Push blocked",
+    "pushEnableFailed": "Couldn't turn on notifications.",
+    "pushDisableFailed": "Couldn't turn off notifications.",
+    "moderationHidden": "Your build was hidden",
+    "moderationRemoved": "Your build was removed",
+    "moderationRestored": "Your build was restored",
+    "moderationOther": "Your build was moderated"
   },
   "notificationsPage": {
     "heading": "Notifications",
@@ -2340,5 +2368,39 @@
     "scrollForward": "Later rotations",
     "backToNow": "Now",
     "localTime": "Dates and times are shown in your time zone."
+  },
+  "og": {
+    "viewCount": "{count, plural, one {# view} other {# views}}",
+    "character": "Character",
+    "characterNotFound": "Character not found",
+    "itemNotFound": "Item not found",
+    "buildNotFound": "Build not found"
+  },
+  "itemCategories": {
+    "mods": {
+      "title": "Demon Wedges",
+      "name": "Demon Wedge",
+      "description": "Every Demon Wedge, with names in 7 languages, effects and compatibility."
+    },
+    "genimons": {
+      "title": "Geniemons",
+      "name": "Geniemon",
+      "description": "Geniemon companions, with their variants, Traits and passive effects."
+    },
+    "weapons": {
+      "title": "Weapons",
+      "name": "Weapon",
+      "description": "Every melee and ranged weapon, with type, stats and icons."
+    },
+    "resources": {
+      "title": "Resources",
+      "name": "Resource",
+      "description": "Materials, consumables and in-game items, with descriptions and icons."
+    },
+    "fishing": {
+      "title": "Fishing",
+      "name": "Fishing",
+      "description": "Fish, rods, lures and fishing currency."
+    }
   }
 }

@@ -14,6 +14,7 @@ import {
 } from "@/lib/items/catalog";
 import { getDraftRecipesForItem } from "@/lib/items/drafts";
 import { generatePageMetadata } from "@/lib/metadata";
+import { localizeItemCategory } from "@/lib/items/category-i18n";
 
 type ItemDetailPageProps = {
   params: Promise<{ locale: string; category: string; itemId: string }>;
@@ -25,7 +26,8 @@ export async function generateMetadata(
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const { locale, category: categorySlug, itemId } = await params;
-  const category = getItemCategoryBySlug(categorySlug);
+  const rawCategory = getItemCategoryBySlug(categorySlug);
+  const category = rawCategory ? await localizeItemCategory(rawCategory, locale) : null;
   if (!category) {
     return generatePageMetadata(
       {
@@ -64,7 +66,11 @@ export async function generateMetadata(
       title: `${modName} (${category.technicalName} #${item.modId})`,
       description:
         localized.description ??
-        `${category.displayName} details for ${modName} in ${category.availableLanguages.length} languages.`,
+        (await getTranslations({ locale, namespace: "metadata" }))("itemDetailFallback", {
+          category: category.displayName,
+          name: modName,
+          count: category.availableLanguages.length,
+        }),
       path: `/items/${category.slug}/${item.id}`,
       dynamicOgImage: true, // image OG fournie par opengraph-image.tsx
       keywords: [
@@ -117,7 +123,7 @@ export default async function ItemDetailPage({ params }: ItemDetailPageProps) {
       fallback={<ItemsSuspenseFallback title={t("loading")} />}
     >
       <ItemDetailClient
-        category={category}
+        category={await localizeItemCategory(category, locale)}
         item={item}
         relatedDrafts={getDraftRecipesForItem(category.id, item.modId)}
         weaponBuilds={weaponBuilds}

@@ -737,7 +737,12 @@
     "buildUpdatedOn": "Aktualisiert am {date}",
     "buildVerifiedOn": "Geprüft am {date}",
     "legacyBuildTag": "früher",
-    "legacyBuildNotice": "Früherer Build: Er gehört nicht mehr zu den aktuellen Empfehlungen. Er bleibt hier für alle, die ihn bereits gebaut haben."
+    "legacyBuildNotice": "Früherer Build: Er gehört nicht mehr zu den aktuellen Empfehlungen. Er bleibt hier für alle, die ihn bereits gebaut haben.",
+    "rarityStars": "{count, plural, one {# Stern} other {# Sterne}}",
+    "recommendedAttributes": "Empfohlene Attribute",
+    "ascensionBonus": "Aufstiegsboni",
+    "intronPieceCount": "Intron-Fragment ×{count}",
+    "intronLevelsHint": "{count, plural, one {# Stufe} other {# Stufen}} · siehe Reiter Intron ▸"
   },
   "items": {
     "libraryLabel": "Gegenstände-Bibliothek",
@@ -778,7 +783,12 @@
     "potentialNoMaterial": "Kein Material erforderlich",
     "potentialTreeUnavailable": "Der Potenzialbaum dieser Waffe ist noch nicht verfügbar.",
     "calamityWeaponGuide": "Leitfaden Kalamitätswaffen",
-    "genimonGuide": "Geniemon-Leitfaden"
+    "genimonGuide": "Geniemon-Leitfaden",
+    "compatCharacter": "Charakter",
+    "compatMelee": "Nahkampfwaffe",
+    "compatRanged": "Fernkampfwaffe",
+    "compatMeleeConsonance": "Nahkampf-Consonance",
+    "compatRangedConsonance": "Fernkampf-Consonance"
   },
   "itemDetail": {
     "weaponBuildTitle": "Empfohlener Demon-Wedge-Build",
@@ -838,7 +848,11 @@
     "genimonBuildFirst": "{count, plural, one {oberste Priorität in # Build} other {oberste Priorität in # Builds}}",
     "genimonBuildOthers": "Weitere vorkommende Traits",
     "genimonCharactersIntro": "Figuren, deren empfohlener Build dieses Geniemon mitnimmt, und die Traits, die sie darauf anstreben.",
-    "genimonRankBest": "Beste Wahl"
+    "genimonRankBest": "Beste Wahl",
+    "resolvedAttributes": "Attribute auf Stufe {level}",
+    "polarityFallback": "Polarität {value}",
+    "calamityAttack": "Unheils-ANG",
+    "critRate": "Krit-Rate"
   },
   "drafts": {
     "headerLabel": "Schmiedeentwürfe",
@@ -942,7 +956,12 @@
     "bannersTitle": "Myriade-Banner",
     "bannersDescription": "Alle Myriade-Banner aus Duet Night Abyss: Haupt-Outfits, Raten, Garantie, vollständiger Inhalt, kumulierte Belohnungen und Prismatausch.",
     "theatreTitle": "Immersives Theater – Rotationen",
-    "theatreDescription": "Die Rotationen des Immersiven Theaters in Duet Night Abyss: aktueller Charakter oder Unheilswaffe, nächster Wechsel und der gesamte Verlauf."
+    "theatreDescription": "Die Rotationen des Immersiven Theaters in Duet Night Abyss: aktueller Charakter oder Unheilswaffe, nächster Wechsel und der gesamte Verlauf.",
+    "characterDescription": "Vollständiges Profil von {name} in Duet Night Abyss: Element {element}, Waffen, Fraktion, Porträts und Namen in 7 Sprachen.",
+    "favoritesTitle": "Favorisierte Demon Wedges",
+    "favoritesDescription": "Finde deine favorisierten Demon Wedges, in deinem Browser gespeichert, mit Filtern und Sprachauswahl.",
+    "itemCategorySearch": "Suche, filtere und vergleiche die Namen in {count} Sprachen.",
+    "itemDetailFallback": "{category}: Details zu {name} in {count} Sprachen."
   },
   "commissions": {
     "eyebrow": "Verdeckte Aufträge",
@@ -1080,7 +1099,9 @@
     "genimonTraitCount": "{count} von {max} Plätzen",
     "genimonTraitFull": "Alle Plätze sind belegt: Eine neue Wahl ersetzt die älteste.",
     "genimonTraitsModalHelp": "Wähle die Traits, die du auf diesem Geniemon anstrebst. Die Zahl der Plätze hängt von der Kreatur ab: drei bei einer gewöhnlichen Variante, vier bei einer schimmernden. Die Reihenfolge ist eine Farm-Priorität, kein Platz.",
-    "genimonEmptySlot": "Freier Platz"
+    "genimonEmptySlot": "Freier Platz",
+    "buildImported": "Build importiert.",
+    "importInvalid": "Diese Datei ist kein gültiger DNA-Interactive-Build oder enthält Elemente, die die Seite nicht kennt."
   },
   "communityBuilds": {
     "sectionTitle": "Community-Alternativen",
@@ -1993,7 +2014,8 @@
     "nameInvalidChars": "Der Name darf nur Buchstaben, Leerzeichen, Apostrophe und Bindestriche enthalten.",
     "routeNotFound": "Route nicht gefunden.",
     "routeLimitReached": "Routenlimit erreicht – lösche eine, um eine neue zu erstellen.",
-    "cannotReportOwnRoute": "Du kannst deine eigene Route nicht melden."
+    "cannotReportOwnRoute": "Du kannst deine eigene Route nicht melden.",
+    "buildInvalid": "Dieser Build enthält ungültige Daten."
   },
   "notificationsPanel": {
     "ariaWithUnread": "Benachrichtigungen ({count} ungelesen)",
@@ -2001,7 +2023,13 @@
     "seeAll": "Alle ansehen",
     "pushEnable": "Push aktivieren",
     "pushOn": "Push aktiv",
-    "pushBlocked": "Push blockiert"
+    "pushBlocked": "Push blockiert",
+    "pushEnableFailed": "Benachrichtigungen konnten nicht aktiviert werden.",
+    "pushDisableFailed": "Benachrichtigungen konnten nicht deaktiviert werden.",
+    "moderationHidden": "Dein Build wurde ausgeblendet",
+    "moderationRemoved": "Dein Build wurde entfernt",
+    "moderationRestored": "Dein Build wurde wiederhergestellt",
+    "moderationOther": "Dein Build wurde moderiert"
   },
   "notificationsPage": {
     "heading": "Benachrichtigungen",
@@ -2340,5 +2368,39 @@
     "scrollForward": "Spätere Rotationen",
     "backToNow": "Jetzt",
     "localTime": "Daten und Uhrzeiten werden in deiner Zeitzone angezeigt."
+  },
+  "og": {
+    "viewCount": "{count, plural, one {# Aufruf} other {# Aufrufe}}",
+    "character": "Charakter",
+    "characterNotFound": "Charakter nicht gefunden",
+    "itemNotFound": "Gegenstand nicht gefunden",
+    "buildNotFound": "Build nicht gefunden"
+  },
+  "itemCategories": {
+    "mods": {
+      "title": "Demon Wedges",
+      "name": "Demon Wedge",
+      "description": "Alle Demon Wedges mit Namen in 7 Sprachen, Effekten und Kompatibilität."
+    },
+    "genimons": {
+      "title": "Geniemons",
+      "name": "Geniemon",
+      "description": "Geniemon-Begleiter mit ihren Varianten, Merkmalen und passiven Effekten."
+    },
+    "weapons": {
+      "title": "Waffen",
+      "name": "Waffe",
+      "description": "Alle Nah- und Fernkampfwaffen mit Typ, Werten und Symbolen."
+    },
+    "resources": {
+      "title": "Ressourcen",
+      "name": "Ressource",
+      "description": "Materialien, Verbrauchsgüter und Gegenstände aus dem Spiel, mit Beschreibungen und Symbolen."
+    },
+    "fishing": {
+      "title": "Angeln",
+      "name": "Angeln",
+      "description": "Fische, Angeln, Köder und Angelwährung."
+    }
   }
 }

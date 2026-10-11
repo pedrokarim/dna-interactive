@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { getTranslations } from "next-intl/server";
 import { getItemByCategoryAndId, getItemCategoryBySlug, getItemTranslation } from "@/lib/items/catalog";
 import { loadOgFonts, OG_SIZE, OG_CONTENT_TYPE } from "@/app/_og/fonts";
 import {
@@ -34,7 +35,10 @@ export default async function ItemOgImage({
       : null;
 
   const hex = rarityHex(item?.stats.rarity) ?? FALLBACK_HEX;
-  const name = localized?.modName ?? (item && category ? `${category.displayName} #${item.modId}` : "Item introuvable");
+  const t = await getTranslations({ locale, namespace: "og" });
+  const tCategory = await getTranslations({ locale, namespace: "itemCategories" });
+  const categoryName = category ? tCategory(`${category.id}.name`) : "";
+  const name = localized?.modName ?? (item && category ? `${categoryName} #${item.modId}` : t("itemNotFound"));
   const title = truncate(name, 42);
   const iconPath = item?.icon.publicPath ?? null;
   const techLabel = category && item ? `${category.technicalName} #${item.modId}` : null;

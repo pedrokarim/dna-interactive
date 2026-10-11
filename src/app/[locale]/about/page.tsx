@@ -161,16 +161,10 @@ export default async function AboutPage() {
                   </div>
                   <h4 className="font-display text-xl text-parch">{member.name}</h4>
                   <p className="mt-1 font-caps text-[0.62rem] uppercase tracking-[0.2em] text-gold">aka {member.nickname}</p>
-                  <p className="mt-2 text-sm text-muted">{member.role}</p>
+                  <p className="mt-2 text-sm text-muted">{tAbout("teamRole")}</p>
                 </div>
               ))}
-              {TEAM_INFO.members.map((member, index) => (
-                <p key={index} className="mx-auto mt-6 max-w-2xl leading-relaxed text-parch/85">
-                  {member.description
-                    .replace("DNA Interactive", SITE_CONFIG.name)
-                    .replace("Duet Night Abyss", GAME_INFO.name)}
-                </p>
-              ))}
+              <p className="mx-auto mt-6 max-w-2xl leading-relaxed text-parch/85">{tAbout("teamDescription")}</p>
             </div>
           </DnaPanel>
 

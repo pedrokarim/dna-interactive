@@ -18,13 +18,14 @@ type Viewer = { id: string; role: "user" | "admin" } | null;
  * Fonctionne pour un visiteur anonyme (`viewer` à `null`) : il reçoit les
  * annonces d'audience « everyone » et son état de lecture reste côté navigateur.
  */
-export async function getNotificationFeed(viewer: Viewer): Promise<NotificationFeed> {
+/** `locale` : langue des notifications dérivées, dont le texte est rédigé ici. */
+export async function getNotificationFeed(viewer: Viewer, locale: string): Promise<NotificationFeed> {
   const announcements = await getVisibleAnnouncements({
     authenticated: Boolean(viewer),
     isAdmin: viewer?.role === "admin",
   });
 
-  const derived = viewer ? await getDerivedNotifications(viewer) : [];
+  const derived = viewer ? await getDerivedNotifications(viewer, locale) : [];
   const items: AppNotification[] = [...announcements.map(toNotification), ...derived];
 
   items.sort((a, b) => {

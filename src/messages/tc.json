@@ -737,7 +737,12 @@
     "buildUpdatedOn": "更新於 {date}",
     "buildVerifiedOn": "確認於 {date}",
     "legacyBuildTag": "舊",
-    "legacyBuildNotice": "舊配置：已不在目前的推薦之列，保留給已經配好的玩家參考。"
+    "legacyBuildNotice": "舊配置：已不在目前的推薦之列，保留給已經配好的玩家參考。",
+    "rarityStars": "{count} 星",
+    "recommendedAttributes": "推薦屬性",
+    "ascensionBonus": "突破加成",
+    "intronPieceCount": "內含子碎片 ×{count}",
+    "intronLevelsHint": "{count} 個等級 · 查看 Intron 分頁 ▸"
   },
   "items": {
     "libraryLabel": "道具資料庫",
@@ -778,7 +783,12 @@
     "potentialNoMaterial": "不需要材料",
     "potentialTreeUnavailable": "此武器的潛能樹尚未提供。",
     "calamityWeaponGuide": "災厄武器指南",
-    "genimonGuide": "魔靈指南"
+    "genimonGuide": "魔靈指南",
+    "compatCharacter": "角色",
+    "compatMelee": "近戰武器",
+    "compatRanged": "遠程武器",
+    "compatMeleeConsonance": "近戰諧振",
+    "compatRangedConsonance": "遠程諧振"
   },
   "itemDetail": {
     "weaponBuildTitle": "推薦惡魔楔組合",
@@ -838,7 +848,11 @@
     "genimonBuildFirst": "在 {count} 套配置中列為最優先",
     "genimonBuildOthers": "其他出現過的特性",
     "genimonCharactersIntro": "推薦配置會帶上這隻魔靈的角色，以及他們在牠身上所求的特性。",
-    "genimonRankBest": "最佳選擇"
+    "genimonRankBest": "最佳選擇",
+    "resolvedAttributes": "等級 {level} 的屬性",
+    "polarityFallback": "極性 {value}",
+    "calamityAttack": "災厄攻擊力",
+    "critRate": "暴擊率"
   },
   "drafts": {
     "headerLabel": "鍛造圖紙",
@@ -942,7 +956,12 @@
     "bannersTitle": "萬華卡池",
     "bannersDescription": "Duet Night Abyss 的所有萬華卡池：主打時裝、機率、保底、完整內容、累計獎勵與稜鏡兌換。",
     "theatreTitle": "沉浸式戲劇 – 輪替",
-    "theatreDescription": "Duet Night Abyss 沉浸式戲劇輪替追蹤：目前的角色或災厄武器、下次切換時間與完整歷史。"
+    "theatreDescription": "Duet Night Abyss 沉浸式戲劇輪替追蹤：目前的角色或災厄武器、下次切換時間與完整歷史。",
+    "characterDescription": "Duet Night Abyss 中 {name} 的完整資料：{element} 屬性、武器、陣營、立繪與 7 種語言的名稱。",
+    "favoritesTitle": "收藏的 Demon Wedge",
+    "favoritesDescription": "查看儲存在瀏覽器中的收藏 Demon Wedge，可使用篩選並選擇顯示語言。",
+    "itemCategorySearch": "搜尋、篩選並比較 {count} 種語言的名稱。",
+    "itemDetailFallback": "{category}：{name} 的詳細資料（{count} 種語言）。"
   },
   "commissions": {
     "eyebrow": "密令委託",
@@ -1080,7 +1099,9 @@
     "genimonTraitCount": "{max} 個欄位中的 {count} 個",
     "genimonTraitFull": "欄位已滿：再選一個會取代最舊的那個。",
     "genimonTraitsModalHelp": "挑選你想在這隻魔靈身上取得的特性。欄位數量依個體而定：普通變種三個，閃耀變種四個。順序代表farm的優先度，而非它會進到哪個欄位。",
-    "genimonEmptySlot": "空欄位"
+    "genimonEmptySlot": "空欄位",
+    "buildImported": "已匯入配裝。",
+    "importInvalid": "此檔案不是有效的 DNA Interactive 配裝，或包含網站無法識別的項目。"
   },
   "communityBuilds": {
     "sectionTitle": "社群替代方案",
@@ -1993,7 +2014,8 @@
     "nameInvalidChars": "名稱僅能包含字母、空格、單引號與連字號。",
     "routeNotFound": "找不到路線。",
     "routeLimitReached": "已達路線上限，請先刪除一條再建立。",
-    "cannotReportOwnRoute": "無法檢舉自己的路線。"
+    "cannotReportOwnRoute": "無法檢舉自己的路線。",
+    "buildInvalid": "此配裝包含無效的資料。"
   },
   "notificationsPanel": {
     "ariaWithUnread": "通知（{count} 則未讀）",
@@ -2001,7 +2023,13 @@
     "seeAll": "查看全部",
     "pushEnable": "啟用推播",
     "pushOn": "推播已啟用",
-    "pushBlocked": "推播已封鎖"
+    "pushBlocked": "推播已封鎖",
+    "pushEnableFailed": "無法開啟通知。",
+    "pushDisableFailed": "無法關閉通知。",
+    "moderationHidden": "你的配裝已被隱藏",
+    "moderationRemoved": "你的配裝已被移除",
+    "moderationRestored": "你的配裝已恢復",
+    "moderationOther": "你的配裝已被審核處理"
   },
   "notificationsPage": {
     "heading": "通知",
@@ -2340,5 +2368,39 @@
     "scrollForward": "較晚的輪替",
     "backToNow": "現在",
     "localTime": "日期與時間以你的時區顯示。"
+  },
+  "og": {
+    "viewCount": "瀏覽數 {count}",
+    "character": "角色",
+    "characterNotFound": "找不到角色",
+    "itemNotFound": "找不到道具",
+    "buildNotFound": "找不到配裝"
+  },
+  "itemCategories": {
+    "mods": {
+      "title": "Demon Wedge",
+      "name": "Demon Wedge",
+      "description": "收錄所有 Demon Wedge，附 7 種語言名稱、效果與相容資訊。"
+    },
+    "genimons": {
+      "title": "Genimon",
+      "name": "Genimon",
+      "description": "Genimon 夥伴，附變體、特性與被動效果。"
+    },
+    "weapons": {
+      "title": "武器",
+      "name": "武器",
+      "description": "所有近戰與遠程武器，附類型、屬性數值與圖示。"
+    },
+    "resources": {
+      "title": "資源",
+      "name": "資源",
+      "description": "材料、消耗品與遊戲道具，附說明與圖示。"
+    },
+    "fishing": {
+      "title": "釣魚",
+      "name": "釣魚",
+      "description": "魚類、釣竿、魚餌與釣魚貨幣。"
+    }
   }
 }

@@ -706,7 +706,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
                       {affinityIconSrc ? (
                         <img src={affinityIconSrc} alt="" width={20} height={20} className="h-5 w-5 object-contain" />
                       ) : null}
-                      {translation.affinityName ?? `Polarité ${item.stats.polarity ?? "N/A"}`}
+                      {translation.affinityName ?? t("polarityFallback", { value: item.stats.polarity ?? "N/A" })}
                       {item.affinity.char ? ` (${item.affinity.char})` : ""}
                     </span>
                   }
@@ -740,7 +740,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
               ) : null}
               {weaponBaseAtk !== null ? (
                 <DnaStatRow
-                  label={isCalamity ? "Attaque de calamité" : "ATK"}
+                  label={isCalamity ? t("calamityAttack") : "ATK"}
                   accent={tinted ? elHex : undefined}
                   value={
                     weaponMaxAtk !== null && weaponMaxAtk !== weaponBaseAtk
@@ -750,7 +750,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
                 />
               ) : null}
               {weaponCri !== null ? (
-                <DnaStatRow label="Taux critique" value={formatRateValue(weaponCri)} />
+                <DnaStatRow label={t("critRate")} value={formatRateValue(weaponCri)} />
               ) : null}
               {weaponCrd !== null ? (
                 <DnaStatRow label={t("critDamage")} value={formatRateValue(weaponCrd)} />
@@ -1230,7 +1230,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
           {isModsCategory ? (
             <div className="mt-5 border-t border-white/10 pt-4">
               <h3 className="font-caps text-[0.66rem] uppercase tracking-[0.24em] text-gold">
-                Attributs resolus (niveau {selectedLevel})
+                {t("resolvedAttributes", { level: selectedLevel })}
               </h3>
               {selectedLevelAttributesVisible.length === 0 ? (
                 <p className="mt-2 text-sm text-muted-2">{t("noScalableAttributes")}</p>

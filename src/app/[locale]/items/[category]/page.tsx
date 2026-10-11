@@ -6,6 +6,7 @@ import ItemsGridClient from "@/components/items/ItemsGridClient";
 import ItemsSuspenseFallback from "@/components/items/ItemsSuspenseFallback";
 import { getItemCatalog, getItemsByCategorySlug } from "@/lib/items/catalog";
 import { generatePageMetadata } from "@/lib/metadata";
+import { localizeItemCategory } from "@/lib/items/category-i18n";
 
 type ItemCategoryPageProps = {
   params: Promise<{ locale: string; category: string }>;
@@ -37,18 +38,21 @@ export async function generateMetadata(
     );
   }
 
+  const localized = await localizeItemCategory(payload.category, locale);
+  const tMeta = await getTranslations({ locale, namespace: "metadata" });
+
   return generatePageMetadata(
     {
-      title: `${payload.category.title} - ${payload.items.length} items`,
-      description: `${payload.category.description} Search, filter, and compare localized names across ${payload.category.availableLanguages.length} languages.`,
+      title: `${localized.title} - ${payload.items.length} items`,
+      description: `${localized.description} ${tMeta("itemCategorySearch", { count: localized.availableLanguages.length })}`,
       path: `/items/${payload.category.slug}`,
       keywords: [
         "Duet Night Abyss",
         "item database",
         "multilingual",
-        payload.category.displayName,
-        payload.category.technicalName,
-        payload.category.title,
+        localized.displayName,
+        localized.technicalName,
+        localized.title,
       ],
     },
     parent,
@@ -57,7 +61,7 @@ export async function generateMetadata(
 }
 
 export default async function ItemCategoryPage({ params }: ItemCategoryPageProps) {
-  const { category: categorySlug } = await params;
+  const { locale, category: categorySlug } = await params;
   const payload = getItemsByCategorySlug(categorySlug);
 
   if (!payload) {
@@ -70,7 +74,7 @@ export default async function ItemCategoryPage({ params }: ItemCategoryPageProps
     <Suspense
       fallback={<ItemsSuspenseFallback title={t("loading")} />}
     >
-      <ItemsGridClient category={payload.category} items={payload.items} />
+      <ItemsGridClient category={await localizeItemCategory(payload.category, locale)} items={payload.items} />
     </Suspense>
   );
 }
