@@ -6,8 +6,15 @@
  * version. Dates recoupées le 24 septembre 2026 sur les notes de version
  * officielles et les annonces du compte officiel du jeu, puis de nouveau le
  * 4 et le 6 octobre 2026 (aucune période modifiée, aucune annonce de la version
- * suivante à ces dates). Les événements de la
- * 1.4, terminés le 27 juillet, ont quitté cette liste (ils restent en base).
+ * suivante à ces dates). Les événements de la 1.4, terminés le 27 juillet, et
+ * ceux de la 1.5 clos avant le 20 août ont quitté cette liste (ils restent en
+ * base).
+ *
+ * La version 1.7 « Towards the Dawn » est annoncée depuis le 12 octobre 2026
+ * (PV officiel, nouvelle perso Rhythm: Flamewrought). Au 14 octobre, aucune date
+ * de sortie n'est publiée officiellement : seul « A Flame Rekindled », daté par
+ * le compte officiel, figure ici. Le programme complet relevé dans le PV, en
+ * attente de ses dates, est consigné dans `docs/version-1-7-towards-the-dawn.md`.
  *
  * **Convention de dates** : `start`/`end` sont des jours **inclus**. Les
  * événements ferment à une heure précise (UTC+8, fuseau serveur) : une clôture
@@ -64,10 +71,8 @@ export type CalendarEvent = {
 /** Notes de version officielles 1.5 « Paradise Prelude » (source de toutes les dates 1.5). */
 const SRC_V15 = "https://store.steampowered.com/news/app/3950020/view/1839041357036785";
 const SRC_V15_EVENT = "https://duetnightabyss.dna-panstudio.com/dna-event/en/";
-const SRC_V15_PV = "https://www.youtube.com/watch?v=c8di9Y1wV8E";
 /* Annonces d'événement publiées sur le compte officiel du jeu. */
 const SRC_V15_ENSEMBLE = "https://x.com/DNAbyss_EN/status/2084927398106255537";
-const SRC_V15_DERBY = "https://x.com/DNAbyss_EN/status/2084489506036875471";
 const SRC_V15_EDGE = "https://x.com/DNAbyss_EN/status/2087388611805397497";
 const SRC_V15_SOJOURN = "https://x.com/DNAbyss_EN/status/2089562936113279405";
 const SRC_V15_GLEANINGS = "https://x.com/DNAbyss_EN/status/2089925328202326067";
@@ -85,6 +90,8 @@ const SRC_V16_BOUNTIFUL = "https://x.com/DNAbyss_EN/status/2105508007857525103";
 const SRC_V16_PHOXHUNTER = "https://x.com/DNAbyss_EN/status/2107319942966325636";
 /** Notes de version officielles 1.6 (source de toutes les périodes 1.6). */
 const SRC_V16 = "https://steamcommunity.com/games/3950020/announcements/detail/676256891013171560";
+/* Annonces de la version 1.7 « Towards the Dawn » (date de sortie pas encore publiée). */
+const SRC_V17_FLAME_REKINDLED = "https://x.com/DNAbyss_EN/status/2110219043135258965";
 
 export const CATEGORIES: EventCategory[] = ["Bannière", "Arme", "Événement", "Épreuve", "Récompense"];
 
@@ -103,12 +110,8 @@ export const DEFAULT_ZOOM: CalendarZoom = 30;
 
 export const CALENDAR_EVENTS: CalendarEvent[] = [
   /* ------------------------------------------------ patch 1.5 « Paradise Prelude » */
-  { id: "rabbit-in-wonderland", title: "Rabbit in Wonderland — connexion", category: "Récompense", start: "2026-07-23", end: "2026-08-04", image: "/assets/official-v1.5/key-art-ada.webp", description: "Connexion quotidienne d'ouverture de la version Paradise Prelude.", sourceUrl: SRC_V15_PV },
   { id: "paradise-prelude", title: "Paradise Prelude — événement web", category: "Récompense", start: "2026-07-23", end: "2026-09-03", image: "/assets/official-v1.5/banner-paradise-prelude.webp", description: "Événement web de la version 1.5 : Ada offerte et récompenses à réclamer.", sourceUrl: SRC_V15_EVENT },
-  { id: "atlasian-hunt", title: "Atlasian Hunt — quiz", category: "Événement", start: "2026-07-27", end: "2026-08-07", image: "/assets/worldview/worldview-1-3-2.webp", description: "Chasse aux réponses sur le lore d'Atlasia, récompenses quotidiennes." },
   { id: "nocturne-in-white", title: "Nocturne in White", category: "Bannière", start: "2026-07-28", end: "2026-09-07", image: "/assets/official-v1.5/image-snowlight.webp", description: "Bannière Myriad limitée de la version 1.5 — inclut le skin « Snowlight Chase » d'Ada.", sourceUrl: SRC_V15 },
-  { id: "the-best-day", title: "The Best Day — arme signature d'Ada", category: "Arme", start: "2026-07-28", end: "2026-08-18", image: "/assets/official-v1.5/image-icelake.webp", description: "Secret Letters des doubles pistolets d'Ada, en vente au Memento pendant la rotation « Ada » du théâtre immersif (jusqu'au 18 août à 10:00 UTC+8).", sourceUrl: SRC_V15 },
-  { id: "immersive-theatre-ada", title: "Immersive Theatre : « Ada »", category: "Événement", start: "2026-07-28", end: "2026-08-18", image: "/assets/official-v1.5/key-art-ada.webp", description: "Rotation du théâtre immersif : récupère les Secret Letters d'Ada et de « The Best Day » au Memento avant la bascule du 18 août à 10:00 UTC+8.", sourceUrl: SRC_V15 },
   { id: "oceans-distant-rhythm", title: "Ocean's Distant Rhythm — rerun skin Fushu", category: "Bannière", start: "2026-07-28", end: "2026-09-07", image: "/assets/worldview/worldview-1-3-6.webp", description: "Rerun limité de la bannière Myriad du skin de Fushu.", sourceUrl: SRC_V15 },
   { id: "bloomfield-tales-untold", title: "Bloomfield Station : Tales Untold", category: "Événement", start: "2026-07-28", end: "2026-09-07", image: "/assets/worldview/worldview-1-4-2.webp", description: "Chapitre d'histoire de la version 1.5 autour de la gare de Flodia Bloomfield.", sourceUrl: SRC_V15 },
   { id: "white-bunnies-invitation", title: "White Bunnies' Invitation — connexion", category: "Récompense", start: "2026-07-28", end: "2026-09-07", image: "/assets/worldview/worldview-1-3-3.webp", description: "Cumule tes connexions jusqu'au 7 septembre pour 10 Sabliers immaculés.", sourceUrl: SRC_V15 },
@@ -116,9 +119,7 @@ export const CALENDAR_EVENTS: CalendarEvent[] = [
   { id: "snowveil-fairytale", title: "Snowveil Fairytale — essai du skin d'Ada", category: "Événement", start: "2026-07-28", end: "2026-09-07", image: "/assets/official-v1.5/image-ada.webp", description: "Essaie la tenue hivernale d'Ada pendant toute la durée de la version 1.5." },
   { id: "bards-tome-summer-beat", title: "Bard's Tome : Summer Beat", category: "Récompense", start: "2026-07-28", end: "2026-09-07", image: "/assets/worldview/worldview-8.webp", description: "Passe saisonnier : accomplis les quêtes du Grimoire du barde pour monter les paliers de vers et récolter les récompenses." },
   { id: "great-chaos-mechapuppets", title: "Great Chaos of Mechapuppets", category: "Événement", start: "2026-07-30", end: "2026-09-07", image: "/assets/official-v1.5/image-mechapuppets.webp", description: "Événement de stratégie : déploie les pantins mécaniques et laisse le plateau trancher.", sourceUrl: SRC_V15 },
-  { id: "bountiful-day-v15-p1", title: "Bountiful Day — Partie 1 (1.5)", category: "Événement", start: "2026-07-30", end: "2026-08-06", image: "/assets/worldview/worldview-1-4-3.webp", description: "Taux de drop de Demon Wedge augmentés pendant une semaine.", sourceUrl: SRC_V15 },
   { id: "immersive-theatre-ensemble-v15", title: "Immersive Theatre : Ensemble Act (1.5)", category: "Événement", start: "2026-08-06", end: "2026-09-06", image: "/assets/worldview/worldview-1-4-5.webp", description: "Co-op du théâtre immersif : prends le rôle de Lead, abats les boss en équipe et récolte les ressources de progression.", sourceUrl: SRC_V15_ENSEMBLE },
-  { id: "golden-journey-derby", title: "Golden Journey : Genimon Derby", category: "Événement", start: "2026-08-06", end: "2026-08-18", image: "/assets/worldview/worldview-1-3-4.webp", description: "Courses de génimons : mise, entraîne et empoche les gains (fin le 18 août à 05:00 UTC+8).", sourceUrl: SRC_V15_DERBY },
   { id: "edge-of-trial", title: "Edge of Trial", category: "Épreuve", start: "2026-08-13", end: "2026-09-01", image: "/assets/worldview/worldview-1-4-4.webp", description: "Épreuve de combat compétitive : croise le fer et affûte ta lame (rang d'épreuve Lv. 50, fin le 1ᵉʳ septembre à 05:00 UTC+8).", sourceUrl: SRC_V15_EDGE },
   { id: "crimson-mirage", title: "Crimson Mirage — skins Camilla & Hilda", category: "Bannière", start: "2026-08-18", end: "2026-09-29", image: "/assets/official-v1.5/image-crimson.webp", description: "Bannière de skins limitée : tenues « Nightfall Enchantress » pour Camilla et Hilda.", sourceUrl: SRC_V15 },
   { id: "starry-sojourn-v15", title: "Starry Sojourn — co-op (1.5)", category: "Événement", start: "2026-08-20", end: "2026-09-01", image: "/assets/worldview/worldview-7.webp", description: "Cumule du temps de jeu en zone coopérative pour réclamer les récompenses de l’événement.", sourceUrl: SRC_V15_SOJOURN },
@@ -151,6 +152,12 @@ export const CALENDAR_EVENTS: CalendarEvent[] = [
   { id: "bountiful-day-v16-p2", title: "Bountiful Day – Partie 2 (1.6)", category: "Événement", start: "2026-10-01", end: "2026-10-08", image: "/assets/events/bountiful-day.webp", description: "Deuxième fenêtre de bonus sur les commissions du Manuel du Noctoyager : le bonus de Demon Wedges se cumule jusqu'à six fois par jour (fin le 8 octobre à 05:00 UTC+8).", sourceUrl: SRC_V16_BOUNTIFUL },
   { id: "treasured-remnants", title: "Treasured Remnants", category: "Événement", start: "2026-10-01", end: "2026-10-13", image: "/assets/events/treasured-remnants.webp", description: "De vieux objets patinés par le temps, qui ne retrouvent leur éclat qu'entre les mains de ceux qui en ont besoin (fin le 13 octobre à 05:00 UTC+8).", sourceUrl: SRC_V16_REMNANTS },
   { id: "phoxhunter-summit-v16", title: "Phoxhunter Summit (1.6)", category: "Épreuve", start: "2026-10-07", end: "2026-10-16", image: "/assets/events/phoxhunter-summit.webp", description: "Épreuve compétitive de fin de version. Les contres élémentaires ont été retirés pour cette édition (clôture le 17 octobre à 00:00 UTC+8).", sourceUrl: SRC_V16_PHOXHUNTER },
+
+  /* ------------------------------------------------ version 1.7 « Towards the Dawn » */
+  /* Annoncée le 12 octobre 2026 (PV officiel), date de sortie pas encore publiée.
+     Seuls les événements dont les dates sont officielles entrent ici ; le reste du
+     programme est consigné dans docs/version-1-7-towards-the-dawn.md. */
+  { id: "a-flame-rekindled", title: "A Flame Rekindled – connexion", category: "Récompense", start: "2026-10-15", end: "2026-10-27", image: "/assets/events/a-flame-rekindled.webp", description: "Connexion d'avant-version de « Towards the Dawn » : connecte-toi 5 jours différents pour des Sabliers immaculés, des Indices de Mandat scellé, des Carmine Globules, des Luno Memento et des pièces (fin le 27 octobre à 05:00 UTC+8).", sourceUrl: SRC_V17_FLAME_REKINDLED },
 ];
 
 /* --------------------------------------------------------------- helpers date */
