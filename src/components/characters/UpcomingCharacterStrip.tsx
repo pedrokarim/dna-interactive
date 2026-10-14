@@ -2,7 +2,8 @@
 
 import { toIntlLocale } from "@/lib/intl-locale";
 import { useMemo } from "react";
-import { useLocale } from "next-intl";
+import Image from "next/image";
+import { useLocale, useTranslations } from "next-intl";
 import { ArrowRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { DnaCornerBrackets, DnaElementBadge, DnaStars, DnaTag, ELEMENTS, cn } from "@/components/dna";
@@ -17,15 +18,20 @@ import { useReleaseCountdown } from "./useReleaseCountdown";
  * livré aucune texture. Cette bande est donc bâtie sans image – lettre gravée,
  * trame diagonale et halo élémentaire tiennent lieu de visuel – ce qui lui
  * permet d'annoncer un personnage dès que ses données existent, sans attendre
- * les assets.
+ * les assets. Quand le studio a publié un visuel officiel (`avatar`), il prend
+ * la place de la lettre gravée.
  *
  * Volontairement basse et sobre : elle précède le grand showcase sans lui
  * disputer la vedette.
  */
 export function UpcomingCharacterStrip({ character }: { character: UpcomingCharacter }) {
   const locale = useLocale();
+  const t = useTranslations("upcomingStrip");
   const element = ELEMENTS[character.element];
   const { parts, released } = useReleaseCountdown(character.releaseDate ?? "");
+  // Le sous-titre curé est en français ; les autres langues lisent le titre
+  // officiel anglais.
+  const subtitle = locale === "fr" ? character.subtitle : character.subtitleEn;
 
   const dateLabel = useMemo(
     () =>
@@ -67,31 +73,42 @@ export function UpcomingCharacterStrip({ character }: { character: UpcomingChara
 
       {/* Rangée 1 : cartouche (tenant lieu de portrait) + identité */}
       <span className="relative flex min-w-0 flex-1 items-center gap-4">
-        <span
-          aria-hidden
-          className="grid h-16 w-16 shrink-0 place-items-center rounded-sm border"
-          style={{ borderColor: `${element.hex}55`, background: `${element.hex}14` }}
-        >
-          <span className="font-display text-4xl leading-none opacity-70" style={{ color: element.color }}>
-            {character.name.charAt(0)}
+        {character.avatar ? (
+          /* Visuel officiel publié avant la sortie : il remplace le cartouche. */
+          <span
+            aria-hidden
+            className="relative h-16 w-16 shrink-0 overflow-hidden rounded-sm border"
+            style={{ borderColor: `${element.hex}66` }}
+          >
+            <Image src={character.avatar} alt="" fill sizes="64px" className="object-cover" />
           </span>
-        </span>
+        ) : (
+          <span
+            aria-hidden
+            className="grid h-16 w-16 shrink-0 place-items-center rounded-sm border"
+            style={{ borderColor: `${element.hex}55`, background: `${element.hex}14` }}
+          >
+            <span className="font-display text-4xl leading-none opacity-70" style={{ color: element.color }}>
+              {character.name.charAt(0)}
+            </span>
+          </span>
+        )}
 
         <span className="min-w-0 flex-1">
           <span className="flex flex-wrap items-center gap-2">
-            <span className="font-caps text-[0.55rem] uppercase tracking-[0.22em] text-muted">Prochainement</span>
-            <DnaTag tone="crimson">Version {character.version}</DnaTag>
+            <span className="font-caps text-[0.55rem] uppercase tracking-[0.22em] text-muted">{t("soon")}</span>
+            <DnaTag tone="crimson">{t("version", { version: character.version })}</DnaTag>
           </span>
           <span className="mt-1 flex flex-wrap items-baseline gap-x-3 gap-y-0.5">
-            <span className="font-display text-3xl text-parch transition-colors group-hover:text-gold-bright">
+            <span className="min-w-0 break-words font-display text-3xl text-parch transition-colors group-hover:text-gold-bright">
               {character.name}
             </span>
-            <span className="font-serif text-base italic text-gold/90">« {character.subtitle} »</span>
+            <span className="font-serif text-base italic text-gold/90">{t("quote", { text: subtitle })}</span>
           </span>
           <span className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1">
             <DnaElementBadge element={character.element} showLabel size={20} />
             <DnaStars value={character.rarity} />
-            <span className="font-sans text-xs text-muted">{character.campLabel}</span>
+            {locale === "fr" ? <span className="font-sans text-xs text-muted">{character.campLabel}</span> : null}
             {dateLabel ? <span className="font-sans text-xs text-muted">· {dateLabel}</span> : null}
           </span>
         </span>
@@ -99,14 +116,21 @@ export function UpcomingCharacterStrip({ character }: { character: UpcomingChara
 
       {/* Rangée 2 sur mobile, fin de ligne sur desktop */}
       <span className="relative flex shrink-0 items-center justify-between gap-3 sm:justify-end sm:gap-4">
-        {/* L'horloge n'existe qu'apres hydratation : on reserve sa place avec
-            des tirets, sinon le bouton saute d'une position au premier tic. */}
-        <span className="flex gap-1.5" role="timer" aria-live="off">
-          <Unit value={parts?.days ?? null} label="j" />
-          <Unit value={parts?.hours ?? null} label="h" />
-          <Unit value={parts?.minutes ?? null} label="min" />
-          <Unit value={parts?.seconds ?? null} label="s" />
-        </span>
+        {character.releaseDate ? (
+          /* L'horloge n'existe qu'apres hydratation : on reserve sa place avec
+             des tirets, sinon le bouton saute d'une position au premier tic. */
+          <span className="flex gap-1.5" role="timer" aria-live="off">
+            <Unit value={parts?.days ?? null} label={t("days")} />
+            <Unit value={parts?.hours ?? null} label={t("hours")} />
+            <Unit value={parts?.minutes ?? null} label={t("minutes")} />
+            <Unit value={parts?.seconds ?? null} label={t("seconds")} />
+          </span>
+        ) : (
+          /* Sans date officielle, pas de compteur figé sur des tirets. */
+          <span className="border border-line/25 bg-black/25 px-3 py-2 font-caps text-[0.58rem] uppercase tracking-[0.14em] text-muted">
+            {t("dateTba")}
+          </span>
+        )}
 
         <span
           className={cn(
@@ -115,7 +139,7 @@ export function UpcomingCharacterStrip({ character }: { character: UpcomingChara
             "group-hover:border-gold group-hover:text-gold-bright",
           )}
         >
-          Voir la fiche
+          {t("viewSheet")}
           <ArrowRight className="h-3.5 w-3.5" />
         </span>
       </span>

@@ -221,6 +221,17 @@
     "viewCharacter": "Ver personaje",
     "viewBuild": "Ver el build"
   },
+  "upcomingStrip": {
+    "soon": "Próximamente",
+    "version": "Versión {version}",
+    "viewSheet": "Ver ficha",
+    "dateTba": "Fecha por anunciar",
+    "quote": "«{text}»",
+    "days": "d",
+    "hours": "h",
+    "minutes": "min",
+    "seconds": "s"
+  },
   "community": {
     "streamerName": "Velkaine",
     "streamerRole": "Streamer y Jugador de DNA",

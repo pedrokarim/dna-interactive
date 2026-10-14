@@ -221,6 +221,17 @@
     "viewCharacter": "查看角色",
     "viewBuild": "查看配置"
   },
+  "upcomingStrip": {
+    "soon": "即將登場",
+    "version": "版本 {version}",
+    "viewSheet": "查看詳情",
+    "dateTba": "日期待定",
+    "quote": "「{text}」",
+    "days": "天",
+    "hours": "時",
+    "minutes": "分",
+    "seconds": "秒"
+  },
   "community": {
     "streamerName": "Velkaine",
     "streamerRole": "實況主 & DNA 玩家",

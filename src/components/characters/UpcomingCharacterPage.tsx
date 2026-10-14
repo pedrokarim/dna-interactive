@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ArrowLeft, FileSearch, Megaphone, ShieldQuestion, Sparkles } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import {
@@ -103,15 +104,19 @@ export function UpcomingCharacterPage({
   const element = ELEMENTS[character.element];
   const maxLevel = character.maxLevel;
 
-  const stats = [
-    { label: "ATQ", base: character.baseStats.atk, curve: character.growthCurves.atk },
-    { label: "DÉF", base: character.baseStats.def, curve: character.growthCurves.def },
-    { label: "PV max", base: character.baseStats.maxHp, curve: character.growthCurves.maxHp },
-    { label: "Bouclier max", base: character.baseStats.maxEs, curve: character.growthCurves.maxEs },
-  ].map((s) => ({
-    ...s,
-    atMax: statAtLevel(s.base, curves[s.curve], maxLevel),
-  }));
+  const { baseStats, growthCurves } = character;
+  const stats =
+    baseStats && growthCurves
+      ? [
+          { label: "ATQ", base: baseStats.atk, curve: growthCurves.atk },
+          { label: "DÉF", base: baseStats.def, curve: growthCurves.def },
+          { label: "PV max", base: baseStats.maxHp, curve: growthCurves.maxHp },
+          { label: "Bouclier max", base: baseStats.maxEs, curve: growthCurves.maxEs },
+        ].map((s) => ({
+          ...s,
+          atMax: statAtLevel(s.base, curves[s.curve], maxLevel),
+        }))
+      : null;
 
   return (
     <div className="relative">
@@ -134,7 +139,11 @@ export function UpcomingCharacterPage({
 
         {/* ------------------------------------------------------------ en-tête */}
         <header className="mt-5 grid gap-6 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)]">
-          <CrestPlaceholder character={character} />
+          {character.portrait ? (
+            <OfficialPortrait character={character} src={character.portrait} />
+          ) : (
+            <CrestPlaceholder character={character} />
+          )}
 
           <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-2">
@@ -153,16 +162,18 @@ export function UpcomingCharacterPage({
               <span className="font-sans text-sm text-parch/80">{character.campLabel}</span>
             </div>
 
-            <div className="mt-4 flex flex-wrap gap-2">
-              {character.weaponTags.map((tag) => (
-                <DnaTag key={tag}>{WEAPON_LABELS[tag] ?? tag}</DnaTag>
-              ))}
-              {character.positioning.map((pos) => (
-                <DnaTag key={pos} tone="crimson">
-                  {POSITIONING_LABELS[pos] ?? pos}
-                </DnaTag>
-              ))}
-            </div>
+            {character.weaponTags.length > 0 || character.positioning.length > 0 ? (
+              <div className="mt-4 flex flex-wrap gap-2">
+                {character.weaponTags.map((tag) => (
+                  <DnaTag key={tag}>{WEAPON_LABELS[tag] ?? tag}</DnaTag>
+                ))}
+                {character.positioning.map((pos) => (
+                  <DnaTag key={pos} tone="crimson">
+                    {POSITIONING_LABELS[pos] ?? pos}
+                  </DnaTag>
+                ))}
+              </div>
+            ) : null}
 
             {character.releaseDate ? (
               <div className="mt-6">
@@ -172,7 +183,13 @@ export function UpcomingCharacterPage({
                   bannerName={character.bannerName}
                 />
               </div>
-            ) : null}
+            ) : (
+              <p className="mt-6 max-w-prose font-sans text-sm text-muted">
+                Arrive avec la version {character.version} «&nbsp;{character.versionName}&nbsp;»
+                {character.bannerName ? <> et la Myriade «&nbsp;{character.bannerName}&nbsp;»</> : null}. La date de
+                sortie n&apos;est pas encore annoncée&nbsp;: le compte à rebours apparaîtra dès qu&apos;elle le sera.
+              </p>
+            )}
           </div>
         </header>
 
@@ -192,7 +209,8 @@ export function UpcomingCharacterPage({
                   ))}
                 </div>
                 <p className="mt-4 font-sans text-xs text-muted-2">
-                  Recomposé à partir des dialogues et des archives du jeu, toutes langues confondues.
+                  {character.loreSource ??
+                    "Recomposé à partir des dialogues et des archives du jeu, toutes langues confondues."}
                 </p>
               </DnaPanel>
             </section>
@@ -202,10 +220,12 @@ export function UpcomingCharacterPage({
               <DnaPanel className="mt-3 p-5">
                 <p className="font-sans text-sm text-muted">
                   Le jeu déclare {character.skillIds.length} compétences ({character.skillIds.join(", ")}), mais leurs
-                  descriptions et leurs icônes ne sont pas encore livrées. Ce qui suit vient des présentations
-                  communautaires et sera remplacé par les données réelles à la sortie.
+                  descriptions et leurs icônes ne sont pas encore livrées.{" "}
+                  {character.skills.length > 0
+                    ? "Ce qui suit vient des présentations communautaires et sera remplacé par les données réelles à la sortie."
+                    : "Elles seront détaillées ici dès que le jeu les livrera."}
                 </p>
-                <div className="mt-4 flex flex-col gap-3">
+                <div className={cn("flex flex-col gap-3", character.skills.length > 0 && "mt-4")}>
                   {character.skills.map((skill) => (
                     <div key={skill.name} className="border-l-2 border-gold/30 pl-4">
                       <div className="flex flex-wrap items-center gap-2">
@@ -224,45 +244,55 @@ export function UpcomingCharacterPage({
 
             <section>
               <DnaSectionMark>Statistiques de base</DnaSectionMark>
-              <DnaPanel className="mt-3 p-5">
-                <p className="font-sans text-sm text-muted">
-                  Valeurs lues dans <code className="font-mono text-[0.72rem] text-gold/80">BattleChar</code>, projetées
-                  au niveau {maxLevel}{" "}avec les courbes de croissance déclarées. {character.name} utilise les
-                  courbes &laquo;&nbsp;S&nbsp;&raquo; sur toutes ses statistiques, celles des personnages
-                  5&nbsp;étoiles.
-                </p>
-                <div className="mt-4 overflow-x-auto">
-                  <table className="w-full min-w-[28rem] text-left text-sm">
-                    <thead>
-                      <tr className="font-caps text-[0.56rem] uppercase tracking-[0.14em] text-muted">
-                        <th className="pb-2 pr-4 font-normal">Statistique</th>
-                        <th className="pb-2 pr-4 font-normal">Niveau 1</th>
-                        <th className="pb-2 pr-4 font-normal">Niveau {maxLevel}</th>
-                        <th className="pb-2 font-normal">Courbe</th>
-                      </tr>
-                    </thead>
-                    <tbody className="text-parch/90">
-                      {stats.map((stat) => (
-                        <tr key={stat.label} className="border-t border-white/8">
-                          <td className="py-2 pr-4">{stat.label}</td>
-                          <td className="py-2 pr-4 font-mono">{stat.base}</td>
-                          <td className="py-2 pr-4 font-mono text-gold-bright">{stat.atMax}</td>
-                          <td className="py-2 font-mono text-xs text-muted-2">{stat.curve}</td>
+              {stats && baseStats ? (
+                <DnaPanel className="mt-3 p-5">
+                  <p className="font-sans text-sm text-muted">
+                    Valeurs lues dans <code className="font-mono text-[0.72rem] text-gold/80">BattleChar</code>, projetées
+                    au niveau {maxLevel}{" "}avec les courbes de croissance déclarées. {character.name} utilise les
+                    courbes &laquo;&nbsp;S&nbsp;&raquo; sur toutes ses statistiques, celles des personnages
+                    5&nbsp;étoiles.
+                  </p>
+                  <div className="mt-4 overflow-x-auto">
+                    <table className="w-full min-w-[28rem] text-left text-sm">
+                      <thead>
+                        <tr className="font-caps text-[0.56rem] uppercase tracking-[0.14em] text-muted">
+                          <th className="pb-2 pr-4 font-normal">Statistique</th>
+                          <th className="pb-2 pr-4 font-normal">Niveau 1</th>
+                          <th className="pb-2 pr-4 font-normal">Niveau {maxLevel}</th>
+                          <th className="pb-2 font-normal">Courbe</th>
                         </tr>
-                      ))}
-                      <tr className="border-t border-white/8">
-                        <td className="py-2 pr-4">SP max</td>
-                        <td className="py-2 pr-4 font-mono">{character.baseStats.maxSp}</td>
-                        <td className="py-2 pr-4 font-mono text-gold-bright">{character.baseStats.maxSp}</td>
-                        <td className="py-2 font-mono text-xs text-muted-2">—</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <p className="mt-3 font-sans text-xs text-muted-2">
-                  La DÉF ne progresse pas avec le niveau dans ce jeu : sa courbe vaut 1 à tous les paliers.
-                </p>
-              </DnaPanel>
+                      </thead>
+                      <tbody className="text-parch/90">
+                        {stats.map((stat) => (
+                          <tr key={stat.label} className="border-t border-white/8">
+                            <td className="py-2 pr-4">{stat.label}</td>
+                            <td className="py-2 pr-4 font-mono">{stat.base}</td>
+                            <td className="py-2 pr-4 font-mono text-gold-bright">{stat.atMax}</td>
+                            <td className="py-2 font-mono text-xs text-muted-2">{stat.curve}</td>
+                          </tr>
+                        ))}
+                        <tr className="border-t border-white/8">
+                          <td className="py-2 pr-4">SP max</td>
+                          <td className="py-2 pr-4 font-mono">{baseStats.maxSp}</td>
+                          <td className="py-2 pr-4 font-mono text-gold-bright">{baseStats.maxSp}</td>
+                          <td className="py-2 font-mono text-xs text-muted-2">—</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <p className="mt-3 font-sans text-xs text-muted-2">
+                    La DÉF ne progresse pas avec le niveau dans ce jeu : sa courbe vaut 1 à tous les paliers.
+                  </p>
+                </DnaPanel>
+              ) : (
+                <DnaPanel className="mt-3 p-5">
+                  <p className="font-sans text-sm text-muted">
+                    Les fichiers du jeu ne portent encore que des valeurs provisoires pour {character.name}, recopiées
+                    d&apos;un autre personnage. Ses statistiques, ses armes et son rôle seront affichés dès que le jeu
+                    livrera les siens.
+                  </p>
+                </DnaPanel>
+              )}
             </section>
           </div>
 
@@ -276,19 +306,23 @@ export function UpcomingCharacterPage({
                   <Row label="Rareté" value={`${character.rarity} étoiles`} confidence="dataMined" />
                   <Row label="Niveau max" value={`${maxLevel}`} confidence="dataMined" />
                   <Row label="Faction" value={character.campLabel} confidence="dataMined" />
-                  <Row
-                    label="Armes"
-                    value={character.weaponTags.map((t) => WEAPON_LABELS[t] ?? t).join(" · ")}
-                    confidence="dataMined"
-                  />
-                  <Row
-                    label="Stats conseillées"
-                    value={character.recommendAttr.map((a) => ATTR_LABELS[a] ?? a).join(" · ")}
-                    confidence="dataMined"
-                  />
+                  {character.weaponTags.length > 0 ? (
+                    <Row
+                      label="Armes"
+                      value={character.weaponTags.map((t) => WEAPON_LABELS[t] ?? t).join(" · ")}
+                      confidence="dataMined"
+                    />
+                  ) : null}
+                  {character.recommendAttr.length > 0 ? (
+                    <Row
+                      label="Stats conseillées"
+                      value={character.recommendAttr.map((a) => ATTR_LABELS[a] ?? a).join(" · ")}
+                      confidence="dataMined"
+                    />
+                  ) : null}
                   <Row label="Apparences" value={`${character.skinCount}`} confidence="dataMined" />
                   {character.skinNames?.length ? (
-                    <Row label="Skin de bannière" value={character.skinNames.join(", ")} confidence="community" />
+                    <Row label="Skin de bannière" value={character.skinNames.join(", ")} confidence="announced" />
                   ) : null}
                   {character.voiceActorEn ? (
                     <Row label="Voix (EN)" value={character.voiceActorEn} confidence="announced" />
@@ -366,6 +400,34 @@ function Row({
         <span className="font-sans text-sm text-parch/90">{value}</span>
         <ConfidenceBadge level={confidence} />
       </dd>
+    </div>
+  );
+}
+
+/**
+ * Visuel officiel publié par le studio avant la sortie, recadré en 3:4 : il
+ * prend la place du cartouche quand il existe.
+ */
+function OfficialPortrait({ character, src }: { character: UpcomingCharacter; src: string }) {
+  const element = ELEMENTS[character.element];
+  return (
+    <div
+      className="relative aspect-[3/4] w-full max-w-[20rem] overflow-hidden border border-line/25 bg-panel"
+      style={{ boxShadow: `0 0 60px -30px ${element.hex}` }}
+    >
+      <Image
+        src={src}
+        alt={character.name}
+        fill
+        priority
+        sizes="(min-width: 1024px) 20rem, 100vw"
+        className="object-cover"
+      />
+      <DnaCornerBrackets />
+      <span className="absolute bottom-2 right-2 inline-flex items-center gap-1.5 rounded-sm bg-black/55 px-1.5 py-0.5 font-mono text-[0.6rem] text-parch/80">
+        <Sparkles className="h-3 w-3" />
+        Visuel officiel
+      </span>
     </div>
   );
 }

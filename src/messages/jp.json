@@ -221,6 +221,17 @@
     "viewCharacter": "キャラクターを見る",
     "viewBuild": "ビルドを見る"
   },
+  "upcomingStrip": {
+    "soon": "近日登場",
+    "version": "バージョン{version}",
+    "viewSheet": "詳細を見る",
+    "dateTba": "日程未定",
+    "quote": "「{text}」",
+    "days": "日",
+    "hours": "時間",
+    "minutes": "分",
+    "seconds": "秒"
+  },
   "community": {
     "streamerName": "Velkaine",
     "streamerRole": "配信者＆DNAプレイヤー",
