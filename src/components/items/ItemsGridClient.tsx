@@ -25,6 +25,13 @@ import { isModReleaseVersionRecent } from "@/lib/items/new-releases";
 import { isCalamityWeapon } from "@/lib/items/calamity-weapons";
 import { getUpcomingVersion } from "@/lib/items/upcoming";
 import { resolveItemRarity } from "@/lib/items/rarity";
+import {
+  getItemSubTypeKey,
+  itemSubTypeLabel,
+  normalizeItemSubTypeFilter,
+} from "@/lib/items/item-subtype";
+import { toGameDataLangCode, toLocale } from "@/i18n/config";
+import { toIntlLocale } from "@/lib/intl-locale";
 import { rarityAttr } from "@/components/dna/rarity";
 import type { ItemCategory, ItemRecord } from "@/lib/items/types";
 import {
@@ -243,6 +250,7 @@ export default function ItemsGridClient({
   );
 
   const locale = useLocale();
+  const gameLang = toGameDataLangCode(toLocale(locale));
   const defaultLanguages = normalizeLanguageCodes(
     visitorGridLanguages(locale),
     category.availableLanguages,
@@ -294,6 +302,7 @@ export default function ItemsGridClient({
     queryFilters.polarity ?? (hasUrlFilters ? "all" : persisted?.polarityFilter ?? "all");
   const itemTypeFilter =
     queryFilters.itype ?? (hasUrlFilters ? "all" : persisted?.itemTypeFilter ?? "all");
+  // Peut encore porter une ancienne valeur (`Broadsword`…) : la lire via `normalizeItemSubTypeFilter`.
   const itemSubTypeFilter =
     queryFilters.isub ?? (hasUrlFilters ? "all" : persisted?.itemSubTypeFilter ?? "all");
   const seriesFilter =
@@ -420,13 +429,15 @@ export default function ItemsGridClient({
   const itemSubTypeOptions = useMemo(() => {
     const values = new Set<string>();
     for (const item of items) {
-      const value = item.fields.ResourceSType;
-      if (typeof value === "string" && value.trim().length > 0) {
-        values.add(value.trim());
+      const value = getItemSubTypeKey(item);
+      if (value) {
+        values.add(value);
       }
     }
-    return Array.from(values).sort((a, b) => a.localeCompare(b));
-  }, [items]);
+    return Array.from(values)
+      .map((value) => ({ value, label: itemSubTypeLabel(value, gameLang) }))
+      .sort((a, b) => a.label.localeCompare(b.label, toIntlLocale(locale)));
+  }, [items, gameLang, locale]);
 
   const seriesOptions = useMemo(() => {
     const values = new Set<string>();
@@ -498,8 +509,7 @@ export default function ItemsGridClient({
 
         if (
           itemSubTypeFilter !== "all" &&
-          `${typeof item.fields.ResourceSType === "string" ? item.fields.ResourceSType : ""}` !==
-            itemSubTypeFilter
+          getItemSubTypeKey(item) !== normalizeItemSubTypeFilter(itemSubTypeFilter)
         ) {
           return false;
         }
@@ -1022,7 +1032,7 @@ export default function ItemsGridClient({
             <div className="rounded-sm border border-white/10 bg-ink/60 p-2">
               <div className="mb-1 text-xs text-muted">{tc('subType')}</div>
               <select
-                value={itemSubTypeFilter}
+                value={normalizeItemSubTypeFilter(itemSubTypeFilter)}
                 onChange={(event) => {
                   updateQueryFilters({ isub: event.target.value, page: 1 });
                 }}
@@ -1030,9 +1040,9 @@ export default function ItemsGridClient({
                 className="w-full rounded-sm border border-white/10 bg-panel px-2 py-1.5 text-sm text-parch"
               >
                 <option value="all">{tc('all')}</option>
-                {itemSubTypeOptions.map((value) => (
+                {itemSubTypeOptions.map(({ value, label }) => (
                   <option key={value} value={value}>
-                    {value}
+                    {label}
                   </option>
                 ))}
               </select>
@@ -1131,8 +1141,8 @@ export default function ItemsGridClient({
             <FilterChips
               label={tc('subType')}
               icon={<GlyphIcons.filter className="h-3.5 w-3.5 text-gold/80" />}
-              options={itemSubTypeOptions.map((value) => ({ value, label: value }))}
-              value={itemSubTypeFilter}
+              options={itemSubTypeOptions}
+              value={normalizeItemSubTypeFilter(itemSubTypeFilter)}
               onChange={(value) => updateQueryFilters({ isub: value, page: 1 })}
               allLabel={tc('all')}
             />

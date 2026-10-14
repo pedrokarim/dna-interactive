@@ -14,6 +14,7 @@ import {
   getLanguageLabel,
   normalizeLanguageCodes,
 } from "@/lib/items/catalog";
+import { getItemSubTypeKey, itemSubTypeLabel } from "@/lib/items/item-subtype";
 import type { ItemCategory, ItemRawField, ItemRecord, ItemResolvedAttribute } from "@/lib/items/types";
 import type { RelatedDraftRecipe } from "@/lib/items/drafts";
 import { resolveDraftTextByLanguage } from "@/lib/items/drafts";
@@ -405,8 +406,9 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
     typeof item.fields.BattlePet_SupportSkillId === "number" ? item.fields.BattlePet_SupportSkillId : null;
   const battlePetType =
     typeof item.fields.BattlePet_PetType === "string" ? item.fields.BattlePet_PetType : null;
-  const resourceSType =
-    typeof item.fields.ResourceSType === "string" ? item.fields.ResourceSType : null;
+  // Le nom du type tel que le jeu l'affiche, pas le code interne `ResourceSType`.
+  const itemSubTypeKey = getItemSubTypeKey(item);
+  const resourceSType = itemSubTypeKey ? itemSubTypeLabel(itemSubTypeKey, selectedLanguage) : null;
   const genimonBreakLevels =
     Array.isArray(item.fields.PetBreakLevels)
       ? item.fields.PetBreakLevels.filter((value): value is number => typeof value === "number")
