@@ -19,11 +19,11 @@ export async function generateMetadata(
 export default async function CommissionsPage() {
   const settings = await getAppSettings();
   if (!settings.commissionsVisible) notFound();
-  const { state, meta, hasData } = await getRotationForDisplay();
+  const { state, meta } = await getRotationForDisplay();
 
   return (
     <div className="mx-auto w-full max-w-[1720px] px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
-      <CommissionsBoard initialState={state} initialMeta={meta} hasData={hasData} />
+      <CommissionsBoard initialState={state} initialMeta={meta} />
     </div>
   );
 }

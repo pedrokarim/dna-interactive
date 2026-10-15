@@ -979,12 +979,31 @@
     "title": "Covert Commissions",
     "description": "各地區委託任務的即時輪替 — 角色、武器與 Demon Wedge。每次重新整理都會更新看板。",
     "nextRefresh": "下次更新",
-    "lastUpdated": "{time} 更新",
     "syncing": "同步中…",
-    "fallbackNotice": "輪替內容即將開放。",
     "utcNote": "委託任務於每個整點輪替，時間以你的所在時區顯示。",
     "nextAt": "你的時間 {time}",
-    "unavailable": "暫時無法使用"
+    "unavailable": "暫時無法使用",
+    "lastCollected": "最後擷取：{time}",
+    "status": {
+      "live": "最新",
+      "syncing": "更新中",
+      "stale": "擷取中斷",
+      "none": "無資料"
+    },
+    "empty": {
+      "syncing": {
+        "title": "正在取得新的輪替",
+        "body": "委託已在整點更換。新的輪替將在幾分鐘內送達；舊的輪替已失效，因此不再顯示。"
+      },
+      "stale": {
+        "title": "暫時無法顯示委託",
+        "body": "委託擷取已中斷：自 {time} 起未收到任何輪替。為避免顯示過期資料，看板保持空白，擷取恢復後會自動重新顯示。"
+      },
+      "none": {
+        "title": "沒有可用的輪替",
+        "body": "尚未擷取任何輪替。看板會在第一次擷取後顯示。"
+      }
+    }
   },
   "builder": {
     "weaponWedgesToggle": "設定武器的惡魔楔",

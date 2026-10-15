@@ -979,12 +979,31 @@
     "title": "Covert Commissions",
     "description": "지역 커미션의 실시간 로테이션 — 캐릭터, 무기, Demon Wedge. 새로고침할 때마다 보드가 갱신됩니다.",
     "nextRefresh": "다음 갱신",
-    "lastUpdated": "{time} 갱신",
     "syncing": "동기화 중…",
-    "fallbackNotice": "로테이션은 곧 제공됩니다.",
     "utcNote": "커미션은 매시 정각에 교체되며, 시간은 현지 시간대로 표시됩니다.",
     "nextAt": "현지 시간 {time}",
-    "unavailable": "일시적으로 이용할 수 없음"
+    "unavailable": "일시적으로 이용할 수 없음",
+    "lastCollected": "마지막 수집: {time}",
+    "status": {
+      "live": "최신",
+      "syncing": "업데이트 중",
+      "stale": "수집 중단",
+      "none": "데이터 없음"
+    },
+    "empty": {
+      "syncing": {
+        "title": "새 로테이션을 가져오는 중",
+        "body": "의뢰가 정각에 바뀌었습니다. 새 로테이션은 몇 분 안에 도착합니다. 이전 로테이션은 더 이상 유효하지 않아 표시하지 않습니다."
+      },
+      "stale": {
+        "title": "의뢰 정보를 표시할 수 없음",
+        "body": "의뢰 수집이 중단되었습니다. {time} 이후로 받은 로테이션이 없습니다. 지난 정보를 보여 주는 대신 비워 두며, 수집이 재개되면 자동으로 다시 표시됩니다."
+      },
+      "none": {
+        "title": "로테이션 없음",
+        "body": "아직 수집된 로테이션이 없습니다. 첫 로테이션이 수집되면 표시됩니다."
+      }
+    }
   },
   "builder": {
     "weaponWedgesToggle": "무기의 데몬 웻지 설정",

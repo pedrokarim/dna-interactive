@@ -979,12 +979,31 @@
     "title": "Covert Commissions",
     "description": "Rotación en directo de las comisiones regionales — Personaje, Arma y Demon Wedge. El tablero se actualiza con cada recarga.",
     "nextRefresh": "Próxima actualización",
-    "lastUpdated": "Actualizado {time}",
     "syncing": "Sincronizando…",
-    "fallbackNotice": "Las rotaciones estarán disponibles en breve.",
     "utcNote": "Las comisiones rotan al inicio de cada hora; horas mostradas en tu zona horaria.",
     "nextAt": "a las {time} en tu zona",
-    "unavailable": "No disponible temporalmente"
+    "unavailable": "No disponible temporalmente",
+    "lastCollected": "Última recogida: {time}",
+    "status": {
+      "live": "Al día",
+      "syncing": "Actualizando",
+      "stale": "Recogida interrumpida",
+      "none": "Sin datos"
+    },
+    "empty": {
+      "syncing": {
+        "title": "Obteniendo la nueva rotación",
+        "body": "Los encargos cambiaron a la hora en punto. La nueva rotación llegará en unos minutos; la anterior ya no se muestra porque ya no es válida."
+      },
+      "stale": {
+        "title": "Encargos no disponibles",
+        "body": "La recogida de los encargos está interrumpida: no ha llegado ninguna rotación desde {time}. En lugar de una rotación caducada, el tablero queda vacío y volverá solo en cuanto se reanude la recogida."
+      },
+      "none": {
+        "title": "No hay ninguna rotación",
+        "body": "Todavía no se ha recogido ninguna rotación. El tablero aparecerá con la primera."
+      }
+    }
   },
   "builder": {
     "weaponWedgesToggle": "Configurar los Demon Wedges de las armas",

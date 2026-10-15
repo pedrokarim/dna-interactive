@@ -979,12 +979,31 @@
     "title": "Covert Commissions",
     "description": "Live rotation of the regional commissions — Character, Weapon and Demon Wedge. The board updates on every refresh.",
     "nextRefresh": "Next refresh",
-    "lastUpdated": "Updated {time}",
     "syncing": "Syncing…",
-    "fallbackNotice": "Rotations will be available shortly.",
     "utcNote": "Commissions rotate at the start of every hour; times shown in your local timezone.",
     "nextAt": "at {time} your time",
-    "unavailable": "Temporarily unavailable"
+    "unavailable": "Temporarily unavailable",
+    "lastCollected": "Last collected: {time}",
+    "status": {
+      "live": "Up to date",
+      "syncing": "Updating",
+      "stale": "Collection down",
+      "none": "No data"
+    },
+    "empty": {
+      "syncing": {
+        "title": "Fetching the new rotation",
+        "body": "Commissions changed on the hour. The new rotation will be here in a few minutes; the previous one is no longer shown, as it is no longer valid."
+      },
+      "stale": {
+        "title": "Commissions unavailable",
+        "body": "Commission collection is down: nothing has come in since {time}. Rather than show an outdated rotation, the board stays empty, and it will come back on its own once collection resumes."
+      },
+      "none": {
+        "title": "No rotation available",
+        "body": "No rotation has been collected yet. The board will appear with the first one."
+      }
+    }
   },
   "builder": {
     "weaponWedgesToggle": "Configure the weapons' Demon Wedges",

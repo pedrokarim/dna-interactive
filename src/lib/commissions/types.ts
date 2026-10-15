@@ -72,7 +72,12 @@ export type RotationMeta = {
   nextRefreshAt: string;
   /** Période nominale du cycle (ms) — le bot édite toutes les heures. */
   periodMs: number;
+  /** État de la rotation en base à l'instant du calcul, cf. `rotationFreshness`. */
+  freshness: RotationFreshness;
 };
+
+/** La rotation en base couvre-t-elle l'heure en cours ? Cf. `rotationFreshness`. */
+export type RotationFreshness = "live" | "syncing" | "stale" | "none";
 
 // --- Libellés localisés ----------------------------------------------------
 

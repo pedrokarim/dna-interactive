@@ -979,12 +979,31 @@
     "title": "Covert Commissions",
     "description": "Live-Rotation der regionalen Aufträge – Charakter, Waffe und Demon Wedge. Die Übersicht aktualisiert sich bei jedem Neuladen.",
     "nextRefresh": "Nächste Aktualisierung",
-    "lastUpdated": "Aktualisiert {time}",
     "syncing": "Synchronisierung…",
-    "fallbackNotice": "Die Rotationen sind in Kürze verfügbar.",
     "utcNote": "Aufträge wechseln zu jeder vollen Stunde; Zeiten in deiner lokalen Zeitzone.",
     "nextAt": "um {time} deiner Zeit",
-    "unavailable": "Vorübergehend nicht verfügbar"
+    "unavailable": "Vorübergehend nicht verfügbar",
+    "lastCollected": "Zuletzt erfasst: {time}",
+    "status": {
+      "live": "Aktuell",
+      "syncing": "Wird aktualisiert",
+      "stale": "Erfassung unterbrochen",
+      "none": "Keine Daten"
+    },
+    "empty": {
+      "syncing": {
+        "title": "Neue Rotation wird abgerufen",
+        "body": "Die Aufträge haben zur vollen Stunde gewechselt. Die neue Rotation kommt in wenigen Minuten; die alte wird nicht mehr angezeigt, da sie nicht mehr gilt."
+      },
+      "stale": {
+        "title": "Aufträge nicht verfügbar",
+        "body": "Die Erfassung der Aufträge ist unterbrochen: Seit {time} ist keine Rotation eingegangen. Statt einer veralteten Rotation bleibt die Tafel leer; sie kehrt von selbst zurück, sobald die Erfassung wieder läuft."
+      },
+      "none": {
+        "title": "Keine Rotation verfügbar",
+        "body": "Es wurde noch keine Rotation erfasst. Die Tafel erscheint mit der ersten."
+      }
+    }
   },
   "builder": {
     "weaponWedgesToggle": "Demon Wedges der Waffen konfigurieren",

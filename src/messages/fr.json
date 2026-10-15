@@ -979,12 +979,31 @@
     "title": "Covert Commissions",
     "description": "Rotation en direct des commissions par région – Personnage, Arme et Sceau démoniaque. Le tableau se met à jour à chaque actualisation.",
     "nextRefresh": "Prochaine actualisation",
-    "lastUpdated": "MAJ {time}",
     "syncing": "Synchronisation…",
-    "fallbackNotice": "Les rotations seront bientôt disponibles.",
     "utcNote": "Les commissions changent au début de chaque heure ; horaires affichés dans votre fuseau.",
     "nextAt": "à {time} chez vous",
-    "unavailable": "Momentanément indisponible"
+    "unavailable": "Momentanément indisponible",
+    "lastCollected": "Dernière collecte : {time}",
+    "status": {
+      "live": "À jour",
+      "syncing": "Mise à jour en cours",
+      "stale": "Collecte interrompue",
+      "none": "Aucune donnée"
+    },
+    "empty": {
+      "syncing": {
+        "title": "Nouvelle rotation en cours de récupération",
+        "body": "Les commissions ont changé à l’heure pile. La nouvelle rotation arrive dans quelques minutes ; l’ancienne n’est plus affichée, car elle n’est plus valable."
+      },
+      "stale": {
+        "title": "Commissions indisponibles",
+        "body": "La collecte des commissions est interrompue : aucune rotation reçue depuis {time}. Plutôt qu’une rotation périmée, le tableau reste vide, et il reviendra seul dès que la collecte reprendra."
+      },
+      "none": {
+        "title": "Aucune rotation disponible",
+        "body": "Aucune rotation n’a encore été collectée. Le tableau s’affichera avec la première."
+      }
+    }
   },
   "builder": {
     "weaponWedgesToggle": "Configurer les Demon Wedges des armes",
