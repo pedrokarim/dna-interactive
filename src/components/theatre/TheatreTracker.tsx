@@ -14,6 +14,7 @@ import {
   type TheatreRotationStatus,
 } from "@/lib/theatre/rotations";
 import type { TheatreFeaturedView, TheatreRotationView } from "@/lib/theatre/featured";
+import { ANNOUNCED_THEATRE_NEXT, type UpcomingCharacter } from "@/lib/characters/upcoming";
 
 export type TheatreTrackerProps = {
   rotations: TheatreRotationView[];
@@ -218,14 +219,40 @@ function ClosedNotice({ next, now }: { next: TheatreRotationView | null; now: Da
 
 /* ------------------------------------------------- précédente / prochaine */
 
-function NeighbourCard({ label, rotation, emptyTitle, emptyHint }: {
+function NeighbourCard({ label, rotation, emptyTitle, emptyHint, announced }: {
   label: string;
   rotation: TheatreRotationView | null;
   emptyTitle: string;
   emptyHint?: string;
+  /** Personnage annoncé pour cette place, faute de rotation datée. */
+  announced?: UpcomingCharacter | null;
 }) {
   const fmt = useTheatreFormats();
   const kindLabel = useKindLabel();
+  const t = useTranslations("theatre");
+
+  if (!rotation && announced) {
+    // Annoncée par le studio sans dates : on montre qui, pas quand.
+    return (
+      <DnaPanel className="flex-1 border-dashed transition-colors hover:border-line/50">
+        <SheetLink href={`/characters/${announced.slug}`} className="flex h-full items-center gap-3 p-4">
+          <span className="block h-16 w-16 shrink-0 overflow-hidden border border-line/25 bg-ink/40">
+            <FeaturedImage sources={[announced.avatar ?? null]} className="h-full w-full object-cover" />
+          </span>
+          <span className="min-w-0">
+            <DnaSectionMark size="sm">{label}</DnaSectionMark>
+            <span className="mt-1 block truncate font-display text-lg font-semibold text-parch" title={announced.name}>
+              {announced.name}
+            </span>
+            <span className="block font-sans text-xs text-muted">
+              {t("kindCharacter")} · {t("announcedNoDate")}
+            </span>
+            {emptyHint ? <span className="mt-0.5 block text-xs text-muted">{emptyHint}</span> : null}
+          </span>
+        </SheetLink>
+      </DnaPanel>
+    );
+  }
 
   if (!rotation) {
     return (
@@ -270,6 +297,7 @@ function Neighbours({ previous, current, next }: {
         rotation={next}
         emptyTitle={t("notAnnounced")}
         emptyHint={current ? t("notAnnouncedHint", { date: fmt.instant(current.endsAt) }) : undefined}
+        announced={ANNOUNCED_THEATRE_NEXT}
       />
       <NeighbourCard label={t("previous")} rotation={previous} emptyTitle={t("none")} />
     </div>
@@ -349,10 +377,37 @@ function Poster({ rotation, status, showYear, posterRef }: {
   );
 }
 
-/** Emplacement de la rotation suivante tant qu'elle n'est pas annoncée. */
+/** Emplacement de la rotation suivante tant qu'elle n'est pas datée. */
 function UnknownPoster({ switchAt }: { switchAt: string | null }) {
   const t = useTranslations("theatre");
   const fmt = useTheatreFormats();
+  const announced = ANNOUNCED_THEATRE_NEXT;
+
+  if (announced) {
+    return (
+      <li className={cn("shrink-0 snap-start", POSTER_WIDTH_CLASS)}>
+        <p className="h-5" />
+        <SheetLink
+          href={`/characters/${announced.slug}`}
+          className="dna-force-dark group relative block h-[300px] overflow-hidden border border-dashed border-line/45 bg-ink/60 transition-[border-color] duration-200 hover:border-line/70 sm:h-[340px]"
+        >
+          <FeaturedImage
+            sources={[announced.portrait ?? null, announced.avatar ?? null]}
+            className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.03]"
+          />
+          <span aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black/90 to-transparent" />
+          <StatusTag status="upcoming" />
+          <span className="absolute inset-x-0 bottom-0 p-2.5">
+            <span className="block font-display text-base font-semibold leading-tight text-white">{announced.name}</span>
+            <span className="mt-0.5 block font-caps text-[0.52rem] uppercase tracking-[0.14em] text-white/70">{t("kindCharacter")}</span>
+          </span>
+        </SheetLink>
+        <p className="mt-1.5 font-sans text-xs text-parch/85">{t("announcedNoDate")}</p>
+        {switchAt ? <p className="font-sans text-[0.68rem] text-muted tabular-nums">{t("fromDate", { date: fmt.day(switchAt) })}</p> : null}
+      </li>
+    );
+  }
+
   return (
     <li className={cn("shrink-0 snap-start", POSTER_WIDTH_CLASS)}>
       <p className="h-5" />

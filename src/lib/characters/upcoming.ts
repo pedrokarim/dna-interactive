@@ -74,6 +74,12 @@ export type UpcomingCharacter = {
    */
   portrait?: string;
   avatar?: string;
+  /**
+   * Annoncé officiellement comme prochaine récompense du théâtre immersif, sans
+   * dates. Le suivi `/theatre` l'affiche dans la case « Prochaine » tant que la
+   * vraie rotation n'est pas dans les données du jeu.
+   */
+  theatreNext?: boolean;
   /** Version de sortie telle que déclarée par le jeu (`ReleaseVersion` / 100). */
   version: string;
   versionName: string;
@@ -124,6 +130,8 @@ export const UPCOMING_CHARACTERS: UpcomingCharacter[] = [
     recommendAttr: [],
     portrait: "/assets/upcoming/rhythm-flamewrought-portrait.webp",
     avatar: "/assets/upcoming/rhythm-flamewrought-avatar.webp",
+    // PV 1.7 : « Immersive Theatre – New Character Available: Rhythm: Flamewrought ».
+    theatreNext: true,
     version: "1.7",
     versionName: "Towards the Dawn",
     bannerName: "Threads Between Reverie",
@@ -156,6 +164,9 @@ export const UPCOMING_CHARACTERS: UpcomingCharacter[] = [
 ];
 
 const bySlug = new Map(UPCOMING_CHARACTERS.map((c) => [c.slug, c] as const));
+
+/** Personnage annoncé pour la prochaine rotation du théâtre immersif, s'il y en a un. */
+export const ANNOUNCED_THEATRE_NEXT: UpcomingCharacter | null = UPCOMING_CHARACTERS.find((c) => c.theatreNext) ?? null;
 
 /** Personnage à venir correspondant au segment d'URL, ou `null`. */
 export function getUpcomingCharacter(slug: string): UpcomingCharacter | null {

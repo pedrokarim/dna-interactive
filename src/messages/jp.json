@@ -2396,6 +2396,7 @@
     "closed": "劇場は現在、ローテーションの合間です。",
     "notAnnounced": "未発表",
     "notAnnouncedHint": "切り替え予定：{date}",
+    "announcedNoDate": "発表済み・日程未定",
     "fromDate": "{date} から",
     "lengthDays": "{days}日間",
     "progressLabel": "切り替えまでの残り時間",

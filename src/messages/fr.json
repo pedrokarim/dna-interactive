@@ -2396,6 +2396,7 @@
     "closed": "Le théâtre est entre deux rotations.",
     "notAnnounced": "Non annoncée",
     "notAnnouncedHint": "Bascule prévue le {date}.",
+    "announcedNoDate": "Annoncé, dates à venir",
     "fromDate": "À partir du {date}",
     "lengthDays": "{days, plural, one {# jour} other {# jours}}",
     "progressLabel": "Temps restant avant la bascule",

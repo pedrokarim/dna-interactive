@@ -2396,6 +2396,7 @@
     "closed": "The theatre is between two rotations.",
     "notAnnounced": "Not announced",
     "notAnnouncedHint": "Switch expected on {date}.",
+    "announcedNoDate": "Announced, dates TBA",
     "fromDate": "From {date}",
     "lengthDays": "{days, plural, one {# day} other {# days}}",
     "progressLabel": "Time left before the switch",

@@ -2396,6 +2396,7 @@
     "closed": "劇場目前處於兩期輪替之間。",
     "notAnnounced": "尚未公布",
     "notAnnouncedHint": "預計於 {date} 切換。",
+    "announcedNoDate": "已公布・日期待定",
     "fromDate": "自 {date} 起",
     "lengthDays": "{days} 天",
     "progressLabel": "距離切換的剩餘時間",
