@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { NAVIGATION } from "@/lib/constants";
 import { getAllCharacters, getCharacterSlug } from "@/lib/characters/catalog";
 import { getItemCatalog } from "@/lib/items/catalog";
-import { getAllCosmetics, getBanners, getCosmeticsCatalog } from "@/lib/cosmetics/catalog";
+import { getBanners, getCosmeticsCatalog } from "@/lib/cosmetics/catalog";
 import { getAllRegions } from "@/lib/map/regions";
 import { locales } from "@/i18n/config";
 
@@ -45,6 +45,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPaths = [
     { path: "", changeFrequency: "daily" as const, priority: 1 },
     { path: NAVIGATION.map, changeFrequency: "weekly" as const, priority: 0.9 },
+    { path: NAVIGATION.calendar, changeFrequency: "daily" as const, priority: 0.8 },
+    { path: NAVIGATION.theatre, changeFrequency: "weekly" as const, priority: 0.8 },
+    { path: NAVIGATION.commissions, changeFrequency: "daily" as const, priority: 0.7 },
+    { path: NAVIGATION.features, changeFrequency: "monthly" as const, priority: 0.5 },
     { path: NAVIGATION.items, changeFrequency: "weekly" as const, priority: 0.9 },
     { path: `${NAVIGATION.items}/favoris`, changeFrequency: "weekly" as const, priority: 0.7 },
     { path: `${NAVIGATION.items}/drafts`, changeFrequency: "weekly" as const, priority: 0.8 },
@@ -104,7 +108,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
-  // Cosmétiques : accueil, catégories, bannières, puis une fiche par objet.
+  // Cosmétiques : accueil, catégories et bannières. ==Pas les fiches objet==,
+  // qui sont en `noindex` (cf. leur `generateMetadata`) : elles faisaient
+  // 6 643 des 7 224 URL du sitemap, et un sitemap doit lister ce que l'on
+  // demande d'indexer, rien d'autre.
   const cosmeticPaths = [
     { path: NAVIGATION.cosmetics, priority: 0.85, changeFrequency: "weekly" as const },
     { path: `${NAVIGATION.cosmetics}/banners`, priority: 0.8, changeFrequency: "weekly" as const },
@@ -116,11 +123,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...getBanners().map((banner) => ({
       path: `${NAVIGATION.cosmetics}/banners/${banner.id}`,
       priority: 0.7,
-      changeFrequency: "monthly" as const,
-    })),
-    ...getAllCosmetics().map((item) => ({
-      path: `${NAVIGATION.cosmetics}/${item.category}/${item.id}`,
-      priority: 0.6,
       changeFrequency: "monthly" as const,
     })),
   ];

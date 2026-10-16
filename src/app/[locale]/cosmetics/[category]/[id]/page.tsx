@@ -33,6 +33,11 @@ export async function generateMetadata(
       image: item.visuals.icon ?? undefined,
       keywords: ["Duet Night Abyss", name, item.name.EN ?? name, categoryTitle],
       type: "article",
+      // ~940 fiches × 7 langues d'une centaine de mots chacune : 92 % du
+      // sitemap. Google en explorait un échantillon et refusait tout le site
+      // (« Explorée, actuellement non indexée », accueil compris). Elles
+      // restent explorables ; les pages de catégorie portent le référencement.
+      indexable: false,
     },
     parent,
     locale,

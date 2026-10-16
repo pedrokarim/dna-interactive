@@ -54,6 +54,13 @@ export interface PageMetadataOptions {
   /** Path without locale prefix, e.g. "" for home, "/map", "/characters" */
   path?: string;
   type?: "website" | "article";
+  /**
+   * `false` émet `noindex, follow` : la page reste explorée et ses liens
+   * suivis, mais Google ne l'indexe pas. Réservé aux pages trop maigres pour
+   * tenir seules dans les résultats (cf. fiches cosmétiques), qui tirent
+   * vers le bas le jugement porté sur l'ensemble du site.
+   */
+  indexable?: boolean;
 }
 
 /**
@@ -73,6 +80,7 @@ export async function generatePageMetadata(
     dynamicOgImage = false,
     path = "",
     type = "website",
+    indexable = true,
   } = options;
 
   const currentLocale = locale ?? "fr";
@@ -173,10 +181,10 @@ export async function generatePageMetadata(
       languages,
     },
     robots: {
-      index: true,
+      index: indexable,
       follow: true,
       googleBot: {
-        index: true,
+        index: indexable,
         follow: true,
         "max-video-preview": -1,
         "max-image-preview": "large",

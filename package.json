@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "seo:indexnow": "bun scripts/indexnow.mjs",
     "start": "next start",
     "lint": "eslint",
     "extract:mods:site": "bun run research_data/extract-mods-localization.ts --verbose",
