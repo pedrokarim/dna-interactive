@@ -28,22 +28,16 @@ const nextConfig: NextConfig = {
   compress: true,
   poweredByHeader: false,
   async redirects() {
-    // Un seul hôte doit répondre en 200. L'alias de production Vercel servait
-    // tout le site en double, et l'ancien domaine (abandonné au passage à
-    // `dna.ascencia.re`, en mai 2026, sans redirection) doit transmettre ce
-    // qu'il lui reste à la nouvelle adresse dès que son DNS est rétabli. Les
-    // URL de preview (`dna-interactive-git-…`) ne sont pas concernées.
-    const legacyHosts = ['dna-interactive.vercel.app', 'dna-interactive.ascencia.re'].map(
-      (host) => ({
+    // Un seul hôte doit répondre en 200 : l'alias de production Vercel servait
+    // tout le site en double. Les URL de preview (`dna-interactive-git-…`) ne
+    // sont pas concernées.
+    return [
+      {
         source: '/:path*',
-        has: [{ type: 'host' as const, value: host }],
+        has: [{ type: 'host', value: 'dna-interactive.vercel.app' }],
         destination: 'https://dna.ascencia.re/:path*',
         permanent: true,
-      }),
-    );
-
-    return [
-      ...legacyHosts,
+      },
       {
         // `/codes` (codes de rédemption) a été retiré du site. La page était
         // indexée : on renvoie vers l'accueil de la locale plutôt que de
