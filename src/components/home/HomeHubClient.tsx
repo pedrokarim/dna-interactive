@@ -401,26 +401,6 @@ function HomeHub({
         </section>
       ) : null}
 
-      {/* =============================================== MANDATS SCELLÉS */}
-      {/* Rotation de l'heure, limitée aux régions et catégories que le visiteur
-          suit (réglage enregistré sur son compte, sinon dans un cookie). De
-          l'actualité elle aussi, qui change toutes les heures : après les
-          bannières, avant les grilles d'outils. */}
-      {commissions ? (
-        <section className="mt-10 flex flex-col gap-4">
-          <SectionRibbon
-            label={tCommissions("eyebrow")}
-            action={<Link href="/commissions" className="font-caps text-[0.6rem] uppercase tracking-[0.16em] text-gold hover:text-gold-bright">{t("viewAll")} →</Link>}
-          />
-          <HomeCommissions
-            initialState={commissions.state}
-            initialMeta={commissions.meta}
-            initialFilter={commissions.filter}
-            isAuthenticated={isAuthenticated}
-          />
-        </section>
-      ) : null}
-
       {/* =============================================== BASE DE DONNÉES */}
       <section className="mt-10 flex flex-col gap-4">
         <SectionRibbon label={t("database")} index="03" />
@@ -536,6 +516,25 @@ function HomeHub({
           <BuildShowcase />
         </div>
       </section>
+
+      {/* =============================================== MANDATS SCELLÉS */}
+      {/* Rotation de l'heure, limitée aux régions et catégories que le visiteur
+          suit (réglage enregistré sur son compte, sinon dans un cookie). En bas
+          de page, juste avant les ressources communautaires. */}
+      {commissions ? (
+        <section className="mt-10 flex flex-col gap-4">
+          <SectionRibbon
+            label={tCommissions("eyebrow")}
+            action={<Link href="/commissions" className="font-caps text-[0.6rem] uppercase tracking-[0.16em] text-gold hover:text-gold-bright">{t("viewAll")} →</Link>}
+          />
+          <HomeCommissions
+            initialState={commissions.state}
+            initialMeta={commissions.meta}
+            initialFilter={commissions.filter}
+            isAuthenticated={isAuthenticated}
+          />
+        </section>
+      ) : null}
 
       {/* =============================================== COMMUNAUTÉ & RESSOURCES */}
       {/* Mêmes cartes que /features (streamer + wiki), mais pleine largeur :
