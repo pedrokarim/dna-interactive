@@ -1003,6 +1003,21 @@
         "title": "Aucune rotation disponible",
         "body": "Aucune rotation n’a encore été collectée. Le tableau s’affichera avec la première."
       }
+    },
+    "infinite": "Commission infinie, rejouable",
+    "home": {
+      "customize": "Personnaliser",
+      "dialogTitle": "Commissions affichées",
+      "dialogIntro": "Choisis les régions et les catégories à suivre sur l’accueil. Par défaut, tout est affiché.",
+      "regions": "Régions",
+      "categories": "Catégories",
+      "reset": "Tout afficher",
+      "done": "Terminé",
+      "storedAccount": "Enregistré sur ton compte : tu retrouves ce réglage sur tous tes appareils.",
+      "storedBrowser": "Enregistré dans ce navigateur.",
+      "signInToSync": "Connecte-toi pour le retrouver partout.",
+      "saving": "Enregistrement…",
+      "saveError": "L’enregistrement sur ton compte a échoué. Le réglage reste actif dans ce navigateur."
     }
   },
   "builder": {

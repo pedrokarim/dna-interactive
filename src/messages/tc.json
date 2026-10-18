@@ -1003,6 +1003,21 @@
         "title": "沒有可用的輪替",
         "body": "尚未擷取任何輪替。看板會在第一次擷取後顯示。"
       }
+    },
+    "infinite": "無限委託，可重複挑戰",
+    "home": {
+      "customize": "自訂",
+      "dialogTitle": "顯示的委託",
+      "dialogIntro": "選擇要在首頁追蹤的地區與類別。預設顯示全部。",
+      "regions": "地區",
+      "categories": "類別",
+      "reset": "顯示全部",
+      "done": "完成",
+      "storedAccount": "已儲存至你的帳號：所有裝置都會套用此設定。",
+      "storedBrowser": "已儲存在此瀏覽器。",
+      "signInToSync": "登入即可在任何地方保留。",
+      "saving": "儲存中…",
+      "saveError": "無法儲存至你的帳號。此設定在本瀏覽器中仍然有效。"
     }
   },
   "builder": {

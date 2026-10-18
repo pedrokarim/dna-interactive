@@ -29,6 +29,9 @@ import type { FeatureBadge, FeatureKey } from "@/config/feature-badges";
 import { DISCORD_BUTTON_CLASS, DiscordIcon } from "@/components/icons/BrandIcons";
 import BannersShowcase from "@/components/cosmetics/BannersShowcase";
 import type { BannerSummaryView } from "@/lib/cosmetics/banners";
+import { HomeCommissions } from "@/components/commissions/HomeCommissions";
+import type { CommissionFilter } from "@/lib/commissions/preferences";
+import type { RotationMeta, RotationState } from "@/lib/commissions/types";
 
 export type HomeBuildCard = {
   id: string;
@@ -63,6 +66,8 @@ export type HomeHubClientProps = {
   theatreRotations: TheatreRotationView[];
   /** Horloge du serveur au rendu — premier affichage du théâtre seulement. */
   serverNow: number;
+  /** Mandats scellés : rotation et filtre du visiteur ; `null` si la page est masquée par l'admin. */
+  commissions: { state: RotationState; meta: RotationMeta; filter: CommissionFilter | null } | null;
 };
 
 /* CTA façon design system, appliqués directement sur un Link/anchor. */
@@ -242,11 +247,13 @@ function HomeHub({
   banners,
   theatreRotations,
   serverNow,
+  commissions,
 }: HomeHubClientProps) {
   const t = useTranslations("homeHub");
   const tShell = useTranslations("shell");
   const tTheatre = useTranslations("theatre");
   const tCosmetics = useTranslations("cosmetics");
+  const tCommissions = useTranslations("commissions");
   const { commissionsVisible } = useAppSettings();
   // Liste curee : elle se vide toute seule quand le personnage sort et rejoint
   // `characters.json` (cf. src/lib/characters/upcoming.ts).
@@ -391,6 +398,26 @@ function HomeHub({
             action={<Link href="/cosmetics/banners" className="font-caps text-[0.6rem] uppercase tracking-[0.16em] text-gold hover:text-gold-bright">{tCosmetics("viewAllBanners")} →</Link>}
           />
           <BannersShowcase banners={banners} />
+        </section>
+      ) : null}
+
+      {/* =============================================== MANDATS SCELLÉS */}
+      {/* Rotation de l'heure, limitée aux régions et catégories que le visiteur
+          suit (réglage enregistré sur son compte, sinon dans un cookie). De
+          l'actualité elle aussi, qui change toutes les heures : après les
+          bannières, avant les grilles d'outils. */}
+      {commissions ? (
+        <section className="mt-10 flex flex-col gap-4">
+          <SectionRibbon
+            label={tCommissions("eyebrow")}
+            action={<Link href="/commissions" className="font-caps text-[0.6rem] uppercase tracking-[0.16em] text-gold hover:text-gold-bright">{t("viewAll")} →</Link>}
+          />
+          <HomeCommissions
+            initialState={commissions.state}
+            initialMeta={commissions.meta}
+            initialFilter={commissions.filter}
+            isAuthenticated={isAuthenticated}
+          />
         </section>
       ) : null}
 

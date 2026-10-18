@@ -112,3 +112,21 @@ export const REGION_LABELS: Record<Region, string> = {
   HMT: "HMT",
   SEA: "SEA",
 };
+
+/** Libellé d'un objectif : FR sur le site français, texte de la source (EN) ailleurs. */
+export function objectiveLabel(objective: string, locale: string): string {
+  if (locale === "fr") return OBJECTIVE_FR[objective as Objective] ?? objective;
+  return objective;
+}
+
+export function categoryLabel(category: Category, locale: string): string {
+  return locale === "fr" ? CATEGORY_LABELS[category].fr : CATEGORY_LABELS[category].en;
+}
+
+/**
+ * Illustration du jeu pour chaque type d'objectif (carte du panneau des
+ * mandats, recadrée en 3:4). `null` pour un texte hors de l'ensemble connu.
+ */
+export function objectiveArt(objective: string): string | null {
+  return isKnownObjective(objective) ? `/assets/commissions/${objective.trim().toLowerCase()}.webp` : null;
+}

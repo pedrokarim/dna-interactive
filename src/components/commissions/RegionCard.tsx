@@ -1,32 +1,38 @@
-import { Gem, Sword, TriangleAlert, UserRound, type LucideIcon } from "lucide-react";
+import { TriangleAlert } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { DnaPanel } from "@/components/dna/Panel";
 import { cn } from "@/components/dna/cn";
+import { GlyphIcons } from "@/components/icons/GameGlyph";
 import {
   CATEGORIES,
-  CATEGORY_LABELS,
+  categoryLabel,
   isInfiniteObjective,
   isKnownObjective,
-  OBJECTIVE_FR,
+  objectiveArt,
+  objectiveLabel,
   REGION_LABELS,
   type Category,
-  type Objective,
   type Region,
 } from "@/lib/commissions/types";
 
-const CATEGORY_ICON: Record<Category, LucideIcon> = {
-  character: UserRound,
-  weapon: Sword,
-  demon_wedge: Gem,
+/** Glyphes du jeu : armurerie, arme de corps à corps, sceaux démoniaques (onglet Mod). */
+export const CATEGORY_ICON: Record<Category, (typeof GlyphIcons)[keyof typeof GlyphIcons]> = {
+  character: GlyphIcons.characters,
+  weapon: GlyphIcons.weapons,
+  demon_wedge: GlyphIcons.mods,
 };
 
-function objectiveLabel(obj: string, locale: string): string {
-  if (locale === "fr") return OBJECTIVE_FR[obj as Objective] ?? obj;
-  return obj;
-}
-
-function categoryLabel(cat: Category, locale: string): string {
-  return locale === "fr" ? CATEGORY_LABELS[cat].fr : CATEGORY_LABELS[cat].en;
+/** Vignette carrée de l'illustration du type d'objectif ; rien si le texte n'est pas un objectif connu. */
+export function ObjectiveThumb({ objective, className }: { objective: string; className?: string }) {
+  const art = objectiveArt(objective);
+  if (!art) return null;
+  return (
+    <span
+      aria-hidden
+      className={cn("block shrink-0 border border-white/10 bg-ink bg-cover bg-center", className)}
+      style={{ backgroundImage: `url(${art})` }}
+    />
+  );
 }
 
 function Column({
@@ -38,14 +44,14 @@ function Column({
   objectives: string[];
   locale: string;
 }) {
+  const t = useTranslations("commissions");
   const Icon = CATEGORY_ICON[category];
   const isWedge = category === "demon_wedge";
-  const infTitle =
-    locale === "fr" ? "Commission infinie — rejouable" : "Infinite commission — repeatable";
+  const infTitle = t("infinite");
   return (
     <div
       className={cn(
-        "flex flex-col gap-2 border-t border-line/15 pt-3 sm:border-l sm:border-t-0 sm:pl-3 sm:pt-0 sm:first:border-l-0 sm:first:pl-0",
+        "flex min-w-0 flex-col gap-2 border-t border-line/15 pt-3 sm:border-l sm:border-t-0 sm:pl-3 sm:pt-0 sm:first:border-l-0 sm:first:pl-0",
       )}
     >
       <div className="flex items-center gap-1.5">
@@ -67,26 +73,20 @@ function Column({
           <li
             key={`${category}-${i}`}
             className={cn(
-              "flex items-center gap-2 border px-2.5 py-1.5 text-[0.8rem]",
+              "flex min-w-0 items-center gap-2 border py-1 pl-1 pr-2.5 text-[0.8rem]",
               isWedge
                 ? "border-crimson-bright/25 bg-crimson/10 text-parch"
                 : "border-line/15 bg-ink-2/60 text-parch/90",
             )}
           >
-            <span
-              aria-hidden
-              className={cn(
-                "h-1.5 w-1.5 rotate-45",
-                isWedge ? "bg-crimson-bright/70" : "bg-gold/60",
-              )}
-            />
-            <span>{objectiveLabel(obj, locale)}</span>
+            <ObjectiveThumb objective={obj} className="h-7 w-7" />
+            <span className="min-w-0 truncate" title={objectiveLabel(obj, locale)}>{objectiveLabel(obj, locale)}</span>
             {isInfiniteObjective(obj) ? (
               <span
                 title={infTitle}
                 aria-label={infTitle}
                 className={cn(
-                  "ml-auto font-display text-lg leading-none",
+                  "ml-auto shrink-0 font-display text-lg leading-none",
                   isWedge ? "text-crimson-bright" : "text-gold-bright",
                 )}
               >

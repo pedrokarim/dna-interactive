@@ -17,6 +17,8 @@ import {
 import { getCurrentUser } from "@/lib/auth/session";
 import { resolveFeatureBadges } from "@/config/feature-badges";
 import { getBannerSummaries } from "@/lib/cosmetics/banners";
+import { getRotationForDisplay } from "@/lib/commissions";
+import { resolveCommissionFilter } from "@/lib/commissions/preferences-db";
 
 export const dynamic = "force-dynamic";
 
@@ -64,6 +66,12 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
     getTheatreSnapshot(locale),
   ]);
 
+  // Mandats scellés : rotation en cours et filtre du visiteur (compte, sinon
+  // cookie), lus ici pour que l'accueil s'affiche directement filtré.
+  const [commissionsRotation, commissionFilter] = settings.commissionsVisible
+    ? await Promise.all([getRotationForDisplay(), resolveCommissionFilter(user?.id ?? null)])
+    : [null, null];
+
   const builds: HomeBuildCard[] = topBuilds.map((b) => {
     const ch = getCharacterById(b.characterId);
     const name = ch ? resolveCharacterDisplayName(ch, langCode) ?? ch.internalName : b.characterId;
@@ -108,6 +116,11 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       banners={getBannerSummaries(langCode)}
       theatreRotations={theatre.rotations}
       serverNow={theatre.serverNow}
+      commissions={
+        commissionsRotation
+          ? { state: commissionsRotation.state, meta: commissionsRotation.meta, filter: commissionFilter }
+          : null
+      }
     />
   );
 }

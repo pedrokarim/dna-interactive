@@ -1003,6 +1003,21 @@
         "title": "No hay ninguna rotación",
         "body": "Todavía no se ha recogido ninguna rotación. El tablero aparecerá con la primera."
       }
+    },
+    "infinite": "Comisión infinita, repetible",
+    "home": {
+      "customize": "Personalizar",
+      "dialogTitle": "Comisiones mostradas",
+      "dialogIntro": "Elige las regiones y categorías que quieres seguir en la página de inicio. Por defecto se muestra todo.",
+      "regions": "Regiones",
+      "categories": "Categorías",
+      "reset": "Mostrar todo",
+      "done": "Listo",
+      "storedAccount": "Guardado en tu cuenta: encontrarás este ajuste en todos tus dispositivos.",
+      "storedBrowser": "Guardado en este navegador.",
+      "signInToSync": "Inicia sesión para conservarlo en todas partes.",
+      "saving": "Guardando…",
+      "saveError": "No se pudo guardar en tu cuenta. El ajuste sigue activo en este navegador."
     }
   },
   "builder": {

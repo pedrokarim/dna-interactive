@@ -1003,6 +1003,21 @@
         "title": "Keine Rotation verfügbar",
         "body": "Es wurde noch keine Rotation erfasst. Die Tafel erscheint mit der ersten."
       }
+    },
+    "infinite": "Endloser Auftrag, wiederholbar",
+    "home": {
+      "customize": "Anpassen",
+      "dialogTitle": "Angezeigte Aufträge",
+      "dialogIntro": "Wähle die Regionen und Kategorien, die du auf der Startseite verfolgen willst. Standardmäßig wird alles angezeigt.",
+      "regions": "Regionen",
+      "categories": "Kategorien",
+      "reset": "Alles anzeigen",
+      "done": "Fertig",
+      "storedAccount": "In deinem Konto gespeichert: Die Einstellung gilt auf all deinen Geräten.",
+      "storedBrowser": "In diesem Browser gespeichert.",
+      "signInToSync": "Melde dich an, um sie überall zu behalten.",
+      "saving": "Wird gespeichert…",
+      "saveError": "Speichern im Konto fehlgeschlagen. Die Einstellung bleibt in diesem Browser aktiv."
     }
   },
   "builder": {

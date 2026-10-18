@@ -1003,6 +1003,21 @@
         "title": "No rotation available",
         "body": "No rotation has been collected yet. The board will appear with the first one."
       }
+    },
+    "infinite": "Infinite commission, repeatable",
+    "home": {
+      "customize": "Customize",
+      "dialogTitle": "Commissions shown",
+      "dialogIntro": "Pick the regions and categories to follow on the home page. Everything is shown by default.",
+      "regions": "Regions",
+      "categories": "Categories",
+      "reset": "Show all",
+      "done": "Done",
+      "storedAccount": "Saved to your account: you'll find this setting on all your devices.",
+      "storedBrowser": "Saved in this browser.",
+      "signInToSync": "Sign in to keep it everywhere.",
+      "saving": "Saving…",
+      "saveError": "Saving to your account failed. The setting stays active in this browser."
     }
   },
   "builder": {

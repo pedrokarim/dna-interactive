@@ -648,3 +648,22 @@ export const farmRouteReports = pgTable(
     uniqueIndex("uidx_farm_route_reports_reporter").on(t.routeId, t.reporterId),
   ],
 );
+
+/** Filtre des commissions tel que stocké (miroir de `CommissionFilter`, `src/lib/commissions/preferences.ts`). */
+export type StoredCommissionFilter = {
+  regions: string[];
+  categories: string[];
+};
+
+/**
+ * Préférences d'affichage d'un compte. Une ligne par compte, une colonne par
+ * réglage : `null` = valeur par défaut. Relue et revalidée à chaque lecture,
+ * jamais recopiée telle quelle à l'écran.
+ */
+export const userPreferences = pgTable("user_preferences", {
+  userId: text("user_id")
+    .primaryKey()
+    .references(() => users.id, { onDelete: "cascade" }),
+  commissionFilter: jsonb("commission_filter").$type<StoredCommissionFilter>(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+});
