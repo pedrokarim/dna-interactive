@@ -19,6 +19,7 @@
 import mapLoaders from "@/data/maps";
 import mapIndex from "@/data/mapIndex.json";
 import type { GameMap, GameMapSummary } from "@/types/map";
+import { loadGameMap } from "./load";
 import { MAP_CATEGORY_IDS, normalizeMap, type MapCategoryId, type MapTypeGroup } from "./taxonomy";
 import { getMapLocation, type LocalizedName } from "./world";
 import { REGION_ID_BY_SLUG, getRegionSlug } from "./slugs";
@@ -110,10 +111,9 @@ export async function getRegionBySlug(slug: string): Promise<RegionDetail | null
   const id = REGION_ID_BY_SLUG[slug];
   if (!id) return null;
   const summary = getAllRegions().find((r) => r.id === id);
-  const loader = mapLoaders[id];
-  if (!loader || !summary) return null;
-
-  const data = (await loader()).default as GameMap;
+  if (!summary) return null;
+  const data = await loadGameMap(id);
+  if (!data) return null;
   const categories = categoriesOf(data);
 
   return {

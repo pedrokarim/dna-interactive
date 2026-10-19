@@ -37,7 +37,7 @@ export function SearchView({
   onLocate: (point: { x: number; y: number; key?: string; typeId?: string }) => void;
 }) {
   const t = useTranslations("map");
-  const { typeName, name } = useMapLabels();
+  const { typeName, name, titleOf } = useMapLabels();
   const [query, setQuery] = useState("");
   const [history, setHistory] = useAtom(searchHistoryAtom);
 
@@ -53,15 +53,19 @@ export function SearchView({
     const types = map.types.filter((g) => fold(typeName(g)).includes(q) || fold(g.rawName).includes(q));
     const points: { key: string; title: string; x: number; y: number; typeId?: string; icon?: string }[] = [];
     for (const g of map.types)
-      for (const p of g.points)
-        if (p.title && fold(p.title).includes(q)) points.push({ key: p.key, title: p.title, x: p.x, y: p.y, typeId: g.id, icon: g.icon });
+      for (const p of g.points) {
+        // Titre dans la langue courante, et en anglais (titre d'origine) pour qui le cherche ainsi.
+        const title = titleOf(p);
+        if (title && (fold(title).includes(q) || (p.title && fold(p.title).includes(q))))
+          points.push({ key: p.key, title, x: p.x, y: p.y, typeId: g.id, icon: g.icon });
+      }
     for (const place of map.places) {
       const label = place.name ? name(place.name) : place.title;
       if (fold(label).includes(q) || fold(place.title).includes(q))
         points.push({ key: `place:${place.title}`, title: label, x: place.x, y: place.y });
     }
     return { types, points: points.slice(0, MAX_POINT_RESULTS), more: Math.max(0, points.length - MAX_POINT_RESULTS) };
-  }, [map, query, typeName, name]);
+  }, [map, query, typeName, name, titleOf]);
 
   return (
     <div className="flex min-h-0 flex-1 flex-col">

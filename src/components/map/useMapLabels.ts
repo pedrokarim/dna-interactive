@@ -2,7 +2,7 @@
 
 import { useCallback } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { resourceName, type MapCategoryId, type MapTypeGroup } from "@/lib/map/taxonomy";
+import { pointTitle, resourceName, type MapCategoryId, type MapPoint, type MapTypeGroup } from "@/lib/map/taxonomy";
 import { getMapLocation, localized, type LocalizedName } from "@/lib/map/world";
 
 /** Libellés traduits de la carte : types, catégories, noms de zones. */
@@ -32,5 +32,8 @@ export function useMapLabels() {
     [locale],
   );
 
-  return { locale, typeName, categoryName, name, mapName };
+  /** Titre propre d'un point (lecture, événement), dans la langue courante. */
+  const titleOf = useCallback((point: MapPoint) => pointTitle(point, locale), [locale]);
+
+  return { locale, typeName, categoryName, name, mapName, titleOf };
 }

@@ -25,7 +25,7 @@ import fs from "node:fs";
 import mapIndex from "../src/data/mapIndex.json";
 import world from "../src/data/maps/world.json";
 import { normalizeMap } from "../src/lib/map/taxonomy";
-import type { GameMap } from "../src/types/map";
+import type { GameMap, GamePointsFile } from "../src/types/map";
 
 const INDEX_FILE = "src/data/maps/progress-index.json";
 const dry = process.argv.includes("--dry");
@@ -40,6 +40,9 @@ const unlistedMaps: string[] = [];
 
 for (const { id } of mapIndex) {
   const map = JSON.parse(fs.readFileSync(`src/data/maps/${id}.json`, "utf8")) as GameMap;
+  // Points tirés du jeu, fusionnés comme au chargement (`src/lib/map/load.ts`).
+  const gameFile = `src/data/maps/game/${id}.json`;
+  if (fs.existsSync(gameFile)) map.gamePoints = JSON.parse(fs.readFileSync(gameFile, "utf8")) as GamePointsFile;
   const normalized = normalizeMap(map);
   if (!listed.has(id)) unlistedMaps.push(id);
 

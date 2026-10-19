@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import mapLoaders from "@/data/maps";
+import { loadGameMap } from "@/lib/map/load";
 import type { GameMap } from "@/types/map";
 
 const mapDataCache = new Map<string, GameMap>();
@@ -21,23 +21,15 @@ export function useMapData(selectedMapId: string | null) {
       return;
     }
 
-    const loader = mapLoaders[selectedMapId];
-    if (!loader) {
-      console.error(`No map loader found for "${selectedMapId}"`);
-      setSelectedMap(null);
-      return;
-    }
-
     let cancelled = false;
     setIsLoading(true);
 
-    loader()
-      .then((module) => {
-        if (!cancelled) {
-          const data = module.default as GameMap;
-          mapDataCache.set(selectedMapId, data);
-          setSelectedMap(data);
-        }
+    loadGameMap(selectedMapId)
+      .then((data) => {
+        if (cancelled) return;
+        if (!data) console.error(`No map loader found for "${selectedMapId}"`);
+        else mapDataCache.set(selectedMapId, data);
+        setSelectedMap(data);
       })
       .catch((err) => {
         console.error(`Failed to load map data for ${selectedMapId}:`, err);

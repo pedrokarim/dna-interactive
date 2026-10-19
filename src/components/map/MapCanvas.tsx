@@ -194,8 +194,9 @@ const PointMarker = memo(function PointMarker({
   markerRefs: React.RefObject<Map<string, LeafletMarker>>;
 }) {
   const t = useTranslations("map");
-  const { typeName, categoryName } = useMapLabels();
+  const { typeName, categoryName, titleOf } = useMapLabels();
   const name = typeName(group);
+  const title = titleOf(point);
 
   return (
     <Marker
@@ -205,7 +206,7 @@ const PointMarker = memo(function PointMarker({
       }}
       position={position}
       icon={markerIcon(group.icon, found, size)}
-      title={point.title ?? name}
+      title={title ?? name}
       eventHandlers={{
         // Clic droit = trouvé / pas trouvé, sans ouvrir la popup (comme HoYoLAB).
         contextmenu: (e) => {
@@ -225,8 +226,8 @@ const PointMarker = memo(function PointMarker({
             </span>
             <div className="min-w-0">
               <p className="font-caps text-[0.5rem] uppercase tracking-[0.24em] text-gold/70">{categoryName(group.category)}</p>
-              <h3 className="font-display text-[1rem] leading-tight text-parch">{point.title ?? name}</h3>
-              {point.title && <p className="truncate font-sans text-[0.72rem] text-muted">{name}</p>}
+              <h3 className="font-display text-[1rem] leading-tight text-parch">{title ?? name}</h3>
+              {title && <p className="truncate font-sans text-[0.72rem] text-muted">{name}</p>}
             </div>
           </div>
 
@@ -239,7 +240,7 @@ const PointMarker = memo(function PointMarker({
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={point.image}
-                alt={t("pointImageAlt", { name: point.title ?? name })}
+                alt={t("pointImageAlt", { name: title ?? name })}
                 loading="lazy"
                 className="max-h-48 w-full object-contain"
               />

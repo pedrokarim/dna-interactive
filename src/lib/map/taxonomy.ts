@@ -254,8 +254,14 @@ export interface MapPoint {
   y: number;
   /** Nom propre du point pour les types fusionnés (titre du livre, de l'événement). */
   title?: string;
+  /** Même titre par langue, quand on l'a (points tirés du jeu) ; prime sur `title`. */
+  titles?: Record<string, string>;
   image?: string;
 }
+
+/** Titre d'un point dans la langue demandée. */
+export const pointTitle = (point: MapPoint, locale: string): string | undefined =>
+  point.titles?.[locale] ?? point.titles?.en ?? point.title;
 
 export interface MapTypeGroup {
   /** Id canonique, ou `raw:<nom>` pour un type boarhat encore inconnu. */
@@ -365,6 +371,34 @@ export function normalizeMap(map: GameMap): NormalizedMap {
   for (const group of groups.values()) {
     const seen = new Set<string>();
     group.points = group.points.filter((p) => (seen.has(p.key) ? false : (seen.add(p.key), true)));
+  }
+
+  // Points que le relevé boarhat n'a pas : déjà rangés dans un type canonique,
+  // avec leur propre clé (`<carte>-game-…`), distincte de toutes les clés boarhat.
+  const extra = map.gamePoints;
+  for (const gp of extra?.points ?? []) {
+    const canonical = TYPE_BY_ID.get(gp.t);
+    if (!canonical) continue;
+    let group = groups.get(canonical.id);
+    if (!group) {
+      group = {
+        id: canonical.id,
+        category: canonical.category,
+        tracked: canonical.tracked,
+        icon: resourceIcon(canonical.resourceIds) ?? extra?.icons[gp.t] ?? "",
+        messageKey: canonical.messageKey,
+        resourceIds: canonical.resourceIds,
+        rawName: canonical.id,
+        points: [],
+      };
+      groups.set(canonical.id, group);
+    }
+    group.points.push({
+      key: gp.k,
+      x: gp.x,
+      y: gp.y,
+      ...(gp.titles ? { title: gp.titles.en, titles: gp.titles } : {}),
+    });
   }
 
   return {
