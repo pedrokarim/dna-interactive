@@ -113,19 +113,19 @@
     ],
     "team": [
       {
-        "characterId": "char-nifu",
+        "characterId": "char-eve",
         "role": "DPS",
         "note": {
-          "FR": "DPS principal. Profite du buff Degats de competence de Fushu.",
-          "EN": "Main DPS. Benefits from Fushu's Skill DMG buff."
+          "FR": "DPS principale. Ses dégâts de compétence profitent pleinement du buff de Fushu.",
+          "EN": "Main DPS. Her Skill DMG fully benefits from Fushu's buff."
         }
       },
       {
-        "characterId": "char-zhangyu",
+        "characterId": "char-feina",
         "role": "Support",
         "note": {
-          "FR": "Second support. Buffs et soutien supplementaire.",
-          "EN": "Second support. Additional buffs and sustain."
+          "FR": "Second support. Bonus de dégâts et Pénétration.",
+          "EN": "Second support. Damage buffs and PEN."
         }
       }
     ],
@@ -312,19 +312,19 @@
     ],
     "team": [
       {
-        "characterId": "char-nifu",
+        "characterId": "char-eve",
         "role": "DPS",
         "note": {
-          "FR": "DPS principal. Profite du buff Degats de competence de Fushu.",
-          "EN": "Main DPS. Benefits from Fushu's Skill DMG buff."
+          "FR": "DPS principale. Ses dégâts de compétence profitent pleinement du buff de Fushu.",
+          "EN": "Main DPS. Her Skill DMG fully benefits from Fushu's buff."
         }
       },
       {
-        "characterId": "char-zhangyu",
+        "characterId": "char-feina",
         "role": "Support",
         "note": {
-          "FR": "Second support. Buffs et soutien supplementaire.",
-          "EN": "Second support. Additional buffs and sustain."
+          "FR": "Second support. Bonus de dégâts et Pénétration.",
+          "EN": "Second support. Damage buffs and PEN."
         }
       }
     ],

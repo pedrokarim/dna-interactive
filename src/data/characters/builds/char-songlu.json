@@ -321,25 +321,25 @@
     ],
     "team": [
       {
-        "characterId": "char-saiqi",
+        "characterId": "char-falu",
         "role": "DPS",
         "note": {
-          "FR": "DPS principal Anemo. Profite pleinement des buffs de Tenacite et des soins de Truffle.",
-          "EN": "Main Anemo DPS. Fully benefits from Truffle's Resolve buffs and healing."
+          "FR": "DPS principale. Draine ses propres PV et profite pleinement des buffs de Ténacité de Truffle.",
+          "EN": "Main DPS. Drains her own HP and fully benefits from Truffle's Resolve buffs."
         }
       },
       {
-        "characterId": "char-feina",
-        "role": "Support",
+        "characterId": "char-kami",
+        "role": "Sub-DPS",
         "note": {
-          "FR": "Second support avec buffs offensifs et restauration de Lucidite.",
-          "EN": "Second support with offensive buffs and Sanity restoration."
+          "FR": "Sous-DPS Pyro. Avec Falsi, deux personnages Pyro activent le buff passif de Ténacité.",
+          "EN": "Pyro Sub-DPS. With Falsi, two Pyro characters activate the passive Resolve buff."
         }
       }
     ],
     "genimon": [
       {
-        "itemId": "genimon-4251",
+        "itemId": "genimon-4231",
         "rank": "best",
         "traits": [
           "UI_PetEntry_Title12",
@@ -349,7 +349,7 @@
         ]
       },
       {
-        "itemId": "genimon-4051",
+        "itemId": "genimon-4031",
         "rank": "alternative",
         "traits": [
           "UI_PetEntry_Title12",
@@ -358,7 +358,7 @@
         ]
       },
       {
-        "itemId": "genimon-4151",
+        "itemId": "genimon-4131",
         "rank": "alternative",
         "traits": [
           "UI_PetEntry_Title12",

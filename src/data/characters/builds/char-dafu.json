@@ -147,7 +147,7 @@
     ],
     "genimon": [
       {
-        "itemId": "genimon-4251",
+        "itemId": "genimon-4261",
         "rank": "best",
         "traits": [
           "UI_PetEntry_Title21",
@@ -155,7 +155,7 @@
         ]
       },
       {
-        "itemId": "genimon-4051",
+        "itemId": "genimon-4161",
         "rank": "alternative",
         "traits": [
           "UI_PetEntry_Title21",
@@ -163,7 +163,7 @@
         ]
       },
       {
-        "itemId": "genimon-4151",
+        "itemId": "genimon-4061",
         "rank": "alternative",
         "traits": [
           "UI_PetEntry_Title21",

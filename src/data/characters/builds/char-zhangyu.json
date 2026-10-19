@@ -133,7 +133,7 @@
         ]
       },
       {
-        "itemId": "genimon-4221",
+        "itemId": "genimon-4161",
         "rank": "alternative",
         "traits": [
           "UI_PetEntry_Title21",
@@ -143,7 +143,7 @@
         ]
       },
       {
-        "itemId": "genimon-4021",
+        "itemId": "genimon-4061",
         "rank": "alternative",
         "traits": [
           "UI_PetEntry_Title21",
@@ -298,11 +298,11 @@
     ],
     "team": [
       {
-        "characterId": "char-nifu",
+        "characterId": "char-eve",
         "role": "DPS",
         "note": {
-          "FR": "DPS principal.",
-          "EN": "Main DPS."
+          "FR": "DPS principale. Ses dégâts viennent des compétences, et chaque Ultime de Tabethe déclenche son passif.",
+          "EN": "Main DPS. Her damage comes from skills, and each of Tabethe's Ultimates procs her passive."
         }
       },
       {
@@ -316,7 +316,7 @@
     ],
     "genimon": [
       {
-        "itemId": "genimon-4261",
+        "itemId": "genimon-4221",
         "rank": "best",
         "traits": [
           "UI_PetEntry_Title21",
@@ -326,7 +326,7 @@
         ]
       },
       {
-        "itemId": "genimon-4221",
+        "itemId": "genimon-4121",
         "rank": "alternative",
         "traits": [
           "UI_PetEntry_Title21",

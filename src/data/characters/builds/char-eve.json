@@ -330,6 +330,15 @@
         ]
       },
       {
+        "itemId": "genimon-4121",
+        "rank": "alternative",
+        "traits": [
+          "UI_PetEntry_Title20",
+          "UI_PetEntry_Title10",
+          "UI_PetEntry_Title22"
+        ]
+      },
+      {
         "itemId": "genimon-4021",
         "rank": "alternative",
         "traits": [
@@ -761,6 +770,15 @@
       {
         "itemId": "genimon-4221",
         "rank": "best",
+        "traits": [
+          "UI_PetEntry_Title20",
+          "UI_PetEntry_Title10",
+          "UI_PetEntry_Title22"
+        ]
+      },
+      {
+        "itemId": "genimon-4121",
+        "rank": "alternative",
         "traits": [
           "UI_PetEntry_Title20",
           "UI_PetEntry_Title10",
