@@ -1,7 +1,7 @@
 # Suivi de vérification des builds
 
 **Avancement : 32 / 32 personnages vérifiés.**
-Première vérification : 2026-10-08 · dernière : 2026-10-10.
+Première vérification : 2026-10-08 · dernière : 2026-10-19.
 
 Généré par `node scripts/verif-build.mjs --mark <id> <source>`. Ne pas éditer à la main.
 
@@ -26,7 +26,7 @@ plus ancien.
 | 12 | Lisbell | Lumino | — | ✅ 2026-10-08 | 561246 | Fiche du 05/10 : build I7 conforme case par case (5 Track-Shift). La fiche ne liste plus d armes. |
 | 13 | Fina | Lumino | — | ✅ 2026-10-08 | 561245 | Fiche du 06/10 : soutien Vigueur a 5 Track-Shift (cases 1-5) ; build DPS ajoute (7 Track-Shift). Soutien de base laisse sans piste : pieces non listees sur la fiche. |
 | 14 | Psyche | Anemo | — | ✅ 2026-10-08 | 560797 | Fiche du 05/10 : fin de jeu reecrit (6 pieces, 7 Track-Shift) ; milieu de jeu a 4 Track-Shift (cases 1-4), Excresduo 1er choix distance. |
-| 15 | Fushu | Hydro | — | ✅ 2026-10-08 | 562197 | Fiche du 05/10 : fin de jeu, case 7 = Blaze Morale avec module (7 Track-Shift) ; debut-milieu conforme. |
+| 15 | Fushu | Hydro | — | ✅ 2026-10-19 | 562197 | Fiche du 05/10 inchangee : deux builds conformes (pieces, centres, pistes 7 et 2, armes). Arme signature 571226 conforme (4 Track-Shift, cases 1-4). |
 | 16 | Truffle and Filbert | Anemo | — | ✅ 2026-10-08 | 560798 | Fiche du 05/10 : pieces et pistes conformes sur les 2 builds ; Perpetual Strife 1er choix melee, Wanewraith ajoutee. |
 | 17 | Rebecca | Hydro | — | ✅ 2026-10-08 | 560789 | Fiche du 05/10 : fin de jeu a 6 Track-Shift (cases 1-6) + centre ajuste, Perpetual Strife et The Best Day 1ers choix ; debut-milieu reordonne, 8 Track-Shift. |
 | 18 | Lynn | Pyro | — | ✅ 2026-10-08 | 560793 | Fiche du 05/10 : 8 Track-Shift sur les 2 builds ; Excresduo 1er choix distance en debut-milieu. Cases 6-8 non retouchees : la fiche les nomme Blaze Volition, nom absent du catalogue Pyro. |

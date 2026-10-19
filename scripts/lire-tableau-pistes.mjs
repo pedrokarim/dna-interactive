@@ -22,11 +22,13 @@ const html = await (await fetch(url, { headers: { "User-Agent": "Mozilla/5.0" } 
 const tables = [];
 let from = 0;
 for (;;) {
-  const i = html.indexOf("Track Adjustments", from);
+  // L'intitulé varie : « Track Adjustments for Demon Wedge Slots » ou « Track Adjustment Slots ».
+  const i = html.indexOf("Track Adjustment", from);
   if (i === -1) break;
   const end = html.indexOf("</table>", i);
   tables.push(html.slice(i, end === -1 ? i + 4000 : end));
-  from = i + 1;
+  // Reprendre après le tableau : certains en-têtes portent les deux intitulés.
+  from = end === -1 ? i + 1 : end;
 }
 
 if (!tables.length) {
