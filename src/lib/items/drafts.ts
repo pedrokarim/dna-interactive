@@ -1,5 +1,5 @@
 import draftsRecipesJson from "@/data/items/drafts.recipes.json";
-import { FROZEN_LANGUAGES, isWorkingLabel } from "@/lib/items/frozen-languages";
+import { isWorkingLabel } from "@/lib/items/frozen-languages";
 import { getOfficialDescription } from "@/lib/items/official-texts";
 
 const UNRESOLVED_KEY_PATTERN = /^[A-Z][A-Z0-9_]*_\d+$/;
@@ -74,14 +74,14 @@ const rawDraftRecipes = draftsRecipesJson as unknown as DraftRecipeRecord[];
 
 /**
  * Les plans recopient le nom et la description de leur produit : même
- * correction DE/ES que le catalogue (`src/lib/items/catalog.ts`).
+ * correction des libellés de travail que le catalogue (`src/lib/items/catalog.ts`).
  */
 function sanitizeDraftReference(reference: DraftItemReference): DraftItemReference {
   const englishName = reference.names.EN;
   const names = { ...reference.names };
   const descriptions = { ...reference.descriptions };
-  for (const language of FROZEN_LANGUAGES) {
-    if (!isWorkingLabel(names[language], englishName)) continue;
+  for (const language of Object.keys(names)) {
+    if (language === "EN" || !isWorkingLabel(names[language], englishName)) continue;
     names[language] = englishName;
     descriptions[language] = reference.descriptions.EN ?? null;
   }

@@ -20,12 +20,13 @@ export function isStaleKey(key: string | null): boolean {
 
 /**
  * Libellé de travail jamais retraduit : les armes de calamité naissent sous le
- * nom d'une arme de départ en métal (« Metallschwert », « Espada Metálica ») et
- * DE/ES ne reçoivent pas leur vrai nom, même quand l'anglais l'avait déjà dans
- * le même pak. Un nom « métal » en DE/ES face à un nom anglais qui ne l'est pas
- * trahit ce cas ; la description qui l'accompagne est celle de l'arme en métal.
+ * nom d'une arme de départ en métal (« Metallschwert », « Espada Metálica »,
+ * « メタルブレード ») et certaines langues ne reçoivent pas leur vrai nom, même
+ * quand l'anglais l'a déjà. Le japonais, pourtant toujours livré, en garde un en
+ * 1.7. Un nom « métal » face à un nom anglais qui ne l'est pas trahit ce cas ; la
+ * description qui l'accompagne est celle de l'arme en métal.
  */
-const WORKING_LABEL_PATTERN = /metall|met[aá]lic/i;
+const WORKING_LABEL_PATTERN = /metall|m[ée]tal|met[aá]lic|メタル|金属|金屬|금속|메탈/i;
 
 export function isWorkingLabel(name: string | null | undefined, englishName: string | null | undefined): boolean {
   return name != null && englishName != null && WORKING_LABEL_PATTERN.test(name) && !/metal/i.test(englishName);

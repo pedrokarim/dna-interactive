@@ -40,8 +40,9 @@ function isUnresolvedText(text: string | null, key: string | null): boolean {
 
 /**
  * Corrige les textes que le jeu livre faux ou pas du tout :
- * - DE/ES périmés ou restés en libellé de travail → l'anglais actuel, plutôt
- *   qu'un nom provisoire ou une valeur d'effet d'une ancienne version ;
+ * - DE/ES périmés → l'anglais actuel, plutôt qu'une valeur d'effet ou un nom
+ *   d'une ancienne version ;
+ * - nom resté en libellé de travail, quelle que soit la langue → l'anglais ;
  * - description restée en clé brute → texte officiel publié, sinon rien.
  */
 function sanitizeTranslations(item: ItemRecord): ItemRecord["translations"] {
@@ -56,10 +57,10 @@ function sanitizeTranslations(item: ItemRecord): ItemRecord["translations"] {
       if (isStaleKey(passiveEffectsDescKey)) {
         next.passiveEffectsDescription = english.passiveEffectsDescription;
       }
-      if (isWorkingLabel(content.modName, english.modName)) {
-        next.modName = english.modName;
-        next.description = english.description;
-      }
+    }
+    if (english && language !== "EN" && isWorkingLabel(content.modName, english.modName)) {
+      next.modName = english.modName;
+      next.description = english.description;
     }
     if (isUnresolvedText(next.description, descriptionKey)) {
       next.description = getOfficialDescription(item.id, language);
