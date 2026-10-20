@@ -85,7 +85,7 @@ const CTA_GHOST = cn(
 // Portrait décoratif de la carte d'accueil. À la sortie d'un nouveau personnage,
 // seule cette source doit changer après génération depuis son avatar officiel.
 const HOME_FEATURED_AVATAR = {
-  src: "/assets/home/featured-avatar-falsi.png",
+  src: "/assets/home/featured-avatar-rhythm-flamewrought.png",
   width: 1254,
   height: 1254,
 } as const;
