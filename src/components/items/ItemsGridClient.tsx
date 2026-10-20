@@ -21,7 +21,7 @@ import {
   normalizeLanguageCodes,
   visitorGridLanguages,
 } from "@/lib/items/catalog";
-import { isModReleaseVersionRecent } from "@/lib/items/new-releases";
+import { isItemRecent } from "@/lib/items/new-releases";
 import { isCalamityWeapon } from "@/lib/items/calamity-weapons";
 import { getUpcomingVersion } from "@/lib/items/upcoming";
 import { resolveItemRarity } from "@/lib/items/rarity";
@@ -45,6 +45,7 @@ import { useListViewMode } from "@/components/list/useListViewMode";
 import { DnaPanel } from "@/components/dna/Panel";
 import { DnaCornerBrackets } from "@/components/dna/CornerBrackets";
 import { DnaItemIcon, ITEM_FALLBACK_ICON } from "@/components/dna/ItemIcon";
+import { DnaNouveau } from "@/components/dna/Badges";
 import { useDialogA11y } from "@/components/dna/useDialogA11y";
 
 import { useFilterAnalytics } from "@/lib/use-filter-analytics";
@@ -529,7 +530,7 @@ export default function ItemsGridClient({
           return false;
         }
 
-        if (newFilter === "newOnly" && !isModReleaseVersionRecent(item.stats.releaseVersion)) {
+        if (newFilter === "newOnly" && !isItemRecent(item)) {
           return false;
         }
 
@@ -987,25 +988,23 @@ export default function ItemsGridClient({
             </div>
           )}
 
-          {isModsCategory && (
-            <div className="rounded-sm border border-white/10 bg-ink/60 p-2">
-              <div className="mb-1 text-xs text-muted">{t('newBadge')}</div>
-              <select
-                value={newFilter}
-                onChange={(event) => {
-                  updateQueryFilters({
-                    new: event.target.value as NewFilter,
-                    page: 1,
-                  });
-                }}
-                aria-label={t('newBadge')}
-                className="w-full rounded-sm border border-white/10 bg-panel px-2 py-1.5 text-sm text-parch"
-              >
-                <option value="all">{tc('all')}</option>
-                <option value="newOnly">{t('newOnly')}</option>
-              </select>
-            </div>
-          )}
+          <div className="rounded-sm border border-white/10 bg-ink/60 p-2">
+            <div className="mb-1 text-xs text-muted">{t('newBadge')}</div>
+            <select
+              value={newFilter}
+              onChange={(event) => {
+                updateQueryFilters({
+                  new: event.target.value as NewFilter,
+                  page: 1,
+                });
+              }}
+              aria-label={t('newBadge')}
+              className="w-full rounded-sm border border-white/10 bg-panel px-2 py-1.5 text-sm text-parch"
+            >
+              <option value="all">{tc('all')}</option>
+              <option value="newOnly">{t('newOnly')}</option>
+            </select>
+          </div>
 
           {itemTypeOptions.length > 0 && (
             <div className="rounded-sm border border-white/10 bg-ink/60 p-2">
@@ -1218,7 +1217,7 @@ export default function ItemsGridClient({
           </p>
         </DnaPanel>
       ) : viewMode === "detailed" ? (
-        <section className="grid gap-3 md:gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <section className="grid grid-cols-[minmax(0,1fr)] gap-3 md:gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {paginatedItems.map((item) => {
             const lead = getItemTranslation(
               item,
@@ -1229,7 +1228,7 @@ export default function ItemsGridClient({
             const iconSrc = item.icon.publicPath ?? item.icon.placeholderPath ?? ITEM_FALLBACK_ICON;
             const favoriteKey = toFavoriteKey(category.id, item.id);
             const isFavorite = favoriteItems.has(favoriteKey);
-            const isNew = isModsCategory && isModReleaseVersionRecent(item.stats.releaseVersion);
+            const isNew = isItemRecent(item);
             const isCalamity = isCalamityWeapon(item);
             const upcomingVersion = getUpcomingVersion(item.stats.releaseVersion);
             const rarity = resolveItemRarity(item);
@@ -1239,7 +1238,7 @@ export default function ItemsGridClient({
                 key={item.id}
                 href={`/items/${category.slug}/${item.id}`}
                 data-rarity={rarityAttr(rarity)}
-                className={`group relative border bg-panel/85 p-3 md:p-4 backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-panel/95 ${
+                className={`group relative min-w-0 border bg-panel/85 p-3 md:p-4 backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-panel/95 ${
                   isCalamity
                     ? "border-crimson-bright/40 hover:border-crimson-bright/60"
                     : "border-line/25 hover:border-gold/40"
@@ -1290,11 +1289,7 @@ export default function ItemsGridClient({
                           {tc("upcomingBadge", { version: upcomingVersion })}
                         </span>
                       ) : null}
-                      {isNew ? (
-                        <span className="rounded-sm bg-gold/15 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-gold ring-1 ring-gold/40">
-                          {t('newBadge')}
-                        </span>
-                      ) : null}
+                      {isNew ? <DnaNouveau>{t('newBadge')}</DnaNouveau> : null}
                       {isCalamity ? (
                         <span className="inline-flex items-center gap-1 rounded-sm bg-crimson/15 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-crimson-bright ring-1 ring-crimson-bright/40">
                           <Flame className="h-3 w-3" />
@@ -1431,6 +1426,7 @@ export default function ItemsGridClient({
                 : lead.modName
               : `${category.displayName} ${item.modId}`;
             const isCalamity = isCalamityWeapon(item);
+            const isNew = isItemRecent(item);
             const upcomingVersion = getUpcomingVersion(item.stats.releaseVersion);
             const rarity = resolveItemRarity(item);
 
@@ -1488,6 +1484,7 @@ export default function ItemsGridClient({
                       </span>
                     </h3>
                     <div className="mt-1 flex flex-wrap items-center gap-1.5 text-[11px]">
+                      {isNew ? <DnaNouveau>{t('newBadge')}</DnaNouveau> : null}
                       {upcomingVersion ? (
                         <span
                           className="inline-flex items-center gap-1 rounded-sm border border-hydro/40 bg-hydro/10 px-2 py-0.5 font-semibold uppercase tracking-wider text-hydro"
@@ -1572,6 +1569,7 @@ export default function ItemsGridClient({
                 : lead.modName
               : `${category.displayName} ${item.modId}`;
             const isCalamity = isCalamityWeapon(item);
+            const isNew = isItemRecent(item);
             const upcomingVersion = getUpcomingVersion(item.stats.releaseVersion);
             const rarity = resolveItemRarity(item);
 
@@ -1592,8 +1590,19 @@ export default function ItemsGridClient({
                     loading="lazy"
                     className="max-h-full max-w-full object-contain transition-transform duration-200 group-hover:scale-105"
                   />
+                  {isNew ? (
+                    // `font-caps` pose `position: relative` sur le badge : le placement absolu va au parent.
+                    <span className="absolute left-0 top-0 z-10 flex">
+                      <DnaNouveau>{t('newBadge')}</DnaNouveau>
+                    </span>
+                  ) : null}
                   {elementalAffinity?.iconSrc ? (
-                    <span className="absolute left-0 top-0 inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/15 bg-ink/70 backdrop-blur-sm">
+                    <span
+                      className={cn(
+                        "absolute left-0 inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/15 bg-ink/70 backdrop-blur-sm",
+                        isNew ? "top-5" : "top-0",
+                      )}
+                    >
                       <img
                         src={elementalAffinity.iconSrc}
                         alt={elementalAffinity.label}
