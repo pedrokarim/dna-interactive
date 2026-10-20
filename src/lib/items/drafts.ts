@@ -1,4 +1,8 @@
 import draftsRecipesJson from "@/data/items/drafts.recipes.json";
+import { FROZEN_LANGUAGES, isWorkingLabel } from "@/lib/items/frozen-languages";
+import { getOfficialDescription } from "@/lib/items/official-texts";
+
+const UNRESOLVED_KEY_PATTERN = /^[A-Z][A-Z0-9_]*_\d+$/;
 
 export type DraftItemSourceCategory =
   | "mods"
@@ -68,7 +72,35 @@ export interface DraftRecipeSummary {
 
 const rawDraftRecipes = draftsRecipesJson as unknown as DraftRecipeRecord[];
 
-const draftRecipes = rawDraftRecipes.slice().sort((a, b) => a.draftId - b.draftId);
+/**
+ * Les plans recopient le nom et la description de leur produit : même
+ * correction DE/ES que le catalogue (`src/lib/items/catalog.ts`).
+ */
+function sanitizeDraftReference(reference: DraftItemReference): DraftItemReference {
+  const englishName = reference.names.EN;
+  const names = { ...reference.names };
+  const descriptions = { ...reference.descriptions };
+  for (const language of FROZEN_LANGUAGES) {
+    if (!isWorkingLabel(names[language], englishName)) continue;
+    names[language] = englishName;
+    descriptions[language] = reference.descriptions.EN ?? null;
+  }
+  // Clé de TextMap restée brute (`UI_WEAPON_DESC_10399`) : le jeu n'a pas livré le texte.
+  for (const [language, description] of Object.entries(descriptions)) {
+    if (description == null || !UNRESOLVED_KEY_PATTERN.test(description)) continue;
+    descriptions[language] =
+      reference.sourceCategory === "weapons" ? getOfficialDescription(`weapons-${reference.id}`, language) : null;
+  }
+  return { ...reference, names, descriptions };
+}
+
+const draftRecipes = rawDraftRecipes
+  .map((recipe) => ({
+    ...recipe,
+    product: sanitizeDraftReference(recipe.product),
+    ingredients: recipe.ingredients.map(sanitizeDraftReference),
+  }))
+  .sort((a, b) => a.draftId - b.draftId);
 
 const draftRecipesById = new Map<number, DraftRecipeRecord>();
 for (const recipe of draftRecipes) {

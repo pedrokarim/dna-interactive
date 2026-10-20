@@ -5,6 +5,8 @@ import modsItemsJson from "@/data/items/mods.items.json";
 import resourcesItemsJson from "@/data/items/resources.items.json";
 import weaponsItemsJson from "@/data/items/weapons.items.json";
 import { LANGUAGE_LABELS } from "@/i18n/config";
+import { FROZEN_LANGUAGES, isStaleKey, isWorkingLabel } from "@/lib/items/frozen-languages";
+import { getOfficialDescription } from "@/lib/items/official-texts";
 import type {
   ItemCatalog,
   ItemCategory,
@@ -29,6 +31,42 @@ function sanitizeItemFields(fields: ItemRecord["fields"]): ItemRecord["fields"] 
     sanitized[fieldKey] = fieldValue;
   }
   return sanitized;
+}
+
+/** Une clé de TextMap restée telle quelle : le jeu n'a pas livré le texte. */
+function isUnresolvedText(text: string | null, key: string | null): boolean {
+  return text != null && key != null && text === key;
+}
+
+/**
+ * Corrige les textes que le jeu livre faux ou pas du tout :
+ * - DE/ES périmés ou restés en libellé de travail → l'anglais actuel, plutôt
+ *   qu'un nom provisoire ou une valeur d'effet d'une ancienne version ;
+ * - description restée en clé brute → texte officiel publié, sinon rien.
+ */
+function sanitizeTranslations(item: ItemRecord): ItemRecord["translations"] {
+  const english = item.translations.EN;
+  const { modNameKey, descriptionKey, passiveEffectsDescKey } = item.textKeys;
+  const translations: ItemRecord["translations"] = {};
+  for (const [language, content] of Object.entries(item.translations)) {
+    const next = { ...content };
+    if (english && FROZEN_LANGUAGES.includes(language)) {
+      if (isStaleKey(modNameKey)) next.modName = english.modName;
+      if (isStaleKey(descriptionKey)) next.description = english.description;
+      if (isStaleKey(passiveEffectsDescKey)) {
+        next.passiveEffectsDescription = english.passiveEffectsDescription;
+      }
+      if (isWorkingLabel(content.modName, english.modName)) {
+        next.modName = english.modName;
+        next.description = english.description;
+      }
+    }
+    if (isUnresolvedText(next.description, descriptionKey)) {
+      next.description = getOfficialDescription(item.id, language);
+    }
+    translations[language] = next;
+  }
+  return translations;
 }
 
 function sanitizeItemRecord(item: ItemRecord): ItemRecord {
@@ -60,6 +98,7 @@ function sanitizeItemRecord(item: ItemRecord): ItemRecord {
       ...item.typeCompatibility,
       tags: safeTypeCompatibilityTags,
     },
+    translations: sanitizeTranslations(item),
     fields: sanitizeItemFields(item.fields),
   };
 }
