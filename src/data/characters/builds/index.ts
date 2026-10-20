@@ -27,6 +27,7 @@ import charSuyi from "./char-suyi.json";
 import charKami from "./char-kami.json";
 import charFuluo from "./char-fuluo.json";
 import charXier from "./char-xier.json";
+import charSplise from "./char-splise.json";
 // Protagonistes multi-éléments : chaque entrée de build porte un champ
 // `element` ("Dark", "Light"…) ; la fiche n'affiche que les builds de
 // l'élément actif (cf. activeBuilds dans CharacterDetailClient).
@@ -39,6 +40,7 @@ import charProtagonistMale from "./char-protagonist-male.json";
 // 2. Add ...charXxx to the array below
 
 export const allBuilds = [
+  ...charSplise,
   ...charFalu,
   ...charWeitaf,
   ...charWeitam,

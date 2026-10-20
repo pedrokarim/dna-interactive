@@ -1,0 +1,209 @@
+[
+  {
+    "characterId": "char-splise",
+    "buildName": {
+      "FR": "DPS Compétence Électro",
+      "EN": "Electro Skill DPS"
+    },
+    "weapons": {
+      "melee": [
+        {
+          "itemId": "weapons-10199",
+          "rank": "best",
+          "potentialOrder": [
+            10199001,
+            10199002,
+            10199004,
+            10199006,
+            10199008,
+            10199010
+          ],
+          "note": {
+            "FR": "Arme de calamité taillée pour elle : son Plan s'achète au Memento du théâtre immersif à partir du 10 novembre. L'épée fait partie de ses prédilections, ses Potentiels s'activent donc. Chemin conseillé, toute la branche Insoluble : Aspiration, parce que Synergie électrique consomme du Désordre Électro à chaque Balle de précision renforcée ; Puissance, ses dégâts étant tous des dégâts de compétence ; Réponse, car 30 cumuls de Concentration donnent +120 % de Vitesse de compétence et les cumuls de [Recherche] font passer le seuil de 220 % ; Perforation plutôt que la Vigueur, que son intron IV fournit déjà. Inconnu, qui génère de la calamité à chaque dégât de compétence, est le premier Potentiel à racheter.",
+            "EN": "Calamity weapon tailor-made for her: its Blueprint is sold at the Memento in the Immersive Theatre from November 10. Swords are one of her proficiencies, so its Potentials activate. Recommended path, the whole Endless branch: Desire, because Electro Coordination consumes Electro Disruption with every Electrified Sniper Bullet; Might, since all her damage is Skill DMG; Answer, as 30 Steady Aim stacks give +120% Skill Speed and [Inquiry] stacks push her past the 220% threshold; Pierce over Morale, which her Intron IV already provides. Obscurity, which builds Calamity on every Skill DMG hit, is the first Potential to buy back."
+          }
+        },
+        {
+          "itemId": "weapons-10304",
+          "rank": "alternative",
+          "note": {
+            "FR": "Le meilleur choix en attendant Énigme insoluble : Vigueur +30 %, et +50 % de Puissance de compétence (jusqu'à 3 cumuls) quand un personnage Électro utilise son Ultime. C'est un espadon, hors de ses prédilections : débloquer l'espadon en maîtrise supplémentaire pour récupérer les +20 % d'ATQ.",
+            "EN": "The best pick until Endless Enigma arrives: Morale +30%, and +50% Skill Intensity (up to 3 stacks) when an Electro character uses their Ultimate. It is a Greatsword, outside her proficiencies: unlock Greatsword as her additional proficiency to get the +20% ATK back."
+          }
+        },
+        {
+          "itemId": "weapons-10107",
+          "rank": "alternative",
+          "note": {
+            "FR": "Vigueur +30 % : à prendre pour cette seule statistique si Adieu éternel manque. Son effet ne sert qu'aux personnages Umbro.",
+            "EN": "Morale +30%: worth it for that stat alone if Eternal Farewell is unavailable. Its effect only helps Umbro characters."
+          }
+        }
+      ],
+      "ranged": [
+        {
+          "itemId": "weapons-20306",
+          "rank": "best",
+          "note": {
+            "FR": "Arme signature : DGT CRIT +125 %, et +150 % de Puissance de compétence quand un personnage Électro tire. Son passif Perfectionnement technique augmente les dégâts du Fusil de précision et des Fusils électriques selon le Taux CRIT et les DGT CRIT de son arme à distance : le critique de cette arme compte double.",
+            "EN": "Signature weapon: CRIT Damage +125%, and +150% Skill Intensity while an Electro character is shooting. Her Honed Technique passive raises Arcshot and Volt Rifle damage based on her ranged weapon's CRIT Chance and CRIT Damage: this weapon's crit counts twice."
+          }
+        },
+        {
+          "itemId": "weapons-20304",
+          "rank": "alternative",
+          "note": {
+            "FR": "DGT CRIT +125 % elle aussi : l'arme d'attente tant que Le poids de vivre n'est pas forgée.",
+            "EN": "Also CRIT Damage +125%: the stopgap until Blessed Burden is forged."
+          }
+        }
+      ]
+    },
+    "demonWedges": {
+      "slots": [
+        {
+          "position": 1,
+          "itemId": "mods-51942",
+          "track": 4
+        },
+        {
+          "position": 2,
+          "itemId": "mods-51441",
+          "track": 1
+        },
+        {
+          "position": 3,
+          "itemId": "mods-51334",
+          "track": 3
+        },
+        {
+          "position": 4,
+          "itemId": "mods-56142",
+          "track": 2
+        },
+        {
+          "position": 5,
+          "itemId": "mods-51748",
+          "track": 2
+        },
+        {
+          "position": 6,
+          "itemId": "mods-51748",
+          "track": 2
+        },
+        {
+          "position": 7,
+          "itemId": "mods-51748",
+          "track": null
+        },
+        {
+          "position": 8,
+          "itemId": "mods-51748",
+          "track": 2
+        }
+      ],
+      "centerItemId": "mods-51746",
+      "affinity": {
+        "FR": "Décision de Quetzalcoatl",
+        "EN": "Feathered Serpent's Volition"
+      },
+      "note": {
+        "FR": "Force inébranlable de Summanus récompense l'immobilité, et c'est tout son style : en Mode sniper, elle ne bouge pas et reste indétectable tant qu'un allié est sur le terrain (intron II). Les quatre Ardeur · Raffinement du Pactisant apportent des Dégâts de compétence infligés, et c'est la seule famille qui accepte les doublons. Garder l'Efficacité de compétence à 130 % ou plus pour déclencher Ailes · Inspiration · Décision. Le centre exige au moins quatre pièces alignées sur la piste Croissant : les quatre Ardeur et les Ailes le sont. Sept Track-Shift Modules, aucun sur la case 7.",
+        "EN": "Summanus's Still Thunder rewards standing still, and that is her whole playstyle: in Deadeye Domain she stays put and undetectable as long as an ally is on the field (Intron II). The four Covenanter's Blaze · Refinement bring Skill DMG Dealt, and theirs is the only family that accepts duplicates. Keep Skill Efficiency at 130% or above to trigger Wings · Inspo · Volition. The core needs at least four pieces aligned on the Crescent track: the four Blaze and the Wings are. Seven Track-Shift Modules, none on slot 7."
+      }
+    },
+    "statsPriority": [
+      "SkillIntensity",
+      "Morale",
+      "SkillDmg",
+      "SkillEfficiency",
+      "ATK_Thunder"
+    ],
+    "team": [
+      {
+        "characterId": "char-yuming",
+        "role": "Sub-DPS",
+        "note": {
+          "FR": "Yuming augmente la Vigueur et les dégâts de l'équipe, rend les ennemis plus vulnérables à l'Électro et porte Ailes · Inspiration · Vigueur pour tout le groupe. À l'intron VII, il ajoute Vigueur, dégâts Électro et Pénétration, et absorbe les dégâts de PV subis par ses alliés.",
+          "EN": "Yuming boosts the team's Morale and damage, makes enemies more vulnerable to Electro, and carries Wings · Inspo · Morale for the whole group. At Intron VII he adds Morale, Electro DMG and PEN, and absorbs the HP damage his allies take."
+        }
+      },
+      {
+        "characterId": "char-baiheng",
+        "role": "Support",
+        "note": {
+          "FR": "Fushu soigne, rend de la Lucidité, dont le Mode sniper consomme beaucoup, et ajoute de la Puissance de compétence. Contre des ennemis faibles à l'Électro, Zhiliu peut la remplacer pour une équipe tout Électro.",
+          "EN": "Fushu heals, restores Sanity, which Deadeye Domain burns through, and adds Skill Intensity. Against Electro-weak enemies, Zhiliu can replace her for an all-Electro team."
+        }
+      }
+    ],
+    "genimon": [
+      {
+        "itemId": "genimon-4241",
+        "rank": "best",
+        "traits": [
+          "UI_PetEntry_Title19",
+          "UI_PetEntry_Title23",
+          "UI_PetEntry_Title22"
+        ]
+      },
+      {
+        "itemId": "genimon-4121",
+        "rank": "alternative",
+        "traits": [
+          "UI_PetEntry_Title19",
+          "UI_PetEntry_Title23",
+          "UI_PetEntry_Title22"
+        ]
+      },
+      {
+        "itemId": "genimon-4141",
+        "rank": "alternative",
+        "traits": [
+          "UI_PetEntry_Title19",
+          "UI_PetEntry_Title23",
+          "UI_PetEntry_Title22"
+        ]
+      }
+    ],
+    "skillPriority": [
+      {
+        "skillName": {
+          "FR": "Tir vortex",
+          "EN": "Vortex Shot"
+        },
+        "priority": 5,
+        "note": {
+          "FR": "Le cœur de son kit : il ouvre le Mode sniper, et la Balle de précision renforcée passe de 35,1 % à 181,4 % de dégâts du niveau 1 au niveau 20.",
+          "EN": "The heart of her kit: it opens Deadeye Domain, and the Electrified Sniper Bullet goes from 35.1% to 181.4% DMG from level 1 to level 20."
+        }
+      },
+      {
+        "skillName": {
+          "FR": "Synergie électrique",
+          "EN": "Electro Coordination"
+        },
+        "priority": 4,
+        "note": {
+          "FR": "Chaque cumul de Maîtrise du courant (jusqu'à 6) augmente les Dégâts de compétence : de 5,2 % au niveau 1 à 28 % au niveau 20.",
+          "EN": "Each Arc Mastery stack (up to 6) raises Skill DMG: from 5.2% at level 1 to 28% at level 20."
+        }
+      },
+      {
+        "skillName": {
+          "FR": "Tir fulgurant",
+          "EN": "Surge Strike"
+        },
+        "priority": 4,
+        "note": {
+          "FR": "De 11,3 % à 60,7 % de dégâts. Les Fusils électriques le répètent et, dès l'intron I, chaque Balle de précision renforcée en libère un gratuitement.",
+          "EN": "From 11.3% to 60.7% DMG. Volt Rifles repeat it and, from Intron I, every Electrified Sniper Bullet fires one for free."
+        }
+      }
+    ],
+    "notes": {
+      "FR": "Rhythm – Née des flammes joue immobile : Tir vortex la place en Mode sniper, où chaque cumul de Concentration ajoute 4 % de Vitesse de compétence, jusqu'à 30 cumuls. À pleine précision, la Balle de précision renforcée consomme le Désordre Électro posé par ses alliés et lui donne des cumuls de Maîtrise du courant. D'où l'équipe : il lui faut des alliés Électro qui posent du Désordre, et qui restent visibles pour qu'elle ne le soit pas. Ses introns II et VI sont les plus forts : invisibilité et bonus selon la Vitesse de compétence, puis Pénétration et tirs à travers le décor.",
+      "EN": "Rhythm: Flamewrought plays standing still: Vortex Shot puts her in Deadeye Domain, where each Steady Aim stack adds 4% Skill Speed, up to 30 stacks. At full accuracy, the Electrified Sniper Bullet consumes the Electro Disruption her allies apply and grants her Arc Mastery stacks. Hence the team: she needs Electro allies who apply Disruption, and who stay visible so she does not have to. Her Introns II and VI are the strongest: invisibility and a bonus scaling with Skill Speed, then PEN and shots through terrain."
+    }
+  }
+]

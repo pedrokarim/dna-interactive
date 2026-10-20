@@ -4,7 +4,7 @@
     "verifiedAt": "2026-10-08"
   },
   "char-baiheng": {
-    "updatedAt": "2026-10-08",
+    "updatedAt": "2026-10-19",
     "verifiedAt": "2026-10-19"
   },
   "char-baonu": {
@@ -12,11 +12,11 @@
     "verifiedAt": "2026-10-08"
   },
   "char-dafu": {
-    "updatedAt": "2026-10-09",
+    "updatedAt": "2026-10-19",
     "verifiedAt": "2026-10-08"
   },
   "char-eve": {
-    "updatedAt": "2026-10-09",
+    "updatedAt": "2026-10-19",
     "verifiedAt": "2026-10-08"
   },
   "char-falu": {
@@ -84,11 +84,15 @@
     "verifiedAt": "2026-10-08"
   },
   "char-songlu": {
-    "updatedAt": "2026-10-09",
+    "updatedAt": "2026-10-19",
     "verifiedAt": "2026-10-08"
   },
+  "char-splise": {
+    "updatedAt": "2026-10-20",
+    "verifiedAt": "2026-10-20"
+  },
   "char-suyi": {
-    "updatedAt": "2026-09-26",
+    "updatedAt": "2026-10-19",
     "verifiedAt": "2026-10-08"
   },
   "char-tuosi": {
@@ -120,7 +124,7 @@
     "verifiedAt": "2026-10-08"
   },
   "char-zhangyu": {
-    "updatedAt": "2026-09-26",
+    "updatedAt": "2026-10-19",
     "verifiedAt": "2026-10-08"
   },
   "char-zhiliu": {

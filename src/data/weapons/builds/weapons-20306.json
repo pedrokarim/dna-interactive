@@ -1,0 +1,53 @@
+{
+  "weaponId": "weapons-20306",
+  "demonWedges": {
+    "slots": [
+      {
+        "position": 1,
+        "itemId": "mods-53009",
+        "track": 1
+      },
+      {
+        "position": 2,
+        "itemId": "mods-53007",
+        "track": 1
+      },
+      {
+        "position": 3,
+        "itemId": "mods-53008",
+        "track": 2
+      },
+      {
+        "position": 4,
+        "itemId": "mods-53801",
+        "track": 2
+      },
+      {
+        "position": 5,
+        "itemId": "mods-53010",
+        "track": 2
+      },
+      {
+        "position": 6,
+        "itemId": "mods-43003",
+        "track": null
+      },
+      {
+        "position": 7,
+        "itemId": "mods-43601",
+        "track": null
+      },
+      {
+        "position": 8,
+        "itemId": "mods-43002",
+        "track": null
+      }
+    ],
+    "affinity": null,
+    "note": {
+      "FR": "Tout pour le coup critique, pour tirer parti des DGT CRIT de l'arme. Concentration · Fardeau ralentit l'arme de 60 %, mais l'Ultime de Rhythm – Née des flammes ignore la Vitesse d'attaque : sur un autre personnage, la remplacer par une Fulgurance. Le critique de cette arme compte double chez Flamewrought, dont le passif augmente les dégâts de ses compétences selon le Taux CRIT et les DGT CRIT de son arme à distance.",
+      "EN": "All-in on critical hits, to make the most of the weapon's CRIT Damage. Focus · Mass slows the weapon by 60%, but Rhythm: Flamewrought's Ultimate ignores ATK Speed: on anyone else, swap it for an Impetus. This weapon's crit counts twice on Flamewrought, whose passive raises her skill damage based on her ranged weapon's CRIT Chance and CRIT Damage."
+    }
+  },
+  "note": {}
+}
