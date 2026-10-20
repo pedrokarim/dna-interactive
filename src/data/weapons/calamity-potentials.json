@@ -8,7 +8,7 @@
         "branch": 1,
         "unlock": [],
         "cost": null,
-        "icon": null,
+        "icon": "/assets/items/potentials/T_Rouge_Talent_Sword_Zaie.png",
         "name": {
           "EN": "Endless – Ponder",
           "FR": "Insoluble – Méditation",
@@ -58,7 +58,7 @@
             "num": 50
           }
         ],
-        "icon": null,
+        "icon": "/assets/items/potentials/T_Rouge_Talent_Sword_Zaie.png",
         "name": {
           "EN": "Endless – Desire",
           "FR": "Insoluble – Aspiration",
@@ -108,7 +108,7 @@
             "num": 50
           }
         ],
-        "icon": null,
+        "icon": "/assets/items/potentials/T_Rouge_Talent_Sword_Zaie.png",
         "name": {
           "EN": "Enigma – Obscurity",
           "FR": "Énigme – Inconnu",
@@ -260,7 +260,7 @@
             "num": 50
           }
         ],
-        "icon": null,
+        "icon": "/assets/items/potentials/T_Rouge_Talent_Sword_Zaie.png",
         "name": {
           "EN": "Endless – Answer",
           "FR": "Insoluble – Réponse",
@@ -310,7 +310,7 @@
             "num": 50
           }
         ],
-        "icon": null,
+        "icon": "/assets/items/potentials/T_Rouge_Talent_Sword_Zaie.png",
         "name": {
           "EN": "Enigma – Attest",
           "FR": "Énigme – Preuve",
@@ -438,7 +438,7 @@
           10199009
         ],
         "cost": null,
-        "icon": null,
+        "icon": "/assets/items/potentials/T_Rouge_Talent_Sword_Zaie.png",
         "name": {
           "EN": "Endless – Truth",
           "FR": "Insoluble – Vérité",

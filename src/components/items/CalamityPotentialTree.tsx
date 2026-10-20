@@ -50,6 +50,15 @@ const ATTR_LABEL_KEYS: Record<string, string> = {
   DamageRate: "statDamageRate",
 };
 
+/**
+ * Un même attribut change de sens selon sa zone : dans la table des attributs
+ * du jeu, `DamageRate` en zone `Almighty` est « Pénétration de tous les
+ * attributs » (`Attr_DamageRate_Almighty_Name`), et non des dégâts.
+ */
+const ZONED_ATTR_LABEL_KEYS: Record<string, string> = {
+  "DamageRate:Almighty": "statDamageRateAlmighty",
+};
+
 /** `0.45` → `+45 %`. `Rate` comme `Value` sont des fractions dans les tables. */
 function formatAttributeAmount(attribute: NodeAttribute): string {
   const raw = attribute.rate ?? attribute.value ?? 0;
@@ -442,8 +451,8 @@ function TreeConnectors({
 function NodeDetail({ node, lang, locked }: { node: PotentialNode; lang: string; locked: boolean }) {
   const t = useTranslations("items");
   const tStat = useTranslations("characterDetail");
-  const attributeLabel = (attrName: string) => {
-    const key = ATTR_LABEL_KEYS[attrName];
+  const attributeLabel = (attrName: string, rateZone: string | null) => {
+    const key = ZONED_ATTR_LABEL_KEYS[`${attrName}:${rateZone}`] ?? ATTR_LABEL_KEYS[attrName];
     return key ? tStat(key) : attrName;
   };
   const cost = node.cost ?? [];
@@ -481,7 +490,7 @@ function NodeDetail({ node, lang, locked }: { node: PotentialNode; lang: string;
               className="inline-flex items-baseline gap-2 border border-white/10 bg-panel/50 px-2.5 py-1.5"
             >
               <span className="font-caps text-[0.62rem] uppercase tracking-[0.14em] text-muted">
-                {attributeLabel(attribute.attrName)}
+                {attributeLabel(attribute.attrName, attribute.rateZone)}
               </span>
               <span className="font-mono text-sm text-gold-bright tabular-nums">
                 {formatAttributeAmount(attribute)}
