@@ -14872,7 +14872,11 @@
       "resourceToCoinType": 102,
       "resourceValue": 50,
       "accessKeys": [
-        "Dungeon_ModTab_70"
+        "Shop_Main",
+        "Forging",
+        "MonsterStrong",
+        "Shop_Rouge",
+        "Walnut"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -14883,6 +14887,120 @@
       "Batch": true,
       "DraftId": 151717,
       "ProductId": 51717,
+      "ProductNum": 1,
+      "ProductType": "Mod",
+      "Rarity": 5,
+      "ReleaseVersion": 100,
+      "ResourceToCoinType": 102,
+      "ResourceValue": 50,
+      "ShowInBag": 1,
+      "ShowInDraftArchive": true,
+      "Sound": "SOUND_ITEM_PAPER",
+      "Time": 30
+    }
+  },
+  {
+    "id": "draft-151718",
+    "draftId": 151718,
+    "productType": "Mod",
+    "productId": 51718,
+    "productQuantity": 1,
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Draft/T_Draft_Mod_Mephisto01_Black.T_Draft_Mod_Mephisto01_Black",
+      "publicPath": "/assets/items/drafts/T_Draft_Mod_Mephisto01_Black.png",
+      "placeholderPath": null
+    },
+    "product": {
+      "type": "Mod",
+      "id": 51718,
+      "quantity": 1,
+      "sourceCategory": "mods",
+      "href": "/items/mods/mods-51718",
+      "rarity": 5,
+      "names": {
+        "DE": "Blaze – Volition",
+        "EN": "Blaze – Volition",
+        "ES": "Blaze – Volition",
+        "FR": "Ardeur · Décision",
+        "JP": "灼熱・断決",
+        "KR": "작열·결단",
+        "TC": "熾灼·決斷"
+      },
+      "descriptions": {
+        "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+        "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+        "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+        "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+        "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+        "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+        "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+      },
+      "icon": {
+        "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Mephisto01_Black.T_Mod_Mephisto01_Black",
+        "publicPath": "/assets/items/mods/T_Mod_Mephisto01_Black.png",
+        "placeholderPath": "/marker-default.svg"
+      },
+      "metadata": {}
+    },
+    "ingredients": [
+      {
+        "type": "Mod",
+        "id": 41718,
+        "quantity": 5,
+        "sourceCategory": "mods",
+        "href": "/items/mods/mods-41718",
+        "rarity": 4,
+        "names": {
+          "DE": "Blaze – Volition",
+          "EN": "Blaze – Volition",
+          "ES": "Blaze – Volition",
+          "FR": "Ardeur · Décision",
+          "JP": "灼熱・断決",
+          "KR": "작열·결단",
+          "TC": "熾灼·決斷"
+        },
+        "descriptions": {
+          "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+          "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+          "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+          "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+          "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+          "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+          "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Mephisto01_Black.T_Mod_Mephisto01_Black",
+          "publicPath": "/assets/items/mods/T_Mod_Mephisto01_Black.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {}
+      }
+    ],
+    "crafting": {
+      "durationSec": 30,
+      "batch": true,
+      "rarity": 5,
+      "foundryCostByCoinType": {
+        "101": 50000
+      },
+      "resourceToCoinType": 102,
+      "resourceValue": 50,
+      "accessKeys": [
+        "Shop_Main",
+        "Forging",
+        "MonsterStrong",
+        "Shop_Rouge",
+        "Walnut"
+      ],
+      "releaseVersion": 100,
+      "openVersion": null,
+      "showInBag": 1,
+      "showInDraftArchive": true
+    },
+    "fields": {
+      "Batch": true,
+      "DraftId": 151718,
+      "ProductId": 51718,
       "ProductNum": 1,
       "ProductType": "Mod",
       "Rarity": 5,
@@ -15848,7 +15966,11 @@
       "resourceToCoinType": 102,
       "resourceValue": 50,
       "accessKeys": [
-        "Dungeon_ModTab_70"
+        "Shop_Main",
+        "Forging",
+        "MonsterStrong",
+        "Shop_Rouge",
+        "Walnut"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -16824,7 +16946,11 @@
       "resourceToCoinType": 102,
       "resourceValue": 50,
       "accessKeys": [
-        "Dungeon_ModTab_70"
+        "Shop_Main",
+        "Forging",
+        "MonsterStrong",
+        "Shop_Rouge",
+        "Walnut"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -17686,7 +17812,11 @@
       "resourceToCoinType": 102,
       "resourceValue": 50,
       "accessKeys": [
-        "Dungeon_ModTab_70"
+        "Shop_Main",
+        "Forging",
+        "MonsterStrong",
+        "Shop_Rouge",
+        "Walnut"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -17697,6 +17827,120 @@
       "Batch": true,
       "DraftId": 151747,
       "ProductId": 51747,
+      "ProductNum": 1,
+      "ProductType": "Mod",
+      "Rarity": 5,
+      "ReleaseVersion": 100,
+      "ResourceToCoinType": 102,
+      "ResourceValue": 50,
+      "ShowInBag": 1,
+      "ShowInDraftArchive": true,
+      "Sound": "SOUND_ITEM_PAPER",
+      "Time": 30
+    }
+  },
+  {
+    "id": "draft-151748",
+    "draftId": 151748,
+    "productType": "Mod",
+    "productId": 51748,
+    "productQuantity": 1,
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Draft/T_Draft_Mod_Mephisto01_Purple.T_Draft_Mod_Mephisto01_Purple",
+      "publicPath": "/assets/items/drafts/T_Draft_Mod_Mephisto01_Purple.png",
+      "placeholderPath": null
+    },
+    "product": {
+      "type": "Mod",
+      "id": 51748,
+      "quantity": 1,
+      "sourceCategory": "mods",
+      "href": "/items/mods/mods-51748",
+      "rarity": 5,
+      "names": {
+        "DE": "Blaze – Refinement",
+        "EN": "Blaze – Refinement",
+        "ES": "Blaze – Refinement",
+        "FR": "Ardeur · Raffinement",
+        "JP": "灼熱・精錬",
+        "KR": "작열·정련",
+        "TC": "熾灼·精煉"
+      },
+      "descriptions": {
+        "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+        "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+        "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+        "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+        "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+        "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+        "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+      },
+      "icon": {
+        "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Mephisto01_Purple.T_Mod_Mephisto01_Purple",
+        "publicPath": "/assets/items/mods/T_Mod_Mephisto01_Purple.png",
+        "placeholderPath": "/marker-default.svg"
+      },
+      "metadata": {}
+    },
+    "ingredients": [
+      {
+        "type": "Mod",
+        "id": 41748,
+        "quantity": 5,
+        "sourceCategory": "mods",
+        "href": "/items/mods/mods-41748",
+        "rarity": 4,
+        "names": {
+          "DE": "Blaze – Refinement",
+          "EN": "Blaze – Refinement",
+          "ES": "Blaze – Refinement",
+          "FR": "Ardeur · Raffinement",
+          "JP": "灼熱・精錬",
+          "KR": "작열·정련",
+          "TC": "熾灼·精煉"
+        },
+        "descriptions": {
+          "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+          "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+          "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+          "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+          "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+          "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+          "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Mephisto01_Purple.T_Mod_Mephisto01_Purple",
+          "publicPath": "/assets/items/mods/T_Mod_Mephisto01_Purple.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {}
+      }
+    ],
+    "crafting": {
+      "durationSec": 30,
+      "batch": true,
+      "rarity": 5,
+      "foundryCostByCoinType": {
+        "101": 50000
+      },
+      "resourceToCoinType": 102,
+      "resourceValue": 50,
+      "accessKeys": [
+        "Shop_Main",
+        "Forging",
+        "MonsterStrong",
+        "Shop_Rouge",
+        "Walnut"
+      ],
+      "releaseVersion": 100,
+      "openVersion": null,
+      "showInBag": 1,
+      "showInDraftArchive": true
+    },
+    "fields": {
+      "Batch": true,
+      "DraftId": 151748,
+      "ProductId": 51748,
       "ProductNum": 1,
       "ProductType": "Mod",
       "Rarity": 5,
@@ -18662,7 +18906,11 @@
       "resourceToCoinType": 102,
       "resourceValue": 50,
       "accessKeys": [
-        "Dungeon_ModTab_70"
+        "Shop_Main",
+        "Forging",
+        "MonsterStrong",
+        "Shop_Rouge",
+        "Walnut"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -19638,7 +19886,11 @@
       "resourceToCoinType": 102,
       "resourceValue": 50,
       "accessKeys": [
-        "Dungeon_ModTab_70"
+        "Shop_Main",
+        "Forging",
+        "MonsterStrong",
+        "Shop_Rouge",
+        "Walnut"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -21714,6 +21966,120 @@
     }
   },
   {
+    "id": "draft-151942",
+    "draftId": 151942,
+    "productType": "Mod",
+    "productId": 51942,
+    "productQuantity": 1,
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Draft/T_Draft_Mod_Summanus01_Purple.T_Draft_Mod_Summanus01_Purple",
+      "publicPath": "/assets/items/drafts/T_Draft_Mod_Summanus01_Purple.png",
+      "placeholderPath": null
+    },
+    "product": {
+      "type": "Mod",
+      "id": 51942,
+      "quantity": 1,
+      "sourceCategory": "mods",
+      "href": "/items/mods/mods-51942",
+      "rarity": 5,
+      "names": {
+        "DE": "Still Thunder",
+        "EN": "Still Thunder",
+        "ES": "Still Thunder",
+        "FR": "Force inébranlable",
+        "JP": "不動の万鈞",
+        "KR": "부동의 저력",
+        "TC": "不動萬鈞"
+      },
+      "descriptions": {
+        "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+        "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+        "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+        "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+        "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+        "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+        "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+      },
+      "icon": {
+        "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Summanus01.T_Mod_Summanus01",
+        "publicPath": "/assets/items/mods/T_Mod_Summanus01.png",
+        "placeholderPath": "/marker-default.svg"
+      },
+      "metadata": {}
+    },
+    "ingredients": [
+      {
+        "type": "Mod",
+        "id": 41942,
+        "quantity": 5,
+        "sourceCategory": "mods",
+        "href": "/items/mods/mods-41942",
+        "rarity": 4,
+        "names": {
+          "DE": "Still Thunder",
+          "EN": "Still Thunder",
+          "ES": "Still Thunder",
+          "FR": "Force inébranlable",
+          "JP": "不動の万鈞",
+          "KR": "부동의 저력",
+          "TC": "不動萬鈞"
+        },
+        "descriptions": {
+          "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+          "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+          "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+          "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+          "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+          "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+          "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Summanus01.T_Mod_Summanus01",
+          "publicPath": "/assets/items/mods/T_Mod_Summanus01.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {}
+      }
+    ],
+    "crafting": {
+      "durationSec": 30,
+      "batch": true,
+      "rarity": 5,
+      "foundryCostByCoinType": {
+        "101": 50000
+      },
+      "resourceToCoinType": 102,
+      "resourceValue": 50,
+      "accessKeys": [
+        "Shop_Main",
+        "Forging",
+        "MonsterStrong",
+        "Shop_Rouge",
+        "Walnut"
+      ],
+      "releaseVersion": 100,
+      "openVersion": null,
+      "showInBag": 1,
+      "showInDraftArchive": true
+    },
+    "fields": {
+      "Batch": true,
+      "DraftId": 151942,
+      "ProductId": 51942,
+      "ProductNum": 1,
+      "ProductType": "Mod",
+      "Rarity": 5,
+      "ReleaseVersion": 100,
+      "ResourceToCoinType": 102,
+      "ResourceValue": 50,
+      "ShowInBag": 1,
+      "ShowInDraftArchive": true,
+      "Sound": "SOUND_ITEM_PAPER",
+      "Time": 30
+    }
+  },
+  {
     "id": "draft-151951",
     "draftId": 151951,
     "productType": "Mod",
@@ -22261,9 +22627,7 @@
         "MonsterStrong",
         "Shop_Rouge",
         "Walnut",
-        "Dungeon_ModTab_70",
-        "Dungeon_ModTab_75",
-        "Dungeon_ModTab_80"
+        "Dungeon_ModTab_70"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -22378,9 +22742,7 @@
         "MonsterStrong",
         "Shop_Rouge",
         "Walnut",
-        "Dungeon_ModTab_70",
-        "Dungeon_ModTab_75",
-        "Dungeon_ModTab_80"
+        "Dungeon_ModTab_70"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -22495,9 +22857,7 @@
         "MonsterStrong",
         "Shop_Rouge",
         "Walnut",
-        "Dungeon_ModTab_70",
-        "Dungeon_ModTab_75",
-        "Dungeon_ModTab_80"
+        "Dungeon_ModTab_70"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -22644,9 +23004,7 @@
         "MonsterStrong",
         "Shop_Rouge",
         "Walnut",
-        "Dungeon_ModTab_70",
-        "Dungeon_ModTab_75",
-        "Dungeon_ModTab_80"
+        "Dungeon_ModTab_70"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -22793,9 +23151,7 @@
         "MonsterStrong",
         "Shop_Rouge",
         "Walnut",
-        "Dungeon_ModTab_70",
-        "Dungeon_ModTab_75",
-        "Dungeon_ModTab_80"
+        "Dungeon_ModTab_70"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -22941,7 +23297,8 @@
         "Forging",
         "MonsterStrong",
         "Shop_Rouge",
-        "Walnut"
+        "Walnut",
+        "Dungeon_ModTab_70"
       ],
       "releaseVersion": 140,
       "openVersion": null,
@@ -23087,7 +23444,8 @@
         "Forging",
         "MonsterStrong",
         "Shop_Rouge",
-        "Walnut"
+        "Walnut",
+        "Dungeon_ModTab_70"
       ],
       "releaseVersion": 140,
       "openVersion": null,
@@ -23233,7 +23591,8 @@
         "Forging",
         "MonsterStrong",
         "Shop_Rouge",
-        "Walnut"
+        "Walnut",
+        "Dungeon_ModTab_70"
       ],
       "releaseVersion": 140,
       "openVersion": null,
@@ -23248,6 +23607,152 @@
       "ProductType": "Mod",
       "Rarity": 5,
       "ReleaseVersion": 140,
+      "ResourceToCoinType": 102,
+      "ResourceValue": 50,
+      "ShowInBag": 1,
+      "ShowInDraftArchive": true,
+      "Sound": "SOUND_ITEM_PAPER",
+      "Time": 30
+    }
+  },
+  {
+    "id": "draft-152013",
+    "draftId": 152013,
+    "productType": "Mod",
+    "productId": 52013,
+    "productQuantity": 1,
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Draft/T_Draft_Mod_Cerberus01_Red.T_Draft_Mod_Cerberus01_Red",
+      "publicPath": "/assets/items/drafts/T_Draft_Mod_Cerberus01_Red.png",
+      "placeholderPath": null
+    },
+    "product": {
+      "type": "Mod",
+      "id": 52013,
+      "quantity": 1,
+      "sourceCategory": "mods",
+      "href": "/items/mods/mods-52013",
+      "rarity": 5,
+      "names": {
+        "DE": "Focus – Impact",
+        "EN": "Focus – Impact",
+        "ES": "Focus – Impact",
+        "FR": "Concentration · Frappe brutale",
+        "JP": "集中・強撃",
+        "KR": "집중·강공",
+        "TC": "專注·強擊"
+      },
+      "descriptions": {
+        "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+        "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+        "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+        "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+        "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+        "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+        "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+      },
+      "icon": {
+        "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Cerberus01.T_Mod_Cerberus01",
+        "publicPath": "/assets/items/mods/T_Mod_Cerberus01.png",
+        "placeholderPath": "/marker-default.svg"
+      },
+      "metadata": {}
+    },
+    "ingredients": [
+      {
+        "type": "Mod",
+        "id": 42002,
+        "quantity": 3,
+        "sourceCategory": "mods",
+        "href": "/items/mods/mods-42002",
+        "rarity": 4,
+        "names": {
+          "DE": "Fokus",
+          "EN": "Focus",
+          "ES": "Enfoque",
+          "FR": "Concentration",
+          "JP": "集中",
+          "KR": "집중",
+          "TC": "專注"
+        },
+        "descriptions": {
+          "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+          "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+          "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+          "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+          "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+          "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+          "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Cerberus01.T_Mod_Cerberus01",
+          "publicPath": "/assets/items/mods/T_Mod_Cerberus01.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {}
+      },
+      {
+        "type": "Mod",
+        "id": 42001,
+        "quantity": 1,
+        "sourceCategory": "mods",
+        "href": "/items/mods/mods-42001",
+        "rarity": 4,
+        "names": {
+          "DE": "Offensive",
+          "EN": "Impetus",
+          "ES": "Ímpetu",
+          "FR": "Fulgurance",
+          "JP": "攻勢",
+          "KR": "공세",
+          "TC": "攻勢"
+        },
+        "descriptions": {
+          "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+          "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+          "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+          "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+          "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+          "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+          "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Cerberus01.T_Mod_Cerberus01",
+          "publicPath": "/assets/items/mods/T_Mod_Cerberus01.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {}
+      }
+    ],
+    "crafting": {
+      "durationSec": 30,
+      "batch": true,
+      "rarity": 5,
+      "foundryCostByCoinType": {
+        "101": 50000
+      },
+      "resourceToCoinType": 102,
+      "resourceValue": 50,
+      "accessKeys": [
+        "Shop_Main",
+        "Forging",
+        "MonsterStrong",
+        "Shop_Rouge",
+        "Walnut"
+      ],
+      "releaseVersion": 100,
+      "openVersion": null,
+      "showInBag": 1,
+      "showInDraftArchive": true
+    },
+    "fields": {
+      "Batch": true,
+      "DraftId": 152013,
+      "ProductId": 52013,
+      "ProductNum": 1,
+      "ProductType": "Mod",
+      "Rarity": 5,
+      "ReleaseVersion": 100,
       "ResourceToCoinType": 102,
       "ResourceValue": 50,
       "ShowInBag": 1,
@@ -23380,9 +23885,7 @@
         "MonsterStrong",
         "Shop_Rouge",
         "Walnut",
-        "Dungeon_ModTab_70",
-        "Dungeon_ModTab_75",
-        "Dungeon_ModTab_80"
+        "Dungeon_ModTab_70"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -23529,9 +24032,7 @@
         "MonsterStrong",
         "Shop_Rouge",
         "Walnut",
-        "Dungeon_ModTab_70",
-        "Dungeon_ModTab_75",
-        "Dungeon_ModTab_80"
+        "Dungeon_ModTab_70"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -23678,9 +24179,7 @@
         "MonsterStrong",
         "Shop_Rouge",
         "Walnut",
-        "Dungeon_ModTab_70",
-        "Dungeon_ModTab_75",
-        "Dungeon_ModTab_80"
+        "Dungeon_ModTab_70"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -23826,7 +24325,8 @@
         "Forging",
         "MonsterStrong",
         "Shop_Rouge",
-        "Walnut"
+        "Walnut",
+        "Dungeon_ModTab_70"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -23972,7 +24472,8 @@
         "Forging",
         "MonsterStrong",
         "Shop_Rouge",
-        "Walnut"
+        "Walnut",
+        "Dungeon_ModTab_70"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -24118,7 +24619,8 @@
         "Forging",
         "MonsterStrong",
         "Shop_Rouge",
-        "Walnut"
+        "Walnut",
+        "Dungeon_ModTab_70"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -24524,7 +25026,8 @@
         "Forging",
         "MonsterStrong",
         "Shop_Rouge",
-        "Walnut"
+        "Walnut",
+        "Dungeon_ModTab_70"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -24535,6 +25038,120 @@
       "Batch": true,
       "DraftId": 152801,
       "ProductId": 52801,
+      "ProductNum": 1,
+      "ProductType": "Mod",
+      "Rarity": 5,
+      "ReleaseVersion": 100,
+      "ResourceToCoinType": 102,
+      "ResourceValue": 50,
+      "ShowInBag": 1,
+      "ShowInDraftArchive": true,
+      "Sound": "SOUND_ITEM_PAPER",
+      "Time": 30
+    }
+  },
+  {
+    "id": "draft-152802",
+    "draftId": 152802,
+    "productType": "Mod",
+    "productId": 52802,
+    "productQuantity": 1,
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Draft/T_Draft_Mod_Fenrir01_Red.T_Draft_Mod_Fenrir01_Red",
+      "publicPath": "/assets/items/drafts/T_Draft_Mod_Fenrir01_Red.png",
+      "placeholderPath": null
+    },
+    "product": {
+      "type": "Mod",
+      "id": 52802,
+      "quantity": 1,
+      "sourceCategory": "mods",
+      "href": "/items/mods/mods-52802",
+      "rarity": 5,
+      "names": {
+        "DE": "Dissolution",
+        "EN": "Dissolution",
+        "ES": "Dissolution",
+        "FR": "Désagrégation",
+        "JP": "崩壊",
+        "KR": "와해",
+        "TC": "瓦解"
+      },
+      "descriptions": {
+        "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+        "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+        "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+        "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+        "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+        "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+        "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+      },
+      "icon": {
+        "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Fenrir01.T_Mod_Fenrir01",
+        "publicPath": "/assets/items/mods/T_Mod_Fenrir01.png",
+        "placeholderPath": "/marker-default.svg"
+      },
+      "metadata": {}
+    },
+    "ingredients": [
+      {
+        "type": "Mod",
+        "id": 42802,
+        "quantity": 5,
+        "sourceCategory": "mods",
+        "href": "/items/mods/mods-42802",
+        "rarity": 4,
+        "names": {
+          "DE": "Dissolution",
+          "EN": "Dissolution",
+          "ES": "Dissolution",
+          "FR": "Désagrégation",
+          "JP": "崩壊",
+          "KR": "와해",
+          "TC": "瓦解"
+        },
+        "descriptions": {
+          "DE": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
+          "EN": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
+          "ES": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
+          "FR": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
+          "JP": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
+          "KR": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
+          "TC": "帝國煉金院製作的神秘元件，可以大幅提升骸的作戰能力。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Mod/T_Mod_Fenrir01.T_Mod_Fenrir01",
+          "publicPath": "/assets/items/mods/T_Mod_Fenrir01.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {}
+      }
+    ],
+    "crafting": {
+      "durationSec": 30,
+      "batch": true,
+      "rarity": 5,
+      "foundryCostByCoinType": {
+        "101": 50000
+      },
+      "resourceToCoinType": 102,
+      "resourceValue": 50,
+      "accessKeys": [
+        "Shop_Main",
+        "Forging",
+        "MonsterStrong",
+        "Shop_Rouge",
+        "Walnut"
+      ],
+      "releaseVersion": 100,
+      "openVersion": null,
+      "showInBag": 1,
+      "showInDraftArchive": true
+    },
+    "fields": {
+      "Batch": true,
+      "DraftId": 152802,
+      "ProductId": 52802,
       "ProductNum": 1,
       "ProductType": "Mod",
       "Rarity": 5,
@@ -24639,9 +25256,7 @@
         "MonsterStrong",
         "Shop_Rouge",
         "Walnut",
-        "Dungeon_ModTab_70",
-        "Dungeon_ModTab_75",
-        "Dungeon_ModTab_80"
+        "Dungeon_ModTab_75"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -24756,9 +25371,7 @@
         "MonsterStrong",
         "Shop_Rouge",
         "Walnut",
-        "Dungeon_ModTab_70",
-        "Dungeon_ModTab_75",
-        "Dungeon_ModTab_80"
+        "Dungeon_ModTab_75"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -24905,9 +25518,7 @@
         "MonsterStrong",
         "Shop_Rouge",
         "Walnut",
-        "Dungeon_ModTab_70",
-        "Dungeon_ModTab_75",
-        "Dungeon_ModTab_80"
+        "Dungeon_ModTab_75"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -25054,9 +25665,7 @@
         "MonsterStrong",
         "Shop_Rouge",
         "Walnut",
-        "Dungeon_ModTab_70",
-        "Dungeon_ModTab_75",
-        "Dungeon_ModTab_80"
+        "Dungeon_ModTab_75"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -25203,9 +25812,7 @@
         "MonsterStrong",
         "Shop_Rouge",
         "Walnut",
-        "Dungeon_ModTab_70",
-        "Dungeon_ModTab_75",
-        "Dungeon_ModTab_80"
+        "Dungeon_ModTab_75"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -25351,7 +25958,8 @@
         "Forging",
         "MonsterStrong",
         "Shop_Rouge",
-        "Walnut"
+        "Walnut",
+        "Dungeon_ModTab_75"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -25497,7 +26105,8 @@
         "Forging",
         "MonsterStrong",
         "Shop_Rouge",
-        "Walnut"
+        "Walnut",
+        "Dungeon_ModTab_75"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -25789,7 +26398,8 @@
         "Forging",
         "MonsterStrong",
         "Shop_Rouge",
-        "Walnut"
+        "Walnut",
+        "Dungeon_ModTab_75"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -26082,9 +26692,7 @@
         "MonsterStrong",
         "Shop_Rouge",
         "Walnut",
-        "Dungeon_ModTab_70",
-        "Dungeon_ModTab_75",
-        "Dungeon_ModTab_80"
+        "Dungeon_ModTab_75"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -26231,9 +26839,7 @@
         "MonsterStrong",
         "Shop_Rouge",
         "Walnut",
-        "Dungeon_ModTab_70",
-        "Dungeon_ModTab_75",
-        "Dungeon_ModTab_80"
+        "Dungeon_ModTab_75"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -26380,9 +26986,7 @@
         "MonsterStrong",
         "Shop_Rouge",
         "Walnut",
-        "Dungeon_ModTab_70",
-        "Dungeon_ModTab_75",
-        "Dungeon_ModTab_80"
+        "Dungeon_ModTab_75"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -26528,7 +27132,8 @@
         "Forging",
         "MonsterStrong",
         "Shop_Rouge",
-        "Walnut"
+        "Walnut",
+        "Dungeon_ModTab_75"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -26674,7 +27279,8 @@
         "Forging",
         "MonsterStrong",
         "Shop_Rouge",
-        "Walnut"
+        "Walnut",
+        "Dungeon_ModTab_75"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -26820,7 +27426,8 @@
         "Forging",
         "MonsterStrong",
         "Shop_Rouge",
-        "Walnut"
+        "Walnut",
+        "Dungeon_ModTab_75"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -26934,7 +27541,8 @@
         "Forging",
         "MonsterStrong",
         "Shop_Rouge",
-        "Walnut"
+        "Walnut",
+        "Dungeon_ModTab_75"
       ],
       "releaseVersion": 100,
       "openVersion": null,
@@ -48940,6 +49548,179 @@
     }
   },
   {
+    "id": "draft-910199",
+    "draftId": 910199,
+    "productType": "Weapon",
+    "productId": 10199,
+    "productQuantity": 1,
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Draft/T_Draft_Sword_Yemei.T_Draft_Sword_Yemei",
+      "publicPath": "/assets/items/drafts/T_Draft_Sword_Yemei.png",
+      "placeholderPath": null
+    },
+    "product": {
+      "type": "Weapon",
+      "id": 10199,
+      "quantity": 1,
+      "sourceCategory": "weapons",
+      "href": "/items/weapons/weapons-10199",
+      "rarity": 5,
+      "names": {
+        "DE": "Metallschwert",
+        "EN": "Endless Enigma",
+        "ES": "Espada Metálica",
+        "FR": "Énigme insoluble",
+        "JP": "メタルブレード",
+        "KR": "답 없는 수수께끼",
+        "TC": "無解謎題"
+      },
+      "descriptions": {
+        "DE": "Ein gewöhnliches Schwert. Aus dem billigsten Metall hergestellt, also ist es nicht schlimm, wenn es zerbricht.",
+        "EN": "One of those who received the weapon was a sage, rewarded by the Father for her wisdom. Consumed by a thirst for truth, she spent countless midnights pondering the nature of the world. Again and again she sought an answer without flaw or error, yet the more she learned, the more the unknown grew before her.\nShe steeped her days in darkness and blank pages, but there could be no end to the pursuit of truth. The agony of the unknowable tore her apart. On one long night, she turned her blade upon herself — only to leave behind an unsolved enigma that would drive countless others to madness.",
+        "ES": "Una espada de una mano común, hecha del metal más barato, incluso si se rompe no representa una gran pérdida.",
+        "FR": "L’une des porteuses de cette arme était une sage. Père Ask récompensa son esprit. Obsédée par sa quête de vérité, elle passait nuit après nuit, seule au cœur des ténèbres, à méditer sur la véritable nature du monde, encore et encore. Elle aspirait à une conclusion parfaite, exempte de toute faille et de toute erreur. Pourtant, plus elle en apprenait, plus l’inconnu s’étendait devant elle.\n \nElle noya ses heures dans la nuit et les pages blanches, mais comment la quête de vérité pourrait-elle jamais connaître une fin ? La souffrance de l’inconnaissable finit par la déchirer. Au terme d’une longue nuit, elle mit fin à ses jours avec une lame. Quant à l’énigme insoluble qu’elle laissa derrière elle, elle en plongea bien d’autres dans la folie.",
+        "JP": "ありふれた片手剣。安価な金属で作られているので、壊れても惜しくない。",
+        "KR": "무기를 손에 넣은 이들 중 한 명은 현자였다. 아버지 신은 그녀의 사색을 치하했다. 진리를 향한 갈망에 사로잡힌 그녀는 사람들의 발길이 끊긴 깊은 밤마다 홀로 세계의 진실을 되짚고 또 되짚었다. 한 치의 허점도 오류도 없는 결론을 바라며 파고들었지만, 알아 갈수록 미지 또한 늘어날 뿐이었다.\n그녀는 백지 앞에서 수많은 밤을 지새웠지만, 탐구의 길에 끝이 있을 리 없었다. 끝내 알 수 없다는 고통에 무너진 그녀는 어느 긴 밤 칼날로 목숨을 끊었고, 그녀가 남긴 답 없는 수수께끼는 더 많은 이들을 광기로 몰아넣었다.",
+        "TC": "獲得武器的其中一人是名智者，父神嘉獎她的思考。她深陷對真理的渴求，在夜半無人的深夜思索著世界的真相，一遍又一遍。她力求絕無疏漏與錯差的終果，可她知道的越多，未知的便越多。\n她將時間浸泡於黑夜與白紙，可求索的道路怎會有盡頭？不可知的痛苦將她撕裂，她以利刃自絕於一個漫長的夜，而她留下的無解謎題則令更多人陷入瘋狂。"
+      },
+      "icon": {
+        "gamePath": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Sword_Yemei",
+        "publicPath": "/assets/items/weapons/T_Head_Sword_Yemei.png",
+        "placeholderPath": null
+      },
+      "metadata": {
+        "classType": "Melee",
+        "classTextKey": "UI_Armory_Meleeweapon",
+        "classIconGamePath": "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponTypeClose_Combat.T_Armory_WeaponTypeClose_Combat",
+        "classIconPublicPath": "/assets/items/weapon-types/T_Armory_WeaponTypeClose_Combat.png",
+        "classLabelEn": "Melee Weapons",
+        "subtype": "Sword",
+        "subtypeNormalized": "Sword",
+        "subtypeTextKey": "WeaponType_Sword",
+        "subtypeIconGamePath": "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponType_Sword.T_Armory_WeaponType_Sword",
+        "subtypeIconPublicPath": "/assets/items/weapon-types/T_Armory_WeaponType_Sword.png",
+        "subtypeLabelEn": "Sword",
+        "guiPathVariableName": "Yemei",
+        "weaponMaxLevel": 80,
+        "weaponToCoinType": 101,
+        "weaponValue": 10000,
+        "collectRewardExp": 400,
+        "decomposeReward": -1,
+        "sortPriority": 10199,
+        "skinApplicationTypes": [
+          101
+        ],
+        "bigIconGamePath": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Sword_Yemei",
+        "bigIconPublicPath": "/assets/items/weapons/T_Bust_Sword_Yemei.png",
+        "gachaIconGamePath": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Sword_Yemei",
+        "gachaIconPublicPath": "/assets/items/weapons/T_Gacha_Sword_Yemei.png",
+        "releaseVersion": 170,
+        "openVersion": 17
+      }
+    },
+    "ingredients": [
+      {
+        "type": "Resource",
+        "id": 15017,
+        "quantity": 5,
+        "sourceCategory": "resources",
+        "href": "/items/resources/resources-15017",
+        "rarity": 5,
+        "names": {
+          "DE": "Forging Insight: Sword",
+          "EN": "Forging Insight: Sword",
+          "ES": "Perspicacia Forjada: Espada",
+          "FR": "Éveil de forge : Épée",
+          "JP": "溶鋳・片手剣の悟り",
+          "KR": "한손검 용해의 깨달음",
+          "TC": "熔鑄單手劍的領悟"
+        },
+        "descriptions": {
+          "DE": "RESOURCE_DESC_WEAPONPIECE",
+          "EN": "RESOURCE_DESC_WEAPONPIECE",
+          "ES": "El poder siempre tiene el mismo origen, ya sea en una herramienta o en un arma. Así como la hoz nació para el trabajo, las armas de fuego para los fuegos artificiales.\nSe obtiene por medios especiales y puede usarse como material de fusión para Armas de calamidad.",
+          "FR": "Toute puissance procède d’une même source, qu’elle prenne la forme d’un outil ou d’une arme. La faux était destinée au labeur ; les armes à feu, aux feux d’artifice.\nObtenu par des moyens spéciaux. Peut servir à la fusion des Armes de calamité.",
+          "JP": "力はもとより同じ源に帰する。道具もそうであり、武器もまたそうだ。鎌は本来、労働のためのもの。銃も本来は、ひとときの花火であるはずだった。\n 特殊な手段で入手でき、カラミティアームズの製錬に使用できる。",
+          "KR": "힘이란 본래 같은 근원에서 나온다. 도구도, 병기도 마찬가지다. 낫은 본래 노동을 위한 것이고, 총은 본래 불꽃놀이여야 한다.\n특수한 경로를 통해 획득하며, 재앙 무기 용해에 사용할 수 있다.",
+          "TC": "力量本歸同源，工具是，兵器亦是。正如鐮刀本該用於勞作，槍枝本應是場煙花。\n透過特殊途徑獲取，可用於災厄武器熔煉。"
+        },
+        "icon": {
+          "gamePath": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Weapon_Piece_Sword_Zaie.T_Weapon_Piece_Sword_Zaie'",
+          "publicPath": "/assets/items/resources/T_Weapon_Piece_Sword_Zaie.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {
+          "resourceSType": "Material"
+        }
+      },
+      {
+        "type": "Resource",
+        "id": 15005,
+        "quantity": 50,
+        "sourceCategory": "resources",
+        "href": "/items/resources/resources-15005",
+        "rarity": 5,
+        "names": {
+          "DE": "Prototype: Endless Enigma",
+          "EN": "Prototype: Endless Enigma",
+          "ES": "Prototipo: Nocturno — Espada",
+          "FR": "Prototype : Énigme insoluble",
+          "JP": "夜想・片手剣の原型",
+          "KR": "답 없는 수수께끼의 원형",
+          "TC": "無解謎題的原型"
+        },
+        "descriptions": {
+          "DE": "RESOURCE_DESC_HYPERWEAPONPROTOTYPE",
+          "EN": "RESOURCE_DESC_HYPERWEAPONPROTOTYPE",
+          "ES": "Uno de los prototipos legendarios de Arma de calamidad.\nSu destino fue amargo como el ajenjo, afilado como una espada de dos filos.\nSe obtiene por medios especiales y puede usarse como material de fusión para Armas de calamidad.",
+          "FR": "L’un des prototypes légendaires à l’origine des Armes de calamité.\nSon destin fut amer comme l’absinthe, acéré comme une épée à double tranchant.\nObtenu par des moyens spéciaux. Peut servir à la fusion des Armes de calamité.",
+          "JP": "伝説に語られるカラミティアームズの原型。その一つ。\n その結末は苦く、両刃の剣のように鋭い。\n 特殊な方法で入手でき、カラミティアームズの製錬に使用できる。",
+          "KR": "전설 속 재앙 무기의 원형 중 하나이다.\n그의 마지막은 쑥처럼 쓰고, 양날의 검처럼 날카로웠다.\n특수한 경로를 통해 획득하며, 재앙 무기 용해에 사용할 수 있다.",
+          "TC": "傳說中災厄武器的原型，此為其中之一。\n他的結局苦如茵陳，利如兩刃的劍。\n透過特殊途徑獲取，可用於災厄武器熔煉。"
+        },
+        "icon": {
+          "gamePath": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Weapon_Sword_Zaie.T_Weapon_Sword_Zaie'",
+          "publicPath": "/assets/items/resources/T_Weapon_Sword_Zaie.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {
+          "resourceSType": "Material"
+        }
+      }
+    ],
+    "crafting": {
+      "durationSec": 180,
+      "batch": false,
+      "rarity": 5,
+      "foundryCostByCoinType": {
+        "101": 500000
+      },
+      "resourceToCoinType": null,
+      "resourceValue": -1,
+      "accessKeys": [
+        "Walnut",
+        "Shop_Abyss"
+      ],
+      "releaseVersion": 150,
+      "openVersion": null,
+      "showInBag": 1,
+      "showInDraftArchive": true
+    },
+    "fields": {
+      "DraftId": 910199,
+      "ProductId": 10199,
+      "ProductNum": 1,
+      "ProductType": "Weapon",
+      "Rarity": 5,
+      "ReleaseVersion": 150,
+      "ResourceValue": -1,
+      "ShowInBag": 1,
+      "ShowInDraftArchive": true,
+      "Sound": "SOUND_ITEM_PAPER",
+      "Time": 180
+    }
+  },
+  {
     "id": "draft-910201",
     "draftId": 910201,
     "productType": "Weapon",
@@ -50414,7 +51195,7 @@
         "ES": "Uno de los que recibió un arma era un guerrero al que el Padre Ask premió por su valentía. Retó sin descanso a rivales cada vez más poderosos, enviando desafíos tras desafío a tierras lejanas. Su nombre se volvió sinónimo de fuerza, pero poco a poco dejó de saber vivir sin el combate.\nEl combate nunca termina. Cayó en la guerra, esa arena sin ganadores. Los cadáveres de amigos y enemigos fueron su salvación; su propia sangre, su elegía.",
         "FR": "L’un des porteurs de cette arme était un guerrier, récompensé par le Père Ask pour sa bravoure. Il ne cessait de défier des adversaires toujours plus puissants, portant ses défis jusqu’aux terres lointaines. Son nom devint synonyme de puissance, mais peu à peu, il ne put plus supporter une vie sans combat.\nLa guerre ne connaît pas de répit. Il y trouva la mort — dans cette arène sans vainqueur. Les corps des alliés comme des ennemis furent sa rédemption, et son propre sang, son chant funèbre.",
         "JP": "武器を手にした者のひとりは戦士だった。父なる神はその勇猛を称えた。彼はより強き者へ、さらに強き者へと挑み続け、幾通もの果たし状が遠方へ送り届けられた。彼の名は強さの代名詞となったが、やがて彼は戦いのない日々に馴染めなくなっていった。\n 戦いは終わることなく続く。勝者なき闘技場たる戦場で、彼は倒れた。敵味方の屍は彼にとっての救いであり、自らの鮮血は彼自身への挽歌となった。",
-        "KR": "무기를 손에 넣은 자 중 하나는 전사였다. 아버지 신에게서 용맹하다는 찬사를 받은 그는 머나먼 땅에 끊임없이 도전장을 보내며, 쉼 없이 강자를 찾아 도전했고, 그의 이름은 강함의 대명사가 되었다. 그러나, 그는 점차 싸우지 않는 삶을 견딜 수 없게 되었다.\n끝없는 투쟁을 벌이던 그 전사는, 널브러진 시체를 구원 삼고, 자신이 흘린 피를 장송곡 삼아, 끝내 승자 없는 투기장 같은 전쟁터에서 쓰러지고 말았다.",
+        "KR": "무기를 손에 넣은 이들 중 한 명은 전사였다. 아버지 신에게서 용맹하다는 찬사를 받은 그는 머나먼 땅에 끊임없이 도전장을 보내며, 쉼 없이 강자를 찾아 도전했고, 그의 이름은 강함의 대명사가 되었다. 그러나, 그는 점차 싸우지 않는 삶을 견딜 수 없게 되었다.\n끝없는 투쟁을 벌이던 그 전사는, 널브러진 시체를 구원 삼고, 자신이 흘린 피를 장송곡 삼아, 끝내 승자 없는 투기장 같은 전쟁터에서 쓰러지고 말았다.",
         "TC": "獲得武器的其中一人是名戰士，父神嘉獎他的驍勇。他不斷向著更強者、再更強者挑戰，一封封戰書不斷送至遠方。他的名字成為強大的代名詞，但他漸漸無法習慣沒有戰鬥的生活。\n戰鬥永無止息。他倒在戰爭——這場沒有贏家的角斗場裡。敵友的屍骸是他的救贖，自己的鮮血是他的輓歌。"
       },
       "icon": {
@@ -51615,9 +52396,9 @@
         "DE": "Gewöhnliches Großschwert. Aus dem billigsten Metall hergestellt, also ist es nicht schlimm, wenn es zerbricht.",
         "EN": "UI_WEAPON_DESC_10399",
         "ES": "Un mandoble común, forjado en metal barato, incluso si se rompe no representa una gran pérdida.",
-        "FR": "L’un des porteurs de cette arme était un roi. Le Dieu-Père récompensa son ambition. Le peuple se tenait derrière lui, acclamant son nom et célébrant ses conquêtes.\nIl ne cessa jamais d’avancer sur la voie de la conquête, convaincu que toujours plus de gens se rallieraient à lui. Mais ses ennemis, eux, ne firent que se multiplier. Il finit encerclé sur son trône, embrasa un grand feu et se réduisit en cendres avec sa gloire.",
+        "FR": "L’un des porteurs de cette arme était un roi. Père Ask récompensa son ambition. Le peuple se tenait derrière lui, acclamant son nom et célébrant ses conquêtes.\nIl ne cessa jamais d’avancer sur la voie de la conquête, convaincu que toujours plus de gens se rallieraient à lui. Mais ses ennemis, eux, ne firent que se multiplier. Il finit encerclé sur son trône, embrasa un grand feu et se réduisit en cendres avec sa gloire.",
         "JP": "武器を手にした者の一人は、君王であった。父なる神はその野心を称えた。人々は彼の背後に立ち、その威名に歓呼し、その征服を讃えた。\n王は征服の歩みを止めず、さらに多くの者が自分に付き従うと固く信じていた。だが、彼の敵はますます増えていった。最後には玉座の上で包囲され、烈火を燃やし、自らと栄光を灰へと焼き尽くした。",
-        "KR": "이 무기를 손에 넣은 자 중 한 명은 왕이었고, 아버지 신은 그의 야망을 치하했다. 사람들은 그의 뒤에 서서 그의 위명을 환호하고, 그의 정복을 찬양했다.\n그는 정복의 발걸음을 멈추지 않았고, 더 많은 추종자를 얻을 것이라 굳게 믿었지만, 적은 점점 더 늘어만 갔다. 결국 그는 왕좌 위에서 포위당했고, 타오르는 불길 속에서 자신과 영광을 함께 재로 태워버렸다.",
+        "KR": "무기를 손에 넣은 이들 중 한 명은 왕이었고, 아버지 신은 그의 야망을 치하했다. 사람들은 그의 뒤에 서서 그의 위명을 환호하고, 그의 정복을 찬양했다.\n그는 정복의 발걸음을 멈추지 않았고, 더 많은 추종자를 얻을 것이라 굳게 믿었지만, 적은 점점 더 늘어만 갔다. 결국 그는 왕좌 위에서 포위당했고, 타오르는 불길 속에서 자신과 영광을 함께 재로 태워버렸다.",
         "TC": "獲得武器的其中一人是名君王，父神嘉獎他的野心。人們站在他的身後，歡呼他的威名，歌頌他的征服。\n他沒有停下征服的腳步，他堅信自己會擁有更多的簇擁，但他的敵人卻越來越多。最終他被包圍在王座之上，燃起烈火，將自己和榮耀一起焚成灰燼。"
       },
       "icon": {
@@ -52725,8 +53506,8 @@
     "productQuantity": 1,
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Draft/T_Draft_Dualblade_Wusheng.T_Draft_Dualblade_Wusheng",
-      "publicPath": null,
-      "placeholderPath": "/marker-default.svg"
+      "publicPath": "/assets/items/drafts/T_Draft_Dualblade_Wusheng.png",
+      "placeholderPath": null
     },
     "product": {
       "type": "Weapon",
@@ -52755,8 +53536,8 @@
       },
       "icon": {
         "gamePath": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Dualblade_Wusheng",
-        "publicPath": null,
-        "placeholderPath": "/marker-default.svg"
+        "publicPath": "/assets/items/weapons/T_Head_Dualblade_Wusheng.png",
+        "placeholderPath": null
       },
       "metadata": {
         "classType": "Melee",
@@ -52781,9 +53562,9 @@
           104
         ],
         "bigIconGamePath": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Dualblade_Wusheng",
-        "bigIconPublicPath": null,
+        "bigIconPublicPath": "/assets/items/weapons/T_Bust_Dualblade_Wusheng.png",
         "gachaIconGamePath": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Dualblade_Wusheng",
-        "gachaIconPublicPath": null,
+        "gachaIconPublicPath": "/assets/items/weapons/T_Gacha_Dualblade_Wusheng.png",
         "releaseVersion": 160,
         "openVersion": 16
       }
@@ -53789,8 +54570,8 @@
     "productQuantity": 1,
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Draft/T_Draft_Swordwhip_Shengxue.T_Draft_Swordwhip_Shengxue",
-      "publicPath": null,
-      "placeholderPath": "/marker-default.svg"
+      "publicPath": "/assets/items/drafts/T_Draft_Swordwhip_Shengxue.png",
+      "placeholderPath": null
     },
     "product": {
       "type": "Weapon",
@@ -58071,6 +58852,246 @@
     }
   },
   {
+    "id": "draft-920306",
+    "draftId": 920306,
+    "productType": "Weapon",
+    "productId": 20306,
+    "productQuantity": 1,
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Draft/T_Draft_Cannon_Huozhe.T_Draft_Cannon_Huozhe",
+      "publicPath": "/assets/items/drafts/T_Draft_Cannon_Huozhe.png",
+      "placeholderPath": null
+    },
+    "product": {
+      "type": "Weapon",
+      "id": 20306,
+      "quantity": 1,
+      "sourceCategory": "weapons",
+      "href": "/items/weapons/weapons-20306",
+      "rarity": 5,
+      "names": {
+        "DE": "Blessed Burden",
+        "EN": "Blessed Burden",
+        "ES": "Blessed Burden",
+        "FR": "Le poids de vivre",
+        "JP": "生きる重さ",
+        "KR": "살아간다는 무게",
+        "TC": "活著的重量"
+      },
+      "descriptions": {
+        "DE": "UI_WEAPON_DESC_20306",
+        "EN": "UI_WEAPON_DESC_20306",
+        "ES": "UI_WEAPON_DESC_20306",
+        "FR": "UI_WEAPON_DESC_20306",
+        "JP": "UI_WEAPON_DESC_20306",
+        "KR": "UI_WEAPON_DESC_20306",
+        "TC": "UI_WEAPON_DESC_20306"
+      },
+      "icon": {
+        "gamePath": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Cannon_Huozhe",
+        "publicPath": "/assets/items/weapons/T_Head_Cannon_Huozhe.png",
+        "placeholderPath": null
+      },
+      "metadata": {
+        "classType": "Ranged",
+        "classTextKey": "UI_Armory_Longrange",
+        "classIconGamePath": "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponTypeLongRange.T_Armory_WeaponTypeLongRange",
+        "classIconPublicPath": "/assets/items/weapon-types/T_Armory_WeaponTypeLongRange.png",
+        "classLabelEn": "Ranged Weapons",
+        "subtype": "Cannon",
+        "subtypeNormalized": "Cannon",
+        "subtypeTextKey": "WeaponType_Cannon",
+        "subtypeIconGamePath": "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponType_Cannon.T_Armory_WeaponType_Cannon",
+        "subtypeIconPublicPath": "/assets/items/weapon-types/T_Armory_WeaponType_Cannon.png",
+        "subtypeLabelEn": "Grenade Launcher",
+        "guiPathVariableName": "Huozhe",
+        "weaponMaxLevel": 80,
+        "weaponToCoinType": 101,
+        "weaponValue": 10000,
+        "collectRewardExp": 400,
+        "decomposeReward": 20311,
+        "sortPriority": 20306,
+        "skinApplicationTypes": [
+          203
+        ],
+        "bigIconGamePath": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Cannon_Huozhe",
+        "bigIconPublicPath": "/assets/items/weapons/T_Bust_Cannon_Huozhe.png",
+        "gachaIconGamePath": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Cannon_Huozhe",
+        "gachaIconPublicPath": "/assets/items/weapons/T_Gacha_Cannon_Huozhe.png",
+        "releaseVersion": 170,
+        "openVersion": 17
+      }
+    },
+    "ingredients": [
+      {
+        "type": "Resource",
+        "id": 20028,
+        "quantity": 2,
+        "sourceCategory": "resources",
+        "href": "/items/resources/resources-20028",
+        "rarity": 5,
+        "names": {
+          "DE": "Bombe",
+          "EN": "Projectile",
+          "ES": "Bomba",
+          "FR": "Projectile explosif",
+          "JP": "拡散弾",
+          "KR": "폭탄",
+          "TC": "爆彈"
+        },
+        "descriptions": {
+          "DE": "Aus dem Hyperboreischen Imperium: eine modifizierte Explosivkugel. Je nach Einsatzzweck stehen verschiedene austauschbare Geschossspitzen zur Verfügung. Geübte Schützen nutzen deren Eigenheiten, um die Detonation genau dort auszulösen, wo sie es haben wollen.",
+          "EN": "Produced from the Hyperborean Empire, a type of modified bullet that can explode. Equipped with a variety of interchangeable heads for different functional needs, experts can use different bullet characteristics to explode exactly where they want.",
+          "ES": "Munición modificada, procedente del Imperio Hiperbóreo, con capacidades explosivas. Según las necesidades, se le puede incorporar múltiples cabezas intercambiables. Los usuarios expertos pueden aprovechar las características de cada tipo de cabezal para hacer que el proyectil explote en el lugar deseado.",
+          "FR": "Munition modifiée capable d’exploser, équipée de têtes interchangeables selon les besoins. Les tireurs expérimentés savent exploiter leurs différentes propriétés pour faire détoner l’explosion exactement à l’endroit souhaité.",
+          "JP": "ヒュペリア帝国が製造した、破裂する改造弾。用途に応じて様々な弾頭に交換可能。熟練者は、弾頭の特性を駆使して、弾丸を希望の場所で爆発させる技術を持つ。",
+          "KR": "휘페르보레아 제국에서 발사 시 터지도록 만든 개조 탄환. 필요에 따라 다양한 종류의 탄두로 교체할 수 있으며, 숙련자는 다양한 탄두 특성을 활용하여 탄환을 원하는 곳에서 폭발 시킬 수 있다.",
+          "TC": "出自海伯利亞帝國，一種可以爆裂開的改造子彈，根據不同的功能需求，配置了多種可更換的彈頭，老手可以運用不同的彈頭特性使子彈爆炸在任何他們想要的地方。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resource_Forge_Product02.T_Resource_Forge_Product02",
+          "publicPath": "/assets/items/resources/T_Resource_Forge_Product02.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {
+          "resourceSType": "DraftConsume"
+        }
+      },
+      {
+        "type": "Resource",
+        "id": 12178,
+        "quantity": 1,
+        "sourceCategory": "resources",
+        "href": "/items/resources/resources-12178",
+        "rarity": 5,
+        "names": {
+          "DE": "Blessed Burden: Bolt",
+          "EN": "Blessed Burden: Bolt",
+          "ES": "Blessed Burden: Bolt",
+          "FR": "Le poids de vivre : Verrou",
+          "JP": "生きる重さの銃把",
+          "KR": "살아간다는 무게 방아쇠",
+          "TC": "活著的重量的槍機"
+        },
+        "descriptions": {
+          "DE": "Crafted with precision from the blueprint of Blessed Burden. There is no turning back once the trigger is pulled, much like the commitment that seals a decisive moment.",
+          "EN": "Crafted with precision from the blueprint of Blessed Burden. There is no turning back once the trigger is pulled, much like the commitment that seals a decisive moment.",
+          "ES": "Crafted with precision from the blueprint of Blessed Burden. There is no turning back once the trigger is pulled, much like the commitment that seals a decisive moment.",
+          "FR": "Assemblé selon les plans de « Le poids de vivre », ce verrou ne laisse aucun retour possible une fois la détente pressée — comme une décision que l’on doit porter jusqu’au bout.",
+          "JP": "設計図に基づき製造された「生きる重さ」のパーツ。引き金を引けばもう後戻りはできない。――決意を下す瞬間のように。",
+          "KR": "도면대로 정확히 제작한 살아간다는 무게 부품. 일단 방아쇠를 당기면, 마치 결심을 내린 그 순간처럼 탄환은 절대 뒤를 돌아보지 않는다.",
+          "TC": "嚴格按照圖紙打造的活著的重量部件。一旦扣下扳機，子彈就不會回頭——就如同人下定決心的那一瞬。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Range_Weapon_Part02.T_Range_Weapon_Part02",
+          "publicPath": "/assets/items/resources/T_Range_Weapon_Part02.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {
+          "resourceSType": "Material"
+        }
+      },
+      {
+        "type": "Resource",
+        "id": 12179,
+        "quantity": 1,
+        "sourceCategory": "resources",
+        "href": "/items/resources/resources-12179",
+        "rarity": 5,
+        "names": {
+          "DE": "Blessed Burden: Frame",
+          "EN": "Blessed Burden: Frame",
+          "ES": "Blessed Burden: Frame",
+          "FR": "Le poids de vivre : Armature",
+          "JP": "生きる重さの銃底",
+          "KR": "살아간다는 무게 총신",
+          "TC": "活著的重量的槍身"
+        },
+        "descriptions": {
+          "DE": "Crafted with precision from the blueprint of Blessed Burden. Sturdy and robust, it doubles effectively as a blunt instrument or a throwable weapon when out of bullets.",
+          "EN": "Crafted with precision from the blueprint of Blessed Burden. Sturdy and robust, it doubles effectively as a blunt instrument or a throwable weapon when out of bullets.",
+          "ES": "Crafted with precision from the blueprint of Blessed Burden. Sturdy and robust, it doubles effectively as a blunt instrument or a throwable weapon when out of bullets.",
+          "FR": "Forgé selon les plans de « Le poids de vivre », ce corps d’acier possède une solidité redoutable. Même à court de munitions, il reste une arme improvisée fiable — assez lourde pour rappeler que survivre aussi a un poids.",
+          "JP": "設計図に基づき製造された「生きる重さ」のパーツ。鋼鉄製で非常に硬い。弾丸が空になっても鈍器や投げ道具として使用できる。",
+          "KR": "도면대로 정확히 제작한 살아간다는 무게 부품. 강철로 만들어 매우 단단하기 때문에 탄환이 부족할 때 둔기 또는 투척물로 사용할 수 있다.",
+          "TC": "嚴格按照圖紙打造的活著的重量部件。由鋼鐵打造，足夠堅硬。當子彈打空，也是一件趁手的鈍器或投擲物。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Range_Weapon_Part03.T_Range_Weapon_Part03",
+          "publicPath": "/assets/items/resources/T_Range_Weapon_Part03.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {
+          "resourceSType": "Material"
+        }
+      },
+      {
+        "type": "Resource",
+        "id": 12180,
+        "quantity": 1,
+        "sourceCategory": "resources",
+        "href": "/items/resources/resources-12180",
+        "rarity": 5,
+        "names": {
+          "DE": "Blessed Burden: Barrel",
+          "EN": "Blessed Burden: Barrel",
+          "ES": "Blessed Burden: Barrel",
+          "FR": "Le poids de vivre : Canon",
+          "JP": "生きる重さの銃身",
+          "KR": "살아간다는 무게 총열",
+          "TC": "活著的重量的槍管"
+        },
+        "descriptions": {
+          "DE": "Crafted with precision from the blueprint of Blessed Burden. Bullets burst forth from here, as both the barrel and the warrior's heart blaze with unrelenting fervour.",
+          "EN": "Crafted with precision from the blueprint of Blessed Burden. Bullets burst forth from here, as both the barrel and the warrior's heart blaze with unrelenting fervour.",
+          "ES": "Crafted with precision from the blueprint of Blessed Burden. Bullets burst forth from here, as both the barrel and the warrior's heart blaze with unrelenting fervour.",
+          "FR": "Conçu selon les plans de « Le poids de vivre », ce canon déverse les balles dans une rafale brûlante — et à chaque tir, le métal comme le cœur du combattant supportent le même brasier.",
+          "JP": "設計図に基づき製造された「生きる重さ」のパーツ。弾丸が飛び出すとき、射撃手の心は銃身と同じくらい熱くなる。",
+          "KR": "도면대로 정확히 제작한 살아간다는 무게 부품. 탄환이 쏘아져 나갈 때면, 전사의 심장은 그 총열처럼 뜨거워진다.",
+          "TC": "嚴格按照圖紙打造的活著的重量部件。子彈從這裡傾泄而出，每到此時，槍管與戰士的心同樣滾燙。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Range_Weapon_Part01.T_Range_Weapon_Part01",
+          "publicPath": "/assets/items/resources/T_Range_Weapon_Part01.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {
+          "resourceSType": "Material"
+        }
+      }
+    ],
+    "crafting": {
+      "durationSec": 180,
+      "batch": false,
+      "rarity": 5,
+      "foundryCostByCoinType": {
+        "101": 500000
+      },
+      "resourceToCoinType": null,
+      "resourceValue": -1,
+      "accessKeys": [
+        "Walnut"
+      ],
+      "releaseVersion": 150,
+      "openVersion": null,
+      "showInBag": 1,
+      "showInDraftArchive": true
+    },
+    "fields": {
+      "DraftId": 920306,
+      "ProductId": 20306,
+      "ProductNum": 1,
+      "ProductType": "Weapon",
+      "Rarity": 5,
+      "ReleaseVersion": 150,
+      "ResourceValue": -1,
+      "ShowInBag": 1,
+      "ShowInDraftArchive": true,
+      "Sound": "SOUND_ITEM_PAPER",
+      "Time": 180
+    }
+  },
+  {
     "id": "draft-920401",
     "draftId": 920401,
     "productType": "Weapon",
@@ -62183,7 +63204,7 @@
         "ES": "Una de las que recibió un arma era una gran sanadora a quien el Padre Ask premió por su compasión. Resonaba con las cuerdas emocionales de la gente y usaba el ritmo de su música para calmar los corazones agitados.\nPero el mundo seguía lleno de sufrimientos que brotaban como espinas, así que elaboró venenos para purgar el mundo de la carne de la que nacía tal dolor.\nAl final, las frágiles cuerdas se rompieron al no poder soportar más. Fue obligada a beber el veneno que ella misma había preparado, y se hundió en una larga noche en la que no podía ni dormir ni despertar.",
         "FR": "L’une des porteuses de cette arme était une guérisseuse, récompensée par le Père Ask pour sa compassion. Elle faisait vibrer les cordes des émotions humaines, apaisant les cœurs troublés par les harmonies de son instrument.\nMais le monde restait envahi par d’innombrables souffrances, se propageant comme des ronces. Alors elle distilla un poison, décidée à éradiquer jusqu’aux corps mêmes qui engendraient ces tourments.\nFinalement, les cordes fragiles ne purent en supporter davantage et se brisèrent. Elle fut contrainte d’ingérer le poison qu’elle avait elle-même préparé, sombrant dans une longue nuit où ni le sommeil ni l’éveil ne lui étaient plus accessibles.",
         "JP": "武器を手にした者のひとりは名医だった。父なる神はその慈悲を称えた。彼女は人々の心に張られた感情の弦と共鳴し、琴線の律動でざわめく心を鎮めた。\n だがこの世には、棘のように蔓延る苦しみがあまりにも多かった。ゆえに彼女は毒を精製し、その苦しみを生み出す肉体ごと取り除こうとした。\n やがて脆い琴弦はそれ以上に耐えきれず断ち切れ、彼女は自ら調合した毒を飲まされ、眠ることも醒めることもできない長い夜へと堕ちていった。",
-        "KR": "무기를 손에 넣은 자 중 하나는 뛰어난 의사였다. 아버지 신에게서 자비롭다는 찬사를 받은 그녀는 사람들의 감정과 공명하며, 그 떨림이 만들어내는 위로의 선율로 마음을 어루만졌다.\n그러나 현실의 고통은 가시덤불처럼 뻗어 나갔고, 그녀는 고통을 낳는 육신을 지워버리고자 맹독을 추출했다.\n감정을 지탱하던 가느다란 현은 끝내 버티지 못하고 끊어졌고, 그녀는 자신이 빚어낸 맹독을 삼킨 채 영원히 잠들지도 깨어나지도 못하는 기나긴 밤의 심연으로 추락해 버리고 말았다.",
+        "KR": "무기를 손에 넣은 이들 중 한 명은 뛰어난 의사였다. 아버지 신에게서 자비롭다는 찬사를 받은 그녀는 사람들의 감정과 공명하며, 그 떨림이 만들어내는 위로의 선율로 마음을 어루만졌다.\n그러나 현실의 고통은 가시덤불처럼 뻗어 나갔고, 그녀는 고통을 낳는 육신을 지워버리고자 맹독을 추출했다.\n감정을 지탱하던 가느다란 현은 끝내 버티지 못하고 끊어졌고, 그녀는 자신이 빚어낸 맹독을 삼킨 채 영원히 잠들지도 깨어나지도 못하는 기나긴 밤의 심연으로 추락해 버리고 말았다.",
         "TC": "獲得武器的其中一人是名良醫，父神嘉獎她的慈悲。她與人們心中的情感之弦共鳴，用琴弦波動的韻律撫慰躁動的心。\n可世間依舊有著如此多如棘刺般蔓生的痛苦，於是她萃出毒劑，將製造那些痛苦的身軀也一併清除。\n最終，脆弱的琴弦因無法承受更多而繃斷，她被灌下自己親手煉製的毒藥，墜入無法睡去也無法清醒的長夜。"
       },
       "icon": {
@@ -63276,6 +64297,246 @@
       "ProductType": "Weapon",
       "Rarity": 5,
       "ReleaseVersion": 100,
+      "ResourceValue": -1,
+      "ShowInBag": 1,
+      "ShowInDraftArchive": true,
+      "Sound": "SOUND_ITEM_PAPER",
+      "Time": 180
+    }
+  },
+  {
+    "id": "draft-920605",
+    "draftId": 920605,
+    "productType": "Weapon",
+    "productId": 20605,
+    "productQuantity": 1,
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Draft/T_Draft__Bow_Maojiang.T_Draft__Bow_Maojiang",
+      "publicPath": "/assets/items/drafts/T_Draft__Bow_Maojiang.png",
+      "placeholderPath": null
+    },
+    "product": {
+      "type": "Weapon",
+      "id": 20605,
+      "quantity": 1,
+      "sourceCategory": "weapons",
+      "href": "/items/weapons/weapons-20605",
+      "rarity": 5,
+      "names": {
+        "DE": "The Hatter's Banquet",
+        "EN": "The Hatter's Banquet",
+        "ES": "The Hatter's Banquet",
+        "FR": "Banquet du Chapelier",
+        "JP": "帽子屋の宴",
+        "KR": "모자 장인의 연회",
+        "TC": "帽匠的宴會"
+      },
+      "descriptions": {
+        "DE": "Come. Wander through the hollow of a withered tree and cross the sugar-frosted woods. Take your seat as music drifts through the air and playing cards flutter around you, then join the feast where the fairytale begins.",
+        "EN": "Come. Wander through the hollow of a withered tree and cross the sugar-frosted woods. Take your seat as music drifts through the air and playing cards flutter around you, then join the feast where the fairytale begins.",
+        "ES": "Come. Wander through the hollow of a withered tree and cross the sugar-frosted woods. Take your seat as music drifts through the air and playing cards flutter around you, then join the feast where the fairytale begins.",
+        "FR": "Venez, parcourons ensemble les arbres creux rongés par le temps et traversons les forêts couvertes de sucre glace. Puis, entourés de notes et de cartes à jouer, prenons place à ce banquet tout droit sorti d’un conte de fées.",
+        "JP": "さあ、おいで。朽ちた樹洞を巡り、砂糖菓子の森を抜けて。音符とトランプに囲まれた席へ腰を下ろし、このおとぎ話の宴に加わろう。",
+        "KR": "자, 시들어 버린 나무 구멍을 거닐며, 설탕옷을 두른 울창한 숲을 지나, 음표와 카드에 둘러싸인 자리에 앉아, 이 동화 같은 파티를 함께 즐기자.",
+        "TC": "來吧，一起漫遊枯朽的樹洞，穿越糖霜的密林，在音符與紙牌的環繞下落座，加入這場童話的宴會。"
+      },
+      "icon": {
+        "gamePath": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Bow_Maojiang",
+        "publicPath": "/assets/items/weapons/T_Head_Bow_Maojiang.png",
+        "placeholderPath": null
+      },
+      "metadata": {
+        "classType": "Ranged",
+        "classTextKey": "UI_Armory_Longrange",
+        "classIconGamePath": "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponTypeLongRange.T_Armory_WeaponTypeLongRange",
+        "classIconPublicPath": "/assets/items/weapon-types/T_Armory_WeaponTypeLongRange.png",
+        "classLabelEn": "Ranged Weapons",
+        "subtype": "Bow",
+        "subtypeNormalized": "Bow",
+        "subtypeTextKey": "WeaponType_Bow",
+        "subtypeIconGamePath": "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponType_Bow.T_Armory_WeaponType_Bow",
+        "subtypeIconPublicPath": "/assets/items/weapon-types/T_Armory_WeaponType_Bow.png",
+        "subtypeLabelEn": "Bow",
+        "guiPathVariableName": "Maojiang",
+        "weaponMaxLevel": 80,
+        "weaponToCoinType": 101,
+        "weaponValue": 10000,
+        "collectRewardExp": 400,
+        "decomposeReward": 20711,
+        "sortPriority": 20605,
+        "skinApplicationTypes": [
+          207
+        ],
+        "bigIconGamePath": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Bow_Maojiang",
+        "bigIconPublicPath": "/assets/items/weapons/T_Bust_Bow_Maojiang.png",
+        "gachaIconGamePath": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Bow_Maojiang",
+        "gachaIconPublicPath": "/assets/items/weapons/T_Gacha_Bow_Maojiang.png",
+        "releaseVersion": 170,
+        "openVersion": 17
+      }
+    },
+    "ingredients": [
+      {
+        "type": "Resource",
+        "id": 20028,
+        "quantity": 2,
+        "sourceCategory": "resources",
+        "href": "/items/resources/resources-20028",
+        "rarity": 5,
+        "names": {
+          "DE": "Bombe",
+          "EN": "Projectile",
+          "ES": "Bomba",
+          "FR": "Projectile explosif",
+          "JP": "拡散弾",
+          "KR": "폭탄",
+          "TC": "爆彈"
+        },
+        "descriptions": {
+          "DE": "Aus dem Hyperboreischen Imperium: eine modifizierte Explosivkugel. Je nach Einsatzzweck stehen verschiedene austauschbare Geschossspitzen zur Verfügung. Geübte Schützen nutzen deren Eigenheiten, um die Detonation genau dort auszulösen, wo sie es haben wollen.",
+          "EN": "Produced from the Hyperborean Empire, a type of modified bullet that can explode. Equipped with a variety of interchangeable heads for different functional needs, experts can use different bullet characteristics to explode exactly where they want.",
+          "ES": "Munición modificada, procedente del Imperio Hiperbóreo, con capacidades explosivas. Según las necesidades, se le puede incorporar múltiples cabezas intercambiables. Los usuarios expertos pueden aprovechar las características de cada tipo de cabezal para hacer que el proyectil explote en el lugar deseado.",
+          "FR": "Munition modifiée capable d’exploser, équipée de têtes interchangeables selon les besoins. Les tireurs expérimentés savent exploiter leurs différentes propriétés pour faire détoner l’explosion exactement à l’endroit souhaité.",
+          "JP": "ヒュペリア帝国が製造した、破裂する改造弾。用途に応じて様々な弾頭に交換可能。熟練者は、弾頭の特性を駆使して、弾丸を希望の場所で爆発させる技術を持つ。",
+          "KR": "휘페르보레아 제국에서 발사 시 터지도록 만든 개조 탄환. 필요에 따라 다양한 종류의 탄두로 교체할 수 있으며, 숙련자는 다양한 탄두 특성을 활용하여 탄환을 원하는 곳에서 폭발 시킬 수 있다.",
+          "TC": "出自海伯利亞帝國，一種可以爆裂開的改造子彈，根據不同的功能需求，配置了多種可更換的彈頭，老手可以運用不同的彈頭特性使子彈爆炸在任何他們想要的地方。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resource_Forge_Product02.T_Resource_Forge_Product02",
+          "publicPath": "/assets/items/resources/T_Resource_Forge_Product02.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {
+          "resourceSType": "DraftConsume"
+        }
+      },
+      {
+        "type": "Resource",
+        "id": 12173,
+        "quantity": 1,
+        "sourceCategory": "resources",
+        "href": "/items/resources/resources-12173",
+        "rarity": 5,
+        "names": {
+          "DE": "The Hatter's Banquet: Bowstring",
+          "EN": "The Hatter's Banquet: Bowstring",
+          "ES": "The Hatter's Banquet: Bowstring",
+          "FR": "Banquet du Chapelier : Corde d’arc",
+          "JP": "帽子屋の宴のストリング",
+          "KR": "모자 장인의 연회 활시위",
+          "TC": "帽匠的宴會的弓弦"
+        },
+        "descriptions": {
+          "DE": "Crafted with precision from the blueprint of The Hatter's Banquet. Like a tightly coiled spring, a mere touch on the string is enough to unleash a torrent of pent-up energy.",
+          "EN": "Crafted with precision from the blueprint of The Hatter's Banquet. Like a tightly coiled spring, a mere touch on the string is enough to unleash a torrent of pent-up energy.",
+          "ES": "Crafted with precision from the blueprint of The Hatter's Banquet. Like a tightly coiled spring, a mere touch on the string is enough to unleash a torrent of pent-up energy.",
+          "FR": "Façonnée selon les plans du Banquet du Chapelier, cette corde d’arc possède une élasticité redoutable. Telle un ressort prêt à bondir, elle libère au moindre contact toute la tension accumulée.",
+          "JP": "設計図に基づき製造された「帽子屋の宴」のパーツ。飛び跳ねる直前のバネのような反発力を持ち、ほんの少し触れるだけで、溜まった力が一気に解放される。",
+          "KR": "도면대로 정확히 제작한 모자 장인의 연회 부품. 강력한 탄성이 마치 힘을 잔뜩 모은 채 기다리는 스프링 같아서, 살짝이라도 건들면 모아진 힘을 전부 사용해 발사된다.",
+          "TC": "嚴格按照圖紙打造的帽匠的宴會部件。強大的回彈力讓它仿佛一個蓄勢待發的彈簧，稍一觸碰，便會將積壓的一切發射出去。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Melee_Weapon_Part03.T_Melee_Weapon_Part03",
+          "publicPath": "/assets/items/resources/T_Melee_Weapon_Part03.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {
+          "resourceSType": "Material"
+        }
+      },
+      {
+        "type": "Resource",
+        "id": 12174,
+        "quantity": 1,
+        "sourceCategory": "resources",
+        "href": "/items/resources/resources-12174",
+        "rarity": 5,
+        "names": {
+          "DE": "The Hatter's Banquet: Upper Limb",
+          "EN": "The Hatter's Banquet: Upper Limb",
+          "ES": "The Hatter's Banquet: Upper Limb",
+          "FR": "Banquet du Chapelier : Bras d’arc supérieur",
+          "JP": "帽子屋の宴の上リム",
+          "KR": "모자 장인의 연회 상단 활대",
+          "TC": "帽匠的宴會的上弓臂"
+        },
+        "descriptions": {
+          "DE": "Crafted with precision from the blueprint of The Hatter's Banquet. The graceful curve not only withstands immense stress but also enhances the bow's resilience, ensuring efficient and precise energy transfer.",
+          "EN": "Crafted with precision from the blueprint of The Hatter's Banquet. The graceful curve not only withstands immense stress but also enhances the bow's resilience, ensuring efficient and precise energy transfer.",
+          "ES": "Crafted with precision from the blueprint of The Hatter's Banquet. The graceful curve not only withstands immense stress but also enhances the bow's resilience, ensuring efficient and precise energy transfer.",
+          "FR": "Façonné selon les plans du Banquet du Chapelier, ce bras d’arc allie souplesse et résistance. Sa courbure harmonieuse canalise la tension comme si chaque tir invitait au début d’un festin absurde.",
+          "JP": "設計図に基づき製造された「帽子屋の宴」のパーツ。調和の取れた曲線が、圧縮強度と耐屈曲性を実現し、力の伝達もより集中的かつ効率的になっている。",
+          "KR": "도면대로 정확히 제작한 모자 장인의 연회 부품. 완벽한 호는 뛰어난 저항 능력을 자랑하며, 힘을 더 집중적이고 효율적으로 전달하도록 한다.",
+          "TC": "嚴格按照圖紙打造的帽匠的宴會部件。和諧的弧度彰顯著其出色的抗壓抗彎能力，使力的傳遞變得更加集中而高效。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Melee_Weapon_Part01.T_Melee_Weapon_Part01",
+          "publicPath": "/assets/items/resources/T_Melee_Weapon_Part01.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {
+          "resourceSType": "Material"
+        }
+      },
+      {
+        "type": "Resource",
+        "id": 12175,
+        "quantity": 1,
+        "sourceCategory": "resources",
+        "href": "/items/resources/resources-12175",
+        "rarity": 5,
+        "names": {
+          "DE": "The Hatter's Banquet: Lower Limb",
+          "EN": "The Hatter's Banquet: Lower Limb",
+          "ES": "The Hatter's Banquet: Lower Limb",
+          "FR": "Banquet du Chapelier : Bras d’arc inférieur",
+          "JP": "帽子屋の宴の下リム",
+          "KR": "모자 장인의 연회 하단 활대",
+          "TC": "帽匠的宴會的下弓臂"
+        },
+        "descriptions": {
+          "DE": "Crafted with precision from the blueprint of The Hatter's Banquet. The graceful curve not only withstands immense stress but also enhances the bow's resilience, ensuring efficient and precise energy transfer.",
+          "EN": "Crafted with precision from the blueprint of The Hatter's Banquet. The graceful curve not only withstands immense stress but also enhances the bow's resilience, ensuring efficient and precise energy transfer.",
+          "ES": "Crafted with precision from the blueprint of The Hatter's Banquet. The graceful curve not only withstands immense stress but also enhances the bow's resilience, ensuring efficient and precise energy transfer.",
+          "FR": "Façonné selon les plans du Banquet du Chapelier, ce bras d’arc allie souplesse et résistance. Sa courbure harmonieuse canalise la tension comme si chaque tir invitait au début d’un festin absurde.",
+          "JP": "設計図に基づき製造された「帽子屋の宴」のパーツ。調和の取れた曲線が、圧縮強度と耐屈曲性を実現し、力の伝達もより集中的かつ効率的になっている。",
+          "KR": "도면대로 정확히 제작한 모자 장인의 연회 부품. 완벽한 호는 뛰어난 저항 능력을 자랑하며, 힘을 더 집중적이고 효율적으로 전달하도록 한다.",
+          "TC": "嚴格按照圖紙打造的帽匠的宴會部件。和諧的弧度彰顯著其出色的抗壓抗彎能力，使力的傳遞變得更加集中而高效。"
+        },
+        "icon": {
+          "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Melee_Weapon_Part01.T_Melee_Weapon_Part01",
+          "publicPath": "/assets/items/resources/T_Melee_Weapon_Part01.png",
+          "placeholderPath": "/marker-default.svg"
+        },
+        "metadata": {
+          "resourceSType": "Material"
+        }
+      }
+    ],
+    "crafting": {
+      "durationSec": 180,
+      "batch": false,
+      "rarity": 5,
+      "foundryCostByCoinType": {
+        "101": 280000
+      },
+      "resourceToCoinType": null,
+      "resourceValue": -1,
+      "accessKeys": [
+        "Walnut"
+      ],
+      "releaseVersion": 150,
+      "openVersion": null,
+      "showInBag": 1,
+      "showInDraftArchive": true
+    },
+    "fields": {
+      "DraftId": 920605,
+      "ProductId": 20605,
+      "ProductNum": 1,
+      "ProductType": "Weapon",
+      "Rarity": 5,
+      "ReleaseVersion": 150,
       "ResourceValue": -1,
       "ShowInBag": 1,
       "ShowInDraftArchive": true,

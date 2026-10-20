@@ -12744,6 +12744,330 @@
     }
   },
   {
+    "id": "resources-4007",
+    "categoryId": "resources",
+    "modId": 4007,
+    "archiveId": null,
+    "stats": {
+      "rarity": 5,
+      "polarity": null,
+      "maxLevel": null,
+      "cost": null,
+      "openVersion": null,
+      "releaseVersion": null
+    },
+    "textKeys": {
+      "modNameKey": "RESOURCE_NAME_4007",
+      "descriptionKey": "RESOURCE_DESC_4007",
+      "demonWedgeKey": null,
+      "functionKey": "RESOURCE_FUNCTION_GUILD_7",
+      "passiveEffectsDescKey": null,
+      "affinityNameKey": null,
+      "archiveNameKey": null
+    },
+    "affinity": {
+      "id": null,
+      "nameKey": null,
+      "char": null,
+      "icon": {
+        "gamePath": null,
+        "publicPath": null,
+        "placeholderPath": null,
+        "candidates": [],
+        "allMatches": []
+      }
+    },
+    "typeCompatibility": {
+      "applicationType": null,
+      "textKeys": [],
+      "tags": []
+    },
+    "tolerance": {
+      "baseCost": null,
+      "costChange": null,
+      "maxLevel": 0,
+      "valuesByLevel": {
+        "0": null
+      }
+    },
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resource_Rename_Guild.T_Resource_Rename_Guild",
+      "publicPath": "/assets/items/resources/T_Resource_Rename_Guild.png",
+      "placeholderPath": null,
+      "candidates": [
+        "T_Resource_Rename_Guild",
+        "Resource_Rename_Guild"
+      ],
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resource_Rename_Guild.png"
+      ]
+    },
+    "scaling": {
+      "defaultLevel": 0,
+      "maxLevel": 0,
+      "availableLevels": [
+        0
+      ],
+      "valuesByLevel": {
+        "0": {}
+      },
+      "attributesByLevel": {
+        "0": []
+      }
+    },
+    "translations": {
+      "DE": {
+        "modName": "Guild Renaming Agreement",
+        "description": "Use to immediately rename your Guild",
+        "demonWedgeName": null,
+        "functionLabel": "Rename your Guild",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "EN": {
+        "modName": "Guild Renaming Agreement",
+        "description": "Use to immediately rename your Guild",
+        "demonWedgeName": null,
+        "functionLabel": "Rename your Guild",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "ES": {
+        "modName": "Guild Renaming Agreement",
+        "description": "Use to immediately rename your Guild",
+        "demonWedgeName": null,
+        "functionLabel": "Rename your Guild",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "FR": {
+        "modName": "Acte de renommage de guilde",
+        "description": "Après utilisation, permet de changer immédiatement le nom de la guilde",
+        "demonWedgeName": null,
+        "functionLabel": "Permet de changer le nom de la guilde",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "JP": {
+        "modName": "協会名称変更同意書",
+        "description": "使用すると、協会名をすぐに変更できる",
+        "demonWedgeName": null,
+        "functionLabel": "協会名を変更できる",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "KR": {
+        "modName": "길드명 변경 협약서",
+        "description": "사용 시 즉시 길드명을 변경할 수 있다.",
+        "demonWedgeName": null,
+        "functionLabel": "길드명 변경 가능",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "TC": {
+        "modName": "協會更名協議",
+        "description": "使用後可立即變更協會的名稱",
+        "demonWedgeName": null,
+        "functionLabel": "可變更協會名稱",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      }
+    },
+    "fields": {
+      "AccessKey": "T.RT_3",
+      "DetailDes": "RESOURCE_DESC_4007",
+      "ExcludeCollect": true,
+      "ExcludeCollectServer": true,
+      "FunctionDes": "RESOURCE_FUNCTION_GUILD_7",
+      "Icon": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resource_Rename_Guild.T_Resource_Rename_Guild",
+      "IpDes": "RESOURCE_TEXT_4007",
+      "MaterialClassify": 7,
+      "Rarity": 5,
+      "ResourceId": 4007,
+      "ResourceName": "RESOURCE_NAME_4007",
+      "ResourceValue": -1,
+      "Sound": "SOUND_ITEM_NORMAL",
+      "Type": "Ordinary",
+      "UseEffectType": "ChangeGuildName"
+    }
+  },
+  {
+    "id": "resources-4008",
+    "categoryId": "resources",
+    "modId": 4008,
+    "archiveId": null,
+    "stats": {
+      "rarity": 5,
+      "polarity": null,
+      "maxLevel": null,
+      "cost": null,
+      "openVersion": null,
+      "releaseVersion": null
+    },
+    "textKeys": {
+      "modNameKey": "RESOURCE_NAME_4008",
+      "descriptionKey": "RESOURCE_DESC_4008",
+      "demonWedgeKey": null,
+      "functionKey": "RESOURCE_FUNCTION_GUILD_8",
+      "passiveEffectsDescKey": null,
+      "affinityNameKey": null,
+      "archiveNameKey": null
+    },
+    "affinity": {
+      "id": null,
+      "nameKey": null,
+      "char": null,
+      "icon": {
+        "gamePath": null,
+        "publicPath": null,
+        "placeholderPath": null,
+        "candidates": [],
+        "allMatches": []
+      }
+    },
+    "typeCompatibility": {
+      "applicationType": null,
+      "textKeys": [],
+      "tags": []
+    },
+    "tolerance": {
+      "baseCost": null,
+      "costChange": null,
+      "maxLevel": 0,
+      "valuesByLevel": {
+        "0": null
+      }
+    },
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resource_Rename_Char.T_Resource_Rename_Char",
+      "publicPath": "/assets/items/resources/T_Resource_Rename_Char.png",
+      "placeholderPath": null,
+      "candidates": [
+        "T_Resource_Rename_Char",
+        "Resource_Rename_Char"
+      ],
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resource_Rename_Char.png"
+      ]
+    },
+    "scaling": {
+      "defaultLevel": 0,
+      "maxLevel": 0,
+      "availableLevels": [
+        0
+      ],
+      "valuesByLevel": {
+        "0": {}
+      },
+      "attributesByLevel": {
+        "0": []
+      }
+    },
+    "translations": {
+      "DE": {
+        "modName": "Rename Card",
+        "description": "Use to immediately rename your Phoxhunter",
+        "demonWedgeName": null,
+        "functionLabel": "Rename your Phoxhunter",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "EN": {
+        "modName": "Rename Card",
+        "description": "Use to immediately rename your Phoxhunter",
+        "demonWedgeName": null,
+        "functionLabel": "Rename your Phoxhunter",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "ES": {
+        "modName": "Rename Card",
+        "description": "Use to immediately rename your Phoxhunter",
+        "demonWedgeName": null,
+        "functionLabel": "Rename your Phoxhunter",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "FR": {
+        "modName": "Carte de renommage",
+        "description": "Après utilisation, permet de changer immédiatement le nom du Chasseur de Phoxène",
+        "demonWedgeName": null,
+        "functionLabel": "Permet de changer le nom du Chasseur de Phoxène",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "JP": {
+        "modName": "名前変更カード",
+        "description": "使用すると、月狩り人の名前をすぐに変更できる",
+        "demonWedgeName": null,
+        "functionLabel": "月狩り人の名前を変更できる",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "KR": {
+        "modName": "이름 변경 카드",
+        "description": "사용 시 즉시 월석 사냥꾼의 이름을 변경할 수 있다.",
+        "demonWedgeName": null,
+        "functionLabel": "월석 사냥꾼 이름 변경 가능",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "TC": {
+        "modName": "更名卡",
+        "description": "使用後可立即變更狩月人的名字",
+        "demonWedgeName": null,
+        "functionLabel": "可變更狩月人名字",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      }
+    },
+    "fields": {
+      "AccessKey": "T.RT_3",
+      "DetailDes": "RESOURCE_DESC_4008",
+      "ExcludeCollect": true,
+      "ExcludeCollectServer": true,
+      "FunctionDes": "RESOURCE_FUNCTION_GUILD_8",
+      "Icon": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resource_Rename_Char.T_Resource_Rename_Char",
+      "IpDes": "RESOURCE_TEXT_4008",
+      "MaterialClassify": 7,
+      "Rarity": 5,
+      "ResourceId": 4008,
+      "ResourceName": "RESOURCE_NAME_4008",
+      "ResourceValue": -1,
+      "Sound": "SOUND_ITEM_NORMAL",
+      "Type": "Ordinary",
+      "UseEffectType": "ChangeName"
+    }
+  },
+  {
     "id": "resources-10001",
     "categoryId": "resources",
     "modId": 10001,
@@ -50095,6 +50419,8 @@
     "fields": {
       "AccessKey": "T.RT_24",
       "DetailDes": "RESOURCE_DESC_12170",
+      "ExcludeCollect": true,
+      "ExcludeCollectServer": true,
       "FunctionDes": "RESOURCE_FUNCTION_FORGING",
       "Icon": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Melee_Weapon_Part01.T_Melee_Weapon_Part01",
       "IpDes": "RESOURCE_TEXT_wobing",
@@ -50256,6 +50582,8 @@
     "fields": {
       "AccessKey": "T.RT_24",
       "DetailDes": "RESOURCE_DESC_12171",
+      "ExcludeCollect": true,
+      "ExcludeCollectServer": true,
       "FunctionDes": "RESOURCE_FUNCTION_FORGING",
       "Icon": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Melee_Weapon_Part02.T_Melee_Weapon_Part02",
       "IpDes": "RESOURCE_TEXT_daoren",
@@ -50417,6 +50745,8 @@
     "fields": {
       "AccessKey": "T.RT_24",
       "DetailDes": "RESOURCE_DESC_12172",
+      "ExcludeCollect": true,
+      "ExcludeCollectServer": true,
       "FunctionDes": "RESOURCE_FUNCTION_FORGING",
       "Icon": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Melee_Weapon_Part02.T_Melee_Weapon_Part02",
       "IpDes": "RESOURCE_TEXT_daoren",
@@ -50578,6 +50908,8 @@
     "fields": {
       "AccessKey": "T.RT_24",
       "DetailDes": "RESOURCE_DESC_12173",
+      "ExcludeCollect": true,
+      "ExcludeCollectServer": true,
       "FunctionDes": "RESOURCE_FUNCTION_FORGING",
       "Icon": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Melee_Weapon_Part03.T_Melee_Weapon_Part03",
       "IpDes": "RESOURCE_TEXT_gongxian",
@@ -50739,6 +51071,8 @@
     "fields": {
       "AccessKey": "T.RT_24",
       "DetailDes": "RESOURCE_DESC_12174",
+      "ExcludeCollect": true,
+      "ExcludeCollectServer": true,
       "FunctionDes": "RESOURCE_FUNCTION_FORGING",
       "Icon": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Melee_Weapon_Part01.T_Melee_Weapon_Part01",
       "IpDes": "RESOURCE_TEXT_gongbi",
@@ -50900,6 +51234,8 @@
     "fields": {
       "AccessKey": "T.RT_24",
       "DetailDes": "RESOURCE_DESC_12175",
+      "ExcludeCollect": true,
+      "ExcludeCollectServer": true,
       "FunctionDes": "RESOURCE_FUNCTION_FORGING",
       "Icon": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Melee_Weapon_Part01.T_Melee_Weapon_Part01",
       "IpDes": "RESOURCE_TEXT_gongbi",
@@ -51061,6 +51397,8 @@
     "fields": {
       "AccessKey": "T.RT_24",
       "DetailDes": "RESOURCE_DESC_12176",
+      "ExcludeCollect": true,
+      "ExcludeCollectServer": true,
       "FunctionDes": "RESOURCE_FUNCTION_FORGING",
       "Icon": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Melee_Weapon_Part01.T_Melee_Weapon_Part01",
       "IpDes": "RESOURCE_TEXT_wobing",
@@ -51222,6 +51560,8 @@
     "fields": {
       "AccessKey": "T.RT_24",
       "DetailDes": "RESOURCE_DESC_12177",
+      "ExcludeCollect": true,
+      "ExcludeCollectServer": true,
       "FunctionDes": "RESOURCE_FUNCTION_FORGING",
       "Icon": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Melee_Weapon_Part02.T_Melee_Weapon_Part02",
       "IpDes": "RESOURCE_TEXT_daoren",
@@ -51229,6 +51569,495 @@
       "Rarity": 5,
       "ResourceId": 12177,
       "ResourceName": "RESOURCE_NAME_12177",
+      "ResourceSType": "Material",
+      "ResourceToCoinType": 101,
+      "ResourceValue": 2500,
+      "Sound": "SOUND_ITEM_METAL",
+      "Type": "Rare"
+    }
+  },
+  {
+    "id": "resources-12178",
+    "categoryId": "resources",
+    "modId": 12178,
+    "archiveId": null,
+    "stats": {
+      "rarity": 5,
+      "polarity": null,
+      "maxLevel": null,
+      "cost": 2500,
+      "openVersion": null,
+      "releaseVersion": null
+    },
+    "textKeys": {
+      "modNameKey": "RESOURCE_NAME_12178",
+      "descriptionKey": "RESOURCE_DESC_12178",
+      "demonWedgeKey": null,
+      "functionKey": "RESOURCE_FUNCTION_FORGING",
+      "passiveEffectsDescKey": null,
+      "affinityNameKey": null,
+      "archiveNameKey": null
+    },
+    "affinity": {
+      "id": null,
+      "nameKey": null,
+      "char": null,
+      "icon": {
+        "gamePath": null,
+        "publicPath": null,
+        "placeholderPath": null,
+        "candidates": [],
+        "allMatches": []
+      }
+    },
+    "typeCompatibility": {
+      "applicationType": null,
+      "textKeys": [],
+      "tags": []
+    },
+    "tolerance": {
+      "baseCost": null,
+      "costChange": null,
+      "maxLevel": 0,
+      "valuesByLevel": {
+        "0": null
+      }
+    },
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Range_Weapon_Part02.T_Range_Weapon_Part02",
+      "publicPath": "/assets/items/resources/T_Range_Weapon_Part02.png",
+      "placeholderPath": null,
+      "candidates": [
+        "T_Range_Weapon_Part02",
+        "Range_Weapon_Part02"
+      ],
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Prop/Item/T_Range_Weapon_Part02.png"
+      ]
+    },
+    "scaling": {
+      "defaultLevel": 0,
+      "maxLevel": 0,
+      "availableLevels": [
+        0
+      ],
+      "valuesByLevel": {
+        "0": {}
+      },
+      "attributesByLevel": {
+        "0": []
+      }
+    },
+    "translations": {
+      "DE": {
+        "modName": "Blessed Burden: Bolt",
+        "description": "Crafted with precision from the blueprint of Blessed Burden. There is no turning back once the trigger is pulled, much like the commitment that seals a decisive moment.",
+        "demonWedgeName": null,
+        "functionLabel": "Waffenkomponente, zum Schmieden von Waffen",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "EN": {
+        "modName": "Blessed Burden: Bolt",
+        "description": "Crafted with precision from the blueprint of Blessed Burden. There is no turning back once the trigger is pulled, much like the commitment that seals a decisive moment.",
+        "demonWedgeName": null,
+        "functionLabel": "Weapon component, used for forging weapons",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "ES": {
+        "modName": "Blessed Burden: Bolt",
+        "description": "Crafted with precision from the blueprint of Blessed Burden. There is no turning back once the trigger is pulled, much like the commitment that seals a decisive moment.",
+        "demonWedgeName": null,
+        "functionLabel": "Componente de arma, se puede usar para forjar armas",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "FR": {
+        "modName": "Le poids de vivre : Verrou",
+        "description": "Assemblé selon les plans de « Le poids de vivre », ce verrou ne laisse aucun retour possible une fois la détente pressée — comme une décision que l’on doit porter jusqu’au bout.",
+        "demonWedgeName": null,
+        "functionLabel": "Composant d’arme — utilisé pour la forge",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "JP": {
+        "modName": "生きる重さの銃把",
+        "description": "設計図に基づき製造された「生きる重さ」のパーツ。引き金を引けばもう後戻りはできない。――決意を下す瞬間のように。",
+        "demonWedgeName": null,
+        "functionLabel": "武器製造用素材",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "KR": {
+        "modName": "살아간다는 무게 방아쇠",
+        "description": "도면대로 정확히 제작한 살아간다는 무게 부품. 일단 방아쇠를 당기면, 마치 결심을 내린 그 순간처럼 탄환은 절대 뒤를 돌아보지 않는다.",
+        "demonWedgeName": null,
+        "functionLabel": "무기 부품, 무기 주조에 사용",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "TC": {
+        "modName": "活著的重量的槍機",
+        "description": "嚴格按照圖紙打造的活著的重量部件。一旦扣下扳機，子彈就不會回頭——就如同人下定決心的那一瞬。",
+        "demonWedgeName": null,
+        "functionLabel": "武器部件，可用於鑄造武器",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      }
+    },
+    "fields": {
+      "AccessKey": "T.RT_24",
+      "DetailDes": "RESOURCE_DESC_12178",
+      "ExcludeCollect": true,
+      "ExcludeCollectServer": true,
+      "FunctionDes": "RESOURCE_FUNCTION_FORGING",
+      "Icon": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Range_Weapon_Part02.T_Range_Weapon_Part02",
+      "IpDes": "RESOURCE_TEXT_qiangji",
+      "MaterialClassify": 3,
+      "Rarity": 5,
+      "ResourceId": 12178,
+      "ResourceName": "RESOURCE_NAME_12178",
+      "ResourceSType": "Material",
+      "ResourceToCoinType": 101,
+      "ResourceValue": 2500,
+      "Sound": "SOUND_ITEM_METAL",
+      "Type": "Rare"
+    }
+  },
+  {
+    "id": "resources-12179",
+    "categoryId": "resources",
+    "modId": 12179,
+    "archiveId": null,
+    "stats": {
+      "rarity": 5,
+      "polarity": null,
+      "maxLevel": null,
+      "cost": 2500,
+      "openVersion": null,
+      "releaseVersion": null
+    },
+    "textKeys": {
+      "modNameKey": "RESOURCE_NAME_12179",
+      "descriptionKey": "RESOURCE_DESC_12179",
+      "demonWedgeKey": null,
+      "functionKey": "RESOURCE_FUNCTION_FORGING",
+      "passiveEffectsDescKey": null,
+      "affinityNameKey": null,
+      "archiveNameKey": null
+    },
+    "affinity": {
+      "id": null,
+      "nameKey": null,
+      "char": null,
+      "icon": {
+        "gamePath": null,
+        "publicPath": null,
+        "placeholderPath": null,
+        "candidates": [],
+        "allMatches": []
+      }
+    },
+    "typeCompatibility": {
+      "applicationType": null,
+      "textKeys": [],
+      "tags": []
+    },
+    "tolerance": {
+      "baseCost": null,
+      "costChange": null,
+      "maxLevel": 0,
+      "valuesByLevel": {
+        "0": null
+      }
+    },
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Range_Weapon_Part03.T_Range_Weapon_Part03",
+      "publicPath": "/assets/items/resources/T_Range_Weapon_Part03.png",
+      "placeholderPath": null,
+      "candidates": [
+        "T_Range_Weapon_Part03",
+        "Range_Weapon_Part03"
+      ],
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Prop/Item/T_Range_Weapon_Part03.png"
+      ]
+    },
+    "scaling": {
+      "defaultLevel": 0,
+      "maxLevel": 0,
+      "availableLevels": [
+        0
+      ],
+      "valuesByLevel": {
+        "0": {}
+      },
+      "attributesByLevel": {
+        "0": []
+      }
+    },
+    "translations": {
+      "DE": {
+        "modName": "Blessed Burden: Frame",
+        "description": "Crafted with precision from the blueprint of Blessed Burden. Sturdy and robust, it doubles effectively as a blunt instrument or a throwable weapon when out of bullets.",
+        "demonWedgeName": null,
+        "functionLabel": "Waffenkomponente, zum Schmieden von Waffen",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "EN": {
+        "modName": "Blessed Burden: Frame",
+        "description": "Crafted with precision from the blueprint of Blessed Burden. Sturdy and robust, it doubles effectively as a blunt instrument or a throwable weapon when out of bullets.",
+        "demonWedgeName": null,
+        "functionLabel": "Weapon component, used for forging weapons",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "ES": {
+        "modName": "Blessed Burden: Frame",
+        "description": "Crafted with precision from the blueprint of Blessed Burden. Sturdy and robust, it doubles effectively as a blunt instrument or a throwable weapon when out of bullets.",
+        "demonWedgeName": null,
+        "functionLabel": "Componente de arma, se puede usar para forjar armas",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "FR": {
+        "modName": "Le poids de vivre : Armature",
+        "description": "Forgé selon les plans de « Le poids de vivre », ce corps d’acier possède une solidité redoutable. Même à court de munitions, il reste une arme improvisée fiable — assez lourde pour rappeler que survivre aussi a un poids.",
+        "demonWedgeName": null,
+        "functionLabel": "Composant d’arme — utilisé pour la forge",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "JP": {
+        "modName": "生きる重さの銃底",
+        "description": "設計図に基づき製造された「生きる重さ」のパーツ。鋼鉄製で非常に硬い。弾丸が空になっても鈍器や投げ道具として使用できる。",
+        "demonWedgeName": null,
+        "functionLabel": "武器製造用素材",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "KR": {
+        "modName": "살아간다는 무게 총신",
+        "description": "도면대로 정확히 제작한 살아간다는 무게 부품. 강철로 만들어 매우 단단하기 때문에 탄환이 부족할 때 둔기 또는 투척물로 사용할 수 있다.",
+        "demonWedgeName": null,
+        "functionLabel": "무기 부품, 무기 주조에 사용",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "TC": {
+        "modName": "活著的重量的槍身",
+        "description": "嚴格按照圖紙打造的活著的重量部件。由鋼鐵打造，足夠堅硬。當子彈打空，也是一件趁手的鈍器或投擲物。",
+        "demonWedgeName": null,
+        "functionLabel": "武器部件，可用於鑄造武器",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      }
+    },
+    "fields": {
+      "AccessKey": "T.RT_24",
+      "DetailDes": "RESOURCE_DESC_12179",
+      "ExcludeCollect": true,
+      "ExcludeCollectServer": true,
+      "FunctionDes": "RESOURCE_FUNCTION_FORGING",
+      "Icon": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Range_Weapon_Part03.T_Range_Weapon_Part03",
+      "IpDes": "RESOURCE_TEXT_qiangshen",
+      "MaterialClassify": 3,
+      "Rarity": 5,
+      "ResourceId": 12179,
+      "ResourceName": "RESOURCE_NAME_12179",
+      "ResourceSType": "Material",
+      "ResourceToCoinType": 101,
+      "ResourceValue": 2500,
+      "Sound": "SOUND_ITEM_METAL",
+      "Type": "Rare"
+    }
+  },
+  {
+    "id": "resources-12180",
+    "categoryId": "resources",
+    "modId": 12180,
+    "archiveId": null,
+    "stats": {
+      "rarity": 5,
+      "polarity": null,
+      "maxLevel": null,
+      "cost": 2500,
+      "openVersion": null,
+      "releaseVersion": null
+    },
+    "textKeys": {
+      "modNameKey": "RESOURCE_NAME_12180",
+      "descriptionKey": "RESOURCE_DESC_12180",
+      "demonWedgeKey": null,
+      "functionKey": "RESOURCE_FUNCTION_FORGING",
+      "passiveEffectsDescKey": null,
+      "affinityNameKey": null,
+      "archiveNameKey": null
+    },
+    "affinity": {
+      "id": null,
+      "nameKey": null,
+      "char": null,
+      "icon": {
+        "gamePath": null,
+        "publicPath": null,
+        "placeholderPath": null,
+        "candidates": [],
+        "allMatches": []
+      }
+    },
+    "typeCompatibility": {
+      "applicationType": null,
+      "textKeys": [],
+      "tags": []
+    },
+    "tolerance": {
+      "baseCost": null,
+      "costChange": null,
+      "maxLevel": 0,
+      "valuesByLevel": {
+        "0": null
+      }
+    },
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Range_Weapon_Part01.T_Range_Weapon_Part01",
+      "publicPath": "/assets/items/resources/T_Range_Weapon_Part01.png",
+      "placeholderPath": null,
+      "candidates": [
+        "T_Range_Weapon_Part01",
+        "Range_Weapon_Part01"
+      ],
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Prop/Item/T_Range_Weapon_Part01.png"
+      ]
+    },
+    "scaling": {
+      "defaultLevel": 0,
+      "maxLevel": 0,
+      "availableLevels": [
+        0
+      ],
+      "valuesByLevel": {
+        "0": {}
+      },
+      "attributesByLevel": {
+        "0": []
+      }
+    },
+    "translations": {
+      "DE": {
+        "modName": "Blessed Burden: Barrel",
+        "description": "Crafted with precision from the blueprint of Blessed Burden. Bullets burst forth from here, as both the barrel and the warrior's heart blaze with unrelenting fervour.",
+        "demonWedgeName": null,
+        "functionLabel": "Waffenkomponente, zum Schmieden von Waffen",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "EN": {
+        "modName": "Blessed Burden: Barrel",
+        "description": "Crafted with precision from the blueprint of Blessed Burden. Bullets burst forth from here, as both the barrel and the warrior's heart blaze with unrelenting fervour.",
+        "demonWedgeName": null,
+        "functionLabel": "Weapon component, used for forging weapons",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "ES": {
+        "modName": "Blessed Burden: Barrel",
+        "description": "Crafted with precision from the blueprint of Blessed Burden. Bullets burst forth from here, as both the barrel and the warrior's heart blaze with unrelenting fervour.",
+        "demonWedgeName": null,
+        "functionLabel": "Componente de arma, se puede usar para forjar armas",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "FR": {
+        "modName": "Le poids de vivre : Canon",
+        "description": "Conçu selon les plans de « Le poids de vivre », ce canon déverse les balles dans une rafale brûlante — et à chaque tir, le métal comme le cœur du combattant supportent le même brasier.",
+        "demonWedgeName": null,
+        "functionLabel": "Composant d’arme — utilisé pour la forge",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "JP": {
+        "modName": "生きる重さの銃身",
+        "description": "設計図に基づき製造された「生きる重さ」のパーツ。弾丸が飛び出すとき、射撃手の心は銃身と同じくらい熱くなる。",
+        "demonWedgeName": null,
+        "functionLabel": "武器製造用素材",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "KR": {
+        "modName": "살아간다는 무게 총열",
+        "description": "도면대로 정확히 제작한 살아간다는 무게 부품. 탄환이 쏘아져 나갈 때면, 전사의 심장은 그 총열처럼 뜨거워진다.",
+        "demonWedgeName": null,
+        "functionLabel": "무기 부품, 무기 주조에 사용",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "TC": {
+        "modName": "活著的重量的槍管",
+        "description": "嚴格按照圖紙打造的活著的重量部件。子彈從這裡傾泄而出，每到此時，槍管與戰士的心同樣滾燙。",
+        "demonWedgeName": null,
+        "functionLabel": "武器部件，可用於鑄造武器",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      }
+    },
+    "fields": {
+      "AccessKey": "T.RT_24",
+      "DetailDes": "RESOURCE_DESC_12180",
+      "ExcludeCollect": true,
+      "ExcludeCollectServer": true,
+      "FunctionDes": "RESOURCE_FUNCTION_FORGING",
+      "Icon": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Range_Weapon_Part01.T_Range_Weapon_Part01",
+      "IpDes": "RESOURCE_TEXT_qiangguan",
+      "MaterialClassify": 3,
+      "Rarity": 5,
+      "ResourceId": 12180,
+      "ResourceName": "RESOURCE_NAME_12180",
       "ResourceSType": "Material",
       "ResourceToCoinType": 101,
       "ResourceValue": 2500,
@@ -51942,15 +52771,17 @@
       }
     },
     "icon": {
-      "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Range_Weapon_Part01.T_Range_Weapon_Part01",
-      "publicPath": "/assets/items/resources/T_Range_Weapon_Part01.png",
+      "gamePath": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Weapon_Sword_Zaie.T_Weapon_Sword_Zaie'",
+      "publicPath": "/assets/items/resources/T_Weapon_Sword_Zaie.png",
       "placeholderPath": null,
       "candidates": [
-        "T_Range_Weapon_Part01",
-        "Range_Weapon_Part01"
+        "T_Weapon_Sword_Zaie",
+        "Weapon_Sword_Zaie",
+        "T_Weapon_Sword_Zaie'",
+        "Weapon_Sword_Zaie'"
       ],
       "allMatches": [
-        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Prop/Item/T_Range_Weapon_Part01.png"
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Prop/Item/T_Weapon_Sword_Zaie.png"
       ]
     },
     "scaling": {
@@ -51968,7 +52799,7 @@
     },
     "translations": {
       "DE": {
-        "modName": "Prototype: Nocturne – Sword",
+        "modName": "Prototype: Endless Enigma",
         "description": "RESOURCE_DESC_HYPERWEAPONPROTOTYPE",
         "demonWedgeName": null,
         "functionLabel": "Used to craft and upgrade Calamity Weapons",
@@ -51978,7 +52809,7 @@
         "typeCompatibilityNames": []
       },
       "EN": {
-        "modName": "Prototype: Nocturne – Sword",
+        "modName": "Prototype: Endless Enigma",
         "description": "RESOURCE_DESC_HYPERWEAPONPROTOTYPE",
         "demonWedgeName": null,
         "functionLabel": "Used to craft and upgrade Calamity Weapons",
@@ -51998,7 +52829,7 @@
         "typeCompatibilityNames": []
       },
       "FR": {
-        "modName": "Prototype : Nocturne – Épée",
+        "modName": "Prototype : Énigme insoluble",
         "description": "L’un des prototypes légendaires à l’origine des Armes de calamité.\nSon destin fut amer comme l’absinthe, acéré comme une épée à double tranchant.\nObtenu par des moyens spéciaux. Peut servir à la fusion des Armes de calamité.",
         "demonWedgeName": null,
         "functionLabel": "Utilisé pour fabriquer et améliorer les Armes de calamité",
@@ -52018,7 +52849,7 @@
         "typeCompatibilityNames": []
       },
       "KR": {
-        "modName": "밤의 적막·한손검의 원형",
+        "modName": "답 없는 수수께끼의 원형",
         "description": "전설 속 재앙 무기의 원형 중 하나이다.\n그의 마지막은 쑥처럼 쓰고, 양날의 검처럼 날카로웠다.\n특수한 경로를 통해 획득하며, 재앙 무기 용해에 사용할 수 있다.",
         "demonWedgeName": null,
         "functionLabel": "재앙 무기의 제작과 육성에 사용",
@@ -52028,7 +52859,7 @@
         "typeCompatibilityNames": []
       },
       "TC": {
-        "modName": "夜寐·單手劍的原型",
+        "modName": "無解謎題的原型",
         "description": "傳說中災厄武器的原型，此為其中之一。\n他的結局苦如茵陳，利如兩刃的劍。\n透過特殊途徑獲取，可用於災厄武器熔煉。",
         "demonWedgeName": null,
         "functionLabel": "用於災厄武器的製作與養成",
@@ -52044,7 +52875,7 @@
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
       "FunctionDes": "RESOURCE_FUNCTION_HYPERWEAPON",
-      "Icon": "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Range_Weapon_Part01.T_Range_Weapon_Part01",
+      "Icon": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Weapon_Sword_Zaie.T_Weapon_Sword_Zaie'",
       "IpDes": "RESOURCE_TEXT_HYPERWEAPONPROTOTYPE",
       "MaterialClassify": 3,
       "Rarity": 5,
@@ -85427,7 +86258,6 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_23",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
       "FunctionDes": "RESOURCE_FUNCTION_110049",
@@ -85590,7 +86420,6 @@
       }
     },
     "fields": {
-      "AccessKey": "T.RT_23",
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
       "FunctionDes": "RESOURCE_FUNCTION_110050",
@@ -86306,17 +87135,17 @@
       }
     },
     "icon": {
-      "gamePath": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_Police.T_Pack_Police'",
-      "publicPath": "/assets/items/resources/T_Pack_Police.png",
+      "gamePath": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_Police01.T_Pack_Police01'",
+      "publicPath": "/assets/items/resources/T_Pack_Police01.png",
       "placeholderPath": null,
       "candidates": [
-        "T_Pack_Police",
-        "Pack_Police",
-        "T_Pack_Police'",
-        "Pack_Police'"
+        "T_Pack_Police01",
+        "Pack_Police01",
+        "T_Pack_Police01'",
+        "Pack_Police01'"
       ],
       "allMatches": [
-        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_Police.png"
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_Police01.png"
       ]
     },
     "scaling": {
@@ -86409,7 +87238,7 @@
       "ExcludeCollect": true,
       "ExcludeCollectServer": true,
       "FunctionDes": "RESOURCE_FUNCTION_GENERALSKIN_1",
-      "Icon": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_Police.T_Pack_Police'",
+      "Icon": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_Police01.T_Pack_Police01'",
       "MaterialClassify": 7,
       "Rarity": 5,
       "ResourceId": 110074,
@@ -86419,6 +87248,491 @@
       "Type": "Rare",
       "UseEffectType": "SelectGeneralSkin",
       "UseParam": 5010
+    }
+  },
+  {
+    "id": "resources-110075",
+    "categoryId": "resources",
+    "modId": 110075,
+    "archiveId": null,
+    "stats": {
+      "rarity": 5,
+      "polarity": null,
+      "maxLevel": null,
+      "cost": null,
+      "openVersion": null,
+      "releaseVersion": null
+    },
+    "textKeys": {
+      "modNameKey": "Pack_Name_PetDecompose",
+      "descriptionKey": "Pack_Des_PetDecompose",
+      "demonWedgeKey": null,
+      "functionKey": "Pack_Function_PetDecompose",
+      "passiveEffectsDescKey": null,
+      "affinityNameKey": null,
+      "archiveNameKey": null
+    },
+    "affinity": {
+      "id": null,
+      "nameKey": null,
+      "char": null,
+      "icon": {
+        "gamePath": null,
+        "publicPath": null,
+        "placeholderPath": null,
+        "candidates": [],
+        "allMatches": []
+      }
+    },
+    "typeCompatibility": {
+      "applicationType": null,
+      "textKeys": [],
+      "tags": []
+    },
+    "tolerance": {
+      "baseCost": null,
+      "costChange": null,
+      "maxLevel": 0,
+      "valuesByLevel": {
+        "0": null
+      }
+    },
+    "icon": {
+      "gamePath": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_PetBox02.T_Pack_PetBox02'",
+      "publicPath": "/assets/items/resources/T_Pack_PetBox02.png",
+      "placeholderPath": null,
+      "candidates": [
+        "T_Pack_PetBox02",
+        "Pack_PetBox02",
+        "T_Pack_PetBox02'",
+        "Pack_PetBox02'"
+      ],
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_PetBox02.png"
+      ]
+    },
+    "scaling": {
+      "defaultLevel": 0,
+      "maxLevel": 0,
+      "availableLevels": [
+        0
+      ],
+      "valuesByLevel": {
+        "0": {}
+      },
+      "attributesByLevel": {
+        "0": []
+      }
+    },
+    "translations": {
+      "DE": {
+        "modName": "Geniemon Farewell Gift",
+        "description": "Departing Geniemons left you a little something. Open it to see what they left for you.",
+        "demonWedgeName": null,
+        "functionLabel": "Obtain random rewards",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "EN": {
+        "modName": "Geniemon Farewell Gift",
+        "description": "Departing Geniemons left you a little something. Open it to see what they left for you.",
+        "demonWedgeName": null,
+        "functionLabel": "Obtain random rewards",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "ES": {
+        "modName": "Geniemon Farewell Gift",
+        "description": "Departing Geniemons left you a little something. Open it to see what they left for you.",
+        "demonWedgeName": null,
+        "functionLabel": "Obtain random rewards",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "FR": {
+        "modName": "Cadeau d’adieu des Géniemon",
+        "description": "Les Géniemon qui sont partis vous ont laissé un cadeau. Ouvrez-le pour découvrir leur petite attention.",
+        "demonWedgeName": null,
+        "functionLabel": "Permet d’obtenir une récompense aléatoire",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "JP": {
+        "modName": "ジェネモンのお別れギフト",
+        "description": "去っていったジェネモンたちが残した贈り物。開けて、ささやかな気持ちを受け取ろう。",
+        "demonWedgeName": null,
+        "functionLabel": "ランダムな報酬を獲得できる",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "KR": {
+        "modName": "마령의 작별 선물",
+        "description": "떠나간 마령들이 남긴 선물. 꼬마들의 작은 정성이 담겨 있다.",
+        "demonWedgeName": null,
+        "functionLabel": "랜덤 보상 획득 가능",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "TC": {
+        "modName": "魔靈告別禮",
+        "description": "離去的魔靈們留下的禮物，打開來看看它們的小小心意吧。",
+        "demonWedgeName": null,
+        "functionLabel": "可獲得隨機獎勵",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      }
+    },
+    "fields": {
+      "DetailDes": "Pack_Des_PetDecompose",
+      "ExcludeCollect": true,
+      "ExcludeCollectServer": true,
+      "FunctionDes": "Pack_Function_PetDecompose",
+      "Icon": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_PetBox02.T_Pack_PetBox02'",
+      "MaterialClassify": 7,
+      "Rarity": 5,
+      "ResourceId": 110075,
+      "ResourceName": "Pack_Name_PetDecompose",
+      "ResourceValue": -1,
+      "Sound": "SOUND_ITEM_NORMAL",
+      "Type": "Rare",
+      "UseEffectType": "RandomSelectPack",
+      "UseParam": 230001
+    }
+  },
+  {
+    "id": "resources-110076",
+    "categoryId": "resources",
+    "modId": 110076,
+    "archiveId": null,
+    "stats": {
+      "rarity": 5,
+      "polarity": null,
+      "maxLevel": null,
+      "cost": null,
+      "openVersion": null,
+      "releaseVersion": null
+    },
+    "textKeys": {
+      "modNameKey": "RESOURCE_NAME_110076",
+      "descriptionKey": "RESOURCE_DESC_110076",
+      "demonWedgeKey": null,
+      "functionKey": "RESOURCE_FUNCTION_110056",
+      "passiveEffectsDescKey": null,
+      "affinityNameKey": null,
+      "archiveNameKey": null
+    },
+    "affinity": {
+      "id": null,
+      "nameKey": null,
+      "char": null,
+      "icon": {
+        "gamePath": null,
+        "publicPath": null,
+        "placeholderPath": null,
+        "candidates": [],
+        "allMatches": []
+      }
+    },
+    "typeCompatibility": {
+      "applicationType": null,
+      "textKeys": [],
+      "tags": []
+    },
+    "tolerance": {
+      "baseCost": null,
+      "costChange": null,
+      "maxLevel": 0,
+      "valuesByLevel": {
+        "0": null
+      }
+    },
+    "icon": {
+      "gamePath": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_ZaieRes03.T_Pack_ZaieRes03'",
+      "publicPath": "/assets/items/resources/T_Pack_ZaieRes03.png",
+      "placeholderPath": null,
+      "candidates": [
+        "T_Pack_ZaieRes03",
+        "Pack_ZaieRes03",
+        "T_Pack_ZaieRes03'",
+        "Pack_ZaieRes03'"
+      ],
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_ZaieRes03.png"
+      ]
+    },
+    "scaling": {
+      "defaultLevel": 0,
+      "maxLevel": 0,
+      "availableLevels": [
+        0
+      ],
+      "valuesByLevel": {
+        "0": {}
+      },
+      "attributesByLevel": {
+        "0": []
+      }
+    },
+    "translations": {
+      "DE": {
+        "modName": "Crystal Selection Chest Ⅳ",
+        "description": "Grants 1 of the following: Electro Crystal, Pyro Crystal, Lumino Crystal, Hydro Crystal, or Umbro Crystal.",
+        "demonWedgeName": null,
+        "functionLabel": "Grants a type of Crystals of your choice.",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "EN": {
+        "modName": "Crystal Selection Chest Ⅳ",
+        "description": "Grants 1 of the following: Electro Crystal, Pyro Crystal, Lumino Crystal, Hydro Crystal, or Umbro Crystal.",
+        "demonWedgeName": null,
+        "functionLabel": "Grants a type of Crystals of your choice.",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "ES": {
+        "modName": "Crystal Selection Chest Ⅳ",
+        "description": "Grants 1 of the following: Electro Crystal, Pyro Crystal, Lumino Crystal, Hydro Crystal, or Umbro Crystal.",
+        "demonWedgeName": null,
+        "functionLabel": "Al usarlo, podrás elegir un tipo de cristal de la lista.",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "FR": {
+        "modName": "Coffret de sélection de cristaux IV",
+        "description": "Après utilisation, permet de choisir un matériau parmi Cristal Électro, Cristal Pyro, Cristal Lumino, Cristal Hydro et Cristal Umbro.",
+        "demonWedgeName": null,
+        "functionLabel": "Après utilisation, permet de choisir un cristal dans la liste.",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "JP": {
+        "modName": "晶塊選択ボックス・Ⅳ",
+        "description": "使用すると雷の晶塊、火の晶塊、光の晶塊、水の晶塊、闇の晶塊の中から素材を1種類選択できます。",
+        "demonWedgeName": null,
+        "functionLabel": "使用するとリストから任意の晶塊を1つ選んで入手できます。",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "KR": {
+        "modName": "결정 선택 상자 Ⅳ",
+        "description": "사용 후 번개의 결정, 불의 결정, 빛의 결정, 물의 결정, 어둠의 결정 중 하나의 재료를 선택해 획득할 수 있습니다.",
+        "demonWedgeName": null,
+        "functionLabel": "사용 시 목록에서 결정 하나를 선택할 수 있다.",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "TC": {
+        "modName": "晶塊自選禮箱·其四",
+        "description": "使用後可從雷之晶塊，火之晶塊，光之晶塊，水之晶塊，暗之晶塊中自選一種材料。",
+        "demonWedgeName": null,
+        "functionLabel": "使用後可從列表中自選一種晶塊。",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      }
+    },
+    "fields": {
+      "DetailDes": "RESOURCE_DESC_110076",
+      "FunctionDes": "RESOURCE_FUNCTION_110056",
+      "Icon": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_ZaieRes03.T_Pack_ZaieRes03'",
+      "MaterialClassify": 7,
+      "Rarity": 5,
+      "ResourceId": 110076,
+      "ResourceName": "RESOURCE_NAME_110076",
+      "ResourceValue": -1,
+      "Sound": "SOUND_ITEM_NORMAL",
+      "Type": "Rare",
+      "UseEffectType": "SelectResource",
+      "UseParam": 4010
+    }
+  },
+  {
+    "id": "resources-110077",
+    "categoryId": "resources",
+    "modId": 110077,
+    "archiveId": null,
+    "stats": {
+      "rarity": 5,
+      "polarity": null,
+      "maxLevel": null,
+      "cost": null,
+      "openVersion": null,
+      "releaseVersion": null
+    },
+    "textKeys": {
+      "modNameKey": "RESOURCE_NAME_110077",
+      "descriptionKey": "RESOURCE_DESC_GENERALSKIN_9",
+      "demonWedgeKey": null,
+      "functionKey": "RESOURCE_FUNCTION_GENERALSKIN_1",
+      "passiveEffectsDescKey": null,
+      "affinityNameKey": null,
+      "archiveNameKey": null
+    },
+    "affinity": {
+      "id": null,
+      "nameKey": null,
+      "char": null,
+      "icon": {
+        "gamePath": null,
+        "publicPath": null,
+        "placeholderPath": null,
+        "candidates": [],
+        "allMatches": []
+      }
+    },
+    "typeCompatibility": {
+      "applicationType": null,
+      "textKeys": [],
+      "tags": []
+    },
+    "tolerance": {
+      "baseCost": null,
+      "costChange": null,
+      "maxLevel": 0,
+      "valuesByLevel": {
+        "0": null
+      }
+    },
+    "icon": {
+      "gamePath": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_Police02.T_Pack_Police02'",
+      "publicPath": "/assets/items/resources/T_Pack_Police02.png",
+      "placeholderPath": null,
+      "candidates": [
+        "T_Pack_Police02",
+        "Pack_Police02",
+        "T_Pack_Police02'",
+        "Pack_Police02'"
+      ],
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_Police02.png"
+      ]
+    },
+    "scaling": {
+      "defaultLevel": 0,
+      "maxLevel": 0,
+      "availableLevels": [
+        0
+      ],
+      "valuesByLevel": {
+        "0": {}
+      },
+      "attributesByLevel": {
+        "0": []
+      }
+    },
+    "translations": {
+      "DE": {
+        "modName": "Character Skin Selection – Aegis Ⅱ",
+        "description": "RESOURCE_DESC_GENERALSKIN_9",
+        "demonWedgeName": null,
+        "functionLabel": "Kann zum Erhalt eines Outfits verwendet werden.",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "EN": {
+        "modName": "Character Skin Selection – Aegis Ⅱ",
+        "description": "RESOURCE_DESC_GENERALSKIN_9",
+        "demonWedgeName": null,
+        "functionLabel": "Use to claim a character skin.",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "ES": {
+        "modName": "Character Skin Selection – Aegis Ⅱ",
+        "description": "RESOURCE_DESC_GENERALSKIN_9",
+        "demonWedgeName": null,
+        "functionLabel": "Úsalo para reclamar un aspecto de personaje.",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "FR": {
+        "modName": "Coffret de sélection d’apparence – Gardien II",
+        "description": "RESOURCE_DESC_GENERALSKIN_9",
+        "demonWedgeName": null,
+        "functionLabel": "Permet d’obtenir une apparence de personnage.",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "JP": {
+        "modName": "スキン選択ボックス・守護・Ⅱ",
+        "description": "RESOURCE_DESC_GENERALSKIN_9",
+        "demonWedgeName": null,
+        "functionLabel": "キャラクターのスキンを獲得できます。",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "KR": {
+        "modName": "선택 코스튬 패키지·수호 Ⅱ",
+        "description": "RESOURCE_DESC_GENERALSKIN_9",
+        "demonWedgeName": null,
+        "functionLabel": "캐릭터 코스튬 획득에 사용된다.",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "TC": {
+        "modName": "自選形象禮箱·守護·二",
+        "description": "使用後可從貝蕾妮卡，芙羅拉，麗蓓卡，希爾妲，法露茜，海爾法，止流，賽琪中自選一套角色形象。",
+        "demonWedgeName": null,
+        "functionLabel": "可用於獲取角色形象。",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      }
+    },
+    "fields": {
+      "DetailDes": "RESOURCE_DESC_GENERALSKIN_9",
+      "FunctionDes": "RESOURCE_FUNCTION_GENERALSKIN_1",
+      "Icon": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Pack_Police02.T_Pack_Police02'",
+      "MaterialClassify": 7,
+      "Rarity": 5,
+      "ResourceId": 110077,
+      "ResourceName": "RESOURCE_NAME_110077",
+      "ResourceValue": -1,
+      "Sound": "SOUND_ITEM_NORMAL",
+      "Type": "Rare",
+      "UseEffectType": "SelectGeneralSkin",
+      "UseParam": 5011
     }
   },
   {
@@ -87399,6 +88713,334 @@
       "Rarity": 5,
       "ResourceId": 120006,
       "ResourceName": "RESOURCE_NAME_120006",
+      "ResourceValue": -1,
+      "Sound": "SOUND_ITEM_NORMAL",
+      "Type": "Rare",
+      "UseEffectType": "ShopItemVoucher"
+    }
+  },
+  {
+    "id": "resources-120007",
+    "categoryId": "resources",
+    "modId": 120007,
+    "archiveId": null,
+    "stats": {
+      "rarity": 5,
+      "polarity": null,
+      "maxLevel": null,
+      "cost": null,
+      "openVersion": null,
+      "releaseVersion": null
+    },
+    "textKeys": {
+      "modNameKey": "RESOURCE_NAME_120007",
+      "descriptionKey": "RESOURCE_DESC_VOUCHER_5",
+      "demonWedgeKey": null,
+      "functionKey": "RESOURCE_FUNCTION_VOUCHER_7",
+      "passiveEffectsDescKey": null,
+      "affinityNameKey": null,
+      "archiveNameKey": null
+    },
+    "affinity": {
+      "id": null,
+      "nameKey": null,
+      "char": null,
+      "icon": {
+        "gamePath": null,
+        "publicPath": null,
+        "placeholderPath": null,
+        "candidates": [],
+        "allMatches": []
+      }
+    },
+    "typeCompatibility": {
+      "applicationType": null,
+      "textKeys": [],
+      "tags": []
+    },
+    "tolerance": {
+      "baseCost": null,
+      "costChange": null,
+      "maxLevel": 0,
+      "valuesByLevel": {
+        "0": null
+      }
+    },
+    "icon": {
+      "gamePath": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resource_DiscountTicket_01.T_Resource_DiscountTicket_01'",
+      "publicPath": "/assets/items/resources/T_Resource_DiscountTicket_01.png",
+      "placeholderPath": null,
+      "candidates": [
+        "T_Resource_DiscountTicket_01",
+        "Resource_DiscountTicket_01",
+        "T_Resource_DiscountTicket",
+        "Resource_DiscountTicket",
+        "T_Resource_DiscountTicket_01'",
+        "Resource_DiscountTicket_01'"
+      ],
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resource_DiscountTicket_01.png"
+      ]
+    },
+    "scaling": {
+      "defaultLevel": 0,
+      "maxLevel": 0,
+      "availableLevels": [
+        0
+      ],
+      "valuesByLevel": {
+        "0": {}
+      },
+      "attributesByLevel": {
+        "0": []
+      }
+    },
+    "translations": {
+      "DE": {
+        "modName": "Towards the Dawn Coupon",
+        "description": "Spend 480 Phoxene Plumules to save 360",
+        "demonWedgeName": null,
+        "functionLabel": "Offers a discounted price on Headpiece and Bodypiece from \"Towards the Dawn\" and past versions.",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "EN": {
+        "modName": "Towards the Dawn Coupon",
+        "description": "Spend 480 Phoxene Plumules to save 360",
+        "demonWedgeName": null,
+        "functionLabel": "Offers a discounted price on Headpiece and Bodypiece from \"Towards the Dawn\" and past versions.",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "ES": {
+        "modName": "Towards the Dawn Coupon",
+        "description": "Spend 480 Phoxene Plumules to save 360",
+        "demonWedgeName": null,
+        "functionLabel": "Offers a discounted price on Headpiece and Bodypiece from \"Towards the Dawn\" and past versions.",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "FR": {
+        "modName": "Bon d’accessoires – En marche vers l’aube",
+        "description": "Réduction de 360 Gemmes de Phoxène pour tout achat d’au moins 480 Gemmes de Phoxène",
+        "demonWedgeName": null,
+        "functionLabel": "Permet d’acheter à prix réduit des accessoires de tête et de corps issus d’« En marche vers l’aube » ainsi que des versions précédentes.",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "JP": {
+        "modName": "「暁を歩む」クーポン",
+        "description": "480月ノ核以上で360月ノ核引きになる",
+        "demonWedgeName": null,
+        "functionLabel": "このクーポンを所持していると、お得な価格で「暁を歩む」および過去バージョンのヘッド・アクセサリーとボディ・アクセサリーを購入できる。",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "KR": {
+        "modName": "여명 속으로 쿠폰",
+        "description": "월석의 싹x480 이상 상품 구매 시 월석의 싹x360 할인",
+        "demonWedgeName": null,
+        "functionLabel": "쿠폰 보유 시 할인된 가격으로 '여명 속으로' 및 이전 버전의 머리 장식과 몸 장식을 구매할 수 있다.",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "TC": {
+        "modName": "行於破曉代金券",
+        "description": "商品滿480月石晶胚減360月石晶胚",
+        "demonWedgeName": null,
+        "functionLabel": "持有此券，即可以優惠的價格，購買「行於破曉」及過往版本的頭部裝飾與軀體裝飾。",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      }
+    },
+    "fields": {
+      "DetailDes": "RESOURCE_DESC_VOUCHER_5",
+      "ExcludeCollect": true,
+      "ExcludeCollectServer": true,
+      "FunctionDes": "RESOURCE_FUNCTION_VOUCHER_7",
+      "Icon": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resource_DiscountTicket_01.T_Resource_DiscountTicket_01'",
+      "MaterialClassify": 3,
+      "Rarity": 5,
+      "ResourceId": 120007,
+      "ResourceName": "RESOURCE_NAME_120007",
+      "ResourceValue": -1,
+      "Sound": "SOUND_ITEM_NORMAL",
+      "Type": "Rare",
+      "UseEffectType": "ShopItemVoucher"
+    }
+  },
+  {
+    "id": "resources-120008",
+    "categoryId": "resources",
+    "modId": 120008,
+    "archiveId": null,
+    "stats": {
+      "rarity": 5,
+      "polarity": null,
+      "maxLevel": null,
+      "cost": null,
+      "openVersion": null,
+      "releaseVersion": null
+    },
+    "textKeys": {
+      "modNameKey": "RESOURCE_NAME_120008",
+      "descriptionKey": "RESOURCE_DESC_VOUCHER_6",
+      "demonWedgeKey": null,
+      "functionKey": "RESOURCE_FUNCTION_VOUCHER_8",
+      "passiveEffectsDescKey": null,
+      "affinityNameKey": null,
+      "archiveNameKey": null
+    },
+    "affinity": {
+      "id": null,
+      "nameKey": null,
+      "char": null,
+      "icon": {
+        "gamePath": null,
+        "publicPath": null,
+        "placeholderPath": null,
+        "candidates": [],
+        "allMatches": []
+      }
+    },
+    "typeCompatibility": {
+      "applicationType": null,
+      "textKeys": [],
+      "tags": []
+    },
+    "tolerance": {
+      "baseCost": null,
+      "costChange": null,
+      "maxLevel": 0,
+      "valuesByLevel": {
+        "0": null
+      }
+    },
+    "icon": {
+      "gamePath": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resource_DiscountTicket_01.T_Resource_DiscountTicket_01'",
+      "publicPath": "/assets/items/resources/T_Resource_DiscountTicket_01.png",
+      "placeholderPath": null,
+      "candidates": [
+        "T_Resource_DiscountTicket_01",
+        "Resource_DiscountTicket_01",
+        "T_Resource_DiscountTicket",
+        "Resource_DiscountTicket",
+        "T_Resource_DiscountTicket_01'",
+        "Resource_DiscountTicket_01'"
+      ],
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resource_DiscountTicket_01.png"
+      ]
+    },
+    "scaling": {
+      "defaultLevel": 0,
+      "maxLevel": 0,
+      "availableLevels": [
+        0
+      ],
+      "valuesByLevel": {
+        "0": {}
+      },
+      "attributesByLevel": {
+        "0": []
+      }
+    },
+    "translations": {
+      "DE": {
+        "modName": "RESOURCE_NAME_120008",
+        "description": "RESOURCE_DESC_VOUCHER_6",
+        "demonWedgeName": null,
+        "functionLabel": "RESOURCE_FUNCTION_VOUCHER_8",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "EN": {
+        "modName": "RESOURCE_NAME_120008",
+        "description": "RESOURCE_DESC_VOUCHER_6",
+        "demonWedgeName": null,
+        "functionLabel": "RESOURCE_FUNCTION_VOUCHER_8",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "ES": {
+        "modName": "RESOURCE_NAME_120008",
+        "description": "RESOURCE_DESC_VOUCHER_6",
+        "demonWedgeName": null,
+        "functionLabel": "RESOURCE_FUNCTION_VOUCHER_8",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "FR": {
+        "modName": "RESOURCE_NAME_120008",
+        "description": "RESOURCE_DESC_VOUCHER_6",
+        "demonWedgeName": null,
+        "functionLabel": "RESOURCE_FUNCTION_VOUCHER_8",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "JP": {
+        "modName": "RESOURCE_NAME_120008",
+        "description": "RESOURCE_DESC_VOUCHER_6",
+        "demonWedgeName": null,
+        "functionLabel": "RESOURCE_FUNCTION_VOUCHER_8",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "KR": {
+        "modName": "RESOURCE_NAME_120008",
+        "description": "RESOURCE_DESC_VOUCHER_6",
+        "demonWedgeName": null,
+        "functionLabel": "RESOURCE_FUNCTION_VOUCHER_8",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      },
+      "TC": {
+        "modName": "碧霄吟代金券",
+        "description": "商品滿1280月石晶胚減300月石晶胚",
+        "demonWedgeName": null,
+        "functionLabel": "持有此券，即可以優惠的價格，購買碧霄吟系列的武器形象。",
+        "passiveEffectsDescription": null,
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": []
+      }
+    },
+    "fields": {
+      "DetailDes": "RESOURCE_DESC_VOUCHER_6",
+      "ExcludeCollect": true,
+      "ExcludeCollectServer": true,
+      "FunctionDes": "RESOURCE_FUNCTION_VOUCHER_8",
+      "Icon": "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resource_DiscountTicket_01.T_Resource_DiscountTicket_01'",
+      "MaterialClassify": 3,
+      "Rarity": 5,
+      "ResourceId": 120008,
+      "ResourceName": "RESOURCE_NAME_120008",
       "ResourceValue": -1,
       "Sound": "SOUND_ITEM_NORMAL",
       "Type": "Rare",

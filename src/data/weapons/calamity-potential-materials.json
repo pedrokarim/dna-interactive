@@ -64,6 +64,19 @@
       "TC": "血染織羽的原型"
     }
   },
+  "15005": {
+    "itemId": "resources-15005",
+    "icon": "/assets/items/resources/T_Weapon_Sword_Zaie.png",
+    "name": {
+      "DE": "Prototype: Endless Enigma",
+      "EN": "Prototype: Endless Enigma",
+      "ES": "Prototipo: Nocturno — Espada",
+      "FR": "Prototype : Énigme insoluble",
+      "JP": "夜想・片手剣の原型",
+      "KR": "답 없는 수수께끼의 원형",
+      "TC": "無解謎題的原型"
+    }
+  },
   "15006": {
     "itemId": "resources-15006",
     "icon": "/assets/items/resources/T_Weapon_Claymore_Zaie.png",
@@ -166,6 +179,19 @@
       "JP": "火の晶塊",
       "KR": "불의 결정",
       "TC": "火之晶塊"
+    }
+  },
+  "15034": {
+    "itemId": "resources-15034",
+    "icon": "/assets/items/resources/T_Resource_Zaie_Lighting.png",
+    "name": {
+      "DE": "Electro Crystal",
+      "EN": "Electro Crystal",
+      "ES": "Cristal Electro",
+      "FR": "Cristal Électro",
+      "JP": "雷の晶塊",
+      "KR": "번개의 결정",
+      "TC": "雷之晶塊"
     }
   },
   "15035": {

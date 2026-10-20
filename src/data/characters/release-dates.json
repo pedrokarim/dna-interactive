@@ -1,5 +1,6 @@
 {
   "_comment": "charId -> date de sortie ISO. Liste CURÉE (le jeu n'expose pas cette info dans Char.lua). Sert au badge « nouveau » et à la remontée en tête de liste pendant 30 jours (cf. src/lib/characters/new-releases.ts). Un personnage absent d'ici n'est jamais considéré comme nouveau — on ne devine pas.",
+  "4103": "2026-10-20",
   "3104": "2026-09-08",
   "2201": "2026-09-08",
   "220101": "2026-09-08",

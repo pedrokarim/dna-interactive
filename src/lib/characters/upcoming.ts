@@ -103,65 +103,10 @@ export type UpcomingCharacter = {
 };
 
 // Vide entre deux annonces, et c'est l'état normal : Falsi y a vécu jusqu'à la
-// 1.6, où le jeu a livré son nom et ses portraits. Sa vraie fiche a pris le
-// relais sur la même URL, sans rien changer d'autre.
-//
-// Rhythm: Flamewrought (1.7) : les fichiers 1.6 la déclarent (`SpLise`, 4103,
-// `ReleaseVersion = 170`), mais son entrée `BattleChar` est une ébauche recopiée
-// de Rhythm (4101) : mêmes statistiques, armes Katana + Machinegun, nom pointé
-// sur `UI_CHAR_NAME_4101`. Son arme annoncée est une grenade : ces valeurs-là
-// ne sont donc pas reprises. Seul ce qui diffère de Rhythm est retenu comme
-// donnée du jeu.
-export const UPCOMING_CHARACTERS: UpcomingCharacter[] = [
-  {
-    slug: "rhythm-flamewrought",
-    name: "Rhythm: Flamewrought",
-    internalName: "SpLise",
-    charId: 4103,
-    subtitle: "En marche vers l'aube",
-    subtitleEn: "First-Light Farer",
-    element: "Thunder",
-    rarity: 5,
-    maxLevel: 80,
-    campKey: "Diguo",
-    campLabel: "Empire Hyperboréen",
-    weaponTags: [],
-    positioning: [],
-    recommendAttr: [],
-    portrait: "/assets/upcoming/rhythm-flamewrought-portrait.webp",
-    avatar: "/assets/upcoming/rhythm-flamewrought-avatar.webp",
-    // PV 1.7 : « Immersive Theatre – New Character Available: Rhythm: Flamewrought ».
-    theatreNext: true,
-    version: "1.7",
-    versionName: "Towards the Dawn",
-    bannerName: "Threads Between Reverie",
-    skinCount: 2,
-    skinNames: ["Veil In Shadows"],
-    voiceActorEn: "Sophie Colquhoun",
-    skillIds: [410301, 410302, 410303, 410304],
-    skills: [],
-    lore: [
-      "Adjudante de l'Escorte à Icelake, Rhythm passait pour une soldate à part, toujours prête à rendre service aux habitants. Quand le bruit a couru qu'elle quittait l'uniforme, la plupart l'ont pris pour une rumeur : qui renoncerait à un grade gagné de haute lutte ?",
-      "Elle mesurait sa vie à la discipline militaire, jusqu'à ce que des mensonges engloutissent l'un de ses proches. Comme Blues, bien d'autres étaient entrés dans la 6ᵉ Légion sur de fausses promesses ; les noms des listes n'étaient qu'une fraction des victimes.",
-      "Rhythm s'est donné à elle-même une commission : mettre fin aux exactions de la Légion. Les Charons sont des citoyens de l'Empire, pas des sujets d'expérience. Elle frappe de porte en porte et, au milieu du deuil des autres, retrouve le sens qu'elle avait perdu.",
-    ],
-    loreSource: "Résumé des présentations officielles du personnage (« Path to Inner Light », « Art of Combat » et notes d'histoire).",
-    facts: [
-      { label: "Identifiant interne", value: "SpLise (4103)", confidence: "dataMined" },
-      { label: "Fragments pour débloquer", value: "30", confidence: "dataMined" },
-      { label: "« Flamewrought » en français", value: "Marqué par les flammes", confidence: "dataMined" },
-      { label: "Obtention", value: "Gratuite via les Mandats scellés, ou fragments en boutique", confidence: "announced" },
-      { label: "Arme de prédilection", value: "Blessed Burden (grenade)", confidence: "announced" },
-      { label: "Date de sortie", value: "Avec la version 1.7, date pas encore annoncée", confidence: "announced" },
-    ],
-    sources: [
-      { label: "Fichiers du jeu – Char.lua / BattleChar.lua (entrée 4103)" },
-      { label: "Présentation officielle « Path to Inner Light »", url: "https://x.com/DNAbyss_EN/status/2109524467831414810" },
-      { label: "Présentation officielle « Art of Combat »", url: "https://x.com/DNAbyss_EN/status/2109886853939909087" },
-      { label: "PV officiel de la version 1.7", url: "https://x.com/DNAbyss_EN/status/2109464074065264792" },
-    ],
-  },
-];
+// 1.6, Rhythm: Flamewrought jusqu'à la 1.7, où le jeu a livré leur nom et
+// leurs portraits. La vraie fiche prend alors le relais sur la même URL, sans
+// rien changer d'autre.
+export const UPCOMING_CHARACTERS: UpcomingCharacter[] = [];
 
 const bySlug = new Map(UPCOMING_CHARACTERS.map((c) => [c.slug, c] as const));
 

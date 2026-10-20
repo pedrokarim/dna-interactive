@@ -1,5 +1,248 @@
 [
  {
+  "id": "4103",
+  "kind": "outfit",
+  "category": "outfits",
+  "subcategory": "default",
+  "gameId": 4103,
+  "rarity": 5,
+  "name": {
+   "TC": "黎瑟·浴火的衣飾"
+  },
+  "description": {
+   "TC": "她披著一身幹練的紅色衣裝，如暖陽、如火焰、如燈火般閃耀在寒冷的大地上。"
+  },
+  "obtain": {
+   "methods": [
+    "default"
+   ],
+   "label": null
+  },
+  "shop": [],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": 170,
+  "variant": null,
+  "characters": [
+   {
+    "charId": 4103,
+    "gameId": 4103,
+    "visuals": {
+     "icon": "/assets/cosmetics/outfit/T_Head_SpLise.png",
+     "portrait": "/assets/cosmetics/portrait/T_Gacha_AvatarSpLise.webp"
+    }
+   }
+  ],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/outfit/T_Head_SpLise.png",
+   "portrait": "/assets/cosmetics/portrait/T_Gacha_AvatarSpLise.webp"
+  },
+  "model": {
+   "paths": [
+    "/Game/Asset/Char/Player/Char039_SpLise/Mesh/Splise_Face_SM",
+    "/Game/Asset/Char/Player/Char039_SpLise/Mesh/SpLise_Body_SM",
+    "/Game/Asset/Char/Player/Char039_SpLise/Mesh/Splise_Hair_SM"
+   ]
+  }
+ },
+ {
+  "id": "150101",
+  "kind": "outfit",
+  "category": "outfits",
+  "subcategory": "signature",
+  "gameId": 150101,
+  "rarity": 5,
+  "name": {
+   "FR": "Sucreries à foison : Lisbell",
+   "EN": "Treats Galore: Lisbell",
+   "JP": "お菓子の家・リズベル",
+   "KR": "캔디 풀하우스·리사벨",
+   "TC": "糖霜滿屋·莉茲貝爾",
+   "DE": "Treats Galore: Lisbell",
+   "ES": "Treats Galore: Lisbell"
+  },
+  "description": {
+   "FR": "Un chaudron, des potions, un balai... et même un chat noir ?! Pas besoin de tout ça ! Nous, on ne veut que des bonbons, des bonbons !",
+   "EN": "Cauldrons, potions, broomsticks... and a black cat!? Forget all that! We want candy, candy, and more candy!",
+   "JP": "るつぼ、魔法薬、ほうき……それに黒猫まで？！そんなものは全部いらないよ！必要なのはキャンディ、キャンディだけ！",
+   "KR": "가마솥, 마법 물약, 빗자루... 거기다 검은 고양이까지?! 아니! 이런 건 다 필요 없어! 우리한테 필요한 건 오직 사탕, 사탕뿐이야!",
+   "TC": "坩堝、魔藥、掃把……還有一隻黑貓？！這些全都不需要啦，我們要的只有糖果、糖果！",
+   "DE": "Cauldrons, potions, broomsticks... and a black cat!? Forget all that! We want candy, candy, and more candy!",
+   "ES": "Cauldrons, potions, broomsticks... and a black cat!? Forget all that! We want candy, candy, and more candy!"
+  },
+  "obtain": {
+   "methods": [],
+   "label": null
+  },
+  "shop": [],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": 170,
+  "variant": null,
+  "characters": [
+   {
+    "charId": 1501,
+    "gameId": 150101,
+    "visuals": {
+     "icon": "/assets/cosmetics/outfit/T_Head_Baonu01.png",
+     "portrait": "/assets/cosmetics/portrait/T_Gacha_AvatarBaonu01.webp"
+    }
+   }
+  ],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/outfit/T_Head_Baonu01.png",
+   "portrait": "/assets/cosmetics/portrait/T_Gacha_AvatarBaonu01.webp"
+  },
+  "model": {
+   "paths": [
+    "/Game/Asset/Char/Player/Char007_Baonu/Mesh/Baonu_Face_SM",
+    "/Game/Asset/Char/Player/Char007_Baonu/Mesh/Baonu_Hair_SM",
+    "/Game/Asset/Char/Player/Common/Suit/Body/SP16/Mesh/YNF_SP16_Body_SM",
+    "/Game/Asset/Char/Player/Common/Suit/Hat/Mesh/SP16_Hat01_SM"
+   ]
+  }
+ },
+ {
+  "id": "410301",
+  "kind": "outfit",
+  "category": "outfits",
+  "subcategory": "signature",
+  "gameId": 410301,
+  "rarity": 5,
+  "name": {
+   "FR": "Dentelles de minuit",
+   "EN": "Veil In Shadows",
+   "JP": "糸を結び、夜を行く",
+   "KR": "밤에 스며드는 실",
+   "TC": "結絲夜行",
+   "DE": "Veil In Shadows",
+   "ES": "Veil In Shadows"
+  },
+  "description": {
+   "FR": "Les lumières tissent dans la nuit une toile scintillante à travers la ville, et elle y est la meilleure chasseuse.",
+   "EN": "Lights weave the city into a shimmering web at night, and she is the finest hunter.",
+   "JP": "灯火が夜の街をきらめく網へと織り上げる。そして彼女は最高の狩人。",
+   "KR": "불빛이 어둠 속 도시를 반짝이는 그물로 엮어 놓으면, 그녀는 그곳을 누비는 최고의 사냥꾼이다.",
+   "TC": "燈火將黑夜中的城市織成閃爍的網，而她是最優秀的獵手。",
+   "DE": "Lights weave the city into a shimmering web at night, and she is the finest hunter.",
+   "ES": "Lights weave the city into a shimmering web at night, and she is the finest hunter."
+  },
+  "obtain": {
+   "methods": [
+    "banner",
+    "prismExchange"
+   ],
+   "label": null
+  },
+  "shop": [
+   {
+    "price": 25,
+    "currencyId": 111,
+    "limit": 1,
+    "start": "2026-10-19T02:00:00.000Z",
+    "end": "2026-12-06T21:00:00.000Z"
+   }
+  ],
+  "duplicateRefund": {
+   "currencyId": 111,
+   "amount": 25
+  },
+  "hiddenUntilOwned": false,
+  "releaseVersion": 170,
+  "variant": null,
+  "characters": [
+   {
+    "charId": 4103,
+    "gameId": 410301,
+    "visuals": {
+     "icon": "/assets/cosmetics/outfit/T_Head_SPLise01.png",
+     "portrait": "/assets/cosmetics/portrait/T_Gacha_AvatarSPLise01.webp",
+     "bust": "/assets/cosmetics/bust/T_Bust_SPLise01.webp"
+    }
+   }
+  ],
+  "series": null,
+  "banners": [
+   9009
+  ],
+  "visuals": {
+   "icon": "/assets/cosmetics/outfit/T_Head_SPLise01.png",
+   "portrait": "/assets/cosmetics/portrait/T_Gacha_AvatarSPLise01.webp",
+   "bust": "/assets/cosmetics/bust/T_Bust_SPLise01.webp"
+  },
+  "model": {
+   "paths": [
+    "/Game/Asset/Char/Player/Char039_SpLise/Mesh/Splise_Face_SM",
+    "/Game/Asset/Char/Player/Common/Suit/Body/SP15/Mesh/QNF_SP15_Body_SM",
+    "/Game/Asset/Char/Player/Char039_SpLise/Mesh/Splise_SP01_Hair_SM",
+    "/Game/Asset/Char/Player/Common/Suit/Hat/Mesh/SP15_Hat01_SM"
+   ]
+  }
+ },
+ {
+  "id": "510102",
+  "kind": "outfit",
+  "category": "outfits",
+  "subcategory": "signature",
+  "gameId": 510102,
+  "rarity": 5,
+  "name": {
+   "FR": "Sucreries à foison : Truffle et Filbert",
+   "EN": "Treats Galore: Truffle and Filbert",
+   "JP": "お菓子の家・トリュフ&ヘーゼルナッツ",
+   "KR": "캔디 풀하우스·트러플과 헤이즐넛",
+   "TC": "糖霜滿屋·松露與榛子",
+   "DE": "Treats Galore: Truffle and Filbert",
+   "ES": "Treats Galore: Truffle and Filbert"
+  },
+  "description": {
+   "FR": "Un chaudron, des potions, un balai... et même un chat noir ?! Pas besoin de tout ça ! Nous, on ne veut que des bonbons, des bonbons !",
+   "EN": "Cauldrons, potions, broomsticks... and a black cat!? Forget all that! We want candy, candy, and more candy!",
+   "JP": "るつぼ、魔法薬、ほうき……それに黒猫まで？！そんなものは全部いらないよ！必要なのはキャンディ、キャンディだけ！",
+   "KR": "가마솥, 마법 물약, 빗자루... 거기다 검은 고양이까지?! 아니! 이런 건 다 필요 없어! 우리한테 필요한 건 오직 사탕, 사탕뿐이야!",
+   "TC": "坩堝、魔藥、掃把……還有一隻黑貓？！這些全都不需要啦，我們要的只有糖果、糖果！",
+   "DE": "Cauldrons, potions, broomsticks... and a black cat!? Forget all that! We want candy, candy, and more candy!",
+   "ES": "Cauldrons, potions, broomsticks... and a black cat!? Forget all that! We want candy, candy, and more candy!"
+  },
+  "obtain": {
+   "methods": [],
+   "label": null
+  },
+  "shop": [],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": 170,
+  "variant": null,
+  "characters": [
+   {
+    "charId": 5101,
+    "gameId": 510102,
+    "visuals": {
+     "icon": "/assets/cosmetics/outfit/T_Head_Songlu02.png",
+     "portrait": "/assets/cosmetics/portrait/T_Gacha_AvatarSonglu02.webp"
+    }
+   }
+  ],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/outfit/T_Head_Songlu02.png",
+   "portrait": "/assets/cosmetics/portrait/T_Gacha_AvatarSonglu02.webp"
+  },
+  "model": {
+   "paths": [
+    "/Game/Asset/Char/Player/Char021_Songlu/Mesh/Songlu_Face_SM",
+    "/Game/Asset/Char/Player/Char021_Songlu/Mesh/Songlu_TP01_Hair_SM",
+    "/Game/Asset/Char/Player/Common/Suit/Body/SP16/Mesh/YNF_SP16_Body_SM",
+    "/Game/Asset/Char/Player/Common/Suit/Hat/Mesh/SP16_Hat01_SM"
+   ]
+  }
+ },
+ {
   "id": "2201",
   "kind": "outfit",
   "category": "outfits",
@@ -221,10 +464,7 @@
     "end": "2026-10-26T09:00:00.000Z"
    }
   ],
-  "duplicateRefund": {
-   "currencyId": 111,
-   "amount": 25
-  },
+  "duplicateRefund": null,
   "hiddenUntilOwned": false,
   "releaseVersion": 160,
   "variant": null,
@@ -4537,10 +4777,10 @@
   },
   "model": {
    "paths": [
-    "/Game/Asset/Char/Player/Char097_Shuimu01/Mesh/Shuimu_SP01_Face_SM",
-    "/Game/Asset/Char/Player/Char097_Shuimu01/Mesh/Shuimu_SP01_Body_SM",
-    "/Game/Asset/Char/Player/Char097_Shuimu01/Mesh/Shuimu_SP01_Hair_SM",
-    "/Game/Asset/Char/Player/Char097_Shuimu01/Mesh/Shuimu_SP01_Hat_SM"
+    "/Game/Asset/Char/Player/Common/Suit/Body/SP02/Mesh/ZNF00_SP02_Face_SM",
+    "/Game/Asset/Char/Player/Common/Suit/Body/SP02/Mesh/ZNF00_SP02_Body_SM",
+    "/Game/Asset/Char/Player/Common/Suit/Body/SP02/Mesh/ZNF00_SP02_Hair_SM",
+    "/Game/Asset/Char/Player/Common/Suit/Body/SP02/Mesh/ZNF00_SP02_Hat_SM"
    ]
   }
  },
@@ -4605,10 +4845,10 @@
   },
   "model": {
    "paths": [
-    "/Game/Asset/Char/Player/Char099_Songlu01/Mesh/Songlu_SP01_Face_SM",
-    "/Game/Asset/Char/Player/Char099_Songlu01/Mesh/Songlu_SP01_Body_SM",
-    "/Game/Asset/Char/Player/Char099_Songlu01/Mesh/Songlu_SP01_Hair_SM",
-    "/Game/Asset/Char/Player/Char099_Songlu01/Mesh/Songlu_SP01_Hat_SM"
+    "/Game/Asset/Char/Player/Common/Suit/Body/SP03/Mesh/Songlu_SP01_Face_SM",
+    "/Game/Asset/Char/Player/Common/Suit/Body/SP03/Mesh/Songlu_SP01_Body_SM",
+    "/Game/Asset/Char/Player/Common/Suit/Body/SP03/Mesh/Songlu_SP01_Hair_SM",
+    "/Game/Asset/Char/Player/Common/Suit/Body/SP03/Mesh/Songlu_SP01_Hat_SM"
    ]
   }
  },
@@ -4682,10 +4922,10 @@
   },
   "model": {
    "paths": [
-    "/Game/Asset/Char/Player/Char098_Saiqi01/Mesh/Saiqi_SP01_Face_SM",
-    "/Game/Asset/Char/Player/Char098_Saiqi01/Mesh/Saiqi_SP01_Body_SM",
-    "/Game/Asset/Char/Player/Char098_Saiqi01/Mesh/Saiqi_SP01_Hair_SM",
-    "/Game/Asset/Char/Player/Char098_Saiqi01/Mesh/Saiqi_SP01_Part03_SM"
+    "/Game/Asset/Char/Player/Common/Suit/Body/SP01/Mesh/QNF01_SP01_Face_SM",
+    "/Game/Asset/Char/Player/Common/Suit/Body/SP01/Mesh/QNF01_SP01_Body_SM",
+    "/Game/Asset/Char/Player/Common/Suit/Body/SP01/Mesh/QNF01_SP01_Hair_SM",
+    "/Game/Asset/Char/Player/Common/Suit/Body/SP01/Mesh/QNF01_SP01_Part03_SM"
    ]
   }
  },
@@ -4913,6 +5153,44 @@
   }
  },
  {
+  "id": "410392",
+  "kind": "hairstyle",
+  "category": "hairstyles",
+  "subcategory": null,
+  "gameId": 410392,
+  "rarity": 5,
+  "name": {
+   "FR": "Dentelles de minuit",
+   "EN": "Veil In Shadows",
+   "JP": "糸を結び、夜を行く",
+   "KR": "밤에 스며드는 실",
+   "TC": "結絲夜行",
+   "DE": "Veil In Shadows",
+   "ES": "Veil In Shadows"
+  },
+  "description": null,
+  "obtain": {
+   "methods": [],
+   "label": null
+  },
+  "shop": [],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": 170,
+  "variant": null,
+  "characters": [],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/hairstyle/T_Fashion_SPLise_01.png"
+  },
+  "model": {
+   "paths": [
+    "/Game/Asset/Char/Player/Char039_SpLise/Mesh/Splise_SP01_Hair_SM"
+   ]
+  }
+ },
+ {
   "id": "210182",
   "kind": "hairstyle",
   "category": "hairstyles",
@@ -5136,7 +5414,7 @@
   },
   "model": {
    "paths": [
-    "/Game/Asset/Char/Player/Char098_Saiqi01/Mesh/Saiqi_SP01_Hair_SM"
+    "/Game/Asset/Char/Player/Common/Suit/Body/SP01/Mesh/QNF01_SP01_Hair_SM"
    ]
   }
  },
@@ -7074,6 +7352,230 @@
   }
  },
  {
+  "id": "10135",
+  "kind": "hairstyle",
+  "category": "hairstyles",
+  "subcategory": null,
+  "gameId": 10135,
+  "rarity": 4,
+  "name": {
+   "FR": "Citrouille espiègle – Jaune abricot",
+   "EN": "Prank-o'-Lantern: Apricot",
+   "JP": "いたずらのカボチャ·アンズ",
+   "KR": "장난꾸러기 호박·오렌지",
+   "TC": "搗蛋南瓜·杏黃",
+   "DE": "Prank-o'-Lantern: Apricot",
+   "ES": "Prank-o'-Lantern: Apricot"
+  },
+  "description": {
+   "FR": "Pour la décoration uniquement. Ne pas manger.",
+   "EN": "For decoration only. Not edible.",
+   "JP": "ただの飾りで食べてはいけません。",
+   "KR": "장식용으로만 사용하며, 식용 불가.",
+   "TC": "僅用裝飾，不可食用。",
+   "DE": "For decoration only. Not edible.",
+   "ES": "For decoration only. Not edible."
+  },
+  "obtain": {
+   "methods": [
+    "shop"
+   ],
+   "label": null
+  },
+  "shop": [
+   {
+    "price": 480,
+    "currencyId": 99,
+    "limit": 1,
+    "start": "2026-10-19T02:00:00.000Z",
+    "end": "2026-11-30T09:00:00.000Z"
+   }
+  ],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": null,
+  "variant": null,
+  "characters": [],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/hairstyle/T_Fashion_Hat29_03.png"
+  },
+  "model": {
+   "paths": [
+    "/Game/Asset/Char/Player/Common/Suit/Hair/Mesh/Player_Hair07_SM"
+   ]
+  }
+ },
+ {
+  "id": "10136",
+  "kind": "hairstyle",
+  "category": "hairstyles",
+  "subcategory": null,
+  "gameId": 10136,
+  "rarity": 4,
+  "name": {
+   "FR": "Citrouille espiègle – Rouille",
+   "EN": "Prank-o'-Lantern: Rust Red",
+   "JP": "いたずらのカボチャ·ペルシアンレッド",
+   "KR": "장난꾸러기 호박·러스트 레드",
+   "TC": "搗蛋南瓜·銹紅",
+   "DE": "Prank-o'-Lantern: Rust Red",
+   "ES": "Prank-o'-Lantern: Rust Red"
+  },
+  "description": {
+   "FR": "Pour la décoration uniquement. Ne pas manger.",
+   "EN": "For decoration only. Not edible.",
+   "JP": "ただの飾りで食べてはいけません。",
+   "KR": "장식용으로만 사용하며, 식용 불가.",
+   "TC": "僅用裝飾，不可食用。",
+   "DE": "For decoration only. Not edible.",
+   "ES": "For decoration only. Not edible."
+  },
+  "obtain": {
+   "methods": [
+    "shop"
+   ],
+   "label": null
+  },
+  "shop": [
+   {
+    "price": 480,
+    "currencyId": 99,
+    "limit": 1,
+    "start": "2026-10-19T02:00:00.000Z",
+    "end": "2026-11-30T09:00:00.000Z"
+   }
+  ],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": null,
+  "variant": null,
+  "characters": [],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/hairstyle/T_Fashion_Hat29_04.png"
+  },
+  "model": {
+   "paths": [
+    "/Game/Asset/Char/Player/Common/Suit/Hair/Mesh/Player_Hair07_SM"
+   ]
+  }
+ },
+ {
+  "id": "10137",
+  "kind": "hairstyle",
+  "category": "hairstyles",
+  "subcategory": null,
+  "gameId": 10137,
+  "rarity": 4,
+  "name": {
+   "FR": "Citrouille espiègle – Doré",
+   "EN": "Prank-o'-Lantern: Gilt",
+   "JP": "いたずらのカボチャ·マリーゴールド",
+   "KR": "장난꾸러기 호박·골드",
+   "TC": "搗蛋南瓜·鎏金",
+   "DE": "Prank-o'-Lantern: Gilt",
+   "ES": "Prank-o'-Lantern: Gilt"
+  },
+  "description": {
+   "FR": "Pour la décoration uniquement. Ne pas manger.",
+   "EN": "For decoration only. Not edible.",
+   "JP": "ただの飾りで食べてはいけません。",
+   "KR": "장식용으로만 사용하며, 식용 불가.",
+   "TC": "僅用裝飾，不可食用。",
+   "DE": "For decoration only. Not edible.",
+   "ES": "For decoration only. Not edible."
+  },
+  "obtain": {
+   "methods": [
+    "shop"
+   ],
+   "label": null
+  },
+  "shop": [
+   {
+    "price": 480,
+    "currencyId": 99,
+    "limit": 1,
+    "start": "2026-10-19T02:00:00.000Z",
+    "end": "2026-11-30T09:00:00.000Z"
+   }
+  ],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": null,
+  "variant": null,
+  "characters": [],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/hairstyle/T_Fashion_Hat29_02.png"
+  },
+  "model": {
+   "paths": [
+    "/Game/Asset/Char/Player/Common/Suit/Hair/Mesh/Player_Hair07_SM"
+   ]
+  }
+ },
+ {
+  "id": "10138",
+  "kind": "hairstyle",
+  "category": "hairstyles",
+  "subcategory": null,
+  "gameId": 10138,
+  "rarity": 4,
+  "name": {
+   "FR": "Citrouille espiègle – Menthe",
+   "EN": "Prank-o'-Lantern: Mint",
+   "JP": "いたずらのカボチャ·ミント",
+   "KR": "장난꾸러기 호박·민트",
+   "TC": "搗蛋南瓜·薄荷",
+   "DE": "Prank-o'-Lantern: Mint",
+   "ES": "Prank-o'-Lantern: Mint"
+  },
+  "description": {
+   "FR": "Pour la décoration uniquement. Ne pas manger.",
+   "EN": "For decoration only. Not edible.",
+   "JP": "ただの飾りで食べてはいけません。",
+   "KR": "장식용으로만 사용하며, 식용 불가.",
+   "TC": "僅用裝飾，不可食用。",
+   "DE": "For decoration only. Not edible.",
+   "ES": "For decoration only. Not edible."
+  },
+  "obtain": {
+   "methods": [
+    "shop"
+   ],
+   "label": null
+  },
+  "shop": [
+   {
+    "price": 480,
+    "currencyId": 99,
+    "limit": 1,
+    "start": "2026-10-19T02:00:00.000Z",
+    "end": "2026-11-30T09:00:00.000Z"
+   }
+  ],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": null,
+  "variant": null,
+  "characters": [],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/hairstyle/T_Fashion_Hat29_01.png"
+  },
+  "model": {
+   "paths": [
+    "/Game/Asset/Char/Player/Common/Suit/Hair/Mesh/Player_Hair07_SM"
+   ]
+  }
+ },
+ {
   "id": "30020",
   "kind": "accessory",
   "category": "accessories",
@@ -8634,7 +9136,7 @@
    "FR": "Lunaison cosmique – Gris plomb",
    "EN": "Cosmic Lunacy: Leaden Grey",
    "ES": "Locura cósmica: Gris plomo",
-   "JP": "諸天月相・チタニウムホワイト",
+   "JP": "諸天月相・鉛灰",
    "KR": "창공의 달 변천·그레이",
    "TC": "諸天月相·鉛灰",
    "DE": "Cosmic Lunacy: Leaden Grey"
@@ -9097,7 +9599,7 @@
    "FR": "Couronne Givre-Étoilé – Gris plomb",
    "EN": "Frostar Crown: Leaden Grey",
    "ES": "Corona de escarcha estelar: Gris plomo",
-   "JP": "煌星の王冠・チタニウムホワイト",
+   "JP": "煌星の王冠・鉛灰",
    "KR": "서리 왕관·그레이",
    "TC": "星霜王冠·鉛灰",
    "DE": "Frostar Crown: Leaden Grey"
@@ -9865,6 +10367,55 @@
   "banners": [],
   "visuals": {
    "icon": "/assets/cosmetics/accessory/T_Fashion_Head57_01.png"
+  },
+  "model": {
+   "paths": [
+    "/Game/Asset/Char/Player/Common/Part/Head_Spring/Mesh/Player_Head_Part48_SM"
+   ]
+  }
+ },
+ {
+  "id": "10101",
+  "kind": "accessory",
+  "category": "accessories",
+  "subcategory": "head",
+  "gameId": 10101,
+  "rarity": 5,
+  "name": {
+   "FR": "Esprit du mutisme – Pourpre profond",
+   "EN": "Hushed Shade: Violet",
+   "ES": "Accesorio de Loto de invierno",
+   "JP": "蓮草の髪飾り",
+   "KR": "금언의 사령·보라",
+   "TC": "噤言詭靈·絳紫",
+   "DE": "Hushed Shade: Violet"
+  },
+  "description": {
+   "FR": "Rendons-nous hommage aux cieux... ou aux mortels ?",
+   "EN": "Are we making offerings to Heaven... or to ourselves?",
+   "ES": "¿De verdad hacemos ofrendas al cielo… o nos las hacemos a nosotros mismos?",
+   "JP": "私たちはいったい、天を祀っているのか、それとも人を祀っているのか？",
+   "KR": "우리가 올리는 제의는 하늘을 모시기 위함인가, 사람을 기리기 위함인가?",
+   "TC": "我們究竟是在祭天，還是在祭人？",
+   "DE": "Are we making offerings to Heaven... or to ourselves?"
+  },
+  "obtain": {
+   "methods": [],
+   "label": null
+  },
+  "shop": [],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": null,
+  "variant": {
+   "group": "/Game/Asset/Char/Player/Common/Part/Head_Spring/Mesh/Player_Head_Part48_SM|Hushed Shade",
+   "index": 4
+  },
+  "characters": [],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/accessory/T_Fashion_Head57_04.png"
   },
   "model": {
    "paths": [
@@ -11025,7 +11576,7 @@
   "name": {
    "FR": "Silence mordant – Gris plomb",
    "EN": "Silent Thorns: Leaden Grey",
-   "JP": "沈黙の荊冠・チタニウムホワイト",
+   "JP": "沈黙の荊冠・鉛灰",
    "KR": "묵언의 한기·그레이",
    "TC": "緘默刺骨·鉛灰",
    "DE": "Silent Thorns: Leaden Grey",
@@ -11353,7 +11904,7 @@
   "name": {
    "FR": "Marionnette à fils – Gris plomb",
    "EN": "Marionette Cross: Leaden Grey",
-   "JP": "操り人形・チタニウムホワイト",
+   "JP": "操り人形・鉛灰",
    "KR": "마리오네트·그레이",
    "TC": "提線人偶·鉛灰",
    "DE": "Marionette Cross: Leaden Grey",
@@ -11612,7 +12163,7 @@
    "FR": "Iris silencieux – Gris plomb",
    "EN": "Hushed Iris: Leaden Grey",
    "ES": "Iris silencioso: Gris plomo",
-   "JP": "沈黙のアイリス・チタニウムホワイト",
+   "JP": "沈黙のアイリス・鉛灰",
    "KR": "침묵의 아이리스·그레이",
    "TC": "沉默鳶尾·鉛灰",
    "DE": "Hushed Iris: Leaden Grey"
@@ -11891,7 +12442,7 @@
   "name": {
    "FR": "Couronne protectrice – Gris plomb",
    "EN": "Guardian's Crown: Leaden Grey",
-   "JP": "ガーディアンの冠・チタニウムホワイト",
+   "JP": "ガーディアンの冠・鉛灰",
    "KR": "수호의 모자·그레이",
    "TC": "守護之冕·鉛灰",
    "DE": "Guardian's Crown: Leaden Grey",
@@ -13816,7 +14367,7 @@
   "name": {
    "FR": "Remontoir magique – Gris plomb",
    "EN": "Mystic Clockwork: Leaden Grey",
-   "JP": "マジックゼンマイ・チタニウムホワイト",
+   "JP": "マジックゼンマイ・鉛灰",
    "KR": "마법 태엽·그레이",
    "TC": "魔法發條·鉛灰",
    "DE": "Mystic Clockwork: Leaden Grey",
@@ -17507,6 +18058,451 @@
   }
  },
  {
+  "id": "20106",
+  "kind": "accessory",
+  "category": "accessories",
+  "subcategory": "face",
+  "gameId": 20106,
+  "rarity": 5,
+  "name": {
+   "FR": "Fleur d’ossuaire – Blanc ivoire",
+   "EN": "Ivorybloom: Opaque White",
+   "JP": "骨塚の花・アイボリー",
+   "KR": "뼈무덤의 꽃·아이보리",
+   "TC": "骨冢花·涅白",
+   "DE": "Ivorybloom: Opaque White",
+   "ES": "Ivorybloom: Opaque White"
+  },
+  "description": {
+   "FR": "La vie renaît sans fin.",
+   "EN": "Life finds its way.",
+   "JP": "絶え間なく続く。",
+   "KR": "끊임없이 순환하는 삶과 죽음.",
+   "TC": "生生不息。",
+   "DE": "Life finds its way.",
+   "ES": "Life finds its way."
+  },
+  "obtain": {
+   "methods": [
+    "prismExchange"
+   ],
+   "label": {
+    "FR": "Disponible via l’échange de Prismes",
+    "EN": "Available through Prism Exchange",
+    "DE": "Über Prismatausch erhältlich",
+    "ES": "Disponible mediante Prisma",
+    "JP": "プリズムの交換で獲得",
+    "KR": "프리즘 교환으로 획득",
+    "TC": "通過稜鏡兌換獲得"
+   }
+  },
+  "shop": [
+   {
+    "price": 4,
+    "currencyId": 111,
+    "limit": 1,
+    "start": "2026-10-19T02:00:00.000Z",
+    "end": "2026-12-06T21:00:00.000Z"
+   }
+  ],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": null,
+  "variant": {
+   "group": "/Game/Asset/Char/Player/Common/Part/Face/Mesh/Player_Face_Part34_SM|Ivorybloom",
+   "index": 1
+  },
+  "characters": [],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/accessory/T_Fashion_Face31_03.png"
+  },
+  "model": {
+   "paths": [
+    "/Game/Asset/Char/Player/Common/Part/Face/Mesh/Player_Face_Part34_SM"
+   ]
+  }
+ },
+ {
+  "id": "20107",
+  "kind": "accessory",
+  "category": "accessories",
+  "subcategory": "face",
+  "gameId": 20107,
+  "rarity": 5,
+  "name": {
+   "FR": "Fleur d’ossuaire – Pourpre profond",
+   "EN": "Ivorybloom: Violet",
+   "JP": "骨塚の花・レッドパープル",
+   "KR": "뼈무덤의 꽃·보라",
+   "TC": "骨冢花·絳紫",
+   "DE": "Ivorybloom: Violet",
+   "ES": "Ivorybloom: Violet"
+  },
+  "description": {
+   "FR": "La vie renaît sans fin.",
+   "EN": "Life finds its way.",
+   "JP": "絶え間なく続く。",
+   "KR": "끊임없이 순환하는 삶과 죽음.",
+   "TC": "生生不息。",
+   "DE": "Life finds its way.",
+   "ES": "Life finds its way."
+  },
+  "obtain": {
+   "methods": [
+    "prismExchange"
+   ],
+   "label": {
+    "FR": "Disponible via l’échange de Prismes",
+    "EN": "Available through Prism Exchange",
+    "DE": "Über Prismatausch erhältlich",
+    "ES": "Disponible mediante Prisma",
+    "JP": "プリズムの交換で獲得",
+    "KR": "프리즘 교환으로 획득",
+    "TC": "通過稜鏡兌換獲得"
+   }
+  },
+  "shop": [
+   {
+    "price": 4,
+    "currencyId": 111,
+    "limit": 1,
+    "start": "2026-10-19T02:00:00.000Z",
+    "end": "2026-12-06T21:00:00.000Z"
+   }
+  ],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": null,
+  "variant": {
+   "group": "/Game/Asset/Char/Player/Common/Part/Face/Mesh/Player_Face_Part34_SM|Ivorybloom",
+   "index": 2
+  },
+  "characters": [],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/accessory/T_Fashion_Face31_01.png"
+  },
+  "model": {
+   "paths": [
+    "/Game/Asset/Char/Player/Common/Part/Face/Mesh/Player_Face_Part34_SM"
+   ]
+  }
+ },
+ {
+  "id": "20108",
+  "kind": "accessory",
+  "category": "accessories",
+  "subcategory": "face",
+  "gameId": 20108,
+  "rarity": 5,
+  "name": {
+   "FR": "Fleur d’ossuaire – Doré",
+   "EN": "Ivorybloom: Gilt",
+   "JP": "骨塚の花・マリーゴールド",
+   "KR": "뼈무덤의 꽃·골드",
+   "TC": "骨冢花·鎏金",
+   "DE": "Ivorybloom: Gilt",
+   "ES": "Ivorybloom: Gilt"
+  },
+  "description": {
+   "FR": "La vie renaît sans fin.",
+   "EN": "Life finds its way.",
+   "JP": "絶え間なく続く。",
+   "KR": "끊임없이 순환하는 삶과 죽음.",
+   "TC": "生生不息。",
+   "DE": "Life finds its way.",
+   "ES": "Life finds its way."
+  },
+  "obtain": {
+   "methods": [
+    "prismExchange"
+   ],
+   "label": {
+    "FR": "Disponible via l’échange de Prismes",
+    "EN": "Available through Prism Exchange",
+    "DE": "Über Prismatausch erhältlich",
+    "ES": "Disponible mediante Prisma",
+    "JP": "プリズムの交換で獲得",
+    "KR": "프리즘 교환으로 획득",
+    "TC": "通過稜鏡兌換獲得"
+   }
+  },
+  "shop": [
+   {
+    "price": 4,
+    "currencyId": 111,
+    "limit": 1,
+    "start": "2026-10-19T02:00:00.000Z",
+    "end": "2026-12-06T21:00:00.000Z"
+   }
+  ],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": null,
+  "variant": {
+   "group": "/Game/Asset/Char/Player/Common/Part/Face/Mesh/Player_Face_Part34_SM|Ivorybloom",
+   "index": 3
+  },
+  "characters": [],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/accessory/T_Fashion_Face31_02.png"
+  },
+  "model": {
+   "paths": [
+    "/Game/Asset/Char/Player/Common/Part/Face/Mesh/Player_Face_Part34_SM"
+   ]
+  }
+ },
+ {
+  "id": "20109",
+  "kind": "accessory",
+  "category": "accessories",
+  "subcategory": "face",
+  "gameId": 20109,
+  "rarity": 5,
+  "name": {
+   "FR": "Fleur d’ossuaire – Rouille",
+   "EN": "Ivorybloom: Rust Red",
+   "JP": "骨塚の花・ペルシアンレッド",
+   "KR": "뼈무덤의 꽃·러스트 레드",
+   "TC": "骨冢花·銹紅",
+   "DE": "Ivorybloom: Rust Red",
+   "ES": "Ivorybloom: Rust Red"
+  },
+  "description": {
+   "FR": "La vie renaît sans fin.",
+   "EN": "Life finds its way.",
+   "JP": "絶え間なく続く。",
+   "KR": "끊임없이 순환하는 삶과 죽음.",
+   "TC": "生生不息。",
+   "DE": "Life finds its way.",
+   "ES": "Life finds its way."
+  },
+  "obtain": {
+   "methods": [
+    "prismExchange"
+   ],
+   "label": {
+    "FR": "Disponible via l’échange de Prismes",
+    "EN": "Available through Prism Exchange",
+    "DE": "Über Prismatausch erhältlich",
+    "ES": "Disponible mediante Prisma",
+    "JP": "プリズムの交換で獲得",
+    "KR": "프리즘 교환으로 획득",
+    "TC": "通過稜鏡兌換獲得"
+   }
+  },
+  "shop": [
+   {
+    "price": 4,
+    "currencyId": 111,
+    "limit": 1,
+    "start": "2026-10-19T02:00:00.000Z",
+    "end": "2026-12-06T21:00:00.000Z"
+   }
+  ],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": null,
+  "variant": {
+   "group": "/Game/Asset/Char/Player/Common/Part/Face/Mesh/Player_Face_Part34_SM|Ivorybloom",
+   "index": 4
+  },
+  "characters": [],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/accessory/T_Fashion_Face31_04.png"
+  },
+  "model": {
+   "paths": [
+    "/Game/Asset/Char/Player/Common/Part/Face/Mesh/Player_Face_Part34_SM"
+   ]
+  }
+ },
+ {
+  "id": "20110",
+  "kind": "accessory",
+  "category": "accessories",
+  "subcategory": "face",
+  "gameId": 20110,
+  "rarity": 5,
+  "name": {
+   "FR": "Marcheur de peste – Gris plomb",
+   "EN": "Pestilence Physician: Leaden Grey",
+   "JP": "疫病の行者・鉛灰",
+   "KR": "역병의 방랑자·그레이",
+   "TC": "瘟疫行者·鉛灰",
+   "DE": "Pestilence Physician: Leaden Grey",
+   "ES": "Pestilence Physician: Leaden Grey"
+  },
+  "description": {
+   "FR": "Il chemine à travers une ère de mort.",
+   "EN": "Through an age of death, they wander.",
+   "JP": "死の時代を歩む。",
+   "KR": "죽음의 시대를 거니는 발걸음.",
+   "TC": "穿行於死亡的時代。",
+   "DE": "Through an age of death, they wander.",
+   "ES": "Through an age of death, they wander."
+  },
+  "obtain": {
+   "methods": [
+    "event"
+   ],
+   "label": {
+    "FR": "Disponible via les événements",
+    "EN": "Available from events",
+    "ES": "Obtenido a través de eventos",
+    "JP": "イベントで入手",
+    "KR": "이벤트를 통해 획득",
+    "TC": "透過活動獲得",
+    "DE": "Available from events"
+   }
+  },
+  "shop": [],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": null,
+  "variant": {
+   "group": "/Game/Asset/Char/Player/Common/Part/Face/Mesh/Player_Face_Part36_SM|Pestilence Physician",
+   "index": 1
+  },
+  "characters": [],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/accessory/T_Fashion_Face32_03.png"
+  },
+  "model": {
+   "paths": [
+    "/Game/Asset/Char/Player/Common/Part/Face/Mesh/Player_Face_Part36_SM"
+   ]
+  }
+ },
+ {
+  "id": "20111",
+  "kind": "accessory",
+  "category": "accessories",
+  "subcategory": "face",
+  "gameId": 20111,
+  "rarity": 5,
+  "name": {
+   "FR": "Marcheur de peste – Jade noir",
+   "EN": "Pestilence Physician: Dark Jade",
+   "JP": "疫病の行者・ジェットブラック",
+   "KR": "역병의 방랑자·제트 블랙",
+   "TC": "瘟疫行者·墨玉",
+   "DE": "Pestilence Physician: Dark Jade",
+   "ES": "Pestilence Physician: Dark Jade"
+  },
+  "description": {
+   "FR": "Il chemine à travers une ère de mort.",
+   "EN": "Through an age of death, they wander.",
+   "JP": "死の時代を歩む。",
+   "KR": "죽음의 시대를 거니는 발걸음.",
+   "TC": "穿行於死亡的時代。",
+   "DE": "Through an age of death, they wander.",
+   "ES": "Through an age of death, they wander."
+  },
+  "obtain": {
+   "methods": [
+    "event"
+   ],
+   "label": {
+    "FR": "Disponible via les événements",
+    "EN": "Available from events",
+    "ES": "Obtenido a través de eventos",
+    "JP": "イベントで入手",
+    "KR": "이벤트를 통해 획득",
+    "TC": "透過活動獲得",
+    "DE": "Available from events"
+   }
+  },
+  "shop": [],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": null,
+  "variant": {
+   "group": "/Game/Asset/Char/Player/Common/Part/Face/Mesh/Player_Face_Part36_SM|Pestilence Physician",
+   "index": 2
+  },
+  "characters": [],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/accessory/T_Fashion_Face32_01.png"
+  },
+  "model": {
+   "paths": [
+    "/Game/Asset/Char/Player/Common/Part/Face/Mesh/Player_Face_Part36_SM"
+   ]
+  }
+ },
+ {
+  "id": "20112",
+  "kind": "accessory",
+  "category": "accessories",
+  "subcategory": "face",
+  "gameId": 20112,
+  "rarity": 5,
+  "name": {
+   "FR": "Marcheur de peste – Blanc ivoire",
+   "EN": "Pestilence Physician: Opaque White",
+   "JP": "疫病の行者・アイボリー",
+   "KR": "역병의 방랑자·아이보리",
+   "TC": "瘟疫行者·涅白",
+   "DE": "Pestilence Physician: Opaque White",
+   "ES": "Pestilence Physician: Opaque White"
+  },
+  "description": {
+   "FR": "Il chemine à travers une ère de mort.",
+   "EN": "Through an age of death, they wander.",
+   "JP": "死の時代を歩む。",
+   "KR": "죽음의 시대를 거니는 발걸음.",
+   "TC": "穿行於死亡的時代。",
+   "DE": "Through an age of death, they wander.",
+   "ES": "Through an age of death, they wander."
+  },
+  "obtain": {
+   "methods": [
+    "event"
+   ],
+   "label": {
+    "FR": "Disponible via les événements",
+    "EN": "Available from events",
+    "ES": "Obtenido a través de eventos",
+    "JP": "イベントで入手",
+    "KR": "이벤트를 통해 획득",
+    "TC": "透過活動獲得",
+    "DE": "Available from events"
+   }
+  },
+  "shop": [],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": null,
+  "variant": {
+   "group": "/Game/Asset/Char/Player/Common/Part/Face/Mesh/Player_Face_Part36_SM|Pestilence Physician",
+   "index": 3
+  },
+  "characters": [],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/accessory/T_Fashion_Face32_02.png"
+  },
+  "model": {
+   "paths": [
+    "/Game/Asset/Char/Player/Common/Part/Face/Mesh/Player_Face_Part36_SM"
+   ]
+  }
+ },
+ {
   "id": "30016",
   "kind": "accessory",
   "category": "accessories",
@@ -19153,7 +20149,8 @@
   },
   "obtain": {
    "methods": [
-    "event"
+    "event",
+    "shop"
    ],
    "label": {
     "FR": "Disponible via les événements",
@@ -19165,7 +20162,15 @@
     "DE": "Available from events"
    }
   },
-  "shop": [],
+  "shop": [
+   {
+    "price": 60,
+    "currencyId": 112,
+    "limit": 1,
+    "start": "2026-10-19T02:00:00.000Z",
+    "end": null
+   }
+  ],
   "duplicateRefund": null,
   "hiddenUntilOwned": false,
   "releaseVersion": null,
@@ -20426,7 +21431,7 @@
   ],
   "duplicateRefund": {
    "currencyId": 110,
-   "amount": 33
+   "amount": 23
   },
   "hiddenUntilOwned": false,
   "releaseVersion": null,
@@ -21986,6 +22991,52 @@
   "model": {
    "paths": [
     "/Game/Asset/Effect/Niagara/Costume/04Back/NS_BacK_Zombie_red"
+   ]
+  }
+ },
+ {
+  "id": "40037",
+  "kind": "accessory",
+  "category": "accessories",
+  "subcategory": "back",
+  "gameId": 40037,
+  "rarity": 5,
+  "name": {
+   "FR": "Déploiement perfide – Pourpre profond",
+   "EN": "Array of Designs: Violet",
+   "JP": "鬼道伏兵・レッドパープル",
+   "KR": "간악한 하수인·보라",
+   "TC": "詭道陳兵·絳紫",
+   "DE": "Array of Designs: Violet",
+   "ES": "Array of Designs: Violet"
+  },
+  "description": {
+   "FR": "Les paroles sacrées chassent les ombres, nourrissent l’âme et élèvent les esprits.",
+   "EN": "By sacred words, evil is banished, the soul is nourished, and the spirits are sustained.",
+   "ES": "Con palabras sagradas se ahuyenta el mal, se nutre el alma y se sostienen los espíritus.",
+   "JP": "真言は怪を祓い、魂を養い、霊を育む。",
+   "KR": "진실된 언령으로 삿됨을 몰아내고, 혼령을 보듬는다.",
+   "TC": "真言驅詭，養魂飼靈。",
+   "DE": "By sacred words, evil is banished, the soul is nourished, and the spirits are sustained."
+  },
+  "obtain": {
+   "methods": [],
+   "label": null
+  },
+  "shop": [],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": null,
+  "variant": null,
+  "characters": [],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/accessory/T_Fashion_Back39_04.png"
+  },
+  "model": {
+   "paths": [
+    "/Game/Asset/Effect/Niagara/Costume/04Back/NS_BacK_Zombie_Purple"
    ]
   }
  },
@@ -24167,7 +25218,7 @@
    "FR": "Sombre vague – Gris plomb",
    "EN": "Darktide: Leaden Grey",
    "ES": "Marea oscura: Gris plomo",
-   "JP": "ダークタイド・チタニウムホワイト",
+   "JP": "ダークタイド・鉛灰",
    "KR": "암류·그레이",
    "TC": "暗潮·鉛灰",
    "DE": "Darktide: Leaden Grey"
@@ -24850,7 +25901,7 @@
   "releaseVersion": null,
   "variant": {
    "group": "/Game/Asset/Char/Player/Common/Part/Back_Spring/Mesh/Player_Back_Part49_SM|Wraithveil Flame",
-   "index": 2
+   "index": 4
   },
   "characters": [],
   "series": null,
@@ -24917,7 +25968,7 @@
   "releaseVersion": null,
   "variant": {
    "group": "/Game/Asset/Char/Player/Common/Part/Back_Spring/Mesh/Player_Back_Part49_SM|Wraithveil Flame",
-   "index": 3
+   "index": 2
   },
   "characters": [],
   "series": null,
@@ -24984,7 +26035,7 @@
   "releaseVersion": null,
   "variant": {
    "group": "/Game/Asset/Char/Player/Common/Part/Back_Spring/Mesh/Player_Back_Part49_SM|Wraithveil Flame",
-   "index": 4
+   "index": 3
   },
   "characters": [],
   "series": null,
@@ -25055,6 +26106,451 @@
   }
  },
  {
+  "id": "40090",
+  "kind": "accessory",
+  "category": "accessories",
+  "subcategory": "back",
+  "gameId": 40090,
+  "rarity": 5,
+  "name": {
+   "FR": "Fils d’étoiles tombées – Pourpre profond",
+   "EN": "Starfall Silks: Violet",
+   "JP": "星降る糸・レッドパープル",
+   "KR": "유성에 드리운 실·보라",
+   "TC": "星落懸絲·絳紫",
+   "DE": "Starfall Silks: Violet",
+   "ES": "Starfall Silks: Violet"
+  },
+  "description": {
+   "FR": "De fins fils d’araignée ont capturé les étoiles tombées du ciel.",
+   "EN": "Silken threads ensnare the falling stars.",
+   "JP": "細き蜘蛛の糸が、墜ちゆく星を絡め取る。",
+   "KR": "떨어지는 별을 사로잡은 가느다란 거미줄.",
+   "TC": "纖細的蛛絲，捕獲了墜落的星辰。",
+   "DE": "Silken threads ensnare the falling stars.",
+   "ES": "Silken threads ensnare the falling stars."
+  },
+  "obtain": {
+   "methods": [
+    "prismExchange"
+   ],
+   "label": {
+    "FR": "Disponible via l’échange de Prismes",
+    "EN": "Available through Prism Exchange",
+    "DE": "Über Prismatausch erhältlich",
+    "ES": "Disponible mediante Prisma",
+    "JP": "プリズムの交換で獲得",
+    "KR": "프리즘 교환으로 획득",
+    "TC": "通過稜鏡兌換獲得"
+   }
+  },
+  "shop": [
+   {
+    "price": 6,
+    "currencyId": 111,
+    "limit": 1,
+    "start": "2026-10-19T02:00:00.000Z",
+    "end": "2026-12-06T21:00:00.000Z"
+   }
+  ],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": null,
+  "variant": {
+   "group": "/Game/Asset/Char/Player/Common/Part/Back_Spring/Mesh/Player_Back_Part48_SM|Starfall Silks",
+   "index": 1
+  },
+  "characters": [],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/accessory/T_Fashion_Waist37_04.png"
+  },
+  "model": {
+   "paths": [
+    "/Game/Asset/Char/Player/Common/Part/Back_Spring/Mesh/Player_Back_Part48_SM"
+   ]
+  }
+ },
+ {
+  "id": "40091",
+  "kind": "accessory",
+  "category": "accessories",
+  "subcategory": "back",
+  "gameId": 40091,
+  "rarity": 5,
+  "name": {
+   "FR": "Fils d’étoiles tombées – Blanc ivoire",
+   "EN": "Starfall Silks: Opaque White",
+   "JP": "星降る糸・アイボリー",
+   "KR": "유성에 드리운 실·아이보리",
+   "TC": "星落懸絲·涅白",
+   "DE": "Starfall Silks: Opaque White",
+   "ES": "Starfall Silks: Opaque White"
+  },
+  "description": {
+   "FR": "De fins fils d’araignée ont capturé les étoiles tombées du ciel.",
+   "EN": "Silken threads ensnare the falling stars.",
+   "JP": "細き蜘蛛の糸が、墜ちゆく星を絡め取る。",
+   "KR": "떨어지는 별을 사로잡은 가느다란 거미줄.",
+   "TC": "纖細的蛛絲，捕獲了墜落的星辰。",
+   "DE": "Silken threads ensnare the falling stars.",
+   "ES": "Silken threads ensnare the falling stars."
+  },
+  "obtain": {
+   "methods": [
+    "prismExchange"
+   ],
+   "label": {
+    "FR": "Disponible via l’échange de Prismes",
+    "EN": "Available through Prism Exchange",
+    "DE": "Über Prismatausch erhältlich",
+    "ES": "Disponible mediante Prisma",
+    "JP": "プリズムの交換で獲得",
+    "KR": "프리즘 교환으로 획득",
+    "TC": "通過稜鏡兌換獲得"
+   }
+  },
+  "shop": [
+   {
+    "price": 6,
+    "currencyId": 111,
+    "limit": 1,
+    "start": "2026-10-19T02:00:00.000Z",
+    "end": "2026-12-06T21:00:00.000Z"
+   }
+  ],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": null,
+  "variant": {
+   "group": "/Game/Asset/Char/Player/Common/Part/Back_Spring/Mesh/Player_Back_Part48_SM|Starfall Silks",
+   "index": 2
+  },
+  "characters": [],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/accessory/T_Fashion_Waist37_01.png"
+  },
+  "model": {
+   "paths": [
+    "/Game/Asset/Char/Player/Common/Part/Back_Spring/Mesh/Player_Back_Part48_SM"
+   ]
+  }
+ },
+ {
+  "id": "40092",
+  "kind": "accessory",
+  "category": "accessories",
+  "subcategory": "back",
+  "gameId": 40092,
+  "rarity": 5,
+  "name": {
+   "FR": "Fils d’étoiles tombées – Doré",
+   "EN": "Starfall Silks: Gilt",
+   "JP": "星降る糸・マリーゴールド",
+   "KR": "유성에 드리운 실·골드",
+   "TC": "星落懸絲·鎏金",
+   "DE": "Starfall Silks: Gilt",
+   "ES": "Starfall Silks: Gilt"
+  },
+  "description": {
+   "FR": "De fins fils d’araignée ont capturé les étoiles tombées du ciel.",
+   "EN": "Silken threads ensnare the falling stars.",
+   "JP": "細き蜘蛛の糸が、墜ちゆく星を絡め取る。",
+   "KR": "떨어지는 별을 사로잡은 가느다란 거미줄.",
+   "TC": "纖細的蛛絲，捕獲了墜落的星辰。",
+   "DE": "Silken threads ensnare the falling stars.",
+   "ES": "Silken threads ensnare the falling stars."
+  },
+  "obtain": {
+   "methods": [
+    "prismExchange"
+   ],
+   "label": {
+    "FR": "Disponible via l’échange de Prismes",
+    "EN": "Available through Prism Exchange",
+    "DE": "Über Prismatausch erhältlich",
+    "ES": "Disponible mediante Prisma",
+    "JP": "プリズムの交換で獲得",
+    "KR": "프리즘 교환으로 획득",
+    "TC": "通過稜鏡兌換獲得"
+   }
+  },
+  "shop": [
+   {
+    "price": 6,
+    "currencyId": 111,
+    "limit": 1,
+    "start": "2026-10-19T02:00:00.000Z",
+    "end": "2026-12-06T21:00:00.000Z"
+   }
+  ],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": null,
+  "variant": {
+   "group": "/Game/Asset/Char/Player/Common/Part/Back_Spring/Mesh/Player_Back_Part48_SM|Starfall Silks",
+   "index": 3
+  },
+  "characters": [],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/accessory/T_Fashion_Waist37_02.png"
+  },
+  "model": {
+   "paths": [
+    "/Game/Asset/Char/Player/Common/Part/Back_Spring/Mesh/Player_Back_Part48_SM"
+   ]
+  }
+ },
+ {
+  "id": "40093",
+  "kind": "accessory",
+  "category": "accessories",
+  "subcategory": "back",
+  "gameId": 40093,
+  "rarity": 5,
+  "name": {
+   "FR": "Fils d’étoiles tombées – Rouille",
+   "EN": "Starfall Silks: Rust Red",
+   "JP": "星降る糸・ペルシアンレッド",
+   "KR": "유성에 드리운 실·러스트 레드",
+   "TC": "星落懸絲·銹紅",
+   "DE": "Starfall Silks: Rust Red",
+   "ES": "Starfall Silks: Rust Red"
+  },
+  "description": {
+   "FR": "De fins fils d’araignée ont capturé les étoiles tombées du ciel.",
+   "EN": "Silken threads ensnare the falling stars.",
+   "JP": "細き蜘蛛の糸が、墜ちゆく星を絡め取る。",
+   "KR": "떨어지는 별을 사로잡은 가느다란 거미줄.",
+   "TC": "纖細的蛛絲，捕獲了墜落的星辰。",
+   "DE": "Silken threads ensnare the falling stars.",
+   "ES": "Silken threads ensnare the falling stars."
+  },
+  "obtain": {
+   "methods": [
+    "prismExchange"
+   ],
+   "label": {
+    "FR": "Disponible via l’échange de Prismes",
+    "EN": "Available through Prism Exchange",
+    "DE": "Über Prismatausch erhältlich",
+    "ES": "Disponible mediante Prisma",
+    "JP": "プリズムの交換で獲得",
+    "KR": "프리즘 교환으로 획득",
+    "TC": "通過稜鏡兌換獲得"
+   }
+  },
+  "shop": [
+   {
+    "price": 6,
+    "currencyId": 111,
+    "limit": 1,
+    "start": "2026-10-19T02:00:00.000Z",
+    "end": "2026-12-06T21:00:00.000Z"
+   }
+  ],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": null,
+  "variant": {
+   "group": "/Game/Asset/Char/Player/Common/Part/Back_Spring/Mesh/Player_Back_Part48_SM|Starfall Silks",
+   "index": 4
+  },
+  "characters": [],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/accessory/T_Fashion_Waist37_03.png"
+  },
+  "model": {
+   "paths": [
+    "/Game/Asset/Char/Player/Common/Part/Back_Spring/Mesh/Player_Back_Part48_SM"
+   ]
+  }
+ },
+ {
+  "id": "40094",
+  "kind": "accessory",
+  "category": "accessories",
+  "subcategory": "back",
+  "gameId": 40094,
+  "rarity": 5,
+  "name": {
+   "FR": "Diablotin espiègle – Doré",
+   "EN": "Mischief Grin: Gilt",
+   "JP": "ニヤリデビル・マリーゴールド",
+   "KR": "장난꾸러기 웃음·골드",
+   "TC": "搗蛋笑魘·鎏金",
+   "DE": "Mischief Grin: Gilt",
+   "ES": "Mischief Grin: Gilt"
+  },
+  "description": {
+   "FR": "Ne te retourne pas. Il est juste derrière toi.",
+   "EN": "Don't look back... Something's right behind you!",
+   "JP": "振り返るな。すぐ後ろにいる。",
+   "KR": "뒤돌아보지 마. 바로 네 뒤야.",
+   "TC": "不要回頭，就在你身後。",
+   "DE": "Don't look back... Something's right behind you!",
+   "ES": "Don't look back... Something's right behind you!"
+  },
+  "obtain": {
+   "methods": [
+    "event"
+   ],
+   "label": {
+    "FR": "Disponible via les événements",
+    "EN": "Available from events",
+    "ES": "Obtenido a través de eventos",
+    "JP": "イベントで入手",
+    "KR": "이벤트를 통해 획득",
+    "TC": "透過活動獲得",
+    "DE": "Available from events"
+   }
+  },
+  "shop": [],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": null,
+  "variant": {
+   "group": "/Game/Asset/Char/Player/Common/Part/Back_Spring/Mesh/Player_Back_Part50_SM|Mischief Grin",
+   "index": 1
+  },
+  "characters": [],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/accessory/T_Fashion_Waist38_02.png"
+  },
+  "model": {
+   "paths": [
+    "/Game/Asset/Char/Player/Common/Part/Back_Spring/Mesh/Player_Back_Part50_SM"
+   ]
+  }
+ },
+ {
+  "id": "40095",
+  "kind": "accessory",
+  "category": "accessories",
+  "subcategory": "back",
+  "gameId": 40095,
+  "rarity": 5,
+  "name": {
+   "FR": "Diablotin espiègle – Rouille",
+   "EN": "Mischief Grin: Rust Red",
+   "JP": "ニヤリデビル・ペルシアンレッド",
+   "KR": "장난꾸러기 웃음·러스트 레드",
+   "TC": "搗蛋笑魘·銹紅",
+   "DE": "Mischief Grin: Rust Red",
+   "ES": "Mischief Grin: Rust Red"
+  },
+  "description": {
+   "FR": "Ne te retourne pas. Il est juste derrière toi.",
+   "EN": "Don't look back... Something's right behind you!",
+   "JP": "振り返るな。すぐ後ろにいる。",
+   "KR": "뒤돌아보지 마. 바로 네 뒤야.",
+   "TC": "不要回頭，就在你身後。",
+   "DE": "Don't look back... Something's right behind you!",
+   "ES": "Don't look back... Something's right behind you!"
+  },
+  "obtain": {
+   "methods": [
+    "event"
+   ],
+   "label": {
+    "FR": "Disponible via les événements",
+    "EN": "Available from events",
+    "ES": "Obtenido a través de eventos",
+    "JP": "イベントで入手",
+    "KR": "이벤트를 통해 획득",
+    "TC": "透過活動獲得",
+    "DE": "Available from events"
+   }
+  },
+  "shop": [],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": null,
+  "variant": {
+   "group": "/Game/Asset/Char/Player/Common/Part/Back_Spring/Mesh/Player_Back_Part50_SM|Mischief Grin",
+   "index": 2
+  },
+  "characters": [],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/accessory/T_Fashion_Waist38_03.png"
+  },
+  "model": {
+   "paths": [
+    "/Game/Asset/Char/Player/Common/Part/Back_Spring/Mesh/Player_Back_Part50_SM"
+   ]
+  }
+ },
+ {
+  "id": "40096",
+  "kind": "accessory",
+  "category": "accessories",
+  "subcategory": "back",
+  "gameId": 40096,
+  "rarity": 5,
+  "name": {
+   "FR": "Diablotin espiègle – Blanc ivoire",
+   "EN": "Mischief Grin: Opaque White",
+   "JP": "ニヤリデビル・アイボリー",
+   "KR": "장난꾸러기 웃음·아이보리",
+   "TC": "搗蛋笑魘·涅白",
+   "DE": "Mischief Grin: Opaque White",
+   "ES": "Mischief Grin: Opaque White"
+  },
+  "description": {
+   "FR": "Ne te retourne pas. Il est juste derrière toi.",
+   "EN": "Don't look back... Something's right behind you!",
+   "JP": "振り返るな。すぐ後ろにいる。",
+   "KR": "뒤돌아보지 마. 바로 네 뒤야.",
+   "TC": "不要回頭，就在你身後。",
+   "DE": "Don't look back... Something's right behind you!",
+   "ES": "Don't look back... Something's right behind you!"
+  },
+  "obtain": {
+   "methods": [
+    "event"
+   ],
+   "label": {
+    "FR": "Disponible via les événements",
+    "EN": "Available from events",
+    "ES": "Obtenido a través de eventos",
+    "JP": "イベントで入手",
+    "KR": "이벤트를 통해 획득",
+    "TC": "透過活動獲得",
+    "DE": "Available from events"
+   }
+  },
+  "shop": [],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": null,
+  "variant": {
+   "group": "/Game/Asset/Char/Player/Common/Part/Back_Spring/Mesh/Player_Back_Part50_SM|Mischief Grin",
+   "index": 3
+  },
+  "characters": [],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/accessory/T_Fashion_Waist38_01.png"
+  },
+  "model": {
+   "paths": [
+    "/Game/Asset/Char/Player/Common/Part/Back_Spring/Mesh/Player_Back_Part50_SM"
+   ]
+  }
+ },
+ {
   "id": "10001",
   "kind": "accessory",
   "category": "accessories",
@@ -25114,6 +26610,7 @@
    9005,
    9007,
    9008,
+   9009,
    90021
   ],
   "visuals": {
@@ -25185,6 +26682,7 @@
    9005,
    9007,
    9008,
+   9009,
    90021
   ],
   "visuals": {
@@ -25256,6 +26754,7 @@
    9005,
    9007,
    9008,
+   9009,
    90021
   ],
   "visuals": {
@@ -25327,6 +26826,7 @@
    9005,
    9007,
    9008,
+   9009,
    90021
   ],
   "visuals": {
@@ -26072,6 +27572,7 @@
    9005,
    9007,
    9008,
+   9009,
    90021
   ],
   "visuals": {
@@ -26143,6 +27644,7 @@
    9005,
    9007,
    9008,
+   9009,
    90021
   ],
   "visuals": {
@@ -26211,6 +27713,7 @@
    9005,
    9007,
    9008,
+   9009,
    90021
   ],
   "visuals": {
@@ -26700,6 +28203,7 @@
    9005,
    9007,
    9008,
+   9009,
    90021
   ],
   "visuals": {
@@ -28414,7 +29918,7 @@
    "FR": "Ornement canin – Gris plomb",
    "EN": "Puppy Headpiece: Leaden Grey",
    "ES": "Adorno de cachorro: Gris plomo",
-   "JP": "犬の髪飾り・チタニウムホワイト",
+   "JP": "犬の髪飾り・鉛灰",
    "KR": "멍멍 머리 장식·그레이",
    "TC": "汪汪髮飾·鉛灰",
    "DE": "Puppy Headpiece: Leaden Grey"
@@ -28481,7 +29985,7 @@
    "FR": "Oreilles de loup – Gris plomb",
    "EN": "Wolfy Headpiece: Leaden Grey",
    "ES": "Accesorio de lobo: Gris plomo",
-   "JP": "ワイルドな髪飾り・チタニウムホワイト",
+   "JP": "ワイルドな髪飾り・鉛灰",
    "KR": "아우우 머리 장식·그레이",
    "TC": "野性髮飾·鉛灰",
    "DE": "Wolfy Headpiece: Leaden Grey"
@@ -29239,7 +30743,7 @@
    "FR": "Cône de signalisation – Gris plomb",
    "EN": "Roadblock: Leaden Grey",
    "ES": "Barricada: Gris plomo",
-   "JP": "バリケード・チタニウムホワイト",
+   "JP": "バリケード・鉛灰",
    "KR": "바리케이드·그레이",
    "TC": "路障·鉛灰",
    "DE": "Roadblock: Leaden Grey"
@@ -29616,7 +31120,7 @@
   "name": {
    "FR": "Ornement de chat aux oreilles tombantes – Gris plomb",
    "EN": "Fold-Ear Kitty Headpiece: Leaden Grey",
-   "JP": "折れ耳猫の髪飾り・チタニウムホワイト",
+   "JP": "折れ耳猫の髪飾り・鉛灰",
    "KR": "스코티시폴드 머리 장식·그레이",
    "TC": "折耳喵喵髮飾·鉛灰",
    "DE": "Fold-Ear Kitty Headpiece: Leaden Grey",
@@ -31259,7 +32763,15 @@
     "TC": "通過商店獲得"
    }
   },
-  "shop": [],
+  "shop": [
+   {
+    "price": 480,
+    "currencyId": 99,
+    "limit": 1,
+    "start": "2026-07-27T02:00:00.000Z",
+    "end": "2026-09-07T09:00:00.000Z"
+   }
+  ],
   "duplicateRefund": {
    "currencyId": 110,
    "amount": 4
@@ -31318,7 +32830,15 @@
     "TC": "通過商店獲得"
    }
   },
-  "shop": [],
+  "shop": [
+   {
+    "price": 480,
+    "currencyId": 99,
+    "limit": 1,
+    "start": "2026-07-27T02:00:00.000Z",
+    "end": "2026-09-07T09:00:00.000Z"
+   }
+  ],
   "duplicateRefund": {
    "currencyId": 110,
    "amount": 4
@@ -32367,7 +33887,7 @@
    "FR": "Queue miaou courte – Gris plomb",
    "EN": "Snap Kitty Waistpiece: Leaden Grey",
    "ES": "Cola de Gatito chasqueador: Gris plomo",
-   "JP": "猫の尻尾（ショート）・チタニウムホワイト",
+   "JP": "猫の尻尾（ショート）・鉛灰",
    "KR": "짧은 묘묘 허리 장식·그레이",
    "TC": "短喵喵腰飾·鉛灰",
    "DE": "Snap Kitty Waistpiece: Leaden Grey"
@@ -32645,7 +34165,7 @@
    "FR": "Queue miaou longue – Gris plomb",
    "EN": "Swing Kitty Waistpiece: Leaden Grey",
    "ES": "Cola de Gatito bamboleante: Gris plomo",
-   "JP": "猫の尻尾（ロング）・チタニウムホワイト",
+   "JP": "猫の尻尾（ロング）・鉛灰",
    "KR": "긴 묘묘 허리 장식·그레이",
    "TC": "長喵喵腰飾·鉛灰",
    "DE": "Swing Kitty Waistpiece: Leaden Grey"
@@ -32919,7 +34439,7 @@
    "FR": "Queue de chien – Gris plomb",
    "EN": "Puppy Tail: Leaden Grey",
    "ES": "Cola de cachorro: Gris plomo",
-   "JP": "犬のしっぽ・チタニウムホワイト",
+   "JP": "犬のしっぽ・鉛灰",
    "KR": "멍멍 꼬리·그레이",
    "TC": "汪汪尾巴·鉛灰",
    "DE": "Puppy Tail: Leaden Grey"
@@ -32986,7 +34506,7 @@
    "FR": "Queue de loup – Gris plomb",
    "EN": "Wolfy Tail: Leaden Grey",
    "ES": "Cola de lobo: Gris plomo",
-   "JP": "ワイルドなしっぽ・チタニウムホワイト",
+   "JP": "ワイルドなしっぽ・鉛灰",
    "KR": "아우우 꼬리·그레이",
    "TC": "野性尾巴·鉛灰",
    "DE": "Wolfy Tail: Leaden Grey"
@@ -33335,7 +34855,7 @@
   "name": {
    "FR": "Queue de chat aux oreilles tombantes – Gris plomb",
    "EN": "Fold-Ear Kitty Tail: Leaden Grey",
-   "JP": "折れ耳猫のしっぽ・チタニウムホワイト",
+   "JP": "折れ耳猫のしっぽ・鉛灰",
    "KR": "스코티시폴드 꼬리·그레이",
    "TC": "折耳喵喵尾巴·鉛灰",
    "DE": "Fold-Ear Kitty Tail: Leaden Grey",
@@ -33657,6 +35177,7 @@
    9005,
    9007,
    9008,
+   9009,
    90021
   ],
   "visuals": {
@@ -33728,6 +35249,7 @@
    9005,
    9007,
    9008,
+   9009,
    90021
   ],
   "visuals": {
@@ -33799,6 +35321,7 @@
    9005,
    9007,
    9008,
+   9009,
    90021
   ],
   "visuals": {
@@ -34080,6 +35603,7 @@
    9005,
    9007,
    9008,
+   9009,
    90021
   ],
   "visuals": {
@@ -34151,6 +35675,7 @@
    9005,
    9007,
    9008,
+   9009,
    90021
   ],
   "visuals": {
@@ -34222,6 +35747,7 @@
    9005,
    9007,
    9008,
+   9009,
    90021
   ],
   "visuals": {
@@ -34293,6 +35819,7 @@
    9005,
    9007,
    9008,
+   9009,
    90021
   ],
   "visuals": {
@@ -34364,6 +35891,7 @@
    9005,
    9007,
    9008,
+   9009,
    90021
   ],
   "visuals": {
@@ -34435,6 +35963,7 @@
    9005,
    9007,
    9008,
+   9009,
    90021
   ],
   "visuals": {
@@ -34506,6 +36035,7 @@
    9005,
    9007,
    9008,
+   9009,
    90021
   ],
   "visuals": {
@@ -34577,6 +36107,7 @@
    9005,
    9007,
    9008,
+   9009,
    90021
   ],
   "visuals": {
@@ -34928,6 +36459,7 @@
    9005,
    9007,
    9008,
+   9009,
    90021
   ],
   "visuals": {
@@ -34996,6 +36528,7 @@
    9005,
    9007,
    9008,
+   9009,
    90021
   ],
   "visuals": {
@@ -35064,6 +36597,7 @@
    9005,
    9007,
    9008,
+   9009,
    90021
   ],
   "visuals": {
@@ -35132,6 +36666,7 @@
    9005,
    9007,
    9008,
+   9009,
    90021
   ],
   "visuals": {
@@ -35743,6 +37278,7 @@
    9005,
    9007,
    9008,
+   9009,
    90021
   ],
   "visuals": {
@@ -35966,7 +37502,7 @@
    "FR": "Lunettes audacieuses – Gris plomb",
    "EN": "Cool Shades: Leaden Grey",
    "ES": "Actitud legendaria: Gris plomo",
-   "JP": "クール系サングラス・チタニウムホワイト",
+   "JP": "クール系サングラス・鉛灰",
    "KR": "멋쟁이 선글라스·그레이",
    "TC": "炫酷墨鏡·鉛灰",
    "DE": "Cool Shades: Leaden Grey"
@@ -37711,6 +39247,7 @@
    9005,
    9007,
    9008,
+   9009,
    90021
   ],
   "visuals": {
@@ -37782,6 +39319,7 @@
    9005,
    9007,
    9008,
+   9009,
    90021
   ],
   "visuals": {
@@ -37853,6 +39391,7 @@
    9005,
    9007,
    9008,
+   9009,
    90021
   ],
   "visuals": {
@@ -37924,6 +39463,7 @@
    9005,
    9007,
    9008,
+   9009,
    90021
   ],
   "visuals": {
@@ -38002,7 +39542,7 @@
    "FR": "Brûle-encens rituel – Gris plomb",
    "EN": "Ritual Censer: Leaden Grey",
    "ES": "Incensario ritual: Gris plomo",
-   "JP": "祀煙香炉・チタニウムホワイト",
+   "JP": "祀煙香炉・鉛灰",
    "KR": "제례 향로·그레이",
    "TC": "祀煙香爐·鉛灰",
    "DE": "Ritual Censer: Leaden Grey"
@@ -38667,7 +40207,8 @@
   },
   "obtain": {
    "methods": [
-    "event"
+    "event",
+    "shop"
    ],
    "label": {
     "FR": "Disponible via les événements",
@@ -38679,7 +40220,15 @@
     "DE": "Available from events"
    }
   },
-  "shop": [],
+  "shop": [
+   {
+    "price": 60,
+    "currencyId": 112,
+    "limit": 1,
+    "start": "2026-10-19T02:00:00.000Z",
+    "end": null
+   }
+  ],
   "duplicateRefund": null,
   "hiddenUntilOwned": false,
   "releaseVersion": null,
@@ -39228,6 +40777,7 @@
    9005,
    9007,
    9008,
+   9009,
    90021
   ],
   "visuals": {
@@ -39552,7 +41102,8 @@
   },
   "obtain": {
    "methods": [
-    "event"
+    "event",
+    "shop"
    ],
    "label": {
     "FR": "Disponible via les événements",
@@ -39564,7 +41115,15 @@
     "DE": "Available from events"
    }
   },
-  "shop": [],
+  "shop": [
+   {
+    "price": 60,
+    "currencyId": 112,
+    "limit": 1,
+    "start": "2026-10-19T02:00:00.000Z",
+    "end": null
+   }
+  ],
   "duplicateRefund": null,
   "hiddenUntilOwned": false,
   "releaseVersion": null,
@@ -40056,6 +41615,66 @@
   "model": null
  },
  {
+  "id": "11010",
+  "kind": "effect",
+  "category": "effects",
+  "subcategory": "plunging-attack",
+  "gameId": 11010,
+  "rarity": 5,
+  "name": {
+   "FR": "Déflagration d’ossuaire – Bleu indigo",
+   "EN": "Ivoryburst: Azure",
+   "JP": "骨塚爆破・インディゴ",
+   "KR": "뼈무덤의 피어남·다크 블루",
+   "TC": "骨冢爆破·黛藍",
+   "DE": "Ivoryburst: Azure",
+   "ES": "Ivoryburst: Azure"
+  },
+  "description": {
+   "FR": "Éclot parmi les ossements.",
+   "EN": "From the remains, life bursts into bloom.",
+   "JP": "亡骸の中に咲き誇る。",
+   "KR": "백골이 잠든 땅에서 다시 만개한다.",
+   "TC": "於亡骸中綻放。",
+   "DE": "From the remains, life bursts into bloom.",
+   "ES": "From the remains, life bursts into bloom."
+  },
+  "obtain": {
+   "methods": [
+    "prismExchange"
+   ],
+   "label": {
+    "FR": "Disponible via l’échange de Prismes",
+    "EN": "Available through Prism Exchange",
+    "DE": "Über Prismatausch erhältlich",
+    "ES": "Disponible mediante Prisma",
+    "JP": "プリズムの交換で獲得",
+    "KR": "프리즘 교환으로 획득",
+    "TC": "通過稜鏡兌換獲得"
+   }
+  },
+  "shop": [
+   {
+    "price": 6,
+    "currencyId": 111,
+    "limit": 1,
+    "start": "2026-10-19T02:00:00.000Z",
+    "end": "2026-12-06T21:00:00.000Z"
+   }
+  ],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": null,
+  "variant": null,
+  "characters": [],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/effect/T_Fashion_Fx50.png"
+  },
+  "model": null
+ },
+ {
   "id": "21003",
   "kind": "effect",
   "category": "effects",
@@ -40408,13 +42027,13 @@
   "gameId": 21009,
   "rarity": 5,
   "name": {
-   "FR": "Sillage sacré – Doré",
-   "EN": "Sacred Wake: Gilt",
-   "ES": "Rastro sagrado: Dorado",
-   "JP": "聖潔の軌跡・マリーゴールド",
-   "KR": "성결한 궤적·골드",
-   "TC": "聖潔軌跡·鎏金",
-   "DE": "Sacred Wake: Gilt"
+   "FR": "Sillage de lycoris éternels",
+   "EN": "Everbloom Flurry",
+   "ES": "Arboleda de Higanbana",
+   "JP": "永遠の花園",
+   "KR": "영원의 꽃덤불",
+   "TC": "永恆花叢",
+   "DE": "Everbloom Flurry"
   },
   "description": null,
   "obtain": {
@@ -40436,7 +42055,7 @@
   "hiddenUntilOwned": true,
   "releaseVersion": null,
   "variant": {
-   "group": "name|Sacred Wake",
+   "group": "name|Everbloom Flurry",
    "index": 1
   },
   "characters": [],
@@ -40498,7 +42117,10 @@
   "duplicateRefund": null,
   "hiddenUntilOwned": false,
   "releaseVersion": null,
-  "variant": null,
+  "variant": {
+   "group": "name|Everbloom Flurry",
+   "index": 1
+  },
   "characters": [],
   "series": null,
   "banners": [],
@@ -40573,7 +42195,7 @@
    "FR": "Sillage sacré – Gris plomb",
    "EN": "Sacred Wake: Leaden Grey",
    "ES": "Rastro sagrado: Gris plomo",
-   "JP": "聖潔の軌跡・チタニウムホワイト",
+   "JP": "聖潔の軌跡・鉛灰",
    "KR": "성결한 궤적·그레이",
    "TC": "聖潔軌跡·鉛灰",
    "DE": "Sacred Wake: Leaden Grey"
@@ -40734,6 +42356,277 @@
   "banners": [],
   "visuals": {
    "icon": "/assets/cosmetics/effect/T_Fashion_Fx39.png"
+  },
+  "model": null
+ },
+ {
+  "id": "21016",
+  "kind": "effect",
+  "category": "effects",
+  "subcategory": "helix-leap",
+  "gameId": 21016,
+  "rarity": 5,
+  "name": {
+   "FR": "Chatôme – Blanc ivoire",
+   "EN": "Spooky Kitty: Opaque White",
+   "JP": "にゃんこの幽霊·アイボリー",
+   "KR": "냥이 유령·아이보리",
+   "TC": "貓貓幽靈·涅白",
+   "DE": "Spooky Kitty: Opaque White",
+   "ES": "Spooky Kitty: Opaque White"
+  },
+  "description": {
+   "FR": "Un Chatôme blanc erre à travers Atlasia.",
+   "EN": "A spooky little white kitty, wandering through Atlasia.",
+   "JP": "アトラシアをさまよう、真っ白な猫の幽霊。",
+   "KR": "하얀 냥이 유령 하나가, 아트라시아를 떠돌고 있다.",
+   "TC": "一隻白色的貓貓幽靈，遊蕩在阿特拉西亞。",
+   "DE": "A spooky little white kitty, wandering through Atlasia.",
+   "ES": "A spooky little white kitty, wandering through Atlasia."
+  },
+  "obtain": {
+   "methods": [
+    "event"
+   ],
+   "label": {
+    "FR": "Disponible via les événements",
+    "EN": "Available from events",
+    "ES": "Obtenido a través de eventos",
+    "JP": "イベントで入手",
+    "KR": "이벤트를 통해 획득",
+    "TC": "透過活動獲得",
+    "DE": "Available from events"
+   }
+  },
+  "shop": [],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": null,
+  "variant": null,
+  "characters": [],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/effect/T_Fashion_Fx52.png"
+  },
+  "model": null
+ },
+ {
+  "id": "21017",
+  "kind": "effect",
+  "category": "effects",
+  "subcategory": "helix-leap",
+  "gameId": 21017,
+  "rarity": 5,
+  "name": {
+   "FR": "Fantôme espiègle – Doré",
+   "EN": "Spooky Tricks: Gilt",
+   "JP": "いたずらの幽霊·マリーゴールド",
+   "KR": "장난꾸러기 유령·골드",
+   "TC": "搗蛋幽靈·鎏金",
+   "DE": "Spooky Tricks: Gilt",
+   "ES": "Spooky Tricks: Gilt"
+  },
+  "description": {
+   "FR": "Chats, citrouilles, chauves-souris... Des fantômes partout !",
+   "EN": "Kitties, pumpkins, and bats... Spooks everywhere!!!",
+   "JP": "ネコにカボチャ、コウモリ、あちこちに幽霊がいっぱい！",
+   "KR": "냥이, 호박, 박쥐, 여기저기 다 유령이야!",
+   "TC": "貓貓、南瓜、蝙蝠，到處都是幽靈！",
+   "DE": "Kitties, pumpkins, and bats... Spooks everywhere!!!",
+   "ES": "Kitties, pumpkins, and bats... Spooks everywhere!!!"
+  },
+  "obtain": {
+   "methods": [
+    "event"
+   ],
+   "label": {
+    "FR": "Disponible via les événements",
+    "EN": "Available from events",
+    "ES": "Obtenido a través de eventos",
+    "JP": "イベントで入手",
+    "KR": "이벤트를 통해 획득",
+    "TC": "透過活動獲得",
+    "DE": "Available from events"
+   }
+  },
+  "shop": [],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": null,
+  "variant": null,
+  "characters": [],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/effect/T_Fashion_Fx53.png"
+  },
+  "model": null
+ },
+ {
+  "id": "21018",
+  "kind": "effect",
+  "category": "effects",
+  "subcategory": "helix-leap",
+  "gameId": 21018,
+  "rarity": 5,
+  "name": {
+   "FR": "Fantrouille – Doré",
+   "EN": "Spooky Pumpkin: Gilt",
+   "JP": "カボチャの幽霊·マリーゴールド",
+   "KR": "호박 유령·골드",
+   "TC": "南瓜幽靈·鎏金",
+   "DE": "Spooky Pumpkin: Gilt",
+   "ES": "Spooky Pumpkin: Gilt"
+  },
+  "description": {
+   "FR": "Une Fantrouille dorée erre à travers Atlasia.",
+   "EN": "A spooky golden pumpkin, wandering through Atlasia.",
+   "JP": "アトラシアをさまよう、金色のカボチャ幽霊。",
+   "KR": "금빛 호박 유령 하나가, 아트라시아를 떠돌고 있다.",
+   "TC": "一個金色的南瓜幽靈，遊蕩在阿特拉西亞。",
+   "DE": "A spooky golden pumpkin, wandering through Atlasia.",
+   "ES": "A spooky golden pumpkin, wandering through Atlasia."
+  },
+  "obtain": {
+   "methods": [
+    "event"
+   ],
+   "label": {
+    "FR": "Disponible via les événements",
+    "EN": "Available from events",
+    "ES": "Obtenido a través de eventos",
+    "JP": "イベントで入手",
+    "KR": "이벤트를 통해 획득",
+    "TC": "透過活動獲得",
+    "DE": "Available from events"
+   }
+  },
+  "shop": [],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": null,
+  "variant": null,
+  "characters": [],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/effect/T_Fashion_Fx54.png"
+  },
+  "model": null
+ },
+ {
+  "id": "21019",
+  "kind": "effect",
+  "category": "effects",
+  "subcategory": "helix-leap",
+  "gameId": 21019,
+  "rarity": 5,
+  "name": {
+   "FR": "Talisman ésotérique – Pourpre profond",
+   "EN": "Eldritch Talisman: Violet",
+   "JP": "鬼道呪符・レッドパープル",
+   "KR": "삿된 부적·보라",
+   "TC": "詭道符籙·絳紫",
+   "DE": "Eldritch Talisman: Violet",
+   "ES": "Eldritch Talisman: Violet"
+  },
+  "description": {
+   "FR": "Le talisman s’anime à la pensée, et les voies occultes lui répondent.",
+   "EN": "With but a thought, the talisman stirs, and eldritch power answers.",
+   "JP": "符は念に従って動き、鬼道はそれに随う。",
+   "KR": "뜻하는 대로 부적을 부리니, 기이한 도술이 펼쳐지네.",
+   "TC": "符隨念動，詭道相隨。",
+   "DE": "With but a thought, the talisman stirs, and eldritch power answers.",
+   "ES": "With but a thought, the talisman stirs, and eldritch power answers."
+  },
+  "obtain": {
+   "methods": [
+    "event"
+   ],
+   "label": {
+    "FR": "Disponible via les événements",
+    "EN": "Available from events",
+    "ES": "Obtenido a través de eventos",
+    "JP": "イベントで入手",
+    "KR": "이벤트를 통해 획득",
+    "TC": "透過活動獲得",
+    "DE": "Available from events"
+   }
+  },
+  "shop": [],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": null,
+  "variant": {
+   "group": "name|Eldritch Talisman",
+   "index": 1
+  },
+  "characters": [],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/effect/T_Fashion_Fx51.png"
+  },
+  "model": null
+ },
+ {
+  "id": "21020",
+  "kind": "effect",
+  "category": "effects",
+  "subcategory": "helix-leap",
+  "gameId": 21020,
+  "rarity": 5,
+  "name": {
+   "FR": "Fils d’ombre – Bleu indigo",
+   "EN": "Trailing Silks: Azure",
+   "JP": "影を曳く糸・インディゴ",
+   "KR": "허공을 누비는 실·다크 블루",
+   "TC": "懸絲曳影·黛藍",
+   "DE": "Trailing Silks: Azure",
+   "ES": "Trailing Silks: Azure"
+  },
+  "description": {
+   "FR": "Des fils d’araignée ondulent dans les airs, dessinant la silhouette de la chasseuse.",
+   "EN": "Silken threads dance in the air, tracing the silhouette of a hunter.",
+   "JP": "空中で揺らめく蜘蛛の糸が、狩人の輪郭を描き出す。",
+   "KR": "허공에 일렁이는 거미줄이 사냥꾼의 윤곽을 드러낸다.",
+   "TC": "蛛絲在空中搖曳，勾勒出獵手的輪廓。",
+   "DE": "Silken threads dance in the air, tracing the silhouette of a hunter.",
+   "ES": "Silken threads dance in the air, tracing the silhouette of a hunter."
+  },
+  "obtain": {
+   "methods": [
+    "prismExchange"
+   ],
+   "label": {
+    "FR": "Disponible via l’échange de Prismes",
+    "EN": "Available through Prism Exchange",
+    "DE": "Über Prismatausch erhältlich",
+    "ES": "Disponible mediante Prisma",
+    "JP": "プリズムの交換で獲得",
+    "KR": "프리즘 교환으로 획득",
+    "TC": "通過稜鏡兌換獲得"
+   }
+  },
+  "shop": [
+   {
+    "price": 6,
+    "currencyId": 111,
+    "limit": 1,
+    "start": "2026-10-19T02:00:00.000Z",
+    "end": "2026-12-06T21:00:00.000Z"
+   }
+  ],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": null,
+  "variant": null,
+  "characters": [],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/effect/T_Fashion_Fx49.png"
   },
   "model": null
  },
@@ -42719,6 +44612,258 @@
   "model": null
  },
  {
+  "id": "70084",
+  "kind": "effect",
+  "category": "effects",
+  "subcategory": "footprint",
+  "gameId": 70084,
+  "rarity": 5,
+  "name": {
+   "FR": "Fils d’ombres fleuries – Pourpre profond",
+   "EN": "Florafall Silks: Violet",
+   "JP": "花影の糸・レッドパープル",
+   "KR": "꽃에 드리운 실·보라",
+   "TC": "花影懸絲·絳紫",
+   "DE": "Florafall Silks: Violet",
+   "ES": "Florafall Silks: Violet"
+  },
+  "description": {
+   "FR": "Des fleurs tissées de fils conduisent les âmes errantes perdues dans la nuit.",
+   "EN": "Flowers from silken threads guide lost souls through the night.",
+   "JP": "糸で紡がれた花が、夜に迷える亡者を彼岸へと導く。",
+   "KR": "어둠 속을 헤매는 망령을 인도하는 실로 엮어낸 꽃.",
+   "TC": "絲線編織的花朵，引渡著迷失在夜色中的亡靈。",
+   "DE": "Flowers from silken threads guide lost souls through the night.",
+   "ES": "Flowers from silken threads guide lost souls through the night."
+  },
+  "obtain": {
+   "methods": [
+    "prismExchange"
+   ],
+   "label": {
+    "FR": "Disponible via l’échange de Prismes",
+    "EN": "Available through Prism Exchange",
+    "DE": "Über Prismatausch erhältlich",
+    "ES": "Disponible mediante Prisma",
+    "JP": "プリズムの交換で獲得",
+    "KR": "프리즘 교환으로 획득",
+    "TC": "通過稜鏡兌換獲得"
+   }
+  },
+  "shop": [
+   {
+    "price": 6,
+    "currencyId": 111,
+    "limit": 1,
+    "start": "2026-10-19T02:00:00.000Z",
+    "end": "2026-12-06T21:00:00.000Z"
+   }
+  ],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": null,
+  "variant": {
+   "group": "name|Florafall Silks",
+   "index": 1
+  },
+  "characters": [],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/effect/T_Fashion_Fx48_04.png"
+  },
+  "model": null
+ },
+ {
+  "id": "70085",
+  "kind": "effect",
+  "category": "effects",
+  "subcategory": "footprint",
+  "gameId": 70085,
+  "rarity": 5,
+  "name": {
+   "FR": "Fils d’ombres fleuries – Blanc ivoire",
+   "EN": "Florafall Silks: Opaque White",
+   "JP": "花影の糸・アイボリー",
+   "KR": "꽃에 드리운 실·아이보리",
+   "TC": "花影懸絲·涅白",
+   "DE": "Florafall Silks: Opaque White",
+   "ES": "Florafall Silks: Opaque White"
+  },
+  "description": {
+   "FR": "Des fleurs tissées de fils conduisent les âmes errantes perdues dans la nuit.",
+   "EN": "Flowers from silken threads guide lost souls through the night.",
+   "JP": "糸で紡がれた花が、夜に迷える亡者を彼岸へと導く。",
+   "KR": "어둠 속을 헤매는 망령을 인도하는 실로 엮어낸 꽃.",
+   "TC": "絲線編織的花朵，引渡著迷失在夜色中的亡靈。",
+   "DE": "Flowers from silken threads guide lost souls through the night.",
+   "ES": "Flowers from silken threads guide lost souls through the night."
+  },
+  "obtain": {
+   "methods": [
+    "prismExchange"
+   ],
+   "label": {
+    "FR": "Disponible via l’échange de Prismes",
+    "EN": "Available through Prism Exchange",
+    "DE": "Über Prismatausch erhältlich",
+    "ES": "Disponible mediante Prisma",
+    "JP": "プリズムの交換で獲得",
+    "KR": "프리즘 교환으로 획득",
+    "TC": "通過稜鏡兌換獲得"
+   }
+  },
+  "shop": [
+   {
+    "price": 6,
+    "currencyId": 111,
+    "limit": 1,
+    "start": "2026-10-19T02:00:00.000Z",
+    "end": "2026-12-06T21:00:00.000Z"
+   }
+  ],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": null,
+  "variant": {
+   "group": "name|Florafall Silks",
+   "index": 1
+  },
+  "characters": [],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/effect/T_Fashion_Fx48_03.png"
+  },
+  "model": null
+ },
+ {
+  "id": "70086",
+  "kind": "effect",
+  "category": "effects",
+  "subcategory": "footprint",
+  "gameId": 70086,
+  "rarity": 5,
+  "name": {
+   "FR": "Fils d’ombres fleuries – Doré",
+   "EN": "Florafall Silks: Gilt",
+   "JP": "花影の糸・マリーゴールド",
+   "KR": "꽃에 드리운 실·골드",
+   "TC": "花影懸絲·鎏金",
+   "DE": "Florafall Silks: Gilt",
+   "ES": "Florafall Silks: Gilt"
+  },
+  "description": {
+   "FR": "Des fleurs tissées de fils conduisent les âmes errantes perdues dans la nuit.",
+   "EN": "Flowers from silken threads guide lost souls through the night.",
+   "JP": "糸で紡がれた花が、夜に迷える亡者を彼岸へと導く。",
+   "KR": "어둠 속을 헤매는 망령을 인도하는 실로 엮어낸 꽃.",
+   "TC": "絲線編織的花朵，引渡著迷失在夜色中的亡靈。",
+   "DE": "Flowers from silken threads guide lost souls through the night.",
+   "ES": "Flowers from silken threads guide lost souls through the night."
+  },
+  "obtain": {
+   "methods": [
+    "prismExchange"
+   ],
+   "label": {
+    "FR": "Disponible via l’échange de Prismes",
+    "EN": "Available through Prism Exchange",
+    "DE": "Über Prismatausch erhältlich",
+    "ES": "Disponible mediante Prisma",
+    "JP": "プリズムの交換で獲得",
+    "KR": "프리즘 교환으로 획득",
+    "TC": "通過稜鏡兌換獲得"
+   }
+  },
+  "shop": [
+   {
+    "price": 6,
+    "currencyId": 111,
+    "limit": 1,
+    "start": "2026-10-19T02:00:00.000Z",
+    "end": "2026-12-06T21:00:00.000Z"
+   }
+  ],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": null,
+  "variant": {
+   "group": "name|Florafall Silks",
+   "index": 1
+  },
+  "characters": [],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/effect/T_Fashion_Fx48_02.png"
+  },
+  "model": null
+ },
+ {
+  "id": "70087",
+  "kind": "effect",
+  "category": "effects",
+  "subcategory": "footprint",
+  "gameId": 70087,
+  "rarity": 5,
+  "name": {
+   "FR": "Fils d’ombres fleuries – Rouille",
+   "EN": "Florafall Silks: Rust Red",
+   "JP": "花影の糸・ペルシアンレッド",
+   "KR": "꽃에 드리운 실·러스트 레드",
+   "TC": "花影懸絲·銹紅",
+   "DE": "Florafall Silks: Rust Red",
+   "ES": "Florafall Silks: Rust Red"
+  },
+  "description": {
+   "FR": "Des fleurs tissées de fils conduisent les âmes errantes perdues dans la nuit.",
+   "EN": "Flowers from silken threads guide lost souls through the night.",
+   "JP": "糸で紡がれた花が、夜に迷える亡者を彼岸へと導く。",
+   "KR": "어둠 속을 헤매는 망령을 인도하는 실로 엮어낸 꽃.",
+   "TC": "絲線編織的花朵，引渡著迷失在夜色中的亡靈。",
+   "DE": "Flowers from silken threads guide lost souls through the night.",
+   "ES": "Flowers from silken threads guide lost souls through the night."
+  },
+  "obtain": {
+   "methods": [
+    "prismExchange"
+   ],
+   "label": {
+    "FR": "Disponible via l’échange de Prismes",
+    "EN": "Available through Prism Exchange",
+    "DE": "Über Prismatausch erhältlich",
+    "ES": "Disponible mediante Prisma",
+    "JP": "プリズムの交換で獲得",
+    "KR": "프리즘 교환으로 획득",
+    "TC": "通過稜鏡兌換獲得"
+   }
+  },
+  "shop": [
+   {
+    "price": 6,
+    "currencyId": 111,
+    "limit": 1,
+    "start": "2026-10-19T02:00:00.000Z",
+    "end": "2026-12-06T21:00:00.000Z"
+   }
+  ],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": null,
+  "variant": {
+   "group": "name|Florafall Silks",
+   "index": 1
+  },
+  "characters": [],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/effect/T_Fashion_Fx48_01.png"
+  },
+  "model": null
+ },
+ {
   "id": "80001",
   "kind": "effect",
   "category": "effects",
@@ -44639,6 +46784,258 @@
   "model": null
  },
  {
+  "id": "80070",
+  "kind": "effect",
+  "category": "effects",
+  "subcategory": "aura",
+  "gameId": 80070,
+  "rarity": 5,
+  "name": {
+   "FR": "Papillon d’ossuaire – Blanc ivoire",
+   "EN": "Ivorywing: Opaque White",
+   "JP": "骨塚の蝶・アイボリー",
+   "KR": "뼈무덤의 나비·아이보리",
+   "TC": "骨冢蝶·涅白",
+   "DE": "Ivorywing: Opaque White",
+   "ES": "Ivorywing: Opaque White"
+  },
+  "description": {
+   "FR": "Même lorsque seuls les os demeurent, n’oublie jamais de voler.",
+   "EN": "Though only bones remain, never forget how to fly.",
+   "JP": "たとえ白骨となっても、飛ぶことを忘れないで。",
+   "KR": "설령 육신이 다하더라도, 날갯짓만은 잊지 않기를.",
+   "TC": "即使化為白骨，也請不要忘記飛翔。",
+   "DE": "Though only bones remain, never forget how to fly.",
+   "ES": "Though only bones remain, never forget how to fly."
+  },
+  "obtain": {
+   "methods": [
+    "prismExchange"
+   ],
+   "label": {
+    "FR": "Disponible via l’échange de Prismes",
+    "EN": "Available through Prism Exchange",
+    "DE": "Über Prismatausch erhältlich",
+    "ES": "Disponible mediante Prisma",
+    "JP": "プリズムの交換で獲得",
+    "KR": "프리즘 교환으로 획득",
+    "TC": "通過稜鏡兌換獲得"
+   }
+  },
+  "shop": [
+   {
+    "price": 6,
+    "currencyId": 111,
+    "limit": 1,
+    "start": "2026-10-19T02:00:00.000Z",
+    "end": "2026-12-06T21:00:00.000Z"
+   }
+  ],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": null,
+  "variant": {
+   "group": "name|Ivorywing",
+   "index": 1
+  },
+  "characters": [],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/effect/T_Fashion_Fx47_03.png"
+  },
+  "model": null
+ },
+ {
+  "id": "80071",
+  "kind": "effect",
+  "category": "effects",
+  "subcategory": "aura",
+  "gameId": 80071,
+  "rarity": 5,
+  "name": {
+   "FR": "Papillon d’ossuaire – Pourpre profond",
+   "EN": "Ivorywing: Violet",
+   "JP": "骨塚の蝶・レッドパープル",
+   "KR": "뼈무덤의 나비·보라",
+   "TC": "骨冢蝶·絳紫",
+   "DE": "Ivorywing: Violet",
+   "ES": "Ivorywing: Violet"
+  },
+  "description": {
+   "FR": "Même lorsque seuls les os demeurent, n’oublie jamais de voler.",
+   "EN": "Though only bones remain, never forget how to fly.",
+   "JP": "たとえ白骨となっても、飛ぶことを忘れないで。",
+   "KR": "설령 육신이 다하더라도, 날갯짓만은 잊지 않기를.",
+   "TC": "即使化為白骨，也請不要忘記飛翔。",
+   "DE": "Though only bones remain, never forget how to fly.",
+   "ES": "Though only bones remain, never forget how to fly."
+  },
+  "obtain": {
+   "methods": [
+    "prismExchange"
+   ],
+   "label": {
+    "FR": "Disponible via l’échange de Prismes",
+    "EN": "Available through Prism Exchange",
+    "DE": "Über Prismatausch erhältlich",
+    "ES": "Disponible mediante Prisma",
+    "JP": "プリズムの交換で獲得",
+    "KR": "프리즘 교환으로 획득",
+    "TC": "通過稜鏡兌換獲得"
+   }
+  },
+  "shop": [
+   {
+    "price": 6,
+    "currencyId": 111,
+    "limit": 1,
+    "start": "2026-10-19T02:00:00.000Z",
+    "end": "2026-12-06T21:00:00.000Z"
+   }
+  ],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": null,
+  "variant": {
+   "group": "name|Ivorywing",
+   "index": 1
+  },
+  "characters": [],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/effect/T_Fashion_Fx47_04.png"
+  },
+  "model": null
+ },
+ {
+  "id": "80072",
+  "kind": "effect",
+  "category": "effects",
+  "subcategory": "aura",
+  "gameId": 80072,
+  "rarity": 5,
+  "name": {
+   "FR": "Papillon d’ossuaire – Doré",
+   "EN": "Ivorywing: Gilt",
+   "JP": "骨塚の蝶・マリーゴールド",
+   "KR": "뼈무덤의 나비·골드",
+   "TC": "骨冢蝶·鎏金",
+   "DE": "Ivorywing: Gilt",
+   "ES": "Ivorywing: Gilt"
+  },
+  "description": {
+   "FR": "Même lorsque seuls les os demeurent, n’oublie jamais de voler.",
+   "EN": "Though only bones remain, never forget how to fly.",
+   "JP": "たとえ白骨となっても、飛ぶことを忘れないで。",
+   "KR": "설령 육신이 다하더라도, 날갯짓만은 잊지 않기를.",
+   "TC": "即使化為白骨，也請不要忘記飛翔。",
+   "DE": "Though only bones remain, never forget how to fly.",
+   "ES": "Though only bones remain, never forget how to fly."
+  },
+  "obtain": {
+   "methods": [
+    "prismExchange"
+   ],
+   "label": {
+    "FR": "Disponible via l’échange de Prismes",
+    "EN": "Available through Prism Exchange",
+    "DE": "Über Prismatausch erhältlich",
+    "ES": "Disponible mediante Prisma",
+    "JP": "プリズムの交換で獲得",
+    "KR": "프리즘 교환으로 획득",
+    "TC": "通過稜鏡兌換獲得"
+   }
+  },
+  "shop": [
+   {
+    "price": 6,
+    "currencyId": 111,
+    "limit": 1,
+    "start": "2026-10-19T02:00:00.000Z",
+    "end": "2026-12-06T21:00:00.000Z"
+   }
+  ],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": null,
+  "variant": {
+   "group": "name|Ivorywing",
+   "index": 1
+  },
+  "characters": [],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/effect/T_Fashion_Fx47_02.png"
+  },
+  "model": null
+ },
+ {
+  "id": "80073",
+  "kind": "effect",
+  "category": "effects",
+  "subcategory": "aura",
+  "gameId": 80073,
+  "rarity": 5,
+  "name": {
+   "FR": "Papillon d’ossuaire – Rouille",
+   "EN": "Ivorywing: Rust Red",
+   "JP": "骨塚の蝶・ペルシアンレッド",
+   "KR": "뼈무덤의 나비·러스트 레드",
+   "TC": "骨冢蝶·銹紅",
+   "DE": "Ivorywing: Rust Red",
+   "ES": "Ivorywing: Rust Red"
+  },
+  "description": {
+   "FR": "Même lorsque seuls les os demeurent, n’oublie jamais de voler.",
+   "EN": "Though only bones remain, never forget how to fly.",
+   "JP": "たとえ白骨となっても、飛ぶことを忘れないで。",
+   "KR": "설령 육신이 다하더라도, 날갯짓만은 잊지 않기를.",
+   "TC": "即使化為白骨，也請不要忘記飛翔。",
+   "DE": "Though only bones remain, never forget how to fly.",
+   "ES": "Though only bones remain, never forget how to fly."
+  },
+  "obtain": {
+   "methods": [
+    "prismExchange"
+   ],
+   "label": {
+    "FR": "Disponible via l’échange de Prismes",
+    "EN": "Available through Prism Exchange",
+    "DE": "Über Prismatausch erhältlich",
+    "ES": "Disponible mediante Prisma",
+    "JP": "プリズムの交換で獲得",
+    "KR": "프리즘 교환으로 획득",
+    "TC": "通過稜鏡兌換獲得"
+   }
+  },
+  "shop": [
+   {
+    "price": 6,
+    "currencyId": 111,
+    "limit": 1,
+    "start": "2026-10-19T02:00:00.000Z",
+    "end": "2026-12-06T21:00:00.000Z"
+   }
+  ],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": null,
+  "variant": {
+   "group": "name|Ivorywing",
+   "index": 1
+  },
+  "characters": [],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/effect/T_Fashion_Fx47_01.png"
+  },
+  "model": null
+ },
+ {
   "id": "50004",
   "kind": "effect",
   "category": "effects",
@@ -45445,13 +47842,13 @@
   "gameId": 31007,
   "rarity": 5,
   "name": {
-   "FR": "Victoire : Hurlement de Cerbère",
-   "EN": "Victory: Hellborne Roar",
-   "JP": "勝利・地獄の咆哮",
-   "KR": "클리어·지옥의 포효",
-   "TC": "勝利·地獄咆哮",
-   "DE": "Victory: Hellborne Roar",
-   "ES": "Victory: Hellborne Roar"
+   "FR": "Victoire : Sérénade des premières neiges",
+   "EN": "Victory: Snowfall Serenade",
+   "JP": "勝利・初雪のセレナーデ",
+   "KR": "클리어·첫눈의 세레나데",
+   "TC": "勝利·初雪小夜曲",
+   "DE": "Victory: Snowfall Serenade",
+   "ES": "Victory: Snowfall Serenade"
   },
   "description": {
    "FR": "Permet de modifier l’animation de victoire.",
@@ -45842,22 +48239,30 @@
   }
  },
  {
-  "id": "3010111",
+  "id": "3010109",
   "kind": "weaponSkin",
   "category": "weapon-skins",
   "subcategory": "universal",
-  "gameId": 3010111,
+  "gameId": 3010109,
   "rarity": 5,
   "name": {
-   "FR": "Valse des neiges de minuit – Espadon",
-   "EN": "Emberfrost – Greatsword",
-   "JP": "夜の雪舞・大剣",
-   "KR": "기나긴 밤의 종막·대검",
-   "TC": "夜燼雪舞·重劍",
-   "DE": "Emberfrost – Greatsword",
-   "ES": "Emberfrost – Greatsword"
+   "FR": "Chant du Firmament – Espadon",
+   "EN": "Verdant Finale – Greatsword",
+   "ES": "Final verde: Espadón",
+   "JP": "青空の龍吟・大剣",
+   "KR": "푸른 하늘의 노래·대검",
+   "TC": "碧霄吟·重劍",
+   "DE": "Verdant Finale – Greatsword"
   },
-  "description": null,
+  "description": {
+   "FR": "Indemne de la poussière du monde, elle fend les flots d’azur sans jamais faiblir.",
+   "EN": "Above the din, beyond the froth — a solitary cruise on an endless emerald.",
+   "ES": "Ajena al bullicio, rompe las olas color esmeralda",
+   "JP": "俗世の喧騒に染まらず、碧い波を切り裂いて進む。",
+   "KR": "때묻지 않은 짙푸른 물결 너머 그곳.",
+   "TC": "塵囂無染，碧波破浪。",
+   "DE": "Above the din, beyond the froth — a solitary cruise on an endless emerald."
+  },
   "obtain": {
    "methods": [
     "shop"
@@ -45873,6 +48278,72 @@
    }
   },
   "shop": [],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": null,
+  "variant": null,
+  "characters": [],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/weaponSkin/T_Head_Claymore_Bixiao.png",
+   "portrait": "/assets/cosmetics/portrait/T_Gacha_Claymore_Bixiao.webp",
+   "bust": "/assets/cosmetics/bust/T_Bust_Claymore_Bixiao.webp"
+  },
+  "model": {
+   "paths": [
+    "/Game/Asset/Char/Player/Common/Weapon/Claymore/Claymore_Bixiao/Mesh/Claymore_Bixiao_SM"
+   ]
+  }
+ },
+ {
+  "id": "3010111",
+  "kind": "weaponSkin",
+  "category": "weapon-skins",
+  "subcategory": "claymore",
+  "gameId": 3010111,
+  "rarity": 5,
+  "name": {
+   "FR": "Valse des neiges de minuit – Espadon",
+   "EN": "Emberfrost – Greatsword",
+   "JP": "夜の雪舞・大剣",
+   "KR": "기나긴 밤의 종막·대검",
+   "TC": "夜燼雪舞·重劍",
+   "DE": "Emberfrost – Greatsword",
+   "ES": "Emberfrost – Greatsword"
+  },
+  "description": {
+   "FR": "Seule la neige silencieuse se souvient de cette longue nuit réduite en cendres.",
+   "EN": "Only the silent snow remembers that long night, when all else burned to ash.",
+   "JP": "静かな白雪だけが、灰燼と化したあの長い夜を覚えている。",
+   "KR": "고요한 흰 눈만이 기억하리라, 재로 스러져 버린 그 기나긴 밤을.",
+   "TC": "只有寂靜的白雪記得，被焚成灰燼的那個長夜。",
+   "DE": "Only the silent snow remembers that long night, when all else burned to ash.",
+   "ES": "Only the silent snow remembers that long night, when all else burned to ash."
+  },
+  "obtain": {
+   "methods": [
+    "shop"
+   ],
+   "label": {
+    "FR": "Disponible dans la boutique",
+    "EN": "Available at Shop",
+    "DE": "Im Shop erhältlich",
+    "ES": "Disponible en la Tienda",
+    "JP": "ショップで獲得",
+    "KR": "상점을 통해 획득",
+    "TC": "通過商店獲得"
+   }
+  },
+  "shop": [
+   {
+    "price": 1280,
+    "currencyId": 99,
+    "limit": 1,
+    "start": "2026-10-19T02:00:00.000Z",
+    "end": "2026-11-30T09:00:00.000Z"
+   }
+  ],
   "duplicateRefund": null,
   "hiddenUntilOwned": false,
   "releaseVersion": null,
@@ -46093,6 +48564,64 @@
   "model": {
    "paths": [
     "/Game/Asset/Char/Player/Common/Weapon/Sword/Sword_Shezui/Mesh/Sword_Shezui_SM"
+   ]
+  }
+ },
+ {
+  "id": "3010210",
+  "kind": "weaponSkin",
+  "category": "weapon-skins",
+  "subcategory": "sword",
+  "gameId": 3010210,
+  "rarity": 5,
+  "name": {
+   "FR": "Invitation cosmique – Épée",
+   "EN": "Cosmic Invitation – Sword",
+   "JP": "コスミック・インビテーション・片手剣",
+   "KR": "온 세상의 부름·한손검",
+   "TC": "寰宇邀約·單手劍",
+   "DE": "Cosmic Invitation – Sword",
+   "ES": "Cosmic Invitation – Sword"
+  },
+  "description": {
+   "FR": "Écoutez l’appel éternel venu des étoiles.",
+   "EN": "Heed the eternal summons of the stars.",
+   "JP": "星々より届く悠久の招待に耳を澄ませ。",
+   "KR": "별들로부터 전해져 오는 태고의 부름에 귀를 기울여라.",
+   "TC": "聆聽自群星傳來的亙古邀約。",
+   "DE": "Heed the eternal summons of the stars.",
+   "ES": "Heed the eternal summons of the stars."
+  },
+  "obtain": {
+   "methods": [
+    "shop"
+   ],
+   "label": {
+    "FR": "Disponible dans la boutique",
+    "EN": "Available at Shop",
+    "DE": "Im Shop erhältlich",
+    "ES": "Disponible en la Tienda",
+    "JP": "ショップで獲得",
+    "KR": "상점을 통해 획득",
+    "TC": "通過商店獲得"
+   }
+  },
+  "shop": [],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": null,
+  "variant": null,
+  "characters": [],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/weaponSkin/T_Head_Sword_Huanyu.png",
+   "portrait": "/assets/cosmetics/portrait/T_Gacha_Sword_Huanyu.webp",
+   "bust": "/assets/cosmetics/bust/T_Bust_Sword_Huanyu.webp"
+  },
+  "model": {
+   "paths": [
+    "/Game/Asset/Char/Player/Common/Weapon/Sword/Sword_Huanyu/Mesh/Sword_Huanyu_SM"
    ]
   }
  },
@@ -48016,6 +50545,73 @@
   "model": {
    "paths": [
     "/Game/Asset/Char/Player/Common/Weapon/Cannon/Cannon_Yejin/Mesh/Cannon_Yejin_SM"
+   ]
+  }
+ },
+ {
+  "id": "3010905",
+  "kind": "weaponSkin",
+  "category": "weapon-skins",
+  "subcategory": "cannon",
+  "gameId": 3010905,
+  "rarity": 5,
+  "name": {
+   "FR": "Floraison d’ossements",
+   "EN": "Bones in Blossom",
+   "JP": "枯骨に花咲く",
+   "KR": "마른 뼈에 피어난 꽃",
+   "TC": "枯骨生花",
+   "DE": "Bones in Blossom",
+   "ES": "Bones in Blossom"
+  },
+  "description": {
+   "FR": "Même les ossements porteurs de mort peuvent faire éclore une vie tenace.",
+   "EN": "Life endures, even from lifeless bones.",
+   "JP": "死を宿す枯骨にさえ、強き命は花開く。",
+   "KR": "죽음을 머금은 마른 뼈에서도 강인한 생명이 피어난다.",
+   "TC": "承載死亡的枯骨，亦能綻放出堅強的生命。",
+   "DE": "Life endures, even from lifeless bones.",
+   "ES": "Life endures, even from lifeless bones."
+  },
+  "obtain": {
+   "methods": [
+    "shop",
+    "prismExchange"
+   ],
+   "label": {
+    "FR": "Disponible dans la boutique",
+    "EN": "Available at Shop",
+    "DE": "Im Shop erhältlich",
+    "ES": "Disponible en la Tienda",
+    "JP": "ショップで獲得",
+    "KR": "상점을 통해 획득",
+    "TC": "通過商店獲得"
+   }
+  },
+  "shop": [
+   {
+    "price": 18,
+    "currencyId": 111,
+    "limit": 1,
+    "start": "2026-10-19T02:00:00.000Z",
+    "end": "2026-12-06T21:00:00.000Z"
+   }
+  ],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": null,
+  "variant": null,
+  "characters": [],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/weaponSkin/T_Head_Cannon_Kugu.png",
+   "portrait": "/assets/cosmetics/portrait/T_Gacha_Cannon_Kugu.webp",
+   "bust": "/assets/cosmetics/bust/T_Bust_Cannon_Kugu.webp"
+  },
+  "model": {
+   "paths": [
+    "/Game/Asset/Char/Player/Common/Weapon/Cannon/Cannon_Kugu/Mesh/Cannon_Kugu_SM"
    ]
   }
  },
@@ -55171,7 +57767,7 @@
    "FR": "Pérégrin de Taixu – Gris plomb",
    "EN": "Taixu Rover: Leaden Grey",
    "ES": "Taixu Rover: Gris plomo",
-   "JP": "太虚の飛剣・チタニウムホワイト",
+   "JP": "太虚の飛剣・鉛灰",
    "KR": "태허를 노니는 검·그레이",
    "TC": "太虛遊·鉛灰",
    "DE": "Taixu Rover: Leaden Grey"
@@ -55681,6 +58277,112 @@
   "model": null
  },
  {
+  "id": "1015",
+  "kind": "mount",
+  "category": "mounts",
+  "subcategory": null,
+  "gameId": 1015,
+  "rarity": 4,
+  "name": {
+   "FR": "Trône de contemplation – Blanc ivoire",
+   "EN": "Throne of Contemplation: Opaque White",
+   "JP": "考える人の座·アイボリー",
+   "KR": "사색의 왕좌·아이보리",
+   "TC": "沉思王座·涅白",
+   "DE": "Throne of Contemplation: Opaque White",
+   "ES": "Throne of Contemplation: Opaque White"
+  },
+  "description": {
+   "FR": "J’ai entendu les appels de la loyauté et vu les étoiles se consumer.",
+   "EN": "I heard cries of loyalty, and saw the stars set ablaze.",
+   "JP": "忠誠の叫びを聞き、星々が燃えるのを見た。",
+   "KR": "나는 들었다, 그 충성의 외침을. 나는 보았다, 그 불타는 별들을!",
+   "TC": "我聽到了忠誠的呼喊，看到了群星的燃燒。",
+   "DE": "I heard cries of loyalty, and saw the stars set ablaze.",
+   "ES": "I heard cries of loyalty, and saw the stars set ablaze."
+  },
+  "obtain": {
+   "methods": [
+    "shop"
+   ],
+   "label": null
+  },
+  "shop": [
+   {
+    "price": 680,
+    "currencyId": 99,
+    "limit": 1,
+    "start": "2026-10-19T02:00:00.000Z",
+    "end": "2026-11-30T09:00:00.000Z"
+   }
+  ],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": null,
+  "variant": null,
+  "characters": [],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/mount/T_Icon_Mounts_0015.png",
+   "wide": "/assets/cosmetics/wide/T_Mounts_0015.webp"
+  },
+  "model": null
+ },
+ {
+  "id": "1016",
+  "kind": "mount",
+  "category": "mounts",
+  "subcategory": null,
+  "gameId": 1016,
+  "rarity": 4,
+  "name": {
+   "FR": "Trône de contemplation – Gris plomb",
+   "EN": "Throne of Contemplation: Leaden Grey",
+   "JP": "考える人の座·鉛灰",
+   "KR": "사색의 왕좌·그레이",
+   "TC": "沉思王座·鉛灰",
+   "DE": "Throne of Contemplation: Leaden Grey",
+   "ES": "Throne of Contemplation: Leaden Grey"
+  },
+  "description": {
+   "FR": "J’ai entendu les appels de la loyauté et vu les étoiles se consumer.",
+   "EN": "I heard cries of loyalty, and saw the stars set ablaze.",
+   "JP": "忠誠の叫びを聞き、星々が燃えるのを見た。",
+   "KR": "나는 들었다, 그 충성의 외침을. 나는 보았다, 그 불타는 별들을!",
+   "TC": "我聽到了忠誠的呼喊，看到了群星的燃燒。",
+   "DE": "I heard cries of loyalty, and saw the stars set ablaze.",
+   "ES": "I heard cries of loyalty, and saw the stars set ablaze."
+  },
+  "obtain": {
+   "methods": [
+    "shop"
+   ],
+   "label": null
+  },
+  "shop": [
+   {
+    "price": 680,
+    "currencyId": 99,
+    "limit": 1,
+    "start": "2026-10-19T02:00:00.000Z",
+    "end": "2026-11-30T09:00:00.000Z"
+   }
+  ],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": null,
+  "variant": null,
+  "characters": [],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/mount/T_Icon_Mounts_0016.png",
+   "wide": "/assets/cosmetics/wide/T_Mounts_0016.webp"
+  },
+  "model": null
+ },
+ {
   "id": "41014",
   "kind": "gesture",
   "category": "gestures",
@@ -56069,7 +58771,7 @@
    "FR": "Dominer monts et fleuves – Gris plomb",
    "EN": "Throne Above All: Leaden Grey",
    "ES": "Trono supremo: Gris plomo",
-   "JP": "支配者の玉座・チタニウムホワイト",
+   "JP": "支配者の玉座・鉛灰",
    "KR": "천하를 굽어보기·그레이",
    "TC": "睥睨山河·鉛灰",
    "DE": "Throne Above All: Leaden Grey"
@@ -56815,6 +59517,144 @@
   "model": null
  },
  {
+  "id": "41072",
+  "kind": "gesture",
+  "category": "gestures",
+  "subcategory": null,
+  "gameId": 41072,
+  "rarity": 6,
+  "name": {
+   "FR": "Attrape-rêves lunaire – Bleu indigo",
+   "EN": "Crescent Wishes: Azure",
+   "JP": "月枝夢狩·インディゴ",
+   "KR": "달빛과 드림캐처 사이·다크 블루",
+   "TC": "月梢捕夢·黛藍",
+   "DE": "Crescent Wishes: Azure",
+   "ES": "Crescent Wishes: Azure"
+  },
+  "description": {
+   "TC": "在月亮的肩頭，捕獲群星的夢境。"
+  },
+  "obtain": {
+   "methods": [
+    "prismExchange"
+   ],
+   "label": null
+  },
+  "shop": [
+   {
+    "price": 50,
+    "currencyId": 111,
+    "limit": 1,
+    "start": "2026-10-19T02:00:00.000Z",
+    "end": "2026-12-06T21:00:00.000Z"
+   }
+  ],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": null,
+  "variant": null,
+  "characters": [],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/gesture/T_Resource_Gesture_SPLise01.png"
+  },
+  "model": null
+ },
+ {
+  "id": "41073",
+  "kind": "gesture",
+  "category": "gestures",
+  "subcategory": null,
+  "gameId": 41073,
+  "rarity": 6,
+  "name": {
+   "FR": "Attrape-rêves lunaire – Rouille",
+   "EN": "Crescent Wishes: Rust Red",
+   "JP": "月枝夢狩·ペルシアンレッド",
+   "KR": "달빛과 드림캐처 사이·러스트 레드",
+   "TC": "月梢捕夢·銹紅",
+   "DE": "Crescent Wishes: Rust Red",
+   "ES": "Crescent Wishes: Rust Red"
+  },
+  "description": {
+   "TC": "在月亮的肩頭，捕獲群星的夢境。"
+  },
+  "obtain": {
+   "methods": [
+    "prismExchange"
+   ],
+   "label": null
+  },
+  "shop": [
+   {
+    "price": 50,
+    "currencyId": 111,
+    "limit": 1,
+    "start": "2026-10-19T02:00:00.000Z",
+    "end": "2026-12-06T21:00:00.000Z"
+   }
+  ],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": null,
+  "variant": null,
+  "characters": [],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/gesture/T_Resource_Gesture_SPLise02.png"
+  },
+  "model": null
+ },
+ {
+  "id": "41074",
+  "kind": "gesture",
+  "category": "gestures",
+  "subcategory": null,
+  "gameId": 41074,
+  "rarity": 6,
+  "name": {
+   "FR": "Attrape-rêves lunaire – Jade noir",
+   "EN": "Crescent Wishes: Dark Jade",
+   "JP": "月枝夢狩·ジェットブラック",
+   "KR": "달빛과 드림캐처 사이·제트 블랙",
+   "TC": "月梢捕夢·墨玉",
+   "DE": "Crescent Wishes: Dark Jade",
+   "ES": "Crescent Wishes: Dark Jade"
+  },
+  "description": {
+   "TC": "在月亮的肩頭，捕獲群星的夢境。"
+  },
+  "obtain": {
+   "methods": [
+    "prismExchange"
+   ],
+   "label": null
+  },
+  "shop": [
+   {
+    "price": 50,
+    "currencyId": 111,
+    "limit": 1,
+    "start": "2026-10-19T02:00:00.000Z",
+    "end": "2026-12-06T21:00:00.000Z"
+   }
+  ],
+  "duplicateRefund": null,
+  "hiddenUntilOwned": false,
+  "releaseVersion": null,
+  "variant": null,
+  "characters": [],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/gesture/T_Resource_Gesture_SPLise03.png"
+  },
+  "model": null
+ },
+ {
   "id": "41001",
   "kind": "gesture",
   "category": "gestures",
@@ -56962,7 +59802,7 @@
    "EN": "Cat in a Box: Leaden Grey",
    "DE": "Katze in der Box: Blei­grau",
    "ES": "Gato en la caja: Gris plomo",
-   "JP": "箱の中の猫-チタニウムホワイト",
+   "JP": "箱の中の猫-鉛灰",
    "KR": "상자 속 고양이·그레이",
    "TC": "箱中之貓·鉛灰"
   },

@@ -1,4 +1,462 @@
 {
+  "weapons-10199": {
+    "weaponId": 10199,
+    "nodes": [
+      {
+        "id": 10199001,
+        "level": 0,
+        "branch": 1,
+        "unlock": [],
+        "cost": null,
+        "icon": null,
+        "name": {
+          "EN": "Endless – Ponder",
+          "FR": "Insoluble – Méditation",
+          "JP": "解なき問い・思索",
+          "KR": "불가해·사색",
+          "TC": "無解·沉思"
+        },
+        "desc": {
+          "EN": "Dealing damage with this weapon grants 1 Calamity. Calamity is capped at 150.\nWhen Calamity reaches its cap, all Calamity is consumed to grant 1 stack of [Inquiry]: Skill Speed +10% for 9s, up to 6 stacks.",
+          "FR": "Lorsque cette arme inflige des dégâts, elle confère 1 points de calamité. Le maximum de calamité est de 150 points.\nLorsque le maximum est atteint, tous les points de calamité sont consommés et vous obtenez 1 cumul de [Recherche] : la Vitesse de compétence augmente de 10% pendant 9 s, jusqu’à 6 cumuls.",
+          "JP": "この武器でダメージを与えると、 1ポイントの災厄値を獲得する。災厄値の上限は150ポイント。\n災厄値が上限に達すると、災厄値をすべて消費し、自身に[探求]を1スタック付与する：[探求]1スタックにつきスキル速度が10% アップする。 9秒間持続し、最大 6 スタック。",
+          "KR": "해당 무기로 대미지를 입힐 시 재앙도를 1 획득한다(최대치 150).\n재앙도가 최대치에 도달하면 모든 재앙도를 소모해 자신이 [탐구] 1단계를 획득한다. 스킬 속도가 10% 상승한다. 지속 시간 9초, 최대 6단계 중첩.",
+          "TC": "使用此武器造成傷害時，獲得1點災厄值，災厄值上限為150點。\n災厄值達到上限時，消耗全部災厄值，自身獲得1層[求索]：技能速度提高10%，持續9秒，最多疊加6層。"
+        },
+        "attrs": null
+      },
+      {
+        "id": 10199002,
+        "level": 1,
+        "branch": 1,
+        "unlock": [
+          10199001
+        ],
+        "cost": [
+          {
+            "id": 15005,
+            "num": 30
+          },
+          {
+            "id": 15034,
+            "num": 90
+          },
+          {
+            "id": 15037,
+            "num": 15
+          },
+          {
+            "id": 202,
+            "num": 2
+          },
+          {
+            "id": 15026,
+            "num": 50
+          },
+          {
+            "id": 15030,
+            "num": 50
+          }
+        ],
+        "icon": null,
+        "name": {
+          "EN": "Endless – Desire",
+          "FR": "Insoluble – Aspiration",
+          "JP": "解なき問い・渇望",
+          "KR": "불가해·갈구",
+          "TC": "無解·渴求"
+        },
+        "desc": {
+          "EN": "When consuming [Disruption], gains 12 Calamity for each stack consumed.",
+          "FR": "Lorsque vous consommez du [Désordre], vous obtenez [12 × nombre de cumuls consommés] points de calamité.",
+          "JP": "[乱調]を消費すると、災厄値を [12×消費した重複数] 獲得する。",
+          "KR": "[혼돈]을 소모할 때 재앙도를 [12×소모 중첩 단계 수] 획득한다.",
+          "TC": "消耗[紊亂]時，獲得[12×消耗層數×技能速度]點災厄值。"
+        },
+        "attrs": null
+      },
+      {
+        "id": 10199003,
+        "level": 1,
+        "branch": 2,
+        "unlock": [
+          10199001
+        ],
+        "cost": [
+          {
+            "id": 15005,
+            "num": 30
+          },
+          {
+            "id": 15034,
+            "num": 90
+          },
+          {
+            "id": 15037,
+            "num": 15
+          },
+          {
+            "id": 202,
+            "num": 2
+          },
+          {
+            "id": 15026,
+            "num": 50
+          },
+          {
+            "id": 15030,
+            "num": 50
+          }
+        ],
+        "icon": null,
+        "name": {
+          "EN": "Enigma – Obscurity",
+          "FR": "Énigme – Inconnu",
+          "JP": "謎・未知",
+          "KR": "난제·미지",
+          "TC": "謎題·未知"
+        },
+        "desc": {
+          "EN": "When Skill DMG triggers, gains [2 × Skill Speed] Calamity.",
+          "FR": "Lorsque des Dégâts de compétence se déclenchent, vous obtenez [2 × Vitesse de compétence] points de calamité.",
+          "JP": "スキルダメージが発生すると、災厄値を [2×スキル速度] 獲得する。",
+          "KR": "스킬 대미지 발동 시 재앙도를 [2×스킬 속도] 획득한다.",
+          "TC": "技能傷害觸發時，獲得[2×技能速度]點災厄值。"
+        },
+        "attrs": null
+      },
+      {
+        "id": 10199004,
+        "level": 2,
+        "branch": 1,
+        "unlock": [
+          10199002
+        ],
+        "cost": [
+          {
+            "id": 15005,
+            "num": 30
+          },
+          {
+            "id": 15034,
+            "num": 90
+          },
+          {
+            "id": 15037,
+            "num": 15
+          },
+          {
+            "id": 20027,
+            "num": 4
+          },
+          {
+            "id": 15026,
+            "num": 50
+          },
+          {
+            "id": 15030,
+            "num": 50
+          }
+        ],
+        "icon": "/assets/items/potentials/T_Rouge_Talent_SkillIntensityUP.png",
+        "name": {
+          "EN": "Endless – Might",
+          "FR": "Insoluble – Puissance",
+          "JP": "解なき問い・フォース",
+          "KR": "불가해·위력",
+          "TC": "無解·威力"
+        },
+        "desc": null,
+        "attrs": [
+          {
+            "attrName": "SkillIntensity",
+            "rate": 0.45,
+            "value": null,
+            "rateZone": null
+          }
+        ]
+      },
+      {
+        "id": 10199005,
+        "level": 2,
+        "branch": 2,
+        "unlock": [
+          10199003
+        ],
+        "cost": [
+          {
+            "id": 15005,
+            "num": 30
+          },
+          {
+            "id": 15034,
+            "num": 90
+          },
+          {
+            "id": 15037,
+            "num": 15
+          },
+          {
+            "id": 20027,
+            "num": 4
+          },
+          {
+            "id": 15026,
+            "num": 50
+          },
+          {
+            "id": 15030,
+            "num": 50
+          }
+        ],
+        "icon": "/assets/items/potentials/T_Rouge_Talent_ATK.png",
+        "name": {
+          "EN": "Enigma – Assault",
+          "FR": "Énigme – Assaut",
+          "JP": "謎・ストライク",
+          "KR": "난제·공격",
+          "TC": "謎題·攻擊"
+        },
+        "desc": null,
+        "attrs": [
+          {
+            "attrName": "ATK",
+            "rate": 0.9,
+            "value": null,
+            "rateZone": null
+          }
+        ]
+      },
+      {
+        "id": 10199006,
+        "level": 3,
+        "branch": 1,
+        "unlock": [
+          10199004
+        ],
+        "cost": [
+          {
+            "id": 15005,
+            "num": 30
+          },
+          {
+            "id": 15034,
+            "num": 90
+          },
+          {
+            "id": 15037,
+            "num": 15
+          },
+          {
+            "id": 202,
+            "num": 2
+          },
+          {
+            "id": 15026,
+            "num": 50
+          },
+          {
+            "id": 15030,
+            "num": 50
+          }
+        ],
+        "icon": null,
+        "name": {
+          "EN": "Endless – Answer",
+          "FR": "Insoluble – Réponse",
+          "JP": "解なき問い・応答",
+          "KR": "불가해·응답",
+          "TC": "無解·答覆"
+        },
+        "desc": {
+          "EN": "While under [Inquiry], if Skill Speed exceeds 220%, Skill DMG +90%.",
+          "FR": "Sous l’effet de [Recherche], si votre Vitesse de compétence dépasse 220%, les Dégâts de compétence augmentent de 90%.",
+          "JP": "[探求]の効果中、スキル速度が 220% を超えている場合、スキルダメージが 90% アップする。",
+          "KR": "[탐구] 상태 시, 스킬 속도가 220%를 초과하면 스킬 대미지가 90% 상승한다.",
+          "TC": "處於[求索]效果時，若技能速度大於220%，技能傷害提高90%。"
+        },
+        "attrs": null
+      },
+      {
+        "id": 10199007,
+        "level": 3,
+        "branch": 2,
+        "unlock": [
+          10199005
+        ],
+        "cost": [
+          {
+            "id": 15005,
+            "num": 30
+          },
+          {
+            "id": 15034,
+            "num": 90
+          },
+          {
+            "id": 15037,
+            "num": 15
+          },
+          {
+            "id": 202,
+            "num": 2
+          },
+          {
+            "id": 15026,
+            "num": 50
+          },
+          {
+            "id": 15030,
+            "num": 50
+          }
+        ],
+        "icon": null,
+        "name": {
+          "EN": "Enigma – Attest",
+          "FR": "Énigme – Preuve",
+          "JP": "謎・証明",
+          "KR": "난제·증명",
+          "TC": "謎題·證明"
+        },
+        "desc": {
+          "EN": "While under [Inquiry], if Skill Speed exceeds 2.2, Skill DMG PEN +30%.",
+          "FR": "Sous l’effet de [Recherche], si votre Vitesse de compétence dépasse 2.2, la Pénétration de compétence augmente de 30%.",
+          "JP": "[探求]の効果中、スキル速度が 2.2 を超えている場合、スキル貫通が 30% アップする。",
+          "KR": "[탐구] 상태 시, 스킬 속도가 2.2를 초과하면 스킬 관통이 30% 상승한다.",
+          "TC": "處於[求索]效果時，若技能速度大於2.2，造成技能傷害時無視目標30%防禦"
+        },
+        "attrs": null
+      },
+      {
+        "id": 10199008,
+        "level": 4,
+        "branch": 1,
+        "unlock": [
+          10199006
+        ],
+        "cost": [
+          {
+            "id": 15005,
+            "num": 30
+          },
+          {
+            "id": 15034,
+            "num": 90
+          },
+          {
+            "id": 15037,
+            "num": 15
+          },
+          {
+            "id": 20027,
+            "num": 4
+          },
+          {
+            "id": 15026,
+            "num": 50
+          },
+          {
+            "id": 15030,
+            "num": 50
+          }
+        ],
+        "icon": "/assets/items/potentials/T_Rouge_Talent_AttrPenetration.png",
+        "name": {
+          "EN": "Endless – Pierce",
+          "FR": "Insoluble – Perforation",
+          "JP": "解なき問い・ペネトレーション",
+          "KR": "불가해·관통",
+          "TC": "無解·穿透"
+        },
+        "desc": null,
+        "attrs": [
+          {
+            "attrName": "DamageRate",
+            "rate": null,
+            "value": 0.35,
+            "rateZone": "Almighty"
+          }
+        ]
+      },
+      {
+        "id": 10199009,
+        "level": 4,
+        "branch": 2,
+        "unlock": [
+          10199007
+        ],
+        "cost": [
+          {
+            "id": 15005,
+            "num": 30
+          },
+          {
+            "id": 15034,
+            "num": 90
+          },
+          {
+            "id": 15037,
+            "num": 15
+          },
+          {
+            "id": 20027,
+            "num": 4
+          },
+          {
+            "id": 15026,
+            "num": 50
+          },
+          {
+            "id": 15030,
+            "num": 50
+          }
+        ],
+        "icon": "/assets/items/potentials/T_Rouge_Talent_Morale.png",
+        "name": {
+          "EN": "Enigma – Morale",
+          "FR": "Énigme – Vigueur",
+          "JP": "謎・ハイスピリット",
+          "KR": "난제·격양",
+          "TC": "謎題·昂揚"
+        },
+        "desc": null,
+        "attrs": [
+          {
+            "attrName": "StrongValue",
+            "rate": null,
+            "value": 0.6,
+            "rateZone": null
+          }
+        ]
+      },
+      {
+        "id": 10199010,
+        "level": 5,
+        "branch": 1,
+        "unlock": [
+          10199008,
+          10199009
+        ],
+        "cost": null,
+        "icon": null,
+        "name": {
+          "EN": "Endless – Truth",
+          "FR": "Insoluble – Vérité",
+          "JP": "解なき問い・真相",
+          "KR": "불가해·진실",
+          "TC": "無解·真相"
+        },
+        "desc": {
+          "EN": "Additional Skill DMG of own element +50%.\nWhen [Inquiry] reaches max stacks: Dealing Skill DMG also deals 3500% Calamity DMG to enemies within 3m of the target. This counts as Skill DMG and increases by [Skill Intensity × Skill Speed − 100]%. This effect can trigger at most once every 1s.",
+          "FR": "Dégâts de compétence supplémentaires de votre attribut +50%.\nLorsque [Recherche] atteint le nombre maximal de cumuls, vous obtenez également l’effet suivant : lorsque vous infligez des Dégâts de compétence, 3500% dégâts de calamité sont infligés aux ennemis dans un rayon de 3 m autour de la cible. Ces dégâts sont considérés comme des Dégâts de compétence et augmentent en fonction de la Puissance de compétence et de la Vitesse de compétence du personnage, selon le multiplicateur [Puissance de compétence × Vitesse de compétence - 100 %]. Cet effet peut se déclencher au maximum une fois toutes les 1 s.",
+          "JP": "自身と同じ属性のスキル追加ダメージ+ 50% 。\n[探求]が最大スタックに達すると追加効果を獲得：スキルダメージ発生時、対象の半径 3 m以内の敵に 3500% の災厄ダメージを与える。スキルダメージとして扱われ、このダメージはキャラクターのスキル威力とスキル速度に応じて増加する。増加倍率は[スキル威力属性値×スキル速度属性値-100%]。1 秒ごとに最大1回発動する。",
+          "KR": "자체 속성 스킬 추가 대미지+50%.\n[탐구] 최대 중첩 단계 도달 시 추가 효과를 획득한다. 스킬 대미지 발동 시 대상 반경 3m 내의 적에게 재앙 대미지를 3500% 입힌다. 해당 대미지는 스킬 대미지로 간주되며, 캐릭터의 스킬 위력과 스킬 속도에 따라 상승한다. 상승 배율은 [스킬 위력 속성치×스킬 속도-100]%이며, 1초마다 최대 1회 발동한다.",
+          "TC": "自屬性技能追加傷害+50%。\n[求索]滿層時額外獲得效果：技能傷害觸發時，對目標半徑3米內的敵人造成3500%災厄傷害，視為技能傷害，該傷害基於角色技能速度提高，提高倍率為[技能速度屬性值-100%]，每1秒最多觸發1次。"
+        },
+        "attrs": null
+      }
+    ]
+  },
   "weapons-10299": {
     "weaponId": 10299,
     "nodes": [
@@ -17,7 +475,7 @@
           "TC": "無止·出征"
         },
         "desc": {
-          "EN": "Dealing damage with this weapon grants 1 Calamity. When a Plunging Attack or Sliding Attack deals damage, gain 1 additional Calamity. Calamity is capped at 100.\r\nWhen Calamity reaches its cap, all Calamity is consumed to trigger [Parting Requiem] once, dealing 1000% Calamity damage to enemies within 10 m. This counts as Melee Weapon DMG.",
+          "EN": "Dealing damage with this weapon grants 1 Calamity. When a Plunging Attack or Sliding Attack deals damage, gain 1 additional Calamity. Calamity is capped at 100.\nWhen Calamity reaches its cap, all Calamity is consumed to trigger [Parting Requiem] once, dealing 1000% Calamity damage to enemies within 10 m. This counts as Melee Weapon DMG.",
           "FR": "Lorsque cette arme inflige des dégâts, elle confère 1 points de calamité. Lorsqu’une Attaque plongeante ou une Attaque en glissade inflige des dégâts, confère 1 points de calamité supplémentaires. Le maximum de calamité est de 100.\nLorsque le maximum est atteint, tous les points de calamité sont consommés pour déclencher une fois [Requiem d’adieu] : inflige 1000% dégâts de calamité aux ennemis dans un rayon de 10 m. Ces dégâts sont considérés comme des DGT d’arme de mêlée.",
           "JP": "この武器でダメージを与えるとき、1の災厄値を獲得する。この武器による落下攻撃またはスライディング攻撃でダメージを与えた場合、さらに1の災厄値を獲得する。災厄値は最大100まで保持でき、上限に達するとすべての災厄値を消費して1回の【見送りの挽歌】を発動する。【見送りの挽歌】半径10メートル内の敵に1000%の災厄ダメージを与える。このダメージは近接武器ダメージと見なされる",
           "KR": "해당 무기로 대미지를 입힐 때, 재앙도를 1 획득한다. 해당 무기로 낙하 공격 또는 슬라이드 공격 시, 재앙도를 1 추가로 획득한다. 재앙도는 최대 100까지 보유 가능.\n재앙도가 최대치에 도달하면 모든 재앙도를 소모하여 [환송의 엘레지]를 1회 발동한다.\n[환송의 엘레지]: 반경 10m 내의 적에게 재앙 대미지를 1000% 입힌다. 근접 무기 대미지로 간주된다.",
@@ -453,7 +911,7 @@
           "TC": "無止·長鏖"
         },
         "desc": {
-          "EN": "Increases max [Invocation] stacks to 30. Each stack increases your Summons' inherited attribute percentage by 0.25%.\r\nAt 30 stacks of [Invocation], additionally gain [Awakening]: Weapon Trigger Probability increases by 100%, [Parting Requiem]'s damage multiplier increases by 700%, and when a Summon dies, an additional [Parting Requiem] is triggered without consuming Calamity.",
+          "EN": "Increases max [Invocation] stacks to 30. Each stack increases your Summons' inherited attribute percentage by 0.25%.\nAt 30 stacks of [Invocation], additionally gain [Awakening]: Weapon Trigger Probability increases by 100%, [Parting Requiem]'s damage multiplier increases by 700%, and when a Summon dies, an additional [Parting Requiem] is triggered without consuming Calamity.",
           "FR": "Le nombre maximal de cumuls de [Invocation] augmente jusqu’à 30. Chaque cumul augmente de 0.25% le pourcentage d’attributs hérités par les familiers invoqués.\nLorsque [Invocation] atteint 30 cumuls, confère également [Éveil] : la probabilité de déclenchement de l’arme augmente de 100%, le multiplicateur de dégâts de [Requiem d’adieu] augmente de 700% et, lorsqu’un familier meurt, un [Requiem d’adieu] supplémentaire est déclenché sans consommer de points de calamité.",
           "JP": "【降霊】は最大30スタックまで重ねがけでき、さらに1スタックごとに召喚ユニットの属性値継承率が0.25%アップする。30スタックに達すると、【覚醒】を獲得し、武器の発動確率が100%アップする。【見送りの挽歌】のダメージ倍率が700%アップし、さらに召喚ユニットが死亡した時、災厄値を消費しない【見送りの挽歌】を追加で1回発動する。",
           "KR": "[강령]을 최대 30단계까지 중첩이 가능하다. [강령] 1단계당, 자신이 소환물을 소환할 시 소환물 속성 계승 비율이 0.25% 상승한다.\n[강령]을 30단계 보유하면 [각성]을 획득하여 무기 발동 확률이 100% 상승하고, [환송의 엘레지]의 대미지 배율이 700% 증가한다. 또한, 소환물 사망 시, 재앙도를 소모하지 않는 [환송의 엘레지]를 추가로 1회 발동한다.",
@@ -481,10 +939,10 @@
           "TC": "權火·引燃"
         },
         "desc": {
-          "EN": "Dealing damage with this weapon grants 2 Calamity. Calamity caps at 100.\r\nWhen Calamity reaches its cap, all Calamity is consumed to trigger [Flame-Wreathed]: Weapon DMG +50% for 5s.",
+          "EN": "Dealing damage with this weapon grants 2 Calamity. Calamity caps at 100.\nWhen Calamity reaches its cap, all Calamity is consumed to trigger [Flame-Wreathed]: Weapon DMG +50% for 5s.",
           "FR": "Lorsque cette arme inflige des dégâts, elle confère 2 points de calamité. Le maximum de calamité est de 100.\nLorsque le maximum est atteint, tous les points de calamité sont consommés et vous obtenez l’effet [Flammes dévorantes] : les DGT d’arme augmentent de 50% pendant 5 s.",
           "JP": "この武器でダメージを与えた時、災厄値を2獲得する。災厄値の上限は100。\n 災厄値が上限に達すると、災厄値をすべて消費し、自身に[炎に身を捧げる]効果を付与する：武器ダメージが50%アップし、5秒間持続する。",
-          "KR": "이 무기로 대미지를 입힐 시 재앙도를 2 획득한다(최대치 100).\n재앙도가 최대치에 도달하면, 모든 재앙도를 소모해 자신에게 [파멸의 불꽃] 효과를 부여해, 5초간 무기 대미지가 50% 상승한다.",
+          "KR": "해당 무기로 대미지를 입힐 시 재앙도를 2 획득한다(최대치 100).\n재앙도가 최대치에 도달하면, 모든 재앙도를 소모해 자신에게 [파멸의 불꽃] 효과를 부여해, 5초간 무기 대미지가 50% 상승한다.",
           "TC": "使用此武器造成傷害時，獲得2點災厄值，災厄值上限為100點。\n災厄值達到上限時，消耗全部災厄值，自身獲得[烈火焚身]效果：武器傷害提高50%，持續5秒。"
         },
         "attrs": null
@@ -943,7 +1401,7 @@
           "TC": "血染·蛻變"
         },
         "desc": {
-          "EN": "Dealing damage with this weapon grants 1 Calamity, up to 200. When Calamity reaches 100 or higher, 100 Calamity is automatically consumed, granting 1 stacks of [Eclosion], up to 10 stacks.\r\nWhen bullets fired by this weapon deal damage, 1 stack of [Eclosion] is consumed to deal an additional 500% Calamity damage to the target. This counts as Ranged Weapon DMG.",
+          "EN": "Dealing damage with this weapon grants 1 Calamity, up to 200. When Calamity reaches 100 or higher, 100 Calamity is automatically consumed, granting 1 stacks of [Eclosion], up to 10 stacks.\nWhen bullets fired by this weapon deal damage, 1 stack of [Eclosion] is consumed to deal an additional 500% Calamity damage to the target. This counts as Ranged Weapon DMG.",
           "FR": "Lorsque cette arme inflige des dégâts, elle confère 1 points de calamité. Le maximum de calamité est de 200 points.\nLorsque vos points de calamité atteignent 100 ou plus, 100 points de calamité sont consommés pour obtenir 1 cumuls d’[Éclosion], jusqu’à 10 cumuls.\nLorsque les balles de cette arme infligent des dégâts, 1 cumul d’[Éclosion] est consommé pour infliger à la cible 500% dégâts de calamité supplémentaires, considérés comme des DGT d’arme à distance.",
           "JP": "この武器でダメージを与えると、1の災厄値を獲得する。災厄値の上限は200。災厄値が100以上になると、100の災厄値を消費して【羽化】を1スタック獲得する。最大10スタックまで重ねがけできる。\nこの武器の弾丸でダメージを与えると、【羽化】を1スタック消費し、対象に追加で500%の災厄ダメージを与える。これは遠隔武器ダメージとして扱われる。",
           "KR": "해당 무기로 대미지를 입힐 때, 재앙도를 1 획득한다. 재앙도는 최대 200까지 보유 가능. 재앙도가 100에 도달하면 재앙도를 100 소모하여 [우화]를 1단계 획득한다. 최대 10단계 중첩.\n해당 무기의 탄환으로 대미지를 입힐 때, [우화]를 1단계 소모하여 대상에게 재앙 대미지를 500% 추가로 입힌다. 원거리 무기 대미지로 간주된다.",
@@ -1289,7 +1747,7 @@
         "icon": "/assets/items/potentials/T_Rouge_Talent_AttrPenetration.png",
         "name": {
           "EN": "Bloodstain: Piercing",
-          "FR": "Sanguine – Pénétration",
+          "FR": "Sanguine – Perforation",
           "JP": "ブラッディ・ペネトレーション",
           "KR": "핏빛·관통",
           "TC": "血染·穿透"
@@ -1373,7 +1831,7 @@
           "TC": "血染·趨光"
         },
         "desc": {
-          "EN": "Max HP +300%. Damage dealt by [Eclosion] is treated as Overflow Damage.\r\nConsuming Element Disruption matching the character's element causes 3 extra bullets to be fired at the target for each stack consumed, at no Ammo cost. Minimum trigger interval per stack consumed: 0.9s.",
+          "EN": "Max HP +300%. Damage dealt by [Eclosion] is treated as Overflow Damage.\nConsuming Element Disruption matching the character's element causes 3 extra bullets to be fired at the target for each stack consumed, at no Ammo cost. Minimum trigger interval per stack consumed: 0.9s.",
           "FR": "PV max +300%. Les dégâts infligés par l’effet [Éclosion] sont considérés comme des Dégâts de Surabondance.\nLorsque vous consommez du Désordre élémentaire, l’arme tire nombre de cumuls consommés × 3 projectiles supplémentaires vers la cible, sans consommer de munitions en réserve. Intervalle de déclenchement minimum : nombre de cumuls consommés × 0.9 s.",
           "JP": "最大HPが300%アップする。【羽化】効果によるダメージはチャージダメージと見なされる。\n属性乱調を消費すると、対象に消費したスタック数×3発の追加弾を発射する。予備弾薬は消費せず、最短発動間隔は消費した重複数×0.9秒。",
           "KR": "최대 HP가 300% 상승한다. [우화] 효과가 입히는 대미지는 오버차지 대미지로 간주된다.\n속성 혼돈 소모 시, 대상을 향해 추가 탄환을 소모한 단계×3발 발사한다. 기존 탄환은 소모하지 않으며, 소모한 단계×0.9초의 최소 발동 간격을 갖는다.",
@@ -1408,7 +1866,7 @@
           "TC": "荊刺·初綻"
         },
         "desc": {
-          "EN": "Dealing damage with this weapon grants 2 Calamity. Calamity is capped at 100.\r\nWhen Calamity reaches its cap, all Calamity is consumed to trigger [Oblivion] once, dealing 1000% Calamity damage to enemies within 3 m and pulling hit enemies towards its center. This counts as Ranged Weapon DMG.",
+          "EN": "Dealing damage with this weapon grants 2 Calamity. Calamity is capped at 100.\nWhen Calamity reaches its cap, all Calamity is consumed to trigger [Oblivion] once, dealing 1000% Calamity damage to enemies within 3 m and pulling hit enemies towards its center. This counts as Ranged Weapon DMG.",
           "FR": "Lorsque cette arme inflige des dégâts, elle confère 2 points de calamité. Le maximum de calamité est de 100.\nLorsque le maximum est atteint, tous les points de calamité sont consommés pour déclencher [Extinction].\n[Extinction] : inflige 1000% dégâts de calamité aux ennemis dans un rayon de 3 m, ces dégâts sont considérés comme des DGT d’arme à distance et attirent les cibles vers le centre de la zone.",
           "JP": "この武器でダメージを与えるとき、2の災厄値を獲得する。災厄値は最大100まで保持でき、上限に達するとすべての災厄値を消費して1回の【寂滅】を発動する。【見送りの挽歌】半径3メートル内の敵に1000%の災厄ダメージを与える。このダメージは遠隔武器ダメージと見なされ、命中した敵を範囲中心に引き寄せる。",
           "KR": "해당 무기로 대미지를 입힐 때, 재앙도를 2 획득한다. 재앙도는 최대 100까지 보유 가능.\n재앙도가 최대치에 도달하면 모든 재앙도를 소모하여 [사멸]을 1회 발동한다.\n[사멸]: 반경 3m 내의 적에게 재앙 대미지를 1000% 입힌다. 원거리 무기 대미지로 간주되며, 대미지 목표를 범위 가운데로 끌어당긴다.",
@@ -1837,7 +2295,7 @@
           "TC": "荊刺·腐朽"
         },
         "desc": {
-          "EN": "Melee Weapon Charged Attacks deal 300% more damage.\r\nWhen Combo Points are at max, the excess is stored as the same stacks of [Doom Sigils], up to 360. Each time [Oblivion] is triggered, gain 20 stacks of [Doom Sigil].\r\nWhen using a Charged Attack, if Combo Points are below max, consume an equal number of [Doom Sigils] to raise Combo Points to the max.",
+          "EN": "Melee Weapon Charged Attacks deal 300% more damage.\nWhen Combo Points are at max, the excess is stored as the same stacks of [Doom Sigils], up to 360. Each time [Oblivion] is triggered, gain 20 stacks of [Doom Sigil].\nWhen using a Charged Attack, if Combo Points are below max, consume an equal number of [Doom Sigils] to raise Combo Points to the max.",
           "FR": "Les dégâts des Attaques chargées des armes de mêlée augmentent de 300%. Lorsque des points de Combo sont obtenus, si la jauge est déjà pleine, l’excédent est converti en un nombre équivalent de cumuls de [Marques de fatalité] permanentes, cumulables jusqu’à 360.\nChaque déclenchement d’[Extinction] confère 20 cumuls de [Marques de fatalité]. Lorsqu’une Attaque chargée est utilisée, si les points de Combo sont insuffisants, les [Marques de fatalité] sont immédiatement consommées pour restaurer le nombre de points de Combo manquants.",
           "JP": "近接武器の溜め攻撃ダメージが300%アップする。\n コンボポイント獲得時、コンボポイントが上限に達した場合、超えた分と同量の永続の[厄運の痕]を獲得する。最大360まで獲得できる。【寂滅】が発動するたびに20スタックの[厄運の痕]を獲得する。\n 溜め攻撃時、コンボポイントが上限に満たない場合は、[厄運の痕]を消費して対応する数のコンボポイントを獲得する。",
           "KR": "근접 무기 차지 공격 대미지가 300% 상승한다.\n콤보 포인트 획득 시, 콤보 포인트가 이미 최대치라면 초과한 양과 같은 단계의 [불운의 흔적]을 획득한다(영구 지속). 최대 360단계까지 중첩 가능. [사멸] 발동 시마다 [불운의 흔적]을 20단계 획득한다.\n차지 공격 시, 콤보 포인트가 최대치가 아니라면, [불운의 흔적]을 즉시 소모하여 해당 수량의 콤보 포인트를 보충할 수 있다.",

@@ -1,13 +1,13 @@
 {
- "generatedAt": "2026-10-08T23:16:49.115Z",
- "gameVersion": 160,
+ "generatedAt": "2026-10-20T07:18:09.323Z",
+ "gameVersion": 170,
  "categories": [
   {
    "kind": "outfit",
    "slug": "outfits",
-   "count": 58,
+   "count": 62,
    "tabIcon": "/assets/cosmetics/tab/T_Tab_Fashion_Clothing.png",
-   "sample": "/assets/cosmetics/outfit/T_Head_WeitaF.png",
+   "sample": "/assets/cosmetics/outfit/T_Head_SpLise.png",
    "subcategories": [
     {
      "id": "series",
@@ -16,12 +16,12 @@
     },
     {
      "id": "signature",
-     "count": 18,
+     "count": 21,
      "label": null
     },
     {
      "id": "default",
-     "count": 32,
+     "count": 33,
      "label": null
     }
    ]
@@ -29,15 +29,15 @@
   {
    "kind": "hairstyle",
    "slug": "hairstyles",
-   "count": 45,
+   "count": 50,
    "tabIcon": "/assets/cosmetics/tab/T_Tab_Fashion_Hair.png",
-   "sample": "/assets/cosmetics/hairstyle/T_Icon_Shuimu.png",
+   "sample": "/assets/cosmetics/hairstyle/T_Fashion_SPLise_01.png",
    "subcategories": []
   },
   {
    "kind": "accessory",
    "slug": "accessories",
-   "count": 495,
+   "count": 511,
    "tabIcon": "/assets/cosmetics/tab/T_Tab_Accessory.png",
    "sample": "/assets/cosmetics/accessory/T_Fashion_Waist15.png",
    "subcategories": [
@@ -56,7 +56,7 @@
     },
     {
      "id": "head",
-     "count": 153,
+     "count": 154,
      "label": {
       "FR": "Tête",
       "EN": "Head",
@@ -69,7 +69,7 @@
     },
     {
      "id": "face",
-     "count": 94,
+     "count": 101,
      "label": {
       "FR": "Visage",
       "EN": "Face",
@@ -82,7 +82,7 @@
     },
     {
      "id": "back",
-     "count": 63,
+     "count": 71,
      "label": {
       "FR": "Accessoire dorsal – Haut",
       "EN": "Upper-Backpiece",
@@ -137,7 +137,7 @@
   {
    "kind": "effect",
    "slug": "effects",
-   "count": 89,
+   "count": 103,
    "tabIcon": "/assets/cosmetics/tab/T_Tab_Fashion_Fx.png",
    "sample": "/assets/cosmetics/effect/T_Fashion_Fx08_01.png",
    "subcategories": [
@@ -156,7 +156,7 @@
     },
     {
      "id": "footprint",
-     "count": 31,
+     "count": 35,
      "label": {
       "FR": "Effets de pas",
       "EN": "Footprint Effects",
@@ -169,7 +169,7 @@
     },
     {
      "id": "aura",
-     "count": 31,
+     "count": 35,
      "label": {
       "FR": "Aura",
       "EN": "Aura",
@@ -182,7 +182,7 @@
     },
     {
      "id": "plunging-attack",
-     "count": 8,
+     "count": 9,
      "label": {
       "FR": "Effet d’attaque plongeante",
       "EN": "Plunging Attack Effect",
@@ -195,7 +195,7 @@
     },
     {
      "id": "helix-leap",
-     "count": 13,
+     "count": 18,
      "label": {
       "FR": "Effet de Bond Cyclonique",
       "EN": "Helix Leap Effect",
@@ -232,13 +232,13 @@
   {
    "kind": "weaponSkin",
    "slug": "weapon-skins",
-   "count": 73,
+   "count": 76,
    "tabIcon": "/assets/cosmetics/tab/T_Tab_CloseIn_Weapons.png",
    "sample": "/assets/cosmetics/weaponSkin/T_Head_Claymore_Qunxing.png",
    "subcategories": [
     {
      "id": "sword",
-     "count": 7,
+     "count": 8,
      "label": {
       "FR": "Épée",
       "EN": "Sword",
@@ -264,7 +264,7 @@
     },
     {
      "id": "claymore",
-     "count": 9,
+     "count": 10,
      "label": {
       "FR": "Espadon",
       "EN": "Greatsword",
@@ -342,7 +342,7 @@
     },
     {
      "id": "cannon",
-     "count": 3,
+     "count": 4,
      "label": {
       "FR": "Lance-grenades",
       "EN": "Grenade Launcher",
@@ -442,7 +442,7 @@
   {
    "kind": "mount",
    "slug": "mounts",
-   "count": 15,
+   "count": 17,
    "tabIcon": "/assets/cosmetics/tab/T_Tab_Mounts.png",
    "sample": "/assets/cosmetics/mount/T_Icon_Mounts_0001.png",
    "subcategories": []
@@ -450,7 +450,7 @@
   {
    "kind": "gesture",
    "slug": "gestures",
-   "count": 70,
+   "count": 73,
    "tabIcon": "/assets/cosmetics/tab/T_Tab_Action.png",
    "sample": "/assets/cosmetics/gesture/T_Resource_Gesture_CarBlack.png",
    "subcategories": []

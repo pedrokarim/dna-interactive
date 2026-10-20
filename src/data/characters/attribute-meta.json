@@ -383,6 +383,15 @@
       "KR": "콤보 유지 시간",
       "TC": "連擊持續時間"
     },
+    "CutTNRate": {
+      "FR": "Réduction de posture",
+      "EN": "Stance Reduction",
+      "DE": null,
+      "ES": null,
+      "JP": "体勢崩れ",
+      "KR": "전투 태세 약화",
+      "TC": "戰姿削減"
+    },
     "DEF": {
       "FR": "DÉF",
       "EN": "DEF",

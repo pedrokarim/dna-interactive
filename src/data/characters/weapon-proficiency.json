@@ -619,6 +619,18 @@
         "Bow"
       ]
     },
+    "4103": {
+      "base": [
+        "Sword",
+        "Cannon"
+      ],
+      "extra": [
+        "Polearm",
+        "Claymore",
+        "Dualblade",
+        "Swordwhip"
+      ]
+    },
     "4201": {
       "base": [
         "Polearm",

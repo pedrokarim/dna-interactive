@@ -1907,6 +1907,260 @@
     }
   },
   {
+    "id": "weapons-10199",
+    "categoryId": "weapons",
+    "modId": 10199,
+    "archiveId": null,
+    "stats": {
+      "rarity": 5,
+      "polarity": null,
+      "maxLevel": 80,
+      "cost": null,
+      "openVersion": 17,
+      "releaseVersion": 170
+    },
+    "textKeys": {
+      "modNameKey": "UI_WEAPON_NAME_10199",
+      "descriptionKey": "UI_WEAPON_DESC_10199",
+      "demonWedgeKey": null,
+      "functionKey": "UI_Armory_Meleeweapon",
+      "passiveEffectsDescKey": "SKILL_Psionic_DESC",
+      "affinityNameKey": null,
+      "archiveNameKey": null
+    },
+    "affinity": {
+      "id": null,
+      "nameKey": null,
+      "char": null,
+      "icon": {
+        "gamePath": null,
+        "publicPath": null,
+        "placeholderPath": null,
+        "candidates": [],
+        "allMatches": []
+      }
+    },
+    "typeCompatibility": {
+      "applicationType": 101,
+      "textKeys": [
+        "UI_Armory_Meleeweapon",
+        "WeaponType_Sword"
+      ],
+      "tags": [
+        {
+          "key": "UI_Armory_Meleeweapon",
+          "icon": {
+            "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponTypeClose_Combat.T_Armory_WeaponTypeClose_Combat",
+            "publicPath": "/assets/items/weapon-types/T_Armory_WeaponTypeClose_Combat.png",
+            "placeholderPath": null,
+            "candidates": [
+              "T_Armory_WeaponTypeClose_Combat",
+              "Armory_WeaponTypeClose_Combat"
+            ],
+            "allMatches": [
+              "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponTypeClose_Combat.png"
+            ]
+          }
+        },
+        {
+          "key": "WeaponType_Sword",
+          "icon": {
+            "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponType_Sword.T_Armory_WeaponType_Sword",
+            "publicPath": "/assets/items/weapon-types/T_Armory_WeaponType_Sword.png",
+            "placeholderPath": null,
+            "candidates": [
+              "T_Armory_WeaponType_Sword",
+              "Armory_WeaponType_Sword"
+            ],
+            "allMatches": [
+              "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponType_Sword.png"
+            ]
+          }
+        }
+      ]
+    },
+    "tolerance": {
+      "baseCost": null,
+      "costChange": null,
+      "maxLevel": 0,
+      "valuesByLevel": {
+        "0": null
+      }
+    },
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Sword_Yemei",
+      "publicPath": "/assets/items/weapons/T_Head_Sword_Yemei.png",
+      "placeholderPath": null,
+      "candidates": [
+        "T_Head_Sword_Yemei",
+        "Head_Sword_Yemei"
+      ],
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Sword_Yemei.png"
+      ]
+    },
+    "scaling": {
+      "defaultLevel": 0,
+      "maxLevel": 5,
+      "availableLevels": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "valuesByLevel": {
+        "0": {},
+        "1": {},
+        "2": {},
+        "3": {},
+        "4": {},
+        "5": {}
+      },
+      "attributesByLevel": {
+        "0": [],
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": []
+      }
+    },
+    "translations": {
+      "DE": {
+        "modName": "Metallschwert",
+        "description": "Ein gewöhnliches Schwert. Aus dem billigsten Metall hergestellt, also ist es nicht schlimm, wenn es zerbricht.",
+        "demonWedgeName": null,
+        "functionLabel": "Nahkampfwaffen",
+        "passiveEffectsDescription": "Weapon Potentials can be unlocked through Calamity Smelting. A Potential only takes effect if the character's <H>weapon proficiency</> matches this weapon's type.",
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Nahkampfwaffen",
+          "Schwert"
+        ]
+      },
+      "EN": {
+        "modName": "Endless Enigma",
+        "description": "One of those who received the weapon was a sage, rewarded by the Father for her wisdom. Consumed by a thirst for truth, she spent countless midnights pondering the nature of the world. Again and again she sought an answer without flaw or error, yet the more she learned, the more the unknown grew before her.\nShe steeped her days in darkness and blank pages, but there could be no end to the pursuit of truth. The agony of the unknowable tore her apart. On one long night, she turned her blade upon herself — only to leave behind an unsolved enigma that would drive countless others to madness.",
+        "demonWedgeName": null,
+        "functionLabel": "Melee Weapons",
+        "passiveEffectsDescription": "Weapon Potentials can be unlocked through Calamity Smelting. A Potential only takes effect if the character's <H>weapon proficiency</> matches this weapon's type.",
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Melee Weapons",
+          "Sword"
+        ]
+      },
+      "ES": {
+        "modName": "Espada Metálica",
+        "description": "Una espada de una mano común, hecha del metal más barato, incluso si se rompe no representa una gran pérdida.",
+        "demonWedgeName": null,
+        "functionLabel": "Armas cuerpo a cuerpo",
+        "passiveEffectsDescription": "Los potenciales del arma pueden desbloquearse mediante la fusión de calamidad.  Un potencial solo se activa si el tipo de arma coincide con el <H>arma preferida</> del personaje.",
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Armas cuerpo a cuerpo",
+          "Espada"
+        ]
+      },
+      "FR": {
+        "modName": "Énigme insoluble",
+        "description": "L’une des porteuses de cette arme était une sage. Père Ask récompensa son esprit. Obsédée par sa quête de vérité, elle passait nuit après nuit, seule au cœur des ténèbres, à méditer sur la véritable nature du monde, encore et encore. Elle aspirait à une conclusion parfaite, exempte de toute faille et de toute erreur. Pourtant, plus elle en apprenait, plus l’inconnu s’étendait devant elle.\n \nElle noya ses heures dans la nuit et les pages blanches, mais comment la quête de vérité pourrait-elle jamais connaître une fin ? La souffrance de l’inconnaissable finit par la déchirer. Au terme d’une longue nuit, elle mit fin à ses jours avec une lame. Quant à l’énigme insoluble qu’elle laissa derrière elle, elle en plongea bien d’autres dans la folie.",
+        "demonWedgeName": null,
+        "functionLabel": "Armes de mêlée",
+        "passiveEffectsDescription": "Les Potentiels d’arme peuvent être débloqués grâce à la Fusion de calamité. Un Potentiel ne prend effet que si le type d’arme correspond à l’<H>arme de prédilection</> du personnage.",
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Armes de mêlée",
+          "Épée"
+        ]
+      },
+      "JP": {
+        "modName": "メタルブレード",
+        "description": "ありふれた片手剣。安価な金属で作られているので、壊れても惜しくない。",
+        "demonWedgeName": null,
+        "functionLabel": "近接武器",
+        "passiveEffectsDescription": "災厄製錬で武器潜在能力を解放できます。潜在能力は、キャラクターの<H>熟練武器</>がこの武器タイプと同じ場合にのみ有効になります。",
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "近接武器",
+          "片手剣"
+        ]
+      },
+      "KR": {
+        "modName": "답 없는 수수께끼",
+        "description": "무기를 손에 넣은 이들 중 한 명은 현자였다. 아버지 신은 그녀의 사색을 치하했다. 진리를 향한 갈망에 사로잡힌 그녀는 사람들의 발길이 끊긴 깊은 밤마다 홀로 세계의 진실을 되짚고 또 되짚었다. 한 치의 허점도 오류도 없는 결론을 바라며 파고들었지만, 알아 갈수록 미지 또한 늘어날 뿐이었다.\n그녀는 백지 앞에서 수많은 밤을 지새웠지만, 탐구의 길에 끝이 있을 리 없었다. 끝내 알 수 없다는 고통에 무너진 그녀는 어느 긴 밤 칼날로 목숨을 끊었고, 그녀가 남긴 답 없는 수수께끼는 더 많은 이들을 광기로 몰아넣었다.",
+        "demonWedgeName": null,
+        "functionLabel": "근접 무기",
+        "passiveEffectsDescription": "재앙 용해를 통해 무기의 잠재력을 해제할 수 있으며, 잠재력은 캐릭터의 <H>마스터리 무기</>와 해당 무기의 유형이 일치할 때만 활성화됩니다.",
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "근접 무기",
+          "한손검"
+        ]
+      },
+      "TC": {
+        "modName": "無解謎題",
+        "description": "獲得武器的其中一人是名智者，父神嘉獎她的思考。她深陷對真理的渴求，在夜半無人的深夜思索著世界的真相，一遍又一遍。她力求絕無疏漏與錯差的終果，可她知道的越多，未知的便越多。\n她將時間浸泡於黑夜與白紙，可求索的道路怎會有盡頭？不可知的痛苦將她撕裂，她以利刃自絕於一個漫長的夜，而她留下的無解謎題則令更多人陷入瘋狂。",
+        "demonWedgeName": null,
+        "functionLabel": "近戰武器",
+        "passiveEffectsDescription": "可透過災厄熔煉解鎖武器潛能，潛能僅在角色的<H>精通武器</>與該武器類型相同時生效。",
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "近戰武器",
+          "單手劍"
+        ]
+      }
+    },
+    "fields": {
+      "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Sword_Yemei",
+      "CollectRewardExp": 400,
+      "DecomposeReward": -1,
+      "GUIPathVariableName": "Yemei",
+      "GUIPathVariableType": "Sword",
+      "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Sword_Yemei",
+      "Icon": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Sword_Yemei",
+      "ModSlot": "T.RT_1",
+      "ModSlotUnlock": "T.RT_2",
+      "OpenVersion": 17,
+      "ReleaseVersion": 170,
+      "SkinApplicationType": "T.RT_3",
+      "SortPriority": 10199,
+      "Sound": "SOUND_ITEM_WEAPON",
+      "WeaponDescribe": "UI_WEAPON_DESC_10199",
+      "WeaponId": 10199,
+      "WeaponMaxLevel": 80,
+      "WeaponName": "UI_WEAPON_NAME_10199",
+      "WeaponRarity": 5,
+      "WeaponSubType": "Hyper",
+      "WeaponToCoinType": 101,
+      "WeaponValue": 10000,
+      "Type": "Melee",
+      "ResourceSType": "Sword",
+      "WeaponClassKey": "UI_Armory_Meleeweapon",
+      "WeaponTypeKey": "WeaponType_Sword",
+      "SkinApplicationTypeCodes": [
+        101
+      ],
+      "WeaponClass": "Melee",
+      "WeaponSubtype": "Sword",
+      "BaseATK": 20,
+      "ATKMax": 251,
+      "ATKType": "Psionic",
+      "CRI": 0.23,
+      "CRD": 2.2,
+      "PassiveEffectsDescKey": "SKILL_Psionic_DESC"
+    }
+  },
+  {
     "id": "weapons-10201",
     "categoryId": "weapons",
     "modId": 10201,
@@ -4055,7 +4309,7 @@
       },
       "KR": {
         "modName": "끝없는 투쟁",
-        "description": "무기를 손에 넣은 자 중 하나는 전사였다. 아버지 신에게서 용맹하다는 찬사를 받은 그는 머나먼 땅에 끊임없이 도전장을 보내며, 쉼 없이 강자를 찾아 도전했고, 그의 이름은 강함의 대명사가 되었다. 그러나, 그는 점차 싸우지 않는 삶을 견딜 수 없게 되었다.\n끝없는 투쟁을 벌이던 그 전사는, 널브러진 시체를 구원 삼고, 자신이 흘린 피를 장송곡 삼아, 끝내 승자 없는 투기장 같은 전쟁터에서 쓰러지고 말았다.",
+        "description": "무기를 손에 넣은 이들 중 한 명은 전사였다. 아버지 신에게서 용맹하다는 찬사를 받은 그는 머나먼 땅에 끊임없이 도전장을 보내며, 쉼 없이 강자를 찾아 도전했고, 그의 이름은 강함의 대명사가 되었다. 그러나, 그는 점차 싸우지 않는 삶을 견딜 수 없게 되었다.\n끝없는 투쟁을 벌이던 그 전사는, 널브러진 시체를 구원 삼고, 자신이 흘린 피를 장송곡 삼아, 끝내 승자 없는 투기장 같은 전쟁터에서 쓰러지고 말았다.",
         "demonWedgeName": null,
         "functionLabel": "근접 무기",
         "passiveEffectsDescription": "재앙 용해를 통해 무기의 잠재력을 해제할 수 있으며, 잠재력은 캐릭터의 <H>마스터리 무기</>와 해당 무기의 유형이 일치할 때만 활성화됩니다.",
@@ -5334,28 +5588,40 @@
       ],
       "valuesByLevel": {
         "0": {
-          "1": 75,
-          "2": 50
+          "1": 37.5,
+          "2": 30,
+          "3": 25,
+          "4": 5
         },
         "1": {
-          "1": 90,
-          "2": 60
+          "1": 45,
+          "2": 36,
+          "3": 30,
+          "4": 5
         },
         "2": {
-          "1": 105,
-          "2": 70
+          "1": 52.5,
+          "2": 42,
+          "3": 35,
+          "4": 5
         },
         "3": {
-          "1": 120,
-          "2": 80
+          "1": 60,
+          "2": 48,
+          "3": 40,
+          "4": 5
         },
         "4": {
-          "1": 135,
-          "2": 90
+          "1": 67.5,
+          "2": 54,
+          "3": 45,
+          "4": 5
         },
         "5": {
-          "1": 150,
-          "2": 100
+          "1": 75,
+          "2": 60,
+          "3": 50,
+          "4": 5
         }
       },
       "attributesByLevel": {
@@ -5373,7 +5639,7 @@
         "description": "A clear note fades beyond the clouds, a frosted robe bathed in the moonlight.",
         "demonWedgeName": null,
         "functionLabel": "Nahkampfwaffen",
-        "passiveEffectsDescription": "Trigger Probability +<H>#1</>. When damage dealt with this weapon triggers a bonus effect, there is a <H>#2</> chance to restore <H>5</> rounds of ammo.",
+        "passiveEffectsDescription": "Stance Reduction +<H>#1</>. Dealing CRIT Damage with this weapon grants +<H>#2</> ATK Speed and +<H>#3</>Charge Speed for <H>#4</>s. This effect is removed when switching weapons.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -5386,7 +5652,7 @@
         "description": "A clear note fades beyond the clouds, a frosted robe bathed in the moonlight.",
         "demonWedgeName": null,
         "functionLabel": "Melee Weapons",
-        "passiveEffectsDescription": "Trigger Probability +<H>#1</>. When damage dealt with this weapon triggers a bonus effect, there is a <H>#2</> chance to restore <H>5</> rounds of ammo.",
+        "passiveEffectsDescription": "Stance Reduction +<H>#1</>. Dealing CRIT Damage with this weapon grants +<H>#2</> ATK Speed and +<H>#3</>Charge Speed for <H>#4</>s. This effect is removed when switching weapons.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -5412,7 +5678,7 @@
         "description": "Soudain, une note limpide traverse les nuages ; la lune emplit mille passes, la neige recouvre la robe.",
         "demonWedgeName": null,
         "functionLabel": "Armes de mêlée",
-        "passiveEffectsDescription": "Chance de déclenchement +<H>#1</>. Lorsque cette arme déclenche un effet supplémentaire, elle a <H>#2</> de chances de récupérer <H>5</> projectiles.",
+        "passiveEffectsDescription": "Réduction de posture +<H>#1</>. Lorsque cette arme inflige un coup critique, la Vitesse d’attaque augmente de <H>#2</> et la Vitesse d’attaque chargée augmente de <H>#3</> pendant <H>#4</> s. L’effet est annulé lors du changement d’arme.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -5438,7 +5704,7 @@
         "description": "맑은 소리가 구름을 뚫고 날아가니, 달빛 아래 눈이 옷깃에 쌓이네.",
         "demonWedgeName": null,
         "functionLabel": "근접 무기",
-        "passiveEffectsDescription": "발동 확률+<H>#1</>. 해당 무기로 대미지를 입혀 추가 효과 발동 시, <H>#2</> 확률로 탄약을 <H>5</>발 회복한다.",
+        "passiveEffectsDescription": "전투 태세 약화 능력+<H>#1</>. 해당 무기로 입힌 대미지가 크리티컬 발동 시, 공격 속도가 <H>#2</>, 차지 공격 속도가 <H>#3</> 상승한다. 지속 시간 <H>#4</>초. 다른 무기로 전환 시 효과가 사라진다.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -5451,7 +5717,7 @@
         "description": "忽有清聲穿雲去，月滿千關雪滿袍。",
         "demonWedgeName": null,
         "functionLabel": "近戰武器",
-        "passiveEffectsDescription": "觸發概率+<H>#1</>。使用此武器造成的傷害觸發額外效果時，有<H>#2</>概率回復<H>5</>枚彈藥。",
+        "passiveEffectsDescription": "戰姿削減能力+<H>#1</>。使用此武器造成的傷害暴擊時，攻擊速度提升<H>#2</>、蓄力速度提升<H>#3</>，持續<H>#4</>秒。切換至其他武器時，失去效果。",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -5663,7 +5929,7 @@
       },
       "FR": {
         "modName": "Braise souveraine",
-        "description": "L’un des porteurs de cette arme était un roi. Le Dieu-Père récompensa son ambition. Le peuple se tenait derrière lui, acclamant son nom et célébrant ses conquêtes.\nIl ne cessa jamais d’avancer sur la voie de la conquête, convaincu que toujours plus de gens se rallieraient à lui. Mais ses ennemis, eux, ne firent que se multiplier. Il finit encerclé sur son trône, embrasa un grand feu et se réduisit en cendres avec sa gloire.",
+        "description": "L’un des porteurs de cette arme était un roi. Père Ask récompensa son ambition. Le peuple se tenait derrière lui, acclamant son nom et célébrant ses conquêtes.\nIl ne cessa jamais d’avancer sur la voie de la conquête, convaincu que toujours plus de gens se rallieraient à lui. Mais ses ennemis, eux, ne firent que se multiplier. Il finit encerclé sur son trône, embrasa un grand feu et se réduisit en cendres avec sa gloire.",
         "demonWedgeName": null,
         "functionLabel": "Armes de mêlée",
         "passiveEffectsDescription": "Les Potentiels d’arme peuvent être débloqués grâce à la Fusion de calamité. Un Potentiel ne prend effet que si le type d’arme correspond à l’<H>arme de prédilection</> du personnage.",
@@ -5689,7 +5955,7 @@
       },
       "KR": {
         "modName": "쇠락한 권세",
-        "description": "이 무기를 손에 넣은 자 중 한 명은 왕이었고, 아버지 신은 그의 야망을 치하했다. 사람들은 그의 뒤에 서서 그의 위명을 환호하고, 그의 정복을 찬양했다.\n그는 정복의 발걸음을 멈추지 않았고, 더 많은 추종자를 얻을 것이라 굳게 믿었지만, 적은 점점 더 늘어만 갔다. 결국 그는 왕좌 위에서 포위당했고, 타오르는 불길 속에서 자신과 영광을 함께 재로 태워버렸다.",
+        "description": "무기를 손에 넣은 이들 중 한 명은 왕이었고, 아버지 신은 그의 야망을 치하했다. 사람들은 그의 뒤에 서서 그의 위명을 환호하고, 그의 정복을 찬양했다.\n그는 정복의 발걸음을 멈추지 않았고, 더 많은 추종자를 얻을 것이라 굳게 믿었지만, 적은 점점 더 늘어만 갔다. 결국 그는 왕좌 위에서 포위당했고, 타오르는 불길 속에서 자신과 영광을 함께 재로 태워버렸다.",
         "demonWedgeName": null,
         "functionLabel": "근접 무기",
         "passiveEffectsDescription": "재앙 용해를 통해 무기의 잠재력을 해제할 수 있으며, 잠재력은 캐릭터의 <H>마스터리 무기</>와 해당 무기의 유형이 일치할 때만 활성화됩니다.",
@@ -6676,28 +6942,28 @@
       ],
       "valuesByLevel": {
         "0": {
-          "1": 1,
-          "2": 6
+          "1": 50,
+          "2": 20
         },
         "1": {
-          "1": 1.2,
-          "2": 7.199999999999999
+          "1": 60,
+          "2": 24
         },
         "2": {
-          "1": 1.4000000000000001,
-          "2": 8.4
+          "1": 70,
+          "2": 28.000000000000004
         },
         "3": {
-          "1": 1.6,
-          "2": 9.6
+          "1": 80,
+          "2": 32
         },
         "4": {
-          "1": 1.8,
-          "2": 10.8
+          "1": 90,
+          "2": 36
         },
         "5": {
-          "1": 2,
-          "2": 12
+          "1": 100,
+          "2": 40
         }
       },
       "attributesByLevel": {
@@ -6715,7 +6981,7 @@
         "description": "Raging tides shatter the blackened frost; as winds converge, a cold gleam is drawn.",
         "demonWedgeName": null,
         "functionLabel": "Nahkampfwaffen",
-        "passiveEffectsDescription": "ATK Range +<H>#1</>. Charged Attacks with this weapon have a <H>#2</> chance not to consume Combo Points.",
+        "passiveEffectsDescription": "CRIT Chance +<H>#1</>. Performing a Charged Attack with this weapon refunds <H>#2</> of consumed Combo Points.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -6728,7 +6994,7 @@
         "description": "Raging tides shatter the blackened frost; as winds converge, a cold gleam is drawn.",
         "demonWedgeName": null,
         "functionLabel": "Melee Weapons",
-        "passiveEffectsDescription": "ATK Range +<H>#1</>. Charged Attacks with this weapon have a <H>#2</> chance not to consume Combo Points.",
+        "passiveEffectsDescription": "CRIT Chance +<H>#1</>. Performing a Charged Attack with this weapon refunds <H>#2</> of consumed Combo Points.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -6754,7 +7020,7 @@
         "description": "Les flots déchaînés fendent le givre obscur ; lorsque les vents s’élèvent, une lueur glaciale jaillit.",
         "demonWedgeName": null,
         "functionLabel": "Armes de mêlée",
-        "passiveEffectsDescription": "Portée d’attaque +<H>#1</>. Lors d’une Attaque chargée avec cette arme, <H>#2</> de chances de ne pas consommer de points de Combo.",
+        "passiveEffectsDescription": "Taux CRIT +<H>#1</>. Lors d’une Attaque chargée avec cette arme, restitue <H>#2</> des points de Combo consommés.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -6780,7 +7046,7 @@
         "description": "분노의 파도가 현상을 가르고, 바람에 구름 일어 시린 빛을 발하네.",
         "demonWedgeName": null,
         "functionLabel": "근접 무기",
-        "passiveEffectsDescription": "공격 범위+<H>#1</>.\n무기로 차지 공격을 시전할 시, <H>#2</> 확률로 콤보 포인트를 소모하지 않는다.",
+        "passiveEffectsDescription": "크리티컬 확률+<H>#1</>. 해당 무기로 차지 공격 시, 소모한 콤보 포인트를 <H>#2</> 돌려받는다.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -6793,7 +7059,7 @@
         "description": "狂浪怒濤裂玄霜，風起雲湧現寒芒。",
         "demonWedgeName": null,
         "functionLabel": "近戰武器",
-        "passiveEffectsDescription": "攻擊範圍+<H>#1</>。使用此武器進行蓄力攻擊時，有<H>#2</>概率不消耗連擊點數。",
+        "passiveEffectsDescription": "暴擊率+<H>#1</>。使用此武器進行蓄力攻擊時，返還<H>#2</>消耗的連擊點數。",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -6926,12 +7192,14 @@
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Dualblade_Wusheng",
       "publicPath": "/assets/items/weapons/T_Head_Dualblade_Wusheng.png",
-      "placeholderPath": "/assets/items/weapons/T_Head_Dualblade_Wusheng.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Head_Dualblade_Wusheng",
         "Head_Dualblade_Wusheng"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Dualblade_Wusheng.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -13468,6 +13736,279 @@
     }
   },
   {
+    "id": "weapons-20306",
+    "categoryId": "weapons",
+    "modId": 20306,
+    "archiveId": null,
+    "stats": {
+      "rarity": 5,
+      "polarity": null,
+      "maxLevel": 80,
+      "cost": null,
+      "openVersion": 17,
+      "releaseVersion": 170
+    },
+    "textKeys": {
+      "modNameKey": "UI_WEAPON_NAME_20306",
+      "descriptionKey": "UI_WEAPON_DESC_20306",
+      "demonWedgeKey": null,
+      "functionKey": "UI_Armory_Longrange",
+      "passiveEffectsDescKey": "SKILL_20306_DESC",
+      "affinityNameKey": null,
+      "archiveNameKey": null
+    },
+    "affinity": {
+      "id": null,
+      "nameKey": null,
+      "char": null,
+      "icon": {
+        "gamePath": null,
+        "publicPath": null,
+        "placeholderPath": null,
+        "candidates": [],
+        "allMatches": []
+      }
+    },
+    "typeCompatibility": {
+      "applicationType": 203,
+      "textKeys": [
+        "UI_Armory_Longrange",
+        "WeaponType_Cannon"
+      ],
+      "tags": [
+        {
+          "key": "UI_Armory_Longrange",
+          "icon": {
+            "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponTypeLongRange.T_Armory_WeaponTypeLongRange",
+            "publicPath": "/assets/items/weapon-types/T_Armory_WeaponTypeLongRange.png",
+            "placeholderPath": null,
+            "candidates": [
+              "T_Armory_WeaponTypeLongRange",
+              "Armory_WeaponTypeLongRange"
+            ],
+            "allMatches": [
+              "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponTypeLongRange.png"
+            ]
+          }
+        },
+        {
+          "key": "WeaponType_Cannon",
+          "icon": {
+            "gamePath": "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponType_Cannon.T_Armory_WeaponType_Cannon",
+            "publicPath": "/assets/items/weapon-types/T_Armory_WeaponType_Cannon.png",
+            "placeholderPath": null,
+            "candidates": [
+              "T_Armory_WeaponType_Cannon",
+              "Armory_WeaponType_Cannon"
+            ],
+            "allMatches": [
+              "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Atlas/Armory/T_Armory_WeaponType_Cannon.png"
+            ]
+          }
+        }
+      ]
+    },
+    "tolerance": {
+      "baseCost": null,
+      "costChange": null,
+      "maxLevel": 0,
+      "valuesByLevel": {
+        "0": null
+      }
+    },
+    "icon": {
+      "gamePath": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Cannon_Huozhe",
+      "publicPath": "/assets/items/weapons/T_Head_Cannon_Huozhe.png",
+      "placeholderPath": null,
+      "candidates": [
+        "T_Head_Cannon_Huozhe",
+        "Head_Cannon_Huozhe"
+      ],
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Cannon_Huozhe.png"
+      ]
+    },
+    "scaling": {
+      "defaultLevel": 0,
+      "maxLevel": 5,
+      "availableLevels": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "valuesByLevel": {
+        "0": {
+          "1": 62.5,
+          "2": 75
+        },
+        "1": {
+          "1": 75,
+          "2": 90
+        },
+        "2": {
+          "1": 87.5,
+          "2": 105
+        },
+        "3": {
+          "1": 100,
+          "2": 120
+        },
+        "4": {
+          "1": 112.5,
+          "2": 135
+        },
+        "5": {
+          "1": 125,
+          "2": 150
+        }
+      },
+      "attributesByLevel": {
+        "0": [],
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": []
+      }
+    },
+    "translations": {
+      "DE": {
+        "modName": "Blessed Burden",
+        "description": "UI_WEAPON_DESC_20306",
+        "demonWedgeName": null,
+        "functionLabel": "Fernkampfwaffen",
+        "passiveEffectsDescription": "CRIT Damage +<H>#1</>. Shooting by an Electro character grants +<H>#2</> Skill Intensity. This effect is removed upon exiting Shooting or charging a Ranged Weapon.",
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Fernkampfwaffen",
+          "Granatwerfer"
+        ]
+      },
+      "EN": {
+        "modName": "Blessed Burden",
+        "description": "UI_WEAPON_DESC_20306",
+        "demonWedgeName": null,
+        "functionLabel": "Ranged Weapons",
+        "passiveEffectsDescription": "CRIT Damage +<H>#1</>. Shooting by an Electro character grants +<H>#2</> Skill Intensity. This effect is removed upon exiting Shooting or charging a Ranged Weapon.",
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Ranged Weapons",
+          "Grenade Launcher"
+        ]
+      },
+      "ES": {
+        "modName": "Blessed Burden",
+        "description": "UI_WEAPON_DESC_20306",
+        "demonWedgeName": null,
+        "functionLabel": "Armas a distancia",
+        "passiveEffectsDescription": "CRIT Damage +<H>#1</>. Shooting by an Electro character grants +<H>#2</> Skill Intensity. This effect is removed upon exiting Shooting or charging a Ranged Weapon.",
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Armas a distancia",
+          "Lanzagranadas"
+        ]
+      },
+      "FR": {
+        "modName": "Le poids de vivre",
+        "description": "UI_WEAPON_DESC_20306",
+        "demonWedgeName": null,
+        "functionLabel": "Armes à distance",
+        "passiveEffectsDescription": "DGT CRIT +<H>#1</>. Lorsqu’un personnage Électro tire, il obtient un effet augmentant la Puissance de compétence de <H>#2</>. Cet effet est retiré lorsqu’il cesse de tirer ou prépare une attaque chargée avec une arme à distance.",
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "Armes à distance",
+          "Lance-grenades"
+        ]
+      },
+      "JP": {
+        "modName": "生きる重さ",
+        "description": "UI_WEAPON_DESC_20306",
+        "demonWedgeName": null,
+        "functionLabel": "遠隔武器",
+        "passiveEffectsDescription": "クリティカルダメージ+ #1 。雷属性のキャラクターが射撃すると、自身のスキル威力が #2 アップする。射撃を終了するか、遠隔武器のチャージを行うと解除される。",
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "遠隔武器",
+          "ランチャー"
+        ]
+      },
+      "KR": {
+        "modName": "살아간다는 무게",
+        "description": "UI_WEAPON_DESC_20306",
+        "demonWedgeName": null,
+        "functionLabel": "원거리 무기",
+        "passiveEffectsDescription": "크리티컬 대미지+<H>#1</>. 번개 속성 캐릭터가 사격 시 스킬 위력 <H>#2</> 상승 효과를 획득한다. 사격을 종료하거나 원거리 무기를 차지하면 효과가 해제된다.",
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "원거리 무기",
+          "핸드 캐논"
+        ]
+      },
+      "TC": {
+        "modName": "活著的重量",
+        "description": "UI_WEAPON_DESC_20306",
+        "demonWedgeName": null,
+        "functionLabel": "遠端武器",
+        "passiveEffectsDescription": "暴擊傷害+<H>#1</>。雷屬性角色射擊時，自身獲得技能威力提高<H>#2</>，退出射擊或遠端武器蓄力時清除。",
+        "affinityName": null,
+        "archiveName": null,
+        "typeCompatibilityNames": [
+          "遠端武器",
+          "榴炮"
+        ]
+      }
+    },
+    "fields": {
+      "BigIcon": "/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Cannon_Huozhe",
+      "CollectRewardExp": 400,
+      "DecomposeReward": 20311,
+      "GUIPathVariableName": "Huozhe",
+      "GUIPathVariableType": "Cannon",
+      "GachaIcon": "/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Cannon_Huozhe",
+      "Icon": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Cannon_Huozhe",
+      "ModSlot": "T.RT_1",
+      "ModSlotUnlock": "T.RT_2",
+      "OpenVersion": 17,
+      "ReleaseVersion": 170,
+      "SkinApplicationType": "T.RT_11",
+      "SortPriority": 20306,
+      "Sound": "SOUND_ITEM_WEAPON",
+      "WeaponDescribe": "UI_WEAPON_DESC_20306",
+      "WeaponId": 20306,
+      "WeaponMaxLevel": 80,
+      "WeaponName": "UI_WEAPON_NAME_20306",
+      "WeaponRarity": 5,
+      "WeaponSubType": "Normal",
+      "WeaponToCoinType": 101,
+      "WeaponValue": 10000,
+      "Type": "Ranged",
+      "ResourceSType": "Cannon",
+      "WeaponClassKey": "UI_Armory_Longrange",
+      "WeaponTypeKey": "WeaponType_Cannon",
+      "SkinApplicationTypeCodes": [
+        203
+      ],
+      "WeaponClass": "Ranged",
+      "WeaponSubtype": "Cannon",
+      "BaseATK": 8,
+      "ATKMax": 100,
+      "ATKType": "Smash",
+      "CRI": 0.3,
+      "CRD": 2.5,
+      "Element": "Thunder",
+      "PassiveEffectsDescKey": "SKILL_20306_DESC"
+    }
+  },
+  {
     "id": "weapons-20401",
     "categoryId": "weapons",
     "modId": 20401,
@@ -16298,32 +16839,44 @@
         "0": {
           "1": 30,
           "2": 1.7000000000000002,
-          "4": 25
+          "4": 15,
+          "5": 2,
+          "6": 12
         },
         "1": {
           "1": 36,
           "2": 2.04,
-          "4": 30
+          "4": 18,
+          "5": 2,
+          "6": 12
         },
         "2": {
           "1": 42,
           "2": 2.3800000000000003,
-          "4": 35
+          "4": 21,
+          "5": 2,
+          "6": 12
         },
         "3": {
           "1": 48,
           "2": 2.7199999999999998,
-          "4": 40
+          "4": 24,
+          "5": 2,
+          "6": 12
         },
         "4": {
           "1": 54,
           "2": 3.06,
-          "4": 45
+          "4": 27,
+          "5": 2,
+          "6": 12
         },
         "5": {
           "1": 60,
           "2": 3.4000000000000004,
-          "4": 50
+          "4": 30,
+          "5": 2,
+          "6": 12
         }
       },
       "attributesByLevel": {
@@ -16341,7 +16894,7 @@
         "description": "From threefold geometry, the goddess bestowed her praise, entrusting beauty itself to be honed into lethal edge.",
         "demonWedgeName": null,
         "functionLabel": "Fernkampfwaffen",
-        "passiveEffectsDescription": "Mag Capacity +<H>#1</>. After firing 10 rounds, the weapon consumes all remaining rounds in the magazine to fire a special round that deals AoE DMG. For each round consumed, this damage increases by <H>#2</>, up to <H>#3</>. Defeating an enemy with this weapon has a <H>#4</> chance to restore 1 round.",
+        "passiveEffectsDescription": "Mag Capacity +<H>#1</>. After firing 10 rounds, the weapon consumes all remaining rounds in the magazine to fire a special round that deals AoE DMG. For each round consumed, this damage increases by <H>#2</>, up to <H>#3</>. Hitting an enemy with the special round grants +<H>#4</> Ranged Weapon DMG for <H>#6</>s, stacking up to <H>#5</> times.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -16354,7 +16907,7 @@
         "description": "From threefold geometry, the goddess bestowed her praise, entrusting beauty itself to be honed into lethal edge.",
         "demonWedgeName": null,
         "functionLabel": "Ranged Weapons",
-        "passiveEffectsDescription": "Mag Capacity +<H>#1</>. After firing 10 rounds, the weapon consumes all remaining rounds in the magazine to fire a special round that deals AoE DMG. For each round consumed, this damage increases by <H>#2</>, up to <H>#3</>. Defeating an enemy with this weapon has a <H>#4</> chance to restore 1 round.",
+        "passiveEffectsDescription": "Mag Capacity +<H>#1</>. After firing 10 rounds, the weapon consumes all remaining rounds in the magazine to fire a special round that deals AoE DMG. For each round consumed, this damage increases by <H>#2</>, up to <H>#3</>. Hitting an enemy with the special round grants +<H>#4</> Ranged Weapon DMG for <H>#6</>s, stacking up to <H>#5</> times.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -16380,7 +16933,7 @@
         "description": "La géométrie aux trois arêtes a reçu l’éloge de la déesse, prête à transformer l’art de la beauté en une acuité mortelle.",
         "demonWedgeName": null,
         "functionLabel": "Armes à distance",
-        "passiveEffectsDescription": "Capacité du chargeur +<H>#1</>. Après avoir consommé 10 munitions en tirant avec cette arme, toutes les munitions restantes du chargeur sont consommées pour tirer 1 projectile spécial infligeant des Dégâts de zone. Chaque munition consommée augmente les dégâts de ce tir de <H>#2</>, jusqu’à un maximum de <H>#3</>. Vaincre un ennemi avec cette arme a <H>#4</> de chances d’obtenir 1 munition.",
+        "passiveEffectsDescription": "Capacité du chargeur +<H>#1</>. Après avoir consommé 10 munitions en tirant avec cette arme, toutes les munitions restantes du chargeur sont consommées pour tirer 1 projectile spécial infligeant des dégâts de zone. Chaque munition consommée augmente les dégâts de ce tir de <H>#2</>, jusqu’à un maximum de <H>#3</>. Lorsque le projectile spécial touche, vous obtenez un effet augmentant les DGT d’arme à distance de <H>#4</> pendant <H>#6</> s, cumulable jusqu’à <H>#5</> fois.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -16406,7 +16959,7 @@
         "description": "여신이 완벽한 세 변의 조화를 찬미하니, 그 아름다움으로 치명적인 칼날이 되어라.",
         "demonWedgeName": null,
         "functionLabel": "원거리 무기",
-        "passiveEffectsDescription": "탄창 용량+<H>#1</>. 해당 무기로 사격하여 탄환 10발 소모 후, 탄창의 남은 탄환을 전부 소모해 특수 탄환 1개를 발사하여 범위 대미지를 입힌다. 탄환을 1개 소모할 때마다 이번 대미지가 <H>#2</> 상승한다. 최대 <H>#3</> 상승. 해당 무기를 사용하여 적 처치 시, <H>#4</> 확률로 탄환을 1개 획득한다.",
+        "passiveEffectsDescription": "탄창 용량+<H>#1</>. 해당 무기로 사격하여 탄환 10발 소모 후, 탄창의 남은 탄환을 전부 소모해 특수 탄환 1개를 발사하여 범위 대미지를 입힌다. 탄환을 1개 소모할 때마다 이번 대미지가 <H>#2</> 상승한다. 최대 <H>#3</> 상승. 특수 탄환 적중 시 원거리 무기 대미지 <H>#4</> 상승 효과를 1단계 획득한다. 지속 시간 <H>#6</>초, 최대 <H>#5</>단계 중첩.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -16419,7 +16972,7 @@
         "description": "三邊的幾何獲得了女神的讚頌，願把美的藝術化作致命的鋒利。",
         "demonWedgeName": null,
         "functionLabel": "遠端武器",
-        "passiveEffectsDescription": "彈匣容量+<H>#1</>。使用此武器射擊消耗10枚彈藥後，消耗彈夾內的所有剩餘彈藥，發射1枚特殊子彈造成範圍傷害，每消耗1枚彈藥令此次傷害提高<H>#2</>，最大提高<H>#3</>。使用此武器擊敗敵人時，有<H>#4</>概率獲得1枚子彈。",
+        "passiveEffectsDescription": "彈匣容量+<H>#1</>。使用此武器射擊消耗10枚彈藥後，消耗彈夾內的所有剩餘彈藥，發射1枚特殊子彈造成範圍傷害，每消耗1枚彈藥令此次傷害提高<H>#2</>，最大提高<H>#3</>。特殊子彈命中時，自身獲得遠端武器傷害提升<H>#4</>，最多可疊加<H>#5</>層，持續<H>#6</>秒。",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -17706,34 +18259,34 @@
       ],
       "valuesByLevel": {
         "0": {
-          "1": 30,
-          "2": 50,
-          "3": 6
+          "1": 75,
+          "2": 3,
+          "3": 15
         },
         "1": {
-          "1": 36,
-          "2": 60,
-          "3": 6
+          "1": 90,
+          "2": 3.5999999999999996,
+          "3": 15
         },
         "2": {
-          "1": 42,
-          "2": 70,
-          "3": 6
+          "1": 105,
+          "2": 4.2,
+          "3": 15
         },
         "3": {
-          "1": 48,
-          "2": 80,
-          "3": 6
+          "1": 120,
+          "2": 4.8,
+          "3": 15
         },
         "4": {
-          "1": 54,
-          "2": 90,
-          "3": 6
+          "1": 135,
+          "2": 5.4,
+          "3": 15
         },
         "5": {
-          "1": 60,
-          "2": 100,
-          "3": 6
+          "1": 150,
+          "2": 6,
+          "3": 15
         }
       },
       "attributesByLevel": {
@@ -17751,7 +18304,7 @@
         "description": "In blood is engraved the oath of dusk.",
         "demonWedgeName": null,
         "functionLabel": "Fernkampfwaffen",
-        "passiveEffectsDescription": "Reload Speed +<H>#1</>. After reloading, ATK Speed increases by <H>#2</> for <H>#3</>s. This effect is removed when switching weapons.",
+        "passiveEffectsDescription": "Trigger Probability +<H>#1</>. Hitting an enemy with this weapon increases the DMG they take from this weapon by <H>#2</>, stacking up to <H>#3</> times.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -17764,7 +18317,7 @@
         "description": "In blood is engraved the oath of dusk.",
         "demonWedgeName": null,
         "functionLabel": "Ranged Weapons",
-        "passiveEffectsDescription": "Reload Speed +<H>#1</>. After reloading, ATK Speed increases by <H>#2</> for <H>#3</>s. This effect is removed when switching weapons.",
+        "passiveEffectsDescription": "Trigger Probability +<H>#1</>. Hitting an enemy with this weapon increases the DMG they take from this weapon by <H>#2</>, stacking up to <H>#3</> times.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -17790,7 +18343,7 @@
         "description": "Par le sang se grave le serment du crépuscule.",
         "demonWedgeName": null,
         "functionLabel": "Armes à distance",
-        "passiveEffectsDescription": "Vitesse de rechargement +<H>#1</>. Après avoir rechargé, la Vitesse d’attaque augmente de <H>#2</> pendant <H>#3</> s. L’effet est annulé lors du changement d’arme.",
+        "passiveEffectsDescription": "Chance de déclenchement +<H>#1</>. Après avoir touché une cible, les dégâts que cette arme lui inflige augmentent de <H>#2</>, cumulable jusqu’à <H>#3</> fois.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -17816,7 +18369,7 @@
         "description": "붉은 피로 황혼의 서약을 써 내려간다.",
         "demonWedgeName": null,
         "functionLabel": "원거리 무기",
-        "passiveEffectsDescription": "탄환 장전 속도+<H>#1</>. 탄환 장전 후 공격 속도가 <H>#2</> 상승한다. 지속 시간 <H>#3</>초. 다른 무기로 전환 시 효과가 사라진다.",
+        "passiveEffectsDescription": "발동 확률+<H>#1</>. 대상 명중 후, 해당 대상이 이 무기로 받는 대미지가 <H>#2</> 상승한다. 최대 <H>#3</>단계 중첩.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -17829,7 +18382,7 @@
         "description": "以鮮血，銘刻薄暮的誓約。",
         "demonWedgeName": null,
         "functionLabel": "遠端武器",
-        "passiveEffectsDescription": "子彈裝填速度+<H>#1</>。裝填子彈後，攻擊速度提高<H>#2</>，持續<H>#3</>秒。切換至其他武器時，失去效果。",
+        "passiveEffectsDescription": "觸發概率+<H>#1</>。命中目標後，使其受到此武器傷害提升<H>#2</>，最多疊加<H>#3</>層。",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -18352,7 +18905,7 @@
       },
       "KR": {
         "modName": "가시 돋친 절규",
-        "description": "무기를 손에 넣은 자 중 하나는 뛰어난 의사였다. 아버지 신에게서 자비롭다는 찬사를 받은 그녀는 사람들의 감정과 공명하며, 그 떨림이 만들어내는 위로의 선율로 마음을 어루만졌다.\n그러나 현실의 고통은 가시덤불처럼 뻗어 나갔고, 그녀는 고통을 낳는 육신을 지워버리고자 맹독을 추출했다.\n감정을 지탱하던 가느다란 현은 끝내 버티지 못하고 끊어졌고, 그녀는 자신이 빚어낸 맹독을 삼킨 채 영원히 잠들지도 깨어나지도 못하는 기나긴 밤의 심연으로 추락해 버리고 말았다.",
+        "description": "무기를 손에 넣은 이들 중 한 명은 뛰어난 의사였다. 아버지 신에게서 자비롭다는 찬사를 받은 그녀는 사람들의 감정과 공명하며, 그 떨림이 만들어내는 위로의 선율로 마음을 어루만졌다.\n그러나 현실의 고통은 가시덤불처럼 뻗어 나갔고, 그녀는 고통을 낳는 육신을 지워버리고자 맹독을 추출했다.\n감정을 지탱하던 가느다란 현은 끝내 버티지 못하고 끊어졌고, 그녀는 자신이 빚어낸 맹독을 삼킨 채 영원히 잠들지도 깨어나지도 못하는 기나긴 밤의 심연으로 추락해 버리고 말았다.",
         "demonWedgeName": null,
         "functionLabel": "원거리 무기",
         "passiveEffectsDescription": "재앙 용해를 통해 무기의 잠재력을 해제할 수 있으며, 잠재력은 캐릭터의 <H>마스터리 무기</>와 해당 무기의 유형이 일치할 때만 활성화됩니다.",
@@ -19613,13 +20166,15 @@
     },
     "icon": {
       "gamePath": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Bow_Maojiang",
-      "publicPath": null,
-      "placeholderPath": "/marker-default.svg",
+      "publicPath": "/assets/items/weapons/T_Head_Bow_Maojiang.png",
+      "placeholderPath": null,
       "candidates": [
         "T_Head_Bow_Maojiang",
         "Head_Bow_Maojiang"
       ],
-      "allMatches": []
+      "allMatches": [
+        "research_data/Output/Exports/EM/Content/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Bow_Maojiang.png"
+      ]
     },
     "scaling": {
       "defaultLevel": 0,
@@ -19634,34 +20189,34 @@
       ],
       "valuesByLevel": {
         "0": {
-          "1": 100,
-          "3": 6,
-          "4": 2
+          "1": 25,
+          "3": 1.25,
+          "4": 5
         },
         "1": {
-          "1": 100,
-          "3": 6,
-          "4": 2
+          "1": 30,
+          "3": 1.5,
+          "4": 5
         },
         "2": {
-          "1": 100,
-          "3": 6,
-          "4": 2
+          "1": 35,
+          "3": 1.75,
+          "4": 5
         },
         "3": {
-          "1": 100,
-          "3": 6,
-          "4": 2
+          "1": 40,
+          "3": 2,
+          "4": 5
         },
         "4": {
-          "1": 100,
-          "3": 6,
-          "4": 2
+          "1": 45,
+          "3": 2.25,
+          "4": 5
         },
         "5": {
-          "1": 100,
-          "3": 6,
-          "4": 2
+          "1": 50,
+          "3": 2.5,
+          "4": 5
         }
       },
       "attributesByLevel": {
@@ -19798,11 +20353,11 @@
       ],
       "WeaponClass": "Ranged",
       "WeaponSubtype": "Bow",
-      "BaseATK": 17,
-      "ATKMax": 213,
+      "BaseATK": 18,
+      "ATKMax": 226,
       "ATKType": "Spike",
-      "CRI": 0.19,
-      "CRD": 2,
+      "CRI": 0.2,
+      "CRD": 2.2,
       "PassiveEffectsDescKey": "SKILL_20605_DESC"
     }
   }

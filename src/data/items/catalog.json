@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-08T23:16:00.541Z",
+  "generatedAt": "2026-10-20T07:16:40.602Z",
   "categories": [
     {
       "id": "mods",
@@ -8,7 +8,7 @@
       "technicalName": "MOD",
       "displayName": "Demon Wedge",
       "description": "Liste des MOD (Demon Wedges) avec noms multilingues, descriptions et informations d'archives.",
-      "itemCount": 764,
+      "itemCount": 776,
       "availableLanguages": [
         "DE",
         "EN",
@@ -86,7 +86,7 @@
       "technicalName": "RESOURCE",
       "displayName": "Items",
       "description": "Liste des ressources avec noms multilingues, descriptions et icones extraites du jeu.",
-      "itemCount": 841,
+      "itemCount": 851,
       "availableLanguages": [
         "DE",
         "EN",

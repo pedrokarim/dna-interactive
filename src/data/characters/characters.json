@@ -268,6 +268,284 @@
     }
   },
   {
+    "id": "char-splise",
+    "charId": 4103,
+    "internalName": "SpLise",
+    "element": {
+      "key": "Thunder",
+      "label": "Electro"
+    },
+    "weaponTags": [
+      "Sword",
+      "Cannon"
+    ],
+    "camp": {
+      "key": "None",
+      "nameKey": "Camp_Name_None",
+      "iconGamePath": "/Game/UI/Texture/Dynamic/Image/Camp/T_Gacha_CampIcon_NoCamp.T_Gacha_CampIcon_NoCamp"
+    },
+    "rarity": 5,
+    "maxLevel": 80,
+    "colorVar": "Red",
+    "gender": true,
+    "sortPriority": 4001,
+    "charPieceId": 1004103,
+    "unlockRequiredPiece": 30,
+    "intronLevels": [
+      {
+        "cardLevel": 0,
+        "resourceId": 1004103,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 1,
+        "resourceId": 1004103,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 2,
+        "resourceId": 1004103,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 3,
+        "resourceId": 1004103,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 4,
+        "resourceId": 1004103,
+        "resourceNum": 30
+      },
+      {
+        "cardLevel": 5,
+        "resourceId": 1004103,
+        "resourceNum": 30
+      }
+    ],
+    "intronDescriptionKeys": [
+      "GRADEUP_4103_01",
+      "GRADEUP_4103_02",
+      "GRADEUP_4103_03",
+      "GRADEUP_4103_04",
+      "GRADEUP_4103_05",
+      "GRADEUP_4103_06"
+    ],
+    "intronParameters": [
+      "$#PassiveEffect[410301].Vars.Grade2SkillSpeed$",
+      "$#Buff[410322].DotDatas[1].Interval$",
+      "$#Buff[410326].AddAttrs[2].Value*100$%",
+      "$#Buff[410362].AddAttrs[1].Value*100$%",
+      "$#PassiveEffect[410301].Vars.Grade2Rate*100$",
+      "50$GText(\\\"SKILL_DESC_Meter\\\")$"
+    ],
+    "baseStats": {
+      "atk": 29,
+      "atkGrowCurve": "ATKS",
+      "def": 290,
+      "defGrowCurve": "DEFS",
+      "maxHp": 95,
+      "maxHpGrowCurve": "MaxHpS",
+      "maxES": 95,
+      "maxESGrowCurve": "MaxESS",
+      "maxSp": 180
+    },
+    "addonAttrs": [
+      {
+        "attrId": 410301,
+        "attrName": "StrongValue",
+        "value": 0.06,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_02.png",
+        "nameKey": "ADDONATTR_410301_NAME"
+      },
+      {
+        "attrId": 410302,
+        "attrName": "StrongValue",
+        "value": 0.09,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_02.png",
+        "nameKey": "ADDONATTR_410302_NAME"
+      },
+      {
+        "attrId": 410303,
+        "attrName": "SkillIntensity",
+        "rate": 0.08,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_12.png",
+        "nameKey": "ADDONATTR_410303_NAME"
+      },
+      {
+        "attrId": 410304,
+        "attrName": "SkillIntensity",
+        "rate": 0.12,
+        "iconPath": "/assets/characters/skills/T_SkillTalent_12.png",
+        "nameKey": "ADDONATTR_410304_NAME"
+      }
+    ],
+    "positioning": [
+      "DPS",
+      "SkillDPS"
+    ],
+    "recommendAttr": [
+      "ATK_Thunder",
+      "SkillIntensity",
+      "SkillEfficiency",
+      "SkillSustain"
+    ],
+    "ascensionLevels": [
+      20,
+      30,
+      40,
+      50,
+      60,
+      70
+    ],
+    "textKeys": {
+      "nameKey": "UI_CHAR_NAME_4103",
+      "subtitleKey": "UI_CHAR_SUBTITLE_4103",
+      "birthdayKey": "UI_CHAR_BIRTH_4103",
+      "forceKey": "UI_CHAR_FORCE_4103",
+      "campNameKey": "Camp_Name_None"
+    },
+    "portraits": {
+      "gacha": {
+        "publicPath": "/assets/characters/gacha/T_Gacha_AvatarSPLise.png"
+      },
+      "head": {
+        "publicPath": "/assets/characters/head/T_Head_SPLise.png"
+      },
+      "icon": {
+        "publicPath": "/assets/characters/icon/T_Icon_SPLise.png"
+      },
+      "bust": {
+        "publicPath": "/assets/characters/bust/T_Bust_SPLise.png"
+      },
+      "phantom": {
+        "publicPath": "/assets/characters/phantom/T_Phantom_Splise.png"
+      },
+      "charpiece": {
+        "publicPath": "/assets/characters/charpiece/T_CharPiece_Splise.png"
+      }
+    },
+    "consonanceWeapons": [],
+    "skillIcons": {
+      "skill1": {
+        "publicPath": "/assets/characters/skills/T_Skill_SpLise01.png"
+      },
+      "skill2": {
+        "publicPath": "/assets/characters/skills/T_Skill_SpLise02_On.png"
+      },
+      "skill3": {
+        "publicPath": "/assets/characters/skills/T_Skill_SpLise03.png"
+      }
+    },
+    "translations": {
+      "DE": {
+        "name": "Rhythm: Flamewrought",
+        "subtitle": "First-Light Farer",
+        "birthday": "Hyperborean Empire",
+        "force": "Unaffiliated",
+        "campName": "Keine Zugehörigkeit",
+        "intronEffects": [
+          "[Arcshot] shots have no recoil. Firing an [Electrified Sniper Bullet] with [Arcshot] additionally triggers [Surge Strike] once. This trigger consumes no Sanity and does not end [Deadeye Domain].",
+          "While in [Deadeye Domain], gain Invisibility if other allies are detectable by enemies. When Skill Speed exceeds #1, Skill DMG dealt in [Deadeye Domain] gains an independent damage multiplier equal to [Skill Speed × #5].",
+          "[Surge Strike] Level +2; [Vortex Shot] Level +1.",
+          "While in [Deadeye Domain], gain a additional stack of [Steady Aim] every #2s. Each stack of [Steady Aim] additionally grants +#3 Morale.",
+          "[Electro Coordination] Level +2; [Vortex Shot] Level +1.",
+          "Enemies within a radius of {int}#6 can be seen through terrain, and [Surge Strike] can deal damage through terrain. While in [Deadeye Domain], increase Rhythm's PEN stats by #4."
+        ]
+      },
+      "EN": {
+        "name": "Rhythm: Flamewrought",
+        "subtitle": "First-Light Farer",
+        "birthday": "Hyperborean Empire",
+        "force": "Unaffiliated",
+        "campName": "No Affiliation",
+        "intronEffects": [
+          "[Arcshot] shots have no recoil. Firing an [Electrified Sniper Bullet] with [Arcshot] additionally triggers [Surge Strike] once. This trigger consumes no Sanity and does not end [Deadeye Domain].",
+          "While in [Deadeye Domain], gain Invisibility if other allies are detectable by enemies. When Skill Speed exceeds #1, Skill DMG dealt in [Deadeye Domain] gains an independent damage multiplier equal to [Skill Speed × #5].",
+          "[Surge Strike] Level +2; [Vortex Shot] Level +1.",
+          "While in [Deadeye Domain], gain a additional stack of [Steady Aim] every #2s. Each stack of [Steady Aim] additionally grants +#3 Morale.",
+          "[Electro Coordination] Level +2; [Vortex Shot] Level +1.",
+          "Enemies within a radius of {int}#6 can be seen through terrain, and [Surge Strike] can deal damage through terrain. While in [Deadeye Domain], increase Rhythm's PEN stats by #4."
+        ]
+      },
+      "ES": {
+        "name": "Rhythm: Flamewrought",
+        "subtitle": "First-Light Farer",
+        "birthday": "Hyperborean Empire",
+        "force": "Unaffiliated",
+        "campName": "Sin afiliación",
+        "intronEffects": [
+          "[Arcshot] shots have no recoil. Firing an [Electrified Sniper Bullet] with [Arcshot] additionally triggers [Surge Strike] once. This trigger consumes no Sanity and does not end [Deadeye Domain].",
+          "While in [Deadeye Domain], gain Invisibility if other allies are detectable by enemies. When Skill Speed exceeds #1, Skill DMG dealt in [Deadeye Domain] gains an independent damage multiplier equal to [Skill Speed × #5].",
+          "[Surge Strike] Level +2; [Vortex Shot] Level +1.",
+          "While in [Deadeye Domain], gain a additional stack of [Steady Aim] every #2s. Each stack of [Steady Aim] additionally grants +#3 Morale.",
+          "[Electro Coordination] Level +2; [Vortex Shot] Level +1.",
+          "Enemies within a radius of {int}#6 can be seen through terrain, and [Surge Strike] can deal damage through terrain. While in [Deadeye Domain], increase Rhythm's PEN stats by #4."
+        ]
+      },
+      "FR": {
+        "name": "Rhythm – Née des flammes",
+        "subtitle": "Vers la lumière de l’aube",
+        "birthday": "Empire Hyperboréen",
+        "force": "Aucune affiliation",
+        "campName": "Aucune affiliation",
+        "intronEffects": [
+          "Les tirs du [Fusil de précision] n’ont plus de recul. Lorsque le [Fusil de précision] tire une [Balle de précision renforcée], vous libérez 1 [Tir fulgurant] supplémentaire. Cette utilisation ne consomme pas de Lucidité et ne vous fait pas quitter le [Mode sniper].",
+          "Pendant le [Mode sniper], si d’autres alliés peuvent être détectés par les ennemis, vous ne pouvez pas être détecté. En [Mode sniper], si votre Vitesse de compétence dépasse #1, les Dégâts de compétence infligés bénéficient d’un bonus indépendant selon le multiplicateur [Vitesse de compétence × #5].",
+          "[Tir fulgurant] niveau +2 ; [Tir vortex] niveau +1.",
+          "Pendant le [Mode sniper], vous obtenez 1 cumul supplémentaire de [Concentration] toutes les #2 s. Chaque cumul de [Concentration] augmente également la Vigueur de #3.",
+          "[Synergie électrique] niveau +2 ; [Tir vortex] niveau +1.",
+          "Les ennemis dans un rayon de {int}#6 peuvent être vus à travers le décor, et [Tir fulgurant] peut infliger des dégâts à travers le décor. Pendant le [Mode sniper], votre Pénétration de tous les attributs augmente de #4."
+        ]
+      },
+      "JP": {
+        "name": "リズム・焔を纏う者",
+        "subtitle": "暁光へ歩む",
+        "birthday": "ヒュペリア帝国",
+        "force": "なし",
+        "campName": "無所属",
+        "intronEffects": [
+          "[狙撃銃]の射撃時に反動が発生しなくなる。[狙撃銃]で[強化狙撃弾]を発射すると、[バースト射撃]を追加で1回発動する。この発動ではSPを消費せず、[狙撃モード]も解除されない。",
+          "[狙撃モード]中、敵に発見可能な他の味方がいる場合、自身は敵に発見されなくなる。[狙撃モード]中、自身のスキル速度が#1を上回っている場合、与えるスキルダメージが増加する（独立）。増加倍率は[スキル速度属性値×#5]。",
+          "[バースト射撃]のLv.+2、[渦流狙撃]のLv.+1。",
+          "[狙撃モード]中、#2秒ごとに[集中]を追加で1スタック獲得し、[集中]1スタックごとに高揚がさらに#3アップする。",
+          "[電能連携]のLv.+2、[渦流狙撃]のLv.+1。",
+          "半径{int}#6以内の敵を障害物越しに透視できるようになり、[バースト射撃]も障害物を貫通してダメージを与えられるようになる。[狙撃モード]中、自身の全属性貫通が#4アップする。"
+        ]
+      },
+      "KR": {
+        "name": "리듬·되살아난 불꽃",
+        "subtitle": "여명을 향하는 자",
+        "birthday": "휘페르보레아 제국",
+        "force": "무소속",
+        "campName": "무소속",
+        "intronEffects": [
+          "[저격총] 사격 시 더 이상 반동이 발생하지 않는다. [강화 저격탄] 발사 시 [전광 일격]을 1회 추가로 시전한다. 이때 정신력은 소모되지 않고 [저격 모드]도 종료되지 않는다.",
+          "[저격 모드] 중 적에게 노출될 수 있는 다른 팀원이 있으면 자신은 적에게 발각되지 않는다. [저격 모드]에서 자신의 스킬 속도가 #1을 초과하면 입히는 스킬 대미지가 상승하며(독립), 상승 배율은 [스킬 속도 속성치×#5]이다.",
+          "[전광 일격] 레벨+2, [와전류 저격] 레벨+1.",
+          "[저격 모드] 중 #2초마다 [집중] 1단계를 추가로 획득한다. [집중] 1단계마다 격양이 #3 추가로 상승한다.",
+          "[에너지 시너지] 레벨+2, [와전류 저격] 레벨+1.",
+          "반경 {int}#6 이내의 적을 지형 너머로 투시할 수 있으며, [전광 일격]은 지형을 관통해 대미지를 입힐 수 있다. [저격 모드] 유지 중, 자신의 모든 속성 관통이 #4 상승한다."
+        ]
+      },
+      "TC": {
+        "name": "黎瑟·浴火",
+        "subtitle": "向晨光跋涉",
+        "birthday": "海伯利亞帝國",
+        "force": "無",
+        "campName": "無陣營",
+        "intronEffects": [
+          "[狙擊槍]射擊時不再有後坐力，[狙擊槍]射出[強化狙擊子彈]時，額外釋放1次[迸發射擊]，此次釋放不消耗神智且不會退出[狙擊模式]。",
+          "[狙擊模式]期間，若有其他可被敵人發現的隊友，自身無法被敵人發現；[狙擊模式]下，若自身技能速度高於#1，造成的技能傷害提高（獨立），提高倍率為[技能速度屬性值×#5]。",
+          "[迸發射擊]等級+2，[渦流狙擊]等級+1。",
+          "[狙擊模式]期間，每#2秒額外獲得1層[專注]，每層[專注]額外提供昂揚提高#3。",
+          "[電能協同]等級+2，[渦流狙擊]等級+1。",
+          "半徑{int}#6以內的敵人可被穿過場景透視，且[迸發射擊]可以穿過場景造成傷害；[狙擊模式]期間，自身獲得全屬性穿透提高#4。"
+        ]
+      }
+    }
+  },
+  {
     "id": "char-landi",
     "charId": 4202,
     "internalName": "Landi",
@@ -5566,7 +5844,7 @@
       "GRADEUP_2401_06"
     ],
     "intronParameters": [
-      "$#PassiveEffect[240104].Vars.Rate*100$%",
+      "$#Buff[240122].AddAttrs[2].Value*100$%",
       "$#SkillEffects[240112].TaskEffects[1].MaxSummonCount$",
       "$#Buff[240134].MaxLayer$",
       "$#Buff[240124].AddAttrs[2].Value*100$%",
@@ -5918,7 +6196,7 @@
         "publicPath": "/assets/characters/head/T_Head_WeitaF.png"
       },
       "icon": {
-        "publicPath": null
+        "publicPath": "/assets/characters/icon/T_Icon_WeitaF.png"
       },
       "bust": {
         "publicPath": null
@@ -6470,7 +6748,7 @@
         "publicPath": "/assets/characters/head/T_Head_WeitaM.png"
       },
       "icon": {
-        "publicPath": null
+        "publicPath": "/assets/characters/icon/T_Icon_WeitaM.png"
       },
       "bust": {
         "publicPath": null
@@ -8096,12 +8374,7 @@
       "DPS",
       "SkillDPS"
     ],
-    "recommendAttr": [
-      "MaxSp",
-      "ATK_Light",
-      "SkillIntensity",
-      "SkillRange"
-    ],
+    "recommendAttr": [],
     "ascensionLevels": [
       20,
       30,
