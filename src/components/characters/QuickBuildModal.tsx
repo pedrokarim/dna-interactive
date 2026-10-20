@@ -111,7 +111,7 @@ function ItemTooltipBody({
   return (
     <div className="pointer-events-none">
       <div className="flex items-start gap-3">
-        <img
+        <img loading="lazy" decoding="async"
           src={item.icon}
           alt=""
           width={48}
@@ -179,7 +179,7 @@ function WeaponCell({
           className={`relative ${iconSize} shrink-0`}
           style={sizeStyle}
         >
-          <img
+          <img loading="lazy" decoding="async"
             src={item.icon}
             alt=""
             width={64}
@@ -285,13 +285,13 @@ function WedgeSlot({
     >
       <div className="absolute inset-0 flex items-center justify-center">
         {icon ? (
-          <img src={icon} alt="" width={64} height={64} className={`${d.iconSize} object-contain drop-shadow-md`} />
+          <img loading="lazy" decoding="async" src={icon} alt="" width={64} height={64} className={`${d.iconSize} object-contain drop-shadow-md`} />
         ) : (
           <span className="text-xs text-parch/40">—</span>
         )}
       </div>
       {polarityIcon && (
-        <img
+        <img loading="lazy" decoding="async"
           src={polarityIcon}
           alt=""
           width={16}
@@ -303,7 +303,7 @@ function WedgeSlot({
         <div
           className={`absolute bottom-0.5 ${bottomSide} flex ${d.trackBoxSize} items-center justify-center rounded border border-gold/70 bg-black/70`}
         >
-          <img src={trackAdjustIcon} alt="" width={14} height={14} className={`${d.trackIconSize} object-contain`} />
+          <img loading="lazy" decoding="async" src={trackAdjustIcon} alt="" width={14} height={14} className={`${d.trackIconSize} object-contain`} />
         </div>
       )}
     </div>
@@ -366,7 +366,7 @@ function WedgeCenter({
         boxShadow: `0 0 24px rgba(${rgb}, 0.5), inset 0 0 12px rgba(255, 255, 255, 0.15)`,
       }}
     >
-      {icon && <img src={icon} alt="" width={64} height={64} className={`${d.centerIcon} object-contain drop-shadow-lg`} />}
+      {icon && <img loading="lazy" decoding="async" src={icon} alt="" width={64} height={64} className={`${d.centerIcon} object-contain drop-shadow-lg`} />}
     </div>
   );
 
@@ -514,7 +514,7 @@ export function QuickBuildCard({
           right so its tail fades into the element-colored base. */}
       {bust && (
         <div className="pointer-events-none absolute inset-y-0 w-[780px]" style={{ left: -220 }}>
-          <img
+          <img loading="lazy" decoding="async"
             src={bust}
             alt=""
             crossOrigin="anonymous"
@@ -535,7 +535,7 @@ export function QuickBuildCard({
       {/* Layer 3 — Shade.svg overlay. Extended wide and masked on the right
           edge so it dissolves into the element base instead of ending with a
           visible vertical line where the SVG stops. */}
-      <img
+      <img loading="lazy" decoding="async"
         src="/assets/ui/card/shade.svg"
         alt=""
         aria-hidden
@@ -570,7 +570,7 @@ export function QuickBuildCard({
 
       {/* Layer 5 — element icon (top-left), subtle */}
       {elementIcon && (
-        <img
+        <img loading="lazy" decoding="async"
           src={elementIcon}
           alt=""
           aria-hidden
@@ -727,7 +727,7 @@ export function QuickBuildCard({
                           borderColor: isBest ? "rgba(252, 211, 77, 0.9)" : "rgba(255, 255, 255, 0.3)",
                         }}
                       >
-                        <img src={item.icon} alt="" width={96} height={96} className="h-full w-full object-contain" />
+                        <img loading="lazy" decoding="async" src={item.icon} alt="" width={96} height={96} className="h-full w-full object-contain" />
                         {isBest && (
                           <span className="absolute right-0.5 top-0.5 rounded bg-gold/95 px-1 text-[9px] font-bold leading-tight text-ink">
                             S
@@ -813,7 +813,7 @@ export function QuickBuildCard({
                             boxShadow: `0 0 10px rgba(${rgb}, 0.35)`,
                           }}
                         >
-                          <img src={iconSrc} alt="" width={28} height={28} className="h-7 w-7 object-contain" />
+                          <img loading="lazy" decoding="async" src={iconSrc} alt="" width={28} height={28} className="h-7 w-7 object-contain" />
                           <span
                             className="absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full text-[10px] font-bold"
                             style={{
@@ -858,7 +858,7 @@ export function QuickBuildCard({
                           className="relative h-9 w-9 shrink-0 overflow-hidden rounded-full"
                           style={{ border: `1.5px solid rgba(${rgb}, 0.6)` }}
                         >
-                          <img src={portrait} alt="" width={36} height={36} className="h-full w-full object-cover" />
+                          <img loading="lazy" decoding="async" src={portrait} alt="" width={36} height={36} className="h-full w-full object-cover" />
                         </div>
                       )}
                       <p
@@ -875,7 +875,7 @@ export function QuickBuildCard({
           )}
 
           <div className="mt-auto flex items-center gap-2.5 border-t border-white/15 py-1">
-            <img
+            <img loading="lazy" decoding="async"
               src="/assets/images/logo_optimized.png"
               alt=""
               crossOrigin="anonymous"
@@ -909,6 +909,11 @@ export function QuickBuildCard({
 // mobile viewports via CSS transform. The inner card keeps its intrinsic
 // 1280×560 dimensions (so `cardRef` + html-to-image exports still capture at
 // full resolution); only the visual footprint shrinks.
+//
+// Toutes les <img> de la carte sont en `loading="lazy"` : rendue côté
+// serveur, chaque <img> sans lui devient un <link rel="preload"> (React 19).
+// Sur l'accueil, la vitrine de builds en produisait 97, et l'outil
+// d'inspection de Google échouait sur cette page alourdie.
 // ---------------------------------------------------------------------------
 
 export function ResponsiveQuickBuildCard({
