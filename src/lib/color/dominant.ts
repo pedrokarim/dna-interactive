@@ -83,6 +83,18 @@ function extractDominant(image: HTMLImageElement): string | null {
 }
 
 /**
+ * Image réellement chargée pour l'échantillonnage. Un asset local passe par
+ * l'optimiseur de Next en 64 px : l'histogramme ne lit que 24×24 pixels, et
+ * charger l'original coûtait jusqu'à 1,2 Mo par image. La frise du calendrier
+ * en demande une par barre (56 sur l'accueil, ~9 Mo au total). Une URL externe
+ * reste chargée telle quelle : l'optimiseur n'accepte que les hôtes déclarés.
+ */
+function samplingSrc(src: string): string {
+  if (!src.startsWith("/") || src.startsWith("//")) return src;
+  return `/_next/image?url=${encodeURIComponent(src)}&w=64&q=75`;
+}
+
+/**
  * Couleur dominante de `src` (hex), ou `null` tant qu'elle n'est pas résolue /
  * si l'image est illisible. Mémoïsée par URL pour tout le cycle de vie de l'onglet.
  *
@@ -109,7 +121,7 @@ export function useDominantColor(src?: string | null): string | null {
       cache.set(src, null);
       if (alive) bump((n) => n + 1);
     };
-    image.src = src;
+    image.src = samplingSrc(src);
 
     return () => {
       alive = false;

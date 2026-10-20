@@ -10,6 +10,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { inciseDash } from "@/lib/typography";
 import { ChevronLeft, ChevronRight, CalendarDays, ExternalLink, Loader2 } from "lucide-react";
@@ -182,13 +183,18 @@ function EventBar({
     >
       {/* bannière incrustée */}
       {bar.image ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
+        // Version redimensionnée plutôt que l'original de 1920 px : la barre
+        // fait 44 px de haut sous un voile sombre. Une URL externe (saisie en
+        // admin) n'est pas optimisable, elle reste servie telle quelle.
+        <Image
           src={bar.image}
           alt=""
           aria-hidden
-          loading="lazy"
-          className="absolute inset-0 h-full w-full object-cover object-[50%_28%]"
+          fill
+          sizes="(max-width: 768px) 100vw, 50vw"
+          quality={70}
+          unoptimized={!bar.image.startsWith("/")}
+          className="object-cover object-[50%_28%]"
         />
       ) : null}
 
