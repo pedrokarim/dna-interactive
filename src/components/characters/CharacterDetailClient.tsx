@@ -38,6 +38,7 @@ import {
   RotateCcw,
 } from "lucide-react";
 import QuickBuildModal, { QuickBuildCard } from "@/components/characters/QuickBuildModal";
+import { BUILD_STAT_LABEL_KEYS } from "@/lib/characters/build-stat-labels";
 import { useAtom } from "jotai";
 import { parseAsBoolean, parseAsString, parseAsStringLiteral, useQueryState } from "nuqs";
 import {
@@ -2263,7 +2264,7 @@ export function BuildTabContent({
                   {i + 1}
                 </span>
                 <span className="text-sm text-parch">
-                  {ATTR_LABEL_KEYS[stat] ? t(ATTR_LABEL_KEYS[stat]) : stat}
+                  {BUILD_STAT_LABEL_KEYS[stat] ? t(BUILD_STAT_LABEL_KEYS[stat]) : stat}
                 </span>
               </li>
             ))}

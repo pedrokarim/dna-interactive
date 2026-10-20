@@ -749,6 +749,7 @@
     "maxLevelShort": "Max. Stufe {level}",
     "statDamageRate": "SCH",
     "statDamageRateAlmighty": "Durchdringung aller Attribute",
+    "statElementDmg": "Elementar-SCH",
     "calamityPathTitle": "Empfohlener Potenzialpfad",
     "calamityPathIntro": "Auf jeder Stufe von I bis IV ist das zuerst gewählte Potenzial kostenlos; das andere bleibt verfügbar, kostet aber Material. Die Zahlen geben die Reihenfolge an.",
     "calamityPathUnknown": "Die empfohlene Reihenfolge ist für diesen Build noch nicht dokumentiert. Der Baum bleibt einsehbar.",

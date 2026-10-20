@@ -749,6 +749,7 @@
     "maxLevelShort": "Nv. máx. {level}",
     "statDamageRate": "Daño",
     "statDamageRateAlmighty": "Atributos de Penetración",
+    "statElementDmg": "Daño elemental",
     "calamityPathTitle": "Ruta de Potencial recomendada",
     "calamityPathIntro": "En cada nivel de I a IV, el primer Potencial que eliges es gratuito; el otro sigue disponible pero cuesta materiales. Los números indican en qué orden tomarlos.",
     "calamityPathUnknown": "El orden recomendado aún no está documentado para este build. El árbol sigue consultable.",

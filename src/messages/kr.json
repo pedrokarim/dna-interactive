@@ -749,6 +749,7 @@
     "maxLevelShort": "최대 Lv.{level}",
     "statDamageRate": "피해",
     "statDamageRateAlmighty": "모든 속성 관통",
+    "statElementDmg": "속성 피해",
     "calamityPathTitle": "추천 포텐셜 경로",
     "calamityPathIntro": "I~IV 단계에서는 먼저 고른 포텐셜이 무료이며, 나머지도 해제할 수 있지만 재료가 듭니다. 숫자는 획득 순서를 나타냅니다.",
     "calamityPathUnknown": "이 빌드의 추천 순서는 아직 정리되지 않았습니다. 트리는 계속 확인할 수 있습니다.",

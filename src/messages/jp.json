@@ -749,6 +749,7 @@
     "maxLevelShort": "最大Lv.{level}",
     "statDamageRate": "ダメージ",
     "statDamageRateAlmighty": "全属性貫通",
+    "statElementDmg": "属性ダメージ",
     "calamityPathTitle": "推奨ポテンシャル順",
     "calamityPathIntro": "階層IからIVでは、最初に選んだポテンシャルが無料です。もう一方も解放できますが素材が必要です。数字は取得する順番を示します。",
     "calamityPathUnknown": "このビルドの推奨順はまだ記載されていません。ツリーは閲覧できます。",

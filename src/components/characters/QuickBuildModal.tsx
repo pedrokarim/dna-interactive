@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { useTranslations } from "next-intl";
 import { toPng } from "html-to-image";
 import { toBustCardSrc } from "@/lib/characters/bust-card";
@@ -14,6 +15,7 @@ import {
 } from "@/lib/characters/builds";
 import type { CharacterRecord } from "@/lib/characters/types";
 import { resolveCharacterDisplayName } from "@/lib/characters/catalog";
+import { BUILD_STAT_LABEL_KEYS } from "@/lib/characters/build-stat-labels";
 import { useDialogA11y } from "@/components/dna/useDialogA11y";
 import CursorTooltip from "@/components/CursorTooltip";
 
@@ -62,32 +64,6 @@ const ELEMENT_ICONS: Record<string, string> = {
   Wind: "/assets/items/mods/T_Armory_Wind.png",
   Light: "/assets/items/mods/T_Armory_Light.png",
   Dark: "/assets/items/mods/T_Armory_Dark.png",
-};
-
-/** stat du build -> cle de message (`characterDetail.stat*`). */
-const STAT_LABEL_KEYS: Record<string, string> = {
-  ATK: "statATK",
-  ATK_Fire: "statATKFire",
-  ATK_Water: "statATKWater",
-  ATK_Thunder: "statATKThunder",
-  ATK_Wind: "statATKWind",
-  ATK_Light: "statATKLight",
-  ATK_Dark: "statATKDark",
-  DEF: "statDEF",
-  HP: "statHP",
-  MaxHp: "statMaxHp",
-  MaxES: "statMaxES",
-  MaxSp: "statMaxSp",
-  SkillDmg: "statSkillDmg",
-  SkillIntensity: "statSkillIntensity",
-  SkillEfficiency: "statSkillEfficiency",
-  SkillSustain: "statSkillSustain",
-  SkillRange: "statSkillRange",
-  SkillSpeed: "statSkillSpeed",
-  CritRate: "statWeaponCRI",
-  CritDmg: "statCritDmg",
-  StrongValue: "statStrongValue",
-  EnmityValue: "statEnmityValue",
 };
 
 // Parallelogram clips — slots lean toward the center (mirror the detail page).
@@ -790,7 +766,7 @@ export function QuickBuildCard({
                       {i + 1}
                     </span>
                     <span className="text-parch/95" style={{ textShadow: "0 1px 2px rgba(0,0,0,0.5)" }}>
-                      {STAT_LABEL_KEYS[stat] ? t(STAT_LABEL_KEYS[stat]) : stat}
+                      {BUILD_STAT_LABEL_KEYS[stat] ? t(BUILD_STAT_LABEL_KEYS[stat]) : stat}
                     </span>
                   </li>
                 ))}
@@ -974,6 +950,7 @@ export default function QuickBuildModal({
 }) {
   const t = useTranslations("characterDetail");
   const tc = useTranslations("common");
+  const tcb = useTranslations("communityBuilds");
   const [activeBuildIndex, setActiveBuildIndex] = useState(0);
   const [downloading, setDownloading] = useState(false);
   const cardRef = useRef<HTMLDivElement | null>(null);
@@ -1004,7 +981,7 @@ export default function QuickBuildModal({
 
   if (!open) return null;
   if (builds.length === 0) {
-    return (
+    return createPortal(
       <div
         className="fixed inset-0 z-50 flex items-center justify-center bg-ink/85 p-2 sm:p-4 backdrop-blur-sm"
         onClick={onClose}
@@ -1030,13 +1007,14 @@ export default function QuickBuildModal({
             {tc("close")}
           </button>
         </div>
-      </div>
+      </div>,
+      document.body,
     );
   }
 
   const build = builds[Math.min(activeBuildIndex, builds.length - 1)];
 
-  return (
+  return createPortal(
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-ink/85 p-2 sm:p-4 backdrop-blur-sm"
       onClick={onClose}
@@ -1085,7 +1063,7 @@ export default function QuickBuildModal({
               className="flex items-center gap-2 rounded-lg border border-gold/40 bg-gold/15 px-3 py-1.5 text-xs font-medium text-gold transition-colors hover:bg-gold/30 disabled:opacity-50"
             >
               <Download className="h-3.5 w-3.5" />
-              {downloading ? "Export..." : "Telecharger PNG"}
+              {downloading ? tcb("exporting") : tcb("downloadPng")}
             </button>
             <button
               type="button"
@@ -1107,6 +1085,7 @@ export default function QuickBuildModal({
           />
         </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
