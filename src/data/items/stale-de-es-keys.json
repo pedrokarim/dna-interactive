@@ -1,7 +1,11 @@
 {
   "reference": "1.5.192",
   "keys": [
+    "ATTR_DESC_SkillEfficiency",
+    "ATTR_DESC_SkillRange",
+    "ATTR_DESC_SkillSustain",
     "Event_Des_107003",
+    "Event_Rule_103021",
     "Event_Tab_113001",
     "Event_Title_103020",
     "Event_Title_113001",

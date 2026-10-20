@@ -58879,13 +58879,13 @@
         "TC": "活著的重量"
       },
       "descriptions": {
-        "DE": "UI_WEAPON_DESC_20306",
-        "EN": "UI_WEAPON_DESC_20306",
-        "ES": "UI_WEAPON_DESC_20306",
-        "FR": "UI_WEAPON_DESC_20306",
-        "JP": "UI_WEAPON_DESC_20306",
-        "KR": "UI_WEAPON_DESC_20306",
-        "TC": "UI_WEAPON_DESC_20306"
+        "DE": "To live on is a blessing the living must bear.",
+        "EN": "To live on is a blessing the living must bear.",
+        "ES": "To live on is a blessing the living must bear.",
+        "FR": "Continuer à vivre est une bénédiction dont les vivants doivent porter le poids.",
+        "JP": "生き続けることは、生者が背負うべき祝福。",
+        "KR": "살아간다는 것, 그것은 살아 있는 자가 짊어져야 할 축복이다.",
+        "TC": "活下去，是生者需要背負的祝福。"
       },
       "icon": {
         "gamePath": "/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Cannon_Huozhe",

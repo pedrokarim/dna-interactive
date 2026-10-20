@@ -7,10 +7,22 @@
   "gameId": 4103,
   "rarity": 5,
   "name": {
-   "TC": "黎瑟·浴火的衣飾"
+   "FR": "Tenue de Rhythm – Née des flammes",
+   "EN": "[Rhythm: Flamewrought]'s Accessory",
+   "JP": "リズム・焔を纏う者のコスチューム",
+   "KR": "리듬·되살아난 불꽃의 의상",
+   "TC": "黎瑟·浴火的衣飾",
+   "DE": "[Rhythm: Flamewrought]'s Accessory",
+   "ES": "[Rhythm: Flamewrought]'s Accessory"
   },
   "description": {
-   "TC": "她披著一身幹練的紅色衣裝，如暖陽、如火焰、如燈火般閃耀在寒冷的大地上。"
+   "FR": "Dans sa tenue rouge, sobre et élégante, elle rayonne sur les terres glacées comme un soleil chaleureux, une flamme ou une lueur.",
+   "EN": "Clad in vivid red, she shines against the frozen land — warm as sunlight, radiant as flame, soft as lamplight.",
+   "JP": "凛々しい赤の衣装をまとった彼女は、暖かな陽のように、炎のように、灯火のように、寒々とした大地で輝く。",
+   "KR": "붉고 말끔한 옷차림으로, 차가운 대지 위에서 따스한 햇살처럼, 타오르는 불꽃처럼, 등불처럼 환히 빛난다.",
+   "TC": "她披著一身幹練的紅色衣裝，如暖陽、如火焰、如燈火般閃耀在寒冷的大地上。",
+   "DE": "Clad in vivid red, she shines against the frozen land — warm as sunlight, radiant as flame, soft as lamplight.",
+   "ES": "Clad in vivid red, she shines against the frozen land — warm as sunlight, radiant as flame, soft as lamplight."
   },
   "obtain": {
    "methods": [
@@ -679,7 +691,7 @@
     "charId": 3202,
     "gameId": 32020161,
     "visuals": {
-     "icon": "/assets/cosmetics/outfit/T_Pack_Police.png",
+     "icon": "/assets/cosmetics/outfit/T_Pack_Police_Kami.png",
      "portrait": "/assets/cosmetics/portrait/T_Gacha_Nvzhu_TP08.webp"
     }
    },
@@ -44219,7 +44231,7 @@
   },
   "shop": [],
   "duplicateRefund": null,
-  "hiddenUntilOwned": false,
+  "hiddenUntilOwned": true,
   "releaseVersion": null,
   "variant": {
    "group": "name|Midnight Traces",
@@ -47842,13 +47854,13 @@
   "gameId": 31007,
   "rarity": 5,
   "name": {
-   "FR": "Victoire : Sérénade des premières neiges",
-   "EN": "Victory: Snowfall Serenade",
-   "JP": "勝利・初雪のセレナーデ",
-   "KR": "클리어·첫눈의 세레나데",
-   "TC": "勝利·初雪小夜曲",
-   "DE": "Victory: Snowfall Serenade",
-   "ES": "Victory: Snowfall Serenade"
+   "FR": "Victoire : Hurlement de Cerbère",
+   "EN": "Victory: Hellborne Roar",
+   "JP": "勝利・地獄の咆哮",
+   "KR": "클리어·지옥의 포효",
+   "TC": "勝利·地獄咆哮",
+   "DE": "Victory: Hellborne Roar",
+   "ES": "Victory: Hellborne Roar"
   },
   "description": {
    "FR": "Permet de modifier l’animation de victoire.",
@@ -56613,7 +56625,7 @@
   "releaseVersion": null,
   "variant": {
    "group": "/Game/Asset/Char/Player/Common/Part/Weapon/Mesh/Player_WP_Part22_SM|Wraithveil Cage",
-   "index": 1
+   "index": 2
   },
   "characters": [],
   "series": null,
@@ -56683,7 +56695,7 @@
   "releaseVersion": null,
   "variant": {
    "group": "/Game/Asset/Char/Player/Common/Part/Weapon/Mesh/Player_WP_Part22_SM|Wraithveil Cage",
-   "index": 1
+   "index": 3
   },
   "characters": [],
   "series": null,
@@ -57357,6 +57369,69 @@
   "banners": [],
   "visuals": {
    "icon": "/assets/cosmetics/weaponStance/T_Fashion_Fx42.png"
+  },
+  "model": null
+ },
+ {
+  "id": "20005",
+  "kind": "weaponStance",
+  "category": "weapon-stances",
+  "subcategory": "heavy-attack",
+  "gameId": 20005,
+  "rarity": 5,
+  "name": {
+   "FR": "Tourbillon lunaire",
+   "EN": "Whirling Crescent",
+   "JP": "新月の渦",
+   "KR": "선회하는 초승달",
+   "TC": "新月漩渦",
+   "DE": "Whirling Crescent",
+   "ES": "Whirling Crescent"
+  },
+  "description": {
+   "FR": "Utilisable avec la Variante d’attaque — Sceau démoniaque : Danse tempétueuse.",
+   "EN": "Used for Move-Variant Demon Wedge: Cyclone Waltz",
+   "JP": "スキル魔の楔「暴風輪舞」に適用される。",
+   "KR": "패턴 악마의 쐐기 폭풍의 광륜에 사용된다.",
+   "TC": "適用於招式魔之楔暴風輪舞",
+   "DE": "Used for Move-Variant Demon Wedge: Cyclone Waltz",
+   "ES": "Used for Move-Variant Demon Wedge: Cyclone Waltz"
+  },
+  "obtain": {
+   "methods": [
+    "prismExchange"
+   ],
+   "label": {
+    "FR": "Disponible via l’échange de Prismes",
+    "EN": "Available through Prism Exchange",
+    "DE": "Über Prismatausch erhältlich",
+    "ES": "Disponible mediante Prisma",
+    "JP": "プリズムの交換で獲得",
+    "KR": "프리즘 교환으로 획득",
+    "TC": "通過稜鏡兌換獲得"
+   }
+  },
+  "shop": [
+   {
+    "price": 6,
+    "currencyId": 111,
+    "limit": 1,
+    "start": "2026-10-19T02:00:00.000Z",
+    "end": "2026-12-06T21:00:00.000Z"
+   }
+  ],
+  "duplicateRefund": {
+   "currencyId": 110,
+   "amount": 10
+  },
+  "hiddenUntilOwned": false,
+  "releaseVersion": null,
+  "variant": null,
+  "characters": [],
+  "series": null,
+  "banners": [],
+  "visuals": {
+   "icon": "/assets/cosmetics/weaponStance/T_Fashion_Fx55.png"
   },
   "model": null
  },
@@ -59533,7 +59608,13 @@
    "ES": "Crescent Wishes: Azure"
   },
   "description": {
-   "TC": "在月亮的肩頭，捕獲群星的夢境。"
+   "FR": "Sur l’épaule de la lune, capturez les rêves des étoiles.",
+   "EN": "Upon the moon's shoulder, gather the dreams of the stars.",
+   "JP": "月の肩に乗り、星々の夢をつかまえる。",
+   "KR": "달의 어깨에 올라, 별들의 꿈을 붙잡는다.",
+   "TC": "在月亮的肩頭，捕獲群星的夢境。",
+   "DE": "Upon the moon's shoulder, gather the dreams of the stars.",
+   "ES": "Upon the moon's shoulder, gather the dreams of the stars."
   },
   "obtain": {
    "methods": [
@@ -59556,7 +59637,9 @@
   "variant": null,
   "characters": [],
   "series": null,
-  "banners": [],
+  "banners": [
+   9009
+  ],
   "visuals": {
    "icon": "/assets/cosmetics/gesture/T_Resource_Gesture_SPLise01.png"
   },
@@ -59579,7 +59662,13 @@
    "ES": "Crescent Wishes: Rust Red"
   },
   "description": {
-   "TC": "在月亮的肩頭，捕獲群星的夢境。"
+   "FR": "Sur l’épaule de la lune, capturez les rêves des étoiles.",
+   "EN": "Upon the moon's shoulder, gather the dreams of the stars.",
+   "JP": "月の肩に乗り、星々の夢をつかまえる。",
+   "KR": "달의 어깨에 올라, 별들의 꿈을 붙잡는다.",
+   "TC": "在月亮的肩頭，捕獲群星的夢境。",
+   "DE": "Upon the moon's shoulder, gather the dreams of the stars.",
+   "ES": "Upon the moon's shoulder, gather the dreams of the stars."
   },
   "obtain": {
    "methods": [
@@ -59602,7 +59691,9 @@
   "variant": null,
   "characters": [],
   "series": null,
-  "banners": [],
+  "banners": [
+   9009
+  ],
   "visuals": {
    "icon": "/assets/cosmetics/gesture/T_Resource_Gesture_SPLise02.png"
   },
@@ -59625,7 +59716,13 @@
    "ES": "Crescent Wishes: Dark Jade"
   },
   "description": {
-   "TC": "在月亮的肩頭，捕獲群星的夢境。"
+   "FR": "Sur l’épaule de la lune, capturez les rêves des étoiles.",
+   "EN": "Upon the moon's shoulder, gather the dreams of the stars.",
+   "JP": "月の肩に乗り、星々の夢をつかまえる。",
+   "KR": "달의 어깨에 올라, 별들의 꿈을 붙잡는다.",
+   "TC": "在月亮的肩頭，捕獲群星的夢境。",
+   "DE": "Upon the moon's shoulder, gather the dreams of the stars.",
+   "ES": "Upon the moon's shoulder, gather the dreams of the stars."
   },
   "obtain": {
    "methods": [
@@ -59648,7 +59745,9 @@
   "variant": null,
   "characters": [],
   "series": null,
-  "banners": [],
+  "banners": [
+   9009
+  ],
   "visuals": {
    "icon": "/assets/cosmetics/gesture/T_Resource_Gesture_SPLise03.png"
   },
@@ -60662,10 +60761,20 @@
    "TC": "生活中常用的肢體動作，此為展示自我。"
   },
   "obtain": {
-   "methods": [],
+   "methods": [
+    "shop"
+   ],
    "label": null
   },
-  "shop": [],
+  "shop": [
+   {
+    "price": 30,
+    "currencyId": 110,
+    "limit": 1,
+    "start": "2026-10-19T02:00:00.000Z",
+    "end": null
+   }
+  ],
   "duplicateRefund": null,
   "hiddenUntilOwned": false,
   "releaseVersion": null,
@@ -60934,10 +61043,20 @@
    "TC": "噔~噔~~噔！噔！！噔——登場！！！"
   },
   "obtain": {
-   "methods": [],
+   "methods": [
+    "shop"
+   ],
    "label": null
   },
-  "shop": [],
+  "shop": [
+   {
+    "price": 30,
+    "currencyId": 110,
+    "limit": 1,
+    "start": "2026-10-19T02:00:00.000Z",
+    "end": null
+   }
+  ],
   "duplicateRefund": null,
   "hiddenUntilOwned": false,
   "releaseVersion": null,
@@ -60976,10 +61095,20 @@
    "TC": "噔~噔~~噔！噔！！噔——登場！！！"
   },
   "obtain": {
-   "methods": [],
+   "methods": [
+    "shop"
+   ],
    "label": null
   },
-  "shop": [],
+  "shop": [
+   {
+    "price": 30,
+    "currencyId": 110,
+    "limit": 1,
+    "start": "2026-10-19T02:00:00.000Z",
+    "end": null
+   }
+  ],
   "duplicateRefund": null,
   "hiddenUntilOwned": false,
   "releaseVersion": null,

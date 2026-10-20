@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-20T07:18:09.323Z",
+ "generatedAt": "2026-10-20T09:39:39.686Z",
  "gameVersion": 170,
  "categories": [
   {
@@ -423,7 +423,7 @@
   {
    "kind": "weaponStance",
    "slug": "weapon-stances",
-   "count": 4,
+   "count": 5,
    "tabIcon": "/assets/cosmetics/tab/T_Tab_Fashion_Fx.png",
    "sample": "/assets/cosmetics/weaponStance/T_Fashion_Fx20.png",
    "subcategories": [
@@ -434,7 +434,7 @@
     },
     {
      "id": "heavy-attack",
-     "count": 2,
+     "count": 3,
      "label": null
     }
    ]

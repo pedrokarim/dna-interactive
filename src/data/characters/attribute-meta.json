@@ -689,6 +689,15 @@
       "KR": "스킬 범위",
       "TC": "技能範圍"
     },
+    "SkillSpeed": {
+      "FR": "Vitesse de compétence",
+      "EN": "Skill Speed",
+      "DE": null,
+      "ES": null,
+      "JP": "スキル速度",
+      "KR": "스킬 속도",
+      "TC": "技能速度"
+    },
     "SkillSustain": {
       "FR": "Durée de compétence",
       "EN": "Skill Duration",

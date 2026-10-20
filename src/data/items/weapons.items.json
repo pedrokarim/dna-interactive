@@ -13877,7 +13877,7 @@
     "translations": {
       "DE": {
         "modName": "Blessed Burden",
-        "description": "UI_WEAPON_DESC_20306",
+        "description": "To live on is a blessing the living must bear.",
         "demonWedgeName": null,
         "functionLabel": "Fernkampfwaffen",
         "passiveEffectsDescription": "CRIT Damage +<H>#1</>. Shooting by an Electro character grants +<H>#2</> Skill Intensity. This effect is removed upon exiting Shooting or charging a Ranged Weapon.",
@@ -13890,7 +13890,7 @@
       },
       "EN": {
         "modName": "Blessed Burden",
-        "description": "UI_WEAPON_DESC_20306",
+        "description": "To live on is a blessing the living must bear.",
         "demonWedgeName": null,
         "functionLabel": "Ranged Weapons",
         "passiveEffectsDescription": "CRIT Damage +<H>#1</>. Shooting by an Electro character grants +<H>#2</> Skill Intensity. This effect is removed upon exiting Shooting or charging a Ranged Weapon.",
@@ -13903,7 +13903,7 @@
       },
       "ES": {
         "modName": "Blessed Burden",
-        "description": "UI_WEAPON_DESC_20306",
+        "description": "To live on is a blessing the living must bear.",
         "demonWedgeName": null,
         "functionLabel": "Armas a distancia",
         "passiveEffectsDescription": "CRIT Damage +<H>#1</>. Shooting by an Electro character grants +<H>#2</> Skill Intensity. This effect is removed upon exiting Shooting or charging a Ranged Weapon.",
@@ -13916,7 +13916,7 @@
       },
       "FR": {
         "modName": "Le poids de vivre",
-        "description": "UI_WEAPON_DESC_20306",
+        "description": "Continuer à vivre est une bénédiction dont les vivants doivent porter le poids.",
         "demonWedgeName": null,
         "functionLabel": "Armes à distance",
         "passiveEffectsDescription": "DGT CRIT +<H>#1</>. Lorsqu’un personnage Électro tire, il obtient un effet augmentant la Puissance de compétence de <H>#2</>. Cet effet est retiré lorsqu’il cesse de tirer ou prépare une attaque chargée avec une arme à distance.",
@@ -13929,7 +13929,7 @@
       },
       "JP": {
         "modName": "生きる重さ",
-        "description": "UI_WEAPON_DESC_20306",
+        "description": "生き続けることは、生者が背負うべき祝福。",
         "demonWedgeName": null,
         "functionLabel": "遠隔武器",
         "passiveEffectsDescription": "クリティカルダメージ+ #1 。雷属性のキャラクターが射撃すると、自身のスキル威力が #2 アップする。射撃を終了するか、遠隔武器のチャージを行うと解除される。",
@@ -13942,10 +13942,10 @@
       },
       "KR": {
         "modName": "살아간다는 무게",
-        "description": "UI_WEAPON_DESC_20306",
+        "description": "살아간다는 것, 그것은 살아 있는 자가 짊어져야 할 축복이다.",
         "demonWedgeName": null,
         "functionLabel": "원거리 무기",
-        "passiveEffectsDescription": "크리티컬 대미지+<H>#1</>. 번개 속성 캐릭터가 사격 시 스킬 위력 <H>#2</> 상승 효과를 획득한다. 사격을 종료하거나 원거리 무기를 차지하면 효과가 해제된다.",
+        "passiveEffectsDescription": "크리티컬 대미지+<H>#1</>. 번개 속성 캐릭터가 사격 시 스킬 위력 <H>#2</> 상승 효과를 획득한다. 사격을 종료하거나 원거리 무기로 차지하면 효과가 해제된다.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -13955,7 +13955,7 @@
       },
       "TC": {
         "modName": "活著的重量",
-        "description": "UI_WEAPON_DESC_20306",
+        "description": "活下去，是生者需要背負的祝福。",
         "demonWedgeName": null,
         "functionLabel": "遠端武器",
         "passiveEffectsDescription": "暴擊傷害+<H>#1</>。雷屬性角色射擊時，自身獲得技能威力提高<H>#2</>，退出射擊或遠端武器蓄力時清除。",
@@ -20234,7 +20234,7 @@
         "description": "Come. Wander through the hollow of a withered tree and cross the sugar-frosted woods. Take your seat as music drifts through the air and playing cards flutter around you, then join the feast where the fairytale begins.",
         "demonWedgeName": null,
         "functionLabel": "Fernkampfwaffen",
-        "passiveEffectsDescription": "ATK Speed +<H>#1</>. Arrows fired during Charged Attack Stage 3 deal <H>#2</> more damage and grant +<H>#3</> Explosion Range for <H>#4</>s.",
+        "passiveEffectsDescription": "ATK Speed +<H>#1</>. Arrows fired during Charged Attack Stage 3 grant +<H>#3</> Explosion Range for #4s.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -20247,7 +20247,7 @@
         "description": "Come. Wander through the hollow of a withered tree and cross the sugar-frosted woods. Take your seat as music drifts through the air and playing cards flutter around you, then join the feast where the fairytale begins.",
         "demonWedgeName": null,
         "functionLabel": "Ranged Weapons",
-        "passiveEffectsDescription": "ATK Speed +<H>#1</>. Arrows fired during Charged Attack Stage 3 deal <H>#2</> more damage and grant +<H>#3</> Explosion Range for <H>#4</>s.",
+        "passiveEffectsDescription": "ATK Speed +<H>#1</>. Arrows fired during Charged Attack Stage 3 grant +<H>#3</> Explosion Range for #4s.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -20260,7 +20260,7 @@
         "description": "Come. Wander through the hollow of a withered tree and cross the sugar-frosted woods. Take your seat as music drifts through the air and playing cards flutter around you, then join the feast where the fairytale begins.",
         "demonWedgeName": null,
         "functionLabel": "Armas a distancia",
-        "passiveEffectsDescription": "ATK Speed +<H>#1</>. Arrows fired during Charged Attack Stage 3 deal <H>#2</> more damage and grant +<H>#3</> Explosion Range for <H>#4</>s.",
+        "passiveEffectsDescription": "ATK Speed +<H>#1</>. Arrows fired during Charged Attack Stage 3 grant +<H>#3</> Explosion Range for #4s.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -20273,7 +20273,7 @@
         "description": "Venez, parcourons ensemble les arbres creux rongés par le temps et traversons les forêts couvertes de sucre glace. Puis, entourés de notes et de cartes à jouer, prenons place à ce banquet tout droit sorti d’un conte de fées.",
         "demonWedgeName": null,
         "functionLabel": "Armes à distance",
-        "passiveEffectsDescription": "Vitesse d’attaque +<H>#1</>. Tirer une flèche pendant la 3e phase de charge augmente les dégâts qu’elle inflige de <H>#2</> et augmente le Rayon de l’explosion de <H>#3</> pendant <H>#4</> s.",
+        "passiveEffectsDescription": "Vitesse d’attaque +<H>#1</>. Tirer une flèche pendant la 3e phase de charge augmente le Rayon de l’explosion de <H>#3</> pendant <H>#4</> s.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -20286,7 +20286,7 @@
         "description": "さあ、おいで。朽ちた樹洞を巡り、砂糖菓子の森を抜けて。音符とトランプに囲まれた席へ腰を下ろし、このおとぎ話の宴に加わろう。",
         "demonWedgeName": null,
         "functionLabel": "遠隔武器",
-        "passiveEffectsDescription": "攻撃速度+<H>#1</>。第3段階までチャージ中に矢を放つと、その与ダメージが<H>#2</>アップし、自身の爆発範囲が<H>#3</>アップする。効果は<H>#4</>秒間持続する。",
+        "passiveEffectsDescription": "攻撃速度+<H>#1</>。チャージ第3段階中に矢を放つと、自身の爆発範囲が<H>#3</>アップし、<H>#4</>秒間持続する。",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -20299,7 +20299,7 @@
         "description": "자, 시들어 버린 나무 구멍을 거닐며, 설탕옷을 두른 울창한 숲을 지나, 음표와 카드에 둘러싸인 자리에 앉아, 이 동화 같은 파티를 함께 즐기자.",
         "demonWedgeName": null,
         "functionLabel": "원거리 무기",
-        "passiveEffectsDescription": "공격 속도+<H>#1</>. 3단계 차지 중 화살을 발사하면 해당 화살이 입히는 대미지가 <H>#2</> 상승하고, 자신의 폭발 범위가 <H>#3</> 상승한다. 지속 시간 <H>#4</>초.",
+        "passiveEffectsDescription": "공격 속도+<H>#1</>. 3단계 차지 중 화살을 발사하면 자신의 폭발 범위가 <H>#3</> 상승한다. 지속 시간 <H>#4</>초.",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -20312,7 +20312,7 @@
         "description": "來吧，一起漫遊枯朽的樹洞，穿越糖霜的密林，在音符與紙牌的環繞下落座，加入這場童話的宴會。",
         "demonWedgeName": null,
         "functionLabel": "遠端武器",
-        "passiveEffectsDescription": "攻擊速度+<H>#1</>。在蓄力第三階段期間射出箭矢時，使其造成的傷害提高<H>#2</>，自身獲得爆炸範圍提高<H>#3</>，持續<H>#4</>秒。",
+        "passiveEffectsDescription": "攻擊速度+<H>#1</>。在蓄力第三階段期間射出箭矢時，自身獲得爆炸範圍提高<H>#3</>，持續<H>#4</>秒。",
         "affinityName": null,
         "archiveName": null,
         "typeCompatibilityNames": [

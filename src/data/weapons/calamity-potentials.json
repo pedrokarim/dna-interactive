@@ -17,11 +17,11 @@
           "TC": "無解·沉思"
         },
         "desc": {
-          "EN": "Dealing damage with this weapon grants 1 Calamity. Calamity is capped at 150.\nWhen Calamity reaches its cap, all Calamity is consumed to grant 1 stack of [Inquiry]: Skill Speed +10% for 9s, up to 6 stacks.",
-          "FR": "Lorsque cette arme inflige des dégâts, elle confère 1 points de calamité. Le maximum de calamité est de 150 points.\nLorsque le maximum est atteint, tous les points de calamité sont consommés et vous obtenez 1 cumul de [Recherche] : la Vitesse de compétence augmente de 10% pendant 9 s, jusqu’à 6 cumuls.",
-          "JP": "この武器でダメージを与えると、 1ポイントの災厄値を獲得する。災厄値の上限は150ポイント。\n災厄値が上限に達すると、災厄値をすべて消費し、自身に[探求]を1スタック付与する：[探求]1スタックにつきスキル速度が10% アップする。 9秒間持続し、最大 6 スタック。",
-          "KR": "해당 무기로 대미지를 입힐 시 재앙도를 1 획득한다(최대치 150).\n재앙도가 최대치에 도달하면 모든 재앙도를 소모해 자신이 [탐구] 1단계를 획득한다. 스킬 속도가 10% 상승한다. 지속 시간 9초, 최대 6단계 중첩.",
-          "TC": "使用此武器造成傷害時，獲得1點災厄值，災厄值上限為150點。\n災厄值達到上限時，消耗全部災厄值，自身獲得1層[求索]：技能速度提高10%，持續9秒，最多疊加6層。"
+          "EN": "Dealing damage with this weapon grants 1 Calamity. Calamity is capped at 150.\nWhen Calamity reaches 100, consumes 100 Calamity to grant 1 stack of [Inquiry]: Skill Speed +10% for 15s, up to 6 stacks.",
+          "FR": "Lorsque cette arme inflige des dégâts, elle confère 1 points de calamité. Le maximum de calamité est de 150 points.\nLorsque vous atteignez 100 points de calamité, 100 points de calamité sont consommés et vous obtenez 1 cumul de [Recherche] : la Vitesse de compétence augmente de 10% pendant 15 s, jusqu’à 6 cumuls.",
+          "JP": "この武器でダメージを与えると、1ポイントの災厄値を獲得する。災厄値の上限は150ポイント。\n災厄値が100ポイントに達すると、100ポイントの災厄値を消費し、自身に[探求]を1スタック付与する：スキル速度が10%アップする。15秒間持続し、最大6スタック。",
+          "KR": "해당 무기로 대미지를 입힐 시 재앙도를 1 획득한다(최대치 150).\n재앙도가 100에 도달하면 재앙도를 100 소모해 자신이 [탐구] 1단계를 획득한다. 스킬 속도가 10% 상승한다. 지속 시간 15초, 최대 6단계 중첩.",
+          "TC": "使用此武器造成傷害時，獲得1點災厄值，災厄值上限為150點。\n災厄值達到100點時，消耗100點災厄值，自身獲得1層[求索]：技能速度提高10%，持續15秒，最多疊加6層。"
         },
         "attrs": null
       },
@@ -67,10 +67,10 @@
           "TC": "無解·渴求"
         },
         "desc": {
-          "EN": "When consuming [Disruption], gains 12 Calamity for each stack consumed.",
-          "FR": "Lorsque vous consommez du [Désordre], vous obtenez [12 × nombre de cumuls consommés] points de calamité.",
-          "JP": "[乱調]を消費すると、災厄値を [12×消費した重複数] 獲得する。",
-          "KR": "[혼돈]을 소모할 때 재앙도를 [12×소모 중첩 단계 수] 획득한다.",
+          "EN": "When consuming [Disruption], gains [12 × Skill Speed] Calamity for each stack consumed.",
+          "FR": "Lorsque vous consommez du [Désordre], vous obtenez [12 × nombre de cumuls consommés × Vitesse de compétence] points de calamité.",
+          "JP": "[乱調]を消費すると、災厄値を[12×消費した重複数×スキル速度]獲得する。",
+          "KR": "[혼돈]을 소모할 때 재앙도를 [12×소모 중첩 단계 수×스킬 속도] 획득한다.",
           "TC": "消耗[紊亂]時，獲得[12×消耗層數×技能速度]點災厄值。"
         },
         "attrs": null
@@ -117,11 +117,11 @@
           "TC": "謎題·未知"
         },
         "desc": {
-          "EN": "When Skill DMG triggers, gains [2 × Skill Speed] Calamity.",
-          "FR": "Lorsque des Dégâts de compétence se déclenchent, vous obtenez [2 × Vitesse de compétence] points de calamité.",
-          "JP": "スキルダメージが発生すると、災厄値を [2×スキル速度] 獲得する。",
-          "KR": "스킬 대미지 발동 시 재앙도를 [2×스킬 속도] 획득한다.",
-          "TC": "技能傷害觸發時，獲得[2×技能速度]點災厄值。"
+          "EN": "When Skill DMG triggers a Bonus Effect, gains [2 × Skill Speed] Calamity.",
+          "FR": "Lorsque des Dégâts de compétence déclenchent un Effet supplémentaire, vous obtenez [2 × Vitesse de compétence] points de calamité.",
+          "JP": "スキルダメージで追加効果が発動すると、災厄値を[2×スキル速度]獲得する。",
+          "KR": "스킬 대미지로 추가 효과 발동 시 재앙도를 [2×스킬 속도] 획득한다.",
+          "TC": "技能傷害觸發額外效果時，獲得[2×技能速度]點災厄值。"
         },
         "attrs": null
       },
@@ -269,10 +269,10 @@
           "TC": "無解·答覆"
         },
         "desc": {
-          "EN": "While under [Inquiry], if Skill Speed exceeds 220%, Skill DMG +90%.",
+          "EN": "While [Inquiry] is active and Skill Speed exceeds 220%, Skill DMG +90%.",
           "FR": "Sous l’effet de [Recherche], si votre Vitesse de compétence dépasse 220%, les Dégâts de compétence augmentent de 90%.",
           "JP": "[探求]の効果中、スキル速度が 220% を超えている場合、スキルダメージが 90% アップする。",
-          "KR": "[탐구] 상태 시, 스킬 속도가 220%를 초과하면 스킬 대미지가 90% 상승한다.",
+          "KR": "[탐구] 상태 시, 스킬 속도가 220%을 초과하면 스킬 대미지가 90% 상승한다.",
           "TC": "處於[求索]效果時，若技能速度大於220%，技能傷害提高90%。"
         },
         "attrs": null
@@ -319,11 +319,11 @@
           "TC": "謎題·證明"
         },
         "desc": {
-          "EN": "While under [Inquiry], if Skill Speed exceeds 2.2, Skill DMG PEN +30%.",
-          "FR": "Sous l’effet de [Recherche], si votre Vitesse de compétence dépasse 2.2, la Pénétration de compétence augmente de 30%.",
-          "JP": "[探求]の効果中、スキル速度が 2.2 を超えている場合、スキル貫通が 30% アップする。",
-          "KR": "[탐구] 상태 시, 스킬 속도가 2.2를 초과하면 스킬 관통이 30% 상승한다.",
-          "TC": "處於[求索]效果時，若技能速度大於2.2，造成技能傷害時無視目標30%防禦"
+          "EN": "While [Inquiry] is active and Skill Speed exceeds 220%, Skill DMG ignores 30% of the target's DEF.",
+          "FR": "Sous l’effet de [Recherche], si votre Vitesse de compétence dépasse 220%, les Dégâts de compétence ignorent 30% de la Défense de la cible.",
+          "JP": "[探求]の効果中、スキル速度が220%を超えている場合、スキルダメージを与える際に対象の防御を30%無視する",
+          "KR": "[탐구] 상태 시, 스킬 속도가 220%을 초과하면 스킬 대미지를 입힐 때 대상의 방어를 30% 무시한다.",
+          "TC": "處於[求索]效果時，若技能速度大於220%，造成技能傷害時無視目標30%防禦"
         },
         "attrs": null
       },
@@ -447,11 +447,11 @@
           "TC": "無解·真相"
         },
         "desc": {
-          "EN": "Additional Skill DMG of own element +50%.\nWhen [Inquiry] reaches max stacks: Dealing Skill DMG also deals 3500% Calamity DMG to enemies within 3m of the target. This counts as Skill DMG and increases by [Skill Intensity × Skill Speed − 100]%. This effect can trigger at most once every 1s.",
-          "FR": "Dégâts de compétence supplémentaires de votre attribut +50%.\nLorsque [Recherche] atteint le nombre maximal de cumuls, vous obtenez également l’effet suivant : lorsque vous infligez des Dégâts de compétence, 3500% dégâts de calamité sont infligés aux ennemis dans un rayon de 3 m autour de la cible. Ces dégâts sont considérés comme des Dégâts de compétence et augmentent en fonction de la Puissance de compétence et de la Vitesse de compétence du personnage, selon le multiplicateur [Puissance de compétence × Vitesse de compétence - 100 %]. Cet effet peut se déclencher au maximum une fois toutes les 1 s.",
-          "JP": "自身と同じ属性のスキル追加ダメージ+ 50% 。\n[探求]が最大スタックに達すると追加効果を獲得：スキルダメージ発生時、対象の半径 3 m以内の敵に 3500% の災厄ダメージを与える。スキルダメージとして扱われ、このダメージはキャラクターのスキル威力とスキル速度に応じて増加する。増加倍率は[スキル威力属性値×スキル速度属性値-100%]。1 秒ごとに最大1回発動する。",
-          "KR": "자체 속성 스킬 추가 대미지+50%.\n[탐구] 최대 중첩 단계 도달 시 추가 효과를 획득한다. 스킬 대미지 발동 시 대상 반경 3m 내의 적에게 재앙 대미지를 3500% 입힌다. 해당 대미지는 스킬 대미지로 간주되며, 캐릭터의 스킬 위력과 스킬 속도에 따라 상승한다. 상승 배율은 [스킬 위력 속성치×스킬 속도-100]%이며, 1초마다 최대 1회 발동한다.",
-          "TC": "自屬性技能追加傷害+50%。\n[求索]滿層時額外獲得效果：技能傷害觸發時，對目標半徑3米內的敵人造成3500%災厄傷害，視為技能傷害，該傷害基於角色技能速度提高，提高倍率為[技能速度屬性值-100%]，每1秒最多觸發1次。"
+          "EN": "Additional Skill DMG of the character's element +50%.\nAt maximum [Inquiry] stacks, when Skill DMG triggers a Bonus Effect, also deals 3500% Calamity DMG to enemies within 3m of the target. This counts as Skill DMG, with its DMG bonus calculated as [Skill Speed - 100%]. This effect can trigger at most once every 1 seconds.",
+          "FR": "Dégâts de compétence supplémentaires de votre attribut +50%. Lorsque [Recherche] atteint le nombre maximal de cumuls, les Dégâts de compétence qui déclenchent un Effet supplémentaire infligent également 3500% dégâts de calamité aux ennemis dans un rayon de 3 m autour de la cible. Ces dégâts sont considérés comme des Dégâts de compétence et leur bonus de dégâts est calculé selon [Vitesse de compétence - 100 %]. Cet effet peut se déclencher au maximum une fois toutes les 1 s.",
+          "JP": "自身と同じ属性のスキル追加ダメージ+50%。\n[探求]の重複数が最大の時、追加効果を獲得する：スキルダメージで追加効果が発動すると、対象から半径3m以内の敵に3500%の災厄ダメージを与える。このダメージはスキルダメージとみなされ、キャラクターのスキル速度に応じて上昇する。上昇倍率は[スキル速度のステータス値-100%]となる。最大で1秒に1回発動する。",
+          "KR": "자체 속성 스킬 추가 대미지+50%.\n[탐구] 최대 중첩 단계 도달 시 추가 효과를 획득한다. 스킬 대미지로 추가 효과 발동 시 대상 반경 3m 내의 적에게 재앙 대미지를 3500% 입힌다. 해당 대미지는 스킬 대미지로 간주되며, 캐릭터의 스킬 속도에 따라 상승한다. 상승 배율은 [스킬 위력 속성치-100%]이며, 1초마다 최대 1회 발동한다.",
+          "TC": "自屬性技能追加傷害+50%。\n[求索]滿層時額外獲得效果：技能傷害觸發額外效果時，對目標半徑3米內的敵人造成3500%災厄傷害，視為技能傷害，該傷害基於角色技能速度提高，提高倍率為[技能速度屬性值-100%]，每1秒最多觸發1次。"
         },
         "attrs": null
       }

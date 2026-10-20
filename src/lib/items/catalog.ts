@@ -63,7 +63,10 @@ function sanitizeTranslations(item: ItemRecord): ItemRecord["translations"] {
       next.description = english.description;
     }
     if (isUnresolvedText(next.description, descriptionKey)) {
-      next.description = getOfficialDescription(item.id, language);
+      // Langue non livrée (DE/ES) : l'anglais, s'il existe ; sinon le texte officiel publié, sinon rien.
+      const englishDescription =
+        english && !isUnresolvedText(english.description, descriptionKey) ? english.description : null;
+      next.description = englishDescription ?? getOfficialDescription(item.id, language);
     }
     translations[language] = next;
   }

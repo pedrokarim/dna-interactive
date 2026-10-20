@@ -5258,7 +5258,7 @@
                 "levelDependent": false
               },
               {
-                "label": null,
+                "label": "[Arcshot] Accuracy Calibration Time",
                 "labelKey": "SKILL_DESC_4103Skill02_Time",
                 "formula": "3$GText(\"SKILL_DESC_Second\")$",
                 "valuesByLevel": {
@@ -5300,7 +5300,7 @@
                 "nameKey": "TERM_4103_Skill02_02",
                 "explanationKey": "TERMEXP_4103_Skill02_02",
                 "name": "Steady Aim",
-                "explanation": "Increases Skill Speed and reduces Sanity Cost when shooting with [Arcshot]. Lasts indefinitely and stacks up to 30 times. All stacks are removed upon exiting [Deadeye Domain]."
+                "explanation": "Increases Skill Speed and reduces Sanity Cost when shooting with [Arcshot]. Lasts for the rest of the battle and stacks up to 30 times. Upon exiting [Deadeye Domain], removes 1 stack every 0.5s."
               },
               {
                 "id": "Term_4103_Skill02_03",
@@ -5512,7 +5512,7 @@
                 "levelDependent": false
               },
               {
-                "label": null,
+                "label": "[Arcshot] Accuracy Calibration Time",
                 "labelKey": "SKILL_DESC_4103Skill02_Time",
                 "formula": "3$GText(\"SKILL_DESC_Second\")$",
                 "valuesByLevel": {
@@ -5554,7 +5554,7 @@
                 "nameKey": "TERM_4103_Skill02_02",
                 "explanationKey": "TERMEXP_4103_Skill02_02",
                 "name": "Steady Aim",
-                "explanation": "Increases Skill Speed and reduces Sanity Cost when shooting with [Arcshot]. Lasts indefinitely and stacks up to 30 times. All stacks are removed upon exiting [Deadeye Domain]."
+                "explanation": "Increases Skill Speed and reduces Sanity Cost when shooting with [Arcshot]. Lasts for the rest of the battle and stacks up to 30 times. Upon exiting [Deadeye Domain], removes 1 stack every 0.5s."
               },
               {
                 "id": "Term_4103_Skill02_03",
@@ -5766,7 +5766,7 @@
                 "levelDependent": false
               },
               {
-                "label": null,
+                "label": "[Arcshot] Accuracy Calibration Time",
                 "labelKey": "SKILL_DESC_4103Skill02_Time",
                 "formula": "3$GText(\"SKILL_DESC_Second\")$",
                 "valuesByLevel": {
@@ -5808,7 +5808,7 @@
                 "nameKey": "TERM_4103_Skill02_02",
                 "explanationKey": "TERMEXP_4103_Skill02_02",
                 "name": "Steady Aim",
-                "explanation": "Increases Skill Speed and reduces Sanity Cost when shooting with [Arcshot]. Lasts indefinitely and stacks up to 30 times. All stacks are removed upon exiting [Deadeye Domain]."
+                "explanation": "Increases Skill Speed and reduces Sanity Cost when shooting with [Arcshot]. Lasts for the rest of the battle and stacks up to 30 times. Upon exiting [Deadeye Domain], removes 1 stack every 0.5s."
               },
               {
                 "id": "Term_4103_Skill02_03",
@@ -6020,7 +6020,7 @@
                 "levelDependent": false
               },
               {
-                "label": null,
+                "label": "Temps de calibrage de précision du [Fusil de précision]",
                 "labelKey": "SKILL_DESC_4103Skill02_Time",
                 "formula": "3$GText(\"SKILL_DESC_Second\")$",
                 "valuesByLevel": {
@@ -6062,7 +6062,7 @@
                 "nameKey": "TERM_4103_Skill02_02",
                 "explanationKey": "TERMEXP_4103_Skill02_02",
                 "name": "Concentration",
-                "explanation": "Augmente la Vitesse de compétence et réduit le coût en Lucidité des tirs du [Fusil de précision]. Durée permanente, jusqu’à 30 cumuls. Retiré en quittant le [Mode sniper]."
+                "explanation": "Augmente la Vitesse de compétence et réduit le coût en Lucidité des tirs du [Fusil de précision]. Durée illimitée, jusqu’à 30 cumuls. Après avoir quitté le [Mode sniper], 1 cumul est retiré toutes les 0,5 s."
               },
               {
                 "id": "Term_4103_Skill02_03",
@@ -6274,7 +6274,7 @@
                 "levelDependent": false
               },
               {
-                "label": null,
+                "label": "[狙撃銃]の照準調整に必要な時間",
                 "labelKey": "SKILL_DESC_4103Skill02_Time",
                 "formula": "3$GText(\"SKILL_DESC_Second\")$",
                 "valuesByLevel": {
@@ -6316,7 +6316,7 @@
                 "nameKey": "TERM_4103_Skill02_02",
                 "explanationKey": "TERMEXP_4103_Skill02_02",
                 "name": "集中",
-                "explanation": "スキル速度がアップし、[狙撃銃]射撃時のSP消費がダウンする。永続効果で、最大30スタックまで重複可能。[狙撃モード]が解除されると効果が消える。"
+                "explanation": "スキル速度がアップし、[狙撃銃]射撃時のSP消費がダウンする。永続効果で、最大30スタックまで重複可能。[狙撃モード]解除後、0.5秒ごとに1スタック解除される。"
               },
               {
                 "id": "Term_4103_Skill02_03",
@@ -6528,7 +6528,7 @@
                 "levelDependent": false
               },
               {
-                "label": null,
+                "label": "[저격총] 정확도 보정 시간",
                 "labelKey": "SKILL_DESC_4103Skill02_Time",
                 "formula": "3$GText(\"SKILL_DESC_Second\")$",
                 "valuesByLevel": {
@@ -6570,7 +6570,7 @@
                 "nameKey": "TERM_4103_Skill02_02",
                 "explanationKey": "TERMEXP_4103_Skill02_02",
                 "name": "집중",
-                "explanation": "스킬 속도가 상승하고 [저격총] 사격 시 정신력 소모가 감소한다. 지속 시간은 무제한이며, 최대 30단계까지 중첩된다. [저격 모드] 종료 시 제거된다."
+                "explanation": "스킬 속도가 상승하고 [저격총] 사격 시 정신력 소모가 감소한다. 지속 시간은 무제한이며, 최대 30단계까지 중첩된다. [저격 모드] 종료 후 0.5초마다 1중첩씩 제거된다."
               },
               {
                 "id": "Term_4103_Skill02_03",
@@ -6782,7 +6782,7 @@
                 "levelDependent": false
               },
               {
-                "label": null,
+                "label": "[狙擊槍]校準精度所需時間",
                 "labelKey": "SKILL_DESC_4103Skill02_Time",
                 "formula": "3$GText(\"SKILL_DESC_Second\")$",
                 "valuesByLevel": {
@@ -6824,7 +6824,7 @@
                 "nameKey": "TERM_4103_Skill02_02",
                 "explanationKey": "TERMEXP_4103_Skill02_02",
                 "name": "專注",
-                "explanation": "技能速度提高，[狙擊槍]射擊神智消耗降低，永續，最高30層，退出[狙擊模式]時移除。"
+                "explanation": "技能速度提高，[狙擊槍]射擊神智消耗降低，永續，最高30層，退出[狙擊模式]後每0.5秒移除1層。"
               },
               {
                 "id": "Term_4103_Skill02_03",
@@ -6848,12 +6848,14 @@
         "skillDescKeys": [
           null,
           "SKILL_DESC_4103Passive01_Buff01",
-          "SKILL_DESC_4103Passive01_Buff02"
+          "SKILL_DESC_4103Passive01_Buff02",
+          "SKILL_DESC_4103Passive01_LastTime"
         ],
         "skillDescValues": [
           "$#Buff[410301].MaxLayer$",
           "$#PassiveEffect[410301].Vars.AddSp$",
-          "$#Buff[410301].AddAttrs[1].Value*100$%"
+          "$#Buff[410301].AddAttrs[1].Value*100$%",
+          "$#PassiveEffect[410301].Vars.LastTime$$GText(\"SKILL_DESC_Second\")$"
         ],
         "skillDescGroups": [],
         "translations": {
@@ -6944,6 +6946,34 @@
                   "20": "28%"
                 },
                 "levelDependent": true
+              },
+              {
+                "label": "[Arc Mastery] Duration",
+                "labelKey": "SKILL_DESC_4103Passive01_LastTime",
+                "formula": "$#PassiveEffect[410301].Vars.LastTime$$GText(\"SKILL_DESC_Second\")$",
+                "valuesByLevel": {
+                  "1": "10Sek.",
+                  "2": "10Sek.",
+                  "3": "10Sek.",
+                  "4": "10Sek.",
+                  "5": "10Sek.",
+                  "6": "10Sek.",
+                  "7": "10Sek.",
+                  "8": "10Sek.",
+                  "9": "10Sek.",
+                  "10": "10Sek.",
+                  "11": "10Sek.",
+                  "12": "10Sek.",
+                  "13": "10Sek.",
+                  "14": "10Sek.",
+                  "15": "10Sek.",
+                  "16": "10Sek.",
+                  "17": "10Sek.",
+                  "18": "10Sek.",
+                  "19": "10Sek.",
+                  "20": "10Sek."
+                },
+                "levelDependent": false
               }
             ],
             "sections": [],
@@ -7044,6 +7074,34 @@
                   "20": "28%"
                 },
                 "levelDependent": true
+              },
+              {
+                "label": "[Arc Mastery] Duration",
+                "labelKey": "SKILL_DESC_4103Passive01_LastTime",
+                "formula": "$#PassiveEffect[410301].Vars.LastTime$$GText(\"SKILL_DESC_Second\")$",
+                "valuesByLevel": {
+                  "1": "10s",
+                  "2": "10s",
+                  "3": "10s",
+                  "4": "10s",
+                  "5": "10s",
+                  "6": "10s",
+                  "7": "10s",
+                  "8": "10s",
+                  "9": "10s",
+                  "10": "10s",
+                  "11": "10s",
+                  "12": "10s",
+                  "13": "10s",
+                  "14": "10s",
+                  "15": "10s",
+                  "16": "10s",
+                  "17": "10s",
+                  "18": "10s",
+                  "19": "10s",
+                  "20": "10s"
+                },
+                "levelDependent": false
               }
             ],
             "sections": [],
@@ -7144,6 +7202,34 @@
                   "20": "28%"
                 },
                 "levelDependent": true
+              },
+              {
+                "label": "[Arc Mastery] Duration",
+                "labelKey": "SKILL_DESC_4103Passive01_LastTime",
+                "formula": "$#PassiveEffect[410301].Vars.LastTime$$GText(\"SKILL_DESC_Second\")$",
+                "valuesByLevel": {
+                  "1": "10s",
+                  "2": "10s",
+                  "3": "10s",
+                  "4": "10s",
+                  "5": "10s",
+                  "6": "10s",
+                  "7": "10s",
+                  "8": "10s",
+                  "9": "10s",
+                  "10": "10s",
+                  "11": "10s",
+                  "12": "10s",
+                  "13": "10s",
+                  "14": "10s",
+                  "15": "10s",
+                  "16": "10s",
+                  "17": "10s",
+                  "18": "10s",
+                  "19": "10s",
+                  "20": "10s"
+                },
+                "levelDependent": false
               }
             ],
             "sections": [],
@@ -7244,6 +7330,34 @@
                   "20": "28%"
                 },
                 "levelDependent": true
+              },
+              {
+                "label": "Durée de [Maîtrise du courant]",
+                "labelKey": "SKILL_DESC_4103Passive01_LastTime",
+                "formula": "$#PassiveEffect[410301].Vars.LastTime$$GText(\"SKILL_DESC_Second\")$",
+                "valuesByLevel": {
+                  "1": "10s",
+                  "2": "10s",
+                  "3": "10s",
+                  "4": "10s",
+                  "5": "10s",
+                  "6": "10s",
+                  "7": "10s",
+                  "8": "10s",
+                  "9": "10s",
+                  "10": "10s",
+                  "11": "10s",
+                  "12": "10s",
+                  "13": "10s",
+                  "14": "10s",
+                  "15": "10s",
+                  "16": "10s",
+                  "17": "10s",
+                  "18": "10s",
+                  "19": "10s",
+                  "20": "10s"
+                },
+                "levelDependent": false
               }
             ],
             "sections": [],
@@ -7344,6 +7458,34 @@
                   "20": "28%"
                 },
                 "levelDependent": true
+              },
+              {
+                "label": "[電流掌握]持続時間",
+                "labelKey": "SKILL_DESC_4103Passive01_LastTime",
+                "formula": "$#PassiveEffect[410301].Vars.LastTime$$GText(\"SKILL_DESC_Second\")$",
+                "valuesByLevel": {
+                  "1": "10秒",
+                  "2": "10秒",
+                  "3": "10秒",
+                  "4": "10秒",
+                  "5": "10秒",
+                  "6": "10秒",
+                  "7": "10秒",
+                  "8": "10秒",
+                  "9": "10秒",
+                  "10": "10秒",
+                  "11": "10秒",
+                  "12": "10秒",
+                  "13": "10秒",
+                  "14": "10秒",
+                  "15": "10秒",
+                  "16": "10秒",
+                  "17": "10秒",
+                  "18": "10秒",
+                  "19": "10秒",
+                  "20": "10秒"
+                },
+                "levelDependent": false
               }
             ],
             "sections": [],
@@ -7444,6 +7586,34 @@
                   "20": "28%"
                 },
                 "levelDependent": true
+              },
+              {
+                "label": "[전류 숙달] 지속 시간",
+                "labelKey": "SKILL_DESC_4103Passive01_LastTime",
+                "formula": "$#PassiveEffect[410301].Vars.LastTime$$GText(\"SKILL_DESC_Second\")$",
+                "valuesByLevel": {
+                  "1": "10초",
+                  "2": "10초",
+                  "3": "10초",
+                  "4": "10초",
+                  "5": "10초",
+                  "6": "10초",
+                  "7": "10초",
+                  "8": "10초",
+                  "9": "10초",
+                  "10": "10초",
+                  "11": "10초",
+                  "12": "10초",
+                  "13": "10초",
+                  "14": "10초",
+                  "15": "10초",
+                  "16": "10초",
+                  "17": "10초",
+                  "18": "10초",
+                  "19": "10초",
+                  "20": "10초"
+                },
+                "levelDependent": false
               }
             ],
             "sections": [],
@@ -7544,6 +7714,34 @@
                   "20": "28%"
                 },
                 "levelDependent": true
+              },
+              {
+                "label": "[電流掌握]持續時間",
+                "labelKey": "SKILL_DESC_4103Passive01_LastTime",
+                "formula": "$#PassiveEffect[410301].Vars.LastTime$$GText(\"SKILL_DESC_Second\")$",
+                "valuesByLevel": {
+                  "1": "10秒",
+                  "2": "10秒",
+                  "3": "10秒",
+                  "4": "10秒",
+                  "5": "10秒",
+                  "6": "10秒",
+                  "7": "10秒",
+                  "8": "10秒",
+                  "9": "10秒",
+                  "10": "10秒",
+                  "11": "10秒",
+                  "12": "10秒",
+                  "13": "10秒",
+                  "14": "10秒",
+                  "15": "10秒",
+                  "16": "10秒",
+                  "17": "10秒",
+                  "18": "10秒",
+                  "19": "10秒",
+                  "20": "10秒"
+                },
+                "levelDependent": false
               }
             ],
             "sections": [],
@@ -7571,49 +7769,49 @@
         "translations": {
           "DE": {
             "name": "Honed Technique",
-            "description": "DMG dealt by [Arcshot] and [Volt Rifle] increases by [Ranged Weapon CRIT Chance × (Ranged Weapon CRIT Damage - 1)]%, with a minimum of 0.",
+            "description": "DMG dealt by [Arcshot] and [Volt Rifle] increases by [Ranged Weapon CRIT Chance × (Ranged Weapon CRIT Damage - 100%)], with a minimum of 0.",
             "params": [],
             "sections": [],
             "combatTerms": []
           },
           "EN": {
             "name": "Honed Technique",
-            "description": "DMG dealt by [Arcshot] and [Volt Rifle] increases by [Ranged Weapon CRIT Chance × (Ranged Weapon CRIT Damage - 1)]%, with a minimum of 0.",
+            "description": "DMG dealt by [Arcshot] and [Volt Rifle] increases by [Ranged Weapon CRIT Chance × (Ranged Weapon CRIT Damage - 100%)], with a minimum of 0.",
             "params": [],
             "sections": [],
             "combatTerms": []
           },
           "ES": {
             "name": "Honed Technique",
-            "description": "DMG dealt by [Arcshot] and [Volt Rifle] increases by [Ranged Weapon CRIT Chance × (Ranged Weapon CRIT Damage - 1)]%, with a minimum of 0.",
+            "description": "DMG dealt by [Arcshot] and [Volt Rifle] increases by [Ranged Weapon CRIT Chance × (Ranged Weapon CRIT Damage - 100%)], with a minimum of 0.",
             "params": [],
             "sections": [],
             "combatTerms": []
           },
           "FR": {
             "name": "Perfectionnement technique",
-            "description": "Les dégâts du [Fusil de précision] et du [Fusil électrique] augmentent selon le multiplicateur [Taux CRIT de l’arme à distance × (DGT CRIT de l’arme à distance - 1)], avec un minimum de 0.",
+            "description": "Les dégâts du [Fusil de précision] et du [Fusil électrique] augmentent selon le multiplicateur [Taux CRIT de l’arme à distance × (DGT CRIT de l’arme à distance - 100 %)], avec un minimum de 0.",
             "params": [],
             "sections": [],
             "combatTerms": []
           },
           "JP": {
             "name": "技術鍛錬",
-            "description": "[狙撃銃]および[電流ライフル]の与えるダメージが増加する。増加倍率は[遠隔武器クリティカル率×（遠隔武器クリティカルダメージ-1）]で、最低0。",
+            "description": "[狙撃銃]および[電流ライフル]の与えるダメージが増加する。増加倍率は[遠隔武器クリティカル率×（遠隔武器クリティカルダメージ-100%）]で、最低0。",
             "params": [],
             "sections": [],
             "combatTerms": []
           },
           "KR": {
             "name": "기술 연마",
-            "description": "[저격총]와 [전류 소총]이 입히는 대미지가 상승하며, 상승 배율은 [원거리 무기 크리티컬 확률×(원거리 무기 크리티컬 대미지-1)]로 적용되고, 최저치는 0이다.",
+            "description": "[저격총]와 [전류 소총]이 입히는 대미지가 상승하며, 상승 배율은 [원거리 무기 크리티컬 확률×(원거리 무기 크리티컬 대미지-100%)]로 적용되고, 최저치는 0이다.",
             "params": [],
             "sections": [],
             "combatTerms": []
           },
           "TC": {
             "name": "技術磨鍊",
-            "description": "[狙擊槍]和[電流步槍]造成的傷害提高，提高倍率為[遠端武器暴擊率×（遠端武器暴擊傷害-1）]，最低為0。",
+            "description": "[狙擊槍]和[電流步槍]造成的傷害提高，提高倍率為[遠端武器暴擊率×（遠端武器暴擊傷害-100%）]，最低為0。",
             "params": [],
             "sections": [],
             "combatTerms": []

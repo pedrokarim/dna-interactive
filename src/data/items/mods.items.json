@@ -212805,11 +212805,11 @@
     },
     "translations": {
       "DE": {
-        "modName": "MOD_NAME_103004",
+        "modName": "Crushing Momentum",
         "description": "Eine mysteriöse Komponente, die von der Alchademie hergestellt wurde. Sie kann die Kampffähigkeiten von Daimonen erheblich verbessern.",
         "demonWedgeName": "von Fenrir",
         "functionLabel": "Dämonenkeile",
-        "passiveEffectsDescription": "MOD_DESC_103004",
+        "passiveEffectsDescription": "Upgrades Greatsword Charged Attacks to greatly reduce enemy Stance.",
         "affinityName": "Fähigkeitsspur",
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -212817,11 +212817,11 @@
         ]
       },
       "EN": {
-        "modName": "MOD_NAME_103004",
+        "modName": "Crushing Momentum",
         "description": "A mysterious component crafted by the Alchademy. It can significantly enhance the combat capabilities of Daimons.",
         "demonWedgeName": "Fenrir's",
         "functionLabel": "Demon Wedges",
-        "passiveEffectsDescription": "MOD_DESC_103004",
+        "passiveEffectsDescription": "Upgrades Greatsword Charged Attacks to greatly reduce enemy Stance.",
         "affinityName": "Ability Track",
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -212829,11 +212829,11 @@
         ]
       },
       "ES": {
-        "modName": "MOD_NAME_103004",
+        "modName": "Crushing Momentum",
         "description": "Un componente misterioso creado por la Academia de Alquimia. Puede mejorar significativamente las capacidades de combate de los Daimons.",
         "demonWedgeName": "de Fenrir",
         "functionLabel": "Cuñas Demoníacas",
-        "passiveEffectsDescription": "MOD_DESC_103004",
+        "passiveEffectsDescription": "Upgrades Greatsword Charged Attacks to greatly reduce enemy Stance.",
         "affinityName": "Afinidad de Habilidad",
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -212841,11 +212841,11 @@
         ]
       },
       "FR": {
-        "modName": "MOD_NAME_103004",
+        "modName": "Charge écrasante",
         "description": "Composant mystérieux conçu par l’Académie d’Alchimie, capable d’augmenter considérablement les capacités de combat des Daimons.",
         "demonWedgeName": "de Fenrir",
         "functionLabel": "Sceau démoniaque",
-        "passiveEffectsDescription": "MOD_DESC_103004",
+        "passiveEffectsDescription": "Modifie l’Attaque chargée de l’Espadon : cette attaque inflige une importante Réduction de posture.",
         "affinityName": "Affinité de Pouvoir",
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -212853,11 +212853,11 @@
         ]
       },
       "JP": {
-        "modName": "MOD_NAME_103004",
+        "modName": "蓄力重撃",
         "description": "帝国錬金院が作った謎のパーツ。骸の戦闘力を大幅に強化することができる。",
         "demonWedgeName": "フェンリルの",
         "functionLabel": "魔の楔",
-        "passiveEffectsDescription": "MOD_DESC_103004",
+        "passiveEffectsDescription": "大剣の溜め攻撃のモーションと威力が変化する。溜め攻撃で敵の体勢を大きく崩すことができる。",
         "affinityName": "異能",
         "archiveName": null,
         "typeCompatibilityNames": [
@@ -212865,11 +212865,11 @@
         ]
       },
       "KR": {
-        "modName": "MOD_NAME_103004",
+        "modName": "차지 참격",
         "description": "제국 연금원에서 제작한 신비한 부품. 다이몬의 전투 능력을 크게 향상시킬 수 있다.",
         "demonWedgeName": "펜리르의",
         "functionLabel": "악마의 쐐기",
-        "passiveEffectsDescription": "MOD_DESC_103004",
+        "passiveEffectsDescription": "대검의 차지 공격 패턴과 위력을 변경한다. 차지 공격 시 전투 태세를 대폭 약화시킨다.",
         "affinityName": "이능 성향",
         "archiveName": null,
         "typeCompatibilityNames": [

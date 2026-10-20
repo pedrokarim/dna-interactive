@@ -88,8 +88,11 @@ function sanitizeDraftReference(reference: DraftItemReference): DraftItemReferen
   // Clé de TextMap restée brute (`UI_WEAPON_DESC_10399`) : le jeu n'a pas livré le texte.
   for (const [language, description] of Object.entries(descriptions)) {
     if (description == null || !UNRESOLVED_KEY_PATTERN.test(description)) continue;
+    const english = reference.descriptions.EN;
+    const englishDescription = english && !UNRESOLVED_KEY_PATTERN.test(english) ? english : null;
     descriptions[language] =
-      reference.sourceCategory === "weapons" ? getOfficialDescription(`weapons-${reference.id}`, language) : null;
+      englishDescription ??
+      (reference.sourceCategory === "weapons" ? getOfficialDescription(`weapons-${reference.id}`, language) : null);
   }
   return { ...reference, names, descriptions };
 }

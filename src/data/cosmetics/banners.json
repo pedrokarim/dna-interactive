@@ -953,7 +953,32 @@
     ]
    }
   ],
-  "exchange": [],
+  "exchange": [
+   {
+    "ref": "gestures/41072",
+    "table": "Resource",
+    "gameId": 41072,
+    "price": 50,
+    "currencyId": 111,
+    "limit": 1
+   },
+   {
+    "ref": "gestures/41073",
+    "table": "Resource",
+    "gameId": 41073,
+    "price": 50,
+    "currencyId": 111,
+    "limit": 1
+   },
+   {
+    "ref": "gestures/41074",
+    "table": "Resource",
+    "gameId": 41074,
+    "price": 50,
+    "currencyId": 111,
+    "limit": 1
+   }
+  ],
   "costCurrencyIds": [
    1004,
    1003
