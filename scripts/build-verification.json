@@ -152,9 +152,9 @@
       "note": "Fiche du 05/10 : conforme case par case (6 Track-Shift) ; Withershade et Dregs of Glimmer ajoutees."
     },
     "char-yuming": {
-      "verifiedAt": "2026-10-08",
+      "verifiedAt": "2026-10-20",
       "source": "561640",
-      "note": "Fiche du 05/10 : builds DPS et Soutien conformes case par case (5 Track-Shift), armes identiques."
+      "note": "Fiche du 20/10 (Intron VII ajoute) : builds DPS et Soutien conformes case par case (5 Track-Shift, cases 1-5, lus sur capture), armes identiques."
     },
     "char-zhangyu": {
       "verifiedAt": "2026-10-08",
@@ -162,9 +162,9 @@
       "note": "Fiche du 05/10 : les 2 builds conformes case par case (7 et 6 Track-Shift), armes identiques."
     },
     "char-zhiliu": {
-      "verifiedAt": "2026-10-08",
+      "verifiedAt": "2026-10-20",
       "source": "567185",
-      "note": "Fiche du 05/10 : pieces reordonnees (2 Volition, 2 Raffinement), 5 Track-Shift ; Sanguine Plume 1er choix distance."
+      "note": "Fiche du 20/10 (Intron VII ajoute, recommandation I7 encore TBD) : pieces, centre et 5 Track-Shift inchanges, lus sur capture ; Sacrosanct Chorus retire des armes a distance."
     }
   }
 }

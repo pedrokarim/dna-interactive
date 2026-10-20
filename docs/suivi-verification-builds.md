@@ -31,8 +31,8 @@ plus ancien.
 | 17 | Truffle and Filbert | Anemo | — | ✅ 2026-10-08 | 560798 | Fiche du 05/10 : pieces et pistes conformes sur les 2 builds ; Perpetual Strife 1er choix melee, Wanewraith ajoutee. |
 | 18 | Rebecca | Hydro | — | ✅ 2026-10-08 | 560789 | Fiche du 05/10 : fin de jeu a 6 Track-Shift (cases 1-6) + centre ajuste, Perpetual Strife et The Best Day 1ers choix ; debut-milieu reordonne, 8 Track-Shift. |
 | 19 | Lynn | Pyro | — | ✅ 2026-10-08 | 560793 | Fiche du 05/10 : 8 Track-Shift sur les 2 builds ; Excresduo 1er choix distance en debut-milieu. Cases 6-8 non retouchees : la fiche les nomme Blaze Volition, nom absent du catalogue Pyro. |
-| 20 | Yuming | Electro | — | ✅ 2026-10-08 | 561640 | Fiche du 05/10 : builds DPS et Soutien conformes case par case (5 Track-Shift), armes identiques. |
-| 21 | Zhiliu | Electro | — | ✅ 2026-10-08 | 567185 | Fiche du 05/10 : pieces reordonnees (2 Volition, 2 Raffinement), 5 Track-Shift ; Sanguine Plume 1er choix distance. |
+| 20 | Yuming | Electro | — | ✅ 2026-10-20 | 561640 | Fiche du 20/10 (Intron VII ajoute) : builds DPS et Soutien conformes case par case (5 Track-Shift, cases 1-5, lus sur capture), armes identiques. |
+| 21 | Zhiliu | Electro | — | ✅ 2026-10-20 | 567185 | Fiche du 20/10 (Intron VII ajoute, recommandation I7 encore TBD) : pieces, centre et 5 Track-Shift inchanges, lus sur capture ; Sacrosanct Chorus retire des armes a distance. |
 | 22 | Sibylle | Electro | — | ✅ 2026-10-08 | 560801 | Fiche du 05/10 : conforme case par case (4 Track-Shift) ; Wanewraith ajoutee. |
 | 23 | Tabethe | Hydro | — | ✅ 2026-10-08 | 560790 | Fiche du 05/10 : les 2 builds conformes case par case (7 et 6 Track-Shift), armes identiques. |
 | 24 | Berenica | Umbro | — | ✅ 2026-10-08 | 560808 | Fiche du 05/10 : build I7 Vigueur conforme ; build I7 Tenacite ajoute (5 Track-Shift + centre ajuste, Sanguine Plume). Le build hors I7 n est plus sur la fiche, conserve. |
