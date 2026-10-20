@@ -3,6 +3,8 @@
 import { Link } from "@/i18n/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { getUpcomingVersion } from "@/lib/items/upcoming";
+import { formatAvailabilityDate, getPendingAvailability } from "@/lib/items/availability";
+import { toIntlLocale } from "@/lib/intl-locale";
 import { useMemo, useState, type ReactNode } from "react";
 import { ArrowLeft, ChevronDown, Clock, Flame, Heart, Sparkles, Target } from "lucide-react";
 import { GlyphIcons } from "@/components/icons/GameGlyph";
@@ -314,6 +316,15 @@ function GenimonTraitShare({ row, total }: { row: GenimonTraitTally; total: numb
   );
 }
 
+/**
+ * Fond de pastille posée sur l'illustration : la teinte seule est translucide, et
+ * sur une arme sombre et rouge le texte cramoisi devenait illisible. La teinte
+ * est donc superposée à l'encre du thème, opaque.
+ */
+function opaqueTint(tint: string): string {
+  return `linear-gradient(${tint}, ${tint}), var(--color-ink)`;
+}
+
 export default function ItemDetailClient({ category, item, relatedDrafts = [], weaponBuilds = [], weaponUsage = [], genimonUsage = [], genimonTraitBuild = null }: ItemDetailClientProps) {
   const [activeWeaponBuildIndex, setActiveWeaponBuildIndex] = useState(0);
   // Personnage sélectionné pour l'arbre de Potentiel : son build porte l'ordre conseillé.
@@ -518,6 +529,11 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
   // Arme de calamité (WeaponSubType = Hyper) : accent cramoisi + libellés dédiés.
   const isCalamity = isWeaponsCategory && isCalamityWeapon(item);
   const upcomingVersion = getUpcomingVersion(item.stats.releaseVersion);
+  // Présent dans les données mais pas encore obtenable (rotation du théâtre à venir, date annoncée).
+  const pendingAvailability = upcomingVersion ? null : getPendingAvailability(item.id);
+  const availabilityDate = pendingAvailability
+    ? formatAvailabilityDate(pendingAvailability.availableAt, toIntlLocale(locale))
+    : null;
   const baseElHex = weaponElement?.hex ?? elementHexFromKey(elementalAffinity?.key);
   const elHex = isCalamity ? CALAMITY_ACCENT_HEX : baseElHex;
   const tinted = elHex !== GOLD_HEX;
@@ -602,15 +618,27 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
             ) : null}
             <div className="mt-2 flex flex-wrap items-center gap-1.5">
               {upcomingVersion ? (
-                <span className="inline-flex items-center gap-1.5 border border-hydro/50 bg-hydro/10 px-2.5 py-1 font-caps text-[0.58rem] uppercase tracking-[0.14em] text-hydro">
+                <span
+                  className="inline-flex items-center gap-1.5 border border-hydro/50 px-2.5 py-1 font-caps text-[0.58rem] uppercase tracking-[0.14em] text-hydro"
+                  style={{ background: opaqueTint("color-mix(in srgb, var(--color-hydro) 10%, transparent)") }}
+                >
                   <Clock className="h-3.5 w-3.5" />
                   {tc("upcomingBadge", { version: upcomingVersion })}
+                </span>
+              ) : null}
+              {availabilityDate ? (
+                <span
+                  className="inline-flex items-center gap-1.5 border border-hydro/50 px-2.5 py-1 font-caps text-[0.58rem] uppercase tracking-[0.14em] text-hydro"
+                  style={{ background: opaqueTint("color-mix(in srgb, var(--color-hydro) 10%, transparent)") }}
+                >
+                  <Clock className="h-3.5 w-3.5" />
+                  {tc("availabilityBadge", { date: availabilityDate })}
                 </span>
               ) : null}
               {isCalamity ? (
                 <span
                   className="inline-flex items-center gap-1.5 border px-2.5 py-1 font-caps text-[0.58rem] uppercase tracking-[0.14em]"
-                  style={{ borderColor: `${CALAMITY_ACCENT_HEX}88`, background: `${CALAMITY_ACCENT_HEX}22`, color: CALAMITY_ACCENT_HEX }}
+                  style={{ borderColor: `${CALAMITY_ACCENT_HEX}88`, background: opaqueTint(`${CALAMITY_ACCENT_HEX}22`), color: CALAMITY_ACCENT_HEX }}
                 >
                   <Flame className="h-3.5 w-3.5" />
                   {t("calamityWeapon")}
@@ -619,7 +647,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
               {elementalAffinity ? (
                 <span
                   className="inline-flex items-center gap-1.5 border px-2.5 py-1 font-caps text-[0.58rem] uppercase tracking-[0.14em]"
-                  style={{ borderColor: `${elHex}66`, background: `${elHex}1f`, color: elHex }}
+                  style={{ borderColor: `${elHex}66`, background: opaqueTint(`${elHex}1f`), color: elHex }}
                 >
                   {elementalAffinity.iconSrc ? (
                     <img src={elementalAffinity.iconSrc} alt="" width={20} height={20} className="h-5 w-5 object-contain" />
@@ -630,7 +658,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
               {weaponElement ? (
                 <span
                   className="inline-flex items-center gap-1.5 border px-2.5 py-1 font-caps text-[0.58rem] uppercase tracking-[0.14em]"
-                  style={{ borderColor: `${elHex}66`, background: `${elHex}1f`, color: elHex }}
+                  style={{ borderColor: `${elHex}66`, background: opaqueTint(`${elHex}1f`), color: elHex }}
                 >
                   <img src={weaponElement.icon} alt="" width={20} height={20} className="h-5 w-5 object-contain" />
                   {weaponElement.label}
@@ -805,6 +833,17 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
         <DnaPanel className="flex items-start gap-3 p-4 text-sm text-hydro">
           <Clock className="mt-0.5 h-4 w-4 shrink-0" />
           <p>{tc("upcomingNotice", { version: upcomingVersion })}</p>
+        </DnaPanel>
+      ) : null}
+
+      {pendingAvailability && availabilityDate ? (
+        <DnaPanel className="flex items-start gap-3 p-4 text-sm text-hydro">
+          <Clock className="mt-0.5 h-4 w-4 shrink-0" />
+          <p>
+            {tc(pendingAvailability.source === "theatre" ? "availabilityNoticeTheatre" : "availabilityNoticeAnnounced", {
+              date: availabilityDate,
+            })}
+          </p>
         </DnaPanel>
       ) : null}
 

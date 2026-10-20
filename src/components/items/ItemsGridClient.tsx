@@ -22,6 +22,7 @@ import {
   visitorGridLanguages,
 } from "@/lib/items/catalog";
 import { isItemRecent } from "@/lib/items/new-releases";
+import { formatAvailabilityDate, getPendingAvailability } from "@/lib/items/availability";
 import { isCalamityWeapon } from "@/lib/items/calamity-weapons";
 import { getUpcomingVersion } from "@/lib/items/upcoming";
 import { resolveItemRarity } from "@/lib/items/rarity";
@@ -1228,7 +1229,8 @@ export default function ItemsGridClient({
             const iconSrc = item.icon.publicPath ?? item.icon.placeholderPath ?? ITEM_FALLBACK_ICON;
             const favoriteKey = toFavoriteKey(category.id, item.id);
             const isFavorite = favoriteItems.has(favoriteKey);
-            const isNew = isItemRecent(item);
+            const pending = getPendingAvailability(item.id);
+            const isNew = !pending && isItemRecent(item);
             const isCalamity = isCalamityWeapon(item);
             const upcomingVersion = getUpcomingVersion(item.stats.releaseVersion);
             const rarity = resolveItemRarity(item);
@@ -1290,6 +1292,12 @@ export default function ItemsGridClient({
                         </span>
                       ) : null}
                       {isNew ? <DnaNouveau>{t('newBadge')}</DnaNouveau> : null}
+                      {pending ? (
+                        <span className="inline-flex items-center gap-1 whitespace-nowrap rounded-sm bg-hydro/10 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-hydro ring-1 ring-hydro/40">
+                          <Clock className="h-3 w-3" />
+                          {tc("availabilityBadge", { date: formatAvailabilityDate(pending.availableAt, toIntlLocale(locale)) })}
+                        </span>
+                      ) : null}
                       {isCalamity ? (
                         <span className="inline-flex items-center gap-1 rounded-sm bg-crimson/15 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-crimson-bright ring-1 ring-crimson-bright/40">
                           <Flame className="h-3 w-3" />
@@ -1426,7 +1434,8 @@ export default function ItemsGridClient({
                 : lead.modName
               : `${category.displayName} ${item.modId}`;
             const isCalamity = isCalamityWeapon(item);
-            const isNew = isItemRecent(item);
+            const pending = getPendingAvailability(item.id);
+            const isNew = !pending && isItemRecent(item);
             const upcomingVersion = getUpcomingVersion(item.stats.releaseVersion);
             const rarity = resolveItemRarity(item);
 
@@ -1485,6 +1494,12 @@ export default function ItemsGridClient({
                     </h3>
                     <div className="mt-1 flex flex-wrap items-center gap-1.5 text-[11px]">
                       {isNew ? <DnaNouveau>{t('newBadge')}</DnaNouveau> : null}
+                      {pending ? (
+                        <span className="inline-flex items-center gap-1 rounded-sm border border-hydro/40 bg-hydro/10 px-2 py-0.5 font-semibold uppercase tracking-wider text-hydro">
+                          <Clock className="h-3 w-3" />
+                          {tc("availabilityBadge", { date: formatAvailabilityDate(pending.availableAt, toIntlLocale(locale)) })}
+                        </span>
+                      ) : null}
                       {upcomingVersion ? (
                         <span
                           className="inline-flex items-center gap-1 rounded-sm border border-hydro/40 bg-hydro/10 px-2 py-0.5 font-semibold uppercase tracking-wider text-hydro"
@@ -1569,7 +1584,8 @@ export default function ItemsGridClient({
                 : lead.modName
               : `${category.displayName} ${item.modId}`;
             const isCalamity = isCalamityWeapon(item);
-            const isNew = isItemRecent(item);
+            const pending = getPendingAvailability(item.id);
+            const isNew = !pending && isItemRecent(item);
             const upcomingVersion = getUpcomingVersion(item.stats.releaseVersion);
             const rarity = resolveItemRarity(item);
 
@@ -1596,11 +1612,22 @@ export default function ItemsGridClient({
                       <DnaNouveau>{t('newBadge')}</DnaNouveau>
                     </span>
                   ) : null}
+                  {pending ? (
+                    <span
+                      className="absolute left-0 top-0 z-10 inline-flex items-center gap-1 rounded-sm border border-hydro/45 bg-ink/80 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-hydro backdrop-blur-sm"
+                      title={tc(pending.source === "theatre" ? "availabilityNoticeTheatre" : "availabilityNoticeAnnounced", {
+                        date: formatAvailabilityDate(pending.availableAt, toIntlLocale(locale)),
+                      })}
+                    >
+                      <Clock className="h-2.5 w-2.5" />
+                      {formatAvailabilityDate(pending.availableAt, toIntlLocale(locale))}
+                    </span>
+                  ) : null}
                   {elementalAffinity?.iconSrc ? (
                     <span
                       className={cn(
                         "absolute left-0 inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/15 bg-ink/70 backdrop-blur-sm",
-                        isNew ? "top-5" : "top-0",
+                        isNew || pending ? "top-5" : "top-0",
                       )}
                     >
                       <img
