@@ -40,6 +40,12 @@ const providers: NextAuthConfig["providers"] = [
   Discord({
     clientId: overrides.discordId ?? process.env.AUTH_DISCORD_ID,
     clientSecret: overrides.discordSecret ?? process.env.AUTH_DISCORD_SECRET,
+    // Discord renvoie désormais `iss=https://discord.com` au retour d'OAuth
+    // (RFC 9207). Sans émetteur déclaré, Auth.js le compare à sa valeur par
+    // défaut `https://authjs.dev` et refuse la connexion (« unexpected iss »).
+    // Les URL d'autorisation, de jeton et de profil restent celles du provider :
+    // aucune découverte OIDC n'est déclenchée.
+    issuer: "https://discord.com",
     // Un même email Discord (vérifié) est rattaché au compte existant plutôt
     // que d'en créer un doublon → 1 personne = 1 compte.
     allowDangerousEmailAccountLinking: true,
