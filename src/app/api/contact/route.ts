@@ -51,7 +51,7 @@ const transporter = nodemailer.createTransport({
   // Le certificat LWS est valide → on vérifie la chaîne TLS (protège d'un MITM
   // sur le chemin SMTP, qui exposerait identifiants et contenu des emails).
   // debug/logger désactivés en prod pour ne pas journaliser destinataires et
-  // dialogue SMTP (PII) dans les logs Vercel.
+  // dialogue SMTP (PII) dans les journaux du serveur.
   connectionTimeout: 60000, // 60 secondes
   greetingTimeout: 30000, // 30 secondes
   socketTimeout: 60000, // 60 secondes
@@ -112,7 +112,7 @@ export async function POST(request: NextRequest) {
   const t = await getApiTranslator(request);
 
   try {
-    // Rate limiting par IP, partagé entre instances serverless (cf. rate-limit.ts).
+    // Rate limiting par IP, partagé en base (cf. rate-limit.ts).
     const clientIP =
       request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
       request.headers.get("x-real-ip") ||

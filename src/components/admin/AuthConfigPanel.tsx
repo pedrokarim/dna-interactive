@@ -138,7 +138,7 @@ export function AuthConfigPanel() {
         />
 
         <p className="font-mono text-[0.64rem] text-muted-2 sm:col-span-2">
-          Prise en compte au prochain démarrage à froid. Un secret invalide provoque un retour automatique aux
+          Prise en compte au prochain redémarrage du serveur. Un secret invalide provoque un retour automatique aux
           variables d&apos;environnement.
         </p>
 

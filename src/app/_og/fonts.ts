@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises";
 /**
  * Charge les polices du design system DNA pour le rendu Satori (`next/og`).
  * Les .ttf sont colocalisées (`./fonts/*`) afin que Next trace les fichiers et
- * les embarque dans le bundle serverless (lecture via `import.meta.url`).
+ * les embarque dans le serveur autonome (lecture via `import.meta.url`).
  *
  * Cinzel = titres gravés, Jost = UI. Variables fonts : Satori utilise
  * l'instance par défaut, on déclare juste les graisses logiques.

@@ -30,8 +30,9 @@ function providerAttestsEmail(provider: string, profile: Profile | undefined): b
   return false;
 }
 
-// Credentials OAuth pilotables via l'admin (BDD), avec fallback env. Lus au
-// démarrage (cold-start). Sûr : si la BDD est absente/KO → env uniquement.
+// Credentials OAuth pilotables via l'admin (BDD), avec fallback env. Lus une
+// fois, au démarrage du processus : un changement dans l'admin demande de
+// redémarrer le conteneur. Sûr : si la BDD est absente/KO → env uniquement.
 const overrides = await loadAuthOverrides();
 
 // Providers construits dynamiquement : Google ne s'active que si ses clés sont
@@ -73,7 +74,7 @@ const providers: NextAuthConfig["providers"] = [
         request?.headers?.get("x-real-ip") ||
         "unknown";
       // Journalisation A09 : on trace les tentatives sans PII en clair (email
-      // haché, jamais l'adresse). Va dans les logs Vercel → détection brute-force.
+      // haché, jamais l'adresse). Va dans les journaux du conteneur → détection brute-force.
       const emailHash = createHash("sha256").update(email).digest("hex").slice(0, 12);
 
       const ipRate = await checkRateLimit(`auth:login-ip:${ip}`, 60, 15 * 60 * 1000);

@@ -162,31 +162,30 @@ bun run analyze      # Analyse du bundle (si configuré)
 
 ## 🌐 Déploiement
 
-### Préparation pour la production
+Le site est auto-hébergé : une image Docker construite par la CI, servie derrière
+nginx et Cloudflare. Le serveur ne compile jamais.
 
-1. **Variables d'environnement**
-   ```bash
-   # Créez un fichier .env.local
-   NEXT_PUBLIC_SITE_URL=https://dna.ascencia.re
-   NEXT_PUBLIC_SARUTOBI_PROJECT_TOKEN=st_live_...
-   NEXT_PUBLIC_SARUTOBI_HOST=https://sarutobi.ascencia.re
-   ```
+1. **Image** : chaque push sur `main` (ou `dev`) lance le workflow
+   [`Image Docker`](.github/workflows/deploy.yml), qui construit le
+   [`Dockerfile`](Dockerfile) (sortie `standalone` de Next) et pousse
+   `ghcr.io/pedrokarim/dna-interactive:main` et `:<sha>` sur GHCR.
+2. **Build** : les `NEXT_PUBLIC_*` sont des *variables* du dépôt GitHub (elles
+   finissent dans le JavaScript public) ; `DATABASE_URL` est un *secret*, lu par
+   `next build` à travers un secret BuildKit, jamais écrit dans l'image.
+3. **Mise en ligne** : sur le serveur, `deploy.sh` tire l'image et attend que la
+   sonde `/api/health` (processus + base) passe au vert. Retour arrière :
+   `deploy.sh <sha>`.
+4. **Secrets d'exécution** : dans le `.env` du serveur, jamais dans GitHub. Hors
+   de Vercel, Auth.js exige `AUTH_URL` **et** `AUTH_TRUST_HOST=true`.
 
-2. **Build de production**
-   ```bash
-   bun run build
-   ```
+Pièges connus :
 
-3. **Déploiement**
-   ```bash
-   bun run start
-   ```
-
-### Plateformes recommandées
-
-- **[Vercel](https://vercel.com/)** - Déploiement automatique depuis Git
-- **[Netlify](https://netlify.com/)** - Hébergement moderne
-- **[Railway](https://railway.app/)** - Déploiement simple
+- nginx doit **remplacer** `X-Forwarded-For` par l'IP réelle : le code lit la
+  première adresse (votes, limitation de débit) ;
+- un fichier de `public/` masque la route du même nom dans `src/app/`
+  (`favicon.ico`, `robots.txt`…) : ne pas les doubler ;
+- les identifiants OAuth réglés dans l'admin ne sont relus qu'au redémarrage du
+  conteneur.
 
 ## 🤝 Contribution
 

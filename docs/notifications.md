@@ -47,7 +47,8 @@ et le bouton « Push » de l'admin reste désactivé. Rien ne casse.
 bunx web-push generate-vapid-keys
 ```
 
-Puis dans l'environnement (local **et** Vercel) :
+Puis dans l'environnement (`.env.local` **et** `.env` du serveur ; la clé
+publique aussi en variable GitHub, elle est figée au build) :
 
 ```
 NEXT_PUBLIC_VAPID_PUBLIC_KEY=<clé publique>

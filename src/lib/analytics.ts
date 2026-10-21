@@ -30,7 +30,7 @@ export type AnalyticsProperties = Record<string, AnalyticsPrimitive>;
  * Clé publique du site.
  *
  * **`NEXT_PUBLIC_SARUTOBI_PROJECT_TOKEN` est le nom en service** : c'est lui
- * qui est posé sur Vercel, et c'est donc lui que documentent `env.local.example`
+ * qui est posé en production, et c'est donc lui que documentent `env.local.example`
  * et le README. `NEXT_PUBLIC_SARUTOBI_SITE_ID` est accepté parce que c'est le
  * nom que l'écran d'installation de Sarutobi donne à copier — quelqu'un qui
  * repart de cet écran ne doit pas tomber sur une variable ignorée.

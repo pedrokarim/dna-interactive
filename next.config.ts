@@ -31,16 +31,7 @@ const nextConfig: NextConfig = {
   compress: true,
   poweredByHeader: false,
   async redirects() {
-    // Un seul hôte doit répondre en 200 : l'alias de production Vercel servait
-    // tout le site en double. Les URL de preview (`dna-interactive-git-…`) ne
-    // sont pas concernées.
     return [
-      {
-        source: '/:path*',
-        has: [{ type: 'host', value: 'dna-interactive.vercel.app' }],
-        destination: 'https://dna.ascencia.re/:path*',
-        permanent: true,
-      },
       {
         // `/codes` (codes de rédemption) a été retiré du site. La page était
         // indexée : on renvoie vers l'accueil de la locale plutôt que de

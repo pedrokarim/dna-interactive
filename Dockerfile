@@ -10,7 +10,7 @@
 # (« Expected CommonJS module to have a function wrapper »). Constaté sur
 # sharex-manager ; toute montée de version se fait ici, sciemment.
 ARG BUN_VERSION=1.3.14
-# La version de Node de Vercel aujourd'hui (`vercel project inspect`).
+# La version de Node qu'utilisait Vercel, hébergeur jusqu'en octobre 2026.
 ARG NODE_VERSION=22
 
 # ── Dépendances ─────────────────────────────────────────────────────────────

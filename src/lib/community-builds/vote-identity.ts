@@ -9,7 +9,10 @@ const WINDOW_MS = 24 * 60 * 60 * 1000;
 // de `next/headers` (composants serveur).
 type HeaderGetter = { get(name: string): string | null };
 
-/** IP du client derrière Vercel (x-forwarded-for), avec fallbacks. */
+/**
+ * IP du client (x-forwarded-for), avec fallbacks. nginx REMPLACE l'en-tête par
+ * l'adresse réelle restaurée depuis Cloudflare : la première valeur est fiable.
+ */
 export function getClientIp(headers: HeaderGetter): string {
   const forwarded = headers.get("x-forwarded-for");
   if (forwarded) {

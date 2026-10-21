@@ -6,7 +6,8 @@ hébergé sur notre VPS, mutualisé entre nos projets « génériques ».
 
 > Hôte, identifiants et chemins réels ne sont **jamais** écrits ici : ce dépôt
 > est public. Les valeurs ci-dessous sont des exemples ; les vraies vivent dans
-> le gestionnaire de secrets (variables Vercel + fichier secret du serveur).
+> le gestionnaire de secrets (`.env` du serveur d'application, secret GitHub
+> `DATABASE_URL` pour le build, fichier secret du serveur de base).
 
 ## Connexion
 
@@ -17,16 +18,17 @@ DATABASE_URL=postgresql://<utilisateur>:<password>@<hote-db>:5432/<base>?sslmode
 - Hôte public : `<hote-db>:5432` (pgbouncer, transaction pooling).
 - TLS **obligatoire** en `verify-full` : le cert Let's Encrypt de l'hôte est
   reconnu par les CA système — rien à embarquer côté client (Node valide seul).
-- Le mot de passe vit dans le fichier secret du serveur et dans la variable
-  d'environnement Vercel (jamais commité, jamais cité dans ce dépôt).
+- Le mot de passe vit dans le fichier secret du serveur de base, dans le `.env`
+  du serveur d'application et dans le secret GitHub `DATABASE_URL` (jamais
+  commité, jamais cité dans ce dépôt).
 
 ## Driver
 
 On est passé du driver Neon HTTP au driver standard **node-postgres** :
 
 - `src/db/index.ts` : `drizzle-orm/node-postgres` + un `Pool` `pg` singleton
-  (réutilisé entre invocations serverless chaudes ; pgbouncer fait le vrai
-  pooling, donc `max` volontairement petit).
+  par processus ; pgbouncer fait le vrai pooling, donc `max` reste petit
+  (`DB_POOL_MAX`, 3 par défaut, 10 en production).
 - Dépendances : `@neondatabase/serverless` retiré, `pg` + `@types/pg` ajoutés.
 - `drizzle.config.ts` inchangé (dialect `postgresql`, agnostique du driver).
 
@@ -34,12 +36,11 @@ On est passé du driver Neon HTTP au driver standard **node-postgres** :
 > *prepared statements* nommés persistants ni sur des fonctionnalités de
 > session. node-postgres/drizzle n'en utilise pas par défaut → OK.
 
-## Mettre à jour Vercel (à faire pour basculer la prod)
+## Changer la chaîne de connexion
 
-1. Vercel → projet DNA → **Settings → Environment Variables**.
-2. Éditer `DATABASE_URL` (Production, et Preview/Development si voulu) avec la
-   nouvelle valeur ci-dessus.
-3. **Redeploy** (les variables ne sont prises qu'au prochain déploiement).
+1. Le `.env` du serveur d'application, puis redémarrer le conteneur.
+2. Le secret GitHub `DATABASE_URL` : `next build` lit la base (des pages sont
+   pré-rendues avec les vraies données), le prochain build doit la joindre.
 
 ## Runner commissions (Raspberry Pi)
 

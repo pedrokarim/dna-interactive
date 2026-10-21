@@ -9,9 +9,8 @@ import { sendAnnouncementEmails } from "@/lib/notifications/announcement-email";
 import { getSiteUrl } from "@/lib/auth/site";
 
 export const dynamic = "force-dynamic";
-// Un broadcast email/push peut dépasser la seconde : on demande la durée max
-// autorisée sur le plan Vercel plutôt que de laisser la fonction être coupée.
-export const maxDuration = 60;
+// Un broadcast email/push peut dépasser la seconde : la limite réelle est le
+// `proxy_read_timeout` de nginx (90 s) devant le conteneur.
 
 const schemaInput = z.object({
   id: z.string().uuid(),

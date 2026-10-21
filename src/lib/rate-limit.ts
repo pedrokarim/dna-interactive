@@ -7,14 +7,14 @@ export type RateLimitResult = { ok: true } | { ok: false; retryAfter: number };
 const PURGE_ONE_IN = 200;
 
 /**
- * Rate-limit à fenêtre fixe, **partagé entre toutes les instances serverless**
+ * Rate-limit à fenêtre fixe, **partagé entre tous les processus**
  * via Postgres (table `rate_limits`).
  *
  * L'ancienne implémentation stockait les compteurs dans une `Map` en mémoire de
- * process : sur Vercel, chaque lambda avait son propre état (réparti sur N
- * instances, remis à zéro au cold-start) → la limite réelle était `limit × N`
- * et se réinitialisait seule. Toutes les protections anti-abus étaient donc
- * contournables.
+ * process : sur Vercel (hébergeur jusqu'en octobre 2026), chaque lambda avait
+ * son propre état (réparti sur N instances, remis à zéro au cold-start) → la
+ * limite réelle était `limit × N` et se réinitialisait seule. Toutes les
+ * protections anti-abus étaient donc contournables.
  *
  * Ici, un **upsert atomique** (un seul aller-retour SQL) incrémente le compteur
  * et réinitialise la fenêtre si elle est expirée. Le résultat est autoritaire
