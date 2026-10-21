@@ -17,6 +17,10 @@ ARG NODE_VERSION=22
 FROM oven/bun:${BUN_VERSION} AS deps
 WORKDIR /app
 COPY package.json bun.lock ./
+# puppeteer et playwright (outils de dev) téléchargent un navigateur à
+# l'installation : inutile au build, et le postinstall échoue sans `unzip`.
+ENV PUPPETEER_SKIP_DOWNLOAD=true \
+    PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
 RUN bun install --frozen-lockfile
 
 # ── Build ───────────────────────────────────────────────────────────────────
