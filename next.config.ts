@@ -4,6 +4,9 @@ import createNextIntlPlugin from 'next-intl/plugin';
 const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
 const nextConfig: NextConfig = {
+  // Serveur autonome (`.next/standalone/server.js`) pour l'image Docker
+  // d'ascencia-prod. `public/` et `.next/static` sont copiés par le Dockerfile.
+  output: "standalone",
   turbopack: {
     root: __dirname,
   },

@@ -1,0 +1,33 @@
+# Contexte de build de l'image de production.
+#
+# Tout ce qui n'entre pas dans l'image : poids inutile, ou fuite possible.
+
+# Secrets et configuration locale
+.env
+.env.*
+!env.local.example
+.vercel
+
+# Données de recherche (extractions du jeu, plusieurs Go, déjà hors git)
+research_data
+
+# Sorties et dépendances, reconstruites dans l'image
+node_modules
+.next
+storybook-static
+coverage
+*.tsbuildinfo
+
+# Documentation et ateliers sans rôle à l'exécution
+docs
+design-lab
+.git
+.github
+.claude
+*.md
+!README.md
+
+# Divers
+*.log
+.DS_Store
+Thumbs.db
