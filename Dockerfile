@@ -48,7 +48,12 @@ ENV NEXT_PUBLIC_RECAPTCHA_SITE_KEY=$NEXT_PUBLIC_RECAPTCHA_SITE_KEY \
     NEXT_TELEMETRY_DISABLED=1 \
     NODE_ENV=production
 
-RUN node node_modules/next/dist/bin/next build
+# La base est lue pendant le build (`src/auth.ts` l'ouvre au chargement, des
+# pages sont pré-rendues avec les vraies données), comme sur Vercel. Elle entre
+# par un secret BuildKit : jamais dans une couche de l'image.
+RUN --mount=type=secret,id=database_url \
+    DATABASE_URL="$(cat /run/secrets/database_url)" \
+    node node_modules/next/dist/bin/next build
 
 # ── Exécution ───────────────────────────────────────────────────────────────
 # Debian et non Alpine : `sharp` (optimisation des images) y trouve ses
