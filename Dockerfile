@@ -24,7 +24,9 @@ ENV PUPPETEER_SKIP_DOWNLOAD=true \
 RUN bun install --frozen-lockfile
 
 # ── Build ───────────────────────────────────────────────────────────────────
-FROM oven/bun:${BUN_VERSION} AS build
+# Compilé par Node, comme sur Vercel (`bun install`, puis `next build` sous
+# Node) : Bun 1.3.14 plante en plein `next build` dans le conteneur (SIGILL).
+FROM node:${NODE_VERSION}-bookworm-slim AS build
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
@@ -46,7 +48,7 @@ ENV NEXT_PUBLIC_RECAPTCHA_SITE_KEY=$NEXT_PUBLIC_RECAPTCHA_SITE_KEY \
     NEXT_TELEMETRY_DISABLED=1 \
     NODE_ENV=production
 
-RUN bun run build
+RUN node node_modules/next/dist/bin/next build
 
 # ── Exécution ───────────────────────────────────────────────────────────────
 # Debian et non Alpine : `sharp` (optimisation des images) y trouve ses
