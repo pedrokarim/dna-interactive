@@ -102,6 +102,7 @@ export const NAVIGATION = {
   map: "/map",
   calendar: "/calendar",
   theatre: "/theatre",
+  planner: "/planner",
   items: "/items",
   characters: "/characters",
   cosmetics: "/cosmetics",

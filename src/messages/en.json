@@ -64,7 +64,8 @@
     "discord": "Discord",
     "twitter": "X",
     "cosmetics": "Cosmetics",
-    "theatre": "Immersive Theatre"
+    "theatre": "Immersive Theatre",
+    "planner": "Planner"
   },
   "common": {
     "close": "Close",
@@ -983,7 +984,9 @@
     "favoritesTitle": "Favorite Demon Wedges",
     "favoritesDescription": "Find your favorite Demon Wedges, saved in your browser, with filters and your choice of languages.",
     "itemCategorySearch": "Search, filter and compare names across {count} languages.",
-    "itemDetailFallback": "{category}: {name} details in {count} languages."
+    "itemDetailFallback": "{category}: {name} details in {count} languages.",
+    "plannerTitle": "Farming planner – materials per character, weapon and Demon Wedge",
+    "plannerDescription": "Plan how to level your Duet Night Abyss characters, weapons and Demon Wedges: the materials you need, what you are missing and which missions to farm, from any build in one click."
   },
   "commissions": {
     "eyebrow": "Covert Commissions",
@@ -1449,7 +1452,8 @@
       "pact": "The Pact",
       "patronage": "Patronage",
       "theater": "The Theater",
-      "atlas": "Atlas of Atlasia"
+      "atlas": "Atlas of Atlasia",
+      "logbook": "The Logbook"
     }
   },
   "homeHub": {
@@ -2485,6 +2489,152 @@
       "title": "Fishing",
       "name": "Fishing",
       "description": "Fish, rods, lures and fishing currency."
+    }
+  },
+  "planner": {
+    "heading": "Farming planner",
+    "intro": "Pick a character, a weapon, a Demon Wedge or a whole build: the planner adds up what it takes, subtracts what you already have and tells you where to farm the rest.",
+    "xpCharacter": "Character EXP",
+    "xpWeapon": "Weapon EXP",
+    "draftName": "Blueprint: {name}",
+    "skillSlot": "Skill {index}",
+    "loadError": "The planner data could not be loaded. Reload the page in a moment.",
+    "emptyTitle": "Your plan is empty",
+    "emptyText": "Add a character, a weapon or a Demon Wedge, or open a build and choose \"Plan this build\": the farming list builds itself.",
+    "kind": {
+      "character": "Character",
+      "weapon": "Weapon",
+      "wedge": "Demon Wedge",
+      "wedgeCopies": "Demon Wedge · {count, plural, one {# copy} other {# copies}}"
+    },
+    "steps": {
+      "level": "Level {from} → {to}",
+      "break": "Ascension {n}",
+      "skill": "{skill} level {to}",
+      "intron": "Intron {n}",
+      "refine": "Refinement {n}",
+      "acquireWeapon": "Get the weapon",
+      "acquireWedge": "Get {count, plural, one {# copy} other {# copies}}",
+      "rank": "Rank {n}",
+      "star": "Rank {n} (star)"
+    },
+    "materials": {
+      "empty": "No materials yet.",
+      "allSet": "You have everything you need. Just confirm the steps in the Goals tab.",
+      "completeCount": "{count, plural, one {# complete line} other {# complete lines}}",
+      "forCrafting": "to forge: {name}",
+      "required": "Required: {n}",
+      "crafted": "To forge: {n}",
+      "done": "Complete",
+      "missing": "Missing: {n}",
+      "ownedOf": "Quantity owned: {name}",
+      "craftChoice": "Farm or forge",
+      "farm": "Farm",
+      "craft": "Forge",
+      "owned": "I have",
+      "haveAll": "I have all"
+    },
+    "goals": {
+      "empty": "No goals.",
+      "reached": "Reached",
+      "ready": "Ready",
+      "moveUp": "Raise priority",
+      "moveDown": "Lower priority",
+      "pause": "Pause",
+      "resume": "Resume",
+      "remove": "Remove",
+      "progress": "Materials gathered",
+      "paused": "Paused",
+      "nextSteps": "Remaining steps",
+      "nothingLeft": "Goal reached.",
+      "allSteps": "Show all {count} steps",
+      "fewerSteps": "Show less",
+      "done": "Done",
+      "doneHint": "Confirms the step and removes its cost from your stock",
+      "notYet": "Not possible in game yet",
+      "current": "Now",
+      "target": "Target",
+      "currentOf": "{label}: now",
+      "targetOf": "{label}: target",
+      "noData": "No cost data for this target.",
+      "level": "Level",
+      "breaks": "Ascensions",
+      "intron": "Introns",
+      "weaponOwned": "Weapon owned",
+      "refinement": "Refinement",
+      "copies": "Copies equipped",
+      "copiesOwned": "Copies owned",
+      "rank": "Rank",
+      "starsHint": "Rank {max} at most without stars. Each star (up to {stars}) adds a rank and consumes copies of the wedge, or {resource}.",
+      "raised": "{skill} level {level} needs {breaks} ascensions: the goal was raised.",
+      "removeTitle": "Remove this goal?",
+      "removeMessage": "{name} will leave the plan. Your stock does not change."
+    },
+    "sources": {
+      "empty": "Nothing to farm.",
+      "intro": "Missions are ranked by how many missing materials they drop. The planner tells you where, not yet how many runs.",
+      "unknown": "Unknown source",
+      "level": "Lv. {n}",
+      "levels": "Lv. {min} to {max}",
+      "stop": "Stop {n}",
+      "other": "Other source",
+      "covers": "{count, plural, one {# missing material} other {# missing materials}}"
+    },
+    "add": {
+      "button": "Add a goal",
+      "title": "Add a goal",
+      "kind": "Goal type",
+      "search": "Search…",
+      "empty": "No results."
+    },
+    "build": {
+      "title": "Plan this build",
+      "intro": "Untick what you do not need. A target already in your plan is not duplicated: its target is raised if needed.",
+      "nothing": "This build has nothing to plan.",
+      "alternative": "alternative",
+      "alreadyIn": "already in the plan",
+      "cancel": "Cancel",
+      "confirm": "Add {count, plural, one {# goal} other {# goals}}"
+    },
+    "builds": {
+      "remove": "Remove the build {label}",
+      "removeTitle": "Remove this build?",
+      "removeMessage": "What only \"{label}\" asks for will leave the plan. The rest is kept."
+    },
+    "reset": {
+      "button": "Clear the plan",
+      "title": "Clear the plan?",
+      "message": "All goals, the stock you entered and your forging choices will be erased from this browser."
+    },
+    "undo": {
+      "step": "{step} done for {name}.",
+      "remove": "{name} removed from the plan.",
+      "removeBuild": "Build \"{label}\" removed from the plan.",
+      "reset": "Plan cleared.",
+      "button": "Undo",
+      "dismiss": "Close"
+    },
+    "summary": {
+      "label": "Plan summary",
+      "progress": "Materials gathered",
+      "toFarm": "Materials to farm",
+      "toFarmHint": "out of {count} in total",
+      "missingOf": "missing out of {n}"
+    },
+    "tabs": {
+      "materials": "Materials ({count})",
+      "goals": "Goals ({count})",
+      "sources": "Where to farm"
+    },
+    "planThisBuild": "Plan this build",
+    "sync": {
+      "anonymous": "Plan saved in this browser.",
+      "signIn": "Sign in to find it on all your devices",
+      "loading": "Syncing with your account…",
+      "synced": "Plan saved to your account.",
+      "saving": "Saving…",
+      "error": "Sync is not possible right now: the plan stays saved in this browser.",
+      "unavailable": "Saving to your account is not available yet: the plan stays in this browser."
     }
   }
 }

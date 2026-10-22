@@ -64,7 +64,8 @@
     "discord": "Discord",
     "twitter": "X",
     "cosmetics": "Cosméticos",
-    "theatre": "Teatro inmersivo"
+    "theatre": "Teatro inmersivo",
+    "planner": "Planificador"
   },
   "common": {
     "close": "Cerrar",
@@ -983,7 +984,9 @@
     "favoritesTitle": "Demon Wedges favoritos",
     "favoritesDescription": "Encuentra tus Demon Wedges favoritos, guardados en tu navegador, con filtros e idiomas a elegir.",
     "itemCategorySearch": "Busca, filtra y compara los nombres en {count} idiomas.",
-    "itemDetailFallback": "{category}: ficha de {name} en {count} idiomas."
+    "itemDetailFallback": "{category}: ficha de {name} en {count} idiomas.",
+    "plannerTitle": "Planificador de farmeo – materiales por personaje, arma y Demon Wedge",
+    "plannerDescription": "Planifica la mejora de tus personajes, armas y Demon Wedges de Duet Night Abyss: los materiales necesarios, lo que te falta y en qué misiones farmearlos, a partir de cualquier build con un clic."
   },
   "commissions": {
     "eyebrow": "Comisiones encubiertas",
@@ -1449,7 +1452,8 @@
       "pact": "El Pacto",
       "patronage": "Mecenazgo",
       "theater": "El Teatro",
-      "atlas": "Atlas de Atlasia"
+      "atlas": "Atlas de Atlasia",
+      "logbook": "El Cuaderno de ruta"
     }
   },
   "homeHub": {
@@ -2485,6 +2489,152 @@
       "title": "Pesca",
       "name": "Pesca",
       "description": "Peces, cañas, señuelos y moneda de pesca."
+    }
+  },
+  "planner": {
+    "heading": "Planificador de farmeo",
+    "intro": "Elige un personaje, un arma, un Demon Wedge o un build completo: el planificador suma lo necesario, resta lo que ya tienes y te dice dónde farmear el resto.",
+    "xpCharacter": "EXP de personaje",
+    "xpWeapon": "EXP de arma",
+    "draftName": "Plano de forja: {name}",
+    "skillSlot": "Habilidad {index}",
+    "loadError": "No se pudieron cargar los datos del planificador. Recarga la página en un momento.",
+    "emptyTitle": "Tu plan está vacío",
+    "emptyText": "Añade un personaje, un arma o un Demon Wedge, o abre un build y elige «Planificar este build»: la lista de farmeo se crea sola.",
+    "kind": {
+      "character": "Personaje",
+      "weapon": "Arma",
+      "wedge": "Demon Wedge",
+      "wedgeCopies": "Demon Wedge · {count, plural, one {# copia} other {# copias}}"
+    },
+    "steps": {
+      "level": "Nivel {from} → {to}",
+      "break": "Ascensión {n}",
+      "skill": "{skill} nivel {to}",
+      "intron": "Intrón {n}",
+      "refine": "Refinamiento {n}",
+      "acquireWeapon": "Conseguir el arma",
+      "acquireWedge": "Conseguir {count, plural, one {# copia} other {# copias}}",
+      "rank": "Rango {n}",
+      "star": "Rango {n} (estrella)"
+    },
+    "materials": {
+      "empty": "Aún no hay materiales.",
+      "allSet": "Tienes todo lo necesario. Solo falta confirmar los pasos en la pestaña Objetivos.",
+      "completeCount": "{count, plural, one {# línea completa} other {# líneas completas}}",
+      "forCrafting": "para forjar: {name}",
+      "required": "Necesario: {n}",
+      "crafted": "Por forjar: {n}",
+      "done": "Completo",
+      "missing": "Falta: {n}",
+      "ownedOf": "Cantidad que tienes: {name}",
+      "craftChoice": "Farmear o forjar",
+      "farm": "Farmear",
+      "craft": "Forjar",
+      "owned": "Tengo",
+      "haveAll": "Lo tengo todo"
+    },
+    "goals": {
+      "empty": "No hay objetivos.",
+      "reached": "Alcanzado",
+      "ready": "Listo",
+      "moveUp": "Subir prioridad",
+      "moveDown": "Bajar prioridad",
+      "pause": "Pausar",
+      "resume": "Reanudar",
+      "remove": "Quitar",
+      "progress": "Materiales reunidos",
+      "paused": "En pausa",
+      "nextSteps": "Pasos restantes",
+      "nothingLeft": "Objetivo alcanzado.",
+      "allSteps": "Ver los {count} pasos",
+      "fewerSteps": "Ver menos",
+      "done": "Hecho",
+      "doneHint": "Confirma el paso y resta su coste de tu inventario",
+      "notYet": "Aún no es posible en el juego",
+      "current": "Actual",
+      "target": "Meta",
+      "currentOf": "{label}: actual",
+      "targetOf": "{label}: meta",
+      "noData": "No hay datos de coste para este objetivo.",
+      "level": "Nivel",
+      "breaks": "Ascensiones",
+      "intron": "Intrones",
+      "weaponOwned": "Arma obtenida",
+      "refinement": "Refinamiento",
+      "copies": "Copias equipadas",
+      "copiesOwned": "Copias que tienes",
+      "rank": "Rango",
+      "starsHint": "Rango {max} como máximo sin estrellas. Cada estrella (hasta {stars}) añade un rango y consume copias del wedge, o {resource}.",
+      "raised": "{skill} nivel {level} requiere {breaks} ascensiones: se ha elevado el objetivo.",
+      "removeTitle": "¿Quitar el objetivo?",
+      "removeMessage": "{name} saldrá del plan. Tu inventario no cambia."
+    },
+    "sources": {
+      "empty": "Nada que farmear.",
+      "intro": "Las misiones se ordenan según cuántos materiales que te faltan dan. El planificador dice dónde, todavía no cuántas partidas.",
+      "unknown": "Fuente desconocida",
+      "level": "Nv. {n}",
+      "levels": "Nv. {min} a {max}",
+      "stop": "Parada {n}",
+      "other": "Otra fuente",
+      "covers": "{count, plural, one {# material que falta} other {# materiales que faltan}}"
+    },
+    "add": {
+      "button": "Añadir un objetivo",
+      "title": "Añadir un objetivo",
+      "kind": "Tipo de objetivo",
+      "search": "Buscar…",
+      "empty": "Sin resultados."
+    },
+    "build": {
+      "title": "Planificar este build",
+      "intro": "Desmarca lo que no necesites. Un objetivo que ya está en tu plan no se duplica: su meta se eleva si hace falta.",
+      "nothing": "Este build no tiene nada que planificar.",
+      "alternative": "alternativa",
+      "alreadyIn": "ya en el plan",
+      "cancel": "Cancelar",
+      "confirm": "Añadir {count, plural, one {# objetivo} other {# objetivos}}"
+    },
+    "builds": {
+      "remove": "Quitar el build {label}",
+      "removeTitle": "¿Quitar este build?",
+      "removeMessage": "Lo que solo «{label}» pide saldrá del plan. El resto se conserva."
+    },
+    "reset": {
+      "button": "Vaciar el plan",
+      "title": "¿Vaciar el plan?",
+      "message": "Todos los objetivos, el inventario introducido y tus elecciones de forja se borrarán de este navegador."
+    },
+    "undo": {
+      "step": "{step} hecho para {name}.",
+      "remove": "{name} quitado del plan.",
+      "removeBuild": "Build «{label}» quitado del plan.",
+      "reset": "Plan vaciado.",
+      "button": "Deshacer",
+      "dismiss": "Cerrar"
+    },
+    "summary": {
+      "label": "Resumen del plan",
+      "progress": "Materiales reunidos",
+      "toFarm": "Materiales por farmear",
+      "toFarmHint": "de {count} en total",
+      "missingOf": "faltan de {n}"
+    },
+    "tabs": {
+      "materials": "Materiales ({count})",
+      "goals": "Objetivos ({count})",
+      "sources": "Dónde farmear"
+    },
+    "planThisBuild": "Planificar este build",
+    "sync": {
+      "anonymous": "Plan guardado en este navegador.",
+      "signIn": "Inicia sesión para tenerlo en todos tus dispositivos",
+      "loading": "Sincronizando con tu cuenta…",
+      "synced": "Plan guardado en tu cuenta.",
+      "saving": "Guardando…",
+      "error": "No se puede sincronizar ahora: el plan sigue guardado en este navegador.",
+      "unavailable": "Guardar en la cuenta aún no está disponible: el plan se queda en este navegador."
     }
   }
 }

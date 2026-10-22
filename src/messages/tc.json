@@ -64,7 +64,8 @@
     "discord": "Discord",
     "twitter": "X",
     "cosmetics": "外觀",
-    "theatre": "沉浸式戲劇"
+    "theatre": "沉浸式戲劇",
+    "planner": "培養規劃"
   },
   "common": {
     "close": "關閉",
@@ -983,7 +984,9 @@
     "favoritesTitle": "收藏的 Demon Wedge",
     "favoritesDescription": "查看儲存在瀏覽器中的收藏 Demon Wedge，可使用篩選並選擇顯示語言。",
     "itemCategorySearch": "搜尋、篩選並比較 {count} 種語言的名稱。",
-    "itemDetailFallback": "{category}：{name} 的詳細資料（{count} 種語言）。"
+    "itemDetailFallback": "{category}：{name} 的詳細資料（{count} 種語言）。",
+    "plannerTitle": "培養規劃 – 角色、武器與Demon Wedge所需素材",
+    "plannerDescription": "規劃二重螺旋的角色、武器與Demon Wedge培養：所需素材、尚缺多少、該刷哪些委託，從任一配裝一鍵產生。"
   },
   "commissions": {
     "eyebrow": "密令委託",
@@ -1449,7 +1452,8 @@
       "pact": "契約",
       "patronage": "贊助",
       "theater": "劇場",
-      "atlas": "阿特拉西亞地圖集"
+      "atlas": "阿特拉西亞地圖集",
+      "logbook": "航行日誌"
     }
   },
   "homeHub": {
@@ -2485,6 +2489,152 @@
       "title": "釣魚",
       "name": "釣魚",
       "description": "魚類、釣竿、魚餌與釣魚貨幣。"
+    }
+  },
+  "planner": {
+    "heading": "培養規劃",
+    "intro": "選擇角色、武器、Demon Wedge或整套配裝，規劃器會加總所需素材、扣除已持有的部分，並告訴你剩下的去哪裡刷。",
+    "xpCharacter": "角色經驗",
+    "xpWeapon": "武器經驗",
+    "draftName": "鍛造圖紙：{name}",
+    "skillSlot": "技能{index}",
+    "loadError": "無法載入規劃器資料，請稍後重新整理頁面。",
+    "emptyTitle": "規劃是空的",
+    "emptyText": "加入角色、武器或Demon Wedge，或打開配裝並選擇「規劃此配裝」，刷取清單就會自動產生。",
+    "kind": {
+      "character": "角色",
+      "weapon": "武器",
+      "wedge": "Demon Wedge",
+      "wedgeCopies": "Demon Wedge · {count}個"
+    },
+    "steps": {
+      "level": "等級 {from} → {to}",
+      "break": "突破 {n}",
+      "skill": "{skill} 等級{to}",
+      "intron": "Intron {n}",
+      "refine": "精煉 {n}",
+      "acquireWeapon": "取得武器",
+      "acquireWedge": "取得{count}個",
+      "rank": "等級 {n}",
+      "star": "等級 {n}（星）"
+    },
+    "materials": {
+      "empty": "目前沒有素材。",
+      "allSet": "所需素材都已備齊，只要在「目標」分頁確認步驟即可。",
+      "completeCount": "已備齊 {count} 項",
+      "forCrafting": "鍛造用：{name}",
+      "required": "需要：{n}",
+      "crafted": "需鍛造：{n}",
+      "done": "已備齊",
+      "missing": "尚缺：{n}",
+      "ownedOf": "持有數量：{name}",
+      "craftChoice": "刷取或鍛造",
+      "farm": "刷取",
+      "craft": "鍛造",
+      "owned": "持有",
+      "haveAll": "全部持有"
+    },
+    "goals": {
+      "empty": "沒有目標。",
+      "reached": "已達成",
+      "ready": "已備妥",
+      "moveUp": "提高優先順序",
+      "moveDown": "降低優先順序",
+      "pause": "暫停",
+      "resume": "繼續",
+      "remove": "移除",
+      "progress": "素材收集度",
+      "paused": "已暫停",
+      "nextSteps": "剩餘步驟",
+      "nothingLeft": "目標已達成。",
+      "allSteps": "顯示全部 {count} 個步驟",
+      "fewerSteps": "收合",
+      "done": "完成",
+      "doneHint": "確認此步驟並從持有量扣除其消耗",
+      "notYet": "遊戲中尚無法進行",
+      "current": "目前",
+      "target": "目標",
+      "currentOf": "{label}：目前",
+      "targetOf": "{label}：目標",
+      "noData": "找不到此目標的消耗資料。",
+      "level": "等級",
+      "breaks": "突破",
+      "intron": "Intron",
+      "weaponOwned": "已持有武器",
+      "refinement": "精煉",
+      "copies": "裝備數量",
+      "copiesOwned": "持有數量",
+      "rank": "等級",
+      "starsHint": "未升星時最高等級為 {max}。每顆星（最多 {stars} 顆）提升一級，並消耗相同的Wedge或{resource}。",
+      "raised": "{skill}要到等級{level}需要突破{breaks}次，已提高目標。",
+      "removeTitle": "移除此目標？",
+      "removeMessage": "{name}將從規劃中移除，持有量不變。"
+    },
+    "sources": {
+      "empty": "沒有需要刷的素材。",
+      "intro": "委託依掉落的缺少素材數量排序。目前只告訴你去哪裡刷，還無法估算次數。",
+      "unknown": "來源不明",
+      "level": "Lv.{n}",
+      "levels": "Lv.{min}～{max}",
+      "stop": "第{n}站",
+      "other": "其他來源",
+      "covers": "缺少素材 {count} 項"
+    },
+    "add": {
+      "button": "新增目標",
+      "title": "新增目標",
+      "kind": "目標類型",
+      "search": "搜尋…",
+      "empty": "沒有結果。"
+    },
+    "build": {
+      "title": "規劃此配裝",
+      "intro": "取消勾選不需要的項目。已在規劃中的目標不會重複，必要時只會提高目標。",
+      "nothing": "此配裝沒有可規劃的項目。",
+      "alternative": "替代",
+      "alreadyIn": "已在規劃中",
+      "cancel": "取消",
+      "confirm": "新增 {count} 個目標"
+    },
+    "builds": {
+      "remove": "移除配裝「{label}」",
+      "removeTitle": "移除此配裝？",
+      "removeMessage": "只有「{label}」需要的項目會從規劃中移除，其餘保留。"
+    },
+    "reset": {
+      "button": "清空規劃",
+      "title": "清空規劃？",
+      "message": "所有目標、輸入的持有量與鍛造選擇都會從這個瀏覽器中清除。"
+    },
+    "undo": {
+      "step": "{name}：已完成{step}。",
+      "remove": "已將{name}從規劃中移除。",
+      "removeBuild": "已將配裝「{label}」從規劃中移除。",
+      "reset": "已清空規劃。",
+      "button": "復原",
+      "dismiss": "關閉"
+    },
+    "summary": {
+      "label": "規劃摘要",
+      "progress": "素材收集度",
+      "toFarm": "需刷取的素材",
+      "toFarmHint": "共 {count} 項",
+      "missingOf": "{n} 中尚缺"
+    },
+    "tabs": {
+      "materials": "素材（{count}）",
+      "goals": "目標（{count}）",
+      "sources": "刷取地點"
+    },
+    "planThisBuild": "規劃此配裝",
+    "sync": {
+      "anonymous": "規劃已儲存在這個瀏覽器中。",
+      "signIn": "登入即可在所有裝置上使用",
+      "loading": "正在與帳號同步…",
+      "synced": "規劃已儲存到你的帳號。",
+      "saving": "儲存中…",
+      "error": "目前無法同步，規劃仍儲存在這個瀏覽器中。",
+      "unavailable": "尚無法儲存到帳號，規劃會保留在這個瀏覽器中。"
     }
   }
 }

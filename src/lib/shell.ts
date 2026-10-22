@@ -32,6 +32,7 @@ export const SHELL_NAV_PRIMARY: ShellNavEntry[] = [
   { key: "cosmetics", href: NAVIGATION.cosmetics },
   { key: "builder", href: NAVIGATION.builder },
   { key: "builds", href: NAVIGATION.builds },
+  { key: "planner", href: NAVIGATION.planner },
   { key: "commissions", href: NAVIGATION.commissions },
 ];
 
@@ -96,6 +97,7 @@ const SHELL_BREADCRUMBS: Record<string, BreadcrumbKey> = {
   "/items/weapons": "arsenal",
   "/login": "threshold",
   "/notifications": "chronicle",
+  "/planner": "logbook",
   "/profile": "seal",
   "/reset-password": "threshold",
   "/signup": "pact",
@@ -130,6 +132,7 @@ export type BreadcrumbKey =
   | "pact"
   | "patronage"
   | "theater"
+  | "logbook"
   | "atlas";
 
 const DEFAULT_BREADCRUMB: BreadcrumbKey = "hall";

@@ -1849,6 +1849,7 @@ export function BuildTabContent({
   const locale = useLocale();
   const t = useTranslations('characterDetail');
   const tcb = useTranslations('communityBuilds');
+  const tPlanner = useTranslations('planner');
   const [activeBuildIndex, setActiveBuildIndex] = useState(0);
   const [showTrackAdjust, setShowTrackAdjust] = useState(true);
   // Dates des builds maison uniquement : un build communautaire porte les siennes.
@@ -1961,6 +1962,17 @@ export function BuildTabContent({
             </>
           ) : officialHeader ? (
             <span className="font-sans text-xs text-muted">{tcb("officialDesc")}</span>
+          ) : null}
+          {/* Planificateur : le build est retrouvé côté serveur par perso,
+              élément et rang dans la liste filtrée par élément (cf.
+              `resolvePlannerBuild`). */}
+          {officialHeader ? (
+            <Link
+              href={`${NAVIGATION.planner}?build=official:${character.id}:${characterElement}:${activeBuildIndex}`}
+              className="inline-flex items-center gap-1.5 rounded-sm border border-line/30 px-2.5 py-1 font-caps text-[0.58rem] uppercase tracking-[0.14em] text-gold transition-colors hover:border-gold hover:text-gold-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60"
+            >
+              {tPlanner("planThisBuild")}
+            </Link>
           ) : null}
         </div>
       ) : null}

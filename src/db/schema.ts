@@ -649,6 +649,23 @@ export const farmRouteReports = pgTable(
   ],
 );
 
+/**
+ * Plan du planificateur de farm (`src/lib/planner/`) : objectifs, stock saisi
+ * et choix de forge. Une ligne par compte, réécrite en entier à chaque
+ * sauvegarde, revalidée par `plannerStateSchema` à chaque lecture comme à
+ * chaque écriture. Le nom évite toute confusion avec `farm_routes` (carte).
+ */
+export const farmPlans = pgTable("farm_plans", {
+  userId: text("user_id")
+    .primaryKey()
+    .references(() => users.id, { onDelete: "cascade" }),
+  goals: jsonb("goals").$type<unknown[]>().notNull().default([]),
+  inventory: jsonb("inventory").$type<Record<string, number>>().notNull().default({}),
+  craftChoices: jsonb("craft_choices").$type<Record<string, string>>().notNull().default({}),
+  schemaVersion: integer("schema_version").notNull().default(1),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
 /** Filtre des commissions tel que stocké (miroir de `CommissionFilter`, `src/lib/commissions/preferences.ts`). */
 export type StoredCommissionFilter = {
   regions: string[];

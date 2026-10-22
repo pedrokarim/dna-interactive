@@ -64,7 +64,8 @@
     "discord": "Discord",
     "twitter": "X",
     "cosmetics": "外見",
-    "theatre": "体験型劇場"
+    "theatre": "体験型劇場",
+    "planner": "育成プランナー"
   },
   "common": {
     "close": "閉じる",
@@ -983,7 +984,9 @@
     "favoritesTitle": "お気に入りのDemon Wedge",
     "favoritesDescription": "ブラウザに保存したお気に入りのDemon Wedgeを、フィルターと表示言語の切り替えで確認できます。",
     "itemCategorySearch": "{count}言語の名称を検索・絞り込み・比較できます。",
-    "itemDetailFallback": "{category}：{name}の詳細（{count}言語）。"
+    "itemDetailFallback": "{category}：{name}の詳細（{count}言語）。",
+    "plannerTitle": "育成プランナー – キャラ・武器・Demon Wedgeの必要素材",
+    "plannerDescription": "デュエットナイトアビスのキャラクター、武器、Demon Wedgeの育成を計画。必要な素材、不足分、周回すべき依頼をビルドからワンクリックで確認できます。"
   },
   "commissions": {
     "eyebrow": "隠密コミッション",
@@ -1449,7 +1452,8 @@
       "pact": "契約",
       "patronage": "後援",
       "theater": "劇場",
-      "atlas": "アトラシア地図帳"
+      "atlas": "アトラシア地図帳",
+      "logbook": "航海日誌"
     }
   },
   "homeHub": {
@@ -2485,6 +2489,152 @@
       "title": "釣り",
       "name": "釣り",
       "description": "魚、釣り竿、ルアー、釣り用通貨。"
+    }
+  },
+  "planner": {
+    "heading": "育成プランナー",
+    "intro": "キャラクター、武器、Demon Wedge、またはビルドを丸ごと選ぶと、必要な素材を合計し、手持ちを差し引いて、残りの入手先を表示します。",
+    "xpCharacter": "キャラクター経験値",
+    "xpWeapon": "武器経験値",
+    "draftName": "設計図：{name}",
+    "skillSlot": "スキル{index}",
+    "loadError": "プランナーのデータを読み込めませんでした。しばらくしてから再読み込みしてください。",
+    "emptyTitle": "プランは空です",
+    "emptyText": "キャラクター、武器、Demon Wedgeを追加するか、ビルドを開いて「このビルドを計画」を選ぶと、周回リストが自動で作られます。",
+    "kind": {
+      "character": "キャラクター",
+      "weapon": "武器",
+      "wedge": "Demon Wedge",
+      "wedgeCopies": "Demon Wedge · {count}個"
+    },
+    "steps": {
+      "level": "レベル {from} → {to}",
+      "break": "突破 {n}",
+      "skill": "{skill} レベル{to}",
+      "intron": "イントロン {n}",
+      "refine": "精錬 {n}",
+      "acquireWeapon": "武器を入手",
+      "acquireWedge": "{count}個入手",
+      "rank": "ランク {n}",
+      "star": "ランク {n}（星）"
+    },
+    "materials": {
+      "empty": "素材はまだありません。",
+      "allSet": "必要な素材はすべて揃っています。「目標」タブでステップを確定してください。",
+      "completeCount": "揃った素材 {count}件",
+      "forCrafting": "製造用：{name}",
+      "required": "必要：{n}",
+      "crafted": "製造：{n}",
+      "done": "揃っています",
+      "missing": "不足：{n}",
+      "ownedOf": "所持数：{name}",
+      "craftChoice": "周回か製造か",
+      "farm": "周回",
+      "craft": "製造",
+      "owned": "所持",
+      "haveAll": "全部ある"
+    },
+    "goals": {
+      "empty": "目標はありません。",
+      "reached": "達成",
+      "ready": "準備完了",
+      "moveUp": "優先度を上げる",
+      "moveDown": "優先度を下げる",
+      "pause": "一時停止",
+      "resume": "再開",
+      "remove": "削除",
+      "progress": "素材の収集度",
+      "paused": "一時停止中",
+      "nextSteps": "残りのステップ",
+      "nothingLeft": "目標達成。",
+      "allSteps": "全{count}ステップを表示",
+      "fewerSteps": "表示を減らす",
+      "done": "完了",
+      "doneHint": "ステップを確定し、そのコストを所持数から差し引きます",
+      "notYet": "ゲーム内ではまだ実行できません",
+      "current": "現在",
+      "target": "目標",
+      "currentOf": "{label}：現在",
+      "targetOf": "{label}：目標",
+      "noData": "この対象のコストデータがありません。",
+      "level": "レベル",
+      "breaks": "突破",
+      "intron": "イントロン",
+      "weaponOwned": "武器を所持",
+      "refinement": "精錬",
+      "copies": "装備する数",
+      "copiesOwned": "所持数",
+      "rank": "ランク",
+      "starsHint": "星なしの最大ランクは{max}。星（最大{stars}）ごとにランクが1上がり、同じWedgeまたは{resource}を消費します。",
+      "raised": "{skill}をレベル{level}にするには突破{breaks}回が必要なため、目標を引き上げました。",
+      "removeTitle": "目標を削除しますか？",
+      "removeMessage": "{name}をプランから外します。所持数は変わりません。"
+    },
+    "sources": {
+      "empty": "周回する必要はありません。",
+      "intro": "不足素材を多く落とす依頼から順に並べています。周回回数の目安はまだ表示しません。",
+      "unknown": "入手先不明",
+      "level": "Lv.{n}",
+      "levels": "Lv.{min}〜{max}",
+      "stop": "{n}か所目",
+      "other": "その他の入手先",
+      "covers": "不足素材 {count}件"
+    },
+    "add": {
+      "button": "目標を追加",
+      "title": "目標を追加",
+      "kind": "目標の種類",
+      "search": "検索…",
+      "empty": "該当なし。"
+    },
+    "build": {
+      "title": "このビルドを計画",
+      "intro": "不要なものはチェックを外してください。プランにすでにある対象は重複せず、必要なら目標だけ引き上げます。",
+      "nothing": "このビルドには計画できる対象がありません。",
+      "alternative": "代替",
+      "alreadyIn": "プランに追加済み",
+      "cancel": "キャンセル",
+      "confirm": "目標を{count}件追加"
+    },
+    "builds": {
+      "remove": "ビルド「{label}」を外す",
+      "removeTitle": "このビルドを外しますか？",
+      "removeMessage": "「{label}」だけが必要とする目標をプランから外します。それ以外は残ります。"
+    },
+    "reset": {
+      "button": "プランを空にする",
+      "title": "プランを空にしますか？",
+      "message": "すべての目標、入力した所持数、製造の選択がこのブラウザから消去されます。"
+    },
+    "undo": {
+      "step": "{name}：{step}を完了しました。",
+      "remove": "{name}をプランから外しました。",
+      "removeBuild": "ビルド「{label}」をプランから外しました。",
+      "reset": "プランを空にしました。",
+      "button": "元に戻す",
+      "dismiss": "閉じる"
+    },
+    "summary": {
+      "label": "プランの概要",
+      "progress": "素材の収集度",
+      "toFarm": "周回が必要な素材",
+      "toFarmHint": "全{count}件中",
+      "missingOf": "{n}中の不足"
+    },
+    "tabs": {
+      "materials": "素材（{count}）",
+      "goals": "目標（{count}）",
+      "sources": "入手先"
+    },
+    "planThisBuild": "このビルドを計画",
+    "sync": {
+      "anonymous": "プランはこのブラウザに保存されています。",
+      "signIn": "ログインするとすべての端末で使えます",
+      "loading": "アカウントと同期中…",
+      "synced": "プランをアカウントに保存しました。",
+      "saving": "保存中…",
+      "error": "現在同期できません。プランはこのブラウザに保存されています。",
+      "unavailable": "アカウントへの保存はまだ利用できません。プランはこのブラウザに残ります。"
     }
   }
 }

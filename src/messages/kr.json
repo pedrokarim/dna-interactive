@@ -64,7 +64,8 @@
     "discord": "Discord",
     "twitter": "X",
     "cosmetics": "외형",
-    "theatre": "몰입형 연극"
+    "theatre": "몰입형 연극",
+    "planner": "육성 플래너"
   },
   "common": {
     "close": "닫기",
@@ -983,7 +984,9 @@
     "favoritesTitle": "즐겨찾기한 Demon Wedge",
     "favoritesDescription": "브라우저에 저장된 즐겨찾기 Demon Wedge를 필터와 언어 선택으로 확인하세요.",
     "itemCategorySearch": "{count}개 언어의 이름을 검색, 필터링, 비교할 수 있습니다.",
-    "itemDetailFallback": "{category}: {name} 상세 정보 ({count}개 언어)."
+    "itemDetailFallback": "{category}: {name} 상세 정보 ({count}개 언어).",
+    "plannerTitle": "육성 플래너 – 캐릭터·무기·Demon Wedge별 재료",
+    "plannerDescription": "듀엣 나이트 어비스의 캐릭터, 무기, Demon Wedge 육성을 계획하세요. 필요한 재료, 부족한 양, 파밍할 의뢰를 빌드에서 클릭 한 번으로 확인할 수 있습니다."
   },
   "commissions": {
     "eyebrow": "은밀한 커미션",
@@ -1449,7 +1452,8 @@
       "pact": "서약",
       "patronage": "후원",
       "theater": "극장",
-      "atlas": "아틀라시아 지도첩"
+      "atlas": "아틀라시아 지도첩",
+      "logbook": "항해 일지"
     }
   },
   "homeHub": {
@@ -2485,6 +2489,152 @@
       "title": "낚시",
       "name": "낚시",
       "description": "물고기, 낚싯대, 미끼, 낚시 화폐."
+    }
+  },
+  "planner": {
+    "heading": "육성 플래너",
+    "intro": "캐릭터, 무기, Demon Wedge 또는 빌드 전체를 고르면 필요한 재료를 합산하고, 이미 가진 것을 빼고, 나머지를 어디서 파밍할지 알려 줍니다.",
+    "xpCharacter": "캐릭터 경험치",
+    "xpWeapon": "무기 경험치",
+    "draftName": "설계도: {name}",
+    "skillSlot": "스킬 {index}",
+    "loadError": "플래너 데이터를 불러오지 못했습니다. 잠시 후 페이지를 새로고침하세요.",
+    "emptyTitle": "플랜이 비어 있습니다",
+    "emptyText": "캐릭터, 무기, Demon Wedge를 추가하거나 빌드를 열고 '이 빌드 계획하기'를 선택하면 파밍 목록이 자동으로 만들어집니다.",
+    "kind": {
+      "character": "캐릭터",
+      "weapon": "무기",
+      "wedge": "Demon Wedge",
+      "wedgeCopies": "Demon Wedge · {count}개"
+    },
+    "steps": {
+      "level": "레벨 {from} → {to}",
+      "break": "돌파 {n}",
+      "skill": "{skill} 레벨 {to}",
+      "intron": "인트론 {n}",
+      "refine": "재련 {n}",
+      "acquireWeapon": "무기 획득",
+      "acquireWedge": "{count}개 획득",
+      "rank": "랭크 {n}",
+      "star": "랭크 {n} (별)"
+    },
+    "materials": {
+      "empty": "아직 재료가 없습니다.",
+      "allSet": "필요한 재료를 모두 갖췄습니다. '목표' 탭에서 단계를 확인하세요.",
+      "completeCount": "완료된 항목 {count}개",
+      "forCrafting": "제작용: {name}",
+      "required": "필요: {n}",
+      "crafted": "제작: {n}",
+      "done": "완료",
+      "missing": "부족: {n}",
+      "ownedOf": "보유 수량: {name}",
+      "craftChoice": "파밍 또는 제작",
+      "farm": "파밍",
+      "craft": "제작",
+      "owned": "보유",
+      "haveAll": "모두 보유"
+    },
+    "goals": {
+      "empty": "목표가 없습니다.",
+      "reached": "달성",
+      "ready": "준비 완료",
+      "moveUp": "우선순위 올리기",
+      "moveDown": "우선순위 내리기",
+      "pause": "일시 중지",
+      "resume": "재개",
+      "remove": "삭제",
+      "progress": "모은 재료",
+      "paused": "일시 중지됨",
+      "nextSteps": "남은 단계",
+      "nothingLeft": "목표 달성.",
+      "allSteps": "{count}단계 모두 보기",
+      "fewerSteps": "간단히 보기",
+      "done": "완료",
+      "doneHint": "단계를 확인하고 비용을 보유량에서 뺍니다",
+      "notYet": "아직 게임에서 할 수 없습니다",
+      "current": "현재",
+      "target": "목표",
+      "currentOf": "{label}: 현재",
+      "targetOf": "{label}: 목표",
+      "noData": "이 대상의 비용 데이터가 없습니다.",
+      "level": "레벨",
+      "breaks": "돌파",
+      "intron": "인트론",
+      "weaponOwned": "무기 보유",
+      "refinement": "재련",
+      "copies": "장착할 개수",
+      "copiesOwned": "보유 개수",
+      "rank": "랭크",
+      "starsHint": "별 없이 최대 랭크는 {max}입니다. 별(최대 {stars}개)마다 랭크가 1 오르고 같은 Wedge 또는 {resource}을(를) 소모합니다.",
+      "raised": "{skill} 레벨 {level}에는 돌파 {breaks}회가 필요해 목표를 올렸습니다.",
+      "removeTitle": "목표를 삭제할까요?",
+      "removeMessage": "{name}이(가) 플랜에서 빠집니다. 보유량은 바뀌지 않습니다."
+    },
+    "sources": {
+      "empty": "파밍할 것이 없습니다.",
+      "intro": "부족한 재료를 많이 주는 의뢰 순으로 정렬합니다. 아직 반복 횟수는 알려 주지 않습니다.",
+      "unknown": "알 수 없는 출처",
+      "level": "Lv.{n}",
+      "levels": "Lv.{min}~{max}",
+      "stop": "{n}번째 장소",
+      "other": "기타 출처",
+      "covers": "부족한 재료 {count}개"
+    },
+    "add": {
+      "button": "목표 추가",
+      "title": "목표 추가",
+      "kind": "목표 유형",
+      "search": "검색…",
+      "empty": "결과가 없습니다."
+    },
+    "build": {
+      "title": "이 빌드 계획하기",
+      "intro": "필요 없는 항목은 체크를 해제하세요. 이미 플랜에 있는 대상은 중복되지 않고, 필요하면 목표만 올라갑니다.",
+      "nothing": "이 빌드에는 계획할 대상이 없습니다.",
+      "alternative": "대안",
+      "alreadyIn": "이미 플랜에 있음",
+      "cancel": "취소",
+      "confirm": "목표 {count}개 추가"
+    },
+    "builds": {
+      "remove": "빌드 {label} 제거",
+      "removeTitle": "이 빌드를 제거할까요?",
+      "removeMessage": "'{label}'만 요구하는 항목이 플랜에서 빠집니다. 나머지는 유지됩니다."
+    },
+    "reset": {
+      "button": "플랜 비우기",
+      "title": "플랜을 비울까요?",
+      "message": "모든 목표, 입력한 보유량, 제작 선택이 이 브라우저에서 삭제됩니다."
+    },
+    "undo": {
+      "step": "{name}: {step} 완료.",
+      "remove": "{name}을(를) 플랜에서 뺐습니다.",
+      "removeBuild": "빌드 '{label}'을(를) 플랜에서 뺐습니다.",
+      "reset": "플랜을 비웠습니다.",
+      "button": "실행 취소",
+      "dismiss": "닫기"
+    },
+    "summary": {
+      "label": "플랜 요약",
+      "progress": "모은 재료",
+      "toFarm": "파밍할 재료",
+      "toFarmHint": "전체 {count}개 중",
+      "missingOf": "{n} 중 부족"
+    },
+    "tabs": {
+      "materials": "재료 ({count})",
+      "goals": "목표 ({count})",
+      "sources": "파밍 장소"
+    },
+    "planThisBuild": "이 빌드 계획하기",
+    "sync": {
+      "anonymous": "플랜이 이 브라우저에 저장되었습니다.",
+      "signIn": "로그인하면 모든 기기에서 볼 수 있습니다",
+      "loading": "계정과 동기화 중…",
+      "synced": "플랜이 계정에 저장되었습니다.",
+      "saving": "저장 중…",
+      "error": "지금은 동기화할 수 없습니다. 플랜은 이 브라우저에 저장되어 있습니다.",
+      "unavailable": "계정 저장은 아직 사용할 수 없습니다. 플랜은 이 브라우저에 남습니다."
     }
   }
 }

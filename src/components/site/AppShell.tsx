@@ -2,7 +2,7 @@
 
 import { useCallback, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { ArrowUpRight, ChevronsLeft, ChevronsRight, Drama, Info, Menu, X, type LucideIcon } from "lucide-react";
+import { ArrowUpRight, ChevronsLeft, ChevronsRight, ClipboardList, Drama, Info, Menu, X, type LucideIcon } from "lucide-react";
 import Image from "next/image";
 import { Link, usePathname } from "@/i18n/navigation";
 import { DnaAmbientBackdrop, DnaNouveau, DnaPill, DnaSectionMark, cn, useDialogA11y } from "@/components/dna";
@@ -36,6 +36,8 @@ const NAV_ICONS: Record<string, LucideIcon | typeof DiscordIcon | typeof XIcon> 
   twitter: XIcon,
   // Pas encore de glyphe du jeu pour le théâtre : icône de signalétique en attendant.
   theatre: Drama,
+  // Idem pour le planificateur de farm.
+  planner: ClipboardList,
 };
 
 /**

@@ -64,7 +64,8 @@
     "discord": "Discord",
     "twitter": "X",
     "cosmetics": "Cosmétiques",
-    "theatre": "Théâtre immersif"
+    "theatre": "Théâtre immersif",
+    "planner": "Planificateur"
   },
   "common": {
     "close": "Fermer",
@@ -983,7 +984,9 @@
     "favoritesTitle": "Demon Wedges favoris",
     "favoritesDescription": "Retrouve tes Demon Wedges favoris, enregistrés dans ton navigateur, avec filtres et choix des langues.",
     "itemCategorySearch": "Recherche, filtre et compare les noms dans {count} langues.",
-    "itemDetailFallback": "{category} : fiche de {name} dans {count} langues."
+    "itemDetailFallback": "{category} : fiche de {name} dans {count} langues.",
+    "plannerTitle": "Planificateur de farm – matériaux par personnage, arme et Demon Wedge",
+    "plannerDescription": "Planifie la montée de tes personnages, armes et Demon Wedges de Duet Night Abyss : les matériaux à réunir, ce qu’il te manque et les missions où les farmer, à partir d’un build en un clic."
   },
   "commissions": {
     "eyebrow": "Mandats scellés",
@@ -1449,7 +1452,8 @@
       "pact": "Le Pacte",
       "patronage": "Mécénat",
       "theater": "Le Théâtre",
-      "atlas": "Atlas d’Atlasia"
+      "atlas": "Atlas d’Atlasia",
+      "logbook": "Le Carnet de route"
     }
   },
   "homeHub": {
@@ -2485,6 +2489,152 @@
       "title": "Pêche",
       "name": "Pêche",
       "description": "Poissons, cannes, leurres et monnaie liés à la pêche."
+    }
+  },
+  "planner": {
+    "heading": "Planificateur de farm",
+    "intro": "Choisis un personnage, une arme, un Demon Wedge ou un build entier : le planificateur additionne ce qu’il faut, retire ce que tu as déjà et te dit où farmer le reste.",
+    "xpCharacter": "EXP de personnage",
+    "xpWeapon": "EXP d’arme",
+    "draftName": "Plan de forge : {name}",
+    "skillSlot": "Compétence {index}",
+    "loadError": "Les données du planificateur n’ont pas pu être chargées. Recharge la page dans un instant.",
+    "emptyTitle": "Ton plan est vide",
+    "emptyText": "Ajoute un personnage, une arme ou un Demon Wedge, ou ouvre un build et choisis « Planifier ce build » : la liste de farm se construit toute seule.",
+    "kind": {
+      "character": "Personnage",
+      "weapon": "Arme",
+      "wedge": "Demon Wedge",
+      "wedgeCopies": "Demon Wedge · {count, plural, one {# exemplaire} other {# exemplaires}}"
+    },
+    "steps": {
+      "level": "Niveau {from} → {to}",
+      "break": "Ascension {n}",
+      "skill": "{skill} niveau {to}",
+      "intron": "Intron {n}",
+      "refine": "Affinage {n}",
+      "acquireWeapon": "Obtenir l’arme",
+      "acquireWedge": "Obtenir {count, plural, one {# exemplaire} other {# exemplaires}}",
+      "rank": "Rang {n}",
+      "star": "Rang {n} (étoile)"
+    },
+    "materials": {
+      "empty": "Aucun matériau pour l’instant.",
+      "allSet": "Tu as tout ce qu’il faut. Il ne reste qu’à valider les étapes dans l’onglet Objectifs.",
+      "completeCount": "{count, plural, one {# ligne complète} other {# lignes complètes}}",
+      "forCrafting": "pour forger : {name}",
+      "required": "Requis : {n}",
+      "crafted": "À forger : {n}",
+      "done": "Complet",
+      "missing": "Manque : {n}",
+      "ownedOf": "Quantité possédée : {name}",
+      "craftChoice": "Farmer ou forger",
+      "farm": "Farmer",
+      "craft": "Forger",
+      "owned": "J’ai",
+      "haveAll": "J’ai tout"
+    },
+    "goals": {
+      "empty": "Aucun objectif.",
+      "reached": "Atteint",
+      "ready": "Prêt",
+      "moveUp": "Monter en priorité",
+      "moveDown": "Descendre en priorité",
+      "pause": "Mettre en pause",
+      "resume": "Reprendre",
+      "remove": "Retirer",
+      "progress": "Matériaux réunis",
+      "paused": "En pause",
+      "nextSteps": "Étapes restantes",
+      "nothingLeft": "Objectif atteint.",
+      "allSteps": "Voir les {count} étapes",
+      "fewerSteps": "Voir moins",
+      "done": "Fait",
+      "doneHint": "Valide l’étape et retire son coût de ton stock",
+      "notYet": "Pas encore possible dans le jeu",
+      "current": "Actuel",
+      "target": "Visé",
+      "currentOf": "{label} : actuel",
+      "targetOf": "{label} : visé",
+      "noData": "Coûts introuvables pour cette cible.",
+      "level": "Niveau",
+      "breaks": "Ascensions",
+      "intron": "Introns",
+      "weaponOwned": "Arme possédée",
+      "refinement": "Affinage",
+      "copies": "Exemplaires équipés",
+      "copiesOwned": "Exemplaires possédés",
+      "rank": "Rang",
+      "starsHint": "Rang {max} maximum sans étoile. Chaque étoile ({stars} au plus) ajoute un rang et consomme des exemplaires du wedge, ou {resource}.",
+      "raised": "{skill} niveau {level} demande {breaks} ascensions : l’objectif a été relevé.",
+      "removeTitle": "Retirer l’objectif ?",
+      "removeMessage": "{name} sortira du plan. Ton stock ne change pas."
+    },
+    "sources": {
+      "empty": "Rien à farmer.",
+      "intro": "Les missions sont classées par nombre de matériaux manquants qu’elles donnent. Le planificateur dit où, pas encore combien de passages.",
+      "unknown": "Source inconnue",
+      "level": "Niv. {n}",
+      "levels": "Niv. {min} à {max}",
+      "stop": "Étape {n}",
+      "other": "Autre source",
+      "covers": "{count, plural, one {# matériau manquant} other {# matériaux manquants}}"
+    },
+    "add": {
+      "button": "Ajouter un objectif",
+      "title": "Ajouter un objectif",
+      "kind": "Type d’objectif",
+      "search": "Rechercher…",
+      "empty": "Aucun résultat."
+    },
+    "build": {
+      "title": "Planifier ce build",
+      "intro": "Décoche ce dont tu n’as pas besoin. Une cible déjà dans ton plan n’est pas dupliquée : sa cible est relevée si besoin.",
+      "nothing": "Ce build ne contient rien de planifiable.",
+      "alternative": "alternative",
+      "alreadyIn": "déjà dans le plan",
+      "cancel": "Annuler",
+      "confirm": "Ajouter {count, plural, one {# objectif} other {# objectifs}}"
+    },
+    "builds": {
+      "remove": "Retirer le build {label}",
+      "removeTitle": "Retirer ce build ?",
+      "removeMessage": "Ce que « {label} » est seul à demander sortira du plan. Le reste est conservé."
+    },
+    "reset": {
+      "button": "Vider le plan",
+      "title": "Vider le plan ?",
+      "message": "Tous les objectifs, le stock saisi et tes choix de forge seront effacés de ce navigateur."
+    },
+    "undo": {
+      "step": "{step} validé pour {name}.",
+      "remove": "{name} retiré du plan.",
+      "removeBuild": "Build « {label} » retiré du plan.",
+      "reset": "Plan vidé.",
+      "button": "Annuler",
+      "dismiss": "Fermer"
+    },
+    "summary": {
+      "label": "Résumé du plan",
+      "progress": "Matériaux réunis",
+      "toFarm": "Matériaux à farmer",
+      "toFarmHint": "sur {count} au total",
+      "missingOf": "manquants sur {n}"
+    },
+    "tabs": {
+      "materials": "Matériaux ({count})",
+      "goals": "Objectifs ({count})",
+      "sources": "Où farmer"
+    },
+    "planThisBuild": "Planifier ce build",
+    "sync": {
+      "anonymous": "Plan enregistré dans ce navigateur.",
+      "signIn": "Connecte-toi pour le retrouver sur tous tes appareils",
+      "loading": "Synchronisation avec ton compte…",
+      "synced": "Plan enregistré sur ton compte.",
+      "saving": "Enregistrement…",
+      "error": "Synchronisation impossible pour l’instant : le plan reste enregistré dans ce navigateur.",
+      "unavailable": "L’enregistrement sur le compte n’est pas encore disponible : le plan reste dans ce navigateur."
     }
   }
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { ArrowLeft, Copy, Flag, GitFork, Heart } from "lucide-react";
+import { ArrowLeft, ClipboardList, Copy, Flag, GitFork, Heart } from "lucide-react";
 import { GlyphIcons } from "@/components/icons/GameGlyph";
 import { Link, useRouter } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
@@ -27,6 +27,7 @@ export function BuildPageClient({ build, character, characterElement, lang }: Pr
   const router = useRouter();
   const tcb = useTranslations("communityBuilds");
   const tCommon = useTranslations("common");
+  const tPlanner = useTranslations("planner");
   const { confirm } = useConfirm();
 
   const [voteCount, setVoteCount] = useState(build.voteCount);
@@ -170,6 +171,10 @@ export function BuildPageClient({ build, character, characterElement, lang }: Pr
           <Link href={builderImportHref} className={actionButtonClass}>
             <GitFork className="h-3.5 w-3.5" />
             {tcb("useAsBase")}
+          </Link>
+          <Link href={`${NAVIGATION.planner}?build=community:${build.id}`} className={actionButtonClass}>
+            <ClipboardList className="h-3.5 w-3.5" />
+            {tPlanner("planThisBuild")}
           </Link>
           {build.editableByMe ? (
             <>

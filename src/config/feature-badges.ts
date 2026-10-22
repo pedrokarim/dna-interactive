@@ -35,6 +35,7 @@ export type FeatureKey =
   | "drafts"
   | "builder"
   | "builds"
+  | "planner"
   | "commissions";
 
 /** Date ISO située `months` mois après `from` (même jour du mois). */
@@ -50,6 +51,10 @@ export const FEATURE_BADGES: Partial<Record<FeatureKey, FeatureBadgeRule>> = {
 
   // Builder de builds.
   builder: { badge: "new", until: monthsAfter("2026-09-25", 6) },
+
+  // Planificateur de farm : coûts relus dans les données du jeu, encore à
+  // confronter au jeu sur quelques points (cf. docs/cadrage-planificateur-farm.md).
+  planner: { badge: "beta" },
 
   // Builds de la communauté.
   builds: { badge: "new", until: monthsAfter("2026-09-25", 2) },

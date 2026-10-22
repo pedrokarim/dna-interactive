@@ -8,6 +8,7 @@
     "seo:indexnow": "bun scripts/indexnow.mjs",
     "start": "next start",
     "lint": "eslint",
+    "test:unit": "vitest run --project unit",
     "extract:mods:site": "bun run research_data/extract-mods-localization.ts --verbose",
     "extract:items:site": "bun run research_data/extract-items-localization.ts",
     "extract:fishing:site": "bun run research_data/extract-fishing-items.ts",
@@ -15,6 +16,7 @@
     "extract:genimons:site": "bun run research_data/extract-genimons.ts",
     "extract:skills:site": "bun run research_data/extract-skills.ts",
     "extract:cosmetics:site": "bun run research_data/extract-cosmetics.ts",
+    "extract:planner:site": "bun run research_data/extract-planner.ts",
     "db:push": "drizzle-kit push",
     "db:migrate:notifications": "node scripts/migrate-notifications.mjs",
     "seed:calendar": "bun run scripts/seed-calendar-events.ts",
@@ -26,6 +28,7 @@
     "seed:announcement:falsi": "bun run scripts/seed-announcement-falsi.ts",
     "map:check": "bun run scripts/check-map-taxonomy.ts",
     "db:migrate:map": "node scripts/migrate-map.mjs",
+    "db:migrate:planner": "node scripts/migrate-planner.mjs",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },

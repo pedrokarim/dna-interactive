@@ -47,6 +47,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: NAVIGATION.map, changeFrequency: "weekly" as const, priority: 0.9 },
     { path: NAVIGATION.calendar, changeFrequency: "daily" as const, priority: 0.8 },
     { path: NAVIGATION.theatre, changeFrequency: "weekly" as const, priority: 0.8 },
+    { path: NAVIGATION.planner, changeFrequency: "monthly" as const, priority: 0.6 },
     { path: NAVIGATION.commissions, changeFrequency: "daily" as const, priority: 0.7 },
     { path: NAVIGATION.features, changeFrequency: "monthly" as const, priority: 0.5 },
     { path: NAVIGATION.items, changeFrequency: "weekly" as const, priority: 0.9 },

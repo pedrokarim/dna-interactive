@@ -14,6 +14,15 @@ const dirname =
 export default defineConfig({
   test: {
     projects: [
+      // Logique pure (calculs, règles) : Node, sans navigateur.
+      {
+        resolve: { alias: { '@': path.join(dirname, 'src') } },
+        test: {
+          name: 'unit',
+          environment: 'node',
+          include: ['src/**/*.test.ts'],
+        },
+      },
       {
         extends: true,
         plugins: [
