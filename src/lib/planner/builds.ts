@@ -27,8 +27,23 @@ export type PlannerBuildInput = {
   /** Armes classées « meilleur choix ». */
   weapons: string[];
   alternativeWeapons: string[];
-  /** Wedge → nombre d'emplacements qu'il occupe dans le build. */
+  /** Wedges du personnage : wedge → nombre d'emplacements qu'il occupe. */
   wedges: Record<string, number>;
+  /**
+   * Wedges posés sur une arme, par arme. Comptés au nom de l'arme et non du
+   * build : le build d'un perso et le build de Demon Wedges de la même arme
+   * désignent les mêmes exemplaires, ils ne s'additionnent pas.
+   */
+  weaponWedges?: Record<string, Record<string, number>>;
+};
+
+/** Build proposé dans le planificateur, avant résolution (`/api/planner/builds`). */
+export type PlannerBuildOption = {
+  key: string;
+  label: string;
+  kind: "official" | "community" | "weapon";
+  votes?: number;
+  legacy?: boolean;
 };
 
 export const EMPTY_PLANNER: PlannerState = { version: 1, goals: [], inventory: {}, craftChoices: {} };
@@ -134,10 +149,21 @@ export function goalsFromBuild(
     if (goal) goals.push({ ...goal, origins: [origin] });
   }
 
-  for (const [wedgeId, count] of Object.entries(build.wedges)) {
-    const goal = wedgeGoal(wedgeId, count, data);
-    if (!goal) continue;
-    goals.push({ ...goal, origins: [origin], demand: { [build.key]: { characterId: build.characterId, count } } });
+  // Une demande par porteur (le perso, ou chaque arme) : `copiesFromDemand`
+  // prend le maximum par porteur et additionne les porteurs.
+  const demands = new Map<string, NonNullable<WedgeGoal["demand"]>>();
+  const addDemand = (wedgeId: string, demandKey: string, owner: string, count: number) => {
+    const demand = demands.get(wedgeId) ?? {};
+    demand[demandKey] = { characterId: owner, count };
+    demands.set(wedgeId, demand);
+  };
+  for (const [wedgeId, count] of Object.entries(build.wedges)) addDemand(wedgeId, build.key, build.characterId, count);
+  for (const [weaponId, wedges] of Object.entries(build.weaponWedges ?? {})) {
+    for (const [wedgeId, count] of Object.entries(wedges)) addDemand(wedgeId, `${build.key}#${weaponId}`, weaponId, count);
+  }
+  for (const [wedgeId, demand] of demands) {
+    const goal = wedgeGoal(wedgeId, copiesFromDemand(demand), data);
+    if (goal) goals.push({ ...goal, origins: [origin], demand });
   }
   return goals;
 }
@@ -207,7 +233,8 @@ export function removeBuild(goals: PlannerGoal[], buildKey: string): PlannerGoal
     if (origins.length === 0) continue;
     if (goal.kind === "wedge" && goal.demand) {
       const demand = { ...goal.demand };
-      delete demand[buildKey];
+      // La part du perso (`<build>`) et celles de ses armes (`<build>#<arme>`).
+      for (const key of Object.keys(demand)) if (key === buildKey || key.startsWith(`${buildKey}#`)) delete demand[key];
       out.push({ ...goal, origins, demand, copies: Math.max(1, copiesFromDemand(demand)) });
     } else {
       out.push({ ...goal, origins });

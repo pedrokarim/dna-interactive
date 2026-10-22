@@ -2568,7 +2568,9 @@
       "starsHint": "未升星時最高等級為 {max}。每顆星（最多 {stars} 顆）提升一級，並消耗相同的Wedge或{resource}。",
       "raised": "{skill}要到等級{level}需要突破{breaks}次，已提高目標。",
       "removeTitle": "移除此目標？",
-      "removeMessage": "{name}將從規劃中移除，持有量不變。"
+      "removeMessage": "{name}將從規劃中移除，持有量不變。",
+      "planBuild": "規劃配裝",
+      "planWeaponBuild": "規劃Demon Wedge配裝"
     },
     "sources": {
       "empty": "沒有需要刷的素材。",
@@ -2594,7 +2596,14 @@
       "alternative": "替代",
       "alreadyIn": "已在規劃中",
       "cancel": "取消",
-      "confirm": "新增 {count} 個目標"
+      "confirm": "新增 {count} 個目標",
+      "weapons": "武器",
+      "wedges": "Demon Wedge",
+      "wedgeRank": "Demon Wedge等級",
+      "rankBase": "不升星的最高等級",
+      "rankStars": "包含所有星級",
+      "cost": "此配裝尚缺的部分",
+      "toFarm": "需刷取的素材"
     },
     "builds": {
       "remove": "移除配裝「{label}」",
@@ -2635,6 +2644,26 @@
       "saving": "儲存中…",
       "error": "目前無法同步，規劃仍儲存在這個瀏覽器中。",
       "unavailable": "尚無法儲存到帳號，規劃會保留在這個瀏覽器中。"
+    },
+    "pick": {
+      "title": "規劃：{name}",
+      "aloneCharacter": "只加入{name}，不套用配裝",
+      "aloneWeapon": "只加入{name}，不套用配裝",
+      "official": "官方配裝",
+      "community": "社群配裝",
+      "weapon": "此武器的Demon Wedge配裝",
+      "loading": "正在載入配裝…",
+      "none": "此目標尚無配裝。",
+      "error": "無法載入配裝，請稍後再試。",
+      "votes": "{count} 票",
+      "legacy": "舊版",
+      "choose": "規劃",
+      "opening": "開啟中…"
+    },
+    "view": {
+      "only": "只顯示此配裝",
+      "active": "清單只顯示配裝「{label}」。",
+      "all": "整個規劃"
     }
   }
 }

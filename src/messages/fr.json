@@ -2568,7 +2568,9 @@
       "starsHint": "Rang {max} maximum sans étoile. Chaque étoile ({stars} au plus) ajoute un rang et consomme des exemplaires du wedge, ou {resource}.",
       "raised": "{skill} niveau {level} demande {breaks} ascensions : l’objectif a été relevé.",
       "removeTitle": "Retirer l’objectif ?",
-      "removeMessage": "{name} sortira du plan. Ton stock ne change pas."
+      "removeMessage": "{name} sortira du plan. Ton stock ne change pas.",
+      "planBuild": "Planifier un build",
+      "planWeaponBuild": "Planifier un build de Demon Wedges"
     },
     "sources": {
       "empty": "Rien à farmer.",
@@ -2594,7 +2596,14 @@
       "alternative": "alternative",
       "alreadyIn": "déjà dans le plan",
       "cancel": "Annuler",
-      "confirm": "Ajouter {count, plural, one {# objectif} other {# objectifs}}"
+      "confirm": "Ajouter {count, plural, one {# objectif} other {# objectifs}}",
+      "weapons": "Armes",
+      "wedges": "Demon Wedges",
+      "wedgeRank": "Rang des Demon Wedges",
+      "rankBase": "Maximum sans étoile",
+      "rankStars": "Avec toutes les étoiles",
+      "cost": "Ce qu’il te manque pour ce build",
+      "toFarm": "Matériaux à farmer"
     },
     "builds": {
       "remove": "Retirer le build {label}",
@@ -2635,6 +2644,26 @@
       "saving": "Enregistrement…",
       "error": "Synchronisation impossible pour l’instant : le plan reste enregistré dans ce navigateur.",
       "unavailable": "L’enregistrement sur le compte n’est pas encore disponible : le plan reste dans ce navigateur."
+    },
+    "pick": {
+      "title": "Planifier : {name}",
+      "aloneCharacter": "Ajouter {name} seul, sans build",
+      "aloneWeapon": "Ajouter {name} seule, sans build",
+      "official": "Builds officiels",
+      "community": "Builds de la communauté",
+      "weapon": "Builds de Demon Wedges de l’arme",
+      "loading": "Chargement des builds…",
+      "none": "Aucun build pour cette cible pour l’instant.",
+      "error": "Les builds n’ont pas pu être chargés. Réessaie dans un instant.",
+      "votes": "{count, plural, one {# vote} other {# votes}}",
+      "legacy": "ancien",
+      "choose": "Planifier",
+      "opening": "Ouverture…"
+    },
+    "view": {
+      "only": "Afficher seulement ce build",
+      "active": "Liste limitée au build « {label} ».",
+      "all": "Tout le plan"
     }
   }
 }

@@ -22,6 +22,8 @@ type GoalCallbacks = {
   onMove: (goalId: string, direction: -1 | 1) => void;
   onRemove: (goalId: string) => void;
   onInventory: (key: MaterialKey, value: number) => void;
+  /** Proposer les builds d'un perso ou d'une arme. */
+  onPlanBuild: (goal: PlannerGoal) => void;
 };
 
 type PlannerGoalsProps = GoalCallbacks & {
@@ -71,6 +73,7 @@ function GoalCard({
   onMove,
   onRemove,
   onInventory,
+  onPlanBuild,
 }: Omit<PlannerGoalsProps, "goals" | "progress" | "notices"> & {
   goal: PlannerGoal;
   index: number;
@@ -113,6 +116,15 @@ function GoalCard({
                 </DnaTag>
               ))}
             </div>
+          ) : null}
+          {goal.kind !== "wedge" ? (
+            <button
+              type="button"
+              onClick={() => onPlanBuild(goal)}
+              className="mt-1.5 font-caps text-[0.58rem] uppercase tracking-[0.14em] text-gold hover:text-gold-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60"
+            >
+              {goal.kind === "character" ? t("goals.planBuild") : t("goals.planWeaponBuild")}
+            </button>
           ) : null}
         </div>
         <div className="flex shrink-0 items-center gap-1.5">

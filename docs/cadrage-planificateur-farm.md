@@ -570,6 +570,15 @@ Relues dans les scripts décompilés (`Scripts_1.6_decompiled`), pas déduites d
 - **Rang visé par défaut d’un wedge** : le maximum sans étoile, les étoiles coûtant des exemplaires.
 - **Clé d’un build officiel** : `official:<perso>:<élément>:<rang>`, le rang étant compté dans la liste filtrée par élément, comme l’onglet Build.
 
+### Choisir un build depuis le planificateur (22/10/2026)
+
+- Ajouter un **personnage** propose ses builds officiels (filtrés par élément) et les 12 builds communautaires les mieux notés, ou le personnage seul. Ajouter une **arme** propose ses builds de Demon Wedges. Un Demon Wedge s’ajoute directement.
+- Chaque carte personnage ou arme du plan porte « Planifier un build » / « Planifier un build de Demon Wedges ».
+- À l’import, on choisit le rang visé des Demon Wedges (maximum sans étoile, ou avec toutes les étoiles) et on voit ce que le build coûte avec le stock actuel, avant de l’ajouter.
+- Un clic sur l’étiquette d’un build limite la liste de farm, les sources et le résumé à ce build.
+- API : `/api/planner/builds?target=…&element=…` (liste) et `?key=…` (build réduit) ; clé d’un build d’arme `weapon:<weaponId>:<rang>`. Si la base tombe, les builds officiels restent proposés.
+- Wedges d’arme comptés **au nom de l’arme** (`weaponWedges`), que le build vienne d’un perso (`withWedges`) ou de l’arme : les deux désignent les mêmes exemplaires, on prend le maximum au lieu d’additionner. Les wedges du perso et ceux de ses armes, eux, s’additionnent.
+
 ### Reste à faire
 
 - ~~Créer la table `farm_plans` en production~~ : fait le 22/10/2026, par `ssh kagura-prod` et `psql` dans le conteneur `shared-postgres`, sous le rôle `dna` (propriétaire des autres tables). La base n’est plus joignable depuis le poste : `db:migrate:planner` ne sert qu’à la base locale.

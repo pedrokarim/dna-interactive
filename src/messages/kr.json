@@ -2568,7 +2568,9 @@
       "starsHint": "별 없이 최대 랭크는 {max}입니다. 별(최대 {stars}개)마다 랭크가 1 오르고 같은 Wedge 또는 {resource}을(를) 소모합니다.",
       "raised": "{skill} 레벨 {level}에는 돌파 {breaks}회가 필요해 목표를 올렸습니다.",
       "removeTitle": "목표를 삭제할까요?",
-      "removeMessage": "{name}이(가) 플랜에서 빠집니다. 보유량은 바뀌지 않습니다."
+      "removeMessage": "{name}이(가) 플랜에서 빠집니다. 보유량은 바뀌지 않습니다.",
+      "planBuild": "빌드 계획하기",
+      "planWeaponBuild": "Demon Wedge 빌드 계획하기"
     },
     "sources": {
       "empty": "파밍할 것이 없습니다.",
@@ -2594,7 +2596,14 @@
       "alternative": "대안",
       "alreadyIn": "이미 플랜에 있음",
       "cancel": "취소",
-      "confirm": "목표 {count}개 추가"
+      "confirm": "목표 {count}개 추가",
+      "weapons": "무기",
+      "wedges": "Demon Wedge",
+      "wedgeRank": "Demon Wedge 랭크",
+      "rankBase": "별 없이 최대",
+      "rankStars": "별 모두 포함",
+      "cost": "이 빌드에 부족한 것",
+      "toFarm": "파밍할 재료"
     },
     "builds": {
       "remove": "빌드 {label} 제거",
@@ -2635,6 +2644,26 @@
       "saving": "저장 중…",
       "error": "지금은 동기화할 수 없습니다. 플랜은 이 브라우저에 저장되어 있습니다.",
       "unavailable": "계정 저장은 아직 사용할 수 없습니다. 플랜은 이 브라우저에 남습니다."
+    },
+    "pick": {
+      "title": "계획: {name}",
+      "aloneCharacter": "빌드 없이 {name}만 추가",
+      "aloneWeapon": "빌드 없이 {name}만 추가",
+      "official": "공식 빌드",
+      "community": "커뮤니티 빌드",
+      "weapon": "이 무기의 Demon Wedge 빌드",
+      "loading": "빌드를 불러오는 중…",
+      "none": "이 대상의 빌드가 아직 없습니다.",
+      "error": "빌드를 불러오지 못했습니다. 잠시 후 다시 시도하세요.",
+      "votes": "{count}표",
+      "legacy": "이전",
+      "choose": "계획",
+      "opening": "여는 중…"
+    },
+    "view": {
+      "only": "이 빌드만 보기",
+      "active": "빌드 '{label}'만 표시 중입니다.",
+      "all": "전체 플랜"
     }
   }
 }

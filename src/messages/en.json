@@ -2568,7 +2568,9 @@
       "starsHint": "Rank {max} at most without stars. Each star (up to {stars}) adds a rank and consumes copies of the wedge, or {resource}.",
       "raised": "{skill} level {level} needs {breaks} ascensions: the goal was raised.",
       "removeTitle": "Remove this goal?",
-      "removeMessage": "{name} will leave the plan. Your stock does not change."
+      "removeMessage": "{name} will leave the plan. Your stock does not change.",
+      "planBuild": "Plan a build",
+      "planWeaponBuild": "Plan a Demon Wedge build"
     },
     "sources": {
       "empty": "Nothing to farm.",
@@ -2594,7 +2596,14 @@
       "alternative": "alternative",
       "alreadyIn": "already in the plan",
       "cancel": "Cancel",
-      "confirm": "Add {count, plural, one {# goal} other {# goals}}"
+      "confirm": "Add {count, plural, one {# goal} other {# goals}}",
+      "weapons": "Weapons",
+      "wedges": "Demon Wedges",
+      "wedgeRank": "Demon Wedge rank",
+      "rankBase": "Max without stars",
+      "rankStars": "With every star",
+      "cost": "What you are missing for this build",
+      "toFarm": "Materials to farm"
     },
     "builds": {
       "remove": "Remove the build {label}",
@@ -2635,6 +2644,26 @@
       "saving": "Saving…",
       "error": "Sync is not possible right now: the plan stays saved in this browser.",
       "unavailable": "Saving to your account is not available yet: the plan stays in this browser."
+    },
+    "pick": {
+      "title": "Plan: {name}",
+      "aloneCharacter": "Add {name} alone, without a build",
+      "aloneWeapon": "Add {name} alone, without a build",
+      "official": "Official builds",
+      "community": "Community builds",
+      "weapon": "Demon Wedge builds for this weapon",
+      "loading": "Loading builds…",
+      "none": "No build for this target yet.",
+      "error": "Builds could not be loaded. Try again in a moment.",
+      "votes": "{count, plural, one {# vote} other {# votes}}",
+      "legacy": "older",
+      "choose": "Plan",
+      "opening": "Opening…"
+    },
+    "view": {
+      "only": "Show only this build",
+      "active": "List limited to the build \"{label}\".",
+      "all": "Whole plan"
     }
   }
 }

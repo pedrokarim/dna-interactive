@@ -2568,7 +2568,9 @@
       "starsHint": "星なしの最大ランクは{max}。星（最大{stars}）ごとにランクが1上がり、同じWedgeまたは{resource}を消費します。",
       "raised": "{skill}をレベル{level}にするには突破{breaks}回が必要なため、目標を引き上げました。",
       "removeTitle": "目標を削除しますか？",
-      "removeMessage": "{name}をプランから外します。所持数は変わりません。"
+      "removeMessage": "{name}をプランから外します。所持数は変わりません。",
+      "planBuild": "ビルドを計画",
+      "planWeaponBuild": "Demon Wedgeビルドを計画"
     },
     "sources": {
       "empty": "周回する必要はありません。",
@@ -2594,7 +2596,14 @@
       "alternative": "代替",
       "alreadyIn": "プランに追加済み",
       "cancel": "キャンセル",
-      "confirm": "目標を{count}件追加"
+      "confirm": "目標を{count}件追加",
+      "weapons": "武器",
+      "wedges": "Demon Wedge",
+      "wedgeRank": "Demon Wedgeのランク",
+      "rankBase": "星なしの最大",
+      "rankStars": "星をすべて含む",
+      "cost": "このビルドに不足しているもの",
+      "toFarm": "周回が必要な素材"
     },
     "builds": {
       "remove": "ビルド「{label}」を外す",
@@ -2635,6 +2644,26 @@
       "saving": "保存中…",
       "error": "現在同期できません。プランはこのブラウザに保存されています。",
       "unavailable": "アカウントへの保存はまだ利用できません。プランはこのブラウザに残ります。"
+    },
+    "pick": {
+      "title": "計画：{name}",
+      "aloneCharacter": "ビルドなしで{name}だけ追加",
+      "aloneWeapon": "ビルドなしで{name}だけ追加",
+      "official": "公式ビルド",
+      "community": "コミュニティのビルド",
+      "weapon": "この武器のDemon Wedgeビルド",
+      "loading": "ビルドを読み込み中…",
+      "none": "この対象のビルドはまだありません。",
+      "error": "ビルドを読み込めませんでした。しばらくしてから再試行してください。",
+      "votes": "{count}票",
+      "legacy": "旧版",
+      "choose": "計画",
+      "opening": "開いています…"
+    },
+    "view": {
+      "only": "このビルドだけ表示",
+      "active": "ビルド「{label}」だけを表示しています。",
+      "all": "プラン全体"
     }
   }
 }

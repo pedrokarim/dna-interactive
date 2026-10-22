@@ -6,7 +6,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { Plus, X } from "lucide-react";
 import { Link, useRouter } from "@/i18n/navigation";
 import { NAVIGATION } from "@/lib/constants";
-import { DnaButton, DnaProgress, DnaTabs, useConfirm } from "@/components/dna";
+import { DnaButton, DnaProgress, DnaTabs, cn, useConfirm } from "@/components/dna";
 import { applyStep, computePlan, shouldCraft } from "@/lib/planner/compute";
 import { normalizeGoal } from "@/lib/planner/goals";
 import {
@@ -34,7 +34,7 @@ import { usePlannerLabels } from "./labels";
 import { PlannerMaterials } from "./PlannerMaterials";
 import { PlannerGoals } from "./PlannerGoals";
 import { PlannerSources } from "./PlannerSources";
-import { AddGoalDialog, BuildImportDialog } from "./PlannerDialogs";
+import { AddGoalDialog, BuildImportDialog, BuildPickerDialog, type BuildTarget } from "./PlannerDialogs";
 import { usePlannerSync } from "./usePlannerSync";
 
 type Tab = "materials" | "goals" | "sources";
@@ -84,6 +84,10 @@ export function PlannerClient({ pendingBuild, addTarget }: PlannerClientProps) {
   const [tab, setTab] = useState<Tab>("materials");
   const [adding, setAdding] = useState(false);
   const [buildToImport, setBuildToImport] = useState<PlannerBuildInput | null>(pendingBuild);
+  /** Choix d'un build pour une cible ; `standalone` = la cible seule, proposée à l'ajout. */
+  const [picking, setPicking] = useState<{ target: BuildTarget; standalone: PlannerGoal | null } | null>(null);
+  /** Liste limitée aux objectifs d'un build (clé du build), ou tout le plan. */
+  const [view, setView] = useState<string | null>(null);
   const [notices, setNotices] = useState<Record<string, string>>({});
   const [undo, setUndo] = useState<{ label: string; previous: PlannerState } | null>(null);
 
@@ -118,6 +122,14 @@ export function PlannerClient({ pendingBuild, addTarget }: PlannerClientProps) {
   const labels = usePlannerLabels(dataset);
 
   const result = useMemo(() => (dataset ? computePlan(state, dataset) : null), [state, dataset]);
+  // Vue d'un seul build : mêmes calculs, sur ses seuls objectifs. Le stock
+  // entier lui est disponible, comme si ce build passait en premier.
+  const activeView = view && state.goals.some((g) => g.origins?.some((o) => o.buildKey === view)) ? view : null;
+  const viewResult = useMemo(() => {
+    if (!dataset || !activeView) return result;
+    const goals = state.goals.filter((g) => g.origins?.some((o) => o.buildKey === activeView));
+    return computePlan({ ...state, goals }, dataset);
+  }, [dataset, activeView, state, result]);
   const goalNames = useMemo(
     () => Object.fromEntries(state.goals.map((g) => [g.id, labels.goal(g).name])),
     [state.goals, labels],
@@ -183,10 +195,29 @@ export function PlannerClient({ pendingBuild, addTarget }: PlannerClientProps) {
   const onCraftChoice = (key: MaterialKey, choice: CraftChoice) =>
     update((s) => ({ ...s, craftChoices: { ...s.craftChoices, [key]: choice } }));
 
-  const onAddGoal = (goal: PlannerGoal) => {
+  const addGoal = (goal: PlannerGoal) => {
     update((s) => ({ ...s, goals: mergeGoals(s.goals, [goal]).slice(0, MAX_GOALS) }));
-    setAdding(false);
     setTab("goals");
+  };
+
+  /** Cible d'un objectif, pour lui proposer ses builds. */
+  const buildTarget = (goal: PlannerGoal): BuildTarget | null =>
+    goal.kind === "wedge"
+      ? null
+      : { kind: goal.kind, id: goal.targetId, element: goal.kind === "character" ? goal.element : null, name: labels.goal(goal).name };
+
+  // Un perso ou une arme : on propose d'abord ses builds (ou la cible seule).
+  // Un Demon Wedge s'ajoute directement.
+  const onAddGoal = (goal: PlannerGoal) => {
+    setAdding(false);
+    const target = buildTarget(goal);
+    if (target) setPicking({ target, standalone: goal });
+    else addGoal(goal);
+  };
+
+  const onPlanBuild = (goal: PlannerGoal) => {
+    const target = buildTarget(goal);
+    if (target) setPicking({ target, standalone: null });
   };
 
   const onImportBuild = (goals: PlannerGoal[]) => {
@@ -219,7 +250,8 @@ export function PlannerClient({ pendingBuild, addTarget }: PlannerClientProps) {
     );
   }
 
-  const lines = result.lines;
+  const shown = viewResult ?? result;
+  const lines = shown.lines;
   const toFarm = lines.filter((l) => l.missing > 0);
   const overall =
     lines.length === 0 ? 0 : lines.reduce((sum, l) => sum + Math.min(1, (l.owned + l.crafted) / l.required), 0) / lines.length;
@@ -263,10 +295,22 @@ export function PlannerClient({ pendingBuild, addTarget }: PlannerClientProps) {
           </DnaButton>
         ) : null}
         {builds.map((b) => (
-          <span key={b.buildKey} className="inline-flex min-w-0 max-w-full items-center gap-1 border border-line/30 bg-gold/5 py-1 pl-2.5 pr-1 text-xs text-gold">
-            <span className="min-w-0 truncate" title={b.label}>
+          <span
+            key={b.buildKey}
+            className={cn(
+              "inline-flex min-w-0 max-w-full items-center gap-1 border py-1 pl-1 pr-1 text-xs",
+              activeView === b.buildKey ? "border-gold bg-gold/15 text-gold-bright" : "border-line/30 bg-gold/5 text-gold",
+            )}
+          >
+            <button
+              type="button"
+              onClick={() => setView(activeView === b.buildKey ? null : b.buildKey)}
+              aria-pressed={activeView === b.buildKey}
+              title={t("view.only", { label: b.label })}
+              className="min-w-0 truncate px-1.5 text-left hover:text-gold-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60"
+            >
               {b.label}
-            </span>
+            </button>
             <button
               type="button"
               onClick={() => onRemoveBuild(b.buildKey, b.label)}
@@ -308,6 +352,21 @@ export function PlannerClient({ pendingBuild, addTarget }: PlannerClientProps) {
             <X className="h-4 w-4" aria-hidden />
           </button>
         </div>
+      ) : null}
+
+      {activeView ? (
+        <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-parch/85" role="status">
+          <span className="min-w-0 break-words">
+            {t("view.active", { label: builds.find((b) => b.buildKey === activeView)?.label ?? "" })}
+          </span>
+          <button
+            type="button"
+            onClick={() => setView(null)}
+            className="font-caps text-[0.62rem] uppercase tracking-[0.14em] text-gold hover:text-gold-bright"
+          >
+            {t("view.all")}
+          </button>
+        </p>
       ) : null}
 
       {state.goals.length === 0 ? (
@@ -354,9 +413,10 @@ export function PlannerClient({ pendingBuild, addTarget }: PlannerClientProps) {
               onMove={onMove}
               onRemove={onRemove}
               onInventory={onInventory}
+              onPlanBuild={onPlanBuild}
             />
           ) : (
-            <PlannerSources groups={result.sources} lines={lines} dataset={dataset} labels={labels} />
+            <PlannerSources groups={shown.sources} lines={lines} dataset={dataset} labels={labels} />
           )}
         </>
       )}
@@ -368,11 +428,28 @@ export function PlannerClient({ pendingBuild, addTarget }: PlannerClientProps) {
           dataset={dataset}
           labels={labels}
           goals={state.goals}
+          inventory={state.inventory}
+          craftChoices={state.craftChoices}
           onConfirm={onImportBuild}
           onClose={() => {
             setBuildToImport(null);
             clearQuery();
           }}
+        />
+      ) : null}
+      {picking ? (
+        <BuildPickerDialog
+          target={picking.target}
+          standalone={picking.standalone}
+          onStandalone={(goal) => {
+            setPicking(null);
+            addGoal(goal);
+          }}
+          onPick={(build) => {
+            setPicking(null);
+            setBuildToImport(build);
+          }}
+          onClose={() => setPicking(null)}
         />
       ) : null}
     </div>

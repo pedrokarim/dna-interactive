@@ -2568,7 +2568,9 @@
       "starsHint": "Rango {max} como máximo sin estrellas. Cada estrella (hasta {stars}) añade un rango y consume copias del wedge, o {resource}.",
       "raised": "{skill} nivel {level} requiere {breaks} ascensiones: se ha elevado el objetivo.",
       "removeTitle": "¿Quitar el objetivo?",
-      "removeMessage": "{name} saldrá del plan. Tu inventario no cambia."
+      "removeMessage": "{name} saldrá del plan. Tu inventario no cambia.",
+      "planBuild": "Planificar un build",
+      "planWeaponBuild": "Planificar un build de Demon Wedges"
     },
     "sources": {
       "empty": "Nada que farmear.",
@@ -2594,7 +2596,14 @@
       "alternative": "alternativa",
       "alreadyIn": "ya en el plan",
       "cancel": "Cancelar",
-      "confirm": "Añadir {count, plural, one {# objetivo} other {# objetivos}}"
+      "confirm": "Añadir {count, plural, one {# objetivo} other {# objetivos}}",
+      "weapons": "Armas",
+      "wedges": "Demon Wedges",
+      "wedgeRank": "Rango de los Demon Wedges",
+      "rankBase": "Máximo sin estrellas",
+      "rankStars": "Con todas las estrellas",
+      "cost": "Lo que te falta para este build",
+      "toFarm": "Materiales por farmear"
     },
     "builds": {
       "remove": "Quitar el build {label}",
@@ -2635,6 +2644,26 @@
       "saving": "Guardando…",
       "error": "No se puede sincronizar ahora: el plan sigue guardado en este navegador.",
       "unavailable": "Guardar en la cuenta aún no está disponible: el plan se queda en este navegador."
+    },
+    "pick": {
+      "title": "Planificar: {name}",
+      "aloneCharacter": "Añadir solo a {name}, sin build",
+      "aloneWeapon": "Añadir solo {name}, sin build",
+      "official": "Builds oficiales",
+      "community": "Builds de la comunidad",
+      "weapon": "Builds de Demon Wedges del arma",
+      "loading": "Cargando builds…",
+      "none": "Aún no hay builds para este objetivo.",
+      "error": "No se pudieron cargar los builds. Inténtalo de nuevo en un momento.",
+      "votes": "{count, plural, one {# voto} other {# votos}}",
+      "legacy": "antiguo",
+      "choose": "Planificar",
+      "opening": "Abriendo…"
+    },
+    "view": {
+      "only": "Mostrar solo este build",
+      "active": "Lista limitada al build «{label}».",
+      "all": "Todo el plan"
     }
   }
 }

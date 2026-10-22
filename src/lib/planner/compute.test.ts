@@ -170,6 +170,36 @@ describe("builds", () => {
     expect(goals).toHaveLength(0);
   });
 
+  it("un build de Demon Wedges d'arme donne l'arme et ses wedges, sans personnage", () => {
+    const weaponBuild: PlannerBuildInput = {
+      key: "weapon:weapons-10402:0",
+      label: "Arme",
+      characterId: "weapons-10402",
+      element: null,
+      skillPriority: [],
+      weapons: ["weapons-10402"],
+      alternativeWeapons: [],
+      wedges: {},
+      weaponWedges: { "weapons-10402": { "mods-52004": 1, "mods-52007": 2 } },
+    };
+    const goals = goalsFromBuild(weaponBuild, undefined, progression);
+    expect(goals.map((g) => g.kind)).toEqual(["weapon", "wedge", "wedge"]);
+    expect(goals.every((g) => g.origins?.[0].buildKey === weaponBuild.key)).toBe(true);
+
+    // Le build d'un perso qui porte la même arme avec les mêmes wedges : pas de doublon.
+    const characterBuild: PlannerBuildInput = {
+      ...build("a", "char-aote", { "mods-52007": 1 }),
+      weaponWedges: { "weapons-10402": { "mods-52007": 2 } },
+    };
+    const merged = mergeGoals(goals, goalsFromBuild(characterBuild, option, progression));
+    const wedge = merged.find((g) => g.kind === "wedge" && g.targetId === "mods-52007") as Extract<PlannerGoal, { kind: "wedge" }>;
+    // 2 sur l'arme (maximum entre les deux builds) + 1 sur le perso.
+    expect(wedge.copies).toBe(3);
+    // Retirer le build du perso rend ses deux parts (perso et arme) : il reste celle du build d'arme.
+    const afterRemoval = removeBuild(merged, "a").find((g) => g.kind === "wedge" && g.targetId === "mods-52007");
+    expect((afterRemoval as Extract<PlannerGoal, { kind: "wedge" }>).copies).toBe(2);
+  });
+
   it("le stock va d'abord au premier objectif de la liste", () => {
     const one = aote({ id: "one", target: { level: 20, breaks: 1, skills: [1, 1, 1], intron: 0 } });
     const two = aote({ id: "two", charId: 4101, targetId: "char-lise", target: { level: 20, breaks: 1, skills: [1, 1, 1], intron: 0 } });

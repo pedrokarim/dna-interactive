@@ -2568,7 +2568,9 @@
       "starsHint": "Ohne Sterne höchstens Rang {max}. Jeder Stern (bis zu {stars}) fügt einen Rang hinzu und verbraucht Exemplare des Wedges oder {resource}.",
       "raised": "{skill} Stufe {level} erfordert {breaks} Aufstiege: Das Ziel wurde angehoben.",
       "removeTitle": "Ziel entfernen?",
-      "removeMessage": "{name} wird aus dem Plan entfernt. Dein Bestand ändert sich nicht."
+      "removeMessage": "{name} wird aus dem Plan entfernt. Dein Bestand ändert sich nicht.",
+      "planBuild": "Build planen",
+      "planWeaponBuild": "Demon-Wedge-Build planen"
     },
     "sources": {
       "empty": "Nichts zu farmen.",
@@ -2594,7 +2596,14 @@
       "alternative": "Alternative",
       "alreadyIn": "bereits im Plan",
       "cancel": "Abbrechen",
-      "confirm": "{count, plural, one {# Ziel} other {# Ziele}} hinzufügen"
+      "confirm": "{count, plural, one {# Ziel} other {# Ziele}} hinzufügen",
+      "weapons": "Waffen",
+      "wedges": "Demon Wedges",
+      "wedgeRank": "Rang der Demon Wedges",
+      "rankBase": "Maximum ohne Sterne",
+      "rankStars": "Mit allen Sternen",
+      "cost": "Was dir für diesen Build fehlt",
+      "toFarm": "Zu farmende Materialien"
     },
     "builds": {
       "remove": "Build {label} entfernen",
@@ -2635,6 +2644,26 @@
       "saving": "Wird gespeichert…",
       "error": "Synchronisierung gerade nicht möglich: Der Plan bleibt in diesem Browser gespeichert.",
       "unavailable": "Speichern im Konto ist noch nicht verfügbar: Der Plan bleibt in diesem Browser."
+    },
+    "pick": {
+      "title": "Planen: {name}",
+      "aloneCharacter": "{name} allein hinzufügen, ohne Build",
+      "aloneWeapon": "{name} allein hinzufügen, ohne Build",
+      "official": "Offizielle Builds",
+      "community": "Community-Builds",
+      "weapon": "Demon-Wedge-Builds der Waffe",
+      "loading": "Builds werden geladen…",
+      "none": "Noch kein Build für dieses Ziel.",
+      "error": "Die Builds konnten nicht geladen werden. Versuche es gleich noch einmal.",
+      "votes": "{count, plural, one {# Stimme} other {# Stimmen}}",
+      "legacy": "älter",
+      "choose": "Planen",
+      "opening": "Wird geöffnet…"
+    },
+    "view": {
+      "only": "Nur diesen Build anzeigen",
+      "active": "Liste auf den Build „{label}“ beschränkt.",
+      "all": "Ganzer Plan"
     }
   }
 }
