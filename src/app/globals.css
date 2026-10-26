@@ -492,6 +492,35 @@ body:has(.map-page) .grecaptcha-badge {
 .dna-anim-pulse { animation: dnaPulse 2.4s infinite; }
 .dna-anim-float { animation: dnaFloat 7s ease-in-out infinite; }
 
+/* Page 404 (`components/not-found/LostMarker.tsx`).
+   Les keyframes finissent sur la position de repos : sous reduced-motion,
+   l'animation se fige sur cette dernière image. */
+@keyframes dna404Drift { from { transform: translateX(0); } to { transform: translateX(-256px); } }
+/* Le marqueur cherche son cap : il tourne, s'arrête, repart ailleurs. */
+@keyframes dna404Hunt {
+  0%, 8%    { transform: rotate(0deg); }
+  20%, 30%  { transform: rotate(-52deg); }
+  44%, 54%  { transform: rotate(38deg); }
+  66%, 74%  { transform: rotate(-16deg); }
+  86%, 100% { transform: rotate(0deg); }
+}
+@keyframes dna404Bob {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50%      { transform: translateY(-5px) rotate(2deg); }
+}
+.dna-404-contours {
+  width: calc(100% + 256px);
+  background-color: var(--color-gold);
+  opacity: 0.3;
+  -webkit-mask: url("/assets/ui/not-found/contour-lines.webp") 0 0 / 256px 256px repeat;
+  mask: url("/assets/ui/not-found/contour-lines.webp") 0 0 / 256px 256px repeat;
+  animation: dna404Drift 48s linear infinite;
+}
+.dna-404-hunt { animation: dna404Hunt 9s ease-in-out infinite; }
+.dna-404-ring { opacity: 0; animation: dnaPing 3.6s ease-out infinite; }
+.dna-404-ring--late { animation-delay: 1.8s; }
+.dna-404-bob { transform-origin: 50% 100%; animation: dna404Bob 4.5s ease-in-out infinite; }
+
 /* reflet doré qui balaye (boutons/seal primaires) */
 .dna-shine { position: relative; overflow: hidden; }
 .dna-shine::after {

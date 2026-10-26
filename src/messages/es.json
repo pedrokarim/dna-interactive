@@ -1540,8 +1540,11 @@
     "csvHint": "Formato de hoja de cálculo, compatible con Excel"
   },
   "notFound": {
-    "description": "La página que buscas no existe o ha sido movida.",
-    "title": "Página no encontrada",
+    "eyebrow": "Error 404",
+    "title": "Esta zona no está en el mapa",
+    "description": "La dirección que seguiste no lleva a ninguna página. Puede que se haya movido o que el enlace tenga una errata.",
+    "requestedPath": "Dirección solicitada",
+    "elsewhere": "O retoma desde",
     "interactiveMap": "Mapa interactivo"
   },
   "featuresPage": {

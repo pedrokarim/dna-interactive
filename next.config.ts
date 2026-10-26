@@ -40,6 +40,13 @@ const nextConfig: NextConfig = {
         destination: '/:locale',
         permanent: true,
       },
+      {
+        // La page de confidentialité vit à `/confidentialite` dans toutes les
+        // langues ; outils et agents la cherchent à `/privacy`.
+        source: '/:locale(fr|en|de|es|jp|kr|tc)/privacy',
+        destination: '/:locale/confidentialite',
+        permanent: true,
+      },
     ];
   },
   async headers() {
@@ -76,7 +83,8 @@ const nextConfig: NextConfig = {
       "base-uri 'self'",
       "form-action 'self'",
       "frame-ancestors 'none'",
-      "upgrade-insecure-requests",
+      // Pas de `upgrade-insecure-requests` ici : ignorée en Report-Only, elle
+      // ne faisait qu'afficher une erreur en console. La CSP appliquée l'a.
     ].join('; ');
 
     return [

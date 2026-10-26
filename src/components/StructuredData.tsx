@@ -138,6 +138,7 @@ export default function StructuredData({
             "@context": "https://schema.org",
             "@type": "Organization",
             name: SITE_CONFIG.name,
+            description: SITE_CONFIG.description,
             url: "https://dna.ascencia.re",
             logo: "https://dna.ascencia.re/assets/images/logo_optimized.png",
             contactPoint: {

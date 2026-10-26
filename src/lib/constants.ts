@@ -59,7 +59,9 @@ export const GAME_INFO = {
 
 // Chemins des assets
 export const ASSETS_PATHS = {
-  logo: "/assets/images/logo_optimized.png",
+  // Logo de l'interface, affiché en 32 à 40 px : 192 px en WebP (13 Ko) au
+  // lieu du PNG 820 px (171 Ko), gardé pour les e-mails, l'OG et le JSON-LD.
+  logo: "/assets/images/logo-192.webp",
   worldview: [
     // Update 1.6 "Paradise's 22nd White Bunny" (2026-09) — affichés en premier.
     // La 1.5 n'a livré aucun panoramique, d'où le saut de version.

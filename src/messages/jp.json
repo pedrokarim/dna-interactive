@@ -1540,8 +1540,11 @@
     "csvHint": "表計算形式、Excel 対応"
   },
   "notFound": {
-    "description": "お探しのページは存在しないか、移動されました。",
-    "title": "ページが見つかりません",
+    "eyebrow": "エラー 404",
+    "title": "このエリアはマップにありません",
+    "description": "アクセスしたアドレスに対応するページはありません。移動したか、リンクに誤りがある可能性があります。",
+    "requestedPath": "リクエストされたアドレス",
+    "elsewhere": "ほかのページへ",
     "interactiveMap": "インタラクティブマップ"
   },
   "featuresPage": {

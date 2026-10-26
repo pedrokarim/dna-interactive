@@ -17,6 +17,7 @@ import { resolveCharacterDisplayName } from "@/lib/characters/display-name";
 import { BUILD_STAT_LABEL_KEYS } from "@/lib/characters/build-stat-labels";
 import { useDialogA11y } from "@/components/dna/useDialogA11y";
 import CursorTooltip from "@/components/CursorTooltip";
+import { ASSETS_PATHS } from "@/lib/constants";
 
 // ---------------------------------------------------------------------------
 // Card visual constants — palette inspired by Enka.network
@@ -874,10 +875,12 @@ export function QuickBuildCard({
           )}
 
           <div className="mt-auto flex items-center gap-2.5 border-t border-white/15 py-1">
+            {/* Sans `crossOrigin` : image du même domaine, l'export n'en a pas
+                besoin, et l'attribut empêchait de réutiliser le logo déjà
+                préchargé par l'en-tête (téléchargé une seconde fois). */}
             <img loading="lazy" decoding="async"
-              src="/assets/images/logo_optimized.png"
+              src={ASSETS_PATHS.logo}
               alt=""
-              crossOrigin="anonymous"
               width={36}
               height={36}
               className="h-9 w-9 shrink-0 object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"

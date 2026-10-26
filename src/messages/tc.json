@@ -1540,8 +1540,11 @@
     "csvHint": "試算表格式，相容 Excel"
   },
   "notFound": {
-    "description": "您尋找的頁面不存在或已被移動。",
-    "title": "找不到頁面",
+    "eyebrow": "錯誤 404",
+    "title": "這個區域不在地圖上",
+    "description": "你造訪的網址沒有對應的頁面。頁面可能已移動，或連結有拼寫錯誤。",
+    "requestedPath": "請求的網址",
+    "elsewhere": "或從這裡繼續",
     "interactiveMap": "互動地圖"
   },
   "featuresPage": {

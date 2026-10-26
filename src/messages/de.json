@@ -1540,8 +1540,11 @@
     "csvHint": "Tabellenformat, Excel-kompatibel"
   },
   "notFound": {
-    "description": "Die gesuchte Seite existiert nicht oder wurde verschoben.",
-    "title": "Seite nicht gefunden",
+    "eyebrow": "Fehler 404",
+    "title": "Dieses Gebiet ist nicht auf der Karte",
+    "description": "Die aufgerufene Adresse führt zu keiner Seite. Sie wurde vielleicht verschoben, oder der Link enthält einen Tippfehler.",
+    "requestedPath": "Angeforderte Adresse",
+    "elsewhere": "Oder weiter mit",
     "interactiveMap": "Interaktive Karte"
   },
   "featuresPage": {

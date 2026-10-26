@@ -156,8 +156,9 @@ export async function generateMetadata(
     },
     manifest: "/manifest.json",
     icons: {
-      icon: "/assets/images/logo_optimized.png",
-      apple: "/assets/images/logo_optimized.png",
+      // 180 px suffisent (taille de l'icône Apple) : 14 Ko au lieu de 171.
+      icon: "/assets/images/logo-180.png",
+      apple: "/assets/images/logo-180.png",
     },
     other: {
       // Doit correspondre au fond de page (`--color-ink`) : la barre du

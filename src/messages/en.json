@@ -1540,8 +1540,11 @@
     "csvHint": "Spreadsheet format, Excel-compatible"
   },
   "notFound": {
-    "description": "The page you are looking for does not exist or has been moved.",
-    "title": "Page not found",
+    "eyebrow": "Error 404",
+    "title": "This area isn’t on the map",
+    "description": "The address you followed doesn’t lead to any page. It may have moved, or the link may contain a typo.",
+    "requestedPath": "Requested address",
+    "elsewhere": "Or pick up from",
     "interactiveMap": "Interactive map"
   },
   "featuresPage": {
