@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { cn } from "./cn";
+import { optimizedImageUrl } from "@/lib/images/optimized";
 import { ELEMENTS, type ElementKey } from "./elements";
 import { DnaElementBadge } from "./ElementBadge";
 import { DnaStars } from "./RarityStars";
@@ -40,7 +41,7 @@ export function DnaCharacterCard({ name, subtitle, element, elements, rarity = 5
       {portrait ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
-          src={portrait}
+          src={optimizedImageUrl(portrait, 640)}
           alt={name}
           width={300}
           height={400}

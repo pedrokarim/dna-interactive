@@ -33,6 +33,7 @@ import { HomeCommissions } from "@/components/commissions/HomeCommissions";
 import type { CommissionFilter } from "@/lib/commissions/preferences";
 import type { BuildShowcaseEntry } from "@/lib/characters/showcase";
 import type { RotationMeta, RotationState } from "@/lib/commissions/types";
+import { optimizedImageUrl } from "@/lib/images/optimized";
 
 export type HomeBuildCard = {
   id: string;
@@ -119,7 +120,9 @@ function ToolTile({ card, className }: { card: ToolCard; className?: string }) {
   const inner = (
     <>
       {card.bg ? (
-        <span aria-hidden className="dna-card-art pointer-events-none absolute inset-0 bg-cover bg-right opacity-30 transition-[opacity,transform] duration-500 group-hover:scale-[1.04] group-hover:opacity-45" style={{ backgroundImage: `url(${card.bg})` }} />
+        // Fond CSS à 30 % d'opacité sur une tuile de 300 à 450 px : 640 px
+        // suffisent. L'illustration d'origine fait 1 920 px (100 à 550 Ko).
+        <span aria-hidden className="dna-card-art pointer-events-none absolute inset-0 bg-cover bg-right opacity-30 transition-[opacity,transform] duration-500 group-hover:scale-[1.04] group-hover:opacity-45" style={{ backgroundImage: `url("${optimizedImageUrl(card.bg, 640, 70)}")` }} />
       ) : null}
       <span aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-r from-panel via-panel/85 to-transparent" />
       <span aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-ink/75 to-transparent" />
@@ -182,7 +185,7 @@ function BuildShowcaseCard({ build }: { build: HomeBuildCard }) {
             en HAUT. C'est la seule position qui ne rogne jamais le sommet de la
             tête — vérifié sur les 31 avatars, coiffes et couvre-chefs compris.
             `origin-top` pour que le zoom au survol parte du haut lui aussi. */}
-        <span aria-hidden className="absolute inset-0 origin-top bg-cover bg-top opacity-80 transition-transform duration-500 group-hover:scale-105" style={{ backgroundImage: `url(${bg})` }} />
+        <span aria-hidden className="absolute inset-0 origin-top bg-cover bg-top opacity-80 transition-transform duration-500 group-hover:scale-105" style={{ backgroundImage: `url("${optimizedImageUrl(bg, 640)}")` }} />
         <span aria-hidden className="absolute inset-0 bg-gradient-to-t from-panel via-panel/20 to-transparent" />
         <span aria-hidden className="absolute inset-x-0 bottom-0 h-px" style={{ background: `linear-gradient(90deg, ${build.tint}, transparent)` }} />
         <span className="absolute right-2 top-2"><DnaTag>{t("community")}</DnaTag></span>
@@ -343,7 +346,7 @@ function HomeHub({
           </div>
 
           <Link href="/map" className="group relative flex min-h-[230px] flex-col justify-between overflow-hidden rounded-sm border border-gold/70 bg-panel/70 p-6 shadow-[0_0_40px_-8px_rgba(194,168,106,0.45)] transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-[0_0_60px_-6px_rgba(194,168,106,0.6)]">
-            <span aria-hidden className="dna-card-art pointer-events-none absolute inset-0 bg-cover bg-center opacity-45 transition-transform duration-700 group-hover:scale-[1.05]" style={{ backgroundImage: "url(/assets/worldview/worldview-6.webp)" }} />
+            <span aria-hidden className="dna-card-art pointer-events-none absolute inset-0 bg-cover bg-center opacity-45 transition-transform duration-700 group-hover:scale-[1.05]" style={{ backgroundImage: `url("${optimizedImageUrl("/assets/worldview/worldview-6.webp", 1080, 70)}")` }} />
             <span aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-r from-ink via-ink/70 to-transparent" />
             <span aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-ink to-transparent" />
             <DnaCornerBrackets size={20} color="var(--color-gold-bright)" />

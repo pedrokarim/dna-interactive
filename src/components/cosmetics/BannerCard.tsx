@@ -6,6 +6,7 @@ import type { BannerSummaryView } from "@/lib/cosmetics/banners";
 import { bannerStatus, formatDate, formatRemaining, useNow } from "@/lib/cosmetics/format";
 import { cn } from "@/components/dna/cn";
 import BannerStatusTag from "./BannerStatusTag";
+import { optimizedImageUrl } from "@/lib/images/optimized";
 
 /** Carte de bannière : visuel d'onglet du jeu, vedette, période et statut. */
 export default function BannerCard({ banner, className }: { banner: BannerSummaryView; className?: string }) {
@@ -27,7 +28,7 @@ export default function BannerCard({ banner, className }: { banner: BannerSummar
     >
       {banner.image ? (
         <img
-          src={banner.image}
+          src={optimizedImageUrl(banner.image, 828, 70)}
           alt=""
           width={560}
           height={200}
@@ -38,7 +39,7 @@ export default function BannerCard({ banner, className }: { banner: BannerSummar
       <span aria-hidden className="absolute inset-0 bg-gradient-to-r from-ink via-ink/80 to-ink/10" />
       {portrait ? (
         <img
-          src={portrait}
+          src={optimizedImageUrl(portrait, 128)}
           alt=""
           width={256}
           height={1024}

@@ -18,6 +18,7 @@ import { BUILD_STAT_LABEL_KEYS } from "@/lib/characters/build-stat-labels";
 import { useDialogA11y } from "@/components/dna/useDialogA11y";
 import CursorTooltip from "@/components/CursorTooltip";
 import { ASSETS_PATHS } from "@/lib/constants";
+import { optimizedImageUrl } from "@/lib/images/optimized";
 
 // ---------------------------------------------------------------------------
 // Card visual constants — palette inspired by Enka.network
@@ -112,7 +113,7 @@ function ItemTooltipBody({
     <div className="pointer-events-none">
       <div className="flex items-start gap-3">
         <img loading="lazy" decoding="async"
-          src={item.icon}
+          src={optimizedImageUrl(item.icon, 96)}
           alt=""
           width={48}
           height={48}
@@ -180,7 +181,7 @@ function WeaponCell({
           style={sizeStyle}
         >
           <img loading="lazy" decoding="async"
-            src={item.icon}
+            src={optimizedImageUrl(item.icon, 128)}
             alt=""
             width={64}
             height={64}
@@ -285,7 +286,7 @@ function WedgeSlot({
     >
       <div className="absolute inset-0 flex items-center justify-center">
         {icon ? (
-          <img loading="lazy" decoding="async" src={icon} alt="" width={64} height={64} className={`${d.iconSize} object-contain drop-shadow-md`} />
+          <img loading="lazy" decoding="async" src={optimizedImageUrl(icon, 128)} alt="" width={64} height={64} className={`${d.iconSize} object-contain drop-shadow-md`} />
         ) : (
           <span className="text-xs text-parch/40">—</span>
         )}
@@ -366,7 +367,7 @@ function WedgeCenter({
         boxShadow: `0 0 24px rgba(${rgb}, 0.5), inset 0 0 12px rgba(255, 255, 255, 0.15)`,
       }}
     >
-      {icon && <img loading="lazy" decoding="async" src={icon} alt="" width={64} height={64} className={`${d.centerIcon} object-contain drop-shadow-lg`} />}
+      {icon && <img loading="lazy" decoding="async" src={optimizedImageUrl(icon, 128)} alt="" width={64} height={64} className={`${d.centerIcon} object-contain drop-shadow-lg`} />}
     </div>
   );
 
@@ -515,7 +516,7 @@ export function QuickBuildCard({
       {bust && (
         <div className="pointer-events-none absolute inset-y-0 w-[780px]" style={{ left: -220 }}>
           <img loading="lazy" decoding="async"
-            src={bust}
+            src={optimizedImageUrl(bust, 1200)}
             alt=""
             crossOrigin="anonymous"
             width={300}
@@ -571,7 +572,7 @@ export function QuickBuildCard({
       {/* Layer 5 — element icon (top-left), subtle */}
       {elementIcon && (
         <img loading="lazy" decoding="async"
-          src={elementIcon}
+          src={optimizedImageUrl(elementIcon, 96)}
           alt=""
           aria-hidden
           crossOrigin="anonymous"
@@ -727,7 +728,7 @@ export function QuickBuildCard({
                           borderColor: isBest ? "rgba(252, 211, 77, 0.9)" : "rgba(255, 255, 255, 0.3)",
                         }}
                       >
-                        <img loading="lazy" decoding="async" src={item.icon} alt="" width={96} height={96} className="h-full w-full object-contain" />
+                        <img loading="lazy" decoding="async" src={optimizedImageUrl(item.icon, 192)} alt="" width={96} height={96} className="h-full w-full object-contain" />
                         {isBest && (
                           <span className="absolute right-0.5 top-0.5 rounded bg-gold/95 px-1 text-[9px] font-bold leading-tight text-ink">
                             S
@@ -813,7 +814,7 @@ export function QuickBuildCard({
                             boxShadow: `0 0 10px rgba(${rgb}, 0.35)`,
                           }}
                         >
-                          <img loading="lazy" decoding="async" src={iconSrc} alt="" width={28} height={28} className="h-7 w-7 object-contain" />
+                          <img loading="lazy" decoding="async" src={optimizedImageUrl(iconSrc, 64)} alt="" width={28} height={28} className="h-7 w-7 object-contain" />
                           <span
                             className="absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full text-[10px] font-bold"
                             style={{
@@ -858,7 +859,7 @@ export function QuickBuildCard({
                           className="relative h-9 w-9 shrink-0 overflow-hidden rounded-full"
                           style={{ border: `1.5px solid rgba(${rgb}, 0.6)` }}
                         >
-                          <img loading="lazy" decoding="async" src={portrait} alt="" width={36} height={36} className="h-full w-full object-cover" />
+                          <img loading="lazy" decoding="async" src={optimizedImageUrl(portrait, 96)} alt="" width={36} height={36} className="h-full w-full object-cover" />
                         </div>
                       )}
                       <p

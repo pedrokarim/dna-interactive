@@ -63,6 +63,10 @@ export function DnaAmbientBackdrop({
 }: DnaAmbientBackdropProps) {
   const rootRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
+  // Dernier visuel monté. Ils ne sont montés qu'au fil de la rotation : le
+  // visuel affiché et le suivant, prêt pour le fondu. Les monter tous d'un coup
+  // chargeait les cinq fonds d'écran sur chaque page, pour n'en montrer qu'un.
+  const [reached, setReached] = useState(() => Math.min(1, frames.length - 1));
 
   // ------------------------------------------------------- défilement → lueurs
   useEffect(() => {
@@ -111,7 +115,10 @@ export function DnaAmbientBackdrop({
     // Burns, lui, est neutralisé par la règle globale de `globals.css`.
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    const id = setInterval(() => setActive((i) => (i + 1) % frames.length), interval);
+    const id = setInterval(() => {
+      setActive((i) => (i + 1) % frames.length);
+      setReached((r) => Math.min(frames.length - 1, r + 1));
+    }, interval);
     return () => clearInterval(id);
   }, [frames, interval]);
 
@@ -132,17 +139,21 @@ export function DnaAmbientBackdrop({
               } as CSSProperties
             }
           >
-            <Image
-              src={src}
-              alt=""
-              fill
-              sizes="100vw"
-              quality={70}
-              // Décor : il ne doit jamais concurrencer le contenu au chargement.
-              loading="lazy"
-              fetchPriority="low"
-              className="dna-ambient-image"
-            />
+            {i <= reached ? (
+              <Image
+                src={src}
+                alt=""
+                fill
+                // Assombri à 34 % et flouté (`.dna-ambient-image`) : 80 % de la
+                // largeur d'écran suffisent, 1 200 px au lieu de 1 920 en 1 440.
+                sizes="80vw"
+                quality={70}
+                // Décor : il ne doit jamais concurrencer le contenu au chargement.
+                loading="lazy"
+                fetchPriority="low"
+                className="dna-ambient-image"
+              />
+            ) : null}
           </span>
         );
       })}

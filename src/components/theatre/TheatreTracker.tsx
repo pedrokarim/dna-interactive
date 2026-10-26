@@ -15,6 +15,7 @@ import {
 } from "@/lib/theatre/rotations";
 import type { TheatreFeaturedView, TheatreRotationView } from "@/lib/theatre/featured";
 import { ANNOUNCED_THEATRE_NEXT, type UpcomingCharacter } from "@/lib/characters/upcoming";
+import { optimizedImageUrl } from "@/lib/images/optimized";
 
 export type TheatreTrackerProps = {
   rotations: TheatreRotationView[];
@@ -60,15 +61,19 @@ function useTheatreFormats() {
 
 /* ------------------------------------------------------------- petits blocs */
 
-/** Visuel avec repli : l'affiche d'abord, l'icône si elle manque, rien sinon. */
-function FeaturedImage({ sources, className }: { sources: (string | null)[]; className?: string }) {
+/**
+ * Visuel avec repli : l'affiche d'abord, l'icône si elle manque, rien sinon.
+ * `requestWidth` : largeur demandée à l'optimiseur (≈ 2 × l'affichage). Un buste
+ * PNG d'origine pèse jusqu'à 3 Mo pour une vignette de 400 px.
+ */
+function FeaturedImage({ sources, requestWidth, className }: { sources: (string | null)[]; requestWidth: number; className?: string }) {
   const candidates = useMemo(() => sources.filter((s): s is string => Boolean(s)), [sources]);
   const [index, setIndex] = useState(0);
   const src = candidates[index];
   if (!src) return null;
   return (
     // eslint-disable-next-line @next/next/no-img-element
-    <img src={src} alt="" loading="lazy" onError={() => setIndex((i) => i + 1)} className={className} />
+    <img src={optimizedImageUrl(src, requestWidth)} alt="" loading="lazy" onError={() => setIndex((i) => i + 1)} className={className} />
   );
 }
 
@@ -160,6 +165,7 @@ function CurrentRotation({ rotation, now }: { rotation: TheatreRotationView; now
       <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 -z-10 w-[58%] opacity-35 sm:w-[44%] sm:opacity-100">
         <FeaturedImage
           sources={[featured.bust, featured.icon]}
+          requestWidth={828}
           // Un personnage se recadre par le haut sans rien perdre ; une arme coupée ne se
           // reconnaît plus : elle se montre entière, centrée, sans fondu qui la ronge.
           className={cn(
@@ -237,7 +243,7 @@ function NeighbourCard({ label, rotation, emptyTitle, emptyHint, announced }: {
       <DnaPanel className="flex-1 border-dashed transition-colors hover:border-line/50">
         <SheetLink href={`/characters/${announced.slug}`} className="flex h-full items-center gap-3 p-4">
           <span className="block h-16 w-16 shrink-0 overflow-hidden border border-line/25 bg-ink/40">
-            <FeaturedImage sources={[announced.avatar ?? null]} className="h-full w-full object-cover" />
+            <FeaturedImage sources={[announced.avatar ?? null]} requestWidth={128} className="h-full w-full object-cover" />
           </span>
           <span className="min-w-0">
             <DnaSectionMark size="sm">{label}</DnaSectionMark>
@@ -269,7 +275,7 @@ function NeighbourCard({ label, rotation, emptyTitle, emptyHint, announced }: {
     <DnaPanel className="flex-1 transition-colors hover:border-line/50">
       <SheetLink href={featured.href} className="flex h-full items-center gap-3 p-4">
         <span className="block h-16 w-16 shrink-0 overflow-hidden border border-line/25 bg-ink/40">
-          <FeaturedImage sources={[featured.icon]} className="h-full w-full object-cover" />
+          <FeaturedImage sources={[featured.icon]} requestWidth={128} className="h-full w-full object-cover" />
         </span>
         <span className="min-w-0">
           <DnaSectionMark size="sm">{label}</DnaSectionMark>
@@ -354,6 +360,7 @@ function Poster({ rotation, status, showYear, posterRef }: {
       >
         <FeaturedImage
           sources={[featured.poster, featured.icon]}
+          requestWidth={640}
           // Un portrait remplit l'affiche et se cadre sur le visage, en haut. Une
           // arme, elle, flotte au milieu de sa bande : on la montre en entier et
           // centrée, sinon le cadrage haut n'en garde que la pointe ou le vide.
@@ -393,6 +400,7 @@ function UnknownPoster({ switchAt }: { switchAt: string | null }) {
         >
           <FeaturedImage
             sources={[announced.portrait ?? null, announced.avatar ?? null]}
+            requestWidth={640}
             className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.03]"
           />
           <span aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black/90 to-transparent" />
