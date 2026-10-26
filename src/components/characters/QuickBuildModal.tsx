@@ -6,15 +6,14 @@ import { useTranslations } from "next-intl";
 import { toPng } from "html-to-image";
 import { toBustCardSrc } from "@/lib/characters/bust-card";
 import { Download, Sparkles, Swords, Target, X } from "lucide-react";
-import {
-  getTrackIcon,
-  TRACK_SHIFT_ICON,
-  type BuildDemonWedgeSlot,
-  type CharacterBuild,
-  type ResolvedItemRef,
+import { getTrackIcon, TRACK_SHIFT_ICON } from "@/lib/characters/build-assets";
+import type {
+  BuildDemonWedgeSlot,
+  CharacterBuild,
+  ResolvedItemRef,
 } from "@/lib/characters/builds";
 import type { CharacterRecord } from "@/lib/characters/types";
-import { resolveCharacterDisplayName } from "@/lib/characters/catalog";
+import { resolveCharacterDisplayName } from "@/lib/characters/display-name";
 import { BUILD_STAT_LABEL_KEYS } from "@/lib/characters/build-stat-labels";
 import { useDialogA11y } from "@/components/dna/useDialogA11y";
 import CursorTooltip from "@/components/CursorTooltip";

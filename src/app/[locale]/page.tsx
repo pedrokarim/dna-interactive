@@ -1,6 +1,9 @@
 import { toIntlLocale } from "@/lib/intl-locale";
 import { getTheatreSnapshot } from "@/lib/theatre/db";
 import type { Metadata, ResolvingMetadata } from "next";
+import { notFound } from "next/navigation";
+import { routing } from "@/i18n/routing";
+import type { Locale } from "@/i18n/config";
 import { generatePageMetadata, pageMetadata } from "@/lib/metadata";
 import HomeHubClient, { type HomeBuildCard } from "@/components/home/HomeHubClient";
 import { getAllCharacters, getCharacterById, resolveCharacterDisplayName } from "@/lib/characters/catalog";
@@ -19,6 +22,7 @@ import { resolveFeatureBadges } from "@/config/feature-badges";
 import { getBannerSummaries } from "@/lib/cosmetics/banners";
 import { getRotationForDisplay } from "@/lib/commissions";
 import { resolveCommissionFilter } from "@/lib/commissions/preferences-db";
+import { getBuildShowcase } from "@/lib/characters/showcase";
 
 export const dynamic = "force-dynamic";
 
@@ -43,6 +47,11 @@ const ELEMENT_TINT: Record<string, string> = {
 /** Home hub — carte, base de données, builder et outils, câblés sur les vraies données. */
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
+  // Le middleware laisse passer les chemins à point (`/wp-login.php`, `/.env`) : ils
+  // arrivent ici avec ce chemin pour locale. Le layout répond 404, mais la page
+  // se rend en parallèle : sans ce garde-fou, chaque sonde de robot lançait
+  // tout l'accueil, requêtes en base comprises, avant de planter sur `Intl`.
+  if (!routing.locales.includes(locale as Locale)) notFound();
   const langCode = locale.toUpperCase();
   const fmt = new Intl.NumberFormat(toIntlLocale(locale));
 
@@ -105,6 +114,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         items: fmt.format(itemsTotal),
         builds: fmt.format(buildsTotal),
       }}
+      showcase={getBuildShowcase(langCode)}
       calendarEvents={calendarEvents}
       calendarFrom={calendarFrom}
       calendarTo={calendarTo}

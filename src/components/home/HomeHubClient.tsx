@@ -31,6 +31,7 @@ import BannersShowcase from "@/components/cosmetics/BannersShowcase";
 import type { BannerSummaryView } from "@/lib/cosmetics/banners";
 import { HomeCommissions } from "@/components/commissions/HomeCommissions";
 import type { CommissionFilter } from "@/lib/commissions/preferences";
+import type { BuildShowcaseEntry } from "@/lib/characters/showcase";
 import type { RotationMeta, RotationState } from "@/lib/commissions/types";
 
 export type HomeBuildCard = {
@@ -68,6 +69,8 @@ export type HomeHubClientProps = {
   serverNow: number;
   /** Mandats scellés : rotation et filtre du visiteur ; `null` si la page est masquée par l'admin. */
   commissions: { state: RotationState; meta: RotationMeta; filter: CommissionFilter | null } | null;
+  /** Vitrine des derniers personnages sortis, résolue côté serveur. */
+  showcase: BuildShowcaseEntry[];
 };
 
 /* CTA façon design system, appliqués directement sur un Link/anchor. */
@@ -248,6 +251,7 @@ function HomeHub({
   theatreRotations,
   serverNow,
   commissions,
+  showcase,
 }: HomeHubClientProps) {
   const t = useTranslations("homeHub");
   const tShell = useTranslations("shell");
@@ -513,7 +517,7 @@ function HomeHub({
 
         {/* 3. le carrousel des cartes de build exportables (repris de /features) */}
         <div className="-mx-4 sm:-mx-6 lg:-mx-8">
-          <BuildShowcase />
+          <BuildShowcase entries={showcase} />
         </div>
       </section>
 

@@ -7,59 +7,29 @@ import { Link } from "@/i18n/navigation";
 import { ArrowRight, ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 import { ResponsiveQuickBuildCard } from "@/components/characters/QuickBuildModal";
 import { GlyphIcons } from "@/components/icons/GameGlyph";
-import {
-  getAllCharacters,
-  getCharacterSlug,
-  resolveCharacterDisplayName,
-} from "@/lib/characters/catalog";
-import { getCharacterBuilds } from "@/lib/characters/builds";
-import releaseVersions from "@/data/characters/release-versions.json";
+import { resolveCharacterDisplayName } from "@/lib/characters/display-name";
+import type { BuildShowcaseEntry } from "@/lib/characters/showcase";
 
 // ---------------------------------------------------------------------------
 // BuildShowcase — carrousel « à la Twitch » des derniers personnages sortis,
 // chacun avec son premier build. Carte active au centre, voisines en retrait
 // sur les côtés. Défilement automatique, avec pause.
+//
+// Les entrées viennent du serveur (`getBuildShowcase`) : les résoudre ici
+// embarquait le catalogue complet des objets dans le navigateur.
 // ---------------------------------------------------------------------------
 
-/** Nombre de personnages présentés. */
-const SHOWCASE_SIZE = 6;
 /** Durée d'affichage d'une carte avant la suivante. */
 const AUTOPLAY_MS = 6000;
-
-/**
- * Protagonistes : Vita (`char-protagonist-*`) et Mors (`char-weita*`), chacun
- * en femme et en homme. Ils sortent avec chaque version mais ne sont pas des
- * « nouveaux personnages » : on les écarte de la vitrine.
- */
-const PROTAGONISTS = new Set([
-  "char-protagonist-female",
-  "char-protagonist-male",
-  "char-weitaf",
-  "char-weitam",
-]);
-
-const RELEASES = releaseVersions as Record<string, number>;
 
 /** « 16 » → « 1.6 » : `OpenVersion` du jeu, en dixièmes. */
 const formatVersion = (v: number) => `${Math.floor(v / 10)}.${v % 10}`;
 
-export default function BuildShowcase() {
+export default function BuildShowcase({ entries: featured }: { entries: BuildShowcaseEntry[] }) {
   const lang = useLocale().toUpperCase();
   const t = useTranslations("common");
   const tHome = useTranslations("home");
   const reduceMotion = useReducedMotion();
-
-  // Derniers sortis d'abord (version du jeu, puis identifiant le plus récent à
-  // version égale), protagonistes exclus, premier build de chacun.
-  const featured = getAllCharacters()
-    .filter((c) => !PROTAGONISTS.has(c.id) && RELEASES[c.id] !== undefined)
-    .sort((a, b) => RELEASES[b.id] - RELEASES[a.id] || b.charId - a.charId)
-    .map((character) => {
-      const builds = getCharacterBuilds(character.id, lang);
-      return builds[0] ? { character, build: builds[0], buildCount: builds.length, version: RELEASES[character.id] } : null;
-    })
-    .filter((x): x is NonNullable<typeof x> => x !== null)
-    .slice(0, SHOWCASE_SIZE);
 
   const count = featured.length;
   const [active, setActive] = useState(0);
@@ -253,7 +223,7 @@ export default function BuildShowcase() {
       <div className="container mx-auto mt-6 px-4 md:mt-8 md:px-6">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-3 md:flex-row md:gap-4">
           <Link
-            href={`/characters/${getCharacterSlug(activeEntry.character)}?tab=build&build=true#quick-build`}
+            href={`/characters/${activeEntry.slug}?tab=build&build=true#quick-build`}
             className="dna-shine group inline-flex items-center justify-center gap-2 rounded-sm border border-gold bg-gradient-to-b from-gold-deep/40 to-ink/70 px-6 py-3 text-sm font-medium text-gold-bright transition-all duration-200 hover:-translate-y-px hover:border-gold-bright hover:text-gold-hover"
           >
             <GlyphIcons.builder className="h-4 w-4" />

@@ -1,11 +1,12 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import { Link } from "@/i18n/navigation";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { Map, Boxes, Users, ArrowRight, Hammer } from "lucide-react";
 import { generatePageMetadata, pageMetadata } from "@/lib/metadata";
 import UpdateBanner from "@/components/UpdateBanner";
 import HeroSection from "@/components/HeroSection";
 import BuildShowcase from "@/components/BuildShowcase";
+import { getBuildShowcase } from "@/lib/characters/showcase";
 import NewCharactersBanner from "@/components/NewCharactersBanner";
 import CommunityCards from "@/components/CommunityCards";
 import SiteHeader from "@/components/site/SiteHeader";
@@ -295,7 +296,7 @@ export default async function FeaturesPage() {
         </div>
       </section>
 
-      <BuildShowcase />
+      <BuildShowcase entries={getBuildShowcase((await getLocale()).toUpperCase())} />
 
       {/* Fonctionnalités */}
       <section className="border-t border-line/15 bg-panel/30 py-20">
