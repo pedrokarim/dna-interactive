@@ -20,7 +20,11 @@ export function LostMarker() {
         <span className="dna-404-ring absolute left-1/2 top-1/2 h-20 w-20 rounded-full border border-gold/50" />
         <span className="dna-404-ring dna-404-ring--late absolute left-1/2 top-1/2 h-20 w-20 rounded-full border border-gold/50" />
 
+        {/* `loading="lazy"` : sans lui, React 19 précharge ces images dans
+            le <head> de TOUTES les pages, la 404 étant gardée en réserve par
+            le layout. Sur la 404 elle-même, elles sont à l'écran et chargent aussitôt. */}
         <img
+          loading="lazy"
           src="/assets/ui/not-found/player-location.webp"
           alt=""
           width={128}
@@ -31,6 +35,7 @@ export function LostMarker() {
 
       {/* Autocollant de la messagerie du jeu, posé en coin. */}
       <img
+        loading="lazy"
         src="/assets/ui/not-found/confused-sticker.webp"
         alt=""
         width={256}
