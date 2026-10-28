@@ -37,6 +37,7 @@ import { ThemeSwitcher } from "@/components/site/ThemeSwitcher";
 import { AnnouncementsAdminClient } from "./AnnouncementsAdminClient";
 import { CalendarAdminClient } from "./CalendarAdminClient";
 import { ChangelogAdminClient } from "./ChangelogAdminClient";
+import { ReportFollowUpDialog } from "./ReportFollowUpDialog";
 import { RoutesAdminClient } from "./RoutesAdminClient";
 import { SettingsAdminClient } from "./SettingsAdminClient";
 import {
@@ -92,6 +93,7 @@ type AdminReport = {
   buildId: string;
   buildTitle: string;
   reporterName: string | null;
+  reporterHasEmail: boolean;
 };
 
 type AdminUser = {
@@ -217,8 +219,15 @@ export function AdminDashboardClient({ currentUser }: { currentUser: CurrentAdmi
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
     });
+    const data = (await response.json().catch(() => null)) as { reporterMail?: ReporterMail | null } | null;
     await load();
-    setMessage(response.ok ? { tone: "ok", text: "Action appliquée." } : { tone: "error", text: "Action refusée." });
+    if (!response.ok) {
+      setMessage({ tone: "error", text: "Action refusée." });
+    } else if (data?.reporterMail) {
+      setMessage(REPORTER_MAIL_MESSAGES[data.reporterMail]);
+    } else {
+      setMessage({ tone: "ok", text: "Action appliquée." });
+    }
   }
 
   async function patchUser(body: Record<string, unknown>) {
@@ -593,6 +602,15 @@ function OverviewView({
   );
 }
 
+type ReporterMail = "sent" | "skipped" | "no_email" | "failed";
+
+const REPORTER_MAIL_MESSAGES: Record<ReporterMail, { tone: "ok" | "error"; text: string }> = {
+  sent: { tone: "ok", text: "Signalement traité, mail envoyé à la personne qui l’a fait." },
+  skipped: { tone: "error", text: "Signalement traité, mais le mail n’est pas parti : SMTP non configuré." },
+  no_email: { tone: "error", text: "Signalement traité, mais ce compte n’a pas d’adresse e-mail." },
+  failed: { tone: "error", text: "Signalement traité, mais l’envoi du mail a échoué." },
+};
+
 const REPORT_STATUS: Record<AdminReport["status"], { tone: "danger" | "ok" | "neutral"; label: string }> = {
   open: { tone: "danger", label: "Ouvert" },
   resolved: { tone: "ok", label: "Résolu" },
@@ -608,70 +626,88 @@ function ReportsTable({
   compact?: boolean;
   onPatchBuild: (body: Record<string, unknown>) => Promise<void>;
 }) {
+  const [closing, setClosing] = useState<{ report: AdminReport; status: "resolved" | "dismissed" } | null>(null);
   if (reports.length === 0) return <AdminEmpty icon={Check} text="Aucun signalement." />;
 
   return (
-    <AdminTable minWidth={compact ? "32rem" : "46rem"}>
-      <thead>
-        <tr>
-          <AdminTh>Build</AdminTh>
-          <AdminTh>Motif</AdminTh>
-          {!compact ? <AdminTh width="9rem">Signalé par</AdminTh> : null}
-          <AdminTh width="7rem">Statut</AdminTh>
-          <AdminTh width={compact ? "7rem" : "9.5rem"} align="right">
-            Actions
-          </AdminTh>
-        </tr>
-      </thead>
-      <tbody>
-        {reports.map((report) => {
-          const status = REPORT_STATUS[report.status];
-          return (
-            <AdminTr key={report.id} dimmed={report.status !== "open"}>
-              <AdminTd>
-                <AdminIdentity primary={report.buildTitle} secondary={formatDate(report.createdAt)} />
-              </AdminTd>
-              <AdminTd className="max-w-[22rem]">
-                <span className="line-clamp-2 text-muted">{report.reason}</span>
-              </AdminTd>
-              {!compact ? (
+    <>
+      <ReportFollowUpDialog
+        report={closing?.report ?? null}
+        status={closing?.status ?? "resolved"}
+        onCancel={() => setClosing(null)}
+        onDecide={({ status, notifyLocale }) => {
+          if (!closing) return;
+          const reportId = closing.report.id;
+          setClosing(null);
+          void onPatchBuild({
+            reportId,
+            reportStatus: status,
+            ...(notifyLocale ? { notifyReporter: { locale: notifyLocale } } : {}),
+          });
+        }}
+      />
+      <AdminTable minWidth={compact ? "32rem" : "46rem"}>
+        <thead>
+          <tr>
+            <AdminTh>Build</AdminTh>
+            <AdminTh>Motif</AdminTh>
+            {!compact ? <AdminTh width="9rem">Signalé par</AdminTh> : null}
+            <AdminTh width="7rem">Statut</AdminTh>
+            <AdminTh width={compact ? "7rem" : "9.5rem"} align="right">
+              Actions
+            </AdminTh>
+          </tr>
+        </thead>
+        <tbody>
+          {reports.map((report) => {
+            const status = REPORT_STATUS[report.status];
+            return (
+              <AdminTr key={report.id} dimmed={report.status !== "open"}>
                 <AdminTd>
-                  <span className="truncate text-muted">{report.reporterName ?? "—"}</span>
+                  <AdminIdentity primary={report.buildTitle} secondary={formatDate(report.createdAt)} />
                 </AdminTd>
-              ) : null}
-              <AdminTd>
-                <AdminStatus tone={status.tone}>{status.label}</AdminStatus>
-              </AdminTd>
-              <AdminTd align="right">
-                <AdminActions>
-                  <AdminIconLink icon={ExternalLink} label="Ouvrir le build" href={`/fr/builds/${report.buildId}`} external />
-                  <AdminIconButton
-                    icon={EyeOff}
-                    label="Masquer le build"
-                    onClick={() => void onPatchBuild({ buildId: report.buildId, hidden: true })}
-                  />
-                  <AdminActionsDivider />
-                  <AdminIconButton
-                    icon={Check}
-                    label="Marquer résolu"
-                    disabled={report.status === "resolved"}
-                    onClick={() => void onPatchBuild({ reportId: report.id, reportStatus: "resolved" })}
-                  />
-                  {!compact ? (
+                <AdminTd className="max-w-[22rem]">
+                  <span className="line-clamp-2 text-muted">{report.reason}</span>
+                </AdminTd>
+                {!compact ? (
+                  <AdminTd>
+                    <span className="truncate text-muted">{report.reporterName ?? "—"}</span>
+                  </AdminTd>
+                ) : null}
+                <AdminTd>
+                  <AdminStatus tone={status.tone}>{status.label}</AdminStatus>
+                </AdminTd>
+                <AdminTd align="right">
+                  <AdminActions>
+                    <AdminIconLink icon={ExternalLink} label="Ouvrir le build" href={`/fr/builds/${report.buildId}`} external />
                     <AdminIconButton
-                      icon={X}
-                      label="Rejeter le signalement"
-                      disabled={report.status === "dismissed"}
-                      onClick={() => void onPatchBuild({ reportId: report.id, reportStatus: "dismissed" })}
+                      icon={EyeOff}
+                      label="Masquer le build"
+                      onClick={() => void onPatchBuild({ buildId: report.buildId, hidden: true })}
                     />
-                  ) : null}
-                </AdminActions>
-              </AdminTd>
-            </AdminTr>
-          );
-        })}
-      </tbody>
-    </AdminTable>
+                    <AdminActionsDivider />
+                    <AdminIconButton
+                      icon={Check}
+                      label="Marquer résolu"
+                      disabled={report.status === "resolved"}
+                      onClick={() => setClosing({ report, status: "resolved" })}
+                    />
+                    {!compact ? (
+                      <AdminIconButton
+                        icon={X}
+                        label="Rejeter le signalement"
+                        disabled={report.status === "dismissed"}
+                        onClick={() => setClosing({ report, status: "dismissed" })}
+                      />
+                    ) : null}
+                  </AdminActions>
+                </AdminTd>
+              </AdminTr>
+            );
+          })}
+        </tbody>
+      </AdminTable>
+    </>
   );
 }
 
@@ -890,6 +926,7 @@ const EMAIL_KIND_LABELS: Record<string, string> = {
   welcome: "Bienvenue",
   contact: "Contact",
   announcement: "Annonce",
+  report_followup: "Suivi de signalement",
 };
 
 function EmailsView({ stats }: { stats: EmailStats | null }) {

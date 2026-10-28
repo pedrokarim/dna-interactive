@@ -1,10 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
-import { count, desc, eq } from "drizzle-orm";
+import { count, desc, eq, sql } from "drizzle-orm";
 import { z } from "zod";
 import { getDb, schema } from "@/db";
 import { getCurrentUser } from "@/lib/auth/session";
 import { isMissingTableError } from "@/lib/db-errors";
 import { recordAdminAction } from "@/lib/admin/audit";
+import { sendReportFollowUp } from "@/lib/email/report-emails";
+import { locales, type Locale } from "@/i18n/config";
 
 export const dynamic = "force-dynamic";
 
@@ -14,7 +16,43 @@ const patchSchema = z.object({
   deleteBuild: z.boolean().optional(),
   reportId: z.string().uuid().optional(),
   reportStatus: z.enum(["resolved", "dismissed"]).optional(),
+  /** Présent = prévenir par mail la personne qui a signalé, dans cette langue. */
+  notifyReporter: z.object({ locale: z.enum(locales) }).optional(),
 });
+
+type ReporterMail = "sent" | "skipped" | "no_email" | "failed";
+
+/** Prévient le signaleur de la suite donnée. Un échec d'envoi n'annule pas la modération. */
+async function notifyReporter(reportId: string, outcome: "resolved" | "dismissed", locale: Locale): Promise<ReporterMail> {
+  const [row] = await getDb()
+    .select({
+      reporterId: schema.users.id,
+      email: schema.users.email,
+      name: schema.users.name,
+      buildTitle: schema.builds.title,
+    })
+    .from(schema.buildReports)
+    .innerJoin(schema.users, eq(schema.users.id, schema.buildReports.reporterId))
+    .innerJoin(schema.builds, eq(schema.builds.id, schema.buildReports.buildId))
+    .where(eq(schema.buildReports.id, reportId))
+    .limit(1);
+  if (!row?.email) return "no_email";
+
+  try {
+    const { skipped } = await sendReportFollowUp({
+      to: row.email,
+      userId: row.reporterId,
+      name: row.name,
+      locale,
+      outcome,
+      buildTitles: [row.buildTitle],
+    });
+    return skipped ? "skipped" : "sent";
+  } catch (error) {
+    console.error("[admin/builds] mail de suivi de signalement non envoyé :", error);
+    return "failed";
+  }
+}
 
 function clampPage(value: string | null): number {
   const parsed = Number(value ?? 1);
@@ -88,6 +126,8 @@ export async function GET(request: NextRequest) {
         buildTitle: schema.builds.title,
         reporterId: schema.users.id,
         reporterName: schema.users.name,
+        // Booléen seulement : l'adresse n'a pas à transiter vers le navigateur.
+        reporterHasEmail: sql<boolean>`${schema.users.email} is not null`,
       })
       .from(schema.buildReports)
       .innerJoin(schema.builds, eq(schema.builds.id, schema.buildReports.buildId))
@@ -144,6 +184,7 @@ export async function PATCH(request: NextRequest) {
     });
   }
 
+  let reporterMail: ReporterMail | null = null;
   if (parsed.data.reportId && parsed.data.reportStatus) {
     await db
       .update(schema.buildReports)
@@ -153,13 +194,17 @@ export async function PATCH(request: NextRequest) {
         resolvedById: guard.user.id,
       })
       .where(eq(schema.buildReports.id, parsed.data.reportId));
+    if (parsed.data.notifyReporter) {
+      reporterMail = await notifyReporter(parsed.data.reportId, parsed.data.reportStatus, parsed.data.notifyReporter.locale);
+    }
     await recordAdminAction({
       adminId: guard.user.id,
       action: `report_${parsed.data.reportStatus}`,
       targetType: "report",
       targetId: parsed.data.reportId,
+      meta: { reporterMail: reporterMail ?? "not_requested" },
     });
   }
 
-  return NextResponse.json({ ok: true });
+  return NextResponse.json({ ok: true, reporterMail });
 }

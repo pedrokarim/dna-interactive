@@ -36,6 +36,8 @@ type SendMailInput = {
   subject: string;
   html: string;
   text?: string;
+  /** Adresse qui reçoit les réponses (sinon l'expéditeur). */
+  replyTo?: string;
   /** Active le suivi d'ouverture (asset injecté + événement enregistré). */
   track?: { kind: EmailKind; userId?: string | null };
 };
@@ -45,7 +47,7 @@ type SendMailInput = {
  * loggue et on renvoie `{ skipped: true }` pour que les flux restent testables
  * sans secrets.
  */
-export async function sendMail({ to, subject, html, text, track }: SendMailInput): Promise<{ skipped: boolean }> {
+export async function sendMail({ to, subject, html, text, replyTo, track }: SendMailInput): Promise<{ skipped: boolean }> {
   if (!isMailConfigured()) {
     console.warn("[mailer] SMTP non configuré — email non envoyé :", { to, subject });
     return { skipped: true };
@@ -57,6 +59,6 @@ export async function sendMail({ to, subject, html, text, track }: SendMailInput
     if (pixel) finalHtml = injectPixel(html, pixel.pixelUrl);
   }
 
-  await getTransport().sendMail({ from: defaultFrom(), to, subject, html: finalHtml, text });
+  await getTransport().sendMail({ from: defaultFrom(), to, subject, html: finalHtml, text, replyTo });
   return { skipped: false };
 }
