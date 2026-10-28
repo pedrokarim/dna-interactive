@@ -7,6 +7,7 @@ import { DnaChip } from "./Chip";
 import { DnaStars } from "./RarityStars";
 import { ELEMENTS, type ElementKey } from "./elements";
 import { rarityAttr, toRarityLevel } from "./rarity";
+import type { WedgeRuleInfo } from "@/lib/community-builds/wedge-rules";
 
 /**
  * Forme « résolue » légère d'un item, miroir de ce que produit
@@ -28,6 +29,8 @@ export type DnaPickerItem = {
   weaponClass?: "melee" | "ranged" | null;
   /** Arme de calamité : ses Potentiels dépendent de la prédilection du porteur. */
   calamity?: boolean;
+  /** Demon Wedges uniquement : ce qui décide de sa place dans un build (cf. wedge-rules). */
+  wedge?: WedgeRuleInfo;
 };
 
 /** Libellés de track de polarité (MOD). Réf data : Polarity_<n>_Name. */

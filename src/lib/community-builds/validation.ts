@@ -8,6 +8,7 @@ import {
 import { getItemByCategoryAndId } from "@/lib/items/catalog";
 import { isWeaponWedge, type WeaponWedgeClass } from "@/lib/items/weapon-builds";
 import { isCenterDemonWedgeItemId } from "./center-wedges";
+import { checkCharacterWedges, checkWeaponWedgeDuplicates, describeWedge } from "./wedge-rules";
 
 const itemIdSchema = z.string().trim().min(1).max(96);
 const rankSchema = z.enum(["best", "alternative"]);
@@ -191,6 +192,11 @@ function weaponClassOf(itemId: string): WeaponWedgeClass | null {
   return null;
 }
 
+function modName(itemId: string): string {
+  const mod = getItemByCategoryAndId("mods", itemId);
+  return mod?.translations?.FR?.modName ?? mod?.translations?.EN?.modName ?? itemId;
+}
+
 export function validateBuildReferences(input: CreateBuildInput | DraftInput): string[] {
   const errors: string[] = [];
   const character = getCharacterById(input.characterId);
@@ -242,6 +248,7 @@ export function validateBuildReferences(input: CreateBuildInput | DraftInput): s
       }
       wedgePositions.add(slot.position);
     }
+    errors.push(...checkWeaponWedgeDuplicates(weapon.itemId, weapon.demonWedges.slots, modName));
   }
   for (const genimon of input.payload.genimon) {
     const item = getItemByCategoryAndId("genimons", genimon.itemId);
@@ -275,6 +282,21 @@ export function validateBuildReferences(input: CreateBuildInput | DraftInput): s
     if (!isCenterDemonWedgeItemId(input.payload.demonWedges.centerItemId)) {
       errors.push("Ce Demon Wedge ne peut pas etre place au centre du build.");
     }
+  }
+  if (character) {
+    // Un perso mono-élément enregistre ses builds sans élément : on prend le sien.
+    const fallback = elementKeySchema.safeParse(getCharacterElements(character)[0]?.key);
+    const buildElement = input.element ?? (fallback.success ? fallback.data : null);
+    errors.push(
+      ...checkCharacterWedges(
+        { element: buildElement, slots: input.payload.demonWedges.slots, centerItemId: input.payload.demonWedges.centerItemId },
+        (itemId) => {
+          const mod = getItemByCategoryAndId("mods", itemId);
+          return mod ? describeWedge(mod) : null;
+        },
+        modName,
+      ),
+    );
   }
   const consonanceSlots = input.payload.consonanceWeapon?.slots ?? [];
   for (const slot of consonanceSlots) {

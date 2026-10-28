@@ -7,6 +7,7 @@ import type { DnaPickerItem } from "@/components/dna/ItemPicker";
 import type { ElementKey } from "@/components/dna/elements";
 import { allWeaponBuilds } from "@/data/weapons/builds";
 import { getWeaponWedgePool } from "@/lib/items/weapon-builds";
+import { describeWedge } from "./wedge-rules";
 
 const ELEMENT_KEYS = new Set(["Fire", "Water", "Thunder", "Wind", "Light", "Dark"]);
 
@@ -72,6 +73,9 @@ function itemToPickerItem(item: ItemRecord, locale: string): DnaPickerItem {
     base.weaponType = typeKey ? typeKey.replace("WeaponType_", "") : null;
     base.weaponClass = keys.includes("UI_Armory_Meleeweapon") ? "melee" : "ranged";
     base.calamity = isCalamityWeapon(item);
+  }
+  if (item.categoryId === "mods") {
+    base.wedge = describeWedge(item) ?? undefined;
   }
 
   return base;

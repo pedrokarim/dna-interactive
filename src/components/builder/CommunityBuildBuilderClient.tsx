@@ -39,6 +39,7 @@ import {
   validateCommunityBuildExport,
 } from "@/lib/community-builds/build-io";
 import { isCenterDemonWedgeItemId } from "@/lib/community-builds/center-wedges";
+import { canEquipAsCenter, canEquipOnCharacter } from "@/lib/community-builds/wedge-rules";
 import type { BuilderOptions } from "@/lib/community-builds/options";
 import type { CommunityBuildPayload } from "@/lib/community-builds/validation";
 import { BUILD_TAGS, type BuildTag } from "@/lib/community-builds/validation";
@@ -325,10 +326,37 @@ export function CommunityBuildBuilderClient({
   const accentHex = activeElement ? ELEMENTS[activeElement].hex : "#c2a86a";
   const consonanceWeapon = activeElement ? selectedCharacter?.consonanceByElement[activeElement] ?? null : null;
   const key = selectedCharacter ? draftKey(selectedCharacter.id, activeElement) : "";
+  // Le picker ne propose que ce que la case accepte, selon les mêmes règles que
+  // l'import et le serveur (wedge-rules) : pool personnage, élément du build,
+  // centre réservé aux Feathered Serpent's.
   const centerMods = useMemo(
-    () => options.mods.filter((item) => isCenterDemonWedgeItemId(item.id)),
-    [options.mods],
+    () => options.mods.filter((item) => item.wedge && canEquipAsCenter(item.wedge, activeElement)),
+    [options.mods, activeElement],
   );
+  const characterMods = useMemo(
+    () => options.mods.filter((item) => item.wedge && canEquipOnCharacter(item.wedge, activeElement)),
+    [options.mods, activeElement],
+  );
+
+  /** Pièces proposées pour la case en cours, sans les doublons que le jeu interdit. */
+  function wedgePoolFor(target: NonNullable<EditingTarget>): DnaPickerItem[] {
+    if (target.kind === "demon") {
+      const placedElsewhere = new Set(
+        demonSlots.filter((slot) => slot.position !== target.position && slot.item).map((slot) => slot.item!.id),
+      );
+      return characterMods.filter((item) => item.wedge?.stackable || !placedElsewhere.has(item.id));
+    }
+    if (target.kind === "weaponWedge") {
+      const pool = target.weaponClass === "melee" ? options.weaponWedges.melee : options.weaponWedges.ranged;
+      const placedElsewhere = new Set(
+        (weaponWedges[target.weaponId]?.slots ?? [])
+          .filter((slot) => slot.position !== target.position && slot.item)
+          .map((slot) => slot.item!.id),
+      );
+      return pool.filter((item) => !placedElsewhere.has(item.id));
+    }
+    return options.mods;
+  }
 
   /**
    * Choisir un personnage est le premier geste réel du constructeur : avant
@@ -1564,11 +1592,7 @@ export function CommunityBuildBuilderClient({
                     ? centerMods
                     : editing.kind === "weaponAffinity"
                       ? ELEMENT_PICKER_ITEMS
-                      : editing.kind === "weaponWedge"
-                        ? editing.weaponClass === "melee"
-                          ? options.weaponWedges.melee
-                          : options.weaponWedges.ranged
-                        : options.mods
+                      : wedgePoolFor(editing)
               }
               usedIds={editing.kind === "team" ? team.map((member) => member.character.id) : undefined}
               columns={6}

@@ -6,6 +6,7 @@ import type { DnaPickerItem } from "@/components/dna/ItemPicker";
 import type { CommunityBuildPayload } from "./validation";
 import { BUILD_TAGS, STAT_KEYS, TEAM_ROLES } from "./validation";
 import { isCenterDemonWedgeItemId } from "./center-wedges";
+import { checkCharacterWedges, checkWeaponWedgeDuplicates } from "./wedge-rules";
 
 export const COMMUNITY_BUILD_EXPORT_SCHEMA = "dna.community-build";
 export const COMMUNITY_BUILD_EXPORT_VERSION = 1;
@@ -193,6 +194,27 @@ function validateAgainstOptions(data: CommunityBuildExport, options: BuilderOpti
 
   if (hasDuplicatePositions(data.payload.demonWedges.slots)) {
     errors.push("Le build contient plusieurs Demon Wedges sur la meme position.");
+  }
+
+  // Mêmes règles de placement que le serveur : un fichier écrit à la main ne
+  // doit pas pouvoir poser ce que le builder refuse.
+  const modById = new Map(options.mods.map((item) => [item.id, item]));
+  const nameOf = (itemId: string) => itemName(options.mods, itemId);
+  if (character) {
+    errors.push(
+      ...checkCharacterWedges(
+        {
+          element: data.element ?? character.elements[0]?.key ?? null,
+          slots: data.payload.demonWedges.slots,
+          centerItemId: data.payload.demonWedges.centerItemId,
+        },
+        (itemId) => modById.get(itemId)?.wedge ?? null,
+        nameOf,
+      ),
+    );
+  }
+  for (const weapon of [...data.payload.weapons.melee, ...data.payload.weapons.ranged]) {
+    errors.push(...checkWeaponWedgeDuplicates(itemName(options.weapons, weapon.itemId), weapon.demonWedges?.slots ?? [], nameOf));
   }
 
   if (data.payload.consonanceWeapon) {
