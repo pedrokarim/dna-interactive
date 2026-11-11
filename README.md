@@ -163,7 +163,7 @@ bun run analyze      # Analyse du bundle (si configuré)
 ## 🌐 Déploiement
 
 Le site est auto-hébergé : une image Docker construite par la CI, servie derrière
-nginx et Cloudflare. Le serveur ne compile jamais.
+nginx et Cloudflare. Le serveur ne compile pas, sauf en plan B (plus bas).
 
 1. **Image** : chaque push sur `main` (ou `dev`) lance le workflow
    [`Image Docker`](.github/workflows/deploy.yml), qui construit le
@@ -177,6 +177,13 @@ nginx et Cloudflare. Le serveur ne compile jamais.
    `deploy.sh <sha>`.
 4. **Secrets d'exécution** : dans le `.env` du serveur, jamais dans GitHub. Hors
    de Vercel, Auth.js exige `AUTH_URL` **et** `AUTH_TRUST_HOST=true`.
+
+**Plan B, si GitHub Actions ne construit pas l'image** (runs bloqués « en file »,
+incident GitHub) : [`scripts/build-on-server.sh`](scripts/build-on-server.sh),
+posé à côté de `compose.prod.yml`, construit l'image sur le serveur avec les
+mêmes entrées que la CI, lues dans le `.env`. `./build-on-server.sh <sha> --up`
+construit puis bascule le conteneur. Ne pas enchaîner avec `deploy.sh`, qui
+retirerait l'image depuis GHCR.
 
 Pièges connus :
 
