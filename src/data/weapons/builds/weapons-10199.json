@@ -1,0 +1,37 @@
+{
+  "weaponId": "weapons-10199",
+  "buildName": {
+    "FR": "Base Conversion de Surabondance",
+    "EN": "Core Overflow Conversion"
+  },
+  "demonWedges": {
+    "slots": [
+      {
+        "position": 1,
+        "itemId": "mods-52801",
+        "track": null
+      },
+      {
+        "position": 2,
+        "itemId": "mods-52008",
+        "track": null
+      },
+      {
+        "position": 3,
+        "itemId": "mods-42203",
+        "track": null
+      },
+      {
+        "position": 4,
+        "itemId": "mods-42006",
+        "track": null
+      }
+    ],
+    "affinity": null,
+    "note": {
+      "FR": "Pour un DPS de dégâts de compétence qui n'attaque jamais à l'épée. Les quatre pièces portent la Chance de déclenchement au-delà de 100 % ; Entrave · Débordement convertit l'excédent en Conversion de Surabondance. Aucun module de piste.",
+      "EN": "For a Skill DMG DPS who never attacks with the sword. The four pieces push Trigger Probability past 100%; Trammel – Surplus converts the excess into Overflow Conversion. No track module needed."
+    }
+  },
+  "note": {}
+}

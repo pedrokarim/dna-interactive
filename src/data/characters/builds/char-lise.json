@@ -1,6 +1,220 @@
 [
   {
     "characterId": "char-lise",
+    "buildName": {
+      "FR": "Farm en continu – Énigme insoluble",
+      "EN": "Idle Farming — Endless Enigma"
+    },
+    "weapons": {
+      "melee": [
+        {
+          "itemId": "weapons-10199",
+          "rank": "best",
+          "note": {
+            "FR": "Sa meilleure arme de mêlée : de gros bonus de Dégâts de compétence, et des dégâts de calamité en plus au niveau de fusion 5. L'épée n'est pas une de ses prédilections : débloquer d'abord l'épée en maîtrise supplémentaire. Au palier I, prendre Énigme – Inconnu, que Surabondance · Adresse déclenche en continu.",
+            "EN": "Her best melee weapon: large Skill DMG bonuses, plus extra Calamity damage at smelting level 5. Swords are not among her preferred weapons: unlock the sword as an additional proficiency first. At tier I, take Enigma – Obscurity, which Overflow • Finesse keeps triggering."
+          }
+        },
+        {
+          "itemId": "weapons-10304",
+          "rank": "alternative",
+          "note": {
+            "FR": "La meilleure hors arme de calamité : Vigueur, et Intensité de compétence quand un personnage Électro utilise son Ultime.",
+            "EN": "The best non-calamity option: Morale, and Skill Intensity when an Electro character uses their Ultimate."
+          }
+        },
+        {
+          "itemId": "weapons-10206",
+          "rank": "alternative",
+          "note": {
+            "FR": "Intensité de compétence +48 %.",
+            "EN": "Skill Intensity +48%."
+          }
+        },
+        {
+          "itemId": "weapons-10603",
+          "rank": "alternative",
+          "note": {
+            "FR": "ATQ du personnage +100 %.",
+            "EN": "Character ATK +100%."
+          }
+        }
+      ],
+      "ranged": [
+        {
+          "itemId": "weapons-20102",
+          "rank": "best",
+          "note": {
+            "FR": "Énigme insoluble occupe l'emplacement d'arme de calamité : Dépouilleur et ses +120 % d'ATQ du personnage passent devant.",
+            "EN": "Endless Enigma takes the calamity weapon slot, so Rendhusk and its +120% Character ATK come first."
+          }
+        },
+        {
+          "itemId": "weapons-20599",
+          "rank": "alternative",
+          "note": {
+            "FR": "Arme de calamité, donc incompatible avec Énigme insoluble ; meilleure à distance dans l'absolu.",
+            "EN": "A calamity weapon, so it cannot be paired with Endless Enigma; the best ranged option in absolute terms."
+          }
+        },
+        {
+          "itemId": "weapons-20201",
+          "rank": "alternative",
+          "note": {
+            "FR": "Intensité de compétence +48 %.",
+            "EN": "Skill Intensity +48%."
+          }
+        }
+      ]
+    },
+    "demonWedges": {
+      "slots": [
+        {
+          "position": 1,
+          "itemId": "mods-51942",
+          "track": 4
+        },
+        {
+          "position": 2,
+          "itemId": "mods-51441",
+          "track": 1
+        },
+        {
+          "position": 3,
+          "itemId": "mods-51334",
+          "track": 3
+        },
+        {
+          "position": 4,
+          "itemId": "mods-56142",
+          "track": 2
+        },
+        {
+          "position": 5,
+          "itemId": "mods-51748",
+          "track": 2
+        },
+        {
+          "position": 6,
+          "itemId": "mods-51748",
+          "track": 2
+        },
+        {
+          "position": 7,
+          "itemId": "mods-51748",
+          "track": 2
+        },
+        {
+          "position": 8,
+          "itemId": "mods-51317",
+          "track": null
+        }
+      ],
+      "affinity": {
+        "FR": "Décision de Quetzalcoatl",
+        "EN": "Feathered Serpent's Volition"
+      },
+      "note": {
+        "FR": "Rester immobile pour garder l'effet de Force inébranlable. Surabondance · Adresse en case 8, sans module, déclenche Énigme insoluble en continu ; sans l'arme, la remplacer par un quatrième Ardeur · Raffinement. Si l'allié Électro ne porte pas Ailes · Inspiration · Vigueur, Rhythm le prend à la place d'Ailes · Inspiration · Décision.",
+        "EN": "Stay still to keep Still Thunder active. Overflow • Finesse in slot 8, with no module, keeps Endless Enigma triggering; without the weapon, use a fourth Blaze • Refinement instead. If the Electro teammate does not hold Wings • Inspo • Morale, Rhythm takes it in place of Wings • Inspo • Volition."
+      },
+      "centerItemId": "mods-51746"
+    },
+    "statsPriority": [
+      "SkillDmg",
+      "SkillIntensity",
+      "Morale",
+      "ATK"
+    ],
+    "team": [
+      {
+        "characterId": "char-zhiliu",
+        "role": "Sub-DPS",
+        "note": {
+          "FR": "Sub-DPS de zone, et bonus de dégâts pour l'équipe à l'intron IV. Une équipe tout Électro est la plus efficace pour nettoyer les vagues.",
+          "EN": "AoE sub-DPS, with team damage buffs at I4. An all-Electro team clears waves best."
+        }
+      },
+      {
+        "characterId": "char-baiheng",
+        "role": "Support",
+        "note": {
+          "FR": "Fushu soigne, rend de la Lucidité et ajoute des bonus de dégâts.",
+          "EN": "Fushu heals, restores Sanity and adds damage buffs."
+        }
+      }
+    ],
+    "genimon": [
+      {
+        "itemId": "genimon-4241",
+        "rank": "best",
+        "traits": [
+          "UI_PetEntry_Title19",
+          "UI_PetEntry_Title23",
+          "UI_PetEntry_Title10"
+        ]
+      },
+      {
+        "itemId": "genimon-4121",
+        "rank": "alternative",
+        "traits": [
+          "UI_PetEntry_Title19",
+          "UI_PetEntry_Title23",
+          "UI_PetEntry_Title10"
+        ]
+      },
+      {
+        "itemId": "genimon-4141",
+        "rank": "alternative",
+        "traits": [
+          "UI_PetEntry_Title19",
+          "UI_PetEntry_Title23",
+          "UI_PetEntry_Title10"
+        ]
+      }
+    ],
+    "skillPriority": [
+      {
+        "skillName": {
+          "FR": "Vortex Electrique",
+          "EN": "Electro Vortex"
+        },
+        "priority": 5,
+        "note": {
+          "FR": "Source principale de degats. A monter en priorite absolue.",
+          "EN": "Main damage source. Prioritize maxing this skill."
+        }
+      },
+      {
+        "skillName": {
+          "FR": "Preservation Tactique",
+          "EN": "Tactical Preservation"
+        },
+        "priority": 5,
+        "note": {
+          "FR": "Ameliore la conversion Lucidite → Energie Electrique.",
+          "EN": "Increases Sanity-to-Electric Energy conversion efficiency."
+        }
+      },
+      {
+        "skillName": {
+          "FR": "Charge Voltaique",
+          "EN": "Volt Rush"
+        },
+        "priority": 4,
+        "note": {
+          "FR": "Augmente les degats. Important pour un DPS, mais secondaire.",
+          "EN": "Increases damage output. Important for DPS, but secondary."
+        }
+      }
+    ],
+    "notes": {
+      "FR": "Rhythm convertit la Lucidite en Energie Electrique pour ses competences. Utilisez Volt Rush pour la mobilite (annulable en sautant). Electro Vortex declenche l'etat Surge Electrique, appliquant des charges positives et negatives aux ennemis. Quand deux charges differentes fusionnent, elles provoquent une explosion AoE. Brille contre les groupes d'ennemis, surtout a Intron 2 (charges transferees) et Intron 6 (2 ennemis/sec au lieu de 1).",
+      "EN": "Rhythm converts Sanity into Electric Energy for abilities. Use Volt Rush for mobility (cancel by jumping). Electro Vortex triggers Electro Surge state, applying alternating Positive and Negative Charges. When different charges merge, they trigger AoE explosions. Excels against grouped enemies, especially at Intron 2 (charges transfer between enemies) and Intron 6 (2 enemies/sec instead of 1)."
+    }
+  },
+  {
+    "characterId": "char-lise",
     "legacy": true,
     "buildName": {
       "FR": "DPS Compétence — endgame",
@@ -200,6 +414,7 @@
   },
   {
     "characterId": "char-lise",
+    "legacy": true,
     "buildName": {
       "FR": "Milieu de jeu",
       "EN": "Midgame"
@@ -398,6 +613,7 @@
   },
   {
     "characterId": "char-lise",
+    "legacy": true,
     "buildName": {
       "FR": "Build de farm",
       "EN": "Farming Build"
@@ -580,6 +796,7 @@
   },
   {
     "characterId": "char-lise",
+    "legacy": true,
     "buildName": {
       "FR": "DPS endgame",
       "EN": "Endgame DPS"

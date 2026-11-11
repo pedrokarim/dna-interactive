@@ -1,6 +1,7 @@
 import { allBuilds } from "@/data/characters/builds";
 import { getCharacterById } from "@/lib/characters/catalog";
 import { resolveBuildCharacterRef } from "@/lib/characters/builds";
+import { getCharacterProficiency } from "@/lib/characters/weapon-proficiency";
 
 // ---------------------------------------------------------------------------
 // Index inverse ARME → PERSONNAGES.
@@ -39,6 +40,12 @@ export interface WeaponUsage {
    * il peut l'équiper, mais les Potentiels ne s'appliqueront pas.
    */
   hasProficiency: boolean;
+  /**
+   * Sans prédilection d'origine, le type fait-il partie des quatre maîtrises
+   * supplémentaires du personnage ? Vrai = les Potentiels s'appliquent une fois
+   * ce type débloqué et actif.
+   */
+  viaExtraProficiency: boolean;
   /** Ordre d'investissement conseillé dans l'arbre de Potentiel, si curé. */
   potentialOrder: number[] | null;
 }
@@ -103,6 +110,8 @@ export function getWeaponUsage(
         const ref = resolveBuildCharacterRef(build.characterId, lang);
         if (!ref) continue;
         const tags = character.weaponTags ?? [];
+        const hasProficiency = hasProficiencyFor(tags, weaponType);
+        const extraTags = getCharacterProficiency(character.charId)?.extra.map((type) => type.tag) ?? [];
         usages.push({
           characterId: build.characterId,
           href: ref.href,
@@ -111,7 +120,8 @@ export function getWeaponUsage(
           buildName: localized(build.buildName, lang),
           slot,
           rank: entry.rank === "best" ? "best" : "alternative",
-          hasProficiency: hasProficiencyFor(tags, weaponType),
+          hasProficiency,
+          viaExtraProficiency: !hasProficiency && weaponType !== null && extraTags.includes(weaponType),
           potentialOrder: entry.potentialOrder ?? null,
         });
       }

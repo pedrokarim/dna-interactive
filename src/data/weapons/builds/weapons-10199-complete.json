@@ -1,0 +1,57 @@
+{
+  "weaponId": "weapons-10199",
+  "buildName": {
+    "FR": "Conversion de Surabondance complète",
+    "EN": "Overflow Conversion"
+  },
+  "demonWedges": {
+    "slots": [
+      {
+        "position": 1,
+        "itemId": "mods-52801",
+        "track": 2
+      },
+      {
+        "position": 2,
+        "itemId": "mods-52008",
+        "track": 2
+      },
+      {
+        "position": 3,
+        "itemId": "mods-42203",
+        "track": 4
+      },
+      {
+        "position": 4,
+        "itemId": "mods-42006",
+        "track": null
+      },
+      {
+        "position": 5,
+        "itemId": "mods-52004",
+        "track": 4
+      },
+      {
+        "position": 6,
+        "itemId": "mods-52010",
+        "track": 1
+      },
+      {
+        "position": 7,
+        "itemId": "mods-52007",
+        "track": null
+      },
+      {
+        "position": 8,
+        "itemId": "mods-52011",
+        "track": null
+      }
+    ],
+    "affinity": null,
+    "note": {
+      "FR": "La base Conversion de Surabondance, complétée de pièces d'attaque d'arme pour les rares DPS de compétence qui frappent à l'épée pendant leur rotation.",
+      "EN": "The core Overflow Conversion build, filled out with weapon-attack pieces for the rare Skill DMG DPS who strike with the sword during their rotation."
+    }
+  },
+  "note": {}
+}

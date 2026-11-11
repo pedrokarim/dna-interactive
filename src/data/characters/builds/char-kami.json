@@ -2,6 +2,184 @@
   {
     "characterId": "char-kami",
     "buildName": {
+      "FR": "DPS Pyro – intron VII",
+      "EN": "Pyro DPS — I7"
+    },
+    "weapons": {
+      "melee": [
+        {
+          "itemId": "weapons-10199",
+          "rank": "best",
+          "note": {
+            "FR": "Arme de calamité qui fait de Camilla une DPS principale à l'intron VII : Puissance, Réponse et Vérité renforcent tous ses Dégâts de compétence. L'épée n'est pas une de ses prédilections : débloquer l'épée en maîtrise supplémentaire, sans quoi les Potentiels restent inactifs. Les personnages qui dépassent 220 % de Vitesse de compétence, comme elle, suivent d'abord la branche Insoluble.",
+            "EN": "The calamity weapon that turns I7 Camilla into a main DPS: Might, Answer and Truth all boost her Skill DMG. Swords are not among her preferred weapons: unlock the sword as an additional proficiency, otherwise the Potentials stay inactive. Characters who go past 220% Skill Speed, like her, take the Endless branch first."
+          }
+        },
+        {
+          "itemId": "weapons-10299",
+          "rank": "alternative",
+          "note": {
+            "FR": "Sans Énigme insoluble : Intensité de compétence, ATQ, Portée de compétence et Vigueur, via la maîtrise supplémentaire de la lance.",
+            "EN": "Without Endless Enigma: Skill Intensity, ATK, Skill Range and Morale, through the polearm additional proficiency."
+          }
+        }
+      ],
+      "ranged": [
+        {
+          "itemId": "weapons-20512",
+          "rank": "best",
+          "note": {
+            "FR": "Son arme signature : +5 % de Dégâts de compétence par cumul quand un personnage Pyro inflige des dégâts de compétence. À monter en Multishot.",
+            "EN": "Her signature weapon: +5% Skill DMG per stack whenever a Pyro character deals Skill DMG. Build it with Multishot."
+          }
+        }
+      ]
+    },
+    "demonWedges": {
+      "slots": [
+        {
+          "position": 1,
+          "itemId": "mods-56134",
+          "track": 2
+        },
+        {
+          "position": 2,
+          "itemId": "mods-51931",
+          "track": 4
+        },
+        {
+          "position": 3,
+          "itemId": "mods-51431",
+          "track": 1
+        },
+        {
+          "position": 4,
+          "itemId": "mods-51323",
+          "track": 3
+        },
+        {
+          "position": 5,
+          "itemId": "mods-51737",
+          "track": 4
+        },
+        {
+          "position": 6,
+          "itemId": "mods-51317",
+          "track": null
+        },
+        {
+          "position": 7,
+          "itemId": "mods-51737",
+          "track": 4
+        },
+        {
+          "position": 8,
+          "itemId": "mods-51737",
+          "track": 4
+        }
+      ],
+      "centerItemId": "mods-51736",
+      "affinity": {
+        "FR": "Raffinement de Quetzalcoatl",
+        "EN": "Feathered Serpent's Refinement"
+      },
+      "note": {
+        "FR": "Build d'intron VII en DPS principale : les pièces du build de soutien, mais Apogée · Vigueur en case 3. Surabondance · Adresse en case 6, sans module. Garder l'Intensité de compétence à 350 % ou plus pour déclencher Ailes · Inspiration · Vigueur.",
+        "EN": "I7 main-DPS build: the same pieces as the sub-DPS build, but Prime • Morale in slot 3. Overflow • Finesse in slot 6, with no module. Keep Skill Intensity at 350% or more to trigger Wings • Inspo • Morale."
+      }
+    },
+    "statsPriority": [
+      "SkillIntensity",
+      "SkillDamage",
+      "ATK"
+    ],
+    "team": [
+      {
+        "characterId": "char-feina",
+        "role": "Support",
+        "note": {
+          "FR": "Fina apporte des bonus de dégâts à Camilla, jouée en active.",
+          "EN": "Fina provides damage buffs to Camilla, who plays as the active unit."
+        }
+      },
+      {
+        "characterId": "char-baiheng",
+        "role": "Support",
+        "note": {
+          "FR": "Fushu ajoute de la Vigueur et un peu de Vitesse de compétence, qui aide Camilla à franchir le seuil de 220 % de Réponse. Ses soins et sa Lucidité sont un plus : à l'intron VII, Camilla se suffit.",
+          "EN": "Fushu adds Morale and a little Skill Speed, which helps Camilla reach Answer's 220% threshold. Her healing and Sanity are a bonus: at I7, Camilla sustains herself."
+        }
+      }
+    ],
+    "genimon": [
+      {
+        "itemId": "genimon-4231",
+        "rank": "best",
+        "traits": [
+          "UI_PetEntry_Title19",
+          "UI_PetEntry_Title10"
+        ]
+      },
+      {
+        "itemId": "genimon-4031",
+        "rank": "alternative",
+        "traits": [
+          "UI_PetEntry_Title19",
+          "UI_PetEntry_Title10"
+        ]
+      },
+      {
+        "itemId": "genimon-4131",
+        "rank": "alternative",
+        "traits": [
+          "UI_PetEntry_Title19",
+          "UI_PetEntry_Title10"
+        ]
+      }
+    ],
+    "skillPriority": [
+      {
+        "skillName": {
+          "FR": "Banquet ecarlate",
+          "EN": "Scarlet Banquet"
+        },
+        "priority": 5,
+        "note": {
+          "FR": "Source principale de degats; lance les Lames de Sommelier accumulees. Donne des stacks Tipsy et l'immunite hitstun.",
+          "EN": "Primary damage source; launches stored Sommelier Blades. Grants Tipsy stacks and hitstun immunity."
+        }
+      },
+      {
+        "skillName": {
+          "FR": "Valse pourpre",
+          "EN": "Claret Waltz"
+        },
+        "priority": 5,
+        "note": {
+          "FR": "Coeur du kit; invoque 8 Lames de Sommelier qui orbitent. Pas de drain de Lucidite tant qu'elles orbitent.",
+          "EN": "Core of the kit; summons 8 orbiting Sommelier Blades. No Sanity drain while orbiting."
+        }
+      },
+      {
+        "skillName": {
+          "FR": "Gorgee mortelle",
+          "EN": "Deadly Sip"
+        },
+        "priority": 5,
+        "note": {
+          "FR": "Applique des stacks Crimson Wound, debloque la synergie passive.",
+          "EN": "Applies Crimson Wound stacks, enables passive synergy."
+        }
+      }
+    ],
+    "notes": {
+      "FR": "Camilla est une Sub-DPS Pyro centree sur son ultime Valse pourpre, qui orbite 8 Lames de Sommelier autour d'elle. Pairing optimal en sub-DPS pour Lynn (DPS Pyro principale).\n\nMecanique cœur : utiliser Claret Waltz en premier pour invoquer les lames (aucun drain de Lucidite tant qu'elles orbitent). Maintenir Scarlet Banquet pour enchainer les casts, ce qui met les lames en pause et accorde l'immunite hitstun. Les stacks Crimson Wound poses par les lames declenchent des degats Pyro supplementaires quand un allie Pyro les retire. A 20 stacks de Revelry, la Lucidite se restaure.\n\nIntron priority (ordre d'unlock) :\n- I1 (★★★★★) : 30% de chance que les Lames de Sommelier infligent un Crimson Wound supplementaire.\n- I6 (★★★★★) : 45% PEN tant que les lames sont actives, degats supplementaires au moment du retrait.\n- I2 (★★★★☆) : -15% degats subis + 55% degats infliges supplementaires tant qu'elle est orbitee.\n- I4 (★★★★☆) : Crimson Wound degats +30%, Launch Speed boost.\n\nSynergie : excellente en sub-DPS dans une equipe Pyro (avec Lynn idealement). Son passif Robe Rouge-Tintee donne Morale a elle-meme et aux allies Pyro quand deployee en compagnon. L'empilement de passifs cree un scaling de degats exponentiel avec un sequencage coordonne des skills Pyro.",
+      "EN": "Camilla is a Pyro Sub-DPS built around her ultimate Claret Waltz, which orbits 8 Sommelier Blades around her. Optimal as sub-DPS for Lynn (main Pyro DPS).\n\nCore mechanic: use Claret Waltz first to summon the blades (no Sanity drain while orbiting). Hold Scarlet Banquet to chain casts, pausing blade duration and granting hitstun immunity. Crimson Wound stacks from blade hits trigger additional Pyro damage when removed by ally Pyro skills. At 20 Revelry stacks, Sanity restores.\n\nIntron priority (unlock order):\n- I1 (★★★★★): 30% chance Sommelier's Blades inflict additional Crimson Wound.\n- I6 (★★★★★): 45% PEN while blades active, extra damage on removal.\n- I2 (★★★★☆): -15% damage taken + 55% damage dealt while orbited.\n- I4 (★★★★☆): Crimson Wound damage +30%, Launch Speed boost.\n\nSynergy: excels as sub-DPS in Pyro teams (particularly with Lynn). Her Rose-Tinted Dress passive grants Morale to herself and Pyro allies when deployed as companion. Passive stacking creates exponential damage scaling with coordinated Pyro skill sequencing."
+    }
+  },
+  {
+    "characterId": "char-kami",
+    "buildName": {
       "FR": "Sub-DPS Pyro - Valse pourpre",
       "EN": "Pyro Sub-DPS - Claret Waltz"
     },
@@ -194,11 +372,19 @@
     "weapons": {
       "melee": [
         {
-          "itemId": "weapons-10299",
+          "itemId": "weapons-10199",
           "rank": "best",
           "note": {
-            "FR": "Arme de calamité du build d'intron VII.",
-            "EN": "Calamity weapon of the I7 build."
+            "FR": "Sa meilleure arme de mêlée depuis le 10 novembre : ses Potentiels renforcent fortement les Dégâts de compétence. L'épée n'est pas une de ses prédilections : débloquer l'épée en maîtrise supplémentaire, sans quoi les Potentiels restent inactifs.",
+            "EN": "Her best melee weapon since November 10: its Potentials strongly boost Skill DMG. Swords are not among her preferred weapons: unlock the sword as an additional proficiency, otherwise the Potentials stay inactive."
+          }
+        },
+        {
+          "itemId": "weapons-10299",
+          "rank": "alternative",
+          "note": {
+            "FR": "Sans Énigme insoluble : Intensité de compétence, ATQ, Portée de compétence et Vigueur, via la maîtrise supplémentaire de la lance.",
+            "EN": "Without Endless Enigma: Skill Intensity, ATK, Skill Range and Morale, through the polearm additional proficiency."
           }
         }
       ],
@@ -262,7 +448,7 @@
         "EN": "Feathered Serpent's Refinement"
       },
       "note": {
-        "FR": "Build d'intron VII : centre Raffinement, Ailes · Inspiration · Vigueur en tête. Débordement · Finesse en case 6, sans module.",
+        "FR": "Build d'intron VII : centre Raffinement, Ailes · Inspiration · Vigueur en tête. Surabondance · Adresse en case 6, sans module.",
         "EN": "I7 build: Refinement core, Wings - Inspo - Morale up front. Overflow - Finesse in slot 6, with no module."
       }
     },
@@ -273,19 +459,19 @@
     ],
     "team": [
       {
-        "characterId": "char-linen",
+        "characterId": "char-falu",
         "role": "DPS",
         "note": {
-          "FR": "Lynn - DPS Pyro principal en active. Camilla l'amplifie via son passif Robe Rouge-Tintee (Morale aux allies Pyro).",
-          "EN": "Lynn - main Pyro DPS as active unit. Camilla amplifies via her Rose-Tinted Dress passive (Morale to Pyro allies)."
+          "FR": "Falsi, DPS Pyro en active. Camilla à l'intron VII est sa meilleure partenaire : elle accumule le Désordre Pyro grâce à Surabondance · Adresse, rend de la Lucidité, renforce les dégâts Pyro et fait ignorer une part de la DÉF.",
+          "EN": "Falsi, Pyro DPS as the active unit. I7 Camilla is her best partner: she builds Pyro Disruption through Overflow • Finesse, restores Sanity, boosts Pyro damage and grants DEF ignore."
         }
       },
       {
-        "characterId": "char-baiheng",
+        "characterId": "char-songlu",
         "role": "Support",
         "note": {
-          "FR": "Fushu - Intensite de competence, soins, boucliers et Lucidite.",
-          "EN": "Fushu - Skill Intensity, healing, shields and Sanity recovery."
+          "FR": "Truffle et Filbert soignent l'équipe et, à l'intron II, ajoutent des bonus de dégâts.",
+          "EN": "Truffle and Filbert heal the team and, at I2, add damage buffs."
         }
       }
     ],

@@ -862,6 +862,7 @@
     "charactersIntro": "Charaktere, deren empfohlener Build diese Waffe verwendet.",
     "charactersPathIntro": "Wähle einen Charakter für die empfohlene Reihenfolge. Auf jeder Stufe I bis IV ist das zuerst genommene Potenzial kostenlos; das andere kostet Material.",
     "charactersNoProficiency": "Außerhalb der Waffenkunde: Potenziale wirken nicht.",
+    "charactersExtraProficiency": "Mit zusätzlicher Waffenkunde: Potenziale wirken, sobald dieser Typ freigeschaltet ist.",
     "charactersPathUnknown": "Die empfohlene Reihenfolge ist für diesen Build noch nicht dokumentiert.",
     "charactersRankBest": "Empfohlen",
     "charactersRankAlternative": "Alternative",

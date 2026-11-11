@@ -862,6 +862,7 @@
     "charactersIntro": "Characters whose recommended build uses this weapon.",
     "charactersPathIntro": "Pick a character to see the recommended order. At each tier from I to IV, the first Potential taken is free; the other costs materials.",
     "charactersNoProficiency": "Outside proficiency: Potentials do not apply.",
+    "charactersExtraProficiency": "With additional proficiency: Potentials apply once this type is unlocked.",
     "charactersPathUnknown": "The recommended order is not documented yet for this build.",
     "charactersRankBest": "Recommended",
     "charactersRankAlternative": "Alternative",

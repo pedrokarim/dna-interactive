@@ -52,9 +52,9 @@
       "note": "Fiche du 05/10 : build I7 Vigueur conforme ; build I7 Tenacite ajoute (5 Track-Shift + centre ajuste, Sanguine Plume). Le build hors I7 n est plus sur la fiche, conserve."
     },
     "char-kami": {
-      "verifiedAt": "2026-10-08",
+      "verifiedAt": "2026-11-11",
       "source": "570658",
-      "note": "Fiche du 05/10 : les 2 builds conformes case par case (7 Track-Shift) ; Dregs of Glimmer 1er choix distance en debut-milieu."
+      "note": "Fiche du 10/11 : build I7 DPS ajoute (Endless Enigma, Prime Morale en case 3, Fina + Fushu, 7 Track-Shift sans la case 6). I7 Sub-DPS : Endless Enigma 1er choix melee, equipe Falsi + Truffle et Filbert. Debut de jeu conforme."
     },
     "char-kezhou": {
       "verifiedAt": "2026-10-08",
@@ -72,9 +72,9 @@
       "note": "Fiche du 05/10 : 8 Track-Shift sur les 2 builds ; Excresduo 1er choix distance en debut-milieu. Cases 6-8 non retouchees : la fiche les nomme Blaze Volition, nom absent du catalogue Pyro."
     },
     "char-lise": {
-      "verifiedAt": "2026-10-08",
+      "verifiedAt": "2026-11-11",
       "source": "560803",
-      "note": "Fiche du 05/10 : farm = case 5 ajustee, centre sans module ; DPS conforme ; milieu de jeu = case 4 en version violette, Wanewraith 1er choix."
+      "note": "Fiche du 10/11 : un seul build, Idle Farming avec Endless Enigma (Overflow Finesse en case 8, 7 Track-Shift sans la case 8, Zhiliu + Fushu), ajoute en tete. Les 4 autres builds passent en ancien."
     },
     "char-maer": {
       "verifiedAt": "2026-10-08",
@@ -112,9 +112,9 @@
       "note": "Fiche du 05/10 : pieces et pistes conformes sur les 2 builds ; Perpetual Strife 1er choix melee, Wanewraith ajoutee."
     },
     "char-splise": {
-      "verifiedAt": "2026-10-20",
+      "verifiedAt": "2026-11-11",
       "source": "631045",
-      "note": "Fiche du 20/10 (en cours de redaction) : build DPS, 8 pieces, centre Volition, 7 Track-Shift (pas la case 7) lus sur capture. Arme signature 631106 : 5 Track-Shift (cases 1-5). Chemin de Potentiel d Endless Enigma deduit du kit (branche Insoluble), priorite de competences deduite du kit : celle de la fiche est recopiee de Falsi."
+      "note": "Fiche du 10/11 : conforme (pieces, centre, 7 Track-Shift sans la case 7, armes). Arme 631095 : 2 builds ajoutes (base 4 pieces sans module ; complet a 5 modules, cases 1-2-3-5-6 ; le compteur de la fiche annonce 6 pour les deux)."
     },
     "char-suyi": {
       "verifiedAt": "2026-10-08",

@@ -1,7 +1,7 @@
 # Suivi de vérification des builds
 
 **Avancement : 33 / 33 personnages vérifiés.**
-Première vérification : 2026-10-08 · dernière : 2026-10-20.
+Première vérification : 2026-10-08 · dernière : 2026-11-11.
 
 Généré par `node scripts/verif-build.mjs --mark <id> <source>`. Ne pas éditer à la main.
 
@@ -12,7 +12,7 @@ plus ancien.
 
 | # | Personnage | Élément | Sortie | Vérifié le | Source | Note |
 | --- | --- | --- | --- | --- | --- | --- |
-| 1 | Rhythm: Flamewrought | Electro | 2026-10-20 | ✅ 2026-10-20 | 631045 | Fiche du 20/10 (en cours de redaction) : build DPS, 8 pieces, centre Volition, 7 Track-Shift (pas la case 7) lus sur capture. Arme signature 631106 : 5 Track-Shift (cases 1-5). Chemin de Potentiel d Endless Enigma deduit du kit (branche Insoluble), priorite de competences deduite du kit : celle de la fiche est recopiee de Falsi. |
+| 1 | Rhythm: Flamewrought | Electro | 2026-10-20 | ✅ 2026-11-11 | 631045 | Fiche du 10/11 : conforme (pieces, centre, 7 Track-Shift sans la case 7, armes). Arme 631095 : 2 builds ajoutes (base 4 pieces sans module ; complet a 5 modules, cases 1-2-3-5-6 ; le compteur de la fiche annonce 6 pour les deux). |
 | 2 | Mors | Hydro | 2026-09-08 | ✅ 2026-10-08 | 617590 | Fiche du 05/10 : conforme case par case (8 pieces, raretes, centre Eveil, 8 Track-Shift, armes). |
 | 3 | Mors | Hydro | 2026-09-08 | ✅ 2026-10-08 | 617590 | Fiche du 05/10 : conforme case par case (8 pieces, raretes, centre Eveil, 8 Track-Shift, armes). |
 | 4 | Falsi | Pyro | 2026-09-08 | ✅ 2026-10-08 | 606751 | Fiche du 07/10 : Prime·Morale en case 3, Covenanter's Volition en case 5, case 6 sans module (7 Track-Shift), Excresduo et The Best Day en distance. Arme signature 617513 ajoutée. |
@@ -37,13 +37,13 @@ plus ancien.
 | 23 | Tabethe | Hydro | — | ✅ 2026-10-08 | 560790 | Fiche du 05/10 : les 2 builds conformes case par case (7 et 6 Track-Shift), armes identiques. |
 | 24 | Berenica | Umbro | — | ✅ 2026-10-08 | 560808 | Fiche du 05/10 : build I7 Vigueur conforme ; build I7 Tenacite ajoute (5 Track-Shift + centre ajuste, Sanguine Plume). Le build hors I7 n est plus sur la fiche, conserve. |
 | 25 | Phantasio | Umbro | — | ✅ 2026-10-08 | 560807 | Fiche du 05/10 : build DPS conforme ; milieu de jeu reordonne, 6 modules lus sur le tableau (le compteur de la fiche annonce 5). |
-| 26 | Camilla | Pyro | — | ✅ 2026-10-08 | 570658 | Fiche du 05/10 : les 2 builds conformes case par case (7 Track-Shift) ; Dregs of Glimmer 1er choix distance en debut-milieu. |
+| 26 | Camilla | Pyro | — | ✅ 2026-11-11 | 570658 | Fiche du 10/11 : build I7 DPS ajoute (Endless Enigma, Prime Morale en case 3, Fina + Fushu, 7 Track-Shift sans la case 6). I7 Sub-DPS : Endless Enigma 1er choix melee, equipe Falsi + Truffle et Filbert. Debut de jeu conforme. |
 | 27 | Margie | Pyro | — | ✅ 2026-10-08 | 560796 | Fiche du 05/10 : les 2 builds conformes (5 Track-Shift) ; Arclight Apocalypses 1er choix distance du build soutien. |
 | 28 | Hellfire | Pyro | — | ✅ 2026-10-08 | 560794 | Fiche du 05/10 : builds I7 et Tank conformes (7 et 6 Track-Shift) ; alternatives ajoutees. Le build fin de jeu hors I7 n est plus sur la fiche, conserve. |
 | 29 | Yale and Oliver | Pyro | — | ✅ 2026-10-08 | 560795 | Fiche du 05/10 : conforme case par case (6 Track-Shift) ; Withershade et Dregs of Glimmer ajoutees. |
 | 30 | Outsider | Anemo | — | ✅ 2026-10-08 | 560800 | Fiche du 05/10 : 5 Ardeur Trempe en cases 3-6 et 8, 7 Track-Shift (le site n en avait aucun) ; Thorned Requiem 1er choix distance. |
 | 31 | Daphne | Anemo | — | ✅ 2026-10-08 | 560799 | Fiche du 06/10 : build soigneur a 4 Track-Shift (cases 1-4) + centre ajuste ; build DPS ajoute (8 Track-Shift, centre Tenacite). |
-| 32 | Rhythm | Electro | — | ✅ 2026-10-08 | 560803 | Fiche du 05/10 : farm = case 5 ajustee, centre sans module ; DPS conforme ; milieu de jeu = case 4 en version violette, Wanewraith 1er choix. |
+| 32 | Rhythm | Electro | — | ✅ 2026-11-11 | 560803 | Fiche du 10/11 : un seul build, Idle Farming avec Endless Enigma (Overflow Finesse en case 8, 7 Track-Shift sans la case 8, Zhiliu + Fushu), ajoute en tete. Les 4 autres builds passent en ancien. |
 | 33 | Randy | Electro | — | ✅ 2026-10-08 | 560802 | Fiche du 05/10 : pieces conformes, 5 Track-Shift (case 6 ajoutee) ; Screamshot ajoutee. |
 
 🎉 **Tous les personnages sont vérifiés.**

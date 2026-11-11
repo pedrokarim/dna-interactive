@@ -862,6 +862,7 @@
     "charactersIntro": "推薦配裝中使用此武器的角色。",
     "charactersPathIntro": "選擇角色即可查看建議順序。第I至IV階中，先取得的潛能免費，另一個需要材料。",
     "charactersNoProficiency": "非擅長武器：潛能不會生效。",
+    "charactersExtraProficiency": "以額外熟練解鎖此類型後，潛能即可生效。",
     "charactersPathUnknown": "此配裝的建議順序尚未整理。",
     "charactersRankBest": "推薦",
     "charactersRankAlternative": "替代",

@@ -862,6 +862,7 @@
     "charactersIntro": "推奨ビルドでこの武器を使用するキャラクター。",
     "charactersPathIntro": "キャラクターを選ぶと推奨順が表示されます。階層I〜IVでは最初に取るポテンシャルが無料で、もう一方は素材が必要です。",
     "charactersNoProficiency": "得意武器外：ポテンシャルは発動しません。",
+    "charactersExtraProficiency": "追加熟練で解放すると、ポテンシャルが発動します。",
     "charactersPathUnknown": "このビルドの推奨順はまだ記載されていません。",
     "charactersRankBest": "推奨",
     "charactersRankAlternative": "代替",

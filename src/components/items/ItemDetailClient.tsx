@@ -939,7 +939,11 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
                           <span className="block truncate text-muted">{usage.buildName}</span>
                         </span>
                       </span>
-                      {!usage.hasProficiency ? (
+                      {usage.viaExtraProficiency ? (
+                        <span className="mt-1 block text-[0.68rem] text-muted">
+                          {t("charactersExtraProficiency")}
+                        </span>
+                      ) : !usage.hasProficiency ? (
                         <span className="mt-1 block text-[0.68rem] text-crimson-bright">
                           {t("charactersNoProficiency")}
                         </span>

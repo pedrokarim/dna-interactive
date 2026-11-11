@@ -862,6 +862,7 @@
     "charactersIntro": "Personnages dont un build recommandé emploie cette arme.",
     "charactersPathIntro": "Choisis un personnage pour voir l'ordre conseillé. À chaque palier de I à IV, le premier Potentiel pris est gratuit ; l'autre coûte des matériaux.",
     "charactersNoProficiency": "Hors maîtrise : les Potentiels ne s'appliquent pas.",
+    "charactersExtraProficiency": "Avec la maîtrise supplémentaire : les Potentiels s'appliquent une fois ce type débloqué.",
     "charactersPathUnknown": "L'ordre conseillé n'est pas encore documenté pour ce build.",
     "charactersRankBest": "Recommandée",
     "charactersRankAlternative": "Alternative",
