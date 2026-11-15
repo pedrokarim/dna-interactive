@@ -25,7 +25,15 @@ import { localizeItemCategory } from "@/lib/items/category-i18n";
 import { getItemByCategoryAndId, getItemCategoryBySlug, getItemTranslation } from "@/lib/items/catalog";
 import { getRegionBySlug } from "@/lib/map/regions";
 import { localized } from "@/lib/map/world";
-import { CATEGORIES, REGIONS, REGION_LABELS, categoryLabel, getRotationForDisplay, objectiveLabel } from "@/lib/commissions";
+import {
+  CATEGORIES,
+  REGIONS,
+  REGION_LABELS,
+  categoryLabel,
+  getRotationForDisplay,
+  isKnownObjective,
+  objectiveLabel,
+} from "@/lib/commissions";
 import { getTheatreSnapshot } from "@/lib/theatre/db";
 import { theatreOverview } from "@/lib/theatre/rotations";
 import { toIntlLocale } from "@/lib/intl-locale";
@@ -331,13 +339,16 @@ async function commissions(locale: string): Promise<ComponentEmbed | null> {
   const colon = locale === "fr" ? " : " : ": ";
   const lines = REGIONS.map((region) => {
     const parts = CATEGORIES.flatMap((category) => {
-      const objectives = state.regions[region]?.[category] ?? [];
+      // Même filtre que le tableau de la page : le bot écrit parfois un texte
+      // qui n'est pas un objectif (« Token missing » quand une région lui échappe).
+      const objectives = (state.regions[region]?.[category] ?? []).filter(isKnownObjective);
       if (objectives.length === 0) return [];
       const names = objectives.map((objective) => objectiveLabel(objective, locale)).join(", ");
       return [`${escapeMarkdown(categoryLabel(category, locale))}${colon}${escapeMarkdown(names)}`];
     });
     return parts.length > 0 ? `**${escapeMarkdown(REGION_LABELS[region])}** · ${parts.join(" · ")}` : null;
   });
+  if (lines.every((line) => line === null)) return null;
   const hour = new Intl.DateTimeFormat(toIntlLocale(locale), { hour: "2-digit", minute: "2-digit", timeZone: "UTC" }).format(
     new Date(meta.updatedAt),
   );
