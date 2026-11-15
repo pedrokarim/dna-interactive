@@ -1,6 +1,7 @@
 import { resolveBreadcrumb } from "@/lib/shell";
 import { DnaPageMark } from "@/components/dna/PageMark";
 import type { Metadata } from "next";
+import { localizedAlternates } from "@/lib/metadata";
 import { getTranslations } from "next-intl/server";
 import { PlannerClient } from "@/components/planner/PlannerClient";
 import { resolvePlannerBuild } from "@/lib/planner/build-source";
@@ -12,7 +13,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "metadata" });
-  return { title: t("plannerTitle"), description: t("plannerDescription") };
+  return {
+    title: t("plannerTitle"),
+    description: t("plannerDescription"),
+    alternates: localizedAlternates(locale, "/planner"),
+  };
 }
 
 /** Cible passée par un bouton « Planifier » d'une fiche : id du site uniquement. */

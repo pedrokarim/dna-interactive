@@ -37,6 +37,8 @@ export type MetadataKey =
   | "builder"
   | "builds"
   | "calendar"
+  | "theatre"
+  | "planner"
   | "drafts";
 
 export interface PageMetadataOptions {
@@ -63,6 +65,45 @@ export interface PageMetadataOptions {
   indexable?: boolean;
 }
 
+// Codes de locale du site → balises hreflang BCP 47 (`jp` n'en est pas une).
+const localeToHreflang: Record<string, string> = {
+  fr: "fr",
+  en: "en",
+  de: "de",
+  es: "es",
+  jp: "ja",
+  kr: "ko",
+  tc: "zh-Hant",
+};
+
+/**
+ * Canonical et hreflang d'une page, à poser dans `alternates`.
+ *
+ * Chaque page indexable doit déclarer les siens : le layout racine n'en pose
+ * plus. Il désignait l'accueil comme canonical de toute page qui oubliait de
+ * le redéfinir, et Google tenait alors `/planner`, `/builds`, `/calendar`… pour
+ * des doublons de l'accueil (constaté le 15/11/2026).
+ *
+ * @param path chemin sans préfixe de locale : `""` pour l'accueil, `"/planner"`
+ */
+export function localizedAlternates(
+  locale: string,
+  path: string,
+): { canonical: string; languages: Record<string, string> } {
+  const languages: Record<string, string> = {};
+  for (const l of locales) {
+    languages[localeToHreflang[l] ?? l] = `${BASE_URL}/${l}${path}`;
+  }
+  // ==`x-default` pointe vers l'anglais==, pas vers le français. C'est la
+  // version servie à un visiteur dont la langue ne correspond à aucune locale
+  // déclarée. Le public de Duet Night Abyss cherche en anglais, et la
+  // concurrence indexée (Game8, GameWith, Fandom) est anglophone : envoyer ce
+  // visiteur sur le français lui donnait une page qu'il ne lit pas.
+  // Sans effet sur la langue par défaut du site, qui reste `fr` (cf. i18n/config).
+  languages["x-default"] = `${BASE_URL}/en${path}`;
+  return { canonical: `${BASE_URL}/${locale}${path}`, languages };
+}
+
 /**
  * Génère des métadonnées cohérentes pour toutes les pages utilisant generateMetadata
  */
@@ -84,32 +125,9 @@ export async function generatePageMetadata(
   } = options;
 
   const currentLocale = locale ?? "fr";
-  const canonicalUrl = `${BASE_URL}/${currentLocale}${path}`;
+  const alternates = localizedAlternates(currentLocale, path);
+  const canonicalUrl = alternates.canonical;
   const ogLocale = localeToOgLocale[currentLocale] ?? "fr_FR";
-
-  // Map locale codes to valid BCP 47 hreflang tags
-  const localeToHreflang: Record<string, string> = {
-    fr: "fr",
-    en: "en",
-    de: "de",
-    es: "es",
-    jp: "ja",
-    kr: "ko",
-    tc: "zh-Hant",
-  };
-
-  // Build hreflang alternates for all locales
-  const languages: Record<string, string> = {};
-  for (const l of locales) {
-    languages[localeToHreflang[l] ?? l] = `${BASE_URL}/${l}${path}`;
-  }
-  // ==`x-default` pointe vers l'anglais==, pas vers le français. C'est la
-  // version servie à un visiteur dont la langue ne correspond à aucune locale
-  // déclarée. Le public de Duet Night Abyss cherche en anglais, et la
-  // concurrence indexée (Game8, GameWith, Fandom) est anglophone : envoyer ce
-  // visiteur sur le français lui donnait une page qu'il ne lit pas.
-  // Sans effet sur la langue par défaut du site, qui reste `fr` (cf. i18n/config).
-  languages["x-default"] = `${BASE_URL}/en${path}`;
 
   // Hériter des métadonnées parentes si elles existent
   const parentMetadata = parent ? await parent : null;
@@ -176,10 +194,7 @@ export async function generatePageMetadata(
       site: "@ascencia64",
       creator: "@ascencia64",
     },
-    alternates: {
-      canonical: canonicalUrl,
-      languages,
-    },
+    alternates,
     robots: {
       index: indexable,
       follow: true,

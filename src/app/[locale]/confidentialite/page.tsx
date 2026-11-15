@@ -1,12 +1,22 @@
 import type { Metadata } from "next";
+import { localizedAlternates } from "@/lib/metadata";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { DnaPanel, DnaSectionLabel } from "@/components/dna";
 import { AnalyticsOptOut } from "@/components/analytics/AnalyticsOptOut";
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
   const t = await getTranslations("privacy");
-  return { title: t("metaTitle"), description: t("metaDescription") };
+  return {
+    title: t("metaTitle"),
+    description: t("metaDescription"),
+    alternates: localizedAlternates(locale, "/confidentialite"),
+  };
 }
 
 export default async function ConfidentialitePage() {

@@ -118,7 +118,6 @@ export async function generateMetadata(
     openGraph: {
       type: "website",
       locale: ({fr:"fr_FR",en:"en_US",de:"de_DE",es:"es_ES",jp:"ja_JP",kr:"ko_KR",tc:"zh_TW"})[locale] ?? "fr_FR",
-      url: `${baseUrl}/${locale}`,
       siteName: "DNA Interactive",
       title: rootTitle,
       description: t("ogDescription"),
@@ -140,20 +139,10 @@ export async function generateMetadata(
       site: "@ascencia64",
       creator: "@ascencia64",
     },
-    alternates: {
-      canonical: `${baseUrl}/${locale}`,
-      languages: {
-        fr: `${baseUrl}/fr`,
-        en: `${baseUrl}/en`,
-        de: `${baseUrl}/de`,
-        es: `${baseUrl}/es`,
-        ja: `${baseUrl}/jp`,
-        ko: `${baseUrl}/kr`,
-        "zh-Hant": `${baseUrl}/tc`,
-        // Anglais et non français : cf. `lib/metadata.ts` pour le pourquoi.
-        "x-default": `${baseUrl}/en`,
-      },
-    },
+    // Pas d'`alternates` ici : posé au niveau du layout, ce canonical vers
+    // l'accueil s'appliquait à toute page qui ne le redéfinissait pas, et
+    // Google la tenait pour un doublon de l'accueil. Chaque page indexable
+    // déclare le sien (`generatePageMetadata` ou `localizedAlternates`).
     manifest: "/manifest.json",
     icons: {
       // 180 px suffisent (taille de l'icône Apple) : 14 Ko au lieu de 171.

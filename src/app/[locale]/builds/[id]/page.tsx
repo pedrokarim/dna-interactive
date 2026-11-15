@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { localizedAlternates } from "@/lib/metadata";
 import { notFound } from "next/navigation";
 import { headers } from "next/headers";
 import { eq, and, sql } from "drizzle-orm";
@@ -110,7 +111,7 @@ async function loadBuild(id: string, { countView }: { countView: boolean }): Pro
 }
 
 export async function generateMetadata({ params }: RouteParams): Promise<Metadata> {
-  const { id } = await params;
+  const { locale, id } = await params;
   const build = await loadBuild(id, { countView: false });
   if (!build) return { title: "Build introuvable" };
   const character = getCharacterById(build.characterId);
@@ -126,6 +127,7 @@ export async function generateMetadata({ params }: RouteParams): Promise<Metadat
     description,
     openGraph: { title: build.title, description },
     twitter: { title: build.title, description },
+    alternates: localizedAlternates(locale, `/builds/${id}`),
   };
 }
 

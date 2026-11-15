@@ -1,6 +1,7 @@
 import { resolveBreadcrumb } from "@/lib/shell";
 import { DnaPageMark } from "@/components/dna/PageMark";
 import type { Metadata } from "next";
+import { localizedAlternates } from "@/lib/metadata";
 import { getTranslations } from "next-intl/server";
 import { TheatreTracker } from "@/components/theatre/TheatreTracker";
 import { getTheatreSnapshot } from "@/lib/theatre/db";
@@ -14,7 +15,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "metadata" });
-  return { title: t("theatreTitle"), description: t("theatreDescription") };
+  return {
+    title: t("theatreTitle"),
+    description: t("theatreDescription"),
+    alternates: localizedAlternates(locale, "/theatre"),
+  };
 }
 
 export default async function TheatrePage({ params }: { params: Promise<{ locale: string }> }) {
