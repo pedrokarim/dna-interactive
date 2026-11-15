@@ -213,7 +213,11 @@ async function cosmetic(locale: string, categorySlug: string, id: string): Promi
     description: pickText(record.description, lang),
     lines: [joinLine(field(t("category"), categoryTitle), stars(record.rarity)), obtain && field(t("obtain"), obtain)],
     note: NOTE,
-    thumbnail: absoluteUrl(record.visuals.portrait ?? record.visuals.icon),
+    // Comme l'image OG : une tenue se montre par son icône, son « portrait »
+    // est souvent le mannequin neutre du protagoniste.
+    thumbnail: absoluteUrl(
+      categorySlug === "outfits" ? record.visuals.icon : (record.visuals.bust ?? record.visuals.portrait ?? record.visuals.icon),
+    ),
     thumbnailAlt: name,
     accentColor: hexToColor(rarityHex(record.rarity)) ?? GOLD,
     buttons: [
