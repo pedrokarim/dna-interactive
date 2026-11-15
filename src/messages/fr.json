@@ -2687,7 +2687,7 @@
     "weapons": "Armes",
     "rarity": "Rareté",
     "category": "Catégorie",
-    "buildBy": "Build de {character} par {author}",
+    "buildBy": "Build pour {character}, par {author}",
     "votes": "{count, plural, one {# vote} other {# votes}}",
     "markers": "{points} marqueurs dans {categories} catégories",
     "featuredUntil": "En vedette jusqu’au {date}",
