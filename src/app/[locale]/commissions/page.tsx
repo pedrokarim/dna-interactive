@@ -13,7 +13,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const { locale } = await params;
-  return generatePageMetadata(pageMetadata.commissions, parent, locale);
+  return generatePageMetadata({ ...pageMetadata.commissions, discordEmbed: true }, parent, locale);
 }
 
 export default async function CommissionsPage() {

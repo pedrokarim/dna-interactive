@@ -25,6 +25,7 @@ import { localizeItemCategory } from "@/lib/items/category-i18n";
 import { getItemByCategoryAndId, getItemCategoryBySlug, getItemTranslation } from "@/lib/items/catalog";
 import { getRegionBySlug } from "@/lib/map/regions";
 import { localized } from "@/lib/map/world";
+import { CATEGORIES, REGIONS, REGION_LABELS, categoryLabel, getRotationForDisplay, objectiveLabel } from "@/lib/commissions";
 import { getTheatreSnapshot } from "@/lib/theatre/db";
 import { theatreOverview } from "@/lib/theatre/rotations";
 import { toIntlLocale } from "@/lib/intl-locale";
@@ -318,6 +319,39 @@ async function theatre(locale: string): Promise<ComponentEmbed | null> {
 }
 
 /**
+ * Rotation des Covert Commissions en cours : une ligne par région, avec les
+ * objectifs de chaque catégorie, comme le tableau de la page. Rien quand la
+ * rotation n'est pas à jour (Discord garde alors la carte Open Graph) : un
+ * aperçu figé sur une rotation périmée induirait en erreur.
+ */
+async function commissions(locale: string): Promise<ComponentEmbed | null> {
+  const { state, meta, hasData } = await getRotationForDisplay();
+  if (!hasData || meta.freshness !== "live" || !meta.updatedAt) return null;
+  const nav = await getTranslations({ locale, namespace: "nav" });
+  const colon = locale === "fr" ? " : " : ": ";
+  const lines = REGIONS.map((region) => {
+    const parts = CATEGORIES.flatMap((category) => {
+      const objectives = state.regions[region]?.[category] ?? [];
+      if (objectives.length === 0) return [];
+      const names = objectives.map((objective) => objectiveLabel(objective, locale)).join(", ");
+      return [`${escapeMarkdown(categoryLabel(category, locale))}${colon}${escapeMarkdown(names)}`];
+    });
+    return parts.length > 0 ? `**${escapeMarkdown(REGION_LABELS[region])}** · ${parts.join(" · ")}` : null;
+  });
+  const hour = new Intl.DateTimeFormat(toIntlLocale(locale), { hour: "2-digit", minute: "2-digit", timeZone: "UTC" }).format(
+    new Date(meta.updatedAt),
+  );
+  return buildPreviewEmbed({
+    title: nav("commissions"),
+    url: pageUrl(locale, NAVIGATION.commissions),
+    lines,
+    note: `${hour} UTC · ${NOTE}`,
+    accentColor: GOLD,
+    buttons: [{ label: nav("commissions"), url: pageUrl(locale, NAVIGATION.commissions) }],
+  });
+}
+
+/**
  * Aperçu d'une adresse du site, sans le préfixe de langue (`["characters",
  * "falsi"]`). `null` : pas d'aperçu, Discord garde la carte Open Graph.
  */
@@ -328,6 +362,7 @@ export async function resolveDiscordEmbed(locale: string, segments: string[]): P
   if (first === "characters" && second && !third) return character(locale, second);
   if (first === "builds" && second && !third) return build(locale, second);
   if (first === "theatre" && !second) return theatre(locale);
+  if (first === "commissions" && !second) return commissions(locale);
   if (first === "map" && second && !third) return region(locale, second);
   if (first === "cosmetics" && second === "banners" && third) return banner(locale, third);
   if (first === "cosmetics" && second && third) return cosmetic(locale, second, third);
