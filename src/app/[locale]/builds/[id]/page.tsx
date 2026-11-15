@@ -126,7 +126,10 @@ export async function generateMetadata({ params }: RouteParams): Promise<Metadat
         character: resolveCharacterDisplayName(character, locale),
       })
     : t("buildsDescription");
-  const description = clampDescription(build.note ? `${summary} ${build.note}` : summary);
+  // Une note réduite à un lien (vidéo YouTube…) n'a rien à faire dans un
+  // extrait de recherche : on retire les adresses avant de l'ajouter.
+  const note = build.note?.replace(/https?:\/\/\S+/g, "").trim();
+  const description = clampDescription(note ? `${summary} ${note}` : summary);
   // og:title/og:description doivent être explicitement repris ici, sinon ils
   // héritent du bloc openGraph générique du layout racine (les réseaux
   // afficheraient le titre du site au lieu du titre du build). L'image OG
