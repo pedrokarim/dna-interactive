@@ -27,7 +27,7 @@ export function TraitTooltip({
       <div className="flex items-center gap-2">
         {trait.icon ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={trait.icon} alt="" width={26} height={26} className="h-[26px] w-[26px] shrink-0" />
+          <img loading="lazy" decoding="async" src={trait.icon} alt="" width={26} height={26} className="h-[26px] w-[26px] shrink-0" />
         ) : null}
         <div className="min-w-0">
           <p className="truncate text-sm font-medium text-parch">{trait.name}</p>

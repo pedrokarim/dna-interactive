@@ -300,7 +300,7 @@ export function CommunityBuildsHubClient({ options, locale }: CommunityBuildsHub
                 >
                   {character.portrait ? (
                     // eslint-disable-next-line @next/next/no-img-element
-                    <img src={character.portrait} alt="" className="h-5 w-5 shrink-0 rounded-full object-cover object-[50%_15%]" />
+                    <img loading="lazy" decoding="async" src={character.portrait} alt="" className="h-5 w-5 shrink-0 rounded-full object-cover object-[50%_15%]" />
                   ) : null}
                   <span className="max-w-[9rem] truncate">{character.name}</span>
                   {character.elements[0] ? <DnaElementBadge element={character.elements[0].key} size={14} /> : null}

@@ -913,8 +913,8 @@ export function QuickBuildCard({
 // 1280×560 dimensions (so `cardRef` + html-to-image exports still capture at
 // full resolution); only the visual footprint shrinks.
 //
-// Toutes les <img> de la carte sont en `loading="lazy"` : rendue côté
-// serveur, chaque <img> sans lui devient un <link rel="preload"> (React 19).
+// Toutes les <img loading="lazy" decoding="async"> de la carte sont en `loading="lazy"` : rendue côté
+// serveur, chaque <img loading="lazy" decoding="async"> sans lui devient un <link rel="preload"> (React 19).
 // Sur l'accueil, la vitrine de builds en produisait 97, et l'outil
 // d'inspection de Google échouait sur cette page alourdie.
 // ---------------------------------------------------------------------------

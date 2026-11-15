@@ -581,7 +581,7 @@ function DemonWedgeSlotCard({
         style={{ clipPath: clip }}
       />
       <div className="absolute inset-0 flex items-center justify-center">
-        <img
+        <img loading="lazy" decoding="async"
           src={icon}
           alt={name}
           width={64}
@@ -590,7 +590,7 @@ function DemonWedgeSlotCard({
         />
       </div>
       {polarityIconSrc && (
-        <img
+        <img loading="lazy" decoding="async"
           src={polarityIconSrc}
           alt=""
           width={20}
@@ -601,7 +601,7 @@ function DemonWedgeSlotCard({
       {showTrackAdjust && slot.track !== null && (
         <div className={`absolute bottom-2 flex h-6 w-6 items-center justify-center rounded border border-gold/50 bg-panel/90 sm:h-7 sm:w-7 ${bottomSide}`}>
           {trackAdjustIconSrc ? (
-            <img src={trackAdjustIconSrc} alt="" width={16} height={16} className="h-4 w-4 object-contain sm:h-5 sm:w-5" />
+            <img loading="lazy" decoding="async" src={trackAdjustIconSrc} alt="" width={16} height={16} className="h-4 w-4 object-contain sm:h-5 sm:w-5" />
           ) : (
             <span className="text-xs text-crimson-bright">✖</span>
           )}
@@ -682,12 +682,12 @@ function DemonWedgeCenterSlot({
 
   const circle = (
     <div className="relative h-28 w-28 sm:h-32 sm:w-32">
-      <img src={circleSrc} alt="" width={128} height={128} className="absolute inset-0 h-full w-full object-contain opacity-60" />
-      <img src={ARMORY_MOD_GLOW} alt="" width={128} height={128} className="absolute inset-0 h-full w-full object-contain opacity-30" />
-      <img src={icon} alt={name ?? ""} width={96} height={96} className="absolute inset-[12%] h-[76%] w-[76%] object-contain drop-shadow-lg" />
+      <img loading="lazy" decoding="async" src={circleSrc} alt="" width={128} height={128} className="absolute inset-0 h-full w-full object-contain opacity-60" />
+      <img loading="lazy" decoding="async" src={ARMORY_MOD_GLOW} alt="" width={128} height={128} className="absolute inset-0 h-full w-full object-contain opacity-30" />
+      <img loading="lazy" decoding="async" src={icon} alt={name ?? ""} width={96} height={96} className="absolute inset-[12%] h-[76%] w-[76%] object-contain drop-shadow-lg" />
       {showTrackAdjust && centerTrack !== null ? (
         <span className="absolute bottom-0 right-0 flex h-5 w-5 items-center justify-center rounded border border-gold/70 bg-black/70 sm:h-6 sm:w-6">
-          <img src={TRACK_SHIFT_ICON} alt="" width={14} height={14} className="h-3.5 w-3.5 object-contain sm:h-4 sm:w-4" />
+          <img loading="lazy" decoding="async" src={TRACK_SHIFT_ICON} alt="" width={14} height={14} className="h-3.5 w-3.5 object-contain sm:h-4 sm:w-4" />
         </span>
       ) : null}
     </div>
@@ -931,7 +931,7 @@ function SkillCard({
             className="flex h-14 w-14 shrink-0 items-center justify-center border border-white/10 bg-ink/70"
             style={{ boxShadow: `0 0 24px rgba(${rgb}, 0.25)` }}
           >
-            <img src={skill.iconPublicPath} alt="" width={40} height={40} className="h-10 w-10 object-contain" />
+            <img loading="lazy" decoding="async" src={skill.iconPublicPath} alt="" width={40} height={40} className="h-10 w-10 object-contain" />
           </div>
         ) : (
           <div className="flex h-14 w-14 shrink-0 items-center justify-center border border-white/10 bg-panel/70">
@@ -2008,7 +2008,7 @@ export function BuildTabContent({
                               className="flex min-w-0 flex-1 items-center gap-3"
                             >
                               <span className="dna-rarity-slot grid h-14 w-14 shrink-0 place-items-center rounded-sm border p-1">
-                                <img
+                                <img loading="lazy" decoding="async"
                                   src={w.item.icon}
                                   alt=""
                                   width={56}
@@ -2161,7 +2161,7 @@ export function BuildTabContent({
                   style={{ clipPath: clip, background: "linear-gradient(135deg, rgba(15,23,42,0.9), rgba(30,20,50,0.95))" }}
                 >
                   <div className="absolute inset-0 bg-gradient-to-b from-electro/15 to-electro/30" style={{ clipPath: clip }} />
-                  <img src={s.icon} alt={s.name} width={64} height={64} className="h-16 w-16 object-contain drop-shadow-lg sm:h-20 sm:w-20" />
+                  <img loading="lazy" decoding="async" src={s.icon} alt={s.name} width={64} height={64} className="h-16 w-16 object-contain drop-shadow-lg sm:h-20 sm:w-20" />
                 </div>
               );
               return (
@@ -2201,7 +2201,7 @@ export function BuildTabContent({
                     >
                       <div className="flex h-28 w-28 items-center justify-center rounded-full border-2 border-electro/50 bg-electro/10 shadow-lg shadow-electro/20 sm:h-32 sm:w-32">
                         {weaponIcon ? (
-                          <img src={weaponIcon} alt="" width={64} height={64} className="h-16 w-16 object-contain drop-shadow-lg sm:h-20 sm:w-20" />
+                          <img loading="lazy" decoding="async" src={weaponIcon} alt="" width={64} height={64} className="h-16 w-16 object-contain drop-shadow-lg sm:h-20 sm:w-20" />
                         ) : (
                           <Swords className="h-12 w-12 text-electro sm:h-14 sm:w-14" />
                         )}
@@ -2238,7 +2238,7 @@ export function BuildTabContent({
                   >
                     <div className="flex h-20 w-20 items-center justify-center rounded-full border-2 border-electro/50 bg-electro/10 shadow-lg shadow-electro/20">
                       {weaponIcon ? (
-                        <img src={weaponIcon} alt="" width={48} height={48} className="h-12 w-12 object-contain drop-shadow-lg" />
+                        <img loading="lazy" decoding="async" src={weaponIcon} alt="" width={48} height={48} className="h-12 w-12 object-contain drop-shadow-lg" />
                       ) : (
                         <Swords className="h-10 w-10 text-electro" />
                       )}
@@ -2310,7 +2310,7 @@ export function BuildTabContent({
                       className="flex items-center gap-3 transition-colors hover:text-gold"
                     >
                       {tm.character.portrait && (
-                        <img
+                        <img loading="lazy" decoding="async"
                           src={tm.character.portrait}
                           alt=""
                           width={48}
@@ -2354,7 +2354,7 @@ export function BuildTabContent({
                   {g.item ? (
                     <Link href={g.item.href} className="flex min-w-0 flex-1 items-center gap-3">
                       <span className="dna-rarity-slot grid h-14 w-14 shrink-0 place-items-center rounded-full border p-1.5">
-                        <img src={g.item.icon} alt="" width={56} height={56} className="h-full w-full object-contain" />
+                        <img loading="lazy" decoding="async" src={g.item.icon} alt="" width={56} height={56} className="h-full w-full object-contain" />
                       </span>
                       <span className="min-w-0">
                         <span className="dna-rarity-name block truncate text-sm font-medium">{g.item.name}</span>
@@ -2408,7 +2408,7 @@ export function BuildTabContent({
                         <TraitTooltip key={slot} trait={trait}>
                           <span className="grid h-7 w-7 cursor-help place-items-center rounded-full border border-gold/40 bg-gold/10">
                             {trait.icon ? (
-                              <img src={trait.icon} alt={trait.name} width={18} height={18} className="h-[18px] w-[18px]" />
+                              <img loading="lazy" decoding="async" src={trait.icon} alt={trait.name} width={18} height={18} className="h-[18px] w-[18px]" />
                             ) : (
                               <span className="text-[0.55rem] text-parch">{trait.name.slice(0, 2)}</span>
                             )}
@@ -2485,7 +2485,7 @@ export function BuildTabContent({
                       }}
                     >
                       {iconSrc ? (
-                        <img src={iconSrc} alt="" width={28} height={28} className="h-7 w-7 object-contain" />
+                        <img loading="lazy" decoding="async" src={iconSrc} alt="" width={28} height={28} className="h-7 w-7 object-contain" />
                       ) : (
                         <Sparkles className="h-4 w-4 text-muted-2" />
                       )}
@@ -2940,7 +2940,7 @@ export default function CharacterDetailClient({
                       }`}
                     >
                       {icon && (
-                        <img src={icon} alt="" width={16} height={16} className="h-4 w-4 object-contain" />
+                        <img loading="lazy" decoding="async" src={icon} alt="" width={16} height={16} className="h-4 w-4 object-contain" />
                       )}
                       {el.label}
                     </button>
@@ -3017,7 +3017,7 @@ export default function CharacterDetailClient({
                 {displayName}
                 {elementIcon ? (
                   <span className="inline-grid h-9 w-9 shrink-0 place-items-center rounded-full border bg-ink/60 md:h-10 md:w-10" style={{ borderColor: elHex, boxShadow: `0 0 13px -2px ${elHex}` }}>
-                    <img src={elementIcon} alt={character.element.label} width={36} height={36} className="h-[62%] w-[62%] object-contain" />
+                    <img loading="lazy" decoding="async" src={elementIcon} alt={character.element.label} width={36} height={36} className="h-[62%] w-[62%] object-contain" />
                   </span>
                 ) : null}
               </h1>
@@ -3036,7 +3036,7 @@ export default function CharacterDetailClient({
             {activePortraitSrc ? (
               <>
                 <span aria-hidden className="absolute left-1/2 top-[34%] h-[46%] w-[46%] -translate-x-1/2 -translate-y-1/2 rounded-full blur-2xl" style={{ background: `radial-gradient(circle, ${elHex}38, transparent 62%)` }} />
-                <img
+                <img loading="lazy" decoding="async"
                   src={activePortraitSrc}
                   alt={`${displayName} - ${t(PORTRAIT_LABEL_KEYS[activePortrait])}`}
                   draggable={false}
@@ -3217,7 +3217,7 @@ export default function CharacterDetailClient({
                     return (
                       <DnaTag key={cw.weaponId}>
                         {cw.icon.publicPath ? (
-                          <img src={cw.icon.publicPath} alt="" width={14} height={14} className="h-3.5 w-3.5 object-contain" />
+                          <img loading="lazy" decoding="async" src={cw.icon.publicPath} alt="" width={14} height={14} className="h-3.5 w-3.5 object-contain" />
                         ) : (
                           <Swords className="h-3 w-3" />
                         )}
@@ -3273,7 +3273,7 @@ export default function CharacterDetailClient({
                     style={{ background: "linear-gradient(135deg, rgba(15,23,42,0.9), rgba(30,41,59,0.95))" }}
                   >
                     {character.portraits.charpiece?.publicPath ? (
-                      <img src={character.portraits.charpiece.publicPath} alt="Intron" width={36} height={36} className="h-9 w-9 object-contain" />
+                      <img loading="lazy" decoding="async" src={character.portraits.charpiece.publicPath} alt="Intron" width={36} height={36} className="h-9 w-9 object-contain" />
                     ) : (
                       <Layers className="h-7 w-7 text-gold" />
                     )}
@@ -3355,7 +3355,7 @@ export default function CharacterDetailClient({
                         className="flex items-start gap-3 rounded-sm border border-line/20 bg-ink/30 p-3"
                       >
                         <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-gold/45 bg-[#14110d]">
-                          <img src={icon} alt={name} width={32} height={32} className="h-8 w-8 object-contain" />
+                          <img loading="lazy" decoding="async" src={icon} alt={name} width={32} height={32} className="h-8 w-8 object-contain" />
                         </div>
                         <div className="min-w-0">
                           <div className="font-caps text-[0.5rem] uppercase tracking-[0.16em] text-muted-2">
@@ -3481,7 +3481,7 @@ export default function CharacterDetailClient({
                     <div key={cw.weaponId} className="group flex items-center gap-4" data-rarity={rarityAttr(toRarityLevel(cw.rarity))}>
                       {cw.icon.publicPath && (
                         <span className="dna-rarity-slot grid h-16 w-16 shrink-0 place-items-center rounded-sm border p-1.5">
-                          <img src={cw.icon.publicPath} alt={cwName} width={64} height={64} className="h-full w-full object-contain drop-shadow-lg" />
+                          <img loading="lazy" decoding="async" src={cw.icon.publicPath} alt={cwName} width={64} height={64} className="h-full w-full object-contain drop-shadow-lg" />
                         </span>
                       )}
                       <div>
@@ -3615,7 +3615,7 @@ export default function CharacterDetailClient({
                     height: "115%",
                   }}
                 >
-                  <img
+                  <img loading="lazy" decoding="async"
                     src={bustSrc}
                     alt={character.internalName}
                     width={300}
@@ -3711,7 +3711,7 @@ export default function CharacterDetailClient({
                         >
                           {iconSrc ? (
                             // eslint-disable-next-line @next/next/no-img-element
-                            <img
+                            <img loading="lazy" decoding="async"
                               src={iconSrc}
                               alt=""
                               width={44}
@@ -3868,7 +3868,7 @@ export default function CharacterDetailClient({
                           aria-label={`Intron ${num}`}
                         >
                           {iconSrc ? (
-                            <img
+                            <img loading="lazy" decoding="async"
                               src={iconSrc}
                               alt=""
                               width={64}
@@ -4118,7 +4118,7 @@ export default function CharacterDetailClient({
               </button>
             </div>
             <div className="flex items-center justify-center bg-ink/80 p-2">
-              <img
+              <img loading="lazy" decoding="async"
                 src={zoomedPortrait.src}
                 alt={zoomedPortrait.alt}
                 width={300}

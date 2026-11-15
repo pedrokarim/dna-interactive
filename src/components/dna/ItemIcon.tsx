@@ -29,7 +29,9 @@ type DnaItemIconProps = {
  * densité) : les icônes sont des PNG de 256 px, affichées entre 20 et 96 px.
  * Sans `width`, on garde 256 px, la taille d'origine, en AVIF/WebP.
  */
-export function DnaItemIcon({ src, alt, className, width, height, loading, title }: DnaItemIconProps) {
+// `loading` vaut `lazy` par défaut : sans lui, React 19 transforme chaque icône
+// rendue côté serveur en `<link rel="preload">`.
+export function DnaItemIcon({ src, alt, className, width, height, loading = "lazy", title }: DnaItemIconProps) {
   const [erroredSrc, setErroredSrc] = useState<string | null>(null);
 
   const clean = src && src !== MARKER ? src : null;

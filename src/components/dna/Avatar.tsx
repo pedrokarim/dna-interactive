@@ -24,7 +24,7 @@ export function DnaAvatar({ src, alt = "", fallback, round = false, size = 54, c
     >
       {src ? (
         // eslint-disable-next-line @next/next/no-img-element
-        <img src={optimizedImageUrl(src, size * 2)} alt={alt} width={96} height={96} className="h-full w-full object-cover object-[50%_16%]" />
+        <img loading="lazy" decoding="async" src={optimizedImageUrl(src, size * 2)} alt={alt} width={96} height={96} className="h-full w-full object-cover object-[50%_16%]" />
       ) : (
         <span className="text-lg">{fallback}</span>
       )}

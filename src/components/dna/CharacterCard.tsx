@@ -22,13 +22,20 @@ export type DnaCharacterCardProps = {
   /** Overlays libres (ex. bouton zoom). */
   children?: ReactNode;
   className?: string;
+  /**
+   * `lazy` par défaut : rendue côté serveur sans cet attribut, l'image
+   * devient un `<link rel="preload">` (React 19), et une grille entière se
+   * téléchargeait avant le CSS. `eager` pour la première rangée, visible tout
+   * de suite.
+   */
+  loading?: "lazy" | "eager";
 };
 
 /**
  * Carte de personnage (grille) — portrait, lueur teintée par élément, badges
  * d'élément (vraies icônes du jeu, multi-élément), étoiles, tags d'armes.
  */
-export function DnaCharacterCard({ name, subtitle, element, elements, rarity = 5, weapons = [], portrait, topRight, topLeft, children, className }: DnaCharacterCardProps) {
+export function DnaCharacterCard({ name, subtitle, element, elements, rarity = 5, weapons = [], portrait, topRight, topLeft, children, className, loading = "lazy" }: DnaCharacterCardProps) {
   const el = ELEMENTS[element];
   const elementList = elements && elements.length > 0 ? elements : [element];
   return (
@@ -43,6 +50,8 @@ export function DnaCharacterCard({ name, subtitle, element, elements, rarity = 5
         <img
           src={optimizedImageUrl(portrait, 640)}
           alt={name}
+          loading={loading}
+          decoding="async"
           width={300}
           height={400}
           className="absolute inset-0 h-full w-full object-cover object-[50%_12%] transition-transform duration-500 group-hover:scale-105"

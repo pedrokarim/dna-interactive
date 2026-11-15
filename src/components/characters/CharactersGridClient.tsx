@@ -578,7 +578,7 @@ export default function CharactersGridClient({
                         const icon = ELEMENT_ICONS[el.key];
                         if (!icon) return null;
                         return (
-                          <img
+                          <img loading="lazy" decoding="async"
                             key={el.key}
                             src={icon}
                             alt={el.label}
@@ -709,7 +709,7 @@ export default function CharactersGridClient({
                           const icon = ELEMENT_ICONS[el.key];
                           if (!icon) return null;
                           return (
-                            <img
+                            <img loading="lazy" decoding="async"
                               key={el.key}
                               src={icon}
                               alt={el.label}
@@ -747,7 +747,7 @@ export default function CharactersGridClient({
                             className={`inline-flex items-center gap-1 rounded-sm border px-2 py-0.5 ${style.border} ${style.bg} ${style.text}`}
                           >
                             {icon ? (
-                              <img
+                              <img loading="lazy" decoding="async"
                                 src={icon}
                                 alt=""
                                 aria-hidden="true"
@@ -820,7 +820,7 @@ export default function CharactersGridClient({
         </ul>
         ) : (
         <section className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 md:gap-4 xl:grid-cols-5 2xl:grid-cols-6">
-          {paginatedCharacters.map((character) => {
+          {paginatedCharacters.map((character, index) => {
             const lead = getCharacterTranslation(character, gameLang, nameFallbacks);
             const headSrc = character.portraits.head.publicPath;
             const iconSrc = character.portraits.icon.publicPath;
@@ -848,6 +848,8 @@ export default function CharactersGridClient({
                   }
                   weapons={character.weaponTags}
                   portrait={portrait}
+                  // Première rangée (6 colonnes au plus) : visible à l'arrivée.
+                  loading={index < 6 ? "eager" : "lazy"}
                   topRight={
                     <button
                       type="button"
@@ -1024,7 +1026,7 @@ export default function CharactersGridClient({
               </button>
             </div>
             <div className="mt-3 flex items-center justify-center overflow-hidden rounded-sm border border-gold/20 bg-ink/80">
-              <img
+              <img loading="lazy" decoding="async"
                 src={previewPortrait.src}
                 alt={previewPortrait.alt}
                 width={300}
