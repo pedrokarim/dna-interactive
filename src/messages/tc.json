@@ -2692,6 +2692,8 @@
     "markers": "{categories} 個分類、{points} 個標記",
     "featuredUntil": "精選至 {date}",
     "dates": "{start} 至 {end}",
-    "obtain": "取得方式"
+    "obtain": "取得方式",
+
+    "rotation": "{time} UTC 輪替"
   }
 }

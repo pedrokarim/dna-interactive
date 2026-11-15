@@ -2692,6 +2692,8 @@
     "markers": "{categories}カテゴリー・{points}件のマーカー",
     "featuredUntil": "{date}までピックアップ",
     "dates": "{start}〜{end}",
-    "obtain": "入手方法"
+    "obtain": "入手方法",
+
+    "rotation": "{time} UTCのローテーション"
   }
 }

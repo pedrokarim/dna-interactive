@@ -2692,6 +2692,8 @@
     "markers": "{points} markers in {categories} categories",
     "featuredUntil": "Featured until {date}",
     "dates": "{start} to {end}",
-    "obtain": "How to get"
+    "obtain": "How to get",
+
+    "rotation": "{time} UTC rotation"
   }
 }

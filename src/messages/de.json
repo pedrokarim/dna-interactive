@@ -2692,6 +2692,8 @@
     "markers": "{points} Markierungen in {categories} Kategorien",
     "featuredUntil": "Im Fokus bis {date}",
     "dates": "{start} bis {end}",
-    "obtain": "Erhalt"
+    "obtain": "Erhalt",
+
+    "rotation": "Rotation um {time} UTC"
   }
 }

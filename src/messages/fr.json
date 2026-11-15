@@ -2692,6 +2692,8 @@
     "markers": "{points} marqueurs dans {categories} catégories",
     "featuredUntil": "En vedette jusqu’au {date}",
     "dates": "Du {start} au {end}",
-    "obtain": "Obtention"
+    "obtain": "Obtention",
+
+    "rotation": "Rotation de {time} UTC"
   }
 }

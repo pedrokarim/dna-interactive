@@ -25,15 +25,7 @@ import { localizeItemCategory } from "@/lib/items/category-i18n";
 import { getItemByCategoryAndId, getItemCategoryBySlug, getItemTranslation } from "@/lib/items/catalog";
 import { getRegionBySlug } from "@/lib/map/regions";
 import { localized } from "@/lib/map/world";
-import {
-  CATEGORIES,
-  REGIONS,
-  REGION_LABELS,
-  categoryLabel,
-  getRotationForDisplay,
-  isKnownObjective,
-  objectiveLabel,
-} from "@/lib/commissions";
+import { getCommissionsPreview } from "@/lib/commissions/preview";
 import { getTheatreSnapshot } from "@/lib/theatre/db";
 import { theatreOverview } from "@/lib/theatre/rotations";
 import { toIntlLocale } from "@/lib/intl-locale";
@@ -327,36 +319,28 @@ async function theatre(locale: string): Promise<ComponentEmbed | null> {
 }
 
 /**
- * Rotation des Covert Commissions en cours : une ligne par région, avec les
- * objectifs de chaque catégorie, comme le tableau de la page. Rien quand la
- * rotation n'est pas à jour (Discord garde alors la carte Open Graph) : un
- * aperçu figé sur une rotation périmée induirait en erreur.
+ * Rotation des Covert Commissions en cours, en grande image : le tableau
+ * régions × catégories avec les illustrations des objectifs. Rien quand la
+ * rotation n'est pas à jour (Discord garde alors la carte Open Graph).
+ *
+ * L'adresse de l'image porte l'empreinte de la rotation : une nouvelle
+ * rotation donne une nouvelle adresse, qu'aucun cache ne confond avec la
+ * précédente.
  */
 async function commissions(locale: string): Promise<ComponentEmbed | null> {
-  const { state, meta, hasData } = await getRotationForDisplay();
-  if (!hasData || meta.freshness !== "live" || !meta.updatedAt) return null;
-  const nav = await getTranslations({ locale, namespace: "nav" });
-  const colon = locale === "fr" ? " : " : ": ";
-  const lines = REGIONS.map((region) => {
-    const parts = CATEGORIES.flatMap((category) => {
-      // Même filtre que le tableau de la page : le bot écrit parfois un texte
-      // qui n'est pas un objectif (« Token missing » quand une région lui échappe).
-      const objectives = (state.regions[region]?.[category] ?? []).filter(isKnownObjective);
-      if (objectives.length === 0) return [];
-      const names = objectives.map((objective) => objectiveLabel(objective, locale)).join(", ");
-      return [`${escapeMarkdown(categoryLabel(category, locale))}${colon}${escapeMarkdown(names)}`];
-    });
-    return parts.length > 0 ? `**${escapeMarkdown(REGION_LABELS[region])}** · ${parts.join(" · ")}` : null;
-  });
-  if (lines.every((line) => line === null)) return null;
-  const hour = new Intl.DateTimeFormat(toIntlLocale(locale), { hour: "2-digit", minute: "2-digit", timeZone: "UTC" }).format(
-    new Date(meta.updatedAt),
-  );
+  const preview = await getCommissionsPreview(locale);
+  if (!preview) return null;
+  const [nav, t] = await Promise.all([
+    getTranslations({ locale, namespace: "nav" }),
+    getTranslations({ locale, namespace: "discordEmbed" }),
+  ]);
+  const rotation = t("rotation", { time: preview.hour });
   return buildPreviewEmbed({
     title: nav("commissions"),
     url: pageUrl(locale, NAVIGATION.commissions),
-    lines,
-    note: `${hour} UTC · ${NOTE}`,
+    note: `${rotation} · ${NOTE}`,
+    image: `${ogImageUrl(locale, NAVIGATION.commissions)}?r=${encodeURIComponent(preview.version)}`,
+    imageAlt: rotation,
     accentColor: GOLD,
     buttons: [{ label: nav("commissions"), url: pageUrl(locale, NAVIGATION.commissions) }],
   });

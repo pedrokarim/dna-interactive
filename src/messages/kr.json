@@ -2692,6 +2692,8 @@
     "markers": "{categories}개 카테고리, 마커 {points}개",
     "featuredUntil": "{date}까지 픽업",
     "dates": "{start} ~ {end}",
-    "obtain": "획득 방법"
+    "obtain": "획득 방법",
+
+    "rotation": "{time} UTC 로테이션"
   }
 }
