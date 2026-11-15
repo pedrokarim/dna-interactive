@@ -966,6 +966,8 @@
     "builderDescription": "建立並發布 Duet Night Abyss 社群配裝。",
     "buildsTitle": "社群配裝",
     "buildsDescription": "瀏覽玩家發布的 Duet Night Abyss 社群配裝。",
+
+    "communityBuildDescription": "{title}：Duet Night Abyss {character} 的社群配裝，包含武器與 Demon Wedge 配置。",
     "calendarTitle": "活動行事曆",
     "calendarDescription": "Duet Night Abyss 卡池、武器與進行中活動的互動行事曆：可切換時間、縮放並依分類篩選。",
     "draftsTitle": "鍛造圖紙",

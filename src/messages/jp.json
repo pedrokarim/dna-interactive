@@ -966,6 +966,8 @@
     "builderDescription": "Duet Night Abyssのコミュニティビルドを作成・公開できます。",
     "buildsTitle": "コミュニティビルド",
     "buildsDescription": "プレイヤーが公開したDuet Night Abyssのコミュニティビルドを閲覧できます。",
+
+    "communityBuildDescription": "{title}：Duet Night Abyssの{character}向けコミュニティビルド。武器とDemon Wedgeの構成を確認できます。",
     "calendarTitle": "イベントカレンダー",
     "calendarDescription": "Duet Night Abyssのバナー・武器・開催中イベントのインタラクティブカレンダー。時間軸の移動、ズーム、カテゴリ絞り込みに対応。",
     "draftsTitle": "鍛造設計図",

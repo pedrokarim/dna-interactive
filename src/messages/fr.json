@@ -966,6 +966,8 @@
     "builderDescription": "Créer et publier des builds communautaires Duet Night Abyss.",
     "buildsTitle": "Builds communauté",
     "buildsDescription": "Parcourir les builds communautaires Duet Night Abyss publiés par les joueurs.",
+
+    "communityBuildDescription": "{title} : build communautaire de Duet Night Abyss pour {character}, avec ses armes et ses Demon Wedges.",
     "calendarTitle": "Calendrier des événements",
     "calendarDescription": "Calendrier interactif des bannières, armes et événements en cours de Duet Night Abyss : navigue dans le temps, zoome et filtre par catégorie.",
     "draftsTitle": "Plans de forge",
@@ -987,7 +989,7 @@
     "itemCategorySearch": "Recherche, filtre et compare les noms dans {count} langues.",
     "itemDetailFallback": "{category} : fiche de {name} dans {count} langues.",
     "plannerTitle": "Planificateur de farm – matériaux par personnage, arme et Demon Wedge",
-    "plannerDescription": "Planifie la montée de tes personnages, armes et Demon Wedges de Duet Night Abyss : les matériaux à réunir, ce qu’il te manque et les missions où les farmer, à partir d’un build en un clic."
+    "plannerDescription": "Planifie la montée de tes personnages, armes et Demon Wedges de Duet Night Abyss : matériaux à réunir, manques et missions où les farmer, depuis un build."
   },
   "commissions": {
     "eyebrow": "Mandats scellés",

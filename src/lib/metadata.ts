@@ -104,6 +104,25 @@ export function localizedAlternates(
   return { canonical: `${BASE_URL}/${locale}${path}`, languages };
 }
 
+/** Longueur maximale d'une meta description : Bing classe en erreur au-delà. */
+const MAX_DESCRIPTION_LENGTH = 160;
+
+/**
+ * Ramène une meta description à 160 caractères au plus, coupée sur une espace
+ * quand le texte en a (pas en japonais ni en chinois), avec « … » à la fin.
+ *
+ * Les descriptions des fiches viennent des textes du jeu ou d'une note de
+ * joueur : leur longueur n'est pas maîtrisée.
+ */
+export function clampDescription(text: string, max = MAX_DESCRIPTION_LENGTH): string {
+  const clean = text.replace(/\s+/g, " ").trim();
+  if (clean.length <= max) return clean;
+  const cut = clean.slice(0, max - 1);
+  const lastSpace = cut.lastIndexOf(" ");
+  const head = lastSpace > max * 0.6 ? cut.slice(0, lastSpace) : cut;
+  return `${head.replace(/[\s,;:.–-]+$/, "")}…`;
+}
+
 /**
  * Génère des métadonnées cohérentes pour toutes les pages utilisant generateMetadata
  */
@@ -137,7 +156,9 @@ export async function generatePageMetadata(
   // stockés SANS la marque : le template `%s | DNA Interactive` du layout l'ajoute.
   const t = await getTranslations({ locale: currentLocale, namespace: "metadata" });
   const finalTitle = key ? t(`${key}Title`) : title || t("homeTitle");
-  const finalDescription = key ? t(`${key}Description`) : description || t("defaultDescription");
+  const finalDescription = clampDescription(
+    key ? t(`${key}Description`) : description || t("defaultDescription"),
+  );
   // og:title / twitter:title ne passent pas par le template Next : on suffixe à la main
   // pour que l'aperçu partagé porte la même chaîne que l'onglet.
   const brandedTitle = `${finalTitle} | ${SITE_CONFIG.name}`;

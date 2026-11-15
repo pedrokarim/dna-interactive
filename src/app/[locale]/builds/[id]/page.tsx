@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import { localizedAlternates } from "@/lib/metadata";
+import { getTranslations } from "next-intl/server";
+import { clampDescription, localizedAlternates } from "@/lib/metadata";
+import { resolveCharacterDisplayName } from "@/lib/characters/display-name";
 import { notFound } from "next/navigation";
 import { headers } from "next/headers";
 import { eq, and, sql } from "drizzle-orm";
@@ -115,9 +117,16 @@ export async function generateMetadata({ params }: RouteParams): Promise<Metadat
   const build = await loadBuild(id, { countView: false });
   if (!build) return { title: "Build introuvable" };
   const character = getCharacterById(build.characterId);
-  const charName = character?.element ? character.internalName : "";
-  const description =
-    build.note ?? `Build communautaire Duet Night Abyss${charName ? ` pour ${charName}` : ""}.`;
+  const t = await getTranslations({ locale, namespace: "metadata" });
+  // Description dans la langue de la page (elle était en français partout), et
+  // assez longue pour un résultat de recherche ; la note du joueur suit.
+  const summary = character
+    ? t("communityBuildDescription", {
+        title: build.title,
+        character: resolveCharacterDisplayName(character, locale),
+      })
+    : t("buildsDescription");
+  const description = clampDescription(build.note ? `${summary} ${build.note}` : summary);
   // og:title/og:description doivent être explicitement repris ici, sinon ils
   // héritent du bloc openGraph générique du layout racine (les réseaux
   // afficheraient le titre du site au lieu du titre du build). L'image OG
