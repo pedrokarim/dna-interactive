@@ -39,6 +39,14 @@ function ogImageUrl(locale: string, path: string): string {
   return `${SITE_URL}/api/og/${locale}${path}`;
 }
 
+/**
+ * Image OG propre d'une fiche (`opengraph-image.tsx` de la route) : personnage,
+ * build, objet. Sans le paramètre de version que Next ajoute dans la balise.
+ */
+function pageImageUrl(locale: string, path: string): string {
+  return `${pageUrl(locale, path)}/opengraph-image`;
+}
+
 const NOTE = "DNA Interactive · Duet Night Abyss";
 const GOLD = hexToColor("#c2a86a");
 const LOGO = absoluteUrl("/assets/images/logo-180.png");
@@ -108,8 +116,9 @@ async function character(locale: string, slug: string): Promise<ComponentEmbed |
       text.campName && escapeMarkdown(text.campName),
     ],
     note: NOTE,
-    thumbnail: absoluteUrl(record.portraits.gacha?.publicPath ?? record.portraits.head?.publicPath),
-    thumbnailAlt: name,
+    // Grande image : l'image OG de la fiche (illustration, nom, élément, étoiles).
+    image: pageImageUrl(locale, path),
+    imageAlt: name,
     accentColor: hexToColor(element?.hex),
     buttons: [
       { label: t("profile"), url: pageUrl(locale, path) },
@@ -147,8 +156,8 @@ async function build(locale: string, id: string): Promise<ComponentEmbed | null>
       ),
     ],
     note: NOTE,
-    thumbnail: absoluteUrl(record?.portraits.gacha?.publicPath ?? record?.portraits.head?.publicPath),
-    thumbnailAlt: characterName,
+    image: pageImageUrl(locale, path),
+    imageAlt: preview.title,
     accentColor: hexToColor(element?.hex) ?? GOLD,
     buttons: [
       { label: t("openBuild"), url: pageUrl(locale, path) },
@@ -182,8 +191,8 @@ async function item(locale: string, categorySlug: string, itemId: string): Promi
     description: text.description,
     lines: [joinLine(field(t("category"), category.displayName), stars(record.stats.rarity))],
     note: NOTE,
-    thumbnail: absoluteUrl(record.icon.publicPath),
-    thumbnailAlt: name,
+    image: pageImageUrl(locale, path),
+    imageAlt: name,
     accentColor: hexToColor(rarityHex(record.stats.rarity)) ?? GOLD,
     buttons: [
       { label: t("profile"), url: pageUrl(locale, path) },
@@ -213,12 +222,8 @@ async function cosmetic(locale: string, categorySlug: string, id: string): Promi
     description: pickText(record.description, lang),
     lines: [joinLine(field(t("category"), categoryTitle), stars(record.rarity)), obtain && field(t("obtain"), obtain)],
     note: NOTE,
-    // Comme l'image OG : une tenue se montre par son icône, son « portrait »
-    // est souvent le mannequin neutre du protagoniste.
-    thumbnail: absoluteUrl(
-      categorySlug === "outfits" ? record.visuals.icon : (record.visuals.bust ?? record.visuals.portrait ?? record.visuals.icon),
-    ),
-    thumbnailAlt: name,
+    image: ogImageUrl(locale, path),
+    imageAlt: name,
     accentColor: hexToColor(rarityHex(record.rarity)) ?? GOLD,
     buttons: [
       { label: t("profile"), url: pageUrl(locale, path) },
@@ -302,7 +307,7 @@ async function theatre(locale: string): Promise<ComponentEmbed | null> {
       until && escapeMarkdown(t("featuredUntil", { date: until })),
     ],
     note: NOTE,
-    thumbnail: absoluteUrl(featured.poster ?? featured.icon),
+    thumbnail: absoluteUrl(featured.icon ?? featured.poster),
     thumbnailAlt: featured.name,
     accentColor: hexToColor(elementOf(record?.element.key)?.hex) ?? GOLD,
     buttons: [
