@@ -2671,5 +2671,27 @@
       "active": "ビルド「{label}」だけを表示しています。",
       "all": "プラン全体"
     }
+  },
+  "discordEmbed": {
+    "profile": "詳細",
+    "builds": "ビルド",
+    "plan": "育成計画",
+    "planBuild": "このビルドを計画",
+    "openBuild": "ビルドを開く",
+    "characterProfile": "キャラクター詳細",
+    "banner": "ガチャ",
+    "allBanners": "すべてのガチャ",
+    "openMap": "マップを開く",
+    "openTheatre": "没入型シアター",
+    "element": "属性",
+    "weapons": "武器",
+    "rarity": "レアリティ",
+    "category": "カテゴリー",
+    "buildBy": "{author}による{character}のビルド",
+    "votes": "{count}票",
+    "markers": "{categories}カテゴリー・{points}件のマーカー",
+    "featuredUntil": "{date}までピックアップ",
+    "dates": "{start}〜{end}",
+    "obtain": "入手方法"
   }
 }

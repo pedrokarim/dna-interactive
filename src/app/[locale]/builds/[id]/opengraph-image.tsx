@@ -1,8 +1,6 @@
 import { ImageResponse } from "next/og";
 import { getTranslations } from "next-intl/server";
-import { eq } from "drizzle-orm";
-import { getDb, schema } from "@/db";
-import { isMissingTableError } from "@/lib/db-errors";
+import { loadBuildPreview } from "@/lib/community-builds/preview";
 import { getCharacterById, resolveCharacterDisplayName } from "@/lib/characters/catalog";
 import { toIntlLocale } from "@/lib/intl-locale";
 import { loadOgFonts, OG_SIZE, OG_CONTENT_TYPE } from "@/app/_og/fonts";
@@ -23,52 +21,6 @@ export const size = OG_SIZE;
 export const contentType = OG_CONTENT_TYPE;
 export const alt = "Community build — DNA Interactive";
 
-type OgBuild = {
-  title: string;
-  note: string | null;
-  characterId: string;
-  element: string | null;
-  voteCount: number;
-  views: number;
-  authorName: string | null;
-};
-
-/** Chargement minimal en lecture seule — aucune écriture (pas de compteur de vues ici). */
-async function loadBuildForOg(id: string): Promise<OgBuild | null> {
-  try {
-    const db = getDb();
-    const [row] = await db
-      .select({
-        title: schema.builds.title,
-        note: schema.builds.note,
-        characterId: schema.builds.characterId,
-        element: schema.builds.element,
-        voteCount: schema.builds.voteCount,
-        views: schema.builds.views,
-        hidden: schema.builds.hidden,
-        authorName: schema.users.name,
-      })
-      .from(schema.builds)
-      .innerJoin(schema.users, eq(schema.users.id, schema.builds.userId))
-      .where(eq(schema.builds.id, id))
-      .limit(1);
-
-    if (!row || row.hidden) return null;
-    return {
-      title: row.title,
-      note: row.note,
-      characterId: row.characterId,
-      element: row.element,
-      voteCount: row.voteCount,
-      views: row.views,
-      authorName: row.authorName,
-    };
-  } catch (error) {
-    if (isMissingTableError(error)) return null;
-    return null;
-  }
-}
-
 export default async function BuildOgImage({
   params,
 }: {
@@ -77,7 +29,7 @@ export default async function BuildOgImage({
   const { locale, id } = await params;
   const [fonts, build, origin, t, tcb] = await Promise.all([
     loadOgFonts(),
-    loadBuildForOg(id),
+    loadBuildPreview(id),
     resolveOrigin(),
     getTranslations({ locale, namespace: "og" }),
     getTranslations({ locale, namespace: "communityBuilds" }),

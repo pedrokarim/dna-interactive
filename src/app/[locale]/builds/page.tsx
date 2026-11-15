@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { localizedAlternates } from "@/lib/metadata";
+import { generatePageMetadata } from "@/lib/metadata";
 import { GlyphIcons } from "@/components/icons/GameGlyph";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
@@ -16,12 +16,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "metadata" });
-  return {
-    title: t("buildsTitle"),
-    description: t("buildsDescription"),
-    alternates: localizedAlternates(locale, "/builds"),
-  };
+  return generatePageMetadata({ key: "builds", path: "/builds" }, undefined, locale);
 }
 
 export default async function CommunityBuildsPage({ params }: { params: Promise<{ locale: string }> }) {

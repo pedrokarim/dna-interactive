@@ -2671,5 +2671,27 @@
       "active": "빌드 '{label}'만 표시 중입니다.",
       "all": "전체 플랜"
     }
+  },
+  "discordEmbed": {
+    "profile": "상세",
+    "builds": "빌드",
+    "plan": "육성 계획",
+    "planBuild": "이 빌드 계획하기",
+    "openBuild": "빌드 열기",
+    "characterProfile": "캐릭터 상세",
+    "banner": "배너",
+    "allBanners": "모든 배너",
+    "openMap": "지도 열기",
+    "openTheatre": "몰입형 극장",
+    "element": "속성",
+    "weapons": "무기",
+    "rarity": "희귀도",
+    "category": "카테고리",
+    "buildBy": "{author}의 {character} 빌드",
+    "votes": "{count}표",
+    "markers": "{categories}개 카테고리, 마커 {points}개",
+    "featuredUntil": "{date}까지 픽업",
+    "dates": "{start} ~ {end}",
+    "obtain": "획득 방법"
   }
 }

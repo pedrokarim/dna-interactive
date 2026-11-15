@@ -87,6 +87,7 @@ export async function generateMetadata(
       description: tMeta("characterDescription", { name: charName, element: character.element.label }),
       path: `/characters/${slug}`,
       dynamicOgImage: true, // image OG fournie par opengraph-image.tsx
+      discordEmbed: true,
       keywords: [
         "Duet Night Abyss",
         "character",

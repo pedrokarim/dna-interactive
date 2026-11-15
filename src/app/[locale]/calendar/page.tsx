@@ -1,7 +1,7 @@
 import { resolveBreadcrumb } from "@/lib/shell";
 import { DnaPageMark } from "@/components/dna/PageMark";
 import type { Metadata } from "next";
-import { localizedAlternates } from "@/lib/metadata";
+import { generatePageMetadata } from "@/lib/metadata";
 import { Suspense } from "react";
 import { getTranslations } from "next-intl/server";
 import { CalendarPageClient } from "@/components/calendar/CalendarPageClient";
@@ -22,12 +22,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "metadata" });
-  return {
-    title: t("calendarTitle"),
-    description: t("calendarDescription"),
-    alternates: localizedAlternates(locale, "/calendar"),
-  };
+  return generatePageMetadata({ key: "calendar", path: "/calendar" }, undefined, locale);
 }
 
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;

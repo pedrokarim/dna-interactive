@@ -73,6 +73,7 @@ export async function generateMetadata(
         }),
       path: `/items/${category.slug}/${item.id}`,
       dynamicOgImage: true, // image OG fournie par opengraph-image.tsx
+      discordEmbed: true,
       keywords: [
         "Duet Night Abyss",
         "item database",

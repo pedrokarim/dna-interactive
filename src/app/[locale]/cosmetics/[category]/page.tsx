@@ -36,7 +36,6 @@ export async function generateMetadata(
       title: t("categoryMetaTitle", { category: t(`categories.${slug}.title`), count: category.count }),
       description: t(`categories.${slug}.description`),
       path: `/cosmetics/${slug}`,
-      image: category.sample ?? undefined,
       keywords: ["Duet Night Abyss", t("title"), t(`categories.${slug}.title`)],
     },
     parent,

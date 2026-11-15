@@ -2671,5 +2671,27 @@
       "active": "清單只顯示配裝「{label}」。",
       "all": "整個規劃"
     }
+  },
+  "discordEmbed": {
+    "profile": "詳情",
+    "builds": "配裝",
+    "plan": "培養規劃",
+    "planBuild": "規劃此配裝",
+    "openBuild": "開啟配裝",
+    "characterProfile": "角色詳情",
+    "banner": "卡池",
+    "allBanners": "所有卡池",
+    "openMap": "開啟地圖",
+    "openTheatre": "沉浸式劇場",
+    "element": "屬性",
+    "weapons": "武器",
+    "rarity": "稀有度",
+    "category": "分類",
+    "buildBy": "{author} 的 {character} 配裝",
+    "votes": "{count} 票",
+    "markers": "{categories} 個分類、{points} 個標記",
+    "featuredUntil": "精選至 {date}",
+    "dates": "{start} 至 {end}",
+    "obtain": "取得方式"
   }
 }

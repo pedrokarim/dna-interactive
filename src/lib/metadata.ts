@@ -2,6 +2,7 @@ import type { Metadata, ResolvingMetadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { SITE_CONFIG, GAME_INFO, CREATOR_INFO } from "@/lib/constants";
 import { locales } from "@/i18n/config";
+import { discordEmbedMetadata } from "@/lib/discord-embed/next";
 
 const BASE_URL = "https://dna.ascencia.re";
 
@@ -46,11 +47,10 @@ export interface PageMetadataOptions {
   title?: string;
   description?: string;
   keywords?: string[];
-  image?: string;
   /**
-   * La route possède son propre `opengraph-image.tsx` (image OG générée).
-   * Dans ce cas on n'émet PAS d'image statique ici, sinon Next cumule les deux
-   * `og:image` et les réseaux affichent deux visuels.
+   * La route possède son propre `opengraph-image.tsx` (fiches personnage,
+   * build, objet). Sinon l'image vient de `/api/og/<locale><path>`, le gabarit
+   * commun (`app/_og/page-og.tsx`) avec le vrai contenu de la page.
    */
   dynamicOgImage?: boolean;
   /** Path without locale prefix, e.g. "" for home, "/map", "/characters" */
@@ -63,6 +63,11 @@ export interface PageMetadataOptions {
    * vers le bas le jugement porté sur l'ensemble du site.
    */
   indexable?: boolean;
+  /**
+   * La page a un aperçu Discord (component embed) : pose dans le `<head>` le
+   * `<link>` vers son JSON, servi par `/api/discord-embed/<locale><path>`.
+   */
+  discordEmbed?: boolean;
 }
 
 // Codes de locale du site → balises hreflang BCP 47 (`jp` n'en est pas une).
@@ -136,21 +141,18 @@ export async function generatePageMetadata(
     title,
     description,
     keywords = [],
-    image = "/assets/og/og-default.png",
     dynamicOgImage = false,
     path = "",
     type = "website",
     indexable = true,
+    discordEmbed = false,
   } = options;
 
   const currentLocale = locale ?? "fr";
   const alternates = localizedAlternates(currentLocale, path);
   const canonicalUrl = alternates.canonical;
   const ogLocale = localeToOgLocale[currentLocale] ?? "fr_FR";
-
-  // Hériter des métadonnées parentes si elles existent
-  const parentMetadata = parent ? await parent : null;
-  const previousImages = parentMetadata?.openGraph?.images || [];
+  const ogImage = `${BASE_URL}/api/og/${currentLocale}${path}`;
 
   // Titre/description localisés depuis le namespace `metadata`. Les titres y sont
   // stockés SANS la marque : le template `%s | DNA Interactive` du layout l'ajoute.
@@ -198,24 +200,18 @@ export async function generatePageMetadata(
       description: finalDescription,
       // Quand la route a son propre opengraph-image.tsx, on laisse Next injecter
       // SON image et on n'en ajoute aucune ici (sinon double og:image).
-      ...(dynamicOgImage
-        ? {}
-        : {
-            images: [
-              { url: image, width: 1200, height: 630, alt: finalTitle },
-              ...previousImages,
-            ],
-          }),
+      ...(dynamicOgImage ? {} : { images: [{ url: ogImage, width: 1200, height: 630, alt: finalTitle }] }),
     },
     twitter: {
       card: "summary_large_image",
       title: brandedTitle,
       description: finalDescription,
-      ...(dynamicOgImage ? {} : { images: [image] }),
+      ...(dynamicOgImage ? {} : { images: [ogImage] }),
       site: "@ascencia64",
       creator: "@ascencia64",
     },
     alternates,
+    ...(discordEmbed ? discordEmbedMetadata(currentLocale, path) : {}),
     robots: {
       index: indexable,
       follow: true,
@@ -255,7 +251,6 @@ export const pageMetadata = {
       "outil gaming",
       "joueurs DNA",
     ],
-    image: "/assets/og/og-default.png",
     path: "",
   },
   features: {
@@ -270,7 +265,6 @@ export const pageMetadata = {
       "builder de builds",
       SITE_CONFIG.name,
     ],
-    image: "/assets/og/og-default.png",
     path: "/features",
   },
   map: {
@@ -296,7 +290,6 @@ export const pageMetadata = {
       "guide complet",
       "marqueurs détaillés",
     ],
-    image: "/assets/worldview/worldview-2.webp",
     path: "/map",
   },
   items: {
@@ -316,7 +309,6 @@ export const pageMetadata = {
       "guide",
       SITE_CONFIG.name,
     ],
-    image: "/assets/worldview/worldview-8.webp",
     path: "/items",
   },
   characters: {
@@ -334,7 +326,6 @@ export const pageMetadata = {
       "multilingue",
       SITE_CONFIG.name,
     ],
-    image: "/assets/worldview/worldview-9.webp",
     path: "/characters",
   },
   cosmetics: {
@@ -354,7 +345,6 @@ export const pageMetadata = {
       "Myriade",
       SITE_CONFIG.name,
     ],
-    image: "/assets/worldview/worldview-9.webp",
     path: "/cosmetics",
   },
   banners: {
@@ -372,7 +362,6 @@ export const pageMetadata = {
       "rates",
       SITE_CONFIG.name,
     ],
-    image: "/assets/worldview/worldview-9.webp",
     path: "/cosmetics/banners",
   },
   commissions: {
@@ -389,7 +378,6 @@ export const pageMetadata = {
       "rotation horaire",
       "DNA Interactive",
     ],
-    image: "/assets/worldview/worldview-5.webp",
     path: "/commissions",
   },
   about: {
@@ -410,7 +398,6 @@ export const pageMetadata = {
       "créateur",
       "mission",
     ],
-    image: "/assets/worldview/worldview-5.webp",
     path: "/about",
   },
   contact: {
@@ -429,7 +416,6 @@ export const pageMetadata = {
       CREATOR_INFO.fullName,
       "contact équipe",
     ],
-    image: "/assets/worldview/worldview-6.webp",
     path: "/contact",
   },
   support: {
@@ -450,7 +436,6 @@ export const pageMetadata = {
       "help",
       "support technique",
     ],
-    image: "/assets/worldview/worldview-4.webp",
     path: "/support",
   },
   changelog: {
@@ -470,7 +455,6 @@ export const pageMetadata = {
       "bug fixes",
       SITE_CONFIG.name,
     ],
-    image: "/assets/worldview/worldview-7.webp",
     path: "/changelog",
   },
 } satisfies Record<string, PageMetadataOptions>;

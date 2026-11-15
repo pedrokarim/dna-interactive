@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { clampDescription, localizedAlternates } from "@/lib/metadata";
+import { discordEmbedMetadata } from "@/lib/discord-embed/next";
 import { resolveCharacterDisplayName } from "@/lib/characters/display-name";
 import { notFound } from "next/navigation";
 import { headers } from "next/headers";
@@ -138,8 +139,9 @@ export async function generateMetadata({ params }: RouteParams): Promise<Metadat
     title: build.title,
     description,
     openGraph: { title: build.title, description },
-    twitter: { title: build.title, description },
+    twitter: { card: "summary_large_image", title: build.title, description },
     alternates: localizedAlternates(locale, `/builds/${id}`),
+    ...discordEmbedMetadata(locale, `/builds/${id}`),
   };
 }
 

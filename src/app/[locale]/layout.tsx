@@ -1,4 +1,5 @@
 import type { Metadata, ResolvingMetadata } from "next";
+import { ROOT_ICONS } from "@/lib/discord-embed/next";
 import { Cinzel, Cormorant_Garamond, Jost, JetBrains_Mono } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
@@ -144,11 +145,8 @@ export async function generateMetadata(
     // Google la tenait pour un doublon de l'accueil. Chaque page indexable
     // déclare le sien (`generatePageMetadata` ou `localizedAlternates`).
     manifest: "/manifest.json",
-    icons: {
-      // 180 px suffisent (taille de l'icône Apple) : 14 Ko au lieu de 171.
-      icon: "/assets/images/logo-180.png",
-      apple: "/assets/images/logo-180.png",
-    },
+    // Partagées avec `discordEmbedMetadata`, qui doit les reprendre.
+    icons: ROOT_ICONS,
     other: {
       // Doit correspondre au fond de page (`--color-ink`) : la barre du
       // navigateur mobile se fondait dans un indigo hérité d'un template.

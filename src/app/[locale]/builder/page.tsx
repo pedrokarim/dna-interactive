@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { localizedAlternates } from "@/lib/metadata";
+import { generatePageMetadata } from "@/lib/metadata";
 import { getTranslations } from "next-intl/server";
 import { CommunityBuildBuilderClient } from "@/components/builder/CommunityBuildBuilderClient";
 import { DnaPanel } from "@/components/dna/Panel";
@@ -15,12 +15,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "metadata" });
-  return {
-    title: t("builderTitle"),
-    description: t("builderDescription"),
-    alternates: localizedAlternates(locale, "/builder"),
-  };
+  return generatePageMetadata({ key: "builder", path: "/builder" }, undefined, locale);
 }
 
 export default async function BuilderPage({ params }: { params: Promise<{ locale: string }> }) {

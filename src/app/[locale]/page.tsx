@@ -31,7 +31,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const { locale } = await params;
-  return generatePageMetadata(pageMetadata.home, parent, locale);
+  return generatePageMetadata({ ...pageMetadata.home, discordEmbed: true }, parent, locale);
 }
 
 // Élément (jeu) → teinte du design system.

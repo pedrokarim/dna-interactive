@@ -30,7 +30,6 @@ export async function generateMetadata(
       title: t("detailMetaTitle", { name, category: categoryTitle }),
       description: pickText(item.description, lang) ?? t("detailMetaDescription", { name, category: categoryTitle }),
       path: `/cosmetics/${category}/${id}`,
-      image: item.visuals.icon ?? undefined,
       keywords: ["Duet Night Abyss", name, item.name.EN ?? name, categoryTitle],
       type: "article",
       // ~940 fiches × 7 langues d'une centaine de mots chacune : 92 % du
@@ -38,6 +37,7 @@ export async function generateMetadata(
       // (« Explorée, actuellement non indexée », accueil compris). Elles
       // restent explorables ; les pages de catégorie portent le référencement.
       indexable: false,
+      discordEmbed: true,
     },
     parent,
     locale,

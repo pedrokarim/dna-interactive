@@ -2671,5 +2671,27 @@
       "active": "Liste auf den Build „{label}“ beschränkt.",
       "all": "Ganzer Plan"
     }
+  },
+  "discordEmbed": {
+    "profile": "Profil",
+    "builds": "Builds",
+    "plan": "Planen",
+    "planBuild": "Build planen",
+    "openBuild": "Build öffnen",
+    "characterProfile": "Charakterprofil",
+    "banner": "Banner",
+    "allBanners": "Alle Banner",
+    "openMap": "Karte öffnen",
+    "openTheatre": "Immersives Theater",
+    "element": "Element",
+    "weapons": "Waffen",
+    "rarity": "Seltenheit",
+    "category": "Kategorie",
+    "buildBy": "{character}-Build von {author}",
+    "votes": "{count, plural, one {# Stimme} other {# Stimmen}}",
+    "markers": "{points} Markierungen in {categories} Kategorien",
+    "featuredUntil": "Im Fokus bis {date}",
+    "dates": "{start} bis {end}",
+    "obtain": "Erhalt"
   }
 }

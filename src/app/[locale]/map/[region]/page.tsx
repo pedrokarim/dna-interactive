@@ -13,6 +13,7 @@ import {
 import { NAVIGATION, SITE_CONFIG } from "@/lib/constants";
 import { resourceName } from "@/lib/map/taxonomy";
 import { localized } from "@/lib/map/world";
+import { discordEmbedMetadata } from "@/lib/discord-embed/next";
 
 /**
  * Page d'une région de la carte.
@@ -79,7 +80,11 @@ export async function generateMetadata({
       url: `${baseUrl}/${locale}${path}`,
       title: brandedTitle,
       description,
+      // Image du gabarit commun : l'aperçu de la région avec son nom et ses chiffres.
+      images: [{ url: `${baseUrl}/api/og/${locale}${path}`, width: 1200, height: 630, alt: brandedTitle }],
     },
+    twitter: { card: "summary_large_image", title: brandedTitle, description, images: [`${baseUrl}/api/og/${locale}${path}`] },
+    ...discordEmbedMetadata(locale, path),
   };
 }
 

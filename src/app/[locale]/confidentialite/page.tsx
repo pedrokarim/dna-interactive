@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { localizedAlternates } from "@/lib/metadata";
+import { generatePageMetadata } from "@/lib/metadata";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { DnaPanel, DnaSectionLabel } from "@/components/dna";
@@ -11,12 +11,12 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations("privacy");
-  return {
-    title: t("metaTitle"),
-    description: t("metaDescription"),
-    alternates: localizedAlternates(locale, "/confidentialite"),
-  };
+  const t = await getTranslations({ locale, namespace: "privacy" });
+  return generatePageMetadata(
+    { title: t("metaTitle"), description: t("metaDescription"), path: "/confidentialite" },
+    undefined,
+    locale,
+  );
 }
 
 export default async function ConfidentialitePage() {
