@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default async function AdminCalendarPage() {
   const user = await getCurrentUser();
-  // Gating serveur : 404 pour les non-admins (on ne révèle pas l'existence).
+  // 404 pour les non-admins, pour ne pas dire que la page existe.
   if (!user || user.role !== "admin") notFound();
 
   return (

@@ -9,9 +9,9 @@ const EVENT_ID = /^[\w-]{1,80}$/;
 type RouteContext = { params: Promise<{ id: string }> };
 
 /**
- * Fiche d'un événement du calendrier : l'événement, toutes les éditions de sa
- * série et les derniers événements de sa catégorie. Données publiques (les
- * mêmes que la frise), d'où l'absence d'authentification.
+ * Fiche d'un événement : l'événement, toutes les éditions de sa série et les
+ * derniers événements de sa catégorie. Mêmes données que la frise, donc pas
+ * d'auth.
  */
 export async function GET(_request: NextRequest, { params }: RouteContext) {
   const { id } = await params;

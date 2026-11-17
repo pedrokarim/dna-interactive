@@ -92,9 +92,9 @@ async function tableHasRows(): Promise<boolean> {
 }
 
 /**
- * Événements du calendrier depuis la BDD (`calendar_events`, non masqués).
- * **Fallback** sur la liste curée statique si la table est vide ou absente
- * (jamais de calendrier vide, et ça marche avant la migration).
+ * Événements non masqués de `calendar_events`. Si la table est vide ou absente,
+ * on sert la liste curée statique : le calendrier n'est jamais vide, même avant
+ * la migration.
  */
 export async function getCalendarEvents(): Promise<CalendarEvent[]> {
   try {
@@ -108,10 +108,10 @@ export async function getCalendarEvents(): Promise<CalendarEvent[]> {
 }
 
 /**
- * Événements **chevauchant** `[fromIso, toIso]` — la frise ne charge que ce qui
- * l'entoure, jamais tout l'historique. Le filtre se fait en SQL (les dates sont
- * du texte ISO, donc l'ordre lexicographique = l'ordre chronologique, et
- * `idx_calendar_events_dates` s'applique). Même repli statique que ci-dessus.
+ * Événements qui chevauchent `[fromIso, toIso]`, pour que la frise ne charge
+ * que ce qui l'entoure. Filtre en SQL : les dates sont du texte ISO, l'ordre
+ * alphabétique est donc l'ordre chronologique et `idx_calendar_events_dates`
+ * sert. Même repli statique que ci-dessus.
  */
 export async function getCalendarEventsInRange(fromIso: string, toIso: string): Promise<CalendarEvent[]> {
   try {
@@ -119,7 +119,7 @@ export async function getCalendarEventsInRange(fromIso: string, toIso: string): 
       asc(table.startDate),
       asc(table.sortOrder),
     ]);
-    // Table vide (pas seulement « rien dans la fenêtre ») → repli statique.
+    // Repli statique seulement si toute la table est vide, pas juste la fenêtre.
     if (rows.length === 0) {
       return (await tableHasRows()) ? [] : eventsInRange(CALENDAR_EVENTS, fromIso, toIso);
     }

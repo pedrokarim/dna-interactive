@@ -32,10 +32,10 @@ export type CalendarPageClientProps = {
 };
 
 /**
- * Calendrier plein écran — zoom, filtres, vue, **date regardée** et fiche
- * ouverte dans l'URL (lien partageable). La date suit le défilement en
- * `replace` ; ouvrir une fiche ajoute une entrée d'historique, pour que le
- * bouton Retour du téléphone la referme.
+ * Calendrier plein écran. Zoom, filtres, vue, date affichée et fiche ouverte
+ * vivent dans l'URL pour que le lien se partage. La date suit le défilement en
+ * `replace`. Ouvrir une fiche fait un `push`, pour que le bouton Retour du
+ * téléphone la referme.
  */
 export function CalendarPageClient({
   events,

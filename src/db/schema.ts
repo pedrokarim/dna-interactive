@@ -104,9 +104,9 @@ export const authenticators = pgTable(
   (t) => [primaryKey({ columns: [t.userId, t.credentialID] })],
 );
 
-// Tokens à usage unique pour les flux email natifs : vérification d'adresse et
-// réinitialisation de mot de passe. Seul le HASH du token est stocké (le token
-// en clair ne vit que dans le lien envoyé par email). Expiration obligatoire.
+// Tokens à usage unique des flux email natifs : vérification d'adresse et
+// réinitialisation de mot de passe. On ne stocke que le hash, le token en clair
+// n'existe que dans le lien envoyé par email. Expiration obligatoire.
 export const authTokens = pgTable(
   "auth_tokens",
   {
@@ -197,11 +197,11 @@ export const buildDrafts = pgTable(
   ],
 );
 
-// Votes anonymes par IP (plus de lien au compte). `voterKey` = hash non
-// réversible de (IP + fenêtre 24h + secret) : stable dans la fenêtre courante
-// (toggle possible), change à la fenêtre suivante (la même IP peut re-voter —
-// l'abus est accepté, cf. lib/community-builds/vote-identity.ts). `builds.voteCount`
-// reste le compteur cumulatif et permanent, jamais reconstruit depuis cette table.
+// Votes anonymes par IP, sans lien au compte. `voterKey` = hash non réversible
+// de (IP + fenêtre 24h + secret) : stable dans la fenêtre courante (on peut
+// annuler son vote), différent à la suivante. La même IP peut donc revoter, on
+// l'accepte (cf. lib/community-builds/vote-identity.ts). `builds.voteCount`
+// reste le compteur cumulé, jamais reconstruit depuis cette table.
 export const buildIpVotes = pgTable(
   "build_ip_votes",
   {
@@ -263,8 +263,8 @@ export const adminActions = pgTable(
  * On détecte un changement via `contentHash` et on borne dans le temps avec
  * `startedAt` (1ère observation) / `lastSeenAt` (dernière observation).
  *
- * NB : la table peut comporter des colonnes annexes alimentées par le pipeline
- * d'ingestion ; le site ne lit que les colonnes définies ici.
+ * La table peut avoir d'autres colonnes remplies par le pipeline d'ingestion,
+ * le site ne lit que celles définies ici.
  */
 export const commissionSnapshots = pgTable("commission_snapshots", {
   id: serial("id").primaryKey(),
@@ -297,9 +297,9 @@ export const commissionEntries = pgTable(
 );
 
 // ---------------------------------------------------------------------------
-// Calendrier des événements — pilotable via l'admin.
-// Dates en texte ISO "YYYY-MM-DD" (cohérent avec la logique déterministe du
-// calendrier). `category` texte libre validé côté lecture.
+// Calendrier des événements, géré depuis l'admin.
+// Dates en texte ISO "YYYY-MM-DD", comme dans src/lib/events/calendar.ts.
+// `category` est un texte libre, validé à la lecture.
 // ---------------------------------------------------------------------------
 export const calendarEvents = pgTable(
   "calendar_events",
@@ -325,11 +325,11 @@ export const calendarEvents = pgTable(
 );
 
 // ---------------------------------------------------------------------------
-// Rotations du théâtre immersif. Chaque ligne est une tranche : un début, une
-// fin (instants exacts, pas des jours), et ce qu'elle met en avant — un
-// personnage (`char-…`) ou une arme de calamité (`weapons-…`). `seasonId` est
-// le numéro de saison du jeu : c'est la clé d'upsert du seed, vide pour une
-// rotation saisie à la main (une prochaine tranche annoncée, par exemple).
+// Rotations du théâtre immersif. Une ligne par tranche : début et fin (des
+// instants exacts, pas des jours) et ce qu'elle met en avant, un personnage
+// (`char-…`) ou une arme de calamité (`weapons-…`). `seasonId` est le numéro de
+// saison du jeu et sert de clé d'upsert au seed. Vide pour une rotation saisie
+// à la main (une prochaine tranche annoncée, par exemple).
 // ---------------------------------------------------------------------------
 export const theatreRotations = pgTable(
   "theatre_rotations",
@@ -354,8 +354,8 @@ export const theatreRotations = pgTable(
 );
 
 // ---------------------------------------------------------------------------
-// Réglages applicatifs pilotables via l'admin — 1 ligne (key = "config"),
-// valeur = objet JSON des réglages (cf. src/lib/settings).
+// Réglages de l'appli, modifiables depuis l'admin. Une ligne (key = "config"),
+// la valeur est l'objet JSON des réglages (cf. src/lib/settings).
 // ---------------------------------------------------------------------------
 export const appSettings = pgTable("app_settings", {
   key: text("key").primaryKey(),
@@ -364,12 +364,12 @@ export const appSettings = pgTable("app_settings", {
 });
 
 // ---------------------------------------------------------------------------
-// Rate-limiting partagé (fenêtre fixe) — cf. src/lib/rate-limit.ts.
-// Remplace le compteur en mémoire, inefficace en serverless multi-instance
-// (chaque lambda Vercel avait son propre état, remis à zéro au cold-start).
+// Rate-limiting partagé, en fenêtre fixe (cf. src/lib/rate-limit.ts).
+// Remplace un compteur en mémoire : avec plusieurs instances, chacune avait le
+// sien, remis à zéro à chaque démarrage.
 // `bucketKey` = identifiant du seau (ex. "auth:login:<ip>:<email>").
 // Purge des lignes expirées : `DELETE FROM rate_limits WHERE reset_at < now();`
-// (à planifier périodiquement — cron Pi ou job Postgres).
+// (à planifier : cron Pi ou job Postgres).
 // ---------------------------------------------------------------------------
 export const rateLimits = pgTable(
   "rate_limits",
@@ -396,10 +396,9 @@ export type BuildReportRow = typeof buildReports.$inferSelect;
 // ---------------------------------------------------------------------------
 // Notifications – annonces poussées par l'administration.
 //
-// Une annonce est un message unique, rédigé une fois, distribué sur trois
-// canaux indépendants : la cloche du site (toujours), le push navigateur
-// (abonnés opt-in) et l'email (destinataires vérifiés). Les canaux réellement
-// utilisés sont choisis annonce par annonce à l'envoi.
+// Une annonce est rédigée une fois et part sur des canaux indépendants : la
+// cloche du site (toujours), le push navigateur (abonnés opt-in) et l'email
+// (adresses vérifiées). On choisit les canaux annonce par annonce, à l'envoi.
 //
 // `audience` borne qui voit l'annonce :
 //   everyone      – tout le monde, visiteurs anonymes compris
@@ -453,8 +452,8 @@ export const announcements = pgTable(
  *
  * `notificationId` n'est pas une clé étrangère : il porte aussi bien l'`id`
  * d'une annonce que celui d'une notification dérivée (`mod-…`, `reports-open`),
- * qui n'existe dans aucune table. Les visiteurs anonymes conservent le même
- * état côté navigateur (localStorage) – ce sont deux dépôts pour un même modèle.
+ * qui n'existe dans aucune table. Pour les visiteurs anonymes, le même état vit
+ * dans le localStorage.
  */
 export const notificationReads = pgTable(
   "notification_reads",
@@ -481,7 +480,7 @@ export const notificationReads = pgTable(
  * s'abonner, et un abonnement se rattache à un compte s'il se connecte ensuite.
  *
  * Un endpoint révoqué (410/404 renvoyé par le service de push) est supprimé à
- * l'envoi suivant : c'est le seul mécanisme fiable de purge.
+ * l'envoi suivant. On n'a pas d'autre moyen fiable de purger.
  */
 export const pushSubscriptions = pgTable(
   "push_subscriptions",
@@ -503,17 +502,15 @@ export type NotificationReadRow = typeof notificationReads.$inferSelect;
 export type PushSubscriptionRow = typeof pushSubscriptions.$inferSelect;
 
 // ---------------------------------------------------------------------------
-// Changelog — journal des versions du site, pilotable via l'admin.
+// Changelog : journal des versions du site, géré depuis l'admin.
 //
-// Les entrées vivaient en dur : `changelogData.ts` pour les métadonnées et les
-// sept fichiers de messages pour les textes. Publier une note coûtait donc huit
-// fichiers à modifier, ce qui décourage d'en écrire.
+// Avant, publier une note demandait de toucher huit fichiers
+// (`changelogData.ts` et les sept fichiers de messages).
 //
 // `translations` porte un objet par langue :
 //   { fr: { title, description, items: [] }, en: { … } }
-// Une seule langue suffit à publier ; la lecture retombe sur la langue par
-// défaut quand la traduction manque. C'est ce qui permet de garder un site
-// multilingue sans exiger sept saisies à chaque note.
+// Une seule langue suffit pour publier : à la lecture, une traduction absente
+// retombe sur la langue par défaut.
 // ---------------------------------------------------------------------------
 
 export type ChangelogTranslation = {

@@ -40,13 +40,13 @@ function dayFractionOf(now: Date): number {
 }
 
 /**
- * Date du jour **du visiteur** et heure dans cette journée, resynchronisées
- * quand la page revient au premier plan et une fois par minute (passage de
- * minuit sans rechargement).
+ * Date du jour du visiteur et heure dans la journée. Resynchronisées chaque
+ * minute (pour passer minuit sans recharger) et quand la page revient au
+ * premier plan.
  *
- * Le premier rendu utilise la valeur du serveur (et midi pour l'heure) :
- * identique au HTML envoyé, donc pas d'écart d'hydratation ; l'effet corrige
- * juste après avec le fuseau réel du navigateur.
+ * Le premier rendu prend la date du serveur et midi, comme le HTML envoyé, pour
+ * ne pas casser l'hydratation. L'effet corrige ensuite avec le fuseau du
+ * navigateur.
  */
 export function useToday(serverToday: string, override?: string): { today: string; dayFraction: number } {
   const [clock, setClock] = useState({ today: override || serverToday, dayFraction: 0.5 });

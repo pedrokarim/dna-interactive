@@ -22,7 +22,6 @@ import {
 type SheetData = { event: CalendarEvent } & EventHistory;
 
 type CalendarEventSheetProps = {
-  /** Identifiant de l'événement affiché. */
   eventId: string;
   /** Données déjà chargées par la frise : affichées sans attendre l'API. */
   initialEvent?: CalendarEvent;
@@ -46,11 +45,10 @@ function hrefLabelKey(href: string) {
 const isExternal = (src: string) => !src.startsWith("/");
 
 /**
- * Fiche d'un événement du calendrier : panneau à droite sur PC, modal qui
- * monte du bas sur téléphone. Le haut de la fiche (image, statut, dates,
- * description, liens) s'affiche tout de suite avec les données de la frise ;
- * l'historique (éditions de la même série, derniers événements de la
- * catégorie) arrive de `/api/calendar/events/[id]`.
+ * Fiche d'un événement : panneau à droite sur PC, modal qui monte du bas sur
+ * téléphone. Le haut (image, statut, dates, description, liens) s'affiche tout
+ * de suite avec les données de la frise. L'historique (éditions de la série,
+ * derniers événements de la catégorie) vient de `/api/calendar/events/[id]`.
  */
 export function CalendarEventSheet({
   eventId,

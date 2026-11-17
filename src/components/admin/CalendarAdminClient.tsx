@@ -72,20 +72,15 @@ const EMPTY_FORM: FormState = {
 const inputClass =
   "w-full border border-white/12 bg-black/25 px-2.5 py-1.5 font-sans text-[0.82rem] text-parch outline-none transition-colors placeholder:text-muted-2 focus:border-gold/50";
 const labelClass = "mb-1 block font-caps text-[0.54rem] uppercase tracking-[0.16em] text-muted-2";
-/**
- * Bouton de formulaire. Ici le libellé reste visible : valider ou annuler une
- * saisie n'est pas une action de ligne, et une icône seule y serait un piège.
- */
+/** Bouton de formulaire, avec son libellé : pour valider une saisie, une icône seule prête à confusion. */
 const formButtonClass =
   "inline-flex items-center gap-1.5 border px-3 py-1.5 font-sans text-[0.78rem] transition-colors disabled:cursor-not-allowed disabled:opacity-40";
 
 /**
  * Administration du calendrier des événements.
  *
- * Deux régimes assumés : une **liste** en tableau dense, où chaque action tient
- * dans une icône, et un **formulaire** où les libellés restent écrits. Ce n'est
- * pas une incohérence : dans une liste on répète le même geste sur des dizaines
- * de lignes, dans un formulaire on le fait une fois et il engage une saisie.
+ * Dans la liste, chaque action tient dans une icône (on répète le même geste sur
+ * des dizaines de lignes). Dans le formulaire, les boutons gardent leur libellé.
  */
 export function CalendarAdminClient() {
   const { confirm } = useConfirm();
@@ -282,7 +277,7 @@ export function CalendarAdminClient() {
 
             <div className="sm:col-span-2">
               <label className={labelClass} htmlFor="cal-image">
-                Bannière — URL ou /assets/… (paysage de préférence)
+                Bannière : URL ou /assets/… (paysage de préférence)
               </label>
               <input
                 id="cal-image"
@@ -342,7 +337,7 @@ export function CalendarAdminClient() {
 
             <div className="sm:col-span-2">
               <label className={labelClass} htmlFor="cal-source">
-                Source (jamais affichée sur le site)
+                Source (lien « Annonce officielle » dans la fiche)
               </label>
               <input
                 id="cal-source"

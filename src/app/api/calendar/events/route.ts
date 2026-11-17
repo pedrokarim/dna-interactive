@@ -5,7 +5,7 @@ import { addDaysIso, diffDays } from "@/lib/events/calendar";
 export const dynamic = "force-dynamic";
 
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
-/** Garde-fou : une requête ne peut pas ratisser plus large que ça (≈ 5 ans). */
+/** Plage max d'une requête (environ 5 ans). */
 const MAX_SPAN_DAYS = 1830;
 
 function isValid(iso: string | null): iso is string {
@@ -15,10 +15,9 @@ function isValid(iso: string | null): iso is string {
 /**
  * Fenêtre d'événements du calendrier : `?from=AAAA-MM-JJ&to=AAAA-MM-JJ`.
  *
- * La frise appelle cet endpoint au fil du défilement pour ne charger que ce qui
- * entoure la période regardée. Données publiques (mêmes que le rendu serveur),
- * donc pas d'auth ; la plage est bornée pour qu'on ne puisse pas demander le
- * siècle entier d'un coup.
+ * La frise l'appelle pendant le défilement, pour ne charger que ce qui entoure
+ * la période affichée. Mêmes données que le rendu serveur, donc pas d'auth. La
+ * plage est bornée : on ne peut pas demander le siècle entier d'un coup.
  */
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
@@ -37,7 +36,7 @@ export async function GET(request: NextRequest) {
 
   return NextResponse.json(
     { from, to: cappedTo, events },
-    // Court, mais suffisant pour absorber les allers-retours de défilement.
+    // Cache court, assez pour encaisser les allers-retours du défilement.
     { headers: { "Cache-Control": "public, max-age=60, stale-while-revalidate=300" } },
   );
 }

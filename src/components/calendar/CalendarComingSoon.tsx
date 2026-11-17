@@ -14,10 +14,7 @@ type CalendarComingSoonProps = {
   onSelect: (id: string) => void;
 };
 
-/**
- * Ce qui se termine et ce qui commence dans les prochains jours : la question
- * qu'on se pose en ouvrant le calendrier, avant même de lire la frise.
- */
+/** Ce qui se termine et ce qui commence dans les prochains jours, ce qu'on cherche avant de lire la frise. */
 export function CalendarComingSoon({ events, today, onSelect }: CalendarComingSoonProps) {
   const t = useTranslations("calendarUi");
 

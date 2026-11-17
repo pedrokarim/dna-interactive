@@ -63,7 +63,7 @@ function subscribeNarrow(onChange: () => void) {
   mq.addEventListener("change", onChange);
   return () => mq.removeEventListener("change", onChange);
 }
-/** Écran de téléphone ? Faux au rendu serveur ; la mise en page, elle, suit le CSS. */
+/** Écran de téléphone. Toujours faux au rendu serveur, la mise en page suit le CSS de toute façon. */
 function useNarrow() {
   return useSyncExternalStore(
     subscribeNarrow,
@@ -88,9 +88,8 @@ type EventBarProps = {
 
 /**
  * Barre d'un événement : aplat à la couleur de sa catégorie, vignette et titre.
- * L'étiquette est collante : quand l'événement a commencé avant la zone
- * affichée, son titre reste visible au bord gauche de la frise au lieu de
- * partir hors écran avec le début de la barre.
+ * L'étiquette est en sticky : si l'événement a commencé avant la zone affichée,
+ * le titre reste au bord gauche de la frise au lieu de sortir de l'écran.
  */
 function EventBar({ bar, left, width, top, selected, label, onSelect, onHover, onLeave }: EventBarProps) {
   const tint = bar.tint;
@@ -116,8 +115,8 @@ function EventBar({ bar, left, width, top, selected, label, onSelect, onHover, o
       aria-current={selected ? "true" : undefined}
       style={style}
       className={cn(
-        // `overflow-clip` (et non `hidden`) : l'étiquette collante doit voir le
-        // défileur de la frise, pas la barre, comme conteneur de défilement.
+        // `overflow-clip` et pas `hidden` : avec `hidden`, la barre deviendrait le
+        // conteneur de défilement de l'étiquette sticky, au lieu de la frise.
         "absolute flex items-center overflow-clip rounded-[3px] border text-left transition-[background-color,border-color,opacity] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gold/70",
         upcoming && "border-dashed",
         bar.status === "past" && !selected && "opacity-45 hover:opacity-85",
@@ -149,7 +148,7 @@ function EventBar({ bar, left, width, top, selected, label, onSelect, onHover, o
 export type CalendarTimelineProps = {
   /** Événements de la fenêtre initiale (rendus côté serveur). */
   initialEvents: CalendarEvent[];
-  /** Bornes de cette fenêtre initiale — point de départ du chargement progressif. */
+  /** Bornes de cette fenêtre, d'où part le chargement au défilement. */
   initialFrom: string;
   initialTo: string;
   /** Date du jour côté serveur : sert au premier rendu, remplacée par l'horloge du visiteur. */
@@ -178,11 +177,10 @@ export type CalendarTimelineProps = {
 };
 
 /**
- * Calendrier défilable : une frise horizontale sans borne, rangée par
- * catégorie. On scrolle librement vers le passé ou le futur ; la plage rendue
- * s'étend d'un an dès qu'on touche un bord, et les événements sont chargés par
- * fenêtre autour de la zone regardée (jamais tout le calendrier d'un coup).
- * Un clic sur un événement ouvre sa fiche.
+ * Frise horizontale sans borne, rangée par catégorie. On défile librement vers
+ * le passé ou le futur : la plage rendue s'agrandit d'un an quand on touche un
+ * bord, et les événements se chargent par fenêtre autour de la zone vue, jamais
+ * tout d'un coup. Un clic sur un événement ouvre sa fiche.
  */
 export function CalendarTimeline({
   initialEvents,
@@ -263,15 +261,15 @@ export function CalendarTimeline({
           for (const ev of data.events) next.set(ev.id, ev);
           return next;
         });
-        // Bornes élargies seulement après un aller-retour réussi : un échec sera
-        // simplement retenté au prochain défilement.
+        // On n'élargit les bornes qu'après une réponse réussie : un échec sera
+        // retenté au prochain défilement.
         loadedRef.current = {
           from: from < loadedRef.current.from ? from : loadedRef.current.from,
           to: to > loadedRef.current.to ? to : loadedRef.current.to,
         };
       }
     } catch {
-      // Requête annulée (défilement rapide) ou réseau K.O. → on retentera.
+      // Requête annulée (défilement rapide) ou réseau coupé : on retentera.
     } finally {
       if (abortRef.current === ac) {
         abortRef.current = null;
@@ -310,9 +308,9 @@ export function CalendarTimeline({
 
   useEffect(() => () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); }, []);
 
-  // Extension de la plage aux bords. On lit `scrollLeft` sur le DOM (et non un
-  // état React, forcément en retard d'un événement) pour ne pas ré-étendre en
-  // boucle sur une valeur périmée.
+  // Extension de la plage aux bords. On lit `scrollLeft` sur le DOM : l'état
+  // React a un événement de retard, et on ré-étendrait en boucle sur une valeur
+  // périmée.
   useEffect(() => {
     const el = scrollerRef.current;
     if (!el || !pxPerDay || scrollAdjustRef.current) return;
@@ -325,8 +323,8 @@ export function CalendarTimeline({
     }
   }, [scrollLeft, pxPerDay, contentW]);
 
-  // Jours ajoutés à gauche : on décale `scrollLeft` d'autant, avant peinture,
-  // pour que la frise ne bouge pas d'un pixel sous le curseur.
+  // Jours ajoutés à gauche : on décale `scrollLeft` d'autant avant la peinture,
+  // sinon la frise saute sous le curseur.
   useLayoutEffect(() => {
     const el = scrollerRef.current;
     if (!el || !scrollAdjustRef.current) return;
@@ -347,7 +345,7 @@ export function CalendarTimeline({
     return () => window.clearTimeout(timer);
   }, [scrollLeft, pxPerDay, rangeStart, syncWindow]);
 
-  // Date au centre de la vue → URL (page plein écran).
+  // Date au centre de la vue, remontée dans l'URL (page plein écran).
   useEffect(() => {
     const el = scrollerRef.current;
     if (!el || !pxPerDay || !onViewDateChange) return;
@@ -367,15 +365,15 @@ export function CalendarTimeline({
       const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       const animate = smooth && !reduced;
       el.scrollTo({ left: Math.max(0, left), behavior: animate ? "smooth" : "auto" });
-      // Sans animation, l'état suit tout de suite : la période affichée et les
-      // barres rendues ne dépendent pas d'un événement `scroll` différé.
+      // Sans animation, on met l'état à jour tout de suite, sans attendre
+      // l'événement `scroll`, pour la période affichée et les barres rendues.
       if (!animate) setScrollLeft(el.scrollLeft);
     },
     [rangeStart, pxPerDay],
   );
 
-  // Premier cadrage dès que la largeur est connue, puis conservation de la date
-  // centrale à chaque changement de zoom.
+  // Premier cadrage dès que la largeur est connue, puis on garde la date du
+  // centre à chaque changement de zoom.
   const centerIsoRef = useRef<string>(anchor);
   const initialisedRef = useRef(false);
   /** Date à cadrer dès que la frise aura une largeur (« Placer sur la frise » depuis la liste). */
@@ -398,8 +396,8 @@ export function CalendarTimeline({
       centerIsoRef.current = anchor;
     }
     centerOn(centerIsoRef.current, false);
-    // Le zoom (pxPerDay) est la seule dépendance voulue : on recadre sur la date
-    // du centre quand l'échelle change.
+    // Seule dépendance voulue : le zoom (pxPerDay). On recadre sur la date du
+    // centre quand l'échelle change.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pxPerDay]);
 
@@ -459,8 +457,8 @@ export function CalendarTimeline({
   const firstVisibleDay = pxPerDay ? Math.floor(scrollLeft / pxPerDay) : 0;
   const lastVisibleDay = pxPerDay ? Math.ceil((scrollLeft + viewportW) / pxPerDay) : 0;
 
-  // Graduations : seulement autour du visible (± un écran) — une frise de
-  // plusieurs années ne doit pas peupler le DOM de milliers de repères.
+  // Graduations seulement autour du visible (un écran de chaque côté), sinon
+  // une frise de plusieurs années mettrait des milliers de repères dans le DOM.
   const tickStep = tickStepForScale(pxPerDay);
   const tickFrom = Math.max(0, firstVisibleDay - span);
   const tickTo = Math.min(rangeDays, lastVisibleDay + span);
@@ -469,7 +467,7 @@ export function CalendarTimeline({
     [rangeStart, tickFrom, tickTo, tickStep, pxPerDay],
   );
 
-  // Curseur à l'heure actuelle, dans la colonne du jour (et non sur son bord gauche).
+  // Curseur à l'heure actuelle dans la colonne du jour, pas sur son bord gauche.
   const todayOffset = diffDays(rangeStart, today);
   const todayLeft = (todayOffset + dayFraction) * pxPerDay;
   const todayOffScreen: -1 | 0 | 1 = !pxPerDay || !viewportW
@@ -508,9 +506,9 @@ export function CalendarTimeline({
         centerIsoRef.current = target;
         centerOn(target, true);
       }
-      // Après fermeture de la fiche et fin du défilement horizontal : on amène
-      // la barre à l'écran (la frise défile aussi en hauteur) et le focus
-      // dessus, pour que le clavier reparte de là.
+      // Une fois la fiche fermée et le défilement horizontal fini, on amène la
+      // barre à l'écran (la frise défile aussi en hauteur) et on lui donne le
+      // focus pour que le clavier reparte de là.
       window.setTimeout(() => {
         const el = scrollerRef.current;
         const bar = el?.querySelector<HTMLElement>(`[data-event-id="${CSS.escape(ev.id)}"]`);
@@ -535,8 +533,8 @@ export function CalendarTimeline({
       "h-8 border-l border-line/25 px-3 text-[0.8rem] transition-colors first:border-l-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gold/60",
       on ? "bg-gold/12 text-gold-bright" : "text-muted hover:text-gold",
     );
-  // Mode automatique : la liste remplace la frise sur téléphone, par le CSS
-  // (pas de saut à l'hydratation) ; un choix explicite s'applique partout.
+  // Mode auto : la liste remplace la frise sur téléphone, en CSS pour éviter un
+  // saut à l'hydratation. Un choix explicite s'applique sur tous les écrans.
   const timelineOnly = view === null ? "max-md:hidden" : view === "list" ? "hidden" : "";
   const listOnly = view === null ? "md:hidden" : view === "timeline" ? "hidden" : "";
 
@@ -644,9 +642,9 @@ export function CalendarTimeline({
               {bands.map((b) => {
                 const bandLeft = b.offsetDays * pxPerDay;
                 const bandWidth = b.days * pxPerDay;
-                // Le mois en cours reste nommé au bord gauche quand son bandeau
-                // commence hors écran. Calculé, pas `sticky` : un `sticky` dans
-                // ce bandeau déjà collé en haut ne suit pas le défilement horizontal.
+                // Le nom du mois reste au bord gauche quand son bandeau commence
+                // hors écran. Décalage calculé à la main : un `sticky` dans ce
+                // bandeau, déjà sticky en haut, ne suit pas le défilement horizontal.
                 const shift = Math.max(0, Math.min(scrollLeft - bandLeft, bandWidth - MONTH_LABEL_W));
                 return (
                   <div
@@ -663,7 +661,7 @@ export function CalendarTimeline({
                   </div>
                 );
               })}
-              {/* graduations : le libellé est centré sur la colonne de SON jour */}
+              {/* graduations : libellé centré sur la colonne de son jour */}
               {ticks.map((tick) =>
                 Math.abs(tick.offsetDays - todayOffset) * pxPerDay < 30 ? null : (
                   <span
@@ -699,7 +697,7 @@ export function CalendarTimeline({
               ))}
             </div>
 
-            {/* repère « maintenant » — traverse toute la frise */}
+            {/* repère « maintenant », sur toute la hauteur de la frise */}
             {pxPerDay > 0 ? (
               <span
                 aria-hidden

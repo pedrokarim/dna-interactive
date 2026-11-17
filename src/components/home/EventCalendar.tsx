@@ -22,7 +22,7 @@ export type EventCalendarProps = {
   overrideToday?: string;
 };
 
-/** Calendrier de l'accueil — zoom, filtres, vue et fiche en état local, frise défilable partagée. */
+/** Calendrier de l'accueil : même frise que la page dédiée, mais zoom, filtres, vue et fiche en état local. */
 export function EventCalendar({ events, initialFrom, initialTo, serverToday, overrideToday }: EventCalendarProps) {
   const t = useTranslations("homeHub");
   const [span, setSpan] = useState<CalendarZoom>(DEFAULT_ZOOM);

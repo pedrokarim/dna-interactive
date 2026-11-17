@@ -1,46 +1,36 @@
 /**
- * Calendrier des événements Duet Night Abyss — données + logique pure paramétrique.
+ * Calendrier des événements de Duet Night Abyss : la liste curée et la logique
+ * pure de la frise.
  *
- * Données réelles curées (patch 1.5 « Paradise Prelude » et patch 1.6
- * « Paradise's 22nd White Bunny », juillet-novembre 2026), à rafraîchir à chaque
- * version. Dates recoupées le 24 septembre 2026 sur les notes de version
- * officielles et les annonces du compte officiel du jeu, puis de nouveau le
- * 4 et le 6 octobre 2026 (aucune période modifiée, aucune annonce de la version
- * suivante à ces dates). Les événements de la 1.4, terminés le 27 juillet, et
- * ceux de la 1.5 clos avant le 20 août ont quitté cette liste (ils restent en
- * base).
+ * Liste tenue à la main (versions 1.5 à 1.7), à mettre à jour à chaque version.
+ * Les dates viennent des notes de version officielles et des annonces du compte
+ * officiel du jeu. Les événements de la 1.4 et ceux de la 1.5 finis avant le
+ * 20 août ne sont plus dans la liste, ils restent en base. Aucune source tierce
+ * n'est créditée au front.
  *
- * La version 1.7 « Towards the Dawn » est sortie le **20 octobre 2026**
- * (nouvelle perso Rhythm: Flamewrought). Toutes ses périodes viennent des notes
- * de version officielles, relues le jour même ; le programme annoncé avant la
- * sortie est consigné dans `docs/version-1-7-towards-the-dawn.md`. Les notes 1.7
- * ont aussi corrigé la fin de « Where the Long Road Leads » (19 octobre, et non
- * 8 octobre) et révélé la Myriad « Nocturnal Narration », ajoutée après coup.
+ * Dates : `start` et `end` sont des jours inclus. Les événements ferment à une
+ * heure précise (UTC+8, fuseau serveur). Une clôture le 1er septembre à 05:00
+ * garde `end` au 1er septembre (encore ouvert ce jour-là), une clôture le
+ * 5 septembre à 00:00 met `end` au 4. L'heure exacte est rappelée dans
+ * `description` quand elle peut tromper.
  *
- * **Convention de dates** : `start`/`end` sont des jours **inclus**. Les
- * événements ferment à une heure précise (UTC+8, fuseau serveur) : une clôture
- * le 1ᵉʳ septembre à 05:00 laisse donc `end` au 1ᵉʳ septembre (l'événement est
- * encore ouvert ce jour-là), tandis qu'une clôture le 5 septembre à 00:00 met
- * `end` au 4 septembre. L'heure exacte est rappelée dans `description` dès
- * qu'elle risque d'induire en erreur.
+ * 1.6 (sortie le 8 septembre 2026) : Falsi n'a pas de bannière de personnage,
+ * elle s'obtient avec ses Secret Letters au théâtre immersif ou en boutique.
+ * « Where the Long Road Leads » est une Myriad de skin : elle donne « Stalking
+ * Silence », la tenue limitée de Falsi. Sa fin au 19 octobre et la Myriad
+ * « Nocturnal Narration » viennent des notes de la 1.7.
  *
- * La version 1.6 « Paradise's 22nd White Bunny » est sortie le **8 septembre
- * 2026**. Ses périodes viennent toutes des notes de version officielles. Falsi
- * n'a **pas** de bannière de personnage : elle s'obtient via ses Secret Letters
- * au théâtre immersif (jusqu'au 29 septembre à 10:00 UTC+8) ou en boutique.
- * « Where the Long Road Leads » est bien une bannière Myriad, mais de **skin** :
- * elle met en jeu « Stalking Silence », la tenue limitée de Falsi. Retirée le
- * 12 septembre par confusion avec une bannière de personnage, elle est rétablie
- * le 24 septembre. Aucune source tierce n'est créditée au front.
+ * 1.7 « Towards the Dawn » (sortie le 20 octobre 2026) : périodes tirées des
+ * notes de version. Le programme annoncé avant la sortie est dans
+ * `docs/version-1-7-towards-the-dawn.md`.
  *
- * Le calendrier est une **frise défilable sans borne** : une plage rendue
- * (`rangeStart` + nombre de jours) qui s'étend à la volée quand on atteint un
- * bord, une échelle en pixels/jour pilotée par le zoom, et les événements
- * chargés par fenêtre autour de ce qu'on regarde.
+ * La frise défile sans borne : une plage rendue (`rangeStart` + nombre de
+ * jours) qui s'agrandit quand on touche un bord, une échelle en px/jour qui
+ * dépend du zoom, et des événements chargés par fenêtre autour de la zone vue.
  *
- * « Aujourd'hui » = **l'horloge locale du visiteur** (`localTodayIso`), rafraîchie
- * côté client. Les fonctions de ce module restent pures : la date du jour est
- * toujours passée en paramètre, jamais lue ici (SSR sûr, testable).
+ * « Aujourd'hui », c'est l'horloge locale du visiteur (`localTodayIso`), côté
+ * client. Les fonctions du module restent pures : la date du jour arrive
+ * toujours en paramètre, on ne la lit jamais ici (SSR sans surprise, testable).
  */
 
 export type EventCategory = "Bannière" | "Arme" | "Événement" | "Épreuve" | "Récompense";
@@ -54,8 +44,8 @@ export type CalendarEvent = {
   href?: string;
   /**
    * Visuel officiel (key art) : vignette dans la barre de la frise, grande
-   * image dans la fiche. Idéalement une image **paysage** ; une image carrée
-   * est recadrée (`object-cover`).
+   * image dans la fiche. En paysage de préférence, une image carrée est
+   * recadrée (`object-cover`).
    */
   image?: string;
   /**
@@ -64,12 +54,12 @@ export type CalendarEvent = {
    * du titre par `seriesFromTitle` ; à saisir en admin quand le titre trompe.
    */
   series?: string;
-  /** Infos affichées au survol / dans le détail. */
+  /** Texte affiché dans la fiche de l'événement. */
   description?: string;
   /**
-   * Lien vers l'**annonce officielle** d'où l'événement est tiré (site officiel,
-   * annonce Steam de l'éditeur, PV officiel). Uniquement des sources officielles :
-   * aucun agrégateur ni site concurrent. Vide tant que rien d'officiel n'est publié.
+   * Annonce officielle d'où vient l'événement (site officiel, annonce Steam de
+   * l'éditeur, PV officiel). Jamais d'agrégateur ni de site concurrent. Vide
+   * tant que rien d'officiel n'est publié.
    */
   sourceUrl?: string;
 };
@@ -120,11 +110,7 @@ export const CATEGORY_TINT: Record<EventCategory, string> = {
 
 export type GameVersion = { version: string; name: string; start: string };
 
-/**
- * Sorties de version (premier jour de la version, UTC+8). Dates reprises de
- * l'en-tête de ce fichier : la 1.4 se termine le 27 juillet, la 1.5 sort le
- * lendemain.
- */
+/** Sorties de version (premier jour, UTC+8). La 1.4 finit le 27 juillet, la 1.5 sort le lendemain. */
 // shortcut: liste tenue à la main, à passer en base quand l'admin du calendrier saura saisir une version
 export const GAME_VERSIONS: GameVersion[] = [
   { version: "1.5", name: "Paradise Prelude", start: "2026-07-28" },
@@ -142,12 +128,13 @@ export function versionAt(iso: string): GameVersion | null {
 /* --------------------------------------------------------------- séries */
 
 /**
- * Série déduite du titre, pour relier les éditions d'un même événement :
- * on retire la version « (1.7) », ce qui suit un tiret (« Partie 2 »,
- * « co-op »…), le numéro « II », et on garde le préfixe avant « : »
- * (« Bard's Tome : Stellar Sonata » → « Bard's Tome »). Le théâtre immersif
- * fait exception : « Ensemble Act » et les rotations d'un personnage
- * (« Immersive Theatre : « Falsi » ») sont deux séries distinctes.
+ * Série déduite du titre, pour relier les éditions d'un même événement. On
+ * retire la version « (1.7) », ce qui suit un tiret (« Partie 2 », « co-op »…)
+ * et le « II » final, puis on garde le préfixe avant « : » (« Bard's Tome :
+ * Stellar Sonata » donne « Bard's Tome »). Toutes les connexions forment une
+ * seule série. Exception pour le théâtre immersif : « Ensemble Act » et les
+ * rotations de personnage (« Immersive Theatre : « Falsi » ») restent deux
+ * séries.
  */
 export function seriesFromTitle(title: string): string {
   if (/connexion/i.test(title)) return "Récompense de connexion";
@@ -214,9 +201,9 @@ export const CALENDAR_EVENTS: CalendarEvent[] = [
   { id: "phoxhunter-summit", title: "Phoxhunter Summit", category: "Épreuve", start: "2026-08-26", end: "2026-09-04", image: "/assets/worldview/worldview-1.webp", description: "Épreuve compétitive de fin de version en deux temps : phase de groupes, puis classement Apex pour des Phoxcoins à dépenser en boutique. Tous les ennemis sont faibles à l’Hydro ; clôture le 5 septembre à 00:00 UTC+8.", sourceUrl: SRC_V15_PHOXHUNTER },
 
   /* ------------------------------------- patch 1.6 « Paradise's 22nd White Bunny » */
-  /* Sortie le 8 septembre 2026. Toutes les périodes viennent des notes de version
-     officielles (SRC_V16). Falsi n'a PAS de bannière Myriad : elle s'obtient via ses
-     Secret Letters au théâtre immersif, ou en boutique. */
+  /* Sortie le 8 septembre 2026. Périodes tirées des notes de version (SRC_V16).
+     Falsi n'a pas de bannière Myriad : elle s'obtient avec ses Secret Letters au
+     théâtre immersif, ou en boutique. */
   { id: "bards-tome-rimeveil-nocturne", title: "Bard's Tome : Rimeveil Nocturne", category: "Récompense", start: "2026-09-08", end: "2026-10-19", image: "/assets/events/bards-tome-rimeveil-nocturne.webp", description: "Passe saisonnier de la version 1.6 : monte les paliers du Grimoire du barde pour la posture « Crystal Heart » et le skin d'arme « Emberfrost » (clôture le 19 octobre à 17:00 UTC+8).", sourceUrl: SRC_V16_BARDS_TOME },
   { id: "civic-ordinance", title: "Civic Ordinance — skins thématiques", category: "Événement", start: "2026-09-08", end: "2026-10-19", image: "/assets/events/civic-ordinance.webp", description: "Remise à durée limitée en boutique sur la gamme de skins « Civic Ordinance » : première vague de neuf personnages, à échanger contre des Plumules.", sourceUrl: SRC_V16_CIVIC },
   { id: "parade-itinerary", title: "Parade Itinerary", category: "Événement", start: "2026-09-08", end: "2026-10-19", image: "/assets/events/parade-itinerary.webp", description: "Événement principal de la version 1.6 : à travers monts et forêts, une ville étrange t'accueille dans un paradis de rêve (fin le 19 octobre à 17:00 UTC+8).", sourceUrl: SRC_V16 },
@@ -281,8 +268,8 @@ export const CALENDAR_EVENTS: CalendarEvent[] = [
 
 const DAY_MS = 86_400_000;
 
-/** Une date ISO `AAAA-MM-JJ` est lue comme minuit **UTC** : tous les calculs de
- *  décalage se font en jours entiers, sans piège de fuseau ni d'heure d'été. */
+/** Une date `AAAA-MM-JJ` est lue comme minuit UTC : les décalages se comptent en
+ *  jours entiers, sans souci de fuseau ni d'heure d'été. */
 export function addDaysIso(iso: string, days: number): string {
   return new Date(Date.parse(iso) + days * DAY_MS).toISOString().slice(0, 10);
 }
@@ -292,10 +279,10 @@ export function diffDays(fromIso: string, toIso: string): number {
 }
 
 /**
- * Date du jour **dans le fuseau de celui qui regarde** (`AAAA-MM-JJ`).
+ * Date du jour dans le fuseau du visiteur (`AAAA-MM-JJ`).
  *
- * On lit les champs locaux (pas `toISOString`, qui renverrait la date UTC et
- * décalerait d'un jour une bonne partie du globe en soirée/matinée).
+ * On lit les champs locaux : `toISOString` donnerait la date UTC, décalée d'un
+ * jour le soir ou le matin selon le fuseau.
  */
 export function localTodayIso(now: Date = new Date()): string {
   const y = now.getFullYear();
@@ -316,7 +303,7 @@ export function eventStatus(ev: CalendarEvent, todayIso: string): EventStatus {
 
 /** Jours ajoutés de chaque côté au premier rendu (la frise démarre déjà large). */
 export const RANGE_PAD_DAYS = 540;
-/** Jours ajoutés à chaque fois qu'on atteint un bord — navigation sans borne. */
+/** Jours ajoutés chaque fois qu'on atteint un bord. */
 export const RANGE_EXTEND_DAYS = 365;
 /** Marge de préchargement autour de ce qui est visible (en jours). */
 export const FETCH_BUFFER_DAYS = 45;
@@ -324,19 +311,18 @@ export const FETCH_BUFFER_DAYS = 45;
 export const INITIAL_WINDOW_BEFORE = 120;
 export const INITIAL_WINDOW_AFTER = 240;
 /**
- * Largeur mini d'une barre (px) — sert aussi au calage des voies. Le titre
- * reste lisible sur une barre étroite : il suit le défilement, et l'infobulle
- * comme la fiche le donnent en entier.
+ * Largeur mini d'une barre (px), utilisée aussi pour caler les voies. Sur une
+ * barre étroite le titre est coupé, mais l'infobulle et la fiche le donnent en
+ * entier.
  */
 export const MIN_BAR_PX = 28;
 
 /**
- * Pas de graduation adapté à l'échelle (en jours).
+ * Pas de graduation selon l'échelle (en jours).
  *
- * Un jour sur un dès que le numéro seul tient (≈ 20 px) : le mois est déjà
- * écrit dans le bandeau du dessus. L'ancien pas de 2 jours, au zoom par défaut,
- * laissait un jour sur deux sans libellé : une barre qui s'arrête le 29 venait
- * buter contre « 30 sept. », faute de « 29 » où finir.
+ * Tous les jours dès que le numéro seul tient (environ 20 px), le mois est déjà
+ * dans le bandeau du dessus. Pas de pas de 2 : une barre qui finit le 29 butait
+ * sur « 30 sept. » sans « 29 » où s'arrêter.
  */
 export function tickStepForScale(pxPerDay: number): number {
   if (pxPerDay >= 20) return 1;
@@ -347,9 +333,9 @@ export function tickStepForScale(pxPerDay: number): number {
 export type CalendarTick = { iso: string; offsetDays: number };
 
 /**
- * Graduations entre deux décalages (en jours depuis `rangeStartIso`), alignées
- * sur des multiples absolus de `step` **ancrés au lundi** — les repères ne
- * bougent donc pas quand la plage rendue s'étend vers le passé.
+ * Graduations entre deux décalages (en jours depuis `rangeStartIso`), sur des
+ * multiples absolus de `step` ancrés au lundi : les repères ne bougent pas quand
+ * la plage rendue s'étend vers le passé.
  */
 export function dayTicks(rangeStartIso: string, fromOffset: number, toOffset: number, step: number): CalendarTick[] {
   const startEpochDay = Math.round(Date.parse(rangeStartIso) / DAY_MS);
@@ -407,12 +393,12 @@ export type CalendarBar = {
 };
 
 /**
- * Range les événements en **voies** : chacun prend la première voie libre à sa
- * date de début (calage glouton type Gantt). Un événement occupe au minimum
- * `minSpanDays` pour que deux barres courtes ne se chevauchent pas à l'écran.
+ * Range les événements en voies : chacun prend la première voie libre à sa date
+ * de début (glouton, façon Gantt). Un événement occupe au moins `minSpanDays`
+ * pour que deux barres courtes ne se chevauchent pas à l'écran.
  *
- * Le tri est total (début puis id) → même entrée, même sortie : les barres ne
- * sautent pas de voie au hasard quand un lot d'événements arrive.
+ * Tri total (début puis id) : même entrée, même sortie, donc les barres ne
+ * changent pas de voie au hasard quand un lot d'événements arrive.
  */
 export function layoutBars(
   events: CalendarEvent[],
