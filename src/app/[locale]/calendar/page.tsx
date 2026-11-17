@@ -46,8 +46,11 @@ export default async function CalendarPage({
   const initialFrom = addDaysIso(anchor, -INITIAL_WINDOW_BEFORE);
   const initialTo = addDaysIso(anchor, INITIAL_WINDOW_AFTER);
 
-  const [events, settings] = await Promise.all([
+  // « Se terminent / Commencent bientôt » : toujours autour d'aujourd'hui, même
+  // quand un lien partagé cadre la frise ailleurs.
+  const [events, soonEvents, settings] = await Promise.all([
     getCalendarEventsInRange(initialFrom, initialTo),
+    getCalendarEventsInRange(addDaysIso(serverToday, -2), addDaysIso(serverToday, 9)),
     getAppSettings(),
   ]);
 
@@ -64,6 +67,7 @@ export default async function CalendarPage({
           events={events}
           initialFrom={initialFrom}
           initialTo={initialTo}
+          soonEvents={soonEvents}
           serverToday={serverToday}
           overrideToday={settings.calendarToday || undefined}
         />

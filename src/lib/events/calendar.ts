@@ -53,11 +53,17 @@ export type CalendarEvent = {
   end: string; // ISO date (inclus)
   href?: string;
   /**
-   * Bannière (key art) qui remplit la barre du timeline. Idéalement une image
-   * **paysage** ; une image carrée est recadrée (`object-cover`). La couleur
-   * dominante en est extraite côté client pour teinter la barre.
+   * Visuel officiel (key art) : vignette dans la barre de la frise, grande
+   * image dans la fiche. Idéalement une image **paysage** ; une image carrée
+   * est recadrée (`object-cover`).
    */
   image?: string;
+  /**
+   * Série à laquelle appartient l'événement (« Bountiful Day », « Phoxhunter
+   * Summit »…) : relie ses éditions successives dans la fiche. Vide = déduite
+   * du titre par `seriesFromTitle` ; à saisir en admin quand le titre trompe.
+   */
+  series?: string;
   /** Infos affichées au survol / dans le détail. */
   description?: string;
   /**
@@ -109,6 +115,79 @@ export const CATEGORY_TINT: Record<EventCategory, string> = {
   Épreuve: "var(--color-electro)",
   Récompense: "var(--color-hydro)",
 };
+
+/* --------------------------------------------------------------- versions du jeu */
+
+export type GameVersion = { version: string; name: string; start: string };
+
+/**
+ * Sorties de version (premier jour de la version, UTC+8). Dates reprises de
+ * l'en-tête de ce fichier : la 1.4 se termine le 27 juillet, la 1.5 sort le
+ * lendemain.
+ */
+// shortcut: liste tenue à la main, à passer en base quand l'admin du calendrier saura saisir une version
+export const GAME_VERSIONS: GameVersion[] = [
+  { version: "1.5", name: "Paradise Prelude", start: "2026-07-28" },
+  { version: "1.6", name: "Paradise's 22nd White Bunny", start: "2026-09-08" },
+  { version: "1.7", name: "Towards the Dawn", start: "2026-10-20" },
+];
+
+/** Version en cours à une date donnée, `null` avant la première version connue. */
+export function versionAt(iso: string): GameVersion | null {
+  let found: GameVersion | null = null;
+  for (const v of GAME_VERSIONS) if (iso >= v.start) found = v;
+  return found;
+}
+
+/* --------------------------------------------------------------- séries */
+
+/**
+ * Série déduite du titre, pour relier les éditions d'un même événement :
+ * on retire la version « (1.7) », ce qui suit un tiret (« Partie 2 »,
+ * « co-op »…), le numéro « II », et on garde le préfixe avant « : »
+ * (« Bard's Tome : Stellar Sonata » → « Bard's Tome »). Le théâtre immersif
+ * fait exception : « Ensemble Act » et les rotations d'un personnage
+ * (« Immersive Theatre : « Falsi » ») sont deux séries distinctes.
+ */
+export function seriesFromTitle(title: string): string {
+  if (/connexion/i.test(title)) return "Récompense de connexion";
+  let t = title.replace(/\s*\(\d+\.\d+\)\s*/g, " ").trim();
+  t = t.split(/\s[—–-]\s/)[0].trim();
+  const prefixed = /^(.+?)\s:\s(.+)$/.exec(t);
+  if (prefixed) {
+    const [, prefix, rest] = prefixed;
+    if (prefix === "Immersive Theatre") t = rest.startsWith("«") ? "Immersive Theatre : personnage" : t;
+    else t = prefix;
+  }
+  return t.replace(/\s+II$/, "").trim();
+}
+
+/** Série d'un événement : celle saisie en admin, sinon celle déduite du titre. */
+export function eventSeries(ev: Pick<CalendarEvent, "title" | "series">): string {
+  return ev.series?.trim() || seriesFromTitle(ev.title);
+}
+
+export type EventHistory = {
+  /** Toutes les éditions de la série, la plus ancienne d'abord (l'événement compris). */
+  editions: CalendarEvent[];
+  /** Derniers événements de la même catégorie, d'une autre série, finis avant son début. */
+  previousInCategory: CalendarEvent[];
+};
+
+/** Éditions d'un événement et ses prédécesseurs de même catégorie, parmi `candidates`. */
+export function eventHistory(ev: CalendarEvent, candidates: CalendarEvent[], previousLimit = 4): EventHistory {
+  const series = eventSeries(ev);
+  const byStart = (a: CalendarEvent, b: CalendarEvent) =>
+    a.start === b.start ? a.id.localeCompare(b.id) : a.start < b.start ? -1 : 1;
+  const editions = candidates.filter((c) => c.id === ev.id || eventSeries(c) === series);
+  if (!editions.some((c) => c.id === ev.id)) editions.push(ev);
+  editions.sort(byStart);
+  const previousInCategory = candidates
+    .filter((c) => c.category === ev.category && c.id !== ev.id && eventSeries(c) !== series && c.end < ev.start)
+    .sort((a, b) => (a.end === b.end ? byStart(b, a) : a.end > b.end ? -1 : 1))
+    .slice(0, previousLimit);
+  return { editions, previousInCategory };
+}
 
 /** Zooms disponibles = nombre de jours tenant dans la largeur visible. */
 export const CALENDAR_ZOOMS = [14, 30, 60] as const;
@@ -244,8 +323,12 @@ export const FETCH_BUFFER_DAYS = 45;
 /** Fenêtre d'événements rendue côté serveur au premier affichage (jours avant/après). */
 export const INITIAL_WINDOW_BEFORE = 120;
 export const INITIAL_WINDOW_AFTER = 240;
-/** Largeur mini d'une barre pour rester lisible (px) — sert aussi au calage des voies. */
-export const MIN_BAR_PX = 168;
+/**
+ * Largeur mini d'une barre (px) — sert aussi au calage des voies. Le titre
+ * reste lisible sur une barre étroite : il suit le défilement, et l'infobulle
+ * comme la fiche le donnent en entier.
+ */
+export const MIN_BAR_PX = 28;
 
 /**
  * Pas de graduation adapté à l'échelle (en jours).
@@ -313,6 +396,7 @@ export type CalendarBar = {
   image?: string;
   description?: string;
   sourceUrl?: string;
+  series?: string;
   status: EventStatus;
   /** Décalage en jours depuis `rangeStartIso` (peut être négatif si l'événement déborde). */
   offsetDays: number;
@@ -357,6 +441,7 @@ export function layoutBars(
       image: ev.image,
       description: ev.description,
       sourceUrl: ev.sourceUrl,
+      series: ev.series,
       status: eventStatus(ev, todayIso),
       offsetDays,
       lengthDays,

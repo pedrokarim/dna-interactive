@@ -29,6 +29,7 @@
     "map:check": "bun run scripts/check-map-taxonomy.ts",
     "db:migrate:map": "node scripts/migrate-map.mjs",
     "db:migrate:planner": "node scripts/migrate-planner.mjs",
+    "db:migrate:calendar-series": "node scripts/migrate-calendar-series.mjs",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },

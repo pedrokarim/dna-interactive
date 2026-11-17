@@ -966,7 +966,6 @@
     "builderDescription": "Create and publish Duet Night Abyss community builds.",
     "buildsTitle": "Community Builds",
     "buildsDescription": "Browse Duet Night Abyss community builds published by players.",
-
     "communityBuildDescription": "{title}: a Duet Night Abyss community build for {character}, with its weapons and Demon Wedges.",
     "calendarTitle": "Event Calendar",
     "calendarDescription": "Interactive calendar of Duet Night Abyss banners, weapons and ongoing events: move through time, zoom and filter by category.",
@@ -1534,7 +1533,7 @@
   },
   "calendarPage": {
     "heading": "Event Calendar",
-    "intro": "Duet Night Abyss banners, weapons and events. Scroll the timeline as far into the past or the future as you like — the golden marker is today, and the period you are viewing stays in the URL, so it is shareable."
+    "intro": "Duet Night Abyss banners, weapons, events, trials and rewards, grouped by type. The golden line marks the current time, and clicking an event opens its page with its previous editions. The period you are viewing stays in the URL, so the link can be shared as is."
   },
   "exportModal": {
     "title": "Export markers",
@@ -2693,7 +2692,77 @@
     "featuredUntil": "Featured until {date}",
     "dates": "{start} to {end}",
     "obtain": "How to get",
-
     "rotation": "{time} UTC rotation"
+  },
+  "calendarUi": {
+    "view": "View",
+    "viewTimeline": "Timeline",
+    "viewList": "List",
+    "zoom": "Scale",
+    "plural": {
+      "banner": "Banners",
+      "weapon": "Weapons",
+      "event": "Events",
+      "trial": "Trials",
+      "reward": "Rewards"
+    },
+    "previousOf": {
+      "banner": "Previous banners",
+      "weapon": "Previous weapons",
+      "event": "Previous events",
+      "trial": "Previous trials",
+      "reward": "Previous rewards"
+    },
+    "liveCount": "{count} live",
+    "versionMark": "Version {version}",
+    "days": "{days, plural, one {# day} other {# days}}",
+    "status": {
+      "startsToday": "Starts today",
+      "startsIn": "{days, plural, one {Starts tomorrow} other {Starts in # days}}",
+      "lastDay": "Last day",
+      "endsIn": "{days, plural, one {Ends tomorrow} other {Live, # days left}}",
+      "endedOn": "Ended on {date}"
+    },
+    "list": {
+      "live": "Live · {count}",
+      "upcoming": "Upcoming · {count}",
+      "recent": "Recently ended · {count}",
+      "remaining": "{days, plural, =0 {last day} one {ends tomorrow} other {# days left}}",
+      "startsIn": "{days, plural, =0 {today} one {tomorrow} other {in # days}}",
+      "endedOn": "ended {date}",
+      "empty": "No events to show for these categories."
+    },
+    "soon": {
+      "ending": "Ending soon",
+      "starting": "Starting soon",
+      "when": "{days, plural, =0 {today} one {tomorrow} other {in # days}}",
+      "noneEnding": "Nothing ends in the next 5 days.",
+      "noneStarting": "Nothing announced for the next 7 days."
+    },
+    "sheet": {
+      "version": "Version {version} · {name}",
+      "edition": "{rank, selectordinal, one {#st} two {#nd} few {#rd} other {#th}} edition",
+      "start": "Start",
+      "end": "End",
+      "duration": "Duration",
+      "characterPage": "Character page",
+      "weaponPage": "Weapon page",
+      "cosmeticsPage": "Cosmetics catalog",
+      "page": "Open page",
+      "locate": "Show on the timeline",
+      "previousEditions": "Previous editions",
+      "previousEditionsCount": "Previous editions · {count}",
+      "summary": "{count, plural, one {# edition} other {# editions}} since {month}.",
+      "summaryWithAverage": "{count} editions since {month}, one every {average} days on average.",
+      "previousGap": "The previous one ended {days, plural, one {# day} other {# days}} before this one.",
+      "firstEdition": "This is the first edition.",
+      "nextEdition": "Next edition",
+      "tagLive": "live",
+      "tagUpcoming": "upcoming",
+      "versionShort": "version {version}",
+      "loading": "Loading history…",
+      "error": "Could not load this event's history.",
+      "notFound": "This event no longer exists or has been hidden."
+    }
   }
 }

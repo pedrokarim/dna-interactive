@@ -313,6 +313,8 @@ export const calendarEvents = pgTable(
     href: text("href"),
     description: text("description"),
     sourceUrl: text("source_url"),
+    /** Série qui relie les éditions d'un événement ; vide = déduite du titre. */
+    series: text("series"),
     sortOrder: integer("sort_order").notNull().default(0),
     hidden: boolean("hidden").notNull().default(false),
     createdById: text("created_by_id").references(() => users.id, { onDelete: "set null" }),

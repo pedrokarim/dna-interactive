@@ -1,8 +1,10 @@
 "use client";
 
 import { useCallback, useMemo } from "react";
-import { parseAsArrayOf, parseAsInteger, parseAsString, useQueryStates } from "nuqs";
-import { CalendarTimeline } from "@/components/calendar/CalendarTimeline";
+import { parseAsArrayOf, parseAsInteger, parseAsString, parseAsStringLiteral, useQueryStates } from "nuqs";
+import { CalendarComingSoon } from "@/components/calendar/CalendarComingSoon";
+import { CalendarTimeline, type CalendarView } from "@/components/calendar/CalendarTimeline";
+import { useToday } from "@/components/calendar/calendar-ui";
 import {
   CALENDAR_ZOOMS,
   CATEGORIES,
@@ -17,29 +19,43 @@ function isZoom(n: number): n is CalendarZoom {
 }
 
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
+const VIEWS = ["timeline", "list"] as const;
 
 export type CalendarPageClientProps = {
   events: CalendarEvent[];
   initialFrom: string;
   initialTo: string;
+  /** Événements autour d'aujourd'hui, pour « Se terminent / Commencent bientôt ». */
+  soonEvents: CalendarEvent[];
   serverToday: string;
   overrideToday?: string;
 };
 
 /**
- * Calendrier plein écran — zoom, filtres et **date regardée** dans l'URL (lien
- * partageable). La date suit le défilement en `replace` pour ne pas empiler
- * d'entrées dans l'historique du navigateur.
+ * Calendrier plein écran — zoom, filtres, vue, **date regardée** et fiche
+ * ouverte dans l'URL (lien partageable). La date suit le défilement en
+ * `replace` ; ouvrir une fiche ajoute une entrée d'historique, pour que le
+ * bouton Retour du téléphone la referme.
  */
-export function CalendarPageClient({ events, initialFrom, initialTo, serverToday, overrideToday }: CalendarPageClientProps) {
+export function CalendarPageClient({
+  events,
+  initialFrom,
+  initialTo,
+  soonEvents,
+  serverToday,
+  overrideToday,
+}: CalendarPageClientProps) {
   const [q, setQ] = useQueryStates(
     {
       date: parseAsString,
       span: parseAsInteger,
       cats: parseAsArrayOf(parseAsString),
+      view: parseAsStringLiteral(VIEWS),
+      event: parseAsString,
     },
     { history: "replace" },
   );
+  const { today } = useToday(serverToday, overrideToday);
 
   const span: CalendarZoom = q.span && isZoom(q.span) ? q.span : DEFAULT_ZOOM;
   const focusDate = q.date && ISO_DATE.test(q.date) ? q.date : undefined;
@@ -51,6 +67,11 @@ export function CalendarPageClient({ events, initialFrom, initialTo, serverToday
 
   const onZoom = (z: CalendarZoom) => void setQ({ span: z === DEFAULT_ZOOM ? null : z });
   const onViewDateChange = useCallback((iso: string) => void setQ({ date: iso }), [setQ]);
+  const onViewChange = useCallback((view: CalendarView) => void setQ({ view }), [setQ]);
+  const onSelect = useCallback(
+    (id: string | null) => void setQ({ event: id }, { history: id ? "push" : "replace" }),
+    [setQ],
+  );
   const toggleCat = (cat: EventCategory) => {
     const next = new Set(active);
     if (next.has(cat)) next.delete(cat);
@@ -60,19 +81,26 @@ export function CalendarPageClient({ events, initialFrom, initialTo, serverToday
   };
 
   return (
-    <CalendarTimeline
-      initialEvents={events}
-      initialFrom={initialFrom}
-      initialTo={initialTo}
-      serverToday={serverToday}
-      overrideToday={overrideToday}
-      span={span}
-      active={active}
-      onZoom={onZoom}
-      onToggleCat={toggleCat}
-      focusDate={focusDate}
-      onViewDateChange={onViewDateChange}
-      variant="full"
-    />
+    <div className="space-y-6">
+      <CalendarComingSoon events={soonEvents.filter((e) => active.has(e.category))} today={today} onSelect={onSelect} />
+      <CalendarTimeline
+        initialEvents={events}
+        initialFrom={initialFrom}
+        initialTo={initialTo}
+        serverToday={serverToday}
+        overrideToday={overrideToday}
+        span={span}
+        active={active}
+        onZoom={onZoom}
+        onToggleCat={toggleCat}
+        focusDate={focusDate}
+        onViewDateChange={onViewDateChange}
+        variant="full"
+        view={q.view}
+        onViewChange={onViewChange}
+        selectedId={q.event}
+        onSelect={onSelect}
+      />
+    </div>
   );
 }

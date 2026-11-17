@@ -966,7 +966,6 @@
     "builderDescription": "Duet Night Abyss 커뮤니티 빌드를 만들고 공개하세요.",
     "buildsTitle": "커뮤니티 빌드",
     "buildsDescription": "플레이어가 공개한 Duet Night Abyss 커뮤니티 빌드를 둘러보세요.",
-
     "communityBuildDescription": "{title}: Duet Night Abyss {character} 커뮤니티 빌드. 무기와 Demon Wedge 구성을 확인하세요.",
     "calendarTitle": "이벤트 캘린더",
     "calendarDescription": "Duet Night Abyss의 배너, 무기, 진행 중인 이벤트를 보여주는 인터랙티브 캘린더. 기간 이동, 확대, 카테고리 필터를 지원합니다.",
@@ -1534,7 +1533,7 @@
   },
   "calendarPage": {
     "heading": "이벤트 캘린더",
-    "intro": "Duet Night Abyss의 배너, 무기, 이벤트. 타임라인을 과거나 미래로 제한 없이 스크롤하세요. 금색 표시가 오늘이며, 보고 있는 기간이 URL에 담겨 공유할 수 있습니다."
+    "intro": "Duet Night Abyss의 배너, 무기, 이벤트, 시련, 보상을 종류별로 보여 줍니다. 금색 선은 현재 시각이며, 이벤트를 클릭하면 이전 회차가 포함된 상세 정보가 열립니다. 보고 있는 기간은 URL에 남으므로 링크를 그대로 공유할 수 있습니다."
   },
   "exportModal": {
     "title": "마커 내보내기",
@@ -2693,7 +2692,77 @@
     "featuredUntil": "{date}까지 픽업",
     "dates": "{start} ~ {end}",
     "obtain": "획득 방법",
-
     "rotation": "{time} UTC 로테이션"
+  },
+  "calendarUi": {
+    "view": "보기",
+    "viewTimeline": "타임라인",
+    "viewList": "목록",
+    "zoom": "범위",
+    "plural": {
+      "banner": "배너",
+      "weapon": "무기",
+      "event": "이벤트",
+      "trial": "시련",
+      "reward": "보상"
+    },
+    "previousOf": {
+      "banner": "이전 배너",
+      "weapon": "이전 무기",
+      "event": "이전 이벤트",
+      "trial": "이전 시련",
+      "reward": "이전 보상"
+    },
+    "liveCount": "진행 중 {count}개",
+    "versionMark": "버전 {version}",
+    "days": "{days}일",
+    "status": {
+      "startsToday": "오늘 시작",
+      "startsIn": "{days, plural, one {내일 시작} other {#일 후 시작}}",
+      "lastDay": "마지막 날",
+      "endsIn": "{days, plural, one {내일 종료} other {진행 중, #일 남음}}",
+      "endedOn": "{date} 종료"
+    },
+    "list": {
+      "live": "진행 중 · {count}",
+      "upcoming": "예정 · {count}",
+      "recent": "최근 종료 · {count}",
+      "remaining": "{days, plural, =0 {마지막 날} one {내일 종료} other {#일 남음}}",
+      "startsIn": "{days, plural, =0 {오늘} one {내일} other {#일 후}}",
+      "endedOn": "{date} 종료",
+      "empty": "이 카테고리에 표시할 이벤트가 없습니다."
+    },
+    "soon": {
+      "ending": "곧 종료",
+      "starting": "곧 시작",
+      "when": "{days, plural, =0 {오늘} one {내일} other {#일 후}}",
+      "noneEnding": "앞으로 5일 안에 끝나는 것이 없습니다.",
+      "noneStarting": "앞으로 7일 동안 발표된 것이 없습니다."
+    },
+    "sheet": {
+      "version": "버전 {version} · {name}",
+      "edition": "{rank}회차",
+      "start": "시작",
+      "end": "종료",
+      "duration": "기간",
+      "characterPage": "캐릭터 정보",
+      "weaponPage": "무기 정보",
+      "cosmeticsPage": "코스튬 목록",
+      "page": "페이지 열기",
+      "locate": "타임라인에서 보기",
+      "previousEditions": "이전 회차",
+      "previousEditionsCount": "이전 회차 · {count}",
+      "summary": "{month}부터 {count}회 진행.",
+      "summaryWithAverage": "{month}부터 {count}회 진행, 평균 {average}일마다.",
+      "previousGap": "이전 회차는 이번 회차 {days}일 전에 끝났습니다.",
+      "firstEdition": "이번이 첫 회차입니다.",
+      "nextEdition": "다음 회차",
+      "tagLive": "진행 중",
+      "tagUpcoming": "예정",
+      "versionShort": "버전 {version}",
+      "loading": "기록을 불러오는 중…",
+      "error": "이 이벤트의 기록을 불러오지 못했습니다.",
+      "notFound": "이 이벤트는 더 이상 없거나 숨겨졌습니다."
+    }
   }
 }

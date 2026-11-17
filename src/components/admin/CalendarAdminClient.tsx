@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { CalendarDays, Pencil, Plus, Trash2, X } from "lucide-react";
 import { cn, useConfirm } from "@/components/dna";
+import { seriesFromTitle } from "@/lib/events/calendar";
 import {
   FIELD_WIDTH,
   FORM_MAX_WIDTH,
@@ -34,6 +35,7 @@ type EventRow = {
   href: string | null;
   description: string | null;
   sourceUrl: string | null;
+  series: string | null;
   sortOrder: number;
   hidden: boolean;
 };
@@ -48,6 +50,7 @@ type FormState = {
   href: string;
   description: string;
   sourceUrl: string;
+  series: string;
   sortOrder: number;
   hidden: boolean;
 };
@@ -61,6 +64,7 @@ const EMPTY_FORM: FormState = {
   href: "",
   description: "",
   sourceUrl: "",
+  series: "",
   sortOrder: 0,
   hidden: false,
 };
@@ -126,6 +130,7 @@ export function CalendarAdminClient() {
       href: ev.href ?? "",
       description: ev.description ?? "",
       sourceUrl: ev.sourceUrl ?? "",
+      series: ev.series ?? "",
       sortOrder: ev.sortOrder,
       hidden: ev.hidden,
     });
@@ -145,6 +150,7 @@ export function CalendarAdminClient() {
       href: form.href.trim() || null,
       description: form.description.trim() || null,
       sourceUrl: form.sourceUrl.trim() || null,
+      series: form.series.trim() || null,
       sortOrder: Number(form.sortOrder) || 0,
       hidden: form.hidden,
     };
@@ -296,7 +302,7 @@ export function CalendarAdminClient() {
 
             <div className="sm:col-span-2">
               <label className={labelClass} htmlFor="cal-href">
-                Lien au clic
+                Page liée (bouton de la fiche)
               </label>
               <input
                 id="cal-href"
@@ -308,8 +314,23 @@ export function CalendarAdminClient() {
             </div>
 
             <div className="sm:col-span-2">
+              <label className={labelClass} htmlFor="cal-series">
+                Série (relie les éditions d’un même événement)
+              </label>
+              <input
+                id="cal-series"
+                className={cn(inputClass, FIELD_WIDTH.long)}
+                value={form.series}
+                onChange={(e) => set("series", e.target.value)}
+                placeholder={
+                  form.title.trim() ? `Vide = « ${seriesFromTitle(form.title)} », déduite du titre` : "Vide = déduite du titre"
+                }
+              />
+            </div>
+
+            <div className="sm:col-span-2">
               <label className={labelClass} htmlFor="cal-description">
-                Détail affiché au survol
+                Description (fiche de l’événement)
               </label>
               <textarea
                 id="cal-description"

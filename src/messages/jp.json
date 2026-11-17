@@ -966,7 +966,6 @@
     "builderDescription": "Duet Night Abyssのコミュニティビルドを作成・公開できます。",
     "buildsTitle": "コミュニティビルド",
     "buildsDescription": "プレイヤーが公開したDuet Night Abyssのコミュニティビルドを閲覧できます。",
-
     "communityBuildDescription": "{title}：Duet Night Abyssの{character}向けコミュニティビルド。武器とDemon Wedgeの構成を確認できます。",
     "calendarTitle": "イベントカレンダー",
     "calendarDescription": "Duet Night Abyssのバナー・武器・開催中イベントのインタラクティブカレンダー。時間軸の移動、ズーム、カテゴリ絞り込みに対応。",
@@ -1534,7 +1533,7 @@
   },
   "calendarPage": {
     "heading": "イベントカレンダー",
-    "intro": "Duet Night Abyssのバナー・武器・イベント。タイムラインは過去にも未来にも制限なくスクロールできます。金色の目印が今日で、表示中の期間はURLに保存されるため共有できます。"
+    "intro": "Duet Night Abyssのバナー、武器、イベント、試練、報酬を種類別に表示します。金色の線は現在時刻を示し、イベントをクリックすると過去の開催を含む詳細が開きます。表示中の期間はURLに残るので、そのまま共有できます。"
   },
   "exportModal": {
     "title": "マーカーをエクスポート",
@@ -2693,7 +2692,77 @@
     "featuredUntil": "{date}までピックアップ",
     "dates": "{start}〜{end}",
     "obtain": "入手方法",
-
     "rotation": "{time} UTCのローテーション"
+  },
+  "calendarUi": {
+    "view": "表示",
+    "viewTimeline": "タイムライン",
+    "viewList": "リスト",
+    "zoom": "表示範囲",
+    "plural": {
+      "banner": "バナー",
+      "weapon": "武器",
+      "event": "イベント",
+      "trial": "試練",
+      "reward": "報酬"
+    },
+    "previousOf": {
+      "banner": "過去のバナー",
+      "weapon": "過去の武器",
+      "event": "過去のイベント",
+      "trial": "過去の試練",
+      "reward": "過去の報酬"
+    },
+    "liveCount": "開催中 {count}件",
+    "versionMark": "バージョン {version}",
+    "days": "{days}日間",
+    "status": {
+      "startsToday": "本日開始",
+      "startsIn": "{days, plural, one {明日開始} other {#日後に開始}}",
+      "lastDay": "最終日",
+      "endsIn": "{days, plural, one {明日終了} other {開催中・あと#日}}",
+      "endedOn": "{date}に終了"
+    },
+    "list": {
+      "live": "開催中 · {count}",
+      "upcoming": "開催予定 · {count}",
+      "recent": "最近終了 · {count}",
+      "remaining": "{days, plural, =0 {最終日} one {明日終了} other {あと#日}}",
+      "startsIn": "{days, plural, =0 {本日} one {明日} other {#日後}}",
+      "endedOn": "{date}に終了",
+      "empty": "このカテゴリーに表示できるイベントはありません。"
+    },
+    "soon": {
+      "ending": "まもなく終了",
+      "starting": "まもなく開始",
+      "when": "{days, plural, =0 {本日} one {明日} other {#日後}}",
+      "noneEnding": "今後5日以内に終了するものはありません。",
+      "noneStarting": "今後7日間に告知されたものはありません。"
+    },
+    "sheet": {
+      "version": "バージョン {version} · {name}",
+      "edition": "第{rank}回",
+      "start": "開始",
+      "end": "終了",
+      "duration": "期間",
+      "characterPage": "キャラクター詳細",
+      "weaponPage": "武器詳細",
+      "cosmeticsPage": "コスチューム一覧",
+      "page": "ページを開く",
+      "locate": "タイムラインで表示",
+      "previousEditions": "過去の開催",
+      "previousEditionsCount": "過去の開催 · {count}",
+      "summary": "{month}から{count}回開催。",
+      "summaryWithAverage": "{month}から{count}回開催、平均{average}日ごと。",
+      "previousGap": "前回は今回の{days}日前に終了しました。",
+      "firstEdition": "今回が初開催です。",
+      "nextEdition": "次回",
+      "tagLive": "開催中",
+      "tagUpcoming": "開催予定",
+      "versionShort": "Ver.{version}",
+      "loading": "履歴を読み込み中…",
+      "error": "このイベントの履歴を読み込めませんでした。",
+      "notFound": "このイベントは存在しないか、非表示になっています。"
+    }
   }
 }

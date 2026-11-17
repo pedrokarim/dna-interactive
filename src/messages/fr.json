@@ -966,7 +966,6 @@
     "builderDescription": "Créer et publier des builds communautaires Duet Night Abyss.",
     "buildsTitle": "Builds communauté",
     "buildsDescription": "Parcourir les builds communautaires Duet Night Abyss publiés par les joueurs.",
-
     "communityBuildDescription": "{title} : build communautaire de Duet Night Abyss pour {character}, avec ses armes et ses Demon Wedges.",
     "calendarTitle": "Calendrier des événements",
     "calendarDescription": "Calendrier interactif des bannières, armes et événements en cours de Duet Night Abyss : navigue dans le temps, zoome et filtre par catégorie.",
@@ -1534,7 +1533,7 @@
   },
   "calendarPage": {
     "heading": "Calendrier des événements",
-    "intro": "Bannières, armes et événements de Duet Night Abyss. Fais défiler la frise sans limite vers le passé ou le futur – le repère doré marque aujourd'hui, et la période regardée reste dans l'URL, donc partageable."
+    "intro": "Bannières, armes, événements, épreuves et récompenses de Duet Night Abyss, rangés par type. Le trait doré marque l’heure actuelle, et un clic sur un événement ouvre sa fiche avec ses éditions précédentes. La période regardée reste dans l’URL : le lien se partage tel quel."
   },
   "exportModal": {
     "title": "Exporter les marqueurs",
@@ -2693,7 +2692,77 @@
     "featuredUntil": "En vedette jusqu’au {date}",
     "dates": "Du {start} au {end}",
     "obtain": "Obtention",
-
     "rotation": "Rotation de {time} UTC"
+  },
+  "calendarUi": {
+    "view": "Affichage",
+    "viewTimeline": "Frise",
+    "viewList": "Liste",
+    "zoom": "Échelle",
+    "plural": {
+      "banner": "Bannières",
+      "weapon": "Armes",
+      "event": "Événements",
+      "trial": "Épreuves",
+      "reward": "Récompenses"
+    },
+    "previousOf": {
+      "banner": "Bannières précédentes",
+      "weapon": "Armes précédentes",
+      "event": "Événements précédents",
+      "trial": "Épreuves précédentes",
+      "reward": "Récompenses précédentes"
+    },
+    "liveCount": "{count} en cours",
+    "versionMark": "Version {version}",
+    "days": "{days, plural, one {# jour} other {# jours}}",
+    "status": {
+      "startsToday": "Commence aujourd’hui",
+      "startsIn": "{days, plural, one {Commence demain} other {Commence dans # jours}}",
+      "lastDay": "Dernier jour",
+      "endsIn": "{days, plural, one {Se termine demain} other {En cours, encore # jours}}",
+      "endedOn": "Terminé le {date}"
+    },
+    "list": {
+      "live": "En cours · {count}",
+      "upcoming": "À venir · {count}",
+      "recent": "Terminés récemment · {count}",
+      "remaining": "{days, plural, =0 {dernier jour} one {fin demain} other {encore # jours}}",
+      "startsIn": "{days, plural, =0 {aujourd’hui} one {demain} other {dans # jours}}",
+      "endedOn": "fini le {date}",
+      "empty": "Aucun événement à afficher pour ces catégories."
+    },
+    "soon": {
+      "ending": "Se terminent bientôt",
+      "starting": "Commencent bientôt",
+      "when": "{days, plural, =0 {aujourd’hui} one {demain} other {dans # jours}}",
+      "noneEnding": "Rien ne se termine dans les 5 prochains jours.",
+      "noneStarting": "Rien d’annoncé pour les 7 prochains jours."
+    },
+    "sheet": {
+      "version": "Version {version} · {name}",
+      "edition": "{rank, selectordinal, one {#re} other {#e}} édition",
+      "start": "Début",
+      "end": "Fin",
+      "duration": "Durée",
+      "characterPage": "Fiche du personnage",
+      "weaponPage": "Fiche de l’arme",
+      "cosmeticsPage": "Catalogue des cosmétiques",
+      "page": "Voir la page",
+      "locate": "Placer sur la frise",
+      "previousEditions": "Éditions précédentes",
+      "previousEditionsCount": "Éditions précédentes · {count}",
+      "summary": "{count, plural, one {# édition} other {# éditions}} depuis {month}.",
+      "summaryWithAverage": "{count} éditions depuis {month}, une tous les {average} jours en moyenne.",
+      "previousGap": "La précédente s’est terminée {days, plural, one {# jour} other {# jours}} avant celle-ci.",
+      "firstEdition": "C’est la première édition.",
+      "nextEdition": "Édition suivante",
+      "tagLive": "en cours",
+      "tagUpcoming": "à venir",
+      "versionShort": "version {version}",
+      "loading": "Chargement de l’historique…",
+      "error": "Impossible de charger l’historique de cet événement.",
+      "notFound": "Cet événement n’existe plus ou a été masqué."
+    }
   }
 }

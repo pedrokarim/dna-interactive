@@ -966,7 +966,6 @@
     "builderDescription": "Erstelle und veröffentliche Duet Night Abyss Community-Builds.",
     "buildsTitle": "Community-Builds",
     "buildsDescription": "Durchstöbere von Spielern veröffentlichte Duet Night Abyss Community-Builds.",
-
     "communityBuildDescription": "{title}: Community-Build für {character} in Duet Night Abyss, mit Waffen und Demon Wedges.",
     "calendarTitle": "Event-Kalender",
     "calendarDescription": "Interaktiver Kalender der Duet Night Abyss Banner, Waffen und laufenden Events: durch die Zeit navigieren, zoomen und nach Kategorie filtern.",
@@ -1534,7 +1533,7 @@
   },
   "calendarPage": {
     "heading": "Event-Kalender",
-    "intro": "Banner, Waffen und Events von Duet Night Abyss. Scrolle die Zeitleiste beliebig weit in die Vergangenheit oder Zukunft – die goldene Markierung ist heute, und der betrachtete Zeitraum steht in der URL und ist damit teilbar."
+    "intro": "Banner, Waffen, Events, Prüfungen und Belohnungen von Duet Night Abyss, nach Art sortiert. Die goldene Linie markiert die aktuelle Uhrzeit; ein Klick auf ein Event öffnet seine Übersicht mit den früheren Ausgaben. Der angezeigte Zeitraum bleibt in der URL, der Link lässt sich also direkt teilen."
   },
   "exportModal": {
     "title": "Marker exportieren",
@@ -2693,7 +2692,77 @@
     "featuredUntil": "Im Fokus bis {date}",
     "dates": "{start} bis {end}",
     "obtain": "Erhalt",
-
     "rotation": "Rotation um {time} UTC"
+  },
+  "calendarUi": {
+    "view": "Ansicht",
+    "viewTimeline": "Zeitleiste",
+    "viewList": "Liste",
+    "zoom": "Maßstab",
+    "plural": {
+      "banner": "Banner",
+      "weapon": "Waffen",
+      "event": "Events",
+      "trial": "Prüfungen",
+      "reward": "Belohnungen"
+    },
+    "previousOf": {
+      "banner": "Frühere Banner",
+      "weapon": "Frühere Waffen",
+      "event": "Frühere Events",
+      "trial": "Frühere Prüfungen",
+      "reward": "Frühere Belohnungen"
+    },
+    "liveCount": "{count} aktuell",
+    "versionMark": "Version {version}",
+    "days": "{days, plural, one {# Tag} other {# Tage}}",
+    "status": {
+      "startsToday": "Beginnt heute",
+      "startsIn": "{days, plural, one {Beginnt morgen} other {Beginnt in # Tagen}}",
+      "lastDay": "Letzter Tag",
+      "endsIn": "{days, plural, one {Endet morgen} other {Aktuell, noch # Tage}}",
+      "endedOn": "Beendet am {date}"
+    },
+    "list": {
+      "live": "Aktuell · {count}",
+      "upcoming": "Demnächst · {count}",
+      "recent": "Kürzlich beendet · {count}",
+      "remaining": "{days, plural, =0 {letzter Tag} one {endet morgen} other {noch # Tage}}",
+      "startsIn": "{days, plural, =0 {heute} one {morgen} other {in # Tagen}}",
+      "endedOn": "beendet am {date}",
+      "empty": "Keine Events für diese Kategorien."
+    },
+    "soon": {
+      "ending": "Endet bald",
+      "starting": "Beginnt bald",
+      "when": "{days, plural, =0 {heute} one {morgen} other {in # Tagen}}",
+      "noneEnding": "In den nächsten 5 Tagen endet nichts.",
+      "noneStarting": "Für die nächsten 7 Tage ist nichts angekündigt."
+    },
+    "sheet": {
+      "version": "Version {version} · {name}",
+      "edition": "{rank}. Ausgabe",
+      "start": "Beginn",
+      "end": "Ende",
+      "duration": "Dauer",
+      "characterPage": "Charakterseite",
+      "weaponPage": "Waffenseite",
+      "cosmeticsPage": "Kosmetik-Katalog",
+      "page": "Seite öffnen",
+      "locate": "Auf der Zeitleiste zeigen",
+      "previousEditions": "Frühere Ausgaben",
+      "previousEditionsCount": "Frühere Ausgaben · {count}",
+      "summary": "{count, plural, one {# Ausgabe} other {# Ausgaben}} seit {month}.",
+      "summaryWithAverage": "{count} Ausgaben seit {month}, im Schnitt alle {average} Tage.",
+      "previousGap": "Die vorige endete {days, plural, one {# Tag} other {# Tage}} vor dieser.",
+      "firstEdition": "Das ist die erste Ausgabe.",
+      "nextEdition": "Nächste Ausgabe",
+      "tagLive": "aktuell",
+      "tagUpcoming": "demnächst",
+      "versionShort": "Version {version}",
+      "loading": "Verlauf wird geladen…",
+      "error": "Der Verlauf dieses Events konnte nicht geladen werden.",
+      "notFound": "Dieses Event existiert nicht mehr oder wurde ausgeblendet."
+    }
   }
 }

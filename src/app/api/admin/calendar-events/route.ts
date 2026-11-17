@@ -20,6 +20,7 @@ const baseFields = {
   href: z.string().trim().max(2000).optional().nullable(),
   description: z.string().trim().max(2000).optional().nullable(),
   sourceUrl: z.string().trim().max(2000).optional().nullable(),
+  series: z.string().trim().max(160).optional().nullable(),
   sortOrder: z.number().int().optional(),
   hidden: z.boolean().optional(),
 };
@@ -35,6 +36,7 @@ const updateSchema = z.object({
   href: baseFields.href,
   description: baseFields.description,
   sourceUrl: baseFields.sourceUrl,
+  series: baseFields.series,
   sortOrder: baseFields.sortOrder,
   hidden: baseFields.hidden,
 });

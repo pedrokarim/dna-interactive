@@ -966,7 +966,6 @@
     "builderDescription": "建立並發布 Duet Night Abyss 社群配裝。",
     "buildsTitle": "社群配裝",
     "buildsDescription": "瀏覽玩家發布的 Duet Night Abyss 社群配裝。",
-
     "communityBuildDescription": "{title}：Duet Night Abyss {character} 的社群配裝，包含武器與 Demon Wedge 配置。",
     "calendarTitle": "活動行事曆",
     "calendarDescription": "Duet Night Abyss 卡池、武器與進行中活動的互動行事曆：可切換時間、縮放並依分類篩選。",
@@ -1534,7 +1533,7 @@
   },
   "calendarPage": {
     "heading": "活動行事曆",
-    "intro": "Duet Night Abyss 的卡池、武器與活動。時間軸可無限制地捲動至過去或未來——金色標記代表今天，目前檢視的期間會保存於網址，可直接分享。"
+    "intro": "依類型列出 Duet Night Abyss 的卡池、武器、活動、試煉與獎勵。金色線條標示目前時間，點擊活動即可開啟其資料與過往舉辦紀錄。目前檢視的期間會保留在網址中，可直接分享連結。"
   },
   "exportModal": {
     "title": "匯出標記",
@@ -2693,7 +2692,77 @@
     "featuredUntil": "精選至 {date}",
     "dates": "{start} 至 {end}",
     "obtain": "取得方式",
-
     "rotation": "{time} UTC 輪替"
+  },
+  "calendarUi": {
+    "view": "檢視",
+    "viewTimeline": "時間軸",
+    "viewList": "列表",
+    "zoom": "範圍",
+    "plural": {
+      "banner": "卡池",
+      "weapon": "武器",
+      "event": "活動",
+      "trial": "試煉",
+      "reward": "獎勵"
+    },
+    "previousOf": {
+      "banner": "過往卡池",
+      "weapon": "過往武器",
+      "event": "過往活動",
+      "trial": "過往試煉",
+      "reward": "過往獎勵"
+    },
+    "liveCount": "{count} 項進行中",
+    "versionMark": "版本 {version}",
+    "days": "{days} 天",
+    "status": {
+      "startsToday": "今天開始",
+      "startsIn": "{days, plural, one {明天開始} other {# 天後開始}}",
+      "lastDay": "最後一天",
+      "endsIn": "{days, plural, one {明天結束} other {進行中，還剩 # 天}}",
+      "endedOn": "已於 {date} 結束"
+    },
+    "list": {
+      "live": "進行中 · {count}",
+      "upcoming": "即將開始 · {count}",
+      "recent": "近期結束 · {count}",
+      "remaining": "{days, plural, =0 {最後一天} one {明天結束} other {還剩 # 天}}",
+      "startsIn": "{days, plural, =0 {今天} one {明天} other {# 天後}}",
+      "endedOn": "於 {date} 結束",
+      "empty": "這些類別沒有可顯示的活動。"
+    },
+    "soon": {
+      "ending": "即將結束",
+      "starting": "即將開始",
+      "when": "{days, plural, =0 {今天} one {明天} other {# 天後}}",
+      "noneEnding": "未來 5 天內沒有即將結束的項目。",
+      "noneStarting": "未來 7 天內沒有已公布的項目。"
+    },
+    "sheet": {
+      "version": "版本 {version} · {name}",
+      "edition": "第 {rank} 次",
+      "start": "開始",
+      "end": "結束",
+      "duration": "期間",
+      "characterPage": "角色資料",
+      "weaponPage": "武器資料",
+      "cosmeticsPage": "時裝目錄",
+      "page": "開啟頁面",
+      "locate": "在時間軸上顯示",
+      "previousEditions": "過往舉辦",
+      "previousEditionsCount": "過往舉辦 · {count}",
+      "summary": "自 {month} 起共舉辦 {count} 次。",
+      "summaryWithAverage": "自 {month} 起共舉辦 {count} 次，平均每 {average} 天一次。",
+      "previousGap": "上一次在本次開始前 {days} 天結束。",
+      "firstEdition": "這是第一次舉辦。",
+      "nextEdition": "下一次",
+      "tagLive": "進行中",
+      "tagUpcoming": "即將開始",
+      "versionShort": "版本 {version}",
+      "loading": "正在載入紀錄…",
+      "error": "無法載入此活動的紀錄。",
+      "notFound": "此活動已不存在或已被隱藏。"
+    }
   }
 }

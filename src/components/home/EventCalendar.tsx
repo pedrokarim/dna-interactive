@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { CalendarTimeline } from "@/components/calendar/CalendarTimeline";
+import { CalendarTimeline, type CalendarView } from "@/components/calendar/CalendarTimeline";
 import {
   CATEGORIES,
   DEFAULT_ZOOM,
@@ -22,11 +22,14 @@ export type EventCalendarProps = {
   overrideToday?: string;
 };
 
-/** Calendrier de la home — zoom et filtres en état local, frise défilable partagée. */
+/** Calendrier de l'accueil — zoom, filtres, vue et fiche en état local, frise défilable partagée. */
 export function EventCalendar({ events, initialFrom, initialTo, serverToday, overrideToday }: EventCalendarProps) {
   const t = useTranslations("homeHub");
   const [span, setSpan] = useState<CalendarZoom>(DEFAULT_ZOOM);
   const [active, setActive] = useState<Set<EventCategory>>(() => new Set(CATEGORIES));
+  const [view, setView] = useState<CalendarView | null>(null);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const onSelect = useCallback((id: string | null) => setSelectedId(id), []);
 
   const toggleCat = (cat: EventCategory) =>
     setActive((prev) => {
@@ -47,10 +50,14 @@ export function EventCalendar({ events, initialFrom, initialTo, serverToday, ove
       active={active}
       onZoom={setSpan}
       onToggleCat={toggleCat}
+      view={view}
+      onViewChange={setView}
+      selectedId={selectedId}
+      onSelect={onSelect}
       headerRight={
         <Link
           href="/calendar"
-          className="rounded-sm border border-line/25 px-2.5 py-1 font-caps text-[0.55rem] uppercase tracking-[0.14em] text-gold hover:border-gold hover:text-gold-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60"
+          className="flex h-8 items-center rounded-sm border border-line/25 px-3 text-[0.8rem] text-gold transition-colors hover:border-gold hover:text-gold-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60"
         >
           {t("fullScreen")} →
         </Link>

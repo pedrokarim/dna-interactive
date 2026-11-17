@@ -1,6 +1,5 @@
 "use client";
 
-import { toIntlLocale } from "@/lib/intl-locale";
 import {
   useCallback,
   useEffect,
@@ -8,20 +7,19 @@ import {
   useMemo,
   useRef,
   useState,
+  useSyncExternalStore,
+  type CSSProperties,
   type ReactNode,
 } from "react";
 import Image from "next/image";
-import { useLocale, useTranslations } from "next-intl";
-import { parentheticalDash } from "@/lib/typography";
-import { ChevronLeft, ChevronRight, CalendarDays, ExternalLink, Loader2 } from "lucide-react";
-import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
+import { CalendarDays, ChevronDown, ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
 import { DnaCornerBrackets, cn } from "@/components/dna";
-import { useDominantColor } from "@/lib/color/dominant";
 import {
   CALENDAR_ZOOMS,
   CATEGORIES,
-  CATEGORY_TINT,
   FETCH_BUFFER_DAYS,
+  GAME_VERSIONS,
   MIN_BAR_PX,
   RANGE_EXTEND_DAYS,
   RANGE_PAD_DAYS,
@@ -29,7 +27,6 @@ import {
   dayTicks,
   diffDays,
   layoutBars,
-  localTodayIso,
   monthBands,
   tickStepForScale,
   type CalendarBar,
@@ -37,14 +34,9 @@ import {
   type CalendarZoom,
   type EventCategory,
 } from "@/lib/events/calendar";
-
-const CATEGORY_KEY: Record<EventCategory, "categoryBanner" | "categoryWeapon" | "categoryEvent" | "categoryTrial" | "categoryReward"> = {
-  Bannière: "categoryBanner",
-  Arme: "categoryWeapon",
-  Événement: "categoryEvent",
-  Épreuve: "categoryTrial",
-  Récompense: "categoryReward",
-};
+import { CalendarAgenda } from "./CalendarAgenda";
+import { CalendarEventSheet } from "./CalendarEventSheet";
+import { CATEGORY_KEY, CATEGORY_SLUG, STATUS_TONE, categoryTint, useCalendarFormat, useToday } from "./calendar-ui";
 
 /** Distance au bord (px) qui déclenche l'extension de la plage rendue. */
 const EDGE_TRIGGER_PX = 700;
@@ -52,191 +44,101 @@ const EDGE_TRIGGER_PX = 700;
 const FETCH_DEBOUNCE_MS = 220;
 /** Anti-rebond de la remontée « date au centre » vers l'URL (ms). */
 const VIEW_DATE_DEBOUNCE_MS = 400;
-/** Hauteur du bandeau mois + graduations (px). */
+/** Bandeau des mois (22 px) + graduations (24 px), collé en haut de la frise. */
 const HEADER_H = 46;
+/** Rangée des repères de version, sous le bandeau. */
+const VERSION_ROW_H = 24;
+const LANE_H = 30;
+const LANE_GAP = 4;
+/** Place réservée au nom du mois quand il suit le défilement (px). */
+const MONTH_LABEL_W = 150;
 
-/* ------------------------------------------------------------------ couleur */
+export type CalendarView = "timeline" | "list";
 
-/** `#rrggbb` + alpha 0-1 → `rgba(...)`. Renvoie la couleur brute si non parsable. */
-function withAlpha(hex: string, alpha: number): string {
-  const m = /^#?([0-9a-f]{6})$/i.exec(hex.trim());
-  if (!m) return hex;
-  const n = parseInt(m[1], 16);
-  return `rgba(${(n >> 16) & 255}, ${(n >> 8) & 255}, ${n & 255}, ${alpha})`;
+/* ------------------------------------------------------------ largeur d'écran */
+
+const NARROW_QUERY = "(max-width: 767px)";
+function subscribeNarrow(onChange: () => void) {
+  const mq = window.matchMedia(NARROW_QUERY);
+  mq.addEventListener("change", onChange);
+  return () => mq.removeEventListener("change", onChange);
+}
+/** Écran de téléphone ? Faux au rendu serveur ; la mise en page, elle, suit le CSS. */
+function useNarrow() {
+  return useSyncExternalStore(
+    subscribeNarrow,
+    () => window.matchMedia(NARROW_QUERY).matches,
+    () => false,
+  );
 }
 
-/* ------------------------------------------------------------------ horloge */
-
-/** Part de la journée locale déjà écoulée (0 à minuit, 0,5 à midi). */
-function dayFractionOf(now: Date): number {
-  return (now.getHours() * 60 + now.getMinutes()) / 1440;
-}
-
-/**
- * Date du jour **du visiteur** et heure dans cette journée, resynchronisées
- * quand la page revient au premier plan (onglet réveillé, retour sur le site)
- * et une fois par minute pour passer minuit sans rechargement.
- *
- * L'heure sert au curseur « Aujourd'hui » : posé au début du jour, il tombait
- * sur le trait qui sépare hier d'aujourd'hui, presque une journée en retard le
- * soir. Il avance maintenant dans la colonne du jour.
- *
- * Le premier rendu utilise la valeur calculée côté serveur (et midi pour
- * l'heure) : identique au HTML envoyé, donc pas d'écart d'hydratation ;
- * l'effet corrige juste après avec le fuseau réel du navigateur.
- */
-function useToday(serverToday: string, override?: string): { today: string; dayFraction: number } {
-  const [clock, setClock] = useState({ today: override || serverToday, dayFraction: 0.5 });
-
-  useEffect(() => {
-    // Forçage admin : la valeur d'init suffit, rien à resynchroniser.
-    if (override) return;
-    const sync = () => {
-      const now = new Date();
-      setClock({ today: localTodayIso(now), dayFraction: dayFractionOf(now) });
-    };
-    sync();
-    const timer = window.setInterval(sync, 60_000);
-    const onWake = () => sync();
-    document.addEventListener("visibilitychange", onWake);
-    window.addEventListener("focus", onWake);
-    return () => {
-      window.clearInterval(timer);
-      document.removeEventListener("visibilitychange", onWake);
-      window.removeEventListener("focus", onWake);
-    };
-  }, [override]);
-
-  return clock;
-}
-
-/* ------------------------------------------------------------------ barre */
+/* ------------------------------------------------------------------- barre */
 
 type EventBarProps = {
   bar: CalendarBar;
   left: number;
   width: number;
-  realWidth: number;
   top: number;
-  height: number;
   selected: boolean;
-  rangeLabel: string;
-  startLabel: string;
-  onSelect: () => void;
-  onHover: (e: React.MouseEvent) => void;
+  label: string;
+  onSelect: (id: string) => void;
+  onHover: (bar: CalendarBar, x: number, y: number) => void;
   onLeave: () => void;
 };
 
 /**
- * Barre d'un événement : la bannière remplit le rectangle, la couleur dominante
- * de l'image pilote la bordure/l'ombre/le voile, titre et pastille de date sont
- * incrustés par-dessus. Position et largeur = dates réelles à l'échelle, avec une
- * largeur plancher pour rester lisible — le filet du bas, lui, ne couvre que la
- * durée réelle pour ne pas mentir sur la période.
+ * Barre d'un événement : aplat à la couleur de sa catégorie, vignette et titre.
+ * L'étiquette est collante : quand l'événement a commencé avant la zone
+ * affichée, son titre reste visible au bord gauche de la frise au lieu de
+ * partir hors écran avec le début de la barre.
  */
-function EventBar({
-  bar,
-  left,
-  width,
-  realWidth,
-  top,
-  height,
-  selected,
-  rangeLabel,
-  startLabel,
-  onSelect,
-  onHover,
-  onLeave,
-}: EventBarProps) {
-  const t = useTranslations("homeHub");
-  const locale = useLocale();
-  const dominant = useDominantColor(bar.image);
-  // Couleur dominante de l'image → sinon teinte de catégorie.
-  const accent = dominant ?? bar.tint;
-  const faded = bar.status === "past";
+function EventBar({ bar, left, width, top, selected, label, onSelect, onHover, onLeave }: EventBarProps) {
+  const tint = bar.tint;
+  const upcoming = bar.status === "upcoming";
+  const style: CSSProperties = {
+    left,
+    width,
+    top,
+    height: LANE_H,
+    background: `color-mix(in srgb, ${tint} ${selected ? 30 : upcoming ? 7 : 17}%, var(--color-panel))`,
+    borderColor: `color-mix(in srgb, ${tint} ${selected ? 100 : 50}%, transparent)`,
+    boxShadow: selected ? `0 0 0 1px ${tint}, 0 4px 18px color-mix(in srgb, ${tint} 35%, transparent)` : undefined,
+  };
 
   return (
     <button
       type="button"
-      onClick={onSelect}
-      onMouseMove={onHover}
+      data-event-id={bar.id}
+      onClick={() => onSelect(bar.id)}
+      onMouseMove={(e) => onHover(bar, e.clientX, e.clientY)}
       onMouseLeave={onLeave}
-      aria-label={`${bar.title}${parentheticalDash(locale)}${rangeLabel}`}
+      aria-label={label}
       aria-current={selected ? "true" : undefined}
+      style={style}
       className={cn(
-        "group absolute overflow-hidden rounded-[4px] border text-left transition-[box-shadow,filter] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gold/70",
+        // `overflow-clip` (et non `hidden`) : l'étiquette collante doit voir le
+        // défileur de la frise, pas la barre, comme conteneur de défilement.
+        "absolute flex items-center overflow-clip rounded-[3px] border text-left transition-[background-color,border-color,opacity] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gold/70",
+        upcoming && "border-dashed",
+        bar.status === "past" && !selected && "opacity-45 hover:opacity-85",
         selected ? "z-[3]" : "z-[1] hover:brightness-110",
-        faded && "grayscale-[0.35]",
       )}
-      style={{
-        left,
-        width,
-        top,
-        height,
-        borderColor: withAlpha(accent, selected ? 0.95 : 0.55),
-        boxShadow: selected
-          ? `0 0 0 1px ${withAlpha(accent, 0.9)}, 0 6px 22px ${withAlpha(accent, 0.4)}`
-          : `0 2px 12px ${withAlpha(accent, 0.22)}`,
-        opacity: bar.status === "upcoming" ? 0.9 : 1,
-        background: withAlpha(accent, 0.12),
-      }}
     >
-      {/* bannière incrustée */}
-      {bar.image ? (
-        // Version redimensionnée plutôt que l'original de 1920 px : la barre
-        // fait 44 px de haut sous un voile sombre. Une URL externe (saisie en
-        // admin) n'est pas optimisable, elle reste servie telle quelle.
-        <Image
-          src={bar.image}
-          alt=""
-          aria-hidden
-          fill
-          sizes="(max-width: 768px) 100vw, 50vw"
-          quality={70}
-          unoptimized={!bar.image.startsWith("/")}
-          className="object-cover object-[50%_28%]"
-        />
-      ) : null}
-
-      {/* voile : sombre à gauche (lisibilité du texte) + teinte dominante */}
-      <span
-        aria-hidden
-        className="absolute inset-0"
-        style={{
-          background: `linear-gradient(90deg, rgba(8,8,9,0.9) 0%, rgba(8,8,9,0.6) 42%, rgba(8,8,9,0.12) 100%), linear-gradient(90deg, ${withAlpha(
-            accent,
-            0.55,
-          )} 0%, transparent 70%)`,
-        }}
-      />
-      {/* filet dominant en bas = durée réelle de l'événement */}
-      <span
-        aria-hidden
-        className="absolute bottom-0 left-0 h-[2px]"
-        style={{ width: realWidth, background: withAlpha(accent, 0.85) }}
-      />
-
-      {/* contenu */}
-      <span className="relative flex h-full flex-col justify-between px-2.5 py-1.5">
-        <span className="flex items-center gap-1.5">
-          <span
-            className="rounded-[3px] border px-1.5 py-0.5 font-mono text-[0.58rem] leading-none text-parch"
-            style={{ borderColor: withAlpha(accent, 0.7), background: "rgba(8,8,9,0.72)" }}
-          >
-            {startLabel}
-          </span>
+      <span className="sticky left-1 flex min-w-0 items-center gap-1.5 pl-[3px] pr-2" style={{ maxWidth: width - 4 }}>
+        <span className="relative block h-[22px] w-[22px] shrink-0 overflow-hidden rounded-[2px] bg-ink-2">
+          {bar.image ? (
+            <Image
+              src={bar.image}
+              alt=""
+              fill
+              sizes="24px"
+              quality={60}
+              unoptimized={!bar.image.startsWith("/")}
+              className="object-cover"
+            />
+          ) : null}
         </span>
-        <span className="min-w-0">
-          <span className="block truncate font-display text-[0.82rem] leading-tight text-[#fff] drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]">
-            {bar.title}
-          </span>
-          <span
-            className="block truncate font-caps text-[0.5rem] uppercase leading-none tracking-[0.16em]"
-            style={{ color: withAlpha(accent, 0.95) }}
-          >
-            {t(CATEGORY_KEY[bar.category])}
-          </span>
-        </span>
+        <span className="min-w-0 truncate text-[0.84rem] leading-none text-parch">{bar.title}</span>
       </span>
     </button>
   );
@@ -263,17 +165,24 @@ export type CalendarTimelineProps = {
   focusDate?: string;
   /** Remonte la date au centre de la vue (pour la garder dans l'URL). */
   onViewDateChange?: (iso: string) => void;
-  /** compact = home ; full = page dédiée (barres plus hautes, frise plus grande). */
+  /** compact = accueil ; full = page dédiée (frise plus haute). */
   variant?: "compact" | "full";
   /** Slot à droite de la barre d'outils (ex. lien « Plein écran »). */
   headerRight?: ReactNode;
+  /** Frise ou liste ; `null` = liste sur téléphone, frise au-delà. */
+  view: CalendarView | null;
+  onViewChange: (view: CalendarView) => void;
+  /** Événement dont la fiche est ouverte. `onSelect` doit garder la même identité. */
+  selectedId: string | null;
+  onSelect: (id: string | null) => void;
 };
 
 /**
- * Calendrier défilable : une frise horizontale sans borne. On scrolle librement
- * vers le passé ou le futur ; la plage rendue s'étend d'un an dès qu'on touche un
- * bord, et les événements sont chargés par fenêtre autour de la zone regardée
- * (jamais tout le calendrier d'un coup).
+ * Calendrier défilable : une frise horizontale sans borne, rangée par
+ * catégorie. On scrolle librement vers le passé ou le futur ; la plage rendue
+ * s'étend d'un an dès qu'on touche un bord, et les événements sont chargés par
+ * fenêtre autour de la zone regardée (jamais tout le calendrier d'un coup).
+ * Un clic sur un événement ouvre sa fiche.
  */
 export function CalendarTimeline({
   initialEvents,
@@ -289,22 +198,18 @@ export function CalendarTimeline({
   onViewDateChange,
   variant = "compact",
   headerRight,
+  view,
+  onViewChange,
+  selectedId,
+  onSelect,
 }: CalendarTimelineProps) {
-  const locale = useLocale();
   const t = useTranslations("homeHub");
+  const tc = useTranslations("calendarUi");
   const full = variant === "full";
-
-  // timeZone UTC : nos dates ISO sont en UTC-minuit → même jour affiché partout.
-  const dayFmt = useMemo(() => new Intl.DateTimeFormat(toIntlLocale(locale), { day: "numeric", month: "short", timeZone: "UTC" }), [locale]);
-  const dayNumFmt = useMemo(() => new Intl.DateTimeFormat(toIntlLocale(locale), { day: "numeric", timeZone: "UTC" }), [locale]);
-  const monthFmt = useMemo(() => new Intl.DateTimeFormat(toIntlLocale(locale), { month: "long", year: "numeric", timeZone: "UTC" }), [locale]);
-  const pillFmt = useMemo(() => new Intl.DateTimeFormat(toIntlLocale(locale), { day: "2-digit", month: "2-digit", timeZone: "UTC" }), [locale]);
-  const longFmt = useMemo(
-    () => new Intl.DateTimeFormat(toIntlLocale(locale), { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }),
-    [locale],
-  );
-
+  const { fmt, date, short, range, statusText } = useCalendarFormat();
   const { today, dayFraction } = useToday(serverToday, overrideToday);
+  const narrow = useNarrow();
+  const effectiveView: CalendarView = view ?? (narrow ? "list" : "timeline");
 
   /* ------------------------------------------------------------ plage rendue */
 
@@ -324,7 +229,7 @@ export function CalendarTimeline({
   const contentW = rangeDays * pxPerDay;
 
   const offsetToIso = useCallback(
-    (px: number) => addDaysIso(rangeStart, Math.round(px / (pxPerDay || 1))),
+    (px: number) => addDaysIso(rangeStart, Math.floor(px / (pxPerDay || 1))),
     [rangeStart, pxPerDay],
   );
 
@@ -391,7 +296,10 @@ export function CalendarTimeline({
 
   /* --------------------------------------------- défilement → état dérivé */
 
+  const [tip, setTip] = useState<{ bar: CalendarBar; x: number; y: number } | null>(null);
+
   const handleScroll = useCallback(() => {
+    setTip(null);
     if (rafRef.current) return;
     rafRef.current = window.requestAnimationFrame(() => {
       rafRef.current = 0;
@@ -424,6 +332,7 @@ export function CalendarTimeline({
     if (!el || !scrollAdjustRef.current) return;
     el.scrollLeft += scrollAdjustRef.current;
     scrollAdjustRef.current = 0;
+    setScrollLeft(el.scrollLeft);
   }, [rangeStart]);
 
   // Chargement des événements autour de ce qu'on regarde.
@@ -454,9 +363,13 @@ export function CalendarTimeline({
     (iso: string, smooth: boolean) => {
       const el = scrollerRef.current;
       if (!el || !pxPerDay) return;
-      const left = diffDays(rangeStart, iso) * pxPerDay - el.clientWidth / 2 + pxPerDay / 2;
+      const left = (diffDays(rangeStart, iso) + 0.5) * pxPerDay - el.clientWidth / 2;
       const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      el.scrollTo({ left: Math.max(0, left), behavior: smooth && !reduced ? "smooth" : "auto" });
+      const animate = smooth && !reduced;
+      el.scrollTo({ left: Math.max(0, left), behavior: animate ? "smooth" : "auto" });
+      // Sans animation, l'état suit tout de suite : la période affichée et les
+      // barres rendues ne dépendent pas d'un événement `scroll` différé.
+      if (!animate) setScrollLeft(el.scrollLeft);
     },
     [rangeStart, pxPerDay],
   );
@@ -465,20 +378,24 @@ export function CalendarTimeline({
   // centrale à chaque changement de zoom.
   const centerIsoRef = useRef<string>(anchor);
   const initialisedRef = useRef(false);
+  /** Date à cadrer dès que la frise aura une largeur (« Placer sur la frise » depuis la liste). */
+  const pendingCenterRef = useRef<string | null>(null);
 
   useEffect(() => {
     const el = scrollerRef.current;
-    if (!el || !pxPerDay) return;
-    if (!initialisedRef.current) return;
+    if (!el || !pxPerDay || !initialisedRef.current) return;
     centerIsoRef.current = offsetToIso(el.scrollLeft + el.clientWidth / 2);
   }, [scrollLeft, pxPerDay, offsetToIso]);
 
   useLayoutEffect(() => {
     if (!pxPerDay) return;
-    if (!initialisedRef.current) {
+    if (pendingCenterRef.current) {
       initialisedRef.current = true;
-      centerOn(anchor, false);
-      return;
+      centerIsoRef.current = pendingCenterRef.current;
+      pendingCenterRef.current = null;
+    } else if (!initialisedRef.current) {
+      initialisedRef.current = true;
+      centerIsoRef.current = anchor;
     }
     centerOn(centerIsoRef.current, false);
     // Le zoom (pxPerDay) est la seule dépendance voulue : on recadre sur la date
@@ -506,16 +423,35 @@ export function CalendarTimeline({
   );
 
   const minSpanDays = pxPerDay > 0 ? Math.ceil(MIN_BAR_PX / pxPerDay) : 1;
-  const bars = useMemo(
-    () => layoutBars(visibleEvents, rangeStart, today, minSpanDays),
-    [visibleEvents, rangeStart, today, minSpanDays],
+
+  /** Une section par catégorie active, avec ses propres voies. */
+  const sections = useMemo(
+    () =>
+      CATEGORIES.filter((cat) => active.has(cat)).map((cat) => {
+        const bars = layoutBars(
+          visibleEvents.filter((ev) => ev.category === cat),
+          rangeStart,
+          today,
+          minSpanDays,
+        );
+        return {
+          category: cat,
+          bars,
+          lanes: bars.reduce((max, b) => Math.max(max, b.lane + 1), 0),
+          live: bars.filter((b) => b.status === "ongoing").length,
+        };
+      }),
+    [active, visibleEvents, rangeStart, today, minSpanDays],
   );
 
-  const laneCount = bars.reduce((max, b) => Math.max(max, b.lane + 1), 0);
-  const laneH = full ? 58 : 46;
-  const laneGap = 6;
-  const lanesH = Math.max(laneCount, 1) * (laneH + laneGap);
-  const bodyH = HEADER_H + lanesH + 8;
+  const [collapsed, setCollapsed] = useState<Set<EventCategory>>(() => new Set());
+  const toggleSection = (cat: EventCategory) =>
+    setCollapsed((prev) => {
+      const next = new Set(prev);
+      if (next.has(cat)) next.delete(cat);
+      else next.add(cat);
+      return next;
+    });
 
   const bands = useMemo(() => monthBands(rangeStart, rangeDays), [rangeStart, rangeDays]);
 
@@ -534,7 +470,8 @@ export function CalendarTimeline({
   );
 
   // Curseur à l'heure actuelle, dans la colonne du jour (et non sur son bord gauche).
-  const todayLeft = (diffDays(rangeStart, today) + dayFraction) * pxPerDay;
+  const todayOffset = diffDays(rangeStart, today);
+  const todayLeft = (todayOffset + dayFraction) * pxPerDay;
   const todayOffScreen: -1 | 0 | 1 = !pxPerDay || !viewportW
     ? 0
     : todayLeft < scrollLeft
@@ -544,75 +481,117 @@ export function CalendarTimeline({
         : 0;
 
   const visibleFromIso = addDaysIso(rangeStart, firstVisibleDay);
-  const visibleToIso = addDaysIso(rangeStart, lastVisibleDay);
-  const barsOnScreen = bars.filter(
-    (b) => b.offsetDays + Math.max(b.lengthDays, minSpanDays) >= firstVisibleDay && b.offsetDays <= lastVisibleDay,
-  ).length;
-
-  // Les voies sont calculées sur tout ce qui est chargé (positions stables), mais
-  // on ne monte dans le DOM que les barres proches de l'écran : les bannières des
-  // événements lointains ne sont ni rendues ni téléchargées.
-  const renderedBars = bars.filter(
-    (b) => b.offsetDays + Math.max(b.lengthDays, minSpanDays) >= tickFrom && b.offsetDays <= tickTo,
+  const visibleToIso = addDaysIso(rangeStart, Math.max(firstVisibleDay, lastVisibleDay - 1));
+  const onScreen = (b: CalendarBar, from: number, to: number) =>
+    b.offsetDays + Math.max(b.lengthDays, minSpanDays) >= from && b.offsetDays <= to;
+  const barsOnScreen = sections.reduce(
+    (n, s) => n + s.bars.filter((b) => onScreen(b, firstVisibleDay, lastVisibleDay)).length,
+    0,
   );
 
-  /* ------------------------------------------------------------ sélection */
+  const versionMarks = GAME_VERSIONS.map((v) => ({ ...v, offset: diffDays(rangeStart, v.start) })).filter(
+    (v) => v.offset >= tickFrom && v.offset <= tickTo,
+  );
 
-  const [selected, setSelected] = useState<CalendarBar | null>(null);
-  const [tip, setTip] = useState<{ bar: CalendarBar; x: number; y: number } | null>(null);
+  /* ------------------------------------------------------------ fiche */
 
-  const range = (start: string, end: string) => `${dayFmt.format(new Date(start))} – ${dayFmt.format(new Date(end))}`;
+  const closeSheet = useCallback(() => onSelect(null), [onSelect]);
 
-  const detailInfo = (bar: CalendarBar) => {
-    if (bar.status === "upcoming") {
-      const d = diffDays(today, bar.start);
-      return { label: t("upcoming"), note: d > 0 ? t("startsInDays", { days: d }) : t("startsToday"), tone: "text-hydro" };
-    }
-    if (bar.status === "past") return { label: t("finished"), note: "", tone: "text-muted" };
-    const d = diffDays(today, bar.end);
-    return { label: t("live"), note: d > 0 ? t("endsInDays", { days: d }) : t("lastDay"), tone: "text-anemo" };
-  };
+  const locate = useCallback(
+    (ev: CalendarEvent) => {
+      onSelect(null);
+      const target = today >= ev.start && today <= ev.end ? today : ev.start;
+      if (effectiveView !== "timeline") {
+        pendingCenterRef.current = target;
+        onViewChange("timeline");
+      } else {
+        centerIsoRef.current = target;
+        centerOn(target, true);
+      }
+      // Après fermeture de la fiche et fin du défilement horizontal : on amène
+      // la barre à l'écran (la frise défile aussi en hauteur) et le focus
+      // dessus, pour que le clavier reparte de là.
+      window.setTimeout(() => {
+        const el = scrollerRef.current;
+        const bar = el?.querySelector<HTMLElement>(`[data-event-id="${CSS.escape(ev.id)}"]`);
+        const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (bar) {
+          bar.scrollIntoView({ block: "center", inline: "nearest", behavior: reduced ? "auto" : "smooth" });
+          bar.focus({ preventScroll: true });
+        } else {
+          el?.scrollIntoView({ block: "nearest", behavior: reduced ? "auto" : "smooth" });
+        }
+      }, 650);
+    },
+    [onSelect, onViewChange, effectiveView, today, centerOn],
+  );
+
+  /* ------------------------------------------------------------ rendu */
 
   const ctrlBtn =
     "flex h-8 w-8 items-center justify-center rounded-sm border border-line/25 text-parch/75 transition-colors hover:border-gold hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60";
+  const segBtn = (on: boolean) =>
+    cn(
+      "h-8 border-l border-line/25 px-3 text-[0.8rem] transition-colors first:border-l-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gold/60",
+      on ? "bg-gold/12 text-gold-bright" : "text-muted hover:text-gold",
+    );
+  // Mode automatique : la liste remplace la frise sur téléphone, par le CSS
+  // (pas de saut à l'hydratation) ; un choix explicite s'applique partout.
+  const timelineOnly = view === null ? "max-md:hidden" : view === "list" ? "hidden" : "";
+  const listOnly = view === null ? "md:hidden" : view === "timeline" ? "hidden" : "";
+
+  const scrollerHeight = full ? "max(440px, calc(100dvh - 230px))" : "420px";
 
   return (
-    <div className="relative overflow-hidden rounded-sm border border-line/20 bg-panel/60 p-4 sm:p-5">
+    <div className="relative min-w-0 rounded-sm border border-line/20 bg-panel/60 p-4 sm:p-5">
       <DnaCornerBrackets size={14} />
 
-      {/* barre d'outils : navigation + zoom */}
+      {/* barre d'outils */}
       <div className="mb-3 flex flex-wrap items-center gap-2">
-        <button type="button" aria-label={t("previousPeriod")} onClick={() => nudge(-1)} className={ctrlBtn}>
-          <ChevronLeft className="h-4 w-4" />
-        </button>
-        <button
-          type="button"
-          onClick={goToday}
-          className="flex items-center gap-1.5 rounded-sm border border-line/25 px-3 py-1.5 font-caps text-[0.58rem] uppercase tracking-[0.14em] text-parch/80 transition-colors hover:border-gold hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60"
-        >
-          <CalendarDays className="h-3.5 w-3.5" />
-          {t("today")}
-        </button>
-        <button type="button" aria-label={t("nextPeriod")} onClick={() => nudge(1)} className={ctrlBtn}>
-          <ChevronRight className="h-4 w-4" />
-        </button>
-        <span className="ml-1 font-mono text-[0.68rem] text-muted">{range(visibleFromIso, visibleToIso)}</span>
-        {loading ? <Loader2 aria-hidden className="h-3.5 w-3.5 animate-spin text-muted-2" /> : null}
+        <div className={cn("flex min-w-0 items-center gap-2", timelineOnly)}>
+          <button type="button" aria-label={t("previousPeriod")} onClick={() => nudge(-1)} className={ctrlBtn}>
+            <ChevronLeft className="h-4 w-4" />
+          </button>
+          <button
+            type="button"
+            onClick={goToday}
+            className="flex h-8 items-center gap-1.5 rounded-sm border border-line/25 px-3 text-[0.82rem] text-parch/85 transition-colors hover:border-gold hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60"
+          >
+            <CalendarDays className="h-3.5 w-3.5" />
+            {t("today")}
+          </button>
+          <button type="button" aria-label={t("nextPeriod")} onClick={() => nudge(1)} className={ctrlBtn}>
+            <ChevronRight className="h-4 w-4" />
+          </button>
+          {pxPerDay ? (
+            <span className="ml-1 min-w-0 truncate text-[0.9rem] text-parch" aria-live="polite">
+              {range(visibleFromIso, visibleToIso)}
+            </span>
+          ) : null}
+          {loading ? <Loader2 aria-hidden className="h-3.5 w-3.5 shrink-0 animate-spin text-muted-2" /> : null}
+        </div>
 
-        <div className="ml-auto flex items-center gap-1">
-          {CALENDAR_ZOOMS.map((z) => (
-            <button
-              key={z}
-              type="button"
-              onClick={() => onZoom(z)}
-              className={cn(
-                "rounded-sm border px-2.5 py-1 font-caps text-[0.55rem] uppercase tracking-[0.14em] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60",
-                span === z ? "border-gold/50 bg-gold/12 text-gold-bright" : "border-line/25 text-muted hover:border-gold/40 hover:text-gold",
-              )}
-            >
-              {t(z === 14 ? "twoWeeks" : z === 30 ? "oneMonth" : "twoMonths")}
-            </button>
-          ))}
+        <div className="ml-auto flex flex-wrap items-center gap-2">
+          <div role="group" aria-label={tc("zoom")} className={cn("flex overflow-hidden rounded-sm border border-line/25", timelineOnly)}>
+            {CALENDAR_ZOOMS.map((z) => (
+              <button key={z} type="button" aria-pressed={span === z} onClick={() => onZoom(z)} className={segBtn(span === z)}>
+                {t(z === 14 ? "twoWeeks" : z === 30 ? "oneMonth" : "twoMonths")}
+              </button>
+            ))}
+          </div>
+          <div role="group" aria-label={tc("view")} className="flex overflow-hidden rounded-sm border border-line/25">
+            {(["timeline", "list"] as const).map((v) => (
+              <button
+                key={v}
+                type="button"
+                aria-pressed={effectiveView === v}
+                onClick={() => onViewChange(v)}
+                className={segBtn(effectiveView === v)}
+              >
+                {tc(v === "timeline" ? "viewTimeline" : "viewList")}
+              </button>
+            ))}
+          </div>
           {headerRight}
         </div>
       </div>
@@ -621,7 +600,7 @@ export function CalendarTimeline({
       <div className="mb-3 flex flex-wrap gap-1.5">
         {CATEGORIES.map((cat) => {
           const on = active.has(cat);
-          const tint = CATEGORY_TINT[cat];
+          const tint = categoryTint(cat);
           return (
             <button
               key={cat}
@@ -629,114 +608,162 @@ export function CalendarTimeline({
               aria-pressed={on}
               onClick={() => onToggleCat(cat)}
               className={cn(
-                "inline-flex items-center gap-1.5 rounded-sm border px-2.5 py-1 font-caps text-[0.55rem] uppercase tracking-[0.14em] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60",
-                on ? "text-parch" : "text-muted opacity-55",
+                "inline-flex h-8 items-center gap-1.5 rounded-sm border px-2.5 text-[0.8rem] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60",
+                on ? "text-parch" : "border-line/15 text-muted",
               )}
-              style={{ borderColor: on ? tint : "var(--color-line)", background: on ? `${tint}1f` : "transparent" }}
+              style={
+                on
+                  ? {
+                      borderColor: `color-mix(in srgb, ${tint} 45%, transparent)`,
+                      background: `color-mix(in srgb, ${tint} 10%, transparent)`,
+                    }
+                  : undefined
+              }
             >
-              <span className="h-1.5 w-1.5 rounded-full" style={{ background: tint }} />
-              {t(CATEGORY_KEY[cat])}
+              <span className="h-2 w-2 rounded-[2px]" style={{ background: tint, opacity: on ? 1 : 0.35 }} />
+              {tc(`plural.${CATEGORY_SLUG[cat]}`)}
             </button>
           );
         })}
       </div>
 
-      {/* frise défilable */}
-      <div className="relative">
+      {/* ------------------------------------------------------- frise */}
+      <div className={cn("relative", timelineOnly)}>
         <div
           ref={scrollerRef}
           onScroll={handleScroll}
           tabIndex={0}
           role="group"
           aria-label={t("eventCalendar")}
-          className="custom-scrollbar overflow-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/40"
-          style={{ maxHeight: full ? "min(68vh, 720px)" : 360 }}
+          className="custom-scrollbar relative overflow-auto border-t border-line/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/40"
+          style={{ maxHeight: scrollerHeight }}
         >
-          <div className="relative" style={{ width: contentW || "100%", height: bodyH }}>
-            {/* bandeau des mois (reste visible en défilement vertical) */}
-            <div className="sticky top-0 z-[6] h-[22px] bg-panel/95 backdrop-blur-[2px]">
-              {bands.map((b) => (
-                <div
-                  key={b.iso}
-                  className="absolute top-0 h-[22px] overflow-hidden border-l border-line/20"
-                  style={{ left: b.offsetDays * pxPerDay, width: b.days * pxPerDay }}
-                >
-                  {/* collé au bord gauche : le mois en cours reste nommé même
-                      quand son bandeau commence hors écran */}
-                  <span className="sticky left-0 inline-block whitespace-nowrap py-[4px] pl-2 font-caps text-[0.55rem] uppercase leading-none tracking-[0.16em] text-parch/60">
-                    {monthFmt.format(new Date(b.iso))}
+          <div className="relative" style={{ width: contentW || "100%" }}>
+            {/* bandeau des mois + graduations, collé en haut au défilement vertical */}
+            <div className="sticky top-0 z-[6] bg-panel" style={{ height: HEADER_H }}>
+              {bands.map((b) => {
+                const bandLeft = b.offsetDays * pxPerDay;
+                const bandWidth = b.days * pxPerDay;
+                // Le mois en cours reste nommé au bord gauche quand son bandeau
+                // commence hors écran. Calculé, pas `sticky` : un `sticky` dans
+                // ce bandeau déjà collé en haut ne suit pas le défilement horizontal.
+                const shift = Math.max(0, Math.min(scrollLeft - bandLeft, bandWidth - MONTH_LABEL_W));
+                return (
+                  <div
+                    key={b.iso}
+                    className="absolute top-0 h-[22px] overflow-hidden border-l border-line/25"
+                    style={{ left: bandLeft, width: bandWidth }}
+                  >
+                    <span
+                      className="block whitespace-nowrap px-2 pt-[5px] font-caps text-[0.66rem] uppercase leading-none tracking-[0.14em] text-parch"
+                      style={{ transform: `translateX(${shift}px)` }}
+                    >
+                      {fmt.monthYear.format(date(b.iso))}
+                    </span>
+                  </div>
+                );
+              })}
+              {/* graduations : le libellé est centré sur la colonne de SON jour */}
+              {ticks.map((tick) =>
+                Math.abs(tick.offsetDays - todayOffset) * pxPerDay < 30 ? null : (
+                  <span
+                    key={tick.iso}
+                    className="absolute top-[25px] -translate-x-1/2 whitespace-nowrap text-[0.72rem] tabular-nums text-muted-2"
+                    style={{ left: (tick.offsetDays + 0.5) * pxPerDay }}
+                  >
+                    {tickStep === 1 ? fmt.dayNumber.format(date(tick.iso)) : short(tick.iso)}
                   </span>
-                </div>
-              ))}
-            </div>
-
-            {/* graduations du jour : le libellé est centré sur la colonne de SON
-                jour. Posé sur le trait de début, « 30 sept. » coiffait la fin du
-                29 : une barre qui s'arrête le 29 semblait aller jusqu'au 30. */}
-            <div className="absolute inset-x-0 z-[1]" style={{ top: 22, height: HEADER_H - 22 }}>
-              {ticks.map((tick) => (
+                ),
+              )}
+              {pxPerDay > 0 ? (
                 <span
-                  key={tick.iso}
-                  className="absolute top-0 -translate-x-1/2 font-mono text-[0.58rem] text-muted-2"
-                  style={{ left: (tick.offsetDays + 0.5) * pxPerDay }}
+                  className="absolute top-[23px] -translate-x-1/2 whitespace-nowrap rounded-[2px] bg-gold-bright px-1 text-[0.72rem] font-semibold tabular-nums text-ink"
+                  style={{ left: (todayOffset + 0.5) * pxPerDay }}
                 >
-                  {tickStep === 1 ? dayNumFmt.format(new Date(tick.iso)) : dayFmt.format(new Date(tick.iso))}
+                  {tickStep === 1 ? fmt.dayNumber.format(date(today)) : short(today)}
                 </span>
-              ))}
+              ) : null}
             </div>
 
-            {/* filets verticaux des graduations */}
-            <div aria-hidden className="absolute inset-x-0 z-0" style={{ top: HEADER_H, bottom: 0 }}>
+            {/* fonds : passé assombri, filets des graduations, repères de version */}
+            <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 z-0" style={{ top: HEADER_H }}>
+              {pxPerDay > 0 ? <span className="absolute inset-y-0 left-0 bg-ink/25" style={{ width: Math.max(0, todayLeft) }} /> : null}
               {ticks.map((tick) => (
-                <span
-                  key={tick.iso}
-                  className="absolute inset-y-0 w-px bg-line/10"
-                  style={{ left: tick.offsetDays * pxPerDay }}
-                />
+                <span key={tick.iso} className="absolute inset-y-0 w-px bg-line/[0.07]" style={{ left: tick.offsetDays * pxPerDay }} />
+              ))}
+              {bands.map((b) => (
+                <span key={b.iso} className="absolute inset-y-0 w-px bg-line/20" style={{ left: b.offsetDays * pxPerDay }} />
+              ))}
+              {versionMarks.map((v) => (
+                <span key={v.version} className="absolute inset-y-0 border-l border-dashed border-gold/45" style={{ left: v.offset * pxPerDay }} />
               ))}
             </div>
 
-            {/* repère « aujourd'hui » — traverse toute la frise */}
+            {/* repère « maintenant » — traverse toute la frise */}
             {pxPerDay > 0 ? (
-              <>
-                <span
-                  aria-hidden
-                  className="pointer-events-none absolute z-[5] w-[2px] bg-gold-bright"
-                  style={{
-                    left: todayLeft,
-                    top: 22,
-                    height: bodyH - 22,
-                    boxShadow: "0 0 10px 1px rgba(233,196,106,0.55)",
-                  }}
-                />
-                <span
-                  className="pointer-events-none absolute z-[7] -translate-x-1/2 whitespace-nowrap rounded-[3px] border border-gold/60 bg-ink/90 px-1.5 py-0.5 font-caps text-[0.5rem] uppercase leading-none tracking-[0.14em] text-gold-bright"
-                  style={{ left: todayLeft, top: 24 }}
-                >
-                  {t("todayShort")}
-                </span>
-              </>
+              <span
+                aria-hidden
+                className="pointer-events-none absolute bottom-0 z-[5] w-[2px] -translate-x-1/2 bg-gold-bright opacity-60 shadow-[0_0_8px_rgba(233,196,106,0.5)]"
+                style={{ left: todayLeft, top: HEADER_H - 4 }}
+              />
             ) : null}
 
-            {/* barres */}
-            {renderedBars.map((b) => {
-              const realWidth = Math.max(b.lengthDays * pxPerDay, 2);
+            {/* rangée des versions */}
+            <div className="relative z-[2]" style={{ height: VERSION_ROW_H }}>
+              {versionMarks.map((v) => (
+                <span key={v.version} className="absolute top-1" style={{ left: v.offset * pxPerDay + 4 }}>
+                  <span className="block whitespace-nowrap rounded-[2px] border border-line/30 bg-panel px-1.5 py-0.5 font-caps text-[0.6rem] uppercase leading-none tracking-[0.12em] text-gold">
+                    {tc("versionMark", { version: v.version })}
+                  </span>
+                </span>
+              ))}
+            </div>
+
+            {/* une section par catégorie */}
+            {sections.map((section) => {
+              const folded = collapsed.has(section.category);
+              const tint = categoryTint(section.category);
+              const rendered = section.bars.filter((b) => onScreen(b, tickFrom, tickTo));
               return (
-                <EventBar
-                  key={b.id}
-                  bar={b}
-                  left={b.offsetDays * pxPerDay}
-                  width={Math.max(realWidth, MIN_BAR_PX)}
-                  realWidth={realWidth}
-                  top={HEADER_H + b.lane * (laneH + laneGap)}
-                  height={laneH}
-                  selected={selected?.id === b.id}
-                  rangeLabel={range(b.start, b.end)}
-                  startLabel={pillFmt.format(new Date(b.start))}
-                  onSelect={() => setSelected((s) => (s?.id === b.id ? null : b))}
-                  onHover={(e) => setTip({ bar: b, x: e.clientX, y: e.clientY })}
-                  onLeave={() => setTip((p) => (p?.bar.id === b.id ? null : p))}
-                />
+                <section key={section.category} className="relative z-[1] pb-1">
+                  <button
+                    type="button"
+                    onClick={() => toggleSection(section.category)}
+                    aria-expanded={!folded}
+                    className="sticky left-0 mt-1 inline-flex h-8 items-center gap-2 rounded-[2px] bg-panel pl-1 pr-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60"
+                  >
+                    <ChevronDown className={cn("h-3.5 w-3.5 text-muted transition-transform", folded && "-rotate-90")} aria-hidden />
+                    <span aria-hidden className="h-2 w-2 rounded-[2px]" style={{ background: tint }} />
+                    <span className="font-caps text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-parch">
+                      {tc(`plural.${CATEGORY_SLUG[section.category]}`)}
+                    </span>
+                    <span className="text-[0.8rem] text-muted">{tc("liveCount", { count: section.live })}</span>
+                  </button>
+                  {folded ? null : (
+                    <div className="relative" style={{ height: Math.max(section.lanes, 1) * (LANE_H + LANE_GAP) }}>
+                      {rendered.map((b) => {
+                        const width = Math.max(b.lengthDays * pxPerDay - 2, MIN_BAR_PX);
+                        return (
+                          <EventBar
+                            key={b.id}
+                            bar={b}
+                            left={b.offsetDays * pxPerDay + 1}
+                            width={width}
+                            top={b.lane * (LANE_H + LANE_GAP)}
+                            selected={selectedId === b.id}
+                            label={`${b.title}, ${range(b.start, b.end)}`}
+                            onSelect={(id) => {
+                              setTip(null);
+                              onSelect(id);
+                            }}
+                            onHover={(bar, x, y) => setTip({ bar, x, y })}
+                            onLeave={() => setTip(null)}
+                          />
+                        );
+                      })}
+                    </div>
+                  )}
+                </section>
               );
             })}
           </div>
@@ -744,7 +771,7 @@ export function CalendarTimeline({
 
         {/* rien dans la période regardée */}
         {pxPerDay > 0 && barsOnScreen === 0 ? (
-          <p className="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 text-center font-mono text-[0.7rem] text-muted-2">
+          <p className="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 text-center text-sm text-muted-2">
             {t("noEvents")}
           </p>
         ) : null}
@@ -755,96 +782,92 @@ export function CalendarTimeline({
             type="button"
             onClick={goToday}
             className={cn(
-              "absolute top-1/2 z-[8] flex -translate-y-1/2 items-center gap-1 rounded-sm border border-gold/50 bg-ink/90 px-2 py-1 font-caps text-[0.5rem] uppercase tracking-[0.14em] text-gold-bright shadow-[0_4px_16px_rgba(0,0,0,0.5)] transition-colors hover:border-gold hover:bg-ink",
+              "absolute top-[58px] z-[8] flex h-8 items-center gap-1 rounded-sm border border-gold/60 bg-ink/90 px-2.5 text-[0.8rem] text-gold-bright shadow-[0_4px_16px_rgba(0,0,0,0.5)] transition-colors hover:border-gold",
               todayOffScreen === -1 ? "left-2" : "right-4",
             )}
           >
-            {todayOffScreen === -1 ? <ChevronLeft className="h-3 w-3" /> : null}
-            {t("todayShort")}
-            {todayOffScreen === 1 ? <ChevronRight className="h-3 w-3" /> : null}
+            {todayOffScreen === -1 ? <ChevronLeft className="h-3.5 w-3.5" aria-hidden /> : null}
+            {t("today")}
+            {todayOffScreen === 1 ? <ChevronRight className="h-3.5 w-3.5" aria-hidden /> : null}
           </button>
         ) : null}
       </div>
 
-      {/* détail de l'événement sélectionné */}
-      {selected ? (
-        <div className="mt-3 overflow-hidden rounded-sm border border-line/20 bg-ink/40">
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 p-3">
-            <span className="font-display text-sm text-parch">{selected.title}</span>
-            <span className="font-caps text-[0.55rem] uppercase tracking-[0.14em] text-muted">{t(CATEGORY_KEY[selected.category])}</span>
-            <span className="font-mono text-[0.68rem] text-parch/75">
-              {longFmt.format(new Date(selected.start))} → {longFmt.format(new Date(selected.end))}
-            </span>
-            {(() => {
-              const info = detailInfo(selected);
-              return (
-                <span className={cn("font-caps text-[0.58rem] uppercase tracking-[0.14em]", info.tone)}>
-                  {info.label}
-                  {info.note ? <span className="ml-1.5 text-muted normal-case tracking-normal">· {info.note}</span> : null}
-                </span>
-              );
-            })()}
-            {selected.href ? (
-              <Link
-                href={selected.href}
-                className="ml-auto inline-flex items-center gap-1 font-caps text-[0.58rem] uppercase tracking-[0.14em] text-gold hover:text-gold-bright"
-              >
-                {t("view")} <ExternalLink className="h-3 w-3" />
-              </Link>
-            ) : null}
-            {selected.description ? (
-              <span className="w-full font-sans text-xs leading-relaxed text-parch/70">{selected.description}</span>
-            ) : null}
-            {selected.sourceUrl ? (
-              <a
-                href={selected.sourceUrl}
-                target="_blank"
-                rel="noreferrer noopener"
-                className="inline-flex items-center gap-1 font-caps text-[0.55rem] uppercase tracking-[0.14em] text-muted hover:text-gold"
-              >
-                {t("officialAnnouncement")} <ExternalLink className="h-2.5 w-2.5" />
-              </a>
-            ) : null}
-          </div>
-        </div>
-      ) : (
-        <p className="mt-3 font-mono text-[0.6rem] text-muted-2">{t("calendarHint")}</p>
-      )}
+      {/* ------------------------------------------------------- liste */}
+      <div className={listOnly}>
+        <CalendarAgenda
+          events={visibleEvents}
+          today={today}
+          dayFraction={dayFraction}
+          selectedId={selectedId}
+          onSelect={onSelect}
+        />
+      </div>
 
-      {/* tooltip au survol (position fixe, suit le curseur → échappe l'overflow) */}
-      {tip ? (
-        <div
-          className="pointer-events-none fixed z-[100] w-64 overflow-hidden rounded-sm border border-gold/30 bg-panel/95 shadow-[0_12px_32px_rgba(0,0,0,0.6)] backdrop-blur"
-          style={{
-            left: Math.min(tip.x + 14, (typeof window !== "undefined" ? window.innerWidth : 9999) - 272),
-            top: tip.y + 14,
-          }}
-        >
-          {tip.bar.image ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={tip.bar.image} alt="" aria-hidden className="h-24 w-full object-cover object-[50%_28%]" />
-          ) : null}
-          <div className="p-2.5">
-            <div className="font-display text-sm text-parch">{tip.bar.title}</div>
-            <div className="mt-0.5 font-caps text-[0.5rem] uppercase tracking-[0.14em]" style={{ color: tip.bar.tint }}>
-              {t(CATEGORY_KEY[tip.bar.category])}
-            </div>
-            <div className="mt-1.5 font-mono text-[0.62rem] text-parch/75">{range(tip.bar.start, tip.bar.end)}</div>
-            {(() => {
-              const info = detailInfo(tip.bar);
-              return (
-                <div className={cn("mt-0.5 font-caps text-[0.55rem] uppercase tracking-[0.12em]", info.tone)}>
-                  {info.label}
-                  {info.note ? ` · ${info.note}` : ""}
-                </div>
-              );
-            })()}
-            {tip.bar.description ? (
-              <p className="mt-1.5 font-sans text-[0.7rem] leading-snug text-parch/70">{tip.bar.description}</p>
-            ) : null}
-          </div>
-        </div>
+      {/* infobulle au survol (position fixe : échappe au défilement de la frise) */}
+      {tip ? <BarTooltip bar={tip.bar} x={tip.x} y={tip.y} today={today} statusText={statusText} range={range} /> : null}
+
+      {selectedId ? (
+        <CalendarEventSheet
+          eventId={selectedId}
+          initialEvent={eventsById.get(selectedId)}
+          today={today}
+          dayFraction={dayFraction}
+          onClose={closeSheet}
+          onSelect={onSelect}
+          onLocate={locate}
+        />
       ) : null}
+    </div>
+  );
+}
+
+function BarTooltip({
+  bar,
+  x,
+  y,
+  today,
+  statusText,
+  range,
+}: {
+  bar: CalendarBar;
+  x: number;
+  y: number;
+  today: string;
+  statusText: (ev: CalendarBar, today: string) => string;
+  range: (a: string, b: string) => string;
+}) {
+  const t = useTranslations("homeHub");
+  const ref = useRef<HTMLDivElement>(null);
+  const [size, setSize] = useState({ w: 264, h: 180 });
+
+  useLayoutEffect(() => {
+    const el = ref.current;
+    if (el) setSize({ w: el.offsetWidth, h: el.offsetHeight });
+  }, [bar.id]);
+
+  const left = Math.min(x + 14, window.innerWidth - size.w - 8);
+  const top = y + 16 + size.h > window.innerHeight ? y - size.h - 12 : y + 16;
+
+  return (
+    <div
+      ref={ref}
+      role="tooltip"
+      className="pointer-events-none fixed z-[100] w-64 overflow-hidden rounded-sm border border-line/30 bg-panel shadow-[0_12px_32px_rgba(0,0,0,0.6)]"
+      style={{ left, top }}
+    >
+      {bar.image ? (
+        <span className="relative block h-24 w-full bg-ink-2">
+          <Image src={bar.image} alt="" fill sizes="256px" quality={65} unoptimized={!bar.image.startsWith("/")} className="object-cover object-[50%_28%]" />
+        </span>
+      ) : null}
+      <div className="p-2.5">
+        <div className="break-words text-sm font-medium text-parch">{bar.title}</div>
+        <div className="mt-0.5 text-[0.78rem] text-muted">
+          {t(CATEGORY_KEY[bar.category])} · {range(bar.start, bar.end)}
+        </div>
+        <div className={cn("mt-0.5 text-[0.78rem]", STATUS_TONE[bar.status])}>{statusText(bar, today)}</div>
+      </div>
     </div>
   );
 }

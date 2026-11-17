@@ -802,3 +802,23 @@ body:has(.map-page) .grecaptcha-badge {
   transform-origin: left center;
   animation: dna-bar-grow 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
+
+/* Fiche d'un événement du calendrier : panneau qui entre par la droite sur
+   PC, modal qui monte du bas sur téléphone. */
+@keyframes dna-sheet-in-right {
+  from { transform: translateX(100%); }
+  to { transform: none; }
+}
+@keyframes dna-sheet-in-up {
+  from { transform: translateY(100%); }
+  to { transform: none; }
+}
+@keyframes dna-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.dna-sheet { animation: dna-sheet-in-right 0.24s cubic-bezier(0.22, 1, 0.36, 1) both; }
+@media (max-width: 767px) {
+  .dna-sheet { animation-name: dna-sheet-in-up; }
+}
+.dna-fade-in { animation: dna-fade-in 0.2s ease-out both; }
