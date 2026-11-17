@@ -13,7 +13,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 /** Toggle de vote (optimistic UI). */
-export const Interactif: Story = {
+export const Interactive: Story = { name: "Interactif",
   render: function Render() {
     const [voted, setVoted] = useState(false);
     const base = 42;
@@ -28,6 +28,6 @@ export const Interactif: Story = {
 };
 
 export const Vote: Story = { args: { count: 128, voted: true } };
-export const NonConnecte: Story = { args: { count: 17, disabled: true } };
-export const LectureSeule: Story = { args: { count: 256, voted: true, readOnly: true } };
-export const Petit: Story = { args: { count: 9, size: "sm" } };
+export const SignedOut: Story = { name: "Non connecté", args: { count: 17, disabled: true } };
+export const ReadOnly: Story = { name: "Lecture seule", args: { count: 256, voted: true, readOnly: true } };
+export const Small: Story = { name: "Petit", args: { count: 9, size: "sm" } };

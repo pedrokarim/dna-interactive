@@ -11,4 +11,4 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Barre: Story = { render: (args) => <div className="w-72"><DnaProgress {...args} /></div> };
+export const Bar: Story = { name: "Barre", render: (args) => <div className="w-72"><DnaProgress {...args} /></div> };

@@ -12,4 +12,4 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Date_: Story = { name: "Date", args: { children: "03·06" } };
-export const Valeur: Story = { args: { children: "Lv.20" } };
+export const Value: Story = { name: "Valeur", args: { children: "Lv.20" } };

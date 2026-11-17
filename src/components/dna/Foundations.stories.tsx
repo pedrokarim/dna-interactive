@@ -12,7 +12,7 @@ import { useEffect, useRef } from "react";
 
 type Token = { name: string; token: string };
 
-const NOYAU: Token[] = [
+const CORE: Token[] = [
   { name: "Ink", token: "--color-ink" },
   { name: "Ink 2", token: "--color-ink-2" },
   { name: "Panneau", token: "--color-panel" },
@@ -35,7 +35,7 @@ const ELEMENTS: Token[] = [
   { name: "Umbro", token: "--color-umbro" },
 ];
 
-const RARETES: Token[] = [1, 2, 3, 4, 5, 6].map((n) => ({
+const RARITIES: Token[] = [1, 2, 3, 4, 5, 6].map((n) => ({
   name: n === 6 ? `${n} — calamité` : `Rareté ${n}`,
   token: `--color-rarity-${n}`,
 }));
@@ -103,10 +103,10 @@ const meta = {
 export default meta;
 type Story = StoryObj;
 
-export const Noyau: Story = { render: () => <Swatches items={NOYAU} theme="dark" /> };
+export const Core: Story = { name: "Noyau", render: () => <Swatches items={CORE} theme="dark" /> };
 
 /** Mêmes tokens, valeurs du thème clair. */
-export const NoyauClair: Story = { render: () => <Swatches items={NOYAU} theme="light" /> };
+export const CoreLight: Story = { name: "Noyau, thème clair", render: () => <Swatches items={CORE} theme="light" /> };
 
 export const Elements: Story = { render: () => <Swatches items={ELEMENTS} theme="dark" /> };
 
@@ -114,6 +114,6 @@ export const Elements: Story = { render: () => <Swatches items={ELEMENTS} theme=
  *  anemo tombent sous 2:1 sur l'ivoire. */
 export const ElementsClair: Story = { render: () => <Swatches items={ELEMENTS} theme="light" /> };
 
-export const Raretes: Story = { render: () => <Swatches items={RARETES} theme="dark" /> };
+export const Rarities: Story = { name: "Raretés", render: () => <Swatches items={RARITIES} theme="dark" /> };
 
-export const RaretesClair: Story = { render: () => <Swatches items={RARETES} theme="light" /> };
+export const RaritiesLight: Story = { name: "Raretés, thème clair", render: () => <Swatches items={RARITIES} theme="light" /> };

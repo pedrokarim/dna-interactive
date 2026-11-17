@@ -81,19 +81,19 @@ function Demo({ max, initial }: { max: number; initial: string[] }) {
 }
 
 /** Variante ordinaire : trois emplacements. */
-export const VarianteOrdinaire: Story = {
+export const OrdinaryVariant: Story = { name: "Variante ordinaire",
   args: { groups: GROUPS, selected: [], max: 3, onChange: () => {}, countLabel: "" },
   render: () => <Demo max={3} initial={["t-brutal"]} />,
 };
 
 /** Variante scintillante : un emplacement de plus, et c'est tout l'écart. */
-export const VarianteScintillante: Story = {
+export const ShinyVariant: Story = { name: "Variante scintillante",
   args: { groups: GROUPS, selected: [], max: 4, onChange: () => {}, countLabel: "" },
   render: () => <Demo max={4} initial={["t-brutal", "t-temeraire"]} />,
 };
 
 /** Limite atteinte : choisir encore remplace le plus ancien. */
-export const EmplacementsPleins: Story = {
+export const SlotsFull: Story = { name: "Emplacements pleins",
   args: { groups: GROUPS, selected: [], max: 3, onChange: () => {}, countLabel: "" },
   render: () => <Demo max={3} initial={["t-brutal", "t-cuirasse", "t-avide"]} />,
 };

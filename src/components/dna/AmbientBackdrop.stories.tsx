@@ -58,13 +58,13 @@ const renderStage: Story["render"] = (args) => (
 export const Standard: Story = { render: renderStage };
 
 /** Pour les pages denses (listes, tableaux) : le décor s’efface. */
-export const Discret: Story = {
+export const Subtle: Story = { name: "Discret",
   args: { intensity: "subtle" },
   render: renderStage,
 };
 
 /** Pour une page vitrine : le décor assume sa présence. */
-export const Marque: Story = {
+export const Brand: Story = { name: "Marque",
   args: { intensity: "bold" },
   render: renderStage,
 };

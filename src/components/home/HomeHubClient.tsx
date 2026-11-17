@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import { GlyphIcons } from "@/components/icons/GameGlyph";
 import { Link } from "@/i18n/navigation";
-import { DnaCornerBrackets, DnaNouveau, DnaTag, DnaRibbon, DnaSectionMark, cn } from "@/components/dna";
+import { DnaCornerBrackets, DnaNewTab, DnaTag, DnaRibbon, DnaSectionMark, cn } from "@/components/dna";
 import { EventCalendar } from "@/components/home/EventCalendar";
 import { TheatreNow } from "@/components/theatre/TheatreTracker";
 import type { TheatreRotationView } from "@/lib/theatre/featured";
@@ -222,7 +222,7 @@ function FeatureBadgeTag({ feature, className }: { feature?: FeatureKey; classNa
   const t = useTranslations("homeHub");
   const badges = useContext(FeatureBadgesContext);
   const badge = feature ? badges[feature] : undefined;
-  if (badge === "new") return <DnaNouveau className={className}>{t("new")}</DnaNouveau>;
+  if (badge === "new") return <DnaNewTab className={className}>{t("new")}</DnaNewTab>;
   if (badge === "beta")
     return (
       <span className={cn("rounded-sm border border-hydro/40 bg-hydro/10 px-1.5 py-0.5 font-caps text-[0.5rem] uppercase tracking-[0.16em] text-hydro", className)}>

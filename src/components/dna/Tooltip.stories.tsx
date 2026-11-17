@@ -11,7 +11,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Survol: Story = {
+export const Hover: Story = { name: "Survol",
   render: () => (
     <DnaTooltip label="Astuce · texte d'aide">
       <DnaButton variant="ghost">Survol</DnaButton>

@@ -73,7 +73,7 @@ export const Editable: Story = {
 };
 
 /** Quelques emplacements vides + lecture seule. */
-export const LectureSeule: Story = {
+export const ReadOnly: Story = { name: "Lecture seule",
   render: () => (
     <DnaConsonanceEditor
       slots={[mod(1, "Thunder", 1), { position: 2, item: null, track: null }, mod(3, "Water", 3), mod(4, "Fire", 2)]}

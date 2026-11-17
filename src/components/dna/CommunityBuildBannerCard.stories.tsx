@@ -21,7 +21,7 @@ const lineup = [
 ];
 const mainWeapon = { icon: ELEMENTS.Thunder.icon, name: "Katana Electro" };
 
-export const Carte: Story = {
+export const Card: Story = { name: "Carte",
   render: function Render() {
     const [voted, setVoted] = useState(false);
     return (
@@ -47,7 +47,7 @@ export const Carte: Story = {
   },
 };
 
-export const Grille: Story = {
+export const Grid: Story = { name: "Grille",
   render: () => (
     <div className="grid w-[60rem] grid-cols-4 gap-3">
       {[

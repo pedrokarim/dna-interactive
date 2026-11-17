@@ -3,7 +3,7 @@ import type { LucideIcon } from "lucide-react";
 import { cn } from "./cn";
 
 /** Onglet doré « Nouveau » en parallélogramme (bord haut d'une tuile). */
-export function DnaNouveau({ children = "Nouveau", className }: { children?: ReactNode; className?: string }) {
+export function DnaNewTab({ children = "Nouveau", className }: { children?: ReactNode; className?: string }) {
   return (
     <span
       className={cn(

@@ -42,7 +42,7 @@ export const Confirmation: Story = {
   },
 };
 
-export const Alerte: Story = {
+export const Alert: Story = { name: "Alerte",
   render: function Render() {
     const [open, setOpen] = useState(false);
     return (
@@ -62,7 +62,7 @@ export const Alerte: Story = {
   },
 };
 
-export const ModaleLibre: Story = {
+export const FreeformModal: Story = { name: "Modale libre",
   render: function Render() {
     const [open, setOpen] = useState(false);
     return (

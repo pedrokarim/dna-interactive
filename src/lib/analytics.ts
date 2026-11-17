@@ -70,9 +70,9 @@ function siteId(): string | undefined {
  * elles n'ont pas de secret dans l'URL, et les retirer aveuglerait la seule
  * question qu'on se pose à leur sujet.
  */
-const CHEMINS_EXCLUS = ["/*/admin/**", "/*/reset-password", "/*/verify-email"];
+const EXCLUDED_PATHS = ["/*/admin/**", "/*/reset-password", "/*/verify-email"];
 
-const PREFIXE_LOCALE = new RegExp(`^/(?:${locales.join("|")})(?=/|$)`);
+const LOCALE_PREFIX = new RegExp(`^/(?:${locales.join("|")})(?=/|$)`);
 
 /**
  * Retire le préfixe de locale du chemin mesuré.
@@ -90,10 +90,10 @@ const PREFIXE_LOCALE = new RegExp(`^/(?:${locales.join("|")})(?=/|$)`);
  * L'exclusion, elle, s'applique **avant** ce filtre et sur l'URL d'origine —
  * d'où les motifs préfixés plus haut.
  */
-function retirerLocale(rawUrl: string): string {
+function stripLocale(rawUrl: string): string {
   try {
     const url = new URL(rawUrl);
-    url.pathname = url.pathname.replace(PREFIXE_LOCALE, "") || "/";
+    url.pathname = url.pathname.replace(LOCALE_PREFIX, "") || "/";
     return url.toString();
   } catch {
     // Une URL illisible n'est pas une raison de perdre l'événement : le serveur
@@ -111,32 +111,32 @@ function retirerLocale(rawUrl: string): string {
  * qui identifie au montage parle avant que la racine ait initialisé. D'où la
  * petite file ci-dessous, qui rejoue ce qui est arrivé trop tôt.
  */
-let pret = false;
+let ready = false;
 
-type ActionDifferee =
+type DeferredAction =
   | { kind: "capture"; name: string; properties?: AnalyticsProperties }
   | { kind: "identify"; distinctId: string; properties?: AnalyticsProperties }
   | { kind: "reset" };
 
-const MAX_EN_ATTENTE = 50;
-const enAttente: ActionDifferee[] = [];
-let derniereIdentite: string | null = null;
+const MAX_PENDING = 50;
+const pending: DeferredAction[] = [];
+let lastIdentity: string | null = null;
 
-function jouer(action: ActionDifferee): void {
+function run(action: DeferredAction): void {
   if (action.kind === "capture") sarutobi.capture(action.name, action.properties as Props);
   if (action.kind === "identify") sarutobi.identify(action.distinctId, action.properties as Props);
   if (action.kind === "reset") sarutobi.reset();
 }
 
-function differer(action: ActionDifferee): void {
-  if (pret) {
-    jouer(action);
+function deferOrRun(action: DeferredAction): void {
+  if (ready) {
+    run(action);
     return;
   }
   // Borne haute : sans clé configurée, `pret` reste faux pour toujours et la
   // file grandirait sans fin.
-  if (enAttente.length >= MAX_EN_ATTENTE) enAttente.shift();
-  enAttente.push(action);
+  if (pending.length >= MAX_PENDING) pending.shift();
+  pending.push(action);
 }
 
 /**
@@ -145,9 +145,9 @@ function differer(action: ActionDifferee): void {
  * Sans clé configurée, la fonction ne fait rien : un développement ou une
  * préproduction non instrumentée doit fonctionner sans erreur ni requête.
  */
-export function demarrerAnalytics(locale: string): void {
+export function startAnalytics(locale: string): void {
   const site = siteId();
-  if (!site || pret) return;
+  if (!site || ready) return;
 
   sarutobi.init({
     siteId: site,
@@ -162,31 +162,31 @@ export function demarrerAnalytics(locale: string): void {
     // d'appliquer ce défaut, donc `refuserAnalytics()` est un opt-out durable
     // et non un réglage écrasé au rechargement suivant.
     consent: "granted",
-    excludePaths: CHEMINS_EXCLUS,
+    excludePaths: EXCLUDED_PATHS,
     environment: process.env.NEXT_PUBLIC_SARUTOBI_ENVIRONMENT?.trim() || "production",
     debug: process.env.NEXT_PUBLIC_SARUTOBI_DEBUG === "true",
     ...(process.env.NEXT_PUBLIC_SARUTOBI_ENABLE_LOCAL === "true" ? { enabled: true } : {}),
-    beforeSend: (event) => ({ ...event, u: retirerLocale(event.u) }),
+    beforeSend: (event) => ({ ...event, u: stripLocale(event.u) }),
   });
 
   sarutobi.setContext({ locale });
 
-  pret = true;
-  while (enAttente.length > 0) {
-    const action = enAttente.shift();
-    if (action) jouer(action);
+  ready = true;
+  while (pending.length > 0) {
+    const action = pending.shift();
+    if (action) run(action);
   }
 }
 
 /** Suit un changement de langue sans réinitialiser le SDK. */
-export function suivreLocale(locale: string): void {
-  if (pret) sarutobi.setContext({ locale });
+export function trackLocale(locale: string): void {
+  if (ready) sarutobi.setContext({ locale });
 }
 
 export function captureAnalytics(name: string, properties?: AnalyticsProperties): void {
   const normalized = name.trim();
   if (!normalized) return;
-  differer({ kind: "capture", name: normalized, properties });
+  deferOrRun({ kind: "capture", name: normalized, properties });
 }
 
 /**
@@ -200,14 +200,14 @@ export function identifyAnalytics(distinctId: string, properties?: AnalyticsProp
   const normalized = distinctId.trim();
   if (!normalized) return;
   const signature = `${normalized}:${JSON.stringify(properties ?? {})}`;
-  if (signature === derniereIdentite) return;
-  derniereIdentite = signature;
-  differer({ kind: "identify", distinctId: normalized, properties });
+  if (signature === lastIdentity) return;
+  lastIdentity = signature;
+  deferOrRun({ kind: "identify", distinctId: normalized, properties });
 }
 
 export function resetAnalytics(): void {
-  derniereIdentite = null;
-  differer({ kind: "reset" });
+  lastIdentity = null;
+  deferOrRun({ kind: "reset" });
 }
 
 /**
@@ -218,31 +218,31 @@ export function resetAnalytics(): void {
  * lui faut de quoi s'abonner — le SDK n'émet rien, donc on prévient nous-mêmes
  * depuis les deux seules fonctions qui changent l'état.
  */
-const abonnes = new Set<() => void>();
+const subscribers = new Set<() => void>();
 
-function prevenir(): void {
-  for (const abonne of abonnes) abonne();
+function notifySubscribers(): void {
+  for (const subscriber of subscribers) subscriber();
 }
 
-export function abonnerRefusAnalytics(callback: () => void): () => void {
-  abonnes.add(callback);
-  return () => abonnes.delete(callback);
+export function subscribeToAnalyticsOptOut(callback: () => void): () => void {
+  subscribers.add(callback);
+  return () => subscribers.delete(callback);
 }
 
 /** À appeler quand le visiteur accepte la mesure d'audience. */
-export function accepterAnalytics(): void {
+export function acceptAnalytics(): void {
   sarutobi.setConsent("granted");
-  prevenir();
+  notifySubscribers();
 }
 
 /** À appeler quand il la refuse, ou revient sur son accord. */
-export function refuserAnalytics(): void {
+export function refuseAnalytics(): void {
   sarutobi.setConsent("denied");
-  prevenir();
+  notifySubscribers();
 }
 
 /** État courant du refus, côté navigateur. */
-export function analyticsRefusee(): boolean {
+export function isAnalyticsOptedOut(): boolean {
   return sarutobi.isOptedOut();
 }
 
@@ -253,6 +253,6 @@ export function analyticsRefusee(): boolean {
  * l'utilisateur d'un instant d'hydratation n'est donc pas fiable, et c'est
  * pour ça que la bascule affiche un libellé d'attente au lieu de cet état.
  */
-export function analyticsRefuseeServeur(): boolean {
+export function isAnalyticsOptedOutOnServer(): boolean {
   return false;
 }

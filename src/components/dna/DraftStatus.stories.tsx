@@ -11,7 +11,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Tous: Story = {
+export const All: Story = { name: "Tous",
   render: () => (
     <div className="flex flex-col items-start gap-2">
       <DnaDraftStatus state="idle" />
@@ -23,5 +23,5 @@ export const Tous: Story = {
   ),
 };
 
-export const Enregistre: Story = { args: { state: "saved", savedAt: "14:32" } };
+export const Saved: Story = { name: "Enregistré", args: { state: "saved", savedAt: "14:32" } };
 export const Modifie: Story = { args: { state: "dirty" } };

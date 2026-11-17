@@ -15,7 +15,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {};
 
 /** En-tête de page complet : sur-titre étoilé, titre, filet, puis un libellé de section (losange). */
-export const EnTeteDePage: Story = {
+export const PageHeader: Story = { name: "En-tête de page",
   render: (args) => (
     <div className="max-w-xl">
       <DnaPageMark {...args} />

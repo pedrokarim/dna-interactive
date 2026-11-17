@@ -11,7 +11,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const DoubleFilet: Story = {
+export const DoubleRule: Story = { name: "Double filet",
   args: { inner: true },
   render: (args) => (
     <DnaPanel {...args} className="w-72 p-5">
@@ -22,7 +22,7 @@ export const DoubleFilet: Story = {
   ),
 };
 
-export const AvecFrise: Story = {
+export const WithFrieze: Story = { name: "Avec frise",
   args: { crest: true },
   render: (args) => (
     <DnaPanel {...args} className="w-72 px-5 pb-4 pt-6">

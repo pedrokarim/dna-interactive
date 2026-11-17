@@ -777,7 +777,7 @@ export function QuickBuildCard({
 
           {build.skillPriority.length > 0 && (() => {
             // Sort priorities desc, match each entry to a skill icon by skillIndex (1/2/3).
-            const orderedPrios = [...build.skillPriority].sort((a, b) => b.priority - a.priority);
+            const orderedPriorities = [...build.skillPriority].sort((a, b) => b.priority - a.priority);
             const skillIcons = character.skillIcons;
             const iconFor = (idx: number | undefined): string | null => {
               if (!idx) return null;
@@ -787,7 +787,7 @@ export function QuickBuildCard({
               return null;
             };
             // If skillIndex isn't set in data, fall back to priority order mapping to skill 1/2/3.
-            const items = orderedPrios.slice(0, 3).map((sk, i) => ({
+            const items = orderedPriorities.slice(0, 3).map((sk, i) => ({
               sk,
               iconSrc: iconFor(sk.skillIndex) ??
                 (i === 0 ? skillIcons.skill1.publicPath :

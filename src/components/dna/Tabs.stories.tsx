@@ -11,7 +11,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const FichePerso: Story = {
+export const CharacterSheet: Story = { name: "Fiche perso",
   render: function Render() {
     const [v, setV] = useState("attributs");
     return (

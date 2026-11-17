@@ -11,4 +11,4 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Recherche: Story = { args: { placeholder: "Rechercher un personnage…" } };
+export const Search: Story = { name: "Recherche", args: { placeholder: "Rechercher un personnage…" } };

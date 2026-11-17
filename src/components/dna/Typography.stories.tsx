@@ -4,7 +4,7 @@ const meta = { title: "DNA/Fondations/Typographie", parameters: { layout: "fulls
 export default meta;
 type Story = StoryObj;
 
-export const Echelle: Story = {
+export const Scale: Story = { name: "Échelle",
   render: () => (
     <div className="flex w-[44rem] max-w-full flex-col gap-5">
       <div className="flex items-baseline justify-between gap-6 border-b border-white/6 pb-3">

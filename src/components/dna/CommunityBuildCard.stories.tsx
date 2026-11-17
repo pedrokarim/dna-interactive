@@ -25,7 +25,7 @@ const weapons = [{ icon: ELEMENTS.Water.icon, name: "Mitrailleuse" }, { icon: EL
 const genimons = [{ icon: ELEMENTS.Light.icon, name: "Génimon A" }, { icon: ELEMENTS.Thunder.icon, name: "Génimon B" }];
 
 /** Carte communauté interactive (vote). */
-export const Communaute: Story = {
+export const Community: Story = { name: "Communauté",
   render: function Render() {
     const [voted, setVoted] = useState(false);
     return (
@@ -48,7 +48,7 @@ export const Communaute: Story = {
 };
 
 /** Build officiel (badge dédié). */
-export const Officiel: Story = {
+export const Official: Story = { name: "Officiel",
   render: () => (
     <div className="w-[34rem]">
       <DnaCommunityBuildCard
@@ -67,7 +67,7 @@ export const Officiel: Story = {
 };
 
 /** Liste/classement (plusieurs cartes). */
-export const Classement: Story = {
+export const Ranking: Story = { name: "Classement",
   render: () => (
     <div className="flex w-[34rem] flex-col gap-2">
       {[

@@ -12,8 +12,8 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Neutre: Story = { args: { children: "Katana", selected: false } };
-export const Selectionnee: Story = { args: { children: "Espadon", selected: true } };
+export const Neutral: Story = { name: "Neutre", args: { children: "Katana", selected: false } };
+export const Selected: Story = { name: "Sélectionnée", args: { children: "Espadon", selected: true } };
 
 export const Elements: Story = {
   render: function Render() {

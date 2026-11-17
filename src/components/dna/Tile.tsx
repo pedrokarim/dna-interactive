@@ -1,13 +1,13 @@
 import type { ReactNode } from "react";
 import { cn } from "./cn";
-import { DnaNouveau, DnaNotifDot } from "./Badges";
+import { DnaNewTab, DnaNotifDot } from "./Badges";
 
 export type DnaTileProps = {
   icon?: ReactNode;
   label: ReactNode;
   /** Sous-titre fantôme en capitales (ex. « HEURIS »). */
   ghost?: string;
-  nouveau?: boolean;
+  isNew?: boolean;
   notif?: boolean;
   wide?: boolean;
   onClick?: () => void;
@@ -15,7 +15,7 @@ export type DnaTileProps = {
 };
 
 /** Tuile de menu (icône fine + label + sous-titre fantôme). */
-export function DnaTile({ icon, label, ghost, nouveau, notif, wide, onClick, className }: DnaTileProps) {
+export function DnaTile({ icon, label, ghost, isNew, notif, wide, onClick, className }: DnaTileProps) {
   return (
     <button
       type="button"
@@ -26,7 +26,7 @@ export function DnaTile({ icon, label, ghost, nouveau, notif, wide, onClick, cla
         className,
       )}
     >
-      {nouveau ? <DnaNouveau className="absolute right-2.5 top-0" /> : null}
+      {isNew ? <DnaNewTab className="absolute right-2.5 top-0" /> : null}
       {notif ? <DnaNotifDot className="absolute right-1.5 top-1.5" /> : null}
       {icon ? <span className="relative z-[2] text-gold opacity-90">{icon}</span> : null}
       <span className="relative z-[2] font-display text-[1.15rem] text-parch group-hover:text-gold-bright">{label}</span>

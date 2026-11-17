@@ -53,7 +53,7 @@ export const Stats: Story = {
 };
 
 /** Priorités de compétences — avec sous-libellés. */
-export const Competences: Story = {
+export const Skills: Story = { name: "Compétences",
   render: function Render() {
     const [items, setItems] = useState<PriorityItem[]>([SKILL_POOL[2], SKILL_POOL[0]]);
     return (
@@ -65,7 +65,7 @@ export const Competences: Story = {
 };
 
 /** Lecture seule (affichage sur la fiche). */
-export const LectureSeule: Story = {
+export const ReadOnly: Story = { name: "Lecture seule",
   render: () => (
     <div className="w-80">
       <DnaPriorityList items={[STAT_POOL[0], STAT_POOL[1], STAT_POOL[2]]} readOnly />

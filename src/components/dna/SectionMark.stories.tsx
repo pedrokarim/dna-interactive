@@ -11,7 +11,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Chapeau: Story = {};
+export const Kicker: Story = { name: "Chapeau",};
 
 export const Compact: Story = { args: { size: "sm", children: "Arsenal" } };
 

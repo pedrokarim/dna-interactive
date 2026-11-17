@@ -66,7 +66,7 @@ export const Mods: Story = {
 };
 
 /** Armes : le filtre polarité disparaît automatiquement (aucun item n'en a). */
-export const Armes: Story = {
+export const Weapons: Story = { name: "Armes",
   render: function Render() {
     const [sel, setSel] = useState<string | null>(null);
     return (
@@ -90,7 +90,7 @@ export const Genimons: Story = {
 };
 
 /** Items déjà placés ailleurs (grisés + coche) pour éviter les doublons. */
-export const AvecItemsUtilises: Story = {
+export const WithUsedItems: Story = { name: "Avec objets utilisés",
   render: function Render() {
     const [sel, setSel] = useState<string | null>("mods-5100");
     return (
@@ -108,7 +108,7 @@ export const AvecItemsUtilises: Story = {
 };
 
 /** État vide après filtrage. */
-export const SansResultat: Story = {
+export const NoResults: Story = { name: "Sans résultat",
   render: () => (
     <div className="w-[40rem]">
       <DnaItemPicker items={WEAPONS.slice(0, 2)} emptyLabel="Aucune arme ne correspond." />

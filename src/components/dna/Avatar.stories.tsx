@@ -11,6 +11,6 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Biseau: Story = { args: { round: false } };
-export const Rond: Story = { args: { round: true, src: "/assets/characters/head/T_Head_Kami.png", alt: "Camilla" } };
-export const Repli: Story = { args: { src: null, fallback: "A" } };
+export const Bevel: Story = { name: "Biseau", args: { round: false } };
+export const Circle: Story = { name: "Rond", args: { round: true, src: "/assets/characters/head/T_Head_Kami.png", alt: "Camilla" } };
+export const Fallback: Story = { name: "Repli", args: { src: null, fallback: "A" } };

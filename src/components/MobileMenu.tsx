@@ -8,7 +8,7 @@ import { Link, usePathname } from "@/i18n/navigation";
 import { Menu, X, Map, Info, HelpCircle, Mail, Boxes, Users, ScrollText, Hammer } from "lucide-react";
 import { NAV_LINKS, NAVIGATION, SITE_CONFIG, ASSETS_PATHS } from "@/lib/constants";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
-import { DnaNouveau } from "@/components/dna/Badges";
+import { DnaNewTab } from "@/components/dna/Badges";
 
 const navIcons = {
   [NAVIGATION.map]: Map,
@@ -134,7 +134,7 @@ export default function MobileMenu({ authSlot }: { authSlot?: ReactNode }) {
                     {Icon && <Icon className="h-5 w-5 shrink-0" />}
                     <span>{tNav(navTranslationKeys[link.href] ?? "home")}</span>
                     {link.href === NAVIGATION.commissions ? (
-                      <DnaNouveau className="ml-auto" />
+                      <DnaNewTab className="ml-auto" />
                     ) : null}
                   </Link>
                 </li>

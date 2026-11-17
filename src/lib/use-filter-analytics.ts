@@ -28,27 +28,27 @@ const REPOS_MS = 1_200;
  */
 export function useFilterAnalytics(
   list: string,
-  filtres: AnalyticsProperties,
-  resultats: number,
+  filters: AnalyticsProperties,
+  results: number,
 ): void {
-  const signature = JSON.stringify({ filtres, resultats });
-  const precedente = useRef<string | null>(null);
+  const signature = JSON.stringify({ filters, results });
+  const previous = useRef<string | null>(null);
 
   useEffect(() => {
     // Premier rendu : on mémorise sans émettre.
-    if (precedente.current === null) {
-      precedente.current = signature;
+    if (previous.current === null) {
+      previous.current = signature;
       return;
     }
-    if (precedente.current === signature) return;
+    if (previous.current === signature) return;
 
-    const minuteur = setTimeout(() => {
-      precedente.current = signature;
-      captureAnalytics("list_filtered", { list, ...filtres, results: resultats });
+    const timer = setTimeout(() => {
+      previous.current = signature;
+      captureAnalytics("list_filtered", { list, ...filters, results: results });
     }, REPOS_MS);
 
-    return () => clearTimeout(minuteur);
-    // `signature` résume `filtres` et `resultats` : les lister en plus
+    return () => clearTimeout(timer);
+    // `signature` résume `filters` et `results` : les lister en plus
     // relancerait l'effet sur une nouvelle identité d'objet à contenu égal.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [signature, list]);

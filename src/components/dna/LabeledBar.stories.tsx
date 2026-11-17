@@ -11,7 +11,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Telemetrie: Story = {
+export const Telemetry: Story = { name: "Télémétrie",
   render: () => (
     <div className="flex w-72 flex-col gap-3">
       <DnaLabeledBar label="STABILITÉ" value={78} color="#a48ed0" />

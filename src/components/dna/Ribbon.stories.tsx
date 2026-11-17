@@ -11,4 +11,4 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Cartouche: Story = {};
+export const Label: Story = { name: "Cartouche",};

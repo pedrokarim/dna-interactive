@@ -11,7 +11,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Manche: Story = {
+export const Round: Story = { name: "Manche",
   render: function Render() {
     const [v, setV] = useState(30);
     return <DnaStepper value={v} min={1} max={99} suffix="/ 99" onChange={setV} />;

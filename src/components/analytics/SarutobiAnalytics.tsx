@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { useLocale } from "next-intl";
 
-import { demarrerAnalytics, suivreLocale } from "@/lib/analytics";
+import { startAnalytics, trackLocale } from "@/lib/analytics";
 
 /**
  * Démarre la mesure d'audience.
@@ -19,13 +19,13 @@ export function SarutobiAnalytics() {
   const locale = useLocale();
 
   useEffect(() => {
-    demarrerAnalytics(locale);
+    startAnalytics(locale);
   }, [locale]);
 
   // Séparé de l'initialisation : changer de langue en cours de visite ne
   // réinitialise pas le SDK, ça ne fait que déplacer le contexte du lot.
   useEffect(() => {
-    suivreLocale(locale);
+    trackLocale(locale);
   }, [locale]);
 
   return null;

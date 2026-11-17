@@ -11,4 +11,4 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Banniere: Story = { render: (args) => <div className="w-72"><DnaSeal {...args} /></div> };
+export const Banner: Story = { name: "Bannière", render: (args) => <div className="w-72"><DnaSeal {...args} /></div> };

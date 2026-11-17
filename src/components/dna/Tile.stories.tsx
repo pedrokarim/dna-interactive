@@ -17,7 +17,7 @@ const meta = {
   title: "DNA/Conteneurs/Tile",
   component: DnaTile,
   tags: ["autodocs"],
-  args: { label: "Événements", icon: Star, ghost: "Heuris", nouveau: true },
+  args: { label: "Événements", icon: Star, ghost: "Heuris", isNew: true },
 } satisfies Meta<typeof DnaTile>;
 export default meta;
 
@@ -25,6 +25,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Standard: Story = { render: (args) => <div className="w-36"><DnaTile {...args} /></div> };
 export const Large: Story = {
-  args: { label: "Arsenal", icon: Person, wide: true, nouveau: false, ghost: undefined },
+  args: { label: "Arsenal", icon: Person, wide: true, isNew: false, ghost: undefined },
   render: (args) => <div className="w-56"><DnaTile {...args} /></div>,
 };

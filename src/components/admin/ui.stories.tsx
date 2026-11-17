@@ -68,7 +68,7 @@ export const Actions: Story = {
   ),
 };
 
-export const Statuts: Story = {
+export const Statuses: Story = { name: "Statuts",
   render: () => (
     <div className="flex flex-col gap-6">
       <Row label="Pastilles d'état">
@@ -87,7 +87,7 @@ export const Statuts: Story = {
   ),
 };
 
-export const Tableau: Story = {
+export const Table: Story = { name: "Tableau",
   render: function Render() {
     const [page, setPage] = useState(2);
     return (
@@ -147,7 +147,7 @@ export const Tableau: Story = {
   },
 };
 
-export const Recherche: Story = {
+export const Search: Story = { name: "Recherche",
   render: function Render() {
     const [value, setValue] = useState("");
     return (
@@ -166,7 +166,7 @@ export const Recherche: Story = {
   },
 };
 
-export const EtatsVides: Story = {
+export const EmptyStates: Story = {
   name: "États vides",
   render: () => (
     <div className="grid gap-4 md:grid-cols-2">

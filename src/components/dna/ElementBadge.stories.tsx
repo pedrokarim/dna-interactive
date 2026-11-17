@@ -14,7 +14,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Unique: Story = { args: { element: "Thunder", showLabel: true } };
-export const TousLesElements: Story = {
+export const AllElements: Story = { name: "Tous les éléments",
   render: () => (
     <>
       {ELEMENT_KEYS.map((k) => (
@@ -23,4 +23,4 @@ export const TousLesElements: Story = {
     </>
   ),
 };
-export const AvecIcone: Story = { args: { element: "Fire", showLabel: true, useIcon: true } };
+export const WithIcon: Story = { name: "Avec icône", args: { element: "Fire", showLabel: true, useIcon: true } };

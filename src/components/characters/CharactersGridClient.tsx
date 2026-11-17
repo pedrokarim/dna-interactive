@@ -35,7 +35,7 @@ import FilterChips from "@/components/list/FilterChips";
 import ViewModeToggle from "@/components/list/ViewModeToggle";
 import { useListViewMode } from "@/components/list/useListViewMode";
 import { DnaCharacterCard } from "@/components/dna/CharacterCard";
-import { DnaNouveau } from "@/components/dna/Badges";
+import { DnaNewTab } from "@/components/dna/Badges";
 import { DnaCornerBrackets } from "@/components/dna/CornerBrackets";
 import { useDialogA11y } from "@/components/dna/useDialogA11y";
 import { cn } from "@/components/dna/cn";
@@ -843,7 +843,7 @@ export default function CharactersGridClient({
                   rarity={character.rarity ?? 5}
                   topLeft={
                     isCharacterRecent(character.charId) ? (
-                      <DnaNouveau>{tc("new")}</DnaNouveau>
+                      <DnaNewTab>{tc("new")}</DnaNewTab>
                     ) : null
                   }
                   weapons={character.weaponTags}

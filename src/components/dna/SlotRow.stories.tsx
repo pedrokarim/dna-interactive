@@ -46,7 +46,7 @@ const GENIMON_POOL: DnaPickerItem[] = Array.from({ length: 10 }, (_, i) => ({
 }));
 
 /** Armes (≤3, best/alt) — flux complet : ajout, remplacement, rang, retrait. */
-export const Armes: Story = {
+export const Weapons: Story = { name: "Armes",
   render: function Render() {
     const [entries, setEntries] = useState<SlotEntry[]>([
       { item: WEAPON_POOL[1], rank: "best" },
@@ -61,7 +61,7 @@ export const Armes: Story = {
 };
 
 /** Vide : seul le bouton « Ajouter » est présent. */
-export const Vide: Story = {
+export const Empty: Story = { name: "Vide",
   render: function Render() {
     const [entries, setEntries] = useState<SlotEntry[]>([]);
     return (
@@ -73,7 +73,7 @@ export const Vide: Story = {
 };
 
 /** Génimons sans rang (allowRanks=false). */
-export const GenimonsSansRang: Story = {
+export const GenimonsWithoutRank: Story = { name: "Géniemons sans rang",
   render: function Render() {
     const [entries, setEntries] = useState<SlotEntry[]>([{ item: GENIMON_POOL[0], rank: "best" }]);
     return (
@@ -92,7 +92,7 @@ export const GenimonsSansRang: Story = {
 };
 
 /** Lecture seule (affichage sur la fiche). */
-export const LectureSeule: Story = {
+export const ReadOnly: Story = { name: "Lecture seule",
   render: () => (
     <DnaSlotRow
       entries={[

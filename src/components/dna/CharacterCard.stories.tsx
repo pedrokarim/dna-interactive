@@ -18,9 +18,9 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Carte: Story = { render: (args) => <div className="w-52"><DnaCharacterCard {...args} /></div> };
+export const Card: Story = { name: "Carte", render: (args) => <div className="w-52"><DnaCharacterCard {...args} /></div> };
 
-export const Grille: Story = {
+export const Grid: Story = { name: "Grille",
   render: () => (
     <div className="grid w-[44rem] grid-cols-3 gap-4">
       <DnaCharacterCard name="Rhythm" subtitle="Appel du Phare" element="Thunder" weapons={["Katana", "Mitrailleuse"]} portrait="/assets/characters/gacha/T_Gacha_AvatarLise.png" />

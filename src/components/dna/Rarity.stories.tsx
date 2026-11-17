@@ -47,7 +47,7 @@ export default meta;
 type Story = StoryObj;
 
 /** L'échelle complète : teinte, nom teinté, filet et pastille. */
-export const Echelle: Story = {
+export const Scale: Story = { name: "Échelle",
   render: () => (
     <div className="w-[44rem] max-w-full space-y-3 p-4">
       {RARITY_LEVELS.map((level) => {

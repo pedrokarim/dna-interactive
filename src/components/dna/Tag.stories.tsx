@@ -13,7 +13,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Or: Story = { args: { children: "DPS", tone: "gold" } };
-export const Cramoisi: Story = { args: { children: "Conflit", tone: "crimson" } };
+export const Crimson: Story = { name: "Cramoisi", args: { children: "Conflit", tone: "crimson" } };
 export const Groupe: Story = {
   render: () => (
     <>

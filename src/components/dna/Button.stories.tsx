@@ -12,9 +12,9 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Primaire: Story = { args: { variant: "gold", children: "Voir l'événement" } };
-export const Secondaire: Story = { args: { variant: "ghost", children: "Conditions" } };
-export const Paire: Story = {
+export const Primary: Story = { name: "Primaire", args: { variant: "gold", children: "Voir l'événement" } };
+export const Secondary: Story = { name: "Secondaire", args: { variant: "ghost", children: "Conditions" } };
+export const Pair: Story = { name: "Paire",
   render: () => (
     <>
       <DnaButton variant="gold">Équiper le module</DnaButton>
@@ -22,4 +22,4 @@ export const Paire: Story = {
     </>
   ),
 };
-export const Desactive: Story = { args: { variant: "gold", children: "Indisponible", disabled: true } };
+export const Disabled: Story = { name: "Désactivé", args: { variant: "gold", children: "Indisponible", disabled: true } };

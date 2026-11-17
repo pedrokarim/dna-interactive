@@ -73,7 +73,7 @@ export const Editable: Story = {
 };
 
 /** Accent teinté par l'élément du perso (ici Pyro), quelques cases vides. */
-export const TeintePyro: Story = {
+export const PyroTint: Story = { name: "Teinte Pyro",
   render: function Render() {
     const [slots, setSlots] = useState<WedgeSlotData[]>([
       mod(1, "Fire", 1),
@@ -98,7 +98,7 @@ export const TeintePyro: Story = {
 };
 
 /** Lecture seule : pas de drag ni d'édition (affichage sur la fiche). */
-export const LectureSeule: Story = {
+export const ReadOnly: Story = { name: "Lecture seule",
   render: () => (
     <DnaDemonWedgeEditor slots={INITIAL} centerItem={CENTER} accentHex={ELEMENTS.Light.hex} scale="md" readOnly />
   ),

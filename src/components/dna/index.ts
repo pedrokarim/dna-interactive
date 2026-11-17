@@ -21,7 +21,7 @@ export { DnaElementBadge } from "./ElementBadge";
 export { DnaStars } from "./RarityStars";
 export { DnaItemIcon, ITEM_FALLBACK_ICON } from "./ItemIcon";
 export { DnaAvatar } from "./Avatar";
-export { DnaNouveau, DnaNotifDot } from "./Badges";
+export { DnaNewTab, DnaNotifDot } from "./Badges";
 
 // Conteneurs & ornements
 export { DnaPanel } from "./Panel";

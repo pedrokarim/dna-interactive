@@ -11,7 +11,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Interactif: Story = {
+export const Interactive: Story = { name: "Interactif",
   render: function Render() {
     const [on, setOn] = useState(true);
     return <DnaSwitch checked={on} onChange={setOn} aria-label="Enchaînement automatique" />;

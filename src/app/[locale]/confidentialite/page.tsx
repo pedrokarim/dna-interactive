@@ -19,7 +19,7 @@ export async function generateMetadata({
   );
 }
 
-export default async function ConfidentialitePage() {
+export default async function PrivacyPage() {
   const t = await getTranslations("privacy");
 
   return (

@@ -5,11 +5,11 @@ import { useTranslations } from "next-intl";
 
 import { DnaButton, DnaSectionLabel } from "@/components/dna";
 import {
-  abonnerRefusAnalytics,
-  accepterAnalytics,
-  analyticsRefusee,
-  analyticsRefuseeServeur,
-  refuserAnalytics,
+  subscribeToAnalyticsOptOut,
+  acceptAnalytics,
+  isAnalyticsOptedOut,
+  isAnalyticsOptedOutOnServer,
+  refuseAnalytics,
 } from "@/lib/analytics";
 
 /**
@@ -28,9 +28,9 @@ import {
 export function AnalyticsOptOut() {
   const t = useTranslations("privacy");
   const refuse = useSyncExternalStore(
-    abonnerRefusAnalytics,
-    analyticsRefusee,
-    analyticsRefuseeServeur,
+    subscribeToAnalyticsOptOut,
+    isAnalyticsOptedOut,
+    isAnalyticsOptedOutOnServer,
   );
 
   return (
@@ -47,7 +47,7 @@ export function AnalyticsOptOut() {
 
         <DnaButton
           variant={refuse ? "gold" : "ghost"}
-          onClick={refuse ? accepterAnalytics : refuserAnalytics}
+          onClick={refuse ? acceptAnalytics : refuseAnalytics}
         >
           {refuse ? t("optOutAllow") : t("optOutDeny")}
         </DnaButton>

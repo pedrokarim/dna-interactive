@@ -4,7 +4,7 @@ import { SITE_CONFIG } from "@/lib/constants";
 import { OTHER_PROJECTS, ECOSYSTEM_HUB } from "@/lib/other-projects";
 import { DnaDivider } from "@/components/dna/Divider";
 import { DnaTag } from "@/components/dna/Tag";
-import { DnaNouveau } from "@/components/dna/Badges";
+import { DnaNewTab } from "@/components/dna/Badges";
 
 /**
  * Promotion croisée des autres projets de l'écosystème Ascencia.
@@ -56,7 +56,7 @@ export async function OtherProjects() {
                 />
               </span>
               {project.isNew ? (
-                <DnaNouveau>{t("new")}</DnaNouveau>
+                <DnaNewTab>{t("new")}</DnaNewTab>
               ) : (
                 <DnaTag>{t(`items.${project.id}.tag`)}</DnaTag>
               )}

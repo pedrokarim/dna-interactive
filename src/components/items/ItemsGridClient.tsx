@@ -46,7 +46,7 @@ import { useListViewMode } from "@/components/list/useListViewMode";
 import { DnaPanel } from "@/components/dna/Panel";
 import { DnaCornerBrackets } from "@/components/dna/CornerBrackets";
 import { DnaItemIcon, ITEM_FALLBACK_ICON } from "@/components/dna/ItemIcon";
-import { DnaNouveau } from "@/components/dna/Badges";
+import { DnaNewTab } from "@/components/dna/Badges";
 import { useDialogA11y } from "@/components/dna/useDialogA11y";
 
 import { useFilterAnalytics } from "@/lib/use-filter-analytics";
@@ -1291,7 +1291,7 @@ export default function ItemsGridClient({
                           {tc("upcomingBadge", { version: upcomingVersion })}
                         </span>
                       ) : null}
-                      {isNew ? <DnaNouveau>{t('newBadge')}</DnaNouveau> : null}
+                      {isNew ? <DnaNewTab>{t('newBadge')}</DnaNewTab> : null}
                       {pending ? (
                         <span className="inline-flex items-center gap-1 whitespace-nowrap rounded-sm bg-hydro/10 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-hydro ring-1 ring-hydro/40">
                           <Clock className="h-3 w-3" />
@@ -1493,7 +1493,7 @@ export default function ItemsGridClient({
                       </span>
                     </h3>
                     <div className="mt-1 flex flex-wrap items-center gap-1.5 text-[11px]">
-                      {isNew ? <DnaNouveau>{t('newBadge')}</DnaNouveau> : null}
+                      {isNew ? <DnaNewTab>{t('newBadge')}</DnaNewTab> : null}
                       {pending ? (
                         <span className="inline-flex items-center gap-1 rounded-sm border border-hydro/40 bg-hydro/10 px-2 py-0.5 font-semibold uppercase tracking-wider text-hydro">
                           <Clock className="h-3 w-3" />
@@ -1609,7 +1609,7 @@ export default function ItemsGridClient({
                   {isNew ? (
                     // `font-caps` pose `position: relative` sur le badge : le placement absolu va au parent.
                     <span className="absolute left-0 top-0 z-10 flex">
-                      <DnaNouveau>{t('newBadge')}</DnaNouveau>
+                      <DnaNewTab>{t('newBadge')}</DnaNewTab>
                     </span>
                   ) : null}
                   {pending ? (

@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { ArrowUpRight, ChevronsLeft, ChevronsRight, ClipboardList, Drama, Info, Menu, X, type LucideIcon } from "lucide-react";
 import Image from "next/image";
 import { Link, usePathname } from "@/i18n/navigation";
-import { DnaAmbientBackdrop, DnaNouveau, DnaPill, DnaSectionMark, cn, useDialogA11y } from "@/components/dna";
+import { DnaAmbientBackdrop, DnaNewTab, DnaPill, DnaSectionMark, cn, useDialogA11y } from "@/components/dna";
 import { SidebarProfile, TopbarAccount } from "@/components/auth/AccountControls";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { ThemeSwitcher } from "@/components/site/ThemeSwitcher";
@@ -164,7 +164,7 @@ function SidebarBadge({ kind, label }: { kind: ShellBadge; label: string }) {
     <>
       <span className="dna-when-expanded ml-auto shrink-0">
         {kind === "new" ? (
-          <DnaNouveau>{label}</DnaNouveau>
+          <DnaNewTab>{label}</DnaNewTab>
         ) : (
           <span className="rounded-sm border border-hydro/40 bg-hydro/10 px-1.5 py-0.5 font-caps text-[0.5rem] uppercase tracking-[0.16em] text-hydro">
             {label}

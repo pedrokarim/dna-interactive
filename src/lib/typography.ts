@@ -6,6 +6,6 @@
  * d'espaces (–). À utiliser dans les gabarits partagés par toutes les langues
  * (« Chapitre – Guide », « Événement – dates »).
  */
-export function inciseDash(locale: string): string {
+export function parentheticalDash(locale: string): string {
   return locale === "fr" || locale === "de" ? " – " : " — ";
 }

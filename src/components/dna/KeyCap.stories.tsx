@@ -11,8 +11,8 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Touche: Story = { args: { children: "E" } };
-export const Serie: Story = {
+export const Key: Story = { name: "Touche", args: { children: "E" } };
+export const Sequence: Story = { name: "Série",
   render: () => (
     <>
       <DnaKey>E</DnaKey>
