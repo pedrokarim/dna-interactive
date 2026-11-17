@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { isBuildId } from "@/lib/community-builds/ids";
 import { and, eq, sql } from "drizzle-orm";
 import { getDb, schema } from "@/db";
 import { checkRateLimit } from "@/lib/rate-limit";
@@ -41,6 +42,7 @@ export async function POST(request: Request, { params }: RouteContext) {
   }
 
   const { id } = await params;
+  if (!isBuildId(id)) return NextResponse.json({ error: t("buildNotFound") }, { status: 404 });
   const build = await getPublicBuild(id);
   if (!build || build.hidden) return NextResponse.json({ error: t("buildNotFound") }, { status: 404 });
 
@@ -72,6 +74,7 @@ export async function DELETE(request: Request, { params }: RouteContext) {
   }
 
   const { id } = await params;
+  if (!isBuildId(id)) return NextResponse.json({ error: t("buildNotFound") }, { status: 404 });
   const deleted = await getDb()
     .delete(schema.buildIpVotes)
     .where(and(eq(schema.buildIpVotes.buildId, id), eq(schema.buildIpVotes.voterKey, voterKey)))

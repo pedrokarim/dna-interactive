@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { isBuildId } from "@/lib/community-builds/ids";
 import { and, eq, sql } from "drizzle-orm";
 import { getDb, schema } from "@/db";
 import { getCurrentUser } from "@/lib/auth/session";
@@ -25,6 +26,7 @@ export async function GET(request: NextRequest, { params }: RouteContext) {
   const t = await getApiTranslator(request);
   const user = await getCurrentUser();
   const { id } = await params;
+  if (!isBuildId(id)) return NextResponse.json({ error: t("buildNotFound") }, { status: 404 });
   const db = getDb();
 
   try {
@@ -110,6 +112,7 @@ export async function PATCH(request: NextRequest, { params }: RouteContext) {
   if (!user) return NextResponse.json({ error: t("signInRequired") }, { status: 401 });
 
   const { id } = await params;
+  if (!isBuildId(id)) return NextResponse.json({ error: t("buildNotFound") }, { status: 404 });
   const build = await getEditableBuild(id);
   if (!build) return NextResponse.json({ error: t("buildNotFound") }, { status: 404 });
   if (build.userId !== user.id && user.role !== "admin") {
@@ -154,6 +157,7 @@ export async function DELETE(request: NextRequest, { params }: RouteContext) {
   if (!user) return NextResponse.json({ error: t("signInRequired") }, { status: 401 });
 
   const { id } = await params;
+  if (!isBuildId(id)) return NextResponse.json({ error: t("buildNotFound") }, { status: 404 });
   const build = await getEditableBuild(id);
   if (!build) return NextResponse.json({ error: t("buildNotFound") }, { status: 404 });
   if (build.userId !== user.id && user.role !== "admin") {

@@ -1,6 +1,7 @@
 import { eq } from "drizzle-orm";
 import { getDb, schema } from "@/db";
 import { isMissingTableError } from "@/lib/db-errors";
+import { isBuildId } from "./ids";
 
 /** Ce qu'un aperçu de build affiche (image OG, aperçu Discord) : rien de plus que la page. */
 export type BuildPreview = {
@@ -13,15 +14,13 @@ export type BuildPreview = {
   authorName: string | null;
 };
 
-const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
-
 /**
  * Chargement minimal en lecture seule, sans compteur de vues : un robot
  * d'aperçu ne doit pas faire monter les statistiques. Un build masqué par la
  * modération n'a pas d'aperçu.
  */
 export async function loadBuildPreview(id: string): Promise<BuildPreview | null> {
-  if (!UUID.test(id)) return null;
+  if (!isBuildId(id)) return null;
   try {
     const [row] = await getDb()
       .select({

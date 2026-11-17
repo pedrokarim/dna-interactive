@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { isBuildId } from "@/lib/community-builds/ids";
 import { eq } from "drizzle-orm";
 import { getDb, schema } from "@/db";
 import { getCurrentUser } from "@/lib/auth/session";
@@ -23,6 +24,7 @@ export async function POST(request: Request, { params }: RouteContext) {
   }
 
   const { id } = await params;
+  if (!isBuildId(id)) return NextResponse.json({ error: t("buildNotFound") }, { status: 404 });
   const [build] = await getDb()
     .select({ id: schema.builds.id, userId: schema.builds.userId, hidden: schema.builds.hidden })
     .from(schema.builds)
