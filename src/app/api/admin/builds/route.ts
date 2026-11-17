@@ -16,13 +16,13 @@ const patchSchema = z.object({
   deleteBuild: z.boolean().optional(),
   reportId: z.string().uuid().optional(),
   reportStatus: z.enum(["resolved", "dismissed"]).optional(),
-  /** Présent = prévenir par mail la personne qui a signalé, dans cette langue. */
+  /** Si présent, on prévient par mail la personne qui a signalé, dans cette langue. */
   notifyReporter: z.object({ locale: z.enum(locales) }).optional(),
 });
 
 type ReporterMail = "sent" | "skipped" | "no_email" | "failed";
 
-/** Prévient le signaleur de la suite donnée. Un échec d'envoi n'annule pas la modération. */
+/** Prévient le signaleur de la suite donnée. Si l'envoi échoue, la modération reste faite. */
 async function notifyReporter(reportId: string, outcome: "resolved" | "dismissed", locale: Locale): Promise<ReporterMail> {
   const [row] = await getDb()
     .select({
@@ -126,7 +126,7 @@ export async function GET(request: NextRequest) {
         buildTitle: schema.builds.title,
         reporterId: schema.users.id,
         reporterName: schema.users.name,
-        // Booléen seulement : l'adresse n'a pas à transiter vers le navigateur.
+        // Juste un booléen : l'adresse n'a rien à faire dans le navigateur.
         reporterHasEmail: sql<boolean>`${schema.users.email} is not null`,
       })
       .from(schema.buildReports)

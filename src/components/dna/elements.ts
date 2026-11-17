@@ -7,15 +7,15 @@ export type ElementMeta = {
   /** Token de couleur DNA (cf. globals.css @theme). */
   token: "pyro" | "hydro" | "electro" | "anemo" | "lumino" | "umbro";
   /**
-   * Valeur hex littérale. À réserver aux usages qui ne peuvent PAS suivre le
-   * thème : lueurs et dégradés qui concatènent un alpha (`${hex}14`), et
-   * images Open Graph, rendues côté serveur sans thème.
+   * Valeur hex en dur, seulement là où le thème ne peut pas s'appliquer :
+   * lueurs et dégradés qui collent un alpha (`${hex}14`), images Open Graph
+   * rendues côté serveur sans thème.
    */
   hex: string;
   /**
-   * Couleur d'élément pour le TEXTE et les bordures d'interface. Passe par le
-   * token, donc s'assombrit automatiquement en thème clair — sur de l'ivoire,
-   * les teintes du thème sombre tombent sous 3:1.
+   * Couleur d'élément pour le texte et les bordures. Passe par le token, donc
+   * s'assombrit en thème clair : sur l'ivoire, les teintes du thème sombre
+   * tombent sous 3:1 de contraste.
    */
   color: string;
   /** Glyphe de repli si l'icône n'est pas dispo. */

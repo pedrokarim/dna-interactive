@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { DEFAULT_SETTINGS, type AppSettings } from "./index";
 
-// Cache module-level : un seul fetch partagé entre tous les composants.
+// Cache au niveau du module : un seul fetch pour tous les composants.
 let cache: AppSettings | null = null;
 let inflight: Promise<AppSettings> | null = null;
 

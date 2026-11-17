@@ -43,8 +43,8 @@ const FORGE_COSTS = forgeCostsData as Record<string, ForgeStep[]>;
 const MATERIALS = materialsData as Record<string, Material>;
 
 /**
- * Phoxène. Une arme dont chaque palier ne coûte que cette monnaie porte encore
- * le coût bouche-trou du jeu : mieux vaut le dire que d'afficher un tableau faux.
+ * Phoxène. Si chaque palier d'une arme ne coûte que cette monnaie, c'est le coût
+ * bouche-trou du jeu : on le signale au lieu d'afficher un tableau faux.
  */
 const PHOXENE_ID = 100;
 
@@ -69,10 +69,9 @@ function pick(map: Record<string, string> | undefined, lang: string): string {
 /**
  * Guide des armes de calamité.
  *
- * Volontairement **un guide**, pas une seconde fiche d'arme : il répond à
- * « comment ça marche et comment j'en obtiens une », et renvoie vers les fiches
- * pour les chiffres. Les coûts, les matériaux et leurs descriptions viennent
- * directement des données du jeu, donc traduits sans réécriture de notre part.
+ * Il répond à « comment ça marche, comment j'en obtiens une » et renvoie vers
+ * les fiches d'arme pour les chiffres. Coûts, matériaux et descriptions viennent
+ * des données du jeu, donc déjà traduits, sans réécriture de notre part.
  */
 
 /** Le chapô du guide : le surtitre et la vue d'ensemble, rendus par le sommaire. */
@@ -261,9 +260,8 @@ export async function CalamityWeaponsGuideChapter({
             </ol>
           </DnaPanel>
           {/*
-            Une image par étape : la quête ouvre le système, la forge fabrique
-            l'arme. Les réunir en une seule aurait obligé à chercher laquelle
-            illustre quoi.
+            Une image par étape (la quête débloque le système, la forge fabrique
+            l'arme), sinon on ne sait plus laquelle illustre quoi.
           */}
           <GuideImageSlot slot="unlock" caption={t("imageUnlock")} ratio="16 / 9" className="max-w-4xl" />
           <GuideImageSlot slot="forge" caption={t("imageForge")} ratio="16 / 9" className="max-w-4xl" />
@@ -441,8 +439,8 @@ export async function CalamityWeaponsGuideChapter({
               translation.typeCompatibilityNames[1] ??
               (typeof item.fields.ResourceSType === "string" ? item.fields.ResourceSType : null),
             version: formatOpenVersion(item.stats.openVersion),
-            // Une arme non programmée porte encore des libellés de travail : son nom
-            // vient parfois d'une autre entrée recyclée. À signaler, pas à masquer.
+            // Une arme non programmée a encore des libellés de travail, son nom vient
+            // parfois d'une autre entrée réutilisée : on la signale sans la masquer.
             provisional: isUnscheduledVersion(item.stats.openVersion),
             nodes: potentialNodesTotal(item.id),
             steps: isPlaceholderCost(FORGE_COSTS[item.id] ?? []) ? [] : (FORGE_COSTS[item.id] ?? []),
@@ -538,7 +536,7 @@ export async function CalamityWeaponsGuideChapter({
             ))}
           </div>
 
-          {/* Dernier chapitre : on referme le guide au lieu de laisser le lecteur en suspens. */}
+          {/* Dernier chapitre : un encadré « et ensuite », avec des liens pour continuer. */}
           <section
             className="mt-8 border p-6"
             style={{ borderColor: `${CALAMITY_ACCENT_HEX}33`, background: `${CALAMITY_ACCENT_HEX}0d` }}

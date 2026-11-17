@@ -1,7 +1,4 @@
-/**
- * Types partagés du changelog — importables côté client.
- * Aucun accès base ici : ce module doit rester sérialisable.
- */
+/** Types partagés du changelog. Aucun accès base ici : le client les importe aussi. */
 
 export const CHANGELOG_TYPES = ["feature", "update", "fix", "enhancement", "security"] as const;
 export type ChangelogType = (typeof CHANGELOG_TYPES)[number];
@@ -15,17 +12,17 @@ export type ChangelogPublicEntry = {
   title: string;
   description: string;
   items: string[];
-  /** Langue réellement servie : utile pour signaler un repli. */
+  /** Langue vraiment servie, pour signaler un repli. */
   locale: string;
 };
 
 export type ChangelogPage = {
   entries: ChangelogPublicEntry[];
-  /** À repasser tel quel pour obtenir la suite ; `null` quand on est au bout. */
+  /** À renvoyer tel quel pour avoir la suite, `null` au bout. */
   nextCursor: string | null;
   /**
-   * Vrai si la table n'existe pas encore : la page bascule alors sur la liste
-   * écrite en dur, pour ne jamais afficher un journal vide.
+   * Vrai si la table n'existe pas encore : la page prend alors la liste écrite
+   * en dur plutôt qu'afficher un journal vide.
    */
   migrationPending: boolean;
 };
@@ -43,9 +40,8 @@ export const CHANGELOG_PAGE_SIZE = 6;
 /**
  * Curseur de pagination : `date|version`.
  *
- * Il porte les deux clés de tri parce que plusieurs versions peuvent partager
- * une date (trois entrées le 24 décembre 2025). Un curseur sur la seule date
- * en sauterait deux.
+ * Les deux clés de tri, parce que plusieurs versions peuvent tomber le même
+ * jour (trois le 24 décembre 2025) : avec la date seule, on en sauterait deux.
  */
 export function encodeCursor(entry: { date: string; version: string }): string {
   return `${entry.date}|${entry.version}`;
@@ -63,9 +59,9 @@ export function decodeCursor(raw: string | null | undefined): { date: string; ve
 /**
  * Format de version accepté : des nombres séparés par des points.
  *
- * Contrainte réelle, pas cosmétique : le tri compare les versions
- * numériquement (`string_to_array(version, '.')::int[]`), sans quoi « 1.10.0 »
- * passerait avant « 1.9.0 ». Un suffixe littéral ferait échouer la conversion.
+ * Le tri compare les versions en nombres (`string_to_array(version, '.')::int[]`)
+ * pour que « 1.10.0 » passe après « 1.9.0 ». Un suffixe en lettres ferait
+ * échouer la conversion.
  */
 export function isValidVersion(value: string): boolean {
   return /^\d+(\.\d+){0,3}$/.test(value);

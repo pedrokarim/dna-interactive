@@ -6,15 +6,11 @@ import { ChangelogEntryCard } from "./ChangelogEntryCard";
 import type { ChangelogPublicEntry } from "@/lib/changelog/types";
 
 /**
- * Secours : le journal tel qu'il existait avant la bascule en base.
+ * Repli : le journal d'avant le passage en base, lu dans les fichiers de messages.
  *
- * Ne sert que si la table `changelog_entries` est absente — sur un
- * environnement où la migration n'a pas encore été appliquée, par exemple. Sans
- * lui, la page afficherait un journal vide alors que le contenu existe dans les
- * fichiers de messages.
- *
- * Il n'y a ni défilement infini ni sélecteur ici : la liste est finie et figée,
- * et ce chemin n'a pas vocation à durer.
+ * Ne sert que si la table `changelog_entries` n'existe pas (migration pas encore
+ * passée sur l'environnement), sinon la page serait vide. Pas de défilement
+ * infini ni de sélecteur : la liste est figée et ce chemin est temporaire.
  */
 export function ChangelogLegacyFeed() {
   const tEntries = useTranslations("changelogEntries");

@@ -10,7 +10,7 @@ export type DnaCharacterCardProps = {
   subtitle?: string;
   /** Élément principal (lueur). */
   element: ElementKey;
-  /** Tous les éléments (perso multi-élément) — badges empilés. Défaut: [element]. */
+  /** Tous les éléments d'un perso multi-élément, en badges côte à côte. Par défaut [element]. */
   elements?: ElementKey[];
   rarity?: number;
   weapons?: string[];
@@ -23,17 +23,16 @@ export type DnaCharacterCardProps = {
   children?: ReactNode;
   className?: string;
   /**
-   * `lazy` par défaut : rendue côté serveur sans cet attribut, l'image
-   * devient un `<link rel="preload">` (React 19), et une grille entière se
-   * téléchargeait avant le CSS. `eager` pour la première rangée, visible tout
-   * de suite.
+   * `lazy` par défaut : rendue côté serveur sans cet attribut, l'image devient
+   * un `<link rel="preload">` (React 19) et toute la grille se téléchargeait
+   * avant le CSS. `eager` pour la première rangée, visible tout de suite.
    */
   loading?: "lazy" | "eager";
 };
 
 /**
- * Carte de personnage (grille) — portrait, lueur teintée par élément, badges
- * d'élément (vraies icônes du jeu, multi-élément), étoiles, tags d'armes.
+ * Carte de personnage pour les grilles : portrait, lueur teintée par l'élément,
+ * badges d'élément (icônes du jeu), étoiles et tags d'armes.
  */
 export function DnaCharacterCard({ name, subtitle, element, elements, rarity = 5, weapons = [], portrait, topRight, topLeft, children, className, loading = "lazy" }: DnaCharacterCardProps) {
   const el = ELEMENTS[element];

@@ -1,10 +1,10 @@
 /**
  * Validation serveur des données de la carte envoyées par le client.
  *
- * Même règle que les builds : **sets fermés**, rien de libre hors des textes
- * saisis. Une clé de point doit exister dans l'index, une carte dans la
- * hiérarchie du monde, un type dans la taxonomie ; les coordonnées restent dans
- * l'image (toutes les cartes font 4096 × 4096).
+ * Même règle que pour les builds : des sets fermés, rien de libre à part les
+ * textes saisis. Une clé de point doit exister dans l'index, une carte dans la
+ * hiérarchie du monde, un type dans la taxonomie. Les coordonnées restent dans
+ * l'image (toutes les cartes font 4096 x 4096).
  */
 
 import { z } from "zod";
@@ -23,9 +23,9 @@ const mapIdSchema = z.string().refine((id) => Boolean(getMapLocation(id)), "unkn
 const coordSchema = z.number().int().min(0).max(MAP_SIZE);
 
 /**
- * Clés trouvées : on écarte en silence celles qui ne sont plus suivies (types
- * devenus « non comptés », points retirés par boarhat) plutôt que de rejeter
- * toute la synchronisation pour une clé périmée.
+ * Clés trouvées : celles qui ne sont plus suivies (types passés en « non
+ * comptés », points retirés par boarhat) sont écartées sans bruit. Une clé
+ * périmée ne fait pas rejeter toute la synchronisation.
  */
 export const foundKeysSchema = z
   .array(z.string().max(160))
@@ -46,7 +46,7 @@ export const personalMarkerSchema = z.object({
 
 /**
  * Un marqueur personnel invalide (vieux format, position hors carte) est
- * écarté seul : il ne doit pas bloquer la synchronisation des points trouvés.
+ * écarté seul, sans bloquer la synchronisation des points trouvés.
  */
 export const progressPayloadSchema = z.object({
   foundKeys: foundKeysSchema,

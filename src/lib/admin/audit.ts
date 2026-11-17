@@ -9,8 +9,8 @@ type AdminActionInput = {
 };
 
 /**
- * Enregistre une action de modération admin (best-effort : ne doit JAMAIS faire
- * échouer l'action elle-même — table absente, erreur DB, etc. sont avalées).
+ * Enregistre une action de modération admin, au mieux : une table absente ou
+ * une erreur DB est avalée, l'action elle-même ne doit jamais échouer à cause du journal.
  */
 export async function recordAdminAction(input: AdminActionInput): Promise<void> {
   try {
@@ -22,6 +22,6 @@ export async function recordAdminAction(input: AdminActionInput): Promise<void> 
       meta: input.meta ?? null,
     });
   } catch {
-    // Journalisation best-effort — on n'interrompt pas la modération.
+    // Le journal ne bloque pas la modération.
   }
 }

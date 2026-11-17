@@ -13,7 +13,7 @@ export default function HeroSection() {
   const [currentImage, setCurrentImage] = useState(0);
   const [isButtonAnimated, setIsButtonAnimated] = useState(false);
 
-  // Effet pour changer l'image de fond toutes les 4 secondes (démarre après le LCP)
+  // Change l'image de fond toutes les 4 s, en démarrant après le LCP.
   useEffect(() => {
     const start = setTimeout(() => {
       const interval = setInterval(() => {
@@ -25,19 +25,17 @@ export default function HeroSection() {
     return () => clearTimeout(start);
   }, []);
 
-  // Effet pour déclencher l'animation du bouton aléatoirement
+  // Le bouton s'anime à intervalles irréguliers.
   useEffect(() => {
     const triggerAnimation = () => {
       setIsButtonAnimated(true);
-      setTimeout(() => setIsButtonAnimated(false), 6000); // Animation dure 6 secondes
+      setTimeout(() => setIsButtonAnimated(false), 6000); // l'animation dure 6 s
 
-      // Programmer la prochaine animation entre 30 et 35 secondes
-      const nextDelay = Math.random() * 5000 + 30000; // 30-35 secondes
+      const nextDelay = Math.random() * 5000 + 30000; // prochaine dans 30 à 35 s
       setTimeout(triggerAnimation, nextDelay);
     };
 
-    // Démarrer la première animation après 3-8 secondes
-    const initialDelay = Math.random() * 5000 + 3000; // 3-8 secondes
+    const initialDelay = Math.random() * 5000 + 3000; // première après 3 à 8 s
     const timeout = setTimeout(triggerAnimation, initialDelay);
 
     return () => clearTimeout(timeout);
@@ -45,7 +43,7 @@ export default function HeroSection() {
 
   return (
     <section className="relative min-h-screen flex items-center">
-      {/* Background avec effet Ken Burns - LCP critique : on render uniquement l'image actuelle */}
+      {/* Fond en Ken Burns. C'est le LCP : on ne rend que l'image courante. */}
       <div className="absolute inset-0 overflow-hidden">
         <Image
           key={ASSETS_PATHS.worldview[currentImage]}
@@ -112,7 +110,7 @@ export default function HeroSection() {
         <ChevronDown className="w-6 h-6 text-gold" />
       </div>
 
-      {/* Psyche build teaser — bottom-right, scrolls to #build-showcase */}
+      {/* Teaser du build Psyche en bas à droite, mène à #build-showcase */}
       <motion.a
         href="#build-showcase"
         initial={{ opacity: 0, y: 20 }}

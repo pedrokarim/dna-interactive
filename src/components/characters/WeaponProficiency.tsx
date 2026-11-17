@@ -24,8 +24,8 @@ const PROFICIENCY_GUIDE_HREF = "/items/weapons/about/proficiency";
 
 /** Coût de déblocage d'un type : icône et quantité de chaque matériau. */
 function UnlockCost({ type, lang }: { type: WeaponTypeInfo; lang: string }) {
-  // La locale de la page, pas le code langue du jeu : « jp » n'est pas une locale valide, et un
-  // code invalide retombe sur la locale de la machine, différente entre serveur et navigateur.
+  // Locale de la page : le code langue du jeu (« jp ») n'est pas une locale valide, et Intl
+  // retombe alors sur celle de la machine, qui diffère entre serveur et navigateur.
   const numberLocale = toIntlLocale(useLocale());
   return (
     <ul className="flex flex-col gap-2">

@@ -10,7 +10,7 @@ import MobileMenu from "@/components/MobileMenu";
 import DesktopNav from "@/components/site/DesktopNav";
 import { DiscordAuthButton } from "@/components/auth/DiscordAuthButton";
 
-/** En-tête de site — design system DNA (marque Cormorant, nav Cinzel, liseré doré). */
+/** En-tête du site : marque en Cormorant, nav en Cinzel, filet doré en haut. */
 export default async function SiteHeader({ active }: { active?: string }) {
   const tSite = await getTranslations("site");
 

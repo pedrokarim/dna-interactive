@@ -15,17 +15,16 @@ export const dynamic = "force-dynamic";
 const schemaInput = z.object({
   id: z.string().uuid(),
   channels: z.array(z.enum(["push", "email"])).min(1),
-  /** Garde-fou explicite : renvoyer sur un canal déjà utilisé doit être voulu. */
+  /** Obligatoire pour renvoyer sur un canal déjà utilisé. */
   force: z.boolean().optional(),
 });
 
 /**
- * Diffuse une annonce déjà publiée sur les canaux sortants.
+ * Diffuse une annonce déjà publiée en push navigateur et par email.
  *
- * La cloche du site n'est pas un canal : elle lit directement la table, une
- * annonce publiée y est visible sans rien envoyer. Cette route ne concerne que
- * le push navigateur et l'email, qui sont irréversibles — d'où le refus de
- * renvoyer deux fois sans `force`, et le refus de diffuser un brouillon.
+ * La cloche du site lit directement la table, elle n'a besoin d'aucun envoi.
+ * Push et email ne se rattrapent pas une fois partis : on refuse un brouillon,
+ * et un second envoi sur le même canal sans `force`.
  */
 export async function POST(request: NextRequest) {
   const user = await getCurrentUser();

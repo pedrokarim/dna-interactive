@@ -9,12 +9,11 @@ export type AnnouncementRecord = typeof schema.announcements.$inferSelect;
 /**
  * Annonces visibles par un lecteur donné, à l'instant `now`.
  *
- * Une annonce est visible si elle est publiée, que sa date de publication est
- * passée (une date future = annonce programmée, invisible jusque-là) et qu'elle
- * n'a pas expiré. Le filtrage d'audience se fait ici, jamais côté client : une
- * annonce réservée aux admins ne doit pas transiter par le réseau.
+ * Visible = publiée, date de publication passée (une date future veut dire
+ * programmée) et pas expirée. L'audience se filtre ici et pas côté client : une
+ * annonce réservée aux admins ne doit pas passer sur le réseau.
  *
- * Sûr si la table n'existe pas encore (migration non appliquée) → liste vide.
+ * Si la table n'existe pas encore (migration pas appliquée), liste vide.
  */
 export async function getVisibleAnnouncements(
   viewer: { authenticated: boolean; isAdmin: boolean },
@@ -45,7 +44,7 @@ export async function getVisibleAnnouncements(
   }
 }
 
-/** Projette une ligne d'annonce sur le modèle commun du fil. */
+/** Ligne d'annonce convertie au format commun du fil. */
 export function toNotification(row: AnnouncementRecord): AppNotification {
   return {
     id: row.id,
@@ -60,7 +59,7 @@ export function toNotification(row: AnnouncementRecord): AppNotification {
   };
 }
 
-/** Toutes les annonces, brouillons compris – usage administration seulement. */
+/** Toutes les annonces, brouillons compris. Pour l'admin seulement. */
 export async function listAllAnnouncements(): Promise<AnnouncementRecord[]> {
   const db = getDb();
   try {

@@ -13,12 +13,12 @@ import { checkCharacterWedges, checkWeaponWedgeDuplicates, describeWedge } from 
 const itemIdSchema = z.string().trim().min(1).max(96);
 const rankSchema = z.enum(["best", "alternative"]);
 
-// --- Sets fermés : un build communautaire ne référence que NOS entités. ---
+// --- Sets fermés : un build communautaire ne référence que nos entités. ---
 const ELEMENT_VALUES = ["Fire", "Water", "Thunder", "Wind", "Light", "Dark"] as const;
 export const elementKeySchema = z.enum(ELEMENT_VALUES);
 
-// Clés de stats autorisées — pas de texte libre. Couvre ATK/élément, crit,
-// compétence, morale, pénétration, etc.
+// Clés de stats autorisées, pas de texte libre (ATK/élément, crit, compétence,
+// morale, pénétration…).
 export const STAT_KEYS = [
   "ATK", "ATK_Fire", "ATK_Water", "ATK_Thunder", "ATK_Wind", "ATK_Light", "ATK_Dark",
   "DEF", "HP", "MaxHp", "MaxES", "MaxSp",
@@ -26,22 +26,22 @@ export const STAT_KEYS = [
   "Morale", "CritRate", "CritDmg", "PEN", "TriggerProbability",
 ] as const;
 
-// Rôles d'équipe autorisés — identiques au picker du builder.
+// Rôles d'équipe autorisés, les mêmes que dans le picker du builder.
 export const TEAM_ROLES = ["DPS", "Sub-DPS", "Support", "Heal", "Tank"] as const;
 
 // Un perso n'expose que 3 slots de compétence référençables (skill1/2/3).
 const MAX_SKILL_INDEX = 3;
 
-// Catégories de build (tags) — jeu canonique fermé, libellés localisés à l'affichage.
+// Catégories de build (tags) : liste fermée, libellés traduits à l'affichage.
 export const BUILD_TAGS = ["solo", "team", "boss", "f2p", "endgame", "beginner"] as const;
 export type BuildTag = (typeof BUILD_TAGS)[number];
 
 export const buildTitleSchema = z.string().trim().min(3).max(60);
 export const buildNoteSchema = z.string().trim().max(200).nullable().optional();
 
-// Demon Wedges propres à une arme DANS un build (éditables, indépendants du
-// build canonique affiché sur la fiche arme). 8 cases + une affinité (élément),
-// pas de centre item. Cf. docs/cadrage-builds-armes.md.
+// Demon Wedges d'une arme à l'intérieur d'un build, éditables et indépendants du
+// build canonique de la fiche arme. 8 cases et une affinité (élément), pas de
+// pièce au centre. Voir docs/cadrage-builds-armes.md.
 const weaponDemonWedgesSchema = z.object({
   slots: z
     .array(
@@ -110,9 +110,9 @@ export const buildPayloadSchema = z.object({
   skillPriority: z
     .array(
       z.object({
-        // Nom NON autoritatif : l'app le re-résout depuis skillIndex à l'affichage.
+        // Indicatif seulement : l'appli retrouve le nom depuis skillIndex à l'affichage.
         skillName: z.string().trim().max(80).optional(),
-        // LA référence : index du slot de compétence (1-3) du perso. Requis + borné.
+        // La vraie référence : index du slot de compétence (1-3) du perso, requis et borné.
         skillIndex: z.number().int().min(1).max(MAX_SKILL_INDEX),
         priority: z.number().int().min(1).max(5),
       }),
@@ -170,8 +170,8 @@ export function publicElementValue(element: string | null): string | null {
   return element && element !== "default" ? element : null;
 }
 
-// Vérifie qu'un index de compétence (1-3) correspond bien à un slot réel du
-// perso (skill1/2/3 avec une icône) — on ne fait pas confiance au nombre envoyé.
+// L'index de compétence (1-3) doit correspondre à un vrai slot du perso
+// (skill1/2/3 avec une icône) : on ne fait pas confiance au nombre envoyé.
 function characterHasSkillIndex(
   character: NonNullable<ReturnType<typeof getCharacterById>>,
   index: number,
@@ -182,8 +182,8 @@ function characterHasSkillIndex(
   return Boolean(path);
 }
 
-// Classe mêlée/distance d'une arme — pour valider que ses Demon Wedges sont du
-// bon pool (un wedge distance ne va pas sur une arme mêlée).
+// Classe mêlée ou distance d'une arme, pour vérifier que ses Demon Wedges sont
+// du bon pool (pas de wedge distance sur une arme de mêlée).
 function weaponClassOf(itemId: string): WeaponWedgeClass | null {
   const item = getItemByCategoryAndId("weapons", itemId);
   const keys = item?.typeCompatibility?.textKeys ?? [];
@@ -216,9 +216,9 @@ export function validateBuildReferences(input: CreateBuildInput | DraftInput): s
       }
     }
 
-    // NB : on ne restreint plus les armes aux types du perso. Le builder propose
-    // toutes les armes par défaut (filtre par perso = option côté UI, désactivée
-    // par défaut). Les armes doivent juste exister dans le catalogue (ci-dessous).
+    // Pas de restriction des armes aux types du perso : le builder propose toutes
+    // les armes (le filtre par perso est une option d'interface, désactivée par
+    // défaut). Elles doivent seulement exister dans le catalogue (plus bas).
   }
 
   const checkItem = (categoryId: "weapons" | "mods" | "genimons", itemId: string, label: string) => {
@@ -230,8 +230,8 @@ export function validateBuildReferences(input: CreateBuildInput | DraftInput): s
   for (const weapon of input.payload.weapons.melee) checkItem("weapons", weapon.itemId, "Arme melee");
   for (const weapon of input.payload.weapons.ranged) checkItem("weapons", weapon.itemId, "Arme ranged");
 
-  // Demon Wedges propres à chaque arme : doivent exister, être du pool de la
-  // bonne classe (mêlée/distance) et ne pas se chevaucher en position.
+  // Demon Wedges de chaque arme : ils doivent exister, venir du pool de la bonne
+  // classe (mêlée/distance) et ne pas occuper deux fois la même position.
   for (const weapon of [...input.payload.weapons.melee, ...input.payload.weapons.ranged]) {
     if (!weapon.demonWedges) continue;
     const weaponClass = weaponClassOf(weapon.itemId);
@@ -258,9 +258,8 @@ export function validateBuildReferences(input: CreateBuildInput | DraftInput): s
       // maxLevel 1 = pet d'événement (Monster Rush/Wishen) ou drone non équipable.
       errors.push(`Génimon non équipable : ${genimon.itemId}.`);
     } else {
-      // Le nombre d'emplacements se lit sur la créature : trois pour une
-      // variante ordinaire, quatre pour une scintillante. Le serveur ne fait
-      // pas confiance au client là-dessus.
+      // Le nombre d'emplacements vient de la créature (trois pour une variante
+      // ordinaire, quatre pour une scintillante), pas du client.
       const slots = genimonTraitSlots(genimon.itemId);
       if (genimon.traits.length > slots) {
         errors.push(`Trop de Traits pour ${genimon.itemId} : ${genimon.traits.length} pour ${slots} emplacements.`);

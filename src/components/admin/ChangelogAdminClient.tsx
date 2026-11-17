@@ -72,15 +72,14 @@ function formatDate(iso: string): string {
 }
 
 /**
- * Administration du changelog.
+ * Admin du changelog.
  *
- * Le journal vivait en dur : une note coûtait huit fichiers à modifier, ce qui
- * décourage d'en écrire. Ici une entrée se saisit en une fois.
+ * Avant, le journal était en dur et une note demandait de toucher huit
+ * fichiers. Ici une entrée se saisit en une fois.
  *
- * Les langues sont un onglet dans le formulaire, pas huit champs empilés : la
- * langue par défaut est obligatoire, les autres se remplissent quand on veut, et
- * la page publique retombe sur celle qui existe. C'est ce qui permet de rester
- * multilingue sans rendre l'écriture pénible.
+ * Une langue par onglet dans le formulaire. Seule la langue par défaut est
+ * obligatoire, les autres se remplissent quand on veut, et la page publique
+ * retombe sur celle qui existe.
  */
 export function ChangelogAdminClient() {
   const { confirm } = useConfirm();
@@ -159,8 +158,8 @@ export function ChangelogAdminClient() {
       return;
     }
 
-    // On n'envoie que les langues réellement remplies : une langue au titre vide
-    // n'est pas une traduction, elle empêcherait juste le repli de jouer.
+    // On n'envoie que les langues remplies : un titre vide bloquerait le repli
+    // sur la langue par défaut.
     const translations: Record<string, Translation> = {};
     for (const [locale, text] of Object.entries(draft.translations)) {
       if (!text.title.trim()) continue;
@@ -286,8 +285,8 @@ export function ChangelogAdminClient() {
               </select>
             </div>
 
-            {/* Onglets de langue : la langue par défaut porte une pastille, les
-                langues déjà remplies aussi, pour voir d'un coup ce qui reste. */}
+            {/* Onglets de langue : une marque sur la langue par défaut et sur les
+                langues déjà remplies, pour voir ce qui reste. */}
             <div className="sm:col-span-3">
               <span className={adminLabelClass}>Langue rédigée</span>
               <div className="flex flex-wrap gap-1">

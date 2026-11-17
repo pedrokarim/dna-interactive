@@ -158,7 +158,7 @@ export default function StructuredData({
     );
   }
 
-  // Default website structured data
+  // Par défaut : données structurées du site.
   return (
     <script
       type="application/ld+json"

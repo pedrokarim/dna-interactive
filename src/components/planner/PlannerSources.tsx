@@ -13,9 +13,9 @@ type PlannerSourcesProps = {
 };
 
 /**
- * Onglet « Où farmer » : les manques regroupés par activité, la plus utile
- * d'abord. Dit où, pas combien de fois : les taux de drop ne sont pas encore
- * exploités.
+ * Onglet « Où farmer » : les manques regroupés par activité, la plus utile en
+ * premier. On dit où farmer mais pas combien de fois, les taux de drop ne sont
+ * pas encore exploités.
  */
 export function PlannerSources({ groups, lines, dataset, labels }: PlannerSourcesProps) {
   const t = useTranslations("planner");

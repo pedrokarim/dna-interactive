@@ -11,11 +11,10 @@ const REFRESH_MS = 5 * 60 * 1000;
 // ---------------------------------------------------------------------------
 // Dépôt partagé
 //
-// Un seul état pour toute l'application : la cloche et la page dédiée lisent la
-// même source et ne déclenchent qu'un appel réseau. On passe par
-// `useSyncExternalStore` plutôt que par des `useState` synchronisés dans des
-// effets – c'est ce que le store est fait pour, et ça évite les rendus en
-// cascade au montage.
+// Un seul état pour toute l'appli : la cloche et la page dédiée lisent la même
+// source, avec un seul appel réseau. `useSyncExternalStore` au lieu de
+// `useState` synchronisés dans des effets, ce qui évite les rendus en cascade
+// au montage.
 // ---------------------------------------------------------------------------
 
 type Snapshot = {
@@ -55,8 +54,8 @@ function recompute() {
   const read = localRead ?? new Set<string>();
   const items = (feed?.notifications ?? []).map((n) => ({
     ...n,
-    // Lu côté serveur OU côté navigateur : les deux dépôts font foi ensemble,
-    // pour qu'une connexion tardive ne rende pas d'un coup tout le fil non lu.
+    // Lu si l'un des deux dépôts (serveur ou navigateur) le dit, pour qu'une
+    // connexion tardive ne remette pas tout le fil en non lu.
     read:
       Boolean(n.read) ||
       read.has(n.id) ||
@@ -84,14 +83,14 @@ function ensureLocalLoaded() {
     }
     legacyThreshold = Number(localStorage.getItem(LEGACY_KEY)) || 0;
   } catch {
-    /* stockage indisponible (navigation privée) : on dégrade sans casser */
+    /* stockage indisponible (navigation privée) : on fait sans */
   }
 }
 
 function persistLocal() {
   try {
-    // On borne le stockage : au-delà, ce sont des notifications qui ne
-    // reviendront jamais dans le fil, donc leur état de lecture ne sert plus.
+    // Stockage borné : au-delà, ces notifications ne reviendront plus dans le
+    // fil, leur état de lecture ne sert plus.
     localStorage.setItem(STORAGE_KEY, JSON.stringify([...(localRead ?? [])].slice(-300)));
   } catch {
     /* idem */
@@ -121,7 +120,7 @@ function markRead(ids: string[]) {
   for (const id of ids) localRead!.add(id);
   persistLocal();
   recompute();
-  // Au mieux : hors connexion la route répond 204 et le local fait foi.
+  // Envoi sans garantie : pour un visiteur non connecté la route répond 204 et seul le local compte.
   void fetch("/api/notifications/read", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -132,10 +131,9 @@ function markRead(ids: string[]) {
 /**
  * Fil de notifications côté client.
  *
- * L'état « lu » a deux dépôts, et c'est voulu : la base pour les comptes
- * connectés (il suit alors l'utilisateur d'un appareil à l'autre), le stockage
- * local pour tout le monde, y compris les visiteurs anonymes – qui sont
- * l'essentiel du trafic d'un site de ce type.
+ * L'état « lu » est stocké à deux endroits : en base pour les comptes connectés
+ * (il suit l'utilisateur d'un appareil à l'autre), en local pour tout le monde,
+ * y compris les visiteurs anonymes, qui font l'essentiel du trafic.
  */
 export function useNotifications(): Snapshot & {
   refresh: () => void;
@@ -145,15 +143,15 @@ export function useNotifications(): Snapshot & {
   const state = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   useEffect(() => {
-    // Première lecture du stockage local + premier appel réseau. Les deux
-    // passent par `recompute()`, jamais par un setState direct.
+    // Première lecture du stockage local et premier appel réseau, tous deux
+    // via `recompute()`, jamais par un setState direct.
     ensureLocalLoaded();
     recompute();
     void fetchFeed();
   }, []);
 
-  // Rafraîchissement discret : au retour sur l'onglet, et lentement en fond.
-  // Pas de long-polling ni de websocket – une annonce n'est pas une urgence.
+  // Rafraîchi au retour sur l'onglet, et lentement en fond. Ni long-polling ni
+  // websocket : une annonce peut attendre quelques minutes.
   useEffect(() => {
     const onFocus = () => void fetchFeed(true);
     const timer = window.setInterval(() => void fetchFeed(true), REFRESH_MS);

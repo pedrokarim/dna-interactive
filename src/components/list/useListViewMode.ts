@@ -13,11 +13,12 @@ const VIEW_MODE_VALUES = ["simplified", "list", "detailed"] as const;
  *                    La préférence est mémorisée par liste.
  * @param defaultMode Mode par défaut de cette liste (ex. "detailed" pour les MOD, sinon "simplified").
  *
- * Lecture : paramètre d'URL `view` (partageable) → préférence persistée de la liste → défaut.
- * Écriture : met à jour la préférence de la liste + l'URL.
+ * En lecture : le paramètre d'URL `view` (partageable), sinon la préférence
+ * enregistrée pour la liste, sinon le défaut. En écriture, on met à jour la
+ * préférence et l'URL.
  *
- * NOTE : volontairement séparé des blocs `useQueryStates({...})` des grilles afin de
- * ne pas perturber leur heuristique `hasUrlFilters` ni leur batching de filtres.
+ * Séparé exprès des `useQueryStates({...})` des grilles, pour ne pas fausser
+ * leur `hasUrlFilters` ni le regroupement de leurs mises à jour de filtres.
  */
 export function useListViewMode(
   surfaceKey: string,

@@ -1,8 +1,7 @@
 /**
- * Forme valide d'un plan, bornée. Sert à relire le `localStorage` (qui peut
- * être corrompu ou d'une ancienne version) et à valider ce qu'un client envoie
- * au serveur. Le contrôle référentiel (ids connus du jeu) vient en plus, côté
- * serveur.
+ * Forme valide d'un plan, bornée. Sert à relire le `localStorage` (corrompu ou
+ * d'une ancienne version, possible) et à valider ce qu'un client envoie au
+ * serveur. Le serveur vérifie en plus que les ids existent dans le jeu.
  */
 import { z } from "zod";
 import { EMPTY_PLANNER } from "./builds";
@@ -67,8 +66,8 @@ export const plannerStateSchema = z.object({
 });
 
 /**
- * Plan relu sans jamais planter : une entrée invalide est écartée, pas tout le
- * plan. Un plan illisible donne un plan vide, jamais une exception.
+ * Relit un plan sans jamais lever d'exception : une entrée invalide est écartée
+ * seule, et un plan illisible donne un plan vide.
  */
 export function readPlannerState(raw: unknown): PlannerState {
   const whole = plannerStateSchema.safeParse(raw);

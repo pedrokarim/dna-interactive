@@ -40,8 +40,8 @@ export default async function BuildOgImage({
 
   const charName = character ? resolveCharacterDisplayName(character, locale) : null;
   const title = truncate(build?.title ?? t("buildNotFound"), 64);
-  // bust = illustration carrée 2048² bien cadrée. Le gacha (256×1024) zoome sur
-  // le haut en cover et coupe le visage → priorité au bust.
+  // Le bust est un carré 2048² bien cadré. Le gacha (256×1024) en cover zoome
+  // sur le haut et coupe le visage, donc le bust passe en premier.
   const portraitPath =
     // Un buste généré n'a pas sa place ici : l'image partagée ne porte pas la mention.
     (character?.portraits.bust?.generated ? null : character?.portraits.bust?.publicPath) ??

@@ -2,9 +2,9 @@
  * Illustration de la 404 : un fragment de carte du jeu (ses courbes de niveau)
  * où le marqueur de position du joueur cherche son cap sans le trouver.
  *
- * Tout est en CSS (`.dna-404-*` dans globals.css) : aucune hydratation, et
- * `prefers-reduced-motion` fige les animations sur leur dernière image, que
- * les keyframes ramènent à la position de repos.
+ * Tout est en CSS (`.dna-404-*` dans globals.css), sans hydratation. Avec
+ * `prefers-reduced-motion`, les animations s'arrêtent sur leur dernière image,
+ * et les keyframes finissent sur la position de repos.
  */
 export function LostMarker() {
   return (
@@ -20,9 +20,9 @@ export function LostMarker() {
         <span className="dna-404-ring absolute left-1/2 top-1/2 h-20 w-20 rounded-full border border-gold/50" />
         <span className="dna-404-ring dna-404-ring--late absolute left-1/2 top-1/2 h-20 w-20 rounded-full border border-gold/50" />
 
-        {/* `loading="lazy"` : sans lui, React 19 précharge ces images dans
-            le <head> de TOUTES les pages, la 404 étant gardée en réserve par
-            le layout. Sur la 404 elle-même, elles sont à l'écran et chargent aussitôt. */}
+        {/* `loading="lazy"` : sans lui, React 19 précharge ces images dans le
+            <head> de toutes les pages, parce que le layout garde la 404 en
+            réserve. Sur la 404, elles sont à l'écran et chargent tout de suite. */}
         <img
           loading="lazy"
           src="/assets/ui/not-found/player-location.webp"

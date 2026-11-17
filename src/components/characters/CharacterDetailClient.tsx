@@ -149,7 +149,7 @@ type CommunityBuildPagination = {
 };
 
 // ---------------------------------------------------------------------------
-// Visual constants (existing)
+// Constantes visuelles
 // ---------------------------------------------------------------------------
 
 const ELEMENT_COLORS: Record<string, { border: string; bg: string; text: string }> = {
@@ -207,7 +207,7 @@ const COMMUNITY_BUILDS_PAGE_SIZE = 6;
 
 type PortraitType = "gacha" | "head" | "icon" | "bust" | "phantom" | "charpiece";
 
-/** Cles de message (`characterDetail.portrait*`) — pas de libelle en dur. */
+/** Clés de message (`characterDetail.portrait*`), pas de libellé en dur. */
 const PORTRAIT_LABEL_KEYS: Record<PortraitType, string> = {
   gacha: "portraitGacha",
   head: "portraitHead",
@@ -218,11 +218,11 @@ const PORTRAIT_LABEL_KEYS: Record<PortraitType, string> = {
 };
 
 // ---------------------------------------------------------------------------
-// Tab system — add new tabs here
+// Onglets (en ajouter ici)
 // ---------------------------------------------------------------------------
 
-// Slider de progression teinté : piste/fill via le dégradé inline (background),
-// pouce stylé via variantes Tailwind (couleur = var(--rng) posée en inline).
+// Slider teinté : la piste et le remplissage viennent du dégradé inline
+// (background), le pouce des variantes Tailwind (couleur dans var(--rng), en inline).
 const RANGE_CLASS =
   "h-1.5 flex-1 cursor-pointer appearance-none rounded-full " +
   "[&::-webkit-slider-runnable-track]:h-1.5 [&::-webkit-slider-runnable-track]:rounded-full [&::-webkit-slider-runnable-track]:bg-transparent " +
@@ -247,11 +247,10 @@ const TAB_CONFIG: { id: TabId; labelKey: string; icon: ComponentType<{ className
 ];
 
 // ---------------------------------------------------------------------------
-// Stats labels & formatting
+// Libellés et formatage des stats
 // ---------------------------------------------------------------------------
 
-/** attribut du jeu -> cle de message (`characterDetail.stat*`). Les libelles
- *  traduits vivent dans les messages, plus dans ce fichier. */
+/** Attribut du jeu vers sa clé de message (`characterDetail.stat*`). */
 const ATTR_LABEL_KEYS: Record<string, string> = {
   ATK: "statATK",
   ATK_Fire: "statATKFire",
@@ -292,7 +291,7 @@ function formatAddonValue(attr: CharacterAddonAttr): string {
 }
 
 // ---------------------------------------------------------------------------
-// StatBar — reusable stat row with label, value, and progress bar
+// StatBar : ligne de stat avec libellé, valeur et barre
 // ---------------------------------------------------------------------------
 
 function StatBar({
@@ -327,7 +326,7 @@ function StatBar({
 }
 
 // ---------------------------------------------------------------------------
-// Build tab
+// Onglet Build
 // ---------------------------------------------------------------------------
 
 function BuildLocalizedText({
@@ -337,8 +336,8 @@ function BuildLocalizedText({
   texts: Record<string, string>;
   lang: string;
 }) {
-  // Repli : langue demandee -> EN -> FR. L'anglais passe avant le francais :
-  // sans ca, un lecteur DE/ES/JP/KR/TC recevait du francais.
+  // Repli : langue demandée, puis EN, puis FR. L'anglais d'abord, sinon un
+  // lecteur DE/ES/JP/KR/TC tombe sur du français.
   const value =
     texts[lang.toUpperCase()] ??
     texts.EN ??
@@ -356,15 +355,15 @@ function buildText(value: string | null | undefined, lang: string): Record<strin
     : { [normalized]: value, FR: value, EN: value };
 }
 
-// Les builds communauté stockent un nom de compétence générique ("Compétence
-// 1/2/3", issu du picker). On retrouve le vrai nom du jeu via skillIndex →
-// icône skill1/2/3 du perso → compétence correspondante du kit.
+// Les builds communauté stockent un nom générique ("Compétence 1/2/3", venu du
+// picker). Le vrai nom se retrouve par skillIndex, puis l'icône skill1/2/3 du
+// perso, puis la compétence du kit qui porte cette icône.
 function resolveSkillNamesByIndex(character: CharacterRecord, lang: string): Record<number, string> {
   const set = getCharacterSkills(character.charId);
   const map: Record<number, string> = {};
   if (!set) return map;
-  // Basename normalisé : enlève chemin, extension et préfixe "T_" (minuscules) —
-  // pour matcher l'icône du slot (T_Skill_Fuluo02_On.png) avec le skill du kit
+  // Nom de base en minuscules, sans chemin, extension ni préfixe "T_", pour
+  // rapprocher l'icône du slot (T_Skill_Fuluo02_On.png) du skill du kit
   // (iconName "Skill_Fuluo02_On", iconPublicPath parfois null).
   const norm = (s: string) => s.replace(/^.*\//, "").replace(/\.png$/i, "").replace(/^T_/i, "").toLowerCase();
   const skillKey = (sk: (typeof set.skills)[number]) =>
@@ -381,8 +380,8 @@ function resolveSkillNamesByIndex(character: CharacterRecord, lang: string): Rec
   return map;
 }
 
-// Une entrée d'arme du payload communautaire → entrée d'affichage, en résolvant
-// les Demon Wedges propres à l'arme (s'ils existent dans ce build).
+// Arme du payload communautaire convertie pour l'affichage, avec ses propres
+// Demon Wedges quand le build en a.
 function resolveCommunityWeaponEntry(
   weapon: CommunityBuildListItem["payload"]["weapons"]["melee"][number],
   lang: string,
@@ -393,8 +392,8 @@ function resolveCommunityWeaponEntry(
     rank: weapon.rank,
     note: {},
     withWedges: weapon.withWedges ?? false,
-    // Les builds communautaires ne portent pas de chemin de Potentiel : c'est
-    // de la curation, pas une saisie ouverte au lecteur.
+    // Pas de chemin de Potentiel dans les builds communautaires : on le cure
+    // nous-mêmes, le joueur ne le saisit pas.
     potentialOrder: null,
     demonWedges:
       wedges && wedges.slots.length > 0
@@ -438,9 +437,9 @@ export function communityBuildToDisplayBuild(
       centerItem: payload.demonWedges.centerItemId
         ? resolveBuildItemRef("mods", payload.demonWedges.centerItemId, lang)
         : null,
-      // Le centre est ajustable en jeu (slot 09), mais le payload communautaire
-      // ne le capture pas encore : l'éditeur verrouille le centre. À ouvrir dans
-      // le builder avant de pouvoir le remonter ici.
+      // Le centre s'ajuste en jeu (slot 09), mais le payload communautaire ne
+      // le stocke pas : l'éditeur le verrouille. Il faudra l'ouvrir dans le
+      // builder avant de l'afficher ici.
       centerTrack: null,
       affinity: buildText(payload.demonWedges.affinity ?? build.element, lang),
       note: {},
@@ -451,8 +450,8 @@ export function communityBuildToDisplayBuild(
       role: teammate.role,
       note: {},
     })),
-    // Contrairement au chemin de Potentiel, les Traits d'un Géniemon sont bien
-    // une saisie du lecteur : c'est ce qu'il a greffé sur sa créature.
+    // Les Traits du Géniemon, eux, sont saisis par le joueur : ce qu'il a
+    // greffé sur sa créature.
     genimon: payload.genimon.map((genimon) => ({
       item: resolveBuildItemRef("genimons", genimon.itemId, lang),
       rank: genimon.rank,
@@ -485,12 +484,11 @@ export function communityBuildToDisplayBuild(
 }
 
 /**
- * Un build communautaire n'est affichable que si son contenu a la forme attendue.
+ * On n'affiche un build communautaire que si son contenu a la bonne forme.
  *
- * Le serveur valide tout ce qu'il enregistre, mais une ligne écrite à la main en
- * base (jeu d'essai, vieille migration) peut arriver avec un contenu vide : la
- * liste lisait alors `payload.weapons.melee` sur rien, et toute la fiche du
- * personnage tombait avec elle. On écarte ces lignes au lieu de planter.
+ * Le serveur valide ce qu'il enregistre, mais une ligne écrite à la main en base
+ * (jeu d'essai, vieille migration) peut avoir un contenu vide : lire
+ * `payload.weapons.melee` dessus faisait tomber toute la fiche. On l'écarte.
  */
 function isDisplayableCommunityBuild(build: CommunityBuildListItem): boolean {
   const payload = build.payload as Partial<CommunityBuildListItem["payload"]> | null | undefined;
@@ -610,9 +608,8 @@ function DemonWedgeSlotCard({
     </div>
   );
 
-  // Infobulle portalisee dans le body. En `absolute`, elle se faisait decouper par
-  // les conteneurs `overflow-hidden` de la page : sur la fiche d'arme elle etait
-  // coupee net au bord du panneau.
+  // Infobulle en portail dans le body : en `absolute`, les conteneurs
+  // `overflow-hidden` la coupaient au bord du panneau (fiche d'arme).
   const tooltip = slot.item ? (
     <>
       <p className="font-medium text-parch">{name}</p>
@@ -760,9 +757,9 @@ export function DemonWedgeLayout({
 
   return (
     <div className="flex flex-col items-center gap-3 md:gap-6">
-      {/* Desktop layout */}
+      {/* Desktop */}
       <div className="hidden w-full max-w-4xl items-center justify-center gap-6 md:flex">
-        {/* Left column — parallelograms lean right */}
+        {/* Colonne gauche : parallélogrammes penchés à droite */}
         <div className="flex flex-col items-center gap-4">
           <div className="flex gap-2">
             {topLeft.map((s) => (
@@ -776,10 +773,10 @@ export function DemonWedgeLayout({
           </div>
         </div>
 
-        {/* Center — actual demon wedge in a circle */}
+        {/* Centre : le Demon Wedge dans un cercle */}
         <DemonWedgeCenterSlot centerItem={centerItem} centerTrack={centerTrack} affinity={affinity} elementKey={elementKey} lang={lang} showTrackAdjust={showTrackAdjust} />
 
-        {/* Right column — parallelograms lean left (mirrored) */}
+        {/* Colonne droite, en miroir : penchés à gauche */}
         <div className="flex flex-col items-center gap-4">
           <div className="flex gap-2">
             {topRight.map((s) => (
@@ -794,10 +791,9 @@ export function DemonWedgeLayout({
         </div>
       </div>
 
-      {/* Mobile layout — desktop top/bottom split, each row symmetric:
-          - Top half (2 rows): each row pairs topLeft[i] (leans right) with topRight[i] (leans left)
-          - Center wedge in the middle
-          - Bottom half (2 rows): each row pairs bottomLeft[i] with bottomRight[i] */}
+      {/* Mobile : même découpage haut/bas que le desktop. Deux rangées en haut
+          (topLeft[i] penché à droite avec topRight[i] penché à gauche), le
+          centre au milieu, deux rangées en bas (bottomLeft[i] avec bottomRight[i]). */}
       <div className="flex w-full flex-col items-center gap-3 md:hidden">
         <div className="grid grid-cols-2 place-items-center gap-3">
           {[0, 1].map((i) => (
@@ -840,7 +836,7 @@ export function DemonWedgeLayout({
 }
 
 // ---------------------------------------------------------------------------
-// Skills tab — per-skill card with name, description, stats, and combat terms
+// Onglet Compétences : une carte par compétence (nom, description, stats, termes de combat)
 // ---------------------------------------------------------------------------
 
 const SKILL_TYPE_KEYS: Record<string, string> = {
@@ -866,8 +862,8 @@ function getSkillLocalized<T extends { translations: Record<string, unknown> }>(
     null) as T["translations"][string] | null;
 }
 
-// Render in-game markup: <H>text</> → highlighted span.
-// Game text uses this format to mark special annotations (e.g. "deployed as Combat Partner").
+// Balisage du jeu : <H>texte</> devient un span en surbrillance. Le jeu s'en sert
+// pour les annotations (par ex. "deployed as Combat Partner").
 function renderSkillMarkup(text: string): React.ReactNode {
   const parts: React.ReactNode[] = [];
   const regex = /<H>([\s\S]*?)<\/>/g;
@@ -910,7 +906,7 @@ function SkillCard({
     : null;
   const rgb = ELEMENT_RGB[elementKey] ?? ELEMENT_RGB.Water;
 
-  // Group params by section if any
+  // Paramètres groupés par section, s'il y en a
   const sections = localized.sections;
   const paramsInSections = new Set<number>();
   for (const s of sections) for (const i of s.indices) paramsInSections.add(i);
@@ -1070,7 +1066,7 @@ function SkillsTabContent({
     );
   }
 
-  // Filter out skills that have no name in any language (shared/empty stubs like Eve's).
+  // On retire les compétences sans nom dans aucune langue (coquilles vides ou partagées, comme chez Eve).
   const skills = skillSet.skills.filter((s) => {
     const localized = getSkillLocalized(s, selectedLanguage);
     return localized?.name || localized?.description;
@@ -1140,9 +1136,8 @@ function SkillsTabContent({
 }
 
 // ---------------------------------------------------------------------------
-// Carte de build partageable — OUVERTE par defaut (c'est le premier element
-// de l'onglet Build), repliable et partageable via ?build=false.
-// If the URL lands with the param set to "open", we auto-scroll to it once.
+// Carte de build partageable, ouverte par défaut (premier élément de l'onglet
+// Build). `?build=false` la replie.
 // ---------------------------------------------------------------------------
 
 // Mappe les locales du site vers des tags BCP-47 pour toLocaleDateString.
@@ -1161,10 +1156,8 @@ function QuickBuildAccordion({
   collapsible?: boolean;
 }) {
   const tcb = useTranslations("communityBuilds");
-  // Ouvert par DÉFAUT : la carte est ce qu'on vient voir en premier sur l'onglet
-  // Build. Fermée, on n'apercevait qu'une barre repliée et il fallait deviner
-  // qu'il y avait une carte derrière. `?build=false` permet de la replier et de
-  // partager ce choix.
+  // Ouverte par défaut : fermée, on ne voyait qu'une barre et on ne devinait pas
+  // la carte derrière. `?build=false` la replie, et le lien garde ce choix.
   const [open, setOpen] = useQueryState(
     "build",
     parseAsBoolean.withDefault(true).withOptions({ clearOnDefault: true }),
@@ -1174,9 +1167,8 @@ function QuickBuildAccordion({
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [downloading, setDownloading] = useState(false);
   const scrolledRef = useRef(false);
-  // Au premier rendu la carte est déjà ouverte : il ne faut PAS scroller dessus,
-  // sinon la page saute toute seule à l'arrivée. On ne scrolle que sur une
-  // ouverture déclenchée par l'utilisateur.
+  // Pas de scroll au premier rendu (la carte est déjà ouverte, la page sauterait
+  // à l'arrivée) : seulement quand l'utilisateur l'ouvre.
   const mountedRef = useRef(false);
 
   useEffect(() => {
@@ -1480,10 +1472,9 @@ function CommunityBuildsSection({
 
       <div className="mt-4 flex flex-col gap-2">
         {loading ? (
-          // Un gabarit de carte, et non une ligne de texte : la section passait
-          // d'une vingtaine de pixels a plusieurs centaines une fois les builds
-          // recuperes, en poussant tout le contenu en dessous. Cf. le CLS des
-          // fiches personnages, mesure a 0,187 sur le terrain.
+          // Squelette à la taille d'une carte : avec une simple ligne de texte, la
+          // section passait de 20 px à plusieurs centaines au chargement des
+          // builds et poussait tout le contenu (CLS mesuré à 0,187).
           <DnaCommunityBuildCardSkeleton />
         ) : builds.length === 0 ? (
           <p className="font-sans text-sm text-muted">{tcb("emptyForElement")}</p>
@@ -1776,10 +1767,9 @@ function CommunityBuildPreviewModal({
   );
 }
 
-// Le build curé arrive déjà résolu côté serveur (noms d'items dans la locale
-// de route). Le sélecteur ?lang= doit pouvoir retraduire ces noms sans
-// rechargement : les ResolvedItemRef conservent itemId, on re-résout donc juste
-// le nom dans la langue active. (Les notes/skills utilisent déjà selectedLanguage.)
+// Le build curé arrive résolu par le serveur, noms d'items dans la locale de la
+// route. Pour que ?lang= les retraduise sans recharger, on repart de l'itemId
+// gardé dans chaque ResolvedItemRef. (Notes et skills suivent déjà selectedLanguage.)
 function relocalizeCuratedBuild(build: CharacterBuild, lang: string): CharacterBuild {
   const item = (
     category: "weapons" | "mods" | "genimons",
@@ -1855,8 +1845,8 @@ export function BuildTabContent({
   // Dates des builds maison uniquement : un build communautaire porte les siennes.
   const buildDates = officialHeader ? (BUILD_DATES as Record<string, { updatedAt: string | null; verifiedAt: string | null }>)[character.id] ?? null : null;
 
-  // Re-localise les noms d'items du build actif selon la langue choisie
-  // (?lang=) — le build prop est résolu côté serveur dans la locale de route.
+  // Noms d'items du build actif dans la langue de ?lang= (la prop build est
+  // résolue par le serveur dans la locale de la route).
   const activeBuild = builds[activeBuildIndex] ?? builds[0] ?? null;
   const localizedBuild = useMemo(
     () => (activeBuild ? relocalizeCuratedBuild(activeBuild, selectedLanguage) : null),
@@ -1896,8 +1886,8 @@ export function BuildTabContent({
 
   return (
     <div className="space-y-3 md:space-y-5">
-      {/* La carte partageable EN PREMIER : c'est ce qu'on vient voir. Le choix
-          du build et le detail (armes, wedges, equipe...) suivent en dessous. */}
+      {/* La carte partageable d'abord, c'est ce qu'on vient voir. Le choix du
+          build et le détail (armes, wedges, équipe…) suivent. */}
       {showQuickBuildCard ? (
         <QuickBuildAccordion
           character={character}
@@ -1907,20 +1897,18 @@ export function BuildTabContent({
         />
       ) : null}
 
-      {/* En-tête unique du build : le tier « Officiel » ET le choix du build.
-          Avant, c'étaient deux blocs empilés et le sélecteur était fait de
-          boutons sans bordure — invisible tant qu'on ne le survolait pas. On
-          regroupe, et on passe par DnaSegmented dont le cadre montre qu'il y a
-          bien plusieurs options. */}
+      {/* Un seul en-tête pour le tier « Officiel » et le choix du build. Le
+          sélecteur passe par DnaSegmented : avec des boutons sans bordure, on
+          ne voyait pas qu'il y avait plusieurs options. */}
       {officialHeader || builds.length > 1 ? (
         <div className="flex flex-wrap items-center gap-x-3 gap-y-2 border-l-2 border-gold/60 bg-gold/5 px-3 py-2">
-          {/* Un build que la recommandation actuelle a remplacé reste consultable :
-              on le dit, pour qu'il ne passe pas pour le conseil du moment. */}
+          {/* Build remplacé par la recommandation actuelle : toujours consultable,
+              mais on le signale pour qu'il ne passe pas pour le conseil du moment. */}
           {activeBuild?.legacy ? (
             <p className="order-[10000] basis-full font-sans text-xs text-muted">{t("legacyBuildNotice")}</p>
           ) : null}
-          {/* Sans ces dates, impossible de savoir si un build a bougé depuis la
-              dernière visite, ou s'il a été relu sans rien changer. */}
+          {/* Les dates disent si le build a bougé depuis la dernière visite, ou
+              s'il a été relu sans changement. */}
           {buildDates && (buildDates.updatedAt || buildDates.verifiedAt) ? (
             <span className="order-last ml-auto font-sans text-xs text-muted tabular-nums">
               {[
@@ -1963,9 +1951,8 @@ export function BuildTabContent({
           ) : officialHeader ? (
             <span className="font-sans text-xs text-muted">{tcb("officialDesc")}</span>
           ) : null}
-          {/* Planificateur : le build est retrouvé côté serveur par perso,
-              élément et rang dans la liste filtrée par élément (cf.
-              `resolvePlannerBuild`). */}
+          {/* Le planificateur retrouve le build côté serveur par perso, élément
+              et rang dans la liste filtrée par élément (voir `resolvePlannerBuild`). */}
           {officialHeader ? (
             <Link
               href={`${NAVIGATION.planner}?build=official:${character.id}:${characterElement}:${activeBuildIndex}`}
@@ -2047,9 +2034,8 @@ export function BuildTabContent({
                           </span>
                         </div>
                         {/* Arme de calamité : son arbre de Potentiel, avec l'ordre
-                            d'investissement conseillé pour CE personnage. L'arbre
-                            n'est pas un embranchement — les deux branches convergent,
-                            donc ce qui se choisit est l'ordre. */}
+                            d'investissement conseillé pour ce personnage. Les deux
+                            branches se rejoignent, on ne choisit que l'ordre. */}
                         {w.item && hasCalamityPotentialTree(w.item.itemId) ? (
                           <details className="border-t border-white/8 px-4 py-3">
                             <summary className="cursor-pointer font-caps text-[0.62rem] uppercase tracking-[0.16em] text-crimson-bright/90">
@@ -2223,8 +2209,8 @@ export function BuildTabContent({
                     {cw.slots.slice(2, 4).map((s, i) => renderSlot(s, i, CLIP_RIGHT))}
                   </div>
                 </div>
-                {/* Mobile — top row (slots 0/2), center weapon, bottom row (slots 1/3),
-                    mirroring the DemonWedgeLayout mobile pattern */}
+                {/* Mobile, comme DemonWedgeLayout : rangée du haut (slots 0/2),
+                    arme au centre, rangée du bas (slots 1/3) */}
                 <div className="flex w-full flex-col items-center gap-4 md:hidden">
                   <div className="grid w-full grid-cols-2 place-items-center gap-4">
                     {cw.slots[0] ? renderSlot(cw.slots[0], 0, CLIP_LEFT) : <div />}
@@ -2297,9 +2283,9 @@ export function BuildTabContent({
                 ? ELEMENT_COLORS[tm.character.element.key] ?? ELEMENT_COLORS.Water
                 : ELEMENT_COLORS.Water;
               return (
-                // `min-w-0` : une piste de grille vaut `minmax(auto, …)` par défaut,
-                // donc elle s'élargit au contenu. Les libellés sont en `truncate`
-                // (nowrap) et poussaient la carte au-delà du viewport en mobile.
+                // `min-w-0` : par défaut une piste de grille vaut `minmax(auto, …)`
+                // et suit son contenu ; les libellés en `truncate` (nowrap)
+                // poussaient la carte hors de l'écran en mobile.
                 <div
                   key={i}
                   className={`min-w-0 border ${ec.border} ${ec.bg} p-3`}
@@ -2380,9 +2366,8 @@ export function BuildTabContent({
                 </div>
 
                 {/*
-                  Le passif : c'est pour lui qu'on choisit une créature. Affiché
-                  à son palier maximal, valeurs résolues — le texte du jeu porte
-                  des jetons `#1` qui, seuls, ne disent rien.
+                  Le passif, ce pour quoi on choisit la créature. Affiché au palier
+                  max avec les valeurs résolues : le texte du jeu n'a que des jetons `#1`.
                 */}
                 {g.passive ? (
                   <p className="whitespace-pre-line text-xs leading-relaxed text-parch/80">
@@ -2391,9 +2376,9 @@ export function BuildTabContent({
                 ) : null}
 
                 {/*
-                  Les emplacements de Trait, en sphères comme dans le jeu. Vides
-                  tant que le build n'en cure aucun : la place reste visible,
-                  pour qu'on sache qu'il y a quelque chose à y mettre.
+                  Emplacements de Trait, en sphères comme dans le jeu. Vides si le
+                  build n'en donne aucun, mais visibles : on sait qu'il y a quelque
+                  chose à y mettre.
                 */}
                 <div className="flex items-center gap-2 border-t border-white/8 pt-2.5">
                   <span className="font-caps text-[0.55rem] uppercase tracking-[0.18em] text-muted-2">
@@ -2403,8 +2388,8 @@ export function BuildTabContent({
                     {Array.from({ length: g.traitSlots }, (_, slot) => {
                       const trait = g.traits[slot];
                       return trait ? (
-                        // Infobulle plutôt qu'un `title` : celui-ci n'affichait
-                        // ni glyphe ni valeur, et le mobile ne le montre jamais.
+                        // Infobulle et pas `title` : un `title` n'affiche ni glyphe
+                        // ni valeur, et le mobile ne le montre jamais.
                         <TraitTooltip key={slot} trait={trait}>
                           <span className="grid h-7 w-7 cursor-help place-items-center rounded-full border border-gold/40 bg-gold/10">
                             {trait.icon ? (
@@ -2434,11 +2419,9 @@ export function BuildTabContent({
       )}
 
       {/* --- Skill priority --- */}
-      {/* Priorite de competences — le rang doit se lire d'un coup d'oeil.
-          Avant : une « vine » verticale decorative et des items decales, qui
-          donnait une ligne traversant les competences sans rien dire de l'ordre.
-          Maintenant : un numero de rang en gros, et une emphase decroissante
-          (liseré or + fond teinte sur le 1er, de plus en plus sobre ensuite). */}
+      {/* Priorité de compétences : le rang doit se lire d'un coup d'œil. Numéro
+          en gros, et une emphase qui décroît (liseré or et fond teinté sur la
+          1re, de plus en plus sobre ensuite). */}
       {hasSkills && (() => {
         const rgb = ELEMENT_RGB[characterElement] ?? ELEMENT_RGB.Water;
         const sorted = build.skillPriority.slice().sort((a, b) => b.priority - a.priority);
@@ -2460,7 +2443,7 @@ export function BuildTabContent({
                       isTop ? "border-l-gold bg-gold/8" : "border-l-line/30 bg-ink/30",
                     )}
                   >
-                    {/* le rang : seul repere d'ordre, en gros */}
+                    {/* le rang, seul repère d'ordre, en gros */}
                     <span
                       className={cn(
                         "w-7 shrink-0 text-center font-display leading-none tabular-nums md:w-9",
@@ -2474,7 +2457,7 @@ export function BuildTabContent({
                       {i + 1}
                     </span>
 
-                    {/* icone de la competence, cerclee de la teinte d'element */}
+                    {/* icône de la compétence, cerclée de la teinte d'élément */}
                     <span
                       className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full md:h-12 md:w-12"
                       style={{
@@ -2491,7 +2474,7 @@ export function BuildTabContent({
                       )}
                     </span>
 
-                    {/* nom, etoiles, note */}
+                    {/* nom, étoiles, note */}
                     <span className="min-w-0 flex-1">
                       <span
                         className={cn(
@@ -2544,19 +2527,19 @@ export function BuildTabContent({
 }
 
 // ---------------------------------------------------------------------------
-// Main component
+// Composant principal
 // ---------------------------------------------------------------------------
 
 /**
  * Passif d'un Géniemon, jetons `#N` remplacés par leurs valeurs.
  *
- * Ce sont des taux – relevé sur les 56 créatures équipables, aucune valeur
- * n'atteint 1 – donc un pourcentage. Le formatage passe par `Intl` avec la
- * locale de la page : la virgule décimale n'est pas la même partout.
+ * Ce sont des taux (aucune valeur n'atteint 1 sur les 56 créatures
+ * équipables), donc affichés en pourcentage, via `Intl` dans la locale de la
+ * page pour avoir le bon séparateur décimal.
  */
 function renderPassive(passive: GenimonPassive, locale: string): ReactNode[] {
-  // `toIntlLocale` : « jp », « kr » et « tc » ne sont pas des locales valides pour `Intl`, qui
-  // retombe alors sur celle de la machine – pas la même côté serveur et côté navigateur.
+  // `toIntlLocale` : « jp », « kr » et « tc » ne sont pas valides pour `Intl`, qui prend
+  // alors la locale de la machine, différente entre serveur et navigateur.
   const percent = new Intl.NumberFormat(toIntlLocale(locale), { style: "percent", maximumFractionDigits: 1 });
   const parts: ReactNode[] = [];
   const regex = /#(\d+)/g;
@@ -2594,10 +2577,10 @@ export default function CharacterDetailClient({
   const [favoriteChars] = useAtom(charactersFavoritesAtom);
   const [, toggleFavorite] = useAtom(toggleCharacterFavoriteAtom);
 
-  // --- Element state (multi-element characters, e.g. the protagonist) ---
-  // `baseCharacter` is the canonical unified record; `character` below is the
-  // flattened view for the selected element. Single-element characters have no
-  // `variants`, so the view is identical to the record and the selector is hidden.
+  // --- Élément (persos multi-élément, comme le protagoniste) ---
+  // `baseCharacter` est la fiche complète ; `character` plus bas est la vue à
+  // plat pour l'élément choisi. Un perso à un seul élément n'a pas de
+  // `variants` : la vue est la fiche elle-même et le sélecteur est caché.
   const elementOptions = useMemo(
     () => getCharacterElements(baseCharacter),
     [baseCharacter],
@@ -2620,14 +2603,14 @@ export default function CharacterDetailClient({
     [baseCharacter, selectedElement],
   );
 
-  // Skills depend on the active element (each variant keeps its own charId).
+  // Les compétences dépendent de l'élément actif (chaque variante a son charId).
   const activeSkillSet = useMemo(
     () => getCharacterSkills(character.charId) ?? skillSet ?? null,
     [character.charId, skillSet],
   );
-  // Les 3 emplacements d'icones du personnage correspondent aux competences
-  // ACTIVES du kit, dans cet ordre. Aucun personnage ne porte de `Skill3` :
-  // la 3e est un `Passive`. On resout donc par ordre, pas par nom de type.
+  // Les 3 emplacements d'icônes suivent les compétences du kit dans cet ordre.
+  // Aucun personnage n'a de `Skill3`, la 3e icône tombe donc sur le `Passive` :
+  // on apparie par ordre, pas par nom de type.
   const MAIN_SKILL_TYPES = ["Skill1", "Skill2", "Skill3", "Passive", "ExtraPassive", "UltraPassive"] as const;
   const mainSkills = useMemo(
     () =>
@@ -2638,14 +2621,14 @@ export default function CharacterDetailClient({
   );
 
 
-  // Builds tagged with an element are shown only for that element; untagged
-  // builds apply to every element (single-element characters).
+  // Un build marqué d'un élément ne s'affiche que pour lui ; sans élément, il
+  // vaut pour tous (persos à un seul élément).
   const activeBuilds = useMemo(
     () => builds.filter((b) => !b.element || b.element === character.element.key),
     [builds, character.element.key],
   );
 
-  // --- Language state ---
+  // --- Langue ---
   const locale = useLocale();
   const preferredLanguage = useMemo(
     () =>
@@ -2679,14 +2662,14 @@ export default function CharacterDetailClient({
     [character, selectedLanguage, catalog.availableLanguages],
   );
 
-  // Nom d'affichage propre — gère les noms-template {nickname} des
-  // protagonistes Umbro en y substituant un nom marketing.
+  // Nom d'affichage : les protagonistes Umbro ont un nom-modèle {nickname}, on
+  // le remplace par leur nom marketing.
   const displayName = useMemo(
     () => resolveCharacterDisplayName(character, selectedLanguage),
     [character, selectedLanguage],
   );
 
-  // --- Tab state ---
+  // --- Onglets ---
   const tabParser = useMemo(
     () => parseAsStringLiteral(TAB_IDS).withDefault("stats" as const),
     [],
@@ -2702,7 +2685,7 @@ export default function CharacterDetailClient({
     }, 60);
   }, [setActiveTab]);
 
-  // --- Character metadata ---
+  // --- Métadonnées du perso ---
   const isFavorite = favoriteChars.has(character.id);
   const elHex = ELEMENTS[character.element.key as ElementKey]?.hex ?? "#c2a86a";
   const elementIcon = ELEMENT_ICONS[character.element.key];
@@ -2715,7 +2698,7 @@ export default function CharacterDetailClient({
   }, [character.portraits]);
 
   const [activePortrait, setActivePortrait] = useState<PortraitType>(
-    // Préférer le bust (perso entier) pour le render centré, sinon gacha.
+    // Le buste (perso entier) d'abord pour le render centré, sinon le gacha.
     availablePortraits.includes("bust")
       ? "bust"
       : availablePortraits.includes("gacha")
@@ -2776,7 +2759,7 @@ export default function CharacterDetailClient({
     return () => cancelAnimationFrame(frame);
   }, [activePortrait, character.id, resetRenderZoom]);
 
-  // Molette → zoom vers le curseur (listener natif non-passif)
+  // Molette : zoom vers le curseur (listener natif non passif)
   useEffect(() => {
     const el = stageRef.current;
     if (!el || !activePortraitSrc) return;
@@ -2807,18 +2790,18 @@ export default function CharacterDetailClient({
     setDragging(false);
   };
 
-  // --- Prev/Next navigation ---
+  // --- Perso précédent / suivant ---
   const allCharacters = useMemo(() => getAllCharacters(), []);
   const currentIndex = allCharacters.findIndex((c) => c.id === character.id);
   const prevCharacter = currentIndex > 0 ? allCharacters[currentIndex - 1] : null;
   const nextCharacter =
     currentIndex < allCharacters.length - 1 ? allCharacters[currentIndex + 1] : null;
 
-  // --- Intron popover state ---
+  // --- Popover des Introns ---
   const [activeIntronIdx, setActiveIntronIdx] = useState<number | null>(null);
   const [quickBuildOpen, setQuickBuildOpen] = useState(false);
 
-  // --- Stats computation ---
+  // --- Calcul des stats ---
   const maxLevel = character.maxLevel ?? 80;
   const [level, setLevel] = useState(maxLevel);
 
@@ -2848,13 +2831,13 @@ export default function CharacterDetailClient({
   const atkBarColor = ELEMENT_BAR_COLORS[character.element.key] ?? "from-muted-2 to-muted";
 
   // =========================================================================
-  // Render
+  // Rendu
   // =========================================================================
 
   return (
     <div className="space-y-4 md:space-y-6">
       {/* ================================================================= */}
-      {/* Top bar + Hero section (always visible, above tabs)               */}
+      {/* Barre du haut et hero (toujours visibles, au-dessus des onglets)  */}
       {/* ================================================================= */}
       <div className="border border-line/25 bg-panel/55 px-3 py-2.5 backdrop-blur-sm md:px-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
@@ -3042,21 +3025,17 @@ export default function CharacterDetailClient({
                   draggable={false}
                   width={300}
                   height={400}
-                  // La hauteur est imposée, pas plafonnée. Avec `max-h` seul, la
-                  // taille restait bornée par l'attribut `width` ci-dessus : les
-                  // portraits carrés — dont le buste — s'affichaient à 300 px au
-                  // lieu des 500 px voulus, et seul le gacha, très vertical,
-                  // atteignait la hauteur réglée. La largeur suit le ratio ;
-                  // `max-h-full` empêche de déborder d'un stage plus court que
-                  // la hauteur demandée.
+                  // Hauteur imposée, pas seulement plafonnée : avec `max-h` seul,
+                  // l'attribut `width` ci-dessus bornait la taille et les portraits
+                  // carrés (le buste) sortaient à 300 px au lieu de 500. La largeur
+                  // suit le ratio, `max-h-full` évite de déborder d'un stage plus court.
                   className="relative z-[1] h-[660px] max-h-full w-auto max-w-[94%] select-none object-contain drop-shadow-[0_18px_50px_rgba(0,0,0,0.6)]"
                   style={{
                     transform: `translate(${renderPan.x}px, ${renderPan.y}px) scale(${renderZoom})`,
                     transition: dragging ? "none" : "transform 0.14s ease-out",
-                    // Le portrait gacha est une bande étroite au fond opaque : ses
-                    // bords verticaux tranchaient net sur le décor. Un fondu sur
-                    // les côtés et en bas l'intègre, comme les bustes. C'est
-                    // l'image principale des fiches sans buste (Mors).
+                    // Le portrait gacha est une bande étroite à fond opaque, aux bords
+                    // nets sur le décor : fondu sur les côtés et en bas, comme les
+                    // bustes. C'est l'image principale des fiches sans buste (Mors).
                     ...(activePortrait === "gacha"
                       ? {
                           maskImage:
@@ -3069,7 +3048,7 @@ export default function CharacterDetailClient({
                       : {}),
                   }}
                 />
-                {/* Contrôles de zoom — façon carte */}
+                {/* Contrôles de zoom, comme sur la carte */}
                 <div className="absolute bottom-3 right-3 z-10 flex flex-col gap-1">
                   <button
                     type="button"
@@ -3134,7 +3113,7 @@ export default function CharacterDetailClient({
             )}
           </div>
 
-          {/* Panneau stats (droite) — disposition Arsenal */}
+          {/* Panneau stats (à droite), disposition Arsenal */}
           <aside className="flex flex-col gap-4">
             <DnaPanel className="p-4 md:p-5">
               <DnaSectionLabel>Personnage #{character.charId}</DnaSectionLabel>
@@ -3153,7 +3132,7 @@ export default function CharacterDetailClient({
                     .join(" · ")}
                 </div>
               </div>
-              {/* Slider de niveau — pilote les stats, teinté par l'élément */}
+              {/* Slider de niveau : pilote les stats, teinté par l'élément */}
               <div className="mt-2.5 flex items-center gap-2 border-b border-white/6 pb-3">
                 <span className="shrink-0 font-caps text-[0.55rem] uppercase tracking-[0.12em] text-muted-2">{t("levelShort")}</span>
                 <input
@@ -3182,10 +3161,10 @@ export default function CharacterDetailClient({
                   <DnaStatRow
                     key={r.k}
                     label={r.k}
-                    // Locale EXPLICITE : `toLocaleString(undefined)` prend la
-                    // locale de l'environnement, différente au SSR (ICU de Node)
-                    // et à l'hydratation (navigateur) → mismatch React #418 dès
-                    // qu'une stat atteint 4 chiffres (PV, bouclier).
+                    // Locale explicite : `toLocaleString(undefined)` prend celle de
+                    // l'environnement, différente entre le SSR (ICU de Node) et le
+                    // navigateur. Résultat, erreur React #418 dès qu'une stat
+                    // passe 4 chiffres (PV, bouclier).
                     value={Math.round(r.v).toLocaleString(DATE_LOCALE[locale] ?? locale)}
                     accent={r.hl ? elHex : undefined}
                   />
@@ -3291,7 +3270,7 @@ export default function CharacterDetailClient({
             </DnaPanel>
           </aside>
         </div>
-              {/* — attributs détaillés (suite de l'onglet Attributs) — */}
+              {/* attributs détaillés (suite de l'onglet Attributs) */}
               <section className="space-y-3 md:space-y-5">
           {/* Armes de prédilection : sous l'illustration, pas à côté, pour ne pas étirer la colonne. */}
           <WeaponProficiencyPanel
@@ -3300,7 +3279,7 @@ export default function CharacterDetailClient({
             onOpenBuild={() => setActiveTab("build")}
           />
 
-          {/* Base stats */}
+          {/* Stats de base */}
           <DnaPanel className="p-4 md:p-5">
             <DnaSectionLabel>{t("baseStats")}</DnaSectionLabel>
             <div className="mt-4 grid gap-x-10 gap-y-4 md:grid-cols-2">
@@ -3328,18 +3307,16 @@ export default function CharacterDetailClient({
             </div>
           </DnaPanel>
 
-          {/* Skill Icons : avant les bonus et les paliers d'ascension, qu'on consulte bien moins. */}
+          {/* Icônes de compétences, avant les bonus et paliers d'ascension qu'on consulte bien moins. */}
           {(character.skillIcons.skill1.publicPath || character.skillIcons.skill2.publicPath || character.skillIcons.skill3.publicPath) && (
             <DnaPanel className="p-4 md:p-5">
               <DnaSectionLabel>{t("tabSkills")}</DnaSectionLabel>
-              {/* Avant, ce bloc n'affichait qu'une icône et un libellé generique
-                  (« Compétence 1/2/3 ») : aucune information exploitable. On
-                  résout le vrai nom et le début de la description depuis le kit,
-                  et on renvoie vers l'onglet Compétences pour le détail complet. */}
-              {/* AUCUN personnage n'a de `Skill3` dans son kit : la 3e icône
-                  correspond en réalité au `Passive`. On n'associe donc pas
-                  l'icône N au type `SkillN`, on prend les compétences du kit
-                  dans leur ordre d'affichage et on les apparie aux icônes. */}
+              {/* Vrai nom et début de description tirés du kit (un libellé
+                  « Compétence 1/2/3 » ne disait rien), avec renvoi vers l'onglet
+                  Compétences pour le détail. */}
+              {/* Aucun personnage n'a de `Skill3` : la 3e icône correspond au
+                  `Passive`. On n'associe pas l'icône N au type `SkillN`, on
+                  apparie les compétences du kit aux icônes dans l'ordre. */}
               <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {([["skill1", "skillType1"], ["skill2", "skillType2"], ["skill3", "skillType3"]] as const).map(
                   ([key, labelKey], slotIndex) => {
@@ -3381,7 +3358,7 @@ export default function CharacterDetailClient({
             </DnaPanel>
           )}
 
-          {/* Addon attrs (ascension bonuses) */}
+          {/* Bonus d'ascension */}
           {character.addonAttrs.length > 0 && (
             <DnaPanel className="p-4 md:p-5">
               <DnaSectionLabel>{t("ascensionBonus")}</DnaSectionLabel>
@@ -3400,7 +3377,7 @@ export default function CharacterDetailClient({
             </DnaPanel>
           )}
 
-          {/* Recommended attrs + Positioning */}
+          {/* Attributs conseillés et rôle */}
           <div className="grid gap-3 md:gap-5 lg:grid-cols-2">
             {character.recommendAttr.length > 0 && (
               <DnaPanel className="p-4 md:p-5">
@@ -3439,7 +3416,7 @@ export default function CharacterDetailClient({
             )}
           </div>
 
-          {/* Ascension levels */}
+          {/* Paliers d'ascension */}
           {character.ascensionLevels.length > 0 && (
             <DnaPanel className="p-4 md:p-5">
               <DnaSectionLabel>{t("ascensionTiers")}</DnaSectionLabel>
@@ -3463,7 +3440,7 @@ export default function CharacterDetailClient({
               </div>
             </DnaPanel>
           )}
-          {/* Consonance Weapon info box */}
+          {/* Encadré de l'arme de consonance */}
           {character.consonanceWeapons?.length > 0 && (
             <div className="border border-electro/30 bg-electro/5 p-3 md:p-5">
               <h2 className="flex items-center gap-2 text-base md:text-lg font-semibold text-parch">
@@ -3508,7 +3485,7 @@ export default function CharacterDetailClient({
             </div>
           )}
 
-      {/* ---------- Build tab ---------- */}
+      {/* ---------- Onglet Build ---------- */}
       {activeTab === "build" && (
         <BuildTabContent
           builds={activeBuilds}
@@ -3521,7 +3498,7 @@ export default function CharacterDetailClient({
         />
       )}
 
-      {/* ---------- Skills tab ---------- */}
+      {/* ---------- Onglet Compétences ---------- */}
       {activeTab === "skills" && (
         <SkillsTabContent
           skillSet={activeSkillSet}
@@ -3530,7 +3507,7 @@ export default function CharacterDetailClient({
         />
       )}
 
-      {/* ---------- Portraits tab ---------- */}
+      {/* ---------- Onglet Portraits ---------- */}
       {activeTab === "portraits" && (
         <section className="border border-line/25 bg-panel/85 backdrop-blur-sm p-3 md:p-5">
           <h2 className="text-base md:text-base md:text-lg font-semibold text-parch">{t("portraitGallery")}</h2>
@@ -3584,26 +3561,26 @@ export default function CharacterDetailClient({
         </section>
       )}
 
-      {/* ---------- Intron tab ---------- */}
+      {/* ---------- Onglet Introns ---------- */}
       {activeTab === "intron" && (() => {
         const rgb = ELEMENT_RGB[character.element.key] ?? ELEMENT_RGB.Water;
         const intronLevels = character.intronLevels;
         const bustSrc = character.portraits.bust?.publicPath;
         const intronEffects = translation.intronEffects ?? [];
-        // Horizontal offsets (%) — equal 31% step between consecutive circles
-        // (1→2 and 2→3 identical), symmetric: 1↔6, 2↔5, 3↔4.
-        // Index 6 (Intron VII) sits on the left column, between 1 (top) and 6 (bottom).
+        // Positions horizontales (%) : pas de 31 % entre cercles voisins, symétrie
+        // 1/6, 2/5, 3/4. L'index 6 (Intron VII) est dans la colonne de gauche,
+        // entre le 1 (haut) et le 6 (bas).
         const CIRCLE_X = [6, 37, 68, 68, 37, 6, 6];
-        // Vertical offsets (%) — extra gap between top (1,2,3) and bottom (4,5,6).
-        // Index 6 (Intron VII) is at the vertical midpoint of the left column.
+        // Positions verticales (%) : un écart de plus entre le haut (1, 2, 3) et le
+        // bas (4, 5, 6). L'index 6 (Intron VII) est à mi-hauteur de la colonne de gauche.
         const CIRCLE_Y = [2, 16, 30, 54, 68, 82, 42];
         const ROMAN_NUMERALS = ["I", "II", "III", "IV", "V", "VI", "VII"];
 
         return (
           <section className="relative border border-panel/60 bg-ink/40 md:min-h-[720px]">
-            {/* Background clipping wrapper — only clips bust + glow so popovers can escape the section */}
+            {/* Ne rogne que le buste et le halo, pour que les popovers puissent sortir de la section */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              {/* z-0: Bust image as background — oversized, positioned left */}
+              {/* z-0 : buste en fond, surdimensionné, calé à gauche */}
               {bustSrc && (
                 <div
                   className="absolute z-0 select-none hidden md:block"
@@ -3631,7 +3608,7 @@ export default function CharacterDetailClient({
                 </p>
               ) : null}
 
-              {/* z-[1]: Element color ambient glow */}
+              {/* z-[1] : halo à la couleur de l'élément */}
               <div
                 className="absolute inset-0 z-[1]"
                 style={{
@@ -3641,7 +3618,7 @@ export default function CharacterDetailClient({
               <div className="absolute inset-0 z-[1] bg-gradient-to-t from-ink/70 via-transparent to-transparent" />
             </div>
 
-            {/* z-[2]: Header title — centered on mobile, top-right on desktop */}
+            {/* z-[2] : titre, centré en mobile, en haut à droite en desktop */}
             <div className="relative z-[2] p-4 md:p-8 lg:p-10 flex md:justify-end">
               <div className="text-left md:text-right max-w-md">
                 <div
@@ -3672,7 +3649,7 @@ export default function CharacterDetailClient({
               </div>
             </div>
 
-            {/* Mobile list layout — vertical cards with effect text always visible */}
+            {/* Mobile : liste de cartes, effet toujours affiché */}
             {intronLevels.length > 0 && (
               <div className="relative z-[2] md:hidden px-4 pb-6 space-y-3">
                 {intronLevels.map((intronLevel, idx) => {
@@ -3696,7 +3673,7 @@ export default function CharacterDetailClient({
                       }}
                     >
                       <div className="flex items-start gap-3">
-                        {/* Icon circle */}
+                        {/* Cercle de l'icône */}
                         <div
                           className="relative flex h-[64px] w-[64px] shrink-0 items-center justify-center rounded-full"
                           style={{
@@ -3748,7 +3725,7 @@ export default function CharacterDetailClient({
                           )}
                         </div>
 
-                        {/* Header */}
+                        {/* En-tête */}
                         <div className="flex-1 min-w-0">
                           <div className="flex items-baseline gap-2">
                             <p className="text-sm font-bold text-parch">
@@ -3772,7 +3749,7 @@ export default function CharacterDetailClient({
                         </div>
                       </div>
 
-                      {/* Effect description */}
+                      {/* Effet */}
                       {effectText && (
                         <p
                           className="mt-3 text-xs leading-relaxed text-parch/85 whitespace-pre-line border-t pt-3"
@@ -3787,11 +3764,11 @@ export default function CharacterDetailClient({
               </div>
             )}
 
-            {/* Desktop constellation layout */}
+            {/* Desktop : constellation */}
             {intronLevels.length > 0 && (
               <div className="relative z-[2] min-h-[560px] px-6 md:px-10 lg:px-16 pb-10 hidden md:block">
                 <div className="relative ml-auto md:w-[55%] lg:w-[52%] h-[560px]">
-                  {/* SVG connecting lines — organic curves */}
+                  {/* Liens SVG en courbes entre les cercles */}
                   <svg className="pointer-events-none absolute inset-0 h-full w-full" preserveAspectRatio="none">
                     <defs>
                       <linearGradient id={`intron-line-${character.id}`} x1="0%" y1="0%" x2="100%" y2="100%">
@@ -3800,7 +3777,7 @@ export default function CharacterDetailClient({
                       </linearGradient>
                     </defs>
                     {intronLevels.map((_, idx) => {
-                      // Skip idx 0 (no previous) and idx 6 (VII floats at the centre, unconnected).
+                      // Rien pour l'idx 0 (pas de précédent) ni pour l'idx 6 (VII n'est relié à rien).
                       if (idx === 0 || idx === 6) return null;
                       const x1 = (CIRCLE_X[idx - 1] ?? 0) + 7;
                       const y1 = (CIRCLE_Y[idx - 1] ?? 0) + 6;
@@ -3820,18 +3797,18 @@ export default function CharacterDetailClient({
                     })}
                   </svg>
 
-                  {/* Circles */}
+                  {/* Cercles */}
                   {intronLevels.map((intronLevel, idx) => {
                     const num = idx + 1;
                     const iconSrc = num >= 1 && num <= 6 ? `/assets/ui/intron/intron-${num}.png` : null;
                     const isFirst = idx === 0;
-                    // Intron VII (idx=6) is the new high-tier addition — treated as "highlighted".
+                    // L'Intron VII (idx 6), palier ajouté plus tard, est mis en avant comme le I.
                     const isSeventh = idx === 6;
                     const isHighlighted = isFirst || isSeventh;
                     const romanNumeral = ROMAN_NUMERALS[idx] ?? "";
                     const effectText = intronEffects[idx] ?? null;
                     const isActive = activeIntronIdx === idx;
-                    // Popover opens to the left for right-half circles, to the right for left-half.
+                    // Popover à gauche pour les cercles de la moitié droite, à droite pour les autres.
                     const popoverOnLeft = (CIRCLE_X[idx] ?? 0) >= 40;
 
                     return (
@@ -3846,7 +3823,7 @@ export default function CharacterDetailClient({
                         onMouseEnter={() => setActiveIntronIdx(idx)}
                         onMouseLeave={() => setActiveIntronIdx((prev) => (prev === idx ? null : prev))}
                       >
-                        {/* Glowing circle */}
+                        {/* Cercle lumineux */}
                         <button
                           type="button"
                           onClick={() =>
@@ -3891,7 +3868,7 @@ export default function CharacterDetailClient({
                               {romanNumeral}
                             </span>
                           )}
-                          {/* Roman numeral badge — hidden on circle 7 (the big roman is already in the centre) */}
+                          {/* Pastille du chiffre romain, sauf sur le cercle 7 qui l'affiche déjà en grand au centre */}
                           {!isSeventh && (
                             <div
                               className="absolute -bottom-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full text-[10px] font-black"
@@ -3906,7 +3883,7 @@ export default function CharacterDetailClient({
                           )}
                         </button>
 
-                        {/* Label */}
+                        {/* Libellé */}
                         <div className="min-w-[120px]">
                           <div className="flex items-baseline gap-2">
                             <p className={`text-sm font-bold ${isActive || isHighlighted ? "text-parch" : "text-muted"}`}>
@@ -3929,7 +3906,7 @@ export default function CharacterDetailClient({
                           </p>
                         </div>
 
-                        {/* Popover with effect description */}
+                        {/* Popover avec l'effet */}
                         {isActive && effectText && (
                           <div
                             className={`absolute top-1/2 -translate-y-1/2 ${
@@ -3971,7 +3948,7 @@ export default function CharacterDetailClient({
         );
       })()}
 
-      {/* ---------- Translations tab ---------- */}
+      {/* ---------- Onglet Traductions ---------- */}
       {activeTab === "translations" && (
         <section className="border border-line/25 bg-panel/85 backdrop-blur-sm p-3 md:p-5">
           <h2 className="flex items-center gap-2 text-base md:text-base md:text-lg font-semibold text-parch">
@@ -4017,7 +3994,7 @@ export default function CharacterDetailClient({
         </section>
       )}
 
-      {/* ---------- Technical tab ---------- */}
+      {/* ---------- Onglet Technique ---------- */}
       {activeTab === "tech" && (
         <section className="grid gap-3 md:gap-4 lg:grid-cols-2">
           <div className="border border-line/25 bg-panel/85 backdrop-blur-sm p-3 md:p-5">
@@ -4077,7 +4054,7 @@ export default function CharacterDetailClient({
       </div>
 
       {/* ================================================================= */}
-      {/* Quick Build modal                                                 */}
+      {/* Modale Quick Build                                                */}
       {/* ================================================================= */}
       <QuickBuildModal
         character={character}
@@ -4088,7 +4065,7 @@ export default function CharacterDetailClient({
       />
 
       {/* ================================================================= */}
-      {/* Portrait zoom modal                                               */}
+      {/* Modale de zoom du portrait                                        */}
       {/* ================================================================= */}
       {zoomedPortrait && (
         <div

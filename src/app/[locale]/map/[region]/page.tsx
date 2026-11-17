@@ -16,22 +16,19 @@ import { localized } from "@/lib/map/world";
 import { discordEmbedMetadata } from "@/lib/discord-embed/next";
 
 /**
- * Page d'une région de la carte.
+ * Page d'une région de la carte, surtout pour le référencement.
  *
- * Existe pour le référencement autant que pour le confort : `/map` est une
- * application plein écran non défilante, elle n'a pas la place d'accueillir du
- * texte. Ces pages-ci sont des pages normales, elles portent le contenu que
- * `/map` ne peut pas porter, et renvoient vers la carte préfiltrée.
- *
- * Tout est rendu côté serveur, sans le moindre `use client` : c'est le point
- * qui manquait, `/map` ne servait aucun titre ni aucune phrase à un robot.
+ * `/map` est une appli plein écran qui ne défile pas, sans place pour du texte.
+ * Ces pages portent le texte à sa place et renvoient vers la carte préfiltrée.
+ * Tout est rendu côté serveur, sans `use client`, pour qu'un robot y trouve
+ * un titre et des phrases.
  */
 
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  // Le segment `[locale]` parent a déjà son `generateStaticParams` : Next
-  // compose les deux, on ne renvoie donc que le paramètre de ce segment.
+  // Le segment `[locale]` parent a son propre `generateStaticParams` et Next
+  // compose les deux : on ne renvoie que la région.
   return getAllRegions().map((region) => ({ region: region.slug }));
 }
 
@@ -49,9 +46,8 @@ export async function generateMetadata({
   const baseUrl = "https://dna.ascencia.re";
   const path = `${NAVIGATION.map}/${region.slug}`;
 
-  // Le template `%s | DNA Interactive` de la racine ne s'applique qu'aux
-  // segments enfants, et `map/layout.tsx` l'a déjà consommé pour son propre
-  // titre. On suffixe donc à la main, comme le fait `generatePageMetadata`.
+  // Le template `%s | DNA Interactive` de la racine est déjà consommé par
+  // `map/layout.tsx` : on suffixe à la main, comme `generatePageMetadata`.
   const brandedTitle = `${t("metaTitle", { region: regionName })} | ${SITE_CONFIG.name}`;
   const description = t("metaDescription", {
     region: regionName,
@@ -155,8 +151,8 @@ export default async function RegionPage({
           </div>
         </header>
 
-        {/* Aperçu cliquable : l'image reste statique, la carte interactive
-            vit sur `/map`. Inutile d'embarquer Leaflet ici pour un aperçu. */}
+        {/* Aperçu cliquable en image statique : pas besoin de Leaflet ici,
+            la carte interactive est sur `/map`. */}
         <Link
           href={mapHref}
           className="group relative mb-4 block overflow-hidden border border-line/30"
@@ -169,12 +165,10 @@ export default async function RegionPage({
             height={region.imageSize.height}
             sizes="(max-width: 768px) 100vw, 768px"
             quality={70}
-            // Aperçu au-dessus de la ligne de flottaison : c'est le LCP de la
-            // page, il ne doit pas être différé.
+            // C'est le LCP de la page : pas de chargement différé.
             priority
-            // Les fonds de carte sont carrés et en 4096 px : sans plafond, le
-            // seul aperçu occupait toute la hauteur de l'écran et repoussait le
-            // contenu hors de vue.
+            // Les fonds de carte sont carrés en 4096 px : sans plafond, l'aperçu
+            // prend toute la hauteur de l'écran.
             className="max-h-[480px] w-full object-contain transition-transform duration-500 group-hover:scale-[1.02]"
           />
           <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink via-ink/70 to-transparent p-4 text-center font-caps text-[0.65rem] uppercase tracking-[0.2em] text-gold">
@@ -192,12 +186,10 @@ export default async function RegionPage({
               <DnaPanel key={category.id} className="p-5">
                 <div className="mb-4 flex items-center gap-3">
                   <span className="grid h-9 w-9 shrink-0 place-items-center border border-gold/30 bg-gold/10">
-                    {/* ==Passer par `next/image`, meme pour une icone de 20 px==.
-                        Ces icones viennent du CDN du jeu, en PNG bruts et non
-                        redimensionnes : l'une d'elles pese 1,4 Mo pour un rendu
-                        en 20 px, et la page en affiche des dizaines. Servies via
-                        l'optimiseur, elles tombent a quelques kilo-octets et en
-                        AVIF. L'hote est deja autorise dans `next.config.ts`. */}
+                    {/* `next/image` même pour 20 px : les icônes du CDN du jeu
+                        sont des PNG bruts (jusqu'à 1,4 Mo) et la page en affiche
+                        des dizaines. Via l'optimiseur, quelques Ko en AVIF.
+                        L'hôte est autorisé dans `next.config.ts`. */}
                     <Image
                       src={category.markerTypes[0].icon}
                       alt=""

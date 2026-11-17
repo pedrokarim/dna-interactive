@@ -101,9 +101,8 @@ type WedgeRank = "base" | "stars";
 type Proposal = { goal: PlannerGoal; checked: boolean; alternative: boolean };
 
 /**
- * Confirmation d'un build : le joueur voit ce qui sera ajouté, choisit jusqu'où
- * monter les Demon Wedges et voit ce que le build coûte avec son stock avant
- * de l'ajouter. Rien n'entre dans le plan en silence.
+ * Confirmation d'un build : avant l'ajout, le joueur voit ce qui entre dans le
+ * plan, choisit jusqu'où monter les Demon Wedges et voit le coût avec son stock.
  */
 export function BuildImportDialog({
   build,

@@ -11,7 +11,7 @@ export type DnaTabsProps<T extends string> = {
   className?: string;
 };
 
-/** Onglets — soulignement doré sur l'actif. */
+/** Onglets, l'actif souligné en doré. */
 export function DnaTabs<T extends string>({ tabs, value, onChange, className }: DnaTabsProps<T>) {
   return (
     <div role="tablist" className={cn("flex flex-wrap gap-6", className)}>

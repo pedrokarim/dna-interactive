@@ -3,23 +3,19 @@ import { getCharacterById } from "@/lib/characters/catalog";
 import { resolveBuildCharacterRef } from "@/lib/characters/builds";
 import { getCharacterProficiency } from "@/lib/characters/weapon-proficiency";
 
-// ---------------------------------------------------------------------------
-// Index inverse ARME → PERSONNAGES.
+// Index inverse arme vers personnages.
 //
-// Déduit des builds curés, jamais saisi à la main : ajouter une arme dans un
-// build suffit à faire apparaître le personnage sur la fiche de cette arme, et
-// il en disparaît quand on l'en retire. Aucune liste parallèle à maintenir,
-// donc aucune désynchronisation possible.
+// Tiré des builds curés, rien à la main : ajouter une arme à un build fait
+// apparaître le perso sur la fiche de l'arme, la retirer l'enlève. Pas de liste
+// parallèle à tenir à jour.
 //
-// La **maîtrise** ne dit pas qu'une arme est bonne : elle conditionne le seul
-// effet des **Potentiels d'arme de calamité**. Une arme normale hors maîtrise
-// reste un excellent choix — 22 builds recommandent une faux alors qu'aucun
-// personnage ne porte « Scythe » en maîtrise. Ce drapeau ne doit donc être
-// montré que sur les fiches d'arme de calamité, jamais comme un avertissement
-// général.
+// La maîtrise ne dit rien de la qualité d'une arme : elle ne joue que sur les
+// Potentiels des armes de calamité. Une arme normale hors maîtrise peut très
+// bien convenir (22 builds recommandent une faux, et aucun perso n'a « Scythe »
+// en maîtrise). On ne montre donc ce drapeau que sur les fiches d'arme de
+// calamité, jamais comme avertissement général.
 //
-// `Almighty` est une maîtrise **joker** : elle couvre tous les types.
-// ---------------------------------------------------------------------------
+// `Almighty` est une maîtrise joker qui couvre tous les types.
 
 export type WeaponUsageRank = "best" | "alternative";
 
@@ -29,21 +25,21 @@ export interface WeaponUsage {
   href: string;
   /** Nom affiché, déjà résolu dans la langue demandée. */
   name: string;
-  /** Avatar du personnage (portrait « head »), pour que la liste se lise d'un coup d'œil. */
+  /** Avatar du personnage (portrait « head »). */
   portrait: string | null;
   /** Nom du build qui recommande cette arme, dans la langue demandée. */
   buildName: string;
   slot: "melee" | "ranged";
   rank: WeaponUsageRank;
   /**
-   * Le type de l'arme figure-t-il dans les maîtrises du personnage ? Faux =
-   * il peut l'équiper, mais les Potentiels ne s'appliqueront pas.
+   * Le type de l'arme est dans les maîtrises du perso. À false, il peut
+   * l'équiper mais les Potentiels ne s'appliquent pas.
    */
   hasProficiency: boolean;
   /**
-   * Sans prédilection d'origine, le type fait-il partie des quatre maîtrises
-   * supplémentaires du personnage ? Vrai = les Potentiels s'appliquent une fois
-   * ce type débloqué et actif.
+   * Pas de maîtrise d'origine, mais le type est dans les quatre maîtrises
+   * supplémentaires du perso : les Potentiels s'appliquent une fois ce type
+   * débloqué et actif.
    */
   viaExtraProficiency: boolean;
   /** Ordre d'investissement conseillé dans l'arbre de Potentiel, si curé. */
@@ -51,9 +47,9 @@ export interface WeaponUsage {
 }
 
 /**
- * Forme minimale lue ici. `allBuilds` est typé par inférence depuis les JSON,
- * donc `rank` y est un `string` large et `potentialOrder` n'existe pas tant
- * qu'aucun fichier ne le porte : on redéclare ce qu'on consomme.
+ * Juste ce qu'on lit ici. `allBuilds` est inféré depuis les JSON : `rank` y est
+ * un simple `string` et `potentialOrder` n'existe pas tant qu'aucun fichier ne
+ * le porte, d'où la redéclaration.
  */
 interface RawUsageEntry {
   itemId: string;
@@ -70,7 +66,7 @@ interface RawBuild {
 /** Maîtrise joker du jeu : couvre tous les types d'arme. */
 const WILDCARD_PROFICIENCY = "Almighty";
 
-/** Type inconnu → on n'affirme pas l'absence de maîtrise. */
+/** Type inconnu : on compte la maîtrise comme acquise plutôt que de la nier à tort. */
 function hasProficiencyFor(tags: string[], weaponType: string | null): boolean {
   if (weaponType === null) return true;
   return tags.includes(WILDCARD_PROFICIENCY) || tags.includes(weaponType);
@@ -86,10 +82,9 @@ function localized(text: Record<string, string> | undefined, lang: string): stri
  * Personnages dont un build recommande `weaponItemId`.
  *
  * `weaponType` est le type d'arme du jeu (`fields.GUIPathVariableType` :
- * « Polearm », « Machinegun »…). Il vient de l'appelant, qui tient déjà
- * l'objet : ça évite de charger tout le catalogue d'armes ici. Passer `null`
- * si le type est inconnu — la maîtrise est alors rendue indéterminée plutôt
- * que faussement négative.
+ * « Polearm », « Machinegun »…). L'appelant a déjà l'objet, ça évite de charger
+ * tout le catalogue d'armes ici. `null` si le type est inconnu : la maîtrise
+ * est alors comptée comme acquise.
  */
 export function getWeaponUsage(
   weaponItemId: string,
@@ -105,8 +100,8 @@ export function getWeaponUsage(
         if (entry.itemId !== weaponItemId) continue;
         const character = getCharacterById(build.characterId);
         if (!character) continue;
-        // Même résolution que les coéquipiers d'un build : nom, avatar, lien
-        // et élément viennent d'une seule source.
+        // Même résolution que les coéquipiers d'un build, pour que nom, avatar,
+        // lien et élément viennent d'une seule source.
         const ref = resolveBuildCharacterRef(build.characterId, lang);
         if (!ref) continue;
         const tags = character.weaponTags ?? [];
@@ -128,8 +123,8 @@ export function getWeaponUsage(
     }
   }
 
-  // Les recommandations d'abord, puis l'ordre alphabétique — un même
-  // personnage peut apparaître deux fois s'il a plusieurs builds.
+  // Les « best » d'abord, puis par ordre alphabétique. Un perso peut apparaître
+  // deux fois s'il a plusieurs builds.
   return usages.sort((a, b) => {
     if (a.rank !== b.rank) return a.rank === "best" ? -1 : 1;
     return a.name.localeCompare(b.name) || a.buildName.localeCompare(b.buildName);

@@ -1,12 +1,12 @@
 /**
- * Système de niveaux « Voyageur » — logique pure (aucune dépendance runtime).
+ * Niveaux « Voyageur », en logique pure (aucune dépendance runtime).
  *
- * L'XP est DÉRIVÉE de l'état existant (builds publiés, likes reçus, vues, votes
- * donnés) : pas de table dédiée ni de backfill, toujours cohérent. Les sources
- * temporelles (connexion / série) viendront avec un vrai tracking.
+ * L'XP se calcule à partir de ce qui existe déjà (builds publiés, likes reçus,
+ * vues, votes donnés) : pas de table à part ni de backfill, et jamais de
+ * décalage. Les connexions et séries viendront avec un vrai suivi.
  *
- * Courbe : XP pour passer du niveau n à n+1 = 100·n → montées rapides au début,
- * plus lentes ensuite. Récompense purement cosmétique (titre).
+ * Passer du niveau n à n+1 coûte 100·n XP : ça monte vite au début, puis plus
+ * lentement. La récompense est juste un titre.
  */
 
 /** Barèmes d'XP (réglables). */
@@ -65,7 +65,7 @@ export function levelFromXp(xp: number): number {
   return Math.max(1, Math.floor((1 + Math.sqrt(1 + xp / 12.5)) / 2));
 }
 
-/** Paliers de titres (thématique abysse — renommables). */
+/** Paliers de titres, sur le thème de l'abysse (renommables). */
 export const TITLE_TIERS: { min: number; title: string }[] = [
   { min: 1, title: "Éclaireur" },
   { min: 10, title: "Voyageur" },

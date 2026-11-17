@@ -4,34 +4,32 @@ import { cn } from "./cn";
 /**
  * Correction optique du losange, en `em`.
  *
- * Un conteneur `items-center` centre le losange sur la **boîte de ligne**, or
- * les capitales n'y sont pas centrées : Cinzel a une descendante bien plus
- * profonde que ce que les capitales occupent, donc l'encre des capitales est
- * plus haute que le milieu de la boîte. Mesuré au pixel sur le rendu réel
- * (Playwright, zoom ×8) : **1,88 px trop bas à 9,6 px de fonte**, soit 0,195 em.
+ * `items-center` centre le losange sur la boîte de ligne, mais les capitales
+ * n'y sont pas centrées : la descendante de Cinzel est bien plus profonde que
+ * ce qu'occupent les capitales, donc leur encre est plus haute que le milieu.
+ * Mesuré sur le rendu réel (Playwright, zoom x8) : 1,88 px trop bas à 9,6 px
+ * de fonte, soit 0,195 em.
  *
- * L'écart ne dépend que des métriques de la fonte — `(ascendante − descendante)
- * / 2 − centre des capitales` — donc il est constant en `em` quelle que soit la
- * taille ou la hauteur de ligne. D'où le décalage exprimé en `em`, et le
- * `font-size` porté par le conteneur pour que ce `em` ait la bonne référence.
+ * L'écart ne dépend que des métriques de la fonte, `(ascendante - descendante)
+ * / 2 - centre des capitales`, donc il est constant en `em` quelles que soient
+ * la taille et la hauteur de ligne. Le conteneur porte le `font-size` pour que
+ * ce `em` ait la bonne référence.
  *
- * La valeur dépend de la fonte : si `--font-caps` change, il faut la remesurer
- * (capture du repère au zoom, comparaison du centre d'encre du losange et de
- * celui des capitales) — la déduire des métriques via `measureText` donne un
- * résultat faux, la fonte rendue n'ayant pas les métriques annoncées.
+ * Si `--font-caps` change, il faut remesurer (capture du repère au zoom, on
+ * compare le centre d'encre du losange et celui des capitales). `measureText`
+ * donne une valeur fausse : la fonte rendue n'a pas les métriques annoncées.
  */
 const OPTICAL_NUDGE_EM = 0.195;
 
 /**
- * Losange du système — dessiné en CSS, jamais en glyphe.
+ * Losange du design system, dessiné en CSS et jamais en glyphe.
  *
- * Cinzel ne couvre ni ◈ (U+25C8) ni ⬥ : ces caractères tombent en fonte
- * système, se décalent d'un poste à l'autre et cassent le rendu des images
- * Open Graph (cf. `src/app/_og/`).
+ * Cinzel n'a ni ◈ (U+25C8) ni ⬥ : ils tombent en fonte système, bougent d'un
+ * poste à l'autre et cassent le rendu des images Open Graph (`src/app/_og/`).
  *
- * Le carré pivoté est **enveloppé** dans une boîte à la taille du losange
- * visible : un carré de 5 px tourné à 45° occupe 7,07 px à l'écran mais n'en
- * réserve que 5 en flux, ce qui rognait les gouttières de chaque côté.
+ * Le carré pivoté est posé dans une boîte à la taille du losange visible : un
+ * carré de 5 px tourné à 45° prend 7,07 px à l'écran mais n'en réserve que 5
+ * dans le flux, et ça rognait les gouttières de chaque côté.
  */
 export function DnaLozenge({ size = 7, className }: { size?: number; className?: string }) {
   const inner = size / Math.SQRT2;
@@ -50,14 +48,14 @@ export function DnaLozenge({ size = 7, className }: { size?: number; className?:
 }
 
 /**
- * Repère de section : losange + libellé en capitales romaines.
+ * Repère de section : losange et libellé en capitales romaines.
  *
- * Marqueur unique du site — fil d'Ariane de la topbar, sur-titre des tuiles du
- * hub, chapeau de section. Il remplace les anciens libellés `//MACHIN.TRUC` en
- * monospace, hérités d'une maquette faite pour un autre jeu.
+ * Le seul marqueur du site : fil d'Ariane de la topbar, sur-titre des tuiles du
+ * hub, chapeau de section. Il remplace les vieux libellés `//MACHIN.TRUC` en
+ * monospace, repris d'une maquette faite pour un autre jeu.
  *
- * Le `font-size` est porté par le conteneur (et non par le libellé) : c'est la
- * référence du `em` de la correction optique du losange.
+ * Le `font-size` est sur le conteneur et pas sur le libellé : c'est lui qui
+ * sert de référence au `em` de la correction optique.
  */
 export function DnaSectionMark({
   children,

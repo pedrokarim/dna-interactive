@@ -12,9 +12,9 @@ import {
 } from "./types";
 
 /**
- * Squelette complet : toutes les régions × catégories présentes, objectifs vides.
- * Les lecteurs indexent `regions[region]` sans garde ; construire l'objet à
- * partir des seules lignes en base laissait des trous que le typage niait.
+ * Squelette complet : toutes les régions × catégories, objectifs vides. Les
+ * lecteurs indexent `regions[region]` sans garde, et un objet construit à partir
+ * des seules lignes en base avait des trous que le typage ne voyait pas.
  */
 export function emptyRegions(): RotationState["regions"] {
   const regions = {} as RotationState["regions"];
@@ -28,10 +28,10 @@ export function emptyRegions(): RotationState["regions"] {
 /**
  * Rotation la plus récemment observée, reconstruite en `RotationState`.
  *
- * Le collecteur écrit le snapshot PUIS ses 45 entrées, hors transaction : au top
- * de l'heure il existe une fenêtre de quelques secondes où la ligne existe sans
- * ses objectifs. On ne retient donc que les snapshots ayant au moins une entrée,
- * ce qui sert la rotation précédente — encore exacte — au lieu d'une grille vide.
+ * Le collecteur écrit le snapshot puis ses 45 entrées, hors transaction : à chaque
+ * heure pile, pendant quelques secondes, la ligne existe sans ses objectifs. On ne
+ * garde que les snapshots qui ont au moins une entrée, ce qui sert la rotation
+ * précédente (encore juste) au lieu d'une grille vide.
  */
 export async function getLatestRotation(): Promise<RotationState | null> {
   const db = getDb();
@@ -56,8 +56,8 @@ export async function getLatestRotation(): Promise<RotationState | null> {
     .from(commissionEntries)
     .where(eq(commissionEntries.snapshotId, snapshot.id));
 
-  // Filet : le snapshot retenu ci-dessus avait des entrées, mais les deux
-  // requêtes ne partagent pas de transaction.
+  // Par sécurité : le snapshot avait des entrées, mais les deux requêtes ne sont
+  // pas dans la même transaction.
   if (entries.length === 0) return null;
 
   const regions = emptyRegions();

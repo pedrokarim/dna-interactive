@@ -1,5 +1,5 @@
 /**
- * Hiérarchie du monde : nation → carte monde → sous-cartes.
+ * Hiérarchie du monde : nation, puis carte monde, puis sous-cartes.
  *
  * Tirée des tables `WorldMap` / `RegionMap` / `Region` du jeu (1.6) par
  * `research_data/scripts/gen-map-world.mjs` ; noms en 7 langues depuis le
@@ -97,7 +97,7 @@ export const ORDERED_MAP_IDS: string[] = NATIONS.flatMap((n) =>
     .flatMap((a) => a.maps.map((m) => m.id)),
 );
 
-/** Index précalculé : carte → catégorie → clés des points suivis. */
+/** Index précalculé : par carte, puis par catégorie, les clés des points suivis. */
 export const TRACKED_INDEX = progressIndex as Record<string, Record<string, string[]>>;
 
 function countFound(keys: string[], marked: ReadonlySet<string>): Progress {

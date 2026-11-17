@@ -1,7 +1,7 @@
 /**
- * Réglages applicatifs pilotables via l'admin (table `app_settings`, 1 ligne JSON).
- * Type pur + valeurs par défaut, partageable client/serveur. Aucune valeur n'est
- * secrète (booléens + textes d'annonce) → exposable côté client.
+ * Réglages de l'appli modifiables dans l'admin (table `app_settings`, 1 ligne JSON).
+ * Type + valeurs par défaut, partagés client/serveur. Rien de secret (booléens et
+ * textes d'annonce), on peut l'exposer au client.
  */
 
 export type AppSettings = {
@@ -21,9 +21,9 @@ export type AppSettings = {
   /** Connexion Google proposée. */
   googleAuthEnabled: boolean;
   /**
-   * Forçage de la date de référence du calendrier (ISO AAAA-MM-JJ).
-   * `""` = comportement normal : le curseur suit l'horloge locale du visiteur.
-   * Une valeur ici **fige** la frise pour tout le monde (test / capture).
+   * Date de référence forcée du calendrier (AAAA-MM-JJ).
+   * `""` : normal, le curseur suit l'horloge du visiteur.
+   * Une valeur fige la frise pour tout le monde (test, capture).
    */
   calendarToday: string;
 };
@@ -41,7 +41,7 @@ export const DEFAULT_SETTINGS: AppSettings = {
   calendarToday: "",
 };
 
-/** Fusionne un objet partiel (BDD) au-dessus des défauts (tolérant aux clés manquantes/en trop). */
+/** Fusionne un objet partiel (base) sur les défauts ; clés manquantes ou en trop tolérées. */
 export function mergeSettings(partial: Partial<AppSettings> | null | undefined): AppSettings {
   const p = (partial ?? {}) as Partial<AppSettings>;
   const out = { ...DEFAULT_SETTINGS };

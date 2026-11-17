@@ -1,10 +1,10 @@
 /**
  * Services de push reconnus, par suffixe de domaine.
  *
- * L'URL d'un abonnement vient du navigateur, donc d'une entrée non fiable, et
- * le serveur lui envoie ensuite une requête à chaque diffusion. Sans cette
- * liste, n'importe qui pouvait enregistrer une URL arbitraire : le serveur
- * l'appelait, et une adresse qui ne répond jamais retenait toute la diffusion.
+ * L'URL d'un abonnement vient du navigateur (donc pas fiable), et le serveur
+ * l'appelle à chaque diffusion. Sans liste, n'importe qui enregistrerait une URL
+ * de son choix, et une adresse qui ne répond jamais bloquerait toute la
+ * diffusion.
  *
  *   fcm.googleapis.com        – FCM : Chrome, Edge sur Android, Opera, Brave, Samsung
  *   android.googleapis.com    – ancien point d'entrée de FCM

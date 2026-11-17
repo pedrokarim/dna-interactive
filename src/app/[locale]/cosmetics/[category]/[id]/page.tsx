@@ -12,7 +12,7 @@ type CosmeticDetailPageProps = {
   params: Promise<{ locale: string; category: string; id: string }>;
 };
 
-// Pas de generateStaticParams : comme les fiches d’items, les ~940 fiches (× 7 langues) sont rendues à la demande.
+// Pas de generateStaticParams : comme pour les items, les ~940 fiches (x 7 langues) sont rendues à la demande.
 
 export async function generateMetadata(
   { params }: CosmeticDetailPageProps,
@@ -32,10 +32,10 @@ export async function generateMetadata(
       path: `/cosmetics/${category}/${id}`,
       keywords: ["Duet Night Abyss", name, item.name.EN ?? name, categoryTitle],
       type: "article",
-      // ~940 fiches × 7 langues d'une centaine de mots chacune : 92 % du
-      // sitemap. Google en explorait un échantillon et refusait tout le site
-      // (« Explorée, actuellement non indexée », accueil compris). Elles
-      // restent explorables ; les pages de catégorie portent le référencement.
+      // ~940 fiches x 7 langues d'une centaine de mots : 92 % du sitemap.
+      // Google les jugeait trop maigres et n'indexait plus rien, accueil
+      // compris. On les garde explorables, ce sont les pages de catégorie
+      // qu'on fait indexer.
       indexable: false,
       discordEmbed: true,
     },

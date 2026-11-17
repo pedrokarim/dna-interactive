@@ -1,6 +1,4 @@
-// ---------------------------------------------------------------------------
-// Domaine Covert Commissions
-// ---------------------------------------------------------------------------
+// Types et libellés des Covert Commissions.
 
 /** Régions (ordre d'affichage). */
 export const REGIONS = ["ASIA", "AMERICA", "EUROPE", "HMT", "SEA"] as const;
@@ -27,9 +25,9 @@ export const OBJECTIVES = [
 export type Objective = (typeof OBJECTIVES)[number];
 
 /**
- * Commissions « infinies » (∞) : missions sans fin, rejouables à difficulté
- * croissante. D'après Game8, seules Defense, Exploration et Excavation le sont
- * (propriété fixe du type, pas par rotation — l'embed source ne porte pas l'info).
+ * Commissions « infinies » (∞) : sans fin, à difficulté croissante. Seules
+ * Defense, Exploration et Excavation le sont. C'est fixe par type et l'embed
+ * source ne porte pas l'info, d'où la liste en dur.
  */
 const INFINITE_OBJECTIVE_KEYS = new Set([
   "defense",
@@ -43,11 +41,10 @@ export function isInfiniteObjective(objective: string): boolean {
 }
 
 /**
- * Objectifs réels (ensemble fermé). Le pipeline d'ingestion recopie verbatim le
- * texte de l'embed source ; quand le bot échoue à lire une région, il y écrit un
- * message d'erreur (« User identity verification failed. ») au lieu d'un
- * objectif. On reconnaît un vrai objectif par appartenance à `OBJECTIVES` ;
- * tout le reste est traité comme « donnée indisponible » à l'affichage.
+ * Objectifs réels, ensemble fermé. L'ingestion recopie le texte de l'embed tel
+ * quel, et quand le bot n'arrive pas à lire une région il y met un message
+ * d'erreur (« User identity verification failed. ») à la place de l'objectif.
+ * Tout ce qui n'est pas dans `OBJECTIVES` s'affiche donc comme indisponible.
  */
 const KNOWN_OBJECTIVE_KEYS = new Set<string>(OBJECTIVES.map((o) => o.toLowerCase()));
 
@@ -57,7 +54,7 @@ export function isKnownObjective(objective: string): boolean {
 
 /** État d'une rotation : par région, 3 objectifs par catégorie. */
 export type RotationState = {
-  /** sha256 du contenu normalisé — identité stable d'une rotation. */
+  /** sha256 du contenu normalisé, identité stable d'une rotation. */
   contentHash: string;
   /** Horodatage de la dernière mise à jour de la rotation (ISO). */
   updatedAt: string;
@@ -68,9 +65,9 @@ export type RotationState = {
 export type RotationMeta = {
   /** Quand la rotation courante a commencé (ISO). */
   updatedAt: string | null;
-  /** Prochaine MAJ attendue = prochaine heure pleine UTC (ISO). */
+  /** Prochaine MAJ attendue : la prochaine heure pleine UTC (ISO). */
   nextRefreshAt: string;
-  /** Période nominale du cycle (ms) — le bot édite toutes les heures. */
+  /** Période du cycle en ms : le bot édite toutes les heures. */
   periodMs: number;
   /** État de la rotation en base à l'instant du calcul, cf. `rotationFreshness`. */
   freshness: RotationFreshness;
@@ -79,7 +76,7 @@ export type RotationMeta = {
 /** La rotation en base couvre-t-elle l'heure en cours ? Cf. `rotationFreshness`. */
 export type RotationFreshness = "live" | "syncing" | "stale" | "none";
 
-// --- Libellés localisés ----------------------------------------------------
+// Libellés localisés
 
 export const CATEGORY_LABELS: Record<Category, { en: string; fr: string }> = {
   character: { en: "Character", fr: "Personnage" },
@@ -88,8 +85,8 @@ export const CATEGORY_LABELS: Record<Category, { en: string; fr: string }> = {
 };
 
 /**
- * Objectifs EN → FR (libellés du client FR « Mandats scellés »).
- * Médiation/Hedge à reconfirmer sur le client FR ; fallback = EN.
+ * Objectifs EN vers FR, libellés du client FR (« Mandats scellés »).
+ * Médiation et Hedge sont à revérifier sur le client FR. Repli sur l'EN.
  */
 export const OBJECTIVE_FR: Record<Objective, string> = {
   Capture: "Capture",

@@ -59,8 +59,7 @@ type ItemDetailClientProps = {
   category: ItemCategory;
   item: ItemRecord;
   relatedDrafts?: RelatedDraftRecipe[];
-  /** Build de Demon Wedges canonique de l'arme (armes uniquement). */
-  /** Builds de Demon Wedges de l'arme. Une arme peut en porter plusieurs. */
+  /** Builds de Demon Wedges de l'arme (armes seulement), il peut y en avoir plusieurs. */
   weaponBuilds?: WeaponBuild[];
   /** Personnages dont un build curé recommande cette arme. */
   weaponUsage?: WeaponUsage[];
@@ -188,7 +187,7 @@ function formatResolvedAttributeValue(attribute: ItemResolvedAttribute): string 
   return chunks.length > 0 ? chunks.join(" | ") : "N/A";
 }
 
-/** Retire les balises rich-text du jeu (<H>, </>, <Polarity>, <color=…>…) — pur formatage, jamais du texte affichable. */
+/** Retire les balises rich-text du jeu (<H>, </>, <Polarity>, <color=…>…), qui ne sont que de la mise en forme. */
 function stripGameRichText(text: string): string {
   return text.replace(/<\/?[A-Za-z][^>]*>|<\/>/g, "");
 }
@@ -317,9 +316,9 @@ function GenimonTraitShare({ row, total }: { row: GenimonTraitTally; total: numb
 }
 
 /**
- * Fond de pastille posée sur l'illustration : la teinte seule est translucide, et
- * sur une arme sombre et rouge le texte cramoisi devenait illisible. La teinte
- * est donc superposée à l'encre du thème, opaque.
+ * Fond des pastilles posées sur l'illustration. La teinte seule est
+ * translucide, et sur une arme sombre et rouge le texte cramoisi devenait
+ * illisible : on la pose sur l'encre du thème, opaque.
  */
 function opaqueTint(tint: string): string {
   return `linear-gradient(${tint}, ${tint}), var(--color-ink)`;
@@ -327,7 +326,7 @@ function opaqueTint(tint: string): string {
 
 export default function ItemDetailClient({ category, item, relatedDrafts = [], weaponBuilds = [], weaponUsage = [], genimonUsage = [], genimonTraitBuild = null }: ItemDetailClientProps) {
   const [activeWeaponBuildIndex, setActiveWeaponBuildIndex] = useState(0);
-  // Personnage sélectionné pour l'arbre de Potentiel : son build porte l'ordre conseillé.
+  // Perso choisi pour l'arbre de Potentiel : son build donne l'ordre conseillé.
   const [activeUsageIndex, setActiveUsageIndex] = useState(0);
   const weaponBuild = weaponBuilds[activeWeaponBuildIndex] ?? weaponBuilds[0] ?? null;
   const t = useTranslations('itemDetail');
@@ -337,9 +336,9 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
   const isModsCategory = category.id === "mods";
   const isGenimonsCategory = category.id === "genimons";
   const isWeaponsCategory = category.id === "weapons";
-  // Passif dont les valeurs varient avec le niveau du slider (mods = niveau, armes = niveau de fusion/doublon).
+  // Passif dont les valeurs suivent le slider (mods : niveau, armes : niveau de fusion).
   const hasLeveledPassive = isModsCategory || isWeaponsCategory;
-  // Langue de la page par défaut, pour que le rendu serveur soit dans la langue de l'URL.
+  // Par défaut la langue de la page, pour que le rendu serveur soit dans celle de l'URL.
   const locale = useLocale();
   const preferredLanguage = normalizeLanguageCodes(
     [locale, category.defaultDetailLanguage],
@@ -417,7 +416,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
     typeof item.fields.BattlePet_SupportSkillId === "number" ? item.fields.BattlePet_SupportSkillId : null;
   const battlePetType =
     typeof item.fields.BattlePet_PetType === "string" ? item.fields.BattlePet_PetType : null;
-  // Le nom du type tel que le jeu l'affiche, pas le code interne `ResourceSType`.
+  // Nom du type tel que le jeu l'affiche, et non le code interne `ResourceSType`.
   const itemSubTypeKey = getItemSubTypeKey(item);
   const resourceSType = itemSubTypeKey ? itemSubTypeLabel(itemSubTypeKey, selectedLanguage) : null;
   const genimonBreakLevels =
@@ -512,7 +511,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
   const favoriteKey = `${category.id}:${item.id}`;
   const isFavorite = favoriteItems.has(favoriteKey);
 
-  // Stats de combat des armes (depuis fields, peuplées par l'extraction BattleWeapon).
+  // Stats de combat des armes, dans fields (remplis depuis BattleWeapon).
   const weaponElement =
     isWeaponsCategory && typeof item.fields.Element === "string"
       ? ELEMENTS[item.fields.Element as ElementKey] ?? null
@@ -526,7 +525,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
   const weaponCrd =
     isWeaponsCategory && typeof item.fields.CRD === "number" ? item.fields.CRD : null;
 
-  // Arme de calamité (WeaponSubType = Hyper) : accent cramoisi + libellés dédiés.
+  // Arme de calamité (WeaponSubType = Hyper) : accent cramoisi et libellés à part.
   const isCalamity = isWeaponsCategory && isCalamityWeapon(item);
   const upcomingVersion = getUpcomingVersion(item.stats.releaseVersion);
   // Présent dans les données mais pas encore obtenable (rotation du théâtre à venir, date annoncée).
@@ -539,9 +538,9 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
   const tinted = elHex !== GOLD_HEX;
   const calamityNodesUnlocked = isCalamity ? potentialNodesUnlocked(item.id, selectedLevel) : null;
   const calamityNodesTotal = isCalamity ? potentialNodesTotal(item.id) : null;
-  // Code couleur de rareté (nom, filet, médaillon) — cf. docs/rarete-couleurs-jeu.md.
+  // Code couleur de rareté (nom, filet, médaillon), voir docs/rarete-couleurs-jeu.md.
   const rarity = resolveItemRarity(item);
-  // Élément utilisé pour teinter le board de Demon Wedges de l'arme.
+  // Élément qui teinte le board de Demon Wedges de l'arme.
   const wedgeElementKey =
     weaponBuild?.demonWedges.affinity ??
     (typeof item.fields.Element === "string" ? item.fields.Element : null) ??
@@ -553,7 +552,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
 
   return (
     <div className="space-y-4 md:space-y-8" data-rarity={rarityAttr(rarity)}>
-      {/* Top bar */}
+      {/* Barre du haut */}
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex flex-wrap items-center gap-2">
           <Link
@@ -596,14 +595,14 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
         </div>
       </div>
 
-      {/* Hero : stage teinté par l'élément + colonne de stats */}
+      {/* Hero : scène teintée par l'élément + colonne de stats */}
       <div className="grid gap-4 md:gap-5 lg:grid-cols-[1fr_360px]">
-        {/* Stage : médaillon icône + bandeau nom */}
+        {/* Scène : médaillon de l'icône + bandeau du nom */}
         <div
           className="relative flex min-h-[360px] items-center justify-center overflow-hidden border border-white/10"
           style={{ background: `radial-gradient(60% 60% at 50% 40%, ${elHex}22, transparent 60%), linear-gradient(180deg, rgba(20,19,17,0.4), rgba(8,7,6,0.62))` }}
         >
-          {/* Bandeau nom (overlay) */}
+          {/* Bandeau du nom, en overlay */}
           <div className="absolute left-4 top-4 z-10 max-w-[82%] md:left-6 md:top-6">
             <p className="font-caps text-[0.6rem] uppercase tracking-[0.22em] text-gold">
               {category.technicalName} #{item.modId}
@@ -674,7 +673,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
             className="absolute bottom-[10%] left-1/2 h-12 w-56 -translate-x-1/2 rounded-[50%] blur-md"
             style={{ background: `radial-gradient(ellipse, ${elHex}3a, transparent 70%)` }}
           />
-          {/* Halo + médaillon icône */}
+          {/* Halo + médaillon de l'icône */}
           <span
             aria-hidden
             className="absolute left-1/2 top-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 rounded-full blur-2xl"
@@ -693,7 +692,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
             />
           </div>
 
-          {/* Stepper de fusion (doublons) intégré au stage, façon écran d'arme du jeu */}
+          {/* Stepper de fusion (doublons) dans la scène, comme l'écran d'arme du jeu */}
           {isWeaponsCategory && hasScalingData ? (
             <div className="absolute right-3 top-1/2 z-[2] -translate-y-1/2 md:right-5">
               <WeaponFusionTrack
@@ -1007,8 +1006,8 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
         </DnaPanel>
       ) : null}
 
-      {/* Personnages qui utilisent cette arme. Sur une arme de calamité la liste
-          est déjà rendue, sélectionnable, au-dessus de l'arbre de Potentiel. */}
+      {/* Persos qui utilisent cette arme. Sur une arme de calamité la liste est
+          déjà affichée, cliquable, au-dessus de l'arbre de Potentiel. */}
       {isWeaponsCategory && !isCalamity && weaponUsage.length > 0 ? (
         <DnaPanel className="p-4 md:p-5">
           <DnaSectionLabel>{t("charactersTitle")}</DnaSectionLabel>
@@ -1153,9 +1152,9 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
                   </span>
 
                   {/*
-                    Les Traits visés : c'est souvent ce qu'on vient chercher ici.
-                    Tant qu'aucun build n'en cure, la ligne reste absente plutôt
-                    que d'afficher un vide qui ressemblerait à une donnée perdue.
+                    Les Traits visés, souvent ce qu'on vient chercher ici. Tant
+                    qu'aucun build n'en donne, pas de ligne : un vide aurait
+                    l'air d'une donnée perdue.
                   */}
                   {usage.traits.length > 0 ? (
                     <span className="flex flex-wrap items-center gap-1.5 border-t border-white/8 pt-2">
@@ -1179,7 +1178,7 @@ export default function ItemDetailClient({ category, item, relatedDrafts = [], w
         </DnaPanel>
       ) : null}
 
-      {/* Variantes (genimon) */}
+      {/* Variantes (génimon) */}
       {isGenimonsCategory && variantSiblings.length > 1 ? (
         <DnaPanel className="p-3 md:p-5">
           <DnaSectionLabel>{t("variantsTitle")}</DnaSectionLabel>

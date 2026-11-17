@@ -5,11 +5,11 @@ import { cn } from "./cn";
 import { DnaChip } from "./Chip";
 
 /**
- * Liste de priorités ordonnée et réordonnable au drag (priorités de stats ou de
- * compétences du build). Le rang = la position (1 = plus prioritaire). On peut
- * retirer un item et, si un `pool` est fourni, en ajouter depuis le reste.
+ * Liste de priorités du build (stats ou compétences), réordonnable au drag. Le
+ * rang est la position, 1 en tête. On peut retirer un item et, avec un `pool`,
+ * en ajouter parmi ceux qui restent.
  *
- * NB prototype : drag natif HTML5 (souris). Prod tactile → @dnd-kit.
+ * Drag natif HTML5, donc souris seulement. Pour le tactile il faudra @dnd-kit.
  */
 
 export type PriorityItem = {

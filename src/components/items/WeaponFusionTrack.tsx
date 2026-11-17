@@ -16,9 +16,9 @@ type WeaponFusionTrackProps = {
 };
 
 /**
- * Sélecteur de niveau de fusion (doublons) inspiré de la piste verticale du jeu :
- * losanges reliés par un trait, nœud actif en glow, paliers supérieurs verrouillés.
- * Remplace le range slider classique pour les armes.
+ * Niveau de fusion (doublons) des armes, sur le modèle de la piste verticale du
+ * jeu : losanges reliés par un trait, halo sur l'actif, paliers au-dessus
+ * verrouillés. Remplace le range slider.
  */
 export function WeaponFusionTrack({
   levels,
@@ -28,7 +28,7 @@ export function WeaponFusionTrack({
 }: WeaponFusionTrackProps) {
   const t = useTranslations("itemDetail");
   const accent = accentHex ?? GOLD_HEX;
-  // Base (0) en haut, max en bas — sens du jeu (paliers atteints en haut, verrouillés dessous).
+  // 0 en haut, max en bas, comme dans le jeu : paliers atteints en haut, verrouillés dessous.
   const ordered = [...levels].sort((a, b) => a - b);
 
   return (

@@ -114,8 +114,8 @@ export async function PATCH(request: NextRequest) {
     })
     .where(eq(schema.users.id, parsed.data.userId));
 
-  // Bannissement : on tue immédiatement les sessions du compte (le cookie cesse
-  // de fonctionner côté serveur, en plus du blocage déjà fait via getCurrentUser).
+  // Ban : on supprime tout de suite les sessions du compte, le cookie ne marche
+  // plus côté serveur (en plus du blocage déjà fait par getCurrentUser).
   if (parsed.data.banned === true) {
     await db.delete(schema.sessions).where(eq(schema.sessions.userId, parsed.data.userId));
   }

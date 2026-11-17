@@ -197,7 +197,7 @@ function validateAgainstOptions(data: CommunityBuildExport, options: BuilderOpti
   }
 
   // Mêmes règles de placement que le serveur : un fichier écrit à la main ne
-  // doit pas pouvoir poser ce que le builder refuse.
+  // doit pas passer ce que le builder refuse.
   const modById = new Map(options.mods.map((item) => [item.id, item]));
   const nameOf = (itemId: string) => itemName(options.mods, itemId);
   if (character) {
@@ -291,8 +291,8 @@ export function serializeBuildJson(data: CommunityBuildExport) {
   return JSON.stringify(data, null, 2);
 }
 
-// --- Lien auto-portant : le build est encodé (base64url) dans l'URL, sans DB,
-// pour le partager même non publié et sans compte. ---
+// --- Lien de partage : le build est encodé en base64url dans l'URL, sans base,
+// pour partager un build non publié et sans compte. ---
 function toBase64Url(str: string): string {
   const bytes = new TextEncoder().encode(str);
   let binary = "";

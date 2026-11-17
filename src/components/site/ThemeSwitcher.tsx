@@ -23,17 +23,16 @@ const PREFERENCE_ICONS: Record<ThemePreference, LucideIcon> = {
 /**
  * Bascule clair / sombre, à côté du sélecteur de langue.
  *
- * L'icône du bouton n'est pas choisie par React : les deux sont rendues et le
- * CSS n'en montre qu'une selon `data-theme` (cf. `.dna-when-light` /
- * `.dna-when-dark`). Le bouton est donc juste dès la première peinture, sans
- * attendre l'hydratation — le serveur, lui, ne peut pas connaître le thème.
+ * Les deux icônes sont rendues et le CSS n'en montre qu'une selon `data-theme`
+ * (`.dna-when-light` / `.dna-when-dark`). Le serveur ne connaît pas le thème :
+ * comme ça le bouton est juste dès la première peinture, sans attendre
+ * l'hydratation.
  */
 export function ThemeSwitcher({ align = "end" }: { align?: "start" | "end" } = {}) {
   const t = useTranslations("shell");
   const [open, setOpen] = useState(false);
-  // `null` tant que l'hydratation n'a pas eu lieu : le stockage local n'existe
-  // pas côté serveur, et afficher une préférence fausse cocherait la mauvaise
-  // ligne du menu.
+  // `null` avant l'hydratation : pas de localStorage côté serveur, et une
+  // préférence devinée cocherait la mauvaise ligne du menu.
   const [preference, setPreference] = useState<ThemePreference | null>(null);
   const panelId = useId();
   const ref = useRef<HTMLDivElement>(null);
@@ -42,7 +41,7 @@ export function ThemeSwitcher({ align = "end" }: { align?: "start" | "end" } = {
     setPreference(readThemePreference());
   }, []);
 
-  // Le choix « auto » doit suivre le système en direct, sans rechargement.
+  // « auto » suit le système en direct, sans rechargement.
   useEffect(() => {
     if (preference !== "auto") return;
     const media = window.matchMedia(LIGHT_MEDIA_QUERY);

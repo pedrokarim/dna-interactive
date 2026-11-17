@@ -86,10 +86,9 @@ export function CommissionsBoard({
                 {t("syncing")}
               </span>
             ) : null}
-            {/* Le décompte n'a de sens que pour une rotation valable : sans elle,
-                il ferait croire que les données affichées courent jusqu'à zéro.
-                Le passage à zéro déclenche les vérifications rapprochées, qui
-                continuent ensuite sans lui. */}
+            {/* Pas de décompte sans rotation valable, sinon on croirait que les
+                données affichées tiennent jusqu'à zéro. Le passage à zéro lance
+                les vérifications rapprochées, qui continuent ensuite sans lui. */}
             {live ? (
               <CountdownTimer
                 target={meta.nextRefreshAt}

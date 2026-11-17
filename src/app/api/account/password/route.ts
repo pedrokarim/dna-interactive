@@ -10,9 +10,9 @@ import { getApiTranslator } from "@/lib/api-locale";
 
 export const dynamic = "force-dynamic";
 
-// Demande de définition/changement de mot de passe depuis les paramètres, pour
-// un compte connecté (typiquement OAuth-only). Passe TOUJOURS par une
-// vérification email (lien reset_password) — jamais de set direct.
+// Définir ou changer son mot de passe depuis les paramètres, compte connecté
+// (souvent un compte OAuth seul). On passe toujours par un lien reset_password
+// envoyé par email, jamais par un set direct.
 export async function POST(request: Request) {
   const t = await getApiTranslator(request);
   const user = await getCurrentUser();

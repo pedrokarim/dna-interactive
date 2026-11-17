@@ -10,17 +10,16 @@ const GHOST_BTN =
   "inline-flex items-center gap-2 rounded-sm border border-white/20 bg-gradient-to-b from-panel/70 to-ink/70 px-6 py-3 text-sm font-medium text-parch transition-all duration-200 hover:-translate-y-px hover:border-white/45 hover:text-white";
 
 /**
- * Cartes communauté (streamer + wiki). Le conteneur est surchargeable :
- * `/features` les veut centrées et bornées (mise en page marketing), le hub
- * les veut pleine largeur pour s'aligner sur le bento. D'où `className` plutôt
- * qu'un centrage codé en dur.
+ * Cartes communauté (streamer et wiki). `className` remplace le conteneur :
+ * `/features` les veut centrées et bornées, le hub en pleine largeur pour
+ * s'aligner sur le bento.
  */
 export default function CommunityCards({ className }: { className?: string } = {}) {
   const t = useTranslations("community");
   const tHome = useTranslations("home");
   return (
     <div className={className ?? "mx-auto grid max-w-4xl gap-6 md:grid-cols-2"}>
-      {/* Streamer Card */}
+      {/* Carte du streamer */}
       <motion.div
         className="group relative border border-line/25 bg-panel/85 p-8 backdrop-blur-sm transition-colors duration-300 hover:border-gold/40"
         whileHover={{ y: -5 }}
@@ -70,7 +69,7 @@ export default function CommunityCards({ className }: { className?: string } = {
         </a>
       </motion.div>
 
-      {/* Wiki Card */}
+      {/* Carte du wiki */}
       <motion.div
         className="group relative border border-line/25 bg-panel/85 p-8 backdrop-blur-sm transition-colors duration-300 hover:border-gold/40"
         whileHover={{ y: -5 }}

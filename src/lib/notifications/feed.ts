@@ -6,19 +6,20 @@ import { getVisibleAnnouncements, toNotification } from "./announcements";
 import { getDerivedNotifications } from "./derive";
 import type { AppNotification, NotificationFeed } from "./types";
 
-/** Plafond du fil : au-delà, plus personne ne fait défiler. */
+/** Taille max du fil, personne ne fait défiler plus loin. */
 const FEED_LIMIT = 40;
 
 type Viewer = { id: string; role: "user" | "admin" } | null;
 
 /**
- * Fil complet d'un lecteur : annonces publiées + notifications dérivées de son
- * compte, triées épinglées d'abord puis du plus récent au plus ancien.
+ * Fil d'un lecteur : annonces publiées + notifications dérivées de son compte,
+ * épinglées d'abord, puis de la plus récente à la plus ancienne.
  *
- * Fonctionne pour un visiteur anonyme (`viewer` à `null`) : il reçoit les
- * annonces d'audience « everyone » et son état de lecture reste côté navigateur.
+ * Marche aussi pour un anonyme (`viewer` à `null`) : il reçoit les annonces
+ * « everyone » et son état de lecture reste dans le navigateur.
+ *
+ * @param locale langue des notifications dérivées, dont le texte est écrit ici.
  */
-/** `locale` : langue des notifications dérivées, dont le texte est rédigé ici. */
 export async function getNotificationFeed(viewer: Viewer, locale: string): Promise<NotificationFeed> {
   const announcements = await getVisibleAnnouncements({
     authenticated: Boolean(viewer),
@@ -47,7 +48,7 @@ export async function getNotificationFeed(viewer: Viewer, locale: string): Promi
   return { notifications: sliced, unread, persisted: true };
 }
 
-/** Identifiants déjà lus parmi ceux fournis. Sûr si la table est absente. */
+/** Ceux des ids fournis qui sont déjà lus. Ensemble vide si la table manque. */
 async function getReadIds(userId: string, ids: string[]): Promise<Set<string>> {
   if (ids.length === 0) return new Set();
   const db = getDb();
@@ -71,8 +72,8 @@ async function getReadIds(userId: string, ids: string[]): Promise<Set<string>> {
 /**
  * Marque des notifications comme lues pour un compte.
  *
- * `onConflictDoNothing` : relire une notification déjà lue ne doit ni échouer
- * ni déplacer la date de première lecture.
+ * `onConflictDoNothing` : relire une notification déjà lue ne doit pas échouer
+ * ni changer la date de première lecture.
  */
 export async function markNotificationsRead(userId: string, ids: string[]): Promise<number> {
   const unique = [...new Set(ids)].filter((id) => id.length > 0 && id.length <= 200);

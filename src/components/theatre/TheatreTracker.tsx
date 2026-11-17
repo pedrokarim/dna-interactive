@@ -39,12 +39,10 @@ function useTheatreFormats() {
   return useMemo(() => {
     const intl = toIntlLocale(locale);
     /*
-     * La bascule s'affiche à l'heure du visiteur, c'est celle à laquelle il
-     * pourra se connecter. Mais le serveur ne connaît pas son fuseau : formatées
-     * sans précaution, les dates sortaient en UTC côté serveur et en heure
-     * locale côté navigateur, et React signalait un texte différent à
-     * l'hydratation. Le premier rendu est donc en UTC des deux côtés, puis le
-     * navigateur repasse dans son fuseau.
+     * La bascule s'affiche à l'heure du visiteur. Le serveur ne connaît pas son
+     * fuseau : sans ça les dates sortaient en UTC côté serveur et en heure
+     * locale côté navigateur, et React râlait à l'hydratation. Premier rendu en
+     * UTC des deux côtés, puis le navigateur repasse dans son fuseau.
      */
     const timeZone = hydrated ? undefined : "UTC";
     const instant = new Intl.DateTimeFormat(intl, { day: "numeric", month: "long", hour: "2-digit", minute: "2-digit", timeZone });
@@ -62,9 +60,10 @@ function useTheatreFormats() {
 /* ------------------------------------------------------------- petits blocs */
 
 /**
- * Visuel avec repli : l'affiche d'abord, l'icône si elle manque, rien sinon.
- * `requestWidth` : largeur demandée à l'optimiseur (≈ 2 × l'affichage). Un buste
- * PNG d'origine pèse jusqu'à 3 Mo pour une vignette de 400 px.
+ * Visuel avec repli : l'affiche, sinon l'icône, sinon rien.
+ * `requestWidth` : largeur demandée à l'optimiseur (environ 2 fois
+ * l'affichage). Un buste PNG d'origine pèse jusqu'à 3 Mo pour une vignette de
+ * 400 px.
  */
 function FeaturedImage({ sources, requestWidth, className }: { sources: (string | null)[]; requestWidth: number; className?: string }) {
   const candidates = useMemo(() => sources.filter((s): s is string => Boolean(s)), [sources]);
@@ -97,14 +96,13 @@ function SheetLink({ href, className, children }: { href: string | null; classNa
 /**
  * Décompte jusqu'à la bascule, à la seconde, et barre du temps restant.
  *
- * Une rotation dure trois ou quatre semaines : à l'échelle de la barre, une
- * journée ne déplace le trait que de quelques pixels, et un décompte en heures
- * ne change qu'une fois par heure. On avait l'impression que rien ne bougeait.
- * Les secondes défilent donc sous les yeux, et la barre **se vide** : elle
- * montre ce qui reste, pas ce qui est passé.
+ * Une rotation dure trois ou quatre semaines : une journée ne déplace la barre
+ * que de quelques pixels et un décompte en heures bouge une fois par heure, on
+ * croyait que rien ne bougeait. D'où les secondes, et une barre qui se vide
+ * (elle montre le temps restant).
  *
- * L'horloge à la seconde vit ici, dans le plus petit composant possible, pour
- * que le reste de la page ne se redessine pas à chaque tic.
+ * L'horloge à la seconde est dans ce petit composant pour que le reste de la
+ * page ne se redessine pas à chaque tic.
  */
 function RotationCountdown({ rotation, now }: { rotation: TheatreRotationView; now: Date }) {
   const t = useTranslations("theatre");
@@ -161,13 +159,13 @@ function CurrentRotation({ rotation, now }: { rotation: TheatreRotationView; now
 
   return (
     <DnaPanel className="relative isolate flex min-h-[19rem] flex-col justify-between overflow-hidden p-5 sm:p-6">
-      {/* Illustration fondue dans le panneau : aucun bord franc, elle passe sous le texte. */}
+      {/* Illustration fondue dans le panneau, sans bord franc, sous le texte. */}
       <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 -z-10 w-[58%] opacity-35 sm:w-[44%] sm:opacity-100">
         <FeaturedImage
           sources={[featured.bust, featured.icon]}
           requestWidth={828}
-          // Un personnage se recadre par le haut sans rien perdre ; une arme coupée ne se
-          // reconnaît plus : elle se montre entière, centrée, sans fondu qui la ronge.
+          // Un perso se recadre par le haut sans rien perdre. Une arme coupée ne se
+          // reconnaît plus : on la montre entière, centrée, sans fondu dessus.
           className={cn(
             "h-full w-full",
             featured.kind === "weapon"
@@ -238,7 +236,7 @@ function NeighbourCard({ label, rotation, emptyTitle, emptyHint, announced }: {
   const t = useTranslations("theatre");
 
   if (!rotation && announced) {
-    // Annoncée par le studio sans dates : on montre qui, pas quand.
+    // Annoncée par le studio sans dates : on montre qui, sans date.
     return (
       <DnaPanel className="flex-1 border-dashed transition-colors hover:border-line/50">
         <SheetLink href={`/characters/${announced.slug}`} className="flex h-full items-center gap-3 p-4">
@@ -318,8 +316,8 @@ function StatusTag({ status }: { status: TheatreRotationStatus }) {
   const t = useTranslations("theatre");
   if (status === "past") return null;
   return (
-    // Deux éléments : `font-caps` recale son texte en `position: relative`, ce
-    // qui annulerait le placement absolu s'ils ne faisaient qu'un.
+    // Deux éléments : `font-caps` met son texte en `position: relative`, ce qui
+    // annulerait le placement absolu sur un seul élément.
     <span className="absolute left-2 top-2">
       <span
         className={cn(
@@ -346,7 +344,7 @@ function Poster({ rotation, status, showYear, posterRef }: {
 
   return (
     <li ref={posterRef} className={cn("shrink-0 snap-start", POSTER_WIDTH_CLASS)} aria-current={status === "current" ? "true" : undefined}>
-      {/* L'année n'est écrite qu'à son premier passage : elle sert de repère en remontant. */}
+      {/* L'année n'est écrite qu'à sa première occurrence, comme repère en remontant. */}
       <p className="h-5 font-caps text-[0.6rem] uppercase tracking-[0.18em] text-muted-2">{showYear ? fmt.year(rotation.startsAt) : ""}</p>
       <SheetLink
         href={featured.href}
@@ -361,9 +359,9 @@ function Poster({ rotation, status, showYear, posterRef }: {
         <FeaturedImage
           sources={[featured.poster, featured.icon]}
           requestWidth={640}
-          // Un portrait remplit l'affiche et se cadre sur le visage, en haut. Une
-          // arme, elle, flotte au milieu de sa bande : on la montre en entier et
-          // centrée, sinon le cadrage haut n'en garde que la pointe ou le vide.
+          // Un portrait remplit l'affiche, cadré en haut sur le visage. Une arme
+          // flotte au milieu de sa bande : entière et centrée, sinon le cadrage
+          // en haut n'en garde que la pointe ou du vide.
           className={cn(
             "h-full w-full transition-transform duration-300 group-hover:scale-[1.03]",
             featured.kind === "weapon" ? "object-contain object-center p-3" : "object-cover object-top",
@@ -450,8 +448,8 @@ function PosterStrip({ rotations, now, currentId, hasNext, switchAt }: {
     setEdges({ start: el.scrollLeft <= 2, end: el.scrollLeft + el.clientWidth >= el.scrollWidth - 2 });
   }, []);
 
-  /* On déplace le défilement de la frise, pas celui de la page : `scrollIntoView`
-     ferait sauter la fenêtre entière jusqu'à la frise au chargement. */
+  /* On fait défiler la frise seule : `scrollIntoView` ferait sauter toute la
+     page jusqu'à la frise au chargement. */
   const centerOnAnchor = useCallback((behavior: ScrollBehavior) => {
     const el = scrollerRef.current;
     const anchor = anchorRef.current;

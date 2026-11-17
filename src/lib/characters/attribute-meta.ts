@@ -3,9 +3,9 @@ import metaJson from "@/data/characters/attribute-meta.json";
 /**
  * Icônes et noms officiels des attributs et des rôles.
  *
- * Les noms et les icônes de rôle viennent des tables du jeu
- * (`extract:roles:site`). Les icônes d'attribut sont celles que le jeu pose sur
- * les bonus d'ascension ; la correspondance attribut → icône est relevée ici.
+ * Noms et icônes de rôle viennent des tables du jeu (`extract:roles:site`).
+ * Les icônes d'attribut sont celles des bonus d'ascension, la correspondance
+ * est relevée à la main ci-dessous.
  */
 
 interface MetaFile {
@@ -18,12 +18,9 @@ const meta = metaJson as MetaFile;
 const TALENT_ICON_DIR = "/assets/characters/skills";
 
 /**
- * Attribut → numéro de l'icône `T_SkillTalent_NN`.
- *
- * Relevé sur les bonus d'ascension, où le jeu associe lui-même chaque attribut
- * à son icône. Deux exceptions, le bouclier et la Lucidité, qu'aucun bonus
- * d'ascension ne porte : leur icône est celle du rôle du même nom, dont le jeu
- * reprend le dessin à l'identique.
+ * Numéro de l'icône `T_SkillTalent_NN` de chaque attribut, relevé sur les
+ * bonus d'ascension. Le bouclier et la Lucidité n'ont pas de bonus d'ascension :
+ * on prend l'icône du rôle du même nom, le jeu utilise le même dessin.
  */
 const TALENT_ICON_BY_ATTRIBUTE: Record<string, string> = {
   ATK: "08",

@@ -35,9 +35,8 @@ export async function saveAccountCommissionFilter(userId: string, filter: Commis
 }
 
 /**
- * Filtre à appliquer au rendu de l'accueil : celui du compte s'il en a un,
- * sinon celui du cookie de ce navigateur, sinon `null` (= tout afficher).
- * Une base injoignable ne bloque pas l'accueil : on retombe sur le cookie.
+ * Filtre de l'accueil : celui du compte s'il existe, sinon celui du cookie,
+ * sinon `null` (tout afficher). Base injoignable : on retombe sur le cookie.
  */
 export async function resolveCommissionFilter(userId: string | null): Promise<CommissionFilter | null> {
   if (userId) {

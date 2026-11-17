@@ -32,7 +32,7 @@ async function readAuthRow(): Promise<StoredAuth> {
   return (row?.value as StoredAuth | undefined) ?? {};
 }
 
-/** Lu au démarrage d'auth.ts. Sûr si table/row absents → aucun override (fallback env). */
+/** Lu au démarrage d'auth.ts. Sans table ni ligne : aucun override, on reste sur l'env. */
 export async function loadAuthOverrides(): Promise<AuthOverrides> {
   try {
     const db = getDb();
@@ -51,14 +51,14 @@ export async function loadAuthOverrides(): Promise<AuthOverrides> {
     };
   } catch (error) {
     if (!isMissingTableError(error)) {
-      // Ne jamais casser l'init auth : on log et on retombe sur l'env.
+      // L'init auth ne doit pas casser : on log et on retombe sur l'env.
       console.error("loadAuthOverrides:", error);
     }
     return { googleEnabled: true };
   }
 }
 
-/** Vue admin : jamais de secret en clair — seulement les Client ID + présence des secrets. */
+/** Vue admin : les Client ID et la présence des secrets, jamais un secret en clair. */
 export async function getAuthConfigForAdmin(): Promise<{
   discordId: string;
   googleId: string;

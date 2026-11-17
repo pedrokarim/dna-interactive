@@ -7,25 +7,20 @@ export type RateLimitResult = { ok: true } | { ok: false; retryAfter: number };
 const PURGE_ONE_IN = 200;
 
 /**
- * Rate-limit à fenêtre fixe, **partagé entre tous les processus**
- * via Postgres (table `rate_limits`).
+ * Rate-limit à fenêtre fixe, partagé entre tous les processus via Postgres
+ * (table `rate_limits`).
  *
- * L'ancienne implémentation stockait les compteurs dans une `Map` en mémoire de
- * process : sur Vercel (hébergeur jusqu'en octobre 2026), chaque lambda avait
- * son propre état (réparti sur N instances, remis à zéro au cold-start) → la
- * limite réelle était `limit × N` et se réinitialisait seule. Toutes les
- * protections anti-abus étaient donc contournables.
+ * Une `Map` en mémoire ne suffit pas : chaque instance aurait son compteur,
+ * remis à zéro au redémarrage, et la vraie limite deviendrait `limit × N`.
  *
- * Ici, un **upsert atomique** (un seul aller-retour SQL) incrémente le compteur
- * et réinitialise la fenêtre si elle est expirée. Le résultat est autoritaire
- * quelle que soit l'instance qui traite la requête.
+ * Un seul upsert atomique incrémente le compteur et remet la fenêtre à zéro si
+ * elle a expiré : le résultat vaut pour toutes les instances.
  *
- * Fail-open : si la base est indisponible, on autorise (les endpoints protégés
- * dépendent de toute façon de la base — inutile d'ajouter un point de panne).
+ * Si la base ne répond pas, on laisse passer : les endpoints protégés en
+ * dépendent de toute façon, pas la peine d'ajouter un point de panne.
  *
- * Purge : les lignes expirées ne servent plus à rien mais restaient en base
- * pour toujours. Aucun cron n'existe sur ce projet, donc un appel sur
- * `PURGE_ONE_IN` les supprime au passage (index sur `reset_at`).
+ * Pas de cron sur ce projet : un appel sur `PURGE_ONE_IN` supprime au passage
+ * les lignes expirées (index sur `reset_at`), sinon elles restent en base.
  */
 export async function checkRateLimit(
   key: string,
@@ -47,7 +42,7 @@ export async function checkRateLimit(
     `);
 
     if (Math.random() < 1 / PURGE_ONE_IN) {
-      // Échec sans conséquence : la purge sera retentée par un appel suivant.
+      // Si ça échoue, un appel suivant refera la purge.
       await getDb()
         .execute(sql`DELETE FROM rate_limits WHERE reset_at < now()`)
         .catch((err) => console.error("[rate-limit] purge échouée:", err));
@@ -63,7 +58,7 @@ export async function checkRateLimit(
     }
     return { ok: true };
   } catch (err) {
-    // Fail-open : ne pas bloquer l'app si le rate-limiter n'est pas joignable.
+    // Base injoignable : on laisse passer plutôt que bloquer l'app.
     console.error("[rate-limit] échec DB, requête autorisée par défaut:", err);
     return { ok: true };
   }

@@ -216,8 +216,8 @@ export default function InteractiveMap() {
       {/* Panneau + rail des types affichés */}
       {/* Au-dessus de la colonne d'outils : sur mobile, le panneau ouvert prend toute la largeur. */}
       <div className="pointer-events-none absolute bottom-4 left-4 top-4 z-[1150] flex gap-2">
-        {/* Le panneau glisse depuis la gauche ; la colonne voisine (repli + rail)
-            suit le mouvement grâce à `layout`, au lieu de sauter d'un coup. */}
+        {/* Le panneau glisse depuis la gauche et la colonne voisine (repli + rail)
+            le suit grâce à `layout`, sans sauter d'un coup. */}
         <AnimatePresence initial={false} mode="popLayout">
         {!collapsed && (
           <motion.aside

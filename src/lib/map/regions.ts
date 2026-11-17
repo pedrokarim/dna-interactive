@@ -1,19 +1,16 @@
 /**
  * Accès serveur aux régions de la carte, pour les pages `/map/[region]`.
  *
- * Ces pages existent pour une raison précise : jusqu'ici les 16 régions
- * vivaient toutes derrière la seule URL `/map`, pilotées par un `<select>` et
- * un paramètre `?mapId=`. Rien n'était indexable par zone, alors que c'est
- * exactement ce que les joueurs cherchent (« bloomfield station map »,
- * « haojing chests »). Chaque région a donc désormais son URL.
+ * Sur `/map`, les 16 régions passent par un `<select>` et `?mapId=` : rien
+ * n'est indexable par zone, alors que les joueurs cherchent justement par zone
+ * (« bloomfield station map », « haojing chests »). Chaque région a donc son URL.
  *
- * Les identifiants du jeu sont irréguliers (`youlai_alley`, `arcanorift`,
- * `mountarcano`), on ne les met pas tels quels dans une URL : `REGION_SLUGS`
- * fait la traduction slug <-> id. Le slug est public et stable, l'id reste
- * celui attendu par `mapLoaders` et par `?mapId=`.
+ * Les ids du jeu sont irréguliers (`youlai_alley`, `arcanorift`, `mountarcano`) :
+ * `REGION_SLUGS` fait la correspondance slug/id. Le slug est public et stable,
+ * l'id reste celui de `mapLoaders` et de `?mapId=`.
  *
- * Le contenu suit la même taxonomie que la carte (`taxonomy.ts`) : mêmes
- * catégories, mêmes types fusionnés, noms officiels du jeu pour les zones.
+ * Même taxonomie que la carte (`taxonomy.ts`) : mêmes catégories, mêmes types
+ * fusionnés, noms officiels du jeu pour les zones.
  */
 
 import mapLoaders from "@/data/maps";
@@ -77,9 +74,8 @@ function categoriesOf(map: GameMap): RegionCategory[] {
 /**
  * Résumé de toutes les régions, dans l'ordre de `mapIndex.json`.
  *
- * Lit l'index et non les fichiers de carte complets : suffisant pour lister
- * (la légende de l'index porte les types, sans les points), et sans charger
- * les milliers de coordonnées dont une liste n'a que faire.
+ * Lit seulement l'index : sa légende a les types, ça suffit pour une liste, pas
+ * besoin de charger des milliers de coordonnées.
  */
 export function getAllRegions(): RegionSummary[] {
   return summaries
@@ -103,9 +99,8 @@ export function getAllRegions(): RegionSummary[] {
 /**
  * Détail complet d'une région, ou `null` si le slug est inconnu.
  *
- * Charge le fichier de carte complet : c'est lui, et non l'index, qui porte
- * les marqueurs placés. Les décomptes affichés doivent être les vrais, pas une
- * estimation tirée de la légende.
+ * Charge le fichier de carte complet : seul lui a les marqueurs placés, et on
+ * veut les vrais décomptes, pas une estimation tirée de la légende.
  */
 export async function getRegionBySlug(slug: string): Promise<RegionDetail | null> {
   const id = REGION_ID_BY_SLUG[slug];

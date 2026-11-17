@@ -17,9 +17,9 @@ const fold = (s: string) => s.normalize("NFD").replace(/\p{Diacritic}/gu, "").to
 const MAX_POINT_RESULTS = 40;
 
 /**
- * Mode recherche : le panneau entier bascule, comme sur HoYoLAB. Deux familles
- * de résultats : les types (on les active depuis ici) et les points nommés
- * (titres de lectures, événements, lieux), qui centrent la carte dessus.
+ * Mode recherche : tout le panneau bascule, comme sur HoYoLAB. On trouve les
+ * types (activables d'ici) et les points nommés (lectures, événements, lieux),
+ * qui centrent la carte sur eux.
  */
 export function SearchView({
   map,
@@ -54,7 +54,7 @@ export function SearchView({
     const points: { key: string; title: string; x: number; y: number; typeId?: string; icon?: string }[] = [];
     for (const g of map.types)
       for (const p of g.points) {
-        // Titre dans la langue courante, et en anglais (titre d'origine) pour qui le cherche ainsi.
+        // Titre dans la langue courante, plus le titre anglais d'origine.
         const title = titleOf(p);
         if (title && (fold(title).includes(q) || (p.title && fold(p.title).includes(q))))
           points.push({ key: p.key, title, x: p.x, y: p.y, typeId: g.id, icon: g.icon });

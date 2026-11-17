@@ -7,11 +7,11 @@ import type { BuildGenimonTrait } from "@/lib/genimons/build-traits";
 /**
  * Infobulle d'un Trait de Géniemon.
  *
- * `CursorTooltip` suit le curseur sur ordinateur et bascule au toucher sur
- * mobile : un seul composant couvre les deux, comme pour les Demon Wedges.
+ * `CursorTooltip` suit le curseur sur ordinateur et s'ouvre au toucher sur
+ * mobile, comme pour les Demon Wedges.
  *
- * L'attribut `title` ne suffisait pas – il n'affichait ni le glyphe, ni la
- * rareté, ni la valeur chiffrée, et le mobile ne le montre jamais.
+ * Un simple `title` n'affichait ni le glyphe, ni la rareté, ni la valeur, et
+ * le mobile ne le montre jamais.
  */
 export function TraitTooltip({
   trait,
@@ -38,7 +38,7 @@ export function TraitTooltip({
           ) : null}
         </div>
       </div>
-      {/* L'effet est déjà résolu à la rareté visée : il porte ses chiffres. */}
+      {/* L'effet est déjà résolu pour la rareté visée, chiffres compris. */}
       <p className="whitespace-pre-line text-xs leading-relaxed text-parch/85">{trait.effect}</p>
       <p className="border-t border-white/10 pt-1.5 text-[0.65rem] text-muted-2">
         {t("tooltipRarityNote", { rarity: trait.rarity })}

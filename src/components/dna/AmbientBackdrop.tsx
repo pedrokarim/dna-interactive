@@ -5,31 +5,28 @@ import Image from "next/image";
 import { cn } from "./cn";
 
 /**
- * Fond atmosphérique : un visuel en effet Ken Burns, des lueurs qui suivent le
- * défilement.
+ * Fond d'ambiance : un visuel en Ken Burns et des lueurs qui suivent le
+ * défilement. Les deux mouvements sont indépendants exprès.
  *
- * Deux mouvements indépendants, volontairement :
+ * Les visuels suivent une horloge : chacun dérive et zoome lentement, puis
+ * passe au suivant en fondu enchaîné. Si le défilement choisissait l'image, on
+ * aurait un diaporama à la molette qui se fige dès qu'on arrête de lire.
  *
- * - **Les visuels vivent dans le temps.** Chacun dérive et se rapproche
- *   lentement (Ken Burns), puis passe la main au suivant en fondu enchaîné.
- *   Le défilement ne choisit pas l'image — sinon le fond n'est qu'un diaporama
- *   piloté à la molette, et il se fige dès qu'on arrête de lire.
- * - **Les lueurs vivent dans le défilement.** Trois nappes teintées
- *   (cramoisi, teal, or) dont le poids et la dérive suivent la progression
- *   dans la page : la dominante change à mesure qu'on descend.
+ * Les lueurs suivent le défilement : trois nappes teintées (cramoisi, teal, or)
+ * dont le poids et la dérive dépendent de la position dans la page, donc la
+ * dominante change en descendant.
  *
- * Aucun rendu React n'est déclenché par le défilement : le gestionnaire écrit
- * des variables CSS (`--dna-scroll`, `--dna-flow-N`, `--dna-drift`) dans une
- * frame d'animation. Seul le passage d'un visuel au suivant, cadencé par une
- * horloge, provoque un rendu.
+ * Le défilement ne déclenche aucun rendu React : le gestionnaire écrit des
+ * variables CSS (`--dna-scroll`, `--dna-flow-N`, `--dna-drift`) dans un
+ * requestAnimationFrame. Seul le changement de visuel provoque un rendu.
  */
 
 /** Amplitude de la dérive verticale des visuels au défilement, en pixels. */
 const PARALLAX_RANGE = 44;
 
 /**
- * Courses du Ken Burns, une par visuel (cyclique). Directions et amplitudes
- * différentes pour que deux visuels consécutifs ne bougent jamais pareil.
+ * Mouvements du Ken Burns, un par visuel (en boucle). Directions et amplitudes
+ * varient pour que deux visuels qui se suivent ne bougent pas pareil.
  */
 const KEN_BURNS_MOVES = [
   { x: "-2.5%", y: "-1.8%", scale: "1.16" },
@@ -42,10 +39,8 @@ const KEN_BURNS_MOVES = [
 
 export type DnaAmbientBackdropProps = {
   /**
-   * Visuels de fond, dans l'ordre de passage.
-   *
-   * La liste doit être une constante (définie hors composant) : elle sert de
-   * dépendance à l'horloge et à l'abonnement au défilement.
+   * Visuels de fond, dans l'ordre de passage. Une constante définie hors du
+   * composant : la liste sert de dépendance à l'effet de l'horloge.
    */
   frames: readonly string[];
   /** Densité du fond. `subtle` pour les pages denses, `bold` pour une vitrine. */
@@ -63,9 +58,9 @@ export function DnaAmbientBackdrop({
 }: DnaAmbientBackdropProps) {
   const rootRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
-  // Dernier visuel monté. Ils ne sont montés qu'au fil de la rotation : le
-  // visuel affiché et le suivant, prêt pour le fondu. Les monter tous d'un coup
-  // chargeait les cinq fonds d'écran sur chaque page, pour n'en montrer qu'un.
+  // Dernier visuel monté. On les monte au fil de la rotation (l'affiché et le
+  // suivant, prêt pour le fondu) : tous d'un coup, chaque page chargeait les
+  // cinq fonds d'écran pour n'en montrer qu'un.
   const [reached, setReached] = useState(() => Math.min(1, frames.length - 1));
 
   // ------------------------------------------------------- défilement → lueurs
@@ -111,8 +106,8 @@ export function DnaAmbientBackdrop({
   // --------------------------------------------------- horloge des visuels
   useEffect(() => {
     if (frames.length < 2) return;
-    // Mouvement réduit : on reste sur le premier visuel, sans rotation. Le Ken
-    // Burns, lui, est neutralisé par la règle globale de `globals.css`.
+    // Mouvement réduit : on reste sur le premier visuel. Le Ken Burns est
+    // coupé par la règle globale de `globals.css`.
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const id = setInterval(() => {
@@ -148,7 +143,7 @@ export function DnaAmbientBackdrop({
                 // largeur d'écran suffisent, 1 200 px au lieu de 1 920 en 1 440.
                 sizes="80vw"
                 quality={70}
-                // Décor : il ne doit jamais concurrencer le contenu au chargement.
+                // Simple décor : il passe après le contenu au chargement.
                 loading="lazy"
                 fetchPriority="low"
                 className="dna-ambient-image"
@@ -159,8 +154,8 @@ export function DnaAmbientBackdrop({
       })}
 
       {/* Nappes teintées : le conteneur porte la dérive au défilement, chaque
-          couche sa propre respiration — deux transforms ne tiennent pas sur un
-          même élément, l'animation écraserait la règle. */}
+          couche sa respiration. Deux transforms sur un même élément ne tiennent
+          pas, l'animation écraserait la règle. */}
       <span className="dna-ambient-flow">
         <span className="dna-ambient-flow-layer" data-tint="crimson" />
         <span className="dna-ambient-flow-layer" data-tint="teal" />

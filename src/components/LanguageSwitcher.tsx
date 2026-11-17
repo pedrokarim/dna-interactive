@@ -57,7 +57,7 @@ export default function LanguageSwitcher({
 
   function switchLocale(newLocale: Locale) {
     setIsOpen(false);
-    // Persister le choix — le middleware next-intl lit ce cookie
+    // Cookie lu par le middleware next-intl pour garder le choix.
     document.cookie = `NEXT_LOCALE=${newLocale};path=/;max-age=31536000;SameSite=Lax`;
     router.replace(pathname, { locale: newLocale });
   }
@@ -79,8 +79,8 @@ export default function LanguageSwitcher({
       </button>
 
       {isOpen && (
-        // Pas de `role="menu"` : ce sont des boutons ordinaires parcourables au
-        // Tab, le rôle menu promettrait une navigation aux flèches non gérée.
+        // Pas de `role="menu"` : ce sont de simples boutons au Tab, et ce rôle
+        // annoncerait une navigation aux flèches qu'on ne gère pas.
         <div
           id={panelId}
           className={`absolute ${align === "start" ? "left-0" : "right-0"} ${
@@ -102,8 +102,8 @@ export default function LanguageSwitcher({
                 }`}
               >
                 <Flag aria-hidden className="h-4 w-6 shrink-0 rounded-sm shadow-sm" />
-                {/* `lang` sur l'endonyme : sans lui, une synthèse vocale
-                    française prononce « 日本語 » avec sa voix française. */}
+                {/* `lang` sur le nom de la langue, sinon une synthèse vocale
+                    française lit « 日本語 » avec sa voix française. */}
                 <span lang={l === "jp" ? "ja" : l === "kr" ? "ko" : l === "tc" ? "zh-Hant" : l}>
                   {LANGUAGE_LABELS[l.toUpperCase()]}
                 </span>

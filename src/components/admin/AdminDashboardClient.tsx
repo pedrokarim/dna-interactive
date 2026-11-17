@@ -129,12 +129,10 @@ const VIEW_IDS = ADMIN_NAV.map((item) => item.id) as [AdminView, ...AdminView[]]
 /**
  * Console d'administration.
  *
- * Parti pris : une console, pas une page produit. Les données sont présentées
- * en tableaux denses, chaque action tient dans une icône à infobulle, et le
- * chrome (titres, encarts, métriques) ne mange pas la place des lignes. Les
- * primitives vivent dans `./ui` – elles ne réutilisent volontairement pas les
- * composants marketing du design system, dont les proportions sont faites pour
- * convaincre un visiteur, pas pour traiter une file de modération.
+ * Tableaux denses, une icône à infobulle par action, et peu de place pour les
+ * titres et encarts. Les primitives sont dans `./ui` : on n'utilise pas exprès
+ * les composants du design system du site, trop grands pour une file de
+ * modération.
  */
 export function AdminDashboardClient({ currentUser }: { currentUser: CurrentAdmin }) {
   const [activeView, setActiveView] = useQueryState(
@@ -240,8 +238,8 @@ export function AdminDashboardClient({ currentUser }: { currentUser: CurrentAdmi
     setMessage(response.ok ? { tone: "ok", text: "Compte mis à jour." } : { tone: "error", text: "Action refusée." });
   }
 
-  // Filtre local à la page chargée. Le dire explicitement (cf. `hint`) évite de
-  // laisser croire à une recherche sur toute la base.
+  // Filtre local à la page chargée. Le `hint` du champ le dit, sinon on croirait
+  // chercher dans toute la base.
   const needle = filter.trim().toLowerCase();
   const filteredReports = needle
     ? reports.filter((r) => `${r.buildTitle} ${r.reason} ${r.reporterName ?? ""}`.toLowerCase().includes(needle))
@@ -517,7 +515,7 @@ type AdminStats = {
   adminUsers: number;
 };
 
-/** Bandeau de métriques : une ligne de cellules cliquables, pas quatre cartes. */
+/** Bandeau de métriques : une ligne de cellules, chacune ouvre sa vue. */
 function AdminMetrics({ stats, onView }: { stats: AdminStats; onView: (view: AdminView) => void }) {
   const cells: Array<{ view: AdminView; label: string; value: number; detail: string; alert?: boolean }> = [
     {
@@ -1038,7 +1036,7 @@ function EmailMetric({ label, value, detail }: { label: string; value: string; d
 
 // ---------------------------------------------------------------------------
 
-/** Format compact et alignable : en colonne, la lisibilité prime sur le style. */
+/** Date courte jj/mm/aa, pour qu'elle s'aligne en colonne. */
 function formatDate(value: string): string {
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) return "—";

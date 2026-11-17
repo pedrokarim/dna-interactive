@@ -4,7 +4,7 @@ import { cn } from "./cn";
 export type DnaStatRowProps = {
   label: ReactNode;
   value: ReactNode;
-  /** Couleur d'accent (hex) — met en avant la ligne (puce + valeur). */
+  /** Couleur d'accent (hex) qui met la ligne en avant (puce et valeur). */
   accent?: string;
   className?: string;
 };

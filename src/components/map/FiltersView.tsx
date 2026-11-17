@@ -15,8 +15,8 @@ type SectionId = MapCategoryId | "personal";
 
 /**
  * Corps du panneau : onglets de catégories à gauche, sections à droite.
- * Comme sur HoYoLAB, les onglets ne filtrent pas : ils font défiler jusqu'à la
- * section, et l'onglet suit le défilement. Tout reste visible d'un geste.
+ * Comme sur HoYoLAB, un onglet ne filtre rien, il fait défiler jusqu'à sa
+ * section, et l'onglet actif suit le défilement.
  */
 export function FiltersView({
   map,
@@ -53,8 +53,8 @@ export function FiltersView({
   const sectionName = (id: SectionId) => (id === "personal" ? t("personalMarkers") : categoryName(id));
 
   // Onglet courant = dernière section dont le haut est passé sous le bord du
-  // conteneur. Un simple calcul au défilement : 9 sections au plus, inutile
-  // d'installer un IntersectionObserver par section.
+  // conteneur. Calcul direct au défilement : 9 sections au plus, pas besoin
+  // d'un IntersectionObserver par section.
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
@@ -65,7 +65,7 @@ export function FiltersView({
         const node = sectionRefs.current.get(s.id);
         if (node && node.getBoundingClientRect().top - top <= 24) found = s.id;
       }
-      // En bas de liste, la dernière section courte ne remonte jamais en haut.
+      // En bas de liste, une dernière section courte n'atteint jamais le haut.
       if (el.scrollTop + el.clientHeight >= el.scrollHeight - 2) found = sections.at(-1)?.id ?? found;
       setCurrent(found);
     };

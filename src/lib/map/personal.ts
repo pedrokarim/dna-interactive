@@ -1,7 +1,7 @@
 /**
  * Marqueurs personnels : points posés par le joueur, avec un libellé, une
- * icône et une couleur. Stockés dans le navigateur (synchronisation avec le
- * compte : phase suivante de la refonte).
+ * icône et une couleur. Stockés dans le navigateur, pas encore synchronisés
+ * avec le compte.
  */
 
 import { atom } from "jotai";
@@ -18,7 +18,7 @@ export const PERSONAL_ICONS = {
 } as const;
 export type PersonalIcon = keyof typeof PERSONAL_ICONS;
 
-/** Couleurs = jetons du design system (valeurs du thème sombre, la carte l'est toujours). */
+/** Jetons du design system, en valeurs du thème sombre : la carte est toujours sombre. */
 export const PERSONAL_COLORS = {
   gold: "#e3cd95",
   crimson: "#e2664a",

@@ -1,14 +1,14 @@
 /**
  * Thème clair / sombre.
  *
- * La source de vérité visuelle est `data-theme` sur <html>, écrit par
- * `THEME_INIT_SCRIPT` avant la première peinture — sans ça, la page s'affiche
- * en sombre puis saute en clair après hydratation. Même mécanique que l'état
- * replié de la barre latérale (`data-sidebar`).
+ * Ce qui s'affiche dépend de `data-theme` sur <html>, écrit par
+ * `THEME_INIT_SCRIPT` avant la première peinture : sinon la page s'affiche en
+ * sombre puis saute en clair après hydratation. Même principe que l'état replié
+ * de la barre latérale (`data-sidebar`).
  *
- * La PRÉFÉRENCE de l'utilisateur (qui peut valoir « auto ») vit dans le
- * stockage local ; l'attribut, lui, ne porte jamais que le thème RÉSOLU. Le
- * CSS n'a donc qu'un seul sélecteur à connaître : `:root[data-theme="light"]`.
+ * La préférence (qui peut valoir « auto ») est dans le localStorage ; l'attribut
+ * ne porte que le thème résolu. Le CSS n'a qu'un sélecteur à connaître :
+ * `:root[data-theme="light"]`.
  */
 
 export const THEME_STORAGE_KEY = "dna:theme";
@@ -24,9 +24,8 @@ export const THEME_PREFERENCES = ["auto", "light", "dark"] as const satisfies re
 /**
  * Thème par défaut, quand rien n'a été choisi.
  *
- * Sombre : c'est l'identité du site depuis toujours, et basculer d'office les
- * visiteurs en clair au premier chargement serait un changement qu'ils n'ont
- * pas demandé. « auto » reste à un clic.
+ * Sombre : le site l'a toujours été, on ne bascule pas les visiteurs en clair
+ * sans qu'ils le demandent. « auto » est à un clic.
  */
 export const DEFAULT_THEME_PREFERENCE: ThemePreference = "dark";
 
@@ -61,7 +60,7 @@ export function applyResolvedTheme(theme: ResolvedTheme) {
 }
 
 /**
- * Script exécuté avant la première peinture (cf. app/[locale]/layout.tsx).
- * Volontairement minuscule et sans dépendance : il est inline dans le <head>.
+ * Script lancé avant la première peinture (voir app/[locale]/layout.tsx).
+ * Minuscule et sans dépendance : il est inline dans le <head>.
  */
 export const THEME_INIT_SCRIPT = `try{var p=localStorage.getItem('${THEME_STORAGE_KEY}');if(p!=='auto'&&p!=='light'&&p!=='dark'){p='${DEFAULT_THEME_PREFERENCE}'}var r=p==='auto'?(matchMedia('${LIGHT_MEDIA_QUERY}').matches?'light':'dark'):p;document.documentElement.dataset.theme=r;if(r==='light'){var m=document.querySelector('meta[name="theme-color"]');if(m){m.setAttribute('content','#eee7d9')}}}catch(e){document.documentElement.dataset.theme='dark'}`;

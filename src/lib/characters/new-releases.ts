@@ -1,20 +1,19 @@
 import releaseDates from "@/data/characters/release-dates.json";
 
 /**
- * Fenêtre pendant laquelle un personnage est considéré comme « nouveau ».
- * Alignée sur celle des items (`src/lib/items/new-releases.ts`) pour que le
- * badge veuille dire la même chose partout sur le site.
+ * Durée pendant laquelle un perso est « nouveau ». Même valeur que pour les
+ * items (`src/lib/items/new-releases.ts`), pour que le badge veuille dire la
+ * même chose partout.
  */
 const NEW_WINDOW_MS = 30 * 24 * 60 * 60 * 1000;
 
 const releaseDateMap = releaseDates as Record<string, string>;
 
 /**
- * Date de sortie d'un personnage, ou `null` si on ne la connaît pas.
+ * Date de sortie d'un perso, ou `null` si on ne la connaît pas.
  *
- * La source est une liste curée : `Char.lua` ne porte aucune information de
- * date ni de version. Un personnage absent de la liste n'est donc jamais
- * « nouveau » — on préfère ne rien afficher plutôt que de deviner.
+ * Les dates viennent d'une liste tenue à la main, `Char.lua` n'a ni date ni
+ * version. Un perso absent de la liste n'est jamais « nouveau » : on ne devine pas.
  */
 export function getCharacterReleaseDate(charId: number | null | undefined): Date | null {
   if (charId == null) return null;
@@ -37,16 +36,16 @@ export function isCharacterRecent(
 
 /**
  * Clé de tri : les nouveautés d'abord, la plus récente en tête. Les autres
- * gardent leur ordre existant (`sortPriority`).
+ * gardent leur ordre (`sortPriority`).
  *
- * Renvoie un nombre négatif d'autant plus petit que la sortie est récente, ce
- * qui permet de l'utiliser directement devant le tri habituel.
+ * Nombre négatif d'autant plus petit que la sortie est récente, à placer
+ * directement devant le tri habituel.
  */
 export function newCharacterRank(charId: number | null | undefined, now: Date = new Date()): number {
   if (!isCharacterRecent(charId, now)) return 0;
   const date = getCharacterReleaseDate(charId);
-  // -1 pour la plus récente, valeurs croissantes ensuite : on trie sur
-  // l'ancienneté en jours pour départager deux nouveautés.
+  // -1 000 000 plus l'âge en jours : deux nouveautés se départagent à
+  // l'ancienneté, et restent toutes devant les autres (0).
   const ageDays = date ? (now.getTime() - date.getTime()) / 86_400_000 : 0;
   return -1_000_000 + Math.round(ageDays);
 }

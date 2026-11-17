@@ -52,9 +52,8 @@ const EMPTY_FORM: FormState = {
 const KIND_LABEL: Record<TheatreFeaturedKind, string> = { character: "Personnage", weapon: "Arme de calamité" };
 
 /*
- * Le jeu annonce toutes ses bascules en heure serveur (UTC+8). On saisit et on
- * lit donc dans ce fuseau, quel que soit celui du poste : recopier une annonce
- * ne doit demander aucun calcul.
+ * Le jeu annonce ses bascules en heure serveur (UTC+8). On saisit et on lit dans
+ * ce fuseau, quel que soit celui du poste, pour recopier une annonce sans calcul.
  */
 const SERVER_OFFSET_MS = 8 * 3_600_000;
 
@@ -73,8 +72,8 @@ function formatServerTime(iso: string): string {
 /**
  * Administration des rotations du théâtre immersif.
  *
- * Même partage que le calendrier : une liste dense où chaque action tient dans
- * une icône, et un formulaire où les libellés restent écrits.
+ * Comme pour le calendrier : une liste dense avec une icône par action, et un
+ * formulaire avec des libellés écrits.
  */
 export function TheatreAdminClient() {
   const { confirm } = useConfirm();
@@ -84,7 +83,7 @@ export function TheatreAdminClient() {
   const [form, setForm] = useState<FormState | null>(null);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  // Lu une fois au montage : assez pour dire laquelle est en cours.
+  // Lu une fois au montage, ça suffit pour savoir laquelle est en cours.
   const [now] = useState(() => Date.now());
 
   const load = useCallback(async () => {
@@ -180,7 +179,7 @@ export function TheatreAdminClient() {
 
   const visible = rotations.filter((r) => !r.hidden);
   const overview = theatreOverview(visible, now);
-  // La plus récente en tête : c'est elle qu'on vient consulter ou corriger.
+  // La plus récente en tête, c'est celle qu'on vient voir ou corriger.
   const listed = [...rotations].reverse();
 
   return (

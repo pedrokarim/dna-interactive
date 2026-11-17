@@ -4,12 +4,12 @@ import type { ItemRecord } from "@/lib/items/types";
 /**
  * Sous-type d'un objet, tel que la liste le filtre et l'affiche.
  *
- * Pour une arme, c'est son type d'arme (`fields.WeaponTypeKey`), celui que le
- * jeu montre : `ResourceSType` est un code interne qui sépare des armes que le
- * jeu range ensemble (`Broadsword` et `Claymore` sont toutes deux des espadons,
- * `Scythe` des armes d'hast) et dont les noms ne sont pas ceux du jeu
- * (`Crossbow` pour les doubles pistolets, `Machinegun` pour les fusils d'assaut).
- * Les autres objets n'ont pas de type d'arme : leur `ResourceSType` reste la clé.
+ * Pour une arme, on prend le type que le jeu affiche (`fields.WeaponTypeKey`).
+ * `ResourceSType` est un code interne : il sépare des armes que le jeu range
+ * ensemble (`Broadsword` et `Claymore` sont des espadons, `Scythe` une arme
+ * d'hast) et ses noms ne sont pas ceux du jeu (`Crossbow` pour les doubles
+ * pistolets, `Machinegun` pour les fusils d'assaut). Les autres objets n'ont
+ * pas de type d'arme et gardent leur `ResourceSType`.
  */
 export function getItemSubTypeKey(item: ItemRecord): string | null {
   const weaponTypeKey = item.fields.WeaponTypeKey;
@@ -21,8 +21,9 @@ export function getItemSubTypeKey(item: ItemRecord): string | null {
 }
 
 /**
- * Anciennes valeurs du filtre, quand il portait sur `ResourceSType` : un lien
- * partagé ou un filtre mémorisé avec `Broadsword` ne doit pas donner une liste vide.
+ * Anciennes valeurs du filtre, du temps où il portait sur `ResourceSType` : un
+ * lien partagé ou un filtre mémorisé avec `Broadsword` ne doit pas donner une
+ * liste vide.
  */
 const LEGACY_SUBTYPE_ALIASES: Record<string, string> = {
   Broadsword: "Claymore",

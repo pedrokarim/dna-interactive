@@ -20,16 +20,13 @@ import CursorTooltip from "@/components/CursorTooltip";
 import { ASSETS_PATHS } from "@/lib/constants";
 import { optimizedImageUrl } from "@/lib/images/optimized";
 
-// ---------------------------------------------------------------------------
-// Card visual constants — palette inspired by Enka.network
-// ---------------------------------------------------------------------------
-// Enka uses a muted, desaturated element color as the card's base (Hydro =
-// rgb(132, 161, 198) for example) rather than a dark background with colored
-// glow. The portrait is feathered (canvas-based in their case) and a single
-// soft Shade.svg at 0.4 opacity gives depth. We replicate that with CSS.
+// Couleurs de la carte, d'après Enka.network : le fond est la couleur de
+// l'élément, désaturée (Hydro = rgb(132, 161, 198) chez eux), le portrait est
+// fondu sur les bords et un Shade.svg à 0.4 d'opacité donne du relief. Enka le
+// fait au canvas, nous en CSS.
 //
-// The "CARD" colors below are deliberately darker / more saturated than the
-// pastel Enka palette so our nighttime backdrop still reads well.
+// Les CARD_* sont plus sombres et plus saturées que le pastel d'Enka, pour
+// rester lisibles sur le fond de nuit du site.
 
 const CARD_BG: Record<string, string> = {
   Fire: "rgb(110, 52, 52)",
@@ -67,17 +64,17 @@ const ELEMENT_ICONS: Record<string, string> = {
   Dark: "/assets/items/mods/T_Armory_Dark.png",
 };
 
-// Parallelogram clips — slots lean toward the center (mirror the detail page).
+// Slots en parallélogramme penchés vers le centre, comme sur la fiche perso.
 const CLIP_LEFT = "polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%)";
 const CLIP_RIGHT = "polygon(0% 0%, 80% 0%, 100% 100%, 20% 100%)";
 
 const CARD_W = 1280;
 const CARD_H = 560;
-const LEFT_W = 460; // portrait section logical width — the bust image extends beyond this and fades.
+const LEFT_W = 460; // largeur de la zone portrait ; le buste déborde au-delà et s'y fond.
 
 function localized(texts: Record<string, string> | undefined, lang: string): string | null {
   if (!texts) return null;
-  // Repli : langue demandee -> EN -> FR (cf. BuildLocalizedText).
+  // Repli : langue demandée, puis EN, puis FR (voir BuildLocalizedText).
   return (
     texts[lang.toUpperCase()] ??
     texts.EN ??
@@ -87,9 +84,7 @@ function localized(texts: Record<string, string> | undefined, lang: string): str
   );
 }
 
-// ---------------------------------------------------------------------------
-// Presentational pieces
-// ---------------------------------------------------------------------------
+// Morceaux d'affichage
 
 function RarityStars({ rarity }: { rarity: number | null }) {
   if (!rarity) return null;
@@ -175,7 +170,7 @@ function WeaponCell({
       content={<ItemTooltipBody item={item} rank={weapon.rank} kindLabel={kindLabel} />}
     >
       <div className="flex cursor-default items-center gap-2">
-        {/* Icon only — no frame, no background. The image itself IS the visual. */}
+        {/* L'icône seule, sans cadre ni fond. */}
         <div
           className={`relative ${iconSize} shrink-0`}
           style={sizeStyle}
@@ -209,8 +204,8 @@ function WeaponCell({
   );
 }
 
-// Pick an appropriate cell size based on how many weapons we need to show
-// (best + alternatives). 1-2 → large, 3 → medium, 4+ → small (capped at 3 shown).
+// Taille des cases selon le nombre d'armes (meilleure + alternatives) :
+// 1-2 grandes, 3 moyennes, 4 et plus petites (on n'en montre que 3).
 function weaponSize(count: number): "lg" | "md" | "sm" {
   if (count <= 2) return "lg";
   if (count === 3) return "md";
@@ -310,14 +305,14 @@ function WedgeSlot({
     </div>
   );
 
-  // Le libellé vit hors du bloc clippé (le clipPath le rognerait) et n'affiche
-  // que la pièce : l'icône porte déjà la famille de Demon Wedge. Il reste aussi
-  // hors du CursorTooltip — celui-ci ne se déclenche qu'au survol du wedge.
+  // Le libellé est hors du bloc clippé, sinon le clipPath le rognerait. Il ne
+  // donne que la pièce, l'icône montre déjà la famille. Il reste aussi hors du
+  // CursorTooltip, qui ne doit se déclencher qu'au survol du wedge.
   //
-  // Les slots sont des parallélogrammes penchés : en bas, CLIP_LEFT couvre
-  // 0→80 % de la largeur (centre réel à 40 %) et CLIP_RIGHT 20→100 % (centre à
-  // 60 %). Un texte centré à 50 % paraît donc décalé vers l'intérieur ; on le
-  // ramène de 10 % vers le bord correspondant pour l'aligner sur la base du wedge.
+  // En bas, CLIP_LEFT couvre 0 à 80 % de la largeur (centre à 40 %) et
+  // CLIP_RIGHT 20 à 100 % (centre à 60 %). Centré à 50 %, le texte paraît
+  // décalé vers l'intérieur : on le décale de 10 % vers le bord pour l'aligner
+  // sur la base du wedge.
   const nameShift = side === "left" ? "-10%" : "10%";
   return (
     <div className="flex shrink-0 flex-col items-center" style={{ width: d.slotW }}>
@@ -371,8 +366,8 @@ function WedgeCenter({
     </div>
   );
 
-  // Même règle que les slots : le libellé est affiché en permanence sous le
-  // wedge et reste hors du CursorTooltip.
+  // Comme pour les slots : libellé toujours affiché sous le wedge, hors du
+  // CursorTooltip.
   return (
     <div className="flex shrink-0 flex-col items-center" style={{ width: d.centerH }}>
       {item ? (
@@ -438,24 +433,21 @@ function WedgeLayout({
   );
 }
 
-// Pick wedge scale based on how much vertical room the weapon section consumes.
-// Fewer weapons overall → more free space → bigger wedge.
+// Taille du wedge selon la place que prennent les armes : moins d'armes, plus
+// de place, wedge plus grand.
 function wedgeScale(totalWeapons: number): WedgeScale {
-  if (totalWeapons <= 2) return "lg"; // 1+1 at most → big wedge
-  if (totalWeapons <= 4) return "md"; // 2+2 or 3+1
-  return "sm";                         // 3+3 etc.
+  if (totalWeapons <= 2) return "lg"; // 1+1 au plus
+  if (totalWeapons <= 4) return "md"; // 2+2 ou 3+1
+  return "sm";                         // 3+3, etc.
 }
 
-// ---------------------------------------------------------------------------
-// The card itself — follows the Enka technique:
-//   1. SOLID element color as the card base (not dark-with-glow).
-//   2. Bust image in a wide absolutely-positioned layer, with an aggressive
-//      feather mask fading to transparent on the right. The element color
-//      below shows through so there's no hard edge.
-//   3. Shade.svg overlay (soft dark vignette) on the left to add depth.
-//   4. Text / stats / wedge content sits on top, using translucent dark
-//      backgrounds so it reads over both the feathered portrait and the bg.
-// ---------------------------------------------------------------------------
+// La carte, à la manière d'Enka :
+//   1. fond plein de la couleur de l'élément ;
+//   2. buste dans un large calque absolu, avec un masque qui le fond vers la
+//      droite dans la couleur de fond, sans bord net ;
+//   3. Shade.svg par-dessus à gauche, pour le relief ;
+//   4. textes, stats et wedge au-dessus, sur des fonds sombres translucides
+//      pour rester lisibles sur le portrait comme sur le fond.
 
 export function QuickBuildCard({
   character,
@@ -477,9 +469,9 @@ export function QuickBuildCard({
 
   const name = resolveCharacterDisplayName(character, lang);
   const subtitle = character.translations?.[lang.toUpperCase()]?.subtitle ?? "";
-  // ==Variante allegee==. Le buste d'origine fait 2048x2048 en PNG, jusqu'a
-  // 4,8 Mo, pour un affichage en 300x400 exporte au double. L'accueil montrant
-  // trois cartes, il chargeait 12 Mo a ce seul titre. Cf. `lib/characters/bust-card`.
+  // Variante allégée du buste : l'original fait 2048x2048 en PNG (jusqu'à
+  // 4,8 Mo) pour un affichage en 300x400, exporté au double. Avec trois cartes,
+  // l'accueil chargeait 12 Mo rien que pour ça. Voir `lib/characters/bust-card`.
   const bust = toBustCardSrc(
     character.portraits.bust?.publicPath ??
       character.portraits.gacha?.publicPath ??
@@ -497,13 +489,12 @@ export function QuickBuildCard({
   return (
     <div
       ref={cardRef ?? undefined}
-      // `dna-force-dark` : la carte est exportée en image et son fond est peint
-      // en dur — elle reste sombre même quand le site est en thème clair.
+      // `dna-force-dark` : la carte s'exporte en image avec un fond peint en
+      // dur, elle reste sombre même en thème clair.
       className="dna-force-dark relative overflow-hidden rounded-2xl"
       style={{ width: CARD_W, height: CARD_H, background: cardBg }}
     >
-      {/* Layer 1 — subtle darker band across the right side so text reads.
-          Soft, covers the right 60% with a very gentle darkening. */}
+      {/* Calque 1 : léger assombrissement à droite, pour la lisibilité du texte. */}
       <div
         className="absolute inset-0"
         style={{
@@ -511,8 +502,8 @@ export function QuickBuildCard({
         }}
       />
 
-      {/* Layer 2 — BUST PORTRAIT. Sits in a wide rectangle, feathered on the
-          right so its tail fades into the element-colored base. */}
+      {/* Calque 2 : le buste, dans un large rectangle, fondu à droite dans la
+          couleur de l'élément. */}
       {bust && (
         <div className="pointer-events-none absolute inset-y-0 w-[780px]" style={{ left: -220 }}>
           <img loading="lazy" decoding="async"
@@ -533,9 +524,8 @@ export function QuickBuildCard({
         </div>
       )}
 
-      {/* Layer 3 — Shade.svg overlay. Extended wide and masked on the right
-          edge so it dissolves into the element base instead of ending with a
-          visible vertical line where the SVG stops. */}
+      {/* Calque 3 : Shade.svg, élargi et masqué à droite, sinon on voit une
+          ligne verticale là où le SVG s'arrête. */}
       <img loading="lazy" decoding="async"
         src="/assets/ui/card/shade.svg"
         alt=""
@@ -552,10 +542,9 @@ export function QuickBuildCard({
         }}
       />
 
-      {/* Layer 4 — bottom vignette for name/subtitle readability.
-          Extends past the portrait zone and fades out on its right edge so
-          there's no hard vertical seam where the dark band meets the element
-          color. Vertical fade goes dark → transparent toward the top. */}
+      {/* Calque 4 : dégradé sombre en bas pour lire le nom et le sous-titre. Il
+          dépasse la zone portrait et s'efface à droite, pour ne pas laisser de
+          coupure verticale avec la couleur de l'élément. */}
       <div
         className="pointer-events-none absolute bottom-0 left-0 z-[2] h-60"
         style={{
@@ -569,7 +558,7 @@ export function QuickBuildCard({
         }}
       />
 
-      {/* Layer 5 — element icon (top-left), subtle */}
+      {/* Calque 5 : icône de l'élément, en haut à gauche. */}
       {elementIcon && (
         <img loading="lazy" decoding="async"
           src={optimizedImageUrl(elementIcon, 96)}
@@ -583,8 +572,8 @@ export function QuickBuildCard({
         />
       )}
 
-      {/* Layer 6 — character title overlay.
-          Intentionally OVERLAPS the portrait's fading tail — no column break. */}
+      {/* Calque 6 : nom du perso, posé exprès sur la fin fondue du portrait,
+          sans coupure de colonne. */}
       <div
         className="pointer-events-none absolute bottom-0 left-0 z-[3] p-7"
         style={{ width: LEFT_W }}
@@ -629,18 +618,17 @@ export function QuickBuildCard({
         ) : null}
       </div>
 
-      {/* Layer 7 — middle + right content panel.
-          Positioned starting at LEFT_W so it sits fully to the right of the
-          bust's bright zone (but still overlaps the fading tail). */}
+      {/* Calque 7 : colonnes du milieu et de droite. Elles commencent à LEFT_W,
+          à droite de la partie claire du buste mais sur sa fin fondue. */}
       <div
         className="absolute inset-y-0 right-0 z-[4] flex"
         style={{ left: LEFT_W }}
       >
-        {/* Middle — weapons (top) + demon wedge (rest) */}
+        {/* Milieu : armes en haut, Demon Wedge en dessous. */}
         <div className="relative flex min-w-0 flex-1 flex-col gap-4 px-5 py-5">
           <div className="grid grid-cols-2 gap-5">
             {(() => {
-              // Cap at 3 total per column (best + alternatives), size adapts.
+              // 3 armes au plus par colonne (meilleure + alternatives).
               const meleeList = [...meleeBest, ...meleeAlt].slice(0, 3);
               const rangedList = [...rangedBest, ...rangedAlt].slice(0, 3);
               const meleeCellSize = weaponSize(meleeList.length);
@@ -700,7 +688,7 @@ export function QuickBuildCard({
           )}
         </div>
 
-        {/* Right — genimons + stats + brand */}
+        {/* Droite : Géniemons, stats, compétences, équipe et logo. */}
         <div className="relative flex w-[280px] shrink-0 flex-col gap-4 px-5 pb-0 pt-5">
           {build.genimon.length > 0 && (
             <div>
@@ -776,7 +764,7 @@ export function QuickBuildCard({
           )}
 
           {build.skillPriority.length > 0 && (() => {
-            // Sort priorities desc, match each entry to a skill icon by skillIndex (1/2/3).
+            // Tri par priorité décroissante, icône retrouvée par skillIndex (1, 2 ou 3).
             const orderedPriorities = [...build.skillPriority].sort((a, b) => b.priority - a.priority);
             const skillIcons = character.skillIcons;
             const iconFor = (idx: number | undefined): string | null => {
@@ -786,7 +774,7 @@ export function QuickBuildCard({
               if (idx === 3) return skillIcons.skill3.publicPath;
               return null;
             };
-            // If skillIndex isn't set in data, fall back to priority order mapping to skill 1/2/3.
+            // Sans skillIndex dans les données, on prend l'ordre : 1er = skill 1, etc.
             const items = orderedPriorities.slice(0, 3).map((sk, i) => ({
               sk,
               iconSrc: iconFor(sk.skillIndex) ??
@@ -876,9 +864,9 @@ export function QuickBuildCard({
           )}
 
           <div className="mt-auto flex items-center gap-2.5 border-t border-white/15 py-1">
-            {/* Sans `crossOrigin` : image du même domaine, l'export n'en a pas
-                besoin, et l'attribut empêchait de réutiliser le logo déjà
-                préchargé par l'en-tête (téléchargé une seconde fois). */}
+            {/* Pas de `crossOrigin` : même domaine, l'export s'en passe, et avec
+                l'attribut le navigateur retéléchargeait le logo déjà préchargé
+                par l'en-tête. */}
             <img loading="lazy" decoding="async"
               src={ASSETS_PATHS.logo}
               alt=""
@@ -907,17 +895,14 @@ export function QuickBuildCard({
   );
 }
 
-// ---------------------------------------------------------------------------
-// ResponsiveQuickBuildCard — scales the fixed-size card down to fit tablet /
-// mobile viewports via CSS transform. The inner card keeps its intrinsic
-// 1280×560 dimensions (so `cardRef` + html-to-image exports still capture at
-// full resolution); only the visual footprint shrinks.
+// Réduit la carte avec un transform CSS sur tablette et mobile. La carte garde
+// ses 1280x560, donc l'export html-to-image via `cardRef` reste en pleine
+// résolution ; seule la place à l'écran diminue.
 //
-// Toutes les <img loading="lazy" decoding="async"> de la carte sont en `loading="lazy"` : rendue côté
-// serveur, chaque <img loading="lazy" decoding="async"> sans lui devient un <link rel="preload"> (React 19).
-// Sur l'accueil, la vitrine de builds en produisait 97, et l'outil
-// d'inspection de Google échouait sur cette page alourdie.
-// ---------------------------------------------------------------------------
+// Toutes les <img> de la carte sont en `loading="lazy"` : rendue côté serveur,
+// une <img> sans cet attribut devient un <link rel="preload"> (React 19). La
+// vitrine de l'accueil en produisait 97, et l'inspection d'URL de Google
+// échouait sur la page.
 
 export function ResponsiveQuickBuildCard({
   character,
@@ -939,9 +924,7 @@ export function ResponsiveQuickBuildCard({
   );
 }
 
-// ---------------------------------------------------------------------------
-// Modal wrapper
-// ---------------------------------------------------------------------------
+// La modale autour de la carte
 
 export default function QuickBuildModal({
   character,

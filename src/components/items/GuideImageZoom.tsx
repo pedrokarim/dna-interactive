@@ -7,9 +7,9 @@ import ImageZoomModal from "@/components/ImageZoomModal";
 /**
  * Illustration du guide, agrandissable.
  *
- * Les captures portent du texte de jeu : à la taille d'une figure d'article,
- * il est illisible. Un clic ouvre la visionneuse existante (zoom, rotation,
- * téléchargement), plutôt que d'imposer une image géante dans le fil de lecture.
+ * Les captures contiennent du texte du jeu, illisible à la taille d'une figure
+ * d'article. Un clic ouvre la visionneuse (zoom, rotation, téléchargement), ce
+ * qui évite une image géante au milieu du texte.
  */
 export function GuideImageZoom({
   src,

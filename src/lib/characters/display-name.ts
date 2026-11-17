@@ -4,11 +4,10 @@ import type { CharacterRecord } from "@/lib/characters/types";
 // n'importe aucune donnée du jeu, un composant client peut donc s'en servir
 // sans embarquer le catalogue dans le navigateur.
 
-// Certains personnages (notamment les formes alternatives du Phoxhunter)
-// utilisent un nom-template "{nickname}" dans les data du jeu, parce que le
-// jeu y substitue le pseudo du joueur à l'exécution. Hors-jeu, on veut un
-// nom marketing stable à afficher dans la liste, la build card, les modales,
-// etc. Ce mapping fournit ce fallback par charId.
+// Certains persos (les formes alternatives du Phoxhunter) ont pour nom le
+// template "{nickname}" : le jeu y met le pseudo du joueur. Hors du jeu il faut
+// un nom fixe pour la liste, la build card, les modales… d'où ce fallback par
+// charId.
 const DISPLAY_NAME_OVERRIDES: Record<number, Record<string, string> & { default: string }> = {
   1201: { default: "Phoxhunter (Umbro) ♀" },
   120101: { default: "Phoxhunter (Umbro) ♂" },
@@ -20,10 +19,9 @@ function isNicknameTemplate(name: string | null | undefined): boolean {
 }
 
 /**
- * Retourne un nom d'affichage propre pour un personnage, en remplaçant les
- * templates `{nickname}` du jeu par un nom marketing (ou `internalName` /
- * `id` en dernier recours). Doit être utilisé dans l'UI partout où on
- * affiche `translations?.X?.name` brut.
+ * Nom d'affichage d'un perso : les templates `{nickname}` sont remplacés par un
+ * nom fixe, sinon `internalName`, sinon `id`. À utiliser partout où l'UI
+ * afficherait `translations?.X?.name` brut.
  */
 export function resolveCharacterDisplayName(
   character: CharacterRecord,
@@ -42,9 +40,9 @@ export function resolveCharacterDisplayName(
 }
 
 /**
- * Variante qui prend juste le nom brut + un fallback. Utile dans les
- * composants qui n'ont pas accès à l'objet `character` complet (ex. la
- * build card qui itère sur `team[i].characterId`).
+ * Même chose à partir du nom brut et d'un fallback, pour les composants qui
+ * n'ont pas l'objet `character` (ex. la build card qui parcourt
+ * `team[i].characterId`).
  */
 export function resolveDisplayName(
   rawName: string | null | undefined,

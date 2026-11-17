@@ -1,5 +1,5 @@
 // Barrel des builds de Demon Wedges d'arme (canoniques, 1 par arme).
-// Genere/maj depuis docs/cadrage-builds-armes.md.
+// Généré et mis à jour depuis docs/cadrage-builds-armes.md.
 import weapons41 from "./weapons-41.json";
 import weapons10505 from "./weapons-10505.json";
 import weapons10101 from "./weapons-10101.json";

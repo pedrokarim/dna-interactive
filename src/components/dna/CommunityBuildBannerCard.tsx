@@ -11,9 +11,9 @@ import { DnaElementBadge } from "./ElementBadge";
 import { DnaVoteButton } from "./VoteButton";
 
 /**
- * Carte de build communauté « complète » (grille du hub) — inspirée d'Endfield
- * Tools, avec les données DNA : bannière (art du perso) + line-up de la team,
- * arme principale, élément, tags, compteur de vues, auteur et vote.
+ * Carte complète d'un build communauté (grille du hub), inspirée d'Endfield
+ * Tools : bannière (art du perso) + line-up de l'équipe, arme principale,
+ * élément, tags, vues, auteur et vote.
  */
 
 type Portrait = { avatar?: string | null; name: string };
@@ -30,7 +30,7 @@ export type DnaCommunityBuildBannerCardProps = {
   lineup?: Portrait[];
   /** Arme principale du build (icône à côté du titre). */
   mainWeapon?: { icon?: string | null; name?: string };
-  /** Tags/catégories déjà localisés (le DS reste pur). */
+  /** Tags/catégories déjà traduits (le DS ne gère pas la langue). */
   tags?: string[];
   views?: number;
   official?: boolean;

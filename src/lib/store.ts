@@ -3,9 +3,9 @@ import { atomWithStorage } from "jotai/utils";
 
 import { captureAnalytics } from "@/lib/analytics";
 
-// Points trouvés de la carte interactive (clés `mapId-type-markerId-instanceId`).
-// Même clé localStorage depuis l'origine : la progression des visiteurs en dépend.
-// Le reste de l'état de la carte vit dans `@/lib/map/state`.
+// Points trouvés de la carte (clés `mapId-type-markerId-instanceId`). Ne jamais
+// renommer la clé localStorage : c'est là qu'est la progression des visiteurs.
+// Le reste de l'état de la carte est dans `@/lib/map/state`.
 const markedMarkersStorageAtom = atomWithStorage<string[]>(
   "marked-markers",
   []
@@ -13,17 +13,17 @@ const markedMarkersStorageAtom = atomWithStorage<string[]>(
 
 export const isMenuOpenAtom = atomWithStorage<boolean>("menu-open", false);
 
-// Mode d'affichage des listes : 3 modes sélectionnables partout (Simplifié = images en
-// grand plan, Liste = lignes, Détaillé = cartes avec traductions). Le défaut dépend de la
-// liste (DW/mods → "detailed", les autres → "simplified"). Persistance PAR liste (clé de
-// surface : "characters", "items:<categoryId>", "drafts") pour respecter ces défauts.
+// Mode d'affichage des listes : Simplifié (grandes images), Liste (lignes) ou
+// Détaillé (cartes avec traductions). Par défaut "detailed" pour les DW/mods,
+// "simplified" ailleurs. Enregistré par liste ("characters", "items:<categoryId>",
+// "drafts") pour garder ces défauts.
 export type ListViewMode = "simplified" | "list" | "detailed";
 export const listViewModesAtom = atomWithStorage<Record<string, ListViewMode>>(
   "list-view-modes",
   {},
 );
 
-// Persistance des filtres de la section Items (par catégorie)
+// Filtres de la section Items, par catégorie.
 export type PersistedItemsFilters = Record<
   string,
   {
@@ -49,7 +49,7 @@ export const itemsFiltersStorageAtom = atomWithStorage<PersistedItemsFilters>(
   {}
 );
 
-// Persistance des bandeaux d'annonce de la page d'accueil
+// Bandeaux d'annonce de l'accueil fermés par le visiteur.
 export type PersistedHomeAnnouncements = Record<string, boolean>;
 
 export const dismissedHomeAnnouncementsAtom =
@@ -75,10 +75,9 @@ export const dismissHomeAnnouncementAtom = atom(
   }
 );
 
-// Atome de stockage pour les favoris d'items
+// Favoris d'items, stockés en tableau et exposés en Set.
 const itemsFavoritesStorageAtom = atomWithStorage<string[]>("items-favorites", []);
 
-// Atome dérivé pour convertir entre Set et Array (favoris d'items)
 export const itemsFavoritesAtom = atom(
   (get) => {
     const stored = get(itemsFavoritesStorageAtom);
@@ -90,9 +89,9 @@ export const itemsFavoritesAtom = atom(
 );
 
 /**
- * Mesuré ici et non sur les quatre boutons qui l'appellent : la grille, la
- * fiche et les deux vues compactes basculent le même favori, et quatre points
- * d'appel sont quatre occasions d'en oublier un au prochain écran.
+ * L'événement d'analytics part d'ici et pas des quatre boutons qui appellent
+ * l'atome (grille, fiche, deux vues compactes) : un seul endroit, rien à
+ * oublier sur un nouvel écran.
  *
  * `itemKey` est un identifiant de donnée de jeu, pas une saisie du visiteur.
  */
@@ -101,9 +100,9 @@ export const toggleItemFavoriteAtom = atom(
   (get, set, itemKey: string) => {
     const currentFavorites = get(itemsFavoritesAtom);
     const nextFavorites = new Set(currentFavorites);
-    const retire = nextFavorites.has(itemKey);
+    const removing = nextFavorites.has(itemKey);
 
-    if (retire) {
+    if (removing) {
       nextFavorites.delete(itemKey);
     } else {
       nextFavorites.add(itemKey);
@@ -112,7 +111,7 @@ export const toggleItemFavoriteAtom = atom(
     set(itemsFavoritesAtom, nextFavorites);
     captureAnalytics("favorite_toggled", {
       kind: "item",
-      action: retire ? "removed" : "added",
+      action: removing ? "removed" : "added",
       key: itemKey,
       total: nextFavorites.size,
     });
@@ -123,7 +122,7 @@ export const resetAllItemsFavoritesAtom = atom(null, (_get, set) => {
   set(itemsFavoritesAtom, new Set());
 });
 
-// Persistance des filtres de la section Characters
+// Filtres de la section Personnages.
 export type PersistedCharactersFilters = {
   search: string;
   elementFilter: string;
@@ -145,7 +144,7 @@ export const charactersFiltersStorageAtom =
     currentPage: 1,
   });
 
-// Persistance des filtres de la section Cosmétiques (par catégorie)
+// Filtres de la section Cosmétiques, par catégorie.
 export type PersistedCosmeticsFilters = Record<
   string,
   {
@@ -180,19 +179,19 @@ export const cosmeticsFavoritesAtom = atom(
 
 export const toggleCosmeticFavoriteAtom = atom(null, (get, set, cosmeticKey: string) => {
   const nextFavorites = new Set(get(cosmeticsFavoritesAtom));
-  const retire = nextFavorites.has(cosmeticKey);
-  if (retire) nextFavorites.delete(cosmeticKey);
+  const removing = nextFavorites.has(cosmeticKey);
+  if (removing) nextFavorites.delete(cosmeticKey);
   else nextFavorites.add(cosmeticKey);
   set(cosmeticsFavoritesAtom, nextFavorites);
   captureAnalytics("favorite_toggled", {
     kind: "cosmetic",
-    action: retire ? "removed" : "added",
+    action: removing ? "removed" : "added",
     key: cosmeticKey,
     total: nextFavorites.size,
   });
 });
 
-// Atome de stockage pour les favoris de personnages
+// Favoris de personnages, stockés en tableau et exposés en Set.
 const charactersFavoritesStorageAtom = atomWithStorage<string[]>(
   "characters-favorites",
   [],
@@ -213,9 +212,9 @@ export const toggleCharacterFavoriteAtom = atom(
   (get, set, characterKey: string) => {
     const currentFavorites = get(charactersFavoritesAtom);
     const nextFavorites = new Set(currentFavorites);
-    const retire = nextFavorites.has(characterKey);
+    const removing = nextFavorites.has(characterKey);
 
-    if (retire) {
+    if (removing) {
       nextFavorites.delete(characterKey);
     } else {
       nextFavorites.add(characterKey);
@@ -224,14 +223,14 @@ export const toggleCharacterFavoriteAtom = atom(
     set(charactersFavoritesAtom, nextFavorites);
     captureAnalytics("favorite_toggled", {
       kind: "character",
-      action: retire ? "removed" : "added",
+      action: removing ? "removed" : "added",
       key: characterKey,
       total: nextFavorites.size,
     });
   },
 );
 
-// Atome dérivé pour convertir entre Set et Array
+// Points trouvés exposés en Set.
 export const markedMarkersAtom = atom(
   (get) => {
     const stored = get(markedMarkersStorageAtom);
@@ -242,7 +241,6 @@ export const markedMarkersAtom = atom(
   }
 );
 
-// Actions
 export const toggleMarkerMarkedAtom = atom(
   null,
   (get, set, markerKey: string) => {

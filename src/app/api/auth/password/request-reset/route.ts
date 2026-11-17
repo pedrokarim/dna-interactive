@@ -11,8 +11,8 @@ import { getApiTranslator } from "@/lib/api-locale";
 
 export const dynamic = "force-dynamic";
 
-// Réponse 200 systématique (pas d'énumération d'emails). Un lien n'est envoyé
-// que si un compte existe pour cet email.
+// Toujours 200 pour ne pas révéler quels emails ont un compte. Le lien ne part que
+// si le compte existe.
 export async function POST(request: Request) {
   const t = await getApiTranslator(request);
   const ip = getClientIp(request.headers);

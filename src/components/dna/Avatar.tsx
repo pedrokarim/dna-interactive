@@ -11,7 +11,7 @@ export type DnaAvatarProps = {
   className?: string;
 };
 
-/** Avatar joueur/personnage — biseau doré ou rond. */
+/** Avatar joueur ou personnage, biseau doré ou rond. */
 export function DnaAvatar({ src, alt = "", fallback, round = false, size = 54, className }: DnaAvatarProps) {
   return (
     <span

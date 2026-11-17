@@ -7,9 +7,9 @@ import { getApiTranslator } from "@/lib/api-locale";
 export const dynamic = "force-dynamic";
 
 /**
- * Suppression du compte de l'utilisateur connecté (droit RGPD à l'effacement).
- * Supprimer la ligne `users` purge en cascade — via les FK onDelete: cascade —
- * ses builds, brouillons, votes, signalements, sessions et comptes OAuth liés.
+ * Suppression du compte connecté (droit à l'effacement RGPD). Les FK en
+ * onDelete: cascade emportent avec la ligne `users` ses builds, brouillons, votes,
+ * signalements, sessions et comptes OAuth.
  */
 export async function DELETE(request: Request) {
   const t = await getApiTranslator(request);

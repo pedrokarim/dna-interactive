@@ -10,10 +10,9 @@ import { rarityAttr, toRarityLevel } from "./rarity";
 import type { WedgeRuleInfo } from "@/lib/community-builds/wedge-rules";
 
 /**
- * Forme « résolue » légère d'un item, miroir de ce que produit
- * `resolveItemRef` côté lib (nom/icône/rareté/élément/polarité). Le picker ne
- * dépend volontairement PAS du JSON brut : il se nourrit de cette projection,
- * ce qui le rend prototypable en Storybook avec des fixtures.
+ * Item « résolu » allégé, calqué sur ce que renvoie `resolveItemRef` côté lib
+ * (nom, icône, rareté, élément, polarité). Le picker ne lit pas le JSON brut
+ * exprès : avec cette forme, on le monte dans Storybook avec des fixtures.
  */
 export type DnaPickerItem = {
   id: string;
@@ -23,17 +22,17 @@ export type DnaPickerItem = {
   element?: ElementKey | null;
   /** Track de polarité (1–4) pour les MOD ; null pour armes/génimons. */
   polarity?: number | null;
-  /** Type d'arme (Sword, Machinegun…) — armes uniquement, pour filtrer par perso. */
+  /** Type d'arme (Sword, Machinegun…), armes seulement, pour filtrer par perso. */
   weaponType?: string | null;
-  /** Classe d'arme (mêlée/distance) — armes uniquement. */
+  /** Classe d'arme (mêlée/distance), armes seulement. */
   weaponClass?: "melee" | "ranged" | null;
   /** Arme de calamité : ses Potentiels dépendent de la prédilection du porteur. */
   calamity?: boolean;
-  /** Demon Wedges uniquement : ce qui décide de sa place dans un build (cf. wedge-rules). */
+  /** Demon Wedges seulement : ce qui décide de sa place dans un build (voir wedge-rules). */
   wedge?: WedgeRuleInfo;
 };
 
-/** Libellés de track de polarité (MOD). Réf data : Polarity_<n>_Name. */
+/** Libellés des tracks de polarité (MOD), d'après Polarity_<n>_Name dans les données. */
 const POLARITY_LABELS: Record<number, string> = {
   1: "Assaut",
   2: "Soin",
@@ -43,7 +42,7 @@ const POLARITY_LABELS: Record<number, string> = {
 
 export type DnaItemPickerProps = {
   items: DnaPickerItem[];
-  /** Item couramment retenu pour l'emplacement édité (mise en avant). */
+  /** Item actuellement choisi pour l'emplacement édité (mis en avant). */
   selectedId?: string | null;
   /** Items déjà placés ailleurs (grisés + coche), pour éviter les doublons. */
   usedIds?: string[];
@@ -58,9 +57,9 @@ export type DnaItemPickerProps = {
 };
 
 /**
- * Sélecteur d'item filtrable (recherche + rareté + élément + polarité).
- * Brique de base du builder (armes / génimons / MOD-Demon Wedges / consonances).
- * Les filtres élément/polarité ne s'affichent que si au moins un item les porte.
+ * Sélecteur d'item avec recherche et filtres (rareté, élément, polarité). Sert
+ * partout dans le builder : armes, génimons, MOD/Demon Wedges, consonances.
+ * Les filtres élément et polarité n'apparaissent que si au moins un item en a.
  */
 export function DnaItemPicker({
   items,
@@ -214,7 +213,7 @@ function ItemCell({
         used && "opacity-45 grayscale",
       )}
     >
-      {/* Barre supérieure : pastille d'élément + coche « déjà utilisé », alignées. */}
+      {/* En haut : pastille d'élément et coche « déjà utilisé », sur la même ligne. */}
       <div className="absolute inset-x-1 top-1 z-[3] flex h-4 items-center justify-between">
         {item.element ? (
           <span aria-hidden className="h-2 w-2 rounded-full" style={{ backgroundColor: ELEMENTS[item.element].hex }} />

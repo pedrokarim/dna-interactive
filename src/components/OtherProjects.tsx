@@ -7,15 +7,14 @@ import { DnaTag } from "@/components/dna/Tag";
 import { DnaNewTab } from "@/components/dna/Badges";
 
 /**
- * Promotion croisée des autres projets de l'écosystème Ascencia.
+ * Les autres projets Ascencia, en bas de /about.
  *
- * Reprend la facture des cartes de la page « À propos » (coins nets, liseré
- * `line/20`, fond `ink/40`, accent or au survol) pour se lire comme une suite
- * de la page et non comme un encart publicitaire greffé. Placée en bas de
- * `/about` : les visiteurs qui arrivent là cherchent déjà à en savoir plus sur
- * le site, alors que l'accueil et les pages outil doivent rester sur leur sujet.
+ * Mêmes cartes que le reste de la page « À propos » (coins nets, liseré
+ * `line/20`, fond `ink/40`, or au survol) pour ne pas faire encart pub. Placé
+ * sur /about parce que les visiteurs y cherchent déjà à en savoir plus ;
+ * l'accueil et les pages outil restent sur leur sujet.
  *
- * Composant serveur : aucune interactivité, donc rien à envoyer au client.
+ * Composant serveur, rien d'interactif.
  */
 export async function OtherProjects() {
   const t = await getTranslations("otherProjects");
@@ -44,9 +43,9 @@ export async function OtherProjects() {
           >
             <div className="mb-3 flex items-start justify-between gap-3">
               <span className="grid h-11 w-11 shrink-0 place-items-center overflow-hidden border border-gold/30 bg-gold/10">
-                {/* Demandé en 88 px pour un rendu à 32 : net sur les écrans à
-                    haute densité. `alt` vide : le nom du projet suit dans le
-                    titre, l'annoncer deux fois n'apporte rien. */}
+                {/* Demandé en 88 px pour un affichage à 32, pour rester net sur
+                    les écrans haute densité. `alt` vide : le nom du projet est
+                    juste après dans le titre. */}
                 <Image
                   src={project.logo}
                   alt=""

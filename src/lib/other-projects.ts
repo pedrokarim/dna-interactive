@@ -1,27 +1,23 @@
 /**
- * Les autres projets de l'écosystème Ascencia, pour la section de promotion
- * croisée présente en bas de la page « À propos ».
+ * Les autres projets Ascencia, pour la section en bas de la page « À propos ».
  *
- * Source de vérité : la section « Nos Projets » de https://ascencia.re. Les
- * logos pointent chaque projet chez lui, donc un changement de logo se propage
- * sans rien redéployer ici (les domaines sont autorisés dans `next.config.ts`,
- * `images.remotePatterns`).
+ * La liste suit la section « Nos Projets » de https://ascencia.re. Les logos
+ * sont chargés chez chaque projet : un nouveau logo apparaît sans redéployer
+ * ici (domaines autorisés dans `images.remotePatterns` de `next.config.ts`).
  *
- * Miroir de `src/lib/other-projects.ts` de Just Tools : chaque site de
- * l'écosystème reprend la même liste en retirant sa propre entrée. DNA
- * Interactive est donc absent d'ici, et Just Tools présent — c'est exactement
- * l'inverse de la liste côté Just Tools.
+ * Même liste que `src/lib/other-projects.ts` de Just Tools : chaque site
+ * reprend la liste sans sa propre entrée. Ici DNA Interactive manque et Just
+ * Tools est présent, et l'inverse chez Just Tools.
  *
- * Seules les données structurelles vivent ici. Les libellés (description,
- * étiquette) sont dans les fichiers de langue sous `otherProjects.items.<id>`,
- * le site étant servi en 7 locales — contrairement à Just Tools, monolingue,
- * qui peut se permettre de les stocker avec la donnée.
+ * Ici, seulement la structure. Les textes (description, étiquette) sont dans
+ * les fichiers de langue sous `otherProjects.items.<id>`, puisque le site a 7
+ * locales. Just Tools, en une seule langue, les garde avec les données.
  */
 
 export interface OtherProject {
   /** Doit correspondre à la clé sous `otherProjects.items` dans les messages. */
   id: string;
-  /** Nom propre : identique dans toutes les langues, donc pas traduit. */
+  /** Nom propre, le même dans toutes les langues. */
   name: string;
   url: string;
   /** URL absolue, servie par le projet lui-même. */
@@ -76,7 +72,7 @@ export const OTHER_PROJECTS: OtherProject[] = [
   },
 ];
 
-/** Le hub qui recense tous les projets de l'écosystème. */
+/** Le site qui liste tous les projets Ascencia. */
 export const ECOSYSTEM_HUB = {
   name: "Ascencia",
   url: "https://ascencia.re/",

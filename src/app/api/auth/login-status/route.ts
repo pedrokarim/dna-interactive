@@ -6,8 +6,8 @@ import { getClientIp } from "@/lib/community-builds/vote-identity";
 
 export const dynamic = "force-dynamic";
 
-// Après un échec de login, permet à l'UI de distinguer "email non vérifié"
-// (→ proposer de renvoyer le lien) d'un simple mauvais identifiant.
+// Après un login raté, l'UI demande ici si c'est un email non vérifié (on
+// propose alors de renvoyer le lien) ou juste un mauvais identifiant.
 export async function POST(request: Request) {
   const ip = getClientIp(request.headers);
   if (!(await checkRateLimit(`auth:login-status:${ip}`, 20, 60 * 1000)).ok) {

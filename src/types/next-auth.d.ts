@@ -27,8 +27,8 @@ declare module "next-auth/adapters" {
 
 declare module "next-auth/jwt" {
   interface JWT {
-    // Sessions JWT : on stocke l'id utilisateur DB ; role/banned/discordId
-    // sont relus en base dans le callback `session` pour rester frais.
+    // Sessions JWT : on stocke l'id utilisateur ; role/banned/discordId sont
+    // relus en base dans le callback `session` pour rester à jour.
     uid?: string;
   }
 }

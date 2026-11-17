@@ -10,21 +10,16 @@ const REPOS_MS = 1_200;
 /**
  * Émet `list_filtered` quand un filtrage de liste se stabilise.
  *
- * Deux raisons de ne pas brancher `captureAnalytics` directement sur les
- * champs :
+ * On ne branche pas `captureAnalytics` sur les champs. Ces grilles filtrent à
+ * la frappe : un événement par changement ferait une trentaine d'envois par
+ * recherche, et on mesurerait la longueur du mot tapé. On attend donc que ça
+ * se pose.
  *
- * - **Le volume.** Ces grilles filtrent à la frappe. Un événement par
- *   changement donnerait une trentaine d'envois pour une recherche, et
- *   mesurerait la longueur du mot tapé plutôt que la recherche elle-même. On
- *   attend donc que ça se pose.
- * - **Le contenu.** Le terme saisi ne sort pas d'ici. Savoir *qu'on* a cherché
- *   et combien de résultats sont sortis répond à la question utile — « les gens
- *   trouvent-ils ? » — sans transporter ce que quelqu'un a tapé dans un champ.
- *   `results: 0` après une recherche est le signal qui compte : c'est une
- *   recherche qui a échoué.
+ * Le terme saisi ne part pas. Savoir qu'il y a eu une recherche et combien de
+ * résultats elle a donnés suffit pour savoir si les gens trouvent ;
+ * `results: 0` signale une recherche ratée.
  *
- * L'état initial n'est jamais émis : arriver sur une liste non filtrée n'est
- * pas un filtrage, c'est la pageview qui le dit déjà.
+ * L'état initial n'est pas émis : la pageview le couvre déjà.
  */
 export function useFilterAnalytics(
   list: string,
@@ -48,8 +43,8 @@ export function useFilterAnalytics(
     }, REPOS_MS);
 
     return () => clearTimeout(timer);
-    // `signature` résume `filters` et `results` : les lister en plus
-    // relancerait l'effet sur une nouvelle identité d'objet à contenu égal.
+    // `signature` résume `filters` et `results` : les ajouter relancerait
+    // l'effet à chaque nouvel objet, même à contenu égal.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [signature, list]);
 }

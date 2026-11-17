@@ -17,8 +17,8 @@ function toReleaseScale(version: string): number {
  * celle que couvre le site : `170` → `"1.7"`. Rend `null` pour un objet déjà
  * sorti, sans version, ou non programmé.
  *
- * Ces objets sont déjà décrits dans les données mais personne ne peut encore
- * les obtenir : on les montre, étiquetés, plutôt que de les cacher.
+ * Ces objets sont déjà dans les données mais personne ne peut encore les
+ * obtenir : on les montre avec une étiquette.
  */
 export function getUpcomingVersion(releaseVersion: number | null | undefined): string | null {
   if (releaseVersion == null || releaseVersion >= UNSCHEDULED_RELEASE_THRESHOLD) return null;

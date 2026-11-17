@@ -1,6 +1,6 @@
 /**
- * Types partagés du système de notifications – importables côté client.
- * Aucun accès base ici : ce module doit rester sérialisable et sans `server-only`.
+ * Types partagés des notifications, importables côté client : pas d'accès base
+ * ici, ni de `server-only`.
  */
 
 /** Catégorie visuelle d'une notification (pastille + icône). */
@@ -10,8 +10,8 @@ export type NotificationKind = "info" | "release" | "event" | "maintenance" | "w
 export type AnnouncementAudience = "everyone" | "authenticated" | "admins";
 
 
-// Tuples `as const` : zod en tire directement ses littéraux (`z.enum`), et les
-// types dérivent des valeurs plutôt que l'inverse – une seule source de vérité.
+// Tuples `as const` : zod les prend tels quels (`z.enum`), et les types en
+// dérivent. On ne déclare les valeurs qu'à un endroit.
 export const ANNOUNCEMENT_KINDS = ["info", "release", "event", "maintenance", "warning"] as const;
 export const ANNOUNCEMENT_AUDIENCES = ["everyone", "authenticated", "admins"] as const;
 
@@ -20,10 +20,10 @@ export type AnnouncementKind = (typeof ANNOUNCEMENT_KINDS)[number];
 /**
  * Une entrée du fil de notifications, quelle que soit son origine.
  *
- * `source` distingue les annonces (lignes de `announcements`, pilotées par
- * l'administration) des notifications dérivées de l'activité du compte
- * (modération d'un build, signalements à traiter). Les deux partagent le même
- * modèle de lecture : l'`id` sert de clé dans `notification_reads`.
+ * `source` sépare les annonces (lignes de `announcements`, gérées dans l'admin)
+ * des notifications tirées de l'activité du compte (modération d'un build,
+ * signalements à traiter). Dans les deux cas, l'`id` sert de clé dans
+ * `notification_reads`.
  */
 export type AppNotification = {
   id: string;

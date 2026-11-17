@@ -6,11 +6,6 @@ import { cn } from "./cn";
 import { DnaButton } from "./Button";
 import { useDialogA11y } from "./useDialogA11y";
 
-/**
- * Modale du design system — coque réutilisable (overlay + panneau aux coins
- * nets, liseré doré/cramoisi, fermeture ESC + clic backdrop). Remplace les
- * dialogues natifs du navigateur. `DnaConfirmDialog` ajoute confirmer/annuler.
- */
 const DIALOG_MAX_WIDTH = {
   sm: "max-w-sm",
   md: "max-w-md",
@@ -34,6 +29,11 @@ export type DnaDialogProps = {
   className?: string;
 };
 
+/**
+ * Modale du design system, à la place des dialogues natifs du navigateur :
+ * overlay, panneau aux coins nets, liseré doré ou cramoisi, fermeture par
+ * Échap ou clic sur le fond. `DnaConfirmDialog` ajoute Confirmer/Annuler.
+ */
 export function DnaDialog({ open, onClose, title, children, footer, danger, size = "md", className }: DnaDialogProps) {
   const t = useTranslations("common");
   const panelRef = useRef<HTMLDivElement>(null);

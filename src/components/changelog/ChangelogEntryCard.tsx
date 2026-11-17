@@ -10,9 +10,9 @@ import type { ChangelogPublicEntry } from "@/lib/changelog/types";
 /**
  * Rend les passages `**en gras**` d'une entrée.
  *
- * Les textes du changelog portent ce balisage depuis le début. On ne traite que
- * le gras : faire passer des textes de traduction par un moteur Markdown
- * complet ouvrirait la porte à de l'HTML arbitraire.
+ * Les textes du changelog utilisent ce balisage depuis le début. On ne gère que
+ * le gras : un moteur Markdown complet sur des textes de traduction laisserait
+ * passer du HTML.
  */
 export function renderBold(text: string) {
   return text.split(/(\*\*[^*]+\*\*)/g).map((part, index) =>
@@ -26,12 +26,7 @@ export function renderBold(text: string) {
   );
 }
 
-/**
- * Une entrée du journal.
- *
- * `id` porte le numéro de version : c'est l'ancre vers laquelle le sélecteur de
- * saut rapide fait défiler, et elle rend les versions partageables par URL.
- */
+/** Une entrée du journal. */
 export function ChangelogEntryCard({ entry }: { entry: ChangelogPublicEntry }) {
   const t = useTranslations("changelog");
   const locale = useLocale();
@@ -47,8 +42,8 @@ export function ChangelogEntryCard({ entry }: { entry: ChangelogPublicEntry }) {
   );
 
   return (
-    // L'ancre porte le numero de version : c'est la cible du saut rapide, et
-    // elle rend chaque version partageable par URL (#v2.4.0).
+    // Ancre = numéro de version : cible du saut rapide, et lien partageable
+    // vers une version (#v2.4.0).
     <section id={`v${entry.version}`} className="scroll-mt-24">
     <DnaPanel className={`p-6 transition-colors hover:border-gold/40 ${config.borderColor}`}>
       <div className="mb-4 flex items-start gap-4">
@@ -70,8 +65,8 @@ export function ChangelogEntryCard({ entry }: { entry: ChangelogPublicEntry }) {
             <span className="font-caps font-semibold text-gold">v{entry.version}</span>
             <span aria-hidden>•</span>
             <time dateTime={entry.date}>{dateLabel}</time>
-            {/* Une entrée non traduite s'affiche dans sa langue d'origine plutôt
-                que de disparaître : autant le dire au lecteur. */}
+            {/* Une entrée non traduite s'affiche dans sa langue d'origine : on
+                indique laquelle. */}
             {entry.locale !== locale ? (
               <span className="font-mono text-[0.66rem] uppercase text-muted-2">{entry.locale}</span>
             ) : null}

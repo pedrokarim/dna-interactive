@@ -1,8 +1,6 @@
-// ---------------------------------------------------------------------------
-// Chemins des visuels d'armurerie et de piste, à part de `builds.ts` : ce
-// module n'importe aucune donnée du jeu, un composant client peut donc s'en
-// servir sans embarquer le catalogue des objets dans le navigateur.
-// ---------------------------------------------------------------------------
+// Chemins des visuels d'armurerie et de piste, sortis de `builds.ts` : ce
+// module n'importe aucune donnée du jeu, un composant client peut s'en servir
+// sans embarquer le catalogue des objets.
 
 const ELEMENT_CIRCLE_MAP: Record<string, string> = {
   Thunder: "/assets/ui/armory/T_Armory_Circle_Violet.png",
@@ -74,12 +72,11 @@ export function getTrackIcon(polarity: number | null): string | null {
 /**
  * Marqueur « un Track-Shift Module est posé sur cette case ».
  *
- * Cinquième symbole du même jeu d'icônes que {@link TRACK_ICON_MAP} : même
- * plaque arrondie, même facture, mêmes 220 px. Il ne remplace pas la polarité,
- * il s'y ajoute — la carte porte la polarité de la pièce en haut à droite, et
- * ce marqueur en bas à gauche quand un module est posé.
+ * Cinquième icône de la même série que {@link TRACK_ICON_MAP} (même plaque
+ * arrondie, 220 px). Il s'ajoute à la polarité : la case montre la polarité de
+ * la pièce en haut à droite, et ce marqueur en bas à gauche si un module est posé.
  *
- * À ne pas confondre avec l'icône d'inventaire de l'objet
- * (`resources-201`) : c'est une illustration isométrique, illisible à 12 px.
+ * Pas l'icône d'inventaire de l'objet (`resources-201`) : c'est une
+ * illustration isométrique, illisible à 12 px.
  */
 export const TRACK_SHIFT_ICON = "/assets/ui/tracks/track-shift.png";

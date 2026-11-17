@@ -1,20 +1,20 @@
 import { getItemByCategoryAndId, getItemTranslation } from "@/lib/items/catalog";
 
 // ---------------------------------------------------------------------------
-// Le **passif** d'un Géniemon, résolu à son palier maximal.
+// Le passif d'un Géniemon, à son palier maximal.
 //
-// On choisit une créature pour son passif : c'est lui qu'il faut montrer sur
-// une recommandation de build, pas seulement un nom et une icône.
+// On choisit une créature pour son passif, donc une recommandation de build
+// doit le montrer, en plus du nom et de l'icône.
 //
-// Le texte du jeu porte des jetons `#1`, `#2`… dont les valeurs vivent dans
-// `scaling.valuesByLevel`, indexées par **niveau de compétence passive** (1 à 4,
-// ouvert par les ascensions) – à ne pas confondre avec le niveau 1-60 de la
-// créature. On expose le palier maximal : c'est l'état visé par un build.
+// Le texte du jeu contient des jetons `#1`, `#2`… dont les valeurs sont dans
+// `scaling.valuesByLevel`, indexées par niveau de compétence passive (1 à 4,
+// débloqué par les ascensions). Rien à voir avec le niveau 1-60 de la
+// créature. On renvoie le palier maximal, celui que vise un build.
 //
-// Les nombres ne sont **pas** formatés ici : relevé sur les 56 créatures
-// équipables, les 472 valeurs tiennent entre -0,2 et 0,15, ce sont donc des
-// taux. Les mettre en forme demande la locale de la page, qui appartient au
-// composant – d'où un gabarit et ses valeurs, jamais une chaîne toute faite.
+// Pas de formatage des nombres ici. Sur les 56 créatures équipables, les 472
+// valeurs vont de -0,2 à 0,15 : ce sont des taux. Les formater demande la
+// locale de la page, que seul le composant connaît, donc on renvoie un gabarit
+// et ses valeurs.
 // ---------------------------------------------------------------------------
 
 export interface GenimonPassive {

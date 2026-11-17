@@ -23,7 +23,7 @@ async function requireAdminResponse() {
 export async function GET() {
   const guard = await requireAdminResponse();
   if ("response" in guard) return guard.response;
-  // Ne renvoie JAMAIS les secrets en clair — seulement Client ID + présence.
+  // Jamais les secrets en clair : seulement le Client ID et si le secret est rempli.
   return NextResponse.json({ config: await getAuthConfigForAdmin() });
 }
 
@@ -36,6 +36,6 @@ export async function PATCH(request: NextRequest) {
   }
   await setAuthConfig(parsed.data);
   await recordAdminAction({ adminId: guard.user.id, action: "update_auth_config", targetType: "settings" });
-  // On renvoie la vue masquée à jour (jamais les secrets).
+  // Vue masquée à jour, sans les secrets.
   return NextResponse.json({ ok: true, config: await getAuthConfigForAdmin() });
 }

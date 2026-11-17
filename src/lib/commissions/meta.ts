@@ -47,10 +47,7 @@ export function rotationFreshness(updatedAt: string | null, now: Date = new Date
   return "stale";
 }
 
-/**
- * Cadence pour le countdown. La rotation change au top de chaque heure UTC,
- * donc la prochaine MAJ est déterministe : prochaine heure pleine.
- */
+/** Données du compte à rebours : la rotation change à chaque heure pleine UTC. */
 export function computeRotationMeta(updatedAt: string | null, now: Date = new Date()): RotationMeta {
   return {
     updatedAt,

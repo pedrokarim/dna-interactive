@@ -61,8 +61,8 @@ export function LoginForm({
       }
       return;
     }
-    // Avant la navigation dure : `window.location.assign` quitte la page, et
-    // le SDK vide sa file au `pagehide`, donc l'événement part quand même.
+    // Avant `window.location.assign` : le SDK vide sa file au `pagehide`,
+    // l'événement part quand même.
     captureAnalytics("login_completed", { method: "credentials" });
     window.location.assign(callbackUrl);
   }

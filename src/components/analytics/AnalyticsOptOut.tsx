@@ -13,17 +13,15 @@ import {
 } from "@/lib/analytics";
 
 /**
- * Bascule de refus de la mesure d'audience.
+ * Bouton pour refuser la mesure d'audience, sur la page Confidentialité.
  *
- * Le consentement est automatique sur ce site : la collecte démarre à la
- * première visite, sans bandeau. Ce n'est tenable que si le refus existe
- * quelque part et se trouve — la page Confidentialité annonçait la mesure sans
- * jamais offrir le moyen de s'y opposer.
+ * La mesure démarre dès la première visite, sans bandeau : il faut donc un
+ * endroit où la refuser.
  *
- * L'état vient du stockage local, donc d'en dehors de React : `useSyncExternalStore`
- * est fait pour ça. Il rend l'instantané serveur — « non refusé », la seule
- * hypothèse possible sans navigateur — puis bascule sur l'état réel dès
- * l'hydratation, sans le désaccord qu'un `useState` lu au montage produirait.
+ * L'état vit dans le stockage local, hors de React, d'où `useSyncExternalStore`.
+ * Côté serveur on rend « non refusé » (pas de navigateur pour savoir), puis
+ * l'état réel à l'hydratation, sans l'erreur d'hydratation d'un `useState` lu
+ * au montage.
  */
 export function AnalyticsOptOut() {
   const t = useTranslations("privacy");
@@ -39,8 +37,8 @@ export function AnalyticsOptOut() {
       <p className="mt-3 font-sans text-sm leading-relaxed text-parch/85">{t("optOutText")}</p>
 
       <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
-        {/* `aria-live` : le texte change sans que le focus bouge, donc rien ne
-            serait annoncé sans ça. */}
+        {/* `aria-live` : le texte change sans que le focus bouge, sinon le
+            lecteur d'écran ne dirait rien. */}
         <p aria-live="polite" className="font-sans text-sm text-parch/85">
           {refuse ? t("optOutDisabled") : t("optOutActive")}
         </p>

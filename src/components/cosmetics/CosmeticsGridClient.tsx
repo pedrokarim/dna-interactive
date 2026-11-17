@@ -206,7 +206,7 @@ export default function CosmeticsGridClient({ category, subcategories, items, ch
 
   return (
     <div className="space-y-4 md:space-y-8">
-      {/* En-tête gabarit — eyebrow mono + titre + compteur en équerres */}
+      {/* En-tête : repère, titre, compteur en équerres */}
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div className="min-w-0">
           <Link href="/cosmetics" className="inline-flex transition-opacity hover:opacity-80">
@@ -396,7 +396,7 @@ export default function CosmeticsGridClient({ category, subcategories, items, ch
             >
               <div className={cn("dna-rarity-slot relative flex items-center justify-center overflow-hidden border-b", item.portrait ? "aspect-[3/4]" : "aspect-square")}>
                 {item.portrait ? (
-                  // Portrait de bannière (bande 1:4, 256 px de large) : vignette 3:4 à l’échelle d’origine, tête et buste.
+                  // Portrait de bannière (bande 1:4, 256 px de large) : on cadre en 3:4 sur la tête et le buste.
                   <img
                     src={item.portrait}
                     alt={item.name}
@@ -473,7 +473,7 @@ export default function CosmeticsGridClient({ category, subcategories, items, ch
   );
 }
 
-/** Pastilles d'angle : secret (masqué tant que non possédé), Myriade, coloris. */
+/** Pastilles d'angle : secret (masqué tant que non possédé) et nombre de coloris. */
 function CosmeticBadges({ item, className, compact = false }: { item: CosmeticSummary; className?: string; compact?: boolean }) {
   const t = useTranslations("cosmetics");
   if (!item.hiddenUntilOwned && !item.onBanner && item.variantCount < 2) return null;

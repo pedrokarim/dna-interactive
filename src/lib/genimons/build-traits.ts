@@ -9,15 +9,15 @@ import {
 } from "@/lib/genimons/traits";
 
 // ---------------------------------------------------------------------------
-// Les Traits portés par un Géniemon **dans un build**.
+// Les Traits d'un Géniemon dans un build.
 //
 // Un Trait n'est pas un item du catalogue : il vit dans `data/genimons/traits.json`
-// et se désigne par sa clé (`UI_PetEntry_Title03`), stable et unique. C'est donc
-// elle qu'un build enregistre, jamais un libellé traduit.
+// et se désigne par sa clé (`UI_PetEntry_Title03`), stable et unique. Un build
+// enregistre cette clé, jamais un libellé traduit.
 //
-// Le nombre d'emplacements n'est pas une constante : il se lit sur la créature.
-// Une variante ordinaire en ouvre trois, une scintillante quatre – c'est tout
-// ce qui les sépare, et le serveur ne doit pas accepter davantage.
+// Le nombre d'emplacements dépend de la créature : trois pour une variante
+// ordinaire, quatre pour une scintillante (leur seule différence). Le serveur ne
+// doit pas en accepter plus.
 // ---------------------------------------------------------------------------
 
 /** Emplacements d'une variante ordinaire, au bout de ses ascensions. */
@@ -29,10 +29,10 @@ const PREMIUM_SLOTS = 4;
 export const MAX_GENIMON_TRAITS = PREMIUM_SLOTS;
 
 /**
- * Combien de Traits ce Géniemon peut porter.
+ * Nombre de Traits que ce Géniemon peut porter.
  *
- * Un identifiant inconnu renvoie la borne haute : c'est au contrôle
- * référentiel de rejeter la créature, pas à ce calcul de la deviner.
+ * Id inconnu : on renvoie la borne haute, c'est le contrôle référentiel qui
+ * rejette la créature.
  */
 export function genimonTraitSlots(itemId: string): number {
   const item = getItemByCategoryAndId("genimons", itemId);
@@ -73,7 +73,7 @@ export function resolveBuildTrait(
   return {
     key: trait.key,
     name: pickTraitText(trait.name, lang),
-    // Résolu à la rareté visée : c'est l'or qu'un build cherche à atteindre.
+    // Effet à la rareté visée, l'or qu'un build cherche à obtenir.
     effect: formatTraitEffect(pickTraitText(trait.effect, lang), trait, rarity, locale),
     category: trait.category,
     rarity,
@@ -82,11 +82,11 @@ export function resolveBuildTrait(
 }
 
 /**
- * Nettoie une liste de clés venue d'un build : on retire l'inconnu et les
- * doublons, et on coupe au nombre d'emplacements réel de la créature.
+ * Nettoie les clés venues d'un build : on retire l'inconnu et les doublons, et on
+ * coupe au nombre d'emplacements de la créature.
  *
- * L'ordre est conservé : il porte une priorité de farm, pas un emplacement –
- * le jeu ne fixe pas quel Trait va dans quelle sphère.
+ * L'ordre est gardé, c'est une priorité de farm (le jeu ne fixe pas quel Trait va
+ * dans quelle sphère).
  */
 export function sanitizeTraitKeys(itemId: string, keys: readonly string[] | undefined): string[] {
   if (!keys?.length) return [];

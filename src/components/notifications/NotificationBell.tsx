@@ -31,8 +31,8 @@ export function NotificationBell() {
     [locale],
   );
 
-  // Fermeture au clic extérieur et à Échap – mêmes règles que le reste de la
-  // barre. Le focus revient sur la cloche, jamais perdu dans le document.
+  // Fermeture au clic extérieur et à Échap, comme le reste de la barre. Le focus
+  // revient sur la cloche.
   useEffect(() => {
     if (!open) return;
     const onPointer = (event: PointerEvent) => {
@@ -119,8 +119,8 @@ export function NotificationBell() {
               {tn("seeAll")}
             </Link>
 
-            {/* L'activation du push vit ici, derrière un geste explicite. Jamais
-                de demande de permission au chargement de la page. */}
+            {/* Le push s'active ici, sur un clic : jamais de demande de
+                permission au chargement de la page. */}
             {push.state === "unsupported" ? null : push.state === "denied" ? (
               <span className="flex items-center gap-1 font-caps text-[0.55rem] uppercase tracking-[0.14em] text-muted-2">
                 <BellOff className="h-3 w-3" />
@@ -182,8 +182,8 @@ function NotificationRow({
           </span>
           {isUnread ? <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-crimson-bright" /> : null}
         </span>
-        {/* `line-clamp-2` pose déjà `display: -webkit-box` : lui adjoindre
-            `block` annule la troncature, et le panneau s'étire sans fin. */}
+        {/* `line-clamp-2` pose déjà `display: -webkit-box` : y ajouter `block`
+            annule la troncature et le panneau s'étire sans fin. */}
         {notification.body ? (
           <span className="mt-0.5 line-clamp-2 font-sans text-xs text-muted">{notification.body}</span>
         ) : null}

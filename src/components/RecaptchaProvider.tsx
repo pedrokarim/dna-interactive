@@ -4,20 +4,16 @@ import type { ReactNode } from "react";
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 
 /**
- * Provider reCAPTCHA v3, monté UNIQUEMENT sur les routes qui en ont besoin
- * (aujourd'hui : le formulaire de contact).
+ * Provider reCAPTCHA v3, à monter seulement sur les routes qui s'en servent
+ * (pour l'instant le formulaire de contact).
  *
- * Il était auparavant dans `Providers.tsx`, donc dans le layout racine : le
- * script Google se chargeait sur toutes les pages du site — carte, personnages,
- * items — alors qu'aucune ne l'utilise. Trois raisons de le cantonner ici :
+ * Avant il était dans `Providers.tsx`, à la racine, et le script Google se
+ * chargeait sur toutes les pages. Ici, la simple consultation du site n'appelle
+ * plus Google, et le badge ne s'affiche que sur le formulaire (le masquer
+ * obligerait à ajouter la mention texte).
  *
- * - performance : un script tiers en moins sur l'ensemble du site ;
- * - vie privée : plus d'appel aux serveurs Google pour une simple consultation ;
- * - conformité : le badge reCAPTCHA n'apparaît que là où il est légitime, ce qui
- *   évite d'avoir à ajouter la mention textuelle exigée quand on le masque.
- *
- * Si un autre formulaire doit être protégé un jour, l'envelopper avec ce
- * composant plutôt que de remonter le provider à la racine.
+ * Un autre formulaire à protéger : l'envelopper avec ce composant, sans
+ * remonter le provider à la racine.
  */
 export function RecaptchaProvider({ children }: { children: ReactNode }) {
   return (

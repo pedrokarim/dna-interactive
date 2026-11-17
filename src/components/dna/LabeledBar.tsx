@@ -10,7 +10,7 @@ export type DnaLabeledBarProps = {
   className?: string;
 };
 
-/** Barre étiquetée (télémétrie) — libellé + pourcentage. */
+/** Barre étiquetée (télémétrie) : libellé + pourcentage. */
 export function DnaLabeledBar({ label, value, max = 100, color = "#c2a86a", className }: DnaLabeledBarProps) {
   const pct = Math.max(0, Math.min(100, (value / max) * 100));
   return (

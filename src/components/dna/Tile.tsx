@@ -14,7 +14,7 @@ export type DnaTileProps = {
   className?: string;
 };
 
-/** Tuile de menu (icône fine + label + sous-titre fantôme). */
+/** Tuile de menu : icône fine, label, sous-titre fantôme. */
 export function DnaTile({ icon, label, ghost, isNew, notif, wide, onClick, className }: DnaTileProps) {
   return (
     <button

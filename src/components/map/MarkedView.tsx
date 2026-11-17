@@ -11,9 +11,9 @@ import { typeProgress } from "@/lib/map/progress";
 import { useMapLabels } from "./useMapLabels";
 
 /**
- * Liste des types affichés sur la carte courante (« Marqué » sur HoYoLAB) :
- * une ligne par type, plus lisible qu'une grille quand on veut savoir ce qui
- * est à l'écran. Le menu « … » porte les actions de masse sur un type.
+ * Types affichés sur la carte courante (« Marqué » sur HoYoLAB), une ligne par
+ * type : plus lisible qu'une grille pour voir ce qui est à l'écran. Le menu
+ * « … » porte les actions de masse sur un type.
  */
 export function MarkedView({
   map,

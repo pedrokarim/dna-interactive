@@ -30,9 +30,8 @@ type PotentialNode = {
 };
 
 /**
- * Correspondance attribut de jeu → clé de libellé (namespace `characterDetail`),
- * alignée sur celle de la fiche personnage pour que « Intensité » se dise pareil
- * partout sur le site.
+ * Attribut du jeu vers clé de libellé (namespace `characterDetail`), les mêmes
+ * que sur la fiche perso pour que « Intensité » se dise pareil partout.
  */
 const ATTR_LABEL_KEYS: Record<string, string> = {
   ATK: "statATK",
@@ -51,15 +50,15 @@ const ATTR_LABEL_KEYS: Record<string, string> = {
 };
 
 /**
- * Un même attribut change de sens selon sa zone : dans la table des attributs
- * du jeu, `DamageRate` en zone `Almighty` est « Pénétration de tous les
- * attributs » (`Attr_DamageRate_Almighty_Name`), et non des dégâts.
+ * Le sens d'un attribut dépend de sa zone : `DamageRate` en zone `Almighty`
+ * est « Pénétration de tous les attributs » (`Attr_DamageRate_Almighty_Name`)
+ * dans la table du jeu, pas des dégâts.
  */
 const ZONED_ATTR_LABEL_KEYS: Record<string, string> = {
   "DamageRate:Almighty": "statDamageRateAlmighty",
 };
 
-/** `0.45` → `+45 %`. `Rate` comme `Value` sont des fractions dans les tables. */
+/** `0.45` donne `+45 %` : dans les tables, `Rate` et `Value` sont des fractions. */
 function formatAttributeAmount(attribute: NodeAttribute): string {
   const raw = attribute.rate ?? attribute.value ?? 0;
   const percent = raw * 100;
@@ -76,14 +75,13 @@ const LEVELS = [0, 1, 2, 3, 4, 5];
 /**
  * Géométrie de l'arbre, en unités du `viewBox`.
  *
- * Reprise de l'écran « Fusion de calamité » du jeu : les paliers ne sont pas
- * alignés en colonne mais posés sur un **arc convexe**, et chaque palier ouvre
- * vers la droite sur une capsule qui contient un ou deux Potentiels. C'est ce
- * décalage progressif qui donne son allure organique à l'ensemble.
+ * Copie l'écran « Fusion de calamité » du jeu : les paliers sont posés sur un
+ * arc convexe, et chaque palier ouvre à droite sur une capsule d'un ou deux
+ * Potentiels.
  *
- * Tout est exprimé dans un repère fixe, puis mis à l'échelle par le conteneur
- * (rapport d'aspect verrouillé) : les connecteurs SVG et les boutons HTML
- * restent alignés à n'importe quelle taille.
+ * Tout est dans un repère fixe que le conteneur met à l'échelle (rapport
+ * d'aspect verrouillé) : les connecteurs SVG et les boutons HTML restent
+ * alignés à toutes les tailles.
  */
 const VIEW = { w: 300, h: 560 };
 const ROW_Y = [56, 148, 240, 332, 424, 516];
@@ -97,9 +95,8 @@ const NODE_X_PAIR = [134, 228];
 const NODE_R = 23;
 
 /**
- * Courbe lissée passant par tous les points (Catmull-Rom converti en cubiques).
- * Une polyligne rendrait l'arc anguleux ; c'est justement la souplesse du tracé
- * qui donne son allure au panneau du jeu.
+ * Courbe lissée qui passe par tous les points (Catmull-Rom converti en
+ * cubiques). Une polyligne donnerait un arc anguleux, loin du panneau du jeu.
  */
 function smoothPath(points: { x: number; y: number }[]): string {
   if (points.length < 2) return "";
@@ -156,13 +153,13 @@ type CalamityPotentialTreeProps = {
   /** id de l'item arme (ex. "weapons-10299"). */
   weaponItemId: string;
   lang: string;
-  /** Niveau de fusion courant (0→5) : verrouille les paliers au-dessus. */
+  /** Niveau de fusion courant (0 à 5) : les paliers au-dessus sont verrouillés. */
   fusionLevel: number;
   /**
-   * Ordre d'investissement conseillé, par identifiants de nœuds. Les deux
-   * branches convergent — le nœud du palier 5 exige les deux nœuds du palier 4 —
-   * donc on finit par tout prendre : ce qui se choisit est l'ordre, chaque nœud
-   * ayant son propre coût en matériaux. Les nœuds listés portent leur rang.
+   * Ordre d'investissement conseillé, en ids de nœuds. Le nœud du palier 5 exige
+   * les deux du palier 4, donc on finit par tout prendre : on ne choisit que
+   * l'ordre, chaque nœud ayant son coût en matériaux. Les nœuds listés
+   * affichent leur rang.
    */
   recommendedOrder?: number[] | null;
   className?: string;
@@ -178,7 +175,7 @@ export function CalamityPotentialTree({
   const t = useTranslations("items");
   const nodes = useMemo(() => DATA[weaponItemId]?.nodes ?? [], [weaponItemId]);
 
-  /** id de nœud → rang affiché (1, 2, 3…), vide si aucun ordre n'est fourni. */
+  /** Rang affiché (1, 2, 3…) par id de nœud, vide sans ordre conseillé. */
   const orderRank = useMemo(() => {
     const map = new Map<number, number>();
     (recommendedOrder ?? []).forEach((id, index) => map.set(id, index + 1));
@@ -198,7 +195,7 @@ export function CalamityPotentialTree({
     return map;
   }, [nodes]);
 
-  /** Centre de chaque nœud, indexé par id : sert aux connecteurs et aux boutons. */
+  /** Centre de chaque nœud par id, pour les connecteurs et les boutons. */
   const centers = useMemo(() => {
     const map = new Map<number, { x: number; y: number }>();
     for (const [, list] of byLevel) {
@@ -207,9 +204,8 @@ export function CalamityPotentialTree({
     return map;
   }, [byLevel]);
 
-  // La sélection retient l'arme à laquelle elle appartient : changer d'arme la
-  // périme d'elle-même et le premier nœud du nouvel arbre reprend la main, sans
-  // effet de synchronisation.
+  // La sélection garde l'arme à laquelle elle appartient : si l'arme change,
+  // elle ne vaut plus et on retombe sur le premier nœud, sans useEffect.
   const [selection, setSelection] = useState<{ weapon: string; id: number } | null>(null);
   const selectedId = selection?.weapon === weaponItemId ? selection.id : (nodes[0]?.id ?? 0);
   const setSelectedId = (id: number) => setSelection({ weapon: weaponItemId, id });
@@ -228,7 +224,7 @@ export function CalamityPotentialTree({
 
   return (
     <div className={cn("grid items-start gap-5 lg:grid-cols-[minmax(0,21rem)_minmax(0,1fr)]", className)}>
-      {/* ------------------------------------------------------------ arbre */}
+      {/* Arbre */}
       <div>
         <div className="mb-3 flex items-center justify-between">
           <p className="font-caps text-[0.62rem] uppercase tracking-[0.24em] text-muted">{t("potentialTree")}</p>
@@ -282,9 +278,8 @@ export function CalamityPotentialTree({
               const center = centers.get(node.id)!;
               const locked = node.level > fusionLevel;
               const active = node.id === selectedId;
-              // Trois états, pas deux : le nœud cliqué garde le rouge vif, ceux du
-              // chemin conseillé prennent un rouge sourd qui les distingue sans
-              // rivaliser avec la sélection, les autres restent neutres.
+              // Le nœud cliqué en rouge vif, ceux du chemin conseillé en rouge
+              // sourd pour ne pas concurrencer la sélection, les autres neutres.
               const onPath = orderRank.has(node.id);
               const position = pct(center.x, center.y);
               return (
@@ -317,8 +312,8 @@ export function CalamityPotentialTree({
                         : undefined,
                   }}
                 >
-                  {/* Dimensionné en pourcentage du bouton : la taille du bouton est
-                      elle-même relative au conteneur, donc l'icône suit l'échelle. */}
+                  {/* En pourcentage du bouton, lui-même relatif au conteneur :
+                      l'icône suit l'échelle. */}
                   <DnaItemIcon
                     src={node.icon}
                     alt=""
@@ -347,16 +342,15 @@ export function CalamityPotentialTree({
         </div>
       </div>
 
-      {/* ----------------------------------------------------------- détail */}
+      {/* Détail */}
       {selected ? <NodeDetail node={selected} lang={lang} locked={selected.level > fusionLevel} /> : null}
     </div>
   );
 }
 
 /**
- * Couche des liaisons : l'arc qui relie les paliers, l'amorce vers chaque
- * capsule, la capsule elle-même, et les liens de prérequis entre nœuds.
- * Purement décorative — d'où l'`aria-hidden`.
+ * Couche des liaisons : l'arc des paliers, l'amorce et le contour de chaque
+ * capsule, les liens de prérequis entre nœuds. Décorative, d'où `aria-hidden`.
  */
 function TreeConnectors({
   byLevel,
@@ -373,7 +367,7 @@ function TreeConnectors({
   const dim = "rgba(255,255,255,0.10)";
   const lit = `${CALAMITY_ACCENT_HEX}99`;
 
-  // Arc passant par les pastilles : une courbe lissée, pas une colonne droite.
+  // Arc lissé qui passe par les pastilles.
   const spine = ROW_Y.map((y, i) => ({ x: BADGE_X[i], y }));
 
   return (
@@ -400,7 +394,7 @@ function TreeConnectors({
         const y = ROW_Y[level];
         return (
           <g key={`row-${level}`}>
-            {/* Amorce pastille → capsule */}
+            {/* Amorce de la pastille vers la capsule */}
             <line
               x1={BADGE_X[level] + BADGE_R}
               y1={y}
@@ -427,8 +421,8 @@ function TreeConnectors({
           const to = centers.get(node.id);
           if (!from || !to) return null;
           const active = node.level <= fusionLevel;
-          // Une liaison appartient au chemin quand ses deux extrémités en font
-          // partie : la suite de nœuds conseillés se lit alors d'un trait.
+          // Une liaison est sur le chemin si ses deux bouts y sont : le chemin
+          // conseillé se lit d'un trait.
           const onPath = pathIds.has(requiredId) && pathIds.has(node.id);
           return (
             <line

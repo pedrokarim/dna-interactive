@@ -6,7 +6,7 @@ export type DnaFieldProps = InputHTMLAttributes<HTMLInputElement> & {
   wrapClassName?: string;
 };
 
-/** Champ de saisie / recherche — fond sombre, liseré fin, focus doré. */
+/** Champ de saisie ou de recherche : fond sombre, liseré fin, focus doré. */
 export function DnaField({ icon, wrapClassName, className, ...rest }: DnaFieldProps) {
   return (
     <label

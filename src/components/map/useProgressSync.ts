@@ -9,7 +9,7 @@ import { TRACKED_INDEX } from "@/lib/map/world";
 
 export type SyncStatus = "anonymous" | "loading" | "synced" | "saving" | "error";
 
-/** Compte dont la progression locale est le reflet (évite de mêler deux comptes). */
+/** Compte auquel correspond la progression locale, pour ne pas mêler deux comptes. */
 const SYNCED_USER_KEY = "map:synced-user";
 /** Vrai tant qu'un changement local n'a pas été accepté par le serveur. */
 const DIRTY_KEY = "map:sync-dirty";
@@ -17,7 +17,7 @@ const SAVE_DELAY_MS = 1500;
 /** Clés localStorage des atomes (voir `@/lib/store` et `@/lib/map/personal`). */
 const FOUND_KEY = "marked-markers";
 const PERSONAL_KEY = "map:personal-markers";
-/** Copies de la progression locale prises avant tout remplacement (3 dernières). */
+/** Copies de la progression locale faites avant chaque remplacement (les 3 dernières). */
 const BACKUP_KEY = "map:progress-backups";
 
 /** Points qui comptent dans l'exploration : les seuls que le serveur conserve. */
@@ -56,20 +56,18 @@ function backupLocal(found: string[], personal: PersonalMarker[]) {
 }
 
 /**
- * Synchronise la progression de la carte (points trouvés + marqueurs
+ * Synchronise la progression de la carte (points trouvés et marqueurs
  * personnels) avec le compte connecté.
  *
- * - Premier chargement pour ce compte, ou changements locaux non envoyés :
- *   **union** du local et du serveur (on ne perd jamais une coche).
- * - Sinon, le serveur fait foi : une coche retirée sur un autre appareil
- *   disparaît aussi ici.
- * - Ensuite, chaque changement part au serveur après un court délai.
+ * Premier chargement pour ce compte, ou changements locaux pas encore envoyés :
+ * on fait l'union du local et du serveur, pour ne perdre aucune coche. Sinon le
+ * serveur fait foi, et une coche retirée sur un autre appareil disparaît aussi
+ * ici. Ensuite chaque changement part au serveur après un court délai.
  *
- * ==La progression locale est lue DIRECTEMENT dans le localStorage==, jamais
- * dans l'atome : au premier rendu, `atomWithStorage` renvoie sa valeur initiale
- * (vide) tant qu'il n'a pas lu le stockage. Fusionner avec cette valeur a
- * remis à zéro la progression d'un joueur le 25/09/2026 (vide ∪ vide = vide,
- * écrit en local puis sur le compte).
+ * La progression locale se lit dans le localStorage, jamais dans l'atome : au
+ * premier rendu, `atomWithStorage` renvoie sa valeur initiale (vide) tant qu'il
+ * n'a pas lu le stockage. Fusionner avec ça donne vide + vide = vide, écrit en
+ * local puis sur le compte : la progression du joueur est effacée.
  */
 export function useProgressSync(): SyncStatus {
   const { data: session, status: authStatus } = useSession();

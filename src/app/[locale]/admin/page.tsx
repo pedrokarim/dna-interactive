@@ -13,9 +13,9 @@ export const metadata: Metadata = {
 export default async function AdminPage() {
   const user = await getCurrentUser();
 
-  // Non-admin (ou non connecté) → 404 : on ne révèle même pas l'existence de
-  // l'admin. Aucun HTML d'administration n'est jamais envoyé à un non-admin
-  // (gating côté serveur), et les routes /api/admin/* renvoient 401/403.
+  // Pas admin (ou pas connecté) : 404, on ne dit même pas que l'admin existe.
+  // Le tri se fait côté serveur, aucun HTML d'admin ne part chez un
+  // non-admin. Les routes /api/admin/* répondent 401/403 de leur côté.
   if (!user || user.role !== "admin") {
     notFound();
   }

@@ -9,8 +9,8 @@ export type DnaElementBadgeProps = {
 };
 
 /**
- * Pastille élémentaire — utilise la VRAIE icône du jeu (T_Armory_*), anneau
- * teinté par l'élément. (Le glyphe d'`elements.ts` n'est qu'un repli de data.)
+ * Pastille d'élément avec l'icône du jeu (T_Armory_*) et un halo à sa couleur.
+ * Le glyphe d'`elements.ts` n'est qu'un repli.
  */
 export function DnaElementBadge({ element, size = 26, showLabel = false, className }: DnaElementBadgeProps) {
   const el = ELEMENTS[element];

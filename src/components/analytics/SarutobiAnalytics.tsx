@@ -6,14 +6,11 @@ import { useLocale } from "next-intl";
 import { startAnalytics, trackLocale } from "@/lib/analytics";
 
 /**
- * Démarre la mesure d'audience.
+ * Démarre la mesure d'audience, ne rend rien.
  *
- * Ne rend rien. Ce composant posait auparavant une balise `<script>` vers
- * `/s.js` ; le SDK est maintenant dans le bundle et s'initialise ici — voir
- * `@/lib/analytics` pour ce que la bascule a débloqué.
- *
- * `demarrerAnalytics` se garde elle-même contre un second appel, ce qui rend le
- * composant sûr sous le double montage du mode strict.
+ * Le SDK est dans le bundle (avant, une balise <script> vers `/s.js`), voir
+ * `@/lib/analytics`. `startAnalytics` ignore un second appel, donc le double
+ * montage du mode strict ne pose pas de problème.
  */
 export function SarutobiAnalytics() {
   const locale = useLocale();
@@ -22,8 +19,8 @@ export function SarutobiAnalytics() {
     startAnalytics(locale);
   }, [locale]);
 
-  // Séparé de l'initialisation : changer de langue en cours de visite ne
-  // réinitialise pas le SDK, ça ne fait que déplacer le contexte du lot.
+  // Séparé de l'init : changer de langue en cours de visite ne relance pas le
+  // SDK, ça met juste à jour la locale envoyée avec les événements suivants.
   useEffect(() => {
     trackLocale(locale);
   }, [locale]);

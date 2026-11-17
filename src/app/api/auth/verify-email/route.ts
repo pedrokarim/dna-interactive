@@ -14,10 +14,9 @@ export const dynamic = "force-dynamic";
 // un de plusieurs mégaoctets.
 const TOKEN_MAX_LENGTH = 200;
 
-// Consomme un token verify_email et active le compte. En POST, déclenché par un
-// bouton : la page le faisait sur un simple GET, donc un antivirus de
-// messagerie qui visite les liens d'un email pouvait confirmer une adresse à la
-// place de son titulaire.
+// Consomme un token verify_email et active le compte. En POST, depuis un
+// bouton : avec un simple GET, l'antivirus d'une messagerie qui ouvre les liens
+// d'un email pouvait confirmer l'adresse à la place de son titulaire.
 export async function POST(request: Request) {
   const t = await getApiTranslator(request);
   const ip = getClientIp(request.headers);
@@ -47,8 +46,7 @@ export async function POST(request: Request) {
     .where(eq(schema.users.id, userId))
     .returning({ email: schema.users.email, name: schema.users.name });
 
-  // Un échec d'envoi ne doit pas faire échouer la confirmation : le compte est
-  // déjà actif.
+  // Le compte est déjà actif : un échec d'envoi ne fait pas échouer la confirmation.
   if (row?.email) {
     const emailLocale = toEmailLocale(locale);
     try {

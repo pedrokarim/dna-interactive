@@ -1,9 +1,9 @@
 /**
  * Validation et sérialisation d'un component embed.
  *
- * `serializeEmbed` rend `null` dès qu'une règle de Discord tombe : la page
- * garde alors sa carte Open Graph, au lieu d'un bloc que Discord jetterait en
- * entier (une seule clé de trop sur un bouton suffit).
+ * `serializeEmbed` rend `null` dès qu'une règle de Discord n'est pas respectée,
+ * et la page garde sa carte Open Graph. Discord jette le bloc entier pour une
+ * seule clé de trop sur un bouton.
  */
 import {
   ComponentType,
@@ -64,9 +64,8 @@ function checkButton(button: LinkButton, errors: string[]): void {
 }
 
 /**
- * Liste les règles de Discord que le bloc enfreint. Tableau vide : le bloc est
- * valide sur tout ce qui se vérifie sans le sérialiser (la taille en octets se
- * vérifie dans `serializeEmbed`).
+ * Règles de Discord que le bloc enfreint. Tableau vide : tout ce qui se vérifie
+ * sans sérialiser est bon. La taille en octets se vérifie dans `serializeEmbed`.
  */
 export function validateEmbed(embed: ComponentEmbed): string[] {
   const errors: string[] = [];
@@ -159,12 +158,13 @@ export function validateEmbed(embed: ComponentEmbed): string[] {
 }
 
 /**
- * JSON prêt à poser dans une page ou à servir tel quel. `<`, `>`, `&`, U+2028
- * et U+2029 sont écrits en `\uXXXX` : aucun texte ne peut fermer une balise
- * `<script>`, et le résultat reste du JSON valide.
+ * JSON à poser dans une page ou à servir tel quel. `<`, `>`, `&`, U+2028 et
+ * U+2029 sont écrits en `\uXXXX` : aucun texte ne peut fermer une balise
+ * `<script>`, et ça reste du JSON valide.
  *
- * Rend `null` si une règle de Discord tombe, y compris au-delà de 3 000 octets
- * (les séquences `<` comptent à leur longueur échappée, comme chez Discord).
+ * Rend `null` si une règle de Discord n'est pas respectée, y compris au-delà de
+ * 3 000 octets (comme chez Discord, un caractère échappé compte pour sa forme
+ * `\uXXXX`).
  */
 export function serializeEmbed(embed: ComponentEmbed): string | null {
   if (validateEmbed(embed).length > 0) return null;

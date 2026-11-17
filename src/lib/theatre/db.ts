@@ -23,9 +23,9 @@ export function rowToRotation(r: Row): TheatreRotation {
  * Rotations du théâtre depuis la BDD (`theatre_rotations`, non masquées), de la
  * plus ancienne à la plus récente.
  *
- * **Repli** sur la liste livrée avec le site si la table est vide ou absente :
- * jamais de suivi vide, et ça marche avant la migration. L'historique tient en
- * quelques dizaines de lignes, on le charge donc d'un bloc, sans fenêtre.
+ * Si la table est vide ou absente (avant la migration), on prend la liste livrée
+ * avec le site. Si elle n'a que des lignes masquées, on rend une liste vide.
+ * L'historique tient en quelques dizaines de lignes : on charge tout d'un coup.
  */
 export async function getTheatreRotations(): Promise<TheatreRotation[]> {
   try {
@@ -46,9 +46,9 @@ export async function getTheatreRotations(): Promise<TheatreRotation[]> {
 }
 
 /**
- * Ce qu'une page a besoin de savoir pour afficher le théâtre : les rotations,
- * noms et visuels résolus dans la langue demandée, et l'horloge du serveur à
- * cet instant (premier affichage ; le client reprend ensuite la sienne).
+ * De quoi afficher le théâtre : les rotations avec noms et visuels dans la
+ * langue demandée, et l'heure du serveur pour le premier rendu (le client
+ * reprend ensuite son horloge).
  */
 export async function getTheatreSnapshot(locale: string): Promise<{ rotations: TheatreRotationView[]; serverNow: number }> {
   const rotations = await getTheatreRotations();

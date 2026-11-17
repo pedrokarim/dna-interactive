@@ -1,14 +1,14 @@
 /**
  * Centres d'affinité autorisés (Quetzalcoatl / Feathered Serpent).
  *
- * Il existe **deux tiers de centres**, et les deux sont légitimes :
+ * Deux familles, valides toutes les deux.
  *
- * - **3★ génériques** (`mods-315xx`) : sans élément, accessibles tôt. Ce sont
- *   ceux que les guides recommandent sur les builds de progression.
- * - **4★/5★ élémentaires** : chaque élément expose **exactement deux** centres,
- *   un par polarité — d'où 24 IDs et non 20. Les variantes FR « Pouvoir »
- *   (EN « Spectrum ») de Fire et Thunder en font partie au même titre que les
- *   autres ; les avoir omises faisait refuser des builds légitimes.
+ * Les 3★ génériques (`mods-315xx`) n'ont pas d'élément et s'obtiennent tôt :
+ * les guides les mettent sur les builds de progression.
+ *
+ * Les 4★/5★ élémentaires : deux centres par élément, un par polarité, en 4★ et
+ * en 5★, donc 24 IDs. Les « Pouvoir » (EN « Spectrum ») de Fire et Thunder en
+ * font partie : sans eux, des builds valides étaient refusés.
  *
  *   Dark    : Éternité (41715/51715) · Vigueur  (41716/51716)
  *   Water   : Éveil    (41725/51725) · Éternité (41726/51726)
@@ -17,12 +17,12 @@
  *   Wind    : Ténacité (41755/51755) · Éternité (41756/51756)
  *   Light   : Vigueur  (41765/51765) · Décision (41766/51766)
  *
- * ⚠ Les 3★ n'ont aucun élément : l'icône du centre ne doit donc pas en déduire
- * une teinte élémentaire (cf. `centerWedgeElement`), sinon on retombe sur le
- * « centre lumineux sur le mauvais personnage ».
+ * Les 3★ n'ont pas d'élément : l'icône du centre ne doit pas en tirer une teinte
+ * (cf. `centerWedgeElement`), sinon un perso affiche un centre lumineux qui
+ * n'est pas le sien.
  */
 export const CENTER_DEMON_WEDGE_ITEM_IDS = new Set([
-  // 3★ génériques (sans élément) — builds de progression
+  // 3★ génériques, sans élément (builds de progression)
   "mods-31502", // Helido / Vrille
   "mods-31512", // Prance / Essor
   "mods-31513", // Blastwave / Tumulte

@@ -15,16 +15,11 @@ import { cn } from "@/components/dna";
 /**
  * Primitives du back-office.
  *
- * Le site public et l'administration n'ont pas le même métier. Le site cherche
- * à séduire : grands titres, panneaux espacés, boutons larges à libellé. Une
- * console d'administration cherche à faire tenir beaucoup d'informations à
- * l'écran et à rendre chaque action atteignable en un geste. Réutiliser les
- * composants marketing ici produit exactement ce qu'on veut éviter : quatre
- * boutons à rallonge par ligne, trois lignes de hauteur par enregistrement.
- *
- * D'où ce jeu de primitives séparé : tableaux denses, actions en icônes avec
- * infobulle, statuts en pastille, barre d'outils unique par vue. Les couleurs,
- * elles, restent celles du design system – c'est le même produit.
+ * Les composants du site public sont faits pour des pages aérées (grands
+ * titres, boutons larges à libellé). Dans la console ça donnait quatre gros
+ * boutons par ligne et trois lignes de haut par enregistrement. D'où ces
+ * primitives à part : tableaux denses, actions en icônes avec infobulle,
+ * statuts en pastille. Les couleurs restent celles du design system.
  */
 
 // ---------------------------------------------------------------------------
@@ -42,14 +37,11 @@ const TONE_CLASS: Record<AdminIconButtonTone, string> = {
 /**
  * Bouton d'action carré, sans libellé visible.
  *
- * Le libellé n'est pas supprimé, il est déplacé : `aria-label` pour les
- * technologies d'assistance, `title` pour l'infobulle au survol. Une icône
- * seule sans l'un des deux serait un rébus.
+ * Le libellé passe dans `aria-label` (lecteurs d'écran) et `title` (infobulle).
  *
- * L'infobulle est celle du navigateur, et c'est délibéré. Une infobulle maison
- * est un élément positionné en absolu : dans un tableau à `overflow-x: auto`
- * elle est rognée sur la dernière colonne, et elle élargit la zone de
- * défilement au survol. L'infobulle native, elle, échappe à tout conteneur.
+ * On garde exprès l'infobulle native. Une infobulle maison en absolu, dans un
+ * tableau en `overflow-x: auto`, est rognée sur la dernière colonne et élargit
+ * la zone de défilement au survol. La native sort de tout conteneur.
  */
 export function AdminIconButton({
   icon: Icon,
@@ -86,9 +78,8 @@ export function AdminIconButton({
 }
 
 /**
- * Même bouton, mais c'est un lien (ouvrir une fiche publique, par exemple).
- * Dupliquer le style plutôt que de rendre `AdminIconButton` polymorphe garde
- * les deux appels lisibles.
+ * Même bouton en lien (ouvrir une fiche publique, par exemple). Style dupliqué
+ * exprès : un `AdminIconButton` polymorphe rendrait les appels moins lisibles.
  */
 export function AdminIconLink({
   icon: Icon,
@@ -151,10 +142,7 @@ const STATUS_TEXT: Record<AdminStatusTone, string> = {
   info: "text-hydro",
 };
 
-/**
- * Pastille d'état. Volontairement minuscule : dans un tableau, un statut est
- * une information de balayage, pas un bouton.
- */
+/** Pastille d'état, petite exprès : dans un tableau on la lit d'un coup d'œil. */
 export function AdminStatus({ tone, children }: { tone: AdminStatusTone; children: ReactNode }) {
   return (
     <span className={cn("inline-flex items-center gap-1.5 whitespace-nowrap font-sans text-[0.72rem]", STATUS_TEXT[tone])}>
@@ -188,8 +176,8 @@ export function AdminChip({ children, tone = "neutral" }: { children: ReactNode;
 
 /**
  * Surface de contenu. En-tête compact : un libellé en petites capitales et les
- * actions de la vue. Pas de grand titre d'affichage – on n'est pas sur une
- * page de présentation, et chaque ligne de titre coûte une ligne de données.
+ * actions de la vue. Pas de grand titre, chaque ligne de titre prend la place
+ * d'une ligne de données.
  */
 export function AdminPanel({
   label,
@@ -300,8 +288,8 @@ export function AdminTr({
 }
 
 /**
- * Cellule d'identité : libellé principal + ligne secondaire discrète.
- * Le motif revient dans chaque tableau (build + auteur, compte + email…).
+ * Cellule d'identité : libellé principal et petite ligne secondaire.
+ * Sert dans chaque tableau (build et date, compte et email…).
  */
 export function AdminIdentity({ primary, secondary }: { primary: ReactNode; secondary?: ReactNode }) {
   return (
@@ -316,12 +304,7 @@ export function AdminIdentity({ primary, secondary }: { primary: ReactNode; seco
 // Barre d'outils
 // ---------------------------------------------------------------------------
 
-/**
- * Filtre de la vue courante.
- *
- * Le raccourci « / » place le curseur ici : c'est le geste attendu dans une
- * console, et il évite d'aller chercher le champ à la souris à chaque fois.
- */
+/** Filtre de la vue courante. La touche « / » met le curseur dans le champ. */
 export function AdminSearch({
   value,
   onChange,
@@ -340,7 +323,7 @@ export function AdminSearch({
     const onKey = (event: KeyboardEvent) => {
       if (event.key !== "/" || event.metaKey || event.ctrlKey || event.altKey) return;
       const target = event.target as HTMLElement | null;
-      // Ne pas voler la frappe à quelqu'un en train d'écrire.
+      // Pas quand on est déjà en train d'écrire dans un champ.
       if (target && /^(INPUT|TEXTAREA|SELECT)$/.test(target.tagName)) return;
       if (target?.isContentEditable) return;
       event.preventDefault();
@@ -384,21 +367,16 @@ export function AdminSearch({
 // ---------------------------------------------------------------------------
 // Formulaires
 //
-// Les champs de saisie partagent un style unique pour tout le back-office :
-// trois panneaux qui inventent chacun leur bordure, c'est ce qui donne
-// l'impression d'un assemblage bricolé.
+// Un seul style de champ pour tout le back-office, pour que chaque panneau
+// n'invente pas sa propre bordure.
 // ---------------------------------------------------------------------------
 
 /**
- * Largeurs de champ, par nature de contenu.
+ * Largeurs de champ selon ce qu'on y tape. Un champ ne prend pas toute la
+ * largeur : une date ou un ordre de tri à trois chiffres n'ont pas besoin de
+ * 800 px.
  *
- * Un champ n'a pas à occuper toute la largeur disponible : sa taille annonce ce
- * qu'on attend dedans. Une date n'a jamais besoin de 800 pixels, et un champ
- * « ordre de tri » étiré sur tout l'écran pour trois chiffres est absurde à
- * lire comme à remplir.
- *
- * Ce sont des largeurs MAXIMALES : sur un écran étroit, le champ se réduit tout
- * seul jusqu'à la largeur disponible.
+ * Ce sont des largeurs max : sur écran étroit, le champ se réduit tout seul.
  */
 export const FIELD_WIDTH = {
   /** Nombre court : ordre de tri, quantité. */
@@ -419,7 +397,7 @@ export const FIELD_WIDTH = {
 
 export type FieldWidth = keyof typeof FIELD_WIDTH;
 
-/** Largeur maximale d'un formulaire : au-delà, l'œil perd la ligne. */
+/** Largeur max d'un formulaire : au-delà, les lignes deviennent trop longues à suivre. */
 export const FORM_MAX_WIDTH = "max-w-[62rem]";
 
 export const adminInputClass =
@@ -428,11 +406,9 @@ export const adminInputClass =
 export const adminLabelClass = "mb-1 block font-caps text-[0.54rem] uppercase tracking-[0.16em] text-muted-2";
 
 /**
- * Bouton de formulaire, libellé visible.
- *
- * Contrepoint assumé aux boutons-icônes : dans une liste on répète le même
- * geste sur des dizaines de lignes, dans un formulaire on le fait une fois et
- * il engage une saisie. Une icône seule y serait un piège.
+ * Bouton de formulaire, avec libellé visible. Dans une liste, une icône suffit
+ * parce que l'action se répète sur chaque ligne. Ici on valide une saisie une
+ * seule fois : on veut lire ce qu'on clique.
  */
 export function AdminFormButton({
   children,

@@ -8,10 +8,10 @@ import { useMapLabels } from "./useMapLabels";
 
 /**
  * Présentation de la carte et liens vers les pages de région, en bas de la
- * liste défilante : aucune place fixe prise au panneau, mais présents dès le
- * premier rendu serveur. La vue plein écran n'a pas d'autre texte à offrir
- * aux moteurs, et les seize pages `/map/[region]` n'ont pas d'autre lien
- * depuis la carte.
+ * liste défilante : ça ne prend pas de place fixe dans le panneau et c'est là
+ * dès le rendu serveur. La vue plein écran n'a pas d'autre texte pour les
+ * moteurs, et c'est le seul lien de la carte vers les seize pages
+ * `/map/[region]`.
  */
 export function MapSeoFooter() {
   const t = useTranslations("map");

@@ -12,9 +12,9 @@ type LevelData = { level: number; title: string; ratio: number; xp: number; next
 
 /* --------------------------------------------------------- progression XP */
 
-// Cache module : `SidebarProfile` est monté deux fois sur mobile (barre desktop
-// en `display:none` + tiroir). Sans ce cache partagé, chaque montage relançait
-// son propre appel à /api/account/level.
+// Cache au niveau du module : sur mobile, `SidebarProfile` est monté deux fois
+// (barre desktop en `display:none` et tiroir). Sans lui, chaque montage
+// rappelait /api/account/level.
 let levelCache: LevelData | null = null;
 let levelInflight: Promise<LevelData | null> | null = null;
 
@@ -31,15 +31,15 @@ function fetchLevel(): Promise<LevelData | null> {
   return levelInflight;
 }
 
-/** Récupère la progression (XP/niveau) du compte connecté. */
+/** XP et niveau du compte connecté. */
 function useLevelProgress(enabled: boolean): LevelData | null {
-  // `levelCache` n'est écrit que dans le navigateur (l'appel part d'un effet),
-  // il ne peut donc pas fuiter d'un utilisateur à l'autre côté serveur.
+  // `levelCache` n'est écrit que dans le navigateur (l'appel part d'un effet) :
+  // pas de fuite d'un utilisateur à l'autre côté serveur.
   const [data, setData] = useState<LevelData | null>(levelCache);
 
   useEffect(() => {
     if (!enabled) {
-      // Déconnexion : on repart d'une ardoise vierge pour le prochain compte.
+      // Déconnexion : on vide le cache pour le prochain compte.
       levelCache = null;
       levelInflight = null;
       return;
@@ -137,9 +137,9 @@ export function TopbarAccount() {
 /* ------------------------------------------------------------------ sidebar */
 
 /**
- * Profil de la barre latérale. Les deux états (déployé / replié) sont rendus
- * puis départagés en CSS via `dna-when-*` : l'état de la barre est connu avant
- * l'hydratation, donc rien ne saute au chargement.
+ * Profil de la barre latérale. On rend les deux états (déployé et replié) et le
+ * CSS choisit via `dna-when-*` : l'état de la barre est connu avant
+ * l'hydratation, rien ne saute au chargement.
  */
 export function SidebarProfile() {
   const t = useTranslations("account");
@@ -257,10 +257,10 @@ export function SidebarProfile() {
 /* ---------------------------------------------------------------- panneau menu */
 
 /**
- * Panneau du compte. Volontairement SANS `role="menu"` : ce sont des liens et un
- * bouton ordinaires, et le rôle menu promettrait une navigation aux flèches
- * (roving focus) qui n'est pas implémentée. Simple zone révélée par
- * `aria-expanded`/`aria-controls`, entièrement parcourable au Tab.
+ * Panneau du compte, sans `role="menu"` exprès : ce sont des liens et un bouton
+ * ordinaires, et le rôle menu promettrait une navigation aux flèches (roving
+ * focus) qu'on n'a pas. Une zone révélée par `aria-expanded`/`aria-controls`,
+ * qu'on parcourt au Tab.
  */
 function AccountMenuPanel({
   id,

@@ -1,17 +1,16 @@
 import { createCipheriv, createDecipheriv, randomBytes, scryptSync } from "node:crypto";
 
 /**
- * Chiffrement au repos des secrets d'auth (AES-256-GCM). Clé dérivée d'AUTH_SECRET
- * → les secrets ne sont jamais stockés en clair dans la base partagée. Format
- * stocké : `iv:tag:ciphertext` (base64). Décodage tolérant : si la clé a changé ou
- * le format est invalide → chaîne vide (⇒ fallback env côté runtime).
+ * Chiffrement des secrets d'auth stockés en base (AES-256-GCM), avec une clé
+ * dérivée d'AUTH_SECRET : rien en clair dans la base partagée. Format stocké :
+ * `iv:tag:ciphertext` en base64. Si la clé a changé ou que le format est cassé,
+ * le déchiffrement rend une chaîne vide et on retombe sur l'env.
  */
 function key(): Buffer {
   const secret = process.env.AUTH_SECRET || process.env.NEXTAUTH_SECRET;
-  // Sans AUTH_SECRET, la clé dériverait d'une chaîne vide → les secrets OAuth
-  // stockés dans la base PARTAGÉE seraient déchiffrables par quiconque
-  // y a un accès lecture. On refuse de (dé)chiffrer plutôt que d'utiliser une
-  // clé prévisible. (decryptSecret rattrape ce throw et retombe sur l'env.)
+  // Sans AUTH_SECRET, la clé viendrait d'une chaîne vide : n'importe qui avec un
+  // accès en lecture à la base partagée déchiffrerait les secrets OAuth. Donc on
+  // refuse. decryptSecret rattrape ce throw et retombe sur l'env.
   if (!secret) {
     throw new Error(
       "AUTH_SECRET manquant — refus de chiffrer les secrets d'auth sous une clé prévisible.",

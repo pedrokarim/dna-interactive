@@ -5,13 +5,13 @@ import { cn } from "./cn";
 export type DnaChipProps = {
   children: ReactNode;
   selected?: boolean;
-  /** Couleur d'élément (hex) → chip élémentaire avec pastille + halo. */
+  /** Couleur d'élément (hex) : passe le chip en élémentaire, avec pastille et halo. */
   color?: string;
   onClick?: () => void;
   className?: string;
 };
 
-/** Chip de filtre — neutre, doré sélectionné, ou élémentaire (coloré). */
+/** Chip de filtre : neutre, doré quand sélectionné, ou coloré par l'élément. */
 export function DnaChip({ children, selected, color, onClick, className }: DnaChipProps) {
   const isEl = Boolean(color);
   return (

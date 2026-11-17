@@ -30,9 +30,9 @@ export type PlannerBuildInput = {
   /** Wedges du personnage : wedge → nombre d'emplacements qu'il occupe. */
   wedges: Record<string, number>;
   /**
-   * Wedges posés sur une arme, par arme. Comptés au nom de l'arme et non du
-   * build : le build d'un perso et le build de Demon Wedges de la même arme
-   * désignent les mêmes exemplaires, ils ne s'additionnent pas.
+   * Wedges posés sur une arme, par arme. Comptés au nom de l'arme, pas du build :
+   * le build d'un perso et le build de Demon Wedges de la même arme parlent des
+   * mêmes exemplaires, ils ne s'additionnent pas.
    */
   weaponWedges?: Record<string, Record<string, number>>;
 };
@@ -56,9 +56,9 @@ export function newGoalId(): string {
 export const START_CHARACTER: CharacterState = { level: 1, breaks: 0, skills: [1, 1, 1], intron: 0 };
 
 /**
- * Niveau de compétence visé selon la priorité du build. Proposition du
- * cadrage (section 6), modifiable objectif par objectif : 5 → max, 4 → 8,
- * 3 → 6, 2 → 4, 1 → inchangé.
+ * Niveau de compétence visé selon la priorité du build, d'après le cadrage
+ * (section 6) et modifiable objectif par objectif. Priorité 5 : max, 4 : 8,
+ * 3 : 6, 2 : 4, 1 : inchangé.
  */
 export function skillTargetForPriority(priority: number, max: number, current: number): number {
   const byPriority: Record<number, number> = { 5: max, 4: 8, 3: 6, 2: 4 };

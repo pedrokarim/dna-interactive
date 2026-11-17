@@ -1,15 +1,13 @@
 /**
  * Slugs d'URL des régions de la carte.
  *
- * Module volontairement sans dépendance : il est importé aussi bien par la
- * page client `/map` que par les helpers serveur de `regions.ts`. Y faire
- * entrer `mapLoaders` embarquerait le chargeur de cartes dans le bundle
- * client pour rien.
+ * Sans dépendance exprès : importé par la page client `/map` et par
+ * `regions.ts` côté serveur. Importer `mapLoaders` ici mettrait le chargeur de
+ * cartes dans le bundle client.
  *
- * Les identifiants du jeu sont irréguliers (`youlai_alley`, `arcanorift`,
- * `mountarcano`) et ne sont pas présentables dans une URL. La table est écrite
- * à la main plutôt que dérivée : un slug est un contrat public, il ne doit pas
- * bouger le jour où un identifiant du jeu change.
+ * Les ids du jeu (`youlai_alley`, `arcanorift`, `mountarcano`) ne font pas de
+ * bonnes URL. Table écrite à la main : un slug est public, il ne doit pas
+ * bouger si un id du jeu change.
  */
 
 export const REGION_SLUGS: Record<string, string> = {

@@ -17,7 +17,7 @@ import type { ItemRecord } from "@/lib/items/types";
 import type { CharacterRecord } from "@/lib/characters/types";
 
 // ---------------------------------------------------------------------------
-// Raw JSON types (what's in builds.json)
+// Types bruts (le contenu des JSON de builds)
 // ---------------------------------------------------------------------------
 
 interface RawLocalizedText {
@@ -31,14 +31,13 @@ interface RawWeaponEntry {
   /** Inclure/afficher le build de Demon Wedges canonique de cette arme. */
   withWedges?: boolean;
   /**
-   * Armes de calamité seulement : ordre d'investissement conseillé dans l'arbre
-   * de Potentiel, par identifiants de nœuds.
+   * Armes de calamité seulement : ordre conseillé dans l'arbre de Potentiel, par
+   * id de nœud.
    *
-   * Ce n'est **pas** un embranchement définitif : le nœud du palier 5 exige les
-   * deux nœuds du palier 4, donc tout finit par être pris. Ce qui se choisit est
-   * l'ordre, et il a un prix — **à chaque palier de I à IV, le premier Potentiel
-   * choisi est gratuit, l'autre coûte des matériaux**. Un chemin conseillé dit
-   * donc lequel prendre gratuitement à chaque palier.
+   * Tout finit par être pris (le nœud du palier 5 exige les deux du palier 4), on
+   * ne choisit que l'ordre. Il compte parce qu'aux paliers I à IV le premier
+   * Potentiel pris est gratuit et l'autre coûte des matériaux : le chemin conseillé
+   * dit lequel prendre gratuitement à chaque palier.
    */
   potentialOrder?: number[];
 }
@@ -53,9 +52,9 @@ interface RawDemonWedgesConfig {
   slots: RawDemonWedgeSlot[];
   centerItemId?: string;
   /**
-   * Piste du **centre**, qui est le slot 09 de l'armurerie et s'ajuste comme
-   * les huit autres. Même règle que `track` sur un slot : la valeur vaut la
-   * polarité de la pièce centrale, et `null` signifie « aucun module posé ».
+   * Piste du centre, le slot 09 de l'armurerie, qui s'ajuste comme les huit
+   * autres. Même règle que `track` sur un slot : la valeur est la polarité de la
+   * pièce centrale, `null` veut dire pas de module posé.
    */
   centerTrack?: number | null;
   affinity?: RawLocalizedText;
@@ -74,9 +73,9 @@ interface RawGenimonEntry {
   /**
    * Traits à viser sur ce Géniemon, par clé (`data/genimons/traits.json`).
    *
-   * L'ordre est une **priorité de farm**, pas un emplacement : le jeu ne fixe
-   * pas quel Trait va dans quelle sphère. Le nombre admis se lit sur la
-   * créature – trois pour une variante ordinaire, quatre pour une scintillante.
+   * L'ordre est une priorité de farm : le jeu ne fixe pas quel Trait va dans
+   * quelle sphère. Le nombre dépend de la créature, trois pour une variante
+   * ordinaire, quatre pour une scintillante.
    */
   traits?: string[];
 }
@@ -90,7 +89,7 @@ interface RawSkillPriority {
 
 interface RawCharacterBuild {
   characterId: string;
-  /** Build que la recommandation actuelle a remplacé : conservé, mais signalé et rangé en dernier. */
+  /** Build remplacé par la recommandation actuelle : gardé, mais signalé et rangé en dernier. */
   legacy?: boolean;
   // Élément du build pour les persos multi-éléments (clé : "Dark", "Light"…).
   // Absent = build valable pour tous les éléments (persos mono-élément).
@@ -114,7 +113,7 @@ interface RawCharacterBuild {
 }
 
 // ---------------------------------------------------------------------------
-// Resolved types (what components consume)
+// Types résolus (ce que lisent les composants)
 // ---------------------------------------------------------------------------
 
 export interface ResolvedItemRef {
@@ -122,9 +121,9 @@ export interface ResolvedItemRef {
   modId: number;
   name: string;
   /**
-   * Nom de la pièce seule, sans la famille de Demon Wedge : « Ardeur » là où
-   * `name` vaut « Ardeur du Phénix ». Pour les affichages contraints (carte de
-   * build) où l'icône porte déjà l'identité de la famille.
+   * Nom de la pièce sans la famille de Demon Wedge : « Ardeur » quand `name` vaut
+   * « Ardeur du Phénix ». Pour les affichages serrés (carte de build) où l'icône
+   * montre déjà la famille.
    */
   shortName: string;
   description: string | null;
@@ -149,8 +148,8 @@ export interface BuildWeaponEntry {
   note: RawLocalizedText;
   withWedges: boolean;
   /**
-   * Demon Wedges propres à cette arme DANS ce build (builds communautaires) —
-   * résolus pour l'affichage. Indépendant du build canonique de la fiche arme.
+   * Demon Wedges de cette arme dans ce build (builds communautaires), résolus pour
+   * l'affichage. Sans lien avec le build canonique de la fiche arme.
    */
   demonWedges?: { slots: BuildDemonWedgeSlot[]; affinityElement: string | null } | null;
   /** Ordre d'investissement conseillé dans l'arbre de Potentiel (armes de calamité). */
@@ -185,7 +184,7 @@ export interface BuildGenimonEntry {
   traits: BuildGenimonTrait[];
   /** Emplacements qu'ouvre cette créature : 4 pour une scintillante, 3 sinon. */
   traitSlots: number;
-  /** Son passif au palier maximal : la raison pour laquelle on la choisit. */
+  /** Son passif au palier max, c'est pour lui qu'on la choisit. */
   passive: GenimonPassive | null;
 }
 
@@ -220,12 +219,12 @@ export interface CharacterBuild {
 }
 
 // ---------------------------------------------------------------------------
-// Resolution helpers
+// Résolution
 // ---------------------------------------------------------------------------
 
 const FALLBACK_LANGS = ["FR", "EN"];
 
-/** Retire les balises rich-text du jeu (<H>, </>, <color=…>…) — pur formatage. */
+/** Retire les balises rich-text du jeu (<H>, </>, <color=…>…), qui ne sont que de la mise en forme. */
 function stripGameRichText(text: string): string {
   return text.replace(/<\/?[A-Za-z][^>]*>|<\/>/g, "");
 }
@@ -236,10 +235,10 @@ function formatEffectNumber(value: number): string {
 }
 
 /**
- * Résout un descriptif d'effet : retire les balises <H>…</> et substitue les
- * tokens #N par leur valeur au niveau max (scaling.valuesByLevel) — comme la
- * fiche item. Sans valeurs (mods sans scaling), on se contente de nettoyer les
- * balises ; un #N sans valeur connue est laissé tel quel.
+ * Texte d'effet, comme sur la fiche item : on retire les balises <H>…</> et on
+ * remplace les #N par leur valeur au niveau max (scaling.valuesByLevel). Sans
+ * valeurs (mods sans scaling), on nettoie juste les balises ; un #N sans valeur
+ * connue reste tel quel.
  */
 function formatEffectDescription(
   item: ItemRecord,
@@ -309,7 +308,7 @@ export function resolveBuildCharacterRef(
   const translation = getCharacterTranslation(character, lang, FALLBACK_LANGS);
 
   // Les protagonistes Umbro (Nvzhu02, Nanzhu02) ont translation.name =
-  // "{nickname}" — utiliser le nom marketing en fallback (cf. DISPLAY_NAME_OVERRIDES).
+  // "{nickname}" : on retombe sur le nom marketing (cf. DISPLAY_NAME_OVERRIDES).
   const displayName = resolveDisplayName(
     translation.name,
     DISPLAY_NAME_OVERRIDES_BY_CHARID[character.charId] ?? character.internalName,
@@ -324,16 +323,15 @@ export function resolveBuildCharacterRef(
   };
 }
 
-// Mapping local des overrides (mirroir de DISPLAY_NAME_OVERRIDES dans catalog.ts).
-// Dupliqué ici pour éviter une dépendance circulaire ; à fusionner si on bouge
-// l'API à un endroit partagé.
+// Copie de DISPLAY_NAME_OVERRIDES (catalog.ts), pour éviter une dépendance
+// circulaire. À fusionner si on déplace l'API dans un module partagé.
 const DISPLAY_NAME_OVERRIDES_BY_CHARID: Record<number, string> = {
   1201: "Phoxhunter (Umbro) ♀",
   120101: "Phoxhunter (Umbro) ♂",
 };
 
 // ---------------------------------------------------------------------------
-// Public API
+// API publique
 // ---------------------------------------------------------------------------
 
 const rawBuilds = allBuilds as unknown as RawCharacterBuild[];
@@ -412,13 +410,13 @@ export function getCharacterBuilds(
         : null,
       notes: raw.notes ?? {},
     }))
-    // Les anciens builds restent consultables, mais après les recommandations
-    // actuelles : c'est le premier de la liste qui s'ouvre par défaut.
+    // Les anciens builds restent consultables mais passent après les actuels :
+    // le premier de la liste s'ouvre par défaut.
     .sort((a, b) => Number(a.legacy) - Number(b.legacy));
 }
 
 // ---------------------------------------------------------------------------
-// Armory asset helpers – déplacés dans `build-assets.ts`, réexportés ici.
+// Assets de l'armurerie : déplacés dans `build-assets.ts`, réexportés ici.
 // ---------------------------------------------------------------------------
 
 export {

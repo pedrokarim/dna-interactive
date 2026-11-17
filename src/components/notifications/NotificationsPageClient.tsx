@@ -56,8 +56,8 @@ export function NotificationsPageClient() {
         ) : null}
       </div>
 
-      {/* Hors connexion, l'état de lecture ne suit pas d'un appareil à l'autre :
-          on le dit plutôt que de laisser croire à un bug. */}
+      {/* Sans compte, l'état de lu ne suit pas d'un appareil à l'autre : on le
+          signale pour que ça ne passe pas pour un bug. */}
       {!loading && !persisted ? (
         <p className="font-sans text-xs text-muted-2">{t("localOnlyNotice")}</p>
       ) : null}
@@ -137,8 +137,8 @@ export function NotificationsPageClient() {
 /**
  * Encart d'activation du push.
  *
- * Il n'apparaît que si le navigateur ET le serveur savent faire. Il ne demande
- * jamais la permission de lui-même : c'est le bouton qui la déclenche.
+ * Affiché seulement si le navigateur et le serveur gèrent le push. La
+ * permission n'est demandée qu'au clic sur le bouton.
  */
 function PushCard({ push }: { push: ReturnType<typeof usePushNotifications> }) {
   const t = useTranslations("notificationsPage");

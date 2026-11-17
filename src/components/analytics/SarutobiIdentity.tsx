@@ -17,8 +17,8 @@ export function SarutobiIdentity() {
     if (userId) {
       identifyAnalytics(userId, { role: session?.user?.role ?? "user" });
     } else if (previousUserId.current) {
-      // Réinitialiser uniquement après une vraie déconnexion. Un visiteur déjà
-      // anonyme ne doit pas recevoir une nouvelle identité à chaque rendu.
+      // Reset seulement après une vraie déconnexion, sinon un visiteur anonyme
+      // changerait d'identité à chaque rendu.
       resetAnalytics();
     }
 

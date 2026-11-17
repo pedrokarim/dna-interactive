@@ -8,8 +8,8 @@ export type DnaButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 };
 
 /**
- * Bouton du design system — calé sur le jeu : rectangle arrondi, fond sombre,
- * liseré fin, texte sans en casse normale. Le primaire ajoute un liseré doré.
+ * Bouton du design system, calé sur ceux du jeu : rectangle arrondi, fond
+ * sombre, liseré fin, texte sans serif en casse normale. Le primaire a un liseré doré.
  */
 export function DnaButton({ variant = "ghost", icon, children, className, ...rest }: DnaButtonProps) {
   return (

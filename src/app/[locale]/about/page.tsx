@@ -214,8 +214,8 @@ export default async function AboutPage() {
             </div>
           </div>
 
-          {/* Promotion croisée — en dernier, après l'appel à l'action, pour ne
-              pas passer devant Discord/Contact qui restent l'action première. */}
+          {/* Autres projets en dernier, pour ne pas passer devant Discord et
+              Contact. */}
           <OtherProjects />
         </div>
       </div>

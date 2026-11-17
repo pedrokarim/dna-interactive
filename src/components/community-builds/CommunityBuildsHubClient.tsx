@@ -70,19 +70,19 @@ function isPresent<T>(value: T | null | undefined): value is T {
 }
 
 function buildCharacterHref(_character: BuilderCharacterOption | undefined, buildId: string): string {
-  // Page dédiée par build (plus ergonomique qu'une modale sur la fiche perso).
+  // Une page par build, plus pratique qu'une modale sur la fiche perso.
   return `${NAVIGATION.builds}/${buildId}`;
 }
 
 function getPreviewItems(build: CommunityBuildListItem, lang: string) {
   const weapons = [...(build.payload?.weapons?.melee ?? []), ...(build.payload?.weapons?.ranged ?? [])]
     .slice(0, 3)
-    .map((entry) => resolveBuildItemRef(entry.itemId, "weapons", lang))
+    .map((entry) => resolveBuildItemRef("weapons", entry.itemId, lang))
     .filter(isPresent);
 
   const genimons = (build.payload?.genimon ?? [])
     .slice(0, 2)
-    .map((entry) => resolveBuildItemRef(entry.itemId, "genimons", lang))
+    .map((entry) => resolveBuildItemRef("genimons", entry.itemId, lang))
     .filter(isPresent);
 
   return { weapons, genimons };
@@ -92,7 +92,7 @@ export function CommunityBuildsHubClient({ options, locale }: CommunityBuildsHub
   const router = useRouter();
   const tcb = useTranslations("communityBuilds");
   const lang = locale.toUpperCase();
-  // Filtres reflétés dans l'URL (partageables, navigables) via nuqs.
+  // Filtres dans l'URL (nuqs), pour pouvoir partager le lien.
   const urlOpts = { history: "replace" as const };
   const [query, setQuery] = useQueryState("q", parseAsString.withDefault("").withOptions(urlOpts));
   const deferredQuery = useDeferredValue(query);

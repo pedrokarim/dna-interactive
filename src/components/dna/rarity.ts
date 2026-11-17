@@ -1,14 +1,14 @@
 /**
  * Code couleur de rareté du jeu.
  *
- * Les valeurs sont échantillonnées sur les textures UI extraites (FModel) :
+ * Couleurs prélevées sur les textures d'interface extraites (FModel) :
  * `T_Item_Hover_N` (dégradé de survol de la case), `T_Com_TipsTextColor_N`
- * (remplissage du nom) et `T_Com_TipsLineColor_N` (filet séparateur).
- * Relevé complet et chemins des assets : `docs/rarete-couleurs-jeu.md`.
+ * (couleur du nom) et `T_Com_TipsLineColor_N` (filet séparateur). Relevé
+ * complet et chemins des assets dans `docs/rarete-couleurs-jeu.md`.
  *
- * Les teintes du jeu sont volontairement désaturées (vert sauge, bleu ardoise) :
- * ne pas les remplacer par des couleurs saturées type Tailwind, c'est cette
- * désaturation qui donne la parenté visuelle avec l'interface du jeu.
+ * Le jeu désature ses teintes (vert sauge, bleu ardoise). Ne pas les remplacer
+ * par des couleurs Tailwind saturées : on perdrait la ressemblance avec
+ * l'interface du jeu.
  */
 
 export type RarityLevel = 1 | 2 | 3 | 4 | 5 | 6;
@@ -17,7 +17,7 @@ export type RarityMeta = {
   level: RarityLevel;
   /** Nom de la teinte côté jeu (cf. `T_Item_Appearance_*`). */
   gameName: "Grey" | "Green" | "Blue" | "Purple" | "Gold" | "Red";
-  /** Teinte identitaire — cœur du dégradé de survol. */
+  /** Teinte principale, au centre du dégradé de survol. */
   hex: string;
   /** Couleur du nom de l'objet. */
   textHex: string;
@@ -37,9 +37,9 @@ export const RARITIES: Record<RarityLevel, RarityMeta> = {
 export const RARITY_LEVELS = [1, 2, 3, 4, 5, 6] as const;
 
 /**
- * Palier « calamité ». Il n'apparaît jamais dans `stats.rarity` (qui plafonne à
- * 5) : c'est un état dérivé de `WeaponSubType === "Hyper"`, résolu par
- * `resolveItemRarity` (cf. `src/lib/items/rarity.ts`).
+ * Palier « calamité ». Jamais dans `stats.rarity`, qui s'arrête à 5 : on le
+ * déduit de `WeaponSubType === "Hyper"` dans `resolveItemRarity`
+ * (`src/lib/items/rarity.ts`).
  */
 export const CALAMITY_RARITY: RarityLevel = 6;
 
@@ -56,9 +56,9 @@ export function toRarityLevel(value: number | null | undefined): RarityLevel | n
 }
 
 /**
- * Attribut à poser sur l'élément stylé : `data-rarity="1".."6"`, ou `"none"`
- * quand l'objet n'a pas de rareté (le jeu a une texture dédiée, `NoQuality`).
- * À combiner avec les classes `dna-rarity-*` de `globals.css`.
+ * Valeur de `data-rarity` sur l'élément stylé : "1" à "6", ou "none" quand
+ * l'objet n'a pas de rareté (le jeu a une texture pour ça, `NoQuality`). Va
+ * avec les classes `dna-rarity-*` de `globals.css`.
  */
 export function rarityAttr(level: RarityLevel | null | undefined): string {
   return level ? String(level) : "none";

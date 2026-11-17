@@ -1,21 +1,19 @@
 import type { ReactNode } from "react";
 import { cn } from "./cn";
 
-/**
- * Correction optique : classe `.dna-page-star` de `globals.css`.
- *
- * `items-center` centre l'étoile sur la boîte de ligne, mais l'encre des
- * capitales Cinzel est plus haute que le milieu de cette boîte (descendante
- * profonde) : on remonte l'étoile d'une fraction d'`em`, mesurée au pixel, et
- * davantage en japonais, coréen et chinois (`:lang()`), d'où une classe plutôt
- * qu'un style en ligne. Le `font-size` est porté par le conteneur : c'est la
- * référence de ces `em`. Si `--font-caps` change, remesurer.
+/*
+ * Correction optique dans `.dna-page-star` (globals.css). `items-center` centre
+ * l'étoile sur la boîte de ligne, mais l'encre des capitales Cinzel est plus
+ * haute que ce milieu (descendante profonde). On remonte donc l'étoile d'une
+ * fraction d'em mesurée au pixel, un peu plus en japonais, coréen et chinois
+ * (`:lang()`), d'où une classe et pas un style en ligne. Les em se rapportent
+ * au font-size du conteneur. Si `--font-caps` change, remesurer.
  */
 
 /**
- * Étoile à quatre branches du système — dessinée en SVG, jamais en glyphe
- * (Cinzel ne couvre pas ✦ : fonte système, décalage, images OG cassées).
- * Branches concaves : aucune confusion avec le losange plein de `DnaLozenge`.
+ * Étoile à quatre branches, en SVG et jamais en glyphe : Cinzel n'a pas ✦, on
+ * tombait sur une fonte système décalée et les images OG cassaient. Branches
+ * concaves pour ne pas la confondre avec le losange plein de `DnaLozenge`.
  */
 export function DnaStar({ className }: { className?: string }) {
   return (
@@ -34,12 +32,9 @@ export function DnaStar({ className }: { className?: string }) {
 }
 
 /**
- * Sur-titre de page : étoile + libellé en capitales romaines, au-dessus du
- * titre principal (`h1`) d'une page.
- *
- * Remplace les anciens sur-titres `// LIBELLÉ` en monospace, hérités d'une
- * maquette faite pour un autre jeu. Distinct de `DnaSectionMark` (losange),
- * réservé aux libellés de section, aux tuiles du hub et au fil d'Ariane.
+ * Sur-titre au-dessus du h1 d'une page : étoile + libellé en capitales.
+ * Remplace les vieux `// LIBELLÉ` en monospace. Pour les sections, les tuiles
+ * du hub et le fil d'Ariane, c'est `DnaSectionMark` (losange).
  */
 export function DnaPageMark({ children, className }: { children: ReactNode; className?: string }) {
   return (

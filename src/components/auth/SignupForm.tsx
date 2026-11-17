@@ -47,9 +47,9 @@ export function SignupForm({ googleEnabled, callbackUrl }: { googleEnabled: bool
     const data = await res.json().catch(() => ({}));
     setBusy(false);
     if (!res.ok) {
-      // L'échec compte autant que la réussite : c'est lui qui dit si le
-      // formulaire bloque les gens. Le motif vient du serveur et fait partie
-      // d'un ensemble fermé ; ni l'email ni le mot de passe ne sortent d'ici.
+      // On mesure aussi les échecs, pour voir si le formulaire bloque des gens.
+      // Le motif est un message du serveur, en nombre fini ; ni l'email ni le
+      // mot de passe ne partent.
       captureAnalytics("signup_failed", { reason: typeof data.error === "string" ? data.error : "unknown" });
       setError(data.error ?? t("genericError"));
       return;

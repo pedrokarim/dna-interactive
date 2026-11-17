@@ -35,9 +35,8 @@ import charEve from "./char-eve.json";
 import charProtagonistFemale from "./char-protagonist-female.json";
 import charProtagonistMale from "./char-protagonist-male.json";
 
-// Add new character builds here:
-// 1. import charXxx from "./char-xxx.json";
-// 2. Add ...charXxx to the array below
+// Nouveau perso : importer son JSON (import charXxx from "./char-xxx.json"),
+// puis ajouter ...charXxx dans le tableau ci-dessous.
 
 export const allBuilds = [
   ...charSplise,

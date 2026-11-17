@@ -2,9 +2,9 @@ import { locales, type Locale } from "@/i18n/config";
 import { getPlannerDataset } from "@/lib/planner/dataset";
 
 /**
- * Données du planificateur pour une langue. Statique (régénérée au build) :
- * la page reste légère et le navigateur garde ce fichier en cache d'une visite
- * à l'autre, au lieu de le recevoir dans chaque page.
+ * Données du planificateur pour une langue, générées au build. Servies à part
+ * pour alléger la page et pour que le navigateur les garde en cache d'une visite
+ * à l'autre.
  */
 export const dynamic = "force-static";
 export const dynamicParams = false;

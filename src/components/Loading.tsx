@@ -5,24 +5,15 @@ import { useTranslations } from "next-intl";
 
 interface LoadingProps {
   /**
-   * Mode d'affichage du loader
-   * - 'simple': juste l'icône de chargement
-   * - 'withMessage': icône + message personnalisable
-   * - 'box': prend toute la hauteur du conteneur parent
-   * - 'fullscreen': prend tout l'écran
+   * simple : l'icône seule. withMessage : icône et message. box : toute la
+   * hauteur du parent. fullscreen : tout l'écran.
    */
   mode?: "simple" | "withMessage" | "box" | "fullscreen";
-  /**
-   * Message à afficher (uniquement pour mode 'withMessage')
-   */
+  /** Message des modes withMessage, box et fullscreen (par défaut common.loading). */
   message?: string;
-  /**
-   * Taille de l'icône (en pixels)
-   */
+  /** Taille de l'icône, en px. */
   size?: number;
-  /**
-   * Classes CSS additionnelles
-   */
+  /** Classes ajoutées à l'icône. */
   className?: string;
 }
 
@@ -42,12 +33,10 @@ export default function Loading({
     />
   );
 
-  // Mode simple : juste l'icône
   if (mode === "simple") {
     return spinner;
   }
 
-  // Mode avec message
   if (mode === "withMessage") {
     return (
       <div className="flex items-center space-x-3">
@@ -57,7 +46,6 @@ export default function Loading({
     );
   }
 
-  // Mode box : prend toute la hauteur du conteneur
   if (mode === "box") {
     return (
       <div className="flex flex-col items-center justify-center h-full py-8">
@@ -71,7 +59,6 @@ export default function Loading({
     );
   }
 
-  // Mode fullscreen : prend tout l'écran
   if (mode === "fullscreen") {
     return (
       <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[9999] flex items-center justify-center">
@@ -90,7 +77,7 @@ export default function Loading({
   return null;
 }
 
-// Composants spécialisés pour faciliter l'usage
+// Raccourcis, un par mode.
 export function LoadingSpinner({
   size = 24,
   className = "",

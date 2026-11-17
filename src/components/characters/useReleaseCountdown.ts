@@ -3,16 +3,15 @@
 import { useMemo, useSyncExternalStore } from "react";
 
 /**
- * Compte à rebours partagé jusqu'à la sortie d'un personnage.
+ * Compte à rebours jusqu'à la sortie d'un personnage.
  *
- * La date de sortie est un jour de bascule serveur (UTC+8, fuseau du jeu) : on
- * vise 11:00 UTC+8, l'heure habituelle des mises à jour de version, plutôt que
- * minuit local du visiteur – sans quoi le compteur tomberait à zéro plusieurs
- * heures avant l'ouverture réelle.
+ * La date de sortie est un jour serveur (UTC+8, fuseau du jeu). On vise 11:00
+ * UTC+8, l'heure habituelle des mises à jour. À minuit local, le compteur
+ * tomberait à zéro plusieurs heures trop tôt.
  *
- * L'horloge est un store externe consommé par `useSyncExternalStore` : une
- * seule minuterie pour toute la page, quel que soit le nombre de compteurs
- * affichés, et aucun `setState` synchrone au montage.
+ * L'horloge est un store externe lu par `useSyncExternalStore` : une seule
+ * minuterie pour toute la page, quel que soit le nombre de compteurs, et pas
+ * de `setState` synchrone au montage.
  */
 const SERVER_RESET_HOUR_UTC = 3; // 11:00 UTC+8
 

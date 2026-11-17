@@ -1,7 +1,7 @@
 /**
- * Calcul du plan : objectifs → besoins → fabrication éventuelle → moins le
- * stock → reste à farmer → regroupé par source. Fonction pure : même entrée,
- * même sortie, sans réseau ni base. Cadrage : `docs/cadrage-planificateur-farm.md`.
+ * Calcul du plan : on part des objectifs, on en tire les besoins, on retire le
+ * stock et ce qu'on fabrique, et on regroupe par source ce qui reste à farmer.
+ * Fonction pure, sans réseau ni base. Cadrage : `docs/cadrage-planificateur-farm.md`.
  */
 import { goalReserved, goalSteps, normalizeGoal, weaponKey, wedgeKey } from "./goals";
 import {
@@ -20,7 +20,7 @@ import {
   type XpPool,
 } from "./types";
 
-/** Profondeur de fabrication : pièce → sous-pièce → … ; le jeu n'en a que trois. */
+/** Niveaux de fabrication imbriqués au plus (pièce, sous-pièce…). Le jeu n'en a que trois. */
 const MAX_CRAFT_DEPTH = 6;
 
 type PlanInput = { progression: ProgressionData; sources: Pick<PlannerSources, "byMaterial"> };
@@ -238,13 +238,11 @@ function groupSources(lines: MaterialLine[], input: PlanInput): SourceGroup[] {
   return groups;
 }
 
-// ---------------------------------------------------------------------------
 // Valider une étape
-// ---------------------------------------------------------------------------
 
 /**
- * Retire de l'XP du stock : les plus gros objets d'abord, puis le plus petit
- * qui suffit pour finir. Le joueur corrige si son usage a été différent.
+ * Retire de l'XP du stock : les plus gros objets d'abord sans dépasser, puis
+ * les plus petits pour finir. Le joueur corrige s'il a fait autrement.
  */
 function consumeXp(inventory: Record<MaterialKey, number>, data: ProgressionData, xp: XpPool, amount: number) {
   const items = xpItemsOf(data, xp);
@@ -269,9 +267,9 @@ function subtract(inventory: Record<MaterialKey, number>, key: MaterialKey, num:
 }
 
 /**
- * « Fait » : l'objectif avance ET le coût de l'étape sort du stock, puisque le
- * jeu l'a consommé. Sans le second point, un matériau serait compté deux fois.
- * Une étape indisponible (hors de l'ordre du jeu) ne change rien.
+ * « Fait » : l'objectif avance et le coût de l'étape sort du stock, puisque le
+ * jeu l'a consommé. Sinon un matériau serait compté deux fois. Une étape
+ * indisponible (hors de l'ordre du jeu) ne change rien.
  */
 export function applyStep(state: PlannerState, goalId: string, stepId: string, input: PlanInput): PlannerState {
   const data = input.progression;

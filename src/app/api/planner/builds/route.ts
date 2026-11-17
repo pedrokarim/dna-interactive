@@ -10,8 +10,8 @@ const ELEMENT = /^[A-Za-z]{1,20}$/;
 
 /**
  * Builds du planificateur, en lecture seule et sans compte :
- * - `?target=char-aote&element=Wind` → builds proposés pour la cible ;
- * - `?key=official:…|community:…|weapon:…` → build réduit, prêt à importer.
+ * - `?target=char-aote&element=Wind` : builds proposés pour la cible ;
+ * - `?key=official:…|community:…|weapon:…` : build réduit, prêt à importer.
  */
 export async function GET(request: Request) {
   const url = new URL(request.url);

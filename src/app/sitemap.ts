@@ -7,16 +7,12 @@ import { getAllRegions } from "@/lib/map/regions";
 import { locales } from "@/i18n/config";
 
 /**
- * ==Pas de `lastmod`==. Il y en avait un, mais il valait `new Date()` pour les
- * 476 entrees : a chaque lecture, le sitemap annoncait que l'integralite du
- * site venait de changer. Google se sert de `lastmod` pour prioriser ses
- * re-explorations, et seulement tant qu'il le juge fiable ; une valeur toujours
- * egale a maintenant ne lui apprend rien et le pousse a ignorer le champ.
- * Omettre vaut mieux qu'annoncer faux.
+ * Pas de `lastmod`. L'ancien valait `new Date()` partout, donc tout le site
+ * avait l'air modifié à chaque lecture, et Google finit par ignorer un
+ * `lastmod` qui ne veut rien dire.
  *
- * Pour le remettre un jour, il faudra une date reellement verifiable par
- * section (date de sortie de version pour les cartes, derniere modification
- * reelle pour les fiches), pas un horodatage de build.
+ * Pour le remettre, il faut une vraie date par section (sortie de version
+ * pour les cartes, dernière modification pour les fiches), pas l'heure du build.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://dna.ascencia.re";
@@ -37,7 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       ...Object.fromEntries(
         locales.map((l) => [localeToHreflang[l] ?? l, `${baseUrl}/${l}${path}`])
       ),
-      // Anglais et non français : cf. `lib/metadata.ts` pour le pourquoi.
+      // En anglais, pas en français : la raison est dans `lib/metadata.ts`.
       "x-default": `${baseUrl}/en${path}`,
     },
   });
@@ -63,7 +59,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const entries: MetadataRoute.Sitemap = [];
 
-  // Pages statiques — une entrée par locale avec alternates hreflang
+  // Pages statiques : une entrée par locale, avec les alternates hreflang
   for (const route of staticPaths) {
     for (const locale of locales) {
       entries.push({
@@ -75,9 +71,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
-  // Pages région de la carte : une URL par zone, la raison d'être de ces
-  // pages. Priorité 0.85, juste sous `/map` : ce sont elles qui portent le
-  // détail des marqueurs et visent les requêtes de longue traîne.
+  // Une page par région de la carte, en 0.85 juste sous `/map` : elles portent
+  // le détail des marqueurs et visent les recherches de longue traîne.
   for (const region of getAllRegions()) {
     const path = `${NAVIGATION.map}/${region.slug}`;
     for (const locale of locales) {
@@ -109,10 +104,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
-  // Cosmétiques : accueil, catégories et bannières. ==Pas les fiches objet==,
-  // qui sont en `noindex` (cf. leur `generateMetadata`) : elles faisaient
-  // 6 643 des 7 224 URL du sitemap, et un sitemap doit lister ce que l'on
-  // demande d'indexer, rien d'autre.
+  // Cosmétiques : accueil, catégories et bannières. Pas les fiches objet, en
+  // `noindex` (voir leur `generateMetadata`) : elles faisaient 6 643 des
+  // 7 224 URL du sitemap, et le sitemap ne liste que ce qu'on veut indexer.
   const cosmeticPaths = [
     { path: NAVIGATION.cosmetics, priority: 0.85, changeFrequency: "weekly" as const },
     { path: `${NAVIGATION.cosmetics}/banners`, priority: 0.8, changeFrequency: "weekly" as const },

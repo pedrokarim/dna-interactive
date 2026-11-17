@@ -12,9 +12,9 @@ import {
   type RotationState,
 } from "@/lib/commissions/types";
 
-// La rotation change au top de l'heure. On vérifie /latest en continu (filet de
-// sécurité → MAJ sans rechargement quoi qu'il arrive) et on accélère juste après
-// le passage du compte à rebours à 0, le temps que la collecte tourne (~HH:01).
+// La rotation change à l'heure pleine. On interroge /latest toutes les minutes
+// quoi qu'il arrive, et plus souvent juste après la fin du compte à rebours, le
+// temps que la collecte tourne (vers HH:01).
 const STEADY_POLL_MS = 60_000;
 const BURST_DELAY_MS = 25_000;
 const BURST_INTERVAL_MS = 20_000;
@@ -22,16 +22,16 @@ const BURST_MAX = 18;
 
 const subscribeMounted = () => () => {};
 
-/** La rotation porte-t-elle au moins un objectif ? (Le serveur vide une rotation périmée.) */
+/** Au moins un objectif dans la rotation ? Le serveur vide une rotation périmée. */
 function hasRotationData(state: RotationState): boolean {
   return REGIONS.some((region) => CATEGORIES.some((category) => (state.regions[region]?.[category]?.length ?? 0) > 0));
 }
 
 /**
- * Rotation affichée, tenue à jour sans rechargement : état de fraîcheur
- * recalculé chaque seconde sur l'horloge du visiteur, vérifications de
- * `/api/commissions/latest` en continu, puis rapprochées au changement d'heure.
- * Partagé par la page `/commissions` et la section de l'accueil.
+ * Rotation affichée, mise à jour sans rechargement. La fraîcheur est recalculée
+ * chaque seconde sur l'horloge du visiteur, et `/api/commissions/latest` est
+ * interrogé en continu, plus souvent au changement d'heure.
+ * Sert à la page `/commissions` et à la section de l'accueil.
  */
 export function useLiveRotation(initialState: RotationState, initialMeta: RotationMeta) {
   const locale = useLocale();
@@ -40,9 +40,9 @@ export function useLiveRotation(initialState: RotationState, initialMeta: Rotati
   const [syncing, setSyncing] = useState(false);
   const pollTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // État de la rotation recalculé avec l'horloge du visiteur : à l'heure pleine,
-  // la rotation affichée devient fausse et doit disparaître sans attendre le
-  // prochain appel à l'API. Avant montage, l'état calculé par le serveur.
+  // Calculé sur l'horloge du visiteur : à l'heure pleine, la rotation affichée
+  // est fausse et doit disparaître sans attendre l'appel suivant à l'API.
+  // Avant montage, on garde l'état calculé par le serveur.
   const [freshness, setFreshness] = useState<RotationFreshness>(initialMeta.freshness);
   useEffect(() => {
     const update = () => setFreshness(rotationFreshness(meta.updatedAt));
@@ -52,14 +52,13 @@ export function useLiveRotation(initialState: RotationState, initialMeta: Rotati
   }, [meta.updatedAt]);
   const live = freshness === "live" && hasRotationData(state);
 
-  // Heures formatées dans le FUSEAU LOCAL du visiteur (toLocaleTimeString par
-  // défaut), avec l'abréviation de fuseau. Seulement après hydratation : le
-  // fuseau diffère entre le serveur et le navigateur.
+  // Heures dans le fuseau du visiteur, avec son abréviation. Seulement après
+  // hydratation, le serveur n'a pas le même fuseau que le navigateur.
   const hydrated = useSyncExternalStore(subscribeMounted, () => true, () => false);
   const opts: Intl.DateTimeFormatOptions = { hour: "2-digit", minute: "2-digit", timeZoneName: "short" };
   const nextLabel = hydrated ? new Date(meta.nextRefreshAt).toLocaleTimeString(toIntlLocale(locale), opts) : null;
-  // La date n'est utile que si la dernière collecte n'est pas d'aujourd'hui :
-  // en panne depuis des jours, l'heure seule ne dit rien.
+  // On ajoute la date si la dernière collecte n'est pas d'aujourd'hui : après
+  // des jours de panne, l'heure seule ne veut rien dire.
   const updated = hydrated && meta.updatedAt ? new Date(meta.updatedAt) : null;
   const updatedLabel = updated
     ? updated.toDateString() === new Date().toDateString()
@@ -67,7 +66,7 @@ export function useLiveRotation(initialState: RotationState, initialMeta: Rotati
       : updated.toLocaleString(toIntlLocale(locale), { ...opts, day: "numeric", month: "long" })
     : null;
 
-  // Dernier hash connu, accessible aux pollers sans les recréer à chaque MAJ.
+  // Dernier hash connu, dans une ref pour ne pas recréer les pollers à chaque mise à jour.
   const latestHashRef = useRef(state.contentHash);
   useEffect(() => {
     latestHashRef.current = state.contentHash;
@@ -75,35 +74,34 @@ export function useLiveRotation(initialState: RotationState, initialMeta: Rotati
 
   useEffect(() => () => { if (pollTimer.current) clearTimeout(pollTimer.current); }, []);
 
-  // Récupère l'état courant et remplace la rotation affichée si le contenu a
-  // changé. Cache-buster `?t=` pour court-circuiter tout cache intermédiaire.
+  // Remplace la rotation affichée si le contenu a changé. Le `?t=` contourne
+  // les caches intermédiaires.
   const checkForUpdate = useCallback(async (): Promise<boolean> => {
     try {
       const res = await fetch(`/api/commissions/latest?t=${Date.now()}`, { cache: "no-store" });
       const data = (await res.json()) as { state?: RotationState; meta?: RotationMeta };
       if (data.meta) setMeta(data.meta);
-      // Une rotation qui redevient valable (collecte reprise) arrive avec un
-      // nouveau hash ; une rotation devenue périmée garde le sien mais sans
-      // objectifs, et c'est `freshness` qui la masque.
+      // Collecte reprise : la rotation arrive avec un nouveau hash. Rotation
+      // périmée : même hash mais sans objectifs, c'est `freshness` qui la masque.
       if (data.state?.contentHash && data.state.contentHash !== latestHashRef.current) {
         setState(data.state);
         setSyncing(false);
         return true;
       }
     } catch {
-      // réseau indisponible : on réessaiera au prochain tick
+      // Réseau indisponible : on réessaiera au prochain tick.
     }
     return false;
   }, []);
 
-  // Filet de sécurité : vérification périodique → la page se met à jour seule.
+  // Vérification toutes les minutes, au cas où le reste raterait le changement.
   useEffect(() => {
     const id = setInterval(() => void checkForUpdate(), STEADY_POLL_MS);
     return () => clearInterval(id);
   }, [checkForUpdate]);
 
-  // Au passage du compte à rebours à 0 : vérifications rapprochées le temps que
-  // la nouvelle rotation soit collectée.
+  // Compte à rebours à 0 : on vérifie plus souvent le temps que la nouvelle
+  // rotation soit collectée.
   const handleComplete = useCallback(() => {
     // Un seul cycle à la fois : le compte à rebours et le passage en `syncing`
     // peuvent le lancer dans la même seconde.
@@ -122,8 +120,8 @@ export function useLiveRotation(initialState: RotationState, initialMeta: Rotati
     pollTimer.current = setTimeout(tick, BURST_DELAY_MS);
   }, [checkForUpdate]);
 
-  // La rotation affichée vient d'expirer : vérifications rapprochées, même si
-  // le compte à rebours, masqué avec elle, n'a pas eu le temps de les lancer.
+  // La rotation affichée vient d'expirer : on lance les vérifications nous-mêmes,
+  // le compte à rebours a pu être masqué avec elle avant de le faire.
   useEffect(() => {
     if (freshness !== "syncing") return;
     const id = setTimeout(handleComplete, 0);

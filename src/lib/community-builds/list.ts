@@ -14,7 +14,7 @@ export type TopBuild = {
   authorName: string | null;
 };
 
-/** Meilleurs builds publiés (par votes) — pour la vitrine de la home. Sûr si table absente. */
+/** Meilleurs builds publiés, par votes, pour la vitrine de l'accueil. Sûr si table absente. */
 export async function getTopBuilds(limit = 8): Promise<TopBuild[]> {
   const db = getDb();
   try {

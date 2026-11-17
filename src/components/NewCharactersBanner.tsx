@@ -22,12 +22,11 @@ const SHOWCASE_CHARACTERS: Array<{
   accentColor: string;
   ringColor: string;
 }> = [
-  // Rhythm: Flamewrought en vedette (position 0 = active par d\u00E9faut au
-  // chargement) \u2014 Electro, sortie 20 octobre 2026 avec la 1.7 "Towards the Dawn".
-  // Ancienne adjudante de l'Escorte \u00E0 Icelake. Obtenue via les Commissions
-  // clandestines (Th\u00E9\u00E2tre immersif jusqu'au 10 novembre) ou en boutique.
-  // Visuels d\u00E9riv\u00E9s du bust extrait (T_Bust_SPLise.png) et de sa vignette
-  // (T_Head_SPLise.png) sous official-v1.7/.
+  // Rhythm: Flamewrought en premier (l'index 0 est affich\u00E9 au chargement). Electro,
+  // sortie le 20 octobre 2026 avec la 1.7 "Towards the Dawn". Ancienne adjudante de
+  // l'Escorte \u00E0 Icelake, obtenue via les Commissions clandestines (Th\u00E9\u00E2tre immersif
+  // jusqu'au 10 novembre) ou en boutique. Visuels tir\u00E9s du buste T_Bust_SPLise.png
+  // et de la vignette T_Head_SPLise.png, sous official-v1.7/.
   {
     id: "char-splise",
     slug: "rhythm-flamewrought",
@@ -41,11 +40,11 @@ const SHOWCASE_CHARACTERS: Array<{
     accentColor: "rose",
     ringColor: "ring-crimson-bright",
   },
-  // Falsi \u2014 vedette de la 1.6, repli\u00E9e sous Flamewrought. Pyro,
-  // sortie 8 septembre 2026 avec "Paradise's 22nd White Bunny".
-  // Ancienne offici\u00E8re de la XIII\u1D49 L\u00E9gion, adjudante de Fulvis. Obtenue via
-  // les Commissions clandestines (Th\u00E9\u00E2tre immersif jusqu'au 29 septembre).
-  // Visuels d\u00E9riv\u00E9s du bust extrait (T_Bust_Falu.png) sous official-v1.6/.
+  // Falsi, vedette de la 1.6, pass\u00E9e derri\u00E8re Flamewrought. Pyro, sortie le
+  // 8 septembre 2026 avec "Paradise's 22nd White Bunny". Ancienne offici\u00E8re de la
+  // XIIIe L\u00E9gion, adjudante de Fulvis, obtenue via les Commissions clandestines
+  // (Th\u00E9\u00E2tre immersif jusqu'au 29 septembre). Visuels tir\u00E9s du buste
+  // T_Bust_Falu.png, sous official-v1.6/.
   {
     id: "char-falu",
     slug: "falsi",
@@ -59,16 +58,16 @@ const SHOWCASE_CHARACTERS: Array<{
     accentColor: "rose",
     ringColor: "ring-crimson-bright",
   },
-  // Flora est sortie du showcase \u00E0 l'arriv\u00E9e d'Ada (1.5), Hilda \u00E0 celle de
-  // Falsi (1.6), Ada \u00E0 celle de Flamewrought (1.7) : on garde 4 entr\u00E9es, les
-  // plus r\u00E9centes devant les deux formes du protagoniste. Leurs visuels restent
-  // sous official-v1.4/ et official-v1.5/ si on veut les remettre.
-  // NB : official-v1.3/image-fs.webp = Fushu, PAS Flora.
-  // Formes Umbro du Phoxhunter (protagoniste) \u2014 d\u00E9bloqu\u00E9es via la narration
-  // du patch 1.4 "Silver Torrent, Rising Star". Pas de marketing officiel
-  // d\u00E9di\u00E9, on utilise les busts FModel re-encod\u00E9s en WebP (cf. official-v1.4/).
-  // Le nom interne dans Char.lua est Nvzhu02 (f\u00E9minin) / Nanzhu02 (masculin) ;
-  // les libell\u00E9s affich\u00E9s reprennent ceux du jeu, via `characterShowcase.*.name`.
+  // Flora a quitt\u00E9 la vitrine \u00E0 l'arriv\u00E9e d'Ada (1.5), Hilda \u00E0 celle de Falsi (1.6),
+  // Ada \u00E0 celle de Flamewrought (1.7). On garde 4 entr\u00E9es, les plus r\u00E9centes devant
+  // les deux formes du protagoniste. Les anciens visuels restent sous official-v1.4/
+  // et official-v1.5/ si on veut les remettre.
+  // Attention : official-v1.3/image-fs.webp, c'est Fushu, pas Flora.
+  // Formes Umbro du Phoxhunter (protagoniste), d\u00E9bloqu\u00E9es par l'histoire du patch 1.4
+  // "Silver Torrent, Rising Star". Pas de visuel officiel d\u00E9di\u00E9 : on prend les bustes
+  // FModel r\u00E9encod\u00E9s en WebP (official-v1.4/). Nom interne dans Char.lua : Nvzhu02
+  // (f\u00E9minin) / Nanzhu02 (masculin). Les noms affich\u00E9s sont ceux du jeu, via
+  // `characterShowcase.*.name`.
   {
     id: "char-nvzhu02",
     slug: "char-nvzhu02",
@@ -97,7 +96,7 @@ const SHOWCASE_CHARACTERS: Array<{
   },
 ];
 
-// Color mappings pour éviter les classes Tailwind dynamiques non-purgées
+// Classes écrites en entier : Tailwind ne garde pas celles qu'on construit à la volée.
 const ACCENT_STYLES: Record<string, { text: string; border: string; subtitleText: string }> = {
   amber: { text: "text-gold", border: "border-gold/30", subtitleText: "text-gold/90" },
   indigo: { text: "text-gold", border: "border-gold/30", subtitleText: "text-gold/90" },
@@ -112,9 +111,9 @@ export default function NewCharactersBanner() {
 
   const active = SHOWCASE_CHARACTERS[activeIndex];
   const styles = ACCENT_STYLES[active.accentColor];
-  // Nom, sous-titre, description et faction suivent la langue du site. Le nom
-  // varie d'une langue à l'autre dans le jeu (Ada en FR/EN, Yvaine en DE,
-  // Eve en ES) : la constante `name` ne sert plus que de repli.
+  // Nom, sous-titre, description et faction suivent la langue du site. Le jeu
+  // change le nom selon la langue (Ada en FR/EN, Yvaine en DE, Eve en ES) :
+  // `name` ne sert que de repli.
   const activeName = tShowcase(`${active.key}.name`) || active.name;
 
   const badgeRow = (
@@ -154,12 +153,12 @@ export default function NewCharactersBanner() {
 
   return (
     <>
-      {/* ============================ DESKTOP LAYOUT ============================ */}
+      {/* Mise en page bureau */}
       <section
         className="relative w-full overflow-hidden hidden md:flex md:flex-col"
         style={{ minHeight: "100vh" }}
       >
-        {/* z-[0]: Character full art - oversized, positioned like the official site */}
+        {/* z-[0] : illustration en pied, plus grande que la section, placée comme sur le site officiel */}
         <AnimatePresence mode="wait">
           <motion.div
             key={active.id + "-art"}
@@ -186,11 +185,11 @@ export default function NewCharactersBanner() {
           </motion.div>
         </AnimatePresence>
 
-        {/* z-[1]: Smooth gradient from dark left to transparent right — no hard cut */}
+        {/* z-[1] : dégradé du sombre à gauche vers le transparent à droite, sans bord net */}
         <div className="absolute inset-0 z-[1] bg-gradient-to-r from-ink from-0% via-ink/80 via-30% to-transparent to-70%" />
         <div className="absolute inset-0 z-[1] bg-gradient-to-t from-ink/60 via-transparent to-ink/30" />
 
-        {/* z-[2]: Deco calligraphy - above gradient, subtle overlay on left */}
+        {/* z-[2] : calligraphie décorative à gauche, au-dessus du dégradé, très pâle */}
         <AnimatePresence mode="wait">
           <motion.div
             key={active.id + "-deco"}
@@ -206,7 +205,7 @@ export default function NewCharactersBanner() {
           </motion.div>
         </AnimatePresence>
 
-        {/* z-[3]: Content - flex-1 ensures full height so justify-center works */}
+        {/* z-[3] : contenu. flex-1 pour prendre toute la hauteur, sinon justify-center ne centre rien */}
         <div className="relative z-[3] flex-1 flex flex-col justify-center px-8 md:px-16 lg:px-24">
           <div className="mb-6">{badgeRow}</div>
 
@@ -253,21 +252,21 @@ export default function NewCharactersBanner() {
           </AnimatePresence>
         </div>
 
-        {/* Character selector - right side */}
+        {/* Choix du personnage, à droite */}
         {avatarStrip(
           "absolute right-6 md:right-10 top-1/2 -translate-y-1/2 z-20 flex flex-col gap-3"
         )}
 
-        {/* Bottom fade into page */}
+        {/* Fondu du bas vers la page */}
         <div className="absolute bottom-0 left-0 right-0 h-24 z-[3] bg-gradient-to-t from-panel to-transparent pointer-events-none" />
       </section>
 
-      {/* ============================ MOBILE LAYOUT ============================ */}
+      {/* Mise en page mobile */}
       <section
         className="relative w-full overflow-hidden md:hidden bg-gradient-to-b from-ink via-panel/60 to-ink flex flex-col"
         style={{ minHeight: "100vh" }}
       >
-        {/* Deco calligraphy - behind everything */}
+        {/* Calligraphie décorative, derrière tout le reste */}
         <AnimatePresence mode="wait">
           <motion.div
             key={active.id + "-m-deco"}
@@ -284,10 +283,10 @@ export default function NewCharactersBanner() {
         </AnimatePresence>
 
         <div className="relative z-10 px-5 pt-6 pb-6 flex flex-col items-center flex-1 w-full">
-          {/* Badge + lang toggle */}
+          {/* Badge */}
           <div className="mb-2 flex-shrink-0">{badgeRow}</div>
 
-          {/* Character portrait - takes all available space */}
+          {/* Portrait, prend toute la place restante */}
           <div className="relative w-full flex-1 min-h-0 my-2">
             <AnimatePresence mode="wait">
               <motion.div
@@ -310,7 +309,7 @@ export default function NewCharactersBanner() {
             </AnimatePresence>
           </div>
 
-          {/* Info bloc */}
+          {/* Infos */}
           <AnimatePresence mode="wait">
             <motion.div
               key={active.id + "-m-info"}
@@ -344,7 +343,7 @@ export default function NewCharactersBanner() {
             </motion.div>
           </AnimatePresence>
 
-          {/* Avatar selector at the bottom */}
+          {/* Choix du personnage, en bas */}
           {avatarStrip("mt-5 flex gap-2.5 justify-center flex-shrink-0")}
         </div>
       </section>

@@ -1,7 +1,7 @@
 import type { SVGProps } from "react";
 
-// Icônes de marque inlinées en `currentColor` pour pouvoir les teinter
-// facilement (blanc sur Discord, or sur Google…).
+// Icônes de marque en ligne, en `currentColor` pour les teinter (blanc sur
+// Discord, or sur Google…).
 
 type IconProps = SVGProps<SVGSVGElement> & { size?: number };
 

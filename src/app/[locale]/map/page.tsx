@@ -1,9 +1,8 @@
 import InteractiveMap from "@/components/map/InteractiveMap";
 
 /**
- * Carte interactive plein écran. Toute la logique vit dans
- * `@/components/map` ; la page ne fait que la monter (la `Suspense` exigée par
- * `nuqs` est posée par `layout.tsx`).
+ * Carte plein écran : tout est dans `@/components/map`. La `Suspense` que
+ * demande nuqs est déjà posée par layout.tsx.
  */
 export default function MapPage() {
   return <InteractiveMap />;

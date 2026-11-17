@@ -1,14 +1,14 @@
 // ---------------------------------------------------------------------------
 // URL de l'optimiseur d'images de Next (`/_next/image`) pour une image locale.
 //
-// Pour les cas où le composant `next/image` ne convient pas : images de fond
-// CSS, `<img>` qu'un export (html-to-image) doit capturer telles quelles, ou
-// composants qui gardent leur propre `<img>`. Le navigateur reçoit de l'AVIF ou
-// du WebP à la largeur demandée, au lieu du PNG d'origine (icônes de 256 px
-// affichées en 48 px, illustrations de 2 000 px en fond de tuile).
+// Pour quand `next/image` ne va pas : fonds CSS, `<img>` qu'un export
+// (html-to-image) doit capturer tels quels, composants qui gardent leur `<img>`.
+// Le navigateur reçoit de l'AVIF ou du WebP à la bonne largeur à la place du PNG
+// d'origine (icônes de 256 px affichées en 48, illustrations de 2 000 px en
+// fond de tuile).
 //
-// Le résultat est mis en cache sur le serveur (`.next/cache/images`) puis par
-// Cloudflare (règle sur `/_next/image`) : seul le premier affichage coûte.
+// Cache sur le serveur (`.next/cache/images`) puis chez Cloudflare (règle sur
+// `/_next/image`) : seul le premier affichage coûte.
 // ---------------------------------------------------------------------------
 
 /**
@@ -28,11 +28,11 @@ function allowedWidth(width: number): number {
 
 /**
  * `src` redimensionnée à `width` pixels au moins (arrondie à la largeur
- * autorisée suivante). Passer la largeur **réelle à l'écran × 2** pour rester
- * net sur écran haute densité et dans les exports en `pixelRatio: 2`.
+ * autorisée suivante). Passer la largeur affichée × 2, pour rester net sur
+ * écran haute densité et dans les exports en `pixelRatio: 2`.
  *
- * Renvoie `src` tel quel quand l'optimiseur n'a rien à faire : SVG (vectoriel),
- * GIF (animé), adresse distante ou `data:`.
+ * Rend `src` tel quel quand il n'y a rien à optimiser : SVG, GIF (animé),
+ * adresse distante ou `data:`.
  */
 export function optimizedImageUrl(src: string, width: number, quality: ImageQuality = 75): string {
   if (!src.startsWith("/") || src.startsWith("//") || /\.(svg|gif)(\?|$)/i.test(src)) return src;

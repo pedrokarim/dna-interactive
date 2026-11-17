@@ -11,19 +11,18 @@ import {
 } from "./_wedge";
 
 /**
- * Éditeur d'arme de consonance — reprend la disposition de la fiche perso :
- * 2 slots de MOD à gauche, l'ARME au centre, 2 slots à droite (4 MOD au total).
+ * Éditeur d'arme de consonance, même disposition que la fiche perso : 2 MOD à
+ * gauche, l'arme au centre, 2 MOD à droite.
  *
- * Interactions :
- *  - Les 4 cases de MOD se réorganisent par drag-and-drop (drop = swap) et
- *    s'éditent au clic (picker).
- *  - L'ARME centrale est VERROUILLÉE : c'est l'arme de consonance du perso, elle
- *    ne se déplace pas, n'est jamais cible de drop et n'est pas remplaçable.
+ * Les 4 MOD s'échangent par drag-and-drop et s'éditent au clic (picker).
+ * L'arme du centre est celle du perso : verrouillée, ni déplaçable, ni cible de
+ * drop, ni remplaçable.
  *
- * NB prototype : drag natif HTML5 (souris). Prod tactile → @dnd-kit.
+ * Prototype en drag natif HTML5, souris seulement. Pour le tactile, passer à
+ * @dnd-kit.
  */
 
-// 2 slots à gauche (1,2), 2 à droite (3,4) — miroir de la fiche perso.
+// Slots 1-2 à gauche, 3-4 à droite, comme sur la fiche perso.
 const LEFT = [1, 2];
 const RIGHT = [3, 4];
 
@@ -31,7 +30,7 @@ export type DnaConsonanceEditorProps = {
   slots: WedgeSlotData[];
   /** L'arme de consonance (verrouillée). */
   weapon: DnaPickerItem | null;
-  /** Couleur d'accent — défaut electro (teinte historique de la consonance). */
+  /** Couleur d'accent, electro par défaut (la teinte d'origine de la consonance). */
   accentHex?: string;
   scale?: WedgeScale;
   readOnly?: boolean;
@@ -77,7 +76,7 @@ export function DnaConsonanceEditor({
     <div className={cn("flex items-center justify-center", d.gapCols, className)}>
       <div className={cn("flex", d.gapSlots)}>{LEFT.map((p) => renderSlot(p, "left"))}</div>
 
-      {/* Arme centrale — verrouillée (pas de drag, pas de drop, non remplaçable). */}
+      {/* Arme centrale, verrouillée : pas de drag, pas de drop. */}
       <div
         aria-label={weapon ? `Arme de consonance (verrouillée) : ${weapon.name}` : "Arme de consonance (verrouillée)"}
         className="relative grid shrink-0 cursor-default place-items-center rounded-full"
@@ -95,7 +94,7 @@ export function DnaConsonanceEditor({
         ) : (
           <span className="text-lg text-parch/50">⚔</span>
         )}
-        {/* Cadenas discret (centré horizontalement) : signale le verrouillage. */}
+        {/* Petit cadenas centré en bas pour signaler le verrouillage. */}
         <span className="absolute -bottom-1 left-1/2 flex h-5 w-5 -translate-x-1/2 items-center justify-center rounded-full border border-white/30 bg-ink text-[0.6rem] leading-none text-gold">
           ⛌
         </span>

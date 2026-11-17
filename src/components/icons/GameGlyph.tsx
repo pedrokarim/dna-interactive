@@ -2,9 +2,9 @@ import type { CSSProperties } from "react";
 import { cn } from "@/components/dna/cn";
 
 /**
- * Glyphes d'interface du jeu (blancs sur transparent), affichés comme MASQUE
- * CSS : ils prennent la couleur du texte (`currentColor`), donc les états
- * actif / survol et le thème clair s'appliquent comme sur une icône Lucide.
+ * Glyphes d'interface du jeu (blancs sur transparent), affichés en masque CSS :
+ * ils prennent la couleur du texte (`currentColor`), donc actif, survol et
+ * thème clair marchent comme sur une icône Lucide.
  *
  * Fichiers : public/assets/ui/glyphs/<nom>.png, produits par
  * research_data/scripts/export-nav-icons.mjs (qui dit de quelle texture du jeu

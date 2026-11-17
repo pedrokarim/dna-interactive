@@ -1,10 +1,10 @@
 /**
- * Contenu de l'image Open Graph d'une page : textes de la page (mêmes
- * traductions et mêmes données que son `generateMetadata`) et images tirées
- * du site, jamais un visuel décoratif.
+ * Contenu de l'image Open Graph d'une page : ses textes (mêmes traductions et
+ * mêmes données que son `generateMetadata`) et des images du site, pas de
+ * visuel décoratif.
  *
- * Rien ne vient de l'adresse de l'image en dehors du chemin : personne ne peut
- * faire dessiner au site une image portant un texte de son choix.
+ * De l'URL de l'image on ne lit que le chemin, pour que personne ne fasse
+ * dessiner au site une image avec le texte de son choix.
  */
 import { desc, eq } from "drizzle-orm";
 import { getTranslations } from "next-intl/server";
@@ -44,7 +44,7 @@ const GAME = "Duet Night Abyss";
 
 type Ctx = { locale: string; origin: string };
 
-/** Adresse absolue d'une image du site, réduite par l'optimiseur de Next quand elle est grande. */
+/** URL absolue d'une image du site, passée par l'optimiseur de Next si on donne une largeur. */
 function img(ctx: Ctx, path: string | null | undefined, width?: number): string | null {
   if (!path) return null;
   return `${ctx.origin}${width ? optimizedImageUrl(path, width) : path}`;
@@ -54,7 +54,7 @@ function compact<T>(values: Array<T | null | undefined>): T[] {
   return values.filter((v): v is T => v != null);
 }
 
-/** Les personnages les plus récents (identifiant de jeu décroissant), avec un portrait. */
+/** Les persos les plus récents (charId décroissant) qui ont un portrait. */
 function latestPortraits(ctx: Ctx, count = 3): OgMedia | null {
   const urls = getAllCharacters()
     .filter((c) => c.portraits.gacha?.publicPath)
@@ -160,8 +160,8 @@ const HUBS = new Set([
 ]);
 
 /**
- * Contenu de l'image d'une page, sans le préfixe de langue
- * (`["map", "arcano-ruins"]`). `null` : adresse inconnue.
+ * Contenu de l'image d'une page, à partir des segments sans la langue
+ * (`["map", "arcano-ruins"]`). `null` si l'adresse est inconnue.
  */
 export async function resolvePageOg(locale: string, segments: string[], origin: string): Promise<PageOgContent | null> {
   const ctx: Ctx = { locale, origin };
@@ -247,7 +247,7 @@ export async function resolvePageOg(locale: string, segments: string[], origin: 
     const banner = getBannerDetail(Number(third), locale.toUpperCase());
     if (!banner || fourth) return null;
     const t = await getTranslations({ locale, namespace: "cosmetics" });
-    // Le visuel de l'objet vedette : la vignette de la bannière ne fait que 560 × 200.
+    // On prend le visuel de l'objet vedette, la vignette de bannière ne fait que 560 × 200.
     const featured = img(ctx, banner.featured ? primaryVisual(banner.featured.visuals) : null, 640);
     const tab = img(ctx, banner.image);
     return {
@@ -270,8 +270,8 @@ export async function resolvePageOg(locale: string, segments: string[], origin: 
     const item = getCosmetic(second, third);
     if (!item || fourth) return null;
     const lang = locale.toUpperCase();
-    // Une tenue se montre par son icône (la tenue elle-même) : son « portrait »
-    // est souvent le mannequin neutre du protagoniste.
+    // Une tenue se montre par son icône : son « portrait » est souvent le
+    // mannequin neutre du protagoniste.
     const portrait = second === "outfits" ? null : img(ctx, item.visuals.bust ?? item.visuals.portrait, 640);
     const icon = img(ctx, item.visuals.icon);
     return {

@@ -68,8 +68,8 @@ const footerCopy: Record<EmailLocale, { tagline: string; fine: string }> = {
 };
 
 /**
- * Layout de base des emails DNA : fond sombre, carte "panel" bordée d'or, en-tête
- * marque + filet doré, pied de page discret. Respecte le design system (coins nets).
+ * Layout de base des emails : fond sombre, carte bordée d'or, en-tête avec la
+ * marque et un filet doré, petit pied de page. Coins nets comme sur le site.
  */
 export function EmailLayout({
   preview,

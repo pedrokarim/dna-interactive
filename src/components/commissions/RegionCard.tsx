@@ -111,12 +111,12 @@ export function RegionCard({
 }) {
   const t = useTranslations("commissions");
 
-  // On ne garde que les vrais objectifs : le pipeline recopie verbatim l'embed
-  // source, qui contient un message d'erreur quand le bot échoue à lire une
-  // région. Si rien de valide n'arrive pour toute la région, on affiche un état
-  // « indisponible » plutôt que de rendre le texte d'erreur comme un objectif.
-  // `data` peut être absent malgré le typage : l'état vient d'une réponse
-  // réseau, et un rendu ne doit pas planter parce qu'une région y manque.
+  // On ne garde que les vrais objectifs. Le pipeline recopie l'embed source tel
+  // quel, et quand le bot n'arrive pas à lire une région, l'embed contient un
+  // message d'erreur. Si rien de valide n'arrive pour la région, on l'affiche
+  // « indisponible » au lieu de montrer l'erreur comme un objectif.
+  // `data` peut manquer malgré le typage (il vient d'une réponse réseau) : le
+  // rendu ne doit pas planter pour autant.
   const src = data ?? ({} as Partial<Record<Category, string[]>>);
   const known: Record<Category, string[]> = {} as Record<Category, string[]>;
   let hasAnyKnown = false;

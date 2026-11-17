@@ -12,15 +12,14 @@ import { useMapLabels } from "./useMapLabels";
 export const MAP_EASE = [0.22, 1, 0.36, 1] as const;
 
 /**
- * Colonne accolée au panneau : bouton « recentrer », puis le rail des types
- * affichés. Comme sur HoYoLAB, le rail se rétracte en un seul bouton portant
- * le nombre de types affichés, pour ne pas empiler des icônes sur la carte ;
- * déplié, une flèche en tête le replie. Au survol d'un type, une pastille
- * « – » le retire.
+ * Colonne collée au panneau : bouton « recentrer », puis le rail des types
+ * affichés. Comme sur HoYoLAB, le rail se replie en un seul bouton qui affiche
+ * le nombre de types, pour ne pas empiler des icônes sur la carte. Déplié, une
+ * flèche en haut le replie. Au survol d'un type, une pastille « – » le retire.
  *
- * Animation : la colonne se déroule vers le bas depuis le bouton (masque
- * `clip-path`, les icônes arrivent en cascade) et remonte au repli. Le
- * `MotionConfig reducedMotion="user"` global coupe tout pour qui le demande.
+ * La colonne se déroule vers le bas depuis le bouton (masque `clip-path`,
+ * icônes en cascade) et remonte au repli. Le `MotionConfig reducedMotion="user"`
+ * global coupe l'animation pour qui le demande.
  */
 export function ActiveTypesRail({
   map,

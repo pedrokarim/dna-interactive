@@ -14,7 +14,6 @@ export function useMapData(selectedMapId: string | null) {
       return;
     }
 
-    // Check cache first
     const cached = mapDataCache.get(selectedMapId);
     if (cached) {
       setSelectedMap(cached);

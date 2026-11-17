@@ -3,8 +3,8 @@
  * dessine à la place de la carte Open Graph.
  *
  * Doc : https://discord.com/developers/docs/link-previews/component-embeds
- * Seuls les composants admis dans un aperçu de lien sont décrits ici. Module
- * pur : aucune dépendance au framework, testable tel quel.
+ * On ne décrit que les composants admis dans un aperçu de lien. Aucune
+ * dépendance au framework, testable tel quel.
  */
 
 export const ComponentType = {
@@ -113,7 +113,7 @@ export function container(children: ContainerChild[], accentColor?: number | nul
   return { component };
 }
 
-/** « #e2664a » → 14837322, l'entier que Discord attend pour `accent_color`. */
+/** « #e2664a » donne 14837322, l'entier que Discord attend pour `accent_color`. */
 export function hexToColor(hex: string | null | undefined): number | null {
   if (!hex) return null;
   const match = /^#?([0-9a-f]{6})$/i.exec(hex.trim());

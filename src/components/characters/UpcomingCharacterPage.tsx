@@ -17,18 +17,14 @@ import { statAtLevel, type UpcomingCharacter, type UpcomingConfidence } from "@/
 import { UpcomingCountdown } from "./UpcomingCountdown";
 
 /**
- * Fiche d'un personnage annoncé mais pas encore sorti.
+ * Fiche d'un perso annoncé mais pas encore sorti.
  *
- * Contrainte de départ : le jeu n'a livré aucune texture pour lui. Pas de
- * portrait, pas d'icône de compétence, pas d'illustration de bannière. Plutôt
- * que d'afficher des images cassées ou un placeholder gris, la mise en page est
- * bâtie autour de l'absence : un cartouche héraldique teinté par l'élément
- * tient la place du buste, et la fiche assume qu'elle documente un dossier,
- * pas un personnage jouable.
+ * Le jeu n'a livré aucune texture pour lui : ni portrait, ni icône de
+ * compétence, ni illustration de bannière. Au lieu d'images cassées ou d'un
+ * placeholder gris, un cartouche teinté par l'élément tient la place du buste.
  *
- * Chaque information porte son niveau de fiabilité. C'est le point important :
- * une fiche « à venir » qui mélange les données extraites du jeu et les
- * rumeurs ne vaut rien.
+ * Chaque info affiche son niveau de fiabilité, pour ne pas mélanger les
+ * données du jeu et les rumeurs.
  */
 
 const CONFIDENCE_META: Record<UpcomingConfidence, { label: string; className: string; icon: typeof FileSearch }> = {
@@ -120,8 +116,8 @@ export function UpcomingCharacterPage({
 
   return (
     <div className="relative">
-      {/* Halo élémentaire, seul « visuel » du personnage tant qu'aucune texture
-          n'est livrée. Teinté par l'élément réel lu dans BattleChar. */}
+      {/* Halo de l'élément, seul visuel du perso tant qu'il n'a pas de texture.
+          Couleur de l'élément lu dans BattleChar. */}
       <div
         aria-hidden
         className="pointer-events-none fixed inset-0 z-0"
@@ -405,8 +401,8 @@ function Row({
 }
 
 /**
- * Visuel officiel publié par le studio avant la sortie, recadré en 3:4 : il
- * prend la place du cartouche quand il existe.
+ * Visuel officiel publié par le studio avant la sortie, recadré en 3:4. Prend
+ * la place du cartouche quand il existe.
  */
 function OfficialPortrait({ character, src }: { character: UpcomingCharacter; src: string }) {
   const element = ELEMENTS[character.element];
@@ -433,12 +429,8 @@ function OfficialPortrait({ character, src }: { character: UpcomingCharacter; sr
 }
 
 /**
- * Cartouche tenant lieu de portrait.
- *
- * Aucune texture n'existe pour ce personnage : on ne cherche pas à en simuler
- * une. Le cadre reprend l'ornementation du design system, teinte le fond avec
- * la couleur de l'élément, et affiche l'initiale gravée – un blason, pas un
- * placeholder cassé.
+ * Cartouche à la place du portrait, puisque le perso n'a pas de texture. Cadre
+ * du design system, fond teinté par l'élément et initiale gravée.
  */
 function CrestPlaceholder({ character }: { character: UpcomingCharacter }) {
   const element = ELEMENTS[character.element];
@@ -451,7 +443,7 @@ function CrestPlaceholder({ character }: { character: UpcomingCharacter }) {
           background: `radial-gradient(ellipse 90% 70% at 50% 20%, ${element.hex}26, transparent 70%), linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.35))`,
         }}
       />
-      {/* Trame diagonale discrète : occupe la surface sans imiter une image. */}
+      {/* Trame diagonale légère pour remplir la surface sans imiter une image. */}
       <div
         aria-hidden
         className="absolute inset-0 opacity-[0.07]"

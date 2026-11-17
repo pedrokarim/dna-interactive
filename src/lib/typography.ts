@@ -1,10 +1,9 @@
 /**
  * Tiret d'incise selon la langue du texte.
  *
- * Le tiret cadratin (—) est une convention anglaise (reprise en espagnol et en
- * CJK). En français et en allemand, l'incise prend le demi-cadratin entouré
- * d'espaces (–). À utiliser dans les gabarits partagés par toutes les langues
- * (« Chapitre – Guide », « Événement – dates »).
+ * L'anglais met un tiret cadratin (repris en espagnol et en CJK), le français et
+ * l'allemand un demi-cadratin entouré d'espaces. Pour les gabarits communs à
+ * toutes les langues (« Chapitre – Guide », « Événement – dates »).
  */
 export function parentheticalDash(locale: string): string {
   return locale === "fr" || locale === "de" ? " – " : " — ";

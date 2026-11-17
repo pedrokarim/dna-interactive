@@ -74,7 +74,7 @@ export function RoutesAdminClient() {
     [apply],
   );
 
-  // Chargement initial : l'état n'est posé qu'à la réponse, jamais dans le corps de l'effet.
+  // Chargement initial : l'état n'est mis à jour qu'à la réponse, pas dans le corps de l'effet.
   useEffect(() => {
     let cancelled = false;
     fetch("/api/admin/routes?page=1", { cache: "no-store" })

@@ -47,8 +47,8 @@ export function UpcomingCountdown({
           </p>
         </div>
 
-        {/* Place reservee des le rendu serveur : l'horloge du visiteur ne peut
-            etre lue qu'apres hydratation, et le panneau ne doit pas sauter. */}
+        {/* Place réservée dès le rendu serveur : l'horloge du visiteur n'est
+            lisible qu'après hydratation, et le panneau ne doit pas sauter. */}
         {released ? null : (
           <div className="flex gap-2" role="timer" aria-live="off">
             <Unit value={parts?.days ?? null} label="j" />
@@ -65,8 +65,8 @@ export function UpcomingCountdown({
 function Unit({ value, label }: { value: number | null; label: string }) {
   return (
     <div className="flex min-w-[3rem] flex-col items-center border border-line/25 bg-black/25 px-2 py-1.5">
-      {/* Cf. UpcomingCharacterStrip : le chiffre a besoin du même recentrage
-          optique que les capitales, sans quoi il flotte en haut de sa case. */}
+      {/* Comme dans UpcomingCharacterStrip : sans recentrage optique, le
+          chiffre flotte en haut de sa case. */}
       <span className="dna-optical-num font-mono text-lg leading-none text-gold-bright tabular-nums">
         {value === null ? "--" : `${value}`.padStart(2, "0")}
       </span>

@@ -1,9 +1,9 @@
 import { z } from "zod";
 
-// Les messages sont des CLÉS du namespace `apiErrors` : les routes les passent
-// au traducteur avant de répondre, pour que le client reçoive sa langue.
-// Politique mot de passe volontairement simple (appli grand public, sécurité
-// non critique) : 8 caractères minimum.
+// Les messages sont des clés du namespace `apiErrors` : les routes les passent
+// au traducteur avant de répondre, le client reçoit donc sa langue.
+// Mot de passe : 8 caractères minimum et c'est tout, exprès (site grand public,
+// rien de critique derrière).
 export const passwordSchema = z
   .string()
   .min(8, "passwordTooShort")

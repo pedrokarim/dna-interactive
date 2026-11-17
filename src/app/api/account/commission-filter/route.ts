@@ -7,14 +7,14 @@ import { saveAccountCommissionFilter } from "@/lib/commissions/preferences-db";
 
 export const dynamic = "force-dynamic";
 
-/** Le filtre tient en une centaine d'octets ; au-delà, ce n'est pas un filtre. */
+/** Un filtre fait une centaine d'octets : 1 Ko laisse de la marge. */
 const MAX_BODY_BYTES = 1024;
 
 /**
  * Enregistre sur le compte les commissions affichées sur l'accueil.
  * Corps : `{ filter: { regions, categories } | null }`. Un filtre qui garde
- * tout est enregistré tel quel : c'est un choix explicite, qui l'emporte sur le
- * cookie d'un autre navigateur. `null` efface le réglage du compte.
+ * tout est enregistré quand même : c'est un choix, il passe devant le cookie
+ * d'un autre navigateur. `null` efface le réglage du compte.
  */
 export async function PUT(request: Request) {
   const t = await getApiTranslator(request);

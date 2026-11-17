@@ -8,12 +8,11 @@ export const dynamic = "force-dynamic";
 /**
  * Journal des versions, page par page.
  *
- * `?cursor=` continue le défilement, `?start=` saute directement à une version.
- * `?index=1` renvoie à la place la liste légère de toutes les versions, celle
- * qui alimente le sélecteur de saut rapide.
+ * `?cursor=` continue le défilement, `?start=` saute à une version.
+ * `?index=1` renvoie plutôt la liste légère des versions, pour le sélecteur
+ * de saut rapide.
  *
- * Contenu public : pas d'authentification, mais la page est bornée pour qu'on
- * ne puisse pas demander le journal entier d'un coup.
+ * Public, sans auth, mais la page est bornée : pas de journal entier d'un coup.
  */
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
@@ -31,8 +30,8 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "Version invalide." }, { status: 400 });
   }
 
-  // `Number(null)` vaut 0, pas NaN : sans ce test de présence, l'absence du
-  // paramètre donnait une page d'un seul élément.
+  // `Number(null)` vaut 0 : sans ce test, un `limit` absent donnait une page
+  // d'un seul élément.
   const rawLimit = searchParams.get("limit");
   const parsedLimit = rawLimit === null ? Number.NaN : Number(rawLimit);
   const limit = Number.isFinite(parsedLimit) && parsedLimit > 0

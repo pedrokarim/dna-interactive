@@ -12,13 +12,12 @@ import type { AnnouncementRecord } from "./announcements";
 /**
  * Envoi d'une annonce par email.
  *
- * Trois garde-fous, dans cet ordre : l'adresse doit être **vérifiée** (pas
- * d'envoi à une adresse jamais confirmée), le compte ne doit pas être banni, et
- * l'utilisateur doit avoir laissé les annonces activées. Une annonce réservée
- * aux admins ne part qu'aux admins.
+ * On n'envoie qu'aux adresses vérifiées, aux comptes non bannis et aux
+ * utilisateurs qui ont gardé les annonces activées. Une annonce réservée aux
+ * admins ne part qu'aux admins.
  *
- * Les envois sont séquencés par petits lots : le SMTP mutualisé se ferme sur un
- * pic de connexions, et un échec sur une adresse ne doit pas annuler le reste.
+ * Envois par petits lots : le SMTP mutualisé coupe sur un pic de connexions, et
+ * un échec sur une adresse ne doit pas annuler le reste.
  */
 export async function sendAnnouncementEmails(
   row: AnnouncementRecord,
@@ -56,9 +55,9 @@ export async function sendAnnouncementEmails(
     await Promise.all(
       batch.map(async (user) => {
         if (!user.email) return;
-        // La locale du destinataire n'est pas stockée : on habille en anglais,
-        // langue par défaut des emails du site. Le corps de l'annonce, lui, est
-        // rendu tel quel – il est rédigé une fois par l'administration.
+        // La locale du destinataire n'est pas stockée : l'habillage est en
+        // anglais, langue par défaut des emails. Le corps de l'annonce part tel
+        // quel, il n'est rédigé qu'une fois.
         const locale = toEmailLocale(null);
         try {
           const html = await render(

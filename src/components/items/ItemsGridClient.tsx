@@ -204,8 +204,8 @@ function resolveElementalAffinity(
   };
 }
 
-// --- Filtres Demon Wedge : série (Griffin/Typhon…) + compatibilité (perso/arme) ---
-// Clé de compatibilité du jeu → message `items.<clé>`.
+// --- Filtres Demon Wedge : série (Griffin/Typhon…) et compatibilité (perso/arme) ---
+// Clé de compatibilité du jeu vers le message `items.<clé>`.
 const MOD_COMPAT_LABEL_KEYS: Record<string, string> = {
   UI_Armory_Char: "compatCharacter",
   UI_Armory_Meleeweapon: "compatMelee",
@@ -723,7 +723,7 @@ export default function ItemsGridClient({
 
   return (
     <div className="space-y-4 md:space-y-8">
-      {/* En-tête gabarit — eyebrow mono + titre + compteur en équerres */}
+      {/* En-tête : eyebrow mono, titre, compteur entre équerres */}
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div className="min-w-0">
           <DnaPageMark>{favoritesOnly ? tc('favorites') : t('categoryLabel')}</DnaPageMark>
@@ -732,8 +732,8 @@ export default function ItemsGridClient({
           </h1>
           <span aria-hidden className="mt-2 block h-0.5 w-16 bg-gold" />
           <p className="mt-3 max-w-2xl text-sm text-parch/75">{category.description}</p>
-          {/* Le guide n'était atteignable que depuis la page des catégories :
-              depuis la liste elle-même, rien n'y menait. */}
+          {/* Lien vers le guide depuis la liste : sinon on n'y arrive que par la
+              page des catégories. */}
           {(category.id === "mods" || category.id === "weapons" || category.id === "genimons") && !favoritesOnly ? (
             <Link
               href={`/items/${category.slug}/about`}

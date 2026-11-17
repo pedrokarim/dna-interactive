@@ -39,11 +39,11 @@ function isUnresolvedText(text: string | null, key: string | null): boolean {
 }
 
 /**
- * Corrige les textes que le jeu livre faux ou pas du tout :
- * - DE/ES périmés → l'anglais actuel, plutôt qu'une valeur d'effet ou un nom
- *   d'une ancienne version ;
- * - nom resté en libellé de travail, quelle que soit la langue → l'anglais ;
- * - description restée en clé brute → texte officiel publié, sinon rien.
+ * Corrige les textes que le jeu livre faux ou pas du tout. DE/ES sont périmés :
+ * on prend l'anglais actuel, pas une valeur d'effet ou un nom d'une ancienne
+ * version. Un nom resté en libellé de travail passe à l'anglais, quelle que
+ * soit la langue. Une description restée en clé brute prend l'anglais, sinon le
+ * texte officiel publié, sinon rien.
  */
 function sanitizeTranslations(item: ItemRecord): ItemRecord["translations"] {
   const english = item.translations.EN;
@@ -63,7 +63,7 @@ function sanitizeTranslations(item: ItemRecord): ItemRecord["translations"] {
       next.description = english.description;
     }
     if (isUnresolvedText(next.description, descriptionKey)) {
-      // Langue non livrée (DE/ES) : l'anglais, s'il existe ; sinon le texte officiel publié, sinon rien.
+      // Langue non livrée (DE/ES) : l'anglais s'il existe, sinon le texte officiel publié, sinon rien.
       const englishDescription =
         english && !isUnresolvedText(english.description, descriptionKey) ? english.description : null;
       next.description = englishDescription ?? getOfficialDescription(item.id, language);
@@ -166,8 +166,8 @@ export function getItemByCategoryAndId(
 
 /**
  * Colonnes de noms affichées par défaut dans les grilles : la langue du
- * visiteur, puis l'anglais pour comparer. Les grilles partaient toutes de
- * français + anglais, quelle que soit la langue de la page.
+ * visiteur, puis l'anglais pour comparer (avant, c'était français + anglais
+ * pour toutes les langues).
  */
 export function visitorGridLanguages(locale: string): string[] {
   return [...new Set([locale.toUpperCase(), "EN"])];

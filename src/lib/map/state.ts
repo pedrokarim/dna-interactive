@@ -9,9 +9,9 @@ import { atom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
 
 /**
- * Types affichés sur la carte, par id canonique. Un seul jeu pour toutes les
- * cartes : les types étant désormais communs, ce qu'on suit (les coffres, les
- * runes…) reste suivi d'une zone à l'autre, comme sur la carte du jeu.
+ * Types affichés, par id canonique. Une seule liste pour toutes les cartes :
+ * les types sont communs, donc ce qu'on suit (coffres, runes…) le reste d'une
+ * zone à l'autre, comme dans le jeu.
  */
 export const DEFAULT_ACTIVE_TYPES = [
   "teleport",

@@ -12,10 +12,8 @@ const schema = z.object({
 /**
  * Marque des notifications comme lues.
  *
- * Réservé aux comptes connectés : un visiteur anonyme n'a pas d'identité à
- * laquelle rattacher une lecture, son état vit dans le navigateur. On répond
- * `204` plutôt que `401` pour que le client anonyme n'ait pas à traiter une
- * erreur pour un comportement parfaitement normal.
+ * Comptes connectés seulement : pour un anonyme, l'état « lu » vit dans le
+ * navigateur. On lui répond 204 et pas 401, il n'a pas d'erreur à gérer.
  */
 export async function POST(request: NextRequest) {
   const user = await getCurrentUser();

@@ -283,17 +283,17 @@ function PlaceLabel({ place, position, onSelectMap }: { place: MapPlace; positio
 }
 
 /**
- * Largeur réellement réservée au panneau. Sur mobile, le panneau ouvert couvre
- * tout l'écran : réserver sa place ne laisserait aucune zone utile (et donnait
- * un cadrage au zoom maximal) — on cadre alors sur l'écran entier.
+ * Largeur vraiment réservée au panneau. Sur mobile, le panneau ouvert couvre
+ * tout l'écran : réserver sa place ne laissait aucune zone utile et cadrait au
+ * zoom maximal, donc on cadre sur l'écran entier.
  */
 function usableInset(containerWidth: number, leftInset: number): number {
   return containerWidth - leftInset >= 320 ? leftInset : 0;
 }
 
 /**
- * Cadrage initial : la carte entière dans la zone laissée libre par le panneau,
- * et pas de dézoom au-delà (on ne gagne rien à voir la carte en timbre-poste).
+ * Cadrage initial : la carte entière dans la zone libre à côté du panneau, et
+ * pas de dézoom au-delà (une carte en timbre-poste ne sert à rien).
  */
 function FitToFreeArea({ bounds, leftInset }: { bounds: LatLngBoundsExpression; leftInset: number }) {
   const leaflet = useMap();

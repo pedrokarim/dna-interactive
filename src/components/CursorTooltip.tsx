@@ -9,23 +9,19 @@ import {
 } from "react";
 import { createPortal } from "react-dom";
 
-// ---------------------------------------------------------------------------
-// Cursor-following tooltip (Enka-style)
-// ---------------------------------------------------------------------------
-// On devices with a hover-capable pointer (desktop mouse), the tooltip appears
-// next to the cursor and follows it. On touch devices, it toggles on tap and
-// docks near the target element, dismissing on any outside tap.
-// Rendered into a body portal so it escapes parent overflow / transforms.
-// ---------------------------------------------------------------------------
+// Infobulle qui suit le curseur, façon Enka. À la souris, elle colle au
+// curseur. Au tactile, un tap l'ouvre sous l'élément et un tap ailleurs la
+// ferme. Rendue dans un portal sur body pour échapper aux overflow et
+// transform des parents.
 
 type Placement = "cursor" | "dock";
 
 interface Props {
   content: ReactNode;
   children: ReactNode;
-  // Optional fixed width for the bubble. Default 260.
+  // Largeur fixe de la bulle, 260 par défaut.
   width?: number;
-  // Keep the trigger inline by default. Pass "block" to wrap in a block div.
+  // Déclencheur inline par défaut, "block" pour l'envelopper dans un div bloc.
   as?: "inline" | "block";
 }
 
@@ -36,9 +32,8 @@ export default function CursorTooltip({ content, children, width = 260, as = "in
   const [pos, setPos] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
   const triggerRef = useRef<HTMLDivElement | null>(null);
   const hasHoverRef = useRef(true);
-  // Hauteur réelle de la bulle, mesurée au montage. Sans ça on retombe sur une
-  // estimation en dur : trop basse, la bulle déborde sous le pli au lieu de se
-  // retourner au-dessus du curseur.
+  // Hauteur réelle de la bulle, mesurée au montage. Avec une estimation en dur
+  // trop basse, la bulle débordait en bas au lieu de passer au-dessus du curseur.
   const [bubbleH, setBubbleH] = useState(240);
   const measureRef = (node: HTMLDivElement | null) => {
     if (!node) return;
@@ -54,7 +49,7 @@ export default function CursorTooltip({ content, children, width = 260, as = "in
         : true;
   }, []);
 
-  // Touch mode: dismiss on outside tap.
+  // Tactile : un tap hors du déclencheur ferme la bulle.
   useEffect(() => {
     if (!show || placement !== "dock") return;
     const handler = (e: Event) => {
@@ -83,7 +78,7 @@ export default function CursorTooltip({ content, children, width = 260, as = "in
   };
 
   const onClick = (e: ReactMouseEvent) => {
-    if (hasHoverRef.current) return; // desktop uses hover exclusively
+    if (hasHoverRef.current) return; // à la souris, seul le survol compte
     e.stopPropagation();
     if (show) {
       setShow(false);
@@ -97,7 +92,7 @@ export default function CursorTooltip({ content, children, width = 260, as = "in
     setShow(true);
   };
 
-  // Compute tooltip position — clamp to viewport so it never overflows.
+  // Position de la bulle, bornée à l'écran.
   const tooltipStyle = (() => {
     if (!mounted) return { display: "none" as const };
     const pad = 12;
@@ -105,7 +100,7 @@ export default function CursorTooltip({ content, children, width = 260, as = "in
     const vh = typeof window !== "undefined" ? window.innerHeight : 1080;
     let left = pos.x + 14;
     let top = pos.y + 14;
-    // Flip to the left if it would overflow right edge.
+    // Passe à gauche (ou au-dessus) si elle sort de l'écran.
     if (left + width + pad > vw) left = Math.max(pad, pos.x - width - 14);
     if (top + bubbleH + pad > vh) top = Math.max(pad, pos.y - bubbleH - 14);
     return {
@@ -113,10 +108,9 @@ export default function CursorTooltip({ content, children, width = 260, as = "in
       left,
       top,
       width,
-      // Au-dessus de tout le contenu de page : les panneaux portent
-      // `backdrop-blur`, qui crée un contexte d'empilement et masquait la bulle
-      // à z-100. Doit aussi dépasser les pickers du builder (z-500) puisque la
-      // bulle y est utilisée. Reste sous la visionneuse d'image (99999).
+      // Les panneaux en `backdrop-blur` créent un contexte d'empilement qui
+      // masquait la bulle à z-100. Il faut aussi passer au-dessus des pickers
+      // du builder (z-500), mais rester sous la visionneuse d'image (99999).
       zIndex: 9000,
       pointerEvents: "none" as const,
     };

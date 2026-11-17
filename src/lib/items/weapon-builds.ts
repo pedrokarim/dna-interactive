@@ -4,15 +4,14 @@ import { resolveBuildItemRef, type ResolvedItemRef } from "@/lib/characters/buil
 import type { ItemRecord } from "@/lib/items/types";
 
 // ---------------------------------------------------------------------------
-// Builds de Demon Wedges d'ARME. Cf. docs/cadrage-builds-armes.md.
-// Structure = 8 slots + une affinité (élément), PAS de centre item (le centre
-// d'arme est un sélecteur d'affinité, pas un wedge).
+// Builds de Demon Wedges d'arme (voir docs/cadrage-builds-armes.md).
+// 8 slots et une affinité (élément). Pas d'item au centre : le centre d'une
+// arme sert à choisir l'affinité, ce n'est pas un wedge.
 //
-// Une arme peut porter PLUSIEURS builds : `allWeaponBuilds` est une liste plate
-// et la résolution se fait par `weaponId`, donc il suffit d'ajouter un fichier
-// supplémentaire avec le même `weaponId` et un `buildName` distinct. Aucune
-// migration des 68 fichiers existants n'est nécessaire — ils restent valides
-// comme build unique et sans nom.
+// Une arme peut avoir plusieurs builds. `allWeaponBuilds` est une liste plate
+// résolue par `weaponId` : on ajoute un fichier avec le même `weaponId` et un
+// autre `buildName`. Un fichier seul pour son arme reste valide tel quel,
+// comme build unique sans nom.
 // ---------------------------------------------------------------------------
 
 interface RawLocalizedText {
@@ -31,7 +30,7 @@ export interface RawWeaponBuild {
   buildName?: RawLocalizedText;
   demonWedges: {
     slots: RawWeaponWedgeSlot[];
-    /** Affinité du build (clé d'élément : "Fire"|"Water"|… ) — le « centre » de l'arme. */
+    /** Affinité du build (clé d'élément : "Fire", "Water"…), le « centre » de l'arme. */
     affinity?: string | null;
     note?: RawLocalizedText;
   };
@@ -79,15 +78,15 @@ export function getWeaponBuilds(weaponId: string, lang: string = "FR"): WeaponBu
   return rawWeaponBuilds.filter((b) => b.weaponId === weaponId).map((raw) => resolveWeaponBuild(raw, lang));
 }
 
-/** Premier build d'une arme, ou null. Raccourci pour les vues qui n'en montrent qu'un. */
+/** Premier build d'une arme, ou null. Pour les vues qui n'en montrent qu'un. */
 export function getWeaponBuild(weaponId: string, lang: string = "FR"): WeaponBuild | null {
   const raw = rawWeaponBuilds.find((b) => b.weaponId === weaponId);
   return raw ? resolveWeaponBuild(raw, lang) : null;
 }
 
 // ---------------------------------------------------------------------------
-// Pool de wedges d'ARME (pour validation + futur builder). Filtré par classe.
-// Signal propre = typeCompatibility.textKeys (cf. cadrage §2).
+// Pool de wedges d'arme, filtré par classe (pour la validation et le builder).
+// Le signal fiable est typeCompatibility.textKeys (voir le cadrage, §2).
 // ---------------------------------------------------------------------------
 
 export type WeaponWedgeClass = "melee" | "ranged";

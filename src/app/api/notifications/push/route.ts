@@ -15,12 +15,12 @@ export const dynamic = "force-dynamic";
 /**
  * Abonnements Web Push.
  *
- * GET    — état du service et clé publique VAPID (nécessaire au navigateur).
- * POST   — enregistre ou rafraîchit un abonnement.
- * DELETE — le retire (l'utilisateur coupe les notifications).
+ * GET : état du service et clé publique VAPID (le navigateur en a besoin).
+ * POST : enregistre ou rafraîchit un abonnement.
+ * DELETE : le retire.
  *
- * Les visiteurs anonymes peuvent s'abonner : `user_id` reste nul, et se
- * remplit tout seul au prochain POST si la personne s'est connectée entre-temps.
+ * Un visiteur anonyme peut s'abonner : `user_id` reste nul et se remplit au
+ * prochain POST s'il s'est connecté entre-temps.
  */
 export async function GET() {
   return NextResponse.json({
@@ -30,8 +30,8 @@ export async function GET() {
 }
 
 const subscriptionSchema = z.object({
-  // Seuls les services de push reconnus : le serveur appelle cette URL à
-  // chaque diffusion, elle ne peut pas être laissée libre.
+  // Services de push connus seulement : le serveur appelle cette URL à chaque
+  // diffusion, on ne la laisse pas libre.
   endpoint: z.string().url().max(1000).refine(isAllowedPushEndpoint),
   keys: z.object({
     p256dh: z.string().min(1).max(500),
@@ -45,8 +45,8 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Push non configuré." }, { status: 503 });
   }
 
-  // Un abonnement est bon marché à créer mais coûte à l'envoi : on borne la
-  // création pour qu'un script ne puisse pas gonfler la table.
+  // Créer un abonnement ne coûte rien, l'envoi si : on borne pour qu'un script
+  // ne gonfle pas la table.
   const ip = getClientIp(request.headers);
   if (!(await checkRateLimit(`push:subscribe:${ip}`, 20, 60 * 60 * 1000)).ok) {
     return NextResponse.json({ error: "Trop de tentatives." }, { status: 429 });
@@ -103,11 +103,10 @@ export async function DELETE(request: NextRequest) {
   const user = await getCurrentUser();
   const db = getDb();
   try {
-    // L'endpoint est une valeur opaque et imprévisible fournie par le service
-    // de push : seul le navigateur abonné la connaît, elle fait donc office de
-    // secret. Pour un compte connecté on resserre quand même : il ne peut
-    // retirer qu'un abonnement anonyme (le sien, pas encore rattaché) ou un
-    // abonnement déjà rattaché à lui — jamais celui d'un autre compte.
+    // L'endpoint est opaque et imprévisible, seul le navigateur abonné le
+    // connaît : il sert de secret. Connecté, on resserre quand même : on ne
+    // retire qu'un abonnement anonyme ou rattaché à soi, jamais celui d'un
+    // autre compte.
     await db
       .delete(schema.pushSubscriptions)
       .where(

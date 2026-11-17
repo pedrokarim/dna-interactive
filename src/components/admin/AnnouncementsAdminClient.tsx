@@ -103,10 +103,9 @@ function formatDate(iso: string | null): string {
 /**
  * Back-office des annonces.
  *
- * Le cycle est volontairement en deux temps : on **publie** (l'annonce apparaît
- * dans la cloche de tout le monde, réversible), puis on **diffuse** sur les
- * canaux sortants (push, email – irréversible). Confondre les deux, c'est
- * envoyer un email à toute la base en corrigeant une faute de frappe.
+ * Deux temps exprès. Publier met l'annonce dans la cloche de tout le monde, et
+ * ça se défait. Diffuser l'envoie en push et par email, et ça ne se défait
+ * pas. Mélangés, corriger une faute de frappe enverrait un email à toute la base.
  */
 export function AnnouncementsAdminClient() {
   const { confirm } = useConfirm();
@@ -259,7 +258,7 @@ export function AnnouncementsAdminClient() {
 
   return (
     <div className="flex flex-col gap-4">
-      {/* --------------------------------------------------- état des canaux */}
+      {/* État des canaux */}
       <div className="grid grid-cols-1 gap-px border border-white/10 bg-white/10 sm:grid-cols-2">
         <ChannelCell
           icon={BellRing}
@@ -292,7 +291,7 @@ export function AnnouncementsAdminClient() {
         )}
       </div>
 
-      {/* --------------------------------------------------------- formulaire */}
+      {/* Formulaire */}
       {formOpen ? (
         <AdminPanel
           label={editingId ? "Modifier l'annonce" : "Nouvelle annonce"}
@@ -400,7 +399,7 @@ export function AnnouncementsAdminClient() {
         </AdminPanel>
       ) : null}
 
-      {/* ------------------------------------------------------------ listes */}
+      {/* Listes */}
       <AdminPanel label="Publiées" count={published.length}>
         {loading ? <AdminTableSkeleton rows={3} columns={6} /> : <AnnouncementTable items={published} {...rowProps} />}
       </AdminPanel>

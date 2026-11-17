@@ -6,7 +6,7 @@ import { createEmailEvent, injectPixel } from "@/lib/email/tracking";
 import { checkRateLimit } from "@/lib/rate-limit";
 import { getApiTranslator } from "@/lib/api-locale";
 
-// Schema de validation Zod pour le formulaire de contact
+// Les messages d'erreur sont des clés `apiErrors`, traduites dans POST.
 const contactFormSchema = z.object({
   name: z
     .string()
@@ -36,25 +36,23 @@ const contactFormSchema = z.object({
   recaptchaToken: z.string().min(1, "recaptchaMissing"),
 });
 
-// Type inféré depuis le schema Zod
 type ContactFormData = z.infer<typeof contactFormSchema>;
 
-// Configuration du transporteur SMTP pour LWS
+// SMTP de LWS.
 const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST, // Serveur SMTP configurable
-  port: 465, // Port SSL/TLS
-  secure: true, // SSL/TLS activé
+  host: process.env.SMTP_HOST,
+  port: 465,
+  secure: true,
   auth: {
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS,
   },
-  // Le certificat LWS est valide → on vérifie la chaîne TLS (protège d'un MITM
-  // sur le chemin SMTP, qui exposerait identifiants et contenu des emails).
-  // debug/logger désactivés en prod pour ne pas journaliser destinataires et
-  // dialogue SMTP (PII) dans les journaux du serveur.
-  connectionTimeout: 60000, // 60 secondes
-  greetingTimeout: 30000, // 30 secondes
-  socketTimeout: 60000, // 60 secondes
+  // Pas de `tls.rejectUnauthorized: false` : le certificat LWS est valide, on
+  // garde la vérification TLS. Pas de debug/logger non plus, ils écriraient
+  // les destinataires et le dialogue SMTP dans les logs du serveur.
+  connectionTimeout: 60000,
+  greetingTimeout: 30000,
+  socketTimeout: 60000,
 });
 
 async function verifyRecaptcha(token: string): Promise<boolean> {
@@ -79,19 +77,18 @@ async function verifyRecaptcha(token: string): Promise<boolean> {
 
     const data = await response.json();
 
-    // Vérification plus stricte de reCAPTCHA
     if (!data.success) {
       console.warn("reCAPTCHA verification failed:", data["error-codes"]);
       return false;
     }
 
-    // Score minimum plus élevé pour plus de sécurité
+    // Seuil à 0.7, plus strict que le 0.5 conseillé par Google.
     if (data.score < 0.7) {
       console.warn("reCAPTCHA score too low:", data.score);
       return false;
     }
 
-    // Vérifier que le token n'est pas expiré (reCAPTCHA tokens expirent après 2 minutes)
+    // Un jeton reCAPTCHA expire au bout de 2 minutes.
     const now = Date.now() / 1000;
     if (
       data.challenge_ts &&
@@ -112,7 +109,7 @@ export async function POST(request: NextRequest) {
   const t = await getApiTranslator(request);
 
   try {
-    // Rate limiting par IP, partagé en base (cf. rate-limit.ts).
+    // 5 messages par heure et par IP, compteur en base (voir rate-limit.ts).
     const clientIP =
       request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
       request.headers.get("x-real-ip") ||
@@ -125,7 +122,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Vérifier la taille du body (max 10KB)
+    // Corps limité à 10 Ko.
     const contentLength = request.headers.get("content-length");
     if (contentLength && parseInt(contentLength) > 10240) {
       return NextResponse.json(
@@ -134,14 +131,12 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Parser et valider les données avec Zod
     const body = await request.json();
     const validationResult = contactFormSchema.safeParse(body);
 
     if (!validationResult.success) {
-      // Retourner la première erreur de validation
-      // Les messages du schéma sont des clés `apiErrors` ; un champ absent ou du
-      // mauvais type produit le message anglais de Zod, qui n'en est pas une.
+      // Un champ absent ou mal typé donne le message anglais de Zod, qui n'est
+      // pas une clé `apiErrors` : dans ce cas on renvoie invalidData.
       const key = validationResult.error.issues[0]?.message ?? "";
       return NextResponse.json({ error: t.has(key) ? t(key) : t("invalidData") }, { status: 400 });
     }
@@ -149,7 +144,6 @@ export async function POST(request: NextRequest) {
     const { name, email, subject, message, recaptchaToken } =
       validationResult.data;
 
-    // Vérification reCAPTCHA
     const isRecaptchaValid = await verifyRecaptcha(recaptchaToken);
     if (!isRecaptchaValid) {
       return NextResponse.json(
@@ -158,7 +152,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Vérification de la configuration SMTP
     if (!process.env.SMTP_PASS) {
       return NextResponse.json(
         { error: t("smtpIncomplete") },
@@ -166,12 +159,11 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Timeout pour éviter les requêtes trop longues
+    // On abandonne l'envoi au bout de 30 s.
     const timeoutPromise = new Promise((_, reject) => {
-      setTimeout(() => reject(new Error("Timeout")), 30000); // 30 secondes
+      setTimeout(() => reject(new Error("Timeout")), 30000);
     });
 
-    // Préparation du contenu de l'email
     const subjectMap: { [key: string]: string } = {
       bug: "🐛 Signalement de bug",
       suggestion: "💡 Suggestion d'amélioration",
@@ -183,7 +175,7 @@ export async function POST(request: NextRequest) {
     const emailSubject = `${
       subjectMap[subject] || "📧 Nouveau message"
     } - ${name}`;
-    // Template React Email au design system DNA (remplace l'ancien HTML inline).
+    // Template React Email aux couleurs du site.
     const emailContent = await renderContactEmail({
       name,
       email,
@@ -191,13 +183,12 @@ export async function POST(request: NextRequest) {
       message,
     });
 
-    // Suivi d'ouverture (asset injecté + événement).
+    // Pixel de suivi d'ouverture.
     const contactTo = process.env.CONTACT_EMAIL || "contact@ascencia.re";
     let html = emailContent;
     const pixel = await createEmailEvent(contactTo, "contact");
     if (pixel) html = injectPixel(html, pixel.pixelUrl);
 
-    // Configuration de l'email
     const mailOptions = {
       from: `"${name}" <${process.env.SMTP_USER || "contact@ascencia.re"}>`,
       to: contactTo,
@@ -206,10 +197,8 @@ export async function POST(request: NextRequest) {
       replyTo: email,
     };
 
-    // Envoi de l'email avec timeout
     await Promise.race([transporter.sendMail(mailOptions), timeoutPromise]);
 
-    // Headers de sécurité
     const headers = new Headers();
     headers.set("X-Content-Type-Options", "nosniff");
     headers.set("X-Frame-Options", "DENY");
@@ -226,7 +215,7 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error("Erreur lors de l'envoi du message:", error);
 
-    // Headers de sécurité même en cas d'erreur
+    // Mêmes headers de sécurité sur la réponse d'erreur.
     const headers = new Headers();
     headers.set("X-Content-Type-Options", "nosniff");
     headers.set("X-Frame-Options", "DENY");

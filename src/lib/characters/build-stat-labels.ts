@@ -1,11 +1,11 @@
 /**
- * Statistique d'une priorité de build → clé de libellé (namespace `characterDetail`).
+ * Stat d'une priorité de build vers sa clé de libellé (namespace `characterDetail`).
  *
- * Partagée par l'onglet Build de la fiche et la fenêtre « Build rapide ». Les
- * builds curés n'emploient pas tous le même vocabulaire : à côté des clés du
- * builder (`STAT_KEYS`), on trouve celles des attributs du jeu (`StrongValue`)
- * et quelques synonymes (`Morale`, `Resolve`, `CritDamage`…). Sans alias, ces
- * clés s'affichaient telles quelles, en anglais, dans toutes les langues.
+ * Sert à l'onglet Build de la fiche et à la fenêtre « Build rapide ». Les builds
+ * curés ne parlent pas tous pareil : en plus des clés du builder (`STAT_KEYS`),
+ * il y a celles des attributs du jeu (`StrongValue`) et des synonymes
+ * (`Morale`, `Resolve`, `CritDamage`…). Sans alias, ces clés s'affichent brutes,
+ * en anglais, dans toutes les langues.
  */
 export const BUILD_STAT_LABEL_KEYS: Record<string, string> = {
   ATK: "statATK",

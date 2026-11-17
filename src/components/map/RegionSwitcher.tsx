@@ -7,8 +7,8 @@ import { NATIONS, mapProgressFromIndex, sumProgress } from "@/lib/map/world";
 import { useMapLabels } from "./useMapLabels";
 
 /**
- * Sélecteur de carte, organisé comme le jeu : nation → zone de la carte du
- * monde → sous-cartes. Chaque ligne porte son pourcentage d'exploration.
+ * Sélecteur de carte rangé comme dans le jeu : nation, puis zone de la carte du
+ * monde, puis sous-cartes. Chaque ligne a son pourcentage d'exploration.
  */
 export function RegionSwitcher({
   currentMapId,
@@ -42,7 +42,7 @@ export function RegionSwitcher({
             <div className="space-y-1.5">
               {areas.map((area) => (
                 <div key={area.id} className="border border-line/15 bg-ink-2/50">
-                  {/* Une zone à une seule carte n'a pas besoin d'un titre en plus du bouton. */}
+                  {/* Zone à une seule carte : pas de titre en plus du bouton. */}
                   {area.maps.length > 1 && (
                     <div className="flex items-center gap-2 border-b border-line/10 px-2.5 py-1.5">
                       <span className="truncate font-sans text-[0.72rem] font-medium text-parch/75">

@@ -10,13 +10,6 @@ type Props = {
   locale?: EmailLocale;
 };
 
-/**
- * Email d'annonce.
- *
- * Le titre et le corps sont rédigés par l'administration : ils ne sont donc
- * PAS traduits. Seul l'habillage (bouton, mention de désabonnement) suit la
- * langue du destinataire.
- */
 const copy = {
   fr: { cta: "Voir sur le site", unsub: "Tu reçois cet email parce que ton adresse est vérifiée sur DNA Interactive. Tu peux couper les annonces depuis tes préférences de notifications." },
   en: { cta: "View on the site", unsub: "You're receiving this because your address is verified on DNA Interactive. You can turn announcements off in your notification preferences." },
@@ -27,6 +20,11 @@ const copy = {
   tc: { cta: "在網站上查看", unsub: "你收到這封信是因為你的信箱已在 DNA Interactive 完成驗證。你可以在通知偏好中關閉公告。" },
 } as const;
 
+/**
+ * Email d'annonce. Le titre et le corps sont écrits par un admin et ne sont pas
+ * traduits ; seuls le bouton et la mention de désabonnement suivent la langue
+ * du destinataire.
+ */
 export function Announcement({ title, body, ctaUrl, preferencesUrl, locale = "en" }: Props) {
   const t = copy[locale];
   return (

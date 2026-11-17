@@ -1,17 +1,17 @@
 import theatreRotationsJson from "@/data/theatre/rotations.json";
 
 /**
- * Objets présents dans les données du jeu mais pas encore obtenables.
+ * Objets déjà dans les données du jeu mais pas encore obtenables.
  *
- * Une version livre souvent d'un coup des objets qui n'ouvriront que plus
- * tard : Énigme insoluble arrive avec la 1.7 mais ne s'obtient qu'à partir de
- * sa rotation du théâtre immersif. Le site la montre quand même, étiquetée, et
- * prévient que ses informations peuvent encore changer.
+ * Une version livre souvent des objets qui n'ouvrent que plus tard (Énigme
+ * insoluble arrive avec la 1.7 mais ne s'obtient qu'à sa rotation du théâtre
+ * immersif). On les affiche quand même, étiquetés, en prévenant que les infos
+ * peuvent changer.
  *
- * Deux sources, jamais devinées :
- * - `theatre` : le début de la première rotation du théâtre qui met l'objet en
- *   avant (`src/data/theatre/rotations.json`) ;
- * - `announced` : une date publiée par le studio, notée ci-dessous avec sa source.
+ * La date vient d'une de ces sources, jamais d'une supposition :
+ * - `theatre` : début de la première rotation du théâtre qui met l'objet en
+ *   avant (src/data/theatre/rotations.json) ;
+ * - `announced` : date publiée par le studio, notée plus bas avec sa source.
  */
 
 export type ItemAvailability = {
@@ -40,7 +40,7 @@ for (const rotation of [...theatreRotations].sort((a, b) => a.startsAt.localeCom
 
 /**
  * Date d'ouverture de l'objet si elle est encore à venir, sinon `null`.
- * Passé cet instant, l'objet redevient un objet ordinaire, sans rien à retoucher.
+ * Une fois la date passée, l'objet redevient normal tout seul.
  */
 export function getPendingAvailability(itemId: string, now: Date = new Date()): ItemAvailability | null {
   const announced = ANNOUNCED_AVAILABILITY[itemId];
@@ -54,9 +54,9 @@ export function getPendingAvailability(itemId: string, now: Date = new Date()): 
 }
 
 /**
- * Jour d'ouverture au fuseau du serveur de jeu (UTC+8), celui des annonces
- * officielles. Fuseau fixe : le rendu serveur et le navigateur écrivent la même
- * chose, pas d'écart d'hydratation.
+ * Jour d'ouverture au fuseau du serveur de jeu (UTC+8), celui des annonces.
+ * Fuseau fixe pour que serveur et navigateur écrivent la même date (pas d'écart
+ * d'hydratation).
  */
 export function formatAvailabilityDate(availableAt: string, intlLocale: string): string {
   return new Intl.DateTimeFormat(intlLocale, { day: "numeric", month: "long", timeZone: "Asia/Shanghai" }).format(

@@ -49,7 +49,7 @@ export interface GameMap {
   gamePoints?: GamePointsFile;
 }
 
-// Index version: legend without marker instances, with pre-computed counts
+// Version index : légende sans les instances de points, compteurs précalculés.
 export interface MarkerTypeSummary {
   id: number;
   name: string;

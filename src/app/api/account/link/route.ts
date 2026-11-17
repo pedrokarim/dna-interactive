@@ -9,9 +9,8 @@ export const dynamic = "force-dynamic";
 const PROVIDERS = ["discord", "google"] as const;
 type Provider = (typeof PROVIDERS)[number];
 
-// Délie un provider OAuth du compte connecté. Garde-fou : refuse si cela
-// laisserait le compte sans aucun moyen de connexion (aucun autre provider ET
-// pas de mot de passe défini).
+// Délie un provider OAuth du compte connecté. Refusé si le compte n'aurait
+// plus aucun moyen de se connecter (pas d'autre provider et pas de mot de passe).
 export async function DELETE(request: Request) {
   const t = await getApiTranslator(request);
   const user = await getCurrentUser();

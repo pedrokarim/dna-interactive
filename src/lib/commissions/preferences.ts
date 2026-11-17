@@ -38,7 +38,7 @@ export function normalizeCommissionFilter(filter: CommissionFilter): CommissionF
   };
 }
 
-/** Valeur inconnue (cookie, base, requête) → filtre valide, ou `null` si illisible. */
+/** Lit une valeur venue d'ailleurs (cookie, base, requête) : filtre valide, ou `null` si illisible. */
 export function parseCommissionFilter(value: unknown): CommissionFilter | null {
   const parsed = commissionFilterSchema.safeParse(value);
   return parsed.success ? normalizeCommissionFilter(parsed.data) : null;

@@ -6,16 +6,14 @@ import { isMissingTableError } from "@/lib/db-errors";
 import type { AppNotification } from "./types";
 
 /**
- * Notifications DÉRIVÉES des tables existantes (aucune table dédiée) :
- * - modération de mes builds (adminActions)
- * - signalements ouverts (admins)
+ * Notifications tirées des tables existantes, sans table à elles : la
+ * modération de mes builds (adminActions) et, pour les admins, les signalements
+ * ouverts.
  *
- * Elles complètent les annonces poussées par l'administration : ce sont les
- * seules notifications qui dépendent du compte qui regarde. Sûr si une table
- * est absente.
+ * Elles s'ajoutent aux annonces de l'administration et sont les seules à
+ * dépendre du compte connecté. Une table absente ne fait rien planter.
  *
- * NB : les votes étant anonymes (par IP), on ne peut plus notifier « X a aimé
- * ton build » – cette source a été retirée.
+ * Les votes sont anonymes (par IP) : plus de « X a aimé ton build ».
  */
 export async function getDerivedNotifications(
   user: {
@@ -86,8 +84,8 @@ export async function getDerivedNotifications(
         .orderBy(desc(schema.buildReports.createdAt));
       if (reports.length > 0) {
         out.push({
-          // L'identifiant intègre le nombre de signalements : traiter la pile
-          // puis en recevoir un nouveau redonne bien une notification non lue.
+          // Le nombre de signalements est dans l'id : après avoir vidé la pile,
+          // un nouveau signalement redonne une notification non lue.
           id: `reports-open-${reports.length}`,
           source: "derived",
           kind: "report",

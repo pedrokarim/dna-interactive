@@ -121,9 +121,9 @@ function characterSearchText(
   for (const langCode of availableLanguages) {
     const translation = character.translations[langCode];
     if (!translation) continue;
-    // resolveCharacterDisplayName remplace les noms-template "{nickname}"
-    // par le nom marketing, sinon la recherche sur les protagonistes Umbro
-    // ne matcherait jamais "Phoxhunter".
+    // resolveCharacterDisplayName remplace les noms-template "{nickname}" par
+    // le nom marketing. Sans ça, chercher "Phoxhunter" ne trouverait jamais
+    // les protagonistes Umbro.
     const displayName = resolveCharacterDisplayName(character, langCode);
     if (displayName) values.push(displayName);
     if (translation.subtitle) values.push(translation.subtitle);
@@ -145,9 +145,9 @@ export default function CharactersGridClient({
   const [, toggleFavorite] = useAtom(toggleCharacterFavoriteAtom);
   const [viewMode, setViewMode] = useListViewMode("characters", "simplified");
 
-  // Les fiches personnage suivent la langue du site, avec repli sur l'anglais.
-  // Pas de sélecteur de langues ici : ce mécanisme reste propre aux Demon Wedges,
-  // où comparer les libellés entre langues a un intérêt.
+  // Les fiches suivent la langue du site, avec repli sur l'anglais. Pas de
+  // sélecteur de langue ici : il n'existe que pour les Demon Wedges, où
+  // comparer les libellés d'une langue à l'autre sert à quelque chose.
   const gameLang = toGameDataLangCode(toLocale(locale));
   const nameFallbacks = useMemo(() => [gameLang, "EN"], [gameLang]);
 
@@ -269,9 +269,8 @@ export default function CharactersGridClient({
       .map(({ character }) => character);
 
     filtered.sort((a, b) => {
-      // Les nouveautés remontent en tête, quel que soit le tri choisi — sauf
-      // si l'utilisateur a explicitement demandé un ordre (nom, élément,
-      // rareté), auquel cas son choix prime et on ne le contredit pas.
+      // Avec le tri par défaut, les nouveautés passent en tête. Si on a choisi
+      // un ordre (nom, élément, rareté), on le respecte.
       if (sortMode === "default") {
         const rankA = newCharacterRank(a.charId);
         const rankB = newCharacterRank(b.charId);
@@ -301,7 +300,7 @@ export default function CharactersGridClient({
     return filtered;
   }, [search, elementFilter, weaponFilter, campFilter, sortMode, searchable, gameLang, locale]);
 
-  // Le terme cherché ne part pas : seulement le fait qu'il y en ait un.
+  // On n'envoie pas le terme cherché, seulement le fait qu'il y en ait un.
   useFilterAnalytics(
     "characters",
     {
@@ -380,7 +379,7 @@ export default function CharactersGridClient({
 
   return (
     <div className="space-y-4 md:space-y-8">
-      {/* En-tête gabarit — eyebrow mono + titre + compteur en équerres */}
+      {/* En-tête : repère de page, titre, compteur entre équerres */}
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div className="min-w-0">
           <DnaPageMark>{t('headerLabel')}</DnaPageMark>
@@ -848,7 +847,7 @@ export default function CharactersGridClient({
                   }
                   weapons={character.weaponTags}
                   portrait={portrait}
-                  // Première rangée (6 colonnes au plus) : visible à l'arrivée.
+                  // Première rangée (6 colonnes au plus), visible dès l'arrivée.
                   loading={index < 6 ? "eager" : "lazy"}
                   topRight={
                     <button

@@ -3,15 +3,15 @@
 import { useEffect, useState } from "react";
 
 /**
- * Extraction de la couleur dominante d'une image, côté client.
+ * Couleur dominante d'une image, calculée côté client.
  *
- * Rendu progressif : le composant s'affiche d'abord avec une couleur de repli
- * (teinte de catégorie), puis se recolore quand l'image est décodée et
- * échantillonnée. Universel — fonctionne aussi bien pour les assets locaux que
- * pour une URL saisie en admin, sans champ en base ni étape de build.
+ * Le composant s'affiche d'abord avec une couleur de repli (teinte de
+ * catégorie), puis se recolore quand l'image est décodée et échantillonnée.
+ * Marche pour les assets locaux comme pour une URL saisie en admin, sans champ
+ * en base ni étape de build.
  *
- * Une image tierce non-CORS « souille » le canvas : la lecture jette, on tombe
- * alors sur le repli. Les assets `/assets/…` sont same-origin → toujours lisibles.
+ * Une image tierce sans CORS « souille » le canvas : la lecture jette et on
+ * garde le repli. Les assets `/assets/…` sont same-origin, donc toujours lisibles.
  */
 
 const cache = new Map<string, string | null>();
@@ -45,8 +45,8 @@ function extractDominant(image: HTMLImageElement): string | null {
     return null;
   }
 
-  // Histogramme pondéré par la saturation : on écarte les gris/noirs/blancs de
-  // fond au profit de la vraie teinte de la clé visuelle.
+  // Histogramme pondéré par la saturation, pour écarter les gris, noirs et
+  // blancs du fond et garder la teinte de la clé visuelle.
   const buckets = new Map<number, { r: number; g: number; b: number; w: number }>();
   for (let i = 0; i < data.length; i += 4) {
     const r = data[i];
@@ -57,7 +57,7 @@ function extractDominant(image: HTMLImageElement): string | null {
 
     const sat = saturation(r, g, b);
     const lum = (r + g + b) / 765; // 0..1
-    // Poids : privilégie les couleurs saturées et de luminosité moyenne.
+    // On favorise les couleurs saturées et de luminosité moyenne.
     const weight = (0.15 + sat) * (1 - Math.abs(lum - 0.5));
     if (weight <= 0) continue;
 
@@ -83,11 +83,11 @@ function extractDominant(image: HTMLImageElement): string | null {
 }
 
 /**
- * Image réellement chargée pour l'échantillonnage. Un asset local passe par
- * l'optimiseur de Next en 64 px : l'histogramme ne lit que 24×24 pixels, et
- * charger l'original coûtait jusqu'à 1,2 Mo par image. La frise du calendrier
- * en demande une par barre (56 sur l'accueil, ~9 Mo au total). Une URL externe
- * reste chargée telle quelle : l'optimiseur n'accepte que les hôtes déclarés.
+ * URL chargée pour l'échantillonnage. Un asset local passe par l'optimiseur de
+ * Next en 64 px : l'histogramme ne lit que 24×24 pixels, et l'original pèse
+ * jusqu'à 1,2 Mo. La frise du calendrier en charge une par barre (56 sur
+ * l'accueil, ~9 Mo en tout). Une URL externe part telle quelle : l'optimiseur
+ * n'accepte que les hôtes déclarés.
  */
 function samplingSrc(src: string): string {
   if (!src.startsWith("/") || src.startsWith("//")) return src;
@@ -95,12 +95,12 @@ function samplingSrc(src: string): string {
 }
 
 /**
- * Couleur dominante de `src` (hex), ou `null` tant qu'elle n'est pas résolue /
- * si l'image est illisible. Mémoïsée par URL pour tout le cycle de vie de l'onglet.
+ * Couleur dominante de `src` en hex, ou `null` tant qu'elle n'est pas connue ou
+ * si l'image est illisible. Mise en cache par URL pour toute la vie de l'onglet.
  *
- * La valeur est lue directement dans le cache au rendu (aucun `setState` dans le
- * corps de l'effet) ; seul l'aboutissement asynchrone du chargement force un
- * nouveau rendu, qui relit le cache désormais renseigné.
+ * Le rendu lit directement le cache (pas de `setState` dans le corps de
+ * l'effet). Seule la fin du chargement force un nouveau rendu, qui relit le
+ * cache rempli entre-temps.
  */
 export function useDominantColor(src?: string | null): string | null {
   const [, bump] = useState(0);

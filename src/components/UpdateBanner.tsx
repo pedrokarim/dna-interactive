@@ -12,8 +12,8 @@ import { useTranslations } from "next-intl";
 
 type HomeAnnouncement = {
   id: string;
-  // Date de sortie du patch (ISO YYYY-MM-DD). Le bandeau disparaît
-  // automatiquement BANNER_LIFETIME_DAYS jours après cette date.
+  // Sortie du patch (YYYY-MM-DD). Le bandeau disparaît BANNER_LIFETIME_DAYS
+  // jours après.
   releaseDate: string;
   badge?: string;
   badgeKey?: string;
@@ -28,10 +28,8 @@ type HomeAnnouncement = {
   ctaIcon: typeof Map;
 };
 
-// Les bandeaux d'annonce d'un patch deviennent invisibles 4 semaines après la
-// sortie du patch — passé ce délai, on considère que les joueurs ont eu le
-// temps d'explorer la nouveauté. Les entrées restent dans le code pour
-// l'historique mais ne s'affichent plus.
+// Un bandeau de patch s'affiche 4 semaines, le temps que les joueurs voient
+// la nouveauté. Les anciennes entrées restent ici pour l'historique.
 const BANNER_LIFETIME_DAYS = 28;
 
 function isAnnouncementExpired(announcement: HomeAnnouncement): boolean {
@@ -44,7 +42,7 @@ function isAnnouncementExpired(announcement: HomeAnnouncement): boolean {
 }
 
 const HOME_ANNOUNCEMENTS: HomeAnnouncement[] = [
-  // Patch 1.4 "Silver Torrent / Racing Stars" — 2 juin 2026
+  // Patch 1.4 "Silver Torrent / Racing Stars", 2 juin 2026
   {
     id: "home-patch-v1-4",
     releaseDate: "2026-06-02",
@@ -75,7 +73,7 @@ const HOME_ANNOUNCEMENTS: HomeAnnouncement[] = [
     accentTextClassName: "text-gold-bright",
     ctaIcon: Map,
   },
-  // Patch 1.3 "Firmament Unbound" — 7 avril 2026 (auto-expirés depuis le 5 mai)
+  // Patch 1.3 "Firmament Unbound", 7 avril 2026 (expirés depuis le 5 mai)
   {
     id: "home-map-haojing-v1-3",
     releaseDate: "2026-04-07",

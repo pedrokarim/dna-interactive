@@ -4,8 +4,8 @@ export const dynamic = "force-dynamic";
 
 type RouteContext = { params: Promise<{ token: string }> };
 
-// Sert une image transparente et enregistre l'ouverture. L'URL a la forme
-// `/biribiri/<hash>.png` — indistinguable d'un chargement d'asset ordinaire.
+// Pixel transparent qui enregistre l'ouverture de l'email. L'URL
+// `/biribiri/<hash>.png` ressemble à un chargement d'image ordinaire.
 export async function GET(request: Request, { params }: RouteContext) {
   const { token } = await params;
   const clean = token.replace(/\.(png|gif|jpg)$/i, "");

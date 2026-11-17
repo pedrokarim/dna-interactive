@@ -53,17 +53,15 @@ type IntronBearer = {
 };
 
 /**
- * Complète les introns d'un personnage à partir des compétences extraites.
+ * Complète les introns d'un perso avec les compétences extraites.
  *
- * `characters.json` ne peut pas le faire seul, pour deux raisons :
- *  - les textes d'intron portent des jetons « #N » dont les valeurs sortent de
- *    formules que seul `extract-skills` sait évaluer ;
- *  - le 7ᵉ intron n'est pas une clé `GRADEUP` : le jeu le range comme une
- *    compétence de type `UltraPassive` rattachée au personnage. Il suffit
- *    qu'elle existe pour que le 7ᵉ niveau existe — plus rien à écrire à la main
- *    quand le jeu en ajoute (Rebecca et Hellfire en 1.3 ; Berenica, Camilla et
- *    Lisbell en 1.6). Son coût n'est déclaré nulle part : il reprend celui du
- *    niveau précédent, comme tous les autres (30 Pensées).
+ * `characters.json` ne suffit pas. Les textes d'intron ont des jetons « #N »
+ * dont les valeurs sortent de formules que seul `extract-skills` sait évaluer.
+ * Et le 7e intron n'est pas une clé `GRADEUP` : le jeu le range comme une
+ * compétence `UltraPassive` du perso. Si elle existe, le 7e niveau existe, rien
+ * à écrire à la main quand le jeu en ajoute (Rebecca et Hellfire en 1.3,
+ * Berenica, Camilla et Lisbell en 1.6). Son coût n'est déclaré nulle part : on
+ * reprend celui du niveau précédent, comme tous les autres (30 Pensées).
  */
 function withResolvedIntronsFor<T extends IntronBearer>(entry: T): T {
   const set = skillsByCharId.get(entry.charId);
@@ -136,10 +134,9 @@ function withResolvedIntrons(character: CharacterRecord): CharacterRecord {
 
 function slugifyEnglishName(name: string | null | undefined): string | null {
   if (!name) return null;
-  // Les protagonistes utilisent un nom-template "{nickname}" résolu côté
-  // client avec le pseudo du joueur. Ce template slugifie en "nickname",
-  // ce qui collisionne entre plusieurs persos (variantes Lumino/Umbro).
-  // → fallback sur character.id pour ces cas.
+  // Les protagonistes ont pour nom un template "{nickname}", remplacé côté
+  // client par le pseudo du joueur. Il donnerait le slug "nickname" pour
+  // plusieurs persos (variantes Lumino/Umbro) : on retombe sur character.id.
   if (/^\{[^}]+\}$/.test(name.trim())) return null;
   const slug = name
     .normalize("NFKD")
@@ -151,9 +148,9 @@ function slugifyEnglishName(name: string | null | undefined): string | null {
 }
 
 /**
- * Adresses fixées à la main. Les deux protagonistes existent chacun en femme et
- * en homme sous le même titre (« Vita », « Mors ») : l'adresse tirée du nom
- * serait la même pour les deux fiches. Le genre est donc écrit dans l'adresse.
+ * Slugs fixés à la main. Chaque protagoniste existe en femme et en homme sous
+ * le même nom (« Vita », « Mors ») : tiré du nom, le slug serait le même pour
+ * les deux fiches, donc on y met le genre.
  */
 const SLUG_OVERRIDES: Record<number, string> = {
   1201: "vita-female",
@@ -180,11 +177,11 @@ for (const character of characters) {
   }
 }
 
-// Anciens identifiants des variantes d'élément du protagoniste, désormais
-// fusionnées en un seul record multi-éléments (cf. MULTI_ELEMENT_GROUPS dans
-// le générateur). On les redirige vers le record unifié pour ne pas casser les
-// liens/bookmarks existants. Les charIds/internalName du membre *primary*
-// (1201 / 120101 / Nvzhu02 / Nanzhu02) résolvent déjà nativement via le record.
+// Anciens identifiants des variantes d'élément du protagoniste, fusionnées
+// depuis en un seul record multi-éléments (MULTI_ELEMENT_GROUPS dans le
+// générateur). Redirigés vers ce record pour ne pas casser les liens et les
+// favoris. Les charId et internalName du membre principal (1201, 120101,
+// Nvzhu02, Nanzhu02) sont déjà trouvés par le record lui-même.
 const LEGACY_ID_ALIASES: Record<string, string> = {
   "char-nvzhu": "char-protagonist-female",
   "char-nvzhu02": "char-protagonist-female",
@@ -199,9 +196,7 @@ const LEGACY_ID_ALIASES: Record<string, string> = {
   "male-protagonist": "char-protagonist-male",
 };
 
-// ---------------------------------------------------------------------------
-// Multi-element helpers
-// ---------------------------------------------------------------------------
+// Persos multi-éléments
 
 /** Tous les éléments d'un perso (un seul pour les persos mono-élément). */
 export function getCharacterElements(character: CharacterRecord): CharacterElement[] {
@@ -235,17 +230,15 @@ function mergeVariantTranslations(
   const merged: Record<string, CharacterLocalizedContent> = {};
   for (const [code, t] of Object.entries(base)) {
     const v = variant[code];
-    // On garde le nom/sous-titre "marketing" stable du record unifié, mais on
-    // prend les effets d'intron spécifiques à l'élément actif.
+    // Nom et sous-titre du record unifié, effets d'intron de l'élément actif.
     merged[code] = v ? { ...t, intronEffects: v.intronEffects } : t;
   }
   return merged;
 }
 
 /**
- * Renvoie une vue "aplatie" du perso pour l'élément actif : le record de base
- * avec les champs de la variante choisie écrasés. Pour un perso mono-élément
- * (pas de `variants`), renvoie le record tel quel.
+ * Le perso vu pour l'élément actif : le record de base, écrasé par les champs
+ * de la variante choisie. Sans `variants`, le record tel quel.
  */
 export function getActiveCharacterView(
   character: CharacterRecord,

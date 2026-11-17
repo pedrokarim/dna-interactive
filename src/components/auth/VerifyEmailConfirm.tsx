@@ -10,11 +10,10 @@ import { AuthMessage } from "./AuthPrimitives";
 type Status = "idle" | "busy" | "ok" | "invalid";
 
 /**
- * Confirmation de l'adresse email, déclenchée par un clic.
+ * Confirmation de l'adresse email au clic sur le bouton.
  *
- * Le jeton n'est consommé qu'à l'appui sur le bouton : ouvrir le lien ne
- * suffit plus, pour qu'un robot qui visite les liens d'un email ne puisse pas
- * confirmer l'adresse à la place de son titulaire.
+ * Ouvrir le lien ne consomme pas le jeton : un robot qui visite les liens d'un
+ * email ne doit pas pouvoir confirmer l'adresse à la place de son titulaire.
  */
 export function VerifyEmailConfirm({ token }: { token: string }) {
   const t = useTranslations("auth");

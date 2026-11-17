@@ -2,12 +2,12 @@ import { useMemo, useSyncExternalStore } from "react";
 import { toIntlLocale } from "@/lib/intl-locale";
 
 /**
- * Utilitaires d'affichage des cosmétiques, sûrs côté client : aucun import de
- * données ici (les JSON restent côté serveur).
+ * Affichage des cosmétiques, utilisable côté client : aucun import de données
+ * ici, les JSON restent côté serveur.
  */
 
-// Vit dans un module neutre pour rester importable d'un composant serveur ;
-// réexporté ici pour ceux qui le prennent déjà à cette adresse.
+// Défini dans un module neutre pour qu'un composant serveur puisse l'importer.
+// Réexporté ici pour les imports qui pointent déjà sur ce fichier.
 export { toIntlLocale };
 
 export function formatDate(iso: string | null, locale: string): string | null {
@@ -20,10 +20,10 @@ export function formatNumber(value: number, locale: string): string {
 }
 
 /*
- * Horloge partagée, même principe que `useReleaseCountdown` : un store externe
- * lu par `useSyncExternalStore`, une seule minuterie pour toute la page, aucun
- * `setState` au montage. Côté serveur l'heure du visiteur est inconnue : on
- * rend sans statut (un « en cours » calculé au build resterait figé).
+ * Horloge partagée, comme `useReleaseCountdown` : un store externe lu par
+ * `useSyncExternalStore`, une seule minuterie pour la page, pas de `setState`
+ * au montage. Côté serveur on ne connaît pas l'heure du visiteur, donc on rend
+ * sans statut (un « en cours » calculé au build resterait figé).
  */
 let clockTimer: ReturnType<typeof setInterval> | null = null;
 let clockNow = 0;
@@ -72,7 +72,7 @@ export function formatRemaining(target: string, now: Date, locale: string): stri
   const hours = Math.floor((ms % 86_400_000) / 3_600_000);
   const minutes = Math.floor((ms % 3_600_000) / 60_000);
   const intlLocale = toIntlLocale(locale);
-  // Le format « narrow » retombe sur « 19d » en japonais, coréen et chinois : ces langues prennent le format court (« 19日 »).
+  // En japonais, coréen et chinois, « narrow » donne « 19d » : on y prend le format court (« 19日 »).
   const unitDisplay = ["ja", "ko", "zh-Hant"].includes(intlLocale) ? "short" : "narrow";
   const unit = (value: number, name: "day" | "hour" | "minute") =>
     new Intl.NumberFormat(intlLocale, { style: "unit", unit: name, unitDisplay }).format(value);

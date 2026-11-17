@@ -5,17 +5,15 @@ import { ELEMENTS } from "./elements";
 import type { DnaPickerItem } from "./ItemPicker";
 
 /**
- * Briques internes partagées par les éditeurs en « pétales » qui imitent le jeu
- * (Demon Wedges, arme de consonance) : cases en parallélogrammes penchées vers
- * le centre + mécanique de drag-and-drop (drop = swap). Non exporté dans le
- * barrel — détail d'implémentation.
+ * Briques internes des éditeurs en « pétales » qui imitent le jeu (Demon Wedges,
+ * arme de consonance) : cases en parallélogrammes penchées vers le centre, et
+ * échange de deux cases par glisser-déposer. Pas exporté dans le barrel.
  */
 
 /**
- * Marqueur « un Track-Shift Module est posé sur cette case » — cinquième
- * symbole du jeu d'icônes de pistes. Chemin dupliqué à dessein : cette
- * primitive du design system ne dépend pas de `lib/characters/builds`, où se
- * trouve la définition canonique.
+ * Icône d'un Track-Shift Module posé sur la case (cinquième symbole des icônes de
+ * pistes). Chemin recopié exprès : le design system ne dépend pas de
+ * `lib/characters/builds`, où il est défini.
  */
 const TRACK_SHIFT_ICON = "/assets/ui/tracks/track-shift.png";
 
@@ -47,8 +45,8 @@ export function hexToRgb(hex: string): string {
 }
 
 /**
- * État + logique de réorganisation par drag d'un ensemble de slots positionnés.
- * Le swap échange item + track entre deux positions et notifie via onChange.
+ * État du drag entre les cases. `swap` échange item et track entre deux positions
+ * et passe la nouvelle liste à onChange.
  */
 export function useWedgeSwap(slots: WedgeSlotData[], onChange?: (slots: WedgeSlotData[]) => void) {
   const [dragFrom, setDragFrom] = useState<number | null>(null);
@@ -103,7 +101,7 @@ export function WedgeSlotCell({
   isOver: boolean;
   kindLabel?: string;
   onPick: () => void;
-  /** Bascule le Track-Shift de cette case. Absent = pas de controle (lecture seule). */
+  /** Active ou retire le Track-Shift de la case. Absent : pas de bouton (lecture seule). */
   onToggleTrack?: () => void;
   trackLabel?: string;
   onDragStart: () => void;
@@ -116,15 +114,15 @@ export function WedgeSlotCell({
   const icon = slot.item?.icon;
   const draggable = !readOnly && Boolean(slot.item);
 
-  // Un Track-Shift n'a de sens que sur une piece a polarite reelle (1-4) : les
-  // pieces universelles n'ont pas de piste a ajuster.
+  // Un Track-Shift ne va que sur une pièce à polarité réelle (1 à 4) : les pièces
+  // universelles n'ont pas de piste à ajuster.
   const polarity = slot.item?.polarity ?? null;
   const canShift = Boolean(onToggleTrack && slot.item && polarity != null && polarity >= 1 && polarity <= 4);
   const badgeSide = side === "left" ? "left-1" : "right-1";
 
   return (
-    // Colonne : la case elle-meme, puis son nom. Sans le nom on ne sait pas quelle
-    // piece est posee — 828 mods sur 829 partagent leur icone.
+    // La case, puis le nom de la pièce : 828 mods sur 829 partagent leur icône,
+    // sans le nom on ne sait pas laquelle est posée.
     <div className="flex shrink-0 flex-col items-center gap-1" style={{ width: dims.slotW }}>
     <div className="relative" style={{ height: dims.slotH, width: dims.slotW }}>
     <button
@@ -184,7 +182,7 @@ export function WedgeSlotCell({
               : "border-white/25 bg-black/50 hover:border-gold/50",
           )}
         >
-          {/* Posé = module net ; non posé = même icône estompée, qui sert d'invite. */}
+          {/* Posé : icône nette. Pas posé : la même, estompée, pour inviter à cliquer. */}
           <img
             src={TRACK_SHIFT_ICON}
             alt=""

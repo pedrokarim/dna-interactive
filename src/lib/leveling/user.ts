@@ -6,7 +6,7 @@ import { EMPTY_CONTRIBUTIONS, levelProgress, xpFromContributions, type Contribut
 
 export type UserProgress = LevelProgress & { contributions: Contributions };
 
-/** Progression (XP/niveau) d'un utilisateur, dérivée de ses contributions. Sûr si tables absentes. */
+/** XP et niveau d'un utilisateur, calculés sur ses contributions. Tables absentes : niveau 0. */
 export async function getUserProgress(userId: string): Promise<UserProgress> {
   const db = getDb();
   try {
@@ -15,8 +15,8 @@ export async function getUserProgress(userId: string): Promise<UserProgress> {
       .from(schema.builds)
       .where(eq(schema.builds.userId, userId));
 
-    // Votes désormais anonymes (par IP) ⇒ plus attribuables à un utilisateur.
-    // "likesReceived" reste dérivé du compteur cumulatif builds.voteCount.
+    // Les votes sont anonymes (par IP), on ne peut plus les rattacher à un
+    // compte : votesGiven reste à 0. likesReceived vient du compteur builds.voteCount.
     const contributions: Contributions = {
       buildsPublished: builds.length,
       likesReceived: builds.reduce((sum, b) => sum + (b.voteCount ?? 0), 0),

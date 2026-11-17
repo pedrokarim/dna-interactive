@@ -13,8 +13,8 @@ function fmt(ms: number): string {
 
 /**
  * Compte à rebours vers `target` (ISO). Appelle `onComplete` une seule fois au
- * passage à 0. Rendu différé après montage pour éviter tout mismatch
- * d'hydratation (le temps courant diffère serveur/client).
+ * passage à 0. Rendu seulement après le montage : l'heure diffère entre
+ * serveur et client, sinon l'hydratation casse.
  */
 export function CountdownTimer({
   target,

@@ -27,7 +27,7 @@ export type SkillStep = { breaks: number; costs: Cost[] };
 
 export type CharacterProgression = {
   breaks: BreakStep[];
-  /** Emplacement de compétence des builds (1 à 3) → paliers. */
+  /** Paliers par emplacement de compétence des builds (1 à 3). */
   skills: Record<string, SkillStep[]>;
   /** Intron n (index n-1) ; le 7ᵉ n'existe que pour certains persos. */
   introns: Cost[][];

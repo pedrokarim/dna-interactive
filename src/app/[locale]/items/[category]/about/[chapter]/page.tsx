@@ -19,10 +19,8 @@ import { generatePageMetadata } from "@/lib/metadata";
 import { toGameDataLangCode, toLocale } from "@/i18n/config";
 
 /**
- * Une page par chapitre de guide.
- *
- * Chaque chapitre a sa propre adresse, son propre titre et son propre lien vers
- * le suivant — une documentation, pas un mur qu'on fait défiler.
+ * Une page par chapitre de guide, chacune avec son adresse, son titre et un lien
+ * vers le chapitre suivant.
  */
 
 type ChapterPageProps = {
@@ -30,8 +28,8 @@ type ChapterPageProps = {
 };
 
 /**
- * Le registre indexe les catégories par identifiant, la route par adresse.
- * Les deux coïncident aujourd'hui, mais rien ne le garantit : on traduit.
+ * Le registre indexe les catégories par id, la route par slug. Pour l'instant
+ * c'est pareil, mais rien ne l'impose : on traduit le slug en id.
  */
 function resolve(categorySlug: string, chapterSlug: string) {
   const category = getItemCategoryBySlug(categorySlug);
@@ -68,7 +66,7 @@ export async function generateMetadata(
     locale,
   ).then((meta) => ({
     ...meta,
-    // Un chapitre isolé n'a de sens que dans sa suite : on le dit aux robots.
+    // Position du chapitre dans le guide, pour les robots.
     other: neighbours ? { "article:section": `${neighbours.position}/${neighbours.total}` } : undefined,
   }));
 }

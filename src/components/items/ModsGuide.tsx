@@ -16,14 +16,11 @@ import {
 import { GuideImageSlot } from "@/components/items/GuideImageSlot";
 
 /**
- * Guide des **Demon Wedges**, servi en chapitres.
- *
- * Il vivait auparavant en dur dans la route `about`, d'un seul tenant. Le
- * contenu est le même ; seul le découpage change, pour que chaque sujet ait sa
- * page et son adresse. Voir `lib/items/guide-chapters.ts`.
+ * Guide des Demon Wedges, en chapitres : une page et une adresse par sujet.
+ * Le découpage est dans `lib/items/guide-chapters.ts`.
  */
 
-// Noms propres de Demon Wedges : non traduits, ils portent le nom du jeu.
+// Noms propres de Demon Wedges : pas traduits, ce sont les noms du jeu.
 const DEMON_WEDGE_EXAMPLES = [
   { src: "/assets/items/mods/T_Mod_Phoenix01.png", label: "Phoenix" },
   { src: "/assets/items/mods/T_Mod_Ifrit01.png", label: "Ifrit" },
@@ -410,7 +407,7 @@ export async function ModsGuideChapter({
             </article>
           </div>
 
-          {/* Dernier chapitre : on referme le guide plutôt que de laisser le lecteur en suspens. */}
+          {/* Dernier chapitre : un encart de fin avec où aller ensuite. */}
           <section className="border border-hydro/25 bg-linear-to-r from-hydro/10 to-gold/10 p-6">
             <h2 className="flex items-center gap-2 font-display text-xl text-parch">
               <Sparkles className="h-5 w-5 text-hydro" />

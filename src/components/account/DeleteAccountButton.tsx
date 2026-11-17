@@ -7,8 +7,8 @@ import { DnaButton } from "@/components/dna";
 import { useConfirm } from "@/components/dna/ConfirmProvider";
 
 /**
- * Suppression de compte (RGPD). Confirmation via le dialogue du design system,
- * puis appel DELETE /api/account et déconnexion (le cookie de session est effacé).
+ * Suppression de compte (RGPD) : confirmation par le dialogue du design system,
+ * puis DELETE /api/account et déconnexion (le cookie de session est effacé).
  */
 export function DeleteAccountButton() {
   const t = useTranslations("account");

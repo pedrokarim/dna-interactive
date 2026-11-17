@@ -44,13 +44,13 @@ const ELEMENT_TINT: Record<string, string> = {
   Dark: "var(--color-umbro)",
 };
 
-/** Home hub — carte, base de données, builder et outils, câblés sur les vraies données. */
+/** Accueil : carte, base de données, builder et outils, sur les vraies données. */
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  // Le middleware laisse passer les chemins à point (`/wp-login.php`, `/.env`) : ils
-  // arrivent ici avec ce chemin pour locale. Le layout répond 404, mais la page
-  // se rend en parallèle : sans ce garde-fou, chaque sonde de robot lançait
-  // tout l'accueil, requêtes en base comprises, avant de planter sur `Intl`.
+  // Le middleware laisse passer les chemins avec un point (`/wp-login.php`, `/.env`),
+  // qui arrivent ici avec ce chemin en guise de locale. Le layout répond 404 mais la
+  // page se rend en parallèle : sans ce test, chaque sonde de robot rendait tout
+  // l'accueil (requêtes en base comprises) avant de planter sur `Intl`.
   if (!routing.locales.includes(locale as Locale)) notFound();
   const langCode = locale.toUpperCase();
   const fmt = new Intl.NumberFormat(toIntlLocale(locale));
@@ -59,9 +59,9 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   const catalog = getItemCatalog();
   const itemsTotal = catalog.categories.reduce((sum, c) => sum + (c.itemCount ?? 0), 0);
 
-  // Fenêtre d'événements pré-chargée autour du jour courant ; la frise charge la
-  // suite au défilement. `serverToday` ne sert qu'au premier rendu — le client
-  // repasse aussitôt sur l'horloge du visiteur.
+  // On précharge les événements autour d'aujourd'hui, la frise charge la suite au
+  // défilement. `serverToday` ne sert qu'au premier rendu, le client repasse tout de
+  // suite sur l'horloge du visiteur.
   const serverToday = localTodayIso();
   const calendarFrom = addDaysIso(serverToday, -INITIAL_WINDOW_BEFORE);
   const calendarTo = addDaysIso(serverToday, INITIAL_WINDOW_AFTER);
@@ -84,11 +84,10 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   const builds: HomeBuildCard[] = topBuilds.map((b) => {
     const ch = getCharacterById(b.characterId);
     const name = ch ? resolveCharacterDisplayName(ch, langCode) ?? ch.internalName : b.characterId;
-    // `head` d'abord, et surtout PAS `gacha` : les visuels gacha sont des bandes
-    // 256 × 1024 (4 fois plus hautes que larges). Dans la vignette paysage de
-    // la carte, `cover` n'en montrait que 17 % — d'où les personnages coupés,
-    // qu'aucun `background-position` ne pouvait rattraper. L'avatar `head` est
-    // carré (256 × 256), la vignette en montre 69 %.
+    // `head` d'abord, jamais `gacha` : les visuels gacha font 256 × 1024 et en
+    // `cover` la vignette paysage n'en montrait que 17 % (personnages coupés, aucun
+    // `background-position` n'y changeait rien). `head` est carré (256 × 256), la
+    // vignette en montre 69 %.
     const portrait =
       ch?.portraits.head.publicPath ?? ch?.portraits.icon.publicPath ?? null;
     const elementKey = b.element ?? ch?.element.key ?? null;

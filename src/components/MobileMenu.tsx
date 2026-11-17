@@ -45,7 +45,7 @@ export default function MobileMenu({ authSlot }: { authSlot?: ReactNode }) {
   const mounted = useSyncExternalStore(subscribeMounted, () => true, () => false);
   const pathname = usePathname();
 
-  // Close on escape key + body scroll lock
+  // Échap ferme le menu, et la page ne défile pas tant qu'il est ouvert.
   useEffect(() => {
     if (!isOpen) return;
 
@@ -68,10 +68,9 @@ export default function MobileMenu({ authSlot }: { authSlot?: ReactNode }) {
     return pathname === href || pathname.startsWith(`${href}/`);
   };
 
-  // The drawer + backdrop must be rendered into document.body via a portal,
-  // otherwise the surrounding `<header>` (which uses `backdrop-blur`) creates
-  // a containing block that traps `position: fixed` descendants and shrinks
-  // the drawer to the header's height.
+  // Tiroir et fond passent par un portail dans document.body : le `<header>`
+  // a un `backdrop-blur`, qui crée un bloc conteneur pour les `position: fixed`.
+  // Sans portail, le tiroir prend la hauteur du header.
   const overlay = (
     <div className="lg:hidden">
       <div

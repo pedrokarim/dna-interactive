@@ -22,9 +22,9 @@ export function typeProgress(group: MapTypeGroup, marked: ReadonlySet<string>): 
 }
 
 /**
- * Exploration d'une carte : seuls les types `tracked` comptent. Les ressources
- * et géniemons réapparaissent, les boutiques ne se « trouvent » pas : les
- * inclure rendrait le pourcentage inatteignable ou dénué de sens.
+ * Exploration d'une carte : seuls les types `tracked` comptent. Ressources et
+ * géniemons réapparaissent, une boutique ne se « trouve » pas : les compter
+ * fausserait le pourcentage.
  */
 export function mapProgress(map: NormalizedMap, marked: ReadonlySet<string>): Progress {
   let found = 0;

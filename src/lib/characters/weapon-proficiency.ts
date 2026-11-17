@@ -9,9 +9,9 @@ import proficiencyJson from "@/data/characters/weapon-proficiency.json";
  * supplémentaire, se débloque contre des matériaux : quatre types possibles par
  * personnage, fixés par le jeu, dont un seul est actif à la fois.
  *
- * Ce module ne lit que le fichier des prédilections : il reste léger, pour que
- * le builder puisse l'embarquer sans tirer tout le catalogue d'objets. La
- * lecture d'un build complet vit dans `weapon-proficiency-build.ts`.
+ * Ce module ne lit que le fichier des prédilections, pour que le builder
+ * l'embarque sans tirer tout le catalogue d'objets. La lecture d'un build
+ * complet est dans `weapon-proficiency-build.ts`.
  */
 
 export type WeaponRange = "melee" | "ranged";
@@ -116,8 +116,8 @@ export interface ProficiencySuggestion {
 }
 
 function weaponWeight(weapon: ProficiencySuggestionWeapon): number {
-  // Une arme de calamité sans maîtrise perd ses Potentiels, pas seulement de l'ATQ :
-  // elle pèse plus qu'un premier choix ordinaire.
+  // Sans maîtrise, une arme de calamité perd aussi ses Potentiels : elle pèse
+  // plus qu'un premier choix ordinaire.
   return (weapon.calamity ? 4 : 0) + (weapon.rank === "best" ? 2 : 1);
 }
 

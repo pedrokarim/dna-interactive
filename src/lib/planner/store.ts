@@ -5,7 +5,7 @@ import type { PlannerState } from "./types";
 
 /**
  * Plan du visiteur, dans le navigateur. Relu à travers le schéma : une entrée
- * corrompue ou d'une ancienne version est écartée, jamais tout le plan.
+ * corrompue ou d'une ancienne version est écartée seule, le reste du plan reste.
  */
 const storage = createJSONStorage<PlannerState>(() =>
   // Côté serveur, pas de stockage : jotai lit alors la valeur initiale.
@@ -26,10 +26,10 @@ const safeStorage = {
 export const PLANNER_STORAGE_KEY = "planner:v1";
 
 /**
- * `getOnInit` : le plan est lu dès la création de l'atome, pas après le
- * montage. Sans cela, une action rapide (import d'un build à l'arrivée sur la
- * page) partirait d'un plan vide et écraserait le vrai. L'interface n'est de
- * toute façon rendue qu'au client, une fois les données chargées.
+ * `getOnInit` : on lit le plan dès la création de l'atome, avant le montage.
+ * Sinon une action rapide (import d'un build à l'arrivée sur la page) partirait
+ * d'un plan vide et écraserait le vrai. De toute façon l'interface n'est rendue
+ * qu'au client, une fois les données chargées.
  */
 export const plannerStateAtom = atomWithStorage<PlannerState>(PLANNER_STORAGE_KEY, EMPTY_PLANNER, safeStorage, {
   getOnInit: true,

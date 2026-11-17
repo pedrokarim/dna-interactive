@@ -3,15 +3,14 @@
 import { cn } from "./cn";
 
 /**
- * Choix des **Traits** greffés sur un Géniemon.
+ * Choix des Traits greffés sur un Géniemon.
  *
- * L'agencement n'est pas inventé : le jeu dispose les emplacements en couronne
- * autour de la créature, et c'est cette forme qu'on reprend. Une sphère pleine
- * porte le glyphe de son Trait, une sphère vide attend ; cliquer une sphère
- * pleine la libère. Le catalogue, dessous, se parcourt par catégorie.
+ * Emplacements en couronne autour de la créature, comme dans le jeu. Une sphère
+ * pleine porte le glyphe de son Trait ; un clic dessus la vide. Le catalogue,
+ * en dessous, est rangé par catégorie.
  *
- * Présentatif : le parent fournit le pool et l'état. Le composant ne connaît ni
- * le catalogue ni la locale, ce qui le rend racontable en story.
+ * Purement présentatif : le parent fournit le pool et l'état, le composant ne
+ * connaît ni le catalogue ni la locale (pratique pour la story).
  */
 
 export interface DnaTraitOption {
@@ -55,8 +54,8 @@ type Props = {
 /**
  * Position d'une sphère sur la couronne, en pourcentage du conteneur.
  *
- * On démarre en haut et on tourne dans le sens horaire : à trois emplacements
- * la figure est un triangle, à quatre un losange – ce que montre le jeu.
+ * On part du haut dans le sens horaire : triangle à trois emplacements, losange
+ * à quatre, comme dans le jeu.
  */
 function slotPosition(index: number, total: number) {
   const angle = (index / total) * 2 * Math.PI - Math.PI / 2;
@@ -85,8 +84,8 @@ export function DnaGenimonTraitEditor({
       onChange(selected.filter((k) => k !== key));
       return;
     }
-    // Atteindre la limite ne doit pas bloquer sans rien dire : on libère le
-    // plus ancien choix, ce qui laisse toujours une issue au clic.
+    // Couronne pleine : on libère le plus ancien choix plutôt que de bloquer
+    // le clic sans rien dire.
     if (isFull) {
       onChange([...selected.slice(1), key]);
       return;
@@ -99,7 +98,7 @@ export function DnaGenimonTraitEditor({
       {/* ------------------------------------------------- la couronne */}
       <div className="flex flex-col items-center gap-3">
         <div className="relative aspect-square w-full max-w-[17rem]">
-          {/* Le cercle de liaison, tracé en CSS : jamais un glyphe. */}
+          {/* Cercle de liaison tracé en CSS, pas avec un glyphe. */}
           <span
             aria-hidden
             className="absolute inset-[12%] rounded-full border border-dashed border-white/12"

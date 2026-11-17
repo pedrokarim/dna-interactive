@@ -2,8 +2,8 @@ import "server-only";
 import nodemailer, { type Transporter } from "nodemailer";
 import { createEmailEvent, injectPixel, type EmailKind } from "./tracking";
 
-// Transport SMTP partagé (config LWS existante : SMTP_HOST/USER/PASS, port 465
-// SSL). Singleton lazy pour éviter de recréer la connexion à chaque envoi.
+// Transport SMTP partagé (LWS : SMTP_HOST/USER/PASS, port 465 en SSL), créé au
+// premier envoi puis réutilisé.
 let transport: Transporter | null = null;
 
 function getTransport(): Transporter {
@@ -13,8 +13,8 @@ function getTransport(): Transporter {
     port: 465,
     secure: true,
     auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
-    // Certificat LWS valide → vérification TLS activée (défaut nodemailer),
-    // pour empêcher un MITM d'intercepter les liens de reset/vérification.
+    // Le certificat LWS est valide : on garde la vérification TLS par défaut de
+    // nodemailer, sinon un MITM pourrait lire les liens de reset et de vérification.
     connectionTimeout: 30_000,
     greetingTimeout: 15_000,
     socketTimeout: 30_000,
@@ -43,9 +43,8 @@ type SendMailInput = {
 };
 
 /**
- * Envoie un email. Si le SMTP n'est pas configuré (dev), on ne jette pas : on
- * loggue et on renvoie `{ skipped: true }` pour que les flux restent testables
- * sans secrets.
+ * Sans SMTP configuré (en dev), pas d'exception : on logue et on renvoie
+ * `{ skipped: true }`, pour tester les parcours sans les secrets.
  */
 export async function sendMail({ to, subject, html, text, replyTo, track }: SendMailInput): Promise<{ skipped: boolean }> {
   if (!isMailConfigured()) {

@@ -2,9 +2,9 @@ import type { ReactNode } from "react";
 import { headers } from "next/headers";
 import { ELEMENTS, type ElementKey } from "@/components/dna/elements";
 
-/* Briques partagées pour les images Open Graph (`next/og` / Satori).
- * Règles Satori : tout conteneur multi-enfants est en display:flex ; pas de
- * glyphes hors des fontes embarquées (sinon fetch de police dynamique). */
+/* Briques communes aux images Open Graph (`next/og` / Satori).
+ * Avec Satori, tout conteneur à plusieurs enfants doit être en display:flex, et
+ * un glyphe absent des fontes embarquées déclenche le fetch d'une police. */
 
 export const FALLBACK_HEX = "#a48ed0";
 export const INK = "#0b0a0f";
@@ -44,14 +44,14 @@ export async function resolveOrigin(): Promise<string> {
       return `${proto}://${host}`;
     }
   } catch {
-    /* headers() indisponible → fallback prod */
+    /* headers() indisponible : on retombe sur la prod */
   }
   return "https://dna.ascencia.re";
 }
 
 export function truncate(value: string, max: number): string {
   const clean = value.trim();
-  // "..." ASCII : l'ellipsis "…" n'est pas dans les fontes embarquées.
+  // Trois points ASCII : le caractère "…" n'est pas dans les fontes embarquées.
   return clean.length > max ? `${clean.slice(0, max - 3).trimEnd()}...` : clean;
 }
 

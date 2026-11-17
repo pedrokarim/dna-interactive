@@ -1,17 +1,16 @@
 /**
  * Côté Next.js : pose l'aperçu Discord dans le `<head>` et sert son JSON.
  *
- * Le site utilise la variante « JSON lié » de la doc de Discord : la page porte
+ * On prend la variante « JSON lié » de la doc Discord : la page porte
  * `<link rel="discord:component-embed" type="application/json" href="…">`, et
  * le JSON vient de `/api/discord-embed/<locale>/<chemin>`.
  *
- * Pourquoi pas le `<script>` en ligne : en App Router, seul le layout racine
- * écrit dans le `<head>`, et il ne connaît pas les données de la page. Lui
- * faire lire l'adresse de chaque requête rendrait dynamiques toutes les pages,
- * y compris celles générées en statique. Le `<link>`, lui, passe par
- * `generateMetadata`, que Next place dans le `<head>` pour les robots d'aperçu
- * (Discordbot fait partie de ses « HTML-limited bots »). Rien n'est envoyé au
- * navigateur d'un visiteur en dehors de cette balise.
+ * Pas de `<script>` en ligne : en App Router, seul le layout racine écrit dans
+ * le `<head>`, et il ne connaît pas les données de la page. Lui faire lire
+ * l'adresse de chaque requête rendrait toutes les pages dynamiques, statiques
+ * comprises. Le `<link>` passe par `generateMetadata`, que Next met dans le
+ * `<head>` pour les robots d'aperçu (Discordbot est dans ses « HTML-limited
+ * bots »). Le navigateur d'un visiteur ne reçoit que cette balise.
  */
 import type { Metadata } from "next";
 import type { ComponentEmbed } from "./components";
@@ -20,9 +19,9 @@ import { serializeEmbed } from "./serialize";
 export const SITE_URL = "https://dna.ascencia.re";
 
 /**
- * Icônes du layout racine. Une page qui déclare `icons` remplace celles du
- * layout (fusion superficielle de Next) : le lien Discord passe par `icons`,
- * il doit donc les reprendre.
+ * Icônes du layout racine. Next fusionne `icons` en surface : une page qui le
+ * déclare écrase celles du layout. Le lien Discord passe par `icons`, donc il
+ * les reprend.
  */
 export const ROOT_ICONS = {
   // 180 px suffisent (taille de l'icône Apple) : 14 Ko au lieu de 171.

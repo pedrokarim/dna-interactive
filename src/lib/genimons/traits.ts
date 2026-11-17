@@ -8,8 +8,8 @@ import traitsData from "@/data/genimons/traits.json";
 // l'ascension. Les 29 traits existent chacun en plusieurs raretés, et trois
 // exemplaires d'une rareté en donnent un de la rareté au-dessus.
 //
-// Les catégories viennent du jeu lui-même (l'icône de chaque trait porte sa
-// famille) : on ne les a pas inventées, et il ne faut pas en créer d'autres.
+// Les catégories sont celles du jeu (l'icône de chaque trait porte sa famille).
+// Ne pas en ajouter.
 // ---------------------------------------------------------------------------
 
 export const TRAIT_CATEGORIES = ["battle", "base", "speed", "world"] as const;
@@ -45,11 +45,8 @@ export interface GenimonTrait {
 const ALL = (traitsData as { traits: GenimonTrait[] }).traits;
 
 /**
- * Texte dans la langue demandée, avec repli sur l'anglais.
- *
- * Le repli n'est pas une précaution de style : le jeu ne livre pas l'allemand
- * sur une partie des traits, et l'afficher vide serait pire que de montrer
- * l'anglais.
+ * Texte dans la langue demandée, sinon en anglais. Le jeu ne livre pas
+ * l'allemand pour une partie des traits : mieux vaut l'anglais qu'un vide.
  */
 export function pickTraitText(text: Record<string, string>, lang: string): string {
   const upper = lang.toUpperCase();
@@ -59,16 +56,14 @@ export function pickTraitText(text: Record<string, string>, lang: string): strin
 /**
  * Effet d'un Trait à une rareté donnée, jetons `#N` remplacés par leur valeur.
  *
- * Les nombres viennent de `SkillGrow`, par palier – ce que `BattlePet` masquait
- * derrière « #1 ». Le facteur et l'unité (× 100, « % ») sont ceux qu'écrit la
- * formule du jeu, pas une convention de notre cru.
+ * Les nombres viennent de `SkillGrow`, par palier (`BattlePet` n'a que « #1 »).
+ * Le facteur et l'unité (× 100, « % ») sont ceux de la formule du jeu.
  *
- * La valeur est prise **en valeur absolue** : le texte porte déjà son signe
- * (« Temps de recharge -#1 »), et le jeu stocke une réduction en négatif. Les
- * additionner donnerait « -−24 % ».
+ * On prend la valeur absolue : le texte porte déjà son signe (« Temps de
+ * recharge -#1 ») et le jeu stocke une réduction en négatif, ce qui donnerait
+ * « -−24 % ».
  *
- * Sans valeur connue, le jeton devient des points de suspension plutôt qu'un
- * gabarit brut : six Traits n'ont aucun nombre à afficher.
+ * Sans valeur connue, le jeton devient « … » : six Traits n'ont aucun nombre.
  */
 export function formatTraitEffect(
   text: string,
@@ -122,12 +117,10 @@ export function fusionCostFromLowest(trait: GenimonTrait): number | null {
 // Icônes.
 //
 // Le jeu dessine un glyphe par catégorie, décliné dans la couleur de la rareté.
-// La correspondance rareté → couleur est **relevée dans les données**, pas
-// choisie : 3 = bleu, 4 = violet, 5 = or. Les fichiers sont donc nommés sur la
-// rareté, qui est ce que porte `TraitTier`, et non sur la couleur.
+// Couleurs relevées dans les données : 3 = bleu, 4 = violet, 5 = or. Les
+// fichiers sont nommés d'après la rareté, puisque c'est ce que porte `TraitTier`.
 //
-// Le jeu livre aussi un gris et un vert, qu'aucun trait n'utilise : ils ne sont
-// pas embarqués.
+// Le jeu a aussi un gris et un vert, qu'aucun trait n'utilise : pas embarqués.
 // ---------------------------------------------------------------------------
 
 const ICON_DIR = "/assets/genimons/traits";

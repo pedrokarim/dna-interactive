@@ -13,19 +13,16 @@ import {
 export type { WedgeSlotData } from "./_wedge";
 
 /**
- * Éditeur de Demon Wedges — reproduit la disposition du jeu (8 cases en
- * parallélogrammes penchés vers le centre + sceau central rond), telle que la
- * carte de build existante (`QuickBuildModal`). On ne réinvente PAS la forme.
+ * Éditeur de Demon Wedges, avec la disposition du jeu et de la carte de build
+ * (`QuickBuildModal`) : 8 cases en parallélogrammes penchés vers le centre et un
+ * sceau rond au milieu.
  *
- * Interactions :
- *  - Les 8 cases EXTÉRIEURES se réorganisent par drag-and-drop (drop = swap).
- *  - Clic sur une case extérieure → ouvre le picker pour cet emplacement.
- *  - Le CENTRE est verrouillé : il ne se déplace pas et n'est jamais une cible
- *    de drop. Son MOD reste changeable via clic (il encode l'élément du perso).
+ * Les 8 cases extérieures s'échangent par glisser-déposer, un clic ouvre le picker
+ * de la case. Le centre ne bouge pas et ne reçoit jamais de drop, mais un clic
+ * change son MOD (il porte l'élément du perso).
  *
- * NB prototype : drag natif HTML5 (souris/desktop). Pour la prod tactile,
- * basculer sur @dnd-kit (pointer + touch + clavier) — l'API onChange reste la
- * même.
+ * Drag HTML5 natif, donc souris seulement. Pour le tactile il faudra passer à
+ * @dnd-kit (pointeur, touch, clavier), onChange restera le même.
  */
 
 // Disposition des positions, miroir de QuickBuildModal.
@@ -35,7 +32,7 @@ const RIGHT_ROWS = [[3, 4], [7, 8]];
 export type DnaDemonWedgeEditorProps = {
   slots: WedgeSlotData[];
   centerItem: DnaPickerItem | null;
-  /** Couleur d'accent (élément du perso) — pilote le dégradé/halo. */
+  /** Couleur d'accent (élément du perso), pour le dégradé et le halo. */
   accentHex?: string;
   scale?: WedgeScale;
   /** Lecture seule : pas de drag ni d'édition. */
@@ -44,11 +41,11 @@ export type DnaDemonWedgeEditorProps = {
   onChange?: (slots: WedgeSlotData[]) => void;
   /** Clic sur une case extérieure (édition du MOD de cet emplacement). */
   onSlotClick?: (position: number) => void;
-  /** Bascule le Track-Shift d'une case. La VALEUR n'est jamais choisie : elle est
-   *  toujours la polarité du Wedge posé. Le toggle ne décide que de sa présence. */
+  /** Active ou retire le Track-Shift d'une case. Sa valeur est toujours la
+   *  polarité du Wedge posé, on ne la choisit pas. */
   onToggleTrack?: (position: number) => void;
   trackLabel?: string;
-  /** Clic sur le centre (changement du MOD central — il reste fixe). */
+  /** Clic sur le centre, pour changer le MOD central (la case reste fixe). */
   onCenterClick?: () => void;
   className?: string;
 };
@@ -105,7 +102,7 @@ export function DnaDemonWedgeEditor({
       <button
         type="button"
         onClick={readOnly ? undefined : () => onCenterClick?.()}
-        // Verrouillé en position : jamais draggable, jamais cible de drop.
+        // Fixe : ni draggable, ni cible de drop.
         aria-label={centerItem ? `Demon Wedge central (fixe) : ${centerItem.name}` : "Demon Wedge central (fixe)"}
         className={cn("relative grid shrink-0 place-items-center rounded-full", readOnly ? "cursor-default" : "cursor-pointer")}
         style={{

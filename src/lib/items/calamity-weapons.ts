@@ -2,15 +2,14 @@ import type { ItemRecord } from "@/lib/items/types";
 import potentialsData from "@/data/weapons/calamity-potentials.json";
 
 /**
- * Armes de calamité (Calamity Weapons / `UI_HyperWeapon`).
- * Signal technique : `WeaponSubType === "Hyper"` dans la table `Weapon`.
- * Voir research_data/docs/RECHERCHE_ARMES_CALAMITE.md pour le détail des données.
+ * Armes de calamité (Calamity Weapons / `UI_HyperWeapon`), repérées par
+ * `WeaponSubType === "Hyper"` dans la table `Weapon`. Détail des données :
+ * research_data/docs/RECHERCHE_ARMES_CALAMITE.md.
  */
 
 /** Accent visuel des armes de calamité (crimson-bright du design system). */
 export const CALAMITY_ACCENT_HEX = "#b5302a";
 
-/** Une arme est une Arme de calamité si son sous-type technique est `Hyper`. */
 export function isCalamityWeapon(item: Pick<ItemRecord, "fields">): boolean {
   return item.fields?.WeaponSubType === "Hyper";
 }
@@ -19,11 +18,10 @@ type PotentialsFile = Record<string, { weaponId: number; nodes: { level: number 
 
 /**
  * Nombre de nœuds de Potentiel (`HyperWeaponSkillTree`) par palier de Fusion de
- * calamité (0→5).
+ * calamité (0 à 5).
  *
- * Le décompte est **dérivé de l'extraction**, pas saisi à la main : ajouter une
- * arme de calamité au jeu suffit à le mettre à jour, sans risque d'oublier
- * cette table au passage.
+ * Calculé depuis l'extraction : une nouvelle arme de calamité est prise en compte
+ * sans rien saisir à la main.
  */
 export const POTENTIAL_NODE_COUNTS_BY_LEVEL: Record<string, Record<number, number>> = Object.fromEntries(
   Object.entries(potentialsData as PotentialsFile).map(([weaponId, entry]) => {
@@ -44,7 +42,7 @@ export function potentialNodesUnlocked(weaponId: string, level: number): number 
   return total;
 }
 
-/** L'arme a-t-elle un arbre de Potentiel connu ? Sert à décider d'afficher l'arbre. */
+/** Vrai si l'arbre de Potentiel de l'arme est connu (sinon on ne l'affiche pas). */
 export function hasCalamityPotentialTree(weaponItemId: string): boolean {
   return POTENTIAL_NODE_COUNTS_BY_LEVEL[weaponItemId] !== undefined;
 }
@@ -57,10 +55,9 @@ export function potentialNodesTotal(weaponId: string): number | null {
 }
 
 /**
- * Sentinelle du jeu pour « pas encore programmé » : les tables portent `99`
- * (`OpenVersion`) et `990` (`ReleaseVersion`) sur le contenu dont la sortie
- * n'est pas datée. Sans ce garde-fou, le formatage naïf annonce une « v9.9 »
- * qui n'existera jamais.
+ * Valeur du jeu pour « pas encore programmé » : les tables mettent `99`
+ * (`OpenVersion`) et `990` (`ReleaseVersion`) sur le contenu sans date de sortie.
+ * Sans ce test, le formatage afficherait une « v9.9 ».
  */
 export const UNSCHEDULED_OPEN_VERSION = 99;
 
@@ -70,8 +67,8 @@ export function isUnscheduledVersion(openVersion: number | null | undefined): bo
 }
 
 /**
- * `14` → `v1.4`. Rend `null` quand la version est absente **ou** non
- * programmée : à l'appelant de choisir le libellé qui convient à son contexte.
+ * `14` donne `v1.4`. `null` si la version est absente ou non programmée,
+ * l'appelant choisit alors son libellé.
  */
 export function formatOpenVersion(value: number | null | undefined): string | null {
   if (value == null || isUnscheduledVersion(value)) return null;

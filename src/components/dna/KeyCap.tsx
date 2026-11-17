@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { cn } from "./cn";
 
-/** Capsule de touche clavier (arrondie, liseré clair) — calée sur le jeu. */
+/** Capsule de touche clavier (arrondie, liseré clair), comme dans le jeu. */
 export function DnaKey({ children, className }: { children: ReactNode; className?: string }) {
   return (
     <kbd

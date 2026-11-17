@@ -25,9 +25,9 @@ function trackingEnabled(): boolean {
 }
 
 /**
- * Crée un événement d'envoi et renvoie l'URL de "l'asset" à charger dans l'email.
- * L'URL ressemble à une image classique (`/biribiri/<hash>.png`) — aucun mot-clé de
- * suivi, token opaque — pour ne pas être repérée comme pixel de tracking.
+ * Crée un événement d'envoi et renvoie l'URL de l'image à mettre dans l'email.
+ * L'URL ressemble à une image normale (`/biribiri/<token>.png`, sans mot-clé de
+ * suivi), pour ne pas être repérée comme pixel de tracking.
  */
 export async function createEmailEvent(
   to: string,
@@ -45,7 +45,7 @@ export async function createEmailEvent(
   }
 }
 
-/** Insère l'asset de suivi juste avant </body> (ou en fin de HTML). */
+/** Insère l'image de suivi juste avant </body>, ou à la fin du HTML. */
 export function injectPixel(html: string, pixelUrl: string): string {
   const img = `<img src="${pixelUrl}" width="1" height="1" alt="" style="display:block;width:1px;height:1px;border:0;overflow:hidden" />`;
   return html.includes("</body>") ? html.replace("</body>", `${img}</body>`) : html + img;

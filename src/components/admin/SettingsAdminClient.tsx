@@ -8,12 +8,9 @@ import { AuthConfigPanel } from "./AuthConfigPanel";
 import { FIELD_WIDTH, AdminFormButton, AdminPanel, AdminTableSkeleton, adminInputClass, adminLabelClass } from "./ui";
 
 /**
- * Réglages applicatifs.
- *
- * Un écran de configuration n'a pas de tableau : ce sont des interrupteurs et
- * des champs. Ce qui compte ici, c'est qu'on voie immédiatement qu'une
- * modification n'est **pas encore enregistrée** – d'où la barre collante en
- * bas, qui n'apparaît qu'en cas de changement en attente.
+ * Réglages de l'appli : des interrupteurs et des champs, pas de tableau.
+ * La barre collante du bas n'apparaît que s'il reste une modification non
+ * enregistrée, pour qu'on la voie tout de suite.
  */
 function Toggle({
   checked,

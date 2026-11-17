@@ -1,32 +1,28 @@
 /**
  * Taxonomie de la carte interactive.
  *
- * Les cartes (`src/data/maps/*.json`) sont relevées chez boarhat et gardent sa
- * légende brute : « Collectibles » déclaré deux fois, `Challenge` / `Challenges`,
- * une catégorie en chinois, et surtout un **type par livre** (≈150 types à un
- * seul point). Plutôt que de retoucher ces fichiers, que le pipeline de mise à
- * jour réécrit, on les normalise ici, au chargement :
+ * Les cartes (`src/data/maps/*.json`) viennent de boarhat et gardent sa légende
+ * brute : « Collectibles » déclaré deux fois, `Challenge` et `Challenges`, une
+ * catégorie en chinois, et un type par livre (environ 150 types à un seul
+ * point). Le pipeline de mise à jour réécrit ces fichiers, donc on normalise
+ * ici, au chargement.
  *
- * - chaque type boarhat est rattaché à un **type canonique** (`CanonicalTypeId`)
- *   rangé dans une **catégorie** (onglet du panneau) ;
- * - les types « un point par objet » (lectures, événements, preuves
- *   d'exploration) fusionnent en un seul filtre, le nom d'origine devient le
- *   titre du point ;
- * - les noms de sous-zones (« Inner City », « Lower Ironworks ») cessent d'être
- *   des filtres et deviennent des **étiquettes de lieu**, liées à la sous-carte
- *   quand elle existe.
+ * Chaque type boarhat est rattaché à un type canonique (`CanonicalTypeId`),
+ * rangé dans une catégorie (onglet du panneau). Les types « un point par
+ * objet » (lectures, événements, preuves d'exploration) fusionnent en un seul
+ * filtre, et le nom d'origine devient le titre du point. Les sous-zones
+ * (« Inner City », « Lower Ironworks ») ne sont plus des filtres mais des
+ * étiquettes de lieu, liées à la sous-carte quand elle existe.
  *
- * ==La clé d'un point ne change pas== : `mapId-type-markerId-instanceId`, avec le
- * type et l'id **boarhat**. C'est elle que stocke la progression des joueurs ;
- * la dériver du type canonique effacerait tout ce qu'ils ont coché.
+ * La clé d'un point ne change pas : `mapId-type-markerId-instanceId`, avec le
+ * type et l'id boarhat. C'est elle que stocke la progression des joueurs : la
+ * tirer du type canonique effacerait tout ce qu'ils ont coché.
  */
 
 import world from "@/data/maps/world.json";
 import type { GameMap } from "@/types/map";
 
-// ---------------------------------------------------------------------------
 // Catégories et types canoniques
-// ---------------------------------------------------------------------------
 
 export const MAP_CATEGORY_IDS = [
   "waypoints",
@@ -51,7 +47,7 @@ export interface CanonicalType {
   tracked: boolean;
   /** Ressource du jeu (`RESOURCE_NAME_<id>`) : nom et icône officiels. */
   resourceIds?: number[];
-  /** Nom traduit dans `messages/*.json` → `mapTypes.<id>`. */
+  /** Nom traduit sous `mapTypes.<id>` dans `messages/*.json`. */
   messageKey?: string;
 }
 
@@ -69,7 +65,7 @@ const R = (id: string, ...resourceIds: number[]): CanonicalType => ({
   resourceIds,
 });
 
-/** Ordre d'affichage = ordre de déclaration. */
+/** Affichés dans l'ordre de déclaration. */
 export const CANONICAL_TYPES: CanonicalType[] = [
   // Repères
   T("teleport", "waypoints", true),
@@ -138,15 +134,13 @@ export const CANONICAL_TYPES: CanonicalType[] = [
 const TYPE_BY_ID = new Map(CANONICAL_TYPES.map((t) => [t.id, t]));
 export const getCanonicalType = (id: string) => TYPE_BY_ID.get(id);
 
-// ---------------------------------------------------------------------------
 // Rattachement des types boarhat
-// ---------------------------------------------------------------------------
 
 /**
- * Nom boarhat → type canonique. Les ressources sont rapprochées de leur nom
- * officiel par les zones de récolte déclarées dans le jeu (`AccessKey`) : voir
- * `research_data/scripts/map-resource-zones.mjs`. Boarhat nomme parfois deux
- * ressources en une (« Lustrous/Silverstone » = Lumite + Argentite).
+ * Nom boarhat vers type canonique. Les ressources sont rapprochées de leur nom
+ * officiel par les zones de récolte du jeu (`AccessKey`), voir
+ * `research_data/scripts/map-resource-zones.mjs`. Boarhat met parfois deux
+ * ressources sous un nom (« Lustrous/Silverstone » : Lumite et Argentite).
  */
 const BY_NAME: Record<string, string> = {
   "Teleport Point": "teleport",
@@ -203,9 +197,9 @@ const BY_NAME: Record<string, string> = {
 };
 
 /**
- * Sous-zones affichées en étiquette. Valeur = carte du site vers laquelle
- * l'étiquette mène, quand elle existe (noms du jeu : « Valley Rift » = Faille de
- * la vallée = `arcanorift`).
+ * Sous-zones affichées en étiquette, avec la carte du site où mène l'étiquette
+ * quand elle existe (« Valley Rift », Faille de la vallée en jeu, mène à
+ * `arcanorift`).
  */
 const PLACE_TARGETS: Record<string, string | null> = {
   "Lower Ironworks": "ironworks",
@@ -233,8 +227,8 @@ function classify(categoryType: string, name: string): Classification {
   if (isReadableCategory(categoryType)) return { kind: "type", typeId: "readable", merged: true };
   if (isDispatchCategory(categoryType)) return { kind: "type", typeId: "dynamicEvent", merged: true };
   if (/^Geniemon/i.test(categoryType)) return { kind: "type", typeId: "geniemon", merged: false };
-  // Fusionnées sans titre : toutes les preuves d'une zone portent le même nom,
-  // le répéter sur chaque point n'apprendrait rien.
+  // Fusionnées sans titre : toutes les preuves d'une zone ont le même nom, inutile
+  // de le répéter sur chaque point.
   if (isExplorerProof(name)) return { kind: "type", typeId: "explorerProof", merged: false };
   const typeId = BY_NAME[name];
   if (typeId) return { kind: "type", typeId, merged: false };
@@ -243,9 +237,7 @@ function classify(categoryType: string, name: string): Classification {
   return { kind: "unknown" };
 }
 
-// ---------------------------------------------------------------------------
 // Carte normalisée
-// ---------------------------------------------------------------------------
 
 export interface MapPoint {
   /** Clé de progression, identique à l'ancienne (voir en-tête). */

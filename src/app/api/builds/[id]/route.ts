@@ -59,8 +59,8 @@ export async function GET(request: NextRequest, { params }: RouteContext) {
       return NextResponse.json({ error: t("buildNotFound") }, { status: 404 });
     }
 
-    // Compteur de vues : on incrémente quand un visiteur (pas l'auteur/admin)
-    // ouvre le build. Dédup anti-gonflage : 1 vue par (build, visiteur) / 30 min.
+    // Vues : seulement les visiteurs (pas l'auteur ni un admin), 1 vue par
+    // (build, visiteur) toutes les 30 min.
     const isViewer = !editableByMe;
     const viewerKey = user?.id ?? request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "anon";
     const counts = isViewer && (await checkRateLimit(`build:view:${id}:${viewerKey}`, 1, 30 * 60 * 1000)).ok;

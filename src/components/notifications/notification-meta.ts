@@ -12,11 +12,9 @@ import {
 import type { NotificationKind } from "@/lib/notifications/types";
 
 /**
- * Habillage d'une catégorie de notification : icône et teinte.
- *
- * Les teintes reprennent le vocabulaire du site – or pour l'information, or vif
- * pour une sortie, cramoisi pour ce qui exige une action. Aucune nouvelle
- * couleur n'est introduite ici.
+ * Icône et teinte de chaque catégorie de notification. Que des couleurs du
+ * site : or vif pour une sortie, or pour un événement, cramoisi pour ce qui
+ * demande une action, neutre pour le reste.
  */
 export const KIND_ICON: Record<NotificationKind, LucideIcon> = {
   info: Info,

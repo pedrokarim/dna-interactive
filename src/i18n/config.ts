@@ -12,12 +12,12 @@ export const LANGUAGE_LABELS: Record<string, string> = {
   TC: "繁體中文",
 };
 
-/** Convert i18n locale code to game data language code (uppercase) */
+/** Locale du site vers code langue des données du jeu (en majuscules). */
 export function toGameDataLangCode(locale: Locale): string {
   return locale.toUpperCase();
 }
 
-/** Convert game data language code to i18n locale */
+/** Code langue des données du jeu vers locale du site (locale par défaut si inconnu). */
 export function toLocale(langCode: string): Locale {
   const lower = langCode.toLowerCase() as Locale;
   return locales.includes(lower) ? lower : defaultLocale;

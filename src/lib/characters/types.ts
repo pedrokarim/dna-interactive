@@ -73,9 +73,9 @@ export interface LevelUpCurves {
   curves: Record<string, Record<number, number>>;
 }
 
-// Per-element override block for a multi-element character (e.g. the
-// protagonist). Holds everything that changes when the player switches the
-// character's element on the detail page. See `getActiveCharacterView`.
+// Surcharge par élément d'un perso multi-élément (le protagoniste par exemple) :
+// tout ce qui change quand on bascule d'élément sur la fiche. Voir
+// `getActiveCharacterView`.
 export interface CharacterVariant {
   charId: number;
   internalName: string;
@@ -105,9 +105,8 @@ export interface CharacterRecord {
   charId: number;
   internalName: string;
   element: CharacterElement;
-  // Multi-element characters list all their elements here (in display order)
-  // and carry a per-element override in `variants`. Single-element characters
-  // leave both undefined.
+  // Perso multi-élément : tous ses éléments ici (ordre d'affichage), et une
+  // surcharge par élément dans `variants`. Les autres laissent les deux vides.
   elements?: CharacterElement[];
   variants?: Record<string, CharacterVariant>;
   weaponTags: string[];

@@ -28,16 +28,16 @@ const TARGET_CATEGORIES = ["materials", "geniemons", "exploration", "chests", "p
 type Sort = "top" | "recent";
 type FormValues = { title: string; description: string; typeIds: string[]; visibility: "public" | "private" };
 /**
- * Tracé terminé en attente d'enregistrement ; `editing` = itinéraire modifié,
- * `values` = saisie du formulaire, conservée quand on repart retracer.
+ * Tracé fini, pas encore enregistré. `editing` est l'itinéraire modifié,
+ * `values` la saisie du formulaire, gardée quand on repart retracer.
  */
 type Draft = { points: [number, number][]; editing?: FarmRoute; values?: FormValues };
 
 /**
- * Itinéraires de farm de la carte courante : ceux de la communauté et les
- * siens. Tri par votes ou par date, filtre par ressource ciblée ; clic = tracé
- * affiché et cadré. Tracé, modification et publication pour les comptes
- * connectés, signalement des itinéraires des autres.
+ * Itinéraires de farm de la carte courante, ceux de la communauté et les
+ * siens. Tri par votes ou par date, filtre par ressource ciblée, un clic
+ * affiche et cadre le tracé. Connecté, on peut tracer, modifier, publier et
+ * signaler les itinéraires des autres.
  */
 export function RoutesPanel({
   map,
@@ -149,7 +149,7 @@ export function RoutesPanel({
     }
   };
 
-  // --- Mode tracé ------------------------------------------------------------
+  // Mode tracé
   if (drawing !== null)
     return (
       <Shell title={redrawOf ? t("routeRedrawing") : t("routeDrawing")} onClose={() => { setDrawing(null); setRedrawOf(undefined); }}>
@@ -181,7 +181,7 @@ export function RoutesPanel({
       </Shell>
     );
 
-  // --- Enregistrement (création ou modification) ----------------------------
+  // Enregistrement (création ou modification)
   if (draft)
     return (
       <RouteForm
@@ -217,7 +217,7 @@ export function RoutesPanel({
       />
     );
 
-  // --- Liste -----------------------------------------------------------------
+  // Liste
   return (
     <Shell title={t("routes")} onClose={onClose}>
       {status === "authenticated" ? (

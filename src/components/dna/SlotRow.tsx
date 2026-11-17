@@ -13,9 +13,8 @@ import { DnaItemPicker, type DnaPickerItem } from "./ItemPicker";
 
 /**
  * Rangée d'emplacements (armes ou génimons) : jusqu'à `max` items, chacun avec
- * un rang best/alternative. Cliquer un emplacement (ou « + ») ouvre le
- * `DnaItemPicker` dans un overlay pour le remplir/remplacer. C'est le maillon
- * qui boucle l'intégration picker → emplacement du builder.
+ * un rang best/alternative. Un clic sur un emplacement (ou « + ») ouvre le
+ * `DnaItemPicker` en overlay pour le remplir ou le remplacer.
  */
 
 export type SlotEntry = {
@@ -85,7 +84,7 @@ export function DnaSlotRow({
 
   function remove(i: number) {
     const next = entries.filter((_, idx) => idx !== i);
-    // Garantir qu'il reste un « best » si des entrées subsistent.
+    // S'il reste des entrées, il en faut une en « best ».
     if (allowRanks && next.length && !next.some((e) => e.rank === "best")) {
       next[0] = { ...next[0], rank: "best" };
     }

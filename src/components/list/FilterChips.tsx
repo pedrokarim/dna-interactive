@@ -15,13 +15,13 @@ export type FilterChipsProps = {
   label?: string;
   /** Icône optionnelle à côté du libellé. */
   icon?: ReactNode;
-  /** Options SANS l'option "Tout" (ajoutée automatiquement en tête). */
+  /** Options sans "Tout", ajoutée automatiquement en tête. */
   options: FilterChipOption[];
   value: string;
   onChange: (value: string) => void;
   allLabel: string;
   allValue?: string;
-  /** Conservé pour compat (ignoré : la couleur vient du design system). */
+  /** Gardé pour la compatibilité, ignoré : la couleur vient du design system. */
   accent?: "indigo" | "amber";
   className?: string;
 };

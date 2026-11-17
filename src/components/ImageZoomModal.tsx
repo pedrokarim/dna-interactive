@@ -24,7 +24,6 @@ export default function ImageZoomModal({
   const imageRef = useRef<HTMLImageElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Réinitialiser quand l'image change
   useEffect(() => {
     if (imageUrl) {
       setZoom(1);
@@ -33,7 +32,6 @@ export default function ImageZoomModal({
     }
   }, [imageUrl]);
 
-  // Fermer avec Escape
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape" && imageUrl) {
@@ -44,7 +42,6 @@ export default function ImageZoomModal({
     return () => window.removeEventListener("keydown", handleEscape);
   }, [imageUrl, onClose]);
 
-  // Zoom avec la molette
   useEffect(() => {
     if (!imageUrl) return;
 
@@ -118,7 +115,7 @@ export default function ImageZoomModal({
       className="fixed inset-0 z-[99999] flex items-center justify-center overscroll-contain bg-black/95 backdrop-blur-sm [touch-action:none]"
       onClick={onClose}
     >
-      {/* Contrôles en haut — panneau net, boutons carrés au design system */}
+      {/* Contrôles en haut */}
       <div
         className="absolute top-4 left-1/2 transform -translate-x-1/2 z-[100000] flex items-center gap-2 bg-panel/90 backdrop-blur-md px-4 py-2 border border-line/30"
         onClick={(e) => e.stopPropagation()}
@@ -226,7 +223,6 @@ export default function ImageZoomModal({
     </div>
   );
 
-  // Utiliser un portal pour rendre le modal directement dans le body
   if (typeof window !== "undefined") {
     return createPortal(modalContent, document.body);
   }

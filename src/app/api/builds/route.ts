@@ -85,7 +85,7 @@ export async function GET(request: NextRequest) {
       .limit(pageSize)
       .offset((page - 1) * pageSize);
 
-    // Votes anonymes : "votedByMe" = ce visiteur (clé IP du jour) a-t-il voté.
+    // Votes anonymes : votedByMe dit si ce visiteur (clé IP du jour) a voté.
     let votedIds = new Set<string>();
     if (rows.length > 0) {
       const voterKey = getVoterKey(request.headers);
@@ -162,10 +162,10 @@ export async function POST(request: NextRequest) {
   }
 
   const db = getDb();
-  // Insertion atomique : la limite de 3 builds/perso est appliquée DANS la
-  // requête (INSERT ... SELECT ... WHERE count < 3), pour éviter la course
-  // entre un COUNT et un INSERT séparés — neon-http n'a pas de transaction
-  // interactive. 0 ligne renvoyée ⇒ quota atteint.
+  // La limite de 3 builds par perso est vérifiée dans la requête même
+  // (INSERT ... SELECT ... WHERE count < 3) : pas de course entre un COUNT et un
+  // INSERT séparés, neon-http n'ayant pas de transaction interactive. Aucune
+  // ligne renvoyée = quota atteint.
   const result = await db.execute(sql`
     INSERT INTO ${schema.builds} (user_id, character_id, element, title, note, payload)
     SELECT ${user.id}, ${parsed.data.characterId}, ${parsed.data.element ?? null},

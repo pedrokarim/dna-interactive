@@ -1,12 +1,11 @@
 /**
- * Aperçus Discord des pages du site : une adresse → son component embed.
+ * Aperçus Discord des pages du site : pour chaque adresse, son embed en components.
  *
  * Chaque fonction ne lit que ce que la page affiche déjà, avec les mêmes
- * fonctions de données que la page. Tout texte qui vient de la base ou d'un
- * joueur passe par `escapeMarkdown` (directement, ou via `field()` et le
- * gabarit). Les images sont des fichiers statiques du site : Discord doit tout
- * récupérer en 10 secondes, et un `/_next/image` encore jamais demandé se
- * génère d'abord.
+ * fonctions de données. Tout texte venu de la base ou d'un joueur passe par
+ * `escapeMarkdown` (directement, ou via `field()` et le gabarit). Les images sont
+ * des fichiers statiques du site : Discord doit tout récupérer en 10 secondes, et
+ * un `/_next/image` jamais demandé doit d'abord être généré.
  */
 import { getTranslations } from "next-intl/server";
 import { ELEMENTS, type ElementKey } from "@/components/dna/elements";
@@ -323,9 +322,8 @@ async function theatre(locale: string): Promise<ComponentEmbed | null> {
  * régions × catégories avec les illustrations des objectifs. Rien quand la
  * rotation n'est pas à jour (Discord garde alors la carte Open Graph).
  *
- * L'adresse de l'image porte l'empreinte de la rotation : une nouvelle
- * rotation donne une nouvelle adresse, qu'aucun cache ne confond avec la
- * précédente.
+ * L'adresse de l'image porte l'empreinte de la rotation : chaque rotation a sa
+ * propre adresse, et un cache ne peut pas resservir l'ancienne image.
  */
 async function commissions(locale: string): Promise<ComponentEmbed | null> {
   const preview = await getCommissionsPreview(locale);

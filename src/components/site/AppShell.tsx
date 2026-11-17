@@ -28,21 +28,21 @@ import {
 /* ------------------------------------------------------------------ icônes */
 
 /**
- * Icône par clé de navigation. Séparé de `lib/shell` pour que la config des
- * routes reste importable depuis le serveur sans embarquer de composant.
+ * Icône par clé de navigation. Hors de `lib/shell`, pour que la config des
+ * routes s'importe côté serveur sans tirer de composant.
  */
 const NAV_ICONS: Record<string, LucideIcon | typeof DiscordIcon | typeof XIcon> = {
   discord: DiscordIcon,
   twitter: XIcon,
-  // Pas encore de glyphe du jeu pour le théâtre : icône de signalétique en attendant.
+  // Pas encore de glyphe du jeu pour le théâtre : une icône Lucide en attendant.
   theatre: Drama,
   // Idem pour le planificateur de farm.
   planner: ClipboardList,
 };
 
 /**
- * Les entrées internes prennent le glyphe du jeu du même nom que leur clé
- * (`GameGlyph`) ; les liens de marque (Discord, X) gardent leur logo.
+ * Les entrées internes prennent le glyphe du jeu qui porte le nom de leur clé
+ * (`GameGlyph`). Les liens de marque (Discord, X) gardent leur logo.
  */
 
 /* ------------------------------------------------------- fond atmosphérique */
@@ -50,12 +50,12 @@ const NAV_ICONS: Record<string, LucideIcon | typeof DiscordIcon | typeof XIcon> 
 /**
  * Visuels du fond, dans leur ordre de passage.
  *
- * Illustrations propres au projet (cf. docs/wallpapers-fond-ambiant.md), pas
- * des captures du jeu : le fond doit rester reconnaissable sans donner
- * l'impression qu'on rejoue les visuels officiels en diaporama.
+ * Des illustrations faites pour le site (voir docs/wallpapers-fond-ambiant.md)
+ * et pas des captures du jeu : on ne veut pas que le fond ressemble à un
+ * diaporama des visuels officiels.
  *
- * Constante de module : la liste sert de dépendance à l'horloge du composant,
- * elle doit garder la même identité entre deux rendus.
+ * Constante de module : la liste sert de dépendance à l'horloge du composant
+ * et doit garder la même identité d'un rendu à l'autre.
  */
 const AMBIENT_FRAMES = [
   "/assets/wallpapers/twin-eclipse.webp",
@@ -73,11 +73,11 @@ const STORAGE_KEY = "dna:sidebar-collapsed";
 /**
  * État replié de la barre latérale.
  *
- * La source de vérité est `data-sidebar` sur <html>, écrit par le script inline
- * du layout avant la première peinture (cf. globals.css) : la mise en page est
- * donc juste dès le premier rendu, sans saut après hydratation. React s'abonne
- * à cet attribut via `useSyncExternalStore` — uniquement pour la sémantique
- * (aria-expanded, infobulles), le visuel étant déjà porté par le CSS.
+ * L'état vit dans `data-sidebar` sur <html>, posé par le script inline du
+ * layout avant la première peinture (voir globals.css) : la mise en page est
+ * juste dès le premier rendu, sans saut après hydratation. React lit cet
+ * attribut avec `useSyncExternalStore`, seulement pour aria-expanded et les
+ * infobulles : le visuel est déjà géré par le CSS.
  */
 const sidebarListeners = new Set<() => void>();
 
@@ -92,7 +92,7 @@ function isSidebarCollapsed() {
   return document.documentElement.dataset.sidebar === "collapsed";
 }
 
-/** Rendu serveur : la barre est déployée par défaut (l'attribut n'existe pas encore). */
+/** Côté serveur, l'attribut n'existe pas encore : barre déployée. */
 function isSidebarCollapsedOnServer() {
   return false;
 }
@@ -108,7 +108,7 @@ function useSidebarCollapsed() {
     try {
       localStorage.setItem(STORAGE_KEY, next ? "1" : "0");
     } catch {
-      /* stockage indisponible : le repli reste valable pour la session */
+      /* stockage indisponible : le repli tient quand même jusqu'au rechargement */
     }
     for (const listener of sidebarListeners) listener();
   }, []);
@@ -127,9 +127,9 @@ function isActive(pathname: string, href: string) {
 /**
  * Marque, en tête de la barre latérale.
  *
- * Le nom passe par `dna-sidebar-label` : en mode replié il est masqué
- * VISUELLEMENT mais reste dans l'arbre d'accessibilité, sinon le lien vers
- * l'accueil se retrouverait sans nom (le logo est décoratif, `alt=""`).
+ * Le nom passe par `dna-sidebar-label` : replié, il est caché à l'écran mais
+ * reste dans l'arbre d'accessibilité. Sinon le lien vers l'accueil n'aurait
+ * plus de nom (le logo est décoratif, `alt=""`).
  */
 function SidebarBrand() {
   const t = useTranslations("shell");
@@ -171,8 +171,8 @@ function SidebarBadge({ kind, label }: { kind: ShellBadge; label: string }) {
           </span>
         )}
       </span>
-      {/* Barre repliée : la pastille se réduit à un point, le libellé restant
-          porté par le texte du lien (masqué visuellement, pas pour l'AT). */}
+      {/* Barre repliée : la pastille devient un point. Le libellé reste dans le
+          texte du lien, caché à l'écran mais lu par les lecteurs d'écran. */}
       <span
         aria-hidden
         className={cn(
@@ -209,8 +209,8 @@ function SidebarLink({
     entry.key === "discord" ? DISCORD_BUTTON_CLASS : entry.key === "twitter" ? X_BUTTON_CLASS : null;
   const className = cn(
     "dna-sidebar-link group relative flex items-center gap-3 rounded-sm border px-3 py-2 font-caps text-[0.68rem] uppercase tracking-[0.14em] transition-colors",
-    // Anneau `inset` : en mode replié le lien fait 40px dans un conteneur qui
-    // scrolle, un anneau extérieur serait rogné.
+    // Anneau `inset` : replié, le lien fait 40px dans un conteneur qui défile,
+    // un anneau extérieur serait rogné.
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gold/60",
     brandButtonClass
       ? brandButtonClass
@@ -221,7 +221,7 @@ function SidebarLink({
   const inner = (
     <>
       {glyph ? (
-        // Glyphe du jeu : un peu plus grand qu'une icône au trait, sa silhouette pleine paraît sinon plus petite.
+        // Un peu plus grand qu'une icône au trait : en silhouette pleine, il paraît plus petit à taille égale.
         <GameGlyph name={glyph} className="h-[18px] w-[18px] opacity-90" />
       ) : (
         <Icon aria-hidden className="h-4 w-4 shrink-0 opacity-90" />
@@ -236,8 +236,8 @@ function SidebarLink({
       {badge ? <SidebarBadge kind={badge} label={badgeLabel} /> : null}
     </>
   );
-  // Infobulle native en mode replié : le libellé est masqué visuellement, la
-  // souris a besoin d'un rappel. (Le nom accessible, lui, reste dans le DOM.)
+  // Replié, le libellé est caché à l'écran : une infobulle native le rappelle
+  // à la souris. Le nom accessible, lui, reste dans le DOM.
   const title = collapsed ? label : undefined;
 
   if (entry.external) {
@@ -292,7 +292,7 @@ function Sidebar({
             label={tNav(entry.key)}
             badge={badge}
             badgeLabel={badge ? badgeLabels[badge] : ""}
-            // Un lien sortant ne peut jamais correspondre à la route courante.
+            // Un lien externe n'est jamais la route courante.
             active={!entry.external && isActive(pathname, entry.href)}
             collapsed={collapsed}
             newTabHint={t("newTab")}
@@ -312,8 +312,8 @@ function Sidebar({
       {separator}
       {renderGroup(SHELL_NAV_SECONDARY, t("navSite"))}
       {separator}
-      {/* `mt-auto` sur les liens communautaires pousse tout ce qui suit en bas
-          de la barre : le compte ferme la colonne, sous la dernière séparation. */}
+      {/* `mt-auto` sur les liens communautaires pousse la suite en bas de la
+          barre : le compte termine la colonne, sous le dernier séparateur. */}
       {renderGroup(SHELL_NAV_EXTERNAL, t("navCommunity"), "mt-auto")}
       {separator}
       <SidebarProfile />
@@ -324,9 +324,9 @@ function Sidebar({
 /* ------------------------------------------------------------ drawer mobile */
 
 /**
- * Tiroir de navigation mobile. Vraie modale : scroll du body verrouillé, focus
- * piégé et déplacé dans le panneau, Échap ferme, focus rendu au bouton d'origine
- * (`useDialogA11y`, le même helper que `DnaDialog`).
+ * Tiroir de navigation mobile, en modale : défilement du body bloqué, focus
+ * piégé dans le panneau, Échap pour fermer, focus rendu au bouton d'origine
+ * (`useDialogA11y`, comme `DnaDialog`).
  */
 function MobileDrawer({
   open,
@@ -381,13 +381,12 @@ export type AppShellProps = {
 };
 
 /**
- * Coquille applicative du hub DNA : barre latérale persistante (repliable) +
- * topbar + pied de page, contenu pleine largeur.
+ * Coquille du hub DNA : barre latérale repliable, topbar, pied de page, et le
+ * contenu en pleine largeur.
  *
- * Montée une seule fois dans `app/[locale]/layout.tsx` : la barre latérale
- * survit aux navigations au lieu d'être remontée par chaque page. Les routes
- * servies sans coquille (carte plein écran, admin, page marketing) sont
- * déclarées dans `lib/shell`.
+ * Montée une seule fois dans `app/[locale]/layout.tsx`, pour que la barre
+ * latérale reste en place d'une page à l'autre. Les routes sans coquille
+ * (carte plein écran, admin, page marketing) sont listées dans `lib/shell`.
  */
 export function AppShell({ children, badges = {}, copyrightYears = "2025" }: AppShellProps) {
   const t = useTranslations("shell");
@@ -395,14 +394,14 @@ export function AppShell({ children, badges = {}, copyrightYears = "2025" }: App
   const pathname = usePathname();
   const [collapsed, toggleCollapsed] = useSidebarCollapsed();
 
-  // Le tiroir mémorise la route sur laquelle il a été ouvert : toute navigation
-  // le referme, sans effet qui déclencherait un rendu en cascade.
+  // Le tiroir retient la route où il a été ouvert : naviguer le referme, sans
+  // effet ni rendu en cascade.
   const [drawer, setDrawer] = useState({ open: false, at: pathname });
   const drawerOpen = drawer.open && drawer.at === pathname;
   const openDrawer = () => setDrawer({ open: true, at: pathname });
   const closeDrawer = useCallback(() => setDrawer((state) => ({ ...state, open: false })), []);
 
-  // Hooks au-dessus : la sortie anticipée doit rester après eux.
+  // Les hooks restent au-dessus de cette sortie anticipée.
   if (!shellAppliesTo(pathname)) return <>{children}</>;
 
   return (
@@ -415,8 +414,8 @@ export function AppShell({ children, badges = {}, copyrightYears = "2025" }: App
       </a>
 
       {/* ---------------------------------------------------------- FOND ANIMÉ */}
-      {/* Sous toute la coquille, monté une seule fois : le fond survit aux
-          navigations au lieu de repartir de zéro à chaque page. */}
+      {/* Sous toute la coquille et monté une seule fois : le fond continue
+          d'une page à l'autre au lieu de repartir de zéro. */}
       <DnaAmbientBackdrop frames={AMBIENT_FRAMES} intensity="normal" />
 
       {/* ---------------------------------------------------------- SIDEBAR desktop */}
@@ -432,17 +431,17 @@ export function AppShell({ children, badges = {}, copyrightYears = "2025" }: App
       <MobileDrawer open={drawerOpen} onClose={closeDrawer} pathname={pathname} badges={badges} />
 
       {/* ---------------------------------------------------------- CONTENU */}
-      {/* `relative z-10` : le fond est un enfant `position: fixed`, il serait
-          peint au-dessus d'un contenu resté dans le flux. */}
+      {/* `relative z-10` : le fond est en `position: fixed`, sans ça il serait
+          peint par-dessus le contenu resté dans le flux. */}
       <div className="relative z-10 flex min-h-screen flex-col transition-[padding] duration-200 lg:pl-[var(--dna-sidebar-w)]">
         {/* -------------------------------------------------------- TOPBAR */}
         <header className="sticky top-0 z-40 flex items-center gap-3 border-b border-line/15 bg-ink/80 px-4 py-3 backdrop-blur-md sm:px-6">
           <button
             type="button"
             aria-label={t("openMenu")}
-            // Ouvre une modale, pas un panneau dépliant : ni `aria-expanded`
-            // ni `aria-controls` (qui pointait à tort sur la barre desktop,
-            // masquée en `display:none` à cette taille d'écran).
+            // Ouvre une modale : ni `aria-expanded` ni `aria-controls`. Ce
+            // dernier pointait sur la barre desktop, en `display:none` à cette
+            // taille d'écran.
             aria-haspopup="dialog"
             onClick={openDrawer}
             className="flex h-9 w-9 items-center justify-center rounded-sm border border-line/25 text-parch/80 hover:border-gold hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60 lg:hidden"
@@ -457,25 +456,24 @@ export function AppShell({ children, badges = {}, copyrightYears = "2025" }: App
             onClick={toggleCollapsed}
             className="hidden h-9 w-9 items-center justify-center rounded-sm border border-line/25 text-parch/70 hover:border-gold hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60 lg:flex"
           >
-            {/* Les deux icônes sont rendues, CSS choisit : pas de clignotement
-                avant hydratation, contrairement à un rendu conditionnel React. */}
+            {/* On rend les deux icônes et le CSS choisit. Avec un rendu
+                conditionnel React, l'icône clignoterait avant l'hydratation. */}
             <ChevronsRight aria-hidden className="dna-when-collapsed h-4 w-4" />
             <ChevronsLeft aria-hidden className="dna-when-expanded h-4 w-4" />
           </button>
 
           <div className="flex min-w-0 items-baseline gap-3">
             <span className="font-caps text-sm uppercase tracking-[0.28em] text-gold-bright">DNA</span>
-            {/* Repère décoratif : un `aria-label` sur un span sans rôle n'étant
-                pas exposé, on le laisse en simple texte.
+            {/* Repère décoratif, en simple texte : un `aria-label` sur un span
+                sans rôle n'est pas exposé.
 
-                `top-[1.5px]` — correction optique, mesurée sur le rendu réel
-                (Playwright, zoom ×8, fond aplati) : le centre d'encre des
-                capitales du repère tombait 1,44 px AU-DESSUS de celui de
-                « DNA ». L'écart vient du couple de tailles (14 px contre
-                9,6 px), pas de l'alignement du conteneur — passer en
-                `items-center` ne change rien, c'est vérifié. Il est donc en px
-                et local à la topbar : il ne vaut que pour ce couple, et le
-                repère est correct partout ailleurs. */}
+                `top-[1.5px]` : correction optique mesurée sur le rendu réel
+                (Playwright, zoom x8, fond aplati). Le centre d'encre des
+                capitales du repère tombait 1,44 px au-dessus de celui de
+                « DNA ». L'écart vient du couple de tailles (14 px et 9,6 px) et
+                pas de l'alignement : `items-center` n'y change rien. D'où une
+                valeur en px, locale à la topbar, qui ne vaut que pour ce
+                couple. Ailleurs le repère est bien placé. */}
             <DnaSectionMark size="sm" className="relative top-[1.5px] hidden max-w-[16rem] sm:inline-flex">
               {t(`breadcrumbs.${resolveBreadcrumb(pathname)}`)}
             </DnaSectionMark>
@@ -506,8 +504,8 @@ export function AppShell({ children, badges = {}, copyrightYears = "2025" }: App
               <span className="text-muted-2">·</span>
               <span>{t("tagline")}</span>
             </div>
-            {/* Volontairement réduit aux liens légaux : le reste vit dans la
-                barre latérale, présente sur toutes les pages de la coquille. */}
+            {/* Seulement les liens légaux : le reste est dans la barre
+                latérale, présente sur toutes les pages de la coquille. */}
             <div className="flex flex-wrap items-center gap-4">
               <Link
                 href={NAVIGATION.privacy}

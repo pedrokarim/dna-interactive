@@ -8,11 +8,9 @@ export const dynamic = "force-dynamic";
 /**
  * Fil de notifications du visiteur.
  *
- * Répond aussi aux visiteurs **anonymes** : ils reçoivent les annonces
- * publiques, et gardent leur état de lecture dans le navigateur. C'est la
- * différence majeure avec l'ancienne version, qui renvoyait une liste vide
- * hors connexion et rendait le système invisible pour la quasi-totalité du
- * trafic.
+ * Les anonymes ont aussi les annonces publiques, avec l'état de lecture gardé
+ * dans le navigateur. Avant, hors connexion la liste était vide, donc presque
+ * personne ne voyait les notifications.
  */
 export async function GET(request: Request) {
   const user = await getCurrentUser();

@@ -2,17 +2,16 @@ import { computeRotationMeta } from "./meta";
 import { emptyRegions, getLatestRotation } from "./repository";
 import { type RotationMeta, type RotationState } from "./types";
 
-/** État vide (structure complète, objectifs vides) — avant toute donnée en base. */
+/** Structure complète sans objectifs, tant qu'il n'y a rien en base. */
 function emptyState(): RotationState {
   return { contentHash: "", updatedAt: "", regions: emptyRegions() };
 }
 
 /**
- * État à afficher : dernière rotation en base, **seulement si elle couvre
- * l'heure en cours**. Une rotation d'une autre heure est fausse : ses objectifs
- * sont retirés (`regions` vides), et `meta.freshness` dit pourquoi
- * (`syncing`, `stale`). `updatedAt` reste renseigné pour afficher depuis quand
- * la collecte n'a rien rapporté.
+ * Dernière rotation en base, seulement si elle couvre l'heure en cours. Une
+ * rotation d'une autre heure est fausse : on vide ses `regions` et
+ * `meta.freshness` dit pourquoi (`syncing`, `stale`). On garde `updatedAt` pour
+ * afficher depuis quand la collecte n'a rien rapporté.
  *
  * Base vide ou injoignable : structure vide, `freshness: "none"`.
  */

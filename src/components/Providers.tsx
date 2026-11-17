@@ -14,9 +14,9 @@ interface ProvidersProps {
 
 export function Providers({ children }: ProvidersProps) {
   return (
-    // reCAPTCHA n'est PAS monté ici : il ne concerne que le formulaire de
-    // contact et vit dans `src/app/[locale]/contact/layout.tsx`. Le remonter
-    // à la racine rechargerait le script Google sur toutes les pages.
+    // Pas de reCAPTCHA ici : il ne sert qu'au formulaire de contact et vit
+    // dans `src/app/[locale]/contact/layout.tsx`. À la racine, il chargerait
+    // le script Google sur toutes les pages.
     <SessionProvider>
       <SarutobiIdentity />
       <NuqsAdapter>

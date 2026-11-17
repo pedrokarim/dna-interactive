@@ -13,24 +13,21 @@ import { useReleaseCountdown } from "./useReleaseCountdown";
 /**
  * Bande « prochainement » de la page d'accueil.
  *
- * Le showcase juste en dessous (`NewCharactersBanner`) est entièrement piloté
- * par des illustrations : impossible d'y glisser un personnage dont le jeu n'a
- * livré aucune texture. Cette bande est donc bâtie sans image – lettre gravée,
- * trame diagonale et halo élémentaire tiennent lieu de visuel – ce qui lui
- * permet d'annoncer un personnage dès que ses données existent, sans attendre
- * les assets. Quand le studio a publié un visuel officiel (`avatar`), il prend
- * la place de la lettre gravée.
+ * Le showcase en dessous (`NewCharactersBanner`) a besoin d'illustrations, et
+ * le jeu n'en livre pas encore pour un perso à venir. Ici on fait sans image
+ * (lettre gravée, trame diagonale, halo de l'élément) pour annoncer le perso
+ * dès que ses données existent. Si le studio a publié un visuel officiel
+ * (`avatar`), il remplace la lettre.
  *
- * Volontairement basse et sobre : elle précède le grand showcase sans lui
- * disputer la vedette.
+ * Basse et sobre exprès, pour ne pas faire concurrence au showcase.
  */
 export function UpcomingCharacterStrip({ character }: { character: UpcomingCharacter }) {
   const locale = useLocale();
   const t = useTranslations("upcomingStrip");
   const element = ELEMENTS[character.element];
   const { parts, released } = useReleaseCountdown(character.releaseDate ?? "");
-  // Le sous-titre curé est en français ; les autres langues lisent le titre
-  // officiel anglais.
+  // Le sous-titre écrit à la main est en français ; les autres langues ont le
+  // titre officiel anglais.
   const subtitle = locale === "fr" ? character.subtitle : character.subtitleEn;
 
   const dateLabel = useMemo(
@@ -43,19 +40,18 @@ export function UpcomingCharacterStrip({ character }: { character: UpcomingChara
     [locale, character.releaseDate],
   );
 
-  // Une fois le personnage sorti, la bande n'a plus lieu d'être : la vraie
-  // fiche prend le relais et le showcase l'accueillera avec ses visuels.
+  // Perso sorti : la bande disparaît, la fiche et le showcase prennent le relais.
   if (released) return null;
 
   return (
     <Link
       href={`/characters/${character.slug}`}
-      /* Mobile : deux rangées empilées (identité, puis compteur + action).
-         À partir de `sm`, tout revient sur une seule ligne. */
+      /* Mobile : deux rangées (identité, puis compteur + action). Une seule
+         ligne à partir de `sm`. */
       className="group relative flex flex-col gap-4 overflow-hidden rounded-sm border border-line/25 bg-panel/70 p-5 transition-[transform,border-color] hover:-translate-y-0.5 hover:border-gold/50 sm:flex-row sm:items-center sm:gap-6"
       style={{ boxShadow: `inset 0 0 70px -46px ${element.hex}` }}
     >
-      {/* Halo et trame : la surface est occupée sans imiter une illustration. */}
+      {/* Halo et trame pour remplir la surface sans faire semblant d'être une illustration. */}
       <span
         aria-hidden
         className="pointer-events-none absolute inset-0"
@@ -71,7 +67,7 @@ export function UpcomingCharacterStrip({ character }: { character: UpcomingChara
       />
       <DnaCornerBrackets size={14} />
 
-      {/* Rangée 1 : cartouche (tenant lieu de portrait) + identité */}
+      {/* Rangée 1 : cartouche (à la place du portrait) + identité */}
       <span className="relative flex min-w-0 flex-1 items-center gap-4">
         {character.avatar ? (
           /* Visuel officiel publié avant la sortie : il remplace le cartouche. */
@@ -117,8 +113,8 @@ export function UpcomingCharacterStrip({ character }: { character: UpcomingChara
       {/* Rangée 2 sur mobile, fin de ligne sur desktop */}
       <span className="relative flex shrink-0 items-center justify-between gap-3 sm:justify-end sm:gap-4">
         {character.releaseDate ? (
-          /* L'horloge n'existe qu'apres hydratation : on reserve sa place avec
-             des tirets, sinon le bouton saute d'une position au premier tic. */
+          /* L'horloge n'existe qu'après hydratation : des tirets réservent sa
+             place, sinon le bouton saute au premier tic. */
           <span className="flex gap-1.5" role="timer" aria-live="off">
             <Unit value={parts?.days ?? null} label={t("days")} />
             <Unit value={parts?.hours ?? null} label={t("hours")} />
@@ -126,7 +122,7 @@ export function UpcomingCharacterStrip({ character }: { character: UpcomingChara
             <Unit value={parts?.seconds ?? null} label={t("seconds")} />
           </span>
         ) : (
-          /* Sans date officielle, pas de compteur figé sur des tirets. */
+          /* Sans date officielle, pas de compteur bloqué sur des tirets. */
           <span className="border border-line/25 bg-black/25 px-3 py-2 font-caps text-[0.58rem] uppercase tracking-[0.14em] text-muted">
             {t("dateTba")}
           </span>
@@ -150,9 +146,9 @@ export function UpcomingCharacterStrip({ character }: { character: UpcomingChara
 function Unit({ value, label }: { value: number | null; label: string }) {
   return (
     <span className="flex min-w-[2.75rem] flex-col items-center border border-line/25 bg-black/25 px-1.5 py-1">
-      {/* `dna-optical-num` : un chiffre n'a pas de jambage, il paraît sinon
-          collé en haut de sa case — d'autant plus visible que le libellé du
-          dessous, lui, est déjà recentré par la règle des capitales. */}
+      {/* `dna-optical-num` : un chiffre n'a pas de jambage et paraît sinon collé
+          en haut de sa case, à côté du libellé déjà recentré par la règle des
+          capitales. */}
       <span className="dna-optical-num font-mono text-base leading-none text-gold-bright tabular-nums">
         {value === null ? "--" : `${value}`.padStart(2, "0")}
       </span>

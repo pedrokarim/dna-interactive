@@ -15,20 +15,16 @@ import {
 import type { ChangelogEntryRow, ChangelogTranslation } from "@/db/schema";
 
 /**
- * Ordre du journal : du plus récent au plus ancien.
- *
- * La version est comparée **numériquement**, pas alphabétiquement : en texte,
- * « 1.9.0 » passerait après « 1.10.0 ». Le format est verrouillé à l'écriture
- * (cf. `isValidVersion`) pour que la conversion ne puisse pas échouer.
+ * Clé de tri de la version, en tableau d'entiers : en texte, « 1.9.0 »
+ * passerait après « 1.10.0 ». Le format est vérifié à l'écriture
+ * (`isValidVersion`), donc le cast ne peut pas échouer.
  */
 const VERSION_KEY = sql`string_to_array(${schema.changelogEntries.version}, '.')::int[]`;
 
 /**
- * Résout une entrée dans la langue demandée.
- *
- * Repli en cascade : la langue voulue, puis la langue par défaut du site, puis
- * la première disponible. Une entrée n'est jamais masquée parce qu'elle n'a pas
- * été traduite — elle s'affiche dans la langue où elle a été écrite.
+ * Entrée dans la langue demandée, sinon la langue par défaut du site, sinon la
+ * première dispo. Une entrée pas traduite s'affiche quand même, dans sa langue
+ * d'écriture.
  */
 function resolve(row: ChangelogEntryRow, locale: string): ChangelogPublicEntry | null {
   const translations = row.translations as Record<string, ChangelogTranslation>;
@@ -55,9 +51,9 @@ function resolve(row: ChangelogEntryRow, locale: string): ChangelogPublicEntry |
 /**
  * Une page du journal, du plus récent au plus ancien.
  *
- * `cursor` reprend la dernière entrée reçue ; `startAt` saute directement à une
- * version donnée (saut rapide depuis le sélecteur). Les deux se traduisent par
- * la même comparaison de couple `(date, version)`.
+ * `cursor` repart de la dernière entrée reçue, `startAt` saute à une version
+ * (sélecteur de saut rapide). Les deux donnent la même comparaison sur le
+ * couple `(date, version)`.
  */
 export async function getChangelogPage({
   locale,
@@ -73,8 +69,8 @@ export async function getChangelogPage({
   const db = getDb();
 
   try {
-    // Un saut rapide se ramène à un curseur : on lit la date de la version
-    // visée, puis on repart de ce couple — bornes incluses cette fois.
+    // Saut rapide = curseur sur la version visée (on lit sa date), mais borne
+    // incluse.
     let after = decodeCursor(cursor);
     let inclusive = false;
     if (!after && startAt) {
@@ -98,8 +94,8 @@ export async function getChangelogPage({
         )
       : eq(schema.changelogEntries.hidden, false);
 
-    // On demande un élément de plus que la page : sa présence dit s'il reste
-    // quelque chose à charger, sans second appel de comptage.
+    // Une ligne de plus que la page : si elle est là, il en reste. Pas besoin
+    // de COUNT.
     const rows = await db
       .select()
       .from(schema.changelogEntries)
@@ -124,8 +120,8 @@ export async function getChangelogPage({
 }
 
 /**
- * Index léger de toutes les versions, pour le sélecteur de saut rapide.
- * Trois colonnes seulement : l'index doit rester chargeable d'un coup.
+ * Toutes les versions, pour le sélecteur de saut rapide. Trois colonnes
+ * seulement, pour pouvoir tout charger d'un coup.
  */
 export async function getChangelogVersionIndex(): Promise<ChangelogVersionRef[]> {
   const db = getDb();
@@ -146,7 +142,7 @@ export async function getChangelogVersionIndex(): Promise<ChangelogVersionRef[]>
   }
 }
 
-/** Toutes les entrées, brouillons masqués compris — usage administration. */
+/** Toutes les entrées, masquées comprises, pour l'admin. */
 export async function listAllChangelogEntries(): Promise<ChangelogEntryRow[]> {
   const db = getDb();
   try {

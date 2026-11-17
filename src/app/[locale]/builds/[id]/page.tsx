@@ -108,7 +108,7 @@ async function loadBuild(id: string, { countView }: { countView: boolean }): Pro
     };
   } catch (error) {
     if (isMissingTableError(error)) return null;
-    // id mal formé (uuid invalide) ou autre → 404 propre
+    // id mal formé (uuid invalide) ou autre : 404 propre
     return null;
   }
 }
@@ -119,22 +119,21 @@ export async function generateMetadata({ params }: RouteParams): Promise<Metadat
   if (!build) return { title: "Build introuvable" };
   const character = getCharacterById(build.characterId);
   const t = await getTranslations({ locale, namespace: "metadata" });
-  // Description dans la langue de la page (elle était en français partout), et
-  // assez longue pour un résultat de recherche ; la note du joueur suit.
+  // Description dans la langue de la page, assez longue pour un résultat de
+  // recherche ; la note du joueur suit.
   const summary = character
     ? t("communityBuildDescription", {
         title: build.title,
         character: resolveCharacterDisplayName(character, locale),
       })
     : t("buildsDescription");
-  // Une note réduite à un lien (vidéo YouTube…) n'a rien à faire dans un
-  // extrait de recherche : on retire les adresses avant de l'ajouter.
+  // On retire les liens de la note (vidéo YouTube…) avant de la mettre dans
+  // l'extrait de recherche.
   const note = build.note?.replace(/https?:\/\/\S+/g, "").trim();
   const description = clampDescription(note ? `${summary} ${note}` : summary);
-  // og:title/og:description doivent être explicitement repris ici, sinon ils
-  // héritent du bloc openGraph générique du layout racine (les réseaux
-  // afficheraient le titre du site au lieu du titre du build). L'image OG
-  // dynamique reste fournie par opengraph-image.tsx.
+  // og:title/og:description à reprendre ici, sinon ils viennent du openGraph
+  // du layout racine et les réseaux affichent le titre du site. L'image OG
+  // vient de opengraph-image.tsx.
   return {
     title: build.title,
     description,

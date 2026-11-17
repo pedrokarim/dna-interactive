@@ -23,10 +23,9 @@ const baseFields = {
     .refine(isValidVersion, "Version attendue au format numérique, ex. « 2.4.0 »."),
   date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Date attendue au format AAAA-MM-JJ."),
   type: z.enum(CHANGELOG_TYPES),
-  // PIÈGE : `z.record(z.enum(locales), …)` rend en Zod 4 **toutes** les langues
-  // obligatoires. Une entrée rédigée en français seul était donc refusée. On
-  // valide donc des clés libres, puis on vérifie qu'elles sont bien des langues
-  // du site.
+  // En Zod 4, `z.record(z.enum(locales), …)` rend toutes les langues obligatoires
+  // (une entrée en français seul était refusée). On accepte des clés libres, puis
+  // on vérifie que ce sont des langues du site.
   translations: z
     .record(z.string(), translation)
     .refine((value) => Object.keys(value).length > 0, "Au moins une langue est requise.")
@@ -34,8 +33,8 @@ const baseFields = {
       (value) => Object.keys(value).every((key) => (locales as readonly string[]).includes(key)),
       "Langue inconnue.",
     )
-    // La langue par défaut sert de repli à toutes les autres : sans elle, une
-    // entrée pourrait n'être lisible dans aucune langue attendue.
+    // La langue par défaut sert de repli aux autres, sans elle l'entrée pourrait
+    // n'être lisible nulle part.
     .refine((value) => Boolean(value[defaultLocale]), `La langue « ${defaultLocale} » est obligatoire.`),
   hidden: z.boolean().optional(),
 };
@@ -79,8 +78,8 @@ export async function POST(request: NextRequest) {
   }
 
   const db = getDb();
-  // La version est l'ancre publique (#v2.4.0) : deux entrées ne peuvent pas la
-  // partager. On le dit clairement plutôt que de laisser remonter l'erreur SQL.
+  // La version sert d'ancre publique (#v2.4.0), donc unique. On répond 409 avec un
+  // message lisible au lieu de laisser remonter l'erreur SQL.
   const [existing] = await db
     .select({ id: schema.changelogEntries.id })
     .from(schema.changelogEntries)

@@ -5,16 +5,16 @@ export type WeaponTypeChipTone = "base" | "extra" | "suggested";
 
 const DISC_TONE: Record<WeaponTypeChipTone, string> = {
   base: "border-gold/60",
-  // Pointillés : un type qu'on peut débloquer, pas encore une maîtrise acquise.
+  // Pointillés : type qu'on peut débloquer, maîtrise pas encore acquise.
   extra: "border-dashed border-[rgba(255,255,255,0.4)]",
   suggested: "border-gold-bright",
 };
 
 /**
- * Un type d'arme : son icône du jeu sur un disque sombre, et son nom.
+ * Un type d'arme : l'icône du jeu sur un disque sombre, et son nom.
  *
- * Les icônes du jeu sont blanches sur fond transparent : le disque est sombre
- * dans les deux thèmes, sinon elles disparaissent sur le thème clair.
+ * Les icônes sont blanches sur transparent, donc le disque reste sombre dans les
+ * deux thèmes (sinon on ne les voit plus en clair).
  */
 export function WeaponTypeChip({
   type,

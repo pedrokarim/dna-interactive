@@ -3,8 +3,8 @@ import { createContext, useCallback, useContext, useMemo, useRef, useState, type
 import { DnaConfirmDialog } from "./Dialog";
 
 /**
- * Fournisseur impératif de dialogues du design system. Permet de remplacer les
- * natifs `window.confirm` / `window.alert` :
+ * Dialogues du design system en appel impératif, à la place de
+ * `window.confirm` / `window.alert` :
  *   const { confirm } = useConfirm();
  *   if (await confirm({ title, message, danger: true })) { ...action... }
  */

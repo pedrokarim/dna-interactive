@@ -10,14 +10,12 @@ import { GlyphIcons } from "@/components/icons/GameGlyph";
 import { resolveCharacterDisplayName } from "@/lib/characters/display-name";
 import type { BuildShowcaseEntry } from "@/lib/characters/showcase";
 
-// ---------------------------------------------------------------------------
-// BuildShowcase — carrousel « à la Twitch » des derniers personnages sortis,
-// chacun avec son premier build. Carte active au centre, voisines en retrait
-// sur les côtés. Défilement automatique, avec pause.
+// Carrousel façon Twitch des derniers personnages sortis, chacun avec son
+// premier build : carte active au centre, voisines en retrait, défilement
+// automatique avec pause.
 //
-// Les entrées viennent du serveur (`getBuildShowcase`) : les résoudre ici
-// embarquait le catalogue complet des objets dans le navigateur.
-// ---------------------------------------------------------------------------
+// Les entrées sont résolues côté serveur (`getBuildShowcase`). Le faire ici
+// embarquerait tout le catalogue des objets dans le navigateur.
 
 /** Durée d'affichage d'une carte avant la suivante. */
 const AUTOPLAY_MS = 6000;
@@ -36,15 +34,15 @@ export default function BuildShowcase({ entries: featured }: { entries: BuildSho
   // `null` = pas encore choisi par le visiteur : on suit sa préférence de mouvement.
   const [pausedByUser, setPausedByUser] = useState<boolean | null>(null);
   const [hovered, setHovered] = useState(false);
-  // Choix du visiteur (bouton) ≠ pause temporaire au survol : le bouton ne
-  // pilote que le premier, sinon le cliquer (donc le survoler) relancerait tout.
+  // Le bouton pause ne pilote que le choix du visiteur, pas la pause au survol :
+  // sinon cliquer dessus (donc le survoler) relancerait le défilement.
   const userPaused = pausedByUser ?? Boolean(reduceMotion);
   const paused = userPaused || hovered;
 
   const go = useCallback((i: number) => setActive(((i % count) + count) % count), [count]);
 
-  // Défilement automatique : la minuterie repart à chaque changement de carte,
-  // donc un clic manuel laisse toujours une pleine durée à la carte choisie.
+  // La minuterie repart à chaque changement de carte : après un clic, la carte
+  // choisie reste affichée la durée complète.
   useEffect(() => {
     if (paused || count < 2) return;
     const timer = setTimeout(() => go(active + 1), AUTOPLAY_MS);

@@ -22,9 +22,8 @@ import type { SyncStatus } from "./useProgressSync";
 export type PanelView = "filters" | "regions" | "search" | "marked";
 
 /**
- * Panneau gauche de la carte. Une seule colonne de 380 px, sans chrome
- * superflu : en-tête de zone (56 px), ligne de recherche, puis le contenu du
- * mode courant sur toute la hauteur restante.
+ * Panneau gauche de la carte, une colonne de 380 px : en-tête de zone (56 px),
+ * ligne de recherche, puis le contenu du mode courant sur le reste de la hauteur.
  */
 export function MapPanel({
   view,
@@ -70,8 +69,8 @@ export function MapPanel({
 
       {/* En-tête : zone courante + changement de zone */}
       <header className="flex h-14 shrink-0 items-center gap-2.5 border-b border-line/15 px-3">
-        {/* Sortie de la carte : le logo ramène à l'accueil. Sans lui, la vue
-            plein écran donnait l'impression d'être enfermé sur la page. */}
+        {/* Le logo ramène à l'accueil : sans lui, on se sent coincé dans la
+            vue plein écran. */}
         <Link
           href="/"
           aria-label={tNav("home")}

@@ -4,13 +4,13 @@ import { useState } from "react";
 import { cn } from "./cn";
 import { optimizedImageUrl } from "@/lib/images/optimized";
 
-/** Ancien fallback recyclé du pin de carte Leaflet — traité comme "pas d'image". */
+/** Ancien fallback repris du pin de carte Leaflet, traité comme "pas d'image". */
 const MARKER = "/marker-default.svg";
 /** Placeholder DNA "image indisponible" (public/item-fallback.svg). */
 export const ITEM_FALLBACK_ICON = "/item-fallback.svg";
 
 type DnaItemIconProps = {
-  /** Source de l'icône. `null`/vide/marker → placeholder DNA. */
+  /** Source de l'icône. `null`, vide ou le marker : placeholder DNA. */
   src: string | null | undefined;
   alt: string;
   className?: string;
@@ -21,9 +21,9 @@ type DnaItemIconProps = {
 };
 
 /**
- * Icône d'item robuste : rend le placeholder DNA (`item-fallback.svg`) quand la
- * source est absente, vaut l'ancien marker, ou échoue au chargement (404 runtime).
- * Drop-in pour les `<img>` d'items — conserve `className`/tailles du site.
+ * Icône d'item. Affiche le placeholder DNA (`item-fallback.svg`) si la source
+ * manque, vaut l'ancien marker ou ne charge pas (404). Remplace directement les
+ * `<img>` d'items, avec les mêmes `className` et tailles.
  *
  * L'image passe par l'optimiseur de Next, à deux fois `width` (écrans haute
  * densité) : les icônes sont des PNG de 256 px, affichées entre 20 et 96 px.

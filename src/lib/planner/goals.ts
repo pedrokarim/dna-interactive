@@ -29,7 +29,7 @@ export const MIN_SKILL_LEVEL = 1;
 
 const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, Math.round(value)));
 
-/** Plafond de niveau après `breaks` percées. */
+/** Plafond de niveau après `count` percées. */
 export function levelCap(breaks: BreakStep[], count: number, maxLevel: number): number {
   return breaks[count]?.level ?? maxLevel;
 }
@@ -82,8 +82,9 @@ export function clampCharacterState(
 
 /**
  * Objectif d'un perso remis d'aplomb : état actuel dans les bornes, cible au
- * moins égale à l'actuel, et prérequis relevés (compétence → percées →
- * niveau). On relève, on ne refuse jamais ; chaque relèvement est signalé.
+ * moins égale à l'actuel, prérequis relevés (une compétence exige des percées,
+ * une percée un niveau). On relève sans jamais refuser, et chaque relèvement
+ * sort en warning.
  */
 export function normalizeCharacterGoal(
   goal: CharacterGoal,

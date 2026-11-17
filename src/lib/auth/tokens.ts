@@ -5,7 +5,6 @@ import { getDb, schema } from "@/db";
 
 export type AuthTokenKind = "verify_email" | "reset_password";
 
-// Durée de vie par type de token.
 const TTL_MS: Record<AuthTokenKind, number> = {
   verify_email: 24 * 60 * 60 * 1000, // 24 h
   reset_password: 60 * 60 * 1000, //  1 h
@@ -16,9 +15,9 @@ function hashToken(raw: string): string {
 }
 
 /**
- * Crée un token à usage unique et renvoie sa valeur EN CLAIR (à mettre dans le
- * lien email). Seul le hash est persisté. On invalide les anciens tokens du
- * même (user, kind) pour qu'un seul lien soit actif à la fois.
+ * Crée un token à usage unique et renvoie sa valeur en clair, pour le lien de
+ * l'email. On ne stocke que le hash. Les anciens tokens du même (user, kind)
+ * sont supprimés : un seul lien actif à la fois.
  */
 export async function createAuthToken(userId: string, kind: AuthTokenKind): Promise<string> {
   const raw = randomBytes(32).toString("base64url");
@@ -36,9 +35,9 @@ export async function createAuthToken(userId: string, kind: AuthTokenKind): Prom
 }
 
 /**
- * Valide et CONSOMME un token (usage unique) : renvoie le userId si valide et
- * non expiré, sinon null. Le token est supprimé qu'il soit valide ou non
- * réutilisable ensuite.
+ * Valide et consomme un token : renvoie le userId s'il existe et n'a pas
+ * expiré, sinon null. Un token valide est supprimé tout de suite, il ne sert
+ * qu'une fois. Un token expiré reste en base.
  */
 export async function consumeAuthToken(raw: string, kind: AuthTokenKind): Promise<string | null> {
   if (!raw) return null;

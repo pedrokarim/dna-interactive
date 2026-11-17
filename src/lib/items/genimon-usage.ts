@@ -4,15 +4,14 @@ import { genimonTraitSlots, resolveBuildTrait, sanitizeTraitKeys, type BuildGeni
 import { getItemByCategoryAndId } from "@/lib/items/catalog";
 
 // ---------------------------------------------------------------------------
-// Index inverse GÉNIEMON → PERSONNAGES.
+// Index inverse : Géniemon vers les personnages qui l'utilisent.
 //
-// Pendant exact de `weapon-usage.ts` : déduit des builds curés, jamais saisi à
-// la main. Ajouter une créature dans un build la fait apparaître sur sa fiche,
-// l'en retirer l'en fait disparaître. Aucune liste parallèle à maintenir.
+// Comme `weapon-usage.ts`, déduit des builds curés, jamais saisi à la main :
+// ajouter une créature à un build la fait apparaître sur sa fiche, l'en retirer
+// la fait disparaître.
 //
-// Une différence avec les armes : on remonte aussi les **Traits** que le build
-// vise sur cette créature. C'est souvent l'information qu'on cherche en
-// arrivant ici – savoir qui l'emploie sert surtout à savoir quoi y greffer.
+// Différence avec les armes : on remonte aussi les Traits que le build vise sur
+// la créature, souvent ce qu'on cherche en arrivant sur sa fiche.
 // ---------------------------------------------------------------------------
 
 export interface GenimonUsage {
@@ -78,8 +77,8 @@ export function getGenimonUsage(genimonItemId: string, lang: string = "EN"): Gen
     }
   }
 
-  // Les recommandations d'abord, puis l'ordre alphabétique — un même
-  // personnage peut apparaître deux fois s'il a plusieurs builds.
+  // Les recommandations d'abord, puis par ordre alphabétique. Un personnage
+  // peut apparaître deux fois s'il a plusieurs builds.
   return usages.sort((a, b) => {
     if (a.rank !== b.rank) return a.rank === "best" ? -1 : 1;
     return a.name.localeCompare(b.name) || a.buildName.localeCompare(b.buildName);
@@ -110,9 +109,9 @@ export interface GenimonTraitBuild {
  * Le « build » d'un Géniemon : les Traits que les builds du site y visent le
  * plus souvent.
  *
- * Le décompte porte sur l'espèce entière. Les builds désignent presque toujours
- * la variante ordinaire : sans cela, la fiche d'une scintillante resterait vide
- * alors qu'elle se monte de la même façon, avec un emplacement de plus.
+ * On compte sur l'espèce entière : les builds citent presque toujours la variante
+ * ordinaire, et la fiche d'une scintillante resterait vide alors qu'elle se monte
+ * pareil, avec un emplacement de plus.
  */
 export function getGenimonTraitBuild(genimonItemId: string, lang: string = "EN", locale: string = "en"): GenimonTraitBuild | null {
   const item = getItemByCategoryAndId("genimons", genimonItemId);

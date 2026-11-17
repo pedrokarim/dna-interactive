@@ -27,9 +27,9 @@ export function DnaNotifDot({ className }: { className?: string }) {
 }
 
 /**
- * Pastille « nouveau » façon gacha : badge rouge glacé posé sur le coin
- * supérieur-droit d'une icône, avec liseré sombre pour le détacher et halo.
- * À placer dans un parent `relative` (cf. {@link DnaIconWithBadge}).
+ * Pastille « nouveau » façon gacha, rouge glacé, posée en haut à droite d'une
+ * icône avec un liseré sombre et un halo. Parent en `relative` obligatoire
+ * (cf. {@link DnaIconWithBadge}).
  */
 export function DnaNewBadge({ className }: { className?: string }) {
   return (

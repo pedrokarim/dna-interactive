@@ -18,9 +18,9 @@ const localeToOgLocale: Record<string, string> = {
 
 /**
  * Préfixe de clé dans le namespace `metadata` des messages : `<key>Title` et
- * `<key>Description`. C'est la source de vérité localisée pour le `<title>` et
- * la meta description ; `title`/`description` ci-dessous ne servent que de
- * repli pour les pages qui n'ont pas (encore) de clés traduites.
+ * `<key>Description`. Le `<title>` et la meta description traduits viennent de
+ * là. `title`/`description` plus bas ne servent qu'aux pages qui n'ont pas
+ * encore de clés traduites.
  */
 export type MetadataKey =
   | "home"
@@ -48,29 +48,28 @@ export interface PageMetadataOptions {
   description?: string;
   keywords?: string[];
   /**
-   * La route possède son propre `opengraph-image.tsx` (fiches personnage,
-   * build, objet). Sinon l'image vient de `/api/og/<locale><path>`, le gabarit
-   * commun (`app/_og/page-og.tsx`) avec le vrai contenu de la page.
+   * La route a son propre `opengraph-image.tsx` (fiches personnage, build,
+   * objet). Sinon l'image vient de `/api/og/<locale><path>`, le gabarit commun
+   * (`app/_og/page-og.tsx`) rempli avec le contenu de la page.
    */
   dynamicOgImage?: boolean;
-  /** Path without locale prefix, e.g. "" for home, "/map", "/characters" */
+  /** Chemin sans préfixe de locale : "" pour l'accueil, "/map", "/characters"… */
   path?: string;
   type?: "website" | "article";
   /**
-   * `false` émet `noindex, follow` : la page reste explorée et ses liens
-   * suivis, mais Google ne l'indexe pas. Réservé aux pages trop maigres pour
-   * tenir seules dans les résultats (cf. fiches cosmétiques), qui tirent
-   * vers le bas le jugement porté sur l'ensemble du site.
+   * `false` donne `noindex, follow` : Google explore la page et suit ses liens
+   * sans l'indexer. Pour les pages trop maigres pour les résultats (les fiches
+   * cosmétiques par exemple), qui font baisser la note de tout le site.
    */
   indexable?: boolean;
   /**
-   * La page a un aperçu Discord (component embed) : pose dans le `<head>` le
+   * La page a un aperçu Discord (component embed) : on met dans le `<head>` le
    * `<link>` vers son JSON, servi par `/api/discord-embed/<locale><path>`.
    */
   discordEmbed?: boolean;
 }
 
-// Codes de locale du site → balises hreflang BCP 47 (`jp` n'en est pas une).
+// Codes de locale du site vers les balises hreflang BCP 47 (`jp` n'en est pas une).
 const localeToHreflang: Record<string, string> = {
   fr: "fr",
   en: "en",
@@ -84,10 +83,10 @@ const localeToHreflang: Record<string, string> = {
 /**
  * Canonical et hreflang d'une page, à poser dans `alternates`.
  *
- * Chaque page indexable doit déclarer les siens : le layout racine n'en pose
- * plus. Il désignait l'accueil comme canonical de toute page qui oubliait de
- * le redéfinir, et Google tenait alors `/planner`, `/builds`, `/calendar`… pour
- * des doublons de l'accueil (constaté le 15/11/2026).
+ * Chaque page indexable déclare les siens : le layout racine n'en met plus. Il
+ * donnait l'accueil comme canonical à toute page qui oubliait de le redéfinir,
+ * et Google prenait `/planner`, `/builds`, `/calendar`… pour des doublons de
+ * l'accueil.
  *
  * @param path chemin sans préfixe de locale : `""` pour l'accueil, `"/planner"`
  */
@@ -99,25 +98,24 @@ export function localizedAlternates(
   for (const l of locales) {
     languages[localeToHreflang[l] ?? l] = `${BASE_URL}/${l}${path}`;
   }
-  // ==`x-default` pointe vers l'anglais==, pas vers le français. C'est la
-  // version servie à un visiteur dont la langue ne correspond à aucune locale
-  // déclarée. Le public de Duet Night Abyss cherche en anglais, et la
-  // concurrence indexée (Game8, GameWith, Fandom) est anglophone : envoyer ce
-  // visiteur sur le français lui donnait une page qu'il ne lit pas.
-  // Sans effet sur la langue par défaut du site, qui reste `fr` (cf. i18n/config).
+  // `x-default` pointe vers l'anglais : c'est la version pour un visiteur dont
+  // la langue ne correspond à aucune locale déclarée. Le public de Duet Night
+  // Abyss cherche surtout en anglais, et en français ce visiteur tombait sur une
+  // page qu'il ne lit pas. La langue par défaut du site reste `fr` (voir
+  // i18n/config).
   languages["x-default"] = `${BASE_URL}/en${path}`;
   return { canonical: `${BASE_URL}/${locale}${path}`, languages };
 }
 
-/** Longueur maximale d'une meta description : Bing classe en erreur au-delà. */
+/** Longueur max d'une meta description : au-delà, Bing la signale en erreur. */
 const MAX_DESCRIPTION_LENGTH = 160;
 
 /**
- * Ramène une meta description à 160 caractères au plus, coupée sur une espace
- * quand le texte en a (pas en japonais ni en chinois), avec « … » à la fin.
+ * Coupe une meta description à 160 caractères au plus, sur une espace quand le
+ * texte en a (pas en japonais ni en chinois), avec « … » à la fin.
  *
  * Les descriptions des fiches viennent des textes du jeu ou d'une note de
- * joueur : leur longueur n'est pas maîtrisée.
+ * joueur, donc de longueur quelconque.
  */
 export function clampDescription(text: string, max = MAX_DESCRIPTION_LENGTH): string {
   const clean = text.replace(/\s+/g, " ").trim();
@@ -128,9 +126,7 @@ export function clampDescription(text: string, max = MAX_DESCRIPTION_LENGTH): st
   return `${head.replace(/[\s,;:.–-]+$/, "")}…`;
 }
 
-/**
- * Génère des métadonnées cohérentes pour toutes les pages utilisant generateMetadata
- */
+/** Métadonnées communes des pages qui passent par generateMetadata. */
 export async function generatePageMetadata(
   options: PageMetadataOptions,
   parent?: ResolvingMetadata,
@@ -154,20 +150,20 @@ export async function generatePageMetadata(
   const ogLocale = localeToOgLocale[currentLocale] ?? "fr_FR";
   const ogImage = `${BASE_URL}/api/og/${currentLocale}${path}`;
 
-  // Titre/description localisés depuis le namespace `metadata`. Les titres y sont
-  // stockés SANS la marque : le template `%s | DNA Interactive` du layout l'ajoute.
+  // Titre et description traduits, tirés du namespace `metadata`. Les titres n'y
+  // ont pas la marque : le template `%s | DNA Interactive` du layout l'ajoute.
   const t = await getTranslations({ locale: currentLocale, namespace: "metadata" });
   const finalTitle = key ? t(`${key}Title`) : title || t("homeTitle");
   const finalDescription = clampDescription(
     key ? t(`${key}Description`) : description || t("defaultDescription"),
   );
-  // og:title / twitter:title ne passent pas par le template Next : on suffixe à la main
-  // pour que l'aperçu partagé porte la même chaîne que l'onglet.
+  // og:title et twitter:title ne passent pas par le template Next : on ajoute la
+  // marque à la main pour que l'aperçu partagé affiche le même titre que l'onglet.
   const brandedTitle = `${finalTitle} | ${SITE_CONFIG.name}`;
 
   return {
-    // Le template `%s | DNA Interactive` du layout ne s'applique qu'aux segments
-    // ENFANTS : la home, définie au même niveau, doit porter la marque elle-même.
+    // Le template `%s | DNA Interactive` du layout ne vaut que pour les segments
+    // enfants. L'accueil est au même niveau, il met donc la marque lui-même.
     title: key === "home" ? { absolute: brandedTitle } : finalTitle,
     description: finalDescription,
     keywords: keywords.length > 0 ? keywords : [
@@ -198,8 +194,8 @@ export async function generatePageMetadata(
       siteName: SITE_CONFIG.name,
       title: brandedTitle,
       description: finalDescription,
-      // Quand la route a son propre opengraph-image.tsx, on laisse Next injecter
-      // SON image et on n'en ajoute aucune ici (sinon double og:image).
+      // Si la route a son propre opengraph-image.tsx, Next injecte cette image :
+      // on n'en ajoute pas ici, sinon og:image apparaît deux fois.
       ...(dynamicOgImage ? {} : { images: [{ url: ogImage, width: 1200, height: 630, alt: finalTitle }] }),
     },
     twitter: {
@@ -226,9 +222,7 @@ export async function generatePageMetadata(
   };
 }
 
-/**
- * Configurations prédéfinies pour les métadonnées des pages principales
- */
+/** Métadonnées toutes prêtes des pages principales. */
 export const pageMetadata = {
   home: {
     key: "home",

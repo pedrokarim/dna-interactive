@@ -19,11 +19,11 @@ export type BuilderCharacterOption = {
   name: string;
   subtitle: string | null;
   portrait: string | null;
-  /** Splash complet (bust 2048²) — pour la bannière des cartes. */
+  /** Splash complet (buste 2048²), pour la bannière des cartes. */
   art: string | null;
-  /** Portrait carré (head) — pour les mini-avatars / line-up. */
+  /** Portrait carré (head), pour les mini-avatars et le line-up. */
   avatar: string | null;
-  /** Compétences réelles référençables (slots skill1/2/3) — le builder n'en propose pas d'autres. */
+  /** Compétences réelles (slots skill1/2/3), le builder n'en propose pas d'autres. */
   skills: Array<{ index: number; name: string }>;
   element: ElementKey | null;
   elements: Array<{ key: ElementKey; label: string }>;
@@ -65,8 +65,8 @@ function itemToPickerItem(item: ItemRecord, locale: string): DnaPickerItem {
     polarity: item.stats.polarity,
   };
 
-  // Pour les armes, on expose le type (WeaponType_X) et la classe mêlée/distance
-  // afin de pouvoir filtrer le picker selon les weaponTags du perso.
+  // Armes : on expose le type (WeaponType_X) et la classe mêlée/distance, pour
+  // filtrer le picker selon les weaponTags du perso.
   if (item.categoryId === "weapons") {
     const keys = item.typeCompatibility?.textKeys ?? [];
     const typeKey = keys.find((k) => k.startsWith("WeaponType_"));
@@ -184,10 +184,10 @@ export function getBuilderOptions(locale: string): BuilderOptions {
       melee: getWeaponWedgePool("melee").map((item) => itemToPickerItem(item, upperLocale)),
       ranged: getWeaponWedgePool("ranged").map((item) => itemToPickerItem(item, upperLocale)),
     },
-    // On n'expose dans le builder que les vrais génimons équipables : ceux du
-    // système de leveling (maxLevel 60). Les entrées maxLevel 1 sont des pets
-    // d'événement (Monster Rush / Wishen) ou des drones non buildables —
-    // l'encyclopédie d'items les garde, mais ils n'ont rien à faire dans un build.
+    // Seuls les génimons équipables vont dans le builder, ceux qui montent au
+    // niveau 60. Les entrées maxLevel 1 sont des pets d'événement (Monster Rush /
+    // Wishen) ou des drones qu'on ne builde pas : l'encyclopédie les garde, pas le
+    // builder.
     genimons: getItemsByCategoryId("genimons")
       .filter((item) => item.stats.maxLevel === 60)
       .map((item) => itemToPickerItem(item, upperLocale)),

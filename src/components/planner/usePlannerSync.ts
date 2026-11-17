@@ -32,7 +32,7 @@ const write = (key: string, value: string | null) => {
   } catch {}
 };
 
-/** Plan lu DIRECTEMENT dans le localStorage, jamais dans l'atome (cf. ci-dessous). */
+/** Plan lu dans le localStorage, jamais dans l'atome (voir plus bas). */
 function readLocalPlan(): PlannerState {
   try {
     return readPlannerState(JSON.parse(read(PLANNER_STORAGE_KEY) ?? "null"));
@@ -53,18 +53,17 @@ function backupLocal(plan: PlannerState) {
 }
 
 /**
- * Synchronise le plan avec le compte connecté, sur le modèle de la
- * progression de la carte (`useProgressSync`) :
+ * Synchronise le plan avec le compte connecté, comme la progression de la
+ * carte (`useProgressSync`).
  *
- * - premier chargement de ce compte sur cet appareil, changements locaux non
- *   envoyés, ou plan du compte vide : **fusion** des deux plans, rien n'est
- *   perdu ;
- * - sinon le compte fait foi, après une copie de secours du plan local ;
- * - ensuite chaque changement part au serveur après un court délai.
+ * Premier chargement de ce compte sur cet appareil, changements locaux pas
+ * encore envoyés, ou plan du compte vide : on fusionne les deux plans. Sinon
+ * le compte l'emporte, après une copie de secours du plan local. Ensuite
+ * chaque changement part au serveur après un court délai.
  *
- * Le plan local est lu dans le localStorage et pas dans l'atome : fusionner
- * avec une valeur initiale vide a déjà effacé la progression d'un joueur sur
- * la carte (25/09/2026).
+ * Le plan local se lit dans le localStorage, pas dans l'atome : l'atome vaut
+ * encore sa valeur initiale vide au montage, et fusionner avec du vide efface
+ * la progression.
  */
 export function usePlannerSync(): PlannerSyncStatus {
   const { data: session, status: authStatus } = useSession();

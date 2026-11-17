@@ -6,7 +6,7 @@ import { DEFAULT_SETTINGS, mergeSettings, type AppSettings } from "./index";
 
 const KEY = "config";
 
-/** Réglages courants (fusionnés sur les défauts). Sûr si table absente → défauts. */
+/** Réglages courants, fusionnés sur les défauts. Si la table manque, on renvoie les défauts. */
 export async function getAppSettings(): Promise<AppSettings> {
   const db = getDb();
   try {

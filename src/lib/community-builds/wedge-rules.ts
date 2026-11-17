@@ -3,10 +3,10 @@ import type { ItemRecord } from "@/lib/items/types";
 import { isCenterDemonWedgeItemId } from "./center-wedges";
 
 /**
- * Règles de placement des Demon Wedges d'un build, partagées par le picker du
- * builder, l'import JSON/XML/lien et la validation serveur. Avant elles, ces
- * trois chemins ne vérifiaient que l'existence des pièces : un build pouvait
- * porter des pièces d'arme, un centre ou des pièces d'un autre élément.
+ * Règles de placement des Demon Wedges d'un build, communes au picker du
+ * builder, à l'import JSON/XML/lien et à la validation serveur. Vérifier
+ * seulement que la pièce existe laissait passer des pièces d'arme, un mauvais
+ * centre ou des pièces d'un autre élément.
  *
  * Règles (cf. docs/demon-wedge-build-rules.md) :
  * - une case de personnage n'accepte que le pool personnage (`UI_Armory_Char`) ;

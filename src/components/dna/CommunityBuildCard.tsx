@@ -10,12 +10,11 @@ import { DnaTag } from "./Tag";
 import { DnaVoteButton } from "./VoteButton";
 
 /**
- * Carte récapitulative d'un build communauté (liste sur la fiche perso +
- * classement). Distingue « Officiel » (nos guides) d'« Alternative communauté »
- * via le tag, porte l'auteur Discord, la date, un aperçu d'items et le vote.
+ * Carte d'un build communauté, sur la fiche perso et dans le classement. Le tag
+ * dit « Officiel » (nos guides) ou « Communauté ». Elle porte l'auteur Discord,
+ * la date, un aperçu d'items et le vote.
  *
- * `date` est fourni déjà formaté (le formatage/i18n est la responsabilité de
- * l'appelant — pas de calcul de date dans le composant).
+ * `date` arrive déjà formatée : le formatage et l'i18n restent chez l'appelant.
  */
 
 type IconRef = { icon?: string | null; name?: string };
@@ -27,7 +26,7 @@ export type DnaCommunityBuildCardProps = {
   element?: ElementKey | null;
   /** Rang dans le classement (affiche #n). */
   rank?: number;
-  /** Build officiel (badge dédié) vs alternative communauté. */
+  /** Build officiel (badge dédié), sinon build communauté. */
   official?: boolean;
   vote: { count: number; voted?: boolean };
   onVote?: (next: boolean) => void;
@@ -153,19 +152,14 @@ export function DnaCommunityBuildCard({
 /**
  * Gabarit d'attente de `DnaCommunityBuildCard`.
  *
- * La liste des builds d'une fiche personnage est recuperee cote client, apres
- * hydratation. Elle affichait une simple ligne de texte pendant le chargement,
- * puis les cartes : la section passait d'une vingtaine de pixels a plusieurs
- * centaines, et poussait tout le contenu en dessous.
+ * Les builds d'une fiche perso arrivent côté client, après l'hydratation. Avec
+ * une simple ligne de texte en attendant, la section passait d'une vingtaine de
+ * pixels à plusieurs centaines et poussait tout le reste : CLS p75 à 0,187 sur
+ * les fiches perso dans Sarutobi. Lighthouse ne le voit pas, la section est
+ * sous la ligne de flottaison.
  *
- * Invisible en labo, parce que le CLS de Lighthouse ne compte que les
- * decalages visibles dans la fenetre initiale et que cette section est sous la
- * ligne de flottaison. Bien visible sur le terrain, ou les gens font defiler la
- * page : CLS p75 mesure a 0,187 sur les fiches personnages, contre 0 partout
- * ailleurs (Sarutobi, 30 jours au 9 septembre 2026).
- *
- * Le gabarit reprend la structure et les espacements de la vraie carte plutot
- * qu'une hauteur en dur, pour que sa hauteur suive celle-ci si elle evolue.
+ * On reprend la structure et les espacements de la vraie carte, pas une hauteur
+ * en dur, pour que le gabarit suive si la carte change.
  */
 export function DnaCommunityBuildCardSkeleton({ className }: { className?: string }) {
   return (
@@ -174,7 +168,7 @@ export function DnaCommunityBuildCardSkeleton({ className }: { className?: strin
 
       <div className="flex items-stretch gap-3 p-3 pl-4">
         <div className="flex min-w-0 flex-1 flex-col gap-2">
-          {/* Ligne titre + etiquette */}
+          {/* Ligne titre + étiquette */}
           <div className="flex items-center gap-2">
             <span className="h-5 w-1/2 rounded-sm bg-white/8" />
             <span className="ml-auto h-5 w-16 rounded-sm bg-white/8" />
@@ -187,7 +181,7 @@ export function DnaCommunityBuildCardSkeleton({ className }: { className?: strin
             <span className="ml-auto h-4 w-20 rounded-sm bg-white/8" />
           </div>
 
-          {/* Apercu d'items */}
+          {/* Aperçu d'items */}
           <div className="flex flex-wrap items-center gap-1.5">
             {[0, 1, 2, 3].map((i) => (
               <span key={i} className="h-7 w-7 border border-white/8 bg-black/25" />

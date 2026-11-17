@@ -4,50 +4,48 @@ import { join } from "node:path";
 /**
  * Emplacements d'illustrations du guide des armes de calamité.
  *
- * Le principe : la page réserve la place, l'image arrive plus tard. Tant que le
- * fichier n'existe pas, un cadre nommé indique exactement quoi déposer et où ;
- * dès qu'il est là, il remplace le cadre sans toucher au code.
+ * La page réserve la place, l'image arrive plus tard. Tant que le fichier
+ * n'existe pas, un cadre dit quoi déposer et où ; dès qu'il est là, il prend la
+ * place du cadre sans toucher au code.
  *
- * Déposer le fichier dans `public/assets/guides/calamity/<id>.<ext>` — les
- * extensions acceptées sont testées dans l'ordre ci-dessous.
+ * Le fichier va dans `public/assets/guides/calamity/<id>.<ext>`, les extensions
+ * sont testées dans l'ordre ci-dessous.
  */
 export const GUIDE_IMAGE_DIR = "/assets/guides/calamity";
 const EXTENSIONS = ["webp", "png", "jpg", "jpeg"] as const;
 
 /** Identifiants des emplacements réservés dans le guide. */
 export const CALAMITY_GUIDE_SLOTS = [
-  /** Ecran de Fusion de calamite, vue d'ensemble. */
+  /** Écran de Fusion de calamité, vue d'ensemble. */
   "overview",
-  /** Arbre + panneau de detail d'un Potentiel. */
+  /** Arbre et panneau de détail d'un Potentiel. */
   "potential",
-  /** Materiaux requis d'un noeud, et la regle du premier choix gratuit. */
+  /** Matériaux requis d'un nœud, et la règle du premier choix gratuit. */
   "potentialCost",
-  /** Le Fourneau de calamite et ses missions. */
+  /** Le Fourneau de calamité et ses missions. */
   "furnace",
   /** Les deux Missions abyssales. */
   "missions",
-  /** Exploration : recompense ciblee, attribut ennemi, Compas abyssal. */
+  /** Exploration : récompense ciblée, attribut ennemi, Compas abyssal. */
   "expedition",
-  /** Defense : paliers de difficulte et recompenses. */
+  /** Défense : paliers de difficulté et récompenses. */
   "defense",
-  /** Infobulle d'un insigne : sa methode d'obtention. */
+  /** Infobulle d'un insigne : comment l'obtenir. */
   "emblemTooltip",
-  /** La quete qui debloque le systeme, dans les quetes secondaires speciales. */
+  /** La quête qui débloque le système, dans les quêtes secondaires spéciales. */
   "unlock",
-  /** L'ecran de forge : l'arme, ses materiaux et sa duree de fabrication. */
+  /** L'écran de forge : l'arme, ses matériaux et sa durée de fabrication. */
   "forge",
-  /** L'ecran des armes de predilection : les deux d'origine, l'emplacement supplementaire, son cout. */
+  /** L'écran des armes de prédilection : les deux d'origine, l'emplacement en plus et son coût. */
   "proficiency",
 ] as const;
 
 export type CalamityGuideSlot = (typeof CALAMITY_GUIDE_SLOTS)[number];
 
 /**
- * Emplacements du guide des **Demon Wedges**.
- *
- * Même principe et même dossier-frère : `public/assets/guides/mods/<id>.<ext>`.
- * Ces six-là couvrent précisément ce qui n'était écrit nulle part et qui nous a
- * fait nous tromper — les pistes, le centre et l'empilement.
+ * Emplacements du guide des Demon Wedges, même principe, dans
+ * `public/assets/guides/mods/<id>.<ext>`. Ils montrent ce qu'on avait mal
+ * compris faute de doc : les pistes, le centre et l'empilement.
  */
 export const MODS_GUIDE_SLOTS = [
   /** L'écran d'armurerie complet : huit cases, le centre, la jauge de tolérance. */
@@ -65,9 +63,8 @@ export const MODS_GUIDE_SLOTS = [
 export type ModsGuideSlot = (typeof MODS_GUIDE_SLOTS)[number];
 
 /**
- * Emplacements du guide des **Géniemons** : `public/assets/guides/genimons/`.
- * Ils couvrent les deux moitiés du sujet — élever la créature, puis greffer et
- * fusionner ses Traits.
+ * Emplacements du guide des Géniemons, dans `public/assets/guides/genimons/` :
+ * élever la créature, puis greffer et fusionner ses Traits.
  */
 export const GENIMONS_GUIDE_SLOTS = [
   /** La fiche d'un Géniemon : niveau, rareté, passif. */
@@ -105,14 +102,13 @@ export const MODS_GUIDE_IMAGE_DIR = "/assets/guides/mods";
 export const GENIMONS_GUIDE_IMAGE_DIR = "/assets/guides/genimons";
 
 /**
- * ⚠️ **Un seul préfixe littéral par fonction, et surtout pas de ternaire.**
+ * Un seul préfixe littéral par fonction, pas de ternaire.
  *
- * Le traceur de fichiers de Next doit pouvoir résoudre le dossier à la
- * compilation. Dès qu'il ne le peut plus — une table `FAMILY_DIRS[family]`,
- * ou même un ternaire entre deux littéraux — il élargit au préfixe commun et
- * embarque tout `public/assets/**` : 3 501 fichiers, 373 Mo, et la fonction
- * dépasse la limite de 250 Mo au déploiement. D'où ces deux fonctions
- * presque identiques, dont la duplication est volontaire.
+ * Le traceur de fichiers de Next doit résoudre le dossier à la compilation.
+ * Avec une table `FAMILY_DIRS[family]`, ou même un ternaire entre deux
+ * littéraux, il élargit au préfixe commun et embarque tout `public/assets/**` :
+ * 3 501 fichiers, 373 Mo, au-delà de la limite de 250 Mo au déploiement. Les
+ * trois fonctions presque identiques sont donc dupliquées exprès.
  */
 function resolveCalamityImage(slot: string): string | null {
   for (const extension of EXTENSIONS) {
@@ -148,7 +144,7 @@ export function resolveGuideImage(slot: GuideSlot, family: GuideFamily = "calami
   return resolveCalamityImage(slot);
 }
 
-/** Nom de fichier attendu, affiché dans le cadre vide pour lever toute ambiguïté. */
+/** Chemin du fichier attendu, affiché dans le cadre vide. */
 export function expectedGuideFileName(slot: GuideSlot, family: GuideFamily = "calamity"): string {
   if (family === "mods") return `public${MODS_GUIDE_IMAGE_DIR}/${slot}.webp`;
   if (family === "genimons") return `public${GENIMONS_GUIDE_IMAGE_DIR}/${slot}.webp`;

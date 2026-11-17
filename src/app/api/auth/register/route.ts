@@ -36,8 +36,8 @@ export async function POST(request: Request) {
   const { email, password, name, locale } = parsed.data;
   const db = getDb();
 
-  // Email unique (insensible à la casse). Si déjà pris → 409 explicite (l'appli
-  // n'est pas sensible à l'énumération ; UX plus claire).
+  // Email unique, sans tenir compte de la casse. Déjà pris : 409 avec un message
+  // clair, l'énumération des comptes n'est pas un enjeu ici.
   const [existing] = await db
     .select({ id: schema.users.id })
     .from(schema.users)
@@ -56,9 +56,9 @@ export async function POST(request: Request) {
     .values({ email, name: name ?? null, passwordHash })
     .returning({ id: schema.users.id });
 
-  // Email de vérification : le login natif reste bloqué tant qu'il n'est pas
-  // cliqué. Un échec d'envoi ne doit pas faire échouer l'inscription (compte
-  // déjà créé) — l'utilisateur pourra redemander un lien.
+  // Le login par mot de passe reste bloqué tant que le lien n'est pas cliqué.
+  // Si l'envoi échoue, le compte existe déjà : on ne fait pas échouer
+  // l'inscription, l'utilisateur pourra redemander un lien.
   const emailLocale = toEmailLocale(locale);
   const token = await createAuthToken(created.id, "verify_email");
   const verifyUrl = `${getSiteUrl()}/${emailLocale}/verify-email?token=${token}`;

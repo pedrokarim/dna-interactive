@@ -1,4 +1,4 @@
-// Design system DNA — barrel. Importez depuis "@/components/dna".
+// Barrel du design system DNA : importer depuis "@/components/dna".
 export { cn } from "./cn";
 export * from "./elements";
 export * from "./rarity";

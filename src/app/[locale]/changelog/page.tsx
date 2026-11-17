@@ -11,9 +11,9 @@ export const dynamic = "force-dynamic";
 /**
  * Journal des versions.
  *
- * La première page et l'index des versions sont rendus par le serveur : le
- * contenu est lisible et indexable sans attendre le JavaScript, et le
- * défilement infini ne prend le relais qu'ensuite.
+ * La première page et l'index des versions sont rendus côté serveur, pour être
+ * lisibles et indexables sans JavaScript. Le défilement infini prend le relais
+ * ensuite.
  */
 export default async function ChangelogPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;

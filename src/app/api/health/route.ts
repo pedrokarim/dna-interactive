@@ -1,6 +1,6 @@
-// Sonde de santé : le processus répond ET lit sa base. Interrogée par Docker
-// (healthcheck du compose) et par la sonde externe en cron. Ne renvoie aucune
-// donnée : un 200 ou un 503, jamais mis en cache.
+// Sonde de santé : 200 si le processus répond et lit sa base, 503 sinon, sans
+// cache ni donnée. Appelée par le healthcheck Docker du compose et par la
+// sonde externe en cron.
 
 import { sql } from "drizzle-orm";
 import { getDb } from "@/db";

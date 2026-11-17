@@ -3,12 +3,12 @@ import { getTranslations } from "next-intl/server";
 import { defaultLocale, locales, type Locale } from "@/i18n/config";
 
 /**
- * Locale à utiliser pour les réponses d'une route API.
+ * Locale des réponses d'une route API.
  *
- * Les routes `/api/*` sont hors du matcher du middleware next-intl : elles n'ont
- * donc pas de préfixe de langue dans l'URL. On retombe sur, dans l'ordre :
- * le cookie `NEXT_LOCALE` (posé par le sélecteur de langue et le middleware),
- * l'en-tête `Accept-Language`, puis la locale par défaut.
+ * Les routes `/api/*` sont hors du matcher du middleware next-intl, donc pas de
+ * préfixe de langue dans l'URL. On prend dans l'ordre le cookie `NEXT_LOCALE`
+ * (posé par le sélecteur de langue et le middleware), l'en-tête
+ * `Accept-Language`, puis la locale par défaut.
  */
 export function getApiLocale(request: Request): Locale {
   const cookie = request.headers.get("cookie");
@@ -39,10 +39,7 @@ const ACCEPT_LANGUAGE_ALIASES: Record<string, string> = {
   zh: "tc",
 };
 
-/**
- * Traducteur des messages renvoyés au client par une route API.
- * Utiliser pour toute chaîne que le front affiche telle quelle.
- */
+/** Traducteur pour les messages d'une route API que le front affiche tels quels. */
 export async function getApiTranslator(request: Request) {
   return getTranslations({ locale: getApiLocale(request), namespace: "apiErrors" });
 }

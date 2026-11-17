@@ -2,13 +2,13 @@ import { CONTACT_INFO, NAVIGATION } from "@/lib/constants";
 import { resolveFeatureBadges, type FeatureBadge } from "@/config/feature-badges";
 
 /**
- * Configuration de la coquille applicative (`AppShell`) : navigation de la
- * barre latérale, fils d'Ariane et routes servies sans coquille.
+ * Config de la coquille (`AppShell`) : navigation de la barre latérale, fils
+ * d'Ariane et routes servies sans coquille.
  *
- * Module volontairement sans composant ni hook : il est importé aussi bien par
- * le layout serveur (résolution des pastilles, du fil d'Ariane) que par la
- * barre latérale côté client. Les icônes vivent dans `AppShell`, associées par
- * `key`, pour que ce fichier reste sérialisable.
+ * Pas de composant ni de hook ici, exprès : le layout serveur (pastilles, fil
+ * d'Ariane) et la barre latérale client importent tous deux ce module. Les
+ * icônes sont dans `AppShell`, reliées par `key`, pour que ce fichier reste
+ * sérialisable.
  */
 
 /** Badges « Nouveau » / « Bêta » : déclarés dans `src/config/feature-badges.ts`, nulle part ailleurs. */
@@ -21,7 +21,7 @@ export type ShellNavEntry = {
   external?: boolean;
 };
 
-/** Sections applicatives — le cœur du hub. */
+/** Sections principales du hub. */
 export const SHELL_NAV_PRIMARY: ShellNavEntry[] = [
   { key: "home", href: NAVIGATION.home },
   { key: "map", href: NAVIGATION.map },
@@ -52,9 +52,9 @@ export const SHELL_NAV_EXTERNAL: ShellNavEntry[] = [
 ];
 
 /**
- * Pastilles encore valides à la date donnée. Résolu côté serveur puis passé en
- * prop à la coquille : la comparaison de dates ne doit pas se faire pendant le
- * rendu client, sinon serveur et client peuvent diverger à l'hydratation.
+ * Pastilles encore valides à la date donnée. Calculé côté serveur et passé en
+ * prop à la coquille : comparer des dates au rendu client ferait diverger
+ * serveur et client à l'hydratation.
  */
 export function resolveShellBadges(now: Date): Record<string, ShellBadge> {
   // Les clés de navigation sont les clés de fonctionnalité de feature-badges.
@@ -64,16 +64,15 @@ export function resolveShellBadges(now: Date): Record<string, ShellBadge> {
 /* ------------------------------------------------------------ fil d'Ariane */
 
 /**
- * Fil d'Ariane de la topbar, par préfixe de route (correspondance la plus
- * longue). Rendu par `DnaSectionMark` : losange + capitales romaines.
+ * Fil d'Ariane de la topbar, par préfixe de route (le plus long gagne). Rendu
+ * par `DnaSectionMark` : losange + capitales.
  *
- * Vocabulaire relevé dans les données du jeu (Hall, Sceau, Tome, Chronique,
- * Atlasia…) plutôt qu'un chemin de fichier en monospace : les anciens libellés
- * `//OPERATOR.DATABASE` venaient d'une maquette faite pour Arknights Endfield,
- * dont « Operator » est d'ailleurs le mot maison.
+ * Le vocabulaire vient des données du jeu (Hall, Sceau, Tome, Chronique,
+ * Atlasia…). Il remplace les vieux libellés `//OPERATOR.DATABASE` en monospace,
+ * repris d'une maquette pour Arknights Endfield.
  *
- * Les valeurs sont des clés `shell.breadcrumbs.<clé>` : les libellés étaient
- * en français dans les 7 langues, ils sont maintenant traduits.
+ * Les valeurs sont des clés `shell.breadcrumbs.<clé>`, traduites dans les 7
+ * langues.
  */
 const SHELL_BREADCRUMBS: Record<string, BreadcrumbKey> = {
   "/": "hall",
@@ -154,8 +153,8 @@ export function resolveBreadcrumb(pathname: string): BreadcrumbKey {
 /* -------------------------------------------------------------- exclusions */
 
 /**
- * Routes servies **sans** coquille : la carte occupe l'écran entier, l'admin a
- * son propre châssis, et `/features` reste sur la page marketing historique.
+ * Routes servies sans coquille : la carte prend tout l'écran, l'admin a son
+ * propre cadre, et `/features` garde l'ancienne page marketing.
  */
 const SHELL_EXCLUDED_PREFIXES = ["/map", "/features", "/admin"];
 

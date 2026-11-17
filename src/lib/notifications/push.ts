@@ -9,14 +9,14 @@ import { isAllowedPushEndpoint } from "./push-endpoint";
 /**
  * Web Push (Push API + VAPID).
  *
- * Trois variables d'environnement :
- *   NEXT_PUBLIC_VAPID_PUBLIC_KEY – clé publique, exposée au navigateur
- *   VAPID_PRIVATE_KEY            – clé privée, jamais exposée
- *   VAPID_SUBJECT                – mailto: ou URL de contact (exigé par la norme)
+ * Variables d'environnement :
+ *   NEXT_PUBLIC_VAPID_PUBLIC_KEY : clé publique, exposée au navigateur
+ *   VAPID_PRIVATE_KEY            : clé privée, jamais exposée
+ *   VAPID_SUBJECT                : mailto: ou URL de contact (exigé par la norme)
  *
- * Générer la paire une seule fois : `bunx web-push generate-vapid-keys`.
- * Sans clés, tout le module se met en retrait : `isPushConfigured()` renvoie
- * faux, l'interface masque l'option et rien n'échoue.
+ * La paire se génère une fois : `bunx web-push generate-vapid-keys`.
+ * Sans clés, `isPushConfigured()` renvoie false, l'interface masque l'option
+ * et rien n'échoue.
  */
 
 let configured: boolean | null = null;
@@ -35,9 +35,9 @@ export function isPushConfigured(): boolean {
 }
 
 /**
- * Délai maximal d'un envoi. `web-push` n'en pose aucun par défaut : un seul
- * endpoint muet retenait son lot jusqu'à la coupure de la fonction, et les
- * lots suivants ne partaient jamais.
+ * Délai max d'un envoi. `web-push` n'en a pas par défaut : un endpoint muet
+ * bloque son lot jusqu'à la coupure de la fonction, et les lots suivants ne
+ * partent pas.
  */
 const SEND_TIMEOUT_MS = 8_000;
 
@@ -54,8 +54,8 @@ export type PushPayload = {
  * Diffuse une charge utile à tous les abonnements ciblés.
  *
  * Les endpoints révoqués (404/410) sont supprimés au passage : c'est le seul
- * signal fiable qu'un navigateur a désinstallé l'abonnement, et laisser
- * traîner ces lignes dégrade tous les envois suivants.
+ * signal fiable d'un abonnement retiré, et ces lignes ralentiraient tous les
+ * envois suivants.
  */
 export async function broadcastPush(
   payload: PushPayload,
@@ -71,8 +71,8 @@ export async function broadcastPush(
       target.audience === "everyone"
         ? await query
         : await query.where(
-            // Une audience restreinte n'atteint que les abonnements rattachés à
-            // un compte : un abonnement anonyme ne peut pas être qualifié.
+            // Audience restreinte : seulement les abonnements liés à un compte,
+            // on ne sait rien d'un abonnement anonyme.
             inArray(
               schema.pushSubscriptions.userId,
               db
@@ -91,16 +91,15 @@ export async function broadcastPush(
   let sent = 0;
   let failed = 0;
 
-  // Envois en petits lots : un broadcast de plusieurs milliers d'abonnés ne
-  // doit pas ouvrir autant de requêtes HTTP simultanées.
+  // Petits lots, pour ne pas ouvrir des milliers de requêtes HTTP en même temps.
   const BATCH = 50;
   for (let i = 0; i < subscriptions.length; i += BATCH) {
     const batch = subscriptions.slice(i, i + BATCH);
     await Promise.all(
       batch.map(async (sub) => {
-        // Abonnement enregistré avant la liste blanche, vers un hôte inconnu :
-        // on ne l'appelle pas. Il n'est pas supprimé pour autant, au cas où la
-        // liste aurait oublié un service de push légitime.
+        // Abonnement d'avant la liste blanche, vers un hôte inconnu : on ne
+        // l'appelle pas, mais on le garde au cas où la liste oublierait un
+        // service de push légitime.
         if (!isAllowedPushEndpoint(sub.endpoint)) {
           failed += 1;
           return;

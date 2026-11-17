@@ -20,13 +20,12 @@ import {
 /**
  * Guide des Géniemons.
  *
- * Deux moitiés qui se répondent, d'où une seule page : élever la créature
- * (niveaux, ascensions, passif), puis greffer et fusionner ses **Traits** —
- * parce que ce sont les ascensions qui ouvrent les emplacements de Trait, et
- * que séparer les deux obligerait le lecteur à faire l'aller-retour.
+ * Une seule page pour élever la créature (niveaux, ascensions, passif) et pour
+ * greffer et fusionner ses Traits : ce sont les ascensions qui ouvrent les
+ * emplacements de Trait, deux pages forceraient des allers-retours.
  *
- * Les noms et les effets des Traits viennent des données du jeu, déjà
- * traduits : rien n'est réécrit ici, et les catégories sont celles du jeu.
+ * Noms, effets et catégories des Traits viennent des données du jeu, déjà
+ * traduits. Rien n'est réécrit ici.
  */
 
 /** Couleur d'accent du guide, alignée sur la catégorie Géniemon du site. */
@@ -44,8 +43,7 @@ function Badge({ icon, label }: { icon: React.ReactNode; label: string }) {
 /**
  * Glyphe d'un Trait : celui du jeu, dans la couleur de sa rareté.
  *
- * Le texte alternatif porte la rareté plutôt qu'un intitulé, parce que c'est la
- * seule chose que l'image ajoute au nom du Trait écrit juste à côté.
+ * Le texte alternatif donne la rareté : le nom du Trait est déjà écrit à côté.
  */
 function TraitGlyph({ category, rarity, size = 26 }: { category: TraitCategory | "unknown"; rarity: number; size?: number }) {
   const src = traitIconSrc(category, rarity);
@@ -68,9 +66,9 @@ function CategoryGlyph({ category }: { category: TraitCategory }) {
 const MAX_TRAIT_SLOTS = 4;
 
 /**
- * Trois Géniemons équipables, pris dans les données plutôt que cités en dur :
- * le schéma illustre un principe, pas une espèce en particulier, et figer des
- * identifiants le ferait mentir à la première mise à jour.
+ * Trois Géniemons équipables, pris dans les données : des identifiants en dur
+ * deviendraient faux à la première mise à jour, et le schéma ne vise aucune
+ * espèce en particulier.
  */
 function pickShowcaseGenimons(gameLang: string) {
   const seen = new Set<number>();
@@ -78,8 +76,8 @@ function pickShowcaseGenimons(gameLang: string) {
   for (const item of getItemsByCategoryId("genimons")) {
     const species = item.variants?.speciesId;
     const icon = item.icon?.publicPath;
-    // Une seule variante par espèce : deux visuels identiques côte à côte
-    // laisseraient croire qu'il faut des doublons.
+    // Une variante par espèce : deux visuels identiques côte à côte feraient
+    // croire qu'il faut des doublons.
     if (item.stats?.maxLevel !== 60 || !icon || !species || seen.has(species)) continue;
     seen.add(species);
     out.push({ id: item.id, name: getItemTranslation(item, gameLang, ["EN"]).modName ?? "", icon });
@@ -91,9 +89,8 @@ function pickShowcaseGenimons(gameLang: string) {
 /**
  * Actif / inactif : d'où viennent les Traits et où ils vont.
  *
- * Dessiné avec les vrais visuels du jeu – têtes de Géniemon et glyphes de Trait –
- * plutôt qu'avec des formes inventées, pour que le lecteur reconnaisse à l'écran
- * ce qu'il a sous les yeux dans le jeu.
+ * Dessiné avec les visuels du jeu (têtes de Géniemon, glyphes de Trait) pour que
+ * le lecteur retrouve ce qu'il voit en jeu.
  */
 async function TraitFlowDiagram({ gameLang, locale }: { gameLang: string; locale: string }) {
   const t = await getTranslations({ locale, namespace: "genimonGuide" });
@@ -159,9 +156,8 @@ async function TraitFlowDiagram({ gameLang, locale }: { gameLang: string; locale
 /**
  * Une espèce et sa variante scintillante, prises dans les données.
  *
- * Les deux partagent le passif et ses valeurs : seul le nombre d'emplacements
- * de Trait les sépare. Le couple se lit dans `variants` (`isPremium`,
- * `premiumGuid`) plutôt que d'être cité en dur.
+ * Même passif, mêmes valeurs, seul le nombre d'emplacements de Trait change.
+ * Le couple vient de `variants` (`isPremium`, `premiumGuid`), pas d'ids en dur.
  */
 function pickVariantPair(gameLang: string) {
   const all = getItemsByCategoryId("genimons");
@@ -207,7 +203,7 @@ function VariantCard({
           i < slots ? (
             <span key={i} className="h-5 w-5 border border-white/35 bg-white/10" />
           ) : (
-            // Le quatrième carré reste vide sur l'ordinaire : c'est tout l'écart.
+            // Le quatrième carré reste vide sur l'ordinaire.
             <span key={i} className="h-5 w-5 border border-dashed border-white/15" />
           ),
         )}
@@ -302,8 +298,8 @@ export async function GenimonsGuideIntro({ locale }: { locale: string }) {
 /**
  * Un chapitre du guide.
  *
- * Le titre n'est pas posé ici : la page de chapitre le rend en `h1`, pour que
- * chaque adresse porte un vrai titre plutôt qu'un intertitre perdu dans un mur.
+ * Pas de titre ici : la page de chapitre le rend en `h1`, chaque adresse a
+ * ainsi son propre titre.
  */
 export async function GenimonsGuideChapter({
   chapter,
@@ -360,8 +356,8 @@ export async function GenimonsGuideChapter({
             {t("passiveShiny")}
           </p>
           {/*
-            Les deux captures portent exactement le même cadrage : la comparaison
-            doit sauter aux yeux sur le nombre de sphères, pas sur le cadre.
+            Les deux captures ont le même cadrage, pour qu'on ne compare que le
+            nombre de sphères.
           */}
           <div className="grid gap-5 lg:grid-cols-2">
             <GuideImageSlot slot="variantOrdinary" family="genimons" caption={t("imageVariantOrdinary")} ratio="3 / 2" />
@@ -409,9 +405,9 @@ export async function GenimonsGuideChapter({
           <div className="max-w-3xl space-y-3">
             <p className="text-sm leading-relaxed text-parch/85">{t("fusionBody")}</p>
             {/*
-              La chaîne garde la même catégorie d'un bout à l'autre : la fusion
-              ne change pas le Trait, seulement sa rareté. Montrer trois glyphes
-              différents laisserait croire le contraire.
+              Même catégorie sur toute la chaîne : la fusion change la rareté du
+              Trait, pas le Trait. Trois glyphes différents feraient croire
+              l'inverse.
             */}
             <div className="flex flex-wrap items-center gap-2 border border-white/10 bg-ink/55 px-3 py-3 text-sm text-parch/85">
               <TraitGlyph category="battle" rarity={3} size={30} /> <span className="text-muted">×3</span>
@@ -435,9 +431,9 @@ export async function GenimonsGuideChapter({
           <p className="max-w-3xl text-sm leading-relaxed text-parch/85">{t("shopBody")}</p>
 
           {/*
-            La boucle en trois temps. Les deux monnaies se ressemblent à l'écran,
-            et c'est l'ordre qui les distingue : l'une vient des missions, l'autre
-            ne s'obtient qu'en ouvrant ce que la première a payé.
+            La boucle de la boutique. Les deux monnaies se ressemblent à l'écran,
+            on les distingue par l'ordre : l'une vient des missions, l'autre
+            s'obtient en ouvrant ce que la première a payé.
           */}
           <ol className="mt-4 grid gap-3 md:grid-cols-3">
             {(t.raw("shopSteps") as string[]).map((step, i) => (
@@ -482,7 +478,7 @@ export async function GenimonsGuideChapter({
             ))}
           </div>
 
-          {/* Dernier chapitre : on referme le guide au lieu de laisser le lecteur en suspens. */}
+          {/* Dernier chapitre : un encadré de fin pour refermer le guide. */}
           <section className="mt-8 border border-anemo/25 bg-linear-to-r from-anemo/10 to-gold/10 p-6">
             <h2 className="flex items-center gap-2 font-display text-xl text-parch">
               <Swords className="h-5 w-5 text-anemo" />

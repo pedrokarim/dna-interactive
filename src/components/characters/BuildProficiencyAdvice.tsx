@@ -12,15 +12,15 @@ import {
   type ProficiencySuggestion,
 } from "@/lib/characters/weapon-proficiency";
 
-// Fichier à part du panneau de la fiche : celui-ci ne tire pas le catalogue
-// d'objets, et le builder peut donc l'embarquer.
+// À part du panneau de la fiche : ce fichier n'importe pas le catalogue
+// d'objets, le builder peut donc l'embarquer.
 
 const BONUS_PERCENT = Math.round(PROFICIENCY_ATTACK_BONUS * 100);
 const PROFICIENCY_GUIDE_HREF = "/items/weapons/about/proficiency";
 
 /**
- * Dans un build : rappel des prédilections du personnage, puis la maîtrise
- * supplémentaire que les armes conseillées rendent utile.
+ * Dans un build : les prédilections du perso, puis la maîtrise en plus que les
+ * armes conseillées rendent utile.
  */
 export function BuildProficiencyAdvice({
   charId,

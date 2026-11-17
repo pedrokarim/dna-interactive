@@ -54,7 +54,7 @@ export type HomeHubClientProps = {
   /** Bornes de la fenêtre d'événements pré-chargée (la frise charge la suite au défilement). */
   calendarFrom: string;
   calendarTo: string;
-  /** Date du jour côté serveur — premier rendu seulement. */
+  /** Date du jour côté serveur, pour le premier rendu seulement. */
   serverToday: string;
   /** Forçage admin de la date de référence (vide = horloge du visiteur). */
   calendarToday?: string;
@@ -66,7 +66,7 @@ export type HomeHubClientProps = {
   banners: BannerSummaryView[];
   /** Rotations du théâtre immersif, noms et visuels résolus côté serveur. */
   theatreRotations: TheatreRotationView[];
-  /** Horloge du serveur au rendu — premier affichage du théâtre seulement. */
+  /** Horloge du serveur au rendu, pour le premier affichage du théâtre seulement. */
   serverNow: number;
   /** Mandats scellés : rotation et filtre du visiteur ; `null` si la page est masquée par l'admin. */
   commissions: { state: RotationState; meta: RotationMeta; filter: CommissionFilter | null } | null;
@@ -99,7 +99,7 @@ const HOME_FEATURED_AVATAR = {
 type ToolCard = {
   href: string;
   title: string;
-  /** Repère de section — losange + capitales, cf. `DnaSectionMark`. */
+  /** Repère de section (losange et capitales), voir `DnaSectionMark`. */
   mark: string;
   desc: string;
   icon: LucideIcon | typeof DiscordIcon;
@@ -113,7 +113,7 @@ type ToolCard = {
 
 /* --------------------------------------------------------------- primitives */
 
-/** Carte « outil » — image de couverture + dégradé + accent teinté par élément. */
+/** Carte « outil » : image de couverture, dégradé, accent teinté par l'élément. */
 function ToolTile({ card, className }: { card: ToolCard; className?: string }) {
   const Icon = card.icon;
   const tint = card.tint ?? "var(--color-gold)";
@@ -181,10 +181,10 @@ function BuildShowcaseCard({ build }: { build: HomeBuildCard }) {
       className="group relative flex h-full w-64 shrink-0 flex-col overflow-hidden rounded-sm border border-line/20 bg-panel/70 transition-[transform,border-color] hover:-translate-y-0.5 hover:border-gold/70"
     >
       <div className="relative h-44 overflow-hidden">
-        {/* Avatar carré dans une vignette paysage : `cover` en montre 69 %, calés
-            en HAUT. C'est la seule position qui ne rogne jamais le sommet de la
-            tête — vérifié sur les 31 avatars, coiffes et couvre-chefs compris.
-            `origin-top` pour que le zoom au survol parte du haut lui aussi. */}
+        {/* Avatar carré dans une vignette paysage : `cover` en montre 69 %, calé
+            en haut, seule position qui ne coupe jamais le haut de la tête (vu sur
+            les 31 avatars, coiffes comprises). `origin-top` pour que le zoom au
+            survol parte aussi du haut. */}
         <span aria-hidden className="absolute inset-0 origin-top bg-cover bg-top opacity-80 transition-transform duration-500 group-hover:scale-105" style={{ backgroundImage: `url("${optimizedImageUrl(bg, 640)}")` }} />
         <span aria-hidden className="absolute inset-0 bg-gradient-to-t from-panel via-panel/20 to-transparent" />
         <span aria-hidden className="absolute inset-x-0 bottom-0 h-px" style={{ background: `linear-gradient(90deg, ${build.tint}, transparent)` }} />
@@ -262,8 +262,8 @@ function HomeHub({
   const tCosmetics = useTranslations("cosmetics");
   const tCommissions = useTranslations("commissions");
   const { commissionsVisible } = useAppSettings();
-  // Liste curee : elle se vide toute seule quand le personnage sort et rejoint
-  // `characters.json` (cf. src/lib/characters/upcoming.ts).
+  // Liste curée, qui se vide toute seule quand le personnage sort et arrive dans
+  // `characters.json` (voir src/lib/characters/upcoming.ts).
   const upcoming = UPCOMING_CHARACTERS;
   const databaseCards: ToolCard[] = [
     { href: "/characters", title: t("charactersTitle"), feature: "characters", mark: tShell("breadcrumbs.choir"), desc: t("charactersDescription"), icon: GlyphIcons.characters, bg: "/assets/worldview/worldview-3.webp", tint: "var(--color-gold)" },
@@ -374,10 +374,9 @@ function HomeHub({
       </section>
 
       {/* =============================================== PROCHAINEMENT */}
-      {/* Personnages annonces mais pas encore livres par le jeu : ils n'ont
-          aucune illustration, donc aucune place dans le showcase ci-dessous,
-          qui est entierement pilote par des images. La bande les annonce sans
-          visuel et disparait d'elle-meme le jour de la sortie. */}
+      {/* Personnages annoncés mais pas encore dans le jeu : sans illustration,
+          ils n'ont pas leur place dans le showcase ci-dessous, fait d'images.
+          La bande les annonce sans visuel et disparaît le jour de la sortie. */}
       {upcoming.length > 0 ? (
         <section className="mt-10 flex flex-col gap-3">
           {upcoming.map((character) => (
@@ -387,17 +386,16 @@ function HomeHub({
       ) : null}
 
       {/* =============================================== NOUVEAUX PERSONNAGES */}
-      {/* Placé juste après le hero : c'est l'actualité du jeu, donc la première
-          chose à voir après la marque, avant les grilles d'outils. Le composant
-          est partagé avec /features — il porte lui-même son titre et son fond. */}
+      {/* Juste après le hero, avant les grilles d'outils : c'est l'actualité du
+          jeu. Composant partagé avec /features, il a son propre titre et son fond. */}
       <section className="mt-10">
         <NewCharactersBanner />
       </section>
 
       {/* =============================================== LA MYRIADE DU MOMENT */}
-      {/* Bannières de skins en cours, compte à rebours compris : de l'actualité
-          qui change toutes les six semaines, d'où sa place juste après les
-          nouveaux personnages. Même composant que l'accueil des cosmétiques. */}
+      {/* Bannières de skins en cours avec compte à rebours. Ça change toutes les
+          six semaines, donc juste après les nouveaux personnages. Même composant
+          que l'accueil des cosmétiques. */}
       {banners.length > 0 ? (
         <section className="mt-10 flex flex-col gap-4">
           <SectionRibbon
@@ -481,9 +479,9 @@ function HomeHub({
       ) : null}
 
       {/* =============================================== BUILDS DE PERSONNAGES */}
-      {/* Une seule section, lue de haut en bas : les chiffres posent le contexte,
-          puis les builds réels, puis le showcase des cartes exportables (le plus
-          gros visuel, donc en dernier). */}
+      {/* Une section lue de haut en bas : les chiffres, les builds de la
+          communauté, puis le showcase des cartes exportables (le plus gros
+          visuel, en dernier). */}
       <section className="mt-10 flex flex-col gap-4">
         <SectionRibbon
           label={t("characterBuilds")}
@@ -544,9 +542,9 @@ function HomeHub({
       ) : null}
 
       {/* =============================================== COMMUNAUTÉ & RESSOURCES */}
-      {/* Mêmes cartes que /features (streamer + wiki), mais pleine largeur :
-          le composant centrait via `mx-auto max-w-4xl`, ce qui cassait
-          l'alignement du bento. On lui passe la grille du hub à la place. */}
+      {/* Mêmes cartes que /features (streamer et wiki), en pleine largeur : le
+          `mx-auto max-w-4xl` du composant cassait l'alignement du bento, on lui
+          passe la grille du hub. */}
       <section className="mt-10 flex flex-col gap-4">
         <SectionRibbon label={t("communityResources")} index="00" />
         <CommunityCards className="grid gap-4 md:grid-cols-2" />

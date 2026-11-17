@@ -10,7 +10,7 @@ import {
 } from "@/lib/constants";
 import { DnaDivider } from "@/components/dna/Divider";
 
-/** Pied de page de site — design system DNA (marque Cormorant, nav Cinzel, séparateur ◇). */
+/** Pied de page du site : marque en Cormorant, nav en Cinzel, séparateur ◇. */
 export default async function SiteFooter({ active }: { active?: string }) {
   const tNav = await getTranslations("nav");
   const tCommon = await getTranslations("common");

@@ -5,11 +5,8 @@ import { Link } from "@/i18n/navigation";
 import { getGuideOutline } from "@/lib/items/guide-chapters";
 
 /**
- * Sommaire d'un guide : le chapô, puis une carte par chapitre.
- *
- * C'est la page qu'on atteint en cliquant « Guide » ; elle remplace le mur de
- * texte d'avant. Chaque carte dit ce que son chapitre traite, pour qu'on
- * choisisse au lieu de faire défiler.
+ * Sommaire d'un guide (la page du bouton « Guide ») : le chapô, puis une carte
+ * par chapitre avec ce qu'il traite.
  */
 export async function GuideLobby({
   categoryId,
@@ -50,8 +47,8 @@ export async function GuideLobby({
 
         <h1 className="mt-5 font-display text-4xl text-parch md:text-5xl">{t("title")}</h1>
         {/*
-          Rendu riche : l'introduction des Demon Wedges porte une balise <mod>.
-          Fournir le gestionnaire ne gêne pas les guides qui n'en ont pas.
+          t.rich : l'intro des Demon Wedges a une balise <mod>. Les guides qui
+          n'en ont pas ignorent le gestionnaire.
         */}
         <p className="mt-4 max-w-3xl text-lg leading-relaxed text-parch/85">
           {t.rich("intro", { mod: (chunks) => <span style={{ color: accent }}>{chunks}</span> })}

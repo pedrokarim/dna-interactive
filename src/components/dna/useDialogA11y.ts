@@ -1,19 +1,11 @@
 "use client";
 import { useEffect, type RefObject } from "react";
 
-/**
- * Accessibilité de modale réutilisable : verrouille le scroll du body, piège le
- * focus (Tab/Shift+Tab cyclent dans le panneau), déplace le focus dans la modale
- * à l'ouverture, ferme sur Échap, et restaure le focus précédent à la fermeture.
- * Utilisé par `DnaDialog` et par les modales custom (carte, grilles, builder…).
- *
- * Le panneau référencé doit être focusable en repli (`tabIndex={-1}`).
- */
-// Verrou de scroll a compteur. Deux modales peuvent etre ouvertes en meme temps
-// (le selecteur de piece s'ouvre PAR-DESSUS la modale de configuration d'arme).
-// En sauvegardant `document.body.style.overflow` a chaque ouverture, la seconde
-// enregistrait « hidden » et le restaurait en se fermant : la page restait
-// bloquee. On ne restaure donc qu'au tout dernier verrou libere.
+// Verrou de scroll avec compteur : deux modales peuvent être ouvertes en même temps
+// (le sélecteur de pièce s'ouvre par-dessus la modale de config d'arme). Si chaque
+// ouverture sauvegarde `document.body.style.overflow`, la seconde enregistre
+// « hidden » et le remet en se fermant, et la page reste bloquée. On ne restaure
+// qu'à la libération du dernier verrou.
 let scrollLocks = 0;
 let overflowBeforeFirstLock = "";
 
@@ -30,6 +22,14 @@ function unlockScroll() {
   if (scrollLocks === 0) document.body.style.overflow = overflowBeforeFirstLock;
 }
 
+/**
+ * Accessibilité commune des modales : bloque le scroll du body, garde le focus dans
+ * le panneau (Tab et Shift+Tab bouclent), l'y place à l'ouverture, ferme sur Échap
+ * et rend le focus d'avant à la fermeture. Sert à `DnaDialog` et aux modales
+ * maison (carte, grilles, builder…).
+ *
+ * Le panneau doit pouvoir prendre le focus en repli (`tabIndex={-1}`).
+ */
 export function useDialogA11y(
   panelRef: RefObject<HTMLElement | null>,
   options: { open?: boolean; onClose: () => void },

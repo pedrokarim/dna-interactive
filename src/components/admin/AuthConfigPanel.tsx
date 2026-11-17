@@ -17,10 +17,9 @@ type AuthConfigView = {
 /**
  * Identifiants OAuth, surchargeables depuis l'interface.
  *
- * Les secrets ne reviennent jamais du serveur : le champ reste vide et son
- * indicateur dit seulement s'il en existe un. C'est aussi pour ça que ce
- * panneau est séparé des réglages ordinaires – on n'y écrase rien par
- * inadvertance en enregistrant autre chose.
+ * Le serveur ne renvoie jamais les secrets : le champ reste vide et un
+ * indicateur dit seulement s'il y en a un. Panneau séparé des autres réglages
+ * pour ne rien écraser par erreur en enregistrant autre chose.
  */
 export function AuthConfigPanel() {
   const [view, setView] = useState<AuthConfigView | null>(null);

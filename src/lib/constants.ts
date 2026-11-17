@@ -63,7 +63,7 @@ export const ASSETS_PATHS = {
   // lieu du PNG 820 px (171 Ko), gardé pour les e-mails, l'OG et le JSON-LD.
   logo: "/assets/images/logo-192.webp",
   worldview: [
-    // Update 1.6 "Paradise's 22nd White Bunny" (2026-09) — affichés en premier.
+    // Update 1.6 "Paradise's 22nd White Bunny" (2026-09), affichés en premier.
     // La 1.5 n'a livré aucun panoramique, d'où le saut de version.
     "/assets/worldview/worldview-1-6-1.webp",
     "/assets/worldview/worldview-1-6-2.webp",
@@ -123,8 +123,8 @@ export const NAVIGATION = {
 } as const;
 
 /**
- * Version du jeu couverte par le site (pastille de la topbar). À bumper à
- * chaque patch — c'est l'unique endroit où elle est écrite.
+ * Version du jeu couverte par le site (pastille de la topbar). À monter à
+ * chaque patch : elle n'est écrite que là.
  */
 export const GAME_VERSION = "1.7";
 
@@ -141,7 +141,7 @@ export const NAV_LINKS = [
   { href: NAVIGATION.about },
 ] as const;
 
-// Liens du footer — même règle que NAV_LINKS pour les libellés.
+// Liens du footer, même règle que NAV_LINKS pour les libellés.
 export const FOOTER_LINKS = [
   { href: NAVIGATION.map },
   { href: NAVIGATION.items },
@@ -204,7 +204,6 @@ export const PROJECT_STATS = {
  */
 export const FAQ_ITEMS = ["faq1", "faq2", "faq3", "faq4"] as const;
 
-// Liens rapides du support
 /**
  * Liens rapides de la page Support. `key` désigne les messages
  * `support.quickLink<Key>` et `support.quickLink<Key>Desc`.

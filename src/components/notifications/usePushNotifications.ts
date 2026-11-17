@@ -25,10 +25,9 @@ export type PushState =
 /**
  * Abonnement Web Push, côté navigateur.
  *
- * Principe non négociable : **on ne demande jamais la permission tout seul**.
- * `enable()` n'est appelé que sur un geste explicite. Un site qui déclenche
- * `Notification.requestPermission()` au chargement se fait refuser une fois
- * pour toutes par l'utilisateur – et le blocage est définitif côté navigateur.
+ * On ne demande jamais la permission tout seul : `enable()` n'est appelé que sur
+ * un clic. Un site qui lance `Notification.requestPermission()` au chargement se
+ * fait refuser, et ce refus est définitif dans le navigateur.
  */
 export function usePushNotifications() {
   const locale = useLocale();
@@ -90,9 +89,9 @@ export function usePushNotifications() {
       const subscription =
         (await registration.pushManager.getSubscription()) ??
         (await registration.pushManager.subscribe({
-          // Sans charge utile visible, Chrome affiche une notification générique
-          // « ce site a été mis à jour en arrière-plan » : `userVisibleOnly` est
-          // donc obligatoire, et impose d'afficher quelque chose à chaque push.
+          // Chrome exige `userVisibleOnly`, et il faut alors afficher quelque chose
+          // à chaque push, sinon il montre sa notification générique « ce site a
+          // été mis à jour en arrière-plan ».
           userVisibleOnly: true,
           applicationServerKey: urlBase64ToUint8Array(config.publicKey) as BufferSource,
         }));

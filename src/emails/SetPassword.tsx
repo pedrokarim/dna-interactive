@@ -3,7 +3,7 @@ import { EmailButton, EmailFallbackLink, EmailHeading, EmailNote, EmailText } fr
 
 type Props = { setUrl: string; name?: string | null; locale?: EmailLocale };
 
-// Pour les comptes créés via Discord/Google qui veulent AUSSI un mot de passe.
+// Pour les comptes créés via Discord/Google qui veulent aussi un mot de passe.
 const copy = {
   fr: {
     preview: "Définis un mot de passe pour ton compte DNA",

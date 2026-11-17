@@ -19,8 +19,8 @@ import {
 import { locales } from "@/i18n/config";
 import type { Locale } from "@/i18n/config";
 
-// Polices du design system DNA : Cinzel (capitales gravées), Cormorant
-// Garamond (titres/noms sérif), Jost (UI). JetBrains Mono conservé pour le code.
+// Polices du design system : Cinzel pour les capitales, Cormorant Garamond
+// pour les titres et les noms, Jost pour l'UI. JetBrains Mono pour le code.
 const cinzel = Cinzel({
   variable: "--font-cinzel",
   subsets: ["latin"],
@@ -140,16 +140,16 @@ export async function generateMetadata(
       site: "@ascencia64",
       creator: "@ascencia64",
     },
-    // Pas d'`alternates` ici : posé au niveau du layout, ce canonical vers
-    // l'accueil s'appliquait à toute page qui ne le redéfinissait pas, et
-    // Google la tenait pour un doublon de l'accueil. Chaque page indexable
-    // déclare le sien (`generatePageMetadata` ou `localizedAlternates`).
+    // Pas d'`alternates` ici : un canonical dans le layout pointe vers
+    // l'accueil pour toute page qui ne le redéfinit pas, et Google la prend
+    // pour un doublon. Chaque page indexable déclare le sien
+    // (`generatePageMetadata` ou `localizedAlternates`).
     manifest: "/manifest.json",
     // Partagées avec `discordEmbedMetadata`, qui doit les reprendre.
     icons: ROOT_ICONS,
     other: {
-      // Doit correspondre au fond de page (`--color-ink`) : la barre du
-      // navigateur mobile se fondait dans un indigo hérité d'un template.
+      // Même couleur que le fond de page (`--color-ink`), pour la barre du
+      // navigateur sur mobile.
       "theme-color": "#0a0a0b",
       "msapplication-TileColor": "#0a0a0b",
       "application-name": SITE_CONFIG.name,
@@ -181,21 +181,19 @@ export default async function LocaleLayout({
 
   return (
     // `data-theme` et `data-sidebar` sont posés par les scripts inline avant
-    // l'hydratation : le HTML serveur ne peut pas les connaître. Sans ce
-    // drapeau, React signale un écart sur <html> à chaque page en thème clair.
-    // Il ne couvre que les attributs de cette balise, pas ses enfants.
+    // l'hydratation, le serveur ne les connaît pas. Sans
+    // suppressHydrationWarning, React signale un écart sur <html> en thème
+    // clair. Ça ne couvre que les attributs de <html>, pas ses enfants.
     <html lang={htmlLang} suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://www.google.com" />
-        {/* Applique le thème choisi AVANT la première peinture : sans ça, la
-            page s'affiche en sombre puis saute en clair après hydratation.
-            Cf. lib/theme.ts. */}
+        {/* Thème appliqué avant la première peinture, sinon la page s'affiche
+            en sombre puis passe en clair à l'hydratation. Voir lib/theme.ts. */}
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
-        {/* Restaure l'état replié de la barre latérale AVANT la première
-            peinture : sans ça, la page s'affiche déployée puis saute à 64px
-            après hydratation. Cf. `--dna-sidebar-w` dans globals.css. */}
+        {/* Pareil pour la barre latérale repliée, sinon elle s'affiche
+            dépliée puis saute à 64px. Voir `--dna-sidebar-w` dans globals.css. */}
         <script
           dangerouslySetInnerHTML={{
             __html: `try{if(localStorage.getItem('dna:sidebar-collapsed')==='1'){document.documentElement.dataset.sidebar='collapsed'}}catch(e){}`,
@@ -206,8 +204,8 @@ export default async function LocaleLayout({
         className={`${cinzel.variable} ${cormorant.variable} ${jost.variable} ${jetbrainsMono.variable} antialiased`}
       >
         <NextIntlClientProvider messages={messages}>
-          {/* Sous le provider intl : la mesure lit la locale courante pour la
-              poser en contexte de lot, et `useLocale` n'existe pas au-dessus. */}
+          {/* Sous le provider intl : la mesure d'audience a besoin de
+              `useLocale` pour envoyer la locale avec les événements. */}
           <SarutobiAnalytics />
           <Providers>
             <AppShell badges={resolveShellBadges(now)} copyrightYears={copyrightYears}>

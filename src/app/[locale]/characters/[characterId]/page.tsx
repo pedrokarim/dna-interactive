@@ -36,8 +36,8 @@ export async function generateMetadata(
   const { locale, characterId } = await params;
   const character = getCharacterById(characterId);
 
-  // Personnage annonce mais pas encore extractible : meme URL, metadonnees
-  // dediees. Des qu'il entre dans characters.json, ce cas ne se declenche plus.
+  // Personnage annoncé mais pas encore dans les données du jeu : même URL,
+  // métadonnées à part. Dès qu'il entre dans characters.json, on ne passe plus ici.
   const upcoming = character ? null : getUpcomingCharacter(characterId);
   if (upcoming) {
     return generatePageMetadata(
@@ -129,8 +129,8 @@ export default async function CharacterDetailPage({
   const character = getCharacterById(characterId);
 
   if (!character) {
-    // Avant le 404 : le personnage est-il simplement annonce mais pas encore
-    // livre par le jeu ? La fiche "a venir" occupe alors l'URL definitive.
+    // Avant le 404, on regarde si le personnage est juste annoncé. Dans ce cas
+    // la fiche « à venir » prend déjà l'URL définitive.
     const upcoming = getUpcomingCharacter(characterId);
     if (upcoming) {
       return <UpcomingCharacterPage character={upcoming} curves={getLevelUpCurves().curves} />;
@@ -140,8 +140,8 @@ export default async function CharacterDetailPage({
 
   const canonicalSlug = getCharacterSlug(character);
   if (characterId !== canonicalSlug) {
-    // Ancien slug (`char-xxx`) : redirection permanente (308), pour que Google
-    // abandonne l'ancienne adresse au lieu de continuer à l'explorer.
+    // Ancien slug (`char-xxx`) : redirection 308, pour que Google lâche
+    // l'ancienne adresse et arrête de l'explorer.
     permanentRedirect(`/${locale}/characters/${canonicalSlug}`);
   }
 

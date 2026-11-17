@@ -3,24 +3,22 @@ import type { ElementKey } from "@/components/dna/elements";
 /**
  * Personnages annoncés mais pas encore extractibles.
  *
- * Le jeu déclare une partie de ses personnages plusieurs versions à l'avance :
- * on trouve leur fiche technique complète dans `Char.lua` et `BattleChar.lua`
- * bien avant que les textures ne soient livrées. Le pipeline d'extraction les
- * écarte volontairement (règle « aucun portrait livré = non sorti », cf.
- * `research_data/extract-characters.ts`), sans quoi la liste afficherait des
+ * Le jeu déclare certains personnages plusieurs versions à l'avance : leur fiche
+ * technique est complète dans `Char.lua` et `BattleChar.lua` bien avant que les
+ * textures arrivent. L'extraction les écarte exprès (« aucun portrait livré = non
+ * sorti », cf. `research_data/extract-characters.ts`), sinon la liste aurait des
  * cartes cassées.
  *
- * Ce module comble l'entre-deux : une fiche « à venir », curée à la main, qui
- * n'affiche que ce qui est réellement établi. Elle vit sur la MÊME URL que la
- * future fiche complète (`/characters/<slug>`), branchée dans la route
- * dynamique juste avant le `notFound()`. Dès que le personnage sort et passe
- * dans `characters.json`, la vraie fiche prend le dessus toute seule – il ne
- * reste qu'à supprimer l'entrée ci-dessous.
+ * Ici on tient à la main une fiche « à venir » qui n'affiche que ce qui est
+ * établi. Elle vit sur la même URL que la future fiche (`/characters/<slug>`),
+ * branchée dans la route dynamique juste avant le `notFound()`. Quand le perso
+ * sort et arrive dans `characters.json`, la vraie fiche passe devant toute seule :
+ * il ne reste qu'à supprimer l'entrée ci-dessous.
  *
- * Deux niveaux de fiabilité, jamais mélangés à l'affichage :
- *   `dataMined`  – lu directement dans les fichiers du jeu, donc sûr
- *   `announced`  – communiqué officiellement (date, bannière, doubleurs)
- *   `community`  – connu de la communauté, à confirmer à la sortie
+ * Trois niveaux de fiabilité, jamais mélangés à l'affichage :
+ *   `dataMined` : lu dans les fichiers du jeu, donc sûr
+ *   `announced` : annoncé officiellement (date, bannière, doubleurs)
+ *   `community` : connu de la communauté, à confirmer à la sortie
  */
 
 export type UpcomingConfidence = "dataMined" | "announced" | "community";
@@ -40,7 +38,7 @@ export type UpcomingSkill = {
 };
 
 export type UpcomingCharacter = {
-  /** Slug d'URL – doit être celui que produira `getCharacterSlug` à la sortie. */
+  /** Slug d'URL : doit être celui que donnera `getCharacterSlug` à la sortie. */
   slug: string;
   name: string;
   /** Nom interne dans les fichiers du jeu (`GUIPathVariable`). */
@@ -54,9 +52,9 @@ export type UpcomingCharacter = {
   campKey: string;
   campLabel: string;
   /**
-   * Armes, rôle et stats conseillées tels que déclarés dans `BattleChar`. Vides
-   * quand le jeu n'y met encore que des valeurs recopiées d'un autre personnage :
-   * la fiche masque alors ces blocs plutôt que d'afficher des données fausses.
+   * Armes, rôle et stats conseillées déclarés dans `BattleChar`. Vides tant que
+   * le jeu n'y met que des valeurs copiées d'un autre perso : la fiche masque
+   * alors ces blocs.
    */
   weaponTags: string[];
   positioning: string[];
@@ -68,9 +66,9 @@ export type UpcomingCharacter = {
   baseStats?: { atk: number; def: number; maxHp: number; maxEs: number; maxSp: number };
   growthCurves?: { atk: string; def: string; maxHp: string; maxEs: string };
   /**
-   * Visuels officiels recadrés (`public/assets/upcoming/`), quand le studio en a
-   * publié : portrait 3:4 de la fiche et vignette carrée de la bande d'accueil.
-   * Sans eux, le cartouche à l'initiale gravée tient lieu d'illustration.
+   * Visuels officiels recadrés (`public/assets/upcoming/`) quand le studio en a
+   * publié : portrait 3:4 pour la fiche, vignette carrée pour la bande d'accueil.
+   * Sans eux, on affiche le cartouche avec l'initiale gravée.
    */
   portrait?: string;
   avatar?: string;
@@ -102,10 +100,9 @@ export type UpcomingCharacter = {
   sources: { label: string; url?: string }[];
 };
 
-// Vide entre deux annonces, et c'est l'état normal : Falsi y a vécu jusqu'à la
-// 1.6, Rhythm: Flamewrought jusqu'à la 1.7, où le jeu a livré leur nom et
-// leurs portraits. La vraie fiche prend alors le relais sur la même URL, sans
-// rien changer d'autre.
+// Vide entre deux annonces, c'est normal. Falsi y était jusqu'à la 1.6, Rhythm:
+// Flamewrought jusqu'à la 1.7, quand le jeu a livré leur nom et leurs portraits ;
+// la vraie fiche a alors pris le relais sur la même URL.
 export const UPCOMING_CHARACTERS: UpcomingCharacter[] = [];
 
 const bySlug = new Map(UPCOMING_CHARACTERS.map((c) => [c.slug, c] as const));

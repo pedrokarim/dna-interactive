@@ -20,9 +20,9 @@ const pick = (value: Localized | null | undefined, lang: string): string | null 
 const cache = new Map<string, PlannerDataset>();
 
 /**
- * Jeu de données du planificateur pour une langue : coûts, objets, sources et
- * catalogue des cibles. Les noms sont résolus ici, le client ne reçoit que la
- * langue affichée.
+ * Données du planificateur pour une langue : coûts, objets, sources et
+ * catalogue des cibles. Les noms sont résolus ici pour que le client ne reçoive
+ * que la langue affichée.
  */
 export function getPlannerDataset(locale: string): PlannerDataset {
   const lang = locale.toUpperCase();

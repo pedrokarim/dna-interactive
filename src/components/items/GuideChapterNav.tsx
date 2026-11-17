@@ -6,8 +6,8 @@ import { getChapterNeighbours, getGuideOutline } from "@/lib/items/guide-chapter
 /**
  * Pied de chapitre : le précédent, le sommaire, le suivant.
  *
- * Les bords ne bouclent pas. Arrivé au dernier chapitre, le lecteur doit voir
- * qu'il a terminé, pas être renvoyé au début sans s'en apercevoir.
+ * Pas de boucle aux bords : au dernier chapitre, on veut que le lecteur voie
+ * qu'il a fini au lieu de repartir au début sans s'en rendre compte.
  */
 export async function GuideChapterNav({
   categoryId,

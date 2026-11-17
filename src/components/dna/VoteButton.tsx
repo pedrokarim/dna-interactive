@@ -2,9 +2,9 @@
 import { cn } from "./cn";
 
 /**
- * Bouton de vote (upvote) — 1 vote par utilisateur, retirable. Sert au
- * classement des builds communauté. L'état `voted` est piloté par le parent
- * (optimistic UI + appel API côté builder).
+ * Bouton de vote (upvote) pour classer les builds communauté : un vote par
+ * utilisateur, qu'on peut retirer. Le parent gère `voted` (UI optimiste et appel
+ * API côté builder).
  */
 
 export type DnaVoteButtonProps = {
@@ -16,7 +16,7 @@ export type DnaVoteButtonProps = {
   readOnly?: boolean;
   size?: "sm" | "md";
   onToggle?: (next: boolean) => void;
-  /** Libellés (i18n via l'appelant — le DS reste pur). Défauts FR. */
+  /** Libellés traduits par l'appelant, le DS ne dépend pas d'i18n. Français par défaut. */
   labels?: { vote?: string; remove?: string; login?: string };
   className?: string;
 };

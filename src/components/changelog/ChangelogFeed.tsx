@@ -12,13 +12,12 @@ import type { ChangelogPage, ChangelogPublicEntry, ChangelogVersionRef } from "@
 /**
  * Journal des versions, chargé au fil du défilement.
  *
- * Le journal grossit d'une entrée par version : tout afficher d'un coup finit
- * par coûter cher pour un contenu que presque personne ne lit jusqu'en bas. On
- * charge donc par paliers, et on ajoute un sélecteur pour atteindre une version
- * précise sans avoir à dérouler jusqu'à elle.
+ * Une entrée de plus par version : tout afficher d'un coup finit par coûter
+ * cher, et presque personne ne lit jusqu'en bas. On charge par paliers, avec un
+ * sélecteur pour aller à une version précise sans tout dérouler.
  *
- * La première page arrive rendue par le serveur : le contenu est visible et
- * indexable sans attendre le JavaScript.
+ * La première page est rendue par le serveur, donc visible et indexable sans
+ * JavaScript.
  */
 export function ChangelogFeed({
   initial,
@@ -37,8 +36,8 @@ export function ChangelogFeed({
   const [pickerOpen, setPickerOpen] = useState(false);
 
   const sentinelRef = useRef<HTMLDivElement>(null);
-  // Évite qu'un observateur trop zélé déclenche deux chargements pour le même
-  // curseur pendant que la requête est en vol.
+  // L'observateur peut se déclencher deux fois pendant que la requête est en
+  // vol : un seul chargement par curseur.
   const inFlight = useRef(false);
 
   const loadMore = useCallback(async () => {
@@ -52,8 +51,8 @@ export function ChangelogFeed({
       if (!response.ok) throw new Error("réponse invalide");
       const page = (await response.json()) as ChangelogPage;
       setEntries((previous) => {
-        // Une même version ne doit jamais apparaître deux fois, même si un
-        // curseur est rejoué (retour arrière, double déclenchement).
+        // Pas de version en double, même si un curseur est rejoué (retour
+        // arrière, double déclenchement).
         const seen = new Set(previous.map((e) => e.version));
         return [...previous, ...page.entries.filter((e) => !seen.has(e.version))];
       });
@@ -66,8 +65,8 @@ export function ChangelogFeed({
     }
   }, [cursor, locale]);
 
-  // Sentinelle de bas de liste. `rootMargin` déclenche le chargement avant
-  // d'atteindre le bord, pour que la suite soit déjà là quand on y arrive.
+  // Sentinelle de bas de liste. Avec `rootMargin`, le chargement part avant le
+  // bord : la suite est déjà là quand on y arrive.
   useEffect(() => {
     const node = sentinelRef.current;
     if (!node || !cursor) return;
@@ -83,8 +82,8 @@ export function ChangelogFeed({
 
   /**
    * Après un saut, la liste ne contient plus que la version visée et les
-   * suivantes : remonter ne suffit pas à retrouver les versions récentes. Le
-   * bouton « revenir en haut » doit donc aussi remettre le fil à son début.
+   * suivantes : remonter ne ramène pas les versions récentes. Le bouton
+   * « revenir en haut » remet donc aussi le fil à son début.
    */
   const jumped = entries.length > 0 && initial.entries.length > 0 && entries[0].version !== initial.entries[0].version;
 
@@ -136,8 +135,8 @@ export function ChangelogFeed({
         ))}
       </div>
 
-      {/* Zone de chargement : sentinelle, état, et reprise manuelle en cas
-          d'échec réseau — sans quoi le fil resterait bloqué en silence. */}
+      {/* Zone de chargement : sentinelle, état, et bouton pour relancer après
+          un échec réseau (sinon le fil reste bloqué sans rien dire). */}
       <div ref={sentinelRef} className="flex min-h-16 items-center justify-center py-6">
         {loading ? (
           <span className="inline-flex items-center gap-2 font-sans text-sm text-muted">
@@ -170,11 +169,9 @@ export function ChangelogFeed({
 }
 
 /**
- * Sélecteur de version, flottant en bas à droite.
- *
- * Il double la navigation par défilement : dix-neuf entrées aujourd'hui, mais
- * la liste ne fera que grandir, et chercher « la version où telle chose a
- * changé » en déroulant est vite pénible.
+ * Sélecteur de version, flottant en bas à droite. La liste ne fait que grandir,
+ * et retrouver « la version où telle chose a changé » en déroulant devient vite
+ * pénible.
  */
 function VersionPicker({
   versions,
@@ -218,7 +215,7 @@ function VersionPicker({
 
   if (versions.length === 0) return null;
 
-  // Regroupement par année : c'est le repère naturel pour retrouver une version.
+  // Groupé par année, c'est le repère le plus simple pour retrouver une version.
   const byYear = new Map<string, ChangelogVersionRef[]>();
   for (const version of versions) {
     const year = version.date.slice(0, 4);

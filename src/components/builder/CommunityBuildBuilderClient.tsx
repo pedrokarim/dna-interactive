@@ -64,8 +64,8 @@ type EditingTarget =
   | { kind: "team" }
   | null;
 
-// Configuration de Demon Wedges propre à une arme dans le builder (8 cases + une
-// affinité d'élément). Indépendante du build canonique de la fiche arme.
+// Demon Wedges d'une arme dans ce build (8 cases + une affinité d'élément),
+// indépendants du build canonique de la fiche arme.
 type WeaponWedgeConfig = { slots: WedgeSlotData[]; affinity: ElementKey | null };
 
 const TEAM_ROLES = ["DPS", "Sub-DPS", "Support", "Heal", "Tank"] as const;
@@ -87,14 +87,14 @@ type ServerDraft = {
   updatedAt: string;
 };
 
-// État de réconciliation brouillon local ↔ serveur (§3.5 du cadrage).
+// Réconciliation du brouillon local avec celui du serveur (§3.5 du cadrage).
 type ReconcileState =
   | { kind: "conflict"; local: StoredDraft; server: ServerDraft }
   | { kind: "import"; local: StoredDraft }
   | null;
 
-// Sérialisation déterministe (clés triées) — nécessaire car jsonb ne préserve
-// pas l'ordre des clés, donc une comparaison brute donnerait de faux conflits.
+// Clés triées : jsonb ne garde pas leur ordre, une comparaison brute
+// donnerait de faux conflits.
 function stableStringify(value: unknown): string {
   if (value === null || typeof value !== "object") return JSON.stringify(value) ?? "null";
   if (Array.isArray(value)) return `[${value.map(stableStringify).join(",")}]`;
@@ -134,18 +134,18 @@ function emptyWedgeSlots(max: number): WedgeSlotData[] {
   return Array.from({ length: max }, (_, index) => ({ position: index + 1, item: null, track: null }));
 }
 
-// `track` renseigné = un Track-Shift Module est posé sur cette case ; null = aucun.
-// La VALEUR n'est jamais choisie par l'utilisateur : c'est toujours la polarité du
-// Wedge posé, sinon le module est gaspillé (coût ×1,5 au lieu de ÷2). Le toggle ne
-// décide que de la présence de l'ajustement.
-// La polarité d'un mod peut être universelle (-1) : ce n'est pas une track valide
-// (1-4). On la normalise en null pour ne jamais stocker/publier un track hors bornes.
+// `track` renseigné : un Track-Shift Module est posé sur la case ; null : aucun.
+// L'utilisateur ne choisit pas la valeur, c'est toujours la polarité du Wedge posé
+// (sinon le module est gaspillé : coût ×1,5 au lieu de ÷2). Le toggle dit
+// seulement s'il y a un module.
+// Une polarité universelle (-1) n'est pas une track valide (1-4) : on la passe à
+// null pour ne jamais stocker ni publier une track hors bornes.
 function normalizeTrack(value: number | null | undefined): number | null {
   return typeof value === "number" && value >= 1 && value <= 4 ? value : null;
 }
 
-/** Bascule le Track-Shift d'une case. On ne choisit jamais la valeur : elle vaut
- *  toujours la polarité du Wedge posé, donc un désalignement est impossible. */
+/** Bascule le Track-Shift d'une case. La valeur est toujours la polarité du
+ *  Wedge posé, elle ne peut pas être désalignée. */
 function toggleSlotTrack(slots: WedgeSlotData[], position: number): WedgeSlotData[] {
   return slots.map((slot) => {
     if (slot.position !== position || !slot.item) return slot;
@@ -184,15 +184,14 @@ function asElementKey(value: string | null | undefined): ElementKey | null {
   return value && value in ELEMENTS ? (value as ElementKey) : null;
 }
 
-// Le « centre » d'une arme n'est pas un wedge mais une affinité (élément) : on
-// synthétise un item-picker porteur de l'icône d'élément pour réutiliser
-// DnaDemonWedgeEditor tel quel.
+// Le « centre » d'une arme est une affinité d'élément. On fabrique un faux
+// item avec l'icône de l'élément pour réutiliser DnaDemonWedgeEditor tel quel.
 function affinityCenterItem(affinity: ElementKey | null): DnaPickerItem | null {
   if (!affinity) return null;
   return { id: `affinity-${affinity}`, name: ELEMENTS[affinity].label, icon: ELEMENTS[affinity].icon, rarity: null, element: affinity, polarity: null };
 }
 
-// Choix d'affinité = un mini-picker des 6 éléments (id = clé d'élément).
+// Choix d'affinité : mini-picker des 6 éléments (id = clé d'élément).
 const ELEMENT_PICKER_ITEMS: DnaPickerItem[] = ELEMENT_KEYS.map((key) => ({
   id: key,
   name: ELEMENTS[key].label,
@@ -212,8 +211,7 @@ export function CommunityBuildBuilderClient({
   const searchParams = useSearchParams();
   const t = useTranslations("builder");
   const locale = useLocale();
-  // Les libellés de Traits viennent des données de jeu : ils suivent la locale
-  // de la page, comme partout ailleurs sur le site.
+  // Libellés de Traits tirés des données du jeu, dans la langue de la page.
   const gameLang = toGameDataLangCode(toLocale(locale));
   const tTrait = useTranslations("genimonGuide");
   const STATS_POOL = useMemo<PriorityItem[]>(
@@ -239,15 +237,15 @@ export function CommunityBuildBuilderClient({
     () => options.characters.find((character) => character.id === characterId) ?? firstCharacter,
     [characterId, firstCharacter, options.characters],
   );
-  // Le picker ne propose que les VRAIES compétences du perso (la référence) ;
-  // fallback générique borné 1-3 si le kit n'est pas résolu.
+  // Le picker propose les vraies compétences du perso ; repli générique borné
+  // 1-3 si le kit n'est pas résolu.
   const SKILL_POOL = useMemo<PriorityItem[]>(() => {
     const skills = selectedCharacter?.skills ?? [];
     if (skills.length > 0) return skills.map((s) => ({ id: `skill-${s.index}`, label: s.name }));
     return [1, 2, 3].map((i) => ({ id: `skill-${i}`, label: t(`skillLabels.skill-${i}`) }));
   }, [selectedCharacter, t]);
-  // Filtre optionnel des armes selon les types du perso (weaponTags). Désactivé
-  // par défaut : on propose TOUTES les armes ; le toggle restreint au perso.
+  // Filtre des armes par types du perso (weaponTags), désactivé par défaut :
+  // toutes les armes sont proposées, le toggle restreint.
   const [filterWeaponsByCharacter, setFilterWeaponsByCharacter] = useState(false);
   const { meleePool, rangedPool } = useMemo(() => {
     const tags = selectedCharacter?.weapons ?? [];
@@ -265,16 +263,13 @@ export function CommunityBuildBuilderClient({
   const [title, setTitle] = useState("");
   const [note, setNote] = useState("");
   const [meleeWeapons, setMeleeWeapons] = useState<SlotEntry[]>([]);
-  // DW configurés par arme (toggle opt-in → éditeur propre au build).
+  // DW configurés par arme (toggle à activer, puis éditeur propre au build).
   const [weaponWedges, setWeaponWedges] = useState<Record<string, WeaponWedgeConfig>>({});
-  /** Arme dont on configure les Demon Wedges dans la modale (null = fermee). */
+  /** Arme dont on configure les Demon Wedges dans la modale (null = fermée). */
   const [wedgeModalWeapon, setWedgeModalWeapon] = useState<string | null>(null);
   const [rangedWeapons, setRangedWeapons] = useState<SlotEntry[]>([]);
   const [genimons, setGenimons] = useState<SlotEntry[]>([]);
-  /**
-   * Les 29 Traits, groupés par catégorie du jeu. Construit une fois : la liste
-   * ne dépend que de la langue, jamais de la créature retenue.
-   */
+  /** Les 29 Traits, groupés par catégorie du jeu. Ne dépend que de la langue. */
   const traitGroups = useMemo<DnaTraitCategoryGroup[]>(
     () =>
       TRAIT_CATEGORIES.map((category) => ({
@@ -326,7 +321,7 @@ export function CommunityBuildBuilderClient({
   const accentHex = activeElement ? ELEMENTS[activeElement].hex : "#c2a86a";
   const consonanceWeapon = activeElement ? selectedCharacter?.consonanceByElement[activeElement] ?? null : null;
   const key = selectedCharacter ? draftKey(selectedCharacter.id, activeElement) : "";
-  // Le picker ne propose que ce que la case accepte, selon les mêmes règles que
+  // Le picker ne propose que ce que la case accepte, avec les mêmes règles que
   // l'import et le serveur (wedge-rules) : pool personnage, élément du build,
   // centre réservé aux Feathered Serpent's.
   const centerMods = useMemo(
@@ -359,12 +354,9 @@ export function CommunityBuildBuilderClient({
   }
 
   /**
-   * Choisir un personnage est le premier geste réel du constructeur : avant
-   * lui, la page est ouverte mais rien n'est commencé.
-   *
-   * Sans ce repère, `build_published` est un nombre sans dénominateur — sur
-   * sept jours, treize visites du constructeur et aucune publication, sans
-   * moyen de dire si personne n'essaie ou si tout le monde abandonne en route.
+   * Choisir un perso marque le vrai début d'un build. On le mesure pour donner
+   * un dénominateur à `build_published` : sinon, impossible de savoir si
+   * personne n'essaie ou si les gens abandonnent en route.
    */
   function selectCharacter(nextCharacterId: string) {
     const nextCharacter = options.characters.find((character) => character.id === nextCharacterId);
@@ -559,10 +551,9 @@ export function CommunityBuildBuilderClient({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [key]);
 
-  // Réconciliation local ↔ serveur (§3.5) : à l'ouverture (et à la connexion),
-  // compare le brouillon local et le brouillon serveur. Si seul le serveur
-  // existe on le charge ; si seul le local existe on propose de le synchroniser ;
-  // si les deux diffèrent vraiment (comparaison de contenu, pas d'horodatage),
+  // Réconciliation local/serveur (§3.5), à l'ouverture et à la connexion. Seul
+  // le serveur a un brouillon : on le charge. Seul le local : on propose de le
+  // synchroniser. Les deux diffèrent (on compare le contenu, pas les dates) :
   // on demande lequel reprendre.
   useEffect(() => {
     if (!selectedCharacter || !key || !isAuthenticated) return;
@@ -713,7 +704,7 @@ export function CommunityBuildBuilderClient({
     setCanShareNative(typeof navigator !== "undefined" && typeof navigator.share === "function");
   }, []);
 
-  // Lien auto-portant : si l'URL contient ?b=<build>, on pré-remplit le builder.
+  // Si l'URL contient ?b=<build>, on pré-remplit le builder.
   useEffect(() => {
     if (loadedShareParamRef.current) return;
     const param = searchParams.get("b");
@@ -772,9 +763,8 @@ export function CommunityBuildBuilderClient({
   }
 
   function openShare(href: string, method: "x" | "facebook" | "reddit") {
-    // Avec `noopener`, les navigateurs peuvent retourner `null` même lorsque
-    // la fenêtre est bien ouverte : la valeur de retour ne permet donc pas de
-    // distinguer un partage réussi d'un popup bloqué.
+    // Avec `noopener`, window.open peut renvoyer null même si la fenêtre
+    // s'ouvre : on ne peut pas distinguer un partage d'un popup bloqué.
     window.open(href, "_blank", "noopener,noreferrer");
     captureAnalytics("build_shared", { source: "builder", method });
   }
@@ -948,9 +938,8 @@ export function CommunityBuildBuilderClient({
 
     if (!response.ok) {
       setPublishing(false);
-      // Une publication refusée est la fin la plus coûteuse du parcours : tout
-      // le travail est fait et rien n'est enregistré. Le motif vient du serveur
-      // et n'est pas du texte saisi.
+      // Publication refusée : tout le travail est fait et rien n'est enregistré,
+      // on veut le savoir. Le motif vient du serveur, pas d'un texte saisi.
       captureAnalytics("build_publish_failed", {
         reason: typeof data.error === "string" ? data.error : "unknown",
         updating: isUpdating,
@@ -969,11 +958,10 @@ export function CommunityBuildBuilderClient({
     setMessage(isUpdating ? t("buildUpdated") : t("buildPublished"));
     if (!isUpdating) captureAnalytics("build_published", { source: "builder" });
 
-    // On emmene l'auteur sur son build : rester sur le formulaire apres une
-    // publication reussie donnait l'impression que rien ne s'etait passe.
+    // On emmène l'auteur sur son build, sinon il croit que rien ne s'est passé.
     const createdId = (data as { build?: { id?: string } }).build?.id ?? editingBuildId;
     if (createdId) {
-      setPublishing(true);            // garde le voile jusqu'a la navigation
+      setPublishing(true);            // garde le voile jusqu'à la navigation
       router.push(`/builds/${createdId}`);
     }
   }
@@ -1345,8 +1333,7 @@ export function CommunityBuildBuilderClient({
               allowRanks={false}
               onChange={setGenimons}
               renderFooter={(entry) => {
-                // Le jeu montre les emplacements comme des sphères autour de la
-                // créature : on reprend sa forme plutôt que d'inventer la nôtre.
+                // Emplacements en sphères autour de la créature, comme dans le jeu.
                 const slots = genimonTraitSlots(entry.item.id);
                 const keys = sanitizeTraitKeys(entry.item.id, genimonTraits[entry.item.id]);
                 return (
@@ -1660,8 +1647,7 @@ export function CommunityBuildBuilderClient({
         );
       })()}
       {publishing ? (
-        // Voile plein ecran : sans lui, publier ne produisait aucun signal visible
-        // et l'auteur restait sur son formulaire sans savoir si ca avait marche.
+        // Voile plein écran pendant la publication, sinon aucun signal visible.
         <div
           role="status"
           aria-live="polite"

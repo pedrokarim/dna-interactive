@@ -75,8 +75,8 @@ export function RouteLayer({ height, leftInset }: { height: number; leftInset: n
     // eslint-disable-next-line react-hooks/exhaustive-deps -- seul le nonce déclenche
   }, [fitRoute?.nonce]);
 
-  // En mode tracé, les pastilles deviennent transparentes aux clics (on trace
-  // souvent PAR-DESSUS les ressources) et le double-clic ne zoome plus.
+  // En mode tracé, les clics traversent les pastilles (on trace souvent par-dessus
+  // les ressources) et le double-clic ne zoome plus.
   useEffect(() => {
     const el = leaflet.getContainer();
     el.classList.toggle("dna-drawing", drawing !== null);

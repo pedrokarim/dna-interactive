@@ -1,17 +1,16 @@
 /**
- * Rotations du théâtre immersif — données + logique pure.
+ * Rotations du théâtre immersif : données et logique pure.
  *
- * Le théâtre tourne par tranches : pendant quelques semaines, il met en avant
- * un personnage ou une arme de calamité, puis passe à la suite. Depuis la
- * version 1.5, chaque version en compte deux : le personnage d'abord, l'arme
- * ensuite.
+ * Pendant quelques semaines le théâtre met en avant un perso ou une arme de
+ * calamité, puis passe au suivant. Depuis la 1.5, deux rotations par version :
+ * le perso puis l'arme.
  *
- * Contrairement au calendrier, les bornes sont des **instants** et non des
- * jours : une rotation bascule à une heure précise, la même pour tout le monde.
- * On les garde donc en ISO UTC, et c'est l'affichage qui choisit le fuseau.
+ * À la différence du calendrier, les bornes sont des instants : une rotation
+ * bascule à une heure précise, la même pour tout le monde. On les garde en ISO
+ * UTC et l'affichage choisit le fuseau.
  *
- * Les fonctions de ce module restent pures : l'instant présent est toujours un
- * paramètre, jamais lu ici (rendu serveur sûr, testable).
+ * Fonctions pures : l'instant présent est toujours passé en paramètre, jamais
+ * lu ici (pas de souci au rendu serveur, et c'est testable).
  */
 import staticData from "@/data/theatre/rotations.json";
 
@@ -75,8 +74,8 @@ export type TheatreOverview<T> = {
 /**
  * Situe l'instant présent dans la suite des rotations.
  *
- * Entre deux versions, le théâtre ferme quelques heures : il peut donc n'y
- * avoir aucune rotation en cours, tout en ayant une précédente et une suivante.
+ * Entre deux versions le théâtre ferme quelques heures : aucune rotation en
+ * cours, mais une précédente et une suivante.
  */
 export function theatreOverview<T extends Pick<TheatreRotation, "id" | "startsAt" | "endsAt">>(
   rotations: T[],
