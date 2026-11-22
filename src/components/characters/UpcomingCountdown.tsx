@@ -2,7 +2,7 @@
 
 import { toIntlLocale } from "@/lib/intl-locale";
 import { useMemo } from "react";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { CalendarDays } from "lucide-react";
 import { DnaPanel } from "@/components/dna";
 import { useReleaseCountdown } from "./useReleaseCountdown";
@@ -22,6 +22,8 @@ export function UpcomingCountdown({
   bannerName?: string;
 }) {
   const locale = useLocale();
+  const t = useTranslations("upcomingPage");
+  const tStrip = useTranslations("upcomingStrip");
   const { parts, released } = useReleaseCountdown(releaseDate);
 
   const dateLabel = useMemo(
@@ -38,12 +40,12 @@ export function UpcomingCountdown({
         <div className="min-w-0">
           <p className="flex items-center gap-1.5 font-caps text-[0.56rem] uppercase tracking-[0.16em] text-gold">
             <CalendarDays className="h-3 w-3" />
-            {released ? "Disponible" : "Sortie prévue"}
+            {released ? t("countdownReleased") : t("countdownExpected")}
           </p>
           <p className="mt-1 font-sans text-sm text-parch">{dateLabel}</p>
           <p className="mt-0.5 font-sans text-xs text-muted">
-            Version {versionName}
-            {bannerName ? ` · bannière Myriad « ${bannerName} »` : ""}
+            {t("countdownVersion", { versionName })}
+            {bannerName ? ` · ${t("countdownBanner", { bannerName })}` : ""}
           </p>
         </div>
 
@@ -51,10 +53,10 @@ export function UpcomingCountdown({
             lisible qu'après hydratation, et le panneau ne doit pas sauter. */}
         {released ? null : (
           <div className="flex gap-2" role="timer" aria-live="off">
-            <Unit value={parts?.days ?? null} label="j" />
-            <Unit value={parts?.hours ?? null} label="h" />
-            <Unit value={parts?.minutes ?? null} label="min" />
-            <Unit value={parts?.seconds ?? null} label="s" />
+            <Unit value={parts?.days ?? null} label={tStrip("days")} />
+            <Unit value={parts?.hours ?? null} label={tStrip("hours")} />
+            <Unit value={parts?.minutes ?? null} label={tStrip("minutes")} />
+            <Unit value={parts?.seconds ?? null} label={tStrip("seconds")} />
           </div>
         )}
       </div>

@@ -12,7 +12,7 @@
  */
 import { eq } from "drizzle-orm";
 import { getDb, schema } from "@/db";
-import { getUpcomingCharacter } from "@/lib/characters/upcoming";
+import { getUpcomingCharacter, getUpcomingText } from "@/lib/characters/upcoming";
 
 const TITLE = "Falsi arrive avec la version 1.6";
 
@@ -23,7 +23,7 @@ async function main() {
   }
 
   const body = [
-    `${falsi.name}, ${falsi.rarity} étoiles Pyro de l'${falsi.campLabel}, ouvre la version ${falsi.version} « ${falsi.versionName} » le ${new Date(`${falsi.releaseDate}T12:00:00Z`).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })}.`,
+    `${falsi.name}, ${falsi.rarity} étoiles Pyro de l'${getUpcomingText(falsi, "fr").campLabel}, ouvre la version ${falsi.version} « ${falsi.versionName} » le ${new Date(`${falsi.releaseDate}T12:00:00Z`).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })}.`,
     "Sa fiche est déjà en ligne : élément, armes, statistiques de base projetées au niveau 80, kit connu et rôle dans l'histoire – avec, pour chaque information, son niveau de fiabilité.",
   ].join("\n\n");
 

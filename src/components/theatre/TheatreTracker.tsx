@@ -14,7 +14,7 @@ import {
   type TheatreRotationStatus,
 } from "@/lib/theatre/rotations";
 import type { TheatreFeaturedView, TheatreRotationView } from "@/lib/theatre/featured";
-import { ANNOUNCED_THEATRE_NEXT, type UpcomingCharacter } from "@/lib/characters/upcoming";
+import { ANNOUNCED_THEATRE_NEXT, getUpcomingText, type UpcomingCharacter } from "@/lib/characters/upcoming";
 import { optimizedImageUrl } from "@/lib/images/optimized";
 
 export type TheatreTrackerProps = {
@@ -234,8 +234,10 @@ function NeighbourCard({ label, rotation, emptyTitle, emptyHint, announced }: {
   const fmt = useTheatreFormats();
   const kindLabel = useKindLabel();
   const t = useTranslations("theatre");
+  const locale = useLocale();
 
   if (!rotation && announced) {
+    const announcedName = getUpcomingText(announced, locale).name;
     // Annoncée par le studio sans dates : on montre qui, sans date.
     return (
       <DnaPanel className="flex-1 border-dashed transition-colors hover:border-line/50">
@@ -245,8 +247,8 @@ function NeighbourCard({ label, rotation, emptyTitle, emptyHint, announced }: {
           </span>
           <span className="min-w-0">
             <DnaSectionMark size="sm">{label}</DnaSectionMark>
-            <span className="mt-1 block truncate font-display text-lg font-semibold text-parch" title={announced.name}>
-              {announced.name}
+            <span className="mt-1 block truncate font-display text-lg font-semibold text-parch" title={announcedName}>
+              {announcedName}
             </span>
             <span className="block font-sans text-xs text-muted">
               {t("kindCharacter")} · {t("announcedNoDate")}
@@ -386,6 +388,7 @@ function Poster({ rotation, status, showYear, posterRef }: {
 function UnknownPoster({ switchAt }: { switchAt: string | null }) {
   const t = useTranslations("theatre");
   const fmt = useTheatreFormats();
+  const locale = useLocale();
   const announced = ANNOUNCED_THEATRE_NEXT;
 
   if (announced) {
@@ -404,7 +407,7 @@ function UnknownPoster({ switchAt }: { switchAt: string | null }) {
           <span aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black/90 to-transparent" />
           <StatusTag status="upcoming" />
           <span className="absolute inset-x-0 bottom-0 p-2.5">
-            <span className="block font-display text-base font-semibold leading-tight text-white">{announced.name}</span>
+            <span className="block font-display text-base font-semibold leading-tight text-white">{getUpcomingText(announced, locale).name}</span>
             <span className="mt-0.5 block font-caps text-[0.52rem] uppercase tracking-[0.14em] text-white/70">{t("kindCharacter")}</span>
           </span>
         </SheetLink>

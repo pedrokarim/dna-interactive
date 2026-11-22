@@ -10,7 +10,7 @@ import { desc, eq } from "drizzle-orm";
 import { getTranslations } from "next-intl/server";
 import { getDb, schema } from "@/db";
 import { getAllCharacters, getCharacterById } from "@/lib/characters/catalog";
-import { getUpcomingCharacter } from "@/lib/characters/upcoming";
+import { getUpcomingCharacter, getUpcomingText } from "@/lib/characters/upcoming";
 import { getBannerDetail } from "@/lib/cosmetics/banners";
 import {
   getAllCosmetics,
@@ -187,8 +187,8 @@ export async function resolvePageOg(locale: string, segments: string[], origin: 
     const url = img(ctx, upcoming.portrait, 640);
     return {
       eyebrow: t("version", { version: upcoming.version }),
-      title: upcoming.name,
-      subtitle: locale === "fr" ? upcoming.subtitle : upcoming.subtitleEn,
+      title: getUpcomingText(upcoming, locale).name,
+      subtitle: getUpcomingText(upcoming, locale).subtitle,
       hex: getElement(upcoming.element).hex,
       media: url ? { kind: "portrait", url } : null,
     };

@@ -14,7 +14,7 @@ import {
   getLevelUpCurves,
 } from "@/lib/characters/catalog";
 import { getCharacterBuilds } from "@/lib/characters/builds";
-import { getUpcomingCharacter } from "@/lib/characters/upcoming";
+import { getUpcomingCharacter, getUpcomingText } from "@/lib/characters/upcoming";
 import { UpcomingCharacterPage } from "@/components/characters/UpcomingCharacterPage";
 import { generatePageMetadata } from "@/lib/metadata";
 
@@ -40,10 +40,13 @@ export async function generateMetadata(
   // métadonnées à part. Dès qu'il entre dans characters.json, on ne passe plus ici.
   const upcoming = character ? null : getUpcomingCharacter(characterId);
   if (upcoming) {
+    const tUpcoming = await getTranslations({ locale, namespace: "upcomingPage" });
+    const upcomingName = getUpcomingText(upcoming, locale).name;
+    const upcomingElement = ELEMENT_LABEL[upcoming.element] ?? upcoming.element;
     return generatePageMetadata(
       {
-        title: `${upcoming.name} - ${ELEMENT_LABEL[upcoming.element] ?? upcoming.element} à venir en ${upcoming.version}`,
-        description: `${upcoming.name} arrive dans Duet Night Abyss en version ${upcoming.version} : élément, faction, obtention et histoire du personnage avant sa sortie.`,
+        title: tUpcoming("metaTitle", { name: upcomingName, element: upcomingElement, version: upcoming.version }),
+        description: tUpcoming("metaDescription", { name: upcomingName, version: upcoming.version }),
         path: `/characters/${upcoming.slug}`,
         keywords: [
           "Duet Night Abyss",
@@ -133,7 +136,7 @@ export default async function CharacterDetailPage({
     // la fiche « à venir » prend déjà l'URL définitive.
     const upcoming = getUpcomingCharacter(characterId);
     if (upcoming) {
-      return <UpcomingCharacterPage character={upcoming} curves={getLevelUpCurves().curves} />;
+      return <UpcomingCharacterPage character={upcoming} curves={getLevelUpCurves().curves} locale={locale} />;
     }
     notFound();
   }

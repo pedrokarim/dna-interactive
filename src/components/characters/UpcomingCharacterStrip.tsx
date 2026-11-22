@@ -7,7 +7,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { ArrowRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { DnaCornerBrackets, DnaElementBadge, DnaStars, DnaTag, ELEMENTS, cn } from "@/components/dna";
-import type { UpcomingCharacter } from "@/lib/characters/upcoming";
+import { getUpcomingText, type UpcomingCharacter } from "@/lib/characters/upcoming";
 import { useReleaseCountdown } from "./useReleaseCountdown";
 
 /**
@@ -26,9 +26,8 @@ export function UpcomingCharacterStrip({ character }: { character: UpcomingChara
   const t = useTranslations("upcomingStrip");
   const element = ELEMENTS[character.element];
   const { parts, released } = useReleaseCountdown(character.releaseDate ?? "");
-  // Le sous-titre écrit à la main est en français ; les autres langues ont le
-  // titre officiel anglais.
-  const subtitle = locale === "fr" ? character.subtitle : character.subtitleEn;
+  const text = getUpcomingText(character, locale);
+  const subtitle = text.subtitle;
 
   const dateLabel = useMemo(
     () =>
@@ -85,7 +84,7 @@ export function UpcomingCharacterStrip({ character }: { character: UpcomingChara
             style={{ borderColor: `${element.hex}55`, background: `${element.hex}14` }}
           >
             <span className="font-display text-4xl leading-none opacity-70" style={{ color: element.color }}>
-              {character.name.charAt(0)}
+              {text.name.charAt(0)}
             </span>
           </span>
         )}
@@ -97,14 +96,14 @@ export function UpcomingCharacterStrip({ character }: { character: UpcomingChara
           </span>
           <span className="mt-1 flex flex-wrap items-baseline gap-x-3 gap-y-0.5">
             <span className="min-w-0 break-words font-display text-3xl text-parch transition-colors group-hover:text-gold-bright">
-              {character.name}
+              {text.name}
             </span>
             <span className="font-serif text-base italic text-gold/90">{t("quote", { text: subtitle })}</span>
           </span>
           <span className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1">
             <DnaElementBadge element={character.element} showLabel size={20} />
             <DnaStars value={character.rarity} />
-            {locale === "fr" ? <span className="font-sans text-xs text-muted">{character.campLabel}</span> : null}
+            <span className="font-sans text-xs text-muted">{text.campLabel}</span>
             {dateLabel ? <span className="font-sans text-xs text-muted">· {dateLabel}</span> : null}
           </span>
         </span>
