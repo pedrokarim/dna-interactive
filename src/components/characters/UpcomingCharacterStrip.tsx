@@ -110,8 +110,9 @@ export function UpcomingCharacterStrip({ character }: { character: UpcomingChara
         </span>
       </span>
 
-      {/* Rangée 2 sur mobile, fin de ligne sur desktop */}
-      <span className="relative flex shrink-0 items-center justify-between gap-3 sm:justify-end sm:gap-4">
+      {/* Rangée 2 sur mobile, fin de ligne sur desktop. Elle se replie quand le
+          compteur et le bouton ne tiennent pas côte à côte. */}
+      <span className="relative flex shrink-0 flex-wrap items-center justify-between gap-3 sm:justify-end sm:gap-4">
         {character.releaseDate ? (
           /* L'horloge n'existe qu'après hydratation : des tirets réservent sa
              place, sinon le bouton saute au premier tic. */

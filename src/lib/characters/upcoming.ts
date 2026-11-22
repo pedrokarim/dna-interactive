@@ -84,7 +84,8 @@ export type UpcomingCharacter = {
   /** Date de sortie ISO `AAAA-MM-JJ`, si officiellement annoncée. */
   releaseDate?: string;
   bannerName?: string;
-  skinCount: number;
+  /** Nombre d'apparences déclarées par le jeu, absent tant qu'il n'en déclare pas. */
+  skinCount?: number;
   skinNames?: string[];
   voiceActorEn?: string;
   /** Noms des objets d'ascension, absents tant que le jeu ne les a pas traduits. */
@@ -100,10 +101,59 @@ export type UpcomingCharacter = {
   sources: { label: string; url?: string }[];
 };
 
+/** Bande-annonce officielle de la 1.8, d'où viennent la date, l'obtention et les visuels. */
+const SRC_V18_PV = "https://x.com/DNAbyss_EN/status/2123597203490935100";
+
 // Vide entre deux annonces, c'est normal. Falsi y était jusqu'à la 1.6, Rhythm:
 // Flamewrought jusqu'à la 1.7, quand le jeu a livré leur nom et leurs portraits ;
 // la vraie fiche a alors pris le relais sur la même URL.
-export const UPCOMING_CHARACTERS: UpcomingCharacter[] = [];
+//
+// Katya : son `BattleChar` est une ébauche. Stats identiques à celles de Margie
+// (3301) et armes Claymore + Crossbow, donc ni l'un ni l'autre n'est repris ici.
+export const UPCOMING_CHARACTERS: UpcomingCharacter[] = [
+  {
+    slug: "katya",
+    name: "Katya",
+    internalName: "Kajia",
+    charId: 3203,
+    subtitle: "Roi des Bêtes",
+    subtitleEn: "Beast-King of the Rabble",
+    element: "Fire",
+    rarity: 5,
+    maxLevel: 80,
+    campKey: "Tongmeng",
+    campLabel: "Les Déchus",
+    weaponTags: [],
+    positioning: [],
+    recommendAttr: [],
+    portrait: "/assets/upcoming/katya-portrait.webp",
+    avatar: "/assets/upcoming/katya-avatar.webp",
+    theatreNext: true,
+    version: "1.8",
+    versionName: "Where the Whistle Calls",
+    releaseDate: "2026-12-01",
+    bannerName: "Frightful Grins",
+    skinNames: ["Darling Disaster"],
+    voiceActorEn: "Holly Earl",
+    skillIds: [320301, 320311, 320302, 320303],
+    skills: [],
+    lore: [
+      "Katya Oen est née à Dismania, dans une famille d'ingénieurs. Elle a quitté les siens pour construire de petits appareils de chauffage destinés aux Charons pauvres. Alors qu'elle les diffusait à Ovis, une rafle de l'Empire Hyperboréen l'a envoyée aux travaux forcés à la Forteresse de Lonza.",
+      "Les Déchus l'ont libérée dix mois plus tard en prenant la forteresse. Elle affirme avoir elle-même coupé les alarmes et les communications une heure avant l'assaut. Elle les a rejoints et porte le titre de Roi des Bêtes parmi les Brumaires.",
+      "Dans l'histoire, elle détourne l'Express Aurora et y pose des bombes, puis retourne le canon du train contre le dirigeable de la Légion pendant que Flora est son otage.",
+    ],
+    facts: [
+      { label: "Obtention", value: "Théâtre immersif (gratuit)", confidence: "announced" },
+      { label: "Nouveau pistolet", value: "The Genius's Rhapsody", confidence: "announced" },
+      { label: "Nouveau lance-grenades", value: "Flame Within Iron", confidence: "announced" },
+      { label: "Skin d'arme", value: "Count Dracupurr", confidence: "announced" },
+    ],
+    sources: [
+      { label: "Bande-annonce officielle de la version 1.8 (20 novembre 2026)", url: SRC_V18_PV },
+      { label: "Archives et dialogues du jeu, version 1.7" },
+    ],
+  },
+];
 
 const bySlug = new Map(UPCOMING_CHARACTERS.map((c) => [c.slug, c] as const));
 

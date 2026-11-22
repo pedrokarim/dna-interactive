@@ -10,6 +10,7 @@ import { desc, eq } from "drizzle-orm";
 import { getTranslations } from "next-intl/server";
 import { getDb, schema } from "@/db";
 import { getAllCharacters, getCharacterById } from "@/lib/characters/catalog";
+import { getUpcomingCharacter } from "@/lib/characters/upcoming";
 import { getBannerDetail } from "@/lib/cosmetics/banners";
 import {
   getAllCosmetics,
@@ -176,6 +177,21 @@ export async function resolvePageOg(locale: string, segments: string[], origin: 
   if (first === "confidentialite" && !second) {
     const t = await getTranslations({ locale, namespace: "privacy" });
     return { eyebrow: "DNA Interactive", title: t("metaTitle").replace(/ - DNA Interactive$/, ""), subtitle: t("metaDescription"), hex: GOLD, media: latestPortraits(ctx) };
+  }
+
+  // Un perso annoncé n'a pas d'image de fiche tant qu'il n'est pas au catalogue.
+  if (first === "characters" && second && !third) {
+    const upcoming = getUpcomingCharacter(second);
+    if (!upcoming) return null;
+    const t = await getTranslations({ locale, namespace: "upcomingStrip" });
+    const url = img(ctx, upcoming.portrait, 640);
+    return {
+      eyebrow: t("version", { version: upcoming.version }),
+      title: upcoming.name,
+      subtitle: locale === "fr" ? upcoming.subtitle : upcoming.subtitleEn,
+      hex: getElement(upcoming.element).hex,
+      media: url ? { kind: "portrait", url } : null,
+    };
   }
 
   if (first === "map" && second && !third) {

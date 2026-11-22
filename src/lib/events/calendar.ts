@@ -2,7 +2,7 @@
  * Calendrier des événements de Duet Night Abyss : la liste curée et la logique
  * pure de la frise.
  *
- * Liste tenue à la main (versions 1.5 à 1.7), à mettre à jour à chaque version.
+ * Liste tenue à la main (versions 1.5 à 1.8), à mettre à jour à chaque version.
  * Les dates viennent des notes de version officielles et des annonces du compte
  * officiel du jeu. Les événements de la 1.4 et ceux de la 1.5 finis avant le
  * 20 août ne sont plus dans la liste, ils restent en base. Aucune source tierce
@@ -23,6 +23,10 @@
  * 1.7 « Towards the Dawn » (sortie le 20 octobre 2026) : périodes tirées des
  * notes de version. Le programme annoncé avant la sortie est dans
  * `docs/version-1-7-towards-the-dawn.md`.
+ *
+ * 1.8 « Where the Whistle Calls » (1er décembre 2026) : la bande-annonce ne date
+ * que la sortie. Les autres événements attendent le calendrier de version. La
+ * connexion du 24 novembre vient des données du jeu (`EventMain` 101021).
  *
  * La frise défile sans borne : une plage rendue (`rangeStart` + nombre de
  * jours) qui s'agrandit quand on touche un bord, une échelle en px/jour qui
@@ -95,6 +99,10 @@ const SRC_V17_COSMETICS = "https://x.com/DNAbyss_EN/status/2116017253359694208";
 const SRC_V17_EVERMORE = "https://x.com/DNAbyss_EN/status/2116742027698151700";
 /** Notes de version officielles 1.7 « Towards the Dawn » (source de toutes les dates 1.7). */
 const SRC_V17 = "https://steamcommunity.com/games/3950020/announcements/detail/692023294602250674";
+/** Correctif officiel des notes : Nocturnal Echoes bascule à 05:00, le reste à 10:00. */
+const SRC_V17_ROTATION_FIX = "https://x.com/DNAbyss_EN/status/2119682410564784321";
+/* Annonces de la version 1.8 « Where the Whistle Calls ». */
+const SRC_V18_PV = "https://x.com/DNAbyss_EN/status/2123597203490935100";
 
 export const CATEGORIES: EventCategory[] = ["Bannière", "Arme", "Événement", "Épreuve", "Récompense"];
 
@@ -116,6 +124,7 @@ export const GAME_VERSIONS: GameVersion[] = [
   { version: "1.5", name: "Paradise Prelude", start: "2026-07-28" },
   { version: "1.6", name: "Paradise's 22nd White Bunny", start: "2026-09-08" },
   { version: "1.7", name: "Towards the Dawn", start: "2026-10-20" },
+  { version: "1.8", name: "Where the Whistle Calls", start: "2026-12-01" },
 ];
 
 /** Version en cours à une date donnée, `null` avant la première version connue. */
@@ -235,7 +244,7 @@ export const CALENDAR_EVENTS: CalendarEvent[] = [
      sont des bannières de skins. */
   { id: "a-flame-rekindled", title: "A Flame Rekindled – connexion", category: "Récompense", start: "2026-10-15", end: "2026-10-27", image: "/assets/events/a-flame-rekindled.webp", description: "Connexion d'avant-version de « Towards the Dawn » : connecte-toi 5 jours différents pour des Sabliers immaculés, des Indices de Mandat scellé, des Carmine Globules, des Luno Memento et des pièces (fin le 27 octobre à 05:00 UTC+8).", sourceUrl: SRC_V17_FLAME_REKINDLED },
   { id: "immersive-theatre-flamewrought", title: "Immersive Theatre : « Rhythm: Flamewrought »", category: "Événement", start: "2026-10-20", end: "2026-11-10", href: "/characters/rhythm-flamewrought", image: "/assets/events/immersive-theatre-flamewrought.webp", description: "Rotation du théâtre immersif : récupère les Secret Letters de Rhythm: Flamewrought et de « Blessed Burden » en jouant le Répertoire à l'affiche, avant la bascule du 10 novembre à 10:00 UTC+8. Flamewrought s'achète aussi en boutique.", sourceUrl: SRC_V17 },
-  { id: "nocturnal-echoes-falsi", title: "Nocturnal Echoes : Falsi & Stifled Howl", category: "Événement", start: "2026-10-20", end: "2026-11-10", href: "/characters/falsi", image: "/assets/worldview/worldview-1-6-1.webp", description: "Rotation de Nocturnal Echoes : le calendrier officiel met en avant les Secret Letters de Falsi et de « Stifled Howl ». Les récompenses tournent chaque mardi, sans remise à zéro de la progression hebdomadaire ; celles de Yuming, « Venial Sinscales » et « Cloudveil Unfurl » quittent le mode le 10 novembre à 10:00 UTC+8.", sourceUrl: SRC_V17_CALENDAR },
+  { id: "nocturnal-echoes-falsi", title: "Nocturnal Echoes : Falsi & Stifled Howl", category: "Événement", start: "2026-10-20", end: "2026-11-10", href: "/characters/falsi", image: "/assets/worldview/worldview-1-6-1.webp", description: "Rotation de Nocturnal Echoes : le calendrier officiel met en avant les Secret Letters de Falsi et de « Stifled Howl ». Les récompenses tournent chaque mardi, sans remise à zéro de la progression hebdomadaire ; celles de Yuming, « Venial Sinscales » et « Cloudveil Unfurl » quittent le mode le 10 novembre à 05:00 UTC+8.", sourceUrl: SRC_V17_CALENDAR },
   { id: "secret-letter-shop-zhiliu", title: "Secret Letter Shop : Zhiliu & Eternal Farewell", category: "Événement", start: "2026-10-20", end: "2026-11-10", href: "/characters/zhiliu", image: "/assets/worldview/worldview-1-3-1.webp", description: "Rotation du Secret Letter Shop : le calendrier officiel met en avant les Secret Letters de Zhiliu et d'« Eternal Farewell », échangeables en permanence.", sourceUrl: SRC_V17_CALENDAR },
   { id: "blessed-burden", title: "Blessed Burden – arme de Flamewrought", category: "Arme", start: "2026-10-20", end: "2026-11-10", href: "/items/weapons/weapons-20306", image: "/assets/events/blessed-burden.webp", description: "Lance-grenades de Rhythm: Flamewrought, permanent dès la mise à jour (forge ou boutique). Ses Secret Letters sont au Memento du théâtre immersif jusqu'au 10 novembre à 10:00 UTC+8.", sourceUrl: SRC_V17 },
   { id: "threads-between-reverie", title: "Threads Between Reverie – skin de Flamewrought", category: "Bannière", start: "2026-10-20", end: "2026-11-30", href: "/characters/rhythm-flamewrought", image: "/assets/events/threads-between-reverie.webp", description: "Myriad limitée de la version 1.7 : la tenue « Veil In Shadows » de Rhythm: Flamewrought (fin le 30 novembre à 17:00 UTC+8).", sourceUrl: SRC_V17 },
@@ -255,13 +264,15 @@ export const CALENDAR_EVENTS: CalendarEvent[] = [
   { id: "immersive-theatre-ensemble-v17", title: "Immersive Theatre : Ensemble Act (1.7)", category: "Événement", start: "2026-11-06", end: "2026-12-03", image: "/assets/worldview/worldview-1-4-5.webp", description: "Co-op du théâtre immersif : montez ensemble sur scène et menez la représentation jusqu'à son final (fin le 3 décembre à 17:00 UTC+8).", sourceUrl: SRC_V17 },
   { id: "endless-enigma", title: "Endless Enigma – arme de calamité", category: "Arme", start: "2026-11-10", end: "2026-11-30", href: "/items/weapons/weapons-10199", image: "/assets/events/endless-enigma.webp", description: "Rotation « Blueprint : Endless Enigma » du théâtre immersif. Dès le 10 novembre à 10:00 UTC+8, le Blueprint et le Prototype de cette épée de calamité entrent définitivement au Memento (rotation jusqu'au 30 novembre à 17:00).", sourceUrl: SRC_V17 },
   { id: "the-hatters-banquet", title: "The Hatter's Banquet – arc", category: "Arme", start: "2026-11-10", end: "2026-11-30", href: "/items/weapons/weapons-20605", image: "/assets/worldview/worldview-3.webp", description: "Nouvel arc long, permanent dès le 10 novembre à 10:00 UTC+8 (forge ou boutique). Ses Secret Letters se gagnent dans Nocturnal Echoes.", sourceUrl: SRC_V17 },
-  { id: "nocturnal-echoes-flamewrought", title: "Nocturnal Echoes : Flamewrought, Blessed Burden & The Hatter's Banquet", category: "Événement", start: "2026-11-10", end: "2026-11-30", href: "/characters/rhythm-flamewrought", image: "/assets/events/immersive-theatre-flamewrought.webp", description: "Dès le 10 novembre à 10:00 UTC+8, les Secret Letters de Rhythm: Flamewrought, de « Blessed Burden » et de « The Hatter's Banquet » deviennent les récompenses de défi de Nocturnal Echoes.", sourceUrl: SRC_V17 },
+  { id: "nocturnal-echoes-flamewrought", title: "Nocturnal Echoes : Flamewrought, Blessed Burden & The Hatter's Banquet", category: "Événement", start: "2026-11-10", end: "2026-11-30", href: "/characters/rhythm-flamewrought", image: "/assets/events/immersive-theatre-flamewrought.webp", description: "Dès le 10 novembre à 05:00 UTC+8, les Secret Letters de Rhythm: Flamewrought, de « Blessed Burden » et de « The Hatter's Banquet » deviennent les récompenses de défi de Nocturnal Echoes.", sourceUrl: SRC_V17_ROTATION_FIX },
   { id: "secret-letter-shop-yuming", title: "Secret Letter Shop : Yuming, Venial Sinscales & Cloudveil Unfurl", category: "Événement", start: "2026-11-10", end: "2026-11-30", href: "/characters/yuming", image: "/assets/worldview/worldview-1-3-2.webp", description: "Dès le 10 novembre à 10:00 UTC+8, les Secret Letters de Yuming, de « Venial Sinscales » et de « Cloudveil Unfurl » s'échangent en permanence au Secret Letter Shop.", sourceUrl: SRC_V17 },
   { id: "atelier-of-candy-dreams", title: "Atelier of Candy Dreams – skins Lisbell, Truffle & Filbert", category: "Bannière", start: "2026-11-10", end: "2026-12-21", image: "/assets/worldview/worldview-11.webp", description: "Skins de la gamme « Treats Galore » pour Lisbell et pour Truffle et Filbert, et d'autres cosmétiques pendant l'événement (fin le 21 décembre à 17:00 UTC+8).", sourceUrl: SRC_V17 },
   { id: "bountiful-day-v17-p2", title: "Bountiful Day – Partie 2 (1.7)", category: "Événement", start: "2026-11-12", end: "2026-11-19", image: "/assets/events/bountiful-day.webp", description: "Deuxième fenêtre de bonus sur les commissions du Manuel du Noctoyager (fin le 19 novembre à 05:00 UTC+8).", sourceUrl: SRC_V17 },
   { id: "friendly-games", title: "Friendly Games", category: "Épreuve", start: "2026-11-12", end: "2026-11-23", image: "/assets/events/friendly-games.webp", description: "Lulu Lunoloot, à terre, propose de régler ça « entre gens civilisés » : relève son petit défi et le butin est à toi (fin le 23 novembre à 17:00 UTC+8).", sourceUrl: SRC_V17 },
   { id: "phoxhunter-summit-v17", title: "Phoxhunter Summit (1.7)", category: "Épreuve", start: "2026-11-18", end: "2026-12-05", image: "/assets/events/phoxhunter-summit-v17.webp", description: "Épreuve compétitive de fin de version, dans une formule revue (clôture le 5 décembre à 05:00 UTC+8).", sourceUrl: SRC_V17 },
   { id: "wishens-daring-adventures", title: "Wishen's Daring Adventures", category: "Événement", start: "2026-11-19", end: "2026-11-30", image: "/assets/worldview/worldview-6.webp", description: "Des êtres inexplicables réveillent l'envie d'aventure. Prérequis : la quête « Go, Geniemons! » (fin le 30 novembre à 17:00 UTC+8).", sourceUrl: SRC_V17 },
+  { id: "where-the-whistle-calls-login", title: "Where the Whistle Calls – connexion", category: "Récompense", start: "2026-11-24", end: "2026-12-05", href: "/characters/katya", image: "/assets/events/where-the-whistle-calls-login.webp", description: "Connexion d'avant-version de la 1.8 : connecte-toi 5 jours différents pour réclamer les récompenses. Du 24 novembre à 10:00 au 5 décembre à 17:00 UTC+8, selon les données du jeu ; le studio n'a pas encore publié ces dates." },
+  { id: "version-1-8-launch", title: "Version 1.8 : Where the Whistle Calls", category: "Événement", start: "2026-12-01", end: "2026-12-01", href: "/characters/katya", image: "/assets/events/where-the-whistle-calls.webp", description: "Sortie de la version 1.8 avec Katya, gratuite au théâtre immersif, sa Myriad « Frightful Grins » et le katana de calamité « Unfathomed Zenith ». Les périodes des événements de la version ne sont pas encore publiées.", sourceUrl: SRC_V18_PV },
 ];
 
 /* --------------------------------------------------------------- helpers date */

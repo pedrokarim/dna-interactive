@@ -42,8 +42,8 @@ export async function generateMetadata(
   if (upcoming) {
     return generatePageMetadata(
       {
-        title: `${upcoming.name} - ${ELEMENT_LABEL[upcoming.element] ?? upcoming.element} a venir en ${upcoming.version}`,
-        description: `Tout ce que l'on sait de ${upcoming.name} dans Duet Night Abyss avant sa sortie : element, armes, statistiques de base, kit et role dans l'histoire.`,
+        title: `${upcoming.name} - ${ELEMENT_LABEL[upcoming.element] ?? upcoming.element} à venir en ${upcoming.version}`,
+        description: `${upcoming.name} arrive dans Duet Night Abyss en version ${upcoming.version} : élément, faction, obtention et histoire du personnage avant sa sortie.`,
         path: `/characters/${upcoming.slug}`,
         keywords: [
           "Duet Night Abyss",

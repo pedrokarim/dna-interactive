@@ -316,7 +316,9 @@ export function UpcomingCharacterPage({
                       confidence="dataMined"
                     />
                   ) : null}
-                  <Row label="Apparences" value={`${character.skinCount}`} confidence="dataMined" />
+                  {character.skinCount ? (
+                    <Row label="Apparences" value={`${character.skinCount}`} confidence="dataMined" />
+                  ) : null}
                   {character.skinNames?.length ? (
                     <Row label="Skin de bannière" value={character.skinNames.join(", ")} confidence="announced" />
                   ) : null}
