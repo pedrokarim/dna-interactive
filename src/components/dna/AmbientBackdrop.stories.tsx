@@ -1,14 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
+import { ASSETS_PATHS } from "@/lib/constants";
 import { DnaAmbientBackdrop } from "./AmbientBackdrop";
 
-const FRAMES = [
-  "/assets/wallpapers/twin-eclipse.webp",
-  "/assets/wallpapers/gilded-nocturne.webp",
-  "/assets/wallpapers/abyss-cartographer.webp",
-  "/assets/wallpapers/vermilion-abyss.webp",
-  "/assets/wallpapers/astral-snow.webp",
-  "/assets/wallpapers/abyssal-carnival.webp",
-] as const;
+const FRAMES = ASSETS_PATHS.worldview.filter((src) => src.startsWith("/assets/worldview/"));
 
 const meta = {
   title: "DNA/Conteneurs/AmbientBackdrop",

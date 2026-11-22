@@ -226,9 +226,9 @@ body {
 :root[data-theme="light"] [data-rarity="5"] { --rarity-text: #7a5a1e; --rarity-line: #9c7845; }
 :root[data-theme="light"] [data-rarity="6"] { --rarity-text: #9c3a42; --rarity-line: #8a464b; }
 
-/* Fond atmosphérique : les illustrations sont peintes sur papier ivoire. En
-   thème clair elles n'ont donc presque rien à corriger — c'est le thème sombre
-   qui devait les éteindre. Le voile s'inverse avec elles. */
+/* Fond atmosphérique : les panoramiques du jeu sont sombres (luminosité
+   moyenne 89/255). En thème clair, on les éclaircit et on les adoucit pour
+   qu'ils ne fassent pas de taches sur l'ivoire. Le voile s'inverse avec eux. */
 :root[data-theme="light"] .dna-ambient {
   /* Deux tiers de l'intensité du thème sombre : sur l'ivoire, le décor part du
      même ton que la page et se lit donc beaucoup plus vite. */
@@ -238,7 +238,7 @@ body {
 :root[data-theme="light"] .dna-ambient[data-intensity="bold"] { --dna-ambient-max: 0.42; }
 
 :root[data-theme="light"] .dna-ambient-image {
-  filter: brightness(1.02) saturate(0.9) contrast(0.94) blur(1.5px);
+  filter: brightness(1.6) saturate(0.8) contrast(0.8) blur(1.5px);
 }
 
 :root[data-theme="light"] .dna-ambient-veil {
@@ -454,6 +454,13 @@ body:has(.map-page) .grecaptcha-badge {
 .font-caps.uppercase:not(:has(*)),
 .dna-optical-caps { position: relative; top: 0.1em; }
 
+/* Capitales dans un cadre (badge, étiquette) : c'est le texte qui descend dans
+   sa boîte, pas la boîte. La règle générale ci-dessus déplaçait le badge
+   entier, bordure comprise, et l'encre restait en haut : 6,25 px au-dessus,
+   8,75 px en dessous sur `DnaTag` (Cinzel 9,28 px, mesuré à ×3). Avec 0,135 em,
+   l'écart tombe à un pixel d'écran, kana compris. */
+.dna-boxed-caps { position: relative; top: 0.135em; }
+
 /* Chiffres seuls dans une pastille ronde (compteurs de notifications). */
 .dna-optical-num { position: relative; top: 0.07em; }
 
@@ -601,10 +608,10 @@ body:has(.map-page) .grecaptcha-badge {
   height: 100%;
   width: 100%;
   object-fit: cover;
-  /* Les visuels sont peints sur papier ivoire : tels quels, ils éclairciraient
-     toute la page. On les ramène au niveau de l'encre du site, en gardant les
-     encres cobalt / safran / cramoisi lisibles. */
-  filter: brightness(0.34) saturate(1.25) contrast(1.12) blur(1.5px);
+  /* Panoramiques officiels du jeu, déjà sombres (89/255 en moyenne, de 32 à
+     146) : on les ramène au niveau de l'encre du site sans les éteindre. Les
+     anciennes illustrations sur ivoire (196/255) demandaient 0.34. */
+  filter: brightness(0.72) saturate(1.1) contrast(1.05) blur(1.5px);
   transform: scale(1.06);
 }
 

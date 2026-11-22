@@ -48,23 +48,14 @@ const NAV_ICONS: Record<string, LucideIcon | typeof DiscordIcon | typeof XIcon> 
 /* ------------------------------------------------------- fond atmosphérique */
 
 /**
- * Visuels du fond, dans leur ordre de passage.
- *
- * Des illustrations faites pour le site (voir docs/wallpapers-fond-ambiant.md)
- * et pas des captures du jeu : on ne veut pas que le fond ressemble à un
- * diaporama des visuels officiels.
+ * Visuels du fond, dans leur ordre de passage : les panoramiques officiels du
+ * jeu (worldview), les plus récents d'abord. Même liste que
+ * `ASSETS_PATHS.worldview`, sans le fond de la 1.3 qui n'en est pas un.
  *
  * Constante de module : la liste sert de dépendance à l'horloge du composant
  * et doit garder la même identité d'un rendu à l'autre.
  */
-const AMBIENT_FRAMES = [
-  "/assets/wallpapers/twin-eclipse.webp",
-  "/assets/wallpapers/gilded-nocturne.webp",
-  "/assets/wallpapers/abyss-cartographer.webp",
-  "/assets/wallpapers/vermilion-abyss.webp",
-  "/assets/wallpapers/astral-snow.webp",
-  "/assets/wallpapers/abyssal-carnival.webp",
-] as const;
+const AMBIENT_FRAMES = ASSETS_PATHS.worldview.filter((src) => src.startsWith("/assets/worldview/"));
 
 /* --------------------------------------------------- persistance état sidebar */
 

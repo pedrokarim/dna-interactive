@@ -179,12 +179,12 @@ Deux pièges méthodologiques rencontrés :
 
 ## Le fond ambiant
 
-Les illustrations de fond (cf. [wallpapers-fond-ambiant.md](./wallpapers-fond-ambiant.md))
-sont peintes sur papier ivoire. En thème sombre, il faut les éteindre
-(`brightness(0.34)`) ; en clair, elles n'ont presque rien à corriger — mais
-elles ressortent bien plus, puisqu'elles partent du même ton que la page. Leur
-opacité maximale descend donc de `0.5` à `0.3`, et le voile s'inverse avec
-elles.
+Le fond fait défiler les panoramiques officiels du jeu (worldview), sombres :
+luminosité moyenne 89/255. En thème sombre, `brightness(0.72)` les ramène au
+niveau de l’encre du site ; en clair, `brightness(1.6)`, une saturation et un
+contraste réduits les éclaircissent pour qu’ils ne fassent pas de taches sur
+l’ivoire. Leur opacité maximale descend de `0.5` à `0.3`, et le voile
+s’inverse avec eux.
 
 ## Le back-office
 

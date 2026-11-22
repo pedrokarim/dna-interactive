@@ -139,7 +139,7 @@ export function DnaAmbientBackdrop({
                 src={src}
                 alt=""
                 fill
-                // Assombri à 34 % et flouté (`.dna-ambient-image`) : 80 % de la
+                // Assombri et flouté (`.dna-ambient-image`) : 80 % de la
                 // largeur d'écran suffisent, 1 200 px au lieu de 1 920 en 1 440.
                 sizes="80vw"
                 quality={70}

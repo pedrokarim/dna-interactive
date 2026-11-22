@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { Children, type ReactNode } from "react";
 import { cn } from "./cn";
 
 export type DnaTagProps = {
@@ -6,6 +6,12 @@ export type DnaTagProps = {
   tone?: "gold" | "crimson";
   className?: string;
 };
+
+/** Vrai si l'étiquette ne contient que du texte (une ou plusieurs chaînes, nombres). */
+function isPlainText(children: ReactNode): boolean {
+  const parts = Children.toArray(children);
+  return parts.length > 0 && parts.every((part) => typeof part === "string" || typeof part === "number");
+}
 
 /** Étiquette compacte (rôle, mot-clé, statut). */
 export function DnaTag({ children, tone = "gold", className }: DnaTagProps) {
@@ -19,7 +25,13 @@ export function DnaTag({ children, tone = "gold", className }: DnaTagProps) {
         className,
       )}
     >
-      {children}
+      {/* Texte seul : il descend dans le cadre (`.dna-boxed-caps`). Avec une
+          icône, on ne touche à rien, sinon l'icône descendrait aussi. */}
+      {isPlainText(children) ? (
+        <span className="dna-boxed-caps">{children}</span>
+      ) : (
+        children
+      )}
     </span>
   );
 }
