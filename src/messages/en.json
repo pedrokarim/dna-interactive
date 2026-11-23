@@ -287,7 +287,18 @@
     "countdownVersion": "Version {versionName}",
     "countdownBanner": "Myriad banner “{bannerName}”",
     "metaTitle": "{name} - upcoming {element} character in {version}",
-    "metaDescription": "{name} arrives in Duet Night Abyss with version {version}: element, faction, how to get the character and story before release."
+    "metaDescription": "{name} arrives in Duet Night Abyss with version {version}: element, faction, how to get the character and story before release.",
+    "cosmeticsTitle": "Announced cosmetics",
+    "kindOutfit": "Outfit",
+    "kindWeaponSkin": "Weapon skin",
+    "cosmeticOutfit": "Exclusive outfit from the “{banner}” Myriad.",
+    "cosmeticOutfitPlain": "Character outfit.",
+    "cosmeticUpgrade": "The trailer also shows its upgraded version.",
+    "cosmeticWeaponSkin": "Weapon skin shown in the version trailer.",
+    "shotArt": "Myriad artwork",
+    "shotInGame": "In game",
+    "shotUpgrade": "Upgraded version",
+    "cosmeticsSource": "Images from the official version {version} trailer."
   },
   "community": {
     "streamerName": "Velkaine",

@@ -39,6 +39,20 @@ export type UpcomingSkill = {
 };
 
 /**
+ * Cosmétique montré par le studio avant la sortie. Les noms sont les noms
+ * officiels anglais, identiques dans toutes les langues tant que le jeu ne les
+ * a pas traduits ; les légendes viennent de `upcomingPage`.
+ */
+export type UpcomingCosmetic = {
+  name: string;
+  kind: "outfit" | "weaponSkin";
+  /** Myriad dont la tenue est l'exclusivité, quand l'annonce le précise. */
+  banner?: string;
+  /** Plans recadrés de la bande-annonce, dans `public/assets/upcoming/`. */
+  images: { src: string; shot: "art" | "inGame" | "upgrade" }[];
+};
+
+/**
  * Tout ce qui se lit sur la fiche, dans une langue. Les noms propres (nom,
  * titre, faction) et l'histoire viennent du jeu dans chaque langue ; sans
  * texte du jeu dans une langue, on reprend le nom anglais et on traduit le
@@ -115,6 +129,8 @@ export type UpcomingCharacter = {
   ascensionItems?: { thought: string; sigil: string };
   /** Identifiants des compétences déclarées dans `BattleChar.SkillList`. */
   skillIds: number[];
+  /** Tenues et skins d'arme montrés dans les annonces, avec leurs visuels. */
+  cosmetics?: UpcomingCosmetic[];
 };
 
 /** Bande-annonce officielle de la 1.8, d'où viennent la date, l'obtention et les visuels. */
@@ -163,6 +179,25 @@ export const UPCOMING_CHARACTERS: UpcomingCharacter[] = [
     skinNames: ["Darling Disaster"],
     voiceActorEn: "Holly Earl",
     skillIds: [320301, 320311, 320302, 320303],
+    // PV 1.8 : « Darling Disaster – Katya » sur l'écran de la Myriad, puis
+    // « Exclusive Skin », « Upgrade Showcase » et « Weapon Skin: Count Dracupurr ».
+    cosmetics: [
+      {
+        name: "Darling Disaster",
+        kind: "outfit",
+        banner: "Frightful Grins",
+        images: [
+          { src: "/assets/upcoming/katya-darling-disaster-art.webp", shot: "art" },
+          { src: "/assets/upcoming/katya-darling-disaster.webp", shot: "inGame" },
+          { src: "/assets/upcoming/katya-darling-disaster-upgrade.webp", shot: "upgrade" },
+        ],
+      },
+      {
+        name: "Count Dracupurr",
+        kind: "weaponSkin",
+        images: [{ src: "/assets/upcoming/katya-count-dracupurr.webp", shot: "inGame" }],
+      },
+    ],
     text: {
       fr: {
         name: "Katya",

@@ -287,7 +287,18 @@
     "countdownVersion": "バージョン「{versionName}」",
     "countdownBanner": "Myriadガチャ「{bannerName}」",
     "metaTitle": "{name} - バージョン{version}で登場予定の{element}キャラクター",
-    "metaDescription": "{name}はバージョン{version}でDuet Night Abyssに登場。実装前に属性、所属、入手方法、ストーリーをまとめています。"
+    "metaDescription": "{name}はバージョン{version}でDuet Night Abyssに登場。実装前に属性、所属、入手方法、ストーリーをまとめています。",
+    "cosmeticsTitle": "発表済みの衣装",
+    "kindOutfit": "衣装",
+    "kindWeaponSkin": "武器スキン",
+    "cosmeticOutfit": "Myriadガチャ「{banner}」限定の衣装。",
+    "cosmeticOutfitPlain": "キャラクター衣装。",
+    "cosmeticUpgrade": "PVでは強化版も公開されています。",
+    "cosmeticWeaponSkin": "バージョンPVで公開された武器スキン。",
+    "shotArt": "Myriadガチャのイラスト",
+    "shotInGame": "ゲーム内",
+    "shotUpgrade": "強化版",
+    "cosmeticsSource": "画像はバージョン{version}公式PVより。"
   },
   "community": {
     "streamerName": "Velkaine",

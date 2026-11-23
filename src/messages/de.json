@@ -287,7 +287,18 @@
     "countdownVersion": "Version {versionName}",
     "countdownBanner": "Myriad-Banner „{bannerName}“",
     "metaTitle": "{name} - {element}, erscheint in {version}",
-    "metaDescription": "{name} kommt mit Version {version} zu Duet Night Abyss: Element, Fraktion, Erhalt und Geschichte vor dem Release."
+    "metaDescription": "{name} kommt mit Version {version} zu Duet Night Abyss: Element, Fraktion, Erhalt und Geschichte vor dem Release.",
+    "cosmeticsTitle": "Angekündigte Kosmetik",
+    "kindOutfit": "Outfit",
+    "kindWeaponSkin": "Waffen-Skin",
+    "cosmeticOutfit": "Exklusives Outfit des Myriad-Banners „{banner}“.",
+    "cosmeticOutfitPlain": "Outfit des Charakters.",
+    "cosmeticUpgrade": "Der Trailer zeigt auch die verbesserte Version.",
+    "cosmeticWeaponSkin": "Waffen-Skin aus dem Trailer der Version.",
+    "shotArt": "Myriad-Artwork",
+    "shotInGame": "Im Spiel",
+    "shotUpgrade": "Verbesserte Version",
+    "cosmeticsSource": "Bilder aus dem offiziellen Trailer zu Version {version}."
   },
   "community": {
     "streamerName": "Velkaine",

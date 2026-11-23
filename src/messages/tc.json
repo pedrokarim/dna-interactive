@@ -287,7 +287,18 @@
     "countdownVersion": "版本「{versionName}」",
     "countdownBanner": "Myriad 卡池「{bannerName}」",
     "metaTitle": "{name} - {version} 版本即將登場的{element}角色",
-    "metaDescription": "{name} 將於 {version} 版本登場 Duet Night Abyss：上線前整理元素、陣營、獲取方式與故事。"
+    "metaDescription": "{name} 將於 {version} 版本登場 Duet Night Abyss：上線前整理元素、陣營、獲取方式與故事。",
+    "cosmeticsTitle": "已公布外觀",
+    "kindOutfit": "外觀",
+    "kindWeaponSkin": "武器外觀",
+    "cosmeticOutfit": "Myriad 卡池「{banner}」限定外觀。",
+    "cosmeticOutfitPlain": "角色外觀。",
+    "cosmeticUpgrade": "PV 中也公開了強化版本。",
+    "cosmeticWeaponSkin": "版本 PV 中公開的武器外觀。",
+    "shotArt": "Myriad 卡池插圖",
+    "shotInGame": "遊戲內",
+    "shotUpgrade": "強化版本",
+    "cosmeticsSource": "圖片取自 {version} 版本官方 PV。"
   },
   "community": {
     "streamerName": "Velkaine",

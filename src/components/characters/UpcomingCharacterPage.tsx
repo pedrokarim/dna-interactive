@@ -19,6 +19,7 @@ import {
   statAtLevel,
   type UpcomingCharacter,
   type UpcomingConfidence,
+  type UpcomingCosmetic,
 } from "@/lib/characters/upcoming";
 import { getWeaponType, weaponTypeName } from "@/lib/characters/weapon-proficiency";
 import { UpcomingCountdown } from "./UpcomingCountdown";
@@ -213,6 +214,18 @@ export async function UpcomingCharacterPage({
               </DnaPanel>
             </section>
 
+            {character.cosmetics?.length ? (
+              <section>
+                <DnaSectionMark>{t("cosmeticsTitle")}</DnaSectionMark>
+                <DnaPanel className="mt-3 flex flex-col gap-6 p-5">
+                  {character.cosmetics.map((cosmetic) => (
+                    <CosmeticBlock key={cosmetic.name} cosmetic={cosmetic} t={t} />
+                  ))}
+                  <p className="font-sans text-xs text-muted-2">{t("cosmeticsSource", { version: character.version })}</p>
+                </DnaPanel>
+              </section>
+            ) : null}
+
             <section>
               <DnaSectionMark>{t("skillsTitle")}</DnaSectionMark>
               <DnaPanel className="mt-3 p-5">
@@ -361,6 +374,55 @@ export async function UpcomingCharacterPage({
             </section>
           </aside>
         </div>
+      </div>
+    </div>
+  );
+}
+
+const SHOT_KEYS = { art: "shotArt", inGame: "shotInGame", upgrade: "shotUpgrade" } as const;
+
+/**
+ * Une tenue ou un skin d'arme annoncé : nom, ce qu'en dit l'annonce, plans du
+ * PV. Le premier visuel prend toute la largeur quand il y en a plusieurs.
+ */
+function CosmeticBlock({ cosmetic, t }: { cosmetic: UpcomingCosmetic; t: Translate }) {
+  const isOutfit = cosmetic.kind === "outfit";
+  const description = isOutfit
+    ? cosmetic.banner
+      ? t("cosmeticOutfit", { banner: cosmetic.banner })
+      : t("cosmeticOutfitPlain")
+    : t("cosmeticWeaponSkin");
+  const hasUpgrade = cosmetic.images.some((image) => image.shot === "upgrade");
+  const single = cosmetic.images.length === 1;
+
+  return (
+    <div className={cn("grid gap-4", single && "sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] sm:items-center")}>
+      <div className="min-w-0">
+        <div className="flex flex-wrap items-center gap-2">
+          <h3 className="font-display text-xl text-parch">{cosmetic.name}</h3>
+          <DnaTag>{isOutfit ? t("kindOutfit") : t("kindWeaponSkin")}</DnaTag>
+          <ConfidenceBadge level="announced" t={t} />
+        </div>
+        <p className="mt-1.5 font-sans text-sm text-muted">
+          {description}
+          {hasUpgrade ? ` ${t("cosmeticUpgrade")}` : null}
+        </p>
+      </div>
+      <div className={cn("grid min-w-0 gap-3", !single && "sm:grid-cols-2")}>
+        {cosmetic.images.map((image, index) => (
+          <figure key={image.src} className={cn("min-w-0", !single && index === 0 && "sm:col-span-2")}>
+            <div className="relative aspect-video w-full overflow-hidden border border-line/25 bg-panel">
+              <Image
+                src={image.src}
+                alt={`${cosmetic.name} – ${t(SHOT_KEYS[image.shot])}`}
+                fill
+                sizes={!single && index === 0 ? "(min-width: 1024px) 44rem, 100vw" : "(min-width: 1024px) 22rem, 100vw"}
+                className="object-cover"
+              />
+            </div>
+            <figcaption className="mt-1.5 font-sans text-xs text-muted-2">{t(SHOT_KEYS[image.shot])}</figcaption>
+          </figure>
+        ))}
       </div>
     </div>
   );

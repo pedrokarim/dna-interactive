@@ -287,7 +287,18 @@
     "countdownVersion": "버전 「{versionName}」",
     "countdownBanner": "Myriad 배너 「{bannerName}」",
     "metaTitle": "{name} - 버전 {version} 출시 예정 {element} 캐릭터",
-    "metaDescription": "{name}이(가) 버전 {version}에서 Duet Night Abyss에 출시됩니다. 출시 전 속성, 소속, 획득 방법, 스토리를 정리했습니다."
+    "metaDescription": "{name}이(가) 버전 {version}에서 Duet Night Abyss에 출시됩니다. 출시 전 속성, 소속, 획득 방법, 스토리를 정리했습니다.",
+    "cosmeticsTitle": "공개된 의상",
+    "kindOutfit": "의상",
+    "kindWeaponSkin": "무기 스킨",
+    "cosmeticOutfit": "Myriad 배너 「{banner}」 한정 의상입니다.",
+    "cosmeticOutfitPlain": "캐릭터 의상입니다.",
+    "cosmeticUpgrade": "PV에서는 강화 버전도 공개되었습니다.",
+    "cosmeticWeaponSkin": "버전 PV에서 공개된 무기 스킨입니다.",
+    "shotArt": "Myriad 배너 일러스트",
+    "shotInGame": "게임 내",
+    "shotUpgrade": "강화 버전",
+    "cosmeticsSource": "이미지 출처: 버전 {version} 공식 PV."
   },
   "community": {
     "streamerName": "Velkaine",
