@@ -32,14 +32,6 @@
             "FR": "Duree +30%. CRITs donnent un buff aleatoire aux allies.",
             "EN": "Duration +30%. CRITs randomly grant allies a buff."
           }
-        },
-        {
-          "itemId": "weapons-20205",
-          "rank": "alternative",
-          "note": {
-            "FR": "Alternative a distance.",
-            "EN": "Ranged alternative."
-          }
         }
       ]
     },
@@ -224,14 +216,6 @@
           "note": {
             "FR": "Duree +30%. CRITs donnent un buff aleatoire aux allies.",
             "EN": "Duration +30%. CRITs randomly grant allies a buff."
-          }
-        },
-        {
-          "itemId": "weapons-20205",
-          "rank": "alternative",
-          "note": {
-            "FR": "Alternative a distance.",
-            "EN": "Ranged alternative."
           }
         }
       ]

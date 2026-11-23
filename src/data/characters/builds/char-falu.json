@@ -16,14 +16,6 @@
           }
         },
         {
-          "itemId": "weapons-10204",
-          "rank": "alternative",
-          "note": {
-            "FR": "Le repli à privilégier tant que l'arme signature n'est pas disponible : elle apporte aussi de la Ténacité.",
-            "EN": "The fallback of choice while the signature is unavailable: it also provides Resolve."
-          }
-        },
-        {
           "itemId": "weapons-10301",
           "rank": "alternative",
           "note": {

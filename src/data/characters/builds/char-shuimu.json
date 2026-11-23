@@ -24,22 +24,6 @@
           }
         },
         {
-          "itemId": "weapons-10206",
-          "rank": "alternative",
-          "note": {
-            "FR": "Degats de competence +48%. Option solide.",
-            "EN": "Skill Damage +48%. Solid option."
-          }
-        },
-        {
-          "itemId": "weapons-10103",
-          "rank": "alternative",
-          "note": {
-            "FR": "Option budget 4 etoiles.",
-            "EN": "Budget 4-star option."
-          }
-        },
-        {
           "itemId": "weapons-10403",
           "rank": "alternative",
           "note": {
@@ -54,6 +38,14 @@
             "FR": "Portée de compétence.",
             "EN": "Skill Range."
           }
+        },
+        {
+          "itemId": "weapons-10206",
+          "rank": "alternative",
+          "note": {
+            "FR": "Degats de competence +48%. Option solide.",
+            "EN": "Skill Damage +48%. Solid option."
+          }
         }
       ],
       "ranged": [
@@ -66,11 +58,11 @@
           }
         },
         {
-          "itemId": "weapons-20201",
+          "itemId": "weapons-20604",
           "rank": "alternative",
           "note": {
-            "FR": "Meilleure arme a distance. Degats de competence +48%.",
-            "EN": "Best ranged weapon. Skill Damage +48%."
+            "FR": "Portée de compétence.",
+            "EN": "Skill Range."
           }
         },
         {
@@ -82,19 +74,19 @@
           }
         },
         {
-          "itemId": "weapons-20604",
-          "rank": "alternative",
-          "note": {
-            "FR": "Portée de compétence.",
-            "EN": "Skill Range."
-          }
-        },
-        {
           "itemId": "weapons-20603",
           "rank": "alternative",
           "note": {
             "FR": "Portée de compétence, flèches à tête chercheuse.",
             "EN": "Skill Range, homing arrows."
+          }
+        },
+        {
+          "itemId": "weapons-20201",
+          "rank": "alternative",
+          "note": {
+            "FR": "Meilleure arme a distance. Degats de competence +48%.",
+            "EN": "Best ranged weapon. Skill Damage +48%."
           }
         }
       ]

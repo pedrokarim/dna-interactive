@@ -32,14 +32,6 @@
           }
         },
         {
-          "itemId": "weapons-10202",
-          "rank": "alternative",
-          "note": {
-            "FR": "Troisieme choix.",
-            "EN": "Third pick."
-          }
-        },
-        {
           "itemId": "weapons-10402",
           "rank": "alternative",
           "note": {
@@ -56,11 +48,11 @@
           }
         },
         {
-          "itemId": "weapons-10299",
+          "itemId": "weapons-10304",
           "rank": "alternative",
           "note": {
-            "FR": "Arme de calamité : à ne prendre que si l'arme à distance n'en est pas une, un personnage n'en porte qu'une seule.",
-            "EN": "Calamity weapon: only if the ranged weapon is not one, a character can equip a single one."
+            "FR": "Son ultime ignore l’effet de l’arme de mêlée, sauf sa statistique brute : une arme de Vigueur comme celle-ci en vaut une autre.",
+            "EN": "His ultimate ignores the melee weapon's effect except its flat stat, so a Morale weapon like this one is as good as any."
           }
         }
       ],
@@ -79,6 +71,14 @@
           "note": {
             "FR": "Arme de calamite : Points de Combo et DGT d'arme de melee. Sa maitrise Almighty accepte tout type.",
             "EN": "Calamity weapon: Combo Points and melee weapon damage. His Almighty proficiency accepts any type."
+          }
+        },
+        {
+          "itemId": "weapons-20298",
+          "rank": "alternative",
+          "note": {
+            "FR": "Arme à distance de son build le plus fort. Il ne profite pas de tout son kit, mais l’intègre à sa rotation habituelle.",
+            "EN": "Ranged weapon of his strongest build. He can't use its full kit, but fits it into his regular rotation."
           }
         },
         {
@@ -168,11 +168,11 @@
         }
       },
       {
-        "characterId": "char-baiheng",
-        "role": "Support",
+        "characterId": "char-yuming",
+        "role": "Sub-DPS",
         "note": {
-          "FR": "Soins et gestion de la Lucidite.",
-          "EN": "Healing and Sanity management."
+          "FR": "Apporte la Portée de compétence dont Kezhou a besoin pour Ailes · Inspiration · Vigueur, de la Vigueur avec sa propre pièce Electro, et inflige beaucoup de dégâts.",
+          "EN": "Grants the Skill Range Kezhou needs for Wings - Inspo - Morale, adds Morale through the Electro version of that piece, and deals heavy damage."
         }
       }
     ],
@@ -281,14 +281,6 @@
           }
         },
         {
-          "itemId": "weapons-10202",
-          "rank": "alternative",
-          "note": {
-            "FR": "Troisieme choix.",
-            "EN": "Third pick."
-          }
-        },
-        {
           "itemId": "weapons-10402",
           "rank": "alternative",
           "note": {
@@ -305,11 +297,11 @@
           }
         },
         {
-          "itemId": "weapons-10299",
+          "itemId": "weapons-10304",
           "rank": "alternative",
           "note": {
-            "FR": "Arme de calamité : à ne prendre que si l'arme à distance n'en est pas une, un personnage n'en porte qu'une seule.",
-            "EN": "Calamity weapon: only if the ranged weapon is not one, a character can equip a single one."
+            "FR": "Son ultime ignore l’effet de l’arme de mêlée, sauf sa statistique brute : une arme de Vigueur comme celle-ci en vaut une autre.",
+            "EN": "His ultimate ignores the melee weapon's effect except its flat stat, so a Morale weapon like this one is as good as any."
           }
         }
       ],
@@ -328,6 +320,14 @@
           "note": {
             "FR": "Arme de calamite : Points de Combo et DGT d'arme de melee. Sa maitrise Almighty accepte tout type.",
             "EN": "Calamity weapon: Combo Points and melee weapon damage. His Almighty proficiency accepts any type."
+          }
+        },
+        {
+          "itemId": "weapons-20298",
+          "rank": "alternative",
+          "note": {
+            "FR": "Arme à distance de son build le plus fort. Il ne profite pas de tout son kit, mais l’intègre à sa rotation habituelle.",
+            "EN": "Ranged weapon of his strongest build. He can't use its full kit, but fits it into his regular rotation."
           }
         },
         {
@@ -417,11 +417,11 @@
         }
       },
       {
-        "characterId": "char-baiheng",
-        "role": "Support",
+        "characterId": "char-yuming",
+        "role": "Sub-DPS",
         "note": {
-          "FR": "Soins et gestion de la Lucidite.",
-          "EN": "Healing and Sanity management."
+          "FR": "Apporte la Portée de compétence dont Kezhou a besoin pour Ailes · Inspiration · Vigueur, de la Vigueur avec sa propre pièce Electro, et inflige beaucoup de dégâts.",
+          "EN": "Grants the Skill Range Kezhou needs for Wings - Inspo - Morale, adds Morale through the Electro version of that piece, and deals heavy damage."
         }
       }
     ],

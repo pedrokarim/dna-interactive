@@ -257,19 +257,19 @@
           }
         },
         {
-          "itemId": "weapons-20201",
-          "rank": "alternative",
-          "note": {
-            "FR": "Repli correct si la première n'est pas obtenue.",
-            "EN": "Fine fallback if the first one is not obtained."
-          }
-        },
-        {
           "itemId": "weapons-20203",
           "rank": "alternative",
           "note": {
             "FR": "Durée de compétence, projectiles rebondissants.",
             "EN": "Skill Duration, bouncing projectiles."
+          }
+        },
+        {
+          "itemId": "weapons-20201",
+          "rank": "alternative",
+          "note": {
+            "FR": "Repli correct si la première n'est pas obtenue.",
+            "EN": "Fine fallback if the first one is not obtained."
           }
         }
       ]

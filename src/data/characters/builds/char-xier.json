@@ -426,6 +426,22 @@
             "FR": "Repli correct.",
             "EN": "Solid fallback."
           }
+        },
+        {
+          "itemId": "weapons-10405",
+          "rank": "alternative",
+          "note": {
+            "FR": "Lame de la 1.6, meilleure option de la fiche.",
+            "EN": "1.6 blade, top pick on the sheet."
+          }
+        },
+        {
+          "itemId": "weapons-10204",
+          "rank": "alternative",
+          "note": {
+            "FR": "Meilleure arme de melee de la fiche, malgre le type lance hors de ses maitrises.",
+            "EN": "Top melee pick on the sheet, despite being a polearm and outside her proficiencies."
+          }
         }
       ],
       "ranged": [

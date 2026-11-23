@@ -16,6 +16,14 @@
           }
         },
         {
+          "itemId": "weapons-10604",
+          "rank": "alternative",
+          "note": {
+            "FR": "Portée d'ATQ et dégâts d'attaque normale.",
+            "EN": "ATK Range and Normal Attack damage."
+          }
+        },
+        {
           "itemId": "weapons-10601",
           "rank": "alternative",
           "note": {
@@ -29,14 +37,6 @@
           "note": {
             "FR": "Option polyvalente.",
             "EN": "Versatile option."
-          }
-        },
-        {
-          "itemId": "weapons-10604",
-          "rank": "alternative",
-          "note": {
-            "FR": "Portée d'ATQ et dégâts d'attaque normale.",
-            "EN": "ATK Range and Normal Attack damage."
           }
         },
         {

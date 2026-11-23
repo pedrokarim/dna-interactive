@@ -25,6 +25,11 @@
         "position": 4,
         "itemId": "mods-42006",
         "track": null
+      },
+      {
+        "position": 5,
+        "itemId": "mods-101003",
+        "track": null
       }
     ],
     "affinity": null,
@@ -33,5 +38,8 @@
       "EN": "For a Skill DMG DPS who never attacks with the sword. The four pieces push Trigger Probability past 100%; Trammel – Surplus converts the excess into Overflow Conversion. No track module needed."
     }
   },
-  "note": {}
+  "note": {
+    "FR": "Pour un DPS de dégâts de compétence qui n’attaque jamais à l’épée. Les quatre premières pièces portent la Chance de déclenchement au-delà de 100 % ; Entrave · Débordement convertit l’excédent en Conversion de Surabondance. Floraison d’ombrelames, en case 5, modifie l’Attaque chargée de l’épée. Aucun module de piste.",
+    "EN": "For a Skill DMG DPS who never attacks with the sword. The first four pieces push Trigger Probability past 100%; Trammel – Surplus converts the excess into Overflow Conversion. Swordshadow Bloom, in slot 5, changes the sword's Charged Attack. No track module needed."
+  }
 }

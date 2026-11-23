@@ -253,6 +253,14 @@
             "FR": "Repli accessible.",
             "EN": "Accessible fallback."
           }
+        },
+        {
+          "itemId": "weapons-10101",
+          "rank": "alternative",
+          "note": {
+            "FR": "ATQ du personnage +120%.",
+            "EN": "Character ATK +120%."
+          }
         }
       ],
       "ranged": [
@@ -262,6 +270,14 @@
           "note": {
             "FR": "Monte le niveau de combo au maximum très vite.",
             "EN": "Gets the Combo Level to max very quickly."
+          }
+        },
+        {
+          "itemId": "weapons-20603",
+          "rank": "alternative",
+          "note": {
+            "FR": "Portee et Puissance de competence.",
+            "EN": "Skill Range and Skill Intensity."
           }
         }
       ]

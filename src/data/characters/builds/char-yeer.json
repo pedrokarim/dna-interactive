@@ -16,14 +16,6 @@
           }
         },
         {
-          "itemId": "weapons-10105",
-          "rank": "alternative",
-          "note": {
-            "FR": "Epee compatible. Bonus d'intensite.",
-            "EN": "Sword type match. Intensity bonus."
-          }
-        },
-        {
           "itemId": "weapons-10602",
           "rank": "alternative",
           "note": {
@@ -39,14 +31,6 @@
           "note": {
             "FR": "Degats de competence +48%.",
             "EN": "Skill Damage +48%."
-          }
-        },
-        {
-          "itemId": "weapons-20405",
-          "rank": "alternative",
-          "note": {
-            "FR": "Fusil a pompe compatible. Stats offensives.",
-            "EN": "Shotgun type match. Offensive stats."
           }
         },
         {

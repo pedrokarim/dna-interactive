@@ -16,6 +16,14 @@
           }
         },
         {
+          "itemId": "weapons-10603",
+          "rank": "alternative",
+          "note": {
+            "FR": "ATQ du personnage, et DGT CRIT sur attaque chargée.",
+            "EN": "Character ATK, plus CRIT Damage on Charged Attacks."
+          }
+        },
+        {
           "itemId": "weapons-10303",
           "rank": "alternative",
           "note": {
@@ -30,14 +38,6 @@
             "FR": "Bonus d'ATQ% pour ameliorer les soins.",
             "EN": "ATK% bonus to enhance healing output."
           }
-        },
-        {
-          "itemId": "weapons-10603",
-          "rank": "alternative",
-          "note": {
-            "FR": "ATQ du personnage, et DGT CRIT sur attaque chargée.",
-            "EN": "Character ATK, plus CRIT Damage on Charged Attacks."
-          }
         }
       ],
       "ranged": [
@@ -50,19 +50,19 @@
           }
         },
         {
-          "itemId": "weapons-20501",
-          "rank": "alternative",
-          "note": {
-            "FR": "Duree de competence +36%. Option solide a distance.",
-            "EN": "Skill Duration +36%. Solid ranged option."
-          }
-        },
-        {
           "itemId": "weapons-20599",
           "rank": "alternative",
           "note": {
             "FR": "Arme de calamité : un personnage n'en porte qu'une seule.",
             "EN": "Calamity weapon: a character can equip a single one."
+          }
+        },
+        {
+          "itemId": "weapons-20501",
+          "rank": "alternative",
+          "note": {
+            "FR": "Duree de competence +36%. Option solide a distance.",
+            "EN": "Skill Duration +36%. Solid ranged option."
           }
         }
       ]

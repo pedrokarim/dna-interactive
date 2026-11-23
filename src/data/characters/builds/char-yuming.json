@@ -413,6 +413,30 @@
             "FR": "Meilleure mêlée du build.",
             "EN": "Top melee of the build."
           }
+        },
+        {
+          "itemId": "weapons-10299",
+          "rank": "alternative",
+          "note": {
+            "FR": "Arme de calamité, repli haut de gamme.",
+            "EN": "Calamity weapon, high-end fallback."
+          }
+        },
+        {
+          "itemId": "weapons-10304",
+          "rank": "alternative",
+          "note": {
+            "FR": "Vigueur. Son second effet est réservé aux personnages Electro.",
+            "EN": "Morale. Its second effect is reserved for Electro characters."
+          }
+        },
+        {
+          "itemId": "weapons-10603",
+          "rank": "alternative",
+          "note": {
+            "FR": "Meilleure mêlée du build.",
+            "EN": "Top melee of the build."
+          }
         }
       ],
       "ranged": []
@@ -581,14 +605,6 @@
           }
         },
         {
-          "itemId": "weapons-10603",
-          "rank": "alternative",
-          "note": {
-            "FR": "Meilleure mêlée du build.",
-            "EN": "Top melee of the build."
-          }
-        },
-        {
           "itemId": "weapons-10299",
           "rank": "alternative",
           "potentialOrder": [
@@ -602,6 +618,22 @@
           "note": {
             "FR": "Arme de calamité, repli haut de gamme.",
             "EN": "Calamity weapon, high-end fallback."
+          }
+        },
+        {
+          "itemId": "weapons-10304",
+          "rank": "alternative",
+          "note": {
+            "FR": "Vigueur. Son second effet est réservé aux personnages Electro.",
+            "EN": "Morale. Its second effect is reserved for Electro characters."
+          }
+        },
+        {
+          "itemId": "weapons-10603",
+          "rank": "alternative",
+          "note": {
+            "FR": "Meilleure mêlée du build.",
+            "EN": "Top melee of the build."
           }
         }
       ],

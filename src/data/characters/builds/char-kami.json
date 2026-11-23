@@ -22,6 +22,14 @@
             "FR": "Sans Énigme insoluble : Intensité de compétence, ATQ, Portée de compétence et Vigueur, via la maîtrise supplémentaire de la lance.",
             "EN": "Without Endless Enigma: Skill Intensity, ATK, Skill Range and Morale, through the polearm additional proficiency."
           }
+        },
+        {
+          "itemId": "weapons-10206",
+          "rank": "alternative",
+          "note": {
+            "FR": "Wanewraith - Degats de competence +48%.",
+            "EN": "Wanewraith - Skill Damage +48%."
+          }
         }
       ],
       "ranged": [
@@ -31,6 +39,22 @@
           "note": {
             "FR": "Son arme signature : +5 % de Dégâts de compétence par cumul quand un personnage Pyro inflige des dégâts de compétence. À monter en Multishot.",
             "EN": "Her signature weapon: +5% Skill DMG per stack whenever a Pyro character deals Skill DMG. Build it with Multishot."
+          }
+        },
+        {
+          "itemId": "weapons-20599",
+          "rank": "alternative",
+          "note": {
+            "FR": "Arme de calamité : un personnage n'en porte qu'une seule.",
+            "EN": "Calamity weapon: a character can equip a single one."
+          }
+        },
+        {
+          "itemId": "weapons-20201",
+          "rank": "alternative",
+          "note": {
+            "FR": "Excresduo - Degats de competence +48%. Premiere alternative en attendant l'import de Dregs of Glimmer (BIS, Multishot +75%, Skill DMG +5% par cast jusqu'a 30 stacks) non encore en base.",
+            "EN": "Excresduo - Skill Damage +48%. First alternative while Dregs of Glimmer (BIS, Multishot +75%, Skill DMG +5% per cast up to 30 stacks) is not yet in the database."
           }
         }
       ]
@@ -386,6 +410,14 @@
             "FR": "Sans Énigme insoluble : Intensité de compétence, ATQ, Portée de compétence et Vigueur, via la maîtrise supplémentaire de la lance.",
             "EN": "Without Endless Enigma: Skill Intensity, ATK, Skill Range and Morale, through the polearm additional proficiency."
           }
+        },
+        {
+          "itemId": "weapons-10206",
+          "rank": "alternative",
+          "note": {
+            "FR": "Wanewraith - Degats de competence +48%.",
+            "EN": "Wanewraith - Skill Damage +48%."
+          }
         }
       ],
       "ranged": [
@@ -395,6 +427,22 @@
           "note": {
             "FR": "Prend la tête sur ce build.",
             "EN": "Takes the lead on this build."
+          }
+        },
+        {
+          "itemId": "weapons-20599",
+          "rank": "alternative",
+          "note": {
+            "FR": "Arme de calamité : un personnage n'en porte qu'une seule.",
+            "EN": "Calamity weapon: a character can equip a single one."
+          }
+        },
+        {
+          "itemId": "weapons-20201",
+          "rank": "alternative",
+          "note": {
+            "FR": "Excresduo - Degats de competence +48%. Premiere alternative en attendant l'import de Dregs of Glimmer (BIS, Multishot +75%, Skill DMG +5% par cast jusqu'a 30 stacks) non encore en base.",
+            "EN": "Excresduo - Skill Damage +48%. First alternative while Dregs of Glimmer (BIS, Multishot +75%, Skill DMG +5% per cast up to 30 stacks) is not yet in the database."
           }
         }
       ]

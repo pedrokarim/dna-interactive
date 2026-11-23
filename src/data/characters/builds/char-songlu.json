@@ -16,11 +16,11 @@
           }
         },
         {
-          "itemId": "weapons-10501",
+          "itemId": "weapons-10206",
           "rank": "alternative",
           "note": {
-            "FR": "Arme signature. PV max +100%, synergie parfaite avec le scaling PV de Truffle.",
-            "EN": "Signature weapon. Max HP +100%, perfect synergy with Truffle's HP scaling."
+            "FR": "Puissance de compétence.",
+            "EN": "Skill Intensity."
           }
         },
         {
@@ -32,11 +32,11 @@
           }
         },
         {
-          "itemId": "weapons-10206",
+          "itemId": "weapons-10501",
           "rank": "alternative",
           "note": {
-            "FR": "Puissance de compétence.",
-            "EN": "Skill Intensity."
+            "FR": "Arme signature. PV max +100%, synergie parfaite avec le scaling PV de Truffle.",
+            "EN": "Signature weapon. Max HP +100%, perfect synergy with Truffle's HP scaling."
           }
         }
       ],
@@ -224,19 +224,19 @@
           }
         },
         {
-          "itemId": "weapons-10301",
-          "rank": "alternative",
-          "note": {
-            "FR": "PV max +100 % et Durée de compétence quand un allié Pyro encaisse.",
-            "EN": "Max HP +100% and Skill Duration when a Pyro ally takes damage."
-          }
-        },
-        {
           "itemId": "weapons-10206",
           "rank": "alternative",
           "note": {
             "FR": "Puissance de compétence.",
             "EN": "Skill Intensity."
+          }
+        },
+        {
+          "itemId": "weapons-10301",
+          "rank": "alternative",
+          "note": {
+            "FR": "PV max +100 % et Durée de compétence quand un allié Pyro encaisse.",
+            "EN": "Max HP +100% and Skill Duration when a Pyro ally takes damage."
           }
         },
         {
@@ -255,6 +255,22 @@
           "note": {
             "FR": "Durée de compétence, dans la logique du build.",
             "EN": "Skill Duration, in line with the build."
+          }
+        },
+        {
+          "itemId": "weapons-20602",
+          "rank": "alternative",
+          "note": {
+            "FR": "Duree de competence +30%. Buffs aleatoires pour les allies sur CRIT.",
+            "EN": "Skill Duration +30%. Random ally buffs on CRIT."
+          }
+        },
+        {
+          "itemId": "weapons-20203",
+          "rank": "alternative",
+          "note": {
+            "FR": "Duree de competence +30%. Projectiles rebondissants.",
+            "EN": "Skill Duration +30%. Bouncing projectiles."
           }
         }
       ]
