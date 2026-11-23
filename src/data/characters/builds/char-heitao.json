@@ -317,8 +317,8 @@
         },
         {
           "position": 6,
-          "itemId": "mods-51712",
-          "track": null
+          "itemId": "mods-51718",
+          "track": 3
         },
         {
           "position": 7,
@@ -337,8 +337,8 @@
         "EN": "Feathered Serpent's Morale"
       },
       "note": {
-        "FR": "Build d'intron VII : Débordement · Finesse en case 8, pièce générique apportée par la 1.6. Huit pièces toutes différentes. Modules sur 1 à 5 seulement.",
-        "EN": "I7 build: Overflow - Finesse in slot 8, a generic piece added in 1.6. Eight all-different pieces. Modules on 1 to 5 only."
+        "FR": "Build d’intron VII : Surabondance · Adresse en case 8, Ardeur · Décision en case 6. Huit pièces toutes différentes. Modules sur les cases 1 à 6.",
+        "EN": "I7 build: Overflow - Finesse in slot 8, Blaze - Volition in slot 6. Eight all-different pieces. Modules on slots 1 to 6."
       }
     },
     "statsPriority": [

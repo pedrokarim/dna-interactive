@@ -2,169 +2,169 @@
   "_comment": "Suivi de vérification des builds contre leur fiche publique. Écrit par scripts/verif-build.mjs.",
   "characters": {
     "char-aote": {
-      "verifiedAt": "2026-10-08",
+      "verifiedAt": "2026-11-23",
       "source": "560800",
-      "note": "Fiche du 05/10 : 5 Ardeur Trempe en cases 3-6 et 8, 7 Track-Shift (le site n en avait aucun) ; Thorned Requiem 1er choix distance."
+      "note": "Passe du 23/11 : pieces, centre, arme n°1 et pistes conformes a la fiche (lecture du HTML)."
     },
     "char-baiheng": {
-      "verifiedAt": "2026-10-19",
+      "verifiedAt": "2026-11-23",
       "source": "562197",
-      "note": "Fiche du 05/10 inchangee : deux builds conformes (pieces, centres, pistes 7 et 2, armes). Arme signature 571226 conforme (4 Track-Shift, cases 1-4)."
+      "note": "Passe du 23/11 : pieces, centre, arme n°1 et pistes conformes a la fiche (lecture du HTML)."
     },
     "char-baonu": {
-      "verifiedAt": "2026-10-08",
+      "verifiedAt": "2026-11-23",
       "source": "561246",
-      "note": "Fiche du 05/10 : build I7 conforme case par case (5 Track-Shift). La fiche ne liste plus d armes."
+      "note": "Fiche du 12/11 : module ajoute en case 6 (capture), pieces inchangees."
     },
     "char-dafu": {
-      "verifiedAt": "2026-10-08",
+      "verifiedAt": "2026-11-23",
       "source": "560799",
-      "note": "Fiche du 06/10 : build soigneur a 4 Track-Shift (cases 1-4) + centre ajuste ; build DPS ajoute (8 Track-Shift, centre Tenacite)."
+      "note": "Passe du 23/11 : pieces, centre, arme n°1 et pistes conformes a la fiche (lecture du HTML)."
     },
     "char-eve": {
-      "verifiedAt": "2026-10-08",
+      "verifiedAt": "2026-11-23",
       "source": "606756",
-      "note": "Fiche du 07/10 : case 7 du build de fin de jeu en version violette ; armes de la fiche ajoutees en alternatives. Pistes et centres conformes (centre ajuste sur le build debut-milieu)."
+      "note": "Fiche du 12/11 : endgame conforme ; debut-milieu de partie passe a 8 modules (case 2 ajoutee, lue sur capture)."
     },
     "char-falu": {
-      "verifiedAt": "2026-10-08",
+      "verifiedAt": "2026-11-23",
       "source": "606751",
-      "note": "Fiche du 07/10 : Prime·Morale en case 3, Covenanter's Volition en case 5, case 6 sans module (7 Track-Shift), Excresduo et The Best Day en distance. Arme signature 617513 ajoutée."
+      "note": "Fiche du 20/10 : build conforme (pieces, centre Tenacite, pistes)."
     },
     "char-feina": {
-      "verifiedAt": "2026-10-08",
+      "verifiedAt": "2026-11-23",
       "source": "561245",
-      "note": "Fiche du 06/10 : soutien Vigueur a 5 Track-Shift (cases 1-5) ; build DPS ajoute (7 Track-Shift). Soutien de base laisse sans piste : pieces non listees sur la fiche."
+      "note": "Fiche du 20/10 : trois builds conformes (Core Support 1 et 4, Morale Support 1-5, DPS 1-7 sur capture)."
     },
     "char-fuluo": {
-      "verifiedAt": "2026-10-08",
+      "verifiedAt": "2026-11-23",
       "source": "602498",
-      "note": "Fiche du 29/09 : conforme (5 Track-Shift) ; Momiji Itteki ajoutee en 4e melee."
+      "note": "Fiche du 19/11 : cases 2 (Apogee Vigueur) et 5 (Ardeur Decision) changees, modules 1-5 et 8 (capture)."
     },
     "char-haier": {
-      "verifiedAt": "2026-10-08",
+      "verifiedAt": "2026-11-23",
       "source": "560794",
-      "note": "Fiche du 05/10 : builds I7 et Tank conformes (7 et 6 Track-Shift) ; alternatives ajoutees. Le build fin de jeu hors I7 n est plus sur la fiche, conserve."
+      "note": "Passe du 23/11 : pieces, centre, arme n°1 et pistes conformes a la fiche (lecture du HTML)."
     },
     "char-heitao": {
-      "verifiedAt": "2026-10-08",
+      "verifiedAt": "2026-11-23",
       "source": "560808",
-      "note": "Fiche du 05/10 : build I7 Vigueur conforme ; build I7 Tenacite ajoute (5 Track-Shift + centre ajuste, Sanguine Plume). Le build hors I7 n est plus sur la fiche, conserve."
+      "note": "Fiche du 12/11 : Morale I7 case 6 en Ardeur Decision, modules 1-6 (capture) ; Resolve I7 conforme."
     },
     "char-kami": {
-      "verifiedAt": "2026-11-11",
+      "verifiedAt": "2026-11-23",
       "source": "570658",
-      "note": "Fiche du 10/11 : build I7 DPS ajoute (Endless Enigma, Prime Morale en case 3, Fina + Fushu, 7 Track-Shift sans la case 6). I7 Sub-DPS : Endless Enigma 1er choix melee, equipe Falsi + Truffle et Filbert. Debut de jeu conforme."
+      "note": "Passe du 23/11 : pieces, centre, arme n°1 et pistes conformes a la fiche (lecture du HTML)."
     },
     "char-kezhou": {
-      "verifiedAt": "2026-10-08",
+      "verifiedAt": "2026-11-23",
       "source": "567201",
-      "note": "Fiche du 05/10 : 2 builds (Vigueur, Tenacite). Apogee Poursuite en case 3, case 2 sans module (4 Track-Shift). Sacred Favour 1er choix melee ; build Tenacite ajoute."
+      "note": "Fiche du 09/11 : build Resolve Sanguine Plume ajoute (modules 3-4 seulement, capture) ; deux builds existants conformes."
     },
     "char-landi": {
-      "verifiedAt": "2026-10-08",
+      "verifiedAt": "2026-11-23",
       "source": "560802",
-      "note": "Fiche du 05/10 : pieces conformes, 5 Track-Shift (case 6 ajoutee) ; Screamshot ajoutee."
+      "note": "Passe du 23/11 : pieces, centre, arme n°1 et pistes conformes a la fiche (lecture du HTML)."
     },
     "char-linen": {
-      "verifiedAt": "2026-10-08",
+      "verifiedAt": "2026-11-23",
       "source": "560793",
-      "note": "Fiche du 05/10 : 8 Track-Shift sur les 2 builds ; Excresduo 1er choix distance en debut-milieu. Cases 6-8 non retouchees : la fiche les nomme Blaze Volition, nom absent du catalogue Pyro."
+      "note": "Fiche du 26/10 : cases 6-8 en Decision du Pactisant x3 dans les deux builds, 8 modules (capture)."
     },
     "char-lise": {
-      "verifiedAt": "2026-11-11",
+      "verifiedAt": "2026-11-23",
       "source": "560803",
-      "note": "Fiche du 10/11 : un seul build, Idle Farming avec Endless Enigma (Overflow Finesse en case 8, 7 Track-Shift sans la case 8, Zhiliu + Fushu), ajoute en tete. Les 4 autres builds passent en ancien."
+      "note": "Passe du 23/11 : pieces, centre, arme n°1 et pistes conformes a la fiche (lecture du HTML)."
     },
     "char-maer": {
-      "verifiedAt": "2026-10-08",
+      "verifiedAt": "2026-11-23",
       "source": "560796",
-      "note": "Fiche du 05/10 : les 2 builds conformes (5 Track-Shift) ; Arclight Apocalypses 1er choix distance du build soutien."
+      "note": "Passe du 23/11 : pieces, centre, arme n°1 et pistes conformes a la fiche (lecture du HTML)."
     },
     "char-nifu": {
-      "verifiedAt": "2026-10-08",
+      "verifiedAt": "2026-11-23",
       "source": "560805",
-      "note": "Fiche du 05/10 : build milieu de jeu conforme ; build fin de jeu ajoute (6 Track-Shift, Perpetual Strife)."
+      "note": "Passe du 23/11 : pieces, centre, arme n°1 et pistes conformes a la fiche (lecture du HTML)."
     },
     "char-protagonist-female": {
-      "verifiedAt": "2026-10-10",
+      "verifiedAt": "2026-11-23",
       "source": "602606",
-      "note": "Créés le 10/10 : Sub-DPS Umbro (602606) et Soutien Lumino (560806). Umbro : 4 modules lus au tableau (cases 1, 2, 4, 7), le compteur en annonce 5."
+      "note": "Passe du 23/11 : pieces, centre, arme n°1 et pistes conformes a la fiche (lecture du HTML)."
     },
     "char-protagonist-male": {
-      "verifiedAt": "2026-10-10",
+      "verifiedAt": "2026-11-23",
       "source": "602606",
-      "note": "Mêmes builds que la version féminine."
+      "note": "Passe du 23/11 : pieces, centre, arme n°1 et pistes conformes a la fiche (lecture du HTML)."
     },
     "char-saiqi": {
-      "verifiedAt": "2026-10-08",
+      "verifiedAt": "2026-11-23",
       "source": "560797",
-      "note": "Fiche du 05/10 : fin de jeu reecrit (6 pieces, 7 Track-Shift) ; milieu de jeu a 4 Track-Shift (cases 1-4), Excresduo 1er choix distance."
+      "note": "Passe du 23/11 : pieces, centre, arme n°1 et pistes conformes a la fiche (lecture du HTML)."
     },
     "char-shuimu": {
-      "verifiedAt": "2026-10-08",
+      "verifiedAt": "2026-11-23",
       "source": "560789",
-      "note": "Fiche du 05/10 : fin de jeu a 6 Track-Shift (cases 1-6) + centre ajuste, Perpetual Strife et The Best Day 1ers choix ; debut-milieu reordonne, 8 Track-Shift."
+      "note": "Passe du 23/11 : pieces, centre, arme n°1 et pistes conformes a la fiche (lecture du HTML)."
     },
     "char-songlu": {
-      "verifiedAt": "2026-10-08",
+      "verifiedAt": "2026-11-23",
       "source": "560798",
-      "note": "Fiche du 05/10 : pieces et pistes conformes sur les 2 builds ; Perpetual Strife 1er choix melee, Wanewraith ajoutee."
+      "note": "Passe du 23/11 : pieces, centre, arme n°1 et pistes conformes a la fiche (lecture du HTML)."
     },
     "char-splise": {
-      "verifiedAt": "2026-11-11",
+      "verifiedAt": "2026-11-23",
       "source": "631045",
-      "note": "Fiche du 10/11 : conforme (pieces, centre, 7 Track-Shift sans la case 7, armes). Arme 631095 : 2 builds ajoutes (base 4 pieces sans module ; complet a 5 modules, cases 1-2-3-5-6 ; le compteur de la fiche annonce 6 pour les deux)."
+      "note": "Fiche du 22/11 : build conforme (pieces, centre Decision, armes, pistes)."
     },
     "char-suyi": {
-      "verifiedAt": "2026-10-08",
+      "verifiedAt": "2026-11-23",
       "source": "570654",
-      "note": "Fiche du 05/10 : conforme case par case (pieces, centre, 5 Track-Shift, armes)."
+      "note": "Fiche du 23/10 : cases 5-8 refaites, modules 1-7 (capture), Perpetual Strife 1re arme de melee."
     },
     "char-tuosi": {
-      "verifiedAt": "2026-10-08",
+      "verifiedAt": "2026-11-23",
       "source": "560807",
-      "note": "Fiche du 05/10 : build DPS conforme ; milieu de jeu reordonne, 6 modules lus sur le tableau (le compteur de la fiche annonce 5)."
+      "note": "Passe du 23/11 : pieces, centre, arme n°1 et pistes conformes a la fiche (lecture du HTML)."
     },
     "char-weitaf": {
-      "verifiedAt": "2026-10-08",
+      "verifiedAt": "2026-11-23",
       "source": "617590",
-      "note": "Fiche du 05/10 : conforme case par case (8 pieces, raretes, centre Eveil, 8 Track-Shift, armes)."
+      "note": "Fiche du 05/11 : build soutien conforme (pieces, centre Eveil, pistes)."
     },
     "char-weitam": {
-      "verifiedAt": "2026-10-08",
+      "verifiedAt": "2026-11-23",
       "source": "617590",
-      "note": "Fiche du 05/10 : conforme case par case (8 pieces, raretes, centre Eveil, 8 Track-Shift, armes)."
+      "note": "Fiche du 05/11 : build soutien conforme (pieces, centre Eveil, pistes)."
     },
     "char-xibi": {
-      "verifiedAt": "2026-10-08",
+      "verifiedAt": "2026-11-23",
       "source": "560801",
-      "note": "Fiche du 05/10 : conforme case par case (4 Track-Shift) ; Wanewraith ajoutee."
+      "note": "Passe du 23/11 : pieces, centre, arme n°1 et pistes conformes a la fiche (lecture du HTML)."
     },
     "char-xier": {
-      "verifiedAt": "2026-10-08",
+      "verifiedAt": "2026-11-23",
       "source": "562612",
-      "note": "Fiche du 05/10 : les 2 builds Raffinement conformes (7 Track-Shift) ; Dregs of Glimmer et Elpides Abound ajoutees. La fiche ne montre plus les builds Vigilance, conserves sur le site."
+      "note": "Passe du 23/11 : pieces, centre, arme n°1 et pistes conformes a la fiche (lecture du HTML)."
     },
     "char-yeer": {
-      "verifiedAt": "2026-10-08",
+      "verifiedAt": "2026-11-23",
       "source": "560795",
-      "note": "Fiche du 05/10 : conforme case par case (6 Track-Shift) ; Withershade et Dregs of Glimmer ajoutees."
+      "note": "Passe du 23/11 : pieces, centre, arme n°1 et pistes conformes a la fiche (lecture du HTML)."
     },
     "char-yuming": {
-      "verifiedAt": "2026-10-20",
+      "verifiedAt": "2026-11-23",
       "source": "561640",
-      "note": "Fiche du 20/10 (Intron VII ajoute) : builds DPS et Soutien conformes case par case (5 Track-Shift, cases 1-5, lus sur capture), armes identiques."
+      "note": "Fiche du 19/11 : build I7 DPS ajoute (Ardeur Raffinement x4, 8 modules, capture) ; deux builds existants conformes."
     },
     "char-zhangyu": {
-      "verifiedAt": "2026-10-08",
+      "verifiedAt": "2026-11-23",
       "source": "560790",
-      "note": "Fiche du 05/10 : les 2 builds conformes case par case (7 et 6 Track-Shift), armes identiques."
+      "note": "Passe du 23/11 : pieces, centre, arme n°1 et pistes conformes a la fiche (lecture du HTML)."
     },
     "char-zhiliu": {
-      "verifiedAt": "2026-10-20",
+      "verifiedAt": "2026-11-23",
       "source": "567185",
-      "note": "Fiche du 20/10 (Intron VII ajoute, recommandation I7 encore TBD) : pieces, centre et 5 Track-Shift inchanges, lus sur capture ; Sacrosanct Chorus retire des armes a distance."
+      "note": "Fiche du 09/11 : build I7 refait (8 pieces), modules 2 et 4-7 (capture)."
     }
   }
 }

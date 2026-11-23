@@ -696,7 +696,7 @@
         {
           "position": 2,
           "itemId": "mods-51723",
-          "track": null
+          "track": 3
         },
         {
           "position": 3,
@@ -736,8 +736,8 @@
         "EN": "Feathered Serpent's Prance"
       },
       "note": {
-        "FR": "Centre générique Essor. Seule la case 2 reste sans module.",
-        "EN": "Generic Prance core. Only slot 2 carries no module."
+        "FR": "Centre générique Essor. Un module sur chacune des 8 cases.",
+        "EN": "Generic Prance core. A module on all 8 slots."
       }
     },
     "statsPriority": [

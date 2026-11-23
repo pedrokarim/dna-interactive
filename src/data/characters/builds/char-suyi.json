@@ -8,11 +8,19 @@
     "weapons": {
       "melee": [
         {
-          "itemId": "weapons-10206",
+          "itemId": "weapons-10299",
           "rank": "best",
           "note": {
-            "FR": "Wanewraith - Degats de competence +48%. Arme signature.",
-            "EN": "Wanewraith - Skill Damage +48%. Signature weapon."
+            "FR": "Meilleure arme de mêlée : bonus de Vigueur, d’Intensité de compétence, de Portée de compétence et d’ATQ.",
+            "EN": "Best melee weapon: Morale, Skill Intensity, Skill Range and ATK buffs."
+          }
+        },
+        {
+          "itemId": "weapons-10206",
+          "rank": "alternative",
+          "note": {
+            "FR": "Meilleur choix hors armes de calamité : Dégâts de compétence +48 %.",
+            "EN": "Best non-calamity choice: Skill Damage +48%."
           }
         },
         {
@@ -91,22 +99,22 @@
         },
         {
           "position": 5,
-          "itemId": "mods-51761",
-          "track": 1
+          "itemId": "mods-51767",
+          "track": 3
         },
         {
           "position": 6,
-          "itemId": "mods-51761",
-          "track": null
+          "itemId": "mods-51768",
+          "track": 1
         },
         {
           "position": 7,
-          "itemId": "mods-51761",
-          "track": null
+          "itemId": "mods-51768",
+          "track": 1
         },
         {
           "position": 8,
-          "itemId": "mods-51761",
+          "itemId": "mods-51768",
           "track": null
         }
       ],
@@ -116,8 +124,8 @@
         "EN": "Feathered Serpent's Morale"
       },
       "note": {
-        "FR": "Focus Intensite de competence + Morale. Tolerance cible 149/100. 5 modules de Track-Shift requis.\n\nAjustements d'affinite : Slot 1 Crescent, Slot 2 Triangle, Slot 3 Diamond, Slot 4 Ellipse, Slot 5 Triangle, Slots 6-8 aucun.\n\nLoadout : Wings·Inspo·Morale (Lumino) en slot 1, Prime·Morale en slot 2, Skylume·Wildfire en slot 3, Fengshi Type III: Tracking Mode (mod exclusif Su Yi, projectiles a tete chercheuse) en slot 4, 4x Scorch (Lumino) sur slots 5-8.\n\nAffinity centrale : Feathered Serpent's Morale (mods-51765, r5 Lumino).",
-        "EN": "Focus Skill Intensity + Morale. Target Tolerance 149/100. 5 Track-Shift modules required.\n\nTrack adjustments: Slot 1 Crescent, Slot 2 Triangle, Slot 3 Diamond, Slot 4 Ellipse, Slot 5 Triangle, Slots 6-8 none.\n\nLoadout: Wings·Inspo·Morale (Lumino) slot 1, Prime·Morale slot 2, Skylume·Wildfire slot 3, Fengshi Type III: Tracking Mode (Su Yi exclusive mod, homing projectiles) slot 4, 4x Scorch (Lumino) slots 5-8.\n\nCentral affinity: Feathered Serpent's Morale (mods-51765, r5 Lumino)."
+        "FR": "Focus Intensité de compétence + Vigueur. Ailes · Inspiration · Vigueur en case 1, Apogée · Vigueur en case 2, Aurore · Conflagration en case 3, Mode de poursuite (pièce exclusive de Su Yi) en case 4. Décision · Raffinement en case 5 et Ardeur · Décision ×3 sur les cases 6 à 8, toutes du Pactisant. Modules sur les cases 1 à 7.",
+        "EN": "Focus Skill Intensity + Morale. Wings - Inspo - Morale in slot 1, Prime - Morale in slot 2, Skylume - Wildfire in slot 3, Tracking Mode (Su Yi exclusive) in slot 4. Volition - Refinement in slot 5 and Blaze - Volition x3 on slots 6 to 8, all Covenanter's. Modules on slots 1 to 7."
       }
     },
     "statsPriority": [

@@ -80,18 +80,18 @@
         },
         {
           "position": 6,
-          "itemId": "mods-51732",
-          "track": 2
+          "itemId": "mods-51737",
+          "track": 4
         },
         {
           "position": 7,
-          "itemId": "mods-51732",
-          "track": 2
+          "itemId": "mods-51737",
+          "track": 4
         },
         {
           "position": 8,
-          "itemId": "mods-51732",
-          "track": 2
+          "itemId": "mods-51737",
+          "track": 4
         }
       ],
       "centerItemId": "mods-31531",
@@ -100,8 +100,8 @@
         "EN": "Feathered Serpent's Sidestep"
       },
       "note": {
-        "FR": "Focus ATQ + Intensite. 4x Blaze Eternity.",
-        "EN": "Focus ATK + Intensity. 4x Blaze Eternity."
+        "FR": "Focus ATQ + Intensité. Ardeur · Éternité en cases 4 et 5, Décision du Pactisant ×3 sur les cases 6 à 8 (seule la famille Pactisant est empilable).",
+        "EN": "Focus ATK + Intensity. Blaze - Eternity in slots 4 and 5, Covenanter's Volition x3 on slots 6 to 8 (Covenanter's is the only stackable family)."
       }
     },
     "statsPriority": [
@@ -303,18 +303,18 @@
         },
         {
           "position": 6,
-          "itemId": "mods-51732",
-          "track": 2
+          "itemId": "mods-51737",
+          "track": 4
         },
         {
           "position": 7,
-          "itemId": "mods-51732",
-          "track": 2
+          "itemId": "mods-51737",
+          "track": 4
         },
         {
           "position": 8,
-          "itemId": "mods-51732",
-          "track": 2
+          "itemId": "mods-51737",
+          "track": 4
         }
       ],
       "centerItemId": "mods-51736",
@@ -323,8 +323,8 @@
         "EN": "Feathered Serpent's Refinement"
       },
       "note": {
-        "FR": "Centre Raffinement et Ailes · Inspiration · Vigueur en case 4, les deux apports de la 1.6. Ardeur · Éternité ×4 sur les cases 5 à 8 : la famille Pactisant est la seule empilable.",
-        "EN": "Refinement core and Wings - Inspo - Morale in slot 4, the two additions from 1.6. Blaze - Eternity x4 on slots 5 to 8: Covenanter's is the only stackable family."
+        "FR": "Centre Raffinement et Ailes · Inspiration · Vigueur en case 4. Ardeur · Éternité en case 5, Décision du Pactisant ×3 sur les cases 6 à 8 : la famille Pactisant est la seule empilable.",
+        "EN": "Refinement core and Wings - Inspo - Morale in slot 4. Blaze - Eternity in slot 5, Covenanter's Volition x3 on slots 6 to 8: Covenanter's is the only stackable family."
       }
     },
     "statsPriority": [

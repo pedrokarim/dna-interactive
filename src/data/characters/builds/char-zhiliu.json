@@ -2,8 +2,8 @@
   {
     "characterId": "char-zhiliu",
     "buildName": {
-      "FR": "DPS Competence",
-      "EN": "Skill DPS"
+      "FR": "DPS Compétence — intron VII",
+      "EN": "Skill DPS — I7"
     },
     "weapons": {
       "melee": [
@@ -71,42 +71,42 @@
       "slots": [
         {
           "position": 1,
-          "itemId": "mods-56142",
-          "track": 2
+          "itemId": "mods-51941",
+          "track": null
         },
         {
           "position": 2,
-          "itemId": "mods-51941",
-          "track": 4
-        },
-        {
-          "position": 3,
-          "itemId": "mods-51324",
-          "track": 3
-        },
-        {
-          "position": 4,
           "itemId": "mods-51441",
           "track": 1
         },
         {
+          "position": 3,
+          "itemId": "mods-51324",
+          "track": null
+        },
+        {
+          "position": 4,
+          "itemId": "mods-56142",
+          "track": 2
+        },
+        {
           "position": 5,
-          "itemId": "mods-51743",
-          "track": 3
+          "itemId": "mods-51748",
+          "track": 2
         },
         {
           "position": 6,
-          "itemId": "mods-51742",
-          "track": null
+          "itemId": "mods-51748",
+          "track": 2
         },
         {
           "position": 7,
-          "itemId": "mods-51743",
-          "track": null
+          "itemId": "mods-51748",
+          "track": 2
         },
         {
           "position": 8,
-          "itemId": "mods-51742",
+          "itemId": "mods-51317",
           "track": null
         }
       ],
@@ -115,8 +115,8 @@
         "EN": "Feathered Serpent's Volition"
       },
       "note": {
-        "FR": "Focus Intensite de competence + Morale. La Tolerance augmente avec l'affinite au niv. +5.",
-        "EN": "Focus Skill Intensity + Morale. Tolerance increases with affinity at core +5."
+        "FR": "Build d’intron VII. Foudre destructrice en case 1, Apogée · Vigueur en case 2, Ailes · Inspiration · Décision en case 4. Ardeur · Raffinement du Pactisant ×3 sur les cases 5 à 7, Surabondance · Adresse en case 8. Modules sur les cases 2 et 4 à 7.",
+        "EN": "I7 build. Ravaging Thunder in slot 1, Prime - Morale in slot 2, Wings - Inspo - Volition in slot 4. Covenanter's Blaze - Refinement x3 on slots 5 to 7, Overflow - Finesse in slot 8. Modules on slots 2 and 4 to 7."
       },
       "centerItemId": "mods-51746"
     },

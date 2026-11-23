@@ -1,7 +1,7 @@
 # Suivi de vérification des builds
 
 **Avancement : 33 / 33 personnages vérifiés.**
-Première vérification : 2026-10-08 · dernière : 2026-11-11.
+Première vérification : 2026-11-23 · dernière : 2026-11-23.
 
 Généré par `node scripts/verif-build.mjs --mark <id> <source>`. Ne pas éditer à la main.
 
@@ -12,38 +12,38 @@ plus ancien.
 
 | # | Personnage | Élément | Sortie | Vérifié le | Source | Note |
 | --- | --- | --- | --- | --- | --- | --- |
-| 1 | Rhythm: Flamewrought | Electro | 2026-10-20 | ✅ 2026-11-11 | 631045 | Fiche du 10/11 : conforme (pieces, centre, 7 Track-Shift sans la case 7, armes). Arme 631095 : 2 builds ajoutes (base 4 pieces sans module ; complet a 5 modules, cases 1-2-3-5-6 ; le compteur de la fiche annonce 6 pour les deux). |
-| 2 | Mors | Hydro | 2026-09-08 | ✅ 2026-10-08 | 617590 | Fiche du 05/10 : conforme case par case (8 pieces, raretes, centre Eveil, 8 Track-Shift, armes). |
-| 3 | Mors | Hydro | 2026-09-08 | ✅ 2026-10-08 | 617590 | Fiche du 05/10 : conforme case par case (8 pieces, raretes, centre Eveil, 8 Track-Shift, armes). |
-| 4 | Falsi | Pyro | 2026-09-08 | ✅ 2026-10-08 | 606751 | Fiche du 07/10 : Prime·Morale en case 3, Covenanter's Volition en case 5, case 6 sans module (7 Track-Shift), Excresduo et The Best Day en distance. Arme signature 617513 ajoutée. |
-| 5 | Eve | Hydro | 2026-07-28 | ✅ 2026-10-08 | 606756 | Fiche du 07/10 : case 7 du build de fin de jeu en version violette ; armes de la fiche ajoutees en alternatives. Pistes et centres conformes (centre ajuste sur le build debut-milieu). |
-| 6 | Hilda | Pyro | 2026-06-30 | ✅ 2026-10-08 | 562612 | Fiche du 05/10 : les 2 builds Raffinement conformes (7 Track-Shift) ; Dregs of Glimmer et Elpides Abound ajoutees. La fiche ne montre plus les builds Vigilance, conserves sur le site. |
-| 7 | Vita | Umbro | 2026-06-02 | ✅ 2026-10-10 | 602606 | Mêmes builds que la version féminine. |
-| 8 | Vita | Umbro | 2026-06-02 | ✅ 2026-10-10 | 602606 | Créés le 10/10 : Sub-DPS Umbro (602606) et Soutien Lumino (560806). Umbro : 4 modules lus au tableau (cases 1, 2, 4, 7), le compteur en annonce 5. |
-| 9 | Flora | Umbro | 2026-06-02 | ✅ 2026-10-08 | 602498 | Fiche du 29/09 : conforme (5 Track-Shift) ; Momiji Itteki ajoutee en 4e melee. |
-| 10 | Su Yi | Lumino | — | ✅ 2026-10-08 | 570654 | Fiche du 05/10 : conforme case par case (pieces, centre, 5 Track-Shift, armes). |
-| 11 | Kezhou | Lumino | — | ✅ 2026-10-08 | 567201 | Fiche du 05/10 : 2 builds (Vigueur, Tenacite). Apogee Poursuite en case 3, case 2 sans module (4 Track-Shift). Sacred Favour 1er choix melee ; build Tenacite ajoute. |
-| 12 | Lady Nifle | Lumino | — | ✅ 2026-10-08 | 560805 | Fiche du 05/10 : build milieu de jeu conforme ; build fin de jeu ajoute (6 Track-Shift, Perpetual Strife). |
-| 13 | Lisbell | Lumino | — | ✅ 2026-10-08 | 561246 | Fiche du 05/10 : build I7 conforme case par case (5 Track-Shift). La fiche ne liste plus d armes. |
-| 14 | Fina | Lumino | — | ✅ 2026-10-08 | 561245 | Fiche du 06/10 : soutien Vigueur a 5 Track-Shift (cases 1-5) ; build DPS ajoute (7 Track-Shift). Soutien de base laisse sans piste : pieces non listees sur la fiche. |
-| 15 | Psyche | Anemo | — | ✅ 2026-10-08 | 560797 | Fiche du 05/10 : fin de jeu reecrit (6 pieces, 7 Track-Shift) ; milieu de jeu a 4 Track-Shift (cases 1-4), Excresduo 1er choix distance. |
-| 16 | Fushu | Hydro | — | ✅ 2026-10-19 | 562197 | Fiche du 05/10 inchangee : deux builds conformes (pieces, centres, pistes 7 et 2, armes). Arme signature 571226 conforme (4 Track-Shift, cases 1-4). |
-| 17 | Truffle and Filbert | Anemo | — | ✅ 2026-10-08 | 560798 | Fiche du 05/10 : pieces et pistes conformes sur les 2 builds ; Perpetual Strife 1er choix melee, Wanewraith ajoutee. |
-| 18 | Rebecca | Hydro | — | ✅ 2026-10-08 | 560789 | Fiche du 05/10 : fin de jeu a 6 Track-Shift (cases 1-6) + centre ajuste, Perpetual Strife et The Best Day 1ers choix ; debut-milieu reordonne, 8 Track-Shift. |
-| 19 | Lynn | Pyro | — | ✅ 2026-10-08 | 560793 | Fiche du 05/10 : 8 Track-Shift sur les 2 builds ; Excresduo 1er choix distance en debut-milieu. Cases 6-8 non retouchees : la fiche les nomme Blaze Volition, nom absent du catalogue Pyro. |
-| 20 | Yuming | Electro | — | ✅ 2026-10-20 | 561640 | Fiche du 20/10 (Intron VII ajoute) : builds DPS et Soutien conformes case par case (5 Track-Shift, cases 1-5, lus sur capture), armes identiques. |
-| 21 | Zhiliu | Electro | — | ✅ 2026-10-20 | 567185 | Fiche du 20/10 (Intron VII ajoute, recommandation I7 encore TBD) : pieces, centre et 5 Track-Shift inchanges, lus sur capture ; Sacrosanct Chorus retire des armes a distance. |
-| 22 | Sibylle | Electro | — | ✅ 2026-10-08 | 560801 | Fiche du 05/10 : conforme case par case (4 Track-Shift) ; Wanewraith ajoutee. |
-| 23 | Tabethe | Hydro | — | ✅ 2026-10-08 | 560790 | Fiche du 05/10 : les 2 builds conformes case par case (7 et 6 Track-Shift), armes identiques. |
-| 24 | Berenica | Umbro | — | ✅ 2026-10-08 | 560808 | Fiche du 05/10 : build I7 Vigueur conforme ; build I7 Tenacite ajoute (5 Track-Shift + centre ajuste, Sanguine Plume). Le build hors I7 n est plus sur la fiche, conserve. |
-| 25 | Phantasio | Umbro | — | ✅ 2026-10-08 | 560807 | Fiche du 05/10 : build DPS conforme ; milieu de jeu reordonne, 6 modules lus sur le tableau (le compteur de la fiche annonce 5). |
-| 26 | Camilla | Pyro | — | ✅ 2026-11-11 | 570658 | Fiche du 10/11 : build I7 DPS ajoute (Endless Enigma, Prime Morale en case 3, Fina + Fushu, 7 Track-Shift sans la case 6). I7 Sub-DPS : Endless Enigma 1er choix melee, equipe Falsi + Truffle et Filbert. Debut de jeu conforme. |
-| 27 | Margie | Pyro | — | ✅ 2026-10-08 | 560796 | Fiche du 05/10 : les 2 builds conformes (5 Track-Shift) ; Arclight Apocalypses 1er choix distance du build soutien. |
-| 28 | Hellfire | Pyro | — | ✅ 2026-10-08 | 560794 | Fiche du 05/10 : builds I7 et Tank conformes (7 et 6 Track-Shift) ; alternatives ajoutees. Le build fin de jeu hors I7 n est plus sur la fiche, conserve. |
-| 29 | Yale and Oliver | Pyro | — | ✅ 2026-10-08 | 560795 | Fiche du 05/10 : conforme case par case (6 Track-Shift) ; Withershade et Dregs of Glimmer ajoutees. |
-| 30 | Outsider | Anemo | — | ✅ 2026-10-08 | 560800 | Fiche du 05/10 : 5 Ardeur Trempe en cases 3-6 et 8, 7 Track-Shift (le site n en avait aucun) ; Thorned Requiem 1er choix distance. |
-| 31 | Daphne | Anemo | — | ✅ 2026-10-08 | 560799 | Fiche du 06/10 : build soigneur a 4 Track-Shift (cases 1-4) + centre ajuste ; build DPS ajoute (8 Track-Shift, centre Tenacite). |
-| 32 | Rhythm | Electro | — | ✅ 2026-11-11 | 560803 | Fiche du 10/11 : un seul build, Idle Farming avec Endless Enigma (Overflow Finesse en case 8, 7 Track-Shift sans la case 8, Zhiliu + Fushu), ajoute en tete. Les 4 autres builds passent en ancien. |
-| 33 | Randy | Electro | — | ✅ 2026-10-08 | 560802 | Fiche du 05/10 : pieces conformes, 5 Track-Shift (case 6 ajoutee) ; Screamshot ajoutee. |
+| 1 | Rhythm: Flamewrought | Electro | 2026-10-20 | ✅ 2026-11-23 | 631045 | Fiche du 22/11 : build conforme (pieces, centre Decision, armes, pistes). |
+| 2 | Mors | Hydro | 2026-09-08 | ✅ 2026-11-23 | 617590 | Fiche du 05/11 : build soutien conforme (pieces, centre Eveil, pistes). |
+| 3 | Mors | Hydro | 2026-09-08 | ✅ 2026-11-23 | 617590 | Fiche du 05/11 : build soutien conforme (pieces, centre Eveil, pistes). |
+| 4 | Falsi | Pyro | 2026-09-08 | ✅ 2026-11-23 | 606751 | Fiche du 20/10 : build conforme (pieces, centre Tenacite, pistes). |
+| 5 | Eve | Hydro | 2026-07-28 | ✅ 2026-11-23 | 606756 | Fiche du 12/11 : endgame conforme ; debut-milieu de partie passe a 8 modules (case 2 ajoutee, lue sur capture). |
+| 6 | Hilda | Pyro | 2026-06-30 | ✅ 2026-11-23 | 562612 | Passe du 23/11 : pieces, centre, arme n°1 et pistes conformes a la fiche (lecture du HTML). |
+| 7 | Vita | Umbro | 2026-06-02 | ✅ 2026-11-23 | 602606 | Passe du 23/11 : pieces, centre, arme n°1 et pistes conformes a la fiche (lecture du HTML). |
+| 8 | Vita | Umbro | 2026-06-02 | ✅ 2026-11-23 | 602606 | Passe du 23/11 : pieces, centre, arme n°1 et pistes conformes a la fiche (lecture du HTML). |
+| 9 | Flora | Umbro | 2026-06-02 | ✅ 2026-11-23 | 602498 | Fiche du 19/11 : cases 2 (Apogee Vigueur) et 5 (Ardeur Decision) changees, modules 1-5 et 8 (capture). |
+| 10 | Su Yi | Lumino | — | ✅ 2026-11-23 | 570654 | Fiche du 23/10 : cases 5-8 refaites, modules 1-7 (capture), Perpetual Strife 1re arme de melee. |
+| 11 | Kezhou | Lumino | — | ✅ 2026-11-23 | 567201 | Fiche du 09/11 : build Resolve Sanguine Plume ajoute (modules 3-4 seulement, capture) ; deux builds existants conformes. |
+| 12 | Lady Nifle | Lumino | — | ✅ 2026-11-23 | 560805 | Passe du 23/11 : pieces, centre, arme n°1 et pistes conformes a la fiche (lecture du HTML). |
+| 13 | Lisbell | Lumino | — | ✅ 2026-11-23 | 561246 | Fiche du 12/11 : module ajoute en case 6 (capture), pieces inchangees. |
+| 14 | Fina | Lumino | — | ✅ 2026-11-23 | 561245 | Fiche du 20/10 : trois builds conformes (Core Support 1 et 4, Morale Support 1-5, DPS 1-7 sur capture). |
+| 15 | Psyche | Anemo | — | ✅ 2026-11-23 | 560797 | Passe du 23/11 : pieces, centre, arme n°1 et pistes conformes a la fiche (lecture du HTML). |
+| 16 | Fushu | Hydro | — | ✅ 2026-11-23 | 562197 | Passe du 23/11 : pieces, centre, arme n°1 et pistes conformes a la fiche (lecture du HTML). |
+| 17 | Truffle and Filbert | Anemo | — | ✅ 2026-11-23 | 560798 | Passe du 23/11 : pieces, centre, arme n°1 et pistes conformes a la fiche (lecture du HTML). |
+| 18 | Rebecca | Hydro | — | ✅ 2026-11-23 | 560789 | Passe du 23/11 : pieces, centre, arme n°1 et pistes conformes a la fiche (lecture du HTML). |
+| 19 | Lynn | Pyro | — | ✅ 2026-11-23 | 560793 | Fiche du 26/10 : cases 6-8 en Decision du Pactisant x3 dans les deux builds, 8 modules (capture). |
+| 20 | Yuming | Electro | — | ✅ 2026-11-23 | 561640 | Fiche du 19/11 : build I7 DPS ajoute (Ardeur Raffinement x4, 8 modules, capture) ; deux builds existants conformes. |
+| 21 | Zhiliu | Electro | — | ✅ 2026-11-23 | 567185 | Fiche du 09/11 : build I7 refait (8 pieces), modules 2 et 4-7 (capture). |
+| 22 | Sibylle | Electro | — | ✅ 2026-11-23 | 560801 | Passe du 23/11 : pieces, centre, arme n°1 et pistes conformes a la fiche (lecture du HTML). |
+| 23 | Tabethe | Hydro | — | ✅ 2026-11-23 | 560790 | Passe du 23/11 : pieces, centre, arme n°1 et pistes conformes a la fiche (lecture du HTML). |
+| 24 | Berenica | Umbro | — | ✅ 2026-11-23 | 560808 | Fiche du 12/11 : Morale I7 case 6 en Ardeur Decision, modules 1-6 (capture) ; Resolve I7 conforme. |
+| 25 | Phantasio | Umbro | — | ✅ 2026-11-23 | 560807 | Passe du 23/11 : pieces, centre, arme n°1 et pistes conformes a la fiche (lecture du HTML). |
+| 26 | Camilla | Pyro | — | ✅ 2026-11-23 | 570658 | Passe du 23/11 : pieces, centre, arme n°1 et pistes conformes a la fiche (lecture du HTML). |
+| 27 | Margie | Pyro | — | ✅ 2026-11-23 | 560796 | Passe du 23/11 : pieces, centre, arme n°1 et pistes conformes a la fiche (lecture du HTML). |
+| 28 | Hellfire | Pyro | — | ✅ 2026-11-23 | 560794 | Passe du 23/11 : pieces, centre, arme n°1 et pistes conformes a la fiche (lecture du HTML). |
+| 29 | Yale and Oliver | Pyro | — | ✅ 2026-11-23 | 560795 | Passe du 23/11 : pieces, centre, arme n°1 et pistes conformes a la fiche (lecture du HTML). |
+| 30 | Outsider | Anemo | — | ✅ 2026-11-23 | 560800 | Passe du 23/11 : pieces, centre, arme n°1 et pistes conformes a la fiche (lecture du HTML). |
+| 31 | Daphne | Anemo | — | ✅ 2026-11-23 | 560799 | Passe du 23/11 : pieces, centre, arme n°1 et pistes conformes a la fiche (lecture du HTML). |
+| 32 | Rhythm | Electro | — | ✅ 2026-11-23 | 560803 | Passe du 23/11 : pieces, centre, arme n°1 et pistes conformes a la fiche (lecture du HTML). |
+| 33 | Randy | Electro | — | ✅ 2026-11-23 | 560802 | Passe du 23/11 : pieces, centre, arme n°1 et pistes conformes a la fiche (lecture du HTML). |
 
 🎉 **Tous les personnages sont vérifiés.**

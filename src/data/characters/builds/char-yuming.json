@@ -563,5 +563,228 @@
       "FR": "Yuming est un Sub-DPS Electro qui excelle en debuff et burst. Utilisez Grimscales pour debuffer les ennemis puis enchainez avec Precipitous Thunderfall pour le burst.",
       "EN": "Yuming is an Electro Sub-DPS who excels at debuffing and burst. Use Grimscales to debuff enemies then follow up with Precipitous Thunderfall for burst damage."
     }
+  },
+  {
+    "characterId": "char-yuming",
+    "buildName": {
+      "FR": "DPS Electro — intron VII",
+      "EN": "Electro DPS — I7"
+    },
+    "weapons": {
+      "melee": [
+        {
+          "itemId": "weapons-10203",
+          "rank": "best",
+          "note": {
+            "FR": "Premier choix en mêlée pour le build d’intron VII.",
+            "EN": "First melee choice for the I7 build."
+          }
+        },
+        {
+          "itemId": "weapons-10603",
+          "rank": "alternative",
+          "note": {
+            "FR": "Meilleure mêlée du build.",
+            "EN": "Top melee of the build."
+          }
+        },
+        {
+          "itemId": "weapons-10299",
+          "rank": "alternative",
+          "potentialOrder": [
+            10299001,
+            10299002,
+            10299004,
+            10299007,
+            10299008,
+            10299010
+          ],
+          "note": {
+            "FR": "Arme de calamité, repli haut de gamme.",
+            "EN": "Calamity weapon, high-end fallback."
+          }
+        }
+      ],
+      "ranged": [
+        {
+          "itemId": "weapons-20599",
+          "rank": "best",
+          "potentialOrder": [
+            20599001,
+            20599002,
+            20599004,
+            20599007,
+            20599008,
+            20599010
+          ],
+          "note": {
+            "FR": "Meilleure arme à distance du build.",
+            "EN": "Top ranged of the build."
+          }
+        },
+        {
+          "itemId": "weapons-20102",
+          "rank": "alternative",
+          "note": {
+            "FR": "Pour l'ATQ.",
+            "EN": "For ATK."
+          }
+        },
+        {
+          "itemId": "weapons-20201",
+          "rank": "alternative",
+          "note": {
+            "FR": "Pour l'Intensité de compétence.",
+            "EN": "For Skill Intensity."
+          }
+        }
+      ]
+    },
+    "demonWedges": {
+      "slots": [
+        {
+          "position": 1,
+          "itemId": "mods-51941",
+          "track": 4
+        },
+        {
+          "position": 2,
+          "itemId": "mods-51441",
+          "track": 1
+        },
+        {
+          "position": 3,
+          "itemId": "mods-51324",
+          "track": 3
+        },
+        {
+          "position": 4,
+          "itemId": "mods-56142",
+          "track": 2
+        },
+        {
+          "position": 5,
+          "itemId": "mods-51748",
+          "track": 2
+        },
+        {
+          "position": 6,
+          "itemId": "mods-51748",
+          "track": 2
+        },
+        {
+          "position": 7,
+          "itemId": "mods-51748",
+          "track": 2
+        },
+        {
+          "position": 8,
+          "itemId": "mods-51748",
+          "track": 2
+        }
+      ],
+      "centerItemId": "mods-51746",
+      "affinity": {
+        "FR": "Décision de Quetzalcoatl",
+        "EN": "Feathered Serpent's Volition"
+      },
+      "note": {
+        "FR": "Build d’intron VII : Ardeur · Raffinement du Pactisant ×4 sur les cases 5 à 8. Modules sur les 8 cases. Son intron VII renforce la Vigueur, les dégâts Electro et la pénétration de l’équipe selon le nombre de personnages Electro.",
+        "EN": "I7 build: Covenanter's Blaze - Refinement x4 on slots 5 to 8. Modules on all 8 slots. Her I7 buffs the team's Morale, Electro DMG and PEN based on the number of Electro characters."
+      }
+    },
+    "statsPriority": [
+      "SkillIntensity",
+      "Morale",
+      "ATK",
+      "SkillRange"
+    ],
+    "team": [
+      {
+        "characterId": "char-zhiliu",
+        "role": "Sub-DPS",
+        "note": {
+          "FR": "Bonus d’ATQ par son passif et seconde source de dégâts importante.",
+          "EN": "Extra ATK from her Passive and a strong secondary damage source."
+        }
+      },
+      {
+        "characterId": "char-baiheng",
+        "role": "Support",
+        "note": {
+          "FR": "Intensite de competence, soins et Lucidite.",
+          "EN": "Skill Intensity, healing and Sanity recovery."
+        }
+      }
+    ],
+    "genimon": [
+      {
+        "itemId": "genimon-4241",
+        "rank": "best",
+        "traits": [
+          "UI_PetEntry_Title19",
+          "UI_PetEntry_Title23",
+          "UI_PetEntry_Title10",
+          "UI_PetEntry_Title20"
+        ]
+      },
+      {
+        "itemId": "genimon-4121",
+        "rank": "alternative",
+        "traits": [
+          "UI_PetEntry_Title19",
+          "UI_PetEntry_Title23",
+          "UI_PetEntry_Title10"
+        ]
+      },
+      {
+        "itemId": "genimon-4141",
+        "rank": "alternative",
+        "traits": [
+          "UI_PetEntry_Title19",
+          "UI_PetEntry_Title23",
+          "UI_PetEntry_Title10"
+        ]
+      }
+    ],
+    "skillPriority": [
+      {
+        "skillName": {
+          "FR": "Chute de Tonnerre",
+          "EN": "Precipitous Thunderfall"
+        },
+        "priority": 5,
+        "note": {
+          "FR": "Source principale de degats.",
+          "EN": "Primary damage source."
+        }
+      },
+      {
+        "skillName": {
+          "FR": "Ecailles Sinistres",
+          "EN": "Grimscales"
+        },
+        "priority": 4,
+        "note": {
+          "FR": "Debuffs ennemis, potentiel complet.",
+          "EN": "Enemy debuffs, unlocks full potential."
+        }
+      },
+      {
+        "skillName": {
+          "FR": "Ascension Celeste",
+          "EN": "Soaring Sky-High"
+        },
+        "priority": 3,
+        "note": {
+          "FR": "Buff de degats pour toute l'equipe.",
+          "EN": "Party-wide damage buff."
+        }
+      }
+    ],
+    "notes": {
+      "FR": "À l’intron VII, Yuming renforce la Vigueur, les dégâts Electro et la pénétration de l’équipe selon le nombre de personnages Electro présents : le style attaque plongeante devient le meilleur. Zhiliu est le meilleur sous-DPS de cette équipe ; Rhythm, Rhythm: Flamewrought ou Sibylle peuvent la remplacer.",
+      "EN": "At I7, Yuming buffs the team’s Morale, Electro DMG and PEN based on the number of Electro characters present, which makes the Plunge Attack playstyle the clear ideal. Zhiliu is the best Sub-DPS for this team; Rhythm, Rhythm: Flamewrought or Sibylle can replace her."
+    }
   }
 ]
