@@ -85,6 +85,8 @@ export const buildPayloadSchema = z.object({
         .max(8)
         .default([]),
       centerItemId: itemIdSchema.nullable().optional(),
+      // Le centre (slot 09 de l'armurerie) s'ajuste comme les 8 cases.
+      centerTrack: z.number().int().min(1).max(4).nullable().optional(),
       affinity: elementKeySchema.nullable().optional(),
     })
     .default({ slots: [] }),
@@ -288,7 +290,12 @@ export function validateBuildReferences(input: CreateBuildInput | DraftInput): s
     const buildElement = input.element ?? (fallback.success ? fallback.data : null);
     errors.push(
       ...checkCharacterWedges(
-        { element: buildElement, slots: input.payload.demonWedges.slots, centerItemId: input.payload.demonWedges.centerItemId },
+        {
+          element: buildElement,
+          slots: input.payload.demonWedges.slots,
+          centerItemId: input.payload.demonWedges.centerItemId,
+          centerTrack: input.payload.demonWedges.centerTrack,
+        },
         (itemId) => {
           const mod = getItemByCategoryAndId("mods", itemId);
           return mod ? describeWedge(mod) : null;

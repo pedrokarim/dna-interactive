@@ -45,6 +45,16 @@ describe("règles de placement", () => {
     expect(canEquipAsCenter(info("mods-51413"), "Dark")).toBe(false);
   });
 
+  it("le centre accepte un Track-Shift à sa polarité, et seulement s'il porte une pièce", () => {
+    // Éveil de Quetzalcoatl (Hydro), polarité 1.
+    expect(checkCharacterWedges({ element: "Water", slots: [], centerItemId: "mods-51725", centerTrack: 1 }, resolve)).toEqual([]);
+    expect(checkCharacterWedges({ element: "Water", slots: [], centerItemId: "mods-51725", centerTrack: null }, resolve)).toEqual([]);
+    const wrong = checkCharacterWedges({ element: "Water", slots: [], centerItemId: "mods-51725", centerTrack: 3 }, resolve);
+    expect(wrong.some((error) => error.includes("piste du centre"))).toBe(true);
+    const orphan = checkCharacterWedges({ element: "Water", slots: [], centerItemId: null, centerTrack: 1 }, resolve);
+    expect(orphan.some((error) => error.includes("Track-Shift est posé au centre"))).toBe(true);
+  });
+
   it("refuse un doublon hors Covenanter's et une piste qui n'est pas la polarité", () => {
     const errors = checkCharacterWedges(
       { element: "Dark", slots: slots(["mods-51413", "mods-51413", "mods-51311"], [null, null, 2]) },
@@ -113,7 +123,7 @@ describe("builds vérifiés du site", () => {
     const builds = JSON.parse(readFileSync(path.join(dir, file), "utf8")) as Array<{
       characterId: string;
       element?: ElementKey;
-      demonWedges: { slots: Slot[]; centerItemId?: string | null };
+      demonWedges: { slots: Slot[]; centerItemId?: string | null; centerTrack?: number | null };
     }>;
     for (const build of builds) {
       const element = build.element ?? characters.find((character) => character.id === build.characterId)?.element.key ?? null;

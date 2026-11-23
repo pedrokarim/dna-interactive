@@ -70,7 +70,13 @@ function elementLabel(element: ElementKey | null): string {
  * son existence est vérifiée par l'appelant, qui a déjà son propre message.
  */
 export function checkCharacterWedges(
-  build: { element: ElementKey | null; slots: WedgeSlot[]; centerItemId?: string | null },
+  build: {
+    element: ElementKey | null;
+    slots: WedgeSlot[];
+    centerItemId?: string | null;
+    /** Piste du centre (slot 09), même règle que celle d'une case. */
+    centerTrack?: number | null;
+  },
   resolve: (itemId: string) => WedgeRuleInfo | null,
   nameOf: (itemId: string) => string = (itemId) => itemId,
 ): string[] {
@@ -105,6 +111,14 @@ export function checkCharacterWedges(
     errors.push(
       `Le centre « ${nameOf(build.centerItemId)} » est ${elementLabel(center.element)} : il ne s'équipe pas sur un build ${elementLabel(build.element)}.`,
     );
+  }
+
+  if (build.centerTrack != null) {
+    if (!build.centerItemId) {
+      errors.push("Un Track-Shift est posé au centre alors qu'aucun Demon Wedge central n'y est.");
+    } else if (center?.polarity != null && build.centerTrack !== center.polarity) {
+      errors.push(`La piste du centre « ${nameOf(build.centerItemId)} » ne correspond pas à sa polarité.`);
+    }
   }
 
   return errors;

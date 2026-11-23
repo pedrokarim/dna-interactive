@@ -63,6 +63,7 @@ const buildPayloadIoSchema = z
           )
           .max(8),
         centerItemId: itemIdSchema.nullable().optional(),
+        centerTrack: z.coerce.number().int().min(1).max(4).nullable().optional(),
         affinity: elementSchema.nullable().optional(),
       })
       .strict(),
@@ -207,6 +208,7 @@ function validateAgainstOptions(data: CommunityBuildExport, options: BuilderOpti
           element: data.element ?? character.elements[0]?.key ?? null,
           slots: data.payload.demonWedges.slots,
           centerItemId: data.payload.demonWedges.centerItemId,
+          centerTrack: data.payload.demonWedges.centerTrack,
         },
         (itemId) => modById.get(itemId)?.wedge ?? null,
         nameOf,

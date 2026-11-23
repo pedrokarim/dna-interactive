@@ -74,6 +74,60 @@ export function useWedgeSwap(slots: WedgeSlotData[], onChange?: (slots: WedgeSlo
   return { at, dragFrom, dragOver, setDragFrom, setDragOver, swap, reset };
 }
 
+/** Une pièce peut porter un Track-Shift seulement si sa polarité est réelle (1 à 4). */
+export function canTrackShift(item: DnaPickerItem | null | undefined): boolean {
+  const polarity = item?.polarity ?? null;
+  return polarity != null && polarity >= 1 && polarity <= 4;
+}
+
+/**
+ * Pastille du Track-Shift Module, partagée par les 8 cases et le centre (le slot
+ * 09 de l'armurerie s'ajuste comme les autres). Avec `onToggle` : bouton qui pose
+ * ou retire le module. Sans : simple témoin, affiché seulement si un module est
+ * posé. La position (`absolute` + coin) vient de `className`.
+ */
+export function TrackShiftToggle({
+  active,
+  onToggle,
+  label,
+  className,
+}: {
+  active: boolean;
+  onToggle?: () => void;
+  label: string;
+  className?: string;
+}) {
+  if (!onToggle) {
+    return active ? (
+      <span className={cn("absolute z-10 flex h-4 w-4 items-center justify-center rounded border border-gold/70 bg-black/70", className)}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={TRACK_SHIFT_ICON} alt="" width={12} height={12} className="h-3 w-3 object-contain" />
+      </span>
+    ) : null;
+  }
+  return (
+    <button
+      type="button"
+      onClick={(e) => {
+        e.stopPropagation();
+        onToggle();
+      }}
+      aria-pressed={active}
+      aria-label={label}
+      title={label}
+      className={cn(
+        "absolute z-10 flex h-4 w-4 items-center justify-center rounded border text-[0.55rem] leading-none transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60",
+        active ? "border-gold/70 bg-black/70" : "border-white/25 bg-black/50 hover:border-gold/50",
+        className,
+      )}
+    >
+      {/* Posé : icône nette. Pas posé : la même, estompée, pour inviter à cliquer. */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={TRACK_SHIFT_ICON} alt="" width={12} height={12} className={cn("h-3 w-3 object-contain", active ? "opacity-100" : "opacity-40")} />
+    </button>
+  );
+}
+
 /** Une case en parallélogramme (drag + clic). Le centre est géré à part. */
 export function WedgeSlotCell({
   slot,
@@ -116,8 +170,7 @@ export function WedgeSlotCell({
 
   // Un Track-Shift ne va que sur une pièce à polarité réelle (1 à 4) : les pièces
   // universelles n'ont pas de piste à ajuster.
-  const polarity = slot.item?.polarity ?? null;
-  const canShift = Boolean(onToggleTrack && slot.item && polarity != null && polarity >= 1 && polarity <= 4);
+  const canShift = Boolean(onToggleTrack && canTrackShift(slot.item));
   const badgeSide = side === "left" ? "left-1" : "right-1";
 
   return (
@@ -167,35 +220,13 @@ export function WedgeSlotCell({
         />
       )}
     </button>
-      {canShift ? (
-        <button
-          type="button"
-          onClick={(e) => { e.stopPropagation(); onToggleTrack!(); }}
-          aria-pressed={slot.track != null}
-          aria-label={trackLabel ?? `Track-Shift ${slot.position}`}
-          title={trackLabel}
-          className={cn(
-            "absolute bottom-0.5 z-10 flex h-4 w-4 items-center justify-center rounded border text-[0.55rem] leading-none transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60",
-            badgeSide,
-            slot.track != null
-              ? "border-gold/70 bg-black/70"
-              : "border-white/25 bg-black/50 hover:border-gold/50",
-          )}
-        >
-          {/* Posé : icône nette. Pas posé : la même, estompée, pour inviter à cliquer. */}
-          <img
-            src={TRACK_SHIFT_ICON}
-            alt=""
-            width={12}
-            height={12}
-            className={cn("h-3 w-3 object-contain", slot.track != null ? "opacity-100" : "opacity-40")}
-          />
-        </button>
-      ) : slot.track != null ? (
-        <span className={cn("absolute bottom-0.5 z-10 flex h-4 w-4 items-center justify-center rounded border border-gold/70 bg-black/70", badgeSide)}>
-          <img src={TRACK_SHIFT_ICON} alt="" width={12} height={12} className="h-3 w-3 object-contain" />
-        </span>
-      ) : null}
+      <TrackShiftToggle
+        active={slot.track != null}
+        onToggle={canShift ? onToggleTrack : undefined}
+        label={trackLabel ?? `Track-Shift ${slot.position}`}
+        className={cn("bottom-0.5", badgeSide)}
+      />
+
     </div>
       <p
         className="w-full truncate text-center text-[0.62rem] leading-tight text-parch/85"

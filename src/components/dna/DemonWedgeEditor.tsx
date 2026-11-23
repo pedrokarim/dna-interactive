@@ -2,8 +2,10 @@
 import { cn } from "./cn";
 import type { DnaPickerItem } from "./ItemPicker";
 import {
+  TrackShiftToggle,
   WEDGE_DIMS,
   WedgeSlotCell,
+  canTrackShift,
   useWedgeSwap,
   hexToRgb,
   type WedgeScale,
@@ -19,7 +21,8 @@ export type { WedgeSlotData } from "./_wedge";
  *
  * Les 8 cases extérieures s'échangent par glisser-déposer, un clic ouvre le picker
  * de la case. Le centre ne bouge pas et ne reçoit jamais de drop, mais un clic
- * change son MOD (il porte l'élément du perso).
+ * change son MOD (il porte l'élément du perso). Il reçoit un Track-Shift comme
+ * les autres : c'est le slot 09 de l'armurerie.
  *
  * Drag HTML5 natif, donc souris seulement. Pour le tactile il faudra passer à
  * @dnd-kit (pointeur, touch, clavier), onChange restera le même.
@@ -47,6 +50,10 @@ export type DnaDemonWedgeEditorProps = {
   trackLabel?: string;
   /** Clic sur le centre, pour changer le MOD central (la case reste fixe). */
   onCenterClick?: () => void;
+  /** Piste du centre : la polarité de la pièce centrale, ou null sans module. */
+  centerTrack?: number | null;
+  /** Pose ou retire le Track-Shift du centre. */
+  onToggleCenterTrack?: () => void;
   className?: string;
 };
 
@@ -61,6 +68,8 @@ export function DnaDemonWedgeEditor({
   onToggleTrack,
   trackLabel,
   onCenterClick,
+  centerTrack = null,
+  onToggleCenterTrack,
   className,
 }: DnaDemonWedgeEditorProps) {
   const rgb = hexToRgb(accentHex);
@@ -99,6 +108,7 @@ export function DnaDemonWedgeEditor({
         ))}
       </div>
 
+      <div className="relative shrink-0" style={{ height: d.centerH, width: d.centerH }}>
       <button
         type="button"
         onClick={readOnly ? undefined : () => onCenterClick?.()}
@@ -120,6 +130,14 @@ export function DnaDemonWedgeEditor({
           <span className="text-sm text-parch/50">◆</span>
         )}
       </button>
+        <TrackShiftToggle
+          active={centerTrack != null}
+          onToggle={!readOnly && onToggleCenterTrack && canTrackShift(centerItem) ? onToggleCenterTrack : undefined}
+          label={trackLabel ?? "Track-Shift"}
+          // Sur le bord du cercle, à 45°, comme le badge de polarité du jeu.
+          className="bottom-2 right-2"
+        />
+      </div>
 
       <div className={cn("flex flex-col", d.gapRows)}>
         {RIGHT_ROWS.map((row, i) => (

@@ -293,6 +293,8 @@ export function CommunityBuildBuilderClient({
   const [traitModalGenimon, setTraitModalGenimon] = useState<string | null>(null);
   const [demonSlots, setDemonSlots] = useState<WedgeSlotData[]>(() => emptyWedgeSlots(8));
   const [centerItem, setCenterItem] = useState<DnaPickerItem | null>(null);
+  /** Track-Shift du centre (slot 09) : la polarité de la pièce centrale, ou null. */
+  const [centerTrack, setCenterTrack] = useState<number | null>(null);
   const [consonanceSlots, setConsonanceSlots] = useState<WedgeSlotData[]>(() => emptyWedgeSlots(4));
   const [statsPriority, setStatsPriority] = useState<PriorityItem[]>(STATS_POOL.slice(0, 3));
   const [skillPriority, setSkillPriority] = useState<PriorityItem[]>([SKILL_POOL[2], SKILL_POOL[0]]);
@@ -392,6 +394,7 @@ export function CommunityBuildBuilderClient({
             track: normalizeTrack(slot.track),
           })),
         centerItemId: centerItem?.id ?? null,
+        centerTrack: centerItem ? normalizeTrack(centerTrack) : null,
         affinity: activeElement,
       },
       genimon: genimons.map((entry) => ({
@@ -416,6 +419,7 @@ export function CommunityBuildBuilderClient({
     [
       activeElement,
       centerItem,
+      centerTrack,
       consonanceSlots,
       genimonTraits,
       consonanceWeapon,
@@ -478,7 +482,9 @@ export function CommunityBuildBuilderClient({
       }),
     );
     const nextCenterItem = itemById(options.mods, next.demonWedges.centerItemId);
-    setCenterItem(nextCenterItem && isCenterDemonWedgeItemId(nextCenterItem.id) ? nextCenterItem : null);
+    const validCenter = nextCenterItem && isCenterDemonWedgeItemId(nextCenterItem.id) ? nextCenterItem : null;
+    setCenterItem(validCenter);
+    setCenterTrack(validCenter ? normalizeTrack(next.demonWedges.centerTrack) : null);
     setConsonanceSlots(
       emptyWedgeSlots(4).map((slot) => {
         const id = next.consonanceWeapon?.slots[slot.position - 1];
@@ -519,6 +525,7 @@ export function CommunityBuildBuilderClient({
     setGenimonTraits({});
     setDemonSlots(emptyWedgeSlots(8));
     setCenterItem(null);
+    setCenterTrack(null);
     setConsonanceSlots(emptyWedgeSlots(4));
     setStatsPriority(STATS_POOL.slice(0, 3));
     setSkillPriority([SKILL_POOL[2], SKILL_POOL[0]]);
@@ -822,6 +829,8 @@ export function CommunityBuildBuilderClient({
         return;
       }
       setCenterItem(item);
+      // Comme sur une case : le module reste posé, sa piste suit la nouvelle pièce.
+      setCenterTrack((track) => (track == null ? null : normalizeTrack(item.polarity)));
     } else if (editing.kind === "demon") {
       setDemonSlots((slots) =>
         slots.map((slot) =>
@@ -1287,7 +1296,9 @@ export function CommunityBuildBuilderClient({
           <div className="flex flex-wrap items-baseline justify-between gap-2">
             <DnaSectionLabel>{t("demonWedges")}</DnaSectionLabel>
             <span className="font-caps text-[0.58rem] uppercase tracking-[0.16em] text-muted">
-              {t("trackShiftCount", { count: demonSlots.filter((slot) => slot.track != null).length })}
+              {t("trackShiftCount", {
+                count: demonSlots.filter((slot) => slot.track != null).length + (centerItem && centerTrack != null ? 1 : 0),
+              })}
             </span>
           </div>
           <div className="mt-5 overflow-x-auto pb-3 pt-1">
@@ -1302,6 +1313,10 @@ export function CommunityBuildBuilderClient({
               onToggleTrack={(position) => setDemonSlots((slots) => toggleSlotTrack(slots, position))}
               trackLabel={t("trackShiftToggle")}
               onCenterClick={() => setEditing({ kind: "center" })}
+              centerTrack={centerItem ? centerTrack : null}
+              onToggleCenterTrack={() =>
+                setCenterTrack((track) => (track == null ? normalizeTrack(centerItem?.polarity) : null))
+              }
             />
           </div>
         </DnaPanel>

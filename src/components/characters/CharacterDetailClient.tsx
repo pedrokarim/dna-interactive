@@ -437,10 +437,9 @@ export function communityBuildToDisplayBuild(
       centerItem: payload.demonWedges.centerItemId
         ? resolveBuildItemRef("mods", payload.demonWedges.centerItemId, lang)
         : null,
-      // Le centre s'ajuste en jeu (slot 09), mais le payload communautaire ne
-      // le stocke pas : l'éditeur le verrouille. Il faudra l'ouvrir dans le
-      // builder avant de l'afficher ici.
-      centerTrack: null,
+      // Le centre s'ajuste en jeu (slot 09) ; les builds publiés avant que le
+      // builder le gère n'ont pas le champ.
+      centerTrack: payload.demonWedges.centerTrack ?? null,
       affinity: buildText(payload.demonWedges.affinity ?? build.element, lang),
       note: {},
     },
