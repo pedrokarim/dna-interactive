@@ -1046,7 +1046,9 @@
     "itemCategorySearch": "Suche, filtere und vergleiche die Namen in {count} Sprachen.",
     "itemDetailFallback": "{category}: Details zu {name} in {count} Sprachen.",
     "plannerTitle": "Farm-Planer – Materialien pro Charakter, Waffe und Demon Wedge",
-    "plannerDescription": "Plane Charaktere, Waffen und Demon Wedges in Duet Night Abyss: benötigte Materialien, was dir fehlt und wo du farmst – direkt aus einem Build."
+    "plannerDescription": "Plane Charaktere, Waffen und Demon Wedges in Duet Night Abyss: benötigte Materialien, was dir fehlt und wo du farmst – direkt aus einem Build.",
+    "characterBuildTitle": "{name} Build: Demon Wedges & Waffen – Duet Night Abyss",
+    "characterBuildDescription": "{name} Build in Duet Night Abyss: Demon Wedges und Pfade, empfohlene Waffen, Team, Geniemon und Skill-Priorität. Element {element}."
   },
   "commissions": {
     "eyebrow": "Verdeckte Aufträge",

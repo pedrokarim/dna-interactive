@@ -1046,7 +1046,9 @@
     "itemCategorySearch": "搜尋、篩選並比較 {count} 種語言的名稱。",
     "itemDetailFallback": "{category}：{name} 的詳細資料（{count} 種語言）。",
     "plannerTitle": "培養規劃 – 角色、武器與Demon Wedge所需素材",
-    "plannerDescription": "規劃二重螺旋的角色、武器與Demon Wedge培養：所需素材、尚缺多少、該刷哪些委託，從任一配裝一鍵產生。"
+    "plannerDescription": "規劃二重螺旋的角色、武器與Demon Wedge培養：所需素材、尚缺多少、該刷哪些委託，從任一配裝一鍵產生。",
+    "characterBuildTitle": "{name}配裝・Demon Wedge・推薦武器｜二重螺旋",
+    "characterBuildDescription": "二重螺旋（Duet Night Abyss）{name}配裝：Demon Wedge與軌道、推薦武器、隊伍、Genimon與技能優先順序。元素：{element}。"
   },
   "commissions": {
     "eyebrow": "密令委託",

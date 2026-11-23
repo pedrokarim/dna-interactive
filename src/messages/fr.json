@@ -1046,7 +1046,9 @@
     "itemCategorySearch": "Recherche, filtre et compare les noms dans {count} langues.",
     "itemDetailFallback": "{category} : fiche de {name} dans {count} langues.",
     "plannerTitle": "Planificateur de farm – matériaux par personnage, arme et Demon Wedge",
-    "plannerDescription": "Planifie la montée de tes personnages, armes et Demon Wedges de Duet Night Abyss : matériaux à réunir, manques et missions où les farmer, depuis un build."
+    "plannerDescription": "Planifie la montée de tes personnages, armes et Demon Wedges de Duet Night Abyss : matériaux à réunir, manques et missions où les farmer, depuis un build.",
+    "characterBuildTitle": "Build {name} : Demon Wedges et armes – Duet Night Abyss",
+    "characterBuildDescription": "Build de {name} dans Duet Night Abyss : Demon Wedges et pistes, armes recommandées, équipe, Génimon et priorité des compétences. Élément {element}."
   },
   "commissions": {
     "eyebrow": "Mandats scellés",

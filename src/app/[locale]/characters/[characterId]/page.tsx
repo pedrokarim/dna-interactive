@@ -83,11 +83,19 @@ export async function generateMetadata(
   const charName = localized.name ?? character.internalName;
   const slug = getCharacterSlug(character);
   const tMeta = await getTranslations({ locale, namespace: "metadata" });
+  // Avec un build, le titre reprend ce que les joueurs tapent (« <nom> build »,
+  // Demon Wedges, armes). Sans build, il n'annonce pas ce que la page n'a pas.
+  const hasBuild = getCharacterBuilds(character.id, locale.toUpperCase()).some((build) => !build.legacy);
+  const element = character.element.label;
 
   return generatePageMetadata(
     {
-      title: `${charName} - ${character.element.label} ${character.weaponTags[0] ?? ""}`,
-      description: tMeta("characterDescription", { name: charName, element: character.element.label }),
+      title: hasBuild
+        ? tMeta("characterBuildTitle", { name: charName })
+        : `${charName} - ${element} ${character.weaponTags[0] ?? ""}`,
+      description: hasBuild
+        ? tMeta("characterBuildDescription", { name: charName, element })
+        : tMeta("characterDescription", { name: charName, element }),
       path: `/characters/${slug}`,
       dynamicOgImage: true, // image OG fournie par opengraph-image.tsx
       discordEmbed: true,

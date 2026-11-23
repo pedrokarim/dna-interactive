@@ -1046,7 +1046,9 @@
     "itemCategorySearch": "{count}言語の名称を検索・絞り込み・比較できます。",
     "itemDetailFallback": "{category}：{name}の詳細（{count}言語）。",
     "plannerTitle": "育成プランナー – キャラ・武器・Demon Wedgeの必要素材",
-    "plannerDescription": "デュエットナイトアビスのキャラクター、武器、Demon Wedgeの育成を計画。必要な素材、不足分、周回すべき依頼をビルドからワンクリックで確認できます。"
+    "plannerDescription": "デュエットナイトアビスのキャラクター、武器、Demon Wedgeの育成を計画。必要な素材、不足分、周回すべき依頼をビルドからワンクリックで確認できます。",
+    "characterBuildTitle": "{name}のビルド・Demon Wedge・おすすめ武器｜デュエットナイトアビス",
+    "characterBuildDescription": "デュエットナイトアビスの{name}のビルド。Demon Wedgeとトラック、おすすめ武器、編成、ジェニモン、スキル優先度。属性：{element}。"
   },
   "commissions": {
     "eyebrow": "隠密コミッション",

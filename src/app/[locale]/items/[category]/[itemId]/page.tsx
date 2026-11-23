@@ -16,6 +16,9 @@ import { getDraftRecipesForItem } from "@/lib/items/drafts";
 import { generatePageMetadata } from "@/lib/metadata";
 import { localizeItemCategory } from "@/lib/items/category-i18n";
 
+/** Seules catégories dont les fiches restent proposées aux moteurs. */
+const INDEXABLE_ITEM_CATEGORIES = new Set(["weapons", "genimons"]);
+
 type ItemDetailPageProps = {
   params: Promise<{ locale: string; category: string; itemId: string }>;
 };
@@ -72,6 +75,10 @@ export async function generateMetadata(
           count: category.availableLanguages.length,
         }),
       path: `/items/${category.slug}/${item.id}`,
+      // Ressources, Demon Wedges et poissons : ~1 800 fiches de 150 à 280 mots,
+      // en 7 langues. C'est surtout elles que Googlebot tirait, et le site
+      // restait à 0 page indexée. Armes et Génimons ont de quoi tenir seules.
+      indexable: INDEXABLE_ITEM_CATEGORIES.has(category.id),
       dynamicOgImage: true, // image OG fournie par opengraph-image.tsx
       discordEmbed: true,
       keywords: [

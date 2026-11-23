@@ -1046,7 +1046,9 @@
     "itemCategorySearch": "{count}개 언어의 이름을 검색, 필터링, 비교할 수 있습니다.",
     "itemDetailFallback": "{category}: {name} 상세 정보 ({count}개 언어).",
     "plannerTitle": "육성 플래너 – 캐릭터·무기·Demon Wedge별 재료",
-    "plannerDescription": "듀엣 나이트 어비스의 캐릭터, 무기, Demon Wedge 육성을 계획하세요. 필요한 재료, 부족한 양, 파밍할 의뢰를 빌드에서 클릭 한 번으로 확인할 수 있습니다."
+    "plannerDescription": "듀엣 나이트 어비스의 캐릭터, 무기, Demon Wedge 육성을 계획하세요. 필요한 재료, 부족한 양, 파밍할 의뢰를 빌드에서 클릭 한 번으로 확인할 수 있습니다.",
+    "characterBuildTitle": "{name} 빌드·Demon Wedge·추천 무기 | Duet Night Abyss",
+    "characterBuildDescription": "Duet Night Abyss {name} 빌드: Demon Wedge와 트랙, 추천 무기, 파티, 제니몬, 스킬 우선순위. 속성: {element}."
   },
   "commissions": {
     "eyebrow": "은밀한 커미션",

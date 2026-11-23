@@ -49,6 +49,9 @@ export async function generateMetadata(
         productDescription ??
         `Detail du plan de forge #${recipe.draftId} avec ingredients, couts et temps de fabrication.`,
       path: `/items/drafts/${recipe.draftId}`,
+      // Plans de forge : fiches courtes en 7 langues, hors index comme les
+      // ressources et les Demon Wedges (voir la fiche d'objet).
+      indexable: false,
       keywords: [
         "Duet Night Abyss",
         "draft",
